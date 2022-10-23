@@ -1,11 +1,17 @@
-#define DEFAULT_TIMED 4 SECONDS
+/// The baseline time to take for doing actions with the forge, like heating glass, setting ceramics, etc.
+#define BASELINE_ACTION_TIME 4 SECONDS
 
-#define DEFAULT_HEATED 25 SECONDS
+/// The basline for how long an item such as molten glass will be kept workable after heating
+#define BASELINE_HEATING_DURATION 25 SECONDS
 
+/// The amount the forge's temperature will change per process
 #define FORGE_DEFAULT_TEMPERATURE_CHANGE 5
+/// The maximum temperature the forge can reach
 #define MAX_FORGE_TEMP 100
+/// The minimum temperature for using the forge
 #define MIN_FORGE_TEMP 50
 
+/// Defines for different levels of the forge, ranging from no level (you play like a noob) to legendary
 #define FORGE_LEVEL_YOU_PLAY_LIKE_A_NOOB 0
 #define FORGE_LEVEL_NOVICE 1
 #define FORGE_LEVEL_APPRENTICE 2
@@ -14,11 +20,15 @@
 #define FORGE_LEVEL_MASTER 5
 #define FORGE_LEVEL_LEGENDARY 6
 
+/// The maximum amount of temperature loss decrease that upgrades can give the forge
 #define MAX_TEMPERATURE_LOSS_DECREASE 5
+/// The maximum additional sheets the forge will create when smelting, due to upgrades
 #define MAX_ORE_TO_SHEET_AMOUNT 3
 
-#define MIN_IMBUE_REQUIRED 100
+/// The minimum units of a reagent rerquired to imbue it into a weapon
+#define MINIMUM_IMBUING_REAGENT_AMOUNT 100
 
+/// Defines for the different levels of smoke coming out of the forge, (good, neutral, bad) are all used for baking, (not cooking) is used for when there is no tray in the forge
 #define SMOKE_STATE_NONE 0
 #define SMOKE_STATE_GOOD 1
 #define SMOKE_STATE_NEUTRAL 2
@@ -56,9 +66,9 @@
 	var/in_use = FALSE
 	/// The current 'level' of the forge, how upgraded is it from zero to three
 	var/forge_level = FORGE_LEVEL_YOU_PLAY_LIKE_A_NOOB
-	///What smoke particles should be coming out of the forge
+	/// What smoke particles should be coming out of the forge
 	var/smoke_state = SMOKE_STATE_NONE
-	///Tracks any oven tray placed inside of the forge
+	/// Tracks any oven tray placed inside of the forge
 	var/obj/item/plate/oven_tray/used_tray
 	/// The list of possible things to make with materials used on the forge
 	var/static/list/choice_list = list(
@@ -163,24 +173,24 @@
 /obj/structure/reagent_forge/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	QDEL_NULL(particles)
-	remove_tray_from_forge(FALSE)
+	remove_tray_from_forge(by_hand = FALSE)
 	. = ..()
 
 /obj/structure/reagent_forge/update_appearance(updates)
 	. = ..()
 	cut_overlays()
 
-	if(reagent_forging)
+	if(reagent_forging) // If we can do reagent forging, give the forge the gold trim
 		var/image/gold_overlay = image(icon = icon, icon_state = "forge_masterwork_trim")
 		add_overlay(gold_overlay)
-	if(used_tray)
 
+	if(used_tray) // If we have a tray inside, check if the forge is on or not, then give the corresponding tray overlay
 		var/image/tray_overlay = image(icon = icon, icon_state = "forge_tray_[check_fuel(TRUE) ? "active" : "inactive"]")
 		add_overlay(tray_overlay)
 
 /// Checks if the forge has fuel, if so what type. If it has either type of fuel, returns TRUE, otherwise returns FALSE. just_checking will check if there is fuel without taking actions
 /obj/structure/reagent_forge/proc/check_fuel(just_checking = FALSE)
-	if(forge_fuel_strong) //use strong fuel first
+	if(forge_fuel_strong) // Check for strong fuel (coal) first, as it has more power over weaker fuels
 		if(just_checking)
 			return TRUE
 
@@ -188,7 +198,7 @@
 		target_temperature = 100
 		return TRUE
 
-	if(forge_fuel_weak) //then weak fuel second
+	if(forge_fuel_weak) // If there's no strong fuel, maybe we have weak fuel (wood)
 		if(just_checking)
 			return TRUE
 
@@ -199,12 +209,12 @@
 	if(just_checking)
 		return FALSE
 
-	target_temperature = minimum_target_temperature //if no fuel, slowly go back down to minimum target temperature
+	target_temperature = minimum_target_temperature // If the forge has no fuel, then we should lowly return to the minimum lowest temp we can do
 	return FALSE
 
 /// Gives the forge the ability to imbue reagents into things
 /obj/structure/reagent_forge/proc/create_reagent_forge()
-	if(reagent_forging) //We really only need to do it once!
+	if(reagent_forging) // If the forge can already do reagent forging, then we can skip the rest of this
 		return
 	reagent_forging = TRUE
 	update_appearance()
@@ -214,54 +224,55 @@
 	balloon_alert(user, message)
 	in_use = FALSE
 
-///Adjust the temperature to head towards the target temperature, changing icon and creating light if the temperature is rising
+/// Adjust the temperature to head towards the target temperature, changing icon and creating light if the temperature is rising
 /obj/structure/reagent_forge/proc/check_temp()
-	if(forge_temperature > target_temperature) //Being above the target temperature will cause the forge to cool down
+	if(forge_temperature > target_temperature) // Being above the target temperature will cause the forge to cool down
 		forge_temperature -= (FORGE_DEFAULT_TEMPERATURE_CHANGE - temperature_loss_reduction)
 		icon_state = "forge_inactive"
-		set_light(0, 0) //If we aren't heating up and thus not on fire, turn the fire light off
+		set_light(0, 0) // If we aren't heating up and thus not on fire, turn the fire light off
 		return
 
-	else if(forge_temperature < target_temperature && (forge_fuel_weak || forge_fuel_strong)) //Being below the target temp, and having fuel, will cause the temp to rise
+	else if(forge_temperature < target_temperature && (forge_fuel_weak || forge_fuel_strong)) // Being below the target temp, and having fuel, will cause the temp to rise
 		forge_temperature += FORGE_DEFAULT_TEMPERATURE_CHANGE
 		icon_state = "forge_active"
 		set_light(3, 1, LIGHT_COLOR_FIRE)
 		return
 
-///If the forge is in use, checks if there is an oven tray, then if there are any mobs actually in use range. If not sets the forge to not be in use.
+/// If the forge is in use, checks if there is an oven tray, then if there are any mobs actually in use range. If not sets the forge to not be in use.
 /obj/structure/reagent_forge/proc/check_in_use()
 	if(!in_use)
 		return
 
-	if(used_tray)
+	if(used_tray) // We check if there's a tray because trays inside of the forge count as it being in use, even if nobody is around
 		return
 
 	for(var/mob/living/living_mob in range(1,src))
 		if(!living_mob)
 			in_use = FALSE
 
-///Spawns a piece of coal at the forge and renames it to charcoal
+/// Spawns a piece of coal at the forge and renames it to charcoal
 /obj/structure/reagent_forge/proc/spawn_coal()
 	var/obj/item/stack/sheet/mineral/coal/spawn_coal = new(get_turf(src))
 	spawn_coal.name = "charcoal"
 
 /obj/structure/reagent_forge/process(delta_time)
-	if(!COOLDOWN_FINISHED(src, forging_cooldown)) //every 5 seconds to not be too intensive, also balanced around 5 seconds
+	if(!COOLDOWN_FINISHED(src, forging_cooldown))
 		return
 
 	COOLDOWN_START(src, forging_cooldown, 5 SECONDS)
 	check_fuel()
 	check_temp()
-	check_in_use() //plenty of weird bugs, this should hopefully fix the in_use bugs
+	check_in_use() // This is here to ensure the forge doesn't remain in_use if it really isn't
 
 	if(!used_tray)
 		if(forge_fuel_weak || forge_fuel_strong)
-			set_smoke_state(SMOKE_STATE_NOT_COOKING)
+			set_smoke_state(SMOKE_STATE_NOT_COOKING) // If there is no tray but we have fuel, use the not cooking smoke state
 		return
 
-	if(forge_temperature < MIN_FORGE_TEMP) //If we are below minimum forge temp, don't continue on to cooking
+	if(forge_temperature < MIN_FORGE_TEMP) // If we are below minimum forge temp, don't continue on to cooking
 		return
 
+	/// The worst off item being baked in our forge right now, to ensure people know when gordon ramsay is gonna be upset at them
 	var/worst_cooked_food_state = 0
 	for(var/obj/item/baked_item in used_tray.contents)
 
@@ -275,10 +286,10 @@
 			continue
 
 		worst_cooked_food_state = SMOKE_STATE_BAD
-		baked_item.fire_act(1000)
+		baked_item.fire_act(1000) // Overcooked food really does burn, hot hot hot!
 
 		if(DT_PROB(10, delta_time))
-			visible_message(span_danger("You smell a burnt smell coming from [src]!"))
+			visible_message(span_danger("You smell a burnt smell coming from [src]!")) // Give indication that something is burning in the oven
 	set_smoke_state(worst_cooked_food_state)
 
 /// Sets the type of particles that the forge should be generating
@@ -289,7 +300,7 @@
 	smoke_state = new_state
 
 	QDEL_NULL(particles)
-	if(!check_fuel(TRUE)) //If there is no fuel then we don't get smoke particles
+	if(!check_fuel(TRUE)) // If there is no fuel then we don't get smoke particles
 		return
 
 	switch(smoke_state)
@@ -312,7 +323,7 @@
 /obj/structure/reagent_forge/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(used_tray)
-		remove_tray_from_forge()
+		remove_tray_from_forge(user)
 		return
 
 	var/user_smithing_skill = user.mind.get_skill_level(/datum/skill/smithing)
@@ -322,7 +333,7 @@
 		to_chat(user, span_notice("[src] was already upgraded by your level of expertise!"))
 		return
 
-	switch(user_smithing_skill) //Remember to carry things over from past levels in case someone skips levels in upgrading
+	switch(user_smithing_skill) // Remember to carry things over from past levels in case someone skips levels in upgrading
 		if(SKILL_LEVEL_NONE)
 			to_chat(user, span_notice("You'll need some forging skills to really understand how to upgrade [src]."))
 			return
@@ -340,7 +351,7 @@
 
 		if(SKILL_LEVEL_JOURNEYMAN)
 			to_chat(user, span_notice("Some careful placement and stoking of the flame will allow you to keep at least the embers burning..."))
-			minimum_target_temperature = 25 //Will allow quicker reheating from having no fuel
+			minimum_target_temperature = 25 // Will allow quicker reheating from having no fuel
 			ore_to_sheet_amount = 2
 			temperature_loss_reduction = 2
 			forge_level = FORGE_LEVEL_JOURNEYMAN
@@ -364,25 +375,27 @@
 			to_chat(user, span_notice("The perfect forge for a perfect metalsmith, with your knowledge it should bleed heat so slowly, that not even you will live to see [src] cool."))
 			temperature_loss_reduction = MAX_TEMPERATURE_LOSS_DECREASE
 			ore_to_sheet_amount = MAX_ORE_TO_SHEET_AMOUNT
-			minimum_target_temperature = 25 //This won't matter except in a few cases here, but we still need to cover those few cases
+			minimum_target_temperature = 25 // This won't matter except in a few cases here, but we still need to cover those few cases
 			forge_level = FORGE_LEVEL_LEGENDARY
 
-	playsound(src, 'sound/weapons/parry.ogg', 50, TRUE)
+	playsound(src, 'sound/weapons/parry.ogg', 50, TRUE) // Play a feedback sound to really let players know we just did an upgrade
 
 /obj/structure/reagent_forge/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(!used_tray && istype(attacking_item, /obj/item/plate/oven_tray))
 		add_tray_to_forge(attacking_item)
 		return TRUE
 
-	if(in_use)
-		balloon_alert_to_viewers("forge busy")
+	if(in_use) // If the forge is currently in use by someone (or there is a tray in it) then we cannot use it
+		if(used_tray)
+			balloon_alert(user, "remove [used_tray] first")
+		balloon_alert(user, "forge busy")
 		return TRUE
 
-	if(istype(attacking_item, /obj/item/stack/sheet/mineral/wood)) //Wood is a weak fuel, and will only get the forge up to 50 temperature
+	if(istype(attacking_item, /obj/item/stack/sheet/mineral/wood)) // Wood is a weak fuel, and will only get the forge up to 50 temperature
 		refuel(attacking_item, user)
 		return TRUE
 
-	if(istype(attacking_item, /obj/item/stack/sheet/mineral/coal)) //Coal is a strong fuel that doesn't need bellows to heat up properly
+	if(istype(attacking_item, /obj/item/stack/sheet/mineral/coal)) // Coal is a strong fuel that doesn't need bellows to heat up properly
 		refuel(attacking_item, user, TRUE)
 		return TRUE
 
@@ -414,18 +427,18 @@
 
 /// Take the given tray and place it inside the forge, updating everything relevant to that
 /obj/structure/reagent_forge/proc/add_tray_to_forge(obj/item/plate/oven_tray/tray)
-	if(used_tray) //This shouldn't be able to happen but just to be safe
+	if(used_tray) // This shouldn't be able to happen but just to be safe
 		balloon_alert_to_viewers("already has tray")
 		return
 
 	tray.forceMove(src)
 	balloon_alert_to_viewers("put [tray] in [src]")
 	used_tray = tray
-	in_use = TRUE //You can't use the forge if there's a tray sitting in it
+	in_use = TRUE // You can't use the forge if there's a tray sitting in it
 	update_appearance()
 
 /// Take the used_tray and spit it out, updating everything relevant to that
-/obj/structure/reagent_forge/proc/remove_tray_from_forge(by_hand = TRUE)
+/obj/structure/reagent_forge/proc/remove_tray_from_forge(mob/living/carbon/user, by_hand = TRUE)
 	if(!used_tray)
 		if(by_hand)
 			balloon_alert_to_viewers("no tray")
@@ -433,7 +446,7 @@
 
 	if(by_hand)
 		balloon_alert_to_viewers("removed [used_tray]")
-	used_tray.forceMove(get_turf(src))
+	user.put_in_hands(used_tray)
 	used_tray = null
 	in_use = FALSE
 
@@ -462,7 +475,7 @@
 		forge_fuel_weak += 5 MINUTES
 	in_use = FALSE
 	balloon_alert(user, "fueled [src]")
-	user.mind.adjust_experience(/datum/skill/smithing, 5) //useful fueling means you get some experience
+	user.mind.adjust_experience(/datum/skill/smithing, 5) // You gain small amounts of experience from useful fueling
 
 	if(prob(45) && !is_strong_fuel)
 		to_chat(user, span_notice("[src]'s fuel is packed densely enough to have made some charcoal!"))
@@ -519,7 +532,7 @@
 		return
 
 	for(var/datum/reagent/weapon_reagent in attacking_weapon.reagents.reagent_list)
-		if(weapon_reagent.volume < MIN_IMBUE_REQUIRED)
+		if(weapon_reagent.volume < MINIMUM_IMBUING_REAGENT_AMOUNT)
 			attacking_weapon.reagents.remove_all_type(weapon_reagent.type)
 			continue
 
@@ -558,7 +571,7 @@
 		return
 
 	for(var/datum/reagent/clothing_reagent in attacking_clothing.reagents.reagent_list)
-		if(clothing_reagent.volume < MIN_IMBUE_REQUIRED)
+		if(clothing_reagent.volume < MINIMUM_IMBUING_REAGENT_AMOUNT)
 			attacking_clothing.reagents.remove_all_type(clothing_reagent.type)
 			continue
 
@@ -585,7 +598,7 @@
 		return
 
 	var/obj/item/ceramic/ceramic_item = attacking_item
-	var/ceramic_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * DEFAULT_TIMED
+	var/ceramic_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * BASELINE_ACTION_TIME
 
 	if(!ceramic_item.forge_item)
 		fail_message(user, "cannot set [ceramic_item]")
@@ -613,8 +626,8 @@
 		return
 
 	var/obj/item/stack/sheet/glass/glass_item = attacking_item
-	var/glassblowing_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * DEFAULT_TIMED
-	var/glassblowing_amount = DEFAULT_HEATED / user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER)
+	var/glassblowing_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * BASELINE_ACTION_TIME
+	var/glassblowing_amount = BASELINE_HEATING_DURATION / user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER)
 
 	balloon_alert_to_viewers("heating...")
 
@@ -636,8 +649,8 @@
 		return
 
 	var/obj/item/glassblowing/metal_cup/metal_item = attacking_item
-	var/glassblowing_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * DEFAULT_TIMED
-	var/glassblowing_amount = DEFAULT_HEATED / user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER)
+	var/glassblowing_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * BASELINE_ACTION_TIME
+	var/glassblowing_amount = BASELINE_HEATING_DURATION / user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER)
 
 	if(!metal_item.has_sand)
 		fail_message(user, "[metal_item] has no sand")
@@ -651,7 +664,7 @@
 
 	in_use = FALSE
 	metal_item.has_sand = FALSE
-	metal_item.icon_state = "metal_cup_empty"
+	metal_item.icon_state = "metal_cup_empty" // This should be handled a better way but presently this is how it works
 	var/obj/item/glassblowing/molten_glass/spawned_glass = new /obj/item/glassblowing/molten_glass(get_turf(src))
 	user.mind.adjust_experience(/datum/skill/production, 10)
 	COOLDOWN_START(spawned_glass, remaining_heat, glassblowing_amount)
@@ -660,16 +673,16 @@
 	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER)
 	var/obj/item/forging/forge_item = tool
 
-	if(in_use) //no spamming the billows
+	if(in_use) // Preventing billow use if the forge is in use to prevent spam
 		to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 	in_use = TRUE
 
-	if(!forge_fuel_strong && !forge_fuel_weak) //if there isnt any fuel, no billow use
+	if(!forge_fuel_strong && !forge_fuel_weak)
 		fail_message(user, "You cannot use [forge_item] without some sort of fuel in [src]!")
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
-	if(forge_temperature >= MAX_FORGE_TEMP) //we don't want the "temp" to overflow or something somehow
+	if(forge_temperature >= MAX_FORGE_TEMP)
 		fail_message(user, "You can't heat [src] to be any hotter!")
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
@@ -681,7 +694,7 @@
 			return TOOL_ACT_TOOLTYPE_SUCCESS
 
 		forge_temperature += 10
-		user.mind.adjust_experience(/datum/skill/smithing, 5) //useful heating means you get some experience
+		user.mind.adjust_experience(/datum/skill/smithing, 5) // Billowing, like fueling, gives you some experience in forging
 
 	in_use = FALSE
 	to_chat(user, span_notice("You successfully increase the temperature inside [src]."))
@@ -691,7 +704,7 @@
 	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER)
 	var/obj/item/forging/forge_item = tool
 
-	if(in_use || forge_item.in_use) //only insert one at a time
+	if(in_use || forge_item.in_use)
 		to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 	in_use = TRUE
@@ -702,7 +715,7 @@
 		forge_item.in_use = FALSE
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
-	//we are going to see if we have an incomplete item to forge
+	// Here we check the item used on us (tongs) for an incomplete forge item of some kind to heat
 	var/obj/item/forging/incomplete/search_incomplete = locate(/obj/item/forging/incomplete) in forge_item.contents
 	if(search_incomplete)
 		if(!COOLDOWN_FINISHED(search_incomplete, heating_remainder))
@@ -720,11 +733,11 @@
 		COOLDOWN_START(search_incomplete, heating_remainder, 1 MINUTES)
 		in_use = FALSE
 		forge_item.in_use = FALSE
-		user.mind.adjust_experience(/datum/skill/smithing, 5) //heating up stuff gives just a little experience
+		user.mind.adjust_experience(/datum/skill/smithing, 5) // Heating up forge items grants some experience
 		to_chat(user, span_notice("You successfully heat up [search_incomplete]."))
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
-	//we are going to see if we have a stack item
+	// Here we check the item used on us (tongs) for a stack of some kind to create an object from
 	var/obj/item/stack/search_stack = locate(/obj/item/stack) in forge_item.contents
 	if(search_stack)
 		var/user_choice = tgui_input_list(user, "What would you like to work on?", "Forge Selection", choice_list)
@@ -762,7 +775,6 @@
 		COOLDOWN_START(incomplete_item, heating_remainder, 1 MINUTES)
 		in_use = FALSE
 		forge_item.in_use = FALSE
-		user.mind.adjust_experience(/datum/skill/smithing, 10) //creating an item gives you some experience, not a lot
 		to_chat(user, span_notice("You successfully heat up [search_stack], ready to forge a [user_choice]."))
 		search_stack = locate(/obj/item/stack) in forge_item.contents
 
@@ -776,10 +788,10 @@
 
 /obj/structure/reagent_forge/blowrod_act(mob/living/user, obj/item/tool)
 	var/obj/item/glassblowing/blowing_rod/blowing_item = tool
-	var/glassblowing_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * DEFAULT_TIMED
-	var/glassblowing_amount = DEFAULT_HEATED / user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER)
+	var/glassblowing_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * BASELINE_ACTION_TIME
+	var/glassblowing_amount = BASELINE_HEATING_DURATION / user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER)
 
-	if(in_use) //only insert one at a time
+	if(in_use)
 		to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 	in_use = TRUE
@@ -805,8 +817,8 @@
 
 	COOLDOWN_START(find_glass, remaining_heat, glassblowing_amount)
 	to_chat(user, span_notice("You finish heating up [blowing_item]."))
-	user.mind.adjust_experience(/datum/skill/smithing, 10) //creating an item gives you some experience, not a lot
-	user.mind.adjust_experience(/datum/skill/production, 5)
+	user.mind.adjust_experience(/datum/skill/smithing, 5)
+	user.mind.adjust_experience(/datum/skill/production, 10)
 	in_use = FALSE
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
@@ -827,9 +839,9 @@
 	velocity = list(0, 0.3, 0)
 	friction = 0.25
 
-#undef DEFAULT_TIMED
+#undef BASELINE_ACTION_TIME
 
-#undef DEFAULT_HEATED
+#undef BASELINE_HEATING_DURATION
 
 #undef FORGE_DEFAULT_TEMPERATURE_CHANGE
 #undef MAX_FORGE_TEMP
@@ -846,7 +858,7 @@
 #undef MAX_TEMPERATURE_LOSS_DECREASE
 #undef MAX_ORE_TO_SHEET_AMOUNT
 
-#undef MIN_IMBUE_REQUIRED
+#undef MINIMUM_IMBUING_REAGENT_AMOUNT
 
 #undef SMOKE_STATE_NONE
 #undef SMOKE_STATE_GOOD
