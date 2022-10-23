@@ -1524,7 +1524,7 @@
 		"seclite",
 		"zipties",
 		"inspector",
-		"nifsoft_remover", //SKYRAT EDIT - NIFS
+		"nifsoft_remover", //SKYRAT EDIT ADDITION - NIFs
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 

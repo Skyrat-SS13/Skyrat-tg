@@ -40,10 +40,7 @@
 				WRITE_FILE(save["nif_examine_text"], FALSE)
 				return
 
-			stored_nif_durability -= LOSS_WITH_NIF_UNINSTALLED
-
-			if(stored_nif_durability <= 0)
-				stored_nif_durability = 0
+			stored_nif_durability = max(stored_nif_durability - LOSS_WITH_NIF_UNINSTALLED, 0)
 
 
 			WRITE_FILE(save["nif_durability"], stored_nif_durability)
