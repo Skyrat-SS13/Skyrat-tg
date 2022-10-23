@@ -3,7 +3,9 @@
 #define SUPERMATTER_SURGE_TIME_UPPER 360 * 0.5
 #define SUPERMATTER_SURGE_TIME_LOWER 180 * 0.5
 #define SUPERMATTER_SURGE_ANNOUNCE_THRESHOLD 25
-
+#define LOWER_SURGE_LIMIT 60 to 80
+#define MIDDLE_SURGE_LIMIT 81 to 90
+#define UPPER_SURGE_LIMIT 91 to 100
 /**
  * Supermatter Surge
  *
@@ -45,11 +47,11 @@
 
 /datum/round_event/supermatter_surge/proc/get_surge_level()
 	switch(surge_power)
-		if(60 to 80)
+		if(LOWER_SURGE_LIMIT)
 			return 4
-		if(81 to 90)
+		if(MIDDLE_SURGE_LIMIT)
 			return 3
-		if(91 to 100)
+		if(UPPER_SURGE_LIMIT)
 			return 2
 		else
 			return 1
@@ -67,3 +69,6 @@
 #undef SUPERMATTER_SURGE_TIME_UPPER
 #undef SUPERMATTER_SURGE_TIME_LOWER
 #undef SUPERMATTER_SURGE_ANNOUNCE_THRESHOLD
+#undef LOWER_SURGE_LIMIT
+#undef MIDDLE_SURGE_LIMIT
+#undef UPPER_SURGE_LIMIT
