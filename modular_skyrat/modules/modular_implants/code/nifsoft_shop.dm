@@ -26,7 +26,7 @@
 		/obj/item/disk/nifsoft_uploader/summoner = 10,
 		/obj/item/disk/nifsoft_uploader/hivemind = 10,
 		/obj/item/disk/nifsoft_uploader/money_sense = 10,
-		)
+	)
 
 	premium = list(
 		/obj/item/autosurgeon/organ/nif/ghost_role = 5,

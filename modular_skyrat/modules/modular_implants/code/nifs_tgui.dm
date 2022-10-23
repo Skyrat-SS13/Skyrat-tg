@@ -102,6 +102,7 @@
 
 			if(!target_theme || !(target_theme in ui_themes))
 				return FALSE
+
 			current_theme = target_theme
 
 		if("activate_nifsoft")

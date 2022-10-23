@@ -5,7 +5,7 @@
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/devices.dmi'
 	icon_state = "nifsoft_remover"
 
-	///Is a disk with the removed NIFSoft created?
+	///Is a disk with the corresponding NIFSoft created when said NIFSoft is removed?
 	var/create_disk = FALSE
 
 /obj/item/nifsoft_remover/attack(mob/living/carbon/human/target_mob, mob/living/user)
