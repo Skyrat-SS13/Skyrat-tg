@@ -273,6 +273,10 @@
 	if(forge_temperature < MIN_FORGE_TEMP) // If we are below minimum forge temp, don't continue on to cooking
 		return
 
+	handle_baking_things(delta_time)
+
+/// Sends signals to bake and items on the used tray, setting the smoke state of the forge according to the most cooked item in it
+/obj/structure/reagent_forge/proc/handle_baking_things(delta_time)
 	/// The worst off item being baked in our forge right now, to ensure people know when gordon ramsay is gonna be upset at them
 	var/worst_cooked_food_state = 0
 	for(var/obj/item/baked_item in used_tray.contents)
