@@ -315,14 +315,14 @@
 						- Strong point defense system <br>
 						- ~1/2 a tile's length of movement range
 					<br>
-					<b>SolGov</b> <br>
-					SolGov's navy is possibly the oldest and largest in the known universe, having more experience in
-					combat historically than most other navies combined. Nowadays, due to the expanse of SolGov space,
+					<b>SolFed</b> <br>
+					SolFed's navy is possibly the oldest and largest in the known universe, having more experience in
+					combat historically than most other navies combined. Nowadays, due to the expanse of SolFed space,
 					their patrols are thin stretched across the space they control, large groups of ships a rare sight.
 					A side effect of this is that they usually lack smaller combat vessels, favoring larger ships. <br>
 						<br>
 						-- Flak Frigate -- <br>
-						Built special purpoe to shoot down the vast numbers of strike craft that were often employed by SolGov's
+						Built special purpoe to shoot down the vast numbers of strike craft that were often employed by SolFed's
 						enemies in large scale disputes, comes packed with enough point defense to make any carrier captain cry. <br>
 						- Represented by a medium ship marker <br>
 						- Cannons <br>
@@ -331,7 +331,7 @@
 						- ~1 tile's length of movement range
 						<br>
 						-- Light Cruiser -- <br>
-						The mainstay ship of any SolGov fleet, with enough armor and firepower to cruise into the thick of
+						The mainstay ship of any SolFed fleet, with enough armor and firepower to cruise into the thick of
 						any battle and more than likely come out the other side still operational. <br>
 						- Represented by a large ship marker <br>
 						- Cannons <br>
@@ -340,7 +340,7 @@
 						- ~1/2 a tile's length of movement range
 						<br>
 						-- Heavy Carrier -- <br>
-						A prohibitively expensive carrier (not like this stops SolGov) that, while rarely fielded, can bring
+						A prohibitively expensive carrier (not like this stops SolFed) that, while rarely fielded, can bring
 						more strike craft into battle than any ship known to mankind. <br>
 						- Represented by an alternative large ship marker <br>
 						- 4 Wings of strike craft, with 3 seeking missiles each <br>
@@ -348,7 +348,7 @@
 						- ~1/2 a tile's length of movement range
 					<br>
 					<b>NRI</b> <br>
-					The NRI's navy has always been at least a contender to SolGov's and NanoTrasen's own, heavily focused on missiles
+					The NRI's navy has always been at least a contender to SolFed's and NanoTrasen's own, heavily focused on missiles
 					with very few ships straying away from that doctrine.
 						<br>
 						-- Patrol Corvette --
@@ -381,7 +381,7 @@
 					Though nowhere near as common as they were in the years since official contact with the nomad fleet,
 					explorer's of humanity's past have been plauged with raids from pirate ships of mothic origin. Though
 					not malicious in nature, they would often come in skirmishes with patrol and escort forces on the outer
-					rim of SolGov territory, and may still rarely commit to raids against human ships even today.
+					rim of SolFed territory, and may still rarely commit to raids against human ships even today.
 						<br>
 						-- Raider Corvette -- <br>
 						The smallest and most common ship in mothic pirate bands, using the nomad fleet's prowess in ship
@@ -419,15 +419,15 @@
 					- The NRI should start with a few more ships, or stronger ships than the NT force, however
 					the NT station should have several defensive platforms surrounding it to suppliment. <br>
 					<br>
-					-- NRI/SolGov Border Conflict -- <br>
-					Two sizeable fleets from both SolGov, and the NRI meet in disputed space. A battle ensues soon
+					-- NRI/SolFed Border Conflict -- <br>
+					Two sizeable fleets from both SolFed, and the NRI meet in disputed space. A battle ensues soon
 					after, this fight being only a small part of a larger battle. <br>
 					- Takes place in the rings of a nearby planet, large dust fields and asteroids making spotting
 					other ships difficult. <br>
 					- Either side will win through complete destruction or surrender of the enemy. <br>
-					- Both the NRI and SolGov fleets should be about the same size and strength
+					- Both the NRI and SolFed fleets should be about the same size and strength
 					<br>
-					-- SolGov/Mothic Raiders Convoy Raid -- <br>
+					-- SolFed/Mothic Raiders Convoy Raid -- <br>
 					A convoy of NanoTrasen cargo vessels, escorted by a small patrol force, come under attack by a sizeable
 					band of mothic raiders. <br>
 					- Takes place in a dense asteroid field <br>
