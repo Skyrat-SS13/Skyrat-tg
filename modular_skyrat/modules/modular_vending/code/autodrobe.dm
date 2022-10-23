@@ -25,7 +25,7 @@
 			"name" = "Fancy",
 			"icon" = "user-tie",
 			"products" = list(
-				/obj/item/clothing/under/costume/skyrat/vicvest = 5,
+				/obj/item/clothing/under/pants/skyrat/vicvest = 5,
 				/obj/item/clothing/under/costume/skyrat/kamishimo = 5,
 				/obj/item/clothing/under/costume/skyrat/yukata = 5,
 			),
