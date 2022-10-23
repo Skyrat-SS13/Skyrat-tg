@@ -173,7 +173,8 @@
 /obj/structure/reagent_forge/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	QDEL_NULL(particles)
-	remove_tray_from_forge(by_hand = FALSE)
+	if(used_tray)
+		QDEL_NULL(used_tray)
 	. = ..()
 
 /obj/structure/reagent_forge/update_appearance(updates)
@@ -438,15 +439,17 @@
 	update_appearance()
 
 /// Take the used_tray and spit it out, updating everything relevant to that
-/obj/structure/reagent_forge/proc/remove_tray_from_forge(mob/living/carbon/user, by_hand = TRUE)
+/obj/structure/reagent_forge/proc/remove_tray_from_forge(mob/living/carbon/user)
 	if(!used_tray)
-		if(by_hand)
+		if(user)
 			balloon_alert_to_viewers("no tray")
 		return
 
-	if(by_hand)
+	if(user)
+		user.put_in_hands(used_tray)
 		balloon_alert_to_viewers("removed [used_tray]")
-	user.put_in_hands(used_tray)
+	else
+		used_tray.forceMove(get_turf(src))
 	used_tray = null
 	in_use = FALSE
 
