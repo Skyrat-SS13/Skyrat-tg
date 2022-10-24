@@ -183,7 +183,7 @@
 								on the board. When coming under fire from other ships, dice should be rolled to
 								determine how many, if any, of the strike craft are lost. If all of the craft
 								in a wing are lost, the wing is destroyed, and the home vessel loses that wing
-								forever. If a wing is only partially destroyed however, it may return to the
+								forever. If a wing is only partially destroyed, however, it may return to the
 								home vessel and spend a full turn repairing to get all its craft back.
 							<br>
 							Ships taking damage is left up to both rolls of the dice and the discretion of the
