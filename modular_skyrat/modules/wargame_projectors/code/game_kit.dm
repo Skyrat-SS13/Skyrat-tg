@@ -133,7 +133,7 @@
 							and damage will be sustained.
 							<br>
 							Typically, attacking other ships is done through one of the following means, though
-							do be aware this list is not the end all be all of weapons, and game masters may
+							do be aware this list is not the end all be all of weapons and game masters may
 							create their own.
 							<br>
 								-- Cannons -- <br>
