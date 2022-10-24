@@ -169,7 +169,7 @@
 									these lose tracking, they will fly in a straight line until impacting
 									something or being lost to the void.
 								<br>
-								-- Stike Craft -- <br>
+								-- Strike Craft -- <br>
 								Strike craft are an example of a uniquely operating weapon. Typically carried
 								into combat by a larger ship of some kind, 'using' this weapon should result
 								in either a single, or wing of strike craft being placed alongside the vessel
