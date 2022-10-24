@@ -87,7 +87,7 @@
 	name = "interdyne headset"
 	desc = "A bowman headset with a large red cross on the earpiece, has a small 'IP' written on the top strap. Protects the ears from flashbangs."
 	icon_state = "syndie_headset"
-	inhand_icon_state = "syndie_headset"
+	inhand_icon_state = null
 	radiosound = 'modular_skyrat/modules/radiosound/sound/radio/syndie.ogg'
 	keyslot = new /obj/item/encryptionkey/headset_syndicate/interdyne
 

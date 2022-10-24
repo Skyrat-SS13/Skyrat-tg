@@ -144,7 +144,6 @@
 #define VV_HK_MOD_QUIRKS "quirkmod"
 #define VV_HK_SET_SPECIES "setspecies"
 #define VV_HK_PURRBATION "purrbation"
-#define VV_HK_SEND_CRYO "send_to_cryo" //SKYRAT EDIT ADDITION - CRYO SEND
 
 // misc
 #define VV_HK_SPACEVINE_PURGE "spacevine_purge"

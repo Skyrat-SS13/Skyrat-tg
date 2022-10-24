@@ -91,11 +91,6 @@
 	item_path = /obj/item/clothing/under/rax_turtleneck_gray
 	ckeywhitelist = list("raxraus")
 
-/datum/loadout_item/glasses/zentaiglasses
-	name = "Demonic Sunglasses"
-	item_path = /obj/item/clothing/glasses/zentai
-	ckeywhitelist = list("candlejax")
-
 /datum/loadout_item/head/goldengoggles
 	name = "Steampunk Goggles"
 	item_path = /obj/item/clothing/glasses/welding/steampunk_goggles
@@ -121,6 +116,11 @@
 /datum/loadout_item/under/jumpsuit/emissionsuit
 	name = "Emission's Suit"
 	item_path = /obj/item/clothing/under/plasmaman/candlejax
+	ckeywhitelist = list("candlejax")
+
+/datum/loadout_item/suit/cjax
+	name = "XuraCorp Labcoat"
+	item_path = /obj/item/clothing/suit/toggle/labcoat/rd/jax
 	ckeywhitelist = list("candlejax")
 
 /datum/loadout_item/suit/jacket/cherno
@@ -267,7 +267,7 @@
 
 /datum/loadout_item/under/jumpsuit/mechanic
 	name = "Mechanic's Overalls"
-	item_path = /obj/item/clothing/under/misc/mechanic
+	item_path = /obj/item/clothing/under/misc/skyrat/mechanic
 	ckeywhitelist = list("cypressb")
 
 /datum/loadout_item/under/jumpsuit/mikubikini
@@ -320,7 +320,7 @@
 
 /datum/loadout_item/head/frostyushanka
 	name = "Blue Ushanka"
-	item_path = /obj/item/clothing/head/ushanka/frosty
+	item_path = /obj/item/clothing/head/costume/ushanka/frosty
 	ckeywhitelist = list("cherno00")
 
 /datum/loadout_item/neck/silvercross
@@ -517,7 +517,27 @@
 	item_path = /obj/item/coin/donator/marsoc
 	ckeywhitelist = list("sweetsoulbrother")
 
+/datum/loadout_item/toys/plushie_jeanne
+	name = "Masked Roboticist Plushie"
+	item_path = /obj/item/toy/plush/skyrat/fox/plushie_jeanne
+//	ckeywhitelist = list("klb100") // Asked it to be public.
+
 /datum/loadout_item/under/jumpsuit/tactichill
 	name = "Tactichill Jacket"
 	item_path = /obj/item/clothing/under/tactichill
 	ckeywhitelist = list("kaynite")
+
+/datum/loadout_item/suit/techpriest
+	name = "Techpriest Robes"
+	item_path = /obj/item/clothing/suit/hooded/techpriest
+	ckeywhitelist = list("imthinkingarbys")
+
+/datum/loadout_item/toys/plushie_azyre
+	name = "Handsome Chef Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_azyre
+	ckeywhitelist = list("dalaoazure")
+
+/datum/loadout_item/pocket_items/khicigs
+	name = "Kitsuhana Singularity Cigarettes"
+	item_path = /obj/item/storage/fancy/cigarettes/khi
+	ckeywhitelist = list("ultimarifox")

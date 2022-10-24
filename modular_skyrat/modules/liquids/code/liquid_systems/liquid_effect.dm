@@ -194,6 +194,25 @@
 		. = ..()
 
 /**
+ * Add liquid effect overlay.
+ *
+ * Arguments:
+ * * overlay_state - the icon state of the new overlay
+ * * overlay_layer - the layer
+ * * overlay_plane - the plane
+ */
+/obj/effect/abstract/liquid_turf/proc/add_liquid_overlay(overlay_state, overlay_layer, overlay_plane)
+	PRIVATE_PROC(TRUE)
+
+	add_overlay(mutable_appearance(
+		'modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi',
+		overlay_state,
+		overlay_layer,
+		src,
+		overlay_plane,
+	))
+
+/**
  * Add over and underlays for different liquid states.
  *
  * Arguments:
@@ -201,24 +220,14 @@
  * * has_top - if this stage has a top.
  */
 /obj/effect/abstract/liquid_turf/proc/add_state_layer(state, has_top)
-	add_overlay(mutable_appearance(
-		'modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi',
-		"stage[state]_bottom",
-		offset_spokesman = src,
-		plane = GAME_PLANE,
-		layer = ABOVE_MOB_LAYER,
-	))
+	PRIVATE_PROC(TRUE)
+
+	add_liquid_overlay("stage[state]_bottom", ABOVE_MOB_LAYER, GAME_PLANE_UPPER)
 
 	if(!has_top)
 		return
 
-	add_overlay(mutable_appearance(
-		'modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi',
-		"stage[state]_top",
-		offset_spokesman = src,
-		plane = GAME_PLANE,
-		layer = GATEWAY_UNDERLAY_LAYER
-	))
+	add_liquid_overlay("stage[state]_top", GATEWAY_UNDERLAY_LAYER, GAME_PLANE)
 
 /obj/effect/abstract/liquid_turf/proc/set_new_liquid_state(new_state)
 	liquid_state = new_state

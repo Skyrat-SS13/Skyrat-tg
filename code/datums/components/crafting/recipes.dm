@@ -88,7 +88,7 @@
 
 /datum/crafting_recipe/strobeshield/New()
 	..()
-	blacklist |= subtypesof(/obj/item/shield/riot/)
+	blacklist |= subtypesof(/obj/item/shield/riot)
 
 /datum/crafting_recipe/molotov
 	name = "Molotov"
@@ -420,8 +420,8 @@
 	reqs = list(/obj/item/extinguisher = 1,
 				/obj/item/bodypart/r_arm/robot = 1,
 				/obj/item/assembly/prox_sensor = 1,
-				/obj/item/clothing/head/hardhat/red = 1)
-	time = 40
+				/obj/item/clothing/head/utility/hardhat/red = 1)
+	time = 4 SECONDS
 	category = CAT_ROBOT
 
 /datum/crafting_recipe/vibebot
@@ -633,22 +633,22 @@
 
 /datum/crafting_recipe/lizardhat
 	name = "Lizard Cloche Hat"
-	result = /obj/item/clothing/head/lizard
-	time = 10
+	result = /obj/item/clothing/head/costume/lizard
+	time = 1 SECONDS
 	reqs = list(/obj/item/organ/external/tail/lizard = 1)
 	category = CAT_CLOTHING
 
 /datum/crafting_recipe/lizardhat_alternate
 	name = "Lizard Cloche Hat"
-	result = /obj/item/clothing/head/lizard
-	time = 10
+	result = /obj/item/clothing/head/costume/lizard
+	time = 1 SECONDS
 	reqs = list(/obj/item/stack/sheet/animalhide/lizard = 1)
 	category = CAT_CLOTHING
 
 /datum/crafting_recipe/kittyears
 	name = "Kitty Ears"
-	result = /obj/item/clothing/head/kitty/genuine
-	time = 10
+	result = /obj/item/clothing/head/costume/kitty/genuine
+	time = 1 SECONDS
 	reqs = list(/obj/item/organ/external/tail/cat = 1,
 				/obj/item/organ/internal/ears/cat = 1)
 	category = CAT_CLOTHING
@@ -1112,8 +1112,8 @@ SKYRAT EDIT STOP: Ash Rituals */
 
 /datum/crafting_recipe/flower_garland
 	name = "Flower Garland"
-	result = /obj/item/clothing/head/garland
-	time = 10
+	result = /obj/item/clothing/head/costume/garland
+	time = 1 SECONDS
 	reqs = list(/obj/item/food/grown/poppy = 4,
 				/obj/item/food/grown/harebell = 4,
 				/obj/item/food/grown/rose = 4)
@@ -1137,25 +1137,27 @@ SKYRAT EDIT STOP: Ash Rituals */
 	reqs = list(/obj/item/aicard = 1,
 					/obj/item/food/grown/potato = 1,
 					/obj/item/stack/cable_coil = 5)
+	parts = list(/obj/item/aicard = 1)
 	category = CAT_MISC
 
-/datum/crafting_recipe/aitater/check_requirements(mob/user, list/collected_requirements)
-	var/obj/item/aicard/aicard = collected_requirements[/obj/item/aicard][1]
-	if(!aicard.AI)
-		return TRUE
-
-	to_chat(user, span_boldwarning("You can't craft an intelliTater with an AI in the card!"))
-	return FALSE
-
-/datum/crafting_recipe/aispook
+/datum/crafting_recipe/aitater/aispook
 	name = "intelliLantern"
 	result = /obj/item/aicard/aispook
-	time = 30
-	tool_behaviors = list(TOOL_WIRECUTTER)
 	reqs = list(/obj/item/aicard = 1,
 					/obj/item/food/grown/pumpkin = 1,
 					/obj/item/stack/cable_coil = 5)
-	category = CAT_MISC
+
+/datum/crafting_recipe/aitater/on_craft_completion(mob/user, atom/result)
+	var/obj/item/aicard/new_card = result
+	var/obj/item/aicard/base_card = result.contents[1]
+	var/mob/living/silicon/ai = base_card.AI
+
+	if(ai)
+		base_card.AI = null
+		ai.forceMove(new_card)
+		new_card.AI = ai
+		new_card.update_appearance()
+	qdel(base_card)
 
 /datum/crafting_recipe/ghettojetpack
 	name = "Improvised Jetpack"

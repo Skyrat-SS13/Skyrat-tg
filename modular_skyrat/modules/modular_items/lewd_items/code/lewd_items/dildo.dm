@@ -8,7 +8,7 @@
 	name = "dildo"
 	desc = "A large plastic penis, much like the one in your mother's bedside drawer."
 	icon_state = "dildo"
-	inhand_icon_state = "dildo"
+	inhand_icon_state = "dildo_canine"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
@@ -180,7 +180,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	name = "custom dildo"
 	desc = "A dildo that can be customized to your specification."
 	icon_state = "polydildo"
-	inhand_icon_state = "polydildo"
+	inhand_icon_state = "polydildo_small"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'

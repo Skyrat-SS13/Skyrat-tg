@@ -12,6 +12,7 @@
 	exp_required_type = EXP_TYPE_CREW
 	exp_required_type_department = EXP_TYPE_SCIENCE
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "VANGUARD_OPERATIVE"
 
 	departments_list = list(
 		/datum/job_department/science,
@@ -62,6 +63,7 @@
 /obj/item/modular_computer/tablet/pda/expeditionary_corps
 	greyscale_colors = "#891417#000099"
 	name = "Military PDA"
+	long_ranged = TRUE
 
 /obj/item/storage/box/survival/expeditionary_corps
 	mask_type = /obj/item/clothing/mask/gas/alt
