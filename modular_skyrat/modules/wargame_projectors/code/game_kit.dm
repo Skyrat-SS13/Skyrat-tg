@@ -22,7 +22,7 @@
 
 /obj/item/book/manual/wargame_rules
 	name = "Wargame: Blue Lizard - Example Ruleset"
-	icon_state ="book"
+	icon_state = "book"
 	starting_author = "NanoTrasen Naval Wargames Commission"
 	starting_title = "Wargame: Blue Lizard - Example Ruleset"
 	starting_content = {"
@@ -39,14 +39,14 @@
 				<h1>Wargame: Blue Lizard</h1>
 				</center>
 				<h2>Introduction</h2>
-					Wargame: Blue Lizard* is a combination of historicalally popular wargames,
+					Wargame: Blue Lizard* is a combination of historically popular wargames,
 					and new, widely availible hologram technology. The standard kit should contain
 					a collection of the following listed items by default, and play may prove difficult
 					if any of these items are missing.
 					<br>
 					<b>Kit items:</b>
 						1x of 'terrain' holoprojector <br>
-						1-2x of 'unit' holoprojector <br>
+						2x of 'unit' holoprojector <br>
 						1x of standard dice set <br>
 					<br>
 					An example set of rules will be provided further on in this manual, though it
@@ -58,8 +58,8 @@
 					<b>Players</b>
 						By the example rules, the game is built to be played by two or more individuals.
 						One player will act as a game master (sometimes referred to as an umpire), who's
-						job it will be to direct the game. All other players will be the ones actually
-						playing the game.
+						job it will be to direct the game. All other players will be the ones participating
+						in the game
 						<br>
 						The layout of players, or teams, is fully up to the game master. For example,
 						a game of two players may see both players on the same team against a non-player
@@ -74,8 +74,8 @@
 						might have more ships than the other, one side might have more players than the
 						other</b>.
 						<br>
-						As stated the types of ships that exist and what they are armed with is up to the
-						game master, however some examples of ships can scenarios can be found in the
+						As stated, the types of ships that exist and what they are armed with is up to the
+						game master, however some examples of ships and scenarios can be found in the
 						accompanying book in the standard wargaming set.
 					<br>
 					<b>Playing the Game</b> <br>
@@ -250,7 +250,7 @@
 
 /obj/item/book/manual/wargame_rules/examples
 	name = "Wargame: Blue Lizard - Example Ships and Scenarios"
-	icon_state ="book1"
+	icon_state = "book1"
 	starting_author = "NanoTrasen Naval Wargames Commission"
 	starting_title = "Wargame: Blue Lizard - Example Ships and Scenarios"
 	starting_content = {"
@@ -302,7 +302,7 @@
 						Usually sent with patrols of smaller craft, used as a command and support vessel wherever task force
 						cohesion is needed, or just fighter support. <br>
 						- Represented by a large ship marker <br>
-						- 2 Wings of strike craft, armed with 3 seeking missiles each <br>
+						- 2 Wings of strike craft, armed with 3 seeking missiles each wing <br>
 						- Strong point defense <br>
 						- ~1/2 a tile's length of movement range
 						<br>
@@ -343,7 +343,7 @@
 						A prohibitively expensive carrier (not like this stops SolFed) that, while rarely fielded, can bring
 						more strike craft into battle than any ship known to mankind. <br>
 						- Represented by an alternative large ship marker <br>
-						- 4 Wings of strike craft, with 3 seeking missiles each <br>
+						- 4 Wings of strike craft, with 3 seeking missiles each wing <br>
 						- Strong point defense <br>
 						- ~1/2 a tile's length of movement range
 					<br>
@@ -378,13 +378,13 @@
 						- ~1/2 a tile's length of movement range
 					<br>
 					<b>Mothic Raiders</b>
-					Though nowhere near as common as they were in the years since official contact with the nomad fleet,
+					Though nowhere near as common as they were in the years since official contact with the Nomad Fleet,
 					explorer's of humanity's past have been plauged with raids from pirate ships of mothic origin. Though
 					not malicious in nature, they would often come in skirmishes with patrol and escort forces on the outer
 					rim of SolFed territory, and may still rarely commit to raids against human ships even today.
 						<br>
 						-- Raider Corvette -- <br>
-						The smallest and most common ship in mothic pirate bands, using the nomad fleet's prowess in ship
+						The smallest and most common ship in mothic pirate bands, using the Nomad Fleet's prowess in ship
 						technology to scream across the stars faster than any vessel humanity could come up with. <br>
 						- Represented by a small ship marker <br>
 						- Cannons <br>
@@ -393,9 +393,9 @@
 						<br>
 						-- Mini Carrier -- <br>
 						Often the core of mothic pirate bands, a small vessel usually kept on the backlines of raids,
-						capable of carrying a small compliment of strike craft to support raids. <br>
+						capable of carrying a small compliment of strike craft to support them. <br>
 						- Represented by a medium ship marker <br>
-						- 2 Wings of strike craft, with 3 seeking missiles each <br>
+						- 2 Wings of strike craft, with 3 seeking missiles each wing <br>
 						- Strong point defense <br>
 						- ~1 tile's movement range
 						<br>
@@ -425,7 +425,7 @@
 					- Takes place in the rings of a nearby planet, large dust fields and asteroids making spotting
 					other ships difficult. <br>
 					- Either side will win through complete destruction or surrender of the enemy. <br>
-					- Both the NRI and SolFed fleets should be about the same size and strength
+					- Both the NRI and SolFed fleets should be about the same size and strength.
 					<br>
 					-- SolFed/Mothic Raiders Convoy Raid -- <br>
 					A convoy of NanoTrasen cargo vessels, escorted by a small patrol force, come under attack by a sizeable
