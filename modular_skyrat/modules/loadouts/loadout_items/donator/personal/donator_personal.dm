@@ -519,8 +519,8 @@
 
 /datum/loadout_item/toys/plushie_jeanne
 	name = "Masked Roboticist Plushie"
-	item_path = /obj/item/toy/plush/skyrat/plushie_jeanne
-	ckeywhitelist = list("klb100")
+	item_path = /obj/item/toy/plush/skyrat/fox/plushie_jeanne
+//	ckeywhitelist = list("klb100") // Asked it to be public.
 
 /datum/loadout_item/under/jumpsuit/tactichill
 	name = "Tactichill Jacket"
