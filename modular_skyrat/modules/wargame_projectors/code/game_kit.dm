@@ -67,7 +67,7 @@
 					<br>
 					<b>Setting Up a Game</b>
 						Once the layout of players and teams has been established, the scenario, and what
-						vessels each player should have under their control, should be determined by the
+						vessels each player should have under their control should be determined by the
 						game master. What vessels there are, how many there are, what they have on them,
 						and the overall scenario is completely up to the game master to decide, and it
 						cannot be stated enough that <b>the scanarios do not have to be even, one side
