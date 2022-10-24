@@ -90,7 +90,7 @@
 							the game master. In order to get a unit to do something that a player commands,
 							<b>the player should address the game master as if the game master was the
 							one in control of the ship, and give them orders accordingly</b>. From there,
-							it is to the game master's discretion to interpret the order and take action.
+							it is at the game master's discretion to interpret the order and take action.
 							<br>
 							An example of how this works would be:
 							<br>
