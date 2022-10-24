@@ -2123,14 +2123,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/brig)
-"aIf" = (
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/obj/effect/turf_decal/box,
-/turf/open/floor/iron/grimy,
-/area/station/service/lawoffice)
 "aIi" = (
 /obj/structure/railing{
 	dir = 1
@@ -3386,10 +3378,10 @@
 /turf/open/floor/iron/smooth,
 /area/station/service/hydroponics/garden/abandoned)
 "aZL" = (
-/obj/item/storage/toolbox/emergency,
-/obj/item/tank/internals/oxygen,
-/obj/item/wrench,
-/obj/effect/spawner/random/structure/table_or_rack,
+/obj/structure/rack,
+/obj/effect/spawner/random/bureaucracy/briefcase,
+/obj/effect/spawner/random/bureaucracy/folder,
+/obj/effect/spawner/random/bureaucracy/pen,
 /turf/open/floor/iron/smooth,
 /area/station/security/office)
 "aZZ" = (
@@ -5179,17 +5171,6 @@
 /obj/structure/spider/stickyweb,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/electrical)
-"bFI" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable,
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 1;
-	id = "briglockdown";
-	name = "Warden Desk Shutters"
-	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/plating,
-/area/station/security/warden)
 "bFO" = (
 /turf/closed/wall/r_wall,
 /area/station/command/heads_quarters/rd)
@@ -5284,12 +5265,6 @@
 	},
 /turf/open/floor/engine,
 /area/station/science/ordnance/storage)
-"bHX" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/carpet,
-/area/station/security/detectives_office)
 "bIs" = (
 /obj/machinery/atmospherics/components/binary/valve/digital{
 	dir = 4
@@ -9204,13 +9179,6 @@
 	dir = 9
 	},
 /area/station/service/chapel)
-"cPy" = (
-/obj/structure/disposalpipe/segment{
-	dir = 6
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/catwalk_floor/iron_smooth,
-/area/station/security/office)
 "cPE" = (
 /obj/structure/weightmachine/weightlifter,
 /obj/effect/turf_decal/tile/yellow/full,
@@ -11243,10 +11211,11 @@
 /area/station/commons/fitness/recreation/entertainment)
 "dtf" = (
 /obj/machinery/status_display/evac/directional/east,
-/obj/machinery/disposal/bin,
-/obj/effect/turf_decal/box,
-/obj/structure/disposalpipe/trunk{
-	dir = 1
+/obj/structure/table/wood,
+/obj/machinery/fax{
+	fax_name = "Detective's Office";
+	name = "Detective's Fax Machine";
+	pixel_y = 3
 	},
 /turf/open/floor/carpet,
 /area/station/security/detectives_office)
@@ -15253,10 +15222,8 @@
 /obj/effect/turf_decal/siding/red{
 	dir = 1
 	},
-/obj/structure/disposalpipe/sorting/mail/flip{
-	dir = 8;
-	name = "Detective Junction";
-	sortType = 30
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/open/floor/iron/dark/smooth_edge{
 	dir = 1
@@ -16780,12 +16747,6 @@
 "eTa" = (
 /turf/open/floor/wood,
 /area/station/security/prison/garden)
-"eTu" = (
-/obj/structure/disposalpipe/segment{
-	dir = 5
-	},
-/turf/open/floor/catwalk_floor/iron_smooth,
-/area/station/security/office)
 "eTD" = (
 /obj/effect/turf_decal/weather/sand{
 	dir = 8
@@ -18431,9 +18392,7 @@
 /turf/open/floor/iron/smooth_large,
 /area/station/command/heads_quarters/hos)
 "frg" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
+/obj/machinery/light/very_dim/directional/south,
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/security/office)
 "frk" = (
@@ -19675,9 +19634,6 @@
 /area/station/medical/virology)
 "fOl" = (
 /obj/effect/mapping_helpers/airlock/access/all/security/detective,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Detective Office Maintenance"
 	},
@@ -21741,6 +21697,10 @@
 	dir = 4
 	},
 /area/station/security/prison)
+"guf" = (
+/obj/machinery/light/broken/directional/south,
+/turf/open/floor/catwalk_floor/iron_smooth,
+/area/station/security/office)
 "gum" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/east,
@@ -28845,9 +28805,6 @@
 /area/station/maintenance/port/greater)
 "izq" = (
 /obj/machinery/holopad,
-/obj/structure/disposalpipe/segment{
-	dir = 6
-	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/grimy,
 /area/station/service/lawoffice)
@@ -35687,9 +35644,6 @@
 /turf/open/floor/iron/dark/small,
 /area/station/security/prison/work)
 "kyb" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
 	},
@@ -36501,9 +36455,6 @@
 	},
 /area/station/security/interrogation)
 "kGD" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/turf_decal/trimline/red/filled/warning{
 	dir = 9
 	},
@@ -42739,9 +42690,6 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 9
-	},
 /obj/structure/closet/secure_closet/warden,
 /obj/structure/cable,
 /obj/effect/turf_decal/bot,
@@ -42762,10 +42710,9 @@
 /obj/structure/table/wood,
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/north,
-/obj/machinery/fax{
-	fax_name = "Detective's Office";
-	name = "Detective's Fax Machine";
-	pixel_y = 3
+/obj/machinery/computer/security/wooden_tv{
+	pixel_x = 3;
+	pixel_y = 2
 	},
 /turf/open/floor/iron/grimy,
 /area/station/security/detectives_office)
@@ -43079,9 +43026,6 @@
 /area/station/engineering/atmos)
 "mue" = (
 /obj/effect/mapping_helpers/airlock/access/all/security/entrance,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Brig Maintenance"
 	},
@@ -51345,9 +51289,6 @@
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/lab)
 "oHS" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/mapping_helpers/airlock/access/all/security/armory,
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Brig Control Maintenance"
@@ -54156,9 +54097,6 @@
 "pyn" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 6
 	},
 /turf/open/floor/carpet,
 /area/station/security/detectives_office)
@@ -63030,7 +62968,8 @@
 	},
 /area/station/cargo/lobby)
 "rVc" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/effect/spawner/random/structure/table,
+/obj/effect/spawner/random/decoration/ornament,
 /turf/open/floor/iron/smooth,
 /area/station/security/office)
 "rVl" = (
@@ -67343,7 +67282,10 @@
 /turf/open/floor/iron/smooth,
 /area/station/service/janitor)
 "tfx" = (
-/obj/structure/closet/cardboard,
+/obj/machinery/photocopier{
+	name = "ancient photocopier"
+	},
+/obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/plating,
 /area/station/security/office)
 "tfA" = (
@@ -68991,7 +68933,6 @@
 /area/station/science/auxlab)
 "tBo" = (
 /obj/effect/mapping_helpers/airlock/access/all/service/lawyer,
-/obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/maintenance{
 	name = "Law Office Maintenance"
 	},
@@ -77961,11 +77902,7 @@
 /obj/effect/turf_decal/trimline/red/filled/warning{
 	dir = 8
 	},
-/obj/structure/disposalpipe/sorting/mail/flip{
-	dir = 1;
-	name = "Law Office Junction";
-	sortType = 29
-	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/dark/smooth_edge{
 	dir = 4
 	},
@@ -78951,12 +78888,6 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/station/security/checkpoint/customs)
-"wqh" = (
-/obj/structure/disposalpipe/segment{
-	dir = 9
-	},
-/turf/open/floor/catwalk_floor/iron_smooth,
-/area/station/security/office)
 "wqx" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -81884,7 +81815,6 @@
 /turf/closed/wall/r_wall,
 /area/command/heads_quarters/captain/private/nt_rep)
 "xlF" = (
-/obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/grimy,
 /area/station/service/lawoffice)
 "xlS" = (
@@ -81951,7 +81881,10 @@
 /area/station/commons/dorms/laundry)
 "xmH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/structure/crate_abandoned,
+/obj/machinery/light/broken/directional/east,
+/obj/effect/spawner/random/structure/chair_maintenance{
+	dir = 8
+	},
 /turf/open/floor/iron/smooth,
 /area/station/security/office)
 "xmI" = (
@@ -85211,13 +85144,6 @@
 /obj/machinery/status_display/evac/directional/east,
 /turf/open/floor/carpet/royalblack,
 /area/station/command/heads_quarters/hos)
-"yfZ" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/catwalk_floor/iron_smooth,
-/area/station/security/office)
 "ygc" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/space_heater,
@@ -120157,7 +120083,7 @@ baj
 uRn
 bur
 eFF
-uKP
+guf
 iVj
 otK
 neo
@@ -120671,7 +120597,7 @@ oCY
 izq
 xlF
 tBo
-eTu
+uKP
 iVj
 gbE
 obu
@@ -120925,10 +120851,10 @@ oRj
 wDO
 ryN
 kNJ
-aIf
+xlF
 rAD
 eFF
-frg
+uKP
 iVj
 xKb
 pyn
@@ -121188,7 +121114,7 @@ eFF
 frg
 iVj
 iif
-bHX
+ajg
 hjW
 dxK
 dxK
@@ -121442,7 +121368,7 @@ nuV
 eWc
 nkn
 tfx
-frg
+uKP
 iVj
 iVj
 fOl
@@ -121698,11 +121624,11 @@ pOs
 dGX
 tXy
 qsK
-cPy
-wqh
+tij
+uKP
 uKP
 tij
-frg
+uKP
 bnz
 caN
 qVK
@@ -121955,11 +121881,11 @@ gFW
 dyF
 arH
 nkn
-frg
+uKP
 jUK
 xyW
 aZL
-yfZ
+tij
 lIQ
 bzs
 eWI
@@ -122212,7 +122138,7 @@ uXb
 tpZ
 uLY
 nkn
-frg
+uKP
 xmH
 rVc
 aDR
@@ -122986,7 +122912,7 @@ cCs
 pOe
 cFf
 ewB
-bFI
+xBE
 mpI
 uVb
 kdN
