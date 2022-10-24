@@ -57,7 +57,7 @@
 				<h2>Example Ruleset</h2>
 					<b>Players</b>
 						By the example rules, the game is built to be played by two or more individuals.
-						One player will act as a game master (sometimes referred to as an umpire), who's
+						One player will act as a game master (sometimes referred to as an umpire), whose
 						job it will be to direct the game. All other players will be the ones participating
 						in the game
 						<br>
