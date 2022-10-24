@@ -14,8 +14,6 @@
 	attack_verb_continuous = list("attacks", "pokes", "jabs", "tears", "gores")
 	attack_verb_simple = list("attack", "poke", "jab", "tear", "gore")
 	sharpness = SHARP_EDGED
-	/// Extra info to give clock cultists
-	var/clockwork_hint = ""
 	/// Typecache of valid turfs to have the weapon's special effect on
 	var/static/list/effect_turf_typecache = typecacheof(list(/turf/open/floor/bronze))
 
@@ -63,6 +61,7 @@
 	attack_verb_simple = list("bash", "hammer", "attack", "smash")
 	attack_verb_continuous = list("bashes", "hammers", "attacks", "smashes")
 	clockwork_hint = "Enemies hit by this will be flung back while you are on bronze tiles."
+	sharpness = 0
 
 /obj/item/clockwork/weapon/brass_battlehammer/Initialize(mapload)
 	. = ..()
@@ -72,7 +71,7 @@
 	)
 
 /obj/item/clockwork/weapon/brass_battlehammer/hit_effect(mob/living/target, mob/living/user, thrown=FALSE)
-	if(thrown && !HAS_TRAIT(src, TRAIT_WIELDED))
+	if(!thrown && !HAS_TRAIT(src, TRAIT_WIELDED))
 		return
 	var/atom/throw_target = get_edge_target_turf(target, get_dir(src, get_step_away(target, src)))
 	target.throw_at(throw_target, thrown ? 3 : 2, 4)

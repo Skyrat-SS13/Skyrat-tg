@@ -4,7 +4,7 @@
 
 /obj/item/clockwork/replica_fabricator
 	name = "replica fabricator"
-	icon = 'modular_skyrat/modules/clock_cult/icons/misc.dmi'
+	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_objects.dmi'
 	lefthand_file = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_righthand.dmi'
 	icon_state = "replica_fabricator"

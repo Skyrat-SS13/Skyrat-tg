@@ -22,3 +22,4 @@
 #define span_bigbrass(str) ("<span class='big_brass'>" + str + "</span>")
 #define span_nzcrentr(str) ("<span class='nzcrentr'>" + str + "</span>")
 #define span_nezbere(str) ("<span class='nezbere'>" + str + "</span>")
+#define span_neovgre(str) ("<span class='neovgre'>" + str + "</span>")

@@ -218,6 +218,12 @@ h1.alert, h2.alert		{color: #000000;}
 	font-style: italic;
 }
 
+.neovgre {
+	color: #6E001A;
+	font-weight: bold;
+	font-style: italic;
+}
+
 .brown {
 	color: #3d2009;
 }
@@ -226,7 +232,7 @@ h1.alert, h2.alert		{color: #000000;}
 	color: #b8761a;
 }
 
-.yellow { 
+.yellow {
 	color: #c7b72c;
 }
 

@@ -32,7 +32,7 @@
 
 	loot = list(/obj/structure/fluff/clockwork/alloy_shards/large = 1, \
 	/obj/structure/fluff/clockwork/alloy_shards/medium = 2, \
-	/obj/structure/fluff/clockwork/alloy_shards/small= 3) //Parts left behind when a structure breaks
+	/obj/structure/fluff/clockwork/alloy_shards/small = 3) //Parts left behind when a structure breaks
 
 	/// How much health this shield has at most
 	var/shield_health = MARAUDER_SHIELD_MAX
