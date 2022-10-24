@@ -41,7 +41,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 	//The default scriptures that get auto-assigned.
 	var/list/default_scriptures = list(
 		//datum/scripture/abscond,
-		/datum/scripture/integration_cog,
+		//datum/scripture/integration_cog,
 		//datum/scripture/clockwork_armaments
 	)
 
