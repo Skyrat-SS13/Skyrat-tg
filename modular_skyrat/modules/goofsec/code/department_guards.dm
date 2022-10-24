@@ -66,12 +66,14 @@
 	desc = "An armored coat, in a deep paramedic blue. It'll keep you padded while dealing with troublesome patients."
 	icon_state = "medical_coat"
 	worn_icon_state = "medical_coat"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard
 	name = "armored engineering guard coat"
 	desc = "An armored coat, who's hazard strips are worn to the point of uselessness. It'll keep you protected while clearing hazard zones at least."
 	icon_state = "engineering_coat"
 	worn_icon_state = "engineering_coat"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent
 	name = "armored customs agent coat"
