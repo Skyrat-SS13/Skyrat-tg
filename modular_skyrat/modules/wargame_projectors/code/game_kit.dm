@@ -237,7 +237,7 @@
 							that they must complete in order to win. This objective can be something simple like complete
 							destruction of the enemy forces. However more complex objectives, like escorting a civilian
 							ship to a nearby planet, protecting a station of attack, and so on, are all possible. In the end
-							it is up to the game master to come up with a scanario and objectives.
+							it is up to the game master to come up with a scenario and objectives.
 							<br>
 							When the game master determines these objectives to be complete, or that some kind of game
 							ending condition has been achieved, then they may end the game at will.
