@@ -40,7 +40,7 @@
 				</center>
 				<h2>Introduction</h2>
 					Wargame: Blue Lizard* is a combination of historically popular wargames,
-					and new, widely availible hologram technology. The standard kit should contain
+					and new, widely available hologram technology. The standard kit should contain
 					a collection of the following listed items by default, and play may prove difficult
 					if any of these items are missing.
 					<br>
