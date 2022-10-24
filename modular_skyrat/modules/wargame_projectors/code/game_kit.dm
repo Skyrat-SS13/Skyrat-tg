@@ -86,7 +86,7 @@
 						each turn</b>.
 						<br>
 						<b>Commanding Units</b> <br>
-							Units should move across the board, and interact with it, by the hands of
+							Units should move across the board, and interact with it, through the hands of
 							the game master. In order to get a unit to do something that a player commands,
 							<b>the player should address the game master as if the game master was the
 							one in control of the ship, and give them orders accordingly</b>. From there,
