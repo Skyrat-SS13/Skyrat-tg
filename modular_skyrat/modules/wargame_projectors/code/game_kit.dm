@@ -102,7 +102,7 @@
 							range (attacking will be covered later on in the rules)
 						<br>
 						<b>Unit Visibility</b> <br>
-							Unit visibility may sound complex at first, however should be fairly simple after
+							Unit visibility may sound complex at first, but should be fairly simple after
 							explaination. In a standard game, if there are two or more teams, they will play
 							on separate, but identical boards that have an opaque divider between them.
 							<br>
