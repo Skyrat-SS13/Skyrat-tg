@@ -228,7 +228,7 @@
 							If a ship is lost in combat, then one of two things will happen. If the reactor was damaged
 							at the time of the vessel being lost, then it should catastrophically fail and cause
 							any ships near it should take damage from the detonation, and the ship itself should be
-							removed from the board. If the reactor was not damaged when the vessel was lost however,
+							removed from the board. If the reactor was not damaged when the vessel was lost, however,
 							then the ship's color should be changed to a neutral grey, where it will remain as an empty
 							hulk that can be used for cover or concealment by other ships.
 						<br>
