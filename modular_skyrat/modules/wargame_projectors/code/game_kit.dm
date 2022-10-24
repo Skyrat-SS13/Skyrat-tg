@@ -215,8 +215,7 @@
 							though a table of damage based off of a D20 will be provided below. If a ship takes damage to
 							two or more 'critical' systems (power, life support, or structure) then the ship will be
 							lost and irrecoverable. Damage can be repaired, however, if a ship sacrifices both its movement
-							and second action for a full turn, repairing <b>one</b> of its major damages, at choice of the
-							player as to which.
+							and second action for a full turn, repairing <b>one</b> major damage of the player's choice.
 							<br>
 								<b>From a D20</b>
 								0 - 5, Only superficial damage was taken, nothing happens <br>
