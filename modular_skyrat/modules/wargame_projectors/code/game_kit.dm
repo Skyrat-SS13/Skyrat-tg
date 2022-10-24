@@ -70,7 +70,7 @@
 						vessels each player should have under their control should be determined by the
 						game master. What vessels there are, how many there are, what they have on them,
 						and the overall scenario is completely up to the game master to decide, and it
-						cannot be stated enough that <b>the scanarios do not have to be even, one side
+						cannot be stated enough that <b>the scenarios do not have to be even, one side
 						might have more ships than the other, one side might have more players than the
 						other</b>.
 						<br>
