@@ -186,7 +186,7 @@
 								forever. If a wing is only partially destroyed however, it may return to the
 								home vessel and spend a full turn repairing to get all its craft back.
 							<br>
-							Ships taking damage is left up to both rolls of the dice, and to the decretion of the
+							Ships taking damage is left up to both rolls of the dice and the discretion of the
 							game master. Typically, a D20 will be used for determining if a ship takes damage or
 							not.
 							<br>
