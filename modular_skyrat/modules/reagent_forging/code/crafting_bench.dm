@@ -1,4 +1,8 @@
+/// How many planks of wood are required to complete a weapon?
 #define WEAPON_COMPLETION_WOOD_AMOUNT 2
+
+/// The number of hits you are set back when a bad hit is made
+#define BAD_HIT_PENALTY 3
 
 /obj/structure/reagent_crafting_bench
 	name = "forging workbench"
@@ -52,12 +56,13 @@
 	if(length(radial_choice_list) && length(recipe_names_to_path)) // We already have both of these and don't need it, if this is called after these are generated for some reason
 		return
 
-	for(var/recipe as anything in allowed_choices)
+	for(var/recipe in allowed_choices)
 		var/datum/crafting_bench_recipe/recipe_to_take_from = new recipe()
 		var/obj/recipe_resulting_item = recipe_to_take_from.resulting_item
 		radial_choice_list[recipe_to_take_from.recipe_name] = image(icon = initial(recipe_resulting_item.icon), icon_state = initial(recipe_resulting_item.icon_state))
 		recipe_names_to_path[recipe_to_take_from.recipe_name] = recipe
-		QDEL_NULL(recipe_to_take_from)
+		qdel(recipe_to_take_from)
+
 
 /obj/structure/reagent_crafting_bench/examine(mob/user)
 	. = ..()
@@ -75,7 +80,7 @@
 		return
 
 	var/obj/resulting_item = selected_recipe.resulting_item
-	. += span_notice("Selected recipe's resulting item is: <b>[initial(resulting_item.name)]</b> <br>")
+	. += span_notice("The selected recipe's resulting item is: <b>[initial(resulting_item.name)]</b> <br>")
 	. += span_notice("Gather the required materials, listed below, <b>near the bench</b>, then start <b>hammering</b> to complete it! <br>")
 
 	if(!length(selected_recipe.recipe_requirements))
@@ -118,7 +123,7 @@
 
 	var/chosen_recipe = show_radial_menu(user, src, radial_choice_list, radius = 38, require_near = TRUE, tooltips = TRUE)
 
-	if(isnull(chosen_recipe))
+	if(!chosen_recipe)
 		balloon_alert(user, "no recipe choice")
 		return
 
@@ -148,7 +153,7 @@
 
 /obj/structure/reagent_crafting_bench/wrench_act(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src)
-	deconstruct(TRUE)
+	deconstruct(disassembled = TRUE)
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /obj/structure/reagent_crafting_bench/hammer_act(mob/living/user, obj/item/tool)
@@ -190,7 +195,7 @@
 	var/skill_modifier = user.mind.get_skill_modifier(selected_recipe.relevant_skill, SKILL_SPEED_MODIFIER) * 1 SECONDS
 
 	if(!COOLDOWN_FINISHED(src, hit_cooldown)) // If you hit it before the cooldown is done, you get a bad hit, setting you back three good hits
-		current_hits_to_completion -= 3
+		current_hits_to_completion -= BAD_HIT_PENALTY
 
 		if(current_hits_to_completion <= -(selected_recipe.required_good_hits))
 			balloon_alert_to_viewers("recipe failed")
@@ -202,7 +207,7 @@
 
 	COOLDOWN_START(src, hit_cooldown, skill_modifier)
 
-	if(current_hits_to_completion >= selected_recipe.required_good_hits && !length(contents))
+	if((current_hits_to_completion >= selected_recipe.required_good_hits) && !length(contents))
 		var/list/things_to_use = can_we_craft_this(selected_recipe.recipe_requirements, TRUE)
 
 		create_thing_from_requirements(things_to_use, selected_recipe, user, selected_recipe.relevant_skill, selected_recipe.relevant_skill_reward)
@@ -272,7 +277,7 @@
 		var/obj/item/forging/complete/completed_forge_item = contents[1]
 		newly_created_thing = new completed_forge_item.spawning_item(src)
 		if(completed_forge_item.custom_materials) // We need to add the weapon head's materials to the completed item, too
-			for(var/custom_material as anything in completed_forge_item.custom_materials)
+			for(var/custom_material in completed_forge_item.custom_materials)
 				materials_to_transfer += custom_material
 		qdel(completed_forge_item) // And then we also need to 'use' the item
 
@@ -338,5 +343,6 @@
 		if((found_movable_atom.flags_1 & HOLOGRAM_1))
 			continue
 		. += found_movable_atom
+	return .
 
 #undef WEAPON_COMPLETION_WOOD_AMOUNT
