@@ -167,7 +167,7 @@
 									that torpedoes will typically do significantly more damage if they impact
 									a target, but are significantly slower than missiles in exchange. Again if
 									these lose tracking, they will fly in a straight line until impacting
-									something, or being lost to the void.
+									something or being lost to the void.
 								<br>
 								-- Stike Craft -- <br>
 								Strike craft are an example of a uniquely operating weapon. Typically carried
