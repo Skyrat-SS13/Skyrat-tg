@@ -138,7 +138,7 @@
 							<br>
 								-- Cannons -- <br>
 								Cannons are basic weapons firing projectiles of some kind towards the enemy.
-								The range of cannons varies, but typically one or two tile's lengths away
+								The range of cannons varies, but typically one or two tile lengths away
 								will be the range for accurate fire.
 								<br>
 								-- Missiles -- <br>
