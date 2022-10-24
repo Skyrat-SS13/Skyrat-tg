@@ -75,7 +75,7 @@
 						other</b>.
 						<br>
 						As stated, the types of ships that exist and what they are armed with is up to the
-						game master, however some examples of ships and scenarios can be found in the
+						game master, though some examples of ships and scenarios can be found in the
 						accompanying book in the standard wargaming set.
 					<br>
 					<b>Playing the Game</b> <br>
