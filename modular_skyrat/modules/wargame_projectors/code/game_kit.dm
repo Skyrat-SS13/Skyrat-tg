@@ -116,7 +116,7 @@
 							Determining if a ship is visible to either team is up to the game master to decide.
 							Typically, however, this should work off of line of sight. An example would be two ships
 							with a large asteroid between them. Neither ship can see the other due to the asteroid.
-							If one ship were to move out from behind the asteroid, and into direct line of sight with
+							If one ship were to move out from behind the asteroid and into direct line of sight with
 							the other ship however, both would be able to see each other. It is also possible for a
 							situation where two ships might know where each other are, but cannot identify what type
 							of ship the other is. An example of this would be gas clouds and thick space dust. In
