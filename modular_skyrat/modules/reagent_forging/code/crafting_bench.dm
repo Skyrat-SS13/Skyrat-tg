@@ -94,6 +94,8 @@
 
 		. += span_notice("<b>[selected_recipe.recipe_requirements[requirement_item]]</b> - [initial(requirement_item.name)]")
 
+	return .
+
 /obj/structure/reagent_crafting_bench/update_appearance(updates)
 	. = ..()
 	cut_overlays()
