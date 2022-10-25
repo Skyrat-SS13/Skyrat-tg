@@ -110,7 +110,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/poncho
 	name = "Poncho"
-	item_path = /obj/item/clothing/suit/poncho
+	item_path = /obj/item/clothing/suit/costume/poncho
 
 /datum/loadout_item/suit/poncho_green
 	name = "Green Poncho"
@@ -620,7 +620,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/costume/pg
 
 /datum/loadout_item/suit/deckers
-	name = "Deckers Coat"
+	name = "Deckers Hoodie"
 	item_path = /obj/item/clothing/suit/costume/deckers
 
 /datum/loadout_item/suit/soviet
