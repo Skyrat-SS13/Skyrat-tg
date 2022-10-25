@@ -310,7 +310,7 @@
 	greyscale_config_worn_vox = /datum/greyscale_config/apron/worn/oldvox
 	flags_1 = IS_PLAYER_COLORABLE_1
 
-/obj/item/clothing/suit/hawaiianshirt
+/obj/item/clothing/suit/hawaiian_shirt
 	name = "hawaiian shirt"
 	desc = "Strangely en vogue with aviator wearing shibas."
 	icon_state = "hawaiianshirt"
