@@ -70,7 +70,7 @@
 
 /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard
 	name = "armored engineering guard coat"
-	desc = "An armored coat, who's hazard strips are worn to the point of uselessness. It'll keep you protected while clearing hazard zones at least."
+	desc = "An armored coat whose hazard strips are worn to the point of uselessness. It'll keep you protected while clearing hazard zones at least."
 	icon_state = "engineering_coat"
 	worn_icon_state = "engineering_coat"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
