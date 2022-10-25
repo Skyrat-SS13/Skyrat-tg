@@ -4,8 +4,7 @@ GLOBAL_VAR_INIT(permit_pin_unrestricted, FALSE)
 	name = "permit-locked firing pin"
 	desc = "A firing pin for a station who can't trust their crew. Only allows you to fire the weapon off-station or with a firearms permit.."
 	icon_state = "firing_pin_explorer"
-	fail_message = "<span class='warning'>You must have a permit or be off-station to fire this!</span>"
-	can_remove = TRUE
+	fail_message = "firearms permit check failed!</span>"
 
 // This checks that the user isn't on the station Z-level.
 /obj/item/firing_pin/permit_pin/pin_auth(mob/living/user)
