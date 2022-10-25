@@ -134,7 +134,7 @@
 		if("stuttering")
 			set_stutter_if_lower(duration SECONDS)
 		if("jittering")
-			set_dizzy_if_lower(duration SECONDS)
+			set_jitter_if_lower(duration SECONDS)
 
 	if(duration)
 		addtimer(CALLBACK(src, .proc/acting_expiry, impairment), duration SECONDS)
