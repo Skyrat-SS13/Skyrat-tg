@@ -29,4 +29,5 @@
 		if(!(quirk.type in subtypesof(/datum/quirk)) || quirk.hidden_quirk)
 			all_quirks.Remove(quirk)
 			quirks_edited = TRUE
+
 	return quirks_edited
