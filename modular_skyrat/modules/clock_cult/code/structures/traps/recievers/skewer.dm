@@ -13,7 +13,9 @@
 	buckle_lying = FALSE
 	max_integrity = 40
 	COOLDOWN_DECLARE(stab_cooldown)
+	/// If the spear is currently extended
 	var/extended = FALSE
+	/// Mutable appearance stab overlay
 	var/mutable_appearance/stab_overlay
 
 /obj/structure/destructible/clockwork/trap/skewer/proc/stab()
@@ -26,18 +28,17 @@
 	icon_state = "[initial(icon_state)]_extended"
 	var/target_stabbed = FALSE
 	density = TRUE
-	for(var/mob/living/M in get_turf(src))
-		if(M.incorporeal_move || (M.movement_type & (FLOATING|FLYING)))
+	for(var/mob/living/stabbed_mob in get_turf(src))
+		if(stabbed_mob.incorporeal_move || (stabbed_mob.movement_type & (FLOATING|FLYING)))
 			continue
-		if(buckle_mob(M, TRUE))
+		if(buckle_mob(stabbed_mob, TRUE))
 			target_stabbed = TRUE
-			to_chat(M, span_userdanger("You are impaled by [src]!"))
-			M.emote("scream")
-			M.apply_damage(5, BRUTE, BODY_ZONE_CHEST)
-			if(ishuman(M))
-				var/mob/living/carbon/human/H = M
-				if(!H.is_bleeding())
-					H.bleed(30)
+			to_chat(stabbed_mob, span_userdanger("You are impaled by [src]!"))
+			stabbed_mob.emote("scream")
+			stabbed_mob.apply_damage(5, BRUTE, BODY_ZONE_CHEST)
+			if(ishuman(stabbed_mob))
+				var/mob/living/carbon/human/stabbed_human = stabbed_mob
+				stabbed_human.bleed(30)
 	if(target_stabbed)
 		if(!stab_overlay)
 			stab_overlay = mutable_appearance('modular_skyrat/modules/clock_cult/icons/clockwork_objects.dmi', "brass_skewer_pokeybit", layer=ABOVE_MOB_LAYER)
@@ -54,7 +55,7 @@
 	else
 		to_chat(buckled_mob, span_userdanger("You fail to detach yourself from [src]."))
 
-/obj/structure/destructible/clockwork/trap/skewer/post_unbuckle_mob(mob/living/M)
+/obj/structure/destructible/clockwork/trap/skewer/post_unbuckle_mob(mob/living/stabbed_mob)
 	if(!has_buckled_mobs())
 		cut_overlay(stab_overlay)
 
@@ -63,8 +64,8 @@
 	icon_state = initial(icon_state)
 	density = FALSE
 	cut_overlay(stab_overlay)
-	for(var/mob/living/M as anything in buckled_mobs)
-		unbuckle_mob(M, TRUE)
+	for(var/mob/living/stabbed_mob as anything in buckled_mobs)
+		unbuckle_mob(stabbed_mob, TRUE)
 
 /datum/component/clockwork_trap/skewer
 	takes_input = TRUE

@@ -1,27 +1,47 @@
 GLOBAL_LIST_EMPTY(clock_scriptures)
 
 /datum/scripture
+	/// Name of the scripture
 	var/name = ""
+	/// Shown decription of the scripture in the UI
 	var/desc = ""
+	/// Tooltip shown on-hover. Keep to a few words
 	var/tip = ""
+	/// How much power this scripture costs to use
 	var/power_cost = 0
+	/// How much vitality this scripture costs to use
 	var/vitality_cost = 0
+	/// How many cogs are required to be used to use this
 	var/cogs_required = 0
+	/// Time required to invoke this while standing still
 	var/invokation_time = 0
-	var/list/invokation_text = list()	//This is all translated to rat'var so doesn't matter if its cringey or doesn't make sense, since most people can't read it
+	/// Text said during invokation, automatically translates to Ratvarian
+	var/list/invokation_text = list()
+	/// Icon state of the action button
 	var/button_icon_state = "telerune"
+	/// How many people need to invoke this in sight of each other to use
 	var/invokers_required = 1
+	/// What category of scripture is this
 	var/category = SPELLTYPE_ABSTRACT
-	var/end_on_invokation = TRUE	//Only set to false if you call end_invoke somewhere in your sciprture
-
+	/// Only set to false if you call end_invoke somewhere in your scripture
+	var/end_on_invokation = TRUE
+	/// Ref to the mob invoking this
 	var/mob/living/invoker
+	/// Ref to the slab invoking this
 	var/obj/item/clockwork/clockwork_slab/invoking_slab
-
+	/// Timer object for the distance between invoking chants
 	var/invokation_chant_timer = null
+	/// If TRUE, then this will delete itself on completion
 	var/qdel_on_completion = FALSE
-
+	/// Sound to play on finish
 	var/sound/recital_sound = null
 
+/datum/scripture/Destroy(force, ...)
+	invoker = null
+	invoking_slab = null
+	return ..()
+
+/// Invoke this scripture, checking if there's valid power and vitality
 /datum/scripture/proc/invoke()
 	if(GLOB.clock_power < power_cost || GLOB.clock_vitality < vitality_cost)
 		invoke_fail()
@@ -34,22 +54,26 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 	GLOB.clock_vitality -= vitality_cost
 	invoke_success()
 
+/// On success of invoking the scripture
 /datum/scripture/proc/invoke_success()
 	return TRUE
 
+/// On failure of invoking the scripture
 /datum/scripture/proc/invoke_fail()
 	return TRUE
 
+/// The overall reciting proc for saying every single line for a scripture
 /datum/scripture/proc/recital()
-	if(!LAZYLEN(invokation_text))
+	if(!length(invokation_text))
 		return
-	var/steps = invokation_text.len
+	var/steps = length(invokation_text)
 	var/time_between_say = invokation_time / (steps + 1)
 	if(invokation_chant_timer)
 		deltimer(invokation_chant_timer)
 		invokation_chant_timer = null
 	recite(1, time_between_say, steps)
 
+/// For reciting an individual line of a scripture
 /datum/scripture/proc/recite(text_point, wait_time, stop_at = 0)
 	if(QDELETED(src))
 		return
@@ -73,6 +97,7 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 	if(text_point < stop_at)
 		invokation_chant_timer = addtimer(CALLBACK(src, .proc/recite, text_point+1, wait_time, stop_at), wait_time, TIMER_STOPPABLE)
 
+/// Check for any special requriements such as not having enough invokers, or not holding the slab
 /datum/scripture/proc/check_special_requirements(mob/user)
 	if(!invoker || !invoking_slab)
 		message_admins("No invoker for [name]")
@@ -91,24 +116,25 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 		return FALSE
 	return TRUE
 
-/datum/scripture/proc/begin_invoke(mob/living/M, obj/item/clockwork/clockwork_slab/slab, bypass_unlock_checks = FALSE)
-	if(M.get_active_held_item() != slab && !iscyborg(M))
-		to_chat(M, span_brass("You need to have the [slab.name] in your active hand to recite scriptures."))
+/// Start invoking a scripture, calling end_invoke() if it doesn't finish
+/datum/scripture/proc/begin_invoke(mob/living/invoking_mob, obj/item/clockwork/clockwork_slab/slab, bypass_unlock_checks = FALSE)
+	if(invoking_mob.get_active_held_item() != slab && !iscyborg(invoking_mob))
+		to_chat(invoking_mob, span_brass("You need to have the [slab.name] in your active hand to recite scriptures."))
 		return
 	slab.invoking_scripture = src
-	invoker = M
+	invoker = invoking_mob
 	invoking_slab = slab
 	if(!(type in slab.purchased_scriptures) && !bypass_unlock_checks)
 		log_runtime("CLOCKCULT: Attempting to invoke a scripture that has not been unlocked. Either there is a bug, or [ADMIN_LOOKUP(invoker)] is using some wacky exploits.")
 		end_invoke()
 		return
-	if(!check_special_requirements(M))
+	if(!check_special_requirements(invoking_mob))
 		end_invoke()
 		return
 	recital()
-	if(do_after(M, invokation_time, target=M, extra_checks=CALLBACK(src, .proc/check_special_requirements, M)))
+	if(do_after(invoking_mob, invokation_time, target = invoking_mob, extra_checks = CALLBACK(src, .proc/check_special_requirements, invoking_mob)))
 		invoke()
-		to_chat(M, span_brass("You invoke [name]."))
+		to_chat(invoking_mob, span_brass("You invoke [name]."))
 		if(end_on_invokation)
 			end_invoke()
 	else
@@ -118,15 +144,17 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 			invokation_chant_timer = null
 		end_invoke()
 
+/// End the invoking, nulling things out, and qdeling itself if indicated
 /datum/scripture/proc/end_invoke()
 	invoking_slab.invoking_scripture = null
 	if(qdel_on_completion)
 		qdel(src)
 
-//==================================//
-// !      Structure Creation      ! //
-//==================================//
+
+
+// Base create structure scripture
 /datum/scripture/create_structure
+	/// Typepath for the structure to create
 	var/summoned_structure
 
 /datum/scripture/create_structure/check_special_requirements(mob/user)
@@ -144,37 +172,44 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 		clockwork_structure.owner = invoker.mind
 
 
-//==================================//
-// !       Slab Empowerment       ! //
-//==================================//
+
 //For scriptures that charge the slab, and the slab will affect something
 //(stunning etc.)
-
 /datum/scripture/slab
 	name = "Charge Slab"
-	var/use_time = 10
-	var/slab_overlay = "volt"
-	var/datum/progressbar/progress
-	var/uses = 1
-	var/after_use_text = ""
 	end_on_invokation = FALSE
+	/// Time to perform this
+	var/use_time = 10
+	/// Overlay for the item/inhand state while this is invoked
+	var/slab_overlay = "volt"
+	/// Progressbar datum for count_down()
+	var/datum/progressbar/progress
+	/// How many times this scripture can be used overall, is unchanging
+	var/uses = 1
+	/// Text displayed after use
+	var/after_use_text = ""
 
-	var/datum/action/cooldown/spell/pointed/slab/PH
 
-	var/uses_left
+	/// Internal spell for pointed/aimed spells
+	var/datum/action/cooldown/spell/pointed/slab/pointed_spell
+
+	/// How many times this can be used this particular invokation, can go down
+	var/uses_left = 0
+	/// How much time left to use this
 	var/time_left = 0
+	/// ID of the loop timer
 	var/loop_timer_id
 
 /datum/scripture/slab/New()
-	PH = new
-	PH.parent_scripture = src
+	pointed_spell = new
+	pointed_spell.parent_scripture = src
 	..()
 
 /datum/scripture/slab/Destroy()
 	if(progress)
 		QDEL_NULL(progress)
-	if(!QDELETED(PH))
-		QDEL_NULL(PH)
+	if(!QDELETED(pointed_spell))
+		QDEL_NULL(pointed_spell)
 	return ..()
 
 /datum/scripture/slab/invoke()
@@ -184,10 +219,11 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 	invoking_slab.charge_overlay = slab_overlay
 	invoking_slab.update_icon()
 	invoking_slab.active_scripture = src
-	PH.set_click_ability(invoker)
+	pointed_spell.set_click_ability(invoker)
 	count_down()
 	invoke_success()
 
+/// Count down the progress bar
 /datum/scripture/slab/proc/count_down()
 	if(QDELETED(src))
 		return
@@ -199,38 +235,50 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 	else
 		end_invokation()
 
-/datum/scripture/slab/proc/click_on(atom/A)
-	if(!invoker.can_interact_with(A))
+/// What occurs when an atom is clicked on.
+/datum/scripture/slab/proc/click_on(atom/clicked_atom)
+	SHOULD_CALL_PARENT(TRUE)
+	if(!invoker.can_interact_with(clicked_atom))
 		return
-	if(apply_effects(A))
-		uses_left --
-		if(uses_left <= 0)
-			if(after_use_text)
-				clockwork_say(invoker, text2ratvar(after_use_text), TRUE)
-			end_invokation()
+	if(!apply_effects(clicked_atom))
+		return
+	uses_left--
+	if(uses_left > 0)
+		return
+	if(after_use_text)
+		clockwork_say(invoker, text2ratvar(after_use_text), TRUE)
+	end_invokation()
 
+/// What occurs when the invokation ends
 /datum/scripture/slab/proc/end_invokation()
+	SHOULD_CALL_PARENT(TRUE)
 	//Remove the timer if there is one currently active
 	if(loop_timer_id)
 		deltimer(loop_timer_id)
 		loop_timer_id = null
 	to_chat(invoker, span_brass("You are no longer invoking <b>[name]</b>"))
 	qdel(progress)
-	PH.unset_click_ability(invoker)
+	pointed_spell.unset_click_ability(invoker)
 	invoking_slab.charge_overlay = null
 	invoking_slab.update_icon()
 	invoking_slab.active_scripture = null
 	end_invoke()
 
-/datum/scripture/slab/proc/apply_effects(atom/A)
+/// Apply the effects of a scripture to an atom
+/datum/scripture/slab/proc/apply_effects(atom/applied_atom)
 	return TRUE
 
 /datum/action/cooldown/spell/pointed/slab
 	var/datum/scripture/slab/parent_scripture
 
+/datum/action/cooldown/spell/pointed/slab/Destroy()
+	parent_scripture = null
+	return ..()
+
 /datum/action/cooldown/spell/pointed/slab/InterceptClickOn(mob/living/caller, params, atom/A)
 	parent_scripture?.click_on(A)
 
+/// Generate all scriptures in a global assoc of name:ref. Only needs to be done once
 /proc/generate_clockcult_scriptures()
 	for(var/categorypath in subtypesof(/datum/scripture))
 		var/datum/scripture/clock_script = new categorypath

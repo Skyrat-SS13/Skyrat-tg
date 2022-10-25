@@ -1,41 +1,41 @@
 /obj/item/clockwork/integration_cog
 	name = "integration cog"
-	desc = "A small cog that seems to spin by its own acord when left alone."
+	desc = "cogger_apc small cog that seems to spin by its own acord when left alone."
 	icon_state = "integration_cog"
-	clockwork_hint = "A sharp cog that can cut through and be inserted into APCs to extract power for your machinery."
+	clockwork_hint = "cogger_apc sharp cog that can cut through and be inserted into APCs to extract power for your machinery."
 
 /obj/item/clockwork/integration_cog/attack_atom(atom/attacked_atom, mob/living/user, params)
 	if(!(FACTION_CLOCK in user.faction))
 		return ..()
 	if(!istype(attacked_atom, /obj/machinery/power/apc))
 		return ..()
-	var/obj/machinery/power/apc/A = attacked_atom
-	if(A.integration_cog)
-		to_chat(user, span_brass("There is already \an [src] in [A]."))
+	var/obj/machinery/power/apc/cogger_apc = attacked_atom
+	if(cogger_apc.integration_cog)
+		to_chat(user, span_brass("There is already \an [src] in [cogger_apc]."))
 		return
-	if(!A.panel_open)
+	if(!cogger_apc.panel_open)
 		//Cut open the panel
-		to_chat(user, span_notice("You begin cutting open [A]."))
-		if(!do_after(user, 5 SECONDS, target = A))
+		to_chat(user, span_notice("You begin cutting open [cogger_apc]."))
+		if(!do_after(user, 5 SECONDS, target = cogger_apc))
 			return
-		to_chat(user, span_brass("You cut open [A] with [src]."))
-		A.panel_open = TRUE
-		A.update_appearance()
+		to_chat(user, span_brass("You cut open [cogger_apc] with [src]."))
+		cogger_apc.panel_open = TRUE
+		cogger_apc.update_appearance()
 		return
 	//Insert the cog
-	to_chat(user, span_notice("You begin inserting [src] into [A]."))
-	if(!do_after(user, 4 SECONDS, target = A))
+	to_chat(user, span_notice("You begin inserting [src] into [cogger_apc]."))
+	if(!do_after(user, 4 SECONDS, target = cogger_apc))
 		return
-	A.integration_cog = src
-	forceMove(A)
-	A.panel_open = FALSE
-	A.update_appearance()
-	to_chat(user, span_notice("You insert [src] into [A]."))
+	cogger_apc.integration_cog = src
+	forceMove(cogger_apc)
+	cogger_apc.panel_open = FALSE
+	cogger_apc.update_appearance()
+	to_chat(user, span_notice("You insert [src] into [cogger_apc]."))
 	playsound(get_turf(user), 'sound/machines/clockcult/integration_cog_install.ogg', 20)
-	if(!A.clock_cog_rewarded)
+	if(!cogger_apc.clock_cog_rewarded)
 		GLOB.clock_installed_cogs++
-		A.clock_cog_rewarded = TRUE
-		send_clock_message(user, span_brass(span_bold("[user] has installed an integration cog into \an [A].")))
+		cogger_apc.clock_cog_rewarded = TRUE
+		send_clock_message(user, span_brass(span_bold("[user] has installed an integration cog into \an [cogger_apc].")))
 		//Update the cog counts
 		for(var/obj/item/clockwork/clockwork_slab/S as anything in GLOB.clockwork_slabs)
 			S.update_integration_cogs()

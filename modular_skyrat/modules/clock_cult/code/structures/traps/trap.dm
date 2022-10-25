@@ -10,10 +10,11 @@
 	. = ..()
 	if(!(FACTION_CLOCK in user.faction))
 		return
-	for(var/obj/structure/destructible/clockwork/trap/T in get_turf(src))
-		if(istype(T, type))
-			to_chat(user, span_warning("That space is occupied!"))
-			return
+	for(var/obj/structure/destructible/clockwork/trap/trap in get_turf(src)) // No 50-spear instakills please
+		if(!istype(trap, type))
+			continue
+		to_chat(user, span_warning("That space is occupied!"))
+		return
 	to_chat(user, span_brass("You place [src], use a <b>clockwork slab</b> to link it to other traps."))
 	var/obj/new_obj = new result_path(get_turf(src))
 	new_obj.setDir(user.dir)
@@ -68,7 +69,7 @@
 
 	RegisterSignal(parent, COMSIG_CLOCKWORK_SIGNAL_RECEIVED, .proc/trigger)
 	RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND, .proc/clicked)
-	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/OnAttackBy)
+	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/on_attackby)
 
 /datum/component/clockwork_trap/proc/add_input(datum/component/clockwork_trap/input)
 	outputs |= input.parent
@@ -86,14 +87,14 @@
 
 	return
 
-/datum/component/clockwork_trap/proc/OnAttackBy(datum/source, obj/item/I, mob/user)
+/datum/component/clockwork_trap/proc/on_attackby(datum/source, obj/item/attack_item, mob/user)
 	SIGNAL_HANDLER
 
 	if(!(FACTION_CLOCK in user.faction))
 		return
-	if(!istype(I, /obj/item/clockwork/clockwork_slab))
+	if(!istype(attack_item, /obj/item/clockwork/clockwork_slab))
 		return
-	var/obj/item/clockwork/clockwork_slab/slab = I
+	var/obj/item/clockwork/clockwork_slab/slab = attack_item
 	if(slab.buffer)
 		if(takes_input)
 			to_chat(user, span_brass("You connect [slab.buffer.parent] to [parent]."))

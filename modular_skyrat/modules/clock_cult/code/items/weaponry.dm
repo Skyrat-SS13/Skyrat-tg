@@ -40,6 +40,7 @@
 	if(!target.can_block_magic(MAGIC_RESISTANCE_HOLY) && !(FACTION_CLOCK in target.faction))
 		hit_effect(target, throwingdatum.thrower, TRUE)
 
+/// What occurs to non-holy people when attacked from brass tiles
 /obj/item/clockwork/weapon/proc/hit_effect(mob/living/target, mob/living/user, thrown = FALSE)
 	return
 

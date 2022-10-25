@@ -24,23 +24,22 @@
 	)
 	AddComponent(/datum/component/connect_loc_behalf, parent, loc_connections)
 
-/datum/component/clockwork_trap/pressure_sensor/proc/on_entered(datum/source, atom/movable/AM)
+/datum/component/clockwork_trap/pressure_sensor/proc/on_entered(datum/source, atom/movable/entered_movable)
 	SIGNAL_HANDLER
 
 	//Item's in hands or boxes shouldn't trigger it
-	if(!istype(AM.loc, /turf))
+	if(!isturf(entered_movable.loc) || !isliving(entered_movable))
 		return
-	var/mob/living/M = AM
-	if(istype(M))
-		if(FACTION_CLOCK in M.faction)
-			return
-		if(M.incorporeal_move || (M.movement_type & (FLOATING|FLYING)))
-			return
-	else
+	var/mob/living/entered_living = entered_movable
+	if(!istype(entered_living))
+		return
+	if(FACTION_CLOCK in entered_living.faction)
+		return
+	if(entered_living.incorporeal_move || (entered_living.movement_type & (FLOATING|FLYING)))
 		return
 	trigger_connected()
-	for(var/obj/structure/destructible/clockwork/trap/T in get_turf(parent))
-		if(T == parent)
+	for(var/obj/structure/destructible/clockwork/trap/clock_trap in get_turf(parent))
+		if(clock_trap == parent)
 			continue
-		SEND_SIGNAL(T, COMSIG_CLOCKWORK_SIGNAL_RECEIVED)
+		SEND_SIGNAL(clock_trap, COMSIG_CLOCKWORK_SIGNAL_RECEIVED)
 	playsound(parent, 'sound/machines/click.ogg', 50)

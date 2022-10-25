@@ -15,6 +15,7 @@
 /datum/component/clockwork_trap/delay
 	takes_input = TRUE
 	sends_input = TRUE
+	/// If the trap is active or not
 	var/active = FALSE
 
 /datum/component/clockwork_trap/delay/trigger()

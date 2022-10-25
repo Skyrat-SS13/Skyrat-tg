@@ -16,14 +16,7 @@ export const convertPower = (power_in) => {
 };
 
 export const ClockworkSlab = (props, context) => {
-  const { data } = useBackend(context);
-  const { power } = data;
-  const { recollection } = data;
-  const [selectedTab, setSelectedTab] = useLocalState(
-    context,
-    'selectedTab',
-    'Servitude'
-  );
+  const [selectedTab] = useLocalState(context, 'selectedTab', 'Servitude');
   return (
     <Window theme="clockwork" width={860} height={700}>
       <Window.Content>
@@ -71,29 +64,23 @@ export const ClockworkHelp = (props, context) => {
           After a long and destructive war, Rat&#39;Var has been imprisoned
           inside a dimension of suffering.
           <br />
-          You are a group of his last remaining, most loyal servants. <br />
+          You are one of his last remaining, most loyal servants. <br />
           You are very weak and have little power, with most of your scriptures
           unable to function.
           <br />
           <b>
-            Use the&nbsp;
-            <font color="#BD78C4">Ratvarian Observation Consoles&nbsp;</font>
-            to warp to the station!
-          </b>
-          <br />
-          <b>
             Install&nbsp;
-            <font color="#DFC69C">Integration Cogs&nbsp;</font>
+            <font color="#DFC69C"> Integration Cogs&nbsp;</font>
             to unlock more scriptures and siphon power!
           </b>
           <br />
           <b>
             Unlock&nbsp;
-            <font color="#D8D98D">Kindle&nbsp;</font>
+            <font color="#D8D98D"> Kindle&nbsp;</font>
             ,&nbsp;
-            <font color="#F19096">Hateful Manacles&nbsp;</font>
+            <font color="#F19096"> Hateful Manacles&nbsp;</font>
             and summon a&nbsp;
-            <font color="#9EA7E5">Sigil of Submission&nbsp;</font>
+            <font color="#9EA7E5"> Sigil of Submission&nbsp;</font>
             to convert any non-believers!
           </b>
           <br />
@@ -105,16 +92,16 @@ export const ClockworkHelp = (props, context) => {
           <br />
           Invoke&nbsp;
           <font color="#DFC69C">
-            <b>Integration Cog&nbsp;</b>
+            <b> Integration Cog&nbsp;</b>
           </font>
           to summon an Integration Cog, which can be placed into any&nbsp;
-          <b>APC&nbsp;</b>
+          <b> APC&nbsp;</b>
           on the station.
           <br />
           Slice open the&nbsp;
-          <b>APC&nbsp;</b>
+          <b> APC&nbsp;</b>
           with the&nbsp;
-          <b>Integration Cog&nbsp;</b>
+          <b> Integration Cog&nbsp;</b>
           , then insert it in to begin siphoning power.
           <br />
         </Section>
@@ -159,11 +146,11 @@ export const ClockworkHelp = (props, context) => {
           <br />
         </Section>
       </Collapsible>
-      <Collapsible title="Defending Reebe" color="average">
+      <Collapsible title="Defense" color="average">
         <Section>
           <b>
             You have a wide range of structures and powers that will be vital in
-            defending the Celestial Gateway.
+            defending your grounds.
           </b>
           <br />
           <b>
@@ -184,32 +171,6 @@ export const ClockworkHelp = (props, context) => {
           A powerful shell that can deflect ranged attacks and delivers a strong
           blow in close quarter combat.
           <br />
-          <br />
-        </Section>
-      </Collapsible>
-      <Collapsible title="Celestial Gateway" color="average">
-        <Section>
-          To summon Rat&#39;Var the&nbsp;
-          <b>
-            <font color="#E9E094">Celestial Gateway&nbsp;</font>
-          </b>{' '}
-          must be opened.
-          <br />
-          This can be done by having enough servants invoke&nbsp;
-          <b>
-            <font color="#B5FD9D">Celestial Gateway.&nbsp;</font>
-          </b>
-          <br />
-          After you enlighten enough of the crew, the&nbsp;
-          <b>
-            <font color="#E9E094">Celestial Gateway&nbsp;</font>
-          </b>
-          will be forced open.
-          <br />
-          <b>
-            Make sure you are prepared for when the Gateway opens, since the
-            entire crew will swarm to destroy it!
-          </b>
           <br />
         </Section>
       </Collapsible>
@@ -237,6 +198,7 @@ export const ClockworkSpellList = (props, context) => {
                       ? 'Invoke ' + convertPower(script.cost)
                       : script.cog_cost + ' Cogs'
                   }
+                  tooltip={script.tip}
                   disabled={false}
                   onClick={() =>
                     act('invoke', {

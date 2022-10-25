@@ -47,7 +47,9 @@
 		if(power < FLOOR_POWER_COST) //checking again because there's a delay where shit could be fucked
 			return
 		var/turf/open/target_turf = target
-		target_turf.ChangeTurf(/turf/open/floor/bronze/true)
+		target_turf.ChangeTurf(/turf/open/floor/bronze)
+		new /obj/effect/temp_visual/ratvar/floor(target_turf)
+		new /obj/effect/temp_visual/ratvar/beam(target_turf)
 		power -= FLOOR_POWER_COST
 		to_chat(user, span_nzcrentr("You convert a floor to bronze for [FLOOR_POWER_COST] watts of power."))
 		playsound(src, 'sound/machines/clockcult/integration_cog_install.ogg', 50, 1) // thank you /tg/ for leaving these in the files
@@ -60,7 +62,9 @@
 		if(power < WALL_POWER_COST)
 			return
 		var/turf/open/target_turf = target
-		target_turf.ChangeTurf(/turf/closed/wall/mineral/bronze/true)
+		target_turf.ChangeTurf(/turf/closed/wall/mineral/bronze)
+		new /obj/effect/temp_visual/ratvar/wall(target_turf)
+		new /obj/effect/temp_visual/ratvar/beam(target_turf)
 		power -= WALL_POWER_COST
 		to_chat(user, span_nzcrentr("You convert a floor to bronze for [WALL_POWER_COST] watts of power."))
 		playsound(src, 'sound/machines/clockcult/integration_cog_install.ogg', 50, 1)
