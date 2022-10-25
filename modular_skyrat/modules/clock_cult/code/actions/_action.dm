@@ -8,11 +8,14 @@
 	name = "Quick Bind"
 	button_icon_state = "telerune"
 	desc = "A quick bound spell."
+	/// Ref to the relevant slab
 	var/obj/item/clockwork/clockwork_slab/activation_slab
+	/// Ref to the relevant scripture
 	var/datum/scripture/scripture
 
 /datum/action/innate/clockcult/quick_bind/Destroy()
 	activation_slab = null
+	scripture = null
 	Remove(owner)
 	return ..()
 

@@ -49,6 +49,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 	var/datum/component/clockwork_trap/buffer
 
 /obj/item/clockwork/clockwork_slab/Initialize(mapload)
+	. = ..()
 	if(!length(GLOB.clock_scriptures))
 		generate_clockcult_scriptures()
 	var/pos = 1
@@ -60,7 +61,6 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 		purchased_scriptures += script
 		var/datum/scripture/default_script = new script
 		bind_spell(null, default_script, pos++)
-	..()
 
 /obj/item/clockwork/clockwork_slab/Destroy()
 	GLOB.clockwork_slabs -= src
