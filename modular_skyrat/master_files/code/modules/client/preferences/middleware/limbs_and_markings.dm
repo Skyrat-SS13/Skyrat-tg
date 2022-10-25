@@ -40,8 +40,8 @@
 		"r_arm" = TRUE,
 		"l_leg" = TRUE,
 		"r_leg" = TRUE,
-		"chest" = FALSE, // TODO: figure out why head/chest augs dont render, needed for IPC head on non IPC body
-		"head" = FALSE,
+		"chest" = TRUE,
+		"head" = TRUE,
 		"l_hand" = FALSE,
 		"r_hand" = FALSE,
 	)
