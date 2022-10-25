@@ -51,9 +51,13 @@
 /datum/round_event/meteor_wave/announce(fake)
 	priority_announce("Meteors have been detected on collision course with the station.", "Meteor Alert", ANNOUNCER_METEORS)
 
+//SKYRAT OVERRIDE START - overwritten in modular_skyrat\modules\events\code\directional_meteors.dm
+/*
 /datum/round_event/meteor_wave/tick()
 	if(ISMULTIPLE(activeFor, 3))
 		spawn_meteors(5, wave_type) //meteor list types defined in gamemode/meteor/meteors.dm
+*/
+//SKYRAT OVERRIDE END
 
 /datum/round_event_control/meteor_wave/threatening
 	name = "Meteor Wave: Threatening"

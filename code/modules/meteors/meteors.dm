@@ -30,6 +30,8 @@ GLOBAL_LIST_INIT(meteorsD, list(/obj/effect/meteor/medium=15, /obj/effect/meteor
 //Meteor spawning global procs
 ///////////////////////////////
 
+//SKYRAT OVERRIDE START - overwritten in modular_skyrat\modules\events\code\directional_meteors.dm
+/*
 /proc/spawn_meteors(number = 10, list/meteortypes)
 	for(var/i in 1 to number)
 		spawn_meteor(meteortypes)
@@ -48,6 +50,8 @@ GLOBAL_LIST_INIT(meteorsD, list(/obj/effect/meteor/medium=15, /obj/effect/meteor
 			return
 	var/Me = pick_weight(meteortypes)
 	new Me(pickedstart, pickedgoal)
+*/
+//SKYRAT OVERRIDE END
 
 /proc/spaceDebrisStartLoc(startSide, Z)
 	var/starty
