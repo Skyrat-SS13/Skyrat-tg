@@ -22,6 +22,13 @@
 	/// Multiplier for magazine costs
 	var/magazine_cost_mult = 1
 
+// Nakamura engineering sells modsuits and modsuit accessories
+/datum/gun_company/nakamura_engineering
+	name = "Nakamura Engineering"
+
+
+///////////// Old companies below this, if this message is still here and or there are still companies below this line, that's bad!!
+
 /datum/gun_company/armadyne
 	name = "Armadyne Corporation"
 	can_roundstart_pick = FALSE
