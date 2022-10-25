@@ -30,7 +30,7 @@ export const NowPlayingWidget = (props, context) => {
               'overflow': 'hidden',
               'text-overflow': 'ellipsis',
             }}>
-            {'An admin-played soundtrack.'}
+            {title || 'An admin-played soundtrack.'}
           </Flex.Item>
         </>
       )) || (
