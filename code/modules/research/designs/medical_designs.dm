@@ -129,6 +129,15 @@
 	build_path = /obj/item/extinguisher_refill
 	category = list("Medical Designs")
 
+/datum/design/sensor_device
+	name = "Handheld Crew Monitor"
+	desc = "A miniature machine that tracks suit sensors across the station."
+	id = "sensordevice"
+	build_type = PROTOLATHE
+	materials = list(/datum/material/iron = 3000, /datum/material/glass = 1500, /datum/material/gold = 500)
+	build_path = /obj/item/device/sensor_device
+	category = list("Medical Designs")
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/crewpinpointer
 	name = "Crew Pinpointer"
