@@ -24,8 +24,9 @@
 
 /// The maximum amount of temperature loss decrease that upgrades can give the forge
 #define MAX_TEMPERATURE_LOSS_DECREASE 5
-/// The maximum additional sheets the forge will create when smelting, due to upgrades
-#define MAX_ORE_TO_SHEET_AMOUNT 3
+
+/// The chance per piece of wood added that charcoal will form later
+#define CHARCOAL_CHANCE 45
 
 /// The minimum units of a reagent rerquired to imbue it into a weapon
 #define MINIMUM_IMBUING_REAGENT_AMOUNT 100
@@ -169,6 +170,8 @@
 	if(reagent_forging)
 		. += span_warning("[src] has a fine gold trim, it is ready to imbue chemicals into reagent objects.")
 
+	return .
+
 /obj/structure/reagent_forge/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
@@ -176,7 +179,7 @@
 	update_appearance()
 
 /// Fills out the radial choice list with everything in the choice_list's contents
-/obj/structure/reagent_crafting_bench/proc/populate_radial_choice_list()
+/obj/structure/reagent_forge/proc/populate_radial_choice_list()
 	if(!length(choice_list))
 		return
 
@@ -203,7 +206,7 @@
 		add_overlay(gold_overlay)
 
 	if(used_tray) // If we have a tray inside, check if the forge is on or not, then give the corresponding tray overlay
-		var/image/tray_overlay = image(icon = icon, icon_state = "forge_tray_[check_fuel(TRUE) ? "active" : "inactive"]")
+		var/image/tray_overlay = image(icon = icon, icon_state = "forge_tray_[check_fuel(just_checking = TRUE) ? "active" : "inactive"]")
 		add_overlay(tray_overlay)
 
 /// Checks if the forge has fuel, if so what type. If it has either type of fuel, returns TRUE, otherwise returns FALSE. just_checking will check if there is fuel without taking actions
@@ -250,7 +253,7 @@
 		set_light(0, 0) // If we aren't heating up and thus not on fire, turn the fire light off
 		return
 
-	else if(forge_temperature < target_temperature && (forge_fuel_weak || forge_fuel_strong)) // Being below the target temp, and having fuel, will cause the temp to rise
+	else if((forge_temperature < target_temperature) && (forge_fuel_weak || forge_fuel_strong)) // Being below the target temp, and having fuel, will cause the temp to rise
 		forge_temperature += FORGE_DEFAULT_TEMPERATURE_CHANGE
 		icon_state = "forge_active"
 		set_light(3, 1, LIGHT_COLOR_FIRE)
@@ -296,7 +299,7 @@
 /obj/structure/reagent_forge/proc/handle_baking_things(delta_time)
 	/// The worst off item being baked in our forge right now, to ensure people know when gordon ramsay is gonna be upset at them
 	var/worst_cooked_food_state = 0
-	for(var/obj/item/baked_item in used_tray.contents)
+	for(var/obj/item/baked_item as anything in used_tray.contents)
 
 		var/signal_result = SEND_SIGNAL(baked_item, COMSIG_ITEM_BAKED, src, delta_time)
 
@@ -322,7 +325,7 @@
 	smoke_state = new_state
 
 	QDEL_NULL(particles)
-	if(!check_fuel(TRUE)) // If there is no fuel then we don't get smoke particles
+	if(!check_fuel(just_checking = TRUE)) // If there is no fuel then we don't get smoke particles
 		return
 
 	switch(smoke_state)
@@ -366,15 +369,13 @@
 			forge_level = FORGE_LEVEL_NOVICE
 
 		if(SKILL_LEVEL_APPRENTICE)
-			to_chat(user, span_notice("With some small tweaks to [src]], you could likely smelt significantly more pure materials with it..."))
-			ore_to_sheet_amount = 2
+			to_chat(user, span_notice("Further insulation and protection of the thinner areas means [src] will lose heat just that little bit slower."))
 			temperature_loss_reduction = 2
 			forge_level = FORGE_LEVEL_APPRENTICE
 
 		if(SKILL_LEVEL_JOURNEYMAN)
 			to_chat(user, span_notice("Some careful placement and stoking of the flame will allow you to keep at least the embers burning..."))
 			minimum_target_temperature = 25 // Will allow quicker reheating from having no fuel
-			ore_to_sheet_amount = 2
 			temperature_loss_reduction = 2
 			forge_level = FORGE_LEVEL_JOURNEYMAN
 
@@ -383,12 +384,10 @@
 			create_reagent_forge()
 			temperature_loss_reduction = 3
 			minimum_target_temperature = 25
-			ore_to_sheet_amount = 2
 			forge_level = FORGE_LEVEL_EXPERT
 
 		if(SKILL_LEVEL_MASTER)
-			to_chat(user, span_notice("Just the right tweaks to [src] should let the purity, and thus usable amount, of any material smelted be just that little bit higher..."))
-			ore_to_sheet_amount = MAX_ORE_TO_SHEET_AMOUNT
+			to_chat(user, span_notice("[src] has become nearly perfect, able to hold heat for long enough that even a piece of wood can outmatch the longevity of lesser forges."))
 			temperature_loss_reduction = 4
 			minimum_target_temperature = 25
 			forge_level = FORGE_LEVEL_MASTER
@@ -396,7 +395,6 @@
 		if(SKILL_LEVEL_LEGENDARY)
 			to_chat(user, span_notice("The perfect forge for a perfect metalsmith, with your knowledge it should bleed heat so slowly, that not even you will live to see [src] cool."))
 			temperature_loss_reduction = MAX_TEMPERATURE_LOSS_DECREASE
-			ore_to_sheet_amount = MAX_ORE_TO_SHEET_AMOUNT
 			minimum_target_temperature = 25 // This won't matter except in a few cases here, but we still need to cover those few cases
 			forge_level = FORGE_LEVEL_LEGENDARY
 
@@ -501,7 +499,7 @@
 	balloon_alert(user, "fueled [src]")
 	user.mind.adjust_experience(/datum/skill/smithing, 5) // You gain small amounts of experience from useful fueling
 
-	if(prob(45) && !is_strong_fuel)
+	if(prob(CHARCOAL_CHANCE) && !is_strong_fuel)
 		to_chat(user, span_notice("[src]'s fuel is packed densely enough to have made some charcoal!"))
 		addtimer(CALLBACK(src, .proc/spawn_coal), 1 MINUTES)
 
@@ -527,6 +525,7 @@
 
 	var/src_turf = get_turf(src)
 	var/spawning_item = ore_item.refined_type
+	var/ore_to_sheet_amount = ore_item.amount
 
 	for(var/spawn_ore in 1 to ore_to_sheet_amount)
 		new spawning_item(src_turf)
@@ -555,7 +554,7 @@
 		fail_message(user, "stopped imbuing")
 		return
 
-	for(var/datum/reagent/weapon_reagent in attacking_weapon.reagents.reagent_list)
+	for(var/datum/reagent/weapon_reagent as anything in attacking_weapon.reagents.reagent_list)
 		if(weapon_reagent.volume < MINIMUM_IMBUING_REAGENT_AMOUNT)
 			attacking_weapon.reagents.remove_all_type(weapon_reagent.type)
 			continue
@@ -594,7 +593,7 @@
 		fail_message(user, "stopped imbuing")
 		return
 
-	for(var/datum/reagent/clothing_reagent in attacking_clothing.reagents.reagent_list)
+	for(var/datum/reagent/clothing_reagent as anything in attacking_clothing.reagents.reagent_list)
 		if(clothing_reagent.volume < MINIMUM_IMBUING_REAGENT_AMOUNT)
 			attacking_clothing.reagents.remove_all_type(clothing_reagent.type)
 			continue
@@ -726,12 +725,12 @@
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /obj/structure/reagent_forge/tong_act(mob/living/user, obj/item/tool)
+	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER)
+	var/obj/item/forging/forge_item = tool
+
 	if(in_use || forge_item.in_use)
 		fail_message(user, "forge busy")
 		return TOOL_ACT_TOOLTYPE_SUCCESS
-
-	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER)
-	var/obj/item/forging/forge_item = tool
 
 	in_use = TRUE
 	forge_item.in_use = TRUE
@@ -879,7 +878,8 @@
 #undef FORGE_LEVEL_LEGENDARY
 
 #undef MAX_TEMPERATURE_LOSS_DECREASE
-#undef MAX_ORE_TO_SHEET_AMOUNT
+
+#undef CHARCOAL_CHANCE
 
 #undef MINIMUM_IMBUING_REAGENT_AMOUNT
 
