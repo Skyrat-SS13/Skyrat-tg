@@ -490,89 +490,85 @@ export const head_acc_emissive: Feature<boolean[]> = {
 export const feature_ipc_screen: Feature<string> = {
   name: 'IPC Screen Selection',
   description:
-    'Want to have a fancy species name? Put it here, or leave it blank.',
+    'The screen you wish to have displayed. If you have this set to "None", you won\'t get any screen at all.',
   component: FeatureDropdownInput,
 };
 
 export const ipc_screen_color: Feature<string> = {
   name: 'IPC Screen Color',
   description:
-    'Want to have a fancy species name? Put it here, or leave it blank.',
+    "If your screen is greyscale enabled, then it'll take on this color.",
   component: FeatureColorInput,
 };
 
 export const ipc_screen_emissive: Feature<boolean> = {
   name: 'IPC Screen Emissive',
-  description:
-    'Want to have a fancy species name? Put it here, or leave it blank.',
+  description: 'Want your screen to glow in the dark?',
   component: CheckboxInput,
 };
 
 export const ipc_antenna_toggle: FeatureToggle = {
   name: 'Synth Antenna',
-  description:
-    "Add some lore for your species! Won't show up if there's no custom species.",
+  description: 'Want an antenna?',
   component: CheckboxInput,
 };
 
 export const feature_ipc_antenna: Feature<string> = {
   name: 'Synth Antenna Selection',
-  description:
-    'Want to have a fancy species name? Put it here, or leave it blank.',
+  description: 'The antenna you want attached to your head.',
   component: FeatureDropdownInput,
 };
 
 export const ipc_antenna_color: Feature<string[]> = {
   name: 'Synth Antenna Colors',
   description:
-    'Want to have a fancy species name? Put it here, or leave it blank.',
+    'The color you want your antenna to be. Some support multiple colors.',
   component: FeatureTriColorInput,
 };
 
-export const ipc_antenna_emissive: Feature<boolean> = {
+export const ipc_antenna_emissive: Feature<boolean[]> = {
   name: 'Synth Antenna Emissives',
-  description:
-    'Want to have a fancy species name? Put it here, or leave it blank.',
-  component: CheckboxInput,
+  description: 'Want your antenna to glow in the dark?.',
+  component: FeatureTriBoolInput,
 };
 
 export const feature_ipc_chassis: Feature<string> = {
   name: 'Synth Chassis Selection',
-  description: "Allows customization of an IPC's chassis! Only works for IPCs.",
+  description:
+    "Allows customization of an Synth's chassis! Only works for Synths.",
   component: FeatureDropdownInput,
 };
 
 export const ipc_chassis_color: Feature<string> = {
   name: 'Synth Chassis Colors',
   description:
-    "Allows customization of an IPC's chassis! Only works for IPCs, for chassis that support greyscale coloring.",
+    "Allows customization of an Synth's chassis! Only works for Synths, for chassis that support greyscale coloring.",
   component: FeatureColorInput,
 };
 
 export const feature_ipc_head: Feature<string> = {
   name: 'Synth Head Selection',
-  description: "Allows customization of an IPC's head! Only works for IPCs.",
+  description:
+    "Allows customization of an Synth's chassis! Only works for Synths.",
   component: FeatureDropdownInput,
 };
 
 export const ipc_head_color: Feature<string> = {
   name: 'Synth Head Colors',
   description:
-    "Allows customization of an IPC's head! Only works for IPCs, for heads that support greyscale coloring.",
+    "Allows customization of an Synth's head! Only works for Synths, for heads that support greyscale coloring.",
   component: FeatureColorInput,
 };
 
-export const feature_synth_hair_opacity_toggle: Feature<boolean> = {
-  name: 'Synth Hair Opacity',
-  description:
-    'Want to have a fancy species name? Put it here, or leave it blank.',
+export const feature_hair_opacity_toggle: Feature<boolean> = {
+  name: 'Hair Opacity',
+  description: 'Enable the ability to override your hair opacity!',
   component: CheckboxInput,
 };
 
-export const feature_synth_hair_opacity: Feature<number> = {
-  name: 'Synth Hair Opacity',
-  description:
-    "Allows customization of an IPC's head! Only works for IPCs, for heads that support greyscale coloring.",
+export const feature_hair_opacity: Feature<number> = {
+  name: 'Hair Opacity',
+  description: 'Change your hair opacity! Hardlight hair, anyone?',
   component: FeatureNumberInput,
 };
 

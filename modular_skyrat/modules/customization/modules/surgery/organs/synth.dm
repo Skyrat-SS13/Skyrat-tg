@@ -202,22 +202,26 @@
 		if(power_needed <= 0)
 			to_chat(user, span_notice("You are fully charged."))
 			break
+
 		// Is the APC almost empty?
 		if(target_apc.cell.percent() < 10)
 			to_chat(user, span_warning("[target_apc]'s emergency power is active."))
 			break
+
 		// Calculate how much to draw this cycle
 		var/power_use = clamp(power_needed, SYNTH_CHARGE_MIN, SYNTH_CHARGE_MAX)
 		power_use = clamp(power_use, 0, target_apc.cell.charge)
 		// Are we able to draw anything?
-		if(power_use==0)
+		if(power_use == 0)
 			to_chat(user, span_warning("[target_apc] lacks the power to charge you."))
 			break
+
 		// Calculate the delay.
-		var/power_delay = (power_use/100) * SYNTH_CHARGE_DELAY_PER_100
+		var/power_delay = (power_use / 100) * SYNTH_CHARGE_DELAY_PER_100
 		// Attempt to run a charging cycle.
 		if(!do_after(user, power_delay, target = target_apc))
 			break
+
 		// Use the power and increase nutrition.
 		target_apc.cell.use(power_use)
 		user.nutrition += power_use / SYNTH_CHARGE_PER_NUTRITION

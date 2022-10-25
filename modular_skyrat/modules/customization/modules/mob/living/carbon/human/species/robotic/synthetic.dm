@@ -66,16 +66,18 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/robot/synth,
 	)
 	digitigrade_customization = DIGITIGRADE_OPTIONAL
+	/// The innate action that synths get, if they've got a screen selected on species being set.
 	var/datum/action/innate/monitor_change/screen
+	/// This is the screen that is given to the user after they get revived. On death, their screen is temporarily set to BSOD before it turns off, hence the need for this var.
 	var/saved_screen = "Blank"
 
-/datum/species/synthetic/spec_life(mob/living/carbon/human/H)
-	if(H.stat == SOFT_CRIT || H.stat == HARD_CRIT)
-		H.adjustFireLoss(1) //Still deal some damage in case a cold environment would be preventing us from the sweet release to robot heaven
-		H.adjust_bodytemperature(13) //We're overheating!!
+/datum/species/synthetic/spec_life(mob/living/carbon/human/human)
+	if(human.stat == SOFT_CRIT || human.stat == HARD_CRIT)
+		human.adjustFireLoss(1) //Still deal some damage in case a cold environment would be preventing us from the sweet release to robot heaven
+		human.adjust_bodytemperature(13) //We're overheating!!
 		if(prob(10))
-			to_chat(H, span_warning("Alert: Critical damage taken! Cooling systems failing!"))
-			do_sparks(3, TRUE, H)
+			to_chat(human, span_warning("Alert: Critical damage taken! Cooling systems failing!"))
+			do_sparks(3, TRUE, human)
 
 /datum/species/synthetic/spec_revival(mob/living/carbon/human/transformer)
 	switch_to_screen(transformer, "Console")
@@ -148,9 +150,11 @@
  * * screen_name - The name of the screen to switch the ipc_screen mutant bodypart to.
  */
 /datum/species/synthetic/proc/switch_to_screen(mob/living/carbon/human/tranformer, screen_name)
+	if(!screen)
+		return
+
 	tranformer.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN][MUTANT_INDEX_NAME] = screen_name
-	if(screen)
-		tranformer.update_body()
+	tranformer.update_body()
 
 /datum/species/synthetic/random_name(gender, unique, lastname)
 	var/randname = pick(GLOB.posibrain_names)

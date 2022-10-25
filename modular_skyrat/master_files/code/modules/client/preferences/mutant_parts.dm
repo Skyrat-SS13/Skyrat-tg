@@ -454,21 +454,11 @@
 	savefile_key = "ipc_antenna_color"
 	relevant_mutant_bodypart = MUTANT_SYNTH_ANTENNA
 
-/datum/preference/toggle/synth_antenna_emissive
+/datum/preference/tri_bool/synth_antenna_emissive
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_antenna_emissive"
 	relevant_mutant_bodypart = MUTANT_SYNTH_ANTENNA
-
-/datum/preference/toggle/synth_antenna_emissive/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	if (type == abstract_type)
-		return ..()
-
-	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
-		target.dna.mutant_bodyparts[relevant_mutant_bodypart] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
-
-	if(value)
-		target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_EMISSIVE_LIST] = list(TRUE, TRUE, TRUE)
 
 /// IPC Chassis
 
@@ -540,24 +530,24 @@
 
 // Synth Hair Opacity
 
-/datum/preference/toggle/mutant_toggle/synth_hair_opacity
-	savefile_key = "feature_synth_hair_opacity_toggle"
+/datum/preference/toggle/mutant_toggle/hair_opacity
+	savefile_key = "feature_hair_opacity_toggle"
 	relevant_mutant_bodypart = MUTANT_SYNTH_HAIR
 
-/datum/preference/numeric/synth_hair_opacity
+/datum/preference/numeric/hair_opacity
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "feature_synth_hair_opacity"
+	savefile_key = "feature_hair_opacity"
 	relevant_mutant_bodypart = MUTANT_SYNTH_HAIR
 	maximum = 255
 	minimum = 40 // Any lower, and hair's borderline invisible on lighter colours.
 
-/datum/preference/numeric/synth_hair_opacity/create_default_value()
-	return 255
+/datum/preference/numeric/hair_opacity/create_default_value()
+	return maximum
 
-/datum/preference/numeric/synth_hair_opacity/is_accessible(datum/preferences/preferences)
+/datum/preference/numeric/hair_opacity/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
-	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts) && preferences.read_preference(/datum/preference/toggle/mutant_toggle/synth_hair_opacity)
+	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts) && preferences.read_preference(/datum/preference/toggle/mutant_toggle/hair_opacity)
 	return passed_initial_check || allowed
 
 /**
@@ -569,17 +559,16 @@
  * * target - The character this is being applied to.
  * * preferences - The relevant character preferences.
  */
-/datum/preference/numeric/synth_hair_opacity/proc/is_visible(mob/living/carbon/human/target, datum/preferences/preferences)
+/datum/preference/numeric/hair_opacity/proc/is_visible(mob/living/carbon/human/target, datum/preferences/preferences)
 	var/species_type = preferences.read_preference(/datum/preference/choiced/species)
 	var/datum/species/species = new species_type
 
 	var/species_available = (savefile_key in species.get_features())
 
 	var/overriding = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
-	var/part_enabled = preferences.read_preference(/datum/preference/toggle/mutant_toggle/synth_hair_opacity)
-	return (species_available || overriding) && part_enabled
+	return (species_available || overriding) && preferences.read_preference(/datum/preference/toggle/mutant_toggle/hair_opacity)
 
-/datum/preference/numeric/synth_hair_opacity/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+/datum/preference/numeric/hair_opacity/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	if(!preferences || !is_visible(target, preferences))
 		return FALSE
 

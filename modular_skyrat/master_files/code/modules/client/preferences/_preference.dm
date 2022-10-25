@@ -1,3 +1,5 @@
+#define REQUIRED_CROP_LIST_SIZE 4
+
 /datum/preference/tri_color
 	abstract_type = /datum/preference/tri_color
 	var/type_to_check = /datum/preference/toggle/allow_mismatched_parts
@@ -108,11 +110,11 @@
 	var/datum/sprite_accessory/default_accessory_type
 	/// Path to the corresponding /datum/preference/toggle to check if part is enabled.
 	var/datum/preference/toggle/type_to_check
-	/// Generates icons from the provided mutant bodypart for use in the selection box.
+	/// Generates icons from the provided mutant bodypart for use in icon-enabled selection boxes in the prefs window.
 	var/generate_icons = FALSE
-	/// A list of the four co-ordinates to crop to. Useful for icons whos main contents are smaller than 32x32. Please keep it square.
+	/// A list of the four co-ordinates to crop to, if `generate_icons` is enabled. Useful for icons whose main contents are smaller than 32x32. Please keep it square.
 	var/list/crop_area
-	/// A color to apply to the icon if it's greyscale.
+	/// A color to apply to the icon if it's greyscale, and `generate_icons` is enabled.
 	var/greyscale_color
 
 /datum/preference/choiced/mutant_choice/is_accessible(datum/preferences/preferences)
@@ -132,7 +134,7 @@
 
 	var/icon/icon_to_process = icon(sprite_accessory.icon, generate_icon_state(sprite_accessory, sprite_accessory.icon_state), SOUTH, 1)
 
-	if(islist(crop_area) && crop_area.len == 4)
+	if(islist(crop_area) && crop_area.len == REQUIRED_CROP_LIST_SIZE)
 		icon_to_process.Crop(crop_area[1], crop_area[2], crop_area[3], crop_area[4])
 		icon_to_process.Scale(32, 32)
 	else if(crop_area)
@@ -197,3 +199,30 @@
 
 	target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_NAME] = value
 	return TRUE
+
+/datum/preference/toggle/emissive
+	abstract_type = /datum/preference/tri_bool
+	/// Path to the corresponding /datum/preference/toggle to check if part is enabled.
+	var/type_to_check = /datum/preference/toggle/allow_mismatched_parts
+	/// Can either be `TRICOLOR_CHECK_BOOLEAN` or `TRICOLOR_CHECK_ACCESSORY`, the latter of which adding an extra check to make sure the accessory is enabled and a factual accessory, whatever that means.
+	var/check_mode = TRICOLOR_CHECK_BOOLEAN
+
+/datum/preference/toggle/emissive/is_accessible(datum/preferences/preferences)
+	if(type == abstract_type)
+		return ..(preferences)
+	var/passed_initial_check = ..(preferences)
+	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	var/emissives_allowed = preferences.read_preference(/datum/preference/toggle/allow_emissives)
+	var/part_enabled = preferences.read_preference(type_to_check)
+	if(check_mode == TRICOLOR_CHECK_ACCESSORY)
+		part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, part_enabled)
+	return ((passed_initial_check || allowed) && part_enabled && emissives_allowed)
+
+/datum/preference/toggle/emissive/apply_to_human(mob/living/carbon/human/target, value)
+	if (type == abstract_type)
+		return ..()
+	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
+		target.dna.mutant_bodyparts[relevant_mutant_bodypart] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
+	target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_EMISSIVE_LIST] = list(sanitize_integer(value), sanitize_integer(value), sanitize_integer(value))
+
+#undef REQUIRED_CROP_LIST_SIZE
