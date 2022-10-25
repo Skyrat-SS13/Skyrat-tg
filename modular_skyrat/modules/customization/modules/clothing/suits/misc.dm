@@ -315,7 +315,7 @@
 	desc = "Strangely en vogue with aviator wearing shibas."
 	icon_state = "hawaiianshirt"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	greyscale_config = /datum/greyscale_config/hawaiianshirt
-	greyscale_config_worn = /datum/greyscale_config/hawaiianshirt/worn
+	greyscale_config = /datum/greyscale_config/hawaiian_shirt
+	greyscale_config_worn = /datum/greyscale_config/hawaiian_shirt/worn
 	greyscale_colors = "#313B82#CCCFF0"
 	flags_1 = IS_PLAYER_COLORABLE_1
