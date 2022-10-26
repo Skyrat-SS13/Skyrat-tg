@@ -9,7 +9,7 @@
 		var/accessory_icon = initial(sprite_accessory.icon)
 		var/accessory_key = initial(sprite_accessory.key)
 
-		if(initial(sprite_accessory.factual) || !accessory_icon_state || accessory_icon_state == "none") // People will do custom stuff with non-factual sprites. Not touching those.
+		if(initial(sprite_accessory.factual) || !accessory_icon_state || accessory_icon_state == "none" || accessory_icon == 'icons/mob/species/mutant_bodyparts.dmi') // People will do custom stuff with non-factual sprites. Not touching those.
 			continue
 
 		if(!accessory_icon)
