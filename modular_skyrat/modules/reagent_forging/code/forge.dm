@@ -14,13 +14,13 @@
 #define FORGE_HEATING_DURATION 1 MINUTES
 
 /// Defines for different levels of the forge, ranging from no level (you play like a noob) to legendary
-#define FORGE_LEVEL_YOU_PLAY_LIKE_A_NOOB 0
-#define FORGE_LEVEL_NOVICE 1
-#define FORGE_LEVEL_APPRENTICE 2
-#define FORGE_LEVEL_JOURNEYMAN 3
-#define FORGE_LEVEL_EXPERT 4
-#define FORGE_LEVEL_MASTER 5
-#define FORGE_LEVEL_LEGENDARY 6
+#define FORGE_LEVEL_YOU_PLAY_LIKE_A_NOOB 1
+#define FORGE_LEVEL_NOVICE 2
+#define FORGE_LEVEL_APPRENTICE 3
+#define FORGE_LEVEL_JOURNEYMAN 4
+#define FORGE_LEVEL_EXPERT 5
+#define FORGE_LEVEL_MASTER 6
+#define FORGE_LEVEL_LEGENDARY 7
 
 /// The maximum amount of temperature loss decrease that upgrades can give the forge
 #define MAX_TEMPERATURE_LOSS_DECREASE 5
@@ -124,28 +124,26 @@
 	if(forge_level < FORGE_LEVEL_LEGENDARY)
 		. += span_notice("Using an <b>empty hand</b> on [src] will upgrade it, if your forging skill level is above the current upgrade's level.")
 
-	var/user_smithing_skill = user.mind.get_skill_level(/datum/skill/smithing)
-
-	switch(user_smithing_skill)
-		if(SKILL_LEVEL_NONE)
+	switch(forge_level)
+		if(FORGE_LEVEL_YOU_PLAY_LIKE_A_NOOB)
 			. += span_notice("This forge has not been upgraded yet.")
 
-		if(SKILL_LEVEL_NOVICE)
+		if(FORGE_LEVEL_NOVICE)
 			. += span_notice("This forge has been upgraded by a novice smith.")
 
-		if(SKILL_LEVEL_APPRENTICE)
+		if(FORGE_LEVEL_APPRENTICE)
 			. += span_notice("This forge has been upgraded by an apprentice smith.")
 
-		if(SKILL_LEVEL_JOURNEYMAN)
+		if(FORGE_LEVEL_JOURNEYMAN)
 			. += span_notice("This forge has been upgraded by a journeyman smith.")
 
-		if(SKILL_LEVEL_EXPERT)
+		if(FORGE_LEVEL_EXPERT)
 			. += span_notice("This forge has been upgraded by an expert smith.")
 
-		if(SKILL_LEVEL_MASTER)
+		if(FORGE_LEVEL_MASTER)
 			. += span_notice("This forge has been upgraded by a master smith.")
 
-		if(SKILL_LEVEL_LEGENDARY)
+		if(FORGE_LEVEL_LEGENDARY)
 			. += span_hierophant("This forge has been upgraded by a legendary smith.") // Legendary skills give you the greatest gift of all, cool text
 
 	if(ore_to_sheet_amount)
@@ -177,6 +175,7 @@
 	START_PROCESSING(SSobj, src)
 	populate_radial_choice_list()
 	update_appearance()
+	upgrade_forge(forced = TRUE)
 
 /// Fills out the radial choice list with everything in the choice_list's contents
 /obj/structure/reagent_forge/proc/populate_radial_choice_list()
@@ -249,14 +248,10 @@
 /obj/structure/reagent_forge/proc/check_temp()
 	if(forge_temperature > target_temperature) // Being above the target temperature will cause the forge to cool down
 		forge_temperature -= (FORGE_DEFAULT_TEMPERATURE_CHANGE - temperature_loss_reduction)
-		icon_state = "forge_inactive"
-		set_light(0, 0) // If we aren't heating up and thus not on fire, turn the fire light off
 		return
 
 	else if((forge_temperature < target_temperature) && (forge_fuel_weak || forge_fuel_strong)) // Being below the target temp, and having fuel, will cause the temp to rise
 		forge_temperature += FORGE_DEFAULT_TEMPERATURE_CHANGE
-		icon_state = "forge_active"
-		set_light(3, 1, LIGHT_COLOR_FIRE)
 		return
 
 /// If the forge is in use, checks if there is an oven tray, then if there are any mobs actually in use range. If not sets the forge to not be in use.
@@ -285,18 +280,23 @@
 	check_temp()
 	check_in_use() // This is here to ensure the forge doesn't remain in_use if it really isn't
 
-	if(!used_tray)
-		if(forge_fuel_weak || forge_fuel_strong)
-			set_smoke_state(SMOKE_STATE_NOT_COOKING) // If there is no tray but we have fuel, use the not cooking smoke state
+
+
+	if(!used_tray && check_fuel(just_checking = TRUE))
+		set_smoke_state(SMOKE_STATE_NOT_COOKING) // If there is no tray but we have fuel, use the not cooking smoke state
 		return
 
-	if(forge_temperature < MIN_FORGE_TEMP) // If we are below minimum forge temp, don't continue on to cooking
+	if(!check_fuel(just_checking = TRUE)) // If there's no fuel, remove it all
+		set_smoke_state(SMOKE_STATE_NONE)
 		return
 
 	handle_baking_things(delta_time)
 
 /// Sends signals to bake and items on the used tray, setting the smoke state of the forge according to the most cooked item in it
 /obj/structure/reagent_forge/proc/handle_baking_things(delta_time)
+	if(forge_temperature < MIN_FORGE_TEMP) // If we are below minimum forge temp, don't continue on to cooking
+		return
+
 	/// The worst off item being baked in our forge right now, to ensure people know when gordon ramsay is gonna be upset at them
 	var/worst_cooked_food_state = 0
 	for(var/obj/item/baked_item as anything in used_tray.contents)
@@ -325,10 +325,13 @@
 	smoke_state = new_state
 
 	QDEL_NULL(particles)
-	if(!check_fuel(just_checking = TRUE)) // If there is no fuel then we don't get smoke particles
-		return
 
 	switch(smoke_state)
+		if(SMOKE_STATE_NONE)
+			icon_state = "forge_inactive"
+			set_light(0, 0) // If we aren't heating up and thus not on fire, turn the fire light off
+			return
+
 		if(SMOKE_STATE_BAD)
 			particles = new /particles/smoke()
 			particles.position = list(6, 4, 0)
@@ -345,55 +348,73 @@
 			particles = new /particles/smoke/mild()
 			particles.position = list(6, 4, 0)
 
+	icon_state = "forge_active"
+	set_light(3, 1, LIGHT_COLOR_FIRE)
+
 /obj/structure/reagent_forge/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(used_tray)
 		remove_tray_from_forge(user)
 		return
 
-	var/user_smithing_skill = user.mind.get_skill_level(/datum/skill/smithing)
+	upgrade_forge(user)
+
+/obj/structure/reagent_forge/proc/upgrade_forge(mob/living/user, forced = FALSE)
+	var/level_to_upgrade_to
 	var/previous_level = forge_level
 
-	if(forge_level == previous_level)
+	if(forced || !user) // This is to make sure the ready subtype of forge still works
+		level_to_upgrade_to = forge_level
+	else
+		level_to_upgrade_to = user.mind.get_skill_level(/datum/skill/smithing)
+
+	if((forge_level == level_to_upgrade_to) && !forced)
 		to_chat(user, span_notice("[src] was already upgraded by your level of expertise!"))
 		return
 
-	switch(user_smithing_skill) // Remember to carry things over from past levels in case someone skips levels in upgrading
+	switch(level_to_upgrade_to) // Remember to carry things over from past levels in case someone skips levels in upgrading
 		if(SKILL_LEVEL_NONE)
-			to_chat(user, span_notice("You'll need some forging skills to really understand how to upgrade [src]."))
+			if(!forced)
+				to_chat(user, span_notice("You'll need some forging skills to really understand how to upgrade [src]."))
 			return
 
 		if(SKILL_LEVEL_NOVICE)
-			to_chat(user, span_notice("With some experience, you've come to realize there are some easily fixable spots with poor insulation..."))
+			if(!forced)
+				to_chat(user, span_notice("With some experience, you've come to realize there are some easily fixable spots with poor insulation..."))
 			temperature_loss_reduction = 1
 			forge_level = FORGE_LEVEL_NOVICE
 
 		if(SKILL_LEVEL_APPRENTICE)
+			if(!forced)
 			to_chat(user, span_notice("Further insulation and protection of the thinner areas means [src] will lose heat just that little bit slower."))
 			temperature_loss_reduction = 2
 			forge_level = FORGE_LEVEL_APPRENTICE
 
 		if(SKILL_LEVEL_JOURNEYMAN)
-			to_chat(user, span_notice("Some careful placement and stoking of the flame will allow you to keep at least the embers burning..."))
+			if(!forced)
+				to_chat(user, span_notice("Some careful placement and stoking of the flame will allow you to keep at least the embers burning..."))
 			minimum_target_temperature = 25 // Will allow quicker reheating from having no fuel
 			temperature_loss_reduction = 2
 			forge_level = FORGE_LEVEL_JOURNEYMAN
 
 		if(SKILL_LEVEL_EXPERT)
-			to_chat(user, span_notice("With just the right heat treating technique, metal could be made to accept reagents..."))
+			if(!forced)
+				to_chat(user, span_notice("With just the right heat treating technique, metal could be made to accept reagents..."))
 			create_reagent_forge()
 			temperature_loss_reduction = 3
 			minimum_target_temperature = 25
 			forge_level = FORGE_LEVEL_EXPERT
 
 		if(SKILL_LEVEL_MASTER)
-			to_chat(user, span_notice("[src] has become nearly perfect, able to hold heat for long enough that even a piece of wood can outmatch the longevity of lesser forges."))
+			if(!forced)
+				to_chat(user, span_notice("[src] has become nearly perfect, able to hold heat for long enough that even a piece of wood can outmatch the longevity of lesser forges."))
 			temperature_loss_reduction = 4
 			minimum_target_temperature = 25
 			forge_level = FORGE_LEVEL_MASTER
 
 		if(SKILL_LEVEL_LEGENDARY)
-			to_chat(user, span_notice("The perfect forge for a perfect metalsmith, with your knowledge it should bleed heat so slowly, that not even you will live to see [src] cool."))
+			if(!forced)
+				to_chat(user, span_notice("The perfect forge for a perfect metalsmith, with your knowledge it should bleed heat so slowly, that not even you will live to see [src] cool."))
 			temperature_loss_reduction = MAX_TEMPERATURE_LOSS_DECREASE
 			minimum_target_temperature = 25 // This won't matter except in a few cases here, but we still need to cover those few cases
 			forge_level = FORGE_LEVEL_LEGENDARY
@@ -773,7 +794,8 @@
 			material_list[GET_MATERIAL_REF(search_stack.material_type)] = MINERAL_MATERIAL_AMOUNT
 
 		else
-			material_list = search_stack.custom_materials
+			for(var/material as anything in search_stack.custom_materials)
+				material_list[material] = MINERAL_MATERIAL_AMOUNT
 
 		if(!search_stack.use(1))
 			fail_message(user, "not enough of [search_stack]")
