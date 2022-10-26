@@ -85,7 +85,7 @@
 					/obj/item/clothing/shoes/latex_heels = 4,
 					/obj/item/clothing/shoes/latex_heels/domina_heels = 4,
 					/obj/item/clothing/shoes/jackboots/knee = 3,
-					/obj/item/clothing/under/pants/skyrat/chaps = 4,
+					/obj/item/clothing/under/pants/chaps = 4,
 
 					//belt
 					/obj/item/clothing/strapon = 6,
