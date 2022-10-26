@@ -297,7 +297,7 @@
 		return
 
 	if(recipe_to_follow.transfers_materials)
-		newly_created_thing.set_custom_materials(materials_to_transfer, 1)
+		newly_created_thing.set_custom_materials(materials_to_transfer, multiplier = 1)
 
 	user.mind.adjust_experience(skill_to_grant, skill_amount)
 
