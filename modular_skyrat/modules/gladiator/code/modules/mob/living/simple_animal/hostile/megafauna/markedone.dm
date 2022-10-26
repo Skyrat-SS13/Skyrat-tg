@@ -249,7 +249,7 @@
 			GiveTarget(target)
 	else
 		//simplemobs beware
-		say("FRESH MEAT!")
+		say("It's berserkin' time!")
 		introduced |= WEAKREF(target)
 
 /// Checks against the Marked One's current health and updates his phase accordingly. Uses variable shitcode to make sure his phase updates only ever happen *once*
