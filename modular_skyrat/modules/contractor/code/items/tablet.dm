@@ -3,6 +3,7 @@
 		/datum/computer_file/program/contract_uplink,
 		/datum/computer_file/program/crew_manifest,
 	)
+	device_theme = "syndicate"
 
 	// Contractor uplink system board has the user's data baked directly into it on creation
 	var/datum/opposing_force/opfor_data
