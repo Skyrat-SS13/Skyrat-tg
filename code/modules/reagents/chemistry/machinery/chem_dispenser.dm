@@ -655,7 +655,6 @@
 		/datum/reagent/consumable/ethanol/navy_rum,
 		/datum/reagent/consumable/ethanol/rum,
 		/datum/reagent/consumable/ethanol/sake,
-		/datum/reagent/consumable/ethanol/applejack, // SKYRAT EDIT
 		/datum/reagent/consumable/ethanol/synthanol, // SKYRAT EDIT
 		/datum/reagent/consumable/ethanol/tequila,
 		/datum/reagent/consumable/ethanol/triple_sec,
@@ -665,6 +664,8 @@
 		/datum/reagent/consumable/ethanol/wine,
 	)
 	upgrade_reagents = null
+	upgrade_reagents2 = null //SKYRAT EDIT
+	upgrade_reagents3 = null //SKYRAT EDIT
 	emagged_reagents = list(
 		/datum/reagent/consumable/ethanol,
 		/datum/reagent/iron,
