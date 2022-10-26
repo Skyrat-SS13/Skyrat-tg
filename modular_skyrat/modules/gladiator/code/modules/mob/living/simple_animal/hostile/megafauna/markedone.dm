@@ -84,7 +84,7 @@
 				break
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/Found(atom/A)
-	//We only attac when pissed off
+	//We only attack when pissed off
 	if(!anger_timer_id)
 		return FALSE
 	return ..()
@@ -94,7 +94,8 @@
 		return list()
 	return ..()
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/examine() //is it really any secret what this does
+/// Adds the text descriptor of what phase the Marked One is in, or tells you he's a corpse if he's dead as fuck
+/mob/living/simple_animal/hostile/megafauna/gladiator/examine()
 	if(stat >= DEAD)
 		. = ..()
 		. += span_boldwarning("Unearthly energies bind the body to it's place of defeat. You cannot move it.")
@@ -102,7 +103,8 @@
 		. = ..()
 		. += span_boldwarning("They are currently in Phase [phase].")
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/adjustHealth(amount, updating_health, forced) //gets him mad at you if you're a species he's not racist towards, only once he takes damage
+/// Gets him mad at you if you're a species he's not racist towards, and provides the 25% chance to block attacks in the first phase
+/mob/living/simple_animal/hostile/megafauna/gladiator/adjustHealth(amount, updating_health, forced)
 	get_angry()
 	if(spinning)
 		visible_message(span_danger("[src] brushes off all incoming attacks with his spinning blade!"))
@@ -126,7 +128,8 @@
 	if(. && prob(5 * phase))
 		INVOKE_ASYNC(src, .proc/teleport, target)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/Move(atom/newloc, dir, step_x, step_y) //chasms are for sissies
+/// As the marked one is only theoretically capable of ignoring gravity, this makes him not walk on chasms, and prevents him from moving if spinning or stunned. It also figures out if he hits a wall while charging!
+/mob/living/simple_animal/hostile/megafauna/gladiator/Move(atom/newloc, dir, step_x, step_y)
 	if(spinning || stunned)
 		return FALSE
 	if(ischasm(newloc))
@@ -174,7 +177,8 @@
 		if(chargetiles >= chargerange)
 			INVOKE_ASYNC(src, .proc/discharge)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/Bump(atom/A) //used for charge-induced ass-tappage
+/// Fucks up the day of whoever he walks into, so long as he's charging and the mob is alive. If he walks into a wall, he gets stunned instead!
+/mob/living/simple_animal/hostile/megafauna/gladiator/Bump(atom/A)
 	. = ..()
 	if(!charging)
 		return
@@ -186,21 +190,24 @@
 		discharge()
 	else if(istype(A, /turf/closed))
 		visible_message(span_danger("[src] crashes headfirst into [A]!"))
-		discharge(1.33)
+		discharge(1.5)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/get_angry() //GET MAD! I DON'T WANT YOUR DAMN LEMONS WHAT THE HELL AM I SUPPOSED TO DO WITH THESE
+/// Makes the Marked One unhappy and more befitting of his "hostile" subtype status. GET MAD! I DON'T WANT YOUR DAMN LEMONS WHAT THE HELL AM I SUPPOSED TO DO WITH THESE
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/get_angry()
 	if(stat >= DEAD)
 		return
 	if(anger_timer_id)
 		deltimer(anger_timer_id)
 	anger_timer_id = addtimer(CALLBACK(src, .proc/get_calm), MARKED_ONE_ANGER_DURATION, TIMER_STOPPABLE)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/get_calm() //I'M THE MAN THAT'S GONNA BURN YOUR HOUSE DOWN! With the lemons!
+/// Makes the Marked One a sleepy boy that don't wanna hurt nobody off the bat(unless they're an ash walker). I'M THE MAN THAT'S GONNA BURN YOUR HOUSE DOWN! With the lemons!
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/get_calm()
 	if(anger_timer_id)
 		deltimer(anger_timer_id)
 	anger_timer_id = null
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/introduction(mob/living/target) //monologue.txt
+/// Villain monologue proc
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/introduction(mob/living/target)
 	if(ishuman(target))
 		var/mob/living/carbon/human/human_target = target
 		var/datum/species/targetspecies = human_target.dna.species
@@ -245,7 +252,8 @@
 		say("FRESH MEAT!")
 		introduced |= WEAKREF(target)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/update_phase() //this checks against his current health and updates his phase accordingly
+/// Checks against the Marked One's current health and updates his phase accordingly. Uses variable shitcode to make sure his phase updates only ever happen *once*
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/update_phase()
 	var/healthpercentage = 100 * (health/maxHealth)
 	if(src.stat >= DEAD)
 		return
@@ -288,7 +296,8 @@
 	if(charging)
 		move_to_delay = move_to_delay_charge
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/spinattack() //vinesauce joel
+/// Proc name speaks for itself. Vinesauce Joel
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/spinattack()
 	var/turf/our_turf = get_turf(src)
 	if(!istype(our_turf))
 		return
@@ -327,7 +336,8 @@
 	sleep(3)
 	spinning = FALSE
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/charge(atom/target, range = 1) //the marked one's charge has an instant travel time, but takes a moment to power-up, allowing you to get behind cover to stun him
+/// The Marked One's charge has an instant travel time, but takes a moment to power-up, allowing you to get behind cover to stun him if he hits a wall. Only ever called when a phase change occurs, as it hardstuns if it lands
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/charge(atom/target, range = 1)
 	face_atom(target)
 	visible_message(span_userdanger("[src] lifts his arm, and prepares to charge!"))
 	animate(src, color = "#ff6666", 3)
@@ -337,7 +347,8 @@
 	charging = TRUE
 	update_phase()
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/discharge(modifier = 1) //discharge is a proc that occurs when the marked one charges into a solid turf on his way to your ass, causing a stun
+/// Discharge is what happens when grandpa gets the car keys, or the marked fellow rams his head into a solid wall
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/discharge(modifier = 1)
 	stunned = TRUE
 	charging = FALSE
 	minimum_distance = initial(minimum_distance)
@@ -347,7 +358,8 @@
 	sleep(CEILING(MARKED_ONE_STUN_DURATION * modifier, 1))
 	stunned = FALSE
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/teleport(atom/target) //teleport is a proc that makes him teleport
+/// Teleport makes him teleport. woah.
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/teleport(atom/target)
 	var/turf/targeted = get_step(target, target.dir)
 	new /obj/effect/temp_visual/small_smoke/halfsecond(get_turf(src))
 	SLEEP_CHECK_DEATH(4, src)
@@ -365,14 +377,16 @@
 			new /obj/effect/temp_visual/small_smoke/halfsecond(targeted)
 			forceMove(targeted)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/bone_knife_throw(atom/target) //bone_knife_throw is a proc that throws bone knives
+/// Bone Knife Throw makes him throw bone knives. woah.
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/bone_knife_throw(atom/target)
 	var/obj/item/knife/combat/bone/boned = new /obj/item/knife/combat/bone(get_turf(src))
 	boned.throwforce = 35
 	playsound(src, 'sound/weapons/bolathrow.ogg', 60, 0)
 	boned.throw_at(target, 7, 3, thrower = src)
 	QDEL_IN(boned, 3 SECONDS)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/ground_pound(range, delay, throw_range) //copied and pasted wendigo slam attack, used for more slowly radiating AOE slams 
+/// Effectively just a copied and pasted version of the wendigo ground slam. Used to create radiating shockwaves that force quick thinking and repositioning, and must be defined here because *someone* un-globaled the shit out of this proc
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/ground_pound(range, delay, throw_range)
 	var/turf/origin = get_turf(src)
 	if(!origin)
 		return
@@ -399,13 +413,16 @@
 
 		sleep(delay)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/swordslam() //large radius but slow-to-move radiating ground slam
+/// Large radius but slow-to-move radiating ground slam
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/swordslam()
 	ground_pound(5, 1 SECONDS, 8)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/stomp() //short range slam with faster shockwave travel
+/// Sort range slam with faster shockwave travel
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/stomp()
 	ground_pound(2, 0.5 SECONDS, 3)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/OpenFire() //used to actually decide what attacks he does. abandon all hope ye who enter here
+/// Used to determine what attacks the Marked One actually uses. This works by making him a ranged mob without a projectile. Shitcode? Maybe! But it woooorks.
+/mob/living/simple_animal/hostile/megafauna/gladiator/OpenFire()
 	if(!COOLDOWN_FINISHED(src, ranged_cooldown))
 		return FALSE
 	if(spinning || stunned || charging)
