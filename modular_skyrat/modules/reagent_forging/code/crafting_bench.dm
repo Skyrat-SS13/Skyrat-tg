@@ -241,11 +241,13 @@
 
 			if(isstack(nearby_item)) // If the item is a stack, check if that stack has enough material in it to fill out the amount
 				var/obj/item/stack/nearby_stack = nearby_item
+				if(required_amount > 0)
+					requirement_items += nearby_item
 				required_amount -= nearby_stack.amount
 			else // Otherwise, we still exist and should subtract one from the required number of items
+				if(required_amount > 0)
+					requirement_items += nearby_item
 				required_amount -= 1
-
-			requirement_items += nearby_item
 
 		if(required_amount > 0)
 			return FALSE
@@ -271,7 +273,11 @@
 
 	if(completing_a_weapon)
 		recipe_to_follow = new /datum/crafting_bench_recipe/weapon_completion_recipe
-	var/list/materials_to_transfer = use_or_delete_recipe_requirements(things_to_use, recipe_to_follow)
+
+	var/materials_to_transfer = list()
+	var/list/temporary_materials_list = use_or_delete_recipe_requirements(things_to_use, recipe_to_follow)
+	for(var/material as anything in temporary_materials_list)
+		materials_to_transfer[material] += temporary_materials_list[material]
 
 	var/obj/newly_created_thing
 
@@ -280,7 +286,7 @@
 		newly_created_thing = new completed_forge_item.spawning_item(src)
 		if(completed_forge_item.custom_materials) // We need to add the weapon head's materials to the completed item, too
 			for(var/custom_material in completed_forge_item.custom_materials)
-				materials_to_transfer += custom_material
+				materials_to_transfer[custom_material] += completed_forge_item.custom_materials[custom_material]
 		qdel(completed_forge_item) // And then we also need to 'use' the item
 
 	else
