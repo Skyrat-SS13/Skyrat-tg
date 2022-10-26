@@ -2,8 +2,10 @@
 	TLV = list(
 		"pressure" = new/datum/tlv(ONE_ATMOSPHERE * 0.8, ONE_ATMOSPHERE *  0.9, ONE_ATMOSPHERE * 1.1, ONE_ATMOSPHERE * 1.2), // kPa
 		"temperature" = new/datum/tlv(COLD_ROOM_TEMP-40, COLD_ROOM_TEMP-20, COLD_ROOM_TEMP+20, COLD_ROOM_TEMP+40),
+		// EDIT START
 		/datum/gas/oxygen = new/datum/tlv(-1, -1, 5, 10), // Partial pressure, kpa
 		/datum/gas/nitrogen = new/datum/tlv(16, 19, 135, 140),
+		// EDIT END
 		/datum/gas/carbon_dioxide = new/datum/tlv(-1, -1, 5, 10),
 		/datum/gas/miasma = new/datum/tlv/(-1, -1, 2, 5),
 		/datum/gas/plasma = new/datum/tlv/dangerous,
