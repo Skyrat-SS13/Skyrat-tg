@@ -602,7 +602,7 @@
 
 /datum/supply_pack/service/snowmobile
 	name = "Snowmobile kit"
-	desc = "trapped on a frigid wasteland? need to get around fast? purchase a refurbished snowmobile, with a FREE 10 microsecond warranty!"
+	desc = "Trapped on a frigid wasteland? Need to get around fast? Purchase a refurbished snowmobile with a FREE 10 microsecond warranty!"
 	cost = CARGO_CRATE_VALUE * 7.5
 	contains = list(/obj/vehicle/ridden/atv/snowmobile = 1,
 			/obj/item/key/atv = 1,
