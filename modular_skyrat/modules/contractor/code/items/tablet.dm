@@ -19,9 +19,8 @@
 	install_component(new /obj/item/computer_hardware/card_slot)
 
 /obj/item/modular_computer/tablet/syndicate_contract_uplink/preset/uplink/Destroy()
-	. = ..()
-
 	opfor_data = null
+	return ..()
 
 /obj/item/modular_computer/tablet/syndicate_contract_uplink/UpdateDisplay()
 	return
