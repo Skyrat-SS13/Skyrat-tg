@@ -331,7 +331,7 @@
 				hit_things |= slapped
 		if(!spinning)
 			break
-		sleep(0.75)
+		sleep(0.75) //addtimer(CALLBACK(src, .proc/convince_zonespace_to_let_me_use_sleeps), 2 WEEKS)
 	animate(src, color = initial(color), 3)
 	sleep(3)
 	spinning = FALSE
