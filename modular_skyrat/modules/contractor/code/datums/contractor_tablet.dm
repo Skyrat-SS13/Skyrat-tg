@@ -134,7 +134,7 @@
 
 	data["first_load"] = first_load
 
-	if (uplink_computer && uplink_computer.opfor_data)
+	if (uplink_computer?.opfor_data)
 		var/datum/opposing_force/opfor_data = uplink_computer.opfor_data
 		data += get_header_data()
 
