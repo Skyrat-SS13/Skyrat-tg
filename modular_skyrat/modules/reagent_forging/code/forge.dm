@@ -361,7 +361,6 @@
 
 /obj/structure/reagent_forge/proc/upgrade_forge(mob/living/user, forced = FALSE)
 	var/level_to_upgrade_to
-	var/previous_level = forge_level
 
 	if(forced || !user) // This is to make sure the ready subtype of forge still works
 		level_to_upgrade_to = forge_level
@@ -386,7 +385,7 @@
 
 		if(SKILL_LEVEL_APPRENTICE)
 			if(!forced)
-			to_chat(user, span_notice("Further insulation and protection of the thinner areas means [src] will lose heat just that little bit slower."))
+				to_chat(user, span_notice("Further insulation and protection of the thinner areas means [src] will lose heat just that little bit slower."))
 			temperature_loss_reduction = 2
 			forge_level = FORGE_LEVEL_APPRENTICE
 
