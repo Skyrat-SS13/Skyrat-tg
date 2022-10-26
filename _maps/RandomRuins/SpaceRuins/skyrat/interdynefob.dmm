@@ -1689,10 +1689,6 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "gv" = (
-/obj/machinery/door/airlock/grunge{
-	name = "Planetary Access";
-	req_access = list("syndicate")
-	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
 	},
@@ -1703,6 +1699,10 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/machinery/door/airlock/grunge{
+	name = "Hangar";
+	req_access = list("syndicate")
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "gw" = (
@@ -12052,14 +12052,14 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "ST" = (
-/obj/machinery/door/airlock/grunge{
-	name = "Planetary Access";
-	req_access = list("syndicate")
-	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/machinery/door/airlock/grunge{
+	name = "Hangar";
+	req_access = list("syndicate")
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "SU" = (
@@ -13847,11 +13847,6 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "ZL" = (
-/obj/machinery/quantumpad{
-	map_pad_id = "ds2";
-	map_pad_link_id = "interdyne";
-	name = "quantum pad to Interdyne"
-	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
 	},

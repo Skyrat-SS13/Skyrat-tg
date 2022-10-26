@@ -197,3 +197,21 @@
 /datum/map_template/shuttle/ruin/tarkon_driver/defcon2
 	suffix = "tarkon_driverdc2"
 /*----- End of Tarkon Shuttle Code -----*/
+
+/*----- DS-2 / Interdyne Shuttle + related code -----*/
+/datum/map_template/shuttle/ruin/interdyne_burst
+	prefix = "_maps/shuttles/skyrat/"
+	suffix = "interdyne_burst"
+	name = "Interdyne Burst Shuttle"
+
+/obj/machinery/computer/shuttle/caravan/interdyne_burst
+	name = "Burst Shuttle Console"
+	desc = "Used to control the affectionately named 'Burst'."
+	circuit = /obj/item/circuitboard/computer/interdyne_burst
+	shuttleId = "interdyne_burst"
+	possible_destinations = "interdyne_burst_ds2;interdyne_burst_home"
+
+/obj/item/circuitboard/computer/interdyne_burst
+	name = "Burst Control Console (Computer Board)"
+	build_path = /obj/machinery/computer/shuttle/caravan/interdyne_burst
+/*----- DS-2 / Interdyne Shuttle Shuttle Code -----*/

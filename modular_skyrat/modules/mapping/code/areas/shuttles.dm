@@ -21,6 +21,9 @@
 /area/shuttle/tarkon_driver
 	name = "Tarkon Driver"
 
+/area/shuttle/interdyne_burst
+	name = "Interdyne Burst Shuttle"
+
 /area/shuttle/trader/bridge
 	name = "Trader Ship Bridge"
 
