@@ -114,12 +114,12 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				accessory_overlay.icon_state = "[render_state]_[layertext]_primary"
 				accessories = list()
 
-			// You better fuckin make sure those icons exist.
-			icon_exists(accessory_overlay.icon, accessory_overlay.icon_state, scream = TRUE)
+			if(accessory_overlay.icon == 'icons/mob/species/mutant_bodyparts.dmi')
+				// You better fuckin make sure those icons exist.
+				icon_exists(accessory_overlay.icon, accessory_overlay.icon_state, scream = TRUE)
 
 			if(bodypart_accessory.center)
 				accessory_overlay = center_image(accessory_overlay, x_shift, bodypart_accessory.dimension_y)
-
 
 			if(!override_color)
 				if(HAS_TRAIT(owner, TRAIT_HUSK))
@@ -179,8 +179,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				else
 					inner_accessory_overlay.icon_state = "m_[key]inner_[bodypart_accessory.icon_state]_[layertext]"
 
-				// You better fuckin make sure those icons exist.
-				icon_exists(inner_accessory_overlay.icon, inner_accessory_overlay.icon_state, scream = TRUE)
+				if(accessory_overlay.icon == 'icons/mob/species/mutant_bodyparts.dmi')
+					// You better fuckin make sure those icons exist.
+					icon_exists(inner_accessory_overlay.icon, inner_accessory_overlay.icon_state, scream = TRUE)
 
 				if(bodypart_accessory.center)
 					inner_accessory_overlay = center_image(inner_accessory_overlay, bodypart_accessory.dimension_x, bodypart_accessory.dimension_y)
@@ -196,8 +197,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				else
 					extra_accessory_overlay.icon_state = "m_[key]_extra_[bodypart_accessory.icon_state]_[layertext]"
 
-				// You better fuckin make sure those icons exist.
-				icon_exists(extra_accessory_overlay.icon, extra_accessory_overlay.icon_state, scream = TRUE)
+				if(accessory_overlay.icon == 'icons/mob/species/mutant_bodyparts.dmi')
+					// You better fuckin make sure those icons exist.
+					icon_exists(extra_accessory_overlay.icon, extra_accessory_overlay.icon_state, scream = TRUE)
 
 				if(bodypart_accessory.center)
 					extra_accessory_overlay = center_image(extra_accessory_overlay, bodypart_accessory.dimension_x, bodypart_accessory.dimension_y)
