@@ -6,7 +6,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	loaded_nifsoft = /datum/nifsoft/hivemind
 
 /datum/nifsoft/hivemind
-	name = "Hivemind Chat"
+	name = "Hivemind"
 	program_desc = "Hivemind is a program developed as a more reliable simulacrum of the mysterious means of communication that some varieties of slime share. It's built on a specific configuration of the NIF capable of generating a localized subspace network; the content the user's very thoughts, serving as a high-tech means of telepathic communication between NIF users."
 	activation_cost = 10
 	active_mode = TRUE
