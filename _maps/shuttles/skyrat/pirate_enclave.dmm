@@ -971,6 +971,7 @@
 "oy" = (
 /obj/machinery/light/directional/north,
 /obj/machinery/modular_computer/console/preset/civilian,
+/obj/item/radio/intercom/directional/north,
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "oH" = (
@@ -1083,13 +1084,11 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/pirate/nri)
 "pV" = (
-/obj/structure/sign/poster/contraband/missing_gloves{
-	pixel_y = -32
-	},
 /obj/structure/cable,
 /obj/machinery/power/terminal{
 	dir = 4
 	},
+/obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "pZ" = (
@@ -1325,6 +1324,38 @@
 	view_range = 12;
 	y_offset = 9
 	},
+/obj/machinery/button/door/directional/north{
+	id = "prisonshipwreckdock3";
+	name = "External Bolt Control 3";
+	normaldoorcontrol = 1;
+	pixel_x = -5;
+	pixel_y = -26;
+	specialfunctions = 4
+	},
+/obj/machinery/button/door/directional/north{
+	id = "prisonshipwreckdock";
+	name = "External Bolt Control 1";
+	normaldoorcontrol = 1;
+	pixel_x = 6;
+	pixel_y = -26;
+	specialfunctions = 4
+	},
+/obj/machinery/button/door/directional/south{
+	id = "prisonshipwreckdock4";
+	name = "External Bolt Control West-South";
+	normaldoorcontrol = 1;
+	pixel_x = -5;
+	pixel_y = -37;
+	specialfunctions = 4
+	},
+/obj/machinery/button/door/directional/south{
+	id = "prisonshipwreckdock2";
+	name = "External Bolt Control East-South";
+	normaldoorcontrol = 1;
+	pixel_x = 6;
+	pixel_y = -37;
+	specialfunctions = 4
+	},
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "tN" = (
@@ -1336,9 +1367,6 @@
 	},
 /obj/machinery/light/directional/south,
 /obj/effect/turf_decal/delivery,
-/obj/item/stack/sheet/mineral/uranium{
-	amount = 50
-	},
 /turf/open/floor/iron/dark,
 /area/shuttle/pirate/nri)
 "tZ" = (
@@ -1395,12 +1423,6 @@
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "uP" = (
-/obj/effect/turf_decal/trimline/yellow/warning{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/yellow/warning{
-	dir = 4
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
@@ -1413,9 +1435,8 @@
 /area/shuttle/pirate/nri)
 "va" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
-/obj/effect/turf_decal/trimline/yellow/warning{
-	dir = 9
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/pirate/nri)
@@ -1535,13 +1556,9 @@
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "wV" = (
-/obj/effect/turf_decal/trimline/yellow/warning{
-	dir = 4
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
+/obj/machinery/atmospherics/components/binary/pump/off/supply,
+/obj/structure/extinguisher_cabinet/directional/west,
+/turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "xd" = (
 /obj/machinery/atmospherics/components/tank/air{
@@ -1822,9 +1839,6 @@
 /area/shuttle/pirate/nri)
 "AR" = (
 /obj/machinery/light/directional/north,
-/obj/effect/turf_decal/trimline/yellow/warning{
-	dir = 5
-	},
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger_multi,
 /turf/open/floor/iron/dark,
@@ -1996,6 +2010,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/oil/slippery,
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "DA" = (
@@ -2064,9 +2079,6 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/pirate/nri)
 "ER" = (
-/obj/effect/turf_decal/trimline/yellow/warning{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
 	dir = 8
 	},
@@ -2398,6 +2410,8 @@
 	pixel_x = 3;
 	pixel_y = 4
 	},
+/obj/item/stack/sheet/cloth/ten,
+/obj/item/stack/sheet/cloth/ten,
 /turf/open/floor/iron/dark,
 /area/shuttle/pirate/nri)
 "JR" = (
@@ -2528,39 +2542,8 @@
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "LC" = (
-/obj/machinery/button/door/directional/north{
-	id = "prisonshipwreckdock3";
-	name = "External Bolt Control 3";
-	normaldoorcontrol = 1;
-	pixel_x = -5;
-	pixel_y = 6;
-	specialfunctions = 4
-	},
-/obj/machinery/button/door/directional/north{
-	id = "prisonshipwreckdock";
-	name = "External Bolt Control 1";
-	normaldoorcontrol = 1;
-	pixel_x = 6;
-	pixel_y = 6;
-	specialfunctions = 4
-	},
-/obj/machinery/button/door/directional/south{
-	id = "prisonshipwreckdock4";
-	name = "External Bolt Control West-South";
-	normaldoorcontrol = 1;
-	pixel_x = -5;
-	pixel_y = -5;
-	specialfunctions = 4
-	},
-/obj/machinery/button/door/directional/south{
-	id = "prisonshipwreckdock2";
-	name = "External Bolt Control East-South";
-	normaldoorcontrol = 1;
-	pixel_x = 6;
-	pixel_y = -5;
-	specialfunctions = 4
-	},
-/turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
+/obj/structure/extinguisher_cabinet/directional/north,
+/turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "Mi" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -2636,16 +2619,8 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/pirate/nri)
 "Nt" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/yellow/warning{
-	dir = 6
-	},
-/turf/open/floor/iron/dark,
+/obj/structure/extinguisher_cabinet/directional/south,
+/turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "NK" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
@@ -2785,12 +2760,6 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/pirate/nri)
 "PA" = (
-/obj/effect/turf_decal/trimline/yellow/warning{
-	dir = 9
-	},
-/obj/effect/turf_decal/trimline/yellow/warning{
-	dir = 5
-	},
 /obj/structure/table/reinforced,
 /obj/item/mod/module/welding,
 /turf/open/floor/iron/dark,
@@ -2887,12 +2856,6 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/pirate/nri)
 "QS" = (
-/obj/effect/turf_decal/trimline/yellow/warning{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/yellow/warning{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
 	},
@@ -2957,6 +2920,20 @@
 	},
 /turf/open/floor/carpet,
 /area/shuttle/pirate/nri)
+"RR" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/structure/extinguisher_cabinet/directional/south,
+/turf/open/floor/iron/white,
+/area/shuttle/pirate/nri)
 "RY" = (
 /turf/open/floor/iron,
 /area/shuttle/pirate/nri)
@@ -2985,10 +2962,8 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 5
 	},
-/obj/effect/turf_decal/trimline/yellow/warning{
-	dir = 10
-	},
 /obj/structure/cable,
+/obj/item/wrench,
 /turf/open/floor/iron/dark,
 /area/shuttle/pirate/nri)
 "SG" = (
@@ -3233,6 +3208,7 @@
 /area/shuttle/pirate/nri)
 "VW" = (
 /obj/structure/railing,
+/obj/structure/extinguisher_cabinet/directional/west,
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "Wi" = (
@@ -3441,12 +3417,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
-/obj/effect/turf_decal/trimline/yellow/warning{
-	dir = 6
-	},
-/obj/effect/turf_decal/trimline/yellow/warning{
-	dir = 10
-	},
 /obj/structure/cable,
 /obj/effect/turf_decal/stripes/end{
 	dir = 1
@@ -3492,6 +3462,7 @@
 /obj/effect/turf_decal/trimline/dark_red/warning{
 	dir = 6
 	},
+/obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/iron/dark,
 /area/shuttle/pirate/nri)
 "ZI" = (
@@ -3605,7 +3576,7 @@ SO
 nK
 jT
 kP
-jT
+ns
 wd
 SI
 Oa
@@ -3651,7 +3622,7 @@ SO
 nK
 jT
 bQ
-ns
+jT
 wd
 Xp
 Xp
@@ -3764,7 +3735,7 @@ sR
 CS
 dz
 wd
-ws
+LC
 bQ
 ws
 Ah
@@ -3923,7 +3894,7 @@ MH
 XV
 wd
 WF
-WF
+RR
 wd
 ac
 cq
@@ -4088,7 +4059,7 @@ Va
 wd
 Aq
 YF
-ws
+Nt
 wd
 sV
 wd
@@ -4125,7 +4096,7 @@ AI
 (27,1,1) = {"
 wd
 xd
-kV
+wV
 Xu
 vS
 pT
@@ -4159,9 +4130,9 @@ MM
 fb
 MM
 Ov
-va
+ag
 ER
-dQ
+va
 SD
 Dx
 ie
@@ -4206,9 +4177,9 @@ cq
 Fn
 wd
 AR
-wV
-OB
-Nt
+Aw
+ZR
+vK
 Lj
 pV
 wd
@@ -4411,7 +4382,7 @@ wd
 hd
 Tb
 tM
-LC
+wd
 wd
 iB
 ei
