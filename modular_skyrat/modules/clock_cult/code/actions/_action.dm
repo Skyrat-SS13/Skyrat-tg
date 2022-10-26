@@ -16,7 +16,6 @@
 /datum/action/innate/clockcult/quick_bind/Destroy()
 	activation_slab = null
 	scripture = null
-	Remove(owner)
 	return ..()
 
 /datum/action/innate/clockcult/quick_bind/Grant(mob/living/M)
