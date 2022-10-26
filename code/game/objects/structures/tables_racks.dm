@@ -595,13 +595,12 @@
 	integrity_failure = 0.25
 	armor = list(MELEE = 10, BULLET = 30, LASER = 30, ENERGY = 100, BOMB = 20, BIO = 0, FIRE = 80, ACID = 70)
 
-<<<<<<< HEAD
 //SKYRAT EDIT ADDITION
 /obj/structure/table/reinforced/Initialize()
 	. = ..()
 	AddElement(/datum/element/liquids_height, 20)
 //SKYRAT EDIT END
-=======
+
 /obj/structure/table/reinforced/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	. = ..()
 
