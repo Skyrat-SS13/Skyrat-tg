@@ -76,7 +76,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "exp_corps"
 	inhand_icon_state = "jackboots"
-	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 40, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
 
 /obj/item/clothing/gloves/color/black/expeditionary_corps
 	name = "expeditionary corps gloves"
@@ -88,7 +87,6 @@
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 80, ACID = 50)
 
 /obj/item/clothing/gloves/color/chief_engineer/expeditionary_corps
 	name = "expeditionary corps insulated gloves"
@@ -123,8 +121,6 @@
 	inhand_icon_state = "backpack"
 	icon = 'modular_skyrat/modules/exp_corps/icons/backpack.dmi'
 	worn_icon = 'modular_skyrat/modules/exp_corps/icons/mob_backpack.dmi'
-	slowdown = 0
-	resistance_flags = FIRE_PROOF
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Backpack" = list(
