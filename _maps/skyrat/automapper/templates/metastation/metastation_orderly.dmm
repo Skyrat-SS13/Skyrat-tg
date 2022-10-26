@@ -1,0 +1,272 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/closed/wall,
+/area/station/security/checkpoint/medical)
+"c" = (
+/obj/machinery/requests_console/directional/north{
+	department = "Security";
+	departmentType = 3;
+	name = "Security Requests Console"
+	},
+/obj/machinery/light/directional/north,
+/obj/machinery/camera/directional/north{
+	c_tag = "Security Post - Medbay";
+	network = list("ss13","medbay")
+	},
+/obj/structure/closet/secure_closet/security/med,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/station/security/checkpoint/medical)
+"e" = (
+/obj/machinery/computer/security/telescreen{
+	desc = "Used for monitoring medbay to ensure patient safety.";
+	dir = 4;
+	name = "Medbay Monitor";
+	network = list("medbay");
+	pixel_x = -32
+	},
+/obj/machinery/light_switch/directional/west{
+	pixel_x = -20
+	},
+/obj/machinery/computer/med_data{
+	dir = 4
+	},
+/obj/machinery/light/directional/west,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/station/security/checkpoint/medical)
+"j" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "medsecprivacy";
+	name = "Privacy Shutter"
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/window/brigdoor/left/directional/north{
+	req_access = list("security")
+	},
+/obj/structure/desk_bell{
+	pixel_x = -3;
+	pixel_y = 2
+	},
+/turf/open/floor/iron/white,
+/area/station/security/checkpoint/medical)
+"n" = (
+/obj/machinery/airalarm/directional/west,
+/obj/structure/closet/secure_closet/security/med,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/station/security/checkpoint/medical)
+"o" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/obj/effect/landmark/start/orderly,
+/turf/open/floor/iron/white,
+/area/station/security/checkpoint/medical)
+"p" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/obj/machinery/door/poddoor/preopen{
+	id = "medsecprivacy";
+	name = "Privacy Shutter"
+	},
+/turf/open/floor/plating,
+/area/station/security/checkpoint/medical)
+"r" = (
+/obj/machinery/button/door/directional/east{
+	id = "medsecprivacy";
+	name = "Privacy Shutters Control"
+	},
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/station/security/checkpoint/medical)
+"s" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/station/security/checkpoint/medical)
+"t" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/station/security/checkpoint/medical)
+"v" = (
+/obj/machinery/door/firedoor,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/medical/orderly,
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/obj/machinery/door/airlock/medical/glass{
+	name = "Orderly Office"
+	},
+/turf/open/floor/iron/white,
+/area/station/security/checkpoint/medical)
+"I" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/white,
+/area/station/security/checkpoint/medical)
+"L" = (
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/station/security/checkpoint/medical)
+"N" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/effect/landmark/start/orderly,
+/turf/open/floor/iron/white,
+/area/station/security/checkpoint/medical)
+"R" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 6
+	},
+/turf/open/floor/iron/white,
+/area/station/security/checkpoint/medical)
+"S" = (
+/obj/structure/table/reinforced,
+/obj/item/folder/red{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/item/pen{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/machinery/newscaster/directional/north,
+/obj/item/screwdriver{
+	pixel_y = -6
+	},
+/obj/item/radio/off{
+	pixel_x = -9;
+	pixel_y = 8
+	},
+/obj/machinery/recharger{
+	pixel_y = 4
+	},
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 5
+	},
+/turf/open/floor/iron/white,
+/area/station/security/checkpoint/medical)
+"T" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "medsecprivacy";
+	name = "Privacy Shutter"
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/window/brigdoor/right/directional/north{
+	req_access = list("brig_entrance")
+	},
+/obj/item/folder/red{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/obj/item/paper,
+/turf/open/floor/iron/white,
+/area/station/security/checkpoint/medical)
+"V" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/trimline/blue/filled/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/blue/filled/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/station/security/checkpoint/medical)
+"W" = (
+/obj/machinery/holopad,
+/turf/open/floor/iron/white,
+/area/station/security/checkpoint/medical)
+"Y" = (
+/obj/item/radio/intercom/directional/west,
+/obj/machinery/button/door/directional/west{
+	id = "MedbayFoyer";
+	name = "Medbay Doors Control";
+	normaldoorcontrol = 1;
+	pixel_y = -9
+	},
+/obj/machinery/computer/crew{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 10
+	},
+/turf/open/floor/iron/white,
+/area/station/security/checkpoint/medical)
+
+(1,1,1) = {"
+a
+a
+a
+v
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+n
+L
+V
+e
+Y
+a
+"}
+(3,1,1) = {"
+a
+c
+W
+I
+o
+N
+j
+"}
+(4,1,1) = {"
+a
+S
+r
+s
+t
+R
+T
+"}
+(5,1,1) = {"
+a
+a
+a
+p
+p
+p
+a
+"}
