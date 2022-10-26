@@ -192,7 +192,7 @@
 		visible_message(span_danger("[src] crashes headfirst into [A]!"))
 		discharge(1.5)
 
-/// Makes the Marked One unhappy and more befitting of his "hostile" subtype status. GET MAD! I DON'T WANT YOUR DAMN LEMONS WHAT THE HELL AM I SUPPOSED TO DO WITH THESE
+/// Makes the Marked One unhappy and more befitting of his "hostile" subtype status.
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/get_angry()
 	if(stat >= DEAD)
 		return
@@ -200,13 +200,13 @@
 		deltimer(anger_timer_id)
 	anger_timer_id = addtimer(CALLBACK(src, .proc/get_calm), MARKED_ONE_ANGER_DURATION, TIMER_STOPPABLE)
 
-/// Makes the Marked One a sleepy boy that don't wanna hurt nobody off the bat(unless they're an ash walker). I'M THE MAN THAT'S GONNA BURN YOUR HOUSE DOWN! With the lemons!
+/// Makes the Marked One a sleepy boy that don't wanna hurt nobody. He starts like this and progresses to his hostile state after seeing an ash walker or being punched in the noggin.
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/get_calm()
 	if(anger_timer_id)
 		deltimer(anger_timer_id)
 	anger_timer_id = null
 
-/// Villain monologue proc
+/// Proc that makes the Marked One spout a morally grey/absurdly racist one-liner dependong on who his target is
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/introduction(mob/living/target)
 	if(ishuman(target))
 		var/mob/living/carbon/human/human_target = target
@@ -347,7 +347,7 @@
 	charging = TRUE
 	update_phase()
 
-/// Discharge is what happens when grandpa gets the car keys, or the marked fellow rams his head into a solid wall
+/// Discharge damages the Marked One and stuns him when he slams into a wall whilst charging
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/discharge(modifier = 1)
 	stunned = TRUE
 	charging = FALSE
