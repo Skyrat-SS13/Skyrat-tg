@@ -246,6 +246,8 @@
 		/datum/computer_file/program/computerconfig,
 		/datum/computer_file/program/filemanager,
 		/datum/computer_file/program/robotact,
+		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for borgs
+		/datum/computer_file/program/messenger, // SKYRAT EDIT ADDITION - Messenger for borgs
 	)
 
 /obj/item/modular_computer/tablet/integrated/Initialize(mapload)
