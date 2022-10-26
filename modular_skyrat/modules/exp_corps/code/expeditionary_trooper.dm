@@ -1,6 +1,6 @@
 /obj/item/modular_computer/tablet/pda/expeditionary_corps
 	greyscale_colors = "#891417#000099"
-	name = "Military PDA"
+	name = "surplus military PDA"
 
 /obj/item/storage/box/expeditionary_survival
 	name = "expedition survival pack"
@@ -34,7 +34,7 @@
 /datum/supply_pack/misc/vanguard_surplus
 	name = "Expeditionary Corps Surplus"
 	desc = "Contains an assortment of surplus equipment from the now-defunct Vanguard Expeditionary Corps."
-	cost = CARGO_CRATE_VALUE * 18
+	cost = CARGO_CRATE_VALUE * 19
 	contains = list(
 		/obj/item/storage/box/expeditionary_survival,
 		/obj/item/melee/tomahawk,
@@ -46,6 +46,7 @@
 		/obj/item/clothing/under/rank/expeditionary_corps,
 		/obj/item/clothing/shoes/combat/expeditionary_corps,
 		/obj/item/modular_computer/tablet/pda/expeditionary_corps,
+		/obj/item/knife/combat/marksman,
 	)
 	/// How many of the contains to put in the crate
 	var/num_contained = 3
