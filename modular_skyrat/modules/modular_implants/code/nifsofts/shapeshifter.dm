@@ -28,7 +28,7 @@
 
 /// The NIF version of alter form. This lacks the ability to change body color.
 /datum/action/innate/alter_form/nif
-	name = "Shapeshift"
+	name = "Polymorph"
 	slime_restricted =  FALSE
 	button_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
 	background_icon_state = "android"
