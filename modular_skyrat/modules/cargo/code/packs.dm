@@ -292,7 +292,7 @@
 /datum/supply_pack/misc/vanguard_surplus
 	name = "Expeditionary Corps Surplus"
 	desc = "Contains an assortment of surplus equipment from the now-defunct Vanguard Expeditionary Corps."
-	cost = CARGO_CRATE_VALUE * 18
+	cost = CARGO_CRATE_VALUE * 19
 	contains = list(
 		/obj/item/storage/box/expeditionary_survival,
 		/obj/item/melee/tomahawk,
