@@ -45,12 +45,14 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/new_renderkey = "[id]"
 
 	for(var/key in mutant_bodyparts)
-		if (!islist(mutant_bodyparts[key]))
+		if(!islist(mutant_bodyparts[key]))
 			continue
 		var/datum/sprite_accessory/mutant_accessory = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
-		if(!mutant_accessory || mutant_accessory.icon_state == "none")
+		if(!mutant_accessory)
+			stack_trace("Sprite accessory is null in the sprite_accessories global! This shouldn't be possible!")
 			continue
-		if(mutant_accessory.is_hidden(owner, HD))
+		// Fine. Some folk like having generic base classes that aren't themselves an accessory.
+		if(!mutant_accessory.icon_state || !mutant_accessory.factual || !mutant_accessory.icon || mutant_accessory.is_hidden(owner, HD))
 			continue
 		var/render_state
 		if(mutant_accessory.special_render_case)
@@ -70,7 +72,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	owner.remove_overlay(BODY_FRONT_UNDER_CLOTHES)
 	owner.remove_overlay(ABOVE_BODY_FRONT_HEAD_LAYER)
 
-	var/g = (owner.physique == FEMALE) ? "f" : "m"
+	var/gender_prefix = (owner.physique == FEMALE) ? "f" : "m"
 	for(var/bodypart in bodyparts_to_add)
 		var/datum/sprite_accessory/bodypart_accessory = bodypart
 		var/key = bodypart_accessory.key
@@ -89,7 +91,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		else
 			icon_to_use = bodypart_accessory.icon
 
-		if (bodypart_accessory.special_render_case)
+		if(bodypart_accessory.special_render_case)
 			color_layer_list = list("1" = "primary", "2" = "secondary", "3" = "tertiary")
 
 		if(bodypart_accessory.special_x_dimension)
@@ -98,7 +100,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			x_shift = bodypart_accessory.dimension_x
 
 		if(bodypart_accessory.gender_specific)
-			render_state = "[g]_[bodypart_accessory.get_special_render_key(owner)]_[render_state]"
+			render_state = "[gender_prefix]_[bodypart_accessory.get_special_render_key(owner)]_[render_state]"
 		else
 			render_state = "m_[bodypart_accessory.get_special_render_key(owner)]_[render_state]"
 
@@ -108,9 +110,12 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			var/mutable_appearance/accessory_overlay = mutable_appearance(icon_to_use, layer = -layer)
 
 			accessory_overlay.icon_state = "[render_state]_[layertext]"
-			if (bodypart_accessory.color_src == USE_MATRIXED_COLORS && color_layer_list)
+			if(bodypart_accessory.color_src == USE_MATRIXED_COLORS && color_layer_list)
 				accessory_overlay.icon_state = "[render_state]_[layertext]_primary"
 				accessories = list()
+
+			// You better fuckin make sure those icons exist.
+			icon_exists(accessory_overlay.icon, accessory_overlay.icon_state, scream = TRUE)
 
 			if(bodypart_accessory.center)
 				accessory_overlay = center_image(accessory_overlay, x_shift, bodypart_accessory.dimension_y)
@@ -139,8 +144,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 								accessories += matrixed_acce
 								if (mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][num])
 									var/mutable_appearance/emissive_overlay = emissive_appearance_copy(matrixed_acce, owner)
-									//if (bodypart_accessory.center)
-									//	emissive_overlay = center_image(emissive_overlay, x_shift, bodypart_accessory.dimension_y)
 									accessories += emissive_overlay
 						if(MUTCOLORS)
 							if(fixed_mut_color)
@@ -167,16 +170,17 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				standing += accessory_overlay
 				if (mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][1])
 					var/mutable_appearance/emissive_overlay = emissive_appearance_copy(accessory_overlay, owner)
-					//if (bodypart_accessory.center)
-					//	emissive_overlay = center_image(emissive_overlay, x_shift, bodypart_accessory.dimension_y)
 					standing += emissive_overlay
 
 			if(bodypart_accessory.hasinner)
 				var/mutable_appearance/inner_accessory_overlay = mutable_appearance(bodypart_accessory.icon, layer = -layer)
 				if(bodypart_accessory.gender_specific)
-					inner_accessory_overlay.icon_state = "[g]_[key]inner_[bodypart_accessory.icon_state]_[layertext]"
+					inner_accessory_overlay.icon_state = "[gender_prefix]_[key]inner_[bodypart_accessory.icon_state]_[layertext]"
 				else
 					inner_accessory_overlay.icon_state = "m_[key]inner_[bodypart_accessory.icon_state]_[layertext]"
+
+				// You better fuckin make sure those icons exist.
+				icon_exists(inner_accessory_overlay.icon, inner_accessory_overlay.icon_state, scream = TRUE)
 
 				if(bodypart_accessory.center)
 					inner_accessory_overlay = center_image(inner_accessory_overlay, bodypart_accessory.dimension_x, bodypart_accessory.dimension_y)
@@ -186,10 +190,15 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			//Here's EXTRA parts of accessories which I should get rid of sometime TODO i guess
 			if(bodypart_accessory.extra) //apply the extra overlay, if there is one
 				var/mutable_appearance/extra_accessory_overlay = mutable_appearance(bodypart_accessory.icon, layer = -layer)
+
 				if(bodypart_accessory.gender_specific)
-					extra_accessory_overlay.icon_state = "[g]_[key]_extra_[bodypart_accessory.icon_state]_[layertext]"
+					extra_accessory_overlay.icon_state = "[gender_prefix]_[key]_extra_[bodypart_accessory.icon_state]_[layertext]"
 				else
 					extra_accessory_overlay.icon_state = "m_[key]_extra_[bodypart_accessory.icon_state]_[layertext]"
+
+				// You better fuckin make sure those icons exist.
+				icon_exists(extra_accessory_overlay.icon, extra_accessory_overlay.icon_state, scream = TRUE)
+
 				if(bodypart_accessory.center)
 					extra_accessory_overlay = center_image(extra_accessory_overlay, bodypart_accessory.dimension_x, bodypart_accessory.dimension_y)
 
@@ -219,7 +228,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			if(bodypart_accessory.extra2) //apply the extra overlay, if there is one
 				var/mutable_appearance/extra2_accessory_overlay = mutable_appearance(bodypart_accessory.icon, layer = -layer)
 				if(bodypart_accessory.gender_specific)
-					extra2_accessory_overlay.icon_state = "[g]_[key]_extra2_[bodypart_accessory.icon_state]_[layertext]"
+					extra2_accessory_overlay.icon_state = "[gender_prefix]_[key]_extra2_[bodypart_accessory.icon_state]_[layertext]"
 				else
 					extra2_accessory_overlay.icon_state = "m_[key]_extra2_[bodypart_accessory.icon_state]_[layertext]"
 				if(bodypart_accessory.center)
@@ -258,7 +267,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	owner.apply_overlay(ABOVE_BODY_FRONT_HEAD_LAYER)
 
 /datum/species
-	///What accessories can a species have aswell as their default accessory of such type e.g. "frills" = "Aquatic". Default accessory colors is dictated by the accessory properties and mutcolors of the specie
+	///What accessories can a species have aswell as their default accessory of such type e.gender_prefix. "frills" = "Aquatic". Default accessory colors is dictated by the accessory properties and mutcolors of the specie
 	var/list/default_mutant_bodyparts = list()
 	var/list/genitals_list = list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_WOMB, ORGAN_SLOT_TESTICLES, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS, ORGAN_SLOT_PENIS)
 
