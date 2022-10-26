@@ -1271,3 +1271,70 @@
       of who works there
   - bugfix: Void-raptor detective office now has their staple camera console
   - bugfix: Void-raptor Customs camera console is usable
+2022-10-26:
+  GoldenAlpharex:
+  - config: The Generate Job Configuration verb now works as expected when there's
+      at least one job in-game that doesn't exist in the new jobconfig.toml file already.
+  - bugfix: Any value that is set to 0 in jobconfig.toml will no longer default to
+      the codebase's default, and will actually be considered as 0.
+  Melbert:
+  - bugfix: Managing to physically move an atmos holofan will no longer make it's
+      old location permanently unable to have a firedoor close over it
+  - bugfix: Having the Nuke Disk teleport off your person gives you a chat message
+      warning, as was always intended
+  - bugfix: Having the Nuke Disk inside of your backpack when you enter somewhere
+      unreachable will have it teleport away, as was always intended
+  - bugfix: Having the Nuke Disk relocate from your person will no longer keep a ghost
+      image of the disk where it once was, a harrowing reminder of your failures
+  - refactor: Refactored "secluded locations" into a trait
+  MidoriWroth:
+  - rscadd: Added shakiri, a sweet alcohol produced from fermenting kiri fruits, along
+      with 3 cocktails using it.
+  - balance: Muli pods produce more juice, and give the same amount of juice whether
+      ground or juiced
+  - bugfix: Updated some minor teshari food flavor text
+  Paxilmaniac:
+  - bugfix: forging shields will now actually have a worn icon when put on the back
+  SkyratBot:
+  - bugfix: On tramstation, jobs that have morgue access should be able to access
+      it
+  - bugfix: In general, morgue access does not let you sneak into medbay
+  - qol: Humans spawned from a ghost by an admin have their quirks assigned
+  - bugfix: The SpiderClan have resolved an issue where the Ninja Suit would terminate
+      the AI inside during standard usage
+  - bugfix: The disease outbreak events will no longer attempt to fire if there are
+      no valid players to infect.
+  - balance: The disease outbreak events now take a fair bit longer to announce themselves
+      to the crew.
+  - balance: The 'classic' disease outbreak has an expanded roster of diseases to
+      be selected from.
+  - admin: Admins can now pick which classic disease they wish to loose upon the crew
+      (BE CAREFUL WITH THESE).
+  - code_imp: The disease outbreak event has been split into two different events
+      -- "Classic" and "Advanced". The code should be a bit easier to read as well.
+  - code_imp: The dmi that reagent holders take fill icons from is no longer hard
+      coded as reagentfillings.dmi, and can be changed using the fill_icon variable
+  - bugfix: Ian once again celebrates his birthday on Kilo, and new year on Icebox
+  - qol: Add AltClick to remove pAIs for tablets.  Added balloon alerts to tablets
+      for inserting/removing objects.
+  - rscadd: People wearing kitty ears can now have their tails pulled.
+  - bugfix: Fixed getting stuck with blurry vision if your eyes were fixed while you
+      were ghosting
+  Zergspower:
+  - qol: Space Hotel - remade all rooms, moved Solars and dock to the south and managers
+      office next to the entry for the hotel rooms
+  - qol: Space Hotel  - Many many many many changes to the overall look and feel,
+      from carpets/walls/colors/rooms
+  - qol: Space Hotel - Staff now have a bit more control over the
+  - bugfix: Space Hotel - fixed couch direction bug in lobby
+  - bugfix: Space Hotel  - broken clothing/spawners and decals
+  - rscadd: Space Hotel - New keyed doors specially made for the hotel! No key? No
+      Room!
+  - rscadd: Space Hotel - New Door Sprites/coloring and function
+  - rscadd: Space Hotel  - New Permanent Portal creator for the manager to place a
+      static portal for easier transition from station to Hotel
+  - rscadd: ''
+  - qol: Mass redesign of the Interdynefob ruin aka DS-2 - focusing on shrinking down
+      unused areas and optimizing each rooms size.
+  - bugfix: interdyne fob - A lot of minor duplications and errors, mostly with cables
+      and piping
