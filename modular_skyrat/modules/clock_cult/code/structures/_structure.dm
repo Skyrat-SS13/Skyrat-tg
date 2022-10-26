@@ -9,9 +9,11 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	break_message = span_warning("Sparks fly as the brass structure shatters across the ground.") //The message shown when a structure breaks
 	break_sound = 'sound/magic/clockwork/anima_fragment_death.ogg' //The sound played when a structure breaks
-	debris = list(/obj/structure/fluff/clockwork/alloy_shards/large = 1, \
-	/obj/structure/fluff/clockwork/alloy_shards/medium = 2, \
-	/obj/structure/fluff/clockwork/alloy_shards/small = 3) //Parts left behind when a structure breaks
+	debris = list(
+		/obj/structure/fluff/clockwork/alloy_shards/large = 1,
+		/obj/structure/fluff/clockwork/alloy_shards/medium = 2,
+		/obj/structure/fluff/clockwork/alloy_shards/small = 3
+	)
 	///if we ignore attacks from servants of ratvar instead of taking damage
 	var/immune_to_servant_attacks = FALSE
 	///The person who placed this structure
@@ -23,16 +25,13 @@
 	///if a fabricator can repair it
 	var/can_be_repaired = TRUE
 
+/obj/structure/destructible/clockwork/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clockwork_description, clockwork_desc)
 
 /obj/structure/destructible/clockwork/Destroy()
 	owner = null
 	return ..()
-
-/obj/structure/destructible/clockwork/examine(mob/user)
-	. = ..()
-	if(clockwork_desc)
-		. += span_nzcrentr(clockwork_desc)
-	return .
 
 /obj/structure/destructible/clockwork/attacked_by(obj/item/I, mob/living/user)
 	if(immune_to_servant_attacks && (FACTION_CLOCK in user.faction))

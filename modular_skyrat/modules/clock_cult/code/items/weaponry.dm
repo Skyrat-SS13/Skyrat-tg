@@ -17,11 +17,6 @@
 	/// Typecache of valid turfs to have the weapon's special effect on
 	var/static/list/effect_turf_typecache = typecacheof(list(/turf/open/floor/bronze))
 
-/obj/item/clockwork/weapon/examine(mob/user)
-	. = ..()
-	if((FACTION_CLOCK in user.faction) && clockwork_hint)
-		. += span_brass(clockwork_hint)
-
 /obj/item/clockwork/weapon/attack(mob/living/target, mob/living/user)
 	. = ..()
 	var/turf/gotten_turf = get_turf(user)
@@ -200,10 +195,9 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/lionhunter/clockwork
 	fire_sound = 'sound/weapons/gun/sniper/shot.ogg'
 
-/obj/item/gun/ballistic/rifle/lionhunter/clockwork/examine(mob/user)
+/obj/item/gun/ballistic/rifle/lionhunter/clockwork/Initialize(mapload)
 	. = ..()
-	if(FACTION_CLOCK in user.faction)
-		. += span_brass("The speed of which you aim at far targets while standing on brass will be massively increased.")
+	AddElement(/datum/element/clockwork_description, "The speed of which you aim at far targets while standing on brass will be massively increased.")
 
 /obj/item/ammo_box/magazine/internal/boltaction/lionhunter/clockwork
 	name = "brass rifle internal magazine"

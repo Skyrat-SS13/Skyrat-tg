@@ -1,8 +1,8 @@
 /obj/item/clockwork/integration_cog
 	name = "integration cog"
-	desc = "cogger_apc small cog that seems to spin by its own acord when left alone."
+	desc = "A small cog that seems to spin by its own acord when left alone."
 	icon_state = "integration_cog"
-	clockwork_hint = "cogger_apc sharp cog that can cut through and be inserted into APCs to extract power for your machinery."
+	clockwork_hint = "A sharp cog that can cut through and be inserted into APCs to extract power for your machinery."
 
 /obj/item/clockwork/integration_cog/attack_atom(atom/attacked_atom, mob/living/user, params)
 	if(!(FACTION_CLOCK in user.faction))

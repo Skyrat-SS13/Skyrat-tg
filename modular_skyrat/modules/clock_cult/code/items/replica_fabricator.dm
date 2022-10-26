@@ -4,11 +4,11 @@
 
 /obj/item/clockwork/replica_fabricator
 	name = "replica fabricator"
+	desc = "A strange, brass device with many twisting cogs and vents."
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_objects.dmi'
 	lefthand_file = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_righthand.dmi'
 	icon_state = "replica_fabricator"
-	desc = "A strange, brass device with many twisting cogs and vents."
 	/// How much power this has. 5 generated per sheet inserted, one sheet of bronze costs 10, one floor tile costs 15, one wall costs 20
 	var/power = 0
 

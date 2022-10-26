@@ -2,8 +2,12 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 
 /obj/item/clockwork
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_objects.dmi'
-	/// Extra info to give clock cultists
+	/// Extra info to give clock cultists, added via the /datum/element/clockwork_description element
 	var/clockwork_hint = ""
+
+/obj/item/clockwork/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clockwork_description, clockwork_hint)
 
 /obj/item/clockwork/clockwork_slab
 	name = "Clockwork Slab"
