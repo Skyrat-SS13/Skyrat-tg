@@ -152,8 +152,8 @@
 
 		return
 
-	default_price = 30
-	extra_price = 250
+	default_price = initial(src.default_price)
+	extra_price = initial(src.extra_price)
 
 ///Allows the user to change the color if the card has been used
 /obj/machinery/vending/dorms/multitool_act(mob/living/user, obj/item/used_item)
