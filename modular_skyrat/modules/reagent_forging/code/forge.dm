@@ -55,8 +55,6 @@
 	var/minimum_target_temperature = 0
 	/// What is the current reduction for temperature decrease
 	var/temperature_loss_reduction = 0
-	/// How many sheet of ore the forge will spawn when you smelt ores in it
-	var/ore_to_sheet_amount = 1
 	/// How many seconds of weak fuel (wood) does the forge have left
 	var/forge_fuel_weak = 0
 	/// How many seconds of strong fuel (coal) does the forge have left
@@ -145,9 +143,6 @@
 
 		if(FORGE_LEVEL_LEGENDARY)
 			. += span_hierophant("This forge has been upgraded by a legendary smith.") // Legendary skills give you the greatest gift of all, cool text
-
-	if(ore_to_sheet_amount)
-		. += span_notice("When smelting ores, [ore_to_sheet_amount] sheets will be created.")
 
 	switch(temperature_loss_reduction)
 		if(0)
