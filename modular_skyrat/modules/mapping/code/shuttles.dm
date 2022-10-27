@@ -204,14 +204,30 @@
 	suffix = "interdyne_burst"
 	name = "Interdyne Burst Shuttle"
 
-/obj/machinery/computer/shuttle/caravan/interdyne_burst
+/obj/machinery/computer/shuttle/interdyne_burst
 	name = "Burst Shuttle Console"
 	desc = "Used to control the affectionately named 'Burst'."
-	circuit = /obj/item/circuitboard/computer/interdyne_burst
+	circuit = /obj/item/circuitboard/shuttle/interdyne_burst
+	icon_screen = "syndishuttle"
+	icon_keyboard = "syndie_key"
+	light_color = COLOR_SOFT_RED
+	req_access = list(ACCESS_SYNDICATE)
 	shuttleId = "interdyne_burst"
-	possible_destinations = "interdyne_burst_ds2;interdyne_burst_home"
+	possible_destinations = "interdyne_burst_ds2;interdyne;whiteship_home"
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
+	flags_1 = NODECONSTRUCT_1
 
-/obj/item/circuitboard/computer/interdyne_burst
+/obj/machinery/computer/camera_advanced/shuttle_docker/interdyne_burst
+	name = "Burst Shuttle Navigation Computer"
+	desc = "The Navigation console for the Burst Shuttle. A small cargo and personnel shuttle rated for extreme conditions."
+	shuttleId = "interdyne_burst"
+	lock_override = NONE
+	shuttlePortId = "interdyne"
+	jump_to_ports = list("interdyne" = 1, "interdyne_burst_ds2" = 1)
+	view_range = 0
+
+/obj/item/circuitboard/shuttle/interdyne_burst
 	name = "Burst Control Console (Computer Board)"
-	build_path = /obj/machinery/computer/shuttle/caravan/interdyne_burst
+	build_path = /obj/machinery/computer/shuttle/interdyne_burst
+
 /*----- DS-2 / Interdyne Shuttle Shuttle Code -----*/

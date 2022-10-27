@@ -32,6 +32,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/white/filled/corner,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "as" = (
@@ -347,6 +348,9 @@
 	dir = 4
 	},
 /obj/machinery/light/directional/north,
+/obj/machinery/light_switch{
+	pixel_y = 31
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/cargo)
 "cZ" = (
@@ -540,6 +544,18 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/syndicate_lava_base/engineering)
+"es" = (
+/obj/docking_port/stationary{
+	dir = 4;
+	dwidth = 7;
+	height = 9;
+	shuttle_id = "interdyne_burst";
+	name = "Interdyne";
+	roundstart_template = /datum/map_template/shuttle/ruin/interdyne_burst;
+	width = 14
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "et" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -1058,6 +1074,16 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/cargo)
+"iR" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/dormitories)
 "iV" = (
 /obj/effect/turf_decal/siding/purple{
 	dir = 6
@@ -1256,12 +1282,6 @@
 	},
 /turf/open/floor/engine,
 /area/ruin/syndicate_lava_base/testlab)
-"ll" = (
-/obj/docking_port/stationary{
-	dir = 4
-	},
-/turf/closed/wall/r_wall/syndicate/nodiagonal,
-/area/ruin/syndicate_lava_base/cargo)
 "ls" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 6
@@ -1498,6 +1518,24 @@
 	},
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/syndicate_lava_base/engineering)
+"nK" = (
+/obj/effect/turf_decal/siding/wood/end{
+	dir = 4
+	},
+/obj/machinery/door/airlock{
+	name = "Cabin 3";
+	id_tag = "Hydralisk"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/syndicate_lava_base/dormitories)
 "nN" = (
 /obj/effect/turf_decal/trimline/dark_red,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -1649,6 +1687,9 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/siding/white/corner,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/white/filled/corner{
+	dir = 1
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "pq" = (
@@ -1792,6 +1833,9 @@
 /obj/effect/turf_decal/siding/purple{
 	dir = 1
 	},
+/obj/machinery/light_switch{
+	pixel_y = 31
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/testlab)
 "rc" = (
@@ -1817,7 +1861,7 @@
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 4
 	},
-/obj/machinery/computer/shuttle/caravan/interdyne_burst{
+/obj/machinery/computer/shuttle/interdyne_burst{
 	dir = 8
 	},
 /turf/open/floor/iron/dark/smooth_edge{
@@ -1940,6 +1984,13 @@
 	dir = 5
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/button/door{
+	id = "Swarmling";
+	name = "Dorm Bolt Control";
+	normaldoorcontrol = 1;
+	pixel_x = 25;
+	specialfunctions = 4
+	},
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/dormitories)
 "sr" = (
@@ -2483,7 +2534,6 @@
 	dir = 1
 	},
 /obj/item/kirbyplants/random,
-/obj/machinery/light/directional/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/dormitories)
@@ -2515,6 +2565,20 @@
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/cargo)
+"yc" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/machinery/button/door{
+	id = s;
+	name = "Dorm Bolt Control";
+	normaldoorcontrol = 1;
+	pixel_x = 25;
+	specialfunctions = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/syndicate_lava_base/dormitories)
 "yd" = (
 /obj/structure/window/reinforced/survival_pod,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
@@ -2716,6 +2780,9 @@
 /obj/structure/cable,
 /obj/machinery/light/directional/north,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/light_switch{
+	pixel_y = 31
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "zw" = (
@@ -2754,7 +2821,6 @@
 	dir = 1
 	},
 /obj/item/kirbyplants/random,
-/obj/machinery/light/directional/north,
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/dormitories)
 "Ac" = (
@@ -3045,6 +3111,9 @@
 	dir = 5
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/light_switch{
+	pixel_y = 31
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/medbay)
 "BN" = (
@@ -3126,7 +3195,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock{
-	name = "Cabin 1"
+	name = "Cabin 4";
+	id_tag = "Zergling"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -3651,6 +3721,9 @@
 	dir = 10
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "GP" = (
@@ -3661,6 +3734,9 @@
 	dir = 1
 	},
 /obj/machinery/light/directional/north,
+/obj/machinery/light_switch{
+	pixel_y = 31
+	},
 /turf/open/floor/iron/corner,
 /area/ruin/syndicate_lava_base/bar)
 "GS" = (
@@ -3805,6 +3881,9 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/siding/dark/corner,
+/obj/machinery/light_switch{
+	pixel_y = 31
+	},
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
 "Ij" = (
@@ -3855,6 +3934,9 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/cable,
 /obj/machinery/light/directional/north,
+/obj/machinery/light_switch{
+	pixel_y = 31
+	},
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/engineering)
 "IF" = (
@@ -3863,6 +3945,17 @@
 	},
 /turf/open/floor/engine/o2,
 /area/ruin/syndicate_lava_base/engineering)
+"IG" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/trimline/white/filled/corner{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/dormitories)
 "IH" = (
 /obj/effect/turf_decal/vg_decals/atmos/nitrogen{
 	dir = 1
@@ -4034,6 +4127,20 @@
 	},
 /turf/open/floor/catwalk_floor,
 /area/lavaland/surface/outdoors)
+"Kj" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/machinery/button/door{
+	id = "Hydralisk";
+	name = "Dorm Bolt Control";
+	normaldoorcontrol = 1;
+	pixel_x = 25;
+	specialfunctions = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/syndicate_lava_base/dormitories)
 "Kl" = (
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 8
@@ -4208,6 +4315,9 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/white/filled/corner{
+	dir = 1
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "Ll" = (
@@ -4420,6 +4530,13 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
 	},
+/obj/machinery/button/door{
+	id = "Zergling";
+	name = "Dorm Bolt Control";
+	normaldoorcontrol = 1;
+	pixel_x = 25;
+	specialfunctions = 4
+	},
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/dormitories)
 "Nh" = (
@@ -4548,6 +4665,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "Or" = (
@@ -4920,6 +5040,24 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/iron/checker,
 /area/ruin/syndicate_lava_base/bar)
+"SA" = (
+/obj/effect/turf_decal/siding/wood/end{
+	dir = 4
+	},
+/obj/machinery/door/airlock{
+	name = "Cabin 2";
+	id_tag = "Ultralisk"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/ruin/syndicate_lava_base/dormitories)
 "SI" = (
 /obj/structure/chair/sofa{
 	dir = 4
@@ -5050,6 +5188,24 @@
 "TN" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood/large,
+/area/ruin/syndicate_lava_base/dormitories)
+"TR" = (
+/obj/effect/turf_decal/siding/wood/end{
+	dir = 4
+	},
+/obj/machinery/door/airlock{
+	name = "Cabin 1";
+	id_tag = "Swarmling"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/dormitories)
 "TU" = (
 /obj/machinery/door/airlock/public/glass{
@@ -5271,6 +5427,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "VI" = (
@@ -5746,6 +5905,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/light/directional/west,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
 "ZG" = (
@@ -5754,6 +5914,9 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "ZM" = (
@@ -7292,7 +7455,7 @@ Zz
 Zz
 Ju
 Zz
-ll
+Zz
 rh
 rh
 Zz
@@ -7347,15 +7510,15 @@ ab
 ab
 ab
 ab
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Sy
+Sy
+Sy
+Sy
+es
+Sy
+Sy
+Sy
+Sy
 ab
 ab
 Wx
@@ -7405,17 +7568,17 @@ ag
 ab
 ab
 ab
-ab
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-ab
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
 ab
 Wx
 OC
@@ -7464,17 +7627,17 @@ ag
 ab
 ab
 ab
-ab
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-ab
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
 ab
 RD
 OC
@@ -7523,17 +7686,17 @@ ab
 ab
 ab
 ab
-ab
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-ab
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
 ab
 RD
 OC
@@ -7582,16 +7745,16 @@ ab
 ab
 ab
 ab
-ab
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
 ab
 ab
 RD
@@ -7642,15 +7805,15 @@ ab
 ab
 ab
 ab
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
 ab
 Sy
 Wx
@@ -7701,15 +7864,15 @@ ab
 ab
 ab
 ab
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
+Sy
 Sy
 Sy
 Wx
@@ -7762,9 +7925,9 @@ ab
 ab
 ab
 Sy
-ab
-ab
-ab
+Sy
+Sy
+Sy
 ab
 Sy
 Sy
@@ -8088,11 +8251,11 @@ sp
 By
 bB
 Vb
-Ng
+yc
 By
 cc
 Vb
-Ng
+Kj
 By
 XN
 Vb
@@ -8144,15 +8307,15 @@ Wk
 sE
 Vb
 Vb
-Cf
+TR
 Vb
 Vb
 Vb
-Cf
+SA
 Vb
 Vb
 Vb
-Cf
+nK
 Vb
 Vb
 Vb
@@ -8204,15 +8367,15 @@ sE
 Vb
 jR
 am
-xg
+iR
 tp
 xg
 am
-xg
+iR
 tp
 xg
 am
-xg
+iR
 tp
 xg
 am
@@ -8267,11 +8430,11 @@ pp
 eT
 Bw
 ZG
-tU
+IG
 GS
 tU
 ZG
-tU
+IG
 tU
 tU
 VG
