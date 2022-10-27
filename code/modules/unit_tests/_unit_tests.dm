@@ -74,6 +74,7 @@
 // SKYRAT EDIT START
 #include "~skyrat/opposing_force.dm"
 #include "~skyrat/automapper.dm"
+#include "~skyrat/sprite_accessories.dm"
 //SKYRAT EDIT END
 #include "ablative_hud.dm"
 #include "achievements.dm"
