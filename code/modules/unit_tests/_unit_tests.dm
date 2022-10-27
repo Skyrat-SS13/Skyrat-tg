@@ -183,6 +183,7 @@
 #include "stomach.dm"
 #include "strippable.dm"
 #include "subsystem_init.dm"
+#include "suit_storage_icons.dm"
 #include "surgeries.dm"
 #include "teleporters.dm"
 #include "tgui_create_message.dm"
