@@ -31,7 +31,7 @@ If you create T5+ please take a pass at mech_fabricator.dm. The parts being good
 		if(!attacked_machinery.component_parts)
 			return ..()
 
-		if(works_from_distance && IN_GIVEN_RANGE(user, attacked_machinery, 15)) // SKYRAT EDIT - BS RPED limit - Old code: if(works_from_distance)
+		if(works_from_distance)
 			user.Beam(attacked_machinery, icon_state = "rped_upgrade", time = 5)
 		attacked_machinery.exchange_parts(user, src)
 		return TRUE
@@ -59,7 +59,7 @@ If you create T5+ please take a pass at mech_fabricator.dm. The parts being good
 		if(!attacked_machinery.component_parts)
 			return ..()
 
-		if(works_from_distance)
+		if(works_from_distance && IN_GIVEN_RANGE(user, attacked_machinery, 15)) // SKYRAT EDIT - BS RPED limit - Old code: if(works_from_distance)
 			user.Beam(attacked_machinery, icon_state = "rped_upgrade", time = 5)
 			attacked_machinery.exchange_parts(user, src)
 		return
