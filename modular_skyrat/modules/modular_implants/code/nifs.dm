@@ -143,10 +143,10 @@
 	if(IS_IN_STASIS(linked_mob))
 		return
 
-	if((linked_mob.nutrition < minimum_nutrition) && (nutrition_drain)) //Turns nutrition drain off if nutrition is lower than minimum
+	if(nutrition_drain && linked_mob.nutrition < minimum_nutrition) //Turns nutrition drain off if nutrition is lower than minimum
 		toggle_nutrition_drain(TRUE)
 
-	if(blood_drain && (!blood_check())) //Disables blood draining if the mob fails the blood check
+	if(blood_drain && !blood_check()) //Disables blood draining if the mob fails the blood check
 		toggle_blood_drain(TRUE)
 
 	if(blood_drain)
@@ -159,9 +159,7 @@
 
 			nifsoft.activate()
 
-	power_level += -power_usage
-	if(power_level > max_power)
-		power_level = max_power //No Overcharging
+	power_level = min(power_level - power_usage, max_power)
 
 /obj/item/organ/internal/cyberimp/brain/nif/Destroy()
 	linked_mob.nif_examine_text = null
@@ -180,7 +178,7 @@
 
 ///Toggles nutrition drain as a power source on NIFs on/off
 /obj/item/organ/internal/cyberimp/brain/nif/proc/toggle_nutrition_drain(bypass = FALSE)
-	if(!nutrition_check() && !bypass)
+	if(!bypass && !nutrition_check())
 		return FALSE
 
 	var/hunger_modifier = linked_mob.physiology.hunger_mod
@@ -206,10 +204,7 @@
 	if(HAS_TRAIT(linked_mob, TRAIT_NOHUNGER)) //Hemophages HATE this one simple check.
 		return FALSE
 
-	if((linked_mob.nutrition < minimum_nutrition)) //No reason why you should be able to turn this on without power
-		return FALSE
-
-	return TRUE
+	return linked_mob.nutrition >= minimum_nutrition
 
 ///Toggles Blood Drain
 /obj/item/organ/internal/cyberimp/brain/nif/proc/toggle_blood_drain(bypass = FALSE)
@@ -237,6 +232,8 @@
 		return FALSE
 
 	return TRUE
+
+
 ///Preforms calibration, this is run the first time a NIF is installed in someone.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/preform_calibration()
 	if(linked_mob.stat == DEAD)
@@ -309,13 +306,11 @@
 	if(durability == max_durability)
 		return FALSE
 
-	durability += repair_amount
-	if(durability > max_durability)
-		durability = max_durability
+	durability = min(durability + repair_amount, max_durability)
 
 	return TRUE
 
-/obj/item/organ/internal/cyberimp/brain/nif/proc/send_message(message_to_send, alert=FALSE)
+/obj/item/organ/internal/cyberimp/brain/nif/proc/send_message(message_to_send, alert = FALSE)
 	var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
 	var/tag = sheet.icon_tag("nif-[chat_icon]")
 	var/nif_icon = ""
@@ -394,7 +389,7 @@
 	. = ..()
 
 /datum/surgery_step/repair_nif
-	name = "fix NIF"
+	name = "Fix NIF"
 	repeatable = FALSE
 	implements = list(
 		TOOL_MULTITOOL = 100,
@@ -406,12 +401,14 @@
 /datum/surgery_step/repair_nif/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(user, target, span_notice("You begin to restore the integrity of [target]'s NIF..."),
 		"[user] begins to fix [target]'s NIF.",
-		"[user] begins to perform repairs on [target]'s NIF.")
+		"[user] begins to perform repairs on [target]'s NIF."
+	)
 
 /datum/surgery_step/repair_nif/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(user, target, span_notice("You succeed in restoring the integrity of [target]'s NIF."),
 		"[user] successfully repairs [target]'s NIF!",
-		"[user] completes the repair on [target]'s NIF.")
+		"[user] completes the repair on [target]'s NIF."
+	)
 
 	var/mob/living/carbon/human/nif_patient = target
 	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = nif_patient.installed_nif
