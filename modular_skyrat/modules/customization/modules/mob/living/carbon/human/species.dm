@@ -51,7 +51,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		if(!mutant_accessory)
 			stack_trace("Sprite accessory is null in the sprite_accessories global! This shouldn't be possible!")
 			continue
-		// Fine. Some folk like having generic base classes that aren't themselves an accessory.
+		// Fine. Some folk like having generic base types that aren't themselves an accessory.
 		if(!mutant_accessory.icon_state || !mutant_accessory.factual || !mutant_accessory.icon || mutant_accessory.is_hidden(owner, HD))
 			continue
 		var/render_state
@@ -114,10 +114,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				accessory_overlay.icon_state = "[render_state]_[layertext]_primary"
 				accessories = list()
 
-			if(accessory_overlay.icon == 'icons/mob/species/mutant_bodyparts.dmi')
-				// You better fuckin make sure those icons exist.
-				icon_exists(accessory_overlay.icon, accessory_overlay.icon_state, scream = TRUE)
-
 			if(bodypart_accessory.center)
 				accessory_overlay = center_image(accessory_overlay, x_shift, bodypart_accessory.dimension_y)
 
@@ -133,16 +129,21 @@ GLOBAL_LIST_EMPTY(customizable_races)
 							accessory_overlay.color = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST][1]
 						if(USE_MATRIXED_COLORS)
 							var/list/color_list = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
-							for (var/n in color_layer_list)
+							for(var/n in color_layer_list)
 								var/num = text2num(n)
 								var/mutable_appearance/matrixed_acce = mutable_appearance(icon_to_use, layer = -layer)
 								matrixed_acce.icon_state = "[render_state]_[layertext]_[color_layer_list[n]]"
 								matrixed_acce.color = color_list[num]
 								matrixed_acce.alpha = specific_alpha
-								if (bodypart_accessory.center)
+
+								icon_exists(matrixed_acce.icon, matrixed_acce.icon_state, scream = TRUE)
+
+								if(bodypart_accessory.center)
 									matrixed_acce = center_image(matrixed_acce, x_shift, bodypart_accessory.dimension_y)
+
 								accessories += matrixed_acce
-								if (mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][num])
+
+								if(mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][num])
 									var/mutable_appearance/emissive_overlay = emissive_appearance_copy(matrixed_acce, owner)
 									accessories += emissive_overlay
 						if(MUTCOLORS)
@@ -163,10 +164,13 @@ GLOBAL_LIST_EMPTY(customizable_races)
 							accessory_overlay.color = owner.eye_color_left
 			else
 				accessory_overlay.color = override_color
-			if (accessories)
+			if(accessories)
 				for (var/acces in accessories)
 					standing += acces
 			else
+				// You better fuckin make sure those icons exist.
+				icon_exists(accessory_overlay.icon, accessory_overlay.icon_state, scream = TRUE)
+
 				standing += accessory_overlay
 				if (mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][1])
 					var/mutable_appearance/emissive_overlay = emissive_appearance_copy(accessory_overlay, owner)
@@ -179,9 +183,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				else
 					inner_accessory_overlay.icon_state = "m_[key]inner_[bodypart_accessory.icon_state]_[layertext]"
 
-				if(accessory_overlay.icon == 'icons/mob/species/mutant_bodyparts.dmi')
-					// You better fuckin make sure those icons exist.
-					icon_exists(inner_accessory_overlay.icon, inner_accessory_overlay.icon_state, scream = TRUE)
+				icon_exists(inner_accessory_overlay.icon, inner_accessory_overlay.icon_state, scream = TRUE)
 
 				if(bodypart_accessory.center)
 					inner_accessory_overlay = center_image(inner_accessory_overlay, bodypart_accessory.dimension_x, bodypart_accessory.dimension_y)
@@ -197,9 +199,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				else
 					extra_accessory_overlay.icon_state = "m_[key]_extra_[bodypart_accessory.icon_state]_[layertext]"
 
-				if(accessory_overlay.icon == 'icons/mob/species/mutant_bodyparts.dmi')
-					// You better fuckin make sure those icons exist.
-					icon_exists(extra_accessory_overlay.icon, extra_accessory_overlay.icon_state, scream = TRUE)
+				icon_exists(extra_accessory_overlay.icon, extra_accessory_overlay.icon_state, scream = TRUE)
 
 				if(bodypart_accessory.center)
 					extra_accessory_overlay = center_image(extra_accessory_overlay, bodypart_accessory.dimension_x, bodypart_accessory.dimension_y)
@@ -233,6 +233,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 					extra2_accessory_overlay.icon_state = "[gender_prefix]_[key]_extra2_[bodypart_accessory.icon_state]_[layertext]"
 				else
 					extra2_accessory_overlay.icon_state = "m_[key]_extra2_[bodypart_accessory.icon_state]_[layertext]"
+
+				icon_exists(extra2_accessory_overlay.icon, extra2_accessory_overlay.icon_state, scream = TRUE)
+
 				if(bodypart_accessory.center)
 					extra2_accessory_overlay = center_image(extra2_accessory_overlay, bodypart_accessory.dimension_x, bodypart_accessory.dimension_y)
 
@@ -253,10 +256,10 @@ GLOBAL_LIST_EMPTY(customizable_races)
 							extra2_accessory_overlay.color = owner.hair_color
 
 				standing += extra2_accessory_overlay
-			if (specific_alpha != 255 && !override_color)
-				for (var/ov in standing)
+			if(specific_alpha != 255 && !override_color)
+				for(var/ov in standing)
 					var/image/overlay = ov
-					if (!istype(overlay.color,/list)) //check for a list because setting the alpha of the matrix colors breaks the color (the matrix alpha is set above inside the matrix)
+					if(!istype(overlay.color,/list)) //check for a list because setting the alpha of the matrix colors breaks the color (the matrix alpha is set above inside the matrix)
 						overlay.alpha = specific_alpha
 
 			owner.overlays_standing[layer] += standing
