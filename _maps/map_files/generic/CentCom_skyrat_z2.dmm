@@ -36,13 +36,13 @@
 /turf/open/misc/grass/planet,
 /area/centcom/holding/cafepark)
 "abg" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 8
-	},
 /obj/structure/chair/office{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/green/opposingcorners,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "abK" = (
@@ -2114,6 +2114,15 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/holding/cafe)
+"aBC" = (
+/obj/machinery/newscaster/directional/west,
+/obj/structure/table/reinforced,
+/obj/machinery/button/door/directional/north{
+	id = "centshutterstop"
+	},
+/obj/machinery/light/cold/no_nightlight/directional/west,
+/turf/open/floor/iron/dark/textured_large,
+/area/centcom/interlink)
 "aBH" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -4435,16 +4444,6 @@
 /obj/structure/fans/tiny/invisible,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafevox)
-"aYU" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
-/obj/structure/fence/end{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/centcom/interlink)
 "aYX" = (
 /obj/machinery/light/warm/directional/north,
 /turf/open/floor/wood,
@@ -4553,6 +4552,7 @@
 /area/centcom/interlink)
 "bji" = (
 /obj/structure/closet/crate/bin,
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "bkA" = (
@@ -4591,11 +4591,11 @@
 /turf/open/floor/wood,
 /area/centcom/holding/cafedorms)
 "bpJ" = (
+/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 8
 	},
 /obj/structure/bookcase/random/religion,
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "btW" = (
@@ -4803,6 +4803,10 @@
 /obj/structure/table/wood,
 /turf/open/floor/wood,
 /area/centcom/holding/cafe)
+"bYt" = (
+/obj/structure/sign/poster/random/directional/north,
+/turf/open/floor/wood,
+/area/centcom/interlink)
 "bZS" = (
 /obj/machinery/door/airlock/medical/glass{
 	name = "Interlink Medbay"
@@ -4815,11 +4819,10 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "caZ" = (
-/obj/effect/turf_decal/tile/red/opposingcorners,
 /obj/effect/turf_decal/siding/white/corner{
 	dir = 1
 	},
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/smooth,
 /area/centcom/interlink)
 "cbu" = (
 /obj/structure/railing{
@@ -5014,13 +5017,6 @@
 "cGG" = (
 /turf/open/floor/mineral/titanium/blue,
 /area/centcom/interlink)
-"cHS" = (
-/obj/effect/turf_decal/trimline/blue/arrow_ccw{
-	dir = 1
-	},
-/obj/machinery/light/floor,
-/turf/open/floor/iron,
-/area/centcom/interlink)
 "cJm" = (
 /obj/machinery/vending/cigarette,
 /obj/effect/turf_decal/bot,
@@ -5071,6 +5067,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
+"cPg" = (
+/obj/machinery/light/directional/west,
+/obj/structure/table,
+/turf/open/floor/iron,
+/area/centcom/interlink)
 "cPy" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/iron,
@@ -5237,6 +5238,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
+"dgy" = (
+/obj/structure/sign/poster/random/directional/north,
+/turf/open/floor/iron/dark,
+/area/centcom/interlink)
 "djn" = (
 /obj/effect/turf_decal/tile/red/half{
 	dir = 1
@@ -5391,6 +5396,15 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
+"dLH" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/arrows{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/centcom/interlink)
 "dOC" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -5467,11 +5481,11 @@
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "ebn" = (
+/obj/machinery/light/warm/directional/west,
+/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
-/obj/machinery/light/warm/directional/west,
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "ecV" = (
@@ -5501,18 +5515,22 @@
 /turf/open/floor/iron,
 /area/centcom/holding/cafe)
 "ehl" = (
-/obj/effect/turf_decal/siding/dark{
-	dir = 4
-	},
 /obj/machinery/photocopier,
 /obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "ehv" = (
 /obj/effect/turf_decal/tile/bar/half,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
+"ehz" = (
+/obj/effect/turf_decal/siding/dark,
+/turf/open/floor/iron/dark,
+/area/centcom/interlink)
 "ehI" = (
 /obj/structure/dresser{
 	pixel_y = 7
@@ -5598,6 +5616,14 @@
 /obj/machinery/light/cold/directional/north,
 /turf/open/floor/iron/freezer,
 /area/centcom/interlink)
+"eqY" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/brigdoor/left/directional/north{
+	req_access = list("cent_general")
+	},
+/obj/machinery/door/window/left/directional/south,
+/turf/open/floor/iron/dark/textured_large,
+/area/centcom/interlink)
 "erP" = (
 /obj/machinery/vending/dorms,
 /turf/open/floor/iron/showroomfloor,
@@ -5677,10 +5703,10 @@
 /turf/open/misc/dirt/planet,
 /area/centcom/interlink)
 "eHb" = (
+/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "eIj" = (
@@ -5699,10 +5725,10 @@
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "eKU" = (
+/obj/effect/turf_decal/tile/green/opposingcorners,
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 1
 	},
-/obj/effect/turf_decal/tile/green/opposingcorners,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "eLD" = (
@@ -5802,15 +5828,15 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "eXa" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
 /obj/structure/noticeboard/directional/south,
 /obj/structure/table/wood,
 /obj/item/phone{
 	pixel_y = -4
 	},
 /obj/effect/turf_decal/tile/dark_blue/opposingcorners,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "eZb" = (
@@ -5847,12 +5873,12 @@
 /turf/open/floor/wood,
 /area/centcom/holding/cafe)
 "fcT" = (
-/obj/effect/turf_decal/siding/dark{
-	dir = 4
-	},
 /obj/structure/table/wood,
 /obj/machinery/fax{
 	pixel_y = 5
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
@@ -5860,6 +5886,10 @@
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/freezer,
+/area/centcom/interlink)
+"feW" = (
+/obj/structure/sign/poster/random/directional/south,
+/turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "ffK" = (
 /obj/structure/sign/directions/security{
@@ -5896,6 +5926,13 @@
 	},
 /obj/machinery/duct,
 /turf/open/floor/iron/freezer,
+/area/centcom/interlink)
+"fgo" = (
+/obj/structure/sign/poster/random/directional/west,
+/obj/structure/chair/sofa/bench{
+	dir = 4
+	},
+/turf/open/floor/iron,
 /area/centcom/interlink)
 "fgG" = (
 /obj/structure/table,
@@ -5956,6 +5993,10 @@
 	pixel_y = 5
 	},
 /obj/effect/turf_decal/tile/red/opposingcorners,
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/structure/window/reinforced/spawner/west,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "frh" = (
@@ -5964,6 +6005,14 @@
 	pixel_y = 5
 	},
 /turf/open/floor/wood,
+/area/centcom/interlink)
+"fsY" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/brigdoor/left/directional/south{
+	req_access = list("cent_general")
+	},
+/obj/machinery/door/window/left/directional/north,
+/turf/open/floor/iron/dark/textured_large,
 /area/centcom/interlink)
 "ftX" = (
 /obj/effect/turf_decal/trimline/green/corner,
@@ -6242,12 +6291,10 @@
 /turf/open/floor/wood/parquet,
 /area/centcom/interlink)
 "fXf" = (
-/obj/structure/window/reinforced/spawner/east,
 /obj/item/kirbyplants{
 	icon_state = "plant-22"
 	},
-/obj/effect/turf_decal/tile/red/opposingcorners,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/smooth,
 /area/centcom/interlink)
 "fYk" = (
 /obj/machinery/door/poddoor/shutters/window/indestructible{
@@ -6352,8 +6399,8 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
 "gmk" = (
-/obj/effect/turf_decal/siding/wood/corner,
 /obj/effect/turf_decal/tile/dark_blue/opposingcorners,
+/obj/effect/turf_decal/siding/wood/corner,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "gmE" = (
@@ -6450,11 +6497,6 @@
 	dir = 6
 	},
 /obj/effect/turf_decal/trimline/green/arrow_ccw,
-/turf/open/floor/iron/dark,
-/area/centcom/interlink)
-"gsZ" = (
-/obj/structure/window/reinforced/spawner/east,
-/obj/effect/turf_decal/tile/red/opposingcorners,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "gte" = (
@@ -6574,11 +6616,10 @@
 /turf/open/floor/carpet/red,
 /area/centcom/interlink)
 "gEG" = (
-/obj/effect/turf_decal/tile/red/opposingcorners,
 /obj/effect/turf_decal/siding/white{
 	dir = 1
 	},
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/smooth,
 /area/centcom/interlink)
 "gFH" = (
 /obj/structure/chair/sofa/bench/left,
@@ -6807,11 +6848,11 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
 "heR" = (
+/obj/machinery/status_display/evac/directional/south,
+/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
-/obj/machinery/status_display/evac/directional/south,
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "hge" = (
@@ -6860,6 +6901,7 @@
 "hmi" = (
 /obj/machinery/light/directional/west,
 /obj/structure/closet/crate/bin,
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "hmO" = (
@@ -7037,6 +7079,12 @@
 /obj/item/reagent_containers/cup/glass/bottle/juice/cream,
 /turf/open/floor/iron,
 /area/centcom/interlink)
+"hLu" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/centcom/interlink)
 "hLw" = (
 /obj/effect/turf_decal/trimline/red/warning{
 	dir = 1
@@ -7047,6 +7095,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Interlink"
 	},
+/obj/effect/turf_decal/siding/dark,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "hNo" = (
@@ -7071,7 +7120,7 @@
 /obj/machinery/light/small/directional/south,
 /obj/machinery/status_display/shuttle{
 	pixel_y = -32;
-	shuttle_id = "arrivals"
+	shuttle_id = "arrivals_shuttle"
 	},
 /turf/open/floor/wood/tile,
 /area/centcom/interlink)
@@ -7179,21 +7228,10 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "ipa" = (
-/obj/structure/table/reinforced,
-/obj/item/folder/yellow{
-	pixel_x = -5
+/obj/structure/chair/office{
+	dir = 4
 	},
-/obj/item/folder/blue,
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
-/obj/item/stamp/denied{
-	pixel_x = 10;
-	pixel_y = 10
-	},
-/obj/item/stamp{
-	pixel_x = 6;
-	pixel_y = 4
-	},
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/grimy,
 /area/centcom/interlink)
 "ipK" = (
 /obj/machinery/door/airlock/sandstone{
@@ -7267,6 +7305,10 @@
 	pixel_y = 5
 	},
 /obj/effect/turf_decal/tile/red/opposingcorners,
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/structure/window/reinforced/spawner/west,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "iBF" = (
@@ -7284,6 +7326,10 @@
 "iFz" = (
 /obj/structure/flora/rock/style_random,
 /turf/open/misc/dirt/planet,
+/area/centcom/interlink)
+"iGc" = (
+/obj/effect/turf_decal/siding/white/corner,
+/turf/open/floor/iron/white,
 /area/centcom/interlink)
 "iGu" = (
 /obj/effect/turf_decal/caution/red{
@@ -7345,15 +7391,16 @@
 /obj/item/condom_pack,
 /turf/open/floor/wood,
 /area/centcom/interlink)
-"iMj" = (
-/obj/effect/turf_decal/siding/dark_blue/corner{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/centcom/interlink)
 "iMR" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/tile/red/opposingcorners,
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/machinery/door/window/brigdoor/left/directional/west{
+	name = "Interlink Wardens Desk";
+	req_access = list("armory")
+	},
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "iNL" = (
@@ -7383,6 +7430,10 @@
 /obj/machinery/vending/wardrobe/sec_wardrobe,
 /turf/open/floor/iron,
 /area/centcom/holding/cafe)
+"iQP" = (
+/obj/structure/sign/poster/random/directional/east,
+/turf/open/floor/iron,
+/area/centcom/interlink)
 "iRo" = (
 /obj/effect/turf_decal/trimline/red/corner{
 	dir = 8
@@ -7390,6 +7441,9 @@
 /obj/structure/railing/corner,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
+"iUl" = (
+/turf/open/floor/iron/grimy,
+/area/centcom/interlink)
 "iVu" = (
 /obj/effect/light_emitter{
 	set_cap = 1;
@@ -7453,16 +7507,10 @@
 /turf/open/floor/iron/cafeteria,
 /area/centcom/interlink)
 "jcq" = (
-/obj/structure/table/reinforced,
-/obj/machinery/door/window/left/directional/east{
-	name = "CentCom Desk"
+/obj/machinery/computer/secure_data{
+	dir = 8
 	},
-/obj/machinery/door/window/brigdoor/left/directional/west{
-	name = "CentCom Customs";
-	req_access = list("security")
-	},
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/dark/textured_large,
 /area/centcom/interlink)
 "jdg" = (
 /obj/structure/table/optable,
@@ -7477,6 +7525,10 @@
 	icon_state = "darkfull"
 	},
 /area/centcom/holding/cafe)
+"jdT" = (
+/obj/structure/sign/poster/random/directional/north,
+/turf/open/floor/iron,
+/area/centcom/interlink)
 "jeI" = (
 /obj/machinery/cryopod/quiet{
 	dir = 1
@@ -7497,9 +7549,9 @@
 /turf/open/floor/bamboo,
 /area/centcom/holding/cafedorms)
 "jhE" = (
-/obj/effect/turf_decal/siding/wood,
 /obj/machinery/status_display/evac/directional/north,
 /obj/effect/turf_decal/tile/dark_blue/opposingcorners,
+/obj/effect/turf_decal/siding/wood,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "jiQ" = (
@@ -7553,6 +7605,18 @@
 	},
 /turf/open/floor/wood,
 /area/centcom/interlink)
+"jto" = (
+/obj/effect/turf_decal/weather/dirt,
+/obj/effect/light_emitter{
+	set_cap = 1;
+	set_luminosity = 4
+	},
+/obj/structure/statue/sandstone/venus{
+	dir = 1;
+	name = "Law"
+	},
+/turf/open/floor/grass,
+/area/centcom/interlink)
 "jub" = (
 /obj/machinery/door/poddoor/shutters/indestructible{
 	id = "evac_hall";
@@ -7591,11 +7655,11 @@
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "jze" = (
+/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /obj/effect/turf_decal/siding/wood,
 /obj/effect/turf_decal/siding/dark/corner{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "jzL" = (
@@ -7658,8 +7722,8 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
 "jHv" = (
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
-/turf/open/floor/iron/dark,
+/obj/item/kirbyplants/random,
+/turf/open/floor/iron/dark/textured_large,
 /area/centcom/interlink)
 "jIj" = (
 /turf/open/floor/wood,
@@ -7686,6 +7750,12 @@
 /obj/item/toy/plush/bubbleplush,
 /turf/open/lava/fake,
 /area/centcom/holding/cafepark)
+"jLo" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "Interlink Cryogenics"
+	},
+/turf/open/floor/iron,
+/area/centcom/interlink)
 "jLB" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Administrative Offices";
@@ -7807,8 +7877,14 @@
 /area/centcom/interlink)
 "kbo" = (
 /obj/structure/window/reinforced/spawner/north,
-/obj/effect/turf_decal/tile/red/opposingcorners,
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
+/area/centcom/interlink)
+"kgT" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/smooth,
 /area/centcom/interlink)
 "khl" = (
 /obj/structure/table,
@@ -7820,7 +7896,6 @@
 	pixel_x = -4;
 	pixel_y = 3
 	},
-/obj/effect/turf_decal/tile/red/opposingcorners,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "kie" = (
@@ -7912,13 +7987,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
-"kvv" = (
-/obj/effect/turf_decal/trimline/dark_red/arrow_ccw{
-	dir = 4
-	},
-/obj/machinery/light/floor,
-/turf/open/floor/iron,
-/area/centcom/interlink)
 "kzq" = (
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/engine,
@@ -7926,7 +7994,7 @@
 "kAl" = (
 /obj/machinery/status_display/shuttle{
 	pixel_y = -32;
-	shuttle_id = "arrivals"
+	shuttle_id = "arrivals_shuttle"
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
@@ -7947,13 +8015,6 @@
 "kDq" = (
 /turf/open/floor/carpet/royalblack,
 /area/cruiser_dock)
-"kFw" = (
-/obj/structure/sign/poster/contraband/robust_softdrinks{
-	name = "Jim Norton's Quebecois Coffee";
-	pixel_x = 32
-	},
-/turf/closed/indestructible/riveted,
-/area/centcom/interlink)
 "kFE" = (
 /obj/structure/spacevine,
 /obj/structure/fans/tiny/invisible,
@@ -8126,8 +8187,7 @@
 	req_access = list("brig")
 	},
 /obj/effect/turf_decal/siding/white,
-/obj/effect/turf_decal/tile/red/opposingcorners,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/smooth,
 /area/centcom/interlink)
 "ldQ" = (
 /obj/machinery/duct,
@@ -8207,9 +8267,9 @@
 /turf/closed/indestructible/riveted,
 /area/centcom/interlink)
 "lpy" = (
-/obj/effect/turf_decal/siding/wood,
 /obj/machinery/modular_computer/console/preset/command,
 /obj/effect/turf_decal/tile/green/opposingcorners,
+/obj/effect/turf_decal/siding/wood,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "lvy" = (
@@ -8478,13 +8538,13 @@
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "mdN" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
 /obj/machinery/modular_computer/console/preset/command{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/green/opposingcorners,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "mhL" = (
@@ -8606,6 +8666,10 @@
 /obj/machinery/vending/dorms,
 /turf/open/floor/iron/white,
 /area/centcom/interlink)
+"mxI" = (
+/obj/structure/sign/poster/random/directional/south,
+/turf/open/floor/iron,
+/area/centcom/interlink)
 "mzm" = (
 /obj/structure/chair/comfy/black{
 	dir = 4
@@ -8638,6 +8702,13 @@
 /obj/structure/fluff/beach_umbrella/cap,
 /turf/open/misc/beach/sand,
 /area/centcom/holding/cafepark)
+"mCP" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/arrows,
+/turf/open/floor/iron,
+/area/centcom/interlink)
 "mDj" = (
 /obj/structure/toilet{
 	contents = newlist(/obj/item/toy/snappop/phoenix);
@@ -8653,6 +8724,16 @@
 	},
 /turf/open/floor/sepia,
 /area/centcom/holding/cafedorms)
+"mDO" = (
+/obj/structure/table,
+/obj/item/paper/pamphlet/centcom/visitor_info{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/paper/pamphlet/centcom/visitor_info,
+/obj/machinery/light/very_dim/directional/west,
+/turf/open/floor/iron/dark,
+/area/centcom/interlink)
 "mEj" = (
 /obj/machinery/door/airlock{
 	id_tag = "stall2";
@@ -8713,6 +8794,13 @@
 	set_luminosity = 4
 	},
 /turf/open/floor/grass,
+/area/centcom/interlink)
+"mIB" = (
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 4
+	},
+/obj/effect/landmark/latejoin,
+/turf/open/floor/iron/white,
 /area/centcom/interlink)
 "mIY" = (
 /obj/effect/turf_decal/siding/white{
@@ -8871,11 +8959,11 @@
 /turf/open/floor/wood,
 /area/centcom/holding/cafe)
 "ndg" = (
+/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
 /obj/structure/bookcase/random/reference,
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "ndz" = (
@@ -9029,6 +9117,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/centcom/interlink)
+"nzW" = (
+/obj/machinery/light/very_dim/directional/east,
+/turf/open/floor/iron/dark,
+/area/centcom/interlink)
 "nCB" = (
 /turf/open/floor/glass/reinforced,
 /area/cruiser_dock)
@@ -9039,6 +9131,10 @@
 "nDE" = (
 /turf/open/floor/carpet/purple,
 /area/centcom/holding/cafepark)
+"nEm" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/white,
+/area/centcom/interlink)
 "nEH" = (
 /obj/structure/chair/sofa/bench/left{
 	dir = 1
@@ -9107,9 +9203,6 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
 "nRf" = (
-/obj/effect/turf_decal/siding/wood/corner{
-	dir = 8
-	},
 /obj/structure/closet,
 /obj/item/clothing/under/rank/centcom/officer/replica{
 	desc = "A cheaper, unarmored CentCom turtleneck meant for everyday wear. Somewhat of a status symbol.";
@@ -9122,6 +9215,9 @@
 /obj/item/bedsheet/centcom,
 /obj/effect/turf_decal/tile/green/opposingcorners,
 /obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "nRL" = (
@@ -9132,6 +9228,7 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "nSm" = (
+/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 1
 	},
@@ -9314,7 +9411,6 @@
 /area/cruiser_dock)
 "ovJ" = (
 /obj/machinery/light/directional/south,
-/obj/effect/turf_decal/tile/red/opposingcorners,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "ovT" = (
@@ -9373,9 +9469,6 @@
 /area/centcom/interlink)
 "oFI" = (
 /obj/structure/rack,
-/obj/effect/turf_decal/siding/dark{
-	dir = 8
-	},
 /obj/item/stack/sheet/mineral/wood,
 /obj/item/stack/sheet/mineral/wood,
 /obj/item/stack/sheet/mineral/wood,
@@ -9383,6 +9476,9 @@
 /obj/item/stack/sheet/mineral/wood,
 /obj/item/lighter,
 /obj/effect/turf_decal/tile/dark_blue/opposingcorners,
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "oFJ" = (
@@ -9414,6 +9510,9 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
+"oKO" = (
+/turf/open/floor/iron/smooth,
+/area/centcom/interlink)
 "oLk" = (
 /obj/effect/turf_decal/tile/bar/anticorner{
 	dir = 4
@@ -9421,10 +9520,10 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
 "oLN" = (
+/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "oLP" = (
@@ -9527,11 +9626,10 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "oVP" = (
-/obj/effect/turf_decal/tile/red/opposingcorners,
 /obj/effect/turf_decal/siding/white/corner{
 	dir = 4
 	},
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/smooth,
 /area/centcom/interlink)
 "oVT" = (
 /obj/structure/curtain,
@@ -9601,6 +9699,19 @@
 /obj/item/gohei,
 /turf/open/floor/bamboo,
 /area/centcom/holding/cafedorms)
+"oZB" = (
+/obj/structure/table/reinforced,
+/obj/item/folder/blue,
+/obj/item/stamp/denied{
+	pixel_x = 10;
+	pixel_y = 10
+	},
+/obj/item/stamp{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/centcom/interlink)
 "oZG" = (
 /obj/structure/table/wood,
 /obj/item/folder/syndicate,
@@ -9621,6 +9732,13 @@
 	},
 /obj/item/paper/pamphlet/centcom/visitor_info,
 /turf/open/floor/iron,
+/area/centcom/interlink)
+"paO" = (
+/obj/machinery/computer/cryopod{
+	pixel_y = 32
+	},
+/obj/effect/landmark/latejoin,
+/turf/open/floor/iron/white,
 /area/centcom/interlink)
 "pbt" = (
 /obj/effect/light_emitter{
@@ -9660,6 +9778,13 @@
 	dir = 1
 	},
 /turf/closed/indestructible/riveted,
+/area/centcom/interlink)
+"peM" = (
+/obj/effect/turf_decal/trimline/blue/arrow_ccw{
+	dir = 4
+	},
+/obj/machinery/light/very_dim/directional/west,
+/turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "pfy" = (
 /obj/structure/closet/crate/bin,
@@ -9741,6 +9866,10 @@
 	dir = 4
 	},
 /turf/open/floor/iron,
+/area/centcom/interlink)
+"plf" = (
+/obj/structure/chair/sofa/bench/corner,
+/turf/open/floor/iron/white,
 /area/centcom/interlink)
 "plJ" = (
 /obj/structure/railing{
@@ -9826,6 +9955,16 @@
 /obj/structure/closet/secure_closet/freezer/kitchen,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/freezer,
+/area/centcom/interlink)
+"pzi" = (
+/obj/structure/closet{
+	name = "Cryogenics Sleepware"
+	},
+/obj/item/clothing/under/misc/pj/blue,
+/obj/item/clothing/under/misc/pj/blue,
+/obj/item/clothing/head/costume/nightcap/blue,
+/obj/item/clothing/head/costume/nightcap/blue,
+/turf/open/floor/iron/white,
 /area/centcom/interlink)
 "pzo" = (
 /obj/effect/turf_decal/siding/white{
@@ -9979,6 +10118,7 @@
 	},
 /obj/effect/turf_decal/siding/wood/corner,
 /obj/machinery/light/warm/directional/east,
+/obj/structure/sign/poster/random/directional/east,
 /turf/open/floor/wood/parquet,
 /area/centcom/interlink)
 "pPF" = (
@@ -10079,6 +10219,16 @@
 /obj/machinery/light/floor,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
+"qdN" = (
+/obj/structure/closet{
+	name = "Cryogenics Sleepware"
+	},
+/obj/item/clothing/under/misc/pj/red,
+/obj/item/clothing/under/misc/pj/red,
+/obj/item/clothing/head/costume/nightcap/red,
+/obj/item/clothing/head/costume/nightcap/red,
+/turf/open/floor/iron/white,
+/area/centcom/interlink)
 "qdQ" = (
 /obj/structure/chair/sofa/corp/corner,
 /turf/open/floor/carpet/royalblack,
@@ -10122,6 +10272,7 @@
 /area/centcom/interlink)
 "qmZ" = (
 /obj/machinery/light/small/directional/west,
+/obj/structure/sign/poster/random/directional/west,
 /turf/open/floor/wood/tile,
 /area/centcom/interlink)
 "qnD" = (
@@ -10180,11 +10331,11 @@
 /turf/open/floor/plating,
 /area/centcom/interlink)
 "qrE" = (
+/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /obj/effect/turf_decal/siding/wood,
 /obj/effect/turf_decal/siding/dark/corner{
 	dir = 1
 	},
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "qvd" = (
@@ -10307,7 +10458,6 @@
 /obj/effect/turf_decal/trimline/blue/arrow_ccw{
 	dir = 1
 	},
-/obj/machinery/light/floor,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "qJm" = (
@@ -10410,6 +10560,10 @@
 /obj/machinery/light/cold/directional/south,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
+"qXU" = (
+/obj/effect/landmark/latejoin,
+/turf/open/floor/iron/white,
+/area/centcom/interlink)
 "rbp" = (
 /obj/effect/turf_decal/caution/red{
 	dir = 4
@@ -10553,6 +10707,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
+"rvb" = (
+/obj/machinery/computer/med_data{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/centcom/interlink)
 "rvd" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/poddoor/shutters/indestructible{
@@ -10588,14 +10748,14 @@
 /turf/open/floor/iron/freezer,
 /area/centcom/interlink)
 "rxn" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
 /obj/structure/closet,
 /obj/item/clothing/under/rank/centcom/intern,
 /obj/item/banner/command/mundane,
 /obj/effect/turf_decal/tile/green/opposingcorners,
 /obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "rxB" = (
@@ -10657,6 +10817,9 @@
 	set_luminosity = 4
 	},
 /obj/structure/flora/bush/flowers_br/style_random,
+/obj/structure/statue/sandstone/venus{
+	name = "Order"
+	},
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "rIj" = (
@@ -10816,10 +10979,8 @@
 	name = "Interlink Security Checkpoint"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/security/general,
-/obj/effect/turf_decal/siding/dark_blue{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
+/obj/effect/turf_decal/delivery/white,
+/turf/open/floor/iron/dark/textured_large,
 /area/centcom/interlink)
 "rYL" = (
 /obj/effect/turf_decal/trimline/red/line{
@@ -10837,12 +10998,12 @@
 /turf/open/floor/engine,
 /area/cruiser_dock)
 "rZv" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
 /obj/structure/table/wood,
 /obj/machinery/recharger,
 /obj/effect/turf_decal/tile/dark_blue/opposingcorners,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "rZG" = (
@@ -10915,15 +11076,15 @@
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "shP" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
 /obj/structure/table/wood,
 /obj/item/paper_bin{
 	pixel_y = 5
 	},
 /obj/item/pen,
 /obj/effect/turf_decal/tile/dark_blue/opposingcorners,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "siK" = (
@@ -10935,14 +11096,9 @@
 /area/centcom/interlink)
 "sjk" = (
 /obj/structure/table/reinforced,
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
-/obj/machinery/button/door{
-	pixel_x = 8;
-	name = "Shutters Control";
-	id = "cc_arrivals";
-	req_access = list("security")
-	},
-/turf/open/floor/iron/dark,
+/obj/item/paper_bin,
+/obj/item/pen,
+/turf/open/floor/iron/dark/textured_large,
 /area/centcom/interlink)
 "skL" = (
 /obj/structure/table/reinforced,
@@ -11045,6 +11201,12 @@
 /obj/machinery/light/very_dim/directional/south,
 /turf/open/floor/wood,
 /area/centcom/interlink)
+"ssG" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/centcom/interlink)
 "ssM" = (
 /obj/structure/railing,
 /turf/open/floor/iron/dark,
@@ -11058,10 +11220,6 @@
 /obj/machinery/light/warm/directional/west,
 /turf/open/floor/bamboo,
 /area/centcom/holding/cafedorms)
-"svt" = (
-/obj/effect/turf_decal/arrows,
-/turf/open/floor/iron,
-/area/centcom/interlink)
 "svD" = (
 /obj/machinery/light/cold/directional/north,
 /turf/open/floor/glass/reinforced,
@@ -11081,6 +11239,10 @@
 	dir = 4
 	},
 /turf/open/floor/iron,
+/area/centcom/interlink)
+"sAA" = (
+/obj/structure/sign/poster/random/directional/west,
+/turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "sBW" = (
 /obj/structure/chair/sofa/corp/left{
@@ -11107,6 +11269,10 @@
 "sGf" = (
 /turf/open/floor/iron/white,
 /area/centcom/holding/cafe)
+"sHj" = (
+/obj/structure/sign/poster/random/directional/south,
+/turf/open/floor/wood,
+/area/centcom/interlink)
 "sHT" = (
 /obj/structure/chair/comfy/brown{
 	dir = 1
@@ -11144,14 +11310,6 @@
 /obj/structure/sign/painting/library,
 /turf/closed/indestructible/wood,
 /area/centcom/holding/cafedorms)
-"sMG" = (
-/obj/machinery/door/window/brigdoor/left/directional/east{
-	name = "Interlink Wardens Desk";
-	req_access = list("armory")
-	},
-/obj/effect/turf_decal/tile/red/opposingcorners,
-/turf/open/floor/iron/dark,
-/area/centcom/interlink)
 "sQj" = (
 /obj/structure/sign/painting/library,
 /turf/closed/indestructible/wood,
@@ -11201,10 +11359,10 @@
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "sYq" = (
+/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "sZM" = (
@@ -11234,17 +11392,6 @@
 /obj/structure/bookcase/random/reference,
 /turf/open/floor/wood,
 /area/centcom/interlink)
-"tdQ" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
-/obj/structure/statue/sandstone/venus{
-	dir = 1;
-	name = "Law"
-	},
-/turf/open/floor/grass,
-/area/centcom/interlink)
 "teN" = (
 /obj/structure/table/wood,
 /obj/effect/spawner/random/entertainment/dice{
@@ -11261,6 +11408,13 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
+/area/centcom/interlink)
+"thd" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/effect/landmark/latejoin,
+/turf/open/floor/iron/white,
 /area/centcom/interlink)
 "thU" = (
 /obj/machinery/door/poddoor/ert,
@@ -11287,11 +11441,8 @@
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "tpK" = (
-/obj/structure/table/reinforced,
-/obj/item/paper_bin,
-/obj/item/pen,
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
-/turf/open/floor/iron/dark,
+/obj/structure/chair/office,
+/turf/open/floor/iron/grimy,
 /area/centcom/interlink)
 "tpP" = (
 /obj/machinery/duct,
@@ -11299,15 +11450,9 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "tqY" = (
+/obj/effect/turf_decal/tile/green/opposingcorners,
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
-	},
-/obj/effect/turf_decal/tile/green/opposingcorners,
-/turf/open/floor/iron,
-/area/centcom/interlink)
-"trz" = (
-/obj/effect/turf_decal/siding/dark_blue/corner{
-	dir = 1
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
@@ -11399,11 +11544,10 @@
 /turf/open/water/beach/biodome,
 /area/centcom/holding/cafepark)
 "tEz" = (
-/obj/effect/turf_decal/tile/red/opposingcorners,
 /obj/effect/turf_decal/siding/white{
 	dir = 4
 	},
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/smooth,
 /area/centcom/interlink)
 "tHO" = (
 /obj/structure/table/wood,
@@ -11422,7 +11566,6 @@
 	name = "Interlink Wardens Office";
 	req_access = list("armory")
 	},
-/obj/effect/turf_decal/tile/red/opposingcorners,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "tLu" = (
@@ -11436,16 +11579,21 @@
 /turf/open/floor/iron/cafeteria,
 /area/centcom/interlink)
 "tLP" = (
+/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /obj/effect/turf_decal/siding/wood,
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
 	},
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "tMr" = (
 /obj/machinery/light/warm/directional/south,
 /turf/open/floor/wood,
+/area/centcom/interlink)
+"tNw" = (
+/obj/machinery/duct,
+/obj/structure/sign/poster/random/directional/south,
+/turf/open/floor/iron,
 /area/centcom/interlink)
 "tOh" = (
 /obj/structure/chair/comfy/brown,
@@ -11465,13 +11613,13 @@
 /turf/open/floor/wood/parquet,
 /area/centcom/interlink)
 "tUo" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 8
-	},
 /obj/item/kirbyplants{
 	icon_state = "plant-22"
 	},
 /obj/effect/turf_decal/tile/green/opposingcorners,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "tUL" = (
@@ -11556,7 +11704,7 @@
 "udc" = (
 /obj/machinery/status_display/shuttle{
 	pixel_y = 32;
-	shuttle_id = "arrivals"
+	shuttle_id = "arrivals_shuttle"
 	},
 /obj/machinery/computer/shuttle/arrivals/recall,
 /obj/effect/turf_decal/box,
@@ -11598,11 +11746,11 @@
 /turf/open/floor/wood,
 /area/centcom/interlink)
 "ugG" = (
+/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
 /obj/structure/bookcase/random/religion,
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "uiL" = (
@@ -11664,6 +11812,13 @@
 	},
 /turf/open/misc/beach/sand,
 /area/centcom/holding/cafepark)
+"upz" = (
+/obj/effect/turf_decal/siding/white,
+/obj/structure/chair/sofa/bench/left{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/centcom/interlink)
 "upF" = (
 /obj/machinery/door/airlock/medical/glass{
 	name = "Interlink Medbay"
@@ -11747,6 +11902,12 @@
 /obj/effect/turf_decal/stripes/asteroid/line,
 /turf/open/misc/beach/sand,
 /area/centcom/holding/cafepark)
+"uCG" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/centcom/interlink)
 "uCW" = (
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron,
@@ -11857,12 +12018,13 @@
 /obj/structure/chair/sofa/corp/right{
 	dir = 1
 	},
+/obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/wood/parquet,
 /area/centcom/interlink)
 "uXa" = (
-/obj/effect/turf_decal/siding/wood,
 /obj/machinery/computer/security,
 /obj/effect/turf_decal/tile/green/opposingcorners,
+/obj/effect/turf_decal/siding/wood,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "uXM" = (
@@ -11952,6 +12114,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
+"vjI" = (
+/obj/effect/turf_decal/trimline/green/arrow_ccw,
+/obj/structure/sign/poster/random/directional/south,
+/turf/open/floor/iron/dark,
+/area/centcom/interlink)
 "vnA" = (
 /obj/effect/turf_decal/tile/green/opposingcorners,
 /turf/open/floor/iron,
@@ -12000,7 +12167,6 @@
 	pixel_y = 6;
 	pixel_x = -2
 	},
-/obj/effect/turf_decal/tile/red/opposingcorners,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "vsN" = (
@@ -12125,10 +12291,10 @@
 /turf/open/misc/beach/sand,
 /area/centcom/holding/cafepark)
 "vEC" = (
+/obj/effect/turf_decal/tile/green/opposingcorners,
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
-/obj/effect/turf_decal/tile/green/opposingcorners,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "vKM" = (
@@ -12142,12 +12308,6 @@
 /area/centcom/interlink)
 "vLx" = (
 /turf/closed/indestructible/rock,
-/area/centcom/interlink)
-"vMf" = (
-/obj/effect/turf_decal/siding/dark_blue{
-	dir = 8
-	},
-/turf/open/floor/iron,
 /area/centcom/interlink)
 "vQo" = (
 /obj/structure/flora/biolumi/lamp/weaklight{
@@ -12176,9 +12336,13 @@
 /turf/open/floor/iron,
 /area/centcom/holding/cafe)
 "vWo" = (
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
-/obj/machinery/light/directional/west,
-/turf/open/floor/iron/dark,
+/obj/structure/filingcabinet/employment,
+/obj/machinery/button/door/directional/south{
+	id = "centshuttersjolly"
+	},
+/obj/effect/turf_decal/bot_white,
+/obj/machinery/light/cold/no_nightlight/directional/west,
+/turf/open/floor/iron/dark/textured_large,
 /area/centcom/interlink)
 "vXa" = (
 /obj/structure/chair/sofa/bench,
@@ -12254,12 +12418,6 @@
 /obj/machinery/light/warm/directional/east,
 /turf/open/floor/bamboo,
 /area/centcom/holding/cafedorms)
-"wcp" = (
-/obj/effect/turf_decal/arrows{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/centcom/interlink)
 "wdo" = (
 /obj/structure/railing{
 	dir = 4
@@ -12455,13 +12613,6 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
-"wGu" = (
-/obj/structure/chair/office{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
-/turf/open/floor/iron/dark,
-/area/centcom/interlink)
 "wId" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/cup/glass/drinkingglass/shotglass{
@@ -12499,6 +12650,10 @@
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/floor/grass,
 /area/centcom/interlink)
+"wQz" = (
+/obj/structure/window/reinforced/spawner/north,
+/turf/open/floor/iron/dark,
+/area/centcom/interlink)
 "wQF" = (
 /obj/structure/railing{
 	dir = 4
@@ -12530,9 +12685,9 @@
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "wTV" = (
-/obj/effect/turf_decal/siding/wood,
 /obj/machinery/computer/secure_data,
 /obj/effect/turf_decal/tile/green/opposingcorners,
+/obj/effect/turf_decal/siding/wood,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "wUg" = (
@@ -12729,12 +12884,11 @@
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "xxM" = (
-/obj/effect/turf_decal/tile/red/opposingcorners,
 /obj/structure/closet/crate/bin,
 /obj/effect/turf_decal/siding/white{
 	dir = 8
 	},
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/smooth,
 /area/centcom/interlink)
 "xxX" = (
 /obj/machinery/door/airlock/multi_tile/glass{
@@ -12757,10 +12911,10 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
 "xBm" = (
+/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "xBR" = (
@@ -12809,9 +12963,13 @@
 "xGL" = (
 /obj/machinery/status_display/shuttle{
 	pixel_y = 32;
-	shuttle_id = "arrivals"
+	shuttle_id = "arrivals_shuttle"
 	},
 /turf/open/floor/iron,
+/area/centcom/interlink)
+"xIA" = (
+/obj/structure/closet/secure_closet/personal,
+/turf/open/floor/iron/white,
 /area/centcom/interlink)
 "xJh" = (
 /obj/machinery/door/airlock/hatch{
@@ -12840,8 +12998,7 @@
 	req_access = list("brig")
 	},
 /obj/effect/turf_decal/siding/white,
-/obj/effect/turf_decal/tile/red/opposingcorners,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/smooth,
 /area/centcom/interlink)
 "xOd" = (
 /obj/effect/turf_decal/trimline/red/line,
@@ -12905,6 +13062,14 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
+"xSx" = (
+/obj/machinery/light/directional/south,
+/obj/machinery/status_display/shuttle{
+	pixel_y = -32;
+	shuttle_id = "arrivals_shuttle"
+	},
+/turf/open/floor/iron/white,
+/area/centcom/interlink)
 "xSZ" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/indestructible{
@@ -12942,16 +13107,6 @@
 	},
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafedorms)
-"yct" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
-/obj/structure/statue/sandstone/venus{
-	name = "Order"
-	},
-/turf/open/floor/grass,
-/area/centcom/interlink)
 "ycB" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 4
@@ -13035,6 +13190,11 @@
 /obj/structure/chair/sofa/corp,
 /turf/open/floor/carpet/royalblack,
 /area/cruiser_dock)
+"yjm" = (
+/obj/structure/chair/sofa/bench/right,
+/obj/effect/landmark/latejoin,
+/turf/open/floor/iron/white,
+/area/centcom/interlink)
 "ykf" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Blueshield's Office";
@@ -13048,10 +13208,10 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "yks" = (
+/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
 	},
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 
@@ -18760,7 +18920,7 @@ wlv
 ozB
 oMk
 pmJ
-aXG
+sAA
 fPN
 qDr
 tvw
@@ -19038,7 +19198,7 @@ aaa
 lwH
 tEz
 oVP
-ovT
+oKO
 ldC
 hvQ
 kJG
@@ -19295,7 +19455,7 @@ tvw
 tvw
 bCd
 gEG
-ovT
+oKO
 aDg
 hvQ
 hbg
@@ -19552,7 +19712,7 @@ oLN
 tvw
 nni
 gEG
-ovJ
+kgT
 tvw
 aDg
 aDg
@@ -19809,7 +19969,7 @@ heR
 tvw
 nni
 gEG
-ovT
+oKO
 aDg
 hvQ
 hbg
@@ -20066,7 +20226,7 @@ sYq
 tvw
 tLK
 gEG
-ovT
+oKO
 xNy
 hvQ
 sCN
@@ -20304,7 +20464,7 @@ kqH
 hvQ
 hvQ
 hvQ
-hvQ
+mxI
 tvw
 aWb
 aLX
@@ -20323,7 +20483,7 @@ rZv
 tvw
 xxM
 caZ
-ovJ
+kgT
 tvw
 aDg
 aDg
@@ -20578,11 +20738,11 @@ sHT
 bxz
 eXa
 tvw
-ovT
-ovT
-ovT
-ovT
-ovT
+oKO
+oKO
+oKO
+uCG
+aXG
 vsB
 tvw
 aWb
@@ -20836,10 +20996,10 @@ bxz
 shP
 tvw
 fXf
-sMG
-gsZ
-ovT
-ovT
+oKO
+oKO
+uCG
+aXG
 khl
 tvw
 qOg
@@ -21096,7 +21256,7 @@ izW
 iMR
 fqX
 kbo
-ovT
+aXG
 ovJ
 tvw
 lNN
@@ -21352,9 +21512,9 @@ tvw
 dZz
 gpW
 ovT
-kbo
-ovT
-ovT
+wQz
+aXG
+aXG
 tvw
 gec
 cAq
@@ -21588,7 +21748,7 @@ nyx
 tvw
 tvw
 tvw
-hvQ
+jdT
 wyO
 jUO
 cAq
@@ -21610,8 +21770,8 @@ hkE
 ovT
 ovT
 tKr
-ovT
-ovT
+aXG
+aXG
 tvw
 oac
 uqD
@@ -21619,7 +21779,7 @@ tvw
 qax
 dBD
 tvw
-aQY
+bYt
 aQY
 aQY
 aQY
@@ -21846,7 +22006,7 @@ hqy
 hqy
 ikQ
 hvQ
-wyO
+tNw
 tvw
 tvw
 tvw
@@ -22137,7 +22297,7 @@ aQY
 aQY
 aQY
 aQY
-aQY
+sHj
 tvw
 aaa
 aaa
@@ -22339,11 +22499,11 @@ wlv
 wlv
 wlv
 wlv
-wlv
-wlv
-wlv
-wlv
-hOE
+tvw
+aDg
+aDg
+aDg
+tvw
 wlv
 wlv
 qFt
@@ -22359,7 +22519,7 @@ eoX
 tvw
 tvw
 tvw
-hvQ
+jdT
 tpP
 tvw
 pQK
@@ -22596,13 +22756,13 @@ wlv
 wlv
 wlv
 wlv
-wlv
-wlv
-wlv
-wlv
-hOE
-wlv
-wlv
+tvw
+hLu
+hLu
+hLu
+tvw
+tvw
+tvw
 wlv
 wlv
 fnO
@@ -22638,7 +22798,7 @@ lvy
 aQY
 vEC
 tvw
-aXG
+dgy
 dkP
 tvw
 pOa
@@ -22853,13 +23013,13 @@ wlv
 kLm
 fnO
 wlv
-nOz
-wlv
-wlv
-wlv
-hOE
-wlv
-wlv
+tvw
+paO
+qXU
+qXU
+aWb
+pzi
+aDg
 wlv
 wlv
 wlv
@@ -23110,13 +23270,13 @@ laO
 laO
 laO
 laO
-aYU
-wlv
-wlv
-qFt
-hOE
-wlv
-wlv
+tvw
+nEm
+aWb
+aWb
+aWb
+qdN
+aDg
 wlv
 wlv
 tvw
@@ -23367,14 +23527,14 @@ wlv
 wlv
 qFt
 wlv
-lDd
-wlv
-fnO
-wlv
-hOE
-wlv
-oOK
-wlv
+aDg
+aWb
+aWb
+aWb
+aWb
+xSx
+tvw
+tvw
 tvw
 tvw
 njp
@@ -23624,15 +23784,15 @@ wlv
 wlv
 kkV
 wlv
-lDd
-wlv
-wlv
-nOz
-hOE
-kLm
-wlv
-wlv
-tvw
+aDg
+yjm
+iGc
+ssG
+ssG
+ssG
+mIB
+xIA
+aDg
 cJm
 aXG
 cxc
@@ -23668,13 +23828,13 @@ jLB
 aXG
 aXG
 dkP
-fgG
+mDO
 fgG
 aXG
 viU
 hNL
 hNL
-hNL
+peM
 ksL
 mHx
 qlv
@@ -23881,15 +24041,15 @@ wlv
 wlv
 wlv
 wlv
-lDd
-hpd
-qFt
-wlv
-hOE
-wlv
-wlv
-wlv
-tvw
+aDg
+plf
+upz
+hvQ
+hvQ
+hvQ
+thd
+xIA
+aDg
 sxd
 aXG
 cxc
@@ -24141,9 +24301,9 @@ aSY
 tvw
 tvw
 tvw
-tvw
-tvw
-tvw
+ozB
+jLo
+ozB
 tvw
 tvw
 tvw
@@ -24439,7 +24599,7 @@ pmJ
 aXG
 aXG
 xxx
-kvv
+iPz
 iPz
 iPz
 cqi
@@ -25687,7 +25847,7 @@ xJE
 ghh
 srs
 hvQ
-kFw
+tvw
 hqL
 qDn
 qDn
@@ -26238,14 +26398,14 @@ iae
 aXG
 aXG
 aXG
-bWK
+hvQ
 hvQ
 hvQ
 kvt
 fxi
 hvQ
 hvQ
-cHS
+xgl
 aXG
 qlv
 aXG
@@ -27011,10 +27171,10 @@ aXG
 fBa
 aXG
 aXG
-aXG
+nzW
 aXG
 fBa
-aXG
+nzW
 aXG
 aXG
 aXG
@@ -27499,7 +27659,7 @@ bxz
 aQY
 msJ
 tvw
-hvQ
+jdT
 hvQ
 aDg
 ygk
@@ -27784,7 +27944,7 @@ lBh
 uWu
 tvw
 aXG
-fBa
+vjI
 tvw
 fYE
 oYr
@@ -28539,7 +28699,7 @@ ktc
 wlv
 hOE
 wlv
-pKL
+jto
 rOC
 qMG
 tvw
@@ -28554,11 +28714,11 @@ qiT
 lBh
 fXb
 tvw
-aXG
+dgy
 fBa
 tvw
-pzo
-bfP
+qyu
+qyu
 epN
 epN
 qyu
@@ -28773,7 +28933,7 @@ ozB
 ozB
 tvw
 tvw
-hvQ
+jdT
 hvQ
 tvw
 tvw
@@ -28814,12 +28974,12 @@ tvw
 aXG
 fBa
 tvw
-urI
-pND
-uiL
-uiL
-uiL
-kZP
+pzo
+bfP
+qyu
+qyu
+qyu
+qyu
 tvw
 aaa
 aaa
@@ -29071,12 +29231,12 @@ tvw
 plP
 mFQ
 tvw
-tvw
-sSk
-sSk
-sSk
-sSk
-cnV
+urI
+pND
+uiL
+uiL
+uiL
+kZP
 tvw
 aaa
 aaa
@@ -29286,7 +29446,7 @@ hlA
 nwO
 xxi
 aXG
-aXG
+ehz
 hvQ
 hvQ
 tvw
@@ -29309,7 +29469,7 @@ wlv
 wlv
 dyn
 hOE
-wlv
+vtI
 pKL
 rOC
 qMG
@@ -29329,11 +29489,11 @@ hqy
 hqy
 pdZ
 tvw
-olm
-qyu
-qyu
-qyu
-qyu
+sSk
+sSk
+sSk
+sSk
+cnV
 tvw
 aaa
 aaa
@@ -29586,9 +29746,9 @@ hqy
 hqy
 fxR
 tvw
-bHW
-bcl
-pUd
+olm
+qyu
+qyu
 qyu
 qyu
 tvw
@@ -29800,7 +29960,7 @@ uYf
 aXG
 aXG
 icD
-aXG
+ehz
 hvQ
 hvQ
 hvQ
@@ -29843,11 +30003,11 @@ hqy
 hqy
 fxR
 tvw
+bHW
+bcl
+pUd
 qyu
 qyu
-bSP
-vQs
-gOT
 tvw
 aaa
 aaa
@@ -30099,12 +30259,12 @@ gzN
 hqy
 hqy
 fxR
-tvw
-pzo
-gRE
-tvw
-tvw
-tvw
+ozB
+qyu
+qyu
+bSP
+vQs
+gOT
 tvw
 aaa
 aaa
@@ -30304,11 +30464,11 @@ aXG
 ssM
 sRF
 hvQ
-aDg
+tvw
+aBC
+iUl
 vWo
-jHv
-vWo
-aDg
+tvw
 hvQ
 uYf
 fvp
@@ -30356,12 +30516,12 @@ pKL
 hqy
 hqy
 pfJ
+ozB
+pzo
+gRE
 tvw
-opg
 tvw
 tvw
-pIA
-cRq
 tvw
 aaa
 aaa
@@ -30557,13 +30717,13 @@ aaa
 aaa
 aaa
 tvw
-aXG
+dgy
 dpx
 pDH
 hvQ
 aDg
 sjk
-jHv
+iUl
 jHv
 tyW
 hvQ
@@ -30603,7 +30763,7 @@ hOE
 wlv
 ktc
 kjw
-tdQ
+wlv
 vCA
 vCA
 vCA
@@ -30614,11 +30774,11 @@ hqy
 hqy
 fxR
 tvw
-hJn
-hJn
-hJn
-hJn
-rov
+opg
+tvw
+tvw
+pIA
+cRq
 tvw
 aaa
 aaa
@@ -30818,11 +30978,11 @@ aXG
 mJs
 nnC
 hvQ
-aDg
+fsY
 ipa
-wGu
+iUl
 tpK
-tyW
+eqY
 hvQ
 mnU
 eDs
@@ -30858,7 +31018,7 @@ fxR
 dyn
 hOE
 dyn
-vtI
+wlv
 wlv
 wlv
 uaM
@@ -30871,11 +31031,11 @@ hqy
 hqy
 fxR
 tvw
-eqL
 hJn
 hJn
 hJn
-pyB
+hJn
+rov
 tvw
 aaa
 aaa
@@ -31074,13 +31234,13 @@ tvw
 aXG
 aXG
 lFw
-amv
-tvw
+hvQ
 aDg
+rvb
 jcq
-aDg
-tvw
-amv
+oZB
+tyW
+hvQ
 rDK
 aXG
 aXG
@@ -31117,7 +31277,7 @@ hOE
 wlv
 wlv
 wlv
-yct
+wlv
 riv
 riv
 vCA
@@ -31128,11 +31288,11 @@ hqy
 hqy
 kie
 tvw
-vXB
-fKl
-aRs
+eqL
 hJn
-fem
+hJn
+hJn
+pyB
 tvw
 aaa
 aaa
@@ -31331,13 +31491,13 @@ fpT
 sIL
 aXG
 sRF
-wcp
-iMj
-vMf
-vMf
-vMf
-trz
-svt
+amv
+tvw
+aDg
+aDg
+aDg
+tvw
+amv
 uYf
 aXG
 aXG
@@ -31385,13 +31545,13 @@ hqy
 hqy
 fxR
 tvw
+vXB
+fKl
+aRs
+hJn
+fem
 tvw
-tvw
-tvw
-tvw
-tvw
-tvw
-tvw
+aaa
 aaa
 aaa
 aaa
@@ -31588,16 +31748,16 @@ tvw
 aXG
 aXG
 dLy
+dLH
 oFJ
 oFJ
 oFJ
 oFJ
 oFJ
-oFJ
-oFJ
+mCP
 aUR
 aXG
-aXG
+feW
 tvw
 gUv
 gUv
@@ -31641,14 +31801,14 @@ hqy
 hqy
 hqy
 fxR
-vLx
-vLx
-vLx
-vLx
-vLx
-vLx
-vLx
 tvw
+tvw
+tvw
+tvw
+tvw
+tvw
+tvw
+aaa
 aaa
 aaa
 aaa
@@ -31868,7 +32028,7 @@ tvw
 tvw
 tvw
 tvw
-hvQ
+jdT
 hvQ
 tvw
 vLx
@@ -31899,13 +32059,13 @@ hqy
 whS
 ktc
 vLx
-rOC
-rOC
-rOC
-iFz
-rOC
+vLx
+vLx
+vLx
+vLx
 vLx
 tvw
+aaa
 aaa
 aaa
 aaa
@@ -32160,9 +32320,9 @@ iFz
 rOC
 rOC
 rOC
-rOC
 vLx
 tvw
+aaa
 aaa
 aaa
 aaa
@@ -32416,10 +32576,10 @@ rOC
 rOC
 rOC
 rOC
-rOC
 mSL
 vLx
 tvw
+aaa
 aaa
 aaa
 aaa
@@ -32671,12 +32831,12 @@ ktc
 jUr
 rOC
 rOC
-mSL
 rOC
 rOC
 rOC
 vLx
 tvw
+aaa
 aaa
 aaa
 aaa
@@ -32931,9 +33091,9 @@ drN
 rOC
 rOC
 rOC
-rOC
 vLx
 tvw
+aaa
 aaa
 aaa
 aaa
@@ -33188,9 +33348,9 @@ rOC
 rOC
 rOC
 rOC
-rOC
 vLx
 tvw
+aaa
 aaa
 aaa
 aaa
@@ -33442,12 +33602,12 @@ aaa
 tvw
 vLx
 rOC
-iFz
 rOC
 mSL
 rOC
 vLx
 tvw
+aaa
 aaa
 aaa
 aaa
@@ -33661,12 +33821,12 @@ tvw
 tvw
 hvQ
 bji
-uCW
-hvQ
-hvQ
-hvQ
-hvQ
-hvQ
+cPg
+bTH
+fgo
+lBl
+ghh
+srs
 hvQ
 hvQ
 tvw
@@ -33702,9 +33862,9 @@ vLx
 rOC
 rOC
 rOC
-rOC
 vLx
 tvw
+aaa
 aaa
 aaa
 aaa
@@ -33957,11 +34117,11 @@ tvw
 tvw
 vLx
 vLx
-vLx
 rOC
 rOC
 vLx
 tvw
+aaa
 aaa
 aaa
 aaa
@@ -34172,7 +34332,7 @@ hvQ
 hvQ
 hvQ
 hvQ
-hvQ
+iQP
 hvQ
 hvQ
 hvQ
@@ -34213,12 +34373,12 @@ aaa
 aaa
 tvw
 tvw
-tvw
 vLx
 rOC
 rOC
 vLx
 tvw
+aaa
 aaa
 aaa
 aaa
@@ -34469,13 +34629,13 @@ aaa
 aaa
 aaa
 aaa
+tvw
+vLx
+cog
+cog
+vLx
+tvw
 aaa
-tvw
-vLx
-cog
-cog
-vLx
-tvw
 aaa
 aaa
 aaa
@@ -34726,13 +34886,13 @@ aaa
 aaa
 aaa
 aaa
+tvw
+vLx
+rOC
+rOC
+vLx
+tvw
 aaa
-tvw
-vLx
-rOC
-rOC
-vLx
-tvw
 aaa
 aaa
 aaa
@@ -34983,13 +35143,13 @@ aaa
 aaa
 aaa
 aaa
+tvw
+vLx
+rOC
+rOC
+vLx
+tvw
 aaa
-tvw
-vLx
-rOC
-rOC
-vLx
-tvw
 aaa
 aaa
 aaa
@@ -35239,14 +35399,14 @@ aaa
 aaa
 aaa
 aaa
+tvw
+tvw
+vLx
+cog
+cog
+vLx
+tvw
 aaa
-tvw
-tvw
-vLx
-cog
-cog
-vLx
-tvw
 aaa
 aaa
 aaa
@@ -35495,16 +35655,16 @@ aaa
 aaa
 aaa
 aaa
+tvw
+tvw
+vLx
+vLx
+rOC
+rOC
+vLx
+tvw
 aaa
-tvw
-tvw
-vLx
-vLx
-rOC
-rOC
-vLx
-tvw
-tvw
+aaa
 aaa
 aaa
 aaa
@@ -35752,16 +35912,16 @@ aaa
 aaa
 aaa
 aaa
+tvw
+vLx
+vLx
+rOC
+drN
+rOC
+vLx
+tvw
 aaa
-tvw
-vLx
-rOC
-rOC
-rOC
-rOC
-vLx
-vLx
-tvw
+aaa
 aaa
 aaa
 aaa
@@ -36009,16 +36169,16 @@ aaa
 aaa
 aaa
 aaa
-aaa
 tvw
 vLx
-drN
 rOC
 iFz
 rOC
 rOC
 vLx
 tvw
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -36266,16 +36426,16 @@ aaa
 aaa
 aaa
 aaa
-aaa
 tvw
 vLx
-rOC
 eIj
 rOC
-vvR
+rOC
 rOC
 vLx
 tvw
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -36523,16 +36683,16 @@ aaa
 aaa
 aaa
 aaa
+tvw
+vLx
+rOC
+rOC
+rOC
+vvR
+vLx
+tvw
 aaa
-tvw
-vLx
-rOC
-rOC
-rOC
-rOC
-rOC
-vLx
-tvw
+aaa
 aaa
 aaa
 aaa
@@ -36780,16 +36940,16 @@ aaa
 aaa
 aaa
 aaa
-aaa
 tvw
 vLx
-iFz
 rOC
 uGa
 rOC
 vLx
 vLx
 tvw
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -37037,16 +37197,16 @@ aaa
 aaa
 aaa
 aaa
+tvw
+vLx
+vLx
+vLx
+vLx
+vLx
+tvw
+tvw
 aaa
-tvw
-vLx
-vLx
-vLx
-vLx
-vLx
-vLx
-tvw
-tvw
+aaa
 aaa
 aaa
 aaa
@@ -37294,15 +37454,15 @@ aaa
 aaa
 aaa
 aaa
+tvw
+tvw
+tvw
+tvw
+tvw
+tvw
+tvw
 aaa
-tvw
-tvw
-tvw
-tvw
-tvw
-tvw
-tvw
-tvw
+aaa
 aaa
 aaa
 aaa
