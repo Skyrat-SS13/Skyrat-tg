@@ -31,7 +31,7 @@
 			C.vomit(0)
 		O.forceMove(get_turf(user))
 	//Skyrat Edit Start: Cortical Borer
-	var/mob/living/simple_animal/cortical_borer/cb_inside = user.has_borer()
+	var/mob/living/basic/cortical_borer/cb_inside = user.has_borer()
 	if(cb_inside)
 		cb_inside.leave_host()
 	//Skyrat Edit Stop: Cortical Borer
