@@ -42,6 +42,15 @@
 	max_occurrences = 0
 
 /**
+ * Spacevines
+ *
+ * Removed:
+ * Temporarily until balancing can be redone for them, as there's a rather serious issue.
+ */
+/datum/round_event_control/spacevine
+	max_occurrences = 0
+
+/**
  * Spider infestation
  *
  * Min players:

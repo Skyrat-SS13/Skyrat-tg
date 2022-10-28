@@ -7542,24 +7542,6 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
-"cIM" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/machinery/door/airlock/grunge{
-	name = "Medical Maintenance Access"
-	},
-/obj/effect/mapping_helpers/airlock/unres{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
-/obj/effect/mapping_helpers/airlock/access/all/service/kitchen,
-/obj/modular_map_root/tramstation{
-	key = "maintenance_uppermedsci"
-	},
-/turf/open/floor/catwalk_floor,
-/area/station/maintenance/department/medical)
 "cIQ" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 1
@@ -14931,9 +14913,9 @@
 /area/station/maintenance/tram/mid)
 "foD" = (
 /obj/structure/table/glass,
-/obj/item/computer_hardware/hard_drive/portable/chemistry,
-/obj/item/computer_hardware/hard_drive/portable/medical,
-/obj/item/computer_hardware/hard_drive/portable/medical,
+/obj/item/computer_disk/chemistry,
+/obj/item/computer_disk/medical,
+/obj/item/computer_disk/medical,
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/cmo)
@@ -16747,9 +16729,9 @@
 /area/station/security/prison/mess)
 "fZz" = (
 /obj/structure/table/reinforced,
-/obj/item/computer_hardware/hard_drive/portable/ordnance,
-/obj/item/computer_hardware/hard_drive/portable/ordnance,
-/obj/item/computer_hardware/hard_drive/portable/ordnance,
+/obj/item/computer_disk/ordnance,
+/obj/item/computer_disk/ordnance,
+/obj/item/computer_disk/ordnance,
 /obj/effect/landmark/event_spawn,
 /obj/structure/window/reinforced/spawner,
 /turf/open/floor/iron/cafeteria{
@@ -16975,6 +16957,13 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/engine_smes)
+"geB" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Morgue External Access"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/medical/morgue,
+/turf/open/floor/iron/dark,
+/area/station/medical/morgue)
 "geG" = (
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit)
@@ -19995,8 +19984,8 @@
 	dir = 5
 	},
 /obj/item/clipboard,
-/obj/item/computer_hardware/hard_drive/portable/quartermaster,
-/obj/item/computer_hardware/hard_drive/portable/quartermaster,
+/obj/item/computer_disk/quartermaster,
+/obj/item/computer_disk/quartermaster,
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/qm)
 "hhI" = (
@@ -24622,10 +24611,10 @@
 /area/station/cargo/miningdock)
 "iSX" = (
 /obj/structure/table,
-/obj/item/computer_hardware/hard_drive/portable{
+/obj/item/computer_disk{
 	pixel_x = -2
 	},
-/obj/item/computer_hardware/hard_drive/portable{
+/obj/item/computer_disk{
 	pixel_x = 7;
 	pixel_y = 2
 	},
@@ -27007,14 +26996,6 @@
 	},
 /turf/open/floor/carpet,
 /area/station/service/chapel)
-"jKB" = (
-/obj/machinery/door/airlock/grunge{
-	name = "Morgue External Access"
-	},
-/obj/effect/mapping_helpers/airlock/access/all/medical/morgue,
-/obj/effect/mapping_helpers/airlock/access/all/service/kitchen,
-/turf/open/floor/iron/dark,
-/area/station/medical/morgue)
 "jKL" = (
 /obj/effect/turf_decal/trimline/green/filled/corner{
 	dir = 4
@@ -27947,20 +27928,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat_interior)
-"kbl" = (
-/obj/machinery/door/airlock/grunge{
-	name = "Morgue"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/door/firedoor,
-/obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/access/all/medical/morgue,
-/turf/open/floor/iron/dark,
-/area/station/medical/morgue)
 "kbS" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -28811,10 +28778,6 @@
 	},
 /obj/effect/landmark/blobstart,
 /turf/open/floor/iron,
-/area/station/engineering/atmos)
-"kpq" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/visible,
-/turf/closed/wall/r_wall,
 /area/station/engineering/atmos)
 "kpv" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -42415,6 +42378,23 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/science/ordnance/testlab)
+"pjR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/machinery/door/airlock/grunge{
+	name = "Medical Maintenance Access"
+	},
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 4
+	},
+/obj/modular_map_root/tramstation{
+	key = "maintenance_uppermedsci"
+	},
+/obj/effect/mapping_helpers/airlock/access/any/medical/morgue,
+/turf/open/floor/catwalk_floor,
+/area/station/maintenance/department/medical)
 "pkp" = (
 /turf/closed/wall/r_wall,
 /area/station/engineering/engine_smes)
@@ -44395,6 +44375,10 @@
 	},
 /turf/open/floor/plating/airless,
 /area/station/ai_monitored/turret_protected/aisat_interior)
+"pRy" = (
+/obj/machinery/atmospherics/pipe/color_adapter,
+/turf/closed/wall/r_wall,
+/area/station/engineering/atmos)
 "pRB" = (
 /obj/structure/table/glass,
 /obj/effect/turf_decal/siding/wideplating/dark{
@@ -49404,6 +49388,21 @@
 /obj/effect/landmark/start/cargo_technician,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+"rDh" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Morgue"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/door/firedoor,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/all/medical/morgue,
+/obj/effect/mapping_helpers/airlock/access/all/medical/general,
+/turf/open/floor/iron/dark,
+/area/station/medical/morgue)
 "rDj" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1
@@ -49916,11 +49915,11 @@
 /area/station/security/processing)
 "rLy" = (
 /obj/structure/table,
-/obj/item/computer_hardware/hard_drive/portable{
+/obj/item/computer_disk{
 	pixel_x = -4;
 	pixel_y = -3
 	},
-/obj/item/computer_hardware/hard_drive/portable{
+/obj/item/computer_disk{
 	pixel_x = 2;
 	pixel_y = 8
 	},
@@ -52371,10 +52370,10 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced/spawner/west,
-/obj/item/computer_hardware/hard_drive/portable/engineering,
-/obj/item/computer_hardware/hard_drive/portable/engineering,
-/obj/item/computer_hardware/hard_drive/portable/engineering,
-/obj/item/computer_hardware/hard_drive/portable/atmos,
+/obj/item/computer_disk/engineering,
+/obj/item/computer_disk/engineering,
+/obj/item/computer_disk/engineering,
+/obj/item/computer_disk/atmos,
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/ce)
 "sGu" = (
@@ -54951,6 +54950,10 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/tram/mid)
+"tzY" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
+/turf/closed/wall/r_wall,
+/area/station/security/checkpoint/engineering)
 "tAo" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
@@ -101401,7 +101404,7 @@ cMd
 qQD
 jTy
 jGZ
-roB
+tzY
 qaL
 qaL
 roB
@@ -101915,7 +101918,7 @@ nHX
 xsc
 frV
 eYa
-kpq
+pRy
 rDj
 tTW
 bZW
@@ -167692,7 +167695,7 @@ wEg
 vbL
 gMZ
 whz
-cIM
+pjR
 whz
 xCc
 xCc
@@ -168727,7 +168730,7 @@ dmt
 xOM
 oIa
 oIa
-kbl
+rDh
 oIa
 bFq
 bFq
@@ -171040,7 +171043,7 @@ xtu
 whz
 whz
 whz
-jKB
+geB
 whz
 whz
 whz

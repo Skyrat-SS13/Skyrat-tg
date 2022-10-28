@@ -57,6 +57,7 @@
 
 /area/ruin/space/has_grav/hotel
 	name = "\improper Hotel"
+	ambience_index = NONE
 
 /area/ruin/space/has_grav/hotel/guestroom
 	name = "\improper Hotel Guest Room"
