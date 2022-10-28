@@ -20,6 +20,7 @@
 #define POLL_IGNORE_CONTRACTOR_SUPPORT "contractor_support"
 #define POLL_IGNORE_ACADEMY_WIZARD "academy_wizard"
 #define POLL_IGNORE_CORTICAL_BORER "cortical_borer" // SKYRAT EDIT - Cortical Borer
+#define POLL_IGNORE_STORY_ROLE "story_role" // SKYRAT ADDITION - story system
 #define POLL_IGNORE_PAI "pai"
 #define POLL_IGNORE_VENUSHUMANTRAP "venus_human_trap"
 #define POLL_IGNORE_REGAL_RAT "regal_rat"
@@ -28,7 +29,7 @@
 #define POLL_IGNORE_LAVALAND_ELITE "lavaland_elite"
 #define POLL_IGNORE_SHUTTLE_DENIZENS "shuttle_denizens"
 
-//Skyrat Edit Start: Cortical Borer
+//Skyrat Edit Start: Cortical Borer & Story system
 GLOBAL_LIST_INIT(poll_ignore_desc, list(
 	POLL_IGNORE_SENTIENCE_POTION = "Sentience potion",
 	POLL_IGNORE_POSSESSED_BLADE = "Possessed blade",
@@ -50,6 +51,7 @@ GLOBAL_LIST_INIT(poll_ignore_desc, list(
 	POLL_IGNORE_CONTRACTOR_SUPPORT = "Contractor Support Unit",
 	POLL_IGNORE_ACADEMY_WIZARD = "Academy Wizard Defender",
 	POLL_IGNORE_CORTICAL_BORER = "Cortical Borer",
+	POLL_IGNORE_STORY_ROLE = "Story Role",
 	POLL_IGNORE_PAI = JOB_PERSONAL_AI,
 	POLL_IGNORE_VENUSHUMANTRAP = "Venus Human Traps",
 	POLL_IGNORE_REGAL_RAT = "Regal rat",
@@ -58,7 +60,7 @@ GLOBAL_LIST_INIT(poll_ignore_desc, list(
 	POLL_IGNORE_LAVALAND_ELITE = "Lavaland elite",
 	POLL_IGNORE_SHUTTLE_DENIZENS = "Shuttle denizens",
 ))
-//Skyrat Edit Stop: Cortical Borer
+//Skyrat Edit Stop: Cortical Borer & story system
 GLOBAL_LIST_INIT(poll_ignore, init_poll_ignore())
 
 
