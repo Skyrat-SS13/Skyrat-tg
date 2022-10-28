@@ -9,7 +9,7 @@
 	///The radio that is inserted into the trap.
 	var/obj/item/radio/internal_radio
 	///The borer that is inside the trap
-	var/mob/living/simple_animal/cortical_borer/trapped_borer
+	var/mob/living/basic/cortical_borer/trapped_borer
 
 /obj/item/cortical_cage/Initialize(mapload)
 	. = ..()
