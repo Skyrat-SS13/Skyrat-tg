@@ -53,6 +53,7 @@
 			robot_spawn.notify_ai(TRUE)
 		robot_spawn.visible_message(span_notice("[robot_spawn] gently chimes."), span_notice("LawSync protocol engaged."))
 		robot_spawn.lawsync()
+		robot_spawn.lawupdate = TRUE
 		robot_spawn.show_laws()
 	//SKYRAT EDIT END
 	if(!robot_spawn.connected_ai) // Only log if there's no Master AI
