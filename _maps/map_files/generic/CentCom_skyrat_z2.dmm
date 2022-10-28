@@ -4602,8 +4602,14 @@
 /obj/structure/table{
 	name = "Jim Norton's Quebecois Coffee table"
 	},
-/obj/machinery/coffeemaker,
+/obj/machinery/coffeemaker{
+	pixel_y = 10
+	},
 /obj/machinery/light/warm/directional/north,
+/obj/item/reagent_containers/cup/coffeepot{
+	pixel_x = -7;
+	pixel_y = 3
+	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "bxz" = (
@@ -9250,6 +9256,9 @@
 /obj/structure/window/reinforced/spawner/east,
 /obj/structure/window/reinforced/spawner,
 /obj/structure/closet/crate/bin,
+/obj/item/reagent_containers/cup/glass/coffee_cup,
+/obj/item/reagent_containers/cup/glass/coffee_cup,
+/obj/item/reagent_containers/cup/glass/coffee_cup,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "oac" = (
@@ -10660,6 +10669,13 @@
 	},
 /obj/machinery/door/window/left/directional/south{
 	name = "Coffee Counter"
+	},
+/obj/item/reagent_containers/cup/glass/coffee_cup{
+	pixel_y = 12;
+	pixel_x = -5
+	},
+/obj/item/reagent_containers/cup/glass/coffee_cup{
+	pixel_y = 4
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
