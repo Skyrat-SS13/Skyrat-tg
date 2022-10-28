@@ -339,6 +339,16 @@
 	progression_minimum = 20 MINUTES
 
 // LOADOUTS
+
+/datum/uplink_item/bundles_tc/contract_kit
+	name = "Contract Kit"
+	desc = "The Syndicate have offered you the chance to become a contractor, take on kidnapping contracts for TC and cash payouts. Upon purchase, \
+			you'll be granted your own contract uplink embedded within the supplied tablet computer. Additionally, you'll be granted \
+			standard contractor gear to help with your mission - comes supplied with the tablet, specialised MODsuit, chameleon jumpsuit and mask, \
+			agent card, specialised contractor baton, and three randomly selected low cost items. Can include otherwise unobtainable items."
+	item = /obj/item/storage/box/syndicate/contract_kit
+	cost = 20
+
 /datum/uplink_item/bundles_tc/recon
 	name = "Reconnaisance bundle"
 	desc = "Get in and get out as quickly as you came with this unique kit of gear specialized in infiltration and observation."
