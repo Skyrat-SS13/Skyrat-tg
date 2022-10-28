@@ -24,6 +24,14 @@
 	var/forcedOpen = 'modular_skyrat/modules/aesthetics/airlock/sound/open_force.ogg' //Come on guys, why aren't all the sound files like this.
 	var/forcedClosed = 'modular_skyrat/modules/aesthetics/airlock/sound/close_force.ogg'
 
+	/// For those airlocks you might want to have varying "fillings" for, without having to
+	/// have an icon file per door with a different filling.
+	var/fill_state_suffix = null
+	/// For the airlocks that use greyscale lights, set this to the color you want your lights to be.
+	var/greyscale_lights_color = null
+	/// For the airlocks that use a greyscale accent door color, set this color to the accent color you want it to be.
+	var/greyscale_accent_color = null
+
 	var/has_environment_lights = TRUE //Does this airlock emit a light?
 	var/light_color_poweron = AIRLOCK_POWERON_LIGHT_COLOR
 	var/light_color_bolts = AIRLOCK_BOLTS_LIGHT_COLOR
@@ -101,7 +109,10 @@
 	if(airlock_material)
 		. += get_airlock_overlay("[airlock_material]_[frame_state]", overlays_file, src, em_block = TRUE)
 	else
-		. += get_airlock_overlay("fill_[frame_state]", icon, src, em_block = TRUE)
+		. += get_airlock_overlay("fill_[frame_state + fill_state_suffix]", icon, src, em_block = TRUE)
+
+	if(greyscale_lights_color && !light_state)
+		lights_overlay += "_greyscale"
 
 	if(lights && hasPower())
 		. += get_airlock_overlay("lights_[light_state]", overlays_file, src, em_block = FALSE)
@@ -115,9 +126,17 @@
 		lights_overlay = ""
 
 	var/mutable_appearance/lights_appearance = mutable_appearance(overlays_file, lights_overlay, FLOAT_LAYER, src, ABOVE_LIGHTING_PLANE)
+
+	if(greyscale_lights_color && !light_state)
+		lights_appearance.color = greyscale_lights_color
+
 	if(multi_tile)
 		lights_appearance.dir = dir
+
 	. += lights_appearance
+
+	if(greyscale_accent_color)
+		. += get_airlock_overlay("[frame_state]_accent", overlays_file, src, em_block = TRUE, state_color = greyscale_accent_color)
 
 	if(panel_open)
 		. += get_airlock_overlay("panel_[frame_state][security_level ? "_protected" : null]", overlays_file, src, em_block = TRUE)
