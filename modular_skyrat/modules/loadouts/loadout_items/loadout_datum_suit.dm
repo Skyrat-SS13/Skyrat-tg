@@ -149,6 +149,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Biker Jacket"
 	item_path = /obj/item/clothing/suit/jacket/leather/biker
 
+/datum/loadout_item/suit/leather_jacket/hooded
+	name = "Leather Jacket with a Hoodie"
+	item_path = /obj/item/clothing/suit/hooded/leather
+
 /datum/loadout_item/suit/jacket_sweater
 	name = "Recolorable Sweater Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/sweater
@@ -166,20 +170,12 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/hooded/ethereal_raincoat
 
 /*
-*	LETTERMAN
+*	VARSITY JACKET
 */
 
-/datum/loadout_item/suit/brown_letterman
-	name = "Brown Letterman"
-	item_path = /obj/item/clothing/suit/jacket/letterman
-
-/datum/loadout_item/suit/red_letterman
-	name = "Red Letterman"
-	item_path = /obj/item/clothing/suit/jacket/letterman_red
-
-/datum/loadout_item/suit/blue_letterman
-	name = "Blue Letterman"
-	item_path = /obj/item/clothing/suit/jacket/letterman_nanotrasen
+/datum/loadout_item/suit/varsity
+	name = "Varsity Jacket"
+	item_path = /obj/item/clothing/suit/varsity
 
 /*
 *	COSTUMES
@@ -359,8 +355,8 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Falls Parka"
 	item_path = /obj/item/clothing/suit/fallsparka
 
-/datum/loadout_item/suit/poly
-	name = "Polychromic Wintercoat"
+/datum/loadout_item/suit/gags_wintercoat
+	name = "Recolorable Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/colourable
 
 /datum/loadout_item/suit/urban

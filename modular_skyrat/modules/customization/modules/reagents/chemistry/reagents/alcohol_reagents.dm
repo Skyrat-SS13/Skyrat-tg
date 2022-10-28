@@ -515,3 +515,52 @@
 	glass_desc = "Looking at it makes you recall every mistake you’ve made."
 	quality = DRINK_VERYGOOD //takes extra effort
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+
+/datum/reagent/consumable/ethanol/shakiri
+	name = "Shakiri"
+	description = "A sweet, fragrant red drink made from fermented kiri fruits. It seems to gently sparkle when exposed to light."
+	boozepwr = 45
+	color = "#cf3c3c"
+	quality = DRINK_GOOD
+	taste_description = "delicious liquified jelly"
+	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	glass_icon_state = "shakiri"
+	glass_name = "glass of shakiri"
+	glass_desc = "A sweet, fragrant red drink made from fermented kiri fruits. It seems to gently sparkle when exposed to light."
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+
+/datum/reagent/consumable/ethanol/shakiri_spritz
+	name = "Shakiri Spritz"
+	description = "A carbonated cocktail made from shakiri and orange juice with soda water."
+	color = "#cf863c"
+	quality = DRINK_GOOD
+	boozepwr = 45
+	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	glass_icon_state = "shakiri_spritz"
+	glass_name = "glass of shakiri spritz"
+	glass_desc = "A carbonated cocktail made from shakiri and orange juice with soda water."
+	taste_description = "tangy, carbonated sweetness"
+
+/datum/reagent/consumable/ethanol/crimson_hurricane
+	name = "Crimson Hurricane"
+	description = "A strong, citrusy cocktail of human origin, now made with shakiri and kiri jelly for a delightfully sweet drink."
+	color = "#b86637"
+	quality = DRINK_VERYGOOD
+	boozepwr = 60
+	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	glass_icon_state = "crimson_hurricane"
+	glass_name = "glass of crimson hurricane"
+	glass_desc = "A strong, citrusy cocktail of human origin, now with shakiri and kiri jelly for a delightfully sweet drink."
+	taste_description = "thick, fruity sweetness with a punch"
+
+/datum/reagent/consumable/ethanol/shakiri_rogers
+	name = "Shakiri Rogers"
+	description = "A take on the classic Roy Rogers, with shakiri instead of grenadine. Sweet and refreshing."
+	color = "#6F2B1A"
+	quality = DRINK_GOOD
+	boozepwr = 45
+	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	glass_icon_state = "shakiri_rogers"
+	glass_name = "glass of shakiri rogers"
+	glass_desc = "A take on the classic Roy Rogers, with shakiri instead of grenadine. Sweet and refreshing."
+	taste_description = "fruity, carbonated soda with a slight kick"

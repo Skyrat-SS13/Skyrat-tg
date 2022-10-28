@@ -257,6 +257,11 @@
 	. = ..()
 	if(. != MOD_CANCEL_ACTIVATE || !isliving(user))
 		return
+	// SKYRAT EDIT CHANGE BEGIN - pAIs in MODsuits - `ai` replaced with `mod_pai`
+	if(mod.mod_pai == user)
+		to_chat(mod.mod_pai, span_danger("<B>fATaL EERRoR</B>: 381200-*#00CODE <B>BLUE</B>\nAI INTErFERenCE DEtECted\nACTi0N DISrEGArdED"))
+		return
+	// SKYRAT EDIT CHANGE END
 	var/mob/living/living_user = user
 	to_chat(living_user, span_danger("<B>fATaL EERRoR</B>: 382200-*#00CODE <B>RED</B>\nUNAUTHORIZED USE DETECteD\nCoMMENCING SUB-R0UTIN3 13...\nTERMInATING U-U-USER..."))
 	living_user.gib()
