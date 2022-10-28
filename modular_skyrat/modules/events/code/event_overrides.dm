@@ -130,7 +130,7 @@
  * Paperwork Error
  *
  * Removed:
- *Paperwork Error is too intrusive and should be staff-only.
+ * Paperwork Error is too intrusive and should be staff-only.
  */
 /datum/round_event_control/bureaucratic_error
     max_occurrences = 0
