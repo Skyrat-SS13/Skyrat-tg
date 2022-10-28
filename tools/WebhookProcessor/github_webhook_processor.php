@@ -805,6 +805,7 @@ function checkchangelog($payload, $compile = true) {
 				break;
 		}
 	}
+<<<<<<< HEAD
 
 	if(!count($changelogbody))
 		$no_changelog = true;
@@ -829,6 +830,9 @@ function checkchangelog($payload, $compile = true) {
 
 	$filename = '/html/changelogs/AutoChangeLog-pr-'.$payload['pull_request']['number'].'.yml';
 	echo github_apisend($payload['pull_request']['base']['repo']['url'].'/contents'.$filename, 'PUT', $content);
+=======
+	return $tags;
+>>>>>>> dee5f8f58a0 (Fix github not announcing new prs (#70853))
 }
 
 function game_server_send($addr, $port, $str) {
