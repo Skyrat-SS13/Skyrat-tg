@@ -34,7 +34,6 @@
 /datum/body_marking_set/redpanda
 	name = "Red Panda"
 	body_marking_list = list("Red Panda", "Red Panda Head")
-	relevent_layers = list(BODY_ADJ_LAYER)
 
 /datum/body_marking_set/dalmatian
 	name = "Dalmatian"
