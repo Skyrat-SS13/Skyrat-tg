@@ -357,12 +357,8 @@
 	reqs = list(/obj/item/reagent_containers/cup/bucket = 1,
 				/obj/item/assembly/prox_sensor = 1,
 				/obj/item/bodypart/r_arm/robot = 1)
-<<<<<<< HEAD
-	time = 40
-=======
 	parts = list(/obj/item/reagent_containers/cup/bucket = 1)
 	time = 4 SECONDS
->>>>>>> 4933c5018ea (GAGs Buckets (#70749))
 	category = CAT_ROBOT
 
 /datum/crafting_recipe/floorbot
