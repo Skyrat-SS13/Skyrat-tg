@@ -27,7 +27,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	color_src = USE_ONE_COLOR
 
 	///Which layers does this accessory affect. Valid values are BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER, BODY_FRONT_UNDER_CLOTHES and ABOVE_BODY_FRONT_HEAD_LAYER
-	var/relevent_layers = list()
+	var/relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER, BODY_FRONT_UNDER_CLOTHES, ABOVE_BODY_FRONT_HEAD_LAYER)
 
 	///This is used to determine whether an accessory gets added to someone. This is important for accessories that are "None", which should have this set to false
 	var/factual = TRUE
@@ -157,21 +157,25 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/caps
 	key = "caps"
 	generic = "Caps"
+	relevent_layers = list(ABOVE_BODY_FRONT_HEAD_LAYER)
 
 /datum/sprite_accessory/body_markings
 	key = "body_markings"
 	generic = "Body Markings"
 	default_color = DEFAULT_TERTIARY
+	relevent_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/legs
 	key = "legs"
 	generic = "Leg Type"
 	color_src = null
 	genetic = TRUE
+	relevent_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/socks
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
 	use_static = TRUE
+	relevent_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/socks/socks_knee
 	name = "Knee-high"
@@ -346,6 +350,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
 	///Whether the underwear uses a special sprite for digitigrade style (i.e. briefs, not panties). Adds a "_d" suffix to the icon state
 	var/has_digitigrade = FALSE
+	relevent_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/underwear/male_bee
 	name = "Boxers - Bee"
@@ -527,6 +532,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/undershirt
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
 	use_static = TRUE
+	relevent_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/undershirt/tanktop_alt
 	name = "Tank Top - Alt"
@@ -804,3 +810,21 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/undershirt/leotard/turtleneck/sleeveless
 	name = "Shirt - Turtleneck Leotard Sleeveless"
 	icon_state = "leotard_turtleneck_sleeveless"
+
+/datum/sprite_accessory/snouts/sharp
+	relevent_layers = list(BODY_ADJ_LAYER)
+
+/datum/sprite_accessory/snouts/round
+	relevent_layers = list(BODY_ADJ_LAYER)
+
+/datum/sprite_accessory/snouts/sharplight
+	relevent_layers = list(BODY_ADJ_LAYER)
+
+/datum/sprite_accessory/snouts/roundlight
+	relevent_layers = list(BODY_ADJ_LAYER)
+
+/datum/sprite_accessory/tails/human/cat
+	relevent_layers = list(BODY_FRONT_LAYER)
+
+/datum/sprite_accessory/horns
+	relevent_layers = list(BODY_FRONT_LAYER)

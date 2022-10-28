@@ -348,7 +348,6 @@
 /datum/sprite_accessory/tails/mammal/wagging/red_panda
 	name = "Red Panda"
 	icon_state = "wah"
-	extra = TRUE
 	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/wagging/pede

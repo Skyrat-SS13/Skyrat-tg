@@ -2,7 +2,7 @@
 	key = "ears"
 	generic = "Ears"
 	organ_type = /obj/item/organ/internal/ears/mutant
-	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	relevent_layers = list(BODY_ADJ_LAYER)
 	genetic = TRUE
 
 /datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/human, obj/item/bodypart/bodypart)
@@ -28,6 +28,7 @@
 	color_src = USE_MATRIXED_COLORS
 	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_HUMANOID, SPECIES_GHOUL)
 	uses_emissives = TRUE
+	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant/none
 	name = "None"

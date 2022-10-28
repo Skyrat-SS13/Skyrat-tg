@@ -114,7 +114,7 @@
 
 /datum/sprite_accessory/screen/squarewave
 	name = "Square wave"
-	icon_state = "squarwave"
+	icon_state = "squarewave"
 
 /datum/sprite_accessory/screen/ecgwave
 	name = "ECG wave"

@@ -5,6 +5,7 @@
 	name = "Vox Snout"
 	icon_state = "vox"
 	recommended_species = list(SPECIES_VOX)
+	relevent_layers = list(BODY_ADJ_LAYER)
 
 //The hairstyles
 /datum/sprite_accessory/hair/vox

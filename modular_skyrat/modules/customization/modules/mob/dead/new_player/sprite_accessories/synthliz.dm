@@ -7,6 +7,7 @@
 	name = "Synthetic Lizard - Snout"
 	icon_state = "synthliz_basic"
 	genetic = FALSE
+	relevent_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/snouts/synthliz/synthliz_under
 	color_src = USE_MATRIXED_COLORS

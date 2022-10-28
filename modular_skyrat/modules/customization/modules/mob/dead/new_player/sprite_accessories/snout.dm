@@ -96,13 +96,12 @@
 	icon_state = "bug"
 	flags_for_organ = NONE
 	color_src = USE_ONE_COLOR
-	extra2 = TRUE
 	extra2_color_src = MUTCOLORS3
+	relevent_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/snouts/mammal/elephant
 	name = "Elephant"
 	icon_state = "elephant"
-	extra = TRUE
 	extra_color_src = MUTCOLORS3
 
 /datum/sprite_accessory/snouts/mammal/husky
@@ -112,7 +111,6 @@
 /datum/sprite_accessory/snouts/mammal/rhino
 	name = "Horn"
 	icon_state = "rhino"
-	extra = TRUE
 	extra_color_src = MUTCOLORS3
 
 /datum/sprite_accessory/snouts/mammal/rodent
@@ -155,6 +153,7 @@
 	name = "Tajaran, normal"
 	icon_state = "ntajaran"
 	color_src = USE_ONE_COLOR
+	relevent_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/snouts/mammal/wolf
 	name = "Mammal, Thick"

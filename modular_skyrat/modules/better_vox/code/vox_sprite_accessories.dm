@@ -125,4 +125,5 @@
 	color_src = 0
 	gender_specific = FALSE
 	recommended_species = list(SPECIES_VOX_PRIMALIS)
+	relevent_layers = list(BODY_ADJ_LAYER)
 
