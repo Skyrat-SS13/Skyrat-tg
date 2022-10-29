@@ -270,7 +270,7 @@
 				</center>
 				<h2>Introduction</h2>
 					Should you not have read the example ruleset that should have come with this book, then it is
-					highly suggest that you read through that first. This publication will contain a list of example
+					highly suggested that you read through that first. This publication will contain a list of example
 					ships, and scenarios for using in games. It should be noted that it is not required to use the
 					ships in this book, and that making your own with your game master is encouraged.
 				<br>
