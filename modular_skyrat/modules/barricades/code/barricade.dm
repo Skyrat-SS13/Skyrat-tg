@@ -46,7 +46,7 @@
 
 /obj/structure/deployable_barricade/examine(mob/user)
 	. = ..()
-	if(!is_wired)
+	if(!is_wired && can_wire)
 		. += span_info("Barbed wire could be added with some <b>cable</b>.")
 	if(is_wired)
 		. += span_info("It has barbed wire along the top.")
