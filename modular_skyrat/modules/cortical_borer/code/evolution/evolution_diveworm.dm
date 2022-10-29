@@ -9,7 +9,7 @@
 	tier = 1
 	unlocked_evolutions = list(/datum/borer_evolution/diveworm/host_speed)
 
-/datum/borer_evolution/diveworm/health_per_level/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/diveworm/health_per_level/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	cortical_owner.health_per_level += 2.5
 	cortical_owner.recalculate_stats()
@@ -22,7 +22,7 @@
 	tier = 2
 	unlocked_evolutions = list(/datum/borer_evolution/diveworm/expanded_chemicals)
 
-/datum/borer_evolution/diveworm/host_speed/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/diveworm/host_speed/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	cortical_owner.upgrade_flags |= BORER_FAST_BORING
 
@@ -48,7 +48,7 @@
 		/datum/reagent/inverse/oculine,
 	)
 
-/datum/borer_evolution/diveworm/expanded_chemicals/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/diveworm/expanded_chemicals/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	cortical_owner.potential_chemicals |= added_chemicals
 
@@ -73,7 +73,7 @@
 		/datum/borer_evolution/diveworm/empowered_offspring,
 	)
 
-/datum/borer_evolution/diveworm/harm_increase/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/diveworm/harm_increase/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	cortical_owner.host_harm_multiplier += 0.25
 
@@ -102,7 +102,7 @@
 		/datum/borer_evolution/synthetic_chems_negative,
 	)
 
-/datum/borer_evolution/diveworm/empowered_offspring/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/diveworm/empowered_offspring/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	var/datum/action/cooldown/borer/empowered_offspring/attack_action = new()
 	attack_action.Grant(cortical_owner)

@@ -168,6 +168,7 @@
 	name = "reagent plated buckler shield"
 	desc = "A small, round shield best used in tandem with a melee weapon in close-quarters combat."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
+	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_worn.dmi'
 	icon_state = "buckler"
 	inhand_icon_state = "buckler"
 	worn_icon_state = "buckler_back"
