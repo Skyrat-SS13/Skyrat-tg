@@ -25,7 +25,7 @@
 	alt_titles = list("Bartender", "Mixologist", "Barkeeper", "Barista")
 
 /datum/job/blueshield
-	alt_titles = list("Blueshield", "Command Bodyguard", "Executive Protection Agent", "Blueshield Candidate")
+	alt_titles = list("Blueshield", "Command Bodyguard", "Executive Protection Agent", "Blueshield Cadet")
 
 /datum/job/botanist
 	alt_titles = list("Botanist", "Hydroponicist", "Gardener", "Botanical Researcher", "Herbalist", "Florist")
