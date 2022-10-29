@@ -183,34 +183,22 @@
 	name = "DS-2 Master At Arms"
 	uniform = /obj/item/clothing/under/syndicate/combat
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/masteratarms
-	belt = /obj/item/storage/belt/security/full
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
 	head = /obj/item/clothing/head/warden/syndicate
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
 	ears = /obj/item/radio/headset/interdyne/command
 
-	backpack_contents = list(
-		/obj/item/storage/box/handcuffs,\
-		/obj/item/melee/baton/security/loaded
-	)
-
 /datum/outfit/ds2/syndicate/brigoff
 	name = "DS-2 Brig Officer"
 	uniform = /obj/item/clothing/under/syndicate/combat
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/brigofficer
-	belt = /obj/item/storage/belt/security/full
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/bulletproof/old
 	head = /obj/item/clothing/head/helmet/swat/ds
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
 	mask = /obj/item/clothing/mask/gas/syndicate/ds
 	ears = /obj/item/radio/headset/interdyne
-
-	backpack_contents = list(
-		/obj/item/storage/box/handcuffs,\
-		/obj/item/melee/baton/security/loaded
-	)
 
 /datum/outfit/ds2/syndicate/admiral
 	name = "DS-2 Station Admiral"
