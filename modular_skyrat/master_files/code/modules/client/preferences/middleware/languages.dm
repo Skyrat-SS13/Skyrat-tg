@@ -96,9 +96,6 @@
 
 		if(species.always_customizable && !(language.type in lang_holder.spoken_languages)) // For the ghostrole species. We don't want ashwalkers speaking beachtongue now.
 			continue
-		if(language.type == /datum/language/common && preferences.all_quirks.Find("Foreigner")) // Stops foreigners from taking common. Bad foreigner.
-			preferences.languages.Remove(/datum/language/common) // Make sure common doesn't stay invisibly.
-			continue
 		if(preferences.languages[language.type])
 			selected_languages += list(list(
 				"description" = language.desc,
@@ -148,7 +145,7 @@
 	return TRUE
 
 /**
- * Proc that removes a language to a character.
+ * Proc that removes a language from a character.
  *
  * Arguments:
  * * params - List of parameters, given to us by the `act()` method from TGUI. Needs to

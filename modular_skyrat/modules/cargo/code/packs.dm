@@ -16,13 +16,15 @@
 	name = "Mouse Crate"
 	desc = "Good for snakes and lizards of all ages. Contains six feeder mice."
 	cost = CARGO_CRATE_VALUE * 6
-	contains = list(/mob/living/simple_animal/mouse,)
+	contains = list(
+		/mob/living/basic/mouse,
+	)
 	crate_name = "mouse crate"
 
 /datum/supply_pack/critter/mouse/generate()
 	. = ..()
 	for(var/i in 1 to 5)
-		new /mob/living/simple_animal/mouse(.)
+		new /mob/living/basic/mouse(.)
 
 /*
 *	MEDICAL

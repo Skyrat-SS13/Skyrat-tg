@@ -544,7 +544,7 @@
 	icon_state = "plushie_dan"
 
 //Donation reward for KLB100
-/obj/item/toy/plush/skyrat/plushie_jeanne
+/obj/item/toy/plush/skyrat/fox/plushie_jeanne
 	name = "masked roboticist plushie"
 	desc = "A familiar snow white Vulpkanin plushie. This one appears to be wearing a mask obscuring their face."
 	icon_state = "plushie_jeanne"
