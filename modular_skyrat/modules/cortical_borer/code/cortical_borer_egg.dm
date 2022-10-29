@@ -7,7 +7,7 @@
 	density = FALSE
 	mob_name = "cortical borer"
 	///Type of mob that will be spawned
-	mob_type = /mob/living/simple_animal/cortical_borer
+	mob_type = /mob/living/basic/cortical_borer
 	role_ban = ROLE_ALIEN
 	show_flavor = FALSE
 	prompt_name = "cortical borer"
@@ -96,5 +96,5 @@
 /obj/effect/mob_spawn/ghost_role/borer_egg/empowered
 	name = "empowered borer egg"
 	desc = "An egg of a creature that came crawling out of someone instead of into them."
-	mob_type = /mob/living/simple_animal/cortical_borer/empowered
+	mob_type = /mob/living/basic/cortical_borer/empowered
 	host_egg = /obj/item/borer_egg/empowered
