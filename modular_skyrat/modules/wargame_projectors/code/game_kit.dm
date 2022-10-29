@@ -278,7 +278,7 @@
 					<b>Nanotrasen</b> <br>
 					Nanotrasen's fleet has historically been focused on quick response, especially due to the spread
 					of Nanotrasen assets across the galaxy. Their ships are often built to simply get to a location
-					fast, and hopefully scare off anything that's there. This isn't to say that modern vessels are
+					fast and, hopefully, scare off anything that's there. This isn't to say that modern vessels are
 					incapable of heavy combat, though the vessels in this list will be based upon older, decommissioned
 					ship types due to modern designs being classified.
 						<br>
