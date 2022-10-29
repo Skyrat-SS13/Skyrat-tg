@@ -416,7 +416,7 @@
 					where both teams start. <br>
 					- Either side will win through complete destruction or surrender of the enemy. <br>
 					- The NRI should start with a few more ships, or stronger ships than the NT force, however
-					the NT station should have several defensive platforms surrounding it to suppliment. <br>
+					the NT station should have several defensive platforms surrounding it to supplement. <br>
 					<br>
 					-- NRI/SolFed Border Conflict -- <br>
 					Two sizeable fleets from both SolFed, and the NRI meet in disputed space. A battle ensues soon
