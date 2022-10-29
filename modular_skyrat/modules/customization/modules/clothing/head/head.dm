@@ -120,34 +120,6 @@
 	// same armour as the sec beret
 	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50, WOUND = 4)
 
-/obj/item/clothing/head/costume/cowboyhat/sheriff
-	name = "winter cowboy hat"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "sheriff_hat"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-	desc = "A dark hat from the cold wastes of the Frosthill mountains. So it was done, all according to the law. There's a small set of antlers embroidered on the inside."
-	cold_protection = HEAD
-	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
-	flags_inv = HIDEHAIR | SHOWSPRITEEARS
-
-/obj/item/clothing/head/costume/cowboyhat/sheriff/alt
-	name = "sheriff hat"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "sheriff_hat_alt"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-	desc = "A dark brown hat with a smell of whiskey. There's a small set of antlers embroidered on the inside."
-	flags_inv = SHOWSPRITEEARS
-
-/obj/item/clothing/head/costume/cowboyhat/deputy
-	name = "deputy hat"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "deputy_hat"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-	desc = "A light brown hat with a smell of iron. There's a small set of antlers embroidered on the inside."
-
 /obj/item/clothing/head/costume/ushanka/sec
 	name = "security ushanka"
 	desc = "There's more to life than money, with this red ushanka, you can prove it for $19.99."

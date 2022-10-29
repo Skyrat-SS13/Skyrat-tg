@@ -54,6 +54,36 @@
 	name = "Beret With Fancy Badge Worn - Teshari"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/beret_teshari.dmi'
 
+
+//COWBOY
+/datum/greyscale_config/cowboy_wide
+	name = "Wide Brimmed Hat"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/head/cowboy.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/cowboy/plain_hats.json'
+
+/datum/greyscale_config/cowboy_wide/worn
+	name = "Wide Brimmed Hat (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/head/cowboy.dmi'
+
+/datum/greyscale_config/cowboy_flat
+	name = "Flat Brimmed Hat"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/head/cowboy.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/cowboy/plain_hats.json'
+
+/datum/greyscale_config/cowboy_flat/worn
+	name = "Flat Brimmed Hat (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/head/cowboy.dmi'
+
+/datum/greyscale_config/cowboy_wide_feathered
+	name = "Wide Brimmed Feathered Hat"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/head/cowboy.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/cowboy/feathered_hats.json'
+
+/datum/greyscale_config/cowboy_wide_feathered/worn
+	name = "Wide Brimmed Feathered Hat (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/head/cowboy.dmi'
+
+
 //MUSHROOM CAP
 
 /datum/greyscale_config/mushcap

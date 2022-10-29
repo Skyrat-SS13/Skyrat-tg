@@ -403,17 +403,29 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Cowboy Hat (Pink)"
 	item_path = /obj/item/clothing/head/costume/cowboyhat/pink
 
-/datum/loadout_item/head/cowboyhat_winter
-	name = "Winter Cowboy Hat"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/sheriff
+/datum/loadout_item/head/cowboyhat_wide
+	name = "Wide-Brimmed Hat"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/wide
+
+/datum/loadout_item/head/cowboyhat_wide_feather
+	name = "Wide-Brimmed Feathered Hat"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/wide/feathered
+
+/datum/loadout_item/head/cowboyhat_flat
+	name = "Flat-Brimmed Hat"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/flat
 
 /datum/loadout_item/head/cowboyhat_sheriff
 	name = "Sheriff Hat"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/sheriff/alt
+	item_path = /obj/item/clothing/head/cowboy/skyrat/flat/sheriff
 
 /datum/loadout_item/head/cowboyhat_deputy
 	name = "Deputy Hat"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/deputy
+	item_path = /obj/item/clothing/head/cowboy/skyrat/flat/deputy
+
+/datum/loadout_item/head/cowboyhat_winter
+	name = "Winter Cowboy Hat"
+	item_path = /obj/item/clothing/head/costume/cowboyhat/sheriff
 
 /*
 *	TREK HATS (JOB-LOCKED)
