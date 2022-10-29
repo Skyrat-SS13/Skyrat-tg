@@ -28,6 +28,7 @@
 	name = "Central Command Inspector"
 	actor_outfits = list(/datum/outfit/centcom_inspector)
 	actor_info = "You are an inspector from Central Command on a surprise inspection of the station. Inspect things, pick out issues, and make a good report for CentCom."
+	actor_goal = "Inspect the station, make a report, and send it to CentCom when done."
 
 /datum/story_actor/ghost/centcom_inspector/send_them_in(mob/living/carbon/human/to_send_human)
 	to_send_human.client?.prefs?.safe_transfer_prefs_to(to_send_human)
@@ -48,10 +49,12 @@
 	name = "Mafioso"
 	actor_outfits = list(/datum/outfit/mafioso)
 	actor_info = "Nyeh, see? Looks like some two-bit small-timer over on this 'ere station owes the boss some money, so shake %NAME% up for the twenty big ones they owe."
+	actor_goal = "Extort %NAME% out of the 20k they owe."
 
 /datum/story_actor/ghost/mafioso/handle_spawning(mob/picked_spawner, datum/story_type/current_story)
 	var/datum/story_type/somewhat_impactful/mob_money/mob_story = involved_story
 	actor_info = replacetext(actor_info, "%NAME%", mob_story?.poor_sod?.real_name)
+	actor_goal = replacetext(actor_goal, "%NAME%", mob_story?.poor_sod?.real_name)
 	return ..()
 
 /datum/story_actor/ghost/mafioso/send_them_in(mob/living/carbon/human/to_send_human)

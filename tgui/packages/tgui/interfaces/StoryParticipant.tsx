@@ -5,11 +5,12 @@ import { Window } from '../layouts';
 type Info = {
   name: string;
   info: string;
+  goal: string;
 };
 
 export const StoryParticipant = (props, context) => {
   const { data } = useBackend<Info>(context);
-  const { name } = data;
+  const { name, goal } = data;
   return (
     <Window width={620} height={250}>
       <Window.Content>
@@ -21,6 +22,13 @@ export const StoryParticipant = (props, context) => {
             <Stack.Item>
               <InfoPrintout />
             </Stack.Item>
+            {goal !== '' ? (
+              <Stack.Item>
+                <GoalPrintout />
+              </Stack.Item>
+            ) : (
+              <Stack.Item></Stack.Item>
+            )}
           </Stack>
         </Section>
       </Window.Content>
@@ -35,6 +43,17 @@ const InfoPrintout = (props, context) => {
     <Stack vertical>
       <Stack.Item bold>Your backstory:</Stack.Item>
       <Stack.Item>{info}</Stack.Item>
+    </Stack>
+  );
+};
+
+const GoalPrintout = (props, context) => {
+  const { data } = useBackend<Info>(context);
+  const { goal } = data;
+  return (
+    <Stack vertical>
+      <Stack.Item bold>Your goal:</Stack.Item>
+      <Stack.Item>{goal}</Stack.Item>
     </Stack>
   );
 };

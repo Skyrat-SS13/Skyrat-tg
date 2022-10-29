@@ -107,5 +107,9 @@
 			story_info += "<a href='?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(mind_reference.current)]'>FLW</a> "
 			story_info += "<A href='?_src_=holder;[HrefToken()];adminplayeropts=[REF(mind_reference.current)]'>Player Panel</A>"
 		if(actor_role.actor_info)
+			story_info += "<br> <b>Backstory:</b>"
 			story_info += "<br> <i>[actor_role.actor_info]</i>"
+		if(actor_role.actor_goal)
+			story_info += "<br> <b>Goal:</b>"
+			story_info += "<br> <i>[actor_role.actor_goal]</i>"
 	return story_info.Join()

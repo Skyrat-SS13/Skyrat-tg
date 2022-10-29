@@ -15,6 +15,8 @@
 	var/inform_player = TRUE
 	/// Ref to the actor info button
 	var/datum/action/story_participant_info/info_button
+	/// Explicit goal of what the actor needs to do, shown in TGUI popup, does not appear if left blank
+	var/actor_goal = ""
 
 /datum/story_actor/Destroy(force, ...)
 	actor_ref = null
@@ -45,6 +47,7 @@
 	var/list/data = list()
 	data["name"] = name
 	data["info"] = actor_info
+	data["goal"] = actor_goal
 	return data
 
 /datum/action/story_participant_info
