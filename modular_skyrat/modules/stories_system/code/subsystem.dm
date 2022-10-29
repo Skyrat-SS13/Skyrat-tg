@@ -1,12 +1,10 @@
 SUBSYSTEM_DEF(stories)
 	name = "Stories"
 	wait = 5 MINUTES
-	flags = SS_TICKER
-	priority = FIRE_PRIORITY_MOUSE_ENTERED
-	runlevels = RUNLEVELS_DEFAULT
+	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
-	/// List of story TYPEPATHS to pick from, these are the ones that haven't been used yet
-	var/list/to_use_stories
+	/// List of initialized story types to pick from, these are the ones that haven't been used yet
+	var/list/to_use_stories = list()
 
 	/// List of intialized types of stories that have already been used
 	var/list/used_stories = list()
@@ -15,15 +13,16 @@ SUBSYSTEM_DEF(stories)
 	var/budget = 0
 
 	/// The last probability without the divisor
-	var/last_prob = 2
+	var/last_prob = 1
 
 /datum/controller/subsystem/stories/Initialize()
-	to_use_stories = subtypesof(/datum/story_type) - list(/datum/story_type/somewhat_impactful)
-	budget = rand(CONFIG_GET(number/minimum_story_budget), CONFIG_GET(number/maximum_story_budget))
+	for(var/type in subtypesof(/datum/story_type) - list(/datum/story_type/somewhat_impactful))
+		to_use_stories += new type
+	budget = rand(0, 10)//rand(CONFIG_GET(number/minimum_story_budget), CONFIG_GET(number/maximum_story_budget))
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/stories/fire(resumed)
-	if(!length(to_use_stories) || !budget || (length(used_stories) >= CONFIG_GET(number/maximum_story_amount)))
+	if(!length(to_use_stories) || !budget)// || (length(used_stories) >= CONFIG_GET(number/maximum_story_amount)))
 		return
 
 	var/exponent_divisor = 1
@@ -42,15 +41,14 @@ SUBSYSTEM_DEF(stories)
 
 	while(length(copied_to_use_stories))
 		var/datum/story_type/picked_story = pick_n_take(copied_to_use_stories)
-		if(initial(picked_story.impact) > budget)
+		if(!picked_story.can_execute())
 			continue
-		var/datum/story_type/initialized_story = new picked_story
-		if(!initialized_story.execute_story())
-			message_admins("Story [initialized_story] failed to run; budget staying at [budget].")
+		if(!picked_story.execute_story())
+			message_admins("Story [picked_story] failed to run; budget staying at [budget].")
 			return
 		else
-			budget -= initialized_story.impact
+			budget -= picked_story.impact
 			to_use_stories -= picked_story
-			used_stories += initialized_story
-			message_admins("Story [initialized_story] executed; budget is now at [budget].")
+			used_stories += picked_story
+			message_admins("Story [picked_story] executed; budget is now at [budget].")
 			return
