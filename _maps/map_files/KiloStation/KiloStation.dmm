@@ -7063,7 +7063,7 @@
 	pixel_y = -6;
 	req_access = list("engineering")
 	},
-/obj/item/computer_hardware/hard_drive/portable/atmos{
+/obj/item/computer_disk/atmos{
 	pixel_x = 10;
 	pixel_y = -4
 	},
@@ -7071,11 +7071,11 @@
 	pixel_x = 8;
 	pixel_y = 6
 	},
-/obj/item/computer_hardware/hard_drive/portable/engineering{
+/obj/item/computer_disk/engineering{
 	pixel_x = 10;
 	pixel_y = -8
 	},
-/obj/item/computer_hardware/hard_drive/portable/engineering{
+/obj/item/computer_disk/engineering{
 	pixel_x = 10;
 	pixel_y = -8
 	},
@@ -21012,10 +21012,10 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/obj/item/computer_hardware/hard_drive/portable/medical,
-/obj/item/computer_hardware/hard_drive/portable/medical,
-/obj/item/computer_hardware/hard_drive/portable/medical,
-/obj/item/computer_hardware/hard_drive/portable/chemistry,
+/obj/item/computer_disk/medical,
+/obj/item/computer_disk/medical,
+/obj/item/computer_disk/medical,
+/obj/item/computer_disk/chemistry,
 /obj/item/clothing/neck/stethoscope{
 	pixel_y = 5
 	},
@@ -26507,20 +26507,20 @@
 /turf/open/floor/iron/dark,
 /area/station/maintenance/port/fore)
 "hCY" = (
-/obj/item/computer_hardware/hard_drive/portable{
+/obj/item/computer_disk{
 	pixel_x = -5;
 	pixel_y = 8
 	},
-/obj/item/computer_hardware/hard_drive/portable{
+/obj/item/computer_disk{
 	pixel_x = 7;
 	pixel_y = 2
 	},
-/obj/item/computer_hardware/hard_drive/portable{
+/obj/item/computer_disk{
 	pixel_x = -8;
 	pixel_y = -3
 	},
 /obj/structure/table,
-/obj/item/computer_hardware/hard_drive/portable/ordnance{
+/obj/item/computer_disk/ordnance{
 	pixel_x = 2;
 	pixel_y = 1
 	},
@@ -40232,9 +40232,9 @@
 "ltQ" = (
 /obj/structure/table,
 /obj/item/clipboard,
-/obj/item/computer_hardware/hard_drive/portable/ordnance,
-/obj/item/computer_hardware/hard_drive/portable/ordnance,
-/obj/item/computer_hardware/hard_drive/portable/ordnance,
+/obj/item/computer_disk/ordnance,
+/obj/item/computer_disk/ordnance,
+/obj/item/computer_disk/ordnance,
 /obj/item/circuitboard/aicore{
 	pixel_y = 5
 	},
@@ -44139,17 +44139,6 @@
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
-"mCg" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/grunge{
-	name = "Morgue"
-	},
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/mapping_helpers/airlock/access/all/medical/morgue,
-/turf/open/floor/iron/dark,
-/area/station/medical/morgue)
 "mCk" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/abandoned,
@@ -48729,9 +48718,9 @@
 /obj/structure/table,
 /obj/item/clipboard,
 /obj/item/folder/yellow,
-/obj/item/computer_hardware/hard_drive/portable/quartermaster,
-/obj/item/computer_hardware/hard_drive/portable/quartermaster,
-/obj/item/computer_hardware/hard_drive/portable/quartermaster,
+/obj/item/computer_disk/quartermaster,
+/obj/item/computer_disk/quartermaster,
+/obj/item/computer_disk/quartermaster,
 /obj/item/pen/fountain,
 /obj/item/stamp{
 	pixel_x = 8;
@@ -49363,6 +49352,15 @@
 	},
 /turf/open/floor/engine/n2,
 /area/station/engineering/atmos)
+"oeV" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/mapping_helpers/ianbirthday,
+/turf/open/floor/wood,
+/area/station/command/heads_quarters/hop)
 "ofa" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/decal/cleanable/dirt,
@@ -65781,6 +65779,18 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos/pumproom)
+"sLZ" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/grunge{
+	name = "Morgue"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/medical/morgue,
+/obj/effect/mapping_helpers/airlock/access/all/medical/general,
+/turf/open/floor/iron/dark,
+/area/station/medical/morgue)
 "sMa" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -75324,14 +75334,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/lockers)
-"vvC" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/obj/effect/turf_decal/siding/wood,
-/turf/open/floor/wood,
-/area/station/command/heads_quarters/hop)
 "vvE" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -79774,7 +79776,7 @@
 	c_tag = "Prison Maintenance";
 	network = list("ss13","prison")
 	},
-/mob/living/simple_animal/mouse/brown/tom{
+/mob/living/basic/mouse/brown/tom{
 	name = "Jerm"
 	},
 /turf/open/floor/iron/grimy,
@@ -107684,7 +107686,7 @@ dbK
 pDs
 geV
 wbf
-mCg
+sLZ
 sTZ
 foP
 lnc
@@ -113887,7 +113889,7 @@ gLO
 wbT
 dod
 dki
-vvC
+oeV
 hrN
 axt
 fBI

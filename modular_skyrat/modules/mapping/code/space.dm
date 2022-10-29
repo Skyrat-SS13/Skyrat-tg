@@ -78,10 +78,10 @@
 	name = "Suspicious Cargo Installation"
 	description = "*SCREECH* RDM RDM RDM"
 
-/datum/map_template/ruin/space/skyrat/polychromicfacility
-	id = "polychromicfacility"
-	suffix = "polychromicfacility.dmm"
-	name = "Abandoned Polychromic Facility"
+/datum/map_template/ruin/space/skyrat/clothing_facility
+	id = "clothing_facility"
+	suffix = "clothing_facility.dmm"
+	name = "Abandoned Clothing Facility"
 	description = "A den of bad ideas. Secborgs were made here!"
 
 /datum/map_template/ruin/space/skyrat/luna

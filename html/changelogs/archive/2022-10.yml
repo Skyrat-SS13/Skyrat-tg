@@ -1151,3 +1151,289 @@
       juices when upgraded.
   nevimer:
   - code_imp: cleaned up true changeling code
+2022-10-23:
+  Ebin-Halcyon:
+  - imageadd: The Varsity jacket has been GAGSified
+  - imageadd: a new flavor of leather coat has been added to the loadout menu, check
+      there.
+  - imageadd: Thigh high and knee high stirrup socks have been resprited, and have
+      had digitigrade variants added.
+  Foxtrot (Funce):
+  - admin: '"Admin PM" verb can now be cancelled without an error message'
+  GoldenAlpharex, Tastyfish:
+  - bugfix: Fixes mentor-related messages not getting logged properly.
+  LT3:
+  - bugfix: Tramstation's tram doors now work properly.
+  - rscadd: The tram has a destination sign, and the call buttons have a status display
+      for where the tram is and if it's operational or not.
+  Melbert:
+  - bugfix: Fixes a minor runtime with Fleshmend clearing scars.
+  - bugfix: Fixes a runtime from non-cultists picking up cult daggers
+  - bugfix: Nutriments and Peptides will no longer heal robotic limbs.
+  - bugfix: Fixes a runtime with voting actions.
+  OrionTheFox:
+  - imageadd: Poly suit/suitskirt/kilt have been resprited and GAGSified proper! They
+      are now the Recolorable Formal Suit/Suitskirt, and Recolorable Kilt!
+  - imagedel: Poly Shorts, jumpsuit, panties, tank-tops etc are gone. Please use the
+      Recolorable Buttondown w/ Shorts for the Shorts, the Greyscale Jumpsuit for
+      the jumpsuit, and the others are already underwear types.
+  - rscadd: the Countess dress is once again available in the Formal uniform section
+      of the loadout!
+  Paxilmaniac:
+  - imageadd: The color contrasting on recolorable jackboots and recolorable laceups
+      has been improved
+  - bugfix: The standalone hoods (covers your hair) will now actually cover your hair
+  - bugfix: Large mortar examine text won't have a section that's all in bold text
+      anymore
+  - code_imp: Large mortar code has been spaced out a bit for your viewing pleasure
+  - rscadd: Dropping an anvil on someone from the z-level above may result in severe
+      injury or death.
+  - qol: Anvils will now tell you what's on them through examine, as well as the fact
+      you can unanchor anvils.
+  - code_imp: Many of the balloon alerts in anvils have been tweaked or made visible
+      to better fit with the standards for balloon alerts.
+  - imageadd: Primitive centrifuges have new icons, and can be made of different materials
+      now
+  - code_imp: Primitive centrifuge code has been spaced out a bit (golden loves me)
+  SkyratBot:
+  - bugfix: made regenerate_organs() apply to external organs as well as internal
+      ones
+  - bugfix: Clockwork's ruin should no longer have ungenerated turfs.
+  - refactor: removed prison_radio var
+  - rscadd: new popcorn flavors and two kinds of empty boxes after them
+  - bugfix: Fixed a minor error causing the H.O.N.K. to be impossible to construct.
+  Tastyfish:
+  - bugfix: Corrections officers are now supplied with outfits again, instead of purple
+      and black trash bags. NT apologizes for the logistic error.
+  san7890, with regards to FernandoJ8:
+  - config: A new TOML system has been introduced to modify different settings and
+      variables regarding jobs! You can edit the standard stuff, like roundstart positions
+      and overall positions of a job like usual (feature parse), but you can edit
+      two new things! You can change how long an account needs to be "aged" on a server
+      for to unlock a job, as well as the actual number of minutes a player must get
+      to unlock a specific job. Nifty, eh? Do remember, this is entire system won't
+      load without the overall LOAD_JOBS_FROM_TXT flag!
+  - server: Keep in mind that the jobconfig.toml is now the preferred system for updating
+      job-related config, while jobs.txt should be considered deprecated. Support
+      for loading it via jobs.txt will remain indefinitely, but expect to see a small
+      error every time we validate the config.
+  - server: 'FYI: To use jobconfig.toml, it is strongly advised that instead of downloading
+      the codebase default that you run the Generate Job Configuration verb (in Server
+      tab) in order to import all of your already set variables from jobs.txt. Please
+      check to ensure that all of your wanted settings are present in the new file.'
+  theOOZ:
+  - bugfix: The 'jitter' option for the feign impairment verb applies the correct
+      impairment
+2022-10-24:
+  Melbert:
+  - bugfix: Fixes an edge case runtime with heretic sacrificing
+  Paxilmaniac:
+  - bugfix: sandals and colorable jackboots now actually work on digigrade individuals
+  SkyratBot:
+  - bugfix: The black market uplink now properly uses the correct item path and description.
+  - bugfix: headpikes now drop their mounted head on destruction.
+  Vishenka0704:
+  - admin: separate antagonists from living player, and add another field with security
+      info
+2022-10-25:
+  Ebin-Halcyon:
+  - imageadd: Anthropomorphic mammal's digitigrade legs have had the weird black splotches
+      removed from them, their chests have been tweaked slightly to fit the basic
+      silhouette
+  Foxtrot (Funce):
+  - rscdel: Spacevine is disabled temporarily.
+  GoldenAlpharex:
+  - config: Updated the jobconfig.toml on the repository to reflect the current state
+      of said config file on the server.
+  LovliestPlant:
+  - rscadd: 'VoidRaptor: The mining shuttle and its dock have been slightly redesigned.'
+  - rscadd: 'VoidRaptor: Evac lobby has been moved further out into space, a new maints
+      area has been added in the gap left.'
+  - bugfix: 'Voidraptor: Fixes larger shuttles being partially eaten by the mining
+      shuttle.'
+  Melbert:
+  - bugfix: Streaks of blood from gibs will now all be infective with diseases, instead
+      of only the parent gib
+  ShizCalev:
+  - bugfix: Fixed a minor runtime when regal rats attacked power cables.
+  SkyratBot:
+  - bugfix: The goliath that you may encounter outside of a Survival Pod ruin on Lavaland
+      is now properly a carcass.
+  - bugfix: Paper hats now display properly when worn.
+  - bugfix: Breaking reagent tanks will be significantly more responsive
+  VexingRaven:
+  - bugfix: The underground mining site ruin no longer has a ceiling of snow, it is
+      once again an open pit. Don't fall in!
+  jjpark-kb:
+  - bugfix: ash farming will produce seeds if it cannot find a product
+  theOOZ:
+  - rscadd: Void-raptor detective and lawyer maintenance changed to reflect the personality
+      of who works there
+  - bugfix: Void-raptor detective office now has their staple camera console
+  - bugfix: Void-raptor Customs camera console is usable
+2022-10-26:
+  GoldenAlpharex:
+  - config: The Generate Job Configuration verb now works as expected when there's
+      at least one job in-game that doesn't exist in the new jobconfig.toml file already.
+  - bugfix: Any value that is set to 0 in jobconfig.toml will no longer default to
+      the codebase's default, and will actually be considered as 0.
+  Melbert:
+  - bugfix: Managing to physically move an atmos holofan will no longer make it's
+      old location permanently unable to have a firedoor close over it
+  - bugfix: Having the Nuke Disk teleport off your person gives you a chat message
+      warning, as was always intended
+  - bugfix: Having the Nuke Disk inside of your backpack when you enter somewhere
+      unreachable will have it teleport away, as was always intended
+  - bugfix: Having the Nuke Disk relocate from your person will no longer keep a ghost
+      image of the disk where it once was, a harrowing reminder of your failures
+  - refactor: Refactored "secluded locations" into a trait
+  MidoriWroth:
+  - rscadd: Added shakiri, a sweet alcohol produced from fermenting kiri fruits, along
+      with 3 cocktails using it.
+  - balance: Muli pods produce more juice, and give the same amount of juice whether
+      ground or juiced
+  - bugfix: Updated some minor teshari food flavor text
+  Paxilmaniac:
+  - bugfix: forging shields will now actually have a worn icon when put on the back
+  SkyratBot:
+  - bugfix: On tramstation, jobs that have morgue access should be able to access
+      it
+  - bugfix: In general, morgue access does not let you sneak into medbay
+  - qol: Humans spawned from a ghost by an admin have their quirks assigned
+  - bugfix: The SpiderClan have resolved an issue where the Ninja Suit would terminate
+      the AI inside during standard usage
+  - bugfix: The disease outbreak events will no longer attempt to fire if there are
+      no valid players to infect.
+  - balance: The disease outbreak events now take a fair bit longer to announce themselves
+      to the crew.
+  - balance: The 'classic' disease outbreak has an expanded roster of diseases to
+      be selected from.
+  - admin: Admins can now pick which classic disease they wish to loose upon the crew
+      (BE CAREFUL WITH THESE).
+  - code_imp: The disease outbreak event has been split into two different events
+      -- "Classic" and "Advanced". The code should be a bit easier to read as well.
+  - code_imp: The dmi that reagent holders take fill icons from is no longer hard
+      coded as reagentfillings.dmi, and can be changed using the fill_icon variable
+  - bugfix: Ian once again celebrates his birthday on Kilo, and new year on Icebox
+  - qol: Add AltClick to remove pAIs for tablets.  Added balloon alerts to tablets
+      for inserting/removing objects.
+  - rscadd: People wearing kitty ears can now have their tails pulled.
+  - bugfix: Fixed getting stuck with blurry vision if your eyes were fixed while you
+      were ghosting
+  Zergspower:
+  - qol: Space Hotel - remade all rooms, moved Solars and dock to the south and managers
+      office next to the entry for the hotel rooms
+  - qol: Space Hotel  - Many many many many changes to the overall look and feel,
+      from carpets/walls/colors/rooms
+  - qol: Space Hotel - Staff now have a bit more control over the
+  - bugfix: Space Hotel - fixed couch direction bug in lobby
+  - bugfix: Space Hotel  - broken clothing/spawners and decals
+  - rscadd: Space Hotel - New keyed doors specially made for the hotel! No key? No
+      Room!
+  - rscadd: Space Hotel - New Door Sprites/coloring and function
+  - rscadd: Space Hotel  - New Permanent Portal creator for the manager to place a
+      static portal for easier transition from station to Hotel
+  - rscadd: ''
+  - qol: Mass redesign of the Interdynefob ruin aka DS-2 - focusing on shrinking down
+      unused areas and optimizing each rooms size.
+  - bugfix: interdyne fob - A lot of minor duplications and errors, mostly with cables
+      and piping
+2022-10-27:
+  Guillaume Prata:
+  - balance: After a CentCom Quartermaster mistakenly filled a NT warehouse with thousands
+      of Forensics Scanners. CentCom has decided to remove the Forensic Scanner's
+      design from protolathes. If you need a new scanner please order it from cargo.
+  - balance: Arcade machines will dispense arcade tickets now instead of a direct
+      prize. Slap them back into the machine to trade for the prizes or collect as
+      many as you can to show of how much of a gamer you are!
+  Melbert:
+  - bugfix: Fixes some basic mobs being immune to damage from atmos effects
+  - code_imp: A few bespoke elements are now properly passed static lists to stop
+      them from creating tons of instances.
+  - balance: The chapel's confessional intercom is locked to its initial frequency,
+      but an emag could bypass it.
+  RimiNosha:
+  - rscadd: 'Added quirk sanitization. remove: Removed Foreigner. You are able to
+      recreate this quirk almost exactly via removing common, and optionally giving
+      yourself a recorder via loadout.'
+  ShizCalev:
+  - bugfix: pdas now use the pda worn icon again.
+  - bugfix: Pipecleaner coils are no longer invisible.
+  - bugfix: Pipecleaners will now how have correct color when split.
+  SkyratBot:
+  - bugfix: Blind people can see footsteps again when on lower station levels.
+  - bugfix: Fixed 2 unconnected pipes in Tramstation atmos
+  - bugfix: Carrying a null rod no longer disables the ability to use the traitor
+      chef's meat hook
+  - bugfix: fixed ai controlled monkeys causing runtimes when they attempt to give
+      items
+  - imageadd: BRAND SPANKING NEW SYNDICHAD OPERATIVE HUD RESPRITE.
+  - bugfix: Fix table contextual screentips for tools
+  - bugfix: Fix cyborgs dropping items when sent to the arena shuttle
+  - balance: Tablet hard drives no longer exist. Applications are now stored directly
+      onto the tablet.
+  - balance: Building a modular computer with metal now should be a proper functioning
+      computer.
+  - balance: The R&D's Master system hard drive is now a data disk, if ever you need
+      one that desperately.
+  - bugfix: Tablets (not Cyborg ones) now have pens again, like they had before.
+2022-10-28:
+  Guillaume Prata:
+  - qol: Miners rejoice again!! A few of the mostly useless and spammy messages that
+      get send to your chat were changed to balloon alerts or straight up removed.
+      Hopefully, you will have an easier time listening to the radio chatter now.
+  ShizCalev:
+  - bugfix: fixed screwdriver pens not working properly when extended/retracted.
+  - code_imp: Added a unit test to catch items that can be equipped to suit slots
+      have missing textures.
+  SkyratBot:
+  - qol: Stabilizing serum (the item for stabilizing legion cores) now fit in explorer's
+      webbings.
+  - bugfix: On tramstation, the syndicate has returned the scrap thrusters they stole
+      after realizing they were broken anyway.
+  - qol: Nanotrasen realized they forget to implement the date function into the new
+      NTos tablets, so they doubled back and added those next to the time.
+  - rscadd: Adds the NTSS Shadow Emergency Shuttle
+  - rscadd: Adds the Emergency Shuttle Engine area
+  - spellcheck: Remove cloth golem antimagic description
+  - bugfix: fixed SM bricking when you dump gases without effects like halon into
+      it.
+2022-10-29:
+  Iamgoofball:
+  - spellcheck: Renames Bouncer to Service Guard
+  - bugfix: Blueshields and Guards were erroneously added to Security OOC access despite
+      not being members of Security nor answering to Security in any fashion. This
+      has been resolved.
+  Melbert:
+  - rscadd: Heretics spawn with a new spell, Shadow Cloak. Using it will hide your
+      identity for 3 minutes or until cancelled, but is fairly obvious otherwise,
+      as it shrouds you in purple smoke.
+  OrionTheFox:
+  - bugfix: fixed a ton of broken digi sprites, sorry it took so long x-x
+  Paxilmaniac:
+  - balance: forged armor vests can now hold forged weapons
+  - imageadd: Minecarts, and some associated items, have been given a bit of a sprite
+      improvement
+  ShizCalev:
+  - qol: Converted buckets (and naturally cleanbots) over to GAGs.
+  - bugfix: Cleanbots built with a wooden bucket will now properly drop a wooden bucket
+      when destroyed.
+  SkyratBot:
+  - bugfix: Reagent containers playing attack animation when transferring reagents
+      to deep fryers
+  - imageadd: Centcomm has found the lost box of striped straws for ALL the milkshakes.
+  - bugfix: Nukies and roboticists access the correct missile types again.
+  - refactor: Cleans up the missile subtypes.
+  - balance: Renames the BRM-6 to the PEP-6, and makes it explode...a lot of the stuff
+      that it claims it should explode.
+  Vladoricious:
+  - bugfix: Airlock and decal painters no longer mysteriously float around you.
+  - bugfix: The Science Team at [REDACTED] has untangled the quantum state of pizza
+      and pasta. In short, ERROR custom spaghetti is no longer on the menu.
+  Zonespace27:
+  - bugfix: Fences no longer say they can have barbed wire put on them
+  softcerv:
+  - bugfix: 'alter form now properly accounts for oversized: users now have the option
+      to return back to being oversized after changing their sprite size.'
+  - bugfix: oversized is now removed from a user when they change their sprite size
+      via alter form, and is given back when they return to the oversized size.
