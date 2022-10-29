@@ -11,6 +11,8 @@
 	You will instantly fail this objective if anyone else picks up your contraband. If you fail, you are liable for the costs \
 	of the smuggling item."
 
+	progression_minimum = 0
+
 	progression_reward = list(5 MINUTES, 9 MINUTES)
 	telecrystal_reward = list(0, 1)
 
