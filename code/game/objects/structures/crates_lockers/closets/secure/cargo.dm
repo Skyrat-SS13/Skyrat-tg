@@ -21,13 +21,7 @@
 	new /obj/item/clothing/gloves/fingerless(src)
 	new /obj/item/megaphone/cargo(src)
 	new /obj/item/tank/internals/emergency_oxygen(src)
-<<<<<<< HEAD
-	new /obj/item/export_scanner(src)
-=======
-	new /obj/item/clothing/mask/gas(src)
-	new /obj/item/clothing/head/soft(src)
 	new /obj/item/universal_scanner(src)
->>>>>>> f3ca3424c9c (Merges the Export Scanner, Sales Tagger, and Price Tagger into one item. (#70314))
 	new /obj/item/door_remote/quartermaster(src)
 	new /obj/item/circuitboard/machine/techfab/department/cargo(src)
 	new /obj/item/storage/photo_album/qm(src)
