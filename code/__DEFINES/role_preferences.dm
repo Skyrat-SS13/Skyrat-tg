@@ -70,6 +70,9 @@
 #define ROLE_DRONE "Drone"
 #define ROLE_DEATHSQUAD "Deathsquad"
 #define ROLE_LAVALAND "Lavaland"
+// SKYRAT EDIT START
+#define ROLE_STORY_PARTICIPANT "Story Participant"
+// SKYRAT EDIT END
 
 #define ROLE_POSITRONIC_BRAIN "Positronic Brain"
 #define ROLE_FREE_GOLEM "Free Golem"

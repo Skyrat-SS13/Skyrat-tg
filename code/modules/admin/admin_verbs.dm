@@ -83,6 +83,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/datum/admins/proc/toggleaooc,		//SKYRAT EDIT ADDITION - ADMIN
 	/datum/admins/proc/togglesooc,		//SKYRAT EDIT ADDITION - ADMIN
 	/client/proc/view_opfors,			//SKYRAT EDIT
+	/client/proc/view_stories,			//SKYRAT EDIT
 	/datum/admins/proc/open_borgopanel,
 	/datum/admins/proc/view_all_circuits,
 	/datum/admins/proc/known_alts_panel,
