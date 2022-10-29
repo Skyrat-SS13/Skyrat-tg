@@ -2,6 +2,16 @@
 	impact = STORY_SOMEWHAT_IMPACTFUL
 
 
+/*
+	Central Command Inspector
+		Plot Summary:
+			CentCom has a funny habit of sending down "surprise" inspectors to see what the station's up to,
+			despite them rarely liking the results of said inspection. Regardless, they've sent one to make sure things
+			are in... some sort of shape, if not good shape.
+		Actors:
+			Ghost:
+				Central Command Inspector (1)
+*/
 /datum/story_type/somewhat_impactful/centcom_inspector
 	name = "Central Command Inspector"
 	desc = "A Central Command inspector has come to make sure the station is in... if not good shape, a shape."
@@ -18,8 +28,19 @@
 /datum/story_type/somewhat_impactful/centcom_inspector/proc/inform_station()
 	print_command_report("Hello, an inspector will be arriving shortly for a surprise inspection, ensure they have a pleasant report.", announce = TRUE)
 
-///////
-
+/*
+	Mob Money
+		Plot Summary:
+			A crewmember, %NAME%, has taken out a loan from the space mafia.
+			However, their fundamental issue with the plan is that they never paid back, and now the space mafia's looking to collect,
+			so they sent a few goons out to the station to shake 'em down for the 20 grand they owe the boss. Good thing for the collectors,
+			immediate skeletal repositioning is a valid method of money collection.
+		Actors:
+			Ghost:
+				Mafioso (2)
+			Crew:
+				Debtor (1)
+*/
 /datum/story_type/somewhat_impactful/mob_money
 	name = "Mob Money"
 	desc = "Some crewman's gotten themselves involved in organized crime, and now owes 20k to some mafiosos."
