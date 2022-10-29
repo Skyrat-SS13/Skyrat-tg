@@ -67,6 +67,9 @@
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/service
 	outfit = /datum/outfit/ds2/syndicate/service
 
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/miner
+	outfit = /datum/outfit/ds2/syndicate/miner
+
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/enginetech
 	outfit = /datum/outfit/ds2/syndicate/enginetech
 
@@ -75,6 +78,9 @@
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/stationmed
 	outfit = /datum/outfit/ds2/syndicate/stationmed
+
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/corporateliaison
+	outfit = /datum/outfit/ds2/syndicate/corporateliaison
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/masteratarms
 	outfit = /datum/outfit/ds2/syndicate/masteratarms
@@ -134,7 +140,14 @@
 	back = /obj/item/storage/backpack
 	id = /obj/item/card/id/advanced/black
 	implants = list(/obj/item/implant/weapons_auth)
-	id_trim = /datum/id_trim/syndicom/skyrat/assault/assistant
+	id_trim = /datum/id_trim/syndicom/skyrat/assault
+
+/datum/outfit/ds2/syndicate/miner
+	name = "DS-2 Mining Officer"
+	uniform = /obj/item/clothing/under/syndicate/skyrat/overalls
+	back = /obj/item/storage/backpack/satchel/explorer
+	id_trim = /datum/id_trim/syndicom/skyrat/assault/miner
+	head = /obj/item/clothing/head/soft/black
 
 /datum/outfit/ds2/syndicate/service
 	name = "DS-2 Staff"
@@ -155,8 +168,16 @@
 
 /datum/outfit/ds2/syndicate/stationmed
 	name = "DS-2 Station Medical Officer"
-	uniform = /obj/item/clothing/under/rank/medical/doctor/skyrat/utility/syndicate
+	uniform = /obj/item/clothing/under/syndicate/scrubs
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/stationmedicalofficer
+
+/datum/outfit/ds2/syndicate/corporateliaison
+	name = "DS-2 Corporate Liasion"
+	uniform = /obj/item/clothing/under/syndicate/sniper
+	head = /obj/item/clothing/head/hos/beret/syndicate
+	back = /obj/item/storage/backpack/satchel
+	id_trim = /datum/id_trim/syndicom/skyrat/assault/corporateliasion
+	ears = /obj/item/radio/headset/interdyne/command
 
 /datum/outfit/ds2/syndicate/masteratarms
 	name = "DS-2 Master At Arms"
@@ -167,7 +188,7 @@
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
 	head = /obj/item/clothing/head/warden/syndicate
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
-	ears = /obj/item/radio/headset/interdyne
+	ears = /obj/item/radio/headset/interdyne/command
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs,\

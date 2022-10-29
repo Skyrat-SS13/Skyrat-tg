@@ -18,8 +18,8 @@
 	assignment = "DS-2 Operative"
 	trim_state = "trim_syndicateoperative"
 
-/datum/id_trim/syndicom/skyrat/assault/assistant
-	assignment = "Operative"
+/datum/id_trim/syndicom/skyrat/assault/miner //assistants when they are forced to work:
+	assignment = "Mining Officer"
 	trim_state = "trim_syndicateassistant"
 
 /datum/id_trim/syndicom/skyrat/assault/syndicatestaff
@@ -42,6 +42,11 @@
 /datum/id_trim/syndicom/skyrat/assault/brigofficer
 	assignment = "Brig Officer"
 	trim_state = "trim_brigofficer"
+	access = list(ACCESS_SYNDICATE, ACCESS_ROBOTICS, ACCESS_SYNDICATE_LEADER)
+
+/datum/id_trim/syndicom/skyrat/assault/corporateliasion // DS2 HoP
+	assignment = "Corporate Liaison"
+	trim_state = "trim_corporateliaison"
 	access = list(ACCESS_SYNDICATE, ACCESS_ROBOTICS, ACCESS_SYNDICATE_LEADER)
 
 /datum/id_trim/syndicom/skyrat/assault/chiefmasteratarms
