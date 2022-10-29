@@ -25,7 +25,7 @@
 	alt_titles = list("Bartender", "Mixologist", "Barkeeper", "Barista")
 
 /datum/job/blueshield
-	alt_titles = list("Blueshield", "Command Bodyguard", "Executive Protection Agent")
+	alt_titles = list("Blueshield", "Command Bodyguard", "Executive Protection Agent", "Blueshield Candidate")
 
 /datum/job/botanist
 	alt_titles = list("Botanist", "Hydroponicist", "Gardener", "Botanical Researcher", "Herbalist", "Florist")
@@ -139,7 +139,7 @@
 	alt_titles = list("Security Medic", "Field Medic", "Security Corpsman", "Brig Physician", "Combat Medic")
 
 /datum/job/security_officer
-	alt_titles = list("Security Officer", "Security Operative", "Peacekeeper")
+	alt_titles = list("Security Officer", "Security Operative", "Peacekeeper", "Security Cadet")
 
 /datum/job/shaft_miner
 	alt_titles = list("Shaft Miner", "Excavator", "Spelunker", "Drill Technician", "Prospector")
