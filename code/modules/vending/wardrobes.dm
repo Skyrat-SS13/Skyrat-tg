@@ -597,4 +597,3 @@
 /obj/item/vending_refill/wardrobe/cent_wardrobe
 	machine_name = "CentDrobe"
 	light_color = LIGHT_COLOR_ELECTRIC_GREEN
-
