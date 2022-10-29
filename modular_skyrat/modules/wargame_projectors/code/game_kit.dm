@@ -321,7 +321,7 @@
 					A side effect of this is that they usually lack smaller combat vessels, favoring larger ships. <br>
 						<br>
 						-- Flak Frigate -- <br>
-						Built special purpoe to shoot down the vast numbers of strike craft that were often employed by SolFed's
+						Built special purpose to shoot down the vast numbers of strike craft that were often employed by SolFed's
 						enemies in large scale disputes, comes packed with enough point defense to make any carrier captain cry. <br>
 						- Represented by a medium ship marker <br>
 						- Cannons <br>
