@@ -42,9 +42,9 @@
 /obj/effect/mob_spawn/ghost_role/human/ds2/prisoner
 	name = "Syndicate Prisoner"
 	prompt_name = "a Syndicate prisoner"
-	you_are_text = "You are the syndicate prisoner aboard an unknown station."
-	flavour_text = "You don't know where you are, but you know you are a prisoner. The plastitanium clues you into your captors.. as for why you're here? That's up to you."
-	important_text = "You are still subject to standard prisoner policy, and must Adminhelp before antagonizing Interdyne."
+	you_are_text = "You are a syndicate prisoner aboard an unknown ship."
+	flavour_text = "You don't know where you are, but you know you are a prisoner. The plastitanium clues you into your captors... as for why you're here? That's up to you."
+	important_text = "You are still subject to standard prisoner policy, and must Adminhelp or Opfor before antagonizing Interdyne."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/ds2/prisoner
@@ -56,7 +56,7 @@
 	icon_state = "sleeper_s"
 	you_are_text = "You are a syndicate operative, employed in a top secret research facility developing biological weapons."
 	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue operating as best you can, and try to keep a low profile."
-	important_text = "You are not an antagonist."
+	important_text = "You are not an antagonist. Adminhelp or Opfor before antagonizing station crew."
 	outfit = /datum/outfit/ds2/syndicate
 	loadout_enabled = TRUE
 
@@ -140,49 +140,49 @@
 	back = /obj/item/storage/backpack
 	id = /obj/item/card/id/advanced/black
 	implants = list(/obj/item/implant/weapons_auth)
-	id_trim = /datum/id_trim/syndicom/skyrat/assault
+	id_trim = /datum/id_trim/syndicom/skyrat/ds2/
 
 /datum/outfit/ds2/syndicate/miner
 	name = "DS-2 Mining Officer"
 	uniform = /obj/item/clothing/under/syndicate/skyrat/overalls
 	back = /obj/item/storage/backpack/satchel/explorer
-	id_trim = /datum/id_trim/syndicom/skyrat/assault/miner
+	id_trim = /datum/id_trim/syndicom/skyrat/ds2/miner
 	head = /obj/item/clothing/head/soft/black
 
 /datum/outfit/ds2/syndicate/service
 	name = "DS-2 Staff"
 	uniform = /obj/item/clothing/under/syndicate/skyrat/overalls
-	id_trim = /datum/id_trim/syndicom/skyrat/assault/syndicatestaff
+	id_trim = /datum/id_trim/syndicom/skyrat/ds2/syndicatestaff
 
 /datum/outfit/ds2/syndicate/enginetech
 	name = "DS-2 Engine Technician"
 	uniform = /obj/item/clothing/under/syndicate/skyrat/overalls
 	head = /obj/item/clothing/head/soft/sec/syndicate
-	id_trim = /datum/id_trim/syndicom/skyratnoicon/enginetechnician
+	id_trim = /datum/id_trim/syndicom/skyrat/ds2/enginetechnician
 	gloves = /obj/item/clothing/gloves/combat
 
 /datum/outfit/ds2/syndicate/researcher
 	name = "DS-2 Researcher"
 	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
-	id_trim = /datum/id_trim/syndicom/skyrat/assault/researcher
+	id_trim = /datum/id_trim/syndicom/skyrat/ds2/researcher
 
 /datum/outfit/ds2/syndicate/stationmed
 	name = "DS-2 Station Medical Officer"
 	uniform = /obj/item/clothing/under/syndicate/scrubs
-	id_trim = /datum/id_trim/syndicom/skyrat/assault/stationmedicalofficer
+	id_trim = /datum/id_trim/syndicom/skyrat/ds2/stationmedicalofficer
 
 /datum/outfit/ds2/syndicate/corporateliaison
 	name = "DS-2 Corporate Liasion"
 	uniform = /obj/item/clothing/under/syndicate/sniper
 	head = /obj/item/clothing/head/hos/beret/syndicate
 	back = /obj/item/storage/backpack/satchel
-	id_trim = /datum/id_trim/syndicom/skyrat/assault/corporateliasion
+	id_trim = /datum/id_trim/syndicom/skyrat/ds2/corporateliasion
 	ears = /obj/item/radio/headset/interdyne/command
 
 /datum/outfit/ds2/syndicate/masteratarms
 	name = "DS-2 Master At Arms"
 	uniform = /obj/item/clothing/under/syndicate/combat
-	id_trim = /datum/id_trim/syndicom/skyrat/assault/masteratarms
+	id_trim = /datum/id_trim/syndicom/skyrat/ds2/masteratarms
 	belt = /obj/item/storage/belt/security/full
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
@@ -198,7 +198,7 @@
 /datum/outfit/ds2/syndicate/brigoff
 	name = "DS-2 Brig Officer"
 	uniform = /obj/item/clothing/under/syndicate/combat
-	id_trim = /datum/id_trim/syndicom/skyrat/assault/brigofficer
+	id_trim = /datum/id_trim/syndicom/skyrat/ds2/brigofficer
 	belt = /obj/item/storage/belt/security/full
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/bulletproof/old
@@ -220,7 +220,7 @@
 	back = /obj/item/storage/backpack
 	id = /obj/item/card/id/advanced/gold/generic
 	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/aps)
-	id_trim = /datum/id_trim/syndicom/skyrat/assault/stationadmiral
+	id_trim = /datum/id_trim/syndicom/skyrat/ds2/stationadmiral
 	ears = /obj/item/radio/headset/interdyne/command
 
 /datum/outfit/ds2/syndicate/post_equip(mob/living/carbon/human/syndicate)
