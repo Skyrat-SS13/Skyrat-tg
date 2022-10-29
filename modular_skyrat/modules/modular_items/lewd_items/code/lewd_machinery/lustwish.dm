@@ -165,13 +165,11 @@
 		return
 
 	var/choice = show_radial_menu(user, src, vend_designs, custom_check = CALLBACK(src, .proc/check_menu, user, used_item), radius = 50, require_near = TRUE)
-	if(!choice)
-		return FALSE
+	if(choice)
+		current_color = choice
+		update_icon()
 
-	current_color = choice
-	update_icon()
-
-///Preforms checks to see if the user can change the color on the vending machine.
+///Performs checks to see if the user can change the color on the vending machine.
 /obj/machinery/vending/dorms/proc/check_menu(mob/living/user, obj/item/multitool)
 	if(!istype(user))
 		return FALSE
