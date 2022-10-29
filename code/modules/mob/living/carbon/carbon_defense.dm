@@ -484,6 +484,11 @@
 		helper.visible_message(span_notice("[helper] boops [src]'s nose."), span_notice("You boop [src] on the nose."))
 	//SKYRAT EDIT ADDITION END
 	else if(check_zone(helper.zone_selected) == BODY_ZONE_HEAD && get_bodypart(BODY_ZONE_HEAD)) //Headpats!
+		//SKYRAT EDIT ADDITION BEGIN - OVERSIZED HEADPATS
+		if(HAS_TRAIT(src, TRAIT_OVERSIZED) && !HAS_TRAIT(helper, TRAIT_OVERSIZED))
+			visible_message(span_warning("[helper] tries to pat [src] on the head, but can't reach!"))
+			return
+		//SKYRAT EDIT ADDITION END
 		helper.visible_message(span_notice("[helper] gives [src] a pat on the head to make [p_them()] feel better!"), \
 					null, span_hear("You hear a soft patter."), DEFAULT_MESSAGE_RANGE, list(helper, src))
 		to_chat(helper, span_notice("You give [src] a pat on the head to make [p_them()] feel better!"))
@@ -506,6 +511,17 @@
 			to_chat(helper, span_warning("[src] makes a grumbling noise as you pull on [p_their()] tail."))
 		else
 			add_mood_event("tailpulled", /datum/mood_event/tailpulled)
+
+	else if ((helper.zone_selected == BODY_ZONE_PRECISE_GROIN) && (istype(head, /obj/item/clothing/head/costume/kitty) || istype(head, /obj/item/clothing/head/collectable/kitty)))
+		var/obj/item/clothing/head/faketail = head
+		helper.visible_message(span_danger("[helper] pulls on [src]'s tail... and it rips off!"), \
+					null, span_hear("You hear a ripping sound."), DEFAULT_MESSAGE_RANGE, list(helper, src))
+		to_chat(helper, span_danger("You pull on [src]'s tail... and it rips off!"))
+		to_chat(src, span_userdanger("[helper] pulls on your tail... and it rips off!"))
+		playsound(loc, 'sound/effects/cloth_rip.ogg', 75, TRUE)
+		dropItemToGround(faketail)
+		helper.put_in_hands(faketail)
+		helper.add_mood_event("rippedtail", /datum/mood_event/rippedtail)
 
 	else
 		if (helper.grab_state >= GRAB_AGGRESSIVE)

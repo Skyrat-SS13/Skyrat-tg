@@ -186,7 +186,7 @@
 	icon_state = "suitjacket_black"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/poncho
+/obj/item/clothing/suit/costume/poncho
     supports_variations_flags = STYLE_TAUR_ALL
 
 /obj/item/clothing/suit/apron
@@ -253,3 +253,32 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/suit/varsity
+	name = "varsity jacket"
+	desc = "A simple varsity jacket with no obvious sources."
+	icon_state = "varsity_jacket"
+	greyscale_config = /datum/greyscale_config/varsity
+	greyscale_config_worn = /datum/greyscale_config/varsity/worn
+	greyscale_colors = "#553022#a67a5b#2d2d33"
+	body_parts_covered = CHEST|GROIN|ARMS
+	flags_1 = IS_PLAYER_COLORABLE_1
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/suit/hooded/leather
+	name = "hooded leather coat"
+	desc = "A simple leather coat with a hoodie underneath it, not really hooded is it?"
+	icon_state = "leatherhoodie"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	body_parts_covered = CHEST|GROIN|ARMS
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	hoodtype = /obj/item/clothing/head/hooded/leather
+
+/obj/item/clothing/head/hooded/leather
+	name = "jacket hood"
+	desc = "A hood attached to a hoodie, nothing special."
+	icon_state = "leatherhood"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	flags_inv = HIDEHAIR
