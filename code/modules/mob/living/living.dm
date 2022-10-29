@@ -1379,7 +1379,7 @@
 				/mob/living/simple_animal/crab,
 				/mob/living/simple_animal/pet/dog/pug,
 				/mob/living/simple_animal/pet/cat,
-				/mob/living/simple_animal/mouse,
+				/mob/living/basic/mouse,
 				/mob/living/simple_animal/chicken,
 				/mob/living/basic/cow,
 				/mob/living/simple_animal/hostile/lizard,
