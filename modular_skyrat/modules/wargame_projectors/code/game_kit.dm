@@ -378,7 +378,7 @@
 					<br>
 					<b>Mothic Raiders</b>
 					Though nowhere near as common as they were in the years since official contact with the Nomad Fleet,
-					explorer's of humanity's past have been plauged with raids from pirate ships of mothic origin. Though
+					explorers of humanity's past have been plagued with raids from pirate ships of mothic origin. Though
 					not malicious in nature, they would often come in skirmishes with patrol and escort forces on the outer
 					rim of SolFed territory, and may still rarely commit to raids against human ships even today.
 						<br>
