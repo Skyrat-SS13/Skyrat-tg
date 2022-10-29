@@ -52,3 +52,14 @@ SUBSYSTEM_DEF(stories)
 			used_stories += picked_story
 			message_admins("Story [picked_story] executed; budget is now at [budget].")
 			return
+
+/// Gets info of all currently running stories and who is involved
+/datum/controller/subsystem/stories/proc/get_stories_info()
+	var/list/returned_html = list("<br>")
+
+	returned_html += "<b>Active Stories</b>"
+
+	for(var/datum/story_type/used_story as anything in used_stories)
+		returned_html += " - [used_story.build_html_panel_entry()]"
+
+	return returned_html.Join("<br>")

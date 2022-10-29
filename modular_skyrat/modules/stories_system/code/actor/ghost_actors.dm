@@ -3,7 +3,7 @@
 	/// Delay between getting ghosts spawned in the setup box and going in
 	var/delay_time = 5 MINUTES
 
-/datum/story_actor/ghost/handle_spawning(mob/picked_spawner)
+/datum/story_actor/ghost/handle_spawning(mob/picked_spawner, datum/story_type/current_story)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -13,6 +13,9 @@
 	var/mob/living/carbon/human/temporary_human = new(get_turf(landmark))
 	temporary_human.key = picked_spawner.key
 	temporary_human.client?.prefs?.safe_transfer_prefs_to(temporary_human)
+	current_story.mind_actor_list[temporary_human.mind] = src
+	info_button = new(src)
+	info_button.Grant(temporary_human)
 	addtimer(CALLBACK(src, .proc/send_them_in, temporary_human), delay_time)
 
 /// Ghost ones are delayed by a few minutes to ensure that the ghosts have time to choose a character and for crew actors to get settled a bit
@@ -46,9 +49,9 @@
 	actor_outfits = list(/datum/outfit/mafioso)
 	actor_info = "Nyeh, see? Looks like some two-bit small-timer over on this 'ere station owes the boss some money, so shake %NAME% up for the twenty big ones they owe."
 
-/datum/story_actor/ghost/mafioso/handle_spawning(mob/picked_spawner)
-	//var/datum/story_type/somewhat_impactful/mob_money/mob_story = involved_story
-	//actor_info = replacetext(actor_info, "%NAME%", mob_story?.poor_sod?.real_name)
+/datum/story_actor/ghost/mafioso/handle_spawning(mob/picked_spawner, datum/story_type/current_story)
+	var/datum/story_type/somewhat_impactful/mob_money/mob_story = involved_story
+	actor_info = replacetext(actor_info, "%NAME%", mob_story?.poor_sod?.real_name)
 	return ..()
 
 /datum/story_actor/ghost/mafioso/send_them_in(mob/living/carbon/human/to_send_human)

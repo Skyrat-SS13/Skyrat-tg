@@ -13,17 +13,63 @@
 	var/actor_info = ""
 	/// Do we tell the actor that they are in fact an actor or not
 	var/inform_player = TRUE
+	/// Ref to the actor info button
+	var/datum/action/story_participant_info/info_button
 
 /datum/story_actor/Destroy(force, ...)
 	actor_ref = null
 	involved_story = null
+	if(info_button)
+		QDEL_NULL(info_button)
 	return ..()
 
 /// How to actually spawn the actor
-/datum/story_actor/proc/handle_spawning(mob/picked_spawner)
+/datum/story_actor/proc/handle_spawning(mob/picked_spawner, datum/story_type/current_story)
 	SHOULD_CALL_PARENT(TRUE)
 	if(inform_player)
 		INVOKE_ASYNC(GLOBAL_PROC, /proc/tgui_alert, picked_spawner, "You are a Story Participant! See your chat for more information.", "Story Participation")
 	if(actor_info)
 		to_chat(picked_spawner, span_boldnotice(actor_info))
 	return TRUE
+
+/datum/story_actor/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "StoryParticipant", name)
+		ui.open()
+
+/datum/story_actor/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/story_actor/ui_static_data(mob/user)
+	var/list/data = list()
+	data["name"] = name
+	data["info"] = actor_info
+	return data
+
+/datum/action/story_participant_info
+	name = "Story Participant Information:"
+	button_icon_state = "round_end" //placeholder
+
+/datum/action/story_participant_info/New(Target)
+	. = ..()
+	name += " [target]"
+
+/datum/action/story_participant_info/Trigger(trigger_flags)
+	. = ..()
+	if(!.)
+		return
+
+	target.ui_interact(owner)
+
+/datum/action/story_participant_info/IsAvailable()
+	if(!target)
+		stack_trace("[type] was used without a story participant datum!")
+		return FALSE
+	. = ..()
+	if(!.)
+		return
+	if(!owner.mind)
+		return FALSE
+	return TRUE
+
