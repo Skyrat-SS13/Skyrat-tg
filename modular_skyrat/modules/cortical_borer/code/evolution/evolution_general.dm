@@ -5,7 +5,7 @@
 	unlocked_evolutions = list(/datum/borer_evolution/upgrade_injection/t2)
 	tier = 1
 
-/datum/borer_evolution/upgrade_injection/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/upgrade_injection/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	cortical_owner.injection_rates_unlocked += cortical_owner.injection_rates[length(cortical_owner.injection_rates_unlocked) + 1]
 
@@ -28,7 +28,7 @@
 	evo_cost = 5
 	tier = 6
 
-/datum/borer_evolution/sugar_immunity/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/sugar_immunity/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	cortical_owner.upgrade_flags |= BORER_SUGAR_IMMUNE
 
@@ -39,7 +39,7 @@
 	evo_cost = 6
 	tier = 6
 
-/datum/borer_evolution/synthetic_borer/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/synthetic_borer/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	cortical_owner.organic_restricted = FALSE
 
@@ -58,7 +58,7 @@
 		/datum/reagent/fuel,
 	)
 
-/datum/borer_evolution/synthetic_chems_positive/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/synthetic_chems_positive/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	cortical_owner.potential_chemicals |= added_chemicals
 
@@ -77,6 +77,6 @@
 		/datum/reagent/oxygen,
 	)
 
-/datum/borer_evolution/synthetic_chems_negative/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/synthetic_chems_negative/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	cortical_owner.potential_chemicals |= added_chemicals

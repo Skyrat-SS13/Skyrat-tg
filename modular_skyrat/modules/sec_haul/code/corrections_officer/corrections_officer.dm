@@ -12,6 +12,7 @@
 	exp_requirements = 150
 	exp_required_type = EXP_TYPE_CREW
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "CORRECTIONS_OFFICER"
 
 	paycheck = PAYCHECK_CREW
 	paycheck_department = ACCOUNT_SEC

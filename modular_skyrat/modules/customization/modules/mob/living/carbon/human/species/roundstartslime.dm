@@ -60,6 +60,8 @@
 	background_icon_state = "bg_alien"
 	/// Do you need to be a slime-person to use this ability?
 	var/slime_restricted = TRUE
+	///Is the person using this ability oversized?
+	var/oversized_user = FALSE
 
 /datum/action/innate/alter_form/unrestricted
 	slime_restricted = FALSE
@@ -272,19 +274,31 @@
 		return
 	switch(dna_alteration)
 		if("Body Size")
+			if(oversized_user && !HAS_TRAIT(alterer, TRAIT_OVERSIZED))
+				var/reset_size = tgui_alert(alterer, "Do you wish to return to being oversized?", "Size Change", list("Yes", "No"))
+				if(reset_size == "Yes")
+					alterer.add_quirk(/datum/quirk/oversized)
+					return
+
 			var/new_body_size = tgui_input_number(
 				alterer,
 				"Choose your desired sprite size: ([BODY_SIZE_MIN * 100]% to [BODY_SIZE_MAX * 100]%). Warning: May make your character look distorted",
 				"Size Change",
-				default = alterer.dna.features["body_size"] * 100,
+				default = min(alterer.dna.features["body_size"] * 100, BODY_SIZE_MAX * 100),
 				max_value = BODY_SIZE_MAX * 100,
 				min_value = BODY_SIZE_MIN * 100,
 			)
 			if(!new_body_size)
 				return
+
+			if(HAS_TRAIT(alterer, TRAIT_OVERSIZED))
+				oversized_user = TRUE
+				alterer.remove_quirk(/datum/quirk/oversized)
+
 			new_body_size = new_body_size * 0.01
 			alterer.dna.features["body_size"] = new_body_size
 			alterer.dna.update_body_size()
+
 		if("Genitals")
 			alter_genitals(alterer)
 		if("Mutant Parts")
