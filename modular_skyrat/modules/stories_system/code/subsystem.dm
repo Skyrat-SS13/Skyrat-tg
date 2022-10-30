@@ -63,3 +63,24 @@ SUBSYSTEM_DEF(stories)
 		returned_html += " - [used_story.build_html_panel_entry()]"
 
 	return returned_html.Join("<br>")
+
+/// Attempts to potentially execute a story roundstart
+/datum/controller/subsystem/stories/proc/execute_roundstart_story()
+	if(!budget || !length(to_use_stories) || !prob(100)) //make prob chance cfg later
+		return FALSE
+
+	var/list/copied_to_use_stories = to_use_stories.Copy()
+
+	while(length(copied_to_use_stories))
+		var/datum/story_type/picked_story = pick_n_take(copied_to_use_stories)
+		if(!picked_story.roundstart_eligible || !picked_story.can_execute())
+			continue
+		if(!picked_story.execute_roundstart_story())
+			message_admins("Roundstart story [picked_story] failed to run; budget staying at [budget].")
+			return
+		else
+			budget -= picked_story.impact
+			to_use_stories -= picked_story
+			used_stories += picked_story
+			message_admins("Roundstart story [picked_story] executed; budget is now at [budget].")
+			return

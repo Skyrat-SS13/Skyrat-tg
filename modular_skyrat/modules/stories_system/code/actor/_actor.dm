@@ -28,7 +28,7 @@
 /// How to actually spawn the actor
 /datum/story_actor/proc/handle_spawning(mob/picked_spawner, datum/story_type/current_story)
 	SHOULD_CALL_PARENT(TRUE)
-	if(inform_player)
+	if(inform_player && picked_spawner.client?.prefs)
 		INVOKE_ASYNC(GLOBAL_PROC, /proc/tgui_alert, picked_spawner, "You are a Story Participant! See your chat for more information.", "Story Participation")
 	if(actor_info)
 		to_chat(picked_spawner, span_boldnotice(actor_info))

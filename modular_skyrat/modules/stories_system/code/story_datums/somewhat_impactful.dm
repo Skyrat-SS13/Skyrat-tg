@@ -41,6 +41,7 @@
 			Crew:
 				Debtor (1)
 */
+
 /datum/story_type/somewhat_impactful/mob_money
 	name = "Mob Money"
 	desc = "Some crewman's gotten themselves involved in organized crime, and now owes 20k to some mafiosos."
@@ -54,3 +55,4 @@
 /datum/story_type/somewhat_impactful/mob_money/Destroy(force, ...)
 	poor_sod = null
 	return ..()
+
