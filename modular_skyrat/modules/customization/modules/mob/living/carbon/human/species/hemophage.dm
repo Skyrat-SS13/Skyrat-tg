@@ -4,6 +4,8 @@
 #define NORMAL_BLOOD_DRAIN 0.125
 /// Minimum amount of blood that you can reach via blood regeneration, regeneration will stop below this.
 #define MINIMUM_VOLUME_FOR_REGEN BLOOD_VOLUME_BAD + 1 // We do this to avoid any jankiness, and because we want to ensure that they don't fall into a state where they're constantly passing out in a locker.
+/// Minimum amount of light for Hemophages to be considered in pure darkness, and therefore be allowed to heal just like in a closet.
+#define MINIMUM_LIGHT_THRESHOLD_FOR_REGEN 0
 
 /// How much brute damage their body regenerates per second (calculated every two seconds) while under the proper conditions.
 #define BLOOD_REGEN_BRUTE_AMOUNT 1.5
@@ -79,7 +81,7 @@
 	if(hemophage.stat == DEAD)
 		return
 
-	if(hemophage.health < hemophage.maxHealth && hemophage.blood_volume > MINIMUM_VOLUME_FOR_REGEN && in_closet(hemophage))
+	if(hemophage.health < hemophage.maxHealth && hemophage.blood_volume > MINIMUM_VOLUME_FOR_REGEN && (in_closet(hemophage) || in_total_darkness(hemophage)))
 		var/max_blood_for_regen = hemophage.blood_volume - MINIMUM_VOLUME_FOR_REGEN
 		var/blood_used = NONE
 
@@ -116,6 +118,10 @@
 
 		if(blood_used)
 			hemophage.blood_volume = max(hemophage.blood_volume - blood_used, MINIMUM_VOLUME_FOR_REGEN) // Just to clamp the value, to ensure we don't get anything weird.
+			hemophage.apply_status_effect(/datum/status_effect/blood_regen_active)
+
+	else
+		hemophage.remove_status_effect(/datum/status_effect/blood_regen_active)
 
 	if(in_closet(hemophage)) // No regular bloodloss if you're in a closet
 		return
@@ -137,6 +143,15 @@
 /// Simple helper proc that returns whether or not the given hemophage is in a closet subtype (but not in any bodybag subtype).
 /datum/species/hemophage/proc/in_closet(mob/living/carbon/human/hemophage)
 	return istype(hemophage.loc, /obj/structure/closet) && !istype(hemophage.loc, /obj/structure/closet/body_bag)
+
+
+/// Simple helper proc that returns whether or not the given hemophage is in total darkness.
+/datum/species/hemophage/proc/in_total_darkness(mob/living/carbon/human/hemophage)
+	var/turf/current_turf = get_turf(hemophage)
+	if(!istype(current_turf))
+		return FALSE
+
+	return current_turf.get_lumcount() <= MINIMUM_LIGHT_THRESHOLD_FOR_REGEN
 
 
 /datum/species/hemophage/get_species_description()
@@ -386,11 +401,67 @@
 	owner_species.bloodloss_speed_multiplier /= bloodloss_speed_multiplier
 
 
+/datum/status_effect/blood_regen_active
+	id = "blood_regen_active"
+	status_type = STATUS_EFFECT_UNIQUE
+	alert_type = /atom/movable/screen/alert/status_effect/blood_regen_active
+
+
+/datum/status_effect/blood_regen_active/on_apply()
+	// This status effect should not exist on its own, or on a non-human.
+	if(!owner || !ishuman(owner))
+		return FALSE
+
+	to_chat(owner, span_notice("You feel your skin tingle, as your body's natural regeneration rate drastically increases, thanks to the darkness that enrobes it."))
+
+	return TRUE
+
+
+/datum/status_effect/blood_regen_active/on_creation(mob/living/new_owner, ...)
+	. = ..()
+	if(!.)
+		return
+
+	if(!linked_alert)
+		return
+
+	var/obj/item/organ/internal/heart/hemophage/tumor_heart = owner.getorgan(/obj/item/organ/internal/heart/hemophage)
+	if(tumor_heart)
+		var/old_layer = tumor_heart.layer
+		var/old_plane = tumor_heart.plane
+		// reset the x & y offset so that item is aligned center
+		tumor_heart.pixel_x = 0
+		tumor_heart.pixel_y = 0
+		tumor_heart.layer = FLOAT_LAYER //AAAH
+		tumor_heart.plane = FLOAT_PLANE //^ what that guy said
+		linked_alert.cut_overlays()
+		linked_alert.add_overlay(tumor_heart)
+		tumor_heart.layer = old_layer
+		tumor_heart.plane = old_plane
+
+	return .
+
+
+/datum/status_effect/blood_regen_active/on_remove()
+	// This status effect should not exist on its own.
+	if(!owner)
+		return
+
+	to_chat(owner, span_notice("The tingling sensation on your skin fades away."))
+
+
 /atom/movable/screen/alert/status_effect/blood_thirst_satiated
 	name = "Thirst Satiated"
 	desc = "Substitutes and taste-thin imitations keep your pale body standing, but nothing abates eternal thirst and slakes the infection quite like the real thing: Hot blood from a real sentient being."
 	icon = 'icons/effects/bleed.dmi'
 	icon_state = "bleed10"
+
+
+/atom/movable/screen/alert/status_effect/blood_regen_active
+	name = "Enhanced Regeneration"
+	desc = "Being in a sufficiently dark location allows your tumor to allocate more energy to enhancing your body's natural regeneration, at the cost of blood volume proportional to the damage healed."
+	icon = 'icons/hud/screen_alert.dmi'
+	icon_state = "template"
 
 
 #undef HEMOPHAGE_DRAIN_AMOUNT
