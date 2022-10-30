@@ -34,7 +34,8 @@
 
 			// People will do custom stuff with non-factual sprites. Not touching those.
 			// Also skips sprites with "none" or null as their icon state, and genitals, should those be disabled.
-			if(!sprite_accessory.factual || !accessory_icon_state || accessory_icon_state == "none" || (!genitals_enabled && istype(sprite_accessory, /datum/sprite_accessory/genital)))
+			// Lets hair through regardless of what's set. Every single subtype under hair or facial_hair should be usable. No, I am not editing the code to support non-factual stuff.
+			if((!istype(sprite_accessory, /datum/sprite_accessory/hair) && !istype(sprite_accessory, /datum/sprite_accessory/facial_hair)) && (!sprite_accessory.factual || !accessory_icon_state || accessory_icon_state == "none" || (!genitals_enabled && istype(sprite_accessory, /datum/sprite_accessory/genital))))
 				continue
 
 			if(!accessory_icon)
