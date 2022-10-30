@@ -33,7 +33,7 @@
 				TEST_FAIL("Null accessory entry in key [looping_accessory_key]!")
 
 			// People will do custom stuff with non-factual sprites. Not touching those.
-			// Also skips non-factual sprites, and genitals, should those be disabled.
+			// Also skips sprites with "none" or null as their icon state, and genitals, should those be disabled.
 			if(!sprite_accessory.factual || !accessory_icon_state || accessory_icon_state == "none" || (!genitals_enabled && istype(sprite_accessory, /datum/sprite_accessory/genital)))
 				continue
 
@@ -46,7 +46,7 @@
 			if(!accessory_name)
 				TEST_FAIL("Null name on factual accessory [accessory_name] ([sprite_accessory.type]) in key [accessory_key]!")
 
-			if(!sprite_accessory.relevent_layers)
+			if(!sprite_accessory.relevent_layers || !sprite_accessory.relevent_layers.len)
 				TEST_FAIL("Null relevent_layers on factual accessory [accessory_name] ([sprite_accessory.type]) in key [accessory_key]!")
 				continue
 

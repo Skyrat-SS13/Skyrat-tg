@@ -293,5 +293,3 @@
 /datum/sprite_accessory/genital/breasts/sextuple
 	icon_state = "sextuple"
 	name = "Sextuple"
-
-#undef FALLBACK_PENIS_ICON_STATE

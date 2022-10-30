@@ -26,8 +26,8 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 
 	color_src = USE_ONE_COLOR
 
-	///Which layers does this accessory affect. Valid values are BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER, BODY_FRONT_UNDER_CLOTHES and ABOVE_BODY_FRONT_HEAD_LAYER
-	var/relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER, BODY_FRONT_UNDER_CLOTHES, ABOVE_BODY_FRONT_HEAD_LAYER)
+	///Which layers does this accessory affect. Valid list entries are `BODY_BEHIND_LAYER`, `BODY_ADJ_LAYER`, `BODY_FRONT_LAYER`, `BODY_FRONT_UNDER_CLOTHES` and `ABOVE_BODY_FRONT_HEAD_LAYER`
+	var/list/relevent_layers
 
 	///This is used to determine whether an accessory gets added to someone. This is important for accessories that are "None", which should have this set to false
 	var/factual = TRUE
