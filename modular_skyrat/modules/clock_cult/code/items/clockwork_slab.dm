@@ -148,7 +148,6 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "ClockworkSlab")
-		ui.set_autoupdate(TRUE)
 		ui.open()
 
 /obj/item/clockwork/clockwork_slab/ui_data(mob/user)

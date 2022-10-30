@@ -26,7 +26,7 @@
  *  * examine_texts - The output text list of the original examine function
  */
 
-/datum/element/clockwork_description/proc/add_examine(obj/item/item, mob/user, list/examine_texts)
+/datum/element/clockwork_description/proc/add_examine(atom/source, mob/user, list/examine_texts)
 	SIGNAL_HANDLER
 
 	examine_texts += span_brass(text_to_add)
