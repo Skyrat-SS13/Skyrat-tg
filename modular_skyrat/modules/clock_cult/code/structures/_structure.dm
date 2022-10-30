@@ -38,15 +38,7 @@
 		return
 	return ..()
 
-//for the ark and Ratvar
-/obj/structure/destructible/clockwork/massive
-	name = "massive construct"
-	desc = "A very large construction."
-	layer = MASSIVE_OBJ_LAYER
-	density = FALSE
-	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF | FREEZE_PROOF
-
-//the base clockwork machinery, which is not actually machines, but happens to use power
+//the base clockwork machinery, which isn't actually a machine subtype, but happens to use power
 /obj/structure/destructible/clockwork/powered
 	var/obj/machinery/power/apc/target_apc
 	var/active = FALSE

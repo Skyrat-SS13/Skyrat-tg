@@ -1,4 +1,4 @@
-#define SIGIL_INVOKATION_ALPHA 120
+#define SIGIL_INVOCATION_ALPHA 120
 #define SIGIL_INVOKED_ALPHA 200
 
 //==========Sigil Base=========
@@ -17,7 +17,7 @@
 	/// Color while not used
 	var/idle_color = "#FFFFFF"
 	/// Color faded to while someone stands on top
-	var/invokation_color = "#F1A03B"
+	var/invocation_color = "#F1A03B"
 	/// Color pulsed when effect applied
 	var/pulse_color = "#EBC670"
 	/// Color pulsed when effect fails
@@ -63,7 +63,7 @@
 		apply_effects(entered_movable)
 		return
 	do_sparks(5, TRUE, src)
-	animate(src, color = invokation_color, alpha = SIGIL_INVOKATION_ALPHA, effect_stand_time)
+	animate(src, color = invocation_color, alpha = SIGIL_INVOCATION_ALPHA, effect_stand_time)
 	active_timer = addtimer(CALLBACK(src, .proc/apply_effects, entered_movable), effect_stand_time, TIMER_UNIQUE | TIMER_STOPPABLE)
 
 /// For when someone/something leaves the sigil's turf
@@ -89,7 +89,7 @@
 	return TRUE
 
 /// What happens when the sigil fails to invoke
-/obj/structure/destructible/clockwork/sigil/proc/fail_invokation()
+/obj/structure/destructible/clockwork/sigil/proc/fail_invocation()
 	active_timer = null
 	currently_affecting = null
 	color = fail_color
@@ -100,13 +100,13 @@
 /// Apply the effects to an atom/movable
 /obj/structure/destructible/clockwork/sigil/proc/apply_effects(atom/movable/movable_apply)
 	if(!can_affect(movable_apply))
-		fail_invokation()
+		fail_invocation()
 		return FALSE
 	color = pulse_color
 	transform = matrix() * 1.2
 	alpha = SIGIL_INVOKED_ALPHA
 	if(looping)
-		animate(src, transform=matrix(), color=invokation_color, alpha=SIGIL_INVOKATION_ALPHA, effect_stand_time)
+		animate(src, transform=matrix(), color=invocation_color, alpha=SIGIL_INVOCATION_ALPHA, effect_stand_time)
 		active_timer = addtimer(CALLBACK(src, .proc/apply_effects, movable_apply), effect_stand_time, TIMER_UNIQUE | TIMER_STOPPABLE)
 	else
 		active_timer = null
@@ -120,5 +120,5 @@
 	sleep(3)
 	qdel(src)
 
-#undef SIGIL_INVOKATION_ALPHA
+#undef SIGIL_INVOCATION_ALPHA
 #undef SIGIL_INVOKED_ALPHA

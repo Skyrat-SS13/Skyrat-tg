@@ -11,9 +11,9 @@
 	if(!(FACTION_CLOCK in user.faction))
 		return
 	for(var/obj/structure/destructible/clockwork/trap/trap in get_turf(src)) // No 50-spear instakills please
-		if(!istype(trap, type))
+		if(!istype(trap, result_path))
 			continue
-		to_chat(user, span_warning("That space is occupied!"))
+		user.balloon_alert(user, "space occupied!")
 		return
 	to_chat(user, span_brass("You place [src], use a <b>clockwork slab</b> to link it to other traps."))
 	var/obj/new_obj = new result_path(get_turf(src))
@@ -51,16 +51,20 @@
 
 /obj/structure/destructible/clockwork/trap/wrench_act(mob/living/user, obj/item/I)
 	. = ..()
-	to_chat(user, span_warning("You begin unwrenching [src]..."))
-	if(do_after(user, 50, target=src))
-		to_chat(user, span_warning("You detach [src], clearing all the connections associated with it."))
-		new unwrench_path(get_turf(src))
-		qdel(src)
+	balloon_alert(user, "unwrenching...")
+	if(!do_after(user, 50, target=src))
+		return
+	balloon_alert(user, "detached [src]")
+	new unwrench_path(get_turf(src))
+	qdel(src)
 
 //Component
 /datum/component/clockwork_trap
+	/// A list of traps this sends a signal to when this is triggered
 	var/list/outputs
+	/// If this sends input (e.g. pressure plate)
 	var/sends_input = FALSE
+	/// If this takes input (e.g. skewer)
 	var/takes_input = FALSE
 
 /datum/component/clockwork_trap/Initialize()

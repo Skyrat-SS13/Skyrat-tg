@@ -14,9 +14,9 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 	/// How many cogs are required to be used to use this
 	var/cogs_required = 0
 	/// Time required to invoke this while standing still
-	var/invokation_time = 0
-	/// Text said during invokation, automatically translates to Ratvarian
-	var/list/invokation_text = list()
+	var/invocation_time = 0
+	/// Text said during invocation, automatically translates to Ratvarian
+	var/list/invocation_text = list()
 	/// Icon state of the action button
 	var/button_icon_state = "telerune"
 	/// How many people need to invoke this in sight of each other to use
@@ -24,13 +24,13 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 	/// What category of scripture is this
 	var/category = SPELLTYPE_ABSTRACT
 	/// Only set to false if you call end_invoke somewhere in your scripture
-	var/end_on_invokation = TRUE
+	var/end_on_invocation = TRUE
 	/// Ref to the mob invoking this
 	var/mob/living/invoker
 	/// Ref to the slab invoking this
 	var/obj/item/clockwork/clockwork_slab/invoking_slab
 	/// Timer object for the distance between invoking chants
-	var/invokation_chant_timer = null
+	var/invocation_chant_timer = null
 	/// If TRUE, then this will delete itself on completion
 	var/qdel_on_completion = FALSE
 	/// Sound to play on finish
@@ -45,9 +45,9 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 /datum/scripture/proc/invoke()
 	if(GLOB.clock_power < power_cost || GLOB.clock_vitality < vitality_cost)
 		invoke_fail()
-		if(invokation_chant_timer)
-			deltimer(invokation_chant_timer)
-			invokation_chant_timer = null
+		if(invocation_chant_timer)
+			deltimer(invocation_chant_timer)
+			invocation_chant_timer = null
 		end_invoke()
 		return
 	GLOB.clock_power -= power_cost
@@ -64,20 +64,20 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 
 /// The overall reciting proc for saying every single line for a scripture
 /datum/scripture/proc/recital()
-	if(!length(invokation_text))
+	if(!length(invocation_text))
 		return
-	var/steps = length(invokation_text)
-	var/time_between_say = invokation_time / (steps + 1)
-	if(invokation_chant_timer)
-		deltimer(invokation_chant_timer)
-		invokation_chant_timer = null
+	var/steps = length(invocation_text)
+	var/time_between_say = invocation_time / (steps + 1)
+	if(invocation_chant_timer)
+		deltimer(invocation_chant_timer)
+		invocation_chant_timer = null
 	recite(1, time_between_say, steps)
 
 /// For reciting an individual line of a scripture
 /datum/scripture/proc/recite(text_point, wait_time, stop_at = 0)
 	if(QDELETED(src))
 		return
-	invokation_chant_timer = null
+	invocation_chant_timer = null
 	if(!invoking_slab || !invoking_slab.invoking_scripture)
 		return
 	var/invokers_left = invokers_required
@@ -88,14 +88,14 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 			if(!invokers_left)
 				break
 			if(FACTION_CLOCK in M.faction)
-				clockwork_say(M, text2ratvar(invokation_text[text_point]), TRUE)
+				clockwork_say(M, text2ratvar(invocation_text[text_point]), TRUE)
 				invokers_left--
 	else
-		clockwork_say(invoker, text2ratvar(invokation_text[text_point]), TRUE)
+		clockwork_say(invoker, text2ratvar(invocation_text[text_point]), TRUE)
 	if(recital_sound)
 		SEND_SOUND(invoker, recital_sound)
 	if(text_point < stop_at)
-		invokation_chant_timer = addtimer(CALLBACK(src, .proc/recite, text_point+1, wait_time, stop_at), wait_time, TIMER_STOPPABLE)
+		invocation_chant_timer = addtimer(CALLBACK(src, .proc/recite, text_point+1, wait_time, stop_at), wait_time, TIMER_STOPPABLE)
 
 /// Check for any special requriements such as not having enough invokers, or not holding the slab
 /datum/scripture/proc/check_special_requirements(mob/user)
@@ -132,16 +132,16 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 		end_invoke()
 		return
 	recital()
-	if(do_after(invoking_mob, invokation_time, target = invoking_mob, extra_checks = CALLBACK(src, .proc/check_special_requirements, invoking_mob)))
+	if(do_after(invoking_mob, invocation_time, target = invoking_mob, extra_checks = CALLBACK(src, .proc/check_special_requirements, invoking_mob)))
 		invoke()
 		to_chat(invoking_mob, span_brass("You invoke [name]."))
-		if(end_on_invokation)
+		if(end_on_invocation)
 			end_invoke()
 	else
 		invoke_fail()
-		if(invokation_chant_timer)
-			deltimer(invokation_chant_timer)
-			invokation_chant_timer = null
+		if(invocation_chant_timer)
+			deltimer(invocation_chant_timer)
+			invocation_chant_timer = null
 		end_invoke()
 
 /// End the invoking, nulling things out, and qdeling itself if indicated
@@ -177,7 +177,7 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 //(stunning etc.)
 /datum/scripture/slab
 	name = "Charge Slab"
-	end_on_invokation = FALSE
+	end_on_invocation = FALSE
 	/// Time to perform this
 	var/use_time = 10
 	/// Overlay for the item/inhand state while this is invoked
@@ -193,7 +193,7 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 	/// Internal spell for pointed/aimed spells
 	var/datum/action/cooldown/spell/pointed/slab/pointed_spell
 
-	/// How many times this can be used this particular invokation, can go down
+	/// How many times this can be used this particular invocation, can go down
 	var/uses_left = 0
 	/// How much time left to use this
 	var/time_left = 0
@@ -233,7 +233,7 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 	if(time_left > 0)
 		loop_timer_id = addtimer(CALLBACK(src, .proc/count_down), 1, TIMER_STOPPABLE)
 	else
-		end_invokation()
+		end_invocation()
 
 /// What occurs when an atom is clicked on.
 /datum/scripture/slab/proc/click_on(atom/clicked_atom)
@@ -247,10 +247,10 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 		return
 	if(after_use_text)
 		clockwork_say(invoker, text2ratvar(after_use_text), TRUE)
-	end_invokation()
+	end_invocation()
 
-/// What occurs when the invokation ends
-/datum/scripture/slab/proc/end_invokation()
+/// What occurs when the invocation ends
+/datum/scripture/slab/proc/end_invocation()
 	SHOULD_CALL_PARENT(TRUE)
 	//Remove the timer if there is one currently active
 	if(loop_timer_id)

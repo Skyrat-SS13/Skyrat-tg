@@ -70,18 +70,8 @@ export const ClockworkHelp = (props, context) => {
           <br />
           <b>
             Install&nbsp;
-            <font color="#DFC69C"> Integration Cogs&nbsp;</font>
+            <font color="#DFC69C">Integration Cogs&nbsp;</font>
             to unlock more scriptures and siphon power!
-          </b>
-          <br />
-          <b>
-            Unlock&nbsp;
-            <font color="#D8D98D"> Kindle&nbsp;</font>
-            ,&nbsp;
-            <font color="#F19096"> Hateful Manacles&nbsp;</font>
-            and summon a&nbsp;
-            <font color="#9EA7E5"> Sigil of Submission&nbsp;</font>
-            to convert any non-believers!
           </b>
           <br />
         </Section>
@@ -92,57 +82,17 @@ export const ClockworkHelp = (props, context) => {
           <br />
           Invoke&nbsp;
           <font color="#DFC69C">
-            <b> Integration Cog&nbsp;</b>
+            <b>Integration Cog&nbsp;</b>
           </font>
           to summon an Integration Cog, which can be placed into any&nbsp;
-          <b> APC&nbsp;</b>
+          <b>APC&nbsp;</b>
           on the station.
           <br />
           Slice open the&nbsp;
-          <b> APC&nbsp;</b>
+          <b>APC&nbsp;</b>
           with the&nbsp;
-          <b> Integration Cog&nbsp;</b>
+          <b>Integration Cog&nbsp;</b>
           , then insert it in to begin siphoning power.
-          <br />
-        </Section>
-      </Collapsible>
-      <Collapsible title="Conversion" color="average">
-        <Section>
-          Invoke
-          <b>
-            <font color="#D8D98D">Kindle&nbsp;</font>
-          </b>
-          (After you unlock it), to&nbsp;
-          <b>stun&nbsp;</b>
-          and&nbsp;
-          <b>mute&nbsp;</b>
-          any target long enough for you to restrain
-          <br />
-          Using&nbsp;
-          <b>zipties&nbsp;</b> obtained from the station, or by invoking&nbsp;
-          <b>
-            <font color="#F19096">Hateful Manacles&nbsp;</font>
-          </b>
-          , you can restrain targets to keep them from escaping the light.
-          <br />
-          Invoke&nbsp;
-          <b>
-            <font color="#D5B8DC">Abscond&nbsp;</font>
-          </b>
-          to warp back to Reebe, where the being you are dragging will be pulled
-          with you.
-          <br />
-          From there, summon a&nbsp;
-          <b>
-            <font color="#9EA7E5">Sigil of Submission&nbsp;</font>
-          </b>
-          and hold them over it for 8 seconds. <br />
-          You cannot enlighten those who have&nbsp;
-          <b>mindshields.</b>
-          <br />
-          Make sure to take their&nbsp;
-          <b>headset&nbsp;</b>
-          so they don&#39;t spread misinformation!
           <br />
         </Section>
       </Collapsible>

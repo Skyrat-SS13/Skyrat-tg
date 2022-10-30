@@ -18,41 +18,41 @@
 
 //Regexes used to alter english to ratvarian style
 
-#define RATVAR_OF_MATCH				regex("(\\w)\\s(\[oO]\[fF])","g")
+#define RATVAR_OF_MATCH				regex(@"(\w)\s([oO][fF])","g")
 #define RATVAR_OF_REPLACEMENT 		"$1-$2"
-#define RATVAR_GUA_MATCH			regex("(\[gG]\[uU])(\[aA])","g")
+#define RATVAR_GUA_MATCH			regex(@"([gG][uU])([aA])","g")
 #define RATVAR_GUA_REPLACEMENT		"$1-$2"
-#define RATVAR_TH_MATCH				regex("(\[tT]\[hH]\\w)(\\w)","g")
+#define RATVAR_TH_MATCH				regex(@"([tT][hH]\w)(\w)","g")
 #define RATVAR_TH_REPLACEMENT		"$1`$2"
-#define RATVAR_TI_MATCH				regex("(\[tT]\[iI])(\\w)","g")
+#define RATVAR_TI_MATCH				regex(@"([tT][iI])(\w)","g")
 #define RATVAR_TI_REPLACEMENT		"$1`$2"
-#define RATVAR_ET_MATCH				regex("(\\w)(\[eE]\[tT])","g")
+#define RATVAR_ET_MATCH				regex(@"(\w)([eE][tT])","g")
 #define RATVAR_ET_REPLACEMENT		"$1-$2"
-#define RATVAR_TE_MATCH				regex("(\[tT]\[eE])(\\w)","g")
+#define RATVAR_TE_MATCH				regex(@"([tT][eE])(\w)","g")
 #define RATVAR_TE_REPLACEMENT		"$1-$2"
-#define RATVAR_PRE_AND_MATCH		regex("(\\w)\\s(\[aA]\[nN]\[dD])(\\W)","g")
+#define RATVAR_PRE_AND_MATCH		regex(@"(\w)\s([aA][nN][dD])(\W)","g")
 #define RATVAR_PRE_AND_REPLACEMENT	"$1-$2$3"
-#define RATVAR_POST_AND_MATCH		regex("(\\W)(\[aA]\[nN]\[dD])\\s(\\w)","g")
+#define RATVAR_POST_AND_MATCH		regex(@"(\W)([aA][nN][dD])\s(\w)","g")
 #define RATVAR_POST_AND_REPLACEMENT	"$1$2-$3"
-#define RATVAR_TO_MATCH				regex("(\\s)(\[tT]\[oO])\\s(\\w)","g")
+#define RATVAR_TO_MATCH				regex(@"(\s)([tT][oO])\s(\w)","g")
 #define RATVAR_TO_REPLACEMENT		"$1$2-$3"
-#define RATVAR_MY_MATCH 			regex("(\\s)(\[mM]\[yY])\\s(\\w)","g")
+#define RATVAR_MY_MATCH 			regex(@"(\s)([mM][yY])\s(\w)","g")
 #define RATVAR_MY_REPLACEMENT		"$1$2-$3"
 
 //Regexes used to remove ratvarian styling from english
-#define REVERSE_RATVAR_HYPHEN_PRE_AND_MATCH			regex("(\\w)-(\[aA]\[nN]\[dD])","g") //specifically structured to support -emphasis-, including with -and-
+#define REVERSE_RATVAR_HYPHEN_PRE_AND_MATCH			regex(@"(\w)-([aA][nN][dD])","g") //specifically structured to support -emphasis-, including with -and-
 #define REVERSE_RATVAR_HYPHEN_PRE_AND_REPLACEMENT	"$1 $2"
-#define REVERSE_RATVAR_HYPHEN_POST_AND_MATCH		regex("(\[aA]\[nN]\[dD])-(\\w)","g")
+#define REVERSE_RATVAR_HYPHEN_POST_AND_MATCH		regex(@"([aA][nN][dD])-(\w)","g")
 #define REVERSE_RATVAR_HYPHEN_POST_AND_REPLACEMENT	"$1 $2"
-#define REVERSE_RATVAR_HYPHEN_TO_MY_MATCH			regex("(\[tTmM]\[oOyY])-","g")
+#define REVERSE_RATVAR_HYPHEN_TO_MY_MATCH			regex(@"([tTmM][oOyY])-","g")
 #define REVERSE_RATVAR_HYPHEN_TO_MY_REPLACEMENT		"$1 "
-#define REVERSE_RATVAR_HYPHEN_TE_MATCH				regex("(\[tT]\[eE])-","g")
+#define REVERSE_RATVAR_HYPHEN_TE_MATCH				regex(@"([tT][eE])-","g")
 #define REVERSE_RATVAR_HYPHEN_TE_REPLACEMENT		"$1"
-#define REVERSE_RATVAR_HYPHEN_ET_MATCH				regex("-(\[eE]\[tT])","g")
+#define REVERSE_RATVAR_HYPHEN_ET_MATCH				regex(@"-([eE][tT])","g")
 #define REVERSE_RATVAR_HYPHEN_ET_REPLACEMENT		"$1"
-#define REVERSE_RATVAR_HYPHEN_GUA_MATCH				regex("(\[gG]\[uU])-(\[aA])","g")
+#define REVERSE_RATVAR_HYPHEN_GUA_MATCH				regex(@"([gG][uU])-([aA])","g")
 #define REVERSE_RATVAR_HYPHEN_GUA_REPLACEMENT		"$1$2"
-#define REVERSE_RATVAR_HYPHEN_OF_MATCH				regex("-(\[oO]\[fF])","g")
+#define REVERSE_RATVAR_HYPHEN_OF_MATCH				regex(@"-([oO][fF])","g")
 #define REVERSE_RATVAR_HYPHEN_OF_REPLACEMENT		" $1"
 
 /// Takes english and applies ratvarian styling rules (and rot13) to it.

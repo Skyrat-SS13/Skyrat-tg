@@ -11,26 +11,26 @@
 		return ..()
 	var/obj/machinery/power/apc/cogger_apc = attacked_atom
 	if(cogger_apc.integration_cog)
-		to_chat(user, span_brass("There is already \an [src] in [cogger_apc]."))
+		balloon_alert(user, "already has a cog inside!")
 		return
 	if(!cogger_apc.panel_open)
 		//Cut open the panel
-		to_chat(user, span_notice("You begin cutting open [cogger_apc]."))
+		balloon_alert(user, "cutting open APC...")
 		if(!do_after(user, 5 SECONDS, target = cogger_apc))
 			return
-		to_chat(user, span_brass("You cut open [cogger_apc] with [src]."))
+		balloon_alert(user, "APC cut open")
 		cogger_apc.panel_open = TRUE
 		cogger_apc.update_appearance()
 		return
 	//Insert the cog
-	to_chat(user, span_notice("You begin inserting [src] into [cogger_apc]."))
+	balloon_alert(user, "inserting [src]...")
 	if(!do_after(user, 4 SECONDS, target = cogger_apc))
 		return
 	cogger_apc.integration_cog = src
 	forceMove(cogger_apc)
 	cogger_apc.panel_open = FALSE
 	cogger_apc.update_appearance()
-	to_chat(user, span_notice("You insert [src] into [cogger_apc]."))
+	balloon_alert(user, "[src] inserted")
 	playsound(get_turf(user), 'sound/machines/clockcult/integration_cog_install.ogg', 20)
 	if(!cogger_apc.clock_cog_rewarded)
 		GLOB.clock_installed_cogs++
@@ -47,7 +47,7 @@
 	var/integration_cog = null
 
 /obj/machinery/power/apc/Destroy()
-	integration_cog = null //It's deleted when `contents` are handled
+	QDEL_NULL(integration_cog)
 	return ..()
 
 /obj/machinery/power/apc/examine(mob/user)
@@ -62,9 +62,9 @@
 		return ..()
 	if(!integration_cog)
 		return ..()
-	to_chat(user, span_notice("You begin prying something out of [src]."))
+	balloon_alert(user, "prying something out of [src]...")
 	crowbar.play_tool_sound(src)
 	if(!crowbar.use_tool(src, user, 5 SECONDS))
 		return
-	to_chat(user, span_warning("You screw up, breaking whatever was inside!"))
+	balloon_alert(user, "pried out something, destroying it!")
 	QDEL_NULL(integration_cog)

@@ -1,4 +1,7 @@
+#define MAXIMUM_QUICKBIND_SLOTS 5
+
 GLOBAL_LIST_INIT(clockwork_slabs, list())
+
 
 /obj/item/clockwork
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_objects.dmi'
@@ -78,7 +81,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 	for(var/datum/action/innate/clockcult/quick_bind/script in quick_bound_scriptures)
 		script.Remove(user)
 	if(active_scripture)
-		active_scripture.end_invokation()
+		active_scripture.end_invocation()
 	if(buffer)
 		buffer = null
 
@@ -91,7 +94,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 		script.Grant(user)
 	user.update_action_buttons()
 
-/obj/item/clockwork/clockwork_slab/update_icon()
+/obj/item/clockwork/clockwork_slab/update_overlays()
 	. = ..()
 	cut_overlays()
 	if(charge_overlay)
@@ -136,7 +139,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 		to_chat(user, span_warning("You cannot figure out what the device is used for!"))
 		return
 	if(active_scripture)
-		active_scripture.end_invokation()
+		active_scripture.end_invocation()
 		return
 	if(buffer)
 		buffer = null
@@ -161,7 +164,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 	//2 scriptures accessable at the same time will cause issues
 	for(var/scripture_name in GLOB.clock_scriptures)
 		var/datum/scripture/scripture = GLOB.clock_scriptures[scripture_name]
-		var/list/S = list(
+		var/list/scripture_data = list(
 			"name" = scripture.name,
 			"desc" = scripture.desc,
 			"type" = scripture.category,
@@ -171,59 +174,60 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 			"cog_cost" = scripture.cogs_required
 		)
 		//Add it to the correct list
-		data["scriptures"] += list(S)
+		data["scriptures"] += list(scripture_data)
 	return data
 
 /obj/item/clockwork/clockwork_slab/ui_act(action, params)
 	. = ..()
 	if(.)
 		return
-	var/mob/living/M = usr
-	if(!istype(M))
+	var/mob/living/living_user = usr
+	if(!istype(living_user))
 		return FALSE
 	switch(action)
 		if("invoke")
-			var/datum/scripture/S = GLOB.clock_scriptures[params["scriptureName"]]
-			if(!S)
+			var/datum/scripture/scripture = GLOB.clock_scriptures[params["scriptureName"]]
+			if(!scripture)
 				return FALSE
-			if(S.type in purchased_scriptures)
+			if(scripture.type in purchased_scriptures)
 				if(invoking_scripture)
-					to_chat(M, span_brass("You fail to invoke [name]."))
+					living_user.balloon_alert(living_user, "failed to invoke!")
 					return FALSE
-				if(S.power_cost > GLOB.clock_power)
-					to_chat(M, span_neovgre("You need [S.power_cost]W to invoke [S.name]."))
+				if(scripture.power_cost > GLOB.clock_power)
+					living_user.balloon_alert(living_user, "[scripture.power_cost] required!")
 					return FALSE
-				if(S.vitality_cost > GLOB.clock_vitality)
-					to_chat(M, span_neovgre("You need [S.vitality_cost] vitality to invoke [S.name]."))
+				if(scripture.vitality_cost > GLOB.clock_vitality)
+					living_user.balloon_alert(living_user, "[scripture.vitality_cost] required!")
 					return FALSE
-				var/datum/scripture/new_scripture = new S.type()
+				var/datum/scripture/new_scripture = new scripture.type()
 				//Create a new scripture temporarilly to process, when it's done it will be qdeleted.
 				new_scripture.qdel_on_completion = TRUE
-				new_scripture.begin_invoke(M, src)
+				new_scripture.begin_invoke(living_user, src)
 			else
-				if(cogs >= S.cogs_required)
-					cogs -= S.cogs_required
-					to_chat(M, span_brass("You unlocked [S.name]. It can now be invoked and quickbound through your slab."))
-					log_game("[S.name] purchased by [M.ckey]/[M.name] the [M.job] for [S.cogs_required] cogs, [cogs] cogs remaining.")
-					purchased_scriptures += S.type
+				if(cogs >= scripture.cogs_required)
+					cogs -= scripture.cogs_required
+					living_user.balloon_alert(living_user, "[scripture.name] purchased")
+					log_game("[scripture.name] purchased by [living_user.ckey]/[living_user.name] the [living_user.job] for [scripture.cogs_required] cogs, [cogs] cogs remaining.")
+					purchased_scriptures += scripture.type
 				else
-					to_chat(M, span_brass("You need [S.cogs_required] cogs to unlock [S.name], you only have [cogs] left!"))
-					to_chat(M, span_brass("<b>Tip:</b> Invoke integration cog and insert the cog into APCs to get more."))
+					living_user.balloon_alert(living_user, "need at least [scripture.cogs_required]!")
 			return TRUE
 		if("quickbind")
-			var/datum/scripture/S = GLOB.clock_scriptures[params["scriptureName"]]
-			if(!S)
+			var/datum/scripture/scripture = GLOB.clock_scriptures[params["scriptureName"]]
+			if(!scripture)
 				return FALSE
 			var/list/positions = list()
-			for(var/i in 1 to 5)
-				var/datum/scripture/QB = quick_bound_scriptures[i]
-				if(!QB)
+			for(var/i in 1 to MAXIMUM_QUICKBIND_SLOTS)
+				var/datum/scripture/quick_bound = quick_bound_scriptures[i]
+				if(!quick_bound)
 					positions += "([i])"
 				else
-					positions += "([i]) - [QB.name]"
-			var/position = input("Where to quickbind to?", "Quickbind Slot", null) as null|anything in positions
+					positions += "([i]) - [quick_bound.name]"
+			var/position = tgui_input_list(living_user, "Where to quickbind to?", "Quickbind Slot", positions)
 			if(!position)
 				return FALSE
 			//Create and assign the quickbind
-			var/datum/scripture/new_scripture = new S.type()
-			bind_spell(M, new_scripture, positions.Find(position))
+			var/datum/scripture/new_scripture = new scripture.type()
+			bind_spell(living_user, new_scripture, positions.Find(position))
+
+#undef MAXIMUM_QUICKBIND_SLOTS
