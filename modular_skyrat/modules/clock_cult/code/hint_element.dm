@@ -7,6 +7,10 @@
 
 /datum/element/clockwork_description/Attach(datum/target, text_to_add)
 	. = ..()
+
+	if(!isatom(target))
+		return COMPONENT_INCOMPATIBLE
+
 	RegisterSignal(target, COMSIG_PARENT_EXAMINE, .proc/add_examine)
 	// Don't perform the assignment if there is nothing to assign, or if we already have something for this bespoke element
 	if(text_to_add && !src.text_to_add)
