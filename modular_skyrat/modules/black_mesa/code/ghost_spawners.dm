@@ -81,7 +81,7 @@
 	You haven't heard much from the north-west post, except for the sounds of gunshots, and their radios went silent. \
 	On top of that, your escape helicopter was shot down mid-flight, and another one won't arrive so soon; \
 	with your machinegunner being shot down with a precise headshot by something, or SOMEONE. You are likely on your own, at least for now."
-	important_text = "Do not try to explore the level unless the expedition crew is dead or cooperative. Stay around your area. Allowed races are humans."
+	important_text = "Do not try to explore the level unless the expedition crew is dead or cooperative. Stay around your area."
 	restricted_species = list(/datum/species/human)
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/hecu/special(mob/living/carbon/human/spawned_human)
