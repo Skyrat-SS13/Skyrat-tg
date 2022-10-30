@@ -1,5 +1,8 @@
 /// Maximum an Hemophage will drain, they will drain less if they hit their cap.
 #define HEMOPHAGE_DRAIN_AMOUNT 50
+/// How much blood do Hemophages normally lose per second (visible effect is every two seconds, so twice this value).
+#define NORMAL_BLOOD_DRAIN 0.125
+
 
 /datum/species/hemophage
 	name = "Hemophage"
@@ -70,7 +73,7 @@
 		hemophage.adjustCloneLoss(-0.5 * delta_time) // HARDMODE DAMAGE
 		return
 
-	hemophage.blood_volume -= 0.125 * delta_time * bloodloss_speed_multiplier
+	hemophage.blood_volume -= NORMAL_BLOOD_DRAIN * delta_time * bloodloss_speed_multiplier
 
 	if(hemophage.blood_volume <= BLOOD_VOLUME_SURVIVE)
 		to_chat(hemophage, span_danger("You ran out of blood!"))
