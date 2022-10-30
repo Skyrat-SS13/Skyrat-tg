@@ -28,7 +28,7 @@
 			var/icon/accessory_icon = sprite_accessory.icon
 			var/accessory_key = sprite_accessory.key
 
-			// This shouldn't be possible, I'm checking anyway, cause if this does happen, cause it means you fucked up big time.
+			// This shouldn't be possible, I'm checking anyway, cause if this does happen, it means you fucked up big time.
 			if(!sprite_accessory)
 				TEST_FAIL("Null accessory entry in key [looping_accessory_key]!")
 
