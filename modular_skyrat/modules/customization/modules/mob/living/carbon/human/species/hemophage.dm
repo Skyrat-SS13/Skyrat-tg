@@ -6,6 +6,10 @@
 #define MINIMUM_VOLUME_FOR_REGEN BLOOD_VOLUME_BAD + 1 // We do this to avoid any jankiness, and because we want to ensure that they don't fall into a state where they're constantly passing out in a locker.
 /// Minimum amount of light for Hemophages to be considered in pure darkness, and therefore be allowed to heal just like in a closet.
 #define MINIMUM_LIGHT_THRESHOLD_FOR_REGEN 0
+/// How much organ damage do all hemophage organs take per second when the tumor is removed?
+#define TUMORLESS_ORGAN_DAMAGE 5
+/// How much damage can their organs take at maximum when the tumor isn't present anymore?
+#define TUMORLESS_ORGAN_DAMAGE_MAX 100
 
 /// How much brute damage their body regenerates per second (calculated every two seconds) while under the proper conditions.
 #define BLOOD_REGEN_BRUTE_AMOUNT 1.5
@@ -15,6 +19,9 @@
 #define BLOOD_REGEN_TOXIN_AMOUNT 1
 /// How much cellular damage their body regenerates per second (calculated every two seconds) while under the proper conditions.
 #define BLOOD_REGEN_CELLULAR_AMOUNT 0.5
+
+/// Organ flag for organs of hemophage origin, or organs that have since been infected by an hemophage's tumor.
+#define ORGAN_TUMOR_CORRUPTED (1<<12) // Not taking chances, hopefully this number remains good for a little while.
 
 
 /datum/species/hemophage
@@ -43,6 +50,8 @@
 	exotic_bloodtype = "U"
 	use_skintones = TRUE
 	mutantheart = /obj/item/organ/internal/heart/hemophage
+	mutantliver = /obj/item/organ/internal/liver/hemophage
+	mutantstomach = /obj/item/organ/internal/stomach/hemophage
 	mutanttongue = /obj/item/organ/internal/tongue/hemophage
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	examine_limb_id = SPECIES_HUMAN
@@ -57,6 +66,9 @@
 	var/bloodloss_speed_multiplier = 1
 	/// Current multiplier for how much blood they spend healing themselves for every point of damage healed.
 	var/blood_to_health_multiplier = 1
+	/// Do we currently possess the tumor? If not, we lose all powers and our organs will slowly wither away quite quickly.
+	var/tumor_in_body = FALSE
+
 	veteran_only = TRUE
 
 
@@ -80,6 +92,18 @@
 	. = ..()
 	if(hemophage.stat == DEAD)
 		return
+
+	// If the tumor isn't in their body, and they've got tumor-corrupted organs, they're going to decay at a relatively swift rate.
+	if(!tumor_in_body)
+		var/static/list/tumor_reliant_organ_slots = list(ORGAN_SLOT_LIVER, ORGAN_SLOT_STOMACH)
+		for(var/organ_slot in tumor_reliant_organ_slots)
+			var/obj/item/organ/affected_organ = hemophage.getorganslot(organ_slot)
+			if(!affected_organ || !(affected_organ.organ_flags & ORGAN_TUMOR_CORRUPTED))
+				continue
+
+			hemophage.adjustOrganLoss(organ_slot, TUMORLESS_ORGAN_DAMAGE * delta_time, TUMORLESS_ORGAN_DAMAGE_MAX)
+
+		return // We don't actually want to do any healing or blood loss without a tumor, y'know.
 
 	if(hemophage.health < hemophage.maxHealth && hemophage.blood_volume > MINIMUM_VOLUME_FOR_REGEN && (in_closet(hemophage) || in_total_darkness(hemophage)))
 		var/max_blood_for_regen = hemophage.blood_volume - MINIMUM_VOLUME_FOR_REGEN
@@ -251,9 +275,53 @@
 	return
 
 
+/obj/item/organ/internal/heart/hemophage
+	name = "pulsating tumor"
+	icon_state = "legion_soul"
+	desc = "Just looking at how it pulsates at the beat of the heart it's wrapped around sends shivers down your spine... <i>The fact it's what keeps them alive makes it all the more terrifying.</i>"
+	color = "#1C1C1C"
+
+
+/obj/item/organ/internal/heart/hemophage/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
+	. = ..()
+	if(!ishemophage(reciever))
+		return
+
+	var/mob/living/carbon/human/tumorful_hemophage = reciever
+	var/datum/species/hemophage/tumorful_species = tumorful_hemophage.dna.species
+
+	tumorful_species.tumor_in_body = TRUE
+
+
+/obj/item/organ/internal/heart/hemophage/Remove(mob/living/carbon/tumorless, special = FALSE)
+	. = ..()
+	if(!ishemophage(tumorless))
+		return
+
+	var/mob/living/carbon/human/tumorless_hemophage = tumorless
+	var/datum/species/hemophage/tumorless_species = tumorless_hemophage.dna.species
+
+	tumorless_species.tumor_in_body = FALSE
+
+
+/obj/item/organ/internal/liver/hemophage
+	name = "corrupted liver"
+	desc = "It's covered in a thick layer of tumor tissue. You probably don't want to have this in your body."
+	color = "#1C1C1C"
+	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
+
+
+// This one will eventually have some mechanics tied to it, but for now it's just going to be black.
+/obj/item/organ/internal/stomach/hemophage
+	name = "dark atrophied stomach"
+	desc = "It's covered in a thick layer of tumor tissue. You probably don't want to have this in your body."
+	color = "#1C1C1C"
+	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
+
 /obj/item/organ/internal/tongue/hemophage
-	name = "hemophage tongue"
+	name = "corrupted tongue"
 	color = "#333333"
+	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
 	actions_types = list(/datum/action/item_action/organ_action/hemophage)
 	COOLDOWN_DECLARE(drain_cooldown)
 
@@ -342,12 +410,6 @@
 
 	if(!victim.blood_volume || victim.blood_volume < BLOOD_VOLUME_SURVIVE)
 		to_chat(hemophage, span_warning("You finish off [victim]'s blood supply."))
-
-
-/obj/item/organ/internal/heart/hemophage
-	name = "pulsating tumor"
-	desc = "Just looking at how it pulsates at the beat of the heart it's wrapped around sends shivers down your spine... <i>The fact it's what keeps them alive makes it all the more terrifying.</i>"
-	color = "#1C1C1C"
 
 
 // We need to override it here because we changed their vampire heart with an Hemophage heart
