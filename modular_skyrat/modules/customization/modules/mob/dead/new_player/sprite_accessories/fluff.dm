@@ -4,7 +4,7 @@
 	key = "fluff"
 	generic = "Fluff"
 	recommended_species = list(SPECIES_MOTH, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_INSECT)
-	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	relevent_layers = list(BODY_ADJ_LAYER)
 	genetic = TRUE
 
 /datum/sprite_accessory/fluff/moth/none
@@ -56,6 +56,7 @@
 	name = "Burnt Off"
 	icon_state = "punished"
 	locked = TRUE
+	factual = FALSE
 
 /datum/sprite_accessory/fluff/moth/firewatch
 	name = "Firewatch"
@@ -106,8 +107,10 @@
 /datum/sprite_accessory/fluff/moth/fsnow
 	name = "Snow (Top)"
 	icon_state = "fsnow"
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/fluff/moth/snowdual
 	name = "Snow (Dual-Color)"
 	icon_state = "snowdual"
 	color_src = USE_MATRIXED_COLORS
+	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)

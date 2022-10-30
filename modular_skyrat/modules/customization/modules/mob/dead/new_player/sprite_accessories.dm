@@ -826,5 +826,14 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/tails/human/cat
 	relevent_layers = list(BODY_FRONT_LAYER)
 
-/datum/sprite_accessory/horns
-	relevent_layers = list(BODY_FRONT_LAYER)
+/datum/sprite_accessory/wings/skeleton
+	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER)
+
+/datum/sprite_accessory/spines/short
+	relevent_layers = list(BODY_ADJ_LAYER)
+
+/datum/sprite_accessory/caps/round
+	relevent_layers = list(BODY_ADJ_LAYER)
+
+/datum/sprite_accessory/moth_markings
+	factual = FALSE

@@ -1,7 +1,23 @@
 // Yea, I'm doing this. This shit annoys me too much.
 // Set your layers properly, or be yelled at angrily. - Rimi
+/datum/unit_test/sprite_accessories
+	var/list/genitals_to_add = list(
+		/obj/item/organ/external/genital/breasts,
+		/obj/item/organ/external/genital/vagina,
+		/obj/item/organ/external/genital/penis,
+		/obj/item/organ/external/genital/testicles,
+		/obj/item/organ/external/genital/anus,
+	)
+
 /datum/unit_test/sprite_accessories/Run()
+	var/genitals_enabled = CONFIG_GET(flag/disable_erp_preferences)
 	var/mob/living/carbon/human/human = allocate(/mob/living/carbon/human)
+
+	if(!genitals_enabled)
+		for(var/obj/item/organ/external/genital/genital in genitals_to_add)
+			genital = new genital
+			genital.Insert(human)
+
 	var/datum/species/human/human_species = human.dna.species
 
 	for(var/looping_accessory_key as anything in GLOB.sprite_accessories)
@@ -17,7 +33,8 @@
 				TEST_FAIL("Null accessory entry in key [looping_accessory_key]!")
 
 			// People will do custom stuff with non-factual sprites. Not touching those.
-			if(!sprite_accessory.factual || !accessory_icon_state || accessory_icon_state == "none")
+			// Also skips non-factual sprites, and genitals, should those be disabled.
+			if(!sprite_accessory.factual || !accessory_icon_state || accessory_icon_state == "none" || (!genitals_enabled && istype(sprite_accessory, /datum/sprite_accessory/genital)))
 				continue
 
 			if(!accessory_icon)

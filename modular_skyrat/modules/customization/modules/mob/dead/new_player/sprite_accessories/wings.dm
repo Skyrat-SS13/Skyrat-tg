@@ -117,6 +117,7 @@
 	name = "Harpy (Top)"
 	icon_state = "harpy_top"
 	color_src = USE_ONE_COLOR
+	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/wings/mammal/harpy/alt
 	name = "Harpy (Alt)"
@@ -129,10 +130,12 @@
 /datum/sprite_accessory/wings/mammal/top/harpy/alt
 	name = "Harpy (Top - Alt)"
 	icon_state = "harpyalt_top"
+	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/wings/mammal/top/harpy/bat
 	name = "Harpy (Top - Bat)"
 	icon_state = "harpybat_top"
+	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/wings/mammal/insect
 	name = "Insectoid"
@@ -186,6 +189,7 @@
 /datum/sprite_accessory/wings/low_wings/top
 	name = "Low Wings (Top)"
 	icon_state = "low_top"
+	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/wings/low_wings/tri
 	name = "Low Wings (Tri-Tone)"
@@ -245,6 +249,7 @@
 /datum/sprite_accessory/wings/moth/featherful // Is actually 'feathery' on upstream
 	name = "Moth (Featherful)"
 	icon_state = "featherful"
+	relevent_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/wings/moth/firewatch
 	name = "Moth (Firewatch)"

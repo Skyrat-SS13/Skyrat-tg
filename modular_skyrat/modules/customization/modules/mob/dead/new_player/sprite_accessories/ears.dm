@@ -52,6 +52,7 @@
 	name = "Axolotl"
 	icon_state = "axolotl"
 	color_src = USE_ONE_COLOR
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant/bat
 	name = "Bat"
@@ -61,6 +62,7 @@
 	name = "Bear"
 	icon_state = "bear"
 	color_src = USE_ONE_COLOR
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant/bigwolf
 	name = "Big Wolf"
@@ -98,18 +100,21 @@
 	name = "Cow"
 	icon_state = "cow"
 	color_src = USE_ONE_COLOR
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant/curled
 	name = "Curled Horn"
 	icon_state = "horn1"
 	color_src = USE_ONE_COLOR
 	default_color = DEFAULT_TERTIARY
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant/deer
 	name = "Deer (Antler)"
 	icon_state = "deer"
 	color_src = USE_ONE_COLOR
 	default_color = DEFAULT_TERTIARY
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant/eevee
 	name = "Eevee"
@@ -125,23 +130,28 @@
 	icon_state = "elf"
 	color_src = USE_ONE_COLOR
 	default_color = DEFAULT_SKIN_OR_PRIMARY
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant/elf/wide
 	name = "Wide Elf"
 	icon_state = "elfwide"
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant/elf/broad
 	name = "Broad Elf"
 	icon_state = "elfbroad"
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant/elf/longer
 	name = "Longer Elf"
 	icon_state = "elflonger"
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant/elephant
 	name = "Elephant"
 	icon_state = "elephant"
 	color_src = USE_ONE_COLOR
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant/fennec
 	name = "Fennec"
@@ -151,6 +161,7 @@
 	name = "Fish"
 	icon_state = "fish"
 	color_src = USE_ONE_COLOR
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant/vulpkanin/fox
 	name = "Fox"
@@ -164,6 +175,7 @@
 	name = "Jellyfish"
 	icon_state = "jellyfish"
 	color_src = HAIR
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant/kangaroo
 	name = "Kangaroo"
@@ -173,6 +185,7 @@
 	name = "Dog, Long"
 	icon_state = "lab"
 	color_src = USE_ONE_COLOR
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant/murid
 	name = "Murid"
@@ -320,29 +333,34 @@
 /datum/sprite_accessory/ears/mutant/teshari/feathers_mushroom
 	name = "Teshari Feathers Mushroom"
 	icon_state = "teshari_feathers_mushroom"
-	color_src = USE_ONE_COLOR
 	// Converting each one of these to rbg matrixed is like a 20+ minute process per sprite to make it look good
 	// and this one looks kinda meh anyway so I cba, it stays greyscale
+	color_src = USE_ONE_COLOR
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant/teshari/feathers_backstrafe
 	name = "Teshari Feathers Backstrafe"
 	icon_state = "teshari_feathers_backstrafe"
 	color_src = USE_ONE_COLOR
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant/teshari/feathers_thinmohawk
 	name = "Teshari Feathers Thin Mohawk"
 	icon_state = "teshari_feathers_thinmohawk"
 	color_src = USE_ONE_COLOR
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant/teshari/feathers_thinmane
 	name = "Teshari Feathers Thin Mane"
 	icon_state = "teshari_feathers_thinmane"
 	color_src = USE_ONE_COLOR
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant/deer2
 	name = "Deer 2"
 	icon_state = "deer2"
 	color_src = USE_ONE_COLOR
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant/mouse
 	name = "Mouse"

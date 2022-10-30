@@ -1,7 +1,7 @@
 /datum/sprite_accessory/horns
 	key = "horns"
 	generic = "Horns"
-	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER, BODY_ADJ_LAYER)
+	relevent_layers = list(BODY_FRONT_LAYER)
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/horns.dmi'
 	default_color = "#555555"
 	genetic = TRUE
@@ -37,13 +37,16 @@
 /datum/sprite_accessory/horns/oni
 	name = "Oni"
 	icon_state = "oni"
+	relevent_layers = list(BODY_FRONT_LAYER, BODY_BEHIND_LAYER)
 
 /datum/sprite_accessory/horns/oni_large
 	name = "Oni (Large)"
 	icon_state = "oni_large"
+	relevent_layers = list(BODY_FRONT_LAYER, BODY_BEHIND_LAYER, BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/horns/big
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/horns_big.dmi'
+	relevent_layers = list(BODY_FRONT_LAYER, BODY_BEHIND_LAYER, BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/horns/big/antlers
 	name = "Antlers"

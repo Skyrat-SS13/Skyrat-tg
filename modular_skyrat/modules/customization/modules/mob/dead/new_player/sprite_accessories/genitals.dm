@@ -41,7 +41,6 @@
 	center = TRUE
 	special_icon_case = TRUE
 	special_x_dimension = TRUE
-	//default_color = DEFAULT_SKIN_OR_PRIMARY //This is the price we're paying for sheaths
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
 	var/can_have_sheath = TRUE
@@ -294,3 +293,5 @@
 /datum/sprite_accessory/genital/breasts/sextuple
 	icon_state = "sextuple"
 	name = "Sextuple"
+
+#undef FALLBACK_PENIS_ICON_STATE
