@@ -1,5 +1,6 @@
 /datum/language
 	flags = LANGUAGE_HIDE_ICON_IF_NOT_UNDERSTOOD
+
 /datum/language/aphasia
 	secret = TRUE
 
