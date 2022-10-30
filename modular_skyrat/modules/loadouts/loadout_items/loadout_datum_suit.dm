@@ -110,7 +110,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/poncho
 	name = "Poncho"
-	item_path = /obj/item/clothing/suit/poncho
+	item_path = /obj/item/clothing/suit/costume/poncho
 
 /datum/loadout_item/suit/poncho_green
 	name = "Green Poncho"
@@ -319,24 +319,20 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 *	HAWAIIAN
 */
 
-/datum/loadout_item/suit/hawaiian_shirt
-	name = "Hawaiian Shirt"
-	item_path = /obj/item/clothing/suit/costume/hawaiian
-
 /datum/loadout_item/suit/hawaiian_blue
-	name = "Blue Hawaiian Shirt"
+	name = "Blue Hawaiian Overshirt"
 	item_path = /obj/item/clothing/suit/hawaiian_blue
 
 /datum/loadout_item/suit/hawaiian_orange
-	name = "Orange Hawaiian Shirt"
+	name = "Orange Hawaiian Overshirt"
 	item_path = /obj/item/clothing/suit/hawaiian_orange
 
 /datum/loadout_item/suit/hawaiian_purple
-	name = "Purple Hawaiian Shirt"
+	name = "Purple Hawaiian Overshirt"
 	item_path = /obj/item/clothing/suit/hawaiian_purple
 
 /datum/loadout_item/suit/hawaiian_green
-	name = "Green Hawaiian Shirt"
+	name = "Green Hawaiian Overshirt"
 	item_path = /obj/item/clothing/suit/hawaiian_green
 
 /*
@@ -355,8 +351,8 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Falls Parka"
 	item_path = /obj/item/clothing/suit/fallsparka
 
-/datum/loadout_item/suit/poly
-	name = "Polychromic Wintercoat"
+/datum/loadout_item/suit/gags_wintercoat
+	name = "Recolorable Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/colourable
 
 /datum/loadout_item/suit/urban
@@ -508,7 +504,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/coat_sci
 	name = "Science Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/science
-	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, JOB_VANGUARD_OPERATIVE, JOB_SCIENCE_GUARD) // Reserve it to the Science Departement
+	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, JOB_SCIENCE_GUARD) // Reserve it to the Science Departement
 
 /datum/loadout_item/suit/coat_eng
 	name = "Engineering Winter Coat"
@@ -583,7 +579,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/sci_jacket
 	name = "Science Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/sci
-	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_VANGUARD_OPERATIVE, JOB_SCIENCE_GUARD)
+	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_SCIENCE_GUARD)
 
 /datum/loadout_item/suit/med_jacket
 	name = "Medbay Jacket"
@@ -624,7 +620,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/costume/pg
 
 /datum/loadout_item/suit/deckers
-	name = "Deckers Coat"
+	name = "Deckers Hoodie"
 	item_path = /obj/item/clothing/suit/costume/deckers
 
 /datum/loadout_item/suit/soviet
