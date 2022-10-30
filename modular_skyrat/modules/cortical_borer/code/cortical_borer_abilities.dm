@@ -18,7 +18,7 @@
 	. = ..()
 	var/compiled_string = ""
 	if(chemical_cost)
-		compiled_string += "([chemical_cost] chemicals [chemical_cost == 1 ? "" : "s"])"
+		compiled_string += "([chemical_cost] chemical[chemical_cost == 1 ? "" : "s"])"
 	if(chemical_evo_points)
 		compiled_string += " ([chemical_evo_points] chemical point[chemical_evo_points == 1 ? "" : "s"])"
 	if(stat_evo_points)
@@ -743,7 +743,7 @@
 /datum/action/cooldown/borer/stealth_mode
 	name = "Stealth Mode"
 	cooldown_time = 2 MINUTES
-	button_icon_state = "willing"
+	button_icon_state = "hiding"
 	chemical_cost = 100
 
 /datum/action/cooldown/borer/stealth_mode/Trigger(trigger_flags)
