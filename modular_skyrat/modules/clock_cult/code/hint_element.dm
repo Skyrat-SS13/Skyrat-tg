@@ -14,7 +14,7 @@
 
 /datum/element/clockwork_description/Detach(datum/target)
 	. = ..()
-	UnregisterSignal(target, list(COMSIG_PARENT_EXAMINE, COMSIG_TOPIC))
+	UnregisterSignal(target, COMSIG_PARENT_EXAMINE)
 
 /**
  *
