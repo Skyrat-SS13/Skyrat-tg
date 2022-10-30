@@ -139,11 +139,14 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 /datum/component/mind_linker
 	///Is does the component give an action to speak? By default, yes
 	var/speech_action = TRUE
+	///Does the component check to see if the person being linked has a mindshield or anti-magic?
+	var/linking_protection = TRUE
 
 /datum/component/mind_linker/nif
 	///What is the name of the hivemind? This is mostly here for the TGUI selection menus.
 	var/name
 	speech_action = FALSE
+	linking_protection = FALSE
 
 /datum/component/mind_linker/nif/New()
 	. = ..()
