@@ -25,7 +25,7 @@
 		return
 	active = TRUE
 	flick("delayer_active", parent)
-	addtimer(CALLBACK(src, .proc/finish), 5)
+	addtimer(CALLBACK(src, .proc/finish), 0.5 SECONDS)
 
 /datum/component/clockwork_trap/delay/proc/finish()
 	active = FALSE

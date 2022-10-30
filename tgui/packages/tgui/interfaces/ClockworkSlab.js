@@ -92,7 +92,7 @@ export const ClockworkHelp = (props, context) => {
           <b>APC&nbsp;</b>
           with the&nbsp;
           <b>Integration Cog&nbsp;</b>
-          , then insert it in to begin siphoning power.
+          and then insert it in to begin siphoning power.
           <br />
         </Section>
       </Collapsible>
@@ -187,7 +187,7 @@ export const ClockworkSpellList = (props, context) => {
 
 export const ClockworkOverview = (props, context) => {
   const { data } = useBackend(context);
-  const { power, cogs, vitality } = data;
+  const { power, cogs, vitality, max_power, max_vitality } = data;
   return (
     <Box>
       <Box color="good" bold fontSize="16px">
@@ -197,21 +197,21 @@ export const ClockworkOverview = (props, context) => {
       <ClockworkOverviewStat
         title="Cogs"
         amount={cogs}
-        maxAmount={cogs + 50 / cogs}
+        maxAmount={10}
         iconName="cog"
         unit=""
       />
       <ClockworkOverviewStat
         title="Power"
         amount={power}
-        maxAmount={power + 500000 / power}
+        maxAmount={max_power}
         iconName="battery-half "
         overrideText={convertPower(power)}
       />
       <ClockworkOverviewStat
         title="Vitality"
         amount={vitality}
-        maxAmount={vitality + 50 / vitality}
+        maxAmount={max_vitality}
         iconName="tint"
         unit="u"
       />

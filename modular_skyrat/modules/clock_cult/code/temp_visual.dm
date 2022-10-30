@@ -83,11 +83,11 @@
 
 /obj/effect/temp_visual/ratvar/mending_mantra/Initialize(mapload)
 	. = ..()
-	transform = matrix()*2
-	var/matrix/M = transform
-	M.Turn(90)
+	transform = matrix() * 2
+	var/matrix/mantra_matrix = transform
+	mantra_matrix.Turn(90)
 	animate(src, alpha = 20, time = duration, easing = BOUNCE_EASING, flags = ANIMATION_PARALLEL)
-	animate(src, transform = M, time = duration, flags = ANIMATION_PARALLEL)
+	animate(src, transform = mantra_matrix, time = duration, flags = ANIMATION_PARALLEL)
 
 /obj/effect/temp_visual/ratvar/ocular_warden
 	name = "warden's gaze"
@@ -166,8 +166,8 @@
 
 /obj/effect/temp_visual/steam_release/Initialize(mapload)
 	..()
-	for(var/V in GLOB.cardinals)
-		var/turf/T = get_step(src, V)
-		new/obj/effect/temp_visual/steam(T, V)
+	for(var/cardinal in GLOB.cardinals)
+		var/turf/cardinal_step = get_step(src, cardinal)
+		new/obj/effect/temp_visual/steam(cardinal_step, cardinal)
 	playsound(src, 'sound/machines/clockcult/steam_whoosh.ogg', 30)
 	return INITIALIZE_HINT_QDEL

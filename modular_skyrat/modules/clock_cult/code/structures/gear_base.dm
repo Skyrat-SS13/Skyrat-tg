@@ -21,12 +21,12 @@
 	. = ..()
 	update_icon_state()
 	LAZYINITLIST(transmission_sigils)
-//	for(var/obj/structure/destructible/clockwork/sigil/transmission/ST in range(src, SIGIL_TRANSMISSION_RANGE))
-//		link_to_sigil(ST)
+//	for(var/obj/structure/destructible/clockwork/sigil/transmission/trans_sigil in range(src, SIGIL_TRANSMISSION_RANGE))
+//		link_to_sigil(trans_sigil)
 
 /obj/structure/destructible/clockwork/gear_base/Destroy()
-//	for(var/obj/structure/destructible/clockwork/sigil/transmission/ST as anything in transmission_sigils)
-//		ST.linked_structures -= src
+//	for(var/obj/structure/destructible/clockwork/sigil/transmission/trans_sigil as anything in transmission_sigils)
+//		trans_sigil.linked_structures -= src
 	return ..()
 
 /obj/structure/destructible/clockwork/gear_base/wrench_act(mob/living/user, obj/item/tool)

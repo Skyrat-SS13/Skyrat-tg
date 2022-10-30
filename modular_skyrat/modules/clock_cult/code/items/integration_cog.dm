@@ -1,3 +1,5 @@
+#define MAX_POWER_PER_COG 250
+
 /obj/item/clockwork/integration_cog
 	name = "integration cog"
 	desc = "A small cog that seems to spin by its own acord when left alone."
@@ -34,11 +36,12 @@
 	playsound(get_turf(user), 'sound/machines/clockcult/integration_cog_install.ogg', 20)
 	if(!cogger_apc.clock_cog_rewarded)
 		GLOB.clock_installed_cogs++
+		GLOB.max_clock_power += MAX_POWER_PER_COG
 		cogger_apc.clock_cog_rewarded = TRUE
 		send_clock_message(user, span_brass(span_bold("[user] has installed an integration cog into \an [cogger_apc].")))
 		//Update the cog counts
-		for(var/obj/item/clockwork/clockwork_slab/S as anything in GLOB.clockwork_slabs)
-			S.update_integration_cogs()
+		for(var/obj/item/clockwork/clockwork_slab/slab as anything in GLOB.clockwork_slabs)
+			slab.update_integration_cogs()
 
 /obj/machinery/power/apc
 	/// If this APC has given a reward for being coggered before
@@ -68,3 +71,5 @@
 		return
 	balloon_alert(user, "pried out something, destroying it!")
 	QDEL_NULL(integration_cog)
+
+#undef MAX_POWER_PER_COG

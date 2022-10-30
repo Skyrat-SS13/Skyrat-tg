@@ -42,7 +42,9 @@
 	density = FALSE
 	layer = LOW_OBJ_LAYER
 	break_message = span_warning("The intricate looking device falls apart.")
+	/// What item's produced when this structure is unwrenched
 	var/unwrench_path = /obj/item/wallframe/clocktrap
+	/// The component used for the trap's back-end
 	var/component_datum = /datum/component/clockwork_trap
 
 /obj/structure/destructible/clockwork/trap/Initialize(mapload)

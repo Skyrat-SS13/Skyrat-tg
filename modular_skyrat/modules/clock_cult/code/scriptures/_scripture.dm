@@ -269,6 +269,7 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 	return TRUE
 
 /datum/action/cooldown/spell/pointed/slab
+	/// The scripture datum that this spell is referring to
 	var/datum/scripture/slab/parent_scripture
 
 /datum/action/cooldown/spell/pointed/slab/Destroy()

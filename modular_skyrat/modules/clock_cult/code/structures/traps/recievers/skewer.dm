@@ -49,16 +49,17 @@
 		return ..()
 	if(!buckled_mob.break_do_after_checks())
 		return
-	to_chat(buckled_mob, span_warning("You begin climbing out of [src]."))
+	balloon_alert(buckled_mob, "climbing off of [src]...")
 	if(do_after(buckled_mob, 5 SECONDS, target = src))
 		return ..()
 	else
-		to_chat(buckled_mob, span_userdanger("You fail to detach yourself from [src]."))
+		balloon_alert(buckled_mob, "failed to climb off [src]")
 
 /obj/structure/destructible/clockwork/trap/skewer/post_unbuckle_mob(mob/living/stabbed_mob)
 	if(!has_buckled_mobs())
 		cut_overlay(stab_overlay)
 
+/// Unbuckling mobs and reverting the trap for when the pokey bit goes back in
 /obj/structure/destructible/clockwork/trap/skewer/proc/retract()
 	extended = FALSE
 	icon_state = initial(icon_state)
@@ -73,7 +74,7 @@
 /datum/component/clockwork_trap/skewer/trigger()
 	if(!..())
 		return
-	var/obj/structure/destructible/clockwork/trap/skewer/S = parent
-	if(!istype(S))
+	var/obj/structure/destructible/clockwork/trap/skewer/trap = parent
+	if(!istype(trap))
 		return
-	INVOKE_ASYNC(S, /obj/structure/destructible/clockwork/trap/skewer.proc/stab)
+	INVOKE_ASYNC(trap, /obj/structure/destructible/clockwork/trap/skewer.proc/stab)

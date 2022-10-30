@@ -73,6 +73,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 	GLOB.clockwork_slabs -= src
 	invoking_scripture = null
 	active_scripture = null
+	buffer = null
 	return ..()
 
 /obj/item/clockwork/clockwork_slab/dropped(mob/user)
@@ -100,6 +101,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 	if(charge_overlay)
 		add_overlay(charge_overlay)
 
+/// Calculate the differential of old cogs to new cogs
 /obj/item/clockwork/clockwork_slab/proc/update_integration_cogs()
 	//Calculate cogs
 	if(calculated_cogs != GLOB.clock_installed_cogs)
@@ -107,12 +109,9 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 		calculated_cogs += difference
 		cogs += difference
 
-//==================================//
-// !   Quick bind spell handling  ! //
-//==================================//
-
-/obj/item/clockwork/clockwork_slab/proc/bind_spell(mob/living/M, datum/scripture/spell, position = 1)
-	if(position > quick_bound_scriptures.len || position <= 0)
+/// Handle binding a spell to a quickbind slot
+/obj/item/clockwork/clockwork_slab/proc/bind_spell(mob/living/binder, datum/scripture/spell, position = 1)
+	if(position > length(quick_bound_scriptures) || position <= 0)
 		return
 	if(quick_bound_scriptures[position])
 		//Unbind the scripture that is quickbound
@@ -122,12 +121,11 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 	quickbound.scripture = spell
 	quickbound.activation_slab = src
 	quick_bound_scriptures[position] = quickbound
-	if(M)
-		quickbound.Grant(M)
+	if(binder)
+		quickbound.Grant(binder)
 
-//==================================//
-// ! UI HANDLING BELOW THIS POINT ! //
-//==================================//
+// UI things below
+
 /obj/item/clockwork/clockwork_slab/attack_self(mob/living/user)
 	if(IS_CULTIST(user))
 		to_chat(user, span_bigbrass("You shouldn't be playing with my toys..."))
@@ -154,11 +152,12 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 		ui.open()
 
 /obj/item/clockwork/clockwork_slab/ui_data(mob/user)
-	//Data
 	var/list/data = list()
 	data["cogs"] = cogs
 	data["vitality"] = GLOB.clock_vitality
+	data["max_vitality"] = GLOB.max_clock_vitality
 	data["power"] = GLOB.clock_power
+	data["max_power"] = GLOB.max_clock_power
 	data["scriptures"] = list()
 	//2 scriptures accessable at the same time will cause issues
 	for(var/scripture_name in GLOB.clock_scriptures)
