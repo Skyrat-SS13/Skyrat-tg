@@ -2,7 +2,7 @@
 	name = "Xerxian"
 	desc = "An evolved form of the language of Arabic from Earth. Despite its ancient origins, it is still spoken by many people in cultures that evolved from the Middle-East."
 	key = "a"
-	flags = TONGUELESS_SPEECH
+	flags = TONGUELESS_SPEECH | LANGUAGE_HIDE_ICON_IF_NOT_UNDERSTOOD
 	syllables = list(
 		"a", "ah", "ba", "lah", "tha", "shah", "sa", "cha", "zah", "in", "al", "an",
 		"i", "ih", "bi", "lih", "thih", "shih", "sih", "chi", "zih", "ji", "nn", "jo", "ja",

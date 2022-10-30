@@ -2,7 +2,7 @@
 	name = "Gutter"
 	desc = "This crude pidgin tongue developed in the poorer regions of SolFed. It is common among the lower classes, and is considered a crude language by many that are 'upper class'."
 	key = "G"
-	flags = TONGUELESS_SPEECH
+	flags = TONGUELESS_SPEECH | LANGUAGE_HIDE_ICON_IF_NOT_UNDERSTOOD
 	syllables = list (
 		"yayo", "aiya", "chiksa", "tikat", "bazar", "oi", "yo", "meit", "grok", "ken", "berk", "cohon", "pendeo", "mark",
 		"ha", "take", "yaer", "cur", "yoro", "armn", "tirtu", "ren", "wap", "wop", "ran", "cra", "wih"

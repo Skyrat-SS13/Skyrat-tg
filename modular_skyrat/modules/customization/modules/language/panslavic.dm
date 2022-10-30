@@ -2,7 +2,7 @@
 	name = "Pan-Slavic"
 	desc = "A mish-mash of Eastern European and Balkan languages with similar properties that has since become the official language of the NRI, with a good amount of relevance in SolFed colonies with slavic descendance and trading posts across charted territory."
 	key = "P"
-	flags = TONGUELESS_SPEECH
+	flags = TONGUELESS_SPEECH | LANGUAGE_HIDE_ICON_IF_NOT_UNDERSTOOD
 	syllables = list(
 		"do", "ber", "sve", "tel", "po", "ča", "sen", "jag", "nje", "sla", "do",
 		"led", "klo", "ba", "sa", "pa", "ra", "diž", "nik", "vol", "ko", "vi", "ži",

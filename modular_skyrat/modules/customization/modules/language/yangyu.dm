@@ -2,7 +2,7 @@
 	name = "Yangyu"
 	desc = "A language that was formed out of the more Asian regions of Sol-3. While not as prevalent as Sol, it has managed to hold on both in its planet of origin and across space."
 	key = "Y"
-	flags = TONGUELESS_SPEECH
+	flags = TONGUELESS_SPEECH | LANGUAGE_HIDE_ICON_IF_NOT_UNDERSTOOD
 	space_chance = 70
 	// Bits of Japanese, Pinyin and Hangul
 	syllables = list (
