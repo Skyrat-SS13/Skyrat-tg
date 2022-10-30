@@ -66,7 +66,7 @@ SUBSYSTEM_DEF(stories)
 
 /// Attempts to potentially execute a story roundstart
 /datum/controller/subsystem/stories/proc/execute_roundstart_story()
-	if(!budget || !length(to_use_stories) || !prob(100)) //make prob chance cfg later
+	if(!budget || !length(to_use_stories) || !prob(CONFIG_GET(number/roundstart_story_chance)))
 		return FALSE
 
 	var/list/copied_to_use_stories = to_use_stories.Copy()
