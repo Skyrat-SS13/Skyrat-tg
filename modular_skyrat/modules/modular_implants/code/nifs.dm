@@ -269,6 +269,9 @@
 	if(broken) //NIFSofts can't be installed to a broken NIF
 		return FALSE
 
+	if(calibrating == TRUE)
+		return FALSE
+
 	if((length(loaded_nifsofts) >= max_nifsofts))
 		return FALSE
 
