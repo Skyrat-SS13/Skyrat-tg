@@ -7,6 +7,10 @@
 
 /datum/element/clockwork_description/Attach(datum/target, text_to_add)
 	. = ..()
+
+	if(!isatom(target))
+		return COMPONENT_INCOMPATIBLE
+
 	RegisterSignal(target, COMSIG_PARENT_EXAMINE, .proc/add_examine)
 	// Don't perform the assignment if there is nothing to assign, or if we already have something for this bespoke element
 	if(text_to_add && !src.text_to_add)
@@ -14,7 +18,7 @@
 
 /datum/element/clockwork_description/Detach(datum/target)
 	. = ..()
-	UnregisterSignal(target, list(COMSIG_PARENT_EXAMINE, COMSIG_TOPIC))
+	UnregisterSignal(target, COMSIG_PARENT_EXAMINE)
 
 /**
  *
@@ -26,7 +30,7 @@
  *  * examine_texts - The output text list of the original examine function
  */
 
-/datum/element/clockwork_description/proc/add_examine(obj/item/item, mob/user, list/examine_texts)
+/datum/element/clockwork_description/proc/add_examine(atom/source, mob/user, list/examine_texts)
 	SIGNAL_HANDLER
 
 	examine_texts += span_brass(text_to_add)
