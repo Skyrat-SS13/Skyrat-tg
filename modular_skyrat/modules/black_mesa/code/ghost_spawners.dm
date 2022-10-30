@@ -6,8 +6,7 @@
 	outfit = /datum/outfit/science_team
 	you_are_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 	flavour_text = "You are a scientist near the Ground Zero of a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
-	important_text = "Do not try to explore the level unless an expedition crew is already present and close to you, and even then, wait at least 20 minutes before leaving your area. \
-					Allowed races are humans."
+	important_text = "Do not try to explore the level unless an expedition crew is already present and close to you, and even then, wait at least 20 minutes before leaving your area."
 	restricted_species = list(/datum/species/human)
 	random_appearance = FALSE
 
