@@ -2,6 +2,17 @@
 #define HEMOPHAGE_DRAIN_AMOUNT 50
 /// How much blood do Hemophages normally lose per second (visible effect is every two seconds, so twice this value).
 #define NORMAL_BLOOD_DRAIN 0.125
+/// Minimum amount of blood that you can reach via blood regeneration, regeneration will stop below this.
+#define MINIMUM_VOLUME_FOR_REGEN BLOOD_VOLUME_BAD + 1 // We do this to avoid any jankiness, and because we want to ensure that they don't fall into a state where they're constantly passing out in a locker.
+
+/// How much brute damage their body regenerates per second (calculated every two seconds) while under the proper conditions.
+#define BLOOD_REGEN_BRUTE_AMOUNT 1.5
+/// How much burn damage their body regenerates per second (calculated every two seconds) while under the proper conditions.
+#define BLOOD_REGEN_BURN_AMOUNT 1.5
+/// How much toxin damage their body regenerates per second (calculated every two seconds) while under the proper conditions.
+#define BLOOD_REGEN_TOXIN_AMOUNT 1
+/// How much cellular damage their body regenerates per second (calculated every two seconds) while under the proper conditions.
+#define BLOOD_REGEN_CELLULAR_AMOUNT 0.5
 
 
 /datum/species/hemophage
@@ -42,6 +53,8 @@
 	var/halloween_version = FALSE
 	/// Current multiplier for how fast their blood drains on spec_life(). Higher values mean it goes down faster.
 	var/bloodloss_speed_multiplier = 1
+	/// Current multiplier for how much blood they spend healing themselves for every point of damage healed.
+	var/blood_to_health_multiplier = 1
 	veteran_only = TRUE
 
 
@@ -66,11 +79,45 @@
 	if(hemophage.stat == DEAD)
 		return
 
-	if(istype(hemophage.loc, /obj/structure/closet) && !istype(hemophage.loc, /obj/structure/closet/body_bag))
-		hemophage.heal_overall_damage(1.5 * delta_time, 1.5 * delta_time, 0, BODYTYPE_ORGANIC) // Fast, but not as fast due to them being able to use normal lockers.
-		hemophage.adjustToxLoss(-1 * delta_time) // 50% base speed to keep it fair.
-		hemophage.adjustOxyLoss(-2 * delta_time)
-		hemophage.adjustCloneLoss(-0.5 * delta_time) // HARDMODE DAMAGE
+	if(hemophage.health < hemophage.maxHealth && hemophage.blood_volume > MINIMUM_VOLUME_FOR_REGEN && in_closet(hemophage))
+		var/max_blood_for_regen = hemophage.blood_volume - MINIMUM_VOLUME_FOR_REGEN
+		var/blood_used = NONE
+
+		var/brutes_to_heal = NONE
+		var/brute_damage = hemophage.getBruteLoss()
+		if(brute_damage)
+			brutes_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_BRUTE_AMOUNT, brute_damage) * delta_time)
+			blood_used += brutes_to_heal * blood_to_health_multiplier
+			max_blood_for_regen -= brutes_to_heal * blood_to_health_multiplier
+
+		var/burns_to_heal = NONE
+		var/burn_damage = hemophage.getFireLoss()
+		if(burn_damage && max_blood_for_regen > NONE)
+			burns_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_BURN_AMOUNT, burn_damage) * delta_time)
+			blood_used += burns_to_heal * blood_to_health_multiplier
+			max_blood_for_regen -= burns_to_heal * blood_to_health_multiplier
+
+		if(brutes_to_heal || burns_to_heal)
+			hemophage.heal_overall_damage(brutes_to_heal, burns_to_heal, NONE, BODYTYPE_ORGANIC)
+
+		var/toxin_damage = hemophage.getToxLoss()
+		if(toxin_damage && max_blood_for_regen > NONE)
+			var/toxins_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_TOXIN_AMOUNT, toxin_damage) * delta_time)
+			blood_used += toxins_to_heal * blood_to_health_multiplier
+			max_blood_for_regen -= toxins_to_heal * blood_to_health_multiplier
+			hemophage.adjustToxLoss(-toxins_to_heal)
+
+		var/cellular_damage = hemophage.getCloneLoss()
+		if(cellular_damage && max_blood_for_regen > NONE)
+			var/cells_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_TOXIN_AMOUNT, cellular_damage) * delta_time)
+			blood_used += cells_to_heal * blood_to_health_multiplier
+			max_blood_for_regen -= cells_to_heal * blood_to_health_multiplier
+			hemophage.adjustCloneLoss(-cells_to_heal)
+
+		if(blood_used)
+			hemophage.blood_volume = max(hemophage.blood_volume - blood_used, MINIMUM_VOLUME_FOR_REGEN) // Just to clamp the value, to ensure we don't get anything weird.
+
+	if(in_closet(hemophage)) // No regular bloodloss if you're in a closet
 		return
 
 	hemophage.blood_volume -= NORMAL_BLOOD_DRAIN * delta_time * bloodloss_speed_multiplier
@@ -85,6 +132,11 @@
 			hemophage.adjustFireLoss(10 * delta_time)
 			hemophage.adjust_fire_stacks(3 * delta_time)
 			hemophage.ignite_mob()
+
+
+/// Simple helper proc that returns whether or not the given hemophage is in a closet subtype (but not in any bodybag subtype).
+/datum/species/hemophage/proc/in_closet(mob/living/carbon/human/hemophage)
+	return istype(hemophage.loc, /obj/structure/closet) && !istype(hemophage.loc, /obj/structure/closet/body_bag)
 
 
 /datum/species/hemophage/get_species_description()
