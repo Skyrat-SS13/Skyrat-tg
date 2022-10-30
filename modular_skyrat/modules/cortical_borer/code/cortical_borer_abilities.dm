@@ -760,6 +760,7 @@
 		owner.balloon_alert(owner, "cannot function with sugar in host")
 		return
 	owner.balloon_alert(owner, "stealth mode [in_stealth ? "disabled" : "enabled"]")
+	cortical_owner.chemical_storage -= chemical_cost
 	if(in_stealth)
 		cortical_owner.upgrade_flags &= ~BORER_STEALTH_MODE
 	else
