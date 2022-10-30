@@ -35,7 +35,7 @@
 	if(create_disk)
 		var/obj/item/disk/nifsoft_uploader/new_disk = new /obj/item/disk/nifsoft_uploader
 		new_disk.loaded_nifsoft = nifsoft_to_remove.type
-		new_disk.name = "[nifsoft_to_remove.name] datadisk"
+		new_disk.name = "[nifsoft_to_remove] datadisk"
 
 		user.put_in_hands(new_disk)
 

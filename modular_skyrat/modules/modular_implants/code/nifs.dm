@@ -1,7 +1,7 @@
 /// This is the original NIF that other NIFs are based on.
 /obj/item/organ/internal/cyberimp/brain/nif
 	name = "Nanite Implant Framework"
-	desc = "a brain implant that infuses the user with nanites" //Coder-lore. Change this later
+	desc = "A brain implant that infuses the user with nanites." //Coder-lore. Change this later
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/nifs.dmi'
 	icon_state = "base_nif"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -109,8 +109,8 @@
 	if(linked_mob && stored_ckey != insertee.ckey && theft_protection)
 		insertee.audible_message(span_warning("The [src] lets out a negative buzz before forcefully removing itself from [insertee]'s brain."))
 		playsound(insertee, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
-		src.Remove(insertee)
-		src.forceMove(get_turf(insertee))
+		Remove(insertee)
+		forceMove(get_turf(insertee))
 
 		return FALSE
 
@@ -208,17 +208,17 @@
 
 ///Toggles Blood Drain
 /obj/item/organ/internal/cyberimp/brain/nif/proc/toggle_blood_drain(bypass = FALSE)
-	if(!blood_check() || bypass)
+	if(!bypass && !blood_check())
 		return
 
-	if(blood_drain)
-		blood_drain = FALSE
+	blood_drain = !blood_drain
+	
+	if(!blood_drain)
 		power_usage += (blood_drain_rate * blood_conversion_rate)
 
 		to_chat(linked_mob, span_notice("Blood draining is now disabled"))
 		return
 
-	blood_drain = TRUE
 	power_usage -= (blood_drain_rate * blood_conversion_rate)
 
 	to_chat(linked_mob, span_notice("Blood draining is now enabled."))
@@ -276,23 +276,23 @@
 		return FALSE
 
 	if(!is_type_in_list(src, loaded_nifsoft.compatible_nifs))
-		send_message("[loaded_nifsoft.name] is incompatible with your NIF!", TRUE)
+		send_message("[loaded_nifsoft] is incompatible with your NIF!", TRUE)
 		return FALSE
 
 	for(var/datum/nifsoft/current_nifsoft as anything in loaded_nifsofts)
 		if(loaded_nifsoft.single_install && loaded_nifsoft.type == current_nifsoft.type)
-			send_message("Multiple of [loaded_nifsoft.name] cannot be installed", TRUE)
+			send_message("Multiple of [loaded_nifsoft] cannot be installed", TRUE)
 			return FALSE
 
 		if(current_nifsoft.type in loaded_nifsoft.mutually_exclusive_programs)
-			send_message("[current_nifsoft.name] is preventing [loaded_nifsoft.name] from being installed", TRUE)
+			send_message("[current_nifsoft] is preventing [loaded_nifsoft] from being installed", TRUE)
 			return FALSE
 
 	loaded_nifsofts += loaded_nifsoft
 	loaded_nifsoft.parent_nif = src
 	loaded_nifsoft.linked_mob = linked_mob
 
-	send_message("[loaded_nifsoft.name] has been added")
+	send_message("[loaded_nifsoft] has been added")
 	return TRUE
 
 /obj/item/organ/internal/cyberimp/brain/nif/proc/remove_nifsoft(datum/nifsoft/removed_nifsoft, silent = FALSE)
