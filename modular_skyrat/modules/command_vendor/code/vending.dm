@@ -8,7 +8,6 @@
 	vend_reply = "Thank you for using the CommDrobe!"
 
 	refill_canister = /obj/item/vending_refill/wardrobe/comm_wardrobe
-/obj/item/vending_refill/wardrobe/comm_wardrobe
 	machine_name = "CommDrobe"
 	light_color = COLOR_COMMAND_BLUE
 
