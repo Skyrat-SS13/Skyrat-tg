@@ -1289,7 +1289,7 @@
 
 // Donation reward for thedragmeme
 /datum/greyscale_config/dragheels
-	name = "Fancy  Heels"
+	name = "Fancy Heels"
 	icon_file = 'modular_skyrat/master_files/icons/donator/GAGS/clothing/shoes/dragheels.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/donator/dragheels/dragheels.json'
 
