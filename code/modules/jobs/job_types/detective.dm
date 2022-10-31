@@ -24,10 +24,6 @@
 	paycheck = PAYCHECK_CREW
 	paycheck_department = ACCOUNT_SEC
 
-<<<<<<< HEAD
-	mind_traits = list(TRAIT_DONUT_LOVER, TRAIT_DETECTIVE) //SKYRAT EDIT CHANGE: EXAMINEMORE
-=======
->>>>>>> dfd88eb7de4 (Merges donut lover into law enforcement metabolism (#70921))
 	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
 
 	display_order = JOB_DISPLAY_ORDER_DETECTIVE
