@@ -117,6 +117,9 @@
 	spawn_positions = 2
 	supervisors = SUPERVISOR_CMO
 	selection_color = "#ffeeee"
+	exp_requirements = 300
+	exp_required_type = EXP_TYPE_CREW
+	exp_required_type_department = EXP_TYPE_SECURITY
 	exp_granted_type = EXP_TYPE_CREW
 	config_tag = "ORDERLY"
 
@@ -188,6 +191,9 @@
 	spawn_positions = 2
 	supervisors = SUPERVISOR_RD
 	selection_color = "#ffeeee"
+	exp_requirements = 300
+	exp_required_type = EXP_TYPE_CREW
+	exp_required_type_department = EXP_TYPE_SECURITY
 	exp_granted_type = EXP_TYPE_CREW
 	config_tag = "SCIENCE_GUARD"
 
@@ -259,6 +265,9 @@
 	spawn_positions = 2
 	supervisors = SUPERVISOR_HOP
 	selection_color = "#ffeeee"
+	exp_requirements = 300
+	exp_required_type = EXP_TYPE_CREW
+	exp_required_type_department = EXP_TYPE_SECURITY
 	exp_granted_type = EXP_TYPE_CREW
 	config_tag = "BOUNCER"
 
@@ -334,6 +343,9 @@
 	spawn_positions = 2
 	supervisors = SUPERVISOR_QM
 	selection_color = "#ffeeee"
+	exp_requirements = 300
+	exp_required_type = EXP_TYPE_CREW
+	exp_required_type_department = EXP_TYPE_SECURITY
 	exp_granted_type = EXP_TYPE_CREW
 	config_tag = "CUSTOMS_AGENT"
 
@@ -403,6 +415,9 @@
 	spawn_positions = 2
 	supervisors = SUPERVISOR_CE
 	selection_color = "#ffeeee"
+	exp_requirements = 300
+	exp_required_type = EXP_TYPE_CREW
+	exp_required_type_department = EXP_TYPE_SECURITY
 	exp_granted_type = EXP_TYPE_CREW
 	config_tag = "ENGINEERING_GUARD"
 
