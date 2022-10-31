@@ -12,6 +12,7 @@
 	refill_canister = /obj/item/vending_refill/wardrobe/comm_wardrobe
 	payment_department = ACCOUNT_CMD
 	light_color = COLOR_COMMAND_BLUE
+
 /obj/item/vending_refill/wardrobe/comm_wardrobe
 	machine_name = "CommDrobe"
 	
