@@ -18,18 +18,18 @@
 	scripture = null
 	return ..()
 
-/datum/action/innate/clockcult/quick_bind/Grant(mob/living/M)
+/datum/action/innate/clockcult/quick_bind/Grant(mob/living/recieving_mob)
 	name = scripture.name
 	desc = scripture.tip
 	button_icon_state = scripture.button_icon_state
 	if(scripture.power_cost)
 		desc += "<br>Draws <b>[scripture.power_cost]W</b> from the ark per use."
-	..(M)
+	..(recieving_mob)
 
-/datum/action/innate/clockcult/quick_bind/Remove(mob/M)
+/datum/action/innate/clockcult/quick_bind/Remove(mob/losing_mob)
 	if(activation_slab.invoking_scripture == scripture)
 		activation_slab.invoking_scripture = null
-	..(M)
+	..(losing_mob)
 
 /datum/action/innate/clockcult/quick_bind/IsAvailable()
 	if(!(FACTION_CLOCK in owner.faction) || owner.incapacitated())
