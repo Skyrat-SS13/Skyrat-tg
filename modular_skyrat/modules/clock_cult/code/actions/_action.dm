@@ -44,9 +44,9 @@
 	else
 		to_chat(owner, span_brass("You fail to invoke [name]."))
 
-//==================================//
-// !     Hierophant Transmit      ! //
-//==================================//
+/*
+*	HIEROPHANT TRANSMIT
+*/
 /datum/action/innate/clockcult/comm
 	name = "Whirring Convergence"
 	desc = "Whispered words that link to the internal cogs of us all.<br><b>Warning:</b> Nearby non-servants can still hear you."
