@@ -65,15 +65,6 @@
 	name = "Wide Brimmed Hat (Worn)"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/head/cowboy.dmi'
 
-/datum/greyscale_config/cowboy_flat
-	name = "Flat Brimmed Hat"
-	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/head/cowboy.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/cowboy/plain_hats.json'
-
-/datum/greyscale_config/cowboy_flat/worn
-	name = "Flat Brimmed Hat (Worn)"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/head/cowboy.dmi'
-
 /datum/greyscale_config/cowboy_wide_feathered
 	name = "Wide Brimmed Feathered Hat"
 	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/head/cowboy.dmi'
@@ -83,6 +74,32 @@
 	name = "Wide Brimmed Feathered Hat (Worn)"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/head/cowboy.dmi'
 
+/datum/greyscale_config/cowboy_flat
+	name = "Flat Brimmed Hat"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/head/cowboy.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/cowboy/plain_hats.json'
+
+/datum/greyscale_config/cowboy_flat/worn
+	name = "Flat Brimmed Hat (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/head/cowboy.dmi'
+
+/datum/greyscale_config/cowboy_cattleman
+	name = "Cattleman Hat"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/head/cowboy.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/cowboy/plain_hats.json'
+
+/datum/greyscale_config/cowboy_cattleman/worn
+	name = "Cattleman Hat (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/head/cowboy.dmi'
+
+/datum/greyscale_config/cowboy_cattleman_wide
+	name = "Wide Brimmed Cattleman Hat"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/head/cowboy.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/cowboy/plain_hats.json'
+
+/datum/greyscale_config/cowboy_cattleman_wide/worn
+	name = "Wide Brimmed Cattleman Hat (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/head/cowboy.dmi'
 
 //MUSHROOM CAP
 
