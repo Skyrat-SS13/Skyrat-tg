@@ -39,6 +39,9 @@
 /// Organ flag for organs of hemophage origin, or organs that have since been infected by an hemophage's tumor.
 #define ORGAN_TUMOR_CORRUPTED (1<<12) // Not taking chances, hopefully this number remains good for a little while.
 
+/// Just a conversion factor that ensures there's no weird floating point errors when blood is draining.
+#define FLOATING_POINT_ERROR_AVOIDING_FACTOR 1000
+
 
 /datum/species/hemophage
 	name = "Hemophage"
@@ -166,7 +169,7 @@
 	if(in_closet(hemophage)) // No regular bloodloss if you're in a closet
 		return
 
-	hemophage.blood_volume -= NORMAL_BLOOD_DRAIN * delta_time * bloodloss_speed_multiplier
+	hemophage.blood_volume = (hemophage.blood_volume * FLOATING_POINT_ERROR_AVOIDING_FACTOR - NORMAL_BLOOD_DRAIN * delta_time * bloodloss_speed_multiplier * FLOATING_POINT_ERROR_AVOIDING_FACTOR) / FLOATING_POINT_ERROR_AVOIDING_FACTOR
 
 	if(hemophage.blood_volume <= BLOOD_VOLUME_SURVIVE)
 		to_chat(hemophage, span_danger("You ran out of blood!"))
