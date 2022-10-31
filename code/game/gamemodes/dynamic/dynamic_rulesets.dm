@@ -140,9 +140,8 @@
 /// Returns what the antag cap with the given population is.
 /datum/dynamic_ruleset/proc/get_antag_cap(population)
 	if (isnum(antag_cap))
-		message_admins("ZONESPACE README: From ruleset [src], had num antag cap of [antag_cap], returned")
 		return antag_cap
-	message_admins("ZONESPACE README: From ruleset [src], had antag denominator of [antag_cap["denominator"]] and offset of [antag_cap["offset"] || 0], calc total was [CEILING(population / antag_cap["denominator"], 1) + (antag_cap["offset"] || 0)]")
+
 	return CEILING(population / antag_cap["denominator"], 1) + (antag_cap["offset"] || 0)
 
 /// This is called if persistent variable is true everytime SSTicker ticks.

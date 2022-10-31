@@ -3,6 +3,7 @@
 	var/infil_outfit = /datum/outfit/syndicateinfiltrator
 	preview_outfit = /datum/outfit/lone_infiltrator_preview
 	job_rank = ROLE_LONE_INFILTRATOR
+	progression_enabled = TRUE
 
 /datum/antagonist/traitor/infiltrator/on_gain()
 	var/mob/living/carbon/human/current = owner.current
