@@ -4,42 +4,6 @@
 	product_ads = "Escape to a fantasy world!;Fuel your gambling addiction!;Ruin your friendships!;Roll for initiative!;Elves and dwarves!;Paranoid computers!;Totally not satanic!;Fun times forever!"
 	icon_state = "games"
 	panel_type = "panel4"
-<<<<<<< HEAD
-	//SKYRAT EDIT: Adds Ceramic, Glassblowing, and Fishing Skillchips
-	products = list(
-		/obj/item/storage/crayons = 2,
-		/obj/item/toy/cards/deck = 5,
-		/obj/item/storage/dice = 10,
-		/obj/item/toy/cards/deck/blank = 3,
-		/obj/item/toy/cards/deck/blank/black = 3,
-		/obj/item/toy/cards/deck/cas = 3,
-		/obj/item/toy/cards/deck/cas/black = 3,
-		/obj/item/toy/cards/deck/kotahi = 3,
-		/obj/item/toy/cards/deck/tarot = 3,
-		/obj/item/toy/cards/deck/wizoff = 3,
-		/obj/item/hourglass = 2,
-		/obj/item/instrument/piano_synth/headphones = 4,
-		/obj/item/camera = 3,
-		/obj/item/camera_film = 5,
-		/obj/item/chisel = 3,
-		/obj/item/stack/pipe_cleaner_coil/random = 10,
-		/obj/item/cardpack/series_one = 10,
-		/obj/item/cardpack/resin = 10,
-		/obj/item/storage/card_binder = 10,
-		/obj/item/skillchip/basketweaving = 2,
-		/obj/item/skillchip/bonsai = 2,
-		/obj/item/skillchip/wine_taster = 2,
-		/obj/item/skillchip/appraiser = 2,
-		/obj/item/skillchip/light_remover = 2,
-		/obj/item/skillchip/useless_adapter = 5,
-		/obj/item/dyespray = 3,
-		/obj/item/razor = 3,
-		/obj/item/canvas/nineteen_nineteen = 5,
-		/obj/item/canvas/twentythree_nineteen = 5,
-		/obj/item/canvas/twentythree_twentythree = 5,
-		/obj/item/paint_palette = 3,
-		/obj/item/wallframe/painting/large = 5,
-=======
 	product_categories = list(
 		list(
 			"name" = "Cards",
@@ -109,9 +73,7 @@
 				/obj/item/storage/dice = 10,
 			),
 		),
->>>>>>> d5fe3e44de4 (Categorizes the Good Clean Fun Vendor (#70742))
 	)
-	//SKYRAT EDIT: Adds Ceramic, Glassblowing, and Fishing Skillchips
 	contraband = list(
 		/obj/item/dice/fudge = 9,
 		/obj/item/clothing/shoes/wheelys/skishoes = 4,
