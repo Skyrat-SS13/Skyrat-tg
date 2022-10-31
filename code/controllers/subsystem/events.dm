@@ -22,19 +22,15 @@ SUBSYSTEM_DEF(events)
 			continue //don't want this one! leave it for the garbage collector
 		control += E //add it to the list of all events (controls)
 	reschedule()
-<<<<<<< HEAD
-	getHoliday()
+	// Instantiate our holidays list if it hasn't been already
+	if(isnull(GLOB.holidays))
+		fill_holidays()
 	// SKYRAT EDIT ADDITION
 	if(CONFIG_GET(flag/low_chaos_event_system))
 		reschedule_low_chaos()
 	frequency_lower = CONFIG_GET(number/event_frequency_lower)
 	frequency_upper = CONFIG_GET(number/event_frequency_upper)
 	// SKYRAT EDIT END
-=======
-	// Instantiate our holidays list if it hasn't been already
-	if(isnull(GLOB.holidays))
-		fill_holidays()
->>>>>>> a1ab0201ffd (Fix halloweens races (#70874))
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/events/fire(resumed = FALSE)

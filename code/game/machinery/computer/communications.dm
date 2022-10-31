@@ -233,15 +233,14 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			if (!message_index)
 				return
 			LAZYREMOVE(messages, LAZYACCESS(messages, message_index))
-<<<<<<< HEAD
-=======
+		/* SKYRAT EDIT REMOVAL START
 		if ("emergency_meeting")
 			if(!check_holidays(APRIL_FOOLS))
 				return
 			if (!authenticated_as_silicon_or_captain(usr))
 				return
 			emergency_meeting(usr)
->>>>>>> a1ab0201ffd (Fix halloweens races (#70874))
+		*/ // SKYRAT EDIT REMOVAL END
 		if ("makePriorityAnnouncement")
 			if (!authenticated_as_silicon_or_captain(usr) && !syndicate)
 				return
