@@ -34,7 +34,7 @@
 	return ..()
 
 /obj/structure/destructible/clockwork/attacked_by(obj/item/I, mob/living/user)
-	if(immune_to_servant_attacks && (isclockcultist(user)))
+	if(immune_to_servant_attacks && (IS_CLOCK(user)))
 		return
 	return ..()
 

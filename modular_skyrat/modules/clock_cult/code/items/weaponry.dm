@@ -22,7 +22,7 @@
 	var/turf/gotten_turf = get_turf(user)
 	if(!is_type_in_typecache(gotten_turf, effect_turf_typecache))
 		return
-	if(!QDELETED(target) && target.stat != DEAD && !(isclockcultist(target)) && !target.can_block_magic(MAGIC_RESISTANCE_HOLY))
+	if(!QDELETED(target) && target.stat != DEAD && !(IS_CLOCK(target)) && !target.can_block_magic(MAGIC_RESISTANCE_HOLY))
 		hit_effect(target, user)
 
 /obj/item/clockwork/weapon/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
@@ -32,7 +32,7 @@
 	var/mob/living/target = hit_atom
 	if(.)
 		return
-	if(!target.can_block_magic(MAGIC_RESISTANCE_HOLY) && !(isclockcultist(target)))
+	if(!target.can_block_magic(MAGIC_RESISTANCE_HOLY) && !(IS_CLOCK(target)))
 		hit_effect(target, throwingdatum.thrower, TRUE)
 
 /// What occurs to non-holy people when attacked from brass tiles

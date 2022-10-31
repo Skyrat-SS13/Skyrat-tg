@@ -8,7 +8,7 @@
 
 /obj/item/clockwork/trap_placer/attack_self(mob/user)
 	. = ..()
-	if(!(isclockcultist(user)))
+	if(!(IS_CLOCK(user)))
 		return
 	for(var/obj/structure/destructible/clockwork/trap/trap in get_turf(src)) // No 50-spear instakills please
 		if(!istype(trap, result_path))
@@ -31,7 +31,7 @@
 
 /obj/item/wallframe/clocktrap/examine(mob/user)
 	. = ..()
-	if(isclockcultist(user))
+	if(IS_CLOCK(user))
 		. += span_brass("It looks like it can be placed on a wall.")
 
 //Wall item (either spawned by a wallframe or directly)
@@ -96,7 +96,7 @@
 /datum/component/clockwork_trap/proc/on_attackby(datum/source, obj/item/attack_item, mob/user)
 	SIGNAL_HANDLER
 
-	if(!(isclockcultist(user)))
+	if(!(IS_CLOCK(user)))
 		return
 	if(!istype(attack_item, /obj/item/clockwork/clockwork_slab))
 		return

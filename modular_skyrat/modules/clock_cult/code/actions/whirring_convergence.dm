@@ -41,7 +41,7 @@
 /// Send `sent_message` to all other clock cultists and ghosts from the user
 /proc/send_clock_message(mob/living/user, sent_message)
 	for(var/mob/player_mob as anything in GLOB.player_list)
-		if(isclockcultist(player_mob))
+		if(IS_CLOCK(player_mob))
 			to_chat(player_mob, sent_message)
 		else if(player_mob in GLOB.dead_mob_list)
 			to_chat(player_mob, span_brass("[FOLLOW_LINK(player_mob, user)] [sent_message]"))

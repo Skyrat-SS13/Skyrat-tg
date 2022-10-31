@@ -14,7 +14,7 @@
 
 /obj/item/clockwork/replica_fabricator/examine(mob/user)
 	. = ..()
-	if(isclockcultist(user))
+	if(IS_CLOCK(user))
 		. += span_brass("Use on brass to convert it into power.")
 		. += span_brass("Use on other materials to convert them into power, but at less efficiency.")
 		. += span_brass("Use on an empty floor to convert it to bronze for [FLOOR_POWER_COST]W/tile")
@@ -23,7 +23,7 @@
 
 /obj/item/clockwork/replica_fabricator/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
-	if(!proximity_flag || !(isclockcultist(user)))
+	if(!proximity_flag || !(IS_CLOCK(user)))
 		return
 	if(istype(target, /obj/item/stack/sheet/bronze))
 		var/obj/item/stack/bronze_stack = target

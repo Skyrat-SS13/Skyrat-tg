@@ -42,4 +42,4 @@
 #define BORER_ALONE_PRODUCTION (1<<4)
 
 // Clock cultist
-#define IS_CLOCK(A) (FACTION_CLOCK in A.faction)
+#define IS_CLOCK(mob) ((FACTION_CLOCK in mob.faction) || mob?.mind?.has_antag_datum(/datum/antagonist/clock_cultist))

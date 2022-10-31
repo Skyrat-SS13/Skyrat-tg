@@ -13,7 +13,7 @@
 
 /obj/item/clothing/suit/clockwork/equipped(mob/living/user, slot)
 	. = ..()
-	if(isclockcultist(user))
+	if(IS_CLOCK(user))
 		return
 	user.dropItemToGround(src, TRUE)
 	user.electrocute_act(25, src, 1, SHOCK_NOGLOVES)
@@ -56,7 +56,7 @@
 
 /obj/item/clothing/suit/clockwork/cloak/equipped(mob/user, slot)
 	. = ..()
-	if(slot != ITEM_SLOT_OCLOTHING || !(isclockcultist(user)))
+	if(slot != ITEM_SLOT_OCLOTHING || !(IS_CLOCK(user)))
 		return
 	wearer = user
 	if(shroud_active)
@@ -97,7 +97,7 @@
 
 /obj/item/clothing/glasses/clockwork/equipped(mob/user, slot)
 	. = ..()
-	if(isclockcultist(user))
+	if(IS_CLOCK(user))
 		return
 	user.dropItemToGround(src, TRUE)
 	if(isliving(user))
@@ -195,7 +195,7 @@
 
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/dropped(mob/user)
 	..()
-	if(wearer && (isclockcultist(user)) && enabled)
+	if(wearer && (IS_CLOCK(user)) && enabled)
 		de_toggle_eyes()
 		wearer = null
 
@@ -317,7 +317,7 @@
 
 /obj/item/clothing/head/helmet/clockwork/equipped(mob/user, slot)
 	. = ..()
-	if(isclockcultist(user))
+	if(IS_CLOCK(user))
 		return
 	user.dropItemToGround(src, TRUE)
 	if(isliving(user))

@@ -45,6 +45,7 @@
 #define ROLE_DRIFTING_CONTRACTOR "Drifting Contractor"
 #define ROLE_MUTANT "Mutated Abomination"
 #define ROLE_SLEEPER_SABOTEUR "Sleeper Saboteur"
+#define ROLE_CLOCK_CULTIST "Clock Cultist"
 // SKYRAT EDIT END
 
 // Latejoin roles

@@ -30,7 +30,7 @@
 	return ..()
 
 /obj/structure/destructible/clockwork/gear_base/wrench_act(mob/living/user, obj/item/tool)
-	if(!(isclockcultist(user)))
+	if(!(IS_CLOCK(user)))
 		return
 	to_chat(user, span_notice("You begin to [anchored ? "unwrench" : "wrench"] [src]."))
 	if(!tool.use_tool(src, user, 2 SECONDS, volume = 50))
