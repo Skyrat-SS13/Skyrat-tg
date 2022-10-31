@@ -548,7 +548,7 @@
 	if(singular_host.has_borer())
 		owner.balloon_alert(owner, "target already occupied")
 		return
-	if(!do_after(cortical_owner, ((cortical_owner.upgrade_flags & BORER_FAST_BORING) && (cortical_owner.upgrade_flags & BORER_HIDING) ? 3 SECONDS : 6 SECONDS), target = singular_host))
+	if(!do_after(cortical_owner, (((cortical_owner.upgrade_flags & BORER_FAST_BORING) && !(cortical_owner.upgrade_flags & BORER_HIDING)) ? 3 SECONDS : 6 SECONDS), target = singular_host))
 		owner.balloon_alert(owner, "you and target must be still")
 		return
 	if(get_dist(singular_host, cortical_owner) > 1)
