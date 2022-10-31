@@ -21,7 +21,7 @@
 		new /datum/data/mining_equipment("Soap", /obj/item/soap/nanotrasen, 200),
 		new /datum/data/mining_equipment("Laser Pointer", /obj/item/laser_pointer, 300),
 		new /datum/data/mining_equipment("Alien Toy", /obj/item/clothing/mask/facehugger/toy, 300),
-		new /datum/data/mining_equipment("Stabilizing Serum", /obj/item/hivelordstabilizer, 400),
+		new /datum/data/mining_equipment("Stabilizing Serum", /obj/item/mining_stabilizer, 400),
 		new /datum/data/mining_equipment("Fulton Beacon", /obj/item/fulton_core, 400),
 		new /datum/data/mining_equipment("Shelter Capsule", /obj/item/survivalcapsule, 400),
 		new /datum/data/mining_equipment("Environment Proof Bodybag", /obj/item/bodybag/environmental, 500), //SKYRAT EDIT - ADDITION
