@@ -176,16 +176,10 @@
 /obj/item/clothing/head/costume/irs
 	supports_variations_flags = NONE
 
-/obj/item/clothing/head/pg
-	supports_variations_flags = NONE
-
 /obj/item/clothing/head/costume/tmc
 	supports_variations_flags = NONE
 
 /obj/item/clothing/head/costume/deckers
-	supports_variations_flags = NONE
-
-/obj/item/clothing/head/morningstar
 	supports_variations_flags = NONE
 
 /obj/item/clothing/head/costume/fancy
