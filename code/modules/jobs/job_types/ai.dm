@@ -55,6 +55,7 @@
 		sync_target.visible_message(span_notice("[sync_target] gently chimes."), span_notice("LawSync protocol engaged."))
 		log_combat(ai_spawn, sync_target, "forcibly synced cyborg laws via spawning in")
 		sync_target.lawsync()
+		sync_target.lawupdate = TRUE
 		sync_target.show_laws()
 	// SKYRAT EDIT ADDITION END
 
