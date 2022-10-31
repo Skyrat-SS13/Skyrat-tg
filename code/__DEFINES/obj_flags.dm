@@ -68,11 +68,6 @@
 /// Headgear/helmet allows internals
 #define HEADINTERNALS (1<<21)
 
-//SKYRAT DEFINE
-/// Allows for masks to use tanks on adjacentadjecent tiles.
-#define MASK_EXTEND_RANGE (1<<21)
-//SKYRAT DEFINE END
-
 /// Integrity defines for clothing (not flags but close enough)
 #define CLOTHING_PRISTINE 0 // We have no damage on the clothing
 #define CLOTHING_DAMAGED 1 // There's some damage on the clothing but it still has at least one functioning bodypart and can be equipped
