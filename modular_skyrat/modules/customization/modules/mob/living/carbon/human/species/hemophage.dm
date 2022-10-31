@@ -20,6 +20,22 @@
 /// How much cellular damage their body regenerates per second (calculated every two seconds) while under the proper conditions.
 #define BLOOD_REGEN_CELLULAR_AMOUNT 0.5
 
+/// The message displayed in the hemophage's chat when they enter their dormant state.
+#define DORMANT_STATE_START_MESSAGE "You feel your tumor's pulse slowing down, as it enters a dormant state. You suddenly feel incredibly weak and vulnerable to everything, and exercise has become even more difficult, as only your most vital bodily functions remain."
+/// The message displayed in the hemophage's chat when they leave their dormant state.
+#define DORMANT_STATE_END_MESSAGE "You feel a rush through your veins, as you can tell your tumor is pulsating at a regular pace once again. You no longer feel incredibly vulnerable, and exercise isn't as difficult anymore."
+/// How high should the damage multiplier to the Hemophage be when they're in a dormant state?
+#define DORMANT_DAMAGE_MULTIPLIER 3
+/// By how much the blood drain will be divided when the tumor is in a dormant state.
+#define DORMANT_BLOODLOSS_MULTIPLIER 10
+
+/// We have a tumor, it's active.
+#define PULSATING_TUMOR_ACTIVE 0
+/// We have a tumor, it's dormant.
+#define PULSATING_TUMOR_DORMANT 1
+/// We don't have a tumor.
+#define PULSATING_TUMOR_MISSING 2
+
 /// Organ flag for organs of hemophage origin, or organs that have since been infected by an hemophage's tumor.
 #define ORGAN_TUMOR_CORRUPTED (1<<12) // Not taking chances, hopefully this number remains good for a little while.
 
@@ -66,8 +82,8 @@
 	var/bloodloss_speed_multiplier = 1
 	/// Current multiplier for how much blood they spend healing themselves for every point of damage healed.
 	var/blood_to_health_multiplier = 1
-	/// Do we currently possess the tumor? If not, we lose all powers and our organs will slowly wither away quite quickly.
-	var/tumor_in_body = FALSE
+	/// The current status of our tumor. If PULSATING_TUMOR_MISSING, all tumor-corrupted organs will start to decay rapidly. If PULSATING_TUMOR_INACTIVE, no enhanced regeneration.
+	var/tumor_status = PULSATING_TUMOR_MISSING
 
 	veteran_only = TRUE
 
@@ -90,11 +106,11 @@
 
 /datum/species/hemophage/spec_life(mob/living/carbon/human/hemophage, delta_time, times_fired)
 	. = ..()
-	if(hemophage.stat == DEAD)
+	if(hemophage.stat >= DEAD)
 		return
 
 	// If the tumor isn't in their body, and they've got tumor-corrupted organs, they're going to decay at a relatively swift rate.
-	if(!tumor_in_body)
+	if(tumor_status == PULSATING_TUMOR_MISSING)
 		var/static/list/tumor_reliant_organ_slots = list(ORGAN_SLOT_LIVER, ORGAN_SLOT_STOMACH)
 		for(var/organ_slot in tumor_reliant_organ_slots)
 			var/obj/item/organ/affected_organ = hemophage.getorganslot(organ_slot)
@@ -105,7 +121,7 @@
 
 		return // We don't actually want to do any healing or blood loss without a tumor, y'know.
 
-	if(hemophage.health < hemophage.maxHealth && hemophage.blood_volume > MINIMUM_VOLUME_FOR_REGEN && (in_closet(hemophage) || in_total_darkness(hemophage)))
+	if(hemophage.health < hemophage.maxHealth && tumor_status == PULSATING_TUMOR_ACTIVE && hemophage.blood_volume > MINIMUM_VOLUME_FOR_REGEN && (in_closet(hemophage) || in_total_darkness(hemophage)))
 		var/max_blood_for_regen = hemophage.blood_volume - MINIMUM_VOLUME_FOR_REGEN
 		var/blood_used = NONE
 
@@ -280,6 +296,9 @@
 	icon_state = "legion_soul"
 	desc = "Just looking at how it pulsates at the beat of the heart it's wrapped around sends shivers down your spine... <i>The fact it's what keeps them alive makes it all the more terrifying.</i>"
 	color = "#1C1C1C"
+	actions_types = list(/datum/action/cooldown/hemophage/toggle_dormant_state)
+	/// Are we currently dormant? Defaults to PULSATING_TUMOR_ACTIVE (so FALSE).
+	var/is_dormant = PULSATING_TUMOR_ACTIVE
 
 
 /obj/item/organ/internal/heart/hemophage/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
@@ -290,7 +309,7 @@
 	var/mob/living/carbon/human/tumorful_hemophage = reciever
 	var/datum/species/hemophage/tumorful_species = tumorful_hemophage.dna.species
 
-	tumorful_species.tumor_in_body = TRUE
+	tumorful_species.tumor_status = is_dormant
 
 
 /obj/item/organ/internal/heart/hemophage/Remove(mob/living/carbon/tumorless, special = FALSE)
@@ -301,7 +320,7 @@
 	var/mob/living/carbon/human/tumorless_hemophage = tumorless
 	var/datum/species/hemophage/tumorless_species = tumorless_hemophage.dna.species
 
-	tumorless_species.tumor_in_body = FALSE
+	tumorless_species.tumor_status = PULSATING_TUMOR_MISSING
 
 
 /obj/item/organ/internal/liver/hemophage
@@ -318,30 +337,51 @@
 	color = "#1C1C1C"
 	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
 
+
 /obj/item/organ/internal/tongue/hemophage
 	name = "corrupted tongue"
 	color = "#333333"
 	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
-	actions_types = list(/datum/action/item_action/organ_action/hemophage)
-	COOLDOWN_DECLARE(drain_cooldown)
+	actions_types = list(/datum/action/cooldown/hemophage/drain_victim)
 
 
-/datum/action/item_action/organ_action/hemophage
+/datum/action/cooldown/hemophage
+	cooldown_time = 3 SECONDS
+	button_icon_state = null
+
+
+// This code had to be copied over from /datum/action/item_action to maintain the tongue and heart display on the button.
+/datum/action/cooldown/hemophage/ApplyIcon(atom/movable/screen/movable/action_button/current_button, force)
+	var/obj/item/item_target = target
+	if(button_icon && button_icon_state)
+		// If set, use the custom icon that we set instead
+		// of the item appearance
+		..()
+	else if((target && current_button.appearance_cache != item_target.appearance) || force) //replace with /ref comparison if this is not valid.
+		var/old_layer = item_target.layer
+		var/old_plane = item_target.plane
+		// reset the x & y offset so that item is aligned center
+		item_target.pixel_x = 0
+		item_target.pixel_y = 0
+		item_target.layer = FLOAT_LAYER // They need to be displayed on the proper layer and plane to show up on the button. We elevate them temporarily just to steal their appearance, and then revert it.
+		item_target.plane = FLOAT_PLANE
+		current_button.cut_overlays()
+		current_button.add_overlay(item_target)
+		item_target.layer = old_layer
+		item_target.plane = old_plane
+		current_button.appearance_cache = item_target.appearance
+
+
+/datum/action/cooldown/hemophage/drain_victim
 	name = "Drain Victim"
 	desc = "Leech blood from any carbon victim you are passively grabbing."
 
 
-/datum/action/item_action/organ_action/hemophage/Trigger(trigger_flags)
-	. = ..()
+/datum/action/cooldown/hemophage/drain_victim/Activate(atom/target)
 	if(!iscarbon(owner))
 		return
 
 	var/mob/living/carbon/hemophage = owner
-	var/obj/item/organ/internal/tongue/hemophage/tongue = target
-
-	if(!COOLDOWN_FINISHED(tongue, drain_cooldown))
-		hemophage.balloon_alert(hemophage, "just drained blood, wait a few seconds!")
-		return
 
 	if(!hemophage.pulling || !iscarbon(hemophage.pulling) || isalien(hemophage.pulling))
 		hemophage.balloon_alert(hemophage, "not pulling any valid target!")
@@ -375,8 +415,8 @@
 
 		blood_volume_difference = BLOOD_VOLUME_NORMAL - hemophage.blood_volume
 
+	StartCooldown()
 
-	COOLDOWN_START(tongue, drain_cooldown, 3 SECONDS)
 	if(victim.can_block_magic(MAGIC_RESISTANCE_HOLY, charge_cost = 0))
 		victim.show_message(span_warning("[hemophage] tries to bite you, but stops before touching you!"))
 		to_chat(hemophage, span_warning("[victim] is blessed! You stop just in time to avoid catching fire."))
@@ -410,6 +450,57 @@
 
 	if(!victim.blood_volume || victim.blood_volume < BLOOD_VOLUME_SURVIVE)
 		to_chat(hemophage, span_warning("You finish off [victim]'s blood supply."))
+
+
+/datum/action/cooldown/hemophage/toggle_dormant_state
+	name = "Enter Dormant State"
+	desc = "Causes your tumor to enter a dormant state, causing it to reduce its blood consumption to a tenth of its usual rate. However, as it now focuses on essential functions only, it causes you to not only lose your ability to enhance your natural regeneration in the dark, but also to become a lot more vulnerable to any form of damage, and to move significantly slower. Be careful with this ability, as it takes a significant amount of time before your tumor is ready to switch state again."
+	cooldown_time = 3 MINUTES
+
+
+/datum/action/cooldown/hemophage/toggle_dormant_state/Activate(atom/action_target)
+	if(!owner || !ishemophage(owner) || !target) // Sorry, but blood drain and the likes are only usable by Hemophages.
+		return
+
+	var/obj/item/organ/internal/heart/hemophage/tumor = target
+	if(!tumor || !istype(tumor)) // This shouldn't happen, but you can never be too careful.
+		return
+
+	owner.balloon_alert(owner, "[tumor.is_dormant ? "leaving" : "entering"] dormant state")
+
+	if(!do_after(owner, 3 SECONDS))
+		owner.balloon_alert(owner, "cancelled state change")
+		return
+
+	to_chat(owner, span_notice("[tumor.is_dormant ? DORMANT_STATE_END_MESSAGE : DORMANT_STATE_START_MESSAGE]"))
+
+	var/mob/living/carbon/human/hemophage = owner
+	var/datum/physiology/hemophage_physiology = hemophage.physiology
+	var/datum/species/hemophage/hemophage_species = hemophage.dna.species
+
+	tumor.is_dormant = !tumor.is_dormant
+	hemophage_species.tumor_status = tumor.is_dormant
+
+	StartCooldown()
+
+	var/damage_multiplier = tumor.is_dormant ? DORMANT_DAMAGE_MULTIPLIER : 1 / DORMANT_DAMAGE_MULTIPLIER
+
+	hemophage_physiology.brute_mod *= damage_multiplier
+	hemophage_physiology.burn_mod *= damage_multiplier
+	hemophage_physiology.tox_mod *= damage_multiplier
+	hemophage_physiology.clone_mod *= damage_multiplier
+	hemophage_physiology.stamina_mod *= damage_multiplier / 2 // Doing half here so that they don't instantly hit stam-crit when hit like only once.
+
+	hemophage_species.bloodloss_speed_multiplier *= tumor.is_dormant ? 1 / DORMANT_BLOODLOSS_MULTIPLIER : DORMANT_BLOODLOSS_MULTIPLIER
+
+	if(tumor.is_dormant)
+		name = "Exit Dormant State"
+		desc =  "Causes your tumor to exit its dormant state and become active once again, which will return your blood loss rate to normal, in exchange for your vulnerabilities to be removed and your enhanced natural regeneration to be available once more. Be careful with this ability, as it takes a significant amount of time before your tumor is ready to switch state again."
+		hemophage.add_movespeed_modifier(/datum/movespeed_modifier/hemophage_dormant_state)
+	else
+		name = initial(name)
+		desc = initial(desc)
+		hemophage.remove_movespeed_modifier(/datum/movespeed_modifier/hemophage_dormant_state)
 
 
 // We need to override it here because we changed their vampire heart with an Hemophage heart
@@ -479,6 +570,7 @@
 	return TRUE
 
 
+// This code also had to be copied over from /datum/action/item_action to ensure that we could display the heart in the alert.
 /datum/status_effect/blood_regen_active/on_creation(mob/living/new_owner, ...)
 	. = ..()
 	if(!.)
@@ -494,8 +586,8 @@
 		// reset the x & y offset so that item is aligned center
 		tumor_heart.pixel_x = 0
 		tumor_heart.pixel_y = 0
-		tumor_heart.layer = FLOAT_LAYER //AAAH
-		tumor_heart.plane = FLOAT_PLANE //^ what that guy said
+		tumor_heart.layer = FLOAT_LAYER // They need to be displayed on the proper layer and plane to show up on the button. We elevate them temporarily just to steal their appearance, and then revert it.
+		tumor_heart.plane = FLOAT_PLANE
 		linked_alert.cut_overlays()
 		linked_alert.add_overlay(tumor_heart)
 		tumor_heart.layer = old_layer
@@ -510,6 +602,11 @@
 		return
 
 	to_chat(owner, span_notice("The tingling sensation on your skin fades away."))
+
+
+/datum/movespeed_modifier/hemophage_dormant_state
+	id = "hemophage_dormant_state"
+	multiplicative_slowdown = 3 // Yeah, they'll be quite significantly slower when in their dormant state.
 
 
 /atom/movable/screen/alert/status_effect/blood_thirst_satiated
@@ -527,3 +624,25 @@
 
 
 #undef HEMOPHAGE_DRAIN_AMOUNT
+#undef NORMAL_BLOOD_DRAIN
+#undef MINIMUM_VOLUME_FOR_REGEN
+#undef MINIMUM_LIGHT_THRESHOLD_FOR_REGEN
+#undef TUMORLESS_ORGAN_DAMAGE
+#undef TUMORLESS_ORGAN_DAMAGE_MAX
+
+#undef BLOOD_REGEN_BRUTE_AMOUNT
+#undef BLOOD_REGEN_BURN_AMOUNT
+#undef BLOOD_REGEN_TOXIN_AMOUNT
+#undef BLOOD_REGEN_CELLULAR_AMOUNT
+
+#undef DORMANT_STATE_START_MESSAGE
+#undef DORMANT_STATE_END_MESSAGE
+#undef DORMANT_DAMAGE_MULTIPLIER
+#undef DORMANT_BLOODLOSS_MULTIPLIER
+
+#undef PULSATING_TUMOR_ACTIVE
+#undef PULSATING_TUMOR_DORMANT
+#undef PULSATING_TUMOR_MISSING
+
+#undef ORGAN_TUMOR_CORRUPTED
+
