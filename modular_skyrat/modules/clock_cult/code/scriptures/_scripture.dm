@@ -87,7 +87,7 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 				continue
 			if(!invokers_left)
 				break
-			if(FACTION_CLOCK in M.faction)
+			if(isclockcultist(M))
 				clockwork_say(M, text2ratvar(invocation_text[text_point]), TRUE)
 				invokers_left--
 	else
@@ -109,7 +109,7 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 	for(var/mob/living/M in viewers(invoker))
 		if(M.stat)
 			continue
-		if(FACTION_CLOCK in M.faction)
+		if(isclockcultist(M))
 			invokers++
 	if(invokers < invokers_required)
 		to_chat(invoker, span_brass("You need [invokers_required] servants to channel [name]!"))

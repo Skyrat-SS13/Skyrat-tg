@@ -88,7 +88,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 
 /obj/item/clockwork/clockwork_slab/pickup(mob/user)
 	..()
-	if(!(FACTION_CLOCK in user.faction))
+	if(!(isclockcultist(user)))
 		return
 	//Grant quickbound spells
 	for(var/datum/action/innate/clockcult/quick_bind/script in quick_bound_scriptures)
@@ -133,7 +133,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 		user.adjust_blindness(150)
 		user.electrocute_act(10, "[name]")
 		return
-	if(!(FACTION_CLOCK in user.faction))
+	if(!(isclockcultist(user)))
 		to_chat(user, span_warning("You cannot figure out what the device is used for!"))
 		return
 	if(active_scripture)

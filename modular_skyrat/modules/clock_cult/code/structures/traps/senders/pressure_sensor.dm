@@ -33,7 +33,7 @@
 	var/mob/living/entered_living = entered_movable
 	if(!istype(entered_living))
 		return
-	if(FACTION_CLOCK in entered_living.faction)
+	if(isclockcultist(entered_living))
 		return
 	if(entered_living.incorporeal_move || (entered_living.movement_type & (FLOATING|FLYING)))
 		return

@@ -40,3 +40,6 @@
 #define BORER_HIDING (1<<3)
 /// If the borer can produce eggs without a host
 #define BORER_ALONE_PRODUCTION (1<<4)
+
+// Clock cultist
+#define IS_CLOCK(A) (FACTION_CLOCK in A.faction)

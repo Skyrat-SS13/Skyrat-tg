@@ -7,7 +7,7 @@
 	clockwork_hint = "A sharp cog that can cut through and be inserted into APCs to extract power for your machinery."
 
 /obj/item/clockwork/integration_cog/attack_atom(atom/attacked_atom, mob/living/user, params)
-	if(!(FACTION_CLOCK in user.faction))
+	if(!(isclockcultist(user)))
 		return ..()
 	if(!istype(attacked_atom, /obj/machinery/power/apc))
 		return ..()
