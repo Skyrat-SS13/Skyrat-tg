@@ -38,7 +38,7 @@
 			break
 		var/mob/M = pick_n_take(candidates)
 		assigned += M.mind
-		M.mind.special_role = ROLE_TRAITOR
+		M.mind.special_role = ROLE_SYNDICATE_SABOTEUR //SKYRAT EDIT - PROGTOTS REMOVAL
 		M.mind.restricted_roles = restricted_roles
 		GLOB.pre_setup_antags += M.mind
 	return TRUE

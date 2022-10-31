@@ -63,21 +63,29 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 
 /datum/admins/proc/can_make_antag(mob/living/carbon/human/applicant, targetrole, onstation = TRUE, conscious = TRUE)
 	if(applicant.mind.oneclickantag.Find(targetrole))
+		message_admins("ZONESPACE README: OCA failed Find")
 		return FALSE
 	if(applicant.mind.special_role)
+		message_admins("ZONESPACE README: OCA found special role")
 		return FALSE
 	if(!(targetrole in applicant.client.prefs.be_special))
+		message_admins("ZONESPACE README: OCA targetrole not in be special")
 		return FALSE
 	if(onstation)
 		var/turf/T = get_turf(applicant)
 		if(!is_station_level(T.z))
+			message_admins("ZONESPACE README: OCA not on station Z")
 			return FALSE
 	if(conscious && applicant.stat)
+		message_admins("ZONESPACE README: OCA stat")
 		return FALSE
 	if(!considered_alive(applicant.mind) || considered_afk(applicant.mind))
+		message_admins("ZONESPACE README: OCA failed alive/afk")
 		return FALSE
 	if(is_banned_from(applicant.ckey, list(targetrole, ROLE_SYNDICATE)))
+		message_admins("ZONESPACE README: OCA failed ban from")
 		return FALSE
+	message_admins("ZONESPACE README: OCA passed")
 	return TRUE
 
 /datum/admins/
