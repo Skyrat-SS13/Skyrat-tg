@@ -54,7 +54,7 @@
 	)
 
 /datum/species/mutant/check_roundstart_eligible()
-	if(check_holidays([HALLOWEEN]))
+	if(check_holidays(HALLOWEEN))
 		return TRUE
 	return ..()
 

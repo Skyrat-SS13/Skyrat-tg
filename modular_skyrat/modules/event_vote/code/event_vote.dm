@@ -330,7 +330,7 @@
 		return FALSE
 	if(players_amt < min_players)
 		return FALSE
-	if(holidayID && (!check_holidays([holidayID])))
+	if(holidayID && (!check_holidays(holidayID)))
 		return FALSE
 	if(EMERGENCY_ESCAPED_OR_ENDGAMED)
 		return FALSE

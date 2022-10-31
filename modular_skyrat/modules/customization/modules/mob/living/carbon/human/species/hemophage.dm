@@ -43,7 +43,7 @@
 
 
 /datum/species/hemophage/check_roundstart_eligible()
-	if(check_holidays([HALLOWEEN]))
+	if(check_holidays(HALLOWEEN))
 		return TRUE
 
 	return ..()
@@ -54,7 +54,7 @@
 	to_chat(new_hemophage, "[info_text]")
 	new_hemophage.update_body(0)
 	new_hemophage.set_safe_hunger_level()
-	if(check_holidays([HALLOWEEN]))
+	if(check_holidays(HALLOWEEN))
 		halloween_version = TRUE
 
 
