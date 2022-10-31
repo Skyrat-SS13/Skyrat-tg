@@ -70,6 +70,7 @@
 		log_admin_private("[key_name(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[input]\"")
 	cultist_commune(usr, input)
 
+/// A user can input a message to send to other clock cultists over the clock cult communication channel
 /datum/action/innate/clockcult/comm/proc/cultist_commune(mob/living/user, message)
 	var/my_message
 	if(!message)
@@ -79,6 +80,7 @@
 	my_message = span_italics(span_brass("<b>Ratvarian Servant [findtextEx(user.name, user.real_name) ? user.name : "[user.real_name] (as [user.name])"]:</b> [message]"))
 	send_clock_message(user, my_message)
 
+/// Send `sent_message` to all other clock cultists and ghosts from the user
 /proc/send_clock_message(mob/living/user, sent_message)
 	for(var/mob/player_mob as anything in GLOB.player_list)
 		if(FACTION_CLOCK in player_mob.faction)
