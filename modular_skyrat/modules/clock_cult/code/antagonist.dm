@@ -58,6 +58,10 @@
 	head = /obj/item/clothing/head/helmet/clockwork
 	l_hand = /obj/item/clockwork/weapon/brass_sword
 
+/datum/outfit/pre_equip(mob/living/carbon/human/H, visualsOnly)
+	. = ..()
+	H.faction |= FACTION_CLOCK
+
 /datum/antagonist/clock_cultist/solo
 	name = "Clock Cultist (Solo)"
 	show_to_ghosts = FALSE
