@@ -380,28 +380,12 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 */
 
 /datum/loadout_item/head/cowboyhat
-	name = "Cowboy Hat (Brown)"
-	item_path = /obj/item/clothing/head/costume/cowboyhat
+	name = "Recolorable Cattleman Hat"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/cattleman
 
 /datum/loadout_item/head/cowboyhat_black
-	name = "Cowboy Hat (Black)"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/black
-
-/datum/loadout_item/head/cowboyhat_blackwide
-	name = "Wide Cowboy Hat (Black)"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/blackwide
-
-/datum/loadout_item/head/cowboyhat_wide
-	name = "Wide Cowboy Hat (Brown)"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/wide
-
-/datum/loadout_item/head/cowboyhat_white
-	name = "Cowboy Hat (White)"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/white
-
-/datum/loadout_item/head/cowboyhat_pink
-	name = "Cowboy Hat (Pink)"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/pink
+	name = "Recolorable Wide-Brimmed Cattleman Hat"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/cattleman/wide
 
 /datum/loadout_item/head/cowboyhat_wide
 	name = "Wide-Brimmed Hat"
@@ -482,13 +466,13 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	restricted_roles = list(JOB_CHIEF_ENGINEER)
 
 /datum/loadout_item/head/cowboyhat_sec
-	name = "Cowboy Hat, Security"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/sec
+	name = "Cattleman Hat, Security"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/cattleman/sec
 	restricted_roles = list(JOB_WARDEN,JOB_DETECTIVE,JOB_SECURITY_MEDIC,JOB_SECURITY_OFFICER,JOB_HEAD_OF_SECURITY,JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/head/cowboyhat_secwide
-	name = "Wide Cowboy Hat, Security"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/wide/sec
+	name = "Wide-Brimmed Cattleman Hat, Security"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/cattleman/wide/sec
 	restricted_roles = list(JOB_WARDEN,JOB_DETECTIVE,JOB_SECURITY_MEDIC,JOB_SECURITY_OFFICER,JOB_HEAD_OF_SECURITY,JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/head/ushanka/sec

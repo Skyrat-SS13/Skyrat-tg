@@ -53,65 +53,7 @@
 	greyscale_config_worn = /datum/greyscale_config/cowboy_cattleman_wide/worn
 	flags_1 = IS_PLAYER_COLORABLE_1
 
-/obj/item/clothing/head/costume/cowboyhat
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	name = "cowboy hat"
-	desc = "A standard brown cowboy hat, yeehaw."
-	icon_state = "cowboyhat"
-	inhand_icon_state = "cowboy_hat_brown"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/head/costume/cowboyhat/black
-	name = "black cowboy hat"
-	desc = "A black cowboy hat, perfect for any outlaw"
-	icon_state = "cowboyhat_black"
-	inhand_icon_state = "cowboy_hat_black"
-
-/obj/item/clothing/head/costume/cowboyhat/white
-	name = "white cowboy hat"
-	desc = "A white cowboy hat, perfect for your every day rancher"
-	icon_state = "cowboyhat_white"
-	inhand_icon_state = "cowboy_hat_white"
-
-/obj/item/clothing/head/costume/cowboyhat/pink
-	name = "pink cowboy hat"
-	desc = "A pink cowboy? more like cowgirl hat, just don't be a buckle bunny."
-	icon_state = "cowboyhat_pink"
-	inhand_icon_state = "cowboy_hat_red"
-
-/obj/item/clothing/head/costume/cowboyhat/sec
-	name = "security cowboy hat"
-	desc = "A security cowboy hat, perfect for any true lawman"
-	icon_state = "cowboyhat_black"
-	inhand_icon_state = "cowboy_hat_black"
-	// same armour as the sec beret
-	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50, WOUND = 4)
-
-/obj/item/clothing/head/costume/cowboyhat/blackwide
-	name = "wide brimmed black cowboy hat"
-	desc = "The Man in Black, he walked the earth but is now six foot under, this hat a stark reminder. Bring your courage, your righteousness... measure it against my resolve, and you will fail."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "cowboy_black"
-	inhand_icon_state = "cowboy_hat_black"
-
-/obj/item/clothing/head/costume/cowboyhat/wide
-	name = "wide-brimmed cowboy hat"
-	desc = "A brown cowboy hat for blocking out the sun. Remember: Justice is truth in action. Let that guide you in the coming days."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "cowboy_wide"
-
-/obj/item/clothing/head/costume/cowboyhat/wide/sec
-	name = "wide-brimmed security cowboy hat"
-	desc = "A bandit turned sheriff, his enforcement is brutal but effective - whether out of fear or respect is unclear, though not many bodies hang high. A peaceful land, a quiet people."
-	icon_state = "cowboy_black"
-	inhand_icon_state = "cowboy_hat_black"
-	// same armour as the sec beret
-	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50, WOUND = 4)
-
-//Flat-brim Presets
+//Presets
 /obj/item/clothing/head/cowboy/skyrat/flat/sheriff
 	name = "sheriff hat"
 	desc = "A dark brown hat with a smell of whiskey. There's a small set of antlers embroidered on the inside."
@@ -122,6 +64,20 @@
 	name = "deputy hat"
 	desc = "A light brown hat with a smell of iron. There's a small set of antlers embroidered on the inside."
 	greyscale_colors = "#c26934#8f89ae"
+	flags_1 = NONE //No recoloring presets
+
+/obj/item/clothing/head/cowboy/skyrat/cattleman/sec
+	name = "security cattleman hat"
+	desc = "A security cattleman hat, perfect for any true lawman."
+	greyscale_colors = "#39393F#3F6E9E"
+	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50, WOUND = 4) // same armour as the sec beret
+	flags_1 = NONE //No recoloring presets
+
+/obj/item/clothing/head/cowboy/skyrat/cattleman/wide/sec
+	name = "wide brimmed security cattleman hat"
+	desc = "A bandit turned sheriff, his enforcement is brutal but effective - whether out of fear or respect is unclear, though not many bodies hang high. A peaceful land, a quiet people."
+	greyscale_colors = "#39393F#3F6E9E"
+	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50, WOUND = 4) // same armour as the sec beret
 	flags_1 = NONE //No recoloring presets
 
 //NOT CHANGED YET
