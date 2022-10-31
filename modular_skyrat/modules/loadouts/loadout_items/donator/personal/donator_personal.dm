@@ -541,3 +541,8 @@
 	name = "Kitsuhana Singularity Cigarettes"
 	item_path = /obj/item/storage/fancy/cigarettes/khi
 	ckeywhitelist = list("ultimarifox")
+
+/datum/loadout_item/shoes/dragheels
+	name = "Fancy Heels"
+	item_path = /obj/item/clothing/shoes/dragheels
+	ckeywhitelist = list("thedragmeme")
