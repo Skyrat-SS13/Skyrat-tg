@@ -194,6 +194,21 @@
 	return current_turf.get_lumcount() <= MINIMUM_LIGHT_THRESHOLD_FOR_REGEN
 
 
+/// Simple helper to toggle the hemophage's vulnerability (or lack thereof) based on the status of their tumor. Ideally, eventually, this should all be moved into the tumor, and shouldn't be handled by the species' code at all.
+/// This proc contains no check whatsoever, to avoid redundancy of null checks and such. That being said, it shouldn't be used by anything but the tumor, if you have to call it outside of that, you probably have gone wrong somewhere.
+/datum/species/hemophage/proc/toggle_dormant_tumor_vulnerabilities(mob/living/carbon/human/hemophage)
+	var/datum/physiology/hemophage_physiology = hemophage.physiology
+	var/damage_multiplier = tumor_status == PULSATING_TUMOR_DORMANT ? DORMANT_DAMAGE_MULTIPLIER : 1 / DORMANT_DAMAGE_MULTIPLIER
+
+	hemophage_physiology.brute_mod *= damage_multiplier
+	hemophage_physiology.burn_mod *= damage_multiplier
+	hemophage_physiology.tox_mod *= damage_multiplier
+	hemophage_physiology.clone_mod *= damage_multiplier
+	hemophage_physiology.stamina_mod *= damage_multiplier / 2 // Doing half here so that they don't instantly hit stam-crit when hit like only once.
+
+	bloodloss_speed_multiplier *= tumor_status == PULSATING_TUMOR_DORMANT ? 1 / DORMANT_BLOODLOSS_MULTIPLIER : DORMANT_BLOODLOSS_MULTIPLIER
+
+
 /datum/species/hemophage/get_species_description()
 	return "Oftentimes feared for the different bits of folklore surrounding their condition, \
 		Hemophages are typically mixed amongst the crew, hiding away their blood-deficiency and \
@@ -293,9 +308,11 @@
 
 /obj/item/organ/internal/heart/hemophage
 	name = "pulsating tumor"
-	icon_state = "legion_soul"
+	icon = 'modular_skyrat/modules/organs/icons/hemophage_organs.dmi'
+	icon_state = "tumor-on"
+	base_icon_state = "tumor"
 	desc = "Just looking at how it pulsates at the beat of the heart it's wrapped around sends shivers down your spine... <i>The fact it's what keeps them alive makes it all the more terrifying.</i>"
-	color = "#1C1C1C"
+	color = "#1C1C1C" // I use the color var here because I'm not good enough to resprite the tumor to be dark. If anyone's able to do that, by all means, be my guest.
 	actions_types = list(/datum/action/cooldown/hemophage/toggle_dormant_state)
 	/// Are we currently dormant? Defaults to PULSATING_TUMOR_ACTIVE (so FALSE).
 	var/is_dormant = PULSATING_TUMOR_ACTIVE
@@ -323,24 +340,31 @@
 	tumorless_species.tumor_status = PULSATING_TUMOR_MISSING
 
 
+/// Simple helper proc that toggles the dormant state of the tumor, which also switches its appearance to reflect said change.
+/obj/item/organ/internal/heart/hemophage/proc/toggle_dormant_state()
+	is_dormant = !is_dormant
+	base_icon_state = is_dormant ? "[base_icon_state]-dormant" : initial(base_icon_state)
+	update_appearance()
+
+
 /obj/item/organ/internal/liver/hemophage
 	name = "corrupted liver"
 	desc = "It's covered in a thick layer of tumor tissue. You probably don't want to have this in your body."
-	color = "#1C1C1C"
+	icon = 'modular_skyrat/modules/organs/icons/hemophage_organs.dmi'
 	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
 
 
 // This one will eventually have some mechanics tied to it, but for now it's just going to be black.
 /obj/item/organ/internal/stomach/hemophage
-	name = "dark atrophied stomach"
+	name = "corrupted stomach"
 	desc = "It's covered in a thick layer of tumor tissue. You probably don't want to have this in your body."
-	color = "#1C1C1C"
+	icon = 'modular_skyrat/modules/organs/icons/hemophage_organs.dmi'
 	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
 
 
 /obj/item/organ/internal/tongue/hemophage
 	name = "corrupted tongue"
-	color = "#333333"
+	icon = 'modular_skyrat/modules/organs/icons/hemophage_organs.dmi'
 	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
 	actions_types = list(/datum/action/cooldown/hemophage/drain_victim)
 
@@ -475,23 +499,14 @@
 	to_chat(owner, span_notice("[tumor.is_dormant ? DORMANT_STATE_END_MESSAGE : DORMANT_STATE_START_MESSAGE]"))
 
 	var/mob/living/carbon/human/hemophage = owner
-	var/datum/physiology/hemophage_physiology = hemophage.physiology
 	var/datum/species/hemophage/hemophage_species = hemophage.dna.species
 
-	tumor.is_dormant = !tumor.is_dormant
-	hemophage_species.tumor_status = tumor.is_dormant
+	tumor.toggle_dormant_state()
 
 	StartCooldown()
 
-	var/damage_multiplier = tumor.is_dormant ? DORMANT_DAMAGE_MULTIPLIER : 1 / DORMANT_DAMAGE_MULTIPLIER
-
-	hemophage_physiology.brute_mod *= damage_multiplier
-	hemophage_physiology.burn_mod *= damage_multiplier
-	hemophage_physiology.tox_mod *= damage_multiplier
-	hemophage_physiology.clone_mod *= damage_multiplier
-	hemophage_physiology.stamina_mod *= damage_multiplier / 2 // Doing half here so that they don't instantly hit stam-crit when hit like only once.
-
-	hemophage_species.bloodloss_speed_multiplier *= tumor.is_dormant ? 1 / DORMANT_BLOODLOSS_MULTIPLIER : DORMANT_BLOODLOSS_MULTIPLIER
+	hemophage_species.tumor_status = tumor.is_dormant
+	hemophage_species.toggle_dormant_tumor_vulnerabilities(hemophage)
 
 	if(tumor.is_dormant)
 		name = "Exit Dormant State"
