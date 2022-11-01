@@ -112,10 +112,10 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			var/list/layer_entry = bodypart_accessory.relevent_layers[layer]
 			if(islist(layer_entry))
 				// Layer filtering for edge cases like cat ears that don't have inner for certain layers.
-				use_main = !!(SPRITE_ACCESSORY_MAIN in layer_entry)
-				use_inner = !!(SPRITE_ACCESSORY_INNER in layer_entry) && use_inner
-				use_extra = !!(SPRITE_ACCESSORY_EXTRA in layer_entry) && use_extra
-				use_extra2 = !!(SPRITE_ACCESSORY_EXTRA2 in layer_entry) && use_extra2
+				use_main = SPRITE_ACCESSORY_MAIN in layer_entry
+				use_inner = (SPRITE_ACCESSORY_INNER in layer_entry) && use_inner
+				use_extra = (SPRITE_ACCESSORY_EXTRA in layer_entry) && use_extra
+				use_extra2 = (SPRITE_ACCESSORY_EXTRA2 in layer_entry) && use_extra2
 
 			var/layertext = mutant_bodyparts_layertext(layer)
 			if(use_main)
