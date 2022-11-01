@@ -18,7 +18,7 @@
 	name = "cobolterium bars"
 	desc = "Cobalt-blue metal that might actually just be cobalt."
 	singular_name = "cobolterium bar"
-	icon = 'modular_skyrat/modules/gun_cargo/icons/special_metals_stack.dmi'
+	icon = 'modular_skyrat/modules/company_imports/icons/special_metals_stack.dmi'
 	icon_state = "dracula-rapping"
 	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR
 	mats_per_unit = list(/datum/material/cobolterium = MINERAL_MATERIAL_AMOUNT)
@@ -47,7 +47,7 @@
 	name = "copporcitite bars"
 	desc = "Copper colored metal that might actually just be copper."
 	singular_name = "copporcitite bar"
-	icon = 'modular_skyrat/modules/gun_cargo/icons/special_metals_stack.dmi'
+	icon = 'modular_skyrat/modules/company_imports/icons/special_metals_stack.dmi'
 	icon_state = "dracula-rapping"
 	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR
 	mats_per_unit = list(/datum/material/copporcitite = MINERAL_MATERIAL_AMOUNT)
@@ -76,7 +76,7 @@
 	name = "tinumium bars"
 	desc = "Heavily blued, silver colored metal."
 	singular_name = "tinumium bar"
-	icon = 'modular_skyrat/modules/gun_cargo/icons/special_metals_stack.dmi'
+	icon = 'modular_skyrat/modules/company_imports/icons/special_metals_stack.dmi'
 	icon_state = "dracula-rapping"
 	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR
 	mats_per_unit = list(/datum/material/tinumium = MINERAL_MATERIAL_AMOUNT)
@@ -105,7 +105,7 @@
 	name = "brussite bars"
 	desc = "Brassy-yellow metal that might actually just be brass."
 	singular_name = "brussite bar"
-	icon = 'modular_skyrat/modules/gun_cargo/icons/special_metals_stack.dmi'
+	icon = 'modular_skyrat/modules/company_imports/icons/special_metals_stack.dmi'
 	icon_state = "dracula-rapping"
 	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR
 	mats_per_unit = list(/datum/material/brussite = MINERAL_MATERIAL_AMOUNT)

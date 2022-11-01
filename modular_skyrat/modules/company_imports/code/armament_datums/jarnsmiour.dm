@@ -1,5 +1,3 @@
-#define ARMAMENT_CATEGORY_JARNSMIOUR
-
 /datum/armament_entry/cargo_gun/blacksteel
 	category = "Jarnsmiour Blacksteel Foundation"
 
@@ -25,11 +23,13 @@
 	item_type = /obj/item/storage/belt/bowie_sheath
 	lower_cost = CARGO_CRATE_VALUE * 3
 	upper_cost = CARGO_CRATE_VALUE * 5
+	interest_required = PASSED_INTEREST
 
 /datum/armament_entry/cargo_gun/blacksteel/blade/shamshir_sabre
 	item_type = /obj/item/storage/belt/sabre/cargo
 	lower_cost = CARGO_CRATE_VALUE * 5
 	upper_cost = CARGO_CRATE_VALUE * 7
+	interest_required = PASSED_INTEREST
 
 /datum/armament_entry/cargo_gun/blacksteel/forging_tools
 	subcategory = "Premium Forging Equipment"
@@ -48,3 +48,34 @@
 	item_type = /obj/item/forging/tongs
 	lower_cost = CARGO_CRATE_VALUE * 0.25
 	upper_cost = CARGO_CRATE_VALUE * 0.4
+
+/datum/armament_entry/cargo_gun/blacksteel/forging_metals
+	subcategory = "Premium Metal Supplies"
+
+/datum/armament_entry/cargo_gun/blacksteel/forging_tools/fake_cobalt
+	item_type = /obj/item/stack/sheet/cobolterium/three
+	description = "A three-pack of our finest cobolterium alloy, with an unmatched regal blue color for creating the strongest metalworks from."
+	lower_cost = CARGO_CRATE_VALUE * 4
+	upper_cost = CARGO_CRATE_VALUE * 6
+	interest_required = PASSED_INTEREST
+
+/datum/armament_entry/cargo_gun/blacksteel/forging_tools/fake_copper
+	item_type = /obj/item/stack/sheet/copporcitite/three
+	description = "A three-pack of our finest cobolterium alloy, with a powerful, fiery orange color for creating the strongest metalworks from."
+	lower_cost = CARGO_CRATE_VALUE * 4
+	upper_cost = CARGO_CRATE_VALUE * 6
+	interest_required = PASSED_INTEREST
+
+/datum/armament_entry/cargo_gun/blacksteel/forging_tools/fake_really_blue_aluminum
+	item_type = /obj/item/stack/sheet/tinumium/three
+	description = "A three-pack of our finest cobolterium alloy, with a mystical faded blue color for creating the strongest metalworks from."
+	lower_cost = CARGO_CRATE_VALUE * 4
+	upper_cost = CARGO_CRATE_VALUE * 6
+	interest_required = PASSED_INTEREST
+
+/datum/armament_entry/cargo_gun/blacksteel/forging_tools/fake_brass
+	item_type = /obj/item/stack/sheet/brussite/three
+	description = "A three-pack of our finest cobolterium alloy, with a robust yellow color for creating the strongest metalworks from."
+	lower_cost = CARGO_CRATE_VALUE * 4
+	upper_cost = CARGO_CRATE_VALUE * 6
+	interest_required = PASSED_INTEREST
