@@ -12,13 +12,13 @@
 #define TUMORLESS_ORGAN_DAMAGE_MAX 100
 
 /// How much brute damage their body regenerates per second (calculated every two seconds) while under the proper conditions.
-#define BLOOD_REGEN_BRUTE_AMOUNT 1.5
+#define BLOOD_REGEN_BRUTE_AMOUNT 0.5
 /// How much burn damage their body regenerates per second (calculated every two seconds) while under the proper conditions.
-#define BLOOD_REGEN_BURN_AMOUNT 1.5
+#define BLOOD_REGEN_BURN_AMOUNT 0.5
 /// How much toxin damage their body regenerates per second (calculated every two seconds) while under the proper conditions.
-#define BLOOD_REGEN_TOXIN_AMOUNT 1
+#define BLOOD_REGEN_TOXIN_AMOUNT 0.25
 /// How much cellular damage their body regenerates per second (calculated every two seconds) while under the proper conditions.
-#define BLOOD_REGEN_CELLULAR_AMOUNT 0.5
+#define BLOOD_REGEN_CELLULAR_AMOUNT 0.25
 
 /// The message displayed in the hemophage's chat when they enter their dormant state.
 #define DORMANT_STATE_START_MESSAGE "You feel your tumor's pulse slowing down, as it enters a dormant state. You suddenly feel incredibly weak and vulnerable to everything, and exercise has become even more difficult, as only your most vital bodily functions remain."
