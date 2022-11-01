@@ -28,6 +28,24 @@
 /datum/story_type/somewhat_impactful/centcom_inspector/proc/inform_station()
 	print_command_report("Hello, an inspector will be arriving shortly for a surprise inspection, ensure they have a pleasant report.", announce = TRUE)
 
+
+/*
+	Syndicate Central Command Inspector
+		Plot Summary:
+			CentCom has a funny habit of sending down "surprise" inspectors to see what the station's up to,
+			which provides an opening for a Syndicate agent to slip in, knock out the real inspector, and assume
+			their identity. Very handy when there's things to do and items of value to be stolen.
+		Actors:
+			Ghost:
+				Syndicate Central Command Inspector (1)
+*/
+/datum/story_type/somewhat_impactful/centcom_inspector/syndicate
+	name = "Syndicate Central Command Inspector"
+	desc = "A Syndicate agent has impersonated a CentCom inspector, to steal a high-value item while maintaining their cover."
+	actor_datums_to_make = list(
+		/datum/story_actor/ghost/centcom_inspector/syndicate = 1,
+	)
+
 /*
 	Mob Money
 		Plot Summary:

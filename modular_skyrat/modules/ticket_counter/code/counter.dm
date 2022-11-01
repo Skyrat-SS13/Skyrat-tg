@@ -9,6 +9,7 @@ GLOBAL_LIST_INIT(ticket_counter, list())
 
 /datum/admin_help_tickets
 	var/obj/effect/statclick/opfor_list/opforstat = new()
+	var/obj/effect/statclick/story_list/storystat = new()
 
 /datum/admin_help_tickets/stat_entry()
 	var/list/L = ..()
@@ -21,6 +22,7 @@ GLOBAL_LIST_INIT(ticket_counter, list())
 		L[++L.len] = list("[ckey]", "[GLOB.ticket_counter[ckey]]", null, null)
 
 	L[++L.len] = list("[opforstat.update("OPFOR:")]", "UNSUB: [LAZYLEN(SSopposing_force.unsubmitted_applications)] | SUB: [LAZYLEN(SSopposing_force.submitted_applications)] | APPR: [LAZYLEN(SSopposing_force.approved_applications)]", null, REF(opforstat))
+	L[++L.len] = list("[storystat.update("STORIES:")]", "TOTAL EXECUTED: [length(SSstories.used_stories)] | BUDGET: [SSstories.budget]", null, REF(storystat))
 
 	return L
 
@@ -61,6 +63,20 @@ GLOBAL_LIST_INIT(ticket_counter, list())
 
 	usr.client.view_opfors()
 
-//called by admin topic
+/// called by admin topic
 /obj/effect/statclick/opfor_list/proc/Action()
+	Click()
+
+/obj/effect/statclick/story_list
+
+/obj/effect/statclick/story_list/Click()
+	if (!usr.client?.holder)
+		message_admins("[key_name_admin(usr)] non-holder clicked on a story list statclick! ([src])")
+		log_game("[key_name(usr)] non-holder clicked on a story list statclick! ([src])")
+		return
+
+	usr.client.view_stories()
+
+/// called by admin topic
+/obj/effect/statclick/story_list/proc/Action()
 	Click()

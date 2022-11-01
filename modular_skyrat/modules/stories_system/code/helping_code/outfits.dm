@@ -16,6 +16,60 @@
 	)
 
 
+/datum/outfit/syndicate_inspector
+	name = "Syndicate Centcom Inspector"
+	ears = /obj/item/radio/headset/headset_cent
+	uniform = /obj/item/clothing/under/rank/centcom/officer
+	suit = /obj/item/clothing/suit/trenchblack
+	shoes = /obj/item/clothing/shoes/sneakers/black
+	glasses = /obj/item/clothing/glasses/sunglasses
+	id = /obj/item/card/id/advanced/centcom
+	id_trim = /datum/id_trim/centcom/centcom_inspector
+	l_hand = /obj/item/clipboard
+	back = /obj/item/storage/backpack/satchel
+	backpack_contents = list(
+		/obj/item/paper = 1,
+		/obj/item/pen/fountain = 1,
+		/obj/item/modular_computer/tablet/pda/centcom = 1,
+	)
+	implants = list(
+		/obj/item/implant/storage = 1, // So they can hide the nuke/SM kit
+		/obj/item/implant/radio/syndicate = 1, // For certified Bad Man access
+	)
+	/// The name of the item to steal
+	var/steal_item = "nothing"
+
+/datum/outfit/syndicate_inspector/nuke_core
+	name = "Syndicate Centcom Inspector (Nuke Core)"
+	backpack_contents = list(
+		/obj/item/paper = 1,
+		/obj/item/pen/fountain = 1,
+		/obj/item/modular_computer/tablet/pda/centcom = 1,
+		/obj/item/storage/box/syndie_kit/nuke = 1,
+	)
+	steal_item = "the nuclear core"
+
+/datum/outfit/syndicate_inspector/sm_sliver
+	name = "Syndicate Centcom Inspector (Supermatter Sliver)"
+	backpack_contents = list(
+		/obj/item/paper = 1,
+		/obj/item/pen/fountain = 1,
+		/obj/item/modular_computer/tablet/pda/centcom = 1,
+		/obj/item/storage/box/syndie_kit/supermatter = 1,
+	)
+	steal_item = "a supermatter sliver"
+
+/datum/outfit/syndicate_inspector/rd_server
+	name = "Syndicate Centcom Inspector (R&D Server)"
+	backpack_contents = list(
+		/obj/item/paper = 1,
+		/obj/item/pen/fountain = 1,
+		/obj/item/modular_computer/tablet/pda/centcom = 1,
+		/obj/item/storage/box/syndie_kit/rnd_server = 1,
+	)
+	steal_item = "the R&D server HDD"
+
+
 /datum/outfit/mafioso
 	name = "Mafioso"
 

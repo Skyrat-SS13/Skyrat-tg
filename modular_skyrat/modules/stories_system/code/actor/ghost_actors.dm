@@ -44,6 +44,38 @@
 		"spawn" = to_send_human,
 	))
 
+/datum/story_actor/ghost/centcom_inspector/syndicate
+	name = "Syndicate Centcom Inspector"
+	actor_outfits = list(
+		/datum/outfit/syndicate_inspector/nuke_core,
+		/datum/outfit/syndicate_inspector/sm_sliver,
+		/datum/outfit/syndicate_inspector/rd_server,
+	)
+	actor_info = "You are a Syndicate agent who assumed the identity of a CentCom inspector. You have a goal to steal %ITEM%, and have been equipped with a radio implant, storage implant, and a box of equipment depending on what you need to steal. Keep things calm and try not to blow your cover while doing your objective."
+	actor_goal = "Steal %ITEM% while maintaining your cover as a CentCom inspector."
+	/// Outfit we're going to use, used for %ITEM% replacetext
+	var/actor_picked_outfit
+
+/datum/story_actor/ghost/centcom_inspector/syndicate/handle_spawning(mob/picked_spawner, datum/story_type/current_story)
+	actor_picked_outfit = pick(actor_outfits)
+	var/datum/outfit/syndicate_inspector/initial_datum = actor_picked_outfit
+	actor_info = replacetext(actor_info, "%ITEM%", initial(initial_datum.steal_item))
+	actor_goal = replacetext(actor_goal, "%ITEM%", initial(initial_datum.steal_item))
+	return ..()
+
+/datum/story_actor/ghost/centcom_inspector/syndicate/send_them_in(mob/living/carbon/human/to_send_human)
+	to_send_human.client?.prefs?.safe_transfer_prefs_to(to_send_human)
+	to_send_human.equipOutfit(actor_picked_outfit)
+	var/area/station/command/bridge/bridge_area = GLOB.areas_by_type[/area/station/command/bridge]
+	var/list/bridge_tiles = list()
+	for(var/turf/open/floor/floor_tile in bridge_area)
+		bridge_tiles += floor_tile
+	to_send_human.revive(full_heal = TRUE, admin_revive = TRUE)
+	podspawn(list(
+		"target" = pick(bridge_tiles),
+		"style" = STYLE_CENTCOM,
+		"spawn" = to_send_human,
+	))
 
 /datum/story_actor/ghost/mafioso
 	name = "Mafioso"
