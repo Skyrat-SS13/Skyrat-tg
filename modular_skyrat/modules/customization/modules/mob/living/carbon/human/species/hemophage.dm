@@ -77,10 +77,6 @@
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	/// Some starter text sent to the hemophage initially, because hemophages have shit to do to stay alive.
 	var/info_text = "You are a <span class='danger'>Hemophage</span>. You will slowly but constantly lose blood if outside of a closet-like object. If inside a closet-like object, you will slowly heal. You may gain more blood by grabbing a live victim and using your drain ability."
-	/// The shapeshifting action, attached to the datum itself to avoid cloning memes, and other duplicates.
-	var/obj/effect/proc_holder/spell/targeted/shapeshift/bat/batform
-	/// Is it currently Halloween and are we the Halloween version? If not, we do not get a batform nor do we burn in the chapel.
-	var/halloween_version = FALSE
 	/// Current multiplier for how fast their blood drains on spec_life(). Higher values mean it goes down faster.
 	var/bloodloss_speed_multiplier = 1
 	/// Current multiplier for how much blood they spend healing themselves for every point of damage healed.
@@ -103,8 +99,6 @@
 	to_chat(new_hemophage, info_text)
 	new_hemophage.update_body()
 	new_hemophage.set_safe_hunger_level()
-	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
-		halloween_version = TRUE
 
 
 /datum/species/hemophage/spec_life(mob/living/carbon/human/hemophage, delta_time, times_fired)
@@ -174,13 +168,6 @@
 	if(hemophage.blood_volume <= BLOOD_VOLUME_SURVIVE)
 		to_chat(hemophage, span_danger("You ran out of blood!"))
 		hemophage.death() // Owch! Ran out of blood.
-
-	if(halloween_version)// If hemophages have bat form, they cannot enter the church
-		if(istype(get_area(hemophage), /area/station/service/chapel))
-			to_chat(hemophage, span_warning("You don't belong here!"))
-			hemophage.adjustFireLoss(10 * delta_time)
-			hemophage.adjust_fire_stacks(3 * delta_time)
-			hemophage.ignite_mob()
 
 
 /// Simple helper proc that returns whether or not the given hemophage is in a closet subtype (but not in any bodybag subtype).
@@ -256,16 +243,6 @@
 								to stay alive.",
 		),
 		list(
-			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
-			SPECIES_PERK_ICON = "recycle",
-			SPECIES_PERK_NAME = "Bat Form",
-			SPECIES_PERK_DESC = "During Halloween, Hemophages can become bats. Bats are very weak, but \
-								are great for escaping bad situations. They can also travel through \
-								vents, giving Hemophages a lot of access. Just remember that access \
-								doesn't equal permission, and people may be unhappy with you showing \
-								up uninvited!",
-		),
-		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = "tint",
 			SPECIES_PERK_NAME = "The Thirst",
@@ -274,13 +251,6 @@
 								their blood, and they will suffer severe consequences if they run out. As a note, \
 								it doesn't matter whose blood you drink, it will all be converted into your blood \
 								type when consumed.",
-		),
-		list(
-			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
-			SPECIES_PERK_ICON = "cross",
-			SPECIES_PERK_NAME = "Against God and Nature",
-			SPECIES_PERK_DESC = "During Halloween, almost all higher powers are disgusted by the existence of \
-								Hemophages, and entering the chapel is essentially suicide. Do not do it!",
 		),
 	)
 
