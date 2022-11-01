@@ -319,21 +319,15 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 *	HAWAIIAN
 */
 
-/datum/loadout_item/suit/hawaiian_blue
-	name = "Blue Hawaiian Overshirt"
-	item_path = /obj/item/clothing/suit/hawaiian_blue
 
-/datum/loadout_item/suit/hawaiian_orange
-	name = "Orange Hawaiian Overshirt"
-	item_path = /obj/item/clothing/suit/hawaiian_orange
+/datum/loadout_item/suit/hawaiian_shirt
+	name = "Hawaiian Shirt"
+	item_path = /obj/item/clothing/suit/costume/hawaiian
 
-/datum/loadout_item/suit/hawaiian_purple
-	name = "Purple Hawaiian Overshirt"
-	item_path = /obj/item/clothing/suit/hawaiian_purple
+/datum/loadout_item/suit/hawaiian_gags
+	name = "Colourable Hawaiian Shirt"
+	item_path = /obj/item/clothing/suit/hawaiian_shirt
 
-/datum/loadout_item/suit/hawaiian_green
-	name = "Green Hawaiian Overshirt"
-	item_path = /obj/item/clothing/suit/hawaiian_green
 
 /*
 *	MISC
