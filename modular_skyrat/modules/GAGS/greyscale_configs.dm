@@ -559,8 +559,6 @@
 	name = "Varsity Jacket (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/varsity/varsity_worn.json'
 
-
-=======
 /*
 *	UNDER
 */
