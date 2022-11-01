@@ -52,28 +52,28 @@
 /datum/armament_entry/cargo_gun/blacksteel/forging_metals
 	subcategory = "Premium Metal Supplies"
 
-/datum/armament_entry/cargo_gun/blacksteel/forging_tools/fake_cobalt
+/datum/armament_entry/cargo_gun/blacksteel/forging_metals/fake_cobalt
 	item_type = /obj/item/stack/sheet/cobolterium/three
 	description = "A three-pack of our finest cobolterium alloy, with an unmatched regal blue color for creating the strongest metalworks from."
 	lower_cost = CARGO_CRATE_VALUE * 4
 	upper_cost = CARGO_CRATE_VALUE * 6
 	interest_required = PASSED_INTEREST
 
-/datum/armament_entry/cargo_gun/blacksteel/forging_tools/fake_copper
+/datum/armament_entry/cargo_gun/blacksteel/forging_metals/fake_copper
 	item_type = /obj/item/stack/sheet/copporcitite/three
 	description = "A three-pack of our finest cobolterium alloy, with a powerful, fiery orange color for creating the strongest metalworks from."
 	lower_cost = CARGO_CRATE_VALUE * 4
 	upper_cost = CARGO_CRATE_VALUE * 6
 	interest_required = PASSED_INTEREST
 
-/datum/armament_entry/cargo_gun/blacksteel/forging_tools/fake_really_blue_aluminum
+/datum/armament_entry/cargo_gun/blacksteel/forging_metals/fake_really_blue_aluminum
 	item_type = /obj/item/stack/sheet/tinumium/three
 	description = "A three-pack of our finest cobolterium alloy, with a mystical faded blue color for creating the strongest metalworks from."
 	lower_cost = CARGO_CRATE_VALUE * 4
 	upper_cost = CARGO_CRATE_VALUE * 6
 	interest_required = PASSED_INTEREST
 
-/datum/armament_entry/cargo_gun/blacksteel/forging_tools/fake_brass
+/datum/armament_entry/cargo_gun/blacksteel/forging_metals/fake_brass
 	item_type = /obj/item/stack/sheet/brussite/three
 	description = "A three-pack of our finest cobolterium alloy, with a robust yellow color for creating the strongest metalworks from."
 	lower_cost = CARGO_CRATE_VALUE * 4

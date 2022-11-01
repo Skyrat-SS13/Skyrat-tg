@@ -25,92 +25,12 @@
 // Nakamura engineering sells modsuits and modsuit accessories
 /datum/gun_company/nakamura_engineering
 	name = "Nakamura Engineering"
-
-
-///////////// Old companies below this, if this message is still here and or there are still companies below this line, that's bad!!
-
-/datum/gun_company/armadyne
-	name = "Armadyne Corporation"
-	can_roundstart_pick = FALSE
-	company_flag = COMPANY_ARMADYNE
-	cost = 7500
-	cost_change_lower = -2500
-	cost_change_upper = 8500
-
-/datum/gun_company/cantalan
-	name = "Cantalan Federal Arms"
-	can_roundstart_pick = FALSE
-	company_flag = COMPANY_CANTALAN
-	magazine_cost_mult = 3 //RIP
-	cost = 4500
-	cost_change_lower = -4000
-	cost_change_upper = 7000
-
-/datum/gun_company/scarborough
-	name = "Scarborough Arms"
-	illegal = TRUE
-	can_roundstart_pick = FALSE
-	company_flag = COMPANY_SCARBOROUGH
-	cost = 20000
-	cost_change_lower = 0 //stonks never go down
-	cost_change_upper = 20000
-	cost_mult = 1.1
-
-/datum/gun_company/bolt
-	name = "Bolt Fabrications"
-	company_flag = COMPANY_BOLT
-	cost = 4500
-	cost_change_lower = -4250
-	cost_change_upper = 8500
-
-/datum/gun_company/izhevsk
-	name = "Izhevsk Coalition"
-	company_flag = COMPANY_IZHEVSK
-	cost_change_lower = -2500 //cheap as hell "company" is cheap as hell to buy
-	cost_change_upper = 4500
-	cost = 3000
-	cost_mult = 0.9
-
-/datum/gun_company/nanotrasen
-	name = "Nanotrasen Armories"
-	company_flag = COMPANY_NANOTRASEN
-	cost_change_lower = -2000
-	cost_change_upper = 10000
-	cost = 7500
-
-/datum/gun_company/allstar
-	name = "Allstar Lasers"
-	company_flag = COMPANY_ALLSTAR
-	cost_change_lower = -5000
-	cost_change_upper = 8750
-	cost = 6500
-
-/datum/gun_company/micron
-	name = "Micron Control Systems"
-	can_roundstart_pick = FALSE
-	company_flag = COMPANY_MICRON
-	cost_change_lower = -2000
-	cost_change_upper = 10000
-	cost = 7500
-
-/datum/gun_company/interdyne
-	name = "Interdyne Pharmaceuticals"
-	company_flag = COMPANY_INTERDYNE
-	cost_change_lower = -4500
-	cost_change_upper = 5500
-	cost = 7000
-
-/datum/gun_company/dynamics
-	name = "Armament Dynamics Inc."
-	can_roundstart_pick = FALSE
-	company_flag = COMPANY_DYNAMICS
-	cost_change_lower = -5000
-	cost_change_upper = 6500
-	cost = 4000 //subsidized or smth
+	cost = 6000
+	cost_change_lower = -3000
+	cost_change_upper = 2000
 
 /datum/gun_company/jarnsmiour
 	name = "Jarnsmiour Blacksteel Foundation"
-	company_flag = COMPANY_JARNSMIOUR
 	cost = 4500
 	cost_change_lower = -2250
 	cost_change_upper = 2000
