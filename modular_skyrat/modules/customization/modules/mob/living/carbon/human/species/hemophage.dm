@@ -11,6 +11,9 @@
 /// How much damage can their organs take at maximum when the tumor isn't present anymore?
 #define TUMORLESS_ORGAN_DAMAGE_MAX 100
 
+/// Some starter text sent to the Hemophage initially, because Hemophages have shit to do to stay alive.
+#define HEMOPHAGE_SPAWN_TEXT "You are an [span_danger("Hemophage")]. You will slowly but constantly lose blood if outside of a closet-like object. If inside a closet-like object, or in pure darkness, you will slowly heal, at the cost of blood. You may gain more blood by grabbing a live victim and using your drain ability."
+
 /// How much brute damage their body regenerates per second (calculated every two seconds) while under the proper conditions.
 #define BLOOD_REGEN_BRUTE_AMOUNT 0.75
 /// How much burn damage their body regenerates per second (calculated every two seconds) while under the proper conditions.
@@ -78,8 +81,6 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	examine_limb_id = SPECIES_HUMAN
 	skinned_type = /obj/item/stack/sheet/animalhide/human
-	/// Some starter text sent to the hemophage initially, because hemophages have shit to do to stay alive.
-	var/info_text = "You are a <span class='danger'>Hemophage</span>. You will slowly but constantly lose blood if outside of a closet-like object. If inside a closet-like object, you will slowly heal. You may gain more blood by grabbing a live victim and using your drain ability."
 	/// Current multiplier for how fast their blood drains on spec_life(). Higher values mean it goes down faster.
 	var/bloodloss_speed_multiplier = 1
 	/// Current multiplier for how much blood they spend healing themselves for every point of damage healed.
@@ -99,7 +100,7 @@
 
 /datum/species/hemophage/on_species_gain(mob/living/carbon/human/new_hemophage, datum/species/old_species)
 	. = ..()
-	to_chat(new_hemophage, info_text)
+	to_chat(new_hemophage, HEMOPHAGE_SPAWN_TEXT)
 	new_hemophage.update_body()
 	new_hemophage.set_safe_hunger_level()
 
@@ -629,6 +630,8 @@
 #undef MINIMUM_LIGHT_THRESHOLD_FOR_REGEN
 #undef TUMORLESS_ORGAN_DAMAGE
 #undef TUMORLESS_ORGAN_DAMAGE_MAX
+
+#undef HEMOPHAGE_SPAWN_TEXT
 
 #undef BLOOD_REGEN_BRUTE_AMOUNT
 #undef BLOOD_REGEN_BURN_AMOUNT
