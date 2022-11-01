@@ -33,16 +33,6 @@
 	ashies = null
 	QDEL_NULL(linked_objective)
 	STOP_PROCESSING(SSprocessing, src)
-	//SKYRAT EDIT START
-	var/compiled_string = "The [src] has been destroyed at [loc_name(src.loc)], nearest mobs are "
-	var/found_anyone = FALSE
-	for(var/mob/living/carbon/carbons_nearby in range(7))
-		compiled_string += "[key_name(carbons_nearby)],"
-		found_anyone = TRUE
-	if(!found_anyone)
-		compiled_string += "nobody."
-	log_game(compiled_string)
-	//SKYRAT EDIT END
 	return ..()
 
 /obj/structure/lavaland/ash_walker/deconstruct(disassembled)
@@ -55,6 +45,7 @@
 	consume()
 	spawn_mob()
 
+//PLEASE VIEW SKYRAT ASHWALKER MODULE FOR OVERRIDE
 /obj/structure/lavaland/ash_walker/proc/consume()
 	for(var/mob/living/H in view(src, 1)) //Only for corpse right next to/on same tile
 		if(H.stat)
@@ -100,33 +91,18 @@
 				else
 					L.add_mood_event("oogabooga", /datum/mood_event/sacrifice_bad)
 
-/obj/structure/lavaland/ash_walker/proc/remake_walker(datum/mind/oldmind, oldname) // SKYRAT EDIT BEGIN - Ashwalker Respawning Fix
-	var/mob/living/carbon/human/my_ashie
-	var/ask = tgui_alert(oldmind, "You have been returned to the nest. \nDo you wish to be a random Ash Walker or your loaded Ash-Walker?", "Returned to Nest", list("Loaded Character", "Random Ash-Walker"))
-	switch(ask)
-		if("Random Ash-Walker")
-			my_ashie = new /mob/living/carbon/human(get_step(loc, pick(GLOB.alldirs)))
-			my_ashie.set_species(/datum/species/lizard/ashwalker)
-			my_ashie.real_name = oldname
-			my_ashie.underwear = "Nude"
-			my_ashie.update_body()
-			my_ashie.remove_language(/datum/language/common)
-			oldmind.transfer_to(my_ashie)
-			my_ashie.mind.grab_ghost()
-			to_chat(my_ashie, "<b>You have been pulled back from beyond the grave, with a new body and renewed purpose. Glory to the Necropolis!</b>")
-			playsound(get_turf(my_ashie),'sound/magic/exit_blood.ogg', 100, TRUE)
-		if("Loaded Character")
-			my_ashie = new /mob/living/carbon/human(get_step(loc, pick(GLOB.alldirs)))
-			oldmind.transfer_to(my_ashie) // oh no
-			my_ashie?.client?.prefs?.safe_transfer_prefs_to(my_ashie)
-			my_ashie.dna.update_dna_identity()
-			if(!my_ashie.dna.species.id == SPECIES_LIZARD_ASH)
-				QDEL_NULL(my_ashie)
-				to_chat(oldmind, "Load an Ash-Walker to this slot!") // whew
-				return
-			to_chat(my_ashie, "<b>You have been pulled back from beyond the grave, with a new body and renewed purpose. Glory to the Necropolis!</b>")
-			playsound(get_turf(my_ashie),'sound/magic/exit_blood.ogg', 100, TRUE) // SKYRAT EDIT END - Ashwalker Respawning Fix
-
+//PLEASE VIEW SKYRAT ASHWALKER MODULE FOR REPLACEMENT
+/obj/structure/lavaland/ash_walker/proc/remake_walker(datum/mind/oldmind, oldname)
+	var/mob/living/carbon/human/M = new /mob/living/carbon/human(get_step(loc, pick(GLOB.alldirs)))
+	M.set_species(/datum/species/lizard/ashwalker)
+	M.real_name = oldname
+	M.underwear = "Nude"
+	M.update_body()
+	M.remove_language(/datum/language/common)
+	oldmind.transfer_to(M)
+	M.mind.grab_ghost()
+	to_chat(M, "<b>You have been pulled back from beyond the grave, with a new body and renewed purpose. Glory to the Necropolis!</b>")
+	playsound(get_turf(M),'sound/magic/exit_blood.ogg', 100, TRUE)
 
 /obj/structure/lavaland/ash_walker/proc/spawn_mob()
 	if(meat_counter >= ASH_WALKER_SPAWN_THRESHOLD)
