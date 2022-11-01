@@ -994,8 +994,12 @@
 		"borg_upgrade_holding",
 		"borg_upgrade_lavaproof",
 		"borg_upgrade_rped",
+<<<<<<< HEAD
 		"advanced_materials", // SKYRAT ADDITION - ADVANCED MATERIALS UPGRADE
 		"inducer_module", // SKYRAT ADDITION - INDUCER MODULE UPGRADE
+=======
+		"borg_upgrade_hypermod",
+>>>>>>> 5ab4e151c55 (Fix for the missing Exofab modules for mining borgs (#70502))
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
@@ -1417,17 +1421,20 @@
 	description = "Better than Efficiency V."
 	prereq_ids = list("engineering", "basic_plasma")
 	design_ids = list(
+		"borg_upgrade_cooldownmod",
+		"borg_upgrade_damagemod",
+		"borg_upgrade_rangemod",
 		"cargoexpress",
 		"cooldownmod",
 		"damagemod",
 		"drill",
+		"mecha_kineticgun",
 		"mining_equipment_vendor",
 		"ore_redemption",
 		"plasmacutter",
 		"rangemod",
 		"superresonator",
 		"triggermod",
-		"mecha_kineticgun",
 	)//e a r l y    g a  m e)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
