@@ -16,22 +16,18 @@
 
 /obj/item/stack/sheet/cobolterium
 	name = "cobolterium bars"
-	desc = "Cobalt-blue metal, wait..."
+	desc = "Cobalt-blue metal that might actually just be cobalt."
 	singular_name = "cobolterium bar"
-	icon = ''
-	icon_state = "sheet-meat"
+	icon = 'modular_skyrat/modules/gun_cargo/icons/special_metals_stack.dmi'
+	icon_state = "dracula-rapping"
 	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR
-	mats_per_unit = list(/datum/material/hauntium = MINERAL_MATERIAL_AMOUNT)
-	merge_type = /obj/item/stack/sheet/hauntium
-	material_type = /datum/material/hauntium
-	material_modifier = 1 //None of that wussy stuff
+	mats_per_unit = list(/datum/material/cobolterium = MINERAL_MATERIAL_AMOUNT)
+	merge_type = /obj/item/stack/sheet/cobolterium
+	material_type = /datum/material/cobolterium
+	material_modifier = 1
 
-/obj/item/stack/sheet/hauntium/fifty
-	amount = 50
-/obj/item/stack/sheet/hauntium/twenty
-	amount = 20
-/obj/item/stack/sheet/hauntium/five
-	amount = 5
+/obj/item/stack/sheet/cobolterium/three
+	amount = 3
 
 // More copper colored material
 
@@ -47,6 +43,21 @@
 	victim.apply_damage(10, BRUTE, BODY_ZONE_HEAD, wound_bonus = 5)
 	return TRUE
 
+/obj/item/stack/sheet/copporcitite
+	name = "copporcitite bars"
+	desc = "Copper colored metal that might actually just be copper."
+	singular_name = "copporcitite bar"
+	icon = 'modular_skyrat/modules/gun_cargo/icons/special_metals_stack.dmi'
+	icon_state = "dracula-rapping"
+	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR
+	mats_per_unit = list(/datum/material/copporcitite = MINERAL_MATERIAL_AMOUNT)
+	merge_type = /obj/item/stack/sheet/copporcitite
+	material_type = /datum/material/copporcitite
+	material_modifier = 1
+
+/obj/item/stack/sheet/copporcitite/three
+	amount = 3
+
 // Super blued-silver color
 
 /datum/material/tinumium
@@ -61,6 +72,21 @@
 	victim.apply_damage(10, BRUTE, BODY_ZONE_HEAD, wound_bonus = 5)
 	return TRUE
 
+/obj/item/stack/sheet/tinumium
+	name = "tinumium bars"
+	desc = "Heavily blued, silver colored metal."
+	singular_name = "tinumium bar"
+	icon = 'modular_skyrat/modules/gun_cargo/icons/special_metals_stack.dmi'
+	icon_state = "dracula-rapping"
+	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR
+	mats_per_unit = list(/datum/material/tinumium = MINERAL_MATERIAL_AMOUNT)
+	merge_type = /obj/item/stack/sheet/tinumium
+	material_type = /datum/material/tinumium
+	material_modifier = 1
+
+/obj/item/stack/sheet/tinumium/three
+	amount = 3
+
 // Brassy yellow color
 
 /datum/material/brussite
@@ -74,3 +100,18 @@
 /datum/material/brussite/on_accidental_mat_consumption(mob/living/carbon/victim, obj/item/source_item)
 	victim.apply_damage(10, BRUTE, BODY_ZONE_HEAD, wound_bonus = 5)
 	return TRUE
+
+/obj/item/stack/sheet/brussite
+	name = "brussite bars"
+	desc = "Brassy-yellow metal that might actually just be brass."
+	singular_name = "brussite bar"
+	icon = 'modular_skyrat/modules/gun_cargo/icons/special_metals_stack.dmi'
+	icon_state = "dracula-rapping"
+	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR
+	mats_per_unit = list(/datum/material/brussite = MINERAL_MATERIAL_AMOUNT)
+	merge_type = /obj/item/stack/sheet/brussite
+	material_type = /datum/material/brussite
+	material_modifier = 1
+
+/obj/item/stack/sheet/brussite/three
+	amount = 3
