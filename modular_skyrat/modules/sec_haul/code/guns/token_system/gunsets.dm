@@ -21,7 +21,6 @@
 
 /obj/item/storage/box/gunset/Initialize(mapload)
 	. = ..()
-	//atom_storage.max_slots = 5
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	atom_storage.max_total_storage = 21
 	atom_storage.set_holdable(list( //The gun box now holds it's own contents
