@@ -10,6 +10,9 @@
 #define MODULE_HELLA_LOWER 8
 #define MODULE_HELLA_UPPER 12
 
+#define MODULE_ANOMALY_LOWER 20
+#define MODULE_ANOMALY_UPPER 40
+
 /datum/armament_entry/cargo_gun/nakamura
 	category = "Nakamura Engineering"
 
@@ -117,6 +120,13 @@
 	interest_required = HIGH_INTEREST
 	restricted = TRUE
 
+/datum/armament_entry/cargo_gun/nakamura/protection_modules/accretion
+	item_type = /obj/item/mod/module/ash_accretion
+	lower_cost = CARGO_CRATE_VALUE * MODULE_HELLA_LOWER
+	upper_cost = CARGO_CRATE_VALUE * MODULE_HELLA_UPPER
+	interest_required = HIGH_INTEREST
+	restricted = TRUE
+
 /datum/armament_entry/cargo_gun/nakamura/protection_modules/energy_shield
 	item_type = /obj/item/mod/module/energy_shield
 	lower_cost = CARGO_CRATE_VALUE * MODULE_HELLA_LOWER
@@ -127,10 +137,16 @@
 // Utility modules, general purpose stuff that really anyone might want
 
 /datum/armament_entry/cargo_gun/nakamura/utility_modules
-	subcategory = "MOD Protection Modules"
+	subcategory = "MOD Utility Modules"
 
 /datum/armament_entry/cargo_gun/nakamura/utility_modules/flashlight
 	item_type = /obj/item/mod/module/flashlight
+	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
+	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
+	stock_mult = 2
+
+/datum/armament_entry/cargo_gun/nakamura/utility_modules/regulator
+	item_type = /obj/item/mod/module/thermal_regulator
 	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
 	stock_mult = 2
@@ -213,8 +229,85 @@
 	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
 	interest_required = HIGH_INTEREST
 
+/datum/armament_entry/cargo_gun/nakamura/mobility_modules/atrocinator
+	item_type = /obj/item/mod/module/atrocinator
+	lower_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_LOWER
+	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
+
 /datum/armament_entry/cargo_gun/nakamura/mobility_modules/super_jetpack
 	item_type = /obj/item/mod/module/jetpack/advanced
 	lower_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
 	interest_required = HIGH_INTEREST
+
+// Novelty modules, goofy stuff that's rare/unprintable, but doesn't fit in any of the above categories
+
+/datum/armament_entry/cargo_gun/nakamura/novelty_modules
+	subcategory = "MOD Novelty Modules"
+
+/datum/armament_entry/cargo_gun/nakamura/novelty_modules/waddle
+	item_type = /obj/item/mod/module/waddle
+	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
+	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
+
+/datum/armament_entry/cargo_gun/nakamura/novelty_modules/bike_horn
+	item_type = /obj/item/mod/module/bikehorn
+	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
+	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
+
+/datum/armament_entry/cargo_gun/nakamura/novelty_modules/microwave_beam
+	item_type = /obj/item/mod/module/microwave_beam
+	lower_cost = CARGO_CRATE_VALUE * MODULE_MID_LOWER
+	upper_cost = CARGO_CRATE_VALUE * MODULE_MID_UPPER
+	interest_required = PASSED_INTEREST
+
+/datum/armament_entry/cargo_gun/nakamura/novelty_modules/tanner
+	item_type = /obj/item/mod/module/tanner
+	lower_cost = CARGO_CRATE_VALUE * MODULE_MID_LOWER
+	upper_cost = CARGO_CRATE_VALUE * MODULE_MID_UPPER
+	interest_required = PASSED_INTEREST
+
+/datum/armament_entry/cargo_gun/nakamura/novelty_modules/hat_stabilizer
+	item_type = /obj/item/mod/module/hat_stabilizer
+	lower_cost = CARGO_CRATE_VALUE * MODULE_MID_LOWER
+	upper_cost = CARGO_CRATE_VALUE * MODULE_MID_UPPER
+	interest_required = PASSED_INTEREST
+
+/datum/armament_entry/cargo_gun/nakamura/novelty_modules/chameleon
+	item_type = /obj/item/mod/module/chameleon
+	lower_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_LOWER
+	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
+	interest_required = HIGH_INTEREST
+
+/datum/armament_entry/cargo_gun/nakamura/novelty_modules/kinesis
+	item_type = /obj/item/mod/module/anomaly_locked/kinesis/prebuilt
+	lower_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_LOWER
+	upper_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_UPPER
+	interest_required = HIGH_INTEREST
+
+/datum/armament_entry/cargo_gun/nakamura/novelty_modules/antigrav
+	item_type = /obj/item/mod/module/anomaly_locked/antigrav/prebuilt
+	lower_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_LOWER
+	upper_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_UPPER
+	interest_required = HIGH_INTEREST
+
+/datum/armament_entry/cargo_gun/nakamura/novelty_modules/teleporter
+	item_type = /obj/item/mod/module/anomaly_locked/teleporter/prebuilt
+	lower_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_LOWER
+	upper_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_UPPER
+	interest_required = HIGH_INTEREST
+
+#undef MODULE_CHEAP_LOWER
+#undef MODULE_CHEAP_UPPER
+
+#undef MODULE_MID_LOWER
+#undef MODULE_MID_UPPER
+
+#undef MODULE_PRICEY_LOWER
+#undef MODULE_PRICEY_UPPER
+
+#undef MODULE_HELLA_LOWER
+#undef MODULE_HELLA_UPPER
+
+#undef MODULE_ANOMALY_LOWER
+#undef MODULE_ANOMALY_UPPER
