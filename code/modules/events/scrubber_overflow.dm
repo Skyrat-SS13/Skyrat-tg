@@ -17,6 +17,15 @@
 	var/danger_chance = 1
 	/// Amount of reagents ejected from each scrubber
 	var/reagents_amount = 50
+<<<<<<< HEAD
+=======
+	/// Probability of an individual scrubber overflowing
+	var/overflow_probability = 50
+	/// Specific reagent to force all scrubbers to use, null for random reagent choice
+	var/forced_reagent
+	/// A list of scrubbers that will have reagents ejected from them
+	var/list/scrubbers = list()
+>>>>>>> c95f4543d26 (Makes the beer nuke use scrubber overflow (#70929))
 	/// The list of chems that scrubbers can produce
 	var/list/safer_chems = list(/datum/reagent/water,
 		/datum/reagent/carbon,
@@ -63,8 +72,21 @@
 	end_when = rand(25, 100)
 	for(var/obj/machinery/atmospherics/components/unary/vent_scrubber/temp_vent in GLOB.machines)
 		var/turf/scrubber_turf = get_turf(temp_vent)
+<<<<<<< HEAD
 		if(scrubber_turf && is_station_level(scrubber_turf.z) && !temp_vent.welded && prob(50))
 			scrubbers += temp_vent
+=======
+		if(!scrubber_turf)
+			continue
+		if(!is_station_level(scrubber_turf.z))
+			continue
+		if(temp_vent.welded)
+			continue
+		if(!prob(overflow_probability))
+			continue
+		scrubbers += temp_vent
+
+>>>>>>> c95f4543d26 (Makes the beer nuke use scrubber overflow (#70929))
 	if(!scrubbers.len)
 		return kill()
 
@@ -93,7 +115,9 @@
 
 		var/datum/reagents/dispensed_reagent = new/datum/reagents(1000)
 		dispensed_reagent.my_atom = vent
-		if (prob(danger_chance))
+		if (forced_reagent)
+			dispensed_reagent.add_reagent(forced_reagent, reagents_amount)
+		else if (prob(danger_chance))
 			dispensed_reagent.add_reagent(get_random_reagent_id(), reagents_amount)
 		else
 			dispensed_reagent.add_reagent(pick(safer_chems), reagents_amount)
@@ -131,3 +155,16 @@
 /datum/round_event/scrubber_overflow/catastrophic
 	danger_chance = 30
 	reagents_amount = 150
+
+/datum/round_event_control/scrubber_overflow/beer // Used when the beer nuke "detonates"
+	name = "Scrubber Overflow: Beer"
+	typepath = /datum/round_event/scrubber_overflow/beer
+	weight = 0
+	max_occurrences = 0
+	description = "The scrubbers release a tide of boozy froth."
+
+/datum/round_event/scrubber_overflow/beer
+	overflow_probability = 100
+	forced_reagent = /datum/reagent/consumable/ethanol/beer
+	reagents_amount = 100
+
