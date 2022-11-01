@@ -315,7 +315,6 @@
 	icon_state = "tumor-on"
 	base_icon_state = "tumor"
 	desc = "Just looking at how it pulsates at the beat of the heart it's wrapped around sends shivers down your spine... <i>The fact it's what keeps them alive makes it all the more terrifying.</i>"
-	color = "#1C1C1C" // I use the color var here because I'm not good enough to resprite the tumor to be dark. If anyone's able to do that, by all means, be my guest.
 	actions_types = list(/datum/action/cooldown/hemophage/toggle_dormant_state)
 	/// Are we currently dormant? Defaults to PULSATING_TUMOR_ACTIVE (so FALSE).
 	var/is_dormant = PULSATING_TUMOR_ACTIVE
