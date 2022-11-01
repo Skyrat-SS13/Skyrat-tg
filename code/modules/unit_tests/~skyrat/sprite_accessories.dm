@@ -60,34 +60,52 @@
 					render_state = accessory_icon_state
 
 				for(var/layer in sprite_accessory.relevent_layers)
+					var/use_main = TRUE
+					var/use_inner = sprite_accessory.hasinner
+					var/use_extra = sprite_accessory.extra
+					var/use_extra2 = sprite_accessory.extra2
+					var/list/layer_entry = sprite_accessory.relevent_layers[layer]
+					if(islist(layer_entry))
+						// Layer filtering for edge cases like cat ears that don't have inner for certain layers.
+						use_main = !!(SPRITE_ACCESSORY_MAIN in layer_entry)
+						use_inner = !!(SPRITE_ACCESSORY_INNER in layer_entry) && use_inner
+						use_extra = !!(SPRITE_ACCESSORY_EXTRA in layer_entry) && use_extra
+						use_extra2 = !!(SPRITE_ACCESSORY_EXTRA2 in layer_entry) && use_extra2
+
 					var/layertext = human_species.mutant_bodyparts_layertext(layer)
 
-					var/final_icon_state = "[gender_prefix]_[sprite_accessory.get_special_render_key(human)]_[render_state]_[layertext]"
-					if(sprite_accessory.color_src == USE_MATRIXED_COLORS)
-						final_icon_state += "_primary"
-						var/color_layer_list
-						if(sprite_accessory.special_render_case)
-							color_layer_list = list("1" = "primary", "2" = "secondary", "3" = "tertiary")
-						else
-							color_layer_list = sprite_accessory.color_layer_names
-						for(var/entry_number in color_layer_list)
-							final_icon_state = "[final_icon_state]_[layertext]_[color_layer_list[entry_number]]"
+					var/final_icon_state
 
-					else if(!icon_exists(accessory_icon, final_icon_state))
-						TEST_FAIL("Missing PRIMARY icon for [final_icon_state] in [accessory_icon_state] for factual sprite accessory [accessory_name] ([sprite_accessory.type]) in key [accessory_key]!")
+					if(use_main)
+						final_icon_state = "[gender_prefix]_[sprite_accessory.get_special_render_key(human)]_[render_state]_[layertext]"
+						if(sprite_accessory.color_src == USE_MATRIXED_COLORS)
+							final_icon_state += "_primary"
+							var/color_layer_list
+							if(sprite_accessory.special_render_case)
+								color_layer_list = list("1" = "primary", "2" = "secondary", "3" = "tertiary")
+							else
+								color_layer_list = sprite_accessory.color_layer_names
+							for(var/entry_number in color_layer_list)
+								final_icon_state = "[final_icon_state]_[layertext]_[color_layer_list[entry_number]]"
 
-					if(sprite_accessory.hasinner)
+								if(!icon_exists(accessory_icon, final_icon_state))
+									TEST_FAIL("Missing MAIN MATRIXED icon for [final_icon_state] in [accessory_icon_state] for factual sprite accessory [accessory_name] ([sprite_accessory.type]) in key [accessory_key]!")
+
+						else if(!icon_exists(accessory_icon, final_icon_state))
+							TEST_FAIL("Missing MAIN icon for [final_icon_state] in [accessory_icon_state] for factual sprite accessory [accessory_name] ([sprite_accessory.type]) in key [accessory_key]!")
+
+					if(use_inner)
 						final_icon_state = "[gender_prefix]_[accessory_key]inner_[accessory_icon_state]_[layertext]"
 
 						if(!icon_exists(accessory_icon, final_icon_state))
 							TEST_FAIL("Missing INNER icon for [final_icon_state] in [accessory_icon_state] for factual sprite accessory [accessory_name] ([sprite_accessory.type]) in key [accessory_key]!")
 
-					if(sprite_accessory.extra)
+					if(use_extra)
 						final_icon_state = "[gender_prefix]_[accessory_key]_extra_[accessory_icon_state]_[layertext]"
 						if(!icon_exists(accessory_icon, final_icon_state))
 							TEST_FAIL("Missing EXTRA icon for [final_icon_state] in [accessory_icon_state] for factual sprite accessory [accessory_name] ([sprite_accessory.type]) in key [accessory_key]!")
 
-					if(sprite_accessory.extra2)
+					if(use_extra2)
 						final_icon_state = "[gender_prefix]_[accessory_key]_extra2_[accessory_icon_state]_[layertext]"
 						if(!icon_exists(accessory_icon, final_icon_state))
 							TEST_FAIL("Missing EXTRA2 icon for [final_icon_state] in [accessory_icon_state] for factual sprite accessory [accessory_name] ([sprite_accessory.type]) in key [accessory_key]!")

@@ -105,78 +105,92 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			render_state = "m_[bodypart_accessory.get_special_render_key(owner)]_[render_state]"
 
 		for(var/layer in bodypart_accessory.relevent_layers)
+			var/use_main = TRUE
+			var/use_inner = bodypart_accessory.hasinner
+			var/use_extra = bodypart_accessory.extra
+			var/use_extra2 = bodypart_accessory.extra2
+			var/list/layer_entry = bodypart_accessory.relevent_layers[layer]
+			if(islist(layer_entry))
+				// Layer filtering for edge cases like cat ears that don't have inner for certain layers.
+				use_main = !!(SPRITE_ACCESSORY_MAIN in layer_entry)
+				use_inner = !!(SPRITE_ACCESSORY_INNER in layer_entry) && use_inner
+				use_extra = !!(SPRITE_ACCESSORY_EXTRA in layer_entry) && use_extra
+				use_extra2 = !!(SPRITE_ACCESSORY_EXTRA2 in layer_entry) && use_extra2
+
 			var/layertext = mutant_bodyparts_layertext(layer)
-			var/list/mutable_appearance/accessories
-			var/mutable_appearance/accessory_overlay = mutable_appearance(icon_to_use, layer = -layer)
+			if(use_main)
+				var/list/mutable_appearance/accessories
+				var/mutable_appearance/accessory_overlay = mutable_appearance(icon_to_use, layer = -layer)
 
-			accessory_overlay.icon_state = "[render_state]_[layertext]"
-			if(bodypart_accessory.color_src == USE_MATRIXED_COLORS && color_layer_list)
-				accessory_overlay.icon_state = "[render_state]_[layertext]_primary"
-				accessories = list()
+				accessory_overlay.icon_state = "[render_state]_[layertext]"
+				if(bodypart_accessory.color_src == USE_MATRIXED_COLORS && color_layer_list)
+					accessory_overlay.icon_state = "[render_state]_[layertext]_primary"
+					accessories = list()
 
-			if(bodypart_accessory.center)
-				accessory_overlay = center_image(accessory_overlay, x_shift, bodypart_accessory.dimension_y)
+				if(bodypart_accessory.center)
+					accessory_overlay = center_image(accessory_overlay, x_shift, bodypart_accessory.dimension_y)
 
-			if(!override_color)
-				if(HAS_TRAIT(owner, TRAIT_HUSK))
-					if(bodypart_accessory.color_src == USE_MATRIXED_COLORS) //Matrixed+husk needs special care, otherwise we get sparkle dogs
-						accessory_overlay.color = HUSK_COLOR_LIST
+				if(!override_color)
+					if(HAS_TRAIT(owner, TRAIT_HUSK))
+						if(bodypart_accessory.color_src == USE_MATRIXED_COLORS) //Matrixed+husk needs special care, otherwise we get sparkle dogs
+							accessory_overlay.color = HUSK_COLOR_LIST
+						else
+							accessory_overlay.color = "#AAA" //The gray husk color
 					else
-						accessory_overlay.color = "#AAA" //The gray husk color
+						switch(bodypart_accessory.color_src)
+							if(USE_ONE_COLOR)
+								accessory_overlay.color = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST][1]
+							if(USE_MATRIXED_COLORS)
+								var/list/color_list = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
+								for(var/n in color_layer_list)
+									var/num = text2num(n)
+									var/mutable_appearance/matrixed_acce = mutable_appearance(icon_to_use, layer = -layer)
+									matrixed_acce.icon_state = "[render_state]_[layertext]_[color_layer_list[n]]"
+									matrixed_acce.color = color_list[num]
+									matrixed_acce.alpha = specific_alpha
+
+									icon_exists(matrixed_acce.icon, matrixed_acce.icon_state, scream = TRUE)
+
+									if(bodypart_accessory.center)
+										matrixed_acce = center_image(matrixed_acce, x_shift, bodypart_accessory.dimension_y)
+
+									accessories += matrixed_acce
+
+									if(mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][num])
+										var/mutable_appearance/emissive_overlay = emissive_appearance_copy(matrixed_acce, owner)
+										accessories += emissive_overlay
+							if(MUTCOLORS)
+								if(fixed_mut_color)
+									accessory_overlay.color = fixed_mut_color
+								else
+									accessory_overlay.color = owner.dna.features["mcolor"]
+							if(HAIR)
+								if(hair_color == "mutcolor")
+									accessory_overlay.color = owner.dna.features["mcolor"]
+								else if(hair_color == "fixedmutcolor")
+									accessory_overlay.color = fixed_mut_color
+								else
+									accessory_overlay.color = owner.hair_color
+							if(FACEHAIR)
+								accessory_overlay.color = owner.facial_hair_color
+							if(EYECOLOR)
+								accessory_overlay.color = owner.eye_color_left
 				else
-					switch(bodypart_accessory.color_src)
-						if(USE_ONE_COLOR)
-							accessory_overlay.color = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST][1]
-						if(USE_MATRIXED_COLORS)
-							var/list/color_list = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
-							for(var/n in color_layer_list)
-								var/num = text2num(n)
-								var/mutable_appearance/matrixed_acce = mutable_appearance(icon_to_use, layer = -layer)
-								matrixed_acce.icon_state = "[render_state]_[layertext]_[color_layer_list[n]]"
-								matrixed_acce.color = color_list[num]
-								matrixed_acce.alpha = specific_alpha
+					accessory_overlay.color = override_color
 
-								icon_exists(matrixed_acce.icon, matrixed_acce.icon_state, scream = TRUE)
+				if(accessories)
+					for (var/acces in accessories)
+						standing += acces
+				else
+					// You better fuckin make sure those icons exist.
+					icon_exists(accessory_overlay.icon, accessory_overlay.icon_state, scream = TRUE)
 
-								if(bodypart_accessory.center)
-									matrixed_acce = center_image(matrixed_acce, x_shift, bodypart_accessory.dimension_y)
+					standing += accessory_overlay
+					if (mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][1])
+						var/mutable_appearance/emissive_overlay = emissive_appearance_copy(accessory_overlay, owner)
+						standing += emissive_overlay
 
-								accessories += matrixed_acce
-
-								if(mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][num])
-									var/mutable_appearance/emissive_overlay = emissive_appearance_copy(matrixed_acce, owner)
-									accessories += emissive_overlay
-						if(MUTCOLORS)
-							if(fixed_mut_color)
-								accessory_overlay.color = fixed_mut_color
-							else
-								accessory_overlay.color = owner.dna.features["mcolor"]
-						if(HAIR)
-							if(hair_color == "mutcolor")
-								accessory_overlay.color = owner.dna.features["mcolor"]
-							else if(hair_color == "fixedmutcolor")
-								accessory_overlay.color = fixed_mut_color
-							else
-								accessory_overlay.color = owner.hair_color
-						if(FACEHAIR)
-							accessory_overlay.color = owner.facial_hair_color
-						if(EYECOLOR)
-							accessory_overlay.color = owner.eye_color_left
-			else
-				accessory_overlay.color = override_color
-			if(accessories)
-				for (var/acces in accessories)
-					standing += acces
-			else
-				// You better fuckin make sure those icons exist.
-				icon_exists(accessory_overlay.icon, accessory_overlay.icon_state, scream = TRUE)
-
-				standing += accessory_overlay
-				if (mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][1])
-					var/mutable_appearance/emissive_overlay = emissive_appearance_copy(accessory_overlay, owner)
-					standing += emissive_overlay
-
-			if(bodypart_accessory.hasinner)
+			if(use_inner)
 				var/mutable_appearance/inner_accessory_overlay = mutable_appearance(bodypart_accessory.icon, layer = -layer)
 				if(bodypart_accessory.gender_specific)
 					inner_accessory_overlay.icon_state = "[gender_prefix]_[key]inner_[bodypart_accessory.icon_state]_[layertext]"
@@ -191,7 +205,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				standing += inner_accessory_overlay
 
 			//Here's EXTRA parts of accessories which I should get rid of sometime TODO i guess
-			if(bodypart_accessory.extra) //apply the extra overlay, if there is one
+			if(use_extra) //apply the extra overlay, if there is one
 				var/mutable_appearance/extra_accessory_overlay = mutable_appearance(bodypart_accessory.icon, layer = -layer)
 
 				if(bodypart_accessory.gender_specific)
@@ -227,7 +241,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 				standing += extra_accessory_overlay
 
-			if(bodypart_accessory.extra2) //apply the extra overlay, if there is one
+			if(use_extra2) //apply the extra overlay, if there is one
 				var/mutable_appearance/extra2_accessory_overlay = mutable_appearance(bodypart_accessory.icon, layer = -layer)
 				if(bodypart_accessory.gender_specific)
 					extra2_accessory_overlay.icon_state = "[gender_prefix]_[key]_extra2_[bodypart_accessory.icon_state]_[layertext]"
@@ -256,6 +270,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 							extra2_accessory_overlay.color = owner.hair_color
 
 				standing += extra2_accessory_overlay
+
 			if(specific_alpha != 255 && !override_color)
 				for(var/ov in standing)
 					var/image/overlay = ov
