@@ -444,7 +444,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/trekcapmedisci
 	name = "Federation Officer's Cap (Blue)"
 	item_path = /obj/item/clothing/head/hats/caphat/parade/fedcap/medsci
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER,JOB_MEDICAL_DOCTOR,JOB_SECURITY_MEDIC,JOB_PARAMEDIC,JOB_CHEMIST,JOB_VIROLOGIST,JOB_PSYCHOLOGIST,JOB_GENETICIST,JOB_RESEARCH_DIRECTOR,JOB_SCIENTIST,JOB_ROBOTICIST,JOB_VANGUARD_OPERATIVE,JOB_ORDERLY)
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER,JOB_MEDICAL_DOCTOR,JOB_SECURITY_MEDIC,JOB_PARAMEDIC,JOB_CHEMIST,JOB_VIROLOGIST,JOB_PSYCHOLOGIST,JOB_GENETICIST,JOB_RESEARCH_DIRECTOR,JOB_SCIENTIST,JOB_ROBOTICIST,JOB_ORDERLY)
 
 /datum/loadout_item/head/trekcapeng
 	name = "Federation Officer's Cap (Yellow)"
@@ -593,7 +593,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/beret_sci
 	name = "Scientist Beret"
 	item_path = /obj/item/clothing/head/beret/science
-	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_VANGUARD_OPERATIVE, JOB_SCIENCE_GUARD)
+	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_SCIENCE_GUARD)
 
 /datum/loadout_item/head/beret_robo
 	name = "Roboticist Beret"
