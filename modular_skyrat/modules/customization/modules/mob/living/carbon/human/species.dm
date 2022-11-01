@@ -142,10 +142,10 @@ GLOBAL_LIST_EMPTY(customizable_races)
 								accessory_overlay.color = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST][1]
 							if(USE_MATRIXED_COLORS)
 								var/list/color_list = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
-								for(var/n in color_layer_list)
-									var/num = text2num(n)
+								for(var/number_text in color_layer_list)
+									var/num = text2num(number_text)
 									var/mutable_appearance/matrixed_acce = mutable_appearance(icon_to_use, layer = -layer)
-									matrixed_acce.icon_state = "[render_state]_[layertext]_[color_layer_list[n]]"
+									matrixed_acce.icon_state = "[render_state]_[layertext]_[color_layer_list[number_text]]"
 									matrixed_acce.color = color_list[num]
 									matrixed_acce.alpha = specific_alpha
 
@@ -179,8 +179,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 					accessory_overlay.color = override_color
 
 				if(accessories)
-					for (var/acces in accessories)
-						standing += acces
+					standing += accessories
 				else
 					// You better fuckin make sure those icons exist.
 					icon_exists(accessory_overlay.icon, accessory_overlay.icon_state, scream = TRUE)
@@ -272,9 +271,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				standing += extra2_accessory_overlay
 
 			if(specific_alpha != 255 && !override_color)
-				for(var/ov in standing)
-					var/image/overlay = ov
-					if(!istype(overlay.color,/list)) //check for a list because setting the alpha of the matrix colors breaks the color (the matrix alpha is set above inside the matrix)
+				for(var/image/overlay as anything in standing)
+					if(!islist(overlay)) //check for a list because setting the alpha of the matrix colors breaks the color (the matrix alpha is set above inside the matrix)
 						overlay.alpha = specific_alpha
 
 			owner.overlays_standing[layer] += standing

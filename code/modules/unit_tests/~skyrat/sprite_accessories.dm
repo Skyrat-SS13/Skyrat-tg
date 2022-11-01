@@ -1,7 +1,7 @@
 // Yea, I'm doing this. This shit annoys me too much.
 // Set your layers properly, or be yelled at angrily. - Rimi
 /datum/unit_test/sprite_accessories
-	var/list/genitals_to_add = list(
+	var/static/list/genitals_to_add = list(
 		/obj/item/organ/external/genital/breasts,
 		/obj/item/organ/external/genital/vagina,
 		/obj/item/organ/external/genital/penis,
