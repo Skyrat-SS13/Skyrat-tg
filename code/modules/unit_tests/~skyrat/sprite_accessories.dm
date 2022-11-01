@@ -67,7 +67,7 @@
 					var/list/layer_entry = sprite_accessory.relevent_layers[layer]
 					if(islist(layer_entry))
 						// Layer filtering for edge cases like cat ears that don't have inner for certain layers.
-						use_main = SPRITE_ACCESSORY_MAIN in layer_entry
+						use_main = (SPRITE_ACCESSORY_MAIN in layer_entry)
 						use_inner = (SPRITE_ACCESSORY_INNER in layer_entry) && use_inner
 						use_extra = (SPRITE_ACCESSORY_EXTRA in layer_entry) && use_extra
 						use_extra2 = (SPRITE_ACCESSORY_EXTRA2 in layer_entry) && use_extra2
