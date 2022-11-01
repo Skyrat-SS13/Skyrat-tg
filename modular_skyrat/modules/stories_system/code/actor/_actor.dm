@@ -17,6 +17,8 @@
 	var/datum/action/story_participant_info/info_button
 	/// Explicit goal of what the actor needs to do, shown in TGUI popup, does not appear if left blank
 	var/actor_goal = ""
+	/// ID of the actors to group them with, for Z reservation. Leaving unchanged will make all actors spawn together
+	var/actor_spawn_id = "default"
 
 /datum/story_actor/Destroy(force, ...)
 	actor_ref = null

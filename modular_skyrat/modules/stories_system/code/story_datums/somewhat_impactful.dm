@@ -34,7 +34,7 @@
 		Plot Summary:
 			CentCom has a funny habit of sending down "surprise" inspectors to see what the station's up to,
 			which provides an opening for a Syndicate agent to slip in, knock out the real inspector, and assume
-			their identity. Very handy when there's things to do and items of value to be stolen.
+			their identity. Very handy when there's things to do and items of value to be stolen, especially %ITEM%.
 		Actors:
 			Ghost:
 				Syndicate Central Command Inspector (1)

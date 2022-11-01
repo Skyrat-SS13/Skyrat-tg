@@ -9,7 +9,32 @@
 		return FALSE
 	to_chat(picked_spawner, span_info("You will be spawned in within [delay_time / 600] minutes with your currently selected character. Make sure all your preferences are set!"))
 	to_chat(picked_spawner, span_info(span_bold("Until then, you will be teleported to an area to set up your character and coordinate with other story participants. This area is OOC, but do not grief.")))
-	var/obj/landmark = locate(/obj/effect/landmark/ghost_story_participant) in GLOB.landmarks_list
+	var/obj/landmark
+	for(var/obj/effect/landmark/ghost_story_participant/actor_spawn in GLOB.landmarks_list)
+		if(actor_spawn.actor_id != actor_spawn_id)
+			continue
+		landmark = actor_spawn
+		break
+	// Handling for reserving a new area
+	if(!landmark)
+		var/datum/map_template/actor_spawn/new_actor = new
+		var/datum/turf_reservation/reservation_area = SSmapping.RequestBlockReservation(new_actor.width, new_actor.height, SSmapping.transit.z_value, /datum/turf_reservation/transit)
+		if(!reservation_area)
+			CRASH("failed to reserve an area for actor spawning")
+		var/turf/bottom_left = TURF_FROM_COORDS_LIST(reservation_area.bottom_left_coords)
+		new_actor.load(bottom_left, centered = FALSE)
+		var/list/affected = new_actor.get_affected_turfs(bottom_left, centered=FALSE)
+		for(var/turf/affected_turf as anything in affected)
+			for(var/obj/effect/landmark/ghost_story_participant/actor_spawn in affected_turf)
+				actor_spawn.actor_id = actor_spawn_id
+		for(var/obj/effect/landmark/ghost_story_participant/actor_spawn in GLOB.landmarks_list)
+			if(actor_spawn.actor_id != actor_spawn_id)
+				continue
+			landmark = actor_spawn
+			break
+		if(!landmark)
+			CRASH("failed to find an actor spawn ID landmark after making a template that should've assigned one!")
+	// Spawning the actor
 	var/mob/living/carbon/human/temporary_human = new(get_turf(landmark))
 	temporary_human.key = picked_spawner.key
 	temporary_human.client?.prefs?.safe_transfer_prefs_to(temporary_human)
