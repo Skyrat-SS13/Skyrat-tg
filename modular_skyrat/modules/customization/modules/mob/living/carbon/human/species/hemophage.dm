@@ -313,6 +313,11 @@
 
 	tumorful_species.tumor_status = is_dormant
 
+	// We make sure to account for dormant tumor vulnerabilities, so that we don't achieve states that shouldn't be possible.
+	if(is_dormant)
+		tumorful_species.toggle_dormant_tumor_vulnerabilities(tumorful_hemophage)
+		tumorful_hemophage.add_movespeed_modifier(/datum/movespeed_modifier/hemophage_dormant_state)
+
 
 /obj/item/organ/internal/heart/hemophage/Remove(mob/living/carbon/tumorless, special = FALSE)
 	. = ..()
@@ -323,6 +328,11 @@
 	var/datum/species/hemophage/tumorless_species = tumorless_hemophage.dna.species
 
 	tumorless_species.tumor_status = PULSATING_TUMOR_MISSING
+
+	// We make sure to account for dormant tumor vulnerabilities, so that we don't achieve states that shouldn't be possible.
+	if(is_dormant)
+		tumorless_species.toggle_dormant_tumor_vulnerabilities(tumorless_hemophage)
+		tumorless_hemophage.remove_movespeed_modifier(/datum/movespeed_modifier/hemophage_dormant_state)
 
 
 /// Simple helper proc that toggles the dormant state of the tumor, which also switches its appearance to reflect said change.
