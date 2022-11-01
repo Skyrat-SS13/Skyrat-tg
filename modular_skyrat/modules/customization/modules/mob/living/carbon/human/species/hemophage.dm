@@ -29,6 +29,9 @@
 /// By how much the blood drain will be divided when the tumor is in a dormant state.
 #define DORMANT_BLOODLOSS_MULTIPLIER 10
 
+/// Generic description for the corrupted organs that don't have one.
+#define GENERIC_CORRUPTED_ORGAN_DESC "This shares the shape of a normal organ, but it's been covered and filled with some sort of midnight-black pulsing tissue, engorged with some sort of infectious mass."
+
 /// We have a tumor, it's active.
 #define PULSATING_TUMOR_ACTIVE 0
 /// We have a tumor, it's dormant.
@@ -229,14 +232,22 @@
 	to_add += list(
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
-			SPECIES_PERK_ICON = "bed",
-			SPECIES_PERK_NAME = "Locker Brooding",
-			SPECIES_PERK_DESC = "Hemophages can delay their Thirst and mend their injuries by \
-	   							resting in a sturdy rectangular-shaped object. So THAT'S why they do that!",
+			SPECIES_PERK_ICON = "moon",
+			SPECIES_PERK_NAME = "Darkness Affinity",
+			SPECIES_PERK_DESC = "A Hemophage is only at home in the darkness, the infection \
+								within a Hemophage seeking to return them to a healthy state \
+								whenever it can be in the shadow. However, light artificial or \
+								otherwise irritates their bodies and the cancer keeping them alive, \
+								not harming them but keeping them from regenerating. Modern \
+								Hemophages have been known to use lockers as a convenient \
+								source of darkness, while the extra protection they provide \
+								against background radiations allows their tumor to avoid \
+								having to expend any blood to maintain minimal bodily functions \
+								so long as their host remains stationary in said locker.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
-			SPECIES_PERK_ICON = "skull",
+			SPECIES_PERK_ICON = "biohazard",
 			SPECIES_PERK_NAME = "Viral Symbiosis",
 			SPECIES_PERK_DESC = "Hemophages, due to their condition, cannot get infected by \
 								other viruses and don't actually require an external source of oxygen \
@@ -250,7 +261,8 @@
 								Thirst of what? Blood! Their tongue allows them to grab people and drink \
 								their blood, and they will suffer severe consequences if they run out. As a note, \
 								it doesn't matter whose blood you drink, it will all be converted into your blood \
-								type when consumed.",
+								type when consumed. That being said, the blood of other sentient humanoids seems \
+								to quench their Thirst for longer than otherwise-acquired blood would.",
 		),
 	)
 
@@ -284,7 +296,7 @@
 	icon = 'modular_skyrat/modules/organs/icons/hemophage_organs.dmi'
 	icon_state = "tumor-on"
 	base_icon_state = "tumor"
-	desc = "Just looking at how it pulsates at the beat of the heart it's wrapped around sends shivers down your spine... <i>The fact it's what keeps them alive makes it all the more terrifying.</i>"
+	desc = "This pulsating organ nearly resembles a normal heart, but it's been twisted beyond any human appearance, having turned to the color of coal. The way it barely fits where the original organ was sends shivers down your spine... <i>The fact that it's what keeps them alive makes it all the more terrifying.</i>"
 	actions_types = list(/datum/action/cooldown/hemophage/toggle_dormant_state)
 	/// Are we currently dormant? Defaults to PULSATING_TUMOR_ACTIVE (so FALSE).
 	var/is_dormant = PULSATING_TUMOR_ACTIVE
@@ -321,7 +333,7 @@
 
 /obj/item/organ/internal/liver/hemophage
 	name = "corrupted liver"
-	desc = "It's covered in a thick layer of tumor tissue. You probably don't want to have this in your body."
+	desc = GENERIC_CORRUPTED_ORGAN_DESC
 	icon = 'modular_skyrat/modules/organs/icons/hemophage_organs.dmi'
 	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
 
@@ -329,13 +341,14 @@
 // This one will eventually have some mechanics tied to it, but for now it's just going to be black.
 /obj/item/organ/internal/stomach/hemophage
 	name = "corrupted stomach"
-	desc = "It's covered in a thick layer of tumor tissue. You probably don't want to have this in your body."
+	desc = GENERIC_CORRUPTED_ORGAN_DESC
 	icon = 'modular_skyrat/modules/organs/icons/hemophage_organs.dmi'
 	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
 
 
 /obj/item/organ/internal/tongue/hemophage
 	name = "corrupted tongue"
+	desc = GENERIC_CORRUPTED_ORGAN_DESC
 	icon = 'modular_skyrat/modules/organs/icons/hemophage_organs.dmi'
 	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
 	actions_types = list(/datum/action/cooldown/hemophage/drain_victim)
@@ -450,7 +463,7 @@
 
 /datum/action/cooldown/hemophage/toggle_dormant_state
 	name = "Enter Dormant State"
-	desc = "Causes your tumor to enter a dormant state, causing it to reduce its blood consumption to a tenth of its usual rate. However, as it now focuses on essential functions only, it causes you to not only lose your ability to enhance your natural regeneration in the dark, but also to become a lot more vulnerable to any form of damage, and to move significantly slower. Be careful with this ability, as it takes a significant amount of time before your tumor is ready to switch state again."
+	desc = "Causes the tumor inside of you to enter a dormant state, causing it to need just a minimum amount of blood to survive. However, as the tumor living in your body is the only thing keeping you still alive, rendering it latent cuts both it and you to just the essential functions to keep standing. It will no longer mend your body even in the darkness, and the lack of blood pumping through you will have you the weakest you've ever felt; and leave you hardly able to run. It is not on a switch, and it will take some time for it to awaken."
 	cooldown_time = 3 MINUTES
 
 
@@ -482,7 +495,7 @@
 
 	if(tumor.is_dormant)
 		name = "Exit Dormant State"
-		desc =  "Causes your tumor to exit its dormant state and become active once again, which will return your blood loss rate to normal, in exchange for your vulnerabilities to be removed and your enhanced natural regeneration to be available once more. Be careful with this ability, as it takes a significant amount of time before your tumor is ready to switch state again."
+		desc =  "Causes the pitch-black mass living inside of you to awaken, allowing your circulation to return and blood to pump freely once again. It fills your legs to let you run again, and longs for the darkness as it did before. You start to feel strength rather than the weakness you felt before. However, the tumor giving you life is not on a switch, and it will take some time to subdue it again."
 		hemophage.add_movespeed_modifier(/datum/movespeed_modifier/hemophage_dormant_state)
 	else
 		name = initial(name)
@@ -552,7 +565,7 @@
 	if(!owner || !ishuman(owner))
 		return FALSE
 
-	to_chat(owner, span_notice("You feel your skin tingle, as your body's natural regeneration rate drastically increases, thanks to the darkness that enrobes it."))
+	to_chat(owner, span_notice("You feel the tumor inside you pulse faster as the absence of light eases its work, allowing it to knit your flesh and reconstruct your body."))
 
 	return TRUE
 
@@ -588,7 +601,7 @@
 	if(!owner)
 		return
 
-	to_chat(owner, span_notice("The tingling sensation on your skin fades away."))
+	to_chat(owner, span_notice("You feel the pulse of the tumor in your chest returning back to normal."))
 
 
 /datum/movespeed_modifier/hemophage_dormant_state
@@ -626,6 +639,8 @@
 #undef DORMANT_STATE_END_MESSAGE
 #undef DORMANT_DAMAGE_MULTIPLIER
 #undef DORMANT_BLOODLOSS_MULTIPLIER
+
+#undef GENERIC_CORRUPTED_ORGAN_DESC
 
 #undef PULSATING_TUMOR_ACTIVE
 #undef PULSATING_TUMOR_DORMANT
