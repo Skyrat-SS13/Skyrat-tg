@@ -64,13 +64,8 @@
 		)
 	belt = /obj/item/modular_computer/tablet/pda/heads/rd
 	ears = /obj/item/radio/headset/heads/rd
-<<<<<<< HEAD
-	shoes = /obj/item/clothing/shoes/jackboots //SKYRAT EDIT CHANGE
-	l_pocket = /obj/item/laser_pointer
-=======
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	l_pocket = /obj/item/laser_pointer/purple
->>>>>>> 554bdfee439 (color codes job laser pointers (#70924))
 	l_hand = /obj/item/clipboard
 
 	backpack = /obj/item/storage/backpack/science
