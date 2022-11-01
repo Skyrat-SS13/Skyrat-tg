@@ -242,18 +242,18 @@
 	color_src = USE_ONE_COLOR
 	extra2 = TRUE
 	extra2_color_src = MUTCOLORS3
+	relevent_layers = list(BODY_ADJ_LAYER = list(SPRITE_ACCESSORY_PRIMARY), BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/snouts/mammal/felephant
 	name = "Elephant (Top)"
 	icon_state = "felephant"
 	extra = TRUE
 	extra_color_src = MUTCOLORS3
+	relevent_layers = list(BODY_ADJ_LAYER = list(SPRITE_ACCESSORY_PRIMARY), BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/snouts/mammal/frhino
 	name = "Horn (Top)"
 	icon_state = "frhino"
-	extra = TRUE
-	extra_color_src = MUTCOLORS3
 
 /datum/sprite_accessory/snouts/mammal/fhusky
 	name = "Husky (Top)"
@@ -355,7 +355,7 @@
 	name = "Skulldog"
 	icon_state = "skulldog"
 	extra = TRUE
-	//extra_color_src = MATRIXED
+	relevent_layers = list(BODY_ADJ_LAYER = list(SPRITE_ACCESSORY_PRIMARY), BODY_FRONT_LAYER = list(SPRITE_ACCESSORY_PRIMARY))
 
 /datum/sprite_accessory/snouts/mammal/hanubus
 	name = "Anubus"

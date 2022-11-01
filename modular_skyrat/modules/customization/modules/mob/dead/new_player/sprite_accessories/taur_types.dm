@@ -112,6 +112,7 @@
 	name = "Cow (Spotted)"
 	icon_state = "cow_spotted"
 	color_src = USE_MATRIXED_COLORS
+	relevent_layers = list(BODY_ADJ_LAYER, ABOVE_BODY_FRONT_HEAD_LAYER)
 
 /datum/sprite_accessory/taur/deer
 	name = "Deer"
@@ -161,12 +162,14 @@
 	extra2 = TRUE
 	extra_color_src = MUTCOLORS2
 	extra2_color_src = MUTCOLORS3
+	relevent_layers = list(BODY_FRONT_LAYER = list(SPRITE_ACCESSORY_PRIMARY), BODY_ADJ_LAYER, ABOVE_BODY_FRONT_HEAD_LAYER)
 
 /datum/sprite_accessory/taur/tentacle
 	name = "Tentacle"
 	icon_state = "tentacle"
 	taur_mode = STYLE_TAUR_SNAKE
 	color_src = USE_ONE_COLOR
+	relevent_layers = list(BODY_FRONT_LAYER, BODY_ADJ_LAYER, ABOVE_BODY_FRONT_HEAD_LAYER)
 
 /datum/sprite_accessory/taur/canine
 	name = "Canine"

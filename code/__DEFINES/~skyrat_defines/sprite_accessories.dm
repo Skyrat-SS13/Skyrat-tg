@@ -1,0 +1,4 @@
+#define SPRITE_ACCESSORY_PRIMARY "primary"
+#define SPRITE_ACCESSORY_INNER "inner"
+#define SPRITE_ACCESSORY_EXTRA "extra"
+#define SPRITE_ACCESSORY_EXTRA2 "extra2"

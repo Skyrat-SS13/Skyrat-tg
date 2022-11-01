@@ -117,7 +117,7 @@
 	name = "Harpy (Top)"
 	icon_state = "harpy_top"
 	color_src = USE_ONE_COLOR
-	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/wings/mammal/harpy/alt
 	name = "Harpy (Alt)"
@@ -130,12 +130,10 @@
 /datum/sprite_accessory/wings/mammal/top/harpy/alt
 	name = "Harpy (Top - Alt)"
 	icon_state = "harpyalt_top"
-	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/wings/mammal/top/harpy/bat
 	name = "Harpy (Top - Bat)"
 	icon_state = "harpybat_top"
-	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/wings/mammal/insect
 	name = "Insectoid"
@@ -185,6 +183,7 @@
 	dimension_x = 46
 	dimension_y = 34
 	center = TRUE
+	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/wings/low_wings/top
 	name = "Low Wings (Top)"
@@ -195,19 +194,23 @@
 	name = "Low Wings (Tri-Tone)"
 	icon_state = "low_tri"
 	color_src = USE_MATRIXED_COLORS
+	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER, BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/wings/low_wings/tri/top
 	name = "Low Wings (Tri-Tone - Top)"
 	icon_state = "low_tri_top"
+	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER, BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/wings/low_wings/jewel
 	name = "Low Wings Jeweled"
 	icon_state = "low_jewel"
 	color_src = USE_MATRIXED_COLORS
+	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER, BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/wings/low_wings/jewel/top
 	name = "Low Wings Jeweled (Top)"
 	icon_state = "low_jewel_top"
+	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER, BODY_ADJ_LAYER)
 
 /*
 *	MOTH
