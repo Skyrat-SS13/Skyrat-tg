@@ -45,3 +45,11 @@
 	cost = 5000
 	cost_change_lower = -3000
 	cost_change_upper = 1000
+
+// DeForest sells medical supplies of most types
+/datum/gun_company/deforest_medical
+	name = "DeForest Medical Corporation"
+	company_flag = CARGO_COMPANY_DEFOREST
+	cost = 8000
+	cost_change_lower = -5000
+	cost_change_upper = 3000
