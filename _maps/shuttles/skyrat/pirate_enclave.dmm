@@ -442,11 +442,11 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/pirate/nri)
 "gS" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4,
 /obj/machinery/firealarm/directional/south,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2,
 /turf/open/floor/carpet/green,
 /area/shuttle/pirate/nri)
 "ha" = (
@@ -614,7 +614,17 @@
 /turf/open/floor/iron/showroomfloor,
 /area/shuttle/pirate/nri)
 "jd" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/structure/displaycase{
+	alert = 0;
+	desc = "A display case containing an expensive forgery, probably.";
+	pixel_y = -4;
+	req_access = list("syndicate");
+	start_showpiece_type = /obj/item/reagent_containers/cup/glass/trophy/gold_cup
+	},
 /turf/open/floor/carpet/green,
 /area/shuttle/pirate/nri)
 "je" = (
@@ -756,6 +766,10 @@
 "lv" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/carpet/green,
+/area/shuttle/pirate/nri)
+"lJ" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "lU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
@@ -1007,14 +1021,11 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/pirate/nri)
 "oU" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 9
-	},
 /obj/structure/closet/secure_closet/personal/wall{
 	pixel_y = -32
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 9
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
 	},
 /turf/open/floor/carpet/green,
 /area/shuttle/pirate/nri)
@@ -1099,10 +1110,13 @@
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "qj" = (
-/obj/item/kirbyplants/random,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 4
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 6
 	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 6
+	},
+/obj/item/kirbyplants/random,
 /turf/open/floor/carpet/green,
 /area/shuttle/pirate/nri)
 "qt" = (
@@ -1666,12 +1680,16 @@
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "zA" = (
-/obj/machinery/porta_turret/syndicate/pod,
+/obj/machinery/porta_turret/syndicate/pod{
+	faction = list("pirate");
+	max_integrity = 100
+	},
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
 /area/shuttle/pirate/nri)
 "zJ" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
 /obj/effect/mob_spawn/ghost_role/human/pirate/enclave/captain{
 	dir = 8
 	},
@@ -2132,7 +2150,9 @@
 /area/shuttle/pirate/nri)
 "FZ" = (
 /obj/machinery/porta_turret/syndicate/pod{
-	dir = 1
+	dir = 1;
+	faction = list("pirate");
+	max_integrity = 100
 	},
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
 /area/shuttle/pirate/nri)
@@ -2417,9 +2437,11 @@
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "JT" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 4
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 9
 	},
 /turf/open/floor/carpet/green,
 /area/shuttle/pirate/nri)
@@ -3013,6 +3035,7 @@
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 10
 	},
+/obj/machinery/light/directional/west,
 /turf/open/floor/iron/dark,
 /area/shuttle/pirate/nri)
 "Tm" = (
@@ -3744,7 +3767,7 @@ wd
 wd
 wd
 wd
-AI
+wd
 "}
 (12,1,1) = {"
 wd
@@ -3871,7 +3894,7 @@ wd
 Qe
 BK
 wd
-ws
+lJ
 bQ
 ws
 Gg
