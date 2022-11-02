@@ -233,6 +233,14 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			if (!message_index)
 				return
 			LAZYREMOVE(messages, LAZYACCESS(messages, message_index))
+		/* SKYRAT EDIT REMOVAL START
+		if ("emergency_meeting")
+			if(!check_holidays(APRIL_FOOLS))
+				return
+			if (!authenticated_as_silicon_or_captain(usr))
+				return
+			emergency_meeting(usr)
+		*/ // SKYRAT EDIT REMOVAL END
 		if ("makePriorityAnnouncement")
 			if (!authenticated_as_silicon_or_captain(usr) && !syndicate)
 				return
@@ -566,7 +574,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				data["importantActionReady"] = COOLDOWN_FINISHED(src, important_action_cooldown)
 				data["shuttleCalled"] = FALSE
 				data["shuttleLastCalled"] = FALSE
-				data["aprilFools"] = SSevents.holidays && SSevents.holidays[APRIL_FOOLS]
+				data["aprilFools"] = check_holidays(APRIL_FOOLS)
 				data["alertLevel"] = SSsecurity_level.get_current_level_as_text()
 				data["authorizeName"] = authorize_name
 				data["canLogOut"] = !issilicon(user)

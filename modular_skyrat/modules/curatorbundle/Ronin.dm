@@ -4,6 +4,6 @@
 
 /obj/item/storage/box/hero/ronin/PopulateContents()
     new /obj/item/clothing/under/costume/skyrat/kamishimo(src)
-    new /obj/item/clothing/head/rice_hat(src)
+    new /obj/item/clothing/head/costume/rice_hat(src)
     new /obj/item/katana/weak/curator(src)
     new /obj/item/clothing/shoes/sandal(src)
