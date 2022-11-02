@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(stories)
 	/// List of initialized story types to pick from, these are the ones that haven't been used yet
 	var/list/to_use_stories = list()
 
-	/// List of intialized types of stories that have already been used
+	/// Assoc list of stories and how much they've been used in format of instance:amount used
 	var/list/used_stories = list()
 
 	/// How much budget the story system has to work with
@@ -51,8 +51,12 @@ SUBSYSTEM_DEF(stories)
 			return
 		else
 			budget -= picked_story.impact
-			to_use_stories -= picked_story
-			used_stories += picked_story
+			if(picked_story in used_stories)
+				used_stories[picked_story] += 1
+			else
+				used_stories[picked_story] = 1
+			if(picked_story.maximum_execute_times <= used_stories[picked_story])
+				to_use_stories -= picked_story
 			message_admins("Story [picked_story] executed; budget is now at [budget].")
 			return
 
@@ -74,7 +78,10 @@ SUBSYSTEM_DEF(stories)
 			to_chat(usr, span_admin("Unable to execute story [chosen_story]!"))
 			qdel(chosen_story)
 		else
-			used_stories += chosen_story
+			if(chosen_story in used_stories)
+				used_stories[chosen_story] += 1
+			else
+				used_stories[chosen_story] = 1
 			to_chat(usr, span_admin("Successfully executed story [chosen_story]!"))
 		return TRUE
 
@@ -107,7 +114,11 @@ SUBSYSTEM_DEF(stories)
 			return
 		else
 			budget -= picked_story.impact
-			to_use_stories -= picked_story
-			used_stories += picked_story
+			if(picked_story in used_stories)
+				used_stories[picked_story] += 1
+			else
+				used_stories[picked_story] = 1
+			if(picked_story.maximum_execute_times <= used_stories[picked_story])
+				to_use_stories -= picked_story
 			message_admins("Roundstart story [picked_story] executed; budget is now at [budget].")
 			return
