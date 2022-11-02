@@ -64,13 +64,13 @@
 					var/use_inner = sprite_accessory.hasinner
 					var/use_extra = sprite_accessory.extra
 					var/use_extra2 = sprite_accessory.extra2
-					var/list/layer_entry = sprite_accessory.relevent_layers[layer]
-					if(islist(layer_entry))
+					if(sprite_accessory.relevent_layers_filter && sprite_accessory.relevent_layers_filter[layer])
+						var/list/filter = bodypart_accessory.relevent_layers_filter[layer]
 						// Layer filtering for edge cases like cat ears that don't have inner for certain layers.
-						use_main = (SPRITE_ACCESSORY_MAIN in layer_entry)
-						use_inner = (SPRITE_ACCESSORY_INNER in layer_entry) && use_inner
-						use_extra = (SPRITE_ACCESSORY_EXTRA in layer_entry) && use_extra
-						use_extra2 = (SPRITE_ACCESSORY_EXTRA2 in layer_entry) && use_extra2
+						use_main = (SPRITE_ACCESSORY_MAIN in filter)
+						use_inner = (SPRITE_ACCESSORY_INNER in filter) && use_inner
+						use_extra = (SPRITE_ACCESSORY_EXTRA in filter) && use_extra
+						use_extra2 = (SPRITE_ACCESSORY_EXTRA2 in filter) && use_extra2
 
 					var/layertext = human_species.mutant_bodyparts_layertext(layer)
 
@@ -80,12 +80,18 @@
 						final_icon_state = "[gender_prefix]_[sprite_accessory.get_special_render_key(human)]_[render_state]_[layertext]"
 						if(sprite_accessory.color_src == USE_MATRIXED_COLORS)
 							final_icon_state += "_primary"
-							var/color_layer_list
+							var/list/color_layer_list
 							if(sprite_accessory.special_render_case)
 								color_layer_list = list("1" = "primary", "2" = "secondary", "3" = "tertiary")
 							else
 								color_layer_list = sprite_accessory.color_layer_names
 							for(var/entry_number in color_layer_list)
+								var/color_entry = color_layer_list[entry_number]
+								if(sprite_accessory.relevent_layers_filter)
+									var/list/filter = sprite_accessory.relevent_layers_filter[layer]
+									if(filter && color_entry in filter)
+										continue
+
 								final_icon_state = "[final_icon_state]_[layertext]_[color_layer_list[entry_number]]"
 
 								if(!icon_exists(accessory_icon, final_icon_state))

@@ -109,13 +109,13 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			var/use_inner = bodypart_accessory.hasinner
 			var/use_extra = bodypart_accessory.extra
 			var/use_extra2 = bodypart_accessory.extra2
-			var/list/layer_entry = bodypart_accessory.relevent_layers[layer]
-			if(islist(layer_entry))
+			if(bodypart_accessory.relevent_layers_filter && bodypart_accessory.relevent_layers_filter[layer])
+				var/list/filter = bodypart_accessory.relevent_layers_filter[layer]
 				// Layer filtering for edge cases like cat ears that don't have inner for certain layers.
-				use_main = (SPRITE_ACCESSORY_MAIN in layer_entry)
-				use_inner = (SPRITE_ACCESSORY_INNER in layer_entry) && use_inner
-				use_extra = (SPRITE_ACCESSORY_EXTRA in layer_entry) && use_extra
-				use_extra2 = (SPRITE_ACCESSORY_EXTRA2 in layer_entry) && use_extra2
+				use_main = (SPRITE_ACCESSORY_MAIN in filter)
+				use_inner = (SPRITE_ACCESSORY_INNER in filter) && use_inner
+				use_extra = (SPRITE_ACCESSORY_EXTRA in filter) && use_extra
+				use_extra2 = (SPRITE_ACCESSORY_EXTRA2 in filter) && use_extra2
 
 			var/layertext = mutant_bodyparts_layertext(layer)
 			if(use_main)
@@ -143,9 +143,14 @@ GLOBAL_LIST_EMPTY(customizable_races)
 							if(USE_MATRIXED_COLORS)
 								var/list/color_list = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
 								for(var/number_text in color_layer_list)
+									var/color_entry = color_layer_list[number_text]
+									if(bodypart_accessory.relevent_layers_filter)
+										var/list/filter = bodypart_accessory.relevent_layers_filter[layer]
+										if(filter && color_entry in filter)
+											continue
 									var/num = text2num(number_text)
 									var/mutable_appearance/matrixed_acce = mutable_appearance(icon_to_use, layer = -layer)
-									matrixed_acce.icon_state = "[render_state]_[layertext]_[color_layer_list[number_text]]"
+									matrixed_acce.icon_state = "[render_state]_[layertext]_[color_entry]"
 									matrixed_acce.color = color_list[num]
 									matrixed_acce.alpha = specific_alpha
 
