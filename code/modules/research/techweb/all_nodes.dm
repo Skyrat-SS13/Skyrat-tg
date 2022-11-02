@@ -994,12 +994,11 @@
 		"borg_upgrade_holding",
 		"borg_upgrade_lavaproof",
 		"borg_upgrade_rped",
-<<<<<<< HEAD
-		"advanced_materials", // SKYRAT ADDITION - ADVANCED MATERIALS UPGRADE
-		"inducer_module", // SKYRAT ADDITION - INDUCER MODULE UPGRADE
-=======
 		"borg_upgrade_hypermod",
->>>>>>> 5ab4e151c55 (Fix for the missing Exofab modules for mining borgs (#70502))
+		// SKYRAT EDIT ADD START
+		"advanced_materials",
+		"inducer_module",
+		// SKYRAT EDIT ADD END
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
