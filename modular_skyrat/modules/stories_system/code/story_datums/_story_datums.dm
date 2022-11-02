@@ -95,7 +95,7 @@
 /// A proc for getting a list of ghosts and returning an equal amount to `ghosts_involved`
 /datum/story_type/proc/get_ghosts(ghosts_to_get)
 	. = list()
-	var/list/candidates = poll_ghost_candidates("Do you want to participate in a story?", ROLE_STORY_PARTICIPANT, FALSE, 15 SECONDS, POLL_IGNORE_STORY_ROLE)
+	var/list/candidates = poll_ghost_candidates("Do you want to participate in a story?", BAN_STORY, FALSE, 15 SECONDS, POLL_IGNORE_STORY_ROLE)
 
 	if(!length(candidates))
 		message_admins("Story type [src] didn't have any ghost candidates, cancelling.")
@@ -127,7 +127,7 @@
 
 		to_ask_players += current_crew
 
-	var/list/candidates = poll_candidates("Do you want to participate in a story?", ROLE_STORY_PARTICIPANT, FALSE, 15 SECONDS, POLL_IGNORE_STORY_ROLE, FALSE, to_ask_players)
+	var/list/candidates = poll_candidates("Do you want to participate in a story?", BAN_STORY, FALSE, 15 SECONDS, POLL_IGNORE_STORY_ROLE, FALSE, to_ask_players)
 	if(!length(candidates))
 		message_admins("Story type [src] didn't have any crew candidates, cancelling.")
 		return FALSE
