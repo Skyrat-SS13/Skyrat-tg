@@ -37,6 +37,7 @@
 	cost = 3000
 	cost_change_lower = -2000
 	cost_change_upper = 2000
+	can_roundstart_pick = FALSE
 
 // Nizhny sells NRI military surplus clothing, gear, and a few firearms
 /datum/gun_company/nri_surplus
@@ -45,13 +46,14 @@
 	cost = 5000
 	cost_change_lower = -3000
 	cost_change_upper = 1000
+	can_roundstart_pick = FALSE
 
 // DeForest sells medical supplies of most types
 /datum/gun_company/deforest_medical
 	name = "DeForest Medical Corporation"
 	company_flag = CARGO_COMPANY_DEFOREST
 	cost = 8000
-	cost_change_lower = -5000
+	cost_change_lower = -1000
 	cost_change_upper = 3000
 
 /datum/gun_company/donk
