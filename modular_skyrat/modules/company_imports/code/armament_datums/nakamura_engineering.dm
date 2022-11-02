@@ -15,6 +15,7 @@
 
 /datum/armament_entry/cargo_gun/nakamura
 	category = "Nakamura Engineering"
+	company_bitflag = CARGO_COMPANY_NAKAMURA
 
 // MOD cores
 
@@ -31,11 +32,13 @@
 	item_type = /obj/item/mod/core/plasma
 	lower_cost = CARGO_CRATE_VALUE * 1.5
 	upper_cost = CARGO_CRATE_VALUE * 2.5
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/cargo_gun/nakamura/core/ethereal
 	item_type = /obj/item/mod/core/ethereal
 	lower_cost = CARGO_CRATE_VALUE * 1.5
 	upper_cost = CARGO_CRATE_VALUE * 2.5
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 // MOD plating
 
@@ -89,11 +92,13 @@
 	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
 	stock_mult = 2
+	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/cargo_gun/nakamura/protection_modules/longfall
 	item_type = /obj/item/mod/module/longfall
 	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
+	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/cargo_gun/nakamura/protection_modules/rad_protection
 	item_type = /obj/item/mod/module/rad_protection
@@ -112,6 +117,7 @@
 	lower_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
 	interest_required = HIGH_INTEREST
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/cargo_gun/nakamura/protection_modules/armor_plates
 	item_type = /obj/item/mod/module/armor_booster/retractplates
@@ -119,6 +125,7 @@
 	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
 	interest_required = HIGH_INTEREST
 	restricted = TRUE
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/cargo_gun/nakamura/protection_modules/accretion
 	item_type = /obj/item/mod/module/ash_accretion
@@ -126,6 +133,7 @@
 	upper_cost = CARGO_CRATE_VALUE * MODULE_HELLA_UPPER
 	interest_required = HIGH_INTEREST
 	restricted = TRUE
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/cargo_gun/nakamura/protection_modules/energy_shield
 	item_type = /obj/item/mod/module/energy_shield
@@ -133,6 +141,7 @@
 	upper_cost = CARGO_CRATE_VALUE * MODULE_HELLA_UPPER
 	interest_required = HIGH_INTEREST
 	restricted = TRUE
+	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 // Utility modules, general purpose stuff that really anyone might want
 
@@ -144,33 +153,39 @@
 	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
 	stock_mult = 2
+	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/cargo_gun/nakamura/utility_modules/regulator
 	item_type = /obj/item/mod/module/thermal_regulator
 	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
 	stock_mult = 2
+	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/cargo_gun/nakamura/utility_modules/mouthhole
 	item_type = /obj/item/mod/module/mouthhole
 	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
+	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/cargo_gun/nakamura/utility_modules/signlang
 	item_type = /obj/item/mod/module/signlang_radio
 	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
+	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/cargo_gun/nakamura/utility_modules/plasma_stabilizer
 	item_type = /obj/item/mod/module/plasma_stabilizer
 	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
+	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/cargo_gun/nakamura/utility_modules/basic_storage
 	item_type = /obj/item/mod/module/storage
 	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
 	stock_mult = 2
+	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/cargo_gun/nakamura/utility_modules/expanded_storage
 	item_type = /obj/item/mod/module/storage/large_capacity
@@ -189,6 +204,7 @@
 	lower_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
 	interest_required = HIGH_INTEREST
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 // Mobility modules, jetpacks and stuff
 
@@ -199,11 +215,13 @@
 	item_type = /obj/item/mod/module/tether
 	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
+	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/cargo_gun/nakamura/mobility_modules/magboot
 	item_type = /obj/item/mod/module/magboot
 	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
+	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/cargo_gun/nakamura/mobility_modules/jetpack
 	item_type = /obj/item/mod/module/jetpack
@@ -228,17 +246,21 @@
 	lower_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
 	interest_required = HIGH_INTEREST
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/cargo_gun/nakamura/mobility_modules/atrocinator
 	item_type = /obj/item/mod/module/atrocinator
 	lower_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
+	interest_required = HIGH_INTEREST
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/cargo_gun/nakamura/mobility_modules/super_jetpack
 	item_type = /obj/item/mod/module/jetpack/advanced
 	lower_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
 	interest_required = HIGH_INTEREST
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 // Novelty modules, goofy stuff that's rare/unprintable, but doesn't fit in any of the above categories
 
@@ -278,24 +300,28 @@
 	lower_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
 	interest_required = HIGH_INTEREST
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/cargo_gun/nakamura/novelty_modules/kinesis
 	item_type = /obj/item/mod/module/anomaly_locked/kinesis/prebuilt
 	lower_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_UPPER
 	interest_required = HIGH_INTEREST
+	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 /datum/armament_entry/cargo_gun/nakamura/novelty_modules/antigrav
 	item_type = /obj/item/mod/module/anomaly_locked/antigrav/prebuilt
 	lower_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_UPPER
 	interest_required = HIGH_INTEREST
+	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 /datum/armament_entry/cargo_gun/nakamura/novelty_modules/teleporter
 	item_type = /obj/item/mod/module/anomaly_locked/teleporter/prebuilt
 	lower_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_UPPER
 	interest_required = HIGH_INTEREST
+	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 #undef MODULE_CHEAP_LOWER
 #undef MODULE_CHEAP_UPPER

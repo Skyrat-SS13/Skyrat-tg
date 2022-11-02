@@ -1,5 +1,6 @@
 /datum/armament_entry/cargo_gun/blacksteel
 	category = "Jarnsmiour Blacksteel Foundation"
+	company_bitflag = CARGO_COMPANY_BLACKSTEEL
 
 // A collection of melee weapons fitting the company's more exotic feeling weapon selection
 
@@ -26,12 +27,14 @@
 	lower_cost = CARGO_CRATE_VALUE * 3
 	upper_cost = CARGO_CRATE_VALUE * 5
 	interest_required = PASSED_INTEREST
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/cargo_gun/blacksteel/blade/shamshir_sabre
 	item_type = /obj/item/storage/belt/sabre/cargo
 	lower_cost = CARGO_CRATE_VALUE * 5
 	upper_cost = CARGO_CRATE_VALUE * 7
 	interest_required = PASSED_INTEREST
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 // Forging tools, blacksteel company sells the tools and materials they use as well!
 
@@ -64,6 +67,7 @@
 	lower_cost = CARGO_CRATE_VALUE * 4
 	upper_cost = CARGO_CRATE_VALUE * 6
 	interest_required = PASSED_INTEREST
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/cargo_gun/blacksteel/forging_metals/fake_copper
 	item_type = /obj/item/stack/sheet/copporcitite/three
@@ -71,6 +75,7 @@
 	lower_cost = CARGO_CRATE_VALUE * 4
 	upper_cost = CARGO_CRATE_VALUE * 6
 	interest_required = PASSED_INTEREST
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/cargo_gun/blacksteel/forging_metals/fake_really_blue_aluminum
 	item_type = /obj/item/stack/sheet/tinumium/three
@@ -78,6 +83,7 @@
 	lower_cost = CARGO_CRATE_VALUE * 4
 	upper_cost = CARGO_CRATE_VALUE * 6
 	interest_required = PASSED_INTEREST
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/cargo_gun/blacksteel/forging_metals/fake_brass
 	item_type = /obj/item/stack/sheet/brussite/three
@@ -85,3 +91,4 @@
 	lower_cost = CARGO_CRATE_VALUE * 4
 	upper_cost = CARGO_CRATE_VALUE * 6
 	interest_required = PASSED_INTEREST
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE

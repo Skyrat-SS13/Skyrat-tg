@@ -25,12 +25,23 @@
 // Nakamura engineering sells modsuits and modsuit accessories
 /datum/gun_company/nakamura_engineering
 	name = "Nakamura Engineering"
+	company_flag = CARGO_COMPANY_NAKAMURA
 	cost = 6000
 	cost_change_lower = -3000
 	cost_change_upper = 2000
 
+// Jarnsmiour sells some melee weapons and some forging related items
 /datum/gun_company/jarnsmiour
 	name = "Jarnsmiour Blacksteel Foundation"
-	cost = 4500
-	cost_change_lower = -2250
+	company_flag = CARGO_COMPANY_BLACKSTEEL
+	cost = 3000
+	cost_change_lower = -2000
 	cost_change_upper = 2000
+
+// Nizhny sells NRI military surplus clothing, gear, and a few firearms
+/datum/gun_company/nri_surplus
+	name = "Nizhny Company Military Surplus"
+	company_flag = CARGO_COMPANY_NRI_SURPLUS
+	cost = 5000
+	cost_change_lower = -3000
+	cost_change_upper = 1000
