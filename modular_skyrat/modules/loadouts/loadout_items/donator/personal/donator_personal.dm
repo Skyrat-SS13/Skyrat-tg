@@ -544,5 +544,5 @@
 
 /datum/loadout_item/shoes/dragheels
 	name = "Fancy Heels"
-	item_path = /obj/item/clothing/shoes/fancyheels/drag
+	item_path = /obj/item/clothing/shoes/fancy_heels/drag
 	ckeywhitelist = list("thedragmeme")

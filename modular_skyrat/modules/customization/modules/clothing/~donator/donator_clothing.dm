@@ -1288,8 +1288,8 @@
 	icon_state = "tactichill"
 
 // Donation reward for thedragmeme
-/obj/item/clothing/shoes/fancyheels/drag
+/obj/item/clothing/shoes/fancy_heels/drag
 
-/obj/item/clothing/shoes/fancyheels/drag/Initialize(mapload)
+/obj/item/clothing/shoes/fancy_heels/drag/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/squeak, list('modular_skyrat/modules/modular_items/lewd_items/sounds/highheel1.ogg' = 1, 'modular_skyrat/modules/modular_items/lewd_items/sounds/highheel2.ogg' = 1), 70)
