@@ -41,7 +41,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	 * Valid example: `list(BODY_BEHIND_LAYER = list(SPRITE_ACCESSORY_MAIN), BODY_FRONT_LAYER = list())`
 	 * The first will only allow the main sprite to render, but the second will block all sprites from rendering for that layer, and any other layers (if enabled) will render every sprite.
 	 */
-	var/list/relevant_layers_filter
+	var/list/relevent_layers_filter
 
 	///This is used to determine whether an accessory gets added to someone. This is important for accessories that are "None", which should have this set to false
 	var/factual = TRUE
