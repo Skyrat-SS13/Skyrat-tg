@@ -27,7 +27,7 @@ export const StoryParticipant = (props, context) => {
                 <GoalPrintout />
               </Stack.Item>
             ) : (
-              <Stack.Item></Stack.Item>
+              <Stack.Item />
             )}
           </Stack>
         </Section>
