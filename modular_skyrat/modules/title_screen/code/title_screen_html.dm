@@ -114,6 +114,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 			<a class="menu_button" href='?src=\ref[src];character_setup=1'>SETUP CHARACTER (<span id="character_slot">[uppertext(client.prefs.read_preference(/datum/preference/name/real_name))]</span>)</a>
 			<a class="menu_button" href='?src=\ref[src];game_options=1'>GAME OPTIONS</a>
 			<a id="be_antag" class="menu_button" href='?src=\ref[src];toggle_antag=1'>[client.prefs.read_preference(/datum/preference/toggle/be_antag) ? "<span class='checked'>☑</span> BE ANTAGONIST" : "<span class='unchecked'>☒</span> BE ANTAGONIST"]</a>
+			<a id="story_pref" class="menu_button" href='?src=\ref[src];toggle_story=1'>[client.prefs.read_preference(/datum/preference/toggle/story_pref) ? "<span class='checked'>☑</span> BE STORY PARTICIPANT" : "<span class='unchecked'>☒</span> BE STORY PARTICIPANT"]</a>
 			<hr>
 			<a class="menu_button" href='?src=\ref[src];server_swap=1'>SWAP SERVERS</a>
 		"}
@@ -152,6 +153,22 @@ GLOBAL_LIST_EMPTY(startup_messages)
 					if (antag_int === antag_marks.length)
 						antag_int = 0;
 					antag_mark.innerHTML = antag_marks\[antag_int\];
+				}
+			}
+
+			var story_int = 0;
+			var story_mark = document.getElementById("story_pref");
+			var story_marks = \[ "<span class='unchecked'>☒</span> BE STORY PARTICIPANT", "<span class='checked'>☑</span> BE STORY PARTICIPANT" \];
+			function toggle_story(setStory) {
+				if(setStory) {
+					story_int = setStory;
+					story_mark.innerHTML = story_marks\[story_int\];
+				}
+				else {
+					story_int++;
+					if (story_int === story_marks.length)
+						story_int = 0;
+					story_mark.innerHTML = story_marks\[story_int\];
 				}
 			}
 

@@ -34,6 +34,13 @@
 		client << output(preferences.read_preference(/datum/preference/toggle/be_antag), "title_browser:toggle_antag")
 		return
 
+	if(href_list["toggle_story"])
+		play_lobby_button_sound()
+		var/datum/preferences/preferences = client.prefs
+		preferences.write_preference(GLOB.preference_entries[/datum/preference/toggle/story_pref], !preferences.read_preference(/datum/preference/toggle/story_pref))
+		client << output(preferences.read_preference(/datum/preference/toggle/story_pref), "title_browser:toggle_story")
+		return
+
 	if(href_list["character_setup"])
 		play_lobby_button_sound()
 		var/datum/preferences/preferences = client.prefs

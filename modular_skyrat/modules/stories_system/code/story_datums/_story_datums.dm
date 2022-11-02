@@ -5,6 +5,8 @@
 	var/desc = "Parent story description"
 	/// How impactful the story is (and how much budget it costs)
 	var/impact = STORY_UNIMPACTFUL
+	/// If this can be a round-start story
+	var/roundstart_eligible = TRUE
 	/// Assoc list of actor datums to create in the form of 'actor typepath:amount'
 	var/list/actor_datums_to_make = list()
 	/// Assoc list of mind ref:actor ref involved in the story
@@ -26,9 +28,9 @@
 	var/involves_crew = 0
 	for(var/datum/story_actor/actor_path as anything in actor_datums_to_make)
 		if(initial(actor_path.ghost_actor))
-			involves_ghosts++
+			involves_ghosts += actor_datums_to_make[actor_path]
 		else
-			involves_crew++
+			involves_crew += actor_datums_to_make[actor_path]
 
 	var/list/ghost_list
 	var/list/player_list
@@ -47,6 +49,46 @@
 			actor_datum.handle_spawning(pick_n_take(player_list), src)
 
 	return TRUE
+
+/// Proc for attempting to execute a story at roundstart, DOES NOT WORK ELSEWHERE
+/datum/story_type/proc/execute_roundstart_story()
+	var/involved_amount = 0
+	for(var/datum/story_actor/actor_path as anything in actor_datums_to_make)
+		involved_amount += actor_datums_to_make[actor_path]
+
+	var/list/involved_people = get_preround_actors(involved_amount)
+	if(!length(involved_people))
+		return FALSE
+
+	for(var/actor_path in actor_datums_to_make)
+		var/mob/dead/new_player/chosen_player = pick_n_take(involved_people)
+		var/datum/story_actor/actor_datum = new actor_path(src)
+		if(actor_datum.ghost_actor)
+			chosen_player.ready = FALSE
+
+		var/mob/dead/observer/observer = new()
+		chosen_player.spawning = TRUE
+		observer.started_as_observer = TRUE
+		chosen_player.close_spawn_windows()
+		var/obj/effect/landmark/observer_start/start_point = locate(/obj/effect/landmark/observer_start) in GLOB.landmarks_list
+		if(start_point)
+			observer.forceMove(get_turf(start_point))
+		observer.key = chosen_player.key
+		observer.client = chosen_player.client
+		observer.set_ghost_appearance()
+		if(observer.client && observer.client.prefs)
+			observer.real_name = observer.client.prefs.read_preference(/datum/preference/name/real_name)
+			observer.name = observer.real_name
+			observer.client.init_verbs()
+		observer.update_appearance()
+		observer.stop_sound_channel(CHANNEL_LOBBYMUSIC)
+		QDEL_NULL(chosen_player.mind)
+		qdel(chosen_player)
+
+		actor_datum.handle_spawning(observer, src)
+
+	return TRUE
+
 
 /// A proc for getting a list of ghosts and returning an equal amount to `ghosts_involved`
 /datum/story_type/proc/get_ghosts(ghosts_to_get)
@@ -77,6 +119,8 @@
 			continue
 		if(current_crew.stat == DEAD)
 			continue
+		if(!current_crew.client?.prefs?.read_preference(/datum/preference/toggle/story_pref))
+			continue
 		// Add smth to check if they're in a story already leter
 
 		to_ask_players += current_crew
@@ -91,6 +135,31 @@
 			message_admins("Story type [src] didn't have maximum crew candidates, executing anyway (Wanted [players_to_get], got [i])")
 			break
 		. += pick_n_take(candidates)
+
+	return .
+
+/datum/story_type/proc/get_preround_actors(players_to_get)
+	. = list()
+	var/list/possible_players = list()
+
+	for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
+		if(player.ready != PLAYER_READY_TO_PLAY)
+			continue
+		if(!player.client?.prefs?.read_preference(/datum/preference/toggle/story_pref))
+			continue
+		// Add smth to check if they're in a story already leter
+
+		possible_players += player
+
+	if(!length(possible_players))
+		message_admins("Roundstart story type [src] didn't have any candidates, cancelling.")
+		return FALSE
+
+	for(var/i in 1 to players_to_get)
+		if(!length(possible_players))
+			message_admins("Roundstart story type [src] didn't have maximum candidates, executing anyway (Wanted [players_to_get], got [i])")
+			break
+		. += pick_n_take(possible_players)
 
 	return .
 
