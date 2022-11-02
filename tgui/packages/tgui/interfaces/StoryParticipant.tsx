@@ -16,7 +16,7 @@ export const StoryParticipant = (props, context) => {
       <Window.Content>
         <Section scrollable fill>
           <Stack vertical>
-            <Stack.Item textColor="red" fontSize="20px">
+            <Stack.Item textColor="blue" fontSize="20px">
               You are the {name}!
             </Stack.Item>
             <Stack.Item>
