@@ -1288,27 +1288,8 @@
 	icon_state = "tactichill"
 
 // Donation reward for thedragmeme
-/datum/greyscale_config/dragheels
-	name = "Fancy  Heels"
-	icon_file = 'modular_skyrat/master_files/icons/donator/GAGS/clothing/shoes/dragheels.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/donator/dragheels/dragheels.json'
+/obj/item/clothing/shoes/fancyheels/drag
 
-/datum/greyscale_config/dragheels/worn
-	name = "Fancy Heels (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/donator/dragheels/dragheels_worn.json'
-
-/obj/item/clothing/shoes/dragheels
-	name = "fancy heels"
-	desc = "A fancy pair of high heels. Tap tap tap... definitely turning a lot of heads."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/shoes.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/feet.dmi'
-	icon_state = "dragheels"
-	greyscale_colors = "#FFFFFF"
-	greyscale_config = /datum/greyscale_config/dragheels
-	greyscale_config_worn = /datum/greyscale_config/dragheels/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/dragheels/worn
-	flags_1 = IS_PLAYER_COLORABLE_1
-
-/obj/item/clothing/shoes/dragheels/Initialize(mapload)
+/obj/item/clothing/shoes/fancyheels/drag/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/squeak, list('modular_skyrat/modules/modular_items/lewd_items/sounds/highheel1.ogg' = 1, 'modular_skyrat/modules/modular_items/lewd_items/sounds/highheel2.ogg' = 1), 70)
