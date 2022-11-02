@@ -14,7 +14,7 @@
 #define MODULE_ANOMALY_UPPER 40
 
 /datum/armament_entry/cargo_gun/nakamura_modsuits
-	category = "Nakamura Engineering MOD Divison"
+	category = NAKAMURA_ENGINEERING_MODSUITS_NAME
 	company_bitflag = CARGO_COMPANY_NAKAMURA_MODSUITS
 
 // MOD cores

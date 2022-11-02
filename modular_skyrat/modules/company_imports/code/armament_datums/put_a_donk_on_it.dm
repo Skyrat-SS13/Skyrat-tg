@@ -1,5 +1,5 @@
 /datum/armament_entry/cargo_gun/donk
-	category = "Donk Corporation"
+	category = DONK_CO_NAME
 	company_bitflag = CARGO_COMPANY_DONK
 
 // Donk Co foods, like donk pockets and ready donk

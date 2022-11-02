@@ -1,5 +1,5 @@
 /datum/armament_entry/cargo_gun/blacksteel
-	category = "Jarnsmiour Blacksteel Foundation"
+	category = BLACKSTEEL_FOUNDATION_NAME
 	company_bitflag = CARGO_COMPANY_BLACKSTEEL
 
 // A collection of melee weapons fitting the company's more exotic feeling weapon selection

@@ -1,5 +1,5 @@
 /datum/armament_entry/cargo_gun/nri_surplus
-	category = "Nizhny Company Military Surplus"
+	category = NRI_SURPLUS_COMPANY_NAME
 	company_bitflag = CARGO_COMPANY_NRI_SURPLUS
 
 // Various NRI clothing items

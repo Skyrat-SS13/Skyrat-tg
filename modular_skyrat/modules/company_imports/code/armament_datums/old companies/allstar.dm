@@ -39,7 +39,6 @@
 
 /datum/armament_entry/cargo_gun/allstar/gunkit
 	subcategory = ARMAMENT_SUBCATEGORY_GUNPART
-	interest_addition = COMPANY_INTEREST_ATTACHMENT
 
 /datum/armament_entry/cargo_gun/allstar/gunkit/tempgun
 	item_type = /obj/item/weaponcrafting/gunkit/temperature

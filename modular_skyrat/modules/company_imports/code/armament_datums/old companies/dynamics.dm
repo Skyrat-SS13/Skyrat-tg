@@ -9,7 +9,6 @@
 	subcategory = ARMAMENT_SUBCATEGORY_AMMO
 	lower_cost = CARGO_CRATE_VALUE * 0.75
 	upper_cost = CARGO_CRATE_VALUE * 1.25
-	interest_addition = COMPANY_INTEREST_AMMO
 
 /datum/armament_entry/cargo_gun/dynamics/ammo/c9mm
 	item_type = /obj/item/ammo_box/c9mm

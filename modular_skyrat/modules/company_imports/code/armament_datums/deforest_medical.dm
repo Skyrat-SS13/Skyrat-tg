@@ -1,5 +1,5 @@
 /datum/armament_entry/cargo_gun/deforest
-	category = "DeForest Medical Corporation"
+	category = DEFOREST_MEDICAL_NAME
 	company_bitflag = CARGO_COMPANY_DEFOREST
 
 // Basic first aid supplies like gauze, sutures, mesh, so on

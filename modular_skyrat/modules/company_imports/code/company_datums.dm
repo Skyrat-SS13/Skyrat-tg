@@ -24,7 +24,7 @@
 
 // Nakamura engineering's MOD division, sells modsuits and modsuit accessories
 /datum/gun_company/nakamura_modsuits
-	name = "Nakamura Engineering MOD Division"
+	name = NAKAMURA_ENGINEERING_MODSUITS_NAME
 	company_flag = CARGO_COMPANY_NAKAMURA_MODSUITS
 	cost = 6000
 	cost_change_lower = 0
@@ -32,7 +32,7 @@
 
 // Jarnsmiour sells some melee weapons and some forging related items
 /datum/gun_company/jarnsmiour
-	name = "Jarnsmiour Blacksteel Foundation"
+	name = BLACKSTEEL_FOUNDATION_NAME
 	company_flag = CARGO_COMPANY_BLACKSTEEL
 	cost = 3000
 	cost_change_lower = 0
@@ -40,7 +40,7 @@
 
 // Nizhny sells NRI military surplus clothing, gear, and a few firearms
 /datum/gun_company/nri_surplus
-	name = "Nizhny Company Military Surplus"
+	name = NRI_SURPLUS_COMPANY_NAME
 	company_flag = CARGO_COMPANY_NRI_SURPLUS
 	cost = 5000
 	cost_change_lower = 0
@@ -48,14 +48,14 @@
 
 // DeForest sells medical supplies of most types
 /datum/gun_company/deforest_medical
-	name = "DeForest Medical Corporation"
+	name = DEFOREST_MEDICAL_NAME
 	company_flag = CARGO_COMPANY_DEFOREST
 	cost = 8000
 	cost_change_lower = 0
 	cost_change_upper = 3000
 
 /datum/gun_company/donk
-	name = "Donk Corporation"
+	name = DONK_CO_NAME
 	company_flag = CARGO_COMPANY_DONK
 	cost = 3000
 	cost_change_lower = 0

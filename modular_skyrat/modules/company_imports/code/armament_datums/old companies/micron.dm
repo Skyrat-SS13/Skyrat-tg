@@ -14,7 +14,6 @@
 
 /datum/armament_entry/cargo_gun/micron/ammo
 	subcategory = ARMAMENT_SUBCATEGORY_AMMO
-	interest_addition = COMPANY_INTEREST_AMMO
 
 /datum/armament_entry/cargo_gun/micron/ammo/cell
 	item_type = /obj/item/stock_parts/cell/microfusion
@@ -25,7 +24,6 @@
 	item_type = /obj/item/storage/box/ammo_box/microfusion
 	lower_cost = CARGO_CRATE_VALUE * 1
 	upper_cost = CARGO_CRATE_VALUE * 2
-	interest_addition = COMPANY_INTEREST_AMMO_BULK
 
 /datum/armament_entry/cargo_gun/micron/ammo/cell_adv
 	item_type = /obj/item/stock_parts/cell/microfusion/advanced
@@ -36,8 +34,6 @@
 	item_type = /obj/item/storage/box/ammo_box/microfusion/advanced
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 3
-	interest_addition = COMPANY_INTEREST_AMMO_BULK
-
 /datum/armament_entry/cargo_gun/micron/ammo/cell_blue
 	item_type = /obj/item/stock_parts/cell/microfusion/bluespace
 	interest_required = HIGH_INTEREST
@@ -49,11 +45,9 @@
 	interest_required = HIGH_INTEREST
 	lower_cost = CARGO_CRATE_VALUE * 3
 	upper_cost = CARGO_CRATE_VALUE * 4
-	interest_addition = COMPANY_INTEREST_AMMO_BULK
 
 /datum/armament_entry/cargo_gun/micron/part
 	subcategory = ARMAMENT_SUBCATEGORY_GUNPART
-	interest_addition = COMPANY_INTEREST_ATTACHMENT
 
 /datum/armament_entry/cargo_gun/micron/part/grip
 	item_type = /obj/item/microfusion_gun_attachment/grip
@@ -88,7 +82,6 @@
 
 /datum/armament_entry/cargo_gun/micron/emitter
 	subcategory = ARMAMENT_SUBCATEGORY_EMITTER
-	interest_addition = COMPANY_INTEREST_ATTACHMENT
 
 /datum/armament_entry/cargo_gun/micron/emitter/enh_emitter
 	item_type = /obj/item/microfusion_phase_emitter/enhanced
@@ -108,7 +101,6 @@
 
 /datum/armament_entry/cargo_gun/micron/cell_upgrade
 	subcategory = ARMAMENT_SUBCATEGORY_CELL_UPGRADE
-	interest_addition = COMPANY_INTEREST_ATTACHMENT
 
 /datum/armament_entry/cargo_gun/micron/cell_upgrade/stabilize
 	item_type = /obj/item/microfusion_cell_attachment/stabiliser

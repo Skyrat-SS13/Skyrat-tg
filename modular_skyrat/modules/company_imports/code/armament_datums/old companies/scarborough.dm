@@ -48,7 +48,6 @@
 
 /datum/armament_entry/cargo_gun/scarborough/part
 	subcategory = ARMAMENT_SUBCATEGORY_GUNPART
-	interest_addition = COMPANY_INTEREST_ATTACHMENT
 
 /datum/armament_entry/cargo_gun/scarborough/part/suppressor
 	item_type = /obj/item/suppressor
@@ -57,7 +56,6 @@
 
 /datum/armament_entry/cargo_gun/scarborough/ammo
 	subcategory = ARMAMENT_SUBCATEGORY_AMMO
-	interest_addition = COMPANY_INTEREST_AMMO
 	restricted = TRUE
 
 /datum/armament_entry/cargo_gun/scarborough/ammo/grenade

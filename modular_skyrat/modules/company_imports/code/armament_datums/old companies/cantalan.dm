@@ -51,7 +51,6 @@
 /datum/armament_entry/cargo_gun/cantalan/ammo
 	subcategory = ARMAMENT_SUBCATEGORY_AMMO
 	stock_mult = 2
-	interest_addition = COMPANY_INTEREST_AMMO
 	lower_cost = CARGO_CRATE_VALUE * 1
 	upper_cost = CARGO_CRATE_VALUE * 2
 
