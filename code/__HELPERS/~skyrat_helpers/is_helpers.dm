@@ -22,7 +22,7 @@
 #define issnail(A) (is_species(A, /datum/species/snail))
 //Antags
 #define ishorrorling(A) (istype(A, /mob/living/simple_animal/hostile/true_changeling))
-#define iscorticalborer(A) (istype(A, /mob/living/simple_animal/cortical_borer))
+#define iscorticalborer(A) (istype(A, /mob/living/basic/cortical_borer))
 #define ismutant(A) (is_species(A, /datum/species/mutant))
 //Customisation bases
 #define isaquatic(A) (is_species(A,/datum/species/aquatic))
