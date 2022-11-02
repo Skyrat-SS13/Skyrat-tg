@@ -27,7 +27,7 @@
 	name = "Nakamura Engineering MOD Division"
 	company_flag = CARGO_COMPANY_NAKAMURA_MODSUITS
 	cost = 6000
-	cost_change_lower = -3000
+	cost_change_lower = 0
 	cost_change_upper = 2000
 
 // Jarnsmiour sells some melee weapons and some forging related items
@@ -35,7 +35,7 @@
 	name = "Jarnsmiour Blacksteel Foundation"
 	company_flag = CARGO_COMPANY_BLACKSTEEL
 	cost = 3000
-	cost_change_lower = -2000
+	cost_change_lower = 0
 	cost_change_upper = 2000
 
 // Nizhny sells NRI military surplus clothing, gear, and a few firearms
@@ -43,7 +43,7 @@
 	name = "Nizhny Company Military Surplus"
 	company_flag = CARGO_COMPANY_NRI_SURPLUS
 	cost = 5000
-	cost_change_lower = -3000
+	cost_change_lower = 0
 	cost_change_upper = 1000
 
 // DeForest sells medical supplies of most types
@@ -51,12 +51,12 @@
 	name = "DeForest Medical Corporation"
 	company_flag = CARGO_COMPANY_DEFOREST
 	cost = 8000
-	cost_change_lower = -1000
+	cost_change_lower = 0
 	cost_change_upper = 3000
 
 /datum/gun_company/donk
 	name = "Donk Corporation"
 	company_flag = CARGO_COMPANY_DONK
 	cost = 3000
-	cost_change_lower = -2000
+	cost_change_lower = 0
 	cost_change_upper = 2000
