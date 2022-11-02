@@ -122,20 +122,25 @@
 
 		return // We don't actually want to do any healing or blood loss without a tumor, y'know.
 
+	var/remove_status_effect = TRUE
+
 	if(hemophage.health < hemophage.maxHealth && tumor_status == PULSATING_TUMOR_ACTIVE && hemophage.blood_volume > MINIMUM_VOLUME_FOR_REGEN && (in_closet(hemophage) || in_total_darkness(hemophage)))
 		var/max_blood_for_regen = hemophage.blood_volume - MINIMUM_VOLUME_FOR_REGEN
 		var/blood_used = NONE
 
 		var/brutes_to_heal = NONE
 		var/brute_damage = hemophage.getBruteLoss()
-		if(brute_damage)
+
+		// We have to check for the damaged bodyparts like this as well, to account for robotic bodyparts, as we don't want to heal those. Stupid, I know, but that's the best proc we got to check that currently.
+		if(brute_damage && length(hemophage.get_damaged_bodyparts(brute = TRUE, burn = FALSE, stamina = FALSE, status = BODYTYPE_ORGANIC)))
 			brutes_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_BRUTE_AMOUNT, brute_damage) * delta_time)
 			blood_used += brutes_to_heal * blood_to_health_multiplier
 			max_blood_for_regen -= brutes_to_heal * blood_to_health_multiplier
 
 		var/burns_to_heal = NONE
 		var/burn_damage = hemophage.getFireLoss()
-		if(burn_damage && max_blood_for_regen > NONE)
+
+		if(burn_damage && max_blood_for_regen > NONE && length(hemophage.get_damaged_bodyparts(brute = FALSE, burn = TRUE, stamina = FALSE, status = BODYTYPE_ORGANIC)))
 			burns_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_BURN_AMOUNT, burn_damage) * delta_time)
 			blood_used += burns_to_heal * blood_to_health_multiplier
 			max_blood_for_regen -= burns_to_heal * blood_to_health_multiplier
@@ -144,6 +149,7 @@
 			hemophage.heal_overall_damage(brutes_to_heal, burns_to_heal, NONE, BODYTYPE_ORGANIC)
 
 		var/toxin_damage = hemophage.getToxLoss()
+
 		if(toxin_damage && max_blood_for_regen > NONE)
 			var/toxins_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_TOXIN_AMOUNT, toxin_damage) * delta_time)
 			blood_used += toxins_to_heal * blood_to_health_multiplier
@@ -151,6 +157,7 @@
 			hemophage.adjustToxLoss(-toxins_to_heal)
 
 		var/cellular_damage = hemophage.getCloneLoss()
+
 		if(cellular_damage && max_blood_for_regen > NONE)
 			var/cells_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_TOXIN_AMOUNT, cellular_damage) * delta_time)
 			blood_used += cells_to_heal * blood_to_health_multiplier
@@ -160,8 +167,9 @@
 		if(blood_used)
 			hemophage.blood_volume = max(hemophage.blood_volume - blood_used, MINIMUM_VOLUME_FOR_REGEN) // Just to clamp the value, to ensure we don't get anything weird.
 			hemophage.apply_status_effect(/datum/status_effect/blood_regen_active)
+			remove_status_effect = FALSE
 
-	else
+	if(remove_status_effect)
 		hemophage.remove_status_effect(/datum/status_effect/blood_regen_active)
 
 	if(in_closet(hemophage)) // No regular bloodloss if you're in a closet
