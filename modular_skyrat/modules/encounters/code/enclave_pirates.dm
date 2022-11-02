@@ -160,14 +160,14 @@
 	generate_items_inside(list(
 		/obj/item/knife/combat = 1,
 		/obj/item/grenade/smokebomb = 1,
-		/obj/item/grenade/frag = 1,
+		/obj/item/grenade/flashbang = 1,
 	),src)
 
 /obj/item/storage/belt/military/nri/pirate/PopulateContents()
 	generate_items_inside(list(
 		/obj/item/knife/combat = 1,
 		/obj/item/grenade/smokebomb = 1,
-		/obj/item/grenade/frag = 1,
+		/obj/item/grenade/flashbang = 1,
 	),src)
 
 /obj/item/paper/fluff/nri_document
