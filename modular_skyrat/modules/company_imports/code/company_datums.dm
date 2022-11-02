@@ -27,8 +27,8 @@
 	name = NAKAMURA_ENGINEERING_MODSUITS_NAME
 	company_flag = CARGO_COMPANY_NAKAMURA_MODSUITS
 	cost = 6000
-	cost_change_lower = 0
-	cost_change_upper = 2000
+	cost_change_lower = -2000
+	cost_change_upper = 3000
 
 // Jarnsmiour sells some melee weapons and some forging related items
 /datum/gun_company/jarnsmiour
@@ -43,7 +43,7 @@
 	name = NRI_SURPLUS_COMPANY_NAME
 	company_flag = CARGO_COMPANY_NRI_SURPLUS
 	cost = 5000
-	cost_change_lower = 0
+	cost_change_lower = -1000
 	cost_change_upper = 1000
 
 // DeForest sells medical supplies of most types
@@ -51,12 +51,22 @@
 	name = DEFOREST_MEDICAL_NAME
 	company_flag = CARGO_COMPANY_DEFOREST
 	cost = 8000
-	cost_change_lower = 0
+	cost_change_lower = -2000
 	cost_change_upper = 3000
 
+// Donk sells donk co branded stuff, microwave foods, donk co merch, and donksoft guns
 /datum/gun_company/donk
 	name = DONK_CO_NAME
 	company_flag = CARGO_COMPANY_DONK
 	cost = 3000
-	cost_change_lower = 0
+	cost_change_lower = -1000
+	cost_change_upper = 2000
+
+// Kahraman sells industrial grade mining equipment
+
+/datum/gun_company/kahraman
+	name = KAHRAMAN_INDUSTRIES_NAME
+	company_flag = CARGO_COMPANY_KAHRAMAN
+	cost = 6000
+	cost_change_lower = -1000
 	cost_change_upper = 2000
