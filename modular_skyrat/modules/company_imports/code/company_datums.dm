@@ -70,3 +70,11 @@
 	cost = 6000
 	cost_change_lower = -1000
 	cost_change_upper = 2000
+
+// Nakamura engineering's tooling division, sells tools, possibly even advanced ones
+/datum/gun_company/nakamura_tooling
+	name = NAKAMURA_ENGINEERING_TOOLING_NAME
+	company_flag = CARGO_COMPANY_NAKAMURA_TOOLING
+	cost = 6000
+	cost_change_lower = -2000
+	cost_change_upper = 3000

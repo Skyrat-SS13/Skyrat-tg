@@ -5,6 +5,7 @@
 #define CARGO_COMPANY_DEFOREST (1<<3)
 #define CARGO_COMPANY_DONK (1<<4)
 #define CARGO_COMPANY_KAHRAMAN (1<<5)
+#define CARGO_COMPANY_NAKAMURA_TOOLING (1<<6)
 
 // Company names, because the armament category and company name need to be the exact same, so use defines like this
 #define NAKAMURA_ENGINEERING_MODSUITS_NAME "Nakamura Engineering MOD Divison"
@@ -13,6 +14,7 @@
 #define DEFOREST_MEDICAL_NAME "DeForest Medical Corporation"
 #define DONK_CO_NAME "Donk Corporation"
 #define KAHRAMAN_INDUSTRIES_NAME "Kahraman Heavy Industries"
+#define NAKAMURA_ENGINEERING_TOOLING_NAME "Nakamura Engineering Tooling Divison"
 
 #define COMPANY_INTEREST_GAIN_BIG 10
 #define COMPANY_INTEREST_GAIN_AVERAGE 5
