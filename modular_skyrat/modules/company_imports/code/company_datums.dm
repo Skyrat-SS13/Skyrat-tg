@@ -22,10 +22,10 @@
 	/// Multiplier for magazine costs
 	var/magazine_cost_mult = 1
 
-// Nakamura engineering sells modsuits and modsuit accessories
-/datum/gun_company/nakamura_engineering
-	name = "Nakamura Engineering"
-	company_flag = CARGO_COMPANY_NAKAMURA
+// Nakamura engineering's MOD division, sells modsuits and modsuit accessories
+/datum/gun_company/nakamura_modsuits
+	name = "Nakamura Engineering MOD Division"
+	company_flag = CARGO_COMPANY_NAKAMURA_MODSUITS
 	cost = 6000
 	cost_change_lower = -3000
 	cost_change_upper = 2000

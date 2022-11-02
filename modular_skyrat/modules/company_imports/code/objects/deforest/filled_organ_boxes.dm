@@ -1,7 +1,7 @@
 /obj/item/storage/organbox/advanced_cyber_eyes
 
 /obj/item/storage/organbox/advanced_cyber_eyes/PopulateContents()
-	new /obj/item/organ/internal/eyes/robotic(src)
+	new /obj/item/organ/internal/eyes/robotic/shield(src)
 
 /obj/item/storage/organbox/advanced_cyber_ears
 

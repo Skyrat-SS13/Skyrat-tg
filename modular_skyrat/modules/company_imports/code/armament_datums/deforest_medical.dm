@@ -11,52 +11,61 @@
 	item_type = /obj/item/stack/medical/gauze/twelve
 	lower_cost = CARGO_CRATE_VALUE * 0.1
 	upper_cost = CARGO_CRATE_VALUE * 0.3
+	stock_mult = 3
 	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/cargo_gun/deforest/first_aid/splint
 	item_type = /obj/item/stack/medical/splint/twelve
 	lower_cost = CARGO_CRATE_VALUE * 0.2
 	upper_cost = CARGO_CRATE_VALUE * 0.5
+	stock_mult = 3
 	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/cargo_gun/deforest/first_aid/bruise_pack
 	item_type = /obj/item/stack/medical/bruise_pack
 	lower_cost = CARGO_CRATE_VALUE * 0.2
 	upper_cost = CARGO_CRATE_VALUE * 0.5
+	stock_mult = 3
 	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/cargo_gun/deforest/first_aid/ointment
 	item_type = /obj/item/stack/medical/ointment
 	lower_cost = CARGO_CRATE_VALUE * 0.2
 	upper_cost = CARGO_CRATE_VALUE * 0.5
+	stock_mult = 3
 	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/cargo_gun/deforest/first_aid/suture
 	item_type = /obj/item/stack/medical/suture
 	lower_cost = CARGO_CRATE_VALUE * 0.4
 	upper_cost = CARGO_CRATE_VALUE * 0.7
+	stock_mult = 3
 
 /datum/armament_entry/cargo_gun/deforest/first_aid/mesh
 	item_type = /obj/item/stack/medical/mesh
 	lower_cost = CARGO_CRATE_VALUE * 0.4
 	upper_cost = CARGO_CRATE_VALUE * 0.7
+	stock_mult = 3
 
 /datum/armament_entry/cargo_gun/deforest/first_aid/bone_gel
 	item_type = /obj/item/stack/medical/bone_gel/four
 	lower_cost = CARGO_CRATE_VALUE * 0.6
 	upper_cost = CARGO_CRATE_VALUE
+	stock_mult = 2
 	interest_required = PASSED_INTEREST
 
 /datum/armament_entry/cargo_gun/deforest/first_aid/medicated_sutures
 	item_type = /obj/item/stack/medical/suture/medicated
 	lower_cost = CARGO_CRATE_VALUE
 	upper_cost = CARGO_CRATE_VALUE * 1.4
+	stock_mult = 2
 	interest_required = PASSED_INTEREST
 
 /datum/armament_entry/cargo_gun/deforest/first_aid/advanced_mesh
 	item_type = /obj/item/stack/medical/mesh/advanced
 	lower_cost = CARGO_CRATE_VALUE
 	upper_cost = CARGO_CRATE_VALUE * 1.4
+	stock_mult = 2
 	interest_required = PASSED_INTEREST
 
 // Various chemicals, with a box of syringes to come with
@@ -103,19 +112,11 @@
 	item_type = /obj/item/reagent_containers/cup/bottle/atropine
 	lower_cost = CARGO_CRATE_VALUE * 0.7
 	upper_cost = CARGO_CRATE_VALUE
-	interest_required = PASSED_INTEREST
-
-/datum/armament_entry/cargo_gun/deforest/medical_chems/ephedrine
-	item_type = /obj/item/reagent_containers/cup/bottle/ephedrine
-	lower_cost = CARGO_CRATE_VALUE * 0.7
-	upper_cost = CARGO_CRATE_VALUE
-	interest_required = PASSED_INTEREST
 
 /datum/armament_entry/cargo_gun/deforest/medical_chems/syriniver
 	item_type = /obj/item/reagent_containers/cup/bottle/syriniver
 	lower_cost = CARGO_CRATE_VALUE * 0.7
 	upper_cost = CARGO_CRATE_VALUE
-	interest_required = PASSED_INTEREST
 
 // Equipment, from defibs to scanners to surgical tools
 
@@ -126,6 +127,7 @@
 	item_type = /obj/item/healthanalyzer
 	lower_cost = CARGO_CRATE_VALUE * 1
 	upper_cost = CARGO_CRATE_VALUE * 2
+	stock_mult = 2
 
 /datum/armament_entry/cargo_gun/deforest/equipment/loaded_defib
 	item_type = /obj/item/defibrillator/loaded
@@ -187,7 +189,7 @@
 	subcategory = "Premium Cybernetic Organs"
 
 /datum/armament_entry/cargo_gun/deforest/cyber_organs/eyes
-	name = "DeForest (tm) FullSense (tm) Cybernetic Eyes"
+	name = "shielded cybernetic eyes"
 	item_type = /obj/item/storage/organbox/advanced_cyber_eyes
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 5
@@ -195,7 +197,7 @@
 	interest_required = PASSED_INTEREST
 
 /datum/armament_entry/cargo_gun/deforest/cyber_organs/ears
-	name = "DeForest (tm) DualWave (tm) Cybernetic Ears"
+	name = "upgraded cybernetic ears"
 	item_type = /obj/item/storage/organbox/advanced_cyber_ears
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 5
@@ -203,7 +205,7 @@
 	interest_required = PASSED_INTEREST
 
 /datum/armament_entry/cargo_gun/deforest/cyber_organs/heart
-	name = "DeForest (tm) LifeBlood (tm) Cybernetic Heart"
+	name = "upgraded cybernetic heart"
 	item_type = /obj/item/storage/organbox/advanced_cyber_heart
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 5
@@ -211,7 +213,7 @@
 	interest_required = PASSED_INTEREST
 
 /datum/armament_entry/cargo_gun/deforest/cyber_organs/liver
-	name = "DeForest (tm) FilterPure (tm) Cybernetic Liver"
+	name = "upgraded cybernetic liver"
 	item_type = /obj/item/storage/organbox/advanced_cyber_liver
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 5
@@ -219,7 +221,7 @@
 	interest_required = PASSED_INTEREST
 
 /datum/armament_entry/cargo_gun/deforest/cyber_organs/lungs
-	name = "DeForest (tm) TrueBreath (tm) Cybernetic Lungs"
+	name = "upgraded cybernetic lungs"
 	item_type = /obj/item/storage/organbox/advanced_cyber_lungs
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 5
@@ -227,7 +229,7 @@
 	interest_required = PASSED_INTEREST
 
 /datum/armament_entry/cargo_gun/deforest/cyber_organs/stomach
-	name = "DeForest (tm) CleanBurn (tm) Cybernetic Stomach"
+	name = "upgraded cybernetic stomach"
 	item_type = /obj/item/storage/organbox/advanced_cyber_stomach
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 5
