@@ -20,7 +20,8 @@
 
 /datum/sprite_accessory/ears/cat
 	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_HUMANOID, SPECIES_GHOUL)
-	relevent_layers = list(BODY_ADJ_LAYER = list(SPRITE_ACCESSORY_MAIN), BODY_FRONT_LAYER)
+	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	relevent_layers_filter = list(BODY_ADJ_LAYER = list(SPRITE_ACCESSORY_MAIN))
 
 /datum/sprite_accessory/ears/mutant
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/ears.dmi'
@@ -73,7 +74,8 @@
 	icon_state = "bigwolfinner"
 	extra = TRUE
 	extra_color_src = NONE
-	relevent_layers = list(BODY_ADJ_LAYER = list(SPRITE_ACCESSORY_MAIN), BODY_FRONT_LAYER)
+	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	relevent_layers_filter = list(BODY_ADJ_LAYER = list(SPRITE_ACCESSORY_MAIN))
 
 /datum/sprite_accessory/ears/mutant/bigwolfdark //alphabetical sort ignored here for ease-of-use
 	name = "Dark Big Wolf"
@@ -84,7 +86,8 @@
 	icon_state = "bigwolfinnerdark"
 	extra = TRUE
 	extra_color_src = NONE
-	relevent_layers = list(BODY_ADJ_LAYER = list(SPRITE_ACCESSORY_MAIN), BODY_FRONT_LAYER)
+	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	relevent_layers_filter = list(BODY_ADJ_LAYER = list(SPRITE_ACCESSORY_MAIN))
 
 /datum/sprite_accessory/ears/mutant/bunny
 	name = "Bunny"
