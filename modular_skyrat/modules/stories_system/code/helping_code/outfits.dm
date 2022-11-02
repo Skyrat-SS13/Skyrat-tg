@@ -109,7 +109,10 @@
 	l_hand = /obj/item/camera
 	r_hand = /obj/item/camera_film
 	back = /obj/item/storage/backpack/satchel
-	backpack_contents = list(/obj/item/camera_film, /obj/item/holochip/thousand)
+	backpack_contents = list(
+		/obj/item/camera_film = 1,
+		/obj/item/holochip/thousand = 1,
+	)
 
 /datum/outfit/tourist/post_equip(mob/living/carbon/human/equipped_human, visualsOnly = FALSE)
 	if(visualsOnly)
@@ -120,10 +123,16 @@
 	worn_id.update_label()
 
 /datum/outfit/tourist/wealthy
-	backpack_contents = list(/obj/item/camera_film, /obj/item/holochip/ten_thousand)
+	backpack_contents = list(
+		/obj/item/camera_film = 1,
+		/obj/item/holochip/ten_thousand = 1,
+	)
 
 /datum/outfit/tourist/broke
-	backpack_contents = list(/obj/item/camera_film, /obj/item/holochip/hundred)
+	backpack_contents = list(
+		/obj/item/camera_film = 1,
+		/obj/item/holochip/hundred = 1,
+	)
 
 /datum/outfit/salaryman
 	name = "Salaryman"
@@ -136,11 +145,15 @@
 	shoes = /obj/item/clothing/shoes/laceup
 	l_hand = /obj/item/storage/briefcase/empty
 	back = /obj/item/storage/backpack/satchel
-	backpack_contents = list(/obj/item/holochip/thousand)
+	backpack_contents = list(
+		/obj/item/holochip/thousand,
+	)
 
 /datum/outfit/salaryman/boss
 	name = "Salaryman's Boss"
-	backpack_contents = list(/obj/item/holochip/ten_thousand)
+	backpack_contents = list(
+		/obj/item/holochip/ten_thousand = 1,
+	)
 
 /datum/outfit/salaryman/post_equip(mob/living/carbon/human/equipped_human, visualsOnly = FALSE)
 	if(visualsOnly)
