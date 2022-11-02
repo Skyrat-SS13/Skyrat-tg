@@ -101,7 +101,7 @@
 	id = /obj/item/card/id/passport
 	id_trim = /datum/id_trim/job/assistant/tourist
 	uniform = /obj/item/clothing/under/shorts/grey
-	suit = /obj/item/clothing/suit/hawaiian_blue
+	suit = /obj/item/clothing/suit/hawaiian_shirt/random
 	ears = /obj/item/radio/headset
 	glasses = /obj/item/clothing/glasses/fake_sunglasses/aviator
 	head = /obj/item/clothing/head/fedora/beige
@@ -119,47 +119,11 @@
 	worn_id.registered_name = equipped_human.real_name
 	worn_id.update_label()
 
-/datum/outfit/tourist/blue
-	suit = /obj/item/clothing/suit/hawaiian_blue
-
-/datum/outfit/tourist/green
-	suit = /obj/item/clothing/suit/hawaiian_green
-
-/datum/outfit/tourist/orange
-	suit = /obj/item/clothing/suit/hawaiian_orange
-
-/datum/outfit/tourist/purple
-	suit = /obj/item/clothing/suit/hawaiian_purple
-
 /datum/outfit/tourist/wealthy
 	backpack_contents = list(/obj/item/camera_film, /obj/item/holochip/ten_thousand)
 
-/datum/outfit/tourist/wealthy/blue
-	suit = /obj/item/clothing/suit/hawaiian_blue
-
-/datum/outfit/tourist/wealthy/green
-	suit = /obj/item/clothing/suit/hawaiian_green
-
-/datum/outfit/tourist/wealthy/orange
-	suit = /obj/item/clothing/suit/hawaiian_orange
-
-/datum/outfit/tourist/wealthy/purple
-	suit = /obj/item/clothing/suit/hawaiian_purple
-
 /datum/outfit/tourist/broke
 	backpack_contents = list(/obj/item/camera_film, /obj/item/holochip/hundred)
-
-/datum/outfit/tourist/broke/blue
-	suit = /obj/item/clothing/suit/hawaiian_blue
-
-/datum/outfit/tourist/broke/green
-	suit = /obj/item/clothing/suit/hawaiian_green
-
-/datum/outfit/tourist/broke/orange
-	suit = /obj/item/clothing/suit/hawaiian_orange
-
-/datum/outfit/tourist/broke/purple
-	suit = /obj/item/clothing/suit/hawaiian_purple
 
 /datum/outfit/salaryman
 	name = "Salaryman"

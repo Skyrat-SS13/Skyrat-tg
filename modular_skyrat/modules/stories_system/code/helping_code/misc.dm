@@ -1,6 +1,12 @@
 /obj/item/modular_computer/tablet/pda/centcom
 	name = "\improper Centcom PDA"
-	loaded_cartridge = /obj/item/computer_hardware/hard_drive/portable/command/captain
+	starting_programs = list(
+		/datum/computer_file/program/crew_manifest,
+		/datum/computer_file/program/status,
+		/datum/computer_file/program/science,
+		/datum/computer_file/program/robocontrol,
+		/datum/computer_file/program/budgetorders,
+	)
 	inserted_item = /obj/item/pen/fountain/captain
 	greyscale_colors = "#017941#0060b8"
 

@@ -129,15 +129,13 @@
 /datum/story_actor/ghost/spawn_in_arrivals/send_them_in(mob/living/carbon/human/to_send_human)
 	to_send_human.client?.prefs?.safe_transfer_prefs_to(to_send_human)
 	. = ..()
-	SSjob.get_last_resort_spawn_points().JoinPlayerHere(to_send_human, TRUE) // This will drop them on the arrivals shuttle, hopefully buckled to a chair. Worst case, they go to the error room.
+	var/atom/spawn_location = SSjob.get_last_resort_spawn_points()
+	spawn_location.JoinPlayerHere(to_send_human, TRUE) // This will drop them on the arrivals shuttle, hopefully buckled to a chair. Worst case, they go to the error room.
 
 /datum/story_actor/ghost/spawn_in_arrivals/tourist
 	name = "Obnoxious Tourist"
 	actor_outfits = list(
-		/datum/outfit/tourist/blue,
-		/datum/outfit/tourist/green,
-		/datum/outfit/tourist/orange,
-		/datum/outfit/tourist/purple,
+		/datum/outfit/tourist
 	)
 	actor_info = "After saving up your hard earned money, you're so excited to be here on the frontier as a tourist! You've dreamed of being out here for years, and now you can \
 	finally make it happen. You're coming into the station on the arrivals shuttle now, so get ready for the vacation day of a lifetime!"
@@ -154,10 +152,7 @@
 /datum/story_actor/ghost/spawn_in_arrivals/tourist/broke
 	name = "Broke Tourist"
 	actor_outfits = list(
-		/datum/outfit/tourist/broke/blue,
-		/datum/outfit/tourist/broke/green,
-		/datum/outfit/tourist/broke/orange,
-		/datum/outfit/tourist/broke/purple,
+		/datum/outfit/tourist/broke
 	)
 	actor_info = "After saving up your hard earned money, you're so excited to be here on the frontier as a tourist! You've dreamed of being out here for years, and now you can \
 	finally make it happen. You're coming into the station on the arrivals shuttle now, so get ready for the vacation day of a lifetime!\n\n\
@@ -169,10 +164,7 @@
 /datum/story_actor/ghost/spawn_in_arrivals/tourist/wealthy
 	name = "Wealthy Tourist"
 	actor_outfits = list(
-		/datum/outfit/tourist/wealthy/blue,
-		/datum/outfit/tourist/wealthy/green,
-		/datum/outfit/tourist/wealthy/orange,
-		/datum/outfit/tourist/wealthy/purple,
+		/datum/outfit/tourist/wealthy
 	)
 	actor_info = "After saving up your hard earned money, you're so excited to be here on the frontier as a tourist! You've dreamed of being out here for years, and now you can \
 	finally make it happen. You're coming into the station on the arrivals shuttle now, so get ready for the vacation day of a lifetime!\n\n\

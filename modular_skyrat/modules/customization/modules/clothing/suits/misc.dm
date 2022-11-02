@@ -320,3 +320,10 @@
 	greyscale_config_worn = /datum/greyscale_config/hawaiian_shirt/worn
 	greyscale_colors = "#313B82#CCCFF0"
 	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/suit/hawaiian_shirt/random/Initialize(mapload)
+	. = ..()
+	//Generate random valid colors for the shirt.
+	var/generated_base_color = "#" + random_color()
+	var/generated_second_color = "#" + random_color()
+	set_greyscale(colors = list(generated_base_color, generated_second_color))
