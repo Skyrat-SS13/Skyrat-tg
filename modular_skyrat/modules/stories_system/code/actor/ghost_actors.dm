@@ -129,8 +129,7 @@
 /datum/story_actor/ghost/spawn_in_arrivals/send_them_in(mob/living/carbon/human/to_send_human)
 	to_send_human.client?.prefs?.safe_transfer_prefs_to(to_send_human)
 	. = ..()
-	to_send_human.equipOutfit(pick(actor_outfits))
-	to_send_human.forceMove(SSjob.get_last_resort_spawn_points()) // This will drop them on the arrivals shuttle.
+	SSjob.get_last_resort_spawn_points().JoinPlayerHere(to_send_human, TRUE) // This will drop them on the arrivals shuttle, hopefully buckled to a chair. Worst case, they go to the error room.
 
 /datum/story_actor/ghost/spawn_in_arrivals/tourist
 	name = "Obnoxious Tourist"
@@ -191,7 +190,7 @@
 	actor_goal = "Explore the station! Partake in the sights! Be an annoying tourist who takes photos of everything! Ask the crew stupid repetitive questions they've heard \
 	thousands of times! Cause problems with your language barrier! Be an obnoxious tourist who didn't learn anything about the language before coming here! Blame the crew \
 	for not accomodating to your inability to speak their language!\n\n\
-	NOTE: Common will be removed from your character. Have a backup language selected that you will be using as your primary language to communicate with."
+	NOTE: Common will be removed from your character when you spawn on the station. Have a backup language selected that you will be using as your primary language to communicate with."
 
 /datum/story_actor/ghost/spawn_in_arrivals/tourist/monolingual/send_them_in(mob/living/carbon/human/to_send_human)
 	. = ..()
@@ -208,11 +207,11 @@
 	If he leaves, you leave. It's not a great life, but it's the life you have. Try to get some stress relief in. Commiserate with your coworkers on the situation without \
 	offending the boss. Find a nice gift to bring back to your significant other when you leave."
 
-/datum/story_actor/ghost/spawn_in_arrivals/salaryman_drinking_with_boss/handle_spawning(mob/picked_spawner, datum/story_type/current_story)
+/datum/story_actor/ghost/spawn_in_arrivals/salaryman_drinking_with_boss/send_them_in(mob/picked_spawner, datum/story_type/current_story)
+	. = ..()
 	var/datum/story_type/unimpactful/drinking_with_the_boss/drinking_with_the_boss = involved_story
 	actor_info = replacetext(actor_info, "%BOSS_NAME%", drinking_with_the_boss?.boss?.real_name)
 	actor_goal = replacetext(actor_goal, "%BOSS_NAME%", drinking_with_the_boss?.boss?.real_name)
-	return ..()
 
 /datum/story_actor/ghost/spawn_in_arrivals/salaryman_boss
 	name = "Salaryman's Boss"
@@ -225,6 +224,12 @@
 	actor_goal = "Drink with your subordinates at the bar, and consume good food. When you drink, they will drink as well. Deviation from this tradition is to be frowned upon. \
 	Remind your employees how much they should be respecting you for this opportunity. Demand the staff of the station treat you with the same level of respect. Be an annoying \
 	boss. Establish your authority as the most important person in the room at all times."
+
+/datum/story_actor/ghost/spawn_in_arrivals/salaryman_boss/send_them_in(mob/living/carbon/human/to_send_human)
+	. = ..()
+	if(istype(current_story, /datum/story_type/unimpactful/drinking_with_the_boss))
+		var/datum/story_type/unimpactful/drinking_with_the_boss/drinking_story = current_story
+		drinking_story.boss = picked_spawner
 
 /datum/story_actor/ghost/spawn_in_arrivals/shore_leave
 	name = "Shore Leave Sailor"
