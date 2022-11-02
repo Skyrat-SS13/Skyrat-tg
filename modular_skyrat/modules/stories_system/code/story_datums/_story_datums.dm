@@ -7,6 +7,8 @@
 	var/impact = STORY_UNIMPACTFUL
 	/// If this can be a round-start story
 	var/roundstart_eligible = TRUE
+	/// How many times this story can execute at most
+	var/maximum_execute_times = 1
 	/// Assoc list of actor datums to create in the form of 'actor typepath:amount'
 	var/list/actor_datums_to_make = list()
 	/// Assoc list of mind ref:actor ref involved in the story
