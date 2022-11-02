@@ -99,17 +99,17 @@
 	name = "Tourist"
 
 	id = /obj/item/card/id/passport
-	id_trim = /datum/id_trim/assistant/tourist
+	id_trim = /datum/id_trim/job/assistant/tourist
 	uniform = /obj/item/clothing/under/shorts/grey
 	suit = /obj/item/clothing/suit/hawaiian_blue
 	ears = /obj/item/radio/headset
-	eyes = /obj/item/clothing/glasses/fake_sunglasses/aviator
+	glasses = /obj/item/clothing/glasses/fake_sunglasses/aviator
 	head = /obj/item/clothing/head/fedora/beige
 	shoes = /obj/item/clothing/shoes/sandal
 	l_hand = /obj/item/camera
 	r_hand = /obj/item/camera_film
 	back = /obj/item/storage/backpack/satchel
-	backpack_contents = list(/obj/item/camera_film, /obj/item/stack/spacecash/c1000)
+	backpack_contents = list(/obj/item/camera_film, /obj/item/holochip/thousand)
 
 /datum/outfit/tourist/post_equip(mob/living/carbon/human/equipped_human, visualsOnly = FALSE)
 	if(visualsOnly)
@@ -132,7 +132,7 @@
 	suit = /obj/item/clothing/suit/hawaiian_purple
 
 /datum/outfit/tourist/wealthy
-	backpack_contents = list(/obj/item/camera_film, /obj/item/stack/spacecash/c10000)
+	backpack_contents = list(/obj/item/camera_film, /obj/item/holochip/ten_thousand)
 
 /datum/outfit/tourist/wealthy/blue
 	suit = /obj/item/clothing/suit/hawaiian_blue
@@ -147,7 +147,7 @@
 	suit = /obj/item/clothing/suit/hawaiian_purple
 
 /datum/outfit/tourist/broke
-	backpack_contents = list(/obj/item/camera_film, /obj/item/stack/spacecash/c100)
+	backpack_contents = list(/obj/item/camera_film, /obj/item/holochip/hundred)
 
 /datum/outfit/tourist/broke/blue
 	suit = /obj/item/clothing/suit/hawaiian_blue
@@ -165,18 +165,18 @@
 	name = "Salaryman"
 
 	id = /obj/item/card/id/passport
-	id_trim = /datum/id_trim/assistant/tourist
+	id_trim = /datum/id_trim/job/assistant/tourist
 	uniform = /obj/item/clothing/under/suit/black_really
 	neck = /obj/item/clothing/neck/tie/black/tied
 	ears = /obj/item/radio/headset
 	shoes = /obj/item/clothing/shoes/laceup
 	l_hand = /obj/item/storage/briefcase/empty
 	back = /obj/item/storage/backpack/satchel
-	backpack_contents = list(/obj/item/stack/spacecash/c1000)
+	backpack_contents = list(/obj/item/holochip/thousand)
 
 /datum/outfit/salaryman/boss
 	name = "Salaryman's Boss"
-	backpack_contents = list(/obj/item/stack/spacecash/c10000)
+	backpack_contents = list(/obj/item/holochip/ten_thousand)
 
 /datum/outfit/salaryman/post_equip(mob/living/carbon/human/equipped_human, visualsOnly = FALSE)
 	if(visualsOnly)

@@ -50,8 +50,8 @@
 	name = "Drinking With The Boss"
 	desc = "Some salarymen and their boss are coming to the station."
 	actor_datums_to_make = list(
-		/datum/story_actor/ghost/salaryman_boss = 1,
-		/datum/story_actor/ghost/salaryman_drinking_with_boss = 3,
+		/datum/story_actor/ghost/spawn_in_arrivals/salaryman_boss = 1,
+		/datum/story_actor/ghost/spawn_in_arrivals/salaryman_drinking_with_boss = 3,
 	)
 	maximum_execute_times = 1
 	/// Ref to the boss

@@ -173,7 +173,7 @@
 		/datum/outfit/tourist/wealthy/green,
 		/datum/outfit/tourist/wealthy/orange,
 		/datum/outfit/tourist/wealthy/purple,
-
+	)
 	actor_info = "After saving up your hard earned money, you're so excited to be here on the frontier as a tourist! You've dreamed of being out here for years, and now you can \
 	finally make it happen. You're coming into the station on the arrivals shuttle now, so get ready for the vacation day of a lifetime!\n\n\
 	The best part? You won the lottery recently and walked away with a solid 10 grand in credits! As a newly filthy rich tourist, it's your solemn duty to \
@@ -227,9 +227,8 @@
 
 /datum/story_actor/ghost/spawn_in_arrivals/salaryman_boss/send_them_in(mob/living/carbon/human/to_send_human)
 	. = ..()
-	if(istype(current_story, /datum/story_type/unimpactful/drinking_with_the_boss))
-		var/datum/story_type/unimpactful/drinking_with_the_boss/drinking_story = current_story
-		drinking_story.boss = picked_spawner
+	var/datum/story_type/unimpactful/drinking_with_the_boss/drinking_story = involved_story
+	drinking_story.boss = to_send_human
 
 /datum/story_actor/ghost/spawn_in_arrivals/shore_leave
 	name = "Shore Leave Sailor"
