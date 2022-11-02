@@ -47,25 +47,23 @@
 /obj/machinery/button/window/reinforced/polarized
 	name = "Polorized Window Button"
 	desc = "A remote control switch for polarized windows."
+	var/active = FALSE
 
-/obj/machinery/button/window/reinforced/polarized/attack_hand(mob/living/user)
+/obj/machinery/button/window/reinforced/polarized/attack_hand(mob/living/user, list/modifiers)
 	if(..())
 		return TRUE
 
 	toggle_tint()
 
 /obj/machinery/button/window/reinforced/polarized/proc/toggle_tint()
-	use_power(5)
+    active = !active
 
-	initialized_button = !initialized_button
-	update_icon()
-
-	for(var/obj/structure/window/reinforced/fulltile/polarized/window)
-		if (window.id == src.id || !window.id)
-			window.toggle()
-
+    for(var/obj/structure/window/reinforced/fulltile/polarized/W)
+        if (W.id == src.id || !W.id)
+            INVOKE_ASYNC(W, /obj/structure/window/reinforced/fulltile/polarized/proc/toggle)
 
 /obj/machinery/button/window/reinforced/polarized/power_change()
-	..()
-	if(initialized_button && !powered(power_channel))
-		toggle_tint()
+    ..()
+    if(active && !powered(power_channel))
+        active = !active
+        toggle_tint()
