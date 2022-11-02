@@ -73,7 +73,7 @@
 /datum/outfit/mafioso
 	name = "Mafioso"
 
-	id = /obj/item/card/id/advanced
+	id = /obj/item/card/id/passport
 	id_trim = /datum/id_trim/mobster
 	uniform = /obj/item/clothing/under/suit/black_really
 	neck = /obj/item/clothing/neck/tie/red/tied
@@ -94,3 +94,96 @@
 	worn_id.registered_name = equipped_human.real_name
 	worn_id.update_label()
 	worn_id.update_icon()
+
+/datum/outfit/tourist
+	name = "Tourist"
+
+	id = /obj/item/card/id/passport
+	id_trim = /datum/id_trim/assistant/tourist
+	uniform = /obj/item/clothing/under/shorts/grey
+	suit = /obj/item/clothing/suit/hawaiian_blue
+	ears = /obj/item/radio/headset
+	eyes = /obj/item/clothing/glasses/fake_sunglasses/aviator
+	head = /obj/item/clothing/head/fedora/beige
+	shoes = /obj/item/clothing/shoes/sandal
+	l_hand = /obj/item/camera
+	r_hand = /obj/item/camera_film
+	back = /obj/item/storage/backpack/satchel
+	backpack_contents = list(/obj/item/camera_film, /obj/item/stack/spacecash/c1000)
+
+/datum/outfit/tourist/post_equip(mob/living/carbon/human/equipped_human, visualsOnly = FALSE)
+	if(visualsOnly)
+		return
+
+	var/obj/item/card/id/worn_id = equipped_human.wear_id
+	worn_id.registered_name = equipped_human.real_name
+	worn_id.update_label()
+
+/datum/outfit/tourist/blue
+	suit = /obj/item/clothing/suit/hawaiian_blue
+
+/datum/outfit/tourist/green
+	suit = /obj/item/clothing/suit/hawaiian_green
+
+/datum/outfit/tourist/orange
+	suit = /obj/item/clothing/suit/hawaiian_orange
+
+/datum/outfit/tourist/purple
+	suit = /obj/item/clothing/suit/hawaiian_purple
+
+/datum/outfit/tourist/wealthy
+	backpack_contents = list(/obj/item/camera_film, /obj/item/stack/spacecash/c10000)
+
+/datum/outfit/tourist/wealthy/blue
+	suit = /obj/item/clothing/suit/hawaiian_blue
+
+/datum/outfit/tourist/wealthy/green
+	suit = /obj/item/clothing/suit/hawaiian_green
+
+/datum/outfit/tourist/wealthy/orange
+	suit = /obj/item/clothing/suit/hawaiian_orange
+
+/datum/outfit/tourist/wealthy/purple
+	suit = /obj/item/clothing/suit/hawaiian_purple
+
+/datum/outfit/tourist/broke
+	backpack_contents = list(/obj/item/camera_film, /obj/item/stack/spacecash/c100)
+
+/datum/outfit/tourist/broke/blue
+	suit = /obj/item/clothing/suit/hawaiian_blue
+
+/datum/outfit/tourist/broke/green
+	suit = /obj/item/clothing/suit/hawaiian_green
+
+/datum/outfit/tourist/broke/orange
+	suit = /obj/item/clothing/suit/hawaiian_orange
+
+/datum/outfit/tourist/broke/purple
+	suit = /obj/item/clothing/suit/hawaiian_purple
+
+/datum/outfit/salaryman
+	name = "Salaryman"
+
+	id = /obj/item/card/id/passport
+	id_trim = /datum/id_trim/assistant/tourist
+	uniform = /obj/item/clothing/under/suit/black_really
+	neck = /obj/item/clothing/neck/tie/black/tied
+	ears = /obj/item/radio/headset
+	shoes = /obj/item/clothing/shoes/laceup
+	l_hand = /obj/item/storage/briefcase/empty
+	back = /obj/item/storage/backpack/satchel
+	backpack_contents = list(/obj/item/stack/spacecash/c1000)
+
+/datum/outfit/salaryman/boss
+	name = "Salaryman's Boss"
+	backpack_contents = list(/obj/item/stack/spacecash/c10000)
+
+/datum/outfit/salaryman/post_equip(mob/living/carbon/human/equipped_human, visualsOnly = FALSE)
+	if(visualsOnly)
+		return
+
+	var/obj/item/card/id/worn_id = equipped_human.wear_id
+	worn_id.registered_name = equipped_human.real_name
+	worn_id.update_label()
+
+
