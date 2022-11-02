@@ -27,8 +27,8 @@
 /obj/structure/window/reinforced/fulltile/ice
 
 /obj/structure/window/reinforced/fulltile/polarized
-	name = "electrochromic window"
-	desc = "Adjusts its tint with voltage. Might take a few good hits to shatter it."
+	name = "Polorized Window"
+	desc = "Adjusts its tint with voltage, it is reinforced with metal rods."
 	var/id = null
 
 /obj/structure/window/reinforced/fulltile/polarized/proc/toggle()
@@ -41,7 +41,7 @@
 		set_opacity(TRUE)
 
 /obj/machinery/button/window/reinforced/polarized
-	name = "window tint control"
+	name = "Polorized Window Button"
 	desc = "A remote control switch for polarized windows."
 	var/range = 7
 
