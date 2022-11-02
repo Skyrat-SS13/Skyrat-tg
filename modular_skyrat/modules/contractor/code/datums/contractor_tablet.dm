@@ -28,15 +28,18 @@
 		return
 
 	var/mob/living/user = usr
-	var/obj/item/computer_hardware/hard_drive/portable/syndicate/hard_drive = computer.all_components[MC_HDD]
+	var/obj/item/modular_computer/tablet/syndicate_contract_uplink/preset/uplink/uplink_computer = computer
+
+	if(!istype(uplink_computer))
+		return
 
 	switch(action)
 		if("PRG_contract-accept")
 			var/contract_id = text2num(params["contract_id"])
 
 			// Set as the active contract
-			hard_drive.opfor_data.contractor_hub.assigned_contracts[contract_id].status = CONTRACT_STATUS_ACTIVE
-			hard_drive.opfor_data.contractor_hub.current_contract = hard_drive.opfor_data.contractor_hub.assigned_contracts[contract_id]
+			uplink_computer.opfor_data.contractor_hub.assigned_contracts[contract_id].status = CONTRACT_STATUS_ACTIVE
+			uplink_computer.opfor_data.contractor_hub.current_contract = uplink_computer.opfor_data.contractor_hub.assigned_contracts[contract_id]
 
 			program_icon_state = "single_contract"
 			return TRUE
@@ -59,16 +62,16 @@
 			if (!assigned)
 				opfor_data.contractor_hub.create_contracts(opfor_data.mind_reference)
 
-				hard_drive.opfor_data = opfor_data
+				uplink_computer.opfor_data = opfor_data
 
 				program_icon_state = "contracts"
 				assigned = TRUE
 			return TRUE
 		if("PRG_call_extraction")
-			if (hard_drive.opfor_data.contractor_hub.current_contract.status != CONTRACT_STATUS_EXTRACTING)
-				if (hard_drive.opfor_data.contractor_hub.current_contract.handle_extraction(user))
+			if (uplink_computer.opfor_data.contractor_hub.current_contract.status != CONTRACT_STATUS_EXTRACTING)
+				if (uplink_computer.opfor_data.contractor_hub.current_contract.handle_extraction(user))
 					user.playsound_local(user, 'sound/effects/confirmdropoff.ogg', 100, TRUE)
-					hard_drive.opfor_data.contractor_hub.current_contract.status = CONTRACT_STATUS_EXTRACTING
+					uplink_computer.opfor_data.contractor_hub.current_contract.status = CONTRACT_STATUS_EXTRACTING
 
 					program_icon_state = "extracted"
 				else
@@ -80,18 +83,18 @@
 
 			return TRUE
 		if("PRG_contract_abort")
-			var/contract_id = hard_drive.opfor_data.contractor_hub.current_contract.id
+			var/contract_id = uplink_computer.opfor_data.contractor_hub.current_contract.id
 
-			hard_drive.opfor_data.contractor_hub.current_contract = null
-			hard_drive.opfor_data.contractor_hub.assigned_contracts[contract_id].status = CONTRACT_STATUS_ABORTED
+			uplink_computer.opfor_data.contractor_hub.current_contract = null
+			uplink_computer.opfor_data.contractor_hub.assigned_contracts[contract_id].status = CONTRACT_STATUS_ABORTED
 
 			program_icon_state = "contracts"
 
 			return TRUE
 		if("PRG_redeem_TC")
-			if (hard_drive.opfor_data.contractor_hub.contract_TC_to_redeem)
+			if (uplink_computer.opfor_data.contractor_hub.contract_TC_to_redeem)
 				var/obj/item/stack/telecrystal/crystals = new /obj/item/stack/telecrystal(get_turf(user),
-															hard_drive.opfor_data.contractor_hub.contract_TC_to_redeem)
+															uplink_computer.opfor_data.contractor_hub.contract_TC_to_redeem)
 				if(ishuman(user))
 					var/mob/living/carbon/human/H = user
 					if(H.put_in_hands(crystals))
@@ -99,8 +102,8 @@
 					else
 						to_chat(user, span_notice("Your payment materializes onto the floor."))
 
-				hard_drive.opfor_data.contractor_hub.contract_paid_out += hard_drive.opfor_data.contractor_hub.contract_TC_to_redeem
-				hard_drive.opfor_data.contractor_hub.contract_TC_to_redeem = 0
+				uplink_computer.opfor_data.contractor_hub.contract_paid_out += uplink_computer.opfor_data.contractor_hub.contract_TC_to_redeem
+				uplink_computer.opfor_data.contractor_hub.contract_TC_to_redeem = 0
 				return TRUE
 			else
 				user.playsound_local(user, 'sound/machines/uplinkerror.ogg', 50)
@@ -115,24 +118,24 @@
 			info_screen = !info_screen
 			return TRUE
 		if ("buy_hub")
-			if (hard_drive.opfor_data.mind_reference.current == user)
+			if (uplink_computer.opfor_data.mind_reference.current == user)
 				var/item = params["item"]
 
-				for (var/datum/contractor_item/hub_item in hard_drive.opfor_data.contractor_hub.hub_items)
+				for (var/datum/contractor_item/hub_item in uplink_computer.opfor_data.contractor_hub.hub_items)
 					if (hub_item.name == item)
-						hub_item.handle_purchase(hard_drive.opfor_data.contractor_hub, user)
+						hub_item.handle_purchase(uplink_computer.opfor_data.contractor_hub, user)
 			else
 				error = "Invalid user... You weren't recognised as the user of this system."
 
 /datum/computer_file/program/contract_uplink/ui_data(mob/user)
 	var/list/data = list()
-	var/obj/item/computer_hardware/hard_drive/portable/syndicate/hard_drive = computer.all_components[MC_HDD]
 	var/screen_to_be = null
+	var/obj/item/modular_computer/tablet/syndicate_contract_uplink/preset/uplink/uplink_computer = computer
 
 	data["first_load"] = first_load
 
-	if (hard_drive && hard_drive.opfor_data != null)
-		var/datum/opposing_force/opfor_data = hard_drive.opfor_data
+	if (uplink_computer?.opfor_data)
+		var/datum/opposing_force/opfor_data = uplink_computer.opfor_data
 		data += get_header_data()
 
 		if (opfor_data.contractor_hub.current_contract)
