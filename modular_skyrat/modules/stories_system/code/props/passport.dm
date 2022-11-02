@@ -10,7 +10,7 @@
 	name = "passport"
 	desc = "A passport, often issued to travelers in space so that they can prove their identities and get into places via fancy scanning technology on airlocks."
 	icon = 'modular_skyrat/modules/stories_system/icons/passports.dmi'
-	icon_state = "passport"
+	icon_state = "teshari_closed"
 	trim = /datum/id_trim/job/assistant/tourist
 
 /obj/item/card/id/passport/update_label()
@@ -22,6 +22,7 @@
 	desc = "A passport, often issued to travelers in space so that they can prove their identities and get into places via fancy scanning technology on airlocks.\n\
 	This passport's got a official watermark proving it's a governmental passport, often reserved for diplomats or official representatitves of a governmental body \
 	and/or their staff."
+	icon_state = "nri_closed"
 	trim = /datum/id_trim/job/assistant/government_official
 	var/government_seal = "Spinward Stellar Coalition"
 
