@@ -1289,6 +1289,7 @@
 
 // Donation reward for thedragmeme
 /obj/item/clothing/shoes/fancy_heels/drag
+	desc = "A fancy pair of high heels. Clack clack clack... definitely turning a lot of heads."
 
 /obj/item/clothing/shoes/fancy_heels/drag/Initialize(mapload)
 	. = ..()

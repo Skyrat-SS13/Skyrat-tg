@@ -543,6 +543,6 @@
 	ckeywhitelist = list("ultimarifox")
 
 /datum/loadout_item/shoes/dragheels
-	name = "Fancy Heels"
+	name = "Fancy Heels (dragmeme)"
 	item_path = /obj/item/clothing/shoes/fancy_heels/drag
 	ckeywhitelist = list("thedragmeme")
