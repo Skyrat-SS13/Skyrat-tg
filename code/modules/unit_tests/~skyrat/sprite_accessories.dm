@@ -65,7 +65,7 @@
 					var/use_extra = sprite_accessory.extra
 					var/use_extra2 = sprite_accessory.extra2
 					if(sprite_accessory.relevent_layers_filter && sprite_accessory.relevent_layers_filter[layer])
-						var/list/filter = bodypart_accessory.relevent_layers_filter[layer]
+						var/list/filter = sprite_accessory.relevent_layers_filter[layer]
 						// Layer filtering for edge cases like cat ears that don't have inner for certain layers.
 						use_main = (SPRITE_ACCESSORY_MAIN in filter)
 						use_inner = (SPRITE_ACCESSORY_INNER in filter) && use_inner
@@ -89,7 +89,7 @@
 								var/color_entry = color_layer_list[entry_number]
 								if(sprite_accessory.relevent_layers_filter)
 									var/list/filter = sprite_accessory.relevent_layers_filter[layer]
-									if(filter && color_entry in filter)
+									if(filter && (color_entry in filter))
 										continue
 
 								final_icon_state = "[final_icon_state]_[layertext]_[color_layer_list[entry_number]]"

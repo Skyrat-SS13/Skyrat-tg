@@ -146,7 +146,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 									var/color_entry = color_layer_list[number_text]
 									if(bodypart_accessory.relevent_layers_filter)
 										var/list/filter = bodypart_accessory.relevent_layers_filter[layer]
-										if(filter && color_entry in filter)
+										if(filter && (color_entry in filter))
 											continue
 									var/num = text2num(number_text)
 									var/mutable_appearance/matrixed_acce = mutable_appearance(icon_to_use, layer = -layer)
