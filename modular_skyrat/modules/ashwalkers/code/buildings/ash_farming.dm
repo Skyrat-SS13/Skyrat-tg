@@ -41,9 +41,11 @@
 	//if its a seed, lets try to plant
 	if(istype(attacking_item, /obj/item/seeds))
 		var/obj/structure/simple_farm/locate_farm = locate() in get_turf(atom_parent)
+
 		if(one_per_turf && locate_farm)
 			atom_parent.balloon_alert_to_viewers("cannot plant more seeds here!")
 			return
+
 		locate_farm = new(get_turf(atom_parent))
 		locate_farm.pixel_x = pixel_shift[1]
 		locate_farm.pixel_y = pixel_shift[2]
@@ -61,6 +63,7 @@
 /datum/component/simple_farm/proc/check_examine(datum/source, mob/user, list/examine_list)
 	if(allow_plant)
 		examine_list += span_notice("You are able to plant seeds here!")
+
 	else
 		examine_list += span_warning("You need to use a shovel before you can plant seeds here!")
 
@@ -91,13 +94,17 @@
 
 /obj/structure/simple_farm/Destroy()
 	STOP_PROCESSING(SSobj, src)
+
 	if(planted_seed)
 		planted_seed.forceMove(get_turf(src))
 		planted_seed = null
+
 	if(attached_atom)
 		if(ismovable(attached_atom))
 			UnregisterSignal(attached_atom, COMSIG_MOVABLE_MOVED)
+
 		attached_atom = null
+
 	return ..()
 
 /obj/structure/simple_farm/examine(mob/user)
@@ -113,22 +120,29 @@
 /obj/structure/simple_farm/update_appearance(updates)
 	if(!planted_seed)
 		return
+
 	icon = planted_seed.growing_icon
+
 	if(COOLDOWN_FINISHED(src, harvest_timer))
 		if(planted_seed.icon_harvest)
 			icon_state = planted_seed.icon_harvest
+
 		else
 			icon_state = "[planted_seed.icon_grow][planted_seed.growthstages]"
+
 		name = lowertext(planted_seed.plantname)
+
 	else
 		icon_state = "[planted_seed.icon_grow]1"
 		name = lowertext("harvested [planted_seed.plantname]")
+
 	return ..()
 
 /obj/structure/simple_farm/attack_hand(mob/living/user, list/modifiers)
 	if(!COOLDOWN_FINISHED(src, harvest_timer))
 		balloon_alert(user, "plant not ready for harvest!")
 		return
+
 	COOLDOWN_START(src, harvest_timer, harvest_cooldown)
 	create_harvest()
 	update_appearance()
@@ -147,9 +161,12 @@
 		if(harvest_cooldown <= 30 SECONDS)
 			balloon_alert(user, "the plant already grows fast!")
 			return
+
 		var/obj/item/stack/sheet/sinew/use_item = attacking_item
+
 		if(!use_item.use(1))
 			return
+
 		harvest_cooldown -= 15 SECONDS
 		balloon_alert_to_viewers("the plant grows faster!")
 		return
@@ -159,9 +176,12 @@
 		if(max_harvest >= 6)
 			balloon_alert(user, "the plant already drops a lot!")
 			return
+
 		var/obj/item/stack/sheet/animalhide/goliath_hide/use_item = attacking_item
+
 		if(!use_item.use(1))
 			return
+
 		max_harvest++
 		balloon_alert_to_viewers("the plant drops more!")
 		return
@@ -195,15 +215,26 @@
 /obj/structure/simple_farm/proc/create_harvest()
 	if(!planted_seed)
 		return
+
 	for(var/i in 1 to rand(1, max_harvest))
 		var/obj/creating_obj
+
 		if(prob(15) && length(planted_seed.mutatelist))
 			var/obj/item/seeds/choose_seed = pick(planted_seed.mutatelist)
 			creating_obj = initial(choose_seed.product)
+
+			if(!creating_obj)
+				creating_obj = choose_seed
+
 			new creating_obj(get_turf(src))
 			balloon_alert_to_viewers("something special drops!")
 			continue
+
 		creating_obj = planted_seed.product
+
+		if(!creating_obj)
+			creating_obj = planted_seed.type
+
 		new creating_obj(get_turf(src))
 
 /turf/open/misc/asteroid/basalt/Initialize(mapload)

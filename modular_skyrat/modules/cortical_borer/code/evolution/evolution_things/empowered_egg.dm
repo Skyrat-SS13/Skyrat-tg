@@ -44,7 +44,7 @@
 		chest.dismember()
 		return
 	var/mob/dead/observer/new_borer = pick(candidates)
-	var/mob/living/simple_animal/cortical_borer/empowered/spawned_cb = new(get_turf(owner))
+	var/mob/living/basic/cortical_borer/empowered/spawned_cb = new(get_turf(owner))
 	var/obj/item/bodypart/chest/chest = owner.get_bodypart(BODY_ZONE_CHEST)
 	chest.dismember()
 	spawned_cb.generation = generation
