@@ -26,11 +26,15 @@
 
 /obj/structure/window/reinforced/fulltile/ice
 
+// Polarized Windows
+
+// First defines and allows it to be assigned an ID to be toggled
 /obj/structure/window/reinforced/fulltile/polarized
 	name = "Polorized Window"
 	desc = "Adjusts its tint with voltage, it is reinforced with metal rods."
 	var/id = null
 
+// Proc for the Opacity, Alpha and color toggle
 /obj/structure/window/reinforced/fulltile/polarized/proc/toggle()
 	if(opacity)
 		animate(src, color="#FFFFFF", time=5)
@@ -43,11 +47,10 @@
 /obj/machinery/button/window/reinforced/polarized
 	name = "Polorized Window Button"
 	desc = "A remote control switch for polarized windows."
-	var/range = 7
 
-/obj/machinery/button/window/reinforced/polarized/attack_hand(mob/user as mob)
+/obj/machinery/button/window/reinforced/polarized/attack_hand(mob/living/user)
 	if(..())
-		return 1
+		return TRUE
 
 	toggle_tint()
 
@@ -57,11 +60,10 @@
 	initialized_button = !initialized_button
 	update_icon()
 
-	for(var/obj/structure/window/reinforced/fulltile/polarized/W in range(src,range))
-		if (W.id == src.id || !W.id)
-			spawn(0)
-				W.toggle()
-				return
+	for(var/obj/structure/window/reinforced/fulltile/polarized/window)
+		if (window.id == src.id || !window.id)
+			window.toggle()
+
 
 /obj/machinery/button/window/reinforced/polarized/power_change()
 	..()
