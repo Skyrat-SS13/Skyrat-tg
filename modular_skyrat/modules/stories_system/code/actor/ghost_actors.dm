@@ -7,14 +7,17 @@
 	. = ..()
 	if(!.)
 		return FALSE
+
 	to_chat(picked_spawner, span_info("You will be spawned in within [delay_time / 600] minutes with your currently selected character. Make sure all your preferences are set!"))
 	to_chat(picked_spawner, span_info(span_bold("Until then, you will be teleported to an area to set up your character and coordinate with other story participants. This area is OOC, but do not grief.")))
+
 	var/obj/landmark
 	for(var/obj/effect/landmark/ghost_story_participant/actor_spawn in GLOB.landmarks_list)
 		if(actor_spawn.actor_id != actor_spawn_id)
 			continue
 		landmark = actor_spawn
 		break
+
 	// Handling for reserving a new area
 	if(!landmark)
 		var/datum/map_template/actor_spawn/new_actor = new
@@ -34,6 +37,7 @@
 			break
 		if(!landmark)
 			CRASH("failed to find an actor spawn ID landmark after making a template that should've assigned one!")
+
 	// Spawning the actor
 	var/mob/living/carbon/human/temporary_human = new(get_turf(landmark))
 	temporary_human.key = picked_spawner.key
