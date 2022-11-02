@@ -24,8 +24,8 @@
 	and/or their staff."
 	icon_state = "nri_closed"
 	trim = /datum/id_trim/job/assistant/government_official
+	/// What goverment this is from, shown on the label
 	var/government_seal = "Spinward Stellar Coalition"
 
 /obj/item/card/id/passport/government/update_label()
-	var/name_string = registered_name ? "[registered_name]'s Passport ([government_seal]" : "[initial(name)] ([government_seal])"
-	name = "[name_string]"
+	name = registered_name ? "[registered_name]'s Passport ([government_seal]" : "[initial(name)] ([government_seal])"

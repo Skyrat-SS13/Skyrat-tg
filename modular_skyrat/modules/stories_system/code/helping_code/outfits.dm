@@ -146,7 +146,7 @@
 	l_hand = /obj/item/storage/briefcase/empty
 	back = /obj/item/storage/backpack/satchel
 	backpack_contents = list(
-		/obj/item/holochip/thousand,
+		/obj/item/holochip/thousand = 1,
 	)
 
 /datum/outfit/salaryman/boss
