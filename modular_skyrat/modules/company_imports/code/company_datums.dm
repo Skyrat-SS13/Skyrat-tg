@@ -53,3 +53,10 @@
 	cost = 8000
 	cost_change_lower = -5000
 	cost_change_upper = 3000
+
+/datum/gun_company/donk
+	name = "Donk Corporation"
+	company_flag = CARGO_COMPANY_DONK
+	cost = 3000
+	cost_change_lower = -2000
+	cost_change_upper = 2000
