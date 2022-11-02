@@ -21,11 +21,21 @@
 		return FALSE
 	if(wearer.wear_suit.flags_inv & HIDETAIL)
 		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod) && wearer.back && istype(wearer.back, /obj/item/mod/control))
-			var/obj/item/mod/control/modsuit_control = wearer.back
-			var/datum/mod_theme/mod_theme = modsuit_control.theme
-			if(mod_theme.modsuit_tail_colors)
-				return FALSE
+			return FALSE
 		return TRUE
+
+/datum/sprite_accessory/tails/get_special_icon(mob/living/carbon/human/wearer, passed_state)
+	return icon
+
+/datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/wearer)
+	return icon_state
+
+/datum/sprite_accessory/tails/get_special_render_key(mob/living/carbon/human/owner)
+	var/obj/item/organ/external/tail/tail = owner.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+	if(tail)
+		return tail.render_key
+
+	return key
 
 /datum/sprite_accessory/tails/none
 	name = "None"

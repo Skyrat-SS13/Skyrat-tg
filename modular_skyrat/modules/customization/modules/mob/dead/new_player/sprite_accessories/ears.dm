@@ -6,6 +6,9 @@
 	genetic = TRUE
 
 /datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/human, obj/item/bodypart/bodypart)
+	//An exception for MOD helmets
+	if(istype(human.head, /obj/item/clothing/head/mod))
+		return FALSE
 	if(
 		(human.head && (human.head.flags_inv & HIDEHAIR)) \
 		|| (human.wear_mask && (human.wear_mask.flags_inv & HIDEHAIR)) \
