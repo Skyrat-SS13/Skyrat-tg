@@ -7,12 +7,6 @@
 #define MODULE_PRICEY_LOWER 4
 #define MODULE_PRICEY_UPPER 6
 
-#define MODULE_HELLA_LOWER 8
-#define MODULE_HELLA_UPPER 12
-
-#define MODULE_ANOMALY_LOWER 20
-#define MODULE_ANOMALY_UPPER 40
-
 /datum/armament_entry/company_import/nakamura_modsuits
 	category = NAKAMURA_ENGINEERING_MODSUITS_NAME
 	company_bitflag = CARGO_COMPANY_NAKAMURA_MODSUITS
@@ -135,21 +129,6 @@
 	restricted = TRUE
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
-/datum/armament_entry/company_import/nakamura_modsuits/protection_modules/advanced_emp_shield
-	item_type = /obj/item/mod/module/emp_shield/advanced
-	lower_cost = CARGO_CRATE_VALUE * MODULE_HELLA_LOWER
-	upper_cost = CARGO_CRATE_VALUE * MODULE_HELLA_UPPER
-	interest_required = COMPANY_HIGH_INTEREST
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-
-/datum/armament_entry/company_import/nakamura_modsuits/protection_modules/energy_shield
-	item_type = /obj/item/mod/module/energy_shield
-	lower_cost = CARGO_CRATE_VALUE * MODULE_HELLA_LOWER
-	upper_cost = CARGO_CRATE_VALUE * MODULE_HELLA_UPPER
-	interest_required = COMPANY_HIGH_INTEREST
-	restricted = TRUE
-	interest_addition = COMPANY_INTEREST_GAIN_BIG
-
 // Utility modules, general purpose stuff that really anyone might want
 
 /datum/armament_entry/company_import/nakamura_modsuits/utility_modules
@@ -263,13 +242,6 @@
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 	contraband = TRUE
 
-/datum/armament_entry/company_import/nakamura_modsuits/mobility_modules/super_jetpack
-	item_type = /obj/item/mod/module/jetpack/advanced
-	lower_cost = CARGO_CRATE_VALUE * MODULE_HELLA_LOWER
-	upper_cost = CARGO_CRATE_VALUE * MODULE_HELLA_UPPER
-	interest_required = COMPANY_HIGH_INTEREST
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-
 // Novelty modules, goofy stuff that's rare/unprintable, but doesn't fit in any of the above categories
 
 /datum/armament_entry/company_import/nakamura_modsuits/novelty_modules
@@ -303,31 +275,24 @@
 	upper_cost = CARGO_CRATE_VALUE * MODULE_MID_UPPER
 	interest_required = COMPANY_SOME_INTEREST
 
-/datum/armament_entry/company_import/nakamura_modsuits/novelty_modules/chameleon
-	item_type = /obj/item/mod/module/chameleon
+/datum/armament_entry/company_import/nakamura_modsuits/novelty_modules/kinesis
+	item_type = /obj/item/mod/module/anomaly_locked/kinesis
 	lower_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
-	interest_required = COMPANY_HIGH_INTEREST
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-
-/datum/armament_entry/company_import/nakamura_modsuits/novelty_modules/kinesis
-	item_type = /obj/item/mod/module/anomaly_locked/kinesis/prebuilt
-	lower_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_LOWER
-	upper_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_UPPER
 	interest_required = COMPANY_HIGH_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 /datum/armament_entry/company_import/nakamura_modsuits/novelty_modules/antigrav
-	item_type = /obj/item/mod/module/anomaly_locked/antigrav/prebuilt
-	lower_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_LOWER
-	upper_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_UPPER
+	item_type = /obj/item/mod/module/anomaly_locked/antigrav
+	lower_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_LOWER
+	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
 	interest_required = COMPANY_HIGH_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 /datum/armament_entry/company_import/nakamura_modsuits/novelty_modules/teleporter
-	item_type = /obj/item/mod/module/anomaly_locked/teleporter/prebuilt
-	lower_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_LOWER
-	upper_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_UPPER
+	item_type = /obj/item/mod/module/anomaly_locked/teleporter
+	lower_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_LOWER
+	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
 	interest_required = COMPANY_HIGH_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
@@ -339,9 +304,3 @@
 
 #undef MODULE_PRICEY_LOWER
 #undef MODULE_PRICEY_UPPER
-
-#undef MODULE_HELLA_LOWER
-#undef MODULE_HELLA_UPPER
-
-#undef MODULE_ANOMALY_LOWER
-#undef MODULE_ANOMALY_UPPER

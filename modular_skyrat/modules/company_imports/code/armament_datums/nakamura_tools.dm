@@ -48,11 +48,7 @@
 	subcategory = "Advanced Engineering Equipment"
 	interest_required = COMPANY_SOME_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-
-/datum/armament_entry/company_import/nakamura_tooling/advanced/skillchip
-	item_type = /obj/item/skillchip/job/engineer
-	lower_cost = CARGO_CRATE_VALUE * 0.75
-	upper_cost = CARGO_CRATE_VALUE * 1.25
+	restricted = TRUE
 
 /datum/armament_entry/company_import/nakamura_tooling/advanced/ranged_analyzer
 	item_type = /obj/item/analyzer/ranged
@@ -90,6 +86,7 @@
 	subcategory = "Experimental Engineering Equipment"
 	interest_required = COMPANY_HIGH_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
+	restricted = TRUE
 
 /datum/armament_entry/company_import/nakamura_tooling/experimental/sprayon_insuls
 	item_type = /obj/item/toy/sprayoncan
