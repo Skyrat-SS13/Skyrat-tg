@@ -14,7 +14,7 @@
 
 /datum/armament_entry/company_import/blacksteel/blade/hatchet
 	name = "Blacksteel (TM) hatchet"
-	desc = "A short handled hatchet forged from Jarnsmiour's signature Blacksteel (TM), quality guaranteed." // Hint: This is a lie
+	description = "A short handled hatchet forged from Jarnsmiour's signature Blacksteel (TM), quality guaranteed." // Hint: This is a lie
 	item_type = /obj/item/hatchet/wooden
 	lower_cost = CARGO_CRATE_VALUE * 0.7
 	upper_cost = CARGO_CRATE_VALUE * 1.2
