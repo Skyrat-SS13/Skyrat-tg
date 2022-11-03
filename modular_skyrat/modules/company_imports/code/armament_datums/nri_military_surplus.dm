@@ -108,6 +108,7 @@
 	item_type = /obj/item/gun/ballistic/automatic/pistol/makarov
 	lower_cost = CARGO_CRATE_VALUE * 4
 	upper_cost = CARGO_CRATE_VALUE * 6
+	interest_required = PASSED_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 /datum/armament_entry/cargo_gun/nri_surplus/firearm/plastikov

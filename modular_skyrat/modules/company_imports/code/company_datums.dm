@@ -78,3 +78,11 @@
 	cost = 6000
 	cost_change_lower = -2000
 	cost_change_upper = 3000
+
+// A coalition between nt and bolt to sell personal defense equipment and weapons
+/datum/gun_company/nanotrasen_bolt_weapons
+	name = BOLT_NANOTRASEN_DEFENSE_NAME
+	company_flag = CARGO_COMPANY_BOLT_NANOTRASEN
+	cost = 6000
+	cost_change_lower = -2000
+	cost_change_upper = 3000
