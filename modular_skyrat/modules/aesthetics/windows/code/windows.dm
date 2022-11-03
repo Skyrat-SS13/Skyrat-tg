@@ -35,7 +35,7 @@
 	/// ID field check, allow buttons/switches etc to call an ID and toggle window
 	var/id = null
 
-/// Proc for the Opacity, Alpha and color toggle
+/// Toggles the tingint effect for the window
 /obj/structure/window/reinforced/fulltile/polarized/proc/toggle()
 	if(opacity)
 		animate(src, color="#FFFFFF", time=5)
@@ -56,7 +56,7 @@
 		return TRUE
 
 	toggle_tint()
-	/// Enables the button to check and ensure it's both active and matching the ID
+/// Enables the button to check and ensure it's both active and matching the ID
 /obj/machinery/button/window/reinforced/polarized/proc/toggle_tint()
     active = !active
 	/// ID Check before running the toggle proc
