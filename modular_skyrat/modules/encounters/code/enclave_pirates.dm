@@ -1,5 +1,5 @@
 /datum/outfit/pirate/enclave_officer
-	name = "Imperial Enclave Officer"
+	name = "NRI Field Officer"
 
 	head = /obj/item/clothing/head/beret/sec/nri
 	glasses = /obj/item/clothing/glasses/sunglasses
@@ -29,7 +29,7 @@
 	assignment = "NRI Field Officer"
 
 /datum/outfit/pirate/enclave_trooper
-	name = "Imperial Enclave Trooper"
+	name = "NRI Marine"
 
 	head = null
 	glasses = /obj/item/clothing/glasses/sunglasses
@@ -110,9 +110,9 @@
 /obj/effect/mob_spawn/ghost_role/human/pirate/enclave/gunner
 	rank = "Marine"
 
-/datum/map_template/shuttle/pirate/imperial_enclave
+/datum/map_template/shuttle/pirate/nri_raider
 	prefix = "_maps/shuttles/skyrat/"
-	suffix = "enclave"
+	suffix = "nri_raider"
 	name = "pirate ship (NRI Enforcer-Class Starship)"
 
 /area/shuttle/pirate/nri

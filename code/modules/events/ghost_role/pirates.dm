@@ -12,7 +12,7 @@
 #define PIRATES_SILVERSCALES "Silverscales"
 #define PIRATES_DUTCHMAN "Flying Dutchman"
 
-#define PIRATES_IMPERIAL_ENCLAVE "Imperial Enclave" //SKYRAT EDIT ADDITION
+#define PIRATES_NRI_RAIDERS "NRI Raiders" //SKYRAT EDIT ADDITION
 
 /datum/round_event_control/pirates/preRunEvent()
 	if (!SSmapping.empty_space)
@@ -35,9 +35,10 @@
 	typepath = /datum/round_event/pirates/dutchman
 	weight = 0
 
-/datum/round_event_control/pirates/enclave
-	name = "Space Pirates - Imperial Enclave"
-	typepath = /datum/round_event/pirates/enclave
+/datum/round_event_control/pirates/nri
+	name = "Space Pirates - NRI Raiders"
+	typepath = /datum/round_event/pirates/nri
+	description = "The crew will either pay up, or face a raider party. More roleplay-oriented variation with higher stakes for the crew, and higher chances of getting away scott free."
 	weight = 0
 
 /datum/round_event/pirates
@@ -52,15 +53,16 @@
 /datum/round_event/pirates/dutchman
 	pirate_type = PIRATES_DUTCHMAN
 
-/datum/round_event/pirates/enclave
-	pirate_type = PIRATES_IMPERIAL_ENCLAVE
+/datum/round_event/pirates/nri
+	pirate_type = PIRATES_NRI_RAIDERS
+
 //SKYRAT EDIT ADDITION END
 
 /datum/round_event/pirates/start()
 	send_pirate_threat(pirate_type) //SKYRAT EDIT CHANGE
 
 /proc/send_pirate_threat(pirate_override)
-	var/pirate_type = pick(PIRATES_ROGUES, PIRATES_SILVERSCALES, PIRATES_DUTCHMAN, PIRATES_IMPERIAL_ENCLAVE) //SKYRAT EDIT CHANGE
+	var/pirate_type = pick(PIRATES_ROGUES, PIRATES_SILVERSCALES, PIRATES_DUTCHMAN, PIRATES_NRI_RAIDERS) //SKYRAT EDIT CHANGE
 	if(pirate_override)
 		pirate_type = pirate_override
 	var/ship_template = null
@@ -94,9 +96,9 @@
 			threat.content = "Ahoy! This be the [ship_name]. Cough up [payoff] credits or you'll walk the plank."
 			threat.possible_answers = list("We'll pay.","We will not be extorted.")
 		//SKYRAT EDIT ADDITION
-		if(PIRATES_IMPERIAL_ENCLAVE)
+		if(PIRATES_NRI_RAIDERS)
 			ship_name = pick(strings(PIRATE_NAMES_FILE, "imperial_names"))
-			ship_template = /datum/map_template/shuttle/pirate/imperial_enclave
+			ship_template = /datum/map_template/shuttle/pirate/nri_raider
 			payoff = 20000
 			var/number = rand(1,99)
 			///Station name one is the most important pick and is pretty much the station's main argument against getting fined, thus it better be mostly always right.
@@ -126,7 +128,7 @@
 			)
 			var/final_result = pick(right_pick, wrong_pick)
 			threat.title = "NRI Audit"
-			threat.content = "Greetings [station_designation], this is the [ship_name]. Due to recent Imperial regulatory violations, such as [final_result] and many other smaller issues, your station has been fined [payoff] credits. Inadequate imperial police activity is currently present in your sector, thus the failure to comply might instead result in a military patrol dispatch. Novaya Rossiyskaya Imperiya collegial secretary out."
+			threat.content = "Greetings [station_designation], this is the [ship_name]. Due to recent Imperial regulatory violations, such as [final_result] and many other smaller issues, your station has been fined [payoff] credits. Inadequate imperial police activity is currently present in your sector, thus the failure to comply might instead result in a military patrol dispatch for second attempt negotiations. Novaya Rossiyskaya Imperiya collegial secretary out."
 			threat.possible_answers = list("Submit to audit and pay the fine.", "Override the response system for an immediate military dispatch.")
 		//SKYRAT EDIT ADDITION END
 	threat.answer_callback = CALLBACK(GLOBAL_PROC, .proc/pirates_answered, threat, payoff, ship_name, initial_send_time, response_max_time, ship_template)
