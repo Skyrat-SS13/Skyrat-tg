@@ -220,7 +220,7 @@
 	name = "DS-2 Admiral"
 	uniform = /obj/item/clothing/under/rank/captain/skyrat/utility/syndicate
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
-	head = /obj/item/clothing/head/hos/syndicate
+	head = /obj/item/clothing/head/hat/hos/syndicate
 	back = /obj/item/storage/backpack/satchel
 	belt = /obj/item/gun/ballistic/automatic/pistol/aps
 	id = /obj/item/card/id/advanced/gold/generic
