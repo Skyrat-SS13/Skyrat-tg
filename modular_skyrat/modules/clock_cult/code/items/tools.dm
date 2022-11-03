@@ -24,6 +24,7 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	icon = 'modular_skyrat/modules/clock_cult/icons/tools.dmi'
 	icon_state = "welder_brass"
+	toolspeed = 0.5
 
 /obj/item/crowbar/brass
 	name = "brass crowbar"
@@ -46,9 +47,9 @@
 	desc = "Holds tools. This one's seen better days, though. There's a cog roughly cut into the leather on one side."
 
 /obj/item/storage/belt/utility/clock/PopulateContents()
-	SSwardrobe.provide_type(/obj/item/screwdriver/brass, src)
-	SSwardrobe.provide_type(/obj/item/crowbar/brass, src)
-	SSwardrobe.provide_type(/obj/item/weldingtool/experimental/brass, src)
-	SSwardrobe.provide_type(/obj/item/wirecutters/brass, src)
-	SSwardrobe.provide_type(/obj/item/wrench/brass, src)
-	SSwardrobe.provide_type(/obj/item/multitool, src)
+	new /obj/item/screwdriver/brass(src)
+	new /obj/item/crowbar/brass(src)
+	new /obj/item/weldingtool/experimental/brass(src)
+	new /obj/item/wirecutters/brass(src)
+	new /obj/item/wrench/brass(src)
+	new /obj/item/multitool(src)

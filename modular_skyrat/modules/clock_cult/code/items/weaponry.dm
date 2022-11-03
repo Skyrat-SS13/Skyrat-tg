@@ -126,10 +126,13 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/bow/clockwork
 	/// Time between bolt recharges
 	var/recharge_time = 1.5 SECONDS
+	/// Typecache of valid turfs to have the weapon's special effect on
+	var/static/list/effect_turf_typecache = typecacheof(list(/turf/open/floor/bronze))
 
 /obj/item/gun/ballistic/bow/clockwork/Initialize(mapload)
 	. = ..()
 	update_icon_state()
+	AddElement(/datum/element/clockwork_description, "Firing from brass tiles will halve the time that it takes to recharge a bolt.")
 
 /obj/item/gun/ballistic/bow/clockwork/afterattack(atom/target, mob/living/user, flag, params, passthrough)
 	if(!drawn || !chambered)
@@ -139,7 +142,10 @@
 
 /obj/item/gun/ballistic/bow/clockwork/shoot_live_shot(mob/living/user, pointblank, atom/pbtarget, message)
 	. = ..()
+	if(is_type_in_typecache(get_turf(user), effect_turf_typecache))
+		recharge_time = 0.75 SECONDS
 	addtimer(CALLBACK(src, .proc/recharge_bolt), recharge_time)
+	recharge_time = initial(recharge_time)
 
 /obj/item/gun/ballistic/bow/clockwork/attack_self(mob/living/user)
 	if(!drawn && chambered)

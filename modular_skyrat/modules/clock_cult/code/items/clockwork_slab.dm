@@ -11,6 +11,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 /obj/item/clockwork/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/clockwork_description, clockwork_hint)
+	AddElement(/datum/element/clockwork_pickup)
 
 /obj/item/clockwork/clockwork_slab
 	name = "Clockwork Slab"

@@ -9,7 +9,7 @@
 	. = ..()
 
 	if(!isatom(target))
-		return COMPONENT_INCOMPATIBLE
+		return ELEMENT_INCOMPATIBLE
 
 	RegisterSignal(target, COMSIG_PARENT_EXAMINE, .proc/add_examine)
 	// Don't perform the assignment if there is nothing to assign, or if we already have something for this bespoke element

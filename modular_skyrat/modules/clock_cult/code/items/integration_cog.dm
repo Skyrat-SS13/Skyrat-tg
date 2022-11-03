@@ -5,6 +5,7 @@
 	desc = "A small cog that seems to spin by its own acord when left alone."
 	icon_state = "integration_cog"
 	clockwork_hint = "A sharp cog that can cut through and be inserted into APCs to extract power for your machinery."
+	// Integration cogs aren't strong or rare enough to warrant the shock-on-pickup element
 
 /obj/item/clockwork/integration_cog/attack_atom(atom/attacked_atom, mob/living/user, params)
 	if(!(IS_CLOCK(user)))

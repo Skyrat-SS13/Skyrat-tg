@@ -71,7 +71,7 @@
 
 /obj/item/clockwork/replica_fabricator/attack_self(mob/user, modifiers)
 	. = ..()
-	if(power <= 0)
+	if(power < BRASS_POWER_COST)
 		to_chat(user, span_nzcrentr("You need at least [BRASS_POWER_COST]W of power to fabricate bronze."))
 		return
 	var/sheets = tgui_input_number(user, "How many sheets do you want to fabricate?", "Sheet Fabrication", 0, round(power / BRASS_POWER_COST), 0)

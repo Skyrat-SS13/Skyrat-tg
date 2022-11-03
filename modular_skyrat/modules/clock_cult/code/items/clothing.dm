@@ -11,12 +11,17 @@
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	allowed = list(/obj/item/clockwork, /obj/item/stack/tile/bronze, /obj/item/gun/ballistic/bow/clockwork, /obj/item/gun/ballistic/rifle/lionhunter/clockwork)
 
+/obj/item/clothing/suit/clockwork/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clockwork_pickup, ~(ITEM_SLOT_HANDS))
+
+/*
 /obj/item/clothing/suit/clockwork/equipped(mob/living/user, slot)
 	. = ..()
 	if(IS_CLOCK(user))
 		return
 	user.dropItemToGround(src, TRUE)
-	user.electrocute_act(25, src, 1, SHOCK_NOGLOVES)
+	user.electrocute_act(25, src, 1, SHOCK_NOGLOVES)*/
 
 /obj/item/clothing/suit/clockwork/speed
 	name = "robes of divinity"
@@ -92,8 +97,8 @@
 
 /obj/item/clothing/glasses/clockwork/examine(mob/user)
 	. = ..()
-	if(clock_desc)
-		. += span_brass(clock_desc)
+	AddElement(/datum/element/clockwork_description, clock_desc)
+	AddElement(/datum/element/clockwork_pickup, ~(ITEM_SLOT_HANDS))
 
 /obj/item/clothing/glasses/clockwork/equipped(mob/user, slot)
 	. = ..()
@@ -314,6 +319,7 @@
 /obj/item/clothing/head/helmet/clockwork/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_HEAD))
+	AddElement(/datum/element/clockwork_pickup, ~(ITEM_SLOT_HANDS))
 
 /obj/item/clothing/head/helmet/clockwork/equipped(mob/user, slot)
 	. = ..()
@@ -331,6 +337,10 @@
 	worn_icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_garb_worn.dmi'
 	icon_state = "clockwork_treads"
 
+/obj/item/clothing/shoes/clockwork/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clockwork_pickup, ~(ITEM_SLOT_HANDS))
+
 /obj/item/clothing/gloves/clockwork
 	name = "brass gauntlets"
 	desc = "A strong pair of brass gloves worn by the soldiers of the Ratvarian armies."
@@ -345,3 +355,7 @@
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = NONE
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 80, ACID = 50)
+
+/obj/item/clothing/gloves/clockwork/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clockwork_pickup, ~(ITEM_SLOT_HANDS))
