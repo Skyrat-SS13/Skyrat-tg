@@ -60,12 +60,18 @@
 /obj/machinery/button/window/reinforced/polarized/proc/toggle_tint()
     active = !active
 	/// ID Check before running the toggle proc
-    for(var/obj/structure/window/reinforced/fulltile/polarized/Window)
-        if (Window.id == src.id || !Window.id)
-            INVOKE_ASYNC(Window, /obj/structure/window/reinforced/fulltile/polarized/proc/toggle)
+    for(var/obj/structure/window/reinforced/fulltile/polarized/window)
+        if (window.id == src.id || !window.id)
+            INVOKE_ASYNC(window, /obj/structure/window/reinforced/fulltile/polarized/proc/toggle)
 
 /obj/machinery/button/window/reinforced/polarized/power_change()
     ..()
     if(active && !powered(power_channel))
         active = !active
         toggle_tint()
+
+/// Adds a map spawner in-line with the normal ones to reduce mapping annoyances
+/obj/effect/spawner/structure/window/reinforced/polarized
+	name = "reinforced window spawner"
+	icon_state = "rwindow_spawner"
+	spawn_list = list(/obj/structure/grille, /obj/structure/window/reinforced/fulltile/polarized)
