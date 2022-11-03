@@ -56,7 +56,7 @@
 	lower_cost = CARGO_CRATE_VALUE * 5
 	upper_cost = CARGO_CRATE_VALUE * 7
 
-/datum/armament_entry/cargo_gun/nanotrasen_bolt_weapons/lethal_sidearm/m1911
+/datum/armament_entry/cargo_gun/nanotrasen_bolt_weapons/lethal_sidearm/thermal_holsters
 	item_type = /obj/item/storage/belt/holster/thermal
 	lower_cost = CARGO_CRATE_VALUE * 5
 	upper_cost = CARGO_CRATE_VALUE * 9

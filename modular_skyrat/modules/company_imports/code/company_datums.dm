@@ -94,3 +94,11 @@
 	cost = 6000
 	cost_change_lower = -2000
 	cost_change_upper = 3000
+
+// Vitzstvi sells ammo boxes and speedloaders for most of the weapons sold by other companies
+/datum/gun_company/vitezstvi_ammo
+	name = VITEZSTVI_AMMO_NAME
+	company_flag = CARGO_COMPANY_VITEZSTVI_AMMO
+	cost = 6000
+	cost_change_lower = -2000
+	cost_change_upper = 3000
