@@ -1,6 +1,6 @@
 /datum/armament_entry/company_import/vitezstvi
-	category = CARGO_COMPANY_VITEZSTVI_AMMO
-	company_bitflag = VITEZSTVI_AMMO_NAME
+	category = VITEZSTVI_AMMO_NAME
+	company_bitflag = CARGO_COMPANY_VITEZSTVI_AMMO
 	stock_mult = 3
 
 // Ammo bench and the lethals disk
