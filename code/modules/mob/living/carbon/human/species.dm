@@ -171,16 +171,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	///List of factions the mob gain upon gaining this species.
 	var/list/inherent_factions
 
-<<<<<<< HEAD
-	///Punch-specific attack verb.
-	var/attack_verb = SFX_PUNCH
-	/// The visual effect of the attack.
-	var/attack_effect = ATTACK_EFFECT_PUNCH
-	var/sound/attack_sound //SKYRAT EDIT CHANGE
-	var/sound/miss_sound = 'sound/weapons/punchmiss.ogg'
-
-=======
->>>>>>> 8e4bc80d928 (Easy's Super Omega  "unarmed strike based species var moved to limbs" refractor, unarmed strike striking with specific body parts rather than it just being flavor, and brain based attacking limb selection extra chunky edition. And also bodypart traits. (#70422))
 	///What gas does this species breathe? Used by suffocation screen alerts, most of actual gas breathing is handled by mutantlungs. See [life.dm][code/modules/mob/living/carbon/human/life.dm]
 	var/breathid = "o2"
 
@@ -1170,11 +1160,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if((target.body_position == LYING_DOWN) || HAS_TRAIT(user, TRAIT_PERFECT_ATTACKER)) //kicks never miss (provided your species deals more than 0 damage)
 				miss_chance = 0
 			else
-<<<<<<< HEAD
-				miss_chance = min((user.dna.species.punchdamagehigh/user.dna.species.punchdamagelow) + (user.getStaminaLoss()*0.2) + (user.getBruteLoss()*0.2), 100) //old base chance for a miss + various damage. capped at 100 to prevent weirdness in prob() //SKYRAT EDIT CHANGE: miss_chance = min((user.dna.species.punchdamagehigh/user.dna.species.punchdamagelow) + user.getStaminaLoss() + (user.getBruteLoss()*0.5), 100) //old base chance for a miss + various damage. capped at 100 to prevent weirdness in prob()
-=======
-				miss_chance = min((attacking_bodypart.unarmed_damage_high/attacking_bodypart.unarmed_damage_low) + user.getStaminaLoss() + (user.getBruteLoss()*0.5), 100) //old base chance for a miss + various damage. capped at 100 to prevent weirdness in prob()
->>>>>>> 8e4bc80d928 (Easy's Super Omega  "unarmed strike based species var moved to limbs" refractor, unarmed strike striking with specific body parts rather than it just being flavor, and brain based attacking limb selection extra chunky edition. And also bodypart traits. (#70422))
+				miss_chance = min((attacking_bodypart.unarmed_damage_high/attacking_bodypart.unarmed_damage_low) + (user.getStaminaLoss() * 0.2) + (user.getBruteLoss()*0.5), 100) //old base chance for a miss + various damage. capped at 100 to prevent weirdness in prob() //SKYRAT EDIT CHANGE - ORIGINAL: miss_chance = min((attacking_bodypart.unarmed_damage_high/attacking_bodypart.unarmed_damage_low) + user.getStaminaLoss() + (user.getBruteLoss()*0.5), 100)
 
 		if(!damage || !affecting || prob(miss_chance))//future-proofing for species that have 0 damage/weird cases where no zone is targeted
 			playsound(target.loc, attacking_bodypart.unarmed_miss_sound, 25, TRUE, -1)
@@ -1186,18 +1172,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 		var/armor_block = target.run_armor_check(affecting, MELEE)
 
-<<<<<<< HEAD
-		// SKYRAT EDIT CHANGE
-		var/sound/attack_sound
-		if(!user.dna.species.attack_sound)
-			attack_sound = get_sfx("punch")
-		else
-			attack_sound = user.dna.species.attack_sound
-		playsound(target.loc, attack_sound, 25, TRUE, -1)
-		// SKYRAT EDTI END
-=======
-		playsound(target.loc, attacking_bodypart.unarmed_attack_sound, 25, TRUE, -1)
->>>>>>> 8e4bc80d928 (Easy's Super Omega  "unarmed strike based species var moved to limbs" refractor, unarmed strike striking with specific body parts rather than it just being flavor, and brain based attacking limb selection extra chunky edition. And also bodypart traits. (#70422))
+		playsound(target.loc, attacking_bodypart.unarmed_attack_sound || get_sfx("punch"), 25, TRUE, -1) // SKYRAT EDIT - ORIGINAL: playsound(target.loc, attacking_bodypart.unarmed_attack_sound, 25, TRUE, -1)
 
 		target.visible_message(span_danger("[user] [atk_verb]ed [target]!"), \
 						span_userdanger("You're [atk_verb]ed by [user]!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, user)
@@ -1213,44 +1188,27 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		var/attack_direction = get_dir(user, target)
 		var/attack_type = attacking_bodypart.attack_type
 		if(atk_effect == ATTACK_EFFECT_KICK)//kicks deal 1.5x raw damage
-<<<<<<< HEAD
-			target.apply_damage(damage*1.5, user.dna.species.attack_type, affecting, armor_block, attack_direction = attack_direction)
-			target.apply_damage(damage*PUNCH_STAMINA_MULTIPLIER, STAMINA, affecting, armor_block) //SKYRAT EDIT ADDITION
-			if((damage * 1.5) >= 9)
-=======
 			if(damage >= 9)
->>>>>>> 8e4bc80d928 (Easy's Super Omega  "unarmed strike based species var moved to limbs" refractor, unarmed strike striking with specific body parts rather than it just being flavor, and brain based attacking limb selection extra chunky edition. And also bodypart traits. (#70422))
 				target.force_say()
 			log_combat(user, target, "kicked")
+			target.apply_damage(damage * PUNCH_STAMINA_MULTIPLIER, STAMINA, affecting, armor_block) //SKYRAT EDIT ADDITION
 			target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction)
 		else//other attacks deal full raw damage + 1.5x in stamina damage
-<<<<<<< HEAD
-			target.apply_damage(damage, user.dna.species.attack_type, affecting, armor_block, attack_direction = attack_direction)
-			target.apply_damage(damage*PUNCH_STAMINA_MULTIPLIER, STAMINA, affecting, armor_block) //SKYRAT EDIT CHANGE: target.apply_damage(damage*1.5, STAMINA, affecting, armor_block)
-=======
 			target.apply_damage(damage, attack_type, affecting, armor_block, attack_direction = attack_direction)
-			target.apply_damage(damage*1.5, STAMINA, affecting, armor_block)
->>>>>>> 8e4bc80d928 (Easy's Super Omega  "unarmed strike based species var moved to limbs" refractor, unarmed strike striking with specific body parts rather than it just being flavor, and brain based attacking limb selection extra chunky edition. And also bodypart traits. (#70422))
+			target.apply_damage(damage * PUNCH_STAMINA_MULTIPLIER, STAMINA, affecting, armor_block) //SKYRAT EDIT CHANGE: target.apply_damage(damage*1.5, STAMINA, affecting, armor_block)
 			if(damage >= 9)
 				target.force_say()
 			log_combat(user, target, "punched")
 
-<<<<<<< HEAD
-		if((target.stat != DEAD) && damage >= user.dna.species.punchstunthreshold)
-			target.visible_message("<span class='danger'>[user] knocks [target] down!</span>", \
-							"<span class='userdanger'>You're knocked down by [user]!</span>", "<span class='hear'>You hear aggressive shuffling followed by a loud thud!</span>", COMBAT_MESSAGE_RANGE, user)
-			to_chat(user, "<span class='danger'>You knock [target] down!</span>")
-			//var/knockdown_duration = 40 + (/*target.getStaminaLoss() + */(target.getBruteLoss()*0.5))*0.8 //50 total damage = 40 base stun + 40 stun modifier = 80 stun duration, which is the old base duration
-			//target.apply_effect(knockdown_duration, EFFECT_KNOCKDOWN, armor_block) -SKYRAT EDIT REMOVAL ABOVE TOO
-			target.StaminaKnockdown(20) //SKYRAT EDIT ADDITION
-=======
 		if((target.stat != DEAD) && damage >= attacking_bodypart.unarmed_stun_threshold)
 			target.visible_message(span_danger("[user] knocks [target] down!"), \
 							span_userdanger("You're knocked down by [user]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
 			to_chat(user, span_danger("You knock [target] down!"))
+			/* SKYRAT EDIT REMOVAL - Less combat lethality and hard stungs
 			var/knockdown_duration = 40 + (target.getStaminaLoss() + (target.getBruteLoss()*0.5))*0.8 //50 total damage = 40 base stun + 40 stun modifier = 80 stun duration, which is the old base duration
 			target.apply_effect(knockdown_duration, EFFECT_KNOCKDOWN, armor_block)
->>>>>>> 8e4bc80d928 (Easy's Super Omega  "unarmed strike based species var moved to limbs" refractor, unarmed strike striking with specific body parts rather than it just being flavor, and brain based attacking limb selection extra chunky edition. And also bodypart traits. (#70422))
+			*/ // SKYRAT REMOVAL END
+			target.StaminaKnockdown(20) //SKYRAT EDIT ADDITION
 			log_combat(user, target, "got a stun punch with their previous punch")
 
 /datum/species/proc/spec_unarmedattacked(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -2306,17 +2264,17 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	//Note for future: Potentionally add a new C.dna.species() to build a template species for more accurate limb replacement
 
 	if((new_species.digitigrade_customization == DIGITIGRADE_OPTIONAL && target.dna.features["legs"] == DIGITIGRADE_LEGS) || new_species.digitigrade_customization == DIGITIGRADE_FORCED)
-<<<<<<< HEAD
-		var/obj/item/bodypart/r_leg/r_leg = new_species.bodypart_overrides[BODY_ZONE_R_LEG]
-		if(r_leg)
-			new_species.bodypart_overrides[BODY_ZONE_R_LEG] = initial(r_leg.digitigrade_type)
-		var/obj/item/bodypart/l_leg/l_leg = new_species.bodypart_overrides[BODY_ZONE_L_LEG]
-		if(l_leg)
-			new_species.bodypart_overrides[BODY_ZONE_L_LEG] = initial(l_leg.digitigrade_type)
-=======
+		/* SKYRAT EDIT - Digitigrade customization - ORIGINAL:
 		new_species.bodypart_overrides[BODY_ZONE_R_LEG] = /obj/item/bodypart/leg/right/digitigrade
 		new_species.bodypart_overrides[BODY_ZONE_L_LEG] = /obj/item/bodypart/leg/left/digitigrade
->>>>>>> 8e4bc80d928 (Easy's Super Omega  "unarmed strike based species var moved to limbs" refractor, unarmed strike striking with specific body parts rather than it just being flavor, and brain based attacking limb selection extra chunky edition. And also bodypart traits. (#70422))
+		*/ // ORIGINAL END - SKYRAT EDIT START:
+		var/obj/item/bodypart/leg/right/r_leg = new_species.bodypart_overrides[BODY_ZONE_R_LEG]
+		if(r_leg)
+			new_species.bodypart_overrides[BODY_ZONE_R_LEG] = initial(r_leg.digitigrade_type)
+		var/obj/item/bodypart/leg/left/l_leg = new_species.bodypart_overrides[BODY_ZONE_L_LEG]
+		if(l_leg)
+			new_species.bodypart_overrides[BODY_ZONE_L_LEG] = initial(l_leg.digitigrade_type)
+		// SKYRAT EDIT END
 
 	for(var/obj/item/bodypart/old_part as anything in target.bodyparts)
 		if(old_part.change_exempt_flags & BP_BLOCK_CHANGE_SPECIES)

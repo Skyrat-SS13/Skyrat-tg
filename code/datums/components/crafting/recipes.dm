@@ -367,13 +367,8 @@
 	reqs = list(/obj/item/storage/toolbox = 1,
 				/obj/item/stack/tile/iron = 10,
 				/obj/item/assembly/prox_sensor = 1,
-<<<<<<< HEAD
-				/obj/item/bodypart/r_arm/robot = 1)
-	time = 40
-=======
 				/obj/item/bodypart/arm/right/robot = 1)
 	time = 4 SECONDS
->>>>>>> 8e4bc80d928 (Easy's Super Omega  "unarmed strike based species var moved to limbs" refractor, unarmed strike striking with specific body parts rather than it just being flavor, and brain based attacking limb selection extra chunky edition. And also bodypart traits. (#70422))
 	category = CAT_ROBOT
 
 /datum/crafting_recipe/medbot

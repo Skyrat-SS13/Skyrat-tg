@@ -31,20 +31,14 @@
 
 	var/obj/item/bodypart/affecting = D.get_bodypart(D.get_random_valid_zone(A.zone_selected))
 	var/armor_block = D.run_armor_check(affecting, MELEE)
-<<<<<<< HEAD
 	// SKYRAT EDIT CHANGE
 	var/sound/attack_sound
-	if(!species.attack_sound)
+	if(!active_arm.unarmed_attack_sound)
 		attack_sound = get_sfx("punch")
 	else
-		attack_sound = species.attack_sound
+		attack_sound = active_arm.unarmed_attack_sound
 	playsound(D.loc, attack_sound, 25, TRUE, -1)
 	//SKYRAT EDIT END
-=======
-
-	playsound(D.loc, active_arm.unarmed_attack_sound, 25, TRUE, -1)
-
->>>>>>> 8e4bc80d928 (Easy's Super Omega  "unarmed strike based species var moved to limbs" refractor, unarmed strike striking with specific body parts rather than it just being flavor, and brain based attacking limb selection extra chunky edition. And also bodypart traits. (#70422))
 	D.visible_message(span_danger("[A] [atk_verb]ed [D]!"), \
 					span_userdanger("You're [atk_verb]ed by [A]!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, A)
 	to_chat(A, span_danger("You [atk_verb]ed [D]!"))

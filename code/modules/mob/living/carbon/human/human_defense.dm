@@ -204,12 +204,8 @@
 		return
 	if(check_block()) //everybody is kung fu fighting
 		return
-<<<<<<< HEAD
-	playsound(loc, get_sfx("punch"), 25, TRUE, -1) //SKYRAT EDIT CHANGE
-=======
 	var/obj/item/bodypart/arm/active_arm = user.get_active_hand()
 	playsound(loc, active_arm.unarmed_attack_sound, 25, TRUE, -1)
->>>>>>> 8e4bc80d928 (Easy's Super Omega  "unarmed strike based species var moved to limbs" refractor, unarmed strike striking with specific body parts rather than it just being flavor, and brain based attacking limb selection extra chunky edition. And also bodypart traits. (#70422))
 	visible_message(span_danger("[user] [hulk_verb]ed [src]!"), \
 					span_userdanger("[user] [hulk_verb]ed [src]!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), null, user)
 	to_chat(user, span_danger("You [hulk_verb] [src]!"))

@@ -47,11 +47,11 @@
 	bodytemp_normal = T20C
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	bodypart_overrides = list(
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant/ghoul,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant/ghoul,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/mutant/ghoul,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant/ghoul,
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/ghoul,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/ghoul,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/ghoul,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant/ghoul,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/ghoul,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/ghoul,
 	)
 	//the chest and head cannot be turned into meat
@@ -77,10 +77,10 @@
 		// 2) BODYPARTS
 		C.part_default_head = /obj/item/bodypart/head/mutant/ghoul
 		C.part_default_chest = /obj/item/bodypart/chest/mutant/ghoul
-		C.part_default_l_arm = /obj/item/bodypart/l_arm/mutant/ghoul
-		C.part_default_r_arm = /obj/item/bodypart/r_arm/mutant/ghoul
-		C.part_default_l_leg = /obj/item/bodypart/l_leg/mutant/ghoul
-		C.part_default_r_leg = /obj/item/bodypart/r_leg/mutant/ghoul
+		C.part_default_l_arm = /obj/item/bodypart/arm/left/mutant/ghoul
+		C.part_default_r_arm = /obj/item/bodypart/arm/right/mutant/ghoul
+		C.part_default_l_leg = /obj/item/bodypart/leg/left/mutant/ghoul
+		C.part_default_r_leg = /obj/item/bodypart/leg/right/mutant/ghoul
 		C.ReassignForeignBodyparts()
 
 /datum/species/proc/set_ghoul_color(mob/living/carbon/human/H)
@@ -101,22 +101,22 @@
 		qdel(chest)
 		var/obj/item/bodypart/limb = new part_default_chest
 		limb.replace_limb(src,TRUE)
-	var/obj/item/bodypart/l_arm = get_bodypart(BODY_ZONE_L_ARM)
+	var/obj/item/bodypart/arm/left = get_bodypart(BODY_ZONE_L_ARM)
 	if (l_arm?.type != part_default_l_arm)
 		qdel(l_arm)
 		var/obj/item/bodypart/limb = new part_default_l_arm
 		limb.replace_limb(src,TRUE)
-	var/obj/item/bodypart/r_arm = get_bodypart(BODY_ZONE_R_ARM)
+	var/obj/item/bodypart/arm/right = get_bodypart(BODY_ZONE_R_ARM)
 	if (r_arm?.type != part_default_r_arm)
 		qdel(r_arm)
 		var/obj/item/bodypart/limb = new part_default_r_arm
 		limb.replace_limb(src,TRUE)
-	var/obj/item/bodypart/l_leg = get_bodypart(BODY_ZONE_L_LEG)
+	var/obj/item/bodypart/leg/left = get_bodypart(BODY_ZONE_L_LEG)
 	if (l_leg?.type != part_default_l_leg)
 		qdel(l_leg)
 		var/obj/item/bodypart/limb = new part_default_l_leg
 		limb.replace_limb(src,TRUE)
-	var/obj/item/bodypart/r_leg = get_bodypart(BODY_ZONE_R_LEG)
+	var/obj/item/bodypart/leg/right = get_bodypart(BODY_ZONE_R_LEG)
 	if (r_leg?.type != part_default_r_leg)
 		qdel(r_leg)
 		var/obj/item/bodypart/limb = new part_default_r_leg
@@ -128,10 +128,10 @@
 	// 2) BODYPARTS
 	C.part_default_head = /obj/item/bodypart/head
 	C.part_default_chest = /obj/item/bodypart/chest
-	C.part_default_l_arm = /obj/item/bodypart/l_arm
-	C.part_default_r_arm = /obj/item/bodypart/r_arm
-	C.part_default_l_leg = /obj/item/bodypart/l_leg
-	C.part_default_r_leg = /obj/item/bodypart/r_leg
+	C.part_default_l_arm = /obj/item/bodypart/arm/left
+	C.part_default_r_arm = /obj/item/bodypart/arm/right
+	C.part_default_l_leg = /obj/item/bodypart/leg/left
+	C.part_default_r_leg = /obj/item/bodypart/leg/right
 	C.ReassignForeignBodyparts()
 
 /*
@@ -212,10 +212,10 @@
 	// Type References for Bodyparts
 	var/obj/item/bodypart/head/part_default_head = /obj/item/bodypart/head
 	var/obj/item/bodypart/chest/part_default_chest = /obj/item/bodypart/chest
-	var/obj/item/bodypart/l_arm/part_default_l_arm = /obj/item/bodypart/l_arm
-	var/obj/item/bodypart/r_arm/part_default_r_arm = /obj/item/bodypart/r_arm
-	var/obj/item/bodypart/l_leg/part_default_l_leg = /obj/item/bodypart/l_leg
-	var/obj/item/bodypart/r_leg/part_default_r_leg = /obj/item/bodypart/r_leg
+	var/obj/item/bodypart/arm/left/part_default_l_arm = /obj/item/bodypart/arm/left
+	var/obj/item/bodypart/arm/right/part_default_r_arm = /obj/item/bodypart/arm/right
+	var/obj/item/bodypart/leg/left/part_default_l_leg = /obj/item/bodypart/leg/left
+	var/obj/item/bodypart/leg/right/part_default_r_leg = /obj/item/bodypart/leg/right
 
 /datum/species/ghoul/get_species_description()
 	return placeholder_description

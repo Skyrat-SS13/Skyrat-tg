@@ -10,15 +10,7 @@
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
 	mutant_bodyparts = list("moth_markings" = "None")
-<<<<<<< HEAD
 	// external_organs = list(/obj/item/organ/external/wings/moth = "Plain", /obj/item/organ/external/antennae = "Plain") // SKYRAT EDIT - Fixing moths
-	attack_verb = "slash"
-	attack_effect = ATTACK_EFFECT_CLAW
-	attack_sound = 'sound/weapons/slash.ogg'
-	miss_sound = 'sound/weapons/slashmiss.ogg'
-=======
-	external_organs = list(/obj/item/organ/external/wings/moth = "Plain", /obj/item/organ/external/antennae = "Plain")
->>>>>>> 8e4bc80d928 (Easy's Super Omega  "unarmed strike based species var moved to limbs" refractor, unarmed strike striking with specific body parts rather than it just being flavor, and brain based attacking limb selection extra chunky edition. And also bodypart traits. (#70422))
 	meat = /obj/item/food/meat/slab/human/mutant/moth
 	liked_food = VEGETABLES | DAIRY | CLOTH
 	disliked_food = FRUIT | GROSS | BUGS | GORE

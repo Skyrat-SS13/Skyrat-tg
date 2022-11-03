@@ -9,25 +9,25 @@
 	limb_id = SPECIES_GHOUL
 	is_dimorphic = FALSE
 
-/obj/item/bodypart/l_arm/mutant/ghoul
+/obj/item/bodypart/arm/left/mutant/ghoul
 	icon_greyscale = BODYPART_ICON_GHOUL
 	limb_id = SPECIES_GHOUL
 
-/obj/item/bodypart/r_arm/mutant/ghoul
+/obj/item/bodypart/arm/right/mutant/ghoul
 	icon_greyscale = BODYPART_ICON_GHOUL
 	limb_id = SPECIES_GHOUL
 
-/obj/item/bodypart/l_leg/mutant/ghoul
+/obj/item/bodypart/leg/left/mutant/ghoul
 	icon_greyscale = BODYPART_ICON_GHOUL
 	limb_id = SPECIES_GHOUL
 
-/obj/item/bodypart/r_leg/mutant/ghoul
+/obj/item/bodypart/leg/right/mutant/ghoul
 	icon_greyscale = BODYPART_ICON_GHOUL
 	limb_id = SPECIES_GHOUL
 
 // LIMBS
 
-/obj/item/bodypart/r_arm/mutant/ghoul/drop_limb(special)
+/obj/item/bodypart/arm/right/mutant/ghoul/drop_limb(special)
 	..() // Create Meat, Remove Limb
 	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
 	if (percentHealth > 0)
@@ -38,7 +38,7 @@
 
 	qdel(src)
 
-/obj/item/bodypart/l_arm/mutant/ghoul/drop_limb(special)
+/obj/item/bodypart/arm/left/mutant/ghoul/drop_limb(special)
 	..() // Create Meat, Remove Limb
 	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
 	if (percentHealth > 0)
@@ -49,7 +49,7 @@
 
 	qdel(src)
 
-/obj/item/bodypart/r_leg/mutant/ghoul/drop_limb(special)
+/obj/item/bodypart/leg/right/mutant/ghoul/drop_limb(special)
 	..() // Create Meat, Remove Limb
 	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
 	if (percentHealth > 0)
@@ -60,7 +60,7 @@
 
 	qdel(src)
 
-/obj/item/bodypart/l_leg/mutant/ghoul/drop_limb(special)
+/obj/item/bodypart/leg/left/mutant/ghoul/drop_limb(special)
 	..() // Create Meat, Remove Limb
 	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
 	if (percentHealth > 0)

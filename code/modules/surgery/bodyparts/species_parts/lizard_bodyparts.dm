@@ -38,20 +38,8 @@
 	icon_greyscale = 'icons/mob/species/lizard/bodyparts.dmi'
 	limb_id = SPECIES_LIZARD
 
-<<<<<<< HEAD
-/obj/item/bodypart/l_leg/lizard
-	icon_greyscale = 'icons/mob/species/lizard/bodyparts.dmi'
-	limb_id = SPECIES_LIZARD
-
-/obj/item/bodypart/r_leg/lizard
-	icon_greyscale = 'icons/mob/species/lizard/bodyparts.dmi'
-	limb_id = SPECIES_LIZARD
-
 /* SKYRAT EDIT REMOVAL - MOVED TO MODULAR MUTANT_BODYPARTS.DM
-/obj/item/bodypart/l_leg/digitigrade
-=======
 /obj/item/bodypart/leg/left/digitigrade
->>>>>>> 8e4bc80d928 (Easy's Super Omega  "unarmed strike based species var moved to limbs" refractor, unarmed strike striking with specific body parts rather than it just being flavor, and brain based attacking limb selection extra chunky edition. And also bodypart traits. (#70422))
 	icon_greyscale = 'icons/mob/species/lizard/bodyparts.dmi'
 	limb_id = BODYPART_ID_DIGITIGRADE
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_DIGITIGRADE

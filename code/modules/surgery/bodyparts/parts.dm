@@ -77,8 +77,8 @@
 	desc = "Hey buddy give me a HAND and report this to the github because you shouldn't be seeing this."
 	attack_verb_continuous = list("slaps", "punches")
 	attack_verb_simple = list("slap", "punch")
-	max_damage = 50
-	max_stamina_damage = 50
+	max_damage = 60 //SKYRAT EDIT CHANGE - ORIGINAL: 50
+	max_stamina_damage = 60 //SKYRAT EDIT CHANGE - ORIGINAL: 50
 	aux_layer = HANDS_PART_LAYER
 	body_damage_coeff = 0.75
 	can_be_disabled = TRUE
@@ -95,15 +95,6 @@
 		be possessed by the devil? This arm appears to be possessed by no \
 		one though."
 	icon_state = "default_human_l_arm"
-<<<<<<< HEAD
-	attack_verb_continuous = list("slaps", "punches")
-	attack_verb_simple = list("slap", "punch")
-	//max_damage = 50 //ORIGINAL
-	//max_stamina_damage = 50 //ORIGINAL
-	max_damage = 60 //SKYRAT EDIT CHANGE
-	max_stamina_damage = 60 //SKYRAT EDIT CHANGE
-=======
->>>>>>> 8e4bc80d928 (Easy's Super Omega  "unarmed strike based species var moved to limbs" refractor, unarmed strike striking with specific body parts rather than it just being flavor, and brain based attacking limb selection extra chunky edition. And also bodypart traits. (#70422))
 	body_zone = BODY_ZONE_L_ARM
 	body_part = ARM_LEFT
 	plaintext_zone = "left arm"
@@ -204,14 +195,6 @@
 	name = "right arm"
 	desc = "Over 87% of humans are right handed. That figure is much lower \
 		among humans missing their right arm."
-<<<<<<< HEAD
-	icon_state = "default_human_r_arm"
-	attack_verb_continuous = list("slaps", "punches")
-	attack_verb_simple = list("slap", "punch")
-	//max_damage = 50 //ORIGINAL
-	max_damage = 60 //SKYRAT EDIT CHANGE
-=======
->>>>>>> 8e4bc80d928 (Easy's Super Omega  "unarmed strike based species var moved to limbs" refractor, unarmed strike striking with specific body parts rather than it just being flavor, and brain based attacking limb selection extra chunky edition. And also bodypart traits. (#70422))
 	body_zone = BODY_ZONE_R_ARM
 	body_part = ARM_RIGHT
 	icon_state = "default_human_r_arm"
@@ -221,13 +204,7 @@
 	held_index = 2
 	px_x = 6
 	px_y = 0
-<<<<<<< HEAD
-	//max_stamina_damage = 50 //ORIGINAL
-	max_stamina_damage = 60 //SKYRAT EDIT CHANGE
-	can_be_disabled = TRUE
-=======
 	bodypart_trait_source = RIGHT_ARM_TRAIT
->>>>>>> 8e4bc80d928 (Easy's Super Omega  "unarmed strike based species var moved to limbs" refractor, unarmed strike striking with specific body parts rather than it just being flavor, and brain based attacking limb selection extra chunky edition. And also bodypart traits. (#70422))
 
 /obj/item/bodypart/arm/right/set_owner(new_owner)
 	. = ..()
@@ -314,19 +291,15 @@
 	max_damage = 100
 	should_draw_greyscale = FALSE
 
-<<<<<<< HEAD
-
-/obj/item/bodypart/l_leg
-=======
 /// Parent Type for arms, should not appear in game.
 /obj/item/bodypart/leg
 	name = "leg"
 	desc = "This item shouldn't exist. Talk about breaking a leg. Badum-Tss!"
 	attack_verb_continuous = list("kicks", "stomps")
 	attack_verb_simple = list("kick", "stomp")
-	max_damage = 50
+	max_damage = 60 // SKYRAT EDIT - ORIGINAL: 50
 	body_damage_coeff = 0.75
-	max_stamina_damage = 50
+	max_stamina_damage = 60 // SKYRAT EDIT - ORIGINAL: 50
 	can_be_disabled = TRUE
 	unarmed_attack_effect = ATTACK_EFFECT_KICK
 	body_zone = BODY_ZONE_L_LEG
@@ -336,28 +309,15 @@
 	unarmed_stun_threshold = 10
 
 /obj/item/bodypart/leg/left
->>>>>>> 8e4bc80d928 (Easy's Super Omega  "unarmed strike based species var moved to limbs" refractor, unarmed strike striking with specific body parts rather than it just being flavor, and brain based attacking limb selection extra chunky edition. And also bodypart traits. (#70422))
 	name = "left leg"
 	desc = "Some athletes prefer to tie their left shoelaces first for good \
 		luck. In this instance, it probably would not have helped."
 	icon_state = "default_human_l_leg"
-<<<<<<< HEAD
-	attack_verb_continuous = list("kicks", "stomps")
-	attack_verb_simple = list("kick", "stomp")
-	//max_damage = 50 //ORIGINAL
-	max_damage = 60 //SKYRAT EDIT CHANGE
-=======
->>>>>>> 8e4bc80d928 (Easy's Super Omega  "unarmed strike based species var moved to limbs" refractor, unarmed strike striking with specific body parts rather than it just being flavor, and brain based attacking limb selection extra chunky edition. And also bodypart traits. (#70422))
 	body_zone = BODY_ZONE_L_LEG
 	body_part = LEG_LEFT
 	plaintext_zone = "left leg"
 	px_x = -2
 	px_y = 12
-<<<<<<< HEAD
-	//max_stamina_damage = 50 //ORIGINAL
-	max_stamina_damage = 60 //SKYRAT EDIT CHANGE
-=======
->>>>>>> 8e4bc80d928 (Easy's Super Omega  "unarmed strike based species var moved to limbs" refractor, unarmed strike striking with specific body parts rather than it just being flavor, and brain based attacking limb selection extra chunky edition. And also bodypart traits. (#70422))
 	can_be_disabled = TRUE
 	bodypart_trait_source = LEFT_LEG_TRAIT
 
@@ -445,25 +405,12 @@
 		The hokey pokey has certainly changed a lot since space colonisation."
 	// alternative spellings of 'pokey' are available
 	icon_state = "default_human_r_leg"
-<<<<<<< HEAD
-	attack_verb_continuous = list("kicks", "stomps")
-	attack_verb_simple = list("kick", "stomp")
-	//max_damage = 50 //ORIGINAL
-	max_damage = 60 //SKYRAT EDIT CHANGE
-=======
->>>>>>> 8e4bc80d928 (Easy's Super Omega  "unarmed strike based species var moved to limbs" refractor, unarmed strike striking with specific body parts rather than it just being flavor, and brain based attacking limb selection extra chunky edition. And also bodypart traits. (#70422))
 	body_zone = BODY_ZONE_R_LEG
 	body_part = LEG_RIGHT
 	plaintext_zone = "right leg"
 	px_x = 2
 	px_y = 12
-<<<<<<< HEAD
-	//max_stamina_damage = 50 //ORIGINAL
-	max_stamina_damage = 60 //SKYRAT EDIT CHANGE
-	can_be_disabled = TRUE
-=======
 	bodypart_trait_source = RIGHT_LEG_TRAIT
->>>>>>> 8e4bc80d928 (Easy's Super Omega  "unarmed strike based species var moved to limbs" refractor, unarmed strike striking with specific body parts rather than it just being flavor, and brain based attacking limb selection extra chunky edition. And also bodypart traits. (#70422))
 	/// We store this here to generate our icon key more easily.
 	var/left_leg_mask_key
 	/// The associated list of all the left leg mask keys associated to their cached left leg masks.

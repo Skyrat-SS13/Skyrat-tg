@@ -47,10 +47,10 @@
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/vox,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/vox,
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant/vox,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant/vox,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/vox,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/vox,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/mutant/vox,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant/vox,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant/vox,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/vox,
 	)
 	custom_worn_icons = list(
 		LOADOUT_ITEM_HEAD = VOX_HEAD_ICON,

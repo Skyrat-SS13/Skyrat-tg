@@ -41,10 +41,10 @@
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/lizard,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/lizard,
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/lizard,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/lizard,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/lizard,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/lizard,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/lizard,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/lizard,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/lizard,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/lizard,
 	)
 
 /datum/species/unathi/randomize_features(mob/living/carbon/human/human_mob)
