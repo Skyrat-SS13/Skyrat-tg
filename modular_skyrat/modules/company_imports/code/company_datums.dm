@@ -45,6 +45,7 @@
 	cost = 3000
 	cost_change_lower = -1000
 	cost_change_upper = 2000
+	can_roundstart_pick = FALSE
 
 // DeForest sells medical supplies of most types
 /datum/gun_company/deforest_medical
@@ -86,6 +87,7 @@
 	cost = 6000
 	cost_change_lower = -1000
 	cost_change_upper = 4000
+	can_roundstart_pick = FALSE
 
 // Micron control systems and allstar's weapons together, all your energy guns in one place!
 /datum/gun_company/microstar_energy_weapons
@@ -94,6 +96,7 @@
 	cost = 6000
 	cost_change_lower = -1000
 	cost_change_upper = 4000
+	can_roundstart_pick = FALSE
 
 // Vitzstvi sells ammo boxes and speedloaders for most of the weapons sold by other companies
 /datum/gun_company/vitezstvi_ammo
@@ -102,3 +105,4 @@
 	cost = 3000
 	cost_change_lower = -1000
 	cost_change_upper = 2000
+	can_roundstart_pick = FALSE
