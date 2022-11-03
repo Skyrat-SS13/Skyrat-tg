@@ -407,7 +407,7 @@
 	return TRUE
 
 /datum/preference/choiced/mutant_choice/ipc_screen/generate_icon_state(datum/sprite_accessory/sprite_accessory, original_icon_state)
-	return "m_ipc_screen_[original_icon_state]_FRONT"
+	return "m_ipc_screen_[original_icon_state]_FRONT_UNDER"
 
 /datum/preference/choiced/mutant_choice/ipc_screen/compile_constant_data()
 	var/list/data = ..()
