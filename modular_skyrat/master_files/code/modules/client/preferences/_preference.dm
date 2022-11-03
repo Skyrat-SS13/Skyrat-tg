@@ -201,7 +201,7 @@
 	return TRUE
 
 /datum/preference/toggle/emissive
-	abstract_type = /datum/preference/tri_bool
+	abstract_type = /datum/preference/toggle/emissive
 	/// Path to the corresponding /datum/preference/toggle to check if part is enabled.
 	var/type_to_check = /datum/preference/toggle/allow_mismatched_parts
 	/// Can either be `TRICOLOR_CHECK_BOOLEAN` or `TRICOLOR_CHECK_ACCESSORY`, the latter of which adding an extra check to make sure the accessory is enabled and a factual accessory, whatever that means.
