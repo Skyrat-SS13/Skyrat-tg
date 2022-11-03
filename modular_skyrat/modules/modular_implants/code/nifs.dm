@@ -1,3 +1,9 @@
+#define NIF_CALIBRATION_STAGE_1 0
+#define NIF_CALIBRATION_STAGE_1_END  0.1
+#define NIF_CALIBRATION_STAGE_2 0.2
+#define NIF_CALIBRATION_STAGE_2_END 0.9
+#define NIF_CALIBRATION_STAGE_FINISHED 1
+
 /// This is the original NIF that other NIFs are based on.
 /obj/item/organ/internal/cyberimp/brain/nif
 	name = "Nanite Implant Framework"
@@ -176,7 +182,7 @@
 	power_level -= power_to_use
 	return TRUE
 
-///Toggles nutrition drain as a power source on NIFs on/off
+///Toggles nutrition drain as a power source on NIFs on/off. Bypass - Ignores the need to preform the nutirition_check() proc.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/toggle_nutrition_drain(bypass = FALSE)
 	if(!bypass && !nutrition_check())
 		return FALSE
@@ -206,13 +212,13 @@
 
 	return linked_mob.nutrition >= minimum_nutrition
 
-///Toggles Blood Drain
+///Toggles Blood Drain. Bypasss -  Ignores the need to preform the blood_check proc.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/toggle_blood_drain(bypass = FALSE)
 	if(!bypass && !blood_check())
 		return
 
 	blood_drain = !blood_drain
-	
+
 	if(!blood_drain)
 		power_usage += (blood_drain_rate * blood_conversion_rate)
 
@@ -244,10 +250,10 @@
 
 	var/percentage_done = (world.time - (calibration_duration - (calibration_time))) / calibration_time
 	switch(percentage_done)
-		if(0 to 0.1)
+		if(NIF_CALIBRATION_STAGE_1 to NIF_CALIBRATION_STAGE_1_END)
 			linked_mob.set_blindness(5)
 
-		if(0.2 to 0.9)
+		if(NIF_CALIBRATION_STAGE_2 to NIF_CALIBRATION_STAGE_2_END)
 			var/random_ailment = rand(1, side_effect_risk)
 			switch(random_ailment)
 				if(1)
@@ -257,8 +263,7 @@
 					to_chat(linked_mob, span_warning("You feel a wave of fatigue roll over you"))
 					linked_mob.adjustStaminaLoss(50)
 
-
-		if(1 to INFINITY)
+		if(NIF_CALIBRATION_STAGE_FINISHED to INFINITY)
 			send_message("Installation Proccess Complete!")
 
 			calibrating = FALSE
@@ -295,6 +300,7 @@
 	send_message("[loaded_nifsoft] has been added")
 	return TRUE
 
+///Removes a NIFSoft from a NIF. Silent - determines whether or not alerts will be given to the owner of the NIF
 /obj/item/organ/internal/cyberimp/brain/nif/proc/remove_nifsoft(datum/nifsoft/removed_nifsoft, silent = FALSE)
 	if(!is_type_in_list(removed_nifsoft, loaded_nifsofts) || broken)
 		return FALSE
@@ -305,6 +311,7 @@
 	qdel(removed_nifsoft)
 	return TRUE
 
+///Repairs a NIF based off the repair_amount
 /obj/item/organ/internal/cyberimp/brain/nif/proc/repair_nif(repair_amount)
 	if(durability == max_durability)
 		return FALSE
@@ -313,6 +320,7 @@
 
 	return TRUE
 
+///Sends a message to the owner of the NIF. Typically used for messages from the NIF itself or from NIFSofts.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/send_message(message_to_send, alert = FALSE)
 	var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
 	var/tag = sheet.icon_tag("nif-[chat_icon]")
@@ -509,3 +517,9 @@
 
 /obj/item/autosurgeon/organ/nif/debug
 	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif/debug
+
+#undef NIF_CALIBRATION_STAGE_1
+#undef NIF_CALIBRATION_STAGE_1_END
+#undef NIF_CALIBRATION_STAGE_2
+#undef NIF_CALIBRATION_STAGE_2_END
+#undef NIF_CALIBRATION_STAGE_FINISHED
