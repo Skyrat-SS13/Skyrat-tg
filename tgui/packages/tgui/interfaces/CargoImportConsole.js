@@ -2,7 +2,7 @@ import { useBackend, useLocalState } from '../backend';
 import { Section, Stack, Box, Divider, Button, NumberInput } from '../components';
 import { Window } from '../layouts';
 
-export const CargoGunConsole = (props, context) => {
+export const CargoImportConsole = (props, context) => {
   const [category, setCategory] = useLocalState(context, 'category', '');
   const [weapon, setArmament] = useLocalState(context, 'weapon');
   const { act, data } = useBackend(context);
@@ -17,11 +17,11 @@ export const CargoGunConsole = (props, context) => {
   return (
     <Window
       theme="armament"
-      title="Firearm Requisition Console"
+      title="Company Import Requisition Console"
       width={1000}
       height={600}>
       <Window.Content>
-        <Section grow height="100%" title="Firearm Requisition Console">
+        <Section grow height="100%" title="Company Import Requisition Console">
           <Stack>
             <Stack.Item grow fill>
               <Button.Checkbox
@@ -157,7 +157,7 @@ export const CargoGunConsole = (props, context) => {
                             {!!cant_buy_restricted && !!item.restricted && (
                               <Stack.Item textColor={'red'}>
                                 {
-                                  'You cannot buy a restricted weapon from this console!'
+                                  'You cannot buy a restricted item from this console!'
                                 }
                               </Stack.Item>
                             )}

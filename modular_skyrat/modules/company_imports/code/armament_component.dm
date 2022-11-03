@@ -189,10 +189,10 @@
 /datum/component/armament/company_imports/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "CargoGunConsole")
+		ui = new(user, src, "CargoImportConsole")
 		ui.open()
 
-/datum/component/armament/company_imports/select_armament(mob/user, /datum/armament_entry/company_import/armament_entry)
+/datum/component/armament/company_imports/select_armament(mob/user, datum/armament_entry/company_import/armament_entry)
 	var/datum/bank_account/buyer = SSeconomy.get_dep_account(ACCOUNT_CAR)
 	var/obj/item/modular_computer/possible_downloader
 	var/obj/machinery/computer/cargo/possible_console
@@ -314,7 +314,7 @@
 		else
 			SSshuttle.shopping_list += created_order
 
-/datum/component/armament/company_imports/buy_ammo(mob/user, /datum/armament_entry/company_import/armament_entry)
+/datum/component/armament/company_imports/buy_ammo(mob/user, datum/armament_entry/company_import/armament_entry)
 	var/datum/bank_account/buyer = SSeconomy.get_dep_account(ACCOUNT_CAR)
 	var/obj/machinery/computer/cargo/possible_console
 	var/obj/item/modular_computer/possible_downloader
