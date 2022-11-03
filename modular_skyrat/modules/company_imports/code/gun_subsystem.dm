@@ -96,7 +96,7 @@ SUBSYSTEM_DEF(gun_companies)
 				passed_interest_tier[company_datum] = HIGH_INTEREST
 
 
-	var/list/products = subtypesof(/datum/armament_entry/cargo_gun)
+	var/list/products = subtypesof(/datum/armament_entry/company_import)
 	// Setting cost and stock of armament entries
 	for(var/armament_category as anything in SSarmaments.entries)
 		for(var/subcategory as anything in SSarmaments.entries[armament_category][CATEGORY_ENTRY])
@@ -104,7 +104,7 @@ SUBSYSTEM_DEF(gun_companies)
 				if(products && !(armament_entry.type in products))
 					continue
 
-				var/datum/armament_entry/cargo_gun/entry_typecast = armament_entry
+				var/datum/armament_entry/company_import/entry_typecast = armament_entry
 
 				for(var/company_gun in companies)
 					var/datum/gun_company/the_datum = companies[company_gun]

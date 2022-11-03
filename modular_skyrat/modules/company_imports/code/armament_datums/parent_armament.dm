@@ -1,4 +1,4 @@
-/datum/armament_entry/cargo_gun
+/datum/armament_entry/company_import
 	max_purchase = 10
 	category_item_limit = 10
 	cost = 1

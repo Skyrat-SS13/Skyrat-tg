@@ -1,122 +1,122 @@
-/datum/armament_entry/cargo_gun/nakamura_tooling
+/datum/armament_entry/company_import/nakamura_tooling
 	category = NAKAMURA_ENGINEERING_TOOLING_NAME
 	company_bitflag = CARGO_COMPANY_NAKAMURA_TOOLING
 
 // Basic, non-power tools, as well as other related equipment
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/basic
+/datum/armament_entry/company_import/nakamura_tooling/basic
 	subcategory = "Standard Engineering Equipment"
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/basic/analyzer
+/datum/armament_entry/company_import/nakamura_tooling/basic/analyzer
 	item_type = /obj/item/analyzer
 	lower_cost = CARGO_CRATE_VALUE * 0.1
 	upper_cost = CARGO_CRATE_VALUE * 0.6
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/basic/mechanical_toolbox
+/datum/armament_entry/company_import/nakamura_tooling/basic/mechanical_toolbox
 	item_type = /obj/item/storage/toolbox/mechanical
 	lower_cost = CARGO_CRATE_VALUE * 0.25
 	upper_cost = CARGO_CRATE_VALUE
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/basic/electrical_toolbox
+/datum/armament_entry/company_import/nakamura_tooling/basic/electrical_toolbox
 	item_type = /obj/item/storage/toolbox/electrical
 	lower_cost = CARGO_CRATE_VALUE * 0.25
 	upper_cost = CARGO_CRATE_VALUE
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/basic/multitool
+/datum/armament_entry/company_import/nakamura_tooling/basic/multitool
 	item_type = /obj/item/multitool
 	lower_cost = CARGO_CRATE_VALUE * 0.25
 	upper_cost = CARGO_CRATE_VALUE
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/basic/inducer
+/datum/armament_entry/company_import/nakamura_tooling/basic/inducer
 	item_type = /obj/item/inducer
 	lower_cost = CARGO_CRATE_VALUE * 0.25
 	upper_cost = CARGO_CRATE_VALUE
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/basic/magboots
+/datum/armament_entry/company_import/nakamura_tooling/basic/magboots
 	item_type = /obj/item/clothing/shoes/magboots
 	lower_cost = CARGO_CRATE_VALUE * 0.5
 	upper_cost = CARGO_CRATE_VALUE * 1.5
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/basic/insuls
+/datum/armament_entry/company_import/nakamura_tooling/basic/insuls
 	item_type = /obj/item/clothing/gloves/color/yellow
 	lower_cost = CARGO_CRATE_VALUE * 0.5
 	upper_cost = CARGO_CRATE_VALUE * 1.5
 
 // Advanced stuff like power tools and holofans
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/advanced
+/datum/armament_entry/company_import/nakamura_tooling/advanced
 	subcategory = "Advanced Engineering Equipment"
 	interest_required = PASSED_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/advanced/skillchip
+/datum/armament_entry/company_import/nakamura_tooling/advanced/skillchip
 	item_type = /obj/item/skillchip/job/engineer
 	lower_cost = CARGO_CRATE_VALUE * 0.5
 	upper_cost = CARGO_CRATE_VALUE
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/advanced/ranged_analyzer
+/datum/armament_entry/company_import/nakamura_tooling/advanced/ranged_analyzer
 	item_type = /obj/item/analyzer/ranged
 	lower_cost = CARGO_CRATE_VALUE * 0.5
 	upper_cost = CARGO_CRATE_VALUE
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/advanced/forcefield
+/datum/armament_entry/company_import/nakamura_tooling/advanced/forcefield
 	item_type = /obj/item/forcefield_projector
 	lower_cost = CARGO_CRATE_VALUE * 0.5
 	upper_cost = CARGO_CRATE_VALUE * 1.5
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/advanced/atmos_fan
+/datum/armament_entry/company_import/nakamura_tooling/advanced/atmos_fan
 	item_type = /obj/item/holosign_creator/atmos
 	lower_cost = CARGO_CRATE_VALUE * 0.5
 	upper_cost = CARGO_CRATE_VALUE * 1.5
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/advanced/powerdrill
+/datum/armament_entry/company_import/nakamura_tooling/advanced/powerdrill
 	item_type = /obj/item/screwdriver/power
 	lower_cost = CARGO_CRATE_VALUE
 	upper_cost = CARGO_CRATE_VALUE * 1.5
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/advanced/jaws
+/datum/armament_entry/company_import/nakamura_tooling/advanced/jaws
 	item_type = /obj/item/crowbar/power
 	lower_cost = CARGO_CRATE_VALUE
 	upper_cost = CARGO_CRATE_VALUE * 1.5
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/advanced/hugewelder
+/datum/armament_entry/company_import/nakamura_tooling/advanced/hugewelder
 	item_type = /obj/item/weldingtool/hugetank
 	lower_cost = CARGO_CRATE_VALUE
 	upper_cost = CARGO_CRATE_VALUE * 1.5
 
 // Overpriced experimental or gimmick tools
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/experimental
+/datum/armament_entry/company_import/nakamura_tooling/experimental
 	subcategory = "Experimental Engineering Equipment"
 	interest_required = HIGH_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/experimental/sprayon_insuls
+/datum/armament_entry/company_import/nakamura_tooling/experimental/sprayon_insuls
 	item_type = /obj/item/toy/sprayoncan
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 4
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/experimental/red_screwdriver
+/datum/armament_entry/company_import/nakamura_tooling/experimental/red_screwdriver
 	item_type = /obj/item/screwdriver/caravan
 	lower_cost = CARGO_CRATE_VALUE * 3
 	upper_cost = CARGO_CRATE_VALUE * 7
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/experimental/red_crowbar
+/datum/armament_entry/company_import/nakamura_tooling/experimental/red_crowbar
 	item_type = /obj/item/crowbar/red/caravan
 	lower_cost = CARGO_CRATE_VALUE * 3
 	upper_cost = CARGO_CRATE_VALUE * 7
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/experimental/red_wirecutters
+/datum/armament_entry/company_import/nakamura_tooling/experimental/red_wirecutters
 	item_type = /obj/item/wirecutters/caravan
 	lower_cost = CARGO_CRATE_VALUE * 3
 	upper_cost = CARGO_CRATE_VALUE * 7
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/experimental/red_wrench
+/datum/armament_entry/company_import/nakamura_tooling/experimental/red_wrench
 	item_type = /obj/item/wrench/caravan
 	lower_cost = CARGO_CRATE_VALUE * 3
 	upper_cost = CARGO_CRATE_VALUE * 7
 
-/datum/armament_entry/cargo_gun/nakamura_tooling/experimental/advanced_welder
+/datum/armament_entry/company_import/nakamura_tooling/experimental/advanced_welder
 	item_type = /obj/item/weldingtool/advanced
 	lower_cost = CARGO_CRATE_VALUE * 3
 	upper_cost = CARGO_CRATE_VALUE * 7

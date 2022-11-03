@@ -284,8 +284,8 @@
 					say("Coupon refunded.")
 					SO.applied_coupon.forceMove(get_turf(src))
 				//SKYRAT EDIT START
-				if(istype(SO, /datum/supply_order/armament))
-					var/datum/supply_order/armament/the_order = SO
+				if(istype(SO, /datum/supply_order/company_import))
+					var/datum/supply_order/company_import/the_order = SO
 					the_order.reimburse_armament()
 				//SKYRAT EDIT END
 				SSshuttle.shopping_list -= SO
@@ -320,7 +320,7 @@
 			. = TRUE
 		//SKYRAT EDIT START
 		if("gun_window")
-			var/datum/component/armament/cargo_gun/gun_comp = GetComponent(/datum/component/armament/cargo_gun)
+			var/datum/component/armament/company_imports/gun_comp = GetComponent(/datum/component/armament/company_imports)
 			gun_comp.ui_interact(usr)
 			. = TRUE
 		//SKYRAT EDIT END

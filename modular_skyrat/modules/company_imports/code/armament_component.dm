@@ -2,7 +2,7 @@
 #define CARGO_CONSOLE 1
 #define IRN_CONSOLE 2
 
-/datum/component/armament/cargo_gun
+/datum/component/armament/company_imports
 	/// Selected amount of ammo to purchase
 	var/ammo_purchase_num = 1
 	/// Is this set to private order
@@ -14,24 +14,24 @@
 	/// If this is a tablet, the parent budgetordering
 	var/datum/computer_file/program/budgetorders/parent_prog
 
-/datum/component/armament/cargo_gun/Initialize(list/required_products, list/needed_access)
+/datum/component/armament/company_imports/Initialize(list/required_products, list/needed_access)
 	. = ..()
 	if(istype(parent, /obj/machinery/computer/cargo))
 		console_state = CARGO_CONSOLE
 	else if(istype(parent, /obj/item/modular_computer))
 		console_state = IRN_CONSOLE
 
-/datum/component/armament/cargo_gun/Destroy(force, silent)
+/datum/component/armament/company_imports/Destroy(force, silent)
 	parent_prog = null
 	. = ..()
 
-/datum/component/armament/cargo_gun/on_attack_hand(datum/source, mob/living/user)
+/datum/component/armament/company_imports/on_attack_hand(datum/source, mob/living/user)
 	return
 
-/datum/component/armament/cargo_gun/on_attackby(atom/target, obj/item, mob/user)
+/datum/component/armament/company_imports/on_attackby(atom/target, obj/item, mob/user)
 	return
 
-/datum/component/armament/cargo_gun/ui_data(mob/user)
+/datum/component/armament/company_imports/ui_data(mob/user)
 	var/list/data = list()
 
 	var/mob/living/carbon/human/the_person = user
@@ -110,7 +110,7 @@
 				if(products && !(armament_entry.type in products))
 					continue
 
-				var/datum/armament_entry/cargo_gun/gun_entry = armament_entry
+				var/datum/armament_entry/company_import/gun_entry = armament_entry
 
 				if(gun_entry.contraband)
 					if(!(console_state == CARGO_CONSOLE))
@@ -186,13 +186,13 @@
 
 	return data
 
-/datum/component/armament/cargo_gun/ui_interact(mob/user, datum/tgui/ui)
+/datum/component/armament/company_imports/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "CargoGunConsole")
 		ui.open()
 
-/datum/component/armament/cargo_gun/select_armament(mob/user, datum/armament_entry/cargo_gun/armament_entry)
+/datum/component/armament/company_imports/select_armament(mob/user, /datum/armament_entry/company_import/armament_entry)
 	var/datum/bank_account/buyer = SSeconomy.get_dep_account(ACCOUNT_CAR)
 	var/obj/item/modular_computer/possible_downloader
 	var/obj/machinery/computer/cargo/possible_console
@@ -292,7 +292,7 @@
 	created_pack.contains = list(armament_entry.item_type)
 	var/rank = the_person.get_assignment(hand_first = TRUE)
 	var/ckey = the_person.ckey
-	var/datum/supply_order/armament/created_order
+	var/datum/supply_order/company_import/created_order
 	if(buyer != SSeconomy.get_dep_account(ACCOUNT_CAR))
 		created_order = new(created_pack, name, rank, ckey, paying_account = buyer, reason = reason)
 	else
@@ -314,7 +314,7 @@
 		else
 			SSshuttle.shopping_list += created_order
 
-/datum/component/armament/cargo_gun/buy_ammo(mob/user, datum/armament_entry/cargo_gun/armament_entry)
+/datum/component/armament/company_imports/buy_ammo(mob/user, /datum/armament_entry/company_import/armament_entry)
 	var/datum/bank_account/buyer = SSeconomy.get_dep_account(ACCOUNT_CAR)
 	var/obj/machinery/computer/cargo/possible_console
 	var/obj/item/modular_computer/possible_downloader
@@ -406,7 +406,7 @@
 		created_pack.contains += armament_entry.magazine
 	var/rank = the_person.get_assignment(hand_first = TRUE)
 	var/ckey = the_person.ckey
-	var/datum/supply_order/armament/created_order
+	var/datum/supply_order/company_import/created_order
 	if(buyer != SSeconomy.get_dep_account(ACCOUNT_CAR))
 		created_order = new(created_pack, name, rank, ckey, paying_account = buyer, reason = reason)
 	else
@@ -426,11 +426,11 @@
 		else
 			SSshuttle.shopping_list += created_order
 
-/datum/component/armament/cargo_gun/proc/cost_calculate(cost)
+/datum/component/armament/company_imports/proc/cost_calculate(cost)
 	. = cost
 	. *= SSeconomy.pack_price_modifier
 
-/datum/component/armament/cargo_gun/ui_act(action, list/params)
+/datum/component/armament/company_imports/ui_act(action, list/params)
 	. = ..()
 	if(.)
 		return
