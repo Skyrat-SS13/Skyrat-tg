@@ -198,7 +198,7 @@
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/masteratarms
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
-	head = /obj/item/clothing/head/warden/syndicate
+	head = /obj/item/clothing/head/hats/warden/syndicate
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
 	r_pocket = /obj/item/flashlight/seclite
 	implants = list(/obj/item/implant/krav_maga)
