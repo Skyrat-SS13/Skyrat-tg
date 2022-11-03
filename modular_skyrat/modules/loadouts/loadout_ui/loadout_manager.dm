@@ -318,7 +318,7 @@
 			if(!GLOB.donator_list[owner.ckey] && !is_admin(owner))
 				formatted_list.len--
 				continue
-		if(item.required_season && !(item.required_season in SSevents.holidays))
+		if(item.required_season && !check_holidays(item.required_season))
 			formatted_list.len--
 			continue
 

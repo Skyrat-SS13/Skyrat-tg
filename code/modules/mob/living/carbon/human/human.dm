@@ -400,7 +400,7 @@
 				var/counter = 1
 				while(sec_record.fields[text("com_[]", counter)]) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 					counter++
-				sec_record.fields[text("com_[]", counter)] = text("Made by [] on [] [], []<BR>[]", allowed_access, station_time_timestamp(), time2text(world.realtime, "MMM DD"), GLOB.year_integer+540, t1) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
+				sec_record.fields[text("com_[]", counter)] = text("Made by [] on [] [], []<BR>[]", allowed_access, station_time_timestamp(), time2text(world.realtime, "MMM DD"), CURRENT_STATION_YEAR, t1) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 				to_chat(human_user, span_notice("Successfully added comment."))
 				return
 
