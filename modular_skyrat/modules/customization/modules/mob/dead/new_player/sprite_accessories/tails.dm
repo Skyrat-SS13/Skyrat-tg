@@ -12,17 +12,22 @@
 	var/fluffy = FALSE
 
 /datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/HD)
-	if(wearer.try_hide_mutant_parts)
-		return TRUE
-	if(!wearer.wear_suit)
-		var/list/used_in_turf = list("tail") // We do a lil' emoting
+	if(wearer.w_uniform)
+		// We determined we have a uniform, manually hide the tail?
+		if(key in wearer.try_hide_mutant_parts)
+			return TRUE
+		// Is the suit flagged to hide the tail anyway?
+		if(wearer.wear_suit.flags_inv & HIDETAIL)
+			if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod) && wearer.back && istype(wearer.back, /obj/item/mod/control))
+				// MOD suit exception due to hardlight tech
+				return FALSE
+			return TRUE
+	else
+		var/list/used_in_turf = list("tail")
 		if(wearer.owned_turf?.name in used_in_turf)
+		// Emote exception
 			return TRUE
 		return FALSE
-	if(wearer.wear_suit.flags_inv & HIDETAIL)
-		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod) && wearer.back && istype(wearer.back, /obj/item/mod/control))
-			return FALSE
-		return TRUE
 
 /datum/sprite_accessory/tails/get_special_icon(mob/living/carbon/human/wearer, passed_state)
 	return icon

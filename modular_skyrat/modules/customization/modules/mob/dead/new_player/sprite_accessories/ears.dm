@@ -6,13 +6,17 @@
 	genetic = TRUE
 
 /datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/human, obj/item/bodypart/bodypart)
-	//An exception for MOD helmets
-	if(istype(human.head, /obj/item/clothing/head/mod))
-		return FALSE
+	// We have a hat and are manually hiding our ears
+	if(human.head && bodypart)
+		if(key in human.try_hide_mutant_parts)
+			return TRUE
+		// Exception for MOD helmets due to hardlight tech
+		if(istype(human.head, /obj/item/clothing/head/mod))
+			return FALSE
+	// Does the hat make us hide ears anyway? Do we even have a head?
 	if(
 		(human.head && (human.head.flags_inv & HIDEHAIR)) \
 		|| (human.wear_mask && (human.wear_mask.flags_inv & HIDEHAIR)) \
-		|| human.try_hide_mutant_parts \
 		|| !bodypart \
 	)
 		//This line basically checks if we FORCE accessory-ears to show, for items with earholes like Balaclavas and Luchador masks

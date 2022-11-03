@@ -7,8 +7,10 @@
 	genetic = TRUE
 
 /datum/sprite_accessory/horns/is_hidden(mob/living/carbon/human/human, obj/item/bodypart/bodypart)
-	if(human.try_hide_mutant_parts || !bodypart)
-		return TRUE
+	// We have a hat and are manually hiding our horn
+	if(human.head && bodypart)
+		if(key in human.try_hide_mutant_parts)
+			return TRUE
 	return FALSE
 
 /datum/sprite_accessory/horns/angler

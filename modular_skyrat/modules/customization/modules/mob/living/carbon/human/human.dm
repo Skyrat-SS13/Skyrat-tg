@@ -97,13 +97,29 @@
 	set name = "Show/Hide Mutant Parts"
 	set desc = "Allows you to choose to try and hide your mutant bodyparts under your clothes."
 
+	// The parts our particular user can choose
+	var/list/available_selection = list("reveal all")
+	// The total list of parts choosable
+	var/static/list/total_selection = list("horns", "ears", "wings", "tail", "xenodorsal")
+
+	for(var/key as anything in total_selection)
+		if(findtext(mutant_renderkey, "[key]"))
+			LAZYOR(available_selection, key)
+
 	if(stat != CONSCIOUS)
 		to_chat(usr, span_warning("You can't do this right now..."))
 		return
-	if(!try_hide_mutant_parts && !do_after(src, 3 SECONDS,target = src))
+	if(!available_selection.len > 1)
+		LAZYNULL(try_hide_mutant_parts)
+		update_mutant_bodyparts()
 		return
-	try_hide_mutant_parts = !try_hide_mutant_parts
-	to_chat(usr, span_notice("[try_hide_mutant_parts ? "You try and hide your mutant body parts under your clothes." : "You no longer try and hide your mutant body parts"]"))
+
+	var/pick = show_radial_menu(usr, src, available_selection, custom_check = FALSE, tooltips = TRUE)
+	if(!pick)
+		return
+	if(pick)
+		LAZYOR(try_hide_mutant_parts, pick)
+
 	update_mutant_bodyparts()
 
 // Feign impairment verb

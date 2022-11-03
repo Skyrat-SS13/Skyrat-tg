@@ -22,6 +22,13 @@
 	name = "Dorsal Down"
 	icon_state = "down"
 
+/datum/sprite_accessory/xenodorsal/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/part_to_hide)
+	// We have a suit and are manually hiding our spines
+	if(wearer.w_uniform)
+		if(key in wearer.try_hide_mutant_parts)
+			return TRUE
+	return FALSE
+
 //TAILS
 /datum/sprite_accessory/tails/mammal/wagging/xeno_tail
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/xeno_parts.dmi'

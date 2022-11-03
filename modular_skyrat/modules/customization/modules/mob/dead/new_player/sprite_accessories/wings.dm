@@ -16,8 +16,10 @@
 	genetic = TRUE
 
 /datum/sprite_accessory/wings/is_hidden(mob/living/carbon/human/winged_mob, obj/item/bodypart/part_to_hide)
-	if(winged_mob.wear_suit && winged_mob.try_hide_mutant_parts)
-		return TRUE
+	// We have a suit and are manually hiding our wings
+	if(winged_mob.w_uniform)
+		if(key in winged_mob.try_hide_mutant_parts)
+			return TRUE
 	return FALSE
 
 /datum/sprite_accessory/wings/none
