@@ -96,8 +96,9 @@
 								if(!icon_exists(accessory_icon, final_icon_state))
 									TEST_FAIL("Missing MAIN MATRIXED icon for [final_icon_state] in [accessory_icon_state] for factual sprite accessory [accessory_name] ([sprite_accessory.type]) in key [accessory_key]!")
 
-						else if(!icon_exists(accessory_icon, final_icon_state))
-							TEST_FAIL("Missing MAIN icon for [final_icon_state] in [accessory_icon_state] for factual sprite accessory [accessory_name] ([sprite_accessory.type]) in key [accessory_key]!")
+						else
+							if(!icon_exists(accessory_icon, final_icon_state_base))
+								TEST_FAIL("Missing MAIN icon for [final_icon_state_base] in [accessory_icon_state] for factual sprite accessory [accessory_name] ([sprite_accessory.type]) in key [accessory_key]!")
 
 					if(use_inner)
 						final_icon_state = "[gender_prefix]_[accessory_key]inner_[accessory_icon_state]_[layer_text]"
