@@ -268,7 +268,9 @@
 	name = "shaft miner PDA"
 	greyscale_config = /datum/greyscale_config/tablet/stripe_thick
 	greyscale_colors = "#927444#D6B328#6C3BA1"
-
+	starting_programs = list(
+		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+	)
 /**
  * Service
  */
@@ -285,7 +287,9 @@
 	name = "chaplain PDA"
 	greyscale_config = /datum/greyscale_config/tablet/chaplain
 	greyscale_colors = "#333333#D11818"
-
+	starting_programs = list(
+		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+	)
 /obj/item/modular_computer/tablet/pda/lawyer
 	name = "lawyer PDA"
 	greyscale_colors = "#4C76C8#FFE243"
@@ -304,15 +308,21 @@
 	name = "botanist PDA"
 	greyscale_config = /datum/greyscale_config/tablet/stripe_thick
 	greyscale_colors = "#50E193#E26F41#71A7CA"
-
+	starting_programs = list(
+		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+	)
 /obj/item/modular_computer/tablet/pda/cook
 	name = "cook PDA"
 	greyscale_colors = "#FAFAFA#A92323"
-
+	starting_programs = list(
+		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+	)
 /obj/item/modular_computer/tablet/pda/bar
 	name = "bartender PDA"
 	greyscale_colors = "#333333#C7C7C7"
-
+	starting_programs = list(
+		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+	)
 /obj/item/modular_computer/tablet/pda/clown
 	name = "clown PDA"
 	inserted_disk = /obj/item/computer_disk/virus/clown
@@ -320,6 +330,9 @@
 	greyscale_config = null
 	greyscale_colors = null
 	inserted_item = /obj/item/toy/crayon/rainbow
+	starting_programs = list(
+		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+	)
 
 /obj/item/modular_computer/tablet/pda/clown/Initialize(mapload)
 	. = ..()
@@ -346,7 +359,9 @@
 	greyscale_config = /datum/greyscale_config/tablet/mime
 	greyscale_colors = "#FAFAFA#EA3232"
 	inserted_item = /obj/item/toy/crayon/mime
-
+	starting_programs = list(
+		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+	)
 /obj/item/modular_computer/tablet/pda/mime/Initialize(mapload)
 	. = ..()
 	for(var/datum/computer_file/program/messenger/msg in stored_files)
