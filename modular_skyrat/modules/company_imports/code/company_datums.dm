@@ -27,8 +27,8 @@
 	name = NAKAMURA_ENGINEERING_MODSUITS_NAME
 	company_flag = CARGO_COMPANY_NAKAMURA_MODSUITS
 	cost = 6000
-	cost_change_lower = -2000
-	cost_change_upper = 3000
+	cost_change_lower = -1000
+	cost_change_upper = 4000
 
 // Jarnsmiour sells some melee weapons and some forging related items
 /datum/gun_company/jarnsmiour
@@ -36,23 +36,23 @@
 	company_flag = CARGO_COMPANY_BLACKSTEEL
 	cost = 3000
 	cost_change_lower = 0
-	cost_change_upper = 2000
+	cost_change_upper = 3000
 
 // Nizhny sells NRI military surplus clothing, gear, and a few firearms
 /datum/gun_company/nri_surplus
 	name = NRI_SURPLUS_COMPANY_NAME
 	company_flag = CARGO_COMPANY_NRI_SURPLUS
-	cost = 5000
+	cost = 3000
 	cost_change_lower = -1000
-	cost_change_upper = 1000
+	cost_change_upper = 2000
 
 // DeForest sells medical supplies of most types
 /datum/gun_company/deforest_medical
 	name = DEFOREST_MEDICAL_NAME
 	company_flag = CARGO_COMPANY_DEFOREST
-	cost = 8000
-	cost_change_lower = -2000
-	cost_change_upper = 3000
+	cost = 9000
+	cost_change_lower = -1000
+	cost_change_upper = 4000
 
 // Donk sells donk co branded stuff, microwave foods, donk co merch, and donksoft guns
 /datum/gun_company/donk
@@ -69,14 +69,14 @@
 	company_flag = CARGO_COMPANY_KAHRAMAN
 	cost = 6000
 	cost_change_lower = -1000
-	cost_change_upper = 2000
+	cost_change_upper = 3000
 
 // Nakamura engineering's tooling division, sells tools, possibly even advanced ones
 /datum/gun_company/nakamura_tooling
 	name = NAKAMURA_ENGINEERING_TOOLING_NAME
 	company_flag = CARGO_COMPANY_NAKAMURA_TOOLING
 	cost = 6000
-	cost_change_lower = -2000
+	cost_change_lower = -1000
 	cost_change_upper = 3000
 
 // A coalition between nt and bolt to sell personal defense equipment and weapons
@@ -84,21 +84,21 @@
 	name = BOLT_NANOTRASEN_DEFENSE_NAME
 	company_flag = CARGO_COMPANY_BOLT_NANOTRASEN
 	cost = 6000
-	cost_change_lower = -2000
-	cost_change_upper = 3000
+	cost_change_lower = -1000
+	cost_change_upper = 4000
 
 // Micron control systems and allstar's weapons together, all your energy guns in one place!
 /datum/gun_company/microstar_energy_weapons
 	name = MICROSTAR_ENERGY_NAME
 	company_flag = CARGO_COMPANY_MICROSTAR
 	cost = 6000
-	cost_change_lower = -2000
-	cost_change_upper = 3000
+	cost_change_lower = -1000
+	cost_change_upper = 4000
 
 // Vitzstvi sells ammo boxes and speedloaders for most of the weapons sold by other companies
 /datum/gun_company/vitezstvi_ammo
 	name = VITEZSTVI_AMMO_NAME
 	company_flag = CARGO_COMPANY_VITEZSTVI_AMMO
-	cost = 6000
-	cost_change_lower = -2000
-	cost_change_upper = 3000
+	cost = 3000
+	cost_change_lower = -1000
+	cost_change_upper = 2000
