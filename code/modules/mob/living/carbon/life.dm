@@ -346,17 +346,6 @@
 
 /// Attempts to take a breath from the external or internal air tank.
 /mob/living/carbon/proc/get_breath_from_internal(volume_needed)
-<<<<<<< HEAD
-	if(internal)
-		if(internal.loc != src && !(wear_mask.clothing_flags & MASK_EXTEND_RANGE)) //SKYRAT EDIT ANESTHETIC MACHINE. ORIGNIAL CODE: if(internal.loc != src)
-			internal = null
-		else if ((!wear_mask || !(wear_mask.clothing_flags & MASKINTERNALS)) && !getorganslot(ORGAN_SLOT_BREATHING_TUBE))
-			internal = null
-		else
-			. = internal.remove_air_volume(volume_needed)
-			if(!.)
-				return FALSE //to differentiate between no internals and active, but empty internals
-=======
 	if(invalid_internals())
 		// Unexpectely lost breathing apparatus and ability to breathe from the internal air tank.
 		cutoff_internals()
@@ -370,7 +359,6 @@
 		return
 	// To differentiate between no internals and active, but empty internals.
 	return . || FALSE
->>>>>>> 0a81ea5bf96 (Internals Bugfixes & Internals-Compatible Helmets (#70750))
 
 /mob/living/carbon/proc/handle_blood(delta_time, times_fired)
 	return
