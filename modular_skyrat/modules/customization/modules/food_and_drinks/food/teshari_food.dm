@@ -1,6 +1,6 @@
 /obj/item/food/piru_dough
 	name = "piru dough"
-	desc = "A coarse, stretchy dough made from piru flour and muli juice in a striking purple color, acting as the basis for most teshari cuisine. Puffs up dramatically when grilled."
+	desc = "A coarse, stretchy dough made from piru flour and muli juice in a striking purple color, acting as the basis for most teshari cuisine. Puffs up dramatically when grilled or baked."
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "piru_dough"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6)
@@ -13,6 +13,9 @@
 
 /obj/item/food/piru_dough/MakeGrillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/piru_loaf, rand(15 SECONDS, 25 SECONDS), TRUE, TRUE)
+
+/obj/item/food/piru_dough/MakeBakeable()
+	AddComponent(/datum/component/bakeable, /obj/item/food/piru_loaf, rand(15 SECONDS, 25 SECONDS), TRUE, TRUE)
 
 /obj/item/food/piru_loaf
 	name = "piru loaf"
@@ -51,6 +54,9 @@
 
 /obj/item/food/flat_piru_dough/MakeGrillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/grilled_piru_flatbread, rand(15 SECONDS, 25 SECONDS), TRUE, TRUE)
+
+/obj/item/food/flat_piru_dough/MakeBakeable()
+	AddComponent(/datum/component/bakeable, /obj/item/food/grilled_piru_flatbread, rand(15 SECONDS, 25 SECONDS), TRUE, TRUE)
 
 /obj/item/food/grilled_piru_flatbread
 	name = "grilled piru flatbread"

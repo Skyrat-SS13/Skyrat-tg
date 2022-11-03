@@ -77,10 +77,6 @@
 
 /datum/job/engineering_guard //see orderly
 
-
-/datum/job/expeditionary_trooper
-	alt_titles = list("Expeditionary Trooper", "Vanguard Operative", "Vanguard Pointman", "Expeditionary Field Medic", "Vanguard Marksman", "Expeditionary Combat Technician")
-
 /datum/job/geneticist
 	alt_titles = list("Geneticist", "Mutation Researcher")
 

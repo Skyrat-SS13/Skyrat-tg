@@ -517,7 +517,32 @@
 	item_path = /obj/item/coin/donator/marsoc
 	ckeywhitelist = list("sweetsoulbrother")
 
+/datum/loadout_item/toys/plushie_jeanne
+	name = "Masked Roboticist Plushie"
+	item_path = /obj/item/toy/plush/skyrat/fox/plushie_jeanne
+//	ckeywhitelist = list("klb100") // Asked it to be public.
+
 /datum/loadout_item/under/jumpsuit/tactichill
 	name = "Tactichill Jacket"
 	item_path = /obj/item/clothing/under/tactichill
 	ckeywhitelist = list("kaynite")
+
+/datum/loadout_item/suit/techpriest
+	name = "Techpriest Robes"
+	item_path = /obj/item/clothing/suit/hooded/techpriest
+	ckeywhitelist = list("imthinkingarbys")
+
+/datum/loadout_item/toys/plushie_azyre
+	name = "Handsome Chef Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_azyre
+	ckeywhitelist = list("dalaoazure")
+
+/datum/loadout_item/pocket_items/khicigs
+	name = "Kitsuhana Singularity Cigarettes"
+	item_path = /obj/item/storage/fancy/cigarettes/khi
+	ckeywhitelist = list("ultimarifox")
+
+/datum/loadout_item/shoes/dragheels
+	name = "Fancy Heels (dragmeme)"
+	item_path = /obj/item/clothing/shoes/fancy_heels/drag
+	ckeywhitelist = list("thedragmeme")

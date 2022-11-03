@@ -316,7 +316,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	shoes = /obj/item/clothing/shoes/cowboy
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/headset_sec/alt
-	head = /obj/item/clothing/head/hunter
+	head = /obj/item/clothing/head/cowboy
 	belt = /obj/item/gun/energy/disabler
 	r_pocket = /obj/item/lighter
 	l_pocket = /obj/item/restraints/handcuffs

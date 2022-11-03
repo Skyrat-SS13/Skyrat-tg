@@ -3,7 +3,7 @@
 #define EVASION_VENTCRAWL_INABILTY_CD_PERCENTAGE 0.8
 #define RUNNER_BLUR_EFFECT "runner_evasion"
 
-/mob/living/carbon/alien/humanoid/skyrat/runner
+/mob/living/carbon/alien/adult/skyrat/runner
 	name = "alien runner"
 	desc = "A short alien with sleek red chitin, clearly abiding by the 'red ones go faster' theorem and almost always running on all fours."
 	caste = "runner"
@@ -14,10 +14,10 @@
 	var/datum/action/cooldown/alien/skyrat/evade/evade_ability
 	melee_damage_lower = 15
 	melee_damage_upper = 20
-	next_evolution = /mob/living/carbon/alien/humanoid/skyrat/ravager
+	next_evolution = /mob/living/carbon/alien/adult/skyrat/ravager
 	on_fire_pixel_y = 0
 
-/mob/living/carbon/alien/humanoid/skyrat/runner/Initialize(mapload)
+/mob/living/carbon/alien/adult/skyrat/runner/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/tackler, stamina_cost = 0, base_knockdown = 2, range = 10, speed = 2, skill_mod = 7, min_distance = 0)
 	evade_ability = new /datum/action/cooldown/alien/skyrat/evade()
@@ -25,11 +25,11 @@
 
 	add_movespeed_modifier(/datum/movespeed_modifier/alien_quick)
 
-/mob/living/carbon/alien/humanoid/skyrat/runner/Destroy()
+/mob/living/carbon/alien/adult/skyrat/runner/Destroy()
 	QDEL_NULL(evade_ability)
 	return ..()
 
-/mob/living/carbon/alien/humanoid/skyrat/runner/create_internal_organs()
+/mob/living/carbon/alien/adult/skyrat/runner/create_internal_organs()
 	internal_organs += new /obj/item/organ/internal/alien/plasmavessel/small/tiny
 	..()
 
@@ -82,7 +82,7 @@
 	addtimer(CALLBACK(owner, /atom.proc/remove_filter, RUNNER_BLUR_EFFECT), 0.5 SECONDS)
 	return BULLET_ACT_FORCE_PIERCE
 
-/mob/living/carbon/alien/humanoid/skyrat/runner/bullet_act(obj/projectile/P, def_zone, piercing_hit = FALSE)
+/mob/living/carbon/alien/adult/skyrat/runner/bullet_act(obj/projectile/P, def_zone, piercing_hit = FALSE)
 	if(evade_ability)
 		var/evade_result = evade_ability.on_projectile_hit()
 		if(!(evade_result == BULLET_ACT_HIT))
