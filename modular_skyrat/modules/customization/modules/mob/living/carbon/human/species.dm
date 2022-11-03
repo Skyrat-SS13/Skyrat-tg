@@ -117,14 +117,14 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				use_extra = (SPRITE_ACCESSORY_EXTRA in filter) && use_extra
 				use_extra2 = (SPRITE_ACCESSORY_EXTRA2 in filter) && use_extra2
 
-			var/layertext = mutant_bodyparts_layertext(layer)
+			var/layer_text = mutant_bodyparts_layertext(layer)
 			if(use_main)
 				var/list/mutable_appearance/accessories
 				var/mutable_appearance/accessory_overlay = mutable_appearance(icon_to_use, layer = -layer)
 
-				accessory_overlay.icon_state = "[render_state]_[layertext]"
+				accessory_overlay.icon_state = "[render_state]_[layer_text]"
 				if(bodypart_accessory.color_src == USE_MATRIXED_COLORS && color_layer_list)
-					accessory_overlay.icon_state = "[render_state]_[layertext]_primary"
+					accessory_overlay.icon_state = "[render_state]_[layer_text]_primary"
 					accessories = list()
 
 				if(bodypart_accessory.center)
@@ -150,7 +150,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 											continue
 									var/num = text2num(number_text)
 									var/mutable_appearance/matrixed_acce = mutable_appearance(icon_to_use, layer = -layer)
-									matrixed_acce.icon_state = "[render_state]_[layertext]_[color_entry]"
+									matrixed_acce.icon_state = "[render_state]_[layer_text]_[color_entry]"
 									matrixed_acce.color = color_list[num]
 									matrixed_acce.alpha = specific_alpha
 
@@ -197,9 +197,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			if(use_inner)
 				var/mutable_appearance/inner_accessory_overlay = mutable_appearance(bodypart_accessory.icon, layer = -layer)
 				if(bodypart_accessory.gender_specific)
-					inner_accessory_overlay.icon_state = "[gender_prefix]_[key]inner_[bodypart_accessory.icon_state]_[layertext]"
+					inner_accessory_overlay.icon_state = "[gender_prefix]_[key]inner_[bodypart_accessory.icon_state]_[layer_text]"
 				else
-					inner_accessory_overlay.icon_state = "m_[key]inner_[bodypart_accessory.icon_state]_[layertext]"
+					inner_accessory_overlay.icon_state = "m_[key]inner_[bodypart_accessory.icon_state]_[layer_text]"
 
 				icon_exists(inner_accessory_overlay.icon, inner_accessory_overlay.icon_state, scream = TRUE)
 
@@ -213,9 +213,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				var/mutable_appearance/extra_accessory_overlay = mutable_appearance(bodypart_accessory.icon, layer = -layer)
 
 				if(bodypart_accessory.gender_specific)
-					extra_accessory_overlay.icon_state = "[gender_prefix]_[key]_extra_[bodypart_accessory.icon_state]_[layertext]"
+					extra_accessory_overlay.icon_state = "[gender_prefix]_[key]_extra_[bodypart_accessory.icon_state]_[layer_text]"
 				else
-					extra_accessory_overlay.icon_state = "m_[key]_extra_[bodypart_accessory.icon_state]_[layertext]"
+					extra_accessory_overlay.icon_state = "m_[key]_extra_[bodypart_accessory.icon_state]_[layer_text]"
 
 				icon_exists(extra_accessory_overlay.icon, extra_accessory_overlay.icon_state, scream = TRUE)
 
@@ -248,9 +248,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			if(use_extra2) //apply the extra overlay, if there is one
 				var/mutable_appearance/extra2_accessory_overlay = mutable_appearance(bodypart_accessory.icon, layer = -layer)
 				if(bodypart_accessory.gender_specific)
-					extra2_accessory_overlay.icon_state = "[gender_prefix]_[key]_extra2_[bodypart_accessory.icon_state]_[layertext]"
+					extra2_accessory_overlay.icon_state = "[gender_prefix]_[key]_extra2_[bodypart_accessory.icon_state]_[layer_text]"
 				else
-					extra2_accessory_overlay.icon_state = "m_[key]_extra2_[bodypart_accessory.icon_state]_[layertext]"
+					extra2_accessory_overlay.icon_state = "m_[key]_extra2_[bodypart_accessory.icon_state]_[layer_text]"
 
 				icon_exists(extra2_accessory_overlay.icon, extra2_accessory_overlay.icon_state, scream = TRUE)
 

@@ -72,14 +72,13 @@
 						use_extra = (SPRITE_ACCESSORY_EXTRA in filter) && use_extra
 						use_extra2 = (SPRITE_ACCESSORY_EXTRA2 in filter) && use_extra2
 
-					var/layertext = human_species.mutant_bodyparts_layertext(layer)
+					var/layer_text = human_species.mutant_bodyparts_layertext(layer)
 
 					var/final_icon_state
 
 					if(use_main)
-						final_icon_state = "[gender_prefix]_[sprite_accessory.get_special_render_key(human)]_[render_state]_[layertext]"
+						var/final_icon_state_base = "[gender_prefix]_[sprite_accessory.get_special_render_key(human)]_[render_state]_[layer_text]"
 						if(sprite_accessory.color_src == USE_MATRIXED_COLORS)
-							final_icon_state += "_primary"
 							var/list/color_layer_list
 							if(sprite_accessory.special_render_case)
 								color_layer_list = list("1" = "primary", "2" = "secondary", "3" = "tertiary")
@@ -92,7 +91,7 @@
 									if(filter && (color_entry in filter))
 										continue
 
-								final_icon_state = "[final_icon_state]_[layertext]_[color_layer_list[entry_number]]"
+								final_icon_state = "[final_icon_state_base]_[color_layer_list[entry_number]]"
 
 								if(!icon_exists(accessory_icon, final_icon_state))
 									TEST_FAIL("Missing MAIN MATRIXED icon for [final_icon_state] in [accessory_icon_state] for factual sprite accessory [accessory_name] ([sprite_accessory.type]) in key [accessory_key]!")
@@ -101,18 +100,18 @@
 							TEST_FAIL("Missing MAIN icon for [final_icon_state] in [accessory_icon_state] for factual sprite accessory [accessory_name] ([sprite_accessory.type]) in key [accessory_key]!")
 
 					if(use_inner)
-						final_icon_state = "[gender_prefix]_[accessory_key]inner_[accessory_icon_state]_[layertext]"
+						final_icon_state = "[gender_prefix]_[accessory_key]inner_[accessory_icon_state]_[layer_text]"
 
 						if(!icon_exists(accessory_icon, final_icon_state))
 							TEST_FAIL("Missing INNER icon for [final_icon_state] in [accessory_icon_state] for factual sprite accessory [accessory_name] ([sprite_accessory.type]) in key [accessory_key]!")
 
 					if(use_extra)
-						final_icon_state = "[gender_prefix]_[accessory_key]_extra_[accessory_icon_state]_[layertext]"
+						final_icon_state = "[gender_prefix]_[accessory_key]_extra_[accessory_icon_state]_[layer_text]"
 						if(!icon_exists(accessory_icon, final_icon_state))
 							TEST_FAIL("Missing EXTRA icon for [final_icon_state] in [accessory_icon_state] for factual sprite accessory [accessory_name] ([sprite_accessory.type]) in key [accessory_key]!")
 
 					if(use_extra2)
-						final_icon_state = "[gender_prefix]_[accessory_key]_extra2_[accessory_icon_state]_[layertext]"
+						final_icon_state = "[gender_prefix]_[accessory_key]_extra2_[accessory_icon_state]_[layer_text]"
 						if(!icon_exists(accessory_icon, final_icon_state))
 							TEST_FAIL("Missing EXTRA2 icon for [final_icon_state] in [accessory_icon_state] for factual sprite accessory [accessory_name] ([sprite_accessory.type]) in key [accessory_key]!")
 
