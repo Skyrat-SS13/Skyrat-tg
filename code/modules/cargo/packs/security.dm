@@ -158,7 +158,7 @@
 		Requires Security access to open."
 	cost = CARGO_CRATE_VALUE * 6 //justice comes at a price. An expensive, noisy price.
 	contraband = TRUE
-	contains = list(/obj/item/clothing/head/helmet/justice,
+	contains = list(/obj/item/clothing/head/helmet/toggleable/justice,
 					/obj/item/clothing/mask/gas/sechailer,
 				)
 	crate_name = "security clothing crate"
@@ -316,7 +316,7 @@
 	name = "Riot Helmets Crate"
 	desc = "Contains three riot helmets. Requires Armory access to open."
 	cost = CARGO_CRATE_VALUE * 4
-	contains = list(/obj/item/clothing/head/helmet/riot = 3)
+	contains = list(/obj/item/clothing/head/helmet/toggleable/riot = 3)
 	crate_name = "riot helmets crate"
 
 /datum/supply_pack/security/armory/riotshields
@@ -379,6 +379,10 @@
 	cost = CARGO_CRATE_VALUE * 7
 	contains = list(/obj/item/storage/belt/holster/thermal = 2)
 	crate_name = "thermal pistol crate"
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6536b01a188 ([MDB IGNORE] Clothing var cleanup (#70773))
 /datum/supply_pack/security/armory/wt550
 	name = "Recalled Weapon Pack"
 	desc = "Contains a set of old Nanotrasen brand autorifles recalled due to choking hazard."
@@ -389,7 +393,7 @@
 		/obj/item/ammo_box/magazine/wt550m9 = 2,
 	)
 	crate_name = "Recalled rifle crate"
-	
+
 /datum/supply_pack/security/armory/wt550ammo
 	name = "Recalled Ammo Pack"
 	desc = "Contains four 20-round magazine for the Recalled WT-550 Auto Rifle. \
