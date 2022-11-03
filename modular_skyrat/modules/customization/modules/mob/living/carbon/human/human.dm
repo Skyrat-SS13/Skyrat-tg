@@ -109,7 +109,7 @@
 	if(stat != CONSCIOUS)
 		to_chat(usr, span_warning("You can't do this right now..."))
 		return
-	if(!available_selection.len > 1)
+	if(available_selection.len == 1)
 		LAZYNULL(try_hide_mutant_parts)
 		update_mutant_bodyparts()
 		return
@@ -117,7 +117,10 @@
 	var/pick = show_radial_menu(usr, src, available_selection, custom_check = FALSE, tooltips = TRUE)
 	if(!pick)
 		return
-	if(pick)
+
+	if(pick == "reveal all")
+		LAZYNULL(try_hide_mutant_parts)
+	else
 		LAZYOR(try_hide_mutant_parts, pick)
 
 	update_mutant_bodyparts()
