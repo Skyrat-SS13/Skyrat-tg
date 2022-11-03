@@ -159,7 +159,7 @@
 	greyscale_colors = "#D99A2E#69DBF3#E3DF3D"
 	starting_programs = list(
 		/datum/computer_file/program/supermatter_monitor,
-		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+
 	)
 
 /obj/item/modular_computer/tablet/pda/atmos
@@ -169,7 +169,7 @@
 	starting_programs = list(
 		/datum/computer_file/program/atmosscan,
 		/datum/computer_file/program/alarm_monitor,
-		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+
 	)
 
 /**
@@ -183,7 +183,7 @@
 	starting_programs = list(
 		/datum/computer_file/program/atmosscan,
 		/datum/computer_file/program/signal_commander,
-		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+
 	)
 
 /obj/item/modular_computer/tablet/pda/roboticist
@@ -192,7 +192,7 @@
 	greyscale_colors = "#484848#0099CC#D94927"
 	starting_programs = list(
 		/datum/computer_file/program/robocontrol,
-		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+
 	)
 
 /obj/item/modular_computer/tablet/pda/geneticist
@@ -202,7 +202,7 @@
 	starting_programs = list(
 		/datum/computer_file/program/phys_scanner/medical,
 		/datum/computer_file/program/records/medical,
-		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+
 	)
 
 /**
@@ -217,7 +217,7 @@
 		/datum/computer_file/program/phys_scanner/medical,
 		/datum/computer_file/program/records/medical,
 		/datum/computer_file/program/robocontrol,
-		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+
 	)
 
 /obj/item/modular_computer/tablet/pda/medical/paramedic
@@ -226,7 +226,7 @@
 		/datum/computer_file/program/phys_scanner/medical,
 		/datum/computer_file/program/records/medical,
 		/datum/computer_file/program/radar/lifeline,
-		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+
 	)
 
 /obj/item/modular_computer/tablet/pda/viro
@@ -237,7 +237,7 @@
 		/datum/computer_file/program/phys_scanner/medical,
 		/datum/computer_file/program/records/medical,
 		/datum/computer_file/program/robocontrol,
-		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+
 	)
 
 /obj/item/modular_computer/tablet/pda/chemist
@@ -246,7 +246,7 @@
 	greyscale_colors = "#FAFAFA#355FAC#EA6400"
 	starting_programs = list(
 		/datum/computer_file/program/phys_scanner/chemistry,
-		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+
 	)
 
 /**
@@ -261,7 +261,7 @@
 		/datum/computer_file/program/shipping,
 		/datum/computer_file/program/budgetorders,
 		/datum/computer_file/program/robocontrol,
-		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+
 	)
 
 /obj/item/modular_computer/tablet/pda/shaftminer
@@ -269,7 +269,7 @@
 	greyscale_config = /datum/greyscale_config/tablet/stripe_thick
 	greyscale_colors = "#927444#D6B328#6C3BA1"
 	starting_programs = list(
-		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+
 	)
 /**
  * Service
@@ -280,7 +280,7 @@
 	greyscale_colors = "#933ea8#235AB2"
 	starting_programs = list(
 		/datum/computer_file/program/radar/custodial_locator,
-		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+
 	)
 
 /obj/item/modular_computer/tablet/pda/chaplain
@@ -288,7 +288,7 @@
 	greyscale_config = /datum/greyscale_config/tablet/chaplain
 	greyscale_colors = "#333333#D11818"
 	starting_programs = list(
-		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+
 	)
 /obj/item/modular_computer/tablet/pda/lawyer
 	name = "lawyer PDA"
@@ -296,7 +296,7 @@
 	inserted_item = /obj/item/pen/fountain
 	starting_programs = list(
 		/datum/computer_file/program/records/security,
-		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+
 	)
 
 /obj/item/modular_computer/tablet/pda/lawyer/Initialize(mapload)
@@ -309,19 +309,19 @@
 	greyscale_config = /datum/greyscale_config/tablet/stripe_thick
 	greyscale_colors = "#50E193#E26F41#71A7CA"
 	starting_programs = list(
-		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+
 	)
 /obj/item/modular_computer/tablet/pda/cook
 	name = "cook PDA"
 	greyscale_colors = "#FAFAFA#A92323"
 	starting_programs = list(
-		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+
 	)
 /obj/item/modular_computer/tablet/pda/bar
 	name = "bartender PDA"
 	greyscale_colors = "#333333#C7C7C7"
 	starting_programs = list(
-		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+
 	)
 /obj/item/modular_computer/tablet/pda/clown
 	name = "clown PDA"
@@ -331,7 +331,7 @@
 	greyscale_colors = null
 	inserted_item = /obj/item/toy/crayon/rainbow
 	starting_programs = list(
-		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+
 	)
 
 /obj/item/modular_computer/tablet/pda/clown/Initialize(mapload)
@@ -360,7 +360,7 @@
 	greyscale_colors = "#FAFAFA#EA3232"
 	inserted_item = /obj/item/toy/crayon/mime
 	starting_programs = list(
-		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+
 	)
 /obj/item/modular_computer/tablet/pda/mime/Initialize(mapload)
 	. = ..()
@@ -379,7 +379,7 @@
 	long_ranged = TRUE
 	starting_programs = list(
 		/datum/computer_file/program/newscaster,
-		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+
 	)
 
 /obj/item/modular_computer/tablet/pda/curator/Initialize(mapload)
@@ -396,7 +396,7 @@
 	name = "assistant PDA"
 	starting_programs = list(
 		/datum/computer_file/program/bounty_board,
-		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for all crew
+
 	)
 
 /**
