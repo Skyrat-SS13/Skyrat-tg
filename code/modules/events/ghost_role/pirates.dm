@@ -100,24 +100,30 @@
 			payoff = 20000
 			var/number = rand(1,99)
 			///Station name one is the most important pick and is pretty much the station's main argument against getting fined, thus it better be mostly always right.
-			var/station_designation = pick_weight(list("Nanotrasen Research Station" = 70,
-												"Nanotrasen Refueling Outpost" = 5,
-												"Interdyne Pharmaceuticals Chemical Factory" = 5,
-												"Free Teshari League Engineering Station" = 5,
-												"Agurkrral Military Base" = 5,
-												"Sol Federation Embassy" = 5,
-												"Novaya Rossiyskaya Imperiya Civilian Port" = 5,))
+			var/station_designation = pick_weight(list(
+				"Nanotrasen Research Station" = 70,
+				"Nanotrasen Refueling Outpost" = 5,
+				"Interdyne Pharmaceuticals Chemical Factory" = 5,
+				"Free Teshari League Engineering Station" = 5,
+				"Agurkrral Military Base" = 5,
+				"Sol Federation Embassy" = 5,
+				"Novaya Rossiyskaya Imperiya Civilian Port" = 5,
+			))
 			///"right" = Right for the raiders to use as an argument; usually pretty difficult to avoid.
-			var/right_pick = pick("high probability of NRI-affiliated civilian casualties aboard the facility",
-									"highly increased funding by the SolFed authorities; neglected NRI-backed subsidiaries' contracts",
-									"unethical hiring practices and unfair payment allocation for the NRI citizens",
-									"recently discovered BSA-[number] or similar model in close proximity to the neutral space aboard this or nearby affiliated facility")
+			var/right_pick = pick(
+				"high probability of NRI-affiliated civilian casualties aboard the facility",
+				"highly increased funding by the SolFed authorities; neglected NRI-backed subsidiaries' contracts",
+				"unethical hiring practices and unfair payment allocation for the NRI citizens",
+				"recently discovered BSA-[number] or similar model in close proximity to the neutral space aboard this or nearby affiliated facility",
+			)
 			///"wrong" = Loosely based accusations that can be easily disproven if people think.
-			var/wrong_pick = pick("inadequate support of the local producer",
-									"unregulated production of Gauss weaponry aboard this installation",
-									"SolFed-backed stationary military formation on the surface of Indecipheres",
-									"AUTOMATED REGULATORY VIOLATION DETECTION SYSTEM CRITICAL FAILURE. PLEASE CONTACT AND INFORM THE DISPATCHED AUTHORITIES TO RESOLVE THE ISSUE. \
-									ANY POSSIBLE INDENTURE HAS BEEN CLEARED. WE APOLOGIZE FOR THE INCONVENIENCE")
+			var/wrong_pick = pick(
+				"inadequate support of the local producer",
+				"unregulated production of Gauss weaponry aboard this installation",
+				"SolFed-backed stationary military formation on the surface of Indecipheres",
+				"AUTOMATED REGULATORY VIOLATION DETECTION SYSTEM CRITICAL FAILURE. PLEASE CONTACT AND INFORM THE DISPATCHED AUTHORITIES TO RESOLVE THE ISSUE. \
+					ANY POSSIBLE INDENTURE HAS BEEN CLEARED. WE APOLOGIZE FOR THE INCONVENIENCE",
+			)
 			var/final_result = pick(right_pick, wrong_pick)
 			threat.title = "NRI Audit"
 			threat.content = "Greetings [station_designation], this is the [ship_name]. Due to recent Imperial regulatory violations, such as [final_result] and many other smaller issues, your station has been fined [payoff] credits. Inadequate imperial police activity is currently present in your sector, thus the failure to comply might instead result in a military patrol dispatch. Novaya Rossiyskaya Imperiya collegial secretary out."
