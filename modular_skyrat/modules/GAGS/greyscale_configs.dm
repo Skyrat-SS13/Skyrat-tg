@@ -356,6 +356,13 @@
 /datum/greyscale_config/apron/worn/oldvox
 	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_oldvox.dmi'
 
+/*
+*	ARMOR
+*/
+
+/datum/greyscale_config/heck_suit/worn/digi
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
+
 // Bathrobes
 
 /datum/greyscale_config/bathrobe
@@ -383,8 +390,35 @@
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/fancy_suits/fancy_suit.json'
 
 /datum/greyscale_config/fancy_suit/worn
-	name = "Fancy Suit Worn"
+	name = "Worn Fancy Suit"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/fancy_suits/fancy_suit_worn.json'
+
+/datum/greyscale_config/recolorable_suit
+	name = "Formal Suit"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/suits.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/fancy_suits/recolorable_suit.json'
+
+/datum/greyscale_config/recolorable_suit/worn
+	name = "Worn Formal Suit"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/suits.dmi'
+
+/datum/greyscale_config/recolorable_suit/worn/digi
+	name = "Worn Formal Suit - Digitigrade"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/suits_digi.dmi'
+
+
+/datum/greyscale_config/recolorable_suitskirt
+	name = "Formal Suitskirt"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/suits.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/fancy_suits/recolorable_suit.json'
+
+/datum/greyscale_config/recolorable_suitskirt/worn
+	name = "Worn Formal Suitskirt"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/suits.dmi'
+
+/datum/greyscale_config/recolorable_suitskirt/worn/digi
+	name = "Worn Formal Suitskirt - Digitigrade"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/suits_digi.dmi'
 
 // HOODIES
 /datum/greyscale_config/hoodie
@@ -502,6 +536,33 @@
 /datum/greyscale_config/peacoat/worn
 	name = "Peacoat (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/peacoat/peacoat_worn.json'
+
+// HAWAIIAN SHIRT
+
+/datum/greyscale_config/hawaiian_shirt
+	name = "Hawaiian Shirt"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/hawaiianshirt.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/hawaiianshirt/hawaiianshirt.json'
+
+/datum/greyscale_config/hawaiian_shirt/worn
+	name = "Hawaiian Shirt (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/hawaiianshirt/hawaiianshirt_worn.json'
+
+// VARSITY JACKET
+
+/datum/greyscale_config/varsity
+	name = "Varsity Jacket"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/varsity/varsity.json'
+
+/datum/greyscale_config/varsity/worn
+	name = "Varsity Jacket (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/varsity/varsity_worn.json'
+
+/*
+*	UNDER
+*/
+
 
 // JUMPSUITS
 
@@ -678,19 +739,6 @@
 	name = "Worn Buttondown with Shorts - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
-/datum/greyscale_config/buttondown_vicvest
-	name = "Buttondown with Double-breasted Vest"
-	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/costumes/buttondown_vicvest.json'
-
-/datum/greyscale_config/buttondown_vicvest/worn
-	name = "Worn Buttondown with Double-breasted Vest"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts.dmi'
-
-/datum/greyscale_config/buttondown_vicvest/worn/digi
-	name = "Worn Buttondown with Double-breasted Vest - Digitigrade"
-	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
-
 /datum/greyscale_config/football_suit_worn/digi
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/costume_digi.dmi'
 
@@ -735,12 +783,29 @@
 
 /datum/greyscale_config/kilt
 	name = "Kilt"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/kilt.dmi'
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/kilt/kilt.json'
 
 /datum/greyscale_config/kilt/worn
-	name = "Kilt (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/kilt/kilt_worn.json'
+	name = "Worn Kilt"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts.dmi'
+
+/datum/greyscale_config/kilt/worn/digi
+	name = "Worn Kilt - Digitigrade"
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
+
+/datum/greyscale_config/buttondown_vicvest
+	name = "Buttondown with Double-breasted Vest"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/costumes/buttondown_vicvest.json'
+
+/datum/greyscale_config/buttondown_vicvest/worn
+	name = "Worn Buttondown with Double-breasted Vest"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts.dmi'
+
+/datum/greyscale_config/buttondown_vicvest/worn/digi
+	name = "Worn Buttondown with Double-breasted Vest - Digitigrade"
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
 /*
 TREK
@@ -868,14 +933,23 @@ digi
 /datum/greyscale_config/heels
 	name = "High Heels"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/heels.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/heels/heels.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/heels/heels.json'
 
 /datum/greyscale_config/heels/worn
 	name = "High Heels (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/heels/heels_worn.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/heels/heels_worn.json'
 
 /datum/greyscale_config/heels/worn/digi
 	name = "High Heels (Worn Digi)"
+
+/datum/greyscale_config/fancyheels
+	name = "Fancy Heels"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/fancyheels.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/fancyheels/fancyheels.json'
+
+/datum/greyscale_config/fancyheels/worn
+	name = "Fancy Heels (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/fancyheels/fancyheels_worn.json'
 
 // TESHARI FALLBACKS.
 

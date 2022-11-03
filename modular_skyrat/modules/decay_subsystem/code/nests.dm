@@ -211,7 +211,7 @@
 	light_color = LIGHT_COLOR_GREEN
 	max_mobs = 8
 	spawn_cooldown = 15 SECONDS
-	monster_types = list(/mob/living/simple_animal/hostile/rat)
+	monster_types = list(/mob/living/basic/mouse/rat)
 	loot = list(/obj/item/seeds/replicapod = 2)
 
 /obj/structure/mob_spawner/grapes

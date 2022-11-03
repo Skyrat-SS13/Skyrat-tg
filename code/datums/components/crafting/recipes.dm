@@ -357,7 +357,8 @@
 	reqs = list(/obj/item/reagent_containers/cup/bucket = 1,
 				/obj/item/assembly/prox_sensor = 1,
 				/obj/item/bodypart/r_arm/robot = 1)
-	time = 40
+	parts = list(/obj/item/reagent_containers/cup/bucket = 1)
+	time = 4 SECONDS
 	category = CAT_ROBOT
 
 /datum/crafting_recipe/floorbot
@@ -1833,6 +1834,24 @@ SKYRAT EDIT STOP: Ash Rituals */
 	toiletbong.loc = toilet.loc
 	qdel(toilet)
 	to_chat(user, span_notice("[user] attaches the flamethrower to the repurposed toilet."))
+
+/datum/crafting_recipe/house_edge
+	name = "House Edge"
+	result = /obj/item/house_edge
+	always_available = FALSE
+	tool_behaviors = list(TOOL_WRENCH, TOOL_SCREWDRIVER, TOOL_WELDER)
+	reqs = list(
+		/obj/item/v8_engine = 1,
+		/obj/item/weaponcrafting/receiver = 1,
+		/obj/item/assembly/igniter = 1,
+		/obj/item/stack/sheet/iron = 2,
+		/obj/item/knife = 1,
+		/obj/item/weldingtool = 1,
+		/obj/item/roulette_wheel_beacon = 1,
+	)
+	time = 10 SECONDS
+	category = CAT_WEAPONRY
+	subcategory = CAT_WEAPON
 
 #undef CRAFTING_MACHINERY_CONSUME
 #undef CRAFTING_MACHINERY_USE
