@@ -39,25 +39,25 @@
 	item_type = /obj/item/storage/belt/military/nri
 	lower_cost = CARGO_CRATE_VALUE
 	upper_cost = CARGO_CRATE_VALUE * 1.5
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/nri_surplus/clothing/backpack
 	item_type = /obj/item/storage/backpack/nri
 	lower_cost = CARGO_CRATE_VALUE
 	upper_cost = CARGO_CRATE_VALUE * 1.5
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/nri_surplus/clothing/helmet
 	item_type = /obj/item/clothing/head/helmet/rus_helmet/nri
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 3
-	interest_required = HIGH_INTEREST
+	interest_required = COMPANY_HIGH_INTEREST
 
 /datum/armament_entry/company_import/nri_surplus/clothing/vest
 	item_type = /obj/item/clothing/suit/armor/vest/russian/nri
 	lower_cost = CARGO_CRATE_VALUE * 2.5
 	upper_cost = CARGO_CRATE_VALUE * 3.5
-	interest_required = HIGH_INTEREST
+	interest_required = COMPANY_HIGH_INTEREST
 
 // Random surplus store tier stuff, flags, old rations, multitools you'll never use, so on
 
@@ -91,13 +91,13 @@
 	item_type = /obj/item/storage/box/nri_rations
 	lower_cost = CARGO_CRATE_VALUE * 0.75
 	upper_cost = CARGO_CRATE_VALUE * 1.5
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/nri_surplus/misc/nri_flag
 	item_type = /obj/item/sign/flag/nri
 	lower_cost = CARGO_CRATE_VALUE * 1.2
 	upper_cost = CARGO_CRATE_VALUE * 2
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/company_import/nri_surplus/firearm
@@ -107,14 +107,14 @@
 	item_type = /obj/item/gun/ballistic/automatic/pistol/makarov
 	lower_cost = CARGO_CRATE_VALUE * 4
 	upper_cost = CARGO_CRATE_VALUE * 6
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 /datum/armament_entry/company_import/nri_surplus/firearm/sportiv
 	item_type = /obj/item/gun/ballistic/rifle/boltaction
 	lower_cost = CARGO_CRATE_VALUE * 8
 	upper_cost = CARGO_CRATE_VALUE * 15
-	interest_required = HIGH_INTEREST
+	interest_required = COMPANY_HIGH_INTEREST
 	restricted = TRUE
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
@@ -122,6 +122,6 @@
 	item_type = /obj/item/gun/ballistic/automatic/akm/civvie
 	lower_cost = CARGO_CRATE_VALUE * 10
 	upper_cost = CARGO_CRATE_VALUE * 17
-	interest_required = HIGH_INTEREST
+	interest_required = COMPANY_HIGH_INTEREST
 	restricted = TRUE
 	interest_addition = COMPANY_INTEREST_GAIN_BIG

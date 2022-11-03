@@ -25,7 +25,7 @@
 
 /datum/supply_order/company_import/on_spawn()
 	for(var/company in SScargo_companies.companies)
-		var/datum/gun_company/comp_datum = SScargo_companies.companies[company]
+		var/datum/cargo_company/comp_datum = SScargo_companies.companies[company]
 		if(comp_datum.company_flag == selected_entry?.company_bitflag)
 			comp_datum.interest += interest_addition
 			break

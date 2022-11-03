@@ -12,14 +12,14 @@
 	item_type = /obj/item/circuitboard/machine/ammo_workbench
 	lower_cost = CARGO_CRATE_VALUE * 10
 	upper_cost = CARGO_CRATE_VALUE * 20
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 /datum/armament_entry/company_import/vitezstvi/ammo_bench
 	item_type = /obj/item/disk/ammo_workbench/lethal
 	lower_cost = CARGO_CRATE_VALUE * 10
 	upper_cost = CARGO_CRATE_VALUE * 20
-	interest_required = HIGH_INTEREST
+	interest_required = COMPANY_HIGH_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 // Boxes of non-shotgun ammo
@@ -128,3 +128,7 @@
 /datum/armament_entry/company_import/vitezstvi/shot_shells/express_buckshot
 	item_type = /obj/item/ammo_box/advanced/s12gauge/express
 	description = "A box of 15 express buckshot shells, a tighter spread of smaller projectiles."
+
+/datum/armament_entry/company_import/vitezstvi/shot_shells/confetti
+	item_type = /obj/item/ammo_box/advanced/s12gauge/honk
+	description = "A box of 35 confetti shells, firing a spread of harmless confetti everywhere, yippie!"

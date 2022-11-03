@@ -46,18 +46,18 @@
 
 /datum/armament_entry/company_import/nakamura_tooling/advanced
 	subcategory = "Advanced Engineering Equipment"
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/company_import/nakamura_tooling/advanced/skillchip
 	item_type = /obj/item/skillchip/job/engineer
-	lower_cost = CARGO_CRATE_VALUE * 0.5
-	upper_cost = CARGO_CRATE_VALUE
+	lower_cost = CARGO_CRATE_VALUE * 0.75
+	upper_cost = CARGO_CRATE_VALUE * 1.25
 
 /datum/armament_entry/company_import/nakamura_tooling/advanced/ranged_analyzer
 	item_type = /obj/item/analyzer/ranged
-	lower_cost = CARGO_CRATE_VALUE * 0.5
-	upper_cost = CARGO_CRATE_VALUE
+	lower_cost = CARGO_CRATE_VALUE * 0.75
+	upper_cost = CARGO_CRATE_VALUE * 1.25
 
 /datum/armament_entry/company_import/nakamura_tooling/advanced/forcefield
 	item_type = /obj/item/forcefield_projector
@@ -71,30 +71,31 @@
 
 /datum/armament_entry/company_import/nakamura_tooling/advanced/powerdrill
 	item_type = /obj/item/screwdriver/power
-	lower_cost = CARGO_CRATE_VALUE
-	upper_cost = CARGO_CRATE_VALUE * 1.5
+	lower_cost = CARGO_CRATE_VALUE * 1.5
+	upper_cost = CARGO_CRATE_VALUE * 3
 
 /datum/armament_entry/company_import/nakamura_tooling/advanced/jaws
 	item_type = /obj/item/crowbar/power
-	lower_cost = CARGO_CRATE_VALUE
-	upper_cost = CARGO_CRATE_VALUE * 1.5
+	lower_cost = CARGO_CRATE_VALUE * 1.5
+	upper_cost = CARGO_CRATE_VALUE * 3
 
 /datum/armament_entry/company_import/nakamura_tooling/advanced/hugewelder
 	item_type = /obj/item/weldingtool/hugetank
-	lower_cost = CARGO_CRATE_VALUE
-	upper_cost = CARGO_CRATE_VALUE * 1.5
+	lower_cost = CARGO_CRATE_VALUE * 1.5
+	upper_cost = CARGO_CRATE_VALUE * 3
 
 // Overpriced experimental or gimmick tools
 
 /datum/armament_entry/company_import/nakamura_tooling/experimental
 	subcategory = "Experimental Engineering Equipment"
-	interest_required = HIGH_INTEREST
+	interest_required = COMPANY_HIGH_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 /datum/armament_entry/company_import/nakamura_tooling/experimental/sprayon_insuls
 	item_type = /obj/item/toy/sprayoncan
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 4
+	contraband = TRUE
 
 /datum/armament_entry/company_import/nakamura_tooling/experimental/red_screwdriver
 	item_type = /obj/item/screwdriver/caravan

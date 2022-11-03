@@ -31,20 +31,20 @@
 	item_type = /obj/item/clothing/mask/gas/seva
 	lower_cost = CARGO_CRATE_VALUE * 0.5
 	upper_cost = CARGO_CRATE_VALUE
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/kahraman/ppe/seva_suit
 	item_type = /obj/item/clothing/suit/hooded/seva
 	lower_cost = CARGO_CRATE_VALUE
 	upper_cost = CARGO_CRATE_VALUE * 2
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/company_import/kahraman/ppe/sensors_cuffs
 	item_type = /obj/item/kheiral_cuffs
 	lower_cost = CARGO_CRATE_VALUE * 1.5
 	upper_cost = CARGO_CRATE_VALUE * 3
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 // Hand held mining equipment
@@ -76,25 +76,25 @@
 	item_type = /obj/item/pickaxe/drill/diamonddrill
 	lower_cost = CARGO_CRATE_VALUE
 	upper_cost = CARGO_CRATE_VALUE * 2
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/kahraman/mining_tool/advanced_cutter
 	item_type = /obj/item/gun/energy/plasmacutter/adv
 	lower_cost = CARGO_CRATE_VALUE * 1.5
 	upper_cost = CARGO_CRATE_VALUE * 3
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/kahraman/mining_tool/super_resonator
 	item_type = /obj/item/resonator/upgraded
 	lower_cost = CARGO_CRATE_VALUE * 1.5
 	upper_cost = CARGO_CRATE_VALUE * 3
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/kahraman/mining_tool/jackhammer
 	item_type = /obj/item/pickaxe/drill/jackhammer
 	lower_cost = CARGO_CRATE_VALUE * 1.5
 	upper_cost = CARGO_CRATE_VALUE * 3
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/kahraman/sensing
 	subcategory = "Sensing Equipment"
@@ -113,13 +113,13 @@
 	item_type = /obj/item/t_scanner/adv_mining_scanner
 	lower_cost = CARGO_CRATE_VALUE * 0.7
 	upper_cost = CARGO_CRATE_VALUE * 1.3
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/kahraman/sensing/nvg_mesons
 	item_type = /obj/item/clothing/glasses/meson/night
 	lower_cost = CARGO_CRATE_VALUE
 	upper_cost = CARGO_CRATE_VALUE * 1.5
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/kahraman/mecha_tools
 	subcategory = "Heavy Powered Mining Equipment"
@@ -143,10 +143,10 @@
 	item_type = /obj/item/mecha_parts/mecha_equipment/drill/diamonddrill
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 3
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/kahraman/mecha_tools/cutter
 	item_type = /obj/item/mecha_parts/mecha_equipment/weapon/energy/plasma
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 3
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST

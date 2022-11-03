@@ -1,4 +1,4 @@
-/datum/gun_company
+/datum/cargo_company
 	/// Name of the company
 	var/name
 	/// Bitflag that should match what guns the company produces
@@ -23,7 +23,7 @@
 	var/magazine_cost_mult = 1
 
 // Nakamura engineering's MOD division, sells modsuits and modsuit accessories
-/datum/gun_company/nakamura_modsuits
+/datum/cargo_company/nakamura_modsuits
 	name = NAKAMURA_ENGINEERING_MODSUITS_NAME
 	company_flag = CARGO_COMPANY_NAKAMURA_MODSUITS
 	cost = 6000
@@ -31,7 +31,7 @@
 	cost_change_upper = 4000
 
 // Jarnsmiour sells some melee weapons and some forging related items
-/datum/gun_company/jarnsmiour
+/datum/cargo_company/jarnsmiour
 	name = BLACKSTEEL_FOUNDATION_NAME
 	company_flag = CARGO_COMPANY_BLACKSTEEL
 	cost = 3000
@@ -39,7 +39,7 @@
 	cost_change_upper = 3000
 
 // Sells NRI military surplus clothing, gear, and a few firearms
-/datum/gun_company/nri_surplus
+/datum/cargo_company/nri_surplus
 	name = NRI_SURPLUS_COMPANY_NAME
 	company_flag = CARGO_COMPANY_NRI_SURPLUS
 	cost = 3000
@@ -48,7 +48,7 @@
 	can_roundstart_pick = FALSE
 
 // DeForest sells medical supplies of most types
-/datum/gun_company/deforest_medical
+/datum/cargo_company/deforest_medical
 	name = DEFOREST_MEDICAL_NAME
 	company_flag = CARGO_COMPANY_DEFOREST
 	cost = 9000
@@ -56,7 +56,7 @@
 	cost_change_upper = 4000
 
 // Donk sells donk co branded stuff, microwave foods, donk co merch, and donksoft guns
-/datum/gun_company/donk
+/datum/cargo_company/donk
 	name = DONK_CO_NAME
 	company_flag = CARGO_COMPANY_DONK
 	cost = 3000
@@ -65,7 +65,7 @@
 
 // Kahraman sells industrial grade mining equipment
 
-/datum/gun_company/kahraman
+/datum/cargo_company/kahraman
 	name = KAHRAMAN_INDUSTRIES_NAME
 	company_flag = CARGO_COMPANY_KAHRAMAN
 	cost = 6000
@@ -73,7 +73,7 @@
 	cost_change_upper = 3000
 
 // Nakamura engineering's tooling division, sells tools, possibly even advanced ones
-/datum/gun_company/nakamura_tooling
+/datum/cargo_company/nakamura_tooling
 	name = NAKAMURA_ENGINEERING_TOOLING_NAME
 	company_flag = CARGO_COMPANY_NAKAMURA_TOOLING
 	cost = 6000
@@ -81,7 +81,7 @@
 	cost_change_upper = 3000
 
 // A coalition between nt and bolt to sell personal defense equipment and weapons
-/datum/gun_company/nanotrasen_bolt_weapons
+/datum/cargo_company/nanotrasen_bolt_weapons
 	name = BOLT_NANOTRASEN_DEFENSE_NAME
 	company_flag = CARGO_COMPANY_BOLT_NANOTRASEN
 	cost = 6000
@@ -90,7 +90,7 @@
 	can_roundstart_pick = FALSE
 
 // Micron control systems and allstar's weapons together, all your energy guns in one place!
-/datum/gun_company/microstar_energy_weapons
+/datum/cargo_company/microstar_energy_weapons
 	name = MICROSTAR_ENERGY_NAME
 	company_flag = CARGO_COMPANY_MICROSTAR
 	cost = 6000
@@ -99,7 +99,7 @@
 	can_roundstart_pick = FALSE
 
 // Vitzstvi sells ammo boxes and speedloaders for most of the weapons sold by other companies
-/datum/gun_company/vitezstvi_ammo
+/datum/cargo_company/vitezstvi_ammo
 	name = VITEZSTVI_AMMO_NAME
 	company_flag = CARGO_COMPANY_VITEZSTVI_AMMO
 	cost = 3000

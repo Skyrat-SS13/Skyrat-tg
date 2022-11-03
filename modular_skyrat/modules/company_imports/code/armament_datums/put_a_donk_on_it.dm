@@ -97,26 +97,26 @@
 	lower_cost = CARGO_CRATE_VALUE * 1.5
 	upper_cost = CARGO_CRATE_VALUE * 3
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/donk/merch/fake_syndie_suit
 	item_type = /obj/item/storage/box/fakesyndiesuit
 	lower_cost = CARGO_CRATE_VALUE * 1.5
 	upper_cost = CARGO_CRATE_VALUE * 3
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/donk/merch/valid_bloon
 	item_type = /obj/item/toy/balloon/arrest
 	lower_cost = CARGO_CRATE_VALUE * 1.5
 	upper_cost = CARGO_CRATE_VALUE * 3
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 // Donksoft weapons
 
 /datum/armament_entry/company_import/donk/foamforce
-	subcategory = "Foam Force (tm) Weapons"
+	subcategory = "Foam Force (TM) Weapons"
 
 /datum/armament_entry/company_import/donk/foamforce/darts
 	item_type = /obj/item/ammo_box/foambox
@@ -127,7 +127,8 @@
 	item_type = /obj/item/ammo_box/foambox/riot
 	lower_cost = CARGO_CRATE_VALUE * 0.5
 	upper_cost = CARGO_CRATE_VALUE * 1.5
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
+	contraband = TRUE
 
 /datum/armament_entry/company_import/donk/foamforce/foam_pistol
 	item_type = /obj/item/gun/ballistic/automatic/pistol/toy
@@ -145,19 +146,19 @@
 	item_type = /obj/item/gun/ballistic/automatic/toy/unrestricted
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 5
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/company_import/donk/foamforce/foam_c20
 	item_type = /obj/item/gun/ballistic/automatic/c20r/toy/unrestricted
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 5
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/company_import/donk/foamforce/foam_lmg
 	item_type = /obj/item/gun/ballistic/automatic/l6_saw/toy/unrestricted
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 6
-	interest_required = HIGH_INTEREST
+	interest_required = COMPANY_HIGH_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_BIG

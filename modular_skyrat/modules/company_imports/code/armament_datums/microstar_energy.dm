@@ -39,7 +39,7 @@
 
 /datum/armament_entry/company_import/microstar/experimental_energy
 	subcategory = "Experimental Energy Weapons"
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 	restricted = TRUE
 
 /datum/armament_entry/company_import/microstar/experimental_energy/hellfire
@@ -126,7 +126,7 @@
 	item_type = /obj/item/microfusion_cell_attachment/overcapacity
 	lower_cost = CARGO_CRATE_VALUE
 	upper_cost = CARGO_CRATE_VALUE * 2
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 	stock_mult = 3
 
 /datum/armament_entry/company_import/microstar/mcr_upgrades/advanced_part_kit
@@ -134,14 +134,14 @@
 	item_type = /obj/item/storage/secure/briefcase/white/mcr_parts/advanced
 	lower_cost = CARGO_CRATE_VALUE * 4
 	upper_cost = CARGO_CRATE_VALUE * 6
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 	stock_mult = 3
 
 /datum/armament_entry/company_import/microstar/mcr_upgrades/selfcharge
 	item_type = /obj/item/microfusion_cell_attachment/selfcharging
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 4
-	interest_required = HIGH_INTEREST
+	interest_required = COMPANY_HIGH_INTEREST
 	stock_mult = 3
 
 /datum/armament_entry/company_import/microstar/mcr_upgrades/bluespace_part_kit
@@ -149,5 +149,5 @@
 	item_type = /obj/item/storage/secure/briefcase/white/mcr_parts/bluespace
 	lower_cost = CARGO_CRATE_VALUE * 6
 	upper_cost = CARGO_CRATE_VALUE * 8
-	interest_required = HIGH_INTEREST
+	interest_required = COMPANY_HIGH_INTEREST
 	stock_mult = 3

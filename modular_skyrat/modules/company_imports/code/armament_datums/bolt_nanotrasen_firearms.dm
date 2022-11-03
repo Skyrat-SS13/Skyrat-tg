@@ -44,7 +44,7 @@
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/lethal_sidearm
 	subcategory = "Lethal Sidearms"
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/lethal_sidearm/detective_revolver
 	item_type = /obj/item/gun/ballistic/revolver/detective
@@ -66,7 +66,7 @@
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm
 	subcategory = "Lethal Longarms"
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
-	interest_required = HIGH_INTEREST
+	interest_required = COMPANY_HIGH_INTEREST
 	restricted = TRUE
 
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/longarm/riot_shotgun

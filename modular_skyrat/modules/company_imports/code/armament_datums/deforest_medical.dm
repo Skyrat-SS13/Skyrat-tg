@@ -52,21 +52,21 @@
 	lower_cost = CARGO_CRATE_VALUE * 0.6
 	upper_cost = CARGO_CRATE_VALUE
 	stock_mult = 2
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/deforest/first_aid/medicated_sutures
 	item_type = /obj/item/stack/medical/suture/medicated
 	lower_cost = CARGO_CRATE_VALUE
 	upper_cost = CARGO_CRATE_VALUE * 1.4
 	stock_mult = 2
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/deforest/first_aid/advanced_mesh
 	item_type = /obj/item/stack/medical/mesh/advanced
 	lower_cost = CARGO_CRATE_VALUE
 	upper_cost = CARGO_CRATE_VALUE * 1.4
 	stock_mult = 2
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 // Various chemicals, with a box of syringes to come with
 
@@ -146,42 +146,42 @@
 	lower_cost = CARGO_CRATE_VALUE * 3
 	upper_cost = CARGO_CRATE_VALUE * 4
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/deforest/equipment/penlite_defib_mount
 	item_type = /obj/item/wallframe/defib_mount/charging
 	lower_cost = CARGO_CRATE_VALUE * 4
 	upper_cost = CARGO_CRATE_VALUE * 6
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/deforest/equipment/advanced_scalpel
 	item_type = /obj/item/scalpel/advanced
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 5
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = HIGH_INTEREST
+	interest_required = COMPANY_HIGH_INTEREST
 
 /datum/armament_entry/company_import/deforest/equipment/advanced_retractor
 	item_type = /obj/item/retractor/advanced
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 5
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = HIGH_INTEREST
+	interest_required = COMPANY_HIGH_INTEREST
 
 /datum/armament_entry/company_import/deforest/equipment/advanced_cautery
 	item_type = /obj/item/cautery/advanced
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 5
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = HIGH_INTEREST
+	interest_required = COMPANY_HIGH_INTEREST
 
 /datum/armament_entry/company_import/deforest/equipment/afad
 	item_type = /obj/item/gun/medbeam/afad
 	lower_cost = CARGO_CRATE_VALUE * 5
 	upper_cost = CARGO_CRATE_VALUE * 10
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
-	interest_required = HIGH_INTEREST
+	interest_required = COMPANY_HIGH_INTEREST
 
 // Various advanced cybernetic organs, organ replacements for the rich
 
@@ -194,7 +194,7 @@
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 5
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/deforest/cyber_organs/ears
 	name = "upgraded cybernetic ears"
@@ -202,7 +202,7 @@
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 5
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/deforest/cyber_organs/heart
 	name = "upgraded cybernetic heart"
@@ -210,7 +210,7 @@
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 5
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/deforest/cyber_organs/liver
 	name = "upgraded cybernetic liver"
@@ -218,7 +218,7 @@
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 5
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/deforest/cyber_organs/lungs
 	name = "upgraded cybernetic lungs"
@@ -226,7 +226,7 @@
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 5
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/deforest/cyber_organs/stomach
 	name = "upgraded cybernetic stomach"
@@ -234,4 +234,4 @@
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 5
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST

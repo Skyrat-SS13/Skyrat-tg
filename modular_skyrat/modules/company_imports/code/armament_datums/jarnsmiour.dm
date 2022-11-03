@@ -13,6 +13,8 @@
 	upper_cost = CARGO_CRATE_VALUE * 1
 
 /datum/armament_entry/company_import/blacksteel/blade/hatchet
+	name = "Blacksteel (TM) hatchet"
+	desc = "A short handled hatchet forged from Jarnsmiour's signature Blacksteel (TM), quality guaranteed." // Hint: This is a lie
 	item_type = /obj/item/hatchet/wooden
 	lower_cost = CARGO_CRATE_VALUE * 0.7
 	upper_cost = CARGO_CRATE_VALUE * 1.2
@@ -26,14 +28,14 @@
 	item_type = /obj/item/storage/belt/bowie_sheath
 	lower_cost = CARGO_CRATE_VALUE * 3
 	upper_cost = CARGO_CRATE_VALUE * 5
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/company_import/blacksteel/blade/shamshir_sabre
 	item_type = /obj/item/storage/belt/sabre/cargo
 	lower_cost = CARGO_CRATE_VALUE * 5
 	upper_cost = CARGO_CRATE_VALUE * 7
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 // Forging tools, blacksteel company sells the tools and materials they use as well!
@@ -66,7 +68,7 @@
 	description = "A three-pack of our finest cobolterium alloy, with an unmatched regal blue color for creating the strongest metalworks from."
 	lower_cost = CARGO_CRATE_VALUE
 	upper_cost = CARGO_CRATE_VALUE * 4
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/company_import/blacksteel/forging_metals/fake_copper
@@ -74,7 +76,7 @@
 	description = "A three-pack of our finest copporcitite alloy, with a powerful, fiery orange color for creating the strongest metalworks from."
 	lower_cost = CARGO_CRATE_VALUE
 	upper_cost = CARGO_CRATE_VALUE * 4
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/company_import/blacksteel/forging_metals/fake_really_blue_aluminum
@@ -82,7 +84,7 @@
 	description = "A three-pack of our finest tinumium alloy, with a mystical faded blue color for creating the strongest metalworks from."
 	lower_cost = CARGO_CRATE_VALUE
 	upper_cost = CARGO_CRATE_VALUE * 4
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/company_import/blacksteel/forging_metals/fake_brass
@@ -90,5 +92,5 @@
 	description = "A three-pack of our finest brussite alloy, with a robust yellow color for creating the strongest metalworks from."
 	lower_cost = CARGO_CRATE_VALUE
 	upper_cost = CARGO_CRATE_VALUE * 4
-	interest_required = PASSED_INTEREST
+	interest_required = COMPANY_SOME_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE

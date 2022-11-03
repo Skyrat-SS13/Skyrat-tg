@@ -88,7 +88,7 @@
 			if(company != armament_category)
 				continue
 
-			var/datum/gun_company/selected_company = SScargo_companies.companies[company]
+			var/datum/cargo_company/selected_company = SScargo_companies.companies[company]
 
 			if(!(console_state == CARGO_CONSOLE) && selected_company.illegal)
 				illegal_failure = TRUE
@@ -125,7 +125,7 @@
 					for(var/company_interested as anything in SScargo_companies.companies)
 						if(company_interested != armament_category)
 							continue
-						var/datum/gun_company/company_datum = SScargo_companies.companies[company_interested]
+						var/datum/cargo_company/company_datum = SScargo_companies.companies[company_interested]
 						if(company_datum.interest < gun_entry.interest_required)
 							cant_purchase = TRUE
 
@@ -167,7 +167,7 @@
 			if(company in SScargo_companies.purchased_companies)
 				purchased_company = TRUE
 
-			var/datum/gun_company/company_datum = SScargo_companies.companies[company]
+			var/datum/cargo_company/company_datum = SScargo_companies.companies[company]
 
 			if((company_datum in SScargo_companies.chosen_handouts) && !SScargo_companies.handout_picked)
 				handout_company = TRUE
@@ -457,7 +457,7 @@
 				if(find_company != target)
 					continue
 
-				var/datum/gun_company/found_company = SScargo_companies.unpurchased_companies[target]
+				var/datum/cargo_company/found_company = SScargo_companies.unpurchased_companies[target]
 				var/datum/bank_account/buyer = SSeconomy.get_dep_account(ACCOUNT_CAR)
 
 				var/mob/living/carbon/human/user = usr
