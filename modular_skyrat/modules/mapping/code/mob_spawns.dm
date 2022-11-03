@@ -43,8 +43,8 @@
 	name = "Syndicate Prisoner"
 	prompt_name = "a Syndicate prisoner"
 	you_are_text = "You are a syndicate prisoner aboard an unknown ship."
-	flavour_text = "You don't know where you are, but you know you are a prisoner. The plastitanium clues you into your captors... as for why you're here? That's up to you."
-	important_text = "You are still subject to standard prisoner policy, and must Adminhelp or Opfor before antagonizing Interdyne."
+	flavour_text = "Unaware of where you are, all you know is you are a prisoner. The plastitanium should clue you into who your captors are... as for why you're here? That's for you to know, and for us to find out."
+	important_text = "You are still subject to standard prisoner policy and must Adminhelp or Opfor before antagonizing DS2."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/ds2/prisoner
@@ -54,9 +54,9 @@
 	prompt_name = "a Syndicate operative"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
-	you_are_text = "You are a syndicate operative, employed in a top secret research facility developing biological weapons."
-	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue operating as best you can, and try to keep a low profile."
-	important_text = "You are not an antagonist. Adminhelp or Opfor before antagonizing station crew."
+	you_are_text = "You are an operative of the Sothran Syndicate terrorist cell, employed onboard the Deep Space 2 FOB for reasons that are yours."
+	flavour_text = "The Sothran Syndicate has found it fit to send a forward operating base in Sector 13 to monitor NT's operations. Your orders are maintaining the ship's integrity and keeping a low profile as well as possible."
+	important_text = "You are not an antagonist!! Adminhelp or Opfor before antagonizing station crew."
 	outfit = /datum/outfit/ds2/syndicate
 	loadout_enabled = TRUE
 
@@ -130,7 +130,8 @@
 	name = "Syndicate Prisoner"
 	uniform = /obj/item/clothing/under/rank/prisoner/syndicate
 	shoes = /obj/item/clothing/shoes/sneakers/crimson
-	id = /obj/item/card/id/advanced/prisoner
+	id = /obj/item/card/id/advanced/prisoner/ds2
+	id_trim = /datum/id_trim/syndicom/skyrat/ds2/prisoner
 
 /datum/outfit/ds2/syndicate
 	name = "DS-2 Operative"
@@ -147,34 +148,46 @@
 	uniform = /obj/item/clothing/under/syndicate/skyrat/overalls
 	back = /obj/item/storage/backpack/satchel/explorer
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/miner
+	l_pocket = /obj/item/card/mining_point_card
+	r_pocket = /obj/item/mining_voucher
 	head = /obj/item/clothing/head/soft/black
 
 /datum/outfit/ds2/syndicate/service
-	name = "DS-2 Staff"
-	uniform = /obj/item/clothing/under/syndicate/skyrat/overalls
+	name = "DS-2 General Staff"
+	uniform = /obj/item/clothing/under/syndicate/skyrat/tactical
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/syndicatestaff
+	back = /obj/item/storage/backpack/satchel
+	suit = /obj/item/clothing/suit/apron/chef
+	head = /obj/item/clothing/head/soft/mime
 
 /datum/outfit/ds2/syndicate/enginetech
 	name = "DS-2 Engine Technician"
 	uniform = /obj/item/clothing/under/syndicate/skyrat/overalls
 	head = /obj/item/clothing/head/soft/sec/syndicate
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/enginetechnician
+	glasses = /obj/item/clothing/glasses/welding/up
+	belt = /obj/item/storage/belt/utility/syndicate
 	gloves = /obj/item/clothing/gloves/combat
 
 /datum/outfit/ds2/syndicate/researcher
 	name = "DS-2 Researcher"
 	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/researcher
+	suit = /obj/item/clothing/suit/toggle/labcoat/science
+	back = /obj/item/storage/backpack/satchel
 
 /datum/outfit/ds2/syndicate/stationmed
-	name = "DS-2 Station Medical Officer"
+	name = "DS-2 Medical Officer"
 	uniform = /obj/item/clothing/under/syndicate/scrubs
-	id_trim = /datum/id_trim/syndicom/skyrat/ds2/stationmedicalofficer
+	id_trim = /datum/id_trim/syndicom/skyrat/ds2/medicalofficer
+	suit = /obj/item/clothing/suit/toggle/labcoat/interdyne
+	gloves = /obj/item/clothing/gloves/color/latex/nitrile/ntrauma
+	back = /obj/item/storage/backpack/satchel
 
 /datum/outfit/ds2/syndicate/corporateliaison
 	name = "DS-2 Corporate Liasion"
 	uniform = /obj/item/clothing/under/syndicate/sniper
-	head = /obj/item/clothing/head/hos/beret/syndicate
+	head = /obj/item/clothing/head/fedora/fedblack
 	back = /obj/item/storage/backpack/satchel
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/corporateliasion
 	ears = /obj/item/radio/headset/interdyne/command
@@ -187,6 +200,8 @@
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
 	head = /obj/item/clothing/head/warden/syndicate
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
+	r_pocket = /obj/item/flashlight/seclite
+	implants = list(/obj/item/implant/krav_maga)
 	ears = /obj/item/radio/headset/interdyne/command
 
 /datum/outfit/ds2/syndicate/brigoff
@@ -197,17 +212,18 @@
 	suit = /obj/item/clothing/suit/armor/bulletproof/old
 	head = /obj/item/clothing/head/helmet/swat/ds
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
-	mask = /obj/item/clothing/mask/gas/syndicate/ds
+	r_pocket = /obj/item/flashlight/seclite
+	mask = /obj/item/clothing/mask/gas/syndicate
 	ears = /obj/item/radio/headset/interdyne
 
 /datum/outfit/ds2/syndicate/admiral
-	name = "DS-2 Station Admiral"
-	uniform = /obj/item/clothing/under/syndicate/combat
+	name = "DS-2 Admiral"
+	uniform = /obj/item/clothing/under/rank/captain/skyrat/utility/syndicate
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
-	head = /obj/item/clothing/head/hos/beret/syndicate
-	back = /obj/item/storage/backpack
+	head = /obj/item/clothing/head/hos/syndicate
+	back = /obj/item/storage/backpack/satchel
+	belt = /obj/item/gun/ballistic/automatic/pistol/aps
 	id = /obj/item/card/id/advanced/gold/generic
-	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/aps)
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/stationadmiral
 	ears = /obj/item/radio/headset/interdyne/command
 
