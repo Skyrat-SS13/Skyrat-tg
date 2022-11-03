@@ -38,7 +38,7 @@
 	cost_change_lower = 0
 	cost_change_upper = 3000
 
-// Nizhny sells NRI military surplus clothing, gear, and a few firearms
+// Sells NRI military surplus clothing, gear, and a few firearms
 /datum/gun_company/nri_surplus
 	name = NRI_SURPLUS_COMPANY_NAME
 	company_flag = CARGO_COMPANY_NRI_SURPLUS

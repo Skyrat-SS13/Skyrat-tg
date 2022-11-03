@@ -72,11 +72,6 @@
 	lower_cost = CARGO_CRATE_VALUE
 	upper_cost = CARGO_CRATE_VALUE * 2
 
-/datum/armament_entry/company_import/kahraman/mining_tool/cutter
-	item_type = /obj/item/gun/energy/plasmacutter
-	lower_cost = CARGO_CRATE_VALUE
-	upper_cost = CARGO_CRATE_VALUE * 2
-
 /datum/armament_entry/company_import/kahraman/mining_tool/diamond_drill
 	item_type = /obj/item/pickaxe/drill/diamonddrill
 	lower_cost = CARGO_CRATE_VALUE

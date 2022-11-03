@@ -118,13 +118,6 @@
 	upper_cost = CARGO_CRATE_VALUE * MODULE_MID_UPPER
 	interest_required = PASSED_INTEREST
 
-/datum/armament_entry/company_import/nakamura_modsuits/protection_modules/advanced_emp_shield
-	item_type = /obj/item/mod/module/emp_shield/advanced
-	lower_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_LOWER
-	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
-	interest_required = HIGH_INTEREST
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
-
 /datum/armament_entry/company_import/nakamura_modsuits/protection_modules/armor_plates
 	item_type = /obj/item/mod/module/armor_booster/retractplates
 	lower_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_LOWER
@@ -135,10 +128,17 @@
 
 /datum/armament_entry/company_import/nakamura_modsuits/protection_modules/accretion
 	item_type = /obj/item/mod/module/ash_accretion
+	lower_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_LOWER
+	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
+	interest_required = HIGH_INTEREST
+	restricted = TRUE
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
+
+/datum/armament_entry/company_import/nakamura_modsuits/protection_modules/advanced_emp_shield
+	item_type = /obj/item/mod/module/emp_shield/advanced
 	lower_cost = CARGO_CRATE_VALUE * MODULE_HELLA_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_HELLA_UPPER
 	interest_required = HIGH_INTEREST
-	restricted = TRUE
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/company_import/nakamura_modsuits/protection_modules/energy_shield

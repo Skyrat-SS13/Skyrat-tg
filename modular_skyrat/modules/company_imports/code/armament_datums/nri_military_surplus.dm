@@ -21,13 +21,6 @@
 	stock_mult = 2
 	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
-/datum/armament_entry/company_import/nri_surplus/clothing/boots
-	item_type = /obj/item/clothing/shoes/russian
-	lower_cost = CARGO_CRATE_VALUE * 0.3
-	upper_cost = CARGO_CRATE_VALUE
-	stock_mult = 2
-	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
-
 /datum/armament_entry/company_import/nri_surplus/clothing/cap
 	item_type = /obj/item/clothing/head/soft/nri_larp
 	lower_cost = CARGO_CRATE_VALUE * 0.5
@@ -55,7 +48,7 @@
 	interest_required = PASSED_INTEREST
 
 /datum/armament_entry/company_import/nri_surplus/clothing/helmet
-	item_type = /obj/item/clothing/head/helmet/rus_helmet
+	item_type = /obj/item/clothing/head/helmet/rus_helmet/nri
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 3
 	interest_required = HIGH_INTEREST
@@ -71,10 +64,16 @@
 /datum/armament_entry/company_import/nri_surplus/misc
 	subcategory = "Miscellaneous Supplies"
 
-/datum/armament_entry/company_import/nri_surplus/misc/flare
-	item_type = /obj/item/flashlight/flare
+/datum/armament_entry/company_import/nri_surplus/misc/flares
+	item_type = /obj/item/storage/box/nri_flares
 	lower_cost = CARGO_CRATE_VALUE * 0.1
 	upper_cost = CARGO_CRATE_VALUE * 0.4
+	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
+
+/datum/armament_entry/company_import/nri_surplus/misc/binoculars
+	item_type = /obj/item/binoculars
+	lower_cost = CARGO_CRATE_VALUE * 0.3
+	upper_cost = CARGO_CRATE_VALUE * 0.7
 	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/company_import/nri_surplus/misc/screwdriver_pen
@@ -111,16 +110,8 @@
 	interest_required = PASSED_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
-/datum/armament_entry/company_import/nri_surplus/firearm/plastikov
-	item_type = /obj/item/gun/ballistic/automatic/plastikov
-	lower_cost = CARGO_CRATE_VALUE * 3
-	upper_cost = CARGO_CRATE_VALUE * 6
-	interest_required = PASSED_INTEREST
-	restricted = TRUE
-	interest_addition = COMPANY_INTEREST_GAIN_BIG
-
-/datum/armament_entry/company_import/nri_surplus/firearm/ak25
-	item_type = /obj/item/gun/ballistic/automatic/ak25
+/datum/armament_entry/company_import/nri_surplus/firearm/sportiv
+	item_type = /obj/item/gun/ballistic/rifle/boltaction
 	lower_cost = CARGO_CRATE_VALUE * 8
 	upper_cost = CARGO_CRATE_VALUE * 15
 	interest_required = HIGH_INTEREST

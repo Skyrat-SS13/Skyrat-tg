@@ -648,7 +648,7 @@
 					/obj/item/ammo_box/magazine/multi_sprite/makarov,
 					/obj/item/ammo_box/magazine/multi_sprite/makarov,
 					/obj/item/clothing/suit/armor/vest/russian/nri,
-					/obj/item/clothing/head/helmet/rus_helmet,
+					/obj/item/clothing/head/helmet/rus_helmet/nri,
 					/obj/item/storage/backpack/nri,
 					/obj/item/storage/belt/military/nri,
 					/obj/item/clothing/gloves/tackler/combat,
