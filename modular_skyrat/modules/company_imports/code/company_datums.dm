@@ -86,3 +86,11 @@
 	cost = 6000
 	cost_change_lower = -2000
 	cost_change_upper = 3000
+
+// Micron control systems and allstar's weapons together, all your energy guns in one place!
+/datum/gun_company/microstar_energy_weapons
+	name = MICROSTAR_ENERGY_NAME
+	company_flag = CARGO_COMPANY_MICROSTAR
+	cost = 6000
+	cost_change_lower = -2000
+	cost_change_upper = 3000

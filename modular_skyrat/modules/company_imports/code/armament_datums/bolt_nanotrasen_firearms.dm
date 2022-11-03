@@ -67,6 +67,7 @@
 	subcategory = "Lethal Longarms"
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 	interest_required = HIGH_INTEREST
+	restricted = TRUE
 
 /datum/armament_entry/cargo_gun/nanotrasen_bolt_weapons/longarm/riot_shotgun
 	item_type = /obj/item/gun/ballistic/shotgun/riot
