@@ -28,13 +28,14 @@
 
 // Polarized Windows
 
-// First defines and allows it to be assigned an ID to be toggled
+/// First defines and allows it to be assigned an ID to be toggled
 /obj/structure/window/reinforced/fulltile/polarized
-	name = "Polorized Window"
+	name = "Polarized Window"
 	desc = "Adjusts its tint with voltage, it is reinforced with metal rods."
+	/// ID field check, allow buttons/switches etc to call an ID and toggle window
 	var/id = null
 
-// Proc for the Opacity, Alpha and color toggle
+/// Proc for the Opacity, Alpha and color toggle
 /obj/structure/window/reinforced/fulltile/polarized/proc/toggle()
 	if(opacity)
 		animate(src, color="#FFFFFF", time=5)
@@ -45,8 +46,9 @@
 		set_opacity(TRUE)
 
 /obj/machinery/button/window/reinforced/polarized
-	name = "Polorized Window Button"
+	name = "Polarized Window Button"
 	desc = "A remote control switch for polarized windows."
+	/// Checks the state and assigns it to default FALSE - toggling purposes
 	var/active = FALSE
 
 /obj/machinery/button/window/reinforced/polarized/attack_hand(mob/living/user, list/modifiers)
@@ -54,13 +56,13 @@
 		return TRUE
 
 	toggle_tint()
-
+	/// Enables the button to check and ensure it's both active and matching the ID
 /obj/machinery/button/window/reinforced/polarized/proc/toggle_tint()
     active = !active
-
-    for(var/obj/structure/window/reinforced/fulltile/polarized/W)
-        if (W.id == src.id || !W.id)
-            INVOKE_ASYNC(W, /obj/structure/window/reinforced/fulltile/polarized/proc/toggle)
+	/// ID Check before running the toggle proc
+    for(var/obj/structure/window/reinforced/fulltile/polarized/Window)
+        if (Window.id == src.id || !Window.id)
+            INVOKE_ASYNC(Window, /obj/structure/window/reinforced/fulltile/polarized/proc/toggle)
 
 /obj/machinery/button/window/reinforced/polarized/power_change()
     ..()
