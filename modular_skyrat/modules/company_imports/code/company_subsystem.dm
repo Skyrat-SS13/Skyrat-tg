@@ -12,8 +12,8 @@
 #define INTEREST_MED_MAG_COST 0.11
 #define INTEREST_HIGH_MAG_COST 0.125
 
-SUBSYSTEM_DEF(gun_companies)
-	name = "Gun Companies"
+SUBSYSTEM_DEF(cargo_companies)
+	name = "Cargo Companies"
 	wait = 20 MINUTES
 	runlevels = RUNLEVEL_GAME
 	/// Assoc list of companies that the subsystem has initialized, `"NAME" = datum_reference`
@@ -27,7 +27,7 @@ SUBSYSTEM_DEF(gun_companies)
 	/// Picked a free company yet?
 	var/handout_picked = FALSE
 
-/datum/controller/subsystem/gun_companies/Initialize()
+/datum/controller/subsystem/cargo_companies/Initialize()
 	// Adds the company refs to the unchanging companies list and the changing unpurchased_companies list
 	for(var/datum/gun_company/company as anything in subtypesof(/datum/gun_company))
 		var/datum/gun_company/new_company = new company
@@ -46,7 +46,7 @@ SUBSYSTEM_DEF(gun_companies)
 	fire() //Gotta get the prices randomized to start
 	return SS_INIT_SUCCESS
 
-/datum/controller/subsystem/gun_companies/Destroy()
+/datum/controller/subsystem/cargo_companies/Destroy()
 	for(var/company in companies)
 		QDEL_NULL(company)
 	for(var/company_unbought in unpurchased_companies)
@@ -55,12 +55,12 @@ SUBSYSTEM_DEF(gun_companies)
 		QDEL_NULL(purchased_companies)
 	. = ..()
 
-/datum/controller/subsystem/gun_companies/Recover()
-	companies = SSgun_companies.companies
-	unpurchased_companies = SSgun_companies.unpurchased_companies
-	purchased_companies = SSgun_companies.purchased_companies
+/datum/controller/subsystem/cargo_companies/Recover()
+	companies = SScargo_companies.companies
+	unpurchased_companies = SScargo_companies.unpurchased_companies
+	purchased_companies = SScargo_companies.purchased_companies
 
-/datum/controller/subsystem/gun_companies/fire(resumed)
+/datum/controller/subsystem/cargo_companies/fire(resumed)
 	var/list/passed_interest_tier = list()
 	// Company handling
 	for(var/company in companies)
@@ -106,8 +106,8 @@ SUBSYSTEM_DEF(gun_companies)
 
 				var/datum/armament_entry/company_import/entry_typecast = armament_entry
 
-				for(var/company_gun in companies)
-					var/datum/gun_company/the_datum = companies[company_gun]
+				for(var/company in companies)
+					var/datum/gun_company/the_datum = companies[company]
 
 					if(the_datum.company_flag != entry_typecast.company_bitflag)
 						continue
