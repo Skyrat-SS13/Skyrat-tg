@@ -98,26 +98,31 @@
 	set desc = "Allows you to choose to try and hide your mutant bodyparts under your clothes."
 
 	// The parts our particular user can choose
-	var/list/available_selection = list("reveal all")
+	var/list/available_selection
 	// The total list of parts choosable
 	var/static/list/total_selection = list("horns", "ears", "wings", "tail", "xenodorsal")
 
-	for(var/key as anything in total_selection)
-		if(findtext(mutant_renderkey, "[key]"))
-			LAZYOR(available_selection, key)
-
+	// Stat check
 	if(stat != CONSCIOUS)
 		to_chat(usr, span_warning("You can't do this right now..."))
 		return
+	// Only show the 'reveal all' button if we are already hiding something
+	if(try_hide_mutant_parts)
+		LAZYOR(available_selection, "reveal all")
+	// Lets build our parts list
+	for(var/key as anything in total_selection)
+		if(findtext(mutant_renderkey, "[key]"))
+			LAZYOR(available_selection, key)
+	// If there's no more parts to hide, the function will 'reveal all'
 	if(available_selection.len == 1)
 		LAZYNULL(try_hide_mutant_parts)
 		update_mutant_bodyparts()
 		return
-
+	// Radial choices
 	var/pick = show_radial_menu(usr, src, available_selection, custom_check = FALSE, tooltips = TRUE)
 	if(!pick)
 		return
-
+	// Choice to action
 	if(pick == "reveal all")
 		LAZYNULL(try_hide_mutant_parts)
 	else
