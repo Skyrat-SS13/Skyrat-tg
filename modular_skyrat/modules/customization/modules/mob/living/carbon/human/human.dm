@@ -97,9 +97,12 @@
 	set name = "Show/Hide Mutant Parts"
 	set desc = "Allows you to choose to try and hide your mutant bodyparts under your clothes."
 
-	mutant_part_visibility(quick_toggle = FALSE)
+	mutant_part_visibility()
 
-/mob/living/carbon/human/proc/mutant_part_visibility(quick_toggle)
+//	This DMI holds our radial icons
+#define PART_VIS_RADIAL 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/MOD_sprite_accessories/icons/radial.dmi'
+
+/mob/living/carbon/human/proc/mutant_part_visibility(quick_toggle, re_do)
 	// The parts our particular user can choose
 	var/list/available_selection
 	// The total list of parts choosable
@@ -112,11 +115,13 @@
 	// Only show the 'reveal all' button if we are already hiding something
 	if(try_hide_mutant_parts)
 		LAZYOR(available_selection, "reveal all")
+
 	// Lets build our parts list
 	for(var/key as anything in total_selection)
 		if(findtext(mutant_renderkey, "[key]"))
 			LAZYOR(available_selection, key)
-	//
+
+	// If this proc is called with the 'quick_toggle' flag, we skip the rest
 	if(quick_toggle)
 		if("reveal all" in available_selection)
 			LAZYNULL(try_hide_mutant_parts)
@@ -125,35 +130,48 @@
 				LAZYOR(try_hide_mutant_parts, part)
 		update_mutant_bodyparts()
 		return
-	//
-	if(("reveal all" in available_selection) && available_selection.len == 1)
+
+	// Dont open the radial automatically just for one button
+	if(re_do && available_selection.len == 1)
+		return
+	// If 'reveal all' is our only option just do it
+	if(!re_do && (("reveal all" in available_selection) && available_selection.len == 1))
 		LAZYNULL(try_hide_mutant_parts)
 		update_mutant_bodyparts()
 		return
-	//
+
+	// Radial rendering
 	var/list/choices = list()
 	for(var/choice in available_selection)
 		var/datum/radial_menu_choice/option = new
-		var/image/part_image = image(icon = 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/MOD_sprite_accessories/icons/radial.dmi', icon_state = initial(choice))
+		var/image/part_image = image(icon = PART_VIS_RADIAL, icon_state = initial(choice))
 
 		option.image = part_image
 		if(choice in try_hide_mutant_parts)
-			part_image.underlays += image(icon = 'icons/hud/radial.dmi', icon_state = "module_active")
+			part_image.underlays += image(icon = PART_VIS_RADIAL, icon_state = "module_unable")
 		choices[initial(choice)] = option
 	// Radial choices
 	sort_list(choices)
 	var/pick = show_radial_menu(usr, src, choices, custom_check = FALSE, tooltips = TRUE)
 	if(!pick)
 		return
+
 	// Choice to action
 	if(pick == "reveal all")
 		LAZYNULL(try_hide_mutant_parts)
+		update_mutant_bodyparts()
+		return
+
 	else if(pick in try_hide_mutant_parts)
 		LAZYREMOVE(try_hide_mutant_parts, pick)
 	else
 		LAZYOR(try_hide_mutant_parts, pick)
-
 	update_mutant_bodyparts()
+	// automatically re-do the menu after making a selection
+	mutant_part_visibility(re_do = TRUE)
+
+#undef PART_VIS_RADIAL
+
 
 // Feign impairment verb
 #define DEFAULT_TIME 30
