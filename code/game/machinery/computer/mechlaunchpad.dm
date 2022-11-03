@@ -36,6 +36,7 @@
 		if(mechpads.len > maximum_pads)
 			break
 
+<<<<<<< HEAD
 /obj/machinery/computer/mechpad/Destroy()
 	if(connected_mechpad)
 		connected_mechpad.connected_console = null
@@ -43,6 +44,39 @@
 	for(var/obj/machinery/mechpad/mechpad in mechpads)
 		LAZYREMOVE(mechpad.consoles, src)
 	return ..()
+=======
+#define MECH_LAUNCH_TIME 5 SECONDS
+
+/obj/machinery/computer/mechpad/mech_melee_attack(obj/vehicle/sealed/mecha/mecha_attacker, mob/living/user)
+	if(user.combat_mode || machine_stat & (NOPOWER|BROKEN) || DOING_INTERACTION_WITH_TARGET(user, src))
+		return ..()
+	var/mech_dir = mecha_attacker.dir
+	balloon_alert(user, "carefully starting launch process...")
+	INVOKE_ASYNC(src, .proc/random_beeps, user, MECH_LAUNCH_TIME, 0.5 SECONDS, 1.5 SECONDS)
+	if(!do_after(user, MECH_LAUNCH_TIME, src, extra_checks = CALLBACK(src, .proc/do_after_checks, mecha_attacker, mech_dir)))
+		balloon_alert(user, "interrupted!")
+		return
+	var/obj/machinery/mechpad/current_pad = mechpads[selected_id]
+	try_launch(user, current_pad)
+
+#undef MECH_LAUNCH_TIME
+
+/obj/machinery/computer/mechpad/proc/do_after_checks(obj/vehicle/sealed/mecha/mech, mech_dir)
+	return mech.dir == mech_dir && !(machine_stat & (NOPOWER|BROKEN))
+
+/// A proc that makes random beeping sounds for a set amount of time, the sounds are separated by a random amount of time.
+/obj/machinery/computer/mechpad/proc/random_beeps(mob/user, time = 0, mintime = 0, maxtime = 1)
+	var/static/list/beep_sounds = list('sound/machines/terminal_prompt_confirm.ogg', 'sound/machines/terminal_prompt_deny.ogg', 'sound/machines/terminal_error.ogg', 'sound/machines/terminal_select.ogg', 'sound/machines/terminal_success.ogg')
+	var/time_to_spend = 0
+	var/orig_time = time
+	while(time > 0)
+		if(!DOING_INTERACTION_WITH_TARGET(user, src) && time != orig_time)
+			return
+		time_to_spend = rand(mintime, maxtime)
+		playsound(src, pick(beep_sounds), 75)
+		time -= time_to_spend
+		stoplag(time_to_spend)
+>>>>>>> a6f9323985a (smal fixes to mechpad (#70996))
 
 ///Tries to locate a pad in the cardinal directions, if it finds one it returns it
 /obj/machinery/computer/mechpad/proc/connect_to_pad()
@@ -87,12 +121,23 @@
 	if(!connected_mechpad)
 		to_chat(user, span_warning("[src] has no connected pad!"))
 		return
+<<<<<<< HEAD
 	if(connected_mechpad.panel_open)
 		to_chat(user, span_warning("[src]'s pad has its' panel open! It won't work!"))
 		return
 	if(!(locate(/obj/vehicle/sealed/mecha) in get_turf(connected_mechpad)))
 		to_chat(user, span_warning("[src] detects no mecha on the pad!"))
+=======
+	flick("mechpad-launch", connected_mechpad)
+	playsound(connected_mechpad, 'sound/machines/triple_beep.ogg', 50, TRUE)
+	addtimer(CALLBACK(src, .proc/start_launch, user, where), 1 SECONDS)
+
+/obj/machinery/computer/mechpad/proc/start_launch(mob/user, obj/machinery/mechpad/where)
+	if(!can_launch(user, where, silent = TRUE))
+>>>>>>> a6f9323985a (smal fixes to mechpad (#70996))
 		return
+	var/obj/vehicle/sealed/mecha/mech = locate() in get_turf(connected_mechpad)
+	mech.setDir(SOUTH)
 	connected_mechpad.launch(where)
 
 ///Checks if the pad of a certain number has been QDELETED, if yes returns FALSE, otherwise returns TRUE
