@@ -72,11 +72,8 @@
 	if(!(trigger_flags & TRIGGER_SECONDARY_ACTION) && !ready)
 		ready = TRUE
 		button_icon_state = "activate-ready"
-<<<<<<< HEAD
 		if(!pai_action) // SKYRAT EDIT - pAIs in MODsuits
 			background_icon_state = "bg_tech"
-=======
->>>>>>> a943cc4ca6c (MODsuit action button resprite (#70988))
 		UpdateButtons()
 		addtimer(CALLBACK(src, .proc/reset_ready), 3 SECONDS)
 		return
@@ -88,11 +85,8 @@
 /datum/action/item_action/mod/activate/proc/reset_ready()
 	ready = FALSE
 	button_icon_state = initial(button_icon_state)
-<<<<<<< HEAD
 	if(!pai_action) // SKYRAT EDIT START - pAIs in MODsuits
 		background_icon_state = initial(background_icon_state)
-=======
->>>>>>> a943cc4ca6c (MODsuit action button resprite (#70988))
 	UpdateButtons()
 
 /datum/action/item_action/mod/activate/ai
