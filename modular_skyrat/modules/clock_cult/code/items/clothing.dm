@@ -15,14 +15,6 @@
 	. = ..()
 	AddElement(/datum/element/clockwork_pickup, ~(ITEM_SLOT_HANDS))
 
-/*
-/obj/item/clothing/suit/clockwork/equipped(mob/living/user, slot)
-	. = ..()
-	if(IS_CLOCK(user))
-		return
-	user.dropItemToGround(src, TRUE)
-	user.electrocute_act(25, src, 1, SHOCK_NOGLOVES)*/
-
 /obj/item/clothing/suit/clockwork/speed
 	name = "robes of divinity"
 	desc = "A shiny suit, glowing with a vibrant energy. The wearer will be able to move quickly across battlefields, but will be able to withstand less damage before falling."
@@ -99,15 +91,6 @@
 	. = ..()
 	AddElement(/datum/element/clockwork_description, clock_desc)
 	AddElement(/datum/element/clockwork_pickup, ~(ITEM_SLOT_HANDS))
-
-/obj/item/clothing/glasses/clockwork/equipped(mob/user, slot)
-	. = ..()
-	if(IS_CLOCK(user))
-		return
-	user.dropItemToGround(src, TRUE)
-	if(isliving(user))
-		var/mob/living/living_user = user
-		living_user.electrocute_act(25, src, 1, SHOCK_NOGLOVES)
 
 // Thermal goggles, no protection from eye stuff
 /obj/item/clothing/glasses/clockwork/wraith_spectacles
@@ -320,15 +303,6 @@
 	. = ..()
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_HEAD))
 	AddElement(/datum/element/clockwork_pickup, ~(ITEM_SLOT_HANDS))
-
-/obj/item/clothing/head/helmet/clockwork/equipped(mob/user, slot)
-	. = ..()
-	if(IS_CLOCK(user))
-		return
-	user.dropItemToGround(src, TRUE)
-	if(isliving(user))
-		var/mob/living/living_user = user
-		living_user.electrocute_act(25, src, 1, SHOCK_NOGLOVES)
 
 /obj/item/clothing/shoes/clockwork
 	name = "brass treads"
