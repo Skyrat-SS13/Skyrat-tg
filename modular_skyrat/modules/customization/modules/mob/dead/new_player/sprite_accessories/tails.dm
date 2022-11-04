@@ -4,7 +4,6 @@
 	organ_type = /obj/item/organ/external/tail
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails.dmi'
 	special_render_case = TRUE
-	special_icon_case = TRUE
 	special_colorize = TRUE
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
@@ -28,9 +27,6 @@
 		// Emote exception
 			return TRUE
 		return FALSE
-
-/datum/sprite_accessory/tails/get_special_icon(mob/living/carbon/human/wearer, passed_state)
-	return icon
 
 /datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/wearer)
 	return icon_state
