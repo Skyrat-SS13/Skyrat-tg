@@ -1,4 +1,4 @@
-/datum/outfit/pirate/enclave_officer
+/datum/outfit/pirate/nri_officer
 	name = "NRI Field Officer"
 
 	head = /obj/item/clothing/head/beret/sec/nri
@@ -20,15 +20,15 @@
 	r_pocket = /obj/item/storage/bag/ammo
 
 	id = /obj/item/card/id/advanced
-	id_trim = /datum/id_trim/enclave/officer
+	id_trim = /datum/id_trim/nri_raider/officer
 
-/datum/outfit/pirate/enclave_officer/post_equip(mob/living/carbon/human/equipped_human, visualsOnly)
+/datum/outfit/pirate/nri_officer/post_equip(mob/living/carbon/human/equipped_human, visualsOnly)
 	. = ..()
 
-/datum/id_trim/enclave/officer
+/datum/id_trim/nri_raider/officer
 	assignment = "NRI Field Officer"
 
-/datum/outfit/pirate/enclave_trooper
+/datum/outfit/pirate/nri_marine
 	name = "NRI Marine"
 
 	head = null
@@ -50,25 +50,25 @@
 	r_pocket = /obj/item/storage/bag/ammo
 
 	id = /obj/item/card/id/advanced
-	id_trim = /datum/id_trim/enclave
+	id_trim = /datum/id_trim/nri_raider
 
-/datum/outfit/pirate/enclave_trooper/post_equip(mob/living/carbon/human/equipped_human, visualsOnly)
+/datum/outfit/pirate/nri_marine/post_equip(mob/living/carbon/human/equipped_human, visualsOnly)
 	. = ..()
 
-/datum/id_trim/enclave
+/datum/id_trim/nri_raider
 	assignment = "NRI Marine"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_nri"
 	sechud_icon_state = "hud_nri"
 	access = list(ACCESS_SYNDICATE, ACCESS_MAINT_TUNNELS)
 
-/obj/effect/mob_spawn/ghost_role/human/pirate/enclave
+/obj/effect/mob_spawn/ghost_role/human/pirate/nri
 	name = "NRI Raider sleeper"
 	desc = "Cozy. You get the feeling you aren't supposed to be here, though..."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	mob_name = "Novaya Rossiyskaya Imperiya raiding party's marine"
-	outfit = /datum/outfit/pirate/enclave_trooper
+	outfit = /datum/outfit/pirate/nri_marine
 	rank = "NRI Marine"
 	you_are_text = "You are a Novaya Rossiyskaya Imperiya task force."
 	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by demanding the funds. Force approach is usually recommended, but isn't the only method."
@@ -79,7 +79,7 @@
 	random_appearance = FALSE
 	show_flavor = TRUE
 
-/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/special(mob/living/carbon/human/spawned_human)
+/obj/effect/mob_spawn/ghost_role/human/pirate/nri/special(mob/living/carbon/human/spawned_human)
 	. = ..()
 	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
 	spawned_human.remove_language(/datum/language/piratespeak)
@@ -89,25 +89,25 @@
 	policy_index = ROLE_FUGITIVE_HUNTER
 
 
-/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/generate_pirate_name(spawn_gender)
+/obj/effect/mob_spawn/ghost_role/human/pirate/nri/generate_pirate_name(spawn_gender)
 	var/last_name = pick(GLOB.last_names)
 	return "[rank] [last_name]"
 
-/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/captain
+/obj/effect/mob_spawn/ghost_role/human/pirate/nri/captain
 	name = "NRI Officer sleeper"
 	mob_name = "Novaya Rossiyskaya Imperiya raiding party's field officer"
-	outfit = /datum/outfit/pirate/enclave_officer
+	outfit = /datum/outfit/pirate/nri_officer
 	rank = "Field Officer"
 	important_text = "Allowed races are humans, Akulas, IPCs. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. Roleplay accordingly. There is an important document in your pocket I'd advise you to read and keep safe."
 
-/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/captain/special(mob/living/carbon/human/spawned_human)
+/obj/effect/mob_spawn/ghost_role/human/pirate/nri/captain/special(mob/living/carbon/human/spawned_human)
 	. = ..()
 	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
 	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
 	spawned_human.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_MIND)
 	spawned_human.remove_language(/datum/language/piratespeak)
 
-/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/gunner
+/obj/effect/mob_spawn/ghost_role/human/pirate/nri/gunner
 	rank = "Marine"
 
 /datum/map_template/shuttle/pirate/nri_raider
