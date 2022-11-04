@@ -16,10 +16,6 @@
 	var/initialize_dirs = NONE // bitflags of pipe directions added on init, see \code\_DEFINES\pipe_construction.dm
 	var/flip_type // If set, the pipe is flippable and becomes this type when flipped
 	var/obj/structure/disposalconstruct/stored
-	//SKYRAT EDIT: HURTSPOSALS
-	/// Whether a disposal pipe will hurt if a person changes direction. `FALSE` for hurting, `TRUE` to prevent making them hurt.
-	var/padded_corners = FALSE
-	//SKYRAT EDIT: HURTSPOSALS
 
 
 /obj/structure/disposalpipe/Initialize(mapload, obj/structure/disposalconstruct/make_from)
@@ -98,27 +94,10 @@
 	// find other holder in next loc, if inactive merge it with current
 	var/obj/structure/disposalholder/H2 = locate() in P
 	if(H2 && !H2.active)
-<<<<<<< HEAD
-		H.merge(H2)
-	/// SKYRAT EDIT START - HURTSPOSAL
-	if(dir != P.dir && !padded_corners)
-		if(prob(20))
-			for(var/objects_within in H.contents)
-				if(!isliving(objects_within))
-					continue
-				var/mob/living/living_within = objects_within
-				if(living_within.stat == DEAD)
-					continue
-				if(HAS_TRAIT(living_within, TRAIT_TRASHMAN))
-					continue
-				living_within.adjustBruteLoss(5)
-	/// SKYRAT EDIT END
-=======
 		if(H2.hasmob) //If it's stopped and there's a mob, add to the pile
 			H2.merge(H)
 			return
 		H.merge(H2)//Otherwise, we push it along through.
->>>>>>> 6980438b813 (Allows mobs caught in disposals to escape once they have stopped moving - Take two (#70908))
 	H.forceMove(P)
 	return P
 
