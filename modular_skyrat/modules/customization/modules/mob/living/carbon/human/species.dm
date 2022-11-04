@@ -112,17 +112,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				accessory_overlay.icon_state = "[render_state]_[layertext]_primary"
 				accessories = list()
 
-			if(bodypart_accessory.get_special_MOD_icon)
-				if(bodypart_accessory.color_src == USE_MATRIXED_COLORS && color_layer_list)
-					var/list/mutable_appearance/MOD_overlay_matrix = list(
-					mutable_appearance(bodypart_accessory.get_special_MOD_icon(owner), "[render_state]_[layertext]_primary", layer = MOB_SHIELD_LAYER),
-					mutable_appearance(bodypart_accessory.get_special_MOD_icon(owner), "[render_state]_[layertext]_secondary", layer = MOB_SHIELD_LAYER),
-					mutable_appearance(bodypart_accessory.get_special_MOD_icon(owner), "[render_state]_[layertext]_tertiary", layer = MOB_SHIELD_LAYER))
-					standing += MOD_overlay_matrix
-				else
-					var/mutable_appearance/MOD_overlay = mutable_appearance(bodypart_accessory.get_special_MOD_icon(owner), "[render_state]_[layertext]", layer = MOB_SHIELD_LAYER)
-					standing += MOD_overlay
-
 			if(bodypart_accessory.center)
 				accessory_overlay = center_image(accessory_overlay, x_shift, bodypart_accessory.dimension_y)
 
@@ -181,6 +170,18 @@ GLOBAL_LIST_EMPTY(customizable_races)
 					//if (bodypart_accessory.center)
 					//	emissive_overlay = center_image(emissive_overlay, x_shift, bodypart_accessory.dimension_y)
 					standing += emissive_overlay
+
+			//
+			if(bodypart_accessory.use_custom_mod_icon)
+				if(bodypart_accessory.color_src == USE_MATRIXED_COLORS && color_layer_list)
+					var/list/mutable_appearance/MOD_overlay_matrix = list(
+					mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]_primary", layer = -layer),
+					mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]_secondary", layer = -layer),
+					mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]_tertiary", layer = -layer))
+					standing += MOD_overlay_matrix
+				else
+					var/mutable_appearance/MOD_overlay = mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]", layer = -layer)
+					standing += MOD_overlay
 
 			if(bodypart_accessory.hasinner)
 				var/mutable_appearance/inner_accessory_overlay = mutable_appearance(bodypart_accessory.icon, layer = -layer)
