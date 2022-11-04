@@ -89,6 +89,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		else
 			icon_to_use = bodypart_accessory.icon
 
+		if(bodypart_accessory.get_special_MOD_icon)
+			icon_to_use = bodypart_accessory.get_special_MOD_icon(owner)
+
 		if (bodypart_accessory.special_render_case)
 			color_layer_list = list("1" = "primary", "2" = "secondary", "3" = "tertiary")
 

@@ -112,10 +112,10 @@
 	if(stat != CONSCIOUS)
 		to_chat(usr, span_warning("You can't do this right now..."))
 		return
+
 	// Only show the 'reveal all' button if we are already hiding something
 	if(try_hide_mutant_parts)
 		LAZYOR(available_selection, "reveal all")
-
 	// Lets build our parts list
 	for(var/key as anything in total_selection)
 		if(findtext(mutant_renderkey, "[key]"))

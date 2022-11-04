@@ -17,7 +17,7 @@
 		if(key in wearer.try_hide_mutant_parts)
 			return TRUE
 		// Is the suit flagged to hide the tail anyway?
-		if(wearer.wear_suit.flags_inv & HIDETAIL)
+		if(wearer.wear_suit && wearer.wear_suit.flags_inv & HIDETAIL)
 			if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod) && wearer.back && istype(wearer.back, /obj/item/mod/control))
 				// MOD suit exception due to hardlight tech
 				return FALSE

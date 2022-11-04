@@ -43,7 +43,9 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	var/special_x_dimension
 	///Special case of whether the accessory should have a different icon, check taur genitals for example
 	var/special_icon_case
-	///Special case of applying a different color, like MODsuit tails
+	///Special case for MODsuit overlays
+	var/get_special_MOD_icon
+	///Special case of applying a different color
 	var/special_colorize
 	///Whether it has any extras to render, and their appropriate color sources
 	var/extra = FALSE
@@ -102,6 +104,9 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 
 /datum/sprite_accessory/proc/get_special_x_dimension(mob/living/carbon/human/H, passed_state)
 	return 0
+
+/datum/sprite_accessory/proc/get_special_MOD_icon(mob/living/carbon/human/H)
+	return null
 
 /datum/sprite_accessory/proc/get_default_color(var/list/features, var/datum/species/pref_species) //Needs features for the color information
 	var/list/colors
