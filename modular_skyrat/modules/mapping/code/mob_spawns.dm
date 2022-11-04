@@ -139,6 +139,9 @@
 	shoes = /obj/item/clothing/shoes/combat
 	ears = /obj/item/radio/headset/interdyne
 	back = /obj/item/storage/backpack
+	backpack_contents = list(
+		/obj/item/storage/box/survival=1,
+		/obj/item/crowbar=1)
 	id = /obj/item/card/id/advanced/black
 	implants = list(/obj/item/implant/weapons_auth)
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/
@@ -146,7 +149,14 @@
 /datum/outfit/ds2/syndicate/miner
 	name = "DS-2 Mining Officer"
 	uniform = /obj/item/clothing/under/syndicate/skyrat/overalls
+	belt = /obj/item/storage/bag/ore
 	back = /obj/item/storage/backpack/satchel/explorer
+	backpack_contents = list(
+		/obj/item/storage/box/survival=1,
+		/obj/item/crowbar=1,
+		/obj/item/knife/combat/survival=1,
+		/obj/item/t_scanner/adv_mining_scanner/lesser=1,
+		/obj/item/gun/energy/recharge/kinetic_accelerator=1)
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/miner
 	l_pocket = /obj/item/card/mining_point_card
 	r_pocket = /obj/item/mining_voucher
@@ -164,6 +174,8 @@
 	name = "DS-2 Engine Technician"
 	uniform = /obj/item/clothing/under/syndicate/skyrat/overalls
 	head = /obj/item/clothing/head/soft/sec/syndicate
+	backpack_contents = list(
+		/obj/item/storage/box/survival=1)
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/enginetechnician
 	glasses = /obj/item/clothing/glasses/welding/up
 	belt = /obj/item/storage/belt/utility/syndicate
@@ -198,8 +210,9 @@
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/masteratarms
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
-	head = /obj/item/clothing/head/hats/warden/syndicate
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
+	back = /obj/item/storage/backpack/satchel/sec/redsec
+	head = /obj/item/clothing/head/hos/beret/syndicate
 	r_pocket = /obj/item/flashlight/seclite
 	implants = list(/obj/item/implant/krav_maga)
 	ears = /obj/item/radio/headset/interdyne/command
@@ -210,6 +223,7 @@
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/brigofficer
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/bulletproof/old
+	back = /obj/item/storage/backpack/security/redsec
 	head = /obj/item/clothing/head/helmet/swat/ds
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
 	r_pocket = /obj/item/flashlight/seclite
@@ -222,6 +236,7 @@
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
 	back = /obj/item/storage/backpack/satchel
 	belt = /obj/item/gun/ballistic/automatic/pistol/aps
+	head = /obj/item/clothing/head/hats/hos/syndicate
 	id = /obj/item/card/id/advanced/gold/generic
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/stationadmiral
 	ears = /obj/item/radio/headset/interdyne/command
