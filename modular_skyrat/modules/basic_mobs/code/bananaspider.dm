@@ -1,6 +1,6 @@
 // Ported from Citadel Station
 
-/mob/living/simple_animal/banana_spider
+/mob/living/basic/banana_spider
 	name = "banana spider"
 	desc = "What the fuck is this abomination?"
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
@@ -8,28 +8,30 @@
 	icon_dead = "bananaspider_peel"
 	health = 1
 	maxHealth = 1
-	turns_per_move = 5			// this isn't player speed =|
-	speed = 2				// this is player speed
-	loot = list(/obj/item/food/deadbanana_spider)
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
-	minbodytemp = 270
-	maxbodytemp = INFINITY
+	speed = 2
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
+	mob_biotypes = MOB_ORGANIC|MOB_BUG
 	mob_size = MOB_SIZE_TINY
-	speak_emote = list("chitters")
-	mouse_opacity = 2
 	density = TRUE
 	verb_say = "chitters"
 	verb_ask = "chitters inquisitively"
 	verb_exclaim = "chitters loudly"
 	verb_yell = "chitters loudly"
-	var/squish_chance = 50
-	var/projectile_density = TRUE		// griffons get shot
-	del_on_death = TRUE
+	basic_mob_flags = DEL_ON_DEATH
+	ai_controller = /datum/ai_controller/basic_controller/cockroach/banana_spider
 
-/mob/living/simple_animal/banana_spider/Initialize(mapload)
+/mob/living/basic/banana_spider/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/slippery, 40)
+	AddElement(/datum/element/death_drops, list(/obj/item/food/deadbanana_spider))
+	AddElement(/datum/element/basic_body_temp_sensitive, 270, INFINITY)
+	AddComponent(/datum/component/squashable, squash_chance = 50, squash_damage = 1)
+
+/datum/ai_controller/basic_controller/cockroach/banana_spider
+	idle_behavior = /datum/idle_behavior/idle_random_walk/banana_spider
+
+/datum/idle_behavior/idle_random_walk/banana_spider
+	walk_chance = 10
 
 /obj/item/food/deadbanana_spider
 	name = "dead banana spider"

@@ -157,7 +157,7 @@ SUBSYSTEM_DEF(mapping)
 	var/list/world_contents = GLOB.areas_by_type[world.area].contents
 	var/list/lists_to_reserve = src.lists_to_reserve
 	var/index = 0
-	while(length(lists_to_reserve))
+	while(index < length(lists_to_reserve))
 		var/list/packet = lists_to_reserve[index + 1]
 		var/packetlen = length(packet)
 		while(packetlen)
@@ -174,8 +174,6 @@ SUBSYSTEM_DEF(mapping)
 			packetlen = length(packet)
 
 		index++
-		// If we're here, we're done with that lad
-		lists_to_reserve.len--
 	lists_to_reserve.Cut(1, index)
 
 /datum/controller/subsystem/mapping/proc/calculate_default_z_level_gravities()
@@ -433,12 +431,11 @@ Used by the AI doomsday and the self-destruct nuke.
 GLOBAL_LIST_EMPTY(the_station_areas)
 
 /datum/controller/subsystem/mapping/proc/generate_station_area_list()
-	for(var/area/station/A in world)
-		if (!A.contents.len || !(A.area_flags & UNIQUE_AREA))
+	for(var/area/station/station_area in world)
+		if (!(station_area.area_flags & UNIQUE_AREA))
 			continue
-		var/turf/picked = A.contents[1]
-		if (is_station_level(picked.z))
-			GLOB.the_station_areas += A.type
+		if (is_station_level(station_area.z))
+			GLOB.the_station_areas += station_area.type
 
 	if(!GLOB.the_station_areas.len)
 		log_world("ERROR: Station areas list failed to generate!")
