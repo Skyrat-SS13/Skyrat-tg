@@ -232,7 +232,6 @@
 		wearer.update_worn_mask()
 		wearer.update_worn_glasses()
 		wearer.update_body_parts()
-	wearer.update_mutant_bodyparts(TRUE) // SKYRAT EDIT - MODsuit hardlight
 
 /// Finishes the suit's activation, starts processing
 /obj/item/mod/control/proc/finish_activation(on)
