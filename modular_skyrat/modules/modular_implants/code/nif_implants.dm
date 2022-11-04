@@ -19,7 +19,7 @@
 /obj/item/organ/internal/cyberimp/brain/nif/roleplay_model/cheap
 	name = "Trial-Lite Type NIF"
 	desc = "'Trial-Lite' is a classification for temporary Nanite Implant Frameworks. These are typically distributed at promotional events, for the use of single-purpose NIFsofts, or at some Corporate dealerships to offer prospective users a look into the scene. Normally, Trial-Lite frameworks do not actually 'bond' with their user, forming an extremely loose connection before dissolving into scattered and dead nanomachines within a few hours, typically exhaled."
-	manufacturer_notes = "weh"
+	manufacturer_notes = "Normally, Trial-Lite frameworks do not actually 'bond' with their user, forming an extremely loose connection before dissolving into scattered and dead nanomachines within a few hours, typically exhaled. It's so far been impossible to extend the lifespan of a Trial-Lite NIF, owing to their far inferior construction and programming."
 	nif_persistence = FALSE
 
 /obj/item/autosurgeon/organ/nif/disposable //Disposable, as in the fact that this only lasts for one shift
