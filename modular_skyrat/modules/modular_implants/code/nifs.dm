@@ -482,7 +482,7 @@
 	if(nif_examine_text)
 		. += nif_examine_text
 
-/mob/living/carbon/human/death(gibbed)
+/mob/living/carbon/human/death()
 	. = ..()
 
 	if(!installed_nif)
