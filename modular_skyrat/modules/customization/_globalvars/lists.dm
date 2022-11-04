@@ -83,6 +83,12 @@ GLOBAL_LIST_INIT(preference_breast_sizes, list(
 	BREAST_SIZE_H,
 	BREAST_SIZE_I,
 	BREAST_SIZE_J,
+	BREAST_SIZE_K,
+	BREAST_SIZE_L,
+	BREAST_SIZE_M,
+	BREAST_SIZE_N,
+	BREAST_SIZE_O,
+	BREAST_SIZE_P,
 	))
 
 GLOBAL_LIST_INIT(preference_balls_sizes, list(
