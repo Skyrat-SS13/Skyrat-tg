@@ -17,15 +17,12 @@
 	var/danger_chance = 1
 	/// Amount of reagents ejected from each scrubber
 	var/reagents_amount = 50
-<<<<<<< HEAD
-=======
 	/// Probability of an individual scrubber overflowing
 	var/overflow_probability = 50
 	/// Specific reagent to force all scrubbers to use, null for random reagent choice
 	var/forced_reagent
 	/// A list of scrubbers that will have reagents ejected from them
 	var/list/scrubbers = list()
->>>>>>> c95f4543d26 (Makes the beer nuke use scrubber overflow (#70929))
 	/// The list of chems that scrubbers can produce
 	var/list/safer_chems = list(/datum/reagent/water,
 		/datum/reagent/carbon,
