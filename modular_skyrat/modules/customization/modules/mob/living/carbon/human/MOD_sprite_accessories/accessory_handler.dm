@@ -10,7 +10,7 @@
 	. = ..()
 	wearer.update_mutant_bodyparts(TRUE)
 
-#define MOD_TEXTURES 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/MOD_sprite_accessories/icons/MOD_mask.dmi'
+#define HARDLIGHT_TEXTURES 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/MOD_sprite_accessories/icons/MOD_mask.dmi'
 
 /datum/sprite_accessory/tails
 	get_special_MOD_icon = TRUE
@@ -21,11 +21,10 @@
 		var/obj/item/mod/control/modsuit_control = wearer.back
 		var/datum/mod_theme/mod_theme = modsuit_control.theme
 
-		var/icon/MOD_texture = icon(MOD_TEXTURES, "[mod_theme.name]")
+		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
 		special_icon.Blend(MOD_texture, ICON_ADD)
 		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
 		return special_icon
-	return icon
 
 /datum/sprite_accessory/ears
 	get_special_MOD_icon = TRUE
@@ -36,8 +35,7 @@
 		var/obj/item/mod/control/modsuit_control = wearer.back
 		var/datum/mod_theme/mod_theme = modsuit_control.theme
 
-		var/icon/MOD_texture = icon(MOD_TEXTURES, "[mod_theme.name]")
+		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
 		special_icon.Blend(MOD_texture, ICON_ADD)
 		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
 		return special_icon
-	return icon
