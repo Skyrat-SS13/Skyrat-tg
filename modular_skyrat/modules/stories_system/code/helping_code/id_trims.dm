@@ -11,3 +11,6 @@
 
 /datum/id_trim/job/assistant/government_official
 	assignment = "Government Official"
+
+/datum/id_trim/job/assistant/med_student
+	assignment = "Medical Student"

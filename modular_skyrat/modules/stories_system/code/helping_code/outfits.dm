@@ -163,4 +163,19 @@
 	worn_id.registered_name = equipped_human.real_name
 	worn_id.update_label()
 
+/datum/outfit/medical_student
+	name = "Medical Student"
 
+	id = /obj/item/card/id/passport
+	id_trim = /datum/id_trim/job/assistant/med_student
+	uniform = /obj/item/clothing/under/rank/medical/scrubs/green
+	glasses = /obj/item/clothing/glasses/regular
+	neck = /obj/item/clothing/suit/toggle/labcoat
+	ears = /obj/item/radio/headset/headset_med
+	shoes = /obj/item/clothing/shoes/sneakers/white
+	l_hand = /obj/item/clipboard
+	back = /obj/item/storage/backpack/satchel/med
+	backpack_contents = list(
+		/obj/item/pen = 1,
+		/obj/item/paper = 2,
+	)

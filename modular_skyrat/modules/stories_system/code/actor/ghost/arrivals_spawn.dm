@@ -110,3 +110,11 @@
 	well deserved shore leave. Find some good booze, find some good food, and get some R&R in with the boys. Cut loose, let off some steam, and be a proud navy man!"
 	actor_goal = "Get drunk with the boys. Have some good fucking food at the kitchen. Be rowdy and merry. Get into fights, be a nuisance, be obnoxious to the station. \
 	Avoid getting thrown in the brig so that your commanding officer doesn't have to bail you out."
+
+/datum/story_actor/ghost/spawn_in_arrivals/med_student
+	name = "Medical Student"
+	actor_outfits = list(
+		/datum/outfit/medical_student,
+	)
+	actor_info = "You're a first-year medical student from some cushy Spinward university, out on a Nanotrasen station as part of a joint partnership for some hands-on education."
+	actor_goal = "Learn from the station's medical department, ask an obnoxious amoount of questions, and act as incompetent at medical work as any first-year student would be."

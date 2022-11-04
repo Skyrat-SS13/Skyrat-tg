@@ -100,3 +100,21 @@
 		/datum/story_actor/ghost/spawn_in_arrivals/shore_leave = 3,
 	)
 	maximum_execute_times = 1
+
+/*
+	Medical Students
+		Plot Summary:
+			As part of a school funding initiative, various schools in the Spinward Stellar Coalition have partnered with Nanotrasen to get first year medical students some real hands on learning.
+			Unfortunately for the station, medical students tend to be very, very unexperienced.
+		Actors:
+			Ghost:
+				Medical Student (3)
+*/
+
+/datum/story_type/unimpactful/medical_students
+	name = "Medical Students"
+	desc = "A group of medical students come to the station for some hands-on learning."
+	actor_datums_to_make = list(
+		/datum/story_actor/ghost/spawn_in_arrivals/med_student = 3,
+	)
+	maximum_execute_times = 2
