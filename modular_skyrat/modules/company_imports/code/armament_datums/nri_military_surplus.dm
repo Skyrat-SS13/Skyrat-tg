@@ -47,6 +47,12 @@
 	upper_cost = CARGO_CRATE_VALUE * 1.5
 	interest_required = COMPANY_SOME_INTEREST
 
+/datum/armament_entry/company_import/nri_surplus/clothing/gas_mask
+	item_type = /obj/item/clothing/mask/gas/hecu2
+	lower_cost = CARGO_CRATE_VALUE
+	upper_cost = CARGO_CRATE_VALUE * 1.5
+	interest_required = COMPANY_SOME_INTEREST
+
 /datum/armament_entry/company_import/nri_surplus/clothing/helmet
 	item_type = /obj/item/clothing/head/helmet/rus_helmet/nri
 	lower_cost = CARGO_CRATE_VALUE * 2
