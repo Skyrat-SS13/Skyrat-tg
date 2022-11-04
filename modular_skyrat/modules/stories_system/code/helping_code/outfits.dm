@@ -170,7 +170,7 @@
 	id_trim = /datum/id_trim/job/assistant/med_student
 	uniform = /obj/item/clothing/under/rank/medical/scrubs/green
 	glasses = /obj/item/clothing/glasses/regular
-	neck = /obj/item/clothing/suit/toggle/labcoat
+	suit = /obj/item/clothing/suit/toggle/labcoat
 	ears = /obj/item/radio/headset/headset_med
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	l_hand = /obj/item/clipboard
