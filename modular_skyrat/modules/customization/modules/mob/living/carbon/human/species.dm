@@ -178,9 +178,14 @@ GLOBAL_LIST_EMPTY(customizable_races)
 					mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]_primary", layer = -layer),
 					mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]_secondary", layer = -layer),
 					mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]_tertiary", layer = -layer))
+					if(bodypart_accessory.center)
+						for(var/to_center as anything in MOD_overlay_matrix)
+							to_center = center_image(to_center, x_shift, bodypart_accessory.dimension_y)
 					standing += MOD_overlay_matrix
 				else
 					var/mutable_appearance/MOD_overlay = mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]", layer = -layer)
+					if(bodypart_accessory.center)
+						MOD_overlay = center_image(MOD_overlay, x_shift, bodypart_accessory.dimension_y)
 					standing += MOD_overlay
 
 			if(bodypart_accessory.hasinner)

@@ -147,9 +147,13 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER)
 	genetic = TRUE
 
-/datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	var/obj/item/organ/external/tail/tail = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
-	if(!tail || (H.wear_suit && (H.try_hide_mutant_parts || H.wear_suit.flags_inv & HIDETAIL || H.wear_suit.flags_inv & HIDESPINE)))
+/datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/HD)
+	var/obj/item/organ/external/tail/tail = wearer.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+	// We have a suit and are manually hiding our spines
+	if(wearer.w_uniform)
+		if(key in wearer.try_hide_mutant_parts)
+			return TRUE
+	if(!tail || (wearer.wear_suit && (wearer.wear_suit.flags_inv & HIDETAIL || wearer.wear_suit.flags_inv & HIDESPINE)))
 		return TRUE
 	return FALSE
 

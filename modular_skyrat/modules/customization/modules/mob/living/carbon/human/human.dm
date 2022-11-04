@@ -106,7 +106,7 @@
 	// The parts our particular user can choose
 	var/list/available_selection
 	// The total list of parts choosable
-	var/static/list/total_selection = list("horns", "ears", "wings", "tail", "xenodorsal")
+	var/static/list/total_selection = list("horns", "ears", "wings", "tail", "xenodorsal", "spines")
 
 	// Stat check
 	if(stat != CONSCIOUS)
@@ -124,8 +124,10 @@
 	// If this proc is called with the 'quick_toggle' flag, we skip the rest
 	if(quick_toggle)
 		if("reveal all" in available_selection)
+			to_chat(usr, span_notice("You quickly reveal your mutant parts."))
 			LAZYNULL(try_hide_mutant_parts)
 		else
+			to_chat(usr, span_notice("You quickly try to hide your mutant parts."))
 			for(var/part as anything in available_selection)
 				LAZYOR(try_hide_mutant_parts, part)
 		update_mutant_bodyparts()
@@ -158,13 +160,16 @@
 
 	// Choice to action
 	if(pick == "reveal all")
+		to_chat(usr, span_notice("You are no longer trying to hide your mutant parts."))
 		LAZYNULL(try_hide_mutant_parts)
 		update_mutant_bodyparts()
 		return
 
 	else if(pick in try_hide_mutant_parts)
+		to_chat(usr, span_notice("You are no longer trying to hide your [pick]."))
 		LAZYREMOVE(try_hide_mutant_parts, pick)
 	else
+		to_chat(usr, span_notice("You are now trying to hide your [pick]."))
 		LAZYOR(try_hide_mutant_parts, pick)
 	update_mutant_bodyparts()
 	// automatically re-do the menu after making a selection
