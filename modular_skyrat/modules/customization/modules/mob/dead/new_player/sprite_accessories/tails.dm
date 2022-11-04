@@ -12,21 +12,41 @@
 
 /datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/HD)
 	if(wearer.w_uniform)
-		// We determined we have a uniform, manually hide the tail?
+	//	Can hide if wearing uniform
 		if(key in wearer.try_hide_mutant_parts)
 			return TRUE
-		// Is the suit flagged to hide the tail anyway?
-		if(wearer.wear_suit && wearer.wear_suit.flags_inv & HIDETAIL)
-			if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod) && wearer.back && istype(wearer.back, /obj/item/mod/control))
-				// MOD suit exception due to hardlight tech
+		if(wearer.wear_suit)
+		//	Exception for MODs
+			if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
 				return FALSE
-			return TRUE
+		//	Hide accessory if flagged to do so
+			else if(wearer.wear_suit.flags_inv & HIDETAIL)
+				return TRUE
 	else
 		var/list/used_in_turf = list("tail")
 		if(wearer.owned_turf?.name in used_in_turf)
 		// Emote exception
 			return TRUE
-		return FALSE
+	return FALSE
+
+/obj/item/organ/external/tail/can_draw_on_bodypart(mob/living/carbon/human/wearer)
+	if(wearer.w_uniform)
+	//	Can hide if wearing uniform
+		if(render_key in wearer.try_hide_mutant_parts)
+			return FALSE
+		if(wearer.wear_suit)
+		//	Exception for MODs
+			if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
+				return TRUE
+		//	Hide accessory if flagged to do so
+			else if(wearer.wear_suit.flags_inv & HIDETAIL)
+				return FALSE
+	else
+		var/list/used_in_turf = list("tail")
+		if(wearer.owned_turf?.name in used_in_turf)
+		// Emote exception
+			return FALSE
+	return ..()
 
 /datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/wearer)
 	return icon_state

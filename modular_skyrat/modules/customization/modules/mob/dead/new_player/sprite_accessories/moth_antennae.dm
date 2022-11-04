@@ -4,7 +4,35 @@
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
 
-/datum/sprite_accessory/moth_antennae/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD)
-		return TRUE
+/datum/sprite_accessory/moth_antennae/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/HD)
+	if(wearer.head)
+	//	Can hide if wearing hat
+		if(key in wearer.try_hide_mutant_parts)
+			return TRUE
+	//	Exception for MODs
+		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
+			return FALSE
+	//	Hide accessory if flagged to do so, taking exceptions in account
+		else if((wearer.wear_mask \
+				&& (wearer.wear_mask.flags_inv & HIDEHAIR)) \
+					|| wearer.head.flags_inv & HIDEHAIR \
+					|| !HD \
+			)
+			return TRUE
 	return FALSE
+
+/obj/item/organ/external/antennae/can_draw_on_bodypart(mob/living/carbon/human/wearer)
+	if(wearer.head)
+	//	Can hide if wearing hat
+		if(feature_key in wearer.try_hide_mutant_parts)
+			return FALSE
+	//	Exception for MODs
+		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
+			return TRUE
+	//	Hide accessory if flagged to do so, taking exceptions in account
+		else if((wearer.wear_mask \
+				&& (wearer.wear_mask.flags_inv & HIDEHAIR)) \
+					|| wearer.head.flags_inv & HIDEHAIR \
+			)
+			return FALSE
+	return ..()

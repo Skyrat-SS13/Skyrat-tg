@@ -5,25 +5,29 @@
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
 
-/datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/human, obj/item/bodypart/bodypart)
-	// We have a hat and are manually hiding our ears
-	if(human.head && bodypart)
-		if(key in human.try_hide_mutant_parts)
+/datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/bodypart)
+	if(wearer.head)
+	//	Can hide if wearing hat
+		if(key in wearer.try_hide_mutant_parts)
 			return TRUE
-		// Exception for MOD helmets due to hardlight tech
-		if(istype(human.head, /obj/item/clothing/head/mod))
+	//	Exception for MODs
+		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
 			return FALSE
-	// Does the hat make us hide ears anyway? Do we even have a head?
-	if(
-		(human.head && (human.head.flags_inv & HIDEHAIR)) \
-		|| (human.wear_mask && (human.wear_mask.flags_inv & HIDEHAIR)) \
-		|| !bodypart \
-	)
-		//This line basically checks if we FORCE accessory-ears to show, for items with earholes like Balaclavas and Luchador masks
-		if(!(human.head && (human.head.flags_inv & SHOWSPRITEEARS) || (human.wear_mask && (human.wear_mask.flags_inv & SHOWSPRITEEARS)) || !bodypart))
+	//	This line basically checks if we FORCE accessory-ears to show, for items with earholes like Balaclavas and Luchador masks
+		else if(!(wearer.head \
+				&& (wearer.head.flags_inv & SHOWSPRITEEARS) \
+					|| (wearer.wear_mask \
+					&& (wearer.wear_mask.flags_inv & SHOWSPRITEEARS)) \
+				|| !bodypart) \
+			)
+			return TRUE
+	//	Hide accessory if flagged to do so
+		else if(wearer.head.flags_inv & HIDEHAIR \
+				|| (wearer.wear_mask && (wearer.wear_mask.flags_inv & HIDEHAIR)) \
+				|| !bodypart \
+			)
 			return TRUE
 	return FALSE
-
 
 /datum/sprite_accessory/ears/cat
 	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_HUMANOID, SPECIES_GHOUL)

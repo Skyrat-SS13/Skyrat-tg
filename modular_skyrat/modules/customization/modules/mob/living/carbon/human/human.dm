@@ -106,7 +106,17 @@
 	// The parts our particular user can choose
 	var/list/available_selection
 	// The total list of parts choosable
-	var/static/list/total_selection = list("horns", "ears", "wings", "tail", "xenodorsal", "spines")
+	var/static/list/total_selection = list(
+	"horns",
+	"ears",
+	"moth_wings",
+	"wings",
+	"tail",
+	"ipc_antenna",
+	"moth_antennae",
+	"xenodorsal",
+	"spines",
+	)
 
 	// Stat check
 	if(stat != CONSCIOUS)
@@ -124,10 +134,8 @@
 	// If this proc is called with the 'quick_toggle' flag, we skip the rest
 	if(quick_toggle)
 		if("reveal all" in available_selection)
-			to_chat(usr, span_notice("You quickly reveal your mutant parts."))
 			LAZYNULL(try_hide_mutant_parts)
 		else
-			to_chat(usr, span_notice("You quickly try to hide your mutant parts."))
 			for(var/part as anything in available_selection)
 				LAZYOR(try_hide_mutant_parts, part)
 		update_mutant_bodyparts()

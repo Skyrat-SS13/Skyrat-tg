@@ -149,12 +149,21 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 
 /datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/HD)
 	var/obj/item/organ/external/tail/tail = wearer.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
-	// We have a suit and are manually hiding our spines
 	if(wearer.w_uniform)
+	//	Can hide if wearing uniform
 		if(key in wearer.try_hide_mutant_parts)
 			return TRUE
-	if(!tail || (wearer.wear_suit && (wearer.wear_suit.flags_inv & HIDETAIL || wearer.wear_suit.flags_inv & HIDESPINE)))
-		return TRUE
+		if(wearer.wear_suit)
+		//	Exception for MODs
+			if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
+				return FALSE
+		else if(!tail \
+				|| (wearer.wear_suit \
+					&& (wearer.wear_suit.flags_inv & HIDETAIL \
+					|| wearer.wear_suit.flags_inv & HIDESPINE) \
+				)
+			)
+			return TRUE
 	return FALSE
 
 /datum/sprite_accessory/spines/get_special_render_state(mob/living/carbon/human/H)

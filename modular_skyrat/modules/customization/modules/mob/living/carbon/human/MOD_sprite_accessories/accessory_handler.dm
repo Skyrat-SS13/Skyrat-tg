@@ -1,18 +1,18 @@
 /obj/item/mod/control/seal_part(obj/item/clothing/part, seal)
 	. = ..()
-	wearer.update_mutant_bodyparts(TRUE)
+	wearer.dna.species.handle_mutant_bodyparts(wearer, force_update = TRUE)
 
 /obj/item/mod/control/finish_activation(on)
 	. = ..()
-	wearer.update_mutant_bodyparts(TRUE)
+	wearer.dna.species.handle_mutant_bodyparts(wearer, force_update = TRUE)
 
 /obj/item/mod/control/on_mod_deployed(mob/user)
 	. = ..()
-	wearer.update_mutant_bodyparts(TRUE)
+	wearer.dna.species.handle_mutant_bodyparts(wearer, force_update = TRUE)
 
 /obj/item/mod/control/on_mod_retracted(mob/user)
 	. = ..()
-	wearer.update_mutant_bodyparts(TRUE)
+	wearer.dna.species.handle_mutant_bodyparts(wearer, force_update = TRUE)
 
 #define HARDLIGHT_TEXTURES 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/MOD_sprite_accessories/icons/MOD_mask.dmi'
 
@@ -55,6 +55,38 @@
 /datum/sprite_accessory/wings/get_custom_mod_icon(mob/living/carbon/human/wearer)
 	var/icon/special_icon = icon(icon, icon_state)
 	if(wearer.wear_suit && istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
+		var/obj/item/mod/control/modsuit_control = wearer.back
+		var/datum/mod_theme/mod_theme = modsuit_control.theme
+		if(!modsuit_control.active)
+			return
+		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
+		special_icon.Blend(MOD_texture, ICON_ADD)
+		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
+		return special_icon
+
+// Antennae hardlight
+/datum/sprite_accessory/moth_antennae
+	use_custom_mod_icon = TRUE
+
+/datum/sprite_accessory/moth_antennae/get_custom_mod_icon(mob/living/carbon/human/wearer)
+	var/icon/special_icon = icon(icon, icon_state)
+	if(wearer.head && istype(wearer.head, /obj/item/clothing/head/mod))
+		var/obj/item/mod/control/modsuit_control = wearer.back
+		var/datum/mod_theme/mod_theme = modsuit_control.theme
+		if(!modsuit_control.active)
+			return
+		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
+		special_icon.Blend(MOD_texture, ICON_ADD)
+		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
+		return special_icon
+
+// IPC Antennae hardlight
+/datum/sprite_accessory/antenna
+	use_custom_mod_icon = TRUE
+
+/datum/sprite_accessory/antenna/get_custom_mod_icon(mob/living/carbon/human/wearer)
+	var/icon/special_icon = icon(icon, icon_state)
+	if(wearer.head && istype(wearer.head, /obj/item/clothing/head/mod))
 		var/obj/item/mod/control/modsuit_control = wearer.back
 		var/datum/mod_theme/mod_theme = modsuit_control.theme
 		if(!modsuit_control.active)
