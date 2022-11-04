@@ -3,6 +3,7 @@
 	desc = "I wonder what happens if you step on it."
 	icon_state = "pressure_sensor"
 	result_path = /obj/structure/destructible/clockwork/trap/pressure_sensor
+	clockwork_desc = "Allows you to send a signal to linked traps when a non-servant steps on the plate."
 
 /obj/structure/destructible/clockwork/trap/pressure_sensor
 	name = "pressure plate"
@@ -13,6 +14,7 @@
 	alpha = 60
 	layer = SIGIL_LAYER
 	max_integrity = 5
+	clockwork_desc = "Allows you to send a signal to linked traps when a non-servant steps on the plate."
 
 /datum/component/clockwork_trap/pressure_sensor
 	sends_input = TRUE
@@ -38,8 +40,4 @@
 	if(entered_living.incorporeal_move || (entered_living.movement_type & (FLOATING|FLYING)))
 		return
 	trigger_connected()
-	for(var/obj/structure/destructible/clockwork/trap/clock_trap in get_turf(parent))
-		if(clock_trap == parent)
-			continue
-		SEND_SIGNAL(clock_trap, COMSIG_CLOCKWORK_SIGNAL_RECEIVED)
 	playsound(parent, 'sound/machines/click.ogg', 50)

@@ -56,8 +56,9 @@
 	armour_penetration = 6
 	attack_verb_simple = list("bash", "hammer", "attack", "smash")
 	attack_verb_continuous = list("bashes", "hammers", "attacks", "smashes")
-	clockwork_hint = "Enemies hit by this will be flung back while you are on bronze tiles."
+	clockwork_desc = "Enemies hit by this will be flung back while you are on bronze tiles."
 	sharpness = 0
+	hitsound = 'sound/weapons/smash.ogg'
 
 /obj/item/clockwork/weapon/brass_battlehammer/Initialize(mapload)
 	. = ..()
@@ -66,7 +67,7 @@
 	force_wielded=28, \
 	)
 
-/obj/item/clockwork/weapon/brass_battlehammer/hit_effect(mob/living/target, mob/living/user, thrown=FALSE)
+/obj/item/clockwork/weapon/brass_battlehammer/hit_effect(mob/living/target, mob/living/user, thrown = FALSE)
 	if(!thrown && !HAS_TRAIT(src, TRAIT_WIELDED))
 		return
 	var/atom/throw_target = get_edge_target_turf(target, get_dir(src, get_step_away(target, src)))
@@ -81,7 +82,7 @@
 	armour_penetration = 12
 	attack_verb_simple = list("attack", "slash", "cut", "tear", "gore")
 	attack_verb_continuous = list("attacks", "slashes", "cuts", "tears", "gores")
-	clockwork_hint = "Enemies and mechs will be struck with a powerful electromagnetic pulse while you are on bronze tiles, with a cooldown."
+	clockwork_desc = "Enemies and mechs will be struck with a powerful electromagnetic pulse while you are on bronze tiles, with a cooldown."
 	COOLDOWN_DECLARE(emp_cooldown)
 
 /obj/item/clockwork/weapon/brass_sword/hit_effect(mob/living/target, mob/living/user, thrown)
@@ -142,7 +143,8 @@
 
 /obj/item/gun/ballistic/bow/clockwork/shoot_live_shot(mob/living/user, pointblank, atom/pbtarget, message)
 	. = ..()
-	if(is_type_in_typecache(get_turf(user), effect_turf_typecache))
+	var/turf/user_turf = get_turf(user)
+	if(is_type_in_typecache(user_turf, effect_turf_typecache))
 		recharge_time = 0.75 SECONDS
 	addtimer(CALLBACK(src, .proc/recharge_bolt), recharge_time)
 	recharge_time = initial(recharge_time)

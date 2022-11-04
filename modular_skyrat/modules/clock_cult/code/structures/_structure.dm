@@ -38,10 +38,25 @@
 		return
 	return ..()
 
+/obj/structure/destructible/clockwork/crowbar_act(mob/living/user, obj/item/tool)
+	if(IS_CLOCK(user))
+		setDir(turn(dir, 90))
+		balloon_alert(user, "rotated to [dir2text(dir)]")
+	return TRUE
+
 //the base clockwork machinery, which isn't actually a machine subtype, but happens to use power
 /obj/structure/destructible/clockwork/powered
+	/// Ref to the targetted APC that we draw power from
 	var/obj/machinery/power/apc/target_apc
+	/// If this is trying to take power or not
 	var/active = FALSE
+	/// If this currently requires power to actually work
 	var/needs_power = TRUE
-	var/active_icon = null //icon_state while process() is being called
-	var/inactive_icon = null //icon_state while process() isn't being called
+	/// icon_state while process() is being called
+	var/active_icon = null
+	///icon_state while process() isn't being called
+	var/inactive_icon = null
+
+/obj/structure/destructible/clockwork/powered/Destroy()
+	target_apc = null
+	return ..()

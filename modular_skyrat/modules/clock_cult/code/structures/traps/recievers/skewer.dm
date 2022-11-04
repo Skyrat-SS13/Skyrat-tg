@@ -3,6 +3,7 @@
 	desc = "A spiked, brass skewer attached to a steam powered extension mechanism."
 	icon_state = "brass_skewer_extended"
 	result_path = /obj/structure/destructible/clockwork/trap/skewer
+	clockwork_desc = "A skewer that can pierce through a target, activated by a linked trigger."
 
 /obj/structure/destructible/clockwork/trap/skewer
 	name = "brass skewer"
@@ -12,6 +13,7 @@
 	unwrench_path = /obj/item/clockwork/trap_placer/skewer
 	buckle_lying = FALSE
 	max_integrity = 40
+	clockwork_desc = "A skewer that can pierce through a target, activated by a linked trigger."
 	COOLDOWN_DECLARE(stab_cooldown)
 	/// If the spear is currently extended
 	var/extended = FALSE
@@ -35,7 +37,7 @@
 			target_stabbed = TRUE
 			to_chat(stabbed_mob, span_userdanger("You are impaled by [src]!"))
 			stabbed_mob.emote("scream")
-			stabbed_mob.apply_damage(5, BRUTE, BODY_ZONE_CHEST)
+			stabbed_mob.apply_damage(15, BRUTE, BODY_ZONE_CHEST)
 			if(ishuman(stabbed_mob))
 				var/mob/living/carbon/human/stabbed_human = stabbed_mob
 				stabbed_human.bleed(30)

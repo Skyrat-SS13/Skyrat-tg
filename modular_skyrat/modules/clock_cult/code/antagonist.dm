@@ -58,7 +58,7 @@
 	head = /obj/item/clothing/head/helmet/clockwork
 	l_hand = /obj/item/clockwork/weapon/brass_sword
 
-/datum/outfit/pre_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/clock_preview/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	H.faction |= FACTION_CLOCK
 

@@ -15,6 +15,7 @@
 /obj/item/clockwork/replica_fabricator/examine(mob/user)
 	. = ..()
 	if(IS_CLOCK(user))
+		. += "[span_brass("Current power: ")][span_nzcrentr(power)][span_brass(".")]"
 		. += span_brass("Use on brass to convert it into power.")
 		. += span_brass("Use on other materials to convert them into power, but at less efficiency.")
 		. += span_brass("Use on an empty floor to convert it to bronze for [FLOOR_POWER_COST]W/tile")

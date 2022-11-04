@@ -25,14 +25,15 @@
 	name = "Clockwork trap item"
 	desc = "It's a... wait what?"
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_objects.dmi'
-	pixel_shift = -24
+	pixel_shift = 24
 	w_class = WEIGHT_CLASS_HUGE
 	result_path = /obj/structure/destructible/clockwork/trap
+	/// What to show the user if they are a clock cultist
+	var/clockwork_desc = "It seems to be able to be placed on walls."
 
-/obj/item/wallframe/clocktrap/examine(mob/user)
+/obj/item/wallframe/clocktrap/Initialize(mapload)
 	. = ..()
-	if(IS_CLOCK(user))
-		. += span_brass("It looks like it can be placed on a wall.")
+	AddElement(/datum/element/clockwork_description, clockwork_desc)
 
 //Wall item (either spawned by a wallframe or directly)
 /obj/structure/destructible/clockwork/trap
