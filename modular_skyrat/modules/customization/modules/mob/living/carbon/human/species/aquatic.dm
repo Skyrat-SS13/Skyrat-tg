@@ -27,10 +27,6 @@
 		"legs" = "Normal Legs",
 		"wings" = "None"
 	)
-	attack_verb = "slash"
-	attack_effect = ATTACK_EFFECT_CLAW
-	attack_sound = 'sound/weapons/slash.ogg'
-	miss_sound = 'sound/weapons/slashmiss.ogg'
 	payday_modifier = 0.75
 	liked_food = SEAFOOD | MEAT | FRUIT | GORE
 	disliked_food = CLOTH | GROSS

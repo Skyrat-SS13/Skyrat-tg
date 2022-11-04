@@ -24,10 +24,6 @@
 		"ears" = ACC_RANDOM,
 		"legs" = "Normal Legs"
 	)
-	attack_verb = "slash"
-	attack_effect = ATTACK_EFFECT_CLAW
-	attack_sound = 'sound/weapons/slash.ogg'
-	miss_sound = 'sound/weapons/slashmiss.ogg'
 	payday_modifier = 0.75
 	liked_food = SEAFOOD | RAW
 	disliked_food = CLOTH | DAIRY

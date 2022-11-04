@@ -26,10 +26,6 @@
 		"body_markings" = ACC_RANDOM,
 		"legs" = "Normal Legs"
 	)
-	attack_verb = "slash"
-	attack_effect = ATTACK_EFFECT_CLAW
-	attack_sound = 'sound/weapons/slash.ogg'
-	miss_sound = 'sound/weapons/slashmiss.ogg'
 	disliked_food = GRAIN | DAIRY | CLOTH | GROSS
 	liked_food = GORE | MEAT | SEAFOOD | NUTS
 	toxic_food = TOXIC

@@ -42,8 +42,6 @@
 	brutemod = 2
 	burnmod = 2
 	stunmod = 1.25 //multiplier for stun durations
-	punchdamagelow = 1 //lowest possible punch damage. if this is set to 0, punches will always miss
-	punchdamagehigh = 5 //highest possible punch damage
 	bodytemp_normal = T20C
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	bodypart_overrides = list(
@@ -95,32 +93,38 @@
 	if (head?.type != part_default_head)
 		qdel(head)
 		var/obj/item/bodypart/limb = new part_default_head
-		limb.replace_limb(src,TRUE)
+		limb.replace_limb(src, TRUE)
+
 	var/obj/item/bodypart/chest = get_bodypart(BODY_ZONE_CHEST)
 	if (chest?.type != part_default_chest)
 		qdel(chest)
 		var/obj/item/bodypart/limb = new part_default_chest
-		limb.replace_limb(src,TRUE)
-	var/obj/item/bodypart/arm/left = get_bodypart(BODY_ZONE_L_ARM)
-	if (l_arm?.type != part_default_l_arm)
-		qdel(l_arm)
+		limb.replace_limb(src, TRUE)
+
+	var/obj/item/bodypart/arm/left/left_arm = get_bodypart(BODY_ZONE_L_ARM)
+	if (left_arm?.type != part_default_l_arm)
+		qdel(left_arm)
 		var/obj/item/bodypart/limb = new part_default_l_arm
-		limb.replace_limb(src,TRUE)
-	var/obj/item/bodypart/arm/right = get_bodypart(BODY_ZONE_R_ARM)
-	if (r_arm?.type != part_default_r_arm)
-		qdel(r_arm)
+		limb.replace_limb(src, TRUE)
+
+	var/obj/item/bodypart/arm/right/right_arm = get_bodypart(BODY_ZONE_R_ARM)
+	if (right_arm?.type != part_default_r_arm)
+		qdel(right_arm)
 		var/obj/item/bodypart/limb = new part_default_r_arm
-		limb.replace_limb(src,TRUE)
-	var/obj/item/bodypart/leg/left = get_bodypart(BODY_ZONE_L_LEG)
-	if (l_leg?.type != part_default_l_leg)
-		qdel(l_leg)
+		limb.replace_limb(src, TRUE)
+
+	var/obj/item/bodypart/leg/left/left_leg = get_bodypart(BODY_ZONE_L_LEG)
+	if (left_leg?.type != part_default_l_leg)
+		qdel(left_leg)
 		var/obj/item/bodypart/limb = new part_default_l_leg
-		limb.replace_limb(src,TRUE)
-	var/obj/item/bodypart/leg/right = get_bodypart(BODY_ZONE_R_LEG)
-	if (r_leg?.type != part_default_r_leg)
-		qdel(r_leg)
+		limb.replace_limb(src, TRUE)
+
+	var/obj/item/bodypart/leg/right/right_leg = get_bodypart(BODY_ZONE_R_LEG)
+	if (right_leg?.type != part_default_r_leg)
+		qdel(right_leg)
 		var/obj/item/bodypart/limb = new part_default_r_leg
-		limb.replace_limb(src,TRUE)
+		limb.replace_limb(src, TRUE)
+
 
 /datum/species/ghoul/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	..()

@@ -29,10 +29,6 @@
 		"taur" = "None"
 	)
 	external_organs = list()
-	attack_verb = "slash"
-	attack_effect = ATTACK_EFFECT_CLAW
-	attack_sound = 'sound/weapons/slash.ogg'
-	miss_sound = 'sound/weapons/slashmiss.ogg'
 	liked_food = MEAT
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
