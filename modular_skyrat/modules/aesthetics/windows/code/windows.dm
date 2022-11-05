@@ -72,6 +72,6 @@
 
 /// Adds a map spawner in-line with the normal ones to reduce mapping annoyances
 /obj/effect/spawner/structure/window/reinforced/polarized
-	name = "reinforced window spawner"
+	name = "reinforced polarized window spawner"
 	icon_state = "rwindow_spawner"
 	spawn_list = list(/obj/structure/grille, /obj/structure/window/reinforced/fulltile/polarized)
