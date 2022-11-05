@@ -1,6 +1,5 @@
 /*
-*	Use this file to add
-*	Modular ERT datums
+*	Use this file to override TG ERT datums
 */
 
 /datum/ert/asset_protection
