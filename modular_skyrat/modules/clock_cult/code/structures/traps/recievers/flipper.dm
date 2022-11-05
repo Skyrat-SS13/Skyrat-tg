@@ -1,3 +1,6 @@
+#define FLIP_DISTANCE 6
+#define FLIP_SPEED 3
+
 /obj/item/clockwork/trap_placer/flipper
 	name = "flipper"
 	desc = "A steam powered rotating floor panel. When input is received it will fling anyone on top of it."
@@ -35,7 +38,7 @@
 		if(movable_atom.anchored)
 			continue
 
-		movable_atom.throw_at(get_edge_target_turf(src, dir), 6, 3)
+		movable_atom.throw_at(get_edge_target_turf(src, dir), FLIP_DISTANCE, FLIP_SPEED)
 
 /obj/structure/destructible/clockwork/trap/flipper/proc/cooldown_done()
 	visible_message(span_brass("[src] whirrs with a loud *CLANK* as it resets."))
@@ -49,3 +52,6 @@
 
 	var/obj/structure/destructible/clockwork/trap/flipper/flipper_parent = parent
 	flipper_parent.flip()
+
+#undef FLIP_DISTANCE
+#undef FLIP_SPEED

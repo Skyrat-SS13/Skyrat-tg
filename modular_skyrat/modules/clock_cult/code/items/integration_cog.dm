@@ -8,6 +8,7 @@
 	clockwork_desc = "A sharp cog that can cut through and be inserted into APCs to extract power for your machinery."
 	// Integration cogs aren't strong or rare enough to warrant the shock-on-pickup element
 
+
 /obj/item/clockwork/integration_cog/attack_atom(atom/attacked_atom, mob/living/user, params)
 	if(!(IS_CLOCK(user)) || !istype(attacked_atom, /obj/machinery/power/apc))
 		return ..()
@@ -49,15 +50,18 @@
 		for(var/obj/item/clockwork/clockwork_slab/slab as anything in GLOB.clockwork_slabs)
 			slab.update_integration_cogs()
 
+
 /obj/machinery/power/apc
 	/// If this APC has given a reward for being coggered before
 	var/clock_cog_rewarded = FALSE
 	/// Reference to the cog inside
 	var/integration_cog = null
 
+
 /obj/machinery/power/apc/Destroy()
 	QDEL_NULL(integration_cog)
 	return ..()
+
 
 /obj/machinery/power/apc/examine(mob/user)
 	. = ..()
@@ -65,6 +69,7 @@
 		var/mob/living/living_user = user
 		if(integration_cog || (living_user.has_status_effect(/datum/status_effect/hallucination) && prob(HALLUCINATION_COG_CHANCE)))
 			. += span_brass("A small cogwheel is inside of it.")
+
 
 /obj/machinery/power/apc/crowbar_act(mob/user, obj/item/crowbar)
 	if(!opened || !integration_cog)

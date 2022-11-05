@@ -1,4 +1,5 @@
 #define VISOR_MOUNT_DAMAGE 20
+#define VISOR_MOUNT_SLEEP_TIME 5 SECONDS
 
 /obj/item/clothing/suit/clockwork
 	name = "bronze armor"
@@ -13,9 +14,11 @@
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	allowed = list(/obj/item/clockwork, /obj/item/stack/tile/bronze, /obj/item/gun/ballistic/bow/clockwork, /obj/item/gun/ballistic/rifle/lionhunter/clockwork)
 
+
 /obj/item/clothing/suit/clockwork/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/clockwork_pickup, ~(ITEM_SLOT_HANDS))
+
 
 /obj/item/clothing/suit/clockwork/speed
 	name = "robes of divinity"
@@ -25,6 +28,7 @@
 	supports_variations_flags = NONE //undo once halc gets me it
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	armor = list(MELEE = 40, BULLET = 40, LASER = 10, ENERGY = -20, BOMB = 60, BIO = 100, FIRE = 100, ACID = 100)
+
 
 /obj/item/clothing/suit/clockwork/cloak
 	name = "shrouding cloak"
@@ -42,9 +46,12 @@
 	/// Who is wearing this
 	var/mob/living/wearer
 
+
 /obj/item/clothing/suit/clockwork/cloak/Destroy()
 	wearer = null
+
 	return ..()
+
 
 /obj/item/clothing/suit/clockwork/cloak/attack_self(mob/user, modifiers)
 	. = ..()
@@ -52,6 +59,7 @@
 		disable()
 	else
 		enable()
+
 
 /obj/item/clothing/suit/clockwork/cloak/equipped(mob/user, slot)
 	. = ..()
@@ -63,13 +71,16 @@
 	if(shroud_active)
 		enable()
 
+
 /obj/item/clothing/suit/clockwork/cloak/dropped(mob/user)
-	..()
+	. = ..()
 	if(!shroud_active)
 		disable()
 
 	wearer = null
 
+
+/// Apply the effects to the wearer, making them pretty hard to see
 /obj/item/clothing/suit/clockwork/cloak/proc/enable()
 	shroud_active = TRUE
 	previous_alpha = wearer.alpha
@@ -77,12 +88,15 @@
 	apply_wibbly_filters(wearer)
 	ADD_TRAIT(wearer, TRAIT_UNKNOWN, CLOTHING_TRAIT)
 
+
+/// Un-apply the effects of the cloak, returning the wearer to normal
 /obj/item/clothing/suit/clockwork/cloak/proc/disable()
 	shroud_active = FALSE
 	do_sparks(3, FALSE, wearer)
 	remove_wibbly_filters(wearer)
 	animate(wearer, alpha = previous_alpha, time = 3 SECONDS)
 	REMOVE_TRAIT(wearer, TRAIT_UNKNOWN, CLOTHING_TRAIT)
+
 
 /obj/item/clothing/glasses/clockwork
 	name = "base clock glasses"
@@ -92,10 +106,12 @@
 	/// What additional desc to show if the person examining is a clock cultist
 	var/clock_desc = ""
 
+
 /obj/item/clothing/glasses/clockwork/examine(mob/user)
 	. = ..()
 	AddElement(/datum/element/clockwork_description, clock_desc)
 	AddElement(/datum/element/clockwork_pickup, ~(ITEM_SLOT_HANDS))
+
 
 // Thermal goggles, no protection from eye stuff
 /obj/item/clothing/glasses/clockwork/wraith_spectacles
@@ -117,19 +133,23 @@
 	/// Are the glasses enabled (flipped down)
 	var/enabled = TRUE
 
+
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/Initialize(mapload)
 	. = ..()
 	update_icon_state()
+
 
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	wearer = null
 	return ..()
 
+
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/update_icon_state()
 	. = ..()
 	icon_state = "[initial(icon_state)]_[!enabled]"
 	worn_icon_state = "[initial(icon_state)]_[!enabled]"
+
 
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/attack_self(mob/user, modifiers)
 	. = ..()
@@ -142,6 +162,7 @@
 		var/mob/living/carbon/carbon_user = user
 		carbon_user.head_update(src, forced = TRUE)
 
+
 /// "enable" the spectacles, flipping them down and applying their effects, calling on_toggle_eyes() if someone is wearing them
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/proc/enable()
 	enabled = TRUE
@@ -152,6 +173,7 @@
 		on_toggle_eyes()
 
 	update_icon_state()
+
 
 /// "disable" the spectacles, flipping them up and removing all applied effects
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/proc/disable()
@@ -164,12 +186,14 @@
 
 	update_icon_state()
 
+
 /// The start of application of the actual effects, including eye damage
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/proc/on_toggle_eyes()
 	wearer.update_sight()
 	applied_eye_damage = 0
 	START_PROCESSING(SSobj, src)
 	to_chat(wearer, span_clockgray("You suddenly see so much more, but your eyes begin to falter..."))
+
 
 /// The stopping of effect application, will remove the wearer's eye damage a minute after
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/proc/de_toggle_eyes()
@@ -179,6 +203,7 @@
 	applied_eye_damage = 0
 	STOP_PROCESSING(SSobj, src)
 
+
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/equipped(mob/living/user, slot)
 	. = ..()
 	if(!isliving(user))
@@ -187,6 +212,7 @@
 	if((slot == ITEM_SLOT_EYES) && enabled)
 		wearer = user
 		on_toggle_eyes()
+
 
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/process(delta_time)
 	. = ..()
@@ -198,12 +224,14 @@
 	wearer.adjustOrganLoss(ORGAN_SLOT_EYES, 0.5 * delta_time, 70)
 	applied_eye_damage = min(applied_eye_damage + 0.5 * delta_time, 70)
 
+
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/dropped(mob/user)
 	. = ..()
 	if(wearer && (IS_CLOCK(user)) && enabled)
 		de_toggle_eyes()
 
 	wearer = null
+
 
 // Flash protected and generally info-granting with huds
 /obj/item/clothing/glasses/clockwork/judicial_visor
@@ -222,18 +250,22 @@
 	/// Should the user take damage from wearing this the first time? (Doesn't affect nodrop)
 	var/damaging = TRUE
 
+
 /obj/item/clothing/glasses/clockwork/judicial_visor/Initialize(mapload)
 	. = ..()
 	update_icon_state()
+
 
 /obj/item/clothing/glasses/clockwork/judicial_visor/Destroy()
 	wearer = null
 	return ..()
 
+
 /obj/item/clothing/glasses/clockwork/judicial_visor/update_icon_state()
 	. = ..()
 	icon_state = "[initial(icon_state)]_[enabled]"
 	worn_icon_state = "[initial(icon_state)]_[enabled]"
+
 
 /obj/item/clothing/glasses/clockwork/judicial_visor/attack_self(mob/user, modifiers)
 	. = ..()
@@ -246,6 +278,7 @@
 		var/mob/living/carbon/carbon_user = user
 		carbon_user.head_update(src, forced = TRUE)
 
+
 /// Turn on the visor, calling apply_to_wearer() and changing the icon state
 /obj/item/clothing/glasses/clockwork/judicial_visor/proc/enable()
 	enabled = TRUE
@@ -254,6 +287,7 @@
 
 	update_icon_state()
 
+
 /// Turn off the visor, calling unapply_to_wearer() and changing the icon state
 /obj/item/clothing/glasses/clockwork/judicial_visor/proc/disable()
 	enabled = FALSE
@@ -261,6 +295,7 @@
 		unapply_to_wearer()
 
 	update_icon_state()
+
 
 /// Applies the actual effects to the wearer, giving them flash protection and a variety of sight/info bonuses
 /obj/item/clothing/glasses/clockwork/judicial_visor/proc/apply_to_wearer()
@@ -278,6 +313,7 @@
 	ADD_TRAIT(wearer, TRAIT_KNOW_ENGI_WIRES, CLOTHING_TRAIT)
 	ADD_TRAIT(wearer, TRAIT_KNOW_CYBORG_WIRES, CLOTHING_TRAIT)
 
+
 /// Removes the effects to the wearer, removing the flash protection and similar
 /obj/item/clothing/glasses/clockwork/judicial_visor/proc/unapply_to_wearer()
 	REMOVE_TRAIT(wearer, TRAIT_NOFLASH, CLOTHING_TRAIT)
@@ -294,6 +330,7 @@
 	REMOVE_TRAIT(wearer, TRAIT_KNOW_ENGI_WIRES, CLOTHING_TRAIT)
 	REMOVE_TRAIT(wearer, TRAIT_KNOW_CYBORG_WIRES, CLOTHING_TRAIT)
 
+
 /obj/item/clothing/glasses/clockwork/judicial_visor/equipped(mob/living/user, slot)
 	. = ..()
 	if(!isliving(user))
@@ -308,8 +345,9 @@
 		to_chat(wearer, span_userdanger("You feel the cogs on the visor clamp to the sides of your head, drilling in!"))
 		if(damaging)
 			wearer.emote("scream")
-			wearer.Sleeping(5 SECONDS)
+			wearer.Sleeping(VISOR_MOUNT_SLEEP_TIME)
 			wearer.apply_damage(VISOR_MOUNT_DAMAGE, BRUTE, BODY_ZONE_HEAD)
+
 
 /obj/item/clothing/glasses/clockwork/judicial_visor/dropped(mob/user)
 	..()
@@ -320,6 +358,7 @@
 
 /obj/item/clothing/glasses/clockwork/judicial_visor/no_damage //ideally use this for loadouts n such
 	damaging = FALSE
+
 
 /obj/item/clothing/head/helmet/clockwork
 	name = "brass helmet"
@@ -337,6 +376,7 @@
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_HEAD))
 	AddElement(/datum/element/clockwork_pickup, ~(ITEM_SLOT_HANDS))
 
+
 /obj/item/clothing/shoes/clockwork
 	name = "brass treads"
 	desc = "A strong pair of brass boots worn by the soldiers of the Ratvarian armies."
@@ -347,6 +387,7 @@
 /obj/item/clothing/shoes/clockwork/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/clockwork_pickup, ~(ITEM_SLOT_HANDS))
+
 
 /obj/item/clothing/gloves/clockwork
 	name = "brass gauntlets"
@@ -368,3 +409,4 @@
 	AddElement(/datum/element/clockwork_pickup, ~(ITEM_SLOT_HANDS))
 
 #undef VISOR_MOUNT_DAMAGE
+#undef VISOR_MOUNT_SLEEP_TIME

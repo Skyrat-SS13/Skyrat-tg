@@ -1,5 +1,6 @@
 #define HAMMER_FLING_DISTANCE 2
 #define HAMMER_THROW_FLING_DISTANCE 3
+#define BRASS_RIFLE_REDUCED_DELAY 0.2 SECONDS
 
 /obj/item/clockwork/weapon
 	name = "Clockwork Weapon"
@@ -20,6 +21,7 @@
 	/// Typecache of valid turfs to have the weapon's special effect on
 	var/static/list/effect_turf_typecache = typecacheof(list(/turf/open/floor/bronze))
 
+
 /obj/item/clockwork/weapon/attack(mob/living/target, mob/living/user)
 	. = ..()
 	var/turf/gotten_turf = get_turf(user)
@@ -29,6 +31,7 @@
 
 	if(!QDELETED(target) && target.stat != DEAD && !(IS_CLOCK(target)) && !target.can_block_magic(MAGIC_RESISTANCE_HOLY))
 		hit_effect(target, user)
+
 
 /obj/item/clockwork/weapon/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	. = ..()
@@ -43,9 +46,11 @@
 	if(!target.can_block_magic(MAGIC_RESISTANCE_HOLY) && !(IS_CLOCK(target)))
 		hit_effect(target, throwingdatum.thrower, TRUE)
 
+
 /// What occurs to non-holy people when attacked from brass tiles
 /obj/item/clockwork/weapon/proc/hit_effect(mob/living/target, mob/living/user, thrown = FALSE)
 	return
+
 
 /obj/item/clockwork/weapon/brass_spear
 	name = "brass spear"
@@ -55,6 +60,7 @@
 	throwforce = 36
 	force = 25
 	armour_penetration = 24
+
 
 /obj/item/clockwork/weapon/brass_battlehammer
 	name = "brass battle-hammer"
@@ -68,6 +74,7 @@
 	sharpness = 0
 	hitsound = 'sound/weapons/smash.ogg'
 
+
 /obj/item/clockwork/weapon/brass_battlehammer/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/two_handed, \
@@ -75,12 +82,14 @@
 	force_wielded=28, \
 	)
 
+
 /obj/item/clockwork/weapon/brass_battlehammer/hit_effect(mob/living/target, mob/living/user, thrown = FALSE)
 	if(!thrown && !HAS_TRAIT(src, TRAIT_WIELDED))
 		return
 
 	var/atom/throw_target = get_edge_target_turf(target, get_dir(src, get_step_away(target, src)))
 	target.throw_at(throw_target, thrown ? HAMMER_THROW_FLING_DISTANCE : HAMMER_FLING_DISTANCE, 4)
+
 
 /obj/item/clockwork/weapon/brass_sword
 	name = "brass longsword"
@@ -94,6 +103,7 @@
 	clockwork_desc = "Enemies and mechs will be struck with a powerful electromagnetic pulse while you are on bronze tiles, with a cooldown."
 	COOLDOWN_DECLARE(emp_cooldown)
 
+
 /obj/item/clockwork/weapon/brass_sword/hit_effect(mob/living/target, mob/living/user, thrown)
 	if(!COOLDOWN_FINISHED(src, emp_cooldown))
 		return
@@ -104,6 +114,7 @@
 	addtimer(CALLBACK(src, .proc/send_message, user), 30 SECONDS)
 	to_chat(user, span_brass("You strike [target] with an electromagnetic pulse!"))
 	playsound(user, 'sound/magic/lightningshock.ogg', 40)
+
 
 /obj/item/clockwork/weapon/brass_sword/attack_atom(obj/attacked_obj, mob/living/user, params)
 	. = ..()
@@ -123,8 +134,10 @@
 	to_chat(user, span_brass("You strike [target] with an electromagnetic pulse!"))
 	playsound(user, 'sound/magic/lightningshock.ogg', 40)
 
+
 /obj/item/clockwork/weapon/brass_sword/proc/send_message(mob/living/target)
 	to_chat(target, span_brass("[src] glows, indicating the next attack will disrupt electronics of the target."))
+
 
 /obj/item/gun/ballistic/bow/clockwork
 	name = "brass bow"
@@ -175,22 +188,28 @@
 	playsound(src, 'modular_skyrat/modules/tribal_extended/sound/sound_weapons_bowdraw.ogg', 75, 0) //gets way too high pitched if the freq varies
 	update_icon()
 
+
+/// Recharges a bolt, done after the delay in shoot_live_shot
 /obj/item/gun/ballistic/bow/clockwork/proc/recharge_bolt()
 	var/obj/item/ammo_casing/caseless/arrow/clockbolt/bolt = new
 	magazine.give_round(bolt)
 	chambered = bolt
 	update_icon()
 
+
 /obj/item/gun/ballistic/bow/clockwork/attackby(obj/item/I, mob/user, params)
 	return
+
 
 /obj/item/gun/ballistic/bow/clockwork/update_icon_state()
 	. = ..()
 	icon_state = "[initial(icon_state)]_[!!chambered]_[drawn]"
 
+
 /obj/item/ammo_box/magazine/internal/bow/clockwork
 	ammo_type = /obj/item/ammo_casing/caseless/arrow/clockbolt
 	start_empty = FALSE
+
 
 /obj/item/ammo_casing/caseless/arrow/clockbolt
 	name = "energy bolt"
@@ -199,12 +218,14 @@
 	icon_state = "arrow_redlight"
 	projectile_type = /obj/projectile/energy/clockbolt
 
+
 /obj/projectile/energy/clockbolt
 	name = "energy bolt"
 	icon = 'modular_skyrat/modules/clock_cult/icons/projectiles.dmi'
 	icon_state = "arrow_energy"
 	damage = 24
 	damage_type = BURN
+
 
 /obj/item/gun/ballistic/rifle/lionhunter/clockwork
 	name = "brass rifle"
@@ -220,26 +241,30 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/lionhunter/clockwork
 	fire_sound = 'sound/weapons/gun/sniper/shot.ogg'
 
+
 /obj/item/gun/ballistic/rifle/lionhunter/clockwork/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/clockwork_description, "The speed of which you aim at far targets while standing on brass will be massively increased.")
+
 
 /obj/item/ammo_box/magazine/internal/boltaction/lionhunter/clockwork
 	name = "brass rifle internal magazine"
 	ammo_type = /obj/item/ammo_casing/a762/lionhunter/clock
 
+
 /obj/item/ammo_casing/a762/lionhunter/clock
 	projectile_type = /obj/projectile/bullet/a762/lionhunter/clock
 	min_distance = 3
+
 
 /obj/item/ammo_casing/a762/lionhunter/clock/fire_casing(atom/target, mob/living/user, params, distro, quiet, zone_override, spread, atom/fired_from)
 	var/obj/item/gun/ballistic/fired_gun = fired_from
 
 	if(istype(get_turf(user), /turf/open/floor/bronze) && istype(fired_gun, /obj/item/gun/ballistic/rifle/lionhunter/clockwork))
-		var/obj/item/ammo_casing/a762/lionhunter/clock/chambered_case = src
-		chambered_case.seconds_per_distance = 0.2 SECONDS
+		seconds_per_distance = BRASS_RIFLE_REDUCED_DELAY
 
 	return ..()
+
 
 /obj/projectile/bullet/a762/lionhunter/clock
 	name = "brass 7.62 bullet"
@@ -247,6 +272,7 @@
 	// If fired without aiming or at someone too close, it will do much less
 	damage = 45
 	stamina = 45
+
 
 /obj/item/ammo_box/a762/lionhunter/clock
 	name = "stripper clip (7.62mm brass)"
@@ -257,13 +283,7 @@
 	max_ammo = 3
 	multiple_sprites = AMMO_BOX_PER_BULLET
 
-/obj/item/storage/bag/ammo/clock
-
-/obj/item/storage/bag/ammo/clock/PopulateContents()
-	var/static/items_inside = list(
-		/obj/item/ammo_box/a762/lionhunter/clock = 3)
-
-	generate_items_inside(items_inside, src)
 
 #undef HAMMER_FLING_DISTANCE
 #undef HAMMER_THROW_FLING_DISTANCE
+#undef BRASS_RIFLE_REDUCED_DELAY

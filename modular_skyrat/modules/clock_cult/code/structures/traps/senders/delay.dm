@@ -29,6 +29,7 @@
 	/// If the trap is active or not
 	var/active = FALSE
 
+
 /datum/component/clockwork_trap/delay/trigger()
 	if(!..() || active)
 		return
@@ -39,6 +40,8 @@
 	var/obj/structure/destructible/clockwork/trap/delay/parent_delayer = parent
 	addtimer(CALLBACK(src, .proc/finish), parent_delayer.delay_time)
 
+
+/// Finish the delay, trigger any traps
 /datum/component/clockwork_trap/delay/proc/finish()
 	active = FALSE
 	trigger_connected()

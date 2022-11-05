@@ -8,10 +8,12 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 	/// Extra info to give clock cultists, added via the /datum/element/clockwork_description element
 	var/clockwork_desc = ""
 
+
 /obj/item/clockwork/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/clockwork_description, clockwork_desc)
 	AddElement(/datum/element/clockwork_pickup)
+
 
 /obj/item/clockwork/clockwork_slab
 	name = "Clockwork Slab"
@@ -55,6 +57,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 	//For trap linkage
 	var/datum/component/clockwork_trap/buffer
 
+
 /obj/item/clockwork/clockwork_slab/Initialize(mapload)
 	. = ..()
 	if(!length(GLOB.clock_scriptures))
@@ -71,6 +74,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 		var/datum/scripture/default_script = new script
 		bind_spell(null, default_script, pos++)
 
+
 /obj/item/clockwork/clockwork_slab/Destroy()
 	GLOB.clockwork_slabs -= src
 	invoking_scripture = null
@@ -78,8 +82,9 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 	buffer = null
 	return ..()
 
+
 /obj/item/clockwork/clockwork_slab/dropped(mob/user)
-	..()
+	. = ..()
 	//Clear quickbinds
 	for(var/datum/action/innate/clockcult/quick_bind/script in quick_bound_scriptures)
 		script.Remove(user)
@@ -90,8 +95,9 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 	if(buffer)
 		buffer = null
 
+
 /obj/item/clockwork/clockwork_slab/pickup(mob/user)
-	..()
+	. = ..()
 	if(!(IS_CLOCK(user)))
 		return
 
@@ -101,11 +107,13 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 
 	user.update_action_buttons()
 
+
 /obj/item/clockwork/clockwork_slab/update_overlays()
 	. = ..()
 	cut_overlays()
 	if(charge_overlay)
 		add_overlay(charge_overlay)
+
 
 /// Calculate the differential of old cogs to new cogs
 /obj/item/clockwork/clockwork_slab/proc/update_integration_cogs()
@@ -114,6 +122,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 		var/difference = GLOB.clock_installed_cogs - calculated_cogs
 		calculated_cogs += difference
 		cogs += difference
+
 
 /// Handle binding a spell to a quickbind slot
 /obj/item/clockwork/clockwork_slab/proc/bind_spell(mob/living/binder, datum/scripture/spell, position = 1)
@@ -182,6 +191,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 		data["scriptures"] += list(scripture_data)
 
 	return data
+
 
 /obj/item/clockwork/clockwork_slab/ui_act(action, params)
 	. = ..()
