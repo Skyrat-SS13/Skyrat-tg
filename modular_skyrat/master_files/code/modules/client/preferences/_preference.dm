@@ -180,7 +180,7 @@
  * * preferences - The relevant character preferences.
  */
 /datum/preference/choiced/mutant_choice/proc/is_visible(mob/living/carbon/human/target, datum/preferences/preferences)
-	if(!is_part_enabled(type_to_check))
+	if(!is_part_enabled(preferences))
 		return FALSE
 
 	if(preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts))
