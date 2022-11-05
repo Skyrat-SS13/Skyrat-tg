@@ -176,13 +176,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			//
 			if(bodypart_accessory.use_custom_mod_icon)
 				if(bodypart_accessory.color_src == USE_MATRIXED_COLORS && color_layer_list)
-					var/list/mutable_appearance/MOD_overlay_matrix = list(
-					mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]_primary"),
-					mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]_secondary"),
-					mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]_tertiary"))
 					var/mutable_appearance/MOD_overlay_result = mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), layer = -layer)
-					for(var/to_merge as anything in MOD_overlay_matrix)
-						MOD_overlay_result.add_overlay(to_merge)
+					for(var/number as anything in color_layer_list)
+						MOD_overlay_result.add_overlay(mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]_[color_layer_list[number]]"))
 					if(bodypart_accessory.center)
 						MOD_overlay_result = center_image(MOD_overlay_result, x_shift, bodypart_accessory.dimension_y)
 					standing += MOD_overlay_result

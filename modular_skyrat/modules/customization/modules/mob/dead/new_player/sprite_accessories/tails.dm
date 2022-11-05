@@ -11,6 +11,10 @@
 	var/fluffy = FALSE
 
 /datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/HD)
+	var/list/used_in_turf = list("tail")
+	if(wearer.owned_turf?.name in used_in_turf)
+	// Emote exception
+		return TRUE
 	if(wearer.w_uniform)
 	//	Can hide if wearing uniform
 		if(key in wearer.try_hide_mutant_parts)
@@ -22,11 +26,6 @@
 		//	Hide accessory if flagged to do so
 			else if(wearer.wear_suit.flags_inv & HIDETAIL)
 				return TRUE
-	else
-		var/list/used_in_turf = list("tail")
-		if(wearer.owned_turf?.name in used_in_turf)
-		// Emote exception
-			return TRUE
 	return FALSE
 
 /obj/item/organ/external/tail/can_draw_on_bodypart(mob/living/carbon/human/wearer)
