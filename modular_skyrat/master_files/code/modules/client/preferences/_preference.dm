@@ -173,21 +173,23 @@
 /**
  * Actually rendered. Slimmed down version of the logic in is_available() that actually works when spawning or drawing the character.
  *
- * Returns if feature is visible.
+ * Returns TRUE if feature is visible.
  *
  * Arguments:
  * * target - The character this is being applied to.
  * * preferences - The relevant character preferences.
  */
 /datum/preference/choiced/mutant_choice/proc/is_visible(mob/living/carbon/human/target, datum/preferences/preferences)
-	var/species_type = preferences.read_preference(/datum/preference/choiced/species)
-	var/datum/species/species = new species_type
+	if(!is_part_enabled(type_to_check))
+		return FALSE
 
-	var/species_available = (savefile_key in species.get_features())
+	if(preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts))
+		return TRUE
 
-	var/overriding = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
-	var/part_enabled = is_part_enabled(preferences)
-	return (species_available || overriding) && part_enabled
+	var/datum/species/species = preferences.read_preference(/datum/preference/choiced/species)
+	species = GLOB.species_list[initial(species.id)]
+
+	return (savefile_key in species.get_features())
 
 /datum/preference/choiced/mutant_choice/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	if(!preferences || !is_visible(target, preferences))

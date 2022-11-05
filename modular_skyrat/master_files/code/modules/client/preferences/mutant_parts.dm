@@ -422,21 +422,11 @@
 	savefile_key = "ipc_screen_color"
 	relevant_mutant_bodypart = MUTANT_SYNTH_SCREEN
 
-/datum/preference/toggle/ipc_screen_emissive
+/datum/preference/toggle/emissive/ipc_screen_emissive
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_screen_emissive"
 	relevant_mutant_bodypart = MUTANT_SYNTH_SCREEN
-
-/datum/preference/toggle/ipc_screen_emissive/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	if (type == abstract_type)
-		return ..()
-
-	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
-		target.dna.mutant_bodyparts[relevant_mutant_bodypart] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
-
-	if(value)
-		target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_EMISSIVE_LIST] = list(TRUE, TRUE, TRUE)
 
 /// IPC Antennas
 
@@ -553,20 +543,23 @@
 /**
  * Actually applied. Slimmed down version of the logic in is_available() that actually works when spawning or drawing the character.
  *
- * Returns if feature is visible.
+ * Returns TRUE if feature is visible.
  *
  * Arguments:
  * * target - The character this is being applied to.
  * * preferences - The relevant character preferences.
  */
 /datum/preference/numeric/hair_opacity/proc/is_visible(mob/living/carbon/human/target, datum/preferences/preferences)
-	var/species_type = preferences.read_preference(/datum/preference/choiced/species)
-	var/datum/species/species = new species_type
+	if(!preferences.read_preference(/datum/preference/toggle/mutant_toggle/hair_opacity))
+		return FALSE
 
-	var/species_available = (savefile_key in species.get_features())
+	if(preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts))
+		return TRUE
 
-	var/overriding = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
-	return (species_available || overriding) && preferences.read_preference(/datum/preference/toggle/mutant_toggle/hair_opacity)
+	var/datum/species/species = preferences.read_preference(/datum/preference/choiced/species)
+	species = GLOB.species_list[initial(species.id)]
+
+	return (savefile_key in species.get_features())
 
 /datum/preference/numeric/hair_opacity/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	if(!preferences || !is_visible(target, preferences))
