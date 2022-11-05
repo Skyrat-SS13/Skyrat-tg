@@ -6,8 +6,8 @@
 	icon = 'icons/obj/module.dmi'
 	icon_state = "std_mod"
 	inhand_icon_state = "electronic"
-	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
+	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	desc = "An AI Module for programming laws to an AI."
 	flags_1 = CONDUCT_1
 	force = 5
@@ -168,17 +168,16 @@
 	color = "#00FF00"
 
 /obj/effect/spawner/round_default_module/Initialize(mapload)
-	..()
+	. = ..()
 	var/datum/ai_laws/default_laws = get_round_default_lawset()
 	//try to spawn a law board, since they may have special functionality (asimov setting subjects)
 	for(var/obj/item/ai_module/core/full/potential_lawboard as anything in subtypesof(/obj/item/ai_module/core/full))
 		if(initial(potential_lawboard.law_id) != initial(default_laws.id))
 			continue
 		potential_lawboard = new potential_lawboard(loc)
-		return INITIALIZE_HINT_QDEL
+		return
 	//spawn the fallback instead
 	new /obj/item/ai_module/core/round_default_fallback(loc)
-	return INITIALIZE_HINT_QDEL
 
 ///When the default lawset spawner cannot find a module object to spawn, it will spawn this, and this sets itself to the round default.
 ///This is so /datum/lawsets can be picked even if they have no module for themselves.

@@ -77,7 +77,6 @@
 	starting_author = "VeyMedical"
 	starting_title = "Medigun Operating Manual"
 	page_link = "Guide_to_Mediguns"
-	skyrat_wiki = TRUE
 
 // Medigun Gunsets
 /obj/item/storage/briefcase/medicalgunset/

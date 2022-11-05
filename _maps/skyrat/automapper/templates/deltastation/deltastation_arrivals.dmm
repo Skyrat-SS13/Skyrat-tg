@@ -543,6 +543,9 @@
 /obj/effect/turf_decal/delivery,
 /obj/effect/landmark/start/hangover,
 /obj/machinery/light/directional/east,
+/obj/machinery/status_display/shuttle/directional/east{
+	shuttle_id = "arrivals_shuttle"
+	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "xm" = (
@@ -624,7 +627,7 @@
 /obj/docking_port/stationary{
 	dwidth = 3;
 	height = 5;
-	id = "commonmining_home";
+	shuttle_id = "commonmining_home";
 	name = "SS13: Common Mining Dock";
 	roundstart_template = /datum/map_template/shuttle/mining_common/meta;
 	width = 7
@@ -873,7 +876,7 @@
 /obj/docking_port/stationary{
 	dwidth = 1;
 	height = 13;
-	id = "arrivals_stationary";
+	shuttle_id = "arrivals_stationary";
 	name = "arrivals";
 	roundstart_template = null;
 	width = 5
@@ -1030,7 +1033,7 @@
 /area/station/hallway/secondary/entry)
 "Uy" = (
 /obj/docking_port/stationary/random{
-	id = "pod_lavaland";
+	shuttle_id = "pod_lavaland";
 	name = "lavaland"
 	},
 /turf/open/space/basic,
@@ -1041,7 +1044,7 @@
 	dir = 8;
 	dwidth = 8;
 	height = 11;
-	id = "ferry_home";
+	shuttle_id = "ferry_home";
 	name = "Port Bay 2";
 	width = 20
 	},
@@ -1121,6 +1124,9 @@
 /obj/structure/table/glass,
 /obj/effect/landmark/start/hangover,
 /obj/machinery/light/directional/west,
+/obj/machinery/status_display/shuttle/directional/west{
+	shuttle_id = "arrivals_shuttle"
+	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "Yd" = (

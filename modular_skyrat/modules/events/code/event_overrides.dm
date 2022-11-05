@@ -4,6 +4,15 @@
  * Events can be overriden for a multitude of reasons however each override will have a reason.
  */
 
+/**
+ * Event subsystem
+ *
+ * Overriden min and max start times:
+ * To accomodate for much longer rounds.
+ */
+/datum/controller/subsystem/events
+	frequency_lower = 15 MINUTES
+	frequency_upper = 25 MINUTES
 
 /**
  * Brain truama
@@ -17,15 +26,11 @@
 /**
  * Blob
  *
- * Min players:
- * Raised to accomodate for lower population not being able to cope with the blob.
- *
- * Weight:
- * Decreased to accomodate for the blob being a bit more difficult.
+ * Removed for:
+ * Already being handled by dynamic, it shouldn't be spawning from two places at once.
  */
 /datum/round_event_control/blob
-	min_players = 60
-	weight = 3
+	max_occurrences = 0
 
 /**
  * Radiation storm
@@ -34,6 +39,15 @@
  * Unintutivie design and incompatibility with this server.
  */
 /datum/round_event_control/radiation_storm
+	max_occurrences = 0
+
+/**
+ * Spacevines
+ *
+ * Removed:
+ * Temporarily until balancing can be redone for them, as there's a rather serious issue.
+ */
+/datum/round_event_control/spacevine
 	max_occurrences = 0
 
 /**
@@ -102,3 +116,22 @@
  */
 /datum/round_event_control/space_dragon
 	max_occurrences = 0
+
+/**
+ * Xenomorphs
+ *
+ * Removed:
+ * Xenomorphs should be controlled through dynamic spawns
+ */
+/datum/round_event_control/alien_infestation
+	max_occurrences = 0
+	
+/**
+ * Paperwork Error
+ *
+ * Removed:
+ * Paperwork Error is too intrusive and should be staff-only.
+ */
+/datum/round_event_control/bureaucratic_error
+    max_occurrences = 0
+    

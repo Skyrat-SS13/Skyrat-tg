@@ -254,15 +254,11 @@
 /// Called after the config has been loaded or reloaded.
 /datum/controller/subsystem/proc/OnConfigLoad()
 
-//used to initialize the subsystem AFTER the map has loaded
-/datum/controller/subsystem/Initialize(start_timeofday)
-	initialized = TRUE
-	SEND_SIGNAL(src, COMSIG_SUBSYSTEM_POST_INITIALIZE, start_timeofday)
-	var/time = (REALTIMEOFDAY - start_timeofday) / 10
-	var/msg = "Initialized [name] subsystem within [time] second[time == 1 ? "" : "s"]!"
-	add_startup_message(msg) //SKYRAT EDIT CHANGE
-	log_world(msg)
-	return time
+/**
+ * Used to initialize the subsystem. This is expected to be overriden by subtypes.
+ */
+/datum/controller/subsystem/Initialize()
+	return SS_INIT_NONE
 
 /datum/controller/subsystem/stat_entry(msg)
 	if(can_fire && !(SS_NO_FIRE & flags) && init_stage <= Master.init_stage_completed)

@@ -16,6 +16,7 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "paper"
 	inhand_icon_state = "paper"
+	worn_icon = 'icons/mob/clothing/head/costume.dmi'
 	worn_icon_state = "paper"
 	custom_fire_overlay = "paper_onfire_overlay"
 	throwforce = 0
@@ -648,6 +649,13 @@
 		total_length += length(entry.raw_text)
 
 	return total_length
+
+/// Get a single string representing the text on a page
+/obj/item/paper/proc/get_raw_text()
+	var/paper_contents = ""
+	for(var/datum/paper_input/line as anything in raw_text_inputs)
+		paper_contents += line.raw_text + "/"
+	return paper_contents
 
 /// A single instance of a saved raw input onto paper.
 /datum/paper_input

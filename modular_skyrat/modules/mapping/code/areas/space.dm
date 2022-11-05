@@ -14,7 +14,7 @@
 /area/ruin/space/has_grav/powered/skyrat/smugglies
 	name = "Suspicious Cargo Installation"
 
-/area/ruin/space/has_grav/powered/skyrat/polychromicfacility
+/area/ruin/space/has_grav/powered/skyrat/clothing_facility
 	name = "Abandoned Research Station"
 
 /area/ruin/space/has_grav/powered/skyrat/luna
@@ -22,6 +22,9 @@
 
 /area/ruin/space/has_grav/powered/skyrat/blackmarket
 	name = "Shady Market"
+
+/area/ruin/space/has_grav/powered/skyrat/scrapheap
+	name = "Scrap Heap"
 
 ///Interdyne, Forward Operating Base
 /area/ruin/space/has_grav/skyrat/interdynefob
@@ -285,3 +288,36 @@
 	name = "\improper P-T Solar Array"
 	icon_state = "solarsS"
 	has_gravity = STANDARD_GRAVITY
+
+// Cargodise Lost Freighter
+
+/area/ruin/space/has_grav/cargodise_freighter/primaryhall
+	name = "Freighter Primary Hall"
+
+/area/ruin/space/has_grav/cargodise_freighter/trauma
+	name = "Freighter Trauma Center"
+	icon_state = "medbay1"
+
+/area/ruin/space/has_grav/cargodise_freighter/utility
+	name = "Freighter Utility Room"
+	icon_state = "engine"
+
+/area/ruin/space/has_grav/cargodise_freighter/kitchen
+	name = "Freighter Kitchen"
+	icon_state = "cafeteria"
+
+/area/ruin/space/has_grav/cargodise_freighter/bridge
+	name = "Freighter Bridge"
+	icon_state = "bridge"
+
+/area/ruin/space/has_grav/cargodise_freighter/cargo
+	name = "Freighter Cargo Bay"
+	icon_state = "cargo"
+
+/area/ruin/space/has_grav/cargodise_freighter/mining
+	name = "Freighter Mining Office"
+	icon_state = "cargo"
+
+/area/ruin/space/has_grav/cargodise_freighter/quarters
+	name = "Freighter Crew Quarters"
+	icon_state = "crew_quarters"

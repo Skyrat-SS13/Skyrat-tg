@@ -80,7 +80,7 @@
 	dir = 8;
 	dwidth = 1;
 	height = 13;
-	id = "arrivals_stationary";
+	shuttle_id = "arrivals_stationary";
 	name = "arrivals";
 	width = 5
 	},
@@ -122,7 +122,7 @@
 	dir = 8;
 	dwidth = 8;
 	height = 11;
-	id = "ferry_home";
+	shuttle_id = "ferry_home";
 	name = "Port Bay 2";
 	width = 20
 	},
@@ -580,6 +580,9 @@
 	dir = 8
 	},
 /obj/machinery/camera/directional/south,
+/obj/machinery/status_display/shuttle/directional/south{
+	shuttle_id = "arrivals_shuttle"
+	},
 /turf/open/floor/iron/white/corner,
 /area/station/hallway/secondary/entry)
 "EN" = (
@@ -654,7 +657,7 @@
 	dir = 2;
 	dwidth = 11;
 	height = 22;
-	id = "whiteship_home";
+	shuttle_id = "whiteship_home";
 	name = "SS13: Auxiliary Dock, Station-Port";
 	width = 35
 	},
@@ -663,7 +666,7 @@
 "HQ" = (
 /obj/docking_port/stationary/random/icemoon{
 	dir = 8;
-	id = "pod_lavaland";
+	shuttle_id = "pod_lavaland";
 	name = "lavaland"
 	},
 /turf/open/misc/asteroid/snow/icemoon,
@@ -969,6 +972,9 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/status_display/shuttle/directional/south{
+	shuttle_id = "arrivals_shuttle"
+	},
 /turf/open/floor/iron/white/corner,
 /area/station/hallway/secondary/entry)
 "Wb" = (

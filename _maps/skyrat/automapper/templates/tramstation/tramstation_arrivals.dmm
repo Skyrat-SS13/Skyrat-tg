@@ -265,7 +265,7 @@
 /obj/effect/turf_decal/sand/plating,
 /obj/effect/turf_decal/stripes/asteroid/box,
 /turf/open/floor/plating/airless,
-/area/mine/explored)
+/area/lavaland/surface)
 "jc" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
@@ -487,7 +487,7 @@
 	dir = 2;
 	dwidth = 11;
 	height = 22;
-	id = "whiteship_home";
+	shuttle_id = "whiteship_home";
 	name = "SS13: Auxiliary Dock, Station-Port";
 	width = 35
 	},
@@ -495,7 +495,7 @@
 /area/space)
 "qd" = (
 /turf/open/misc/asteroid/airless,
-/area/mine/explored)
+/area/lavaland/surface)
 "qj" = (
 /obj/effect/turf_decal/trimline/neutral/filled/corner{
 	dir = 4
@@ -978,7 +978,7 @@
 	dir = 2;
 	dwidth = 8;
 	height = 11;
-	id = "ferry_home";
+	shuttle_id = "ferry_home";
 	name = "Port Bay 2";
 	width = 20
 	},
@@ -1113,16 +1113,9 @@
 	dir = 8
 	},
 /obj/machinery/light/directional/west,
-/turf/open/floor/iron,
-/area/station/hallway/secondary/entry)
-"RE" = (
-/obj/effect/turf_decal/tile{
-	dir = 1
+/obj/machinery/status_display/shuttle/directional/west{
+	shuttle_id = "arrivals_shuttle"
 	},
-/obj/effect/turf_decal/tile/yellow{
-	dir = 4
-	},
-/obj/structure/sign/warning/docking/directional/north,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "RG" = (
@@ -1296,6 +1289,9 @@
 	c_tag = "Arrivals - Landing Bay Lounge"
 	},
 /obj/structure/window/reinforced/spawner,
+/obj/machinery/status_display/shuttle/directional/west{
+	shuttle_id = "arrivals_shuttle"
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/hallway/secondary/entry)
 "WL" = (
@@ -1322,20 +1318,32 @@
 	dir = 8;
 	dwidth = 1;
 	height = 13;
-	id = "arrivals_stationary";
+	shuttle_id = "arrivals_stationary";
 	name = "arrivals";
 	width = 5
 	},
 /turf/open/space/openspace,
 /area/space)
-"Zx" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/space)
 "ZA" = (
 /turf/open/floor/iron/stairs{
 	dir = 4
 	},
+/area/station/hallway/secondary/entry)
+"ZE" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile{
+	dir = 8
+	},
+/obj/machinery/status_display/shuttle/directional/south{
+	shuttle_id = "arrivals_shuttle"
+	},
+/turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "ZO" = (
 /obj/machinery/door/firedoor,
@@ -2310,9 +2318,9 @@ BJ
 yC
 QC
 Ul
-ip
+ZE
 QE
-RE
+Tt
 IN
 La
 La
@@ -2477,7 +2485,7 @@ Zo
 BJ
 BJ
 BJ
-Zx
+yC
 Tb
 af
 Bf

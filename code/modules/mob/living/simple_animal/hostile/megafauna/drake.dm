@@ -42,7 +42,7 @@
 	attack_verb_simple = "chomp"
 	attack_sound = 'sound/magic/demon_attack1.ogg'
 	attack_vis_effect = ATTACK_EFFECT_BITE
-	icon = 'icons/mob/lavaland/64x64megafauna.dmi'
+	icon = 'icons/mob/simple/lavaland/64x64megafauna.dmi'
 	icon_state = "dragon"
 	icon_living = "dragon"
 	icon_dead = "dragon_dead"
@@ -133,15 +133,14 @@
 			fire_cone.StartCooldown(0)
 			fire_cone.Trigger(target = target)
 			meteors.StartCooldown(0)
-			INVOKE_ASYNC(meteors, /datum/action/proc/Trigger, target)
+			meteors.Trigger(target = target)
 			return
 	else if(prob(10+anger_modifier) && DRAKE_ENRAGED)
 		mass_fire.Trigger(target = target)
 		return
-	if(fire_cone.Trigger(target = target))
-		if(prob(50))
-			meteors.StartCooldown(0)
-			meteors.Trigger(target = target)
+	if(fire_cone.Trigger(target = target) && prob(50))
+		meteors.StartCooldown(0)
+		meteors.Trigger(target = target)
 
 /mob/living/simple_animal/hostile/megafauna/dragon/proc/start_attack(mob/living/owner, datum/action/cooldown/activated)
 	SIGNAL_HANDLER
@@ -205,7 +204,7 @@
 				continue
 			hit_list += M
 			M.take_damage(45, BRUTE, MELEE, 1)
-		sleep(1.5)
+		sleep(0.15 SECONDS)
 
 /mob/living/simple_animal/hostile/megafauna/dragon/ex_act(severity, target)
 	if(severity <= EXPLODE_LIGHT)

@@ -4,11 +4,8 @@
 	id = SPECIES_GOLEM
 	species_traits = list(NOBLOOD,NOTRANSSTING, MUTCOLORS,NO_UNDERWEAR, NO_DNA_COPY)
 	inherent_traits = list(
-		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP,
 		TRAIT_CHUNKYFINGERS,
 		TRAIT_GENELESS,
-		TRAIT_LITERATE,
 		TRAIT_NOBREATH,
 		TRAIT_NODISMEMBER,
 		TRAIT_NOFIRE,
@@ -33,7 +30,6 @@
 	nojumpsuit = 1
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC
 	sexes = 1
-	damage_overlay_type = ""
 	meat = /obj/item/food/meat/slab/human/mutant/golem
 	species_language_holder = /datum/language_holder/golem
 	// To prevent golem subtypes from overwhelming the odds when random species
@@ -114,11 +110,8 @@
 	//Can burn and takes damage from heat
 	//no RESISTHEAT, NOFIRE
 	inherent_traits = list(
-		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP,
 		TRAIT_CHUNKYFINGERS,
 		TRAIT_GENELESS,
-		TRAIT_LITERATE,
 		TRAIT_NOBREATH,
 		TRAIT_NODISMEMBER,
 		TRAIT_PIERCEIMMUNE,
@@ -325,11 +318,8 @@
 	meat = /obj/item/stack/sheet/mineral/wood
 	//Can burn and take damage from heat
 	inherent_traits = list(
-		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP,
 		TRAIT_CHUNKYFINGERS,
 		TRAIT_GENELESS,
-		TRAIT_LITERATE,
 		TRAIT_NOBREATH,
 		TRAIT_NODISMEMBER,
 		TRAIT_PIERCEIMMUNE,
@@ -594,12 +584,9 @@
 	fixed_mut_color = "#ffff00"
 	say_mod = "honks"
 	inherent_traits = list(
-		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP,
 		TRAIT_CHUNKYFINGERS,
 		TRAIT_CLUMSY,
 		TRAIT_GENELESS,
-		TRAIT_LITERATE,
 		TRAIT_NOBREATH,
 		TRAIT_NODISMEMBER,
 		TRAIT_NOFIRE,
@@ -703,11 +690,8 @@
 	info_text = "As a <span class='danger'>Runic Golem</span>, you possess eldritch powers granted by the Elder Goddess Nar'Sie."
 	species_traits = list(NOBLOOD,NO_UNDERWEAR,NOEYESPRITES) //no mutcolors
 	inherent_traits = list(
-		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP,
 		TRAIT_CHUNKYFINGERS,
 		TRAIT_GENELESS,
-		TRAIT_LITERATE,
 		TRAIT_NOBREATH,
 		TRAIT_NODISMEMBER,
 		TRAIT_NOFIRE,
@@ -786,7 +770,7 @@
 	id = SPECIES_GOLEM_CLOTH
 	sexes = FALSE
 	info_text = "As a <span class='danger'>Cloth Golem</span>, you are able to reform yourself after death, provided your remains aren't burned or destroyed. You are, of course, very flammable. \
-	Being made of cloth, your body is magic resistant and faster than that of other golems, but weaker and less resilient."
+	Being made of cloth, your body is immune to spirits of the damned and runic golems. You are faster than that of other golems, but weaker and less resilient."
 	species_traits = list(NOBLOOD,NO_UNDERWEAR) //no mutcolors, and can burn
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
@@ -829,7 +813,7 @@
 	..()
 
 /datum/species/golem/cloth/check_roundstart_eligible()
-	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
+	if(check_holidays(HALLOWEEN))
 		return TRUE
 	return ..()
 
@@ -942,7 +926,7 @@
 	new /obj/effect/temp_visual/mummy_animation(get_turf(src))
 	if(cloth_golem.revive(full_heal = TRUE, admin_revive = TRUE))
 		cloth_golem.grab_ghost() //won't pull if it's a suicide
-	sleep(20)
+	sleep(2 SECONDS)
 	cloth_golem.forceMove(get_turf(src))
 	cloth_golem.visible_message(span_danger("[src] rises and reforms into [cloth_golem]!"),span_userdanger("You reform into yourself!"))
 	cloth_golem = null
@@ -1033,21 +1017,21 @@
 			H.show_message(span_narsiesmall("You cringe with pain as your body rings around you!"), MSG_AUDIBLE)
 			H.playsound_local(H, 'sound/effects/gong.ogg', 100, TRUE)
 			H.soundbang_act(2, 0, 100, 1)
-			H.adjust_timed_status_effect(14 SECONDS, /datum/status_effect/jitter)
+			H.adjust_jitter(14 SECONDS)
 		var/distance = max(0,get_dist(get_turf(H),get_turf(M)))
 		switch(distance)
 			if(0 to 1)
 				M.show_message(span_narsiesmall("GONG!"), MSG_AUDIBLE)
 				M.playsound_local(H, 'sound/effects/gong.ogg', 100, TRUE)
 				M.soundbang_act(1, 0, 30, 3)
-				M.adjust_timed_status_effect(10 SECONDS, /datum/status_effect/confusion)
-				M.adjust_timed_status_effect(8 SECONDS, /datum/status_effect/jitter)
+				M.adjust_confusion(10 SECONDS)
+				M.adjust_jitter(8 SECONDS)
 				M.add_mood_event("gonged", /datum/mood_event/loud_gong)
 			if(2 to 3)
 				M.show_message(span_cult("GONG!"), MSG_AUDIBLE)
 				M.playsound_local(H, 'sound/effects/gong.ogg', 75, TRUE)
 				M.soundbang_act(1, 0, 15, 2)
-				M.adjust_timed_status_effect(6 SECONDS, /datum/status_effect/jitter)
+				M.adjust_jitter(6 SECONDS)
 				M.add_mood_event("gonged", /datum/mood_event/loud_gong)
 			else
 				M.show_message(span_warning("GONG!"), MSG_AUDIBLE)
@@ -1060,7 +1044,7 @@
 	prefix = "Cardboard"
 	special_names = list("Box")
 	info_text = "As a <span class='danger'>Cardboard Golem</span>, you aren't very strong, but you are a bit quicker and can easily create more brethren by using cardboard on yourself."
-	species_traits = list(NOBLOOD,NO_UNDERWEAR,NOEYESPRITES)
+	species_traits = list(NOBLOOD,NO_UNDERWEAR,NOEYESPRITES,NO_TONGUE)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
@@ -1287,7 +1271,7 @@
 		playsound(get_turf(owner),'sound/magic/RATTLEMEBONES2.ogg', 100)
 		if(ishuman(owner))
 			var/mob/living/carbon/human/H = owner
-			var/mutable_appearance/badtime = mutable_appearance('icons/mob/human_parts.dmi', "b_golem_eyes", -FIRE_LAYER-0.5)
+			var/mutable_appearance/badtime = mutable_appearance('icons/mob/species/human/bodyparts.dmi', "b_golem_eyes", -FIRE_LAYER-0.5)
 			badtime.appearance_flags = RESET_COLOR
 			H.overlays_standing[FIRE_LAYER+0.5] = badtime
 			H.apply_overlay(FIRE_LAYER+0.5)

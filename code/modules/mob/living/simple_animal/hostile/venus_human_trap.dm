@@ -145,7 +145,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 0
 	/// copied over from the code from eyeballs (the mob) to make it easier for venus human traps to see in kudzu that doesn't have the transparency mutation
-	sight = SEE_SELF|SEE_MOBS|SEE_OBJS|SEE_TURFS
+	sight = SEE_SELF|SEE_MOBS|SEE_OBJS|SEE_TURFS|SEE_BLACKNESS
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	faction = list("hostile","vines","plants")
 	initial_language_holder = /datum/language_holder/venus
@@ -174,7 +174,7 @@
 	if(isliving(target))
 		var/mob/living/L = target
 		if(L.stat != DEAD)
-			adjustHealth(-maxHealth * 0.1)
+			adjustHealth(-maxHealth * 0.05) //SKYRAT EDIT: Nerfs vines (from 0.1 to 0.05-- lets see with less health)
 
 /mob/living/simple_animal/hostile/venus_human_trap/OpenFire(atom/the_target)
 	for(var/datum/beam/B in vines)
@@ -233,18 +233,5 @@
 	SIGNAL_HANDLER
 
 	vines -= vine
-
-//SKYRAT EDIT ADDITION
-/mob/living/simple_animal/hostile/venus_human_trap/death(gibbed)
-	for(var/i in vines)
-		qdel(i)
-	return ..()
-
-/mob/living/simple_animal/hostile/venus_human_trap/start_pulling(atom/movable/AM, state, force, supress_message)
-	if(isliving(AM))
-		to_chat(src, span_boldwarning("You cannot drag living things!"))
-		return
-	return ..()
-//SKYRAT EDIT END
 
 #undef FINAL_BUD_GROWTH_ICON

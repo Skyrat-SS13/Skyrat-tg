@@ -19,13 +19,15 @@
 	var/recharge_locked = FALSE
 	var/obj/item/stock_parts/micro_laser/diode //used for upgrading!
 
-
 /obj/item/laser_pointer/red
 	pointer_icon_state = "red_laser"
+
 /obj/item/laser_pointer/green
 	pointer_icon_state = "green_laser"
+
 /obj/item/laser_pointer/blue
 	pointer_icon_state = "blue_laser"
+
 /obj/item/laser_pointer/purple
 	pointer_icon_state = "purple_laser"
 
@@ -137,8 +139,7 @@
 
 	//catpeople
 	for(var/mob/living/carbon/human/H in view(1,targloc))
-		//if(!isfelinid(H) || H.incapacitated() || H.is_blind())
-		if(!(isfelinid(H) || HAS_TRAIT(H, TRAIT_FELINE)) || H.incapacitated() || H.is_blind()) //SKYRAT EDIT - FELINE TRAIT
+		if(!isfeline(H) || H.incapacitated() || H.is_blind()) // SKYRAT EDIT - FELINE TRAITS. Was: isfelinid(H)
 			continue
 		if(user.body_position == STANDING_UP)
 			H.setDir(get_dir(H,targloc)) // kitty always looks at the light

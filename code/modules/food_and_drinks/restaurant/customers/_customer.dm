@@ -33,7 +33,9 @@
 	///Prefix file to uise
 	var/prefix_file = "strings/names/american_prefix.txt"
 	///Base icon for the customer
-	var/base_icon = "amerifat"
+	var/base_icon = 'icons/mob/simple/tourists.dmi'
+	///Base icon state for the customer
+	var/base_icon_state = "amerifat"
 	///Sound to use when this robot type speaks
 	var/speech_sound = 'sound/creatures/tourist/tourist_talk.ogg'
 
@@ -80,6 +82,7 @@
 			/obj/item/food/pancakes = 4,
 			/obj/item/food/eggsausage = 5,
 			/datum/custom_order/icecream = 14,
+			/obj/item/food/danish_hotdog = 3,
 		),
 		VENUE_BAR = list(
 			/datum/reagent/consumable/ethanol/b52 = 6,
@@ -92,7 +95,7 @@
 
 /datum/customer_data/italian
 	prefix_file = "strings/names/italian_prefix.txt"
-	base_icon = "italian"
+	base_icon_state = "italian"
 	clothing_sets = list("italian_pison", "italian_godfather")
 
 	found_seat_lines = list("What a wonderful place to sit.", "I hope they serve it like-a my momma used to make it.")
@@ -120,6 +123,7 @@
 			/obj/item/food/eggplantparm = 3,
 			/obj/item/food/cornuto = 2,
 			/datum/custom_order/icecream = 10,
+			/obj/item/food/salad/greek_salad = 6,
 		),
 		VENUE_BAR = list(
 			/datum/reagent/consumable/ethanol/fanciulli = 5,
@@ -130,13 +134,14 @@
 			/datum/reagent/consumable/ethanol/wine = 3,
 			/datum/reagent/consumable/ethanol/grappa = 3,
 			/datum/reagent/consumable/ethanol/amaretto = 5,
+			/datum/reagent/consumable/cucumberlemonade = 2,
 		),
 	)
 
 
 /datum/customer_data/french
 	prefix_file = "strings/names/french_prefix.txt"
-	base_icon = "french"
+	base_icon_state = "french"
 	clothing_sets = list("french_fit")
 	found_seat_lines = list("Hon hon hon", "It's not the Eiffel tower but it will do.", "Yuck, I guess this will make do.")
 	cant_find_seat_lines = list("Making someone like me stand? How dare you.", "What a filthy lobby!")
@@ -165,6 +170,7 @@
 			/datum/reagent/consumable/ethanol/between_the_sheets = 4,
 			/datum/reagent/consumable/ethanol/beer = 5,
 			/datum/reagent/consumable/ethanol/wine = 5,
+			/datum/reagent/consumable/ethanol/gin_garden = 2,
 		),
 	)
 
@@ -178,7 +184,7 @@
 
 /datum/customer_data/japanese
 	prefix_file = "strings/names/japanese_prefix.txt"
-	base_icon = "japanese"
+	base_icon_state = "japanese"
 	clothing_sets = list("japanese_animes")
 
 	found_seat_lines = list("Konnichiwa!", "Arigato gozaimasuuu~", "I hope there's some beef stroganoff...")
@@ -258,7 +264,7 @@
 
 /datum/customer_data/moth
 	prefix_file = "strings/names/moth_prefix.txt"
-	base_icon = "mothbot"
+	base_icon_state = "mothbot"
 	found_seat_lines = list("Give me your hat!", "Moth?", "Certainly an... interesting venue.")
 	cant_find_seat_lines = list("If I can't find a seat, I'm flappity flapping out of here quick!", "I'm trying to flutter here!")
 	leave_mad_lines = list("I'm telling all my moth friends to never come here!", "Zero star rating, even worse than that time I ate a mothball!","Closing down permanently would still be too good of a fate for this place.")
@@ -305,7 +311,7 @@
 
 	var/datum/sprite_accessory/moth_wings/wings = get_wings(customer)
 
-	var/mutable_appearance/wings_behind = mutable_appearance(icon = 'icons/mob/moth_wings.dmi', icon_state = "m_moth_wings_[wings.icon_state]_BEHIND")
+	var/mutable_appearance/wings_behind = mutable_appearance(icon = 'icons/mob/species/moth/moth_wings.dmi', icon_state = "m_moth_wings_[wings.icon_state]_BEHIND")
 	wings_behind.appearance_flags = RESET_COLOR
 	underlays += wings_behind
 
@@ -316,7 +322,7 @@
 
 	var/datum/sprite_accessory/moth_wings/wings = get_wings(customer)
 
-	var/mutable_appearance/wings_front = mutable_appearance(icon = 'icons/mob/moth_wings.dmi', icon_state = "m_moth_wings_[wings.icon_state]_FRONT")
+	var/mutable_appearance/wings_front = mutable_appearance(icon = 'icons/mob/species/moth/moth_wings.dmi', icon_state = "m_moth_wings_[wings.icon_state]_FRONT")
 	wings_front.appearance_flags = RESET_COLOR
 	overlays += wings_front
 
@@ -327,7 +333,7 @@
 	return overlays
 
 /datum/customer_data/mexican
-	base_icon = "mexican"
+	base_icon_state = "mexican"
 	prefix_file = "strings/names/mexican_prefix.txt"
 	speech_sound = 'sound/creatures/tourist/tourist_talk_mexican.ogg'
 	clothing_sets = list("mexican_poncho")
@@ -367,7 +373,7 @@
 	self_defense_line = "Time for you to find out what kind of robot I am, eh?"
 
 /datum/customer_data/british
-	base_icon = "british"
+	base_icon_state = "british"
 	prefix_file = "strings/names/british_prefix.txt"
 	speech_sound = 'sound/creatures/tourist/tourist_talk_british.ogg'
 
@@ -422,7 +428,7 @@
 
 ///MALFUNCTIONING - only shows up once per venue, very rare
 /datum/customer_data/malfunction
-	base_icon = "defect"
+	base_icon_state = "defect"
 	prefix_file = "strings/names/malf_prefix.txt"
 	speech_sound = 'sound/effects/clang.ogg'
 	clothing_sets = list("defect_wires", "defect_bad_takes")

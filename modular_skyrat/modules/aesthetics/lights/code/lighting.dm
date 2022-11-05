@@ -29,10 +29,7 @@
 	var/matching = light && BR == light.light_range && PO == light.light_power && CO == light.light_color
 	if(!matching)
 		switchcount++
-		if(rigged)
-			if(status == LIGHT_OK && trigger)
-				explode()
-		else if( prob( min(60, (switchcount**2)*0.01) ) )
+		if( prob( min(60, (switchcount**2)*0.01) ) )
 			if(trigger)
 				burn_out()
 		else
@@ -96,3 +93,14 @@
 /obj/item/light/tube
 	icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting.dmi'
 
+/obj/machinery/light/multitool_act(mob/living/user, obj/item/multitool)
+	if(!constant_flickering)
+		balloon_alert(user, "ballast is already working!")
+		return TOOL_ACT_TOOLTYPE_SUCCESS
+
+	balloon_alert(user, "repairing the ballast...")
+	if(do_after(user, 2 SECONDS, src))
+		stop_flickering()
+		balloon_alert(user, "ballast repaired!")
+		return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ..()

@@ -49,7 +49,7 @@
 	devastation_range, heavy_impact_range, light_impact_range, took, orig_dev_range, orig_heavy_range, orig_light_range)
 	SIGNAL_HANDLER
 	var/turf/wearer_turf = get_turf(mod.wearer)
-	if(wearer_turf.z != epicenter.z)
+	if(!is_valid_z_level(wearer_turf, epicenter))
 		return
 	if(get_dist(epicenter, wearer_turf) > explosion_detection_dist)
 		return
@@ -118,12 +118,12 @@
 	pre_matrix.Scale(4, 0.25)
 	var/matrix/post_matrix = matrix()
 	post_matrix.Scale(0.25, 4)
-	animate(mod.wearer, teleport_time, color = COLOR_CYAN, transform = pre_matrix.Multiply(mod.wearer.transform), easing = EASE_OUT)
+	animate(mod.wearer, teleport_time, color = COLOR_CYAN, transform = pre_matrix.Multiply(mod.wearer.transform), easing = SINE_EASING|EASE_OUT)
 	if(!do_after(mod.wearer, teleport_time, target = mod))
 		balloon_alert(mod.wearer, "interrupted!")
-		animate(mod.wearer, teleport_time*0.1, color = null, transform = post_matrix.Multiply(mod.wearer.transform), easing = EASE_IN)
+		animate(mod.wearer, teleport_time*0.1, color = null, transform = post_matrix.Multiply(mod.wearer.transform), easing = SINE_EASING|EASE_IN)
 		return
-	animate(mod.wearer, teleport_time*0.1, color = null, transform = post_matrix.Multiply(mod.wearer.transform), easing = EASE_IN)
+	animate(mod.wearer, teleport_time*0.1, color = null, transform = post_matrix.Multiply(mod.wearer.transform), easing = SINE_EASING|EASE_IN)
 	if(!do_teleport(mod.wearer, target_turf, asoundin = 'sound/effects/phasein.ogg'))
 		return
 	drain_power(use_power_cost)

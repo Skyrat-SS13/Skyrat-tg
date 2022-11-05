@@ -21,9 +21,9 @@
 	earliest_start = 30 MINUTES
 
 /datum/round_event/cme
-	startWhen = 6
-	endWhen	= 66
-	announceWhen = 10
+	start_when = 6
+	end_when	= 66
+	announce_when = 10
 	var/cme_intensity
 	var/cme_frequency_lower
 	var/cme_frequency_upper
@@ -81,28 +81,28 @@
 		if(CME_UNKNOWN)
 			cme_frequency_lower = CME_MODERATE_FREQUENCY_LOWER
 			cme_frequency_upper = CME_MODERATE_FREQUENCY_UPPER
-			startWhen = rand(CME_MODERATE_START_LOWER, CME_MODERATE_START_UPPER)
-			endWhen = startWhen + rand(CME_MINIMAL_END, CME_EXTREME_END)
+			start_when = rand(CME_MODERATE_START_LOWER, CME_MODERATE_START_UPPER)
+			end_when = start_when + rand(CME_MINIMAL_END, CME_EXTREME_END)
 		if(CME_MINIMAL)
 			cme_frequency_lower = CME_MINIMAL_FREQUENCY_LOWER
 			cme_frequency_upper = CME_MINIMAL_FREQUENCY_UPPER
-			startWhen = rand(CME_MINIMAL_START_LOWER, CME_MINIMAL_START_UPPER)
-			endWhen = startWhen + CME_MINIMAL_END
+			start_when = rand(CME_MINIMAL_START_LOWER, CME_MINIMAL_START_UPPER)
+			end_when = start_when + CME_MINIMAL_END
 		if(CME_MODERATE)
 			cme_frequency_lower = CME_MODERATE_FREQUENCY_LOWER
 			cme_frequency_upper = CME_MODERATE_FREQUENCY_UPPER
-			startWhen = rand(CME_MODERATE_START_LOWER, CME_MODERATE_START_UPPER)
-			endWhen = startWhen + CME_MODERATE_END
+			start_when = rand(CME_MODERATE_START_LOWER, CME_MODERATE_START_UPPER)
+			end_when = start_when + CME_MODERATE_END
 		if(CME_EXTREME)
 			cme_frequency_lower = CME_EXTREME_FREQUENCY_LOWER
 			cme_frequency_upper = CME_EXTREME_FREQUENCY_UPPER
-			startWhen = rand(CME_EXTREME_START_LOWER, CME_EXTREME_START_UPPER)
-			endWhen = startWhen + CME_EXTREME_END
+			start_when = rand(CME_EXTREME_START_LOWER, CME_EXTREME_START_UPPER)
+			end_when = start_when + CME_EXTREME_END
 		if(CME_ARMAGEDDON)
 			cme_frequency_lower = CME_ARMAGEDDON_FREQUENCY_LOWER
 			cme_frequency_upper = CME_ARMAGEDDON_FREQUENCY_UPPER
-			startWhen = rand(CME_ARMAGEDDON_START_LOWER, CME_ARMAGEDDON_START_UPPER)
-			endWhen = startWhen + CME_ARMAGEDDON_END
+			start_when = rand(CME_ARMAGEDDON_START_LOWER, CME_ARMAGEDDON_START_UPPER)
+			end_when = start_when + CME_ARMAGEDDON_END
 		else
 			message_admins("CME setup failure, aborting.")
 			kill()
@@ -120,25 +120,25 @@
 	else
 		switch(cme_intensity)
 			if(CME_UNKNOWN)
-				priority_announce("Coronal mass ejection detected! Expected intensity: UNKNOWN. Impact in: [round((startWhen * SSevents.wait) * 0.1, 0.1)] seconds. \
+				priority_announce("Coronal mass ejection detected! Expected intensity: UNKNOWN. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_MINIMAL)
-				priority_announce("Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) * 0.1, 0.1)] seconds. \
+				priority_announce("Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_MODERATE)
-				priority_announce("Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) * 0.1, 0.1)] seconds. \
+				priority_announce("Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_EXTREME)
 				SSsecurity_level.set_level(SEC_LEVEL_RED)
-				priority_announce("Critical Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) * 0.1, 0.1)] seconds. \
+				priority_announce("Critical Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_ARMAGEDDON)
 				SSsecurity_level.set_level(SEC_LEVEL_GAMMA)
-				priority_announce("Neutron Mass Ejection Detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) * 0.1, 0.1)] seconds. \
+				priority_announce("Neutron Mass Ejection Detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All personnel should proceed to their nearest warpgate for evacuation, the Solar Federation has issued this mandatory alert.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 
 /datum/round_event/cme/tick()
@@ -188,7 +188,6 @@
 	anchored = TRUE
 	opacity = FALSE
 	density = FALSE
-	plane = MASSIVE_OBJ_PLANE
 	plane = ABOVE_LIGHTING_PLANE
 	can_atmos_pass = ATMOS_PASS_DENSITY
 	var/timeleft = CME_MINIMAL_BUBBLE_BURST_TIME

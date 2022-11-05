@@ -739,10 +739,6 @@
 		return
 	for(var/datum/spacevine_mutation/mutation in mutations)
 		mutation.on_cross(src, moving_atom)
-	// Venus Human Traps will heal for 5 percent of their max health
-	if(istype(moving_atom, /mob/living/simple_animal/hostile/venus_human_trap))
-		var/mob/living/simple_animal/hostile/venus_human_trap/healing_trap = moving_atom
-		healing_trap.adjustHealth(-(healing_trap.maxHealth * 0.05))
 
 // ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/structure/spacevine/attack_hand(mob/user, list/modifiers)

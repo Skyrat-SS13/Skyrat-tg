@@ -438,6 +438,7 @@
 
 	context[SCREENTIP_CONTEXT_LMB] = "Show ID"
 	context[SCREENTIP_CONTEXT_RMB] = "Project pay stand"
+	context[SCREENTIP_CONTEXT_ALT_LMB] = "Withdraw credits"
 	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/item/card/id/proc/try_project_paystand(mob/user, turf/target)
@@ -585,7 +586,7 @@
 	if(!cash_money)
 		to_chat(user, span_warning("[money] doesn't seem to be worth anything!"))
 		return
-	registered_account.adjust_money(cash_money)
+	registered_account.adjust_money(cash_money, "System: Deposit")
 	SSblackbox.record_feedback("amount", "credits_inserted", cash_money)
 	log_econ("[cash_money] credits were inserted into [src] owned by [src.registered_name]")
 	if(physical_currency)
@@ -617,7 +618,7 @@
 		total += physical_money.get_item_credit_value()
 		CHECK_TICK
 
-	registered_account.adjust_money(total)
+	registered_account.adjust_money(total, "System: Deposit")
 	SSblackbox.record_feedback("amount", "credits_inserted", total)
 	log_econ("[total] credits were inserted into [src] owned by [src.registered_name]")
 	QDEL_LIST(money)
@@ -628,7 +629,7 @@
 /obj/item/card/id/proc/alt_click_can_use_id(mob/living/user)
 	if(!isliving(user))
 		return
-	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+	if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
 		return
 
 	return TRUE
@@ -675,7 +676,7 @@
 		return
 	if(!alt_click_can_use_id(user))
 		return
-	if(registered_account.adjust_money(-amount_to_remove))
+	if(registered_account.adjust_money(-amount_to_remove, "System: Withdrawal"))
 		var/obj/item/holochip/holochip = new (user.drop_location(), amount_to_remove)
 		user.put_in_hands(holochip)
 		to_chat(user, span_notice("You withdraw [amount_to_remove] credits into a holochip."))
@@ -706,7 +707,7 @@
 			user.playsound_local(get_turf(src), slowbeat, 40, 0, channel = CHANNEL_HEARTBEAT, use_reverb = FALSE)
 			if(isliving(user))
 				var/mob/living/living_user = user
-				living_user.adjust_timed_status_effect(10 SECONDS, /datum/status_effect/jitter)
+				living_user.adjust_jitter(10 SECONDS)
 			addtimer(CALLBACK(src, .proc/drop_card, user), 10 SECONDS)
 	. += span_notice("<i>There's more information below, you can look again to take a closer look...</i>")
 
@@ -928,7 +929,7 @@
 			balloon_alert(user, "recolored")
 		update_icon()
 
-/obj/item/card/id/advanced/proc/update_intern_status(datum/source, mob/user)
+/obj/item/card/id/advanced/proc/update_intern_status(datum/source, mob/user, slot)
 	SIGNAL_HANDLER
 
 	if(!user?.client)
@@ -1244,7 +1245,7 @@
 		to_chat(user, "Restating prisoner ID to default parameters.")
 		return
 	var/choice = tgui_input_number(user, "Sentence time in seconds", "Sentencing")
-	if(!choice || QDELETED(user) || QDELETED(src) || !usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK) || loc != user)
+	if(!choice || QDELETED(user) || QDELETED(src) || !usr.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE) || loc != user)
 		return FALSE
 	time_to_assign = choice
 	to_chat(user, "You set the sentence time to [time_to_assign] seconds.")
@@ -1329,7 +1330,7 @@
 	name = "agent card"
 	desc = "A highly advanced chameleon ID card. Touch this card on another ID card or player to choose which accesses to copy. Has special magnetic properties which force it to the front of wallets."
 	trim = /datum/id_trim/chameleon
-	wildcard_slots = WILDCARD_LIMIT_CHAMELEON
+	wildcard_slots = WILDCARD_LIMIT_CHAMELEON_PLUS // SKYRAT EDIT - Original WILDCARD_LIMIT_CHAMELEON
 
 	/// Have we set a custom name and job assignment, or will we use what we're given when we chameleon change?
 	var/forged = FALSE
@@ -1570,7 +1571,7 @@
 					assignment = target_occupation
 
 				var/new_age = tgui_input_number(user, "Choose the ID's age", "Agent card age", AGE_MIN, AGE_MAX, AGE_MIN)
-				if(QDELETED(user) || QDELETED(src) || !user.canUseTopic(user, BE_CLOSE, NO_DEXTERITY, NO_TK))
+				if(QDELETED(user) || QDELETED(src) || !user.canUseTopic(user, be_close = TRUE, no_dexterity = TRUE, no_tk = TRUE))
 					return
 				if(new_age)
 					registered_age = new_age
@@ -1611,20 +1612,11 @@
 	return ..()
 
 /// A special variant of the classic chameleon ID card which accepts all access.
-//SKYRAT EDIT BEGIN..
-
-#define WILDCARD_LIMIT_CHAMELEON_ADVANCED list( \
-	WILDCARD_NAME_CENTCOM = list(limit = 2, usage = list()), \
-	WILDCARD_NAME_SYNDICATE = list(limit = -1, usage = list()), \
-	WILDCARD_NAME_CAPTAIN = list(limit = -1, usage = list()) \
-)
-
 /obj/item/card/id/advanced/chameleon/black
 	icon_state = "card_black"
 	worn_icon_state = "card_black"
 	assigned_icon_state = "assigned_syndicate"
-	wildcard_slots = WILDCARD_LIMIT_CHAMELEON_ADVANCED
-//SKYRAT EDIT END
+	wildcard_slots = WILDCARD_LIMIT_GOLD
 
 /obj/item/card/id/advanced/engioutpost
 	registered_name = "George 'Plastic' Miller"

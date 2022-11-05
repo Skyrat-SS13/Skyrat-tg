@@ -17,7 +17,6 @@
 	pull_force = INFINITY
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
 	movement_type = PHASING | FLYING
-	plane = MASSIVE_OBJ_PLANE
 	plane = ABOVE_LIGHTING_PLANE
 	light_range = 6
 	light_color = "#ffbf10"
@@ -151,7 +150,7 @@
 	weight = 0
 
 /datum/round_event/icarus_sunbeam
-	announceWhen = 1 // Instant announcement
+	announce_when = 1 // Instant announcement
 
 /datum/round_event/icarus_sunbeam/announce(fake)
 	priority_announce("/// ICARUS SUNBEAM WEAPONS SYSTEM ACTIVATED, USE EXTREME CAUTION! ///", "GoldenEye Defence Network", ANNOUNCER_KLAXON)
