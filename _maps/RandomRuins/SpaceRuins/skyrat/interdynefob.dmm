@@ -6,6 +6,10 @@
 	name = "prisoner item locker";
 	req_access = list("syndicate_leader")
 	},
+/obj/machinery/power/apc/auto_name/directional/west{
+	req_access = list("syndicate")
+	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "ac" = (
@@ -89,11 +93,11 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
 "ao" = (
-/obj/machinery/camera/xray{
-	c_tag = "DS-2 Medical";
-	network = list("fsci")
-	},
 /obj/machinery/stasis,
+/obj/machinery/camera/xray/directional/south{
+	network = list("ds2");
+	c_tag = "DS-2 Medical"
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "at" = (
@@ -137,10 +141,9 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
-/obj/machinery/camera/xray{
-	c_tag = "DS-2 Isolation Cell";
-	network = list("fsc");
-	dir = 9
+/obj/machinery/camera/xray/directional/north{
+	network = list("ds2");
+	c_tag = "DS-2 Isolation Cell"
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
@@ -417,6 +420,11 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/button/door{
+	pixel_y = 23;
+	name = "Curtain Control";
+	id = "DS2cell2"
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "by" = (
@@ -464,11 +472,10 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "bW" = (
-/obj/machinery/porta_turret/syndicate{
-	dir = 10
-	},
-/turf/closed/wall/r_wall/syndicate,
-/area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "bX" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced/survival_pod{
@@ -527,12 +534,11 @@
 /obj/structure/chair{
 	dir = 8
 	},
-/obj/machinery/camera/xray{
-	c_tag = "DS-2 Diner";
-	dir = 1;
-	network = list("fsci")
-	},
 /obj/machinery/airalarm/directional/north,
+/obj/machinery/camera/xray/directional/north{
+	network = list("ds2");
+	c_tag = "DS-2 Diner"
+	},
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "cj" = (
@@ -549,6 +555,9 @@
 	dir = 8
 	},
 /obj/structure/cable,
+/obj/machinery/door/poddoor/preopen{
+	id = "ds2bridge"
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "cn" = (
@@ -627,6 +636,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/blue/line,
+/obj/machinery/duct,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "cy" = (
@@ -749,6 +759,7 @@
 /obj/effect/turf_decal/stripes/blue/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/duct,
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "da" = (
@@ -788,15 +799,18 @@
 /turf/open/floor/iron/white/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "do" = (
-/obj/machinery/conveyor{
-	dir = 8;
-	id = "ds2conveyor"
+/obj/structure/chair/sofa/corp/left{
+	color = "#DE3A3A";
+	dir = 4
 	},
-/obj/machinery/door/poddoor{
-	id = "ds2cargo"
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
 	},
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
+/obj/structure/window/reinforced/survival_pod{
+	dir = 9
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/skyrat/interdynefob/service/dorms)
 "dr" = (
 /obj/structure/cable,
 /obj/machinery/light/cold/directional/west,
@@ -806,9 +820,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/airalarm/directional/west,
-/obj/structure/chair/sofa/bench/right{
-	dir = 4
-	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "ds" = (
@@ -819,15 +830,14 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "dv" = (
-/obj/effect/turf_decal/stripes/red/line,
-/obj/effect/turf_decal/trimline/dark_red/line,
-/obj/effect/turf_decal/trimline/yellow/mid_joiner,
-/obj/structure/marker_beacon/burgundy,
-/obj/effect/turf_decal/siding/wideplating_new/dark{
-	dir = 1
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/obj/structure/curtain/cloth/fancy/mechanical{
+	color = "#555555";
+	icon_state = "bathroom-open";
+	id_tag = "DS2cell2"
 	},
-/turf/open/floor/engine,
-/area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "dy" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
 	dir = 4
@@ -890,10 +900,6 @@
 /turf/open/floor/iron/white/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "dN" = (
-/obj/item/clothing/suit/hooded/wintercoat/engineering,
-/obj/item/clothing/head/soft/sec/syndicate,
-/obj/item/clothing/under/syndicate/skyrat/overalls,
-/obj/item/clothing/under/syndicate/skyrat/overalls/skirt,
 /obj/effect/turf_decal/siding/yellow{
 	dir = 8
 	},
@@ -906,17 +912,9 @@
 /obj/effect/turf_decal/trimline/yellow/line{
 	dir = 4
 	},
-/obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/syndicate,
-/obj/item/clothing/glasses/hud/ar/aviator/meson,
-/obj/item/clothing/suit/hazardvest,
-/obj/item/clothing/accessory/armband/engine{
-	name = "engine technician armband";
-	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to."
-	},
-/obj/structure/closet/secure_closet{
-	icon_state = "eng_secure";
-	name = "engine technician gear locker";
-	req_access = list("syndicate")
+/obj/structure/closet/secure_closet/ds2atmos{
+	anchorable = 0;
+	anchored = 1
 	},
 /turf/open/floor/iron/dark/side{
 	dir = 8
@@ -983,7 +981,7 @@
 	},
 /obj/structure/lattice,
 /turf/template_noop,
-/area/ruin/space/has_grav/skyrat/interdynefob)
+/area/space/nearstation)
 "dZ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -998,7 +996,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating/airless,
-/area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
+/area/space/nearstation)
 "ee" = (
 /obj/item/reagent_containers/condiment/milk,
 /obj/item/reagent_containers/condiment/soymilk,
@@ -1035,14 +1033,14 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/library)
 "em" = (
 /obj/machinery/atmospherics/components/trinary/filter/atmos/o2,
-/turf/open/floor/catwalk_floor,
+/obj/effect/turf_decal/stripes/box,
+/turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "eo" = (
 /obj/machinery/computer/security/telescreen/entertainment/directional/west,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
-/obj/item/storage/backpack/satchel/flat/empty,
 /obj/item/clothing/gloves/ring/silver{
 	desc = "A ring, sized to wrap around a finger. Seems incredibly useless - it's material weak and brittle. Worth thirty credits, though!";
 	name = "engraved ring of healing"
@@ -1076,7 +1074,11 @@
 	dir = 1
 	},
 /obj/structure/canister_frame/machine/finished_canister_frame,
-/turf/open/floor/catwalk_floor,
+/obj/effect/turf_decal/stripes/box,
+/obj/effect/turf_decal/siding/dark/end{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "eA" = (
 /obj/structure/window/reinforced/survival_pod{
@@ -1147,6 +1149,10 @@
 "eO" = (
 /obj/machinery/hydroponics/constructable,
 /obj/machinery/airalarm/directional/east,
+/obj/machinery/camera/xray/directional/east{
+	network = list("ds2");
+	c_tag = "DS-2 Botany"
+	},
 /turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/hydroponics)
 "eP" = (
@@ -1238,6 +1244,7 @@
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 1
 	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "fa" = (
@@ -1415,7 +1422,7 @@
 "fZ" = (
 /obj/machinery/power/shuttle_engine/huge,
 /turf/template_noop,
-/area/ruin/space/has_grav/skyrat/interdynefob)
+/area/space/nearstation)
 "gb" = (
 /obj/machinery/light/warm/directional/east,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -1424,17 +1431,16 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms)
 "gg" = (
-/obj/machinery/camera/xray{
-	c_tag = "DS-2 Engineering Airlock";
-	dir = 1;
-	network = list("fsci")
-	},
 /obj/machinery/light/small/red/directional/east,
 /obj/effect/turf_decal/tile/dark_red/half/contrasted{
 	dir = 8
 	},
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 8
+	},
+/obj/machinery/camera/xray/directional/north{
+	network = list("ds2");
+	c_tag = "DS-2 Engineering Airlock"
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
@@ -1502,7 +1508,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "gv" = (
-/obj/machinery/porta_turret/syndicate{
+/obj/machinery/porta_turret/syndicate/energy{
 	dir = 5
 	},
 /turf/closed/wall/r_wall/syndicate,
@@ -1697,11 +1703,11 @@
 /obj/machinery/atmospherics/pipe/layer_manifold/scrubbers/hidden{
 	dir = 4
 	},
-/turf/open/floor/catwalk_floor,
+/turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "ho" = (
 /obj/machinery/computer/security{
-	network = list("fsci","fsc");
+	network = list("ds2");
 	dir = 4
 	},
 /turf/open/floor/mineral/plastitanium/red,
@@ -1720,6 +1726,7 @@
 	dir = 4
 	},
 /obj/machinery/firealarm/directional/north,
+/obj/machinery/duct,
 /turf/open/floor/iron/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "hs" = (
@@ -1809,7 +1816,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "hG" = (
 /obj/machinery/atmospherics/pipe/layer_manifold/supply/hidden,
-/turf/open/floor/catwalk_floor,
+/turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "hH" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -2115,10 +2122,13 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
-/obj/machinery/camera/xray{
-	c_tag = "DS-2 Brig Storage";
-	network = list("fsc");
-	dir = 8
+/obj/machinery/power/apc/auto_name/directional/west{
+	req_access = list("syndicate")
+	},
+/obj/structure/cable,
+/obj/machinery/camera/xray/directional/west{
+	network = list("ds2");
+	c_tag = "DS-2 Brig Storage"
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
@@ -2282,9 +2292,6 @@
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4
 	},
-/obj/effect/turf_decal/siding/wideplating_new/dark/corner{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/window/reinforced/survival_pod{
 	dir = 6
@@ -2292,6 +2299,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/turf_decal/tile/dark_red/half/contrasted,
+/obj/effect/turf_decal/siding/wideplating_new/dark,
 /turf/open/floor/iron/dark/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "jT" = (
@@ -2443,11 +2452,11 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
 "kO" = (
-/obj/machinery/porta_turret/syndicate{
-	dir = 6
+/obj/machinery/porta_turret/syndicate/energy{
+	dir = 5
 	},
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
-/area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
+/area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "kQ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -2618,10 +2627,6 @@
 /obj/effect/turf_decal/siding/white{
 	dir = 10
 	},
-/obj/structure/shipping_container/donk_co{
-	pixel_x = 15;
-	pixel_y = 15
-	},
 /turf/open/floor/plating/elevatorshaft,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "lJ" = (
@@ -2630,11 +2635,6 @@
 	},
 /obj/structure/table/reinforced/plastitaniumglass,
 /obj/machinery/light/cold/directional/west,
-/obj/machinery/camera/xray{
-	c_tag = "DS-2 Long-Term Brig Access";
-	network = list("fsc");
-	dir = 5
-	},
 /obj/item/clothing/shoes/sneakers/crimson{
 	pixel_y = 4;
 	pixel_x = -4
@@ -2662,13 +2662,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
-/obj/machinery/camera/xray{
-	c_tag = "DS-2 Hangar North";
-	dir = 9;
-	network = list("fsci")
-	},
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 4
+	},
+/obj/machinery/camera/xray/directional/north{
+	network = list("ds2");
+	c_tag = "DS-2 Hangar Airlock"
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
@@ -2724,7 +2723,11 @@
 	dir = 1
 	},
 /obj/machinery/portable_atmospherics/canister,
-/turf/open/floor/catwalk_floor,
+/obj/effect/turf_decal/stripes/box,
+/obj/effect/turf_decal/siding/dark/end{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "mi" = (
 /obj/effect/turf_decal/siding/dark{
@@ -2749,12 +2752,14 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
-/obj/machinery/door/airlock/external/glass,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/fans/tiny,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/airlock/external/glass{
+	hackProof = 1
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "mr" = (
@@ -2823,6 +2828,13 @@
 /obj/structure/table/reinforced/plastitaniumglass,
 /obj/machinery/door/window/survival_pod{
 	req_access = list("syndicate_leader");
+	dir = 4
+	},
+/obj/effect/turf_decal/delivery/red,
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/red/line{
 	dir = 4
 	},
 /turf/open/floor/iron/dark/smooth_large,
@@ -2910,6 +2922,16 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "nn" = (
 /obj/machinery/firealarm/directional/west,
+/obj/structure/chair/sofa/corp/right{
+	color = "#DE3A3A";
+	dir = 4
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 10
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms)
 "ny" = (
@@ -2918,6 +2940,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms/fitness)
 "nz" = (
 /obj/structure/closet/crate/freezer/blood,
+/obj/machinery/duct,
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "nA" = (
@@ -2992,7 +3015,7 @@
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "nO" = (
-/obj/machinery/porta_turret/syndicate{
+/obj/machinery/porta_turret/syndicate/energy{
 	dir = 9
 	},
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
@@ -3091,12 +3114,13 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
 	},
-/obj/effect/turf_decal/tile/dark_red/half/contrasted,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
+/obj/effect/turf_decal/tile/dark_red/half/contrasted,
 /obj/effect/turf_decal/siding/wideplating_new/dark,
+/obj/structure/cable,
 /turf/open/floor/iron/dark/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "ok" = (
@@ -3136,14 +3160,9 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
-"os" = (
-/obj/machinery/power/shuttle_engine/huge,
-/obj/structure/lattice,
-/turf/template_noop,
-/area/ruin/space/has_grav/skyrat/interdynefob)
 "ot" = (
+/obj/structure/closet/crate/freezer/surplus_limbs,
 /obj/machinery/light/cold/directional/east,
-/obj/machinery/iv_drip,
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "ou" = (
@@ -3207,6 +3226,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/eva)
+"oG" = (
+/obj/machinery/porta_turret/syndicate{
+	dir = 5;
+	faction = list("Syndicate","neutral")
+	},
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
 "oK" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
@@ -3296,10 +3322,9 @@
 "oZ" = (
 /obj/machinery/vending/games,
 /obj/machinery/airalarm/directional/west,
-/obj/machinery/camera/xray{
-	c_tag = "DS-2 Lounge";
-	network = list("fsci");
-	dir = 10
+/obj/machinery/camera/xray/directional/west{
+	network = list("ds2");
+	c_tag = "DS-2 Lounge"
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
@@ -3324,9 +3349,6 @@
 /obj/item/clothing/under/syndicate/skyrat/baseball,
 /obj/structure/closet/secure_closet/personal{
 	icon_state = "cabinet"
-	},
-/obj/item/storage/backpack/duffelbag{
-	pixel_y = -4
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms)
@@ -3477,7 +3499,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "pG" = (
 /turf/open/floor/plating/airless,
-/area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
+/area/space/nearstation)
 "pH" = (
 /obj/machinery/computer/security/telescreen/entertainment/directional/west,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -3536,6 +3558,13 @@
 /obj/item/pen{
 	pixel_y = 4
 	},
+/obj/effect/turf_decal/delivery/red,
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 4
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "pW" = (
@@ -3548,8 +3577,10 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "pX" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
-/obj/structure/curtain/cloth{
-	color = "#555555"
+/obj/structure/curtain/cloth/fancy/mechanical{
+	color = "#555555";
+	icon_state = "bathroom-open";
+	id_tag = "DS2cell1"
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
@@ -3664,7 +3695,7 @@
 	},
 /obj/structure/lattice,
 /turf/template_noop,
-/area/ruin/space/has_grav/skyrat/interdynefob)
+/area/space/nearstation)
 "qC" = (
 /obj/machinery/door/airlock/service/glass{
 	name = "Hydroponics"
@@ -3982,9 +4013,11 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
-/obj/machinery/door/airlock/external/glass,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/fans/tiny,
+/obj/machinery/door/airlock/external/glass{
+	hackProof = 1
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "rU" = (
@@ -4050,12 +4083,18 @@
 	},
 /obj/structure/table/reinforced/plastitaniumglass,
 /obj/item/card/id/advanced/prisoner/ds2{
-	pixel_y = 5
+	pixel_y = 5;
+	trim = /datum/id_trim/syndicom/skyrat/ds2/prisoner
 	},
 /obj/item/card/id/advanced/prisoner/ds2{
-	pixel_y = 8
+	pixel_y = 8;
+	trim = /datum/id_trim/syndicom/skyrat/ds2/prisoner
 	},
 /obj/item/restraints/handcuffs,
+/obj/machinery/camera/xray/directional/south{
+	network = list("ds2");
+	c_tag = "DS-2 Long-Term Brig Access"
+	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "sy" = (
@@ -4218,7 +4257,15 @@
 "tA" = (
 /obj/structure/canister_frame/machine/unfinished_canister_frame,
 /obj/machinery/atmospherics/components/binary/pump/on,
-/turf/open/floor/catwalk_floor/iron_dark,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "tC" = (
 /obj/machinery/door/airlock/research{
@@ -4232,11 +4279,14 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "tD" = (
-/obj/machinery/computer/security{
-	dir = 1;
-	network = list("fsci","fsc")
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/obj/machinery/camera/xray/directional/west{
+	network = list("ds2");
+	c_tag = "DS-2 Security Checkpoint"
+	},
+/obj/machinery/computer/crew/syndie{
 	dir = 1
 	},
 /turf/open/floor/mineral/plastitanium/red,
@@ -4333,6 +4383,11 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay/chem)
 "tY" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 4;
+	id = "ds2detective";
+	name = "Interrogation Room Shutters"
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/lawyer)
 "tZ" = (
@@ -4390,8 +4445,11 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/hydroponics)
 "um" = (
-/obj/structure/closet/crate/freezer/surplus_limbs,
-/turf/open/floor/iron/showroomfloor,
+/obj/structure/reagent_dispensers/plumbed,
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 10
+	},
+/turf/open/floor/iron/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "uo" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -4402,7 +4460,7 @@
 /obj/machinery/power/shuttle_engine/large,
 /obj/structure/lattice,
 /turf/template_noop,
-/area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
+/area/space/nearstation)
 "uA" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -4493,6 +4551,9 @@
 "va" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /obj/structure/cable,
+/obj/machinery/door/poddoor/preopen{
+	id = "ds2bridge"
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "vc" = (
@@ -4711,7 +4772,7 @@
 /turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "vS" = (
-/obj/machinery/porta_turret/syndicate,
+/obj/machinery/porta_turret/syndicate/energy,
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
 "vT" = (
@@ -4868,7 +4929,8 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
 	},
-/obj/effect/turf_decal/siding/wideplating_new/dark/corner,
+/obj/effect/turf_decal/tile/dark_red/half/contrasted,
+/obj/effect/turf_decal/siding/wideplating_new/dark,
 /turf/open/floor/iron/dark/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "wV" = (
@@ -4913,6 +4975,10 @@
 /obj/item/toy/figure/syndie{
 	pixel_x = 10;
 	pixel_y = -3
+	},
+/obj/machinery/camera/xray/directional/south{
+	network = list("ds2");
+	c_tag = "DS-2 Hangar South"
 	},
 /turf/open/floor/plating/elevatorshaft,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
@@ -5169,6 +5235,10 @@
 "yP" = (
 /obj/structure/chair,
 /obj/machinery/firealarm/directional/west,
+/obj/machinery/camera/directional/west{
+	network = list("ds2");
+	c_tag = "DS2 Dormitories"
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "yR" = (
@@ -5205,7 +5275,8 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
 "yV" = (
 /obj/machinery/atmospherics/components/trinary/filter/atmos/n2,
-/turf/open/floor/catwalk_floor,
+/obj/effect/turf_decal/stripes/box,
+/turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "yX" = (
 /obj/effect/turf_decal/stripes/blue/line{
@@ -5274,10 +5345,6 @@
 	dir = 4
 	},
 /obj/machinery/light/cold/directional/west,
-/obj/machinery/power/apc/auto_name/directional/west{
-	req_access = list("syndicate")
-	},
-/obj/structure/cable,
 /obj/machinery/recharger,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
@@ -5301,21 +5368,23 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "zt" = (
-/obj/structure/table,
-/obj/item/storage/box/medipens{
-	pixel_x = 3;
-	pixel_y = 5
-	},
-/obj/item/storage/box/rxglasses{
-	pixel_y = 3;
-	pixel_x = -6
+/obj/structure/table/glass,
+/obj/item/clothing/neck/stethoscope{
+	pixel_x = 12;
+	pixel_y = 4
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "zx" = (
 /obj/item/stack/sheet/iron/five,
 /obj/machinery/atmospherics/components/binary/pump/on,
-/turf/open/floor/catwalk_floor/iron_dark,
+/obj/effect/turf_decal/stripes/end{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/dark/end{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "zy" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
@@ -5367,7 +5436,7 @@
 	},
 /obj/structure/lattice,
 /turf/template_noop,
-/area/ruin/space/has_grav/skyrat/interdynefob)
+/area/space/nearstation)
 "zK" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/stripes/red/line{
@@ -5480,8 +5549,10 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
-/obj/machinery/door/airlock/external/glass,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/machinery/door/airlock/external/glass{
+	hackProof = 1
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "Ao" = (
@@ -5613,6 +5684,12 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
 "AW" = (
 /obj/machinery/light/warm/directional/south,
+/obj/machinery/button/door/directional/south{
+	desc = "Keep out the Truth.";
+	id = "ds2detective";
+	name = "Interrogation Room shutters control";
+	req_access = list("syndicate")
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/lawyer)
 "AX" = (
@@ -5691,10 +5768,9 @@
 /obj/structure/transit_tube{
 	dir = 8
 	},
-/obj/machinery/camera/xray{
-	c_tag = "DS-2 Transit Tube";
-	dir = 1;
-	network = list("fsci")
+/obj/machinery/camera/xray/directional/north{
+	network = list("ds2");
+	c_tag = "DS-2 Transit Tube"
 	},
 /turf/template_noop,
 /area/template_noop)
@@ -5791,15 +5867,8 @@
 /obj/machinery/light/cold/directional/south,
 /turf/open/floor/iron/white/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
-"BM" = (
-/obj/structure/lattice,
-/turf/template_noop,
-/area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "BN" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/west{
-	req_access = list("syndicate")
-	},
 /obj/effect/turf_decal/stripes/red/corner{
 	dir = 1
 	},
@@ -5835,12 +5904,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/lawyer)
-"BW" = (
-/obj/machinery/light/red/directional/north,
-/turf/open/floor/iron/dark/textured_half{
-	dir = 4
-	},
-/area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "Cb" = (
 /obj/effect/turf_decal/tile/dark_blue/half{
 	dir = 1
@@ -5860,6 +5923,7 @@
 /obj/effect/turf_decal/stripes/blue/end{
 	dir = 1
 	},
+/obj/machinery/duct,
 /turf/open/floor/iron/white/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "Ce" = (
@@ -5905,7 +5969,6 @@
 /turf/open/floor/carpet/donk,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
 "Cn" = (
-/obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -5916,6 +5979,10 @@
 	dir = 2
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/machinery/door/airlock/external/glass{
+	hackProof = 1
+	},
+/obj/structure/cable,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "Cp" = (
@@ -6463,6 +6530,7 @@
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Fc" = (
@@ -6700,6 +6768,11 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/button/door{
+	pixel_y = -23;
+	name = "Curtain Control";
+	id = "DS2cell1"
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Gi" = (
@@ -6805,7 +6878,7 @@
 /obj/machinery/power/shuttle_engine/huge,
 /obj/structure/lattice,
 /turf/template_noop,
-/area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
+/area/space/nearstation)
 "GN" = (
 /obj/effect/turf_decal/siding/dark/corner{
 	dir = 8
@@ -6865,17 +6938,16 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/siding/white,
-/obj/machinery/camera/xray{
-	c_tag = "DS-2 Hangar South";
-	dir = 5;
-	network = list("fsci")
-	},
 /obj/item/toy/figure/syndie{
 	pixel_x = -10
 	},
 /obj/item/toy/figure/syndie{
 	pixel_y = -3;
 	pixel_x = 4
+	},
+/obj/structure/shipping_container/donk_co{
+	pixel_x = -17;
+	pixel_y = 15
 	},
 /turf/open/floor/plating/elevatorshaft,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
@@ -7199,6 +7271,10 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/hydroponics)
 "Iz" = (
 /obj/structure/chair/office,
+/obj/machinery/camera/directional/north{
+	network = list("ds2");
+	c_tag = "DS2 Interrogation Room"
+	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/lawyer)
 "IA" = (
@@ -7416,6 +7492,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/item/watertank/pepperspray,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "JF" = (
@@ -7656,17 +7733,14 @@
 /turf/open/floor/wood/large,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms)
 "Lb" = (
-/obj/effect/turf_decal/siding/dark/end{
+/obj/machinery/camera/xray/directional/north{
+	network = list("ds2");
+	c_tag = "DS-2 Hangar North"
+	},
+/turf/open/floor/iron/dark/textured_half{
 	dir = 4
 	},
-/obj/machinery/camera/xray{
-	c_tag = "DS-2 Botany";
-	dir = 6;
-	network = list("fsci")
-	},
-/obj/machinery/light/cold/directional/east,
-/turf/open/floor/iron/white/diagonal,
-/area/ruin/space/has_grav/skyrat/interdynefob/service/hydroponics)
+/area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "Lc" = (
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
@@ -7717,7 +7791,13 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "Lp" = (
 /obj/machinery/atmospherics/components/binary/pump/on,
-/turf/open/floor/catwalk_floor,
+/obj/effect/turf_decal/stripes/end{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/dark/end{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "Lq" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -7844,6 +7924,7 @@
 	dir = 8;
 	id = "ds2conveyor"
 	},
+/obj/structure/railing,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "LP" = (
@@ -7888,10 +7969,9 @@
 "LY" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/obj/machinery/camera/xray{
-	c_tag = "DS-2 Armory";
-	network = list("fsc");
-	dir = 5
+/obj/machinery/camera/xray/directional/south{
+	network = list("ds2");
+	c_tag = "DS-2 Armory"
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -7944,7 +8024,6 @@
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "MB" = (
-/obj/structure/table,
 /obj/item/clothing/suit/toggle/labcoat/hospitalgown{
 	pixel_y = 4;
 	pixel_x = -3
@@ -7952,8 +8031,9 @@
 /obj/item/clothing/suit/toggle/labcoat/hospitalgown{
 	pixel_x = -7
 	},
-/obj/item/clothing/neck/stethoscope{
-	pixel_x = 12;
+/obj/structure/table/glass,
+/obj/item/reagent_containers/cup/glass/waterbottle{
+	pixel_x = 8;
 	pixel_y = 4
 	},
 /turf/open/floor/iron/dark/textured_large,
@@ -7988,12 +8068,11 @@
 "MH" = (
 /obj/structure/table/reinforced,
 /obj/machinery/recharger,
-/obj/machinery/camera/xray{
-	c_tag = "DS-2 EVA";
-	network = list("fsci");
-	dir = 4
-	},
 /obj/machinery/firealarm/directional/north,
+/obj/machinery/camera/xray/directional/east{
+	network = list("ds2");
+	c_tag = "DS-2 EVA"
+	},
 /turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/eva)
 "MK" = (
@@ -8023,6 +8102,9 @@
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "MT" = (
+/obj/structure/table/reinforced/plastitaniumglass,
+/obj/item/crowbar,
+/obj/item/restraints/handcuffs,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "MZ" = (
@@ -8100,7 +8182,8 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Nk" = (
 /obj/machinery/door/airlock/command{
-	name = "Bridge"
+	name = "Bridge";
+	hackProof = 1
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/cable,
@@ -8149,17 +8232,14 @@
 /obj/structure/sign/flag/syndicate/directional/north{
 	pixel_x = 16
 	},
-/obj/machinery/camera/xray{
-	c_tag = "DS-2 Hangar Airlock";
-	dir = 9;
-	network = list("fsci")
-	},
 /turf/open/floor/iron/dark/textured_half{
 	dir = 4
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "NA" = (
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	hackProof = 1
+	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
@@ -8193,9 +8273,6 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/chair/sofa/bench/left{
-	dir = 4
-	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "NN" = (
@@ -8261,12 +8338,13 @@
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "NR" = (
-/obj/machinery/door/poddoor{
-	id = "ds2cargo"
-	},
 /obj/machinery/conveyor{
 	dir = 8;
 	id = "ds2conveyor"
+	},
+/obj/structure/railing,
+/obj/machinery/door/poddoor{
+	id = "ds2cargo"
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
@@ -8323,6 +8401,13 @@
 /obj/effect/turf_decal/trimline/dark_red/line{
 	dir = 9
 	},
+/obj/machinery/button/door/directional/east{
+	desc = "To keep the void away.";
+	id = "ds2bridge";
+	name = "Bridge Blast Door Control";
+	req_access = list("syndicate");
+	pixel_y = -24
+	},
 /turf/open/floor/iron/dark/textured_corner{
 	dir = 2
 	},
@@ -8358,7 +8443,7 @@
 "Oi" = (
 /obj/structure/lattice,
 /turf/template_noop,
-/area/ruin/space/has_grav/skyrat/interdynefob)
+/area/space/nearstation)
 "Ok" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 10
@@ -8488,11 +8573,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
-"OS" = (
-/obj/machinery/power/shuttle_engine/large,
-/obj/structure/lattice,
-/turf/template_noop,
-/area/ruin/space/has_grav/skyrat/interdynefob)
 "OT" = (
 /obj/machinery/cryopod{
 	dir = 8
@@ -8551,9 +8631,11 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "Pl" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/porta_turret/syndicate/energy{
+	dir = 6
+	},
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
-/area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
+/area/ruin/space/has_grav/skyrat/interdynefob/research)
 "Pn" = (
 /obj/machinery/atmospherics/pipe/smart/simple/green/hidden{
 	dir = 9
@@ -8570,17 +8652,16 @@
 /turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Pq" = (
-/obj/machinery/camera/xray{
-	c_tag = "DS-2 Engineering";
-	network = list("fsci");
-	dir = 8
-	},
 /obj/effect/turf_decal/siding/dark{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/airalarm/directional/west,
+/obj/machinery/camera/xray/directional/west{
+	network = list("ds2");
+	c_tag = "DS-2 Engineering"
+	},
 /turf/open/floor/iron/dark/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "Pt" = (
@@ -8767,7 +8848,7 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
 	},
-/obj/machinery/telecomms/relay/preset/auto,
+/obj/effect/turf_decal/siding/wideplating_new/dark/corner,
 /turf/open/floor/iron/dark/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "Qe" = (
@@ -9047,24 +9128,23 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "Rj" = (
-/obj/structure/closet/secure_closet/ds2atmos{
-	anchorable = 0;
-	anchored = 1
-	},
 /obj/effect/turf_decal/siding/yellow{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 8
 	},
-/obj/effect/turf_decal/trimline/yellow/warning{
+/obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 4
 	},
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 8
+	},
 /obj/effect/turf_decal/trimline/yellow/line{
+	dir = 4
+	},
+/obj/machinery/computer/monitor{
 	dir = 8
 	},
 /turf/open/floor/iron/dark/side{
-	dir = 4
+	dir = 8
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "Rr" = (
@@ -9186,16 +9266,15 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 4
 	},
-/obj/machinery/camera/xray{
-	c_tag = "DS-2 Vault";
-	dir = 9;
-	network = list("fsc")
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/structure/filingcabinet,
 /obj/item/folder/syndicate/red,
 /obj/machinery/firealarm/directional/north,
+/obj/machinery/camera/xray/directional/north{
+	network = list("ds2");
+	c_tag = "DS-2 Vault"
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
 "RV" = (
@@ -9265,6 +9344,10 @@
 /obj/effect/turf_decal/trimline/dark_red/corner,
 /obj/effect/turf_decal/trimline/dark_red/corner{
 	dir = 8
+	},
+/obj/machinery/camera/xray/directional/south{
+	network = list("ds2");
+	c_tag = "DS-2 Bridge"
 	},
 /turf/open/floor/iron/dark/textured_half,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
@@ -9485,8 +9568,9 @@
 /turf/open/floor/wood/large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
 "SZ" = (
-/obj/machinery/computer/crew/syndie{
-	dir = 1
+/obj/machinery/computer/security{
+	dir = 1;
+	network = list("ds2")
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
@@ -9635,7 +9719,50 @@
 	dir = 1
 	},
 /obj/machinery/light/warm/directional/south,
-/turf/open/floor/catwalk_floor,
+/obj/effect/turf_decal/stripes/box,
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/skyrat/interdynefob/engineering)
+"TL" = (
+/obj/item/clothing/suit/hooded/wintercoat/engineering,
+/obj/item/clothing/head/soft/sec/syndicate,
+/obj/item/clothing/under/syndicate/skyrat/overalls,
+/obj/item/clothing/under/syndicate/skyrat/overalls/skirt,
+/obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/syndicate,
+/obj/item/clothing/suit/jacket/gorlex_harness,
+/obj/item/clothing/suit/hazardvest,
+/obj/structure/closet/secure_closet{
+	icon_state = "eng_secure";
+	name = "engine technician gear locker";
+	req_access = list("syndicate")
+	},
+/obj/item/clothing/accessory/armband/engine{
+	name = "engine technician armband";
+	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to."
+	},
+/obj/item/clothing/accessory/armband/engine{
+	name = "engine technician armband";
+	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to."
+	},
+/obj/item/clothing/glasses/hud/ar/aviator/meson,
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/yellow{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/side{
+	dir = 4
+	},
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "TM" = (
 /obj/effect/turf_decal/stripes/line{
@@ -9644,7 +9771,6 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "TQ" = (
-/obj/structure/table,
 /obj/item/storage/box/pillbottles{
 	pixel_x = -3;
 	pixel_y = 5
@@ -9653,6 +9779,11 @@
 	pixel_x = 6;
 	pixel_y = 3
 	},
+/obj/item/storage/box/medipens{
+	pixel_x = 4;
+	pixel_y = 13
+	},
+/obj/structure/table/glass,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "TS" = (
@@ -9682,11 +9813,6 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/camera/xray{
-	c_tag = "DS-2 Security Checkpoint";
-	network = list("fsc");
-	dir = 10
-	},
 /obj/machinery/firealarm/directional/west,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
@@ -9712,9 +9838,6 @@
 /obj/machinery/light/cold/directional/west,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/table/reinforced/plastitaniumglass,
-/obj/item/restraints/handcuffs,
-/obj/item/crowbar,
 /obj/structure/reagent_dispensers/wall/peppertank/directional/west,
 /obj/machinery/airalarm/directional/west{
 	pixel_y = -32
@@ -9760,15 +9883,16 @@
 "Uj" = (
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/cable,
-/obj/machinery/door/airlock/command{
-	name = "Bridge"
-	},
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/leader,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/door/airlock/command{
+	name = "Bridge";
+	hackProof = 1
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
@@ -9840,6 +9964,9 @@
 "UB" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /obj/structure/cable,
+/obj/machinery/door/poddoor/preopen{
+	id = "ds2bridge"
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
 "UE" = (
@@ -9949,11 +10076,15 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Vd" = (
-/obj/machinery/porta_turret/syndicate{
-	dir = 5
+/obj/effect/turf_decal/stripes/red/line,
+/obj/effect/turf_decal/trimline/dark_red/line,
+/obj/effect/turf_decal/trimline/yellow/mid_joiner,
+/obj/effect/turf_decal/siding/wideplating_new/dark{
+	dir = 1
 	},
-/turf/closed/wall/r_wall/syndicate/nodiagonal,
-/area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "Ve" = (
 /obj/structure/table,
 /obj/machinery/light/cold/directional/south,
@@ -10046,6 +10177,13 @@
 	dir = 4
 	},
 /obj/machinery/recharger,
+/obj/effect/turf_decal/delivery/red,
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 4
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "Vz" = (
@@ -10134,7 +10272,8 @@
 "VR" = (
 /obj/machinery/atmospherics/components/trinary/mixer/airmix/flipped/inverse,
 /obj/machinery/light/warm/directional/east,
-/turf/open/floor/catwalk_floor,
+/obj/effect/turf_decal/stripes/box,
+/turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "VT" = (
 /obj/effect/turf_decal/stripes/red/line{
@@ -10427,7 +10566,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating/airless,
-/area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
+/area/space/nearstation)
 "Xk" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -10640,11 +10779,6 @@
 	pixel_y = 5
 	},
 /obj/structure/table/reinforced/plastitaniumglass,
-/obj/machinery/camera/xray{
-	c_tag = "DS-2 Bridge";
-	network = list("fsci");
-	dir = 5
-	},
 /turf/open/floor/iron/dark/textured_half,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
 "Yd" = (
@@ -10728,10 +10862,9 @@
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 4
 	},
-/obj/machinery/camera/xray{
-	c_tag = "DS-2 Research";
-	dir = 10;
-	network = list("fsci")
+/obj/machinery/camera/xray/directional/west{
+	network = list("ds2");
+	c_tag = "DS-2 Research"
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
@@ -10796,6 +10929,8 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "Zp" = (
+/obj/machinery/iv_drip,
+/obj/machinery/duct,
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "Zq" = (
@@ -11040,7 +11175,7 @@ kF
 kF
 kF
 kF
-Pl
+kF
 kF
 kF
 kF
@@ -11079,7 +11214,7 @@ wg
 wg
 EJ
 kx
-nO
+kF
 kF
 kF
 Ew
@@ -11109,7 +11244,7 @@ kF
 kF
 kF
 kF
-bW
+mX
 kx
 EJ
 wg
@@ -11162,7 +11297,7 @@ id
 Ve
 kF
 Nc
-BM
+Oi
 uq
 wg
 wg
@@ -11188,7 +11323,7 @@ wg
 wg
 wg
 wg
-BM
+Oi
 eb
 ZY
 kF
@@ -11217,8 +11352,8 @@ Ua
 Hu
 kF
 Nc
-BM
-BM
+Oi
+Oi
 wg
 wg
 wg
@@ -11243,7 +11378,7 @@ wg
 wg
 wg
 wg
-BM
+Oi
 pG
 ZY
 kF
@@ -11251,7 +11386,7 @@ pX
 uS
 kF
 Py
-pX
+dv
 kF
 Mu
 Wv
@@ -11272,8 +11407,8 @@ yR
 Jf
 kF
 Nc
-BM
-BM
+Oi
+Oi
 GK
 wg
 wg
@@ -11327,9 +11462,9 @@ Oy
 BL
 kF
 Nc
-BM
-BM
-BM
+Oi
+Oi
+Oi
 wg
 wg
 wg
@@ -11342,7 +11477,7 @@ wg
 wg
 EJ
 kx
-nO
+NB
 NB
 tg
 Cj
@@ -11382,9 +11517,9 @@ ct
 lb
 kF
 XP
-BM
-BM
-BM
+Oi
+Oi
+Oi
 wg
 wg
 wg
@@ -11438,7 +11573,7 @@ PX
 PX
 PX
 Nc
-BM
+Oi
 uq
 wg
 wg
@@ -11493,8 +11628,8 @@ Sp
 EC
 PX
 Nc
-BM
-BM
+Oi
+Oi
 wg
 wg
 wg
@@ -11546,7 +11681,7 @@ uo
 uo
 uo
 LY
-PX
+oG
 PX
 PX
 NB
@@ -11569,7 +11704,7 @@ il
 ny
 Kf
 wj
-Nm
+do
 nn
 KY
 HY
@@ -11608,7 +11743,7 @@ NB
 NB
 NB
 NB
-bW
+xr
 kx
 EJ
 wg
@@ -11662,7 +11797,7 @@ PX
 NB
 zX
 Oi
-OS
+uq
 wg
 wg
 wg
@@ -11773,7 +11908,7 @@ NB
 zX
 Oi
 Oi
-os
+GK
 wg
 wg
 wg
@@ -11890,7 +12025,7 @@ wg
 "}
 (18,1,1) = {"
 wg
-Vd
+Mt
 NB
 NB
 NB
@@ -11937,7 +12072,7 @@ Tt
 bn
 Oi
 Oi
-os
+GK
 wg
 wg
 wg
@@ -12101,7 +12236,7 @@ ez
 Tt
 zX
 Oi
-OS
+uq
 wg
 wg
 wg
@@ -12141,8 +12276,8 @@ So
 tq
 Jz
 Ls
+TL
 WZ
-Rj
 Tt
 Tt
 rG
@@ -12262,7 +12397,7 @@ uD
 uD
 ze
 wS
-Tt
+bW
 hx
 Tt
 Yd
@@ -12372,7 +12507,7 @@ Pi
 hZ
 kT
 jP
-Tt
+bW
 gg
 Tt
 Yd
@@ -12471,8 +12606,8 @@ fS
 Xq
 Jz
 dN
-dN
 HF
+Rj
 Tt
 Tt
 Tt
@@ -12486,7 +12621,7 @@ Tt
 Tt
 zX
 Oi
-OS
+uq
 wg
 wg
 wg
@@ -12763,7 +12898,7 @@ NB
 zX
 Oi
 Oi
-os
+GK
 wg
 wg
 wg
@@ -12927,7 +13062,7 @@ QA
 my
 zX
 Oi
-OS
+uq
 wg
 wg
 wg
@@ -13038,7 +13173,7 @@ my
 NB
 NB
 NB
-kO
+NB
 kx
 EJ
 wg
@@ -13133,7 +13268,7 @@ my
 rN
 tG
 my
-do
+NR
 Xt
 my
 ej
@@ -13144,7 +13279,7 @@ NB
 NB
 zX
 Oi
-OS
+uq
 wg
 wg
 wg
@@ -13170,7 +13305,7 @@ Iw
 uf
 DH
 VB
-Lb
+kI
 eO
 kI
 VB
@@ -13236,7 +13371,7 @@ Fz
 Fz
 Hz
 Hz
-Hz
+Pl
 Wb
 Nb
 Nb
@@ -13249,12 +13384,12 @@ Nb
 Nb
 yC
 Bw
-Ax
+kO
 Ax
 Td
 Oi
 Oi
-os
+GK
 wg
 wg
 wg
@@ -13291,8 +13426,8 @@ SB
 gw
 pk
 Ax
-BW
-dv
+zc
+eq
 Nb
 Nb
 Nb
@@ -13347,7 +13482,7 @@ fl
 bY
 Ax
 Ns
-Wb
+Vd
 Nb
 Nb
 Nb
@@ -13402,7 +13537,7 @@ Aa
 wn
 Ax
 py
-dv
+eq
 Nb
 Nb
 Nb
@@ -13418,7 +13553,7 @@ xd
 Ax
 zX
 Oi
-OS
+uq
 wg
 wg
 wg
@@ -13432,7 +13567,7 @@ wg
 wg
 EJ
 kx
-Vd
+Mt
 bw
 zV
 Un
@@ -13456,8 +13591,8 @@ Dt
 fw
 Wz
 Ax
-py
-Wb
+Lb
+Vd
 Nb
 Nb
 Nb
@@ -13529,7 +13664,7 @@ Ax
 NB
 NB
 NB
-kO
+NB
 kx
 EJ
 wg
