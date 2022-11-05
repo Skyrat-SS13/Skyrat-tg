@@ -35,7 +35,7 @@
 	/// ID field check, allow buttons/switches etc to call an ID and toggle window
 	var/id = null
 
-/// Toggles the tingint effect for the window
+/// Toggles the tinting effect for the window
 /obj/structure/window/reinforced/fulltile/polarized/proc/toggle()
 	if(opacity)
 		animate(src, color="#FFFFFF", time=5)
