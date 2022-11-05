@@ -420,10 +420,11 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/button/door{
-	pixel_y = 23;
-	name = "Curtain Control";
-	id = "DS2cell2"
+/obj/machinery/button/curtain{
+	id = "DS2cell2";
+	name = "curtain control";
+	req_access = list("theatre");
+	pixel_y = 24
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
@@ -834,7 +835,7 @@
 /obj/structure/curtain/cloth/fancy/mechanical{
 	color = "#555555";
 	icon_state = "bathroom-open";
-	id_tag = "DS2cell2"
+	id = "DS2cell2"
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
@@ -3580,7 +3581,7 @@
 /obj/structure/curtain/cloth/fancy/mechanical{
 	color = "#555555";
 	icon_state = "bathroom-open";
-	id_tag = "DS2cell1"
+	id = "DS2cell1"
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
@@ -6768,10 +6769,11 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/button/door{
-	pixel_y = -23;
-	name = "Curtain Control";
-	id = "DS2cell1"
+/obj/machinery/button/curtain{
+	id = "DS2cell2";
+	name = "curtain control";
+	req_access = list("theatre");
+	pixel_y = -24
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
