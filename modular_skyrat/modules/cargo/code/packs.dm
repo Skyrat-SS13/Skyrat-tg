@@ -16,13 +16,15 @@
 	name = "Mouse Crate"
 	desc = "Good for snakes and lizards of all ages. Contains six feeder mice."
 	cost = CARGO_CRATE_VALUE * 6
-	contains = list(/mob/living/simple_animal/mouse,)
+	contains = list(
+		/mob/living/basic/mouse,
+	)
 	crate_name = "mouse crate"
 
 /datum/supply_pack/critter/mouse/generate()
 	. = ..()
 	for(var/i in 1 to 5)
-		new /mob/living/simple_animal/mouse(.)
+		new /mob/living/basic/mouse(.)
 
 /*
 *	MEDICAL
@@ -289,16 +291,31 @@
 					/obj/item/storage/box/matches)
 	crate_name = "candle crate"
 
+/datum/supply_pack/misc/vanguard_surplus
+	name = "Expeditionary Corps Surplus"
+	desc = "Contains an assortment of surplus equipment from the now-defunct Vanguard Expeditionary Corps."
+	cost = CARGO_CRATE_VALUE * 19
+	contains = list(
+		/obj/item/storage/box/expeditionary_survival,
+		/obj/item/melee/tomahawk,
+		/obj/item/storage/backpack/duffelbag/expeditionary_corps,
+		/obj/item/clothing/gloves/color/black/expeditionary_corps,
+		/obj/item/clothing/head/helmet/expeditionary_corps,
+		/obj/item/clothing/suit/armor/vest/expeditionary_corps,
+		/obj/item/storage/belt/military/expeditionary_corps,
+		/obj/item/clothing/under/rank/expeditionary_corps,
+		/obj/item/clothing/shoes/combat/expeditionary_corps,
+		/obj/item/modular_computer/tablet/pda/expeditionary_corps,
+		/obj/item/knife/combat/marksman,
+	)
+	/// How many of the contains to put in the crate
+	var/num_contained = 3
 
-/datum/supply_pack/service/snowmobile
-	name = "Snowmobile kit"
-	desc = "trapped on a frigid wasteland? need to get around fast? purchase a refurbished snowmobile, with a FREE 10 microsecond warranty!"
-	cost = 1500 // 1000 points cheaper than ATV
-	contains = list(/obj/vehicle/ridden/atv/snowmobile = 1,
-			/obj/item/key/atv = 1,
-			/obj/item/clothing/mask/gas/explorer = 1)
-	crate_name = "snowmobile kit"
-	crate_type = /obj/structure/closet/crate/large
+/datum/supply_pack/misc/vanguard_surplus/fill(obj/structure/closet/crate/filled_crate)
+	var/list/contain_copy = contains.Copy()
+	for(var/i in 1 to num_contained)
+		var/item = pick_n_take(contain_copy)
+		new item(filled_crate)
 
 /*
 *	FOOD
@@ -456,7 +473,7 @@
 	crate_type = /obj/structure/closet/crate/freezer
 
 /*
-*	PACK TYPE
+*	Service
 */
 
 /datum/supply_pack/service/buildabar
@@ -584,6 +601,16 @@
 	access_view = ACCESS_CARGO
 	contains = list(/obj/item/mod/control/pre_equipped/loader)
 	crate_name = "cargo MODsuit crate"
+
+/datum/supply_pack/service/snowmobile
+	name = "Snowmobile kit"
+	desc = "Trapped on a frigid wasteland? Need to get around fast? Purchase a refurbished snowmobile with a FREE 10 microsecond warranty!"
+	cost = CARGO_CRATE_VALUE * 7.5
+	contains = list(/obj/vehicle/ridden/atv/snowmobile = 1,
+			/obj/item/key/atv = 1,
+			/obj/item/clothing/mask/gas/explorer = 1)
+	crate_name = "snowmobile kit"
+	crate_type = /obj/structure/closet/crate/large
 
 /*
 *	MATERIALS AND SHEETS

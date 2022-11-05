@@ -9,7 +9,7 @@
 	tier = 1
 	unlocked_evolutions = list(/datum/borer_evolution/hivelord/blood_chemical)
 
-/datum/borer_evolution/hivelord/produce_offspring/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/hivelord/produce_offspring/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	var/datum/action/cooldown/borer/produce_offspring/attack_action = new()
 	attack_action.Grant(cortical_owner)
@@ -22,7 +22,7 @@
 	tier = 2
 	unlocked_evolutions = list(/datum/borer_evolution/hivelord/movespeed)
 
-/datum/borer_evolution/hivelord/blood_chemical/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/hivelord/blood_chemical/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	var/datum/action/cooldown/borer/learn_bloodchemical/attack_action = new()
 	attack_action.Grant(cortical_owner)
@@ -36,7 +36,7 @@
 	tier = 3
 	unlocked_evolutions = list(/datum/borer_evolution/hivelord/stealth_mode)
 
-/datum/borer_evolution/hivelord/movespeed/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/hivelord/movespeed/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	cortical_owner.add_movespeed_modifier(/datum/movespeed_modifier/borer_speed)
 
@@ -48,7 +48,7 @@
 	tier = 4
 	unlocked_evolutions = list(/datum/borer_evolution/hivelord/produce_offspring_alone)
 
-/datum/borer_evolution/hivelord/stealth_mode/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/hivelord/stealth_mode/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	var/datum/action/cooldown/borer/stealth_mode/attack_action = new()
 	attack_action.Grant(cortical_owner)
@@ -67,6 +67,6 @@
 		/datum/borer_evolution/synthetic_chems_negative,
 	)
 
-/datum/borer_evolution/hivelord/produce_offspring_alone/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/hivelord/produce_offspring_alone/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	cortical_owner.upgrade_flags |= BORER_ALONE_PRODUCTION

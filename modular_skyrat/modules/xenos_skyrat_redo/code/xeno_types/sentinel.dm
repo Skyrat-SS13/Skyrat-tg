@@ -1,6 +1,6 @@
 /// SKYRAT MODULE SKYRAT_XENO_REDO
 
-/mob/living/carbon/alien/humanoid/skyrat/sentinel
+/mob/living/carbon/alien/adult/skyrat/sentinel
 	name = "alien sentinel"
 	desc = "An alien that'd be unremarkable if not for the bright coloring and visible acid glands that cover it."
 	caste = "sentinel"
@@ -9,14 +9,14 @@
 	icon_state = "aliensentinel"
 	melee_damage_lower = 10
 	melee_damage_upper = 15
-	next_evolution = /mob/living/carbon/alien/humanoid/skyrat/spitter
+	next_evolution = /mob/living/carbon/alien/adult/skyrat/spitter
 
-/mob/living/carbon/alien/humanoid/skyrat/sentinel/Initialize(mapload)
+/mob/living/carbon/alien/adult/skyrat/sentinel/Initialize(mapload)
 	. = ..()
 
 	add_movespeed_modifier(/datum/movespeed_modifier/alien_slow)
 
-/mob/living/carbon/alien/humanoid/skyrat/sentinel/create_internal_organs()
+/mob/living/carbon/alien/adult/skyrat/sentinel/create_internal_organs()
 	internal_organs += new /obj/item/organ/internal/alien/plasmavessel/small
 	internal_organs += new /obj/item/organ/internal/alien/neurotoxin/sentinel
 	..()
