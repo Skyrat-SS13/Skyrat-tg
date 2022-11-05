@@ -24,21 +24,25 @@
 	button_icon_state = scripture.button_icon_state
 	if(scripture.power_cost)
 		desc += "<br>Draws <b>[scripture.power_cost]W</b> from the ark per use."
-	..(recieving_mob)
+
+	return ..(recieving_mob)
 
 /datum/action/innate/clockcult/quick_bind/Remove(mob/losing_mob)
 	if(activation_slab.invoking_scripture == scripture)
 		activation_slab.invoking_scripture = null
-	..(losing_mob)
+
+	return ..(losing_mob)
 
 /datum/action/innate/clockcult/quick_bind/IsAvailable()
 	if(!(IS_CLOCK(owner)) || owner.incapacitated())
 		return FALSE
+
 	return ..()
 
 /datum/action/innate/clockcult/quick_bind/Activate()
 	if(!activation_slab)
 		return
+
 	if(!activation_slab.invoking_scripture)
 		scripture.begin_invoke(owner, activation_slab)
 	else

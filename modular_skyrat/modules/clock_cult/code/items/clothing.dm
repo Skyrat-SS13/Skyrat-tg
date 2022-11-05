@@ -55,7 +55,9 @@
 	. = ..()
 	if(slot != ITEM_SLOT_OCLOTHING || !(IS_CLOCK(user)))
 		return
+
 	wearer = user
+
 	if(shroud_active)
 		enable()
 
@@ -63,6 +65,7 @@
 	..()
 	if(!shroud_active)
 		disable()
+
 	wearer = null
 
 /obj/item/clothing/suit/clockwork/cloak/proc/enable()
@@ -131,6 +134,7 @@
 		disable()
 	else
 		enable()
+
 	if(iscarbon(user))
 		var/mob/living/carbon/carbon_user = user
 		carbon_user.head_update(src, forced = TRUE)
@@ -139,16 +143,20 @@
 	enabled = TRUE
 	lighting_alpha = initial(lighting_alpha)
 	visor_toggling()
+
 	if(wearer)
 		on_toggle_eyes()
+
 	update_icon_state()
 
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/proc/disable()
 	enabled = FALSE
 	lighting_alpha = 0
 	visor_toggling() //this doesn't remove everything, check later
+
 	if(wearer)
 		de_toggle_eyes()
+
 	update_icon_state()
 
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/proc/on_toggle_eyes()
@@ -168,6 +176,7 @@
 	. = ..()
 	if(!isliving(user))
 		return
+
 	if((slot == ITEM_SLOT_EYES) && enabled)
 		wearer = user
 		on_toggle_eyes()
@@ -177,15 +186,17 @@
 	if(!wearer)
 		STOP_PROCESSING(SSobj, src)
 		return
+
 	//~1 damage every 2 seconds, maximum of 70 after 140 seconds
-	wearer.adjustOrganLoss(ORGAN_SLOT_EYES, 0.5*delta_time, 70)
-	applied_eye_damage = min(applied_eye_damage + 1, 70)
+	wearer.adjustOrganLoss(ORGAN_SLOT_EYES, 0.5 * delta_time, 70)
+	applied_eye_damage = min(applied_eye_damage + 0.5 * delta_time, 70)
 
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/dropped(mob/user)
-	..()
+	. = ..()
 	if(wearer && (IS_CLOCK(user)) && enabled)
 		de_toggle_eyes()
-		wearer = null
+
+	wearer = null
 
 // Flash protected and generally info-granting with huds
 /obj/item/clothing/glasses/clockwork/judicial_visor
@@ -223,6 +234,7 @@
 		disable()
 	else
 		enable()
+
 	if(iscarbon(user))
 		var/mob/living/carbon/carbon_user = user
 		carbon_user.head_update(src, forced = TRUE)
@@ -231,34 +243,42 @@
 	enabled = TRUE
 	if(wearer)
 		apply_to_wearer()
+
 	update_icon_state()
 
 /obj/item/clothing/glasses/clockwork/judicial_visor/proc/disable()
 	enabled = FALSE
 	if(wearer)
 		unapply_to_wearer()
+
 	update_icon_state()
 
 /obj/item/clothing/glasses/clockwork/judicial_visor/proc/apply_to_wearer()
 	ADD_TRAIT(wearer, TRAIT_NOFLASH, CLOTHING_TRAIT)
+
 	ADD_TRAIT(wearer, TRAIT_MEDICAL_HUD, CLOTHING_TRAIT)
 	var/datum/atom_hud/med_hud = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	med_hud.show_to(wearer)
+
 	ADD_TRAIT(wearer, TRAIT_SECURITY_HUD, CLOTHING_TRAIT)
 	var/datum/atom_hud/sec_hud = GLOB.huds[DATA_HUD_SECURITY_ADVANCED]
 	sec_hud.show_to(wearer)
+
 	ADD_TRAIT(wearer, TRAIT_MADNESS_IMMUNE, CLOTHING_TRAIT)
 	ADD_TRAIT(wearer, TRAIT_KNOW_ENGI_WIRES, CLOTHING_TRAIT)
 	ADD_TRAIT(wearer, TRAIT_KNOW_CYBORG_WIRES, CLOTHING_TRAIT)
 
 /obj/item/clothing/glasses/clockwork/judicial_visor/proc/unapply_to_wearer()
 	REMOVE_TRAIT(wearer, TRAIT_NOFLASH, CLOTHING_TRAIT)
+
 	REMOVE_TRAIT(wearer, TRAIT_MEDICAL_HUD, CLOTHING_TRAIT)
 	var/datum/atom_hud/med_hud = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	med_hud.hide_from(wearer)
+
 	REMOVE_TRAIT(wearer, TRAIT_SECURITY_HUD, CLOTHING_TRAIT)
 	var/datum/atom_hud/sec_hud = GLOB.huds[DATA_HUD_SECURITY_ADVANCED]
 	sec_hud.hide_from(wearer)
+
 	REMOVE_TRAIT(wearer, TRAIT_MADNESS_IMMUNE, CLOTHING_TRAIT)
 	REMOVE_TRAIT(wearer, TRAIT_KNOW_ENGI_WIRES, CLOTHING_TRAIT)
 	REMOVE_TRAIT(wearer, TRAIT_KNOW_CYBORG_WIRES, CLOTHING_TRAIT)
@@ -267,10 +287,12 @@
 	. = ..()
 	if(!isliving(user))
 		return
+
 	if(slot == ITEM_SLOT_EYES)
 		wearer = user
 		if(enabled)
 			apply_to_wearer()
+
 		ADD_TRAIT(src, TRAIT_NODROP, CLOTHING_TRAIT)
 		to_chat(wearer, span_userdanger("You feel the cogs on the visor clamp to the sides of your head, drilling in!"))
 		if(damaging)

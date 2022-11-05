@@ -10,25 +10,31 @@
 /obj/item/clockwork/integration_cog/attack_atom(atom/attacked_atom, mob/living/user, params)
 	if(!(IS_CLOCK(user)))
 		return ..()
+
 	if(!istype(attacked_atom, /obj/machinery/power/apc))
 		return ..()
+
 	var/obj/machinery/power/apc/cogger_apc = attacked_atom
 	if(cogger_apc.integration_cog)
 		balloon_alert(user, "already has a cog inside!")
 		return
+
 	if(!cogger_apc.panel_open)
 		//Cut open the panel
 		balloon_alert(user, "cutting open APC...")
 		if(!do_after(user, 5 SECONDS, target = cogger_apc))
 			return
+
 		balloon_alert(user, "APC cut open")
 		cogger_apc.panel_open = TRUE
 		cogger_apc.update_appearance()
 		return
+
 	//Insert the cog
 	balloon_alert(user, "inserting [src]...")
 	if(!do_after(user, 4 SECONDS, target = cogger_apc))
 		return
+
 	cogger_apc.integration_cog = src
 	forceMove(cogger_apc)
 	cogger_apc.panel_open = FALSE
@@ -62,14 +68,14 @@
 			. += span_brass("A small cogwheel is inside of it.")
 
 /obj/machinery/power/apc/crowbar_act(mob/user, obj/item/crowbar)
-	if(!opened)
+	if(!opened || !integration_cog)
 		return ..()
-	if(!integration_cog)
-		return ..()
+
 	balloon_alert(user, "prying something out of [src]...")
 	crowbar.play_tool_sound(src)
 	if(!crowbar.use_tool(src, user, 5 SECONDS))
 		return
+
 	balloon_alert(user, "pried out something, destroying it!")
 	QDEL_NULL(integration_cog)
 
