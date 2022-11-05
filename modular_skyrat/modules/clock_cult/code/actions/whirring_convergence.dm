@@ -31,6 +31,7 @@
 	var/my_message
 	if(!message)
 		return
+
 	user.whisper("Engine, V vaibxr gb-gur`r gb-pbzzhar gb-nyy.", language = /datum/language/common) //Ratvar, I invoke to-the`e to-commune to-all.
 	user.whisper(html_decode(message), filterproof = TRUE)
 	my_message = span_italics(span_brass("<b>Ratvarian Servant [findtextEx(user.name, user.real_name) ? user.name : "[user.real_name] (as [user.name])"]:</b> [message]"))
