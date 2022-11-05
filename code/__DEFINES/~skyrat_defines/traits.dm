@@ -60,3 +60,6 @@
 #define TRAIT_XENO_ABILITY_GIVEN "xeno_ability_given"
 /// Determines if something can receive healing from a xeno
 #define TRAIT_XENO_HEAL_AURA "trait_xeno_heal_aura"
+
+/// Trait for triple heads.
+#define TRAIT_HYDRA_HEADS "hydrahead"
