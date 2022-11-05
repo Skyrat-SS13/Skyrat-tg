@@ -12,7 +12,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "posibrain-ipc"
 
-/obj/item/organ/internal/brain/synth/Insert(mob/living/carbon/user, special = 0, drop_if_replaced = TRUE)
+/obj/item/organ/internal/brain/synth/Insert(mob/living/carbon/user, special = FALSE, drop_if_replaced = TRUE)
 	..()
 	if(user.stat == DEAD && ishuman(user))
 		var/mob/living/carbon/human/user_human = user
