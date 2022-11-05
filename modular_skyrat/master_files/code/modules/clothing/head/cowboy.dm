@@ -2,8 +2,11 @@
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/cowboy/skyrat
+	name = "SR COWBOY HAT DEBUG"
+	desc = "REPORT THIS IF FOUND"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/cowboy.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/cowboy.dmi'
+	icon_state = null //Keeps this from showing up under the chameleon hat
 	worn_icon_state = null //TG defaults this to "hunter" and breaks our items
 	flags_inv = SHOWSPRITEEARS
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0) //TG defaults cowboy hats with armor
