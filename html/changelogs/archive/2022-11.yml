@@ -109,3 +109,88 @@
   - bugfix: removed misplaced unrestricted access from Lavaland Shuttle Airlocks
   Zergspower:
   - qol: massive overhaul to make the Crashed medical ship be less ugly and loot starved
+2022-11-05:
+  A.C.M.O.:
+  - bugfix: Fixed a bug which caused the anesthetic machine to stop working if its
+      mask was temporarily adjusted.
+  - bugfix: Fixed a bug which caused the anesthetic machine to keep working if its
+      mask was adjusted when the user had another breathing apparatus equipped.
+  - rscadd: Hermetically sealed and space-worthy helmets can now be used as breathing
+      apparatuses!
+  - rscadd: Internals air tanks can now be toggled via AltClick.
+  - bugfix: Breath masks are fixed, and can now be toggled via AltClick.
+  - refactor: Refactored and deduplicated a significant portion of internal air tank
+      functions.
+  - bugfix: Fixed a bug that caused any type of equipped mask to be auto-adjusted
+      when toggling internals.
+  - bugfix: Fixed a bug that prevented toggling of internals via the stripping menu
+      if the mob only had a breathing tube.
+  - bugfix: Fixed a bug that allowed two mobs to breathe from the same air tank after
+      exchanging it between them.
+  Fikou:
+  - qol: the mech orbital pad now no longer deorgans you if you stand on it while
+      it launches upward, now gibbing (!!!), but only when a mech falls on you
+  - qol: the mech orbital pad can be used by mechs, and after 5 seconds of careful
+      computer manipulation with your big mech arms, you can launch yourself
+  - qol: mechs now give you feedback on what you fucked up when trying to attach equipment
+  - bugfix: you can now melee attack as a mech when you dont have weapons equipped,
+      as opposed to only being able to do it with weapons equipped
+  - rscadd: you can now lock mech orbital pads with wirecutters, preventing mechs
+      with pilots from launching, allowing only empty mechs
+  Guillaume Prata:
+  - qol: The forensic scanner uses balloon alerts for most of it's simple feedback
+      messages, enjoy having an easier time hearing the radio chatter.
+  - qol: Ore bags are "silent" for the wearer and won't send pointless chat messages
+      about what has been stored/removed from it. Other players will still get a chat
+      message, so miners can't get away with surprise plasma ore bombs.
+  Melbert:
+  - qol: Good Clean Fun Vendor is categorized.
+  - bugfix: Fixes Regal Rat Domain not functioning as intended
+  - bugfix: Triggering a traitor poster trap progresses their objective.
+  SkyratBot:
+  - rscadd: You can harvest useful organs from Brimdemons and Lobstrosities.
+  - bugfix: You can no longer 'preserve' regenerative cores which have already expired
+      to repair them.
+  - rscadd: Screwdriver cocktails now work as the world's worst screwdriver
+  - bugfix: The universal scanner now properly show all three options in the radial
+      with sprites, due to a missing space.
+  - qol: The universal scanner now has contextual screentips within all three of its
+      modes.
+  - rscadd: Added 6 new flatbreads and their associated recipes
+  - rscadd: Added 1 new pizza for ethereals
+  - qol: Made surgical computers tell you what tool to use for the current surgical
+      step.
+  - bugfix: fixed an exploit that let you go completely invisible by scanning a HFR
+      corner with a chameleon projector
+  - qol: Space Ninja now has their MODsuit module buttons pinned by default
+  - qol: sniper scopes and kinesis module should feel better to use
+  - bugfix: Fixes radiation blocking properties of glass types.
+  - balance: less megafauna should spawn on icebox and lavaland
+  - qol: blood drunk miner ruin on lavaland will spawn every round
+  - qol: Mining point cards are now reusable, allowing user-set transfers of mining
+      points to and from the point card itself.
+  - bugfix: Fixes getting AIs with cores getting gibbed if their mech theyre controlling
+      is destroyed
+  - refactor: The beer nuke detonation is now a special type of scrubber overflow
+      event.
+  - spellcheck: AI Universal Standard canvas will now specify it's size on the item
+      name.
+  - balance: The Shuttle Loan event no longer only rolls once per round.
+  VexingRaven:
+  - bugfix: Fixed posters printed from the library console staying in your hand when
+      you place them
+  - bugfix: Fixed Random Official Poster printed from the library console always placing
+      the west-facing variant no matter where you place it
+  Zergspower:
+  - qol: mappers can now use the actual color red in decals.
+  - imageadd: adds real_red decals and logos to be able to be used for mapping
+  - bugfix: fixes the errant line in the default Siding decal 'end'
+  - bugfix: 'fixes the missing crew manifest from: Chaplain, Clown, Mime, Botanist,
+      Cook, Shaft Miner, Bartender'
+  Zonespace27:
+  - spellcheck: Syndicate saboteur is now traitor again
+  - bugfix: One-click-antag non-progtots now work again
+  - bugfix: Lone infiltrator spawns again
+  - bugfix: Borer empowered offspring now works
+  - bugfix: Borers can no longer get trapped in stealth mode permanently
+  - bugfix: Borer Diveworm T2 now applies correctly instead of inversely
