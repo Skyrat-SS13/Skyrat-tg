@@ -14,42 +14,6 @@
 	/// If this one has access to conversion scriptures
 	var/can_convert = TRUE // TODO: Implement this and the antag as a whole (beyond just checks) once the groundwork PR gets merged
 
-/*
-/datum/antagonist/contractor/on_gain()
-	forge_objectives()
-	. = ..()
-	equip_guy()
-
-/datum/antagonist/contractor/proc/forge_objectives()
-	var/datum/objective/contractor_total/contract_objectives = new
-	contract_objectives.owner = owner
-	objectives += contract_objectives
-
-/datum/antagonist/contractor/roundend_report()
-	var/list/report = list()
-
-	if(!owner)
-		CRASH("antagonist datum without owner")
-
-	report += "<b>[printplayer(owner)]</b>"
-
-	var/objectives_complete = TRUE
-	if(length(objectives))
-		report += printobjectives(objectives)
-		for(var/datum/objective/objective as anything in objectives)
-			if(!objective.check_completion())
-				objectives_complete = FALSE
-				break
-
-	report += owner.opposing_force.contractor_round_end()
-
-	if(!length(objectives) || objectives_complete)
-		report += "<span class='greentext big'>The [name] was successful!</span>"
-	else
-		report += "<span class='redtext big'>The [name] has failed!</span>"
-
-	return report.Join("<br>")*/
-
 /datum/outfit/clock_preview
 	name = "Clock Cultist (Preview only)"
 
