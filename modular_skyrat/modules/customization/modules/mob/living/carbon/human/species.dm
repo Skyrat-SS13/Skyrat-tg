@@ -160,11 +160,13 @@ GLOBAL_LIST_EMPTY(customizable_races)
 							accessory_overlay.color = owner.eye_color_left
 			else
 				accessory_overlay.color = override_color
+
 			if (accessories)
 				for (var/acces in accessories)
 					standing += acces
 			else
 				standing += accessory_overlay
+
 				if (mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][1])
 					var/mutable_appearance/emissive_overlay = emissive_appearance_copy(accessory_overlay, owner)
 					//if (bodypart_accessory.center)
@@ -175,13 +177,15 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			if(bodypart_accessory.use_custom_mod_icon)
 				if(bodypart_accessory.color_src == USE_MATRIXED_COLORS && color_layer_list)
 					var/list/mutable_appearance/MOD_overlay_matrix = list(
-					mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]_primary", layer = -layer),
-					mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]_secondary", layer = -layer),
-					mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]_tertiary", layer = -layer))
+					mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]_primary"),
+					mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]_secondary"),
+					mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]_tertiary"))
+					var/mutable_appearance/MOD_overlay_result = mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), layer = -layer)
+					for(var/to_merge as anything in MOD_overlay_matrix)
+						MOD_overlay_result.add_overlay(to_merge)
 					if(bodypart_accessory.center)
-						for(var/to_center as anything in MOD_overlay_matrix)
-							to_center = center_image(to_center, x_shift, bodypart_accessory.dimension_y)
-					standing += MOD_overlay_matrix
+						MOD_overlay_result = center_image(MOD_overlay_result, x_shift, bodypart_accessory.dimension_y)
+					standing += MOD_overlay_result
 				else
 					var/mutable_appearance/MOD_overlay = mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]", layer = -layer)
 					if(bodypart_accessory.center)
