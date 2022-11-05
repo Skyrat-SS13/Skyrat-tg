@@ -26,7 +26,7 @@
 	. = ..()
 	AddComponent(/datum/component/toggle_icon)
 
-/obj/item/clothing/head/warden/syndicate
+/obj/item/clothing/head/hats/warden/syndicate
 	name = "master at arms' police hat"
 	desc = "A fashionable police cap emblazoned with a golden badge, issued to the Master at Arms. Protects the head from impacts."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
