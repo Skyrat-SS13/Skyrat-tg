@@ -16,7 +16,7 @@
 	/// The type we spawn when we are disarmed.
 	var/disarmed_type = /obj/item/airbag
 
-/datum/element/airbag/Attach(datum/target, airbag_type_override)
+/datum/element/airbag/Attach(datum/target)
 	. = ..()
 	if(!ismovable(target))
 		return ELEMENT_INCOMPATIBLE
