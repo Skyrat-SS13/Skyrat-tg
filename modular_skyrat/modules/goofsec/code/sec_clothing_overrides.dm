@@ -266,7 +266,7 @@
 		),
 	)
 
-/obj/item/clothing/head/hos
+/obj/item/clothing/head/hats/hos
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "hoscap_blue"
@@ -291,7 +291,7 @@
 	)
 
 //Need to quickly redefine this so the icon doesnt break
-/obj/item/clothing/head/hos/syndicate
+/obj/item/clothing/head/hats/hos/syndicate
 	icon = 'icons/obj/clothing/head/hats.dmi'
 	worn_icon = 'icons/mob/clothing/head/hats.dmi'
 	icon_state = "hoscap"

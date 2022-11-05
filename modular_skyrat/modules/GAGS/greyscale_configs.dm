@@ -980,14 +980,23 @@ digi
 /datum/greyscale_config/heels
 	name = "High Heels"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/heels.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/heels/heels.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/heels/heels.json'
 
 /datum/greyscale_config/heels/worn
 	name = "High Heels (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/heels/heels_worn.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/heels/heels_worn.json'
 
 /datum/greyscale_config/heels/worn/digi
 	name = "High Heels (Worn Digi)"
+
+/datum/greyscale_config/fancyheels
+	name = "Fancy Heels"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/fancyheels.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/fancyheels/fancyheels.json'
+
+/datum/greyscale_config/fancyheels/worn
+	name = "Fancy Heels (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/fancyheels/fancyheels_worn.json'
 
 // TESHARI FALLBACKS.
 
