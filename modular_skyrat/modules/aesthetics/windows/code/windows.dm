@@ -28,27 +28,29 @@
 
 // Polarized Windows
 
-/// First defines and allows it to be assigned an ID to be toggled
+/// When activated by a button the window will dim and turn on opacity as well as darken the window color
 /obj/structure/window/reinforced/fulltile/polarized
-	name = "Polarized Window"
+	name = "reinforced polarized window"
 	desc = "Adjusts its tint with voltage, it is reinforced with metal rods."
+	canSmoothWith = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_WINDOW_FULLTILE, SMOOTH_GROUP_AIRLOCK)
 	/// ID field check, allow buttons/switches etc to call an ID and toggle window
 	var/id = null
 
 /// Toggles the tinting effect for the window
 /obj/structure/window/reinforced/fulltile/polarized/proc/toggle()
 	if(opacity)
-		animate(src, color="#FFFFFF", time=5)
+		animate(src, color="#FFFFFF", time = 0.5 SECONDS)
 		set_opacity(FALSE)
 		alpha = initial(alpha)
 	else
-		animate(src, alpha = 255, color="#222222", time=5)
+		animate(src, alpha = 255, color="#222222", time = 0.5 SECONDS)
 		set_opacity(TRUE)
 
 /obj/machinery/button/window/reinforced/polarized
-	name = "Polarized Window Button"
+	name = "polarized window button"
 	desc = "A remote control switch for polarized windows."
 	/// Checks the state and assigns it to default FALSE - toggling purposes
+
 	var/active = FALSE
 
 /obj/machinery/button/window/reinforced/polarized/attack_hand(mob/living/user, list/modifiers)
@@ -56,10 +58,11 @@
 		return TRUE
 
 	toggle_tint()
+
 /// Enables the button to check and ensure it's both active and matching the ID
 /obj/machinery/button/window/reinforced/polarized/proc/toggle_tint()
     active = !active
-	/// ID Check before running the toggle proc
+	// ID Check before running the toggle proc
     for(var/obj/structure/window/reinforced/fulltile/polarized/window)
         if (window.id == src.id || !window.id)
             INVOKE_ASYNC(window, /obj/structure/window/reinforced/fulltile/polarized/proc/toggle)
@@ -70,7 +73,7 @@
         active = !active
         toggle_tint()
 
-/// Adds a map spawner in-line with the normal ones to reduce mapping annoyances
+/// Adds a map spawner that will load a grill under it during mapload
 /obj/effect/spawner/structure/window/reinforced/polarized
 	name = "reinforced polarized window spawner"
 	icon_state = "rwindow_spawner"
