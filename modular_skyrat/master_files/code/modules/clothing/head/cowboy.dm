@@ -15,7 +15,7 @@
 /obj/item/clothing/head/cowboy/skyrat/wide
 	name = "wide brimmed hat"
 	desc = "A wide-brimmed hat, to keep the sun out of your eyes in style."
-	icon_state = "widebrimmed"
+	icon_state = "widebrim"
 	greyscale_colors = "#4D4D4D#DE9754"
 	greyscale_config = /datum/greyscale_config/cowboy_wide
 	greyscale_config_worn = /datum/greyscale_config/cowboy_wide/worn
@@ -24,7 +24,7 @@
 /obj/item/clothing/head/cowboy/skyrat/wide/feathered
 	name = "wide brimmed feathered hat"
 	desc = "A wide-brimmed hat adorned with a feather, the perfect flourish to a rugged outfit."
-	icon_state = "widebrimmed_feathered"
+	icon_state = "widebrim_feathered"
 	greyscale_colors = "#4D4D4D#DE9754#D5D5B9"
 	greyscale_config = /datum/greyscale_config/cowboy_wide_feathered
 	greyscale_config_worn = /datum/greyscale_config/cowboy_wide_feathered/worn
@@ -32,7 +32,7 @@
 /obj/item/clothing/head/cowboy/skyrat/flat
 	name = "flat brimmed hat"
 	desc = "A finely made hat with a short flat brim, perfect for an old fashioned shootout."
-	icon_state = "flatbrimmed"
+	icon_state = "flatbrim"
 	greyscale_colors = "#BE925B#914C2F"
 	greyscale_config = /datum/greyscale_config/cowboy_flat
 	greyscale_config_worn = /datum/greyscale_config/cowboy_flat/worn
