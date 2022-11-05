@@ -5,6 +5,7 @@
 	result_path = /obj/structure/destructible/clockwork/trap/pressure_sensor
 	clockwork_desc = "Allows you to send a signal to linked traps when a non-servant steps on the plate."
 
+
 /obj/structure/destructible/clockwork/trap/pressure_sensor
 	name = "pressure plate"
 	desc = "I wonder what happens if you step on it."
@@ -16,8 +17,10 @@
 	max_integrity = 5
 	clockwork_desc = "Allows you to send a signal to linked traps when a non-servant steps on the plate."
 
+
 /datum/component/clockwork_trap/pressure_sensor
 	sends_input = TRUE
+
 
 /datum/component/clockwork_trap/pressure_sensor/Initialize()
 	. = ..()
@@ -26,18 +29,17 @@
 	)
 	AddComponent(/datum/component/connect_loc_behalf, parent, loc_connections)
 
+
 /datum/component/clockwork_trap/pressure_sensor/proc/on_entered(datum/source, atom/movable/entered_movable)
 	SIGNAL_HANDLER
 
-	//Item's in hands or boxes shouldn't trigger it
+	//Items in hands or boxes shouldn't trigger it
 	if(!isturf(entered_movable.loc) || !isliving(entered_movable))
 		return
+
 	var/mob/living/entered_living = entered_movable
-	if(!istype(entered_living))
+	if(IS_CLOCK(entered_living) || entered_living.incorporeal_move || (entered_living.movement_type & (FLOATING|FLYING)))
 		return
-	if(IS_CLOCK(entered_living))
-		return
-	if(entered_living.incorporeal_move || (entered_living.movement_type & (FLOATING|FLYING)))
-		return
+
 	trigger_connected()
 	playsound(parent, 'sound/machines/click.ogg', 50)

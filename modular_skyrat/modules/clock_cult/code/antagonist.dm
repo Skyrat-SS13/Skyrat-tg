@@ -14,6 +14,7 @@
 	/// If this one has access to conversion scriptures
 	var/can_convert = TRUE // TODO: Implement this and the antag as a whole (beyond just checks) once the groundwork PR gets merged
 
+
 /datum/outfit/clock_preview
 	name = "Clock Cultist (Preview only)"
 
@@ -22,9 +23,11 @@
 	head = /obj/item/clothing/head/helmet/clockwork
 	l_hand = /obj/item/clockwork/weapon/brass_sword
 
-/datum/outfit/clock_preview/pre_equip(mob/living/carbon/human/H, visualsOnly)
+
+/datum/outfit/clock_preview/pre_equip(mob/living/carbon/human/clock, visualsOnly)
 	. = ..()
-	H.faction |= FACTION_CLOCK
+	clock.faction |= FACTION_CLOCK
+
 
 /datum/antagonist/clock_cultist/solo
 	name = "Clock Cultist (Solo)"

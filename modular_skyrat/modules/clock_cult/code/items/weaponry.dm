@@ -1,3 +1,6 @@
+#define HAMMER_FLING_DISTANCE 2
+#define HAMMER_THROW_FLING_DISTANCE 3
+
 /obj/item/clockwork/weapon
 	name = "Clockwork Weapon"
 	desc = "Something"
@@ -20,8 +23,10 @@
 /obj/item/clockwork/weapon/attack(mob/living/target, mob/living/user)
 	. = ..()
 	var/turf/gotten_turf = get_turf(user)
+
 	if(!is_type_in_typecache(gotten_turf, effect_turf_typecache))
 		return
+
 	if(!QDELETED(target) && target.stat != DEAD && !(IS_CLOCK(target)) && !target.can_block_magic(MAGIC_RESISTANCE_HOLY))
 		hit_effect(target, user)
 
@@ -29,9 +34,12 @@
 	. = ..()
 	if(!isliving(hit_atom))
 		return
+
 	var/mob/living/target = hit_atom
+
 	if(.)
 		return
+
 	if(!target.can_block_magic(MAGIC_RESISTANCE_HOLY) && !(IS_CLOCK(target)))
 		hit_effect(target, throwingdatum.thrower, TRUE)
 
@@ -70,8 +78,9 @@
 /obj/item/clockwork/weapon/brass_battlehammer/hit_effect(mob/living/target, mob/living/user, thrown = FALSE)
 	if(!thrown && !HAS_TRAIT(src, TRAIT_WIELDED))
 		return
+
 	var/atom/throw_target = get_edge_target_turf(target, get_dir(src, get_step_away(target, src)))
-	target.throw_at(throw_target, thrown ? 3 : 2, 4)
+	target.throw_at(throw_target, thrown ? HAMMER_THROW_FLING_DISTANCE : HAMMER_FLING_DISTANCE, 4)
 
 /obj/item/clockwork/weapon/brass_sword
 	name = "brass longsword"
@@ -97,10 +106,12 @@
 	playsound(user, 'sound/magic/lightningshock.ogg', 40)
 
 /obj/item/clockwork/weapon/brass_sword/attack_atom(obj/attacked_obj, mob/living/user, params)
-	..()
+	. = ..()
 	var/turf/gotten_turf = get_turf(user)
+
 	if(!ismecha(attacked_obj) || !is_type_in_typecache(gotten_turf, effect_turf_typecache))
 		return
+
 	if(!COOLDOWN_FINISHED(src, emp_cooldown))
 		return
 	COOLDOWN_START(src, emp_cooldown, 20 SECONDS)
@@ -139,24 +150,30 @@
 	if(!drawn || !chambered)
 		to_chat(user, span_notice("[src] must be drawn to fire a shot!"))
 		return
+
 	return ..()
 
 /obj/item/gun/ballistic/bow/clockwork/shoot_live_shot(mob/living/user, pointblank, atom/pbtarget, message)
 	. = ..()
 	var/turf/user_turf = get_turf(user)
+
 	if(is_type_in_typecache(user_turf, effect_turf_typecache))
 		recharge_time = 0.75 SECONDS
+
 	addtimer(CALLBACK(src, .proc/recharge_bolt), recharge_time)
 	recharge_time = initial(recharge_time)
 
 /obj/item/gun/ballistic/bow/clockwork/attack_self(mob/living/user)
-	if(!drawn && chambered)
-		if(!do_after(user, 0.5 SECONDS, src))
-			return
-		to_chat(user, span_notice("You draw back the bowstring."))
-		drawn = TRUE
-		playsound(src, 'modular_skyrat/modules/tribal_extended/sound/sound_weapons_bowdraw.ogg', 75, 0) //gets way too high pitched if the freq varies
-		update_icon()
+	if(drawn || !chambered)
+		return
+
+	if(!do_after(user, 0.5 SECONDS, src))
+		return
+
+	to_chat(user, span_notice("You draw back the bowstring."))
+	drawn = TRUE
+	playsound(src, 'modular_skyrat/modules/tribal_extended/sound/sound_weapons_bowdraw.ogg', 75, 0) //gets way too high pitched if the freq varies
+	update_icon()
 
 /obj/item/gun/ballistic/bow/clockwork/proc/recharge_bolt()
 	var/obj/item/ammo_casing/caseless/arrow/clockbolt/bolt = new
@@ -217,9 +234,11 @@
 
 /obj/item/ammo_casing/a762/lionhunter/clock/fire_casing(atom/target, mob/living/user, params, distro, quiet, zone_override, spread, atom/fired_from)
 	var/obj/item/gun/ballistic/fired_gun = fired_from
+
 	if(istype(get_turf(user), /turf/open/floor/bronze) && istype(fired_gun, /obj/item/gun/ballistic/rifle/lionhunter/clockwork))
 		var/obj/item/ammo_casing/a762/lionhunter/clock/chambered_case = src
 		chambered_case.seconds_per_distance = 0.2 SECONDS
+
 	return ..()
 
 /obj/projectile/bullet/a762/lionhunter/clock
@@ -243,4 +262,8 @@
 /obj/item/storage/bag/ammo/clock/PopulateContents()
 	var/static/items_inside = list(
 		/obj/item/ammo_box/a762/lionhunter/clock = 3)
+
 	generate_items_inside(items_inside, src)
+
+#undef HAMMER_FLING_DISTANCE
+#undef HAMMER_THROW_FLING_DISTANCE

@@ -5,6 +5,7 @@
 	/// What slots will attempt to shock the equpper
 	var/list/equip_slots = list()
 
+
 /datum/element/clockwork_pickup/Attach(datum/target, list/slots_to_count)
 	. = ..()
 
@@ -15,6 +16,7 @@
 
 	if(slots_to_count && !length(equip_slots))
 		equip_slots = slots_to_count
+
 
 /datum/element/clockwork_pickup/Detach(datum/target)
 	. = ..()
@@ -30,16 +32,11 @@
  * 	* slot - The slot the item was equipped in, unused
  */
 
+
 /datum/element/clockwork_pickup/proc/attempt_shock(obj/item/source, mob/equipper, slot)
 	SIGNAL_HANDLER
 
-	if(IS_CLOCK(equipper))
-		return
-
-	if(length(equip_slots) && !(slot in equip_slots))
-		return
-
-	if(!isliving(equipper))
+	if(IS_CLOCK(equipper) || !isliving(equipper) || (length(equip_slots) && !(slot in equip_slots)))
 		return
 
 	var/mob/living/equipper_living = equipper

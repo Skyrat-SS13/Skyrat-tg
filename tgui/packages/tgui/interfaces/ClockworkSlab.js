@@ -4,7 +4,7 @@ import { Icon, Box, Button, Section, Table, Divider, Grid, ProgressBar, Collapsi
 import { Window } from '../layouts';
 import { TableRow } from '../components/Table';
 
-export const convertPower = (power_in) => {
+const convertPower = (power_in) => {
   const units = ['W', 'kW', 'MW', 'GW'];
   let power = 0;
   let value = power_in;
@@ -56,7 +56,7 @@ export const ClockworkSlab = (props, context) => {
   );
 };
 
-export const ClockworkHelp = (props, context) => {
+const ClockworkHelp = (props, context) => {
   return (
     <Fragment>
       <Collapsible title="Where To Start" color="average" open={1}>
@@ -128,7 +128,7 @@ export const ClockworkHelp = (props, context) => {
   );
 };
 
-export const ClockworkSpellList = (props, context) => {
+const ClockworkSpellList = (props, context) => {
   const { act, data } = useBackend(context);
   const { selectedTab } = props;
   const { scriptures = [] } = data;
@@ -185,7 +185,7 @@ export const ClockworkSpellList = (props, context) => {
   );
 };
 
-export const ClockworkOverview = (props, context) => {
+const ClockworkOverview = (props, context) => {
   const { data } = useBackend(context);
   const { power, cogs, vitality, max_power, max_vitality } = data;
   return (
@@ -219,7 +219,7 @@ export const ClockworkOverview = (props, context) => {
   );
 };
 
-export const ClockworkOverviewStat = (props, context) => {
+const ClockworkOverviewStat = (props, context) => {
   const { title, iconName, amount, maxAmount, unit, overrideText } = props;
   return (
     <Box height="22px" fontSize="16px">
@@ -246,12 +246,8 @@ export const ClockworkOverviewStat = (props, context) => {
   );
 };
 
-export const ClockworkButtonSelection = (props, context) => {
-  const [selectedTab, setSelectedTab] = useLocalState(
-    context,
-    'selectedTab',
-    {}
-  );
+const ClockworkButtonSelection = (props, context) => {
+  const [setSelectedTab] = useLocalState(context, 'selectedTab', {});
   const tabs = ['Servitude', 'Preservation', 'Structures'];
   return (
     <Table>

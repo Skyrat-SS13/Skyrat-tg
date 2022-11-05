@@ -19,6 +19,7 @@
 
 	var/list/soft_filter_result = CAN_BYPASS_FILTER(usr) ? null : is_soft_ic_filtered(input)
 	if(soft_filter_result)
+
 		if(tgui_alert(usr,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to say it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
 			return
 		message_admins("[ADMIN_LOOKUPFLW(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[html_encode(input)]\"")
@@ -31,6 +32,7 @@
 	var/my_message
 	if(!message)
 		return
+
 	user.whisper("Engine, V vaibxr gb-gur`r gb-pbzzhar gb-nyy.", language = /datum/language/common) //Ratvar, I invoke to-the`e to-commune to-all.
 	user.whisper(html_decode(message), filterproof = TRUE)
 	my_message = span_italics(span_brass("<b>Ratvarian Servant [findtextEx(user.name, user.real_name) ? user.name : "[user.real_name] (as [user.name])"]:</b> [message]"))
@@ -39,7 +41,9 @@
 /// Send `sent_message` to all other clock cultists and ghosts from the user
 /proc/send_clock_message(mob/living/user, sent_message)
 	for(var/mob/player_mob as anything in GLOB.player_list)
+
 		if(IS_CLOCK(player_mob))
 			to_chat(player_mob, sent_message)
+
 		else if(player_mob in GLOB.dead_mob_list)
 			to_chat(player_mob, span_brass("[FOLLOW_LINK(player_mob, user)] [sent_message]"))

@@ -18,6 +18,7 @@
 
 /obj/structure/destructible/clockwork/trap/flipper/examine(mob/user)
 	. = ..()
+
 	if(!COOLDOWN_FINISHED(src, flip_cooldown) && IS_CLOCK(user))
 		. += span_brass("It's not ready to activate again yet!")
 
@@ -26,10 +27,14 @@
 		return
 	COOLDOWN_START(src, flip_cooldown, cooldown_flip)
 	addtimer(CALLBACK(src, .proc/cooldown_done), cooldown_flip)
+
 	flick("flipper", src)
+
 	for(var/atom/movable/movable_atom in get_turf(src))
+
 		if(movable_atom.anchored)
 			continue
+
 		movable_atom.throw_at(get_edge_target_turf(src, dir), 6, 3)
 
 /obj/structure/destructible/clockwork/trap/flipper/proc/cooldown_done()
@@ -41,5 +46,6 @@
 /datum/component/clockwork_trap/flipper/trigger()
 	if(!..())
 		return
+
 	var/obj/structure/destructible/clockwork/trap/flipper/flipper_parent = parent
 	flipper_parent.flip()

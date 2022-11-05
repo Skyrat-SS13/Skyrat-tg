@@ -1,4 +1,5 @@
 #define MAX_POWER_PER_COG 250
+#define HALLUCINATION_COG_CHANCE 20
 
 /obj/item/clockwork/integration_cog
 	name = "integration cog"
@@ -8,10 +9,7 @@
 	// Integration cogs aren't strong or rare enough to warrant the shock-on-pickup element
 
 /obj/item/clockwork/integration_cog/attack_atom(atom/attacked_atom, mob/living/user, params)
-	if(!(IS_CLOCK(user)))
-		return ..()
-
-	if(!istype(attacked_atom, /obj/machinery/power/apc))
+	if(!(IS_CLOCK(user)) || !istype(attacked_atom, /obj/machinery/power/apc))
 		return ..()
 
 	var/obj/machinery/power/apc/cogger_apc = attacked_atom
@@ -33,6 +31,7 @@
 	//Insert the cog
 	balloon_alert(user, "inserting [src]...")
 	if(!do_after(user, 4 SECONDS, target = cogger_apc))
+		balloon_alert(user, "failed to insert [src]!")
 		return
 
 	cogger_apc.integration_cog = src
@@ -64,7 +63,7 @@
 	. = ..()
 	if(isliving(user))
 		var/mob/living/living_user = user
-		if(integration_cog || (living_user.has_status_effect(/datum/status_effect/hallucination) && prob(20)))
+		if(integration_cog || (living_user.has_status_effect(/datum/status_effect/hallucination) && prob(HALLUCINATION_COG_CHANCE)))
 			. += span_brass("A small cogwheel is inside of it.")
 
 /obj/machinery/power/apc/crowbar_act(mob/user, obj/item/crowbar)
@@ -80,3 +79,4 @@
 	QDEL_NULL(integration_cog)
 
 #undef MAX_POWER_PER_COG
+#undef HALLUCINATION_COG_CHANCE

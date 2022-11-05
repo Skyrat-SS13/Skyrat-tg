@@ -206,19 +206,19 @@ h1.alert, h2.alert		{color: #000000;}
 	font-style: italic;
 }
 
-.nzcrentr {
+.clockyellow {
 	color: #DAAA18;
 	font-weight: bold;
 	font-style: italic;
 }
 
-.nezbere {
+.clockgray {
 	color: #42474D;
 	font-weight: bold;
 	font-style: italic;
 }
 
-.neovgre {
+.clockred {
 	color: #6E001A;
 	font-weight: bold;
 	font-style: italic;

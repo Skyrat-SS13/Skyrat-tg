@@ -4,6 +4,7 @@
 	background_icon_state = "bg_clock"
 	check_flags = AB_CHECK_HANDS_BLOCKED|AB_CHECK_IMMOBILE|AB_CHECK_CONSCIOUS
 
+
 /datum/action/innate/clockcult/quick_bind
 	name = "Quick Bind"
 	button_icon_state = "telerune"
@@ -13,15 +14,18 @@
 	/// Ref to the relevant scripture
 	var/datum/scripture/scripture
 
+
 /datum/action/innate/clockcult/quick_bind/Destroy()
 	activation_slab = null
 	scripture = null
 	return ..()
 
+
 /datum/action/innate/clockcult/quick_bind/Grant(mob/living/recieving_mob)
 	name = scripture.name
 	desc = scripture.tip
 	button_icon_state = scripture.button_icon_state
+
 	if(scripture.power_cost)
 		desc += "<br>Draws <b>[scripture.power_cost]W</b> from the ark per use."
 
@@ -45,6 +49,7 @@
 
 	if(!activation_slab.invoking_scripture)
 		scripture.begin_invoke(owner, activation_slab)
+
 	else
 		to_chat(owner, span_brass("You fail to invoke [name]."))
 

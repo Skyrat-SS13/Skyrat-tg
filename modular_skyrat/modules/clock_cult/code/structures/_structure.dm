@@ -25,24 +25,34 @@
 	///if a fabricator can repair it
 	var/can_be_repaired = TRUE
 
+
 /obj/structure/destructible/clockwork/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/clockwork_description, clockwork_desc)
 
+
 /obj/structure/destructible/clockwork/Destroy()
 	owner = null
+
 	return ..()
+
 
 /obj/structure/destructible/clockwork/attacked_by(obj/item/I, mob/living/user)
+
 	if(immune_to_servant_attacks && (IS_CLOCK(user)))
 		return
+
 	return ..()
 
+
 /obj/structure/destructible/clockwork/crowbar_act(mob/living/user, obj/item/tool)
+
 	if(IS_CLOCK(user))
 		setDir(turn(dir, 90))
 		balloon_alert(user, "rotated to [dir2text(dir)]")
+
 	return TRUE
+
 
 //the base clockwork machinery, which isn't actually a machine subtype, but happens to use power
 /obj/structure/destructible/clockwork/powered
@@ -56,6 +66,7 @@
 	var/active_icon = null
 	///icon_state while process() isn't being called
 	var/inactive_icon = null
+
 
 /obj/structure/destructible/clockwork/powered/Destroy()
 	target_apc = null

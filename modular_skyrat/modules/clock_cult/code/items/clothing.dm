@@ -1,3 +1,5 @@
+#define VISOR_MOUNT_DAMAGE 20
+
 /obj/item/clothing/suit/clockwork
 	name = "bronze armor"
 	desc = "A strong, bronze suit worn by the soldiers of the Ratvarian armies."
@@ -121,6 +123,7 @@
 
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	wearer = null
 	return ..()
 
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/update_icon_state()
@@ -139,6 +142,7 @@
 		var/mob/living/carbon/carbon_user = user
 		carbon_user.head_update(src, forced = TRUE)
 
+/// "enable" the spectacles, flipping them down and applying their effects, calling on_toggle_eyes() if someone is wearing them
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/proc/enable()
 	enabled = TRUE
 	lighting_alpha = initial(lighting_alpha)
@@ -149,6 +153,7 @@
 
 	update_icon_state()
 
+/// "disable" the spectacles, flipping them up and removing all applied effects
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/proc/disable()
 	enabled = FALSE
 	lighting_alpha = 0
@@ -159,15 +164,17 @@
 
 	update_icon_state()
 
+/// The start of application of the actual effects, including eye damage
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/proc/on_toggle_eyes()
 	wearer.update_sight()
 	applied_eye_damage = 0
 	START_PROCESSING(SSobj, src)
-	to_chat(wearer, span_nezbere("You suddenly see so much more, but your eyes begin to falter..."))
+	to_chat(wearer, span_clockgray("You suddenly see so much more, but your eyes begin to falter..."))
 
+/// The stopping of effect application, will remove the wearer's eye damage a minute after
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/proc/de_toggle_eyes()
 	wearer.update_sight()
-	to_chat(wearer, span_nezbere("You feel your eyes slowly recovering."))
+	to_chat(wearer, span_clockgray("You feel your eyes slowly recovering."))
 	addtimer(CALLBACK(wearer, /mob/living.proc/adjustOrganLoss, ORGAN_SLOT_EYES, -applied_eye_damage), 60 SECONDS)
 	applied_eye_damage = 0
 	STOP_PROCESSING(SSobj, src)
@@ -239,6 +246,7 @@
 		var/mob/living/carbon/carbon_user = user
 		carbon_user.head_update(src, forced = TRUE)
 
+/// Turn on the visor, calling apply_to_wearer() and changing the icon state
 /obj/item/clothing/glasses/clockwork/judicial_visor/proc/enable()
 	enabled = TRUE
 	if(wearer)
@@ -246,6 +254,7 @@
 
 	update_icon_state()
 
+/// Turn off the visor, calling unapply_to_wearer() and changing the icon state
 /obj/item/clothing/glasses/clockwork/judicial_visor/proc/disable()
 	enabled = FALSE
 	if(wearer)
@@ -253,6 +262,7 @@
 
 	update_icon_state()
 
+/// Applies the actual effects to the wearer, giving them flash protection and a variety of sight/info bonuses
 /obj/item/clothing/glasses/clockwork/judicial_visor/proc/apply_to_wearer()
 	ADD_TRAIT(wearer, TRAIT_NOFLASH, CLOTHING_TRAIT)
 
@@ -268,6 +278,7 @@
 	ADD_TRAIT(wearer, TRAIT_KNOW_ENGI_WIRES, CLOTHING_TRAIT)
 	ADD_TRAIT(wearer, TRAIT_KNOW_CYBORG_WIRES, CLOTHING_TRAIT)
 
+/// Removes the effects to the wearer, removing the flash protection and similar
 /obj/item/clothing/glasses/clockwork/judicial_visor/proc/unapply_to_wearer()
 	REMOVE_TRAIT(wearer, TRAIT_NOFLASH, CLOTHING_TRAIT)
 
@@ -298,7 +309,7 @@
 		if(damaging)
 			wearer.emote("scream")
 			wearer.Sleeping(5 SECONDS)
-			wearer.apply_damage(20, BRUTE, BODY_ZONE_HEAD)
+			wearer.apply_damage(VISOR_MOUNT_DAMAGE, BRUTE, BODY_ZONE_HEAD)
 
 /obj/item/clothing/glasses/clockwork/judicial_visor/dropped(mob/user)
 	..()
@@ -355,3 +366,5 @@
 /obj/item/clothing/gloves/clockwork/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/clockwork_pickup, ~(ITEM_SLOT_HANDS))
+
+#undef VISOR_MOUNT_DAMAGE

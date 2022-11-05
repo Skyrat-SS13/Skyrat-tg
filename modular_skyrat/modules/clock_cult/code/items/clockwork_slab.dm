@@ -33,9 +33,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 
 	var/calculated_cogs = 0
 	var/cogs = 0
-	var/list/purchased_scriptures = list(
-		//datum/scripture/ark_activation
-	)
+	var/list/purchased_scriptures = list()
 
 	//Initialise an empty list for quickbinding
 	var/list/quick_bound_scriptures = list(
@@ -48,6 +46,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 
 	//The default scriptures that get auto-assigned.
 	var/list/default_scriptures = list(
+		// COMMENTED OUT UNTIL THESE SCRIPTURES ACTUALLY EXIST
 		//datum/scripture/abscond,
 		//datum/scripture/integration_cog,
 		//datum/scripture/clockwork_armaments
@@ -136,12 +135,6 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 // UI things below
 
 /obj/item/clockwork/clockwork_slab/attack_self(mob/living/user)
-	if(IS_CULTIST(user))
-		to_chat(user, span_bigbrass("You shouldn't be playing with my toys..."))
-		user.Stun(60)
-		user.adjust_blindness(150)
-		user.electrocute_act(10, "[name]")
-		return
 
 	if(!(IS_CLOCK(user)))
 		to_chat(user, span_warning("You cannot figure out what the device is used for!"))

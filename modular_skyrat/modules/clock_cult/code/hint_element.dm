@@ -5,7 +5,8 @@
 	/// Text to add to the description of the parent
 	var/text_to_add = ""
 
-/datum/element/clockwork_description/Attach(datum/target, text_to_add)
+
+/datum/element/clockwork_description/Attach(datum/target, parent_text)
 	. = ..()
 
 	if(!isatom(target))
@@ -13,8 +14,9 @@
 
 	RegisterSignal(target, COMSIG_PARENT_EXAMINE, .proc/add_examine)
 	// Don't perform the assignment if there is nothing to assign, or if we already have something for this bespoke element
-	if(text_to_add && !src.text_to_add)
-		src.text_to_add = text_to_add
+	if(parent_text && !text_to_add)
+		text_to_add = parent_text
+
 
 /datum/element/clockwork_description/Detach(datum/target)
 	. = ..()

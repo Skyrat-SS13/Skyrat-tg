@@ -29,20 +29,26 @@
 //		trans_sigil.linked_structures -= src
 	return ..()
 
+
 /obj/structure/destructible/clockwork/gear_base/wrench_act(mob/living/user, obj/item/tool)
 	if(!(IS_CLOCK(user)))
 		return
+
 	to_chat(user, span_notice("You begin to [anchored ? "unwrench" : "wrench"] [src]."))
 	if(!tool.use_tool(src, user, 2 SECONDS, volume = 50))
 		return
+
 	to_chat(user, span_notice("You successfully [anchored ? "unwrench" : "wrench"] [src]."))
+
 	anchored = !anchored
 	update_icon_state()
+
 	return TRUE
 
 /obj/structure/destructible/clockwork/gear_base/update_icon_state()
 	. = ..()
 	icon_state = initial(icon_state)
+
 	if(!anchored)
 		icon_state += unwrenched_suffix
 /*
@@ -61,22 +67,30 @@
 		depowered()
 		depowered = TRUE*/
 
-//Power procs, for all your power needs, that is... if you have any
+//Power procs, for all your power needs
+
 
 /// Checks if there's enough power to power it, calls repower() if changed from depowered to powered, vice versa
 /obj/structure/destructible/clockwork/gear_base/proc/update_power()
 	if(depowered)
+
 		if(GLOB.clock_power > minimum_power && LAZYLEN(transmission_sigils))
 			repowered()
 			depowered = FALSE
+
 			return TRUE
+
 		return FALSE
 	else
+
 		if(GLOB.clock_power <= minimum_power || !LAZYLEN(transmission_sigils))
 			depowered()
 			depowered = TRUE
+
 			return FALSE
+
 		return TRUE
+
 
 /// Checks if there's equal or greater power to the amount arg, TRUE if so, FALSE otherwise
 /obj/structure/destructible/clockwork/gear_base/proc/check_power(amount)
@@ -88,6 +102,7 @@
 		return FALSE
 	return TRUE
 
+
 /// Uses power if there's enough to do so
 /obj/structure/destructible/clockwork/gear_base/proc/use_power(amount)
 	update_power()
@@ -97,10 +112,12 @@
 	update_power()
 	return TRUE
 
-/// Lost power
+
+/// Triggers when the structure runs out of power to use
 /obj/structure/destructible/clockwork/gear_base/proc/depowered()
 	return
 
-/// Gained power
+
+/// Triggers when the structure regains power to use
 /obj/structure/destructible/clockwork/gear_base/proc/repowered()
 	return

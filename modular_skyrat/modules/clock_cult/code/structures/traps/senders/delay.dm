@@ -5,6 +5,7 @@
 	result_path = /obj/structure/destructible/clockwork/trap/delay
 	clockwork_desc = "A device that can be attached to walls. When input is received, it will send an output signal a configurable (with multitool) time later."
 
+
 /obj/structure/destructible/clockwork/trap/delay
 	name = "clockwork timer"
 	desc = "A small timer attatched to the wall."
@@ -16,9 +17,11 @@
 	/// How much time the signal is delayed
 	var/delay_time = 1 SECONDS
 
+
 /obj/structure/destructible/clockwork/trap/delay/multitool_act(mob/living/user, obj/item/tool)
 	delay_time = tgui_input_number(user, "Input delay time", "Clockwork Timer", 1 SECONDS, 120 SECONDS, 1 SECONDS)
 	return TRUE
+
 
 /datum/component/clockwork_trap/delay
 	takes_input = TRUE
@@ -27,12 +30,12 @@
 	var/active = FALSE
 
 /datum/component/clockwork_trap/delay/trigger()
-	if(!..())
+	if(!..() || active)
 		return
-	if(active)
-		return
+
 	active = TRUE
 	flick("delayer_active", parent)
+
 	var/obj/structure/destructible/clockwork/trap/delay/parent_delayer = parent
 	addtimer(CALLBACK(src, .proc/finish), parent_delayer.delay_time)
 
