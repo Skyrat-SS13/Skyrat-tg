@@ -83,6 +83,15 @@
 	name = "Flat Brimmed Hat (Worn)"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/head/cowboy.dmi'
 
+/datum/greyscale_config/cowboy_flat_cowl
+	name = "Flat Brimmed Hat with Cowl"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/head/cowboy.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/cowboy/three_layer_hats.json'
+
+/datum/greyscale_config/cowboy_flat_cowl/worn
+	name = "Flat Brimmed Hat with Cowl (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/head/cowboy.dmi'
+
 /datum/greyscale_config/cowboy_cattleman
 	name = "Cattleman Hat"
 	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/head/cowboy.dmi'

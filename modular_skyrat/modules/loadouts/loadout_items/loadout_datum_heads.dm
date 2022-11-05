@@ -399,6 +399,10 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Flat-Brimmed Hat"
 	item_path = /obj/item/clothing/head/cowboy/skyrat/flat
 
+/datum/loadout_item/head/cowboyhat_flat_cowl
+	name = "Flat-Brimmed Hat with Cowl"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/flat/cowl
+
 /datum/loadout_item/head/cowboyhat_sheriff
 	name = "Sheriff Hat"
 	item_path = /obj/item/clothing/head/cowboy/skyrat/flat/sheriff
@@ -409,7 +413,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/cowboyhat_winter
 	name = "Winter Cowboy Hat"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/sheriff
+	item_path = /obj/item/clothing/head/cowboy/skyrat/flat/cowl/sheriff
 
 /*
 *	TREK HATS (JOB-LOCKED)
