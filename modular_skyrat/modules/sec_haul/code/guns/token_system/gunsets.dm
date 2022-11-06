@@ -358,6 +358,7 @@
 /obj/item/storage/box/gunset/glock18_hos
 	name = "GK-18 supply box"
 	desc = "Ideally contains a fast-firing 9x19mm pistol made out of cheap plastic."
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/gun/ballistic/automatic/pistol/g18/nomag
 	spawnwithmagazine = FALSE
