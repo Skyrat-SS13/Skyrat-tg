@@ -98,7 +98,7 @@
 // Smart ammo casings
 
 /obj/item/ammo_casing/smart
-	icon = 'modular_skyrat/master_files/icons/obj/ammo/ammo.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/guns/ammo.dmi'
 
 /obj/item/ammo_casing/smart/Initialize(mapload)
 	. = ..()

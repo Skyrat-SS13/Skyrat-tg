@@ -2,7 +2,7 @@
 	name = "\improper Armadyne Peacekeeper Equipment Vendor"
 	desc = "An Armadyne peacekeeper equipment vendor."
 	product_ads = "Crack capitalist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
-	icon = 'modular_skyrat/master_files/icons/obj/vending/vending.dmi'
+	icon = 'modular_skyrat/modules/sec_haul/icons/vending/vending.dmi'
 	icon_state = "sec"
 	icon_deny = "sec-deny"
 	light_mask = "sec-light-mask"
@@ -52,7 +52,7 @@
 /obj/machinery/vending/wardrobe/sec_wardrobe
 	name = "\improper Peacekeeper Outfitting Station"
 	desc = "A vending machine stocked with Lopland's \"Peacekeeper\" security package, including standardized uniforms and general equipment."
-	icon = 'modular_skyrat/master_files/icons/obj/vending/vending.dmi'
+	icon = 'modular_skyrat/modules/sec_haul/icons/vending/vending.dmi'
 	icon_state = "peace"
 	product_ads = "Beat perps in style!;The stains wash right out!;You have the right to be fashionable!;Now you can be the fashion police you always wanted to be!"
 	vend_reply = "Good luck, Peacekeeper!"

@@ -1,12 +1,12 @@
 /obj/item/melee/hammer
 	name = "D-4 tactical hammer"
 	desc = "A metallic-plastic composite breaching hammer, looks like a whack with this would severly harm or tire someone."
-	icon = 'modular_skyrat/master_files/icons/obj/peacekeeper/peacekeeper_items.dmi'
+	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
 	icon_state = "peacekeeper_hammer"
 	inhand_icon_state = "peacekeeper_hammer"
 	worn_icon_state = "classic_baton"
-	lefthand_file = 'modular_skyrat/master_files/icons/obj/peacekeeper/baton/peacekeeper_baton_lefthand.dmi'
-	righthand_file = 'modular_skyrat/master_files/icons/obj/peacekeeper/baton/peacekeeper_baton_righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/baton/peacekeeper_baton_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/baton/peacekeeper_baton_righthand.dmi'
 	slot_flags = ITEM_SLOT_BELT
 	force = 15
 	throwforce = 10
