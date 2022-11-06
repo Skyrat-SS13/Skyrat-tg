@@ -32,8 +32,8 @@
 		return FALSE
 
 	if(istype(to_insert, /obj/item/gun)) // Is it a gun?
-		if (locate(/obj/item/gun) in resolve_parent)  // Is there a gun in it? - Thank you, mothblocks.
-			to_chat(user, span_warning("There's already a gun in \the [resolve_parent], the \The [to_insert] doesn't fit!"))
+		if(locate(/obj/item/gun) in resolve_parent)  // Is there a gun in it? - Thank you, mothblocks.
+			to_chat(user, span_warning("There's already a gun in \the [resolve_parent], \The [to_insert] doesn't fit!"))
 			return FALSE
 
 
@@ -55,7 +55,7 @@
 		/obj/item/gun,
 		/obj/item/storage/bag/ammo,
 		/obj/item/gun_maintenance_supplies,
-		))
+	))
 
 /obj/item/storage/box/gunset/PopulateContents()
 	. = ..()
