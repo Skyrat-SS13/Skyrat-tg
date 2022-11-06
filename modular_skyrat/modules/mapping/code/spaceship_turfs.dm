@@ -7,8 +7,8 @@
 	icon_state = "ship_walls-0"
 	base_icon_state = "ship_walls"
 	sheet_type = /obj/item/stack/sheet/spaceship
-	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_SHIPWALLS)
-	canSmoothWith = list(SMOOTH_GROUP_SHIPWALLS, SMOOTH_GROUP_AIRLOCK, SMOOTH_GROUP_SURVIVAL_TITANIUM_POD, SMOOTH_GROUP_SHUTTLE_PARTS)
+	smoothing_groups = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_SHIPWALLS, SMOOTH_GROUP_CLOSED_TURFS) // SKYRAT EDIT CHANGE - Sorting them because /tg/ forgot to
+	canSmoothWith = list(SMOOTH_GROUP_SURVIVAL_TITANIUM_POD, SMOOTH_GROUP_SHIPWALLS, SMOOTH_GROUP_AIRLOCK, SMOOTH_GROUP_SHUTTLE_PARTS)
 
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal
 	icon_state = "map-shuttle_nd"
@@ -52,7 +52,7 @@
 	base_icon_state = "pod_window"
 	glass_type = /obj/item/stack/sheet/spaceshipglass
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_SHUTTLE_PARTS, SMOOTH_GROUP_WINDOW_FULLTILE_SHUTTLE, SMOOTH_GROUP_SHIPWALLS)
+	smoothing_groups = list(SMOOTH_GROUP_SHIPWALLS, SMOOTH_GROUP_WINDOW_FULLTILE_SHUTTLE, SMOOTH_GROUP_SHUTTLE_PARTS)
 	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE_SHUTTLE)
 
 /obj/structure/window/reinforced/shuttle/spaceship/tinted

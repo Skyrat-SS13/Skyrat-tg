@@ -65,7 +65,7 @@
 	return
 
 /obj/item/storage/belt/crusader/AltClick(mob/user)	//This is basically the same as the normal sheath, but because there's always an item locked in the first slot it uses the second slot for swords
-	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
+	if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE))
 		return
 	if(contents.len == 2)
 		var/obj/item/drawn_item = contents[2]

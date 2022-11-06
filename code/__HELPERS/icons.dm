@@ -1024,7 +1024,6 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 		body.equip_outfit_and_loadout(outfit, prefs, TRUE) //SKYRAT EDIT CHANGE
 
 	var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
-	COMPILE_OVERLAYS(body)
 	for(var/D in showDirs)
 		var/icon/partial = getFlatIcon(body, defdir=D)
 		out_icon.Insert(partial,dir=D)
@@ -1054,7 +1053,6 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 	var/initial_human_dir = existing_human.dir
 	existing_human.dir = SOUTH
 	var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
-	COMPILE_OVERLAYS(existing_human)
 	for(var/direction in directions_to_output)
 		var/icon/partial = getFlatIcon(existing_human, defdir = direction)
 		out_icon.Insert(partial, dir = direction)
@@ -1138,7 +1136,7 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 	if(isicon(icon) && isfile(icon))
 		//icons compiled in from 'icons/path/to/dmi_file.dmi' at compile time are weird and arent really /icon objects,
 		///but they pass both isicon() and isfile() checks. theyre the easiest case since stringifying them gives us the path we want
-		var/icon_ref = "\ref[icon]"
+		var/icon_ref = text_ref(icon)
 		var/locate_icon_string = "[locate(icon_ref)]"
 
 		icon_path = locate_icon_string
@@ -1149,7 +1147,7 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 		// the rsc reference returned by fcopy_rsc() will be stringifiable to "icons/path/to/dmi_file.dmi"
 		var/rsc_ref = fcopy_rsc(icon)
 
-		var/icon_ref = "\ref[rsc_ref]"
+		var/icon_ref = text_ref(rsc_ref)
 
 		var/icon_path_string = "[locate(icon_ref)]"
 
@@ -1159,7 +1157,7 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 		var/rsc_ref = fcopy_rsc(icon)
 		//if its the text path of an existing dmi file, the rsc reference returned by fcopy_rsc() will be stringifiable to a dmi path
 
-		var/rsc_ref_ref = "\ref[rsc_ref]"
+		var/rsc_ref_ref = text_ref(rsc_ref)
 		var/rsc_ref_string = "[locate(rsc_ref_ref)]"
 
 		icon_path = rsc_ref_string
@@ -1314,9 +1312,8 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
  * result_appearance - End result appearance/atom/image
  * time - Animation duration
  * transform_overlay - Appearance/atom/image of effect that moves along the animation - should be horizonatally centered
- * reset_after - If FALSE, filters won't be reset and helper vis_objects will not be removed after animation duration expires. Cleanup must be handled by the caller!
  */
-/atom/movable/proc/transformation_animation(result_appearance,time = 3 SECONDS,transform_overlay,reset_after=TRUE)
+/atom/movable/proc/transformation_animation(result_appearance,time = 3 SECONDS,transform_overlay)
 	var/list/transformation_objects = GLOB.transformation_animation_objects[src] || list()
 	//Disappearing part
 	var/top_part_filter = filter(type="alpha",icon=icon('icons/effects/alphacolors.dmi',"white"),y=0)
@@ -1345,8 +1342,7 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	GLOB.transformation_animation_objects[src] = transformation_objects
 	for(var/A in transformation_objects)
 		vis_contents += A
-	if(reset_after)
-		addtimer(CALLBACK(src,.proc/_reset_transformation_animation,filter_index),time)
+	addtimer(CALLBACK(src,.proc/_reset_transformation_animation,filter_index),time)
 
 /*
  * Resets filters and removes transformation animations helper objects from vis contents.

@@ -7,7 +7,7 @@
 	..()
 
 	new /obj/item/storage/bag/garment/engineering_chief (src)
-	new /obj/item/computer_hardware/hard_drive/portable/command/ce(src)
+	new /obj/item/computer_disk/command/ce(src)
 	new /obj/item/radio/headset/heads/ce(src)
 	new /obj/item/megaphone/command(src)
 	new /obj/item/holosign_creator/atmos(src)
@@ -53,7 +53,7 @@
 /obj/structure/closet/secure_closet/engineering_welding/PopulateContents()
 	..()
 	for(var/i in 1 to 3)
-		new /obj/item/clothing/head/welding(src)
+		new /obj/item/clothing/head/utility/welding(src)
 	for(var/i in 1 to 3)
 		new /obj/item/weldingtool(src)
 
@@ -90,6 +90,6 @@
 	new /obj/item/watertank/atmos(src)
 	new /obj/item/clothing/suit/utility/fire/atmos(src)
 	new /obj/item/clothing/mask/gas/atmos(src)
-	new /obj/item/clothing/head/hardhat/atmos(src)
+	new /obj/item/clothing/head/utility/hardhat/atmos(src)
 	new /obj/item/clothing/glasses/meson/engine/tray(src)
 	new /obj/item/extinguisher/advanced(src)

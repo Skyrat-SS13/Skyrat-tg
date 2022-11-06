@@ -64,7 +64,7 @@
 			safety_inspection = FALSE
 			priority_announce("This is a generated message due to an automated signal regarding the safety standards of the engineering department onboard [station_name()]. Due to the station engineers failing to meet the standard set by Central Command, each of them are now at risk of being forcefully enrolled in a re-evaluation program at later notice...", "Concerning the results of a safety inspection", type = "Priority")
 			// It's just flavor, no tangible punishment
-	..()
+	return ..()
 
 /mob/living/simple_animal/pet/poppy/revive(full_heal, admin_revive)
 	become_area_sensitive(INNATE_TRAIT)

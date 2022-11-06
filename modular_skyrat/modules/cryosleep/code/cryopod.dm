@@ -157,6 +157,8 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	/// if false, plays announcement on cryo
 	var/quiet = FALSE
 
+	/// Has the occupant been tucked in?
+	var/tucked = FALSE
 
 /obj/machinery/cryopod/quiet
 	quiet = TRUE
@@ -210,6 +212,7 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	icon_state = "cryopod-open"
 	set_density(TRUE)
 	name = initial(name)
+	tucked = FALSE
 
 /obj/machinery/cryopod/container_resist_act(mob/living/user)
 	visible_message(span_notice("[occupant] emerges from [src]!"),
@@ -354,7 +357,8 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 		if(control_computer)
 			if(istype(item_content, /obj/item/modular_computer))
 				var/obj/item/modular_computer/computer = item_content
-				computer.invisible = TRUE
+				for(var/datum/computer_file/program/messenger/message_app in computer.stored_files)
+					message_app.invisible = TRUE
 			item_content.dropped(mob_occupant)
 			mob_occupant.transferItemToLoc(item_content, control_computer, force = TRUE, silent = TRUE)
 			control_computer.frozen_item += item_content
@@ -458,6 +462,19 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 // Attacks/effects.
 /obj/machinery/cryopod/blob_act()
 	return // Sorta gamey, but we don't really want these to be destroyed.
+
+/obj/machinery/cryopod/attackby(obj/item/weapon, mob/living/carbon/human/user, params)
+	. = ..()
+	if(istype(weapon, /obj/item/bedsheet))
+		if(!occupant || !istype(occupant, /mob/living))
+			return
+		if(tucked)
+			to_chat(user, span_warning("[occupant.name] already looks pretty comfortable!"))
+			return
+		to_chat(user, span_notice("You tuck [occupant.name] into their pod!"))
+		qdel(weapon)
+		user.add_mood_event("tucked", /datum/mood_event/tucked_in, occupant)
+		tucked = TRUE
 
 // Wake-up notifications
 

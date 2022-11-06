@@ -43,7 +43,7 @@
 			to_chat(user, span_notice("You scribble illegibly on the label of the vape cart!"))
 			return
 		var/new_title = stripped_input(user, "What would you like to label the vape cart?", name, null, 53)
-		if(!user.canUseTopic(src, BE_CLOSE))
+		if(!user.canUseTopic(src, be_close = TRUE))
 			return
 		if(user.get_active_held_item() != attacked_item)
 			return

@@ -13,6 +13,7 @@
 	exp_required_type = EXP_TYPE_CREW
 	exp_required_type_department = EXP_TYPE_COMMAND
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "BLUESHIELD"
 
 	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_CMD
@@ -75,9 +76,6 @@
 /obj/item/storage/box/gunset/blueshield
 	name = "CMG-1 gunset"
 	w_class = WEIGHT_CLASS_NORMAL
-
-/obj/item/gun/ballistic/automatic/cmg/nomag
-	spawnwithmagazine = FALSE
 
 /obj/item/storage/box/gunset/blueshield/PopulateContents()
 	. = ..()

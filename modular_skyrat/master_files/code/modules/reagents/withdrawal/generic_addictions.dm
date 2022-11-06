@@ -19,22 +19,22 @@
 		if(8)
 			if(strength >= 2)
 				to_chat(affected_carbon, span_warning("You feel a little dizzy."))
-				affected_carbon.set_timed_status_effect(strength * 6 SECONDS, /datum/status_effect/dizziness)
+				affected_carbon.set_dizzy(strength * 6 SECONDS)
 		if(8 to 10)
 			to_chat(affected_carbon, span_warning("You feel tired."))
 			affected_carbon.adjustStaminaLoss(6 * strength)
 
 /datum/addiction/nicotine/withdrawal_enters_stage_1(mob/living/carbon/affected_carbon, delta_time)
 	. = ..()
-	affected_carbon.set_timed_status_effect(10 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
+	affected_carbon.set_jitter_if_lower(10 SECONDS)
 
 /datum/addiction/nicotine/withdrawal_enters_stage_2(mob/living/carbon/affected_carbon, delta_time)
 	. = ..()
-	affected_carbon.set_timed_status_effect(20 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
+	affected_carbon.set_jitter_if_lower(20 SECONDS)
 
 /datum/addiction/nicotine/withdrawal_enters_stage_3(mob/living/carbon/affected_carbon, delta_time)
 	. = ..()
-	affected_carbon.set_timed_status_effect(30 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
+	affected_carbon.set_jitter_if_lower(30 SECONDS)
 
 /datum/addiction/nicotine/withdrawal_stage_2_process(mob/living/carbon/affected_carbon, delta_time)
 	. = ..()

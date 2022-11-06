@@ -18,6 +18,7 @@
 		var/mob/living/carbon/human/human_user = user
 		ADD_TRAIT(human_user, TRAIT_BLUSHING, "[type]")
 		human_user.update_body_parts()
+		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/blush.ogg', 25, TRUE) // Skrat Edit: Returns the .ogg that was played
 
 		// Use a timer to remove the blush effect after the BLUSH_DURATION has passed
 		var/list/key_emotes = GLOB.emote_list["blush"]
@@ -116,12 +117,14 @@
 	stat_allowed = HARD_CRIT
 
 /datum/emote/living/deathgasp/run_emote(mob/living/user, params, type_override, intentional)
+	if(!is_type_in_typecache(user, mob_type_allowed_typecache))
+		return
 	if(user.death_message)
 		message_simple = user.death_message
 	. = ..()
 	message_simple = initial(message_simple)
 	if(. && user.death_sound)
-		if(!user.can_speak_vocal() || user.oxyloss >= 50)
+		if(!user.can_speak() || user.oxyloss >= 50)
 			return //stop the sound if oxyloss too high/cant speak
 		playsound(user, user.death_sound, 200, TRUE, TRUE)
 
@@ -263,10 +266,7 @@
 	vary = TRUE
 
 /datum/emote/living/laugh/can_run_emote(mob/living/user, status_check = TRUE , intentional)
-	. = ..()
-	if(. && iscarbon(user))
-		var/mob/living/carbon/C = user
-		return !C.silent
+	return ..() && user.can_speak(allow_mimes = TRUE)
 
 /datum/emote/living/laugh/get_sound(mob/living/user)
 	. = ..()

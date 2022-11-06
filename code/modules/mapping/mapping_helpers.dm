@@ -134,7 +134,7 @@
 					qdel(src)
 					return
 				here.PlaceOnTop(/turf/closed/wall)
-				qdel(src)
+				qdel(airlock)
 				return
 			if(9 to 11)
 				airlock.lights = FALSE
@@ -282,6 +282,17 @@ INITIALIZE_IMMEDIATE(/obj/effect/mapping_helpers/no_lava)
 ///Generates text for our stack trace
 /obj/effect/mapping_helpers/atom_injector/proc/generate_stack_trace()
 	. = "[name] found no targets at ([x], [y], [z]). First Match Only: [first_match_only ? "true" : "false"] target type: [target_type] | target name: [target_name]"
+
+/obj/effect/mapping_helpers/atom_injector/obj_flag
+	name = "Obj Flag Injector"
+	icon_state = "objflag_helper"
+	var/inject_flags = NONE
+
+/obj/effect/mapping_helpers/atom_injector/obj_flag/inject(atom/target)
+	if(!isobj(target))
+		return
+	var/obj/obj_target = target
+	obj_target.obj_flags |= inject_flags
 
 ///This helper applies components to things on the map directly.
 /obj/effect/mapping_helpers/atom_injector/component_injector
@@ -537,7 +548,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/mapping_helpers/no_lava)
 	var/balloon_clusters = 2
 
 /obj/effect/mapping_helpers/ianbirthday/LateInitialize()
-	if(locate(/datum/holiday/ianbirthday) in SSevents.holidays)
+	if(check_holidays("Ian's Birthday"))
 		birthday()
 	qdel(src)
 
@@ -605,7 +616,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/mapping_helpers/no_lava)
 	icon_state = "iansnewyrshelper"
 
 /obj/effect/mapping_helpers/iannewyear/LateInitialize()
-	if(SSevents.holidays && SSevents.holidays[NEW_YEAR])
+	if(check_holidays(NEW_YEAR))
 		fireworks()
 	qdel(src)
 
@@ -619,7 +630,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/mapping_helpers/no_lava)
 			table += thing
 		else if(isopenturf(thing))
 			if(locate(/obj/structure/bed/dogbed/ian) in thing)
-				new /obj/item/clothing/head/festive(thing)
+				new /obj/item/clothing/head/costume/festive(thing)
 				var/obj/item/reagent_containers/cup/glass/bottle/champagne/iandrink = new(thing)
 				iandrink.name = "dog champagne"
 				iandrink.pixel_y += 8
