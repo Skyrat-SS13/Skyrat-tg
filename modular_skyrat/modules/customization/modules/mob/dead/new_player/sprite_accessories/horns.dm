@@ -11,9 +11,6 @@
 	//	Can hide if wearing hat
 		if(key in wearer.try_hide_mutant_parts)
 			return TRUE
-	//	Exception for MODs
-		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
-			return FALSE
 	return FALSE
 
 

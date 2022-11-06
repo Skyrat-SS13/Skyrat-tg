@@ -29,6 +29,10 @@
 	return FALSE
 
 /obj/item/organ/external/tail/can_draw_on_bodypart(mob/living/carbon/human/wearer)
+	var/list/used_in_turf = list("tail")
+	if(wearer.owned_turf?.name in used_in_turf)
+		// Emote exception
+		return FALSE
 	if(wearer.w_uniform)
 	//	Can hide if wearing uniform
 		if(render_key in wearer.try_hide_mutant_parts)
@@ -40,11 +44,6 @@
 		//	Hide accessory if flagged to do so
 			else if(wearer.wear_suit.flags_inv & HIDETAIL)
 				return FALSE
-	else
-		var/list/used_in_turf = list("tail")
-		if(wearer.owned_turf?.name in used_in_turf)
-		// Emote exception
-			return FALSE
 	return ..()
 
 /datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/wearer)

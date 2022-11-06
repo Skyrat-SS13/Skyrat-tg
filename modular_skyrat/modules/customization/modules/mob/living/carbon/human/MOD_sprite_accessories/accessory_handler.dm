@@ -28,7 +28,7 @@
 		if(!modsuit_control.active)
 			return
 		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
-		special_icon.Blend(MOD_texture, ICON_ADD)
+		special_icon.Blend("#fff", ICON_ADD)
 		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
 		return special_icon
 
@@ -44,7 +44,7 @@
 		if(!modsuit_control.active)
 			return
 		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
-		special_icon.Blend(MOD_texture, ICON_ADD)
+		special_icon.Blend("#fff", ICON_ADD)
 		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
 		return special_icon
 
@@ -60,7 +60,7 @@
 		if(!modsuit_control.active)
 			return
 		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
-		special_icon.Blend(MOD_texture, ICON_ADD)
+		special_icon.Blend("#fff", ICON_ADD)
 		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
 		return special_icon
 
@@ -76,7 +76,7 @@
 		if(!modsuit_control.active)
 			return
 		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
-		special_icon.Blend(MOD_texture, ICON_ADD)
+		special_icon.Blend("#fff", ICON_ADD)
 		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
 		return special_icon
 
@@ -92,7 +92,7 @@
 		if(!modsuit_control.active)
 			return
 		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
-		special_icon.Blend(MOD_texture, ICON_ADD)
+		special_icon.Blend("#fff", ICON_ADD)
 		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
 		return special_icon
 
@@ -108,7 +108,7 @@
 		if(!modsuit_control.active)
 			return
 		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
-		special_icon.Blend(MOD_texture, ICON_ADD)
+		special_icon.Blend("#fff", ICON_ADD)
 		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
 		return special_icon
 
@@ -124,7 +124,7 @@
 		if(!modsuit_control.active)
 			return
 		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
-		special_icon.Blend(MOD_texture, ICON_ADD)
+		special_icon.Blend("#fff", ICON_ADD)
 		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
 		return special_icon
 
@@ -140,7 +140,7 @@
 		if(!modsuit_control.active)
 			return
 		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
-		special_icon.Blend(MOD_texture, ICON_ADD)
+		special_icon.Blend("#fff", ICON_ADD)
 		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
 		return special_icon
 
@@ -156,6 +156,6 @@
 		if(!modsuit_control.active)
 			return
 		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
-		special_icon.Blend(MOD_texture, ICON_ADD)
+		special_icon.Blend("#fff", ICON_ADD)
 		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
 		return special_icon
