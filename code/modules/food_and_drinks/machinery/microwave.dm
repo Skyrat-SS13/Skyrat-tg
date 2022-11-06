@@ -48,6 +48,11 @@
 /obj/machinery/microwave/Exited(atom/movable/gone, direction)
 	if(gone in ingredients)
 		ingredients -= gone
+		if(!QDELING(gone) && ingredients.len && isitem(gone))
+			var/obj/item/itemized_ingredient = gone
+			if(!(itemized_ingredient.item_flags & NO_PIXEL_RANDOM_DROP))
+				itemized_ingredient.pixel_x = itemized_ingredient.base_pixel_x + rand(-6, 6)
+				itemized_ingredient.pixel_y = itemized_ingredient.base_pixel_y + rand(-5, 6)
 	return ..()
 
 
@@ -434,12 +439,24 @@
 /obj/machinery/microwave/proc/loop_finish()
 	operating = FALSE
 
+<<<<<<< HEAD
 	var/metal = 0
 	for(var/obj/item/O in ingredients)
 		O.microwave_act(src)
 		if(LAZYLEN(O.custom_materials))
 			if(O.custom_materials[GET_MATERIAL_REF(/datum/material/iron)])
 				metal += O.custom_materials[GET_MATERIAL_REF(/datum/material/iron)]
+=======
+	var/metal_amount = 0
+	for(var/obj/item/cooked_item in ingredients)
+		var/sigreturn = cooked_item.microwave_act(src, cooker, randomize_pixel_offset = ingredients.len)
+		if(sigreturn & COMPONENT_MICROWAVE_SUCCESS)
+			if(isstack(cooked_item))
+				var/obj/item/stack/cooked_stack = cooked_item
+				dirty += cooked_stack.amount
+			else
+				dirty++
+>>>>>>> 9ebdbe1b3d9 (randomizes the pixel offset of stuff when it comes out of a microwave (#71091))
 
 	if(metal)
 		spark()

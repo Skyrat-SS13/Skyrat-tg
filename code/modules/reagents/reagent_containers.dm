@@ -254,7 +254,11 @@
 
 	reagents.clear_reagents()
 
+<<<<<<< HEAD
 /obj/item/reagent_containers/microwave_act(obj/machinery/microwave/M)
+=======
+/obj/item/reagent_containers/microwave_act(obj/machinery/microwave/microwave_source, mob/microwaver, randomize_pixel_offset)
+>>>>>>> 9ebdbe1b3d9 (randomizes the pixel offset of stuff when it comes out of a microwave (#71091))
 	reagents.expose_temperature(1000)
 	..()
 
