@@ -24,3 +24,5 @@ The new quirks that we have added on top of what TG has!
 
 ### Credits:
 - Various people.
+- Yawet330 - Hydra code
+- C0rva1r - Sprites and base idea for hydra
