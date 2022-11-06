@@ -19,9 +19,35 @@
 	foldable = FALSE
 	illustration = null
 
+
+/datum/storage/only_one_gun // Uses a custom storage datum because I only want it to hold a single gun
+
+/datum/storage/only_one_gun/attempt_insert(obj/item/to_insert, mob/user, override = FALSE, force = FALSE) // only hold one
+	var/obj/item/resolve_location = real_location?.resolve()
+	var/obj/item/resolve_parent = parent?.resolve()
+	if(!resolve_location)
+		return FALSE
+
+	if(!can_insert(to_insert, user, force = force))
+		return FALSE
+
+	if(istype(to_insert, /obj/item/gun)) // Is it a gun?
+		if (locate(/obj/item/gun) in resolve_parent)  // Is there a gun in it? - Thank you, mothblocks.
+			to_chat(user, span_warning("There's already a gun in \the [resolve_parent], the \The [to_insert] doesn't fit!"))
+			return FALSE
+
+
+	to_insert.item_flags |= IN_STORAGE
+	to_insert.forceMove(resolve_location)
+	item_insertion_feedback(user, to_insert, override)
+	resolve_location.update_appearance()
+	return TRUE
+
+
 /obj/item/storage/box/gunset/Initialize(mapload)
 	. = ..()
-	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
+	create_storage(max_specific_storage = WEIGHT_CLASS_BULKY, type = /datum/storage/only_one_gun)
+	atom_storage.max_specific_storage = WEIGHT_CLASS_BULKY
 	atom_storage.max_total_storage = 21
 	atom_storage.set_holdable(list( //The gun box now holds it's own contents
 		/obj/item/ammo_box,
@@ -311,8 +337,7 @@
 */
 
 /obj/item/storage/box/gunset/pdh_captain
-	name = "pdh 'socom' supply box"
-	w_class = WEIGHT_CLASS_NORMAL
+	name = "pdh 'socom' supply box" // No longer normal sized
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/alt/nomag
 	spawnwithmagazine = FALSE
@@ -332,7 +357,6 @@
 /obj/item/storage/box/gunset/glock18_hos
 	name = "GK-18 supply box"
 	desc = "Ideally contains a fast-firing 9x19mm pistol made out of cheap plastic."
-	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/gun/ballistic/automatic/pistol/g18/nomag
 	spawnwithmagazine = FALSE
@@ -350,8 +374,7 @@
 */
 
 /obj/item/storage/box/gunset/pdh
-	name = "pdh 'osprey' supply box"
-	w_class = WEIGHT_CLASS_NORMAL
+	name = "pdh 'osprey' supply box" // No longer normal sized
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/nomag
 	spawnwithmagazine = FALSE
