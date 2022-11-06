@@ -1956,9 +1956,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/security/lawyer)
 "iw" = (
 /obj/effect/turf_decal/bot,
-/obj/effect/spawner/random/maintenance/two,
-/obj/structure/closet/crate,
-/obj/effect/spawner/random/clothing/twentyfive_percent_cyborg_mask,
+/obj/structure/closet/crate/solarpanel_small,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "ix" = (
@@ -6907,6 +6905,7 @@
 /obj/effect/spawner/random/maintenance/two,
 /obj/structure/closet/crate,
 /obj/effect/spawner/random/engineering/flashlight,
+/obj/effect/spawner/random/clothing/twentyfive_percent_cyborg_mask,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "GH" = (
@@ -7863,25 +7862,29 @@
 /obj/effect/turf_decal/trimline/yellow/line{
 	dir = 8
 	},
-/obj/structure/rack/shelf,
-/obj/item/electronics/apc{
-	pixel_x = 4;
-	pixel_y = 5
+/obj/structure/closet/secure_closet{
+	icon_state = "eng";
+	name = "welding supplies locker";
+	req_access = list("syndicate");
+	icon_door = "eng_weld"
 	},
-/obj/item/electronics/firelock{
-	pixel_y = 5;
-	pixel_x = -6
+/obj/item/weldingtool/largetank{
+	pixel_y = 4
 	},
-/obj/item/electronics/airlock{
-	pixel_y = -7;
-	pixel_x = 5
+/obj/item/weldingtool/largetank{
+	pixel_y = -3
 	},
-/obj/item/electronics/airalarm{
-	pixel_x = 2
+/obj/item/clothing/glasses/welding{
+	pixel_y = 4
 	},
-/obj/item/electronics/airlock{
-	pixel_y = -7;
-	pixel_x = -5
+/obj/item/clothing/glasses/welding{
+	pixel_y = -3
+	},
+/obj/item/mod/module/welding{
+	pixel_y = -5
+	},
+/obj/item/mod/module/constructor{
+	pixel_y = -8
 	},
 /turf/open/floor/iron/dark/side{
 	dir = 4
@@ -9473,6 +9476,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/violet/hidden{
 	dir = 4
 	},
+/obj/item/analyzer,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "Sv" = (
@@ -10594,9 +10598,28 @@
 	req_access = list("syndicate");
 	icon_door = "eng_elec"
 	},
-/obj/item/storage/toolbox/electrical,
-/obj/item/multitool,
-/obj/item/analyzer,
+/obj/item/electronics/airlock{
+	pixel_y = -7;
+	pixel_x = 5
+	},
+/obj/item/electronics/airlock{
+	pixel_y = -7;
+	pixel_x = -5
+	},
+/obj/item/electronics/apc{
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/obj/item/electronics/firelock{
+	pixel_y = 5;
+	pixel_x = -6
+	},
+/obj/item/electronics/airalarm{
+	pixel_x = 2
+	},
+/obj/item/multitool{
+	pixel_y = -6
+	},
 /turf/open/floor/iron/dark/side{
 	dir = 4
 	},
