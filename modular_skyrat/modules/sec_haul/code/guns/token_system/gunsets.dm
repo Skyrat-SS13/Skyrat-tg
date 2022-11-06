@@ -337,7 +337,8 @@
 */
 
 /obj/item/storage/box/gunset/pdh_captain
-	name = "pdh 'socom' supply box" // No longer normal sized
+	name = "pdh 'socom' supply box"
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/alt/nomag
 	spawnwithmagazine = FALSE
@@ -374,7 +375,8 @@
 */
 
 /obj/item/storage/box/gunset/pdh
-	name = "pdh 'osprey' supply box" // No longer normal sized
+	name = "pdh 'osprey' supply box"
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/nomag
 	spawnwithmagazine = FALSE
