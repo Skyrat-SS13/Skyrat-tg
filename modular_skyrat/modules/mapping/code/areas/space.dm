@@ -331,7 +331,7 @@
 	name = "Hotel Staff Quarters"
 
 /area/ruin/solars/hotel/solars
-	name = "\improper Hotle Solar Array"
+	name = "\improper Hotel Solar Array"
 	requires_power = FALSE
 	area_flags = UNIQUE_AREA | AREA_USES_STARLIGHT
 	sound_environment = SOUND_AREA_SPACE
