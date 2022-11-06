@@ -93,7 +93,7 @@
 /obj/structure/closet/secure_closet/security_medic
 	name = "security medics's locker"
 	req_access = list(ACCESS_SECURITY)
-	icon = 'modular_skyrat/modules/sec_haul/icons/lockers/closet.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/lockers/closet.dmi'
 	icon_state = "secmed"
 
 

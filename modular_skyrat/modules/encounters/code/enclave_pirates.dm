@@ -128,7 +128,7 @@
 	name = "\improper Automag"
 	desc = "A .44 AMP handgun with a sleek metallic finish."
 	icon_state = "automag"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/automag.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/guns/automag.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/automag
 	can_suppress = FALSE
@@ -139,7 +139,7 @@
 
 /obj/item/ammo_box/magazine/automag
 	name = "handgun magazine (.44 AMP)"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/guns/mags.dmi'
 	icon_state = "automag"
 	base_icon_state = "automag"
 	ammo_type = /obj/item/ammo_casing/c44

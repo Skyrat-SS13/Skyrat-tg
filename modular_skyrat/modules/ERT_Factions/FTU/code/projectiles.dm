@@ -25,7 +25,7 @@
 /obj/item/ammo_casing/pulse/mm65
 	name = "6.5mm biodegradable flechette"
 	desc = "A biodegradable 6.5mm pulse flechette, it seems to be encased in some sort of inert battery."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/guns/ammo_cartridges.dmi'
 	icon_state = "si-casing"
 	caliber = "6.5mm"
 	projectile_type = /obj/projectile/bullet/pulse/mm65
@@ -58,7 +58,7 @@
 /obj/item/ammo_casing/pulse/mm72
 	name = "7.2mm biodegradable flechette"
 	desc = "A biodegradable 7.2mm pulse flechette, it seems to be encased in some sort of inert battery with a heavy base."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/guns/ammo_cartridges.dmi'
 	icon_state = "si-casing"
 	caliber = "7.2mm"
 	projectile_type = /obj/projectile/bullet/pulse/mm72
@@ -78,7 +78,7 @@
 /obj/item/ammo_casing/pulse/mm12
 	name = "12.7x35mm biodegradable sabot"
 	desc = "A biodegradable .50 pulse sabot, it seems to be encased in some sort of inert battery."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/guns/ammo_cartridges.dmi'
 	icon_state = "si-casing"
 	caliber = "12mm SAP-HE"
 	projectile_type = /obj/projectile/bullet/pulse/mm12/saphe

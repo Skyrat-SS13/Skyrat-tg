@@ -308,7 +308,7 @@
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
 	name = "\improper ARG-75 magazine"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/guns/mags.dmi'
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/a762
 	caliber = CALIBER_A762
