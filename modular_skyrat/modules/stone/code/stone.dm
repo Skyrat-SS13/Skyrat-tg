@@ -47,7 +47,6 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	icon_state = "stone_ore"
 	singular_name = "rough stone boulder"
 	mats_per_unit = list(/datum/material/stone=MINERAL_MATERIAL_AMOUNT)
-	refined_type = /obj/item/stack/sheet/mineral/stone
 	merge_type = /obj/item/stack/stone
 
 /obj/item/stack/tile/mineral/stone
@@ -77,9 +76,24 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	canSmoothWith = list(SMOOTH_GROUP_STONE_WALLS)
 	custom_materials = list(/datum/material/stone = MINERAL_MATERIAL_AMOUNT * 2)
 
+/turf/closed/wall/mineral/stone/try_decon(obj/item/item_used, mob/user) // Lets you break down stone walls with stone breaking tools
+	if(item_used.tool_behaviour == TOOL_MINING)
+		if(!item_used.tool_start_check(user, amount = 0))
+			return FALSE
+
+		balloon_alert_to_viewers("breaking down...")
+
+		if(!item_used.use_tool(src, user, 5 SECONDS))
+			return FALSE
+		balloon_alert_to_viewers("[user] breaks [src] down")
+		dismantle_wall()
+		return TRUE
+
+	return ..()
+
 /turf/closed/indestructible/stone
 	name = "stone wall"
-	desc = "A wall made of solid stone brick."
+	desc = "A wall made of unusually solid stone bricks."
 	icon = 'modular_skyrat/modules/stone/icons/wall.dmi'
 	icon_state = "wall-0"
 	base_icon_state = "wall"
@@ -90,7 +104,7 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 
 /obj/structure/falsewall/stone
 	name = "stone wall"
-	desc = "A wall made of solid stone brick."
+	desc = "A wall made of solid stone bricks."
 	icon = 'modular_skyrat/modules/stone/icons/wall.dmi'
 	icon_state = "wall-0"
 	base_icon_state = "wall"
