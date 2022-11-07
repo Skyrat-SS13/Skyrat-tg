@@ -29,7 +29,7 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 /datum/material/stone
 	name = "stone"
 	desc = "It's stone."
-	categories = list(MAT_CATEGORY_ORE = TRUE, MAT_CATEGORY_RIGID = TRUE, MAT_CATEGORY_BASE_RECIPES = TRUE, MAT_CATEGORY_ITEM_MATERIAL=TRUE)
+	categories = list(MAT_CATEGORY_RIGID = TRUE, MAT_CATEGORY_BASE_RECIPES = TRUE, MAT_CATEGORY_ITEM_MATERIAL=TRUE)
 	sheet_type = /obj/item/stack/sheet/mineral/stone
 	color = "#59595a"
 	greyscale_colors = "#59595a"
@@ -37,19 +37,15 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	armor_modifiers = list(MELEE = 0.75, BULLET = 0.5, LASER = 1.25, ENERGY = 0.5, BOMB = 0.5, BIO = 0.25, FIRE = 1.5, ACID = 1.5)
 	beauty_modifier = 0.3
 
-/obj/item/stack/ore/stone
-	name = "unrefined stone"
-	desc = "Chunks of high-quality stone. This could be cut into bricks to form a really good building material."
+/obj/item/stack/stone
+	name = "rough stone"
+	desc = "Large chunks of uncut stone, tough enough to safely build out of... if you could manage to cut them into something usable."
 	icon = 'modular_skyrat/modules/stone/icons/ore.dmi'
 	icon_state = "stone_ore"
-	singular_name = "unrefined stone chunk"
-	points = 1
+	singular_name = "rough stone boulder"
 	mats_per_unit = list(/datum/material/stone=MINERAL_MATERIAL_AMOUNT)
 	refined_type = /obj/item/stack/sheet/mineral/stone
-	mine_experience = 1
-	scan_state = null
-	spreadChance = 20
-	merge_type = /obj/item/stack/ore/stone
+	merge_type = /obj/item/stack/stone
 
 /obj/item/stack/tile/mineral/stone
 	name = "stone tile"
@@ -62,39 +58,5 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	mats_per_unit = list(/datum/material/stone=MINERAL_MATERIAL_AMOUNT*0.25)
 	merge_type = /obj/item/stack/tile/mineral/stone
 
-/turf/closed/wall/mineral/stone
-	name = "stone wall"
-	desc = "A wall made of solid stone brick."
-	icon = 'modular_skyrat/modules/stone/icons/wall.dmi'
-	icon_state = "wall-0"
-	base_icon_state = "wall"
-	sheet_type = /obj/item/stack/sheet/mineral/stone
-	slicing_duration = 1.5 SECONDS  //literal rock
-	explosion_block = 2
-	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_STONE_WALLS, SMOOTH_GROUP_CLOSED_TURFS)
-	canSmoothWith = list(SMOOTH_GROUP_STONE_WALLS)
-	custom_materials = list(/datum/material/stone = 4000)
-
-/turf/closed/indestructible/stone
-	name = "stone wall"
-	desc = "A wall made of solid stone brick."
-	icon = 'modular_skyrat/modules/stone/icons/wall.dmi'
-	icon_state = "wall-0"
-	base_icon_state = "wall"
-	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_STONE_WALLS, SMOOTH_GROUP_CLOSED_TURFS)
-	canSmoothWith = list(SMOOTH_GROUP_STONE_WALLS)
-	custom_materials = list(/datum/material/stone = 4000)
-
-/obj/structure/falsewall/stone
-	name = "stone wall"
-	desc = "A wall made of solid stone brick."
-	icon = 'modular_skyrat/modules/stone/icons/wall.dmi'
-	icon_state = "wall-0"
-	base_icon_state = "wall"
-	mineral = /obj/item/stack/sheet/mineral/stone
-	walltype = /turf/closed/wall/mineral/stone
-	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_STONE_WALLS, SMOOTH_GROUP_CLOSED_TURFS)
-	canSmoothWith = list(SMOOTH_GROUP_STONE_WALLS)
+/turf/open/floor/stone
+	desc = "Blocks of stone arranged in a tile-like pattern, odd, really, how it looks like real stone too, because it is!" //A play on the original description for stone tiles
