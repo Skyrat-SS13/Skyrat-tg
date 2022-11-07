@@ -93,6 +93,7 @@
 		normalspeed = FALSE
 		update_appearance()
 		return
+
 	engineering_override = FALSE
 	normalspeed = TRUE
 	update_appearance()
