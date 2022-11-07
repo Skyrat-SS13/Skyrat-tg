@@ -87,6 +87,7 @@
 	var/area/source_area = get_area(src)
 	if(!source_area.engineering_override_eligible)
 		return
+
 	if(new_level == SEC_LEVEL_ORANGE)
 		engineering_override = TRUE
 		normalspeed = FALSE
