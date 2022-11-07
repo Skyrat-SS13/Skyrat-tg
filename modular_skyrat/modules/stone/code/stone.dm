@@ -63,3 +63,39 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 
 /turf/open/floor/stone
 	desc = "Blocks of stone arranged in a tile-like pattern, odd, really, how it looks like real stone too, because it is!" //A play on the original description for stone tiles
+
+/turf/closed/wall/mineral/stone
+	name = "stone wall"
+	desc = "A wall made of solid stone bricks."
+	icon = 'modular_skyrat/modules/stone/icons/wall.dmi'
+	icon_state = "wall-0"
+	base_icon_state = "wall"
+	sheet_type = /obj/item/stack/sheet/mineral/stone
+	explosion_block = 2 // Rock and stone to the bone, or at least a bit longer than walls made of metal sheets!
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_STONE_WALLS, SMOOTH_GROUP_CLOSED_TURFS)
+	canSmoothWith = list(SMOOTH_GROUP_STONE_WALLS)
+	custom_materials = list(/datum/material/stone = MINERAL_MATERIAL_AMOUNT * 2)
+
+/turf/closed/indestructible/stone
+	name = "stone wall"
+	desc = "A wall made of solid stone brick."
+	icon = 'modular_skyrat/modules/stone/icons/wall.dmi'
+	icon_state = "wall-0"
+	base_icon_state = "wall"
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_STONE_WALLS, SMOOTH_GROUP_CLOSED_TURFS)
+	canSmoothWith = list(SMOOTH_GROUP_STONE_WALLS)
+	custom_materials = list(/datum/material/stone = MINERAL_MATERIAL_AMOUNT * 2) // Does this even need materials?
+
+/obj/structure/falsewall/stone
+	name = "stone wall"
+	desc = "A wall made of solid stone brick."
+	icon = 'modular_skyrat/modules/stone/icons/wall.dmi'
+	icon_state = "wall-0"
+	base_icon_state = "wall"
+	mineral = /obj/item/stack/sheet/mineral/stone
+	walltype = /turf/closed/wall/mineral/stone
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_STONE_WALLS, SMOOTH_GROUP_CLOSED_TURFS)
+	canSmoothWith = list(SMOOTH_GROUP_STONE_WALLS)
