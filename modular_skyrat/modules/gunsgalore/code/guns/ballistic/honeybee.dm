@@ -2,7 +2,7 @@
 	name = "\improper I-94 'Honeybee'"
 	desc = "A 9mm sidearm made by Armadyne and modified by Interdyne, it features a slightly modified paint job and sports a SmartDart underbarrel attachment."
 	company_flag = COMPANY_INTERDYNE
-	icon = 'modular_skyrat/modules/gun_cargo/icons/honeybee.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/guns/honeybee.dmi'
 	icon_state = "honeybee"
 	company_flag = COMPANY_INTERDYNE
 	var/obj/item/gun/syringe/smartdart/underbarrel/underbarrel

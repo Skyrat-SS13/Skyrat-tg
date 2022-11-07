@@ -22,6 +22,19 @@
 /obj/item/gun/ballistic/automatic/pistol/ladon/add_seclight_point()
 	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
 
+/obj/item/gun/ballistic/automatic/pistol/ladon/nri
+	name = "\improper Szabo-Ivanek service pistol"
+	desc = "A mass produced NRI-made modified reproduction of the PDH-6 line of handguns rechambered in 9×25mm.\
+	 'PATRIOT DEFENSE SYSTEMS' is inscribed on the receiver, indicating it's been made with a plasteel printer."
+	icon = 'modular_skyrat/modules/novaya_ert/icons/pistol.dmi'
+	w_class = WEIGHT_CLASS_SMALL
+	mag_type = /obj/item/ammo_box/magazine/m9mm_aps
+	burst_size = 3
+	dirt_modifier = 0.5
+	emp_damageable = FALSE
+	fire_delay = 3
+	company_flag = COMPANY_IZHEVSK
+
 /obj/item/ammo_box/magazine/multi_sprite/ladon
 	name = "\improper Ladon magazine"
 	desc = "A magazine for the Ladon pistol, chambered for 10mm Auto."

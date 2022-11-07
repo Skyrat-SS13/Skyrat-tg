@@ -1,29 +1,4 @@
 /*
-*	IMPROVISED RIFLE
-*	There was an improvised rifle on Cit/Skyrat, it's pretty cool so here it is too.
-*	We're using a slightly modified sprite designed around a Short Magazine Lee Enfield (SMLE) Mk.III
-*/
-
-/obj/item/ammo_box/magazine/internal/boltaction/improvised
-	max_ammo = 1
-	multiload = 0
-
-/obj/item/gun/ballistic/rifle/irifle
-	name = "improvised 7.62 rifle"
-	desc = "An improvised rifle that fires hard-hitting 7.62 bullets."
-	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile40x32.dmi'
-	icon_state = "irifle"
-	inhand_icon_state = "irifle"
-	worn_icon_state = null
-	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/improvised
-	inhand_x_dimension = 64
-	inhand_y_dimension = 64
-	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_left.dmi'
-	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_right.dmi'
-	pixel_x = -8
-	weapon_weight = WEAPON_HEAVY	// It's big.
-
-/*
 *	IMPROVISED SHOTGUN
 *	We're using the rifle because we want the bolt action so we can pretend it's a break action gun.
 *	On Skyrat/Cit there was a need to tone improvised weapons down due to their incredible ease of access.
@@ -107,53 +82,3 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	sawn_off = TRUE
 	slot_flags = ITEM_SLOT_BELT
-
-/*
-*	CFA RIFLE
-*/
-
-/obj/item/gun/ballistic/automatic/cfa_rifle
-	name = "Cantanheim 6.8mm rifle"
-	desc = "A simple semi-automatic rifle chambered in 6.8mm. The letters 'XJP' are crossed out in the receiver." //Different 6.8mm than the FTU's propietary pulse ballistics
-	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile40x32.dmi'
-	icon_state = "cfa_rifle"
-	inhand_icon_state = "irifle"
-	inhand_x_dimension = 64
-	inhand_y_dimension = 64
-	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_left.dmi'
-	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_right.dmi'
-	worn_icon_state = null
-	mag_type = /obj/item/ammo_box/magazine/cm68
-	fire_delay = 5
-	can_suppress = FALSE
-	burst_size = 0
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
-	mag_display = FALSE
-	mag_display_ammo = FALSE
-	empty_indicator = FALSE
-	recoil = 1
-	weapon_weight = WEAPON_HEAVY
-	pixel_x = -8
-	has_gun_safety = FALSE
-	w_class = WEIGHT_CLASS_BULKY
-	company_flag = COMPANY_CANTALAN
-	dirt_modifier = 0.25
-
-/obj/item/gun/ballistic/automatic/cfa_rifle/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/scope, range_modifier = 1.5)
-
-/obj/item/gun/ballistic/automatic/cfa_rifle/empty
-	spawnwithmagazine = FALSE
-
-/obj/item/ammo_box/magazine/cm68
-	name = "rifle magazine (6.8mm)"
-	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
-	icon_state = "6.8"
-	ammo_type = /obj/item/ammo_casing/a68
-	caliber = CALIBER_A68
-	max_ammo = 10
-	multiple_sprites = 2
-
-/obj/item/ammo_box/magazine/cm68/empty
-	start_empty = 1

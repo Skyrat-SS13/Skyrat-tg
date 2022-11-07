@@ -1,5 +1,3 @@
-#define CALIBRE_14MM "14mm"
-
 /*
 * Malorian Arms 3516 14MM
 * If you have this, you're a badass.
@@ -98,20 +96,6 @@
 	icon_state = "14mm"
 	base_icon_state = "14mm"
 	ammo_type = /obj/item/ammo_casing/c14mm
-	caliber = CALIBRE_14MM
+	caliber = "14mm"
 	max_ammo = 10
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
-
-/obj/item/ammo_casing/c14mm
-	name = "14mm bullet casing"
-	desc = "A 14mm bullet casing. Badass."
-	caliber = CALIBRE_14MM
-	projectile_type = /obj/projectile/bullet/c14mm
-
-/obj/projectile/bullet/c14mm
-	name = "14mm bullet"
-	damage = 60
-	embedding = list(embed_chance = 90, fall_chance = 3, jostle_chance = 4, ignore_throwspeed_threshold = TRUE, pain_stam_pct = 0.4, pain_mult = 5, jostle_pain_mult = 9, rip_time = 10)
-	dismemberment = 50
-	pierces = 1
-	projectile_piercing = PASSCLOSEDTURF|PASSGRILLE|PASSGLASS

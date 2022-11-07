@@ -22,3 +22,15 @@
 	icon = 'modular_skyrat/master_files/icons/obj/guns/ammoboxes.dmi'
 	icon_state = "pistol_hv"
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
+
+/obj/item/ammo_box/c9mm/ap
+	name = "ammo box (9mm AP)"
+	ammo_type = /obj/item/ammo_casing/c9mm/ap
+
+/obj/item/ammo_box/c9mm/hp
+	name = "ammo box (9mm HP)"
+	ammo_type = /obj/item/ammo_casing/c9mm/hp
+
+/obj/item/ammo_box/c9mm/fire
+	name = "ammo box (9mm incendiary)"
+	ammo_type = /obj/item/ammo_casing/c9mm/fire

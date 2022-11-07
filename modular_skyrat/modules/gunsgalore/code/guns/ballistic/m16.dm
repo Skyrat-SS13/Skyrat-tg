@@ -1,6 +1,6 @@
-/obj/item/gun/ballistic/automatic/m16
-	name = "\improper XM-2537 rifle"
-	desc = "A relatively new infantry rifle chambered for the .277 Aestus round, designed for use by private security and freight crews. \"Armentarium Centrale\" is printed on the side of the receiver, right next to a yellow sun."
+/obj/item/gun/ballistic/automatic/m16/oldarms
+	name = "\improper Mk-11.4 Rifle"
+	desc = "An old-fashioned rifle from Sol-3's bygone era. Rumor has it that it can shoot apart an entire jungle (or desert, given the time). It has \"Keep out of water\" laser-engraved on the side. Now including a free reflex sight!"
 	icon = 'modular_skyrat/master_files/icons/obj/guns/gunsgalore_guns40x32.dmi'
 	icon_state = "m16"
 	lefthand_file = 'modular_skyrat/master_files/icons/obj/guns/gunsgalore_lefthand.dmi'
@@ -11,10 +11,9 @@
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_HEAVY
-	mag_type = /obj/item/ammo_box/magazine/m16
-	can_suppress = FALSE
-	burst_size = 3
-	fire_delay = 2
+	mag_type = /obj/item/ammo_box/magazine/m16/vintage/oldarms
+	fire_delay = 3.5
+	burst_size = 1
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/m16_fire.ogg'
 	fire_sound_volume = 50
 	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_cock.ogg'
@@ -23,53 +22,45 @@
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magout.ogg'
 	alt_icons = TRUE
 	realistic = TRUE
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_FULLY_AUTOMATIC)
 
-/obj/item/ammo_box/magazine/m16
-	name = "\improper XM-2537 magazine"
-	desc = "A double-stack translucent polymer magazine for use with the XM-2537 rifles. Holds 30 rounds of .277 Aestus."
-	icon = 'modular_skyrat/master_files/icons/obj/guns/gunsgalore_items.dmi'
-	icon_state = "m16e"
-	ammo_type = /obj/item/ammo_casing/a556
-	caliber = "a556"
-	max_ammo = 30
-	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
-/obj/item/ammo_box/magazine/m16/vintage
-	name = "outdated .277 magazine"
-	desc = "A double-stack solid magazine that looks rather dated. Holds 20 rounds of .277 Aestus."
+/obj/item/ammo_box/magazine/m16/vintage/oldarms
+	name = "old-fashioned mk-11.4 rifle magazine"
+	desc = "A double-stack solid magazine that looks rather dated. Holds 20 rounds of .223 Stinger."
 	icon = 'modular_skyrat/master_files/icons/obj/guns/gunsgalore_items.dmi'
 	icon_state = "m16"
-	ammo_type = /obj/item/ammo_casing/a556
-	caliber = "a556"
+	ammo_type = /obj/item/ammo_casing/oldarms/a223
+	caliber = CALIBER_223
 	max_ammo = 20
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
-/obj/item/gun/ballistic/automatic/m16/modern
-	name = "\improper XM-2537 SOPMOD rifle"
-	desc = "A heavily tweaked carbine version of the XM-2537 rifle made for tactically operating in tactical environments. This doesn't smell \"authentic military hardware\" to you."
-	icon_state = "m16_modern"
-	inhand_icon_state = "m16"
-	worn_icon_state = "m16"
-	spread = 0.5
-	burst_size = 3
-	fire_delay = 1.90
+/obj/item/ammo_casing/oldarms/a223
+	name = ".223 Stinger bullet casing"
+	desc = "A cheaply made .233 Stinger bullet casing."
+	caliber = CALIBER_223
+	projectile_type = /obj/projectile/bullet/oldarms/a223
 
-/obj/item/gun/ballistic/automatic/m16/modern/v2
-	name = "\improper XM-2537 'Amans Patriae' rifle"
-	desc = "An expertly modified, super-compact XM-2537 rifle designed for operating in tight corridors and fields full of Bethlehem flowers. You're a soldier, finish your mission!"
-	icon_state = "m16_modern2"
-	inhand_icon_state = "m16"
-	worn_icon_state = "m16"
-	mag_type = /obj/item/ammo_box/magazine/m16/patriot
-	burst_size = 4
-	fire_delay = 0.5
+/obj/projectile/bullet/oldarms/a223
+	name = ".223 bullet"
+	damage = 26
+	armour_penetration = 5
+	wound_bonus = -20
 
-/obj/item/ammo_box/magazine/m16/patriot
-	name = "\improper XM-2537 drum magazine"
-	desc = "A double-stack solid polymer drum made for use with the Amans Patriae rifle. Holds 50 rounds of .277 ammo."
-	icon = 'modular_skyrat/master_files/icons/obj/guns/gunsgalore_items.dmi'
-	icon_state = "m16"
-	ammo_type = /obj/item/ammo_casing/a556
-	caliber = "a556"
-	max_ammo = 50
-	multiple_sprites = AMMO_BOX_FULL_EMPTY
+/obj/item/ammo_casing/oldarms/a223/rubber
+	name = ".223 Stinger rubber bullet casing"
+	desc = "A cheaply made .233 Stinger bullet casing, now in rubber."
+	caliber = CALIBER_223
+	projectile_type = /obj/projectile/bullet/oldarms/a223/rubber
+
+/obj/projectile/bullet/oldarms/a223/rubber
+	name = ".223 Rubber"
+	damage = 5
+	stamina = 25
+	ricochets_max = 3
+	ricochet_incidence_leeway = 0
+	ricochet_chance = 130
+	ricochet_decay_damage = 0.5
+	shrapnel_type = null
+	sharpness = NONE
+	embedding = null

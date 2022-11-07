@@ -1,5 +1,5 @@
 /*
-*	REVOLVERS
+*	REVOLVER RIFLES
 *	Revolving rifles! We have three versions. An improvised slower firing one, a normal one, and a golden premium one.
 *	The gold rifle uses .45, it's only 5 more points of damage unfortunately.
 *	Fun hint: A box of .45 bullets functions the same as a speedloader.
