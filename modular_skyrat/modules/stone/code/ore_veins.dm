@@ -8,7 +8,7 @@
 	/// When we start mining, what do we tell the user they're mining?
 	var/ore_descriptor = "stone"
 	/// What type of ore do we drop?
-	var/ore_type = /obj/item/stack/ore/stone
+	var/ore_type = /obj/item/stack/stone
 	/// How much ore do we drop?
 	var/ore_amount = 5
 	/// If the ore vein has been recently mined. If so, we cannot mine and must wait for it to regenerate.
@@ -74,8 +74,6 @@
 /obj/structure/ore_vein/stone
 	name = "large rocks"
 	desc = "Various types of high quality stone that could probably make a good construction material if dug up and refined."
-	icon_state = "stone"
-	ore_type = /obj/item/stack/ore/stone
 
 /obj/structure/ore_vein/iron
 	name = "rusted rocks"
@@ -104,13 +102,6 @@
 	icon_state = "plasma"
 	ore_descriptor = "plasma"
 	ore_type = /obj/item/stack/ore/plasma
-
-/obj/structure/ore_vein/titanium
-	name = "dull darkened rocks"
-	desc = "Some fairly plain looking rocks, though the occasional streak of reflective blue surface hints at the existence of titanium here."
-	icon_state = "titanium"
-	ore_descriptor = "titanium"
-	ore_type = /obj/item/stack/ore/titanium
 
 /obj/structure/ore_vein/diamond
 	name = "diamond studded rocks"
