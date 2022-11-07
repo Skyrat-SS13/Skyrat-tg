@@ -83,7 +83,7 @@
 
 // When the signal is received of a changed security level, check if it's orange.
 /obj/machinery/door/airlock/check_security_level(datum/source, new_level)
-	..()
+	. = ..()
 	var/area/source_area = get_area(src)
 	if(!source_area.engineering_override_eligible)
 		return
