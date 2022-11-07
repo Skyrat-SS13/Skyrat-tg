@@ -45,7 +45,7 @@
 		if(!("text" in uncompiled_stories[story]))
 			uncompiled_stories[story]["text"] = "Someone forgot to fill out the article!"
 		if(!("year" in uncompiled_stories[story]))
-			uncompiled_stories[story]["year"] = "[GLOB.year_integer + 540]"
+			uncompiled_stories[story]["year"] = "[CURRENT_STATION_YEAR]"
 		if(!("month" in uncompiled_stories[story]))
 			uncompiled_stories[story]["month"] = "[time2text(world.timeofday, "MM")]]"
 		if(!("day" in uncompiled_stories[story]))
