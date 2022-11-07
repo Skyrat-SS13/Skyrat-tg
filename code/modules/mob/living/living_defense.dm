@@ -92,6 +92,7 @@
 	SEND_SIGNAL(src, COMSIG_LIVING_COMBAT_MODE_TOGGLE, new_mode) //SKYRAT EDIT ADDITION
 	if(hud_used?.action_intent)
 		hud_used.action_intent.update_appearance()
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN
 	if(!ishuman(src) && !ckey)
 		if(combat_mode)
@@ -102,6 +103,9 @@
 	//SKYRAT EDIT ADDITION END
 
 	if(silent || !(client?.prefs.toggles & SOUND_COMBATMODE))
+=======
+	if(silent || !(client?.prefs.read_preference(/datum/preference/toggle/sound_combatmode)))
+>>>>>>> 762e9f06cff (Refactors sound toggle prefs away from legacy toggles, introduces a new sound pref for jukeboxes (#71040))
 		return
 	if(combat_mode)
 		SEND_SOUND(src, sound('sound/misc/ui_togglecombat.ogg', volume = 25)) //Sound from interbay!
