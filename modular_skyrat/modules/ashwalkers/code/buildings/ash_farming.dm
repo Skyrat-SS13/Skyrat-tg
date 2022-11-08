@@ -187,7 +187,7 @@
 		return
 
 	//if its a regen core, then create four harvests
-	else if(istype(attacking_item, /obj/item/organ/internal/regenerative_core))
+	else if(istype(attacking_item, /obj/item/organ/internal/monster_core/regenerative_core))
 		qdel(attacking_item)
 		for(var/i in 1 to regen_harvest_num)
 			create_harvest()
