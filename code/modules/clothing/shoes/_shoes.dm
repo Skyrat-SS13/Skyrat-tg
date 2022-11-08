@@ -24,7 +24,7 @@
 	var/datum/weakref/our_alert_ref
 
 /obj/item/clothing/shoes/suicide_act(mob/living/carbon/user)
-	if(rand(2)>1)
+	if(prob(50))
 		user.visible_message(span_suicide("[user] begins tying \the [src] up waaay too tightly! It looks like [user.p_theyre()] trying to commit suicide!"))
 		var/obj/item/bodypart/l_leg = user.get_bodypart(BODY_ZONE_L_LEG)
 		var/obj/item/bodypart/r_leg = user.get_bodypart(BODY_ZONE_R_LEG)
@@ -39,9 +39,14 @@
 		for(var/i in 1 to 3)
 			sleep(0.3 SECONDS)
 			playsound(user, 'sound/weapons/genhit2.ogg', 50, TRUE)
+<<<<<<< HEAD
 		return(BRUTELOSS)
 //SKYRAT EDIT REMOVAL BEGIN -DIGI_BLOODSOLE - (Moved to modular_skyrat/modules/digi_shoeblood/code/modules/clothing/shoes/_shoes.dm)
 /*
+=======
+		return BRUTELOSS
+
+>>>>>>> ad5debaaa1d (Add investigate_deaths (#71112))
 /obj/item/clothing/shoes/worn_overlays(mutable_appearance/standing, isinhands = FALSE)
 	. = ..()
 	if(isinhands)

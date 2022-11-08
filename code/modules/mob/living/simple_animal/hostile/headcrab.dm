@@ -105,8 +105,12 @@
 		changeling_datum.purchased_powers += hf
 		hf.Grant(origin.current)
 		changeling_datum.regain_powers()
+<<<<<<< HEAD
 		// SKYRAT EDIT END
 
+=======
+	owner.investigate_log("has been gibbed by a changeling egg burst.", INVESTIGATE_DEATHS)
+>>>>>>> ad5debaaa1d (Add investigate_deaths (#71112))
 	owner.gib()
 
 #undef EGG_INCUBATION_TIME

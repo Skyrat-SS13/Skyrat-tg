@@ -456,7 +456,37 @@
 			casing.icon_state = pick("cocoon_large1", "cocoon_large2", "cocoon_large3")
 
 	if(istype(animal_owner))
+<<<<<<< HEAD
 		animal_owner.stop_automated_movement = TRUE
+=======
+		animal_owner.stop_automated_movement = FALSE
+
+/datum/action/cooldown/wrap/proc/wrap_target(atom/movable/to_wrap)
+	var/obj/structure/spider/cocoon/casing = new(to_wrap.loc)
+	if(isliving(to_wrap))
+		var/mob/living/living_wrapped = to_wrap
+		// You get a point every time you consume a living player, even if they've been consumed before.
+		// You only get a point for any individual corpse once, so you can't keep breaking it out and eating it again.
+		if(ishuman(living_wrapped) && (living_wrapped.stat != DEAD || !HAS_TRAIT(living_wrapped, TRAIT_SPIDER_CONSUMED)))
+			var/datum/action/innate/spider/lay_eggs/enriched/egg_power = locate() in owner.actions
+			if(egg_power)
+				egg_power.charges++
+				egg_power.UpdateButtons()
+				owner.visible_message(
+					span_danger("[owner] sticks a proboscis into [living_wrapped] and sucks a viscous substance out."),
+					span_notice("You suck the nutriment out of [living_wrapped], feeding you enough to lay a cluster of enriched eggs."),
+				)
+			ADD_TRAIT(living_wrapped, TRAIT_SPIDER_CONSUMED, TRAIT_GENERIC)
+			living_wrapped.investigate_log("has been killed by being wrapped in a cocoon.", INVESTIGATE_DEATHS)
+			living_wrapped.death() //you just ate them, they're dead.
+			log_combat(owner, living_wrapped, "spider cocooned")
+		else
+			to_chat(owner, span_warning("[living_wrapped] is not edible!"))
+
+	to_wrap.forceMove(casing)
+	if(to_wrap.density || ismob(to_wrap))
+		casing.icon_state = pick("cocoon_large1", "cocoon_large2", "cocoon_large3")
+>>>>>>> ad5debaaa1d (Add investigate_deaths (#71112))
 
 /datum/action/innate/spider/lay_eggs
 	name = "Lay Eggs"

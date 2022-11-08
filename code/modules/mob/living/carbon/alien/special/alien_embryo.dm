@@ -118,6 +118,7 @@
 		new_xeno.notransform = 0
 		new_xeno.invisibility = 0
 
+<<<<<<< HEAD
 	new_xeno.visible_message("<span class='danger'>[new_xeno] bursts out of [owner] in a shower of gore!</span>", "<span class='userdanger'>You exit [owner], your previous host.</span>", "<span class='hear'>You hear organic matter ripping and tearing!</span>")
 	//owner.gib(TRUE) - ORIGINAL
 	//SKYRAT EDIT CHANGE - ALIEN QOL
@@ -125,6 +126,16 @@
 	owner.spawn_gibs()
 	//SKYRAT EDIT END
 	owner.cut_overlay(overlay)
+=======
+	if(gib_on_success)
+		new_xeno.visible_message(span_danger("[new_xeno] bursts out of [owner] in a shower of gore!"), span_userdanger("You exit [owner], your previous host."), span_hear("You hear organic matter ripping and tearing!"))
+		owner.gib(TRUE)
+	else
+		new_xeno.visible_message(span_danger("[new_xeno] wriggles out of [owner]!"), span_userdanger("You exit [owner], your previous host."))
+		owner.adjustBruteLoss(40)
+		owner.cut_overlay(overlay)
+	owner.investigate_log("has been gibbed by an alien larva.", INVESTIGATE_DEATHS)
+>>>>>>> ad5debaaa1d (Add investigate_deaths (#71112))
 	qdel(src)
 
 
