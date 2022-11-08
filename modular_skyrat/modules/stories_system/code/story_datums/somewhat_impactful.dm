@@ -82,3 +82,20 @@
 	poor_sod = null
 	return ..()
 
+/*
+	NRI R&R
+		Plot Summary:
+			A small group of NRI marines are on shore leave, so they got drunk and decided to land on this station, ideally to get more drunk.
+			Problem is, they don't really know the language.
+		Actors:
+			Ghost:
+				NRI Marine (3)
+*/
+
+/datum/story_type/somewhat_impactful/nri_rnr
+	name = "NRI R&R"
+	desc = "A few drunk NRI members arrive on station for shore leave, without speaking the language."
+	actor_datums_to_make = list(
+		/datum/story_actor/ghost/spawn_in_arrivals/nri_shore_leave = 3,
+	)
+	maximum_execute_times = 1

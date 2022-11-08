@@ -174,8 +174,37 @@
 	ears = /obj/item/radio/headset/headset_med
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	l_hand = /obj/item/clipboard
+
 	back = /obj/item/storage/backpack/satchel/med
 	backpack_contents = list(
 		/obj/item/pen = 1,
 		/obj/item/paper = 2,
 	)
+
+/datum/outfit/nri_shore_leave
+	name = "Shore Leave NRI Marine"
+
+	glasses = /obj/item/clothing/glasses/sunglasses
+	ears = /obj/item/radio/headset/guild
+	uniform = /obj/item/clothing/under/costume/nri
+	suit = /obj/item/clothing/suit/armor/vest/russian/nri
+	gloves = /obj/item/clothing/gloves/combat
+	shoes = /obj/item/clothing/shoes/combat
+	belt = /obj/item/storage/belt/military/nri
+
+	back = /obj/item/storage/backpack/duffelbag/syndie/nri
+	backpack_contents = list(
+		/obj/item/storage/box/nri_survival_pack = 1,
+		/obj/item/crucifix = 1,
+		/obj/item/ammo_box/magazine/m9mm_aps = 1,
+		/obj/item/modular_computer/tablet/pda/security = 1,
+	)
+
+	l_pocket = /obj/item/gun/ballistic/automatic/pistol/ladon/nri
+	id = /obj/item/card/id/advanced
+	id_trim = /datum/id_trim/enclave
+
+/datum/outfit/nri_shore_leave/post_equip(mob/living/carbon/human/nri_human, visualsOnly)
+	nri_human.set_drunk_effect(45) //This isn't time; it's how drunk they are
+	nri_human.remove_all_languages()
+	nri_human.grant_language(/datum/language/panslavic)
