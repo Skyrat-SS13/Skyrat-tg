@@ -122,6 +122,18 @@
 	. = ..()
 	AddComponent(/datum/component/gps, "NRI Starship")
 
+/obj/machinery/porta_turret/syndicate/nri_raider
+	faction = list("pirate")
+
+/obj/machinery/porta_turret/syndicate/nri_raider/target(atom/movable/target)
+    if(target)
+        setDir(get_dir(base, target))//even if you can't shoot, follow the target
+        shootAt(target)
+        addtimer(CALLBACK(src, .proc/shootAt, target), 5)
+        addtimer(CALLBACK(src, .proc/shootAt, target), 10)
+        addtimer(CALLBACK(src, .proc/shootAt, target), 15)
+        return TRUE
+
 /obj/item/gun/ballistic/automatic/pistol/automag
 	name = "\improper Automag"
 	desc = "A .44 AMP handgun with a sleek metallic finish."
