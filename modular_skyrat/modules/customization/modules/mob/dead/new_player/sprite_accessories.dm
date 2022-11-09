@@ -477,6 +477,11 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	use_static = TRUE
 	erp_accessory = TRUE
 
+/datum/sprite_accessory/undershirt/lizared
+	name = "LIZARED Top"
+	icon_state = "lizared_top"
+	use_static = TRUE
+
 /datum/sprite_accessory/underwear/lizared
 	name = "LIZARED Underwear"
 	icon_state = "lizared"
