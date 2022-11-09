@@ -79,7 +79,6 @@
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "dS" = (
-/obj/structure/lattice/catwalk,
 /obj/structure/cable,
 /obj/machinery/power/shieldwallgen/unlocked/anchored{
 	req_access_txt = "syndicate";
@@ -90,16 +89,16 @@
 	desc = "A heavy-duty reinforced shield generator designed for ship defense.";
 	name = "defense shield generator"
 	},
+/obj/structure/lattice/catwalk,
 /turf/open/floor/plating/airless,
 /area/shuttle/pirate/nri)
 "et" = (
 /obj/structure/cable,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
 /obj/structure/window/reinforced/survival_pod,
-/obj/machinery/power/shuttle_engine/heater{
-	dir = 1
+/obj/structure/reagent_dispensers/fueltank/large{
+	anchored = 1;
+	desc = "A tank full of a high quantity of liquid hydrogen fuel. Keep away from open flames and 57mm mortar shells.";
+	icon_state = "vat"
 	},
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
@@ -152,8 +151,7 @@
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
-/obj/structure/lattice/catwalk,
-/turf/open/floor/plating,
+/turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
 "hP" = (
 /obj/structure/sign/poster/contraband/nri_radar{
@@ -211,9 +209,8 @@
 /area/shuttle/pirate/nri)
 "lc" = (
 /obj/structure/cable,
-/obj/structure/lattice/catwalk,
 /obj/machinery/light/small/red/directional/north,
-/turf/open/floor/plating,
+/turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
 "lv" = (
 /obj/structure/window/reinforced/survival_pod{
@@ -226,16 +223,9 @@
 /area/shuttle/pirate/nri)
 "lU" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/machinery/door/window/survival_pod{
-	dir = 8
-	},
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "lV" = (
-/obj/structure/cable,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 10
-	},
 /obj/machinery/light/warm/directional/north,
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
@@ -281,9 +271,6 @@
 "od" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
-	},
-/obj/machinery/door/window/survival_pod{
-	dir = 8
 	},
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
@@ -357,9 +344,7 @@
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "qQ" = (
-/obj/machinery/power/shuttle_engine/heater{
-	dir = 8
-	},
+/obj/machinery/ntnet_relay,
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "rd" = (
@@ -395,7 +380,7 @@
 /area/shuttle/pirate/nri)
 "rp" = (
 /obj/effect/turf_decal/delivery,
-/obj/machinery/ntnet_relay,
+/obj/structure/cable,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "rO" = (
@@ -406,12 +391,11 @@
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "sK" = (
-/obj/structure/cable,
 /obj/structure/window/reinforced/survival_pod{
 	dir = 8
 	},
 /obj/machinery/power/shuttle_engine/heater{
-	dir = 4
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
@@ -427,19 +411,15 @@
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "tm" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 6
-	},
-/obj/machinery/power/smes/engineering,
 /obj/structure/cable,
+/obj/machinery/power/terminal,
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "ty" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 5
-	},
-/obj/machinery/power/smes/engineering,
 /obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "tN" = (
@@ -474,12 +454,6 @@
 /obj/machinery/suit_storage_unit/nri,
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
-"uZ" = (
-/obj/machinery/door/window/survival_pod{
-	dir = 8
-	},
-/turf/open/floor/pod/light,
-/area/shuttle/pirate/nri)
 "vh" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1
@@ -487,11 +461,11 @@
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "vj" = (
-/obj/structure/reagent_dispensers/fueltank/large{
+/obj/machinery/power/port_gen/pacman/super{
 	anchored = 1;
-	desc = "A tank full of a high quantity of liquid hydrogen fuel. Keep away from open flames and 57mm mortar shells.";
-	icon_state = "vat"
+	sheets = 20
 	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "wb" = (
@@ -547,8 +521,7 @@
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
-/obj/structure/lattice/catwalk,
-/turf/open/floor/plating,
+/turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
 "xp" = (
 /obj/machinery/door/airlock/survival_pod{
@@ -557,8 +530,7 @@
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
-/obj/structure/lattice/catwalk,
-/turf/open/floor/plating,
+/turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
 "xX" = (
 /obj/effect/turf_decal/stripes/line{
@@ -635,7 +607,6 @@
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "Bk" = (
-/obj/structure/lattice/catwalk,
 /obj/machinery/power/shieldwallgen/unlocked/anchored{
 	req_access_txt = "syndicate";
 	req_one_access_txt = "syndicate";
@@ -645,6 +616,7 @@
 	name = "defense shield generator"
 	},
 /obj/structure/cable,
+/obj/structure/lattice/catwalk,
 /turf/open/floor/plating/airless,
 /area/shuttle/pirate/nri)
 "Bm" = (
@@ -707,17 +679,12 @@
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "Eh" = (
-/obj/structure/cable,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
-/obj/structure/window/reinforced/survival_pod,
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4
 	},
-/obj/machinery/power/shuttle_engine/heater{
-	dir = 1
-	},
+/obj/machinery/power/smes/engineering,
+/obj/structure/cable,
+/obj/structure/window/reinforced/survival_pod,
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "EG" = (
@@ -735,16 +702,6 @@
 	dir = 9
 	},
 /turf/open/floor/engine/hull/reinforced,
-/area/shuttle/pirate/nri)
-"GF" = (
-/obj/machinery/power/terminal{
-	dir = 8
-	},
-/obj/structure/cable,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
-/turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "GO" = (
 /turf/open/floor/engine/hull,
@@ -768,8 +725,11 @@
 /obj/structure/window/reinforced/survival_pod{
 	dir = 1
 	},
-/obj/structure/window/reinforced/survival_pod,
-/obj/machinery/power/shuttle_engine/heater,
+/obj/structure/reagent_dispensers/fueltank/large{
+	anchored = 1;
+	desc = "A tank full of a high quantity of liquid hydrogen fuel. Keep away from open flames and 57mm mortar shells.";
+	icon_state = "vat"
+	},
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "Hz" = (
@@ -781,11 +741,9 @@
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "HV" = (
-/obj/machinery/power/terminal{
+/obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/structure/cable,
-/obj/structure/window/reinforced/survival_pod,
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "Ib" = (
@@ -811,27 +769,14 @@
 /area/shuttle/pirate/nri)
 "IT" = (
 /obj/structure/cable,
-/obj/structure/lattice/catwalk,
-/turf/open/floor/plating,
+/turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
 "IY" = (
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
-"JB" = (
-/obj/structure/cable,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
-/obj/structure/window/reinforced/survival_pod,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 8
-	},
-/obj/machinery/power/shuttle_engine/heater,
-/turf/open/floor/plating,
-/area/shuttle/pirate/nri)
 "JS" = (
-/obj/structure/lattice/catwalk,
 /obj/structure/cable,
+/obj/structure/lattice/catwalk,
 /turf/open/floor/plating/airless,
 /area/shuttle/pirate/nri)
 "Kc" = (
@@ -842,20 +787,14 @@
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "Kq" = (
-/obj/structure/cable,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 9
-	},
 /obj/machinery/light/warm/directional/south,
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "Lp" = (
-/obj/structure/window/reinforced/survival_pod{
+/obj/machinery/door/window/survival_pod{
 	dir = 4
 	},
-/obj/machinery/power/shuttle_engine/heater{
-	dir = 4
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "Lr" = (
@@ -874,6 +813,11 @@
 /obj/structure/table/reinforced,
 /obj/item/stock_parts/cell/high/empty,
 /obj/item/stock_parts/cell/high/empty,
+/obj/item/card/id/advanced/engioutpost{
+	registered_name = null;
+	name = "APC access card";
+	desc = "A card used to provide ID and determine access across the station. This one's used to open the ship's APC."
+	},
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "LA" = (
@@ -897,17 +841,6 @@
 	name = "police shuttle console"
 	},
 /turf/open/floor/pod/light,
-/area/shuttle/pirate/nri)
-"MK" = (
-/obj/structure/cable,
-/obj/machinery/power/port_gen/pacman/super{
-	anchored = 1;
-	sheets = 20
-	},
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
-/turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "Nu" = (
 /obj/structure/closet/crate/secure/weapon,
@@ -954,9 +887,8 @@
 /area/shuttle/pirate/nri)
 "Oc" = (
 /obj/structure/cable,
-/obj/structure/lattice/catwalk,
 /obj/machinery/light/small/red/directional/south,
-/turf/open/floor/plating,
+/turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
 "Pi" = (
 /obj/structure/bed/pod{
@@ -1013,15 +945,14 @@
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
 /area/shuttle/pirate/nri)
 "Tg" = (
+/obj/structure/window/reinforced/survival_pod{
+	dir = 4
+	},
+/obj/machinery/power/smes/engineering,
 /obj/structure/cable,
 /obj/structure/window/reinforced/survival_pod{
 	dir = 1
 	},
-/obj/structure/window/reinforced/survival_pod,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 4
-	},
-/obj/machinery/power/shuttle_engine/heater,
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "Tj" = (
@@ -1044,7 +975,6 @@
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "TR" = (
-/obj/structure/cable,
 /obj/structure/window/reinforced/survival_pod{
 	dir = 1
 	},
@@ -1053,7 +983,10 @@
 	dir = 8
 	},
 /obj/machinery/power/shuttle_engine/heater{
-	dir = 1
+	dir = 4
+	},
+/obj/machinery/power/shuttle_engine/heater{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
@@ -1130,15 +1063,6 @@
 	},
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
-"WE" = (
-/obj/structure/cable,
-/obj/machinery/power/port_gen/pacman/super{
-	anchored = 1;
-	sheets = 20
-	},
-/obj/structure/window/reinforced/survival_pod,
-/turf/open/floor/plating,
-/area/shuttle/pirate/nri)
 "Xe" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/survival_pod{
@@ -1146,11 +1070,9 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
-/obj/structure/lattice/catwalk,
-/turf/open/floor/pod,
+/turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
 "Xh" = (
-/obj/structure/lattice/catwalk,
 /obj/structure/cable,
 /obj/machinery/power/shieldwallgen/unlocked/anchored{
 	req_access_txt = "syndicate";
@@ -1160,6 +1082,7 @@
 	desc = "A heavy-duty reinforced shield generator designed for ship defense.";
 	name = "defense shield generator"
 	},
+/obj/structure/lattice/catwalk,
 /turf/open/floor/plating/airless,
 /area/shuttle/pirate/nri)
 "XA" = (
@@ -1271,7 +1194,7 @@ iC
 iC
 Hz
 Hz
-JB
+TR
 sK
 TR
 Hz
@@ -1322,10 +1245,10 @@ lv
 iC
 Hz
 HV
-WE
+xX
 rp
-MK
-GF
+qz
+HV
 Hz
 iC
 NW
@@ -1340,7 +1263,7 @@ IY
 Hz
 lV
 lU
-uZ
+hU
 od
 Kq
 Hz
