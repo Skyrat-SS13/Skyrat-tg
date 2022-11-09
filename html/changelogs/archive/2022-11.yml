@@ -109,3 +109,151 @@
   - bugfix: removed misplaced unrestricted access from Lavaland Shuttle Airlocks
   Zergspower:
   - qol: massive overhaul to make the Crashed medical ship be less ugly and loot starved
+2022-11-05:
+  A.C.M.O.:
+  - bugfix: Fixed a bug which caused the anesthetic machine to stop working if its
+      mask was temporarily adjusted.
+  - bugfix: Fixed a bug which caused the anesthetic machine to keep working if its
+      mask was adjusted when the user had another breathing apparatus equipped.
+  - rscadd: Hermetically sealed and space-worthy helmets can now be used as breathing
+      apparatuses!
+  - rscadd: Internals air tanks can now be toggled via AltClick.
+  - bugfix: Breath masks are fixed, and can now be toggled via AltClick.
+  - refactor: Refactored and deduplicated a significant portion of internal air tank
+      functions.
+  - bugfix: Fixed a bug that caused any type of equipped mask to be auto-adjusted
+      when toggling internals.
+  - bugfix: Fixed a bug that prevented toggling of internals via the stripping menu
+      if the mob only had a breathing tube.
+  - bugfix: Fixed a bug that allowed two mobs to breathe from the same air tank after
+      exchanging it between them.
+  Fikou:
+  - qol: the mech orbital pad now no longer deorgans you if you stand on it while
+      it launches upward, now gibbing (!!!), but only when a mech falls on you
+  - qol: the mech orbital pad can be used by mechs, and after 5 seconds of careful
+      computer manipulation with your big mech arms, you can launch yourself
+  - qol: mechs now give you feedback on what you fucked up when trying to attach equipment
+  - bugfix: you can now melee attack as a mech when you dont have weapons equipped,
+      as opposed to only being able to do it with weapons equipped
+  - rscadd: you can now lock mech orbital pads with wirecutters, preventing mechs
+      with pilots from launching, allowing only empty mechs
+  Guillaume Prata:
+  - qol: The forensic scanner uses balloon alerts for most of it's simple feedback
+      messages, enjoy having an easier time hearing the radio chatter.
+  - qol: Ore bags are "silent" for the wearer and won't send pointless chat messages
+      about what has been stored/removed from it. Other players will still get a chat
+      message, so miners can't get away with surprise plasma ore bombs.
+  Melbert:
+  - qol: Good Clean Fun Vendor is categorized.
+  - bugfix: Fixes Regal Rat Domain not functioning as intended
+  - bugfix: Triggering a traitor poster trap progresses their objective.
+  SkyratBot:
+  - rscadd: You can harvest useful organs from Brimdemons and Lobstrosities.
+  - bugfix: You can no longer 'preserve' regenerative cores which have already expired
+      to repair them.
+  - rscadd: Screwdriver cocktails now work as the world's worst screwdriver
+  - bugfix: The universal scanner now properly show all three options in the radial
+      with sprites, due to a missing space.
+  - qol: The universal scanner now has contextual screentips within all three of its
+      modes.
+  - rscadd: Added 6 new flatbreads and their associated recipes
+  - rscadd: Added 1 new pizza for ethereals
+  - qol: Made surgical computers tell you what tool to use for the current surgical
+      step.
+  - bugfix: fixed an exploit that let you go completely invisible by scanning a HFR
+      corner with a chameleon projector
+  - qol: Space Ninja now has their MODsuit module buttons pinned by default
+  - qol: sniper scopes and kinesis module should feel better to use
+  - bugfix: Fixes radiation blocking properties of glass types.
+  - balance: less megafauna should spawn on icebox and lavaland
+  - qol: blood drunk miner ruin on lavaland will spawn every round
+  - qol: Mining point cards are now reusable, allowing user-set transfers of mining
+      points to and from the point card itself.
+  - bugfix: Fixes getting AIs with cores getting gibbed if their mech theyre controlling
+      is destroyed
+  - refactor: The beer nuke detonation is now a special type of scrubber overflow
+      event.
+  - spellcheck: AI Universal Standard canvas will now specify it's size on the item
+      name.
+  - balance: The Shuttle Loan event no longer only rolls once per round.
+  VexingRaven:
+  - bugfix: Fixed posters printed from the library console staying in your hand when
+      you place them
+  - bugfix: Fixed Random Official Poster printed from the library console always placing
+      the west-facing variant no matter where you place it
+  Zergspower:
+  - qol: mappers can now use the actual color red in decals.
+  - imageadd: adds real_red decals and logos to be able to be used for mapping
+  - bugfix: fixes the errant line in the default Siding decal 'end'
+  - bugfix: 'fixes the missing crew manifest from: Chaplain, Clown, Mime, Botanist,
+      Cook, Shaft Miner, Bartender'
+  Zonespace27:
+  - spellcheck: Syndicate saboteur is now traitor again
+  - bugfix: One-click-antag non-progtots now work again
+  - bugfix: Lone infiltrator spawns again
+  - bugfix: Borer empowered offspring now works
+  - bugfix: Borers can no longer get trapped in stealth mode permanently
+  - bugfix: Borer Diveworm T2 now applies correctly instead of inversely
+2022-11-06:
+  Imaginos:
+  - imageadd: new icons for modsuit actions
+  OrionTheFox:
+  - balance: The Bouncer's uniform has been reinforced with stab-proof thread, expect
+      your wound armor to be on-par with your fellow departmental guards!
+  - imageadd: Departmental guards' sprites have been mostly revamped! Expect to fit
+      in a bit better rather than only having suits and ties.
+  - rscadd: 'Added a few new cowboy hats: Wide-Brimmed, Wide-Brimmed Feathered, and
+      Flat-Brimmed hats (All GAGS)'
+  Paxilmaniac:
+  - qol: Forge baking now behaves like an oven would, the ability to put oven trays
+      inside of the forge being how things are cooked now rather than just using a
+      food item on the forge.
+  - balance: Forge upgrading has been changed to be entirely based upon one's forging
+      skill, rather than the use of lavaland monster drops on the forge.
+  - refactor: Basically all of forge code has been refactored to some degree.
+  RimiNosha:
+  - bugfix: Quirk sanitization should actually work now.
+  SkyratBot:
+  - bugfix: fixed the prox sensor
+  - bugfix: Fixes conveyor speed input.
+  Tastyfish:
+  - rscadd: Adds an option in Game Preferences -> Game Options to turn off MultiZ
+      parallax.
+  YakumoChen:
+  - rscadd: Readds the fancy-looking kimono that looked different from the others.
+2022-11-07:
+  A.C.M.O.:
+  - rscadd: Added the Deaf Personnel pin for users of the Deaf quirk.
+  GoldenAlpharex:
+  - bugfix: SpaceMessenger was now updated to 6.4.8, bringing you more responsiveness
+      than ever (so long as ever is shorter than seven days ago)!
+  ShizCalev:
+  - bugfix: Fixed a runtime when NPC monkeys attempt to put items in the hands of
+      mobs with no hands (ie cyborgs, lizards, rats, ect.)
+  - bugfix: Monkeys will no longer attempt to put items in your pockets if you have
+      no pockets.
+  SkyratBot:
+  - bugfix: Detomatix cartridges are no longer called attacking items.
+  - rscadd: Added a special suicide to the Experi-Scanner
+  - bugfix: Added a missing watering can and two bottles of nutrient to the Tramstation
+      public garden.
+  - bugfix: fixed mecha internal damage diagnostic HUD blip not appearing
+  - bugfix: Made the V8 Engine teach you the House Edge recipe.
+  - bugfix: Fixed an error related to the V8 Engine that caused an infinite progress
+      bar.
+  - bugfix: All maps have a consistent Evidence room.
+  - imageadd: Ddds an icon for the Evidence Storage area
+  - bugfix: flight potions no longer have white bottle overlays
+2022-11-08:
+  SkyratBot:
+  - qol: When saving Experiment Log Recording Data to a data disk on either the Tachyon
+      Doppler or the Tank Compressor, Nanotrasen released a UI/UX update in order
+      to have the button that saves the data onto your disk... say "Save".
+  nevimer:
+  - code_imp: Your job slot is now free'd up when you DNR.
+  san7890, ZephyrTFA:
+  - bugfix: Emojipedia has been restored to tablets! Look for it in your local Nanotrasen
+      Software Hub.
+  - balance: Everyone is now able to send Emojis via PDA Messaging! It's no longer
+      restricted to just mime and curators, so enjoy sending the classics such as
+      :ai:, :1997:, :pslime:, and more!

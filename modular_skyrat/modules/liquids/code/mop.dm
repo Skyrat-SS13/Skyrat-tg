@@ -12,7 +12,7 @@
  */
 /obj/item/mop/proc/attack_on_liquids_turf(obj/item/mop/the_mop, turf/tile, mob/user, obj/effect/abstract/liquid_turf/liquids)
 	if(!in_range(user, tile))
-		return
+		return FALSE
 	var/free_space = the_mop.reagents.maximum_volume - the_mop.reagents.total_volume
 	if(free_space <= 0)
 		to_chat(user, span_warning("Your mop can't absorb any more!"))
