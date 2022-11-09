@@ -24,9 +24,11 @@
 
 	user.visible_message(span_warning("[user] starts to use the [src] on [target_mob]"), span_notice("You start to use the [src] on [target_mob]"))
 	if(!do_after(user, 5 SECONDS, target_mob))
+		balloon_alert(user, "removal cancelled")
 		return FALSE
 
 	if(!target_nif.remove_nifsoft(nifsoft_to_remove))
+		balloon_alert(user, "removal Failed")
 		return FALSE
 
 	to_chat(user, span_notice("You successfully remove the [nifsoft_to_remove.name]"))
@@ -84,6 +86,7 @@
 		to_chat(user, span_warning("[mob_to_repair] lacks a NIF"))
 
 	if(!do_after(user, 5 SECONDS, mob_to_repair))
+		balloon_alert(user, "repair cancelled")
 		return FALSE
 
 	if(!mob_to_repair.installed_nif.repair_nif(repair_amount))
