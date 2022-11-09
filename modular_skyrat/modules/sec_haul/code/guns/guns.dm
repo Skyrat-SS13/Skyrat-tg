@@ -195,8 +195,8 @@
 	can_suppress = FALSE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/hpistol_fire.ogg'
 	burst_size = 2
-	fire_delay = 2.5
-	spread = 8
+	fire_delay = 4
+	spread = 12
 	realistic = TRUE
 	dirt_modifier = 0.1
 	company_flag = COMPANY_ARMADYNE
