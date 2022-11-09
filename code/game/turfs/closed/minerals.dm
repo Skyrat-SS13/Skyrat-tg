@@ -37,8 +37,18 @@
 	M.Translate(-4, -4)
 	transform = M
 	icon = smooth_icon
-	var/static/list/behaviors = list(TOOL_MINING)
-	AddElement(/datum/element/bump_click, tool_behaviours = behaviors, allow_unarmed = TRUE)
+
+// Inlined version of the bump click element. way faster this way, the element's nice but it's too much overhead
+/turf/closed/mineral/Bumped(atom/movable/bumped_atom)
+	. = ..()
+	if(!isliving(bumped_atom))
+		return
+
+	var/mob/living/bumping = bumped_atom
+	var/obj/item/held_item = bumping.get_active_held_item()
+	// !held_item exists to be nice to snow. the other bit is for pickaxes obviously
+	if(!held_item || held_item.tool_behaviour == TOOL_MINING)
+		INVOKE_ASYNC(bumping, /mob.proc/ClickOn, src)
 
 /turf/closed/mineral/proc/Spread_Vein()
 	var/spreadChance = initial(mineralType.spreadChance)
@@ -158,6 +168,9 @@
 
 /turf/closed/mineral/ex_act(severity, target)
 	. = ..()
+	if(target == src)
+		gets_drilled(null, FALSE)
+		return
 	switch(severity)
 		if(EXPLODE_DEVASTATE)
 			gets_drilled(null, FALSE)
@@ -167,7 +180,6 @@
 		if(EXPLODE_LIGHT)
 			if(prob(75))
 				gets_drilled(null, FALSE)
-	return
 
 /turf/closed/mineral/blob_act(obj/structure/blob/B)
 	if(prob(50))
@@ -535,11 +547,16 @@
 	det_time = rand(8,10) //So you don't know exactly when the hot potato will explode
 	. = ..()
 
-/turf/closed/mineral/gibtonite/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/mining_scanner) || istype(I, /obj/item/t_scanner/adv_mining_scanner) && stage == 1)
-		user.visible_message(span_notice("[user] holds [I] to [src]..."), span_notice("You use [I] to locate where to cut off the chain reaction and attempt to stop it..."))
+/turf/closed/mineral/gibtonite/attackby(obj/item/attacking_item, mob/living/user, params)
+	var/previous_stage = stage
+	if(istype(attacking_item, /obj/item/mining_scanner) || istype(attacking_item, /obj/item/t_scanner/adv_mining_scanner) && stage == GIBTONITE_ACTIVE)
+		user.visible_message(span_notice("[user] holds [attacking_item] to [src]..."), span_notice("You use [attacking_item] to locate where to cut off the chain reaction and attempt to stop it..."))
 		defuse()
 	..()
+	if(istype(attacking_item, /obj/item/clothing/gloves/gauntlets) && previous_stage == GIBTONITE_UNSTRUCK && stage == GIBTONITE_ACTIVE && istype(user))
+		user.Immobilize(0.5 SECONDS)
+		user.throw_at(get_ranged_target_turf(src, get_dir(src, user), 5), range = 5, speed = 3, spin = FALSE)
+		user.visible_message(span_danger("[user] hit gibtonite with [attacking_item.name], launching [user.p_them()] back!"), span_danger("You've struck gibtonite! Your [attacking_item.name] launched you back!"))
 
 /turf/closed/mineral/gibtonite/proc/explosive_reaction(mob/user = null)
 	if(stage == GIBTONITE_UNSTRUCK)
