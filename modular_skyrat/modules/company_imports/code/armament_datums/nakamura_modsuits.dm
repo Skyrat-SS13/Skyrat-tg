@@ -10,6 +10,7 @@
 /datum/armament_entry/company_import/nakamura_modsuits
 	category = NAKAMURA_ENGINEERING_MODSUITS_NAME
 	company_bitflag = CARGO_COMPANY_NAKAMURA_MODSUITS
+	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 // MOD cores
 
@@ -26,18 +27,17 @@
 	item_type = /obj/item/mod/core/plasma
 	lower_cost = CARGO_CRATE_VALUE * 1.5
 	upper_cost = CARGO_CRATE_VALUE * 2.5
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/company_import/nakamura_modsuits/core/ethereal
 	item_type = /obj/item/mod/core/ethereal
 	lower_cost = CARGO_CRATE_VALUE * 1.5
 	upper_cost = CARGO_CRATE_VALUE * 2.5
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 // MOD plating
 
 /datum/armament_entry/company_import/nakamura_modsuits/plating
 	subcategory = "MOD External Plating"
+	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 /datum/armament_entry/company_import/nakamura_modsuits/plating/standard
 	name = "MOD Standard Plating"
@@ -93,13 +93,11 @@
 	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
 	stock_mult = 2
-	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/company_import/nakamura_modsuits/protection_modules/longfall
 	item_type = /obj/item/mod/module/longfall
 	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
-	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/company_import/nakamura_modsuits/protection_modules/rad_protection
 	item_type = /obj/item/mod/module/rad_protection
@@ -139,39 +137,33 @@
 	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
 	stock_mult = 2
-	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/company_import/nakamura_modsuits/utility_modules/regulator
 	item_type = /obj/item/mod/module/thermal_regulator
 	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
 	stock_mult = 2
-	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/company_import/nakamura_modsuits/utility_modules/mouthhole
 	item_type = /obj/item/mod/module/mouthhole
 	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
-	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/company_import/nakamura_modsuits/utility_modules/signlang
 	item_type = /obj/item/mod/module/signlang_radio
 	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
-	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/company_import/nakamura_modsuits/utility_modules/plasma_stabilizer
 	item_type = /obj/item/mod/module/plasma_stabilizer
 	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
-	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/company_import/nakamura_modsuits/utility_modules/basic_storage
 	item_type = /obj/item/mod/module/storage
 	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
 	stock_mult = 2
-	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/company_import/nakamura_modsuits/utility_modules/expanded_storage
 	item_type = /obj/item/mod/module/storage/large_capacity
@@ -201,13 +193,11 @@
 	item_type = /obj/item/mod/module/tether
 	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
-	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/company_import/nakamura_modsuits/mobility_modules/magboot
 	item_type = /obj/item/mod/module/magboot
 	lower_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_CHEAP_UPPER
-	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/company_import/nakamura_modsuits/mobility_modules/jetpack
 	item_type = /obj/item/mod/module/jetpack
