@@ -24,7 +24,7 @@
 /// Returned when the phase emtiter process is successful.
 #define SHOT_SUCCESS "success"
 /// Returned when a gun is fired but there is no phase emitter.
-#define SHOT_FAILURE_NO_EMITTER "No phase emitter installed!"
+#define SHOT_FAILURE_NO_EMITTER "no phase emitter!"
 
 /// The error message returned when the phase emitter is processed but damaged.
 #define PHASE_FAILURE_DAMAGED "PHASE EMITTER: Emitter damaged!"

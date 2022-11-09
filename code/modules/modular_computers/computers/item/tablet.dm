@@ -377,6 +377,9 @@
 		/datum/computer_file/program/messenger,
 		/datum/computer_file/program/nt_pay,
 		/datum/computer_file/program/notepad,
+		// SKYRAT EDIT START
+		/datum/computer_file/program/crew_manifest, // Adds crew manifest to all base tablets
+		// SKRAT EDIT END
 	)
 
 /obj/item/modular_computer/tablet/pda/install_default_programs()
