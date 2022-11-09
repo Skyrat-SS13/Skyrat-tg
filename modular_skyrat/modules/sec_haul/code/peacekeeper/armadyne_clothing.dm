@@ -52,6 +52,7 @@
 	icon_state = "armadyne_glasses"
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
+	uses_advanced_reskins = FALSE
 
 /obj/item/clothing/gloves/combat/peacekeeper/armadyne
 	name = "armadyne combat gloves"
@@ -102,11 +103,13 @@
 	shoes = /obj/item/clothing/shoes/jackboots/peacekeeper/armadyne
 	belt = /obj/item/storage/belt/security/peacekeeper/armadyne
 	r_pocket = /obj/item/assembly/flash/handheld
-	backpack_contents = list(/obj/item/melee/baton/telescopic, /obj/item/storage/box/gunset/pdh_corpo)
+	backpack_contents = list(
+		/obj/item/melee/baton/telescopic,
+		/obj/item/storage/box/gunset/pdh_corpo,
+	)
 	back = /obj/item/storage/backpack/satchel/leather
 	box = /obj/item/storage/box/survival/security
 	l_pocket = /obj/item/megaphone/command
-	implants = list(/obj/item/implant/mindshield)
 	id = /obj/item/card/id/advanced/armadyne/agent
 
 
@@ -114,22 +117,64 @@
 	name = "Armadyne Corporate Security"
 
 	suit_store = /obj/item/modular_computer/tablet/pda/security
-	ears = /obj/item/radio/headset/headset_sec/alt
+	ears = /obj/item/radio/headset/armadyne
+	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne/tactical
+	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne
+	head = /obj/item/clothing/head/helmet
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper/armadyne
+	mask = /obj/item/clothing/mask/gas/sechailer
+	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne/armor
+	suit_store = /obj/item/gun/ballistic/automatic/pitbull
+	shoes = /obj/item/clothing/shoes/jackboots/peacekeeper/armadyne
+	belt = /obj/item/storage/belt/security/webbing/peacekeeper/armadyne
+	backpack_contents = list(
+		/obj/item/storage/box/gunset/pdh_corpo,
+		/obj/item/storage/box/handcuffs,
+		/obj/item/ammo_box/magazine/multi_sprite/pitbull,
+	)
+	back = /obj/item/storage/backpack/security
+	box = /obj/item/storage/box/survival/security
+	id = /obj/item/card/id/advanced/armadyne/security
+
+/datum/outfit/armadyne_security/commander
+	name = "Armadyne Corporate Security Commander"
+
+	suit_store = /obj/item/modular_computer/tablet/pda/security
+	ears = /obj/item/radio/headset/armadyne/commander
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne/tactical
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne
 	head =  /obj/item/clothing/head/beret/sec/peacekeeper/armadyne
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper/armadyne
 	mask = /obj/item/clothing/mask/gas/sechailer/swat
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne/armor
-	suit_store = /obj/item/gun/ballistic/automatic/dmr
+	suit_store = /obj/item/gun/ballistic/automatic/norwind
 	shoes = /obj/item/clothing/shoes/jackboots/peacekeeper/armadyne
 	belt = /obj/item/storage/belt/security/webbing/peacekeeper/armadyne
-	backpack_contents = list(/obj/item/melee/baton/security/loaded , /obj/item/storage/box/gunset/pdh_corpo, /obj/item/storage/box/handcuffs, /obj/item/ammo_box/magazine/dmr=2)
+	backpack_contents = list(
+		/obj/item/storage/box/gunset/pdh_corpo,
+		/obj/item/storage/box/handcuffs,
+		/obj/item/ammo_box/magazine/multi_sprite/norwind,
+	)
 	back = /obj/item/storage/backpack/security
 	box = /obj/item/storage/box/survival/security
 	l_pocket = /obj/item/megaphone/command
-	implants = list(/obj/item/implant/mindshield)
 	id = /obj/item/card/id/advanced/armadyne/security
+
+
+/obj/item/radio/headset/armadyne
+	name = "armadyne headset"
+	freerange = TRUE
+	freqlock = TRUE
+	keyslot = new /obj/item/encryptionkey/headset_sec/armadyne
+
+/obj/item/radio/headset/armadyne/commander
+	name = "armadyne commander headset"
+	command = TRUE
+
+/obj/item/encryptionkey/headset_sec/armadyne
+	name = "armadyne radio encryption key"
+	channels = list(RADIO_CHANNEL_ARMADYNE = 1)
+	independent = TRUE
 
 /obj/item/card/id/advanced/armadyne
 	name = "\improper Armadyne ID"
@@ -147,7 +192,7 @@
 
 /datum/id_trim/centcom/armadyne/New()
 	. = ..()
-	access = SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_ALL_STATION))
+	access = SSid_access.get_region_access_list(list(REGION_GENERAL, REGION_CENTCOM)) // They're not with CC so they get fuck-all access on-station
 
 /obj/item/card/id/advanced/armadyne/security
 	registered_name = "Armadyne Corpo"
@@ -168,10 +213,6 @@
 	if(visualsOnly)
 		return
 
-	var/obj/item/radio/R = H.ears
-	R.set_frequency(FREQ_CENTCOM)
-	R.name = "Armadyne Headset"
-
 	var/obj/item/card/id/W = H.wear_id
 	if(W)
 		W.registered_name = H.real_name
@@ -187,13 +228,14 @@
     role = "Security"
 
 /datum/antagonist/ert/armadyne/leader
-    name = "Armadyne Corporate Agent"
-    outfit = /datum/outfit/armadyne_rep
-    role = "Agent"
+    name = "Armadyne Corporate Security Commander"
+    outfit = /datum/outfit/armadyne_security/commander
+    role = "Commander"
 
 /datum/ert/armadyne
-    roles = list(/datum/antagonist/ert/armadyne)
-    leader_role = /datum/antagonist/ert/armadyne/leader
-    rename_team = "Armadyne PMC"
-    mission = "Assist any Armadyne corporate entities."
-    polldesc = "an Armadyne PMC."
+	roles = list(/datum/antagonist/ert/armadyne)
+	leader_role = /datum/antagonist/ert/armadyne/leader
+	rename_team = "Armadyne PMC"
+	mission = "Assist any Armadyne corporate entities."
+	polldesc = "an Armadyne PMC."
+	teamsize = 3
