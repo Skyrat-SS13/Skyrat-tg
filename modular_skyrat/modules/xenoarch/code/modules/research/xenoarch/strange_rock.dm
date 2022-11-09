@@ -187,12 +187,21 @@
 	baseturfs = /turf/open/misc/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	defer_change = TRUE
-
 	mineralChance = 10
-	mineralSpawnChanceList = list(
-		/obj/item/stack/ore/uranium = 5, /obj/item/stack/ore/diamond = 1, /obj/item/stack/ore/gold = 10, /obj/item/stack/ore/titanium = 11,
-		/obj/item/stack/ore/silver = 12, /obj/item/stack/ore/plasma = 20, /obj/item/stack/ore/iron = 40, /turf/closed/mineral/strange_rock/volcanic = 10,
-		/turf/closed/mineral/gibtonite/volcanic = 4, /obj/item/stack/ore/bluespace_crystal = 1)
+
+/turf/closed/mineral/random/volcanic/mineral_chances()
+	return list(
+		/obj/item/stack/ore/iron = 40,
+		/obj/item/stack/ore/plasma = 20,
+		/obj/item/stack/ore/silver = 12,
+		/obj/item/stack/ore/titanium = 11,
+		/obj/item/stack/ore/gold = 10,
+		/turf/closed/mineral/strange_rock/volcanic = 10,
+		/obj/item/stack/ore/uranium = 5,
+		/turf/closed/mineral/gibtonite/volcanic = 4,
+		/obj/item/stack/ore/diamond = 1,
+		/obj/item/stack/ore/bluespace_crystal = 1
+		)
 
 /turf/closed/mineral/strange_rock/ice
 	icon_state = "icerock_strange"
@@ -209,20 +218,39 @@
 	baseturfs = /turf/open/misc/asteroid/snow/ice/icemoon
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 
-/turf/closed/mineral/random/snow
-	mineralSpawnChanceList = list(
-		/obj/item/stack/ore/uranium = 5, /obj/item/stack/ore/diamond = 1, /obj/item/stack/ore/gold = 10, /obj/item/stack/ore/titanium = 11,
-		/obj/item/stack/ore/silver = 12, /obj/item/stack/ore/plasma = 20, /obj/item/stack/ore/iron = 40, /turf/closed/mineral/strange_rock/ice/icemoon = 10,
-		/turf/closed/mineral/gibtonite/ice/icemoon = 4, /obj/item/stack/ore/bluespace_crystal = 1)
+/turf/closed/mineral/random/snow/mineral_chances()
+	return list(
+		/obj/item/stack/ore/iron = 40,
+		/obj/item/stack/ore/plasma = 20,
+		/obj/item/stack/ore/silver = 12,
+		/obj/item/stack/ore/titanium = 11,
+		/obj/item/stack/ore/gold = 10,
+		/turf/closed/mineral/strange_rock/ice/icemoon = 10,
+		/obj/item/stack/ore/uranium = 5,
+		/turf/closed/mineral/gibtonite/ice/icemoon = 4,
+		/obj/item/stack/ore/diamond = 1,
+		/obj/item/stack/ore/bluespace_crystal = 1,
+		)
 
 /turf/closed/mineral/random/snow/underground
 	baseturfs = /turf/open/misc/asteroid/snow/icemoon
 	// abundant ore
 	mineralChance = 20
-	mineralSpawnChanceList = list(
-		/obj/item/stack/ore/uranium = 10, /obj/item/stack/ore/diamond = 4, /obj/item/stack/ore/gold = 20, /obj/item/stack/ore/titanium = 22,
-		/obj/item/stack/ore/silver = 24, /obj/item/stack/ore/plasma = 20, /obj/item/stack/ore/iron = 20, /obj/item/stack/ore/bananium = 1,
-		/turf/closed/mineral/gibtonite/ice/icemoon = 8, /turf/closed/mineral/strange_rock/ice/icemoon = 10, /obj/item/stack/ore/bluespace_crystal = 2)
+
+/turf/closed/mineral/random/snow/underground/mineral_chances()
+	return list(
+		/obj/item/stack/ore/silver = 24,
+		/obj/item/stack/ore/titanium = 22,
+		/obj/item/stack/ore/gold = 20,
+		/obj/item/stack/ore/plasma = 20,
+		/obj/item/stack/ore/iron = 20,
+		/obj/item/stack/ore/uranium = 10,
+		/turf/closed/mineral/strange_rock/ice/icemoon = 10,
+		/turf/closed/mineral/gibtonite/ice/icemoon = 8,
+		/obj/item/stack/ore/diamond = 4,
+		/obj/item/stack/ore/bluespace_crystal = 2,
+		/obj/item/stack/ore/bananium = 1,
+		)
 
 //small gibonite fix
 /turf/closed/mineral/gibtonite/asteroid
@@ -248,10 +276,21 @@
 /turf/closed/mineral/random/stationside/asteroid/rockplanet
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	turf_type = /turf/open/misc/asteroid
-	mineralSpawnChanceList = list(/obj/item/stack/ore/uranium = 5, /obj/item/stack/ore/diamond = 1, /obj/item/stack/ore/gold = 10,
-		/obj/item/stack/ore/silver = 12, /obj/item/stack/ore/plasma = 20, /obj/item/stack/ore/iron = 40, /obj/item/stack/ore/titanium = 11,
-		/turf/closed/mineral/gibtonite/asteroid = 4, /obj/item/stack/ore/bluespace_crystal = 1, /turf/closed/mineral/strange_rock/asteroid = 10)
 	mineralChance = 30
+
+/turf/closed/mineral/random/stationside/asteroid/rockplanet/mineral_chances()
+	return list(
+		/obj/item/stack/ore/iron = 40,
+		/obj/item/stack/ore/plasma = 20,
+		/obj/item/stack/ore/silver = 12,
+		/obj/item/stack/ore/titanium = 11,
+		/obj/item/stack/ore/gold = 10,
+		/turf/closed/mineral/strange_rock/asteroid = 10,
+		/obj/item/stack/ore/uranium = 5,
+		/turf/closed/mineral/gibtonite/asteroid = 4,
+		/obj/item/stack/ore/bluespace_crystal = 1,
+		/obj/item/stack/ore/diamond = 1,
+		)
 
 #undef DIG_UNDEFINED
 #undef DIG_DELETE
