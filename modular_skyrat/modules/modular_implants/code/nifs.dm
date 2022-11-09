@@ -231,10 +231,7 @@
 
 ///Can we take blood from the mob?
 /obj/item/organ/internal/cyberimp/brain/nif/proc/blood_check()
-	if(!linked_mob || !linked_mob.blood_volume)
-		return FALSE
-
-	if(linked_mob.blood_volume < minimum_blood_level)
+	if(!linked_mob || !linked_mob.blood_volume || linked_mob.blood_volume < minimum_blood_level)
 		return FALSE
 
 	return TRUE
