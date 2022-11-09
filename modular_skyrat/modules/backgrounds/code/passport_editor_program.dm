@@ -194,15 +194,13 @@
 
 	return data
 
-/obj/machinery/modular_computer/console/preset/id/install_programs()
+/obj/machinery/modular_computer/console/preset/id/LateInitialize()
 	. = ..()
-	var/obj/item/computer_hardware/hard_drive/hard_drive = cpu.all_components[MC_HDD]
-	hard_drive.store_file(new /datum/computer_file/program/passport_mod)
+	cpu.store_file(new /datum/computer_file/program/passport_mod)
 
-/obj/machinery/modular_computer/console/preset/id/centcom/install_programs()
+/obj/machinery/modular_computer/console/preset/id/centcom/LateInitialize()
 	. = ..()
-	var/obj/item/computer_hardware/hard_drive/hard_drive = cpu.all_components[MC_HDD]
-	hard_drive.store_file(new /datum/computer_file/program/passport_mod)
+	cpu.store_file(new /datum/computer_file/program/passport_mod)
 
 /obj/machinery/modular_computer/console/preset/id/Initialize(mapload)
 	. = ..()
