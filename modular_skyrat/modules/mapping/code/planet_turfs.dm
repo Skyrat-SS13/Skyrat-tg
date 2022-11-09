@@ -84,9 +84,9 @@
 
 /turf/closed/mineral/random/asteroid/rockplanet	//A version that can be used on the mining planet without destroying atmos - starts with Low_Pressure, along with the rest of the planet.
 	name = "iron rock"
+	icon = MAP_SWITCH('icons/turf/walls/red_wall.dmi', 'icons/turf/mining.dmi')
 	icon = 'icons/turf/mining.dmi'
 	icon_state = "redrock"
-	smooth_icon = 'icons/turf/walls/red_wall.dmi'
 	base_icon_state = "red_wall"
 	turf_type = /turf/open/misc/asteroid/lowpressure
 	baseturfs = /turf/open/misc/asteroid/lowpressure
