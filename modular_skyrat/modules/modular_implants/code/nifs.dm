@@ -433,7 +433,7 @@
 	if(target.getorganslot(ORGAN_SLOT_BRAIN))
 		display_results(user, target, span_warning("You screw up, causing [target] brain damage!"),
 			span_warning("[user] screws up, causing damage to [target]'s brain!"),
-			"[user] completes the repair on [target]'s NIF.")
+			"[user] fails to complete the repair on [target]'s NIF.")
 
 		target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 20)
 	return FALSE
