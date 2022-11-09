@@ -6,7 +6,9 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "peacekeeper_helmet"
-	worn_icon_state = "peacekeeper"
+	base_icon_state = "peacekeeper_helmet"
+	can_toggle = FALSE
+	actions_types = null
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/beret/sec/peacekeeper
