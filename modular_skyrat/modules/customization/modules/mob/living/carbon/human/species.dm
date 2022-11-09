@@ -38,6 +38,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		owner.remove_overlay(BODY_ADJ_LAYER)
 		owner.remove_overlay(BODY_FRONT_LAYER)
 		owner.remove_overlay(BODY_FRONT_UNDER_CLOTHES)
+		owner.remove_overlay(ABOVE_BODY_FRONT_HEAD_LAYER)
 		return
 
 	var/list/bodyparts_to_add = list()
@@ -67,6 +68,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	owner.remove_overlay(BODY_ADJ_LAYER)
 	owner.remove_overlay(BODY_FRONT_LAYER)
 	owner.remove_overlay(BODY_FRONT_UNDER_CLOTHES)
+	owner.remove_overlay(ABOVE_BODY_FRONT_HEAD_LAYER)
 
 	var/g = (owner.physique == FEMALE) ? "f" : "m"
 	for(var/bodypart in bodyparts_to_add)
@@ -253,21 +255,18 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	owner.apply_overlay(BODY_ADJ_LAYER)
 	owner.apply_overlay(BODY_FRONT_LAYER)
 	owner.apply_overlay(BODY_FRONT_UNDER_CLOTHES)
+	owner.apply_overlay(ABOVE_BODY_FRONT_HEAD_LAYER)
 
 /datum/species
 	///What accessories can a species have aswell as their default accessory of such type e.g. "frills" = "Aquatic". Default accessory colors is dictated by the accessory properties and mutcolors of the specie
 	var/list/default_mutant_bodyparts = list()
-	/// List of all the languages our species can learn NO MATTER their background
+	var/list/genitals_list = list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_WOMB, ORGAN_SLOT_TESTICLES, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS, ORGAN_SLOT_PENIS)
 
 /datum/species/New()
 	. = ..()
 	if(can_have_genitals)
-		default_mutant_bodyparts[ORGAN_SLOT_VAGINA] = "None"
-		default_mutant_bodyparts[ORGAN_SLOT_WOMB] = "None"
-		default_mutant_bodyparts[ORGAN_SLOT_TESTICLES] = "None"
-		default_mutant_bodyparts[ORGAN_SLOT_BREASTS] = "None"
-		default_mutant_bodyparts[ORGAN_SLOT_ANUS] = "None"
-		default_mutant_bodyparts[ORGAN_SLOT_PENIS] = "None"
+		for(var/genital in genitals_list)
+			default_mutant_bodyparts[genital] = "None"
 
 /datum/species/dullahan
 	mutant_bodyparts = list()
@@ -308,6 +307,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/get_random_mutant_bodyparts(list/features) //Needs features to base the colour off of
 	var/list/mutantpart_list = list()
 	var/list/bodyparts_to_add = default_mutant_bodyparts.Copy()
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		for(var/genital in genitals_list)
+			bodyparts_to_add.Remove(genital)
 	for(var/key in bodyparts_to_add)
 		var/datum/sprite_accessory/SP
 		if(bodyparts_to_add[key] == ACC_RANDOM)

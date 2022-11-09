@@ -64,7 +64,6 @@
 #define JOB_SCIENTIST "Scientist"
 #define JOB_ROBOTICIST "Roboticist"
 #define JOB_GENETICIST "Geneticist"
-#define JOB_VANGUARD_OPERATIVE "Vanguard Operative" // SKYRAT EDIT ADDITION
 #define JOB_SCIENCE_GUARD "Science Guard"
 //Supply
 #define JOB_QUARTERMASTER "Quartermaster"
@@ -83,7 +82,7 @@
 #define JOB_CHAPLAIN "Chaplain"
 #define JOB_PSYCHOLOGIST "Psychologist"
 #define JOB_BARBER "Barber" // SKYRAT EDIT ADDITION
-#define JOB_BOUNCER "Bouncer" // SKYRAT EDIT ADDITION
+#define JOB_BOUNCER "Service Guard" // SKYRAT EDIT ADDITION
 //ERTs
 #define JOB_ERT_DEATHSQUAD "Death Commando"
 #define JOB_ERT_COMMANDER "Emergency Response Team Commander"

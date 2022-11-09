@@ -211,6 +211,8 @@
 			. += "<br>It has <b>[span_cyan("Interdyne Pharmaceuticals")]</b> stamped onto the barrel."
 		if(COMPANY_ABDUCTOR)
 			. += "<br>It has <b>[span_abductor("✌︎︎♌︎︎♎︎︎◆︎︎♍︎︎⧫︎︎❄︎♏︎♍︎♒︎")]</b> engraved into the photon accelerator."
+		if(COMPANY_REMOVED)
+			. += "<br>It has had <b>[span_grey("all identifying marks scrubbed off")].</b>"
 
 /obj/item/gun/proc/fire_select()
 	var/mob/living/carbon/human/user = usr
@@ -266,7 +268,7 @@
 	return !user.contains(src)
 
 /obj/item/gun/proc/shoot_with_empty_chamber(mob/living/user as mob|obj)
-	balloon_alert(user, "*click*")
+	balloon_alert_to_viewers("*click*")
 	playsound(src, dry_fire_sound, 30, TRUE)
 
 /obj/item/gun/proc/fire_sounds()
@@ -643,7 +645,7 @@
 
 /obj/item/gun/proc/remove_bayonet(mob/living/user, obj/item/tool_item)
 	tool_item?.play_tool_sound(src)
-	to_chat(user, span_notice("You unfix [bayonet] from [src]."))
+	balloon_alert(user, "[bayonet] removed")
 	bayonet.forceMove(drop_location())
 
 	if(Adjacent(user) && !issilicon(user))

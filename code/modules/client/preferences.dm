@@ -113,8 +113,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/loaded_preferences_successfully = load_preferences()
 	if(loaded_preferences_successfully)
 		if(load_character())
-			// SKYRAT EDIT START - Sanitizing languages
+			// SKYRAT EDIT START - Sanitizing preferences
 			sanitize_languages()
+			sanitize_quirks()
 			// SKYRAT EDIT END
 			sanitize_backgrounds() // SKYRAT EDIT - Backgrounds
 			return // SKYRAT EDIT - Don't remove this. Just don't. Nothing is worth forced random characters.
@@ -501,7 +502,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				else
 					job_preferences[other_job] = JP_MEDIUM
 
-	job_preferences[job.title] = level
+	if(level == null)
+		job_preferences -= job.title
+	else
+		job_preferences[job.title] = level
 
 	return TRUE
 
@@ -539,13 +543,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	for (var/datum/preference/preference as anything in get_preferences_in_priority_order())
 		if (preference.savefile_identifier != PREFERENCE_CHARACTER)
 			continue
-	// SKYRAT EDIT
-		if(preference.is_accessible(src)) // Only apply preferences you can actually access.
-			preference.apply_to_human(character, read_preference(preference.type), src)
 
+		preference.apply_to_human(character, read_preference(preference.type), src)
+
+	// SKYRAT EDIT ADDITION START - middleware apply human prefs
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 		preference_middleware.apply_to_human(character, src)
-	// SKYRAT EDIT END
+	// SKYRAT EDIT ADDITION END
+
 	character.dna.real_name = character.real_name
 
 	if(icon_updates)

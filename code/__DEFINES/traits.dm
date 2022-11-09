@@ -145,7 +145,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Blacklist for mobs that can't read or write
 #define TRAIT_ILLITERATE "illiterate"
 #define TRAIT_BLIND "blind"
+/// Mute. Can't talk.
 #define TRAIT_MUTE "mute"
+/// Emotemute. Can't... emote.
 #define TRAIT_EMOTEMUTE "emotemute"
 #define TRAIT_DEAF "deaf"
 #define TRAIT_NEARSIGHT "nearsighted"
@@ -318,7 +320,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// prevents the damage done by a brain tumor
 #define TRAIT_TUMOR_SUPPRESSED "brain_tumor_suppressed"
 /// Prevents hallucinations from the hallucination brain trauma (RDS)
-#define TRAIT_HALLUCINATION_SUPPRESSED "hallucination_suppressed"
+#define TRAIT_RDS_SUPPRESSED "rds_suppressed"
 /// overrides the update_fire proc to always add fire (for lava)
 #define TRAIT_PERMANENTLY_ONFIRE "permanently_onfire"
 /// Galactic Common Sign Language
@@ -399,14 +401,12 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 // Being close enough to the supermatter makes it heal at higher temperatures
 // and emit less heat. Present on /mob or /datum/mind
 #define TRAIT_SUPERMATTER_SOOTHER "supermatter_soother"
-/*
-* Trait granted by various security jobs, and checked by [/obj/item/food/donut]
-* When present in the mob's mind, they will always love donuts.
-*/
-#define TRAIT_DONUT_LOVER "donut_lover"
 
 /// `do_teleport` will not allow this atom to teleport
 #define TRAIT_NO_TELEPORT "no-teleport"
+/// This atom is a secluded location, which is counted as out of bounds.
+/// Anything that enters this atom's contents should react if it wants to stay in bounds.
+#define TRAIT_SECLUDED_LOCATION "secluded_loc"
 
 /// Trait used by fugu glands to avoid double buffing
 #define TRAIT_FUGU_GLANDED "fugu_glanded"
@@ -430,6 +430,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// Item still allows you to examine items while blind and actively held.
 #define TRAIT_BLIND_TOOL "blind_tool"
+
+/// The person with this trait always appears as 'unknown'.
+#define TRAIT_UNKNOWN "unknown"
 
 // METABOLISMS
 // Various jobs on the station have historically had better reactions
@@ -521,8 +524,11 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 ///Marks the item as having been transmuted. Functionally blacklists the item from being recycled or sold for materials.
 #define TRAIT_MAT_TRANSMUTED "transmuted"
 
+// cargo traits
 ///If the item will block the cargo shuttle from flying to centcom
 #define TRAIT_BANNED_FROM_CARGO_SHUTTLE "banned_from_cargo_shuttle"
+///If the item's contents are immune to the missing item manifest error
+#define TRAIT_NO_MISSING_ITEM_ERROR "no_missing_item_error"
 
 ///SSeconomy trait, if the market is crashing and people can't withdraw credits from ID cards.
 #define TRAIT_MARKET_CRASHING "market_crashing"
@@ -651,6 +657,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// trait that prevents AI controllers from planning detached from ai_status to prevent weird state stuff.
 #define TRAIT_AI_PAUSED "TRAIT_AI_PAUSED"
+
+/// this is used to bypass tongue language restrictions but not tongue disabilities
+#define TRAIT_TOWER_OF_BABEL "tower_of_babel"
 
 //Medical Categories for quirks
 #define CAT_QUIRK_ALL 0
@@ -844,6 +853,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define ITEM_SCALING_TRAIT "item_scaling"
 /// Trait given by Objects that provide blindsight
 #define ITEM_BLIND_TRAIT "blind_item_trait"
+/// Trait given by choking
+#define CHOKING_TRAIT "choking_trait"
+/// Trait given by hallucinations
+#define HALLUCINATION_TRAIT "hallucination_trait"
 
 /**
 * Trait granted by [/mob/living/carbon/Initialize] and

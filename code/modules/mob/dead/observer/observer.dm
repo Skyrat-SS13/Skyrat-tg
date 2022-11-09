@@ -421,6 +421,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		//SKYRAT EDIT ADDITION - DNR TRAIT (Technically this is just to fix ghost-DNR'ing not actually DNR'ing, but it pairs with the trait so)
 		if(!current_mob.has_quirk(/datum/quirk/dnr))
 			current_mob.add_quirk(/datum/quirk/dnr)
+		var/datum/job/job_to_free = SSjob.GetJob(current_mob.mind.assigned_role.title)
+		job_to_free.current_positions--
 		//SKYRAT EDIT ADDITION END - DNR TRAIT
 	log_message("has opted to do-not-resuscitate / DNR from their body ([current_mob])", LOG_GAME, color = COLOR_GREEN)
 
@@ -704,7 +706,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!..())
 		return FALSE
 
-	usr.visible_message(span_deadsay("<b>[src]</b> points to [pointed_at]."))
+	visible_message(span_deadsay("<b>[src]</b> points to [pointed_at]."))
 
 /mob/dead/observer/verb/view_manifest()
 	set name = "View Crew Manifest"

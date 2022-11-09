@@ -181,17 +181,17 @@
  */
 /mob/living/proc/get_quirk_string(medical, category = CAT_QUIRK_ALL) //helper string. gets a string of all the quirks the mob has
 	var/list/dat = list()
-	
+
 	// SKYRAT EDIT START
 	// The health analyzer will first check if the target is a changeling, and if they are, load the quirks of the person they're disguising as.
 
 	var/target_quirks = quirks
-	var/datum/antagonist/changeling/target_changeling = mind.has_antag_datum(/datum/antagonist/changeling)
+	var/datum/antagonist/changeling/target_changeling = mind?.has_antag_datum(/datum/antagonist/changeling)
 	if(target_changeling)
 		target_quirks = target_changeling.current_profile.quirks
 
 	// SKYRAT EDIT END
-	
+
 	switch(category)
 		if(CAT_QUIRK_ALL)
 			for(var/V in target_quirks)		// SKYRAT EDIT

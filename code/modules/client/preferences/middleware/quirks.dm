@@ -76,15 +76,6 @@
 /datum/preference_middleware/quirks/proc/remove_quirk(list/params, mob/user)
 	var/quirk_name = params["quirk"]
 
-	// SKYRAT EDIT ADDITION
-	var/list/quirks = SSquirks.get_quirks()
-	var/datum/quirk/quirk = quirks[quirk_name]
-	if(quirk == /datum/quirk/foreigner)
-		preferences.languages = new /list()
-		for(var/language in preferences.get_adjusted_language_holder())
-			preferences.languages[language] = LANGUAGE_SPOKEN
-	// SKYRAT EDIT END
-
 	var/list/new_quirks = preferences.all_quirks - quirk_name
 	if ( \
 		!(quirk_name in preferences.all_quirks) \

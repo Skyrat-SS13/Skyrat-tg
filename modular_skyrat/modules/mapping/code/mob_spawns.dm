@@ -165,7 +165,7 @@
 	belt = /obj/item/storage/belt/security/full
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
-	head = /obj/item/clothing/head/warden/syndicate
+	head = /obj/item/clothing/head/hats/warden/syndicate
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
 	ears = /obj/item/radio/headset/interdyne
 
@@ -415,7 +415,7 @@
 
 /datum/outfit/tarkon/ensign //jack of all trades, master of none, spent all his credits, every last one
 	name = "Port Tarkon Ensigns Outfit"
-	uniform = /obj/item/clothing/under/utility
+	uniform = /obj/item/clothing/under/misc/skyrat/utility
 	ears = /obj/item/radio/headset/tarkon/ensign
 	id = /obj/item/card/id/away/tarkon/ensign
 	neck = /obj/item/clothing/neck/security_cape/armplate

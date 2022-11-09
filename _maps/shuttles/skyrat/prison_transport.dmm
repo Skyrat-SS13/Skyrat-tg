@@ -23,9 +23,8 @@
 /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/rubber,
 /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/rubber,
 /obj/structure/rack/shelf,
-/turf/open/floor/iron/dark/blue/side{
-	dir = 4
-	},
+/obj/effect/turf_decal/tile/dark_blue/fourcorners,
+/turf/open/floor/iron/dark,
 /area/shuttle/prison_transport)
 "bR" = (
 /obj/machinery/door/airlock/command/glass{
@@ -35,7 +34,8 @@
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/prison_transport)
 "cz" = (
-/turf/open/floor/iron/dark/blue,
+/obj/effect/turf_decal/trimline/dark_blue/filled/line,
+/turf/open/floor/iron/dark,
 /area/shuttle/prison_transport)
 "dz" = (
 /obj/effect/turf_decal/trimline/brown/warning{
@@ -107,6 +107,7 @@
 /obj/item/clothing/head/helmet/riot,
 /obj/item/clothing/head/helmet/riot,
 /obj/item/clothing/head/helmet/riot,
+/obj/effect/turf_decal/tile/dark_blue/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/prison_transport)
 "hC" = (
@@ -229,12 +230,18 @@
 	name = "Cockpit";
 	req_access = list("cent_general")
 	},
-/turf/open/floor/iron/dark/blue,
+/turf/open/floor/iron/dark,
 /area/shuttle/prison_transport)
 "kW" = (
 /obj/effect/turf_decal/trimline/brown/warning,
 /obj/effect/turf_decal/skyrat_decals/departments/bridge,
 /turf/open/floor/iron/smooth_half,
+/area/shuttle/prison_transport)
+"lk" = (
+/obj/effect/turf_decal/trimline/dark_blue/filled/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/prison_transport)
 "lu" = (
 /obj/machinery/door/poddoor/shutters/window/preopen{
@@ -303,7 +310,7 @@
 /turf/open/floor/iron/smooth,
 /area/shuttle/prison_transport)
 "oQ" = (
-/obj/structure/shuttle/engine/propulsion/left,
+/obj/machinery/power/shuttle_engine/propulsion/left,
 /obj/effect/turf_decal/stripes/full,
 /turf/open/floor/plating,
 /area/shuttle/prison_transport)
@@ -324,9 +331,10 @@
 "pY" = (
 /obj/machinery/light/cold/no_nightlight/directional/east,
 /obj/structure/chair/comfy/shuttle,
-/turf/open/floor/iron/dark/blue/side{
-	dir = 8
+/obj/effect/turf_decal/trimline/dark_blue/filled/end{
+	dir = 4
 	},
+/turf/open/floor/iron/dark,
 /area/shuttle/prison_transport)
 "qf" = (
 /obj/effect/turf_decal/caution/stand_clear/red{
@@ -334,6 +342,15 @@
 	},
 /obj/effect/turf_decal/bot_red,
 /turf/open/floor/iron/smooth,
+/area/shuttle/prison_transport)
+"rC" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/dark_blue/filled/end{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/prison_transport)
 "sf" = (
 /obj/effect/turf_decal/caution/stand_clear/red{
@@ -406,6 +423,7 @@
 /obj/item/melee/baton,
 /obj/item/melee/baton,
 /obj/item/melee/baton,
+/obj/effect/turf_decal/tile/dark_blue/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/prison_transport)
 "uQ" = (
@@ -532,7 +550,7 @@
 	name = "Flight Deck";
 	req_access = list("cent_general")
 	},
-/turf/open/floor/iron/dark/blue,
+/turf/open/floor/iron/dark,
 /area/shuttle/prison_transport)
 "Ce" = (
 /obj/machinery/door/poddoor/shutters/window/preopen{
@@ -562,13 +580,17 @@
 /obj/machinery/computer/shuttle/white_ship/bridge{
 	name = "Flight Control"
 	},
-/turf/open/floor/iron/dark/blue/side,
+/obj/effect/turf_decal/tile/dark_blue/fourcorners,
+/turf/open/floor/iron/dark,
 /area/shuttle/prison_transport)
 "Ds" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/turf/open/floor/iron/dark/blue,
+/obj/effect/turf_decal/trimline/dark_blue/filled/end{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/prison_transport)
 "DS" = (
 /obj/effect/turf_decal/trimline/brown/warning,
@@ -604,7 +626,7 @@
 	height = 10;
 	shuttle_id = "prison_transport";
 	launch_status = 0;
-	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0);
+	movement_force = list("KNOCKDOWN"=0,"THROW"=0);
 	name = "Prison Transporter NSS-74";
 	preferred_direction = 4;
 	width = 10
@@ -622,7 +644,8 @@
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship{
 	name = "Navigations"
 	},
-/turf/open/floor/iron/dark/blue/side,
+/obj/effect/turf_decal/tile/dark_blue/fourcorners,
+/turf/open/floor/iron/dark,
 /area/shuttle/prison_transport)
 "Fv" = (
 /obj/structure/chair/greyscale,
@@ -689,7 +712,8 @@
 	pixel_x = 8;
 	pixel_y = 8
 	},
-/turf/open/floor/iron/dark/blue/side,
+/obj/effect/turf_decal/tile/dark_blue/fourcorners,
+/turf/open/floor/iron/dark,
 /area/shuttle/prison_transport)
 "IO" = (
 /obj/effect/turf_decal/trimline/brown/warning{
@@ -711,9 +735,8 @@
 /obj/structure/table/reinforced,
 /obj/machinery/light/cold/no_nightlight/directional/north,
 /obj/item/storage/box/handcuffs,
-/turf/open/floor/iron/dark/blue/side{
-	dir = 8
-	},
+/obj/effect/turf_decal/tile/dark_blue/fourcorners,
+/turf/open/floor/iron/dark,
 /area/shuttle/prison_transport)
 "Ke" = (
 /obj/machinery/button/door/directional/east{
@@ -724,6 +747,13 @@
 	dir = 8
 	},
 /turf/open/floor/iron/smooth_large,
+/area/shuttle/prison_transport)
+"Lq" = (
+/obj/effect/turf_decal/trimline/dark_blue/filled/line,
+/obj/effect/turf_decal/trimline/dark_blue/filled/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/prison_transport)
 "Nk" = (
 /obj/effect/turf_decal/trimline/brown/warning{
@@ -815,9 +845,10 @@
 /obj/structure/fence/door/opened{
 	dir = 8
 	},
-/turf/open/floor/iron/dark/blue/side{
-	dir = 4
+/obj/effect/turf_decal/trimline/dark_blue/filled/line{
+	dir = 10
 	},
+/turf/open/floor/iron/dark,
 /area/shuttle/prison_transport)
 "St" = (
 /obj/effect/turf_decal/delivery,
@@ -855,6 +886,14 @@
 /obj/effect/turf_decal/vg_decals/numbers/one,
 /turf/open/floor/iron/smooth_half,
 /area/shuttle/prison_transport)
+"SW" = (
+/obj/structure/chair/comfy/shuttle,
+/obj/effect/turf_decal/trimline/dark_blue/filled/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_blue/filled/line,
+/turf/open/floor/iron/dark,
+/area/shuttle/prison_transport)
 "TH" = (
 /obj/machinery/light/cold/no_nightlight/directional/north,
 /obj/structure/chair/comfy/shuttle,
@@ -876,13 +915,15 @@
 	name = "Section 3 LOCKDOWN";
 	pixel_y = 11
 	},
-/turf/open/floor/iron/dark/blue/side{
-	dir = 8
-	},
+/obj/effect/turf_decal/tile/dark_blue/fourcorners,
+/turf/open/floor/iron/dark,
 /area/shuttle/prison_transport)
 "Uz" = (
 /obj/structure/chair/comfy/shuttle,
-/turf/open/floor/iron/dark/blue,
+/obj/effect/turf_decal/trimline/dark_blue/filled/line{
+	dir = 5
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/prison_transport)
 "UC" = (
 /obj/machinery/door/poddoor/preopen{
@@ -936,7 +977,7 @@
 /area/shuttle/prison_transport)
 "Xm" = (
 /obj/effect/turf_decal/stripes/full,
-/obj/structure/shuttle/engine/propulsion/left,
+/obj/machinery/power/shuttle_engine/propulsion/left,
 /turf/open/floor/plating,
 /area/shuttle/prison_transport)
 "Xu" = (
@@ -944,6 +985,15 @@
 /area/shuttle/prison_transport)
 "XB" = (
 /turf/closed/wall/mineral/titanium,
+/area/shuttle/prison_transport)
+"Yt" = (
+/obj/structure/fence/door/opened{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_blue/filled/line{
+	dir = 9
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/prison_transport)
 "Yw" = (
 /obj/effect/turf_decal/trimline/brown/warning{
@@ -1278,9 +1328,9 @@ Bf
 (7,1,1) = {"
 UC
 Fn
-Ds
+rC
 XB
-Sp
+Yt
 Sp
 XB
 kW
@@ -1331,9 +1381,9 @@ pQ
 (8,1,1) = {"
 Fj
 HY
-cz
+Lq
 km
-cz
+lk
 cz
 BX
 Xu
@@ -1387,7 +1437,7 @@ CS
 Ds
 XB
 Uz
-Uz
+SW
 XB
 kW
 Xu

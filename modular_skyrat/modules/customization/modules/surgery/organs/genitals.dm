@@ -41,6 +41,8 @@
 /obj/item/organ/external/genital/Initialize(mapload)
 	. = ..()
 	update_sprite_suffix()
+	if(CONFIG_GET(flag/disable_lewd_items))
+		return INITIALIZE_HINT_QDEL
 
 //Removes ERP organs depending on config
 /obj/item/organ/external/genital/Insert(mob/living/carbon/M, special, drop_if_replaced)

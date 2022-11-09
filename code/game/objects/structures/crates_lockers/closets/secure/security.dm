@@ -12,7 +12,7 @@
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/pet_carrier(src)
 	new /obj/item/storage/bag/garment/captain(src)
-	new /obj/item/computer_hardware/hard_drive/portable/command/captain(src)
+	new /obj/item/computer_disk/command/captain(src)
 	new /obj/item/storage/box/silver_ids(src)
 	new /obj/item/radio/headset/heads/captain/alt(src)
 	new /obj/item/radio/headset/heads/captain(src)
@@ -31,7 +31,7 @@
 	..()
 	new /obj/item/storage/bag/garment/hop(src)
 	new /obj/item/storage/lockbox/medal/service(src)
-	new /obj/item/computer_hardware/hard_drive/portable/command/hop(src)
+	new /obj/item/computer_disk/command/hop(src)
 	new /obj/item/radio/headset/heads/hop(src)
 	new /obj/item/storage/box/ids(src)
 	new /obj/item/storage/box/ids(src)
@@ -53,7 +53,7 @@
 /obj/structure/closet/secure_closet/hos/PopulateContents()
 	..()
 
-	new /obj/item/computer_hardware/hard_drive/portable/command/hos(src)
+	new /obj/item/computer_disk/command/hos(src)
 	new /obj/item/radio/headset/heads/hos(src)
 	new /obj/item/storage/bag/garment/hos(src)
 	new /obj/item/storage/lockbox/medal/sec(src)
@@ -82,8 +82,8 @@
 	..()
 	new /obj/item/radio/headset/headset_sec(src)
 	new /obj/item/clothing/suit/armor/vest/warden(src)
-	//new /obj/item/clothing/head/warden(src) SKYRAT EDIT REMOVAL
-	//new /obj/item/clothing/head/warden/drill(src) SKYRAT EDIT REMOVAL
+	//new /obj/item/clothing/head/hats/warden(src) SKYRAT EDIT REMOVAL
+	//new /obj/item/clothing/head/hats/warden/drill(src) SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/head/beret/sec/navywarden(src)
 	//new /obj/item/clothing/suit/armor/vest/warden/alt(src) //SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/under/rank/security/warden/formal(src)
@@ -107,7 +107,8 @@
 
 /obj/structure/closet/secure_closet/security/PopulateContents()
 	..()
-	new /obj/item/clothing/suit/armor/vest/alt/sec(src) //SKYRAT EDIT CHANGE - Original: /obj/item/clothing/suit/armor/vest(src) (UPDATE THIS WHENEVER TG FINALLY DOES)
+//	new /obj/item/clothing/suit/armor/vest(src) //SKYRAT EDIT REMOVAL
+	new /obj/item/clothing/suit/armor/vest/alt/sec(src)
 	new /obj/item/clothing/head/security_cap(src) //SKYRAT EDIT ADDITION
 	new /obj/item/clothing/head/helmet/sec(src)
 	new /obj/item/radio/headset/headset_sec(src)
@@ -306,7 +307,7 @@
 		new /obj/item/paper/fluff/jobs/security/court_judgement (src)
 	new /obj/item/pen (src)
 	new /obj/item/clothing/suit/costume/judgerobe (src)
-	new /obj/item/clothing/head/powdered_wig (src)
+	new /obj/item/clothing/head/costume/powdered_wig (src)
 	new /obj/item/storage/briefcase(src)
 
 /obj/structure/closet/secure_closet/contraband/armory

@@ -26,6 +26,7 @@
 /obj/item/storage/backpack/Initialize(mapload)
 	. = ..()
 	create_storage(max_slots = 21, max_total_storage = 21)
+	AddElement(/datum/element/attack_equip)
 
 /*
  * Backpack Types
@@ -66,7 +67,7 @@
 	user.visible_message(span_suicide("[user] is jumping into [src]! It looks like [user.p_theyre()] trying to commit suicide."))
 	user.dropItemToGround(src, TRUE)
 	user.Stun(100, ignore_canstun = TRUE)
-	sleep(20)
+	sleep(2 SECONDS)
 	playsound(src, SFX_RUSTLE, 50, TRUE, -5)
 	qdel(user)
 
@@ -108,6 +109,7 @@
 	desc = "It's useful for both carrying extra gear and proudly declaring your insanity."
 	icon_state = "backpack-cult"
 	inhand_icon_state = "backpack"
+	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER
 
 /obj/item/storage/backpack/clown
 	name = "Giggles von Honkerton"
@@ -625,9 +627,9 @@
 	new /obj/item/mecha_ammo/scattershot(src)
 	new /obj/item/mecha_ammo/scattershot(src)
 	new /obj/item/mecha_ammo/scattershot(src)
-	new /obj/item/mecha_ammo/missiles_he(src)
-	new /obj/item/mecha_ammo/missiles_he(src)
-	new /obj/item/mecha_ammo/missiles_he(src)
+	new /obj/item/mecha_ammo/missiles_srm(src)
+	new /obj/item/mecha_ammo/missiles_srm(src)
+	new /obj/item/mecha_ammo/missiles_srm(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/c20rbundle
 	desc = "A large duffel bag containing a C-20r, some magazines, and a cheap looking suppressor."
@@ -709,7 +711,7 @@
 	name = "wings"
 	desc = "Granted to the henchmen who deserve it. This probably doesn't include you."
 	icon_state = "henchmen"
-	inhand_icon_state = "henchmen"
+	inhand_icon_state = null
 
 /obj/item/storage/backpack/duffelbag/cops
 	name = "police bag"

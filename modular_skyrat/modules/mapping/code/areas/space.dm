@@ -14,7 +14,7 @@
 /area/ruin/space/has_grav/powered/skyrat/smugglies
 	name = "Suspicious Cargo Installation"
 
-/area/ruin/space/has_grav/powered/skyrat/polychromicfacility
+/area/ruin/space/has_grav/powered/skyrat/clothing_facility
 	name = "Abandoned Research Station"
 
 /area/ruin/space/has_grav/powered/skyrat/luna
@@ -22,6 +22,9 @@
 
 /area/ruin/space/has_grav/powered/skyrat/blackmarket
 	name = "Shady Market"
+
+/area/ruin/space/has_grav/powered/skyrat/scrapheap
+	name = "Scrap Heap"
 
 ///Interdyne, Forward Operating Base
 /area/ruin/space/has_grav/skyrat/interdynefob

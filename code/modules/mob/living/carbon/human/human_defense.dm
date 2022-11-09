@@ -268,7 +268,7 @@
 
 //SKYRAT EDIT REMOVAL BEGIN - SKYRAT_XENO_REDO - Moved to: modular_skyrat\modules\xenos_skyrat_redo\code\human_defense.dm
 /*
-/mob/living/carbon/human/attack_alien(mob/living/carbon/alien/humanoid/user, list/modifiers)
+/mob/living/carbon/human/attack_alien(mob/living/carbon/alien/adult/user, list/modifiers)
 	if(check_shields(user, 0, "the [user.name]"))
 		visible_message(span_danger("[user] attempts to touch [src]!"), \
 						span_danger("[user] attempts to touch you!"), span_hear("You hear a swoosh!"), null, user)
