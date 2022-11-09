@@ -6,7 +6,7 @@
 
 /turf/closed/mineral //wall piece
 	name = "rock"
-	icon = MAP_SWITCH('icons/turf/smoothrocks.dmi', 'icons/turf/mining.dmi')
+	icon = MAP_SWITCH('modular_skyrat/modules/liquids/icons/turf/smoothrocks.dmi', 'icons/turf/mining.dmi') // SKYRAT EDIT CHANGE
 	icon_state = "rock"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
 	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_MINERAL_WALLS)
@@ -25,11 +25,8 @@
 	pixel_y = MAP_SWITCH(MINERAL_WALL_OFFSET, 0)
 
 	temperature = TCMB
-<<<<<<< HEAD
 	color = "#677" //SKYRAT EDIT ADDITION
-	var/smooth_icon = 'modular_skyrat/modules/liquids/icons/turf/smoothrocks.dmi' //SKYRAT EDIT CHANGE
-=======
->>>>>>> 910b97cd373 (Save 0.4s by shaving off a lot of smaller init costs (#71007))
+
 	var/turf/open/floor/plating/turf_type = /turf/open/misc/asteroid/airless
 	var/obj/item/stack/ore/mineralType = null
 	var/mineralAmt = 3
