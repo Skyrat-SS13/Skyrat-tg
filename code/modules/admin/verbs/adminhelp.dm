@@ -822,7 +822,7 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 		user_client.current_ticket.MessageNoRecipient(message, urgent)
 		return
 
-	new /datum/admin_help(message, user_client, FALSE, urgent)
+	new /datum/admin_help(message, user_client, FALSE, null, urgent) // SKYRAT EDIT - Handling tickets - ORIGINAL: new /datum/admin_help(message, user_client, FALSE, urgent)
 
 /client/verb/no_tgui_adminhelp(message as message)
 	set name = "NoTguiAdminhelp"
