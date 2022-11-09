@@ -187,6 +187,7 @@
 	default_raw_text = {"Hey, officer, we couldn't arrange getting you a proper military frigate, -you know, those goddamn bureaucrats with their permission requests and paperwork-, so the police corvette will have to suffice.
 	<br> It was not designed for any kind of long-term deployments and anything more aggressive than shooting up a bunch of punks, so expect frequent power outages and a significant lack of raiding machinery.
 	<br> We have done some quick modifications to make it more suitable for military use, and smuggled you some defensive and military-grade medical equipment to balance it out. And some SMGs that were so convenient to \"go out of service and get scrapped". It should do the job for now.
+	<br> It is worth mentioning that your fourth marine, the maintenance crew man, went on a vacation. Dude's been pretty nervous as of late so it's only fair to let him get some well deserved rest - he has been maintaining this ship the whole time you've been in cryosleep. This should not affect your performance anyways.
 	<br> As for the broken Krinkov, there is nothing we can do for now. Will have to use the policemen's, not like you're here to fight the solarians anyways.
 	<br> And, please, for the love of God and the Eternal Empress - do not make this mission into a shootout. We can't afford any more casualties in this sector, especially with the most of our military being on the frontline.
 	<br>
