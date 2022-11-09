@@ -123,6 +123,8 @@
 	AddComponent(/datum/component/gps, "NRI Starship")
 
 /obj/machinery/porta_turret/syndicate/nri_raider
+	scan_range = 9
+	shot_delay = 3
 	faction = list("pirate")
 
 /obj/machinery/porta_turret/syndicate/nri_raider/target(atom/movable/target)
