@@ -379,10 +379,7 @@
 	cost = CARGO_CRATE_VALUE * 7
 	contains = list(/obj/item/storage/belt/holster/thermal = 2)
 	crate_name = "thermal pistol crate"
-<<<<<<< HEAD
-=======
 
->>>>>>> 6536b01a188 ([MDB IGNORE] Clothing var cleanup (#70773))
 /datum/supply_pack/security/armory/wt550
 	name = "Recalled Weapon Pack"
 	desc = "Contains a set of old Nanotrasen brand autorifles recalled due to choking hazard."
