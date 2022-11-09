@@ -5,7 +5,8 @@
 	var/padded_corners = FALSE
 
 /obj/structure/disposalpipe/transfer_to_dir(obj/structure/disposalholder/holder, nextdir)
-	var/obj/structure/disposalpipe/next_pipe = ..(holder)
+	. = ..(holder, nextdir)
+	var/obj/structure/disposalpipe/next_pipe = .
 
 	if(!next_pipe || dir == next_pipe.dir || padded_corners)
 		return
@@ -22,5 +23,3 @@
 		if(HAS_TRAIT(living_within, TRAIT_TRASHMAN))
 			continue
 		living_within.adjustBruteLoss(5)
-
-	return next_pipe
