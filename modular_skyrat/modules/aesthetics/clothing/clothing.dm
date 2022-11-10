@@ -25,8 +25,9 @@
 	desc = "A hood that protects the head and face from biological contaminants. This is a slightly outdated model from Nanotrasen Securities - you can hardly see through the foggy visor's ageing red. Hopefully it's still up to spec..."
 	//To recolor this would be hellish and honestly non-sensical. So, Nanotrasen Securities' bio-suit. Plus, flavor!
 
-/obj/item/clothing/head/weddingveil
+/obj/item/clothing/head/costume/weddingveil
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	//TG's is ugly as sin, until it's updated we have our own
 
 /obj/item/clothing/head/pelt
 	name = "bear pelt"
@@ -96,8 +97,8 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/rnd.dmi'
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/rnd.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
-	
+
 /obj/item/clothing/under/rank/rnd/research_director/turtleneck/skirt
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/rnd.dmi'
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/rnd.dmi'
-	
+

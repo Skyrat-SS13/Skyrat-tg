@@ -59,14 +59,6 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 			volume = reagent_vol,\
 			after_eat = CALLBACK(src, .proc/OnEatFrom))
 
-/obj/item/organ/forceMove(atom/destination, check_dest = TRUE)
-	if(check_dest && destination) //Nullspace is always a valid location for organs. Because reasons.
-		if(organ_flags & ORGAN_UNREMOVABLE) //If this organ is unremovable, it should delete itself if it tries to be moved to anything besides a bodypart.
-			if(!isbodypart(destination) && !iscarbon(destination))
-				qdel(src)
-				return //Don't move it out of nullspace if it's deleted.
-	return ..()
-
 /*
  * Insert the organ into the select mob.
  *
@@ -101,8 +93,8 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 /*
  * Remove the organ from the select mob.
  *
- * organ_owner - the mob who owns our organ, that we're removing the organ from.
- * special - "quick swapping" an organ out - when TRUE, the mob will be unaffected by not having that organ for the moment
+ * * organ_owner - the mob who owns our organ, that we're removing the organ from.
+ * * special - "quick swapping" an organ out - when TRUE, the mob will be unaffected by not having that organ for the moment
  */
 /obj/item/organ/proc/Remove(mob/living/carbon/organ_owner, special = FALSE)
 

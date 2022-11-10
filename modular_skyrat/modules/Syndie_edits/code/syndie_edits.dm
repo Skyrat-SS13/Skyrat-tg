@@ -26,7 +26,7 @@
 	. = ..()
 	AddComponent(/datum/component/toggle_icon)
 
-/obj/item/clothing/head/warden/syndicate
+/obj/item/clothing/head/hats/warden/syndicate
 	name = "master at arms' police hat"
 	desc = "A fashionable police cap emblazoned with a golden badge, issued to the Master at Arms. Protects the head from impacts."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
@@ -56,6 +56,15 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "balaclava_ds"
 	flags_inv = HIDEHAIR | HIDEFACE | HIDEEARS | HIDEFACIALHAIR
+
+/obj/item/clothing/mask/gas/sechailer/syndicate
+	name = "neck gaiter"
+	desc = "For the agent wanting to keep a low profile whilst concealing their identity. Has a small respirator to be used with internals."
+	actions_types = list(/datum/action/item_action/adjust)
+	alternate_worn_layer = BODY_FRONT_UNDER_CLOTHES
+	icon_state = "half_mask"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 
 /obj/item/clothing/shoes/combat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'

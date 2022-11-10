@@ -64,11 +64,14 @@
 /datum/job/blueshield
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
-/datum/job/nanotrasen_consultant
-	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+/datum/job/corrections_officer
+	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
 // Command
 /datum/job/captain
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+
+/datum/job/nanotrasen_consultant
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
 /datum/job/head_of_security
@@ -84,6 +87,9 @@
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
 /datum/job/head_of_personnel
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+
+/datum/job/quartermaster
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
 //Silicon
