@@ -322,7 +322,7 @@
 		QDEL_IN(smonk, 0.5 SECONDS)
 		for(var/mob/living/slapped in targeted)
 			if(!faction_check(faction, slapped.faction) && !(slapped in hit_things))
-				playsound(src, 'sound/weapons/slash.ogg', 75, 0)
+				playsound(src, 'modular_skyrat/modules/gladiator/Clang_cut.ogg', 75, 0)
 				if(slapped.apply_damage(40, BRUTE, BODY_ZONE_CHEST, slapped.run_armor_check(BODY_ZONE_CHEST), wound_bonus = CANT_WOUND))
 					visible_message(span_danger("[src] slashes through [slapped] with his spinning blade!"))
 				else
@@ -353,6 +353,7 @@
 	charging = FALSE
 	minimum_distance = initial(minimum_distance)
 	chargetiles = 0
+	playsound(src, 'modular_skyrat/modules/gladiator/Clang_cut.ogg', 75, 0)
 	animate(src, color = initial(color), 5)
 	update_phase()
 	sleep(CEILING(MARKED_ONE_STUN_DURATION * modifier, 1))
