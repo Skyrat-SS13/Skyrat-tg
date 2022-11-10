@@ -5,6 +5,7 @@
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/guild/command
 	mask = null
+	neck = /obj/item/clothing/neck/security_cape/armplate
 
 	uniform = /obj/item/clothing/under/costume/nri/captain
 	suit = null
@@ -135,6 +136,11 @@
         addtimer(CALLBACK(src, .proc/shootAt, target), 10)
         addtimer(CALLBACK(src, .proc/shootAt, target), 15)
         return TRUE
+
+/obj/docking_port/mobile/pirate/nri_raider
+	name = "NRI IAC-PV 'Evangelium'" //Nobody will care about the translation but basically NRI Internal Affairs Collegium-Patrol Vessel
+	initial_engine_power = 6
+	rechargeTime = 10 MINUTES
 
 /obj/item/gun/ballistic/automatic/pistol/automag
 	name = "\improper Automag"
