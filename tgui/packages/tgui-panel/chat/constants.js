@@ -62,8 +62,7 @@ export const MESSAGE_TYPES = [
     selector:
       '.alert, .minorannounce, .syndradio, .centcomradio, .aiprivradio, .comradio, .secradio, .gangradio, .engradio, .medradio, .sciradio, .suppradio, .servradio, .radio, .deptradio, .binarysay, .newscaster, .resonate, .armadyneradio',
   },
-  //SKYRAT EDIT ABOVE: ARMADYNE
-  
+  // SKYRAT EDIT ABOVE: ARMADYNE
   {
     type: MESSAGE_TYPE_INFO,
     name: 'Info',
