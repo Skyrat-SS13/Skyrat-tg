@@ -186,6 +186,7 @@
 	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/researcher
 	suit = /obj/item/clothing/suit/toggle/labcoat/science
+	gloves = /obj/item/clothing/gloves/color/black
 	back = /obj/item/storage/backpack/satchel
 
 /datum/outfit/ds2/syndicate/stationmed
@@ -196,6 +197,10 @@
 	belt = /obj/item/storage/belt/medical/paramedic
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile/ntrauma
 	back = /obj/item/storage/backpack/satchel
+	backpack_contents = list(
+		/obj/item/storage/box/survival=1,
+		/obj/item/crowbar=1
+		/obj/item/storage/medkit/surgery=1)
 
 /datum/outfit/ds2/syndicate/corporateliaison
 	name = "DS-2 Corporate Liasion"
