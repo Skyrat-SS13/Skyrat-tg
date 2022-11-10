@@ -186,6 +186,7 @@
 	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/researcher
 	suit = /obj/item/clothing/suit/toggle/labcoat/science
+	glasses = /obj/item/clothing/glasses/sunglasses/chemical
 	gloves = /obj/item/clothing/gloves/color/black
 	back = /obj/item/storage/backpack/satchel
 
