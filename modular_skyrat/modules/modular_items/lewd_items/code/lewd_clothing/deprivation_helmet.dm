@@ -191,8 +191,6 @@
 		to_chat(usr, span_purple("Something is gagging your mouth! You can barely make a sound..."))
 	if(earmuffs == TRUE)
 		ADD_TRAIT(user, TRAIT_DEAF, CLOTHING_TRAIT)
-		Toggle_Sounds()
-		stop_client_sounds()
 		to_chat(usr, span_purple("You can barely hear anything! Your other senses have become more apparent..."))
 	if(prevent_vision == TRUE)
 		user.become_blind("deprivation_helmet_[REF(src)]")
@@ -207,7 +205,6 @@
 	if(earmuffs == TRUE)
 		earmuffs = FALSE
 		REMOVE_TRAIT(user, TRAIT_DEAF, CLOTHING_TRAIT)
-		Toggle_Sounds()
 		earmuffs = TRUE
 	if(prevent_vision == TRUE)
 		user.cure_blind("deprivation_helmet_[REF(src)]")
