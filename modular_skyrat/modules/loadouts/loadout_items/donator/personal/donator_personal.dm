@@ -546,3 +546,9 @@
 	name = "Fancy Heels (dragmeme)"
 	item_path = /obj/item/clothing/shoes/fancy_heels/drag
 	ckeywhitelist = list("thedragmeme")
+
+/datum/loadout_item/under/jumpsuit/bimpcap
+	name = "Formal Matte Black Captain Uniform"
+	item_path = /obj/item/clothing/under/bimpcap
+	restricted_roles = list(JOB_CAPTAIN)
+	ckeywhitelist = list("razurath")
