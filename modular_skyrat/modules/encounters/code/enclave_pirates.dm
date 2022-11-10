@@ -141,6 +141,8 @@
 	name = "NRI IAC-PV 'Evangelium'" //Nobody will care about the translation but basically NRI Internal Affairs Collegium-Patrol Vessel
 	initial_engine_power = 6
 	rechargeTime = 10 MINUTES
+	movement_force = list("KNOCKDOWN"=0,"THROW"=0)
+	can_move_docking_ports = TRUE
 
 /obj/item/gun/ballistic/automatic/pistol/automag
 	name = "\improper Automag"

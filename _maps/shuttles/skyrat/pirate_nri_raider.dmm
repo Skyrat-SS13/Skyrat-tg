@@ -29,13 +29,22 @@
 /area/shuttle/pirate/nri)
 "bg" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/machinery/light/small/red/dim/directional/north,
+/obj/machinery/light/small/red/directional/north,
 /obj/structure/closet/crate/secure/weapon{
 	name = "footlocker";
 	desc = "A secure crate to keep all your personal belongings in.";
 	anchored = 1
 	},
 /turf/open/floor/pod/dark,
+/area/shuttle/pirate/nri)
+"bE" = (
+/obj/machinery/power/shuttle_engine/propulsion/burst{
+	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod{
+	name = "blast shield"
+	},
+/turf/open/floor/plating/airless,
 /area/shuttle/pirate/nri)
 "bG" = (
 /obj/effect/turf_decal/stripes/line{
@@ -50,7 +59,8 @@
 "bM" = (
 /obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/pirate{
 	dir = 1;
-	name = "police shuttle navigation computer"
+	name = "police shuttle navigation computer";
+	desc = "Used to designate a precise transit location for the police shuttle."
 	},
 /obj/machinery/light/very_dim/directional/south,
 /turf/open/floor/pod/dark,
@@ -69,6 +79,12 @@
 	dir = 8
 	},
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
+/area/shuttle/pirate/nri)
+"co" = (
+/obj/structure/window/reinforced/survival_pod{
+	name = "blast shield"
+	},
+/turf/open/floor/plating/airless,
 /area/shuttle/pirate/nri)
 "cZ" = (
 /obj/structure/window/reinforced/survival_pod{
@@ -212,7 +228,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/light/small/red/dim/directional/north,
+/obj/machinery/light/small/red/directional/north,
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "kX" = (
@@ -230,13 +246,10 @@
 /turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
 "lv" = (
-/obj/structure/window/reinforced/survival_pod{
-	name = "blast shield"
-	},
-/obj/machinery/power/shuttle_engine/huge{
+/obj/machinery/power/shuttle_engine/propulsion/burst{
 	dir = 8
 	},
-/turf/open/floor/plating/airless,
+/turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "lU" = (
 /obj/effect/turf_decal/stripes/line,
@@ -274,7 +287,7 @@
 /obj/item/modular_computer/laptop/preset/civilian{
 	pixel_y = 8
 	},
-/obj/machinery/light/small/red/dim/directional/south,
+/obj/machinery/light/small/red/directional/south,
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "nD" = (
@@ -315,14 +328,16 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
+/obj/structure/fans/tiny,
 /obj/docking_port/mobile/pirate{
+	dir = 2;
+	launch_status = 0;
 	name = "NRI IAC-PV 'Evangelium'";
-	width = 30;
 	height = 15;
 	dheight = 15;
-	dwidth = 30
+	width = 30;
+	dwidth = 15
 	},
-/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "pQ" = (
@@ -345,6 +360,7 @@
 /area/shuttle/pirate/nri)
 "ql" = (
 /obj/structure/closet/emcloset/anchored,
+/obj/machinery/light/small/red/directional/west,
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "qz" = (
@@ -383,7 +399,7 @@
 /obj/item/airbag,
 /obj/item/airbag,
 /obj/item/airbag,
-/obj/machinery/light/small/red/dim/directional/south,
+/obj/machinery/light/small/red/directional/south,
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "rg" = (
@@ -400,7 +416,7 @@
 	dir = 1
 	},
 /obj/item/bedsheet/random,
-/obj/machinery/light/small/red/dim/directional/south,
+/obj/machinery/light/small/red/directional/south,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "rp" = (
@@ -422,7 +438,7 @@
 /obj/machinery/power/shuttle_engine/heater{
 	dir = 8
 	},
-/turf/open/floor/plating,
+/turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
 /area/shuttle/pirate/nri)
 "tk" = (
 /turf/open/floor/pod/dark,
@@ -432,7 +448,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/light/small/red/dim/directional/south,
+/obj/machinery/light/small/red/directional/south,
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "tm" = (
@@ -575,7 +591,7 @@
 	pixel_y = 3
 	},
 /obj/effect/turf_decal/stripes/line,
-/obj/machinery/light/small/red/dim/directional/north,
+/obj/machinery/light/small/red/directional/north,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "zJ" = (
@@ -610,7 +626,7 @@
 /obj/item/ammo_box/advanced/s12gauge/buckshot,
 /obj/item/ammo_box/advanced/s12gauge,
 /obj/item/ammo_box/advanced/s12gauge,
-/obj/machinery/light/small/red/dim/directional/north,
+/obj/machinery/light/small/red/directional/north,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "Be" = (
@@ -835,7 +851,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/obj/machinery/light/small/red/dim/directional/west,
+/obj/machinery/light/small/red/directional/west,
 /obj/structure/table/reinforced,
 /obj/item/stock_parts/cell/high/empty,
 /obj/item/stock_parts/cell/high/empty,
@@ -844,7 +860,7 @@
 /area/shuttle/pirate/nri)
 "LA" = (
 /obj/machinery/piratepad,
-/obj/machinery/light/small/red/dim/directional/north,
+/obj/machinery/light/small/red/directional/north,
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "Mi" = (
@@ -888,7 +904,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/obj/machinery/light/small/red/dim/directional/west,
+/obj/machinery/light/small/red/directional/west,
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "NT" = (
@@ -1013,7 +1029,7 @@
 /obj/machinery/power/shuttle_engine/heater{
 	dir = 8
 	},
-/turf/open/floor/plating,
+/turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
 /area/shuttle/pirate/nri)
 "UO" = (
 /obj/structure/table/reinforced,
@@ -1129,10 +1145,14 @@
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "Yd" = (
-/obj/machinery/power/shuttle_engine/large{
+/obj/machinery/power/shuttle_engine/propulsion/burst{
 	dir = 8
 	},
-/turf/open/floor/engine/hull/reinforced,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1;
+	name = "blast shield"
+	},
+/turf/open/floor/plating/airless,
 /area/shuttle/pirate/nri)
 "Ze" = (
 /obj/structure/table/reinforced,
@@ -1184,12 +1204,12 @@ ot
 Fm
 XY
 IY
-Yd
+IY
 NY
 iC
 ap
 IY
-Yd
+IY
 bQ
 NE
 ot
@@ -1200,13 +1220,13 @@ ot
 dy
 Hl
 Bz
-IY
+lv
 iC
 UY
 Cy
 cZ
 iC
-IY
+lv
 ze
 EG
 hH
@@ -1217,13 +1237,13 @@ ot
 iC
 iC
 iC
-Hz
+cc
 Hz
 TR
 sK
 TR
 Hz
-Hz
+cc
 iC
 iC
 iC
@@ -1264,9 +1284,9 @@ GO
 ot
 "}
 (8,1,1) = {"
-NW
 iC
-lv
+iC
+iC
 iC
 Hz
 HV
@@ -1276,14 +1296,14 @@ qz
 HV
 Hz
 iC
-NW
 iC
-lv
+iC
+iC
 "}
 (9,1,1) = {"
 iC
-iC
-iC
+NW
+co
 IY
 Hz
 lV
@@ -1299,8 +1319,8 @@ iC
 "}
 (10,1,1) = {"
 iC
-iC
-iC
+Yd
+bE
 IY
 Hz
 Bm
@@ -1310,14 +1330,14 @@ uU
 Lr
 Hz
 IY
-iC
-iC
+Yd
+bE
 iC
 "}
 (11,1,1) = {"
 Hz
 cc
-Hz
+cc
 IY
 Hz
 Iv
@@ -1327,7 +1347,7 @@ Iv
 Iv
 Hz
 IY
-Hz
+cc
 cc
 Hz
 "}
