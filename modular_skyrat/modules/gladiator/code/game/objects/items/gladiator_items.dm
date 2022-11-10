@@ -212,8 +212,7 @@
 	new /obj/item/clothing/neck/warrior_cape(src)
 	new /obj/item/crusher_trophy/gladiator(src)
 
-#undef MAX_BERSERK_CHARGE
-#undef BERSERK_HALF_CHARGE
+#undef BERSERK_MAX_CHARGE
 #undef PROJECTILE_HIT_MULTIPLIER
 #undef DAMAGE_TO_CHARGE_SCALE
 #undef CHARGE_DRAINED_PER_SECOND
