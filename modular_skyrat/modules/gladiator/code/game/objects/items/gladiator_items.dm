@@ -126,10 +126,6 @@
 	/// how far do we roll?
 	var/roll_range = 3
 
-/obj/item/claymore/dragonslayer/Initialize(mapload)
-		. = ..()
-		AddComponent(/datum/component/two_handed, require_twohands=TRUE, force_unwielded=force, force_wielded=force) //better safe than sorry
-
 /obj/item/claymore/dragonslayer/examine()
 	. = ..()
 	. += span_warning("Tempered against lavaland foes and bosses through supernatural energies. Right click to dodge at the cost of stamina.")
