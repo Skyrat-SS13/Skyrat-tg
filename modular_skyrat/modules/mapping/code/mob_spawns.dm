@@ -199,7 +199,7 @@
 	back = /obj/item/storage/backpack/satchel
 	backpack_contents = list(
 		/obj/item/storage/box/survival=1,
-		/obj/item/crowbar=1
+		/obj/item/crowbar=1,
 		/obj/item/storage/medkit/surgery=1)
 
 /datum/outfit/ds2/syndicate/corporateliaison
