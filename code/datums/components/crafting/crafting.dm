@@ -42,6 +42,9 @@
 					CAT_SANDWICH,
 					CAT_SOUP,
 					CAT_SPAGHETTI,
+		// SKYRAT ADDITION BEGIN - Teshari food category
+					CAT_TESHARI,
+		// SKYRAT ADDITION END
 				),
 				CAT_DRINK = CAT_NONE,
 				CAT_CLOTHING = CAT_NONE,
@@ -500,3 +503,13 @@
 	if(!learned_recipes)
 		learned_recipes = list()
 	learned_recipes |= R
+
+/datum/mind/proc/has_crafting_recipe(mob/user, potential_recipe)
+	if(!learned_recipes)
+		return FALSE
+	if(!ispath(potential_recipe, /datum/crafting_recipe))
+		CRASH("Non-crafting recipe passed to has_crafting_recipe")
+	for(var/recipe in user.mind.learned_recipes)
+		if(recipe == potential_recipe)
+			return TRUE
+	return FALSE

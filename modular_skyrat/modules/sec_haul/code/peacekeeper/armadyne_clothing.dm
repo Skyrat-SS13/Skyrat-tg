@@ -62,7 +62,7 @@
 	worn_icon_state = "armadyne_gloves"
 	cut_type = null
 
-/obj/item/clothing/shoes/combat/peacekeeper/armadyne
+/obj/item/clothing/shoes/jackboots/peacekeeper/armadyne
 	name = "armadyne combat boots"
 	desc = "Tactical and sleek. Worn by Armadyne representatives."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
@@ -99,7 +99,7 @@
 	neck = /obj/item/clothing/neck/tie/black
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper/armadyne
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne
-	shoes = /obj/item/clothing/shoes/combat/peacekeeper/armadyne
+	shoes = /obj/item/clothing/shoes/jackboots/peacekeeper/armadyne
 	belt = /obj/item/storage/belt/security/peacekeeper/armadyne
 	r_pocket = /obj/item/assembly/flash/handheld
 	backpack_contents = list(/obj/item/melee/baton/telescopic, /obj/item/storage/box/gunset/pdh_corpo)
@@ -122,7 +122,7 @@
 	mask = /obj/item/clothing/mask/gas/sechailer/swat
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne/armor
 	suit_store = /obj/item/gun/ballistic/automatic/dmr
-	shoes = /obj/item/clothing/shoes/combat/peacekeeper/armadyne
+	shoes = /obj/item/clothing/shoes/jackboots/peacekeeper/armadyne
 	belt = /obj/item/storage/belt/security/webbing/peacekeeper/armadyne
 	backpack_contents = list(/obj/item/melee/baton/security/loaded , /obj/item/storage/box/gunset/pdh_corpo, /obj/item/storage/box/handcuffs, /obj/item/ammo_box/magazine/dmr=2)
 	back = /obj/item/storage/backpack/security

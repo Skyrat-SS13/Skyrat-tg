@@ -32,7 +32,9 @@
 	var/mutable_appearance/underlay_appearance = mutable_appearance(
 		initial(underturf_path.icon),
 		initial(underturf_path.icon_state),
-		layer = TURF_LAYER - 0.02, plane = initial(underturf_path.plane))
+		offset_spokesman = src,
+		layer = TURF_LAYER - 0.02,
+		plane = initial(underturf_path.plane))
 	underlay_appearance.appearance_flags = RESET_ALPHA | RESET_COLOR
 	underlays += underlay_appearance
 

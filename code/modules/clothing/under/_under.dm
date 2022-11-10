@@ -2,6 +2,8 @@
 	name = "under"
 	icon = 'icons/obj/clothing/under/default.dmi'
 	worn_icon = 'icons/mob/clothing/under/default.dmi'
+	lefthand_file = 'icons/mob/inhands/clothing/suits_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/clothing/suits_righthand.dmi'
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	slot_flags = ITEM_SLOT_ICLOTHING
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 0, ACID = 0, WOUND = 5)
@@ -26,6 +28,33 @@
 	if(random_sensor)
 		//make the sensor mode favor higher levels, except coords.
 		sensor_mode = pick(SENSOR_VITALS, SENSOR_VITALS, SENSOR_VITALS, SENSOR_LIVING, SENSOR_LIVING, SENSOR_COORDS, SENSOR_COORDS, SENSOR_OFF)
+	register_context()
+
+/obj/item/clothing/under/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
+	var/screentip_change = FALSE
+
+	if(isnull(held_item) && has_sensor == HAS_SENSORS)
+		context[SCREENTIP_CONTEXT_RMB] = "Toggle suit sensors"
+		screentip_change = TRUE
+
+	if(istype(held_item, /obj/item/clothing/accessory) && !attached_accessory)
+		var/obj/item/clothing/accessory/accessory = held_item
+		if(accessory.can_attach_accessory(src, user))
+			context[SCREENTIP_CONTEXT_LMB] = "Attach accessory"
+			screentip_change = TRUE
+
+	if(istype(held_item, /obj/item/stack/cable_coil) && has_sensor == BROKEN_SENSORS)
+		context[SCREENTIP_CONTEXT_LMB] = "Repair suit sensors"
+		screentip_change = TRUE
+
+	if(attached_accessory)
+		context[SCREENTIP_CONTEXT_ALT_LMB] = "Remove accessory"
+		screentip_change = TRUE
+	else if(can_adjust)
+		context[SCREENTIP_CONTEXT_ALT_LMB] = adjusted == ALT_STYLE ? "Wear normally" : "Wear casually"
+		screentip_change = TRUE
+
+	return screentip_change ? CONTEXTUAL_SCREENTIP_SET : NONE
 
 /obj/item/clothing/under/worn_overlays(mutable_appearance/standing, isinhands = FALSE)
 	. = ..()
@@ -45,7 +74,7 @@
 		C.use(1)
 		has_sensor = HAS_SENSORS
 		to_chat(user,span_notice("You repair the suit sensors on [src] with [C]."))
-		return 1
+		return TRUE
 	if(!attach_accessory(I, user))
 		return ..()
 
@@ -87,7 +116,6 @@
 			if(ooman.w_uniform == src)
 				ooman.update_suit_sensors()
 
-
 /obj/item/clothing/under/visual_equipped(mob/user, slot)
 	..()
 	if(adjusted)
@@ -104,7 +132,7 @@
 		H.update_worn_undersuit()
 	*/ // SKYRAT EDIT END
 
-	if(attached_accessory && slot != ITEM_SLOT_HANDS && ishuman(user))
+	if(attached_accessory && !(slot & ITEM_SLOT_HANDS) && ishuman(user))
 		var/mob/living/carbon/human/H = user
 		attached_accessory.on_uniform_equip(src, user)
 		H.fan_hud_set_fandom()
@@ -113,7 +141,7 @@
 
 /obj/item/clothing/under/equipped(mob/living/user, slot)
 	..()
-	if(slot == ITEM_SLOT_ICLOTHING && freshly_laundered)
+	if((slot & ITEM_SLOT_ICLOTHING) && freshly_laundered)
 		freshly_laundered = FALSE
 		user.add_mood_event("fresh_laundry", /datum/mood_event/fresh_laundry)
 
@@ -289,7 +317,7 @@
 	if(.)
 		return
 
-	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, !iscyborg(user)))
+	if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE, no_tk = FALSE, need_hands = !iscyborg(user)))
 		return
 	if(attached_accessory)
 		remove_accessory(user)
@@ -322,7 +350,7 @@
 		return
 	adjusted = !adjusted
 	if(adjusted)
-		if(female_sprite_flags != FEMALE_UNIFORM_TOP_ONLY)
+		if(!(female_sprite_flags & FEMALE_UNIFORM_TOP_ONLY))
 			female_sprite_flags = NO_FEMALE_UNIFORM
 		if(!alt_covers_chest) // for the special snowflake suits that expose the chest when adjusted (and also the arms, realistically)
 			body_parts_covered &= ~CHEST

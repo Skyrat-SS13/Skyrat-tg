@@ -66,6 +66,7 @@
 	icon_greyscale = BODYPART_ICON_MAMMAL
 	limb_id = "digitigrade"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_DIGITIGRADE
+	base_limb_id = "digitigrade"
 
 /obj/item/bodypart/l_leg/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
 	. = ..()
@@ -75,6 +76,7 @@
 	icon_greyscale = BODYPART_ICON_MAMMAL
 	limb_id = "digitigrade"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_DIGITIGRADE
+	base_limb_id = "digitigrade"
 
 /obj/item/bodypart/r_leg/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
 	. = ..()

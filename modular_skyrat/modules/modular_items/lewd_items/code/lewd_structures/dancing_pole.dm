@@ -114,28 +114,28 @@
 		return
 	if(!QDELETED(src))
 		animate(user, pixel_x = -6, pixel_y = 0, time = 10)
-		sleep(20)
+		sleep(2 SECONDS)
 		user.dir = 4
 	if(!QDELETED(src))
 		animate(user, pixel_x = -6, pixel_y = 24, time = 10)
-		sleep(12)
+		sleep(1.2 SECONDS)
 		src.layer = 4.01 //move the pole infront for now. better to move the pole, because the character moved behind people sitting above otherwise
 	if(!QDELETED(src))
 		animate(user, pixel_x = 6, pixel_y = 12, time = 5)
 		user.dir = 8
-		sleep(6)
+		sleep(0.6 SECONDS)
 	if(!QDELETED(src))
 		animate(user, pixel_x = -6, pixel_y = 4, time = 5)
 		user.dir = 4
 		src.layer = 4 // move it back.
-		sleep(6)
+		sleep(0.6 SECONDS)
 	if(!QDELETED(src))
 		user.dir = 1
 		animate(user, pixel_x = 0, pixel_y = 0, time = 3)
-		sleep(6)
+		sleep(0.6 SECONDS)
 	if(!QDELETED(src))
 		user.do_jitter_animation()
-		sleep(6)
+		sleep(0.6 SECONDS)
 		user.dir = 2
 
 /obj/structure/pole/Destroy()

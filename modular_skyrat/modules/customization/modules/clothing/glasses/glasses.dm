@@ -10,7 +10,7 @@
 	. = ..()
 	if(.)
 		return
-	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, !iscyborg(user)))
+	if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE, floor_okay = !iscyborg(user)))
 		return
 	else
 		switcheye()
@@ -96,7 +96,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
 	icon_state = "glasses_alt"
-	inhand_icon_state = "glasses_rimless"
+	inhand_icon_state = "glasses"
 	vision_correction = TRUE
 
 /obj/item/clothing/glasses/kim
@@ -105,7 +105,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
 	icon_state = "binoclard_lenses"
-	inhand_icon_state = "glasses_rimless"
+	inhand_icon_state = "glasses"
 	vision_correction = TRUE
 
 /obj/item/clothing/glasses/trickblindfold/hamburg

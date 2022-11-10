@@ -108,7 +108,6 @@
 			mannequin.underwear_visibility = UNDERWEAR_HIDE_UNDIES | UNDERWEAR_HIDE_SHIRT | UNDERWEAR_HIDE_SOCKS
 	mannequin.update_body() //Unfortunately, due to a certain case we need to update this just in case
 
-	COMPILE_OVERLAYS(mannequin)
 	parent.show_character_previews(new /mutable_appearance(mannequin))
 	unset_busy_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
 
@@ -243,7 +242,6 @@
 		body.equipOutfit(outfit, TRUE)
 
 	var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
-	COMPILE_OVERLAYS(body)
 	for(var/D in showDirs)
 		var/icon/partial = getFlatIcon(body, defdir=D)
 		out_icon.Insert(partial,dir=D)

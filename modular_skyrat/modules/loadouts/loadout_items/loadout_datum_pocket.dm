@@ -138,10 +138,6 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Fancy Pen"
 	item_path = /obj/item/pen/fountain
 
-/datum/loadout_item/pocket_items/modular_tablet
-	name = "Modular Tablet"
-	item_path = /obj/item/modular_computer/tablet/preset/cheap/
-
 /datum/loadout_item/pocket_items/modular_laptop
 	name = "Modular Laptop"
 	item_path = /obj/item/modular_computer/laptop/preset/civilian

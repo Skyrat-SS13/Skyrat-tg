@@ -8,6 +8,7 @@
 	desc = "The coders have obviously failed to realise this is broken."
 	icon = 'modular_skyrat/modules/microfusion/icons/microfusion_gun40x32.dmi'
 	icon_state = "mcr01"
+	inhand_icon_state = "mcr01"
 	bayonet_icon = 'modular_skyrat/modules/microfusion/icons/microfusion_gun40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/microfusion/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/microfusion/icons/guns_righthand.dmi'
@@ -96,6 +97,7 @@
 	else
 		cell = new(src)
 	cell.parent_gun = src
+	cell.chargerate = 300
 	if(!dead_cell)
 		cell.give(cell.maxcharge)
 	if(phase_emitter_type)
@@ -295,7 +297,7 @@
 /obj/item/gun/microfusion/suicide_act(mob/living/user)
 	if (istype(user) && can_shoot() && can_trigger_gun(user) && user.get_bodypart(BODY_ZONE_HEAD))
 		user.visible_message(span_suicide("[user] is putting the barrel of [src] in [user.p_their()] mouth. It looks like [user.p_theyre()] trying to commit suicide!"))
-		sleep(25)
+		sleep(2.5 SECONDS)
 		if(user.is_holding(src))
 			user.visible_message(span_suicide("[user] melts [user.p_their()] face off with [src]!"))
 			playsound(loc, fire_sound, 50, TRUE, -1)
@@ -348,13 +350,13 @@
 
 	var/obj/item/bodypart/other_hand = user.has_hand_for_held_index(user.get_inactive_hand_index()) //returns non-disabled inactive hands
 	if(weapon_weight == WEAPON_HEAVY && (user.get_inactive_held_item() || !other_hand))
-		to_chat(user, span_warning("You need two hands to fire [src]!"))
+		balloon_alert(user, "use both hands!")
 		return
 
 	var/attempted_shot = process_emitter()
 	if(attempted_shot != SHOT_SUCCESS)
 		if(attempted_shot)
-			to_chat(user, span_danger(attempted_shot))
+			balloon_alert(user, attempted_shot)
 		return
 
 	//DUAL (or more!) WIELDING

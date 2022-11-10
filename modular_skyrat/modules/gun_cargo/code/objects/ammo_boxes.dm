@@ -55,25 +55,6 @@
 	name = "ammo box (4.6x30mm rubber)"
 	ammo_type = /obj/item/ammo_casing/c46x30mm/rubber
 
-/obj/item/ammo_box/c32
-	name = "ammo box (.32)"
-	icon = 'modular_skyrat/modules/gun_cargo/icons/ammo.dmi'
-	icon_state = "ammo_32"
-	ammo_type = /obj/item/ammo_casing/c32
-	max_ammo = 20
-
-/obj/item/ammo_box/c32/ap
-	name = "ammo box (.32 AP)"
-	ammo_type = /obj/item/ammo_casing/c32/ap
-
-/obj/item/ammo_box/c32/rubber
-	name = "ammo box (.32 rubber)"
-	ammo_type = /obj/item/ammo_casing/c32/rubber
-
-/obj/item/ammo_box/c32/fire
-	name = "ammo box (.32 incendiary)"
-	ammo_type = /obj/item/ammo_casing/c32_incendiary
-
 /obj/item/ammo_box/c34
 	name = "ammo box (.34)"
 	icon = 'modular_skyrat/modules/gun_cargo/icons/ammo.dmi'
@@ -111,6 +92,36 @@
 /obj/item/ammo_box/c12mm/fire
 	name = "ammo box (12mm incendiary)"
 	ammo_type = /obj/item/ammo_casing/c12mm/fire
+
+/obj/item/ammo_box/c56mm
+	name = "ammo box (5.6mm civilian)"
+	desc = "5.6x40mm ammunition specifically made for civilian use like recreation, hunting, self-defense or LARP. While the package itself lacks any real identification \
+	and does, in fact, appear like a bland green box with a colored stripe, the insides have a boatload of information, \
+	ranging from manufacturer advertisements and intended use to the cartridge's tactical and technical characteristics."
+	icon = 'modular_skyrat/modules/novaya_ert/icons/ammo_boxes.dmi'
+	icon_state = "boxnrifle-lethal"
+	base_icon_state = "boxnrifle-lethal"
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	ammo_type = /obj/item/ammo_casing/realistic/a762x39/civilian
+	max_ammo = 60
+
+/obj/item/ammo_box/c56mm/rubber
+	name = "ammo box (5.6mm rubber)"
+	icon_state = "boxnrifle-rubber"
+	base_icon_state = "boxnrifle-rubber"
+	ammo_type = /obj/item/ammo_casing/realistic/a762x39/civilian/rubber
+
+/obj/item/ammo_box/c56mm/hunting
+	name = "ammo box (5.6mm hunting)"
+	icon_state = "boxnrifle-hunting"
+	base_icon_state = "boxnrifle-hunting"
+	ammo_type = /obj/item/ammo_casing/realistic/a762x39/civilian/hunting
+
+/obj/item/ammo_box/c56mm/blank
+	name = "ammo box (5.6mm blank)"
+	icon_state = "boxnrifle-blank"
+	base_icon_state = "boxnrifle-blank"
+	ammo_type = /obj/item/ammo_casing/realistic/a762x39/civilian/blank
 
 /obj/item/storage/box/ammo_box/microfusion/bluespace
 	name = "bluespace microfusion cell container"

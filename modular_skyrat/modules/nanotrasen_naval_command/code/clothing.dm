@@ -35,7 +35,7 @@
 
 
 // HATS
-/obj/item/clothing/head/caphat/naval
+/obj/item/clothing/head/hats/caphat/naval
 	name = "naval cap"
 	desc = "A cap worn by those in the Nanotrasen Navy."
 	icon_state = "naval_command"
@@ -43,13 +43,13 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/caphat/naval/beret
+/obj/item/clothing/head/hats/caphat/naval/beret
 	name = "naval beret"
 	desc = "A beret worn by those in the Nanotrasen Navy."
 	icon_state = "naval_beret"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/caphat/naval/fleet_admiral
+/obj/item/clothing/head/hats/caphat/naval/fleet_admiral
 	name = "fleet admiral's cap"
 	desc = "A cap worn by the Nanotrasen Fleet Admiral."
 	icon_state = "naval_fleet_admiral"

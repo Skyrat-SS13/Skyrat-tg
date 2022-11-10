@@ -120,7 +120,7 @@ In short, most of the modular code will be placed in the subfolders of your main
 In case of new content, however, there's a bit more freedom allowed, and it is heavily encouraged to put thematic feature groups under **`modular_skyrat/modules/yourmodule/code`** in their own separate folder, to ensure they're easy to find, manage and maintain.
 For example, `modular_skyrat/modules/xenoarcheaology/code` containing all the code, tools, items and machinery related to it.
 
-Such modules, unless _very_ simple, **need** to have a `readme.dm` in their folder, containing the following:
+Such modules, unless _very_ simple, **need** to have a `readme.md` in their folder, containing the following:
 
 - links to the PRs that implemented this module or made any significant changes to it
 - short description of the module
@@ -203,7 +203,7 @@ And that wraps the basics of it up.
 
 Every once in a while, there comes a time, where editing the core files becomes inevitable.
 
-Please be sure to log these in the module readme.dm. Any file changes.
+Please be sure to log these in the module readme.md. Any file changes.
 
 In those cases, we've decided to apply the following convention, with examples:
 

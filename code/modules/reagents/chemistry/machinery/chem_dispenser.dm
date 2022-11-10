@@ -231,8 +231,15 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "ChemDispenser", name)
-		if(user.hallucinating())
+
+		var/is_hallucinating = FALSE
+		if(isliving(user))
+			var/mob/living/living_user = user
+			is_hallucinating = !!living_user.has_status_effect(/datum/status_effect/hallucination)
+
+		if(is_hallucinating)
 			ui.set_autoupdate(FALSE) //to not ruin the immersion by constantly changing the fake chemicals
+
 		ui.open()
 
 /obj/machinery/chem_dispenser/ui_data(mob/user)
@@ -264,8 +271,10 @@
 
 	var/chemicals[0]
 	var/is_hallucinating = FALSE
-	if(user.hallucinating())
-		is_hallucinating = TRUE
+	if(isliving(user))
+		var/mob/living/living_user = user
+		is_hallucinating = !!living_user.has_status_effect(/datum/status_effect/hallucination)
+
 	for(var/re in dispensable_reagents)
 		var/datum/reagent/temp = GLOB.chemical_reagents_list[re]
 		if(temp)
@@ -506,7 +515,7 @@
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
-	if(!can_interact(user) || !user.canUseTopic(src, !issilicon(user), FALSE, NO_TK))
+	if(!can_interact(user) || !user.canUseTopic(src, !issilicon(user), FALSE, no_tk = TRUE))
 		return
 	replace_beaker(user)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -646,7 +655,6 @@
 		/datum/reagent/consumable/ethanol/navy_rum,
 		/datum/reagent/consumable/ethanol/rum,
 		/datum/reagent/consumable/ethanol/sake,
-		/datum/reagent/consumable/ethanol/applejack, // SKYRAT EDIT
 		/datum/reagent/consumable/ethanol/synthanol, // SKYRAT EDIT
 		/datum/reagent/consumable/ethanol/tequila,
 		/datum/reagent/consumable/ethanol/triple_sec,
@@ -656,6 +664,8 @@
 		/datum/reagent/consumable/ethanol/wine,
 	)
 	upgrade_reagents = null
+	upgrade_reagents2 = null //SKYRAT EDIT
+	upgrade_reagents3 = null //SKYRAT EDIT
 	emagged_reagents = list(
 		/datum/reagent/consumable/ethanol,
 		/datum/reagent/iron,

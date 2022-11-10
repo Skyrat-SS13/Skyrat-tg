@@ -34,19 +34,6 @@
 	/// If some inconsiderate jerk has had their blood spilled on this window, thus making it cleanable
 	var/bloodied = FALSE
 
-/obj/structure/window/examine(mob/user)
-	. = ..()
-	switch(state)
-		if(WINDOW_SCREWED_TO_FRAME)
-			. += span_notice("The window is <b>screwed</b> to the frame.")
-		if(WINDOW_IN_FRAME)
-			. += span_notice("The window is <i>unscrewed</i> but <b>pried</b> into the frame.")
-		if(WINDOW_OUT_OF_FRAME)
-			if (anchored)
-				. += span_notice("The window is <b>screwed</b> to the floor.")
-			else
-				. += span_notice("The window is <i>unscrewed</i> from the floor, and could be deconstructed by <b>wrenching</b>.")
-
 /obj/structure/window/Initialize(mapload, direct)
 	. = ..()
 	if(direct)
@@ -61,6 +48,7 @@
 
 	if(fulltile)
 		setDir()
+		AddElement(/datum/element/can_barricade)
 
 	//windows only block while reinforced and fulltile, so we'll use the proc
 	real_explosion_block = explosion_block
@@ -77,6 +65,19 @@
 
 	if (flags_1 & ON_BORDER_1)
 		AddElement(/datum/element/connect_loc, loc_connections)
+
+/obj/structure/window/examine(mob/user)
+	. = ..()
+	switch(state)
+		if(WINDOW_SCREWED_TO_FRAME)
+			. += span_notice("The window is <b>screwed</b> to the frame.")
+		if(WINDOW_IN_FRAME)
+			. += span_notice("The window is <i>unscrewed</i> but <b>pried</b> into the frame.")
+		if(WINDOW_OUT_OF_FRAME)
+			if (anchored)
+				. += span_notice("The window is <b>screwed</b> to the floor.")
+			else
+				. += span_notice("The window is <i>unscrewed</i> from the floor, and could be deconstructed by <b>wrenching</b>.")
 
 /obj/structure/window/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	switch(the_rcd.mode)
@@ -220,7 +221,7 @@
 					set_anchored(FALSE)
 					to_chat(user, span_notice("You unfasten the frame from the floor."))
 			else
-				to_chat(user, span_notice("You begin to screw the frame from to floor..."))
+				to_chat(user, span_notice("You begin to screw the frame to the floor..."))
 				if(tool.use_tool(src, user, decon_speed, volume = 75, extra_checks = CALLBACK(src, .proc/check_state_and_anchored, state, anchored)))
 					set_anchored(TRUE)
 					to_chat(user, span_notice("You fasten the frame to the floor."))
@@ -347,6 +348,20 @@
 	else
 		set_opacity(initial(opacity))
 
+/obj/structure/window/wash(clean_types)
+	. = ..()
+	if(!(clean_types & CLEAN_SCRUB))
+		return
+	set_opacity(initial(opacity))
+	remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
+	for(var/atom/movable/cleanables as anything in src)
+		if(cleanables == src)
+			continue
+		if(!cleanables.wash(clean_types))
+			continue
+		vis_contents -= cleanables
+	bloodied = FALSE
+
 /obj/structure/window/Destroy()
 	set_density(FALSE)
 	air_update_turf(TRUE, FALSE)
@@ -431,7 +446,7 @@
 	damage_deflection = 11
 	state = RWINDOW_SECURE
 	glass_type = /obj/item/stack/sheet/rglass
-	rad_insulation = RAD_HEAVY_INSULATION
+	rad_insulation = RAD_LIGHT_INSULATION
 	receive_ricochet_chance_mod = 1.1
 
 //this is shitcode but all of construction is shitcode and needs a refactor, it works for now
@@ -552,7 +567,7 @@
 	max_integrity = 200
 	explosion_block = 1
 	glass_type = /obj/item/stack/sheet/plasmaglass
-	rad_insulation = RAD_NO_INSULATION
+	rad_insulation = RAD_MEDIUM_INSULATION
 
 /obj/structure/window/plasma/Initialize(mapload, direct)
 	. = ..()
@@ -590,6 +605,7 @@
 	damage_deflection = 21
 	explosion_block = 2
 	glass_type = /obj/item/stack/sheet/plasmarglass
+	rad_insulation = RAD_HEAVY_INSULATION
 
 /obj/structure/window/reinforced/plasma/block_superconductivity()
 	return TRUE
@@ -636,7 +652,7 @@
 	icon = 'icons/obj/smooth_structures/plasma_window.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "plasma_window-0"
 	base_icon_state = "plasma_window"
-	max_integrity = 300
+	max_integrity = 400
 	fulltile = TRUE
 	flags_1 = PREVENT_CLICK_UNDER_1
 	smoothing_flags = SMOOTH_BITMASK
@@ -721,6 +737,7 @@
 	glass_type = /obj/item/stack/sheet/titaniumglass
 	glass_amount = 2
 	receive_ricochet_chance_mod = 1.2
+	rad_insulation = RAD_MEDIUM_INSULATION
 
 /obj/structure/window/reinforced/shuttle/spawnDebris(location)
 	. = list()
@@ -760,7 +777,7 @@
 	damage_deflection = 21 //The same as reinforced plasma windows.3
 	glass_type = /obj/item/stack/sheet/plastitaniumglass
 	glass_amount = 2
-	rad_insulation = RAD_HEAVY_INSULATION
+	rad_insulation = RAD_EXTREME_INSULATION
 
 /obj/structure/window/reinforced/plasma/plastitanium/spawnDebris(location)
 	. = list()

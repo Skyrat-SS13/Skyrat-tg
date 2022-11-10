@@ -28,7 +28,7 @@
 /datum/cultural_info/culture/generic_human
 	name = "Humankind"
 	description = "You are from one of various planetary cultures of humankind."
-	additional_langs = list(/datum/language/panslavic, /datum/language/gutter, /datum/language/spacer, /datum/language/yangyu)
+	additional_langs = list(/datum/language/panslavic, /datum/language/gutter, /datum/language/spacer, /datum/language/yangyu, /datum/language/xerxian)
 
 /datum/cultural_info/culture/martian_surfacer
 	name = "Martian, Surfacer"

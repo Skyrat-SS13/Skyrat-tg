@@ -56,7 +56,8 @@ Key procs
 ///datum/language_holder/New(atom/_owner) //ORIGINAL
 /datum/language_holder/New(atom/_owner, datum/preferences/pref_load) //SKYRAT EDIT CHANGE - CUSTOMIZATION
 	if(_owner && QDELETED(_owner))
-		CRASH("Langauge holder added to a qdeleting thing, what the fuck \ref[_owner]")
+		CRASH("Langauge holder added to a qdeleting thing, what the fuck [text_ref(_owner)]")
+
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	if(pref_load)
 		//If we're loading a holder from prefs, override the languages
@@ -67,6 +68,7 @@ Key procs
 			if(pref_load.languages[lang_path] == LANGUAGE_SPOKEN)
 				spoken_languages[lang_path] = list(LANGUAGE_ATOM)
 	//SKYRAT EDIT ADDITION END
+
 	owner = _owner
 	if(istype(owner, /datum/mind))
 		var/datum/mind/M = owner
@@ -193,6 +195,18 @@ Key procs
 /// Gets a random spoken language, useful for forced speech and such.
 /datum/language_holder/proc/get_random_spoken_language()
 	return pick(spoken_languages)
+
+/// Gets a random spoken language, trying to get a non-common language.
+/datum/language_holder/proc/get_random_spoken_uncommon_language()
+	var/list/languages_minus_common = assoc_to_keys(spoken_languages) - /datum/language/common
+
+	// They have a language other than common
+	if(length(languages_minus_common))
+		return pick(languages_minus_common)
+
+	// They can only speak common, oh well.
+	else
+		return /datum/language/common
 
 /// Opens a language menu reading from the language holder.
 /datum/language_holder/proc/open_language_menu(mob/user)
