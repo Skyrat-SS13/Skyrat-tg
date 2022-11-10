@@ -116,7 +116,6 @@
 /datum/outfit/armadyne_security
 	name = "Armadyne Corporate Security"
 
-	suit_store = /obj/item/modular_computer/tablet/pda/security
 	ears = /obj/item/radio/headset/armadyne
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne/tactical
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne
@@ -126,20 +125,20 @@
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne/armor
 	suit_store = /obj/item/gun/ballistic/automatic/pitbull
 	shoes = /obj/item/clothing/shoes/jackboots/peacekeeper/armadyne
-	belt = /obj/item/storage/belt/security/webbing/peacekeeper/armadyne
 	backpack_contents = list(
 		/obj/item/storage/box/gunset/pdh_corpo,
 		/obj/item/storage/box/handcuffs,
 		/obj/item/ammo_box/magazine/multi_sprite/pitbull,
+		/obj/item/modular_computer/tablet/pda/security,
 	)
 	back = /obj/item/storage/backpack/security
 	box = /obj/item/storage/box/survival/security
 	id = /obj/item/card/id/advanced/armadyne/security
 
+
 /datum/outfit/armadyne_security/commander
 	name = "Armadyne Corporate Security Commander"
 
-	suit_store = /obj/item/modular_computer/tablet/pda/security
 	ears = /obj/item/radio/headset/armadyne/commander
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne/tactical
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne
@@ -154,11 +153,35 @@
 		/obj/item/storage/box/gunset/pdh_corpo,
 		/obj/item/storage/box/handcuffs,
 		/obj/item/ammo_box/magazine/multi_sprite/norwind,
+		/obj/item/modular_computer/tablet/pda/security,
 	)
 	back = /obj/item/storage/backpack/security
 	box = /obj/item/storage/box/survival/security
 	l_pocket = /obj/item/megaphone/command
 	id = /obj/item/card/id/advanced/armadyne/security
+
+
+/datum/outfit/armadyne_security/high_alert
+	name = "Armadyne Corporate Security (High Alert)"
+	belt = /obj/item/storage/belt/security/webbing/peacekeeper/armadyne
+	suit_store = /obj/item/gun/ballistic/automatic/dmr
+	backpack_contents = list(
+		/obj/item/melee/baton/telescopic,
+		/obj/item/storage/box/gunset/pdh_corpo,
+		/obj/item/storage/box/handcuffs,
+		/obj/item/ammo_box/magazine/dmr = 2,
+	)
+
+
+/datum/outfit/armadyne_security/commander/high_alert
+	name = "Armadyne Corporate Security Commander (High Alert)"
+	suit_store = /obj/item/gun/ballistic/automatic/dmr
+	backpack_contents = list(
+		/obj/item/melee/baton/telescopic,
+		/obj/item/storage/box/gunset/pdh_corpo,
+		/obj/item/storage/box/handcuffs,
+		/obj/item/ammo_box/magazine/dmr = 2,
+	)
 
 
 /obj/item/radio/headset/armadyne
@@ -227,9 +250,19 @@
     outfit = /datum/outfit/armadyne_security
     role = "Security"
 
+/datum/antagonist/ert/armadyne/high_alert
+    name = "Armadyne Corporate Security (High Alert)"
+    outfit = /datum/outfit/armadyne_security/high_alert
+    role = "Security"
+
 /datum/antagonist/ert/armadyne/leader
     name = "Armadyne Corporate Security Commander"
     outfit = /datum/outfit/armadyne_security/commander
+    role = "Commander"
+
+/datum/antagonist/ert/armadyne/leader/high_alert
+    name = "Armadyne Corporate Security Commander (High Alert)"
+    outfit = /datum/outfit/armadyne_security/commander/high_alert
     role = "Commander"
 
 /datum/ert/armadyne
@@ -239,3 +272,8 @@
 	mission = "Assist any Armadyne corporate entities."
 	polldesc = "an Armadyne PMC."
 	teamsize = 3
+
+/datum/ert/armadyne/high_alert
+	roles = list(/datum/antagonist/ert/armadyne/high_alert)
+	leader_role = /datum/antagonist/ert/armadyne/leader/high_alert
+	rename_team = "Armadyne PMC (High Alert)"
