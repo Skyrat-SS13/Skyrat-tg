@@ -1236,8 +1236,17 @@
 /obj/item/analyzer{
 	pixel_y = 10
 	},
-/obj/item/pipe_dispenser,
-/turf/open/floor/catwalk_floor/iron_dark,
+/obj/item/pipe_dispenser{
+	pixel_x = -3
+	},
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 10
+	},
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "eU" = (
 /obj/structure/bed/double,
@@ -2444,7 +2453,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
 	dir = 1
 	},
-/obj/effect/turf_decal/vg_decals/atmos/carbon_dioxide,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "kc" = (
@@ -2812,10 +2820,17 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "lZ" = (
-/obj/machinery/vending/engivend{
-	onstation = 0
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/dark{
+	dir = 9
 	},
-/turf/open/floor/catwalk_floor/iron_dark,
+/obj/structure/frame/machine{
+	anchored = 1;
+	state = 2;
+	icon_state = "box_1"
+	},
+/obj/item/circuitboard/machine/smes,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "md" = (
 /obj/machinery/door/firedoor,
@@ -2933,7 +2948,10 @@
 	pixel_y = 11;
 	pixel_x = 3
 	},
-/turf/open/floor/catwalk_floor/iron_dark,
+/obj/effect/turf_decal/siding/dark{
+	dir = 5
+	},
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "mD" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -3106,6 +3124,29 @@
 	dir = 4;
 	pixel_x = 4
 	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 6
+	},
+/obj/item/stock_parts/cell/high{
+	pixel_x = -13;
+	pixel_y = 13
+	},
+/obj/item/stock_parts/cell/high{
+	pixel_x = -13;
+	pixel_y = 10
+	},
+/obj/item/stock_parts/cell/high{
+	pixel_x = -12;
+	pixel_y = 7
+	},
+/obj/item/stock_parts/cell/high{
+	pixel_x = -12;
+	pixel_y = 4
+	},
+/obj/item/stock_parts/cell/high{
+	pixel_x = -11;
+	pixel_y = 1
+	},
 /obj/item/storage/box/stockparts/basic{
 	pixel_y = 11;
 	pixel_x = -3
@@ -3119,7 +3160,7 @@
 	pixel_y = -12;
 	pixel_x = -2
 	},
-/turf/open/floor/catwalk_floor/iron_dark,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "nG" = (
 /obj/structure/window/reinforced/survival_pod{
@@ -4018,6 +4059,7 @@
 /obj/machinery/atmospherics/components/binary/pump/off/scrubbers/visible/layer2{
 	dir = 4
 	},
+/obj/effect/turf_decal/vg_decals/atmos/carbon_dioxide,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "rc" = (
@@ -6313,14 +6355,11 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "CX" = (
 /obj/machinery/light/warm/directional/north,
-/obj/structure/table,
 /obj/effect/turf_decal/siding/yellow{
 	dir = 5
 	},
-/obj/item/storage/belt/utility,
-/obj/item/stack/cable_coil,
-/obj/item/clothing/glasses/meson/engine{
-	pixel_y = 6
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/enginetech{
+	dir = 4
 	},
 /turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
@@ -8039,6 +8078,7 @@
 /obj/effect/turf_decal/siding/dark,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/iron/dark/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "Lo" = (
@@ -9473,8 +9513,6 @@
 /obj/effect/turf_decal/trimline/yellow/line{
 	dir = 4
 	},
-/obj/structure/closet/radiation,
-/obj/item/analyzer,
 /turf/open/floor/iron/dark/side{
 	dir = 8
 	},
@@ -9853,6 +9891,7 @@
 /obj/machinery/atmospherics/components/binary/pump/off/supply/visible/layer4{
 	dir = 8
 	},
+/obj/effect/turf_decal/vg_decals/atmos/air,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "SN" = (
@@ -10859,7 +10898,8 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/effect/turf_decal/vg_decals/atmos/air,
+/obj/structure/closet/radiation,
+/obj/item/analyzer,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "WN" = (
@@ -10944,6 +10984,7 @@
 /obj/item/multitool{
 	pixel_y = -6
 	},
+/obj/item/clothing/glasses/meson/engine,
 /turf/open/floor/iron/dark/side{
 	dir = 4
 	},
@@ -11086,11 +11127,11 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/hydroponics)
 "XA" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/enginetech{
-	dir = 8
-	},
 /obj/effect/turf_decal/siding/yellow{
 	dir = 10
+	},
+/obj/machinery/vending/engivend{
+	onstation = 0
 	},
 /turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
