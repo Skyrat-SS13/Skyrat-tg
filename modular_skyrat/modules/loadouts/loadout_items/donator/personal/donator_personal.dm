@@ -546,4 +546,4 @@
 	name = "Formal Matte Black Captain Uniform"
 	item_path = /obj/item/clothing/under/bimpcap
 	restricted_roles = list(JOB_CAPTAIN)
-	ckeywhitelist = list("razurath", "crumpaloo")
+	ckeywhitelist = list("razurath")
