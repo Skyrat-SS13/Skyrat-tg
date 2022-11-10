@@ -2426,6 +2426,9 @@
 	name = "Turbine Exterior Vent Control"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/button/ignition/incinerator/syndicatelava{
+	pixel_x = -36
+	},
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "kf" = (
@@ -2792,6 +2795,7 @@
 	name = "Medical Bay"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "me" = (
@@ -5322,6 +5326,7 @@
 	name = "Medical Bay"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "yb" = (
@@ -6118,6 +6123,7 @@
 	name = "Medical Bay"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "BC" = (
@@ -6623,14 +6629,6 @@
 /obj/effect/turf_decal/siding/dark,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
-"El" = (
-/obj/machinery/suit_storage_unit/syndicate/softsuit,
-/obj/machinery/computer/atmos_control/nocontrol/incinerator{
-	dir = 1;
-	atmos_chambers = list("syndicatelava_incinerator"="DS2 Incinerator Chamber")
-	},
-/turf/open/floor/iron/dark/small,
-/area/ruin/space/has_grav/skyrat/interdynefob/bridge/eva)
 "Em" = (
 /obj/effect/turf_decal/tile/yellow/half,
 /obj/structure/sign/flag/syndicate/directional/south{
@@ -8955,8 +8953,8 @@
 	name = "green"
 	},
 /obj/machinery/computer/cryopod/interdyne{
-	dir = 4;
-	pixel_x = -24
+	dir = 8;
+	pixel_x = 24
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
@@ -13366,7 +13364,7 @@ cW
 my
 MH
 oE
-El
+Zg
 Zg
 fz
 zX
