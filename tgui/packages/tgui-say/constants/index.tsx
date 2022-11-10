@@ -71,7 +71,7 @@ export const RADIO_PREFIXES = {
     label: 'CCom',
   },
   // SKYRAT EDIT START: CUSTOM RADIO CHANNELS
-  ':i ': {
+  ':r ': {
     id: 'armadyne',
     label: 'Arm',
   },
