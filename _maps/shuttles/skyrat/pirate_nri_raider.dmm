@@ -208,8 +208,10 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/pirate/nri)
 "iG" = (
-/obj/effect/turf_decal/plaque,
-/turf/open/floor/pod/light,
+/obj/structure/grille,
+/obj/structure/window/reinforced/shuttle/spaceship,
+/obj/structure/plaque/static_plaque/golden/commission/ks13,
+/turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "jx" = (
 /obj/effect/turf_decal/stripes/line{
@@ -230,6 +232,15 @@
 	},
 /obj/machinery/light/small/red/directional/north,
 /turf/open/floor/pod/dark,
+/area/shuttle/pirate/nri)
+"kQ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/structure/table/reinforced,
+/obj/item/storage/belt/utility/full,
+/obj/item/clothing/glasses/meson/engine,
+/turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "kX" = (
 /obj/effect/turf_decal/stripes/line{
@@ -269,6 +280,16 @@
 /obj/machinery/porta_turret/syndicate/nri_raider{
 	dir = 5
 	},
+/obj/structure/deployable_barricade/metal{
+	dir = 1
+	},
+/obj/structure/deployable_barricade/metal{
+	dir = 4
+	},
+/obj/structure/deployable_barricade/metal{
+	dir = 8
+	},
+/obj/structure/deployable_barricade/metal,
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "mG" = (
@@ -329,14 +350,11 @@
 	dir = 1
 	},
 /obj/structure/fans/tiny,
-/obj/docking_port/mobile/pirate{
+/obj/docking_port/mobile/pirate/nri_raider{
 	dir = 2;
-	launch_status = 0;
-	name = "NRI IAC-PV 'Evangelium'";
 	height = 15;
-	dheight = 15;
-	width = 30;
-	dwidth = 15
+	launch_status = 0;
+	width = 30
 	},
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
@@ -432,13 +450,15 @@
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "sK" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 8
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
 	},
-/obj/machinery/power/shuttle_engine/heater{
-	dir = 8
+/obj/structure/table/reinforced,
+/obj/item/stock_parts/cell/crank{
+	maxcharge = 10000;
+	name = "improved crank cell"
 	},
-/turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
+/turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "tk" = (
 /turf/open/floor/pod/dark,
@@ -645,6 +665,16 @@
 /obj/machinery/porta_turret/syndicate/nri_raider{
 	dir = 6
 	},
+/obj/structure/deployable_barricade/metal{
+	dir = 1
+	},
+/obj/structure/deployable_barricade/metal{
+	dir = 4
+	},
+/obj/structure/deployable_barricade/metal{
+	dir = 8
+	},
+/obj/structure/deployable_barricade/metal,
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "Bk" = (
@@ -803,6 +833,10 @@
 /obj/structure/window/reinforced/shuttle/spaceship,
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
+"Iz" = (
+/obj/structure/plaque/static_plaque/golden/commission/ks13/nri_raider,
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate/nri)
 "IJ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -899,8 +933,6 @@
 /area/shuttle/pirate/nri)
 "NO" = (
 /obj/machinery/autolathe/hacked,
-/obj/item/stack/sheet/glass/fifty,
-/obj/item/stack/sheet/iron/fifty,
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
@@ -1016,13 +1048,6 @@
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "TR" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
-/obj/structure/window/reinforced/survival_pod,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 8
-	},
 /obj/machinery/power/shuttle_engine/heater{
 	dir = 4
 	},
@@ -1156,11 +1181,11 @@
 /area/shuttle/pirate/nri)
 "Ze" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/belt/utility/full,
-/obj/item/clothing/glasses/meson/engine,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/glass/fifty,
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 
@@ -1240,7 +1265,7 @@ iC
 cc
 Hz
 TR
-sK
+cc
 TR
 Hz
 cc
@@ -1269,7 +1294,7 @@ ot
 (7,1,1) = {"
 ot
 GO
-GO
+iC
 UP
 Hz
 tm
@@ -1290,9 +1315,9 @@ iC
 iC
 Hz
 HV
-xX
+kQ
 rp
-qz
+sK
 HV
 Hz
 iC
@@ -1478,7 +1503,7 @@ xp
 Hz
 ey
 Wa
-iG
+wb
 qz
 ie
 Hz
@@ -1529,7 +1554,7 @@ GO
 Hz
 CP
 IJ
-tk
+Iz
 hP
 iq
 Hz
@@ -1580,7 +1605,7 @@ Hs
 ot
 Iv
 Iv
-Iv
+iG
 Iv
 Iv
 ot

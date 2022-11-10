@@ -144,6 +144,9 @@
 	movement_force = list("KNOCKDOWN"=0,"THROW"=0)
 	can_move_docking_ports = TRUE
 
+/obj/structure/plaque/static_plaque/golden/commission/ks13/nri_raider
+	desc = "NRI Terentiev-Yermolayev Orbital Shipworks, Providence High Orbit, Ship OSTs-02\n'Potato Beetle' Class Corvette\nCommissioned 10/11/2562 'Keeping Promises'"
+
 /obj/item/gun/ballistic/automatic/pistol/automag
 	name = "\improper Automag"
 	desc = "A .44 AMP handgun with a sleek metallic finish."
