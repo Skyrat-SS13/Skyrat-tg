@@ -17,13 +17,14 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
 	},
-/obj/item/gun/ballistic/automatic/pistol{
-	pixel_x = 12
-	},
-/obj/item/gun/ballistic/automatic/pistol{
-	pixel_x = 6
-	},
 /obj/item/gun/ballistic/automatic/pistol,
+/obj/item/gun/ballistic/automatic/pistol{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/gun/ballistic/automatic/pistol{
+	pixel_x = -8
+	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "ae" = (
@@ -247,10 +248,10 @@
 /obj/effect/turf_decal/bot_white,
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/siding/dark,
-/obj/machinery/atmospherics/components/binary/pump/off/scrubbers/visible/layer2{
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
-/obj/effect/turf_decal/vg_decals/atmos/carbon_dioxide,
+/obj/machinery/portable_atmospherics/scrubber,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "aY" = (
@@ -704,11 +705,15 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/hydroponics)
 "cE" = (
 /obj/effect/turf_decal/bot,
-/obj/structure/rack/shelf,
-/obj/effect/spawner/random/engineering/material{
-	pixel_y = 7
+/obj/structure/janitorialcart{
+	dir = 4
 	},
-/obj/effect/spawner/random/engineering/material,
+/obj/item/reagent_containers/cup/bucket,
+/obj/item/mop,
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = 6;
+	pixel_y = -6
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "cG" = (
@@ -1712,10 +1717,10 @@
 "he" = (
 /obj/effect/turf_decal/bot_blue,
 /obj/machinery/light/warm/directional/north,
-/obj/machinery/atmospherics/components/binary/pump/off/supply/visible/layer4{
-	dir = 8
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
 	},
-/obj/effect/turf_decal/vg_decals/atmos/air,
+/obj/machinery/portable_atmospherics/pump,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "hf" = (
@@ -1763,14 +1768,14 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "hn" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 4
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
@@ -2439,6 +2444,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
 	dir = 1
 	},
+/obj/effect/turf_decal/vg_decals/atmos/carbon_dioxide,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "kc" = (
@@ -3419,13 +3425,13 @@
 	},
 /obj/machinery/light/cold/directional/east,
 /obj/structure/rack/gunrack,
-/obj/item/gun/ballistic/shotgun/riot{
-	desc = "A riot shotgun - this one is advertised to 'Not miss', quote, 'unlike the shitty hybrid taser'.";
-	pixel_x = 5
-	},
 /obj/item/gun/ballistic/shotgun/riot,
 /obj/item/gun/ballistic/shotgun/riot{
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/obj/item/gun/ballistic/shotgun/riot{
+	pixel_x = -10
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -4009,11 +4015,9 @@
 	dir = 6
 	},
 /obj/effect/turf_decal/siding/dark,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
+/obj/machinery/atmospherics/components/binary/pump/off/scrubbers/visible/layer2{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2,
-/obj/machinery/portable_atmospherics/scrubber,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "rc" = (
@@ -5160,9 +5164,6 @@
 	network = list("ds2");
 	c_tag = "DS-2 Hangar South"
 	},
-/obj/effect/spawner/random/engineering/material{
-	pixel_y = 7
-	},
 /turf/open/floor/plating/elevatorshaft,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "xk" = (
@@ -5424,7 +5425,7 @@
 /obj/machinery/firealarm/directional/west,
 /obj/machinery/camera/directional/west{
 	network = list("ds2");
-	c_tag = "DS2 Dormitories"
+	c_tag = "DS-2 Dormitories"
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
@@ -5572,6 +5573,10 @@
 /obj/structure/table/glass,
 /obj/item/clothing/neck/stethoscope{
 	pixel_x = 12;
+	pixel_y = 4
+	},
+/obj/item/hypospray/mkii{
+	pixel_x = -4;
 	pixel_y = 4
 	},
 /turf/open/floor/iron/dark/textured_large,
@@ -6559,6 +6564,14 @@
 /obj/effect/turf_decal/siding/dark,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
+"El" = (
+/obj/machinery/suit_storage_unit/syndicate/softsuit,
+/obj/machinery/computer/atmos_control/nocontrol/incinerator{
+	dir = 1;
+	atmos_chambers = list("syndicatelava_incinerator"="DS2 Incinerator Chamber")
+	},
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/skyrat/interdynefob/bridge/eva)
 "Em" = (
 /obj/effect/turf_decal/tile/yellow/half,
 /obj/structure/sign/flag/syndicate/directional/south{
@@ -7481,7 +7494,7 @@
 /obj/structure/chair/office,
 /obj/machinery/camera/directional/north{
 	network = list("ds2");
-	c_tag = "DS2 Interrogation Room"
+	c_tag = "DS-2 Interrogation Room"
 	},
 /obj/machinery/airalarm/syndicate{
 	dir = 1;
@@ -9837,11 +9850,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
-	dir = 1
+/obj/machinery/atmospherics/components/binary/pump/off/supply/visible/layer4{
+	dir = 8
 	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
-/obj/machinery/portable_atmospherics/pump,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "SN" = (
@@ -9946,7 +9957,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/computer/atmos_control/nocontrol/incinerator{
 	dir = 1;
-	atmos_chambers = list("syndicatelava_incinerator"="DS2 Incinerator Chamber")
+	atmos_chambers = list("syndieincinerator"="DS-2 Incinerator Chamber")
 	},
 /obj/structure/window/reinforced/survival_pod,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -10848,6 +10859,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/effect/turf_decal/vg_decals/atmos/air,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "WN" = (
@@ -11251,7 +11263,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "YC" = (
 /obj/machinery/air_sensor{
-	chamber_id = "syndicatelava_incinerator"
+	chamber_id = "syndieincinerator"
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/dark/hidden{
 	dir = 4
@@ -13233,7 +13245,7 @@ cW
 my
 MH
 oE
-Zg
+El
 Zg
 fz
 zX
