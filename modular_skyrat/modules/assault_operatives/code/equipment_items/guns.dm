@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/assault_ops_rifle
 	name = "\improper IGE-110 rifle"
-	desc = "A bullpup rifle chambered in 5.6x30mm and painted in an ominous matte black. Strangely, the gun also seems to lack any form of manufacturer markings."\
+	desc = "A bullpup rifle chambered in 5.6x30mm and painted in an ominous matte black. Strangely, the gun also seems to lack any form of manufacturer markings."
 	icon_state = "ige_assault"
 	icon = 'modular_skyrat\modules\assault_operatives\icons\guns\guns.dmi'
 	righthand_file = 'modular_skyrat\modules\assault_operatives\icons\guns\guns_righthand.dmi'
