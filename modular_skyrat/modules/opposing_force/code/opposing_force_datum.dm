@@ -896,13 +896,10 @@
 		return
 	owner.opposing_force()
 
-/datum/action/opfor/IsAvailable()
+/datum/action/opfor/IsAvailable(feedback = FALSE)
 	if(!target)
 		return FALSE
-	. = ..()
-	if(!.)
-		return
-	return TRUE
+	return ..()
 
 /obj/effect/statclick/opfor_specific
 	var/datum/opposing_force/opfor
