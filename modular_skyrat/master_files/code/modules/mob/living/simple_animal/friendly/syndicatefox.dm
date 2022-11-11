@@ -34,3 +34,4 @@
 	death_message = "beeps, its mechanical parts hissing before the chassis collapses in a loud thud."
 	animal_species = /mob/living/simple_animal/pet/fox
 	gold_core_spawnable = FRIENDLY_SPAWN
+
