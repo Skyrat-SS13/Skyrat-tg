@@ -346,13 +346,9 @@ structure_check() searches for nearby cultist structures required for the invoca
 		stone.capture_soul(sacrificial, first_invoker, TRUE)
 
 	if(sacrificial)
-<<<<<<< HEAD
-		sacrificial.gib(TRUE)
-=======
 		playsound(sacrificial, 'sound/magic/disintegrate.ogg', 100, TRUE)
 		sacrificial.investigate_log("has been sacrificially gibbed by the cult.", INVESTIGATE_DEATHS)
 		sacrificial.gib()
->>>>>>> ad5debaaa1d (Add investigate_deaths (#71112))
 	return TRUE
 
 /obj/effect/rune/empower

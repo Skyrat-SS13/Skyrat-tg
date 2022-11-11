@@ -39,14 +39,10 @@
 		for(var/i in 1 to 3)
 			sleep(0.3 SECONDS)
 			playsound(user, 'sound/weapons/genhit2.ogg', 50, TRUE)
-<<<<<<< HEAD
-		return(BRUTELOSS)
-//SKYRAT EDIT REMOVAL BEGIN -DIGI_BLOODSOLE - (Moved to modular_skyrat/modules/digi_shoeblood/code/modules/clothing/shoes/_shoes.dm)
-/*
-=======
 		return BRUTELOSS
 
->>>>>>> ad5debaaa1d (Add investigate_deaths (#71112))
+//SKYRAT EDIT REMOVAL BEGIN -DIGI_BLOODSOLE - (Moved to modular_skyrat/modules/digi_shoeblood/code/modules/clothing/shoes/_shoes.dm)
+/*
 /obj/item/clothing/shoes/worn_overlays(mutable_appearance/standing, isinhands = FALSE)
 	. = ..()
 	if(isinhands)
