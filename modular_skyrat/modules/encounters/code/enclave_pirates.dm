@@ -118,23 +118,38 @@
 
 /area/shuttle/pirate/nri
 	name = "NRI Starship"
+	forced_ambience = TRUE
+	ambient_buzz = 'modular_skyrat/modules/encounters/sounds/env_ship_idle.ogg'
+	ambient_buzz_vol = 25
+	ambientsounds = list('modular_skyrat/modules/encounters/sounds/alarm_radio.ogg',
+						'modular_skyrat/modules/encounters/sounds/alarm_small_09.ogg',
+						'modular_skyrat/modules/encounters/sounds/gear_loop.ogg',
+						'modular_skyrat/modules/encounters/sounds/gear_start.ogg',
+						'modular_skyrat/modules/encounters/sounds/gear_stop.ogg',
+						'modular_skyrat/modules/encounters/sounds/intercom_loop.ogg')
 
 /obj/machinery/computer/shuttle/pirate/nri/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/gps, "NRI Starship")
 
+/obj/machinery/base_alarm/nri_raider
+	alarm_sound_file = 'modular_skyrat/modules/encounters/sounds/env_horn.ogg'
+	alarm_cooldown = 35
+
 /obj/machinery/porta_turret/syndicate/nri_raider
 	scan_range = 9
 	shot_delay = 3
 	faction = list("pirate")
+	lethal_projectile_sound = 'modular_skyrat/modules/encounters/sounds/shell_out_tiny.ogg'
+	stun_projectile_sound = 'modular_skyrat/modules/encounters/sounds/shell_out_tiny.ogg'
 
 /obj/machinery/porta_turret/syndicate/nri_raider/target(atom/movable/target)
     if(target)
         setDir(get_dir(base, target))//even if you can't shoot, follow the target
         shootAt(target)
-        addtimer(CALLBACK(src, .proc/shootAt, target), 5)
-        addtimer(CALLBACK(src, .proc/shootAt, target), 10)
-        addtimer(CALLBACK(src, .proc/shootAt, target), 15)
+        addtimer(CALLBACK(src, .proc/shootAt, target), 4)
+        addtimer(CALLBACK(src, .proc/shootAt, target), 8)
+        addtimer(CALLBACK(src, .proc/shootAt, target), 12)
         return TRUE
 
 /obj/docking_port/mobile/pirate/nri_raider
@@ -143,9 +158,24 @@
 	rechargeTime = 10 MINUTES
 	movement_force = list("KNOCKDOWN"=0,"THROW"=0)
 	can_move_docking_ports = TRUE
+	takeoff_sound = sound('modular_skyrat/modules/encounters/sounds/engine_ignit_int.ogg')
+	landing_sound = sound('modular_skyrat/modules/encounters/sounds/env_ship_down.ogg')
 
 /obj/structure/plaque/static_plaque/golden/commission/ks13/nri_raider
 	desc = "NRI Terentiev-Yermolayev Orbital Shipworks, Providence High Orbit, Ship OSTs-02\n'Potato Beetle' Class Corvette\nCommissioned 10/11/2562 'Keeping Promises'"
+
+/obj/machinery/computer/centcom_announcement/nri_raider
+	name = "police announcement console"
+	desc = "A console used for making priority Internal Affairs Collegium dispatch reports."
+	icon_screen = "comm"
+	icon_keyboard = "tech_key"
+	req_access = null
+	circuit = null
+	light_color = LIGHT_COLOR_BLUE
+	command_name = "NRI Enforcer-Class Starship Telegram"
+
+/obj/machinery/computer/centcom_announcement/nri_raider/send_announcement(report_sound = 'modular_skyrat/modules/encounters/sounds/morse.ogg')
+	. = ..()
 
 /obj/item/gun/ballistic/automatic/pistol/automag
 	name = "\improper Automag"

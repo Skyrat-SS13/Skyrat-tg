@@ -64,11 +64,12 @@
 /*
  * The actual proc that sends the priority announcement and reports
  */
-/obj/machinery/computer/centcom_announcement/proc/send_announcement()
+/obj/machinery/computer/centcom_announcement/proc/send_announcement(var/report_sound = null)
 	if (!COOLDOWN_FINISHED(src, announcement_cooldown))
 		return
-	/// The sound we're going to play on report.
-	var/report_sound = SSstation.announcer.get_rand_report_sound()
+
+	if(!report_sound)
+		report_sound = SSstation.announcer.get_rand_report_sound()
 
 	if(announce_contents)
 		priority_announce(command_report_content, command_report_title, report_sound, sender_override = command_name, has_important_message = TRUE)

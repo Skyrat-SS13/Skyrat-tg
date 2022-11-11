@@ -108,13 +108,12 @@
 "dS" = (
 /obj/structure/cable,
 /obj/machinery/power/shieldwallgen/unlocked/anchored{
-	req_access_txt = "syndicate";
-	req_one_access_txt = "syndicate";
 	shield_range = 12;
 	max_integrity = 600;
 	armor = list("melee"=30,"bullet"=30,"laser"=20,"energy"=20,"bomb"=10,"bio"=0,"fire"=80,"acid"=70);
 	desc = "A heavy-duty reinforced shield generator designed for ship defense.";
-	name = "defense shield generator"
+	name = "defense shield generator";
+	req_access = list("syndicate")
 	},
 /obj/structure/lattice/catwalk,
 /turf/open/floor/plating/airless,
@@ -260,6 +259,13 @@
 /obj/machinery/power/shuttle_engine/propulsion/burst{
 	dir = 8
 	},
+/obj/structure/window/reinforced/survival_pod{
+	name = "blast shield"
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1;
+	name = "blast shield"
+	},
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "lU" = (
@@ -309,6 +315,9 @@
 	pixel_y = 8
 	},
 /obj/machinery/light/small/red/directional/south,
+/obj/machinery/base_alarm/nri_raider{
+	pixel_x = 32
+	},
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "nD" = (
@@ -391,12 +400,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/obj/machinery/computer/centcom_announcement{
-	dir = 8;
-	name = "police announcement console";
-	command_name = "NRI Enforcer-Class Starship Telegram";
-	desc = "A console used for making priority Internal Affairs Collegium dispatch reports.";
-	circuit = null
+/obj/machinery/computer/centcom_announcement/nri_raider{
+	dir = 8
 	},
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
@@ -501,10 +506,12 @@
 /area/shuttle/pirate/nri)
 "uw" = (
 /obj/structure/table/reinforced,
-/obj/machinery/newscaster/directional/north,
-/obj/item/paper_bin,
-/obj/item/pen,
 /obj/machinery/light/very_dim/directional/north,
+/obj/machinery/fax{
+	fax_name = "NRI Ship";
+	name = "NRI ship fax machine"
+	},
+/obj/item/paper/fluff/nri_police,
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "uU" = (
@@ -593,6 +600,12 @@
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
+"xL" = (
+/obj/machinery/base_alarm/nri_raider{
+	pixel_x = -32
+	},
+/turf/open/floor/pod,
+/area/shuttle/pirate/nri)
 "xX" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -637,6 +650,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+/obj/machinery/base_alarm/nri_raider{
+	pixel_y = 32
+	},
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "AX" = (
@@ -679,12 +695,11 @@
 /area/shuttle/pirate/nri)
 "Bk" = (
 /obj/machinery/power/shieldwallgen/unlocked/anchored{
-	req_access_txt = "syndicate";
-	req_one_access_txt = "syndicate";
 	max_integrity = 600;
 	armor = list("melee"=30,"bullet"=30,"laser"=20,"energy"=20,"bomb"=10,"bio"=0,"fire"=80,"acid"=70);
 	desc = "A heavy-duty reinforced shield generator designed for ship defense.";
-	name = "defense shield generator"
+	name = "defense shield generator";
+	req_access = list("syndicate")
 	},
 /obj/structure/cable,
 /obj/structure/lattice/catwalk,
@@ -712,9 +727,8 @@
 /area/shuttle/pirate/nri)
 "Ci" = (
 /obj/machinery/power/apc/auto_name/directional/east{
-	req_access_txt = "syndicate";
-	req_one_access_txt = "syndicate";
-	cell_type = /obj/item/stock_parts/cell/super
+	cell_type = /obj/item/stock_parts/cell/super;
+	req_access = list("syndicate")
 	},
 /obj/structure/cable,
 /obj/effect/turf_decal/stripes/line,
@@ -732,11 +746,18 @@
 /area/shuttle/pirate/nri)
 "CP" = (
 /obj/structure/table/reinforced,
-/obj/machinery/fax{
-	fax_name = "NRI Ship";
-	name = "NRI ship fax machine"
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/machinery/base_alarm/nri_raider{
+	pixel_x = -32
 	},
-/obj/item/paper/fluff/nri_police,
+/obj/machinery/newscaster/directional/north,
+/turf/open/floor/pod,
+/area/shuttle/pirate/nri)
+"Dl" = (
+/obj/machinery/base_alarm/nri_raider{
+	pixel_x = 32
+	},
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "DD" = (
@@ -889,7 +910,6 @@
 /obj/structure/table/reinforced,
 /obj/item/stock_parts/cell/high/empty,
 /obj/item/stock_parts/cell/high/empty,
-/obj/item/card/id/away/old/apc,
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "LA" = (
@@ -910,7 +930,8 @@
 	},
 /obj/machinery/computer/shuttle/pirate/nri{
 	dir = 8;
-	name = "police shuttle console"
+	name = "police shuttle console";
+	req_access = list("syndicate")
 	},
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
@@ -1056,6 +1077,15 @@
 	},
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
 /area/shuttle/pirate/nri)
+"Ui" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/base_alarm/nri_raider{
+	pixel_y = 32
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/pirate/nri)
 "UO" = (
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger_multi,
@@ -1141,12 +1171,11 @@
 "Xh" = (
 /obj/structure/cable,
 /obj/machinery/power/shieldwallgen/unlocked/anchored{
-	req_access_txt = "syndicate";
-	req_one_access_txt = "syndicate";
 	max_integrity = 600;
 	armor = list("melee"=30,"bullet"=30,"laser"=20,"energy"=20,"bomb"=10,"bio"=0,"fire"=80,"acid"=70);
 	desc = "A heavy-duty reinforced shield generator designed for ship defense.";
-	name = "defense shield generator"
+	name = "defense shield generator";
+	req_access = list("syndicate")
 	},
 /obj/structure/lattice/catwalk,
 /turf/open/floor/plating/airless,
@@ -1187,6 +1216,19 @@
 /obj/item/stack/sheet/iron/fifty,
 /obj/item/stack/sheet/glass/fifty,
 /turf/open/floor/pod,
+/area/shuttle/pirate/nri)
+"Zw" = (
+/obj/machinery/power/shuttle_engine/propulsion/burst{
+	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1;
+	name = "blast shield"
+	},
+/obj/structure/window/reinforced/survival_pod{
+	name = "blast shield"
+	},
+/turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 
 (1,1,1) = {"
@@ -1251,7 +1293,7 @@ UY
 Cy
 cZ
 iC
-lv
+Zw
 ze
 EG
 hH
@@ -1314,7 +1356,7 @@ iC
 iC
 iC
 Hz
-HV
+Ui
 kQ
 rp
 sK
@@ -1338,8 +1380,8 @@ od
 Kq
 Hz
 IY
-iC
-iC
+NW
+co
 iC
 "}
 (10,1,1) = {"
@@ -1430,7 +1472,7 @@ Hz
 (15,1,1) = {"
 Hz
 rg
-Pk
+xL
 aW
 Hz
 pQ
@@ -1491,7 +1533,7 @@ IT
 IT
 hK
 IT
-Pk
+Dl
 rk
 Hz
 "}
