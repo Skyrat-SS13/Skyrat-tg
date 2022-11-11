@@ -97,6 +97,7 @@
 				if(3) // primal gene (gorilla)
 					magnification.gorillize()
 				if(4) // genetic mass susceptibility (gib)
+					magnification.investigate_log("has been gibbed by a sentience helmet being pulled off at the wrong time.", INVESTIGATE_DEATHS)
 					magnification.gib()
 	magnification = null
 
