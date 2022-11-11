@@ -15,6 +15,7 @@
 	atom_flags = PREVENT_CONTENTS_EXPLOSION_1
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	siemens_coefficient = 0
+	complexity_max = DEFAULT_MAX_COMPLEXITY + 5
 	slowdown_inactive = 0
 	slowdown_active = 0
 	ui_theme = "syndicate"
