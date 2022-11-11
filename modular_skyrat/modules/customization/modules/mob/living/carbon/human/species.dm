@@ -173,16 +173,18 @@ GLOBAL_LIST_EMPTY(customizable_races)
 					//	emissive_overlay = center_image(emissive_overlay, x_shift, bodypart_accessory.dimension_y)
 					standing += emissive_overlay
 
-			//
+			// Gets the icon_state of a single or matrix colored accessory and overlays it with a texture
 			if(bodypart_accessory.use_custom_mod_icon)
 				if(bodypart_accessory.color_src == USE_MATRIXED_COLORS && color_layer_list)
-					var/mutable_appearance/MOD_overlay_result = mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), layer = -layer)
+					var/mutable_appearance/MOD_overlay = mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), layer = -layer)
+					// Pastes each of the three(primary, secondary, tertiary) accessory icon_states into one MA
 					for(var/number as anything in color_layer_list)
-						MOD_overlay_result.add_overlay(mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]_[color_layer_list[number]]"))
+						MOD_overlay.add_overlay(mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]_[color_layer_list[number]]"))
 					if(bodypart_accessory.center)
-						MOD_overlay_result = center_image(MOD_overlay_result, x_shift, bodypart_accessory.dimension_y)
-					standing += MOD_overlay_result
+						MOD_overlay = center_image(MOD_overlay, x_shift, bodypart_accessory.dimension_y)
+					standing += MOD_overlay
 				else
+					// Single color MA
 					var/mutable_appearance/MOD_overlay = mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]", layer = -layer)
 					if(bodypart_accessory.center)
 						MOD_overlay = center_image(MOD_overlay, x_shift, bodypart_accessory.dimension_y)

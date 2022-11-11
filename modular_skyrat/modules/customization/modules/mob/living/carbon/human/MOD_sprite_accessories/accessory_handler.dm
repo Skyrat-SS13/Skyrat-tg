@@ -14,7 +14,7 @@
 	. = ..()
 	wearer.dna.species.handle_mutant_bodyparts(wearer, force_update = TRUE)
 
-#define HARDLIGHT_TEXTURES 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/MOD_sprite_accessories/icons/MOD_mask.dmi'
+#define HARDLIGHT_DMI 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/MOD_sprite_accessories/icons/MOD_mask.dmi'
 
 // Tail hardlight
 /datum/sprite_accessory/tails
@@ -25,9 +25,9 @@
 	if(wearer.wear_suit && istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
 		var/obj/item/mod/control/modsuit_control = wearer.back
 		var/datum/mod_theme/mod_theme = modsuit_control.theme
-		if(!modsuit_control.active)
+		if(!modsuit_control.active || !mod_theme.hardlight)
 			return
-		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
+		var/icon/MOD_texture = icon(HARDLIGHT_DMI, "[mod_theme.hardlight_theme]")
 		special_icon.Blend("#fff", ICON_ADD)
 		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
 		return special_icon
@@ -41,9 +41,9 @@
 	if(wearer.head && istype(wearer.head, /obj/item/clothing/head/mod))
 		var/obj/item/mod/control/modsuit_control = wearer.back
 		var/datum/mod_theme/mod_theme = modsuit_control.theme
-		if(!modsuit_control.active)
+		if(!modsuit_control.active || !mod_theme.hardlight)
 			return
-		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
+		var/icon/MOD_texture = icon(HARDLIGHT_DMI, "[mod_theme.hardlight_theme]")
 		special_icon.Blend("#fff", ICON_ADD)
 		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
 		return special_icon
@@ -57,9 +57,9 @@
 	if(wearer.wear_suit && istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
 		var/obj/item/mod/control/modsuit_control = wearer.back
 		var/datum/mod_theme/mod_theme = modsuit_control.theme
-		if(!modsuit_control.active)
+		if(!modsuit_control.active || !mod_theme.hardlight)
 			return
-		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
+		var/icon/MOD_texture = icon(HARDLIGHT_DMI, "[mod_theme.hardlight_theme]")
 		special_icon.Blend("#fff", ICON_ADD)
 		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
 		return special_icon
@@ -73,9 +73,9 @@
 	if(wearer.head && istype(wearer.head, /obj/item/clothing/head/mod))
 		var/obj/item/mod/control/modsuit_control = wearer.back
 		var/datum/mod_theme/mod_theme = modsuit_control.theme
-		if(!modsuit_control.active)
+		if(!modsuit_control.active || !mod_theme.hardlight)
 			return
-		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
+		var/icon/MOD_texture = icon(HARDLIGHT_DMI, "[mod_theme.hardlight_theme]")
 		special_icon.Blend("#fff", ICON_ADD)
 		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
 		return special_icon
@@ -89,9 +89,9 @@
 	if(wearer.head && istype(wearer.head, /obj/item/clothing/head/mod))
 		var/obj/item/mod/control/modsuit_control = wearer.back
 		var/datum/mod_theme/mod_theme = modsuit_control.theme
-		if(!modsuit_control.active)
+		if(!modsuit_control.active || !mod_theme.hardlight)
 			return
-		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
+		var/icon/MOD_texture = icon(HARDLIGHT_DMI, "[mod_theme.hardlight_theme]")
 		special_icon.Blend("#fff", ICON_ADD)
 		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
 		return special_icon
@@ -105,9 +105,9 @@
 	if(wearer.head && istype(wearer.head, /obj/item/clothing/head/mod))
 		var/obj/item/mod/control/modsuit_control = wearer.back
 		var/datum/mod_theme/mod_theme = modsuit_control.theme
-		if(!modsuit_control.active)
+		if(!modsuit_control.active || !mod_theme.hardlight)
 			return
-		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
+		var/icon/MOD_texture = icon(HARDLIGHT_DMI, "[mod_theme.hardlight_theme]")
 		special_icon.Blend("#fff", ICON_ADD)
 		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
 		return special_icon
@@ -121,9 +121,9 @@
 	if(wearer.wear_suit && istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
 		var/obj/item/mod/control/modsuit_control = wearer.back
 		var/datum/mod_theme/mod_theme = modsuit_control.theme
-		if(!modsuit_control.active)
+		if(!modsuit_control.active || !mod_theme.hardlight)
 			return
-		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
+		var/icon/MOD_texture = icon(HARDLIGHT_DMI, "[mod_theme.hardlight_theme]")
 		special_icon.Blend("#fff", ICON_ADD)
 		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
 		return special_icon
@@ -137,9 +137,9 @@
 	if(wearer.wear_suit && istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
 		var/obj/item/mod/control/modsuit_control = wearer.back
 		var/datum/mod_theme/mod_theme = modsuit_control.theme
-		if(!modsuit_control.active)
+		if(!modsuit_control.active || !mod_theme.hardlight)
 			return
-		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
+		var/icon/MOD_texture = icon(HARDLIGHT_DMI, "[mod_theme.hardlight_theme]")
 		special_icon.Blend("#fff", ICON_ADD)
 		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
 		return special_icon
@@ -153,9 +153,11 @@
 	if(wearer.wear_suit && istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
 		var/obj/item/mod/control/modsuit_control = wearer.back
 		var/datum/mod_theme/mod_theme = modsuit_control.theme
-		if(!modsuit_control.active)
+		if(!modsuit_control.active || !mod_theme.hardlight)
 			return
-		var/icon/MOD_texture = icon(HARDLIGHT_TEXTURES, "[mod_theme.name]")
+		var/icon/MOD_texture = icon(HARDLIGHT_DMI, "[mod_theme.hardlight_theme]")
 		special_icon.Blend("#fff", ICON_ADD)
 		special_icon.Blend(MOD_texture, ICON_MULTIPLY)
 		return special_icon
+
+#undef HARDLIGHT_DMI
