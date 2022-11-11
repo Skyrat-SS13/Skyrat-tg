@@ -1,39 +1,154 @@
+// Rifle
+
 /obj/item/gun/ballistic/automatic/assault_ops_rifle
 	name = "\improper IGE-110 rifle"
 	desc = "A bullpup rifle chambered in 5.6x30mm and painted in an ominous matte black. Strangely, the gun also seems to lack any form of manufacturer markings."
 	icon_state = "ige_assault"
-	icon = 'modular_skyrat\modules\assault_operatives\icons\guns\guns.dmi'
-	righthand_file = 'modular_skyrat\modules\assault_operatives\icons\guns\guns_righthand.dmi'
-	lefthand_file = 'modular_skyrat\modules\assault_operatives\icons\guns\guns_lefthand.dmi'
-	worn_icon = 'modular_skyrat\modules\assault_operatives\icons\guns\guns_worn.dmi'
+	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns.dmi'
+	righthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_lefthand.dmi'
+	worn_icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_worn.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle
-	fire_sound = 'modular_skyrat/modules/sec_haul/sound/ltrifle_fire.ogg'
+	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sfrifle_fire.ogg'
 	can_suppress = TRUE
-	suppressor_x_offset = 12
+	suppressor_x_offset = 4
 	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
-	actions_types = null
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_FULLY_AUTOMATIC)
 	burst_size = 1
-	fire_delay = 10
+	fire_delay = 3
 	company_flag = COMPANY_REMOVED
 
-/obj/item/ammo_box/magazine/multi_sprite/norwind
-	name = "\improper Norwind magazine"
-	desc = "An eight-round magazine for the Norwind DMR, chambered for 12mm."
+/obj/item/gun/ballistic/automatic/assault_ops_rifle/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/scope, range_modifier = 1.5)
+
+/obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle
+	name = "\improper IGE-110 magazine"
+	desc = "A twenty round magazine built for 5.6x30mm, intended for use in the IGE-110 rifle."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
-	icon_state = "norwind"
-	ammo_type = /obj/item/ammo_casing/b12mm
-	caliber = CALIBER_12MM
-	max_ammo = 8
+	icon_state = "ige_assault_mag"
+	ammo_type = /obj/item/ammo_casing/realistic/a762x39
+	caliber = "a762x39"
+	max_ammo = 20
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER)
+	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER)
 
-/obj/item/ammo_box/magazine/multi_sprite/norwind/hp
-	ammo_type = /obj/item/ammo_casing/b12mm/hp
-	round_type = AMMO_TYPE_HOLLOWPOINT
-
-/obj/item/ammo_box/magazine/multi_sprite/norwind/rubber
-	ammo_type = /obj/item/ammo_casing/b12mm/rubber
+/obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle/rubber
+	ammo_type = /obj/item/ammo_casing/realistic/a762x39/civilian/rubber
 	round_type = AMMO_TYPE_RUBBER
+
+// SMG
+
+/obj/item/gun/ballistic/automatic/assault_ops_smg
+	name = "\improper IGE-260 submachinegun"
+	desc = "A toploader submachinegun chambered in 9x19mm and painted in an ominous matte black. Strangely, the gun also seems to lack any form of manufacturer markings."
+	icon_state = "ige_smg"
+	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns.dmi'
+	righthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_lefthand.dmi'
+	worn_icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_worn.dmi'
+	w_class = WEIGHT_CLASS_NORMAL
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg
+	fire_sound = 'modular_skyrat/modules/sec_haul/sound/smg_fire.ogg'
+	can_suppress = TRUE
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_FULLY_AUTOMATIC)
+	burst_size = 1
+	fire_delay = 1
+	company_flag = COMPANY_REMOVED
+
+/obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg
+	name = "\improper IGE-260 magazine"
+	desc = "A forty round magazine built for 9x19mm, intended for use in the IGE-260 submachinegun."
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon_state = "ige_smg_mag"
+	ammo_type = /obj/item/ammo_casing/b9mm
+	caliber = CALIBER_9MMPEACE
+	max_ammo = 40
+	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER)
+
+/obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	round_type = AMMO_TYPE_RUBBER
+
+// Shotgun
+
+/obj/item/gun/ballistic/automatic/assault_ops_shotgun
+	name = "\improper IGE-340 semi-automatic shotgun"
+	desc = "A magazine fed semi-automatic shotgun chambered in 12 GA and painted in an ominous matte black. Strangely, the gun also seems to lack any form of manufacturer markings."
+	icon_state = "ige_shotgun"
+	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns.dmi'
+	righthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_lefthand.dmi'
+	worn_icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_worn.dmi'
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun
+	fire_sound = 'modular_skyrat/modules/sec_haul/sound/shotgun_bm.ogg'
+	can_suppress = TRUE
+	suppressor_x_offset = 4
+	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
+	burst_size = 1
+	fire_delay = 1.5
+	company_flag = COMPANY_REMOVED
+
+/obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun
+	name = "\improper IGE-340 magazine"
+	desc = "A seven round magazine built for 12 GA, intended for use in the IGE-340 shotgun."
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon_state = "ige_shotgun_mag"
+	ammo_type = /obj/item/ammo_casing/shotgun/magnum
+	caliber = CALIBER_SHOTGUN
+	max_ammo = 7
+	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_AP)
+
+/obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/rubbershot
+	ammo_type = /obj/item/ammo_casing/shotgun/rubbershot
+	round_type = AMMO_TYPE_RUBBER
+
+/obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/ap_slugs
+	ammo_type = /obj/item/ammo_casing/shotgun/pt20
+	round_type = AMMO_TYPE_AP
+
+// Sniper
+
+/obj/item/gun/ballistic/rifle/boltaction/assault_ops_sniper
+	name = "\improper IGE-410-S marksman rifle"
+	desc = "A magazine fed bolt-action rifle with a short enough barrel that your shoulder hurts just looking at it. Chambered in .416 Stabilis, it is painted in an ominous matte black and seems to lack any form of manufacturer markings."
+	icon_state = "ige_sniper"
+	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns.dmi'
+	righthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_lefthand.dmi'
+	worn_icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_worn.dmi'
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper
+	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sniper_fire.ogg'
+	can_suppress = TRUE
+	suppressor_x_offset = 6
+	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
+	burst_size = 1
+	fire_delay = 10
+	can_be_sawn_off = FALSE
+	realistic = FALSE
+	company_flag = COMPANY_REMOVED
+
+/obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper
+	name = "\improper IGE-410 magazine"
+	desc = "A five round magazine built for .416 Stabilis, intended for use in the IGE-410 sniper."
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon_state = "ige_sniper_mag"
+	ammo_type = /obj/item/ammo_casing/p50
+	caliber = CALIBER_50
+	max_ammo = 5
+	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER)
+
+/obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper/sleepytime
+	ammo_type = /obj/item/ammo_casing/p50/soporific
+	round_type = AMMO_TYPE_RUBBER // I mean like technically nothing bad will happen because of this
