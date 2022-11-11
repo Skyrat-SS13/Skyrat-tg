@@ -69,7 +69,7 @@
 	. = ..()
 	var/datum/outfit/vox/O = new /datum/outfit/vox
 	equipping.equipOutfit(O, visuals_only)
-	equipping.internal = equipping.get_item_for_held_index(2)
+	equipping.open_internals(equipping.get_item_for_held_index(2))
 
 /datum/species/vox/random_name(gender,unique,lastname)
 	if(unique)

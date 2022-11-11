@@ -1835,5 +1835,45 @@ SKYRAT EDIT STOP: Ash Rituals */
 	qdel(toilet)
 	to_chat(user, span_notice("[user] attaches the flamethrower to the repurposed toilet."))
 
+/datum/crafting_recipe/pillow_suit
+	name = "pillow suit"
+	result = /obj/item/clothing/suit/pillow_suit
+	time = 2 SECONDS
+	reqs = list(
+		/obj/item/stack/sticky_tape = 10,
+		/obj/item/pillow = 5,
+	)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/pillow_hood
+	name = "pillow hood"
+	result = /obj/item/clothing/head/pillow_hood
+	tool_behaviors = list(TOOL_WIRECUTTER, TOOL_KNIFE)
+	time = 2 SECONDS
+	reqs = list(
+		/obj/item/stack/sticky_tape = 5,
+		/obj/item/pillow = 1,
+	)
+	category = CAT_CLOTHING
+
+
+/datum/crafting_recipe/house_edge
+	name = "House Edge"
+	result = /obj/item/house_edge
+	always_available = FALSE
+	tool_behaviors = list(TOOL_WRENCH, TOOL_SCREWDRIVER, TOOL_WELDER)
+	reqs = list(
+		/obj/item/v8_engine = 1,
+		/obj/item/weaponcrafting/receiver = 1,
+		/obj/item/assembly/igniter = 1,
+		/obj/item/stack/sheet/iron = 2,
+		/obj/item/knife = 1,
+		/obj/item/weldingtool = 1,
+		/obj/item/roulette_wheel_beacon = 1,
+	)
+	time = 10 SECONDS
+	category = CAT_WEAPONRY
+	subcategory = CAT_WEAPON
+
 #undef CRAFTING_MACHINERY_CONSUME
 #undef CRAFTING_MACHINERY_USE

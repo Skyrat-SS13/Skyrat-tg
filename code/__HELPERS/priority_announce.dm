@@ -47,7 +47,7 @@
 	for(var/mob/target in players)
 		if(!isnewplayer(target) && target.can_hear())
 			to_chat(target, announcement)
-			if(target.client.prefs.toggles & SOUND_ANNOUNCEMENTS)
+			if(target.client.prefs.read_preference(/datum/preference/toggle/sound_announcements))
 				SEND_SOUND(target, sound_to_play)
 
 /**
@@ -125,7 +125,7 @@
 			continue
 
 		to_chat(target, "[span_minorannounce("<font color = red>[title]</font color><BR>[message]")]<BR>")
-		if(target.client?.prefs.toggles & SOUND_ANNOUNCEMENTS)
+		if(target.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
 			var/sound_to_play = sound_override || (alert ? 'sound/misc/notice1.ogg' : 'sound/misc/notice2.ogg')
 			SEND_SOUND(target, sound(sound_to_play))
 */ // SKYRAT EDIT REMOVAL END
