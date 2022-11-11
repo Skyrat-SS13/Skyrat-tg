@@ -1,0 +1,42 @@
+
+/datum/outfit/job/solfed_liason
+	name = "Solar Federation Liason"
+	jobtype = /datum/job/corporate_diplomat
+
+	belt = /obj/item/modular_computer/tablet/pda/armadyne_representative
+	glasses = /obj/item/clothing/glasses/sunglasses
+	//ears = /obj/item/radio/headset/heads/nanotrasen_consultant TODO: REPLACE WITH ARMADYNE HEADSET
+	//gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne
+	uniform = /obj/item/clothing/under/rank/security/peacekeeper/sol/cadet/liason
+	suit = /obj/item/clothing/suit/toggle/lawyer
+	shoes = /obj/item/clothing/shoes/laceup
+	//head = /obj/item/clothing/head/beret/sec/peacekeeper/armadyne
+	neck = /obj/item/clothing/neck/tie/solfed
+	backpack_contents = list(
+		/obj/item/melee/baton/telescopic = 1,
+		/obj/item/storage/box/gunset/pdh_corpo = 1,
+		)
+
+	backpack = /obj/item/storage/backpack
+	satchel = /obj/item/storage/backpack/satchel
+	duffelbag = /obj/item/storage/backpack/duffelbag
+
+	id = /obj/item/card/id/advanced/solfed
+	id_trim = /datum/id_trim/solfed/liasion
+
+/obj/item/modular_computer/tablet/pda/armadyne_representative
+	name = "armadyne representative's PDA"
+	inserted_disk = /obj/item/computer_disk/command
+	inserted_item = /obj/item/pen/fountain
+	greyscale_colors = "#D71E1E#0060b8"
+
+/datum/outfit/plasmaman/armadyne_representative
+	name = "Armadyne Representative Plasmaman"
+
+	uniform = /obj/item/clothing/under/plasmaman/security
+	gloves = /obj/item/clothing/gloves/color/plasmaman/black
+	head = /obj/item/clothing/head/helmet/space/plasmaman/security
+
+/datum/id_trim/job/solfed/liasion
+	assignment = "SolFed Liasion"
+	sechud_icon_state = SECHUD_SOLFED_LIASON

@@ -95,9 +95,6 @@
 /datum/job/mime
 	alt_titles = list("Mime", "Pantomimist")
 
-/datum/job/nanotrasen_consultant
-	alt_titles = list("Nanotrasen Consultant", "Nanotrasen Diplomat", "Central Command Consultant", "Nanotrasen Representative", "Central Command Representative")
-
 /datum/job/orderly
 	alt_titles = list("Orderly", "Medical Guard") //other dept guards' alt-titles should be kept to [department] guard to avoid confusion
 

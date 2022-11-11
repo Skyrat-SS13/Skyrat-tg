@@ -9,7 +9,6 @@
 #define SECHUD_SCIENCE_GUARD "hudscienceguard"
 //SR Nanotrasen
 #define SECHUD_BLUESHIELD "hudblueshield"
-#define SECHUD_NT_CONSULTANT "hudnanotrasenconsultant"
 //SR SolFed
 #define SECHUD_SPACE_POLICE "hudspacepolice"
 #define SECHUD_SOLFED "hudsolfed"
@@ -17,3 +16,6 @@
 //SR Misc
 #define SECHUD_BARBER "hudbarber"
 #define SECHUD_SCRAMBLED "hudscrambled"
+// Corporate Diplomat roles
+#define SECHUD_NT_CONSULTANT "hudnanotrasenconsultant"
+#define SECHUD_ARMADYNE_REPRESENTATIVE "hudarmadynerepresentative"

@@ -107,7 +107,10 @@
 #define JOB_CENTCOM_PRIVATE_SECURITY "Private Security Force"
 // SKYRAT EDIT ADDITION START
 #define JOB_BLUESHIELD "Blueshield"
+#define JOB_CORPORATE_DIPLOMAT "Corporate Diplomat" // Overridden during the init of SSJob
+#define JOB_ARMADYNE_REP "Armadyne Representative"
 #define JOB_NT_REP "Nanotrasen Consultant"
+#define JOB_SOLFED_LIASON "SolFed Liason"
 // Nanotrasen Naval Command jobs
 #define JOB_NAVAL_ENSIGN "Ensign"
 #define JOB_NAVAL_LIEUTENANT "Lieutenant"
@@ -120,7 +123,6 @@
 // Off-Station
 #define JOB_SPACE_POLICE "Space Police"
 #define JOB_SOLFED "SolFed"
-#define JOB_SOLFED_LIASON "SolFed Liason"
 // SKYRAT EDIT ADDITION END
 
 
@@ -169,6 +171,7 @@
 #define JOB_DISPLAY_ORDER_BOUNCER 43 //SKYRAT EDIT ADDITION
 #define JOB_DISPLAY_ORDER_ENGINEER_GUARD 44 //SKYRAT EDIT ADDITION
 #define JOB_DISPLAY_ORDER_CUSTOMS_AGENT 45 //SKYRAT EDIT ADDITION
+#define JOB_DISPLAY_ORDER_ARMADYNE_REPRESENTATIVE 46 //SKYRAT EDIT ADDITON
 
 #define DEPARTMENT_UNASSIGNED "No department assigned"
 
