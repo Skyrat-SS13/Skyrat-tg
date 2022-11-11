@@ -27,7 +27,7 @@
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle
 	name = "\improper IGE-110 magazine"
 	desc = "A twenty round magazine built for 5.6x30mm, intended for use in the IGE-110 rifle."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/magazines.dmi'
 	icon_state = "ige_assault_mag"
 	ammo_type = /obj/item/ammo_casing/realistic/a762x39
 	caliber = "a762x39"
@@ -62,7 +62,7 @@
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg
 	name = "\improper IGE-260 magazine"
 	desc = "A forty round magazine built for 9x19mm, intended for use in the IGE-260 submachinegun."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/magazines.dmi'
 	icon_state = "ige_smg_mag"
 	ammo_type = /obj/item/ammo_casing/b9mm
 	caliber = CALIBER_9MMPEACE
@@ -99,7 +99,7 @@
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun
 	name = "\improper IGE-340 magazine"
 	desc = "A seven round magazine built for 12 GA, intended for use in the IGE-340 shotgun."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/magazines.dmi'
 	icon_state = "ige_shotgun_mag"
 	ammo_type = /obj/item/ammo_casing/shotgun/magnum
 	caliber = CALIBER_SHOTGUN
@@ -127,6 +127,7 @@
 	worn_icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_worn.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
+	internal_magazine = FALSE
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sniper_fire.ogg'
 	can_suppress = TRUE
@@ -134,14 +135,19 @@
 	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
 	burst_size = 1
 	fire_delay = 10
+	recoil = 3
 	can_be_sawn_off = FALSE
 	realistic = FALSE
 	company_flag = COMPANY_REMOVED
 
+/obj/item/gun/ballistic/rifle/boltaction/assault_ops_sniper/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/scope, range_modifier = 2.5)
+
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper
 	name = "\improper IGE-410 magazine"
 	desc = "A five round magazine built for .416 Stabilis, intended for use in the IGE-410 sniper."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/magazines.dmi'
 	icon_state = "ige_sniper_mag"
 	ammo_type = /obj/item/ammo_casing/p50
 	caliber = CALIBER_50
