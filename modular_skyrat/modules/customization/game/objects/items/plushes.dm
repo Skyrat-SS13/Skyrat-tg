@@ -566,5 +566,5 @@
 //Donation reward for October23
 /obj/item/toy/plush/skyrat/plushie_elofy
 	name = "bumbling wolfgirl plushie"
-	desc = "A White-haired wolfgirl in a stylish red security skirt. Despite her scary cybernetic arm, she is soft to hug and only wishes to be praised and comforted."
+	desc = "A white-haired wolfgirl in a stylish red security skirt. Despite her scary cybernetic arm, she is soft to hug and only wishes to be praised and comforted."
 	icon_state = "plush_lonie"
