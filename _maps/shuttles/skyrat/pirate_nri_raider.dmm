@@ -129,8 +129,12 @@
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "ew" = (
-/obj/effect/mob_spawn/ghost_role/human/pirate/nri/captain,
-/turf/open/floor/pod,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/light/small/red/directional/south,
+/obj/structure/showcase/machinery/oldpod/used,
+/turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "ey" = (
 /obj/machinery/computer/piratepad_control,
@@ -434,12 +438,13 @@
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "rk" = (
-/obj/structure/bed/pod,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/item/bedsheet/random,
 /obj/machinery/light/small/red/directional/south,
+/obj/effect/mob_spawn/ghost_role/human/pirate/nri/gunner{
+	dir = 1
+	},
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "rp" = (
@@ -741,8 +746,13 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/pirate/nri)
 "CC" = (
-/obj/effect/mob_spawn/ghost_role/human/pirate/nri/gunner,
-/turf/open/floor/pod,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/mob_spawn/ghost_role/human/pirate/nri/gunner{
+	dir = 1
+	},
+/turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "CP" = (
 /obj/structure/table/reinforced,
@@ -984,14 +994,11 @@
 /turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
 "Pi" = (
-/obj/structure/bed/pod{
-	dir = 1
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/item/bedsheet/random{
-	dir = 4
+/obj/effect/mob_spawn/ghost_role/human/pirate/nri/captain{
+	dir = 1
 	},
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
@@ -1482,7 +1489,7 @@ wh
 hl
 Hz
 TF
-ew
+Pk
 Pi
 Hz
 "}
@@ -1499,7 +1506,7 @@ Hz
 Hz
 Hz
 bg
-CC
+Pk
 rk
 Hz
 "}
@@ -1516,8 +1523,8 @@ NO
 Ze
 Hz
 Ib
+Pk
 CC
-Pi
 Hz
 "}
 (18,1,1) = {"
@@ -1534,7 +1541,7 @@ IT
 hK
 IT
 Dl
-rk
+ew
 Hz
 "}
 (19,1,1) = {"

@@ -16,7 +16,7 @@
 
 	belt = /obj/item/storage/belt/military/nri/captain/pirate_officer
 	back = /obj/item/storage/backpack/satchel/leather
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack = 1, /obj/item/ammo_box/magazine/m9mm_aps = 3, /obj/item/gun/ballistic/automatic/pistol/ladon/nri = 1, /obj/item/crucifix = 1, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/tablet/pda/security = 1)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack/raider = 1, /obj/item/ammo_box/magazine/m9mm_aps = 3, /obj/item/gun/ballistic/automatic/pistol/ladon/nri = 1, /obj/item/crucifix = 1, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/tablet/pda/security = 1)
 	l_pocket = /obj/item/paper/fluff/nri_document
 	r_pocket = /obj/item/storage/bag/ammo
 
@@ -46,7 +46,7 @@
 
 	belt = /obj/item/storage/belt/military/nri/pirate
 	back = /obj/item/storage/backpack/satchel/leather
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack = 1, /obj/item/crucifix = 1, /obj/item/ammo_box/magazine/m9mm = 3, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/tablet/pda/security = 1)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack/raider = 1, /obj/item/crucifix = 1, /obj/item/ammo_box/magazine/m9mm = 3, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/tablet/pda/security = 1)
 	l_pocket = /obj/item/gun/ballistic/automatic/pistol
 	r_pocket = /obj/item/storage/bag/ammo
 
@@ -76,7 +76,6 @@
 	important_text = "Allowed races are humans, Akulas, IPCs. Follow your field officer's orders. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. Roleplay accordingly."
 	spawner_job_path = /datum/job/space_pirate
 	restricted_species = list(/datum/species/human, /datum/species/akula, /datum/species/robotic/ipc)
-	spawn_oldpod = FALSE
 	random_appearance = FALSE
 	show_flavor = TRUE
 
@@ -134,7 +133,7 @@
 
 /obj/machinery/base_alarm/nri_raider
 	alarm_sound_file = 'modular_skyrat/modules/encounters/sounds/env_horn.ogg'
-	alarm_cooldown = 35
+	alarm_cooldown = 31
 
 /obj/machinery/porta_turret/syndicate/nri_raider
 	scan_range = 9
@@ -155,6 +154,7 @@
 /obj/docking_port/mobile/pirate/nri_raider
 	name = "NRI IAC-PV 'Evangelium'" //Nobody will care about the translation but basically NRI Internal Affairs Collegium-Patrol Vessel
 	initial_engine_power = 6
+	callTime = 5 MINUTES
 	rechargeTime = 10 MINUTES
 	movement_force = list("KNOCKDOWN"=0,"THROW"=0)
 	can_move_docking_ports = TRUE
@@ -174,7 +174,7 @@
 	light_color = LIGHT_COLOR_BLUE
 	command_name = "NRI Enforcer-Class Starship Telegram"
 
-/obj/machinery/computer/centcom_announcement/nri_raider/send_announcement(report_sound = 'modular_skyrat/modules/encounters/sounds/morse.ogg')
+/obj/machinery/computer/centcom_announcement/nri_raider/send_announcement(report_sound = ANNOUNCER_NRI_RAIDERS)
 	. = ..()
 
 /obj/item/gun/ballistic/automatic/pistol/automag
@@ -224,6 +224,18 @@
 		/obj/item/grenade/smokebomb = 1,
 		/obj/item/grenade/flashbang = 1,
 	),src)
+
+/obj/item/storage/box/nri_survival_pack/raider
+	desc = "A box filled with useful emergency items, supplied by the NRI. It feels particularily light."
+
+/obj/item/storage/box/nri_survival_pack/raider/PopulateContents()
+	new /obj/item/oxygen_candle(src)
+	new /obj/item/tank/internals/emergency_oxygen(src)
+	new /obj/item/stack/spacecash/c1000(src)
+	new /obj/item/storage/pill_bottle/iron(src)
+	new /obj/item/reagent_containers/hypospray/medipen(src)
+	new /obj/item/flashlight/flare(src)
+	new /obj/item/crowbar/red(src)
 
 /obj/item/paper/fluff/nri_document
 	name = "NRI Mission Specifications"
