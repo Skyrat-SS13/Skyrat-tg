@@ -55,10 +55,10 @@
 	if(sprite_accessory_flags & SPRITE_ACCESSORY_HIDE_SHOES)
 		external_bodytypes |= BODYTYPE_HIDE_SHOES
 
-	var/obj/item/bodypart/l_leg/taur/new_left_leg = new /obj/item/bodypart/l_leg/taur()
-	var/obj/item/bodypart/l_leg/old_left_leg = reciever.get_bodypart(BODY_ZONE_L_LEG)
-	var/obj/item/bodypart/r_leg/taur/new_right_leg = new /obj/item/bodypart/r_leg/taur()
-	var/obj/item/bodypart/r_leg/old_right_leg = reciever.get_bodypart(BODY_ZONE_R_LEG)
+	var/obj/item/bodypart/leg/left/taur/new_left_leg = new /obj/item/bodypart/leg/left/taur()
+	var/obj/item/bodypart/leg/left/old_left_leg = reciever.get_bodypart(BODY_ZONE_L_LEG)
+	var/obj/item/bodypart/leg/right/taur/new_right_leg = new /obj/item/bodypart/leg/right/taur()
+	var/obj/item/bodypart/leg/right/old_right_leg = reciever.get_bodypart(BODY_ZONE_R_LEG)
 
 	new_left_leg.bodytype |= external_bodytypes
 	new_left_leg.replace_limb(reciever, TRUE)
@@ -74,8 +74,8 @@
 
 
 /obj/item/organ/external/taur_body/Remove(mob/living/carbon/organ_owner, special, moving)
-	var/obj/item/bodypart/l_leg/left_leg = organ_owner.get_bodypart(BODY_ZONE_L_LEG)
-	var/obj/item/bodypart/r_leg/right_leg = organ_owner.get_bodypart(BODY_ZONE_R_LEG)
+	var/obj/item/bodypart/leg/left/left_leg = organ_owner.get_bodypart(BODY_ZONE_L_LEG)
+	var/obj/item/bodypart/leg/right/right_leg = organ_owner.get_bodypart(BODY_ZONE_R_LEG)
 
 	if(left_leg)
 		left_leg.drop_limb()
