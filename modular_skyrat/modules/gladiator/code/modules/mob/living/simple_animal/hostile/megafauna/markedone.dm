@@ -268,6 +268,7 @@
 			if(phase == MARKED_ONE_FIRST_PHASE)
 				phase = MARKED_ONE_SECOND_PHASE
 				INVOKE_ASYNC(src, .proc/charge, target, 21)
+				ranged_cooldown += 8 SECONDS //this needs to be here lest another ranged attack override the charge while it's prepping
 				playsound(src, 'sound/effects/clockcult_gateway_disrupted.ogg', 200, 1, 2)
 				icon_state = "marked2"
 				rapid_melee = 2
@@ -278,6 +279,7 @@
 			if(phase == MARKED_ONE_SECOND_PHASE)
 				phase = MARKED_ONE_THIRD_PHASE
 				INVOKE_ASYNC(src, .proc/charge, target, 21)
+				ranged_cooldown += 8 SECONDS
 				playsound(src, 'sound/effects/clockcult_gateway_charging.ogg', 200, 1, 2)
 				rapid_melee = 4
 				melee_damage_upper = 25
@@ -287,6 +289,7 @@
 			if (phase == MARKED_ONE_THIRD_PHASE)
 				phase = MARKED_ONE_FINAL_PHASE
 				INVOKE_ASYNC(src, .proc/charge, target, 21)
+				ranged_cooldown += 8 SECONDS
 				playsound(src, 'sound/effects/clockcult_gateway_active.ogg', 200, 1, 2)
 				icon_state = "marked3"
 				rapid_melee = 1
