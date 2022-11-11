@@ -3,10 +3,10 @@
 #define SECURITY_AMBER "security_amber"
 #define CONTRACTOR_RED "contractor_red"
 #define EXTRASHIELD_GREEN "extrashield_green"
-#define WIZARD_VIOLET "wizard_violet"
 #define EVIL_GREEN "evil_green"
-#define RESEARCH_PURPLE "research_purple"
+#define ROYAL_PURPLE "royal_purple"
 #define ENGINEERING_ORANGE "engineering_orange"
+#define COSMIC_BLUE "cosmic_blue"
 
 /datum/mod_theme
 	/// Wether or not the MOD projects hardlight at all
@@ -16,10 +16,10 @@
 
 //	Command
 /datum/mod_theme/magnate
-	hardlight_theme = RESEARCH_PURPLE
+	hardlight_theme = ROYAL_PURPLE
 
 /datum/mod_theme/research
-	hardlight_theme = RESEARCH_PURPLE
+	hardlight_theme = ROYAL_PURPLE
 
 /datum/mod_theme/advanced
 	hardlight_theme = ENGINEERING_ORANGE
@@ -59,7 +59,7 @@
 	hardlight_theme = EVIL_GREEN
 
 /datum/mod_theme/enchanted
-	hardlight_theme = WIZARD_VIOLET
+	hardlight_theme = COSMIC_BLUE
 
 /datum/mod_theme/ninja
 	hardlight_theme = EVIL_GREEN
@@ -99,7 +99,7 @@
 #undef SECURITY_AMBER
 #undef CONTRACTOR_RED
 #undef EXTRASHIELD_GREEN
-#undef WIZARD_VIOLET
 #undef EVIL_GREEN
-#undef RESEARCH_PURPLE
+#undef ROYAL_PURPLE
 #undef ENGINEERING_ORANGE
+#undef COSMIC_BLUE
