@@ -23,20 +23,11 @@
 	/// Should this be hidden from the passport editor, and other "IC" interactions.
 	var/hidden_from_characters = FALSE
 
-/datum/background_info/proc/is_job_valid(datum/job/job)
+/datum/background_info/proc/is_role_valid(datum/role)
 	if(!roles)
 		return TRUE
 
-	if(job.type in roles)
-		return !false_if_in_roles
-
-	return false_if_in_roles
-
-/datum/background_info/proc/is_ghost_role_valid(obj/effect/mob_spawn/ghost_role/human/ghost_role)
-	if(!roles)
-		return TRUE
-
-	if(ghost_role.type in roles)
+	if(role.type in roles)
 		return !false_if_in_roles
 
 	return false_if_in_roles

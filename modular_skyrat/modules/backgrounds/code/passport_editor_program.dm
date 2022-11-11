@@ -1,3 +1,5 @@
+// Basically a copy-paste of "card_mod"
+
 /datum/computer_file/program/passport_mod
 	filename = "plexagonpassportwriter"
 	filedesc = "Plexagon Passport Management"
@@ -68,7 +70,7 @@
 			authenticated_user = null
 			playsound(computer, 'sound/machines/terminal_off.ogg', 50, FALSE)
 			return TRUE
-		// Eject the ID used to log on to the ID app.
+		// Eject the ID used to log in to the ID app.
 		if("PRG_ejectauthid")
 			if(!computer || !card_slot)
 				return TRUE
@@ -78,7 +80,7 @@
 				var/obj/item/item = user.get_active_held_item()
 				if(isidcard(item))
 					return card_slot.try_insert(item, user)
-		// Eject the ID being modified.
+		// Eject the passport being modified.
 		if("PRG_ejectpassport")
 			if(!computer || !passport_slot)
 				return TRUE
@@ -90,17 +92,17 @@
 				if(ispassport(item))
 					return passport_slot.try_insert(item, user)
 			return TRUE
-		// Used to fire someone. Wipes all access from their card and modifies their assignment.
+		// Used to reclaim passports from bodies. Helpful for forgery.
 		if("PRG_wipe")
 			if(!computer || !authenticated_card)
 				return TRUE
 
-			// Set the new assignment then remove the trim.
+			// Yeet all data!
 			target_passport.wipe()
 
 			playsound(computer, 'sound/machines/printer.ogg', 50, FALSE)
 			return TRUE
-		// Change ID card assigned name.
+		// Change passport holder's name.
 		if("PRG_name")
 			if(!computer || !authenticated_card || !target_passport)
 				return TRUE
@@ -134,6 +136,7 @@
 			playsound(computer, SFX_TERMINAL_TYPE, 50, FALSE)
 			target_passport.update_data()
 			return TRUE
+		// Change the background tied to the passport.
 		if("PRG_changebackground")
 			var/datum/background_info/background_info = text2path(params["target"])
 			if(!background_info)

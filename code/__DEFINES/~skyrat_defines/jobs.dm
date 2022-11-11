@@ -13,3 +13,7 @@
 #define GUARD_RESTRICTED_QUIRKS "Blind" = TRUE, "Deaf" = TRUE, "Foreigner" = TRUE, "Pacifist" = TRUE, "Nerve Stapled" = TRUE
 
 #define FLAVOR_TEXT_CHAR_REQUIREMENT 150
+
+// "job"
+#define JOB_SQUATTER "Squatter"
+#define JOB_DISPLAY_ORDER_SQUATTER -1

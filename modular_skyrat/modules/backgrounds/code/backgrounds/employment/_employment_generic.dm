@@ -1,7 +1,11 @@
 /datum/background_info/employment/squatter
 	name = "Station Squatter"
 	description = "You are not a Nanotrasen employee. You pretend to work here after tricking the Head of Personnel to give you an ID, \
-	so you can stay and eat their food rent-free."
+	so you can stay and eat their food rent-free. \
+	<br><br> \
+	Lock you into the hidden squatter role if taken. \
+	<br><br> \
+	You start with an emergency toolbox, a bulky crowbar, a fire extinguisher, and a welding tool."
 	features = list(
 		/datum/background_feature/penniless,
 		/datum/background_feature/off_manifest,
@@ -11,10 +15,7 @@
 	veteran = TRUE
 	false_if_in_roles = FALSE
 	hidden_from_characters = TRUE
-
-/datum/background_info/employment/squatter/New()
-	. = ..()
-	roles = get_non_command_jobs()
+	roles = list(/datum/job/assistant/squatter)
 
 /datum/background_info/employment/lopland
 	name = "Lopland Contractor"

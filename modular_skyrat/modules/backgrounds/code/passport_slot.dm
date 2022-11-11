@@ -9,9 +9,10 @@
 	device_type = MC_PASSPORT
 	expansion_hw = TRUE
 
+	/// Passport that's currently being held.
 	var/obj/item/passport/stored_passport
 
-///What happens when the ID card is removed (or deleted) from the module, through try_eject() or not.
+/// What happens when the ID card is removed (or deleted) from the module, through try_eject() or not.
 /obj/item/computer_hardware/passport_slot/Exited(atom/movable/gone, direction)
 	if(stored_passport == gone)
 		stored_passport = null

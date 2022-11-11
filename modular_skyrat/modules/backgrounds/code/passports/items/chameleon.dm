@@ -45,13 +45,13 @@
 	if(!passport)
 		return
 
-	passport_name = initial(passport.passport_name)
+	name_override = initial(passport.name)
 	has_animation = initial(passport.has_animation)
 	has_closed_state = initial(passport.has_closed_state)
 	icon_state_base = initial(passport.icon_state_base)
-	icon_state_ext = initial(passport.icon_state_ext)
+	current_state = initial(passport.current_state)
 	desc = initial(passport.desc)
-	icon_state = "[icon_state_base]_[icon_state_ext]"
+	icon_state = "[icon_state_base]_[current_state]"
 	update_label()
 
 /obj/item/passport/chameleon/proc/forge_passport(mob/user)
