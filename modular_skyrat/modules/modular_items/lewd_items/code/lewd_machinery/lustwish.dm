@@ -37,7 +37,7 @@
 					/obj/item/serviette_pack = 10,
 					/obj/item/restraints/handcuffs/lewd = 8,
 					/obj/item/key/collar = 48,
-					/obj/item/pillow = 32, //cmon, why there is always 0 pillows, where do you guys stuff it.
+					/obj/item/fancy_pillow = 32,
 					/obj/item/stack/shibari_rope/full = 10,
 					/obj/item/stack/shibari_rope/glow/full = 10,
 

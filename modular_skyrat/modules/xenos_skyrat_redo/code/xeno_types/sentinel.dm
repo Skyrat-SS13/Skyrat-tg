@@ -40,7 +40,7 @@
 	shared_cooldown = MOB_SHARED_COOLDOWN_3
 	cooldown_time = 5 SECONDS
 
-/datum/action/cooldown/alien/acid/skyrat/IsAvailable()
+/datum/action/cooldown/alien/acid/skyrat/IsAvailable(feedback = FALSE)
 	return ..() && isturf(owner.loc)
 
 /datum/action/cooldown/alien/acid/skyrat/set_click_ability(mob/on_who)
