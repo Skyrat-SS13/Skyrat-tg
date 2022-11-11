@@ -284,7 +284,7 @@
 	dir = 4;
 	pixel_x = 6
 	},
-/turf/open/floor/engine,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "bd" = (
 /obj/effect/turf_decal/siding/dark{
@@ -653,15 +653,11 @@
 /turf/open/floor/iron/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "cs" = (
-/obj/effect/turf_decal/stripes/red/line,
-/obj/effect/turf_decal/trimline/dark_red/line,
-/obj/effect/turf_decal/trimline/yellow/mid_joiner,
-/obj/structure/marker_beacon/burgundy,
 /obj/machinery/light/red/directional/north,
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 1
 	},
-/turf/open/floor/engine,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "ct" = (
 /obj/effect/turf_decal/bot_white,
@@ -1072,7 +1068,9 @@
 	},
 /obj/structure/marker_beacon/burgundy,
 /obj/machinery/light/red/directional/west,
-/turf/open/floor/engine,
+/turf/open/floor/iron/dark/textured_half{
+	dir = 1
+	},
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "ek" = (
 /obj/effect/turf_decal/siding/wood{
@@ -1108,17 +1106,6 @@
 /obj/machinery/light/cold/directional/west,
 /turf/open/floor/iron/white/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
-"eq" = (
-/obj/effect/turf_decal/stripes/red/line,
-/obj/effect/turf_decal/trimline/dark_red/line,
-/obj/effect/turf_decal/trimline/yellow/mid_joiner,
-/obj/structure/marker_beacon/burgundy,
-/obj/effect/turf_decal/siding/wideplating_new/dark{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/engine,
-/area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "ez" = (
 /obj/machinery/atmospherics/pipe/smart/simple/green/visible/layer2{
 	dir = 5
@@ -1918,7 +1905,6 @@
 /obj/structure/fans/tiny/forcefield{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/engine/hull,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "hP" = (
@@ -2880,6 +2866,7 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/siding/dark,
 /obj/machinery/meter,
+/obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "mi" = (
@@ -3555,7 +3542,9 @@
 	},
 /obj/structure/marker_beacon/burgundy,
 /obj/machinery/light/red/directional/west,
-/turf/open/floor/engine,
+/turf/open/floor/iron/dark/textured_half{
+	dir = 1
+	},
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "pe" = (
 /obj/machinery/light/cold/directional/north,
@@ -3675,6 +3664,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "py" = (
+/obj/structure/marker_beacon/burgundy,
 /turf/open/floor/iron/dark/textured_half{
 	dir = 4
 	},
@@ -3991,12 +3981,12 @@
 "qQ" = (
 /obj/docking_port/stationary{
 	dir = 4;
-	dwidth = 4;
+	dwidth = 5;
 	height = 7;
 	name = "DS-2 Hangar";
-	width = 9
+	width = 11
 	},
-/turf/open/floor/engine,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "qR" = (
 /obj/machinery/vending/imported/mothic,
@@ -4600,12 +4590,22 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "tQ" = (
-/obj/effect/turf_decal/stripes/red/corner,
-/obj/effect/turf_decal/trimline/dark_red/corner,
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 1
 	},
-/turf/open/floor/engine,
+/obj/effect/turf_decal/trimline/dark_red/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/yellow/mid_joiner{
+	dir = 4
+	},
+/obj/structure/marker_beacon/burgundy,
+/turf/open/floor/iron/dark/textured_half{
+	dir = 1
+	},
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "tR" = (
 /obj/effect/turf_decal/stripes/red/corner{
@@ -5341,17 +5341,22 @@
 /turf/open/floor/wood/large,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms)
 "xQ" = (
-/obj/effect/turf_decal/stripes/red/corner{
+/obj/effect/turf_decal/stripes/red/line{
 	dir = 4
 	},
-/obj/effect/turf_decal/trimline/dark_red/corner{
+/obj/effect/turf_decal/trimline/dark_red/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/yellow/mid_joiner{
 	dir = 4
 	},
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 10
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/engine,
+/obj/structure/marker_beacon/burgundy,
+/turf/open/floor/iron/dark/textured_half{
+	dir = 1
+	},
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "xS" = (
 /obj/effect/turf_decal/siding/dark{
@@ -5401,7 +5406,6 @@
 	name = "Murder-Mittens"
 	},
 /obj/structure/cable,
-/obj/structure/bed/dogbed,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "yd" = (
@@ -5489,19 +5493,9 @@
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "yC" = (
-/obj/effect/turf_decal/stripes/red/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/dark_red/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/yellow/mid_joiner{
-	dir = 1
-	},
 /obj/structure/railing/corner,
 /obj/effect/turf_decal/siding/wideplating_new/dark,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/engine,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "yH" = (
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
@@ -5593,7 +5587,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "zc" = (
 /obj/machinery/light/red/directional/north,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/structure/marker_beacon/burgundy,
 /turf/open/floor/iron/dark/textured_half{
 	dir = 4
 	},
@@ -5648,6 +5642,8 @@
 /obj/machinery/door/airlock/hatch{
 	name = "Janitorial Supplies"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "zl" = (
@@ -5698,19 +5694,6 @@
 /turf/open/floor/iron/white/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "zx" = (
-/obj/machinery/button/ignition/incinerator/syndicatelava{
-	pixel_y = -6;
-	pixel_x = 24
-	},
-/obj/machinery/button/door/directional/east{
-	id = "syndicatelava_airlock_interior";
-	desc = "Keep out the burn.";
-	normaldoorcontrol = 1;
-	specialfunctions = 4;
-	req_access = list("syndicate");
-	pixel_y = 6;
-	name = "Turbine Airlock Bolt Control"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -6023,12 +6006,10 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/security/lawyer)
 "AR" = (
 /obj/machinery/light/red/directional/south,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
 /obj/machinery/airalarm/syndicate{
 	pixel_y = -24
 	},
+/obj/structure/marker_beacon/burgundy,
 /turf/open/floor/iron/dark/textured_half{
 	dir = 4
 	},
@@ -6460,20 +6441,6 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
-"Dj" = (
-/obj/effect/turf_decal/stripes/red/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/dark_red/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/yellow/mid_joiner{
-	dir = 1
-	},
-/obj/effect/turf_decal/siding/wideplating_new/dark,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/engine,
-/area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "Dk" = (
 /obj/machinery/door/firedoor,
 /obj/structure/window/reinforced/survival_pod{
@@ -7669,22 +7636,11 @@
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/skyrat/interdynefob)
 "IE" = (
-/obj/effect/turf_decal/stripes/red/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/dark_red/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/yellow/mid_joiner{
-	dir = 1
-	},
-/obj/structure/marker_beacon/burgundy,
 /obj/structure/railing/corner{
 	dir = 8
 	},
 /obj/effect/turf_decal/siding/wideplating_new/dark,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/engine,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "IH" = (
 /obj/effect/turf_decal/trimline/purple/filled/line{
@@ -8172,6 +8128,7 @@
 	network = list("ds2");
 	c_tag = "DS-2 Hangar North"
 	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/dark/textured_half{
 	dir = 4
 	},
@@ -8599,7 +8556,7 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
 "Nb" = (
-/turf/open/floor/engine,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "Nc" = (
 /obj/effect/turf_decal/stripes/line{
@@ -8706,6 +8663,7 @@
 /obj/structure/sign/flag/syndicate/directional/north{
 	pixel_x = 16
 	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/dark/textured_half{
 	dir = 4
 	},
@@ -9523,10 +9481,6 @@
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
 /turf/open/floor/iron/dark/textured_half{
 	dir = 4
 	},
@@ -9837,7 +9791,7 @@
 	dir = 4;
 	pixel_x = 6
 	},
-/turf/open/floor/engine,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "RX" = (
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
@@ -9984,8 +9938,16 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet/directional/east,
 /obj/machinery/atmospherics/components/trinary/filter/flipped,
+/obj/machinery/button/door/incinerator_vent_syndicatelava_aux{
+	pixel_y = 6;
+	pixel_x = 24;
+	name = "Combustion Chamber Blast Door Control"
+	},
+/obj/machinery/button/ignition/incinerator/syndicatelava{
+	pixel_y = -6;
+	pixel_x = 24
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "Sv" = (
@@ -10190,9 +10152,7 @@
 	dir = 8
 	},
 /obj/machinery/light/red/directional/east,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
+/obj/structure/marker_beacon/burgundy,
 /turf/open/floor/iron/dark/textured_half{
 	dir = 4
 	},
@@ -10660,16 +10620,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
-"Vd" = (
-/obj/effect/turf_decal/stripes/red/line,
-/obj/effect/turf_decal/trimline/dark_red/line,
-/obj/effect/turf_decal/trimline/yellow/mid_joiner,
-/obj/effect/turf_decal/siding/wideplating_new/dark{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/engine,
-/area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "Ve" = (
 /obj/structure/table,
 /obj/machinery/light/cold/directional/south,
@@ -10919,13 +10869,10 @@
 /turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Wb" = (
-/obj/effect/turf_decal/stripes/red/line,
-/obj/effect/turf_decal/trimline/dark_red/line,
-/obj/effect/turf_decal/trimline/yellow/mid_joiner,
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 1
 	},
-/turf/open/floor/engine,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "Wf" = (
 /obj/effect/turf_decal/tile/yellow/half,
@@ -11106,6 +11053,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 10
 	},
+/obj/machinery/space_heater,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "WN" = (
@@ -11222,27 +11170,17 @@
 /turf/open/floor/iron/white/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Xf" = (
-/obj/effect/mapping_helpers/airlock/locked,
-/obj/structure/fans/tiny,
-/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
-/obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/machinery/atmospherics/pipe/smart/simple/dark/hidden{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/green/hidden/layer2{
 	dir = 4
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/obj/machinery/door/poddoor/incinerator_syndicatelava_aux{
+	name = "Combustion Chamber Blast Door"
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/machinery/door/airlock/hatch{
-	id_tag = "syndicatelava_airlock_interior";
-	name = "Turbine Hatch"
-	},
-/turf/open/floor/engine,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "Xg" = (
 /obj/effect/turf_decal/stripes/red/line,
@@ -11570,19 +11508,8 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "YX" = (
-/obj/effect/turf_decal/stripes/red/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/dark_red/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/yellow/mid_joiner{
-	dir = 1
-	},
-/obj/structure/marker_beacon/burgundy,
 /obj/effect/turf_decal/siding/wideplating_new/dark,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/engine,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "Zd" = (
 /obj/machinery/disposal/bin,
@@ -11800,7 +11727,7 @@
 	dir = 4;
 	pixel_x = 6
 	},
-/turf/open/floor/engine,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "ZY" = (
 /obj/effect/turf_decal/stripes/line,
@@ -13005,7 +12932,7 @@ Jz
 Jz
 Jz
 Tt
-Tt
+Cn
 Xf
 Tt
 zX
@@ -14146,7 +14073,7 @@ gw
 pk
 Ax
 zc
-eq
+Wb
 Nb
 Nb
 Nb
@@ -14201,7 +14128,7 @@ fl
 bY
 Ax
 Ns
-Vd
+Wb
 Nb
 Nb
 Nb
@@ -14211,7 +14138,7 @@ Nb
 Nb
 Nb
 Nb
-Dj
+YX
 CV
 GX
 Ax
@@ -14256,7 +14183,7 @@ Aa
 wn
 Ax
 py
-eq
+Wb
 Nb
 Nb
 Nb
@@ -14311,7 +14238,7 @@ fw
 Wz
 Ax
 Lb
-Vd
+Wb
 Nb
 Nb
 Nb
@@ -14321,7 +14248,7 @@ Nb
 Nb
 Nb
 Nb
-Dj
+YX
 tE
 Gd
 Ax
@@ -14366,7 +14293,7 @@ qo
 JK
 Ax
 zc
-eq
+Wb
 Nb
 Nb
 Nb
