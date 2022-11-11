@@ -10,7 +10,7 @@
 		A small tag hangs off of it reading; 'Property of the Gorlex Marauders, with assistance from Cybersun Industries. \
 		All rights reserved, tampering with suit will void warranty."
 	default_skin = "stealth"
-	armor = list(MELEE = 30, BULLET = 60, LASER = 40, ENERGY = 30, BOMB = 30, BIO = 30, FIRE = 100, ACID = 100, WOUND = 25)
+	armor = list(MELEE = 30, BULLET = 50, LASER = 40, ENERGY = 30, BOMB = 30, BIO = 30, FIRE = 100, ACID = 100, WOUND = 25)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	atom_flags = PREVENT_CONTENTS_EXPLOSION_1
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
