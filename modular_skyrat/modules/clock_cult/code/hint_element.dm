@@ -1,5 +1,5 @@
 /datum/element/clockwork_description
-	element_flags = ELEMENT_BESPOKE | ELEMENT_DETACH
+	element_flags = ELEMENT_BESPOKE | ELEMENT_DETACH_ON_HOST_DESTROY
 	id_arg_index = 2
 
 	/// Text to add to the description of the parent
