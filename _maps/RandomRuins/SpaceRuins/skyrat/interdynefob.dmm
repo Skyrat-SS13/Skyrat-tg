@@ -13,17 +13,23 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "ac" = (
-/obj/structure/rack/gunrack,
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
 	},
-/obj/item/gun/ballistic/automatic/pistol,
-/obj/item/gun/ballistic/automatic/pistol{
-	pixel_x = -4;
-	pixel_y = 4
+/obj/structure/closet/secure_closet{
+	name = "weapon maintenance locker";
+	req_access = list("syndicate_leader");
+	icon_state = "syndicate"
 	},
-/obj/item/gun/ballistic/automatic/pistol{
-	pixel_x = -8
+/obj/item/storage/box/firingpins/syndicate{
+	pixel_x = 2
+	},
+/obj/item/storage/box/firingpins/syndicate{
+	pixel_y = -3;
+	pixel_x = -2
+	},
+/obj/item/screwdriver/red{
+	pixel_y = -6
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -268,6 +274,9 @@
 	dir = 4
 	},
 /obj/machinery/portable_atmospherics/scrubber,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "aY" = (
@@ -478,24 +487,33 @@
 /turf/open/floor/iron/white/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "bS" = (
-/obj/item/crowbar/power/syndicate{
-	pixel_y = 8
+/obj/item/melee/baton/telescopic{
+	pixel_x = 4;
+	pixel_y = 9
 	},
-/obj/item/crowbar/power/syndicate{
-	pixel_y = 2
+/obj/item/melee/baton/telescopic{
+	pixel_x = 10;
+	pixel_y = 9
 	},
-/obj/item/crowbar/power/syndicate{
-	pixel_y = -4
+/obj/item/melee/baton/telescopic{
+	pixel_x = -2;
+	pixel_y = 9
 	},
-/obj/machinery/light/directional/north,
-/obj/structure/rack/shelf,
-/obj/effect/turf_decal/siding/dark{
-	dir = 4
+/obj/item/melee/energy/sword/saber/red,
+/obj/item/melee/energy/sword/saber/red{
+	pixel_x = 13
+	},
+/obj/item/melee/energy/sword/saber/red{
+	pixel_x = 7
 	},
 /obj/machinery/airalarm/syndicate{
 	dir = 8;
 	pixel_x = -24
 	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/structure/rack/shelf,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "bW" = (
@@ -1577,11 +1595,19 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "gy" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/teargas{
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/obj/item/storage/box/handcuffs{
+	pixel_y = 3
+	},
+/obj/item/storage/box/flashbangs{
+	pixel_x = -3
+	},
 /obj/effect/turf_decal/siding/dark/corner{
 	dir = 1
-	},
-/obj/machinery/suit_storage_unit/syndicate/chameleon{
-	name = "suit storage unit"
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -1707,6 +1733,9 @@
 	dir = 4
 	},
 /obj/machinery/portable_atmospherics/pump,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "hf" = (
@@ -2425,6 +2454,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
 	dir = 1
 	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/vg_decals/atmos/carbon_dioxide,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "kb" = (
@@ -3206,6 +3239,7 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
 	},
+/obj/machinery/space_heater,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "nO" = (
@@ -3448,14 +3482,15 @@
 	dir = 8
 	},
 /obj/machinery/light/cold/directional/east,
-/obj/structure/rack/gunrack,
-/obj/item/gun/ballistic/shotgun/riot/syndicate,
-/obj/item/gun/ballistic/shotgun/riot/syndicate{
-	pixel_x = -10
+/obj/structure/rack/shelf,
+/obj/item/crowbar/power/syndicate{
+	pixel_y = 8
 	},
-/obj/item/gun/ballistic/shotgun/riot/syndicate{
-	pixel_x = -5;
-	pixel_y = -3
+/obj/item/crowbar/power/syndicate{
+	pixel_y = 2
+	},
+/obj/item/crowbar/power/syndicate{
+	pixel_y = -4
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -3699,11 +3734,19 @@
 /turf/open/floor/iron/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "pL" = (
+/obj/structure/table/reinforced,
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
 	},
-/obj/machinery/suit_storage_unit/syndicate/chameleon{
-	name = "suit storage unit"
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/obj/item/storage/box/chemimp{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/box/trackimp{
+	pixel_x = -3
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -3750,8 +3793,9 @@
 "qa" = (
 /obj/structure/table,
 /obj/item/book/manual/wiki/cooking_to_serve_man,
-/obj/item/rsf{
-	pixel_y = -12
+/obj/item/storage/box/donkpockets/donkpocketpizza{
+	pixel_x = 5;
+	pixel_y = 6
 	},
 /turf/open/floor/iron/kitchen{
 	dir = 4
@@ -3854,21 +3898,11 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "qw" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/box/teargas{
-	pixel_x = 3;
-	pixel_y = 6
-	},
-/obj/item/storage/box/handcuffs{
-	pixel_y = 3
-	},
-/obj/item/storage/box/flashbangs{
-	pixel_x = -3
+/obj/machinery/suit_storage_unit/syndicate/chameleon{
+	name = "suit storage unit";
+	req_access = list("syndicate_leader")
 	},
 /obj/effect/turf_decal/siding/dark{
-	dir = 8
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
 /turf/open/floor/mineral/plastitanium/red,
@@ -3919,17 +3953,20 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/eva)
 "qH" = (
 /obj/structure/table,
-/obj/item/plate,
-/obj/item/plate{
-	pixel_y = 2
+/obj/machinery/light/cold/directional/east,
+/obj/item/rsf{
+	pixel_y = 14
 	},
+/obj/item/rcd_ammo{
+	pixel_y = 11
+	},
+/obj/item/plate,
 /obj/item/plate{
 	pixel_y = 2
 	},
 /obj/item/plate{
 	pixel_y = 4
 	},
-/obj/machinery/light/cold/directional/east,
 /turf/open/floor/iron/kitchen{
 	dir = 4
 	},
@@ -4022,12 +4059,30 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "rb" = (
-/obj/effect/turf_decal/bot_white,
 /obj/machinery/atmospherics/components/binary/pump/off/scrubbers/visible/layer2{
 	dir = 4
 	},
-/obj/effect/turf_decal/vg_decals/atmos/carbon_dioxide,
-/turf/open/floor/iron/dark,
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_red/filled/mid_joiner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_red/filled/mid_joiner{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "rc" = (
 /obj/effect/turf_decal/delivery/red,
@@ -5976,28 +6031,51 @@
 /turf/open/floor/iron/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
 "AG" = (
-/obj/item/melee/baton/telescopic{
-	pixel_x = 4;
-	pixel_y = 9
+/obj/item/ammo_box/c9mm{
+	pixel_x = -2
 	},
-/obj/item/melee/baton/telescopic{
-	pixel_x = 10;
-	pixel_y = 9
+/obj/item/ammo_box/c9mm{
+	pixel_x = 3;
+	pixel_y = -3
 	},
-/obj/item/melee/baton/telescopic{
-	pixel_x = -2;
-	pixel_y = 9
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 3;
+	pixel_y = -3
 	},
-/obj/structure/rack/shelf,
+/obj/item/ammo_box/magazine/m9mm,
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/ammo_box/advanced/s12gauge{
+	pixel_x = 9;
+	pixel_y = -10
+	},
+/obj/item/ammo_box/advanced/s12gauge{
+	pixel_x = 9;
+	pixel_y = -5
+	},
+/obj/item/ammo_box/advanced/s12gauge/rubber{
+	pixel_y = -10;
+	pixel_x = -9
+	},
+/obj/item/ammo_box/advanced/s12gauge/rubber{
+	pixel_y = -5;
+	pixel_x = -9
+	},
+/obj/structure/closet/secure_closet{
+	icon_state = "riot";
+	name = "armory munitions locker";
+	req_access = list("syndicate_leader");
+	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi';
+	anchored = 1
+	},
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
-	},
-/obj/item/melee/energy/sword/saber/red,
-/obj/item/melee/energy/sword/saber/red{
-	pixel_x = 13
-	},
-/obj/item/melee/energy/sword/saber/red{
-	pixel_x = 7
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -6141,25 +6219,17 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "Bu" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/box/firingpins/syndicate{
-	pixel_y = 6;
-	pixel_x = 4
-	},
-/obj/item/storage/box/firingpins/syndicate{
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/item/storage/box/chemimp{
-	pixel_x = -2
-	},
-/obj/effect/turf_decal/siding/dark{
-	dir = 8
+/obj/machinery/suit_storage_unit/syndicate/chameleon{
+	name = "suit storage unit";
+	req_access = list("syndicate_leader")
 	},
 /obj/machinery/power/apc/auto_name/directional/east{
 	req_access = list("syndicate")
 	},
 /obj/structure/cable,
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "Bv" = (
@@ -6758,23 +6828,25 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "EC" = (
 /obj/structure/reagent_dispensers/wall/peppertank/directional/west,
-/obj/structure/rack,
 /obj/item/grenade/barrier{
-	pixel_y = 8
+	pixel_y = 10
 	},
 /obj/item/grenade/barrier{
-	pixel_y = 4;
+	pixel_y = 6;
 	pixel_x = 4
 	},
 /obj/item/grenade/barrier{
-	pixel_y = 4;
+	pixel_y = 6;
 	pixel_x = -4
 	},
-/obj/item/grenade/barrier,
-/obj/effect/turf_decal/siding/dark{
-	dir = 4
+/obj/item/grenade/barrier{
+	pixel_y = 2
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/siding/dark/corner{
 	dir = 4
 	},
 /turf/open/floor/mineral/plastitanium/red,
@@ -7377,32 +7449,19 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/library)
 "Hc" = (
-/obj/item/storage/belt/holster/nukie{
-	pixel_x = 9
-	},
-/obj/item/storage/belt/holster/nukie{
-	pixel_y = 6
-	},
-/obj/item/storage/belt/holster/nukie{
-	pixel_x = -6;
-	pixel_y = 10
-	},
-/obj/item/storage/belt/military{
-	pixel_x = -4
-	},
-/obj/item/storage/belt/military{
-	pixel_x = 1;
-	pixel_y = -3
-	},
-/obj/item/storage/belt/military{
-	pixel_x = 6;
-	pixel_y = -6
-	},
-/obj/structure/rack/shelf,
 /obj/effect/turf_decal/siding/dark{
 	dir = 4
 	},
 /obj/machinery/light/cold/directional/west,
+/obj/structure/rack/gunrack,
+/obj/item/gun/ballistic/shotgun/riot/syndicate,
+/obj/item/gun/ballistic/shotgun/riot/syndicate{
+	pixel_x = -10
+	},
+/obj/item/gun/ballistic/shotgun/riot/syndicate{
+	pixel_x = -5;
+	pixel_y = -3
+	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "Hh" = (
@@ -7410,10 +7469,6 @@
 /obj/machinery/light/cold/directional/east,
 /obj/machinery/microwave{
 	pixel_y = 5
-	},
-/obj/item/storage/box/donkpockets/donkpocketpizza{
-	pixel_x = 5;
-	pixel_y = 6
 	},
 /obj/machinery/airalarm/syndicate{
 	dir = 4;
@@ -8272,16 +8327,44 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "Lv" = (
-/obj/item/clothing/suit/armor/vest{
-	pixel_x = -5;
-	pixel_y = 3
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/obj/item/storage/belt/holster/nukie{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/obj/item/storage/belt/holster/nukie{
+	pixel_y = 6
+	},
+/obj/item/storage/belt/holster/nukie{
+	pixel_x = 9
 	},
 /obj/item/clothing/suit/armor/vest{
-	pixel_x = 1
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = 1;
+	pixel_y = 2
 	},
 /obj/item/clothing/suit/armor/vest{
 	pixel_x = 7;
+	pixel_y = -1
+	},
+/obj/item/storage/belt/military{
+	pixel_x = -8
+	},
+/obj/item/storage/belt/military{
+	pixel_x = 1;
 	pixel_y = -3
+	},
+/obj/item/storage/belt/military{
+	pixel_x = 8;
+	pixel_y = -6
 	},
 /obj/item/clothing/head/helmet{
 	pixel_x = -6;
@@ -8294,12 +8377,12 @@
 	pixel_x = 6;
 	pixel_y = -11
 	},
-/obj/structure/rack/shelf,
-/obj/effect/turf_decal/siding/dark{
-	dir = 4
-	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 4
+/obj/structure/closet/secure_closet{
+	icon_state = "riot";
+	name = "armory gear locker";
+	req_access = list("syndicate_leader");
+	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi';
+	anchored = 1
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -8423,7 +8506,16 @@
 	network = list("ds2");
 	c_tag = "DS-2 Armory"
 	},
-/turf/open/floor/mineral/plastitanium,
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/siding/dark{
+	dir = 5
+	},
+/obj/item/storage/box/pinpointer_pairs{
+	pixel_y = 6;
+	pixel_x = -4
+	},
+/obj/item/storage/box/pinpointer_pairs,
+/turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "Mg" = (
 /obj/structure/chair/office/light{
@@ -9939,47 +10031,19 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "Sp" = (
-/obj/structure/rack/shelf,
 /obj/effect/turf_decal/siding/dark{
 	dir = 4
 	},
 /obj/machinery/firealarm/directional/west,
-/obj/item/ammo_box/c9mm{
-	pixel_x = -2
+/obj/structure/rack/gunrack,
+/obj/item/gun/ballistic/automatic/pistol{
+	pixel_x = -4;
+	pixel_y = 4
 	},
-/obj/item/ammo_box/c9mm{
-	pixel_x = 3;
-	pixel_y = -3
+/obj/item/gun/ballistic/automatic/pistol{
+	pixel_x = -8
 	},
-/obj/item/ammo_box/magazine/m9mm{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/item/ammo_box/magazine/m9mm,
-/obj/item/ammo_box/magazine/m9mm{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/ammo_box/magazine/m9mm{
-	pixel_x = -6;
-	pixel_y = 6
-	},
-/obj/item/ammo_box/advanced/s12gauge{
-	pixel_x = 9;
-	pixel_y = -10
-	},
-/obj/item/ammo_box/advanced/s12gauge{
-	pixel_x = 9;
-	pixel_y = -5
-	},
-/obj/item/ammo_box/advanced/s12gauge/rubber{
-	pixel_y = -10;
-	pixel_x = -9
-	},
-/obj/item/ammo_box/advanced/s12gauge/rubber{
-	pixel_y = -5;
-	pixel_x = -9
-	},
+/obj/item/gun/ballistic/automatic/pistol,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "Sq" = (
@@ -10049,12 +10113,34 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "SI" = (
-/obj/effect/turf_decal/bot_blue,
 /obj/machinery/atmospherics/components/binary/pump/off/supply/visible/layer4{
 	dir = 8
 	},
-/obj/effect/turf_decal/vg_decals/atmos/air,
-/turf/open/floor/iron/dark,
+/obj/effect/turf_decal/trimline/dark_blue/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_blue/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_blue/filled/mid_joiner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_blue/filled/mid_joiner{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "SN" = (
 /obj/machinery/deepfryer,
@@ -11082,7 +11168,10 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 10
 	},
-/obj/machinery/space_heater,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/vg_decals/atmos/air,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "WN" = (
