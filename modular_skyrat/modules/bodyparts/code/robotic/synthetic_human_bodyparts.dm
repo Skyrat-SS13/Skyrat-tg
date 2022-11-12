@@ -7,18 +7,18 @@
 	icon_greyscale = BODYPART_ICON_HUMAN
 	limb_id = SPECIES_HUMAN
 
-/obj/item/bodypart/l_arm/robot/mutant/human
+/obj/item/bodypart/arm/left/robot/mutant/human
 	icon_greyscale = BODYPART_ICON_HUMAN
 	limb_id = SPECIES_HUMAN
 
-/obj/item/bodypart/r_arm/robot/mutant/human
+/obj/item/bodypart/arm/right/robot/mutant/human
 	icon_greyscale = BODYPART_ICON_HUMAN
 	limb_id = SPECIES_HUMAN
 
-/obj/item/bodypart/l_leg/robot/mutant/human
+/obj/item/bodypart/leg/left/robot/mutant/human
 	icon_greyscale = BODYPART_ICON_HUMAN
 	limb_id = SPECIES_HUMAN
 
-/obj/item/bodypart/r_leg/robot/mutant/human
+/obj/item/bodypart/leg/right/robot/mutant/human
 	icon_greyscale = BODYPART_ICON_HUMAN
 	limb_id = SPECIES_HUMAN

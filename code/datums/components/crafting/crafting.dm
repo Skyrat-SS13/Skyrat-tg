@@ -507,7 +507,7 @@
 /datum/mind/proc/has_crafting_recipe(mob/user, potential_recipe)
 	if(!learned_recipes)
 		return FALSE
-	if(!istype(potential_recipe, /datum/crafting_recipe))
+	if(!ispath(potential_recipe, /datum/crafting_recipe))
 		CRASH("Non-crafting recipe passed to has_crafting_recipe")
 	for(var/recipe in user.mind.learned_recipes)
 		if(recipe == potential_recipe)
