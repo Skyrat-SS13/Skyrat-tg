@@ -66,7 +66,7 @@
 
 /obj/item/gun/ballistic/shotgun/riot/syndicate
 	name = "\improper Peacebreaker shotgun"
-	desc = "A Cybersun riot control shotgun fitted with a crimson furnishing and a wooden tactical stock. You swear you've seen this model elsewhere before..."
+	desc = "A Scarborough riot control shotgun fitted with a crimson furnishing and a wooden tactical stock. You swear you've seen this model elsewhere before..."
 	icon_state = "riotshotgun_syndie"
 	inhand_icon_state = "riot_shotgun_syndie"
 	can_be_sawn_off = FALSE

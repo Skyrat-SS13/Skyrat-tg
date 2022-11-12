@@ -128,15 +128,22 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 9
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
-	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/machinery/camera/xray/directional/north{
 	network = list("ds2");
 	c_tag = "DS-2 Isolation Cell"
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
+"ax" = (
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "ds2conveyor"
+	},
+/obj/structure/railing,
+/obj/machinery/light/red/directional/north,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "az" = (
 /obj/effect/turf_decal/trimline/dark_blue/line{
 	dir = 8
@@ -302,7 +309,8 @@
 	},
 /obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/components/unary/outlet_injector/on{
-	dir = 1
+	dir = 1;
+	volume_rate = 200
 	},
 /turf/template_noop,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
@@ -318,6 +326,14 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/button/door{
+	id = "ds2armory";
+	req_access = list("syndicate_leader");
+	name = "Armory Access";
+	desc = "To keep your valuable gear away from prying eyes.";
+	pixel_x = 32;
+	pixel_y = 24
+	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "bn" = (
@@ -653,16 +669,6 @@
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/iron/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
-"cs" = (
-/obj/machinery/light/red/directional/north,
-/obj/effect/turf_decal/siding/wideplating_new/dark{
-	dir = 1
-	},
-/turf/open/floor/plating{
-	icon_state = "engine";
-	name = "hangar floor"
-	},
-/area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "ct" = (
 /obj/effect/turf_decal/bot_white,
 /obj/structure/table,
@@ -723,6 +729,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/hydroponics)
 "cE" = (
 /obj/effect/turf_decal/bot,
+/obj/structure/closet/crate/solarpanel_small,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "cG" = (
@@ -1064,13 +1071,6 @@
 	},
 /turf/open/floor/iron/white/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
-"ej" = (
-/obj/machinery/light/red/directional/west,
-/turf/open/floor/plating{
-	icon_state = "engine";
-	name = "hangar floor"
-	},
-/area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "ek" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -1915,12 +1915,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
-/obj/machinery/button/door/directional/east{
-	desc = "To keep pesky prisoners obedient.";
-	id = "gaybabyjail";
-	name = "Isolation Cell Control";
-	req_access = list("syndicate_leader")
-	},
 /turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "hQ" = (
@@ -1957,9 +1951,9 @@
 /turf/open/floor/iron/dark/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "ib" = (
-/obj/machinery/vending/syndichem,
 /obj/effect/turf_decal/tile/dark_blue/full,
 /obj/effect/turf_decal/siding/white,
+/obj/machinery/chem_heater/withbuffer,
 /turf/open/floor/iron/white/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay/chem)
 "ie" = (
@@ -2850,7 +2844,8 @@
 /obj/structure/extinguisher_cabinet/directional/south,
 /obj/machinery/atmospherics/components/trinary/mixer/flipped{
 	dir = 8;
-	name = "plasma mixer"
+	name = "plasma mixer";
+	target_pressure = 2000
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
@@ -3002,6 +2997,9 @@
 /obj/item/storage/bag/books,
 /obj/item/storage/book/bible/syndicate{
 	pixel_x = -13
+	},
+/obj/item/storage/fancy/candle_box{
+	pixel_x = 4
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/library)
@@ -3356,8 +3354,10 @@
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "ot" = (
-/obj/structure/closet/crate/freezer/surplus_limbs,
 /obj/machinery/light/cold/directional/east,
+/obj/structure/closet/secure_closet/medical1{
+	req_access = list("syndicate")
+	},
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "ou" = (
@@ -4249,6 +4249,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "sj" = (
@@ -4310,6 +4311,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood/parquet,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/library)
+"sD" = (
+/obj/machinery/vending/sustenance,
+/turf/open/floor/iron/dark/small,
+/area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "sH" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -4460,6 +4465,10 @@
 "tA" = (
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer{
 	dir = 1
+	},
+/obj/item/paper{
+	default_raw_text = "<h1>Gorlex Engineering</h1><p>New to setting up a turbine, operative? This neat little guide and set-up should teach you how, step by step.</p><p>The first step is setting up the burn chamber. The Air alarm is unlocked for syndicate access, and a single scrubber in the area is inactive. That is our burn chamber's scrubber. Set it to scoop up any gas you don't want in it - anything but plasma and oxygen - and set it on expanded reach.</p><p>Next is setting up the Plasma Mixer. A good ratio is somewhere between 30-70 and 40-60 Plasma and Oxygen, respectively. Don't forget to max out the mixer's pressure, else it'll only dribble in the gas!</p><p>Once that is done, make sure to activate the two digital valves on the floor. One will allow O2 to be brought to the mixer, and the other one will lead the gas mix directly into the chamber.</p><p>With the burn being ready, two last things are needed. First, you'll need to set up the ship's scrubbers system to actively pump into space the excess gasses (Water vapour, Co2) the burn will produce. If you want, you can select a gas to filter out, but that isn't necessary. Once everything is set up, flick the igniter switch on, turn on the turbine at the terminal, and watch that fire shine bright!</p>";
+	name = "paper- 'Gorlex Engineering Division - Turbine Easy-Set Guide'"
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
@@ -5673,6 +5682,19 @@
 	},
 /obj/machinery/atmospherics/pipe/layer_manifold/green/visible,
 /obj/machinery/meter,
+/obj/machinery/button/ignition/incinerator/syndicatelava{
+	pixel_y = -6;
+	pixel_x = 24
+	},
+/obj/machinery/button/door/directional/east{
+	id = "sincinerator";
+	normaldoorcontrol = 1;
+	req_access = list("syndicate_leader");
+	specialfunctions = 4;
+	name = "Turbine Hatch Bolt Control";
+	desc = "Keep out the deadly blaze.";
+	pixel_y = 6
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "zy" = (
@@ -5714,17 +5736,6 @@
 	},
 /turf/open/floor/wood/large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
-"zG" = (
-/obj/effect/turf_decal/stripes/red/line,
-/obj/machinery/button/door{
-	id = "ds2armory";
-	req_access = list("syndicate_leader");
-	name = "Armory Access";
-	desc = "To keep your valuable gear away from prying eyes.";
-	pixel_x = 32
-	},
-/turf/open/floor/mineral/plastitanium,
-/area/ruin/space/has_grav/skyrat/interdynefob/security)
 "zH" = (
 /turf/open/floor/carpet/donk,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
@@ -6716,8 +6727,10 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "EB" = (
-/obj/structure/closet/crate/solarpanel_small,
 /obj/effect/turf_decal/bot,
+/obj/machinery/vending/engivend{
+	onstation = 0
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "EC" = (
@@ -6762,6 +6775,23 @@
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/iron/white/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
+"ET" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/conveyor{
+	id = "ds2disposals"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/end,
+/obj/item/paper{
+	default_raw_text = "<h1>DS2 Command Report</h1><p>The Deep Space 2 Forward Operating Base has successfully relocated itself near active Nanotrasen installations. Reboot of shuttle engines in progress...</p><p>The Sothran Syndicate is glad to have you on-field, admiral. Nanotrasen is in the direct sector and, as such, is the direct target of our operatives. Manage your crew well and with respect, and leave all your anger to the gravel that is Nanotrasen. Remember that Interdyne has an unaffiliated facade to keep up, as such, advise against your crew flaunting their affiliation to non-crew.</p><p>Stay winning.</p>";
+	name = "paper- 'Gorlex Engineering Division - Turbine Easy-Set Guide'"
+	},
+/turf/open/floor/iron/pool,
+/area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "EU" = (
 /obj/effect/turf_decal/tile/bar/opposingcorners{
 	dir = 8
@@ -7514,9 +7544,6 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "HV" = (
-/obj/machinery/door/poddoor{
-	id = "ds2cargo"
-	},
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "ds2conveyor"
@@ -8294,12 +8321,15 @@
 /turf/open/floor/wood/large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
 "LM" = (
-/obj/structure/plasticflaps,
 /obj/machinery/conveyor{
 	dir = 8;
 	id = "ds2conveyor"
 	},
 /obj/structure/railing,
+/obj/machinery/door/poddoor{
+	id = "ds2cargo"
+	},
+/obj/structure/plasticflaps,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "LP" = (
@@ -8378,14 +8408,6 @@
 	},
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
-"Mu" = (
-/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/door/poddoor/preopen{
-	id = "gaybabyjail"
-	},
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Mw" = (
 /obj/structure/table,
 /obj/effect/turf_decal/tile/bar/opposingcorners{
@@ -8770,9 +8792,6 @@
 	id = "ds2conveyor"
 	},
 /obj/structure/railing,
-/obj/machinery/door/poddoor{
-	id = "ds2cargo"
-	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "NS" = (
@@ -8862,6 +8881,9 @@
 "Oe" = (
 /obj/structure/punching_bag,
 /obj/effect/turf_decal/box/white,
+/obj/item/reagent_containers/cup/glass/waterbottle{
+	pixel_x = 11
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Oi" = (
@@ -9417,7 +9439,6 @@
 /obj/effect/turf_decal/stripes/red/corner,
 /obj/structure/weightmachine/weightlifter,
 /obj/effect/turf_decal/box/white,
-/obj/item/reagent_containers/cup/glass/waterbottle,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Qz" = (
@@ -9927,15 +9948,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/components/trinary/filter/flipped,
-/obj/machinery/button/door/incinerator_vent_syndicatelava_aux{
-	pixel_y = 6;
-	pixel_x = 24;
-	name = "Combustion Chamber Blast Door Control"
-	},
-/obj/machinery/button/ignition/incinerator/syndicatelava{
-	pixel_y = -6;
-	pixel_x = 24
-	},
+/obj/structure/extinguisher_cabinet/directional/east,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "Sv" = (
@@ -10171,17 +10184,15 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "TA" = (
-/obj/structure/closet/secure_closet/medical1{
-	req_access = list("syndicate")
-	},
 /obj/machinery/firealarm/directional/east,
+/obj/machinery/vending/syndichem,
 /turf/open/floor/iron/white/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay/chem)
 "TB" = (
 /obj/docking_port/stationary{
 	dir = 4;
 	dwidth = 5;
-	height = 7;
+	height = 8;
 	name = "DS-2 Hangar";
 	width = 11
 	},
@@ -10668,9 +10679,9 @@
 /turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Vu" = (
-/obj/machinery/chem_heater/withbuffer,
 /obj/effect/turf_decal/tile/dark_blue/full,
 /obj/effect/turf_decal/siding/white,
+/obj/machinery/chem_mass_spec,
 /turf/open/floor/iron/white/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay/chem)
 "Vv" = (
@@ -10844,6 +10855,12 @@
 	},
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
+	},
+/obj/machinery/button/door/directional/east{
+	desc = "To keep pesky prisoners obedient.";
+	id = "gaybabyjail";
+	name = "Isolation Cell Control";
+	req_access = list("syndicate_leader")
 	},
 /turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
@@ -11145,11 +11162,16 @@
 /obj/machinery/atmospherics/pipe/smart/simple/green/hidden/layer2{
 	dir = 4
 	},
-/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
-/obj/machinery/door/poddoor/incinerator_syndicatelava_aux{
-	name = "Combustion Chamber Blast Door"
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/hatch{
+	name = "Turbine Interior Hatch";
+	id_tag = "sincinerator";
+	desc = "It opens and closes. It looks a little too hot for comfort."
 	},
-/turf/open/floor/plating,
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/turf/open/floor/engine,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "Xg" = (
 /obj/effect/turf_decal/stripes/red/line,
@@ -11229,9 +11251,7 @@
 	dir = 4;
 	id = "ds2conveyor"
 	},
-/obj/machinery/door/poddoor{
-	id = "ds2cargo"
-	},
+/obj/machinery/light/red/directional/south,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "Xy" = (
@@ -11255,8 +11275,8 @@
 /obj/effect/turf_decal/siding/yellow{
 	dir = 10
 	},
-/obj/machinery/vending/engivend{
-	onstation = 0
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/enginetech{
+	dir = 8
 	},
 /turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
@@ -11500,11 +11520,14 @@
 /turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/eva)
 "Zh" = (
-/obj/structure/plasticflaps,
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "ds2conveyor"
 	},
+/obj/machinery/door/poddoor{
+	id = "ds2cargo"
+	},
+/obj/structure/plasticflaps,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/warehouse)
 "Zi" = (
@@ -11944,7 +11967,7 @@ UR
 VY
 Gi
 hP
-RZ
+sD
 tn
 mP
 Dr
@@ -11996,7 +12019,7 @@ kF
 Py
 dv
 kF
-Mu
+kF
 Wv
 kF
 kF
@@ -12337,7 +12360,7 @@ WS
 rl
 rr
 rl
-zG
+Fh
 Fy
 bk
 Lq
@@ -12894,7 +12917,7 @@ Jz
 Jz
 Jz
 Tt
-Cn
+Tt
 Xf
 Tt
 zX
@@ -13166,7 +13189,7 @@ dg
 Px
 kt
 RE
-Bm
+ET
 Bm
 RE
 tl
@@ -13768,7 +13791,7 @@ Dw
 my
 LM
 Zh
-jm
+my
 cq
 KQ
 QK
@@ -13821,7 +13844,7 @@ my
 rN
 tG
 my
-NR
+ax
 Xt
 my
 my
@@ -13871,7 +13894,7 @@ FB
 Ta
 Hz
 tQ
-ej
+Nb
 Nb
 Nb
 Nb
@@ -13879,7 +13902,7 @@ TB
 Nb
 Nb
 Nb
-ej
+Nb
 xQ
 QE
 my
@@ -13925,7 +13948,7 @@ vo
 nG
 wk
 Hz
-cs
+tQ
 Nb
 Nb
 Nb
