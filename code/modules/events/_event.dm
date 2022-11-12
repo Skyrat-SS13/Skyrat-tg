@@ -127,8 +127,6 @@ Runs the event
 	E.control = src
 	occurrences++
 
-	SSevents.previously_run += src //SKYRAT EDIT ADDITION
-
 	if(announce_chance_override != null)
 		E.announce_chance = announce_chance_override
 

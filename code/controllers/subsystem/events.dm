@@ -13,8 +13,6 @@ SUBSYSTEM_DEF(events)
 
 	var/wizardmode = FALSE
 
-	var/list/previously_run = list() //SKYRAT EDIT ADDITION
-
 /datum/controller/subsystem/events/Initialize()
 	for(var/type in typesof(/datum/round_event_control))
 		var/datum/round_event_control/E = new type()
@@ -25,13 +23,8 @@ SUBSYSTEM_DEF(events)
 	// Instantiate our holidays list if it hasn't been already
 	if(isnull(GLOB.holidays))
 		fill_holidays()
-	// SKYRAT EDIT ADDITION
-	if(CONFIG_GET(flag/low_chaos_event_system))
-		reschedule_low_chaos()
-	frequency_lower = CONFIG_GET(number/event_frequency_lower)
-	frequency_upper = CONFIG_GET(number/event_frequency_upper)
-	// SKYRAT EDIT END
 	return SS_INIT_SUCCESS
+
 
 /datum/controller/subsystem/events/fire(resumed = FALSE)
 	if(!resumed)
@@ -53,51 +46,27 @@ SUBSYSTEM_DEF(events)
 
 //checks if we should select a random event yet, and reschedules if necessary
 /datum/controller/subsystem/events/proc/checkEvent()
-	// SKYRAT EDIT ADDITION
-	if(scheduled_low_chaos <= world.time && CONFIG_GET(flag/low_chaos_event_system))
-		triger_low_chaos_event()
-	// SKYRAT EDIT END
 	if(scheduled <= world.time)
-		//spawnEvent() //SKYRAT EDIT CHANGE
-		if(CONFIG_GET(flag/events_use_random))
-			spawnEvent()
-		else
-			if(CONFIG_GET(flag/events_public_voting))
-				start_player_vote_chaos(FALSE)
-			else
-				if(CONFIG_GET(flag/admin_event_uses_chaos))
-					start_vote_admin_chaos()
-				else
-					start_vote_admin()
-		// SKYRAT EDIT END
+		spawnEvent()
 		reschedule()
 
 //decides which world.time we should select another random event at.
 /datum/controller/subsystem/events/proc/reschedule()
-	// SKYRAT EDIT CHANGE
-	var/next_event_time = rand(frequency_lower, max(frequency_lower, frequency_upper))
-	if(CONFIG_GET(flag/low_chaos_event_system))
-		reschedule_low_chaos(next_event_time / 2)
-	scheduled = world.time + next_event_time
-	// SKYRAT EDIT END
-
+	scheduled = world.time + rand(frequency_lower, max(frequency_lower,frequency_upper))
 
 //selects a random event based on whether it can occur and it's 'weight'(probability)
-/datum/controller/subsystem/events/proc/spawnEvent(threat_override = FALSE) //SKYRAT EDIT CHANGE
+/datum/controller/subsystem/events/proc/spawnEvent()
 	set waitfor = FALSE //for the admin prompt
 	if(!CONFIG_GET(flag/allow_random_events))
 		return
 
 	var/players_amt = get_active_player_count(alive_check = 1, afk_check = 1, human_check = 1)
 	// Only alive, non-AFK human players count towards this.
+
 	var/sum_of_weights = 0
 	for(var/datum/round_event_control/E in control)
 		if(!E.can_spawn_event(players_amt))
 			continue
-		//SKYRAT EDIT ADDITION
-		if(threat_override && !E.alert_observers)
-			continue
-		//SKYRAT EDIT END
 		if(E.weight < 0) //for round-start events etc.
 			var/res = TriggerEvent(E)
 			if(res == EVENT_INTERRUPTED)
