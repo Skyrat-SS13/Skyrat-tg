@@ -1,3 +1,4 @@
+///SKYRAT EDIT START - Roleplay-oriented pirates. An entire quarter of the file.
 /datum/round_event_control/pirates
 	name = "Space Pirates - Random" //SKYRAT EDIT CHANGE
 	typepath = /datum/round_event/pirates
@@ -71,6 +72,10 @@
 	var/payoff = 0
 	var/initial_send_time = world.time
 	var/response_max_time = 2 MINUTES
+	var/timeout_response = "Too late to beg for mercy!"
+	var/pay_response = "Thanks for the credits, landlubbers."
+	var/broke_response = "Trying to cheat us? You'll regret this!"
+
 	priority_announce("Incoming subspace communication. Secure channel opened at all communication consoles.", "Incoming Message", SSstation.announcer.get_rand_report_sound())
 	var/datum/comm_message/threat = new
 	var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
@@ -99,7 +104,6 @@
 		if(PIRATES_NRI_RAIDERS)
 			ship_name = pick(strings(PIRATE_NAMES_FILE, "imperial_names"))
 			ship_template = /datum/map_template/shuttle/pirate/nri_raider
-			payoff = 20000
 			var/number = rand(1,99)
 			///Station name one is the most important pick and is pretty much the station's main argument against getting fined, thus it better be mostly always right.
 			var/station_designation = pick_weight(list(
@@ -130,25 +134,28 @@
 			threat.title = "NRI Audit"
 			threat.content = "Greetings [station_designation], this is the [ship_name]. Due to recent Imperial regulatory violations, such as [final_result] and many other smaller issues, your station has been fined [payoff] credits. Inadequate imperial police activity is currently present in your sector, thus the failure to comply might instead result in a military patrol dispatch for second attempt negotiations. Novaya Rossiyskaya Imperiya collegial secretary out."
 			threat.possible_answers = list("Submit to audit and pay the fine.", "Override the response system for an immediate military dispatch.")
+			timeout_response = "AUTOMATED REGULATORY VIOLATION RESPONSE SYSTEM TIMEOUT. PLEASE CONTACT AND INFORM THE DISPATCHED AUTHORITIES TO RESOLVE THE ISSUE."
+			pay_response = "Should be it, thank you for cooperation. Novaya Rossiyskaya Imperiya collegial secretary out."
+			broke_response = "Your bank balance does not hold enough money at the moment. We are sending a patrol ship for second attempt negotiations, stand by."
 		//SKYRAT EDIT ADDITION END
-	threat.answer_callback = CALLBACK(GLOBAL_PROC, .proc/pirates_answered, threat, payoff, ship_name, initial_send_time, response_max_time, ship_template)
+	threat.answer_callback = CALLBACK(GLOBAL_PROC, .proc/pirates_answered, threat, payoff, ship_name, initial_send_time, response_max_time, ship_template, timeout_response, pay_response, broke_response) //SKYRAT EDIT CHANGE
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/spawn_pirates, threat, ship_template, FALSE), response_max_time)
 	SScommunications.send_message(threat,unique = TRUE)
 
-/proc/pirates_answered(datum/comm_message/threat, payoff, ship_name, initial_send_time, response_max_time, ship_template)
+/proc/pirates_answered(datum/comm_message/threat, payoff, ship_name, initial_send_time, response_max_time, ship_template, timeout_response, pay_response, broke_response) //SKYRAT EDIT CHANGE
 	if(world.time > initial_send_time + response_max_time)
-		priority_announce("Too late to beg for mercy!",sender_override = ship_name)
+		priority_announce(timeout_response,sender_override = ship_name) //SKYRAT EDIT CHANGE
 		return
 	if(threat && threat.answered == 1)
 		var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
 		if(D)
 			if(D.adjust_money(-payoff))
-				priority_announce("Thanks for the credits, landlubbers.",sender_override = ship_name)
+				priority_announce(pay_response,sender_override = ship_name) //SKYRAT EDIT CHANGE
 				return
 			else
-				priority_announce("Trying to cheat us? You'll regret this!",sender_override = ship_name)
+				priority_announce(broke_response,sender_override = ship_name) //SKYRAT EDIT CHANGE
 				spawn_pirates(threat, ship_template, TRUE)
-
+///SKYRAT EDIT END - Roleplay-oriented pirates. An entire quarter of the file.
 /proc/spawn_pirates(datum/comm_message/threat, ship_template, skip_answer_check)
 	if(!skip_answer_check && threat?.answered == 1)
 		return

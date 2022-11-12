@@ -94,6 +94,13 @@
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/pirate/nri)
+"du" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/deployable_barricade/guardrail{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate/nri)
 "dy" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -113,8 +120,9 @@
 	name = "defense shield generator";
 	req_access = list("syndicate")
 	},
-/obj/structure/lattice/catwalk,
-/turf/open/floor/plating/airless,
+/obj/effect/turf_decal/bot,
+/obj/structure/sign/warning/secure_area/directional/north,
+/turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "et" = (
 /obj/structure/cable,
@@ -135,11 +143,15 @@
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "ey" = (
-/obj/machinery/computer/piratepad_control,
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
+/obj/machinery/light/floor,
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate/nri)
+"fJ" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/caution{
+	dir = 1
 	},
-/turf/open/floor/pod/dark,
+/turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "gR" = (
 /obj/effect/turf_decal/stripes/line{
@@ -203,6 +215,7 @@
 /area/shuttle/pirate/nri)
 "iq" = (
 /obj/machinery/photocopier,
+/obj/structure/sign/flag/nri/directional/south,
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "iC" = (
@@ -223,6 +236,13 @@
 	dir = 8
 	},
 /turf/open/floor/pod/light,
+/area/shuttle/pirate/nri)
+"jJ" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/caution{
+	dir = 8
+	},
+/turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "kb" = (
 /obj/structure/closet/crate/freezer/blood{
@@ -253,7 +273,6 @@
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "lc" = (
-/obj/structure/cable,
 /obj/machinery/light/small/red/directional/north,
 /turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
@@ -342,6 +361,13 @@
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/fans/tiny,
 /turf/open/floor/plating,
+/area/shuttle/pirate/nri)
+"oW" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/caution{
+	dir = 4
+	},
+/turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "pb" = (
 /obj/machinery/porta_turret/syndicate/nri_raider{
@@ -487,6 +513,11 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
+"tG" = (
+/obj/structure/deployable_barricade/guardrail,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate/nri)
 "tN" = (
 /obj/machinery/door/airlock/survival_pod/glass{
 	dir = 1
@@ -521,6 +552,13 @@
 /obj/machinery/suit_storage_unit/nri,
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
+"uY" = (
+/obj/structure/deployable_barricade/guardrail{
+	dir = 1
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/pirate/nri)
 "vh" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1
@@ -547,6 +585,11 @@
 	},
 /obj/machinery/light/small/red/directional/east,
 /turf/open/floor/pod,
+/area/shuttle/pirate/nri)
+"wj" = (
+/obj/machinery/light/floor,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating/airless,
 /area/shuttle/pirate/nri)
 "wM" = (
 /obj/machinery/door/airlock/survival_pod/glass,
@@ -597,6 +640,9 @@
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
 /turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
 "xL" = (
@@ -610,6 +656,11 @@
 	dir = 10
 	},
 /turf/open/floor/pod,
+/area/shuttle/pirate/nri)
+"zb" = (
+/obj/structure/deployable_barricade/guardrail,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "ze" = (
 /obj/effect/turf_decal/stripes/line{
@@ -625,6 +676,13 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/light/small/red/directional/north,
 /turf/open/floor/pod/light,
+/area/shuttle/pirate/nri)
+"zA" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/deployable_barricade/guardrail{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
 /area/shuttle/pirate/nri)
 "zJ" = (
 /obj/structure/table/reinforced,
@@ -657,19 +715,15 @@
 "AX" = (
 /obj/structure/rack/shelf,
 /obj/effect/turf_decal/stripes/line,
-/obj/item/ammo_box/advanced/s12gauge/buckshot,
-/obj/item/ammo_box/advanced/s12gauge/buckshot,
-/obj/item/ammo_box/advanced/s12gauge,
-/obj/item/ammo_box/advanced/s12gauge,
 /obj/machinery/light/small/red/directional/north,
+/obj/item/storage/box/ammo_box/shotgun_12g,
+/obj/item/storage/box/ammo_box/shotgun_12g,
+/obj/item/storage/box/ammo_box/shotgun_12g,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "Be" = (
-/obj/structure/fans/tiny/forcefield{
-	dir = 4
-	},
-/obj/structure/cable,
-/obj/effect/turf_decal/delivery,
+/obj/structure/window/reinforced/shuttle/spaceship,
+/obj/structure/grille,
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "Bj" = (
@@ -701,8 +755,9 @@
 	req_access = list("syndicate")
 	},
 /obj/structure/cable,
-/obj/structure/lattice/catwalk,
-/turf/open/floor/plating/airless,
+/obj/effect/turf_decal/bot,
+/obj/structure/sign/warning/secure_area/directional/north,
+/turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "Bm" = (
 /obj/structure/cable,
@@ -794,9 +849,23 @@
 /obj/machinery/light/floor,
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
+"Fa" = (
+/obj/structure/deployable_barricade/guardrail{
+	dir = 1
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate/nri)
 "Fm" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/pirate/nri)
+"FS" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 8
 	},
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
@@ -878,8 +947,7 @@
 /area/shuttle/pirate/nri)
 "JS" = (
 /obj/structure/cable,
-/obj/structure/lattice/catwalk,
-/turf/open/floor/plating/airless,
+/turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "Kc" = (
 /obj/effect/turf_decal/stripes/line,
@@ -918,7 +986,6 @@
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "LA" = (
-/obj/machinery/piratepad,
 /obj/machinery/light/small/red/directional/north,
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
@@ -939,6 +1006,13 @@
 	req_access = list("syndicate")
 	},
 /turf/open/floor/pod/light,
+/area/shuttle/pirate/nri)
+"MR" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 1
+	},
+/turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "Nu" = (
 /obj/structure/closet/crate/secure/weapon{
@@ -977,7 +1051,6 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/pirate/nri)
 "Oc" = (
-/obj/structure/cable,
 /obj/machinery/light/small/red/directional/south,
 /turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
@@ -1009,6 +1082,11 @@
 /obj/machinery/camera/autoname/directional/north,
 /turf/open/floor/engine/hull,
 /area/shuttle/pirate/nri)
+"PZ" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/caution/stand_clear,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/pirate/nri)
 "Qg" = (
 /obj/machinery/computer/operating{
 	dir = 1
@@ -1018,6 +1096,11 @@
 	},
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
+"QX" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/caution,
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/pirate/nri)
 "Rb" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/corner{
@@ -1025,11 +1108,33 @@
 	},
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
+"RG" = (
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate/nri)
+"Su" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/survival_pod{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/structure/fans/tiny,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/turf/open/floor/catwalk_floor,
+/area/shuttle/pirate/nri)
 "SQ" = (
 /obj/machinery/porta_turret/syndicate/nri_raider{
 	dir = 6
 	},
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
+/area/shuttle/pirate/nri)
+"Te" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/deployable_barricade/guardrail,
+/turf/open/floor/plating/airless,
 /area/shuttle/pirate/nri)
 "Tg" = (
 /obj/structure/window/reinforced/survival_pod{
@@ -1161,7 +1266,6 @@
 /turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
 "Xh" = (
-/obj/structure/cable,
 /obj/machinery/power/shieldwallgen/unlocked/anchored{
 	max_integrity = 600;
 	armor = list("melee"=30,"bullet"=30,"laser"=20,"energy"=20,"bomb"=10,"bio"=0,"fire"=80,"acid"=70);
@@ -1169,8 +1273,10 @@
 	name = "defense shield generator";
 	req_access = list("syndicate")
 	},
-/obj/structure/lattice/catwalk,
-/turf/open/floor/plating/airless,
+/obj/structure/cable,
+/obj/effect/turf_decal/bot,
+/obj/structure/sign/warning/secure_area/directional/south,
+/turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "XA" = (
 /obj/effect/turf_decal/stripes/line{
@@ -1199,6 +1305,20 @@
 	name = "blast shield"
 	},
 /turf/open/floor/plating/airless,
+/area/shuttle/pirate/nri)
+"Yy" = (
+/obj/structure/cable,
+/obj/machinery/power/shieldwallgen/unlocked/anchored{
+	shield_range = 12;
+	max_integrity = 600;
+	armor = list("melee"=30,"bullet"=30,"laser"=20,"energy"=20,"bomb"=10,"bio"=0,"fire"=80,"acid"=70);
+	desc = "A heavy-duty reinforced shield generator designed for ship defense.";
+	name = "defense shield generator";
+	req_access = list("syndicate")
+	},
+/obj/effect/turf_decal/bot,
+/obj/structure/sign/warning/secure_area/directional/south,
+/turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "Ze" = (
 /obj/structure/table/reinforced,
@@ -1377,7 +1497,7 @@ co
 iC
 "}
 (10,1,1) = {"
-iC
+ey
 Yd
 bE
 IY
@@ -1391,13 +1511,13 @@ Hz
 IY
 Yd
 bE
-iC
+ey
 "}
 (11,1,1) = {"
 Hz
 cc
 cc
-IY
+nX
 Hz
 Iv
 Iv
@@ -1405,7 +1525,7 @@ hn
 Iv
 Iv
 Hz
-IY
+nX
 cc
 cc
 Hz
@@ -1535,7 +1655,7 @@ Hz
 Hz
 xp
 Hz
-ey
+HV
 Wa
 wb
 qz
@@ -1567,7 +1687,7 @@ nX
 ap
 Hz
 Be
-Iv
+Su
 Hz
 Hz
 Hz
@@ -1575,8 +1695,8 @@ Pp
 Hz
 Hz
 Hz
+Su
 Iv
-Be
 Hz
 PV
 "}
@@ -1584,7 +1704,7 @@ PV
 nX
 Hz
 Bk
-GO
+IT
 Hz
 CP
 IJ
@@ -1592,7 +1712,7 @@ Iz
 hP
 iq
 Hz
-GO
+IT
 Xh
 Hz
 nX
@@ -1600,8 +1720,8 @@ nX
 (23,1,1) = {"
 ot
 Hz
-JS
-UP
+oW
+RG
 Hz
 uw
 XA
@@ -1609,16 +1729,16 @@ tk
 mG
 bM
 Hz
-UP
-JS
+RG
+oW
 Hz
 ot
 "}
 (24,1,1) = {"
 ot
-Hs
-JS
-Hs
+Fa
+PZ
+wj
 Iv
 Iv
 qJ
@@ -1626,16 +1746,16 @@ jx
 Ms
 Iv
 Iv
-Hs
-JS
-Hs
+wj
+MR
+tG
 ot
 "}
 (25,1,1) = {"
 ot
-Hs
-JS
-Hs
+Fa
+IT
+Te
 ot
 Iv
 Iv
@@ -1643,42 +1763,42 @@ iG
 Iv
 Iv
 ot
-Hs
-JS
-Hs
+zA
+IT
+tG
 ot
 "}
 (26,1,1) = {"
 ot
-IY
-JS
-nX
-IY
-Hs
-Hs
-Hs
-Hs
-Hs
-IY
-nX
-JS
-IY
+uY
+jJ
+wj
+du
+du
+du
+du
+du
+du
+du
+wj
+jJ
+zb
 ot
 "}
 (27,1,1) = {"
 ot
 Hz
 dS
+QX
 JS
+FS
+IT
+IT
+IT
+FS
 JS
-JS
-JS
-JS
-JS
-JS
-JS
-JS
-dS
+fJ
+Yy
 Hz
 ot
 "}

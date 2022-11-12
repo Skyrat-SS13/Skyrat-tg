@@ -74,7 +74,7 @@
 	you_are_text = "You are a Novaya Rossiyskaya Imperiya task force."
 	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by demanding the funds. Force approach is usually recommended, but isn't the only method."
 	important_text = "Allowed races are humans, Akulas, IPCs. Follow your field officer's orders. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. Roleplay accordingly."
-	spawner_job_path = /datum/job/space_pirate
+	spawner_job_path = null
 	restricted_species = list(/datum/species/human, /datum/species/akula, /datum/species/robotic/ipc)
 	random_appearance = FALSE
 	show_flavor = TRUE
@@ -83,6 +83,7 @@
 	. = ..()
 	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
 	spawned_human.remove_language(/datum/language/piratespeak)
+	spawned_human.mind.remove_antag_datum(/datum/antagonist/pirate)
 
 /datum/job/fugitive_hunter
 	title = ROLE_FUGITIVE_HUNTER
