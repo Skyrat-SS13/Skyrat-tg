@@ -1,11 +1,11 @@
 // All available options
 #define STANDARD_BLUE "standard_blue"
-#define SECURITY_AMBER "security_amber"
+#define ALERT_AMBER "alert_amber"
 #define CONTRACTOR_RED "contractor_red"
 #define EXTRASHIELD_GREEN "extrashield_green"
 #define EVIL_GREEN "evil_green"
 #define ROYAL_PURPLE "royal_purple"
-#define ENGINEERING_ORANGE "engineering_orange"
+#define HAZARD_ORANGE "hazard_orange"
 #define COSMIC_BLUE "cosmic_blue"
 
 /datum/mod_theme
@@ -22,10 +22,10 @@
 	hardlight_theme = ROYAL_PURPLE
 
 /datum/mod_theme/advanced
-	hardlight_theme = ENGINEERING_ORANGE
+	hardlight_theme = HAZARD_ORANGE
 
 /datum/mod_theme/safeguard
-	hardlight_theme = SECURITY_AMBER
+	hardlight_theme = ALERT_AMBER
 
 /datum/mod_theme/rescue
 	hardlight_theme = STANDARD_BLUE
@@ -48,7 +48,7 @@
 	hardlight_theme = STANDARD_BLUE
 
 /datum/mod_theme/security
-	hardlight_theme = SECURITY_AMBER
+	hardlight_theme = ALERT_AMBER
 
 
 //	Traitor
@@ -58,6 +58,9 @@
 /datum/mod_theme/syndicate
 	hardlight_theme = EVIL_GREEN
 
+/datum/mod_theme/infiltrator
+	hardlight = FALSE
+
 /datum/mod_theme/enchanted
 	hardlight_theme = COSMIC_BLUE
 
@@ -65,12 +68,12 @@
 	hardlight_theme = EVIL_GREEN
 
 /datum/mod_theme/elite
-	hardlight_theme = EVIL_GREEN
+	hardlight_theme = ALERT_AMBER
 
 
 //	Misc.
 /datum/mod_theme/apocryphal
-	hardlight_theme = SECURITY_AMBER
+	hardlight_theme = ALERT_AMBER
 
 /datum/mod_theme/corporate
 	hardlight_theme = EXTRASHIELD_GREEN
@@ -84,7 +87,7 @@
 	hardlight_theme = STANDARD_BLUE
 
 /datum/mod_theme/frontline
-	hardlight_theme = STANDARD_BLUE
+	hardlight_theme = ALERT_AMBER
 
 
 // Debug
@@ -96,10 +99,10 @@
 
 
 #undef STANDARD_BLUE
-#undef SECURITY_AMBER
+#undef ALERT_AMBER
 #undef CONTRACTOR_RED
 #undef EXTRASHIELD_GREEN
 #undef EVIL_GREEN
 #undef ROYAL_PURPLE
-#undef ENGINEERING_ORANGE
+#undef HAZARD_ORANGE
 #undef COSMIC_BLUE

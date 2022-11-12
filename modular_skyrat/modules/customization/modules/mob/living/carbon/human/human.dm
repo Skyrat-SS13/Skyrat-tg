@@ -100,7 +100,7 @@
 	mutant_part_visibility()
 
 //	This DMI holds our radial icons
-#define PART_VIS_RADIAL 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/MOD_sprite_accessories/icons/radial.dmi'
+#define RADIAL_DMI 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/MOD_sprite_accessories/icons/radial.dmi'
 
 /mob/living/carbon/human/proc/mutant_part_visibility(quick_toggle, re_do)
 	// The parts our particular user can choose
@@ -154,11 +154,11 @@
 	var/list/choices = list()
 	for(var/choice in available_selection)
 		var/datum/radial_menu_choice/option = new
-		var/image/part_image = image(icon = PART_VIS_RADIAL, icon_state = initial(choice))
+		var/image/part_image = image(icon = RADIAL_DMI, icon_state = initial(choice))
 
 		option.image = part_image
 		if(choice in try_hide_mutant_parts)
-			part_image.underlays += image(icon = PART_VIS_RADIAL, icon_state = "module_unable")
+			part_image.underlays += image(icon = RADIAL_DMI, icon_state = "module_unable")
 		choices[initial(choice)] = option
 	// Radial choices
 	sort_list(choices)
@@ -183,7 +183,7 @@
 	// automatically re-do the menu after making a selection
 	mutant_part_visibility(re_do = TRUE)
 
-#undef PART_VIS_RADIAL
+#undef RADIAL_DMI
 
 
 // Feign impairment verb
