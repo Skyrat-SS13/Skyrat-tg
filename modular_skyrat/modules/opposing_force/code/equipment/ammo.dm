@@ -181,10 +181,6 @@
 	name = "Zeta-6 'Spurchamber' Speedloader"
 	item_type = /obj/item/ammo_box/revolver/zeta/full
 
-/datum/opposing_force_equipment/ammo/revolution
-	name = "Revolution-8 'Spurmaster' Speedloader"
-	item_type = /obj/item/ammo_box/revolver/revolution/full
-
 /datum/opposing_force_equipment/ammo/g11
 	name = "G11 K-490 Magazine"
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/g11

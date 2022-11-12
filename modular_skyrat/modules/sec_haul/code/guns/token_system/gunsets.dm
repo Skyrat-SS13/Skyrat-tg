@@ -196,21 +196,6 @@
 	new /obj/item/ammo_box/c10mm(src)
 
 /*
-*	REVOLUTION
-*/
-
-/obj/item/storage/box/gunset/revolution
-	name = "revolution supply box"
-
-/obj/item/storage/box/gunset/revolution/PopulateContents()
-	. = ..()
-	new /obj/item/gun/ballistic/revolver/revolution(src)
-	new /obj/item/ammo_box/revolver/revolution(src)
-	new /obj/item/ammo_box/revolver/revolution(src)
-	new /obj/item/ammo_box/revolver/revolution(src)
-	new /obj/item/ammo_box/advanced/b9mm(src)
-
-/*
 *	PRIMARIES
 */
 

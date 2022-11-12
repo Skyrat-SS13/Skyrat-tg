@@ -57,8 +57,5 @@
 /datum/opposing_force_equipment/pistol/zeta
 	item_type = /obj/item/gun/ballistic/revolver/zeta
 
-/datum/opposing_force_equipment/pistol/revolution
-	item_type = /obj/item/gun/ballistic/revolver/revolution
-
 /datum/opposing_force_equipment/pistol/pepperball
 	item_type = /obj/item/gun/ballistic/automatic/pistol/pepperball
