@@ -21,3 +21,10 @@
 #define RADIO_TOKEN_TARKON ":k"
 
 #define FREQ_TARKON 1243
+
+
+#define RADIO_CHANNEL_SOLFED "SolFed"
+#define RADIO_KEY_SOLFED "l"
+#define RADIO_TOKEN_SOLFED ":l"
+
+#define FREQ_SOLFED 1205

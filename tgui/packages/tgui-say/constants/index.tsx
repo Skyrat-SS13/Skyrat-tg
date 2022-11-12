@@ -70,4 +70,10 @@ export const RADIO_PREFIXES = {
     id: 'centcom',
     label: 'CCom',
   },
+  // SKYRAT EDIT START: CUSTOM RADIO CHANNELS
+  ':l ': {
+    id: 'solfed',
+    label: 'Sol',
+  },
+  // SKYRAT EDIT END
 } as const;

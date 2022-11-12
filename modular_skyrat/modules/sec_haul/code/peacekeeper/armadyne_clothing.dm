@@ -5,6 +5,7 @@
 	worn_icon_state = "armadyne_shirt"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/centcom.dmi'	//This can probably be moved to centcom.dm when the suits are sorted
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/centcom.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/centcom_digi.dmi'
 
 /obj/item/clothing/under/rank/security/peacekeeper/armadyne/tactical
 	name = "armadyne tactical uniform"

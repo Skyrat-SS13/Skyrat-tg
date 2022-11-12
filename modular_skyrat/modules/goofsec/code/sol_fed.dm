@@ -280,6 +280,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 /datum/outfit/request_911
 	name = "911 Response: Base"
+	ears = /obj/item/radio/headset/solfed
 	back = /obj/item/storage/backpack/duffelbag/cops
 	backpack_contents = list(/obj/item/solfed_reporter/swat_caller = 1)
 
@@ -315,7 +316,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	uniform = /obj/item/clothing/under/rank/security/detective/cowboy
 	shoes = /obj/item/clothing/shoes/cowboy
 	glasses = /obj/item/clothing/glasses/sunglasses
-	ears = /obj/item/radio/headset/headset_sec/alt
+	ears = /obj/item/radio/headset/solfed/marshal
 	head = /obj/item/clothing/head/cowboy
 	belt = /obj/item/gun/energy/disabler
 	r_pocket = /obj/item/lighter
@@ -344,7 +345,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	back = /obj/item/mod/control/pre_equipped/atmospheric/breach_control
 	uniform = /obj/item/clothing/under/rank/engineering/engineer/hazard
 	shoes = /obj/item/clothing/shoes/workboots
-	ears = /obj/item/radio/headset/headset_eng
+	ears = /obj/item/radio/headset/solfed/breach_control
 	mask = /obj/item/clothing/mask/gas/atmos
 	belt = /obj/item/storage/belt/utility/full
 	suit_store = /obj/item/tank/internals/oxygen/yellow
@@ -389,7 +390,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	back = /obj/item/storage/backpack/duffelbag/cops
 	uniform = /obj/item/clothing/under/rank/medical/paramedic
 	shoes = /obj/item/clothing/shoes/sneakers/white
-	ears = /obj/item/radio/headset/headset_med
+	ears = /obj/item/radio/headset/solfed/emt
 	head = /obj/item/clothing/head/soft/paramedic
 	id = /obj/item/card/id/advanced/solfed
 	suit =  /obj/item/clothing/suit/toggle/labcoat/paramedic
@@ -432,7 +433,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	uniform = /obj/item/clothing/under/rank/security/officer/beatcop
 	shoes = /obj/item/clothing/shoes/jackboots
 	glasses = /obj/item/clothing/glasses/sunglasses
-	ears = /obj/item/radio/headset/headset_sec/alt
+	ears = /obj/item/radio/headset/solfed/marshal
 	head = /obj/item/clothing/head/helmet/riot
 	belt = /obj/item/gun/energy/disabler
 	suit = /obj/item/clothing/suit/armor/riot
@@ -481,7 +482,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 	back = /obj/item/storage/backpack/duffelbag/cops
 	glasses = /obj/item/clothing/glasses/sunglasses
-	ears = /obj/item/radio/headset/headset_sec/alt
+	ears = /obj/item/radio/headset/solfed/marshal
 	l_pocket = /obj/item/restraints/handcuffs
 	id = /obj/item/card/id/advanced/solfed
 	r_hand = /obj/item/gun/ballistic/automatic/m16
