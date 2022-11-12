@@ -569,6 +569,7 @@
 
 	to_chat(user, span_notice("You add some cable to [our_plant] and slide it inside the battery encasing."))
 	var/obj/item/stock_parts/cell/potato/pocell = new /obj/item/stock_parts/cell/potato(user.loc)
+	pocell.icon = our_plant.icon // SKYRAT EDIT ADDITION - Making plant cells work for Skyrat plants
 	pocell.icon_state = our_plant.icon_state
 	pocell.maxcharge = our_seed.potency * 20
 
