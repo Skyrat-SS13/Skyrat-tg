@@ -54,16 +54,14 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	. += span_notice("With a <b>chisel</b> or even a <b>pickaxe</b> of some kind, you could cut this into <b>blocks</b>.")
 
 /obj/item/stack/stone/attackby(obj/item/attacking_item, mob/user, params)
-	if(!(attacking_item.tool_behaviour != TOOL_MINING) || !(istype(attacking_item, /obj/item/chisel)))
+	if((attacking_item.tool_behaviour != TOOL_MINING) || !(istype(attacking_item, /obj/item/chisel)))
 		return ..()
 	playsound(src, 'sound/effects/picaxe1.ogg', 50, TRUE)
 	balloon_alert_to_viewers("cutting...")
 	if(!do_after(user, 5 SECONDS, target = src))
 		balloon_alert_to_viewers("stopped cutting")
 		return FALSE
-	var/obj/item/stack/resulting_bricks = new /obj/item/stack/sheet/mineral/stone(get_turf(src))
-	resulting_bricks.amount = amount
-	resulting_bricks.update_appearance()
+	new /obj/item/stack/sheet/mineral/stone(get_turf(src), amount)
 	qdel(src)
 
 /obj/item/stack/tile/mineral/stone
@@ -94,19 +92,19 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	custom_materials = list(/datum/material/stone = MINERAL_MATERIAL_AMOUNT * 2)
 
 /turf/closed/wall/mineral/stone/try_decon(obj/item/item_used, mob/user) // Lets you break down stone walls with stone breaking tools
-	if(item_used.tool_behaviour == TOOL_MINING)
-		if(!item_used.tool_start_check(user, amount = 0))
-			return FALSE
+	if(item_used.tool_behaviour != TOOL_MINING)
+		return ..()
+		
+	if(!item_used.tool_start_check(user, amount = 0))
+		return FALSE
 
-		balloon_alert_to_viewers("breaking down...")
+	balloon_alert_to_viewers("breaking down...")
 
-		if(!item_used.use_tool(src, user, 5 SECONDS))
-			return FALSE
-		balloon_alert_to_viewers("[user] breaks [src] down")
-		dismantle_wall()
-		return TRUE
-
-	return ..()
+	if(!item_used.use_tool(src, user, 5 SECONDS))
+		return FALSE
+	balloon_alert_to_viewers("[user] breaks [src] down")
+	dismantle_wall()
+	return TRUE
 
 /turf/closed/indestructible/stone
 	name = "stone wall"
