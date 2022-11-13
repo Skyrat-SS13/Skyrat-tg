@@ -12,7 +12,7 @@
 	req_access = list(ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
 	icon_state = "cc"
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
-	door_anim_time = 0 //CONVERT THESE DOORS YOU LAZY ASSHATS
+	door_anim_time = 0
 
 /obj/structure/closet/secure_closet/nanotrasen_consultant/station/PopulateContents()
 	..()

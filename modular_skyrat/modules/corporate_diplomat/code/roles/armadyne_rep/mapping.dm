@@ -13,7 +13,7 @@
 
 /obj/structure/closet/secure_closet/armadyne_representative/PopulateContents()
 	. = ..()
-	new /obj/item/storage/backpack/satchel/leather(src)
+	new /obj/item/storage/secure/briefcase/armadyne_incentive(src)
 	new /obj/item/clothing/shoes/sneakers/black(src)
 	new /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne(src)
 	new /obj/item/clothing/suit/armor/hos/trenchcoat/peacekeeper/armadyne(src)
@@ -22,7 +22,7 @@
 	new /obj/item/clothing/gloves/combat/peacekeeper/armadyne(src)
 	new /obj/item/storage/photo_album/personal(src)
 	new /obj/item/assembly/flash(src)
-	new /obj/item/storage/secure/briefcase/armadyne_incentive(src)
+	new /obj/item/storage/backpack/satchel/leather(src)
 
 	// Add headsets once PMC nerf happens
 

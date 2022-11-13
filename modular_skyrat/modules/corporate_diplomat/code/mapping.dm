@@ -3,16 +3,18 @@
 /obj/effect/spawner/corporate_diplomat
 	icon = 'modular_skyrat/modules/corporate_diplomat/icons/helpers.dmi'
 	/// What to spawn for an NT consultant
-	var/nt_con_path
+	var/nt_con_path = /obj/effect/gibspawner/generic
 	/// What to spawn for an Armadyne rep
-	var/arm_rep_path
+	var/arm_rep_path = /obj/effect/gibspawner/generic
 	/// What to spawn for a SolFed liaison
-	var/sol_lia_path
+	var/sol_lia_path = /obj/effect/gibspawner/generic
 
 /obj/effect/spawner/corporate_diplomat/Initialize(mapload)
 	. = ..()
+	if(!SSjob.corporate_diplomat_type)
+		return INITIALIZE_HINT_QDEL
 
-	switch(SSjob?.corporate_diplomat_type)
+	switch(SSjob.corporate_diplomat_type)
 
 		if(/datum/corporate_diplomat_role/nanotrasen_consultant)
 			new nt_con_path(get_turf(src))
@@ -94,8 +96,12 @@
 	icon_state = "regular_floor"
 
 /obj/effect/mapping_helpers/corporate_diplomat/regular_floor/LateInitialize()
+	if(!SSjob.corporate_diplomat_type)
+		qdel(src)
+		return
+
 	var/turf/open/floor/floor = get_turf(src)
-	switch(SSjob?.corporate_diplomat_type)
+	switch(SSjob.corporate_diplomat_type)
 		if(/datum/corporate_diplomat_role/nanotrasen_consultant)
 			floor.ChangeTurf(/turf/open/floor/wood)
 		if(/datum/corporate_diplomat_role/armadyne_representative)
@@ -110,8 +116,12 @@
 	icon_state = "good_floor"
 
 /obj/effect/mapping_helpers/corporate_diplomat/good_floor/LateInitialize()
+	if(!SSjob.corporate_diplomat_type)
+		qdel(src)
+		return
+
 	var/turf/open/floor/floor = get_turf(src)
-	switch(SSjob?.corporate_diplomat_type)
+	switch(SSjob.corporate_diplomat_type)
 		if(/datum/corporate_diplomat_role/nanotrasen_consultant)
 			floor.ChangeTurf(/turf/open/floor/carpet/executive)
 		if(/datum/corporate_diplomat_role/armadyne_representative)
