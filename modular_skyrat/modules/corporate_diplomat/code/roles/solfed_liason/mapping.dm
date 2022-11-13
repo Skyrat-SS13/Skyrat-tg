@@ -20,7 +20,7 @@
 	new /obj/item/radio/headset/solfed/liaison(src)
 	new /obj/item/radio/headset/solfed/liaison/alt(src)
 	new /obj/item/assembly/flash(src)
-	new /obj/item/clothing/under/rank/security/peacekeeper/sol/cadet/liaison(src)
+	new /obj/item/clothing/under/rank/solfed_liaison/casual(src)
 	new /obj/item/clothing/suit/jacket/solfed_liaison/casual(src)
 	new /obj/item/clothing/suit/jacket/solfed_liaison/formal(src)
 

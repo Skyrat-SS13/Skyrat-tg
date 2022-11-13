@@ -7,10 +7,6 @@
 /obj/item/clothing/neck/tie/solfed/tied
 	is_tied = TRUE
 
-/obj/item/clothing/under/rank/security/peacekeeper/sol/cadet/liaison
-	name = "sol diplomat suit"
-	desc = "A light blue shirt with navy pants, perfectly unassuming for any liaison."
-
 /obj/item/clothing/under/rank/solfed_liaison
 	name = "tan undershirt"
 	desc = "A plain white formal shirt with tan slacks."
@@ -20,6 +16,11 @@
 	icon_state = "tan_undershirt"
 	inhand_icon_state = "det"
 	can_adjust = FALSE
+
+/obj/item/clothing/under/rank/solfed_liaison/casual
+	name = "casual blue undershirt"
+	desc = "A plain white formal shirt with blue slacks, for less official occasions."
+	icon_state = "blue_undershirt"
 
 /obj/item/clothing/suit/jacket/solfed_liaison
 	name = "tan suit jacket"
