@@ -2,6 +2,10 @@
 	category = "Utility Items"
 	category_item_limit = 8
 
+/datum/armament_entry/assault_operatives/utility/suppressor
+	item_type = /obj/item/suppressor
+	cost = 1
+
 /datum/armament_entry/assault_operatives/utility/thermals
 	item_type = /obj/item/clothing/glasses/thermal
 	cost = 4

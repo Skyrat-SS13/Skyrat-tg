@@ -1,5 +1,5 @@
 /datum/armament_entry/assault_operatives/medical
-	category = "Medical Supplies"
+	category = "First-Aid Supplies"
 	category_item_limit = 4
 
 /datum/armament_entry/assault_operatives/medical/medkit
