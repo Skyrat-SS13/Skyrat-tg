@@ -10,6 +10,7 @@
 	lefthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_lefthand.dmi'
 	worn_icon_state = "ige_assault"
 	worn_icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_worn.dmi'
+	base_pixel_x = -8
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle
@@ -27,7 +28,7 @@
 	AddComponent(/datum/component/scope, range_modifier = 1.5)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle
-	name = "\improper IGE-110 magazine"
+	name = "\improper IGE-110 lethal magazine"
 	desc = "A twenty round magazine built for 5.6x30mm, intended for use in the IGE-110 rifle."
 	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/magazines.dmi'
 	icon_state = "ige_assault_mag"
@@ -38,10 +39,12 @@
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_AP)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle/rubber
+	name = "\improper IGE-110 rubber magazine"
 	ammo_type = /obj/item/ammo_casing/realistic/a762x39/civilian/rubber
 	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle/ap
+	name = "\improper IGE-110 armor piercing magazine"
 	ammo_type = /obj/item/ammo_casing/realistic/a762x39/ap
 	round_type = AMMO_TYPE_AP
 
@@ -57,6 +60,7 @@
 	lefthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_lefthand.dmi'
 	worn_icon_state = "ige_smg"
 	worn_icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_worn.dmi'
+	base_pixel_x = -8
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg
@@ -68,7 +72,7 @@
 	company_flag = COMPANY_REMOVED
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg
-	name = "\improper IGE-260 magazine"
+	name = "\improper IGE-260 lethal magazine"
 	desc = "A forty round magazine built for 9x19mm, intended for use in the IGE-260 submachine gun."
 	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/magazines.dmi'
 	icon_state = "ige_smg_mag"
@@ -79,10 +83,12 @@
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_HOLLOWPOINT)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg/rubber
+	name = "\improper IGE-260 rubber magazine"
 	ammo_type = /obj/item/ammo_casing/b9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg/hp
+	name = "\improper IGE-260 hollowpoint magazine"
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
@@ -98,6 +104,7 @@
 	lefthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_lefthand.dmi'
 	worn_icon_state = "ige_shotgun"
 	worn_icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_worn.dmi'
+	base_pixel_x = -8
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun
@@ -111,7 +118,7 @@
 	company_flag = COMPANY_REMOVED
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun
-	name = "\improper IGE-340 magazine"
+	name = "\improper IGE-340 buckshot magazine"
 	desc = "A seven round magazine built for 12 GA, intended for use in the IGE-340 shotgun."
 	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/magazines.dmi'
 	icon_state = "ige_shotgun_mag"
@@ -122,22 +129,27 @@
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_AP, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_IHDF, AMMO_TYPE_INCENDIARY)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/rubbershot
+	name = "\improper IGE-340 rubbershot magazine"
 	ammo_type = /obj/item/ammo_casing/shotgun/rubbershot
 	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/flechette
+	name = "\improper IGE-340 flechette magazine"
 	ammo_type = /obj/item/ammo_casing/shotgun/flechette
 	round_type = AMMO_TYPE_AP
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/hollowpoint
+	name = "\improper IGE-340 hollowpoint slug magazine"
 	ammo_type = /obj/item/ammo_casing/shotgun/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/beehive
+	name = "\improper IGE-340 'beehive' magazine"
 	ammo_type = /obj/item/ammo_casing/shotgun/beehive
 	round_type = AMMO_TYPE_IHDF
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/dragonsbreath
+	name = "\improper IGE-340 dragonsbreath magazine"
 	ammo_type = /obj/item/ammo_casing/shotgun/dragonsbreath
 	round_type = AMMO_TYPE_INCENDIARY
 
@@ -153,6 +165,7 @@
 	lefthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_lefthand.dmi'
 	worn_icon_state = "ige_sniper"
 	worn_icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_worn.dmi'
+	base_pixel_x = -8
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 	internal_magazine = FALSE
@@ -173,7 +186,7 @@
 	AddComponent(/datum/component/scope, range_modifier = 2.5)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper
-	name = "\improper IGE-410 magazine"
+	name = "\improper IGE-410 lethal magazine"
 	desc = "A five round magazine built for .416 Stabilis, intended for use in the IGE-410 sniper."
 	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/magazines.dmi'
 	icon_state = "ige_sniper_mag"
@@ -184,9 +197,11 @@
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_AP)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper/sleepytime
+	name = "\improper IGE-410 soporific magazine"
 	ammo_type = /obj/item/ammo_casing/p50/soporific
-	round_type = AMMO_TYPE_RUBBER // I mean like technically nothing bad will happen because of this
+	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper/penetrator
+	name = "\improper IGE-410 penetrator magazine"
 	ammo_type = /obj/item/ammo_casing/p50/penetrator
 	round_type = AMMO_TYPE_AP
