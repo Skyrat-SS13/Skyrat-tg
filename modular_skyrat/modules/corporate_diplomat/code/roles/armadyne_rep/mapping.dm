@@ -28,7 +28,7 @@
 
 /obj/machinery/fax/armadyne
 	name = "\improper Armadyne Representative's Fax Machine"
-	desc = "A fax machine containing the proper encryption keys to send a message to the Armadyne corporation."
+	desc = "A fax machine containing the proper encryption keys for sending a message to the Armadyne corporation."
 	fax_name = "Armadyne Representative's Office"
 
 /obj/item/circuitboard/machine/fax/armadyne
