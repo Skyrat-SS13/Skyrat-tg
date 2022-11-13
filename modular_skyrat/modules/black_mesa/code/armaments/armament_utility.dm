@@ -1,3 +1,5 @@
+#define ARMAMENT_CATEGORY_UTILITY "Utility"
+
 /datum/armament_entry/hecu/utility
 	category = ARMAMENT_CATEGORY_UTILITY
 	category_item_limit = 20
@@ -68,3 +70,5 @@
 	item_type = /obj/item/melee/hammer
 	max_purchase = 1
 	cost = 4
+
+#undef ARMAMENT_CATEGORY_UTILITY
