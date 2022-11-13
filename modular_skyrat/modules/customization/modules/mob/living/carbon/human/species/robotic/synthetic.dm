@@ -60,10 +60,10 @@
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/robot/synth,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/robot/synth,
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/robot/synth,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/robot/synth,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/robot/synth,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/robot/synth,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/robot/synth,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/robot/synth,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/robot/synth,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/robot/synth,
 	)
 	digitigrade_customization = DIGITIGRADE_OPTIONAL
 	/// The innate action that synths get, if they've got a screen selected on species being set.
