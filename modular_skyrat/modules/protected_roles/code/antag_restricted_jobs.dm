@@ -6,7 +6,7 @@
  * then the job will be restricted from all antagonists.
  */
 
-/datum/job/nanotrasen_consultant
+/datum/job/corporate_diplomat
 	antagonist_restricted = TRUE
 
 /datum/job/head_of_personnel

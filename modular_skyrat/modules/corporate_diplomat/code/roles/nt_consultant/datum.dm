@@ -30,3 +30,5 @@
 		"Nanotrasen Representative",
 		"Central Command Representative"
 	)
+
+	used_access = ACCESS_CENT_GENERAL

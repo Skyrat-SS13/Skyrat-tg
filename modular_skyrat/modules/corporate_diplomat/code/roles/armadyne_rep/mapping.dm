@@ -1,0 +1,35 @@
+/obj/effect/landmark/start/armadyne_rep
+	name = "Armadyne Representative"
+	icon_state = "Armadyne Representative"
+	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
+
+
+/obj/structure/closet/secure_closet/armadyne_representative
+	name = "\proper armadyne representative's locker"
+	req_access = list(ACCESS_ARMADYNE)
+	icon_state = "armadyne"
+	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
+	door_anim_time = 0
+
+/obj/structure/closet/secure_closet/armadyne_representative/PopulateContents()
+	. = ..()
+	new /obj/item/storage/backpack/satchel/leather(src)
+	new /obj/item/clothing/shoes/sneakers/black(src)
+	new /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne(src)
+	new /obj/item/clothing/suit/armor/hos/trenchcoat/peacekeeper/armadyne(src)
+	new /obj/item/computer_disk/command/captain(src)
+	new /obj/item/clothing/glasses/sunglasses(src)
+	new /obj/item/clothing/gloves/combat/peacekeeper/armadyne(src)
+	new /obj/item/storage/photo_album/personal(src)
+	new /obj/item/assembly/flash(src)
+
+	// Add headsets once PMC nerf happens
+
+/obj/machinery/fax/armadyne
+	name = "\improper Armadyne Representative's Fax Machine"
+	desc = "A fax machine containing the proper encryption keys to send a message to the Armadyne corporation."
+	fax_name = "Armadyne Representative's Office"
+
+/obj/item/circuitboard/machine/fax/armadyne
+	name = "Fax Machine (Armadyne)"
+	build_path = /obj/machinery/fax/armadyne

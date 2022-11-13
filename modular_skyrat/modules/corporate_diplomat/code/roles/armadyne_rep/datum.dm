@@ -27,3 +27,5 @@
 		/obj/item/storage/fancy/cigarettes/cigars/havana = 15,
 		/obj/item/reagent_containers/cup/glass/bottle/champagne = 10
 	)
+
+	used_access = ACCESS_ARMADYNE

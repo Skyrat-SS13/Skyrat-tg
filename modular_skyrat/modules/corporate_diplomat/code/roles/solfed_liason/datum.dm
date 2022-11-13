@@ -1,5 +1,5 @@
-/datum/corporate_diplomat_role/solfed_liason
-	title = JOB_SOLFED_LIASON
+/datum/corporate_diplomat_role/solfed_liaison
+	title = JOB_SOLFED_LIAISON
 	description = "Make sure law and order is upheld on the station, report the Head of Security abusing the Clown, bore people to death with your ballpoint pen collection."
 	department_head = list(
 		"Solar Federation",
@@ -10,11 +10,11 @@
 		/datum/job_department/command,
 	)
 
-	outfit = /datum/outfit/job/solfed_liason
-	plasmaman_outfit = /datum/outfit/plasmaman/solfed_liason
+	outfit = /datum/outfit/job/solfed_liaison
+	plasmaman_outfit = /datum/outfit/plasmaman/solfed_liaison
 	department_for_prefs = /datum/job_department/captain
 
-	display_order = JOB_DISPLAY_ORDER_SOLFED_LIASON
+	display_order = JOB_DISPLAY_ORDER_SOLFED_LIAISON
 
 	family_heirlooms = list(
 		/obj/item/pen/fountain,
@@ -28,3 +28,4 @@
 		/obj/item/clothing/accessory/pocketprotector/full = 10,
 	)
 
+	used_access = ACCESS_SOLFED

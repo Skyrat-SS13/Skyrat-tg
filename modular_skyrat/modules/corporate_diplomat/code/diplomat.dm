@@ -40,6 +40,11 @@
 
 // make sure to fill ALL of these out on the subtype
 /datum/corporate_diplomat_role
+	/// The associated access level with the role
+	var/used_access
+
+	// Everything below is mirrored from /datum/job
+
 	var/title
 	var/description
 	var/list/department_head = list()

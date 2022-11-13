@@ -71,7 +71,7 @@
 /datum/job/captain
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
-/datum/job/nanotrasen_consultant
+/datum/job/corporate_diplomat
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
 /datum/job/head_of_security

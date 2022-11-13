@@ -4,9 +4,9 @@
 /obj/item/gun/ballistic/revolver/rebellion
 	name = "\improper Rebellion-5 revolver"
 	desc = "A rare prototype model of a no longer produced revolver, it uses a power cell to drive 12mm rounds at high speed."
-	icon = 'modular_skyrat/modules/corporate_diplomat/icons/solfed_liason/rebellion.dmi'
-	righthand_file = 'modular_skyrat/modules/corporate_diplomat/icons/solfed_liason/rebellion_righthand.dmi'
-	lefthand_file = 'modular_skyrat/modules/corporate_diplomat/icons/solfed_liason/rebellion_lefthand.dmi'
+	icon = 'modular_skyrat/modules/corporate_diplomat/icons/solfed_liaison/rebellion.dmi'
+	righthand_file = 'modular_skyrat/modules/corporate_diplomat/icons/solfed_liaison/rebellion_righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/corporate_diplomat/icons/solfed_liaison/rebellion_lefthand.dmi'
 	icon_state = "rebellion"
 	inhand_icon_state = "rebellion"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rebellion
@@ -86,7 +86,7 @@
 		cell_icon = null
 		return .
 
-	. += mutable_appearance('modular_skyrat/modules/corporate_diplomat/icons/solfed_liason/rebellion.dmi', "rebellion_cell")
+	. += mutable_appearance('modular_skyrat/modules/corporate_diplomat/icons/solfed_liaison/rebellion.dmi', "rebellion_cell")
 
 	var/power_overlay = "cell_max"
 
@@ -100,7 +100,7 @@
 		if(LOW_POWER_THRESHOLD + 1 to LOWISH_POWER_THRESHOLD)
 			power_overlay = "cell_lowish"
 
-	. += mutable_appearance('modular_skyrat/modules/corporate_diplomat/icons/solfed_liason/rebellion.dmi', power_overlay)
+	. += mutable_appearance('modular_skyrat/modules/corporate_diplomat/icons/solfed_liaison/rebellion.dmi', power_overlay)
 
 	return .
 

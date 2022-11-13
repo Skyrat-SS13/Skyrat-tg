@@ -1,6 +1,6 @@
 /datum/outfit/job/nanotrasen_consultant
 	name = "Nanotrasen Consultant"
-	jobtype = /datum/job/nanotrasen_consultant
+	jobtype = /datum/job/corporate_diplomat
 
 	belt = /obj/item/modular_computer/tablet/pda/nanotrasen_consultant
 	glasses = /obj/item/clothing/glasses/sunglasses
@@ -82,27 +82,3 @@
 	new /obj/item/ammo_box/magazine/m45a5(src)
 	new /obj/item/ammo_box/magazine/m45a5(src)
 	new /obj/item/ammo_box/magazine/m45a5(src)
-
-
-/obj/structure/closet/secure_closet/nanotrasen_consultant/station
-	name = "\proper nanotrasen consultant's locker"
-	req_access = list(ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
-	icon_state = "cc"
-	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
-	door_anim_time = 0 //CONVERT THESE DOORS YOU LAZY ASSHATS
-
-/obj/structure/closet/secure_closet/nanotrasen_consultant/station/PopulateContents()
-	..()
-	new /obj/item/storage/backpack/satchel/leather(src)
-	new /obj/item/clothing/neck/petcollar(src)
-	new /obj/item/pet_carrier(src)
-	new /obj/item/clothing/shoes/sneakers/brown(src)
-	new /obj/item/clothing/suit/armor/vest(src)
-	new /obj/item/computer_disk/command/captain(src)
-	new /obj/item/radio/headset/heads/nanotrasen_consultant/alt(src)
-	new /obj/item/radio/headset/heads/nanotrasen_consultant(src)
-	new /obj/item/clothing/glasses/sunglasses/gar/giga(src)
-	new /obj/item/clothing/gloves/combat(src)
-	new /obj/item/storage/photo_album/personal(src)
-	new /obj/item/bedsheet/centcom(src)
-	new /obj/item/clothing/suit/hooded/wintercoat/centcom/nt_consultant(src)

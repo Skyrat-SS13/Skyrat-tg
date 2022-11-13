@@ -110,7 +110,7 @@
 #define JOB_CORPORATE_DIPLOMAT "Corporate Diplomat" // Overridden during the init of SSJob
 #define JOB_ARMADYNE_REP "Armadyne Representative"
 #define JOB_NT_REP "Nanotrasen Consultant"
-#define JOB_SOLFED_LIASON "SolFed Liason"
+#define JOB_SOLFED_LIAISON "SolFed Liaison"
 // Nanotrasen Naval Command jobs
 #define JOB_NAVAL_ENSIGN "Ensign"
 #define JOB_NAVAL_LIEUTENANT "Lieutenant"
@@ -172,7 +172,7 @@
 #define JOB_DISPLAY_ORDER_ENGINEER_GUARD 44 //SKYRAT EDIT ADDITION
 #define JOB_DISPLAY_ORDER_CUSTOMS_AGENT 45 //SKYRAT EDIT ADDITION
 #define JOB_DISPLAY_ORDER_ARMADYNE_REPRESENTATIVE 46 //SKYRAT EDIT ADDITON
-#define JOB_DISPLAY_ORDER_SOLFED_LIASON 47 //SKYRAT EDIT ADDITON
+#define JOB_DISPLAY_ORDER_SOLFED_LIAISON 47 //SKYRAT EDIT ADDITON
 
 #define DEPARTMENT_UNASSIGNED "No department assigned"
 

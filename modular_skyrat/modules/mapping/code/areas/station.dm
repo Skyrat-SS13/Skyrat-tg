@@ -26,8 +26,8 @@
 	icon_state = "secure_bunker"
 
 // NT Consultant area
-/area/command/heads_quarters/captain/private/nt_rep
-	name = "Nanotrasen Consultant's Office"
+/area/command/heads_quarters/captain/private/corp_diplomat
+	name = "Corporate Diplomat's Office"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "nt_rep"
 

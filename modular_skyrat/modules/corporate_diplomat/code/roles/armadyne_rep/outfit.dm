@@ -23,12 +23,6 @@
 	id = /obj/item/card/id/advanced/black
 	id_trim = /datum/id_trim/job/armadyne_representative
 
-/obj/item/modular_computer/tablet/pda/armadyne_representative
-	name = "armadyne representative's PDA"
-	inserted_disk = /obj/item/computer_disk/command
-	inserted_item = /obj/item/pen/fountain
-	greyscale_colors = "#D71E1E#0060b8"
-
 /datum/outfit/plasmaman/armadyne_representative
 	name = "Armadyne Representative Plasmaman"
 
