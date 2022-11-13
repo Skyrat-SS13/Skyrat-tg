@@ -4,6 +4,9 @@
 	icon_state = "tie_greyscale_untied"
 	greyscale_colors = "#c39c00"
 
+/obj/item/clothing/neck/tie/solfed/tied
+	is_tied = TRUE
+
 /obj/item/clothing/under/rank/security/peacekeeper/sol/cadet/liaison
 	name = "sol diplomat suit"
 	desc = "A light blue shirt with navy pants, perfectly unassuming for any liaison."

@@ -22,6 +22,7 @@
 	new /obj/item/clothing/gloves/combat/peacekeeper/armadyne(src)
 	new /obj/item/storage/photo_album/personal(src)
 	new /obj/item/assembly/flash(src)
+	new /obj/item/storage/secure/briefcase/armadyne_incentive(src)
 
 	// Add headsets once PMC nerf happens
 

@@ -4,13 +4,13 @@
 
 	belt = /obj/item/modular_computer/tablet/pda/armadyne_representative
 	glasses = /obj/item/clothing/glasses/sunglasses // Armadyne glasses are sechuds and make you look like a tool
-	//ears = /obj/item/radio/headset/heads/nanotrasen_consultant TODO: REPLACE WITH ARMADYNE HEADSET
+	ears = /obj/item/radio/headset/heads/nanotrasen_consultant // Replace with armadyne headset when PMC nerf goes through
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne
-	uniform =  /obj/item/clothing/under/rank/security/peacekeeper/armadyne
+	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne
 	shoes = /obj/item/clothing/shoes/jackboots/peacekeeper/armadyne
 	head = /obj/item/clothing/head/beret/sec/peacekeeper/armadyne
-	neck = /obj/item/clothing/neck/tie/red
+	neck = /obj/item/clothing/neck/tie/red/tied
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic = 1,
 		/obj/item/storage/box/gunset/pdh_corpo = 1,

@@ -46,3 +46,17 @@
 	weak_against_armour = TRUE
 	speed = 2 //Previously 2.25. Now compensates for ammo count.
 
+/obj/item/storage/box/gunset/nanotrasen_consultant
+	name = "M45A5 gunset"
+	w_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/gun/ballistic/automatic/pistol/m45a5/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/nanotrasen_consultant/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/pistol/m45a5/nomag(src)
+	new /obj/item/ammo_box/magazine/m45a5(src)
+	new /obj/item/ammo_box/magazine/m45a5(src)
+	new /obj/item/ammo_box/magazine/m45a5(src)
+	new /obj/item/ammo_box/magazine/m45a5(src)

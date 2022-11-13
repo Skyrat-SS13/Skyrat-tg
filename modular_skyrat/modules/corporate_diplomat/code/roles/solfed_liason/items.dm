@@ -21,6 +21,7 @@
 	. = ..()
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 
+
 /obj/item/radio/headset/solfed/marshal
 	icon = 'modular_skyrat/modules/corporate_diplomat/icons/solfed_liaison/headset.dmi'
 	icon_state = "sol_headset_alt"
@@ -29,6 +30,7 @@
 /obj/item/radio/headset/solfed/marshal/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
+
 
 /obj/item/radio/headset/solfed/breach_control
 	keyslot2 = new /obj/item/encryptionkey/headset_eng
@@ -43,6 +45,7 @@
 		RADIO_CHANNEL_SOLFED = 1,
 	)
 	greyscale_colors = "#C39C00#f28a1b"
+
 
 /obj/item/encryptionkey/headset_solfed/liaison
 	name = "\improper Solar Federation liaison encryption key"

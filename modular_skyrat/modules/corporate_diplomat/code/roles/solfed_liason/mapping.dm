@@ -23,7 +23,6 @@
 	new /obj/item/clothing/under/rank/security/peacekeeper/sol/cadet/liaison(src)
 	new /obj/item/clothing/suit/jacket/solfed_liaison/casual(src)
 	new /obj/item/clothing/suit/jacket/solfed_liaison/formal(src)
-	// TODO: give the guy more than 1 uniform type
 
 /obj/machinery/fax/solfed
 	name = "\improper SolFed Liason's Fax Machine"

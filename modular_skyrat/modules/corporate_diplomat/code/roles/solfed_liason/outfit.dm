@@ -8,7 +8,7 @@
 	uniform = /obj/item/clothing/under/rank/solfed_liaison
 	suit = /obj/item/clothing/suit/jacket/solfed_liaison
 	shoes = /obj/item/clothing/shoes/laceup
-	neck = /obj/item/clothing/neck/tie/solfed
+	neck = /obj/item/clothing/neck/tie/solfed/tied
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic = 1,
 		/obj/item/storage/box/gunset/rebellion = 1,

@@ -67,18 +67,3 @@
 	inserted_disk = /obj/item/computer_disk/command/captain
 	inserted_item = /obj/item/pen/fountain/captain
 	greyscale_colors = "#017941#0060b8"
-
-/obj/item/storage/box/gunset/nanotrasen_consultant
-	name = "M45A5 gunset"
-	w_class = WEIGHT_CLASS_NORMAL
-
-/obj/item/gun/ballistic/automatic/pistol/m45a5/nomag
-	spawnwithmagazine = FALSE
-
-/obj/item/storage/box/gunset/nanotrasen_consultant/PopulateContents()
-	. = ..()
-	new /obj/item/gun/ballistic/automatic/pistol/m45a5/nomag(src)
-	new /obj/item/ammo_box/magazine/m45a5(src)
-	new /obj/item/ammo_box/magazine/m45a5(src)
-	new /obj/item/ammo_box/magazine/m45a5(src)
-	new /obj/item/ammo_box/magazine/m45a5(src)

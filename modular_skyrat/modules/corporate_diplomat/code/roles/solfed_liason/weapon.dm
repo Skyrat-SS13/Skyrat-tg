@@ -20,11 +20,13 @@
 	/// Ref to the mutable appearance of the power cell
 	var/mutable_appearance/cell_icon
 
+
 /obj/item/gun/ballistic/revolver/rebellion/Destroy()
 	if(charge_cell)
 		QDEL_NULL(charge_cell)
 
 	return ..()
+
 
 /obj/item/gun/ballistic/revolver/rebellion/examine(mob/user)
 	. = ..()
@@ -34,6 +36,7 @@
 		. += span_notice("You can remove the cell with <b>Right Click</b>.")
 	else
 		. += span_notice("There is a slot for a <b>power cell</b> near the barrel of the gun.")
+
 
 /obj/item/gun/ballistic/revolver/rebellion/attack_hand_secondary(mob/user, list/modifiers)
 	if(charge_cell)
@@ -48,6 +51,7 @@
 		balloon_alert(user, "no cell to remove")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
+
 /obj/item/gun/ballistic/revolver/rebellion/attack_self_secondary(mob/user, modifiers)
 	if(charge_cell)
 		user.playsound_local(get_turf(src), 'sound/weapons/magout.ogg', 40, TRUE)
@@ -60,6 +64,7 @@
 	else
 		balloon_alert(user, "no cell to remove")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
 
 /obj/item/gun/ballistic/revolver/rebellion/can_trigger_gun(mob/living/user)
 	. = ..()
@@ -74,10 +79,12 @@
 		balloon_alert(user, "not enough power!")
 		return FALSE
 
+
 /obj/item/gun/ballistic/revolver/rebellion/fire_gun(atom/target, mob/living/user, flag, params)
 	. = ..()
 	charge_cell.use(charge_per_shot)
 	update_appearance(UPDATE_ICON)
+
 
 /obj/item/gun/ballistic/revolver/rebellion/update_overlays()
 	. = ..()
@@ -104,6 +111,7 @@
 
 	return .
 
+
 /obj/item/gun/ballistic/revolver/rebellion/attackby(obj/item/cell_maybe, mob/user, params)
 	if(istype(cell_maybe, /obj/item/stock_parts/cell))
 		if(charge_cell)
@@ -118,12 +126,14 @@
 
 	return ..()
 
+
 /obj/item/ammo_box/magazine/internal/cylinder/rebellion
 	name = "\improper Rebellion-5 cylinder"
 	desc = "If you see this, you should call a Bluespace Technician. Unless you're that Bluespace Technician."
 	ammo_type = /obj/item/ammo_casing/c12mm
 	caliber = CALIBER_12MM
 	max_ammo = 5
+
 
 /obj/item/ammo_box/revolver/rebellion
 	name = "\improper Rebellion-5 speedloader"
