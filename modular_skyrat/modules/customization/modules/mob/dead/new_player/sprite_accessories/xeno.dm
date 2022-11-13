@@ -50,8 +50,8 @@
 	icon_state = "royal"
 
 /datum/sprite_accessory/xenohead/hollywood
-	name = "Hollywood"
-	icon_state = "hollywood"
+	name = "Nethead"
+	icon_state = "net"
 
 /datum/sprite_accessory/xenohead/warrior
 	name = "Warrior"
