@@ -107,6 +107,7 @@
 		changeling_datum.regain_powers()
 		// SKYRAT EDIT END
 
+	owner.investigate_log("has been gibbed by a changeling egg burst.", INVESTIGATE_DEATHS)
 	owner.gib()
 
 #undef EGG_INCUBATION_TIME

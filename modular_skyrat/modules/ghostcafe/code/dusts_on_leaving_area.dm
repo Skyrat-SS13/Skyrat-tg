@@ -19,6 +19,9 @@
 /datum/element/dusts_on_leaving_area/proc/check_dust(datum/source, area/A)
 	SIGNAL_HANDLER
 
-	var/mob/living/M = source
-	if(istype(M) && !(A.type in area_types))
-		M.dust(TRUE, force = TRUE)
+	var/mob/living/living_source = source
+	if(!istype(living_source) || (A.type in area_types))
+		return
+
+	living_source.investigate_log("was dusted due to leaving their valid areas.", INVESTIGATE_DEATHS)
+	living_source.dust(TRUE, force = TRUE)

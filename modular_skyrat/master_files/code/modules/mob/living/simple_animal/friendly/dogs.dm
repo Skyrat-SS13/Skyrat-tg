@@ -190,6 +190,7 @@
 		set_light_on(TRUE)
 
 		add_fingerprint(user, TRUE)
+		investigate_log("has been gibbed due to being emagged by [user].", INVESTIGATE_DEATHS)
 		visible_message(span_boldwarning("[user] swipes a card through [target]!"), span_notice("You overload [target]s internal reactor..."))
 
 		notify_ghosts("[user] has shortcircuited [target] to explode in 60 seconds!", source = target, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Borgi Emagged")
