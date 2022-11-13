@@ -21,9 +21,3 @@
 #define RADIO_TOKEN_TARKON ":k"
 
 #define FREQ_TARKON 1243
-
-#define RADIO_CHANNEL_ARMADYNE "Armadyne"
-#define RADIO_KEY_ARMADYNE "r"
-#define RADIO_TOKEN_ARMADYNE ":r"
-
-#define FREQ_ARMADYNE 1207

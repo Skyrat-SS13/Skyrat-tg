@@ -116,7 +116,7 @@
 /datum/outfit/armadyne_security
 	name = "Armadyne Corporate Security"
 
-	ears = /obj/item/radio/headset/armadyne
+	ears = /obj/item/radio/headset/headset_sec/alt
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne/tactical
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne
 	head = /obj/item/clothing/head/helmet
@@ -139,7 +139,7 @@
 /datum/outfit/armadyne_security/commander
 	name = "Armadyne Corporate Security Commander"
 
-	ears = /obj/item/radio/headset/armadyne/commander
+	ears = /obj/item/radio/headset/headset_sec/alt
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne/tactical
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne
 	head =  /obj/item/clothing/head/beret/sec/peacekeeper/armadyne
@@ -182,22 +182,6 @@
 		/obj/item/storage/box/handcuffs,
 		/obj/item/ammo_box/magazine/dmr = 2,
 	)
-
-
-/obj/item/radio/headset/armadyne
-	name = "armadyne headset"
-	freerange = TRUE
-	freqlock = TRUE
-	keyslot = new /obj/item/encryptionkey/headset_sec/armadyne
-
-/obj/item/radio/headset/armadyne/commander
-	name = "armadyne commander headset"
-	command = TRUE
-
-/obj/item/encryptionkey/headset_sec/armadyne
-	name = "armadyne radio encryption key"
-	channels = list(RADIO_CHANNEL_ARMADYNE = 1)
-	independent = TRUE
 
 /obj/item/card/id/advanced/armadyne
 	name = "\improper Armadyne ID"
