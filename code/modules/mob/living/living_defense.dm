@@ -101,7 +101,7 @@
 	face_mouse = (client?.prefs?.read_preference(/datum/preference/toggle/face_cursor_combat_mode) && combat_mode) ? TRUE : FALSE
 	//SKYRAT EDIT ADDITION END
 
-	if(silent || !(client?.prefs.toggles & SOUND_COMBATMODE))
+	if(silent || !(client?.prefs.read_preference(/datum/preference/toggle/sound_combatmode)))
 		return
 	if(combat_mode)
 		SEND_SOUND(src, sound('sound/misc/ui_togglecombat.ogg', volume = 25)) //Sound from interbay!
@@ -417,6 +417,7 @@
 ///Logs, gibs and returns point values of whatever mob is unfortunate enough to get eaten.
 /mob/living/singularity_act()
 	investigate_log("([key_name(src)]) has been consumed by the singularity.", INVESTIGATE_ENGINE) //Oh that's where the clown ended up!
+	investigate_log("has been gibbed by the singularity.", INVESTIGATE_DEATHS)
 	gib()
 	return 20
 
@@ -445,6 +446,7 @@
 			if(4)
 				new /mob/living/simple_animal/hostile/construct/proteon/hostile(get_turf(src))
 	spawn_dust()
+	investigate_log("has been gibbed by Nar'Sie.", INVESTIGATE_DEATHS)
 	gib()
 	return TRUE
 
