@@ -430,7 +430,7 @@
 	. = ..()
 	wash_audio = new(owner)
 
-/datum/action/toggle_buffer/IsAvailable()
+/datum/action/toggle_buffer/IsAvailable(feedback = FALSE)
 	if(!iscyborg(owner))
 		return FALSE
 	return ..()
