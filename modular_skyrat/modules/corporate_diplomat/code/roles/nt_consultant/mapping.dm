@@ -1,6 +1,6 @@
 /obj/machinery/fax/nanotrasen
 	name = "\improper Nanotrasen Consultant's Fax Machine"
-	desc = "A fax machine containing the proper encryption keys to send a message to Central Command."
+	desc = "A fax machine containing the proper encryption keys for sending a message to Central Command."
 	fax_name = "Nanotrasen Consultant's Office"
 
 /obj/item/circuitboard/machine/fax/nanotrasen

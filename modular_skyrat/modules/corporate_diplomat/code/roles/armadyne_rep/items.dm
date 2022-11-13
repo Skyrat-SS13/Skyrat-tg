@@ -8,7 +8,7 @@
 
 
 /obj/item/storage/secure/briefcase/armadyne_incentive
-	desc = "A black briefcase with red stripes and a secure digital padlock. Looks like it has good heft, too..."
+	desc = "A black briefcase with red stripes and a secure digital padlock. Feels particularly heavy."
 	icon = 'modular_skyrat/modules/corporate_diplomat/icons/armadyne_rep/storage.dmi'
 	icon_state = "armadyne_case"
 	force = 12
