@@ -6,6 +6,7 @@
 	company_flag = COMPANY_REMOVED
 
 /obj/item/gun/energy/e_gun/advtaser/assault_ops
+	w_class = WEIGHT_CLASS_NORMAL
 	company_flag = COMPANY_REMOVED
 
 // Rifle
