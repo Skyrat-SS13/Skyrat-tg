@@ -15,7 +15,7 @@
 /obj/item/storage/secure/briefcase/armadyne_incentive/PopulateContents()
 	. = ..()
 	new /obj/item/paper/armadyne_incentive(src)
-	for(var/iterator in 1 to 3)
+	for(var/iterator in 1 to STACKS_OF_CASH)
 		new /obj/item/stack/spacecash/c1000(src)
 	new /obj/item/reagent_containers/cocaine(src)
 	new /obj/item/food/grown/cannabis(src)

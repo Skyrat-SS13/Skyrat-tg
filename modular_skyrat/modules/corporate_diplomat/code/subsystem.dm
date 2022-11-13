@@ -6,7 +6,7 @@
 	return
 
 /datum/job/corporate_diplomat/job_setup()
-	var/datum/corporate_diplomat_role/picked_role = /datum/corporate_diplomat_role/solfed_liaison //pick(subtypesof(/datum/corporate_diplomat_role))
+	var/datum/corporate_diplomat_role/picked_role = /datum/corporate_diplomat_role/armadyne_representative //pick(subtypesof(/datum/corporate_diplomat_role))
 	picked_role = new picked_role
 
 	SSjob.corporate_diplomat_type = picked_role.type
@@ -24,4 +24,5 @@
 	family_heirlooms = picked_role.family_heirlooms.Copy()
 	mail_goodies = picked_role.mail_goodies.Copy()
 	alt_titles = picked_role.alt_titles.Copy()
+	job_spawn_title = picked_role.title
 	qdel(picked_role)
