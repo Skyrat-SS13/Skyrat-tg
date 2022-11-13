@@ -9,17 +9,13 @@
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	atom_storage.max_total_storage = 30
-	atom_storage.max_slots = 4
+	atom_storage.max_slots = 5
 	atom_storage.numerical_stacking = FALSE
 	atom_storage.can_hold = typecacheof(list(/obj/item/reagent_containers/hypospray))
 
-
 /obj/item/storage/bag/medpens/PopulateContents()
+	new /obj/item/reagent_containers/hypospray/medipen/blood_loss(src)
 	new /obj/item/reagent_containers/hypospray/medipen/oxandrolone(src)
 	new /obj/item/reagent_containers/hypospray/medipen/salacid(src)
 	new /obj/item/reagent_containers/hypospray/medipen/salbutamol(src)
 	new /obj/item/reagent_containers/hypospray/medipen/stimulants(src)
-
-/obj/item/storage/backpack/duffelbag/syndie/smoke/PopulateContents()
-	for(var/i in 1 to 8)
-		new /obj/item/grenade/smokebomb(src)
