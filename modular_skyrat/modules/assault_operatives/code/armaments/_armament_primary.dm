@@ -12,6 +12,7 @@
 
 /datum/armament_entry/assault_operatives/primary
 	category = "Long Arms"
+	category_item_limit = 6
 	mags_to_spawn = 3
 	cost = 10
 

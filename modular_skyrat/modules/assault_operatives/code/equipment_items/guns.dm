@@ -1,3 +1,13 @@
+// La Pistola
+
+/obj/item/gun/ballistic/automatic/pistol/clandestine/assault_ops
+	name = "\improper IGE-040 pistol"
+	desc = "A pistol chambered in 10mm magnum and painted in an ominous matte black. Strangely, the gun also seems to lack any form of manufacturer markings."
+	company_flag = COMPANY_REMOVED
+
+/obj/item/gun/energy/e_gun/advtaser/assault_ops
+	company_flag = COMPANY_REMOVED
+
 // Rifle
 
 /obj/item/gun/ballistic/automatic/assault_ops_rifle
@@ -21,6 +31,7 @@
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_BURST_SHOT)
 	burst_size = 2
 	fire_delay = 3
+	pin = /obj/item/firing_pin/implant/pindicate
 	company_flag = COMPANY_REMOVED
 
 /obj/item/gun/ballistic/automatic/assault_ops_rifle/Initialize(mapload)
@@ -70,6 +81,7 @@
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_FULLY_AUTOMATIC)
 	burst_size = 1
 	fire_delay = 1
+	pin = /obj/item/firing_pin/implant/pindicate
 	company_flag = COMPANY_REMOVED
 
 /obj/item/gun/ballistic/automatic/assault_ops_smg/Initialize(mapload)
@@ -119,6 +131,7 @@
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	burst_size = 1
 	fire_delay = 1.5
+	pin = /obj/item/firing_pin/implant/pindicate
 	company_flag = COMPANY_REMOVED
 
 /obj/item/gun/ballistic/automatic/assault_ops_shotgun/Initialize(mapload)
@@ -183,6 +196,7 @@
 	recoil = 3
 	can_be_sawn_off = FALSE
 	realistic = FALSE
+	pin = /obj/item/firing_pin/implant/pindicate
 	company_flag = COMPANY_REMOVED
 
 /obj/item/gun/ballistic/rifle/boltaction/assault_ops_sniper/Initialize(mapload)
