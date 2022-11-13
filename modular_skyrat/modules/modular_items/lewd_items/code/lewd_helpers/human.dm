@@ -135,9 +135,9 @@
 	var/hand_count = 0
 	var/covered = 0
 	var/is_covered = FALSE
-	for(var/obj/item/bodypart/l_arm/left_arm in bodyparts)
+	for(var/obj/item/bodypart/arm/left/left_arm in bodyparts)
 		hand_count++
-	for(var/obj/item/bodypart/r_arm/right_arm in bodyparts)
+	for(var/obj/item/bodypart/arm/right/right_arm in bodyparts)
 		hand_count++
 	if(get_item_by_slot(ITEM_SLOT_HANDS))
 		var/obj/item/clothing/gloves/worn_gloves = get_item_by_slot(ITEM_SLOT_HANDS)
@@ -164,9 +164,9 @@
 /mob/living/carbon/human/proc/has_feet(required_state = REQUIRE_GENITAL_ANY)
 	var/feet_count = 0
 
-	for(var/obj/item/bodypart/l_leg/left_leg in bodyparts)
+	for(var/obj/item/bodypart/leg/left/left_leg in bodyparts)
 		feet_count++
-	for(var/obj/item/bodypart/r_leg/right_leg in bodyparts)
+	for(var/obj/item/bodypart/leg/right/right_leg in bodyparts)
 		feet_count++
 
 	switch(required_state)

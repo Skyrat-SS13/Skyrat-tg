@@ -16,41 +16,6 @@
 /datum/storage/pockets/tiny/spacenam
 	attack_hand_interact = TRUE		//So you can actually see what you stuff in there
 
-/obj/item/clothing/head/costume/cowboyhat
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	name = "cowboy hat"
-	desc = "A standard brown cowboy hat, yeehaw."
-	icon_state = "cowboyhat"
-	inhand_icon_state = "cowboy_hat_brown"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/head/costume/cowboyhat/black
-	name = "black cowboy hat"
-	desc = "A black cowboy hat, perfect for any outlaw"
-	icon_state = "cowboyhat_black"
-	inhand_icon_state = "cowboy_hat_black"
-
-/obj/item/clothing/head/costume/cowboyhat/white
-	name = "white cowboy hat"
-	desc = "A white cowboy hat, perfect for your every day rancher"
-	icon_state = "cowboyhat_white"
-	inhand_icon_state = "cowboy_hat_white"
-
-/obj/item/clothing/head/costume/cowboyhat/pink
-	name = "pink cowboy hat"
-	desc = "A pink cowboy? more like cowgirl hat, just don't be a buckle bunny."
-	icon_state = "cowboyhat_pink"
-	inhand_icon_state = "cowboy_hat_red"
-
-/obj/item/clothing/head/costume/cowboyhat/sec
-	name = "security cowboy hat"
-	desc = "A security cowboy hat, perfect for any true lawman"
-	icon_state = "cowboyhat_black"
-	inhand_icon_state = "cowboy_hat_black"
-	// same armour as the sec beret
-	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50, WOUND = 4)
-
 /obj/item/clothing/head/costume/kepi
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
@@ -94,59 +59,6 @@
 	armor = list(MELEE = 40, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 30, ACID = 50, WOUND = 6)
 	strip_delay = 60
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
-
-/obj/item/clothing/head/costume/cowboyhat/blackwide
-	name = "wide brimmed black cowboy hat"
-	desc = "The Man in Black, he walked the earth but is now six foot under, this hat a stark reminder. Bring your courage, your righteousness... measure it against my resolve, and you will fail."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "cowboy_black"
-	inhand_icon_state = "cowboy_hat_black"
-
-
-/obj/item/clothing/head/costume/cowboyhat/wide
-	name = "wide-brimmed cowboy hat"
-	desc = "A brown cowboy hat for blocking out the sun. Remember: Justice is truth in action. Let that guide you in the coming days."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "cowboy_wide"
-
-/obj/item/clothing/head/costume/cowboyhat/wide/sec
-	name = "wide-brimmed security cowboy hat"
-	desc = "A bandit turned sheriff, his enforcement is brutal but effective - whether out of fear or respect is unclear, though not many bodies hang high. A peaceful land, a quiet people."
-	icon_state = "cowboy_black"
-	inhand_icon_state = "cowboy_hat_black"
-	// same armour as the sec beret
-	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50, WOUND = 4)
-
-/obj/item/clothing/head/costume/cowboyhat/sheriff
-	name = "winter cowboy hat"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "sheriff_hat"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-	desc = "A dark hat from the cold wastes of the Frosthill mountains. So it was done, all according to the law. There's a small set of antlers embroidered on the inside."
-	cold_protection = HEAD
-	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
-	flags_inv = HIDEHAIR | SHOWSPRITEEARS
-
-/obj/item/clothing/head/costume/cowboyhat/sheriff/alt
-	name = "sheriff hat"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "sheriff_hat_alt"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-	desc = "A dark brown hat with a smell of whiskey. There's a small set of antlers embroidered on the inside."
-	flags_inv = SHOWSPRITEEARS
-
-/obj/item/clothing/head/costume/cowboyhat/deputy
-	name = "deputy hat"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "deputy_hat"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-	desc = "A light brown hat with a smell of iron. There's a small set of antlers embroidered on the inside."
 
 /obj/item/clothing/head/costume/ushanka/sec
 	name = "security ushanka"

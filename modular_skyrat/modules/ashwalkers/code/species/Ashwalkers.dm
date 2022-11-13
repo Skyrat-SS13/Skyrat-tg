@@ -73,8 +73,16 @@
 			species_target.armor += 10
 			to_chat(human_target, span_notice("Your body seems to be sturdier..."))
 		if(3)
-			species_target.punchdamagelow += 5
-			species_target.punchdamagehigh += 5
+			var/obj/item/bodypart/arm/left/left_arm = human_target.get_bodypart(BODY_ZONE_L_ARM)
+			if(left_arm)
+				left_arm.unarmed_damage_low += 5
+				left_arm.unarmed_damage_high += 5
+
+			var/obj/item/bodypart/arm/right/right_arm = human_target.get_bodypart(BODY_ZONE_R_ARM)
+			if(right_arm)
+				right_arm.unarmed_damage_low += 5
+				right_arm.unarmed_damage_high += 5
+
 			to_chat(human_target, span_notice("Your arms seem denser..."))
 		if(4)
 			ADD_TRAIT(human_target, TRAIT_LAVA_IMMUNE, REF(src))
