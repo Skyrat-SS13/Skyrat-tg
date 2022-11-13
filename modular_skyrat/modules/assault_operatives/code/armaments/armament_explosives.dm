@@ -9,7 +9,7 @@
 
 /datum/armament_entry/assault_operatives/explosives/bioterror
 	item_type = /obj/item/grenade/chem_grenade/bioterrorfoam
-	cost = 3
+	cost = 1
 
 /datum/armament_entry/assault_operatives/explosives/minibomb
 	item_type = /obj/item/grenade/syndieminibomb
