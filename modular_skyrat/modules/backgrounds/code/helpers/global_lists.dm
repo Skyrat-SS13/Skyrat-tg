@@ -42,6 +42,6 @@
 		))
 
 	for(var/obj/item/passport/passport as anything in typesof(/obj/item/passport))
-		if(passport.non_forgeable)
+		if(initial(passport.non_forgeable))
 			continue
 		GLOB.valid_passport_disguises.Add(list("[initial(passport.name)]" = passport))
