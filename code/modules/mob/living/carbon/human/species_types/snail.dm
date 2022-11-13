@@ -6,14 +6,11 @@
 		TRAIT_NOSLIPALL,
 		TRAIT_WATER_BREATHING, //SKYRAT EDIT - Roundstart Snails
 	)
-	attack_verb = "slap"
-	attack_effect = ATTACK_EFFECT_DISARM
+
 	say_mod = "slurs"
 	coldmod = 0.5 //snails only come out when its cold and wet
 	burnmod = 2
 	speedmod = 6
-	punchdamagelow = 1 //SKYRAT EDIT - Roundstart Snails - Lowest possible punch damage. if this is set to 0, punches will always miss
-	punchdamagehigh = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage
 	siemens_coeff = 2 //snails are mostly water
 	liked_food = VEGETABLES | FRUIT | GROSS | RAW //SKYRAT EDIT - Roundstart Snails - Food Prefs
 	disliked_food = DAIRY | ORANGES | SUGAR //SKYRAT EDIT: Roundstart Snails - As it turns out, you can't give a snail processed sugar or citrus.
@@ -29,10 +26,10 @@
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/snail,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/snail,
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/snail,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/snail,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/snail,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/snail
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/snail,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/snail,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/snail,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/snail
 	)
 
 /datum/species/snail/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, delta_time, times_fired)

@@ -272,6 +272,7 @@
 		if(!isliving(target))
 			return
 		var/mob/living/unlucky_fellow = target
+		unlucky_fellow.investigate_log("was returned without a valid drop location by the contractor [contract.owner?.current].", INVESTIGATE_DEATHS)
 		unlucky_fellow.death()
 
 #undef RANSOM_LOWER

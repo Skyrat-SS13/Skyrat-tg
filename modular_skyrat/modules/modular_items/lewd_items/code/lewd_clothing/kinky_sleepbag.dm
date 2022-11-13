@@ -26,8 +26,8 @@
 	var/list/bag_states = list("deflated" = "inflated", "inflated" = "deflated")
 	var/state_thing = "deflated"
 	var/mutable_appearance/bag_overlay
-	var/obj/item/bodypart/l_leg/legr
-	var/obj/item/bodypart/l_leg/legl
+	var/obj/item/bodypart/leg/left/legr
+	var/obj/item/bodypart/leg/left/legl
 	slowdown = 2
 	equip_delay_other = 300
 	equip_delay_self = NONE

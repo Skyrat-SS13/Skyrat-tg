@@ -43,7 +43,6 @@
 	if(isliving(user))
 		user.visible_message(span_danger("[user] invades [M]'s personal space, thrusting [src] into their face insistently."),span_danger("You invade [M]'s personal space, thrusting [src] into their face insistently."))
 		user.do_attack_animation(M)
-		cooldown = 30
 
 // Sheriff Badge (toy)
 /obj/item/clothing/accessory/badge/sheriff
@@ -61,7 +60,6 @@
 	if(isliving(user))
 		user.visible_message(span_danger("[user] invades [M]'s personal space, the sheriff badge into their face!."),span_danger("You invade [M]'s personal space, thrusting the sheriff badge into their face insistently."))
 		user.do_attack_animation(M)
-		cooldown = 30
 
 //.Holobadges.
 /obj/item/clothing/accessory/badge/holo

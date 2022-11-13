@@ -551,7 +551,7 @@
 	if(owner)
 		owner.event_vote()
 
-/datum/action/vote_event/IsAvailable()
+/datum/action/vote_event/IsAvailable(feedback = FALSE)
 	return TRUE
 
 /datum/action/vote_event/proc/remove_from_client()
