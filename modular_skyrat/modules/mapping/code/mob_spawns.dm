@@ -211,6 +211,10 @@
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/corporateliasion
 	ears = /obj/item/radio/headset/interdyne/command
 
+/datum/outfit/ds2/syndicate/corporateliaison/post_equip(mob/living/carbon/human/human_target, visualsOnly)
+    var/obj/item/organ/internal/cyberimp/arm/lighter/zippo = new /obj/item/organ/internal/cyberimp/arm/lighter
+    zippo.Insert(human_target)
+
 /datum/outfit/ds2/syndicate/masteratarms
 	name = "DS-2 Master At Arms"
 	uniform = /obj/item/clothing/under/syndicate/combat
@@ -221,7 +225,9 @@
 	back = /obj/item/storage/backpack/satchel/sec/redsec
 	head = /obj/item/clothing/head/hos/beret/syndicate
 	r_pocket = /obj/item/flashlight/seclite
-	implants = list(/obj/item/implant/krav_maga)
+	implants = list(
+		/obj/item/implant/weapons_auth,
+		/obj/item/implant/krav_maga)
 	ears = /obj/item/radio/headset/interdyne/command
 
 /datum/outfit/ds2/syndicate/brigoff
