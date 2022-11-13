@@ -95,6 +95,7 @@
 				qdel(sacrifice_posession)
 
 		if(issilicon(viewable_living)) //no advantage to sacrificing borgs...
+			viewable_living.investigate_log("has been gibbed via ashwalker sacrifice as a borg.", INVESTIGATE_DEATHS)
 			viewable_living.gib()
 			continue
 
@@ -117,6 +118,7 @@
 			to_chat(delivery_mob, span_boldwarning("The Necropolis is pleased with your sacrifice. You feel confident your existence after death is secure."))
 			ashies.players_spawned -= delivery_key
 
+		viewable_living.investigate_log("has been gibbed via ashwalker sacrifice.", INVESTIGATE_DEATHS)
 		viewable_living.gib()
 		atom_integrity = min(atom_integrity + max_integrity * 0.05, max_integrity) //restores 5% hp of tendril
 
