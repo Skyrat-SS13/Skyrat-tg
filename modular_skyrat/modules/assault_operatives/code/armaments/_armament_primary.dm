@@ -1,14 +1,14 @@
-#define SUBCATEGORY_RIFLE "Assault Rifles"
-#define SUBCATEGORY_RIFLE_AMMO "Specialty Assault Rifle Ammo"
+#define OPS_SUBCATEGORY_RIFLE "Assault Rifles"
+#define OPS_SUBCATEGORY_RIFLE_AMMO "Specialty Assault Rifle Ammo"
 
-#define SUBCATEGORY_SMG "Submachine Guns"
-#define SUBCATEGORY_SMG_AMMO "Speciality Submachine Gun Ammo"
+#define OPS_SUBCATEGORY_SMG "Submachine Guns"
+#define OPS_SUBCATEGORY_SMG_AMMO "Speciality Submachine Gun Ammo"
 
-#define SUBCATEGORY_SHOTGUN "Shotguns"
-#define SUBCATEGORY_SHOTGUN_AMMO "Speciality Shotgun Ammo"
+#define OPS_SUBCATEGORY_SHOTGUN "Shotguns"
+#define OPS_SUBCATEGORY_SHOTGUN_AMMO "Speciality Shotgun Ammo"
 
-#define SUBCATEGORY_SNIPER "Marksman Rifles"
-#define SUBCATEGORY_SNIPER_AMMO "Speciality Marksman Rifle Ammo"
+#define OPS_SUBCATEGORY_SNIPER "Marksman Rifles"
+#define OPS_SUBCATEGORY_SNIPER_AMMO "Speciality Marksman Rifle Ammo"
 
 /datum/armament_entry/assault_operatives/primary
 	category = "Long Arms"
@@ -114,3 +114,15 @@
 	name = "\improper IGE-410 penetrator magazine"
 	description = "Sniper ammo that is capable of penetrating through multiple walls and people at once."
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper/penetrator
+
+#undef OPS_SUBCATEGORY_RIFLE
+#undef OPS_SUBCATEGORY_RIFLE_AMMO
+
+#undef OPS_SUBCATEGORY_SMG
+#undef OPS_SUBCATEGORY_SMG_AMMO
+
+#undef OPS_SUBCATEGORY_SHOTGUN
+#undef OPS_SUBCATEGORY_SHOTGUN_AMMO
+
+#undef OPS_SUBCATEGORY_SNIPER
+#undef OPS_SUBCATEGORY_SNIPER_AMMO
