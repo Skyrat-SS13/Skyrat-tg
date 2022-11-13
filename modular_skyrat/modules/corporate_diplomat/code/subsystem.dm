@@ -6,7 +6,7 @@
 	return
 
 /datum/job/corporate_diplomat/job_setup()
-	var/datum/corporate_diplomat_role/picked_role = /datum/corporate_diplomat_role/armadyne_representative //pick(subtypesof(/datum/corporate_diplomat_role))
+	var/datum/corporate_diplomat_role/picked_role = pick(subtypesof(/datum/corporate_diplomat_role) - /datum/corporate_diplomat_role/nanotrasen_consultant) //revert when not TMed
 	picked_role = new picked_role
 
 	SSjob.corporate_diplomat_type = picked_role.type

@@ -22,9 +22,9 @@
 	new /obj/item/clothing/gloves/combat/peacekeeper/armadyne(src)
 	new /obj/item/storage/photo_album/personal(src)
 	new /obj/item/assembly/flash(src)
+	new /obj/item/radio/headset/armadyne/representative(src)
+	new /obj/item/radio/headset/armadyne/representative/alt(src)
 	new /obj/item/storage/backpack/satchel/leather(src)
-
-	// Add headsets once PMC nerf happens
 
 /obj/machinery/fax/armadyne
 	name = "\improper Armadyne Representative's Fax Machine"
