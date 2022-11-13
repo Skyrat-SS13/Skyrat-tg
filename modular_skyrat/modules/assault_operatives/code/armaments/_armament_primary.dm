@@ -1,72 +1,90 @@
+#define SUBCATEGORY_RIFLE "Assault Rifles"
+#define SUBCATEGORY_RIFLE_AMMO "Specialty Assault Rifle Ammo"
+
+#define SUBCATEGORY_SMG "Submachine Guns"
+#define SUBCATEGORY_SMG_AMMO "Speciality Submachine Gun Ammo"
+
+#define SUBCATEGORY_SHOTGUN "Shotguns"
+#define SUBCATEGORY_SHOTGUN_AMMO "Speciality Shotgun Ammo"
+
+#define SUBCATEGORY_SNIPER "Marksman Rifles"
+#define SUBCATEGORY_SNIPER_AMMO "Speciality Marksman Rifle Ammo"
+
 /datum/armament_entry/assault_operatives/primary
 	category = ARMAMENT_CATEGORY_PRIMARY
-	category_item_limit = ARMAMENT_CATEGORY_PRIMARY_LIMIT
-	slot_to_equip = ITEM_SLOT_SUITSTORE
+	mags_to_spawn = 3
 	cost = 10
 
+/datum/armament_entry/assault_operatives/primary/rifle
+	subcategory = SUBCATEGORY_RIFLE
+
+/datum/armament_entry/assault_operatives/primary/rifle/assault_ops_rifle
+	item_type = /obj/item/gun/ballistic/automatic/assault_ops_rifle
+
+/datum/armament_entry/assault_operatives/primary/rifle_ammo
+	subcategory = SUBCATEGORY_RIFLE_AMMO
+	cost = 1
+
+/datum/armament_entry/assault_operatives/primary/rifle_ammo/rubber
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle/rubber
+
+/datum/armament_entry/assault_operatives/primary/rifle_ammo/ap
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle/ap
+
+
 /datum/armament_entry/assault_operatives/primary/submachinegun
-	subcategory = ARMAMENT_SUBCATEGORY_SUBMACHINEGUN
-	mags_to_spawn = 4
+	subcategory = SUBCATEGORY_SMG
 
-/datum/armament_entry/assault_operatives/primary/submachinegun/wildcat
-	item_type = /obj/item/gun/ballistic/automatic/cfa_wildcat
-	cost = 5
+/datum/armament_entry/assault_operatives/primary/submachinegun/assault_ops_smg
+	item_type = /obj/item/gun/ballistic/automatic/assault_ops_smg
 
-/datum/armament_entry/assault_operatives/primary/submachinegun/lynx
-	item_type = /obj/item/gun/ballistic/automatic/cfa_lynx
-	cost = 7
+/datum/armament_entry/assault_operatives/primary/submachinegun_ammo
+	subcategory = SUBCATEGORY_SMG_AMMO
+	cost = 1
 
-/datum/armament_entry/assault_operatives/primary/submachinegun/mp40
-	item_type = /obj/item/gun/ballistic/automatic/mp40
-	mags_to_spawn = 3
+/datum/armament_entry/assault_operatives/primary/submachinegun_ammo/rubber
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg/rubber
 
-/datum/armament_entry/assault_operatives/primary/submachinegun/ppsh
-	item_type = /obj/item/gun/ballistic/automatic/ppsh
+/datum/armament_entry/assault_operatives/primary/submachinegun_ammo/hp
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg/hp
 
-/datum/armament_entry/assault_operatives/primary/submachinegun/p90
-	item_type = /obj/item/gun/ballistic/automatic/p90
+/datum/armament_entry/assault_operatives/primary/shotgun
+	subcategory = SUBCATEGORY_SHOTGUN
 
-/datum/armament_entry/assault_operatives/primary/submachinegun/c20r
-	item_type = /obj/item/gun/ballistic/automatic/c20r
+/datum/armament_entry/assault_operatives/primary/shotgun/assault_ops_shotgun
+	item_type = /obj/item/gun/ballistic/automatic/assault_ops_shotgun
 
-/datum/armament_entry/assault_operatives/primary/assaultrifle
-	subcategory = ARMAMENT_SUBCATEGORY_ASSAULTRIFLE
+/datum/armament_entry/assault_operatives/primary/shotgun_ammo
+	subcategory = SUBCATEGORY_SHOTGUN_AMMO
+	cost = 1
 
-/datum/armament_entry/assault_operatives/primary/assaultrifle/akm
-	item_type = /obj/item/gun/ballistic/automatic/akm
+/datum/armament_entry/assault_operatives/primary/shotgun_ammo/rubber
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/rubbershot
 
-/datum/armament_entry/assault_operatives/primary/assaultrifle/m16
-	item_type = /obj/item/gun/ballistic/automatic/m16
+/datum/armament_entry/assault_operatives/primary/shotgun_ammo/flechette
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/flechette
 
-/datum/armament_entry/assault_operatives/primary/assaultrifle/stg
-	item_type = /obj/item/gun/ballistic/automatic/stg
-	cost = 12
+/datum/armament_entry/assault_operatives/primary/shotgun_ammo/hollowpoint
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/hollowpoint
 
-/datum/armament_entry/assault_operatives/primary/assaultrifle/fg42
-	item_type = /obj/item/gun/ballistic/automatic/fg42
+/datum/armament_entry/assault_operatives/primary/shotgun_ammo/beehive
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/beehive
 
-/datum/armament_entry/assault_operatives/primary/special
-	subcategory = ARMAMENT_SUBCATEGORY_SPECIAL
-	cost = 15
+/datum/armament_entry/assault_operatives/primary/shotgun_ammo/dragonsbreath
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/dragonsbreath
 
-/datum/armament_entry/assault_operatives/primary/special/l6saw
-	item_type = /obj/item/gun/ballistic/automatic/l6_saw
-	mags_to_spawn = 2
+/datum/armament_entry/assault_operatives/primary/sniper
+	subcategory = SUBCATEGORY_SNIPER
 
-/datum/armament_entry/assault_operatives/primary/special/mg9
-	item_type = /obj/item/gun/ballistic/automatic/mg34/mg42
-	mags_to_spawn = 2
+/datum/armament_entry/assault_operatives/primary/sniper/assault_ops_sniper
+	item_type = /obj/item/gun/ballistic/rifle/boltaction/assault_ops_sniper
 
-/datum/armament_entry/assault_operatives/primary/special/smartgun
-	item_type = /obj/item/gun/ballistic/automatic/smartgun
-	cost = 12
+/datum/armament_entry/assault_operatives/primary/sniper_ammo
+	subcategory = SUBCATEGORY_SNIPER_AMMO
+	cost = 1
 
-/datum/armament_entry/assault_operatives/primary/special/rocket_launcher
-	item_type = /obj/item/gun/ballistic/rocketlauncher/unrestricted
-	magazine = /obj/item/ammo_casing/caseless/rocket
+/datum/armament_entry/assault_operatives/primary/sniper_ammo/eepy
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper/sleepytime
 
-/datum/armament_entry/assault_operatives/primary/special/rocket_launcher/after_equip(turf/safe_drop_location, obj/item/item_to_equip)
-	var/obj/item/storage/box/ammo_box/spawned_box = new(safe_drop_location)
-	spawned_box.name = "ROCKETS - [item_to_equip.name]"
-	for(var/i in 1 to 3)
-		new /obj/item/ammo_casing/caseless/rocket(spawned_box)
+/datum/armament_entry/assault_operatives/primary/sniper_ammo/penetrator
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper/penetrator
