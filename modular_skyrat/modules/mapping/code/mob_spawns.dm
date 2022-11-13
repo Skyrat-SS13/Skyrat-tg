@@ -211,10 +211,6 @@
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/corporateliasion
 	ears = /obj/item/radio/headset/interdyne/command
 
-/datum/outfit/ds2/syndicate/corporateliaison/post_equip(mob/living/carbon/human/human_target, visualsOnly)
-    var/obj/item/organ/internal/cyberimp/arm/lighter/zippo = new /obj/item/organ/internal/cyberimp/arm/lighter
-    zippo.Insert(human_target)
-
 /datum/outfit/ds2/syndicate/masteratarms
 	name = "DS-2 Master At Arms"
 	uniform = /obj/item/clothing/under/syndicate/combat
