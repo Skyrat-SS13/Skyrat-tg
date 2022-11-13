@@ -5,8 +5,10 @@
 	desc = "A bullpup rifle chambered in 5.6x30mm and painted in an ominous matte black. Strangely, the gun also seems to lack any form of manufacturer markings."
 	icon_state = "ige_assault"
 	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns.dmi'
+	inhand_icon_state = "ige_assault"
 	righthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_lefthand.dmi'
+	worn_icon_state = "ige_assault"
 	worn_icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_worn.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
@@ -15,8 +17,8 @@
 	can_suppress = TRUE
 	suppressor_x_offset = 4
 	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_FULLY_AUTOMATIC)
-	burst_size = 1
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_BURST_SHOT)
+	burst_size = 2
 	fire_delay = 3
 	company_flag = COMPANY_REMOVED
 
@@ -46,8 +48,10 @@
 	desc = "A toploader submachinegun chambered in 9x19mm and painted in an ominous matte black. Strangely, the gun also seems to lack any form of manufacturer markings."
 	icon_state = "ige_smg"
 	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns.dmi'
+	inhand_icon_state = "ige_smg"
 	righthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_lefthand.dmi'
+	worn_icon_state = "ige_smg"
 	worn_icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_worn.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
@@ -81,8 +85,10 @@
 	desc = "A magazine fed semi-automatic shotgun chambered in 12 GA and painted in an ominous matte black. Strangely, the gun also seems to lack any form of manufacturer markings."
 	icon_state = "ige_shotgun"
 	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns.dmi'
+	inhand_icon_state = "ige_shotgun"
 	righthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_lefthand.dmi'
+	worn_icon_state = "ige_shotgun"
 	worn_icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_worn.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
@@ -101,19 +107,31 @@
 	desc = "A seven round magazine built for 12 GA, intended for use in the IGE-340 shotgun."
 	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/magazines.dmi'
 	icon_state = "ige_shotgun_mag"
-	ammo_type = /obj/item/ammo_casing/shotgun/magnum
+	ammo_type = /obj/item/ammo_casing/shotgun/buckshot
 	caliber = CALIBER_SHOTGUN
 	max_ammo = 7
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_AP)
+	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_AP, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_IHDF, AMMO_TYPE_INCENDIARY)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/rubbershot
 	ammo_type = /obj/item/ammo_casing/shotgun/rubbershot
 	round_type = AMMO_TYPE_RUBBER
 
-/obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/ap_slugs
-	ammo_type = /obj/item/ammo_casing/shotgun/pt20
+/obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/flechette
+	ammo_type = /obj/item/ammo_casing/shotgun/flechette
 	round_type = AMMO_TYPE_AP
+
+/obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/hollowpoint
+	ammo_type = /obj/item/ammo_casing/shotgun/hp
+	round_type = AMMO_TYPE_HOLLOWPOINT
+
+/obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/beehive
+	ammo_type = /obj/item/ammo_casing/shotgun/beehive
+	round_type = AMMO_TYPE_IHDF
+
+/obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/dragonsbreath
+	ammo_type = /obj/item/ammo_casing/shotgun/dragonsbreath
+	round_type = AMMO_TYPE_INCENDIARY
 
 // Sniper
 
@@ -122,8 +140,10 @@
 	desc = "A magazine fed bolt-action rifle with a short enough barrel that your shoulder hurts just looking at it. Chambered in .416 Stabilis, it is painted in an ominous matte black and seems to lack any form of manufacturer markings."
 	icon_state = "ige_sniper"
 	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns.dmi'
+	inhand_icon_state = "ige_sniper"
 	righthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_lefthand.dmi'
+	worn_icon_state = "ige_sniper"
 	worn_icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_worn.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
@@ -153,8 +173,12 @@
 	caliber = CALIBER_50
 	max_ammo = 5
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER)
+	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_AP)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper/sleepytime
 	ammo_type = /obj/item/ammo_casing/p50/soporific
 	round_type = AMMO_TYPE_RUBBER // I mean like technically nothing bad will happen because of this
+
+/obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper/penetrator
+	ammo_type = /obj/item/ammo_casing/p50/penetrator
+	round_type = AMMO_TYPE_AP
