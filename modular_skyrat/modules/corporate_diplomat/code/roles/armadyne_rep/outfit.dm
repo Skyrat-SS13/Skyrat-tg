@@ -4,7 +4,7 @@
 
 	belt = /obj/item/modular_computer/tablet/pda/armadyne_representative
 	glasses = /obj/item/clothing/glasses/sunglasses // Armadyne glasses are sechuds and make you look like a tool
-	ears = /obj/item/radio/headset/heads/nanotrasen_consultant // Replace with armadyne headset when PMC nerf goes through
+	ears = /obj/item/radio/headset/armadyne/representative
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne

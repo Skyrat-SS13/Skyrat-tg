@@ -19,3 +19,4 @@
 #define span_yellow(str) ("<span class='yellow'>" + str + "</span>")
 #define span_gangradio(str) ("<span class='gangradio'>" + str + "</span>")
 #define span_solfedradio(str) ("<span class='solfedradio'>" + str + "</span>")
+#define span_armadyneradio(str) ("<span class='armadyneradio'>" + str + "</span>")

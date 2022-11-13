@@ -75,5 +75,9 @@ export const RADIO_PREFIXES = {
     id: 'solfed',
     label: 'Sol',
   },
+  ':r ': {
+    id: 'armadyne',
+    label: 'Arm',
+  },
   // SKYRAT EDIT END
 } as const;

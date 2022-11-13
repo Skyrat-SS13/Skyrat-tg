@@ -93,7 +93,7 @@
 	name = "Armadyne Corporate Representative"
 
 	suit_store = /obj/item/modular_computer/tablet/pda/security
-	ears = /obj/item/radio/headset/headset_cent/commander
+	ears =/obj/item/radio/headset/armadyne/commander/alt
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne
 	head =  /obj/item/clothing/head/beret/sec/peacekeeper/armadyne
@@ -115,7 +115,7 @@
 	name = "Armadyne Corporate Security"
 
 	suit_store = /obj/item/modular_computer/tablet/pda/security
-	ears = /obj/item/radio/headset/headset_sec/alt
+	ears = /obj/item/radio/headset/armadyne/alt
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne/tactical
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne
 	head =  /obj/item/clothing/head/beret/sec/peacekeeper/armadyne
@@ -169,10 +169,6 @@
 	if(visualsOnly)
 		return
 
-	var/obj/item/radio/R = H.ears
-	R.set_frequency(FREQ_CENTCOM)
-	R.name = "Armadyne Headset"
-
 	var/obj/item/card/id/W = H.wear_id
 	if(W)
 		W.registered_name = H.real_name
@@ -181,6 +177,49 @@
 
 /obj/item/card/id/armadyne/corpo/security
 	assignment = "Armadyne Corporate Security"
+
+
+/obj/item/radio/headset/armadyne
+	name = "armadyne headset"
+	desc = "A radio for communicating on classified corporate frequiencies."
+	icon = 'modular_skyrat/modules/sec_haul/icons/misc/radio.dmi'
+	icon_state = "armadyne_headset"
+	freerange = TRUE
+	freqlock = TRUE
+	keyslot = new /obj/item/encryptionkey/headset_sec/armadyne
+
+/obj/item/radio/headset/armadyne/commander
+	name = "armadyne commander headset"
+	command = TRUE
+
+
+/obj/item/radio/headset/armadyne/commander/alt
+	name = "armadyne commander bowman headset"
+	desc = "A radio for communicating on classified corporate frequiencies. Protects ears from flashbangs."
+	icon_state = "armadyne_headset_alt"
+
+/obj/item/radio/headset/armadyne/commander/alt/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
+
+
+/obj/item/radio/headset/armadyne/alt
+	name = "armadyne bowman headset"
+	desc = "A radio for communicating on classified corporate frequiencies. Protects ears from flashbangs."
+	icon_state = "armadyne_headset_alt"
+
+/obj/item/radio/headset/armadyne/alt/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
+
+
+/obj/item/encryptionkey/headset_sec/armadyne
+	name = "armadyne radio encryption key"
+	channels = list(
+		RADIO_CHANNEL_ARMADYNE = 1,
+	)
+	independent = TRUE
+
 
 /datum/antagonist/ert/armadyne
     name = "Armadyne Corporate Security"
