@@ -92,8 +92,10 @@
 	baseturfs = /turf/open/misc/asteroid/lowpressure
 	initial_gas_mix = OPENTURF_LOW_PRESSURE
 	defer_change = TRUE
+	mineralChance = 25	//Higher mineral chance than normal
 
-	mineralSpawnChanceList = list(
+/turf/closed/mineral/random/asteroid/rockplanet/mineral_chances()
+	return list(
 		/obj/item/stack/ore/iron = 40,
 		/obj/item/stack/ore/plasma = 20,
 		/obj/item/stack/ore/silver = 12,
@@ -104,11 +106,13 @@
 		/obj/item/stack/ore/diamond = 1,
 		/obj/item/stack/ore/bluespace_crystal = 1
 		)
-	mineralChance = 25	//Higher mineral chance than normal
+
 
 /turf/closed/mineral/random/asteroid/rockplanet/labor	//No bluespace for the inmates!
 	icon_state = "rock_labor"
-	mineralSpawnChanceList = list(
+
+/turf/closed/mineral/random/asteroid/rockplanet/labor/mineral_chances()
+	return list(
 		/obj/item/stack/ore/iron = 95,
 		/obj/item/stack/ore/plasma = 30,
 		/obj/item/stack/ore/silver = 20,
