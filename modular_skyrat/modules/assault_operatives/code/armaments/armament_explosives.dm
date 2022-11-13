@@ -7,9 +7,25 @@
 	item_type = /obj/item/grenade/syndieminibomb
 	cost = 3
 
+/datum/armament_entry/assault_operatives/explosives/bioterror
+	item_type = /obj/item/grenade/chem_grenade/bioterrorfoam
+	cost = 3
+
+/datum/armament_entry/assault_operatives/explosives/minibomb
+	item_type = /obj/item/grenade/syndieminibomb
+	cost = 3
+
 /datum/armament_entry/assault_operatives/explosives/emp_grenade
 	item_type = /obj/item/grenade/empgrenade
 	cost = 2
+
+/datum/armament_entry/assault_operatives/explosives/stingbang
+	item_type = /obj/item/grenade/stingbang
+	cost = 2
+
+/datum/armament_entry/assault_operatives/explosives/teargas
+	item_type = /obj/item/grenade/chem_grenade/teargas
+	cost = 1
 
 /datum/armament_entry/assault_operatives/explosives/flashbang
 	item_type = /obj/item/grenade/flashbang
