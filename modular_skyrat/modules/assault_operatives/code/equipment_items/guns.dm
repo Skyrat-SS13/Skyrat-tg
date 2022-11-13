@@ -13,7 +13,7 @@
 
 /obj/item/gun/ballistic/automatic/assault_ops_rifle
 	name = "\improper IGE-110 rifle"
-	desc = "A bullpup rifle chambered in 5.6x30mm and painted in an ominous matte black. Strangely, the gun also seems to lack any form of manufacturer markings."
+	desc = "A bullpup rifle chambered in 5.6x40mm and painted in an ominous matte black. Strangely, the gun also seems to lack any form of manufacturer markings."
 	icon_state = "ige_assault"
 	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns.dmi'
 	inhand_icon_state = "ige_assault"
@@ -44,7 +44,7 @@
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle
 	name = "\improper IGE-110 magazine"
-	desc = "A twenty round magazine built for 5.6x30mm, intended for use in the IGE-110 rifle."
+	desc = "A twenty round magazine built for 5.6x40mm, intended for use in the IGE-110 rifle."
 	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/magazines.dmi'
 	icon_state = "ige_assault_mag"
 	ammo_type = /obj/item/ammo_casing/realistic/a762x39
