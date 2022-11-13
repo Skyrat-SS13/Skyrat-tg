@@ -11,95 +11,106 @@
 #define SUBCATEGORY_SNIPER_AMMO "Speciality Marksman Rifle Ammo"
 
 /datum/armament_entry/assault_operatives/primary
-	category = ARMAMENT_CATEGORY_PRIMARY
+	category = "Long Arms"
 	mags_to_spawn = 3
 	cost = 10
 
 /datum/armament_entry/assault_operatives/primary/rifle
-	subcategory = SUBCATEGORY_RIFLE
+	subcategory = OPS_SUBCATEGORY_RIFLE
 
 /datum/armament_entry/assault_operatives/primary/rifle/assault_ops_rifle
 	item_type = /obj/item/gun/ballistic/automatic/assault_ops_rifle
 
 /datum/armament_entry/assault_operatives/primary/rifle_ammo
-	subcategory = SUBCATEGORY_RIFLE_AMMO
+	subcategory = OPS_SUBCATEGORY_RIFLE_AMMO
 	max_purchase = 10
 	cost = 1
 
 /datum/armament_entry/assault_operatives/primary/rifle_ammo/rubber
+	name = "\improper IGE-110 rubber magazine"
 	description = "Rifle ammo that is more likely to exhaust whoever its shot at, rather than killing them."
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle/rubber
 
 /datum/armament_entry/assault_operatives/primary/rifle_ammo/ap
+	name = "\improper IGE-110 armor piercing magazine"
 	description = "Rifle ammo built specifically to penetrate through armor."
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle/ap
 
 
 /datum/armament_entry/assault_operatives/primary/submachinegun
-	subcategory = SUBCATEGORY_SMG
+	subcategory = OPS_SUBCATEGORY_SMG
 
 /datum/armament_entry/assault_operatives/primary/submachinegun/assault_ops_smg
 	item_type = /obj/item/gun/ballistic/automatic/assault_ops_smg
 
 /datum/armament_entry/assault_operatives/primary/submachinegun_ammo
-	subcategory = SUBCATEGORY_SMG_AMMO
+	subcategory = OPS_SUBCATEGORY_SMG_AMMO
 	max_purchase = 10
 	cost = 1
 
 /datum/armament_entry/assault_operatives/primary/submachinegun_ammo/rubber
+	name = "\improper IGE-260 rubber magazine"
 	description = "Submachine gun ammo that is more likely to exhaust whoever its shot at, rather than killing them."
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg/rubber
 
 /datum/armament_entry/assault_operatives/primary/submachinegun_ammo/hp
+	name = "\improper IGE-260 hollowpoint magazine"
 	description = "Submachine gun ammo that hurts unarmored targets more, in exchange for worse performance against armor."
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg/hp
 
 /datum/armament_entry/assault_operatives/primary/shotgun
-	subcategory = SUBCATEGORY_SHOTGUN
+	subcategory = OPS_SUBCATEGORY_SHOTGUN
 
 /datum/armament_entry/assault_operatives/primary/shotgun/assault_ops_shotgun
 	item_type = /obj/item/gun/ballistic/automatic/assault_ops_shotgun
 
 /datum/armament_entry/assault_operatives/primary/shotgun_ammo
-	subcategory = SUBCATEGORY_SHOTGUN_AMMO
+	subcategory = OPS_SUBCATEGORY_SHOTGUN_AMMO
 	max_purchase = 10
 	cost = 1
 
 /datum/armament_entry/assault_operatives/primary/shotgun_ammo/rubber
+	name = "\improper IGE-340 rubbershot magazine"
 	description = "Shotgun ammo that's much like buckshot, but more likely to exhaust whoever its shot at rather than killing them."
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/rubbershot
 
 /datum/armament_entry/assault_operatives/primary/shotgun_ammo/flechette
+	name = "\improper IGE-340 flechette magazine"
 	description = "Shotgun ammo that fires armor piercing flechettes that can cause some nasty wounds."
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/flechette
 
 /datum/armament_entry/assault_operatives/primary/shotgun_ammo/hollowpoint
+	name = "\improper IGE-340 hollowpoint slug magazine"
 	description = "Shotgun ammo that fires a large hollowpoint slug that hurts unarmored targets a lot more, in exchange for worse performance against armor."
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/hollowpoint
 
 /datum/armament_entry/assault_operatives/primary/shotgun_ammo/beehive
+	name = "\improper IGE-340 'beehive' magazine"
 	description = "Shotgun ammo that fires a spread of smart-bouncing pellets, that are more likely to exhaust whoever its shot at rather than killing them."
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/beehive
 
 /datum/armament_entry/assault_operatives/primary/shotgun_ammo/dragonsbreath
+	name = "\improper IGE-340 dragonsbreath magazine"
 	description = "Shotgun ammo that fires a spread of incendiary projectiles, creating a wall of fire whichever direction they are shot in."
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/dragonsbreath
 
 /datum/armament_entry/assault_operatives/primary/sniper
-	subcategory = SUBCATEGORY_SNIPER
+	subcategory = OPS_SUBCATEGORY_SNIPER
 
 /datum/armament_entry/assault_operatives/primary/sniper/assault_ops_sniper
 	item_type = /obj/item/gun/ballistic/rifle/boltaction/assault_ops_sniper
 
 /datum/armament_entry/assault_operatives/primary/sniper_ammo
-	subcategory = SUBCATEGORY_SNIPER_AMMO
+	subcategory = OPS_SUBCATEGORY_SNIPER_AMMO
 	max_purchase = 10
 	cost = 1
 
 /datum/armament_entry/assault_operatives/primary/sniper_ammo/eepy
+	name = "\improper IGE-410 soporific magazine"
 	description = "Sniper ammo that will put whoever it hits right to sleep, rather than killing them."
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper/sleepytime
 
 /datum/armament_entry/assault_operatives/primary/sniper_ammo/penetrator
+	name = "\improper IGE-410 penetrator magazine"
 	description = "Sniper ammo that is capable of penetrating through multiple walls and people at once."
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper/penetrator
