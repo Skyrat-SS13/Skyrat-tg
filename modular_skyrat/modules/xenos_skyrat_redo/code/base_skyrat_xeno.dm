@@ -75,14 +75,17 @@
 	/// Some xeno abilities block other abilities from being used, this allows them to get around that in cases where it is needed
 	var/can_be_used_always = FALSE
 
-/datum/action/cooldown/alien/skyrat/IsAvailable()
+/datum/action/cooldown/alien/skyrat/IsAvailable(feedback = FALSE)
 	. = ..()
-	if(!isalien(owner))
+	if(!.)
 		return FALSE
+
+	if(can_be_used_always)
+		return TRUE
+
 	var/mob/living/carbon/alien/adult/skyrat/owner_alien = owner
-	if(!can_be_used_always)
-		if(owner_alien.unable_to_use_abilities)
-			return FALSE
+	if(!istype(owner_alien) || owner_alien.unable_to_use_abilities)
+		return FALSE
 
 /datum/action/small_sprite/skyrat_xeno
 	small_icon = 'icons/obj/toys/plushes.dmi'

@@ -71,12 +71,14 @@
 				adjustOxyLoss(200/damage_mod)
 
 			if(damagetype & MANUAL_SUICIDE) //Assume the object will handle the death.
+				investigate_log("has died from committing suicide[held_item ? " with [held_item]" : ""].", INVESTIGATE_DEATHS)
 				return
 
 			//If something went wrong, just do normal oxyloss
 			if(!(damagetype & (BRUTELOSS | FIRELOSS | TOXLOSS | OXYLOSS) ))
 				adjustOxyLoss(max(200 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 
+			investigate_log("has died from committing suicide[held_item ? " with [held_item]" : ""].", INVESTIGATE_DEATHS)
 			death(FALSE)
 			ghostize(FALSE) // Disallows reentering body and disassociates mind
 
@@ -108,6 +110,7 @@
 		suicide_log()
 
 		adjustOxyLoss(max(200 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
+		investigate_log("has died from committing suicide[held_item ? " with [held_item]" : ""].", INVESTIGATE_DEATHS)
 		death(FALSE)
 		ghostize(FALSE) // Disallows reentering body and disassociates mind
 
@@ -227,6 +230,7 @@
 //SKYRAT EDIT REMOVAL END
 
 /mob/living/proc/suicide_log()
+	investigate_log("has died from committing suicide.", INVESTIGATE_DEATHS)
 	log_message("committed suicide as [src.type]", LOG_ATTACK)
 
 /mob/living/carbon/human/suicide_log()
