@@ -31,7 +31,7 @@
 
 /obj/item/clothing/suit/jacket/solfed_liaison/casual
 	name = "outing jacket"
-	desc = "A brown jacket, that while stiff is more comfortable than some formal attire."
+	desc = "A brown jacket that is more comfortable than most formal attire if still a bit stiff."
 	icon_state = "casual_jacket"
 
 /obj/item/clothing/suit/jacket/solfed_liaison/formal
