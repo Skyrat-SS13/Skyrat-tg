@@ -9,34 +9,34 @@
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_CUSTOM
 	limb_id = SPECIES_VOX
 
-/obj/item/bodypart/l_arm/mutant/vox
+/obj/item/bodypart/arm/left/mutant/vox
 	icon_greyscale = BODYPART_ICON_VOX
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_CUSTOM
 	limb_id = SPECIES_VOX
 
-/obj/item/bodypart/r_arm/mutant/vox
+/obj/item/bodypart/arm/right/mutant/vox
 	icon_greyscale = BODYPART_ICON_VOX
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_CUSTOM
 	limb_id = SPECIES_VOX
 
-/obj/item/bodypart/l_leg/mutant/vox
+/obj/item/bodypart/leg/left/mutant/vox
 	icon_greyscale = BODYPART_ICON_VOX
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_CUSTOM
 	limb_id = SPECIES_VOX
-	digitigrade_type = /obj/item/bodypart/l_leg/digitigrade/vox
+	digitigrade_type = /obj/item/bodypart/leg/left/digitigrade/vox
 
-/obj/item/bodypart/r_leg/mutant/vox
+/obj/item/bodypart/leg/right/mutant/vox
 	icon_greyscale = BODYPART_ICON_VOX
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_CUSTOM
 	limb_id = SPECIES_VOX
-	digitigrade_type = /obj/item/bodypart/r_leg/digitigrade/vox
+	digitigrade_type = /obj/item/bodypart/leg/right/digitigrade/vox
 
-/obj/item/bodypart/l_leg/digitigrade/vox
+/obj/item/bodypart/leg/left/digitigrade/vox
 	icon_greyscale = BODYPART_ICON_VOX
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_CUSTOM
 	base_limb_id = SPECIES_VOX
 
-/obj/item/bodypart/r_leg/digitigrade/vox
+/obj/item/bodypart/leg/right/digitigrade/vox
 	icon_greyscale = BODYPART_ICON_VOX
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_CUSTOM
 	base_limb_id = SPECIES_VOX
