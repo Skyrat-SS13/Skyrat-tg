@@ -20,7 +20,10 @@
 	slowdown_active = 0
 	ui_theme = "syndicate"
 	slot_flags = ITEM_SLOT_BELT
-	inbuilt_modules = list(/obj/item/mod/module/storage/belt, /obj/item/mod/module/chameleon/contractor, /obj/item/mod/module/welding/camera_vision)
+	inbuilt_modules = list(/obj/item/mod/module/storage/belt,
+	/obj/item/mod/module/chameleon/contractor,
+	/obj/item/mod/module/welding/camera_vision,
+	/obj/item/mod/module/stealth,)
 	allowed_suit_storage = list(
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
@@ -73,3 +76,7 @@
 		/obj/item/mod/module/holster,
 		/obj/item/mod/module/status_readout/generic,
 	)
+
+/obj/machinery/suit_storage_unit/industrial/assault_operative
+	mod_type = /obj/item/mod/control/pre_equipped/stealth_operative
+	storage_type = /obj/item/tank/internals/emergency_oxygen/double
