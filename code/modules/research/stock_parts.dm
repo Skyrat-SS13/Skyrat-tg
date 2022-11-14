@@ -80,7 +80,7 @@ If you create T5+ please take a pass at mech_fabricator.dm. The parts being good
 	else
 		playsound(src, pshoom_or_beepboopblorpzingshadashwoosh, 40, TRUE)
 
-/obj/item/storage/part_replacer/bluespace//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/storage/part_replacer/bluespace //SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "bluespace rapid part exchange device"
 	desc = "A version of the RPED that allows for replacement of parts and scanning from a distance, along with higher capacity for parts."
 	icon_state = "BS_RPED"
