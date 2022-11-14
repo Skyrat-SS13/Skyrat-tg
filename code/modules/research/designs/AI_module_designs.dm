@@ -183,7 +183,7 @@
 	desc = "Allows for the construction of a Default AI Core Module."
 	id = "default_module"
 	materials = list(/datum/material/glass = 1000, /datum/material/diamond = 2000, /datum/material/bluespace = 1000)
-	build_path = /obj/item/ai_module/core/full/custom
+	build_path = /obj/item/ai_module/core/full/armadyne_safeguard // SKYRAT EDIT - Buildable default
 	category = list(
 		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
 	)
