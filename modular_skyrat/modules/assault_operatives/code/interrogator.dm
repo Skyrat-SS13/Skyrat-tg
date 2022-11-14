@@ -204,8 +204,8 @@
 
 	var/obj/structure/test_structure = new() // This is apparently the most intuative way to check if a turf is able to support entering.
 
-	for(var/area/station/maintenance/maint_area in world)
-		for(var/turf/floor in maint_area)
+	for(var/area/station/maintenance/maint_area in GLOB.areas)
+		for(var/turf/floor as anything in maint_area.get_contained_turfs())
 			if(!is_station_level(floor.z))
 				continue
 			if(floor.Enter(test_structure))
