@@ -1,3 +1,5 @@
+//We cap max disease symptoms at 5
+//and we only add symptoms every 30 minutes instead of 10, since our rounds are longer
 /datum/round_event/disease_outbreak/advanced/start()
 	var/datum/round_event_control/disease_outbreak/advanced/disease_event = control
 	afflicted += disease_event.disease_candidates
