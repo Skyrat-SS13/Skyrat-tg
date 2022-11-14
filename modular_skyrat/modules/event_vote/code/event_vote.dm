@@ -330,7 +330,7 @@
 		return FALSE
 	if(players_amt < min_players)
 		return FALSE
-	if(holidayID && (!SSevents.holidays || !SSevents.holidays[holidayID]))
+	if(holidayID && (!check_holidays(holidayID)))
 		return FALSE
 	if(EMERGENCY_ESCAPED_OR_ENDGAMED)
 		return FALSE
@@ -551,7 +551,7 @@
 	if(owner)
 		owner.event_vote()
 
-/datum/action/vote_event/IsAvailable()
+/datum/action/vote_event/IsAvailable(feedback = FALSE)
 	return TRUE
 
 /datum/action/vote_event/proc/remove_from_client()

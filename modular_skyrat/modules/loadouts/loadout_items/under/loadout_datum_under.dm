@@ -162,7 +162,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/jumpsuit/hlscientist
 	name = "Ridiculous Scientist Outfit"
 	item_path = /obj/item/clothing/under/rank/rnd/scientist/skyrat/hlscience
-	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_VANGUARD_OPERATIVE)
+	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR)
 
 /datum/loadout_item/under/jumpsuit/rd_jumpsuit
 	name = "Research Director's Jumpsuit"
@@ -191,7 +191,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/jumpsuit/utility_sci
 	name = "Science Utility Uniform"
 	item_path = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility
-	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_VANGUARD_OPERATIVE, JOB_SCIENCE_GUARD)
+	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_SCIENCE_GUARD)
 
 /datum/loadout_item/under/jumpsuit/utility_cargo
 	name = "Supply Utility Uniform"
@@ -241,7 +241,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/vicvest
 	name = "Recolorable Buttondown Shirt with Double-Breasted Vest"
-	item_path = /obj/item/clothing/under/costume/skyrat/vicvest
+	item_path = /obj/item/clothing/under/pants/skyrat/vicvest
 
 /datum/loadout_item/under/miscellaneous/slacks
 	name = "Recolorable Slacks"
@@ -302,6 +302,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/purple_short
 	name = "Purple Shorts"
 	item_path = /obj/item/clothing/under/shorts/purple
+
+/datum/loadout_item/under/miscellaneous/recolorable_kilt
+	name = "Recolorable Kilt"
+	item_path = /obj/item/clothing/under/pants/skyrat/kilt
 
 //TODO: split loadout's miscellaneous to have "Pants/Shorts" and "Dresses/Skirts" as options too. Misc is stupid.
 
@@ -433,9 +437,13 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Recolorable Cheongsam"
 	item_path = /obj/item/clothing/under/costume/skyrat/cheongsam
 
+/datum/loadout_item/under/miscellaneous/kimono
+	name = "Fancy Kimono"
+	item_path =  /obj/item/clothing/under/costume/skyrat/kimono
+
 /datum/loadout_item/under/miscellaneous/chaps
 	name = "Black Chaps"
-	item_path = /obj/item/clothing/under/pants/chaps
+	item_path = /obj/item/clothing/under/pants/skyrat/chaps
 
 /datum/loadout_item/under/miscellaneous/tracky
 	name = "Blue Tracksuit"
@@ -598,6 +606,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Formal Red Dress"
 	item_path = /obj/item/clothing/under/dress/skyrat/redformal
 
+/datum/loadout_item/under/formal/countessdress
+	name = "Countess Dress"
+	item_path = /obj/item/clothing/under/dress/skyrat/countess
+
 /datum/loadout_item/under/formal/assistant
 	name = "Assistant Formal"
 	item_path = /obj/item/clothing/under/misc/assistantformal
@@ -749,6 +761,14 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/fancy_suit
 	name = "Fancy Suit"
 	item_path = /obj/item/clothing/under/suit/fancy
+
+/datum/loadout_item/under/formal/recolorable_suit
+	name = "Recolorable Formal Suit"
+	item_path = /obj/item/clothing/under/suit/skyrat/recolorable
+
+/datum/loadout_item/under/formal/recolorable_suitskirt
+	name = "Recolorable Formal Suitskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/recolorable/skirt
 
 /datum/loadout_item/under/formal/trek_command
 	name = "Trekkie Command Uniform"

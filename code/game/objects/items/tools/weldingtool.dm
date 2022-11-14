@@ -99,9 +99,9 @@
 	open_flame()
 
 
-/obj/item/weldingtool/suicide_act(mob/user)
+/obj/item/weldingtool/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] welds [user.p_their()] every orifice closed! It looks like [user.p_theyre()] trying to commit suicide!"))
-	return (FIRELOSS)
+	return FIRELOSS
 
 /obj/item/weldingtool/screwdriver_act(mob/living/user, obj/item/tool)
 	flamethrower_screwdriver(tool, user)
@@ -122,9 +122,9 @@
 /obj/item/weldingtool/use_tool(atom/target, mob/living/user, delay, amount, volume, datum/callback/extra_checks)
 	var/mutable_appearance/sparks = mutable_appearance('icons/effects/welding_effect.dmi', "welding_sparks", GASFIRE_LAYER, src, ABOVE_LIGHTING_PLANE)
 	target.add_overlay(sparks)
-	target.update_overlays_on_z += sparks
+	LAZYADD(update_overlays_on_z, sparks)
 	. = ..()
-	target.update_overlays_on_z -= sparks
+	LAZYREMOVE(update_overlays_on_z, sparks)
 	target.cut_overlay(sparks)
 
 /obj/item/weldingtool/attack(mob/living/carbon/human/attacked_humanoid, mob/living/user)

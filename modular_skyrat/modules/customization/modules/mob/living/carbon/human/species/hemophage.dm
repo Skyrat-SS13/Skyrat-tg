@@ -43,7 +43,7 @@
 
 
 /datum/species/hemophage/check_roundstart_eligible()
-	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
+	if(check_holidays(HALLOWEEN))
 		return TRUE
 
 	return ..()
@@ -54,7 +54,7 @@
 	to_chat(new_hemophage, "[info_text]")
 	new_hemophage.update_body(0)
 	new_hemophage.set_safe_hunger_level()
-	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
+	if(check_holidays(HALLOWEEN))
 		halloween_version = TRUE
 
 
@@ -74,6 +74,7 @@
 
 	if(hemophage.blood_volume <= BLOOD_VOLUME_SURVIVE)
 		to_chat(hemophage, span_danger("You ran out of blood!"))
+		hemophage.investigate_log("starved to death from lack of blood as a hemophage.", INVESTIGATE_DEATHS)
 		hemophage.death() // Owch! Ran out of blood.
 
 	if(halloween_version)// If hemophages have bat form, they cannot enter the church

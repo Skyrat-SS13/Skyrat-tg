@@ -266,6 +266,7 @@
 	greyscale_colors = "#4d4d4d#808080"
 	greyscale_config = /datum/greyscale_config/heck_suit
 	greyscale_config_worn = /datum/greyscale_config/heck_suit/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/heck_suit/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/suit/hooded/hostile_environment/Initialize(mapload)
@@ -865,7 +866,7 @@
 	. += span_notice("Both modes will build up existing bleed effects, doing a burst of high damage if the bleed is built up high enough.")
 	. += span_notice("Transforming it immediately after an attack causes the next attack to come out faster.")
 
-/obj/item/melee/cleaving_saw/suicide_act(mob/user)
+/obj/item/melee/cleaving_saw/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] is [is_open ? "closing [src] on [user.p_their()] neck" : "opening [src] into [user.p_their()] chest"]! It looks like [user.p_theyre()] trying to commit suicide!"))
 	attack_self(user)
 	return BRUTELOSS

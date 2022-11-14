@@ -4,7 +4,7 @@
 
 #define CHUNK_SIZE 16 // Only chunk sizes that are to the power of 2. E.g: 2, 4, 8, 16, etc..
 /// Takes a position, transforms it into a chunk bounded position. Indexes at 1 so it'll land on actual turfs always
-#define GET_CHUNK_COORD(v) (FLOOR(v, CHUNK_SIZE) + 1)
+#define GET_CHUNK_COORD(v) (max((FLOOR(v, CHUNK_SIZE)), 1))
 GLOBAL_DATUM_INIT(cameranet, /datum/cameranet, new)
 
 /datum/cameranet
@@ -67,16 +67,18 @@ GLOBAL_DATUM_INIT(cameranet, /datum/cameranet, new)
 
 	for(var/mob/camera/ai_eye/eye as anything in moved_eyes)
 		var/list/visibleChunks = list()
+		///Get the eye's turf in case it's located in an object like a mecha
+		var/turf/eye_turf = get_turf(eye)
 		if(eye.loc)
 			var/static_range = eye.static_visibility_range
-			var/x1 = max(1, eye.x - static_range)
-			var/y1 = max(1, eye.y - static_range)
-			var/x2 = min(world.maxx, eye.x + static_range)
-			var/y2 = min(world.maxy, eye.y + static_range)
+			var/x1 = max(1, eye_turf.x - static_range)
+			var/y1 = max(1, eye_turf.y - static_range)
+			var/x2 = min(world.maxx, eye_turf.x + static_range)
+			var/y2 = min(world.maxy, eye_turf.y + static_range)
 
 			for(var/x = x1; x <= x2; x += CHUNK_SIZE)
 				for(var/y = y1; y <= y2; y += CHUNK_SIZE)
-					visibleChunks |= getCameraChunk(x, y, eye.z)
+					visibleChunks |= getCameraChunk(x, y, eye_turf.z)
 
 		var/list/remove = eye.visibleCameraChunks - visibleChunks
 		var/list/add = visibleChunks - eye.visibleCameraChunks
@@ -121,8 +123,8 @@ GLOBAL_DATUM_INIT(cameranet, /datum/cameranet, new)
  * If you want to update the chunks around an object, without adding/removing a camera, use choice 2.
  */
 /datum/cameranet/proc/majorChunkChange(atom/c, choice)
-	if(!c)
-		return
+	if(QDELETED(c) && choice == 1)
+		CRASH("Tried to add a qdeleting camera to the net")
 
 	var/turf/T = get_turf(c)
 	if(T)

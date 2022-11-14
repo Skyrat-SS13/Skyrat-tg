@@ -12,16 +12,6 @@
 	suicide_cry = "I HAVE NO IDEA WHAT THIS THING DOES!!"
 	count_against_dynamic_roll_chance = FALSE
 	var/datum/team/ashwalkers/ashie_team
-	//SKYRAT EDIT: Recipes for Tribals
-	///The list of recipes that will be learned on inheriting the antag datum
-	var/static/list/antag_recipes = list(
-		/datum/crafting_recipe/bonesword,
-		/datum/crafting_recipe/ash_recipe/macahuitl,
-		/datum/crafting_recipe/boneaxe,
-		/datum/crafting_recipe/bonespear,
-		/datum/crafting_recipe/bonedagger,
-	)
-	//SKYRAT EDIT: Recipes for Tribals
 
 /datum/antagonist/ashwalker/create_team(datum/team/team)
 	if(team)
@@ -41,10 +31,6 @@
 /datum/antagonist/ashwalker/on_gain()
 	. = ..()
 	RegisterSignal(owner.current, COMSIG_MOB_EXAMINATE, .proc/on_examinate)
-	//SKYRAT EDIT: Recipes for Tribals
-	for(var/recipe_datum in antag_recipes)
-		owner.teach_crafting_recipe(recipe_datum)
-	//SKYRAT EDIT: Recipes for Tribals
 
 /datum/antagonist/ashwalker/on_removal()
 	. = ..()
