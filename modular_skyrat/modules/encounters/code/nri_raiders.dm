@@ -63,52 +63,53 @@
 	sechud_icon_state = "hud_nri"
 	access = list(ACCESS_SYNDICATE, ACCESS_MAINT_TUNNELS)
 
-/obj/effect/mob_spawn/ghost_role/human/pirate/nri
+/obj/effect/mob_spawn/ghost_role/human/nri_raider
 	name = "NRI Raider sleeper"
 	desc = "Cozy. You get the feeling you aren't supposed to be here, though..."
-	icon = 'icons/obj/machines/sleeper.dmi'
-	icon_state = "sleeper_s"
-	mob_name = "Novaya Rossiyskaya Imperiya raiding party's marine"
-	outfit = /datum/outfit/pirate/nri_marine
-	rank = "NRI Marine"
+	prompt_name = "a NRI Marine"
+	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi'
+	icon_state = "cryopod"
+	mob_species = /datum/species/human
+	faction = list("raider")
+	var/rank = "NRI Marine"
 	you_are_text = "You are a Novaya Rossiyskaya Imperiya task force."
 	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by demanding the funds. Force approach is usually recommended, but isn't the only method."
 	important_text = "Allowed races are humans, Akulas, IPCs. Follow your field officer's orders. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. Roleplay accordingly."
+	outfit = /datum/outfit/pirate/nri_marine
 	spawner_job_path = null
 	restricted_species = list(/datum/species/human, /datum/species/akula, /datum/species/robotic/ipc)
 	random_appearance = FALSE
 	show_flavor = TRUE
 
-/obj/effect/mob_spawn/ghost_role/human/pirate/nri/special(mob/living/carbon/human/spawned_human)
+/obj/effect/mob_spawn/ghost_role/human/nri_raider/special(mob/living/carbon/human/spawned_human)
 	. = ..()
+	var/last_name = pick(GLOB.last_names)
+	spawned_human.fully_replace_character_name(null, "[rank] [last_name]")
 	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
-	spawned_human.remove_language(/datum/language/piratespeak)
-	spawned_human.mind.remove_antag_datum(/datum/antagonist/pirate)
+
+/obj/effect/mob_spawn/ghost_role/human/nri_raider/Destroy()
+	. = ..()
+	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
+	return ..()
 
 /datum/job/fugitive_hunter
 	title = ROLE_FUGITIVE_HUNTER
 	policy_index = ROLE_FUGITIVE_HUNTER
 
-
-/obj/effect/mob_spawn/ghost_role/human/pirate/nri/generate_pirate_name(spawn_gender)
-	var/last_name = pick(GLOB.last_names)
-	return "[rank] [last_name]"
-
-/obj/effect/mob_spawn/ghost_role/human/pirate/nri/captain
+/obj/effect/mob_spawn/ghost_role/human/nri_raider/officer
 	name = "NRI Officer sleeper"
 	mob_name = "Novaya Rossiyskaya Imperiya raiding party's field officer"
 	outfit = /datum/outfit/pirate/nri_officer
 	rank = "Field Officer"
 	important_text = "Allowed races are humans, Akulas, IPCs. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. Roleplay accordingly. There is an important document in your pocket I'd advise you to read and keep safe."
 
-/obj/effect/mob_spawn/ghost_role/human/pirate/nri/captain/special(mob/living/carbon/human/spawned_human)
+/obj/effect/mob_spawn/ghost_role/human/nri_raider/officer/special(mob/living/carbon/human/spawned_human)
 	. = ..()
 	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
 	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
 	spawned_human.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_MIND)
-	spawned_human.remove_language(/datum/language/piratespeak)
 
-/obj/effect/mob_spawn/ghost_role/human/pirate/nri/gunner
+/obj/effect/mob_spawn/ghost_role/human/nri_raider/marine
 	rank = "Marine"
 
 /datum/map_template/shuttle/pirate/nri_raider
@@ -137,9 +138,17 @@
 	alarm_cooldown = 32
 
 /obj/machinery/porta_turret/syndicate/nri_raider
+	name = "anti-projectile turret"
+	desc = "An automatic defense turret designed for point-defense, it's probably not that wise to try approaching it."
 	scan_range = 9
 	shot_delay = 3
-	faction = list("pirate")
+	faction = list("raider")
+	icon = 'modular_skyrat/modules/encounters/icons/turrets.dmi'
+	icon_state = "gun_turret"
+	base_icon_state = "gun_turret"
+	max_integrity = 250
+	stun_projectile = /obj/projectile/bullet/ciws
+	lethal_projectile = /obj/projectile/bullet/ciws
 	lethal_projectile_sound = 'modular_skyrat/modules/encounters/sounds/shell_out_tiny.ogg'
 	stun_projectile_sound = 'modular_skyrat/modules/encounters/sounds/shell_out_tiny.ogg'
 
@@ -151,6 +160,12 @@
         addtimer(CALLBACK(src, .proc/shootAt, target), 8)
         addtimer(CALLBACK(src, .proc/shootAt, target), 12)
         return TRUE
+
+/obj/projectile/bullet/ciws
+	name = "anti-projectile salvo"
+	icon_state = "guardian"
+	damage = 30
+	armour_penetration = 10
 
 /obj/docking_port/mobile/pirate/nri_raider
 	name = "NRI IAC-PV 'Evangelium'" //Nobody will care about the translation but basically NRI Internal Affairs Collegium-Patrol Vessel

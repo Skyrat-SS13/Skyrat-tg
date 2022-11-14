@@ -68,7 +68,7 @@
 	dir = 9
 	},
 /obj/machinery/porta_turret/syndicate/nri_raider{
-	dir = 10
+	dir = 1
 	},
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
@@ -306,18 +306,8 @@
 	dir = 4
 	},
 /obj/machinery/porta_turret/syndicate/nri_raider{
-	dir = 5
-	},
-/obj/structure/deployable_barricade/metal{
-	dir = 1
-	},
-/obj/structure/deployable_barricade/metal{
 	dir = 4
 	},
-/obj/structure/deployable_barricade/metal{
-	dir = 8
-	},
-/obj/structure/deployable_barricade/metal,
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "mG" = (
@@ -372,7 +362,7 @@
 /area/shuttle/pirate/nri)
 "pb" = (
 /obj/machinery/porta_turret/syndicate/nri_raider{
-	dir = 5
+	dir = 1
 	},
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
 /area/shuttle/pirate/nri)
@@ -463,9 +453,7 @@
 	dir = 1
 	},
 /obj/machinery/light/small/red/directional/south,
-/obj/effect/mob_spawn/ghost_role/human/pirate/nri/gunner{
-	dir = 1
-	},
+/obj/effect/mob_spawn/ghost_role/human/nri_raider/marine,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "rp" = (
@@ -597,6 +585,13 @@
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/pod,
+/area/shuttle/pirate/nri)
+"wQ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/mob_spawn/ghost_role/human/nri_raider/marine,
+/turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "wT" = (
 /obj/structure/rack/shelf,
@@ -733,18 +728,8 @@
 	},
 /obj/effect/turf_decal/stripes/corner,
 /obj/machinery/porta_turret/syndicate/nri_raider{
-	dir = 6
-	},
-/obj/structure/deployable_barricade/metal{
-	dir = 1
-	},
-/obj/structure/deployable_barricade/metal{
 	dir = 4
 	},
-/obj/structure/deployable_barricade/metal{
-	dir = 8
-	},
-/obj/structure/deployable_barricade/metal,
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "Bk" = (
@@ -799,9 +784,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/mob_spawn/ghost_role/human/pirate/nri/gunner{
-	dir = 1
-	},
+/obj/effect/mob_spawn/ghost_role/human/nri_raider/officer,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "CP" = (
@@ -1058,12 +1041,10 @@
 /area/shuttle/pirate/nri)
 "Pi" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 1
+	dir = 8
 	},
-/obj/effect/mob_spawn/ghost_role/human/pirate/nri/captain{
-	dir = 1
-	},
-/turf/open/floor/pod/light,
+/obj/machinery/recharge_station,
+/turf/open/floor/pod/dark,
 /area/shuttle/pirate/nri)
 "Pk" = (
 /turf/open/floor/pod,
@@ -1128,9 +1109,7 @@
 /turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
 "SQ" = (
-/obj/machinery/porta_turret/syndicate/nri_raider{
-	dir = 6
-	},
+/obj/machinery/porta_turret/syndicate/nri_raider,
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
 /area/shuttle/pirate/nri)
 "Te" = (
@@ -1258,13 +1237,6 @@
 /obj/machinery/camera/autoname/directional/east,
 /turf/open/floor/plating/airless,
 /area/shuttle/pirate/nri)
-"WY" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/machinery/recharge_station,
-/turf/open/floor/pod/dark,
-/area/shuttle/pirate/nri)
 "Xe" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/survival_pod{
@@ -1300,9 +1272,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/obj/machinery/porta_turret/syndicate/nri_raider{
-	dir = 9
-	},
+/obj/machinery/porta_turret/syndicate/nri_raider,
 /turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "Yd" = (
@@ -1389,17 +1359,17 @@ ot
 (3,1,1) = {"
 ot
 ot
-Fm
-XY
-IY
-IY
-iC
-iC
-iC
-IY
-IY
 bQ
 NE
+IY
+IY
+iC
+iC
+iC
+IY
+IY
+Fm
+XY
 ot
 ot
 "}
@@ -1604,7 +1574,7 @@ hl
 Hz
 TF
 Pk
-Pi
+CC
 Hz
 "}
 (16,1,1) = {"
@@ -1638,7 +1608,7 @@ Ze
 Hz
 Ib
 Pk
-CC
+wQ
 Hz
 "}
 (18,1,1) = {"
@@ -1664,7 +1634,7 @@ Hz
 Hz
 xp
 Hz
-WY
+Pi
 Wa
 wb
 qz
