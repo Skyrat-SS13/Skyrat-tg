@@ -10,6 +10,10 @@
 	item_type = /obj/item/clothing/glasses/thermal
 	cost = 4
 
+/datum/armament_entry/assault_operatives/utility/chem_keycard
+	item_type = /obj/item/keycard/assault_ops_chemistry
+	cost = 3
+
 /datum/armament_entry/assault_operatives/utility/doorjack
 	item_type = /obj/item/card/emag/doorjack
 	name = "Doorjack"
