@@ -91,8 +91,9 @@
 /turf/template_noop,
 /area/template_noop)
 "fV" = (
-/turf/closed/mineral/volcanic/lava_land_surface,
-/area/template_noop)
+/obj/structure/geyser,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/unpowered/ash_walkers)
 "gn" = (
 /obj/structure/stone_tile/block/burnt{
 	dir = 8
@@ -116,6 +117,7 @@
 /obj/item/wrench/ashwalker,
 /obj/item/wirecutters/ashwalker,
 /obj/item/hatchet/wooden,
+/obj/item/weldingtool/mini,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
 "hL" = (
@@ -371,6 +373,7 @@
 /obj/item/wrench/ashwalker,
 /obj/item/wirecutters/ashwalker,
 /obj/item/hatchet/wooden,
+/obj/item/weldingtool/mini,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
 "pn" = (
@@ -809,7 +812,6 @@
 /area/ruin/unpowered/ash_walkers)
 "EQ" = (
 /obj/structure/table/wood,
-/obj/item/storage/bag/tray,
 /obj/item/food/rootdough{
 	pixel_x = 3;
 	pixel_y = 2
@@ -1057,7 +1059,8 @@
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
 "NM" = (
-/turf/closed/mineral/volcanic/lava_land_surface,
+/obj/structure/barricade/wooden,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
 "NP" = (
 /obj/structure/bonfire/dense,
@@ -1316,6 +1319,14 @@
 	},
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
+"UR" = (
+/obj/structure/reagent_forge,
+/obj/structure/stone_tile/slab,
+/obj/item/plate/oven_tray{
+	pixel_y = 5
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/unpowered/ash_walkers)
 "Vw" = (
 /obj/structure/stone_tile/surrounding/cracked{
 	dir = 8
@@ -1444,13 +1455,13 @@ Ly
 cm
 Ly
 Ly
-fV
-fV
-fV
-fV
-fV
-fV
-fV
+mv
+mv
+mv
+mv
+mv
+mv
+mv
 mv
 mv
 mv
@@ -1470,13 +1481,13 @@ mh
 mu
 Ly
 Ly
-fV
-fV
-fV
-fV
-fV
-fV
-fV
+mv
+mv
+mv
+mv
+mv
+mv
+mv
 mv
 mv
 mv
@@ -1498,9 +1509,9 @@ Ly
 NM
 NM
 NM
-fV
-fV
-fV
+mv
+mv
+mv
 Ly
 Ly
 Ly
@@ -1550,7 +1561,7 @@ mZ
 mZ
 Ly
 Ly
-Lz
+UR
 PG
 pD
 ZW
@@ -1636,7 +1647,7 @@ pE
 (9,1,1) = {"
 mv
 mv
-fV
+mv
 Ly
 Ly
 cm
@@ -1660,10 +1671,10 @@ Ly
 "}
 (10,1,1) = {"
 mv
-fV
-fV
-fV
-fV
+mv
+mv
+mv
+mv
 NM
 vB
 JD
@@ -1685,10 +1696,10 @@ Ly
 "}
 (11,1,1) = {"
 mv
-fV
-fV
-fV
-fV
+mv
+mv
+mv
+mv
 NM
 NM
 hr
@@ -1710,11 +1721,11 @@ Ly
 "}
 (12,1,1) = {"
 mv
-fV
-fV
-fV
-fV
-fV
+mv
+mv
+mv
+mv
+mv
 NM
 hd
 Mq
@@ -1735,8 +1746,8 @@ Ly
 "}
 (13,1,1) = {"
 mv
-fV
-fV
+mv
+mv
 pE
 pE
 pE
@@ -1774,7 +1785,7 @@ mZ
 mZ
 mZ
 KS
-mZ
+fV
 mZ
 Mq
 mZ
@@ -1944,7 +1955,7 @@ pE
 pE
 Qe
 HF
-mZ
+fV
 KU
 pE
 pE
@@ -1962,9 +1973,9 @@ mv
 mv
 mv
 mv
-fV
-fV
-fV
+mv
+mv
+mv
 NM
 Mq
 mZ
@@ -1986,10 +1997,10 @@ Ly
 (23,1,1) = {"
 mv
 mv
-fV
-fV
-fV
-fV
+mv
+mv
+mv
+mv
 NM
 mZ
 mZ
@@ -2011,9 +2022,9 @@ Ly
 (24,1,1) = {"
 mv
 mv
-fV
-fV
-fV
+mv
+mv
+mv
 Ly
 cm
 Os
