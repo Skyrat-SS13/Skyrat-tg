@@ -134,7 +134,7 @@
 
 /obj/machinery/base_alarm/nri_raider
 	alarm_sound_file = 'modular_skyrat/modules/encounters/sounds/env_horn.ogg'
-	alarm_cooldown = 31
+	alarm_cooldown = 32
 
 /obj/machinery/porta_turret/syndicate/nri_raider
 	scan_range = 9
