@@ -45,6 +45,18 @@
 /area/station/medical
 	engineering_override_eligible = TRUE
 
+/area/station/security/brig
+	engineering_override_eligible = TRUE
+
+/area/station/security/checkpoint
+	engineering_override_eligible = TRUE
+
+/area/station/security/execution/transfer
+	engineering_override_eligible = TRUE
+
+/area/station/security/prison
+	engineering_override_eligible = TRUE
+
 /area/station/service
 	engineering_override_eligible = TRUE
 
