@@ -1035,6 +1035,7 @@
 		"aiupload",
 		"reset_module",
 		//"asimov_module", // SKYRAT EDIT REMOVAL
+		"armadyne_safeguard_module",
 		"default_module",
 		"nutimov_module",
 		"paladin_module",
