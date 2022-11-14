@@ -2,7 +2,6 @@
 //These are lawsets that side with the station a decent amount.
 //note that these "good" doesn't mean it us actually good for the game, you know? An AI that is too station sided is stupid and hellish in its own way.
 
-
 /datum/ai_laws/default/asimov
 	name = "Three Laws of Robotics"
 	id = "asimov"
