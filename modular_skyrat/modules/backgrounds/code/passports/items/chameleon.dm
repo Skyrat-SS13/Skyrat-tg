@@ -116,7 +116,7 @@
 		if(OPTION_NEW_PHOTO)
 			// I went out of my way to support you simplemobs.
 			if(!ishuman(user))
-				imprint_owner(new_name, new_age, new_faction, new_employment, icon(user.icon, user.icon_state, SOUTH, 0, FALSE))
+				imprint_owner(new_name, new_age, new_faction, new_employment, getFlatIcon(user.icon, defstate = user.icon_state, defdir = SOUTH, no_anim = TRUE))
 				return
 
 			var/icon/headshot_crop = get_flat_existing_human_icon(user, list(SOUTH))

@@ -7,9 +7,6 @@
 		return ..()
 
 	var/assignment = human.mind.assigned_role.title
-	// Bad squatter!
-	if(assignment == JOB_SQUATTER)
-		assignment = JOB_ASSISTANT
 
 	var/datum/data/record/record = new
 	record.fields["name"] = human.real_name

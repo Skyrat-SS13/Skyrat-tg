@@ -24,6 +24,8 @@
 /// Clean and reset backgrounds where appropriate. Typically only does anything on background codedels and renames.
 /// Returns TRUE on any changes made.
 /datum/preference_middleware/backgrounds/proc/sanitize_backgrounds()
+	if(!preferences)
+		return FALSE
 	// I'm not remaking code I already made.
 	if(!verify_origin(list("background" = "[preferences.origin]"), keep_existing_if_valid = TRUE))
 		preferences.origin = null

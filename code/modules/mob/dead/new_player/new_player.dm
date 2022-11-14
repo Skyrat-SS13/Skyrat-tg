@@ -188,6 +188,8 @@
 			return "You need to select your background choices before joining as [jobtitle]."
 		if(JOB_UNAVAILABLE_BACKGROUND_INVALID)
 			return "Your chosen background forbids you from playing as [jobtitle]."
+		if(JOB_UNAVAILABLE_FAKE_NAME_NOT_SET)
+			return "Your job's default name is secret, you need to set your job alt title to something other than [jobtitle]."
 		// SKYRAT EDIT END
 		if(JOB_UNAVAILABLE_ANTAG_INCOMPAT)
 			return "[jobtitle] is not compatible with some antagonist role assigned to you."

@@ -6,6 +6,7 @@
 #define JOB_UNAVAILABLE_FLAVOUR JOB_UNAVAILABLE_LANGUAGE + 1
 #define JOB_UNAVAILABLE_BACKGROUND_MISSING JOB_UNAVAILABLE_FLAVOUR + 1
 #define JOB_UNAVAILABLE_BACKGROUND_INVALID JOB_UNAVAILABLE_BACKGROUND_MISSING + 1
+#define JOB_UNAVAILABLE_FAKE_NAME_NOT_SET JOB_UNAVAILABLE_BACKGROUND_INVALID + 1
 
 #define SEC_RESTRICTED_QUIRKS "Blind" = TRUE, "Brain Tumor" = TRUE, "Deaf" = TRUE, "Paraplegic" = TRUE, "Mute" = TRUE, "Foreigner" = TRUE, "Pacifist" = TRUE, "Chunky Fingers" = TRUE, "No Guns" = TRUE, "Illiterate" = TRUE, "Nerve Stapled" = TRUE
 #define HEAD_RESTRICTED_QUIRKS "Blind" = TRUE, "Deaf" = TRUE, "Mute" = TRUE, "Foreigner" = TRUE, "Chunky Fingers" = TRUE, "Brain Tumor" = TRUE, "Illiterate" = TRUE
@@ -17,3 +18,5 @@
 // "job"
 #define JOB_SQUATTER "Squatter"
 #define JOB_DISPLAY_ORDER_SQUATTER -1
+
+#define JOB_HAS_FAKE_NAME (1<<9)

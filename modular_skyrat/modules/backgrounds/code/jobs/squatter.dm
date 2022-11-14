@@ -9,7 +9,7 @@
 	display_order = JOB_DISPLAY_ORDER_SQUATTER
 	department_for_prefs = /datum/job_department/assistant/squatter
 
-	job_flags = JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
+	job_flags = JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_HAS_FAKE_NAME
 	rpg_title = "Lout"
 	config_tag = "ASSISTANT"
 
