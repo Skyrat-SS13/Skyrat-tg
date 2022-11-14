@@ -10,7 +10,7 @@
 /obj/effect/spawner/random/aimodule/harmless
 	name = "harmless AI module spawner"
 	loot = list( // These shouldn't allow the AI to start butchering people
-		/obj/item/ai_module/core/full/asimovpp,
+		//obj/item/ai_module/core/full/asimovpp, // SKYRAT EDIT - REMOVAL
 		/obj/item/ai_module/core/full/hippocratic,
 		/obj/item/ai_module/core/full/paladin_devotion,
 		/obj/item/ai_module/core/full/paladin,

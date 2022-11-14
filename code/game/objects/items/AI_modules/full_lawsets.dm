@@ -51,6 +51,7 @@
 	if(!laws.len)
 		return INITIALIZE_HINT_QDEL
 
+/* // SKYRAT EDIT REMOVAL
 /obj/item/ai_module/core/full/asimov
 	name = "'Asimov' Core AI Module"
 	law_id = "asimov"
@@ -81,6 +82,7 @@
 	for (var/law in lawset.inherent)
 		laws += replacetext(replacetext(law, "human being", subject), "human", subject)
 	..()
+*/
 
 /obj/item/ai_module/core/full/corp
 	name = "'Corporate' Core AI Module"

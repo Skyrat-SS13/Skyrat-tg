@@ -1034,7 +1034,7 @@
 		"aifixer",
 		"aiupload",
 		"reset_module",
-		"asimov_module",
+		//"asimov_module", // SKYRAT EDIT REMOVAL
 		"default_module",
 		"nutimov_module",
 		"paladin_module",
@@ -1056,7 +1056,7 @@
 	description = "State of the art lawsets to be used for AI research."
 	prereq_ids = list("ai_basic")
 	design_ids = list(
-		"asimovpp_module",
+		//"asimovpp_module", // SKYRAT EDIT REMOVAL
 		"paladin_devotion_module",
 		"dungeon_master_module",
 		"painter_module",

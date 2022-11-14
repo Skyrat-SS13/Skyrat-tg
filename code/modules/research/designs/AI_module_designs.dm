@@ -122,6 +122,7 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
+/* SKYRAT EDIT REMOVAL
 /datum/design/board/asimov
 	name = "Asimov Module"
 	desc = "Allows for the construction of an Asimov AI Core Module."
@@ -132,7 +133,7 @@
 		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
-
+*/
 /datum/design/board/paladin_module
 	name = "P.A.L.A.D.I.N. Module"
 	desc = "Allows for the construction of a P.A.L.A.D.I.N. AI Core Module."
@@ -232,6 +233,7 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
+/* SKYRAT REMOVAL
 /datum/design/board/asimovpp_module
 	name = "Asimov++ Module"
 	desc = "Allows for the construction of a Asimov++ AI Core Module."
@@ -242,6 +244,7 @@
 		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+*/
 
 /datum/design/board/hippocratic_module
 	name = "Hippocratic Module"
