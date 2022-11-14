@@ -1,5 +1,4 @@
-//We cap max disease symptoms at 5
-//and we only add symptoms every 30 minutes instead of 10, since our rounds are longer
+//We cap max disease symptoms at 3 at a preset severity, making them transmissible no matter our round length.
 /datum/round_event/disease_outbreak/advanced/start()
 	var/datum/round_event_control/disease_outbreak/advanced/disease_event = control
 	afflicted += disease_event.disease_candidates
@@ -9,14 +8,13 @@
 		max_symptoms = disease_event.chosen_max_symptoms
 		disease_event.chosen_max_symptoms = null
 	else
-		max_symptoms = 3 + max(FLOOR((world.time - control.earliest_start)/18000, 1),0) //3 symptoms at 20 minutes, plus 1 per 30 minutes.
-		max_symptoms = clamp(max_symptoms, 3, 5) //Capping the virus symptoms prevents the event from becoming "smite one poor player with an -12 transmission hell virus" after a certain round length.
+		max_symptoms = 3 //Consistent symptoms taking into account severity
 
 	if(disease_event.chosen_severity)
 		max_severity = disease_event.chosen_severity
 		disease_event.chosen_severity = null
 	else
-		max_severity = 3 + max(FLOOR((world.time - control.earliest_start)/18000, 1),0) //Max severity doesn't need clamping
+		max_severity = 4 //Don't make it too severe or it won't have transmissibility
 
 	var/datum/disease/advance/advanced_disease = new /datum/disease/advance/random(max_symptoms, max_severity)
 
