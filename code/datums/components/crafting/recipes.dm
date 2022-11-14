@@ -64,6 +64,7 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
 
+<<<<<<< HEAD
 /datum/crafting_recipe/lance
 	name = "Explosive Lance (Grenade)"
 	result = /obj/item/spear/explosive
@@ -76,6 +77,8 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
 
+=======
+>>>>>>> 25d4afc8695 (Retires explosive lance crafting to a nice farm upstate where it has plenty of room to run around (#71256))
 /datum/crafting_recipe/strobeshield
 	name = "Strobe Shield"
 	result = /obj/item/shield/riot/flash
