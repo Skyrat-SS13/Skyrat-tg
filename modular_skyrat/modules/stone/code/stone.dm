@@ -94,7 +94,7 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 /turf/closed/wall/mineral/stone/try_decon(obj/item/item_used, mob/user) // Lets you break down stone walls with stone breaking tools
 	if(item_used.tool_behaviour != TOOL_MINING)
 		return ..()
-		
+
 	if(!item_used.tool_start_check(user, amount = 0))
 		return FALSE
 
@@ -102,7 +102,6 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 
 	if(!item_used.use_tool(src, user, 5 SECONDS))
 		return FALSE
-	balloon_alert_to_viewers("[user] breaks [src] down")
 	dismantle_wall()
 	return TRUE
 
