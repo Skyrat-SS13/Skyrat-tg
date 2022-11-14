@@ -375,12 +375,8 @@ Used by the AI doomsday and the self-destruct nuke.
 	// load the maps
 	for (var/P in parsed_maps)
 		var/datum/parsed_map/pm = P
-<<<<<<< HEAD
 		pm.turf_blacklist = turf_blacklist // SKYRAT EDIT ADDITION - apply blacklist
-		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE))
-=======
 		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE, new_z = TRUE))
->>>>>>> 5b4ba051a08 (Builds logic that manages turfs contained inside an area (#70966))
 			errorList |= pm.original_path
 	// SKYRAT EDIT ADDITION BEGIN - We need to load our templates from cache after our space has been carved out.
 	if(!LAZYLEN(errorList))
