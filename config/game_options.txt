@@ -239,7 +239,7 @@ DEFAULT_LAWS 0
 ## See datums\ai_laws.dm for the full law lists
 ## IE, SPECIFIED_LAWS asimovpp, SPECIFIED_LAWS robocop, SPECIFIED_LAWS antimov
 
-SPECIFIED_LAWS asimovpp
+SPECIFIED_LAWS armadyne_safeguard
 
 ## RANDOM LAWS ##
 ## ------------------------------------------------------------------------------------------
@@ -249,6 +249,8 @@ SPECIFIED_LAWS asimovpp
 ## standard-ish laws. These are fairly ok to run
 #SKYRAT EDIT ADDITION BEGIN
 RANDOM_LAWS armadyne_safeguard
+#RANDOM_LAWS asmimov SKYRAT EDIT: Removes Asimov as a rollable lawset
+#RANDOM_LAWS asimovpp SKYRAT EDIT: Removes Asimov as a rollable lawset
 RANDOM_LAWS paladin
 RANDOM_LAWS robocop
 RANDOM_LAWS corporate
@@ -287,8 +289,8 @@ LAW_WEIGHT custom,0
 LAW_WEIGHT armadyne_safeguard,40
 LAW_WEIGHT dagothbot,8
 #SKYRAT EDIT ADDITION END
-LAW_WEIGHT asimov,0
-LAW_WEIGHT asimovpp,0
+#LAW_WEIGHT asimov,0 SKYRAT EDIT: Removes Asimov as a rollable lawset
+#LAW_WEIGHT asimovpp,5 SKYRAT EDIT: Removes Asimov as a rollable lawset
 LAW_WEIGHT paladin,5
 LAW_WEIGHT paladin5,5
 LAW_WEIGHT robocop,5
