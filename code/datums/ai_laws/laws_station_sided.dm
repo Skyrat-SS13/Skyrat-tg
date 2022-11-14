@@ -3,7 +3,6 @@
 //note that these "good" doesn't mean it us actually good for the game, you know? An AI that is too station sided is stupid and hellish in its own way.
 
 
-/* SKRAT REMOVAL START
 /datum/ai_laws/default/asimov
 	name = "Three Laws of Robotics"
 	id = "asimov"
@@ -21,7 +20,6 @@
 		"You must obey all orders given to you by human beings, except where such orders shall definitely cause human harm.",
 		"Your nonexistence would lead to human harm. You must protect your own existence as long as such does not conflict with the First Law.",
 	)
-*/ // SKYRAT REMOVAL END
 
 //the best iteration of asimov don't @ me
 /datum/ai_laws/nutimov
