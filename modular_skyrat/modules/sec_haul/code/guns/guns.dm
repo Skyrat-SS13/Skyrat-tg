@@ -248,7 +248,7 @@
 	max_ammo = 10
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	possible_types = list(
-		AMMO_TYPE_LETHAL
+		AMMO_TYPE_LETHAL,
 	)
 
 /*
