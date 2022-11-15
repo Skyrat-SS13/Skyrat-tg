@@ -49,7 +49,7 @@
 	name = "Royal"
 	icon_state = "royal"
 
-/datum/sprite_accessory/xenohead/hollywood
+/datum/sprite_accessory/xenohead/net
 	name = "Nethead"
 	icon_state = "net"
 
