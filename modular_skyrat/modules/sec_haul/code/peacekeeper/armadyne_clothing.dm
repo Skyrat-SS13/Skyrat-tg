@@ -126,7 +126,7 @@
 	suit_store = /obj/item/gun/ballistic/automatic/pitbull
 	shoes = /obj/item/clothing/shoes/jackboots/peacekeeper/armadyne
 	backpack_contents = list(
-		/obj/item/storage/box/gunset/pdh_corpo,
+		/obj/item/storage/box/gunset/pdh_striker,
 		/obj/item/storage/box/handcuffs,
 		/obj/item/ammo_box/magazine/multi_sprite/pitbull,
 		/obj/item/modular_computer/tablet/pda/security,
@@ -150,7 +150,7 @@
 	shoes = /obj/item/clothing/shoes/jackboots/peacekeeper/armadyne
 	belt = /obj/item/storage/belt/security/webbing/peacekeeper/armadyne
 	backpack_contents = list(
-		/obj/item/storage/box/gunset/pdh_corpo,
+		/obj/item/storage/box/gunset/pdh_striker,
 		/obj/item/storage/box/handcuffs,
 		/obj/item/ammo_box/magazine/multi_sprite/norwind,
 		/obj/item/modular_computer/tablet/pda/security,
