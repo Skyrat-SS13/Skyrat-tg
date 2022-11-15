@@ -12,6 +12,7 @@
 "cH" = (
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/recharge_station,
+/obj/structure/extinguisher_cabinet/directional/east,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "de" = (
@@ -36,7 +37,7 @@
 /obj/effect/turf_decal/bot_white,
 /obj/item/trench_tool,
 /obj/structure/rack/shelf,
-/obj/machinery/light/red/dim/directional/north,
+/obj/structure/sign/warning/electric_shock/directional/west,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "gf" = (
@@ -77,6 +78,9 @@
 /obj/effect/turf_decal/siding/thinplating_new/dark{
 	dir = 5
 	},
+/obj/machinery/button/door/directional/south{
+	id = "blackmarkethangar"
+	},
 /turf/open/floor/iron/smooth_edge{
 	dir = 8
 	},
@@ -95,19 +99,21 @@
 "kE" = (
 /obj/machinery/recharge_station,
 /obj/effect/turf_decal/bot_white,
+/obj/structure/sign/poster/contraband/random/directional/south,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "kT" = (
 /obj/structure/table,
-/obj/effect/spawner/random/engineering/tool_advanced{
-	pixel_x = -12;
-	pixel_y = 4
-	},
 /obj/effect/spawner/random/engineering/flashlight{
 	pixel_y = 13
 	},
 /obj/effect/spawner/random/mod/maint{
 	pixel_x = 5
+	},
+/obj/structure/sign/warning/electric_shock/directional/east,
+/obj/effect/spawner/random/engineering/tool{
+	pixel_x = -12;
+	pixel_y = 3
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
@@ -118,6 +124,10 @@
 /obj/effect/spawner/random/structure/crate_empty,
 /obj/effect/turf_decal/bot_white,
 /turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"mP" = (
+/obj/structure/sign/poster/contraband/random/directional/west,
+/turf/open/floor/iron/smooth,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "mQ" = (
 /obj/effect/turf_decal/bot_white,
@@ -144,9 +154,28 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"nL" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/fans/tiny/forcefield,
+/obj/machinery/door/poddoor{
+	id = "blackmarkethangar"
+	},
+/obj/structure/sign/warning/docking/directional/south,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "oo" = (
 /obj/structure/table,
 /turf/closed/mineral/random,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"oy" = (
+/obj/effect/turf_decal/stripes/asteroid/line,
+/obj/structure/trash_pile,
+/turf/open/misc/asteroid,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "oV" = (
 /turf/open/floor/plating,
@@ -178,7 +207,12 @@
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "sB" = (
 /obj/machinery/light/dim/directional/north,
+/obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"tw" = (
+/obj/structure/sign/poster/contraband/random/directional/west,
+/turf/closed/wall,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "tC" = (
 /obj/structure/table,
@@ -196,6 +230,7 @@
 /obj/item/coffee_cartridge/bootleg{
 	pixel_x = 8
 	},
+/obj/structure/sign/poster/contraband/random/directional/east,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "tI" = (
@@ -213,11 +248,15 @@
 	pixel_y = 9
 	},
 /obj/machinery/light/dim/directional/north,
+/obj/structure/sign/warning/yes_smoking/circle/directional/north,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "tV" = (
 /obj/effect/turf_decal/siding/thinplating_new/dark/corner{
 	dir = 4
+	},
+/obj/machinery/button/door/directional/west{
+	id = "blackmarkethangar"
 	},
 /turf/open/floor/iron/smooth_corner{
 	dir = 4
@@ -234,6 +273,7 @@
 "vg" = (
 /obj/effect/turf_decal/bot_white,
 /obj/effect/spawner/random/engineering/canister,
+/obj/structure/sign/poster/contraband/random/directional/south,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "vj" = (
@@ -286,6 +326,7 @@
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "zb" = (
 /obj/machinery/light/dim/directional/east,
+/obj/structure/extinguisher_cabinet/directional/east,
 /turf/open/floor/iron/smooth_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "zu" = (
@@ -301,7 +342,13 @@
 	pixel_x = -1;
 	pixel_y = -13
 	},
+/obj/structure/sign/calendar/directional/west,
 /turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"zS" = (
+/obj/effect/turf_decal/stripes/asteroid/line,
+/obj/structure/sign/warning/docking/directional/north,
+/turf/open/misc/asteroid,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "AG" = (
 /obj/structure/window/reinforced/spawner,
@@ -365,6 +412,7 @@
 /obj/effect/turf_decal/bot_white,
 /obj/effect/spawner/random/engineering/canister,
 /obj/machinery/light/red/dim/directional/north,
+/obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "EE" = (
@@ -387,12 +435,21 @@
 /obj/item/modular_computer/laptop/preset/civilian{
 	pixel_y = 1
 	},
+/obj/structure/sign/poster/contraband/random/directional/west,
 /turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"FJ" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 1
+	},
+/obj/structure/trash_pile,
+/turf/open/misc/asteroid,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "Hq" = (
 /obj/effect/turf_decal/stripes/asteroid/corner{
 	dir = 4
 	},
+/obj/structure/trash_pile,
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "IS" = (
@@ -419,6 +476,7 @@
 /obj/item/circuitboard/machine/spaceship_navigation_beacon{
 	pixel_y = -6
 	},
+/obj/structure/extinguisher_cabinet/directional/west,
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "IZ" = (
@@ -436,6 +494,10 @@
 	pixel_y = 11
 	},
 /turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"KL" = (
+/obj/structure/extinguisher_cabinet/directional/south,
+/turf/open/floor/iron/smooth_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "KV" = (
 /obj/effect/turf_decal/stripes/asteroid/line{
@@ -461,8 +523,11 @@
 /obj/effect/spawner/random/engineering/toolbox{
 	pixel_y = 7
 	},
-/obj/machinery/light/dim/directional/north,
 /turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"Md" = (
+/obj/structure/sign/warning/secure_area/directional/east,
+/turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "Mp" = (
 /obj/effect/spawner/random/structure/chair_maintenance{
@@ -478,12 +543,13 @@
 "NZ" = (
 /obj/effect/mob_spawn/ghost_role/human/blackmarket,
 /obj/effect/turf_decal/bot_white,
+/obj/structure/sign/clock/directional/east,
+/obj/structure/sign/warning/rad_shelter/directional/north,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "OA" = (
 /obj/effect/spawner/random/trash/mopbucket,
 /obj/effect/turf_decal/bot_white,
-/obj/machinery/light/dim/directional/south,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "OC" = (
@@ -510,13 +576,15 @@
 "Qm" = (
 /obj/effect/spawner/random/engineering/tank,
 /obj/effect/turf_decal/bot_white,
+/obj/structure/sign/warning/no_smoking/directional/south,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "QV" = (
-/obj/effect/spawner/random/trash/bin,
-/obj/effect/turf_decal/bot_white,
-/obj/machinery/light/dim/directional/south,
-/turf/open/floor/iron/dark/textured_large,
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 1
+	},
+/obj/structure/sign/warning/docking/directional/south,
+/turf/open/misc/asteroid,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "Rv" = (
 /obj/effect/turf_decal/delivery/white,
@@ -539,6 +607,10 @@
 /obj/effect/turf_decal/bot_white,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"UD" = (
+/obj/structure/sign/warning/secure_area/directional/north,
+/turf/open/misc/asteroid/airless,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "UJ" = (
 /obj/effect/spawner/random/structure/furniture_parts,
 /obj/effect/turf_decal/bot_white,
@@ -550,7 +622,23 @@
 "Wi" = (
 /obj/effect/spawner/random/trash/moisture_trap,
 /obj/effect/turf_decal/bot_white,
+/obj/structure/sign/poster/contraband/random/directional/north,
+/obj/machinery/light/dim/directional/north,
 /turf/open/floor/iron/dark/textured_large,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"WS" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/fans/tiny/forcefield,
+/obj/machinery/door/poddoor{
+	id = "blackmarkethangar"
+	},
+/obj/structure/sign/warning/docking/directional/north,
+/turf/open/floor/engine,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "Yn" = (
 /obj/effect/turf_decal/siding/thinplating_new/dark/corner,
@@ -631,11 +719,11 @@ hO
 hO
 hO
 hO
+Md
 YG
 YG
 YG
-YG
-YG
+Md
 hO
 hO
 hO
@@ -685,7 +773,7 @@ oo
 hO
 Zh
 Zh
-Zh
+tw
 Zh
 Zh
 hk
@@ -713,12 +801,12 @@ hO
 hO
 Zh
 gf
-io
+mP
 ht
 Zh
 tP
 LL
-af
+KL
 Zh
 Pd
 zu
@@ -729,7 +817,7 @@ Zh
 Zh
 hO
 hO
-hO
+YG
 lp
 "}
 (7,1,1) = {"
@@ -750,13 +838,13 @@ af
 Py
 af
 Mp
-QV
+MN
 Zh
 tI
 IS
 Zh
 Zh
-hO
+UD
 YG
 lp
 "}
@@ -868,8 +956,8 @@ LZ
 kE
 Zh
 Zh
-hO
-YG
+UD
+lp
 lp
 "}
 (12,1,1) = {"
@@ -897,7 +985,7 @@ Qm
 Zh
 hO
 hO
-hO
+YG
 lp
 "}
 (13,1,1) = {"
@@ -1029,7 +1117,7 @@ oV
 oV
 oV
 oV
-gj
+QV
 Zh
 Zh
 qD
@@ -1048,8 +1136,8 @@ hO
 hO
 hO
 Zh
-SQ
-qe
+Zh
+zS
 oV
 oV
 oV
@@ -1105,7 +1193,7 @@ hO
 hO
 hO
 Fq
-qe
+oy
 oV
 oV
 oV
@@ -1169,7 +1257,7 @@ oV
 oV
 oV
 oV
-gj
+FJ
 Fq
 hO
 hO
@@ -1245,6 +1333,7 @@ hO
 hO
 Zh
 Zh
+WS
 vU
 vU
 vU
@@ -1252,8 +1341,7 @@ vU
 vU
 vU
 vU
-vU
-vU
+nL
 Zh
 Zh
 hO
