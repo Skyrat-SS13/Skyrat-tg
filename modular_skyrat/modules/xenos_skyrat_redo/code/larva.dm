@@ -45,7 +45,7 @@
 		)
 
 	var/alien_caste = show_radial_menu(owner, owner, caste_options, radius = 38, require_near = TRUE, tooltips = TRUE)
-	if(QDELETED(src) || QDELETED(owner) || !IsAvailable() || isnull(alien_caste))
+	if(QDELETED(src) || QDELETED(owner) || !IsAvailable(feedback = TRUE) || isnull(alien_caste))
 		return
 
 	spawn_new_xeno(alien_caste)

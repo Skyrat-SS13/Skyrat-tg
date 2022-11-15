@@ -100,9 +100,9 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Red Cap"
 	item_path = /obj/item/clothing/head/soft/red
 
-/datum/loadout_item/head/white_cap
-	name = "White Cap"
-	item_path = /obj/item/clothing/head/soft
+/datum/loadout_item/head/grey_cap
+	name = "Grey Cap"
+	item_path = /obj/item/clothing/head/soft/grey
 
 /datum/loadout_item/head/yellow_cap
 	name = "Yellow Cap"
@@ -178,7 +178,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/mail_cap
 	name = "Mail Cap"
-	item_path = /obj/item/clothing/head/mailman
+	item_path = /obj/item/clothing/head/costume/mailman
 
 /datum/loadout_item/head/kitty_ears
 	name = "Kitty Ears"
@@ -190,7 +190,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/bandana
 	name = "Bandana"
-	item_path = /obj/item/clothing/head/bandana
+	item_path = /obj/item/clothing/head/costume/pirate/bandana
 
 /datum/loadout_item/head/top_hat
 	name = "Top Hat"
@@ -242,7 +242,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/santa
 	name = "Santa Hat"
-	item_path = /obj/item/clothing/head/santa
+	item_path = /obj/item/clothing/head/costume/santa
 	required_season = CHRISTMAS
 
 /datum/loadout_item/head/christmas
@@ -261,11 +261,11 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/xenos
 	name = "Xenos Helmet"
-	item_path = /obj/item/clothing/head/xenos
+	item_path = /obj/item/clothing/head/costume/xenos
 
 /datum/loadout_item/head/wedding_veil
 	name = "Wedding Veil"
-	item_path = /obj/item/clothing/head/weddingveil
+	item_path = /obj/item/clothing/head/costume/weddingveil
 
 /datum/loadout_item/head/synde
 	name = "Black Space-Helmet Replica"
@@ -297,7 +297,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/pirate
 	name = "Pirate hat"
-	item_path = /obj/item/clothing/head/pirate
+	item_path = /obj/item/clothing/head/costume/pirate
 
 /datum/loadout_item/head/flowerpin
 	name = "Flower Pin"
@@ -305,7 +305,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/rice_hat
 	name = "Rice Hat"
-	item_path = /obj/item/clothing/head/rice_hat
+	item_path = /obj/item/clothing/head/costume/rice_hat
 
 /datum/loadout_item/head/ushanka
 	name = "Ushanka"
@@ -380,40 +380,40 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 */
 
 /datum/loadout_item/head/cowboyhat
-	name = "Cowboy Hat (Brown)"
-	item_path = /obj/item/clothing/head/costume/cowboyhat
+	name = "Recolorable Cattleman Hat"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/cattleman
 
 /datum/loadout_item/head/cowboyhat_black
-	name = "Cowboy Hat (Black)"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/black
-
-/datum/loadout_item/head/cowboyhat_blackwide
-	name = "Wide Cowboy Hat (Black)"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/blackwide
+	name = "Recolorable Wide-Brimmed Cattleman Hat"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/cattleman/wide
 
 /datum/loadout_item/head/cowboyhat_wide
-	name = "Wide Cowboy Hat (Brown)"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/wide
+	name = "Wide-Brimmed Hat"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/wide
 
-/datum/loadout_item/head/cowboyhat_white
-	name = "Cowboy Hat (White)"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/white
+/datum/loadout_item/head/cowboyhat_wide_feather
+	name = "Wide-Brimmed Feathered Hat"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/wide/feathered
 
-/datum/loadout_item/head/cowboyhat_pink
-	name = "Cowboy Hat (Pink)"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/pink
+/datum/loadout_item/head/cowboyhat_flat
+	name = "Flat-Brimmed Hat"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/flat
 
-/datum/loadout_item/head/cowboyhat_winter
-	name = "Winter Cowboy Hat"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/sheriff
+/datum/loadout_item/head/cowboyhat_flat_cowl
+	name = "Flat-Brimmed Hat with Cowl"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/flat/cowl
 
 /datum/loadout_item/head/cowboyhat_sheriff
 	name = "Sheriff Hat"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/sheriff/alt
+	item_path = /obj/item/clothing/head/cowboy/skyrat/flat/sheriff
 
 /datum/loadout_item/head/cowboyhat_deputy
 	name = "Deputy Hat"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/deputy
+	item_path = /obj/item/clothing/head/cowboy/skyrat/flat/deputy
+
+/datum/loadout_item/head/cowboyhat_winter
+	name = "Winter Cowboy Hat"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/flat/cowl/sheriff
 
 /*
 *	TREK HATS (JOB-LOCKED)
@@ -470,13 +470,13 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	restricted_roles = list(JOB_CHIEF_ENGINEER)
 
 /datum/loadout_item/head/cowboyhat_sec
-	name = "Cowboy Hat, Security"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/sec
+	name = "Cattleman Hat, Security"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/cattleman/sec
 	restricted_roles = list(JOB_WARDEN,JOB_DETECTIVE,JOB_SECURITY_MEDIC,JOB_SECURITY_OFFICER,JOB_HEAD_OF_SECURITY,JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/head/cowboyhat_secwide
-	name = "Wide Cowboy Hat, Security"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/wide/sec
+	name = "Wide-Brimmed Cattleman Hat, Security"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/cattleman/wide/sec
 	restricted_roles = list(JOB_WARDEN,JOB_DETECTIVE,JOB_SECURITY_MEDIC,JOB_SECURITY_OFFICER,JOB_HEAD_OF_SECURITY,JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/head/ushanka/sec
@@ -521,7 +521,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/nursehat
 	name = "Nurse Hat"
-	item_path = /obj/item/clothing/head/nursehat
+	item_path = /obj/item/clothing/head/costume/nursehat
 	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_GENETICIST, JOB_CHEMIST, JOB_VIROLOGIST,JOB_SECURITY_MEDIC)
 
 /datum/loadout_item/head/imperial_generic
@@ -594,23 +594,15 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/tmc
 	name = "TMC Hat"
-	item_path = /obj/item/clothing/head/tmc
-
-/datum/loadout_item/head/pg
-	name = "PG Hat"
-	item_path = /obj/item/clothing/head/pg
+	item_path = /obj/item/clothing/head/costume/tmc
 
 /datum/loadout_item/head/deckers
 	name = "Deckers Hat"
-	item_path = /obj/item/clothing/head/deckers
-
-/datum/loadout_item/head/morningstar
-	name = "Morningstar Hat"
-	item_path = /obj/item/clothing/head/morningstar
+	item_path = /obj/item/clothing/head/costume/deckers
 
 /datum/loadout_item/head/saints
 	name = "Fancy Hat"
-	item_path = /obj/item/clothing/head/fancy
+	item_path = /obj/item/clothing/head/costume/fancy
 
 /*
 *	DONATOR

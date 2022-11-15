@@ -1286,3 +1286,21 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "tactichill"
+
+// Donation reward for thedragmeme
+/obj/item/clothing/shoes/fancy_heels/drag
+	desc = "A fancy pair of high heels. Clack clack clack... definitely turning a lot of heads."
+
+/obj/item/clothing/shoes/fancy_heels/drag/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/squeak, list('modular_skyrat/modules/modular_items/lewd_items/sounds/highheel1.ogg' = 1, 'modular_skyrat/modules/modular_items/lewd_items/sounds/highheel2.ogg' = 1), 70)
+
+// Donation reward for Razurath
+
+/obj/item/clothing/under/bimpcap
+	name = "Formal Matte Black Captain Uniform"
+	desc = "A professional looking matte black uniform cladded with medals of distintive service and valor, only worn by the highest of station officials."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	icon_state = "bimpcap"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
