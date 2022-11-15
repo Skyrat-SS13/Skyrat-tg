@@ -3,15 +3,18 @@
 
 //this is for revitalizing/preserving regen cores
 /obj/structure/lavaland/ash_walker/attackby(obj/item/attacking_item, mob/living/user, params)
-	if(!istype(attacking_item, /obj/item/organ/internal/regenerative_core))
+	if(!istype(attacking_item, /obj/item/organ/internal/monster_core/regenerative_core))
 		return ..()
 
 	if(!user.mind.has_antag_datum(/datum/antagonist/ashwalker))
 		balloon_alert(user, "must be an ashwalker!")
 		return
 
-	var/obj/item/organ/internal/regenerative_core/regen_core = attacking_item
-	regen_core.preserved()
+	var/obj/item/organ/internal/monster_core/regenerative_core/regen_core = attacking_item
+
+	if(!regen_core.preserve())
+		balloon_alert(user, "organ decayed!")
+		return
 	playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
 	balloon_alert_to_viewers("[src] revitalizes [regen_core]!")
 	return
@@ -92,6 +95,7 @@
 				qdel(sacrifice_posession)
 
 		if(issilicon(viewable_living)) //no advantage to sacrificing borgs...
+			viewable_living.investigate_log("has been gibbed via ashwalker sacrifice as a borg.", INVESTIGATE_DEATHS)
 			viewable_living.gib()
 			continue
 
@@ -114,6 +118,7 @@
 			to_chat(delivery_mob, span_boldwarning("The Necropolis is pleased with your sacrifice. You feel confident your existence after death is secure."))
 			ashies.players_spawned -= delivery_key
 
+		viewable_living.investigate_log("has been gibbed via ashwalker sacrifice.", INVESTIGATE_DEATHS)
 		viewable_living.gib()
 		atom_integrity = min(atom_integrity + max_integrity * 0.05, max_integrity) //restores 5% hp of tendril
 
@@ -143,7 +148,7 @@
 
 /obj/structure/reviving_ashwalker_egg/Initialize(mapload)
 	. = ..()
-	addtimer(CALLBACK(src, .proc/do_revive), 30 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(do_revive)), 30 SECONDS)
 
 /**
  * Proc that will fully revive the living content inside and then destroy itself

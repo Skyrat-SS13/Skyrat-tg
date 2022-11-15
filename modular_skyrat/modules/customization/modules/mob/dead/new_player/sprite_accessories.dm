@@ -203,11 +203,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon_state = "socks_norm-stir"
 	use_static = null
 
-/datum/sprite_accessory/socks/stirrups_mid
-	name = "Mid-Length Stirrups"
-	icon_state = "socks_mid-stir"
-	use_static = null
-
 /datum/sprite_accessory/socks/socks_short
 	name = "Short"
 	icon_state = "socks_short"
@@ -365,11 +360,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon_state = "panties"
 	gender = FEMALE
 
-/datum/sprite_accessory/underwear/panties_alt
-	name = "Panties - Alt"
-	icon_state = "panties_alt"
-	gender = FEMALE
-
 /datum/sprite_accessory/underwear/fishnet_lower
 	name = "Panties - Fishnet"
 	icon_state = "fishnet_lower"
@@ -487,17 +477,15 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	use_static = TRUE
 	erp_accessory = TRUE
 
+/datum/sprite_accessory/undershirt/lizared
+	name = "LIZARED Top"
+	icon_state = "lizared_top"
+	use_static = TRUE
+
 /datum/sprite_accessory/underwear/lizared
 	name = "LIZARED Underwear"
 	icon_state = "lizared"
 	use_static = TRUE
-
-/datum/sprite_accessory/underwear/digibriefs
-	name = "Digi Briefs"
-	icon_state = "briefs_d"
-
-/datum/sprite_accessory/underwear/male_briefs
-	has_digitigrade = TRUE
 
 /datum/sprite_accessory/underwear/male_boxers
 	has_digitigrade = TRUE
@@ -694,18 +682,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/undershirt/swimsuit
 	name = "Swimsuit Top"
 	icon_state = "bra_swimming"
-	gender = FEMALE
-	use_static = null
-
-/datum/sprite_accessory/undershirt/swimsuit_alt
-	name = "Swimsuit Top - Strapless"
-	icon_state = "bra_swimming_alt"
-	gender = FEMALE
-	use_static = null
-
-/datum/sprite_accessory/undershirt/tubetop
-	name = "Tube Top"
-	icon_state = "tubetop"
 	gender = FEMALE
 	use_static = null
 

@@ -37,7 +37,7 @@
 					/obj/item/serviette_pack = 10,
 					/obj/item/restraints/handcuffs/lewd = 8,
 					/obj/item/key/collar = 48,
-					/obj/item/pillow = 32, //cmon, why there is always 0 pillows, where do you guys stuff it.
+					/obj/item/fancy_pillow = 32,
 					/obj/item/stack/shibari_rope/full = 10,
 					/obj/item/stack/shibari_rope/glow/full = 10,
 
@@ -164,7 +164,7 @@
 	if(!card_used)
 		return
 
-	var/choice = show_radial_menu(user, src, vend_designs, custom_check = CALLBACK(src, .proc/check_menu, user, used_item), radius = 50, require_near = TRUE)
+	var/choice = show_radial_menu(user, src, vend_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user, used_item), radius = 50, require_near = TRUE)
 	if(choice)
 		current_color = choice
 		update_icon()

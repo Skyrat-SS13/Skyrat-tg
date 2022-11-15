@@ -59,7 +59,7 @@ GLOBAL_LIST_INIT(skyrat_wood_recipes, list ( \
 
 GLOBAL_LIST_INIT(skyrat_cloth_recipes, list ( \
 	new/datum/stack_recipe("xenoarch bag", /obj/item/storage/bag/xenoarch, 4), \
-	new/datum/stack_recipe("pillow", /obj/item/pillow, 3), \
+	new/datum/stack_recipe("fancy pillow", /obj/item/fancy_pillow, 3), \
 	new/datum/stack_recipe("eyepatch wrap", /obj/item/clothing/glasses/eyepatch/wrap, 2), \
 	new/datum/stack_recipe("eyepatch", /obj/item/clothing/glasses/eyepatch, 2), \
 ))
