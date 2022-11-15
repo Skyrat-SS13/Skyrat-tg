@@ -89,7 +89,7 @@
 /obj/item/stack/shibari_rope/Initialize(mapload, new_amount, merge, list/mat_override, mat_amt)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-	RegisterSignal(src, COMSIG_ITEM_ATTACK, .proc/handle_roping)
+	RegisterSignal(src, COMSIG_ITEM_ATTACK, PROC_REF(handle_roping))
 	if(!greyscale_colors)
 		var/new_color = "#"
 		for(var/i in 1 to 3)
@@ -108,22 +108,22 @@
 		return
 	switch(user.zone_selected)
 		if(BODY_ZONE_L_LEG)
-			INVOKE_ASYNC(src, .proc/handle_leg_tying, attacked, user)
+			INVOKE_ASYNC(src, PROC_REF(handle_leg_tying), attacked, user)
 			return COMPONENT_CANCEL_ATTACK_CHAIN
 		if(BODY_ZONE_R_LEG)
-			INVOKE_ASYNC(src, .proc/handle_leg_tying, attacked, user)
+			INVOKE_ASYNC(src, PROC_REF(handle_leg_tying), attacked, user)
 			return COMPONENT_CANCEL_ATTACK_CHAIN
 		if(BODY_ZONE_PRECISE_GROIN)
-			INVOKE_ASYNC(src, .proc/handle_groin_tying, attacked, user)
+			INVOKE_ASYNC(src, PROC_REF(handle_groin_tying), attacked, user)
 			return COMPONENT_CANCEL_ATTACK_CHAIN
 		if(BODY_ZONE_CHEST)
-			INVOKE_ASYNC(src, .proc/handle_chest_tying, attacked, user)
+			INVOKE_ASYNC(src, PROC_REF(handle_chest_tying), attacked, user)
 			return COMPONENT_CANCEL_ATTACK_CHAIN
 		if(BODY_ZONE_L_ARM)
-			INVOKE_ASYNC(src, .proc/handle_arm_tying, attacked, user)
+			INVOKE_ASYNC(src, PROC_REF(handle_arm_tying), attacked, user)
 			return COMPONENT_CANCEL_ATTACK_CHAIN
 		if(BODY_ZONE_R_ARM)
-			INVOKE_ASYNC(src, .proc/handle_arm_tying, attacked, user)
+			INVOKE_ASYNC(src, PROC_REF(handle_arm_tying), attacked, user)
 			return COMPONENT_CANCEL_ATTACK_CHAIN
 
 
