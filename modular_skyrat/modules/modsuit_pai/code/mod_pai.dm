@@ -97,7 +97,7 @@
 	core.subtract_charge(CELL_PER_STEP)
 	if(wearer)
 		ADD_TRAIT(wearer, TRAIT_FORCED_STANDING, MOD_TRAIT)
-		addtimer(CALLBACK(src, .proc/pai_fall), PAI_FALL_TIME, TIMER_UNIQUE | TIMER_OVERRIDE)
+		addtimer(CALLBACK(src, PROC_REF(pai_fall)), PAI_FALL_TIME, TIMER_UNIQUE | TIMER_OVERRIDE)
 	if(ismovable(wearer?.loc))
 		return wearer.loc.relaymove(wearer, direction)
 	if(wearer && !wearer.Process_Spacemove(direction))

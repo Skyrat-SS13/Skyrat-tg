@@ -551,7 +551,7 @@
 
 /obj/structure/bed/roller/medigun/Initialize(mapload)
 	. = ..()
-	addtimer(CALLBACK(src, .proc/check_bed), deploytime)
+	addtimer(CALLBACK(src, PROC_REF(check_bed)), deploytime)
 
 /obj/structure/bed/roller/medigun/proc/check_bed() //Checks to see if anyone is buckled to the bed, if not the bed will qdel itself.
 	if(!has_buckled_mobs())
@@ -671,7 +671,7 @@
 	area_locked = locked
 	destination_area = destination
 
-	addtimer(CALLBACK(src, .proc/dispense_treat), (time_allowance * 0.95))
+	addtimer(CALLBACK(src, PROC_REF(dispense_treat)), (time_allowance * 0.95))
 	QDEL_IN(src, time_allowance)
 
 /datum/component/medigun_relocation/Destroy()
