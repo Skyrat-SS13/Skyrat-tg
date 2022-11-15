@@ -129,7 +129,6 @@ SUBSYSTEM_DEF(job)
 
 	for(var/job_type in all_jobs)
 		var/datum/job/job = new job_type()
-		job.job_setup() //SKYRAT ADDITION - CORPORATE DIPLOMAT
 		if(!job.config_check())
 			continue
 		if(!job.map_check()) //Even though we initialize before mapping, this is fine because the config is loaded at new
