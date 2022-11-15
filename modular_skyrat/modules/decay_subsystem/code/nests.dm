@@ -45,7 +45,7 @@
 /obj/structure/mob_spawner/proc/calculate_trigger_turfs()
 	for(var/turf/open/seen_turf in view(trigger_range, src))
 		registered_turfs += seen_turf
-		RegisterSignal(seen_turf, COMSIG_ATOM_ENTERED, .proc/proximity_trigger)
+		RegisterSignal(seen_turf, COMSIG_ATOM_ENTERED, PROC_REF(proximity_trigger))
 
 /obj/structure/mob_spawner/atom_destruction(damage_flag)
 	if(loot)
@@ -107,7 +107,7 @@
 	spawned_mob.faction = faction
 	spawned_mob.ghost_controllable = ghost_controllable
 
-	RegisterSignal(spawned_mob, COMSIG_LIVING_DEATH, .proc/mob_death)
+	RegisterSignal(spawned_mob, COMSIG_LIVING_DEATH, PROC_REF(mob_death))
 
 	visible_message(span_danger("[spawned_mob] emerges from [src]."))
 
@@ -125,7 +125,7 @@
 		var/mob/living/simple_animal/L = new chosen_mob_type(loc)
 		visible_message(span_danger("[L] emerges from [src]."))
 		retaliated = TRUE
-		addtimer(CALLBACK(src, .proc/ready_retaliate), retaliate_cooldown)
+		addtimer(CALLBACK(src, PROC_REF(ready_retaliate)), retaliate_cooldown)
 
 /obj/structure/mob_spawner/proc/ready_retaliate()
 	retaliated = FALSE
