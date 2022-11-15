@@ -65,14 +65,15 @@
 		if(!iterating_alarm.alarm_playing)
 			iterating_alarm.alarm_playing = TRUE
 			playsound(iterating_alarm, alarm_sound_file, 30)
-			addtimer(CALLBACK(iterating_alarm, .proc/alarm_sound), alarm_cooldown)
+			addtimer(CALLBACK(iterating_alarm, PROC_REF/alarm_sound), alarm_cooldown)
 
 /obj/machinery/base_alarm/proc/alarm_sound()
 	if(!triggered)
 		alarm_playing = FALSE
 	else
 		playsound(src, alarm_sound_file, 30)
-		addtimer(CALLBACK(src, .proc/alarm_sound), alarm_cooldown)
+		addtimer(CALLBACK(src, PROC_REF(alarm_sound)), alarm_cooldown)
+
 
 /obj/machinery/base_alarm/proc/reset(mob/user)
 	for(var/obj/machinery/base_alarm/iterating_alarm in alarms)

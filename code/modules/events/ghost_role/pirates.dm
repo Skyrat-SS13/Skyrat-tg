@@ -137,9 +137,8 @@
 			timeout_response = "AUTOMATED REGULATORY VIOLATION RESPONSE SYSTEM TIMEOUT. PLEASE CONTACT AND INFORM THE DISPATCHED AUTHORITIES TO RESOLVE THE ISSUE."
 			pay_response = "Should be it, thank you for cooperation. Novaya Rossiyskaya Imperiya collegial secretary out."
 			broke_response = "Your bank balance does not hold enough money at the moment. We are sending a patrol ship for second attempt negotiations, stand by."
-		//SKYRAT EDIT ADDITION END
-	threat.answer_callback = CALLBACK(GLOBAL_PROC, .proc/pirates_answered, threat, payoff, ship_name, initial_send_time, response_max_time, ship_template, timeout_response, pay_response, broke_response) //SKYRAT EDIT CHANGE
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/spawn_pirates, threat, ship_template, FALSE), response_max_time)
+	threat.answer_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(pirates_answered), threat, payoff, ship_name, initial_send_time, response_max_time, ship_template, timeout_response, pay_response, broke_response) //SKYRAT EDIT CHANGE
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(spawn_pirates), threat, ship_template, FALSE), response_max_time)
 	SScommunications.send_message(threat,unique = TRUE)
 
 /proc/pirates_answered(datum/comm_message/threat, payoff, ship_name, initial_send_time, response_max_time, ship_template, timeout_response, pay_response, broke_response) //SKYRAT EDIT CHANGE
@@ -525,7 +524,7 @@
 	status_report = "Sending... "
 	pad.visible_message(span_notice("[pad] starts charging up."))
 	pad.icon_state = pad.warmup_state
-	sending_timer = addtimer(CALLBACK(src,.proc/send),warmup_time, TIMER_STOPPABLE)
+	sending_timer = addtimer(CALLBACK(src, PROC_REF(send)),warmup_time, TIMER_STOPPABLE)
 
 /obj/machinery/computer/piratepad_control/proc/stop_sending(custom_report)
 	if(!sending)
