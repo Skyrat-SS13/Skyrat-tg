@@ -125,7 +125,7 @@
 
 /obj/item/gun/ballistic/automatic/mg34/mg42/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_GUN_FIRED, .proc/process_heat)
+	RegisterSignal(src, COMSIG_GUN_FIRED, PROC_REF(process_heat))
 	START_PROCESSING(SSobj, src)
 
 /obj/item/gun/ballistic/automatic/mg34/mg42/process(delta_time)
@@ -155,7 +155,7 @@
 
 /obj/item/gun/ballistic/automatic/mg34/mg42/pickup(mob/user)
 	. = ..()
-	RegisterSignal(user, COMSIG_LIVING_UPDATED_RESTING, .proc/deploy_bipod)
+	RegisterSignal(user, COMSIG_LIVING_UPDATED_RESTING, PROC_REF(deploy_bipod))
 
 /obj/item/gun/ballistic/automatic/mg34/mg42/dropped(mob/user)
 	. = ..()
@@ -184,7 +184,7 @@
 	if(barrel_heat >= 100)
 		overheated = TRUE
 		playsound(src, 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg_overheat.ogg', 100)
-		addtimer(CALLBACK(src, .proc/reset_overheat), TIME_TO_COOLDOWN)
+		addtimer(CALLBACK(src, PROC_REF(reset_overheat)), TIME_TO_COOLDOWN)
 	update_appearance()
 
 /obj/item/gun/ballistic/automatic/mg34/mg42/proc/reset_overheat()

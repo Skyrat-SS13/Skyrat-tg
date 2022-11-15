@@ -262,7 +262,7 @@
 	make_full()
 	for(var/t in get_adjacent_open_turfs(src))
 		registered_turfs += t
-		RegisterSignal(t, COMSIG_ATOM_ENTERED, .proc/proximity_trigger)
+		RegisterSignal(t, COMSIG_ATOM_ENTERED, PROC_REF(proximity_trigger))
 
 /obj/structure/biohazard_blob/structure/bulb/proc/proximity_trigger(datum/source, atom/movable/AM)
 	SIGNAL_HANDLER
@@ -270,7 +270,7 @@
 		return
 	var/mob/living/L = AM
 	if(!(MOLD_FACTION in L.faction))
-		INVOKE_ASYNC(src, .proc/discharge)
+		INVOKE_ASYNC(src, PROC_REF(discharge))
 
 /obj/structure/biohazard_blob/structure/bulb/proc/make_full()
 	//Called by a timer, check if we exist
@@ -335,7 +335,7 @@
 	set_light(0)
 	update_overlays()
 	density = FALSE
-	addtimer(CALLBACK(src, .proc/make_full), 1 MINUTES, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+	addtimer(CALLBACK(src, PROC_REF(make_full)), 1 MINUTES, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
 #undef MAX_MOLD_FOAM_RANGE
 
