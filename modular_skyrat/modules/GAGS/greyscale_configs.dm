@@ -792,7 +792,6 @@
 /datum/greyscale_config/sundress_worn/teshari
 	name = "Worn Sundress - Teshari"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/dressteshari.dmi'
-	json_config = 'code/datums/greyscale/json_configs/sundress_worn.json'
 
 // KILT
 // COSTUMES
