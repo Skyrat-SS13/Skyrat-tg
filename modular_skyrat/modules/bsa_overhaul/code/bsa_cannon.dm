@@ -202,7 +202,7 @@
 		system_state = SYSTEM_PREFIRE
 		message_admins("[user] has started the fire cycle of [src]! Firing at: [ADMIN_VERBOSEJMP(bullseye)]")
 		set_light(5, 5, COLOR_BLUE_LIGHT)
-		addtimer(CALLBACK(src, .proc/fire, user, bullseye), 20 SECONDS, TIMER_CLIENT_TIME)
+		addtimer(CALLBACK(src, PROC_REF(fire), user, bullseye), 20 SECONDS, TIMER_CLIENT_TIME)
 		START_PROCESSING(SSobj, src)
 	return system_state
 
@@ -279,7 +279,7 @@
 	system_state = SYSTEM_RELOADING
 	set_light(0)
 	STOP_PROCESSING(SSobj, src)
-	addtimer(CALLBACK(src, .proc/ready_cannon), SUPERWEAPON_RELOAD_TIME)
+	addtimer(CALLBACK(src, PROC_REF(ready_cannon)), SUPERWEAPON_RELOAD_TIME)
 
 /obj/machinery/bsa/full/proc/ready_cannon()
 	system_state = SYSTEM_READY

@@ -34,8 +34,8 @@
 	/// A associative list of language names to their typepath
 	var/static/list/name_to_language = list()
 	action_delegations = list(
-		"give_language" = .proc/give_language,
-		"remove_language" = .proc/remove_language,
+		"give_language" = PROC_REF(give_language),
+		"remove_language" = PROC_REF(remove_language),
 	)
 
 /datum/preference_middleware/languages/apply_to_human(mob/living/carbon/human/target, datum/preferences/preferences) // SKYRAT EDIT CHANGE
