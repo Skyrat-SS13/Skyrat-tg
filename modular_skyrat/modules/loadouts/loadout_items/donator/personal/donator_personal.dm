@@ -552,3 +552,13 @@
 	item_path = /obj/item/clothing/under/bimpcap
 	restricted_roles = list(JOB_CAPTAIN)
 	ckeywhitelist = list("razurath")
+
+/datum/loadout_item/toys/plushie_razurath
+	name = "Science Shark Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_razurath
+	ckeywhitelist = list("razurath")
+
+/datum/loadout_item/toys/plushie_elofy
+	name = "Bumbling Wolfgirl Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_elofy
+	ckeywhitelist = list("october23")
