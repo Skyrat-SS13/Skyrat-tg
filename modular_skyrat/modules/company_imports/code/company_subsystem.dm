@@ -77,10 +77,7 @@ SUBSYSTEM_DEF(cargo_companies)
 		company_datum.cost = round(company_datum.base_cost * company_datum.cost_mult)
 		// knocking down the interest of all companies
 		var/interest_threshold = rand(INTEREST_LOWER_RAND, INTEREST_HIGHER_RAND)
-		var/interest_knockdown = 0.5 * interest_threshold
-
-		if(company_datum in unpurchased_companies)
-			interest_knockdown *= 0.5
+		var/interest_knockdown = 0.1 * interest_threshold
 
 		company_datum.interest = max(company_datum.interest - interest_knockdown, 0)
 
