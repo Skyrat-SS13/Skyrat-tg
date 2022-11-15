@@ -178,7 +178,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				if(bodypart_accessory.color_src == USE_MATRIXED_COLORS && color_layer_list)
 					var/mutable_appearance/MOD_overlay = mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), layer = -layer)
 					// Pastes each of the three(primary, secondary, tertiary) accessory icon_states into one MA
-					for(var/number as anything in color_layer_list)
+					for(var/number in color_layer_list)
 						MOD_overlay.add_overlay(mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]_[color_layer_list[number]]"))
 					if(bodypart_accessory.center)
 						MOD_overlay = center_image(MOD_overlay, x_shift, bodypart_accessory.dimension_y)

@@ -1,3 +1,6 @@
+// This DMI holds all of the overlayable textures for MODs
+#define HARDLIGHT_DMI 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/MOD_sprite_accessories/icons/MOD_mask.dmi'
+
 /obj/item/mod/control/seal_part(obj/item/clothing/part, seal)
 	. = ..()
 	wearer.dna.species.handle_mutant_bodyparts(wearer, force_update = TRUE)
@@ -13,8 +16,6 @@
 /obj/item/mod/control/on_mod_retracted(mob/user)
 	. = ..()
 	wearer.dna.species.handle_mutant_bodyparts(wearer, force_update = TRUE)
-
-#define HARDLIGHT_DMI 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/MOD_sprite_accessories/icons/MOD_mask.dmi'
 
 // Tail hardlight
 /datum/sprite_accessory/tails

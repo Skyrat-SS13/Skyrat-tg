@@ -22,16 +22,16 @@
 	name = "Dorsal Down"
 	icon_state = "down"
 
-/datum/sprite_accessory/xenodorsal/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/part_to_hide)
-	if(wearer.w_uniform)
-	//	Can hide if wearing uniform
-		if(key in wearer.try_hide_mutant_parts)
-			return TRUE
-		if(wearer.wear_suit)
-		//	Exception for MODs
-			if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
-				return FALSE
-	return FALSE
+/datum/sprite_accessory/xenodorsal/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/bodypart)
+	if(!wearer.w_uniform && !wearer.wear_suit)
+		return FALSE
+//	Can hide if wearing uniform
+	if(key in wearer.try_hide_mutant_parts)
+		return TRUE
+	if(wearer.wear_suit)
+	//	Exception for MODs
+		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
+			return FALSE
 
 //TAILS
 /datum/sprite_accessory/tails/mammal/wagging/xeno_tail

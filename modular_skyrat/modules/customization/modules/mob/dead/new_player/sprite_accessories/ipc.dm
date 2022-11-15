@@ -147,22 +147,20 @@
 	relevent_layers = list(BODY_ADJ_LAYER)
 	genetic = FALSE
 
-/datum/sprite_accessory/antenna/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/HD)
-	if(wearer.head)
-	//	Can hide if wearing hat
-		if(key in wearer.try_hide_mutant_parts)
-			return TRUE
-	//	Exception for MODs
-		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
-			return FALSE
-	//	Hide accessory if flagged to do so
-		else if((wearer.head.flags_inv & HIDEHAIR) \
-				|| (wearer.wear_mask \
-				&& (wearer.wear_mask.flags_inv & HIDEHAIR)) \
-			|| !HD \
-			)
-			return TRUE
-	return FALSE
+/datum/sprite_accessory/antenna/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/bodypart)
+	if(!wearer.head || !bodypart)
+		return FALSE
+	if(key in wearer.try_hide_mutant_parts)
+		return TRUE
+//	Exception for MODs
+	if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
+		return FALSE
+//	Hide accessory if flagged to do so
+	else if((wearer.head.flags_inv & HIDEHAIR) \
+			|| (wearer.wear_mask \
+			&& (wearer.wear_mask.flags_inv & HIDEHAIR)) \
+		)
+		return TRUE
 
 /datum/sprite_accessory/antenna/none
 	name = "None"
