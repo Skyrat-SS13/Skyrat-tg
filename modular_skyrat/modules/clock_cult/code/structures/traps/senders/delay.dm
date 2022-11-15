@@ -38,7 +38,7 @@
 	flick("delayer_active", parent)
 
 	var/obj/structure/destructible/clockwork/trap/delay/parent_delayer = parent
-	addtimer(CALLBACK(src, .proc/finish), parent_delayer.delay_time)
+	addtimer(CALLBACK(src, PROC_REF(finish)), parent_delayer.delay_time)
 
 
 /// Finish the delay, trigger any traps

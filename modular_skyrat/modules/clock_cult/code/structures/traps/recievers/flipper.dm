@@ -29,7 +29,7 @@
 	if(!COOLDOWN_FINISHED(src, flip_cooldown))
 		return
 	COOLDOWN_START(src, flip_cooldown, cooldown_flip)
-	addtimer(CALLBACK(src, .proc/cooldown_done), cooldown_flip)
+	addtimer(CALLBACK(src, PROC_REF(cooldown_done)), cooldown_flip)
 
 	flick("flipper", src)
 

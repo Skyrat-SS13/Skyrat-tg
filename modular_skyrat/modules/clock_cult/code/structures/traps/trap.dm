@@ -91,9 +91,9 @@
 	if(!istype(parent, /obj/structure/destructible/clockwork))
 		return COMPONENT_INCOMPATIBLE
 
-	RegisterSignal(parent, COMSIG_CLOCKWORK_SIGNAL_RECEIVED, .proc/trigger)
-	RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND, .proc/attack_hand)
-	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/on_attackby)
+	RegisterSignal(parent, COMSIG_CLOCKWORK_SIGNAL_RECEIVED, PROC_REF(trigger))
+	RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND, PROC_REF(attack_hand))
+	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(on_attackby))
 
 
 /// Adds an input device to our own `outputs` list, to be sent when it triggers

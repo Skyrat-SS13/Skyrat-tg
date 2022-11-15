@@ -32,8 +32,8 @@
 /obj/structure/destructible/clockwork/sigil/Initialize(mapload)
 	. = ..()
 	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = .proc/on_entered,
-		COMSIG_ATOM_EXITED = .proc/on_exited,
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
+		COMSIG_ATOM_EXITED = PROC_REF(on_exited),
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
 
@@ -65,7 +65,7 @@
 
 	do_sparks(5, TRUE, src)
 	animate(src, color = invocation_color, alpha = SIGIL_INVOCATION_ALPHA, effect_stand_time)
-	active_timer = addtimer(CALLBACK(src, .proc/apply_effects, entered_movable), effect_stand_time, TIMER_UNIQUE | TIMER_STOPPABLE)
+	active_timer = addtimer(CALLBACK(src, PROC_REF(apply_effects), entered_movable), effect_stand_time, TIMER_UNIQUE | TIMER_STOPPABLE)
 
 
 /// For when someone/something leaves the sigil's turf
@@ -119,7 +119,7 @@
 
 	if(looping)
 		animate(src, transform=matrix(), color=invocation_color, alpha=SIGIL_INVOCATION_ALPHA, effect_stand_time)
-		active_timer = addtimer(CALLBACK(src, .proc/apply_effects, movable_apply), effect_stand_time, TIMER_UNIQUE | TIMER_STOPPABLE)
+		active_timer = addtimer(CALLBACK(src, PROC_REF(apply_effects), movable_apply), effect_stand_time, TIMER_UNIQUE | TIMER_STOPPABLE)
 
 	else
 		active_timer = null

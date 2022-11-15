@@ -12,7 +12,7 @@
 	if(!isitem(target))
 		return ELEMENT_INCOMPATIBLE
 
-	RegisterSignal(target, COMSIG_ITEM_EQUIPPED, .proc/attempt_shock)
+	RegisterSignal(target, COMSIG_ITEM_EQUIPPED, PROC_REF(attempt_shock))
 
 	if(slots_to_count && !length(equip_slots))
 		equip_slots = slots_to_count

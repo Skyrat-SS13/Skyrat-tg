@@ -12,7 +12,7 @@
 	if(!isatom(target))
 		return ELEMENT_INCOMPATIBLE
 
-	RegisterSignal(target, COMSIG_PARENT_EXAMINE, .proc/add_examine)
+	RegisterSignal(target, COMSIG_PARENT_EXAMINE, PROC_REF(add_examine))
 	// Don't perform the assignment if there is nothing to assign, or if we already have something for this bespoke element
 	if(parent_text && !text_to_add)
 		text_to_add = parent_text

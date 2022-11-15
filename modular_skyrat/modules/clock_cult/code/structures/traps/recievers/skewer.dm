@@ -106,7 +106,7 @@
 	if(!istype(trap))
 		return
 
-	INVOKE_ASYNC(trap, /obj/structure/destructible/clockwork/trap/skewer.proc/stab)
+	INVOKE_ASYNC(trap, TYPE_PROC_REF(/obj/structure/destructible/clockwork/trap/skewer, stab))
 
 #undef SKEWER_DAMAGE
 #undef SKEWER_BLEED

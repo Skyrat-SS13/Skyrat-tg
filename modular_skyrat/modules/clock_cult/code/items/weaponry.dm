@@ -111,7 +111,7 @@
 
 	target.emp_act(EMP_LIGHT)
 	new /obj/effect/temp_visual/emp/pulse(target.loc)
-	addtimer(CALLBACK(src, .proc/send_message, user), 30 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(send_message), user), 30 SECONDS)
 	to_chat(user, span_brass("You strike [target] with an electromagnetic pulse!"))
 	playsound(user, 'sound/magic/lightningshock.ogg', 40)
 
@@ -130,7 +130,7 @@
 	var/obj/vehicle/sealed/mecha/target = attacked_obj
 	target.emp_act(EMP_HEAVY)
 	new /obj/effect/temp_visual/emp/pulse(target.loc)
-	addtimer(CALLBACK(src, .proc/send_message, user), 20 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(send_message), user), 20 SECONDS)
 	to_chat(user, span_brass("You strike [target] with an electromagnetic pulse!"))
 	playsound(user, 'sound/magic/lightningshock.ogg', 40)
 
@@ -173,7 +173,7 @@
 	if(is_type_in_typecache(user_turf, effect_turf_typecache))
 		recharge_time = 0.75 SECONDS
 
-	addtimer(CALLBACK(src, .proc/recharge_bolt), recharge_time)
+	addtimer(CALLBACK(src, PROC_REF(recharge_bolt)), recharge_time)
 	recharge_time = initial(recharge_time)
 
 /obj/item/gun/ballistic/bow/clockwork/attack_self(mob/living/user)

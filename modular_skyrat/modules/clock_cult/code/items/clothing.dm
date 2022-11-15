@@ -199,7 +199,7 @@
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/proc/de_toggle_eyes()
 	wearer.update_sight()
 	to_chat(wearer, span_clockgray("You feel your eyes slowly recovering."))
-	addtimer(CALLBACK(wearer, /mob/living.proc/adjustOrganLoss, ORGAN_SLOT_EYES, -applied_eye_damage), 60 SECONDS)
+	addtimer(CALLBACK(wearer, TYPE_PROC_REF(/mob/living, adjustOrganLoss), ORGAN_SLOT_EYES, -applied_eye_damage), 60 SECONDS)
 	applied_eye_damage = 0
 	STOP_PROCESSING(SSobj, src)
 
