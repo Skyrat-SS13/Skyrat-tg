@@ -64,7 +64,7 @@
 			if(0 to 5)
 				volume = 50
 				for(var/i,i<3,i++)
-					addtimer(CALLBACK(src, .proc/play_fearsome_ping), i*5)
+					addtimer(CALLBACK(src, PROC_REF(play_fearsome_ping)), i*5)
 			if(5 to 10)
 				volume = 40
 			if(10 to 15)

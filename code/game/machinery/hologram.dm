@@ -620,7 +620,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		AI.current = src
 	SetLightsAndPower()
 	update_holoray(user, get_turf(loc))
-	RegisterSignal(user, COMSIG_MOB_EMOTE, .proc/handle_hologram_emote) // SKYRAT ADDITION - HOLOGRAM EMOTE MIRROR
+	RegisterSignal(user, COMSIG_MOB_EMOTE, PROC_REF(handle_hologram_emote)) // SKYRAT ADDITION - HOLOGRAM EMOTE MIRROR
 	return TRUE
 
 // SKYRAT ADDITION - HOLOGRAM EMOTE MIRROR

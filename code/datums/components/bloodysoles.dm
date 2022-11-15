@@ -253,17 +253,21 @@
 		return COMPONENT_INCOMPATIBLE
 	parent_atom = parent
 	wielder = parent
+
 	if(!bloody_feet)
 		bloody_feet = mutable_appearance('icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
+
 	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(on_clean))
 	RegisterSignal(parent, COMSIG_STEP_ON_BLOOD, PROC_REF(on_step_blood))
 	RegisterSignal(parent, COMSIG_CARBON_UNEQUIP_SHOECOVER, PROC_REF(unequip_shoecover))
 	RegisterSignal(parent, COMSIG_CARBON_EQUIP_SHOECOVER, PROC_REF(equip_shoecover))
+
 /datum/component/bloodysoles/feet/update_icon()
 	if(ishuman(wielder))
 		var/mob/living/carbon/human/human = wielder
 		if(NOBLOODOVERLAY in human.dna.species.species_traits)
 			return
+		if(bloody_shoes[BLOOD_STATE_HUMAN] > 0 && !is_obscured())
 			human.remove_overlay(SHOES_LAYER)
 			human.overlays_standing[SHOES_LAYER] = bloody_feet
 			human.apply_overlay(SHOES_LAYER)
@@ -300,7 +304,6 @@
 		return
 
 	..()
-
 
 /datum/component/bloodysoles/feet/proc/unequip_shoecover(datum/source)
 	SIGNAL_HANDLER

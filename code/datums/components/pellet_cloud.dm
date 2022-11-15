@@ -90,7 +90,7 @@
 		RegisterSignal(parent, COMSIG_SUPPLYPOD_LANDED, PROC_REF(create_blast_pellets))
 	//SKYRAT EDIT ADDITION BEGIN
 	else if(ishorrorling(parent))
-		RegisterSignal(parent, COMSIG_HORRORFORM_EXPLODE, PROC_REF(proc/create_blast_pellets))
+		RegisterSignal(parent, COMSIG_HORRORFORM_EXPLODE, PROC_REF(create_blast_pellets))
 	//SKYRAT EDIT END
 
 /datum/component/pellet_cloud/UnregisterFromParent()

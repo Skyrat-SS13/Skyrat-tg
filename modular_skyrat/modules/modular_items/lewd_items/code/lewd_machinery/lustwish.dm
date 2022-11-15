@@ -164,7 +164,7 @@
 	if(!card_used)
 		return
 
-	var/choice = show_radial_menu(user, src, vend_designs, custom_check = CALLBACK(src, .proc/check_menu, user, used_item), radius = 50, require_near = TRUE)
+	var/choice = show_radial_menu(user, src, vend_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user, used_item), radius = 50, require_near = TRUE)
 	if(choice)
 		current_color = choice
 		update_icon()

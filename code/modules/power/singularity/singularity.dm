@@ -50,7 +50,7 @@
 	//SKYRAT EDIT ADDITION BEGIN
 	new /obj/effect/singularity_creation(loc)
 
-	addtimer(CALLBACK(src, .proc/make_visible), 62)
+	addtimer(CALLBACK(src, PROC_REF(make_visible)), 62)
 
 	energy = starting_energy
 	//SKYRAT EDIT END

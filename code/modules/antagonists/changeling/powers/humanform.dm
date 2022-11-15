@@ -45,7 +45,7 @@
 
 /datum/action/changeling/humanform/from_monkey/sting_action(mob/living/carbon/user)
 	. = ..()
-	RegisterSignal(granted_to, COMSIG_MONKEY_HUMANIZE, PROC_REF(give_lesserform))
+	RegisterSignal(user, COMSIG_MONKEY_HUMANIZE, PROC_REF(give_lesserform))
 
 /datum/action/changeling/humanform/from_monkey/Remove(mob/remove_from)
 	UnregisterSignal(remove_from, COMSIG_MONKEY_HUMANIZE)
@@ -66,7 +66,7 @@
 	var/datum/action/changeling/lesserform/monkey_form_ability = new()
 	changeling.purchased_powers += monkey_form_ability
 
-	monkey_form_ability.Grant(user)
+	monkey_form_ability.Grant(source)
 
 	// Delete ourselves when we're done.
 	qdel(src)

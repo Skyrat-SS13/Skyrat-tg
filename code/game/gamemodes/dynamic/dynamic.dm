@@ -457,7 +457,7 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 
 	//SKYRAT EDIT START - DIVERGENCY/GOALS REPORT
 	else
-		addtimer(CALLBACK(src, .proc/send_trait_report), rand(waittime_l, waittime_h))
+		addtimer(CALLBACK(src, PROC_REF(send_trait_report)), rand(waittime_l, waittime_h))
 	//SKYRAT EDIT END
 
 	..()
