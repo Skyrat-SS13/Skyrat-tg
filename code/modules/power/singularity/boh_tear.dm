@@ -25,7 +25,7 @@
 /obj/boh_tear/Initialize(mapload)
 	. = ..()
 	QDEL_IN(src, 10 SECONDS) // vanishes after 10 seconds
-	addtimer(CALLBACK(src, .proc/add_singularity), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(add_singularity)), 5 SECONDS)
 
 /obj/boh_tear/proc/add_singularity()
 	// the grav_pull was BOH_TEAR_GRAV_PULL (25), but that is a whole lot

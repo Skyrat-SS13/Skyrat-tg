@@ -70,7 +70,7 @@
 	if(color_changed == FALSE)
 		if(.)
 			return
-		var/choice = show_radial_menu(user, src, mask_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, mask_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		current_mask_color = choice
@@ -294,7 +294,7 @@
 // Reagent consumption process handler
 /obj/item/reagent_containers/cup/lewd_filter/proc/reagent_consumption(mob/living/user, amount_per_transfer_from_this)
 	SEND_SIGNAL(src, COMSIG_GLASS_DRANK, user, user)
-	addtimer(CALLBACK(reagents, /datum/reagents.proc/trans_to, user, amount_per_transfer_from_this, TRUE, TRUE, FALSE, user, FALSE, INGEST), 5)
+	addtimer(CALLBACK(reagents, TYPE_PROC_REF(/datum/reagents, trans_to), user, amount_per_transfer_from_this, TRUE, TRUE, FALSE, user, FALSE, INGEST), 5)
 
 // I just wanted to add 2th color variation. Because.
 /obj/item/reagent_containers/cup/lewd_filter/AltClick(mob/user)
