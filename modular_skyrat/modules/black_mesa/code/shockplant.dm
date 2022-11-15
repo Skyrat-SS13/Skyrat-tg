@@ -24,7 +24,7 @@
 /obj/structure/shockplant/Initialize(mapload)
 	. = ..()
 	for(var/turf/open/iterating_turf as anything in circle_view_turfs(src, shock_range))
-		RegisterSignal(iterating_turf, COMSIG_ATOM_ENTERED, .proc/trigger)
+		RegisterSignal(iterating_turf, COMSIG_ATOM_ENTERED, PROC_REF(trigger))
 
 /obj/structure/shockplant/proc/trigger(datum/source, atom/movable/entered_atom)
 	SIGNAL_HANDLER

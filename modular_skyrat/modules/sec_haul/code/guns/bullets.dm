@@ -310,7 +310,7 @@
 		H.emote("scream")
 		H.add_mood_event("tased", /datum/mood_event/tased)
 		if((H.status_flags & CANKNOCKDOWN) && !HAS_TRAIT(H, TRAIT_STUNIMMUNE))
-			addtimer(CALLBACK(H, /mob/living/carbon.proc/do_jitter_animation, jitter), 5)
+			addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon, do_jitter_animation), jitter), 5)
 
 /obj/item/shrapnel/bullet/smartgun
 	name = "smartgun shredder"
