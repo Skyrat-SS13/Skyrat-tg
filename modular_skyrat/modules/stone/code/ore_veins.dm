@@ -64,7 +64,7 @@
 		SSblackbox.record_feedback("tally", "pick_used_mining", 1, W.type)
 		depleted = TRUE
 		update_icon_state()
-		addtimer(CALLBACK(src, .proc/regenerate_ore), regeneration_time)
+		addtimer(CALLBACK(src, PROC_REF(regenerate_ore)), regeneration_time)
 
 //	After the ore vein finishes its wait, we make the ore 'respawn' and return the ore to its original post-Initialize() icon_state.
 /obj/structure/ore_vein/proc/regenerate_ore()
