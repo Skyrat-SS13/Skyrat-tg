@@ -106,10 +106,10 @@
 		anchored = TRUE
 		turn_to_human.Remove()
 		AddComponent(/datum/component/pellet_cloud, projectile_type=/obj/projectile/bullet/pellet/bone_fragment, magnitude=8)
-		addtimer(CALLBACK(src, .proc/real_death), rand(3 SECONDS, 6 SECONDS))
+		addtimer(CALLBACK(src, PROC_REF(real_death)), rand(3 SECONDS, 6 SECONDS))
 	else
 		visible_message(span_warning("[src] lets out a waning scream as it falls, twitching, to the floor."))
-		addtimer(CALLBACK(src, .proc/revive_from_death), 45 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(revive_from_death)), 45 SECONDS)
 
 /mob/living/simple_animal/hostile/true_changeling/proc/revive_from_death()
 	if(!src)

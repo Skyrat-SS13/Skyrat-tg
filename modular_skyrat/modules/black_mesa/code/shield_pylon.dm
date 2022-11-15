@@ -43,7 +43,7 @@
 			continue
 		register_mob(iterating_mob)
 	for(var/turf/iterating_turf in RANGE_TURFS(shield_range, src))
-		RegisterSignal(iterating_turf, COMSIG_ATOM_ENTERED, .proc/mob_entered_range)
+		RegisterSignal(iterating_turf, COMSIG_ATOM_ENTERED, PROC_REF(mob_entered_range))
 
 /obj/structure/xen_pylon/proc/mob_entered_range(datum/source, atom/movable/entered_atom)
 	SIGNAL_HANDLER
@@ -65,8 +65,8 @@
 	mob_to_register.update_appearance()
 	var/datum/beam/created_beam = Beam(mob_to_register, icon_state = "red_lightning", time = 10 MINUTES, maxdistance = (shield_range - 1))
 	shielded_mobs[mob_to_register] = created_beam
-	RegisterSignal(created_beam, COMSIG_PARENT_QDELETING, .proc/beam_died, override = TRUE)
-	RegisterSignal(mob_to_register, COMSIG_PARENT_QDELETING, .proc/mob_died, override = TRUE)
+	RegisterSignal(created_beam, COMSIG_PARENT_QDELETING, PROC_REF(beam_died), override = TRUE)
+	RegisterSignal(mob_to_register, COMSIG_PARENT_QDELETING, PROC_REF(mob_died), override = TRUE)
 
 /obj/structure/xen_pylon/proc/mob_died(atom/movable/source, force)
 	SIGNAL_HANDLER

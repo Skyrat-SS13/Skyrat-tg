@@ -101,8 +101,8 @@
 			threat.content = "Greetings, this is the [ship_name]. Due to recent Imperial regulatory violations, your station has been fined [payoff] credits. Failure to comply might result in lethal debt recovery. Novaya Rossiyskaya Imperiya Enforcer out."
 			threat.possible_answers = list("Submit to audit and pay the fine.", "Imperial regulations? What a load of bollocks.")
 		//SKYRAT EDIT ADDITION END
-	threat.answer_callback = CALLBACK(GLOBAL_PROC, .proc/pirates_answered, threat, payoff, ship_name, initial_send_time, response_max_time, ship_template)
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/spawn_pirates, threat, ship_template, FALSE), response_max_time)
+	threat.answer_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(pirates_answered), threat, payoff, ship_name, initial_send_time, response_max_time, ship_template)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(spawn_pirates), threat, ship_template, FALSE), response_max_time)
 	SScommunications.send_message(threat,unique = TRUE)
 
 /proc/pirates_answered(datum/comm_message/threat, payoff, ship_name, initial_send_time, response_max_time, ship_template)
@@ -488,7 +488,7 @@
 	status_report = "Sending... "
 	pad.visible_message(span_notice("[pad] starts charging up."))
 	pad.icon_state = pad.warmup_state
-	sending_timer = addtimer(CALLBACK(src,.proc/send),warmup_time, TIMER_STOPPABLE)
+	sending_timer = addtimer(CALLBACK(src, PROC_REF(send)),warmup_time, TIMER_STOPPABLE)
 
 /obj/machinery/computer/piratepad_control/proc/stop_sending(custom_report)
 	if(!sending)
