@@ -61,14 +61,14 @@
 		if(!iterating_alarm.alarm_playing)
 			iterating_alarm.alarm_playing = TRUE
 			playsound(iterating_alarm, 'modular_skyrat/modules/assault_operatives/sound/goldeneyealarm.ogg', 30)
-			addtimer(CALLBACK(iterating_alarm, .proc/alarm_sound), 65)
+			addtimer(CALLBACK(iterating_alarm, PROC_REF(alarm_sound)), 65)
 
 /obj/machinery/base_alarm/proc/alarm_sound()
 	if(!triggered)
 		alarm_playing = FALSE
 	else
 		playsound(src, 'modular_skyrat/modules/assault_operatives/sound/goldeneyealarm.ogg', 30)
-		addtimer(CALLBACK(src, .proc/alarm_sound), 65)
+		addtimer(CALLBACK(src, PROC_REF(alarm_sound)), 65)
 
 /obj/machinery/base_alarm/proc/reset(mob/user)
 	for(var/obj/machinery/base_alarm/iterating_alarm in alarms)

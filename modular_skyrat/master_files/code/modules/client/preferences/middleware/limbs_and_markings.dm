@@ -4,15 +4,15 @@
 
 /datum/preference_middleware/limbs_and_markings
 	action_delegations = list(
-		"set_limb_aug" = .proc/set_limb_aug,
-		"set_limb_aug_style" = .proc/set_limb_aug_style,
-		"add_marking" = .proc/add_marking,
-		"change_marking" = .proc/change_marking,
-		"color_marking" = .proc/color_marking,
-		"remove_marking" = .proc/remove_marking,
-		"set_organ_aug" = .proc/set_organ_aug,
-		"set_preset" = .proc/set_preset,
-		"change_emissive" = .proc/change_emissive_marking,
+		"set_limb_aug" = PROC_REF(set_limb_aug),
+		"set_limb_aug_style" = PROC_REF(set_limb_aug_style),
+		"add_marking" = PROC_REF(add_marking),
+		"change_marking" = PROC_REF(change_marking),
+		"color_marking" = PROC_REF(color_marking),
+		"remove_marking" = PROC_REF(remove_marking),
+		"set_organ_aug" = PROC_REF(set_organ_aug),
+		"set_preset" = PROC_REF(set_preset),
+		"change_emissive" = PROC_REF(change_emissive_marking),
 	)
 	var/list/limbs_to_process = list(
 		"l_arm" = "Left Arm",

@@ -503,7 +503,7 @@
 			SEND_SOUND(staff, sound('sound/effects/adminhelp.ogg'))
 		window_flash(staff, ignorepref = TRUE)
 
-	addtimer(CALLBACK(src, .proc/add_to_ping_ss), 2 MINUTES) // this is not responsible for the notification itself, but only for adding the ticket to the list of those to notify.
+	addtimer(CALLBACK(src, PROC_REF(add_to_ping_ss)), 2 MINUTES) // this is not responsible for the notification itself, but only for adding the ticket to the list of those to notify.
 	status = OPFOR_STATUS_AWAITING_APPROVAL
 	can_edit = FALSE
 	add_log(user.ckey, "Submitted to the OPFOR subsystem")
@@ -896,13 +896,10 @@
 		return
 	owner.opposing_force()
 
-/datum/action/opfor/IsAvailable()
+/datum/action/opfor/IsAvailable(feedback = FALSE)
 	if(!target)
 		return FALSE
-	. = ..()
-	if(!.)
-		return
-	return TRUE
+	return ..()
 
 /obj/effect/statclick/opfor_specific
 	var/datum/opposing_force/opfor
