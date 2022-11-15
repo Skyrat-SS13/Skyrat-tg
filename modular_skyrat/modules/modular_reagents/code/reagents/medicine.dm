@@ -42,7 +42,7 @@
 	owner.adjustOrganLoss(ORGAN_SLOT_HEART,3 * REM * delta_time, 85)
 	owner.adjustStaminaLoss(5 * REM * delta_time, 0)
 	if(prob(30))
-		INVOKE_ASYNC(owner, /mob.proc/emote, "scream")
+		INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob, emote), "scream")
 
 //Medigun Clotting Medicine
 /datum/reagent/medicine/coagulant/fabricated

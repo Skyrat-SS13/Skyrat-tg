@@ -34,7 +34,7 @@
 	)
 	AddElement(/datum/element/connect_loc, connections)
 	AddElement(/datum/element/climbable)
-	RegisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED, .proc/run_integrity)
+	RegisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED, PROC_REF(run_integrity))
 
 /obj/structure/deployable_barricade/proc/run_integrity()
 	SIGNAL_HANDLER

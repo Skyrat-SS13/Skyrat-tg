@@ -16,14 +16,14 @@
 	/// The type we spawn when we are disarmed.
 	var/disarmed_type = /obj/item/airbag
 
-/datum/element/airbag/Attach(datum/target, airbag_type_override)
+/datum/element/airbag/Attach(datum/target)
 	. = ..()
 	if(!ismovable(target))
 		return ELEMENT_INCOMPATIBLE
 
-	RegisterSignal(target, COMSIG_ATOM_DESTRUCTION, .proc/deploy_airbag)
-	RegisterSignal(target, COMSIG_PARENT_EXAMINE, .proc/on_examine)
-	RegisterSignal(target, COMSIG_CLICK_ALT, .proc/on_altclick)
+	RegisterSignal(target, COMSIG_ATOM_DESTRUCTION, PROC_REF(deploy_airbag))
+	RegisterSignal(target, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
+	RegisterSignal(target, COMSIG_CLICK_ALT, PROC_REF(on_altclick))
 
 /datum/element/airbag/Detach(datum/target)
 	. = ..()
@@ -44,7 +44,7 @@
 
 	if(!clicker.can_interact_with(clicked_atom))
 		return
-	INVOKE_ASYNC(src, .proc/disarm_airbag, clicked_atom, clicker)
+	INVOKE_ASYNC(src, PROC_REF(disarm_airbag), clicked_atom, clicker)
 
 /datum/element/airbag/proc/disarm_airbag(atom/movable/clicked_atom, mob/living/clicker)
 	clicked_atom.balloon_alert(clicker, "disarming airbag...")
@@ -93,8 +93,8 @@
 		return
 	balloon_alert_to_viewers("armed!")
 	if(!anchored)
-		addtimer(CALLBACK(src, .proc/deploy_anchor), 1 SECONDS)
-	addtimer(CALLBACK(src, .proc/bang), detonate_time)
+		addtimer(CALLBACK(src, PROC_REF(deploy_anchor)), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(bang)), detonate_time)
 	armed = TRUE
 	playsound(src, armed_sound, 50)
 	update_appearance()
