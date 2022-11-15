@@ -54,6 +54,7 @@
 	//alternate_worn_icon_digi = 'modular_skyrat/icons/mob/head_muzzled.dmi'
 	icon_state = "beret_badge_police"
 	armor = list("melee" = 35, "bullet" = 25, "laser" = 25,"energy" = 15, "bomb" = 25, "bio" = 0, "fire" = 75, "acid" = 75)
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/beret/blueshield/navy
 	name = "navy blueshield's beret"
