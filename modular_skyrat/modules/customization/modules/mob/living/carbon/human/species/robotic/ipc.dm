@@ -23,10 +23,10 @@
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/robot/mutant/ipc,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/robot/mutant/ipc,
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/robot/mutant/ipc,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/robot/mutant/ipc,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/robot/mutant/ipc,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/robot/mutant/ipc,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/robot/mutant/ipc,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/robot/mutant/ipc,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/robot/mutant/ipc,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/robot/mutant/ipc,
 	)
 	var/datum/action/innate/monitor_change/screen
 	var/saved_screen = "Blank"
@@ -34,13 +34,13 @@
 /datum/species/robotic/ipc/spec_revival(mob/living/carbon/human/transformer)
 	. = ..()
 	switch_to_screen(transformer, "Console")
-	addtimer(CALLBACK(src, .proc/switch_to_screen, transformer, saved_screen), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(switch_to_screen), transformer, saved_screen), 5 SECONDS)
 
 /datum/species/robotic/ipc/spec_death(gibbed, mob/living/carbon/human/transformer)
 	. = ..()
 	saved_screen = transformer.dna.mutant_bodyparts["ipc_screen"][MUTANT_INDEX_NAME]
 	switch_to_screen(transformer, "BSOD")
-	addtimer(CALLBACK(src, .proc/switch_to_screen, transformer, "Blank"), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(switch_to_screen), transformer, "Blank"), 5 SECONDS)
 
 /**
  * Simple proc to switch the screen of an IPC and ensuring it updates their appearance.

@@ -6,7 +6,7 @@
 /datum/species/lizard/ashwalker/on_species_gain(mob/living/carbon/carbon_target, datum/species/old_species)
 	. = ..()
 	ADD_TRAIT(carbon_target, TRAIT_ASHSTORM_IMMUNE, SPECIES_TRAIT)
-	RegisterSignal(carbon_target, COMSIG_MOB_ITEM_ATTACK, .proc/mob_attack)
+	RegisterSignal(carbon_target, COMSIG_MOB_ITEM_ATTACK, PROC_REF(mob_attack))
 	carbon_target.AddComponent(/datum/component/ash_age)
 
 /datum/species/lizard/ashwalker/on_species_loss(mob/living/carbon/carbon_target)
@@ -51,8 +51,8 @@
 	// set the time that it was attached then we will compare current world time versus the evo_time plus stage_time
 	evo_time = world.time
 	// when the rune successfully completes the age ritual, it will send the signal... do the proc when we receive the signal
-	RegisterSignal(human_target, COMSIG_RUNE_EVOLUTION, .proc/check_evolution)
-	RegisterSignal(human_target, COMSIG_PARENT_EXAMINE, .proc/on_examine)
+	RegisterSignal(human_target, COMSIG_RUNE_EVOLUTION, PROC_REF(check_evolution))
+	RegisterSignal(human_target, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
 
 /datum/component/ash_age/proc/check_evolution()
 	SIGNAL_HANDLER
@@ -73,8 +73,16 @@
 			species_target.armor += 10
 			to_chat(human_target, span_notice("Your body seems to be sturdier..."))
 		if(3)
-			species_target.punchdamagelow += 5
-			species_target.punchdamagehigh += 5
+			var/obj/item/bodypart/arm/left/left_arm = human_target.get_bodypart(BODY_ZONE_L_ARM)
+			if(left_arm)
+				left_arm.unarmed_damage_low += 5
+				left_arm.unarmed_damage_high += 5
+
+			var/obj/item/bodypart/arm/right/right_arm = human_target.get_bodypart(BODY_ZONE_R_ARM)
+			if(right_arm)
+				right_arm.unarmed_damage_low += 5
+				right_arm.unarmed_damage_high += 5
+
 			to_chat(human_target, span_notice("Your arms seem denser..."))
 		if(4)
 			ADD_TRAIT(human_target, TRAIT_LAVA_IMMUNE, REF(src))

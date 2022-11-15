@@ -47,10 +47,10 @@
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant_zombie,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant_zombie,
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant_zombie,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant_zombie,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant_zombie,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant_zombie
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/mutant_zombie,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant_zombie,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant_zombie,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant_zombie
 	)
 
 /datum/species/mutant/check_roundstart_eligible()
@@ -223,6 +223,7 @@
 /obj/item/mutant_hand/proc/check_feast(mob/living/target, mob/living/user)
 	if(target.stat == DEAD)
 		var/hp_gained = target.maxHealth
+		target.investigate_log("has been feasted upon by the mutant [user].", INVESTIGATE_DEATHS)
 		target.gib()
 		// zero as argument for no instant health update
 		user.adjustBruteLoss(-hp_gained, 0)

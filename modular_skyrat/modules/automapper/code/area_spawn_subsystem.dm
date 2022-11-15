@@ -89,7 +89,7 @@ SUBSYSTEM_DEF(area_spawn)
 			LAZYADDASSOC(turf_list, "[priority]", list(iterating_turf))
 
 	// Sort the priorities descending
-	return sortTim(turf_list, /proc/cmp_num_string_asc)
+	return sortTim(turf_list, GLOBAL_PROC_REF(cmp_num_string_asc))
 
 /**
  * Process a specific turf and return priority number from 0 to infinity.
