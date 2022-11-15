@@ -233,7 +233,7 @@
 	var/turf/open/T = get_turf(src)
 	if(istype(T))
 		T.atmos_spawn_air("o2=15;plasma=15;TEMP=5778")
-	addtimer(CALLBACK(src, .proc/burst), timeleft)
+	addtimer(CALLBACK(src, PROC_REF(burst)), timeleft)
 
 /obj/effect/cme/proc/burst()
 	if(neutralized)

@@ -85,7 +85,7 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 	say("Malfunction in [seconds_to_explode / 10] seconds!")
 	playsound(src, 'sound/machines/warning-buzzer.ogg', 30, FALSE, FALSE)
 	add_filter("rad_glow", 2, list("type" = "outline", "color" = "#ff5e0049", "size" = 2))
-	addtimer(CALLBACK(src, .proc/process_failure), seconds_to_explode)
+	addtimer(CALLBACK(src, PROC_REF(process_failure)), seconds_to_explode)
 
 /obj/item/stock_parts/cell/microfusion/proc/process_failure()
 	var/fuckup_type = rand(1, 4)

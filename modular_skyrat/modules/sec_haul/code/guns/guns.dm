@@ -681,7 +681,7 @@
 /obj/item/gun/ballistic/automatic/smartgun/process_chamber()
 	. = ..()
 	recharging = TRUE
-	addtimer(CALLBACK(src, .proc/recharge), recharge_time)
+	addtimer(CALLBACK(src, PROC_REF(recharge)), recharge_time)
 
 /obj/item/gun/ballistic/automatic/smartgun/proc/recharge()
 	recharging = FALSE

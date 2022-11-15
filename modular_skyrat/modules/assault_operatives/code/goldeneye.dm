@@ -54,7 +54,7 @@ SUBSYSTEM_DEF(goldeneye)
 	priority_announce(message, "GoldenEye Defence Network", ANNOUNCER_ICARUS)
 	goldeneye_activated = TRUE
 
-	addtimer(CALLBACK(src, .proc/fire_icarus), ignition_time)
+	addtimer(CALLBACK(src, PROC_REF(fire_icarus)), ignition_time)
 
 
 /datum/controller/subsystem/goldeneye/proc/fire_icarus()
