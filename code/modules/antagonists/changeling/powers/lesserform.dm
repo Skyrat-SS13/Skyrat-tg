@@ -7,6 +7,14 @@
 	dna_cost = 1
 	req_human = TRUE
 
+/datum/action/changeling/lesserform/Grant(mob/granted_to)
+	. = ..()
+	RegisterSignal(granted_to, COMSIG_HUMAN_MONKEYIZE, PROC_REF(swap_powers))
+
+/datum/action/changeling/lesserform/Remove(mob/remove_from)
+	UnregisterSignal(remove_from, COMSIG_HUMAN_MONKEYIZE)
+	return ..()
+
 //Transform into a monkey.
 /datum/action/changeling/lesserform/sting_action(mob/living/carbon/human/user)
 	if(!user || user.notransform)
@@ -32,7 +40,7 @@
 	var/datum/action/changeling/humanform/from_monkey/human_form_ability = new()
 	changeling.purchased_powers += human_form_ability
 	changeling.purchased_powers -= src
-	
+
 	// SKYRAT EDIT START
 	for(var/slot in changeling.slot2type)
 		if(istype(user.vars[slot], changeling.slot2type[slot]))
