@@ -152,7 +152,7 @@
 //defensive engineering loadout
 /obj/structure/closet/crate/secure/weapon/nri/engineer/defense
 	name = "defensive engineering supplies"
-	loadout_desc = "An assortment of engineering supplies finely tuned for quick fortification.\
+	loadout_desc = "An assortment of engineering supplies finely tuned for quick fortification. \
 		Features barricades, building materials, extra large fuel tank and 5.6mm defensive autoturrets."
 
 /obj/structure/closet/crate/secure/weapon/nri/engineer/defense/PopulateContents()
@@ -177,7 +177,7 @@
 //offensive engineering loadout
 /obj/structure/closet/crate/secure/weapon/nri/engineer/offense
 	name = "offensive engineering supplies"
-	loadout_desc = "An assortment of engineering supplies finely tuned for rapid approach defortification and area suppression.\
+	loadout_desc = "An assortment of engineering supplies finely tuned for rapid approach defortification and area suppression. \
 		Features way less barricades and building materials than its more defensive analogue, but includes NRI-issued viscerator grenades and a combat RCD."
 
 /obj/structure/closet/crate/secure/weapon/nri/engineer/offense/PopulateContents()
@@ -196,7 +196,7 @@
 //defensive heavy loadout
 /obj/structure/closet/crate/secure/weapon/nri/heavy/defense
 	name = "defensive heavy supplies"
-	loadout_desc = "An assortment of heavy soldier supplies finely tuned for stationary fire suppression and explosive fortifications.\
+	loadout_desc = "An assortment of heavy soldier supplies finely tuned for stationary fire suppression and explosive fortifications. \
 		Features a fifty calibre heavy machinegun with a lot of ammo to spare, as well as a bunch of explosive landmines. \
 		And some bonus frag grenades."
 
@@ -220,7 +220,7 @@
 //offensive heavy loadout
 /obj/structure/closet/crate/secure/weapon/nri/heavy/offense
 	name = "offensive heavy supplies"
-	loadout_desc = "An assortment of heavy soldier supplies finely tuned for rapid approach and munition support.\
+	loadout_desc = "An assortment of heavy soldier supplies finely tuned for rapid approach and munition support. \
 		Features Scarborough's standard LMG with a spare ammo box, as well as ammunition for Krinkov and PP-542."
 
 /obj/structure/closet/crate/secure/weapon/nri/heavy/offense/PopulateContents()
