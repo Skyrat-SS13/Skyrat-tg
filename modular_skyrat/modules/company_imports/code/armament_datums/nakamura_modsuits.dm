@@ -25,13 +25,13 @@
 
 /datum/armament_entry/company_import/nakamura_modsuits/core/plasma
 	item_type = /obj/item/mod/core/plasma
-	lower_cost = CARGO_CRATE_VALUE * 1.5
-	upper_cost = CARGO_CRATE_VALUE * 2.5
+	lower_cost = CARGO_CRATE_VALUE * 0.5
+	upper_cost = CARGO_CRATE_VALUE * 1.5
 
 /datum/armament_entry/company_import/nakamura_modsuits/core/ethereal
 	item_type = /obj/item/mod/core/ethereal
-	lower_cost = CARGO_CRATE_VALUE * 1.5
-	upper_cost = CARGO_CRATE_VALUE * 2.5
+	lower_cost = CARGO_CRATE_VALUE * 0.5
+	upper_cost = CARGO_CRATE_VALUE * 1.5
 
 // MOD plating
 
