@@ -1,4 +1,4 @@
-/mob/living/simple_animal/pet/fox/syndifox
+/mob/living/basic/syndifox
 	name = "Syndi-Fox"
 	real_name = "Syndi-Fox" // Intended to hold the name without altering it.
 	gender = NEUTER
@@ -9,35 +9,22 @@
 	icon_state = "syndifox"
 	icon_living = "syndifox"
 	icon_dead = "syndifox_dead"
-	speak = list("Ack-Ack!","Stay winning!","Geckers!","For Sothra!","Tchoff!","Kyeh!","Keep that disk unsecured!")
 	speak_emote = list("geckers", "barks")
-	emote_hear = list("howls.","barks.")
-	emote_see = list("shakes its head.", "stretches its paws out.", "wags its tail a few times.")
-	speak_chance = 1
 	can_be_held = FALSE
 	attack_verb_continuous = "bites"
 	attack_verb_simple = "bite"
 	attack_sound = 'sound/weapons/bite.ogg'
 	attack_vis_effect = ATTACK_EFFECT_BITE
-	harm_intent_damage = 8
 	melee_damage_lower = 20 //same damage as a carp would make - reference to Paradise Station's Syndifox
 	melee_damage_upper = 20
-	footstep_type = FOOTSTEP_MOB_CLAW
 	maxHealth = 100
 	health = 100
-	turns_per_move = 10
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
 	response_disarm_continuous = "gently pushes aside"
 	response_disarm_simple = "gently push aside"
 	response_harm_continuous = "kicks"
 	response_harm_simple = "kick"
-	stop_automated_movement = 0
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	faction = list(ROLE_SYNDICATE)
-	minbodytemp = 0
-	loot = list(/obj/effect/decal/cleanable/oil/slippery)
 	death_message = "beeps, its mechanical parts hissing before the chassis collapses in a loud thud."
-	animal_species = /mob/living/simple_animal/pet/fox
 	gold_core_spawnable = FRIENDLY_SPAWN
-
