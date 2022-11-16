@@ -7,7 +7,7 @@
 /obj/item/clothing/suit/toggle/chef
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/det_suit
+/obj/item/clothing/suit/jacket/det_suit
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/toggle/lawyer

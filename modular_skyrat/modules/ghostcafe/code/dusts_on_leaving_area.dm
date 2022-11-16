@@ -10,7 +10,7 @@
 		return ELEMENT_INCOMPATIBLE
 
 	area_types = types
-	RegisterSignal(target, COMSIG_ENTER_AREA, .proc/check_dust)
+	RegisterSignal(target, COMSIG_ENTER_AREA, PROC_REF(check_dust))
 
 /datum/element/dusts_on_leaving_area/Detach(mob/M)
 	. = ..()
