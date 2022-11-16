@@ -131,10 +131,3 @@
 	desc = "A cheaper brand of sunglasses rated for much lower UV levels. Offers the user no protection against bright lights."
 	icon_state = "sun"
 	inhand_icon_state = "sunglasses"
-
-/obj/item/clothing/glasses/gold_aviators
-	name = "purple and gold aviators"
-	desc = "A round pair of gold aviator glasses, the lenses having been applied with a gem-like purple tint."
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
-	icon_state = "goldaviator"
