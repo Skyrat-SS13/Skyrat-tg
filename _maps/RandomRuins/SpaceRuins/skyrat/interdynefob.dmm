@@ -10,6 +10,7 @@
 	req_access = list("syndicate")
 	},
 /obj/structure/cable,
+/obj/item/restraints/handcuffs,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "ac" = (
@@ -17,19 +18,17 @@
 	dir = 8
 	},
 /obj/structure/closet/secure_closet{
-	name = "weapon maintenance locker";
+	name = "MODsuit module locker";
 	req_access = list("syndicate_leader");
 	icon_state = "syndicate"
 	},
-/obj/item/storage/box/firingpins/syndicate{
-	pixel_x = 2
+/obj/item/mod/module/criminalcapture,
+/obj/item/mod/module/criminalcapture{
+	pixel_x = -3;
+	pixel_y = -5
 	},
-/obj/item/storage/box/firingpins/syndicate{
-	pixel_y = -3;
-	pixel_x = -2
-	},
-/obj/item/screwdriver/red{
-	pixel_y = -6
+/obj/item/screwdriver/nuke{
+	pixel_y = -2
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -396,6 +395,7 @@
 /obj/item/clothing/suit/toggle/jacket/sec/old{
 	name = "brig officer jacket"
 	},
+/obj/item/clothing/mask/gas/sechailer/syndicate,
 /obj/item/gun/energy/disabler,
 /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch/redsec,
 /obj/item/clothing/glasses/hud/security/sunglasses/redsec,
@@ -2775,17 +2775,16 @@
 /obj/structure/table/reinforced/plastitaniumglass,
 /obj/machinery/light/cold/directional/west,
 /obj/item/clothing/shoes/sneakers/crimson{
-	pixel_y = 4;
 	pixel_x = -4
 	},
 /obj/item/clothing/shoes/sneakers/crimson{
-	pixel_y = 4;
 	pixel_x = 4
 	},
-/obj/item/clothing/under/rank/prisoner/syndicate{
-	pixel_y = 8
-	},
 /obj/machinery/firealarm/directional/west,
+/obj/item/clothing/under/rank/prisoner/syndicate,
+/obj/item/clothing/under/rank/prisoner/syndicate{
+	pixel_y = 4
+	},
 /obj/item/clothing/under/rank/prisoner/syndicate{
 	pixel_y = 8
 	},
@@ -3730,12 +3729,12 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
-/obj/item/storage/box/chemimp{
-	pixel_x = 3;
-	pixel_y = 3
+/obj/item/storage/box/firingpins/syndicate{
+	pixel_y = 6;
+	pixel_x = -2
 	},
-/obj/item/storage/box/trackimp{
-	pixel_x = -3
+/obj/item/storage/box/firingpins/syndicate{
+	pixel_x = 2
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -4321,18 +4320,18 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced/plastitaniumglass,
+/obj/machinery/camera/xray/directional/south{
+	network = list("ds2");
+	c_tag = "DS-2 Long-Term Brig Access"
+	},
+/obj/item/card/id/advanced/prisoner/ds2,
 /obj/item/card/id/advanced/prisoner/ds2{
-	pixel_y = 5;
+	pixel_y = 4;
 	trim = /datum/id_trim/syndicom/skyrat/ds2/prisoner
 	},
 /obj/item/card/id/advanced/prisoner/ds2{
 	pixel_y = 8;
 	trim = /datum/id_trim/syndicom/skyrat/ds2/prisoner
-	},
-/obj/item/restraints/handcuffs,
-/obj/machinery/camera/xray/directional/south{
-	network = list("ds2");
-	c_tag = "DS-2 Long-Term Brig Access"
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
@@ -4980,6 +4979,10 @@
 	},
 /obj/item/clothing/glasses/sunglasses,
 /obj/item/ammo_box/magazine/m9mm_aps,
+/obj/item/clothing/accessory/medal/gold{
+	name = "medal of admiralty";
+	desc = "A golden medal awarded exclusively to those promoted to the rank of captain. It signifies the codified responsibilities of an Admiral to the Sothran Syndicate, and their undisputable authority over their crew."
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
 "vA" = (
@@ -5529,6 +5532,7 @@
 	name = "prisoner item locker";
 	req_access = list("syndicate_leader")
 	},
+/obj/item/restraints/handcuffs,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "yP" = (
@@ -7940,7 +7944,12 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/item/clothing/mask/gas/sechailer/syndicate,
 /obj/item/watertank/pepperspray,
+/obj/item/clothing/accessory/medal/silver{
+	name = "military excellence medal";
+	desc = "The Sothram Syndicate's dictionary defines excellence as \"the ability to crush NT scum under one's boot\". This is awarded to those rare operatives who fit that definition."
+	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "JE" = (
@@ -8296,9 +8305,6 @@
 /obj/item/clothing/glasses/welding{
 	pixel_y = -3
 	},
-/obj/item/mod/module/welding{
-	pixel_y = -5
-	},
 /obj/item/mod/module/constructor{
 	pixel_y = -8
 	},
@@ -8447,6 +8453,15 @@
 	dir = 4
 	},
 /obj/machinery/firealarm/directional/south,
+/obj/item/poster/random_contraband{
+	pixel_y = 5;
+	pixel_x = 5
+	},
+/obj/item/poster/random_contraband,
+/obj/item/poster/random_contraband{
+	pixel_y = 5;
+	pixel_x = 2
+	},
 /turf/open/floor/wood/large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
 "LT" = (
@@ -8882,6 +8897,7 @@
 /obj/item/clothing/suit/toggle/jacket/sec/old{
 	name = "brig officer jacket"
 	},
+/obj/item/clothing/mask/gas/sechailer/syndicate,
 /obj/item/gun/energy/disabler,
 /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch/redsec,
 /obj/item/clothing/glasses/hud/security/sunglasses/redsec,
@@ -9090,6 +9106,7 @@
 /obj/item/clothing/suit/toggle/jacket/sec/old{
 	name = "brig officer jacket"
 	},
+/obj/item/clothing/mask/gas/sechailer/syndicate,
 /obj/item/gun/energy/disabler,
 /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch/redsec,
 /obj/item/clothing/glasses/hud/security/sunglasses/redsec,
