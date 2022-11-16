@@ -102,7 +102,7 @@
 
 /obj/item/ammo_casing/smart/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_CHAMBERED_BULLET_FIRE, .proc/iff_transfer)
+	RegisterSignal(src, COMSIG_CHAMBERED_BULLET_FIRE, PROC_REF(iff_transfer))
 
 /obj/item/ammo_casing/smart/proc/iff_transfer(datum/source, list/iff_factions)
 	SIGNAL_HANDLER
