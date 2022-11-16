@@ -51,7 +51,7 @@
 
 	if(!anchored)
 		icon_state += unwrenched_suffix
-/*
+/* // UNCOMMENT TRANSMISSION SIGIL CODE WHEN IT IS ADDED
 /// Adds a sigil to the linked structure list
 /obj/structure/destructible/clockwork/gear_base/proc/link_to_sigil(obj/structure/destructible/clockwork/sigil/transmission/sigil)
 	LAZYOR(transmission_sigils, sigil)
