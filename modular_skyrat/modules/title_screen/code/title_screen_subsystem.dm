@@ -145,7 +145,7 @@ SUBSYSTEM_DEF(title)
  */
 /datum/controller/subsystem/title/proc/show_title_screen()
 	for(var/mob/dead/new_player/new_player in GLOB.new_player_list)
-		INVOKE_ASYNC(new_player, /mob/dead/new_player.proc/show_title_screen)
+		INVOKE_ASYNC(new_player, TYPE_PROC_REF(/mob/dead/new_player, show_title_screen))
 
 /**
  * Adds a notice to the main title screen in the form of big red text!

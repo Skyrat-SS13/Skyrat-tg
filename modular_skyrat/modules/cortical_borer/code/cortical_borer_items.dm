@@ -15,7 +15,7 @@
 	. = ..()
 	update_appearance()
 	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = .proc/spring_trap,
+		COMSIG_ATOM_ENTERED = PROC_REF(spring_trap),
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
 

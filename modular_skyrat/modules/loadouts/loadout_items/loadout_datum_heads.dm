@@ -100,9 +100,9 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Red Cap"
 	item_path = /obj/item/clothing/head/soft/red
 
-/datum/loadout_item/head/white_cap
-	name = "White Cap"
-	item_path = /obj/item/clothing/head/soft
+/datum/loadout_item/head/grey_cap
+	name = "Grey Cap"
+	item_path = /obj/item/clothing/head/soft/grey
 
 /datum/loadout_item/head/yellow_cap
 	name = "Yellow Cap"
