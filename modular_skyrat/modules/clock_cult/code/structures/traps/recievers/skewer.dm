@@ -41,7 +41,6 @@
 	density = TRUE
 
 	for(var/mob/living/stabbed_mob in get_turf(src))
-
 		if(stabbed_mob.incorporeal_move || (stabbed_mob.movement_type & (FLOATING|FLYING)))
 			continue
 

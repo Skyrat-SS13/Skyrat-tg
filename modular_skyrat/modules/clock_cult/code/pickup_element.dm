@@ -31,8 +31,6 @@
  *  * equipper - The mob that picked up the item
  * 	* slot - The slot the item was equipped in, unused
  */
-
-
 /datum/element/clockwork_pickup/proc/attempt_shock(obj/item/source, mob/equipper, slot)
 	SIGNAL_HANDLER
 
@@ -48,4 +46,4 @@
 	to_chat(equipper_living, span_warning("As you [slot == ITEM_SLOT_HANDS ? "touch" : "equip"] [source], you feel a jolt course through you!"))
 
 	equipper_living.dropItemToGround(source, TRUE)
-	equipper_living.electrocute_act(25 * power_multiplier, src, 1, SHOCK_NOGLOVES)
+	equipper_living.electrocute_act(25 * power_multiplier, src, 1, SHOCK_NOGLOVES, SHOCK_SUPPRESS_MESSAGE)

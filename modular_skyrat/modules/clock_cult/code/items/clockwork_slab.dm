@@ -28,13 +28,12 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 	var/datum/scripture/invoking_scripture
 	/// For scriptures that power the slab
 	var/datum/scripture/slab/active_scripture
-
-	var/list/scriptures = list()
-
+	/// What overlay the slab should use, should the active scripture have one
 	var/charge_overlay
 
-	var/calculated_cogs = 0
+	/// How many cogs this slab has currently
 	var/cogs = 0
+	/// A list of what scriptures that this slab has purchased
 	var/list/purchased_scriptures = list()
 
 	//Initialise an empty list for quickbinding
@@ -43,7 +42,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 		2 = null,
 		3 = null,
 		4 = null,
-		5 = null
+		5 = null,
 	)
 
 	//The default scriptures that get auto-assigned.
@@ -115,18 +114,9 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 		add_overlay(charge_overlay)
 
 
-/// Calculate the differential of old cogs to new cogs
-/obj/item/clockwork/clockwork_slab/proc/update_integration_cogs()
-	//Calculate cogs
-	if(calculated_cogs != GLOB.clock_installed_cogs)
-		var/difference = GLOB.clock_installed_cogs - calculated_cogs
-		calculated_cogs += difference
-		cogs += difference
-
-
 /// Handle binding a spell to a quickbind slot
 /obj/item/clockwork/clockwork_slab/proc/bind_spell(mob/living/binder, datum/scripture/spell, position = 1)
-	if(position > length(quick_bound_scriptures) || position <= 0)
+	if((position > length(quick_bound_scriptures)) || (position <= 0))
 		return
 
 	if(quick_bound_scriptures[position])
@@ -168,6 +158,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 
 /obj/item/clockwork/clockwork_slab/ui_data(mob/user)
 	var/list/data = list()
+
 	data["cogs"] = cogs
 	data["vitality"] = GLOB.clock_vitality
 	data["max_vitality"] = GLOB.max_clock_vitality

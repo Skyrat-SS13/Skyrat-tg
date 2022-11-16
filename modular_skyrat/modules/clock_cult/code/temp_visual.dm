@@ -185,14 +185,18 @@
 	switch(dir)
 		if(NORTH)
 			y_offset = 8
+
 		if(EAST)
 			x_offset = 4
 			y_offset = 4
+
 		if(SOUTH)
 			y_offset = 2
+
 		if(WEST)
 			x_offset = -4
 			y_offset = 4
+
 	animate(src, pixel_x = x_offset, pixel_y = y_offset, alpha = 50, time = 1.5 SECONDS)
 
 
@@ -202,7 +206,6 @@
 /obj/effect/temp_visual/steam_release/Initialize(mapload)
 	. = ..()
 	for(var/cardinal in GLOB.cardinals)
-
 		var/turf/cardinal_step = get_step(src, cardinal)
 		new/obj/effect/temp_visual/steam(cardinal_step, cardinal)
 

@@ -48,7 +48,7 @@
 		send_clock_message(user, span_brass(span_bold("[user] has installed an integration cog into \an [cogger_apc].")))
 		//Update the cog counts
 		for(var/obj/item/clockwork/clockwork_slab/slab as anything in GLOB.clockwork_slabs)
-			slab.update_integration_cogs()
+			slab.cogs++
 
 
 /obj/machinery/power/apc

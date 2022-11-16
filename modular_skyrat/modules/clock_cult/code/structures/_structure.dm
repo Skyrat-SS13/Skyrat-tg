@@ -38,7 +38,6 @@
 
 
 /obj/structure/destructible/clockwork/attacked_by(obj/item/I, mob/living/user)
-
 	if(immune_to_servant_attacks && (IS_CLOCK(user)))
 		return
 
@@ -46,7 +45,6 @@
 
 
 /obj/structure/destructible/clockwork/crowbar_act(mob/living/user, obj/item/tool)
-
 	if(IS_CLOCK(user))
 		setDir(turn(dir, 90))
 		balloon_alert(user, "rotated to [dir2text(dir)]")
