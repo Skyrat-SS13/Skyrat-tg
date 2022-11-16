@@ -205,30 +205,11 @@
 	user.visible_message(span_suicide("[user] clamps the box of hugs on [user.p_their()] jugular! Guess it wasn't such a hugbox after all.."))
 	return BRUTELOSS
 
-<<<<<<< HEAD
-/obj/item/storage/box/hug/black/survival/PopulateContents()
-	new /obj/item/reagent_containers/hypospray/medipen(src)
-
-	//SKYRAT EDIT CHANGE BEGIN - CUSTOMIZATION
-	if(isplasmaman(loc))
-		new /obj/item/tank/internals/plasmaman/belt(src)
-	else if(isvox(loc))
-		new /obj/item/tank/internals/nitrogen/belt/emergency(src)
-	else
-		new /obj/item/tank/internals/emergency_oxygen(src)
-	//SKYRAT EDIT END
-	new /obj/item/oxygen_candle(src) //SKYRAT EDIT ADDITION
-
-	if(HAS_TRAIT(SSstation, STATION_TRAIT_PREMIUM_INTERNALS))
-		new /obj/item/flashlight/flare(src)
-		new /obj/item/radio/off(src)
-=======
 /obj/item/storage/box/survival/hug/attack_self(mob/user)
 	..()
 	user.changeNext_move(CLICK_CD_MELEE)
 	playsound(loc, SFX_RUSTLE, 50, vary=TRUE, extrarange=-5)
 	user.visible_message(span_notice("[user] hugs [src]."),span_notice("You hug [src]."))
->>>>>>> 19291dd6cb9 (Fixed survival boxes for plasmaman clowns and mimes. (#71185))
 
 /obj/item/storage/box/hug/plushes
 	name = "tactical cuddle kit"
