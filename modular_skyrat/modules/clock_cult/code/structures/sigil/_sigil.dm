@@ -118,13 +118,13 @@
 	alpha = SIGIL_INVOKED_ALPHA
 
 	if(looping)
-		animate(src, transform=matrix(), color=invocation_color, alpha=SIGIL_INVOCATION_ALPHA, effect_stand_time)
+		animate(src, transform = matrix(), color = invocation_color, alpha = SIGIL_INVOCATION_ALPHA, effect_stand_time)
 		active_timer = addtimer(CALLBACK(src, PROC_REF(apply_effects), movable_apply), effect_stand_time, TIMER_UNIQUE | TIMER_STOPPABLE)
 
 	else
 		active_timer = null
 		currently_affecting = null
-		animate(src, transform=matrix(), color=idle_color, alpha = initial(alpha), time = 0.5 SECONDS)
+		animate(src, transform = matrix(), color = idle_color, alpha = initial(alpha), time = 0.5 SECONDS)
 
 	return TRUE
 
