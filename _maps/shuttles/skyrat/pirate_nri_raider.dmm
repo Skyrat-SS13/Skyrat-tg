@@ -3,6 +3,12 @@
 /obj/machinery/camera/autoname/directional/south,
 /turf/open/floor/engine/hull,
 /area/shuttle/pirate/nri)
+"ay" = (
+/obj/machinery/porta_turret/syndicate/nri_raider{
+	dir = 5
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/pirate/nri)
 "aW" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/flashes{
@@ -96,7 +102,7 @@
 	dir = 8;
 	pixel_x = 32
 	},
-/turf/open/floor/plating/airless,
+/turf/open/floor/engine/hull,
 /area/shuttle/pirate/nri)
 "cZ" = (
 /obj/structure/window/reinforced/survival_pod{
@@ -153,8 +159,10 @@
 /turf/open/floor/engine/hull,
 /area/shuttle/pirate/nri)
 "ey" = (
-/obj/machinery/light/floor,
-/turf/open/floor/plating/airless,
+/obj/machinery/porta_turret/syndicate/nri_raider{
+	dir = 6
+	},
+/turf/open/floor/engine/hull/reinforced,
 /area/shuttle/pirate/nri)
 "fB" = (
 /obj/structure/rack/shelf,
@@ -195,6 +203,7 @@
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/open/floor/iron/dark,
 /area/shuttle/pirate/nri)
 "hH" = (
@@ -213,6 +222,7 @@
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
 "hP" = (
@@ -234,6 +244,15 @@
 /obj/machinery/door/airlock/external/glass{
 	id_tag = "nripoliceship2";
 	req_access = list("syndicate")
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/docking_port/mobile/pirate/nri_raider{
+	dir = 1;
+	height = 15;
+	launch_status = 0;
+	width = 29;
+	dwidth = 15;
+	dheight = 18
 	},
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
@@ -399,6 +418,12 @@
 /obj/machinery/light/small/red/directional/west,
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
+"qp" = (
+/obj/machinery/base_alarm/nri_raider{
+	pixel_x = 32
+	},
+/turf/open/floor/pod/light,
+/area/shuttle/pirate/nri)
 "qz" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -419,7 +444,9 @@
 /obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/pirate{
 	dir = 8;
 	name = "police shuttle navigation computer";
-	desc = "Used to designate a precise transit location for the police shuttle."
+	desc = "Used to designate a precise transit location for the police shuttle.";
+	x_offset = -2;
+	y_offset = -5
 	},
 /turf/open/floor/carpet/green,
 /area/shuttle/pirate/nri)
@@ -542,6 +569,7 @@
 	id_tag = "nripoliceship2";
 	req_access = list("syndicate")
 	},
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "uw" = (
@@ -555,12 +583,10 @@
 	dir = 1
 	},
 /obj/structure/closet/crate/engineering/electrical,
-/obj/item/storage/part_replacer/cargo,
 /obj/item/stack/sheet/iron/fifty,
 /obj/item/stack/sheet/glass/fifty,
-/obj/item/stack/sheet/plasteel/fifty,
 /obj/item/construction/rcd/loaded/upgraded,
-/obj/item/inducer/syndicate,
+/obj/item/inducer,
 /obj/item/stack/cable_coil,
 /obj/item/storage/belt/utility/full/engi,
 /obj/item/clothing/glasses/meson/engine,
@@ -611,6 +637,7 @@
 /obj/machinery/door/airlock/survival_pod/glass,
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "wQ" = (
@@ -656,6 +683,7 @@
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
 "xp" = (
@@ -668,12 +696,12 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
 "xL" = (
 /obj/structure/chair/comfy/shuttle{
-	dir = 4;
-	pixel_x = 6
+	dir = 4
 	},
 /turf/open/floor/carpet/green,
 /area/shuttle/pirate/nri)
@@ -791,7 +819,7 @@
 /obj/item/clothing/suit/armor/vest/warden/peacekeeper{
 	name = "advanced imperial jacket";
 	armor = list("melee"=30,"bullet"=40,"laser"=20,"energy"=30,"bomb"=35,"bio"=0,"fire"=50,"acid"=50,"wound"=15);
-	desc = "A white jacket with blue rank pips and body armor strapped on top."
+	desc = "A dark blue jacket with blue rank pips and body armor strapped on top."
 	},
 /obj/item/clothing/mask/balaclavaadjust,
 /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper,
@@ -833,7 +861,7 @@
 /area/shuttle/pirate/nri)
 "CC" = (
 /obj/machinery/light/small/red/directional/south,
-/obj/effect/mob_spawn/ghost_role/human/nri_raider/officer{
+/obj/effect/mob_spawn/ghost_role/human/nri_raider/marine{
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -858,6 +886,7 @@
 	id_tag = "nripoliceship";
 	req_access = list("syndicate")
 	},
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "DD" = (
@@ -952,7 +981,7 @@
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
 /area/shuttle/pirate/nri)
 "HD" = (
-/obj/effect/mob_spawn/ghost_role/human/nri_raider/marine{
+/obj/effect/mob_spawn/ghost_role/human/nri_raider/officer{
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -967,6 +996,7 @@
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
 "HV" = (
@@ -1143,7 +1173,7 @@
 	dir = 8;
 	pixel_x = 32
 	},
-/turf/open/floor/plating/airless,
+/turf/open/floor/engine/hull,
 /area/shuttle/pirate/nri)
 "Oc" = (
 /obj/machinery/light/small/red/directional/south,
@@ -1163,6 +1193,7 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/open/floor/pod,
 /area/shuttle/pirate/nri)
 "PO" = (
@@ -1180,16 +1211,11 @@
 	dir = 1
 	},
 /obj/structure/fans/tiny,
-/obj/docking_port/mobile/pirate/nri_raider{
-	dir = 2;
-	height = 15;
-	launch_status = 0;
-	width = 29
-	},
 /obj/machinery/door/airlock/external/glass{
 	id_tag = "nripoliceship";
 	req_access = list("syndicate")
 	},
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/open/floor/plating,
 /area/shuttle/pirate/nri)
 "PZ" = (
@@ -1235,6 +1261,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
 "SQ" = (
@@ -1352,7 +1379,7 @@
 /area/shuttle/pirate/nri)
 "Wr" = (
 /obj/machinery/camera/autoname/directional/east,
-/turf/open/floor/plating/airless,
+/turf/open/floor/engine/hull,
 /area/shuttle/pirate/nri)
 "Xe" = (
 /obj/structure/cable,
@@ -1361,6 +1388,7 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/open/floor/catwalk_floor,
 /area/shuttle/pirate/nri)
 "Xh" = (
@@ -1482,13 +1510,13 @@ ot
 ot
 bQ
 NE
-IY
+iC
 IY
 iC
 iC
 iC
 IY
-IY
+iC
 Fm
 XY
 ot
@@ -1513,9 +1541,9 @@ ot
 "}
 (5,1,1) = {"
 ot
-iC
-iC
-iC
+GO
+GO
+GO
 cc
 Hz
 TR
@@ -1523,9 +1551,9 @@ cc
 TR
 Hz
 cc
-iC
-iC
-iC
+GO
+GO
+GO
 ot
 "}
 (6,1,1) = {"
@@ -1547,7 +1575,7 @@ ot
 "}
 (7,1,1) = {"
 ot
-GO
+iC
 iC
 UP
 Hz
@@ -1558,12 +1586,12 @@ Eh
 ty
 Hz
 UP
-GO
-GO
+iC
+iC
 ot
 "}
 (8,1,1) = {"
-iC
+GO
 iC
 iC
 IY
@@ -1577,10 +1605,10 @@ Hz
 IY
 iC
 iC
-iC
+GO
 "}
 (9,1,1) = {"
-ey
+UP
 NW
 co
 IY
@@ -1594,7 +1622,7 @@ Hz
 IY
 NW
 co
-ey
+UP
 "}
 (10,1,1) = {"
 zy
@@ -1694,7 +1722,7 @@ wh
 hl
 Hz
 TF
-wb
+qp
 CC
 Hz
 "}
@@ -1904,7 +1932,7 @@ ot
 "}
 (28,1,1) = {"
 ot
-pb
+ay
 Hz
 Hz
 Kc
@@ -1916,7 +1944,7 @@ AX
 kX
 Hz
 Hz
-SQ
+ey
 ot
 "}
 (29,1,1) = {"

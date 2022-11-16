@@ -116,6 +116,9 @@
 	prefix = "_maps/shuttles/skyrat/"
 	suffix = "nri_raider"
 	name = "pirate ship (NRI Enforcer-Class Starship)"
+	port_x_offset = -5
+	port_y_offset = 5
+
 
 /area/shuttle/pirate/nri
 	name = "NRI Starship"
@@ -170,7 +173,7 @@
 /obj/docking_port/mobile/pirate/nri_raider
 	name = "NRI IAC-PV 'Evangelium'" //Nobody will care about the translation but basically NRI Internal Affairs Collegium-Patrol Vessel
 	initial_engine_power = 6
-	preferred_direction = EAST
+	preferred_direction = NORTH
 	callTime = 5 MINUTES
 	rechargeTime = 10 MINUTES
 	movement_force = list("KNOCKDOWN"=0,"THROW"=0)
@@ -184,11 +187,8 @@
 /obj/machinery/computer/centcom_announcement/nri_raider
 	name = "police announcement console"
 	desc = "A console used for making priority Internal Affairs Collegium dispatch reports."
-	icon_screen = "comm"
-	icon_keyboard = "tech_key"
 	req_access = null
 	circuit = null
-	light_color = LIGHT_COLOR_BLUE
 	command_name = "NRI Enforcer-Class Starship Telegram"
 
 /obj/machinery/computer/centcom_announcement/nri_raider/send_announcement(report_sound = ANNOUNCER_NRI_RAIDERS)
