@@ -18,12 +18,13 @@
 
 /// Generates a list of toy colors (or designs) for use in the radial color choice menu
 /obj/item/clothing/sextoy/fleshlight/proc/populate_fleshlight_designs()
-    fleshlight_designs = list(
-		"green" = image (icon = src.icon, icon_state = "[initial(icon_state)]_green"),
-		"pink" = image (icon = src.icon, icon_state = "[initial(icon_state)]_pink"),
-		"teal" = image (icon = src.icon, icon_state = "[initial(icon_state)]_teal"),
-		"red" = image (icon = src.icon, icon_state = "[initial(icon_state)]_red"),
-		"yellow" = image(icon = src.icon, icon_state = "[initial(icon_state)]_yellow"))
+	fleshlight_designs = list(
+		"green" = image(icon = src.icon, icon_state = "[initial(icon_state)]_green"),
+		"pink" = image(icon = src.icon, icon_state = "[initial(icon_state)]_pink"),
+		"teal" = image(icon = src.icon, icon_state = "[initial(icon_state)]_teal"),
+		"red" = image(icon = src.icon, icon_state = "[initial(icon_state)]_red"),
+		"yellow" = image(icon = src.icon, icon_state = "[initial(icon_state)]_yellow"),
+	)
 
 /obj/item/clothing/sextoy/fleshlight/Initialize(mapload)
 	. = ..()

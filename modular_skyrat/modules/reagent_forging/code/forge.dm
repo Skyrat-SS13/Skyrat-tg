@@ -90,7 +90,7 @@
 	)
 	/// List of possible choices for the selection radial
 	var/list/radial_choice_list = list()
-    /// Blacklist that contains reagents that weapons and armor are unable to be imbued with.
+	/// Blacklist that contains reagents that weapons and armor are unable to be imbued with.
 	var/static/list/disallowed_reagents = typecacheof(list(
 		/datum/reagent/inverse/,
 		/datum/reagent/consumable/entpoly,
