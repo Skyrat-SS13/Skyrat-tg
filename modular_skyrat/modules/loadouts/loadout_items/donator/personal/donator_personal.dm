@@ -562,3 +562,18 @@
 	name = "Bumbling Wolfgirl Plushie"
 	item_path = /obj/item/toy/plush/skyrat/plushie_elofy
 	ckeywhitelist = list("october23")
+
+/datum/loadout_item/under/jumpsuit/caged_dress
+	name = "Caged Purple Dress"
+	item_path = /obj/item/clothing/under/caged_dress
+	ckeywhitelist = list("Thedragmeme")
+
+/datum/loadout_item/suit/short_coat
+	name = "Short Purple Coat"
+	item_path = /obj/item/clothing/suit/short_coat
+	ckeywhitelist = list("Thedragmeme")
+
+/datum/loadout_item/neck/flower_collar
+	name = "Flower Collar"
+	item_path = /obj/item/clothing/neck/flower_collar
+	ckeywhitelist = list("Thedragmeme")
