@@ -54,9 +54,9 @@
 	mob.log_talk(msg,LOG_OOC, tag="LOOC")
 	var/list/heard
 	if(wall_pierce)
-		heard = get_hearers_in_range(LOOC_RANGE, get_top_level_mob(src.mob))
+		heard = get_hearers_in_range(LOOC_RANGE, mob.get_top_level_mob())
 	else
-		heard = get_hearers_in_view(LOOC_RANGE, get_top_level_mob(src.mob))
+		heard = get_hearers_in_view(LOOC_RANGE, mob.get_top_level_mob())
 
 	//so the ai can post looc text
 	if(istype(mob, /mob/living/silicon/ai))
