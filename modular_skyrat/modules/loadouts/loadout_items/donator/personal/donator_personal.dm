@@ -565,5 +565,5 @@
 
 /datum/loadout_item/glasses/goldaviator
 	name = "Purple and Gold Aviators"
-	item_path = /obj/item/clothing/glasses/goldaviator
+	item_path = /obj/item/clothing/glasses/gold_aviators
 	ckeywhitelist = list("nikohyena")
