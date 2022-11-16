@@ -51,7 +51,6 @@
 	spread = 2.5
 	mag_display = TRUE
 	alt_icons = TRUE
-	realistic = TRUE
 	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/mp5_magin.ogg'
 	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/mp5_magin.ogg'
 	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/mp5_cock.ogg'

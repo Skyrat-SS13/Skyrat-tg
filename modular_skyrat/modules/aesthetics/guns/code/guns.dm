@@ -279,7 +279,6 @@
 	worn_icon_state = "bubba"
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	can_be_sawn_off = FALSE
-	realistic = TRUE
 	company_flag = null //Cargonia's own
 
 /obj/item/ammo_box/magazine/internal/boltaction/bubba

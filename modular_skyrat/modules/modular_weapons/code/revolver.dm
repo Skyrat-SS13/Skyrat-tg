@@ -22,7 +22,6 @@
 	pixel_x = -8
 	inhand_icon_state = "revolving"
 	company_flag = COMPANY_IZHEVSK
-	dirt_modifier = 0.75
 
 /obj/item/gun/ballistic/revolver/rifle/improvised
 	name = "\improper improvised .38 revolving rifle"

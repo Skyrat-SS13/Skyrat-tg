@@ -59,7 +59,11 @@
 	knife_x_offset = 27
 	knife_y_offset = 13
 	can_be_sawn_off = TRUE
-	realistic = TRUE
+	var/jamming_chance = 20
+	var/unjam_chance = 10
+	var/jamming_increment = 5
+	var/jammed = FALSE
+	var/can_jam = TRUE
 
 /obj/item/gun/ballistic/rifle/boltaction/sawoff(mob/user)
 	. = ..()
@@ -68,7 +72,6 @@
 		can_bayonet = FALSE
 		update_appearance()
 
-/* - SKYRAT EDIT REMOVAL
 /obj/item/gun/ballistic/rifle/boltaction/attack_self(mob/user)
 	if(can_jam)
 		if(jammed)
@@ -100,7 +103,6 @@
 					user.visible_message(span_notice("[user] finishes maintenance of [src]."))
 					jamming_chance = 10
 					qdel(item)
-*/ //SKYRAT EDIT END
 
 /obj/item/gun/ballistic/rifle/boltaction/blow_up(mob/user)
 	. = FALSE
@@ -117,11 +119,12 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/harpoon
 	fire_sound = 'sound/weapons/gun/sniper/shot.ogg'
 	can_be_sawn_off = FALSE
+	can_jam = FALSE
 
 /obj/item/gun/ballistic/rifle/boltaction/brand_new
 	desc = "A brand new Mosin Nagant issued by Nanotrasen for their interns. You would rather not to damage it."
 	can_be_sawn_off = FALSE
-	realistic = FALSE
+	can_jam = FALSE
 
 /obj/item/gun/ballistic/rifle/boltaction/brand_new/prime
 	name = "\improper Regal Nagant"
@@ -176,6 +179,7 @@
 	worn_icon_state = "musket_prime"
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/pipegun/prime
 	can_misfire = FALSE
+	can_jam = FALSE
 	misfire_probability = 0
 	misfire_percentage_increment = 0
 	projectile_damage_multiplier = 1
@@ -188,7 +192,6 @@
 	var/guns_left = 30
 	mag_type = /obj/item/ammo_box/magazine/internal/enchanted
 	can_be_sawn_off = FALSE
-	realistic = FALSE
 
 /obj/item/gun/ballistic/rifle/enchanted/arcane_barrage
 	name = "arcane barrage"
@@ -203,7 +206,6 @@
 	flags_1 = NONE
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL
 	show_bolt_icon = FALSE //It's a magic hand, not a rifle
-	realistic = FALSE
 
 	mag_type = /obj/item/ammo_box/magazine/internal/arcane_barrage
 

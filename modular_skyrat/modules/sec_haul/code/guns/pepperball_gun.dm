@@ -10,9 +10,6 @@
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
-	realistic = TRUE
-	dirt_modifier = 2
-	emp_damageable = TRUE
 	fire_sound_volume = 50
 	company_flag = COMPANY_BOLT
 

@@ -73,9 +73,6 @@
 		if(pew.safety)
 			indicator = "safe"
 
-		if(pew.jammed)
-			indicator = "jam"
-
 		switch(length(rounds))
 			if(1)
 				oth_o = "o[rounds[1]]"

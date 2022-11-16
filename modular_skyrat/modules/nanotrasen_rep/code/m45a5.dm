@@ -13,9 +13,6 @@
 	spread = 2
 	force = 8 //There's heavier guns that dealt less damage on melee than this so we're reducing it from the original 12
 	recoil = 0
-	realistic = TRUE
-	dirt_modifier = 0.1
-	emp_damageable = FALSE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/dp_fire.ogg'
 
 /obj/item/gun/ballistic/automatic/pistol/m45a5/add_seclight_point()
