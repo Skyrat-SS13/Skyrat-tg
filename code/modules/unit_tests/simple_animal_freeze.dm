@@ -379,9 +379,6 @@
 		/mob/living/simple_animal/pet/penguin/baby,
 		/mob/living/simple_animal/pet/penguin/emperor,
 		/mob/living/simple_animal/pet/penguin/emperor/shamebrero,
-		/mob/living/simple_animal/rabbit,
-		/mob/living/simple_animal/rabbit/easter,
-		/mob/living/simple_animal/rabbit/easter/space,
 		/mob/living/simple_animal/revenant,
 		/mob/living/simple_animal/robot_customer,
 		/mob/living/simple_animal/shade,
@@ -507,7 +504,6 @@
 		/mob/living/simple_animal/pet/dog/markus,
 		/mob/living/simple_animal/pet/gondola/funky,
 		/mob/living/simple_animal/pet/poppy,
-		/mob/living/simple_animal/rabbit/daisy,
 
 		// DO NOT ADD NEW ENTRIES TO THIS LIST
 		// READ THE COMMENT ABOVE

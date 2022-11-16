@@ -578,7 +578,7 @@
 
 /obj/item/clothing/head/hooded/cloakhood/zuliecloak
 	name = "NT special issue"
-	desc = "This hat is unquestionably the best one, bluespaced to and from CentComm. It smells of Fish and Tea with a hint of antagonism"
+	desc = "This hat is unquestionably the best one, bluespaced to and from CentCom. It smells of Fish and Tea with a hint of antagonism"
 	icon_state = "zuliecap"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/cloaks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
@@ -1175,11 +1175,11 @@
 
 //Donation reward for Konstyantyn
 /obj/item/clothing/accessory/badge/holo/jade
-    name = "jade holobadge"
-    desc = "A strangely green holobadge. 'Lieutenant Uriah' is stamped onto it, above the letters JS."
-    icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
-    worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
-    icon_state = "greenbadge"
+	name = "jade holobadge"
+	desc = "A strangely green holobadge. 'Lieutenant Uriah' is stamped onto it, above the letters JS."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
+	icon_state = "greenbadge"
 
 // Donation reward for Dudewithatude
 /obj/item/clothing/suit/toggle/rainbowcoat
