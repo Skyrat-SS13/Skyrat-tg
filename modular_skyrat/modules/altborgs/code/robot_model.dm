@@ -324,12 +324,12 @@
 	)
 
 /obj/item/robot_model/syndicatejack/rebuild_modules()
-	..()
+	. = ..()
 	var/mob/living/silicon/robot/syndicatejack = loc
 	syndicatejack.scrambledcodes = TRUE // We're rouge now
 
 /obj/item/robot_model/syndicatejack/remove_module(obj/item/I, delete_after)
-	..()
+	. = ..()
 	var/mob/living/silicon/robot/syndicatejack = loc
 	syndicatejack.scrambledcodes = FALSE // Friends with the AI again
 

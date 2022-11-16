@@ -67,7 +67,7 @@
 		clothing_traits = null /// also disables the options for Science functionality
 		REMOVE_TRAIT(user, hud_trait, GLASSES_TRAIT)
 	playsound(src, modeswitch_sound, 50, TRUE) // play sound set in vars!
-	// Blah blah, fix vision and update iconstoggle_mode
+	// Blah blah, fix vision and update icons
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.glasses == src)
