@@ -6,22 +6,28 @@
 	name = "Emergency Air Supplies (Nitrogen)"
 	desc = "A vox breathing mask and nitrogen tank."
 	cost = PAYCHECK_CREW
-	contains = list(/obj/item/tank/internals/nitrogen/belt,
-                    /obj/item/clothing/mask/breath/vox)
+	contains = list(
+		/obj/item/tank/internals/nitrogen/belt,
+		/obj/item/clothing/mask/breath/vox,
+	)
 
 /datum/supply_pack/goody/airsuppliesoxygen
 	name = "Emergency Air Supplies (Oxygen)"
 	desc = "A breathing mask and emergency oxygen tank."
 	cost = PAYCHECK_CREW
-	contains = list(/obj/item/tank/internals/emergency_oxygen,
-                    /obj/item/clothing/mask/breath)
+	contains = list(
+		/obj/item/tank/internals/emergency_oxygen,
+		/obj/item/clothing/mask/breath,
+	)
 
 /datum/supply_pack/goody/airsuppliesplasma
 	name = "Emergency Air Supplies (Plasma)"
 	desc = "A breathing mask and plasmaman plasma tank."
 	cost = PAYCHECK_CREW
-	contains = list(/obj/item/tank/internals/plasmaman/belt,
-                    /obj/item/clothing/mask/breath)
+	contains = list(
+		/obj/item/tank/internals/plasmaman/belt,
+		/obj/item/clothing/mask/breath,
+	)
 
 /*
 *	ENGINEERING STUFF
