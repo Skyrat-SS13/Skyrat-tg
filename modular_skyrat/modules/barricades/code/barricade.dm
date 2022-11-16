@@ -30,11 +30,11 @@
 	. = ..()
 	update_icon()
 	var/static/list/connections = list(
-		COMSIG_ATOM_EXIT = .proc/on_try_exit
+		COMSIG_ATOM_EXIT = PROC_REF(on_try_exit)
 	)
 	AddElement(/datum/element/connect_loc, connections)
 	AddElement(/datum/element/climbable)
-	RegisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED, .proc/run_integrity)
+	RegisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED, PROC_REF(run_integrity))
 
 /obj/structure/deployable_barricade/proc/run_integrity()
 	SIGNAL_HANDLER
@@ -46,7 +46,7 @@
 
 /obj/structure/deployable_barricade/examine(mob/user)
 	. = ..()
-	if(!is_wired)
+	if(!is_wired && can_wire)
 		. += span_info("Barbed wire could be added with some <b>cable</b>.")
 	if(is_wired)
 		. += span_info("It has barbed wire along the top.")

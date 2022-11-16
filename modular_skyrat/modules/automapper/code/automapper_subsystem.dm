@@ -73,7 +73,7 @@ SUBSYSTEM_DEF(automapper)
 		map_names = list(map_names)
 	for(var/datum/map_template/automap_template/iterating_template as anything in preloaded_map_templates)
 		if(iterating_template.affects_builtin_map && ((SSmapping.config.map_file in map_names) || SSmapping.config.map_file == map_names))
-			// CentComm already started loading objects, place them in the netherzone
+			// CentCom already started loading objects, place them in the netherzone
 			for(var/turf/old_turf as anything in iterating_template.get_affected_turfs(iterating_template.load_turf, FALSE))
 				init_contents(old_turf)
 		else if(!(iterating_template.required_map in map_names))
@@ -114,6 +114,29 @@ SUBSYSTEM_DEF(automapper)
 		qdel(atom_to_del, TRUE)
 
 /**
+ * Get whether a given turf of the map template is a /turf/template_noop.
+ *
+ * You'd think there would be a better API way of doing this, but there is not.
+ *
+ * Arguments:
+ * * map - The map_template we are looking at.
+ * * x - The zero-based x coordinate RELATIVE to the map_template.
+ * * y - The zero-based y coordinate RELATIVE to the map_template.
+ */
+/datum/controller/subsystem/automapper/proc/has_turf_noop(datum/map_template/map, x, y)
+	// Row of the map grid.
+	var/datum/grid_set/map_row = map.cached_map.gridSets[x + 1]
+	// Note that Y is upside-down in the map data.
+	// Which model, as in that key name in the map file, like pAK.
+	var/modelID = map_row.gridLines[map.height - y]
+	// Get the actual model text, ie the text of what's in this cell
+	var/model = map.cached_map.grid_models[modelID]
+
+	// If this doesn't work right, the map is horribly malformed and shoul fail,
+	// Or you've map-edited template_noop which I'm fine with failing as well.
+	return findtextEx(model, "\n/turf/template_noop,\n")
+
+/**
  * This returns a list of turfs that have been preloaded and preselected using our templates.
  *
  * Not really useful outside of load groups.
@@ -121,10 +144,21 @@ SUBSYSTEM_DEF(automapper)
 /datum/controller/subsystem/automapper/proc/get_turf_blacklists(map_names)
 	if(!islist(map_names))
 		map_names = list(map_names)
+
 	var/list/blacklisted_turfs = list()
 	for(var/datum/map_template/automap_template/iterating_template as anything in preloaded_map_templates)
 		if(!(iterating_template.required_map in map_names))
 			continue
+
+		// Base of the coordinate system to introspect the templates.
+		var/base_x = iterating_template.load_turf.x
+		var/base_y = iterating_template.load_turf.y
+
 		for(var/turf/blacklisted_turf as anything in iterating_template.get_affected_turfs(iterating_template.load_turf, FALSE))
+			// Allow non-rectangular templates. Have to manually check the grid set since parsed_maps are not helpful for this.
+
+			if(has_turf_noop(iterating_template, blacklisted_turf.x - base_x, blacklisted_turf.y - base_y))
+				continue
+
 			blacklisted_turfs[blacklisted_turf] = TRUE
 	return blacklisted_turfs

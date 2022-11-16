@@ -309,14 +309,14 @@
 		LAZYSET(located_wine.data, "vintage", wine_info)
 
 /obj/item/reagent_containers/cup/glass/bottle/wine/proc/generate_vintage()
-	return "[GLOB.year_integer + 540] Nanotrasen Light Red"
+	return "[CURRENT_STATION_YEAR] Nanotrasen Light Red"
 
 /obj/item/reagent_containers/cup/glass/bottle/wine/unlabeled
 	name = "unlabeled wine bottle"
 	desc = "There's no label on this wine bottle."
 
 /obj/item/reagent_containers/cup/glass/bottle/wine/unlabeled/generate_vintage()
-	var/current_year = GLOB.year_integer + 540
+	var/current_year = CURRENT_STATION_YEAR
 	var/year = rand(current_year-50,current_year)
 	var/type = pick("Sparkling","Dry White","Sweet White","Rich White","Rose","Light Red","Medium Red","Bold Red","Dessert")
 	var/origin = pick("Nanotrasen","Syndicate","Local")
@@ -606,7 +606,7 @@
 		to_chat(user, span_info("You light [src] on fire."))
 		add_overlay(custom_fire_overlay ? custom_fire_overlay : GLOB.fire_overlay)
 		if(!isGlass)
-			addtimer(CALLBACK(src, .proc/explode), 5 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(explode)), 5 SECONDS)
 
 /obj/item/reagent_containers/cup/glass/bottle/molotov/proc/explode()
 	if(!active)
@@ -643,7 +643,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/pruno/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/check_fermentation)
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(check_fermentation))
 
 /obj/item/reagent_containers/cup/glass/bottle/pruno/Destroy()
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
@@ -664,7 +664,7 @@
 		return
 	if(!fermentation_time_remaining)
 		fermentation_time_remaining = fermentation_time
-	fermentation_timer = addtimer(CALLBACK(src, .proc/do_fermentation), fermentation_time_remaining, TIMER_UNIQUE|TIMER_STOPPABLE)
+	fermentation_timer = addtimer(CALLBACK(src, PROC_REF(do_fermentation)), fermentation_time_remaining, TIMER_UNIQUE|TIMER_STOPPABLE)
 	fermentation_time_remaining = null
 
 // actually ferment

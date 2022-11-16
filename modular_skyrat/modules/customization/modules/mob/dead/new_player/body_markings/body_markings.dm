@@ -23,7 +23,7 @@
 	if(!default_color)
 		default_color = "#FFFFFF"
 
-/datum/body_marking/proc/get_default_color(var/list/features, var/datum/species/pref_species) //Needs features for the color information
+/datum/body_marking/proc/get_default_color(list/features, datum/species/pref_species) //Needs features for the color information
 	var/list/colors
 	switch(default_color)
 		if(DEFAULT_PRIMARY)

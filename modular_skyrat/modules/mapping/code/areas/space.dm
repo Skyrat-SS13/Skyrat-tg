@@ -14,7 +14,7 @@
 /area/ruin/space/has_grav/powered/skyrat/smugglies
 	name = "Suspicious Cargo Installation"
 
-/area/ruin/space/has_grav/powered/skyrat/polychromicfacility
+/area/ruin/space/has_grav/powered/skyrat/clothing_facility
 	name = "Abandoned Research Station"
 
 /area/ruin/space/has_grav/powered/skyrat/luna
@@ -321,3 +321,18 @@
 /area/ruin/space/has_grav/cargodise_freighter/quarters
 	name = "Freighter Crew Quarters"
 	icon_state = "crew_quarters"
+
+// Skyrat's Space Hotel
+
+/area/ruin/space/has_grav/hotel/sauna
+	name = "Hotel Sauna Room"
+
+/area/ruin/space/has_grav/hotel/workroom/quarters
+	name = "Hotel Staff Quarters"
+
+/area/ruin/solars/hotel/solars
+	name = "\improper Hotel Solar Array"
+	requires_power = FALSE
+	area_flags = UNIQUE_AREA | AREA_USES_STARLIGHT
+	sound_environment = SOUND_AREA_SPACE
+	base_lighting_alpha = 255

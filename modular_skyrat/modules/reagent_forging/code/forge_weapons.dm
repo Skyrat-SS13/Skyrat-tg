@@ -168,6 +168,7 @@
 	name = "reagent plated buckler shield"
 	desc = "A small, round shield best used in tandem with a melee weapon in close-quarters combat."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
+	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_worn.dmi'
 	icon_state = "buckler"
 	inhand_icon_state = "buckler"
 	worn_icon_state = "buckler_back"
@@ -298,8 +299,8 @@
 
 /obj/item/forging/reagent_weapon/bokken/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)
-	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/on_unwield)
+	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, PROC_REF(on_wield))
+	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, PROC_REF(on_unwield))
 	AddComponent(/datum/component/two_handed, force_unwielded=15, force_wielded=7)
 
 /obj/item/forging/reagent_weapon/bokken/proc/on_wield()

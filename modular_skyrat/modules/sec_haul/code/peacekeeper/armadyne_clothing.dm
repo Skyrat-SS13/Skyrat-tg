@@ -229,10 +229,11 @@
 /obj/item/card/id/armadyne/corpo/security
 	assignment = "Armadyne Corporate Security"
 
+
 /datum/antagonist/ert/armadyne
-    name = "Armadyne Corporate Security"
-    outfit = /datum/outfit/armadyne_security
-    role = "Security"
+	name = "Armadyne Corporate Security"
+	outfit = /datum/outfit/armadyne_security
+	role = "Security"
 
 /datum/antagonist/ert/armadyne/high_alert
     name = "Armadyne Corporate Security (High Alert)"
@@ -248,6 +249,7 @@
     name = "Armadyne Corporate Security Commander (High Alert)"
     outfit = /datum/outfit/armadyne_security/commander/high_alert
     role = "Commander"
+
 
 /datum/ert/armadyne
 	roles = list(/datum/antagonist/ert/armadyne)

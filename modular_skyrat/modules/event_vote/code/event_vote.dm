@@ -83,7 +83,7 @@
 		if(admin_client?.prefs?.toggles & SOUND_ADMINHELP)
 			SEND_SOUND(admin_client.mob, sound('sound/misc/bloop.ogg')) // Admins need a little boop.
 
-	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(end_vote)), EVENT_VOTE_TIME, TIMER_STOPPABLE)
 	vote_in_progress = TRUE
 	vote_end_time = world.time + EVENT_VOTE_TIME
 
@@ -112,7 +112,7 @@
 			continue
 		possible_events += iterating_preset
 
-	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(end_vote)), EVENT_VOTE_TIME, TIMER_STOPPABLE)
 	vote_in_progress = TRUE
 	vote_end_time = world.time + EVENT_VOTE_TIME
 
@@ -138,7 +138,7 @@
 			event_action.Grant(iterating_user)
 			generated_actions += event_action
 
-	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(end_vote)), EVENT_VOTE_TIME, TIMER_STOPPABLE)
 	vote_in_progress = TRUE
 	vote_end_time = world.time + EVENT_VOTE_TIME
 
@@ -170,7 +170,7 @@
 			event_action.Grant(iterating_user)
 			generated_actions += event_action
 
-	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(end_vote)), EVENT_VOTE_TIME, TIMER_STOPPABLE)
 	vote_in_progress = TRUE
 	vote_end_time = world.time + EVENT_VOTE_TIME
 
@@ -330,7 +330,7 @@
 		return FALSE
 	if(players_amt < min_players)
 		return FALSE
-	if(holidayID && (!SSevents.holidays || !SSevents.holidays[holidayID]))
+	if(holidayID && (!check_holidays(holidayID)))
 		return FALSE
 	if(EMERGENCY_ESCAPED_OR_ENDGAMED)
 		return FALSE
@@ -551,7 +551,7 @@
 	if(owner)
 		owner.event_vote()
 
-/datum/action/vote_event/IsAvailable()
+/datum/action/vote_event/IsAvailable(feedback = FALSE)
 	return TRUE
 
 /datum/action/vote_event/proc/remove_from_client()
