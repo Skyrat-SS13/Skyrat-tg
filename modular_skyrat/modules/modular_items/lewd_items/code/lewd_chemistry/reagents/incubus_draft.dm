@@ -45,7 +45,7 @@
 		"rather lengthy",
 		"colossal",
 		"hefty",
- 	)
+	)
 	/// Synonyms for cock.
 	var/static/list/cock_text_list = list(
 		"cock",

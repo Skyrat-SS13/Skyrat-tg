@@ -27,7 +27,7 @@
 		. = ..()
 		if(.)
 			return
-		var/choice = show_radial_menu(user, src, strapon_types, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, strapon_types, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		strapon_type = choice
@@ -106,8 +106,8 @@
 
 //button stuff
 /datum/action/item_action/take_strapon
-    name = "Put strapon in hand"
-    desc = "Put the strapon in your hand in order to use it properly."
+	name = "Put strapon in hand"
+	desc = "Put the strapon in your hand in order to use it properly."
 
 /datum/action/item_action/take_strapon/Trigger(trigger_flags)
 	var/obj/item/clothing/strapon/affected_item = target

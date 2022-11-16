@@ -76,7 +76,7 @@
 		\nDO NOT DISCONNECT UNTIL THIS PROCESS HAS BEEN COMPLETED.\
 		")))
 		migrate_skyrat(save)
-		addtimer(CALLBACK(src, .proc/check_migration), 10 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(check_migration)), 10 SECONDS)
 
 	READ_FILE(save["headshot"], headshot)
 

@@ -110,11 +110,11 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 	update_appearance()
 	AddComponent(/datum/component/ammo_hud)
-	RegisterSignal(src, COMSIG_ITEM_RECHARGED, .proc/instant_recharge)
+	RegisterSignal(src, COMSIG_ITEM_RECHARGED, PROC_REF(instant_recharge))
 	base_fire_delay = fire_delay
 
 /obj/item/gun/microfusion/add_weapon_description()
-	AddElement(/datum/element/weapon_description, attached_proc = .proc/add_notes_energy)
+	AddElement(/datum/element/weapon_description, attached_proc = PROC_REF(add_notes_energy))
 
 /obj/item/gun/microfusion/add_seclight_point()
 	return
@@ -135,13 +135,13 @@
 	return ..()
 
 /obj/item/gun/microfusion/handle_atom_del(atom/to_handle)
-    if(to_handle == cell)
-        cell = null
-        update_appearance()
-    if(to_handle == phase_emitter)
-        phase_emitter = null
-        update_appearance()
-    return ..()
+	if(to_handle == cell)
+		cell = null
+		update_appearance()
+	if(to_handle == phase_emitter)
+		phase_emitter = null
+		update_appearance()
+	return ..()
 
 /obj/item/gun/microfusion/can_shoot()
 	return !QDELETED(cell) ? (cell.charge >= microfusion_lens.e_cost) : FALSE
@@ -350,13 +350,13 @@
 
 	var/obj/item/bodypart/other_hand = user.has_hand_for_held_index(user.get_inactive_hand_index()) //returns non-disabled inactive hands
 	if(weapon_weight == WEAPON_HEAVY && (user.get_inactive_held_item() || !other_hand))
-		to_chat(user, span_warning("You need two hands to fire [src]!"))
+		balloon_alert(user, "use both hands!")
 		return
 
 	var/attempted_shot = process_emitter()
 	if(attempted_shot != SHOT_SUCCESS)
 		if(attempted_shot)
-			to_chat(user, span_danger(attempted_shot))
+			balloon_alert(user, attempted_shot)
 		return
 
 	//DUAL (or more!) WIELDING
@@ -370,7 +370,7 @@
 			else if(gun.can_trigger_gun(user))
 				bonus_spread += dual_wield_spread
 				loop_counter++
-				addtimer(CALLBACK(gun, /obj/item/gun.proc/process_fire, target, user, TRUE, params, null, bonus_spread), loop_counter)
+				addtimer(CALLBACK(gun, TYPE_PROC_REF(/obj/item/gun, process_fire), target, user, TRUE, params, null, bonus_spread), loop_counter)
 
 	return process_fire(target, user, TRUE, params, null, bonus_spread)
 
@@ -405,7 +405,7 @@
 		if(phase_emitter)
 			fire_delay_to_add = phase_emitter.fire_delay
 		for(var/i = 1 to burst_size)
-			addtimer(CALLBACK(src, .proc/process_burst, user, target, message, params, zone_override, calculated_spread, randomized_gun_spread, randomized_bonus_spread, random_spread, i), (fire_delay + fire_delay_to_add) * (i - 1))
+			addtimer(CALLBACK(src, PROC_REF(process_burst), user, target, message, params, zone_override, calculated_spread, randomized_gun_spread, randomized_bonus_spread, random_spread, i), (fire_delay + fire_delay_to_add) * (i - 1))
 	else
 		if(chambered)
 			if(HAS_TRAIT(user, TRAIT_PACIFISM)) // If the user has the pacifist trait, then they won't be able to fire [src] if the round chambered inside of [src] is lethal.
@@ -432,7 +432,7 @@
 		var/fire_delay_to_add = 0
 		if(phase_emitter)
 			fire_delay_to_add = phase_emitter.fire_delay
-		addtimer(CALLBACK(src, .proc/reset_semicd), fire_delay + fire_delay_to_add)
+		addtimer(CALLBACK(src, PROC_REF(reset_semicd)), fire_delay + fire_delay_to_add)
 
 	if(user)
 		user.update_held_items()
@@ -656,10 +656,6 @@
 	recharge_newshot()
 	update_appearance()
 	return TRUE
-
- /// Update reload timers
-// /obj/item/gun/microfusion/proc/reload_timer(mob/user, obj/item/stock_parts/cell/microfusion/inserting_cell)
-
 
 /// Ejecting a cell.
 /obj/item/gun/microfusion/proc/eject_cell(mob/user, display_message = TRUE, put_in_hands = TRUE)

@@ -139,7 +139,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		if (picked && is_station_level(picked.z))
 			GLOB.teleportlocs[AR.name] = AR
 
-	sortTim(GLOB.teleportlocs, /proc/cmp_text_asc)
+	sortTim(GLOB.teleportlocs, GLOBAL_PROC_REF(cmp_text_asc))
 
 /**
  * Called when an area loads
@@ -430,7 +430,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 
 	var/area/my_area = get_area(src)
 
-	if(!(client?.prefs.toggles & SOUND_SHIP_AMBIENCE) || !my_area.ambient_buzz)
+	if(!(client?.prefs.read_preference(/datum/preference/toggle/sound_ship_ambience)) || !my_area.ambient_buzz)
 		SEND_SOUND(src, sound(null, repeat = 0, wait = 0, channel = CHANNEL_BUZZ))
 		return
 

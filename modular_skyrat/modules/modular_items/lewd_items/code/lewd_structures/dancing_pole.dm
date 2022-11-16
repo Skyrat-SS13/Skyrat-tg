@@ -31,25 +31,26 @@
 //to change color of pole by using multitool
 //create radial menu
 /obj/structure/pole/proc/populate_pole_designs()
-    pole_designs = list(
-        "purple" = image (icon = src.icon, icon_state = "pole_purple_on"),
-        "cyan" = image(icon = src.icon, icon_state = "pole_cyan_on"),
-        "red" = image(icon = src.icon, icon_state = "pole_red_on"),
-        "green" = image(icon = src.icon, icon_state = "pole_green_on"),
-        "white" = image(icon = src.icon, icon_state = "pole_white_on"))
+	pole_designs = list(
+		"purple" = image(icon = src.icon, icon_state = "pole_purple_on"),
+		"cyan" = image(icon = src.icon, icon_state = "pole_cyan_on"),
+		"red" = image(icon = src.icon, icon_state = "pole_red_on"),
+		"green" = image(icon = src.icon, icon_state = "pole_green_on"),
+		"white" = image(icon = src.icon, icon_state = "pole_white_on"),
+	)
 
 //using multitool on pole
 /obj/structure/pole/multitool_act(mob/living/user, obj/item/used_item)
-    . = ..()
-    if(.)
-        return
-    var/choice = show_radial_menu(user, src, pole_designs, custom_check = CALLBACK(src, .proc/check_menu, user, used_item), radius = 50, require_near = TRUE)
-    if(!choice)
-        return FALSE
-    current_pole_color = choice
-    light_color = polelights[choice]
-    update_icon()
-    update_brightness()
+	. = ..()
+	if(.)
+		return
+	var/choice = show_radial_menu(user, src, pole_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user, used_item), radius = 50, require_near = TRUE)
+	if(!choice)
+		return FALSE
+	current_pole_color = choice
+	light_color = polelights[choice]
+	update_icon()
+	update_brightness()
 
 /obj/structure/pole/proc/check_menu(mob/living/user, obj/item/multitool)
 	if(!istype(user))
@@ -62,12 +63,12 @@
 
 //to enable lights by aliclick
 /obj/structure/pole/AltClick(mob/user)
-    pole_on = !pole_on
-    to_chat(user, span_notice("You turn the lights [pole_on? "on. Woah..." : "off."]"))
-    playsound(user, pole_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
-    update_icon_state()
-    update_icon()
-    update_brightness()
+	pole_on = !pole_on
+	to_chat(user, span_notice("You turn the lights [pole_on? "on. Woah..." : "off."]"))
+	playsound(user, pole_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
+	update_icon_state()
+	update_icon()
+	update_brightness()
 
 /obj/structure/pole/Initialize(mapload)
 	. = ..()
@@ -78,12 +79,12 @@
 		populate_pole_designs()
 
 /obj/structure/pole/update_icon_state()
-    . = ..()
-    icon_state = "[initial(icon_state)]_[current_pole_color]_[pole_on? "on" : "off"]"
+	. = ..()
+	icon_state = "[initial(icon_state)]_[current_pole_color]_[pole_on? "on" : "off"]"
 
 /obj/structure/pole/proc/update_brightness()
-    set_light_on(pole_on)
-    update_light()
+	set_light_on(pole_on)
+	update_light()
 
 //trigger dance if character uses LBM
 /obj/structure/pole/attack_hand(mob/living/user)

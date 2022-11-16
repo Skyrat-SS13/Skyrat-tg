@@ -82,7 +82,7 @@
 	. += "[base_icon_state]_door_open"
 
 /obj/item/gun/ballistic/automatic/smart_machine_gun/unrestricted
-    pin = /obj/item/firing_pin
+	pin = /obj/item/firing_pin
 // Magazine itself
 
 /obj/item/ammo_box/magazine/smartgun_drum
@@ -102,7 +102,7 @@
 
 /obj/item/ammo_casing/smart/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_CHAMBERED_BULLET_FIRE, .proc/iff_transfer)
+	RegisterSignal(src, COMSIG_CHAMBERED_BULLET_FIRE, PROC_REF(iff_transfer))
 
 /obj/item/ammo_casing/smart/proc/iff_transfer(datum/source, list/iff_factions)
 	SIGNAL_HANDLER

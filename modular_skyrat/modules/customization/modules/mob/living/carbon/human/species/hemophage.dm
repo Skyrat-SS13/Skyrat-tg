@@ -74,6 +74,7 @@
 
 	if(hemophage.blood_volume <= BLOOD_VOLUME_SURVIVE)
 		to_chat(hemophage, span_danger("You ran out of blood!"))
+		hemophage.investigate_log("starved to death from lack of blood as a hemophage.", INVESTIGATE_DEATHS)
 		hemophage.death() // Owch! Ran out of blood.
 
 	if(halloween_version)// If hemophages have bat form, they cannot enter the church
@@ -115,7 +116,7 @@
 			SPECIES_PERK_ICON = "bed",
 			SPECIES_PERK_NAME = "Locker Brooding",
 			SPECIES_PERK_DESC = "Hemophages can delay their Thirst and mend their injuries by \
-	   							resting in a sturdy rectangular-shaped object. So THAT'S why they do that!",
+								resting in a sturdy rectangular-shaped object. So THAT'S why they do that!",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,

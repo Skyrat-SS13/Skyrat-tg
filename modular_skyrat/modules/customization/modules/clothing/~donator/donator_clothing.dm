@@ -578,7 +578,7 @@
 
 /obj/item/clothing/head/hooded/cloakhood/zuliecloak
 	name = "NT special issue"
-	desc = "This hat is unquestionably the best one, bluespaced to and from CentComm. It smells of Fish and Tea with a hint of antagonism"
+	desc = "This hat is unquestionably the best one, bluespaced to and from CentCom. It smells of Fish and Tea with a hint of antagonism"
 	icon_state = "zuliecap"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/cloaks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
@@ -1175,11 +1175,11 @@
 
 //Donation reward for Konstyantyn
 /obj/item/clothing/accessory/badge/holo/jade
-    name = "jade holobadge"
-    desc = "A strangely green holobadge. 'Lieutenant Uriah' is stamped onto it, above the letters JS."
-    icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
-    worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
-    icon_state = "greenbadge"
+	name = "jade holobadge"
+	desc = "A strangely green holobadge. 'Lieutenant Uriah' is stamped onto it, above the letters JS."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
+	icon_state = "greenbadge"
 
 // Donation reward for Dudewithatude
 /obj/item/clothing/suit/toggle/rainbowcoat
@@ -1294,3 +1294,13 @@
 /obj/item/clothing/shoes/fancy_heels/drag/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/squeak, list('modular_skyrat/modules/modular_items/lewd_items/sounds/highheel1.ogg' = 1, 'modular_skyrat/modules/modular_items/lewd_items/sounds/highheel2.ogg' = 1), 70)
+
+// Donation reward for Razurath
+
+/obj/item/clothing/under/bimpcap
+	name = "Formal Matte Black Captain Uniform"
+	desc = "A professional looking matte black uniform cladded with medals of distintive service and valor, only worn by the highest of station officials."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	icon_state = "bimpcap"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
