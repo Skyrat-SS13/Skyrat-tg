@@ -55,6 +55,7 @@
 /datum/controller/subsystem/events/proc/trigger_low_chaos_event()
 	if(!CONFIG_GET(flag/allow_random_events)) // If random events are disabled we shouldn't be running these
 		return
+
 	if(vote_in_progress || low_chaos_needs_reset) // No two events at once.
 		return
 	for(var/datum/round_event_control/preset/preset_event in control)
