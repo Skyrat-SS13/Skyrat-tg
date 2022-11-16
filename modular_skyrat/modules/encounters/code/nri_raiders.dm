@@ -173,7 +173,7 @@
 /obj/docking_port/mobile/pirate/nri_raider
 	name = "NRI IAC-PV 'Evangelium'" //Nobody will care about the translation but basically NRI Internal Affairs Collegium-Patrol Vessel
 	initial_engine_power = 6
-	preferred_direction = NORTH
+	preferred_direction = EAST
 	callTime = 5 MINUTES
 	rechargeTime = 10 MINUTES
 	movement_force = list("KNOCKDOWN"=0,"THROW"=0)
