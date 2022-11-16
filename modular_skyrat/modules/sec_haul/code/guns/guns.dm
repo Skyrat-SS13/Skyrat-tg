@@ -228,7 +228,7 @@
 	desc = "A sidearm used by Armadyne corporate agents who didn't make the cut for the Corpo model. Chambered in .38 special."
 	icon_state = "pdh_striker"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_stiker
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_striker
 	can_suppress = FALSE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/hpistol_fire.ogg'
 	burst_size = 3
