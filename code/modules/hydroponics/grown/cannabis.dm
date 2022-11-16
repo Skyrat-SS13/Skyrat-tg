@@ -3,6 +3,7 @@
 	name = "pack of cannabis seeds"
 	desc = "Taxable."
 	icon_state = "seed-cannabis"
+	plant_icon_offset = 6
 	species = "cannabis"
 	plantname = "Cannabis Plant"
 	product = /obj/item/food/grown/cannabis
@@ -15,11 +16,19 @@
 	icon_dead = "cannabis-dead" // Same for the dead icon
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
 	mutatelist = list(/obj/item/seeds/cannabis/rainbow,
+<<<<<<< HEAD
 						/obj/item/seeds/cannabis/death,
 						/obj/item/seeds/cannabis/white,
 						/obj/item/seeds/cannabis/ultimate)
 	reagents_add = list(/datum/reagent/drug/thc = 0.15) //SKYRAT EDIT - MORENARCOTICS
 	//axed lipolicide, replaced space drugs with thc
+=======
+		/obj/item/seeds/cannabis/death,
+		/obj/item/seeds/cannabis/white,
+		/obj/item/seeds/cannabis/ultimate,
+	)
+	reagents_add = list(/datum/reagent/drug/cannabis = 0.15)
+>>>>>>> d14229bbf52 (Gives growing plant icons custom offsets (#71209))
 
 
 /obj/item/seeds/cannabis/rainbow
@@ -64,12 +73,14 @@
 	name = "pack of omega weed seeds"
 	desc = "These seeds grow into omega weed."
 	icon_state = "seed-ocannabis"
+	plant_icon_offset = 0
 	icon_grow = "ocannabis-grow"
 	species = "ocannabis"
 	plantname = "Omega Weed"
 	product = /obj/item/food/grown/cannabis/ultimate
 	genes = list(/datum/plant_gene/trait/repeated_harvest, /datum/plant_gene/trait/glow/green, /datum/plant_gene/trait/modified_volume/omega_weed)
 	mutatelist = null
+<<<<<<< HEAD
 	reagents_add = list(/datum/reagent/drug/thc = 0.3, //SKYRAT EDIT - MORENARCOTICS
 						/datum/reagent/toxin/mindbreaker = 0.3,
 						/datum/reagent/mercury = 0.15,
@@ -80,6 +91,19 @@
 						/datum/reagent/drug/krokodil = 0.15,
 						//SKYRAT REMOVAL // /datum/reagent/toxin/lipolicide = 0.15,
 						/datum/reagent/drug/nicotine = 0.1)
+=======
+	reagents_add = list(/datum/reagent/drug/cannabis = 0.3,
+		/datum/reagent/toxin/mindbreaker = 0.3,
+		/datum/reagent/mercury = 0.15,
+		/datum/reagent/lithium = 0.15,
+		/datum/reagent/medicine/atropine = 0.15,
+		/datum/reagent/drug/methamphetamine = 0.15,
+		/datum/reagent/drug/bath_salts = 0.15,
+		/datum/reagent/drug/krokodil = 0.15,
+		/datum/reagent/toxin/lipolicide = 0.15,
+		/datum/reagent/drug/nicotine = 0.1,
+	)
+>>>>>>> d14229bbf52 (Gives growing plant icons custom offsets (#71209))
 	rarity = 69
 	graft_gene = /datum/plant_gene/trait/glow/green
 
