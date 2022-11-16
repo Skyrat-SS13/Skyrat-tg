@@ -116,7 +116,7 @@
 			SPECIES_PERK_ICON = "bed",
 			SPECIES_PERK_NAME = "Locker Brooding",
 			SPECIES_PERK_DESC = "Hemophages can delay their Thirst and mend their injuries by \
-	   							resting in a sturdy rectangular-shaped object. So THAT'S why they do that!",
+								resting in a sturdy rectangular-shaped object. So THAT'S why they do that!",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
