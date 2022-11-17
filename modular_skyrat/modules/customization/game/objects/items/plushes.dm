@@ -560,9 +560,15 @@
 	name = "science shark plushie"
 	desc = "A determined scientist with a hint of mischief in her smile."
 	icon_state = "plush_scishark"
+	attack_verb_continuous = list("bites", "eats", "fin slaps")
+	attack_verb_simple = list("bite", "eat", "fin slap")
+	squeak_override = list('sound/weapons/bite.ogg'=1)
 
 //Donation reward for October23
 /obj/item/toy/plush/skyrat/plushie_elofy
 	name = "bumbling wolfgirl plushie"
 	desc = "A white-haired wolfgirl in a stylish red security skirt. Despite her scary cybernetic arm, she is soft to hug and only wishes to be praised and comforted."
 	icon_state = "plush_lonie"
+	attack_verb_continuous = list("snuggles", "nibbles", "awoos", "tail whaps")
+	attack_verb_simple = list("snuggle", "nibble", "awoo", "tail whap")
+	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/merowr.ogg' = 1)
