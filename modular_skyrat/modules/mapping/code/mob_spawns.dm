@@ -56,8 +56,19 @@
 	icon_state = "sleeper_s"
 	you_are_text = "You are an operative of the Sothran Syndicate terrorist cell, employed onboard the Deep Space 2 FOB for reasons that are yours."
 	flavour_text = "The Sothran Syndicate has found it fit to send a forward operating base in Sector 13 to monitor NT's operations. Your orders are maintaining the ship's integrity and keeping a low profile as well as possible."
-	important_text = "You are not an antagonist!! Adminhelp before antagonizing station crew."
+	important_text = "You are not an antagonist. Adminhelp before antagonizing station crew."
 	outfit = /datum/outfit/ds2/syndicate
+	loadout_enabled = TRUE
+
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate_command
+	name = "Syndicate Command Operative"
+	prompt_name = "a Syndicate leader"
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper_s"
+	you_are_text = "You are a command operative of the Sothran Syndicate terrorist cell, employed onboard the Deep Space 2 FOB to guide it forward in its goals."
+	flavour_text = "The Sothran Syndicate has found it fit to send you to help command the forward operating base in Sector 13. Your orders are commanding the crew of DS-2 while keeping a low profile as well as possible."
+	important_text = "Keep yourself to the same standards as Command Policy. You are not an antagonist and must Adminhelp before antagonizing station crew."
+	outfit = /datum/outfit/ds2/syndicate_command
 	loadout_enabled = TRUE
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/special(mob/living/new_spawn)
@@ -79,17 +90,17 @@
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/stationmed
 	outfit = /datum/outfit/ds2/syndicate/stationmed
 
-/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/corporateliaison
-	outfit = /datum/outfit/ds2/syndicate/corporateliaison
-
-/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/masteratarms
-	outfit = /datum/outfit/ds2/syndicate/masteratarms
-
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/brigoff
 	outfit = /datum/outfit/ds2/syndicate/brigoff
 
-/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/admiral
-	outfit = /datum/outfit/ds2/syndicate/admiral
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate_command/masteratarms
+	outfit = /datum/outfit/ds2/syndicate_command/masteratarms
+
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate_command/corporateliaison
+	outfit = /datum/outfit/ds2/syndicate_command/corporateliaison
+
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate_command/admiral
+	outfit = /datum/outfit/ds2/syndicate_command/admiral
 
 /obj/effect/mob_spawn/ghost_role/human/hotel_staff
 	random_appearance = FALSE
@@ -126,6 +137,7 @@
 
 	return ..()
 
+//DS-2 Hostage
 /datum/outfit/ds2/prisoner
 	name = "Syndicate Prisoner"
 	uniform = /obj/item/clothing/under/rank/prisoner/syndicate
@@ -133,6 +145,7 @@
 	id = /obj/item/card/id/advanced/prisoner/ds2
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/prisoner
 
+//DS-2 Crew
 /datum/outfit/ds2/syndicate
 	name = "DS-2 Operative"
 	uniform = /obj/item/clothing/under/syndicate/skyrat/tactical
@@ -207,30 +220,6 @@
 		/obj/item/storage/medkit/surgery = 1,
 		)
 
-/datum/outfit/ds2/syndicate/corporateliaison
-	name = "DS-2 Corporate Liasion"
-	uniform = /obj/item/clothing/under/syndicate/sniper
-	head = /obj/item/clothing/head/fedora/fedblack
-	back = /obj/item/storage/backpack/satchel
-	id_trim = /datum/id_trim/syndicom/skyrat/ds2/corporateliasion
-	ears = /obj/item/radio/headset/interdyne/command
-
-/datum/outfit/ds2/syndicate/masteratarms
-	name = "DS-2 Master At Arms"
-	uniform = /obj/item/clothing/under/syndicate/combat
-	id_trim = /datum/id_trim/syndicom/skyrat/ds2/masteratarms
-	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
-	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
-	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
-	back = /obj/item/storage/backpack/satchel/sec/redsec
-	head = /obj/item/clothing/head/hos/beret/syndicate
-	r_pocket = /obj/item/flashlight/seclite
-	implants = list(
-		/obj/item/implant/weapons_auth,
-		/obj/item/implant/krav_maga
-		)
-	ears = /obj/item/radio/headset/interdyne/command
-
 /datum/outfit/ds2/syndicate/brigoff
 	name = "DS-2 Brig Officer"
 	uniform = /obj/item/clothing/under/syndicate/combat
@@ -244,7 +233,49 @@
 	mask = /obj/item/clothing/mask/gas/syndicate
 	ears = /obj/item/radio/headset/interdyne
 
-/datum/outfit/ds2/syndicate/admiral
+/datum/outfit/ds2/syndicate/post_equip(mob/living/carbon/human/syndicate)
+	syndicate.faction |= ROLE_SYNDICATE
+	return ..()
+
+//DS-2 Command
+/datum/outfit/ds2/syndicate_command
+	name = "DS-2 Command Operative"
+	uniform = /obj/item/clothing/under/syndicate/skyrat/tactical
+	shoes = /obj/item/clothing/shoes/combat
+	ears = /obj/item/radio/headset/interdyne/command
+	back = /obj/item/storage/backpack
+	backpack_contents = list(
+		/obj/item/storage/box/survival = 1,
+		/obj/item/crowbar = 1,
+		)
+	id = /obj/item/card/id/advanced/black
+	implants = list(/obj/item/implant/weapons_auth)
+	id_trim = /datum/id_trim/syndicom/skyrat/ds2
+
+/datum/outfit/ds2/syndicate_command/masteratarms
+	name = "DS-2 Master At Arms"
+	uniform = /obj/item/clothing/under/syndicate/combat
+	id_trim = /datum/id_trim/syndicom/skyrat/ds2/masteratarms
+	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
+	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
+	back = /obj/item/storage/backpack/satchel/sec/redsec
+	head = /obj/item/clothing/head/hos/beret/syndicate
+	r_pocket = /obj/item/flashlight/seclite
+	implants = list(
+		/obj/item/implant/weapons_auth,
+		/obj/item/implant/krav_maga
+		)
+
+/datum/outfit/ds2/syndicate_command/corporateliaison
+	name = "DS-2 Corporate Liasion"
+	uniform = /obj/item/clothing/under/syndicate/sniper
+	head = /obj/item/clothing/head/fedora/fedblack
+	shoes = /obj/item/clothing/shoes/laceup
+	back = /obj/item/storage/backpack/satchel
+	id_trim = /datum/id_trim/syndicom/skyrat/ds2/corporateliasion
+
+/datum/outfit/ds2/syndicate_command/admiral
 	name = "DS-2 Admiral"
 	uniform = /obj/item/clothing/under/rank/captain/skyrat/utility/syndicate
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
@@ -253,9 +284,8 @@
 	head = /obj/item/clothing/head/hats/hos/syndicate
 	id = /obj/item/card/id/advanced/gold/generic
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/stationadmiral
-	ears = /obj/item/radio/headset/interdyne/command
 
-/datum/outfit/ds2/syndicate/post_equip(mob/living/carbon/human/syndicate)
+/datum/outfit/ds2/syndicate_command/post_equip(mob/living/carbon/human/syndicate)
 	syndicate.faction |= ROLE_SYNDICATE
 	return ..()
 

@@ -2673,6 +2673,10 @@
 	has_sensor = 0;
 	random_sensor = 0
 	},
+/obj/item/clothing/neck/chaplain/black{
+	desc = "An unique cloak that shimmers with the Corporate Liaison's emblem.";
+	name = "corporate liaison's cloak"
+	},
 /obj/item/binoculars,
 /obj/item/radio/headset/interdyne/command,
 /obj/item/clothing/head/hos/beret/syndicate,
@@ -3252,24 +3256,9 @@
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
 "nR" = (
-/obj/structure/closet/secure_closet{
-	icon_state = "med_secure";
-	name = "medical gear locker";
-	req_access = list("syndicate")
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/stationmed{
+	dir = 8
 	},
-/obj/item/clothing/gloves/color/latex/nitrile/ntrauma,
-/obj/item/clothing/suit/toggle/labcoat/para_red,
-/obj/item/clothing/suit/toggle/labcoat/para_red,
-/obj/item/storage/belt/medbandolier{
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/obj/item/storage/belt/medbandolier{
-	pixel_x = 2;
-	pixel_y = -2
-	},
-/obj/item/clothing/glasses/hud/ar/aviator/health,
-/obj/item/clothing/glasses/hud/ar/aviator/health,
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "nS" = (
@@ -3394,8 +3383,8 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "ot" = (
 /obj/machinery/light/cold/directional/east,
-/obj/structure/closet/secure_closet/medical1{
-	req_access = list("syndicate")
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/stationmed{
+	dir = 8
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
@@ -3423,17 +3412,14 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "ow" = (
-/obj/effect/turf_decal/siding/dark{
-	dir = 9
-	},
-/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/stationmed{
-	dir = 8
-	},
 /obj/machinery/airalarm/syndicate{
 	dir = 4;
 	pixel_x = 24
 	},
-/turf/open/floor/iron/dark/textured_large,
+/obj/structure/closet/secure_closet/medical1{
+	req_access = list("syndicate")
+	},
+/turf/open/floor/iron/white,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay/chem)
 "oz" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
@@ -4454,7 +4440,7 @@
 /obj/item/storage/bag/chemistry{
 	pixel_x = -16
 	},
-/turf/open/floor/iron/white/small,
+/turf/open/floor/iron/white,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay/chem)
 "sW" = (
 /obj/effect/turf_decal/trimline/blue/warning{
@@ -4960,7 +4946,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/eva)
 "vr" = (
-/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/masteratarms,
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate_command/masteratarms,
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "vv" = (
@@ -6370,7 +6356,7 @@
 /turf/open/floor/iron/white/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms/fitness)
 "Cm" = (
-/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/corporateliaison,
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate_command/corporateliaison,
 /turf/open/floor/carpet/donk,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
 "Cn" = (
@@ -6786,15 +6772,15 @@
 	pixel_y = 3;
 	pixel_x = -2
 	},
-/obj/item/clothing/mask/gas/syndicate{
-	pixel_y = 4;
-	pixel_x = -4
+/obj/item/clothing/mask/gas/alt{
+	pixel_x = -2
 	},
 /obj/item/tank/internals/emergency_oxygen/double{
 	pixel_x = 6
 	},
-/obj/item/clothing/mask/gas/syndicate{
-	pixel_x = 5
+/obj/item/clothing/mask/gas/alt{
+	pixel_y = -3;
+	pixel_x = 6
 	},
 /turf/open/floor/iron/dark/textured_half,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
@@ -7146,13 +7132,25 @@
 /turf/open/floor/iron/white/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/hydroponics)
 "FO" = (
-/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/stationmed{
-	dir = 8
+/obj/structure/closet/secure_closet{
+	icon_state = "med_secure";
+	name = "medical gear locker";
+	req_access = list("syndicate")
 	},
-/obj/effect/turf_decal/siding/dark{
-	dir = 10
+/obj/item/clothing/gloves/color/latex/nitrile/ntrauma,
+/obj/item/clothing/suit/toggle/labcoat/para_red,
+/obj/item/clothing/suit/toggle/labcoat/para_red,
+/obj/item/storage/belt/medbandolier{
+	pixel_x = -2;
+	pixel_y = 2
 	},
-/turf/open/floor/iron/dark/textured_large,
+/obj/item/storage/belt/medbandolier{
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/obj/item/clothing/glasses/hud/ar/aviator/health,
+/obj/item/clothing/glasses/hud/ar/aviator/health,
+/turf/open/floor/iron/white,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay/chem)
 "FP" = (
 /obj/machinery/computer/crew/syndie{
@@ -10268,7 +10266,7 @@
 "TA" = (
 /obj/machinery/firealarm/directional/east,
 /obj/machinery/vending/syndichem,
-/turf/open/floor/iron/white/small,
+/turf/open/floor/iron/white,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay/chem)
 "TB" = (
 /obj/docking_port/stationary{
@@ -11572,7 +11570,7 @@
 /turf/open/floor/iron/white/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay/chem)
 "YG" = (
-/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/admiral,
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate_command/admiral,
 /turf/open/floor/carpet/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
 "YH" = (
