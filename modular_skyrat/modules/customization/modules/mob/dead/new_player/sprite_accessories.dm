@@ -567,6 +567,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 
 /datum/sprite_accessory/underwear/male_uk
 	has_digitigrade = TRUE
+
 /*
 	End of adding has_digitigrade to TG stuff
 */

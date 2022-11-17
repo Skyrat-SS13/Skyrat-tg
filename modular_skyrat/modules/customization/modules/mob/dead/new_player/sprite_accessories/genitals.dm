@@ -19,7 +19,7 @@
 				return TRUE
 			else if (H.underwear != "Nude" && genital_location == CHEST)	//They're wearing underwear, let's make sure it doesn't cover the chest (i.e. Bikinis/one-pieces)
 				var/datum/sprite_accessory/underwear/possible_chest_covering_underwear = GLOB.underwear_list[H.underwear]
-				if(possible_chest_covering_underwear.covers_chest == TRUE) //covers_chest is a var added in `modular_skyrat\modules\customization\modules\mob\dead\new_player\sprite_accessories.dm`
+				if(possible_chest_covering_underwear?.covers_chest == TRUE) //covers_chest is a var added in `modular_skyrat\modules\customization\modules\mob\dead\new_player\sprite_accessories.dm`
 					return TRUE
 			else
 				return FALSE
