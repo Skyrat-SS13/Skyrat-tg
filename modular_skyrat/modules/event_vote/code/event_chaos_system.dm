@@ -246,7 +246,7 @@
 *	FOR SUBTYPES
 */
 
-/datum/round_event_control/pirates/enclave
+/datum/round_event_control/pirates/nri
 	chaos_level = EVENT_CHAOS_DISABLED
 
 /datum/round_event_control/pirates/dutchman

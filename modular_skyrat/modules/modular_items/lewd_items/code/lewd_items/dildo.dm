@@ -285,8 +285,8 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 //button stuff
 /datum/action/item_action/take_dildo
-    name = "Take the other side of the double dildo in hand"
-    desc = "You can feel one side inside you, time to share this feeling with someone..."
+	name = "Take the other side of the double dildo in hand"
+	desc = "You can feel one side inside you, time to share this feeling with someone..."
 
 /datum/action/item_action/take_dildo/Trigger(trigger_flags)
 	var/obj/item/clothing/sextoy/dildo/double_dildo/dildo = target
