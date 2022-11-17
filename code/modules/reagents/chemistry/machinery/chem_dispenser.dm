@@ -122,18 +122,16 @@
 
 /obj/machinery/chem_dispenser/Initialize(mapload)
 	. = ..()
-	dispensable_reagents = sort_list(dispensable_reagents, /proc/cmp_reagents_asc)
+	dispensable_reagents = sort_list(dispensable_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
 	if(emagged_reagents)
-		emagged_reagents = sort_list(emagged_reagents, /proc/cmp_reagents_asc)
+		emagged_reagents = sort_list(emagged_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
 	if(upgrade_reagents)
-		upgrade_reagents = sort_list(upgrade_reagents, /proc/cmp_reagents_asc)
+		upgrade_reagents = sort_list(upgrade_reagents, GLOBAL_PROC_REF(cmp_reagents_asc))
 	//SKYRAT EDIT ADDITION BEGIN - Skyrat-SS13/Skyrat-tg#1931
-	if(upgrade_reagents)
-		upgrade_reagents = sort_list(upgrade_reagents, /proc/cmp_reagents_asc)
 	if(upgrade_reagents2)
-		upgrade_reagents2 = sort_list(upgrade_reagents2, /proc/cmp_reagents_asc)
+		upgrade_reagents2 = sort_list(upgrade_reagents2, GLOBAL_PROC_REF(cmp_reagents_asc))
 	if(upgrade_reagents3)
-		upgrade_reagents3 = sort_list(upgrade_reagents3, /proc/cmp_reagents_asc)
+		upgrade_reagents3 = sort_list(upgrade_reagents3, GLOBAL_PROC_REF(cmp_reagents_asc))
 	//SKYRAT EDIT ADDITION END
 	if(is_operational)
 		begin_processing()
@@ -655,7 +653,6 @@
 		/datum/reagent/consumable/ethanol/navy_rum,
 		/datum/reagent/consumable/ethanol/rum,
 		/datum/reagent/consumable/ethanol/sake,
-		/datum/reagent/consumable/ethanol/applejack, // SKYRAT EDIT
 		/datum/reagent/consumable/ethanol/synthanol, // SKYRAT EDIT
 		/datum/reagent/consumable/ethanol/tequila,
 		/datum/reagent/consumable/ethanol/triple_sec,
@@ -665,6 +662,8 @@
 		/datum/reagent/consumable/ethanol/wine,
 	)
 	upgrade_reagents = null
+	upgrade_reagents2 = null //SKYRAT EDIT
+	upgrade_reagents3 = null //SKYRAT EDIT
 	emagged_reagents = list(
 		/datum/reagent/consumable/ethanol,
 		/datum/reagent/iron,

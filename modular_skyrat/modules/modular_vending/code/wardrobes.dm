@@ -73,7 +73,6 @@
 
 /obj/machinery/vending/wardrobe/bar_wardrobe
 	skyrat_products = list(
-		/obj/item/storage/bag/money = 2,
 		/obj/item/storage/fancy/candle_box/vanilla = 1,
 		/obj/item/storage/fancy/candle_box/pear = 1,
 		/obj/item/storage/fancy/candle_box/amber = 1,
@@ -126,7 +125,7 @@
 		/obj/item/clothing/under/rank/security/detective/runner = 2,
 		/obj/item/clothing/suit/toggle/labcoat/highvis = 2,
 		/obj/item/clothing/under/rank/security/detective/cowboy = 2,
-		/obj/item/clothing/suit/det_suit/cowboyvest = 2,
+		/obj/item/clothing/suit/jacket/det_suit/cowboyvest = 2,
 	)
 
 /obj/machinery/vending/wardrobe/law_wardrobe

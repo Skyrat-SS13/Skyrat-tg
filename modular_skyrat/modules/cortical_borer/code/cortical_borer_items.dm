@@ -9,13 +9,13 @@
 	///The radio that is inserted into the trap.
 	var/obj/item/radio/internal_radio
 	///The borer that is inside the trap
-	var/mob/living/simple_animal/cortical_borer/trapped_borer
+	var/mob/living/basic/cortical_borer/trapped_borer
 
 /obj/item/cortical_cage/Initialize(mapload)
 	. = ..()
 	update_appearance()
 	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = .proc/spring_trap,
+		COMSIG_ATOM_ENTERED = PROC_REF(spring_trap),
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
 

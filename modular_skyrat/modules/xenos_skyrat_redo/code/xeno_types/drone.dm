@@ -1,6 +1,6 @@
 /// SKYRAT MODULE SKYRAT_XENO_REDO
 
-/mob/living/carbon/alien/humanoid/skyrat/drone
+/mob/living/carbon/alien/adult/skyrat/drone
 	name = "alien drone"
 	desc = "As plain looking as you could call an alien with armored black chitin and large claws."
 	caste = "drone"
@@ -11,18 +11,18 @@
 	var/datum/action/cooldown/alien/skyrat/heal_aura/heal_aura_ability
 	melee_damage_lower = 15
 	melee_damage_upper = 20
-	next_evolution = /mob/living/carbon/alien/humanoid/skyrat/praetorian
+	next_evolution = /mob/living/carbon/alien/adult/skyrat/praetorian
 
-/mob/living/carbon/alien/humanoid/skyrat/drone/Initialize(mapload)
+/mob/living/carbon/alien/adult/skyrat/drone/Initialize(mapload)
 	. = ..()
 	heal_aura_ability = new /datum/action/cooldown/alien/skyrat/heal_aura()
 	heal_aura_ability.Grant(src)
 
-/mob/living/carbon/alien/humanoid/skyrat/drone/Destroy()
+/mob/living/carbon/alien/adult/skyrat/drone/Destroy()
 	QDEL_NULL(heal_aura_ability)
 	return ..()
 
-/mob/living/carbon/alien/humanoid/skyrat/drone/create_internal_organs()
+/mob/living/carbon/alien/adult/skyrat/drone/create_internal_organs()
 	internal_organs += new /obj/item/organ/internal/alien/plasmavessel
 	internal_organs += new /obj/item/organ/internal/alien/resinspinner
 	..()
@@ -53,7 +53,7 @@
 		return FALSE
 	owner.balloon_alert(owner, "healing aura started")
 	to_chat(owner, span_danger("We emit pheromones that encourage sisters near us to heal themselves for the next [aura_duration / 10] seconds."))
-	addtimer(CALLBACK(src, .proc/aura_deactivate), aura_duration)
+	addtimer(CALLBACK(src, PROC_REF(aura_deactivate)), aura_duration)
 	aura_active = TRUE
 	aura_healing_component = owner.AddComponent(/datum/component/aura_healing, range = aura_range, requires_visibility = TRUE, brute_heal = aura_healing_amount, burn_heal = aura_healing_amount, limit_to_trait = TRAIT_XENO_HEAL_AURA, healing_color = aura_healing_color)
 	return TRUE

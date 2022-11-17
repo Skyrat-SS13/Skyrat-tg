@@ -13,7 +13,7 @@
 //Blood levels
 #define BLOOD_VOLUME_MAX_LETHAL 2150
 #define BLOOD_VOLUME_EXCESS 2100
-#define BLOOD_VOLUME_MAXIMUM 2000
+#define BLOOD_VOLUME_MAXIMUM 1000 // SKYRAT EDIT - Blood volume balancing (mainly for Hemophages as nobody else really goes much above regular blood volume) - ORIGINAL VALUE: 2000
 #define BLOOD_VOLUME_SLIME_SPLIT 1120
 #define BLOOD_VOLUME_NORMAL 560
 #define BLOOD_VOLUME_SAFE 475
@@ -215,10 +215,10 @@
 //Health doll screws for human mobs
 #define SCREWYDOLL_HEAD /obj/item/bodypart/head
 #define SCREWYDOLL_CHEST /obj/item/bodypart/chest
-#define SCREWYDOLL_L_ARM /obj/item/bodypart/l_arm
-#define SCREWYDOLL_R_ARM /obj/item/bodypart/r_arm
-#define SCREWYDOLL_L_LEG /obj/item/bodypart/l_leg
-#define SCREWYDOLL_R_LEG /obj/item/bodypart/r_leg
+#define SCREWYDOLL_L_ARM /obj/item/bodypart/arm/left
+#define SCREWYDOLL_R_ARM /obj/item/bodypart/arm/right
+#define SCREWYDOLL_L_LEG /obj/item/bodypart/leg/left
+#define SCREWYDOLL_R_LEG /obj/item/bodypart/leg/right
 
 //Threshold levels for beauty for humans
 #define BEAUTY_LEVEL_HORRID -66
@@ -369,18 +369,12 @@
 #define SHOCK_ILLUSION (1 << 2)
 ///The shock doesn't stun.
 #define SHOCK_NOSTUN (1 << 3)
+/// No default message is sent from the shock
+#define SHOCK_SUPPRESS_MESSAGE (1 << 4)
 
 #define INCORPOREAL_MOVE_BASIC 1 /// normal movement, see: [/mob/living/var/incorporeal_move]
 #define INCORPOREAL_MOVE_SHADOW 2 /// leaves a trail of shadows
 #define INCORPOREAL_MOVE_JAUNT 3 /// is blocked by holy water/salt
-
-//Secbot and ED209 judgement criteria bitflag values
-#define JUDGE_EMAGGED (1<<0)
-#define JUDGE_IDCHECK (1<<1)
-#define JUDGE_WEAPONCHECK (1<<2)
-#define JUDGE_RECORDCHECK (1<<3)
-//ED209's ignore monkeys
-#define JUDGE_IGNOREMONKEYS (1<<4)
 
 #define SHADOW_SPECIES_LIGHT_THRESHOLD 0.2
 

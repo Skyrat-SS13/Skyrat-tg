@@ -134,10 +134,10 @@
 		if("stuttering")
 			set_stutter_if_lower(duration SECONDS)
 		if("jittering")
-			set_dizzy_if_lower(duration SECONDS)
+			set_jitter_if_lower(duration SECONDS)
 
 	if(duration)
-		addtimer(CALLBACK(src, .proc/acting_expiry, impairment), duration SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(acting_expiry), impairment), duration SECONDS)
 		to_chat(src, "You are now feigning [impairment].")
 
 /mob/living/carbon/human/proc/acting_expiry(impairment)

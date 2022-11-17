@@ -76,7 +76,7 @@
 		\nDO NOT DISCONNECT UNTIL THIS PROCESS HAS BEEN COMPLETED.\
 		")))
 		migrate_skyrat(save)
-		addtimer(CALLBACK(src, .proc/check_migration), 10 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(check_migration)), 10 SECONDS)
 
 	READ_FILE(save["headshot"], headshot)
 
@@ -113,9 +113,9 @@
 	if(current_version < 2)
 		var/list/old_breast_prefs
 		READ_FILE(save["breasts_size"], old_breast_prefs)
-		if(old_breast_prefs) // Can't be too careful
+		if(isnum(old_breast_prefs)) // Can't be too careful
 			// You weren't meant to be able to pick sizes over this anyways.
-			write_preference(GLOB.preference_entries[/datum/preference/choiced/breasts_size], min(GLOB.breast_size_translation["[old_breast_prefs]"], 10))
+			write_preference(GLOB.preference_entries[/datum/preference/choiced/breasts_size], GLOB.breast_size_translation["[min(old_breast_prefs, 10)]"])
 
 /datum/preferences/proc/check_migration()
 	if(!tgui_prefs_migration)

@@ -58,7 +58,7 @@
 		human_owner.blur_eyes(10)
 		lust_message = "You vision begins to blur, the heat beginning to rise..."
 	if(stress >= 180)
-		owner.hallucination += 30
+		owner.adjust_hallucinations(60 SECONDS)
 		lust_message = "You begin to fantasize of what you could do to someone..."
 	if(stress >= 240)
 		human_owner.adjustStaminaLoss(30)
@@ -154,7 +154,7 @@
 	owner.add_mood_event("bimbo", /datum/mood_event/bimbo)
 	if(!HAS_TRAIT_FROM(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT))
 		ADD_TRAIT(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT)
-	RegisterSignal(owner, COMSIG_MOB_SAY, .proc/handle_speech)
+	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	if(!HAS_TRAIT_FROM(owner, TRAIT_MASOCHISM, APHRO_TRAIT))
 		ADD_TRAIT(owner, TRAIT_MASOCHISM, APHRO_TRAIT)
 

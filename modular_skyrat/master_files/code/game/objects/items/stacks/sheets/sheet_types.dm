@@ -47,6 +47,8 @@ GLOBAL_LIST_INIT(skyrat_wood_recipes, list ( \
 	new/datum/stack_recipe("forging work bench", /obj/structure/reagent_crafting_bench, 5, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE), \
 	new/datum/stack_recipe("wooden half-barricade", /obj/structure/deployable_barricade/wooden, 5, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE), \
 	new/datum/stack_recipe("sauna oven", /obj/structure/sauna_oven, 30, time = 1.5 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE), \
+	new/datum/stack_recipe("large wooden mortar", /obj/structure/large_mortar, 10, time = 3 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE), \
+	new/datum/stack_recipe("wooden cutting board", /obj/item/cutting_board, 5, time = 2 SECONDS)
 ))
 
 /obj/item/stack/sheet/mineral/wood/get_main_recipes()
@@ -57,7 +59,7 @@ GLOBAL_LIST_INIT(skyrat_wood_recipes, list ( \
 
 GLOBAL_LIST_INIT(skyrat_cloth_recipes, list ( \
 	new/datum/stack_recipe("xenoarch bag", /obj/item/storage/bag/xenoarch, 4), \
-	new/datum/stack_recipe("pillow", /obj/item/pillow, 3), \
+	new/datum/stack_recipe("fancy pillow", /obj/item/fancy_pillow, 3), \
 	new/datum/stack_recipe("eyepatch wrap", /obj/item/clothing/glasses/eyepatch/wrap, 2), \
 	new/datum/stack_recipe("eyepatch", /obj/item/clothing/glasses/eyepatch, 2), \
 ))

@@ -194,6 +194,25 @@
 		. = ..()
 
 /**
+ * Add liquid effect overlay.
+ *
+ * Arguments:
+ * * overlay_state - the icon state of the new overlay
+ * * overlay_layer - the layer
+ * * overlay_plane - the plane
+ */
+/obj/effect/abstract/liquid_turf/proc/add_liquid_overlay(overlay_state, overlay_layer, overlay_plane)
+	PRIVATE_PROC(TRUE)
+
+	add_overlay(mutable_appearance(
+		'modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi',
+		overlay_state,
+		overlay_layer,
+		src,
+		overlay_plane,
+	))
+
+/**
  * Add over and underlays for different liquid states.
  *
  * Arguments:
@@ -201,24 +220,14 @@
  * * has_top - if this stage has a top.
  */
 /obj/effect/abstract/liquid_turf/proc/add_state_layer(state, has_top)
-	add_overlay(mutable_appearance(
-		'modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi',
-		"stage[state]_bottom",
-		offset_spokesman = src,
-		plane = GAME_PLANE,
-		layer = ABOVE_MOB_LAYER,
-	))
+	PRIVATE_PROC(TRUE)
+
+	add_liquid_overlay("stage[state]_bottom", ABOVE_MOB_LAYER, GAME_PLANE_UPPER)
 
 	if(!has_top)
 		return
 
-	add_overlay(mutable_appearance(
-		'modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi',
-		"stage[state]_top",
-		offset_spokesman = src,
-		plane = GAME_PLANE,
-		layer = GATEWAY_UNDERLAY_LAYER
-	))
+	add_liquid_overlay("stage[state]_top", GATEWAY_UNDERLAY_LAYER, GAME_PLANE)
 
 /obj/effect/abstract/liquid_turf/proc/set_new_liquid_state(new_state)
 	liquid_state = new_state
@@ -442,7 +451,7 @@
 				qdel(tempr)
 				falling_carbon.adjustOxyLoss(5)
 				//C.emote("cough")
-				INVOKE_ASYNC(falling_carbon, /mob.proc/emote, "cough")
+				INVOKE_ASYNC(falling_carbon, TYPE_PROC_REF(/mob, emote), "cough")
 				to_chat(falling_carbon, span_userdanger("You fall in and swallow some water!"))
 		else
 			to_chat(M, span_userdanger("You fall in the water!"))
@@ -453,9 +462,9 @@
 		CRASH("Liquid Turf created with the liquids sybsystem not yet initialized!")
 	if(!immutable)
 		my_turf = loc
-		RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, .proc/movable_entered)
-		RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, .proc/mob_fall)
-		RegisterSignal(my_turf, COMSIG_PARENT_EXAMINE, .proc/examine_turf)
+		RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, PROC_REF(movable_entered))
+		RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, PROC_REF(mob_fall))
+		RegisterSignal(my_turf, COMSIG_PARENT_EXAMINE, PROC_REF(examine_turf))
 		SSliquids.add_active_turf(my_turf)
 
 		SEND_SIGNAL(my_turf, COMSIG_TURF_LIQUIDS_CREATION, src)
@@ -517,8 +526,8 @@
 	my_turf = NewT
 	NewT.liquids = src
 	loc = NewT
-	RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, .proc/movable_entered)
-	RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, .proc/mob_fall)
+	RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, PROC_REF(movable_entered))
+	RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, PROC_REF(mob_fall))
 
 /**
  * Handles COMSIG_PARENT_EXAMINE for the turf.
@@ -582,8 +591,8 @@
 	T.liquids = src
 	T.vis_contents += src
 	SSliquids.active_immutables[T] = TRUE
-	RegisterSignal(T, COMSIG_ATOM_ENTERED, .proc/movable_entered)
-	RegisterSignal(T, COMSIG_TURF_MOB_FALL, .proc/mob_fall)
+	RegisterSignal(T, COMSIG_ATOM_ENTERED, PROC_REF(movable_entered))
+	RegisterSignal(T, COMSIG_TURF_MOB_FALL, PROC_REF(mob_fall))
 
 /obj/effect/abstract/liquid_turf/proc/remove_turf(turf/T)
 	SSliquids.active_immutables -= T

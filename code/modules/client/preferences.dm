@@ -113,8 +113,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/loaded_preferences_successfully = load_preferences()
 	if(loaded_preferences_successfully)
 		if(load_character())
-			// SKYRAT EDIT START - Sanitizing languages
+			// SKYRAT EDIT START - Sanitizing preferences
 			sanitize_languages()
+			sanitize_quirks()
 			// SKYRAT EDIT END
 			return // SKYRAT EDIT - Don't remove this. Just don't. Nothing is worth forced random characters.
 	//we couldn't load character data so just randomize the character appearance + name
@@ -500,7 +501,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				else
 					job_preferences[other_job] = JP_MEDIUM
 
-	job_preferences[job.title] = level
+	if(level == null)
+		job_preferences -= job.title
+	else
+		job_preferences[job.title] = level
 
 	return TRUE
 

@@ -188,12 +188,12 @@
 /obj/item/gun/ballistic/automatic/sniper_rifle
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = "sniper"
-	fire_delay = 60
+	fire_delay = 6 SECONDS
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/syndicate
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = "sniper2"
-	fire_delay = 55
+	fire_delay = 5.5 SECONDS
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/modular
 	name = "AUS-107 anti-materiel rifle"
@@ -211,7 +211,7 @@
 	icon_state = "sysniper"
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle.ogg'
 	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle_s.ogg'
-	fire_delay = 40 //Delay reduced thanks to recoil absorption
+	fire_delay = 4 SECONDS //Delay reduced thanks to recoil absorption
 	burst_size = 0.5
 	recoil = 1
 	can_suppress = TRUE

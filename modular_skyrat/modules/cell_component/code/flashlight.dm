@@ -21,9 +21,10 @@
 	if(icon_state == "[initial(icon_state)]-on")
 		turn_on(FALSE)
 	update_brightness()
+	register_context()
 
 	if(uses_battery)
-		AddComponent(/datum/component/cell, cell_override, CALLBACK(src, .proc/turn_off))
+		AddComponent(/datum/component/cell, cell_override, CALLBACK(src, PROC_REF(turn_off)))
 
 /obj/item/flashlight/proc/update_brightness()
 	set_light_on(on)
@@ -68,7 +69,7 @@
 		if(uses_battery && !(item_use_power(power_use_amount, user, TRUE) & COMPONENT_POWER_SUCCESS))
 			return
 		turn_on(makes_noise_when_lit)
-	playsound(user, on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
+	playsound(user, on ? sound_on : sound_off, 40, TRUE)
 	return TRUE
 
 /**
