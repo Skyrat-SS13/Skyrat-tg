@@ -420,11 +420,15 @@
 
 		if("Breasts Size")
 			var/obj/item/organ/external/genital/breasts/melons = alterer.getorganslot(ORGAN_SLOT_BREASTS)
+			var/list/valid_values = list()
+			for(var/breast_size in GLOB.breast_size_to_number)
+				valid_values += breast_size
+
 			var/new_size = tgui_input_list(
 				alterer,
 				"Choose your character's breasts size:",
 				"DNA Alteration",
-				GLOB.preference_breast_sizes,
+				valid_values,
 			)
 			if(!new_size)
 				return
