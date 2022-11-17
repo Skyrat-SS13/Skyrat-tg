@@ -50,18 +50,18 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 
 /datum/nifsoft/hivemind/activate()
 	. = ..()
-	if(active)
-		linked_keyboard = new
-		linked_keyboard.connected_network = active_network
-		linked_mob.put_in_hands(linked_keyboard)
-		linked_keyboard.source_user = linked_mob
+	if(!active)
+		qdel(linked_keyboard)
+		linked_keyboard = null
+		return TRUE
 
-		linked_mob.visible_message(span_notice("The [linked_keyboard] materializes in [linked_mob]'s hands"), span_notice("The [linked_keyboard] appears in your hands"))
+	linked_keyboard = new
+	linked_keyboard.connected_network = active_network
+	linked_mob.put_in_hands(linked_keyboard)
+	linked_keyboard.source_user = linked_mob
 
-		return
-
-	qdel(linked_keyboard)
-	linked_keyboard = null
+	linked_mob.visible_message(span_notice("The [linked_keyboard] materializes in [linked_mob]'s hands"), span_notice("The [linked_keyboard] appears in your hands"))
+	return TRUE
 
 /datum/action/innate/hivemind_config
 	name = "Hivemind Configuration Settings"
