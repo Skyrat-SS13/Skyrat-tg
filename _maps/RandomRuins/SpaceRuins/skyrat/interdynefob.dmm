@@ -573,6 +573,9 @@
 /obj/structure/janitorialcart{
 	dir = 4
 	},
+/obj/item/clothing/shoes/galoshes{
+	pixel_y = -8
+	},
 /obj/item/reagent_containers/spray/cleaner{
 	pixel_x = 6;
 	pixel_y = -6
@@ -1095,6 +1098,15 @@
 /obj/structure/closet/secure_closet/personal{
 	icon_state = "cabinet"
 	},
+/obj/item/clothing/under/misc/syndicate_souvenir{
+	has_sensor = 0;
+	pixel_y = -4
+	},
+/obj/item/clothing/under/misc/syndicate_souvenir{
+	has_sensor = 0;
+	pixel_y = -7;
+	pixel_x = 4
+	},
 /turf/open/floor/wood/tile,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms)
 "ep" = (
@@ -1294,13 +1306,13 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
 "fd" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /mob/living/simple_animal/bot/medbot/stationary{
 	radio_channel = "Syndicate";
 	faction = list("Syndicate");
 	maints_access_required = list("syndicate");
 	name = "Insurgent Care"
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "fe" = (
@@ -3047,8 +3059,7 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 2
 	},
-/obj/item/reagent_containers/cup/bucket,
-/obj/structure/reagent_dispensers/watertank/high,
+/obj/structure/table/glass,
 /turf/open/floor/iron/white/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/hydroponics)
 "mX" = (
@@ -4450,6 +4461,16 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
+"sZ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/vending/dinnerware{
+	onstation = 0
+	},
+/turf/open/floor/iron/kitchen{
+	dir = 4
+	},
+/area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "tf" = (
 /obj/effect/turf_decal/siding/dark,
 /turf/open/floor/mineral/plastitanium/red,
@@ -8715,14 +8736,6 @@
 	},
 /turf/open/floor/engine/plasma,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
-"Nh" = (
-/obj/machinery/door/firedoor,
-/obj/structure/table/reinforced/plastitaniumglass,
-/obj/item/storage/bag/tray{
-	pixel_y = 8
-	},
-/turf/open/floor/iron/dark/textured_large,
-/area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "Ni" = (
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
@@ -9417,13 +9430,12 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 2
 	},
-/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/service{
-	dir = 8
-	},
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4;
 	pixel_x = 4
 	},
+/obj/structure/reagent_dispensers/watertank/high,
+/obj/item/reagent_containers/cup/bucket,
 /turf/open/floor/iron/white/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/hydroponics)
 "PX" = (
@@ -11012,10 +11024,10 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "Ws" = (
-/obj/machinery/vending/dinnerware{
-	onstation = 0
-	},
 /obj/machinery/firealarm/directional/west,
+/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/service{
+	dir = 4
+	},
 /turf/open/floor/iron/kitchen{
 	dir = 4
 	},
@@ -14158,7 +14170,7 @@ WA
 pz
 Rr
 Rr
-Nh
+tZ
 jT
 WL
 Ws
@@ -14213,7 +14225,7 @@ Fi
 Nr
 Mk
 kG
-tZ
+AZ
 jT
 Cf
 Cf
@@ -14323,8 +14335,8 @@ pI
 xk
 Od
 Ui
-AZ
-uA
+pO
+sZ
 uA
 tT
 SG
