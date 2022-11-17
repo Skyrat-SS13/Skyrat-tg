@@ -82,7 +82,7 @@
 	. += "[base_icon_state]_door_open"
 
 /obj/item/gun/ballistic/automatic/smart_machine_gun/unrestricted
-    pin = /obj/item/firing_pin
+	pin = /obj/item/firing_pin
 // Magazine itself
 
 /obj/item/ammo_box/magazine/smartgun_drum

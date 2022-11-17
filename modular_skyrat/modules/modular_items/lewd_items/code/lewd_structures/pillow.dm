@@ -283,16 +283,16 @@
 	return ..()
 
 /obj/structure/chair/pillow_small/post_buckle_mob(mob/living/affected_mob)
-    . = ..()
-    update_icon()
-    density = TRUE
-    //Push them up from the normal lying position
-    affected_mob.pixel_y = affected_mob.base_pixel_y + 2
+	. = ..()
+	update_icon()
+	density = TRUE
+	//Push them up from the normal lying position
+	affected_mob.pixel_y = affected_mob.base_pixel_y + 2
 
 /obj/structure/chair/pillow_small/update_overlays()
-    . = ..()
-    if(has_buckled_mobs())
-        . += mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/pillows.dmi', "pillowpile_small_[current_color]_overlay", layer = ABOVE_MOB_LAYER + 0.2)
+	. = ..()
+	if(has_buckled_mobs())
+		. += mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/pillows.dmi', "pillowpile_small_[current_color]_overlay", layer = ABOVE_MOB_LAYER + 0.2)
 
 /obj/structure/chair/pillow_small/post_unbuckle_mob(mob/living/affected_mob)
 	. = ..()
@@ -397,8 +397,8 @@
 	buildstacktype = /obj/item/stack/sheet/cloth
 
 /obj/structure/bed/pillow_large/Initialize(mapload)
-    update_icon()
-    return ..()
+	update_icon()
+	return ..()
 
 /obj/structure/bed/pillow_large/proc/GetArmrest()
 	if(current_color == "pink")
@@ -411,16 +411,16 @@
 	return ..()
 
 /obj/structure/bed/pillow_large/post_buckle_mob(mob/living/affected_mob)
-    . = ..()
-    update_icon()
-    density = TRUE
-    //Push them up from the normal lying position
-    affected_mob.pixel_y = affected_mob.base_pixel_y + 0.5
+	. = ..()
+	update_icon()
+	density = TRUE
+	//Push them up from the normal lying position
+	affected_mob.pixel_y = affected_mob.base_pixel_y + 0.5
 
 /obj/structure/bed/pillow_large/update_overlays()
-    . = ..()
-    if(has_buckled_mobs())
-        . += mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/pillows.dmi', "pillowpile_large_[current_color]_overlay", layer = ABOVE_MOB_LAYER + 0.2)
+	. = ..()
+	if(has_buckled_mobs())
+		. += mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/pillows.dmi', "pillowpile_large_[current_color]_overlay", layer = ABOVE_MOB_LAYER + 0.2)
 
 /obj/structure/bed/pillow_large/post_unbuckle_mob(mob/living/affected_mob)
 	. = ..()
