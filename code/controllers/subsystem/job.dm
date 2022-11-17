@@ -1145,7 +1145,7 @@ SUBSYSTEM_DEF(job)
 		return JOB_UNAVAILABLE_BACKGROUND_INVALID
 
 	if(possible_job.job_flags & JOB_HAS_FAKE_NAME)
-		var/chosen_assignment = human_client?.prefs.alt_job_titles[possible_job.title] || possible_job.title
+		var/chosen_assignment = player.client.prefs.alt_job_titles[possible_job.title] || possible_job.title
 		if(chosen_assignment == possible_job.title)
 			JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_FAKE_NAME_NOT_SET)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 			return JOB_UNAVAILABLE_FAKE_NAME_NOT_SET
