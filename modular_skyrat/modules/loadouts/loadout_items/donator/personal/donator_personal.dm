@@ -562,3 +562,8 @@
 	name = "Bumbling Wolfgirl Plushie"
 	item_path = /obj/item/toy/plush/skyrat/plushie_elofy
 	ckeywhitelist = list("october23")
+
+/datum/loadout_item/glasses/goldaviator
+	name = "Purple and Gold Aviators"
+	item_path = /obj/item/clothing/glasses/gold_aviators
+	ckeywhitelist = list("nikohyena")
