@@ -561,4 +561,4 @@
 /datum/loadout_item/toys/plushie_elofy
 	name = "Bumbling Wolfgirl Plushie"
 	item_path = /obj/item/toy/plush/skyrat/plushie_elofy
-	ckeywhitelist = list("october23")
+	//ckeywhitelist = list("october23") // Asked it to be public.
