@@ -34,7 +34,6 @@
 		// Emote exception
 		return FALSE
 
-
 	if(!wearer.w_uniform && !wearer.wear_suit)
 		return ..()
 //	Can hide if wearing uniform
