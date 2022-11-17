@@ -77,7 +77,7 @@
 	return TRUE
 
 //returns true if the strange rock is scanned
-/obj/item/xenoarch/strange_rock/proc/get_scanned(var/use_advanced = FALSE)
+/obj/item/xenoarch/strange_rock/proc/get_scanned(use_advanced = FALSE)
 	if(scanned)
 		if(!adv_scanned && use_advanced)
 			adv_scanned = TRUE
@@ -88,7 +88,7 @@
 		adv_scanned = TRUE
 	return TRUE
 
-/obj/item/xenoarch/strange_rock/proc/try_dig(var/dig_amount)
+/obj/item/xenoarch/strange_rock/proc/try_dig(dig_amount)
 	if(!dig_amount)
 		return DIG_UNDEFINED
 	dug_depth += dig_amount

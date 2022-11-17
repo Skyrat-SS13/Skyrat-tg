@@ -441,12 +441,12 @@
 	ckeywhitelist = list("konstyantyn")
 
 /datum/loadout_item/toys/plushe_winrow
-    name = "Dark and Brooding Lizard Plushie"
-    item_path = /obj/item/toy/plush/skyrat/plushie_winrow
+	name = "Dark and Brooding Lizard Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_winrow
 
 /datum/loadout_item/toys/plushie_star
-    name = "Star Angel Plushie"
-    item_path = /obj/item/toy/plush/skyrat/plushie_star
+	name = "Star Angel Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_star
 
 /datum/loadout_item/suit/rainbowcoat
 	name = "Rainbow Coat"
