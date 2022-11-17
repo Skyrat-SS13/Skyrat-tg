@@ -92,10 +92,10 @@
 
 // Debug
 /datum/mod_theme/debug
-	hardlight_theme = STANDARD_BLUE
+	hardlight_theme = COSMIC_BLUE
 
 /datum/mod_theme/administrative
-	hardlight_theme = STANDARD_BLUE
+	hardlight_theme = COSMIC_BLUE
 
 
 #undef STANDARD_BLUE
