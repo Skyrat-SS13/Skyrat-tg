@@ -156,13 +156,13 @@
 	stun_projectile_sound = 'modular_skyrat/modules/encounters/sounds/shell_out_tiny.ogg'
 
 /obj/machinery/porta_turret/syndicate/nri_raider/target(atom/movable/target)
-    if(target)
-        setDir(get_dir(base, target))//even if you can't shoot, follow the target
-        shootAt(target)
-        addtimer(CALLBACK(src, .proc/shootAt, target), 4)
-        addtimer(CALLBACK(src, .proc/shootAt, target), 8)
-        addtimer(CALLBACK(src, .proc/shootAt, target), 12)
-        return TRUE
+	if(target)
+		setDir(get_dir(base, target))//even if you can't shoot, follow the target
+		shootAt(target)
+		addtimer(CALLBACK(src, PROC_REF(shootAt), target), 4)
+		addtimer(CALLBACK(src, PROC_REF(shootAt), target), 8)
+		addtimer(CALLBACK(src, PROC_REF(shootAt), target), 12)
+		return TRUE
 
 /obj/projectile/bullet/ciws
 	name = "anti-projectile salvo"
@@ -173,6 +173,7 @@
 /obj/docking_port/mobile/pirate/nri_raider
 	name = "NRI IAC-PV 'Evangelium'" //Nobody will care about the translation but basically NRI Internal Affairs Collegium-Patrol Vessel
 	initial_engine_power = 6
+	port_direction = EAST
 	preferred_direction = EAST
 	callTime = 5 MINUTES
 	rechargeTime = 10 MINUTES
@@ -190,9 +191,7 @@
 	req_access = null
 	circuit = null
 	command_name = "NRI Enforcer-Class Starship Telegram"
-
-/obj/machinery/computer/centcom_announcement/nri_raider/send_announcement(report_sound = ANNOUNCER_NRI_RAIDERS)
-	. = ..()
+	report_sound = ANNOUNCER_NRI_RAIDERS
 
 /obj/item/gun/ballistic/automatic/pistol/automag
 	name = "\improper Automag"

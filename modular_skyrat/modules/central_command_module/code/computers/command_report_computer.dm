@@ -18,6 +18,8 @@
 	var/command_report_title
 	/// Whether the report's contents are announced.
 	var/announce_contents = TRUE
+	/// Custom report sound.
+	var/report_sound = null
 	/// The error we encountered while trying to send a report.
 	var/error = ""
 
@@ -64,7 +66,7 @@
 /*
  * The actual proc that sends the priority announcement and reports
  */
-/obj/machinery/computer/centcom_announcement/proc/send_announcement(var/report_sound = null)
+/obj/machinery/computer/centcom_announcement/proc/send_announcement()
 	if (!COOLDOWN_FINISHED(src, announcement_cooldown))
 		return
 
