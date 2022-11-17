@@ -153,14 +153,12 @@
 	shuttleId = "snowdin_mining"
 	possible_destinations = "snowdin_mining_top;snowdin_mining_down"
 
-
-//liquid plasma!!!!!!//
-
 /turf/open/floor/iron/dark/snowdin
 	initial_gas_mix = FROZEN_ATMOS
 	planetary_atmos = 1
 	temperature = 180
 
+<<<<<<< HEAD
 /turf/open/lava/plasma
 	name = "liquid plasma"
 	desc = "A flowing stream of chilled liquid plasma. You probably shouldn't get in."
@@ -230,8 +228,9 @@
 	baseturfs = /turf/open/lava/plasma/mafia
 	slowdown = 0
 
+=======
+>>>>>>> bb196cb14a5 (Move plasma lava turf from snowdin mission code to turf lava.dm (#71168))
 /////////// papers
-
 
 /obj/item/paper/crumpled/ruins/snowdin/foreshadowing
 	name = "scribbled note"
