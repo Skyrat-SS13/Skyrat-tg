@@ -150,7 +150,7 @@
 	tool_behaviour = TOOL_HAMMER
 	///the list of things that, if attacked, will set the attack speed to rapid
 	var/static/list/fast_attacks = list(
-		/obj/structure/reagent_anvil,
+		/obj/item/forging_anvil,
 		/obj/structure/reagent_crafting_bench
 	)
 

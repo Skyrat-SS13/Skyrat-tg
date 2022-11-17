@@ -1,16 +1,20 @@
-/obj/structure/reagent_anvil
+/obj/item/forging_anvil
 	name = "smithing anvil"
 	desc = "Essentially a big block of metal that you can hammer other metals on top of, crucial for anyone working metal by hand."
 	icon = 'modular_skyrat/modules/primitive_production/icons/forge_structures.dmi'
-	icon_state = "anvil_empty"
+	icon_state = "anvil"
 
-	anchored = TRUE
-	density = TRUE
+	force = 10
+	throwforce = 15
+	throw_speed = 1
+	throw_range = 1
 
-/obj/structure/reagent_anvil/Initialize(mapload)
+/obj/item/forging_anvil/Initialize(mapload)
 	. = ..()
 
-/obj/structure/reagent_anvil/update_appearance()
+	AddComponent(/datum/component/two_handed, require_twohands=TRUE, force_unwielded=10, force_wielded=10) // You ain't carrying this without two hands
+
+/obj/item/forging_anvil/update_appearance()
 	. = ..()
 	cut_overlays()
 	if(!length(contents))
@@ -20,42 +24,14 @@
 	overlayed_item.transform = matrix(, 0, 0, 0, 0.8, 0)
 	add_overlay(overlayed_item)
 
-/obj/structure/reagent_anvil/examine(mob/user)
+/obj/item/forging_anvil/examine(mob/user)
 	. = ..()
 	. += span_notice("You can place <b>hot metal objects</b> on this using some <b>tongs</b>.")
-	. += span_notice("It can be (un)secured with <b>Right Click</b>")
 
 	if(length(contents))
 		. += span_notice("It has [contents[1]] sitting on it.")
 
-/obj/structure/reagent_anvil/attack_hand_secondary(mob/user, list/modifiers)
-	. = ..()
-	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
-		return
-
-	if(!can_interact(user) || !user.canUseTopic(src, be_close = TRUE))
-		return
-
-	set_anchored(!anchored)
-	balloon_alert_to_viewers(anchored ? "secured" : "unsecured")
-	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-
-/obj/structure/reagent_anvil/wrench_act(mob/living/user, obj/item/tool)
-	balloon_alert_to_viewers("deconstructing...")
-
-	if(!do_after(user, 2 SECONDS, src))
-		balloon_alert_to_viewers("stopped deconstructing")
-		return TRUE
-
-	tool.play_tool_sound(src)
-	deconstruct(TRUE)
-	return TRUE
-
-/obj/structure/reagent_anvil/deconstruct(disassembled = TRUE)
-	new /obj/item/stack/sheet/iron/ten(get_turf(src))
-	return ..()
-
-/obj/structure/reagent_anvil/tong_act(mob/living/user, obj/item/tool)
+/obj/item/forging_anvil/tong_act(mob/living/user, obj/item/tool)
 	var/obj/item/forging/forge_item = tool
 	var/obj/obj_anvil_search = locate() in contents
 
@@ -76,7 +52,7 @@
 		forge_item.icon_state = "tong_empty"
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
-/obj/structure/reagent_anvil/hammer_act(mob/living/user, obj/item/tool)
+/obj/item/forging_anvil/hammer_act(mob/living/user, obj/item/tool)
 	//regardless, we will make a sound
 	playsound(src, 'modular_skyrat/modules/primitive_production/sound/hammer_clang.ogg', 50, TRUE, ignore_walls = FALSE)
 
@@ -128,10 +104,10 @@
 
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
-/obj/structure/reagent_anvil/hammer_act_secondary(mob/living/user, obj/item/tool)
+/obj/item/forging_anvil/hammer_act_secondary(mob/living/user, obj/item/tool)
 	hammer_act(user, tool)
 
-/obj/structure/reagent_anvil/onZImpact(turf/impacted_turf, levels, message = TRUE)
+/obj/item/forging_anvil/onZImpact(turf/impacted_turf, levels, message = TRUE)
 	var/mob/living/poor_target = locate(/mob/living) in impacted_turf
 	if(!poor_target)
 		return ..()
