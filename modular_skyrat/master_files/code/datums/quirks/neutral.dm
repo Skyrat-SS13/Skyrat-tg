@@ -104,7 +104,7 @@
 
 /obj/item/clothing/accessory/breathing/on_uniform_equip(obj/item/clothing/under/uniform, user)
 	. = ..()
-	RegisterSignal(uniform, COMSIG_PARENT_EXAMINE, .proc/on_examine)
+	RegisterSignal(uniform, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
 
 /obj/item/clothing/accessory/breathing/on_uniform_dropped(obj/item/clothing/under/uniform, user)
 	. = ..()

@@ -407,7 +407,7 @@
 
 /obj/item/organ/internal/eyes/robotic/glow/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = FALSE)
 	. = ..()
-	RegisterSignal(eye_owner, COMSIG_ATOM_DIR_CHANGE, .proc/update_visuals)
+	RegisterSignal(eye_owner, COMSIG_ATOM_DIR_CHANGE, PROC_REF(update_visuals))
 	//SKYRAT EDIT ADDITION
 	var/eye_color = owner.client?.prefs?.read_preference(/datum/preference/color/eye_color)
 	mob_overlay.color = eye_color

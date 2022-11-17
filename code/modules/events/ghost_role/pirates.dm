@@ -1,3 +1,4 @@
+///SKYRAT EDIT START - Roleplay-oriented pirates. An entire quarter of the file.
 /datum/round_event_control/pirates
 	name = "Space Pirates - Random" //SKYRAT EDIT CHANGE
 	typepath = /datum/round_event/pirates
@@ -12,7 +13,7 @@
 #define PIRATES_SILVERSCALES "Silverscales"
 #define PIRATES_DUTCHMAN "Flying Dutchman"
 
-#define PIRATES_IMPERIAL_ENCLAVE "Imperial Enclave" //SKYRAT EDIT ADDITION
+#define PIRATES_NRI_RAIDERS "NRI Raiders" //SKYRAT EDIT ADDITION
 
 /datum/round_event_control/pirates/preRunEvent()
 	if (!SSmapping.empty_space)
@@ -35,9 +36,10 @@
 	typepath = /datum/round_event/pirates/dutchman
 	weight = 0
 
-/datum/round_event_control/pirates/enclave
-	name = "Space Pirates - Imperial Enclave"
-	typepath = /datum/round_event/pirates/enclave
+/datum/round_event_control/pirates/nri
+	name = "Space Pirates - NRI Raiders"
+	typepath = /datum/round_event/pirates/nri
+	description = "The crew will either pay up, or face a raider party. More roleplay-oriented variation with higher stakes for the crew, and higher chances of getting away scott free."
 	weight = 0
 
 /datum/round_event/pirates
@@ -52,15 +54,16 @@
 /datum/round_event/pirates/dutchman
 	pirate_type = PIRATES_DUTCHMAN
 
-/datum/round_event/pirates/enclave
-	pirate_type = PIRATES_IMPERIAL_ENCLAVE
+/datum/round_event/pirates/nri
+	pirate_type = PIRATES_NRI_RAIDERS
+
 //SKYRAT EDIT ADDITION END
 
 /datum/round_event/pirates/start()
 	send_pirate_threat(pirate_type) //SKYRAT EDIT CHANGE
 
 /proc/send_pirate_threat(pirate_override)
-	var/pirate_type = pick(PIRATES_ROGUES, PIRATES_SILVERSCALES, PIRATES_DUTCHMAN, PIRATES_IMPERIAL_ENCLAVE) //SKYRAT EDIT CHANGE
+	var/pirate_type = pick(PIRATES_ROGUES, PIRATES_SILVERSCALES, PIRATES_DUTCHMAN, PIRATES_NRI_RAIDERS) //SKYRAT EDIT CHANGE
 	if(pirate_override)
 		pirate_type = pirate_override
 	var/ship_template = null
@@ -69,6 +72,10 @@
 	var/payoff = 0
 	var/initial_send_time = world.time
 	var/response_max_time = 2 MINUTES
+	var/timeout_response = "Too late to beg for mercy!"
+	var/pay_response = "Thanks for the credits, landlubbers."
+	var/broke_response = "Trying to cheat us? You'll regret this!"
+
 	priority_announce("Incoming subspace communication. Secure channel opened at all communication consoles.", "Incoming Message", SSstation.announcer.get_rand_report_sound())
 	var/datum/comm_message/threat = new
 	var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
@@ -94,31 +101,60 @@
 			threat.content = "Ahoy! This be the [ship_name]. Cough up [payoff] credits or you'll walk the plank."
 			threat.possible_answers = list("We'll pay.","We will not be extorted.")
 		//SKYRAT EDIT ADDITION
-		if(PIRATES_IMPERIAL_ENCLAVE)
+		if(PIRATES_NRI_RAIDERS)
 			ship_name = pick(strings(PIRATE_NAMES_FILE, "imperial_names"))
-			ship_template = /datum/map_template/shuttle/pirate/imperial_enclave
+			ship_template = /datum/map_template/shuttle/pirate/nri_raider
+			var/number = rand(1,99)
+			///Station name one is the most important pick and is pretty much the station's main argument against getting fined, thus it better be mostly always right.
+			var/station_designation = pick_weight(list(
+				"Nanotrasen Research Station" = 70,
+				"Nanotrasen Refueling Outpost" = 5,
+				"Interdyne Pharmaceuticals Chemical Factory" = 5,
+				"Free Teshari League Engineering Station" = 5,
+				"Agurkrral Military Base" = 5,
+				"Sol Federation Embassy" = 5,
+				"Novaya Rossiyskaya Imperiya Civilian Port" = 5,
+			))
+			///"right" = Right for the raiders to use as an argument; usually pretty difficult to avoid.
+			var/right_pick = pick(
+				"high probability of NRI-affiliated civilian casualties aboard the facility",
+				"highly increased funding by the SolFed authorities; neglected NRI-backed subsidiaries' contracts",
+				"unethical hiring practices and unfair payment allocation for the NRI citizens",
+				"recently discovered BSA-[number] or similar model in close proximity to the neutral space aboard this or nearby affiliated facility",
+			)
+			///"wrong" = Loosely based accusations that can be easily disproven if people think.
+			var/wrong_pick = pick(
+				"inadequate support of the local producer",
+				"unregulated production of Gauss weaponry aboard this installation",
+				"SolFed-backed stationary military formation on the surface of Indecipheres",
+				"AUTOMATED REGULATORY VIOLATION DETECTION SYSTEM CRITICAL FAILURE. PLEASE CONTACT AND INFORM THE DISPATCHED AUTHORITIES TO RESOLVE THE ISSUE. \
+					ANY POSSIBLE INDENTURE HAS BEEN CLEARED. WE APOLOGIZE FOR THE INCONVENIENCE",
+			)
+			var/final_result = pick(right_pick, wrong_pick)
 			threat.title = "NRI Audit"
-			threat.content = "Greetings, this is the [ship_name]. Due to recent Imperial regulatory violations, your station has been fined [payoff] credits. Failure to comply might result in lethal debt recovery. Novaya Rossiyskaya Imperiya Enforcer out."
-			threat.possible_answers = list("Submit to audit and pay the fine.", "Imperial regulations? What a load of bollocks.")
-		//SKYRAT EDIT ADDITION END
-	threat.answer_callback = CALLBACK(GLOBAL_PROC, .proc/pirates_answered, threat, payoff, ship_name, initial_send_time, response_max_time, ship_template)
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/spawn_pirates, threat, ship_template, FALSE), response_max_time)
+			threat.content = "Greetings [station_designation], this is the [ship_name]. Due to recent Imperial regulatory violations, such as [final_result] and many other smaller issues, your station has been fined [payoff] credits. Inadequate imperial police activity is currently present in your sector, thus the failure to comply might instead result in a military patrol dispatch for second attempt negotiations. Novaya Rossiyskaya Imperiya collegial secretary out."
+			threat.possible_answers = list("Submit to audit and pay the fine.", "Override the response system for an immediate military dispatch.")
+			timeout_response = "AUTOMATED REGULATORY VIOLATION RESPONSE SYSTEM TIMEOUT. PLEASE CONTACT AND INFORM THE DISPATCHED AUTHORITIES TO RESOLVE THE ISSUE."
+			pay_response = "Should be it, thank you for cooperation. Novaya Rossiyskaya Imperiya collegial secretary out."
+			broke_response = "Your bank balance does not hold enough money at the moment. We are sending a patrol ship for second attempt negotiations, stand by."
+	threat.answer_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(pirates_answered), threat, payoff, ship_name, initial_send_time, response_max_time, ship_template, timeout_response, pay_response, broke_response) //SKYRAT EDIT CHANGE
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(spawn_pirates), threat, ship_template, FALSE), response_max_time)
 	SScommunications.send_message(threat,unique = TRUE)
 
-/proc/pirates_answered(datum/comm_message/threat, payoff, ship_name, initial_send_time, response_max_time, ship_template)
+/proc/pirates_answered(datum/comm_message/threat, payoff, ship_name, initial_send_time, response_max_time, ship_template, timeout_response, pay_response, broke_response) //SKYRAT EDIT CHANGE
 	if(world.time > initial_send_time + response_max_time)
-		priority_announce("Too late to beg for mercy!",sender_override = ship_name)
+		priority_announce(timeout_response,sender_override = ship_name) //SKYRAT EDIT CHANGE
 		return
 	if(threat && threat.answered == 1)
 		var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
 		if(D)
 			if(D.adjust_money(-payoff))
-				priority_announce("Thanks for the credits, landlubbers.",sender_override = ship_name)
+				priority_announce(pay_response,sender_override = ship_name) //SKYRAT EDIT CHANGE
 				return
 			else
-				priority_announce("Trying to cheat us? You'll regret this!",sender_override = ship_name)
+				priority_announce(broke_response,sender_override = ship_name) //SKYRAT EDIT CHANGE
 				spawn_pirates(threat, ship_template, TRUE)
-
+///SKYRAT EDIT END - Roleplay-oriented pirates. An entire quarter of the file.
 /proc/spawn_pirates(datum/comm_message/threat, ship_template, skip_answer_check)
 	if(!skip_answer_check && threat?.answered == 1)
 		return
@@ -488,7 +524,7 @@
 	status_report = "Sending... "
 	pad.visible_message(span_notice("[pad] starts charging up."))
 	pad.icon_state = pad.warmup_state
-	sending_timer = addtimer(CALLBACK(src,.proc/send),warmup_time, TIMER_STOPPABLE)
+	sending_timer = addtimer(CALLBACK(src, PROC_REF(send)),warmup_time, TIMER_STOPPABLE)
 
 /obj/machinery/computer/piratepad_control/proc/stop_sending(custom_report)
 	if(!sending)

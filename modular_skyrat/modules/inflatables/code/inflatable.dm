@@ -65,7 +65,7 @@
 	playsound(src, 'sound/machines/hiss.ogg', 75, 1)
 	if(!violent)
 		balloon_alert_to_viewers("slowly deflates!")
-		addtimer(CALLBACK(src, .proc/slow_deflate_finish), manual_deflation_time)
+		addtimer(CALLBACK(src, PROC_REF(slow_deflate_finish)), manual_deflation_time)
 		return
 	balloon_alert_to_viewers("rapidly deflates!")
 	if(torn_type)

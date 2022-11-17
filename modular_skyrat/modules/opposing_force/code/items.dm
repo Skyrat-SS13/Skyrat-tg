@@ -10,9 +10,9 @@
 	hidden_uplink.name = "old radio"
 
 /obj/item/reagent_containers/cup/rag/large
-    volume = 30
-    amount_per_transfer_from_this = 30
-    desc = "A damp rag made from a highly absorbant materials. Can hold up to 30u liquids. You can also clean up messes I guess."
+	volume = 30
+	amount_per_transfer_from_this = 30
+	desc = "A damp rag made from a highly absorbant materials. Can hold up to 30u liquids. You can also clean up messes I guess."
 
 
 /obj/item/storage/box/syndie_kit/gunman_outfit
@@ -67,7 +67,7 @@
 	. = ..()
 	if(!(slot & ITEM_SLOT_OCLOTHING))
 		return
-	RegisterSignal(user, COMSIG_HUMAN_CHECK_SHIELDS, .proc/armor_reaction)
+	RegisterSignal(user, COMSIG_HUMAN_CHECK_SHIELDS, PROC_REF(armor_reaction))
 
 /obj/item/clothing/suit/toggle/lawyer/black/better/heister/proc/armor_reaction(mob/living/carbon/human/owner, atom/movable/hitby, damage = 0, attack_text = "the attack", attack_type = MELEE_ATTACK, armour_penetration = 0)
 	if(SEND_SIGNAL(src, COMSIG_ITEM_HIT_REACT, owner, hitby, attack_text, 0, damage, attack_type) & COMPONENT_HIT_REACTION_BLOCK)

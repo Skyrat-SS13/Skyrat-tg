@@ -146,7 +146,7 @@
 		var/turf/spawnpoint = pick(cme_start_locs)
 		spawn_cme(spawnpoint, cme_intensity)
 
-/datum/round_event/cme/proc/spawn_cme(var/turf/spawnpoint, intensity)
+/datum/round_event/cme/proc/spawn_cme(turf/spawnpoint, intensity)
 	if(intensity == CME_UNKNOWN)
 		intensity = pick(CME_MINIMAL, CME_MODERATE, CME_EXTREME)
 	var/area/loc_area_name = get_area(spawnpoint)
@@ -233,7 +233,7 @@
 	var/turf/open/T = get_turf(src)
 	if(istype(T))
 		T.atmos_spawn_air("o2=15;plasma=15;TEMP=5778")
-	addtimer(CALLBACK(src, .proc/burst), timeleft)
+	addtimer(CALLBACK(src, PROC_REF(burst)), timeleft)
 
 /obj/effect/cme/proc/burst()
 	if(neutralized)

@@ -273,7 +273,7 @@
 		playing_voice_line = TRUE
 		playsound(src, voice, volume)
 		queued_voice_lines -= voice_line
-		addtimer(CALLBACK(src, .proc/reset_sound), 4 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(reset_sound)), 4 SECONDS)
 		return
 
 	playing_voice_line = TRUE
@@ -282,7 +282,7 @@
 	voice.status = SOUND_STREAM
 	playsound(src, voice, volume)
 
-	addtimer(CALLBACK(src, .proc/reset_sound), 4 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(reset_sound)), 4 SECONDS)
 
 /obj/item/clothing/suit/space/hev_suit/proc/reset_sound()
 	playing_voice_line = FALSE
@@ -336,7 +336,7 @@
 	send_message("...CALIBRATED", HEV_COLOR_GREEN)
 
 	send_message("CALIBRATING REACTIVE ARMOR SYSTEMS...")
-	timer_id = addtimer(CALLBACK(src, .proc/powerarmor), 10 SECONDS, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(powerarmor)), 10 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hev_suit/proc/use_hev_power(amount)
 	var/power_test = item_use_power(amount)
@@ -424,11 +424,11 @@
 	user_old_toxloss = current_user.getToxLoss()
 	user_old_cloneloss = current_user.getCloneLoss()
 	user_old_oxyloss = current_user.getOxyLoss()
-	RegisterSignal(current_user, COMSIG_MOB_RUN_ARMOR, .proc/process_hit)
+	RegisterSignal(current_user, COMSIG_MOB_RUN_ARMOR, PROC_REF(process_hit))
 	playsound(src, armor_sound, 50)
 	send_message("...CALIBRATED", HEV_COLOR_GREEN)
 	send_message("CALIBRATING ATMOSPHERIC CONTAMINANT SENSORS...")
-	timer_id = addtimer(CALLBACK(src, .proc/atmospherics), 4 SECONDS, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(atmospherics)), 4 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hev_suit/proc/process_hit()
 	SIGNAL_HANDLER
@@ -484,7 +484,7 @@
 	if(!tank || !istype(tank))
 		send_message("...FAILURE, NO TANK DETECTED", HEV_COLOR_RED)
 		send_message("CALIBRATING VITALSIGN MONITORING SYSTEMS...")
-		timer_id = addtimer(CALLBACK(src, .proc/vitalsigns), 4 SECONDS, TIMER_STOPPABLE)
+		timer_id = addtimer(CALLBACK(src, PROC_REF(vitalsigns)), 4 SECONDS, TIMER_STOPPABLE)
 		return
 	current_internals_tank = tank
 	ADD_TRAIT(current_internals_tank, TRAIT_NODROP, "hev_trait")
@@ -492,7 +492,7 @@
 	playsound(src, atmospherics_sound, 50)
 	send_message("...CALIBRATED", HEV_COLOR_GREEN)
 	send_message("CALIBRATING VITALSIGN MONITORING SYSTEMS...")
-	timer_id = addtimer(CALLBACK(src, .proc/vitalsigns), 4 SECONDS, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(vitalsigns)), 4 SECONDS, TIMER_STOPPABLE)
 
 
 /obj/item/clothing/suit/space/hev_suit/proc/handle_tank()
@@ -502,11 +502,11 @@
 		current_internals_tank.populate_gas()
 
 /obj/item/clothing/suit/space/hev_suit/proc/vitalsigns()
-	RegisterSignal(current_user, COMSIG_MOB_STATCHANGE, .proc/stat_changed)
+	RegisterSignal(current_user, COMSIG_MOB_STATCHANGE, PROC_REF(stat_changed))
 	playsound(src, vitalsigns_sound, 50)
 	send_message("...CALIBRATED", HEV_COLOR_GREEN)
 	send_message("CALIBRATING AUTOMATIC MEDICAL SYSTEMS...")
-	timer_id = addtimer(CALLBACK(src, .proc/medical_systems), 3 SECONDS, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(medical_systems)), 3 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hev_suit/proc/stat_changed(datum/source, new_stat)
 	SIGNAL_HANDLER
@@ -516,13 +516,13 @@
 		deactivate()
 
 /obj/item/clothing/suit/space/hev_suit/proc/medical_systems()
-	RegisterSignal(current_user, COMSIG_CARBON_GAIN_WOUND, .proc/process_wound)
-	RegisterSignal(current_user, COMSIG_ATOM_ACID_ACT, .proc/process_acid)
+	RegisterSignal(current_user, COMSIG_CARBON_GAIN_WOUND, PROC_REF(process_wound))
+	RegisterSignal(current_user, COMSIG_ATOM_ACID_ACT, PROC_REF(process_acid))
 	START_PROCESSING(SSobj, src)
 	playsound(src, automedic_sound, 50)
 	send_message("...CALIBRATED", HEV_COLOR_GREEN)
 	send_message("CALIBRATING DEFENSIVE WEAPON SELECTION SYSTEMS...")
-	timer_id = addtimer(CALLBACK(src, .proc/weaponselect), 3 SECONDS, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(weaponselect)), 3 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hev_suit/process(delta_time)
 	if(!activated)
@@ -676,20 +676,20 @@
 	playsound(src, weaponselect_sound, 50)
 	send_message("...CALIBRATED", HEV_COLOR_GREEN)
 	send_message("CALIBRATING MUNITION LEVEL MONITORING SYSTEMS...")
-	timer_id = addtimer(CALLBACK(src, .proc/munitions_monitoring), 4 SECONDS, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(munitions_monitoring)), 4 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hev_suit/proc/munitions_monitoring()
 	//Crickets, not sure what to make this do!
 	playsound(src, munitions_sound, 50)
 	send_message("...CALIBRATED", HEV_COLOR_GREEN)
 	send_message("CALIBRATING COMMUNICATIONS SYSTEMS...")
-	timer_id = addtimer(CALLBACK(src, .proc/comms_system), 4 SECONDS, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(comms_system)), 4 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hev_suit/proc/comms_system()
 
 	playsound(src, communications_sound, 50)
 	send_message("...CALIBRATED", HEV_COLOR_GREEN)
-	timer_id = addtimer(CALLBACK(src, .proc/finished), 4 SECONDS, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(finished)), 4 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hev_suit/proc/finished()
 	to_chat(current_user, span_notice("You feel [src] seal around your body, locking it in place!"))

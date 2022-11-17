@@ -67,6 +67,9 @@
 		/obj/item/mod/module/status_readout/generic,
 		/obj/item/mod/module/tether,
 		/obj/item/mod/module/magboot,
+		/obj/item/mod/module/flashlight,
+		/obj/item/mod/module/magnetic_harness,
+		/obj/item/mod/module/t_ray
 	)
 
 /obj/item/mod/control/pre_equipped/frontline/ert
@@ -127,7 +130,7 @@
 	. = ..()
 	if(!.)
 		return
-	RegisterSignal(mod.wearer, COMSIG_CARBON_HEALTH_UPDATE, .proc/on_use)
+	RegisterSignal(mod.wearer, COMSIG_CARBON_HEALTH_UPDATE, PROC_REF(on_use))
 	drain_power(use_power_cost)
 
 ///	Heals damage (in fact, injects chems) based on the damage received and certain other variables (a single one), i.e. having more than X amount of health, not having enough needed chemicals or so on.
@@ -186,7 +189,7 @@
 	drain_power(use_power_cost*10)
 
 	///Debuff so it's "balanced", as well as a cooldown.
-	addtimer(CALLBACK(src, .proc/boost_aftereffects, mod.wearer), 45 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(boost_aftereffects), mod.wearer), 45 SECONDS)
 	COOLDOWN_START(src, heal_timer, heal_cooldown)
 
 /// Refills MODsuit module with the needed chemicals. That's all it does.
@@ -210,7 +213,7 @@
 	UnregisterSignal(mod.wearer, COMSIG_CARBON_HEALTH_UPDATE)
 
 /obj/item/mod/module/auto_doc/on_install()
-	RegisterSignal(mod, COMSIG_PARENT_ATTACKBY, .proc/on_attackby)
+	RegisterSignal(mod, COMSIG_PARENT_ATTACKBY, PROC_REF(on_attackby))
 
 /obj/item/mod/module/auto_doc/on_uninstall(deleting)
 	UnregisterSignal(mod, COMSIG_PARENT_ATTACKBY)

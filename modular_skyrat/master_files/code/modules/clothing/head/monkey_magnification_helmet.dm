@@ -45,8 +45,8 @@
 	magnification = user // this polls ghosts
 	visible_message(span_warning("[src] powers up!"))
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
-	RegisterSignal(magnification, COMSIG_SPECIES_LOSS, .proc/make_fall_off)
-	INVOKE_ASYNC(src, /obj/item/clothing/head/helmet/monkey_sentience.proc/connect, user)
+	RegisterSignal(magnification, COMSIG_SPECIES_LOSS, PROC_REF(make_fall_off))
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/clothing/head/helmet/monkey_sentience, connect), user)
 
 /obj/item/clothing/head/helmet/monkey_sentience/proc/connect(mob/user)
 	polling = TRUE
