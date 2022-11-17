@@ -16,7 +16,7 @@
 	// Emote exception
 		return TRUE
 
-	if(!wearer.w_uniform && !wearer.wear_suit)
+	if(!wearer.w_uniform)
 		return FALSE
 	if(key in wearer.try_hide_mutant_parts)
 		return TRUE
@@ -34,8 +34,7 @@
 		// Emote exception
 		return FALSE
 
-
-	if(!wearer.w_uniform && !wearer.wear_suit)
+	if(!wearer.w_uniform)
 		return ..()
 //	Can hide if wearing uniform
 	if(render_key in wearer.try_hide_mutant_parts)

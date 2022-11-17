@@ -16,7 +16,7 @@
 	genetic = TRUE
 
 /datum/sprite_accessory/wings/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/bodypart)
-	if(!wearer.w_uniform && !wearer.wear_suit)
+	if(!wearer.w_uniform)
 		return FALSE
 //	Can hide if wearing uniform
 	if(key in wearer.try_hide_mutant_parts)
@@ -33,7 +33,7 @@
 			return TRUE
 
 /obj/item/organ/external/wings/can_draw_on_bodypart(mob/living/carbon/human/wearer)
-	if(!wearer.w_uniform && !wearer.wear_suit)
+	if(!wearer.w_uniform)
 		return ..()
 	//	Can hide if wearing uniform
 	if("wings" in wearer.try_hide_mutant_parts)
