@@ -275,7 +275,7 @@
 	name = "Cybernetic Revolution"
 	trait_type = STATION_TRAIT_POSITIVE
 	show_in_report = TRUE
-	weight = 1
+	weight = 0
 	report_message = "The new trends in cybernetics have come to the station! Everyone has some form of cybernetic implant."
 	trait_to_give = STATION_TRAIT_CYBERNETIC_REVOLUTION
 	/// List of all job types with the cybernetics they should receive.
@@ -313,6 +313,21 @@
 		/datum/job/station_engineer = /obj/item/organ/internal/cyberimp/arm/toolset,
 		/datum/job/virologist = /obj/item/organ/internal/lungs/cybernetic/tier2,
 		/datum/job/warden = /obj/item/organ/internal/cyberimp/eyes/hud/security,
+
+		// Skyrat Jobs
+		// Anything not on this list does not get an implant
+		/*
+		/datum/job/barber = ,
+		/datum/job/blusehield = ,
+		/datum/job/bouncer = ,
+		/datum/job/corrections_officer = ,
+		/datum/job/customs_agent = ,
+		/datum/job/engineering_guard = ,
+		// /datum/job/nanotrasen_consulent - Nanotrasen wouldn't be forced to get one
+		/datum/job/orderly = ,
+		/datum/job/science_guard = ,
+		/datum/job/security_medic = ,
+		*/
 	)
 
 /datum/station_trait/cybernetic_revolution/New()
