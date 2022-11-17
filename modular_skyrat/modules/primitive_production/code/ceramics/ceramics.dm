@@ -35,7 +35,7 @@
 	return ..()
 
 /obj/item/ceramic
-	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
+	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 	var/forge_item
 
 /obj/item/ceramic/attackby(obj/item/attacking_item, mob/living/user, params)
@@ -51,7 +51,7 @@
 /obj/item/stack/clay
 	name = "clay"
 	desc = "A pile of clay that can be used to create ceramic artwork."
-	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
+	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 	icon_state = "clay"
 	merge_type = /obj/item/stack/clay
 	singular_name = "glob of clay"
@@ -84,7 +84,7 @@
 
 /obj/item/plate/ceramic
 	name = "ceramic plate"
-	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
+	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 	icon_state = "clay_plate"
 
 /obj/item/ceramic/bowl
@@ -95,7 +95,7 @@
 
 /obj/item/reagent_containers/cup/bowl/ceramic
 	name = "ceramic bowl"
-	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
+	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 	icon_state = "clay_bowl"
 	custom_materials = null
 
@@ -108,14 +108,14 @@
 /obj/item/reagent_containers/cup/beaker/large/ceramic
 	name = "ceramic cup"
 	desc = "A cup that is made from ceramic."
-	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
+	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 	icon_state = "clay_cup"
 	custom_materials = null
 
 /obj/structure/throwing_wheel
 	name = "throwing wheel"
 	desc = "A machine that allows you to throw clay."
-	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
+	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 	icon_state = "throw_wheel_empty"
 	density = TRUE
 	anchored = TRUE

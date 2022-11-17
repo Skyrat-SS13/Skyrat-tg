@@ -1,7 +1,7 @@
 /obj/item/forging
-	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
-	lefthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_l.dmi'
-	righthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_r.dmi'
+	icon = 'modular_skyrat/modules/primitive_production/icons/forge_items.dmi'
+	lefthand_file = 'modular_skyrat/modules/primitive_production/icons/inhands/forge_weapon_l.dmi'
+	righthand_file = 'modular_skyrat/modules/primitive_production/icons/inhands/forge_weapon_r.dmi'
 	toolspeed = 1 SECONDS
 	///whether the item is in use or not
 	var/in_use = FALSE
@@ -9,7 +9,7 @@
 /obj/item/forging/tongs
 	name = "forging tongs"
 	desc = "A set of tongs specifically crafted for use in forging. A wise man once said 'I lift things up and put them down.'"
-	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
+	icon = 'modular_skyrat/modules/primitive_production/icons/forge_items.dmi'
 	icon_state = "tong_empty"
 	tool_behaviour = TOOL_TONG
 

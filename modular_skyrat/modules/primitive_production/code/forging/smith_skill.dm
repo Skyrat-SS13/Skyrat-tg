@@ -12,7 +12,7 @@
 	name = "legendary smithy's cloak"
 	desc = "Worn by the most skilled smithies, this legendary cloak is only attainable by knowing every inch of the blacksmith's forge. \
 	This status symbol represents a being who has forged some of the finest weapons and armors."
-	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/cloaks.dmi'
-	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/neck.dmi'
+	icon = 'modular_skyrat/modules/primitive_production/icons/cloaks.dmi'
+	worn_icon = 'modular_skyrat/modules/primitive_production/icons/clothing/neck.dmi'
 	icon_state = "smithingcloak"
 	associated_skill_path = /datum/skill/smithing

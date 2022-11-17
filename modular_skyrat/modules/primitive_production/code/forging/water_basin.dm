@@ -1,7 +1,7 @@
 /obj/structure/reagent_water_basin
 	name = "water basin"
 	desc = "A basin full of water, ready to quench the hot metal."
-	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_structures.dmi'
+	icon = 'modular_skyrat/modules/primitive_production/icons/forge_structures.dmi'
 	icon_state = "water_basin"
 	anchored = TRUE
 	density = TRUE
@@ -71,7 +71,7 @@
 	if(!search_incomplete)
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
-	playsound(src, 'modular_skyrat/modules/reagent_forging/sound/hot_hiss.ogg', 50, TRUE)
+	playsound(src, 'modular_skyrat/modules/primitive_production/sound/hot_hiss.ogg', 50, TRUE)
 
 	if(search_incomplete?.times_hit < search_incomplete.average_hits)
 		to_chat(user, span_warning("You cool down [search_incomplete], but it wasn't ready yet."))

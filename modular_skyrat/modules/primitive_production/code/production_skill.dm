@@ -13,6 +13,6 @@
 	desc = "Worn by the most skilled producers, this legendary cloak is only attainable by knowing how to create the best products. \
 	This status symbol represents a being who has crafted some of the finest glass and ceramic works."
 	icon = 'modular_skyrat/modules/primitive_fun/icons/cloaks.dmi'
-	worn_icon = 'modular_skyrat/modules/primitive_fun/icons/neck.dmi'
+	worn_icon = 'modular_skyrat/modules/primitive_production/icons/clothing/neck.dmi'
 	icon_state = "productioncloak"
 	associated_skill_path = /datum/skill/production

@@ -1,7 +1,7 @@
 /obj/structure/reagent_anvil
 	name = "smithing anvil"
 	desc = "Essentially a big block of metal that you can hammer other metals on top of, crucial for anyone working metal by hand."
-	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_structures.dmi'
+	icon = 'modular_skyrat/modules/primitive_production/icons/forge_structures.dmi'
 	icon_state = "anvil_empty"
 
 	anchored = TRUE
@@ -78,7 +78,7 @@
 
 /obj/structure/reagent_anvil/hammer_act(mob/living/user, obj/item/tool)
 	//regardless, we will make a sound
-	playsound(src, 'modular_skyrat/modules/reagent_forging/sound/forge.ogg', 50, TRUE, ignore_walls = FALSE)
+	playsound(src, 'modular_skyrat/modules/primitive_production/sound/hammer_clang.ogg', 50, TRUE, ignore_walls = FALSE)
 
 	//do we have an incomplete item to hammer out? if so, here is our block of code
 	var/obj/item/forging/incomplete/locate_incomplete = locate() in contents
@@ -124,7 +124,7 @@
 
 			locate_obj.repair_damage(locate_obj.get_integrity() + 10)
 			user.mind.adjust_experience(/datum/skill/smithing, 5) //repairing does give some experience
-			playsound(src, 'modular_skyrat/modules/reagent_forging/sound/forge.ogg', 50, TRUE, ignore_walls = FALSE)
+			playsound(src, 'modular_skyrat/modules/primitive_production/sound/hammer_clang.ogg', 50, TRUE, ignore_walls = FALSE)
 
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
