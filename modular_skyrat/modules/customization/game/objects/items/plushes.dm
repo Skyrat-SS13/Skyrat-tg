@@ -569,5 +569,6 @@
 	name = "bumbling wolfgirl plushie"
 	desc = "A white-haired wolfgirl in a stylish red security skirt. Despite her scary cybernetic arm, she is soft to hug and only wishes to be praised and comforted."
 	icon_state = "plush_lonie"
-	list("snuggles", "nibbles", "awoos", "tail whaps")
+	attack_verb_continuous = list("snuggles", "nibbles", "awoos", "tail whaps")
+	attack_verb_simple = list("snuggle", "nibble", "awoo", "tail whap")
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/merowr.ogg' = 1)
