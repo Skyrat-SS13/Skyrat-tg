@@ -12,7 +12,7 @@
 		H.AdjustSleeping(-100, FALSE)
 		to_chat(owner, span_notice("You feel a rush of energy course through your body!"))
 		cooldown = TRUE
-		addtimer(CALLBACK(src, .proc/sleepytimerend), 50)
+		addtimer(CALLBACK(src, PROC_REF(sleepytimerend)), 50)
 	else
 		return
 
@@ -28,7 +28,7 @@
 	organ_flags |= ORGAN_FAILING
 	H.AdjustUnconscious(200)
 	cooldown = TRUE
-	addtimer(CALLBACK(src, .proc/reboot), 90 / severity)
+	addtimer(CALLBACK(src, PROC_REF(reboot)), 90 / severity)
 
 /obj/item/organ/internal/cyberimp/brain/anti_sleep/proc/reboot()
 	organ_flags &= ~ORGAN_FAILING

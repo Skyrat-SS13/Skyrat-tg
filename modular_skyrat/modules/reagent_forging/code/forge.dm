@@ -90,7 +90,7 @@
 	)
 	/// List of possible choices for the selection radial
 	var/list/radial_choice_list = list()
-    /// Blacklist that contains reagents that weapons and armor are unable to be imbued with.
+	/// Blacklist that contains reagents that weapons and armor are unable to be imbued with.
 	var/static/list/disallowed_reagents = typecacheof(list(
 		/datum/reagent/inverse/,
 		/datum/reagent/consumable/entpoly,
@@ -516,7 +516,7 @@
 
 	if(prob(CHARCOAL_CHANCE) && !is_strong_fuel)
 		to_chat(user, span_notice("[src]'s fuel is packed densely enough to have made some charcoal!"))
-		addtimer(CALLBACK(src, .proc/spawn_coal), 1 MINUTES)
+		addtimer(CALLBACK(src, PROC_REF(spawn_coal)), 1 MINUTES)
 
 /// Takes given ore and smelts it, possibly producing extra sheets if upgraded
 /obj/structure/reagent_forge/proc/smelt_ore(obj/item/stack/ore/ore_item, mob/living/user)
