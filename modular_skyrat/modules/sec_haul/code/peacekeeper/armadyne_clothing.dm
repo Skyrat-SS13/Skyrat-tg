@@ -236,19 +236,19 @@
 	role = "Security"
 
 /datum/antagonist/ert/armadyne/high_alert
-    name = "Armadyne Corporate Security (High Alert)"
-    outfit = /datum/outfit/armadyne_security/high_alert
-    role = "Security"
+	name = "Armadyne Corporate Security (High Alert)"
+	outfit = /datum/outfit/armadyne_security/high_alert
+	role = "Security"
 
 /datum/antagonist/ert/armadyne/leader
-    name = "Armadyne Corporate Security Commander"
-    outfit = /datum/outfit/armadyne_security/commander
-    role = "Commander"
+	name = "Armadyne Corporate Security Commander"
+	outfit = /datum/outfit/armadyne_security/commander
+	role = "Commander"
 
 /datum/antagonist/ert/armadyne/leader/high_alert
-    name = "Armadyne Corporate Security Commander (High Alert)"
-    outfit = /datum/outfit/armadyne_security/commander/high_alert
-    role = "Commander"
+	name = "Armadyne Corporate Security Commander (High Alert)"
+	outfit = /datum/outfit/armadyne_security/commander/high_alert
+	role = "Commander"
 
 
 /datum/ert/armadyne
