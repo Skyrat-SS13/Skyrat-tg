@@ -23,7 +23,7 @@
 	icon_state = "down"
 
 /datum/sprite_accessory/xenodorsal/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/bodypart)
-	if(!wearer.w_uniform)
+	if(!wearer.w_uniform && !wearer.wear_suit)
 		return FALSE
 //	Can hide if wearing uniform
 	if(key in wearer.try_hide_mutant_parts)

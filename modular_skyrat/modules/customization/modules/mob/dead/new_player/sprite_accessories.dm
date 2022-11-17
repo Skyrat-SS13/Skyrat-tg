@@ -150,7 +150,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 
 /datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/bodypart)
 	var/obj/item/organ/external/tail/tail = wearer.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
-	if(!wearer.w_uniform)
+	if(!wearer.w_uniform && !wearer.wear_suit)
 		return FALSE
 	//	Can hide if wearing uniform
 	if(key in wearer.try_hide_mutant_parts)
