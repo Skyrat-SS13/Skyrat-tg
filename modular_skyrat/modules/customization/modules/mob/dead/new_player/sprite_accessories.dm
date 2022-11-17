@@ -159,12 +159,12 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	//	Exception for MODs
 		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
 			return FALSE
-	else if(!tail \
-			|| (wearer.wear_suit \
-				&& (wearer.wear_suit.flags_inv & HIDETAIL \
-				|| wearer.wear_suit.flags_inv & HIDESPINE) \
-			)
+	if(!tail \
+		|| (wearer.wear_suit \
+			&& (wearer.wear_suit.flags_inv & HIDETAIL \
+			|| wearer.wear_suit.flags_inv & HIDESPINE) \
 		)
+	)
 		return TRUE
 
 /datum/sprite_accessory/spines/get_special_render_state(mob/living/carbon/human/H)
