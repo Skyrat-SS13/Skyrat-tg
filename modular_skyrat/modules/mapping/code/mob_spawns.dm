@@ -141,7 +141,7 @@
 	back = /obj/item/storage/backpack
 	backpack_contents = list(
 		/obj/item/storage/box/survival = 1,
-		/obj/item/crowbar = 1
+		/obj/item/crowbar = 1,
 		)
 	id = /obj/item/card/id/advanced/black
 	implants = list(/obj/item/implant/weapons_auth)
@@ -157,7 +157,7 @@
 		/obj/item/crowbar = 1,
 		/obj/item/knife/combat/survival = 1,
 		/obj/item/t_scanner/adv_mining_scanner/lesser = 1,
-		/obj/item/gun/energy/recharge/kinetic_accelerator = 1
+		/obj/item/gun/energy/recharge/kinetic_accelerator = 1,
 		)
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/miner
 	l_pocket = /obj/item/card/mining_point_card
@@ -177,7 +177,7 @@
 	uniform = /obj/item/clothing/under/syndicate/skyrat/overalls
 	head = /obj/item/clothing/head/soft/sec/syndicate
 	backpack_contents = list(
-		/obj/item/storage/box/survival = 1
+		/obj/item/storage/box/survival = 1,
 		)
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/enginetechnician
 	glasses = /obj/item/clothing/glasses/welding/up
@@ -204,7 +204,7 @@
 	backpack_contents = list(
 		/obj/item/storage/box/survival = 1,
 		/obj/item/crowbar = 1,
-		/obj/item/storage/medkit/surgery = 1
+		/obj/item/storage/medkit/surgery = 1,
 		)
 
 /datum/outfit/ds2/syndicate/corporateliaison
