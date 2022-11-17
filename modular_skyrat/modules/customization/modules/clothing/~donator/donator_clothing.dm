@@ -1305,6 +1305,14 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
+// Donation reward for Nikohyena
+/obj/item/clothing/glasses/gold_aviators
+	name = "purple and gold aviators"
+	desc = "A round pair of gold aviator glasses, the lenses having been applied with a gem-like purple tint."
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
+	icon_state = "goldaviator"
+
 // Donation reward for Thedragmeme
 
 /obj/item/clothing/under/caged_dress/skirt
