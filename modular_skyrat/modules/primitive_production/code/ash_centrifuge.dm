@@ -1,8 +1,8 @@
 /obj/item/reagent_containers/cup/primitive_centrifuge
 	name = "primitive centrifuge"
 	desc = "A small cup that allows a person to slowly spin out liquids they do not desire."
-	icon = 'modular_skyrat/modules/ashwalkers/icons/misc_tools.dmi'
-	icon_state = "primitive_centrifuge"
+	icon = 'modular_skyrat/modules/primitive_production/icons/greyscale_result_items.dmi'
+	icon_state = "small_bowl"
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 
 /obj/item/reagent_containers/cup/primitive_centrifuge/examine()
