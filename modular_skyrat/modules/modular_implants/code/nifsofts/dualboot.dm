@@ -55,10 +55,6 @@
 	name = "NIF Virtual Machine"
 	desc = "You shouldn't be seeing this, if you do, report it to GitHub"
 
-	upgradable = FALSE
-	deconstructable = FALSE
-	//The actual power is being drained through the NIF.
-	base_active_power_usage = 0
 	base_idle_power_usage = 0
 	max_idle_programs = 1 //It's a virtual machine, not a good one.
 	looping_sound = FALSE
@@ -69,14 +65,4 @@
 
 /obj/item/modular_computer/tablet/virtual/Initialize(mapload)
 	. = ..()
-	install_component(new /obj/item/computer_hardware/battery(src, /obj/item/stock_parts/cell/computer/micro))
-	install_component(new /obj/item/computer_hardware/hard_drive/small/emulated)
 
-/obj/item/computer_hardware/hard_drive/small/emulated
-	max_capacity = 32
-
-/obj/item/computer_hardware/hard_drive/small/emulated/install_default_programs()
-	store_file(new /datum/computer_file/program/ntnetdownload)
-	store_file(new /datum/computer_file/program/filemanager)
-	store_file(new /datum/computer_file/program/crew_manifest)
-	store_file(new /datum/computer_file/program/notepad)
