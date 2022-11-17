@@ -105,7 +105,7 @@
 		return
 
 	var/old_len = authorized.len
-	addtimer(CALLBACK(src, .proc/clear_recent_action, user), SHUTTLE_CONSOLE_ACTION_DELAY)
+	addtimer(CALLBACK(src, PROC_REF(clear_recent_action), user), SHUTTLE_CONSOLE_ACTION_DELAY)
 
 	switch(action)
 		if("authorize")
@@ -294,10 +294,6 @@
 /obj/docking_port/mobile/emergency
 	name = "emergency shuttle"
 	shuttle_id = "emergency"
-
-	dwidth = 9
-	width = 22
-	height = 11
 	dir = EAST
 	port_direction = WEST
 	var/sound_played = 0 //If the launch sound has been sent to all players on the shuttle itself
@@ -485,7 +481,7 @@
 			if(time_left <= 50 && !sound_played) //4 seconds left:REV UP THOSE ENGINES BOYS. - should sync up with the launch
 				sound_played = 1 //Only rev them up once.
 				var/list/areas = list()
-				for(var/area/shuttle/escape/E in GLOB.sortedAreas)
+				for(var/area/shuttle/escape/E in GLOB.areas)
 					areas += E
 				hyperspace_sound(HYPERSPACE_WARMUP, areas)
 
@@ -497,15 +493,15 @@
 
 				//now move the actual emergency shuttle to its transit dock
 				var/list/areas = list()
-				for(var/area/shuttle/escape/E in GLOB.sortedAreas)
+				for(var/area/shuttle/escape/E in GLOB.areas)
 					areas += E
 				hyperspace_sound(HYPERSPACE_LAUNCH, areas)
 				enterTransit()
 				mode = SHUTTLE_ESCAPE
 				launch_status = ENDGAME_LAUNCHED
 				setTimer(SSshuttle.emergency_escape_time * engine_coeff)
-				priority_announce("The Emergency Shuttle has left the station. Estimate [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, ANNOUNCER_SHUTTLELEFT, "Priority") //SKYRAT EDIT CHANGE - ANNOUNCER_SHUTTLELEFT
-				INVOKE_ASYNC(SSticker, /datum/controller/subsystem/ticker.proc/poll_hearts)
+				priority_announce("The Emergency Shuttle has left the station. Estimate [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, ANNOUNCER_SHUTTLELEFT, "Priority")
+				INVOKE_ASYNC(SSticker, TYPE_PROC_REF(/datum/controller/subsystem/ticker, poll_hearts))
 				bolt_all_doors() //SKYRAT EDIT ADDITION
 				SSmapping.mapvote() //If no map vote has been run yet, start one.
 
@@ -516,7 +512,7 @@
 		if(SHUTTLE_ESCAPE)
 			if(sound_played && time_left <= HYPERSPACE_END_TIME)
 				var/list/areas = list()
-				for(var/area/shuttle/escape/E in GLOB.sortedAreas)
+				for(var/area/shuttle/escape/E in GLOB.areas)
 					areas += E
 				hyperspace_sound(HYPERSPACE_END, areas)
 			if(time_left <= PARALLAX_LOOP_TIME)
@@ -551,7 +547,7 @@
 
 				dock_id(destination_dock)
 				unbolt_all_doors() //SKYRAT EDIT ADDITION
-				INVOKE_ASYNC(GLOBAL_PROC, /proc/process_eorg_bans) //SKYRAT EDIT ADDITION
+				INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(process_eorg_bans)) //SKYRAT EDIT ADDITION
 				mode = SHUTTLE_ENDGAME
 				timer = 0
 
@@ -568,9 +564,6 @@
 /obj/docking_port/mobile/pod
 	name = "escape pod"
 	shuttle_id = "pod"
-	dwidth = 1
-	width = 3
-	height = 4
 	launch_status = UNLAUNCHED
 
 /obj/docking_port/mobile/pod/request(obj/docking_port/stationary/S)
@@ -599,7 +592,7 @@
 /obj/machinery/computer/shuttle/pod/Initialize(mapload)
 	AddElement(/datum/element/update_icon_blocker)
 	. = ..()
-	RegisterSignal(SSsecurity_level, COMSIG_SECURITY_LEVEL_CHANGED, .proc/check_lock)
+	RegisterSignal(SSsecurity_level, COMSIG_SECURITY_LEVEL_CHANGED, PROC_REF(check_lock))
 
 /obj/machinery/computer/shuttle/pod/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
@@ -630,9 +623,6 @@
 /obj/docking_port/stationary/random
 	name = "escape pod"
 	shuttle_id = "pod"
-	dwidth = 1
-	width = 3
-	height = 4
 	hidden = TRUE
 	var/target_area = /area/lavaland/surface/outdoors
 	var/edge_distance = 16
@@ -742,9 +732,6 @@
 /obj/docking_port/mobile/emergency/backup
 	name = "backup shuttle"
 	shuttle_id = "backup"
-	dwidth = 2
-	width = 8
-	height = 8
 	dir = EAST
 
 /obj/docking_port/mobile/emergency/backup/Initialize(mapload)
