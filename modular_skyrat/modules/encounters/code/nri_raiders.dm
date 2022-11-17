@@ -124,7 +124,7 @@
 	name = "NRI Starship"
 	forced_ambience = TRUE
 	ambient_buzz = 'modular_skyrat/modules/encounters/sounds/env_ship_idle.ogg'
-	ambient_buzz_vol = 25
+	ambient_buzz_vol = 15
 	ambientsounds = list('modular_skyrat/modules/encounters/sounds/alarm_radio.ogg',
 						'modular_skyrat/modules/encounters/sounds/alarm_small_09.ogg',
 						'modular_skyrat/modules/encounters/sounds/gear_loop.ogg',
