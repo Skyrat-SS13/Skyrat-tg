@@ -99,17 +99,20 @@
 	desc = "A beret custom-fit to the Chief Medical Officer, repaired once or twice after Runtime got a hold of it. This one is made out of white fabric. Fancy."
 	greyscale_colors = "#FFFFFF#34CCEE"
 
+/obj/item/clothing/head/beret/science/fancy
+	desc = "A science-themed beret for our hardworking scientists. This one comes with a fancy badge!"
+	icon_state = "beret_badge"
+	greyscale_config = /datum/greyscale_config/beret_badge
+	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_config_worn_teshari = /datum/greyscale_config/beret_badge/worn/teshari
+	greyscale_colors = "#8D008F#FFFFFF"
+
 /obj/item/clothing/head/beret/science/fancy/robo
 	name = "robotics beret"
 	desc = "A sleek black beret designed with high-durability nano-mesh fiber - or so the roboticists claim."
 	greyscale_colors = "#4F4F4F#730000"
 
-/obj/item/clothing/head/beret/science/fancy/rd
-	name = "research director's beret"
-	desc = "A custom-tailored beret for the Research Director. Lamarr thinks it looks great."
-	greyscale_colors = "#8D008F#D8D39C"
-
-/obj/item/clothing/head/beret/science/fancy/rd/alt
+/obj/item/clothing/head/beret/science/rd/alt
 	name = "research director's beret"
 	desc = "A custom-tailored beret for the Research Director. Lamarr thinks it looks great. This one is made out of white fabric. Fancy."
 	greyscale_colors = "#FFFFFF#8D008F"
