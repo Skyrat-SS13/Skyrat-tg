@@ -90,8 +90,8 @@
 	unbuckle_all_mobs(TRUE)
 
 /obj/structure/chair/x_stand/update_icon_state()
-    . = ..()
-    icon_state = "[initial(icon_state)]_[stand_state? "open" : "close"]"
+	. = ..()
+	icon_state = "[initial(icon_state)]_[stand_state? "open" : "close"]"
 
 //X-Stand LBM interaction handler
 /obj/structure/chair/x_stand/attack_hand(mob/living/user)
