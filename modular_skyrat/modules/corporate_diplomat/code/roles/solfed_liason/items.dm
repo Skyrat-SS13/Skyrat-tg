@@ -62,3 +62,8 @@
 	inserted_item = /obj/item/pen/fountain
 	greyscale_colors = "#C39C00#0060b8"
 
+/obj/item/stamp/solfed
+	name = "SolFed rubber stamp"
+	icon = 'modular_skyrat/modules/corporate_diplomat/icons/stamps/stamps.dmi'
+	icon_state = "stamp-solfed"
+	dye_color = DYE_CE // I'm not shitcoding the stamp system to work with modular files

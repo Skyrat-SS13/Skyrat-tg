@@ -70,4 +70,10 @@
 	. = ..()
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 
+/obj/item/stamp/armadyne
+	name = "Armadyne rubber stamp"
+	icon = 'modular_skyrat/modules/corporate_diplomat/icons/stamps/stamps.dmi'
+	icon_state = "stamp-armadyne"
+	dye_color = DYE_HOS
+
 #undef STACKS_OF_CASH

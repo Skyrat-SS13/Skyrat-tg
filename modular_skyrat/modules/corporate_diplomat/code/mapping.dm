@@ -45,8 +45,8 @@
 	icon = 'icons/effects/random_spawners.dmi'
 	icon_state = "stamp"
 	nt_con_path = /obj/item/stamp/centcom
-	arm_rep_path = /obj/item/stamp/void
-	sol_lia_path = /obj/item/stamp/mod/normal //sue me for powercreeping stamps
+	arm_rep_path = /obj/item/stamp/armadyne
+	sol_lia_path = /obj/item/stamp/solfed
 
 
 /obj/effect/spawner/corporate_diplomat/filing_cabinet

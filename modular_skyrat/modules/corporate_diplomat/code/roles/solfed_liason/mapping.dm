@@ -25,13 +25,10 @@
 	new /obj/item/clothing/suit/jacket/solfed_liaison/formal(src)
 
 /obj/machinery/fax/solfed
-	name = "\improper SolFed Liason's Fax Machine"
+	name = "\improper SolFed Liaison's Fax Machine"
 	desc = "A fax machine containing the proper encryption keys to send a message to the Solar Federation."
-	fax_name = "SolFed Liason's Office"
+	fax_name = "SolFed Liaison's Office"
 
 /obj/item/circuitboard/machine/fax/solfed
 	name = "Fax Machine (SolFed)"
 	build_path = /obj/machinery/fax/solfed
-
-/obj/item/stamp/mod/normal
-	name = "electronic stamp"
