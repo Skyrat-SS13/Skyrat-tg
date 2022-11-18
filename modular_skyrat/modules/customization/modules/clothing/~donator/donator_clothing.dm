@@ -1314,13 +1314,13 @@
 	icon_state = "goldaviator"
 
 // Donation reward for Thedragmeme
+
 /obj/item/clothing/under/caged_dress/skirt
 	name = "Caged Purple Dress"
 	desc = "A silky purple dress with a partially exposed crinoline underneath."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	icon_state = "caged_dress"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/short_coat
 	name = "Short Purple Coat"
