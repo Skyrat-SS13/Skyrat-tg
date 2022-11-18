@@ -24,7 +24,6 @@
 	taste_description = "television static"
 	ph = 3
 	overdose_threshold = 15
-	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	addiction_types = list(/datum/addiction/hallucinogens = 15)
 
