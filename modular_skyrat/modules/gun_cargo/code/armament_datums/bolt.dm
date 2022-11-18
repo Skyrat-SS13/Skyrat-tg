@@ -27,6 +27,11 @@
 	lower_cost = CARGO_CRATE_VALUE * 5
 	upper_cost = CARGO_CRATE_VALUE * 7
 
+/datum/armament_entry/cargo_gun/bolt/pistol/spurmaster
+	item_type = /obj/item/gun/ballistic/revolver/revolution
+	lower_cost = CARGO_CRATE_VALUE * 6
+	upper_cost = CARGO_CRATE_VALUE * 8
+
 /datum/armament_entry/cargo_gun/bolt/shotgun
 	subcategory = ARMAMENT_SUBCATEGORY_SHOTGUN
 
