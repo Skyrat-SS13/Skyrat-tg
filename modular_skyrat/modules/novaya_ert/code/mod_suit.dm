@@ -67,6 +67,9 @@
 		/obj/item/mod/module/status_readout/generic,
 		/obj/item/mod/module/tether,
 		/obj/item/mod/module/magboot,
+		/obj/item/mod/module/flashlight,
+		/obj/item/mod/module/magnetic_harness,
+		/obj/item/mod/module/t_ray
 	)
 
 /obj/item/mod/control/pre_equipped/frontline/ert

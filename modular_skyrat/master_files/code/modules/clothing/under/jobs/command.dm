@@ -73,7 +73,7 @@
 /*
 *	NT CONSULTANT
 */
-//See Blueshield note - tl;dr, this role is a station role, while Centcomm.dmi is more event roles
+//See Blueshield note - tl;dr, this role is a station role, while Centcom.dmi is more event roles
 
 /obj/item/clothing/under/rank/nanotrasen_consultant
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/command.dmi'
