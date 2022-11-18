@@ -28,7 +28,7 @@
 		return FALSE
 
 	if(installed_nif)
-		if(installed_nif.durability == 0)
+		if(installed_nif.durability >= 0)
 			installed_nif = FALSE
 
 	if(!installed_nif || (installed_nif && !installed_nif.nif_persistence))
