@@ -1,3 +1,6 @@
+#define SUMMONED_ITEM_ALPHA 180
+
+
 /obj/item/disk/nifsoft_uploader/summoner
 	name = "Grimoire Caeruleam"
 	loaded_nifsoft = /datum/nifsoft/summoner
@@ -49,7 +52,7 @@
 		new_item.name = name_tag + new_item.name //This is here so that people know the item is created from a NIF.
 
 	if(holographic_filter)
-		new_item.alpha = 180
+		new_item.alpha = SUMMONED_ITEM_ALPHA
 		new_item.set_light(2)
 		new_item.add_atom_colour("#acccff", FIXED_COLOUR_PRIORITY)
 
@@ -151,3 +154,6 @@
 /obj/item/clothing/mask/holocigarette/nanite
 	name = "cloudstick"
 	desc = "One of mankind's many attempts at ending the legacy of Big Tobacco. Contributed by a fully anonymous engram and then forked countless times into countless replications of brands and flavors, the 'Cloudstick' is more of a genre than a single Icon. Most downloadable ones even allow the summoner to change the pixilation of the smoke, to grant them a more 'detached' experience from the real thing. Several summoners report these to help them in quitting smoking, others simply commenting 'it's why i first downloaded the Catchflame"
+
+
+#undef SUMMONED_ITEM_ALPHA 180
