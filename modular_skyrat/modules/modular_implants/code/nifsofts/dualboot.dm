@@ -45,10 +45,6 @@
 	background_icon_state = "android"
 	icon_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
 	check_flags = AB_CHECK_CONSCIOUS
-	///What "Virtual Machine" does the action open up?
-
-/datum/action/item_action/nif/virtual_machine/Trigger(trigger_flags)
-	. = ..()
 
 ///The "Virtual Machine" computer used in NIFs
 /obj/item/modular_computer/tablet/virtual
@@ -63,6 +59,4 @@
 	comp_light_luminosity = 0
 	max_bays = 0
 
-/obj/item/modular_computer/tablet/virtual/Initialize(mapload)
-	. = ..()
 
