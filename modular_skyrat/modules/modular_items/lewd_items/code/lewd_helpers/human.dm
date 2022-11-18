@@ -43,10 +43,10 @@
 	return (!(wear_suit) || !(wear_suit.body_parts_covered & GROIN)) && (!(shoes) || !(shoes.body_parts_covered & FEET))
 
 /mob/living/carbon/human/proc/is_hands_uncovered()
-    return (gloves?.body_parts_covered & ARMS)
+	return (gloves?.body_parts_covered & ARMS)
 
 /mob/living/carbon/human/proc/is_head_uncovered()
-    return (head?.body_parts_covered & HEAD)
+	return (head?.body_parts_covered & HEAD)
 
 /// Returns true if the human has an accessible penis for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/carbon/human/proc/has_penis(required_state = REQUIRE_GENITAL_ANY)
