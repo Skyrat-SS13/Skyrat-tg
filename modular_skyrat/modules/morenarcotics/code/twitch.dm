@@ -30,6 +30,9 @@
 /datum/reagent/drug/twitch/on_mob_metabolize(mob/living/consoomer)
 	. = ..()
 
+	consoomer.add_movespeed_modifier(/datum/movespeed_modifier/reagent/twitch)
+	consoomer.next_move_modifier -= 0.2 // For the duration of this you move and attack slightly faster
+
 	RegisterSignal(consoomer, COMSIG_MOVABLE_MOVED, PROC_REF(on_movement), TRUE)
 
 	if(!consoomer.hud_used)
@@ -40,16 +43,26 @@
 	var/list/col_filter_darker_green = list(0.2,0,0,0, 0,1,0,0, 0,0,0.2,0, 0,0,0,1)
 
 	game_plane_master_controller.add_filter("twitch_filter", 10, color_matrix_filter(col_filter_darker_green, FILTER_COLOR_RGB))
+
 	game_plane_master_controller.add_filter("twitch_blur", 1, list("type" = "radial_blur", "size" = 0.1))
 
 	for(var/filter in game_plane_master_controller.get_filters("twitch_blur"))
 		animate(filter, loop = -1, size = 0.05, time = 4 SECONDS, easing = ELASTIC_EASING|EASE_OUT, flags = ANIMATION_PARALLEL)
 		animate(size = 0.15, time = 4 SECONDS, easing = CIRCULAR_EASING|EASE_IN)
 
-	consoomer.sound_environment_override = SOUND_ENVIRONMENT_UNDERWATER
+	consoomer.add_filter("twitch_phase", 1, list("type" = "wave", "x" = 2))
+
+	for(var/filter in consoomer.get_filters("wave"))
+		animate(filter, loop = -1, size = 16, time = 12 SECONDS, easing = ELASTIC_EASING|EASE_OUT, flags = ANIMATION_PARALLEL)
+		animate(size = 0, time = 0.5 SECONDS, easing = EASE_OUT)
+
+	consoomer.sound_environment_override = SOUND_ENVIROMENT_PHASED
 
 /datum/reagent/drug/twitch/on_mob_end_metabolize(mob/living/consoomer)
 	. = ..()
+
+	consoomer.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/twitch)
+	consoomer.next_move_modifier += 0.2
 
 	if(!consoomer.hud_used)
 		return
@@ -58,6 +71,7 @@
 
 	game_plane_master_controller.remove_filter("twitch_filter")
 	game_plane_master_controller.remove_filter("twitch_blur")
+	consoomer.remove_filter("twitch_phase")
 	consoomer.sound_environment_override = NONE
 
 /datum/reagent/drug/twitch/proc/on_movement(mob/living/our_guy)
@@ -93,3 +107,6 @@
 	color = matrix_start
 	animate(src, color = matrix_end, time = duration, easing = EASE_OUT)
 	animate(src, alpha = 0, time = duration, easing = EASE_OUT)
+
+/datum/movespeed_modifier/reagent/twitch
+	multiplicative_slowdown = -0.3
