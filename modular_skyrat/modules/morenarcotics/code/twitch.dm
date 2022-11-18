@@ -31,6 +31,8 @@
 /datum/reagent/drug/twitch/on_mob_metabolize(mob/living/consoomer)
 	. = ..()
 
+	RegisterSignal(consoomer, COMSIG_MOVABLE_MOVED, PROC_REF(on_movement), TRUE)
+
 	if(!consoomer.hud_used)
 		return
 
@@ -39,7 +41,7 @@
 	var/list/col_filter_darker_green = list(0.2,0,0,0, 0,1,0,0, 0,0,0.2,0, 0,0,0,1)
 
 	game_plane_master_controller.add_filter("twitch_filter", 10, color_matrix_filter(col_filter_darker_green, FILTER_COLOR_RGB))
-	game_plane_master_controller.add_filter("twitch_blur", 1, list("type" = "radial_blur", "size" = 0))
+	game_plane_master_controller.add_filter("twitch_blur", 1, list("type" = "radial_blur", "size" = 0.1))
 
 	for(var/filter in game_plane_master_controller.get_filters("twitch_blur"))
 		animate(filter, loop = -1, size = 0.05, time = 4 SECONDS, easing = ELASTIC_EASING|EASE_OUT, flags = ANIMATION_PARALLEL)
@@ -59,6 +61,8 @@
 	game_plane_master_controller.remove_filter("twitch_blur")
 	consoomer.sound_environment_override = NONE
 
+/datum/reagent/drug/twitch/proc/on_movement(mob/living/our_guy)
+
 /*
 /datum/reagent/drug/blastoff/on_mob_life(mob/living/carbon/dancer, delta_time, times_fired)
 	. = ..()
@@ -76,3 +80,14 @@
 	if(DT_PROB(BLASTOFF_DANCE_MOVE_CHANCE_PER_UNIT * volume, delta_time))
 		dancer.emote("spin")
 */
+
+/obj/effect/temp_visual/decoy/fading/color_changing
+	/// The color matrix it should be at spawn
+	var/list/matrix_start = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0,0.5,0,0)
+	/// The color matrix it should be by the time it despawns
+	var/list/matrix_end = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0,0.1,0.4,0)
+
+/obj/effect/temp_visual/decoy/fading/color_changing/Initialize(mapload)
+	. = ..()
+	color = matrix_start
+	animate(color = matrix_end, time = duration)
