@@ -92,5 +92,5 @@
 /obj/effect/temp_visual/decoy/twitch_afterimage/Initialize(mapload)
 	. = ..()
 	color = matrix_start
-	animate(src, color = matrix_end, time = duration / 2, easing = EASE_OUT)
+	animate(src, color = matrix_end, time = duration, easing = EASE_OUT)
 	animate(src, alpha = 0, time = duration, easing = EASE_OUT)
