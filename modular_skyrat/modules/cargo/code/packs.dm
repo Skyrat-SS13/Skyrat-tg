@@ -778,14 +778,6 @@
 		/obj/item/organ/internal/cyberimp/brain/nif/roleplay_model,
 	)
 
-/datum/supply_pack/goody/nif_repair_kit
-	name = "Cerulean NIF Regenerator"
-	desc = "Contains a single container of NIF repair fluid, good for up to 5 uses."
-	cost = CARGO_CRATE_VALUE * 3
-	contains = list(
-		/obj/item/nif_repair_kit,
-	)
-
 /datum/supply_pack/service/money_nifsoft
 	name = "Money Sense NIFSofts"
 	desc = "Contains three Money Sense NIFSoft datadisks."
