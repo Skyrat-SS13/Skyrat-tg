@@ -104,7 +104,8 @@
 /datum/reagent/drug/twitch/overdose_start(mob/living/our_guy)
 	. = ..()
 
-	RegisterSignal(our_guy, COMSIG_PROJECTILE_ON_HIT, PROC_REF(on_projectile_hit))
+	if(!our_guy.hud_used)
+		return
 
 	var/atom/movable/plane_master_controller/game_plane_master_controller = our_guy.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
 
@@ -128,17 +129,6 @@
 	if(DT_PROB(10, delta_time))
 		our_guy.add_filter("overdose_phase", 2, phase_filter(8))
 		addtimer(CALLBACK(our_guy, TYPE_PROC_REF(/atom, remove_filter), "overdose_phase"), 0.5 SECONDS)
-
-/// Tells projectiles to not actually hit the poor overdosed sap, they're seeing faster than any mortal should be right now
-/datum/reagent/drug/twitch/proc/on_projectile_hit(datum/fired_from, atom/movable/firer, mob/living/carbon/target, Angle)
-	if(target.incapacitated(IGNORE_GRAB) || !isturf(target.loc)) // If we aren't actually capable of moving or dodging stuff then shit
-		return BULLET_ACT_HIT
-
-	target.visible_message(span_danger("[target] narrowly dodges the projectile!"), span_userdanger("You narrowly dodge the projectile!"))
-	playsound(get_turf(target), pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)
-	target.add_filter("projectile_dodge_effect", 2, phase_filter(16))
-	addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, remove_filter), "projectile_dodge_effect"), 0.5 SECONDS)
-	return BULLET_ACT_FORCE_PIERCE
 
 /// Cool filter that I'm using for some of this :)))
 /proc/phase_filter(size)
