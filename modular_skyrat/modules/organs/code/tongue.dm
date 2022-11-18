@@ -29,7 +29,7 @@
 	name = "cybernetic tongue"
 	icon = 'modular_skyrat/modules/organs/icons/cyber_tongue.dmi'
 	icon_state = "cybertongue"
-	desc =  "A fully synthetic tongue, encased in silicone. Has higher-quality taste receptors and vocals than the robotic voice box."
+	desc =  "A fully-functional synthetic tongue, encased in soft silicone. Features include high-resolution vocals and taste receptors."
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
 	say_mod = "says"
