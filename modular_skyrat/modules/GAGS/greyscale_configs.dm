@@ -785,6 +785,15 @@
 	name = "Worn Pentagram Strapped Dress"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
 
+/datum/greyscale_config/plaidskirt_worn/teshari
+	name = "Worn Plaid Skirt - Teshari"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/dressteshari.dmi'
+
+/datum/greyscale_config/sundress_worn/teshari
+	name = "Worn Sundress - Teshari"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/dressteshari.dmi'
+
+// KILT
 // COSTUMES
 
 /datum/greyscale_config/buttondown_slacks_worn/digi
