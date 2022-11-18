@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/hypospray/medipen/twitch_injector
 	name = "TWitch injector"
-	desc = "A tiny injector filled with a slowly shifting, angry-red liquid.\nYou suspect it contains TWtich; a drug that users claim lets them 'see faster', whatever that means."
+	desc = "A tiny injector filled with a slowly shifting, angry-red liquid.\nYou suspect it contains TWitch; a drug that users claim lets them 'see faster', whatever that means."
 	icon = 'modular_skyrat/modules/morenarcotics/icons/drug_items.dmi'
 	icon_state = "twitch"
 	base_icon_state = "twitch"
@@ -15,6 +15,18 @@
 	. = ..()
 	if(.)
 		playsound(src, 'modular_skyrat/modules/hyposprays/sound/hypospray_long.ogg', 50, 1, -1) // pshhhs
+
+/datum/chemical_reaction/twitch_injectors
+	required_reagents = list(/datum/reagent/impedrezene = 5, /datum/reagent/bluespace = 10, /datum/reagent/consumable/liquidelectricity/enriched = 2)
+	mob_react = FALSE
+	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_DRUG | REACTION_TAG_ORGAN | REACTION_TAG_DAMAGING
+
+/datum/chemical_reaction/twitch_injectors/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/iteration in 1 to created_volume)
+		var/obj/item/reagent_containers/hypospray/medipen/twitch_injector/new_injector = new(location)
+		new_injector.pixel_x = rand(-6, 6)
+		new_injector.pixel_y = rand(-6, 6)
 
 /datum/reagent/drug/twitch
 	name = "TWitch"
