@@ -63,7 +63,7 @@
 
 /datum/reagent/drug/twitch/proc/on_movement(mob/living/our_guy)
 	SIGNAL_HANDLER
-	new /obj/effect/temp_visual/decoy/fading/color_changing(our_guy.loc, our_guy)
+	new /obj/effect/temp_visual/decoy/twitch_afterimage(our_guy.loc, our_guy)
 
 /*
 /datum/reagent/drug/blastoff/on_mob_life(mob/living/carbon/dancer, delta_time, times_fired)
@@ -85,14 +85,12 @@
 
 /obj/effect/temp_visual/decoy/twitch_afterimage
 	/// The color matrix it should be at spawn
-	var/list/matrix_start = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0,0.5,0,0)
+	var/list/matrix_start = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0,0.1,0.4,0)
 	/// The color matrix it should be by the time it despawns
-	var/list/matrix_end = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0,0.1,0.4,0)
-	/// How long it should take to fade in both alpha and colors
-	var/duration = 1 SECONDS
+	var/list/matrix_end = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0,0.5,0,0)
 
 /obj/effect/temp_visual/decoy/twitch_afterimage/Initialize(mapload)
 	. = ..()
 	color = matrix_start
-	animate(src, color = matrix_end, time = duration, easing = EASE_OUT)
+	animate(src, color = matrix_end, time = duration / 2, easing = EASE_OUT)
 	animate(src, alpha = 0, time = duration, easing = EASE_OUT)
