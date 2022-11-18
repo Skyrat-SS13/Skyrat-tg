@@ -81,7 +81,7 @@
 
 /datum/species/synthetic/spec_revival(mob/living/carbon/human/transformer)
 	switch_to_screen(transformer, "Console")
-	addtimer(CALLBACK(src, .proc/switch_to_screen, transformer, saved_screen), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(switch_to_screen), transformer, saved_screen), 5 SECONDS)
 	playsound(transformer.loc, 'sound/machines/chime.ogg', 50, TRUE)
 	transformer.visible_message(span_notice("[transformer]'s [screen ? "monitor lights up" : "eyes flicker to life"]!"), span_notice("All systems nominal. You're back online!"))
 
@@ -89,7 +89,7 @@
 	. = ..()
 	saved_screen = screen
 	switch_to_screen(transformer, "BSOD")
-	addtimer(CALLBACK(src, .proc/switch_to_screen, transformer, "Blank"), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(switch_to_screen), transformer, "Blank"), 5 SECONDS)
 
 /datum/species/synthetic/on_species_gain(mob/living/carbon/human/transformer)
 	. = ..()
