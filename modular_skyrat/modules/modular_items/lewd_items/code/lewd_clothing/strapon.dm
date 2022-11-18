@@ -106,8 +106,8 @@
 
 //button stuff
 /datum/action/item_action/take_strapon
-    name = "Put strapon in hand"
-    desc = "Put the strapon in your hand in order to use it properly."
+	name = "Put strapon in hand"
+	desc = "Put the strapon in your hand in order to use it properly."
 
 /datum/action/item_action/take_strapon/Trigger(trigger_flags)
 	var/obj/item/clothing/strapon/affected_item = target

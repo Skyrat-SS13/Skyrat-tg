@@ -23,7 +23,7 @@
 	if(!default_color)
 		default_color = "#FFFFFF"
 
-/datum/body_marking/proc/get_default_color(var/list/features, var/datum/species/pref_species) //Needs features for the color information
+/datum/body_marking/proc/get_default_color(list/features, datum/species/pref_species) //Needs features for the color information
 	var/list/colors
 	switch(default_color)
 		if(DEFAULT_PRIMARY)
@@ -64,6 +64,18 @@
 /datum/body_marking/other/flushed_cheeks
 	name = "Flushed Cheeks"
 	icon_state = "flushed_cheeks"
+	default_color = "#CCCCCC"
+	affected_bodyparts = HEAD
+	
+/datum/body_marking/other/blank_face
+	name = "Blank round face (use with monster mouth)"
+	icon_state = "blankface"
+	default_color = "#CCCCCC"
+	affected_bodyparts = HEAD
+	
+/datum/body_marking/other/monster_mouth
+	name = "Monster Mouth"
+	icon_state = "monster"
 	default_color = "#CCCCCC"
 	affected_bodyparts = HEAD
 
