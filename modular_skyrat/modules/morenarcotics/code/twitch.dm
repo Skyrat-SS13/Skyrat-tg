@@ -62,6 +62,8 @@
 	consoomer.sound_environment_override = NONE
 
 /datum/reagent/drug/twitch/proc/on_movement(mob/living/our_guy)
+	SIGNAL_HANDLER
+	new /obj/effect/temp_visual/decoy/fading/color_changing(loc, src)
 
 /*
 /datum/reagent/drug/blastoff/on_mob_life(mob/living/carbon/dancer, delta_time, times_fired)
