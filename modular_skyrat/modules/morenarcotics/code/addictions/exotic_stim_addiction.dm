@@ -27,7 +27,7 @@
 
 	if(DT_PROB(5, delta_time))
 		affected_carbon.add_filter("addiction_phase", 2, phase_filter(8))
-		addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, remove_filter), "addiction_phase"), 0.5 SECONDS)
+		addtimer(CALLBACK(affected_carbon, TYPE_PROC_REF(/atom, remove_filter), "addiction_phase"), 0.5 SECONDS)
 
 /datum/addiction/exotic_stimulants/withdrawal_enters_stage_3(mob/living/carbon/affected_carbon)
 	. = ..()
@@ -40,7 +40,7 @@
 	affected_carbon.set_hallucinations_if_lower(10 SECONDS)
 
 	if(DT_PROB(10, delta_time))
-		playsound_local(affected_carbon, 'sound/effects/singlebeat.ogg', 100, TRUE)
+		affected_carbon.playsound_local(affected_carbon, 'sound/effects/singlebeat.ogg', 100, TRUE)
 		flash_color(affected_carbon, flash_color = "#ac3737", flash_time = 3 SECONDS)
 
 /datum/addiction/exotic_stimulants/end_withdrawal(mob/living/carbon/affected_carbon)

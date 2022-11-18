@@ -113,7 +113,7 @@
 	for(var/filter in game_plane_master_controller.get_filter("twitch_filter"))
 		animate(filter, color = col_filter_ourple, time = 4 SECONDS, easing = EASE_OUT)
 
-/datum/reagent/drug/twitch/overdose_process(mob/living/our_guy, delta_time, times_fired)
+/datum/reagent/drug/twitch/overdose_process(mob/living/carbon/our_guy, delta_time, times_fired)
 	. = ..()
 
 	our_guy.set_jitter_if_lower(10 SECONDS * REM * delta_time)
@@ -127,7 +127,7 @@
 
 	if(DT_PROB(10, delta_time))
 		our_guy.add_filter("overdose_phase", 2, phase_filter(8))
-		addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, remove_filter), "overdose_phase"), 0.5 SECONDS)
+		addtimer(CALLBACK(our_guy, TYPE_PROC_REF(/atom, remove_filter), "overdose_phase"), 0.5 SECONDS)
 
 /// Tells projectiles to not actually hit the poor overdosed sap, they're seeing faster than any mortal should be right now
 /datum/reagent/drug/twitch/proc/on_projectile_hit(datum/fired_from, atom/movable/firer, mob/living/carbon/target, Angle)
