@@ -24,6 +24,7 @@
 	taste_description = "television static"
 	ph = 3
 	overdose_threshold = 15
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	addiction_types = list(/datum/addiction/hallucinogens = 15)
 
@@ -35,9 +36,9 @@
 
 	var/atom/movable/plane_master_controller/game_plane_master_controller = consoomer.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
 
-	var/list/col_filter_darker_green = list(0.2,0,0,0, 0,0.2,0,0, 0,0,0.2,0, 0,0,0,1, 0,0.75,0,0)
+	var/list/col_filter_darker_green = list(0.2,0,0,0, 0,1,0,0, 0,0,0.2,0, 0,0,0,1)
 
-	game_plane_master_controller.add_filter("twitch_filter", 10, color_matrix_filter(col_filter_darker_green, FILTER_COLOR_HCY))
+	game_plane_master_controller.add_filter("twitch_filter", 10, color_matrix_filter(col_filter_darker_green, FILTER_COLOR_RGB))
 	game_plane_master_controller.add_filter("twitch_blur", 1, list("type" = "radial_blur", "size" = 0))
 
 	for(var/filter in game_plane_master_controller.get_filters("twitch_blur"))
@@ -46,7 +47,7 @@
 
 	consoomer.sound_environment_override = SOUND_ENVIRONMENT_UNDERWATER
 
-/datum/reagent/drug/blastoff/on_mob_end_metabolize(mob/living/consoomer)
+/datum/reagent/drug/twitch/on_mob_end_metabolize(mob/living/consoomer)
 	. = ..()
 
 	if(!consoomer.hud_used)
