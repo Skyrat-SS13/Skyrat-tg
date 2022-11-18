@@ -156,4 +156,4 @@
 	desc = "One of mankind's many attempts at ending the legacy of Big Tobacco. Contributed by a fully anonymous engram and then forked countless times into countless replications of brands and flavors, the 'Cloudstick' is more of a genre than a single Icon. Most downloadable ones even allow the summoner to change the pixilation of the smoke, to grant them a more 'detached' experience from the real thing. Several summoners report these to help them in quitting smoking, others simply commenting 'it's why i first downloaded the Catchflame"
 
 
-#undef SUMMONED_ITEM_ALPHA 180
+#undef SUMMONED_ITEM_ALPHA
