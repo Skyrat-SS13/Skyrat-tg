@@ -83,13 +83,16 @@
 		dancer.emote("spin")
 */
 
-/obj/effect/temp_visual/decoy/fading/color_changing
+/obj/effect/temp_visual/decoy/twitch_afterimage
 	/// The color matrix it should be at spawn
 	var/list/matrix_start = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0,0.5,0,0)
 	/// The color matrix it should be by the time it despawns
 	var/list/matrix_end = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0,0.1,0.4,0)
+	/// How long it should take to fade in both alpha and colors
+	var/duration = 1 SECONDS
 
-/obj/effect/temp_visual/decoy/fading/color_changing/Initialize(mapload)
+/obj/effect/temp_visual/decoy/twitch_afterimage/Initialize(mapload)
 	. = ..()
 	color = matrix_start
-	animate(color = matrix_end, time = duration)
+	animate(src, color = matrix_end, time = duration, easing = EASE_OUT)
+	animate(src, alpha = 0, time = duration, easing = EASE_OUT)
