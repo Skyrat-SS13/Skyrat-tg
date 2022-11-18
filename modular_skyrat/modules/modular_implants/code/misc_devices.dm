@@ -64,7 +64,7 @@
 
 /datum/uplink_item/device_tools/nifsoft_remover
 	name = "Cybersun 'Scalpel' NIF-Cutter"
-	desc = "A modified version of a NIFSoft remover that allows the user to remove a NIFSoft and have a blank copy of the removed NIFSoft saved to a disk"
+	desc = "A modified version of a NIFSoft remover that allows the user to remove a NIFSoft and have a blank copy of the removed NIFSoft saved to a disk."
 	item = /obj/item/nifsoft_remover/syndie
 	cost = 3
 
@@ -96,7 +96,7 @@
 	to_chat(user, span_notice("You successfully repair [mob_to_repair]'s NIF"))
 	to_chat(mob_to_repair, span_notice("[user] successfully repairs your NIF"))
 
-	--uses
+	uses -= 1
 	if(!uses)
 		qdel(src)
 

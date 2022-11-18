@@ -54,7 +54,7 @@
 	installed_nif.loaded_nifsofts.Remove(src)
 	parent_nif = null
 
-	..()
+	return ..()
 
 ///This proc is called every life cycle on the attached human
 /datum/nifsoft/proc/life(mob/living/carbon/human/attached_human)
@@ -95,11 +95,11 @@
 		return FALSE
 
 	if(on_cooldown && cooldown)
-		to_chat(installed_nif.linked_mob, span_warning("The [src.name] is currently on cooldown"))
+		to_chat(installed_nif.linked_mob, span_warning("The [src.name] is currently on cooldown."))
 		return FALSE
 
 	if(activation_cost > installed_nif.power_level)
-		to_chat(installed_nif.linked_mob, span_warning("The [installed_nif] does not have enough power to run this program"))
+		to_chat(installed_nif.linked_mob, span_warning("The [installed_nif] does not have enough power to run this program."))
 		return FALSE
 
 	return TRUE
@@ -116,7 +116,7 @@
 	var/list/random_characters = list("#","!","%","^","*","$","@","^","A","b","c","D","F","W","H","Y","z","U","O","o")
 	var/scrambled_name = "!"
 
-	for(var/i = 1, i < length(program_name), i++)
+	for(var/i in 1 to length(program_name))
 		scrambled_name += pick(random_characters)
 
 	program_name = scrambled_name

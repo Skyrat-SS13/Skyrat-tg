@@ -36,7 +36,7 @@
 	data["max_nifsofts"] = max_nifsofts
 
 	for(var/datum/nifsoft/nifsoft as anything in loaded_nifsofts)
-		if(nifsoft == null)
+		if(isnull(nifsoft))
 			qdel(nifsoft)
 			continue
 
@@ -84,7 +84,7 @@
 
 		if("change_examine_text")
 			var/text_to_use = html_encode(params["new_text"])
-			if(text_to_use == "")
+			if(!text_to_use)
 				linked_mob.nif_examine_text = FALSE
 				return FALSE
 

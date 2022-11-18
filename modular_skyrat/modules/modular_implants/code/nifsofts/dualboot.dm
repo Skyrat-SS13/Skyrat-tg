@@ -25,7 +25,7 @@
 
 /datum/nifsoft/virtual_machine/Destroy()
 	qdel(virtual_machine)
-	. = ..()
+	return ..()
 
 /datum/nifsoft/virtual_machine/activate()
 	. = ..()

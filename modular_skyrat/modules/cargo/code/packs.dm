@@ -743,7 +743,7 @@
 
 /datum/supply_pack/goody/nif_repair_kit
 	name = "Cerulean NIF Regenerator"
-	desc = "Contains a single container of NIF repair fluid, good for up to 5 uses"
+	desc = "Contains a single container of NIF repair fluid, good for up to 5 uses."
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(
 		/obj/item/nif_repair_kit,
@@ -751,7 +751,7 @@
 
 /datum/supply_pack/service/money_nifsoft
 	name = "Money Sense NIFSofts"
-	desc = "Contains three Money Sense NIFSoft datadisks"
+	desc = "Contains three Money Sense NIFSoft datadisks."
 	cost = CARGO_CRATE_VALUE * 5
 	access_view = ACCESS_CARGO
 	contains = list(/obj/item/disk/nifsoft_uploader/money_sense)
@@ -776,7 +776,7 @@
 
 /datum/supply_pack/goody/nif_repair_kit
 	name = "Cerulean NIF Regenerator"
-	desc = "Contains a single container of NIF repair fluid, good for up to 5 uses"
+	desc = "Contains a single container of NIF repair fluid, good for up to 5 uses."
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(
 		/obj/item/nif_repair_kit,
@@ -784,7 +784,7 @@
 
 /datum/supply_pack/service/money_nifsoft
 	name = "Money Sense NIFSofts"
-	desc = "Contains three Money Sense NIFSoft datadisks"
+	desc = "Contains three Money Sense NIFSoft datadisks."
 	cost = CARGO_CRATE_VALUE * 5
 	access_view = ACCESS_CARGO
 	contains = list(/obj/item/disk/nifsoft_uploader/money_sense)

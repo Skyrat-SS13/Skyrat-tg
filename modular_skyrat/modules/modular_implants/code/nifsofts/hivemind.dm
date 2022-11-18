@@ -40,13 +40,13 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 		hivemind.linked_mobs -= linked_mob
 		var/mob/living/hivemind_owner = hivemind.parent
 
-		to_chat(hivemind_owner, span_abductor("[linked_mob] has left your Hivemind"))
-		to_chat(linked_mob, span_abductor("You have left [hivemind_owner]'s Hivemind"))
+		to_chat(hivemind_owner, span_abductor("[linked_mob] has left your Hivemind."))
+		to_chat(linked_mob, span_abductor("You have left [hivemind_owner]'s Hivemind."))
 
 	qdel(user_network)
 
 	//add in a function that scans the mind_links in the network list and remove the user from each one of them.
-	. = ..()
+	return ..()
 
 /datum/nifsoft/hivemind/activate()
 	. = ..()
@@ -60,7 +60,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	linked_mob.put_in_hands(linked_keyboard)
 	linked_keyboard.source_user = linked_mob
 
-	linked_mob.visible_message(span_notice("The [linked_keyboard] materializes in [linked_mob]'s hands"), span_notice("The [linked_keyboard] appears in your hands"))
+	linked_mob.visible_message(span_notice("The [linked_keyboard] materializes in [linked_mob]'s hands."), span_notice("The [linked_keyboard] appears in your hands."))
 	return TRUE
 
 /datum/action/innate/hivemind_config
@@ -101,7 +101,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	var/mob/living/carbon/human/user = owner
 	var/datum/nifsoft/hivemind/hivemind = user.find_nifsoft(/datum/nifsoft/hivemind)
 
-	var/datum/component/mind_linker/nif/new_active_hivemind = tgui_input_list(user, "Chose a Hivemind to set as active", "Switch Hivemind", hivemind.network_list)
+	var/datum/component/mind_linker/nif/new_active_hivemind = tgui_input_list(user, "Choose a Hivemind to set as active", "Switch Hivemind", hivemind.network_list)
 	if(!new_active_hivemind)
 		return FALSE
 
@@ -115,11 +115,11 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	var/list/network_list = hivemind.network_list
 	network_list -= hivemind.user_network
 
-	var/datum/component/mind_linker/nif/hivemind_to_leave = tgui_input_list(user, "Chose a Hivemind to disconnect from", "Remove Hivemind", network_list)
+	var/datum/component/mind_linker/nif/hivemind_to_leave = tgui_input_list(user, "Choose a Hivemind to disconnect from", "Remove Hivemind", network_list)
 	if(!hivemind_to_leave)
 		return FALSE
 
-	to_chat(hivemind_to_leave.parent, span_abductor("[user] has been removed from your Hivemind"))
+	to_chat(hivemind_to_leave.parent, span_abductor("[user] has been removed from your Hivemind."))
 	to_chat(user, span_abductor("You have left [hivemind_to_leave.parent]'s hivemind"))
 
 	hivemind.network_list -= hivemind_to_leave
@@ -130,11 +130,11 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	var/mob/living/carbon/human/user = owner
 	if(user in GLOB.hivemind_users)
 		GLOB.hivemind_users -= user
-		to_chat(user, span_abductor("You are now unable to receive invites"))
+		to_chat(user, span_abductor("You are now unable to receive invites."))
 		return
 
 	GLOB.hivemind_users += user
-	to_chat(user, span_abductor("You are now able to recieve invites again"))
+	to_chat(user, span_abductor("You are now able to receive invites."))
 
 /datum/component/mind_linker
 	///Is does the component give an action to speak? By default, yes
@@ -167,12 +167,12 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 
 	hivemind_users -= owner
 
-	var/mob/living/carbon/human/person_to_add = tgui_input_list(owner, "Chose a person to invite to your Hivemind", "Invite User", hivemind_users)
+	var/mob/living/carbon/human/person_to_add = tgui_input_list(owner, "Choose a person to invite to your Hivemind", "Invite User", hivemind_users)
 	if(!person_to_add)
 		return
 
-	if(tgui_alert(person_to_add, "[owner] wishes to add you to their Hivemind, do you accept", "Incomming Hivemind Invite", list("Accept", "Reject")) != "Accept")
-		to_chat(owner, span_warning("[person_to_add] denied the request to join your Hivemind"))
+	if(tgui_alert(person_to_add, "[owner] wishes to add you to their Hivemind, do you accept?", "Incoming Hivemind Invite", list("Accept", "Reject")) != "Accept")
+		to_chat(owner, span_warning("[person_to_add] denied the request to join your Hivemind."))
 		return
 
 	linked_mobs += person_to_add
@@ -190,7 +190,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 ///Removes a user from the list of connected people within a hivemind
 /datum/component/mind_linker/nif/proc/remove_user()
 	var/mob/living/carbon/human/owner = parent
-	var/mob/living/carbon/human/person_to_remove = tgui_input_list(owner, "Chose a person to remove from your Hivemind", "Remove User", linked_mobs)
+	var/mob/living/carbon/human/person_to_remove = tgui_input_list(owner, "Choose a person to remove from your Hivemind", "Remove User", linked_mobs)
 
 	if(!person_to_remove)
 		return
@@ -203,8 +203,8 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 
 	linked_mobs -= person_to_remove
 	target_hivemind.network_list -= src
-	to_chat(person_to_remove, span_abductor("You have now been removed from [owner]'s Hivemind"))
-	to_chat(owner, span_abductor("[person_to_remove] has now been removed from your Hivemind"))
+	to_chat(person_to_remove, span_abductor("You have now been removed from [owner]'s Hivemind."))
+	to_chat(owner, span_abductor("[person_to_remove] has now been removed from your Hivemind."))
 
 /datum/component/mind_linker/nif/proc/change_chat_color()
 	var/mob/living/carbon/human/owner = parent
