@@ -13,9 +13,6 @@
 	///The NIF version of the Shapeshifter Ability
 	var/datum/action/innate/alter_form/nif/shapeshifter
 
-/datum/nifsoft/shapeshifter/New()
-	. = ..()
-
 /datum/nifsoft/shapeshifter/activate()
 	. = ..()
 	if(active)
