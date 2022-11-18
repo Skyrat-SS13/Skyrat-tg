@@ -66,11 +66,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// A list of instantiated middleware
 	var/list/datum/preference_middleware/middleware = list()
 
-	/// The savefile relating to core preferences, PREFERENCE_PLAYER
-	var/savefile/game_savefile
+	/// The json savefile for this datum
+	var/datum/json_savefile/savefile
 
 	/// The savefile relating to character preferences, PREFERENCE_CHARACTER
-	var/savefile/character_savefile
+	var/list/character_data
 
 	/// A list of keys that have been updated since the last save.
 	var/list/recently_updated_keys = list()
@@ -92,18 +92,27 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	//SKYRAT EDIT END
 	return ..()
 
-/datum/preferences/New(client/C)
-	parent = C
+/datum/preferences/New(client/parent)
+	src.parent = parent
 
 	for (var/middleware_type in subtypesof(/datum/preference_middleware))
 		middleware += new middleware_type(src)
 
-	if(istype(C))
-		if(!is_guest_key(C.key))
-			load_path(C.ckey)
-			unlock_content = !!C.IsByondMember()
+	if(IS_CLIENT_OR_MOCK(parent))
+		if(!is_guest_key(parent.key))
+			load_path(parent.ckey)
+			if(!fexists(path))
+				try_savefile_type_migration()
+			unlock_content = !!parent.IsByondMember()
 			if(unlock_content)
+<<<<<<< HEAD
 				max_save_slots = 40 //SKYRAT EDIT CHANGE
+=======
+				max_save_slots = 8
+	else
+		CRASH("attempted to create a preferences datum without a client or mock!")
+	load_savefile()
+>>>>>>> 47ba13033f1 (JSON Savefiles | Player Saves use JSON (#70492))
 
 	// give them default keybinds and update their movement keys
 	key_bindings = deep_copy_list(GLOB.default_hotkeys)
@@ -120,9 +129,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			return // SKYRAT EDIT - Don't remove this. Just don't. Nothing is worth forced random characters.
 	//we couldn't load character data so just randomize the character appearance + name
 	randomise_appearance_prefs() //let's create a random character then - rather than a fat, bald and naked man.
-	if(C)
+	if(parent)
 		apply_all_client_preferences()
-		C.set_macros()
+		parent.set_macros()
 
 	if(!loaded_preferences_successfully)
 		save_preferences()
@@ -465,17 +474,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 /datum/preferences/proc/create_character_profiles()
 	var/list/profiles = list()
 
-	var/savefile/savefile = new(path)
 	for (var/index in 1 to max_save_slots)
 		// It won't be updated in the savefile yet, so just read the name directly
 		if (index == default_slot)
 			profiles += read_preference(/datum/preference/name/real_name)
 			continue
 
-		savefile.cd = "/character[index]"
-
-		var/name
-		READ_FILE(savefile["real_name"], name)
+		var/tree_key = "character[index]"
+		var/save_data = savefile.get_entry(tree_key)
+		var/name = save_data?["real_name"]
 
 		if (isnull(name))
 			profiles += null
