@@ -12,6 +12,9 @@ SUBSYSTEM_DEF(stories)
 	/// How much budget the story system has to work with
 	var/budget = 0
 
+	/// For logging purposes, the roundstart budget
+	var/initial_budget = 0
+
 	/// The last probability without the divisor
 	var/last_prob = 1
 
@@ -27,6 +30,7 @@ SUBSYSTEM_DEF(stories)
 	for(var/type in subtypesof(/datum/story_type) - exclude_stories)
 		to_use_stories += new type
 	budget = rand(0, 10)//rand(CONFIG_GET(number/minimum_story_budget), CONFIG_GET(number/maximum_story_budget))
+	initial_budget = budget
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/stories/fire(resumed)
@@ -56,11 +60,14 @@ SUBSYSTEM_DEF(stories)
 			return
 		else
 			budget -= picked_story.impact
-			if(picked_story in used_stories)
-				used_stories[picked_story] += 1
-			else
-				used_stories[picked_story] = 1
-			if(picked_story.maximum_execute_times <= used_stories[picked_story])
+			used_stories += picked_story
+			var/amount_of_times_executed = 0
+			for(var/datum/story_type/past_story as anything in used_stories)
+				if(!istype(past_story, picked_story.type))
+					continue
+				amount_of_times_executed += 1
+
+			if(picked_story.maximum_execute_times <= amount_of_times_executed)
 				to_use_stories -= picked_story
 			message_admins("Story [picked_story] executed; budget is now at [budget].")
 			return
@@ -83,10 +90,7 @@ SUBSYSTEM_DEF(stories)
 			to_chat(usr, span_admin("Unable to execute story [chosen_story]!"))
 			qdel(chosen_story)
 		else
-			if(chosen_story in used_stories)
-				used_stories[chosen_story] += 1
-			else
-				used_stories[chosen_story] = 1
+			used_stories += chosen_story
 			to_chat(usr, span_admin("Successfully executed story [chosen_story]!"))
 		return TRUE
 
@@ -119,11 +123,14 @@ SUBSYSTEM_DEF(stories)
 			return
 		else
 			budget -= picked_story.impact
-			if(picked_story in used_stories)
-				used_stories[picked_story] += 1
-			else
-				used_stories[picked_story] = 1
-			if(picked_story.maximum_execute_times <= used_stories[picked_story])
+			used_stories += picked_story
+			var/amount_of_times_executed = 0
+			for(var/datum/story_type/past_story as anything in used_stories)
+				if(!istype(past_story, picked_story.type))
+					continue
+				amount_of_times_executed += 1
+
+			if(picked_story.maximum_execute_times <= amount_of_times_executed)
 				to_use_stories -= picked_story
 			message_admins("Roundstart story [picked_story] executed; budget is now at [budget].")
 			return

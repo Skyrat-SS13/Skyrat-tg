@@ -42,6 +42,7 @@
 	var/mob/living/carbon/human/temporary_human = new(get_turf(landmark))
 	temporary_human.key = picked_spawner.key
 	temporary_human.client?.prefs?.safe_transfer_prefs_to(temporary_human)
+	temporary_human.equip_to_slot(new /obj/item/clothing/under/color/grey, ITEM_SLOT_ICLOTHING)
 	current_story.mind_actor_list[temporary_human.mind] = src
 	info_button = new(src)
 	info_button.Grant(temporary_human)

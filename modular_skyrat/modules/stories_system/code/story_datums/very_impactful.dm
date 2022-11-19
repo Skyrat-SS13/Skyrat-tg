@@ -10,6 +10,7 @@
 	impact = STORY_VERY_IMPACTFUL
 
 /*
+<<<<<<< HEAD
 	Contractors:
 		Nanotrasen sold a chunk of the station's hallways to the highest bidder for a tidy sum. As a result, a team of unionized construction workers and their union rep are on the station about to tear up
 		a section of your hallways to build a business for their capitalist overlords. The station's engineers and it's crew will have to contend with this construction project, the zoning requirements,
@@ -94,3 +95,51 @@
 	actor_datums_to_make = list(
 		/datum/story_actor/ghost/spawn_in_arrivals/middle_management/cargo = 5,
 	)
+=======
+	The Deal
+		Plot Summary:
+			Two opposing gangs are on the station, the Reds and the Blues.
+			The Reds have a briefcase of "the goods", and the Blues have a briefcase of "the paper".
+			It's a mutually beneficial deal, but hey, if one side could walk away with both, it'd all be worth it, wouldn't it?
+		Actors:
+			Crew:
+				Red Leader (1)
+				Red (2)
+				Blue Leader (1)
+				Blue (2)
+*/
+/datum/story_type/very_impactful/the_deal
+	name = "The Deal"
+	desc = "Two opposing gangs are looking to make a deal with each other for some goods."
+	actor_datums_to_make = list(
+		/datum/story_actor/crew/gangster/red/boss = 1,
+		/datum/story_actor/crew/gangster/blue/boss = 1,
+		/datum/story_actor/crew/gangster/red = 2,
+		/datum/story_actor/crew/gangster/blue = 2,
+	)
+
+	/// Where is the deal taking place
+	var/deal_location
+
+	/// Possible choices for where the deal can happen
+	var/static/list/possible_deal_locations = list(
+		"the Bar",
+		"the Cargo Lobby",
+		"the Chapel",
+		"outside the Bridge",
+		"the Kitchen",
+		"the lobby of Medbay",
+	) // all fairly public spaces
+
+
+/datum/story_type/very_impactful/the_deal/execute_story()
+	deal_location = pick(possible_deal_locations)
+
+	return ..()
+
+
+/datum/story_type/very_impactful/the_deal/execute_roundstart_story()
+	deal_location = pick(possible_deal_locations)
+
+	return ..()
+>>>>>>> e3bef5a336e7f5d7c1682f18c0878d79e8acbf4c

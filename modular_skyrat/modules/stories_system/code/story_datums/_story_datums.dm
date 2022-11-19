@@ -184,3 +184,17 @@
 			story_info += "<br> <b>Goal:</b>"
 			story_info += "<br> <i>[actor_role.actor_goal]</i>"
 	return story_info.Join()
+
+/datum/story_type/proc/roundend_report()
+	var/list/report = list("<br>")
+	report += span_big(span_greentext(name))
+
+	report += "<br><br><b>Starring:</b><br>"
+	if(!length(mind_actor_list))
+		report += "Nobody!"
+	else
+		for(var/datum/mind/actor_mind as anything in mind_actor_list)
+			var/datum/story_actor/actor_datum = mind_actor_list[actor_mind]
+			report += " - [actor_mind.name], the [actor_datum.name]!"
+
+	return report.Join("\n")

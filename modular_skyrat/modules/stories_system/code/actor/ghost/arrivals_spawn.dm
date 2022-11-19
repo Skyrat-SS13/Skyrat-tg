@@ -111,6 +111,7 @@
 	actor_goal = "Get drunk with the boys. Have some good fucking food at the kitchen. Be rowdy and merry. Get into fights, be a nuisance, be obnoxious to the station. \
 	Avoid getting thrown in the brig so that your commanding officer doesn't have to bail you out."
 
+<<<<<<< HEAD
 /datum/story_actor/ghost/spawn_in_arrivals/small_business_owner
 	name = "Small Business Owner"
 	actor_outfits = list(
@@ -206,3 +207,21 @@
 /datum/story_actor/ghost/spawn_in_arrivals/middle_management/cargo
 	actor_outfits = list(/datum/outfit/middle_management/cargo)
 	department = "Cargo"
+=======
+/datum/story_actor/ghost/spawn_in_arrivals/med_student
+	name = "Medical Student"
+	actor_outfits = list(
+		/datum/outfit/medical_student,
+	)
+	actor_info = "You're a first-year medical student from some cushy Spinward university, out on a Nanotrasen station as part of a joint partnership for some hands-on education."
+	actor_goal = "Learn from the station's medical department, ask an obnoxious amoount of questions, and act as incompetent at medical work as any first-year student would be."
+
+/datum/story_actor/ghost/spawn_in_arrivals/nri_shore_leave
+	name = "Shore Leave NRI Marine"
+	actor_outfits = list(
+		/datum/outfit/nri_shore_leave,
+	)
+	actor_info = "You and your comrades thought you were ready for some time off, so you all shared a bottle of vodka and took a small shuttle from your patrol vessel for some \
+	well deserved R&R. You found this station out in the middle of nowhere and called it good. After all, everywhere speaks Pan-Slavic, right?"
+	actor_goal = "Get even more drunk. Confuse everyone else by only comprehending Space Russian. Potentially cause the start of a war between the NRI and Nanotrasen."
+>>>>>>> e3bef5a336e7f5d7c1682f18c0878d79e8acbf4c
