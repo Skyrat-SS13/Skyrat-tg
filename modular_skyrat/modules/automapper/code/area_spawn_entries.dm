@@ -93,3 +93,20 @@
 /datum/area_spawn/customs_agent_landmark
 	desired_atom = /obj/effect/landmark/start/customs_agent
 	target_areas = list(/area/station/security/checkpoint/supply, /area/station/cargo/storage)
+	
+/datum/area_spawn/orderly_locker
+	target_areas = list(/area/station/security/checkpoint/medical)
+	desired_atom = /obj/structure/closet/secure_closet/security/med
+	
+/datum/area_spawn/sci_guard_locker
+	target_areas = list(/area/station/security/checkpoint/science)
+	desired_atom = /obj/structure/closet/secure_closet/security/science
+	
+/datum/area_spawn/customs_agent_locker
+	target_areas = list(/area/station/security/checkpoint/supply)
+	desired_atom = /obj/structure/closet/secure_closet/security/cargo
+
+/datum/area_spawn/engineering_guard_locker
+	target_areas = list(/area/station/security/checkpoint/engineering)
+	desired_atom = /obj/structure/closet/secure_closet/security/engine
+
