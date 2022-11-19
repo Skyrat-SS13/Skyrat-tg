@@ -14,16 +14,23 @@
 	if(!SSjob.corporate_diplomat_type)
 		return INITIALIZE_HINT_QDEL
 
+	var/obj/spawned_object
+
 	switch(SSjob.corporate_diplomat_type)
 
 		if(/datum/corporate_diplomat_role/nanotrasen_consultant)
-			new nt_con_path(get_turf(src))
+			spawned_object = new nt_con_path(get_turf(src))
 
 		if(/datum/corporate_diplomat_role/armadyne_representative)
-			new arm_rep_path(get_turf(src))
+			spawned_object = new arm_rep_path(get_turf(src))
 
 		if(/datum/corporate_diplomat_role/solfed_liaison)
-			new sol_lia_path(get_turf(src))
+			spawned_object = new sol_lia_path(get_turf(src))
+
+	if (pixel_x != 0)
+		spawned_object.pixel_x = pixel_x
+	if (pixel_y != 0)
+		spawned_object.pixel_y = pixel_y
 
 
 /obj/effect/spawner/corporate_diplomat/spawn_landmark
