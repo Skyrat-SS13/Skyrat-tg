@@ -2,7 +2,7 @@
 	name = "forging workbench"
 	desc = "A crafting bench fitted with tools, securing mechanisms, and a steady surface for working metal"
 	icon = 'modular_skyrat/modules/primitive_production/icons/forge_structures.dmi'
-	icon_state = "crafting_bench"
+	icon_state = "forging_bench"
 
 	allowed_choices = list(
 		/datum/crafting_bench_recipe/forging/weapon_completion,
