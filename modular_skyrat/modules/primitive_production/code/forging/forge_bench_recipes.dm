@@ -1,12 +1,26 @@
 /datum/crafting_bench_recipe/forging
 	relevant_skill = /datum/skill/smithing
 	required_tool_type = /obj/item/forging/hammer
+	sound_the_tool_makes = 'modular_skyrat/modules/primitive_production/sound/hammer_clang.ogg'
 
 /datum/crafting_bench_recipe/forging/weapon_completion
 	recipe_name = "weapon_completion"
 	recipe_requirements = list(
 		/obj/item/stack/sheet/mineral/wood = 2,
+		/obj/item/forging/complete = 1,
 	)
+	types_to_not_take_materials_from = list(
+		/obj/item/stack/sheet/mineral/wood,
+	)
+	required_good_hits = 8
+	relevant_skill_reward = 50 // Completing a weapon gives you a bit more than other recipes do
+
+/datum/crafting_bench_recipe/before_finishing(list/recipe_items) // Sets the resulting item to the result of the first weapon head its passed
+	for(var/obj/item/forging/complete/complete_forging_item in recipe_items)
+		if(!complete_forging_item.spawning_item)
+			continue
+		resulting_item = complete_forging_item.spawning_item
+		return
 
 /datum/crafting_bench_recipe/forging/plate_helmet
 	recipe_name = "plate helmet"

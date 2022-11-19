@@ -5,10 +5,10 @@
 #define BAD_HIT_PENALTY 3
 
 /obj/structure/reagent_crafting_bench
-	name = "forging workbench"
-	desc = "A crafting bench fitted with tools, securing mechanisms, and a steady surface for blacksmithing."
+	name = "generic workbench"
+	desc = "A crafting bench fitted with tools, securing mechanisms, and a steady surface for... something?"
 	icon = 'modular_skyrat/modules/primitive_production/icons/forge_structures.dmi'
-	icon_state = "crafting_bench_empty"
+	icon_state = "crafting_bench"
 
 	anchored = TRUE
 	density = TRUE
@@ -20,24 +20,7 @@
 	/// The cooldown from the last hit before we allow another 'good hit' to happen
 	COOLDOWN_DECLARE(hit_cooldown)
 	/// What recipes are we allowed to choose from?
-	var/list/allowed_choices = list(
-		/datum/crafting_bench_recipe/plate_helmet,
-		/datum/crafting_bench_recipe/plate_vest,
-		/datum/crafting_bench_recipe/plate_gloves,
-		/datum/crafting_bench_recipe/plate_boots,
-		/datum/crafting_bench_recipe/horse_shoes,
-		/datum/crafting_bench_recipe/ring,
-		/datum/crafting_bench_recipe/collar,
-		/datum/crafting_bench_recipe/handcuffs,
-		/datum/crafting_bench_recipe/borer_cage,
-		/datum/crafting_bench_recipe/pavise,
-		/datum/crafting_bench_recipe/buckler,
-		/datum/crafting_bench_recipe/coil,
-		/datum/crafting_bench_recipe/seed_mesh,
-		/datum/crafting_bench_recipe/centrifuge,
-		/datum/crafting_bench_recipe/bokken,
-		/datum/crafting_bench_recipe/bow,
-	)
+	var/list/allowed_choices = list()
 	/// Radial options for recipes in the allowed_choices list, populated by populate_radial_choice_list
 	var/list/radial_choice_list = list()
 	/// An associative list of names --> recipe path that the radial recipe picker will choose from later
@@ -65,21 +48,13 @@
 /obj/structure/reagent_crafting_bench/examine(mob/user)
 	. = ..()
 
-	if(length(contents))
-		if(istype(contents[1], /obj/item/forging/complete))
-			var/obj/item/forging/complete/contained_forge_item = contents[1]
-
-			. += span_notice("[src] has a <b>[initial(contained_forge_item.name)]</b> sitting on it, awaiting completion. <br>")
-			var/obj/item/completion_item = contained_forge_item.spawning_item
-			. += span_notice("With <b>[WEAPON_COMPLETION_WOOD_AMOUNT]</b> sheets of <b>wood</b> nearby, and some <b>hammering</b>, it could be completed into a <b>[initial(completion_item.name)]</b>.")
-			return // We don't want to show any selected recipes if there's weapon head on the bench
-
 	if(!selected_recipe)
 		return
 
 	var/obj/resulting_item = selected_recipe.resulting_item
 	. += span_notice("The selected recipe's resulting item is: <b>[initial(resulting_item.name)]</b> <br>")
-	. += span_notice("Gather the required materials, listed below, <b>near the bench</b>, then start <b>hammering</b> to complete it! <br>")
+	var/obj/required_tool = selected_recipe.required_tool_type
+	. += span_notice("Gather the required materials, listed below, <b>near the bench</b>, then use a [initial(required_tool.name)] to complete it! <br>")
 
 	if(!length(selected_recipe.recipe_requirements))
 		. += span_boldwarning("Somehow, this recipe has no requirements, report this as this shouldn't happen.")
@@ -93,16 +68,6 @@
 		. += span_notice("<b>[selected_recipe.recipe_requirements[requirement_item]]</b> - [initial(requirement_item.name)]")
 
 	return .
-
-/obj/structure/reagent_crafting_bench/update_appearance(updates)
-	. = ..()
-	cut_overlays()
-
-	if(!length(contents))
-		return
-
-	var/image/overlayed_item = image(icon = contents[1].icon, icon_state = contents[1].icon_state)
-	add_overlay(overlayed_item)
 
 /obj/structure/reagent_crafting_bench/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
@@ -142,6 +107,9 @@
 		balloon_alert(user, "missing ingredients")
 		return TRUE
 
+	if(selected_recipe.sound_the_tool_makes)
+		playsound(src, selected_recipe.sound_the_tool_makes, 50, TRUE)
+
 	if(!COOLDOWN_FINISHED(src, hit_cooldown)) // If you hit it before the cooldown is done, you get a bad hit, setting you back three good hits
 		current_hits_to_completion -= BAD_HIT_PENALTY
 
@@ -154,7 +122,7 @@
 		return TRUE
 
 	if((current_hits_to_completion >= selected_recipe.required_good_hits) && !length(contents))
-		var/list/things_to_use = can_we_craft_this(selected_recipe.recipe_requirements, TRUE)
+		var/list/things_to_use = can_we_craft_this(selected_recipe.recipe_requirements, return_ingredients_list = TRUE)
 
 		create_thing_from_requirements(things_to_use, selected_recipe, user, selected_recipe.relevant_skill, selected_recipe.relevant_skill_reward)
 		return TRUE
@@ -162,7 +130,10 @@
 	current_hits_to_completion++
 	balloon_alert(user, "good hit")
 	user.mind.adjust_experience(selected_recipe.relevant_skill, selected_recipe.relevant_skill_reward / 15) // Good hits towards the current item grants experience in that skill
+
+	var/skill_modifier = user.mind.get_skill_modifier(selected_recipe.relevant_skill, SKILL_SPEED_MODIFIER) * 1 SECONDS
 	COOLDOWN_START(src, hit_cooldown, skill_modifier)
+
 	return TRUE
 
 /obj/structure/reagent_crafting_bench/wrench_act(mob/living/user, obj/item/tool)
@@ -216,6 +187,8 @@
 
 	if(!length(things_to_use))
 		message_admins("[src] just tried to craft something from requirements, but was not given a list of requirements!")
+
+	recipe_to_follow.before_finishing(things_to_use)
 
 	var/materials_to_transfer = list()
 	var/list/temporary_materials_list = use_or_delete_recipe_requirements(things_to_use, recipe_to_follow)
