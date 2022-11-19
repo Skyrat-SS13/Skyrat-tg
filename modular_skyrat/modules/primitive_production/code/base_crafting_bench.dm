@@ -4,7 +4,7 @@
 /// The number of hits you are set back when a bad hit is made
 #define BAD_HIT_PENALTY 3
 
-/obj/structure/reagent_crafting_bench
+/obj/structure/crafting_bench
 	name = "generic workbench"
 	desc = "A crafting bench fitted with tools, securing mechanisms, and a steady surface for... something?"
 	icon = 'modular_skyrat/modules/primitive_production/icons/forge_structures.dmi'
@@ -26,11 +26,11 @@
 	/// An associative list of names --> recipe path that the radial recipe picker will choose from later
 	var/list/recipe_names_to_path = list()
 
-/obj/structure/reagent_crafting_bench/Initialize(mapload)
+/obj/structure/crafting_bench/Initialize(mapload)
 	. = ..()
 	populate_radial_choice_list()
 
-/obj/structure/reagent_crafting_bench/proc/populate_radial_choice_list()
+/obj/structure/crafting_bench/proc/populate_radial_choice_list()
 	if(!length(allowed_choices))
 		return
 
@@ -45,7 +45,7 @@
 		qdel(recipe_to_take_from)
 
 
-/obj/structure/reagent_crafting_bench/examine(mob/user)
+/obj/structure/crafting_bench/examine(mob/user)
 	. = ..()
 
 	if(!selected_recipe)
@@ -69,7 +69,7 @@
 
 	return .
 
-/obj/structure/reagent_crafting_bench/attack_hand(mob/living/user, list/modifiers)
+/obj/structure/crafting_bench/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	update_appearance()
 
@@ -92,11 +92,11 @@
 	update_appearance()
 
 /// Clears the current recipe and sets hits to completion to zero
-/obj/structure/reagent_crafting_bench/proc/clear_recipe()
+/obj/structure/crafting_bench/proc/clear_recipe()
 	QDEL_NULL(selected_recipe)
 	current_hits_to_completion = 0
 
-/obj/structure/reagent_crafting_bench/attackby(obj/item/attacking_item, mob/user, params)
+/obj/structure/crafting_bench/attackby(obj/item/attacking_item, mob/user, params)
 	if(!selected_recipe)
 		return ..()
 
@@ -119,6 +119,7 @@
 			return TRUE
 
 		balloon_alert(user, "bad hit")
+		user.changeNext_move(CLICK_CD_RAPID)
 		return TRUE
 
 	if((current_hits_to_completion >= selected_recipe.required_good_hits) && !length(contents))
@@ -128,6 +129,7 @@
 		return TRUE
 
 	current_hits_to_completion++
+	user.changeNext_move(CLICK_CD_RAPID)
 	balloon_alert(user, "good hit")
 	user.mind.adjust_experience(selected_recipe.relevant_skill, selected_recipe.relevant_skill_reward / 15) // Good hits towards the current item grants experience in that skill
 
@@ -136,13 +138,13 @@
 
 	return TRUE
 
-/obj/structure/reagent_crafting_bench/wrench_act(mob/living/user, obj/item/tool)
+/obj/structure/crafting_bench/wrench_act(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src)
 	deconstruct(disassembled = TRUE)
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /// Takes the given list of item requirements and checks the surroundings for them, returns TRUE unless return_ingredients_list is set, in which case a list of all the items to use is returned
-/obj/structure/reagent_crafting_bench/proc/can_we_craft_this(list/required_items, return_ingredients_list = FALSE)
+/obj/structure/crafting_bench/proc/can_we_craft_this(list/required_items, return_ingredients_list = FALSE)
 	if(!length(required_items))
 		message_admins("[src] just tried to check for ingredients nearby without having a list of items to check for!")
 		return FALSE
@@ -179,7 +181,7 @@
 		return TRUE
 
 /// Passes the list of found ingredients + the recipe to use_or_delete_recipe_requirements, then spawns the given recipe's result
-/obj/structure/reagent_crafting_bench/proc/create_thing_from_requirements(list/things_to_use, datum/crafting_bench_recipe/recipe_to_follow, mob/living/user, datum/skill/skill_to_grant, skill_amount)
+/obj/structure/crafting_bench/proc/create_thing_from_requirements(list/things_to_use, datum/crafting_bench_recipe/recipe_to_follow, mob/living/user, datum/skill/skill_to_grant, skill_amount)
 
 	if(!recipe_to_follow)
 		message_admins("[src] just tried to complete a recipe without having a recipe!")
@@ -210,7 +212,7 @@
 	update_appearance()
 
 /// Takes the given list, things_to_use, compares it to recipe_to_follow's requirements, then either uses items from a stack, or deletes them otherwise. Returns custom material of forge items in the end.
-/obj/structure/reagent_crafting_bench/proc/use_or_delete_recipe_requirements(list/things_to_use, datum/crafting_bench_recipe/recipe_to_follow)
+/obj/structure/crafting_bench/proc/use_or_delete_recipe_requirements(list/things_to_use, datum/crafting_bench_recipe/recipe_to_follow)
 	var/list/materials_to_transfer = list()
 
 	for(var/obj/requirement_item as anything in things_to_use)
@@ -247,7 +249,7 @@
 	return materials_to_transfer
 
 /// Proc to check all the conditions for if we're using materials from this thing or not
-/obj/structure/reagent_crafting_bench/proc/check_if_we_use_this_things_materials(datum/crafting_bench_recipe/recipe_to_follow, obj/requirement_item)
+/obj/structure/crafting_bench/proc/check_if_we_use_this_things_materials(datum/crafting_bench_recipe/recipe_to_follow, obj/requirement_item)
 	var/list/stuff_to_not_take_materials_from = typecacheof(recipe_to_follow.types_to_not_take_materials_from)
 
 	if(!requirement_item.custom_materials || !recipe_to_follow.transfers_materials)
@@ -259,7 +261,7 @@
 	return TRUE
 
 /// Gets movable atoms within one tile of range of the crafting bench
-/obj/structure/reagent_crafting_bench/proc/get_environment()
+/obj/structure/crafting_bench/proc/get_environment()
 	. = list()
 
 	if(!get_turf(src))

@@ -32,17 +32,6 @@
 	inhand_icon_state = "hammer"
 	worn_icon_state = "hammer_back"
 	tool_behaviour = TOOL_HAMMER
-	///the list of things that, if attacked, will set the attack speed to rapid
-	var/static/list/fast_attacks = list(
-		/obj/item/forging_anvil,
-		/obj/structure/reagent_crafting_bench
-	)
-
-/obj/item/forging/hammer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	. = ..()
-	if(!is_type_in_list(target, fast_attacks))
-		return
-	user.changeNext_move(CLICK_CD_RAPID)
 
 /obj/item/forging/hammer/primitive
 	name = "primitive forging hammer"
