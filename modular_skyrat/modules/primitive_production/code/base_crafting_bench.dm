@@ -8,7 +8,7 @@
 	name = "generic workbench"
 	desc = "A crafting bench fitted with tools, securing mechanisms, and a steady surface for... something?"
 	icon = 'modular_skyrat/modules/primitive_production/icons/forge_structures.dmi'
-	icon_state = "crafting_bench"
+	icon_state = "forging_bench"
 
 	anchored = TRUE
 	density = TRUE
@@ -197,7 +197,7 @@
 	for(var/material as anything in temporary_materials_list)
 		materials_to_transfer[material] += temporary_materials_list[material]
 
-	var/obj/newly_created_thing = new recipe_to_follow.resulting_item(src)
+	var/obj/newly_created_thing = new recipe_to_follow.resulting_item(get_turf(src))
 
 	if(!newly_created_thing)
 		message_admins("[src] just failed to create something while crafting!")
