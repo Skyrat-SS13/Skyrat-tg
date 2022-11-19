@@ -17,8 +17,6 @@
 	var/datum/crafting_bench_recipe/selected_recipe
 	/// How many successful hits towards completion of the item have we done
 	var/current_hits_to_completion = 0
-	/// Is this bench able to complete forging items? Exists to allow non-forging workbenches to exist
-	var/finishes_forging_weapons = TRUE
 	/// The cooldown from the last hit before we allow another 'good hit' to happen
 	COOLDOWN_DECLARE(hit_cooldown)
 	/// What recipes are we allowed to choose from?
@@ -110,13 +108,6 @@
 	. = ..()
 	update_appearance()
 
-	if(length(contents))
-		var/obj/item/contained_item = contents[1]
-		user.put_in_hands(contained_item)
-		balloon_alert(user, "[contained_item] retrieved")
-		update_appearance()
-		return
-
 	if(selected_recipe)
 		clear_recipe()
 		balloon_alert_to_viewers("recipe cleared")
@@ -141,60 +132,15 @@
 	current_hits_to_completion = 0
 
 /obj/structure/reagent_crafting_bench/attackby(obj/item/attacking_item, mob/user, params)
-	if(istype(attacking_item, /obj/item/forging/complete))
-		if(length(contents))
-			balloon_alert(user, "already full")
-			return TRUE
-
-		attacking_item.forceMove(src)
-		balloon_alert_to_viewers("placed [attacking_item]")
-		update_appearance()
-		return TRUE
-
-	return ..()
-
-/obj/structure/reagent_crafting_bench/wrench_act(mob/living/user, obj/item/tool)
-	tool.play_tool_sound(src)
-	deconstruct(disassembled = TRUE)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
-
-/obj/structure/reagent_crafting_bench/hammer_act(mob/living/user, obj/item/tool)
-	playsound(src, 'modular_skyrat/modules/primitive_production/sound/hammer_clang.ogg', 50, TRUE)
-	if(length(contents))
-		if(!istype(contents[1], /obj/item/forging/complete))
-			balloon_alert(user, "invalid item")
-			return TOOL_ACT_TOOLTYPE_SUCCESS
-
-		var/obj/item/forging/complete/weapon_to_finish = contents[1]
-
-		if(!weapon_to_finish.spawning_item)
-			balloon_alert(user, "[weapon_to_finish] cannot be completed")
-			return TOOL_ACT_TOOLTYPE_SUCCESS
-
-		var/list/wood_required_for_weapons = list(
-			/obj/item/stack/sheet/mineral/wood = WEAPON_COMPLETION_WOOD_AMOUNT,
-		)
-
-		if(!can_we_craft_this(wood_required_for_weapons))
-			balloon_alert(user, "not enough wood")
-			return TOOL_ACT_TOOLTYPE_SUCCESS
-
-		var/list/things_to_use = can_we_craft_this(wood_required_for_weapons, TRUE)
-		create_thing_from_requirements(things_to_use, user = user, skill_to_grant = /datum/skill/smithing, skill_amount = 30, completing_a_weapon = TRUE)
-
-		balloon_alert_to_viewers("[contents[1]] created")
-		update_appearance()
-		return TOOL_ACT_TOOLTYPE_SUCCESS
-
 	if(!selected_recipe)
-		balloon_alert(user, "no recipe selected")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ..()
+
+	if(!istype(attacking_item, selected_recipe.required_tool_type))
+		return ..()
 
 	if(!can_we_craft_this(selected_recipe.recipe_requirements))
 		balloon_alert(user, "missing ingredients")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
-
-	var/skill_modifier = user.mind.get_skill_modifier(selected_recipe.relevant_skill, SKILL_SPEED_MODIFIER) * 1 SECONDS
+		return TRUE
 
 	if(!COOLDOWN_FINISHED(src, hit_cooldown)) // If you hit it before the cooldown is done, you get a bad hit, setting you back three good hits
 		current_hits_to_completion -= BAD_HIT_PENALTY
@@ -202,22 +148,26 @@
 		if(current_hits_to_completion <= -(selected_recipe.required_good_hits))
 			balloon_alert_to_viewers("recipe failed")
 			clear_recipe()
-			return TOOL_ACT_TOOLTYPE_SUCCESS
+			return TRUE
 
 		balloon_alert(user, "bad hit")
-		return TOOL_ACT_TOOLTYPE_SUCCESS
-
-	COOLDOWN_START(src, hit_cooldown, skill_modifier)
+		return TRUE
 
 	if((current_hits_to_completion >= selected_recipe.required_good_hits) && !length(contents))
 		var/list/things_to_use = can_we_craft_this(selected_recipe.recipe_requirements, TRUE)
 
 		create_thing_from_requirements(things_to_use, selected_recipe, user, selected_recipe.relevant_skill, selected_recipe.relevant_skill_reward)
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return TRUE
 
 	current_hits_to_completion++
 	balloon_alert(user, "good hit")
 	user.mind.adjust_experience(selected_recipe.relevant_skill, selected_recipe.relevant_skill_reward / 15) // Good hits towards the current item grants experience in that skill
+	COOLDOWN_START(src, hit_cooldown, skill_modifier)
+	return TRUE
+
+/obj/structure/reagent_crafting_bench/wrench_act(mob/living/user, obj/item/tool)
+	tool.play_tool_sound(src)
+	deconstruct(disassembled = TRUE)
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /// Takes the given list of item requirements and checks the surroundings for them, returns TRUE unless return_ingredients_list is set, in which case a list of all the items to use is returned
@@ -258,39 +208,21 @@
 		return TRUE
 
 /// Passes the list of found ingredients + the recipe to use_or_delete_recipe_requirements, then spawns the given recipe's result
-/obj/structure/reagent_crafting_bench/proc/create_thing_from_requirements(list/things_to_use, datum/crafting_bench_recipe/recipe_to_follow, mob/living/user, datum/skill/skill_to_grant, skill_amount, completing_a_weapon)
+/obj/structure/reagent_crafting_bench/proc/create_thing_from_requirements(list/things_to_use, datum/crafting_bench_recipe/recipe_to_follow, mob/living/user, datum/skill/skill_to_grant, skill_amount)
 
-	if(!recipe_to_follow && !completing_a_weapon)
-		message_admins("[src] just tried to complete a recipe without having a recipe, and without it being the completion of a forging weapon!")
-		return
-
-	if(completing_a_weapon && (!length(contents) || !istype(contents[1], /obj/item/forging/complete)))
-		message_admins("[src] just tried to complete a forge weapon without there being a weapon head inside it to complete!")
+	if(!recipe_to_follow)
+		message_admins("[src] just tried to complete a recipe without having a recipe!")
 		return
 
 	if(!length(things_to_use))
 		message_admins("[src] just tried to craft something from requirements, but was not given a list of requirements!")
-
-	if(completing_a_weapon)
-		recipe_to_follow = new /datum/crafting_bench_recipe/weapon_completion_recipe
 
 	var/materials_to_transfer = list()
 	var/list/temporary_materials_list = use_or_delete_recipe_requirements(things_to_use, recipe_to_follow)
 	for(var/material as anything in temporary_materials_list)
 		materials_to_transfer[material] += temporary_materials_list[material]
 
-	var/obj/newly_created_thing
-
-	if(completing_a_weapon)
-		var/obj/item/forging/complete/completed_forge_item = contents[1]
-		newly_created_thing = new completed_forge_item.spawning_item(src)
-		if(completed_forge_item.custom_materials) // We need to add the weapon head's materials to the completed item, too
-			for(var/custom_material in completed_forge_item.custom_materials)
-				materials_to_transfer[custom_material] += completed_forge_item.custom_materials[custom_material]
-		qdel(completed_forge_item) // And then we also need to 'use' the item
-
-	else
-		newly_created_thing = new recipe_to_follow.resulting_item(src)
+	var/obj/newly_created_thing = new recipe_to_follow.resulting_item(src)
 
 	if(!newly_created_thing)
 		message_admins("[src] just failed to create something while crafting!")
@@ -321,24 +253,37 @@
 
 			if(requirement_stack.amount < recipe_to_follow.recipe_requirements[stack_type])
 				recipe_to_follow.recipe_requirements[stack_type] -= requirement_stack.amount
+				if(check_if_we_use_this_things_materials(recipe_to_follow, requirement_stack))
+					for(var/custom_material as anything in requirement_item.custom_materials)
+						materials_to_transfer += custom_material
 				requirement_stack.use(requirement_stack.amount)
 				continue
 
+			if(check_if_we_use_this_things_materials(recipe_to_follow, requirement_stack))
+				for(var/custom_material as anything in requirement_stack.custom_materials)
+					materials_to_transfer += custom_material[MINERAL_MATERIAL_AMOUNT * recipe_to_follow.recipe_requirements[stack_type]]
+
 			requirement_stack.use(recipe_to_follow.recipe_requirements[stack_type])
 
-		else if(istype(requirement_item, /obj/item/forging/complete))
-			if(!requirement_item.custom_materials || !recipe_to_follow.transfers_materials)
-				qdel(requirement_item)
-				continue
-
-			for(var/custom_material as anything in requirement_item.custom_materials)
-				materials_to_transfer += custom_material
-			qdel(requirement_item)
-
 		else
+			if(check_if_we_use_this_things_materials(recipe_to_follow, requirement_item))
+				for(var/custom_material as anything in requirement_item.custom_materials)
+					materials_to_transfer += custom_material
 			qdel(requirement_item)
 
 	return materials_to_transfer
+
+/// Proc to check all the conditions for if we're using materials from this thing or not
+/obj/structure/reagent_crafting_bench/proc/check_if_we_use_this_things_materials(datum/crafting_bench_recipe/recipe_to_follow, obj/requirement_item)
+	var/list/stuff_to_not_take_materials_from = typecacheof(recipe_to_follow.types_to_not_take_materials_from)
+
+	if(!requirement_item.custom_materials || !recipe_to_follow.transfers_materials)
+		return FALSE
+
+	if(length(stuff_to_not_take_materials_from) && is_type_in_typecache(requirement_item, stuff_to_not_take_materials_from))
+		return FALSE
+
+	return TRUE
 
 /// Gets movable atoms within one tile of range of the crafting bench
 /obj/structure/reagent_crafting_bench/proc/get_environment()
