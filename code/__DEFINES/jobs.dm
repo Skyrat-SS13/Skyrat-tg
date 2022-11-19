@@ -123,6 +123,7 @@
 #define JOB_SOLFED_LIASON "SolFed Liason"
 // Story jobs
 #define JOB_CENTCOM_INSPECTOR "CentCom Inspector"
+#define JOB_CENTCOM_MIDDLE_MANAGEMENT "CentCom Middle Management"
 // SKYRAT EDIT ADDITION END
 
 

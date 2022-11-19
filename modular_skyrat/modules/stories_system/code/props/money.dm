@@ -3,3 +3,6 @@
 
 /obj/item/holochip/hundred
 	credits = 100
+
+/obj/item/holochip/hundred_thousand
+	credits = 100000

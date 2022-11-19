@@ -82,3 +82,15 @@
 	poor_sod = null
 	return ..()
 
+/datum/story_type/somewhat_impactful/paradigm_shift
+	name = "Paradigm Shift"
+	desc = "Nanotrasen has seen fit to send middle management to every department to help efficiently operationalize our strategy to invest in world class technology \
+	and leverage our core competencies in order to holistically administrate exceptional synergy."
+	actor_datums_to_make = list(
+		/datum/story_actor/ghost/spawn_in_arrivals/middle_management/cargo = 1,
+		/datum/story_actor/ghost/spawn_in_arrivals/middle_management/security = 1,
+		/datum/story_actor/ghost/spawn_in_arrivals/middle_management/science = 1,
+		/datum/story_actor/ghost/spawn_in_arrivals/middle_management/service = 1,
+		/datum/story_actor/ghost/spawn_in_arrivals/middle_management/engineering = 1,
+		/datum/story_actor/ghost/spawn_in_arrivals/middle_management/medbay = 1,
+	)

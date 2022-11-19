@@ -110,3 +110,99 @@
 	well deserved shore leave. Find some good booze, find some good food, and get some R&R in with the boys. Cut loose, let off some steam, and be a proud navy man!"
 	actor_goal = "Get drunk with the boys. Have some good fucking food at the kitchen. Be rowdy and merry. Get into fights, be a nuisance, be obnoxious to the station. \
 	Avoid getting thrown in the brig so that your commanding officer doesn't have to bail you out."
+
+/datum/story_actor/ghost/spawn_in_arrivals/small_business_owner
+	name = "Small Business Owner"
+	actor_outfits = list(
+		/datum/outfit/small_business_owner,
+	)
+	actor_info = "After a small loan of a million credits from your dear old dad, you're finally ready to start your dream small business. You got a sweet deal on this \
+	prime piece of real estate in the middle of the hallways on this Nanotrasen station, and after all's said and done you've got 100,000 credits remaining to pay the \
+	construction team you've hired, pay any staff you need to hire, and handle any business with the station locals. However, remember to keep a healthy paycheck for yourself, \
+	after all, where would this business be without your economic genius?"
+	actor_goal = "Come up with a genius business plan. Have your construction workers pick a high traffic part of the hallways to construct your business in, \
+	in a manner that requires the crew to traverse through your business and the construction site to get around the station. \
+	Pay the construction workers as little as possible to keep them working on the construction of the business. \
+	Be an aggressively proud capitalist. Employ people on the station to work in your business for as little as possible. \
+	Negotiate with the annoying union rep the construction workers brought with them. Ensure your business gets as much traffic as possible."
+
+/datum/story_actor/ghost/spawn_in_arrivals/construction_foreman
+	name = "Construction Foreman"
+	actor_outfits = list(
+		/datum/outfit/construction_worker/foreman,
+	)
+	actor_info = "You've spent the last 15 years running the finest construction contractors in the frontier. Today, some rich kid walked up to you and said they wanted to \
+	pay your team to build a \"groundbreaking new business on the most valuable real estate in the area\" and after some contract negotiations with the assistance of your \
+	union representative, you've secured a contract for you and three of your best workers to accompany him to the property and start construction right away. He didn't \
+	mention the job was on a Nanotrasen station until you arrived. Best of luck to you and your workers."
+	actor_goal = "Direct your construction team. Work with the Union Rep to ensure safe practices are being followed. Work with the Small Business Owner to get your men paid for \
+	their work. Construct whatever hare brained scheme the Small Business Owner comes up with."
+
+/datum/story_actor/ghost/spawn_in_arrivals/construction_worker
+	name = "Construction Worker"
+	actor_outfits = list(
+		/datum/outfit/construction_worker,
+	)
+	actor_info = "You're a contract construction worker under a foreman you trust and respect. They've never led you astray in the past, but this new job seems a bit \
+	suspect. The customer's a bit of an idiot capitalist, and your union rep has concerns. However, he's adamant he's good for the money, so trust in the boss and \
+	we'll all get paid."
+	actor_goal = "Work with your Foreman. Build shit. Get paid. Go on your union mandated lunches and breaks and union meetings when needed. Be a hard working union man."
+
+/datum/story_actor/ghost/spawn_in_arrivals/union_rep
+	name = "Construction Union Representative"
+	actor_outfits = list(
+		/datum/outfit/construction_worker/union_rep,
+	)
+	actor_info = "You're a union represenative for Construction Workers and Service Employees Union Local 132, and you're goddamn proud of the union. However, you're worried \
+	this new small business owner might cause problems for your fellow union workers. Make sure that capitalist bastard follows the rules, and that the employees get their \
+	mandated hours, their mandated breaks, their mandated lunches, and most of all, their mandated pay. Although, the local Nanotrasen employees seem to be without a union. \
+	Perhaps it'd be worth your time to get them involved in the galactic struggle for workers' rights?"
+	actor_goal = "Stand up for the rights of your fellow union spacers. Keep tabs on the construction and treatment of the workers and make sure everything's to union code. \
+	Recruit Nanotrasen employees to join the union, along with anyone that scumbag Small Business Owner hires. Do everything in your power to ensure the union protects \
+	its' workers."
+
+/datum/story_actor/ghost/spawn_in_arrivals/middle_management
+	name = "Middle Management"
+	actor_outfits = list(
+		/datum/outfit/middle_management,
+	)
+	actor_info = "After years in business schooling, years of middle management in Nanotrasen, and delivering on KPI growth quarter by quarter every time, Nanotrasen has seen fit \
+	to send you to fix this underperforming department in their station program. Today, you'll be managing %DEPARTMENT%. Once you arrive, it's time to work your magic and turn this \
+	underperforming, unprofitable, and budget draining mess into a high quality profit earning team of high energy full time employees. Do whatever it takes to turn a profit and make \
+	this department a successful business venture."
+	actor_goal = "Go to and be annoying middle management in %DEPARTMENT%. Hold meetings. Drink coffee. Assign people to tasks. \
+	Deploy management philsophies to develop client-centric solutions. Run the department like a business, to turn a profit. \
+	Talk like an annoying management person all the time. Circle back with employees. Touch bases with problem team members. \
+	Identify actionable success metrics, and action on them.\n\n\
+	NOTE: Think about some of the worst managers you've ever had in your jobs over the years. Be like them."
+	var/department = "Debug Department, File A Bug Report If You See This"
+
+/datum/story_actor/ghost/spawn_in_arrivals/middle_management/handle_spawning(mob/picked_spawner, datum/story_type/current_story)
+	actor_info = replacetext(actor_info, "%DEPARTMENT%", department)
+	actor_goal = replacetext(actor_goal, "%DEPARTMENT%", department)
+	return ..()
+
+
+/datum/story_actor/ghost/spawn_in_arrivals/middle_management/security
+	actor_outfits = list(/datum/outfit/middle_management/security)
+	department = "Security"
+
+/datum/story_actor/ghost/spawn_in_arrivals/middle_management/science
+	actor_outfits = list(/datum/outfit/middle_management/science)
+	department = "Science"
+
+/datum/story_actor/ghost/spawn_in_arrivals/middle_management/service
+	actor_outfits = list(/datum/outfit/middle_management/service)
+	department = "Service"
+
+/datum/story_actor/ghost/spawn_in_arrivals/middle_management/engineering
+	actor_outfits = list(/datum/outfit/middle_management/engineering)
+	department = "Engineering"
+
+/datum/story_actor/ghost/spawn_in_arrivals/middle_management/medbay
+	actor_outfits = list(/datum/outfit/middle_management/medbay)
+	department = "Medbay"
+
+/datum/story_actor/ghost/spawn_in_arrivals/middle_management/cargo
+	actor_outfits = list(/datum/outfit/middle_management/cargo)
+	department = "Cargo"

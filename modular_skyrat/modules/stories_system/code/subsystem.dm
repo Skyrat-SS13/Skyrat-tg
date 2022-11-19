@@ -16,7 +16,12 @@ SUBSYSTEM_DEF(stories)
 	var/last_prob = 1
 
 	/// Stories to exclude becuase they're parent types
-	var/list/exclude_stories = list(/datum/story_type/somewhat_impactful)
+	var/list/exclude_stories = list(
+		/datum/story_type/unimpactful,
+		/datum/story_type/somewhat_impactful,
+		/datum/story_type/very_impactful,
+		/datum/story_type/incredibly_impactful,
+	)
 
 /datum/controller/subsystem/stories/Initialize()
 	for(var/type in subtypesof(/datum/story_type) - exclude_stories)

@@ -164,3 +164,110 @@
 	worn_id.update_label()
 
 
+
+/datum/outfit/construction_worker
+	name = "Construction Worker"
+
+	id = /obj/item/card/id/passport
+	id_trim = /datum/id_trim/job/assistant/tourist
+	uniform = /obj/item/clothing/under/misc/overalls
+	ears = /obj/item/radio/headset
+	glasses = /obj/item/clothing/glasses/welding/up
+	head = /obj/item/clothing/head/utility/hardhat
+	suit = /obj/item/clothing/suit/hazardvest
+	shoes = /obj/item/clothing/shoes/workboots
+	l_hand = /obj/item/storage/toolbox/mechanical
+	r_hand = /obj/item/clothing/head/cone
+	back = /obj/item/storage/backpack/satchel/eng
+	backpack_contents = list(
+		/obj/item/stack/cable_coil = 1,
+		/obj/item/stack/sheet/iron/fifty = 1,
+		/obj/item/stack/sheet/glass/fifty = 1,
+		/obj/item/stack/sheet/mineral/wood/fifty = 1,
+		/obj/item/stack/sheet/mineral/stone/fifty = 1,
+	)
+
+/datum/outfit/construction_worker/post_equip(mob/living/carbon/human/equipped_human, visualsOnly = FALSE)
+	if(visualsOnly)
+		return
+
+	var/obj/item/card/id/worn_id = equipped_human.wear_id
+	worn_id.registered_name = equipped_human.real_name
+	worn_id.update_label()
+
+/datum/outfit/construction_worker/foreman
+	head = /obj/item/clothing/head/utility/hardhat/white
+	r_hand = /obj/item/megaphone // so the boys can hear you
+
+/datum/outfit/construction_worker/union_rep
+	neck = /obj/item/clothing/neck/tie/black/tied
+	glasses = /obj/item/clothing/glasses/sunglasses
+	l_hand = /obj/item/clipboard
+	r_hand = /obj/item/storage/briefcase/empty
+
+/datum/outfit/small_business_owner
+	name = "Small Business Owner"
+
+	id = /obj/item/card/id/passport
+	id_trim = /datum/id_trim/job/assistant/tourist
+	uniform = /obj/item/clothing/under/suit/black_really
+	ears = /obj/item/radio/headset
+	glasses = /obj/item/clothing/glasses/sunglasses
+	neck = /obj/item/clothing/neck/tie/black/tied
+	shoes = /obj/item/clothing/shoes/laceup
+	back = /obj/item/storage/backpack/satchel
+	backpack_contents = list(
+		/obj/item/holochip/hundred_thousand = 1, // to pay the workers/bribe the locals/embezzle for yourself
+	)
+
+/datum/outfit/small_business_owner/post_equip(mob/living/carbon/human/equipped_human, visualsOnly = FALSE)
+	if(visualsOnly)
+		return
+
+	var/obj/item/card/id/worn_id = equipped_human.wear_id
+	worn_id.registered_name = equipped_human.real_name
+	worn_id.update_label()
+
+/datum/outfit/middle_management
+	name = "Middle Management"
+	ears = /obj/item/radio/headset/headset_cent
+	uniform = /obj/item/clothing/under/rank/civilian/lawyer/bluesuit
+	suit = /obj/item/clothing/suit/toggle/suspenders
+	shoes = /obj/item/clothing/shoes/laceup
+	glasses = /obj/item/clothing/glasses/regular/hipster
+	id = /obj/item/card/id/advanced/centcom
+	id_trim = /datum/id_trim/centcom/centcom_inspector/middle_management
+	belt = /obj/item/modular_computer/tablet/pda/centcom
+	l_hand = /obj/item/clipboard
+	r_hand = /obj/item/reagent_containers/cup/glass/coffee
+	back = /obj/item/storage/backpack/satchel
+	backpack_contents = list(
+		/obj/item/paper = 1,
+		/obj/item/pen/fountain = 1,
+	)
+
+/datum/outfit/middle_management/post_equip(mob/living/carbon/human/equipped_human, visualsOnly = FALSE)
+	if(visualsOnly)
+		return
+
+	var/obj/item/card/id/worn_id = equipped_human.wear_id
+	worn_id.registered_name = equipped_human.real_name
+	worn_id.update_label()
+
+/datum/outfit/middle_management/service
+	id_trim = /datum/id_trim/centcom/centcom_inspector/middle_management/service
+
+/datum/outfit/middle_management/security
+	id_trim = /datum/id_trim/centcom/centcom_inspector/middle_management/security
+
+/datum/outfit/middle_management/medbay
+	id_trim = /datum/id_trim/centcom/centcom_inspector/middle_management/medbay
+
+/datum/outfit/middle_management/engineering
+	id_trim = /datum/id_trim/centcom/centcom_inspector/middle_management/engineering
+
+/datum/outfit/middle_management/cargo
+	id_trim = /datum/id_trim/centcom/centcom_inspector/middle_management/cargo
+
+/datum/outfit/middle_management/science
+	id_trim = /datum/id_trim/centcom/centcom_inspector/middle_management/science

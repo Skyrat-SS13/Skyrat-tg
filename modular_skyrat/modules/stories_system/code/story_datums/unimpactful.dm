@@ -100,3 +100,66 @@
 		/datum/story_actor/ghost/spawn_in_arrivals/shore_leave = 3,
 	)
 	maximum_execute_times = 1
+
+
+/*
+	TPS Reports (Multiple Departments):
+		Nanotrasen has seen fit to send middle management for a department to help efficiently operationalize our strategy to invest in world class technology and leverage our core competencies in order to holistically
+		administrate exceptional synergy. We'll set a brand trajectory using management philosophies to advance our marketshare vis-a-vis via proven methodologies with strong committment to quality effectively enhancing
+		corporate synergy. They will transition the department by awareness of functionality to promote viability providing their supply chain with diversity to distill their identity through client-centric solutions and synergy.
+		At the end of the day, the department must monetize their assets via the fundamentals of change to visualize a value added experience that will grow the business infrastructure to monetize their assets. These managers
+		will bring to the table our capitalized reputation proactively overseeing day to day operations, services and deliverables with cross-platform innovation, and networking will bring seamless integration in a robust and
+		scalable bleeding edge and next generation, best of breed, will succeed in the department achieving globalization and gaining traction in the marketplace in a mission critical incentivized flexible solution for our customer
+		base with a paradigm shift.
+		Actors:
+			Ghost:
+				Middle Management
+*/
+
+/datum/story_type/unimpactful/tps_reports_security
+	name = "TPS Reports (Security)"
+	desc = "Nanotrasen has seen fit to send middle management for a department to help efficiently operationalize our strategy to invest in world class technology \
+	and leverage our core competencies in order to holistically administrate exceptional synergy."
+	actor_datums_to_make = list(
+		/datum/story_actor/ghost/spawn_in_arrivals/middle_management/security = 1,
+	)
+
+/datum/story_type/unimpactful/tps_reports_service
+	name = "TPS Reports (Service)"
+	desc = "Nanotrasen has seen fit to send middle management for a department to help efficiently operationalize our strategy to invest in world class technology \
+	and leverage our core competencies in order to holistically administrate exceptional synergy."
+	actor_datums_to_make = list(
+		/datum/story_actor/ghost/spawn_in_arrivals/middle_management/service = 1,
+	)
+
+/datum/story_type/unimpactful/tps_reports_science
+	name = "TPS Reports (Science)"
+	desc = "Nanotrasen has seen fit to send middle management for a department to help efficiently operationalize our strategy to invest in world class technology \
+	and leverage our core competencies in order to holistically administrate exceptional synergy."
+	actor_datums_to_make = list(
+		/datum/story_actor/ghost/spawn_in_arrivals/middle_management/science = 1,
+	)
+
+/datum/story_type/unimpactful/tps_reports_engineering
+	name = "TPS Reports (Engineering)"
+	desc = "Nanotrasen has seen fit to send middle management for a department to help efficiently operationalize our strategy to invest in world class technology \
+	and leverage our core competencies in order to holistically administrate exceptional synergy."
+	actor_datums_to_make = list(
+		/datum/story_actor/ghost/spawn_in_arrivals/middle_management/engineering = 1,
+	)
+
+/datum/story_type/unimpactful/tps_reports_medbay
+	name = "TPS Reports (Medbay)"
+	desc = "Nanotrasen has seen fit to send middle management for a department to help efficiently operationalize our strategy to invest in world class technology \
+	and leverage our core competencies in order to holistically administrate exceptional synergy."
+	actor_datums_to_make = list(
+		/datum/story_actor/ghost/spawn_in_arrivals/middle_management/medbay = 1,
+	)
+
+/datum/story_type/unimpactful/tps_reports_cargo
+	name = "TPS Reports (Cargo)"
+	desc = "Nanotrasen has seen fit to send middle management for a department to help efficiently operationalize our strategy to invest in world class technology \
+	and leverage our core competencies in order to holistically administrate exceptional synergy."
+	actor_datums_to_make = list(
+		/datum/story_actor/ghost/spawn_in_arrivals/middle_management/cargo = 1,
+	)
