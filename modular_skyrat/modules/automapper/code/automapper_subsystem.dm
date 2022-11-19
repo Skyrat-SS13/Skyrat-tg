@@ -134,7 +134,7 @@ SUBSYSTEM_DEF(automapper)
 
 	// If this doesn't work right, the map is horribly malformed and shoul fail,
 	// Or you've map-edited template_noop which I'm fine with failing as well.
-	return findtextEx(model, "\n/turf/template_noop,\n")
+	return findtextEx(model, "/turf/template_noop,\n")
 
 /**
  * This returns a list of turfs that have been preloaded and preselected using our templates.

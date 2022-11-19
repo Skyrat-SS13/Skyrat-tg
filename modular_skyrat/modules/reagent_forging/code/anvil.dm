@@ -10,6 +10,8 @@
 /obj/structure/reagent_anvil/Initialize(mapload)
 	. = ..()
 
+	AddElement(/datum/element/falling_hazard, damage = 40, wound_bonus = 10, hardhat_safety = FALSE, crushes = TRUE)
+
 /obj/structure/reagent_anvil/update_appearance()
 	. = ..()
 	cut_overlays()
