@@ -55,7 +55,7 @@
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	you_are_text = "You are an operative of the Sothran Syndicate terrorist cell, employed onboard the Deep Space 2 FOB for reasons that are yours."
-	flavour_text = "The Sothran Syndicate has found it fit to send a forward operating base in Sector 13 to monitor NT's operations. Your orders are maintaining the ship's integrity and keeping a low profile as well as possible."
+	flavour_text = "The Sothran Syndicate has found it fit to send a forward operating base to Sector 13 to monitor NT's operations. Your orders are maintaining the ship's integrity and keeping a low profile as well as possible."
 	important_text = "You are not an antagonist. Adminhelp before antagonizing station crew."
 	outfit = /datum/outfit/ds2/syndicate
 	loadout_enabled = TRUE
