@@ -8,7 +8,7 @@ export const NifPanel = (props, context) => {
   const { linked_mob_name, loaded_nifsofts, max_nifsofts, max_power, current_theme } = data;
   const [settingsOpen, setSettingsOpen] = useLocalState(
     context,
-    settingsOpen,
+    'settingsOpen',
     false
   );
 
@@ -21,7 +21,7 @@ export const NifPanel = (props, context) => {
       theme={current_theme}>
       <Window.Content>
         <Section
-          title={'Welcome to your NIF, ' + linked_mob_name}
+          title={`Welcome to your NIF, ${linked_mob_name}`}
           buttons={
             <Button
               icon="cogs"
@@ -33,7 +33,7 @@ export const NifPanel = (props, context) => {
           }>
           {(settingsOpen && <NifSettings />) || <NifStats />}
           {(!settingsOpen &&
-            <Section title={'NIFSoft Programs (' + (max_nifsofts - loaded_nifsofts.length) + " Slots Remaining)"} right>
+            <Section title={`NIFSoft Programs (${max_nifsofts - loaded_nifsofts.length} Slots Remaining)`} right>
               {(loaded_nifsofts.length &&
               <Flex direction="column">
                 {loaded_nifsofts.map((nifsoft) => (
