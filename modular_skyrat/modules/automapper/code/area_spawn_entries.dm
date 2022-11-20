@@ -47,14 +47,32 @@
 
 /datum/area_spawn/barbervend_locker
 	target_areas = list(/area/station/commons/locker)
+	// No locker room on Tramstation, so we put them in the fitness room instead.
+	blacklisted_stations = list("Blueshift", "Void Raptor", "Runtime Station", "MultiZ Debug", "Tramstation")
+	desired_atom = /obj/machinery/vending/barbervend
+	mode = AREA_SPAWN_MODE_HUG_WALL
+
+/datum/area_spawn/barbervend_fitness_tram
+	target_areas = list(/area/station/commons/fitness)
+	// No locker room on Tramstation, so we put them in the fitness room instead.
+	blacklisted_stations = list("Blueshift", "Void Raptor", "Runtime Station", "MultiZ Debug", "Delta Station", "MetaStation", "Kilo Station", "Ice Box Station")
 	desired_atom = /obj/machinery/vending/barbervend
 	mode = AREA_SPAWN_MODE_HUG_WALL
 
 /datum/area_spawn/barber_chairs_locker
 	target_areas = list(/area/station/commons/locker)
+	blacklisted_stations = list("Blueshift", "Void Raptor", "Runtime Station", "MultiZ Debug", "Tramstation")
 	desired_atom = /obj/structure/chair/comfy/barber_chair
 	amount_to_spawn = 3
 	// TODO: add a table hugging mode for this
+
+/datum/area_spawn/barber_chairs_fitness_tram
+	target_areas = list(/area/station/commons/fitness)
+	blacklisted_stations = list("Blueshift", "Void Raptor", "Runtime Station", "MultiZ Debug", "Delta Station", "MetaStation", "Kilo Station", "Ice Box Station")
+	desired_atom = /obj/structure/chair/comfy/barber_chair
+	amount_to_spawn = 3
+	// TODO: add a table hugging mode for this
+
 
 /datum/area_spawn/fax_machine_bridge
 	target_areas = list(/area/station/command/bridge)
@@ -111,6 +129,12 @@
 
 /datum/area_spawn/barber_landmark
 	desired_atom = /obj/effect/landmark/start/barber
+	blacklisted_stations = list("Blueshift", "Void Raptor", "Runtime Station", "MultiZ Debug", "Tramstation")
+	target_areas = list(/area/station/commons/locker)
+
+/datum/area_spawn/barber_landmark_tram
+	desired_atom = /obj/effect/landmark/start/barber
+	blacklisted_stations = list("Blueshift", "Void Raptor", "Runtime Station", "MultiZ Debug", "Delta Station", "MetaStation", "Kilo Station", "Ice Box Station")
 	target_areas = list(/area/station/commons/locker)
 
 /datum/area_spawn/nt_rep_landmark
@@ -125,4 +149,10 @@
 
 /datum/area_spawn/barber_locker
 	desired_atom = /obj/structure/closet/secure_closet/barber
+	blacklisted_stations = list("Blueshift", "Void Raptor", "Runtime Station", "MultiZ Debug", "Tramstation")
 	target_areas = list(/area/station/commons/locker)
+
+/datum/area_spawn/barber_locker_tram
+	desired_atom = /obj/structure/closet/secure_closet/barber
+	blacklisted_stations = list("Blueshift", "Void Raptor", "Runtime Station", "MultiZ Debug", "Delta Station", "MetaStation", "Kilo Station", "Ice Box Station")
+	target_areas = list(/area/station/commons/fitness)
