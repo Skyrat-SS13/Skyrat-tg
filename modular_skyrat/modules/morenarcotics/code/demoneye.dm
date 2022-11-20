@@ -109,8 +109,8 @@
 /datum/reagent/drug/demoneye/on_mob_end_metabolize(mob/living/carbon/our_guy)
 	. = ..()
 
-	REMOVE_TRAIT(our_guy, TRAIT_UNNATURAL_RED_GLOWY_EYES)
-	REMOVE_TRAIT(our_guy, TRAIT_NOSOFTCRIT)
+	REMOVE_TRAIT(our_guy, TRAIT_UNNATURAL_RED_GLOWY_EYES, TRAIT_GENERIC)
+	REMOVE_TRAIT(our_guy, TRAIT_NOSOFTCRIT, TRAIT_GENERIC)
 
 	var/obj/item/bodypart/arm/left/left_arm = our_guy.get_bodypart(BODY_ZONE_L_ARM)
 	if(left_arm)
@@ -135,12 +135,12 @@
 			span_danger("Your veins burst from the sheer stress put on them!")
 		)
 
-		var/obj/item/bodypart/bodypart = pick(victim.bodyparts)
+		var/obj/item/bodypart/bodypart = pick(our_guy.bodyparts)
 		var/datum/wound/slash/critical/crit_wound = new()
 		crit_wound.apply_wound(bodypart)
-		victim.apply_damage(20, BRUTE)
+		our_guy.apply_damage(20, BRUTE)
 
-		new /obj/effect/temp_visual/cleave(victim.drop_location())
+		new /obj/effect/temp_visual/cleave(our_guy.drop_location())
 
 	if(!our_guy.hud_used)
 		return
@@ -162,8 +162,8 @@
 	our_guy.adjust_drowsyness(-5 * REM * delta_time)
 
 	if(DT_PROB(25, delta_time))
-		affected_carbon.playsound_local(affected_carbon, 'sound/effects/singlebeat.ogg', 100, TRUE)
-		flash_color(affected_carbon, flash_color = "#ff0000", flash_time = 3 SECONDS)
+		our_guy.playsound_local(our_guy, 'sound/effects/singlebeat.ogg', 100, TRUE)
+		flash_color(our_guy, flash_color = "#ff0000", flash_time = 3 SECONDS)
 
 	if(DT_PROB(5, delta_time))
 		hurt_that_mans_organs(our_guy, 5, FALSE)
@@ -184,8 +184,8 @@
 /// Hurts a random organ, if its 'really_bad' we'll vomit blood too
 /datum/reagent/drug/demoneye/proc/hurt_that_mans_organs(mob/living/carbon/our_guy, damage, really_bad)
 	if(really_bad)
-		carbon_quirk_holder.vomit(0, TRUE, FALSE, 1)
-	carbon_quirk_holder.adjustOrganLoss(
+		our_guy.vomit(0, TRUE, FALSE, 1)
+	our_guy.adjustOrganLoss(
 		pick(ORGAN_SLOT_BRAIN,ORGAN_SLOT_APPENDIX,ORGAN_SLOT_LUNGS,ORGAN_SLOT_HEART,ORGAN_SLOT_LIVER,ORGAN_SLOT_STOMACH),
 		damage,
 	)
