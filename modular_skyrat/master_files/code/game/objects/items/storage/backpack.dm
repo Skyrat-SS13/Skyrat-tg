@@ -32,4 +32,4 @@
 /obj/item/storage/backpack/satchel/flat/with_tools/PopulateContents()
 	new /obj/item/stack/tile/iron/base(src)
 	new /obj/item/crowbar(src)
-	.=..()
+	return
