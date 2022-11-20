@@ -16,14 +16,16 @@
 		/obj/item/reagent_containers/crack = 10,
 		/obj/item/reagent_containers/cocaine = 9,
 		/obj/item/reagent_containers/cocainebrick = 4,
+		/obj/item/reagent_containers/hashbrick = 13, //not contraband, but it'll be good padding, and there'll still be a black market for bulk goods
 		/obj/item/reagent_containers/heroin = 8,
 		/obj/item/reagent_containers/heroinbrick = 3,
 		/obj/item/reagent_containers/blacktar = 12,
+		/obj/item/reagent_containers/pill/stimulant = 9, //ephedrine and coffee. Can actually change whether someone gets out of a runaway situation
 		/obj/item/clothing/mask/cigarette/pipe/crackpipe = 15,
-		/obj/item/toy/cards/deck/syndicate = 10,
+		/obj/item/toy/cards/deck/syndicate = 10, //1tc, not balance breaking, small but premium comodity
 		/obj/item/reagent_containers/cup/bottle/morphine = 8,
 		/obj/item/reagent_containers/syringe/contraband/methamphetamine = 12,
-		/obj/item/clothing/glasses/sunglasses = 4,
+		/obj/item/clothing/glasses/sunglasses = 5, //can already be achieved in an arguably better form with just some hacking
 		)
 	for(var/i in 1 to 3)
 		var/contraband_type = pick_weight(contraband_list)
