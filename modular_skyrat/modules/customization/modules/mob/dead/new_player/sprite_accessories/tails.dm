@@ -342,8 +342,8 @@
 	icon_state = "rabbit_alt"
 
 /datum/sprite_accessory/tails/mammal/raptor
-    name = "Raptor"
-    icon_state = "raptor"
+	name = "Raptor"
+	icon_state = "raptor"
 
 /datum/sprite_accessory/tails/mammal/wagging/red_panda
 	name = "Red Panda"

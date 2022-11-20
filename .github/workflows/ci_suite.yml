@@ -41,6 +41,7 @@ jobs:
           bash tools/ci/check_filedirs.sh tgstation.dme
           bash tools/ci/check_changelogs.sh
           bash tools/ci/check_grep.sh
+          bash skyrat/tools/skyrat_check_grep.sh # SKYRAT EDIT ADDITION - checking modular_skyrat code
           bash tools/ci/check_misc.sh
           tools/bootstrap/python tools/validate_dme.py <tgstation.dme
           tools/build/build --ci lint tgui-test

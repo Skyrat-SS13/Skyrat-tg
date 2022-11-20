@@ -134,9 +134,10 @@
 
 ///Populates vend_designs with different colors for the vending machine
 /obj/machinery/vending/dorms/proc/populate_vend_designs()
-    vend_designs = list(
-        "pink" = image (icon = src.icon, icon_state = "lustwish_pink"),
-        "teal" = image(icon = src.icon, icon_state = "lustwish_teal"))
+	vend_designs = list(
+		"pink" = image (icon = src.icon, icon_state = "lustwish_pink"),
+		"teal" = image(icon = src.icon, icon_state = "lustwish_teal"),
+	)
 
 //Changes the settings on the vendor, if the user uses the discount card.
 /obj/machinery/vending/dorms/attackby(obj/item/used_item, mob/living/user, params)

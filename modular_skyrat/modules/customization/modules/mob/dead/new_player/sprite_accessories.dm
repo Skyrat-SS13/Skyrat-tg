@@ -103,7 +103,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/proc/get_special_x_dimension(mob/living/carbon/human/H, passed_state)
 	return 0
 
-/datum/sprite_accessory/proc/get_default_color(var/list/features, var/datum/species/pref_species) //Needs features for the color information
+/datum/sprite_accessory/proc/get_default_color(list/features, datum/species/pref_species) //Needs features for the color information
 	var/list/colors
 	switch(default_color)
 		if(DEFAULT_PRIMARY)
@@ -341,6 +341,8 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
 	///Whether the underwear uses a special sprite for digitigrade style (i.e. briefs, not panties). Adds a "_d" suffix to the icon state
 	var/has_digitigrade = FALSE
+	///Whether this underwear includes a top (Because gender = FEMALE doesn't actually apply here.). Hides breasts, nothing more.
+	var/covers_chest = FALSE
 
 /datum/sprite_accessory/underwear/male_bee
 	name = "Boxers - Bee"
@@ -436,18 +438,21 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon_state = "swimming_red"
 	gender = FEMALE
 	use_static = TRUE
+	covers_chest = TRUE
 
 /datum/sprite_accessory/underwear/swimsuit
 	name = "Swimsuit, One Piece - Black"
 	icon_state = "swimming_black"
 	gender = FEMALE
 	use_static = TRUE
+	covers_chest = TRUE
 
 /datum/sprite_accessory/underwear/swimsuit_blue
 	name = "Swimsuit, One Piece - Striped Blue"
 	icon_state = "swimming_blue"
 	gender = FEMALE
 	use_static = TRUE
+	covers_chest = TRUE
 
 /datum/sprite_accessory/underwear/thong
 	name = "Thong"
@@ -486,7 +491,59 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "LIZARED Underwear"
 	icon_state = "lizared"
 	use_static = TRUE
+	covers_chest = TRUE
 
+/*
+	Adding covers_chest to TG underwears where applicable
+*/
+/datum/sprite_accessory/underwear/female_bikini
+	covers_chest = TRUE
+
+/datum/sprite_accessory/underwear/female_lace
+	covers_chest = TRUE
+
+/datum/sprite_accessory/underwear/female_bralette
+	covers_chest = TRUE
+
+/datum/sprite_accessory/underwear/female_sport
+	covers_chest = TRUE
+
+/datum/sprite_accessory/underwear/female_strapless
+	covers_chest = TRUE
+
+/datum/sprite_accessory/underwear/female_babydoll
+	covers_chest = TRUE
+
+/datum/sprite_accessory/underwear/swimsuit_onepiece
+	covers_chest = TRUE
+
+/datum/sprite_accessory/underwear/swimsuit_strapless_onepiece
+	covers_chest = TRUE
+
+/datum/sprite_accessory/underwear/swimsuit_twopiece
+	covers_chest = TRUE
+
+/datum/sprite_accessory/underwear/swimsuit_strapless_twopiece
+	covers_chest = TRUE
+
+/datum/sprite_accessory/underwear/swimsuit_stripe
+	covers_chest = TRUE
+
+/datum/sprite_accessory/underwear/swimsuit_halter
+	covers_chest = TRUE
+
+/datum/sprite_accessory/underwear/female_white_neko
+	covers_chest = TRUE
+
+/datum/sprite_accessory/underwear/female_black_neko
+	covers_chest = TRUE
+
+/datum/sprite_accessory/underwear/female_uk
+	covers_chest = TRUE
+
+/*
+	End of adding covers_chest to TG stuff, start of adding has_digitigrade to TG stuff
+*/
 /datum/sprite_accessory/underwear/male_boxers
 	has_digitigrade = TRUE
 
@@ -511,6 +568,9 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/underwear/male_uk
 	has_digitigrade = TRUE
 
+/*
+	End of adding has_digitigrade to TG stuff
+*/
 
 /datum/sprite_accessory/undershirt
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
