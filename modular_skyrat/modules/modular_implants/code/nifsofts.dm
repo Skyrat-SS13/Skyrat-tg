@@ -65,7 +65,7 @@
 	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif
 
 	if(cooldown && on_cooldown)
-		to_chat(installed_nif.linked_mob, span_warning("The [src.name] is currently on cooldown"))
+		to_chat(installed_nif.linked_mob, span_warning("The [src.name] is currently on cooldown."))
 
 	if(active)
 		active = FALSE
