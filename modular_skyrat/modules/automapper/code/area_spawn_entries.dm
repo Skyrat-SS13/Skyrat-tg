@@ -56,6 +56,10 @@
 	amount_to_spawn = 3
 	// TODO: add a table hugging mode for this
 
+/datum/area_spawn/fax_machine_bridge
+	target_areas = list(/area/station/command/bridge)
+	desired_atom = /obj/machinery/fax
+
 /datum/area_spawn/lustwish_prison
 	target_areas = list(/area/station/security/prison, /area/station/security/prison/shower)
 	desired_atom = /obj/machinery/vending/dorms
@@ -70,12 +74,6 @@
 /datum/area_spawn/posialert_rd
 	target_areas = list(/area/station/command/heads_quarters/rd, /area/station/science/lab)
 	desired_atom = /obj/machinery/posialert
-	mode = AREA_SPAWN_MODE_MOUNT_WALL
-
-/datum/area_spawn/mirror_locker
-	target_areas = list(/area/station/commons/locker)
-	desired_atom = /obj/structure/mirror
-	amount_to_spawn = 3
 	mode = AREA_SPAWN_MODE_MOUNT_WALL
 
 // Job spawners
