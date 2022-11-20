@@ -96,12 +96,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		migrate_character_to_tgui_prefs_menu()
 
 	if (current_version < 42)
-<<<<<<< HEAD
-		// migrate_body_types(savefile) // SKYRAT EDIT - This'll fuck up savefiles
+		// migrate_body_types(save_data) // SKYRAT EDIT - This'll fuck up savefiles
 		migrate_mentor() // SKYRAT EDIT - Make mentors alive again
-=======
-		migrate_body_types(save_data)
->>>>>>> 47ba13033f1 (JSON Savefiles | Player Saves use JSON (#70492))
 
 	if (current_version < 43)
 		migrate_legacy_sound_toggles(savefile)
@@ -269,18 +265,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 /datum/preferences/proc/load_character(slot)
 	SHOULD_NOT_SLEEP(TRUE)
 
-<<<<<<< HEAD
-	if(!path)
-		return FALSE
-	if(!fexists(path))
-		return FALSE
-	character_savefile = null
-	var/savefile/S = new /savefile(path)
-	if(!S)
-		return FALSE
-	S.cd = "/"
-=======
->>>>>>> 47ba13033f1 (JSON Savefiles | Player Saves use JSON (#70492))
 	if(!slot)
 		slot = default_slot
 	slot = sanitize_integer(slot, 1, max_save_slots, initial(default_slot))
@@ -312,7 +296,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Quirks
 	all_quirks = save_data?["all_quirks"]
 
-	load_character_skyrat(S) //SKYRAT EDIT ADDITION
+	load_character_skyrat(save_data) //SKYRAT EDIT ADDITION
 
 	//try to fix any outdated data if necessary
 	//preference updating will handle saving the updated data for us.
@@ -373,7 +357,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Quirks
 	save_data["all_quirks"] = all_quirks
 
-	save_character_skyrat(S) //SKYRAT EDIT ADDITION
+	save_character_skyrat(save_data) //SKYRAT EDIT ADDITION
 
 	return TRUE
 

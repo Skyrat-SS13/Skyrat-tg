@@ -208,15 +208,6 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /datum/preferences/proc/get_save_data_for_savefile_identifier(savefile_identifier)
 	RETURN_TYPE(/list)
 
-<<<<<<< HEAD
-	// Both of these will cache savefiles, but only for a tick.
-	// This is because storing a savefile will lock it, causing later issues down the line.
-	// Do not change them to addtimer, since the timer SS might not be running at this time.
-
-	if (!parent)
-		return null
-
-=======
 	if (!parent)
 		return null
 	if(!savefile)
@@ -225,7 +216,6 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 	// Both of these will cache savefiles, but only for a tick.
 	// This is because storing a savefile will lock it, causing later issues down the line.
 	// Do not change them to addtimer, since the timer SS might not be running at this time.
->>>>>>> 47ba13033f1 (JSON Savefiles | Player Saves use JSON (#70492))
 	switch (savefile_identifier)
 		if (PREFERENCE_CHARACTER)
 			return savefile.get_entry("character[default_slot]")
