@@ -28,3 +28,8 @@
 		var/contraband_type = pick_weight(contraband_list)
 		contraband_list -= contraband_type
 		new contraband_type(src)
+
+/obj/item/storage/backpack/satchel/flat/with_tools/PopulateContents()
+	new /obj/item/stack/tile/iron/base(src)
+	new /obj/item/crowbar(src)
+	.=..()
