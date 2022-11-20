@@ -132,6 +132,7 @@
 /obj/structure/closet/secure_closet/security/cargo/PopulateContents()
 	new /obj/item/storage/box/gunset/pepperball(src)
 	new /obj/item/storage/bag/garment/customs_agent(src)
+	new /obj/item/restraints/handcuffs/cable/orange(src)
 
 /obj/structure/closet/secure_closet/security/engine
 	name = "\proper engineering guard's locker"

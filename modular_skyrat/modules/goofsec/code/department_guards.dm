@@ -756,7 +756,8 @@
 		/obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard = 2,
 		/obj/item/clothing/head/helmet/blueshirt/skyrat/guard = 2,
 		/obj/item/clothing/head/beret/sec/engineering = 2,
-		/obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard = 2,
+		/obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard = 2,,
+		/obj/item/clothing/glasses/hud/security = 2,
 	), src)
 
 /obj/item/storage/bag/garment/customs_agent
@@ -771,7 +772,6 @@
 		/obj/item/clothing/head/helmet/blueshirt/skyrat/guard = 2,
 		/obj/item/clothing/head/beret/sec/cargo = 2,
 		/obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent = 2,
-		/obj/item/restraints/handcuffs/cable/orange = 2,
 		/obj/item/clothing/glasses/hud/security = 2,
 		/obj/item/clothing/glasses/hud/gun_permit = 2,
 	), src)
