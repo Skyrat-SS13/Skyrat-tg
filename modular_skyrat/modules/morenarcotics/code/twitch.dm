@@ -6,7 +6,7 @@
 	base_icon_state = "twitch"
 	amount_per_transfer_from_this = 10
 	volume = 10
-	ignore_flags = 0
+	ignore_flags = FALSE
 	reagent_flags = NONE
 	list_reagents = list(/datum/reagent/drug/twitch = 10)
 	label_examine = FALSE
@@ -30,7 +30,7 @@
 
 /datum/reagent/drug/twitch
 	name = "TWitch"
-	description = "A drug originally developed by an as of now undisclosed military body for enhancing soldiers.\nDoes not see wide use due to the whole terrible psychosis and reality-disassociation thing afterwards."
+	description = "A drug originally developed by an as of now undisclosed military body for enhancing soldiers.\nDoes not see wide use due to the whole reality-disassociation and heart disease thing afterwards."
 	reagent_state = LIQUID
 	color = "#c22a44"
 	taste_description = "television static"
