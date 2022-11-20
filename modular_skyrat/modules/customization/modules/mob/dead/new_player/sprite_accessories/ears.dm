@@ -12,21 +12,23 @@
 	if(key in wearer.try_hide_mutant_parts)
 		return TRUE
 //	Exception for MODs
-	if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
+	if(istype(wearer.head, /obj/item/clothing/head/mod))
 		return FALSE
-//	This line basically checks if we FORCE accessory-ears to show, for items with earholes like Balaclavas and Luchador masks
-	else if(!(wearer.head \
-			&& (wearer.head.flags_inv & SHOWSPRITEEARS) \
-				|| (wearer.wear_mask \
-				&& (wearer.wear_mask.flags_inv & SHOWSPRITEEARS)) \
-				)
-			)
-		return TRUE
-//	Hide accessory if flagged to do so
-	else if(wearer.head.flags_inv & HIDEHAIR \
-			|| (wearer.wear_mask && (wearer.wear_mask.flags_inv & HIDEHAIR)) \
+	//	Hide accessory if flagged to do so
+	if(wearer.head.flags_inv & HIDEHAIR \
+		|| (wearer.wear_mask && (wearer.wear_mask.flags_inv & HIDEHAIR)) \
 		)
 		return TRUE
+	//	This line basically checks if we FORCE accessory-ears to show, for items with earholes like Balaclavas and Luchador masks
+	else if(!(wearer.head \
+		&& (wearer.head.flags_inv & SHOWSPRITEEARS) \
+			|| (wearer.wear_mask \
+			&& (wearer.wear_mask.flags_inv & SHOWSPRITEEARS)) \
+			)
+		)
+		return FALSE
+
+
 
 /datum/sprite_accessory/ears/cat
 	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_HUMANOID, SPECIES_GHOUL)
