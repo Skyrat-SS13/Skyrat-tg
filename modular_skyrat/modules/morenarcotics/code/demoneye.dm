@@ -77,6 +77,7 @@
 	. = ..()
 
 	ADD_TRAIT(our_guy, TRAIT_UNNATURAL_RED_GLOWY_EYES, TRAIT_GENERIC)
+	ADD_TRAIT(our_guy, TRAIT_NOSOFTCRIT, TRAIT_GENERIC) // IM FUCKIN INVINCIBLE
 
 	var/obj/item/bodypart/arm/left/left_arm = our_guy.get_bodypart(BODY_ZONE_L_ARM)
 	if(left_arm)
@@ -105,10 +106,11 @@
 		animate(filter, loop = -1, size = 2, time = 3 SECONDS, easing = ELASTIC_EASING|EASE_OUT, flags = ANIMATION_PARALLEL)
 		animate(size = 5, time = 3 SECONDS, easing = ELASTIC_EASING|EASE_IN)
 
-/datum/reagent/drug/twitch/on_mob_end_metabolize(mob/living/carbon/our_guy)
+/datum/reagent/drug/demoneye/on_mob_end_metabolize(mob/living/carbon/our_guy)
 	. = ..()
 
 	REMOVE_TRAIT(our_guy, TRAIT_UNNATURAL_RED_GLOWY_EYES)
+	REMOVE_TRAIT(our_guy, TRAIT_NOSOFTCRIT)
 
 	var/obj/item/bodypart/arm/left/left_arm = our_guy.get_bodypart(BODY_ZONE_L_ARM)
 	if(left_arm)
@@ -147,3 +149,43 @@
 
 	game_plane_master_controller.remove_filter("demoneye_filter")
 	game_plane_master_controller.remove_filter("demoneye_blur")
+
+/datum/reagent/drug/demoneye/on_mob_life(mob/living/carbon/our_guy, delta_time, times_fired)
+	. = ..()
+
+	constant_dose_time += delta_time
+
+	our_guy.add_mood_event("tweaking", /datum/mood_event/stimulant_heavy, name)
+
+	our_guy.adjustStaminaLoss(-3 * REM * delta_time)
+	our_guy.AdjustSleeping(-20 * REM * delta_time)
+	our_guy.adjust_drowsyness(-5 * REM * delta_time)
+
+	if(DT_PROB(25, delta_time))
+		affected_carbon.playsound_local(affected_carbon, 'sound/effects/singlebeat.ogg', 100, TRUE)
+		flash_color(affected_carbon, flash_color = "#ff0000", flash_time = 3 SECONDS)
+
+	if(DT_PROB(5, delta_time))
+		hurt_that_mans_organs(our_guy, 5, FALSE)
+
+	for(var/possible_twitch in our_guy.reagents.reagent_list) // Combining this with twitch could cause some heart attack problems
+		if(istype(possible_twitch, /datum/reagent/drug/twitch) && DT_PROB(5, delta_time))
+			our_guy.ForceContractDisease(new /datum/disease/heart_failure(), FALSE, TRUE)
+			break
+
+/datum/reagent/drug/demoneye/overdose_process(mob/living/carbon/our_guy, delta_time, times_fired)
+	. = ..()
+
+	our_guy.set_jitter_if_lower(10 SECONDS * REM * delta_time)
+
+	if(DT_PROB(10, delta_time))
+		hurt_that_mans_organs(our_guy, 15, TRUE)
+
+/// Hurts a random organ, if its 'really_bad' we'll vomit blood too
+/datum/reagent/drug/demoneye/proc/hurt_that_mans_organs(mob/living/carbon/our_guy, damage, really_bad)
+	if(really_bad)
+		carbon_quirk_holder.vomit(0, TRUE, FALSE, 1)
+	carbon_quirk_holder.adjustOrganLoss(
+		pick(ORGAN_SLOT_BRAIN,ORGAN_SLOT_APPENDIX,ORGAN_SLOT_LUNGS,ORGAN_SLOT_HEART,ORGAN_SLOT_LIVER,ORGAN_SLOT_STOMACH),
+		damage,
+	)
