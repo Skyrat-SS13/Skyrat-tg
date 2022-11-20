@@ -93,3 +93,21 @@
 /datum/area_spawn/customs_agent_landmark
 	desired_atom = /obj/effect/landmark/start/customs_agent
 	target_areas = list(/area/station/security/checkpoint/supply, /area/station/cargo/storage)
+
+/datum/area_spawn/barber_landmark
+	desired_atom = /obj/effect/landmark/start/barber
+	target_areas = list(/area/station/commons/locker)
+
+/datum/area_spawn/nt_rep_landmark
+	desired_atom = /obj/effect/landmark/start/nanotrasen_consultant
+	target_areas = list(/area/station/command/bridge)
+
+// Job lockers, because automapper templates aren't maintainable. Who'd have thought?
+
+/datum/area_spawn/nt_rep_locker
+	desired_atom = /obj/structure/closet/secure_closet/nanotrasen_consultant/station
+	target_areas = list(/area/station/command/bridge)
+
+/datum/area_spawn/barber_locker
+	desired_atom = /obj/structure/closet/secure_closet/barber
+	target_areas = list(/area/station/commons/locker)
