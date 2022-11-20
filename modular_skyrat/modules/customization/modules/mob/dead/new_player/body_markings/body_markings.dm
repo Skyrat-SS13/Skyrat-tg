@@ -161,7 +161,7 @@
 	name = "Teshari Underfluff"
 	icon_state = "teshari_underfluff"
 	recommended_species = list(SPECIES_TESHARI)
-	affected_bodyparts = HEAD | CHEST | ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
+	affected_bodyparts = HEAD | CHEST | LEG_RIGHT | LEG_LEFT
 
 /datum/body_marking/secondary/teshari_short
 	name = "Teshari Short"
