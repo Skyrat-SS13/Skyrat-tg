@@ -74,14 +74,6 @@
 
 	our_guy.sound_environment_override = NONE
 
-	if(!our_guy.hud_used)
-		return
-
-	var/atom/movable/plane_master_controller/game_plane_master_controller = our_guy.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
-
-	game_plane_master_controller.remove_filter("twitch_filter")
-	game_plane_master_controller.remove_filter("twitch_blur")
-
 	if(constant_dose_time < 100) // Anything less than this and you'll come out fiiiine, aside from a big hit of stamina damage
 		our_guy.visible_message(
 			span_danger("[our_guy] suddenly slows from their inhuman speeds, coming back with a wicked nosebleed!"),
@@ -97,6 +89,14 @@
 		our_guy.emote("cough")
 		our_guy.adjustStaminaLoss(constant_dose_time)
 		our_guy.adjustOrganLoss(ORGAN_SLOT_HEART, 0.3 * constant_dose_time) // Basically you might die
+
+	if(!our_guy.hud_used)
+		return
+
+	var/atom/movable/plane_master_controller/game_plane_master_controller = our_guy.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
+
+	game_plane_master_controller.remove_filter("twitch_filter")
+	game_plane_master_controller.remove_filter("twitch_blur")
 
 /// Leaves an afterimage behind the mob when they move
 /datum/reagent/drug/twitch/proc/on_movement(mob/living/carbon/our_guy)

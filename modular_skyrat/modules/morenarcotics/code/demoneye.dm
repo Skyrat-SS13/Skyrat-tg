@@ -12,8 +12,6 @@
 	label_examine = FALSE
 
 /obj/item/reagent_containers/hypospray/medipen/twitch_injector/inject(mob/living/affected_mob, mob/user) // Mostly the same as default just with some changed logic for if it succeeds
-	. = ..()
-
 	if(!reagents.total_volume)
 		to_chat(user, span_warning("[src] is empty!"))
 		return FALSE
@@ -78,6 +76,8 @@
 /datum/reagent/drug/demoneye/on_mob_metabolize(mob/living/our_guy)
 	. = ..()
 
+	ADD_TRAIT(our_guy, TRAIT_UNNATURAL_RED_GLOWY_EYES, TRAIT_GENERIC)
+
 	var/obj/item/bodypart/arm/left/left_arm = our_guy.get_bodypart(BODY_ZONE_L_ARM)
 	if(left_arm)
 		left_arm.unarmed_damage_low += 5
@@ -95,8 +95,55 @@
 
 	var/atom/movable/plane_master_controller/game_plane_master_controller = our_guy.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
 
-	var/list/col_filter_red = list(0.4,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,1)
+	var/list/col_filter_red = list(0.7,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,1)
 
 	game_plane_master_controller.add_filter("demoneye_filter", 10, color_matrix_filter(col_filter_red, FILTER_COLOR_RGB))
 
-	game_plane_master_controller.add_filter("demoneye_blur", 1, list("type" = "ripple", "size" = 10, "repeat" = 10, "radius" = 32, "falloff" = 10))
+	game_plane_master_controller.add_filter("demoneye_blur", 1, list("type" = "angular_blur", "size" = 4))
+
+	for(var/filter in game_plane_master_controller.get_filter("demoneye_blur"))
+		animate(filter, loop = -1, size = 2, time = 3 SECONDS, easing = ELASTIC_EASING|EASE_OUT, flags = ANIMATION_PARALLEL)
+		animate(size = 5, time = 3 SECONDS, easing = ELASTIC_EASING|EASE_IN)
+
+/datum/reagent/drug/twitch/on_mob_end_metabolize(mob/living/carbon/our_guy)
+	. = ..()
+
+	REMOVE_TRAIT(our_guy, TRAIT_UNNATURAL_RED_GLOWY_EYES)
+
+	var/obj/item/bodypart/arm/left/left_arm = our_guy.get_bodypart(BODY_ZONE_L_ARM)
+	if(left_arm)
+		left_arm.unarmed_damage_low = initial(left_arm.unarmed_damage_low)
+		left_arm.unarmed_damage_high = initial(left_arm.unarmed_damage_high)
+
+	var/obj/item/bodypart/arm/right/right_arm = our_guy.get_bodypart(BODY_ZONE_R_ARM)
+	if(right_arm)
+		right_arm.unarmed_damage_low = initial(right_arm.unarmed_damage_low)
+		right_arm.unarmed_damage_high = initial(right_arm.unarmed_damage_high)
+
+	our_guy.sound_environment_override = NONE
+
+	if(constant_dose_time < 100 || !our_guy.blood_volume)
+		our_guy.visible_message(
+				span_danger("[our_guy]'s eyes fade from their evil looking red back to normal..."),
+				span_danger("Your vision slowly returns to normal as you lose your unnatural strength...")
+		)
+	else
+		our_guy.visible_message(
+			span_danger("[our_guy] violently pops a few veins, spraying blood everywhere!"),
+			span_danger("Your veins burst from the sheer stress put on them!")
+		)
+
+		var/obj/item/bodypart/bodypart = pick(victim.bodyparts)
+		var/datum/wound/slash/critical/crit_wound = new()
+		crit_wound.apply_wound(bodypart)
+		victim.apply_damage(20, BRUTE)
+
+		new /obj/effect/temp_visual/cleave(victim.drop_location())
+
+	if(!our_guy.hud_used)
+		return
+
+	var/atom/movable/plane_master_controller/game_plane_master_controller = our_guy.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
+
+	game_plane_master_controller.remove_filter("demoneye_filter")
+	game_plane_master_controller.remove_filter("demoneye_blur")

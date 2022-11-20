@@ -2,7 +2,7 @@
 	name = "exotic stimulant"
 
 	addiction_gain_threshold = 200
-	addiction_loss_threshold = 0 // Naw son you're addicted to the big leagues now, you ain't getting out of this
+	addiction_loss_threshold = -100 // Naw son you're addicted to the big leagues now, you ain't getting out of this
 
 	withdrawal_stage_messages = list(
 		"You feel like you just can't quite work the same without those special stims...",
