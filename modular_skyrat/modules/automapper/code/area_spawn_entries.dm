@@ -135,7 +135,7 @@
 /datum/area_spawn/barber_landmark_tram
 	desired_atom = /obj/effect/landmark/start/barber
 	blacklisted_stations = list("Blueshift", "Void Raptor", "Runtime Station", "MultiZ Debug", "Delta Station", "MetaStation", "Kilo Station", "Ice Box Station")
-	target_areas = list(/area/station/commons/locker)
+	target_areas = list(/area/station/commons/fitness)
 
 /datum/area_spawn/nt_rep_landmark
 	desired_atom = /obj/effect/landmark/start/nanotrasen_consultant
