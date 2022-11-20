@@ -99,4 +99,4 @@
 
 	game_plane_master_controller.add_filter("demoneye_filter", 10, color_matrix_filter(col_filter_green, FILTER_COLOR_RGB))
 
-	game_plane_master_controller.add_filter("demoneye_blur", 1, list("type" = "radial_blur", "size" = 5))
+	game_plane_master_controller.add_filter("demoneye_blur", 1, list("type" = "ripple", "size" = 10, "repeat" = 10, "radius" = 32, "falloff" = 10))
