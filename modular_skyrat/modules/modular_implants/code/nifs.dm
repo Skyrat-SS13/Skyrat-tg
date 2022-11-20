@@ -294,6 +294,8 @@
 	loaded_nifsoft.parent_nif = src
 	loaded_nifsoft.linked_mob = linked_mob
 
+	update_static_data_for_all_viewers()
+
 	send_message("[loaded_nifsoft] has been added")
 	return TRUE
 
@@ -306,6 +308,8 @@
 		send_message("[removed_nifsoft.name] has been removed", TRUE)
 
 	qdel(removed_nifsoft)
+	update_static_data_for_all_viewers()
+
 	return TRUE
 
 ///Repairs a NIF based off the repair_amount

@@ -21,20 +21,10 @@
 /obj/item/organ/internal/cyberimp/brain/nif/ui_state(mob/user)
 	return GLOB.conscious_state
 
-/obj/item/organ/internal/cyberimp/brain/nif/ui_data(mob/user)
+/obj/item/organ/internal/cyberimp/brain/nif/ui_static_data(mob/user)
 	var/data = list()
-	//User Preference Variables
-	data["linked_mob_name"] = linked_mob.name
-	data["examine_text"] = linked_mob.nif_examine_text
-	data["product_notes"] = manufacturer_notes
+
 	data["loaded_nifsofts"] = list()
-
-	data["current_theme"] = current_theme
-	data["ui_themes"] = ui_themes
-
-	//NIFSoft Variables
-	data["max_nifsofts"] = max_nifsofts
-
 	for(var/datum/nifsoft/nifsoft as anything in loaded_nifsofts)
 		if(isnull(nifsoft))
 			qdel(nifsoft)
@@ -51,22 +41,36 @@
 		)
 		data["loaded_nifsofts"] += list(nifsoft_data)
 
+	data["ui_themes"] = ui_themes
+	data["max_nifsofts"] = max_nifsofts
+	data["max_durability"] = max_durability
+	data["max_power"] = max_power
+	data["max_blood_level"] = linked_mob.blood_volume_normal
+	data["product_notes"] = manufacturer_notes
+
+	return data
+
+/obj/item/organ/internal/cyberimp/brain/nif/ui_data(mob/user)
+	var/data = list()
+	//User Preference Variables
+	data["linked_mob_name"] = linked_mob.name
+	data["examine_text"] = linked_mob.nif_examine_text
+
+	data["current_theme"] = current_theme
+
 	//Power Variables
 	data["power_level"] = power_level
-	data["max_power"] = max_power
 	data["power_usage"] = power_usage
 
 	data["nutrition_drain"] = nutrition_drain
 	data["nutrition_level"] = linked_mob.nutrition
 
 	data["blood_level"] = linked_mob.blood_volume
-	data["max_blood_level"] = linked_mob.blood_volume_normal
 	data["blood_drain"] = blood_drain
 	data["minimum_blood_level"] = minimum_blood_level
 
 	//Durability Variables.
 	data["durability"] = durability
-	data["max_durability"] = max_durability
 
 	return data
 
