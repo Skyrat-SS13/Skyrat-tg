@@ -22,11 +22,17 @@
 	req_access = list("syndicate_leader");
 	icon_state = "syndicate"
 	},
-/obj/item/mod/module/criminalcapture,
+/obj/item/mod/module/stealth,
+/obj/item/mod/module/projectile_dampener{
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/obj/item/mod/module/pepper_shoulders,
 /obj/item/mod/module/criminalcapture{
 	pixel_x = -3;
 	pixel_y = -5
 	},
+/obj/item/mod/module/visor/night,
 /obj/item/screwdriver/nuke{
 	pixel_y = -2
 	},
@@ -1148,6 +1154,7 @@
 /obj/machinery/atmospherics/components/binary/valve/digital{
 	dir = 4
 	},
+/obj/structure/fans/tiny/invisible,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "eA" = (
@@ -8048,7 +8055,7 @@
 /obj/item/watertank/pepperspray,
 /obj/item/clothing/accessory/medal/silver{
 	name = "military excellence medal";
-	desc = "The Sothram Syndicate's dictionary defines excellence as \"the ability to crush NT scum under one's boot\". This is awarded to those rare operatives who fit that definition."
+	desc = "The Sothran Syndicate's dictionary defines excellence as \"the ability to crush NT scum under one's boot\". This is awarded to those rare operatives who fit that definition."
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
@@ -8410,9 +8417,6 @@
 	},
 /obj/item/clothing/glasses/welding{
 	pixel_y = -3
-	},
-/obj/item/mod/module/constructor{
-	pixel_y = -8
 	},
 /turf/open/floor/iron/dark/side{
 	dir = 4
@@ -9861,7 +9865,11 @@
 	dir = 4
 	},
 /obj/structure/closet/radiation,
+/obj/item/mod/module/rad_protection,
 /obj/item/analyzer,
+/obj/item/mod/module/visor/meson{
+	pixel_y = -9
+	},
 /turf/open/floor/iron/dark/side{
 	dir = 8
 	},
