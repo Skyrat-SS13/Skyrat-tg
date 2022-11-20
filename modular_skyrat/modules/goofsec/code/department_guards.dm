@@ -196,8 +196,10 @@
 	shoes = /obj/item/clothing/shoes/jackboots
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat
-	suit_store = /obj/item/melee/baton/security/loaded/departmental/science
-	r_pocket = /obj/item/assembly/flash/handheld
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded/departmental/science = 1,
+		/obj/item/assembly/flash/handheld = 1,
+	)
 
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/science
@@ -295,8 +297,10 @@
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/orderly
-	suit_store = /obj/item/melee/baton/security/loaded/departmental/medical
-	r_pocket = /obj/item/assembly/flash/handheld
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded/departmental/medical = 1,
+		/obj/item/assembly/flash/handheld = 1,
+	)
 
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel/med
@@ -388,8 +392,10 @@
 	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard
-	suit_store = /obj/item/melee/baton/security/loaded/departmental/engineering
-	r_pocket = /obj/item/assembly/flash/handheld
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded/departmental/engineering = 1,
+		/obj/item/assembly/flash/handheld = 1,
+	)
 
 	backpack = /obj/item/storage/backpack/industrial
 	satchel = /obj/item/storage/backpack/satchel/eng
@@ -488,8 +494,10 @@
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent
 	glasses = /obj/item/clothing/glasses/hud/gun_permit
-	suit_store = /obj/item/melee/baton/security/loaded/departmental/cargo
-	r_pocket = /obj/item/assembly/flash/handheld
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded/departmental/cargo = 1,
+		/obj/item/assembly/flash/handheld = 1,
+	)
 
 	backpack = /obj/item/storage/backpack
 	satchel = /obj/item/storage/backpack/satchel
