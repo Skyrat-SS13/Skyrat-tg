@@ -95,8 +95,8 @@
 
 	var/atom/movable/plane_master_controller/game_plane_master_controller = our_guy.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
 
-	var/list/col_filter_green = list(1,0,0,0, 0,0,0,0, 0,0,0,0, 0.5,0,0,1)
+	var/list/col_filter_red = list(0.4,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,1)
 
-	game_plane_master_controller.add_filter("demoneye_filter", 10, color_matrix_filter(col_filter_green, FILTER_COLOR_RGB))
+	game_plane_master_controller.add_filter("demoneye_filter", 10, color_matrix_filter(col_filter_red, FILTER_COLOR_RGB))
 
 	game_plane_master_controller.add_filter("demoneye_blur", 1, list("type" = "ripple", "size" = 10, "repeat" = 10, "radius" = 32, "falloff" = 10))
