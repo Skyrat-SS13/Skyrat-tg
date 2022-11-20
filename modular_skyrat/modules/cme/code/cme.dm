@@ -146,7 +146,7 @@
 		var/turf/spawnpoint = pick(cme_start_locs)
 		spawn_cme(spawnpoint, cme_intensity)
 
-/datum/round_event/cme/proc/spawn_cme(var/turf/spawnpoint, intensity)
+/datum/round_event/cme/proc/spawn_cme(turf/spawnpoint, intensity)
 	if(intensity == CME_UNKNOWN)
 		intensity = pick(CME_MINIMAL, CME_MODERATE, CME_EXTREME)
 	var/area/loc_area_name = get_area(spawnpoint)

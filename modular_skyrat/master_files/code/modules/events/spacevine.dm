@@ -56,8 +56,8 @@
 
 	var/obj/structure/spacevine/vine = new()
 
-	for(var/area/station/maintenance/maint_area in world)
-		for(var/turf/floor in maint_area)
+	for(var/area/station/maintenance/maint_area in GLOB.areas)
+		for(var/turf/floor as anything in maint_area.get_contained_turfs())
 			if(floor.Enter(vine))
 				turfs += floor
 

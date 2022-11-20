@@ -187,7 +187,7 @@
 /obj/item/storage/backpack/duffelbag/syndie/loadout/downtownspecial/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/tommygun/therealtommy(src)
 	new /obj/item/ammo_box/magazine/tommygunm45(src)
-	new /obj/item/clothing/suit/det_suit/noir/mafioso(src)
+	new /obj/item/clothing/suit/jacket/det_suit/noir/mafioso(src)
 	new /obj/item/clothing/under/suit/blacktwopiece/armoured(src)
 	new /obj/item/clothing/mask/fakemoustache/italian(src)
 	new /obj/item/switchblade(src)
@@ -205,7 +205,7 @@
 	new /obj/item/ammo_box/a357/peacemaker(src)
 	new /obj/item/ammo_box/a357/peacemaker(src)
 	new /obj/item/toy/plush/skyrat/fox (src)
-	new /obj/item/clothing/suit/det_suit/noir/ocelot(src)
+	new /obj/item/clothing/suit/jacket/det_suit/noir/ocelot(src)
 	new /obj/item/clothing/head/beret/sec/ocelot(src)
 	new /obj/item/storage/belt/holster/chameleon(src)
 

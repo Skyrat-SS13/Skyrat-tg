@@ -135,13 +135,13 @@
 	return ..()
 
 /obj/item/gun/microfusion/handle_atom_del(atom/to_handle)
-    if(to_handle == cell)
-        cell = null
-        update_appearance()
-    if(to_handle == phase_emitter)
-        phase_emitter = null
-        update_appearance()
-    return ..()
+	if(to_handle == cell)
+		cell = null
+		update_appearance()
+	if(to_handle == phase_emitter)
+		phase_emitter = null
+		update_appearance()
+	return ..()
 
 /obj/item/gun/microfusion/can_shoot()
 	return !QDELETED(cell) ? (cell.charge >= microfusion_lens.e_cost) : FALSE
@@ -656,10 +656,6 @@
 	recharge_newshot()
 	update_appearance()
 	return TRUE
-
- /// Update reload timers
-// /obj/item/gun/microfusion/proc/reload_timer(mob/user, obj/item/stock_parts/cell/microfusion/inserting_cell)
-
 
 /// Ejecting a cell.
 /obj/item/gun/microfusion/proc/eject_cell(mob/user, display_message = TRUE, put_in_hands = TRUE)

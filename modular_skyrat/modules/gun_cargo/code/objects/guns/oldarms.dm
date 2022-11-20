@@ -23,8 +23,8 @@
 	alt_icons = TRUE
 	realistic = TRUE
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_FULLY_AUTOMATIC)
-  
-  
+
+
 /obj/item/ammo_box/magazine/m16/vintage/oldarms
 	name = "old-fashioned mk-11.4 rifle magazine"
 	desc = "A double-stack solid magazine that looks rather dated. Holds 20 rounds of .223 Stinger."
@@ -34,7 +34,7 @@
 	caliber = CALIBER_223
 	max_ammo = 20
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
-  
+
 /obj/item/ammo_casing/oldarms/a223
 	name = ".223 Stinger bullet casing"
 	desc = "A cheaply made .233 Stinger bullet casing."
@@ -46,13 +46,13 @@
 	damage = 26
 	armour_penetration = 5
 	wound_bonus = -20
-	
+
 /obj/item/ammo_casing/oldarms/a223/rubber
 	name = ".223 Stinger rubber bullet casing"
 	desc = "A cheaply made .233 Stinger bullet casing, now in rubber."
 	caliber = CALIBER_223
 	projectile_type = /obj/projectile/bullet/oldarms/a223/rubber
-	
+
 /obj/projectile/bullet/oldarms/a223/rubber
 	name = ".223 Rubber"
 	damage = 5

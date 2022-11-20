@@ -1186,12 +1186,6 @@
 	description = "How computer hardware is made."
 	prereq_ids = list("comptech")
 	design_ids = list(
-		"bat_advanced",
-		"bat_control",
-		"bat_micro",
-		"bat_nano",
-		"bat_normal",
-		"bat_super",
 		"cardslot",
 		"portadrive_advanced",
 		"portadrive_basic",
@@ -1447,10 +1441,6 @@
 		"hypermod",
 		"jackhammer",
 		"plasmacutter_adv",
-
-		//SKYRAT EDIT START - RESEARCH DESIGNS
-		"ripleyupgradef"
-		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
 	discount_experiments = list(/datum/experiment/scanning/random/material/hard/one = 5000)

@@ -1,9 +1,6 @@
 /obj/docking_port/mobile/arrivals_skyrat
 	name = "NTV Relay"
 	shuttle_id = "arrivals_shuttle"
-	dwidth = 1
-	width = 5
-	height = 13
 	dir = WEST
 	port_direction = SOUTH
 

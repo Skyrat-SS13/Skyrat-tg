@@ -82,7 +82,7 @@ SUBSYSTEM_DEF(area_spawn)
 	turf_list = area_turf_info["[mode]"] = list()
 
 	// Get highest priority items
-	for(var/turf/iterating_turf in area)
+	for(var/turf/iterating_turf as anything in area.get_contained_turfs())
 		// Only retain turfs of the highest priority
 		var/priority = process_turf(iterating_turf, mode)
 		if(priority > 0)

@@ -1,4 +1,4 @@
-/obj/item/clothing/suit/det_suit/noir/mafioso
+/obj/item/clothing/suit/jacket/det_suit/noir/mafioso
 	name = "mafioso trenchcoat"
 	desc = "The guy wearing this means serious business..."
 	armor = list(MELEE = 25, BULLET = 20, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 0, FIRE = 30, ACID = 30, WOUND = 20)//Slightly worse than the sec coat
@@ -11,7 +11,7 @@
 	desc = "A red beret with the neo-russian insignia stamped on it. This bitch is wearing perfume."
 	armor = list(MELEE = 30, BULLET = 20, LASER = 20, ENERGY = 30, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50, WOUND = 4)
 
-/obj/item/clothing/suit/det_suit/noir/ocelot
+/obj/item/clothing/suit/jacket/det_suit/noir/ocelot
 	name = "ocelot trenchcoat"
 	desc = "A black armoured trenchcoat worn by a certain gun spinning spy. Don't confuse me with those uniformed fools."
 	armor = list(MELEE = 25, BULLET = 20, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 0, FIRE = 30, ACID = 30, WOUND = 20)//Slightly worse than the sec coat

@@ -23,22 +23,24 @@
 	//
 	var/current_helmet_color = "pink"
 	var/static/list/helmet_designs
-	actions_types = list(/datum/action/item_action/toggle_vision,
-						 /datum/action/item_action/toggle_hearing,
-						 /datum/action/item_action/toggle_speech)
+	actions_types = list(
+		/datum/action/item_action/toggle_vision,
+		/datum/action/item_action/toggle_hearing,
+		/datum/action/item_action/toggle_speech,
+	)
 
 //Declare action types
 /datum/action/item_action/toggle_vision
-    name = "Vision switch"
-    desc = "Makes it impossible to see anything"
+	name = "Vision switch"
+	desc = "Makes it impossible to see anything"
 
 /datum/action/item_action/toggle_hearing
-    name = "Hearing switch"
-    desc = "Makes it impossible to hear anything"
+	name = "Hearing switch"
+	desc = "Makes it impossible to hear anything"
 
 /datum/action/item_action/toggle_speech
-    name = "Speech switch"
-    desc = "Makes it impossible to say anything"
+	name = "Speech switch"
+	desc = "Makes it impossible to say anything"
 
 //Vision switcher
 /datum/action/item_action/toggle_vision/Trigger(trigger_flags)
