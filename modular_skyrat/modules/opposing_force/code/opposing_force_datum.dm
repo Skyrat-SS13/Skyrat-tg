@@ -956,6 +956,7 @@
 		QDEL_LIST(selected_equipment)
 		set_backstory = null
 		to_chat(importer, span_warning("JSON file is corrupted in some form. Please correct and reupload."))
+		add_log(importer.ckey, "Attempted to upload a corrupted JSON, purging leftover data...")
 
 
 /// Allows a user to export from an OPFOR into a json file
