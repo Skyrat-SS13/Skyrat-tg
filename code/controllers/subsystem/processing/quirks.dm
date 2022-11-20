@@ -26,6 +26,7 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Clown Enjoyer", "Mime Fan"),
 		list("Bad Touch", "Friendly"),
 		list("Extrovert", "Introvert"),
+<<<<<<< HEAD
 		list("Prosthetic Limb", "Quadruple Amputee"),
 		list("Quadruple Amputee", "Paraplegic","Frail"),
 		//SKYRAT EDIT ADDITION BEGIN
@@ -35,6 +36,10 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Mute", "Social Anxiety"),
 		list("No Guns", "Pacifist")
 		//SKYRAT EDIT ADDITION END
+=======
+		list("Prosthetic Limb", "Quadruple Amputee", "Body Purist"),
+		list("Quadruple Amputee", "Paraplegic", "Frail"),
+>>>>>>> af74293b26c (fixes using body purist with quadruple amputee (#71359))
 	)
 
 /datum/controller/subsystem/processing/quirks/Initialize()
