@@ -289,7 +289,7 @@
 	icon_state = "tailored_jacket"
 	greyscale_config = /datum/greyscale_config/tailored_jacket
 	greyscale_config_worn = /datum/greyscale_config/tailored_jacket/worn
-	greyscale_colors = "#8c8c8c#8c8c8c#8c8c8c#bf9f78#8c8c8c#8c8c8c#8c8c8c" // Look this has a lot of colorable sections
+	greyscale_colors = "#8c8c8c#8c8c8c#8c8c8c#bf9f78#8c8c8c#8c8c8c#8c8c8c#bf9f78#8c8c8c" // Look this has a lot of colorable sections
 	body_parts_covered = CHEST|ARMS
 	flags_1 = IS_PLAYER_COLORABLE_1
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
