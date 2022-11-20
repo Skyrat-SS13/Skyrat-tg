@@ -615,6 +615,18 @@
 	name = "Varsity Jacket (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/varsity/varsity_worn.json'
 
+// TAILORED JACKET
+
+/datum/greyscale_config/tailored_jacket
+	name = "Tailored Jacket"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/tailored_jacket/tailored_jacket.json'
+
+/datum/greyscale_config/tailored_jacket/worn
+	name = "Tailored Jacket (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/tailored_jacket/tailored_jacket_worn.json'
+
+
 /*
 *	UNDER
 */
