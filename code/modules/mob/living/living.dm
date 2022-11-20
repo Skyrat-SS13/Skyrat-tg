@@ -869,6 +869,21 @@
 	setStaminaLoss(0)
 	SetUnconscious(0)
 
+<<<<<<< HEAD
+=======
+	if(heal_flags & HEAL_TOX)
+		setToxLoss(0, FALSE, TRUE)
+	if(heal_flags & HEAL_OXY)
+		setOxyLoss(0, FALSE, TRUE)
+	if(heal_flags & HEAL_CLONE)
+		setCloneLoss(0, FALSE, TRUE)
+	if(heal_flags & HEAL_BRUTE)
+		setBruteLoss(0, FALSE, TRUE)
+	if(heal_flags & HEAL_BURN)
+		setFireLoss(0, FALSE, TRUE)
+	if(heal_flags & HEAL_STAM)
+		setStaminaLoss(0, FALSE, TRUE)
+>>>>>>> 7663d9b8ddf (Fixes regenerate organs carrying over organ damage (#71336))
 
 
 
