@@ -11,7 +11,7 @@
 	list_reagents = list(/datum/reagent/drug/demoneye = 10)
 	label_examine = FALSE
 
-/obj/item/reagent_containers/hypospray/medipen/twitch_injector/inject(mob/living/affected_mob, mob/user) // Mostly the same as default just with some changed logic for if it succeeds
+/obj/item/reagent_containers/hypospray/medipen/demoneye_applicator/inject(mob/living/affected_mob, mob/user) // Mostly the same as default just with some changed logic for if it succeeds
 	if(!reagents.total_volume)
 		to_chat(user, span_warning("[src] is empty!"))
 		return FALSE
@@ -27,7 +27,7 @@
 	log_combat(user, affected_mob, "attempted to inject", src, "([contained])")
 
 	if(affected_mob.is_eyes_covered())
-		to_chat(user, span_notice("[affected_mob]'s eyes can't be covered!"))
+		to_chat(user, span_notice("[affected_mob]'s eyes must be uncovered!"))
 		return FALSE
 
 	if(reagents.total_volume && (ignore_flags || affected_mob.try_inject(user, injection_flags = INJECT_TRY_SHOW_ERROR_MESSAGE)) && do_after(user, 2 SECONDS, affected_mob))
