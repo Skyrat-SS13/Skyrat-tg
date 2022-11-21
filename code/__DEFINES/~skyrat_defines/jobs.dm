@@ -10,4 +10,6 @@
 #define TECH_RESTRICTED_QUIRKS "Chunky Fingers" = TRUE
 #define GUARD_RESTRICTED_QUIRKS "Blind" = TRUE, "Deaf" = TRUE, "Foreigner" = TRUE, "Pacifist" = TRUE, "Nerve Stapled" = TRUE
 
+#define RESTRICTED_QUIRKS_EXCEPTIONS list("Mute" = "Signer")
+
 #define FLAVOR_TEXT_CHAR_REQUIREMENT 150
