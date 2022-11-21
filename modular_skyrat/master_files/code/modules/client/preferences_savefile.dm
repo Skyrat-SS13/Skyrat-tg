@@ -34,9 +34,9 @@
 		if(!GLOB.robotic_styles_list[augment_limb_styles[key]])
 			augment_limb_styles -= key
 
-	features = save_data["features"]
-	mutant_bodyparts = save_data["mutant_bodyparts"]
-	body_markings = update_markings(save_data["body_markings"])
+	features = SANITIZE_LIST(save_data["features"])
+	mutant_bodyparts = SANITIZE_LIST(save_data["mutant_bodyparts"])
+	body_markings = update_markings(SANITIZE_LIST(save_data["body_markings"]))
 	mismatched_customization = save_data["mismatched_customization"]
 	allow_advanced_colors = save_data["allow_advanced_colors"]
 
