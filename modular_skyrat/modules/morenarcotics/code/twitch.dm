@@ -70,7 +70,7 @@
 	. = ..()
 
 	our_guy.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/twitch)
-	our_guy.next_move_modifier += 0.3
+	our_guy.next_move_modifier += (overdosed ? 0.5 : 0.3)
 
 	our_guy.sound_environment_override = NONE
 
@@ -115,6 +115,8 @@
 
 /datum/reagent/drug/twitch/overdose_start(mob/living/our_guy)
 	. = ..()
+
+	our_guy.next_move_modifier -= 0.2 // Overdosing makes you a liiitle faster but you know has some really bad consequences
 
 	if(!our_guy.hud_used)
 		return

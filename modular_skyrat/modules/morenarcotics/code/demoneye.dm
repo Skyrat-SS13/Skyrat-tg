@@ -73,7 +73,7 @@
 	/// How much time has the drug been in them?
 	var/constant_dose_time = 0
 
-/datum/reagent/drug/demoneye/on_mob_metabolize(mob/living/carbon/our_guy)
+/datum/reagent/drug/demoneye/on_mob_metabolize(mob/living/carbon/human/our_guy)
 	. = ..()
 
 	ADD_TRAIT(our_guy, TRAIT_UNNATURAL_RED_GLOWY_EYES, TRAIT_NARCOTICS)
@@ -110,7 +110,7 @@
 		animate(filter, loop = -1, size = 2, time = 3 SECONDS, easing = ELASTIC_EASING|EASE_OUT, flags = ANIMATION_PARALLEL)
 		animate(size = 5, time = 3 SECONDS, easing = ELASTIC_EASING|EASE_IN)
 
-/datum/reagent/drug/demoneye/on_mob_end_metabolize(mob/living/carbon/our_guy)
+/datum/reagent/drug/demoneye/on_mob_end_metabolize(mob/living/carbon/human/our_guy)
 	. = ..()
 
 	REMOVE_TRAIT(our_guy, TRAIT_UNNATURAL_RED_GLOWY_EYES, TRAIT_NARCOTICS)

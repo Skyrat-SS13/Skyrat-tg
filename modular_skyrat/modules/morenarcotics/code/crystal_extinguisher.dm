@@ -82,7 +82,7 @@
 	game_plane_master_controller.remove_filter("da_foam_filter")
 	game_plane_master_controller.remove_filter("da_foam_waves")
 
-/datum/reagent/drug/twitch/on_mob_life(mob/living/carbon/our_guy, delta_time, times_fired)
+/datum/reagent/drug/crystal_firefighter_foam/on_mob_life(mob/living/carbon/our_guy, delta_time, times_fired)
 	. = ..()
 
 	our_guy.set_drugginess(1 MINUTES * REM * delta_time)
@@ -92,7 +92,7 @@
 	if(DT_PROB(5, delta_time))
 		flash_color(our_guy, flash_color = pick(trip_colors), flash_time = 3 SECONDS)
 
-/datum/reagent/drug/twitch/overdose_process(mob/living/carbon/our_guy, delta_time, times_fired)
+/datum/reagent/drug/crystal_firefighter_foam/overdose_process(mob/living/carbon/our_guy, delta_time, times_fired)
 	. = ..()
 
 	our_guy.set_jitter_if_lower(10 SECONDS * REM * delta_time)
