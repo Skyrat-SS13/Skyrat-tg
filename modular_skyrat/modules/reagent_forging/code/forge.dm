@@ -98,7 +98,6 @@
 		/datum/reagent/consumable/liquidelectricity/enriched,
 		/datum/reagent/teslium,
 		/datum/reagent/eigenstate,
-		/datum/reagent/drug/pcp,
 		/datum/reagent/consumable/cum,
 		/datum/reagent/consumable/femcum,
 		/datum/reagent/consumable/breast_milk,

@@ -200,15 +200,6 @@
 	item = /obj/item/syndie_glue
 	cost = 3
 
-/datum/uplink_item/device_tools/syndikush
-	name = "Syndikush Green Crack cart"
-	desc = "A cheap Chinese vape cart that contains a potent combination of THC and \
-			stimulants. Not made with real crack."
-	item = /obj/item/reagent_containers/vapecart/syndicate
-	cost = 5
-	surplus = 90
-	progression_minimum = 20 MINUTES
-
 // AMMO
 /datum/uplink_item/ammo/pistolaps_traitor
 	name = "9mm Stechkin APS Magazine"
