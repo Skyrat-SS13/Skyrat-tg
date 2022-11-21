@@ -5,7 +5,7 @@
  */
 /datum/element/liquids_height
 	element_flags = ELEMENT_BESPOKE | ELEMENT_DETACH_ON_HOST_DESTROY
-	id_arg_index = 2
+	argument_hash_start_idx = 2
 
 	///Height applied by this element
 	var/height_applied
