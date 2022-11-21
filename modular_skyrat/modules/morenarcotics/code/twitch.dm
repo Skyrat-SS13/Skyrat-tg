@@ -47,7 +47,7 @@
 	our_guy.add_movespeed_modifier(/datum/movespeed_modifier/reagent/twitch)
 	our_guy.next_move_modifier -= 0.3 // For the duration of this you move and attack faster
 
-	our_guy.sound_environment_override = SOUND_ENVIRONMENT_PHASED
+	our_guy.sound_environment_override = SOUND_ENVIRONMENT_DIZZY
 
 	RegisterSignal(our_guy, COMSIG_MOVABLE_MOVED, PROC_REF(on_movement), TRUE)
 

@@ -31,7 +31,7 @@
 /datum/reagent/drug/crystal_firefighter_foam/on_mob_metabolize(mob/living/our_guy)
 	. = ..()
 
-	our_guy.sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
+	our_guy.sound_environment_override = SOUND_ENVIRONMENT_DRUGGED
 
 	if(!our_guy.hud_used)
 		return
@@ -48,7 +48,7 @@
 		animate(filter, loop = -1, size = 12, time = 4 SECONDS, easing = ELASTIC_EASING|EASE_OUT, flags = ANIMATION_PARALLEL)
 		animate(size = 6, time = 4 SECONDS, easing = ELASTIC_EASING|EASE_IN)
 
-/datum/reagent/drug/twitch/on_mob_end_metabolize(mob/living/carbon/our_guy)
+/datum/reagent/drug/crystal_firefighter_foam/on_mob_end_metabolize(mob/living/carbon/our_guy)
 	. = ..()
 
 	our_guy.sound_environment_override = NONE

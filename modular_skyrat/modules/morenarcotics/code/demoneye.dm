@@ -89,7 +89,7 @@
 		right_arm.unarmed_damage_low += 5
 		right_arm.unarmed_damage_high += 5
 
-	our_guy.sound_environment_override = SOUND_ENVIRONMENT_PHASED
+	our_guy.sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
 
 	if(!our_guy.hud_used)
 		return
