@@ -44,7 +44,7 @@
 
 	game_plane_master_controller.add_filter("da_foam_waves", 1, list("type" = "wave", "x" = 32, "size" = 6, "offset" = 1))
 
-	for(var/filter in game_plane_master_controller.get_filter("da_foam_waves"))
+	for(var/filter in game_plane_master_controller.get_filters("da_foam_waves"))
 		animate(filter, loop = -1, size = 12, time = 4 SECONDS, easing = ELASTIC_EASING|EASE_OUT, flags = ANIMATION_PARALLEL)
 		animate(size = 6, time = 4 SECONDS, easing = ELASTIC_EASING|EASE_IN)
 

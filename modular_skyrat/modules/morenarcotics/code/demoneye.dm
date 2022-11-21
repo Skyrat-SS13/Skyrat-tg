@@ -102,9 +102,9 @@
 
 	game_plane_master_controller.add_filter("demoneye_blur", 1, list("type" = "angular_blur", "size" = 4))
 
-	for(var/filter in game_plane_master_controller.get_filter("demoneye_blur"))
+	for(var/filter in game_plane_master_controller.get_filters("demoneye_blur"))
 		animate(filter, loop = -1, size = 2, time = 3 SECONDS, easing = ELASTIC_EASING|EASE_OUT, flags = ANIMATION_PARALLEL)
-		animate(size = 5, time = 3 SECONDS, easing = ELASTIC_EASING|EASE_IN)
+		animate(size = 5, time = 3 SECONDS)
 
 /datum/reagent/drug/demoneye/on_mob_end_metabolize(mob/living/carbon/our_guy)
 	. = ..()

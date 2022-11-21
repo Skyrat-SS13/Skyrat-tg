@@ -62,7 +62,7 @@
 
 	game_plane_master_controller.add_filter("twitch_blur", 1, list("type" = "radial_blur", "size" = 0.1))
 
-	for(var/filter in game_plane_master_controller.get_filter("twitch_blur"))
+	for(var/filter in game_plane_master_controller.get_filters("twitch_blur"))
 		animate(filter, loop = -1, size = 1, time = 2 SECONDS, easing = ELASTIC_EASING|EASE_OUT, flags = ANIMATION_PARALLEL)
 		animate(size = 0.1, time = 6 SECONDS, easing = CIRCULAR_EASING|EASE_IN)
 
@@ -123,7 +123,7 @@
 
 	var/list/col_filter_ourple = list(1,0,0,0, 0,0.5,0,0, 0,0,1,0, 0,0,0,1)
 
-	for(var/filter in game_plane_master_controller.get_filter("twitch_filter"))
+	for(var/filter in game_plane_master_controller.get_filters("twitch_filter"))
 		animate(filter, color = col_filter_ourple, time = 4 SECONDS, easing = EASE_OUT)
 
 /datum/reagent/drug/twitch/overdose_process(mob/living/carbon/our_guy, delta_time, times_fired)
