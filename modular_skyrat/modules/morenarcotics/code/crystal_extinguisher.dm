@@ -4,7 +4,7 @@
 	icon = 'modular_skyrat/modules/morenarcotics/icons/drug_items.dmi'
 	icon_state = "crystal_extinguisher"
 	food_reagents = list(
-		/datum/reagent/drug/kronkaine = 5,
+		/datum/reagent/drug/crystal_firefighter_foam = 5,
 		/datum/reagent/impurity/inacusiate = 5,
 		/datum/reagent/impurity/mannitol = 5,
 	)
@@ -13,7 +13,7 @@
 /obj/item/food/drug/extinguisher_crystal/Initialize(mapload)
 	. = ..()
 
-	Turn(rand(0, 360))
+	transform = transform.Turn(rand(0, 360))
 
 	ADD_TRAIT(src, TRAIT_DRIED, TRAIT_GENERIC) // Lets it be put in rolling paper and pipes
 
