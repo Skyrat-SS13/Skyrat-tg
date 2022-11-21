@@ -28,20 +28,13 @@ SUBSYSTEM_DEF(persistence)
 	load_poly()
 	load_wall_engravings()
 	load_prisoner_tattoos()
-<<<<<<< HEAD
-	LoadTrophies()
-	LoadRecentMaps()
-	LoadPhotoPersistence()
-	LoadRandomizedRecipes()
-	LoadPanicBunker() //SKYRAT EDIT ADDITION - PANICBUNKER
-=======
 	load_trophies()
 	load_recent_maps()
 	load_photo_persistence()
 	load_randomized_recipes()
->>>>>>> bf582cb833d (Trophy case update (#71015))
 	load_custom_outfits()
 	load_delamination_counter()
+	load_panic_bunker() //SKYRAT EDIT ADDITION - PANICBUNKER
 
 	load_adventures()
 	return SS_INIT_SUCCESS
@@ -50,22 +43,14 @@ SUBSYSTEM_DEF(persistence)
 /datum/controller/subsystem/persistence/proc/collect_data()
 	save_wall_engravings()
 	save_prisoner_tattoos()
-<<<<<<< HEAD
-	CollectTrophies()
-	CollectMaps()
-	SavePhotoPersistence() //THIS IS PERSISTENCE, NOT THE LOGGING PORTION.
-	SaveRandomizedRecipes()
-	SavePanicBunker()//SKYRAT EDIT ADDITION - PANICBUNKER
-	SaveScars()
-=======
 	collect_trophies()
 	collect_maps()
 	save_photo_persistence() //THIS IS PERSISTENCE, NOT THE LOGGING PORTION.
 	save_randomized_recipes()
 	save_scars()
->>>>>>> bf582cb833d (Trophy case update (#71015))
 	save_custom_outfits()
 	save_delamination_counter()
+	save_panic_bunker() //SKYRAT EDIT ADDITION - PANICBUNKER
 
 ///Loads up Poly's speech buffer.
 /datum/controller/subsystem/persistence/proc/load_poly()
@@ -179,7 +164,7 @@ SUBSYSTEM_DEF(persistence)
 
 	log_world("Loaded [prison_tattoos_to_use.len] prison tattoos")
 
-///Saves all tattoos, so they can appear on prisoners in future rounds 
+///Saves all tattoos, so they can appear on prisoners in future rounds
 /datum/controller/subsystem/persistence/proc/save_prisoner_tattoos()
 	var/json_file = file(PRISONER_TATTOO_SAVE_FILE)
 	var/list/saved_data = list()
@@ -312,7 +297,7 @@ SUBSYSTEM_DEF(persistence)
 	for(var/obj/structure/displaycase/trophy/trophy_case in GLOB.trophy_cases)
 		if(!valid_trophies.len)
 			break
-		
+
 		if(trophy_case.showpiece)
 			continue
 
