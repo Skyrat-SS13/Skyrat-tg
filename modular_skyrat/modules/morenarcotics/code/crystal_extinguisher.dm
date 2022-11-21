@@ -45,8 +45,8 @@
 	game_plane_master_controller.add_filter("da_foam_waves", 1, list("type" = "wave", "x" = 32, "size" = 6, "offset" = 1))
 
 	for(var/filter in game_plane_master_controller.get_filters("da_foam_waves"))
-		animate(filter, loop = -1, size = 12, time = 4 SECONDS, easing = ELASTIC_EASING|EASE_OUT, flags = ANIMATION_PARALLEL)
-		animate(size = 6, time = 4 SECONDS, easing = ELASTIC_EASING|EASE_IN)
+		animate(filter, loop = -1, size = 12, time = 4 SECONDS, easing = ELASTIC_EASING|EASE_OUT, flags = ANIMATION_PARALLEL, offset = 2)
+		animate(size = 6, time = 4 SECONDS, easing = ELASTIC_EASING|EASE_IN, offset = 1)
 
 /datum/reagent/drug/crystal_firefighter_foam/on_mob_end_metabolize(mob/living/carbon/our_guy)
 	. = ..()
