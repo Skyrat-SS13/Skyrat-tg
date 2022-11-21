@@ -951,6 +951,7 @@
 
 						set_equipment_reason(importer, opfor_equipment, opfor_data["selected_equipment"][iter_num]["equipment_reason"])
 						set_equipment_count(importer, opfor_equipment, opfor_data["selected_equipment"][iter_num]["equipment_count"])
+
 	catch //taking 0 risk
 		QDEL_LIST(objectives)
 		QDEL_LIST(selected_equipment)
