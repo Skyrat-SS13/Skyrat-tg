@@ -20,6 +20,9 @@
 
 /// Loads the modular customizations of a character from the savefile
 /datum/preferences/proc/load_character_skyrat(list/save_data)
+	if(!save_data)
+		save_data = list()
+
 	augments = SANITIZE_LIST(save_data["augments"])
 	for(var/aug_slot in augments)
 		var/datum/augment_item/aug = GLOB.augment_items[augments[aug_slot]]
