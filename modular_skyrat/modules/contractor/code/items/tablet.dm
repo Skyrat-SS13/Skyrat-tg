@@ -15,8 +15,6 @@
 	active_program = uplink
 	uplink.program_state = PROGRAM_STATE_ACTIVE
 
-	install_component(new /obj/item/computer_hardware/card_slot)
-
 /obj/item/modular_computer/tablet/syndicate_contract_uplink/preset/uplink/Destroy()
 	opfor_data = null
 	return ..()
