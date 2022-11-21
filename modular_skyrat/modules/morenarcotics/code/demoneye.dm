@@ -73,11 +73,15 @@
 	/// How much time has the drug been in them?
 	var/constant_dose_time = 0
 
-/datum/reagent/drug/demoneye/on_mob_metabolize(mob/living/our_guy)
+/datum/reagent/drug/demoneye/on_mob_metabolize(mob/living/carbon/our_guy)
 	. = ..()
 
 	ADD_TRAIT(our_guy, TRAIT_UNNATURAL_RED_GLOWY_EYES, TRAIT_NARCOTICS)
 	ADD_TRAIT(our_guy, TRAIT_NOSOFTCRIT, TRAIT_NARCOTICS) // IM FUCKIN INVINCIBLE
+
+	our_guy.eye_color_left = BLOODCULT_EYE
+	our_guy.eye_color_right = BLOODCULT_EYE
+	our_guy.update_body()
 
 	var/obj/item/bodypart/arm/left/left_arm = our_guy.get_bodypart(BODY_ZONE_L_ARM)
 	if(left_arm)
@@ -111,6 +115,10 @@
 
 	REMOVE_TRAIT(our_guy, TRAIT_UNNATURAL_RED_GLOWY_EYES, TRAIT_NARCOTICS)
 	REMOVE_TRAIT(our_guy, TRAIT_NOSOFTCRIT, TRAIT_NARCOTICS)
+
+	our_guy.eye_color_left = initial(our_guy.eye_color_left)
+	our_guy.eye_color_right = initial(our_guy.eye_color_right)
+	our_guy.update_body()
 
 	var/obj/item/bodypart/arm/left/left_arm = our_guy.get_bodypart(BODY_ZONE_L_ARM)
 	if(left_arm)
@@ -179,7 +187,7 @@
 	our_guy.set_jitter_if_lower(10 SECONDS * REM * delta_time)
 
 	if(DT_PROB(10, delta_time))
-		hurt_that_mans_organs(our_guy, 10, TRUE)
+		hurt_that_mans_organs(our_guy, 5, TRUE)
 
 /// Hurts a random organ, if its 'really_bad' we'll vomit blood too
 /datum/reagent/drug/demoneye/proc/hurt_that_mans_organs(mob/living/carbon/our_guy, damage, really_bad)
