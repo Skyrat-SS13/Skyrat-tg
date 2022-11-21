@@ -9,62 +9,62 @@
 
 /datum/armament_entry/company_import/deforest/first_aid/gauze
 	item_type = /obj/item/stack/medical/gauze/twelve
-	lower_cost = CARGO_CRATE_VALUE * 0.1
-	upper_cost = CARGO_CRATE_VALUE * 0.3
+	lower_cost = PAYCHECK_CREW * 0.75
+	upper_cost = PAYCHECK_CREW
 	stock_mult = 3
 	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/company_import/deforest/first_aid/splint
 	item_type = /obj/item/stack/medical/splint/twelve
-	lower_cost = CARGO_CRATE_VALUE * 0.2
-	upper_cost = CARGO_CRATE_VALUE * 0.5
+	lower_cost = PAYCHECK_CREW
+	upper_cost = PAYCHECK_CREW * 1.5
 	stock_mult = 3
 	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/company_import/deforest/first_aid/bruise_pack
 	item_type = /obj/item/stack/medical/bruise_pack
-	lower_cost = CARGO_CRATE_VALUE * 0.2
-	upper_cost = CARGO_CRATE_VALUE * 0.5
+	lower_cost = PAYCHECK_CREW
+	upper_cost = PAYCHECK_CREW * 1.5
 	stock_mult = 3
 	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/company_import/deforest/first_aid/ointment
 	item_type = /obj/item/stack/medical/ointment
-	lower_cost = CARGO_CRATE_VALUE * 0.2
-	upper_cost = CARGO_CRATE_VALUE * 0.5
+	lower_cost = PAYCHECK_CREW
+	upper_cost = PAYCHECK_CREW * 1.5
 	stock_mult = 3
 	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
 /datum/armament_entry/company_import/deforest/first_aid/suture
 	item_type = /obj/item/stack/medical/suture
-	lower_cost = CARGO_CRATE_VALUE * 0.4
-	upper_cost = CARGO_CRATE_VALUE * 0.7
+	lower_cost = PAYCHECK_CREW * 1.5
+	upper_cost = PAYCHECK_CREW * 2
 	stock_mult = 3
 
 /datum/armament_entry/company_import/deforest/first_aid/mesh
 	item_type = /obj/item/stack/medical/mesh
-	lower_cost = CARGO_CRATE_VALUE * 0.4
-	upper_cost = CARGO_CRATE_VALUE * 0.7
+	lower_cost = PAYCHECK_CREW * 1.5
+	upper_cost = PAYCHECK_CREW * 2
 	stock_mult = 3
 
 /datum/armament_entry/company_import/deforest/first_aid/bone_gel
 	item_type = /obj/item/stack/medical/bone_gel/four
-	lower_cost = CARGO_CRATE_VALUE * 0.6
-	upper_cost = CARGO_CRATE_VALUE
+	lower_cost = PAYCHECK_CREW * 1.5
+	upper_cost = PAYCHECK_CREW * 2
 	stock_mult = 2
 	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/deforest/first_aid/medicated_sutures
 	item_type = /obj/item/stack/medical/suture/medicated
-	lower_cost = CARGO_CRATE_VALUE
-	upper_cost = CARGO_CRATE_VALUE * 1.4
+	lower_cost = PAYCHECK_CREW * 3
+	upper_cost = PAYCHECK_CREW * 5
 	stock_mult = 2
 	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/deforest/first_aid/advanced_mesh
 	item_type = /obj/item/stack/medical/mesh/advanced
-	lower_cost = CARGO_CRATE_VALUE
-	upper_cost = CARGO_CRATE_VALUE * 1.4
+	lower_cost = PAYCHECK_CREW * 3
+	upper_cost = PAYCHECK_CREW * 5
 	stock_mult = 2
 	interest_required = COMPANY_SOME_INTEREST
 

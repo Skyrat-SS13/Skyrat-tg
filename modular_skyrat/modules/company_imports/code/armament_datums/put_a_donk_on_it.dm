@@ -9,56 +9,56 @@
 
 /datum/armament_entry/company_import/donk/food/ready_donk
 	item_type = /obj/item/food/ready_donk
-	lower_cost = CARGO_CRATE_VALUE * 0.3
-	upper_cost = CARGO_CRATE_VALUE * 0.7
+	lower_cost = PAYCHECK_CREW * 0.75
+	upper_cost = PAYCHECK_CREW
 	stock_mult = 4
 
 /datum/armament_entry/company_import/donk/food/ready_donkhiladas
 	item_type = /obj/item/food/ready_donk/donkhiladas
-	lower_cost = CARGO_CRATE_VALUE * 0.3
-	upper_cost = CARGO_CRATE_VALUE * 0.7
+	lower_cost = PAYCHECK_CREW * 0.75
+	upper_cost = PAYCHECK_CREW
 	stock_mult = 4
 
 /datum/armament_entry/company_import/donk/food/ready_donk_n_cheese
 	item_type = /obj/item/food/ready_donk/mac_n_cheese
-	lower_cost = CARGO_CRATE_VALUE * 0.3
-	upper_cost = CARGO_CRATE_VALUE * 0.7
+	lower_cost = PAYCHECK_CREW * 0.75
+	upper_cost = PAYCHECK_CREW
 	stock_mult = 4
 
 /datum/armament_entry/company_import/donk/food/pockets
 	item_type = /obj/item/storage/box/donkpockets
-	lower_cost = CARGO_CRATE_VALUE
-	upper_cost = CARGO_CRATE_VALUE * 1.5
+	lower_cost = PAYCHECK_CREW * 1.5
+	upper_cost = PAYCHECK_CREW * 2
 	stock_mult = 2
 
 /datum/armament_entry/company_import/donk/food/berry_pockets
 	item_type = /obj/item/storage/box/donkpockets/donkpocketberry
-	lower_cost = CARGO_CRATE_VALUE
-	upper_cost = CARGO_CRATE_VALUE * 1.5
+	lower_cost = PAYCHECK_CREW * 1.5
+	upper_cost = PAYCHECK_CREW * 2
 	stock_mult = 2
 
 /datum/armament_entry/company_import/donk/food/honk_pockets
 	item_type = /obj/item/storage/box/donkpockets/donkpockethonk
-	lower_cost = CARGO_CRATE_VALUE
-	upper_cost = CARGO_CRATE_VALUE * 1.5
+	lower_cost = PAYCHECK_CREW * 1.5
+	upper_cost = PAYCHECK_CREW * 2
 	stock_mult = 2
 
 /datum/armament_entry/company_import/donk/food/pizza_pockets
 	item_type = /obj/item/storage/box/donkpockets/donkpocketpizza
-	lower_cost = CARGO_CRATE_VALUE
-	upper_cost = CARGO_CRATE_VALUE * 1.5
+	lower_cost = PAYCHECK_CREW * 1.5
+	upper_cost = PAYCHECK_CREW * 2
 	stock_mult = 2
 
 /datum/armament_entry/company_import/donk/food/spicy_pockets
 	item_type = /obj/item/storage/box/donkpockets/donkpocketspicy
-	lower_cost = CARGO_CRATE_VALUE
-	upper_cost = CARGO_CRATE_VALUE * 1.5
+	lower_cost = PAYCHECK_CREW * 1.5
+	upper_cost = PAYCHECK_CREW * 2
 	stock_mult = 2
 
 /datum/armament_entry/company_import/donk/food/teriyaki_pockets
 	item_type = /obj/item/storage/box/donkpockets/donkpocketteriyaki
-	lower_cost = CARGO_CRATE_VALUE
-	upper_cost = CARGO_CRATE_VALUE * 1.5
+	lower_cost = PAYCHECK_CREW * 1.5
+	upper_cost = PAYCHECK_CREW * 2
 	stock_mult = 2
 
 // Random donk toy items, fake jumpsuits, balloons, so on
@@ -70,46 +70,46 @@
 
 /datum/armament_entry/company_import/donk/merch/donk_carpet
 	item_type = /obj/item/stack/tile/carpet/donk/thirty
-	lower_cost = CARGO_CRATE_VALUE
-	upper_cost = CARGO_CRATE_VALUE * 2.5
+	lower_cost = PAYCHECK_CREW * 0.75
+	upper_cost = PAYCHECK_CREW
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/company_import/donk/merch/donkfish
 	item_type = /obj/item/storage/fish_case/donkfish
-	lower_cost = CARGO_CRATE_VALUE
-	upper_cost = CARGO_CRATE_VALUE * 2.5
+	lower_cost = PAYCHECK_CREW * 0.75
+	upper_cost = PAYCHECK_CREW
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/company_import/donk/merch/tacticool_turtleneck
 	item_type = /obj/item/clothing/under/syndicate/tacticool
-	lower_cost = CARGO_CRATE_VALUE
-	upper_cost = CARGO_CRATE_VALUE * 2.5
+	lower_cost = PAYCHECK_CREW * 0.75
+	upper_cost = PAYCHECK_CREW
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/company_import/donk/merch/fake_centcom_turtleneck
 	item_type = /obj/item/clothing/under/rank/centcom/officer/replica
-	lower_cost = CARGO_CRATE_VALUE
-	upper_cost = CARGO_CRATE_VALUE * 2.5
+	lower_cost = PAYCHECK_CREW * 0.75
+	upper_cost = PAYCHECK_CREW
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 /datum/armament_entry/company_import/donk/merch/snack_rig
 	item_type = /obj/item/storage/belt/military/snack
-	lower_cost = CARGO_CRATE_VALUE * 1.5
-	upper_cost = CARGO_CRATE_VALUE * 3
+	lower_cost = PAYCHECK_CREW * 1.5
+	upper_cost = PAYCHECK_CREW * 2
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/donk/merch/fake_syndie_suit
 	item_type = /obj/item/storage/box/fakesyndiesuit
-	lower_cost = CARGO_CRATE_VALUE * 1.5
-	upper_cost = CARGO_CRATE_VALUE * 3
+	lower_cost = PAYCHECK_CREW * 1.5
+	upper_cost = PAYCHECK_CREW * 2
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/donk/merch/valid_bloon
 	item_type = /obj/item/toy/balloon/arrest
-	lower_cost = CARGO_CRATE_VALUE * 1.5
-	upper_cost = CARGO_CRATE_VALUE * 3
+	lower_cost = PAYCHECK_CREW * 1.5
+	upper_cost = PAYCHECK_CREW * 2
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 	interest_required = COMPANY_SOME_INTEREST
 

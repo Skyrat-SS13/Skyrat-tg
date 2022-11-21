@@ -9,38 +9,37 @@
 
 /datum/armament_entry/company_import/nakamura_tooling/basic/analyzer
 	item_type = /obj/item/analyzer
-	lower_cost = CARGO_CRATE_VALUE * 0.1
-	upper_cost = CARGO_CRATE_VALUE * 0.6
+	lower_cost = PAYCHECK_CREW * 0.75
+	upper_cost = PAYCHECK_CREW
 
 /datum/armament_entry/company_import/nakamura_tooling/basic/mechanical_toolbox
 	item_type = /obj/item/storage/toolbox/mechanical
-	lower_cost = CARGO_CRATE_VALUE * 0.25
-	upper_cost = CARGO_CRATE_VALUE
+	lower_cost = PAYCHECK_CREW
+	upper_cost = PAYCHECK_CREW * 1.5
 
 /datum/armament_entry/company_import/nakamura_tooling/basic/electrical_toolbox
 	item_type = /obj/item/storage/toolbox/electrical
-	lower_cost = CARGO_CRATE_VALUE * 0.25
-	upper_cost = CARGO_CRATE_VALUE
+	lower_cost = PAYCHECK_CREW
+	upper_cost = PAYCHECK_CREW * 1.5
 
 /datum/armament_entry/company_import/nakamura_tooling/basic/multitool
 	item_type = /obj/item/multitool
-	lower_cost = CARGO_CRATE_VALUE * 0.25
-	upper_cost = CARGO_CRATE_VALUE
+	lower_cost = PAYCHECK_CREW
+	upper_cost = PAYCHECK_CREW * 1.5
 
 /datum/armament_entry/company_import/nakamura_tooling/basic/inducer
 	item_type = /obj/item/inducer
-	lower_cost = CARGO_CRATE_VALUE * 0.25
-	upper_cost = CARGO_CRATE_VALUE
+	lower_cost = PAYCHECK_CREW * 1.5
+	upper_cost = PAYCHECK_CREW * 2
 
 /datum/armament_entry/company_import/nakamura_tooling/basic/magboots
 	item_type = /obj/item/clothing/shoes/magboots
-	lower_cost = CARGO_CRATE_VALUE * 0.5
-	upper_cost = CARGO_CRATE_VALUE * 1.5
-
+	lower_cost = PAYCHECK_CREW * 3
+	upper_cost = PAYCHECK_CREW * 5
 /datum/armament_entry/company_import/nakamura_tooling/basic/insuls
 	item_type = /obj/item/clothing/gloves/color/yellow
-	lower_cost = CARGO_CRATE_VALUE * 0.5
-	upper_cost = CARGO_CRATE_VALUE * 1.5
+	lower_cost = PAYCHECK_CREW * 3
+	upper_cost = PAYCHECK_CREW * 5
 
 // Advanced stuff like power tools and holofans
 
