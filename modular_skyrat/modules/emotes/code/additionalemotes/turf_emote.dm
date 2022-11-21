@@ -62,10 +62,9 @@
 			if(tail.fluffy)
 				user.allowed_turfs += "tails"
 
-		if(human_user.dna.species.mutant_bodyparts["taur"])
-			var/name = human_user.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]
-			var/datum/sprite_accessory/taur/taur = GLOB.sprite_accessories["taur"][name]
-			if(taur.taur_mode & STYLE_TAUR_SNAKE)
+		var/taur_mode = human_user.get_taur_mode()
+		if(taur_mode)
+			if(taur_mode & STYLE_TAUR_SNAKE)
 				user.allowed_turfs -= list("pawprint", "hoofprint", "clawprint")
 				user.allowed_turfs += "constrict"
 

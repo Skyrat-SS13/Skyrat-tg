@@ -20,8 +20,10 @@
 	. = ..()
 	setup_shielding()
 
-///obj/item/clothing/suit/worn_overlays(isinhands = FALSE) //ORIGINAL
-/obj/item/clothing/suit/worn_overlays(mutable_appearance/standing, isinhands = FALSE, file2use, mutant_styles = NONE)
+/// SKYRAT EDIT CHANGE BEGIN - taurs and teshis
+// /obj/item/clothing/suit/worn_overlays(mutable_appearance/standing, isinhands = FALSE) // ORIGINAL
+/obj/item/clothing/suit/worn_overlays(mutable_appearance/standing, isinhands = FALSE, file2use = null, mutant_styles = NONE)
+// SKYRAT EDIT CHANGE END
 	. = ..()
 	if(isinhands)
 		return
@@ -46,7 +48,7 @@
 	if(istype(U) && U.attached_accessory)
 		var/obj/item/clothing/accessory/A = U.attached_accessory
 		if(A.above_suit)
-			. += U.accessory_overlay
+			. += U.modify_accessory_overlay() // SKYRAT EDIT CHANGE - ORIGINAL: . += U.accessory_overlay
 
 /obj/item/clothing/suit/update_clothes_damaged_state(damaged_state = CLOTHING_DAMAGED)
 	..()

@@ -1,3 +1,20 @@
+/**
+ * Get a human's taur mode in a standardized way.
+ *
+ * Returns STYLE_TAUR_* or NONE.
+ */
+/mob/living/carbon/human/proc/get_taur_mode()
+	var/taur_mutant_bodypart = dna.species.mutant_bodyparts["taur"]
+	if(!taur_mutant_bodypart)
+		return NONE
+
+	var/bodypart_name = taur_mutant_bodypart[MUTANT_INDEX_NAME]
+	var/datum/sprite_accessory/taur/taur = GLOB.sprite_accessories["taur"][bodypart_name]
+	if(!taur)
+		return NONE
+
+	return taur.taur_mode
+
 /datum/sprite_accessory/taur
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/taur.dmi'
 	key = "taur"
