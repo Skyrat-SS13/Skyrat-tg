@@ -25,6 +25,7 @@
 	taste_description = "asbestos"
 	ph = 10
 	overdose_threshold = 30
+	metabolization_rate = 0.04 * REM
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	addiction_types = list(/datum/addiction/hallucinogens = 5)
 

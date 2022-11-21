@@ -76,8 +76,8 @@
 /datum/reagent/drug/demoneye/on_mob_metabolize(mob/living/our_guy)
 	. = ..()
 
-	ADD_TRAIT(our_guy, TRAIT_UNNATURAL_RED_GLOWY_EYES, TRAIT_GENERIC)
-	ADD_TRAIT(our_guy, TRAIT_NOSOFTCRIT, TRAIT_GENERIC) // IM FUCKIN INVINCIBLE
+	ADD_TRAIT(our_guy, TRAIT_UNNATURAL_RED_GLOWY_EYES, TRAIT_NARCOTICS)
+	ADD_TRAIT(our_guy, TRAIT_NOSOFTCRIT, TRAIT_NARCOTICS) // IM FUCKIN INVINCIBLE
 
 	var/obj/item/bodypart/arm/left/left_arm = our_guy.get_bodypart(BODY_ZONE_L_ARM)
 	if(left_arm)
@@ -109,8 +109,8 @@
 /datum/reagent/drug/demoneye/on_mob_end_metabolize(mob/living/carbon/our_guy)
 	. = ..()
 
-	REMOVE_TRAIT(our_guy, TRAIT_UNNATURAL_RED_GLOWY_EYES, TRAIT_GENERIC)
-	REMOVE_TRAIT(our_guy, TRAIT_NOSOFTCRIT, TRAIT_GENERIC)
+	REMOVE_TRAIT(our_guy, TRAIT_UNNATURAL_RED_GLOWY_EYES, TRAIT_NARCOTICS)
+	REMOVE_TRAIT(our_guy, TRAIT_NOSOFTCRIT, TRAIT_NARCOTICS)
 
 	var/obj/item/bodypart/arm/left/left_arm = our_guy.get_bodypart(BODY_ZONE_L_ARM)
 	if(left_arm)
