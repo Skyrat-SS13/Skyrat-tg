@@ -15,7 +15,7 @@
 
 	transform = transform.Turn(rand(0, 360))
 
-	ADD_TRAIT(src, TRAIT_DRIED, TRAIT_GENERIC) // Lets it be put in rolling paper and pipes
+	ADD_TRAIT(src, TRAIT_DRYABLE, TRAIT_NARCOTICS) // Lets it be put in rolling paper and pipes
 
 /datum/reagent/drug/crystal_firefighter_foam
 	name = "Crystalline FireFighting Foam"
