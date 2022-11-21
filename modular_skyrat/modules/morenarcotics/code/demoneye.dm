@@ -166,7 +166,7 @@
 		flash_color(our_guy, flash_color = "#ff0000", flash_time = 3 SECONDS)
 
 	if(DT_PROB(5, delta_time))
-		hurt_that_mans_organs(our_guy, 5, FALSE)
+		hurt_that_mans_organs(our_guy, 3, FALSE)
 
 	for(var/possible_twitch in our_guy.reagents.reagent_list) // Combining this with twitch could cause some heart attack problems
 		if(istype(possible_twitch, /datum/reagent/drug/twitch) && DT_PROB(5, delta_time))
@@ -179,7 +179,7 @@
 	our_guy.set_jitter_if_lower(10 SECONDS * REM * delta_time)
 
 	if(DT_PROB(10, delta_time))
-		hurt_that_mans_organs(our_guy, 15, TRUE)
+		hurt_that_mans_organs(our_guy, 10, TRUE)
 
 /// Hurts a random organ, if its 'really_bad' we'll vomit blood too
 /datum/reagent/drug/demoneye/proc/hurt_that_mans_organs(mob/living/carbon/our_guy, damage, really_bad)
