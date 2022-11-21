@@ -47,7 +47,7 @@
 	our_guy.add_movespeed_modifier(/datum/movespeed_modifier/reagent/twitch)
 	our_guy.next_move_modifier -= 0.3 // For the duration of this you move and attack faster
 
-	our_guy.sound_environment_override = SOUND_ENVIROMENT_PHASED
+	our_guy.sound_environment_override = SOUND_ENVIRONMENT_PHASED
 
 	RegisterSignal(our_guy, COMSIG_MOVABLE_MOVED, PROC_REF(on_movement), TRUE)
 
@@ -134,7 +134,7 @@
 	our_guy.adjustOrganLoss(ORGAN_SLOT_HEART, 1 * REM * delta_time)
 
 	if(DT_PROB(5, delta_time))
-		to_chat(our_guy, span_danger("You cough up strings of blood!"))
+		to_chat(our_guy, span_danger("You cough up a splatter of blood!"))
 		our_guy.spray_blood(our_guy.dir, 1)
 		our_guy.emote("cough")
 

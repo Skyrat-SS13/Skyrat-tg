@@ -8,7 +8,7 @@
 	volume = 10
 	ignore_flags = FALSE
 	reagent_flags = NONE
-	list_reagents = list(/datum/reagent/drug/demoneye = 10)
+	list_reagents = list(/datum/reagent/drug/demoneye = 10, /datum/reagent/impurity/healing/medicine_failure = 5,) // Medicine failure will randomly heal a tiny bit of a random damage
 	label_examine = FALSE
 
 /obj/item/reagent_containers/hypospray/medipen/demoneye_applicator/inject(mob/living/affected_mob, mob/user) // Mostly the same as default just with some changed logic for if it succeeds
@@ -89,7 +89,7 @@
 		right_arm.unarmed_damage_low += 5
 		right_arm.unarmed_damage_high += 5
 
-	our_guy.sound_environment_override = SOUND_ENVIROMENT_PHASED
+	our_guy.sound_environment_override = SOUND_ENVIRONMENT_PHASED
 
 	if(!our_guy.hud_used)
 		return
