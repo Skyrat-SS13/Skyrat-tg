@@ -1,4 +1,4 @@
-#define DEFAULT_TIMED 4 SECONDS
+#define DEFAULT_TIMED (4 SECONDS)
 
 /obj/item/glassblowing
 	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
