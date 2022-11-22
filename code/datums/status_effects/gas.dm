@@ -52,6 +52,10 @@
 	duration = 8
 	can_melt = FALSE
 
+/datum/status_effect/freon/lasting
+	id = "lasting_frozen"
+	duration = -1
+
 /datum/status_effect/hypernob_protection
 	id = "hypernob_protection"
 	duration = 10 SECONDS
