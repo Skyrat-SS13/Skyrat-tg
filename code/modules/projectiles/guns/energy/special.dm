@@ -374,10 +374,7 @@
 
 /obj/item/gun/energy/tesla_cannon/Initialize(mapload)
 	. = ..()
-<<<<<<< HEAD
 	//AddComponent(/datum/component/automatic_fire, 0.1 SECONDS) SKYRAT EDIT REMOVAL
-=======
-	AddComponent(/datum/component/automatic_fire, 0.1 SECONDS)
 
 /obj/item/gun/energy/marksman_revolver
 	name = "marksman revolver"
@@ -439,4 +436,3 @@
 	new_coin.fire()
 
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
->>>>>>> f55aafcc684 (Adds the Marksman Revolver from Ultrakill, with coinflipping and splitshotting! (#70612))
