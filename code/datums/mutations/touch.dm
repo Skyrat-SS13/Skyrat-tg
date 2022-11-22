@@ -17,6 +17,7 @@
 	cooldown_time = 10 SECONDS
 	invocation_type = INVOCATION_NONE
 	spell_requirements = NONE
+	antimagic_flags = NONE
 
 	hand_path = /obj/item/melee/touch_attack/shock
 	draw_message = span_notice("You channel electricity into your hand.")
