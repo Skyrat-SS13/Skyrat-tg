@@ -1,4 +1,7 @@
 // All available options
+// Remember these are read from:
+// 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/MOD_sprite_accessories/icons/MOD_mask.dmi'
+
 #define STANDARD_BLUE "standard_blue"
 #define ALERT_AMBER "alert_amber"
 #define CONTRACTOR_RED "contractor_red"
@@ -70,6 +73,10 @@
 /datum/mod_theme/elite
 	hardlight_theme = ALERT_AMBER
 
+/*	https://github.com/Skyrat-SS13/Skyrat-tg/pull/17455
+/datum/mod_theme/covert
+	hardlight_theme =
+*/
 
 //	Misc.
 /datum/mod_theme/apocryphal
@@ -88,6 +95,9 @@
 
 /datum/mod_theme/frontline
 	hardlight_theme = ALERT_AMBER
+
+/datum/mod_theme/marines
+	hardlight_theme = COSMIC_BLUE
 
 
 // Debug
