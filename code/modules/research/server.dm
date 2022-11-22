@@ -27,10 +27,21 @@
 
 /obj/machinery/rnd/server/Initialize(mapload)
 	. = ..()
+<<<<<<< HEAD
+=======
+	if(CONFIG_GET(flag/no_default_techweb_link))
+		stored_research = new /datum/techweb
+	SSresearch.servers |= src
+	stored_research.techweb_servers |= src
+>>>>>>> 118299b70b2 (More expanded multi-web support (#71402))
 	name += " [num2hex(rand(1,65535), -1)]" //gives us a random four-digit hex number as part of the name. Y'know, for fluff.
 	SSresearch.servers |= src
 
 /obj/machinery/rnd/server/Destroy()
+	if(stored_research)
+		stored_research.techweb_servers -= src
+	if(CONFIG_GET(flag/no_default_techweb_link))
+		QDEL_NULL(stored_research)
 	SSresearch.servers -= src
 	return ..()
 

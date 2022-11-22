@@ -47,8 +47,14 @@ Nothing else in the console has ID requirements.
 
 /obj/machinery/computer/rdconsole/Initialize(mapload)
 	. = ..()
+<<<<<<< HEAD
 	stored_research = SSresearch.science_tech
 	stored_research.consoles_accessing[src] = TRUE
+=======
+	if(!CONFIG_GET(flag/no_default_techweb_link))
+		stored_research = SSresearch.science_tech
+		stored_research.consoles_accessing += src
+>>>>>>> 118299b70b2 (More expanded multi-web support (#71402))
 
 /obj/machinery/computer/rdconsole/Destroy()
 	if(stored_research)
@@ -145,12 +151,21 @@ Nothing else in the console has ID requirements.
 
 /obj/machinery/computer/rdconsole/ui_assets(mob/user)
 	return list(
-		get_asset_datum(/datum/asset/spritesheet/research_designs)
+		get_asset_datum(/datum/asset/spritesheet/research_designs),
 	)
 
 // heavy data from this proc should be moved to static data when possible
 /obj/machinery/computer/rdconsole/ui_data(mob/user)
+<<<<<<< HEAD
 	. = list(
+=======
+	var/list/data = list()
+	data["stored_research"] = !!stored_research
+	data["locked"] = locked
+	if(!stored_research) //lack of a research node is all we care about.
+		return data
+	data += list(
+>>>>>>> 118299b70b2 (More expanded multi-web support (#71402))
 		"nodes" = list(),
 		"experiments" = list(),
 		"researched_designs" = stored_research.researched_designs,
@@ -160,7 +175,10 @@ Nothing else in the console has ID requirements.
 		"sec_protocols" = !(obj_flags & EMAGGED),
 		"t_disk" = null,
 		"d_disk" = null,
+<<<<<<< HEAD
 		"locked" = locked
+=======
+>>>>>>> 118299b70b2 (More expanded multi-web support (#71402))
 	)
 
 	if (t_disk)

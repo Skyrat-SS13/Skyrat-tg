@@ -103,23 +103,43 @@ export const Techweb = (props, context) => {
   );
 };
 
+<<<<<<< HEAD
+=======
+const TechwebStart = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { locked, stored_research } = data;
+  if (locked) {
+    return (
+      <Modal width="15em" align="center" className="Techweb__LockedModal">
+        <div>
+          <b>Console Locked</b>
+        </div>
+        <Button icon="unlock" onClick={() => act('toggleLock')}>
+          Unlock
+        </Button>
+      </Modal>
+    );
+  }
+  if (!stored_research) {
+    return (
+      <Modal width="25em" align="center" className="Techweb__LockedModal">
+        <div>
+          <b>No research techweb found, please synchronize the console.</b>
+        </div>
+      </Modal>
+    );
+  }
+  return <TechwebContent />;
+};
+
+>>>>>>> 118299b70b2 (More expanded multi-web support (#71402))
 export const AppTechweb = (props, context) => {
   const { act, data } = useRemappedBackend(context);
   const { locked } = data;
   return (
     <NtosWindow width={640} height={735}>
       <NtosWindow.Content scrollable>
-        {!!locked && (
-          <Modal width="15em" align="center" className="Techweb__LockedModal">
-            <div>
-              <b>Console Locked</b>
-            </div>
-            <Button icon="unlock" onClick={() => act('toggleLock')}>
-              Unlock
-            </Button>
-          </Modal>
-        )}
-        <TechwebContent />
+        <TechwebStart />
       </NtosWindow.Content>
     </NtosWindow>
   );
