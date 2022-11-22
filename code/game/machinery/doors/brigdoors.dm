@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //#define MAX_TIMER 15 MINUTES //ORIGINAL
 #define MAX_TIMER 60 MINUTES //SKYRAT EDIT CHANGE
 //#define PRESET_SHORT 2 MINUTES //ORIGINAL
@@ -6,6 +7,12 @@
 #define PRESET_MEDIUM 10 MINUTES //SKYRAT EDIT CHANGE
 //#define PRESET_LONG 5 MINUTES //ORIGINAL
 #define PRESET_LONG 15 MINUTES //SKYRAT EDIT CHANGE
+=======
+#define MAX_TIMER (15 MINUTES)
+#define PRESET_SHORT (2 MINUTES)
+#define PRESET_MEDIUM (3 MINUTES)
+#define PRESET_LONG (5 MINUTES)
+>>>>>>> 9dab26371cf (Throws a bunch of parenthesis around to ensure dear Aunt Sally is always properly excused. (#71281))
 
 /**
  * Brig Door control displays.
