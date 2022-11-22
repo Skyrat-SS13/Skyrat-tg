@@ -223,6 +223,7 @@
 		. += emissive_block
 
 /atom/movable/proc/onZImpact(turf/impacted_turf, levels, message = TRUE)
+	SHOULD_CALL_PARENT(TRUE)
 	if(message)
 		visible_message(span_danger("[src] crashes into [impacted_turf]!"))
 	var/atom/highest = impacted_turf
@@ -233,6 +234,7 @@
 			if(hurt_atom.layer > highest.layer)
 				highest = hurt_atom
 	INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)
+	SEND_SIGNAL(src, COMSIG_ATOM_ON_Z_IMPACT, impacted_turf, levels)
 	return TRUE
 
 /*
@@ -1472,6 +1474,7 @@
 
 /atom/movable/vv_get_dropdown()
 	. = ..()
+	VV_DROPDOWN_OPTION(VV_HK_EDIT_PARTICLES, "Edit Particles")
 	VV_DROPDOWN_OPTION(VV_HK_DEADCHAT_PLAYS, "Start/Stop Deadchat Plays")
 	VV_DROPDOWN_OPTION(VV_HK_ADD_FANTASY_AFFIX, "Add Fantasy Affix")
 
@@ -1480,6 +1483,10 @@
 
 	if(!.)
 		return
+
+	if(href_list[VV_HK_EDIT_PARTICLES] && check_rights(R_VAREDIT))
+		var/client/C = usr.client
+		C?.open_particle_editor(src)
 
 	if(href_list[VV_HK_DEADCHAT_PLAYS] && check_rights(R_FUN))
 		if(tgui_alert(usr, "Allow deadchat to control [src] via chat commands?", "Deadchat Plays [src]", list("Allow", "Cancel")) != "Allow")
