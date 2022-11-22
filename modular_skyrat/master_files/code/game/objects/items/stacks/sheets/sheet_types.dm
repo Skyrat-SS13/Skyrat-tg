@@ -67,3 +67,14 @@ GLOBAL_LIST_INIT(skyrat_cloth_recipes, list ( \
 /obj/item/stack/sheet/cloth/get_main_recipes()
 	. = ..()
 	. += GLOB.skyrat_cloth_recipes
+
+// Leather
+
+GLOBAL_LIST_INIT(skyrat_leather_recipes, list ( \
+	new/datum/stack_recipe("gear harness", /obj/item/clothing/under/misc/skyrat/gear_harness, 6), \
+	new/datum/stack_recipe("xenoarch belt", /obj/item/storage/belt/utility/xenoarch, 4), \
+))
+
+/obj/item/stack/sheet/leather/get_main_recipes()
+	. = ..()
+	. += GLOB.skyrat_leather_recipes
