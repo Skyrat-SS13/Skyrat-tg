@@ -82,29 +82,15 @@ const abbreviateName = (name) => abbreviations[name] ?? name;
 // Actual Components
 
 export const Techweb = (props, context) => {
-  const { act, data } = useRemappedBackend(context);
-  const { locked } = data;
   return (
     <Window width={640} height={735}>
       <Window.Content scrollable>
-        {!!locked && (
-          <Modal width="15em" align="center" className="Techweb__LockedModal">
-            <div>
-              <b>Console Locked</b>
-            </div>
-            <Button icon="unlock" onClick={() => act('toggleLock')}>
-              Unlock
-            </Button>
-          </Modal>
-        )}
-        <TechwebContent />
+        <TechwebStart />
       </Window.Content>
     </Window>
   );
 };
 
-<<<<<<< HEAD
-=======
 const TechwebStart = (props, context) => {
   const { act, data } = useBackend(context);
   const { locked, stored_research } = data;
@@ -132,7 +118,6 @@ const TechwebStart = (props, context) => {
   return <TechwebContent />;
 };
 
->>>>>>> 118299b70b2 (More expanded multi-web support (#71402))
 export const AppTechweb = (props, context) => {
   const { act, data } = useRemappedBackend(context);
   const { locked } = data;
