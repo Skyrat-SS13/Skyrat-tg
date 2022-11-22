@@ -43,7 +43,17 @@
 	RefreshParts()
 	update_icon(UPDATE_OVERLAYS)
 
+<<<<<<< HEAD
 	RegisterSignal(
+=======
+/obj/machinery/rnd/production/connect_techweb(datum/techweb/new_techweb)
+	if(stored_research)
+		UnregisterSignal(stored_research, list(COMSIG_TECHWEB_ADD_DESIGN, COMSIG_TECHWEB_REMOVE_DESIGN))
+
+	. = ..()
+
+	RegisterSignals(
+>>>>>>> fa7688d043a (Save 0.6-0.7s of init time by splitting registering lists of signals into its own proc, and optimizing QDELETED (#71056))
 		stored_research,
 		list(COMSIG_TECHWEB_ADD_DESIGN, COMSIG_TECHWEB_REMOVE_DESIGN),
 		PROC_REF(on_techweb_update)

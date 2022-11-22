@@ -57,8 +57,21 @@
 	rmat = AddComponent(/datum/component/remote_materials, "mechfab", mapload && link_on_init, mat_container_flags=BREAKDOWN_FLAGS_LATHE)
 	cached_designs = list()
 	RefreshParts() //Recalculating local material sizes if the fab isn't linked
+<<<<<<< HEAD
 	update_menu_tech()
 	RegisterSignal(
+=======
+	if(stored_research)
+		update_menu_tech()
+	return ..()
+
+/obj/machinery/mecha_part_fabricator/proc/connect_techweb(datum/techweb/new_techweb)
+	if(stored_research)
+		UnregisterSignal(stored_research, list(COMSIG_TECHWEB_ADD_DESIGN, COMSIG_TECHWEB_REMOVE_DESIGN))
+
+	stored_research = new_techweb
+	RegisterSignals(
+>>>>>>> fa7688d043a (Save 0.6-0.7s of init time by splitting registering lists of signals into its own proc, and optimizing QDELETED (#71056))
 		stored_research,
 		list(COMSIG_TECHWEB_ADD_DESIGN, COMSIG_TECHWEB_REMOVE_DESIGN),
 		PROC_REF(on_techweb_update)
