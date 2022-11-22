@@ -130,6 +130,7 @@
 	reqs = list(/obj/item/bedsheet = 1)
 	category = CAT_CLOTHING
 
+<<<<<<< HEAD
 /datum/crafting_recipe/cowboyboots
 	name = "Cowboy Boots"
 	result = /obj/item/clothing/shoes/cowboy
@@ -137,6 +138,8 @@
 	time = 45
 	category = CAT_CLOTHING
 
+=======
+>>>>>>> 590847bdf74 (Biogenerator tweaks, leather makes more belts and clothing (#71175))
 /datum/crafting_recipe/lizardboots
 	name = "Lizard Skin Boots"
 	result = /obj/effect/spawner/random/clothing/lizardboots
