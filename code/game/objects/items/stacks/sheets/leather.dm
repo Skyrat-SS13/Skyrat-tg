@@ -189,17 +189,10 @@ GLOBAL_LIST_INIT(leather_recipes, list ( \
 	new/datum/stack_recipe("wallet", /obj/item/storage/wallet, 1), \
 	new/datum/stack_recipe("muzzle", /obj/item/clothing/mask/muzzle, 2), \
 	new/datum/stack_recipe("saddle", /obj/item/saddle, 5), \
-<<<<<<< HEAD
-	//SKYRAT EDIT ADDITION BEGIN
-	new/datum/stack_recipe("gear harness", /obj/item/clothing/under/misc/skyrat/gear_harness, 6), \
-	new/datum/stack_recipe("xenoarch belt", /obj/item/storage/belt/utility/xenoarch, 4), \
-	//SKYRAT EDIT ADDITION END
-=======
 	new/datum/stack_recipe("leather shoes", /obj/item/clothing/shoes/laceup, 2), \
 	new/datum/stack_recipe("cowboy boots", /obj/item/clothing/shoes/cowboy, 2), \
 	new/datum/stack_recipe("botany gloves", /obj/item/clothing/gloves/botanic_leather, 3), \
 	new/datum/stack_recipe("leather satchel", /obj/item/storage/backpack/satchel/leather, 5), \
->>>>>>> 590847bdf74 (Biogenerator tweaks, leather makes more belts and clothing (#71175))
 	new/datum/stack_recipe("sheriff vest", /obj/item/clothing/accessory/vest_sheriff, 4), \
 	new/datum/stack_recipe("leather jacket", /obj/item/clothing/suit/jacket/leather, 7), \
 	new/datum/stack_recipe("biker jacket", /obj/item/clothing/suit/jacket/leather/biker, 7), \
