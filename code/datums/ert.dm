@@ -16,15 +16,12 @@
 	var/spawn_admin = FALSE
 	/// If TRUE, we try and pick one of the most experienced players who volunteered to fill the leader slot
 	var/leader_experience = TRUE
-<<<<<<< HEAD
 	///SKYRAT EDIT: Do we want to notify the players of this ERT?
 	var/notify_players = TRUE
-=======
 	/// A custom map template to spawn the ERT at. If this is null or use_custom_shuttle is FALSE, the ERT will spawn at Centcom.
 	var/datum/map_template/ert_template
 	/// If we should actually _use_ the ert_template custom shuttle
 	var/use_custom_shuttle = TRUE
->>>>>>> 021e56f8ffa (Adds the ability for ERTs to use a custom shuttle (#71348))
 
 /datum/ert/New()
 	if (!polldesc)
