@@ -88,8 +88,8 @@
 		/obj/item/clothing/shoes/sneakers/brown = 1,
 	)
 	access_lists["[ACCESS_RD]"] = list(
-		/obj/item/clothing/head/beret/science/fancy/rd = 1,
-		/obj/item/clothing/head/beret/science/fancy/rd/alt = 1,
+		/obj/item/clothing/head/beret/science/rd = 1,
+		/obj/item/clothing/head/beret/science/rd/alt = 1,
 		/obj/item/clothing/under/rank/rnd/research_director = 1,
 		/obj/item/clothing/under/rank/rnd/research_director/skirt = 1,
 		/obj/item/clothing/under/rank/rnd/research_director/alt = 1,

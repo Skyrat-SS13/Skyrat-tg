@@ -167,7 +167,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 		remove_data_huds()
 
 	// Update our old body's medhud since we're abandoning it
-	if(mind?.current)
+	if(isliving(mind?.current))
 		mind.current.med_hud_set_status()
 
 	GLOB.ghost_images_default -= ghostimage_default
@@ -465,8 +465,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(usr, span_warning("Not when you're not dead!"))
 		return
 	var/list/filtered = list()
-	for(var/V in GLOB.sortedAreas)
-		var/area/A = V
+	for(var/area/A as anything in get_sorted_areas())
 		if(!(A.area_flags & HIDDEN_AREA))
 			filtered += A
 	var/area/thearea = tgui_input_list(usr, "Area to jump to", "BOOYEA", filtered)

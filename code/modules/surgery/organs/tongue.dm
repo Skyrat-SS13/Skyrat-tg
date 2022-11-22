@@ -22,10 +22,7 @@
 		/datum/language/draconic,
 		/datum/language/codespeak,
 		/datum/language/monkey,
-		/datum/language/skrell, //SKYRAT EDIT - I forgot to push the commit!!
 		/datum/language/narsie,
-		/datum/language/machine, //SKYRAT EDIT - Gives synths the abiltiy to speak EAL
-		/datum/language/slime, //SKYRAT EDIT - Gives slimes the ability to speak slime once more.
 		/datum/language/beachbum,
 		/datum/language/aphasia,
 		/datum/language/piratespeak,
@@ -33,15 +30,7 @@
 		/datum/language/sylvan,
 		/datum/language/shadowtongue,
 		/datum/language/terrum,
-		/datum/language/vox, //SKYRAT EDIT - customization - extra languages
 		/datum/language/nekomimetic,
-		/datum/language/xerxian,  //SKYRAT EDIT - customization - extra languages
-		/datum/language/panslavic,  //SKYRAT EDIT - customization - extra languages
-		/datum/language/spacer,  //SKYRAT EDIT - customization - extra languages
-		/datum/language/gutter,  //SKYRAT EDIT - customization - extra languages
-		/datum/language/yangyu, // SKYRAT EDIT - customization - extra languages
-		/datum/language/schechi, // SKYRAT EDIT - customization - extra languages
-		/datum/language/ashtongue, // SKYRAT EDIT - customization - extra languages
 	))
 
 /obj/item/organ/internal/tongue/Initialize(mapload)

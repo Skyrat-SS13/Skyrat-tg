@@ -49,9 +49,9 @@
 	name = "Royal"
 	icon_state = "royal"
 
-/datum/sprite_accessory/xenohead/hollywood
-	name = "Hollywood"
-	icon_state = "hollywood"
+/datum/sprite_accessory/xenohead/net
+	name = "Nethead"
+	icon_state = "net"
 
 /datum/sprite_accessory/xenohead/warrior
 	name = "Warrior"

@@ -169,10 +169,8 @@
 		if(worn)
 			if(istype(worn, /obj/item/modular_computer/tablet/pda))
 				var/obj/item/modular_computer/tablet/pda/PDA = worn
-				var/obj/item/computer_hardware/card_slot/card = PDA.all_components[MC_CARD]
+				PDA.InsertID(id, H)
 
-				if(card)
-					card.try_insert(id)
 			else if(istype(worn, /obj/item/storage/wallet))
 				var/obj/item/storage/wallet/W = worn
 				W.front_id = id
@@ -286,7 +284,7 @@
 	message_admins(span_adminnotice("[key_name_admin(usr)] used the Test Areas debug command checking [log_message]."))
 	log_admin("[key_name(usr)] used the Test Areas debug command checking [log_message].")
 
-	for(var/area/A in world)
+	for(var/area/A as anything in GLOB.areas)
 		if(on_station)
 			var/list/area_turfs = get_area_turfs(A.type)
 			if (!length(area_turfs))
