@@ -20,7 +20,12 @@
 
 /obj/machinery/rnd/Initialize(mapload)
 	. = ..()
+<<<<<<< HEAD
 	stored_research = SSresearch.science_tech
+=======
+	if(!CONFIG_GET(flag/no_default_techweb_link))
+		connect_techweb(SSresearch.science_tech)
+>>>>>>> 981cd51fc4f (RND machines now use connect_techweb (automatically updates) (#71420))
 	wires = new /datum/wires/rnd(src)
 
 /obj/machinery/rnd/Destroy()
