@@ -15,7 +15,8 @@
 	var/current_capacity = BSRPD_CAPACITY_MAX
 	var/ranged_use_cost = BSRPD_CAPACITY_USE
 	var/in_use = FALSE
-	var/toggle = FALSE
+	/// Flag to check if we should use remote piping
+	var/remote_piping_toggle = FALSE
 
 /obj/item/pipe_dispenser/bluespace/attackby(obj/item/item, mob/user, param)
 	if(istype(item, /obj/item/stack/sheet/bluespace_crystal))
@@ -49,12 +50,14 @@
 
 /obj/item/pipe_dispenser/bluespace/AltClick(mob/user)
 	. = ..()
-	toggle = !toggle
-	balloon_alert(user, "safety [toggle ? "off!" : "on"]")
+	if(!.)
+		return // too far away
+	remote_piping_toggle = !remote_piping_toggle
+	balloon_alert(user, "remote piping [remote_piping_toggle ? "off" : "on"]")
 	playsound(get_turf(src), 'sound/machines/click.ogg', 50, TRUE)
 
 /obj/item/pipe_dispenser/bluespace/afterattack(atom/target, mob/user, prox)
-	if(prox || !toggle) // If we are in proximity to the target or have our safety on, don't use charge and don't call this shitcode.
+	if(prox || !remote_piping_toggle) // If we are in proximity to the target or have our safety on, don't use charge and don't call this shitcode.
 		return ..()
 	if(current_capacity < ranged_use_cost)
 		to_chat(user, span_warning("The [src] lacks the charge to do that."))
