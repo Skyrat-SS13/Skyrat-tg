@@ -354,5 +354,10 @@
 	var/mob/living/user = last_user_ref?.resolve()
 	if (isnull(user))
 		return FALSE
+<<<<<<< HEAD
+=======
+	if(surgery.surgery_flags & SURGERY_IGNORE_CLOTHES)
+		return FALSE
+>>>>>>> 7114b45ad6b (Fixes surgery clothing checks (#71435))
 
 	return !surgery.ignore_clothes && !get_location_accessible(target, user.zone_selected)
