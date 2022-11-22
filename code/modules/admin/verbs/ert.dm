@@ -89,11 +89,8 @@
 		"leader_experience" = list("desc" = "Pick an experienced leader", "type" = "boolean", "value" = "[(ertemplate.leader_experience ? "Yes" : "No")]"),
 		"random_names" = list("desc" = "Randomize names", "type" = "boolean", "value" = "[(ertemplate.random_names ? "Yes" : "No")]"),
 		"spawn_admin" = list("desc" = "Spawn yourself as briefing officer", "type" = "boolean", "value" = "[(ertemplate.spawn_admin ? "Yes" : "No")]"),
-<<<<<<< HEAD
-		"notify_players" = list("desc" = "Notify players that you have sent an ERT", "type" = "boolean", "value" = "[(ertemplate.notify_players ? "Yes" : "No")]") //SKYRAT EDIT ADDITION
-=======
+		"notify_players" = list("desc" = "Notify players that you have sent an ERT", "type" = "boolean", "value" = "[(ertemplate.notify_players ? "Yes" : "No")]"), //SKYRAT EDIT ADDITION
 		"use_custom_shuttle" = list("desc" = "Use the ERT's custom shuttle (if it has one)", "type" = "boolean", "value" = "[(ertemplate.use_custom_shuttle ? "Yes" : "No")]"),
->>>>>>> 021e56f8ffa (Adds the ability for ERTs to use a custom shuttle (#71348))
 		)
 	)
 
@@ -120,11 +117,8 @@
 		ertemplate.leader_experience = prefs["leader_experience"]["value"] == "Yes"
 		ertemplate.random_names = prefs["random_names"]["value"] == "Yes"
 		ertemplate.spawn_admin = prefs["spawn_admin"]["value"] == "Yes"
-<<<<<<< HEAD
 		ertemplate.notify_players = prefs["notify_players"]["value"] == "Yes" //SKYRAT EDIT ADDITION
-=======
 		ertemplate.use_custom_shuttle = prefs["use_custom_shuttle"]["value"] == "Yes"
->>>>>>> 021e56f8ffa (Adds the ability for ERTs to use a custom shuttle (#71348))
 
 		var/list/spawnpoints = GLOB.emergencyresponseteamspawn
 		var/index = 0
