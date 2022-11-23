@@ -200,7 +200,7 @@
 	fire_delay = 10
 	recoil = 3
 	can_be_sawn_off = FALSE
-	realistic = FALSE
+	can_jam = FALSE
 	pin = /obj/item/firing_pin/implant/pindicate
 	company_flag = COMPANY_REMOVED
 
