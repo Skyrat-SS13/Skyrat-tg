@@ -12,9 +12,7 @@
 	spread = 6
 	pin = /obj/item/firing_pin/implant/mindshield
 	can_suppress = FALSE
-	emp_damageable = FALSE
 	can_bayonet = FALSE
-	realistic = FALSE
 	mag_display = TRUE
 	mag_display_ammo = FALSE
 	mag_type = /obj/item/ammo_box/magazine/m44a
