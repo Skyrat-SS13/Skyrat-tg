@@ -49,6 +49,8 @@
 /obj/item/clothing/head/beret/sec/nri
 	name = "officer beret"
 	desc = "Used by middle-ranking NRI officers and is usually worn off-duty or on special occassions. Or whenever feeling cute."
+	greyscale_config = null
+	greyscale_config_worn = null
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "nri_beret"

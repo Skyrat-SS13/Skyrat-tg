@@ -33,3 +33,8 @@
 	icon_state = "russian_green_backpack"
 	worn_icon_state = "russian_green_backpack"
 	inhand_icon_state = "securitypack"
+
+/obj/item/storage/backpack/nri/marine
+	desc = "A large beige backpack for holding extra tactical supplies."
+	icon_state = "russian_beige_backpack"
+	worn_icon_state = "russian_beige_backpack"

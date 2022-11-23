@@ -25,6 +25,12 @@
 	icon_state = "russian_brown_belt"
 	worn_icon_state = "russian_brown_belt"
 
+/obj/item/storage/belt/military/nri/marine
+	name = "beige tactical belt"
+	desc = "A beige tactical belt made for storing military grade hardware."
+	icon_state = "russian_beige_belt"
+	worn_icon_state = "russian_beige_belt"
+
 /obj/item/storage/belt/military/nri/soldier/PopulateContents()
 	generate_items_inside(list(
 		/obj/item/ammo_box/magazine/akm = 4,

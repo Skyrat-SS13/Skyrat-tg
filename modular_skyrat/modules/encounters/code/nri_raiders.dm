@@ -37,14 +37,14 @@
 	ears = /obj/item/radio/headset/guild
 	mask = null
 
-	uniform = /obj/item/clothing/under/costume/nri
+	uniform = /obj/item/clothing/under/costume/nri/marine
 	suit = null
 
 	gloves = /obj/item/clothing/gloves/combat
 
 	shoes = /obj/item/clothing/shoes/combat
 
-	belt = /obj/item/storage/belt/military/nri/pirate
+	belt = /obj/item/storage/belt/military/nri/marine/pirate
 	back = /obj/item/storage/backpack/satchel/leather
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack/raider = 1, /obj/item/crucifix = 1, /obj/item/ammo_box/magazine/m9mm = 3, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/tablet/pda/security = 1)
 	l_pocket = /obj/item/gun/ballistic/automatic/pistol
@@ -234,7 +234,7 @@
 		/obj/item/grenade/flashbang = 1,
 	),src)
 
-/obj/item/storage/belt/military/nri/pirate/PopulateContents()
+/obj/item/storage/belt/military/nri/marine/pirate/PopulateContents()
 	generate_items_inside(list(
 		/obj/item/knife/combat = 1,
 		/obj/item/grenade/smokebomb = 1,

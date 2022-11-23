@@ -26,3 +26,6 @@
 
 /obj/item/clothing/under/costume/nri/engineer
 	icon_state = "nri_engineer"
+
+/obj/item/clothing/under/costume/nri/marine
+	icon_state = "nri_marine"
