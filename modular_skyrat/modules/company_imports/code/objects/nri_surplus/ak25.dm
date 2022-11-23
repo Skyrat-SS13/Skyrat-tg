@@ -21,7 +21,6 @@
 	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magin.ogg'
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magout.ogg'
 	alt_icons = TRUE
-	dirt_modifier = 1
 	company_flag = COMPANY_IZHEVSK
 	spread = 29
 	recoil = 0.1
