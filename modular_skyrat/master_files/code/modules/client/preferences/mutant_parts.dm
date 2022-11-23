@@ -557,7 +557,7 @@
 		return TRUE
 
 	var/datum/species/species = preferences.read_preference(/datum/preference/choiced/species)
-	species = GLOB.species_list[initial(species.id)]
+	species = new species
 
 	return (savefile_key in species.get_features())
 
