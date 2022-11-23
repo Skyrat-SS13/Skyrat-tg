@@ -101,7 +101,7 @@
 #define SPREAD_UNDEPLOYED 17
 #define SPREAD_DEPLOYED 6
 #define HEAT_PER_SHOT 1.5
-#define TIME_TO_COOLDOWN 20 SECONDS
+#define TIME_TO_COOLDOWN (20 SECONDS)
 #define BARREL_COOLDOWN_RATE 2
 
 /obj/item/gun/ballistic/automatic/mg34/mg42
