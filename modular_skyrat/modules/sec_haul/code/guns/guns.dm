@@ -176,7 +176,11 @@
 	caliber = CALIBER_12MM
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	possible_types = list("lethal" = AMMO_TYPE_LETHAL, "hollowpoint" = AMMO_TYPE_HOLLOWPOINT, "rubber" = AMMO_TYPE_RUBBER)
+	possible_types = list(
+		AMMO_TYPE_LETHAL,
+		AMMO_TYPE_HOLLOWPOINT,
+		AMMO_TYPE_RUBBER,
+	)
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh/hp
 	ammo_type = /obj/item/ammo_casing/b12mm/hp
@@ -188,7 +192,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/corpo
 	name = "\improper PDH-6M 'Corpo'"
-	desc = "A prestigious ballistic sidearm, from Armadyne's military division, normally given to corporate agents. It has a 3 round burst mode and uses .357 Magnum ammunition."
+	desc = "A prestigious ballistic sidearm, from Armadyne's military division, normally given to high-ranking corporate agents. It has a 3 round burst mode and uses .357 Magnum ammunition."
 	icon_state = "pdh_corpo"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo
@@ -207,10 +211,45 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/a357
-	caliber = "357"
+	caliber = CALIBER_357
 	max_ammo = 14
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	possible_types = list("lethal" = AMMO_TYPE_LETHAL)
+	possible_types = list(
+		AMMO_TYPE_LETHAL,
+	)
+
+/*
+* 	PDH STRIKER
+*/
+
+// A temporary home for this gun until the Corporate Diplomat PR goes through.
+/obj/item/gun/ballistic/automatic/pistol/pdh/striker
+	name = "\improper PDH-6 'Striker'"
+	desc = "A sidearm used by Armadyne corporate agents who didn't make the cut for the Corpo model. Chambered in .38 special."
+	icon_state = "pdh_striker"
+	w_class = WEIGHT_CLASS_NORMAL
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_striker
+	can_suppress = FALSE
+	fire_sound = 'modular_skyrat/modules/sec_haul/sound/hpistol_fire.ogg'
+	burst_size = 3
+	fire_delay = 2
+	spread = 9
+	realistic = TRUE
+	dirt_modifier = 0.4
+	company_flag = COMPANY_ARMADYNE
+
+/obj/item/ammo_box/magazine/multi_sprite/pdh_striker
+	name = "\improper PDH-6M magazine"
+	desc = "A magazine for the PDH-6 'Striker'. Chambered in the strange choice of .38 special."
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon_state = "pdh"
+	ammo_type = /obj/item/ammo_casing/c38
+	caliber = CALIBER_38
+	max_ammo = 10
+	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	possible_types = list(
+		AMMO_TYPE_LETHAL,
+	)
 
 /*
 *	PDH PEACEKEEPER
