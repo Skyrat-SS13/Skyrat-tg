@@ -325,7 +325,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_RDS_SUPPRESSED "rds_suppressed"
 /// overrides the update_fire proc to always add fire (for lava)
 #define TRAIT_PERMANENTLY_ONFIRE "permanently_onfire"
-/// Galactic Common Sign Language
+/// Indicates if the mob is currently speaking with sign language
 #define TRAIT_SIGN_LANG "sign_language"
 /// This mob is able to use sign language over the radio.
 #define TRAIT_CAN_SIGN_ON_COMMS "can_sign_on_comms"
@@ -963,6 +963,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// Makes a species be better/worse at defending against tackling depending on their tail's status
 #define TRAIT_TACKLING_TAILED_DEFENDER "tackling_tailed_defender"
+
+/// Is runechat for this atom/movable currently disabled, regardless of prefs or anything?
+#define TRAIT_RUNECHAT_HIDDEN "runechat_hudden"
 
 /// some trait sorces dirived from bodyparts BODYPART_TRAIT is generic.
 #define BODYPART_TRAIT "bodypart"
