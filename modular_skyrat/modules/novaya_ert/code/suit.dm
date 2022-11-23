@@ -12,28 +12,43 @@
 #define NRI_HEAL_AMOUNT 10
 #define NRI_BLOOD_REPLENISHMENT 20
 
-/obj/item/clothing/suit/armor/vest/russian/nri
+/obj/item/clothing/suit/armor/vest/russian
 	name = "\improper B42M combined armor vest"
 	desc = "A B42M combined body armor designed to protect the torso from bullets, shrapnel and blunt force. This vest performed well in the Border War against SolFed, but NRI required significant design changes due to the enemy's new and improved weaponry. These models were recently phased out and then quickly found their way onto the black market, now commonly seen in the hands (or on the bodies) of insurgents."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "russian_green_armor"
-	armor = list(MELEE = 30, BULLET = 40, LASER = 20, ENERGY = 30, BOMB = 35, BIO = 0, FIRE = 50, ACID = 50, WOUND = 15)
+	icon_state = "russian_green_armor_old"
 	supports_variations_flags = CLOTHING_NO_VARIATION
 	inhand_icon_state = "armor"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Basic" = list(
-			RESKIN_ICON_STATE = "russian_green_armor",
-			RESKIN_WORN_ICON_STATE = "russian_green_armor"
+			RESKIN_ICON_STATE = "russian_green_armor_old",
+			RESKIN_WORN_ICON_STATE = "russian_green_armor_old"
 		),
 		"Corpsman" = list(
-			RESKIN_ICON_STATE = "russian_medic_armor",
-			RESKIN_WORN_ICON_STATE = "russian_medic_armor"
+			RESKIN_ICON_STATE = "russian_medic_armor_old",
+			RESKIN_WORN_ICON_STATE = "russian_medic_armor_old"
 		),
 	)
 
-/obj/item/clothing/suit/armor/vest/russian/nri/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
+/obj/item/clothing/suit/armor/vest/russian/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
+	if(is_species(M, /datum/species/teshari))
+		to_chat(M, span_warning("[src] is far too big for you!"))
+		return FALSE
+	return ..()
+
+/obj/item/clothing/suit/armor/vest/nri
+	name = "\improper PPS-4 modular armor vest"
+	desc = "A PPS-4 combined body armor designed to protect the user from whatever bad things might be. A current generation body armor designed for use by the police forces."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
+	icon_state = "xenoarmor"
+	armor = list(MELEE = 35, BULLET = 45, LASER = 25, ENERGY = 30, BOMB = 45, BIO = 0, FIRE = 50, ACID = 50, WOUND = 25)
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/armor/vest/nri/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
 	if(is_species(M, /datum/species/teshari))
 		to_chat(M, span_warning("[src] is far too big for you!"))
 		return FALSE

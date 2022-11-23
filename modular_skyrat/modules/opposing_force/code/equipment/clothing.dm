@@ -52,7 +52,7 @@
 //NRI larping equipment here
 
 /datum/opposing_force_equipment/clothing/nrihelm
-	item_type = /obj/item/clothing/head/helmet/rus_helmet
+	item_type = /obj/item/clothing/head/helmet/nri
 
 /datum/opposing_force_equipment/clothing/nriberet
 	item_type = /obj/item/clothing/head/beret/sec/nri
@@ -65,7 +65,7 @@
 				or murder with a frying pan."
 
 /datum/opposing_force_equipment/clothing/nrivest
-	item_type = /obj/item/clothing/suit/armor/vest/russian/nri
+	item_type = /obj/item/clothing/suit/armor/vest/nri
 
 /datum/opposing_force_equipment/clothing/redut
 	item_type = /obj/item/clothing/suit/armor/heavy/nri/old

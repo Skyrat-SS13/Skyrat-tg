@@ -1,7 +1,7 @@
 /datum/outfit/pirate/nri_officer
 	name = "NRI Field Officer"
 
-	head = /obj/item/clothing/head/beret/sec/nri
+	head = null
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/guild/command
 	mask = null
