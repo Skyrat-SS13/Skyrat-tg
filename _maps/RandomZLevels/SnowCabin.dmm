@@ -3669,14 +3669,6 @@
 	},
 /turf/open/misc/asteroid/snow/snow_cabin,
 /area/awaymission/cabin/caves)
-"rm" = (
-/obj/effect/turf_decal/tile/blue/fourcorners,
-/obj/structure/displaycase{
-	start_showpiece_type = /obj/item/dice/d6/space;
-	trophy_message = "Stolen from dice collector before he could enjoy his day."
-	},
-/turf/open/floor/iron/dark,
-/area/awaymission/cabin/caves/mountain)
 "rH" = (
 /mob/living/simple_animal/pet/penguin/emperor,
 /turf/open/misc/ice/smooth,
@@ -3859,6 +3851,32 @@
 	},
 /turf/open/misc/ice/smooth,
 /area/awaymission/cabin/caves)
+"wQ" = (
+/obj/structure/statue/snow/snowman{
+	anchored = 1;
+	name = "Who"
+	},
+/obj/item/clothing/head/helmet/knight/yellow{
+	armor = list("melee" = 11, "bullet" = 2, "laser" = 1, "energy" = 1, "bomb" = 5, "bio" = 2, "fire" = 0, "acid" = 10);
+	desc = "A classic metal helmet. The cold has made it unreliable though.";
+	name = "old medieval helmet";
+	pixel_y = 7
+	},
+/obj/item/claymore/weak/ceremonial{
+	desc = "Brought to you by the guys in charge of making replica katana toys!";
+	force = 1;
+	layer = 3.01;
+	name = "replica claymore";
+	pixel_x = 5;
+	pixel_y = 8;
+	throwforce = 2
+	},
+/obj/item/shield/roman/fake{
+	layer = 3.01;
+	pixel_x = -7
+	},
+/turf/open/misc/asteroid/snow/snow_cabin,
+/area/awaymission/cabin/snowforest)
 "xa" = (
 /obj/item/paper/pamphlet/gateway,
 /turf/open/misc/ice/smooth,
@@ -3975,32 +3993,6 @@
 "yY" = (
 /obj/vehicle/ridden/atv{
 	dir = 4
-	},
-/turf/open/misc/asteroid/snow/snow_cabin,
-/area/awaymission/cabin/snowforest)
-"zd" = (
-/obj/structure/statue/snow/snowman{
-	anchored = 1;
-	name = "Who"
-	},
-/obj/item/clothing/head/helmet/knight/yellow{
-	armor = list("melee" = 11, "bullet" = 2, "laser" = 1, "energy" = 1, "bomb" = 5, "bio" = 2, "fire" = 0, "acid" = 10);
-	desc = "A classic metal helmet. The cold has made it unreliable though.";
-	name = "old medieval helmet";
-	pixel_y = 7
-	},
-/obj/item/claymore/weak/ceremonial{
-	desc = "Brought to you by the guys in charge of making replica katana toys!";
-	force = 1;
-	layer = 3.01;
-	name = "replica claymore";
-	pixel_x = 5;
-	pixel_y = 8;
-	throwforce = 2
-	},
-/obj/item/shield/riot/roman/fake{
-	layer = 3.01;
-	pixel_x = -7
 	},
 /turf/open/misc/asteroid/snow/snow_cabin,
 /area/awaymission/cabin/snowforest)
@@ -4147,6 +4139,18 @@
 	slowdown = 0
 	},
 /area/awaymission/cabin/caves)
+"DS" = (
+/obj/structure/sink/kitchen/directional/south{
+	desc = "A sink used for washing one's hands and face. It looks rusty and home-made";
+	name = "sink"
+	},
+/obj/structure/mop_bucket/janitorialcart,
+/obj/item/mop,
+/obj/item/reagent_containers/cup/bucket,
+/obj/item/clothing/suit/caution,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/awaymission/cabin)
 "EM" = (
 /obj/effect/turf_decal/weather/snow,
 /obj/item/modular_computer/tablet/pda/syndicate{
@@ -4265,6 +4269,14 @@
 	},
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /turf/open/indestructible,
+/area/awaymission/cabin/caves/mountain)
+"IW" = (
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/structure/displaycase{
+	start_showpiece_type = /obj/item/dice/d6/space;
+	desc = "Contains an artifact stolen from dice collector before he could enjoy his day."
+	},
+/turf/open/floor/iron/dark,
 /area/awaymission/cabin/caves/mountain)
 "JL" = (
 /turf/open/misc/asteroid/snow/snow_cabin{
@@ -4429,18 +4441,6 @@
 	name = "shutter button"
 	},
 /turf/open/floor/wood,
-/area/awaymission/cabin)
-"NY" = (
-/obj/structure/sink/kitchen/directional/south{
-	desc = "A sink used for washing one's hands and face. It looks rusty and home-made";
-	name = "sink"
-	},
-/obj/structure/mop_bucket/janitorialcart,
-/obj/item/mop,
-/obj/item/reagent_containers/cup/bucket,
-/obj/item/clothing/suit/caution,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
 /area/awaymission/cabin)
 "Oe" = (
 /turf/open/misc/asteroid/snow/snow_cabin,
@@ -14173,7 +14173,7 @@ co
 co
 co
 cx
-rm
+IW
 td
 td
 td
@@ -26652,7 +26652,7 @@ an
 an
 an
 an
-NY
+DS
 hg
 aq
 ht
@@ -28140,7 +28140,7 @@ ab
 jm
 Oe
 RC
-zd
+wQ
 RC
 nE
 RC
