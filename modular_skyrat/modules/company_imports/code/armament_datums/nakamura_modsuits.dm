@@ -10,12 +10,13 @@
 /datum/armament_entry/company_import/nakamura_modsuits
 	category = NAKAMURA_ENGINEERING_MODSUITS_NAME
 	company_bitflag = CARGO_COMPANY_NAKAMURA_MODSUITS
-	interest_addition = COMPANY_INTEREST_GAIN_BIG
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
 // MOD cores
 
 /datum/armament_entry/company_import/nakamura_modsuits/core
 	subcategory = "MOD Core Modules"
+	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 /datum/armament_entry/company_import/nakamura_modsuits/core/standard
 	item_type = /obj/item/mod/core/standard
@@ -117,7 +118,7 @@
 	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
 	interest_required = COMPANY_HIGH_INTEREST
 	restricted = TRUE
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
+	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 /datum/armament_entry/company_import/nakamura_modsuits/protection_modules/accretion
 	item_type = /obj/item/mod/module/ash_accretion
@@ -125,7 +126,7 @@
 	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
 	interest_required = COMPANY_HIGH_INTEREST
 	restricted = TRUE
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
+	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 // Utility modules, general purpose stuff that really anyone might want
 
@@ -182,7 +183,7 @@
 	lower_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
 	interest_required = COMPANY_HIGH_INTEREST
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
+	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 // Mobility modules, jetpacks and stuff
 
@@ -222,14 +223,14 @@
 	lower_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
 	interest_required = COMPANY_HIGH_INTEREST
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
+	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 /datum/armament_entry/company_import/nakamura_modsuits/mobility_modules/atrocinator
 	item_type = /obj/item/mod/module/atrocinator
 	lower_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_LOWER
 	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
 	interest_required = COMPANY_HIGH_INTEREST
-	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
+	interest_addition = COMPANY_INTEREST_GAIN_BIG
 	contraband = TRUE
 
 // Novelty modules, goofy stuff that's rare/unprintable, but doesn't fit in any of the above categories

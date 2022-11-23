@@ -124,7 +124,7 @@ export const CargoImportConsole = (props, context) => {
             </Stack.Item>
             <Divider vertical />
             <Stack.Item width="20%">
-              <Section title="Selected Armament">
+              <Section title="Selected Item">
                 {armaments_list.map((armament_category) =>
                   armament_category.subcategories.map((subcat) =>
                     subcat.items.map(
