@@ -81,7 +81,7 @@
 	alt_titles = list("Geneticist", "Mutation Researcher")
 
 /datum/job/head_of_personnel
-	alt_titles = list("Head of Personnel", "Executive Officer", "Employment Officer", "Crew Supervisor", "Enterprise Resource Planner", "Chief Resources Officer")
+	alt_titles = list("Head of Personnel", "Executive Officer", "Employment Officer", "Crew Supervisor", "Enterprise Resource Planner", "Chief Service Coordinator")
 
 /datum/job/head_of_security
 	alt_titles = list("Head of Security", "Security Commander", "Chief Constable", "Chief of Security", "Sheriff")
