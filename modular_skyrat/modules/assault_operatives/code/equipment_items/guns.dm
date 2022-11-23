@@ -14,6 +14,7 @@
 /obj/item/gun/ballistic/automatic/assault_ops_rifle
 	name = "\improper IGE-110 rifle"
 	desc = "A bullpup rifle chambered in 5.6x40mm and painted in an ominous matte black. Strangely, the gun also seems to lack any form of manufacturer markings."
+
 	icon_state = "ige_assault"
 	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns.dmi'
 	inhand_icon_state = "ige_assault"
@@ -21,7 +22,10 @@
 	lefthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_lefthand.dmi'
 	worn_icon_state = "ige_assault"
 	worn_icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_worn.dmi'
+
 	base_pixel_x = -8
+	pixel_x = -8
+
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle
@@ -39,8 +43,6 @@
 	. = ..()
 
 	AddComponent(/datum/component/scope, range_modifier = 1.5)
-
-	pixel_x = -8
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle
 	name = "\improper IGE-110 magazine"
@@ -66,6 +68,7 @@
 /obj/item/gun/ballistic/automatic/assault_ops_smg
 	name = "\improper IGE-260 submachine gun"
 	desc = "A toploader submachine gun chambered in 9x19mm and painted in an ominous matte black. Strangely, the gun also seems to lack any form of manufacturer markings."
+
 	icon_state = "ige_smg"
 	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns.dmi'
 	inhand_icon_state = "ige_smg"
@@ -73,7 +76,10 @@
 	lefthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_lefthand.dmi'
 	worn_icon_state = "ige_smg"
 	worn_icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_worn.dmi'
+
 	base_pixel_x = -8
+	pixel_x = -8
+
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg
@@ -84,11 +90,6 @@
 	fire_delay = 1
 	pin = /obj/item/firing_pin/implant/pindicate
 	company_flag = COMPANY_REMOVED
-
-/obj/item/gun/ballistic/automatic/assault_ops_smg/Initialize(mapload)
-	. = ..()
-
-	pixel_x = -8
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg
 	name = "\improper IGE-260 magazine"
@@ -114,6 +115,7 @@
 /obj/item/gun/ballistic/automatic/assault_ops_shotgun
 	name = "\improper IGE-340 semi-automatic shotgun"
 	desc = "A magazine fed semi-automatic shotgun chambered in 12 GA and painted in an ominous matte black. Strangely, the gun also seems to lack any form of manufacturer markings."
+
 	icon_state = "ige_shotgun"
 	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns.dmi'
 	inhand_icon_state = "ige_shotgun"
@@ -121,7 +123,10 @@
 	lefthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_lefthand.dmi'
 	worn_icon_state = "ige_shotgun"
 	worn_icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_worn.dmi'
+
 	base_pixel_x = -8
+	pixel_x = -8
+
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun
@@ -134,11 +139,6 @@
 	fire_delay = 1.5
 	pin = /obj/item/firing_pin/implant/pindicate
 	company_flag = COMPANY_REMOVED
-
-/obj/item/gun/ballistic/automatic/assault_ops_shotgun/Initialize(mapload)
-	. = ..()
-
-	pixel_x = -8
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun
 	name = "\improper IGE-340 magazine"
@@ -176,6 +176,7 @@
 /obj/item/gun/ballistic/rifle/boltaction/assault_ops_sniper
 	name = "\improper IGE-410-S marksman rifle"
 	desc = "A magazine fed bolt-action rifle with a short enough barrel that your shoulder hurts just looking at it. Chambered in .416 Stabilis, it is painted in an ominous matte black and seems to lack any form of manufacturer markings."
+
 	icon_state = "ige_sniper"
 	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns.dmi'
 	inhand_icon_state = "ige_sniper"
@@ -183,7 +184,10 @@
 	lefthand_file = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_lefthand.dmi'
 	worn_icon_state = "ige_sniper"
 	worn_icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns_worn.dmi'
+
 	base_pixel_x = -8
+	pixel_x = -8
+
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 	internal_magazine = FALSE
@@ -204,8 +208,6 @@
 	. = ..()
 
 	AddComponent(/datum/component/scope, range_modifier = 2.5)
-
-	pixel_x = -8
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper
 	name = "\improper IGE-410 magazine"

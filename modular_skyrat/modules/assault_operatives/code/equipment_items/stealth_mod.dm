@@ -19,10 +19,12 @@
 	slowdown_active = 0
 	ui_theme = "hackerman"
 	slot_flags = ITEM_SLOT_BELT
-	inbuilt_modules = list(/obj/item/mod/module/storage/belt,
-	/obj/item/mod/module/chameleon/contractor,
-	/obj/item/mod/module/welding/camera_vision,
-	/obj/item/mod/module/stealth,)
+	inbuilt_modules = list(
+		/obj/item/mod/module/storage/belt,
+		/obj/item/mod/module/chameleon/contractor,
+		/obj/item/mod/module/welding/camera_vision,
+		/obj/item/mod/module/stealth,
+	)
 	allowed_suit_storage = list(
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
