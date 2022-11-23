@@ -204,8 +204,6 @@
 	burst_size = 3
 	fire_delay = 2
 	spread = 9
-	realistic = TRUE
-	dirt_modifier = 0.4
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_striker
