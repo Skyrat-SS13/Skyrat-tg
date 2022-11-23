@@ -22,7 +22,6 @@
 /obj/item/storage/box/gunset/PopulateContents()
 	. = ..()
 	new /obj/item/storage/bag/ammo(src)
-	new /obj/item/gun_maintenance_supplies(src)
 
 /obj/item/storage/box/gunset/update_icon()
 	. = ..()
