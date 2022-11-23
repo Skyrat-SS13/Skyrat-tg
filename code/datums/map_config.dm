@@ -176,15 +176,12 @@
 	if ("minetype" in json)
 		minetype = json["minetype"]
 
-<<<<<<< HEAD
-=======
 	if ("planetary" in json)
 		planetary = json["planetary"]
 
 	if ("blacklist_file" in json)
 		blacklist_file = json["blacklist_file"]
 
->>>>>>> cb20ec99f9c ([MDB Ignore] Unit Tests for Invalid Space Turfs (Area Bullshit Edition) (#70967))
 	allow_custom_shuttles = json["allow_custom_shuttles"] != FALSE
 
 	if ("job_changes" in json)

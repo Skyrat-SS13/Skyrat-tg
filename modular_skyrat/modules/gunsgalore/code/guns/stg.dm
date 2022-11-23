@@ -18,7 +18,6 @@
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/stg_fire.ogg'
 	fire_sound_volume = 70
 	alt_icons = TRUE
-	realistic = TRUE
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_FULLY_AUTOMATIC)
 	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_cock.ogg'
 	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magin.ogg'
