@@ -1,14 +1,14 @@
 /datum/outfit/pirate/nri_officer
 	name = "NRI Field Officer"
 
-	head = null
+	head = /obj/item/clothing/head/beret/sec/nri
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/guild/command
 	mask = null
 	neck = /obj/item/clothing/neck/security_cape/armplate
 
 	uniform = /obj/item/clothing/under/costume/nri/captain
-	suit = null
+	suit = /obj/item/clothing/suit/armor/nri_coat
 
 	gloves = /obj/item/clothing/gloves/combat
 

@@ -19,7 +19,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "xenohelm"
 	armor = list(MELEE = 35, BULLET = 45, LASER = 25, ENERGY = 30, BOMB = 45, BIO = 0, FIRE = 50, ACID = 50, WOUND = 25)
-	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	flags_cover = HEADCOVERSEYES
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
 	/// What position the helmet is in, TRUE = DOWN, FALSE = UP
 	var/helmet_position = TRUE
@@ -47,13 +47,22 @@
 	return ..()
 
 /obj/item/clothing/head/beret/sec/nri
-	name = "officer beret"
+	name = "imperial officer beret"
 	desc = "Used by middle-ranking NRI officers and is usually worn off-duty or on special occassions. Or whenever feeling cute."
 	greyscale_config = null
 	greyscale_config_worn = null
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "nri_beret"
+
+/obj/item/clothing/head/beret/sec/nri/cap
+	name = "imperial officer peaked cap"
+	desc = "Used by middle-ranking NRI officers and is usually worn off-duty or on special occassions. Or whenever feeling cute."
+	greyscale_config = null
+	greyscale_config_worn = null
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "nri_cap"
 
 /obj/item/clothing/head/helmet/nri_heavy
 	name = "\improper Cordun-M helmet"
