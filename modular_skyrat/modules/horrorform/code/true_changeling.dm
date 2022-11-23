@@ -1,4 +1,4 @@
-#define TRUE_CHANGELING_REFORM_THRESHOLD 5 MINUTES
+#define TRUE_CHANGELING_REFORM_THRESHOLD (5 MINUTES)
 #define TRUE_CHANGELING_PASSIVE_HEAL 3 //Amount of brute damage restored per tick
 
 //Changelings in their true form.

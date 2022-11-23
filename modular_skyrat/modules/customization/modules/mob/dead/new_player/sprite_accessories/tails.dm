@@ -421,6 +421,10 @@
 	name = "Snake (Stripe Alt)"
 	icon_state = "snakestripealt"
 
+/datum/sprite_accessory/tails/mammal/wagging/snake_under
+	name = "Snake (Undertail color)"
+	icon_state = "snakeunder"
+
 /datum/sprite_accessory/tails/mammal/wagging/squirrel
 	name = "Squirrel"
 	icon_state = "squirrel"
