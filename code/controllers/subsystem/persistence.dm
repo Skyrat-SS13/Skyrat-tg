@@ -42,13 +42,12 @@ SUBSYSTEM_DEF(persistence)
 /datum/controller/subsystem/persistence/proc/collect_data()
 	save_wall_engravings()
 	save_prisoner_tattoos()
-	CollectTrophies()
-	CollectMaps()
-	SavePhotoPersistence() //THIS IS PERSISTENCE, NOT THE LOGGING PORTION.
-	SaveRandomizedRecipes()
-	SavePanicBunker()//SKYRAT EDIT ADDITION - PANICBUNKER
-	SaveScars()
-	save_nifs() //SKYRAT EDIT ADDITION - NIFs
+	collect_trophies()
+	collect_maps()
+	save_photo_persistence() //THIS IS PERSISTENCE, NOT THE LOGGING PORTION.
+	save_randomized_recipes()
+	save_scars()
+	save_nifs() // SKYRAT EDIT ADDITION - NIFs
 	save_custom_outfits()
 	save_delamination_counter()
 
