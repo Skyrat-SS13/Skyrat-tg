@@ -1,5 +1,3 @@
-// TODO: add the armadyne rep outfit datum once PMC nerf has gone through
-
 /datum/corporate_diplomat_role/armadyne_representative
 	title = JOB_ARMADYNE_REP
 	description = "Look out for the company's interests, sell the HoS an armory, beg for a PMC from corporate when your shoes get stolen."
@@ -19,13 +17,13 @@
 	display_order = JOB_DISPLAY_ORDER_ARMADYNE_REPRESENTATIVE
 
 	family_heirlooms = list(
-		/obj/item/clothing/glasses/eyepatch
+		/obj/item/clothing/glasses/eyepatch,
 	) //find smth better later
 
 	mail_goodies = list(
 		/obj/item/clothing/mask/cigarette/cigar/havana = 20,
 		/obj/item/storage/fancy/cigarettes/cigars/havana = 15,
-		/obj/item/reagent_containers/cup/glass/bottle/champagne = 10
+		/obj/item/reagent_containers/cup/glass/bottle/champagne = 10,
 	)
 
 	used_access = ACCESS_ARMADYNE

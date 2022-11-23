@@ -12,7 +12,6 @@
 
 /obj/item/gun/ballistic/rifle/boltaction
 	company_flag = COMPANY_IZHEVSK
-	dirt_modifier = 0.75
 
 /obj/item/gun/ballistic/shotgun/riot
 	company_flag = COMPANY_NANOTRASEN

@@ -13,7 +13,7 @@
 	neck = /obj/item/clothing/neck/tie/red/tied
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic = 1,
-		/obj/item/storage/box/gunset/pdh_corpo = 1,
+		/obj/item/storage/box/gunset/pdh_striker = 1,
 	)
 
 	backpack = /obj/item/storage/backpack
