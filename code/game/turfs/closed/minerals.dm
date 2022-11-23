@@ -2,8 +2,6 @@
 
 /**********************Mineral deposits**************************/
 
-#define MINERAL_WALL_OFFSET -4
-
 /turf/closed/mineral //wall piece
 	name = "rock"
 	icon = MAP_SWITCH('modular_skyrat/modules/liquids/icons/turf/smoothrocks.dmi', 'icons/turf/mining.dmi') // SKYRAT EDIT CHANGE
@@ -17,10 +15,10 @@
 	plane = GAME_PLANE_UPPER
 	base_icon_state = "smoothrocks"
 
-	base_pixel_x = MINERAL_WALL_OFFSET
-	base_pixel_y = MINERAL_WALL_OFFSET
-	pixel_x = MAP_SWITCH(MINERAL_WALL_OFFSET, 0)
-	pixel_y = MAP_SWITCH(MINERAL_WALL_OFFSET, 0)
+	// This is static
+	// Done like this to avoid needing to make it dynamic and save cpu time
+	// 4 to the left, 4 down
+	transform = MAP_SWITCH(TRANSLATE_MATRIX(-4, -4), matrix())
 
 	temperature = TCMB
 	color = "#677" //SKYRAT EDIT ADDITION
@@ -37,7 +35,6 @@
 	///How long it takes to mine this turf without tools, if it's weak.
 	var/hand_mine_speed = 15 SECONDS
 
-#undef MINERAL_WALL_OFFSET
 
 /turf/closed/mineral/Initialize(mapload)
 	var/static/list/smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_MINERAL_WALLS)
@@ -691,7 +688,7 @@
 /turf/closed/mineral/gibtonite/proc/countdown(notify_admins = FALSE)
 	set waitfor = FALSE
 	while(istype(src, /turf/closed/mineral/gibtonite) && stage == GIBTONITE_ACTIVE && det_time > 0 && mineralAmt >= 1)
-		flick_overlay_view(image('icons/turf/smoothrocks.dmi', src, "rock_Gibtonite_active"), src, 5) //makes the animation pulse one time per tick
+		flick_overlay_view(image('icons/turf/smoothrocks.dmi', src, "rock_Gibtonite_active"), 5) //makes the animation pulse one time per tick
 		det_time--
 		sleep(0.5 SECONDS)
 	if(istype(src, /turf/closed/mineral/gibtonite))

@@ -1,6 +1,6 @@
-#define STAGE_PROCESS_TIME_LOWER 30 SECONDS
-#define STAGE_PROCESS_TIME_UPPER 1 MINUTES
-#define ALERT_CREW_TIME 1 MINUTES
+#define STAGE_PROCESS_TIME_LOWER (30 SECONDS)
+#define STAGE_PROCESS_TIME_UPPER (1 MINUTES)
+#define ALERT_CREW_TIME (1 MINUTES)
 
 /**
  * The interrorgator, a piece of machinery used in assault ops to extract GoldenEye keys from heads of staff.
