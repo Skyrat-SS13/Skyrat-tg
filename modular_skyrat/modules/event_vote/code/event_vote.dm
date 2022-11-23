@@ -2,12 +2,12 @@
  * A simple voting system to replace the current random events, if no votes are recieved, it will be random.
  */
 
-#define LOW_CHAOS_TIMER_LOWER 5 MINUTES
+#define LOW_CHAOS_TIMER_LOWER (5 MINUTES)
 
-#define LOW_CHAOS_TIMER_UPPER 15 MINUTES
+#define LOW_CHAOS_TIMER_UPPER (15 MINUTES)
 
 /// How long does the vote last?
-#define EVENT_VOTE_TIME 1 MINUTES
+#define EVENT_VOTE_TIME (1 MINUTES)
 
 /// Public vote amount
 #define EVENT_PUBLIC_VOTE_AMOUNT 5
