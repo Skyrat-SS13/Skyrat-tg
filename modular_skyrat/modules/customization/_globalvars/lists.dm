@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(breast_size_translation, list(
 	"8" = BREAST_SIZE_H,
 	"9" = BREAST_SIZE_I,
 	"10" = BREAST_SIZE_J,
-	"11" = BREAST_SIZE_K, // Succubus milk moment.
+	"11" = BREAST_SIZE_K,
 	"12" = BREAST_SIZE_L,
 	"13" = BREAST_SIZE_M,
 	"14" = BREAST_SIZE_N,
