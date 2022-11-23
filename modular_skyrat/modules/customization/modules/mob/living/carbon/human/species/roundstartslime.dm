@@ -420,7 +420,7 @@
 
 		if("Breasts Size")
 			var/obj/item/organ/external/genital/breasts/melons = alterer.getorganslot(ORGAN_SLOT_BREASTS)
-			return GLOB.breast_size_to_number
+			GLOB.breast_size_to_number
 
 			var/new_size = tgui_input_list(
 				alterer,
