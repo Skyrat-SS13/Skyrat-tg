@@ -23,11 +23,18 @@
 	if(!save_data)
 		save_data = list()
 
-	augments = SANITIZE_LIST(save_data["augments"])
-	for(var/aug_slot in augments)
-		var/datum/augment_item/aug = GLOB.augment_items[augments[aug_slot]]
-		if(!aug)
-			augments -= aug_slot
+	var/list/save_augments = SANITIZE_LIST(save_data["augments"])
+	for(var/aug_slot in save_augments)
+		var/aug_entry = save_augments[aug_slot]
+		save_augments -= aug_slot
+
+		if(istext(aug_entry))
+			aug_entry = _text2path(aug_entry)
+
+		var/datum/augment_item/aug = GLOB.augment_items[aug_entry]
+		if(aug)
+			save_augments[aug_slot] = aug_entry
+	augments = save_augments
 
 	augment_limb_styles = SANITIZE_LIST(save_data["augment_limb_styles"])
 	for(var/key in augment_limb_styles)
@@ -47,9 +54,26 @@
 	medical_record = sanitize_text(medical_record)
 	background_info = sanitize_text(background_info)
 	exploitable_info = sanitize_text(exploitable_info)
-	loadout_list = sanitize_loadout_list(update_loadout_list(SANITIZE_LIST(save_data["loadout_list"])))
 
-	languages = SANITIZE_LIST(save_data["languages"])
+	var/list/save_loadout = SANITIZE_LIST(save_data["loadout_list"])
+	for(var/loadout in save_loadout)
+		var/entry = save_loadout[loadout]
+		save_loadout -= loadout
+
+		if(istext(loadout))
+			loadout = _text2path(loadout)
+		save_loadout[loadout] = entry
+	loadout_list = sanitize_loadout_list(save_loadout)
+
+	var/list/save_languages = SANITIZE_LIST(save_data["languages"])
+	for(var/language in save_languages)
+		var/value = save_languages[language]
+		save_languages -= language
+
+		if(istext(language))
+			language = _text2path(language)
+		save_languages[language] = value
+	languages = save_languages
 
 	tgui_prefs_migration = save_data["tgui_prefs_migration"]
 	if(!tgui_prefs_migration)
