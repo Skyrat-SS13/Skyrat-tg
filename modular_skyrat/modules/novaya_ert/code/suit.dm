@@ -40,7 +40,7 @@
 
 /obj/item/clothing/suit/armor/vest/nri
 	name = "\improper PPS-4 modular armor vest"
-	desc = "A PPS-4 combined body armor designed to protect the user from whatever bad things might be. A current generation body armor designed for use by the police forces."
+	desc = "A PPS-4 combined body armor designed to protect the user from whatever bad things might be happening in the battlefield. A modern non-powered body armor designed for use by the imperial militarised police forces commonly widespread across the border, as well as the planetary guard."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'

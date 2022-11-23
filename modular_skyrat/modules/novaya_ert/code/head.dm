@@ -13,8 +13,8 @@
 	return ..()
 
 /obj/item/clothing/head/helmet/nri
-	name = "\improper ShZhP-3 helmet"
-	desc = "A PPS-4 combined body armor designed to protect the user from whatever bad things might be. A current generation body armor designed for use by the police forces. Alt-click to adjust the visor."
+	name = "\improper ShZhP-3 Mk.2 helmet"
+	desc = "A ShZhP-3 helmet, meant to be used in tandem with the PPS-4 armor vest. A modern non-powered body armor designed for use by the imperial militarised police forces commonly widespread across the border, as well as the planetary guard. Alt-click to toggle its ballistic visor; doesn't provide any additional bonuses but it looks cool as hell."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "xenohelm"
