@@ -94,8 +94,8 @@
 /obj/item/gun/energy/laser/hellgun/blueshield
 	name = "\improper Allstar SC-3 PDW 'Hellfire'"
 	desc = "A prototype energy carbine, despite NT's ban on hellfire weaponry due to negative press. \
-            Allstar continued to work on it, compacting it into a small form-factor for personal defense. \
-            As part of the Asset Retention Program created by Nanotrasen, Allstar's prototype began to be put into use."
+		Allstar continued to work on it, compacting it into a small form-factor for personal defense. \
+		As part of the Asset Retention Program created by Nanotrasen, Allstar's prototype began to be put into use."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'

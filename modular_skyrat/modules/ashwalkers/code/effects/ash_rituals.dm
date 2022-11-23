@@ -123,7 +123,7 @@
 		anti_endless++
 
 	new /obj/effect/particle_effect/sparks(spawn_turf)
-	addtimer(CALLBACK(src, .proc/spawn_megafauna, megafauna_choice, spawn_turf), 3 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(spawn_megafauna), megafauna_choice, spawn_turf), 3 SECONDS)
 
 /**
  * Called within an addtimer in the ritual success of "Incite Megafauna."

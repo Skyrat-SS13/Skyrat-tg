@@ -5,7 +5,7 @@
  */
 /datum/element/liquids_height
 	element_flags = ELEMENT_BESPOKE | ELEMENT_DETACH_ON_HOST_DESTROY
-	id_arg_index = 2
+	argument_hash_start_idx = 2
 
 	///Height applied by this element
 	var/height_applied
@@ -18,7 +18,7 @@
 
 	src.height_applied = height_applied
 
-	RegisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/on_target_move)
+	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(on_target_move))
 	var/atom/movable/movable_target = target
 	if(isturf(movable_target.loc))
 		var/turf/turf_loc = movable_target.loc

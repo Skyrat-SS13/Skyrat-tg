@@ -83,8 +83,8 @@
 #define MOVE_DELAY 2
 #define WEARER_DELAY 1
 #define LONE_DELAY 5
-#define CELL_PER_STEP DEFAULT_CHARGE_DRAIN * 2.5
-#define PAI_FALL_TIME 1 SECONDS
+#define CELL_PER_STEP (DEFAULT_CHARGE_DRAIN * 2.5)
+#define PAI_FALL_TIME (1 SECONDS)
 
 /obj/item/mod/control/relaymove(mob/user, direction)
 	if((!active && wearer) || (active && !can_pai_move_suit) || !core.charge_source() || core.charge_amount() < CELL_PER_STEP  || user != mod_pai || !COOLDOWN_FINISHED(src, cooldown_mod_move))
@@ -97,7 +97,7 @@
 	core.subtract_charge(CELL_PER_STEP)
 	if(wearer)
 		ADD_TRAIT(wearer, TRAIT_FORCED_STANDING, MOD_TRAIT)
-		addtimer(CALLBACK(src, .proc/pai_fall), PAI_FALL_TIME, TIMER_UNIQUE | TIMER_OVERRIDE)
+		addtimer(CALLBACK(src, PROC_REF(pai_fall)), PAI_FALL_TIME, TIMER_UNIQUE | TIMER_OVERRIDE)
 	if(ismovable(wearer?.loc))
 		return wearer.loc.relaymove(wearer, direction)
 	if(wearer && !wearer.Process_Spacemove(direction))

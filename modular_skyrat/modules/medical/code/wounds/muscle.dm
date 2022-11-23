@@ -20,9 +20,9 @@
 */
 /datum/wound/muscle/wound_injury(datum/wound/old_wound = null, attack_direction)
 	// hook into gaining/losing gauze so crit muscle wounds can re-enable/disable depending if they're slung or not
-	RegisterSignal(limb, list(COMSIG_BODYPART_SPLINTED, COMSIG_BODYPART_SPLINT_DESTROYED), .proc/update_inefficiencies)
+	RegisterSignal(limb, list(COMSIG_BODYPART_SPLINTED, COMSIG_BODYPART_SPLINT_DESTROYED), PROC_REF(update_inefficiencies))
 
-	RegisterSignal(victim, COMSIG_HUMAN_EARLY_UNARMED_ATTACK, .proc/attack_with_hurt_hand)
+	RegisterSignal(victim, COMSIG_HUMAN_EARLY_UNARMED_ATTACK, PROC_REF(attack_with_hurt_hand))
 	if(limb.held_index && victim.get_item_for_held_index(limb.held_index) && (disabling || prob(30 * severity)))
 		var/obj/item/I = victim.get_item_for_held_index(limb.held_index)
 		if(istype(I, /obj/item/offhand))
@@ -77,7 +77,7 @@
 		else
 			victim.visible_message(span_danger("[victim] weakly strikes [target] with [victim.p_their()] swollen [parse_zone(limb.body_zone)], recoiling from pain!"), \
 			span_userdanger("You fail to strike [target] as the fracture in your [parse_zone(limb.body_zone)] lights up in unbearable pain!"), vision_distance=COMBAT_MESSAGE_RANGE)
-			INVOKE_ASYNC(victim, /mob.proc/emote, "scream")
+			INVOKE_ASYNC(victim, TYPE_PROC_REF(/mob, emote), "scream")
 			victim.Stun(0.5 SECONDS)
 			limb.receive_damage(brute=rand(3,7))
 			return COMPONENT_CANCEL_ATTACK_CHAIN
@@ -171,7 +171,7 @@
 
 /datum/status_effect/wound/muscle/on_apply()
 	. = ..()
-	RegisterSignal(owner, COMSIG_MOB_SWAP_HANDS, .proc/on_swap_hands)
+	RegisterSignal(owner, COMSIG_MOB_SWAP_HANDS, PROC_REF(on_swap_hands))
 	on_swap_hands()
 
 /datum/status_effect/wound/muscle/on_remove()

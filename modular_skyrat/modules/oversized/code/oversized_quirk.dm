@@ -20,8 +20,16 @@
 	human_holder.maptext_height = 32 * human_holder.dna.features["body_size"] //Adjust runechat height
 	human_holder.dna.update_body_size()
 	human_holder.mob_size = MOB_SIZE_LARGE
-	human_holder.dna.species.punchdamagelow += OVERSIZED_HARM_DAMAGE_BONUS
-	human_holder.dna.species.punchdamagehigh += OVERSIZED_HARM_DAMAGE_BONUS
+	var/obj/item/bodypart/arm/left/left_arm = human_holder.get_bodypart(BODY_ZONE_L_ARM)
+	if(left_arm)
+		left_arm.unarmed_damage_low += OVERSIZED_HARM_DAMAGE_BONUS
+		left_arm.unarmed_damage_high += OVERSIZED_HARM_DAMAGE_BONUS
+
+	var/obj/item/bodypart/arm/right/right_arm = human_holder.get_bodypart(BODY_ZONE_R_ARM)
+	if(right_arm)
+		right_arm.unarmed_damage_low += OVERSIZED_HARM_DAMAGE_BONUS
+		right_arm.unarmed_damage_high += OVERSIZED_HARM_DAMAGE_BONUS
+
 	human_holder.blood_volume_normal = BLOOD_VOLUME_OVERSIZED
 	human_holder.physiology.hunger_mod *= OVERSIZED_HUNGER_MOD //50% hungrier
 	var/speed_mod = human_holder.dna.species.speedmod + OVERSIZED_SPEED_SLOWDOWN
@@ -41,8 +49,17 @@
 	human_holder.maptext_height = 32 * human_holder.dna.features["body_size"]
 	human_holder.dna.update_body_size()
 	human_holder.mob_size = MOB_SIZE_HUMAN
-	human_holder.dna.species.punchdamagelow -= OVERSIZED_HARM_DAMAGE_BONUS
-	human_holder.dna.species.punchdamagehigh -= OVERSIZED_HARM_DAMAGE_BONUS
+
+	var/obj/item/bodypart/arm/left/left_arm = human_holder.get_bodypart(BODY_ZONE_L_ARM)
+	if(left_arm)
+		left_arm.unarmed_damage_low -= OVERSIZED_HARM_DAMAGE_BONUS
+		left_arm.unarmed_damage_high -= OVERSIZED_HARM_DAMAGE_BONUS
+
+	var/obj/item/bodypart/arm/right/right_arm = human_holder.get_bodypart(BODY_ZONE_R_ARM)
+	if(right_arm)
+		right_arm.unarmed_damage_low -= OVERSIZED_HARM_DAMAGE_BONUS
+		right_arm.unarmed_damage_high -= OVERSIZED_HARM_DAMAGE_BONUS
+
 	human_holder.blood_volume_normal = BLOOD_VOLUME_NORMAL
 	human_holder.physiology.hunger_mod /= OVERSIZED_HUNGER_MOD
 	var/speedmod = human_holder.dna.species.speedmod

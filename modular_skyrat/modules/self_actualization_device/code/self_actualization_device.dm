@@ -81,7 +81,7 @@
 		return FALSE
 
 	to_chat(user, "You power on [src].")
-	addtimer(CALLBACK(src, .proc/eject_new_you), processing_time, TIMER_OVERRIDE|TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(eject_new_you)), processing_time, TIMER_OVERRIDE|TIMER_UNIQUE)
 	processing = TRUE
 	update_appearance()
 

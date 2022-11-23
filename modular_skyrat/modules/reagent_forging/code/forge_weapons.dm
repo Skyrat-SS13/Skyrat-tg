@@ -299,8 +299,8 @@
 
 /obj/item/forging/reagent_weapon/bokken/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)
-	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/on_unwield)
+	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, PROC_REF(on_wield))
+	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, PROC_REF(on_unwield))
 	AddComponent(/datum/component/two_handed, force_unwielded=15, force_wielded=7)
 
 /obj/item/forging/reagent_weapon/bokken/proc/on_wield()

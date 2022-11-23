@@ -8,9 +8,9 @@
 #define MICROFUSION_CELL_RADIATION_RANGE_FAILURE 1
 
 /// The lower most time for a microfusion cell meltdown.
-#define MICROFUSION_CELL_FAILURE_LOWER 10 SECONDS
+#define MICROFUSION_CELL_FAILURE_LOWER (10 SECONDS)
 /// The upper most time for a microfusion cell meltdown.
-#define MICROFUSION_CELL_FAILURE_UPPER 15 SECONDS
+#define MICROFUSION_CELL_FAILURE_UPPER (15 SECONDS)
 
 /// A charge drain failure.
 #define MICROFUSION_CELL_FAILURE_TYPE_CHARGE_DRAIN 1
@@ -24,7 +24,7 @@
 /// Returned when the phase emtiter process is successful.
 #define SHOT_SUCCESS "success"
 /// Returned when a gun is fired but there is no phase emitter.
-#define SHOT_FAILURE_NO_EMITTER "No phase emitter installed!"
+#define SHOT_FAILURE_NO_EMITTER "no phase emitter!"
 
 /// The error message returned when the phase emitter is processed but damaged.
 #define PHASE_FAILURE_DAMAGED "PHASE EMITTER: Emitter damaged!"

@@ -13,15 +13,15 @@
 /datum/martial_art/boxing/harm_act(mob/living/A, mob/living/D)
 
 	var/mob/living/carbon/human/attacker_human = A
-	var/datum/species/species = attacker_human.dna.species
+	var/obj/item/bodypart/arm/active_arm = attacker_human.get_active_hand()
 
 	A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
 
 	var/atk_verb = pick("left hook","right hook","straight punch")
 
-	var/damage = rand(5, 8) + species.punchdamagelow
+	var/damage = rand(5, 8) + active_arm.unarmed_damage_low
 	if(!damage)
-		playsound(D.loc, species.miss_sound, 25, TRUE, -1)
+		playsound(D.loc, active_arm.unarmed_miss_sound, 25, TRUE, -1)
 		D.visible_message(span_warning("[A]'s [atk_verb] misses [D]!"), \
 						span_danger("You avoid [A]'s [atk_verb]!"), span_hear("You hear a swoosh!"), COMBAT_MESSAGE_RANGE, A)
 		to_chat(A, span_warning("Your [atk_verb] misses [D]!"))
@@ -33,10 +33,10 @@
 	var/armor_block = D.run_armor_check(affecting, MELEE)
 	// SKYRAT EDIT CHANGE
 	var/sound/attack_sound
-	if(!species.attack_sound)
+	if(!active_arm.unarmed_attack_sound)
 		attack_sound = get_sfx("punch")
 	else
-		attack_sound = species.attack_sound
+		attack_sound = active_arm.unarmed_attack_sound
 	playsound(D.loc, attack_sound, 25, TRUE, -1)
 	//SKYRAT EDIT END
 	D.visible_message(span_danger("[A] [atk_verb]ed [D]!"), \

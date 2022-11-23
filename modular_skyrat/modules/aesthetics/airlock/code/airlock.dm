@@ -342,7 +342,7 @@
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/external/external.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/external/overlays.dmi'
 
-//CENTCOMM
+//CENTCOM
 /obj/machinery/door/airlock/centcom
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/centcom/centcom.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/centcom/overlays.dmi'
