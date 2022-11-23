@@ -95,6 +95,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/unres,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
 "ao" = (
@@ -137,6 +138,7 @@
 /obj/machinery/door/airlock/security/old/glass{
 	name = "Security Checkpoint"
 	},
+/obj/effect/mapping_helpers/airlock/unres,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
 "av" = (
@@ -569,6 +571,11 @@
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 9
 	},
+/obj/item/paper,
+/obj/item/pen{
+	pixel_y = 3;
+	pixel_x = -5
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "bY" = (
@@ -594,9 +601,6 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
 "cb" = (
-/obj/structure/janitorialcart{
-	dir = 4
-	},
 /obj/item/clothing/shoes/galoshes{
 	pixel_y = -8
 	},
@@ -612,6 +616,9 @@
 	dir = 4
 	},
 /obj/machinery/light/small/directional/east,
+/obj/structure/mop_bucket/janitorialcart{
+	dir = 4
+	},
 /turf/open/floor/iron/dark/textured_half{
 	dir = 1
 	},
@@ -1050,6 +1057,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/unres,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
 "dR" = (
@@ -1154,7 +1162,6 @@
 /obj/machinery/atmospherics/components/binary/valve/digital{
 	dir = 4
 	},
-/obj/structure/fans/tiny/invisible,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "eA" = (
@@ -1506,7 +1513,6 @@
 /turf/open/floor/wood/tile,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms)
 "gg" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -1516,11 +1522,14 @@
 	dir = 2
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
-/obj/machinery/door/airlock/external/glass{
-	hackProof = 1
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "DS2engi"
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "External Airlock"
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "gi" = (
@@ -1643,9 +1652,6 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/leader,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 4
 	},
@@ -1659,6 +1665,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "DS2brig"
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
@@ -1808,7 +1817,6 @@
 /obj/structure/window/reinforced/survival_pod{
 	dir = 8
 	},
-/obj/machinery/disposal/bin,
 /obj/machinery/disposal/bin,
 /obj/effect/turf_decal/siding/thinplating{
 	dir = 6
@@ -2646,7 +2654,8 @@
 	req_access = list("syndicate_leader")
 	},
 /obj/machinery/door/window/survival_pod{
-	dir = 8
+	dir = 8;
+	heat_proof = 1
 	},
 /obj/machinery/door/poddoor/shutters{
 	name = "Corporate Liaison Shutters";
@@ -2959,8 +2968,8 @@
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/fans/tiny,
 /obj/structure/cable,
-/obj/machinery/door/airlock/external/glass{
-	hackProof = 1
+/obj/machinery/door/airlock/hatch{
+	name = "External Airlock"
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
@@ -3896,6 +3905,11 @@
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 9
 	},
+/obj/effect/spawner/random/mod{
+	pixel_x = 6;
+	pixel_y = -8
+	},
+/obj/effect/spawner/random/mod,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "qs" = (
@@ -4305,13 +4319,13 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/external/glass{
-	hackProof = 1
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "DS2hangar"
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "External Airlock"
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
@@ -4690,6 +4704,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/unres,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "tQ" = (
@@ -5692,12 +5707,6 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "ze" = (
-/obj/machinery/door/airlock/external{
-	hackProof = 1
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
-	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -5709,6 +5718,12 @@
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/fans/tiny,
 /obj/machinery/atmospherics/pipe/layer_manifold/scrubbers/hidden,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "DS2engi"
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "External Airlock"
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "zg" = (
@@ -5730,6 +5745,9 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 4
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
 "zl" = (
@@ -5795,19 +5813,6 @@
 	},
 /obj/machinery/atmospherics/pipe/layer_manifold/green/visible,
 /obj/machinery/meter,
-/obj/machinery/button/ignition/incinerator/syndicatelava{
-	pixel_y = -6;
-	pixel_x = 24
-	},
-/obj/machinery/button/door/directional/east{
-	id = "sincinerator";
-	normaldoorcontrol = 1;
-	req_access = list("syndicate");
-	specialfunctions = 4;
-	name = "Turbine Hatch Bolt Control";
-	desc = "Keep out the deadly blaze.";
-	pixel_y = 6
-	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "zy" = (
@@ -5978,12 +5983,12 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
-/obj/machinery/door/airlock/external/glass{
-	hackProof = 1
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "DS2hangar"
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "External Airlock"
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
@@ -6767,6 +6772,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 8
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/eva)
 "DJ" = (
@@ -8280,7 +8288,6 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/leader,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 1
 	},
@@ -8293,6 +8300,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 2
 	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "DS2brig"
+	},
+/obj/effect/mapping_helpers/airlock/unres,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "KQ" = (
@@ -8502,6 +8513,9 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/red/line,
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 1
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "Lz" = (
@@ -8848,6 +8862,9 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 8
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
 "Nl" = (
@@ -9702,14 +9719,14 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "QF" = (
-/obj/machinery/atmospherics/components/trinary/mixer/airmix{
-	dir = 4
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
 /obj/effect/turf_decal/siding/dark{
 	dir = 9
+	},
+/obj/machinery/atmospherics/components/trinary/mixer/airmix/inverse{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
@@ -10285,10 +10302,8 @@
 	dir = 1
 	},
 /obj/machinery/light/cold/directional/south,
-/obj/item/paper,
-/obj/item/pen{
-	pixel_y = 3;
-	pixel_x = -5
+/obj/item/mmi/posibrain{
+	pixel_y = 6
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
@@ -10628,6 +10643,9 @@
 /obj/machinery/door/airlock/command{
 	name = "Bridge";
 	hackProof = 1
+	},
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 4
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
@@ -11407,16 +11425,24 @@
 /obj/machinery/atmospherics/pipe/smart/simple/green/hidden/layer2{
 	dir = 4
 	},
-/obj/structure/fans/tiny,
-/obj/machinery/door/airlock/hatch{
-	name = "Turbine Interior Hatch";
-	id_tag = "sincinerator";
-	desc = "It opens and closes. It looks a little too hot for comfort."
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
 	},
-/obj/effect/mapping_helpers/airlock/locked,
-/obj/effect/mapping_helpers/airlock/cutaiwire,
-/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
-/turf/open/floor/engine,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/machinery/door/poddoor/incinerator_syndicatelava_aux{
+	name = "Combustion Chamber Blast Door"
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "External Airlock"
+	},
+/obj/structure/holosign/barrier/atmos/sturdy,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "Xg" = (
 /obj/effect/turf_decal/stripes/red/line,
@@ -13170,7 +13196,7 @@ Jz
 Jz
 Jz
 Tt
-Tt
+Cn
 Xf
 Tt
 zX
