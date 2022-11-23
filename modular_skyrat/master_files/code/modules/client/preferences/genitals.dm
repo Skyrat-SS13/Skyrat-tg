@@ -56,7 +56,7 @@
  * * preferences - The relevant character preferences.
  */
 /datum/preference/choiced/genital/proc/is_visible(mob/living/carbon/human/target, datum/preferences/preferences)
-	if(!preferences.read_preference(/datum/preference/toggle/master_erp_preferences) || preferences.read_preference(/datum/preference/toggle/allow_genitals) || !is_part_enabled(preferences))
+	if(!preferences.read_preference(/datum/preference/toggle/master_erp_preferences) || preferences.read_preference(/datum/preference/toggle/allow_genitals))
 		return FALSE
 
 	if(preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts))
