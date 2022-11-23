@@ -424,7 +424,7 @@
 				alterer,
 				"Choose your character's breasts size:",
 				"DNA Alteration",
-				GLOB.preference_breast_sizes
+				GLOB.preference_breast_sizes,
 			)
 			if(!new_size)
 				return
