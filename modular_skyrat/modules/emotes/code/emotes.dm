@@ -519,3 +519,12 @@
 	vary = TRUE
 	sound = 'sound/weapons/bite.ogg'
 
+//fox time :)
+
+/datum/emote/living/gecker
+	key = "gecker"
+	key_third_person = "geckers!"
+	message = "geckers!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/foxgecker.ogg'
