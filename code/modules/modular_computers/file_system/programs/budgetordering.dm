@@ -278,11 +278,11 @@
 			self_paid = !self_paid
 			. = TRUE
 		//SKYRAT EDIT START
-		if("gun_window")
-			var/datum/component/armament/cargo_gun/gun_comp = computer.GetComponent(/datum/component/armament/cargo_gun)
+		if("company_import_window")
+			var/datum/component/armament/company_imports/gun_comp = computer.GetComponent(/datum/component/armament/company_imports)
 			if(!gun_comp)
-				computer.AddComponent(/datum/component/armament/cargo_gun, subtypesof(/datum/armament_entry/cargo_gun), 0)
-			gun_comp = computer.GetComponent(/datum/component/armament/cargo_gun)
+				computer.AddComponent(/datum/component/armament/company_imports, subtypesof(/datum/armament_entry/company_import), 0)
+			gun_comp = computer.GetComponent(/datum/component/armament/company_imports)
 			gun_comp.parent_prog ||= src
 			gun_comp.ui_interact(usr)
 			. = TRUE
