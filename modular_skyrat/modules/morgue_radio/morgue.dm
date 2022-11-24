@@ -46,8 +46,7 @@
 		),
 		RADIO_CHANNEL_MEDICAL,
 	)
-	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
-		morgue.radio.talk_into(cadaver, "Help... Me...", RADIO_CHANNEL_MEDICAL)
+
 	COOLDOWN_START(src, radio_cooldown, MORGUE_RADIO_COOLDOWN)
 
 #undef MORGUE_RADIO_COOLDOWN
