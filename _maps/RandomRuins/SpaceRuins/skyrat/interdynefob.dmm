@@ -809,10 +809,7 @@
 	req_access = list("syndicate")
 	},
 /obj/structure/cable,
-/obj/item/stack/sheet/glass/fifty{
-	pixel_y = 9
-	},
-/obj/item/stack/sheet/iron/fifty,
+/obj/machinery/cell_charger_multi,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "cP" = (
@@ -1162,6 +1159,15 @@
 /obj/machinery/atmospherics/components/binary/valve/digital{
 	dir = 4
 	},
+/obj/machinery/button/door/directional/south{
+	desc = "Keep out the Blazing heat.";
+	id = "DS2incineratorHatch";
+	name = "Incinerator Hatch Bolt";
+	normaldoorcontrol = 1;
+	req_access = list("syndicate_leader");
+	specialfunctions = 4;
+	pixel_x = 6
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "eA" = (
@@ -1231,9 +1237,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
-/obj/structure/closet/crate/engineering{
-	name = "materials crate"
-	},
+/obj/structure/table,
 /obj/item/stack/sheet/mineral/plastitanium,
 /obj/item/stack/sheet/plastitaniumglass,
 /turf/open/floor/iron/dark/textured_large,
@@ -1524,11 +1528,9 @@
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "DS2engi"
-	},
-/obj/machinery/door/airlock/hatch{
-	name = "External Airlock"
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/external/glass{
+	name = "External Access"
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
@@ -2833,6 +2835,18 @@
 /obj/machinery/light/cold/directional/south,
 /turf/open/floor/iron/white/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
+"lF" = (
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/obj/structure/table,
+/obj/item/mmi/posibrain{
+	pixel_y = 6;
+	pixel_x = 2
+	},
+/obj/item/mmi/posibrain{
+	pixel_x = -4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/skyrat/interdynefob/research)
 "lI" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -2968,8 +2982,8 @@
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/fans/tiny,
 /obj/structure/cable,
-/obj/machinery/door/airlock/hatch{
-	name = "External Airlock"
+/obj/machinery/door/airlock/external/glass{
+	name = "External Access"
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
@@ -3910,6 +3924,15 @@
 	pixel_y = -8
 	},
 /obj/effect/spawner/random/mod,
+/obj/item/mod/construction/broken_core{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/mod/core/standard,
+/obj/item/mod/construction/broken_core{
+	pixel_x = -2;
+	pixel_y = -6
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "qs" = (
@@ -4230,7 +4253,6 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms/fitness)
 "rx" = (
 /obj/structure/table/reinforced,
-/obj/machinery/cell_charger_multi,
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 6
 	},
@@ -4321,11 +4343,11 @@
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/fans/tiny,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "DS2hangar"
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
 	},
-/obj/machinery/door/airlock/hatch{
-	name = "External Airlock"
+/obj/machinery/door/airlock/external/glass{
+	name = "External Access"
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
@@ -4511,7 +4533,6 @@
 "sP" = (
 /obj/effect/turf_decal/trimline/purple/filled/end,
 /obj/structure/table,
-/obj/machinery/ecto_sniffer,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "sV" = (
@@ -5718,11 +5739,11 @@
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/fans/tiny,
 /obj/machinery/atmospherics/pipe/layer_manifold/scrubbers/hidden,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "DS2engi"
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
 	},
-/obj/machinery/door/airlock/hatch{
-	name = "External Airlock"
+/obj/machinery/door/airlock/external/glass{
+	name = "External Access"
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
@@ -5939,6 +5960,8 @@
 /area/ruin/space/has_grav/skyrat/interdynefob)
 "Aa" = (
 /obj/effect/turf_decal/tile/dark_red/fourcorners,
+/obj/structure/table,
+/obj/machinery/ecto_sniffer,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "Ae" = (
@@ -5984,11 +6007,11 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "DS2hangar"
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
 	},
-/obj/machinery/door/airlock/hatch{
-	name = "External Airlock"
+/obj/machinery/door/airlock/external/glass{
+	name = "External Access"
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
@@ -8095,17 +8118,22 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/lounge)
 "JK" = (
 /obj/structure/rack/shelf,
-/obj/item/mod/construction/broken_core{
-	pixel_x = -2;
-	pixel_y = -6
-	},
-/obj/item/mod/core/standard,
-/obj/item/mod/construction/broken_core{
-	pixel_x = -6;
-	pixel_y = 6
-	},
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 8
+	},
+/obj/item/ai_module/reset/purge{
+	pixel_y = -7;
+	pixel_x = -2
+	},
+/obj/item/ai_module/reset/purge{
+	pixel_y = -4
+	},
+/obj/item/ai_module/supplied/freeform{
+	pixel_y = 4;
+	pixel_x = -2
+	},
+/obj/item/ai_module/supplied/freeform{
+	pixel_y = 7
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
@@ -10302,9 +10330,10 @@
 	dir = 1
 	},
 /obj/machinery/light/cold/directional/south,
-/obj/item/mmi/posibrain{
-	pixel_y = 6
+/obj/item/stack/sheet/glass/fifty{
+	pixel_y = 9
 	},
+/obj/item/stack/sheet/iron/fifty,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "Td" = (
@@ -11435,12 +11464,11 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
 	},
-/obj/machinery/door/poddoor/incinerator_syndicatelava_aux{
-	name = "Combustion Chamber Blast Door"
-	},
 /obj/machinery/door/airlock/hatch{
-	name = "External Airlock"
+	name = "Incinerator Hatch";
+	id_tag = "DS2incineratorHatch"
 	},
+/obj/effect/mapping_helpers/airlock/locked,
 /obj/structure/holosign/barrier/atmos/sturdy,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
@@ -11664,6 +11692,7 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced/plastitaniumglass,
+/obj/machinery/coffeemaker,
 /turf/open/floor/iron/dark/textured_half,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
 "Yb" = (
@@ -14442,7 +14471,7 @@ PU
 Hz
 pe
 cS
-Aa
+lF
 Aa
 wn
 Hz
