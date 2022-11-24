@@ -720,6 +720,6 @@
 		/obj/item/storage/belt/military/nri,
 		/obj/item/clothing/gloves/tackler/combat,
 		/obj/item/clothing/under/costume/nri,
-		/obj/item/clothing/mask/gas/hecu2,
 		/obj/item/clothing/shoes/combat,
+		/obj/item/clothing/mask/gas/hecu2,
 	)
