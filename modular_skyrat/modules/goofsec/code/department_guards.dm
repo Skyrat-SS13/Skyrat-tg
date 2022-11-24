@@ -196,6 +196,10 @@
 	shoes = /obj/item/clothing/shoes/jackboots
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded/departmental/science = 1,
+		/obj/item/assembly/flash/handheld = 1,
+	)
 
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/science
@@ -293,6 +297,10 @@
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/orderly
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded/departmental/medical = 1,
+		/obj/item/assembly/flash/handheld = 1,
+	)
 
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel/med
@@ -384,6 +392,10 @@
 	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded/departmental/engineering = 1,
+		/obj/item/assembly/flash/handheld = 1,
+	)
 
 	backpack = /obj/item/storage/backpack/industrial
 	satchel = /obj/item/storage/backpack/satchel/eng
@@ -482,6 +494,10 @@
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent
 	glasses = /obj/item/clothing/glasses/hud/gun_permit
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded/departmental/cargo = 1,
+		/obj/item/assembly/flash/handheld = 1,
+	)
 
 	backpack = /obj/item/storage/backpack
 	satchel = /obj/item/storage/backpack/satchel
@@ -702,3 +718,68 @@
 	desc = "A stun baton that doesn't operate outside of the Prison, based off the station's blueprint layout. Can be used outside of the Prison up to three times before needing to return!"
 	icon_state = "prison_baton"
 	valid_areas = list(/area/station/security/prison, /area/station/security/processing, /area/shuttle/escape)
+
+/*
+* Garment Bags
+*/
+
+/obj/item/storage/bag/garment/science_guard
+	name = "science guard's garments"
+	desc = "A bag for storing extra clothes and shoes. This one belongs to the science guard."
+
+/obj/item/storage/bag/garment/science_guard/PopulateContents()
+	generate_items_inside(list(
+		/obj/item/radio/headset/headset_sci = 2,
+		/obj/item/clothing/shoes/sneakers/black = 2,
+		/obj/item/clothing/under/rank/security/officer/blueshirt/skyrat = 2,
+		/obj/item/clothing/head/helmet/blueshirt/skyrat = 2,
+		/obj/item/clothing/head/beret/sec/science = 2,
+		/obj/item/clothing/suit/armor/vest/blueshirt/skyrat = 2,
+		/obj/item/clothing/glasses/hud/security = 2,
+	), src)
+
+/obj/item/storage/bag/garment/orderly
+	name = "orderly's garments"
+	desc = "A bag for storing extra clothes and shoes. This one belongs to the orderly."
+
+/obj/item/storage/bag/garment/orderly/PopulateContents()
+	generate_items_inside(list(
+		/obj/item/radio/headset/headset_med = 2,
+		/obj/item/clothing/shoes/sneakers/white = 2,
+		/obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/orderly = 2,
+		/obj/item/clothing/head/helmet/blueshirt/skyrat/guard = 2,
+		/obj/item/clothing/head/beret/sec/medical = 2,
+		/obj/item/clothing/suit/armor/vest/blueshirt/skyrat/orderly = 2,
+		/obj/item/clothing/glasses/hud/security = 2,
+	), src)
+
+/obj/item/storage/bag/garment/engineering_guard
+	name = "engineering guard's garments"
+	desc = "A bag for storing extra clothes and shoes. This one belongs to the engineering guard."
+
+/obj/item/storage/bag/garment/engineering_guard/PopulateContents()
+	generate_items_inside(list(
+		/obj/item/radio/headset/headset_eng = 2,
+		/obj/item/clothing/shoes/workboots = 2,
+		/obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard = 2,
+		/obj/item/clothing/head/helmet/blueshirt/skyrat/guard = 2,
+		/obj/item/clothing/head/beret/sec/engineering = 2,
+		/obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard = 2,
+		/obj/item/clothing/glasses/hud/security = 2,
+	), src)
+
+/obj/item/storage/bag/garment/customs_agent
+	name = "customs agent's garments"
+	desc = "A bag for storing extra clothes and shoes. This one belongs to the customs agent."
+
+/obj/item/storage/bag/garment/customs_agent/PopulateContents()
+	generate_items_inside(list(
+		/obj/item/radio/headset/headset_cargo = 2,
+		/obj/item/clothing/shoes/sneakers/black = 2,
+		/obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/customs_agent = 2,
+		/obj/item/clothing/head/helmet/blueshirt/skyrat/guard = 2,
+		/obj/item/clothing/head/beret/sec/cargo = 2,
+		/obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent = 2,
+		/obj/item/clothing/glasses/hud/security = 2,
+		/obj/item/clothing/glasses/hud/gun_permit = 2,
+	), src)

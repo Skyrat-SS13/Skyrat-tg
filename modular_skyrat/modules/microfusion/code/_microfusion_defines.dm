@@ -8,9 +8,9 @@
 #define MICROFUSION_CELL_RADIATION_RANGE_FAILURE 1
 
 /// The lower most time for a microfusion cell meltdown.
-#define MICROFUSION_CELL_FAILURE_LOWER 10 SECONDS
+#define MICROFUSION_CELL_FAILURE_LOWER (10 SECONDS)
 /// The upper most time for a microfusion cell meltdown.
-#define MICROFUSION_CELL_FAILURE_UPPER 15 SECONDS
+#define MICROFUSION_CELL_FAILURE_UPPER (15 SECONDS)
 
 /// A charge drain failure.
 #define MICROFUSION_CELL_FAILURE_TYPE_CHARGE_DRAIN 1

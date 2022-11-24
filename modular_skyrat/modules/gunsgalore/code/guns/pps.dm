@@ -16,8 +16,6 @@
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/pps_fire.ogg'
 	fire_sound_volume = 100
 	alt_icons = TRUE
-	realistic = TRUE
-	durability_factor = 0.5
 	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_cock.ogg'
 	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
 	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
