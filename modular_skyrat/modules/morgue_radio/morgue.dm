@@ -14,12 +14,13 @@
 	/// Tracker for the morgue radio cooldown.
 	COOLDOWN_DECLARE(radio_cooldown)
 
-
-/datum/component/morgue_radio/RegisterWithParent()
+/datum/component/morgue_radio/Initialize(...)
+	. = ..()
 	morgue = parent
 	if(!istype(morgue))
-		qdel(src)
 		return COMPONENT_INCOMPATIBLE
+
+/datum/component/morgue_radio/RegisterWithParent()
 	morgue.radio = new /obj/item/radio/headset/headset_med(morgue) // Initialize the radio in the morgue tray
 	morgue.radio.set_listening(FALSE)
 	RegisterSignal(morgue, COMSIG_MORGUE_ALARM, .proc/morgue_revivable)
@@ -27,6 +28,7 @@
 /datum/component/morgue_radio/UnregisterFromParent()
 	QDEL_NULL(morgue.radio)
 	UnregisterSignal(morgue, COMSIG_MORGUE_ALARM)
+
 /// Proc that runs code to speak into the morgues internal radio.
 /datum/component/morgue_radio/proc/morgue_revivable(cadaver)
 	SIGNAL_HANDLER
