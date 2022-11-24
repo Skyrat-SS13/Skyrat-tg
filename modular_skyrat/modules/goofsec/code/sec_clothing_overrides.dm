@@ -142,7 +142,7 @@
 	resolve_parent.add_fingerprint(user)
 	attempt_remove(gun_to_draw, get_turf(user))
 	playsound(resolve_parent, 'modular_skyrat/modules/sec_haul/sound/holsterout.ogg', 50, TRUE, -5)
-	INVOKE_ASYNC(user, /mob/.proc/put_in_hands, gun_to_draw)
+	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob, put_in_hands), gun_to_draw)
 	user.visible_message(span_warning("[user] draws [gun_to_draw] from [resolve_parent]!"), span_notice("You draw [gun_to_draw] from [resolve_parent]."))
 
 /*
@@ -190,32 +190,40 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "security_helmet"
-	toggle_message = "You pull the visor down on"
-	alt_toggle_message = "You push the visor up on"
+	base_icon_state = "security_helmet"
 	actions_types = list(/datum/action/item_action/toggle)
-	can_toggle = TRUE
-	toggle_cooldown = 0
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
 	flags_cover = HEADCOVERSEYES | PEPPERPROOF
 	visor_flags_cover = HEADCOVERSEYES | PEPPERPROOF
+	dog_fashion = null
 
-//Need to do some fuckery to make sure the mounted light preserves the current visor instead of throwing a fit sprite-wise
+	///chat message when the visor is toggled down.
+	var/toggle_message = "You pull the visor down on"
+	///chat message when the visor is toggled up.
+	var/alt_toggle_message = "You push the visor up on"
+	///Can toggle?
+	var/can_toggle = TRUE
+
+/// Duplication of toggleable logic - only way to make it toggleable without worse hacks due to being in base maps.
 /obj/item/clothing/head/helmet/sec/attack_self(mob/user)
-	if(can_toggle && !user.incapacitated())
-		if(world.time > cooldown + toggle_cooldown)
-			cooldown = world.time
-			up = !up
-			flags_1 ^= visor_flags
-			flags_inv ^= visor_flags_inv
-			flags_cover ^= visor_flags_cover
-			icon_state = "[initial(icon_state)][up ? "up" : ""]"
-			//End of our only change
-			to_chat(user, span_notice("[up ? alt_toggle_message : toggle_message] \the [src]."))
+	. = ..()
+	if(.)
+		return
+	if(user.incapacitated() || !can_toggle)
+		return
+	up = !up
+	flags_1 ^= visor_flags
+	flags_inv ^= visor_flags_inv
+	flags_cover ^= visor_flags_cover
+	// This part is changed to work with the seclight.
+	base_icon_state = "[initial(icon_state)][up ? "up" : ""]"
+	update_icon_state()
+	to_chat(user, span_notice("[up ? alt_toggle_message : toggle_message] \the [src]."))
 
-			user.update_worn_head()
-			if(iscarbon(user))
-				var/mob/living/carbon/C = user
-				C.head_update(src, forced = 1)
+	user.update_worn_head()
+	if(iscarbon(user))
+		var/mob/living/carbon/carbon_user = user
+		carbon_user.head_update(src, forced = TRUE)
 
 //Beret replacement
 /obj/item/clothing/head/security_garrison
@@ -266,7 +274,7 @@
 		),
 	)
 
-/obj/item/clothing/head/hos
+/obj/item/clothing/head/hats/hos
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "hoscap_blue"
@@ -291,7 +299,7 @@
 	)
 
 //Need to quickly redefine this so the icon doesnt break
-/obj/item/clothing/head/hos/syndicate
+/obj/item/clothing/head/hats/hos/syndicate
 	icon = 'icons/obj/clothing/head/hats.dmi'
 	worn_icon = 'icons/mob/clothing/head/hats.dmi'
 	icon_state = "hoscap"
@@ -664,9 +672,10 @@
 */
 
 /obj/item/clothing/head/helmet/sec/redsec
-	icon = 'icons/obj/clothing/head/hats.dmi'
-	worn_icon = 'icons/mob/clothing/head/hats.dmi'
+	icon = 'icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'icons/mob/clothing/head/helmet.dmi'
 	icon_state = "helmet"
+	base_icon_state = "helmet"
 	actions_types = null
 	can_toggle = FALSE
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON

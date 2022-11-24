@@ -12,6 +12,29 @@
 	name = "pool floor tile"
 	singular_name = "pool floor tile"
 	turf_type = /turf/open/floor/iron/pool
+	tile_reskin_types = list(
+		/obj/item/stack/tile/iron/pool,
+		/obj/item/stack/tile/iron/pool/cobble,
+		/obj/item/stack/tile/iron/pool/cobble/side,
+		/obj/item/stack/tile/iron/pool/cobble/corner
+	)
+
+/obj/item/stack/tile/iron/pool/cobble
+	name = "cobblestone pool floor tile"
+	singular_name = "cobblestone pool floor tile"
+	turf_type = /turf/open/floor/iron/pool/cobble
+
+/obj/item/stack/tile/iron/pool/cobble/side
+	name = "cobblestone side pool floor tile"
+	singular_name = "cobblestone side pool floor tile"
+	turf_type = /turf/open/floor/iron/pool/cobble/side
+	tile_rotate_dirs = list(SOUTH, NORTH, EAST, WEST)
+
+/obj/item/stack/tile/iron/pool/cobble/corner
+	name = "cobblestone corner pool floor tile"
+	singular_name = "cobblestone corner pool floor tile"
+	turf_type = /turf/open/floor/iron/pool/cobble/corner
+	tile_rotate_dirs = list(SOUTH, NORTH, EAST, WEST)
 
 /turf/open/floor/iron/pool
 	name = "pool floor"
@@ -23,13 +46,31 @@
 	turf_height = -30
 
 /turf/open/floor/iron/pool/setup_broken_states()
-	return list("pool_tile")
+	return list(base_icon_state)
 
 /turf/open/floor/iron/pool/setup_burnt_states()
-	return list("pool_tile")
+	return list(base_icon_state)
 
 /turf/open/floor/iron/pool/rust_heretic_act()
 	return
+
+/turf/open/floor/iron/pool/cobble
+	name = "cobblestone pool floor"
+	icon = 'modular_skyrat/modules/aesthetics/floors/icons/floors.dmi'
+	base_icon_state = "cobble"
+	icon_state = "cobble"
+	footstep = FOOTSTEP_FLOOR
+	barefootstep = FOOTSTEP_HARD_BAREFOOT
+	clawfootstep = FOOTSTEP_HARD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+
+/turf/open/floor/iron/pool/cobble/side
+	base_icon_state = "cobble_side"
+	icon_state = "cobble_side"
+
+/turf/open/floor/iron/pool/cobble/corner
+	base_icon_state = "cobble_corner"
+	icon_state = "cobble_corner"
 
 /turf/open/floor/iron/elevated
 	name = "elevated floor"

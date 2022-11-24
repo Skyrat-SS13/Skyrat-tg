@@ -20,7 +20,6 @@
 	outfit = /datum/outfit/job/corrections_officer
 	plasmaman_outfit = /datum/outfit/plasmaman/security
 	display_order = JOB_DISPLAY_ORDER_CORRECTIONS_OFFICER
-	mind_traits = list(TRAIT_DONUT_LOVER)
 	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
 	departments_list = list(
 		/datum/job_department/security,

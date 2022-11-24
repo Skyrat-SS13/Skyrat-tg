@@ -88,7 +88,7 @@
 	if(start_with_cell && !no_low_power)
 		cell = new/obj/item/stock_parts/cell/emergency_light(src)
 
-	RegisterSignal(src, COMSIG_LIGHT_EATER_ACT, .proc/on_light_eater)
+	RegisterSignal(src, COMSIG_LIGHT_EATER_ACT, PROC_REF(on_light_eater))
 	AddElement(/datum/element/atmos_sensitive, mapload)
 	return INITIALIZE_HINT_LATELOAD
 
@@ -101,7 +101,7 @@
 		if("bulb")
 			if(prob(5))
 				break_light_tube(TRUE)
-	addtimer(CALLBACK(src, .proc/update, FALSE), 0.1 SECONDS)
+	update(trigger = FALSE)
 
 /obj/machinery/light/Destroy()
 	var/area/local_area =get_room_area(src)
@@ -145,8 +145,8 @@
 
 
 //SKYRAT EDIT ADDITION BEGIN - AESTHETICS
-#define LIGHT_ON_DELAY_UPPER 3 SECONDS
-#define LIGHT_ON_DELAY_LOWER 1 SECONDS
+#define LIGHT_ON_DELAY_UPPER (3 SECONDS)
+#define LIGHT_ON_DELAY_LOWER (1 SECONDS)
 //SKYRAT EDIT END
 
 // Area sensitivity is traditionally tied directly to power use, as an optimization
@@ -156,11 +156,11 @@
 	if(!.)
 		return
 	var/area/our_area =get_room_area(src)
-	RegisterSignal(our_area, COMSIG_AREA_FIRE_CHANGED, .proc/handle_fire)
+	RegisterSignal(our_area, COMSIG_AREA_FIRE_CHANGED, PROC_REF(handle_fire))
 
 /obj/machinery/light/on_enter_area(datum/source, area/area_to_register)
 	..()
-	RegisterSignal(area_to_register, COMSIG_AREA_FIRE_CHANGED, .proc/handle_fire)
+	RegisterSignal(area_to_register, COMSIG_AREA_FIRE_CHANGED, PROC_REF(handle_fire))
 	handle_fire(area_to_register, area_to_register.fire)
 
 /obj/machinery/light/on_exit_area(datum/source, area/area_to_unregister)
@@ -219,7 +219,7 @@
 			maploaded = FALSE
 		else if(!turning_on)
 			turning_on = TRUE
-			addtimer(CALLBACK(src, .proc/turn_on, trigger, play_sound), rand(LIGHT_ON_DELAY_LOWER, LIGHT_ON_DELAY_UPPER))
+			addtimer(CALLBACK(src, PROC_REF(turn_on), trigger, play_sound), rand(LIGHT_ON_DELAY_LOWER, LIGHT_ON_DELAY_UPPER))
 		//SKYRAT EDIT END
 	else if(has_emergency_power(LIGHT_EMERGENCY_POWER_USE) && !turned_off())
 		use_power = IDLE_POWER_USE
@@ -263,7 +263,7 @@
 		if(!start_only)
 			do_sparks(3, TRUE, src)
 		var/delay = rand(BROKEN_SPARKS_MIN, BROKEN_SPARKS_MAX)
-		addtimer(CALLBACK(src, .proc/broken_sparks), delay, TIMER_UNIQUE | TIMER_NO_HASH_WAIT)
+		addtimer(CALLBACK(src, PROC_REF(broken_sparks)), delay, TIMER_UNIQUE | TIMER_NO_HASH_WAIT)
 
 /obj/machinery/light/process(delta_time)
 	if(has_power()) //If the light is being powered by the station.
@@ -479,13 +479,16 @@
 	flickering = TRUE
 	if(on && status == LIGHT_OK)
 		for(var/i in 1 to amount)
-			if(status != LIGHT_OK)
+			if(status != LIGHT_OK || !has_power())
 				break
 			on = !on
 			update(FALSE, TRUE) //SKYRAT EDIT CHANGE
 			sleep(rand(5, 15))
-		on = (status == LIGHT_OK)
-		update(FALSE, TRUE) //SKYRAT EDIT CHANGE
+		if(has_power())
+			on = (status == LIGHT_OK)
+		else
+			on = FALSE
+		update(FALSE, TRUE) // SKYRAT EDIT CHANGE
 		. = TRUE //did we actually flicker?
 	flickering = FALSE
 

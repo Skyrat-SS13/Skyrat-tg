@@ -342,8 +342,8 @@
 	icon_state = "rabbit_alt"
 
 /datum/sprite_accessory/tails/mammal/raptor
-    name = "Raptor"
-    icon_state = "raptor"
+	name = "Raptor"
+	icon_state = "raptor"
 
 /datum/sprite_accessory/tails/mammal/wagging/red_panda
 	name = "Red Panda"
@@ -420,6 +420,10 @@
 /datum/sprite_accessory/tails/mammal/wagging/snake_stripe_alt
 	name = "Snake (Stripe Alt)"
 	icon_state = "snakestripealt"
+
+/datum/sprite_accessory/tails/mammal/wagging/snake_under
+	name = "Snake (Undertail color)"
+	icon_state = "snakeunder"
 
 /datum/sprite_accessory/tails/mammal/wagging/squirrel
 	name = "Squirrel"

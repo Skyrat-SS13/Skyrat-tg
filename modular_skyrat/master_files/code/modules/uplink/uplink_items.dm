@@ -29,15 +29,11 @@
 	surplus = 50
 	progression_minimum = 30 MINUTES
 
-/datum/uplink_item/dangerous/holocarp
+/datum/uplink_item/dangerous/guardian/carp
 	name = "Holocarp"
 	desc = "Fishsticks prepared through ritualistic means in honor of the god Carp-sie, capable of binding a holocarp \
 			to act as a servant and guardian to their host."
 	item = /obj/item/guardiancreator/carp/choose
-	cost = 10
-	surplus = 0
-	restricted = TRUE
-	progression_minimum = 30 MINUTES
 
 /datum/uplink_item/dangerous/smgc20r_traitor
 	name = "C-20r Submachine Gun"

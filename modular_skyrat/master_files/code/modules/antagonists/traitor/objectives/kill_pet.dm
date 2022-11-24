@@ -8,6 +8,11 @@
 		JOB_CAPTAIN = /mob/living/simple_animal/pet/fox/renault,
 		JOB_CHIEF_MEDICAL_OFFICER = /mob/living/simple_animal/pet/cat/runtime,
 		JOB_CHIEF_ENGINEER = /mob/living/simple_animal/parrot/poly,
+		JOB_QUARTERMASTER = list(
+			/mob/living/simple_animal/sloth/citrus,
+			/mob/living/simple_animal/sloth/paperwork,
+			/mob/living/simple_animal/hostile/gorilla/cargo_domestic,
+		),
 		// Non-heads like the warden, these are automatically medium-risk at minimum
 		// They are also the only two modular additions so far
 		JOB_ROBOTICIST = /mob/living/simple_animal/pet/dog/corgi/borgi,
@@ -20,6 +25,9 @@
 // 	Objective overwrites
 /datum/traitor_objective/kill_pet/generate_objective(datum/mind/generating_for, list/possible_duplicates)
 	. = ..()
+	if(!.)
+		return FALSE
+
 	// Dust Poppy the safety inspector
 	if(istype(target_pet, /mob/living/simple_animal/pet/poppy))
 		name = "Dust the engineering department's esteemed safety inspector and beloved pet, Poppy"

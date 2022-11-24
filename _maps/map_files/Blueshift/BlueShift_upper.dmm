@@ -468,7 +468,6 @@
 /turf/open/floor/iron/stairs,
 /area/station/command/gateway)
 "aeL" = (
-/obj/effect/landmark/start/expeditionary_corps,
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
 	dir = 1
 	},
@@ -1674,7 +1673,7 @@
 /obj/structure/rack/shelf,
 /obj/effect/turf_decal/delivery/red,
 /obj/item/clothing/suit/armor/riot,
-/obj/item/clothing/head/helmet/riot{
+/obj/item/clothing/head/helmet/toggleable/riot{
 	pixel_y = 6
 	},
 /turf/open/floor/iron/dark,
@@ -2071,10 +2070,9 @@
 	},
 /obj/machinery/light_switch/directional/south,
 /obj/machinery/camera{
-	c_tag = "Bridge - Vanguard Quarters";
+	c_tag = "Bridge - Expeditionary Crew Quarters";
 	name = "command camera"
 	},
-/obj/effect/landmark/start/expeditionary_corps,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
@@ -2321,7 +2319,6 @@
 /obj/structure/chair{
 	dir = 8
 	},
-/obj/effect/landmark/start/expeditionary_corps,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -3799,12 +3796,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/aft/upper)
-"aOS" = (
-/obj/effect/decal/cleanable/cobweb,
-/obj/structure/mopbucket,
-/obj/item/mop,
-/turf/open/floor/iron,
-/area/station/maintenance/fore/upper)
 "aPc" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -4443,11 +4434,6 @@
 	},
 /turf/open/floor/iron/cafeteria,
 /area/station/command/captain_kitchen)
-"bbQ" = (
-/obj/structure/table,
-/obj/item/shield/riot/buckler,
-/turf/open/floor/plating,
-/area/station/maintenance/port/upper)
 "bbS" = (
 /obj/effect/turf_decal/trimline/purple/filled/line,
 /obj/machinery/camera/directional/south{
@@ -9443,8 +9429,8 @@
 /obj/item/clothing/neck/cloak/rd,
 /obj/item/clothing/neck/mantle/rdmantle,
 /obj/item/clothing/suit/hooded/wintercoat/science/rd,
-/obj/item/clothing/head/beret/science/fancy/rd,
-/obj/item/clothing/head/beret/science/fancy/rd/alt,
+/obj/item/clothing/head/beret/science/rd,
+/obj/item/clothing/head/beret/science/rd/alt,
 /turf/open/floor/carpet/purple,
 /area/station/command/heads_quarters/rd)
 "cJy" = (
@@ -12015,7 +12001,6 @@
 	dir = 8
 	},
 /obj/machinery/status_display/ai/directional/south,
-/obj/effect/landmark/start/expeditionary_corps,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
@@ -22394,10 +22379,6 @@
 	},
 /turf/open/floor/carpet/black,
 /area/station/service/barber)
-"htQ" = (
-/obj/structure/mopbucket,
-/turf/open/floor/plating,
-/area/station/maintenance/department/science/lower)
 "hul" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -26147,6 +26128,11 @@
 "iJV" = (
 /turf/open/floor/iron,
 /area/station/maintenance/console_room)
+"iKa" = (
+/obj/structure/table,
+/obj/item/shield/buckler,
+/turf/open/floor/plating,
+/area/station/maintenance/port/upper)
 "iKc" = (
 /obj/effect/turf_decal/tile/blue/darkblue,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -33084,6 +33070,12 @@
 	},
 /turf/open/floor/wood,
 /area/station/common/pool)
+"lfc" = (
+/obj/effect/decal/cleanable/cobweb,
+/obj/structure/mop_bucket,
+/obj/item/mop,
+/turf/open/floor/iron,
+/area/station/maintenance/fore/upper)
 "lfh" = (
 /obj/structure/flora/bush/grassy,
 /mob/living/carbon/human/species/monkey,
@@ -35244,7 +35236,6 @@
 /turf/open/floor/iron/dark,
 /area/station/science/ordnance)
 "lMO" = (
-/obj/effect/landmark/start/expeditionary_corps,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 6
 	},
@@ -37077,8 +37068,8 @@
 	dir = 8;
 	dwidth = 11;
 	height = 22;
-	shuttle_id = "whiteship_home";
 	name = "SS13: Auxiliary Dock, Station-Port";
+	shuttle_id = "whiteship_home";
 	width = 35
 	},
 /turf/open/space/openspace,
@@ -46649,7 +46640,6 @@
 /turf/open/floor/wood,
 /area/station/maintenance/abandon_office)
 "pMj" = (
-/obj/effect/landmark/start/expeditionary_corps,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 9
 	},
@@ -55778,7 +55768,7 @@
 /obj/item/ammo_box/magazine/toy/pistol/riot,
 /obj/item/gun/ballistic/automatic/pistol/toy/riot,
 /obj/item/melee/baton,
-/obj/item/clothing/head/helmet/riot,
+/obj/item/clothing/head/helmet/toggleable/riot,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
@@ -58228,6 +58218,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/science/cytology)
+"tKj" = (
+/obj/structure/mop_bucket,
+/turf/open/floor/plating,
+/area/station/maintenance/department/science/lower)
 "tKr" = (
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
@@ -59348,7 +59342,6 @@
 /obj/structure/chair{
 	dir = 4
 	},
-/obj/effect/landmark/start/expeditionary_corps,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -90990,7 +90983,7 @@ jXz
 vaX
 apl
 ybf
-bbQ
+iKa
 nsW
 xfW
 qIB
@@ -111167,7 +111160,7 @@ jCR
 qVg
 iYf
 qVg
-htQ
+tKj
 paG
 wcF
 akM
@@ -115152,7 +115145,7 @@ prv
 rJr
 vDD
 xto
-aOS
+lfc
 lLr
 ekA
 eDE

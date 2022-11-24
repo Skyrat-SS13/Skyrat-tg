@@ -50,7 +50,7 @@
 	//SKYRAT EDIT ADDITION BEGIN
 	new /obj/effect/singularity_creation(loc)
 
-	addtimer(CALLBACK(src, .proc/make_visible), 62)
+	addtimer(CALLBACK(src, PROC_REF(make_visible)), 62)
 
 	energy = starting_energy
 	//SKYRAT EDIT END
@@ -60,7 +60,7 @@
 
 	var/datum/component/singularity/new_component = AddComponent(
 		/datum/component/singularity, \
-		consume_callback = CALLBACK(src, .proc/consume), \
+		consume_callback = CALLBACK(src, PROC_REF(consume)), \
 	)
 
 	singularity_component = WEAKREF(new_component)
@@ -109,7 +109,7 @@
 		rip_u.dismember(BURN) //nice try jedi
 		qdel(rip_u)
 		return
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/carbon_tk_part_two, jedi), 0.1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(carbon_tk_part_two), jedi), 0.1 SECONDS)
 
 /obj/singularity/proc/carbon_tk_part_two(mob/living/carbon/jedi)
 	if(QDELETED(jedi))
@@ -125,7 +125,7 @@
 			rip_u.dismember(BURN)
 			qdel(rip_u)
 		return
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/carbon_tk_part_three, jedi), 0.1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(carbon_tk_part_three), jedi), 0.1 SECONDS)
 
 /obj/singularity/proc/carbon_tk_part_three(mob/living/carbon/jedi)
 	if(QDELETED(jedi))
@@ -448,7 +448,7 @@
 	return gain
 
 /obj/singularity/deadchat_plays(mode = DEMOCRACY_MODE, cooldown = 12 SECONDS)
-	. = AddComponent(/datum/component/deadchat_control/cardinal_movement, mode, list(), cooldown, CALLBACK(src, .proc/stop_deadchat_plays))
+	. = AddComponent(/datum/component/deadchat_control/cardinal_movement, mode, list(), cooldown, CALLBACK(src, PROC_REF(stop_deadchat_plays)))
 
 	if(. == COMPONENT_INCOMPATIBLE)
 		return

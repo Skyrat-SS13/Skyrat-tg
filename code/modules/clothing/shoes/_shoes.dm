@@ -24,14 +24,14 @@
 	var/datum/weakref/our_alert_ref
 
 /obj/item/clothing/shoes/suicide_act(mob/living/carbon/user)
-	if(rand(2)>1)
+	if(prob(50))
 		user.visible_message(span_suicide("[user] begins tying \the [src] up waaay too tightly! It looks like [user.p_theyre()] trying to commit suicide!"))
-		var/obj/item/bodypart/l_leg = user.get_bodypart(BODY_ZONE_L_LEG)
-		var/obj/item/bodypart/r_leg = user.get_bodypart(BODY_ZONE_R_LEG)
-		if(l_leg)
-			l_leg.dismember()
-		if(r_leg)
-			r_leg.dismember()
+		var/obj/item/bodypart/leg/left = user.get_bodypart(BODY_ZONE_L_LEG)
+		var/obj/item/bodypart/leg/right = user.get_bodypart(BODY_ZONE_R_LEG)
+		if(left)
+			left.dismember()
+		if(right)
+			right.dismember()
 		playsound(user, SFX_DESECRATION, 50, TRUE, -1)
 		return BRUTELOSS
 	else//didnt realize this suicide act existed (was in miscellaneous.dm) and didnt want to remove it, so made it a 50/50 chance. Why not!
@@ -39,7 +39,8 @@
 		for(var/i in 1 to 3)
 			sleep(0.3 SECONDS)
 			playsound(user, 'sound/weapons/genhit2.ogg', 50, TRUE)
-		return(BRUTELOSS)
+		return BRUTELOSS
+
 //SKYRAT EDIT REMOVAL BEGIN -DIGI_BLOODSOLE - (Moved to modular_skyrat/modules/digi_shoeblood/code/modules/clothing/shoes/_shoes.dm)
 /*
 /obj/item/clothing/shoes/worn_overlays(mutable_appearance/standing, isinhands = FALSE)
@@ -79,7 +80,7 @@
 	. = ..()
 	if(can_be_tied && tied == SHOES_UNTIED)
 		our_alert_ref = WEAKREF(user.throw_alert(ALERT_SHOES_KNOT, /atom/movable/screen/alert/shoes/untied))
-		RegisterSignal(src, COMSIG_SHOES_STEP_ACTION, .proc/check_trip, override=TRUE)
+		RegisterSignal(src, COMSIG_SHOES_STEP_ACTION, PROC_REF(check_trip), override=TRUE)
 
 /obj/item/clothing/shoes/proc/restore_offsets(mob/user)
 	equipped_before_drop = FALSE
@@ -128,7 +129,7 @@
 	else
 		if(tied == SHOES_UNTIED && our_guy && user == our_guy)
 			our_alert_ref = WEAKREF(our_guy.throw_alert(ALERT_SHOES_KNOT, /atom/movable/screen/alert/shoes/untied)) // if we're the ones unknotting our own laces, of course we know they're untied
-		RegisterSignal(src, COMSIG_SHOES_STEP_ACTION, .proc/check_trip, override=TRUE)
+		RegisterSignal(src, COMSIG_SHOES_STEP_ACTION, PROC_REF(check_trip), override=TRUE)
 
 /**
  * handle_tying deals with all the actual tying/untying/knotting, inferring your intent from who you are in relation to the state of the laces
@@ -165,8 +166,8 @@
 		var/tie_time = lace_time
 		if(HAS_TRAIT(user, TRAIT_STICKY_FINGERS))
 			tie_time *= 0.5
-		if(do_after(user, tie_time, target = our_guy, extra_checks = CALLBACK(src, .proc/still_shoed, our_guy)))
-		// SKYRET EDIT END
+		if(do_after(user, tie_time, target = our_guy, extra_checks = CALLBACK(src, PROC_REF(still_shoed), our_guy)))
+		// SKYRAT EDIT END
 			to_chat(user, span_notice("You [tied ? "unknot" : "tie"] the laces of your [src.name]."))
 			if(tied == SHOES_UNTIED)
 				adjust_laces(SHOES_TIED, user)
@@ -193,7 +194,7 @@
 		if(HAS_TRAIT(user, TRAIT_STICKY_FINGERS)) // Clowns with thieving gloves will be a menace
 			mod_time *= 0.5
 		// SKYRAT EDIT END
-		if(do_after(user, mod_time, target = our_guy, extra_checks = CALLBACK(src, .proc/still_shoed, our_guy)))
+		if(do_after(user, mod_time, target = our_guy, extra_checks = CALLBACK(src, PROC_REF(still_shoed), our_guy)))
 			to_chat(user, span_notice("You [tied ? "untie" : "knot"] the laces on [loc]'s [src.name]."))
 			if(tied == SHOES_UNTIED)
 				adjust_laces(SHOES_KNOTTED, user)
@@ -279,11 +280,11 @@
 		return
 
 	to_chat(user, span_notice("You begin [tied ? "untying" : "tying"] the laces on [src]..."))
-	// SKYRAT EDIT START
+	// SKYRAT EDIT STARTr
 	var/tie_time = lace_time
 	if(HAS_TRAIT(user, TRAIT_STICKY_FINGERS))
 		tie_time *= 0.5
-	if(do_after(user, tie_time, target = src,extra_checks = CALLBACK(src, .proc/still_shoed, user)))
+	if(do_after(user, lace_time, target = src,extra_checks = CALLBACK(src, PROC_REF(still_shoed), user)))
 	// SKYRAT EDIT END
 		to_chat(user, span_notice("You [tied ? "untie" : "tie"] the laces on [src]."))
 		adjust_laces(tied ? SHOES_UNTIED : SHOES_TIED, user)

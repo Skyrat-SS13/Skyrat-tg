@@ -165,6 +165,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Recolorable Fancy Fur Coat"
 	item_path = /obj/item/clothing/suit/jacket/fancy
 
+/datum/loadout_item/suit/tailored_jacket
+	name = "Recolorable Tailored Jacket"
+	item_path = /obj/item/clothing/suit/tailored_jacket
+
 /datum/loadout_item/suit/ethereal_raincoat
 	name = "Ethereal Raincoat"
 	item_path = /obj/item/clothing/suit/hooded/ethereal_raincoat
@@ -319,21 +323,15 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 *	HAWAIIAN
 */
 
-/datum/loadout_item/suit/hawaiian_blue
-	name = "Blue Hawaiian Overshirt"
-	item_path = /obj/item/clothing/suit/hawaiian_blue
 
-/datum/loadout_item/suit/hawaiian_orange
-	name = "Orange Hawaiian Overshirt"
-	item_path = /obj/item/clothing/suit/hawaiian_orange
+/datum/loadout_item/suit/hawaiian_shirt
+	name = "Hawaiian Shirt"
+	item_path = /obj/item/clothing/suit/costume/hawaiian
 
-/datum/loadout_item/suit/hawaiian_purple
-	name = "Purple Hawaiian Overshirt"
-	item_path = /obj/item/clothing/suit/hawaiian_purple
+/datum/loadout_item/suit/hawaiian_gags
+	name = "Colourable Hawaiian Shirt"
+	item_path = /obj/item/clothing/suit/hawaiian_shirt
 
-/datum/loadout_item/suit/hawaiian_green
-	name = "Green Hawaiian Overshirt"
-	item_path = /obj/item/clothing/suit/hawaiian_green
 
 /*
 *	MISC
@@ -504,7 +502,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/coat_sci
 	name = "Science Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/science
-	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, JOB_VANGUARD_OPERATIVE, JOB_SCIENCE_GUARD) // Reserve it to the Science Departement
+	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, JOB_SCIENCE_GUARD) // Reserve it to the Science Departement
 
 /datum/loadout_item/suit/coat_eng
 	name = "Engineering Winter Coat"
@@ -579,7 +577,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/sci_jacket
 	name = "Science Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/sci
-	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_VANGUARD_OPERATIVE, JOB_SCIENCE_GUARD)
+	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_SCIENCE_GUARD)
 
 /datum/loadout_item/suit/med_jacket
 	name = "Medbay Jacket"

@@ -77,10 +77,6 @@
 
 /datum/job/engineering_guard //see orderly
 
-
-/datum/job/expeditionary_trooper
-	alt_titles = list("Expeditionary Trooper", "Vanguard Operative", "Vanguard Pointman", "Expeditionary Field Medic", "Vanguard Marksman", "Expeditionary Combat Technician")
-
 /datum/job/geneticist
 	alt_titles = list("Geneticist", "Mutation Researcher")
 
@@ -103,7 +99,7 @@
 	alt_titles = list("Nanotrasen Consultant", "Nanotrasen Diplomat", "Central Command Consultant", "Nanotrasen Representative", "Central Command Representative")
 
 /datum/job/orderly
-	alt_titles = list("Orderly", "Medical Guard") // departmental guards alt-titles should be kept to [department] guard to avoid confusion
+	alt_titles = list("Orderly", "Medical Guard") //other dept guards' alt-titles should be kept to [department] guard to avoid confusion
 
 /datum/job/paramedic
 	alt_titles = list("Paramedic", "Emergency Medical Technician", "Search and Rescue Technician")
@@ -123,8 +119,7 @@
 /datum/job/roboticist
 	alt_titles = list("Roboticist", "Biomechanical Engineer", "Mechatronic Engineer")
 
-/datum/job/science_guard // See ordlerly
-
+/datum/job/science_guard //See orderly
 
 /datum/job/scientist
 	alt_titles = list(
@@ -144,7 +139,7 @@
 	alt_titles = list("Security Medic", "Field Medic", "Security Corpsman", "Brig Physician", "Combat Medic")
 
 /datum/job/security_officer
-	alt_titles = list("Security Officer", "Security Operative", "Peacekeeper")
+	alt_titles = list("Security Officer", "Security Operative", "Peacekeeper", "Security Cadet")
 
 /datum/job/shaft_miner
 	alt_titles = list("Shaft Miner", "Excavator", "Spelunker", "Drill Technician", "Prospector")

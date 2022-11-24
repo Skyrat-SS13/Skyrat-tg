@@ -74,10 +74,6 @@
 	target_areas = list(/area/station/command/heads_quarters/captain, /area/station/command/bridge)
 	desired_atom = /obj/effect/landmark/start/blueshield
 
-/datum/area_spawn/vanguard_landmark
-	target_areas = list(/area/station/command/gateway, /area/station/science/lobby, /area/station/science/breakroom)
-	desired_atom = /obj/effect/landmark/start/expeditionary_corps
-
 /datum/area_spawn/bouncer_landmark
 	desired_atom = /obj/effect/landmark/start/bouncer
 	target_areas = list(/area/station/service/bar, /area/station/service/cafeteria, /area/station/service/kitchen/diner)

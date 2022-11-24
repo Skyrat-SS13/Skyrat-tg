@@ -16,5 +16,4 @@
 #define SECHUD_SOLFED_LIASON "hudsolfedliasion"
 //SR Misc
 #define SECHUD_BARBER "hudbarber"
-#define SECHUD_VANGUARD_OPERATIVE "hudexpeditionarytrooper"
 #define SECHUD_SCRAMBLED "hudscrambled"

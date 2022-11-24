@@ -39,6 +39,7 @@
 		return wear_mask
 	if(check_glasses && glasses && (glasses.flags_cover & GLASSESCOVERSEYES))
 		return glasses
+
 /mob/living/carbon/is_pepper_proof(check_head = TRUE, check_mask = TRUE)
 	if(check_head &&(head?.flags_cover & PEPPERPROOF))
 		return head
@@ -322,6 +323,9 @@
 		target.Move(target_shove_turf, shove_dir)
 		if(get_turf(target) == target_old_turf)
 			shove_blocked = TRUE
+	
+	if(!shove_blocked)
+		target.setGrabState(GRAB_PASSIVE)
 
 	if(target.IsKnockdown() && !target.IsParalyzed()) //KICK HIM IN THE NUTS
 		target.Paralyze(SHOVE_CHAIN_PARALYZE)
@@ -443,7 +447,7 @@
 	do_jitter_animation(300)
 	adjust_jitter(20 SECONDS)
 	adjust_stutter(4 SECONDS)
-	addtimer(CALLBACK(src, .proc/secondary_shock, should_stun), 2 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(secondary_shock), should_stun), 2 SECONDS)
 	return shock_damage
 
 ///Called slightly after electrocute act to apply a secondary stun.
@@ -818,8 +822,8 @@
 	grasped_part = grasping_part
 	grasped_part.grasped_by = src
 	grasped_part.refresh_bleed_rate()
-	RegisterSignal(user, COMSIG_PARENT_QDELETING, .proc/qdel_void)
-	RegisterSignal(grasped_part, list(COMSIG_CARBON_REMOVE_LIMB, COMSIG_PARENT_QDELETING), .proc/qdel_void)
+	RegisterSignal(user, COMSIG_PARENT_QDELETING, PROC_REF(qdel_void))
+	RegisterSignal(grasped_part, list(COMSIG_CARBON_REMOVE_LIMB, COMSIG_PARENT_QDELETING), PROC_REF(qdel_void))
 
 	user.visible_message(span_danger("[user] grasps at [user.p_their()] [grasped_part.name], trying to stop the bleeding."), span_notice("You grab hold of your [grasped_part.name] tightly."), vision_distance=COMBAT_MESSAGE_RANGE)
 	playsound(get_turf(src), 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)

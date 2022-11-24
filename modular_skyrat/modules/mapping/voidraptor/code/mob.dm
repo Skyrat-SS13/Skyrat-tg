@@ -76,7 +76,7 @@
 	real_name = "Walter"
 	desc = "It's Walter, he bites criminals just as well as he bites toddlers."
 
-/mob/living/simple_animal/rabbit/daisy
+/mob/living/basic/rabbit/daisy
 	name = "Daisy"
 	real_name = "Daisy"
 	desc = "The Curator's pet bnuuy."

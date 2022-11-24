@@ -45,12 +45,17 @@
 	greyscale_colors = "#FFFFFF"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
-/obj/item/clothing/shoes/black_heels
-	name = "black heels"
-	desc = "A pair of black high heels that are much smaller on your feet"
-	icon_state = "highheels"
+/obj/item/clothing/shoes/fancy_heels
+	name = "fancy heels"
+	desc = "A pair of fancy high heels that are much smaller on your feet."
+	icon_state = "fancyheels"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
+	greyscale_colors = "#FFFFFF"
+	greyscale_config = /datum/greyscale_config/fancyheels
+	greyscale_config_worn = /datum/greyscale_config/fancyheels/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/fancyheels/worn
+	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/shoes/discoshoes
 	name = "green snakeskin shoes"
@@ -145,7 +150,7 @@
 
 //Modular overide to give jackboots laces
 /obj/item/clothing/shoes/jackboots
-    can_be_tied = TRUE
+	can_be_tied = TRUE
 
 /obj/item/clothing/shoes/colorable_laceups
 	name = "laceup shoes"

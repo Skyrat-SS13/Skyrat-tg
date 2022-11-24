@@ -16,37 +16,37 @@
 	brute_reduction = 0
 	burn_reduction = 0
 
-/obj/item/bodypart/l_arm/robot/mutant
+/obj/item/bodypart/arm/left/robot/mutant
 	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
 	limb_id = SPECIES_SYNTHMAMMAL
 	should_draw_greyscale = TRUE
 	brute_reduction = 0
 	burn_reduction = 0
 
-/obj/item/bodypart/r_arm/robot/mutant
+/obj/item/bodypart/arm/right/robot/mutant
 	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
 	limb_id = SPECIES_SYNTHMAMMAL
 	should_draw_greyscale = TRUE
 	brute_reduction = 0
 	burn_reduction = 0
 
-/obj/item/bodypart/l_leg/robot/mutant
+/obj/item/bodypart/leg/left/robot/mutant
 	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
 	limb_id = SPECIES_SYNTHMAMMAL
 	should_draw_greyscale = TRUE
-	digitigrade_type = /obj/item/bodypart/l_leg/robot/digitigrade
+	digitigrade_type = /obj/item/bodypart/leg/left/robot/digitigrade
 	brute_reduction = 0
 	burn_reduction = 0
 
-/obj/item/bodypart/r_leg/robot/mutant
+/obj/item/bodypart/leg/right/robot/mutant
 	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
 	should_draw_greyscale = TRUE
 	limb_id = SPECIES_SYNTHMAMMAL
-	digitigrade_type = /obj/item/bodypart/r_leg/robot/digitigrade
+	digitigrade_type = /obj/item/bodypart/leg/right/robot/digitigrade
 	brute_reduction = 0
 	burn_reduction = 0
 
-/obj/item/bodypart/l_leg/robot/digitigrade
+/obj/item/bodypart/leg/left/robot/digitigrade
 	icon = BODYPART_ICON_SYNTHMAMMAL
 	icon_static = BODYPART_ICON_SYNTHMAMMAL
 	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
@@ -57,11 +57,11 @@
 	brute_reduction = 0
 	burn_reduction = 0
 
-/obj/item/bodypart/l_leg/robot/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
+/obj/item/bodypart/leg/left/robot/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
 	. = ..()
 	check_mutant_compatability()
 
-/obj/item/bodypart/r_leg/robot/digitigrade
+/obj/item/bodypart/leg/right/robot/digitigrade
 	icon = BODYPART_ICON_SYNTHMAMMAL
 	icon_static = BODYPART_ICON_SYNTHMAMMAL
 	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
@@ -72,6 +72,6 @@
 	brute_reduction = 0
 	burn_reduction = 0
 
-/obj/item/bodypart/r_leg/robot/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
+/obj/item/bodypart/leg/right/robot/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
 	. = ..()
 	check_mutant_compatability()

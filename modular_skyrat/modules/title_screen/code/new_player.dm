@@ -266,9 +266,9 @@
 		qdel(query_get_new_polls)
 		return
 	if(query_get_new_polls.NextRow())
-		output +={"<a class="menu_button menu_newpoll" href='?src=\ref[src];viewpoll=1'>POLLS (NEW)</a>"}
+		output +={"<a class="menu_button menu_newpoll" href='?src=[text_ref(src)];viewpoll=1'>POLLS (NEW)</a>"}
 	else
-		output +={"<a class="menu_button" href='?src=\ref[src];viewpoll=1'>POLLS</a>"}
+		output +={"<a class="menu_button" href='?src=[text_ref(src)];viewpoll=1'>POLLS</a>"}
 	qdel(query_get_new_polls)
 	if(QDELETED(src))
 		return

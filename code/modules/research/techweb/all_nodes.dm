@@ -66,6 +66,7 @@
 		"kitchen_knife",
 		"laptop",
 		"light_bulb",
+		"light_replacer",
 		"light_tube",
 		"mechfab",
 		"micro_mani",
@@ -109,6 +110,7 @@
 		"spoon",
 		"status_display_frame",
 		"sticky_tape",
+		"syrup_bottle",
 		"tablet",
 		"tape",
 		"tech_disk",
@@ -871,7 +873,9 @@
 		"comp_bar_overlay",
 		"comp_bci_action",
 		"comp_counter_overlay",
+		"comp_install_detector",
 		"comp_object_overlay",
+		"comp_reagent_injector",
 		"comp_target_intercept",
 		"comp_thought_listener",
 		"comp_vox",
@@ -894,7 +898,7 @@
 	id = "server_shell"
 	display_name = "Server Technology Research"
 	description = "Grants access to a server shell that has a very high capacity for components."
-	prereq_ids = list("adv_shells", "computer_hardware_basic")
+	prereq_ids = list("adv_shells", "computer_data_disks")
 	design_ids = list(
 		"server_shell",
 	)
@@ -993,8 +997,11 @@
 		"borg_upgrade_holding",
 		"borg_upgrade_lavaproof",
 		"borg_upgrade_rped",
-		"advanced_materials", // SKYRAT ADDITION - ADVANCED MATERIALS UPGRADE
-		"inducer_module", // SKYRAT ADDITION - INDUCER MODULE UPGRADE
+		"borg_upgrade_hypermod",
+		// SKYRAT EDIT ADD START
+		"advanced_materials",
+		"inducer_module",
+		// SKYRAT EDIT ADD END
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
@@ -1176,24 +1183,17 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
-/datum/techweb_node/computer_hardware_basic //Modular computers are shitty and nearly useless so until someone makes them actually useful this can be easy to get.
-	id = "computer_hardware_basic"
-	display_name = "Computer Hardware"
-	description = "How computer hardware is made."
+/datum/techweb_node/data_disks
+	id = "computer_data_disks"
+	display_name = "Computer Data Disks"
+	description = "Data disks used for storing modular computer stuff."
 	prereq_ids = list("comptech")
 	design_ids = list(
-		"bat_advanced",
-		"bat_control",
-		"bat_micro",
-		"bat_nano",
-		"bat_normal",
-		"bat_super",
-		"cardslot",
 		"portadrive_advanced",
 		"portadrive_basic",
 		"portadrive_super",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)  //they are really shitty
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 
 /datum/techweb_node/computer_board_gaming
 	id = "computer_board_gaming"
@@ -1416,17 +1416,20 @@
 	description = "Better than Efficiency V."
 	prereq_ids = list("engineering", "basic_plasma")
 	design_ids = list(
+		"borg_upgrade_cooldownmod",
+		"borg_upgrade_damagemod",
+		"borg_upgrade_rangemod",
 		"cargoexpress",
 		"cooldownmod",
 		"damagemod",
 		"drill",
+		"mecha_kineticgun",
 		"mining_equipment_vendor",
 		"ore_redemption",
 		"plasmacutter",
 		"rangemod",
 		"superresonator",
 		"triggermod",
-		"mecha_kineticgun",
 	)//e a r l y    g a  m e)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -1440,10 +1443,6 @@
 		"hypermod",
 		"jackhammer",
 		"plasmacutter_adv",
-
-		//SKYRAT EDIT START - RESEARCH DESIGNS
-		"ripleyupgradef"
-		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
 	discount_experiments = list(/datum/experiment/scanning/random/material/hard/one = 5000)
@@ -1460,7 +1459,7 @@
 		"buffer",
 		"vacuum",
 		"holobarrier_jani",
-		"light_replacer",
+		"light_replacer_blue",
 		"paint_remover",
 		"spraybottle",
 	)
@@ -2223,7 +2222,7 @@
 /datum/techweb_node/syndicate_basic/New() //Crappy way of making syndicate gear decon supported until there's another way.
 	. = ..()
 	if(!SSearly_assets.initialized)
-		RegisterSignal(SSearly_assets, COMSIG_SUBSYSTEM_POST_INITIALIZE, .proc/register_uplink_items)
+		RegisterSignal(SSearly_assets, COMSIG_SUBSYSTEM_POST_INITIALIZE, PROC_REF(register_uplink_items))
 	else
 		register_uplink_items()
 
