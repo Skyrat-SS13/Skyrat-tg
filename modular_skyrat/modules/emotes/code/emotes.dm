@@ -78,6 +78,7 @@
 	key = "snap2"
 	key_third_person = "snaps twice"
 	message = "snaps twice."
+	message_param = "snaps twice at %t."
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
 	hands_use_check = TRUE
@@ -88,6 +89,7 @@
 	key = "snap3"
 	key_third_person = "snaps thrice"
 	message = "snaps thrice."
+	message_param = "snaps thrice at %t."
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
 	hands_use_check = TRUE
