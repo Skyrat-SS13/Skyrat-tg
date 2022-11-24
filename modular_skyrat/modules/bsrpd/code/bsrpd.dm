@@ -53,7 +53,7 @@
 	if(!.)
 		return // too far away
 	remote_piping_toggle = !remote_piping_toggle
-	balloon_alert(user, "remote piping [remote_piping_toggle ? "off" : "on"]")
+	balloon_alert(user, "remote piping [remote_piping_toggle ? "on" : "off"]")
 	playsound(get_turf(src), 'sound/machines/click.ogg', 50, TRUE)
 
 /obj/item/pipe_dispenser/bluespace/afterattack(atom/target, mob/user, prox)
