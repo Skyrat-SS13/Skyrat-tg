@@ -23,8 +23,8 @@
 #define OPFOR_SUBSYSTEM_REJECT_CLOSED "OPFOR application system is not accepting new applications"
 #define OPFOR_SUBSYSTEM_READY "OPFOR application system is ready to accept new applications"
 
-#define OPFOR_REQUEST_UPDATE_COOLDOWN 5 MINUTES
-#define OPFOR_PING_COOLDOWN 1 MINUTES
+#define OPFOR_REQUEST_UPDATE_COOLDOWN (5 MINUTES)
+#define OPFOR_PING_COOLDOWN (1 MINUTES)
 
 #define OPFOR_TEXT_LIMIT_TITLE 40
 #define OPFOR_TEXT_LIMIT_BACKSTORY 1000

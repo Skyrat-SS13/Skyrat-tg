@@ -1,4 +1,4 @@
-#define COMBAT_NOTICE_COOLDOWN 10 SECONDS
+#define COMBAT_NOTICE_COOLDOWN (10 SECONDS)
 GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 
 /proc/GenerateCombatOverlay()
