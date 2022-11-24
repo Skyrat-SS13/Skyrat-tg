@@ -59,7 +59,7 @@ GLOBAL_LIST_INIT(skyrat_wood_recipes, list ( \
 
 GLOBAL_LIST_INIT(skyrat_cloth_recipes, list ( \
 	new/datum/stack_recipe("xenoarch bag", /obj/item/storage/bag/xenoarch, 4), \
-	new/datum/stack_recipe("pillow", /obj/item/pillow, 3), \
+	new/datum/stack_recipe("fancy pillow", /obj/item/fancy_pillow, 3), \
 	new/datum/stack_recipe("eyepatch wrap", /obj/item/clothing/glasses/eyepatch/wrap, 2), \
 	new/datum/stack_recipe("eyepatch", /obj/item/clothing/glasses/eyepatch, 2), \
 ))
@@ -67,3 +67,14 @@ GLOBAL_LIST_INIT(skyrat_cloth_recipes, list ( \
 /obj/item/stack/sheet/cloth/get_main_recipes()
 	. = ..()
 	. += GLOB.skyrat_cloth_recipes
+
+// Leather
+
+GLOBAL_LIST_INIT(skyrat_leather_recipes, list ( \
+	new/datum/stack_recipe("gear harness", /obj/item/clothing/under/misc/skyrat/gear_harness, 6), \
+	new/datum/stack_recipe("xenoarch belt", /obj/item/storage/belt/utility/xenoarch, 4), \
+))
+
+/obj/item/stack/sheet/leather/get_main_recipes()
+	. = ..()
+	. += GLOB.skyrat_leather_recipes

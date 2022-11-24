@@ -4,14 +4,14 @@
 /obj/item/bodypart/chest/pod
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
 
-/obj/item/bodypart/l_arm/pod
+/obj/item/bodypart/arm/left/pod
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
 
-/obj/item/bodypart/r_arm/pod
+/obj/item/bodypart/arm/right/pod
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
 
-/obj/item/bodypart/l_leg/pod
+/obj/item/bodypart/leg/left/pod
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
 
-/obj/item/bodypart/r_leg/pod
+/obj/item/bodypart/leg/right/pod
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC

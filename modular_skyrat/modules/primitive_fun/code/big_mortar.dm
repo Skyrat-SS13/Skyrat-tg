@@ -18,6 +18,8 @@
 	. = ..()
 	create_reagents(200, OPENCONTAINER)
 
+	AddElement(/datum/element/falling_hazard, damage = 20, wound_bonus = 5, hardhat_safety = TRUE, crushes = FALSE)
+
 /obj/structure/large_mortar/examine(mob/user)
 	. = ..()
 	. += span_notice("It currently contains <b>[length(contents)]/[maximum_contained_items]</b> items.")

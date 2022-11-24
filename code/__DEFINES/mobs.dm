@@ -215,10 +215,10 @@
 //Health doll screws for human mobs
 #define SCREWYDOLL_HEAD /obj/item/bodypart/head
 #define SCREWYDOLL_CHEST /obj/item/bodypart/chest
-#define SCREWYDOLL_L_ARM /obj/item/bodypart/l_arm
-#define SCREWYDOLL_R_ARM /obj/item/bodypart/r_arm
-#define SCREWYDOLL_L_LEG /obj/item/bodypart/l_leg
-#define SCREWYDOLL_R_LEG /obj/item/bodypart/r_leg
+#define SCREWYDOLL_L_ARM /obj/item/bodypart/arm/left
+#define SCREWYDOLL_R_ARM /obj/item/bodypart/arm/right
+#define SCREWYDOLL_L_LEG /obj/item/bodypart/leg/left
+#define SCREWYDOLL_R_LEG /obj/item/bodypart/leg/right
 
 //Threshold levels for beauty for humans
 #define BEAUTY_LEVEL_HORRID -66
@@ -296,10 +296,10 @@
 #define ETHEREAL_CHARGE_DANGEROUS 3000
 
 
-#define CRYSTALIZE_COOLDOWN_LENGTH 120 SECONDS
-#define CRYSTALIZE_PRE_WAIT_TIME 40 SECONDS
-#define CRYSTALIZE_DISARM_WAIT_TIME 120 SECONDS
-#define CRYSTALIZE_HEAL_TIME 60 SECONDS
+#define CRYSTALIZE_COOLDOWN_LENGTH (120 SECONDS)
+#define CRYSTALIZE_PRE_WAIT_TIME (40 SECONDS)
+#define CRYSTALIZE_DISARM_WAIT_TIME (120 SECONDS)
+#define CRYSTALIZE_HEAL_TIME (60 SECONDS)
 
 #define BRUTE_DAMAGE_REQUIRED_TO_STOP_CRYSTALIZATION 30
 
@@ -531,13 +531,13 @@
 
 // recent examine defines
 /// How long it takes for an examined atom to be removed from recent_examines. Should be the max of the below time windows
-#define RECENT_EXAMINE_MAX_WINDOW 2 SECONDS
+#define RECENT_EXAMINE_MAX_WINDOW (2 SECONDS)
 /// If you examine the same atom twice in this timeframe, we call examine_more() instead of examine()
-#define EXAMINE_MORE_WINDOW 1 SECONDS
+#define EXAMINE_MORE_WINDOW (1 SECONDS)
 /// If you examine another mob who's successfully examined you during this duration of time, you two try to make eye contact. Cute!
-#define EYE_CONTACT_WINDOW 2 SECONDS
+#define EYE_CONTACT_WINDOW (2 SECONDS)
 /// If you yawn while someone nearby has examined you within this time frame, it will force them to yawn as well. Tradecraft!
-#define YAWN_PROPAGATION_EXAMINE_WINDOW 2 SECONDS
+#define YAWN_PROPAGATION_EXAMINE_WINDOW (2 SECONDS)
 
 /// How far away you can be to make eye contact with someone while examining
 #define EYE_CONTACT_RANGE 5

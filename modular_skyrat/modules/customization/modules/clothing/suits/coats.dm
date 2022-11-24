@@ -187,10 +187,10 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/costume/poncho
-    supports_variations_flags = STYLE_TAUR_ALL
+	supports_variations_flags = STYLE_TAUR_ALL
 
 /obj/item/clothing/suit/apron
-    supports_variations_flags = STYLE_TAUR_ALL
+	supports_variations_flags = STYLE_TAUR_ALL
 
 /obj/item/clothing/suit/toggle/lawyer/white
 	name = "white suit jacket"
@@ -282,3 +282,18 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	flags_inv = HIDEHAIR
+
+/obj/item/clothing/suit/tailored_jacket
+	name = "tailored jacket"
+	desc = "A somewhat long jacket tailor made for... however it looks right now!"
+	icon_state = "tailored_jacket"
+	greyscale_config = /datum/greyscale_config/tailored_jacket
+	greyscale_config_worn = /datum/greyscale_config/tailored_jacket/worn
+	greyscale_colors = "#8c8c8c#8c8c8c#8c8c8c#bf9f78#8c8c8c#8c8c8c#8c8c8c#bf9f78#8c8c8c" // Look this has a lot of colorable sections
+	body_parts_covered = CHEST|ARMS
+	flags_1 = IS_PLAYER_COLORABLE_1
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/suit/tailored_jacket/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/toggle_icon, "sleeves")

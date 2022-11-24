@@ -1,5 +1,5 @@
-#define SELF_AID_REMOVE_DELAY 5 SECONDS
-#define OTHER_AID_REMOVE_DELAY 2 SECONDS
+#define SELF_AID_REMOVE_DELAY (5 SECONDS)
+#define OTHER_AID_REMOVE_DELAY (2 SECONDS)
 
 /datum/bodypart_aid
 	var/name

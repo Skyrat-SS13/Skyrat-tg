@@ -53,8 +53,8 @@
 
 #define TEST_PRE 0
 #define TEST_DEFAULT 1
-/// This should be one of the last tests to run, because we run it for a little bit over 30 seconds by design and we want to run all of the tests that take a trivial amount of time to complete beforehand.
-#define TEST_MONKEY_BUSINESS 10
+/// After most test steps, used for tests that run long so shorter issues can be noticed faster
+#define TEST_LONGER 10
 /// This must be the last test to run due to the inherent nature of the test iterating every single tangible atom in the game and qdeleting all of them (while taking long sleeps to make sure the garbage collector fires properly) taking a large amount of time.
 #define TEST_CREATE_AND_DESTROY INFINITY
 
@@ -82,6 +82,7 @@
 #include "achievements.dm"
 #include "anchored_mobs.dm"
 #include "anonymous_themes.dm"
+#include "area_contents.dm"
 #include "autowiki.dm"
 #include "barsigns.dm"
 #include "bespoke_id.dm"
@@ -98,6 +99,7 @@
 #include "component_tests.dm"
 #include "confusion.dm"
 #include "connect_loc.dm"
+#include "container_sanity.dm"
 #include "crayons.dm"
 #include "create_and_destroy.dm"
 #include "dcs_get_id_from_elements.dm"
@@ -121,6 +123,7 @@
 #include "hydroponics_validate_genes.dm"
 #include "inhands.dm"
 #include "keybinding_init.dm"
+#include "key_prefixes.dm"
 #include "knockoff_component.dm"
 #include "limbsanity.dm"
 #include "load_map_security.dm"
@@ -170,6 +173,7 @@
 #include "security_officer_distribution.dm"
 #include "security_levels.dm"
 #include "serving_tray.dm"
+#include "simple_animal_freeze.dm"
 #include "siunit.dm"
 #include "slips.dm"
 #include "spawn_humans.dm"
