@@ -74,16 +74,6 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/peep.ogg'
 
-/datum/emote/living/snap
-	key = "snap"
-	key_third_person = "snaps"
-	message = "snaps their fingers."
-	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = TRUE
-	hands_use_check = TRUE
-	vary = TRUE
-	sound = 'modular_skyrat/modules/emotes/sound/voice/snap.ogg'
-
 /datum/emote/living/snap2
 	key = "snap2"
 	key_third_person = "snaps twice"
