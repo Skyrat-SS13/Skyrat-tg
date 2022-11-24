@@ -70,7 +70,7 @@
 	sol_lia_path = /obj/structure/table/wood/fancy
 
 
-/obj/effect/spawner/corporate_diplomat/fax // None of these actually can send to their parent corporations yet
+/obj/effect/spawner/corporate_diplomat/fax
 	icon_state = "fax"
 	nt_con_path = /obj/machinery/fax/nanotrasen
 	arm_rep_path = /obj/machinery/fax/armadyne
@@ -78,6 +78,7 @@
 
 // Mapping helpers
 
+// - Access Helpers
 /obj/effect/mapping_helpers/airlock/access/all/corp_diplomat
 	icon_state = "access_helper_serv"
 
@@ -86,6 +87,23 @@
 	access_list += initial(SSjob?.corporate_diplomat_type.used_access)
 	return access_list
 
+/obj/effect/mapping_helpers/airlock/access/all/armadyne
+	icon_state = "access_helper_sec"
+
+/obj/effect/mapping_helpers/airlock/access/all/armadyne/get_access()
+	var/list/access_list = ..()
+	access_list += ACCESS_ARMADYNE
+	return access_list
+
+/obj/effect/mapping_helpers/airlock/access/all/solfed
+	icon_state = "access_helper_sup"
+
+/obj/effect/mapping_helpers/airlock/access/all/solfed/get_access()
+	var/list/access_list = ..()
+	access_list += ACCESS_SOLFED
+	return access_list
+
+// - General Helpers
 /obj/effect/mapping_helpers/corporate_diplomat
 	name = "corporate diplomat floor helper"
 	icon = 'modular_skyrat/modules/corporate_diplomat/icons/helpers.dmi'

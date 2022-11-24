@@ -31,6 +31,10 @@
 	name = "\improper Armadyne Representative's Fax Machine"
 	desc = "A fax machine containing the proper encryption keys for sending a message to the Armadyne corporation."
 	fax_name = "Armadyne Representative's Office"
+	fax_keys = list(
+		FAX_KEY_ARMADYNE,
+	)
+
 
 /obj/item/circuitboard/machine/fax/armadyne
 	name = "Fax Machine (Armadyne)"

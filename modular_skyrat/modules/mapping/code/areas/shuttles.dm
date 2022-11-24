@@ -65,3 +65,9 @@
 
 /area/shuttle/labor/advanced
 	name = "NMC Drudge"
+
+/area/shuttle/armadyne_shuttle
+	name = "Armadyne PMC Shuttle"
+
+/area/shuttle/solfed_shuttle
+	name = "S.F.S. Witness"

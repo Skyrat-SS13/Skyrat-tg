@@ -169,7 +169,7 @@
 	backpack_contents = list(
 		/obj/item/storage/box/gunset/pdh_striker,
 		/obj/item/storage/box/handcuffs,
-		/obj/item/ammo_box/magazine/multi_sprite/pitbull,
+		/obj/item/ammo_box/magazine/multi_sprite/pitbull = 2,
 		/obj/item/modular_computer/tablet/pda/security,
 	)
 	back = /obj/item/storage/backpack/security
@@ -241,6 +241,7 @@
 /datum/id_trim/centcom/armadyne/New()
 	. = ..()
 	access = SSid_access.get_region_access_list(list(REGION_GENERAL, REGION_CENTCOM)) // They're not with CC so they get fuck-all access on-station
+	access += ACCESS_ARMADYNE
 
 /obj/item/card/id/advanced/armadyne/security
 	registered_name = "Armadyne Corpo"
@@ -298,6 +299,7 @@
 	mission = "Assist any Armadyne corporate entities."
 	polldesc = "an Armadyne PMC."
 	teamsize = 3
+	ert_template = /datum/map_template/shuttle/ert/armadyne
 
 /datum/ert/armadyne/high_alert
 	roles = list(/datum/antagonist/ert/armadyne/high_alert)

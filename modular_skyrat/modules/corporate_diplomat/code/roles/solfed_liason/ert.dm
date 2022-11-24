@@ -35,6 +35,7 @@
 	leader_role = /datum/antagonist/ert/solfed_marshal/leader
 	rename_team = "SolFed Response Marshal"
 	polldesc = "a group of SolFed Response Marshals"
+	ert_template = /datum/map_template/shuttle/ert/solfed
 
 /datum/antagonist/ert/solfed_marshal
 	name = "SolFed Response Marshal"

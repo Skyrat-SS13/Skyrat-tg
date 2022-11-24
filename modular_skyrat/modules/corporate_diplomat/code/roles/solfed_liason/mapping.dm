@@ -28,6 +28,10 @@
 	name = "\improper SolFed Liaison's Fax Machine"
 	desc = "A fax machine containing the proper encryption keys to send a message to the Solar Federation."
 	fax_name = "SolFed Liaison's Office"
+	fax_keys = list(
+		FAX_KEY_SOLFED,
+	)
+
 
 /obj/item/circuitboard/machine/fax/solfed
 	name = "Fax Machine (SolFed)"

@@ -197,3 +197,64 @@
 /datum/map_template/shuttle/ruin/tarkon_driver/defcon2
 	suffix = "tarkon_driverdc2"
 /*----- End of Tarkon Shuttle Code -----*/
+
+// ERT SHUTTLES
+
+
+// Armadyne PMC
+/datum/map_template/shuttle/ert/armadyne
+	name = "Armadyne PMC Shuttle"
+	prefix = "_maps/shuttles/skyrat/"
+	suffix = "armadyne"
+
+/obj/machinery/computer/shuttle/armadyne_shuttle
+	name = "Armadyne Shuttle Control"
+	desc = "Used to control the Armadyne shuttle."
+	circuit = /obj/item/circuitboard/computer/armadyne_shuttle
+	shuttleId = "armadyne_shuttle"
+	possible_destinations = "syndicate_nw;whiteship_home"
+	req_access = list(ACCESS_ARMADYNE)
+
+/obj/item/circuitboard/computer/armadyne_shuttle
+	name = "Armadyne Shuttle Control Console (Computer Board)"
+	build_path = /obj/machinery/computer/shuttle/armadyne_shuttle
+
+/obj/machinery/computer/camera_advanced/shuttle_docker/armadyne_shuttle
+	name = "Ship Navigation Computer"
+	desc = "Used to designate a precise custom destination to land."
+	shuttleId = "armadyne_shuttle"
+	lock_override = NONE
+	shuttlePortId = "solfed_shuttle"
+	jump_to_ports = list("whiteship_away" = 1, "whiteship_home" = 1, "whiteship_z4" = 1, "syndicate_nw" = 11)
+	x_offset = 0
+	y_offset = 5
+	req_access = list(ACCESS_ARMADYNE)
+
+// SolFed Response Marshals
+/datum/map_template/shuttle/ert/solfed
+	name = "S.F.S. Witness"
+	prefix = "_maps/shuttles/skyrat/"
+	suffix = "solfed"
+
+/obj/machinery/computer/shuttle/solfed_shuttle
+	name = "S.F.S. Witness Shuttle Control"
+	desc = "Used to control the S.F.S. Witness."
+	circuit = /obj/item/circuitboard/computer/solfed_shuttle
+	shuttleId = "armadyne_shuttle"
+	possible_destinations = "syndicate_nw;whiteship_home"
+	req_access = list(ACCESS_SOLFED)
+
+/obj/item/circuitboard/computer/solfed_shuttle
+	name = "S.F.S. Witness Control Console (Computer Board)"
+	build_path = /obj/machinery/computer/shuttle/solfed_shuttle
+
+/obj/machinery/computer/camera_advanced/shuttle_docker/solfed_shuttle
+	name = "Ship Navigation Computer"
+	desc = "Used to designate a precise custom destination to land."
+	shuttleId = "solfed_shuttle"
+	lock_override = NONE
+	shuttlePortId = "solfed_shuttle"
+	jump_to_ports = list("whiteship_away" = 1, "whiteship_home" = 1, "whiteship_z4" = 1, "syndicate_nw" = 11)
+	x_offset = -1
+	y_offset = 5
+	req_access = list(ACCESS_SOLFED)

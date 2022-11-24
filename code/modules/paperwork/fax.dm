@@ -46,11 +46,23 @@
 		/obj/item/holochip,
 		/obj/item/card,
 	)
-	/// List with a fake-networks(not a fax actually), for request manager.
-	var/list/special_networks = list(
+	// SKYRAT EDIT START - SPECIAL NETWORKS & fax_key_needed
+	/// A list of custom fax keys that this fax has, for accessing off-network faxes
+	var/list/fax_keys = list()
+	/* ORIGINAL
+		var/list/special_networks = list(
 		list(fax_name = "Central Command", fax_id = "central_command", color = "teal", emag_needed = FALSE),
 		list(fax_name = "Sabotage Department", fax_id = "syndicate", color = "red", emag_needed = TRUE),
 	)
+	*/
+	/// List with a fake-networks(not a fax actually), for request manager.
+	var/list/special_networks = list(
+		list(fax_name = "Central Command", fax_id = "central_command", color = "teal", emag_needed = FALSE, fax_key_needed = FAX_KEY_CENTCOM), // HEY GUESS WHAT FUCKO NONE OF THESE VAR-LOOKING THINGS
+		list(fax_name = "Sabotage Department", fax_id = "syndicate", color = "red", emag_needed = TRUE), // IN THESE LISTS ARE ACTUALLY _VARS_
+		list(fax_name = "Armadyne Corporate Relations", fax_id = "armadyne", color = "red", emag_needed = FALSE, fax_key_needed = FAX_KEY_ARMADYNE), // THEY JUST AUTO-CONVERT TO STRINGS, FUN, RIGHT?
+		list(fax_name = "SolFed Diplomatic Desk", fax_id = "solfed", color = "yellow", emag_needed = FALSE, fax_key_needed = FAX_KEY_SOLFED), // AND HALF OF THESE HAVE THE NAMES OF _ACTUAL_ VARS
+	)
+	// SKYRAT EDIT END
 
 /obj/machinery/fax/Initialize(mapload)
 	. = ..()
@@ -234,7 +246,7 @@
 	data["syndicate_network"] = (syndicate_network || (obj_flags & EMAGGED))
 	data["has_paper"] = !!loaded_item_ref?.resolve()
 	data["fax_history"] = fax_history
-	data["special_faxes"] = special_networks
+	data["special_faxes"] = get_possible_special_networks() // SKYRAT EDIT - LOCKED FAXES
 	return data
 
 /obj/machinery/fax/ui_act(action, list/params)
@@ -253,7 +265,7 @@
 			playsound(src, 'sound/machines/eject.ogg', 50, FALSE)
 			update_appearance()
 			return TRUE
-		
+
 		if("send")
 			var/obj/item/loaded = loaded_item_ref?.resolve()
 			if (!loaded)
@@ -264,13 +276,13 @@
 				loaded_item_ref = null
 				update_appearance()
 				return TRUE
-		
+
 		if("send_special")
 			var/obj/item/paper/fax_paper = loaded_item_ref?.resolve()
 			if(!istype(fax_paper))
 				to_chat(usr, icon2html(src.icon, usr) + span_warning("Fax cannot send all above paper on this protected network, sorry."))
-				return 
-			
+				return
+
 			fax_paper.request_state = TRUE
 			fax_paper.loc = null
 
@@ -278,13 +290,13 @@
 			playsound(src, 'sound/machines/high_tech_confirm.ogg', 50, vary = FALSE)
 
 			history_add("Send", params["name"])
-			
+
 			GLOB.requests.fax_request(usr.client, "sent a fax message from [fax_name]/[fax_id] to [params["name"]]", fax_paper)
 			to_chat(GLOB.admins, span_adminnotice("[icon2html(src.icon, GLOB.admins)]<b><font color=green>FAX REQUEST: </font>[ADMIN_FULLMONTY(usr)]:</b> [span_linkify("sent a fax message from [fax_name]/[fax_id][ADMIN_FLW(src)] to [params["name"]]")] [ADMIN_SHOW_PAPER(fax_paper)]"), confidential = TRUE)
 			log_fax(fax_paper, params["id"], params["name"])
 			loaded_item_ref = null
 			update_appearance()
-				
+
 		if("history_clear")
 			history_clear()
 			return TRUE
