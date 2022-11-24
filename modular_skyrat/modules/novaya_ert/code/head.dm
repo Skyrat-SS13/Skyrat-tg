@@ -6,7 +6,7 @@
 	icon_state = "russian_green_helmet"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/helmet/rus_helmet/nri/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
+/obj/item/clothing/head/helmet/rus_helmet/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
 	if(is_species(M, /datum/species/teshari))
 		to_chat(M, span_warning("[src] is far too big for you!"))
 		return FALSE
@@ -49,6 +49,7 @@
 /obj/item/clothing/head/beret/sec/nri
 	name = "imperial officer beret"
 	desc = "Used by middle-ranking NRI officers and is usually worn off-duty or on special occassions. Or whenever feeling cute."
+	///I will GAG in HELL
 	greyscale_config = null
 	greyscale_config_worn = null
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'

@@ -54,13 +54,13 @@
 	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/nri_surplus/clothing/helmet
-	item_type = /obj/item/clothing/head/helmet/rus_helmet/nri
+	item_type = /obj/item/clothing/head/helmet/rus_helmet
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 3
 	interest_required = COMPANY_HIGH_INTEREST
 
 /datum/armament_entry/company_import/nri_surplus/clothing/vest
-	item_type = /obj/item/clothing/suit/armor/vest/russian/nri
+	item_type = /obj/item/clothing/suit/armor/vest/russian
 	lower_cost = CARGO_CRATE_VALUE * 2.5
 	upper_cost = CARGO_CRATE_VALUE * 3.5
 	interest_required = COMPANY_HIGH_INTEREST
