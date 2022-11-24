@@ -311,17 +311,13 @@
 		target.balloon_alert(user, "not the right type of limb!")
 		return
 
-<<<<<<< HEAD
 	// SKYRAT EDIT START - Limbs that can't be surgically removed
 	if (surgery.removes_target_bodypart && !isnull(affecting_limb) && !affecting_limb.can_be_surgically_removed)
 		target.balloon_alert(user, "limb can't be surgically removed!")
 		return
 	// SKYRAT EDIT END
 
-	if (surgery.lying_required && target.body_position != LYING_DOWN)
-=======
 	if ((surgery.surgery_flags & SURGERY_REQUIRE_RESTING) && target.body_position != LYING_DOWN)
->>>>>>> 3b0794eca9d (Surgery code improvements (#71182))
 		target.balloon_alert(user, "patient is not lying down!")
 		return
 
@@ -347,7 +343,7 @@
 
 	if(!(HAS_TRAIT(target, TRAIT_NUMBED) || target.stat >= UNCONSCIOUS)) ///skyrat add start - warning for unanesthetized surgery
 		target.balloon_alert(user, "not numbed!") ///skyrat add end
-	
+
 	log_combat(user, target, "operated on", null, "(OPERATION TYPE: [procedure.name]) (TARGET AREA: [selected_zone])")
 
 /datum/component/surgery_initiator/proc/surgery_needs_exposure(datum/surgery/surgery, mob/living/target)

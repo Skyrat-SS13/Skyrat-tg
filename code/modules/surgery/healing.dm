@@ -13,13 +13,6 @@
 		/datum/surgery_step/close,
 	)
 
-<<<<<<< HEAD
-	target_mobtypes = list(/mob/living)
-	possible_locs = list(BODY_ZONE_CHEST)
-	replaced_by = /datum/surgery
-	ignore_clothes = TRUE
-=======
->>>>>>> 3b0794eca9d (Surgery code improvements (#71182))
 	var/healing_step_type
 	var/antispam = FALSE
 
@@ -70,12 +63,6 @@
 	if(istype(surgery,/datum/surgery/healing))
 		var/datum/surgery/healing/the_surgery = surgery
 		if(!the_surgery.antispam)
-<<<<<<< HEAD
-			display_results(user, target, span_notice("You attempt to patch some of [target]'s [woundtype]."),
-		span_notice("[user] attempts to patch some of [target]'s [woundtype]."),
-		span_notice("[user] attempts to patch some of [target]'s [woundtype]."))
-		display_pain(target, span_notice("Your [woundtype] sting like hell!"))
-=======
 			display_results(
 				user,
 				target,
@@ -84,7 +71,6 @@
 				span_notice("[user] attempts to patch some of [target]'s [woundtype]."),
 			)
 		display_pain(target, "Your [woundtype] sting like hell!")
->>>>>>> 3b0794eca9d (Surgery code improvements (#71182))
 
 /datum/surgery_step/heal/initiate(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, try_to_fail = FALSE)
 	if(!..())

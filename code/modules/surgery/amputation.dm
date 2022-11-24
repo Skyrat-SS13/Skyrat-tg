@@ -14,16 +14,9 @@
 		/datum/surgery_step/clamp_bleeders,
 		/datum/surgery_step/saw,
 		/datum/surgery_step/clamp_bleeders,
-<<<<<<< HEAD
-		/datum/surgery_step/sever_limb)
-	target_mobtypes = list(/mob/living/carbon/human)
-	possible_locs = list(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_HEAD)
-	requires_bodypart_type = 0
-	removes_target_bodypart = TRUE // SKYRAT EDIT - Surgically unremovable limbs
-=======
 		/datum/surgery_step/sever_limb,
 	)
->>>>>>> 3b0794eca9d (Surgery code improvements (#71182))
+	removes_target_bodypart = TRUE // SKYRAT EDIT ADDITION - Surgically unremovable limbs
 
 
 /datum/surgery_step/sever_limb
