@@ -271,7 +271,6 @@
 				phase = MARKED_ONE_SECOND_PHASE
 				INVOKE_ASYNC(src, PROC_REF(charge), target, 21)
 				ranged_cooldown += 8 SECONDS //this needs to be here lest another ranged attack override the charge while it's prepping
-				playsound(src, 'sound/effects/clockcult_gateway_disrupted.ogg', 200, 1, 2)
 				icon_state = "marked2"
 				rapid_melee = 2
 				move_to_delay = 2
@@ -282,7 +281,6 @@
 				phase = MARKED_ONE_THIRD_PHASE
 				INVOKE_ASYNC(src, PROC_REF(charge), target, 21)
 				ranged_cooldown += 8 SECONDS
-				playsound(src, 'sound/effects/clockcult_gateway_charging.ogg', 200, 1, 2)
 				rapid_melee = 4
 				melee_damage_upper = 25
 				melee_damage_lower = 25
@@ -292,8 +290,6 @@
 				phase = MARKED_ONE_FINAL_PHASE
 				INVOKE_ASYNC(src, PROC_REF(charge), target, 21)
 				ranged_cooldown += 8 SECONDS
-				say(message = "COME ON!")
-				playsound(src, 'sound/effects/clockcult_gateway_active.ogg', 200, 1, 2)
 				icon_state = "marked3"
 				rapid_melee = 1
 				melee_damage_upper = 50
@@ -307,7 +303,18 @@
 	var/turf/our_turf = get_turf(src)
 	if(!istype(our_turf))
 		return
-	balloon_alert_to_viewers("preparing spin!")
+	var/static/list/spin_messages = list(
+							"Duck!",
+							"I'll break your legs!",
+							"Plain, dead, simple!",
+							"SWING AND A MISS!",
+							"Only one of us makes it outta here!",
+							"JUMP-ROPE!!",
+							"Slice and dice, right?!",
+							"Come on, HIT ME!",
+							"CLANG!!",
+						)
+	say(message = pick(spin_messages))
 	spinning = TRUE
 	animate(src, color = "#ff6666", 10)
 	SLEEP_CHECK_DEATH(5, src)
@@ -345,7 +352,16 @@
 /// The Marked One's charge has an instant travel time, but takes a moment to power-up, allowing you to get behind cover to stun him if he hits a wall. Only ever called when a phase change occurs, as it hardstuns if it lands
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/charge(atom/target, range = 1)
 	face_atom(target)
-	balloon_alert_to_viewers("preparing charge!")
+	var/static/list/charge_messages = list(
+							"Heads up!",
+							"Coming through!",
+							"This ends only one way!",
+							"Hold still!",
+							"GET OVER HERE!",
+							"Looking for this?!",
+							"COME ON!!",
+						)
+	say(message = pick(charge_messages))
 	animate(src, color = "#ff6666", 3)
 	SLEEP_CHECK_DEATH(4, src)
 	face_atom(target)
