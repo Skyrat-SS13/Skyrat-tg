@@ -924,14 +924,12 @@
 /mob/living/carbon/can_be_revived()
 	if(!getorgan(/obj/item/organ/internal/brain) && (!mind || !mind.has_antag_datum(/datum/antagonist/changeling)) || HAS_TRAIT(src, TRAIT_HUSK))
 		return FALSE
-<<<<<<< HEAD
 //SKYRAT EDIT ADDITION - DNR TRAIT
 	if(HAS_TRAIT(src, TRAIT_DNR))
 		return FALSE
 //SKYRAT EDIT ADDITION END - DNR TRAIT
-=======
+
 	return ..()
->>>>>>> 79ffefa06d0 (Allows Fully Heal to be passed a series of flags, fixes Adminordrazine being horrible (#71123))
 
 /mob/living/carbon/proc/can_defib()
 //SKYRAT EDIT ADDITION - DNR TRAIT

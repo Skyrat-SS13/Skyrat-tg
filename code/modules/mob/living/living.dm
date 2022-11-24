@@ -790,19 +790,12 @@
 		adjustOxyLoss(-excess_healing, FALSE)
 		adjustToxLoss(-excess_healing, FALSE, TRUE) //slime friendly
 		updatehealth()
-<<<<<<< HEAD
-		grab_ghost()
-	if(full_heal)
-		fully_heal(admin_revive = admin_revive)
-	if(stat == DEAD && can_be_revived() || admin_revive) //in some cases you can't revive (e.g. no brain) //SKYRAT EDIT ADDITION - DNR TRAIT - Added: " || admin_revive"
-=======
 
 	grab_ghost(force_grab_ghost)
 	if(full_heal_flags)
 		fully_heal(full_heal_flags)
 
-	if(stat == DEAD && can_be_revived()) //in some cases you can't revive (e.g. no brain)
->>>>>>> 79ffefa06d0 (Allows Fully Heal to be passed a series of flags, fixes Adminordrazine being horrible (#71123))
+	if(stat == DEAD && can_be_revived() || (full_heal_flags & HEAL_ADMIN)) //in some cases you can't revive (e.g. no brain) //SKYRAT EDIT ADDITION - DNR TRAIT - Added: " || (full_heal_flags & HEAL_ADMIN)"
 		set_suicide(FALSE)
 		set_stat(UNCONSCIOUS) //the mob starts unconscious,
 		updatehealth() //then we check if the mob should wake up.
