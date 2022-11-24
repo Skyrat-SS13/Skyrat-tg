@@ -41,9 +41,9 @@ export const CargoContent = (props, context) => {
           </Tabs.Tab>
           <Tabs.Tab
             icon="clipboard-list"
-            selected={tab === 'gun_window'}
-            onClick={() => act('gun_window')}>
-            Gun Requisitions
+            selected={tab === 'company_import_window'}
+            onClick={() => act('company_import_window')}>
+            Company Imports
           </Tabs.Tab>
           {!requestonly && (
             <>
@@ -68,7 +68,7 @@ export const CargoContent = (props, context) => {
       {tab === 'requests' && <CargoRequests />}
       {tab === 'cart' && <CargoCart />}
       {tab === 'help' && <CargoHelp />}
-      {tab === 'gun_window' && tab === 'catalog'}
+      {tab === 'company_import_window' && tab === 'catalog'}
     </Box>
   );
 };
