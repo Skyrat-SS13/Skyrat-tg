@@ -896,8 +896,32 @@
 	stop_sound_channel(CHANNEL_HEARTBEAT)
 	SEND_SIGNAL(src, COMSIG_LIVING_POST_FULLY_HEAL, admin_revive)
 
+<<<<<<< HEAD
 
 //proc called by revive(), to check if we can actually ressuscitate the mob (we don't want to revive him and have him instantly die again)
+=======
+/**
+ * Called by strange_reagent, with the amount of healing the strange reagent is doing
+ * It uses the healing amount on brute/fire damage, and then uses the excess healing for revive
+ */
+/mob/living/proc/do_strange_reagent_revival(healing_amount)
+	var/brute_loss = getBruteLoss()
+	if(brute_loss)
+		var/brute_healing = min(healing_amount * 0.5, brute_loss) // 50% of the healing goes to brute
+		setBruteLoss(round(brute_loss - brute_healing, DAMAGE_PRECISION), updating_health=FALSE, forced=TRUE)
+		healing_amount = max(0, healing_amount - brute_healing)
+
+	var/fire_loss = getFireLoss()
+	if(fire_loss && healing_amount)
+		var/fire_healing = min(healing_amount, fire_loss) // rest of the healing goes to fire
+		setFireLoss(round(fire_loss - fire_healing, DAMAGE_PRECISION), updating_health=TRUE, forced=TRUE)
+		healing_amount = max(0, healing_amount - fire_healing)
+
+	revive(NONE, excess_healing=max(healing_amount, 0), force_grab_ghost=FALSE) // and any excess healing is passed along
+
+/// Checks if we are actually able to ressuscitate this mob.
+/// (We don't want to revive then to have them instantly die again)
+>>>>>>> 4ee7995b9cf (Strange Reagent correctly revives station pets, (and humans), correctly again. (#71430))
 /mob/living/proc/can_be_revived()
 	. = TRUE
 	if(health <= HEALTH_THRESHOLD_DEAD)

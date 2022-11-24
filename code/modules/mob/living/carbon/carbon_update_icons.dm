@@ -72,12 +72,17 @@
 		overlays_standing[cache_index] = null
 
 //used when putting/removing clothes that hide certain mutant body parts to just update those and not update the whole body.
+<<<<<<< HEAD
 /mob/living/carbon/human/proc/update_mutant_bodyparts(force_update = FALSE) // SKYRAT EDIT CHANGE
 	dna.species.handle_mutant_bodyparts(src, force_update = force_update) // SKYRAT EDIT CHANGE
+=======
+/mob/living/carbon/human/proc/update_mutant_bodyparts()
+	dna?.species.handle_mutant_bodyparts(src)
+>>>>>>> 4ee7995b9cf (Strange Reagent correctly revives station pets, (and humans), correctly again. (#71430))
 	update_body_parts()
 
 /mob/living/carbon/update_body(is_creating = FALSE)
-	dna.species.handle_body(src) //This calls `handle_mutant_bodyparts` which calls `update_mutant_bodyparts()`. Don't double call!
+	dna?.species.handle_body(src) //This calls `handle_mutant_bodyparts` which calls `update_mutant_bodyparts()`. Don't double call!
 	update_body_parts(is_creating)
 
 /mob/living/carbon/on_changed_z_level(turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
