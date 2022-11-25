@@ -89,7 +89,6 @@
 	empty_indicator = TRUE
 	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
 	company_flag = COMPANY_IZHEVSK
-	dirt_modifier = 0.75
 
 /obj/item/gun/ballistic/automatic/mini_uzi
 	name = "\improper type U3 uzi"
@@ -324,7 +323,6 @@
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	mag_display = TRUE
 	company_flag = COMPANY_IZHEVSK
-	dirt_modifier = 0.75
 
 // Laser rifle (rechargeable magazine) //
 

@@ -448,3 +448,44 @@
   - bugfix: mimes no longer swear when using the *swear emote
   - admin: death details of keyless mobs (like xenobio monkeys) are now omitted from
       investigate deaths
+2022-11-25:
+  Cenrus, ported by Hardly:
+  - rscadd: Added *snap emote
+  GoldenAlpharex:
+  - bugfix: Modular computers will now no longer all be called "processing unit",
+      and will all have their own unique names once again.
+  LT3:
+  - bugfix: Tram signs glow instead of being harsh blocky.
+  - rscadd: Engineers now have expanded airlock access during orange alert for responding
+      to emergencies.
+  - rscadd: New lights added to airlocks indicating engineers have expanded access
+      during orange alert.
+  Melbert:
+  - bugfix: Fixed an exploit involving igniters attached to themselves. Assembly holders
+      are now limited to 12 assemblies maximum, and you cannot attach multiple igniters
+      to the same assembly.
+  - refactor: Refactored some assembly jank, namely in how they pulse and are pulsed.
+  PositiveEntropy:
+  - imageadd: Updates the Military, Bomber and Letterman Jackets
+  - bugfix: Fixes the centcom hat, cap and head intern cap, which were using the old
+      sprites.
+  SkyratBot:
+  - bugfix: Fixes a NTPay exploit.
+  - imageadd: Resprited rice, sugar, and flour sacks
+  - bugfix: Curd cheese can be microwaved again into cheese curds
+  - bugfix: Flypeople gain a comparable amount of nutrients from vomited food to other
+      species (~70%, up from ~30%)
+  - bugfix: Flypeople no longer vomit after drinking fluids
+  - bugfix: Flypeople no longer vomit all contents of their stomach on spawn
+  - code_imp: Stomachs can now react to foods entering them by overriding the `after_eat`
+      proc
+  - admin: Researching nodes and bepis unlocking stuff is now logged in research.
+  - rscadd: checks while inserting stack materials into an RPED and their amounts
+  - code_imp: sorting of RPED part components to sort stack materials by their ratings
+  - rscdel: 'old way of displaying parts when clicking on an machine frame with it
+
+      add:new way of displaying part info which displays  number of parts including
+      for stack materials'
+  - rscadd: Added two sets of coordinates to the checkers and chess modules for the
+      holodeck.
+  - qol: you get access to the next storage ui row 1 item earlier
