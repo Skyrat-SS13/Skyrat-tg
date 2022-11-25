@@ -6,13 +6,16 @@
 	difficulty = 16
 	text_gain_indication = "<span class='notice'>You feel one with your surroundings.</span>"
 	text_lose_indication = "<span class='notice'>You feel oddly exposed.</span>"
+	instability = 25
+	power_coeff = 1
 
 /datum/mutation/human/chameleon/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
 		return
 	/// SKYRAT EDIT BEGIN
-	if(HAS_TRAIT(owner,TRAIT_CHAMELEON_SKIN))
+	if(HAS_TRAIT(owner, TRAIT_CHAMELEON_SKIN))
 		return
+	ADD_TRAIT(owner, TRAIT_CHAMELEON_SKIN, GENETIC_MUTATION)
 	/// SKYRAT EDIT END
 	owner.alpha = CHAMELEON_MUTATION_DEFAULT_TRANSPARENCY
 	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
@@ -21,7 +24,7 @@
 /datum/mutation/human/chameleon/on_life(delta_time, times_fired)
 	/// SKYRAT EDIT BEGIN
 	if(HAS_TRAIT(owner, TRAIT_CHAMELEON_SKIN))
-		owner.alpha = max(owner.alpha - (12.5 * delta_time), 0)
+		owner.alpha = max(owner.alpha - (12.5 * (GET_MUTATION_POWER(src)) * delta_time), 0)
 	/// SKYRAT EDIT END
 
 /**
