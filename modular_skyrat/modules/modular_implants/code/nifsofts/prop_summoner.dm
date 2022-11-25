@@ -90,7 +90,7 @@
 /obj/item/toy/cards/deck/Initialize(mapload)
 	. = ..()
 	if(nif_generated_item)
-		for(var/obj/item/card/card as anything in cards)
+		for(var/obj/item/card/card as anything in initial_cards)
 			card.nif_generated_item = TRUE
 			card.alpha = 180
 			card.set_light(2)

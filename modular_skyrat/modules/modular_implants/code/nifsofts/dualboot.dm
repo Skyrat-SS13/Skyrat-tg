@@ -57,6 +57,5 @@
 	has_variants = FALSE
 	allow_chunky = TRUE
 	comp_light_luminosity = 0
-	max_bays = 0
 
 
