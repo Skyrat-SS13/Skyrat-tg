@@ -70,7 +70,7 @@
 
 /datum/crafting_recipe/goliathshield
 	name = "Goliath shield"
-	result = /obj/item/shield/riot/goliath
+	result = /obj/item/shield/goliath
 	reqs = list(
 		/obj/item/stack/sheet/bone = 4,
 		/obj/item/stack/sheet/animalhide/goliath_hide = 3,

@@ -377,8 +377,7 @@
 
 	if(methods & (PATCH|TOUCH))
 		var/mob/living/carbon/exposed_carbon = exposed_mob
-		for(var/s in exposed_carbon.surgeries)
-			var/datum/surgery/surgery = s
+		for(var/datum/surgery/surgery as anything in exposed_carbon.surgeries)
 			surgery.speed_modifier = max(0.1, surgery.speed_modifier)
 
 		if(show_message)
@@ -390,7 +389,7 @@
 
 /datum/reagent/medicine/mine_salve/on_mob_end_metabolize(mob/living/metabolizer)
 	. = ..()
-	REMOVE_TRAIT(metabolizer, TRAIT_NUMBED, src) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
+	REMOVE_TRAIT(metabolizer, TRAIT_NUMBED, REF(src)) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
 	metabolizer.clear_alert("numbed") // SKYRAT EDIT ADD END
 	metabolizer.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
 
@@ -616,12 +615,12 @@
 /datum/reagent/medicine/morphine/on_mob_metabolize(mob/living/L)
 	..()
 	L.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
-	ADD_TRAIT(L, TRAIT_NUMBED, src) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
+	ADD_TRAIT(L, TRAIT_NUMBED, REF(src)) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
 	L.throw_alert("numbed", /atom/movable/screen/alert/numbed) // SKYRAT EDIT ADD END -- i should probably have worked these both into a status effect, maybe
 
 /datum/reagent/medicine/morphine/on_mob_end_metabolize(mob/living/L)
 	L.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
-	REMOVE_TRAIT(L, TRAIT_NUMBED, src) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
+	REMOVE_TRAIT(L, TRAIT_NUMBED, REF(src)) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
 	L.clear_alert("numbed") // SKYRAT EDIT ADD END
 	..()
 
