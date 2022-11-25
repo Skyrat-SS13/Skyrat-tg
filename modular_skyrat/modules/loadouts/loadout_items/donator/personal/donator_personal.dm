@@ -120,7 +120,7 @@
 
 /datum/loadout_item/suit/cjax
 	name = "XuraCorp Labcoat"
-	item_path = /obj/item/clothing/suit/toggle/labcoat/rd/jax
+	item_path = /obj/item/clothing/suit/toggle/labcoat/skyrat/rd/jax
 	ckeywhitelist = list("candlejax")
 
 /datum/loadout_item/suit/jacket/cherno

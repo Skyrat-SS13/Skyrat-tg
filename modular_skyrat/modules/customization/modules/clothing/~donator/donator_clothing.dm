@@ -715,7 +715,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "plasmaman_jax"
 
-/obj/item/clothing/suit/toggle/labcoat/rd/jax
+/obj/item/clothing/suit/toggle/labcoat/skyrat/rd/jax
 	name = "xuracorp enameled labcoat"
 	desc = "A XuraCorp designed labcoat for Research Directors. Small triangular indents suggest a protective interior."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
