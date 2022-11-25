@@ -62,7 +62,7 @@
 	if(has_evolved_recently)
 		return
 	has_evolved_recently = TRUE
-	addtimer(CALLBACK(src, .proc/can_evolve_once_again), evolution_cooldown_time)
+	addtimer(CALLBACK(src, PROC_REF(can_evolve_once_again)), evolution_cooldown_time)
 
 /// Allows xenos to evolve again if they are currently unable to
 /mob/living/carbon/alien/adult/skyrat/proc/can_evolve_once_again()

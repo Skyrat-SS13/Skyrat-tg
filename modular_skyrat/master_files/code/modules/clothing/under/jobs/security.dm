@@ -26,7 +26,7 @@
 	icon_state = "util_sec_old"
 	can_adjust = FALSE
 
-/obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate //MOVE ALL /SYNDICATES TO THE SYNDICATE.DM WHEN THE .dmi IS MADE (soon, after centcomm.dmi)
+/obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate //MOVE ALL /SYNDICATES TO THE SYNDICATE.DM WHEN THE .dmi IS MADE (soon, after centcom.dmi)
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
 	has_sensor = NO_SENSORS
 

@@ -451,7 +451,7 @@
 				qdel(tempr)
 				falling_carbon.adjustOxyLoss(5)
 				//C.emote("cough")
-				INVOKE_ASYNC(falling_carbon, /mob.proc/emote, "cough")
+				INVOKE_ASYNC(falling_carbon, TYPE_PROC_REF(/mob, emote), "cough")
 				to_chat(falling_carbon, span_userdanger("You fall in and swallow some water!"))
 		else
 			to_chat(M, span_userdanger("You fall in the water!"))
@@ -462,9 +462,9 @@
 		CRASH("Liquid Turf created with the liquids sybsystem not yet initialized!")
 	if(!immutable)
 		my_turf = loc
-		RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, .proc/movable_entered)
-		RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, .proc/mob_fall)
-		RegisterSignal(my_turf, COMSIG_PARENT_EXAMINE, .proc/examine_turf)
+		RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, PROC_REF(movable_entered))
+		RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, PROC_REF(mob_fall))
+		RegisterSignal(my_turf, COMSIG_PARENT_EXAMINE, PROC_REF(examine_turf))
 		SSliquids.add_active_turf(my_turf)
 
 		SEND_SIGNAL(my_turf, COMSIG_TURF_LIQUIDS_CREATION, src)
@@ -526,8 +526,8 @@
 	my_turf = NewT
 	NewT.liquids = src
 	loc = NewT
-	RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, .proc/movable_entered)
-	RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, .proc/mob_fall)
+	RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, PROC_REF(movable_entered))
+	RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, PROC_REF(mob_fall))
 
 /**
  * Handles COMSIG_PARENT_EXAMINE for the turf.
@@ -591,8 +591,8 @@
 	T.liquids = src
 	T.vis_contents += src
 	SSliquids.active_immutables[T] = TRUE
-	RegisterSignal(T, COMSIG_ATOM_ENTERED, .proc/movable_entered)
-	RegisterSignal(T, COMSIG_TURF_MOB_FALL, .proc/mob_fall)
+	RegisterSignal(T, COMSIG_ATOM_ENTERED, PROC_REF(movable_entered))
+	RegisterSignal(T, COMSIG_TURF_MOB_FALL, PROC_REF(mob_fall))
 
 /obj/effect/abstract/liquid_turf/proc/remove_turf(turf/T)
 	SSliquids.active_immutables -= T

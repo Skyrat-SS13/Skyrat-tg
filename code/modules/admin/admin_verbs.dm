@@ -96,6 +96,8 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/list_dna,
 	/client/proc/list_fingerprints,
 	/client/proc/message_pda, /*send a message to somebody on PDA*/
+	/datum/admins/proc/trophy_manager,
+	/client/proc/fax_panel, /*send a paper to fax*/
 	)
 GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/ban_panel, /client/proc/stickybanpanel))
 GLOBAL_PROTECT(admin_verbs_ban)
@@ -240,7 +242,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/debug_spell_requirements,
 	/client/proc/debug_hallucination_weighted_list_per_type,
 	)
-GLOBAL_LIST_INIT(admin_verbs_possess, list(/proc/possess, /proc/release))
+GLOBAL_LIST_INIT(admin_verbs_possess, list(/proc/possess, GLOBAL_PROC_REF(release)))
 GLOBAL_PROTECT(admin_verbs_possess)
 /// SKYRAT EDIT BEGIN - Player Rank Manager - ORIGINAL: GLOBAL_LIST_INIT(admin_verbs_permissions, list(/client/proc/edit_admin_permissions))
 GLOBAL_LIST_INIT(admin_verbs_permissions, list(
@@ -773,7 +775,7 @@ GLOBAL_PROTECT(admin_verbs_poll)
 	if(!istype(T))
 		to_chat(src, span_notice("You can only give a disease to a mob of type /mob/living."), confidential = TRUE)
 		return
-	var/datum/disease/D = input("Choose the disease to give to that guy", "ACHOO") as null|anything in sort_list(SSdisease.diseases, /proc/cmp_typepaths_asc)
+	var/datum/disease/D = input("Choose the disease to give to that guy", "ACHOO") as null|anything in sort_list(SSdisease.diseases, GLOBAL_PROC_REF(cmp_typepaths_asc))
 	if(!D)
 		return
 	T.ForceContractDisease(new D, FALSE, TRUE)

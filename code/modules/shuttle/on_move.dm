@@ -171,7 +171,9 @@ All ShuttleMove procs go here
 		return TRUE
 
 	contents -= oldT
+	turfs_to_uncontain += oldT
 	underlying_old_area.contents += oldT
+	underlying_old_area.contained_turfs += oldT
 	oldT.transfer_area_lighting(src, underlying_old_area)
 	//The old turf has now been given back to the area that turf originaly belonged to
 
@@ -179,7 +181,9 @@ All ShuttleMove procs go here
 	parallax_movedir = old_dest_area.parallax_movedir
 
 	old_dest_area.contents -= newT
+	old_dest_area.turfs_to_uncontain += newT
 	contents += newT
+	contained_turfs += newT
 	newT.transfer_area_lighting(old_dest_area, src)
 	return TRUE
 
@@ -202,7 +206,7 @@ All ShuttleMove procs go here
 	for(var/obj/machinery/door/airlock/other_airlock in range(2, src))  // includes src, extended because some escape pods have 1 plating turf exposed to space
 		other_airlock.shuttledocked = FALSE
 		other_airlock.air_tight = TRUE
-		INVOKE_ASYNC(other_airlock, /obj/machinery/door/.proc/close, FALSE, TRUE) // force crush
+		INVOKE_ASYNC(other_airlock, TYPE_PROC_REF(/obj/machinery/door/, close), FALSE, TRUE) // force crush
 
 /obj/machinery/door/airlock/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	. = ..()

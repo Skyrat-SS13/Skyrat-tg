@@ -24,7 +24,15 @@
 
 /obj/item/analyzer/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_TOOL_ATOM_ACTED_PRIMARY(tool_behaviour), .proc/on_analyze)
+	RegisterSignal(src, COMSIG_TOOL_ATOM_ACTED_PRIMARY(tool_behaviour), PROC_REF(on_analyze))
+
+/obj/item/analyzer/equipped(mob/user, slot, initial)
+	. = ..()
+	ADD_TRAIT(user, TRAIT_DETECT_STORM, CLOTHING_TRAIT)
+
+/obj/item/analyzer/dropped(mob/user, silent)
+	. = ..()
+	REMOVE_TRAIT(user, TRAIT_DETECT_STORM, CLOTHING_TRAIT)
 
 /obj/item/analyzer/examine(mob/user)
 	. = ..()

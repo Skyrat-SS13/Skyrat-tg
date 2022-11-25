@@ -9,6 +9,7 @@
 	desc = "Long stalks with flowering tips, they contain a chemical that attracts felines."
 	species = "catnip"
 	plantname = "Catnip Plant"
+	icon_dead = null
 	growthstages = 3
 	product = /obj/item/food/grown/tea/catnip
 	reagents_add = list(/datum/reagent/pax/catnip = 0.1, /datum/reagent/consumable/nutriment/vitamin = 0.06, /datum/reagent/toxin/teapowder = 0.3)

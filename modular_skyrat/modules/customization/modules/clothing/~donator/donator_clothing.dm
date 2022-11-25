@@ -578,7 +578,7 @@
 
 /obj/item/clothing/head/hooded/cloakhood/zuliecloak
 	name = "NT special issue"
-	desc = "This hat is unquestionably the best one, bluespaced to and from CentComm. It smells of Fish and Tea with a hint of antagonism"
+	desc = "This hat is unquestionably the best one, bluespaced to and from CentCom. It smells of Fish and Tea with a hint of antagonism"
 	icon_state = "zuliecap"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/cloaks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
@@ -1175,11 +1175,11 @@
 
 //Donation reward for Konstyantyn
 /obj/item/clothing/accessory/badge/holo/jade
-    name = "jade holobadge"
-    desc = "A strangely green holobadge. 'Lieutenant Uriah' is stamped onto it, above the letters JS."
-    icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
-    worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
-    icon_state = "greenbadge"
+	name = "jade holobadge"
+	desc = "A strangely green holobadge. 'Lieutenant Uriah' is stamped onto it, above the letters JS."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
+	icon_state = "greenbadge"
 
 // Donation reward for Dudewithatude
 /obj/item/clothing/suit/toggle/rainbowcoat
@@ -1304,3 +1304,34 @@
 	icon_state = "bimpcap"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+// Donation reward for Nikohyena
+/obj/item/clothing/glasses/gold_aviators
+	name = "purple and gold aviators"
+	desc = "A round pair of gold aviator glasses, the lenses having been applied with a gem-like purple tint."
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
+	icon_state = "goldaviator"
+
+// Donation reward for Thedragmeme
+
+/obj/item/clothing/under/caged_dress/skirt
+	name = "Caged Purple Dress"
+	desc = "A silky purple dress with a partially exposed crinoline underneath."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	icon_state = "caged_dress"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/suit/short_coat
+	name = "Short Purple Coat"
+	desc = "A short black and purple coat, mostly used for asthetics then insulating the person wearing it."
+	icon_state = "short_coat"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+
+/obj/item/clothing/neck/flower_collar
+	name = "Flower Collar"
+	desc = "A purple collar with a dainty red flower attached to the right side of the item."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/necklaces.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
+	icon_state = "flower_collar"

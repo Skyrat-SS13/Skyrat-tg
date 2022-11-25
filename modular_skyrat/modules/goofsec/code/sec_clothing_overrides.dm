@@ -142,7 +142,7 @@
 	resolve_parent.add_fingerprint(user)
 	attempt_remove(gun_to_draw, get_turf(user))
 	playsound(resolve_parent, 'modular_skyrat/modules/sec_haul/sound/holsterout.ogg', 50, TRUE, -5)
-	INVOKE_ASYNC(user, /mob/.proc/put_in_hands, gun_to_draw)
+	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob, put_in_hands), gun_to_draw)
 	user.visible_message(span_warning("[user] draws [gun_to_draw] from [resolve_parent]!"), span_notice("You draw [gun_to_draw] from [resolve_parent]."))
 
 /*

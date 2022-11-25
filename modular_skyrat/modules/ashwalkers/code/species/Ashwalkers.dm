@@ -1,17 +1,15 @@
 /datum/species/lizard/ashwalker
 	mutanteyes = /obj/item/organ/internal/eyes/night_vision
-	burnmod = 0.7
-	brutemod = 0.8
+	burnmod = 0.8
+	brutemod = 0.9
 
 /datum/species/lizard/ashwalker/on_species_gain(mob/living/carbon/carbon_target, datum/species/old_species)
 	. = ..()
-	ADD_TRAIT(carbon_target, TRAIT_ASHSTORM_IMMUNE, SPECIES_TRAIT)
-	RegisterSignal(carbon_target, COMSIG_MOB_ITEM_ATTACK, .proc/mob_attack)
+	RegisterSignal(carbon_target, COMSIG_MOB_ITEM_ATTACK, PROC_REF(mob_attack))
 	carbon_target.AddComponent(/datum/component/ash_age)
 
 /datum/species/lizard/ashwalker/on_species_loss(mob/living/carbon/carbon_target)
 	. = ..()
-	REMOVE_TRAIT(carbon_target, TRAIT_ASHSTORM_IMMUNE, SPECIES_TRAIT)
 	UnregisterSignal(carbon_target, COMSIG_MOB_ITEM_ATTACK)
 
 /datum/species/lizard/ashwalker/proc/mob_attack(datum/source, mob/mob_target, mob/user)
@@ -26,7 +24,7 @@
 	ashie_damage.register_mob_damage(living_target)
 
 /**
- * 20 minutes = speed
+ * 20 minutes = ash storm immunity
  * 40 minutes = armor
  * 60 minutes = base punch
  * 80 minutes = lavaproof
@@ -51,8 +49,8 @@
 	// set the time that it was attached then we will compare current world time versus the evo_time plus stage_time
 	evo_time = world.time
 	// when the rune successfully completes the age ritual, it will send the signal... do the proc when we receive the signal
-	RegisterSignal(human_target, COMSIG_RUNE_EVOLUTION, .proc/check_evolution)
-	RegisterSignal(human_target, COMSIG_PARENT_EXAMINE, .proc/on_examine)
+	RegisterSignal(human_target, COMSIG_RUNE_EVOLUTION, PROC_REF(check_evolution))
+	RegisterSignal(human_target, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
 
 /datum/component/ash_age/proc/check_evolution()
 	SIGNAL_HANDLER
@@ -67,8 +65,8 @@
 	var/datum/species/species_target = human_target.dna.species
 	switch(current_stage)
 		if(1)
-			human_target.add_movespeed_modifier(/datum/movespeed_modifier/ash_aged)
-			to_chat(human_target, span_notice("Your body seems lighter..."))
+			ADD_TRAIT(human_target, TRAIT_ASHSTORM_IMMUNE, REF(src))
+			to_chat(human_target, span_notice("The biting wind seems to sting less..."))
 		if(2)
 			species_target.armor += 10
 			to_chat(human_target, span_notice("Your body seems to be sturdier..."))
@@ -95,8 +93,6 @@
 		if(6 to INFINITY)
 			to_chat(human_target, span_warning("You have already reached the pinnacle of your current body!"))
 
-/datum/movespeed_modifier/ash_aged
-	multiplicative_slowdown = -0.2
 
 /datum/component/ash_age/proc/on_examine(atom/target_atom, mob/user, list/examine_list)
 	SIGNAL_HANDLER

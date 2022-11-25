@@ -8,11 +8,14 @@ SUBSYSTEM_DEF(ticker)
 	flags = SS_KEEP_TIMING
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME
 
-	var/current_state = GAME_STATE_STARTUP //state of current round (used by process()) Use the defines GAME_STATE_* !
-	var/force_ending = 0 //Round was ended by admin intervention
-	// If true, there is no lobby phase, the game starts immediately.
+	/// state of current round (used by process()) Use the defines GAME_STATE_* !
+	var/current_state = GAME_STATE_STARTUP
+	/// Boolean to track if round was ended by admin intervention or a "round-ending" event, like summoning Nar'Sie, a blob victory, the nuke going off, etc.
+	var/force_ending = FALSE
+	/// If TRUE, there is no lobby phase, the game starts immediately.
 	var/start_immediately = FALSE
-	var/setup_done = FALSE //All game setup done including mode post setup and
+	/// Boolean to track and check if our subsystem setup is done.
+	var/setup_done = FALSE
 
 	var/datum/game_mode/mode = null
 
@@ -161,7 +164,7 @@ SUBSYSTEM_DEF(ticker)
 				send2chat("<@&[CONFIG_GET(string/game_alert_role_id)]> New round starting on [SSmapping.config.map_name], [CONFIG_GET(string/servername)]! \nIf you wish to be pinged for game related stuff, go to <#[CONFIG_GET(string/role_assign_channel_id)]> and assign yourself the roles.", CONFIG_GET(string/chat_announce_new_game)) // Skyrat EDIT -- role pingcurrent_state = GAME_STATE_PREGAME
 			current_state = GAME_STATE_PREGAME
 			SStitle.change_title_screen() //SKYRAT EDIT ADDITION - Title screen
-			addtimer(CALLBACK(SStitle, /datum/controller/subsystem/title/.proc/change_title_screen), 1 SECONDS) //SKYRAT EDIT ADDITION - Title screen
+			addtimer(CALLBACK(SStitle, TYPE_PROC_REF(/datum/controller/subsystem/title, change_title_screen)), 1 SECONDS) //SKYRAT EDIT ADDITION - Title screen
 			//Everyone who wants to be an observer is now spawned
 			SEND_SIGNAL(src, COMSIG_TICKER_ENTER_PREGAME)
 			fire()
@@ -424,7 +427,7 @@ SUBSYSTEM_DEF(ticker)
 			captainless = FALSE
 			var/acting_captain = !is_captain_job(player_assigned_role)
 			SSjob.promote_to_captain(new_player_living, acting_captain)
-			OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, player_assigned_role.get_captaincy_announcement(new_player_living)))
+			OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(minor_announce), player_assigned_role.get_captaincy_announcement(new_player_living)))
 		if((player_assigned_role.job_flags & JOB_ASSIGN_QUIRKS) && ishuman(new_player_living) && CONFIG_GET(flag/roundstart_traits))
 			if(new_player_mob.client?.prefs?.should_be_random_hardcore(player_assigned_role, new_player_living.mind))
 				new_player_mob.client.prefs.hardcore_random_setup(new_player_living)
@@ -486,7 +489,7 @@ SUBSYSTEM_DEF(ticker)
 				living.client.init_verbs()
 			livings += living
 	if(livings.len)
-		addtimer(CALLBACK(src, .proc/release_characters, livings), 30, TIMER_CLIENT_TIME)
+		addtimer(CALLBACK(src, PROC_REF(release_characters), livings), 30, TIMER_CLIENT_TIME)
 
 /datum/controller/subsystem/ticker/proc/release_characters(list/livings)
 	for(var/I in livings)
@@ -531,7 +534,7 @@ SUBSYSTEM_DEF(ticker)
 		return
 	if(world.time - SSticker.round_start_time < 10 MINUTES) //Not forcing map rotation for very short rounds.
 		return
-	INVOKE_ASYNC(SSmapping, /datum/controller/subsystem/mapping/.proc/maprotate)
+	INVOKE_ASYNC(SSmapping, TYPE_PROC_REF(/datum/controller/subsystem/mapping/, maprotate))
 
 /datum/controller/subsystem/ticker/proc/HasRoundStarted()
 	return current_state >= GAME_STATE_PLAYING

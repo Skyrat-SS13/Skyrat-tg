@@ -148,7 +148,7 @@
 
 /obj/structure/reviving_ashwalker_egg/Initialize(mapload)
 	. = ..()
-	addtimer(CALLBACK(src, .proc/do_revive), 30 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(do_revive)), 30 SECONDS)
 
 /**
  * Proc that will fully revive the living content inside and then destroy itself

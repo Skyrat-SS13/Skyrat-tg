@@ -137,7 +137,7 @@
 			set_jitter_if_lower(duration SECONDS)
 
 	if(duration)
-		addtimer(CALLBACK(src, .proc/acting_expiry, impairment), duration SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(acting_expiry), impairment), duration SECONDS)
 		to_chat(src, "You are now feigning [impairment].")
 
 /mob/living/carbon/human/proc/acting_expiry(impairment)

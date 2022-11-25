@@ -83,7 +83,7 @@
 		/datum/reagent/medicine,
 		/datum/reagent/vaccine
 	)
-        ///Blacklist that contains medicines that SmartDarts are unable to inject.
+	///Blacklist that contains medicines that SmartDarts are unable to inject.
 	var/list/disallowed_medicine = list(
 		/datum/reagent/inverse/,
 		/datum/reagent/medicine/morphine,
