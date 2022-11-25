@@ -1,5 +1,5 @@
 
-#define EMOTE_DELAY 5 SECONDS //To prevent spam emotes.
+#define EMOTE_DELAY (5 SECONDS) //To prevent spam emotes.
 
 /mob
 	var/nextsoundemote = 1 //Time at which the next emote can be played
@@ -74,20 +74,11 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/peep.ogg'
 
-/datum/emote/living/snap
-	key = "snap"
-	key_third_person = "snaps"
-	message = "snaps their fingers."
-	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = TRUE
-	hands_use_check = TRUE
-	vary = TRUE
-	sound = 'modular_skyrat/modules/emotes/sound/voice/snap.ogg'
-
 /datum/emote/living/snap2
 	key = "snap2"
 	key_third_person = "snaps twice"
 	message = "snaps twice."
+	message_param = "snaps twice at %t."
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
 	hands_use_check = TRUE
@@ -98,6 +89,7 @@
 	key = "snap3"
 	key_third_person = "snaps thrice"
 	message = "snaps thrice."
+	message_param = "snaps thrice at %t."
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
 	hands_use_check = TRUE
