@@ -84,7 +84,11 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/cmg(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/cmg/lethal(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/cmg/lethal(src)
-	new /obj/item/suppressor/nanotrasen(src) //why the fuck does BS need a suppressed gun is beyond me
+	new /obj/item/suppressor/nanotrasen(src)
+
+/obj/item/suppressor/nanotrasen
+	name = "NT-S suppressor"
+	desc = "A Nanotrasen brand small-arms suppressor, including a large NT logo stamped on the side."
 
 /obj/item/ammo_casing/energy/laser/hellfire/bs
 	projectile_type = /obj/projectile/beam/laser/hellfire
