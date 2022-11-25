@@ -347,17 +347,14 @@
 
 	if(!(HAS_TRAIT(target, TRAIT_NUMBED) || target.stat >= UNCONSCIOUS)) ///skyrat add start - warning for unanesthetized surgery
 		target.balloon_alert(user, "not numbed!") ///skyrat add end
-	
+
 	log_combat(user, target, "operated on", null, "(OPERATION TYPE: [procedure.name]) (TARGET AREA: [selected_zone])")
 
 /datum/component/surgery_initiator/proc/surgery_needs_exposure(datum/surgery/surgery, mob/living/target)
 	var/mob/living/user = last_user_ref?.resolve()
 	if (isnull(user))
 		return FALSE
-<<<<<<< HEAD
-=======
 	if(surgery.surgery_flags & SURGERY_IGNORE_CLOTHES)
 		return FALSE
->>>>>>> 7114b45ad6b (Fixes surgery clothing checks (#71435))
 
 	return !surgery.ignore_clothes && !get_location_accessible(target, user.zone_selected)
