@@ -14,12 +14,12 @@
 	icon_state = "labcoat_rd"
 	body_parts_covered = CHEST|ARMS|LEGS
 	armor = list(MELEE = 5, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 80, FIRE = 80, ACID = 70)
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/toggle/labcoat/skyrat/highvis
 	name = "high vis labcoat"
 	desc = "A high visibility vest for emergency responders, intended to draw attention away from the blood."
 	icon_state = "labcoat_highvis"
+	blood_overlay_type = "armor"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/toggle/labcoat/skyrat/highvis/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
@@ -32,7 +32,7 @@
 	desc = "A complicated drapery with an assortment of velcros and strings, designed to keep a patient modest during medical stay and surgeries."
 	icon_state = "hgown"
 	toggle_noun = "drapes"
-	body_parts_covered = NONE
+	body_parts_covered = NONE //Allows surgeries despite wearing it; hiding genitals is handled in /datum/sprite_accessory/genital/is_hidden() (Only place it'd work sadly)
 	armor = NONE
 	equip_delay_other = 8
 
@@ -40,3 +40,8 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/labcoat.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/labcoat.dmi'
 	icon_state = "labcoat_robo_sr"
+
+/obj/item/clothing/suit/toggle/labcoat/medical //Renamed version of the Genetics labcoat for more generic medical purposes; just a subtype of /labcoat/ for the TG files
+	name = "medical labcoat"
+	desc = "A suit that protects against minor chemical spills. Has a blue stripe on the shoulder."
+	icon_state = "labcoat_gen"

@@ -380,7 +380,7 @@
 
 /datum/loadout_item/suit/tenrai_coat
 	name = "Tenrai Coat"
-	item_path = /obj/item/clothing/suit/toggle/labcoat/tenrai
+	item_path = /obj/item/clothing/suit/toggle/labcoat/skyrat/tenrai
 	ckeywhitelist = list("cimika")
 
 /datum/loadout_item/neck/fluffycloak
