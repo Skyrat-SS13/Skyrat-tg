@@ -1,6 +1,6 @@
 /datum/element/clockwork_description
 	element_flags = ELEMENT_BESPOKE | ELEMENT_DETACH_ON_HOST_DESTROY
-	id_arg_index = 2
+	argument_hash_start_idx = 2
 
 	/// Text to add to the description of the parent
 	var/text_to_add = ""

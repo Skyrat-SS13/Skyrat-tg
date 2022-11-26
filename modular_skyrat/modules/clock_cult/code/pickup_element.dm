@@ -1,6 +1,6 @@
 /datum/element/clockwork_pickup
 	element_flags = ELEMENT_BESPOKE | ELEMENT_DETACH_ON_HOST_DESTROY
-	id_arg_index = 2
+	argument_hash_start_idx = 2
 
 	/// What slots will attempt to shock the equpper
 	var/list/equip_slots = list()
