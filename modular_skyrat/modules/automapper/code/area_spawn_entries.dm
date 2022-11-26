@@ -53,6 +53,7 @@
 /datum/area_spawn/prison_cryo
 	target_areas = list(/area/station/security/prison, /area/station/security/prison/shower)
 	desired_atom = /obj/machinery/cryopod
+	mode = AREA_SPAWN_MODE_HUG_WALL
 
 // Wall mounts. Use sparingly as walls are prime real estate
 
