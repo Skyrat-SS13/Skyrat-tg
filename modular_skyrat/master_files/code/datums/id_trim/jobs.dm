@@ -65,6 +65,8 @@
 /datum/id_trim/job/nanotrasen_consultant
 	assignment = "Nanotrasen Consultant"
 	trim_state = "trim_centcom"
+	department_color = COLOR_GREEN
+	subdepartment_color = COLOR_GREEN
 	orbit_icon = "clipboard-check"
 	sechud_icon_state = SECHUD_NT_CONSULTANT
 	extra_access = list()
