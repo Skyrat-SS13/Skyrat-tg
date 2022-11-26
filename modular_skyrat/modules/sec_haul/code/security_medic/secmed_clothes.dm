@@ -9,14 +9,13 @@
 	. = ..()
 	allowed += list(
 		/obj/item/flashlight,
-		/obj/item/melee/baton/telescopic,
 		/obj/item/gun,
+		/obj/item/melee/baton/telescopic,
 		/obj/item/storage/medkit
 		)
 
 /obj/item/clothing/suit/toggle/labcoat/skyrat/security_medic/blue
 	icon_state = "secmed_labcoat_blue"
-	worn_icon_state = "secmed_labcoat_blue"
 
 /obj/item/clothing/suit/hazardvest/security_medic
 	name = "security medic vest"
