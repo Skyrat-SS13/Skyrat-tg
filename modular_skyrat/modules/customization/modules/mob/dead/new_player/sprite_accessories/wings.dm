@@ -41,7 +41,7 @@
 	if(wearer.wear_suit)
 	//	Exception for MODs
 		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
-			return TRUE
+			return FALSE
 	//	Hide accessory if flagged to do so, taking species exceptions in account
 		else if((wearer.wear_suit.flags_inv & HIDEJUMPSUIT) \
 				&& (!wearer.wear_suit.species_exception \
