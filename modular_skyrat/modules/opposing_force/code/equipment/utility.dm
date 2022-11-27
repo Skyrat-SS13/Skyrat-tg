@@ -139,6 +139,14 @@
 			for rapid stabilization, sutures and regenerative mesh for wound treatment, and patches \
 			for faster healing on the field. Also comes with basic medical tools and sterlizer."
 
+/datum/opposing_force_equipment/gear/combatmedkit_premium
+	name = "Syndicate Combat Medical Suite"
+	item_type = /obj/item/storage/medkit/tactical/premium
+	description = "This first aid kit is a suspicious black and red. Included is an unloaded combat chemical injector \
+			for suit-penetrative chem delivery, a medical science night vision HUD for quick identification of injured personnel and chemical supplies, \
+			improved medical supplies, including Interdyne-approved pharmaceuticals, a hacked cybernetic surgery toolset arm implant, \
+			and some helpful MODsuit modules for for field medical use and operative physiopharmaceutical augmentation."
+
 /datum/opposing_force_equipment/gear/ai_module
 	name = "Syndicate AI Law Module"
 	item_type = /obj/item/ai_module/syndicate
