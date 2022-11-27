@@ -5,9 +5,7 @@
 	icon_state = "haggis"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 50, /datum/reagent/consumable/nutriment/vitamin = 25)
 	foodtypes = MEAT | GRAIN
-
-/obj/item/food/snacks/store/bread/haggis/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/snacks/breadslice/haggis, 5, 30)
+	slice_type = /obj/item/food/snacks/breadslice/haggis
 
 /obj/item/food/snacks/breadslice/haggis
 	name = "haggis chunk"
