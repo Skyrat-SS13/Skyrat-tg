@@ -48,7 +48,7 @@ GLOBAL_VAR_INIT(dchat_allowed, TRUE)
 
 ///Procedure whick convert adminhelp to mentorhelp
 /datum/admin_help/proc/convert(key_name = key_name_admin(usr))
-	if(state != AHELP_ACTIVE || !initiator)
+	if(state != AHELP_ACTIVE)
 		return FALSE
 	
 	if(handler && handler != usr.ckey)
@@ -65,4 +65,4 @@ GLOBAL_VAR_INIT(dchat_allowed, TRUE)
 	message_admins("[key_name] converted Ticket #[id] from [initiator_key_name] into Mentorhelp")
 	log_admin("[usr.client] converted Ticket #[id] from [initiator_ckey] into Mentorhelp")
 
-	qdel(src)
+	Close(key_name, TRUE)
