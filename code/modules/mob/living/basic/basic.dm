@@ -77,12 +77,8 @@
 	var/icon_gib = null
 	///Flip the sprite upside down on death. Mostly here for things lacking custom dead sprites.
 	var/flip_on_death = FALSE
-<<<<<<< HEAD
-=======
 	///Removes density upon death, restores the original state if alive.
 	var/become_passable_on_death = TRUE
->>>>>>> ddc3e57310c ([NO GBP] Rabbits won't become dense when they die (#71499))
-
 	///If the mob can be spawned with a gold slime core. HOSTILE_SPAWN are spawned with plasma, FRIENDLY_SPAWN are spawned with blood.
 	var/gold_core_spawnable = NO_SPAWN
 	///Sentience type, for slime potions. SHOULD BE AN ELEMENT BUT I DONT CARE ABOUT IT FOR NOW
