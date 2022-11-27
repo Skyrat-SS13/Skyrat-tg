@@ -135,9 +135,9 @@
 /datum/opposing_force_equipment/gear/combatmedkit
 	name = "Syndicate Combat Medic Kit"
 	item_type = /obj/item/storage/medkit/tactical
-	description = "This first aid kit is a suspicious brown and red. Included is a combat stimulant injector \
-			for rapid healing, a medical night vision HUD for quick identification of injured personnel, \
-			and other supplies helpful for a field medic."
+	description = "This first aid kit is a suspicious black and red. Included is a number of atropine medipens \
+			for rapid stabilization, sutures and regenerative mesh for wound treatment, and patches \
+			for faster healing on the field. Also comes with basic medical tools and sterlizer."
 
 /datum/opposing_force_equipment/gear/ai_module
 	name = "Syndicate AI Law Module"
