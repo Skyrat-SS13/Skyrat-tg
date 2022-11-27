@@ -164,7 +164,7 @@
 		return
 	user.changeNext_move(CLICK_CD_RAPID)
 
-/obj/item/shield/riot/buckler/reagent_weapon //Same as a buckler, but metal.
+/obj/item/shield/buckler/reagent_weapon //Same as a buckler, but metal.
 	name = "reagent plated buckler shield"
 	desc = "A small, round shield best used in tandem with a melee weapon in close-quarters combat."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
@@ -182,21 +182,18 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
 	skyrat_obj_flags = ANVIL_REPAIR
+	shield_break_sound = 'sound/effects/bang.ogg'
+	shield_break_leftover = /obj/item/forging/complete/plate
 
-/obj/item/shield/riot/buckler/reagent_weapon/Initialize(mapload)
+/obj/item/shield/buckler/reagent_weapon/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/reagent_weapon)
 
-/obj/item/shield/riot/buckler/reagent_weapon/shatter(mob/living/carbon/human/owner)
-	owner.balloon_alert_to_viewers("shield has shattered!")
-	playsound(owner, 'sound/effects/bang.ogg', 50)
-	new /obj/item/forging/complete/plate(get_turf(src))
-
-/obj/item/shield/riot/buckler/reagent_weapon/examine(mob/user)
+/obj/item/shield/buckler/reagent_weapon/examine(mob/user)
 	. = ..()
 	. += span_notice("Using a hammer on [src] will repair its damage!")
 
-/obj/item/shield/riot/buckler/reagent_weapon/attackby(obj/item/attacking_item, mob/user, params)
+/obj/item/shield/buckler/reagent_weapon/attackby(obj/item/attacking_item, mob/user, params)
 	if(atom_integrity >= max_integrity)
 		return ..()
 	if(istype(attacking_item, /obj/item/forging/hammer))
@@ -212,7 +209,7 @@
 		return
 	return ..()
 
-/obj/item/shield/riot/buckler/reagent_weapon/pavise //similar to the adamantine shield. Huge, slow, lets you soak damage and packs a wallop.
+/obj/item/shield/buckler/reagent_weapon/pavise //similar to the adamantine shield. Huge, slow, lets you soak damage and packs a wallop.
 	name = "reagent plated pavise shield"
 	desc = "An oblong shield used by ancient crossbowmen as cover while reloading. Probably just as useful with an actual gun."
 	icon_state = "pavise"
@@ -224,7 +221,7 @@
 	slot_flags = ITEM_SLOT_BACK
 	max_integrity = 300 //tanky
 
-/obj/item/shield/riot/buckler/reagent_weapon/pavise/Initialize(mapload)
+/obj/item/shield/buckler/reagent_weapon/pavise/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/two_handed, require_twohands = TRUE, force_wielded = 15)
 

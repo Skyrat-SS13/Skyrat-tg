@@ -59,6 +59,7 @@
 #define COLOR_GREEN "#008000"
 #define COLOR_DARK_MODERATE_LIME_GREEN "#44964A"
 #define COLOR_PAI_GREEN "#00FF88"
+#define COLOR_PALE_GREEN "#20e28e"
 
 #define COLOR_CYAN "#00FFFF"
 #define COLOR_DARK_CYAN "#00A2FF"
@@ -258,9 +259,6 @@
 #define CABLE_COLOR_YELLOW "yellow"
 	#define CABLE_HEX_COLOR_YELLOW COLOR_YELLOW
 
-<<<<<<< HEAD
-
-=======
 #define COLOR_CARP_PURPLE "#aba2ff"
 #define COLOR_CARP_PINK "#da77a8"
 #define COLOR_CARP_GREEN "#70ff25"
@@ -277,7 +275,6 @@
 #define COLOR_CARP_PALE_GREEN "#7ef099"
 #define COLOR_CARP_SILVER "#fdfbf3"
 #define COLOR_CARP_DARK_BLUE "#3a384d"
->>>>>>> 21c43121f50 (Basic Mob Carp Part I: Colourful carp (#71436))
 
 GLOBAL_LIST_INIT(cable_colors, list(
 	CABLE_COLOR_BLUE = CABLE_HEX_COLOR_BLUE,
