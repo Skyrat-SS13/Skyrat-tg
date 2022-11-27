@@ -45,3 +45,24 @@ GLOBAL_VAR_INIT(dchat_allowed, TRUE)
 
 	handler = "[usr.ckey]"
 	return TRUE
+
+///Procedure whick convert adminhelp to mentorhelp
+/datum/admin_help/proc/convert(key_name = key_name_admin(usr))
+	if(state != AHELP_ACTIVE || !initiator)
+		return FALSE
+	
+	if(handler && handler != usr.ckey)
+		var/response = tgui_alert(usr, "This ticket is already being handled by [handler]. Do you want to continue?", "Ticket already assigned", list("Yes", "No"))
+		if(!response || response == "No")
+			return FALSE
+	
+	add_verb(initiator, /client/verb/mentorhelp)
+
+	to_chat(initiator, span_adminhelp("Your ticket was converted to Mentorhelp"))
+	initiator.mentorhelp(full_text)
+	initiator.giveadminhelpverb()
+
+	message_admins("[key_name] converted Ticket #[id] from [initiator_key_name] into Mentorhelp")
+	log_admin("[usr.client] converted Ticket #[id] from [initiator_ckey] into Mentorhelp")
+
+	qdel(src)

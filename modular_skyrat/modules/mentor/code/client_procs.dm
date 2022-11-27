@@ -28,6 +28,24 @@
 		if(mentor_datum.following)
 			mentor_unfollow()
 		return TRUE
+	
+	//Converting mentorhelp to adminhelp
+	if(href_list["convert"])
+		var/text = locate(href_list["convert_text"])
+		var/client/user = locate(href_list["convert"])
+
+		if(!user || !text)
+			return FALSE
+
+		for(var/datum/admin_help/ticket in GLOB.ahelp_tickets.active_tickets)
+			if(ticket.initiator_ckey == user.ckey)
+				return FALSE
+		
+		to_chat(user, span_adminhelp("Your MentorHelp was converted into AdminHelp."))
+		message_admins("[key_name(src)] converted MentorHelp from [key_name(user)] into AdminHelp")
+		log_admin("[ckey] converted [user.ckey] MentorHelp into AdminHelp")
+
+		GLOB.admin_help_ui_handler.perform_adminhelp(user, text)
 
 /client/proc/mentor_datum_set(admin)
 	mentor_datum = GLOB.mentor_datums[ckey]

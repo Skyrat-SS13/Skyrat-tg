@@ -16,7 +16,7 @@
 		return
 
 	var/show_char = CONFIG_GET(flag/mentors_mobname_only)
-	var/mentor_msg = span_mentor("<b>MENTORHELP:</b> <b>[key_name_mentor(src, TRUE, FALSE, TRUE, show_char)]</b>: [msg]")
+	var/mentor_msg = span_mentor("<b>MENTORHELP:</b> <b>[key_name_mentor(src, TRUE, FALSE, TRUE, show_char, msg)]</b>: [msg]")
 	log_mentor("MENTORHELP: [key_name_mentor(src, FALSE, FALSE, FALSE, FALSE)]: [msg]")
 
 	for(var/mentor in GLOB.mentors)
@@ -38,7 +38,7 @@
 		else
 			.["present"]++
 
-/proc/key_name_mentor(whom, include_link = null, include_name = FALSE, include_follow = FALSE, char_name_only = FALSE)
+/proc/key_name_mentor(whom, include_link = null, include_name = FALSE, include_follow = FALSE, char_name_only = FALSE, message)
 	var/mob/target_mob
 	var/client/target_client
 	var/key
@@ -98,5 +98,7 @@
 
 	if(include_follow)
 		. += " (<a href='?_src_=mentor;mentor_follow=[REF(target_mob)];[MentorHrefToken(TRUE)]'>F</a>)"
+	if(message)
+		. += " (<a href='?_src_=mentor;convert=[REF(target_client)];convert_text=[REF(sanitize(message))];[MentorHrefToken(TRUE)]'>CONV</a>)"
 
 	return .
