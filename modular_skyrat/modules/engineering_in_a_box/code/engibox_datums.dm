@@ -1,4 +1,4 @@
-#define ENGI_IN_BOX_CARGONIA //uncomment this to allow Cargo to purchase the engineering-in-a-box items.
+//#define ENGI_IN_BOX_CARGONIA //uncomment this to allow Cargo to purchase the engineering-in-a-box items.
 
 /area/misc/survivalpod/atmosia_box
 	name = "\improper Atmosia in a Box"
@@ -41,23 +41,19 @@
 	banned_objects = typecacheof(/obj/structure/stone_tile)
 
 #ifdef ENGI_IN_BOX_CARGONIA
-	/datum/supply_pack/engine/atmosia_in_a_box
+	/datum/supply_pack/emergency/atmosia_in_a_box
 		name = "Atmosia in a Box"
-		desc = "Atmos get plasma flooded?  Plug in a brand new distro center in a Box(tm), courtesy of Dr. Naaka Ko.  Requires CE access to open."
+		desc = "Atmos get plasma flooded?  Plug in a brand new distro center in a Box(tm)!  Requires CE access to open."
 		cost = CARGO_CRATE_VALUE * 15
-		access = ACCESS_CE
+		access_view = ACCESS_CE
 		contains = list(/obj/item/survivalcapsule/boxed_atmosia)
-		crate_name = "atmosia in a box"
-		crate_type = /obj/structure/closet/crate/secure/engineering
-		dangerous = TRUE
+		goody = TRUE
 
-	/datum/supply_pack/engine/supermatter_in_a_box
+	/datum/supply_pack/emergency/supermatter_in_a_box
 		name = "Supermatter in a Box"
-		desc = "Engine delam'd?  Plug in a brand new passive high-output Supermatter Shard in a Box(tm), courtesy of Dr. Naaka Ko.  Requires CE access to open."
+		desc = "Engine delam'd?  Plug in a brand new passive high-output Supermatter Shard in a Box(tm)!  Requires CE access to open."
 		cost = CARGO_CRATE_VALUE * 30
-		access = ACCESS_CE
+		access_view = ACCESS_CE
 		contains = list(/obj/item/survivalcapsule/boxed_supermatter)
-		crate_name = "supermatter in a box"
-		crate_type = /obj/structure/closet/crate/secure/engineering
-		dangerous = TRUE
+		goody = TRUE
 #endif
