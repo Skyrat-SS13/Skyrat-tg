@@ -121,9 +121,6 @@
 		icon_state = icon_dead
 		if(flip_on_death)
 			transform = transform.Turn(180)
-<<<<<<< HEAD
-		set_density(FALSE)
-=======
 		if (become_passable_on_death)
 			set_density(FALSE)
 
@@ -136,7 +133,6 @@
 		transform = transform.Turn(180)
 	if (become_passable_on_death)
 		set_density(initial(density))
->>>>>>> ddc3e57310c ([NO GBP] Rabbits won't become dense when they die (#71499))
 
 /mob/living/basic/proc/melee_attack(atom/target)
 	src.face_atom(target)
