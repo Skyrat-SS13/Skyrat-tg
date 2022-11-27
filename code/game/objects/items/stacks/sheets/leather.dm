@@ -204,9 +204,6 @@ GLOBAL_LIST_INIT(leather_recipes, list ( \
 		new/datum/stack_recipe("security belt", /obj/item/storage/belt/security, 2), \
 		new/datum/stack_recipe("shoulder holster", /obj/item/storage/belt/holster, 3), \
 		new/datum/stack_recipe("bandolier", /obj/item/storage/belt/bandolier, 5), \
-		// SKYRAT EDIT ADDITION BEGIN
-		new/datum/stack_recipe("medical bandolier", /obj/item/storage/belt/medbandolier, 5), \
-		// SKYRAT EDIT ADDTION END
 	)),
 	new/datum/stack_recipe_list("cowboy hats", list( \
 		new/datum/stack_recipe("sheriff hat", /obj/item/clothing/head/cowboy/brown, 2), \
