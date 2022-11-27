@@ -99,10 +99,6 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 		new /datum/stack_recipe("external maintenance airlock assembly", /obj/structure/door_assembly/door_assembly_extmai, 4, time = 5 SECONDS, one_per_turf = 1, on_solid_ground = 1), \
 		new /datum/stack_recipe("airtight hatch assembly", /obj/structure/door_assembly/door_assembly_hatch, 4, time = 5 SECONDS, one_per_turf = 1, on_solid_ground = 1), \
 		new /datum/stack_recipe("maintenance hatch assembly", /obj/structure/door_assembly/door_assembly_mhatch, 4, time = 5 SECONDS, one_per_turf = 1, on_solid_ground = 1), \
-		//SKYRAT EDIT ADDITION
-		new /datum/stack_recipe("corporate airlock assembly", /obj/structure/door_assembly/door_assembly_corporate, 4, time = 5 SECONDS, one_per_turf = 1, on_solid_ground = 1), \
-		new /datum/stack_recipe("service airlock assembly", /obj/structure/door_assembly/door_assembly_service, 4, time = 5 SECONDS, one_per_turf = 1, on_solid_ground = 1), \
-		//SKYRAT EDIT ADDITION END
 	)), \
 	null, \
 	new/datum/stack_recipe("firelock frame", /obj/structure/firelock_frame, 3, time = 5 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE), \
@@ -567,8 +563,8 @@ GLOBAL_LIST_INIT(cardboard_recipes, list ( \
 		new /datum/stack_recipe("extended oxygen tank box", /obj/item/storage/box/engitank), \
 		null, \
 
-		new /datum/stack_recipe("survival box", /obj/item/storage/box/survival), \
-		new /datum/stack_recipe("extended tank survival box", /obj/item/storage/box/survival/engineer), \
+		new /datum/stack_recipe("survival box", /obj/item/storage/box/survival/crafted), \
+		new /datum/stack_recipe("extended tank survival box", /obj/item/storage/box/survival/engineer/crafted), \
 		new /datum/stack_recipe("disk box", /obj/item/storage/box/disks), \
 		new /datum/stack_recipe("light tubes box", /obj/item/storage/box/lights/tubes), \
 		new /datum/stack_recipe("light bulbs box", /obj/item/storage/box/lights/bulbs), \

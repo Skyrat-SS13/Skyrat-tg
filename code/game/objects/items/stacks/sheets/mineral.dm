@@ -285,11 +285,7 @@ GLOBAL_LIST_INIT(bananium_recipes, list ( \
 GLOBAL_LIST_INIT(titanium_recipes, list ( \
 	new/datum/stack_recipe("titanium tile", /obj/item/stack/tile/mineral/titanium, 1, 4, 20), \
 	new/datum/stack_recipe("shuttle seat", /obj/structure/chair/comfy/shuttle, 2, one_per_turf = TRUE, on_solid_ground = TRUE), \
-	// SKYRAT EDIT START
-	new/datum/stack_recipe("spaceship plating", /obj/item/stack/sheet/spaceship, 1, time = 5), \
-	// SKYRAT EDIT END
 	))
-//(Comment down here because it breaks the list) - SKYRAT EDIT ADDITION: added "spaceship plating" for crafting spaceship walls
 
 /obj/item/stack/sheet/mineral/titanium/get_main_recipes()
 	. = ..()
@@ -350,9 +346,8 @@ GLOBAL_LIST_INIT(snow_recipes, list ( \
 	new/datum/stack_recipe("snowman", /obj/structure/statue/snow/snowman, 5, one_per_turf = TRUE, on_solid_ground = TRUE), \
 	new/datum/stack_recipe("snowball", /obj/item/toy/snowball, 1), \
 	new/datum/stack_recipe("snow tile", /obj/item/stack/tile/mineral/snow, 1, 4, 20), \
-	new/datum/stack_recipe("snow barricade", /obj/structure/deployable_barricade/snow, 2, one_per_turf = 1, on_solid_ground = 1), \
+
 ))
-// SKYRAT EDIT ADDITION: Snow Barricade
 
 /obj/item/stack/sheet/mineral/snow/get_main_recipes()
 	. = ..()
