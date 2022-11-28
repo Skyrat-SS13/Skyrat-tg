@@ -226,7 +226,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	opened_at = world.time
 
 	name = copytext_char(msg, 1, 100)
-	full_text = msg
+
+	full_text = msg //SKYRAT EDIT ADDITION - Adminhelps into mentorhelps converting.
 
 	initiator = C
 	initiator_ckey = initiator.ckey
