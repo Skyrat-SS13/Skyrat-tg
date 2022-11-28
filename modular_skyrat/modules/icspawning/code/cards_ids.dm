@@ -10,6 +10,7 @@
 
 /datum/id_trim/admin/bst
 	assignment = "Bluespace Technician"
-	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-	trim_state = "trim_bluespacetech"
+	trim_state = "trim_stationengineer"
+	department_color = COLOR_CENTCOM_BLUE
+	subdepartment_color = COLOR_ENGINEERING_ORANGE
 	sechud_icon_state = SECHUD_SCRAMBLED

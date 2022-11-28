@@ -20,7 +20,6 @@
 	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/p90_magin.ogg'
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/p90_magout.ogg'
 	alt_icons = TRUE
-	realistic = TRUE
 
 /obj/item/ammo_box/magazine/p90
 	name = "\improper P90-02 magazine"
@@ -30,4 +29,3 @@
 	caliber = "c34acp"
 	max_ammo = 50
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
-	
