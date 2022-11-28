@@ -874,7 +874,7 @@
  * consider handling it via signal instead of implementing it in this proc
  */
 /mob/living/proc/fully_heal(heal_flags = HEAL_ALL)
-		SHOULD_CALL_PARENT(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
 
 	if(heal_flags & HEAL_TOX)
 		setToxLoss(0, FALSE, TRUE)
