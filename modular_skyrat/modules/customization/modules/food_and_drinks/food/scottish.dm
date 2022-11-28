@@ -7,7 +7,7 @@
 	foodtypes = MEAT | GRAIN
 
 /obj/item/food/snacks/store/bread/haggis/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/snacks/breadslice/haggis, 5, 30)
+	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/snacks/breadslice/haggis, 5, 30, screentip_verb = "Slice")
 
 /obj/item/food/snacks/breadslice/haggis
 	name = "haggis chunk"
