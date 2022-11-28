@@ -321,7 +321,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/structure/janitorialcart{
+/obj/structure/mop_bucket/janitorialcart{
 	dir = 4
 	},
 /obj/item/radio/intercom/directional/south,
@@ -2327,13 +2327,13 @@
 	},
 /obj/structure/disposalpipe/sorting/mail/flip{
 	dir = 2;
-	name = "Robotics Junction";
-	sortType = 14
+	name = "Robotics Junction"
 	},
 /obj/structure/sink/directional/west,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/mail_sorting/science/robotics,
 /turf/open/floor/iron/white/smooth_edge{
 	dir = 8
 	},
@@ -3991,9 +3991,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/sorting/mail{
 	dir = 1;
-	name = "Library Junction";
-	sortType = 16
+	name = "Library Junction"
 	},
+/obj/effect/mapping_helpers/mail_sorting/service/library,
 /turf/open/floor/wood/large,
 /area/station/hallway/primary/central/fore)
 "bis" = (
@@ -4836,13 +4836,13 @@
 	},
 /obj/structure/disposalpipe/sorting/mail{
 	dir = 4;
-	name = "Ordnance Junction";
-	sortType = 25
+	name = "Ordnance Junction"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/effect/mapping_helpers/mail_sorting/science/ordnance,
 /turf/open/floor/iron/smooth_large,
 /area/station/science/ordnance/office)
 "bxO" = (
@@ -7912,10 +7912,10 @@
 /obj/machinery/duct,
 /obj/structure/disposalpipe/sorting/mail{
 	dir = 8;
-	name = "Experimentor Lab Junction";
-	sortType = 24
+	name = "Experimentor Lab Junction"
 	},
 /obj/effect/turf_decal/tile/purple/diagonal_centre,
+/obj/effect/mapping_helpers/mail_sorting/science/experimentor_lab,
 /turf/open/floor/iron/white/diagonal,
 /area/station/science/research)
 "cvn" = (
@@ -8719,6 +8719,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/mail_sorting/medbay/virology,
 /turf/open/floor/iron/white/smooth_edge{
 	dir = 8
 	},
@@ -10743,10 +10744,10 @@
 "dlN" = (
 /obj/structure/disposalpipe/sorting/mail{
 	dir = 4;
-	name = "Bar Junction";
-	sortType = 19
+	name = "Bar Junction"
 	},
 /obj/effect/landmark/event_spawn,
+/obj/effect/mapping_helpers/mail_sorting/service/bar,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/hallway/primary/fore)
 "dlU" = (
@@ -12136,7 +12137,7 @@
 /turf/open/floor/iron/white/smooth_large,
 /area/station/science/research)
 "dFa" = (
-/obj/structure/janitorialcart{
+/obj/structure/mop_bucket/janitorialcart{
 	dir = 4
 	},
 /obj/structure/cable,
@@ -14940,10 +14941,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/sorting/mail/flip{
 	dir = 2;
-	name = "Research Junction";
-	sortType = 12
+	name = "Research Junction"
 	},
 /obj/machinery/duct,
+/obj/effect/mapping_helpers/mail_sorting/science/research,
 /turf/open/floor/iron/white/smooth_edge{
 	dir = 8
 	},
@@ -15688,6 +15689,7 @@
 	name = "Xenobio Junction";
 	sortType = 28
 	},
+/obj/effect/mapping_helpers/mail_sorting/science/xenobiology,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/science/xenobiology)
 "ezT" = (
@@ -18558,6 +18560,7 @@
 /obj/effect/turf_decal/trimline/yellow/filled/warning{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/mail_sorting/engineering/ce_office,
 /turf/open/floor/iron/smooth_edge,
 /area/station/engineering/power_room)
 "frR" = (
@@ -20325,9 +20328,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/sorting/mail{
 	dir = 1;
-	name = "HydroponicsJunction";
-	sortType = 21
+	name = "HydroponicsJunction"
 	},
+/obj/effect/mapping_helpers/mail_sorting/service/hydroponics,
 /turf/open/floor/wood/large,
 /area/station/hallway/primary/central/fore)
 "fWc" = (
@@ -21525,10 +21528,10 @@
 /obj/machinery/duct,
 /obj/structure/disposalpipe/sorting/mail{
 	dir = 2;
-	name = "Xenobio Junction";
-	sortType = 28
+	name = "Xenobio Junction"
 	},
 /obj/effect/turf_decal/tile/purple/diagonal_centre,
+/obj/effect/mapping_helpers/mail_sorting/science/xenobiology,
 /turf/open/floor/iron/white/diagonal,
 /area/station/science/research)
 "glS" = (
@@ -33497,10 +33500,10 @@
 	},
 /obj/machinery/duct,
 /obj/structure/disposalpipe/sorting/mail{
-	name = "CMO's Junction";
-	sortType = 10
+	name = "CMO's Junction"
 	},
 /obj/effect/landmark/event_spawn,
+/obj/effect/mapping_helpers/mail_sorting/medbay/cmo_office,
 /turf/open/floor/iron/white/smooth_corner{
 	dir = 4
 	},
@@ -35468,8 +35471,7 @@
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/sorting/mail{
 	dir = 1;
-	name = "Security Junction";
-	sortType = 7
+	name = "Security Junction"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
 	cycle_id = "brig-entrance-fore"
@@ -35483,6 +35485,7 @@
 	dir = 1
 	},
 /obj/effect/mapping_helpers/airlock/access/all/security/brig,
+/obj/effect/mapping_helpers/mail_sorting/security/general,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/office)
 "kkl" = (
@@ -38667,12 +38670,12 @@
 	},
 /obj/structure/disposalpipe/sorting/mail{
 	dir = 2;
-	name = "RD Junction";
-	sortType = 13
+	name = "RD Junction"
 	},
 /obj/machinery/light_switch/directional/east{
 	pixel_x = 37
 	},
+/obj/effect/mapping_helpers/mail_sorting/science/rd_office,
 /turf/open/floor/wood/large,
 /area/station/command/heads_quarters/rd)
 "lar" = (
@@ -39025,9 +39028,11 @@
 /obj/machinery/light/warm/directional/east,
 /obj/structure/disposalpipe/sorting/mail{
 	dir = 2;
-	name = "Satellite Junction";
-	sortTypes = list(24,25,28)
+	name = "Satellite Junction"
 	},
+/obj/effect/mapping_helpers/mail_sorting/science/experimentor_lab,
+/obj/effect/mapping_helpers/mail_sorting/science/ordnance,
+/obj/effect/mapping_helpers/mail_sorting/science/xenobiology,
 /turf/open/floor/iron/white/smooth_edge{
 	dir = 8
 	},
@@ -40257,9 +40262,9 @@
 "lxc" = (
 /obj/structure/disposalpipe/sorting/mail{
 	dir = 4;
-	name = "Disposals Junction";
-	sortType = 1
+	name = "Disposals Junction"
 	},
+/obj/effect/mapping_helpers/mail_sorting/supply/disposals,
 /turf/open/floor/iron/smooth_large,
 /area/station/hallway/primary/aft)
 "lxr" = (
@@ -40360,10 +40365,10 @@
 	},
 /obj/structure/disposalpipe/sorting/mail{
 	dir = 1;
-	name = "Chapel Junction";
-	sortType = 17
+	name = "Chapel Junction"
 	},
 /obj/effect/turf_decal/vg_decals/department/sec,
+/obj/effect/mapping_helpers/mail_sorting/service/chapel,
 /turf/open/floor/iron/dark/smooth_edge,
 /area/station/hallway/primary/fore)
 "lze" = (
@@ -40414,12 +40419,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/sorting/mail{
 	dir = 1;
-	name = "HoP Junction";
-	sortType = 15
+	name = "HoP Junction"
 	},
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 8
 	},
+/obj/effect/mapping_helpers/mail_sorting/service/hop_office,
 /turf/open/floor/iron/dark/smooth_corner{
 	dir = 8
 	},
@@ -42040,9 +42045,9 @@
 /obj/machinery/duct,
 /obj/structure/disposalpipe/sorting/mail/flip{
 	dir = 2;
-	name = "Pharmacy Junction";
-	sortType = 11
+	name = "Pharmacy Junction"
 	},
+/obj/effect/mapping_helpers/mail_sorting/medbay/chemistry,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/medbay/lobby)
 "lVG" = (
@@ -48311,9 +48316,9 @@
 	},
 /obj/structure/disposalpipe/sorting/mail/flip{
 	dir = 1;
-	name = "Cargo Bay Junction";
-	sortType = 2
+	name = "Cargo Bay Junction"
 	},
+/obj/effect/mapping_helpers/mail_sorting/supply/cargo_bay,
 /turf/open/floor/iron/smooth_corner{
 	dir = 1
 	},
@@ -48398,9 +48403,9 @@
 	},
 /obj/structure/disposalpipe/sorting/mail{
 	dir = 2;
-	name = "Theatre Junction";
-	sortType = 18
+	name = "Theatre Junction"
 	},
+/obj/effect/mapping_helpers/mail_sorting/service/theater,
 /turf/open/floor/wood/large,
 /area/station/hallway/primary/central/fore)
 "nEG" = (
@@ -50892,11 +50897,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/sorting/mail{
 	dir = 1;
-	name = "HoS Junction";
-	sortType = 8
+	name = "HoS Junction"
 	},
 /obj/effect/turf_decal/siding/red/corner,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/mail_sorting/security/hos_office,
 /turf/open/floor/iron/dark/smooth_edge{
 	dir = 4
 	},
@@ -52793,9 +52798,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/sorting/mail/flip{
 	dir = 4;
-	name = "Quartermaster's Junction";
-	sortType = 3
+	name = "Quartermaster's Junction"
 	},
+/obj/effect/mapping_helpers/mail_sorting/supply/qm_office,
 /turf/open/floor/iron/smooth_large,
 /area/station/cargo/storage)
 "oQK" = (
@@ -54113,9 +54118,9 @@
 /obj/machinery/duct,
 /obj/structure/disposalpipe/sorting/mail/flip{
 	dir = 2;
-	name = "Medbay Junction";
-	sortType = 11
+	name = "Medbay Junction"
 	},
+/obj/effect/mapping_helpers/mail_sorting/medbay/general,
 /turf/open/floor/iron/white/smooth_corner,
 /area/station/medical/medbay/central)
 "phD" = (
@@ -61735,7 +61740,7 @@
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 1
 	},
-/obj/structure/janitorialcart{
+/obj/structure/mop_bucket/janitorialcart{
 	dir = 4
 	},
 /obj/item/reagent_containers/cup/bucket,
@@ -65031,9 +65036,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/sorting/mail{
 	dir = 1;
-	name = "Janitor Junction";
-	sortType = 22
+	name = "Janitor Junction"
 	},
+/obj/effect/mapping_helpers/mail_sorting/service/janitor_closet,
 /turf/open/floor/wood/large,
 /area/station/hallway/primary/central/fore)
 "ska" = (
@@ -66672,10 +66677,10 @@
 	},
 /obj/structure/disposalpipe/sorting/mail/flip{
 	dir = 2;
-	name = "Genetics Junction";
-	sortType = 23
+	name = "Genetics Junction"
 	},
 /obj/effect/turf_decal/bot,
+/obj/effect/mapping_helpers/mail_sorting/science/genetics,
 /turf/open/floor/wood/large,
 /area/station/command/heads_quarters/rd)
 "sGC" = (
@@ -67664,9 +67669,9 @@
 "sSF" = (
 /obj/structure/disposalpipe/sorting/mail/flip{
 	dir = 4;
-	name = "Dormitories Junction";
-	sortType = 26
+	name = "Dormitories Junction"
 	},
+/obj/effect/mapping_helpers/mail_sorting/service/dormitories,
 /turf/open/floor/iron/small,
 /area/station/commons/dorms)
 "sSH" = (
@@ -71468,10 +71473,10 @@
 "tUt" = (
 /obj/structure/disposalpipe/sorting/mail{
 	dir = 4;
-	name = "Kitchen Junction";
-	sortType = 20
+	name = "Kitchen Junction"
 	},
 /obj/effect/landmark/start/hangover,
+/obj/effect/mapping_helpers/mail_sorting/service/kitchen,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/hallway/primary/fore)
 "tUw" = (
@@ -86090,11 +86095,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/sorting/mail/flip{
 	dir = 4;
-	name = "Armospherics Junction";
-	sortType = 6
+	name = "Armospherics Junction"
 	},
 /obj/machinery/holopad,
 /obj/effect/turf_decal/bot,
+/obj/effect/mapping_helpers/mail_sorting/engineering/atmospherics,
 /turf/open/floor/iron/smooth_large,
 /area/station/engineering/atmos/storage)
 "xYs" = (
@@ -86284,9 +86289,9 @@
 /obj/machinery/duct,
 /obj/structure/disposalpipe/sorting/mail{
 	dir = 2;
-	name = "Virology Junction";
-	sortType = 27
+	name = "Virology Junction"
 	},
+/obj/effect/mapping_helpers/mail_sorting/medbay/virology,
 /turf/open/floor/iron/white/smooth_edge{
 	dir = 8
 	},

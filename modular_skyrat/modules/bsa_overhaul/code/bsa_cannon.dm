@@ -12,7 +12,7 @@
 #define SYSTEM_RELOADING "SYSTEM RELOADING"
 #define SYSTEM_INTERRUPTED "SYSTEM INTERRUPTED"
 
-#define SUPERWEAPON_RELOAD_TIME 30 SECONDS
+#define SUPERWEAPON_RELOAD_TIME (30 SECONDS)
 
 /datum/station_goal/bluespace_cannon
 	name = "Bluespace Artillery"
