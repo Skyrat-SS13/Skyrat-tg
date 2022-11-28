@@ -188,7 +188,7 @@
 
 //Allowed equipment lists for security vests.
 
-GLOBAL_LIST_INIT(detective_vest_allowed, typecacheof(list(
+GLOBAL_LIST_INIT(detective_vest_allowed, list(
 	/obj/item/ammo_box,
 	/obj/item/ammo_casing,
 	/obj/item/detective_scanner,
@@ -206,10 +206,14 @@ GLOBAL_LIST_INIT(detective_vest_allowed, typecacheof(list(
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
 	/obj/item/storage/belt/holster/thermal,
+<<<<<<< HEAD
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
 	)))
+=======
+))
+>>>>>>> 928b902b9e2 (Small optimization for allowed lists (#71562))
 
-GLOBAL_LIST_INIT(security_vest_allowed, typecacheof(list(
+GLOBAL_LIST_INIT(security_vest_allowed, list(
 	/obj/item/ammo_box,
 	/obj/item/ammo_casing,
 	/obj/item/flashlight,
@@ -224,10 +228,14 @@ GLOBAL_LIST_INIT(security_vest_allowed, typecacheof(list(
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
 	/obj/item/storage/belt/holster/thermal,
+<<<<<<< HEAD
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
 	)))
+=======
+))
+>>>>>>> 928b902b9e2 (Small optimization for allowed lists (#71562))
 
-GLOBAL_LIST_INIT(security_wintercoat_allowed, typecacheof(list(
+GLOBAL_LIST_INIT(security_wintercoat_allowed, list(
 	/obj/item/ammo_box,
 	/obj/item/ammo_casing,
 	/obj/item/gun/ballistic,
@@ -238,8 +246,12 @@ GLOBAL_LIST_INIT(security_wintercoat_allowed, typecacheof(list(
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
 	/obj/item/storage/belt/holster/thermal,
+<<<<<<< HEAD
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
 	)))
+=======
+))
+>>>>>>> 928b902b9e2 (Small optimization for allowed lists (#71562))
 
 /// String for items placed into the left pocket.
 #define LOCATION_LPOCKET "in your left pocket"
