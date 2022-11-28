@@ -16,7 +16,7 @@
 		return
 
 	var/show_char = CONFIG_GET(flag/mentors_mobname_only)
-	var/mentor_msg = span_mentor("<b>MENTORHELP:</b> <b>[key_name_mentor(src, TRUE, FALSE, TRUE, show_char, msg)]</b>: [msg]")
+	var/mentor_msg = span_mentor("<b>MENTORHELP:</b> <b>[key_name_mentor(src, TRUE, FALSE, TRUE, show_char)]</b>: [msg]")
 	log_mentor("MENTORHELP: [key_name_mentor(src, FALSE, FALSE, FALSE, FALSE)]: [msg]")
 
 	for(var/mentor in GLOB.mentors)
