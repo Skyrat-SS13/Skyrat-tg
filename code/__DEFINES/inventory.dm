@@ -206,12 +206,8 @@ GLOBAL_LIST_INIT(detective_vest_allowed, list(
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
 	/obj/item/storage/belt/holster/thermal,
-<<<<<<< HEAD
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
-	)))
-=======
 ))
->>>>>>> 928b902b9e2 (Small optimization for allowed lists (#71562))
 
 GLOBAL_LIST_INIT(security_vest_allowed, list(
 	/obj/item/ammo_box,
@@ -228,12 +224,8 @@ GLOBAL_LIST_INIT(security_vest_allowed, list(
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
 	/obj/item/storage/belt/holster/thermal,
-<<<<<<< HEAD
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
-	)))
-=======
 ))
->>>>>>> 928b902b9e2 (Small optimization for allowed lists (#71562))
 
 GLOBAL_LIST_INIT(security_wintercoat_allowed, list(
 	/obj/item/ammo_box,
@@ -246,12 +238,8 @@ GLOBAL_LIST_INIT(security_wintercoat_allowed, list(
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
 	/obj/item/storage/belt/holster/thermal,
-<<<<<<< HEAD
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
-	)))
-=======
 ))
->>>>>>> 928b902b9e2 (Small optimization for allowed lists (#71562))
 
 /// String for items placed into the left pocket.
 #define LOCATION_LPOCKET "in your left pocket"
