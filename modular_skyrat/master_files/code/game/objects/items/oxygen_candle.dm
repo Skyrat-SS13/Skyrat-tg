@@ -1,4 +1,4 @@
-#define OXY_CANDLE_RELEASE_TEMP  T20C + 10 // 30 celsius, it's hot. Will be even hotter with hotspot expose
+#define OXY_CANDLE_RELEASE_TEMP (T20C + 10) // 30 celsius, it's hot. Will be even hotter with hotspot expose
 
 /obj/item/oxygen_candle
 	name = "oxygen candle"
