@@ -176,7 +176,7 @@
 /datum/preference_middleware/limbs_and_markings/proc/set_organ_aug(list/params, mob/user)
 	var/organ_slot = params["organ_slot"]
 	var/augment_name = params["augment_name"]
-	if(augment_name == "Organic")
+	if(augment_name == "Default")
 		preferences.augments -= organs_to_process[organ_slot]
 	else
 		preferences.augments[organs_to_process[organ_slot]] = augment_to_path[augment_name]
@@ -247,23 +247,21 @@
 	for(var/organ in organs_to_process)
 		if(!nice_aug_names[organ])
 			nice_aug_names[organ] = list()
-			for(var/augments in GLOB.augment_slot_to_items[organs_to_process[organ]])
-				var/obj/item/aug = augments
+			for(var/augment in GLOB.augment_slot_to_items[organs_to_process[organ]])
 				var/cost = 0
-				if(GLOB.augment_items[augments])
-					var/datum/augment_item/expensive_augment = GLOB.augment_items[augments]
-					cost = expensive_augment.cost
+				var/datum/augment_item/expensive_augment = GLOB.augment_items[augment]
+				cost = expensive_augment.cost
 				// To display the cost of the limb, if it's anything aside from 0.
-				var/aug_name = cost != 0 ? initial(aug.name) + " ([cost])" : initial(aug.name)
+				var/aug_name = cost != 0 ? expensive_augment.name + " ([cost])" : expensive_augment.name
 				costs[AUGMENT_CATEGORY_ORGANS][aug_name] = cost
-				nice_aug_names[organ][augments] = aug_name
-				augment_to_path[aug_name] = augments
-			nice_aug_names[organ]["organic"] = "Organic"
+				nice_aug_names[organ][augment] = aug_name
+				augment_to_path[aug_name] = augment
+			nice_aug_names[organ]["organic"] = "Default"
 		var/chosen_organ
 		if(preferences.augments[organs_to_process[organ]] && !isnull(nice_aug_names[organ][preferences.augments[organs_to_process[organ]]]))
 			chosen_organ = nice_aug_names[organ][preferences.augments[organs_to_process[organ]]]
 		else
-			chosen_organ = "Organic"
+			chosen_organ = "Default"
 		organs_data += list(list(
 			"slot" = organ,
 			"name" = organs_to_process[organ],
