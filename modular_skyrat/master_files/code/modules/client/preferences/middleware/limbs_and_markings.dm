@@ -204,17 +204,19 @@
 	for(var/limb in limbs_to_process)
 		if(!nice_aug_names[limb])
 			nice_aug_names[limb] = list()
-			for(var/augments in GLOB.augment_slot_to_items[limbs_to_process[limb]])
-				var/obj/item/aug = augments
+			for(var/augment in GLOB.augment_slot_to_items[limbs_to_process[limb]])
+				var/obj/item/aug = augment
+				var/datum/augment_item/expensive_augment = GLOB.augment_items[augment]
 				var/cost = 0
-				if(GLOB.augment_items[augments])
-					var/datum/augment_item/expensive_augment = GLOB.augment_items[augments]
+				var/name = initial(aug.name)
+				if (expensive_augment)
 					cost = expensive_augment.cost
+					name = expensive_augment.name
 				// To display the cost of the limb, if it's anything aside from 0.
-				var/aug_name = cost != 0 ? initial(aug.name) + " ([cost])" : initial(aug.name)
+				var/aug_name = cost != 0 ? name + " ([cost])" : name
 				costs[AUGMENT_CATEGORY_LIMBS][aug_name] = cost
-				nice_aug_names[limb][augments] = aug_name
-				augment_to_path[aug_name] = augments
+				nice_aug_names[limb][augment] = aug_name
+				augment_to_path[aug_name] = augment
 			nice_aug_names[limb]["none"] = "None"
 		var/chosen_augment
 		if(preferences.augments[limbs_to_process[limb]] && !isnull(nice_aug_names[limb][preferences.augments[limbs_to_process[limb]]]))
@@ -248,11 +250,15 @@
 		if(!nice_aug_names[organ])
 			nice_aug_names[organ] = list()
 			for(var/augment in GLOB.augment_slot_to_items[organs_to_process[organ]])
-				var/cost = 0
+				var/obj/item/aug = augment
 				var/datum/augment_item/expensive_augment = GLOB.augment_items[augment]
-				cost = expensive_augment.cost
+				var/cost = 0
+				var/name = initial(aug.name)
+				if (expensive_augment)
+					cost = expensive_augment.cost
+					name = expensive_augment.name
 				// To display the cost of the limb, if it's anything aside from 0.
-				var/aug_name = cost != 0 ? expensive_augment.name + " ([cost])" : expensive_augment.name
+				var/aug_name = cost != 0 ? name + " ([cost])" : name
 				costs[AUGMENT_CATEGORY_ORGANS][aug_name] = cost
 				nice_aug_names[organ][augment] = aug_name
 				augment_to_path[aug_name] = augment
