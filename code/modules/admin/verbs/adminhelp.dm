@@ -203,17 +203,6 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	/// List of player interactions
 	var/list/player_interactions
 
-	//SKYRAT EDIT START
-	/// Have we requested this ticket to stop being part of the Ticket Ping subsystem?
-	var/ticket_ping_stop = FALSE
-	/// Are we added to the ticket ping subsystem in the first place
-	var/ticket_ping = FALSE
-	/// Who is handling this admin help?
-	var/handler
-	/// All sanitized text
-	var/full_text
-	//SKYRAT EDIT END
-
 /**
  * Call this on its own to create a ticket, don't manually assign current_ticket
  *
@@ -400,9 +389,6 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	. += " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=icissue'>IC</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
-	. += " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=handle_issue'>HANDLE</A>)" //SKYRAT EDIT ADDITION
-	. += " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=pingmute'>PING MUTE</A>)" //SKYRAT EDIT ADDITION
-	. += " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=convert'>CONVERT</A>)" //SKYRAT EDIT ADDITION - Mentor/Admin Help Convertation
 
 //private
 /datum/admin_help/proc/LinkedReplyName(ref_src)
@@ -688,7 +674,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			message_admins(msg)
 			log_admin_private(msg)
 		if("convert")
-			convert()
+			convert_to_mentorhelp()
 		// SKYRAT EDIT ADDITION END
 
 /datum/admin_help/proc/player_ticket_panel()

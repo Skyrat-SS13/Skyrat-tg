@@ -38,7 +38,7 @@
 		else
 			.["present"]++
 
-/proc/key_name_mentor(whom, include_link = null, include_name = FALSE, include_follow = FALSE, char_name_only = FALSE, message)
+/proc/key_name_mentor(whom, include_link = null, include_name = FALSE, include_follow = FALSE, char_name_only = FALSE)
 	var/mob/target_mob
 	var/client/target_client
 	var/key
@@ -98,7 +98,5 @@
 
 	if(include_follow)
 		. += " (<a href='?_src_=mentor;mentor_follow=[REF(target_mob)];[MentorHrefToken(TRUE)]'>F</a>)"
-	if(message)
-		. += " (<a href='?_src_=mentor;convert=[REF(target_client)];convert_text=[REF(sanitize(message))];[MentorHrefToken(TRUE)]'>CONV</a>)"
 
 	return .

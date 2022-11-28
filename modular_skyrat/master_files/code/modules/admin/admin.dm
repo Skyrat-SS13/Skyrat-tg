@@ -19,6 +19,22 @@ GLOBAL_VAR_INIT(dchat_allowed, TRUE)
 		GLOB.dchat_allowed = !GLOB.dchat_allowed
 	to_chat(world, span_oocplain("<B>The dead chat channel has been globally [GLOB.dchat_allowed ? "enabled" : "disabled"].</B>"))
 
+/datum/admin_help
+	/// Have we requested this ticket to stop being part of the Ticket Ping subsystem?
+	var/ticket_ping_stop = FALSE
+	/// Are we added to the ticket ping subsystem in the first place
+	var/ticket_ping = FALSE
+	/// Who is handling this admin help?
+	var/handler
+	/// All sanitized text
+	var/full_text
+
+/datum/admin_help/ClosureLinks(ref_src)
+	. = ..()
+	. += " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=handle_issue'>HANDLE</A>)" //SKYRAT EDIT ADDITION
+	. += " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=pingmute'>PING MUTE</A>)" //SKYRAT EDIT ADDITION
+	. += " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=convert'>CONVERT</A>)"
+
 //Let the initiator know their ahelp is being handled
 /datum/admin_help/proc/handle_issue(key_name = key_name_admin(usr))
 	if(state != AHELP_ACTIVE)
@@ -46,8 +62,8 @@ GLOBAL_VAR_INIT(dchat_allowed, TRUE)
 	handler = "[usr.ckey]"
 	return TRUE
 
-///Procedure whick convert adminhelp to mentorhelp
-/datum/admin_help/proc/convert(key_name = key_name_admin(usr))
+///Proc which converts an admin_help ticket to a mentorhelp
+/datum/admin_help/proc/convert_to_mentorhelp(key_name = key_name_admin(usr))
 	if(state != AHELP_ACTIVE)
 		return FALSE
 	
