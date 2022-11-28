@@ -562,3 +562,88 @@
       names to make them distinguishable
   - balance: premium internals station trait now increases the slots of your internals
       box
+2022-11-28:
+  ATHATH:
+  - bugfix: The shocks from the spell packets spell are no longer blocked by insulated
+      gloves.
+  Ebin-Halcyon:
+  - imageadd: Medical clothing have been re-resprited for Teshari
+  - imageadd: Some turtleneck clothing has been resprited for Teshari
+  - imageadd: and the maid outfit fits on Teshari now, do with this information as
+      you please.
+  Edgar-Allan-ShitPoest:
+  - rscadd: Added new Lawyer job title (Legal Clerk)
+  - rscadd: Added new chemist job title (Trainee Pharmacist)
+  - rscadd: Added new roboticist job title (Apprentice Roboticist)
+  - rscadd: Added new scientist job titles (Research Assistant and Graduate Student)
+  - rscadd: Added new engineer job title (Apprentice Engineer and Engineering Trainee)
+  - rscadd: Added new virologist job title (Junior Pathologist)
+  GoldenAlpharex:
+  - bugfix: PDAs (and by extension, modular computers) now can see the ID section
+      at the top of their main screen again, which means that PDAs can have IDs imprinted
+      on them again.
+  - bugfix: Fixes the ID section not displaying anything when there wasn't any ID
+      inserted in it, even if it had an imprinted name and job.
+  - bugfix: Fixes the "Eject ID" and "Imprint ID" buttons not being disabled when
+      there's no ID in the computer/PDA.
+  - bugfix: There's no longer any empty () by in the "ID Name" and "Assignment" fields
+      of the ID section of computers when there's no ID in them.
+  LT3:
+  - imageadd: New railing pillar tram crossing signals.
+  - qol: Vending machines next to the tram are now against the wall.
+  - bugfix: Tramstation floor decals no longer guide you to walk into the vending
+      machines.
+  - rscadd: The tram stations now have no-slip hazard floor tiles so you don't accidentally
+      slip and get smacked. Feel free to still run into it anyways, medbay has a counter
+      now so they'll know.
+  Melbert:
+  - refactor: Fully heal can be passed a series of flags. As a result, some things
+      which previously did a full heal might heal slightly less, or some things which
+      did partial full heals might do slightly more.
+  - bugfix: Adminordrazine will no longer completely break every facet of a person
+  - admin: Ahealing a changeling will refill all of their chems.
+  OrionTheFox:
+  - qol: The light color for Engineering Emergency Access has been changed to Orange,
+      and for Bolts is now a redder red.
+  Paxilmaniac:
+  - imageadd: Some of the IPC bodypart sprites have been redone
+  Ryll/Shaps:
+  - imageadd: Added missing coin projectile sprite for the marksman revolver
+  SkyratBot:
+  - bugfix: Fixed being unable to open the necropolis gate when standing behind it
+  - bugfix: Nooartrium doesn't blind you anymore and keeps you conscious regardless
+      of oxyloss.
+  - bugfix: Being immune to hardcrit makes you able to hear while you should be in
+      hardcrit.
+  - bugfix: roundstart empty mugs now appear to be empty
+  - bugfix: nanotrasen mug no longer becomes normal mug after you drink from it
+  - qol: pdas have a wrench deconstruct screentip
+  - bugfix: wrenching a pda no longer destroys all contents inside
+  - balance: 'Splits the nuclear operative combat medical kit into two versions: basic
+      and premium.'
+  - balance: Basic contains additional amounts of basic c2 chem patches, some spare
+      atropine autoinjectors, sutures and regen mesh, and some basic medical equipment
+      for tending wounds. 4 TC (as it was before).
+  - balance: The premium kit is a far more useful full suite of advanced medical equipment,
+      MODsuit modules, medical supplies and cybernetic implants, including the combat
+      hypospray and the combat defib. 15 TC.
+  - balance: Atropine stops bomb implants from automatically detonating on death.
+      You can still manually activate your bomb implant (even when you are dead).
+  - balance: Operatives start with an atropine pen to stop themselves and their allies
+      from detonating so they can hopefully be saved by a medical operative.
+  - rscadd: There is a pamphlet to explain this in the nuclear operative's survival
+      box.
+  - rscadd: I'm not telling you to read the pamphlet, but you should probably read
+      the pamphlet.
+  - balance: Obsessed has been bumped up to a Deep-Rooted Brain Trauma
+  - balance: Mind Restoration can't remove deep-rooted traumas, making Obsessed unremovable
+      by virusses
+  - bugfix: fixes grilles dropping stack of 0 iron rods
+  ThatGuyPhil:
+  - rscadd: Readds larger breast size options.
+  YakumoChen:
+  - bugfix: The autodrobe has had its missing modular stock returned
+  tattle, nefarious6th:
+  - imageadd: updated a bunch of plant sprites
+  unit0016:
+  - bugfix: Skyrat's ID trims are now recolorable, as they are upstream. XOXO.
