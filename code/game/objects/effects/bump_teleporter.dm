@@ -29,19 +29,7 @@
 /obj/effect/bump_teleporter/singularity_pull()
 	return
 
-<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL  - MOVED TO BLACK_MESA
-/obj/effect/bump_teleporter/Bumped(atom/movable/AM)
-	if(!ismob(AM))
-		return
-	if(!id_target)
-		return
-
-	for(var/obj/effect/bump_teleporter/BT in AllTeleporters)
-		if(BT.id == src.id_target)
-			AM.forceMove(BT.loc) //Teleport to location with correct id.
-*/
-=======
 /obj/effect/bump_teleporter/Bumped(atom/movable/bumper)
 	if(!validate_setup(bumper))
 		return
@@ -52,6 +40,7 @@
 			return
 
 	stack_trace("Bump_teleporter [src] could not find a teleporter with id [id_target]!")
+*/
 
 /// Check to see if our teleporter was set up correctly mapside. Return TRUE if everything is fine, FALSE if not.
 /obj/effect/bump_teleporter/proc/validate_setup(atom/movable/checkable)
@@ -81,4 +70,3 @@
 /// As promised in the name of this subtype, use do_teleport to leverage all of the filtering checks that it does.
 /obj/effect/bump_teleporter/filtering/teleport_action(atom/movable/target, turf/destination)
 	do_teleport(target, destination, channel = TELEPORT_CHANNEL_QUANTUM)
->>>>>>> 228cf39cc8d (Adds a subtype of bump teleporters that use Do_Teleport (#71248))
