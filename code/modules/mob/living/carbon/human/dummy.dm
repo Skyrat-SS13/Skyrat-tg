@@ -93,9 +93,10 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	target.dna.features["mcolor"] = COLOR_VIBRANT_LIME
 	target.dna.features["moth_antennae"] = "Plain"
 	target.dna.features["moth_markings"] = "None"
-	target.dna.features["moth_wings"] = "Plain"
+	target.dna.features["wings"] = "None" // SKYRAT EDIT CHANGE - Customization
 	target.dna.features["snout"] = "Round"
 	target.dna.features["spines"] = "None"
+	target.dna.features["tail"] = "None" // SKYRAT EDIT ADDITION - Customization
 	target.dna.features["tail_cat"] = "None"
 	target.dna.features["tail_lizard"] = "Smooth"
 	target.dna.features["pod_hair"] = "Ivy"
@@ -104,25 +105,6 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 /mob/living/carbon/human/dummy/consistent
 
 /mob/living/carbon/human/dummy/consistent/setup_human_dna()
-<<<<<<< HEAD
-	create_dna(src)
-	dna.initialize_dna(skip_index = TRUE)
-	dna.features["body_markings"] = "None"
-	dna.features["ears"] = "None"
-	dna.features["ethcolor"] = COLOR_WHITE
-	dna.features["frills"] = "None"
-	dna.features["horns"] = "None"
-	dna.features["mcolor"] = COLOR_VIBRANT_LIME
-	dna.features["moth_antennae"] = "Plain"
-	dna.features["moth_markings"] = "None"
-	dna.features["wings"] = "None" // SKYRAT EDIT CHANGE - Customization
-	dna.features["snout"] = "Round"
-	dna.features["spines"] = "None"
-	dna.features["tail"] = "None" // SKYRAT EDIT ADDITION - Customization
-	dna.features["tail_cat"] = "None"
-	dna.features["tail_lizard"] = "Smooth"
-	dna.features["pod_hair"] = "Ivy"
-=======
 	create_consistent_human_dna(src)
 
 /// Provides a dummy for unit_tests that functions like a normal human, but with a standardized appearance
@@ -136,7 +118,6 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	..()
 	if(is_creating)
 		fully_replace_character_name(real_name, "John Doe")
->>>>>>> 1900eb9484d (Unit Tests use a consistent human subtype (#71515))
 
 //Inefficient pooling/caching way.
 GLOBAL_LIST_EMPTY(human_dummy_list)
