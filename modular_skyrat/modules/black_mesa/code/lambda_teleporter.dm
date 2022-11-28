@@ -30,9 +30,10 @@
 	return ..()
 
 /obj/effect/bump_teleporter/lambda/teleport_action(atom/movable/target, turf/destination)
-	. = ..()
-
+	// Play sound before moving.
 	playsound(src, 'modular_skyrat/modules/black_mesa/sound/lc_teleport.ogg', 100)
+
+	. = ..()
 
 	if(isliving(target))
 		var/mob/living/teleporting_mob = target
