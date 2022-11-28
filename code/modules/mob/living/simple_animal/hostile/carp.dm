@@ -119,22 +119,6 @@
 /mob/living/simple_animal/hostile/carp/add_cell_sample()
 	AddElement(/datum/element/swabable, CELL_LINE_TABLE_CARP, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
 
-
-/**
- * Randomly assigns a color to a carp from either a common or rare color variant lists
- *
- * Arguments:
- * * rare The chance of the carp receiving color from the rare color variant list
- */
-/mob/living/simple_animal/hostile/carp/proc/carp_randomify(rarechance)
-	var/our_color
-	if(prob(rarechance))
-		our_color = pick(carp_colors_rare)
-		set_greyscale(colors=list(carp_colors_rare[our_color]))
-	else
-		our_color = pick(carp_colors)
-		set_greyscale(colors=list(carp_colors[our_color]))
-
 /mob/living/simple_animal/hostile/carp/proc/chomp_plastic()
 	var/obj/item/storage/cans/tasty_plastic = locate(/obj/item/storage/cans) in view(1, src)
 	if(tasty_plastic && Adjacent(tasty_plastic))
