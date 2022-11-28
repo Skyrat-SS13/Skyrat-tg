@@ -30,18 +30,16 @@ GLOBAL_LIST_INIT(meteorsD, list(/obj/effect/meteor/medium=15, /obj/effect/meteor
 //Meteor spawning global procs
 ///////////////////////////////
 
-//SKYRAT OVERRIDE START - overwritten in modular_skyrat\modules\events\code\directional_meteors.dm
-/*
-/proc/spawn_meteors(number = 10, list/meteortypes)
+/proc/spawn_meteors(number = 10, list/meteortypes, dir) //SKYRAT EDIT - DIRECTIONAL METEORS - added "dir"
 	for(var/i in 1 to number)
-		spawn_meteor(meteortypes)
+		spawn_meteor(meteortypes, dir) //SKYRAT EDIT - DIRECTIONAL METEORS - added "dir"
 
-/proc/spawn_meteor(list/meteortypes)
+/proc/spawn_meteor(list/meteortypes, dir) //SKYRAT EDIT - DIRECTIONAL METEORS - added "dir"
 	var/turf/pickedstart
 	var/turf/pickedgoal
 	var/max_i = 10//number of tries to spawn meteor.
 	while(!isspaceturf(pickedstart))
-		var/startSide = pick(GLOB.cardinals)
+		var/startSide = dir || pick(GLOB.cardinals) //SKYRAT EDIT - DIRECTIONAL METEORS - added "dir ||"
 		var/startZ = pick(SSmapping.levels_by_trait(ZTRAIT_STATION))
 		pickedstart = spaceDebrisStartLoc(startSide, startZ)
 		pickedgoal = spaceDebrisFinishLoc(startSide, startZ)
@@ -50,8 +48,6 @@ GLOBAL_LIST_INIT(meteorsD, list(/obj/effect/meteor/medium=15, /obj/effect/meteor
 			return
 	var/Me = pick_weight(meteortypes)
 	new Me(pickedstart, pickedgoal)
-*/
-//SKYRAT OVERRIDE END
 
 /proc/spaceDebrisStartLoc(startSide, Z)
 	var/starty
