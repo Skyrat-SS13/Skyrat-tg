@@ -251,21 +251,11 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 		heart.Insert(src)
 	heart.setOrganDamage(0)
 
-<<<<<<< HEAD
-		var/obj/item/organ/internal/heart/heart = getorganslot(ORGAN_SLOT_HEART)
-		if(heart)
-			set_heartattack(FALSE)
-		else
-			heart = new()
-			heart.Insert(src)
-		heart.setOrganDamage(0)
-=======
 	var/obj/item/organ/internal/tongue/tongue = getorganslot(ORGAN_SLOT_TONGUE)
 	if(!tongue)
 		tongue = new()
 		tongue.Insert(src)
 	tongue.setOrganDamage(0)
->>>>>>> 7663d9b8ddf (Fixes regenerate organs carrying over organ damage (#71336))
 
 	var/obj/item/organ/internal/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
 	if(!eyes)
