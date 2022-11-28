@@ -79,7 +79,7 @@
 	slot = AUGMENT_SLOT_TONGUE
 
 /datum/augment_item/organ/tongue/normal
-	name = "Organic tongue"
+	name = "Human tongue"
 	path = /obj/item/organ/internal/tongue/human
 
 /datum/augment_item/organ/tongue/robo
