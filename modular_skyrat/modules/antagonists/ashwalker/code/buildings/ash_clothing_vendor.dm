@@ -2,7 +2,7 @@
 	name = "\improper Ashland Clothing Storage"
 	desc = "A large container, filled with various clothes for the Ash Walkers."
 	product_ads = "Praise the Necropolis"
-	icon = 'modular_skyrat/modules/ashwalkers/icons/vending.dmi'
+	icon = 'modular_skyrat/modules/antagonists/ashwalker/icons/vending.dmi'
 	icon_state = "ashclothvendor"
 	icon_deny = "necrocrate"
 

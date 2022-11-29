@@ -24,7 +24,7 @@
 /datum/action/cooldown/alien/acid/skyrat
 	name = "Spit Neurotoxin"
 	desc = "Spits neurotoxin at someone, exhausting them."
-	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
+	icon_icon = 'modular_skyrat/modules/antagonists/xenomorph/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	button_icon_state = "neurospit_0"
 	plasma_cost = 40
 	/// A singular projectile? Use this one and leave acid_casing null
@@ -36,7 +36,7 @@
 	/// The base icon for the ability, so a red box can be put on it using _0 or _1
 	var/button_base_icon = "neurospit"
 	/// The sound that should be played when the xeno actually spits
-	var/spit_sound = 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_spitacid.ogg'
+	var/spit_sound = 'modular_skyrat/modules/antagonists/xenomorph/xenos_skyrat_redo/sound/alien_spitacid.ogg'
 	shared_cooldown = MOB_SHARED_COOLDOWN_3
 	cooldown_time = 5 SECONDS
 

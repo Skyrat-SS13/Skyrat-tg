@@ -51,7 +51,7 @@
 		return FALSE
 
 	owner.balloon_alert(owner, "evasive movements began")
-	playsound(owner, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_hiss.ogg', 100, TRUE, 8, 0.9)
+	playsound(owner, 'modular_skyrat/modules/antagonists/xenomorph/xenos_skyrat_redo/sound/alien_hiss.ogg', 100, TRUE, 8, 0.9)
 	to_chat(owner, span_danger("We take evasive action, making us impossible to hit with projectiles for the next [evasion_duration / 10] seconds."))
 	addtimer(CALLBACK(src, PROC_REF(evasion_deactivate)), evasion_duration)
 	evade_active = TRUE

@@ -2,7 +2,7 @@
 
 /mob/living/carbon/alien/adult/skyrat
 	name = "rare bugged alien"
-	icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/big_xenos.dmi'
+	icon = 'modular_skyrat/modules/antagonists/xenomorph/xenos_skyrat_redo/icons/big_xenos.dmi'
 	rotate_on_lying = FALSE
 	base_pixel_x = -16 //All of the xeno sprites are 64x64, and we want them to be level with the tile they are on, much like oversized quirk users
 	/// Holds the ability for making an alien's sprite smaller to only themselves
@@ -16,7 +16,7 @@
 	maptext_width = 64
 	pressure_resistance = 200
 	/// What icon file update_held_items will look for when making inhands for xenos
-	var/alt_inhands_file = 'modular_skyrat/modules/xenos_skyrat_redo/icons/big_xenos.dmi'
+	var/alt_inhands_file = 'modular_skyrat/modules/antagonists/xenomorph/xenos_skyrat_redo/icons/big_xenos.dmi'
 	/// Setting this will give a xeno generic_evolve set to evolve them into this type
 	var/next_evolution
 	/// Holds the ability for evolving into whatever type next_evolution is set to
@@ -71,7 +71,7 @@
 	has_evolved_recently = FALSE
 
 /datum/action/cooldown/alien/skyrat
-	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
+	icon_icon = 'modular_skyrat/modules/antagonists/xenomorph/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	/// Some xeno abilities block other abilities from being used, this allows them to get around that in cases where it is needed
 	var/can_be_used_always = FALSE
 

@@ -42,7 +42,7 @@
 	return assault_team
 
 /datum/antagonist/assault_operative/greet()
-	owner.current.playsound_local(get_turf(owner.current), 'modular_skyrat/modules/assault_operatives/sound/assault_operatives_greet.ogg', 30, 0, use_reverb = FALSE)
+	owner.current.playsound_local(get_turf(owner.current), 'modular_skyrat/modules/antagonists/assault_operative/sound/assault_operatives_greet.ogg', 30, 0, use_reverb = FALSE)
 	to_chat(owner, span_big("You are an assault operative!"))
 	to_chat(owner, span_red(spawn_text))
 	owner.announce_objectives()
@@ -179,7 +179,7 @@
 	if (!preview_outfit)
 		return null
 
-	var/icon/final_icon = icon('modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi', "goldeneye_key")
+	var/icon/final_icon = icon('modular_skyrat/modules/antagonists/assault_operative/icons/goldeneye.dmi', "goldeneye_key")
 
 	return finish_preview_icon(final_icon)
 

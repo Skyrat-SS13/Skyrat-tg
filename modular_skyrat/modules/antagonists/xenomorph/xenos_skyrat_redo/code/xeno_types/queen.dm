@@ -76,7 +76,7 @@
 /datum/action/cooldown/alien/skyrat/queen_screech/Activate()
 	. = ..()
 	var/mob/living/carbon/alien/adult/skyrat/queenie = owner
-	playsound(queenie, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_queen_screech.ogg', 100, FALSE, 8, 0.9)
+	playsound(queenie, 'modular_skyrat/modules/antagonists/xenomorph/xenos_skyrat_redo/sound/alien_queen_screech.ogg', 100, FALSE, 8, 0.9)
 	queenie.create_shriekwave()
 	shake_camera(owner, 2, 2)
 
@@ -89,7 +89,7 @@
 
 /mob/living/carbon/alien/adult/skyrat/proc/create_shriekwave()
 	remove_overlay(HALO_LAYER)
-	overlays_standing[HALO_LAYER] = image("icon" = 'modular_skyrat/modules/xenos_skyrat_redo/icons/big_xenos.dmi', "icon_state" = "shriek_waves") //Ehh, suit layer's not being used.
+	overlays_standing[HALO_LAYER] = image("icon" = 'modular_skyrat/modules/antagonists/xenomorph/xenos_skyrat_redo/icons/big_xenos.dmi', "icon_state" = "shriek_waves") //Ehh, suit layer's not being used.
 	apply_overlay(HALO_LAYER)
 	addtimer(CALLBACK(src, PROC_REF(remove_shriekwave)), 3 SECONDS)
 

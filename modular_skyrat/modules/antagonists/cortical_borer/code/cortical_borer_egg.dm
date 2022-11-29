@@ -1,7 +1,7 @@
 /obj/effect/mob_spawn/ghost_role/borer_egg
 	name = "borer egg"
 	desc = "An egg of a creature that is known to crawl inside of you, be careful."
-	icon = 'modular_skyrat/modules/cortical_borer/icons/animal.dmi'
+	icon = 'modular_skyrat/modules/antagonists/cortical_borer/icons/animal.dmi'
 	icon_state = "brainegg"
 	layer = BELOW_MOB_LAYER
 	density = FALSE
@@ -46,7 +46,7 @@
 /obj/item/borer_egg
 	name = "borer egg"
 	desc = "An egg of a creature that is known to crawl inside of you, be careful."
-	icon = 'modular_skyrat/modules/cortical_borer/icons/animal.dmi'
+	icon = 'modular_skyrat/modules/antagonists/cortical_borer/icons/animal.dmi'
 	icon_state = "brainegg"
 	layer = BELOW_MOB_LAYER
 	///the spawner that is attached to this item

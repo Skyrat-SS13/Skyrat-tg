@@ -3,7 +3,7 @@ GLOBAL_LIST_EMPTY(ash_rituals)
 /obj/effect/ash_rune
 	name = "ash rune"
 	desc = "A remnant of a civilization that was once powerful enough to harness strange energy for transmutations."
-	icon = 'modular_skyrat/modules/ashwalkers/icons/ash_ritual.dmi'
+	icon = 'modular_skyrat/modules/antagonists/ashwalker/icons/ash_ritual.dmi'
 	icon_state = "rune"
 	anchored = TRUE
 
@@ -63,7 +63,7 @@ GLOBAL_LIST_EMPTY(ash_rituals)
 // this is solely for aesthetics... though the central rune will check the directions, of which this is on
 /obj/effect/side_rune
 	desc = "This rune seems to have some weird vacuum to it."
-	icon = 'modular_skyrat/modules/ashwalkers/icons/ash_ritual.dmi'
+	icon = 'modular_skyrat/modules/antagonists/ashwalker/icons/ash_ritual.dmi'
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
 	anchored = TRUE
 	/// the central rune that this is connected to

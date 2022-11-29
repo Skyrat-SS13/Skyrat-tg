@@ -1,7 +1,7 @@
 /obj/item/cortical_cage
 	name = "cortical borer cage"
 	desc = "A harmless cage that is intended to capture cortical borers."
-	icon = 'modular_skyrat/modules/cortical_borer/icons/items.dmi'
+	icon = 'modular_skyrat/modules/antagonists/cortical_borer/icons/items.dmi'
 	icon_state = "cage"
 
 	///If true, the trap is "open" and can trigger.

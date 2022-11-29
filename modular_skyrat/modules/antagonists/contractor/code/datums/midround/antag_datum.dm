@@ -4,7 +4,7 @@
 	antagpanel_category = "DriftingContractor"
 	preview_outfit = /datum/outfit/contractor_preview
 	job_rank = ROLE_DRIFTING_CONTRACTOR
-	hud_icon = 'modular_skyrat/modules/contractor/icons/hud_icon.dmi'
+	hud_icon = 'modular_skyrat/modules/antagonists/contractor/icons/hud_icon.dmi'
 	antag_hud_name = "contractor"
 	antag_moodlet = /datum/mood_event/focused
 	show_to_ghosts = TRUE

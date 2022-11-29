@@ -9,7 +9,7 @@
 /obj/effect/sunbeam
 	name = "\improper ICARUS Sunbeam"
 	desc = "A beam of light from the sun."
-	icon = 'modular_skyrat/modules/assault_operatives/icons/sunbeam.dmi'
+	icon = 'modular_skyrat/modules/antagonists/assault_operative/icons/sunbeam.dmi'
 	icon_state = "sunray_splash"
 	throwforce = 100
 	move_force = INFINITY
@@ -112,7 +112,7 @@
 	COOLDOWN_START(src, oblirerate_cooldown, obliteration_cooldown)
 
 /datum/looping_sound/sunbeam
-	mid_sounds = list('modular_skyrat/modules/assault_operatives/sound/sunbeam_loop.ogg' = 1)
+	mid_sounds = list('modular_skyrat/modules/antagonists/assault_operative/sound/sunbeam_loop.ogg' = 1)
 	mid_length = 6.7 SECONDS
 	volume = 100
 	extra_range = 25
@@ -154,7 +154,7 @@
 
 /datum/round_event/icarus_sunbeam/announce(fake)
 	priority_announce("/// ICARUS SUNBEAM WEAPONS SYSTEM ACTIVATED, USE EXTREME CAUTION! ///", "GoldenEye Defence Network", ANNOUNCER_KLAXON)
-	alert_sound_to_playing('modular_skyrat/modules/assault_operatives/sound/sunbeam_fire.ogg')
+	alert_sound_to_playing('modular_skyrat/modules/antagonists/assault_operative/sound/sunbeam_fire.ogg')
 
 /datum/round_event/icarus_sunbeam/start()
 	var/startside = pick(GLOB.cardinals)

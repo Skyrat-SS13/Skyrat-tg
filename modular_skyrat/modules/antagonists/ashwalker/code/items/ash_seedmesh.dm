@@ -1,7 +1,7 @@
 /obj/item/seed_mesh
 	name = "seed mesh"
 	desc = "A little mesh that, when paired with sand, has the possibility of filtering out large seeds."
-	icon = 'modular_skyrat/modules/ashwalkers/icons/misc_tools.dmi'
+	icon = 'modular_skyrat/modules/antagonists/ashwalker/icons/misc_tools.dmi'
 	icon_state = "mesh"
 
 /obj/item/seed_mesh/attackby(obj/item/attacking_item, mob/user, params)

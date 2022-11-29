@@ -7,5 +7,5 @@
 /atom/movable/screen/alert/status_effect/borer_sugar
 	name = "Sugar Dampening"
 	desc = "Your powers are diminished while sugar is in you or your host!"
-	icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
+	icon = 'modular_skyrat/modules/antagonists/cortical_borer/icons/actions.dmi'
 	icon_state = "borer_sugar"

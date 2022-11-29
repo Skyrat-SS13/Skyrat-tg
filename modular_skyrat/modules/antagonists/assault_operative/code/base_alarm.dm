@@ -1,7 +1,7 @@
 /obj/machinery/base_alarm
 	name = "base alarm"
 	desc = "Pull this to alert the guards!"
-	icon = 'modular_skyrat/modules/assault_operatives/icons/alarm.dmi'
+	icon = 'modular_skyrat/modules/antagonists/assault_operative/icons/alarm.dmi'
 	icon_state = "alarm"
 	max_integrity = 250
 	integrity_failure = 0.4
@@ -24,7 +24,7 @@
 	/// The area that we use to trigger other alarms.
 	var/area/myarea = null
 	/// Path to the alarm sound
-	var/alarm_sound_file = 'modular_skyrat/modules/assault_operatives/sound/goldeneyealarm.ogg'
+	var/alarm_sound_file = 'modular_skyrat/modules/antagonists/assault_operative/sound/goldeneyealarm.ogg'
 	/// Cooldown between each sound
 	var/alarm_cooldown = 65
 

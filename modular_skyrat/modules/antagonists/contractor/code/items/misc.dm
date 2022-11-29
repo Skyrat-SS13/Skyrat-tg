@@ -55,7 +55,7 @@
 
 /obj/item/extraction_pack/contractor
 	name = "black fulton extraction pack"
-	icon = 'modular_skyrat/modules/contractor/icons/fulton.dmi'
+	icon = 'modular_skyrat/modules/antagonists/contractor/icons/fulton.dmi'
 	can_use_indoors = TRUE
 	special_desc_requirement = EXAMINE_CHECK_CONTRACTOR
 	special_desc = "A modified fulton pack that can be used indoors thanks to Bluespace technology. Favored by Syndicate Contractors."

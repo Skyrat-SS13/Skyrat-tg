@@ -2,9 +2,9 @@
 /obj/item/melee/macahuitl
 	name = "ash macahuitl"
 	desc = "A weapon that looks like it will leave really bad marks."
-	icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_clothing.dmi'
-	lefthand_file = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_clothing_left.dmi'
-	righthand_file = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_clothing_right.dmi'
+	icon = 'modular_skyrat/modules/antagonists/ashwalker/icons/ashwalker_clothing.dmi'
+	lefthand_file = 'modular_skyrat/modules/antagonists/ashwalker/icons/ashwalker_clothing_left.dmi'
+	righthand_file = 'modular_skyrat/modules/antagonists/ashwalker/icons/ashwalker_clothing_right.dmi'
 	icon_state = "macahuitl"
 
 	force = 15

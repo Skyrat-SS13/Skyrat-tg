@@ -70,7 +70,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 /mob/living/basic/cortical_borer
 	name = "cortical borer"
 	desc = "A slimy creature that is known to go into the ear canal of unsuspecting victims."
-	icon = 'modular_skyrat/modules/cortical_borer/icons/animal.dmi'
+	icon = 'modular_skyrat/modules/antagonists/cortical_borer/icons/animal.dmi'
 	icon_state = "brainslug"
 	icon_living = "brainslug"
 	icon_dead = "brainslug_dead"

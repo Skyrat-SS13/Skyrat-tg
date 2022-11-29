@@ -8,7 +8,7 @@
 		// This --can probably-- (will not) be genericized in the future.
 		make_xeno_caste_entry(
 		caste_name = "Runner",
-		caste_image = image(icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi', icon_state = "preview_runner"),
+		caste_image = image(icon = 'modular_skyrat/modules/antagonists/xenomorph/xenos_skyrat_redo/icons/xeno_actions.dmi', icon_state = "preview_runner"),
 		caste_info = span_info("Runners are the most agile caste, the short stature of running on all fours \
 		gives them great speed, the ability to dodge projectiles, and allows them to tackle while holding throw and clicking. \
 		Eventually, runners can evolve onwards into the fearsome ravager, should the hive permit it."),
@@ -17,7 +17,7 @@
 
 		make_xeno_caste_entry(
 		caste_name = "Sentinel",
-		caste_image = image(icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi', icon_state = "preview_sentinel"),
+		caste_image = image(icon = 'modular_skyrat/modules/antagonists/xenomorph/xenos_skyrat_redo/icons/xeno_actions.dmi', icon_state = "preview_sentinel"),
 		caste_info = span_info("Sentinels are a caste similar in shape to a drone, forfeiting the ability to \
 		become royalty in exchange for spitting either acid, or a potent neurotoxin. They aren't as strong in close combat \
 		as the other options, but can eventually evolve into a more dangerous form of acid spitter, should the hive have capacity."),
@@ -26,7 +26,7 @@
 
 		make_xeno_caste_entry(
 		caste_name = "Defender",
-		caste_image  = image(icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi', icon_state = "preview_defender"),
+		caste_image  = image(icon = 'modular_skyrat/modules/antagonists/xenomorph/xenos_skyrat_redo/icons/xeno_actions.dmi', icon_state = "preview_defender"),
 		caste_info = span_info("Slow, tough, hard hitting, the defender is well and capable of what the name implies, \
 		the defender's thick armor allows it to take a few more hits than other castes, which can be paired with a deadly tail club \
 		and ability to make short charges to cause some real damage. Eventually, it will be able to evolve into the feared crusher, \
@@ -36,7 +36,7 @@
 
 		make_xeno_caste_entry(
 		caste_name = "Drone",
-		caste_image  = image(icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi', icon_state = "preview_drone"),
+		caste_image  = image(icon = 'modular_skyrat/modules/antagonists/xenomorph/xenos_skyrat_redo/icons/xeno_actions.dmi', icon_state = "preview_drone"),
 		caste_info = span_info("Drones are a somewhat weak, although fairly quick caste that fills a mainly \
 		support role in a hive, having a higher plasma capacity than most first evolutions, and the ability to \
 		make a healing aura for nearby xenos. Drones are the only caste that can evolve into both praetorians and \

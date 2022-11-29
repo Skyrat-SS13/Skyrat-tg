@@ -63,7 +63,7 @@
 	impact_wound_bonus = 10
 
 /obj/effect/temp_visual/dir_setting/tailsweep/praetorian
-	icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
+	icon = 'modular_skyrat/modules/antagonists/xenomorph/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	icon_state = "throw_tail_anim"
 
 /datum/action/cooldown/alien/acid/skyrat/spread
@@ -72,7 +72,7 @@
 	plasma_cost = 50
 	acid_projectile = null
 	acid_casing = /obj/item/ammo_casing/caseless/xenospit
-	spit_sound = 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_spitacid2.ogg'
+	spit_sound = 'modular_skyrat/modules/antagonists/xenomorph/xenos_skyrat_redo/sound/alien_spitacid2.ogg'
 	cooldown_time = 10 SECONDS
 
 /obj/item/ammo_casing/caseless/xenospit //This is probably really bad, however I couldn't find any other nice way to do this

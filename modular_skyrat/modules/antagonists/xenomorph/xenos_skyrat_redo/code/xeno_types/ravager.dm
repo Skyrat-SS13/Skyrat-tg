@@ -51,12 +51,12 @@
 	charge_past = 3
 	destroy_objects = FALSE
 	charge_damage = 25
-	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
+	icon_icon = 'modular_skyrat/modules/antagonists/xenomorph/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	button_icon_state = "ravager_charge"
 	unset_after_click = TRUE
 
 /datum/action/cooldown/mob_cooldown/charge/triple_charge/ravager/do_charge_indicator(atom/charger, atom/charge_target)
-	playsound(charger, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_roar2.ogg', 100, TRUE, 8, 0.9)
+	playsound(charger, 'modular_skyrat/modules/antagonists/xenomorph/xenos_skyrat_redo/sound/alien_roar2.ogg', 100, TRUE, 8, 0.9)
 
 /datum/action/cooldown/mob_cooldown/charge/triple_charge/ravager/Activate(atom/target_atom)
 	. = ..()
@@ -72,14 +72,14 @@
 
 	sparkle_path = /obj/effect/temp_visual/dir_setting/tailsweep/ravager
 
-	sound = 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_tail_swipe.ogg' //The defender's tail sound isn't changed because its big and heavy, this isn't
+	sound = 'modular_skyrat/modules/antagonists/xenomorph/xenos_skyrat_redo/sound/alien_tail_swipe.ogg' //The defender's tail sound isn't changed because its big and heavy, this isn't
 
 	impact_sound = 'modular_skyrat/master_files/sound/weapons/bloodyslice.ogg'
 	impact_damage = 40
 	impact_sharpness = SHARP_EDGED
 
 /obj/effect/temp_visual/dir_setting/tailsweep/ravager
-	icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
+	icon = 'modular_skyrat/modules/antagonists/xenomorph/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	icon_state = "slice_tail_anim"
 
 /datum/action/cooldown/alien/skyrat/literally_too_angry_to_die
@@ -98,7 +98,7 @@
 		owner.balloon_alert(owner, "already enduring")
 		return FALSE
 	owner.balloon_alert(owner, "endure began")
-	playsound(owner, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_roar1.ogg', 100, TRUE, 8, 0.9)
+	playsound(owner, 'modular_skyrat/modules/antagonists/xenomorph/xenos_skyrat_redo/sound/alien_roar1.ogg', 100, TRUE, 8, 0.9)
 	to_chat(owner, span_danger("We numb our ability to feel pain, allowing us to fight until the very last for the next [endure_duration/10] seconds."))
 	addtimer(CALLBACK(src, PROC_REF(endure_deactivate)), endure_duration)
 	owner.add_filter(RAVAGER_OUTLINE_EFFECT, 4, outline_filter(1, COLOR_RED_LIGHT))

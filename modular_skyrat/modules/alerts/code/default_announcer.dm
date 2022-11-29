@@ -38,6 +38,6 @@
 		ANNOUNCER_ERTYES = 'modular_skyrat/modules/alerts/sound/alerts/yesert.ogg',
 		ANNOUNCER_MUTANTS = 'modular_skyrat/modules/alerts/sound/alerts/hazdet.ogg',
 		ANNOUNCER_KLAXON = 'modular_skyrat/modules/black_mesa/sound/siren1_long.ogg',
-		ANNOUNCER_ICARUS = 'modular_skyrat/modules/assault_operatives/sound/icarus_alarm.ogg',
+		ANNOUNCER_ICARUS = 'modular_skyrat/modules/antagonists/assault_operative/sound/icarus_alarm.ogg',
 		ANNOUNCER_NRI_RAIDERS = 'modular_skyrat/modules/encounters/sounds/morse.ogg'
 		)

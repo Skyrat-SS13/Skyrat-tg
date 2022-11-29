@@ -1,7 +1,7 @@
 //ASH SURGERY
 /obj/item/cautery/ashwalker
 	name = "primitive cautery"
-	icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_tools.dmi'
+	icon = 'modular_skyrat/modules/antagonists/ashwalker/icons/ashwalker_tools.dmi'
 	icon_state = "cautery"
 
 	greyscale_colors = null
@@ -16,7 +16,7 @@
 
 /obj/item/surgicaldrill/ashwalker
 	name = "primitive surgical drill"
-	icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_tools.dmi'
+	icon = 'modular_skyrat/modules/antagonists/ashwalker/icons/ashwalker_tools.dmi'
 	icon_state = "surgical_drill"
 
 	greyscale_colors = null
@@ -31,7 +31,7 @@
 
 /obj/item/scalpel/ashwalker
 	name = "primitive scalpel"
-	icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_tools.dmi'
+	icon = 'modular_skyrat/modules/antagonists/ashwalker/icons/ashwalker_tools.dmi'
 	icon_state = "scalpel"
 
 	greyscale_colors = null
@@ -46,7 +46,7 @@
 
 /obj/item/circular_saw/ashwalker
 	name = "primitive circular saw"
-	icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_tools.dmi'
+	icon = 'modular_skyrat/modules/antagonists/ashwalker/icons/ashwalker_tools.dmi'
 	icon_state = "surgical_saw"
 
 	greyscale_colors = null
@@ -61,7 +61,7 @@
 
 /obj/item/retractor/ashwalker
 	name = "primitive retractor"
-	icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_tools.dmi'
+	icon = 'modular_skyrat/modules/antagonists/ashwalker/icons/ashwalker_tools.dmi'
 	icon_state = "retractors"
 
 	greyscale_colors = null
@@ -76,7 +76,7 @@
 
 /obj/item/hemostat/ashwalker
 	name = "primitive hemostat"
-	icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_tools.dmi'
+	icon = 'modular_skyrat/modules/antagonists/ashwalker/icons/ashwalker_tools.dmi'
 	icon_state = "hemostat"
 
 	greyscale_colors = null

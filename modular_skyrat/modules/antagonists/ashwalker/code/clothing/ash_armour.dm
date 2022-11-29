@@ -2,8 +2,8 @@
 /obj/item/clothing/head/ash_headdress
 	name = "ash headdress"
 	desc = "A headdress that shows the dominance of the walkers of ash."
-	icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_clothing.dmi'
-	worn_icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_clothing_mob.dmi'
+	icon = 'modular_skyrat/modules/antagonists/ashwalker/icons/ashwalker_clothing.dmi'
+	worn_icon = 'modular_skyrat/modules/antagonists/ashwalker/icons/ashwalker_clothing_mob.dmi'
 	icon_state = "headdress"
 	supports_variations_flags = NONE
 
@@ -32,8 +32,8 @@
 /obj/item/clothing/under/costume/gladiator/ash_walker/ash_robes
 	name = "ash robes"
 	desc = "A set of hand-made robes. The bones still seem to have some muscle still attached."
-	icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_clothing.dmi'
-	worn_icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_clothing_mob.dmi'
+	icon = 'modular_skyrat/modules/antagonists/ashwalker/icons/ashwalker_clothing.dmi'
+	worn_icon = 'modular_skyrat/modules/antagonists/ashwalker/icons/ashwalker_clothing_mob.dmi'
 	icon_state = "robes"
 
 	greyscale_colors = null
@@ -53,8 +53,8 @@
 /obj/item/clothing/suit/ash_plates
 	name = "ash combat plates"
 	desc = "A combination of bones and hides, strung together by watcher sinew."
-	icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_clothing.dmi'
-	worn_icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_clothing_mob.dmi'
+	icon = 'modular_skyrat/modules/antagonists/ashwalker/icons/ashwalker_clothing.dmi'
+	worn_icon = 'modular_skyrat/modules/antagonists/ashwalker/icons/ashwalker_clothing_mob.dmi'
 	icon_state = "combat_plates"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 

@@ -2,7 +2,7 @@
 	name = "railroad tracks"
 	singular_name = "railroad track"
 	desc = "A primitive form of transportation. Place on any floor to start building a railroad."
-	icon = 'modular_skyrat/modules/ashwalkers/icons/railroad.dmi'
+	icon = 'modular_skyrat/modules/antagonists/ashwalker/icons/railroad.dmi'
 	icon_state = "rail_item"
 	merge_type = /obj/item/stack/rail_track
 
@@ -25,7 +25,7 @@
 /obj/structure/railroad
 	name = "railroad track"
 	desc = "A primitive form of transportation. You may see some rail carts on it."
-	icon = 'modular_skyrat/modules/ashwalkers/icons/railroad.dmi'
+	icon = 'modular_skyrat/modules/antagonists/ashwalker/icons/railroad.dmi'
 	icon_state = "rail"
 	anchored = TRUE
 
@@ -62,7 +62,7 @@
 /obj/vehicle/ridden/rail_cart
 	name = "rail cart"
 	desc = "A wonderful form of locomotion. It will only ride while on tracks. It does have storage"
-	icon = 'modular_skyrat/modules/ashwalkers/icons/railroad.dmi'
+	icon = 'modular_skyrat/modules/antagonists/ashwalker/icons/railroad.dmi'
 	icon_state = "railcart"
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 	/// The mutable appearance used for the overlay over buckled mobs.

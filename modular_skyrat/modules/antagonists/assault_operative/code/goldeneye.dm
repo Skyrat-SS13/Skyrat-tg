@@ -75,7 +75,7 @@ SUBSYSTEM_DEF(goldeneye)
 /obj/item/goldeneye_key
 	name = "\improper GoldenEye authentication keycard"
 	desc = "A high profile authentication keycard to Nanotrasen's GoldenEye defence network. It seems indestructible."
-	icon = 'modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi'
+	icon = 'modular_skyrat/modules/antagonists/assault_operative/icons/goldeneye.dmi'
 	icon_state = "goldeneye_key"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	max_integrity = INFINITY
@@ -104,7 +104,7 @@ SUBSYSTEM_DEF(goldeneye)
 /obj/machinery/goldeneye_upload_terminal
 	name = "\improper GoldenEye Defnet Upload Terminal"
 	desc = "An ominous terminal with some ports and keypads, the screen is scrolling with illegible nonsense. It has a strange marking on the side, a red ring with a gold circle within."
-	icon = 'modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi'
+	icon = 'modular_skyrat/modules/antagonists/assault_operative/icons/goldeneye.dmi'
 	icon_state = "goldeneye_terminal"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	density = TRUE

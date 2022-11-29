@@ -4,7 +4,7 @@
 		to retrieve an inserted baton from the suit at will. Insert a baton \
 		by hitting the module, while it is removed from the suit, with the baton."
 	icon_state = "holster"
-	icon = 'modular_skyrat/modules/contractor/icons/modsuit_modules.dmi'
+	icon = 'modular_skyrat/modules/antagonists/contractor/icons/modsuit_modules.dmi'
 	module_type = MODULE_ACTIVE
 	complexity = 3
 	active_power_cost = DEFAULT_CHARGE_DRAIN * 0.3
@@ -54,7 +54,7 @@
 	desc = "A much more modern version of a springlock system. \
 	This is a module that uses magnets to speed up the deployment and retraction time of your MODsuit."
 	icon_state = "magnet"
-	icon = 'modular_skyrat/modules/contractor/icons/modsuit_modules.dmi'
+	icon = 'modular_skyrat/modules/antagonists/contractor/icons/modsuit_modules.dmi'
 
 /obj/item/mod/module/springlock/contractor/on_suit_activation() // This module is actually *not* a death trap
 	return
@@ -73,7 +73,7 @@
 			a target towards you at high speed, knocking them down and \
 			partially exhausting them."
 	icon_state = "hook"
-	icon = 'modular_skyrat/modules/contractor/icons/modsuit_modules.dmi'
+	icon = 'modular_skyrat/modules/antagonists/contractor/icons/modsuit_modules.dmi'
 	incompatible_modules = list(/obj/item/mod/module/scorpion_hook)
 	module_type = MODULE_ACTIVE
 	complexity = 3
