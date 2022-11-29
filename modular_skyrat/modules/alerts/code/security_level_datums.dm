@@ -30,6 +30,7 @@
 	lowering_to_configuration_key = /datum/config_entry/string/alert_violet_downto
 	elevating_to_configuration_key = /datum/config_entry/string/alert_violet_upto
 	sound = 'modular_skyrat/modules/alerts/sound/security_levels/violet.ogg'
+	shuttle_call_time_mod = 0.75
 
 /**
  * Orange
@@ -42,6 +43,7 @@
 	lowering_to_configuration_key = /datum/config_entry/string/alert_orange_downto
 	elevating_to_configuration_key = /datum/config_entry/string/alert_orange_upto
 	sound = 'modular_skyrat/modules/alerts/sound/security_levels/orange.ogg'
+	shuttle_call_time_mod = 0.75
 
 /**
  * Amber
@@ -55,6 +57,7 @@
 	lowering_to_configuration_key = /datum/config_entry/string/alert_amber_downto
 	elevating_to_configuration_key = /datum/config_entry/string/alert_amber_upto
 	sound = 'modular_skyrat/modules/alerts/sound/security_levels/amber.ogg'
+	shuttle_call_time_mod = 0.5
 
 
 /**
