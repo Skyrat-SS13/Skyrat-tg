@@ -87,7 +87,7 @@
 	can_suppress = TRUE
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_FULLY_AUTOMATIC)
 	burst_size = 1
-	fire_delay = 1
+	fire_delay = 0.8
 	pin = /obj/item/firing_pin/implant/pindicate
 	company_flag = COMPANY_REMOVED
 
@@ -145,7 +145,7 @@
 	desc = "A seven round magazine built for 12 GA, intended for use in the IGE-340 shotgun."
 	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/magazines.dmi'
 	icon_state = "ige_shotgun_mag"
-	ammo_type = /obj/item/ammo_casing/shotgun/buckshot
+	ammo_type = /obj/item/ammo_casing/shotgun
 	caliber = CALIBER_SHOTGUN
 	max_ammo = 7
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
