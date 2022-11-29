@@ -207,7 +207,7 @@
 	new /obj/item/ammo_box/revolver/revolution(src)
 	new /obj/item/ammo_box/revolver/revolution(src)
 	new /obj/item/ammo_box/revolver/revolution(src)
-	new /obj/item/ammo_box/advanced/b9mm(src)
+	new /obj/item/ammo_box/c9mm(src)
 
 /*
 *	PRIMARIES

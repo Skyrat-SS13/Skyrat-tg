@@ -81,23 +81,6 @@
 	build_path = /obj/item/ammo_casing/c10mm/rubber
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
 
-// Peacekeeper Rounds
-/datum/design/b9mm
-	name = "Ammo Box (9x19mm Peacekeeper FMJ)"
-	id = "b9mm"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 30000)
-	build_path = /obj/item/ammo_box/advanced/b9mm
-	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
-
-/datum/design/b9mm_rubber
-	name = "9x19mm Peacekeeper rubber bullet"
-	id = "b9mm_rubber"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 1000)
-	build_path = /obj/item/ammo_casing/b9mm/rubber
-	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
-
 /datum/design/b10mm
 	name = "Ammo Box (10mm Auto)"
 	id = "b10mm"

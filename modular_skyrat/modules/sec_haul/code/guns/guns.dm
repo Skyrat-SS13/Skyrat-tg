@@ -16,6 +16,7 @@
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	fire_delay = 1.90
 	company_flag = COMPANY_CANTALAN
+	projectile_damage_multiplier = 0.5
 
 /obj/item/gun/ballistic/automatic/pistol/g17/add_seclight_point()
 	return
@@ -25,21 +26,21 @@
 	desc = "A magazine for the GK-17 handgun, chambered for 9mm Peacekeeper ammo."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g17"
-	ammo_type = /obj/item/ammo_casing/b9mm
+	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MMPEACE
 	max_ammo = 17
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/g17/hp
-	ammo_type = /obj/item/ammo_casing/b9mm/hp
+	ammo_type = /obj/item/ammo_casing/c9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
 /obj/item/ammo_box/magazine/multi_sprite/g17/ihdf
-	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
+	ammo_type = /obj/item/ammo_casing/c9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
 /obj/item/ammo_box/magazine/multi_sprite/g17/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	ammo_type = /obj/item/ammo_casing/c9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/gun/ballistic/automatic/pistol/g18
@@ -60,6 +61,7 @@
 	mag_display = FALSE
 	mag_display_ammo = FALSE
 	company_flag = COMPANY_CANTALAN
+	projectile_damage_multiplier = 0.5
 
 /obj/item/gun/ballistic/automatic/pistol/g18/add_seclight_point()
 	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
@@ -69,21 +71,21 @@
 	desc = "A magazine for the GK-18 machine pistol, chambered for 9mm Peacekeeper."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g18"
-	ammo_type = /obj/item/ammo_casing/b9mm
+	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MMPEACE
 	max_ammo = 33
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/g18/hp
-	ammo_type = /obj/item/ammo_casing/b9mm/hp
+	ammo_type = /obj/item/ammo_casing/c9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
 /obj/item/ammo_box/magazine/multi_sprite/g18/ihdf
-	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
+	ammo_type = /obj/item/ammo_casing/c9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
 /obj/item/ammo_box/magazine/multi_sprite/g18/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	ammo_type = /obj/item/ammo_casing/c9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/gun/ballistic/automatic/pistol/g17/mesa
@@ -231,27 +233,28 @@
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/pistol_fire.ogg'
 	company_flag = COMPANY_ARMADYNE
+	projectile_damage_multiplier = 0.5
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
 	name = "\improper PDH-6B magazine"
 	desc = "A magazine for the PDG-6B law enforcement pistol, chambered for 9mm Peacekeeper ammo."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
-	ammo_type = /obj/item/ammo_casing/b9mm
+	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MMPEACE
 	max_ammo = 16
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/hp
-	ammo_type = /obj/item/ammo_casing/b9mm/hp
+	ammo_type = /obj/item/ammo_casing/c9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/ihdf
-	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
+	ammo_type = /obj/item/ammo_casing/c9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	ammo_type = /obj/item/ammo_casing/c9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
 /*
@@ -357,27 +360,28 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	company_flag = COMPANY_ARMADYNE
+	projectile_damage_multiplier = 0.5
 
 /obj/item/ammo_box/magazine/multi_sprite/mk58
 	name = "\improper MK-58 magazine"
 	desc = "A flimsy double-stack polymer magazine for the MK-58 handgun, chambered for 9mm Peacekeeper."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g17"
-	ammo_type = /obj/item/ammo_casing/b9mm
+	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MMPEACE
 	max_ammo = 12
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/mk58/hp
-	ammo_type = /obj/item/ammo_casing/b9mm/hp
+	ammo_type = /obj/item/ammo_casing/c9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
 /obj/item/ammo_box/magazine/multi_sprite/mk58/ihdf
-	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
+	ammo_type = /obj/item/ammo_casing/c9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
 /obj/item/ammo_box/magazine/multi_sprite/mk58/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	ammo_type = /obj/item/ammo_casing/c9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
 /*
@@ -397,6 +401,7 @@
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/firefly
 	can_suppress = FALSE
 	company_flag = COMPANY_ARMADYNE
+	projectile_damage_multiplier = 0.5
 
 /obj/item/gun/ballistic/automatic/pistol/firefly/add_seclight_point()
 	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
@@ -407,21 +412,21 @@
 	desc = "A twelve-round magazine for the P-92 pistol, chambered in 9mm Peacekeeper."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
-	ammo_type = /obj/item/ammo_casing/b9mm
+	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MMPEACE
 	max_ammo = 12
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/firefly/hp
-	ammo_type = /obj/item/ammo_casing/b9mm/hp
+	ammo_type = /obj/item/ammo_casing/c9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
 /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	ammo_type = /obj/item/ammo_casing/c9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/firefly/ihdf
-	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
+	ammo_type = /obj/item/ammo_casing/c9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 /*
 *	CROON 40x32
@@ -597,7 +602,7 @@
 
 /obj/item/gun/ballistic/revolver/revolution
 	name = "\improper Revolution-8 revolver"
-	desc = "The Zeta 6's distant cousin, sporting an eight-round competition grade cylinder chambered for 9mm Peacekeeper."
+	desc = "The Zeta 6's distant cousin, sporting an eight-round competition grade cylinder chambered for 9x25mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/revolution.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -607,11 +612,12 @@
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/revolver_fire.ogg'
 	fire_delay = 1.90
 	company_flag = COMPANY_BOLT
+	projectile_damage_multiplier = 0.5
 
 /obj/item/ammo_box/magazine/internal/cylinder/revolution
 	name = "\improper Revolution-8 cylinder"
 	desc = "If you see this, you should call a Bluespace Technician. Unless you're that Bluespace Technician."
-	ammo_type = /obj/item/ammo_casing/b9mm
+	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MMPEACE
 	max_ammo = 8
 
@@ -619,7 +625,7 @@
 	name = "\improper Revolution-8 speedloader"
 	desc = "A speedloader for the Revolution-8 revolver, chambered in 9mm Peacekeeper."
 	icon_state = "speedloader"
-	ammo_type = /obj/item/ammo_casing/b9mm
+	ammo_type = /obj/item/ammo_casing/c9mm
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	caliber = CALIBER_9MMPEACE
@@ -903,6 +909,7 @@
 	spread = 10
 	fire_sound = 'sound/weapons/gun/smg/shot_suppressed.ogg'
 	company_flag = COMPANY_OLDARMS
+	projectile_damage_multiplier = 0.5
 
 /obj/item/gun/ballistic/automatic/vintorez/Initialize(mapload)
 	. = ..()
@@ -913,21 +920,21 @@
 	desc = "A twenty-round magazine for the VKC marksman rifle, chambered in 9mm Peacekeeper."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "norwind"
-	ammo_type = /obj/item/ammo_casing/b9mm
+	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MMPEACE
 	max_ammo = 20
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/vintorez/hp
-	ammo_type = /obj/item/ammo_casing/b9mm/hp
+	ammo_type = /obj/item/ammo_casing/c9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
 /obj/item/ammo_box/magazine/multi_sprite/vintorez/ihdf
-	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
+	ammo_type = /obj/item/ammo_casing/c9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
 /obj/item/ammo_box/magazine/multi_sprite/vintorez/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	ammo_type = /obj/item/ammo_casing/c9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
 /*
@@ -956,6 +963,7 @@
 	mag_display_ammo = TRUE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/smg_fire.ogg'
 	company_flag = COMPANY_BOLT
+	projectile_damage_multiplier = 0.5
 
 /obj/item/gun/ballistic/automatic/pcr/add_seclight_point()
 	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
@@ -965,21 +973,21 @@
 	desc = "A thirty-two round magazine for the PCR-9 submachine gun, chambered for 9mm Peacekeeper."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pcr"
-	ammo_type = /obj/item/ammo_casing/b9mm
+	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MMPEACE
 	max_ammo = 32
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/pcr/hp
-	ammo_type = /obj/item/ammo_casing/b9mm/hp
+	ammo_type = /obj/item/ammo_casing/c9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
 /obj/item/ammo_box/magazine/multi_sprite/pcr/ihdf
-	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
+	ammo_type = /obj/item/ammo_casing/c9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
 /obj/item/ammo_box/magazine/multi_sprite/pcr/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	ammo_type = /obj/item/ammo_casing/c9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/gun/ballistic/automatic/pitbull
