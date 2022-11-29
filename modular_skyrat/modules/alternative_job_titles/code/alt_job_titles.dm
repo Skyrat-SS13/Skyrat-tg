@@ -46,7 +46,7 @@
 	alt_titles = list("Chaplain", "Priest", "Preacher", "Reverend", "Oracle", "Pontifex", "Magister", "High Priest", "Imam", "Rabbi", "Monk") //i would add OT III but honestly, thats way too specific
 
 /datum/job/chemist
-	alt_titles = list("Chemist", "Pharmacist", "Pharmacologist")
+	alt_titles = list("Chemist", "Pharmacist", "Pharmacologist", "Trainee Pharmacist")
 
 /datum/job/chief_engineer
 	alt_titles = list("Chief Engineer", "Engineering Foreman", "Head of Engineering")
@@ -90,7 +90,7 @@
 	alt_titles = list("Janitor", "Custodian", "Custodial Technician", "Sanitation Technician", "Maintenance Technician", "Concierge", "Maid")
 
 /datum/job/lawyer
-	alt_titles = list("Lawyer", "Internal Affairs Agent", "Human Resources Agent", "Defence Attorney", "Public Defender", "Barrister", "Prosecutor")
+	alt_titles = list("Lawyer", "Internal Affairs Agent", "Human Resources Agent", "Defence Attorney", "Public Defender", "Barrister", "Prosecutor", "Legal Clerk")
 
 /datum/job/mime
 	alt_titles = list("Mime", "Pantomimist")
@@ -117,7 +117,7 @@
 	alt_titles = list("Research Director", "Silicon Administrator", "Lead Researcher", "Biorobotics Director", "Research Supervisor", "Chief Science Officer")
 
 /datum/job/roboticist
-	alt_titles = list("Roboticist", "Biomechanical Engineer", "Mechatronic Engineer")
+	alt_titles = list("Roboticist", "Biomechanical Engineer", "Mechatronic Engineer", "Apprentice Roboticist")
 
 /datum/job/science_guard //See orderly
 
@@ -133,6 +133,8 @@
 		"Theoretical Physicist",
 		"Ordnance Technician",
 		"Xenoarchaeologist",
+		"Research Assistant",
+		"Graduate Student",
 	)
 
 /datum/job/security_medic
@@ -145,10 +147,10 @@
 	alt_titles = list("Shaft Miner", "Excavator", "Spelunker", "Drill Technician", "Prospector")
 
 /datum/job/station_engineer
-	alt_titles = list("Station Engineer", "Emergency Damage Control Technician", "Electrician", "Engine Technician", "EVA Technician", "Mechanic")
+	alt_titles = list("Station Engineer", "Emergency Damage Control Technician", "Electrician", "Engine Technician", "EVA Technician", "Mechanic", "Apprentice Engineer", "Engineering Trainee")
 
 /datum/job/virologist
-	alt_titles = list("Virologist", "Pathologist")
+	alt_titles = list("Virologist", "Pathologist", "Junior Pathologist")
 
 /datum/job/warden
 	alt_titles = list("Warden", "Brig Sergeant", "Dispatch Officer", "Brig Governor", "Jailer")
