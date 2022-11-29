@@ -20,7 +20,7 @@
 	var/obj/item/gun = parent
 	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(wake_up))
 	RegisterSignal(parent, COMSIG_GUN_AUTOFIRE_SELECTED, PROC_REF(wake_up))
-	RegisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED, COMSIG_GUN_AUTOFIRE_DESELECTED), PROC_REF(autofire_off))
+	RegisterSignals(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED, COMSIG_GUN_AUTOFIRE_DESELECTED), PROC_REF(autofire_off))
 	RegisterSignal(parent, COMSIG_GUN_JAMMED, PROC_REF(stop_autofiring))
 	if(_autofire_shot_delay)
 		autofire_shot_delay = _autofire_shot_delay
