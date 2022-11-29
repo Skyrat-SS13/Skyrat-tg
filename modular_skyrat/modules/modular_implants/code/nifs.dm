@@ -36,7 +36,7 @@
 	///What is the maximum power level of the NIF?
 	var/max_power = 1000
 	///How much power is currently inside of the NIF?
-	var/power_level
+	var/power_level = 0
 	///How much power is the NIF currently using? Negative usage will result in power being gained.
 	var/power_usage = 0
 
