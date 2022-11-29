@@ -470,7 +470,6 @@
 		/mob/living/simple_animal/hostile/netherworld/mine_mob,
 		/mob/living/simple_animal/hostile/ooze/grapes/mine_mob,
 		/mob/living/simple_animal/hostile/plantmutant,
-		/mob/living/simple_animal/hostile/retaliate/goose/territorial,
 		/mob/living/simple_animal/hostile/retaliate/tegu,
 		/mob/living/simple_animal/hostile/retaliate/tegu/gus,
 		/mob/living/simple_animal/hostile/scorpion,
