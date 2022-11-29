@@ -75,6 +75,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
+	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/suit.dmi'
 	icon_state = "nri_soldier"
 	armor = list(MELEE = 25, BULLET = 25, LASER = 25, ENERGY = 25, BOMB = 25, BIO = 20, FIRE = 20, ACID = 20, WOUND = 10)
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDESEXTOY|HIDETAIL
@@ -133,11 +134,7 @@
 	suit_name = "VOSKHOD"
 	first_use = FALSE //No nice song.
 
-/obj/item/clothing/suit/space/hev_suit/nri/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
-	if(is_species(M, /datum/species/teshari))
-		to_chat(M, span_warning("[src] is far too big for you!"))
-		return FALSE
-	return ..()
+
 
 /datum/action/item_action/hev_toggle/nri
 	name = "Toggle VOSKHOD Suit"
