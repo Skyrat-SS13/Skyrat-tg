@@ -912,7 +912,11 @@
 	prereq_ids = list("base")
 	design_ids = list(
 		"paicard",
+<<<<<<< HEAD
 		"borg_upgrade_snacks", // SKYRAT ADDITION - BETTER BORG SNACK DISPENSORS
+=======
+		"mecha_camera"
+>>>>>>> 60b47e2bd59 (Mech camera (#71392))
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
