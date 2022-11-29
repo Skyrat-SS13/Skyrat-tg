@@ -18,18 +18,18 @@
 	desc = "An additional 8-round slug magazine for use with the Bulldog shotgun. \
 			Who cares about armor when you have flechettes."
 	item = /obj/item/ammo_box/magazine/m12g/flechette
-	purchasable_from = ALL
+	purchasable_from = UPLINK_NUKE_OPS
 
 /datum/uplink_item/ammo/shotgun/rip_traitor
 	name = "12g RIP Drum"
 	desc = "An additional 8-round slug magazine for use with the Bulldog shotgun. \
 			Massive damage potential on unarmored targets."
 	item = /obj/item/ammo_box/magazine/m12g/rip
-	purchasable_from = ALL
+	purchasable_from = UPLINK_NUKE_OPS
 
 /datum/uplink_item/ammo/shotgun/pt20_traitor
 	name = "12g PT-20 Drum"
 	desc = "An additional 8-round slug magazine for use with the Bulldog shotgun. \
 			Guaranteed to rip open a new hole in your targets."
 	item = /obj/item/ammo_box/magazine/m12g/pt20
-	purchasable_from = ALL
+	purchasable_from = UPLINK_NUKE_OPS
