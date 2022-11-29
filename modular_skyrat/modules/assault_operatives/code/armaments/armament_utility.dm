@@ -19,11 +19,6 @@
 	item_type = /obj/item/mod/control/pre_equipped/infiltrator
 	cost = 4
 
-/datum/armament_entry/assault_operatives/utility/gun_maint
-	item_type = /obj/item/gun_maintenance_supplies
-	cost = 1
-	max_purchase = 5
-
 /datum/armament_entry/assault_operatives/utility/survival_pack
 	item_type = /obj/item/storage/box/nri_survival_pack
 	cost = 1
