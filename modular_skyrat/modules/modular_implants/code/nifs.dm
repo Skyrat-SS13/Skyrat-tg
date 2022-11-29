@@ -27,7 +27,7 @@
 	var/calibrating = FALSE
 	///How long does each step in the calibration process take in total?
 	var/calibration_time = 3 MINUTES
-	///How far through the calibration process is the NIF? Do not touch this outside of preform_calibration(), if you can at all help it.
+	///How far through the calibration process is the NIF? Do not touch this outside of perform_calibration(), if you can at all help it.
 	var/calibration_duration
 	///Determines the likelyhood of a side effect occuring each process cycle: 1 / side_effect_risk
 	var/side_effect_risk = 50
@@ -144,7 +144,7 @@
 		return FALSE
 
 	if(calibrating)
-		preform_calibration()
+		perform_calibration()
 
 	if(IS_IN_STASIS(linked_mob))
 		return
@@ -182,7 +182,7 @@
 	power_level -= power_to_use
 	return TRUE
 
-///Toggles nutrition drain as a power source on NIFs on/off. Bypass - Ignores the need to preform the nutirition_check() proc.
+///Toggles nutrition drain as a power source on NIFs on/off. Bypass - Ignores the need to perform the nutirition_check() proc.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/toggle_nutrition_drain(bypass = FALSE)
 	if(!bypass && !nutrition_check())
 		return FALSE
@@ -200,7 +200,7 @@
 	nutrition_drain = TRUE
 
 /// Checks to see if the mob has a nutrition that can be drain from
-/obj/item/organ/internal/cyberimp/brain/nif/proc/nutrition_check() //This is a seperate proc so that TGUI can preform this check on the menu
+/obj/item/organ/internal/cyberimp/brain/nif/proc/nutrition_check() //This is a seperate proc so that TGUI can perform this check on the menu
 	if(!linked_mob || !linked_mob.nutrition)
 		return FALSE
 
@@ -212,7 +212,7 @@
 
 	return linked_mob.nutrition >= minimum_nutrition
 
-///Toggles Blood Drain. Bypasss -  Ignores the need to preform the blood_check proc.
+///Toggles Blood Drain. Bypasss -  Ignores the need to perform the blood_check proc.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/toggle_blood_drain(bypass = FALSE)
 	if(!bypass && !blood_check())
 		return
@@ -229,7 +229,7 @@
 
 	to_chat(linked_mob, span_notice("Blood draining is now enabled."))
 
-///Can we take blood from the mob?
+///Checks whether or not we can take blood from the target mob?
 /obj/item/organ/internal/cyberimp/brain/nif/proc/blood_check()
 	if(!linked_mob || !linked_mob.blood_volume || linked_mob.blood_volume <= minimum_blood_level)
 		return FALSE
@@ -237,8 +237,8 @@
 	return TRUE
 
 
-///Preforms calibration, this is run the first time a NIF is installed in someone.
-/obj/item/organ/internal/cyberimp/brain/nif/proc/preform_calibration()
+///Performs calibration on the parent NIF, this is run the first time a NIF is installed in someone.
+/obj/item/organ/internal/cyberimp/brain/nif/proc/perform_calibration()
 	if(linked_mob.stat == DEAD)
 		return FALSE
 
@@ -266,7 +266,7 @@
 			calibrating = FALSE
 			is_calibrated = TRUE
 
-///This is run whenever a nifsoft is installed
+///Installs a NIFSoft onto the parent NIF
 /obj/item/organ/internal/cyberimp/brain/nif/proc/install_nifsoft(datum/nifsoft/loaded_nifsoft)
 	if(broken) //NIFSofts can't be installed to a broken NIF
 		return FALSE
@@ -339,7 +339,7 @@
 	linked_mob.playsound_local(linked_mob, good_sound, 60, FALSE)
 
 
-///Fixes the NIF if it is broken. This doesn't not repair durability
+///Fixes the parent NIF if it is broken. This affects the broken Variable, not durability.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/fix_nif()
 	if(!broken)
 		return FALSE
@@ -448,7 +448,7 @@
 
 /datum/action/item_action/nif/open_menu
 	name = "Open NIF Menu"
-	button_icon_state = "user" // This is a placeholder
+	button_icon_state = "user"
 
 /datum/action/item_action/nif/open_menu/Trigger(trigger_flags)
 	. = ..()
@@ -474,7 +474,7 @@
 /mob/living/carbon/human
 	///What text is shown upon examining a human with a NIF?
 	var/nif_examine_text
-	//What, if any NIF is currently installed inside of the mob?
+	///What, if any NIF is currently installed inside of the mob?
 	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif
 
 /mob/living/carbon/human/examine(mob/user)
@@ -494,7 +494,7 @@
 
 	addtimer(CALLBACK(installed_nif, /obj/item/organ/internal/cyberimp/brain/nif.proc/make_vulnerable), 20 MINUTES) //Players should have a decent grace period on this.
 
-///Looks through the human's NIFSoft to find a nifsoft.
+///Attemps to see if the user is a NIF user, and if so, do they have the nifsoft_to_find installed on their NIF?
 /mob/living/carbon/human/proc/find_nifsoft(nifsoft_to_find)
 	var/list/nifsoft_list = installed_nif?.loaded_nifsofts
 	if(!nifsoft_list)
@@ -509,7 +509,6 @@
 
 	InsertAll("nif", 'modular_skyrat/modules/modular_implants/icons/chat.dmi')
 
-//NIF autosurgeon. This is just here so that I can debug faster.
 /obj/item/autosurgeon/organ/nif
 	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif/standard
 
