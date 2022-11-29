@@ -75,7 +75,6 @@
 	if(!nif_path)
 		return
 
-	/obj/item/organ/internal/cyberimp/brain/nif
 	var/obj/item/organ/internal/cyberimp/brain/nif/new_nif = new nif_path
 	new_nif.Insert(src)
 
