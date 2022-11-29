@@ -200,6 +200,7 @@
 				qdel(dropped)
 	qdel(owner)
 
+<<<<<<< HEAD
 /obj/item/organ/internal/tongue/fly
 	name = "proboscis"
 	desc = "A freakish looking meat tube that apparently can take in liquids."
@@ -249,6 +250,8 @@
 	. = ..()
 	languages_possible = languages_possible_fly
 
+=======
+>>>>>>> 83f475aa7ec (Adds the DNA Infuser, a genetics machine you feed corpses to infuse their DNA with yours! What could go wrong?! (#71351))
 /obj/item/organ/internal/tongue/abductor
 	name = "superlingual matrix"
 	desc = "A mysterious structure that allows for instant communication between users. Pretty impressive until you need to eat something."
