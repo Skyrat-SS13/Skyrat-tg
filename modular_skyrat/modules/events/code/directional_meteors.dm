@@ -10,15 +10,16 @@
 /datum/round_event/meteor_wave
 	/// Which cardinal direction the meteors will spawn on
 	var/direction
+	/// Cardinal direction translated into Nautical direction, used in announcements and selected on setup()
+	var/directionstring
 
- //TG doesn't have a meteor_wave/setup() but all round_events call it before launching. So we can have fun with it here!
+//TG doesn't have a meteor_wave/setup() but all round_events call it before launching. So we can have fun with it here!
+//setup() also happens BEFORE new() which means we can set up directional stuff here and have it carry over to the event still!
 /datum/round_event/meteor_wave/setup()
 	announce_when = 1
-	start_when = rand(60, 90) //TG's always has a set number - it gives the alert, then happens after SIX SECONDS. Lame! We'll give up to a minute and a half to prep.
+	start_when = rand(60, 90) //TG's only gives SIX SECONDS between alert and impact. Lame! We'll give around two minutes - start_when * SSEvents.wait (20 deciseconds (2 sec))
 	end_when = start_when + 60 //Meteors will hit for a full minute.
-
-/datum/round_event/meteor_wave/announce(fake)
-	var/directionstring
+	direction = pick(GLOB.cardinals)
 	switch(direction)
 		if(NORTH)
 			directionstring = "Fore"
@@ -28,4 +29,11 @@
 			directionstring = "Starboard"
 		if(WEST)
 			directionstring = "Port"
+
+/datum/round_event/meteor_wave/start()
+	..()
+	priority_announce("Meteor collision imminent on station's [directionstring] side. All crew, brace for impact.", "Meteor Alert", "meteors") //Here's hoping they were prepared by now!
+	return
+
+/datum/round_event/meteor_wave/announce(fake)
 	priority_announce("Meteors have been detected on collision course with the station, headed towards its [directionstring] side. Estimated time until impact: [round((start_when * SSevents.wait) / 10, 0.1)] seconds.", "Meteor Alert", "meteors")

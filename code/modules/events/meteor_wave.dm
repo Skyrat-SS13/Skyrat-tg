@@ -28,10 +28,6 @@
 			"normal" = 50,
 			"threatening" = 40,
 			"catastrophic" = 10))
-	//SKYRAT EDIT - DIRECTIONAL METEORS - START
-	if(!direction)
-		direction = pick(GLOB.cardinals)
-	//SKYRAT EDIT - DIRECTIONAL METEORS - END
 	switch(wave_name)
 		if("normal")
 			wave_type = GLOB.meteors_normal
