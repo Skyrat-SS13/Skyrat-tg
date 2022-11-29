@@ -6,7 +6,7 @@
 
 /obj/item/gun/ballistic/automatic/cmg
 	name = "\improper NT CMG-2 PDW"
-	desc = "A bullpup, two-round burst PDW chambered in 9mm Peacekeeper, developed by Nanotrasen R&D and based on a licensed Scarborough Arms design. It features a folding stock and comes pre-attached with a dot sight."
+	desc = "A bullpup, two-round burst PDW chambered in 9x25mm, developed by Nanotrasen R&D and based on a licensed Scarborough Arms design. It features a folding stock and comes pre-attached with a dot sight."
 	icon_state = "cmg1"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	inhand_icon_state = "c20r"
@@ -30,7 +30,7 @@
 		overlay_y = 10)
 
 /obj/item/ammo_box/magazine/multi_sprite/cmg
-	name = "9mm Peacekeeper PDW magazine"
+	name = "9x25mm PDW magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g11"
 	ammo_type = /obj/item/ammo_casing/c9mm/rubber

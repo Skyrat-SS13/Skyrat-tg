@@ -183,7 +183,7 @@
 */
 
 /obj/item/storage/box/gunset/zeta
-	name = "10mm Magnum revolver supply box"
+	name = "10mm Auto revolver supply box"
 	desc = "Ideally contains a slow-firing revolver that packs a punch."
 
 /obj/item/storage/box/gunset/zeta/PopulateContents()

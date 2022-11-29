@@ -59,8 +59,7 @@
 	weak_against_armour = TRUE
 
 /*
-*	9mm
-*	IHDF | RUBBER
+*	9x25mm Mk.12
 */
 /obj/item/ammo_casing/c9mm/ihdf
 	name = "9x25mm Mk.12 IHDF casing"
@@ -73,7 +72,7 @@
 	name = "9x25mm IHDF bullet"
 	icon_state = "ihdf"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/projectiles.dmi'
-	damage = 30 // Embeds which causes more stamina damage over time
+	damage = 30
 	damage_type = STAMINA
 	embedding = list(embed_chance=0, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 
@@ -89,61 +88,6 @@
 	name = "9x25mm rubber bullet"
 	icon_state = "pellet"
 	damage = 5
-	stamina = 40 // Equivalent to a disabler
-	ricochets_max = 6
-	ricochet_incidence_leeway = 0
-	ricochet_chance = 130
-	ricochet_decay_damage = 0.8
-	shrapnel_type = null
-	sharpness = NONE
-	embedding = null
-
-/*
-*	10x25mm
-*	Auto | JHP | IHDF | RUBBER
-*/
-
-/obj/item/ammo_casing/b10mm
-	name = "10mm auto casing"
-	desc = "A 10mm Auto casing."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
-	icon_state = "sl-casing"
-	caliber = CALIBER_10MMAUTO
-	projectile_type = /obj/projectile/bullet/b10mm
-
-/obj/projectile/bullet/b10mm
-	name = "10mm auto bullet"
-	damage = 27
-	speed = 1
-	wound_bonus = 5
-
-/obj/item/ammo_casing/b10mm/hp
-	name = "10mm auto JHP casing"
-	desc = "A 10mm auto JHP bullet casing."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
-	icon_state = "sh-casing"
-	caliber = CALIBER_10MMAUTO
-	projectile_type = /obj/projectile/bullet/b10mm/hp
-
-/obj/projectile/bullet/b10mm/hp
-	name = "10mm auto JHP bullet"
-	damage = 30
-	wound_bonus = 35
-	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
-	weak_against_armour = TRUE
-
-/obj/item/ammo_casing/b10mm/rubber
-	name = "10mm auto rubber bullet casing"
-	desc = "A 10mm rubber bullet casing."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
-	icon_state = "sr-casing"
-	caliber = CALIBER_10MMAUTO
-	projectile_type = /obj/projectile/bullet/b10mm/rubber
-	harmful = FALSE
-
-/obj/projectile/bullet/b10mm/rubber
-	name = "10mm Auto rubber bullet"
-	damage = 5
 	stamina = 25
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
@@ -153,18 +97,43 @@
 	sharpness = NONE
 	embedding = null
 
-/obj/item/ammo_casing/b10mm/ihdf
-	name = "10mm auto IHDF bullet casing"
+/*
+*	10mm Auto
+*/
+
+/obj/item/ammo_casing/c10mm/rubber
+	name = "10mm Auto rubber bullet casing"
+	desc = "A 10mm rubber bullet casing."
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
+	icon_state = "sr-casing"
+	projectile_type = /obj/projectile/bullet/c10mm/rubber
+	harmful = FALSE
+
+/obj/projectile/bullet/c10mm/rubber
+	name = "10mm Auto rubber bullet"
+	damage = 10
+	stamina = 35
+	ricochets_max = 6
+	ricochet_incidence_leeway = 0
+	ricochet_chance = 130
+	ricochet_decay_damage = 0.8
+	shrapnel_type = null
+	sharpness = NONE
+	embedding = null
+
+/obj/item/ammo_casing/c10mm/ihdf
+	name = "10mm Auto IHDF bullet casing"
 	desc = "A 10mm intelligent high-impact dispersal foam bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "si-casing"
-	caliber = CALIBER_10MMAUTO
-	projectile_type = /obj/projectile/bullet/b10mm/ihdf
+	projectile_type = /obj/projectile/bullet/c10mm/ihdf
 	harmful = FALSE
 
-/obj/projectile/bullet/b10mm/ihdf
-	name = "10mm auto ihdf bullet"
-	damage = 30
+/obj/projectile/bullet/c10mm/ihdf
+	name = "10mm Auto ihdf bullet"
+	icon_state = "ihdf"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/projectiles.dmi'
+	damage = 40
 	damage_type = STAMINA
 	embedding = list(embed_chance=0, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 
@@ -198,7 +167,6 @@
 
 /obj/projectile/bullet/b12mm/rubber
 	name = "12.7x30mm beanbag slug"
-	icon_state = "bullet_r"
 	damage = 10
 	stamina = 35
 	ricochets_max = 6
@@ -220,7 +188,6 @@
 
 /obj/projectile/bullet/b12mm/hp
 	name = "12mm hollowpoint bullet"
-	icon_state = "bullet_h"
 	damage = 35
 	wound_bonus = 40
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
@@ -256,8 +223,7 @@
 
 /obj/projectile/bullet/smartgun
 	name = "smartgun rail"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/projectiles.dmi'
-	icon_state = "smartgun"
+	icon_state = "gaussphase"
 	embedding = list(embed_chance=100, fall_chance=2, jostle_chance=0, ignore_throwspeed_threshold=TRUE, pain_stam_pct=20, pain_mult=4, rip_time=40)
 	damage = 10
 	stamina = 70
@@ -294,7 +260,6 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"
 	caliber = CALIBER_473MM
-	firing_effect_type = /obj/effect/temp_visual/dir_setting/firing_effect
 	projectile_type = /obj/projectile/bullet/b473
 
 /obj/projectile/bullet/b473
@@ -312,7 +277,6 @@
 
 /obj/projectile/bullet/b473/hp
 	name = "4.73x33mm JHP bullet"
-	icon_state = "bullet_h"
 	damage = 20
 	wound_bonus = 30
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
@@ -329,7 +293,6 @@
 
 /obj/projectile/bullet/b473/rubber
 	name = "4.73x33mm rubber bullet"
-	icon_state = "bullet_r"
 	damage = 5
 	stamina = 20
 	ricochets_max = 6
@@ -351,8 +314,8 @@
 
 /obj/projectile/bullet/b473/ihdf
 	name = "4.73x33mm ihdf bullet"
-	icon_state = "bullet_i"
+	icon_state = "ihdf"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/projectiles.dmi'
 	damage = 25
 	damage_type = STAMINA
 	embedding = list(embed_chance=0, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
-

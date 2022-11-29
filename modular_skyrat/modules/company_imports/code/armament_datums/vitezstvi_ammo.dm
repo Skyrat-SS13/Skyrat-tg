@@ -54,13 +54,13 @@
 	item_type = /obj/item/ammo_box/c9mm/rubber
 
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/auto10mm_lethal
-	item_type = /obj/item/ammo_box/advanced/b10mm
+	item_type = /obj/item/ammo_box/advanced/c10mm
 
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/auto10mm_hp
-	item_type = /obj/item/ammo_box/advanced/b10mm/hp
+	item_type = /obj/item/ammo_box/advanced/c10mm/hp
 
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/auto10mm_rubber
-	item_type = /obj/item/ammo_box/advanced/b10mm/rubber
+	item_type = /obj/item/ammo_box/advanced/c10mm/rubber
 
 /datum/armament_entry/company_import/vitezstvi/ammo_boxes/sabel_lethal
 	item_type = /obj/item/ammo_box/c56mm
