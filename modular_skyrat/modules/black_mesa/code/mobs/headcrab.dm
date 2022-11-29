@@ -99,7 +99,7 @@
 	dodging = FALSE
 	retreat_distance = 0
 	minimum_distance = 0
-	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
+	AddElement(/datum/element/wall_smasher, strength_flag = ENVIRONMENT_SMASH_STRUCTURES)
 	movement_type = GROUND
 	icon_state = ""
 	zombified_human.hairstyle = null

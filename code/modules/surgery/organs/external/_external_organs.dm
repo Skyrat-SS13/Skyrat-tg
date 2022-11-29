@@ -366,10 +366,13 @@
 	set_sprite("Burnt Off")
 
 ///heal our antennae back up!!
-/obj/item/organ/external/antennae/proc/heal_antennae()
+/obj/item/organ/external/antennae/proc/heal_antennae(datum/source, heal_flags)
 	SIGNAL_HANDLER
 
-	if(burnt)
+	if(!burnt)
+		return
+
+	if(heal_flags & (HEAL_LIMBS|HEAL_ORGANS))
 		burnt = FALSE
 		set_sprite(original_sprite)
 
