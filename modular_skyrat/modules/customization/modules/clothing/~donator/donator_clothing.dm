@@ -1347,7 +1347,7 @@
 
 // Donation reward for Sigmar Alkahest
 /obj/item/clothing/head/hooded/sigmarcoat
-	name = "hood"
+	name = "black raincoat hood"
 	desc = "Certainly makes you look more ominous."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
