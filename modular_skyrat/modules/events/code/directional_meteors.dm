@@ -28,4 +28,4 @@
 			directionstring = "Starboard"
 		if(WEST)
 			directionstring = "Port"
-	priority_announce("Meteors have been detected on collision course with the station, headed towards its [directionstring]. Estimated time until impact: [round((start_when * SSevents.wait) / 10, 0.1)] seconds.", "Meteor Alert", "meteors")
+	priority_announce("Meteors have been detected on collision course with the station, headed towards its [directionstring] side. Estimated time until impact: [round((start_when * SSevents.wait) / 10, 0.1)] seconds.", "Meteor Alert", "meteors")
