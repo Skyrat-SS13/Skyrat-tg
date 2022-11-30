@@ -22,11 +22,12 @@
 		/obj/item/reagent_containers/blacktar = 12,
 		/obj/item/storage/pill_bottle/stimulant = 9, //ephedrine and coffee. Can actually change whether someone gets out of a runaway situation
 		/obj/item/clothing/mask/cigarette/pipe/crackpipe = 15,
-		/obj/item/toy/cards/deck/syndicate = 10, //1tc, not balance breaking, small but premium comodity
+		/obj/item/toy/cards/deck/syndicate = 10, //1tc, not balance breaking, small but premium commodity
 		/obj/item/reagent_containers/cup/bottle/morphine = 8,
 		/obj/item/reagent_containers/syringe/contraband/methamphetamine = 12,
 		/obj/item/clothing/glasses/sunglasses = 5, //can already be achieved in an arguably better form with just some hacking
-		)
+	)
+
 	for(var/i in 1 to 3)
 		var/contraband_type = pick_weight(contraband_list)
 		contraband_list -= contraband_type
@@ -35,4 +36,3 @@
 /obj/item/storage/backpack/satchel/flat/with_tools/PopulateContents()
 	new /obj/item/stack/tile/iron/base(src)
 	new /obj/item/crowbar(src)
-	return
