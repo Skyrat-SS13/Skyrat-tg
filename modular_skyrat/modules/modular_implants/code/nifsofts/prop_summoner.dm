@@ -30,10 +30,7 @@
 	)
 
 /datum/nifsoft/summoner/activate()
-	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif
-
-	if(!activation_check(installed_nif))
-		return FALSE
+	. = ..()
 
 	var/list/summon_choices = list()
 	for(var/obj/item/summon_item as anything in summonable_items)
@@ -43,6 +40,7 @@
 
 	var/obj/item/choice = show_radial_menu(linked_mob, linked_mob, summon_choices, radius = 42, custom_check = CALLBACK(src, .proc/check_menu, linked_mob))
 	if(!choice)
+		refund_activation_cost()
 		return FALSE
 
 	var/obj/item/new_item = new choice
@@ -59,9 +57,9 @@
 	if(!linked_mob.put_in_hands(new_item))
 		to_chat(linked_mob, span_warning("The [new_item] fails to materialize in your hands!"))
 		qdel(new_item)
+		refund_activation_cost()
 		return FALSE
 
-	return ..()
 
 /datum/nifsoft/summoner/proc/check_menu(mob/living/carbon/human/user)
 	if(!istype(user) || !user.installed_nif)

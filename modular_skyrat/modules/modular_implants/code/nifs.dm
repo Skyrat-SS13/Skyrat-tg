@@ -174,12 +174,20 @@
 	QDEL_LIST(loaded_nifsofts)
 	return ..()
 
-/// Subtracts from the power level of the NIF once, this is good for anything that is single use.
+/// Subtracts from the power level of the NIF once
 /obj/item/organ/internal/cyberimp/brain/nif/proc/use_power(power_to_use)
 	if(power_level < power_to_use)
 		return FALSE
 
 	power_level -= power_to_use
+	return TRUE
+
+/// Adds power to a NIF once.
+/obj/item/organ/internal/cyberimp/brain/nif/proc/add_power(power_to_add)
+	if(power_level >= max_power)
+		return FALSE
+
+	power_level = min(power_level + power_to_add, max_power)
 	return TRUE
 
 ///Toggles nutrition drain as a power source on NIFs on/off. Bypass - Ignores the need to preform the nutirition_check() proc.

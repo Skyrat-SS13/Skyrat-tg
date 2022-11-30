@@ -1,6 +1,8 @@
-///The base NIF program
+#define DEFAULT_NIFSOFT_COOLDOWN 5 SECONDS
+
+///The base NIFSoft
 /datum/nifsoft
-	///What is the name of the program?
+	///What is the name of the NIFSoft?
 	var/name = "Generic NIFsoft"
 	///What is the name of the program when looking at the program from inside of a NIF? This is good if you want to mask a NIFSoft's name.
 	var/program_name
@@ -24,12 +26,12 @@
 	var/active_cost = 0
 	///What is the power cost to activate the program?
 	var/activation_cost = 0
-	///Does the NIFSoft have cooldowns
+	///Does the NIFSoft have a cooldown?
 	var/cooldown = FALSE
-	///Is the NIFSoft on cooldown?
+	///Is the NIFSoft currently on cooldown?
 	var/on_cooldown = FALSE
 	///How long is the cooldown for?
-	var/cooldown_duration = 5 SECONDS
+	var/cooldown_duration = DEFAULT_NIFSOFT_COOLDOWN
 	///What NIF models can this software be installed on?
 	var/list/compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif)
 
@@ -60,7 +62,7 @@
 /datum/nifsoft/proc/life(mob/living/carbon/human/attached_human)
 	return TRUE
 
-/// Activates a NIFSoft, have this called after the child NIFSoft has successfully ran
+/// Activates the parent NIFSoft
 /datum/nifsoft/proc/activate()
 	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif
 
@@ -85,24 +87,14 @@
 		addtimer(CALLBACK(src, .proc/remove_cooldown), cooldown_duration)
 		on_cooldown = TRUE
 
-/// Removes the cooldown from a NIFSoft
+///Refunds the activation cost of a NIFSoft.
+/datum/nifsoft/proc/refund_activation_cost()
+	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif
+	installed_nif.add_power(activation_cost)
+
+///Removes the cooldown from a NIFSoft
 /datum/nifsoft/proc/remove_cooldown()
 	on_cooldown = FALSE
-
-/// Checks to see if a NIFSoft can be activated or not.
-/datum/nifsoft/proc/activation_check(obj/item/organ/internal/cyberimp/brain/nif/installed_nif)
-	if(!installed_nif || !installed_nif.linked_mob)
-		return FALSE
-
-	if(on_cooldown && cooldown)
-		to_chat(installed_nif.linked_mob, span_warning("The [src.name] is currently on cooldown."))
-		return FALSE
-
-	if(activation_cost > installed_nif.power_level)
-		to_chat(installed_nif.linked_mob, span_warning("The [installed_nif] does not have enough power to run this program."))
-		return FALSE
-
-	return TRUE
 
 ///Restores the name of the NIFSoft to default.
 /datum/nifsoft/proc/restore_name()
@@ -169,3 +161,4 @@
 	. = ..()
 	attempt_software_install(mob)
 
+#undef DEFAULT_NIFSOFT_COOLDOWN
