@@ -582,3 +582,14 @@
 	name = "Flower Collar"
 	item_path = /obj/item/clothing/neck/flower_collar
 	ckeywhitelist = list("thedragmeme")
+
+/datum/loadout_item/suit/goldenkimono
+	name = "Short-Sleeved Kimono"
+	item_path = /obj/item/clothing/under/costume/skyrat/kimono/sigmar
+	ckeywhitelist = list("sigmaralkahest")
+
+/datum/loadout_item/suit/blackraincoat
+	name = "Black Open-Faced Raincoat"
+	item_path = /obj/item/clothing/suit/hooded/sigmarcoat
+	ckeywhitelist = list("sigmaralkahest")
+
