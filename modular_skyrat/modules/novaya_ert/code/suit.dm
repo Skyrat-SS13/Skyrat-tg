@@ -34,12 +34,6 @@
 		),
 	)
 
-/obj/item/clothing/suit/armor/vest/russian/nri/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
-	if(is_species(M, /datum/species/teshari))
-		to_chat(M, span_warning("[src] is far too big for you!"))
-		return FALSE
-	return ..()
-
 /obj/item/clothing/suit/armor/heavy/nri
 	name = "\improper Cordun-M armor system"
 	desc = "A robust set of full-body armor designed for the harshest of environments. A modern set of heavy armor recently implemented by NRI Defense Collegium to accomodate with modern specifications. While a combination of lighter materials and a passive internal exoskeleton might assist the user's movement, you'll still be as slow as a snail."
