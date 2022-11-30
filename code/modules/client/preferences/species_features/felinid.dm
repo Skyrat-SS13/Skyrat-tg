@@ -7,7 +7,11 @@
 	relevant_external_organ = /obj/item/organ/external/tail/cat
 
 /datum/preference/choiced/tail_human/init_possible_values()
+<<<<<<< HEAD
 	return assoc_to_keys(GLOB.sprite_accessories["tail"])
+=======
+	return assoc_to_keys_features(GLOB.tails_list_human)
+>>>>>>> 86deadc9b18 (Fixes DNA Infuser's brain swapping, a little bit of qol, ui reworked (#71605))
 
 /datum/preference/choiced/tail_human/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["tail_cat"] = value
@@ -24,7 +28,11 @@
 	relevant_mutant_bodypart = "ears"
 
 /datum/preference/choiced/ears/init_possible_values()
+<<<<<<< HEAD
 	return GLOB.sprite_accessories["ears"]
+=======
+	return assoc_to_keys_features(GLOB.ears_list)
+>>>>>>> 86deadc9b18 (Fixes DNA Infuser's brain swapping, a little bit of qol, ui reworked (#71605))
 
 /datum/preference/choiced/ears/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["ears"] = value
