@@ -58,10 +58,6 @@
 
 	return ..()
 
-///This proc is called every life cycle on the attached human
-/datum/nifsoft/proc/life(mob/living/carbon/human/attached_human)
-	return TRUE
-
 /// Activates the parent NIFSoft
 /datum/nifsoft/proc/activate()
 	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif
