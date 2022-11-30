@@ -237,13 +237,12 @@
 
 	to_chat(linked_mob, span_notice("Blood draining is now enabled."))
 
-///Can we take blood from the mob?
+///Checks if the NIF is able to draw blood as a power source?
 /obj/item/organ/internal/cyberimp/brain/nif/proc/blood_check()
 	if(!linked_mob || !linked_mob.blood_volume || linked_mob.blood_volume <= minimum_blood_level)
 		return FALSE
 
 	return TRUE
-
 
 ///Preforms calibration, this is run the first time a NIF is installed in someone.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/preform_calibration()
@@ -274,7 +273,7 @@
 			calibrating = FALSE
 			is_calibrated = TRUE
 
-///This is run whenever a nifsoft is installed
+///Installs the loaded_nifsoft to a NIF.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/install_nifsoft(datum/nifsoft/loaded_nifsoft)
 	if(broken) //NIFSofts can't be installed to a broken NIF
 		return FALSE
@@ -320,7 +319,7 @@
 
 	return TRUE
 
-///Repairs a NIF based off the repair_amount
+///Repairs the parent NIF based off the repair_amount
 /obj/item/organ/internal/cyberimp/brain/nif/proc/repair_nif(repair_amount)
 	if(durability == max_durability)
 		return FALSE
@@ -355,10 +354,11 @@
 	broken = FALSE
 	send_message("Your NIF is now in working condition!")
 
-///Re-enables the durability_loss_vulnerable variable
+///Re-enables the durability_loss_vulnerable variable, allowing the parent NIF to take durability damage again.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/make_vulnerable()
 	durability_loss_vulnerable = TRUE
 
+//This is here so that a TGUI can't be opened by using the Implant while it isn't implanted.
 /obj/item/organ/internal/cyberimp/brain/nif/attack_self(mob/user, modifiers)
 	return FALSE
 
@@ -502,7 +502,7 @@
 
 	addtimer(CALLBACK(installed_nif, /obj/item/organ/internal/cyberimp/brain/nif.proc/make_vulnerable), 20 MINUTES) //Players should have a decent grace period on this.
 
-///Looks through the human's NIFSoft to find a nifsoft.
+///Checks to see if a human with a NIF has the nifsoft_to_find type of NIFSoft installed?
 /mob/living/carbon/human/proc/find_nifsoft(nifsoft_to_find)
 	var/list/nifsoft_list = installed_nif?.loaded_nifsofts
 	if(!nifsoft_list)
@@ -517,7 +517,6 @@
 
 	InsertAll("nif", 'modular_skyrat/modules/modular_implants/icons/chat.dmi')
 
-//NIF autosurgeon. This is just here so that I can debug faster.
 /obj/item/autosurgeon/organ/nif
 	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif/standard
 
