@@ -69,15 +69,15 @@
  * Decreased so it can only happen once
  */
 /datum/round_event_control/meteor_wave
-	weight = 3
-	max_occurrences = 1
-
-/datum/round_event_control/meteor_wave/threatening
 	weight = 2
 	max_occurrences = 1
 
-/datum/round_event_control/meteor_wave/catastrophic
+/datum/round_event_control/meteor_wave/threatening
 	weight = 1
+	max_occurrences = 1
+
+/datum/round_event_control/meteor_wave/catastrophic
+	weight = 0
 	max_occurrences = 1
 
 /**
