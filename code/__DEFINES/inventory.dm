@@ -178,7 +178,7 @@
 /// How many messages you can remember while logged out before you stop remembering new ones
 #define AFK_THEFT_MAX_MESSAGES 10
 /// If someone logs back in and there are entries older than this, just tell them they can't remember who it was or when
-#define AFK_THEFT_FORGET_DETAILS_TIME 5 MINUTES
+#define AFK_THEFT_FORGET_DETAILS_TIME (5 MINUTES)
 /// The index of the entry in 'afk_thefts' with the person's visible name at the time
 #define AFK_THEFT_NAME 1
 /// The index of the entry in 'afk_thefts' with the text
@@ -188,7 +188,7 @@
 
 //Allowed equipment lists for security vests.
 
-GLOBAL_LIST_INIT(detective_vest_allowed, typecacheof(list(
+GLOBAL_LIST_INIT(detective_vest_allowed, list(
 	/obj/item/ammo_box,
 	/obj/item/ammo_casing,
 	/obj/item/detective_scanner,
@@ -207,9 +207,9 @@ GLOBAL_LIST_INIT(detective_vest_allowed, typecacheof(list(
 	/obj/item/storage/belt/holster/nukie,
 	/obj/item/storage/belt/holster/thermal,
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
-	)))
+))
 
-GLOBAL_LIST_INIT(security_vest_allowed, typecacheof(list(
+GLOBAL_LIST_INIT(security_vest_allowed, list(
 	/obj/item/ammo_box,
 	/obj/item/ammo_casing,
 	/obj/item/flashlight,
@@ -225,9 +225,9 @@ GLOBAL_LIST_INIT(security_vest_allowed, typecacheof(list(
 	/obj/item/storage/belt/holster/nukie,
 	/obj/item/storage/belt/holster/thermal,
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
-	)))
+))
 
-GLOBAL_LIST_INIT(security_wintercoat_allowed, typecacheof(list(
+GLOBAL_LIST_INIT(security_wintercoat_allowed, list(
 	/obj/item/ammo_box,
 	/obj/item/ammo_casing,
 	/obj/item/gun/ballistic,
@@ -239,7 +239,7 @@ GLOBAL_LIST_INIT(security_wintercoat_allowed, typecacheof(list(
 	/obj/item/storage/belt/holster/nukie,
 	/obj/item/storage/belt/holster/thermal,
 	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
-	)))
+))
 
 /// String for items placed into the left pocket.
 #define LOCATION_LPOCKET "in your left pocket"

@@ -43,7 +43,7 @@
 	item = /obj/item/storage/backpack/duffelbag/syndie/x4
 	cost = 4
 	cant_discount = TRUE
-
+/* //SKYRAT EDIT REMOVAL START
 /datum/uplink_item/explosives/detomatix
 	name = "Detomatix disk"
 	desc = "When inserted into a tablet, this cartridge gives you four opportunities to \
@@ -53,7 +53,7 @@
 	item = /obj/item/computer_disk/virus/detomatix
 	cost = 6
 	restricted = TRUE
-
+*/ //SKYRAT REMOVAL END
 /datum/uplink_item/explosives/emp
 	name = "EMP Grenades and Implanter Kit"
 	desc = "A box that contains five EMP grenades and an EMP implant with three uses. Useful to disrupt communications, \

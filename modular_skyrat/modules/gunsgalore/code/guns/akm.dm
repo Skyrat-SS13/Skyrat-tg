@@ -21,7 +21,6 @@
 	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magin.ogg'
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magout.ogg'
 	alt_icons = TRUE
-	dirt_modifier = 0.75
 	company_flag = COMPANY_IZHEVSK
 
 /obj/item/ammo_box/magazine/akm
@@ -96,7 +95,6 @@
 	dual_wield_spread = 15
 	spread = 5
 	worn_icon_state = "akm_civ"
-	dirt_modifier = 1
 	recoil = 0.2
 
 /obj/item/gun/ballistic/automatic/akm/nri
@@ -105,5 +103,4 @@
 	icon_state = "akm_nri"
 	inhand_icon_state = "akm_nri"
 	worn_icon_state = "akm_nri"
-	dirt_modifier = 0.6
 	can_suppress = TRUE

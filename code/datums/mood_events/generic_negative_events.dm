@@ -416,6 +416,11 @@
 	mood_change = -5
 	timeout = 30 SECONDS
 
+/datum/mood_event/sabrage_fail
+	description = "Blast it! That stunt didn't go as planned!"
+	mood_change = -2
+	timeout = 4 MINUTES
+
 /datum/mood_event/body_purist
 	description = "I feel cybernetics attached to me, and I HATE IT!"
 

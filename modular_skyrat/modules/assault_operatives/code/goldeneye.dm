@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(goldeneye_pinpointers)
 
-#define ICARUS_IGNITION_TIME 20 SECONDS
-#define PINPOINTER_PING_TIME 4 SECONDS
+#define ICARUS_IGNITION_TIME (20 SECONDS)
+#define PINPOINTER_PING_TIME (4 SECONDS)
 
 /**
  * GoldenEye defence network
