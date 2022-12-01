@@ -715,7 +715,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "plasmaman_jax"
 
-/obj/item/clothing/suit/toggle/labcoat/rd/jax
+/obj/item/clothing/suit/toggle/labcoat/skyrat/rd/jax
 	name = "xuracorp enameled labcoat"
 	desc = "A XuraCorp designed labcoat for Research Directors. Small triangular indents suggest a protective interior."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
@@ -1104,15 +1104,16 @@
 	icon_state = "rosepatch"
 
 // Donation reward for Cimika
-/obj/item/clothing/suit/toggle/labcoat/tenrai
+/obj/item/clothing/suit/toggle/labcoat/skyrat/tenrai
 	name = "Tenrai labcoat"
 	desc = "A labcoat crafted from a variety of pristine materials, sewn together with a frightening amount of skill. The fabric is aery, smooth as silk, and exceptionally pleasant to the touch. The golden stripes are visible in the dark, working as a beacon to the injured. A small label on the inside of it reads \"Tenrai Kitsunes Supremacy\"."
 	base_icon_state = "tenraicoat"
 	icon_state = "tenraicoat"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/toggle/labcoat/tenrai/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
+/obj/item/clothing/suit/toggle/labcoat/skyrat/tenrai/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
 	if(!isinhands)
 		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha)
