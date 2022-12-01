@@ -420,8 +420,11 @@
 	description = "Blast it! That stunt didn't go as planned!"
 	mood_change = -2
 	timeout = 4 MINUTES
-<<<<<<< HEAD
-=======
+
+/datum/mood_event/sabrage_fail
+	description = "Blast it! That stunt didn't go as planned!"
+	mood_change = -2
+	timeout = 4 MINUTES
 
 /datum/mood_event/body_purist
 	description = "I feel cybernetics attached to me, and I HATE IT!"
@@ -432,4 +435,3 @@
 /datum/mood_event/unsatisfied_nomad
 	description = "I've been here too long! I want to go out and explore space!"
 	mood_change = -3
->>>>>>> 83f475aa7ec (Adds the DNA Infuser, a genetics machine you feed corpses to infuse their DNA with yours! What could go wrong?! (#71351))
