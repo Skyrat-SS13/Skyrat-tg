@@ -169,6 +169,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Recolorable Tailored Jacket"
 	item_path = /obj/item/clothing/suit/tailored_jacket
 
+/datum/loadout_item/suit/tailored_short_jacket
+	name = "Recolorable Tailored Short Jacket"
+	item_path = /obj/item/clothing/suit/tailored_jacket/short
+
 /datum/loadout_item/suit/ethereal_raincoat
 	name = "Ethereal Raincoat"
 	item_path = /obj/item/clothing/suit/hooded/ethereal_raincoat
