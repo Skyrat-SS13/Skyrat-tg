@@ -6646,6 +6646,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/iron/smooth_large,
 /area/station/security/checkpoint/engineering)
 "cbP" = (
@@ -8197,6 +8200,9 @@
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/red/filled/warning{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 5
 	},
 /turf/open/floor/iron/smooth,
 /area/station/security/checkpoint/engineering)
@@ -14844,10 +14850,12 @@
 /turf/open/floor/iron/smooth,
 /area/station/cargo/drone_bay)
 "enl" = (
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/disposalpipe/segment,
+/obj/structure/cable,
+/obj/structure/disposalpipe/junction/flip{
+	dir = 1
+	},
 /turf/open/floor/iron/smooth_large,
 /area/station/engineering/lobby)
 "ens" = (
@@ -40655,6 +40663,9 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/iron/smooth_large,
 /area/station/engineering/lobby)
 "lCU" = (
@@ -41561,6 +41572,8 @@
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/yellow/filled/warning,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/smooth_edge{
 	dir = 1
 	},
@@ -55009,12 +55022,13 @@
 /obj/effect/turf_decal/trimline/yellow/filled/warning{
 	dir = 1
 	},
-/obj/structure/disposalpipe/sorting/mail/flip{
-	name = "Enginering Junction"
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/mapping_helpers/mail_sorting/engineering/general,
+/obj/structure/disposalpipe/sorting/mail{
+	dir = 1;
+	name = "HoP Junction"
+	},
 /turf/open/floor/iron/smooth_edge,
 /area/station/engineering/lobby)
 "pus" = (
@@ -62857,6 +62871,9 @@
 /obj/effect/landmark/start/engineering_guard,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/iron/smooth_edge{
 	dir = 4
 	},
@@ -67085,11 +67102,11 @@
 "sJO" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/trimline/yellow/filled/warning{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/smooth_edge,
 /area/station/engineering/main)
 "sKm" = (
@@ -73868,7 +73885,9 @@
 /obj/machinery/camera/directional/east{
 	c_tag = "Security Post - Engineering"
 	},
-/obj/structure/table/reinforced,
+/obj/machinery/disposal/bin,
+/obj/effect/turf_decal/box,
+/obj/structure/disposalpipe/trunk,
 /turf/open/floor/iron/smooth_edge{
 	dir = 8
 	},
@@ -78863,6 +78882,7 @@
 	id = "atmoslock";
 	name = "Atmospherics Lockdown Blast Door"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/smooth_large,
 /area/station/engineering/atmos)
 "vUR" = (
@@ -85487,6 +85507,8 @@
 /obj/machinery/door/airlock/engineering/glass{
 	name = "EngineRoom"
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/smooth_large,
 /area/station/engineering/main)
 "xNE" = (
