@@ -922,10 +922,12 @@
 						if(!opfor_objective)
 							continue
 
-						set_objective_title(importer, opfor_objective, opfor_data["objectives"][iter_num]["title"])
-						set_objective_description(importer, opfor_objective, opfor_data["objectives"][iter_num]["description"])
-						set_objective_justification(importer, opfor_objective, opfor_data["objectives"][iter_num]["justification"])
-						set_objective_intensity(importer, opfor_objective, opfor_data["objectives"][iter_num]["intensity"])
+						var/list/iter_obj = opfor_data["objectives"][iter_num]
+
+						set_objective_title(importer, opfor_objective, iter_obj["title"])
+						set_objective_description(importer, opfor_objective, iter_obj["description"])
+						set_objective_justification(importer, opfor_objective, iter_obj["justification"])
+						set_objective_intensity(importer, opfor_objective, iter_obj["intensity"])
 
 				if("backstory")
 					set_backstory(importer, opfor_data["backstory"])
@@ -933,24 +935,24 @@
 				if("selected_equipment")
 					for(var/iter_num in opfor_data["selected_equipment"])
 						// If there isn't category data / a given equipment type, OR if either of those don't fit within certain perameters, it continues
+						var/list/iter_eqpmt = opfor_data["selected_equipment"][iter_num]
+
 						if(\
-						!opfor_data["selected_equipment"][iter_num]["equipment_parent_category"]\
-						|| !(opfor_data["selected_equipment"][iter_num]["equipment_parent_category"] in SSopposing_force.equipment_list)\
-						|| !opfor_data["selected_equipment"][iter_num]["equipment_parent_type"]\
-						|| !ispath(text2path(opfor_data["selected_equipment"][iter_num]["equipment_parent_type"]), /datum/opposing_force_equipment))
+						!iter_eqpmt["equipment_parent_category"]|| !(iter_eqpmt["equipment_parent_category"] in SSopposing_force.equipment_list)\
+						 || !iter_eqpmt["equipment_parent_type"] || !ispath(text2path(iter_eqpmt["equipment_parent_type"]), /datum/opposing_force_equipment))
 							continue
 
 						// What does this unreadable code chunk do?
 						// It creates a new selected equipment datum using a type gotten from the given equipment type via SSopposing_force.equipment_list
 						var/datum/opposing_force_selected_equipment/opfor_equipment = select_equipment(importer, \
-						locate(text2path(opfor_data["selected_equipment"][iter_num]["equipment_parent_type"])) in \
-						SSopposing_force.equipment_list[opfor_data["selected_equipment"][iter_num]["equipment_parent_category"]])
+						locate(text2path(iter_eqpmt["equipment_parent_type"])) in \
+						SSopposing_force.equipment_list[iter_eqpmt["equipment_parent_category"]])
 
 						if(!opfor_equipment)
 							continue
 
-						set_equipment_reason(importer, opfor_equipment, opfor_data["selected_equipment"][iter_num]["equipment_reason"])
-						set_equipment_count(importer, opfor_equipment, opfor_data["selected_equipment"][iter_num]["equipment_count"])
+						set_equipment_reason(importer, opfor_equipment, iter_eqpmt["equipment_reason"])
+						set_equipment_count(importer, opfor_equipment, iter_eqpmt["equipment_count"])
 
 	catch //taking 0 risk
 		QDEL_LIST(objectives)
@@ -993,10 +995,12 @@
 
 	try
 		usr << ftp(file(to_write_file), "exported_OPFOR.json")
-		fdel(to_write_file)
 
 	catch
-		fdel(to_write_file) // We really don't want files just sitting around if shit runtimes
+		log_game("OPFOR by ckey: [exporter.ckey] attempted to export JSON data but ftp(file()) runtimed.")
+		add_log(exporter.ckey, "Attempted to export JSON data but ftp(file()) runtimed.")
+
+	fdel(to_write_file)
 
 
 /datum/action/opfor
