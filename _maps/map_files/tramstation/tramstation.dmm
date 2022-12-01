@@ -942,10 +942,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
+/obj/structure/cable/layer3,
 /mob/living/simple_animal/bot/secbot/pingsky{
 	dir = 1
 	},
-/obj/structure/cable/layer3,
 /turf/open/floor/circuit,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "asw" = (
@@ -5585,6 +5585,20 @@
 /obj/machinery/button/ignition/incinerator/atmos,
 /turf/closed/wall/r_wall,
 /area/station/maintenance/disposal/incinerator)
+"cdS" = (
+/obj/effect/turf_decal/delivery,
+/obj/structure/holosign/barrier/atmos/tram,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/effect/turf_decal/delivery/white,
+/obj/structure/holosign/barrier/atmos/tram,
+/obj/structure/fluff/tram_rail/floor{
+	dir = 1
+	},
+/turf/open/floor/vault,
+/area/station/hallway/primary/tram/center)
 "cdT" = (
 /obj/structure/chair/stool/bar/directional/east,
 /obj/structure/cable,
@@ -13908,7 +13922,6 @@
 /obj/machinery/camera/directional/south{
 	c_tag = "Maintenance - East Tram Tunnel 4"
 	},
-/mob/living/simple_animal/bot/secbot/beepsky/officer,
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=TramLower11";
 	location = "TramLower10"
@@ -13916,6 +13929,7 @@
 /obj/effect/turf_decal/bot{
 	dir = 1
 	},
+/mob/living/simple_animal/bot/secbot/beepsky/officer,
 /turf/open/floor/iron,
 /area/station/maintenance/tram/right)
 "eVl" = (
@@ -14098,8 +14112,8 @@
 /area/station/maintenance/tram/right)
 "eZs" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/mob/living/carbon/human/species/monkey/punpun,
 /obj/structure/cable,
+/mob/living/carbon/human/species/monkey/punpun,
 /turf/open/floor/iron/dark,
 /area/station/service/bar)
 "eZT" = (
@@ -20343,7 +20357,7 @@
 	desc = "A small control panel used to move the kitchen dumbwaiter up and down.";
 	linked_elevator_id = "dumbwaiter_lift";
 	name = "Dumbwaiter Control Panel";
-	preset_destination_names = list("2"="Hydroponics","3"="Kitchen")
+	preset_destination_names = list("2" = "Hydroponics", "3" = "Kitchen")
 	},
 /turf/open/floor/iron/white,
 /area/station/service/kitchen)
@@ -21877,8 +21891,8 @@
 /area/station/engineering/supermatter/room)
 "hUj" = (
 /obj/effect/turf_decal/stripes/line,
-/mob/living/simple_animal/bot/secbot/beepsky/armsky,
 /obj/structure/cable,
+/mob/living/simple_animal/bot/secbot/beepsky/armsky,
 /turf/open/floor/iron,
 /area/station/ai_monitored/security/armory)
 "hUx" = (
@@ -24848,8 +24862,8 @@
 	pixel_y = -8;
 	req_access = list("engineering")
 	},
-/mob/living/simple_animal/parrot/poly,
 /obj/structure/sign/clock/directional/north,
+/mob/living/simple_animal/parrot/poly,
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/ce)
 "iXw" = (
@@ -40295,11 +40309,11 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 6
 	},
+/obj/structure/bed/dogbed/ian,
 /mob/living/simple_animal/pet/dog/pug{
 	desc = "A pug with an insatiable appetite for pasta and pasta-adjacent piping.";
 	name = "Spaghetti"
 	},
-/obj/structure/bed/dogbed/ian,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "ouJ" = (
@@ -43130,8 +43144,8 @@
 "pwe" = (
 /obj/structure/bed/dogbed/runtime,
 /obj/machinery/light/directional/north,
-/mob/living/simple_animal/pet/cat/runtime,
 /obj/structure/sign/clock/directional/north,
+/mob/living/simple_animal/pet/cat/runtime,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/cmo)
 "pwp" = (
@@ -44237,7 +44251,7 @@
 	desc = "A small control panel used to move the kitchen dumbwaiter up and down.";
 	linked_elevator_id = "dumbwaiter_lift";
 	name = "Dumbwaiter Control Panel";
-	preset_destination_names = list("2"="Hydroponics","3"="Kitchen")
+	preset_destination_names = list("2" = "Hydroponics", "3" = "Kitchen")
 	},
 /turf/open/floor/iron/dark,
 /area/station/service/hydroponics)
@@ -56377,14 +56391,14 @@
 /turf/open/floor/iron,
 /area/station/security/office)
 "ugb" = (
-/mob/living/simple_animal/hostile/retaliate/goat{
-	name = "Pete"
-	},
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/weather/snow,
+/mob/living/simple_animal/hostile/retaliate/goat{
+	name = "Pete"
+	},
 /turf/open/floor/iron/kitchen_coldroom,
 /area/station/service/kitchen/coldroom)
 "ugc" = (
@@ -159668,7 +159682,7 @@ fMb
 fMb
 tPx
 rqd
-fMb
+cdS
 fMb
 uhD
 pdW
