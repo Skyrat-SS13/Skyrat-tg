@@ -93,8 +93,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 	var/list/misc_costs = list() //list of overall costs sustained by each buyer.
 
 	var/list/empty_turfs = list()
-	for(var/place in shuttle_areas)
-		var/area/shuttle/shuttle_area = place
+	for(var/area/shuttle/shuttle_area as anything in shuttle_areas)
 		for(var/turf/open/floor/T in shuttle_area)
 			if(T.is_blocked_turf())
 				continue
@@ -130,7 +129,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		var/datum/bank_account/paying_for_this
 
 		//department orders EARN money for cargo, not the other way around
-		if(!spawning_order.department_destination)
+		if(!spawning_order.department_destination && spawning_order.charge_on_purchase)
 			if(spawning_order.paying_account) //Someone paid out of pocket
 				paying_for_this = spawning_order.paying_account
 				var/list/current_buyer_orders = goodies_by_buyer[spawning_order.paying_account] // so we can access the length a few lines down
@@ -150,6 +149,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 					continue
 
 		if(spawning_order.paying_account)
+			paying_for_this = spawning_order.paying_account
 			if(spawning_order.pack.goody)
 				LAZYADD(goodies_by_buyer[spawning_order.paying_account], spawning_order)
 			if(istype(spawning_order, /datum/supply_order/company_import))
@@ -195,8 +195,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 			miscboxes[buyer].name = "goody case - purchased by [buyer]"
 		misc_contents[buyer] = list()
 
-		for(var/O in buying_account_orders)
-			var/datum/supply_order/our_order = O
+		for(var/datum/supply_order/our_order as anything in buying_account_orders)
 			for (var/item in our_order.pack.contains)
 				misc_contents[buyer] += item
 			misc_costs[buyer] += our_order.pack.cost

@@ -120,7 +120,7 @@
 
 /datum/loadout_item/suit/cjax
 	name = "XuraCorp Labcoat"
-	item_path = /obj/item/clothing/suit/toggle/labcoat/rd/jax
+	item_path = /obj/item/clothing/suit/toggle/labcoat/skyrat/rd/jax
 	ckeywhitelist = list("candlejax")
 
 /datum/loadout_item/suit/jacket/cherno
@@ -380,7 +380,7 @@
 
 /datum/loadout_item/suit/tenrai_coat
 	name = "Tenrai Coat"
-	item_path = /obj/item/clothing/suit/toggle/labcoat/tenrai
+	item_path = /obj/item/clothing/suit/toggle/labcoat/skyrat/tenrai
 	ckeywhitelist = list("cimika")
 
 /datum/loadout_item/neck/fluffycloak
@@ -582,3 +582,14 @@
 	name = "Flower Collar"
 	item_path = /obj/item/clothing/neck/flower_collar
 	ckeywhitelist = list("thedragmeme")
+
+/datum/loadout_item/suit/goldenkimono
+	name = "Short-Sleeved Kimono"
+	item_path = /obj/item/clothing/under/costume/skyrat/kimono/sigmar
+	ckeywhitelist = list("sigmaralkahest")
+
+/datum/loadout_item/suit/blackraincoat
+	name = "Black Open-Faced Raincoat"
+	item_path = /obj/item/clothing/suit/hooded/sigmarcoat
+	ckeywhitelist = list("sigmaralkahest")
+
