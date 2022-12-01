@@ -196,6 +196,10 @@
 	shoes = /obj/item/clothing/shoes/jackboots
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded/departmental/science = 1,
+		/obj/item/assembly/flash/handheld = 1,
+	)
 
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/science
@@ -207,6 +211,8 @@
 	assignment = "Science Guard"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_calhoun"
+	department_color = COLOR_SCIENCE_PINK
+	subdepartment_color = COLOR_SCIENCE_PINK
 	orbit_icon = "shield-heart"
 	sechud_icon_state = SECHUD_SCIENCE_GUARD
 	extra_access = list(
@@ -293,6 +299,10 @@
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/orderly
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded/departmental/medical = 1,
+		/obj/item/assembly/flash/handheld = 1,
+	)
 
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel/med
@@ -305,6 +315,8 @@
 	assignment = "Orderly"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_orderly"
+	department_color = COLOR_MEDICAL_BLUE
+	subdepartment_color = COLOR_MEDICAL_BLUE
 	orbit_icon = "shield-heart"
 	sechud_icon_state = SECHUD_ORDERLY
 	extra_access = list(
@@ -384,6 +396,10 @@
 	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded/departmental/engineering = 1,
+		/obj/item/assembly/flash/handheld = 1,
+	)
 
 	backpack = /obj/item/storage/backpack/industrial
 	satchel = /obj/item/storage/backpack/satchel/eng
@@ -396,6 +412,8 @@
 	assignment = "Engineering Guard"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_engiguard"
+	department_color = COLOR_ENGINEERING_ORANGE
+	subdepartment_color = COLOR_ENGINEERING_ORANGE
 	orbit_icon = "shield-heart"
 	sechud_icon_state = SECHUD_ENGINEERING_GUARD
 	extra_access = list(
@@ -482,6 +500,10 @@
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent
 	glasses = /obj/item/clothing/glasses/hud/gun_permit
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded/departmental/cargo = 1,
+		/obj/item/assembly/flash/handheld = 1,
+	)
 
 	backpack = /obj/item/storage/backpack
 	satchel = /obj/item/storage/backpack/satchel
@@ -493,6 +515,8 @@
 	assignment = "Customs Agent"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_customs"
+	department_color = COLOR_CARGO_BROWN
+	subdepartment_color = COLOR_CARGO_BROWN
 	orbit_icon = "shield-heart"
 	sechud_icon_state = SECHUD_CUSTOMS_AGENT
 	extra_access = list(
@@ -590,6 +614,8 @@
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_bouncer"
 	orbit_icon = "shield-heart"
+	department_color = COLOR_SERVICE_LIME
+	subdepartment_color = COLOR_SERVICE_LIME // Personally speaking I'd have one of these with sec colors but I'm being authentic
 	sechud_icon_state = SECHUD_BOUNCER
 	extra_access = list(
 		ACCESS_BAR,
@@ -702,3 +728,68 @@
 	desc = "A stun baton that doesn't operate outside of the Prison, based off the station's blueprint layout. Can be used outside of the Prison up to three times before needing to return!"
 	icon_state = "prison_baton"
 	valid_areas = list(/area/station/security/prison, /area/station/security/processing, /area/shuttle/escape)
+
+/*
+* Garment Bags
+*/
+
+/obj/item/storage/bag/garment/science_guard
+	name = "science guard's garments"
+	desc = "A bag for storing extra clothes and shoes. This one belongs to the science guard."
+
+/obj/item/storage/bag/garment/science_guard/PopulateContents()
+	generate_items_inside(list(
+		/obj/item/radio/headset/headset_sci = 2,
+		/obj/item/clothing/shoes/sneakers/black = 2,
+		/obj/item/clothing/under/rank/security/officer/blueshirt/skyrat = 2,
+		/obj/item/clothing/head/helmet/blueshirt/skyrat = 2,
+		/obj/item/clothing/head/beret/sec/science = 2,
+		/obj/item/clothing/suit/armor/vest/blueshirt/skyrat = 2,
+		/obj/item/clothing/glasses/hud/security = 2,
+	), src)
+
+/obj/item/storage/bag/garment/orderly
+	name = "orderly's garments"
+	desc = "A bag for storing extra clothes and shoes. This one belongs to the orderly."
+
+/obj/item/storage/bag/garment/orderly/PopulateContents()
+	generate_items_inside(list(
+		/obj/item/radio/headset/headset_med = 2,
+		/obj/item/clothing/shoes/sneakers/white = 2,
+		/obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/orderly = 2,
+		/obj/item/clothing/head/helmet/blueshirt/skyrat/guard = 2,
+		/obj/item/clothing/head/beret/sec/medical = 2,
+		/obj/item/clothing/suit/armor/vest/blueshirt/skyrat/orderly = 2,
+		/obj/item/clothing/glasses/hud/security = 2,
+	), src)
+
+/obj/item/storage/bag/garment/engineering_guard
+	name = "engineering guard's garments"
+	desc = "A bag for storing extra clothes and shoes. This one belongs to the engineering guard."
+
+/obj/item/storage/bag/garment/engineering_guard/PopulateContents()
+	generate_items_inside(list(
+		/obj/item/radio/headset/headset_eng = 2,
+		/obj/item/clothing/shoes/workboots = 2,
+		/obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard = 2,
+		/obj/item/clothing/head/helmet/blueshirt/skyrat/guard = 2,
+		/obj/item/clothing/head/beret/sec/engineering = 2,
+		/obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard = 2,
+		/obj/item/clothing/glasses/hud/security = 2,
+	), src)
+
+/obj/item/storage/bag/garment/customs_agent
+	name = "customs agent's garments"
+	desc = "A bag for storing extra clothes and shoes. This one belongs to the customs agent."
+
+/obj/item/storage/bag/garment/customs_agent/PopulateContents()
+	generate_items_inside(list(
+		/obj/item/radio/headset/headset_cargo = 2,
+		/obj/item/clothing/shoes/sneakers/black = 2,
+		/obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/customs_agent = 2,
+		/obj/item/clothing/head/helmet/blueshirt/skyrat/guard = 2,
+		/obj/item/clothing/head/beret/sec/cargo = 2,
+		/obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent = 2,
+		/obj/item/clothing/glasses/hud/security = 2,
+		/obj/item/clothing/glasses/hud/gun_permit = 2,
+	), src)

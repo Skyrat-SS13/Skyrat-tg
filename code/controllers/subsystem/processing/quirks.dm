@@ -28,7 +28,8 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Extrovert", "Introvert"),
 <<<<<<< HEAD
 		list("Prosthetic Limb", "Quadruple Amputee"),
-		list("Quadruple Amputee", "Paraplegic","Frail"),
+		list("Quadruple Amputee", "Paraplegic", "Frail"),
+		list("Prosthetic Limb", "Body Purist"),
 		//SKYRAT EDIT ADDITION BEGIN
 		list("Nerve Stapled", "Pacifist"),
 		list("Nerve Stapled", "Nearsighted"),
