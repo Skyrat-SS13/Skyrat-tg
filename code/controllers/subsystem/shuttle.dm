@@ -142,19 +142,21 @@ SUBSYSTEM_DEF(shuttle)
 	while(length(pack_processing))
 		var/datum/supply_pack/pack = pack_processing[length(pack_processing)]
 		pack_processing.len--
+<<<<<<< HEAD
 		//SKYRAT EDIT START
 		if(pack == /datum/supply_pack/armament)
 			continue
 		//SKYRAT EDIT END
+=======
+		if(!initial(pack.contains))
+			continue
+>>>>>>> fd19f6d5a0f (The Mining vendor now works like the Chef produce console (has to go through Cargo) (#71023))
 		if(ispath(pack, /datum/supply_pack))
 			pack = new pack
 
 		var/list/generated_packs = pack.generate_supply_packs()
 		if(generated_packs)
 			pack_processing += generated_packs
-			continue
-
-		if(!pack.contains)
 			continue
 
 		supply_packs[pack.id] = pack
