@@ -5,7 +5,7 @@
 // Interdyne/DS-2 mining equipment vendor that doesn't need a cargo shuttle to work
 
 /obj/machinery/computer/order_console/mining/interdyne
-	name = "interdyne mining equipment console"
+	name = "interdyne mining equipment vendor"
 	circuit = /obj/item/circuitboard/computer/order_console/mining/interdyne
 	forced_express = TRUE
 	express_cost_multiplier = 1

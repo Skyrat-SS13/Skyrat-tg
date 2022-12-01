@@ -24,7 +24,6 @@
 		new /datum/data/mining_equipment("Stabilizing Serum", /obj/item/mining_stabilizer, 400),
 		new /datum/data/mining_equipment("Fulton Beacon", /obj/item/fulton_core, 400),
 		new /datum/data/mining_equipment("Shelter Capsule", /obj/item/survivalcapsule, 400),
-		new /datum/data/mining_equipment("Environment Proof Bodybag", /obj/item/bodybag/environmental, 500), //SKYRAT EDIT - ADDITION
 		new /datum/data/mining_equipment("GAR Meson Scanners", /obj/item/clothing/glasses/meson/gar, 500),
 		new /datum/data/mining_equipment("Explorer's Webbing", /obj/item/storage/belt/mining, 500),
 		new /datum/data/mining_equipment("Point Transfer Card", /obj/item/card/mining_point_card, 500),
@@ -54,7 +53,6 @@
 		new /datum/data/mining_equipment("Minebot Melee Upgrade", /obj/item/mine_bot_upgrade, 400),
 		new /datum/data/mining_equipment("Minebot Armor Upgrade", /obj/item/mine_bot_upgrade/health, 400),
 		new /datum/data/mining_equipment("Minebot Cooldown Upgrade", /obj/item/borg/upgrade/modkit/cooldown/minebot, 600),
-		new /datum/data/mining_equipment("Spare Suit Voucher", /obj/item/suit_voucher, 2000), //SKYRAT EDIT: ADDITION WITH SEVA SUIT
 		new /datum/data/mining_equipment("Minebot AI Upgrade", /obj/item/slimepotion/slime/sentience/mining, 1000),
 		new /datum/data/mining_equipment("KA Minebot Passthrough", /obj/item/borg/upgrade/modkit/minebot_passthrough, 100),
 		new /datum/data/mining_equipment("KA White Tracer Rounds", /obj/item/borg/upgrade/modkit/tracer, 100),
