@@ -1,3 +1,17 @@
+/obj/item/mop/Initialize(mapload)
+	. = ..()
+
+	AddComponent(/datum/component/liquids_interaction, TYPE_PROC_REF(/obj/item/mop, attack_on_liquids_turf))
+
+/obj/item/mop/should_clean(datum/cleaning_source, atom/atom_to_clean, mob/living/cleaner)
+	var/turf/turf_to_clean = atom_to_clean
+
+	// Disable normal cleaning if there are liquids.
+	if(isturf(atom_to_clean) && turf_to_clean.liquids)
+		return FALSE
+
+	return ..()
+
 /**
  * The procedure for remove water from turf
  *
