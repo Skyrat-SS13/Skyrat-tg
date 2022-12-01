@@ -45,17 +45,15 @@
 #define ANTAG_HUD "23"
 // for fans to identify pins
 #define FAN_HUD "24"
-<<<<<<< HEAD
-//SKYRAT EDIT START
-/// ammo of guns
-#define AMMO_HUD	"25"
-/// if they have a gun permit
-#define PERMIT_HUD "26"
-//SKYRAT EDIT END
-=======
 /// Mech camera HUD
 #define DIAG_CAMERA_HUD "25"
->>>>>>> 60b47e2bd59 (Mech camera (#71392))
+
+// SKYRAT EDIT ADDITION BEGIN - gun permits
+/// ammo of guns
+#define AMMO_HUD "25"
+/// if they have a gun permit
+#define PERMIT_HUD "26"
+// SKYRAT EDIT ADDITION END
 
 //by default everything in the hud_list of an atom is an image
 //a value in hud_list with one of these will change that behavior
