@@ -15,6 +15,23 @@
 
 	allow_bureaucratic_error = FALSE
 
+/datum/job/assistant/squatter/get_roundstart_spawn_point()
+	var/list/possible_spawns = list()
+	for(var/turf/spawner in GLOB.xeno_spawn)
+		if(istype(spawner.loc, /area/station/maintenance))
+			for(var/mob/living/visible in get_hearers_in_LOS(GHOST_MAX_VIEW_RANGE_DEFAULT, possible_spawns)) // Enlighten me if there's a better define for this specific thing.
+				if(visible.stat < DEAD && !HAS_TRAIT(visible, TRAIT_BLIND))
+					continue
+			possible_spawns += spawner
+
+	if(possible_spawns.len)
+		return pick(possible_spawns)
+
+	. = ..() // Left here as a fallback.
+
+/datum/job/assistant/squatter/get_latejoin_spawn_point()
+	return get_roundstart_spawn_point()
+
 /datum/job_department/assistant/squatter
 	// Uhhhh, something something squatter specific vars.
 	// Leaving as assistant vars cause it saves me headaches when it comes to inconsequential shit.
@@ -31,12 +48,12 @@
 	id_trim = /datum/id_trim/job/assistant
 	uniform = /obj/item/clothing/under/color/random
 	l_hand = /obj/item/storage/toolbox/emergency/squatter
-	// Not the emergency one to allow some degree of self-defense from simplemobs.
-	r_hand = /obj/item/crowbar/large
 
 /obj/item/storage/toolbox/emergency/squatter/PopulateContents()
 	// To allow escape from enclosed rooms.
-	new /obj/item/weldingtool/mini(src)
+	new /obj/item/weldingtool/makeshift(src)
 	// Wire for any initial self-repairs, or light-antag purposes.
 	new /obj/item/stack/cable_coil(src)
+	// Not the emergency one to allow some degree of self-defense from simplemobs.
+	new /obj/item/crowbar/makeshift(src)
 

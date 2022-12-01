@@ -37,6 +37,6 @@
 	var/list/roles = subtypesof(/datum/job)
 	for(var/datum/job/job in roles)
 		// This should be a reliable way to check if a job is command.
-		if(job.paycheck >= PAYCHECK_COMMAND)
+		if(initial(job.departments_bitflags) & DEPARTMENT_BITFLAG_COMMAND)
 			roles -= job
 	return roles
