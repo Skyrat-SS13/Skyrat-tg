@@ -369,13 +369,14 @@
 		dat += "<legend align='center' style='color: [department_color]'>[department.department_name]</legend>"
 		var/list/dept_data = list()
 		for(var/datum/job/job_datum as anything in department.department_jobs)
-			if(IsJobUnavailable(job_datum.title, TRUE) != JOB_AVAILABLE)
-				continue
 
 			var/command_bold = ""
 			if(job_datum.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND)
 				command_bold = " command"
-			if(job_datum in SSjob.prioritized_jobs)
+			// TEMP SKYRAT EDIT: REMOVE THIS SHIT BEFORE MERGING, DUMBASS //
+			if(IsJobUnavailable(job_datum.title, TRUE) != JOB_AVAILABLE)
+				dept_data += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[get_job_unavailable_error_message(IsJobUnavailable(job_datum.title, TRUE), job_datum.title)] ([job_datum.current_positions])</a>"
+			else if(job_datum in SSjob.prioritized_jobs)
 				dept_data += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'><span class='priority'>[job_datum.title] ([job_datum.current_positions])</span></a>"
 			else
 				dept_data += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[job_datum.title] ([job_datum.current_positions])</a>"
