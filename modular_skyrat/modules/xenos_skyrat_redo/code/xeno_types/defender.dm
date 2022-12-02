@@ -62,14 +62,13 @@
 	/// What type of damage should the tail sweep do
 	var/impact_damage_type = BRUTE
 
-/datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/IsAvailable()
+/datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/IsAvailable(feedback = FALSE)
 	. = ..()
-	if(!isalien(owner))
+	if(!.)
 		return FALSE
 
 	var/mob/living/carbon/alien/adult/skyrat/owner_alien = owner
-
-	if(owner_alien.unable_to_use_abilities)
+	if(!istype(owner_alien) || owner_alien.unable_to_use_abilities)
 		return FALSE
 
 /datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/cast_on_thing_in_aoe(atom/movable/victim, atom/caster)

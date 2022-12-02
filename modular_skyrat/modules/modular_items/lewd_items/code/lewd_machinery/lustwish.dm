@@ -37,7 +37,7 @@
 					/obj/item/serviette_pack = 10,
 					/obj/item/restraints/handcuffs/lewd = 8,
 					/obj/item/key/collar = 48,
-					/obj/item/pillow = 32, //cmon, why there is always 0 pillows, where do you guys stuff it.
+					/obj/item/fancy_pillow = 32,
 					/obj/item/stack/shibari_rope/full = 10,
 					/obj/item/stack/shibari_rope/glow/full = 10,
 
@@ -134,9 +134,10 @@
 
 ///Populates vend_designs with different colors for the vending machine
 /obj/machinery/vending/dorms/proc/populate_vend_designs()
-    vend_designs = list(
-        "pink" = image (icon = src.icon, icon_state = "lustwish_pink"),
-        "teal" = image(icon = src.icon, icon_state = "lustwish_teal"))
+	vend_designs = list(
+		"pink" = image (icon = src.icon, icon_state = "lustwish_pink"),
+		"teal" = image(icon = src.icon, icon_state = "lustwish_teal"),
+	)
 
 //Changes the settings on the vendor, if the user uses the discount card.
 /obj/machinery/vending/dorms/attackby(obj/item/used_item, mob/living/user, params)
@@ -164,7 +165,7 @@
 	if(!card_used)
 		return
 
-	var/choice = show_radial_menu(user, src, vend_designs, custom_check = CALLBACK(src, .proc/check_menu, user, used_item), radius = 50, require_near = TRUE)
+	var/choice = show_radial_menu(user, src, vend_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user, used_item), radius = 50, require_near = TRUE)
 	if(choice)
 		current_color = choice
 		update_icon()

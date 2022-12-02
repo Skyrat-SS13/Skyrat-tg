@@ -7,19 +7,19 @@
 	icon_greyscale = BODYPART_ICON_INSECT
 	limb_id = SPECIES_INSECT
 
-/obj/item/bodypart/l_arm/mutant/insect
+/obj/item/bodypart/arm/left/mutant/insect
 	icon_greyscale = BODYPART_ICON_INSECT
 	limb_id = SPECIES_INSECT
 
-/obj/item/bodypart/r_arm/mutant/insect
+/obj/item/bodypart/arm/right/mutant/insect
 	icon_greyscale = BODYPART_ICON_INSECT
 	limb_id = SPECIES_INSECT
 
-/obj/item/bodypart/l_leg/mutant/insect
+/obj/item/bodypart/leg/left/mutant/insect
 	icon_greyscale = BODYPART_ICON_INSECT
 	limb_id = SPECIES_INSECT
 
-/obj/item/bodypart/r_leg/mutant/insect
+/obj/item/bodypart/leg/right/mutant/insect
 	icon_greyscale = BODYPART_ICON_INSECT
 	limb_id = SPECIES_INSECT
 

@@ -154,7 +154,7 @@
 	owner.add_mood_event("bimbo", /datum/mood_event/bimbo)
 	if(!HAS_TRAIT_FROM(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT))
 		ADD_TRAIT(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT)
-	RegisterSignal(owner, COMSIG_MOB_SAY, .proc/handle_speech)
+	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	if(!HAS_TRAIT_FROM(owner, TRAIT_MASOCHISM, APHRO_TRAIT))
 		ADD_TRAIT(owner, TRAIT_MASOCHISM, APHRO_TRAIT)
 
