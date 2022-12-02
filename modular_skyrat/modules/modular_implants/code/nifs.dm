@@ -174,7 +174,7 @@
 	QDEL_LIST(loaded_nifsofts)
 	return ..()
 
-/// Subtracts from the power level of the NIF once
+///Subtracts from the power level of the NIF once
 /obj/item/organ/internal/cyberimp/brain/nif/proc/use_power(power_to_use)
 	if(power_level < power_to_use)
 		return FALSE
@@ -182,7 +182,7 @@
 	power_level -= power_to_use
 	return TRUE
 
-/// Adds power to a NIF once.
+///Adds power to a NIF once.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/add_power(power_to_add)
 	if(power_level >= max_power)
 		return FALSE
@@ -234,7 +234,6 @@
 		return
 
 	power_usage -= (blood_drain_rate * blood_conversion_rate)
-
 	to_chat(linked_mob, span_notice("Blood draining is now enabled."))
 
 ///Checks if the NIF is able to draw blood as a power source?
@@ -273,7 +272,7 @@
 			calibrating = FALSE
 			is_calibrated = TRUE
 
-///Installs the loaded_nifsoft to a NIF.
+///Installs the loaded_nifsoft to the parent NIF.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/install_nifsoft(datum/nifsoft/loaded_nifsoft)
 	if(broken) //NIFSofts can't be installed to a broken NIF
 		return FALSE
@@ -346,7 +345,7 @@
 	linked_mob.playsound_local(linked_mob, good_sound, 60, FALSE)
 
 
-///Fixes the NIF if it is broken. This doesn't not repair durability
+///Changes the broken variable to be false. This does not relate to durability.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/fix_nif()
 	if(!broken)
 		return FALSE
@@ -358,7 +357,7 @@
 /obj/item/organ/internal/cyberimp/brain/nif/proc/make_vulnerable()
 	durability_loss_vulnerable = TRUE
 
-//This is here so that a TGUI can't be opened by using the Implant while it isn't implanted.
+//This is here so that a TGUI can't be opened by using the implant while it isn't implanted.
 /obj/item/organ/internal/cyberimp/brain/nif/attack_self(mob/user, modifiers)
 	return FALSE
 
@@ -456,7 +455,7 @@
 
 /datum/action/item_action/nif/open_menu
 	name = "Open NIF Menu"
-	button_icon_state = "user" // This is a placeholder
+	button_icon_state = "user"
 
 /datum/action/item_action/nif/open_menu/Trigger(trigger_flags)
 	. = ..()
