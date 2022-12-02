@@ -3,9 +3,9 @@
 	description = "You are not a Nanotrasen employee. You pretend to work here after tricking the Head of Personnel to give you an ID, \
 	so you can stay and eat their food rent-free. \
 	<br><br> \
-	Lock you into the hidden squatter role if taken. \
+	Locks you into the hidden squatter role if taken. \
 	<br><br> \
-	You start with an emergency toolbox, a bulky crowbar, a fire extinguisher, and a welding tool."
+	You start with an emergency toolbox, a maskeshift crowbar, a cable coil, and a makeshift welding tool."
 	features = list(
 		/datum/background_feature/penniless,
 		/datum/background_feature/off_manifest,

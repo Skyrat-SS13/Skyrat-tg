@@ -133,11 +133,11 @@
 		if(istype(from, /datum/bank_account/department))
 			reason_to = "Nanotrasen: Salary"
 			reason_from = ""
-		
+
 		if(transfer_reason)
 			reason_to = istype(src, /datum/bank_account/department) ? "" : transfer_reason
 			reason_from = transfer_reason
-		
+
 		adjust_money(amount, reason_to)
 		from.adjust_money(-amount, reason_from)
 		SSblackbox.record_feedback("amount", "credits_transferred", amount)
@@ -157,15 +157,10 @@
 		return
 	var/money_to_transfer = round(account_job.paycheck * payday_modifier * amount_of_paychecks)
 	if(amount_of_paychecks == 1)
-		// SKYRAT EDIT START - Backgrounds
-		// Fun fact, heads are paid as much as regular crew during paychecks in tgcode, so I'm following it here.
-
 		// The multipliers are outside of the clamp to allow for backgrounds to actually have an impact.
-		money_to_transfer = clamp(money_to_transfer, 0, PAYCHECK_CREW) * BASE_PAYCHECK_MULTIPLIER * background_multiplier //We want to limit single, passive paychecks to regular crew income.
-		// SKYRAT EDIT END
+		money_to_transfer = clamp(money_to_transfer, 0, PAYCHECK_CREW) * BASE_PAYCHECK_MULTIPLIER * background_multiplier //We want to limit single, passive paychecks to regular crew income. // SKYRAT EDIT START - Backgrounds - Fun fact, heads are paid as much as regular crew during paychecks in tgcode, so I'm following it here. // ORIGINAL CODE: money_to_transfer = clamp(money_to_transfer, 0, PAYCHECK_CREW)
 	if(free)
-		//adjust_money(money_to_transfer, "Nanotrasen: Shift Payment") // ORIGINAL
-		adjust_money(money_to_transfer * BASE_PAYCHECK_MULTIPLIER * background_multiplier, "Nanotrasen: Shift Payment") // SKYRAT EDIT - Backgrounds
+		adjust_money(money_to_transfer * BASE_PAYCHECK_MULTIPLIER * background_multiplier, "Nanotrasen: Shift Payment") // SKYRAT EDIT - Backgrounds // ORIGINAL CODE: //adjust_money(money_to_transfer, "Nanotrasen: Shift Payment")
 		SSblackbox.record_feedback("amount", "free_income", money_to_transfer)
 		SSeconomy.station_target += money_to_transfer
 		log_econ("[money_to_transfer] credits were given to [src.account_holder]'s account from income.")
@@ -173,8 +168,7 @@
 	else
 		var/datum/bank_account/department_account = SSeconomy.get_dep_account(account_job.paycheck_department)
 		if(department_account)
-			//if(!transfer_money(department_account, money_to_transfer)) // ORIGINAL
-			if(!transfer_money(department_account, money_to_transfer * BASE_PAYCHECK_MULTIPLIER * background_multiplier)) // SKYRAT EDIT - Backgrounds
+			if(!transfer_money(department_account, money_to_transfer * BASE_PAYCHECK_MULTIPLIER * background_multiplier)) // SKYRAT EDIT - Backgrounds // ORIGINAL: if(!transfer_money(department_account, money_to_transfer))
 				bank_card_talk("ERROR: Payday aborted, departmental funds insufficient.")
 				return FALSE
 			else
@@ -288,7 +282,7 @@
 /datum/bank_account/proc/add_log_to_history(adjusted_money, reason)
 	if(transaction_history.len >= 20)
 		transaction_history.Cut(1,2)
-	
+
 	transaction_history += list(list(
 		"adjusted_money" = adjusted_money,
 		"reason" = reason,

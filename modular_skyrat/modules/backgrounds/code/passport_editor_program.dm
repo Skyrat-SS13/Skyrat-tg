@@ -129,7 +129,7 @@
 
 			var/new_age = params["age"]
 			if(!isnum(new_age))
-				stack_trace("[key_name(usr)] ([usr]) attempted to set invalid age \[[new_age]\] to [target_passport]")
+				stack_trace("[key_name(usr)] ([usr]) attempted to set invalid age \[[new_age]] to [target_passport]")
 				return TRUE
 
 			target_passport.holder_age = new_age
