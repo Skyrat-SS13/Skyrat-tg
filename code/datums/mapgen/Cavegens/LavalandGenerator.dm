@@ -18,7 +18,17 @@
 	)
 	weighted_flora_spawn_list = list(/obj/structure/flora/ash/leaf_shroom = 2 , /obj/structure/flora/ash/cap_shroom = 2 , /obj/structure/flora/ash/stem_shroom = 2 , /obj/structure/flora/ash/cacti = 1, /obj/structure/flora/ash/tall_shroom = 2, /obj/structure/flora/ash/seraka = 2)
 	///Note that this spawn list is also in the icemoon generator
+<<<<<<< HEAD
 	weighted_feature_spawn_list = list(/obj/structure/geyser/wittel = 6, /obj/structure/geyser/random = 2, /obj/structure/geyser/plasma_oxide = 10, /obj/structure/geyser/protozine = 10, /obj/structure/geyser/hollowwater = 10)
+=======
+	weighted_feature_spawn_list = list(
+		/obj/structure/geyser/wittel = 10,
+		/obj/structure/geyser/random = 2,
+		/obj/structure/geyser/plasma_oxide = 10,
+		/obj/structure/geyser/protozine = 10,
+		/obj/structure/geyser/hollowwater = 10,
+	)
+>>>>>>> 5da871e2719 (Made geysers easier to find (#71608))
 
 	initial_closed_chance = 45
 	smoothing_iterations = 50
