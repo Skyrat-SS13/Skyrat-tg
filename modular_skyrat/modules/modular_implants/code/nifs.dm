@@ -274,13 +274,11 @@
 
 ///Installs the loaded_nifsoft to the parent NIF.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/install_nifsoft(datum/nifsoft/loaded_nifsoft)
-	if(broken) //NIFSofts can't be installed to a broken NIF
-		return FALSE
-
-	if(calibrating == TRUE)
+	if(broken || calibrating) //NIFSofts can't be installed to a broken NIF
 		return FALSE
 
 	if((length(loaded_nifsofts) >= max_nifsofts))
+		send_message("You cannot install any additional NIFSofts, please uninstall one to make room!",TRUE)
 		return FALSE
 
 	if(!is_type_in_list(src, loaded_nifsoft.compatible_nifs))
