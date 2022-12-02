@@ -1352,6 +1352,11 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 
+/datum/techweb_node/cyber_organs/New()
+	..()
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_CYBERNETIC_REVOLUTION))
+		research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 500)
+
 /datum/techweb_node/cyber_organs_upgraded
 	id = "cyber_organs_upgraded"
 	display_name = "Upgraded Cybernetic Organs"
@@ -1365,6 +1370,11 @@
 		"cybernetic_stomach_tier3",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
+
+/datum/techweb_node/cyber_organs_upgraded/New()
+	..()
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_CYBERNETIC_REVOLUTION))
+		research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 
 /datum/techweb_node/cyber_implants
 	id = "cyber_implants"
@@ -1382,6 +1392,11 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
+/datum/techweb_node/cyber_implants/New()
+	..()
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_CYBERNETIC_REVOLUTION))
+		research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
+
 /datum/techweb_node/adv_cyber_implants
 	id = "adv_cyber_implants"
 	display_name = "Advanced Cybernetic Implants"
@@ -1395,6 +1410,11 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
+/datum/techweb_node/adv_cyber_implants/New()
+	..()
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_CYBERNETIC_REVOLUTION))
+		research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
+
 /datum/techweb_node/combat_cyber_implants
 	id = "combat_cyber_implants"
 	display_name = "Combat Cybernetic Implants"
@@ -1407,6 +1427,11 @@
 		"ci-thrusters",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+
+/datum/techweb_node/combat_cyber_implants/New()
+	..()
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_CYBERNETIC_REVOLUTION))
+		research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
 
 ////////////////////////Tools////////////////////////
 
