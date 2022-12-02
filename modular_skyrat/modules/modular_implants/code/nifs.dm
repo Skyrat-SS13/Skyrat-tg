@@ -27,7 +27,7 @@
 	var/calibrating = FALSE
 	///How long does each step in the calibration process take in total?
 	var/calibration_time = 3 MINUTES
-	///How far through the calibration process is the NIF? Do not touch this outside of preform_calibration(), if you can at all help it.
+	///How far through the calibration process is the NIF? Do not touch this outside of perform_calibration(), if you can at all help it.
 	var/calibration_duration
 	///Determines the likelyhood of a side effect occuring each process cycle: 1 / side_effect_risk
 	var/side_effect_risk = 50
@@ -144,7 +144,7 @@
 		return FALSE
 
 	if(calibrating)
-		preform_calibration()
+		perform_calibration()
 
 	if(IS_IN_STASIS(linked_mob))
 		return
@@ -190,7 +190,7 @@
 	power_level = min(power_level + power_to_add, max_power)
 	return TRUE
 
-///Toggles nutrition drain as a power source on NIFs on/off. Bypass - Ignores the need to preform the nutirition_check() proc.
+///Toggles nutrition drain as a power source on NIFs on/off. Bypass - Ignores the need to perform the nutirition_check() proc.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/toggle_nutrition_drain(bypass = FALSE)
 	if(!bypass && !nutrition_check())
 		return FALSE
@@ -208,7 +208,7 @@
 	nutrition_drain = TRUE
 
 /// Checks to see if the mob has a nutrition that can be drain from
-/obj/item/organ/internal/cyberimp/brain/nif/proc/nutrition_check() //This is a seperate proc so that TGUI can preform this check on the menu
+/obj/item/organ/internal/cyberimp/brain/nif/proc/nutrition_check() //This is a seperate proc so that TGUI can perform this check on the menu
 	if(!linked_mob || !linked_mob.nutrition)
 		return FALSE
 
@@ -220,7 +220,7 @@
 
 	return linked_mob.nutrition >= minimum_nutrition
 
-///Toggles Blood Drain. Bypasss -  Ignores the need to preform the blood_check proc.
+///Toggles Blood Drain. Bypasss -  Ignores the need to perform the blood_check proc.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/toggle_blood_drain(bypass = FALSE)
 	if(!bypass && !blood_check())
 		return
@@ -243,8 +243,8 @@
 
 	return TRUE
 
-///Preforms calibration, this is run the first time a NIF is installed in someone.
-/obj/item/organ/internal/cyberimp/brain/nif/proc/preform_calibration()
+///Calibrates the Parent NIF, this is ran every time the parent NIF is first installed inside of someone.
+/obj/item/organ/internal/cyberimp/brain/nif/proc/perform_calibration()
 	if(linked_mob.stat == DEAD)
 		return FALSE
 
