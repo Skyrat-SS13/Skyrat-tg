@@ -1,8 +1,11 @@
-///Wing base type. doesn't really do anything
-/obj/item/organ/external/wings
-	name = "wings"
-	desc = "Spread your wings and FLLLLLLLLYYYYY!"
+///hud action for starting and stopping flight
+/datum/action/innate/flight
+	name = "Toggle Flight"
+	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_IMMOBILE
+	icon_icon = 'icons/mob/actions/actions_items.dmi'
+	button_icon_state = "flight"
 
+<<<<<<< HEAD:code/modules/surgery/organs/external/wings.dm
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_EXTERNAL_WINGS
 	layers = ALL_EXTERNAL_OVERLAYS
@@ -22,6 +25,18 @@
 ///Checks if the wings can soften short falls
 /obj/item/organ/external/wings/proc/can_soften_fall()
 	return FALSE // SKYRAT EDIT - No free fall softening for everyone - Original: return TRUE
+=======
+/datum/action/innate/flight/Activate()
+	var/mob/living/carbon/human/human = owner
+	var/obj/item/organ/external/wings/functional/wings = human.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS)
+	if(wings && wings.can_fly(human))
+		wings.toggle_flight(human)
+		if(!(human.movement_type & FLYING))
+			to_chat(human, span_notice("You settle gently back onto the ground..."))
+		else
+			to_chat(human, span_notice("You beat your wings and begin to hover gently above the ground..."))
+			human.set_resting(FALSE, TRUE)
+>>>>>>> 4fd404aa8f1 (Moves speaking verbs to tongues + subtypes, moves wing sprites to wing subtypes, bodypart damage examines to limbs, fixes sign language not working without a tongue (#71635)):code/modules/surgery/organs/external/wings/functional_wings.dm
 
 ///The true wings that you can use to fly and shit (you cant actually shit with them)
 /obj/item/organ/external/wings/functional
@@ -151,33 +166,27 @@
 		var/turf/location = loc
 		location.Entered(src, NONE)
 
-///hud action for starting and stopping flight
-/datum/action/innate/flight
-	name = "Toggle Flight"
-	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_IMMOBILE
-	icon_icon = 'icons/mob/actions/actions_items.dmi'
-	button_icon_state = "flight"
+///angel wings, which relate to humans. comes with holiness.
+/obj/item/organ/external/wings/functional/angel
+	name = "angel wings"
+	desc = "Holier-than-thou attitude not included."
+	stored_feature_id = "Angel"
 
-/datum/action/innate/flight/Activate()
-	var/mob/living/carbon/human/human = owner
-	var/obj/item/organ/external/wings/functional/wings = human.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS)
-	if(wings && wings.can_fly(human))
-		wings.toggle_flight(human)
-		if(!(human.movement_type & FLYING))
-			to_chat(human, span_notice("You settle gently back onto the ground..."))
-		else
-			to_chat(human, span_notice("You beat your wings and begin to hover gently above the ground..."))
-			human.set_resting(FALSE, TRUE)
+	organ_traits = list(TRAIT_HOLY)
 
-///Moth wings! They can flutter in low-grav and burn off in heat
-/obj/item/organ/external/wings/moth
-	name = "moth wings"
-	desc = "Spread your wings and FLOOOOAAAAAT!"
+///dragon wings, which relate to lizards.
+/obj/item/organ/external/wings/functional/dragon
+	name = "dragon wings"
+	desc = "Hey, HEY- NOT lizard wings. Dragon wings. Mighty dragon wings."
+	stored_feature_id = "Dragon"
 
-	feature_key = "moth_wings"
-	preference = "feature_moth_wings"
-	layers = EXTERNAL_BEHIND | EXTERNAL_FRONT
+///robotic wings, which relate to androids.
+/obj/item/organ/external/wings/functional/robotic
+	name = "robotic wings"
+	desc = "Using microscopic hover-engines, or \"microwings,\" as they're known in the trade, these tiny devices are able to lift a few grams at a time. Gathering enough of them, and you can lift impressively large things."
+	stored_feature_id = "Robotic"
 
+<<<<<<< HEAD:code/modules/surgery/organs/external/wings.dm
 	//dna_block = DNA_MOTH_WINGS_BLOCK SKYRAT EDIT REMOVAL
 
 	///Are we burned?
@@ -249,3 +258,29 @@
 	if(heal_flags & (HEAL_LIMBS|HEAL_ORGANS))
 		burnt = FALSE
 		set_sprite(original_sprite)
+=======
+///skeletal wings, which relate to skeletal races.
+/obj/item/organ/external/wings/functional/skeleton
+	name = "skeletal wings"
+	desc = "Powered by pure edgy-teenager-notebook-scribblings. Just kidding. But seriously, how do these keep you flying?!"
+	stored_feature_id = "Skeleton"
+
+	///Are we burned?
+	var/burnt = FALSE
+	///Store our old datum here for if our burned wings are healed
+	var/original_sprite_datum
+///Prototype for moth wings, so in the future we can add burn off behavior.
+/obj/item/organ/external/wings/functional/moth
+
+///mothra wings, which relate to moths.
+/obj/item/organ/external/wings/functional/moth/mothra
+	name = "mothra wings"
+	desc = "Fly like the mighty mothra of legend once did."
+	stored_feature_id = "Mothra"
+
+///megamoth wings, which relate to moths as an alternate choice. they're both pretty cool.
+/obj/item/organ/external/wings/functional/moth/megamoth
+	name = "megamoth wings"
+	desc = "Don't get murderous."
+	stored_feature_id = "Megamoth"
+>>>>>>> 4fd404aa8f1 (Moves speaking verbs to tongues + subtypes, moves wing sprites to wing subtypes, bodypart damage examines to limbs, fixes sign language not working without a tongue (#71635)):code/modules/surgery/organs/external/wings/functional_wings.dm

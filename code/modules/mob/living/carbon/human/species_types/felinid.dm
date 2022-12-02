@@ -2,11 +2,14 @@
 /datum/species/human/felinid
 	name = "Felinid"
 	id = SPECIES_FELINE
-	say_mod = "meows"
 
 	mutant_bodyparts = list("ears" = "Cat", "wings" = "None")
 
+<<<<<<< HEAD
 	/* SKYRAT EDIT REMOVAL - CUSTOMIZATION
+=======
+	mutanttongue = /obj/item/organ/internal/tongue/cat
+>>>>>>> 4fd404aa8f1 (Moves speaking verbs to tongues + subtypes, moves wing sprites to wing subtypes, bodypart damage examines to limbs, fixes sign language not working without a tongue (#71635))
 	mutantears = /obj/item/organ/internal/ears/cat
 	external_organs = list(
 		/obj/item/organ/external/tail/cat = "Cat",
