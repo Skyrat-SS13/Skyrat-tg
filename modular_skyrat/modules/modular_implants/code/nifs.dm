@@ -109,7 +109,7 @@
 
 	power_level = max_power
 
-/obj/item/organ/internal/cyberimp/brain/nif/Insert(mob/living/carbon/human/insertee)
+/obj/item/organ/internal/cyberimp/brain/nif/Insert(mob/living/carbon/human/insertee, special = FALSE, drop_if_replaced = TRUE)
 	. = ..()
 
 	if(linked_mob && stored_ckey != insertee.ckey && theft_protection)
