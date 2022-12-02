@@ -206,7 +206,6 @@
 	if(anger_timer_id)
 		deltimer(anger_timer_id)
 	anger_timer_id = null
-	balloon_alert_to_viewers("docile")
 
 /// Proc that makes the Marked One spout a morally grey/absurdly racist one-liner dependong on who his target is
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/introduction(mob/living/target)
@@ -373,7 +372,6 @@
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/discharge(modifier = 1)
 	stunned = TRUE
 	charging = FALSE
-	balloon_alert_to_viewers("THUD")
 	minimum_distance = initial(minimum_distance)
 	chargetiles = 0
 	playsound(src, 'modular_skyrat/modules/gladiator/Clang_cut.ogg', 75, 0)
@@ -420,30 +418,25 @@
 		for(var/turf/stomp_turf in all_turfs)
 			if(get_dist(origin, stomp_turf) > sound_range)
 				continue
-
 			new /obj/effect/temp_visual/small_smoke/halfsecond(stomp_turf)
 			for(var/mob/living/target in stomp_turf)
 				if(target == src || target.throwing)
 					continue
-
 				to_chat(target, span_userdanger("[src]'s ground slam shockwave sends you flying!"))
 				var/turf/thrownat = get_ranged_target_turf_direct(src, target, throw_range, rand(-10, 10))
 				target.throw_at(thrownat, 8, 2, null, TRUE, force = MOVE_FORCE_OVERPOWERING, gentle = TRUE)
 				target.apply_damage(20, BRUTE, wound_bonus=CANT_WOUND)
-
 				shake_camera(target, 2, 1)
-
 			all_turfs -= stomp_turf
-
 		sleep(delay)
 
 /// Large radius but slow-to-move radiating ground slam
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/swordslam()
-	ground_pound(5, 1 SECONDS, 8)
+	ground_pound(5, 0.4 SECONDS, 8)
 
 /// Sort range slam with faster shockwave travel
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/stomp()
-	ground_pound(2, 0.5 SECONDS, 3)
+	ground_pound(2, 0.2 SECONDS, 3)
 
 /// Used to determine what attacks the Marked One actually uses. This works by making him a ranged mob without a projectile. Shitcode? Maybe! But it woooorks.
 /mob/living/simple_animal/hostile/megafauna/gladiator/OpenFire()
@@ -456,7 +449,6 @@
 		if(MARKED_ONE_FIRST_PHASE)
 			if(prob(10) && (get_dist(src, target) <= spinning_range))
 				INVOKE_ASYNC(src, PROC_REF(spinattack))
-				INVOKE_ASYNC(src, PROC_REF(stomp))
 				ranged_cooldown += 5.5 SECONDS
 			else
 				if(prob(50))
@@ -470,7 +462,6 @@
 				if(prob(80))
 					if(prob(50) && (get_dist(src, target) <= spinning_range))
 						INVOKE_ASYNC(src, PROC_REF(spinattack))
-						INVOKE_ASYNC(src, PROC_REF(stomp))
 						ranged_cooldown += 5 SECONDS
 					else
 						INVOKE_ASYNC(src, PROC_REF(swordslam))
@@ -487,8 +478,7 @@
 				if(prob(50))
 					if(prob(30) && (get_dist(src, target) <= spinning_range))
 						INVOKE_ASYNC(src, PROC_REF(spinattack))
-						INVOKE_ASYNC(src, PROC_REF(stomp))
-						ranged_cooldown += 4.5 SECONDS
+						ranged_cooldown += 3 SECONDS
 					else
 						INVOKE_ASYNC(src, PROC_REF(swordslam))
 						ranged_cooldown += 2 SECONDS
@@ -509,6 +499,7 @@
 						ranged_cooldown += 2 SECONDS
 					else
 						INVOKE_ASYNC(src, PROC_REF(swordslam))
+						INVOKE_ASYNC(src, PROC_REF(stomp))
 						ranged_cooldown += 2 SECONDS
 				else
 					INVOKE_ASYNC(src, PROC_REF(bone_knife_throw), target)
