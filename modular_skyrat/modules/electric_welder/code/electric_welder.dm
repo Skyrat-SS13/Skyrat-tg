@@ -7,30 +7,11 @@
 	light_color = LIGHT_COLOR_HALOGEN
 	tool_behaviour = NONE
 	toolspeed = 0.2
-	power_use_amount = POWER_CELL_USE_LOW
 	// We don't use fuel
 	change_icons = FALSE
-	var/cell_override = /obj/item/stock_parts/cell/high
-	var/powered = FALSE
 	max_fuel = 20
-
-/obj/item/weldingtool/electric/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/cell, cell_override, CALLBACK(src, PROC_REF(switched_off)))
-
-/obj/item/weldingtool/electric/attack_self(mob/user, modifiers)
-	. = ..()
-	if(!powered)
-		if(!(item_use_power(power_use_amount, user, TRUE) & COMPONENT_POWER_SUCCESS))
-			return
-	powered = !powered
-	playsound(src, 'sound/effects/sparks4.ogg', 100, TRUE)
-	if(powered)
-		to_chat(user, span_notice("You turn [src] on."))
-		switched_on()
-		return
-	to_chat(user, span_notice("You turn [src] off."))
-	switched_off()
+	activation_sound = 'sound/effects/sparks4.ogg'
+	deactivation_sound = 'sound/effects/sparks4.ogg'
 
 /obj/item/weldingtool/electric/switched_on(mob/user)
 	welding = TRUE
@@ -44,7 +25,6 @@
 	START_PROCESSING(SSobj, src)
 
 /obj/item/weldingtool/electric/switched_off(mob/user)
-	powered = FALSE
 	welding = FALSE
 	light_on = FALSE
 	force = initial(force)
@@ -53,14 +33,6 @@
 	tool_behaviour = NONE
 	update_appearance()
 	STOP_PROCESSING(SSobj, src)
-
-/obj/item/weldingtool/electric/process(delta_time)
-	if(!powered)
-		switched_off()
-		return
-	if(!(item_use_power(power_use_amount) & COMPONENT_POWER_SUCCESS))
-		switched_off()
-		return
 
 // We don't need to know how much fuel it has, because it doesn't use any.
 /obj/item/weldingtool/electric/examine(mob/user)
