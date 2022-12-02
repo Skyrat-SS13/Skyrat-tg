@@ -13,13 +13,13 @@
 	return ..()
 
 /**
- * The procedure for remove water from turf
+ * The procedure for remove liquids from turf
  *
  * The object is called from liquid_interaction element.
  * The procedure check range of mop owner and tile, then check reagents in mop, if reagents volume < mop capacity - liquids absorbs from tile
  * In another way, input a chat about mop capacity
  * Arguments:
- * * the_mop - Mop what used to absorb liquids(???)
+ * * the_mop - Mop used to absorb liquids
  * * tile - On which tile mop try absorb liquids
  * * user - Who try to absorb liquids with mop
  * * liquids - Liquids which user try to absorb with the_mop

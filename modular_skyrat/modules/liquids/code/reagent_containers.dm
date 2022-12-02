@@ -3,6 +3,15 @@
 
 	AddComponent(/datum/component/liquids_interaction, TYPE_PROC_REF(/obj/item/reagent_containers/cup/beaker, attack_on_liquids_turf))
 
+/**
+ * The procedure for remove liquids from turf
+ *
+ * Arguments:
+ * * my_beaker - Beaker used to absorb liquids
+ * * tile - On which tile mop try absorb liquids
+ * * user - Who try to absorb liquids with mop
+ * * liquids - Liquids which user try to absorb with the_mop
+ */
 /obj/item/reagent_containers/proc/attack_on_liquids_turf(obj/item/reagent_containers/my_beaker, turf/target_turf, mob/living/user, obj/effect/abstract/liquid_turf/liquids)
 	if(user.combat_mode)
 		return FALSE
