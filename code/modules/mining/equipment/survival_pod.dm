@@ -10,8 +10,8 @@
 
 //Survival Capsule
 /obj/item/survivalcapsule
-	name = "bluespace shelter capsule"
-	desc = "An emergency shelter stored within a pocket of bluespace."
+	name = "port-a-fort"
+	desc = "fortniet portie fortie (common)"
 	icon_state = "capsule"
 	icon = 'icons/obj/mining.dmi'
 	w_class = WEIGHT_CLASS_TINY
@@ -70,13 +70,13 @@
 //Non-default pods
 
 /obj/item/survivalcapsule/luxury
-	name = "luxury bluespace shelter capsule"
-	desc = "An exorbitantly expensive luxury suite stored within a pocket of bluespace."
+	name = "rare port-a-fort"
+	desc = "fortguy shporta port (rare)"
 	template_id = "shelter_beta"
 
 /obj/item/survivalcapsule/luxuryelite
-	name = "luxury elite bar capsule"
-	desc = "A luxury bar in a capsule. Bartender required and not included."
+	name = "legendary port-a-fort"
+	desc = "oh mien ghot dien golden porta potty!!! (legendary)"
 	template_id = "shelter_charlie"
 
 //Pod objects
