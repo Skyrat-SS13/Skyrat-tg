@@ -1,3 +1,6 @@
+/**
+ * Background Information. This should never be used inside code outside of declaring new background types.
+ */
 /datum/background_info
 	/// Name of the background entry, be it origin, social background, or employment
 	var/name
@@ -23,6 +26,7 @@
 	/// Should this be hidden from the passport editor, and other "IC" interactions.
 	var/hidden_from_characters = FALSE
 
+/// A simple check that verifies if a role is valid for a given background. Do not override unless you're doing some very special logic.
 /datum/background_info/proc/is_role_valid(datum/role)
 	if(!roles)
 		return TRUE
@@ -31,12 +35,3 @@
 		return !false_if_in_roles
 
 	return false_if_in_roles
-
-/datum/background_info/proc/get_non_command_jobs()
-	RETURN_TYPE(/list)
-	var/list/roles = subtypesof(/datum/job)
-	for(var/datum/job/job in roles)
-		// This should be a reliable way to check if a job is command.
-		if(initial(job.departments_bitflags) & DEPARTMENT_BITFLAG_COMMAND)
-			roles -= job
-	return roles

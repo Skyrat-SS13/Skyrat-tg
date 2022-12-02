@@ -45,3 +45,8 @@
 		if(initial(passport.non_forgeable))
 			continue
 		GLOB.valid_passport_disguises.Add(list("[initial(passport.name)]" = passport))
+
+	for(var/datum/job/job in subtypesof(/datum/job))
+		// This should be a reliable way to check if a job is command.
+		if(initial(job.departments_bitflags) & DEPARTMENT_BITFLAG_COMMAND)
+			GLOB.command_jobs += job

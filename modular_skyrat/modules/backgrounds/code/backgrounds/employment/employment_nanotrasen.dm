@@ -10,14 +10,14 @@
 		/datum/background_feature/average,
 		/datum/background_feature/paid_by_hand,
 		/datum/background_feature/off_manifest,
-		)
+	)
 	fake_name = "Nanotrasen Intern"
 	false_if_in_roles = FALSE
 	hidden_from_characters = TRUE
 
 /datum/background_info/employment/undocumented_nanotrasen/New()
 	. = ..()
-	roles = get_non_command_jobs()
+	roles = subtypesof(/datum/job) - GLOB.command_jobs
 
 // Nanotrasen cares not for your origin, unless you're in a special job:tm:
 /datum/background_info/employment/nanotrasen
@@ -35,7 +35,7 @@
 
 /datum/background_info/employment/nanotrasen/intern/New()
 	. = ..()
-	roles = get_non_command_jobs()
+	roles = subtypesof(/datum/job) - GLOB.command_jobs
 
 /datum/background_info/employment/nanotrasen/immigrant
 	name = "Immigrant Nanotrasen Employee"

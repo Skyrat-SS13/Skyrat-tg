@@ -21,6 +21,9 @@ GLOBAL_LIST_EMPTY(employment_names)
 GLOBAL_LIST_EMPTY(social_background_names)
 GLOBAL_LIST_EMPTY(origin_names)
 
+/// A list of jobs that are command.
+GLOBAL_LIST_EMPTY(command_jobs)
+
 /// A list of feature names to associative lists. Used inside the prefs menu.
 GLOBAL_LIST_EMPTY(background_features)
 /// Valid list of passport types for use in chameleon IDs.
