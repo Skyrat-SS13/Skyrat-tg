@@ -1,3 +1,6 @@
+#define ORGANS_DEFAULT_NAME "Default"
+#define LIMBS_DEFAULT_NAME "None"
+
 /datum/preference_middleware/limbs_and_markings/post_set_preference(mob/user, preference, value)
 	preferences.character_preview_view.update_body()
 	. = ..()
@@ -56,7 +59,7 @@
 /datum/preference_middleware/limbs_and_markings/proc/set_limb_aug(list/params, mob/user)
 	var/limb_slot = params["limb_slot"]
 	var/augment_name = params["augment_name"]
-	if(augment_name == "None")
+	if(augment_name == LIMBS_DEFAULT_NAME)
 		preferences.augments -= limbs_to_process[limb_slot]
 	else
 		preferences.augments[limbs_to_process[limb_slot]] = augment_to_path[augment_name]
@@ -66,7 +69,7 @@
 /datum/preference_middleware/limbs_and_markings/proc/set_limb_aug_style(list/params, mob/user)
 	var/limb_slot = params["limb_slot"]
 	var/style_name = params["style_name"]
-	if(style_name == "None")
+	if(style_name == LIMBS_DEFAULT_NAME)
 		preferences.augment_limb_styles -= limbs_to_process[limb_slot]
 	else
 		preferences.augment_limb_styles[limbs_to_process[limb_slot]] = style_name
@@ -176,7 +179,7 @@
 /datum/preference_middleware/limbs_and_markings/proc/set_organ_aug(list/params, mob/user)
 	var/organ_slot = params["organ_slot"]
 	var/augment_name = params["augment_name"]
-	if(augment_name == "Default")
+	if(augment_name == ORGANS_DEFAULT_NAME)
 		preferences.augments -= organs_to_process[organ_slot]
 	else
 		preferences.augments[organs_to_process[organ_slot]] = augment_to_path[augment_name]
@@ -217,12 +220,12 @@
 				costs[AUGMENT_CATEGORY_LIMBS][aug_name] = cost
 				nice_aug_names[limb][augment] = aug_name
 				augment_to_path[aug_name] = augment
-			nice_aug_names[limb]["none"] = "None"
+			nice_aug_names[limb]["none"] = LIMBS_DEFAULT_NAME
 		var/chosen_augment
 		if(preferences.augments[limbs_to_process[limb]] && !isnull(nice_aug_names[limb][preferences.augments[limbs_to_process[limb]]]))
 			chosen_augment = nice_aug_names[limb][preferences.augments[limbs_to_process[limb]]]
 		else
-			chosen_augment = "None"
+			chosen_augment = LIMBS_DEFAULT_NAME
 		var/list/choices = GLOB.body_markings_per_limb[limb].Copy()
 		if (!allow_mismatched_parts)
 			for (var/name in choices)
@@ -234,7 +237,7 @@
 			"name" = limbs_to_process[limb],
 			"can_augment" = aug_support[limb],
 			"chosen_aug" = chosen_augment,
-			"chosen_style" = preferences.augment_limb_styles[limbs_to_process[limb]] ? preferences.augment_limb_styles[limbs_to_process[limb]] : "None",
+			"chosen_style" = preferences.augment_limb_styles[limbs_to_process[limb]] ? preferences.augment_limb_styles[limbs_to_process[limb]] : LIMBS_DEFAULT_NAME,
 			"aug_choices" = nice_aug_names[limb],
 			"costs" = costs[AUGMENT_CATEGORY_LIMBS],
 			"markings" = list(
@@ -262,12 +265,12 @@
 				costs[AUGMENT_CATEGORY_ORGANS][aug_name] = cost
 				nice_aug_names[organ][augment] = aug_name
 				augment_to_path[aug_name] = augment
-			nice_aug_names[organ]["organic"] = "Default"
+			nice_aug_names[organ]["organic"] = ORGANS_DEFAULT_NAME
 		var/chosen_organ
 		if(preferences.augments[organs_to_process[organ]] && !isnull(nice_aug_names[organ][preferences.augments[organs_to_process[organ]]]))
 			chosen_organ = nice_aug_names[organ][preferences.augments[organs_to_process[organ]]]
 		else
-			chosen_organ = "Default"
+			chosen_organ = ORGANS_DEFAULT_NAME
 		organs_data += list(list(
 			"slot" = organ,
 			"name" = organs_to_process[organ],
@@ -288,3 +291,6 @@
 	data["marking_presets"] = presets
 
 	return data
+
+#undef LIMBS_DEFAULT_NAME
+#undef ORGANS_DEFAULT_NAME
