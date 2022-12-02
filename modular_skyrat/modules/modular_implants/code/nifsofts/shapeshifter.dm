@@ -23,6 +23,11 @@
 	if(shapeshifter)
 		shapeshifter.Remove(linked_mob)
 
+/datum/nifsoft/shapeshifter/Destroy()
+	. = ..()
+	qdel(shapeshifter)
+
+
 /// The NIF version of alter form. This lacks the ability to change body color.
 /datum/action/innate/alter_form/nif
 	name = "Polymorph"
