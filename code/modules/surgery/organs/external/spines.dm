@@ -6,10 +6,18 @@
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_EXTERNAL_SPINES
 	layers = EXTERNAL_ADJACENT|EXTERNAL_BEHIND
+
 	feature_key = "spines"
 	render_key = "spines"
 	preference = "feature_lizard_spines"
+<<<<<<< HEAD
 	// dna_block = DNA_SPINES_BLOCK // SKYRAT EDIT REMOVAL - Customization - We have our own system to handle DNA.
+=======
+
+	dna_block = DNA_SPINES_BLOCK
+	restyle_flags = EXTERNAL_RESTYLE_FLESH
+
+>>>>>>> 46be216cc03 (Ultra-modularizes podperson hair restyling (#71381))
 	///A two-way reference between the tail and the spines because of wagging sprites. Bruh.
 	var/obj/item/organ/external/tail/lizard/paired_tail
 
