@@ -308,7 +308,7 @@
 
 /obj/item/gun/ballistic/automatic/surplus
 	name = "surplus rifle"
-	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm Auto ammo and its bulky frame prevents one-hand firing."
+	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm ammo and its bulky frame prevents one-hand firing."
 	icon_state = "surplus"
 	inhand_icon_state = "moistnugget"
 	worn_icon_state = null

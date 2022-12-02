@@ -183,7 +183,7 @@
 */
 
 /obj/item/storage/box/gunset/zeta
-	name = "10mm Auto revolver supply box"
+	name = "10mm revolver supply box"
 	desc = "Ideally contains a slow-firing revolver that packs a punch."
 
 /obj/item/storage/box/gunset/zeta/PopulateContents()
@@ -276,7 +276,7 @@
 
 /obj/item/storage/box/gunset/pitbull
 	name = "10mm PDW supply box"
-	desc = "Ideally contains a slow-firing 10mm Auto PDW that packs a punch."
+	desc = "Ideally contains a slow-firing 10mm PDW that packs a punch."
 
 /obj/item/gun/ballistic/automatic/pitbull/nomag
 	spawnwithmagazine = FALSE
