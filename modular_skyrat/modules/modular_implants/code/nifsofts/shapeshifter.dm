@@ -25,7 +25,8 @@
 
 /datum/nifsoft/shapeshifter/Destroy()
 	. = ..()
-	qdel(shapeshifter)
+	if(shapeshifter)
+		QDEL_NULL(shapeshifter)
 
 
 /// The NIF version of alter form. This lacks the ability to change body color.
