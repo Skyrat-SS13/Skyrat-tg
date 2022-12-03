@@ -100,9 +100,9 @@
 
 /obj/structure/closet/secure_closet/security_medic/PopulateContents()
 	..()
-	new /obj/item/clothing/suit/toggle/labcoat/security_medic(src)
+	new /obj/item/clothing/suit/toggle/labcoat/skyrat/security_medic(src)
 	new /obj/item/clothing/suit/hazardvest/security_medic(src)
-	new /obj/item/clothing/suit/toggle/labcoat/security_medic/blue(src)
+	new /obj/item/clothing/suit/toggle/labcoat/skyrat/security_medic/blue(src)
 	new /obj/item/clothing/suit/hazardvest/security_medic/blue(src)
 	new /obj/item/clothing/head/helmet/sec/peacekeeper/security_medic(src)
 	new /obj/item/clothing/under/rank/security/peacekeeper/tactical(src)
