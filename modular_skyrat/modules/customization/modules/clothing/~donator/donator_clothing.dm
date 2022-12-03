@@ -578,7 +578,7 @@
 
 /obj/item/clothing/head/hooded/cloakhood/zuliecloak
 	name = "NT special issue"
-	desc = "This hat is unquestionably the best one, bluespaced to and from CentComm. It smells of Fish and Tea with a hint of antagonism"
+	desc = "This hat is unquestionably the best one, bluespaced to and from CentCom. It smells of Fish and Tea with a hint of antagonism"
 	icon_state = "zuliecap"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/cloaks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
@@ -715,7 +715,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "plasmaman_jax"
 
-/obj/item/clothing/suit/toggle/labcoat/rd/jax
+/obj/item/clothing/suit/toggle/labcoat/skyrat/rd/jax
 	name = "xuracorp enameled labcoat"
 	desc = "A XuraCorp designed labcoat for Research Directors. Small triangular indents suggest a protective interior."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
@@ -1104,15 +1104,16 @@
 	icon_state = "rosepatch"
 
 // Donation reward for Cimika
-/obj/item/clothing/suit/toggle/labcoat/tenrai
+/obj/item/clothing/suit/toggle/labcoat/skyrat/tenrai
 	name = "Tenrai labcoat"
 	desc = "A labcoat crafted from a variety of pristine materials, sewn together with a frightening amount of skill. The fabric is aery, smooth as silk, and exceptionally pleasant to the touch. The golden stripes are visible in the dark, working as a beacon to the injured. A small label on the inside of it reads \"Tenrai Kitsunes Supremacy\"."
 	base_icon_state = "tenraicoat"
 	icon_state = "tenraicoat"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/toggle/labcoat/tenrai/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
+/obj/item/clothing/suit/toggle/labcoat/skyrat/tenrai/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
 	if(!isinhands)
 		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha)
@@ -1175,11 +1176,11 @@
 
 //Donation reward for Konstyantyn
 /obj/item/clothing/accessory/badge/holo/jade
-    name = "jade holobadge"
-    desc = "A strangely green holobadge. 'Lieutenant Uriah' is stamped onto it, above the letters JS."
-    icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
-    worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
-    icon_state = "greenbadge"
+	name = "jade holobadge"
+	desc = "A strangely green holobadge. 'Lieutenant Uriah' is stamped onto it, above the letters JS."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
+	icon_state = "greenbadge"
 
 // Donation reward for Dudewithatude
 /obj/item/clothing/suit/toggle/rainbowcoat
@@ -1304,3 +1305,62 @@
 	icon_state = "bimpcap"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+// Donation reward for Nikohyena
+/obj/item/clothing/glasses/gold_aviators
+	name = "purple and gold aviators"
+	desc = "A round pair of gold aviator glasses, the lenses having been applied with a gem-like purple tint."
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
+	icon_state = "goldaviator"
+
+// Donation reward for Thedragmeme
+/obj/item/clothing/under/caged_dress/skirt
+	name = "Caged Purple Dress"
+	desc = "A silky purple dress with a partially exposed crinoline underneath."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	icon_state = "caged_dress"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+
+// Donation reward for Thedragmeme
+/obj/item/clothing/suit/short_coat
+	name = "Short Purple Coat"
+	desc = "A short black and purple coat, mostly used for asthetics then insulating the person wearing it."
+	icon_state = "short_coat"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+
+// Donation reward for Thedragmeme
+/obj/item/clothing/neck/flower_collar
+	name = "Flower Collar"
+	desc = "A purple collar with a dainty red flower attached to the right side of the item."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/necklaces.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
+	icon_state = "flower_collar"
+
+// Donation reward for Sigmar Alkahest
+/obj/item/clothing/under/costume/skyrat/kimono/sigmar
+	name = "short-sleeved kimono"
+	desc = "A traditional ancient Earth Japanese Kimono. It's white with a gold trim and burnished gold ivy pattern."
+	icon_state = "kimono-gold"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+
+// Donation reward for Sigmar Alkahest
+/obj/item/clothing/head/hooded/sigmarcoat
+	name = "black raincoat hood"
+	desc = "Certainly makes you look more ominous."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "long-coat-hood"
+	supports_variations_flags = NONE
+
+// Donation reward for Sigmar Alkahest
+/obj/item/clothing/suit/hooded/sigmarcoat
+	name = "black open-faced raincoat"
+	desc = "A light black raincoat. You didn't even know they're made in this color."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "long-coat"
+	hoodtype = /obj/item/clothing/head/hooded/sigmarcoat
+	supports_variations_flags = NONE

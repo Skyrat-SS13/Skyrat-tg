@@ -146,15 +146,14 @@ SUBSYSTEM_DEF(shuttle)
 		if(pack == /datum/supply_pack/armament)
 			continue
 		//SKYRAT EDIT END
+		if(!initial(pack.contains))
+			continue
 		if(ispath(pack, /datum/supply_pack))
 			pack = new pack
 
 		var/list/generated_packs = pack.generate_supply_packs()
 		if(generated_packs)
 			pack_processing += generated_packs
-			continue
-
-		if(!pack.contains)
 			continue
 
 		supply_packs[pack.id] = pack
@@ -619,9 +618,12 @@ SUBSYSTEM_DEF(shuttle)
 	var/turf/midpoint = locate(transit_x, transit_y, bottomleft.z)
 	if(!midpoint)
 		return FALSE
+	var/area/old_area = midpoint.loc
+	old_area.turfs_to_uncontain += proposal.reserved_turfs
 	var/area/shuttle/transit/A = new()
 	A.parallax_movedir = travel_dir
 	A.contents = proposal.reserved_turfs
+	A.contained_turfs = proposal.reserved_turfs
 	var/obj/docking_port/stationary/transit/new_transit_dock = new(midpoint)
 	new_transit_dock.reserved_area = proposal
 	new_transit_dock.name = "Transit for [M.shuttle_id]/[M.name]"

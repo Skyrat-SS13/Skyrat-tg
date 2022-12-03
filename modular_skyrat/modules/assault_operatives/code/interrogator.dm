@@ -1,6 +1,6 @@
-#define STAGE_PROCESS_TIME_LOWER 30 SECONDS
-#define STAGE_PROCESS_TIME_UPPER 1 MINUTES
-#define ALERT_CREW_TIME 25 SECONDS
+#define STAGE_PROCESS_TIME_LOWER (30 SECONDS)
+#define STAGE_PROCESS_TIME_UPPER (1 MINUTES)
+#define ALERT_CREW_TIME (25 SECONDS)
 
 /**
  * The interrorgator, a piece of machinery used in assault ops to extract GoldenEye keys from heads of staff.
@@ -204,8 +204,8 @@
 
 	var/obj/structure/test_structure = new() // This is apparently the most intuative way to check if a turf is able to support entering.
 
-	for(var/area/station/maintenance/maint_area in world)
-		for(var/turf/floor in maint_area)
+	for(var/area/station/maintenance/maint_area in GLOB.areas)
+		for(var/turf/floor as anything in maint_area.get_contained_turfs())
 			if(!is_station_level(floor.z))
 				continue
 			if(floor.Enter(test_structure))

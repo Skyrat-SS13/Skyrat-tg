@@ -23,8 +23,10 @@
 	var/tt					// Interval timer
 	var/color_changed = FALSE
 	var/static/list/mask_designs
-	actions_types = list(/datum/action/item_action/toggle_breathcontrol,
-						 /datum/action/item_action/mask_inhale)
+	actions_types = list(
+		/datum/action/item_action/toggle_breathcontrol,
+		/datum/action/item_action/mask_inhale,
+	)
 	var/list/moans = list("Mmmph...", "Hmmphh", "Mmmfhg", "Gmmmh...") // Phrases to be said when the player attempts to talk when speech modification / voicebox is enabled.
 	var/list/moans_alt = list("Mhgm...", "Hmmmp!...", "Gmmmhp!") // Power probability phrases to be said when talking.
 	var/moans_alt_probability = 5 // Probability for alternative sounds to play.
@@ -155,8 +157,8 @@
 
 // Breathing valve control button
 /datum/action/item_action/toggle_breathcontrol
-    name = "Toggle breath control filter"
-    desc = "Makes breathing through this mask far harder. Use with caution."
+	name = "Toggle breath control filter"
+	desc = "Makes breathing through this mask far harder. Use with caution."
 
 // Trigger thing for manual breath
 /datum/action/item_action/toggle_breathcontrol/Trigger(trigger_flags)
@@ -165,8 +167,8 @@
 		mask.check()
 
 /datum/action/item_action/mask_inhale
-    name = "Inhale oxygen"
-    desc = "You must inhale oxygen!"
+	name = "Inhale oxygen"
+	desc = "You must inhale oxygen!"
 
 // Open the valve when press the button
 /datum/action/item_action/mask_inhale/Trigger(trigger_flags)

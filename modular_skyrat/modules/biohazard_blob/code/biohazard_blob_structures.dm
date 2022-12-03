@@ -42,7 +42,7 @@
 	mid_sounds = list('modular_skyrat/master_files/sound/effects/heart_beat_loop3.ogg'=1)
 	volume = 20
 
-#define CORE_RETALIATION_COOLDOWN 5 SECONDS
+#define CORE_RETALIATION_COOLDOWN (5 SECONDS)
 
 /obj/structure/biohazard_blob/structure/core
 	name = "glowing core"

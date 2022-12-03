@@ -84,15 +84,16 @@
 
 //reinforcing normal version by using handcuffs on it.
 /obj/item/clothing/suit/straight_jacket/shackles/attackby(obj/item/used_item, mob/user, params) //That part allows reinforcing this item with normal straightjacket
-    if(istype(used_item, /obj/item/restraints/handcuffs))
-        var/obj/item/clothing/suit/straight_jacket/shackles/reinforced/shackles = new /obj/item/clothing/suit/straight_jacket/shackles/reinforced
-        remove_item_from_storage(user)
-        user.put_in_hands(shackles)
-        to_chat(user, span_notice("You reinforced the locks on [src] with [used_item]."))
-        qdel(used_item)
-        qdel(src)
-        return
-    . = ..()
+	if(istype(used_item, /obj/item/restraints/handcuffs))
+		var/obj/item/clothing/suit/straight_jacket/shackles/reinforced/shackles = new()
+		remove_item_from_storage(user)
+		user.put_in_hands(shackles)
+		to_chat(user, span_notice("You reinforced the locks on [src] with [used_item]."))
+		qdel(used_item)
+		qdel(src)
+		return TRUE
+
+	return ..()
 
 //reinforced version.
 /obj/item/clothing/suit/straight_jacket/shackles/reinforced

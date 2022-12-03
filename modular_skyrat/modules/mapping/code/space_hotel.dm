@@ -256,4 +256,4 @@
 	room_number = 7
 
 /area/ruin/space/has_grav/hotel
-    ambience_index = AMBIENCE_GENERIC
+	ambience_index = AMBIENCE_GENERIC

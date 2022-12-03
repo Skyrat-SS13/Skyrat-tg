@@ -615,6 +615,27 @@
 	name = "Varsity Jacket (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/varsity/varsity_worn.json'
 
+// TAILORED JACKET
+
+/datum/greyscale_config/tailored_jacket
+	name = "Tailored Jacket"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/tailored_jacket/tailored_jacket.json'
+
+/datum/greyscale_config/tailored_jacket/worn
+	name = "Tailored Jacket (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/tailored_jacket/tailored_jacket_worn.json'
+
+/datum/greyscale_config/tailored_short_jacket
+	name = "Tailored Short Jacket"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/tailored_short_jacket/tailored_short_jacket.json'
+
+/datum/greyscale_config/tailored_short_jacket/worn
+	name = "Tailored Short Jacket (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/tailored_short_jacket/tailored_short_jacket_worn.json'
+
+
 /*
 *	UNDER
 */
@@ -785,6 +806,15 @@
 	name = "Worn Pentagram Strapped Dress"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
 
+/datum/greyscale_config/plaidskirt_worn/teshari
+	name = "Worn Plaid Skirt - Teshari"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/dressteshari.dmi'
+
+/datum/greyscale_config/sundress_worn/teshari
+	name = "Worn Sundress - Teshari"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/dressteshari.dmi'
+
+// KILT
 // COSTUMES
 
 /datum/greyscale_config/buttondown_slacks_worn/digi

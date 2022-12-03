@@ -21,7 +21,6 @@
 	mag_type = /obj/item/ammo_box/magazine/smartgun_drum
 	can_suppress = FALSE
 	fire_delay = 0.5
-	realistic = FALSE
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	tac_reloads = FALSE
@@ -82,7 +81,7 @@
 	. += "[base_icon_state]_door_open"
 
 /obj/item/gun/ballistic/automatic/smart_machine_gun/unrestricted
-    pin = /obj/item/firing_pin
+	pin = /obj/item/firing_pin
 // Magazine itself
 
 /obj/item/ammo_box/magazine/smartgun_drum

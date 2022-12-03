@@ -35,12 +35,6 @@
 	. = ..()
 	. += span_notice("Alt-click [src] to toggle the limb damage readout.")
 
-//SKYRAT EDIT ADDITION BEGIN
-/obj/item/healthanalyzer/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/cell)
-//SKYRAT EDIT END
-
 /obj/item/healthanalyzer/suicide_act(mob/living/carbon/user)
 	user.visible_message(span_suicide("[user] begins to analyze [user.p_them()]self with [src]! The display shows that [user.p_theyre()] dead!"))
 	return BRUTELOSS
@@ -57,10 +51,6 @@
 			to_chat(user, span_notice("You switch the health analyzer to report extra info on wounds."))
 
 /obj/item/healthanalyzer/attack(mob/living/M, mob/living/carbon/human/user)
-	//SKYRAT EDIT ADDITION
-	if(!(item_use_power(power_use_amount, user, FALSE) & COMPONENT_POWER_SUCCESS))
-		return
-	//SKYRAT EDIT END
 	if(!user.can_read(src)) //SKYRAT EDIT: Blind People Can Analyze Again
 		return
 
@@ -470,7 +460,6 @@
 	icon_state = "health_adv"
 	desc = "A hand-held body scanner able to distinguish vital signs of the subject with high accuracy."
 	advanced = TRUE
-	power_use_amount = POWER_CELL_USE_HIGH //SKYRAT EDIT ADDITION CHANGE
 
 /// Displays wounds with extended information on their status vs medscanners
 /proc/woundscan(mob/user, mob/living/carbon/patient, obj/item/healthanalyzer/wound/scanner)
