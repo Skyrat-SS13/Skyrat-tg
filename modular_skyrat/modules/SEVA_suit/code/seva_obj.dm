@@ -4,6 +4,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
+	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/suit.dmi'
 	icon_state = "seva"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	flags_inv = HIDEJUMPSUIT|HIDETAIL
