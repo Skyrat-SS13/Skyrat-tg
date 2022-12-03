@@ -25,6 +25,7 @@
 		PIZZA_DELIVERY,
 		RUSKY_PARTY,
 		SPIDER_GIFT,
+		PAPERS_PLEASE,
 	)
 	///The types of loan events already run (and to be excluded if the event triggers).
 	var/list/run_events = list()
@@ -58,6 +59,7 @@
 	var/loan_type //for logging
 
 /datum/round_event/shuttle_loan/setup()
+
 	for(var/datum/round_event_control/shuttle_loan/loan_event_control in SSevents.control) //We can't call control, because it hasn't been set yet
 		if(loan_event_control.chosen_event) //Pass down the admin selection and clean it for future use.
 			dispatch_type = loan_event_control.chosen_event
@@ -74,6 +76,7 @@
 		loan_event_control.run_events += dispatch_type //Regardless of admin selection, we add the event being run to the run_events list
 
 /datum/round_event/shuttle_loan/announce(fake)
+	SSshuttle.shuttle_loan = src
 	switch(dispatch_type)
 		if(HIJACK_SYNDIE)
 			priority_announce("Cargo: The syndicate are trying to infiltrate your station. If you let them hijack your cargo shuttle, you'll save us a headache.","CentCom Counterintelligence")
@@ -106,7 +109,6 @@
 			log_game("Shuttle Loan event could not find [dispatch_type] event to offer.")
 			kill()
 			return
-	SSshuttle.shuttle_loan = src
 
 /datum/round_event/shuttle_loan/proc/loan_shuttle()
 	priority_announce(thanks_msg, "Cargo shuttle commandeered by CentCom.")
@@ -146,6 +148,9 @@
 		if(MY_GOD_JC)
 			SSshuttle.centcom_message += "Live explosive ordnance incoming. Exercise extreme caution."
 			loan_type = "Shuttle with a ticking bomb"
+		if(PAPERS_PLEASE)
+			SSshuttle.centcom_message += "Paperwork incoming."
+			loan_type = "Paperwork shipment"
 
 	log_game("Shuttle loan event firing with type '[loan_type]'.")
 
@@ -291,6 +296,9 @@
 					shuttle_spawns.Add(/obj/item/paper/fluff/cargo/bomb)
 				else
 					shuttle_spawns.Add(/obj/item/paper/fluff/cargo/bomb/allyourbase)
+
+			if(PAPERS_PLEASE)
+				shuttle_spawns += subtypesof(/obj/item/paperwork) - typesof(/obj/item/paperwork/photocopy) - typesof(/obj/item/paperwork/ancient)
 
 		var/false_positive = 0
 		while(shuttle_spawns.len && empty_shuttle_turfs.len)
