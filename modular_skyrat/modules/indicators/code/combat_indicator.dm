@@ -189,10 +189,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	desc = "You're either in combat or being held up. Click here to surrender and show that you don't wish to fight. You will be incapacitated. (You can also say '*surrender' at any time to do this.)"
 
 /datum/emote/living/surrender
-	if(stat != SOFT_CRIT)
-		message = "drops to the floor and raises their hands defensively! They surrender%s!"
-	else
-		message = "raises their hands defensively! They surrender%s!"
+	message = "drops to the floor and raises their hands defensively! They surrender%s!"
 	stat_allowed = SOFT_CRIT
 
 /datum/emote/living/surrender/run_emote(mob/user, params, type_override, intentional)
