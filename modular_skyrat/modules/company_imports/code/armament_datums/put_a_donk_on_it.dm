@@ -86,8 +86,20 @@
 	upper_cost = PAYCHECK_CREW
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 
+/datum/armament_entry/company_import/donk/merch/tacticool_turtleneck_skirt
+	item_type = /obj/item/clothing/under/syndicate/tacticool/skirt
+	lower_cost = PAYCHECK_CREW * 0.75
+	upper_cost = PAYCHECK_CREW
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
+
 /datum/armament_entry/company_import/donk/merch/fake_centcom_turtleneck
 	item_type = /obj/item/clothing/under/rank/centcom/officer/replica
+	lower_cost = PAYCHECK_CREW * 0.75
+	upper_cost = PAYCHECK_CREW
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
+
+/datum/armament_entry/company_import/donk/merch/fake_centcom_turtleneck_skirt
+	item_type = /obj/item/clothing/under/rank/centcom/officer_skirt/replica
 	lower_cost = PAYCHECK_CREW * 0.75
 	upper_cost = PAYCHECK_CREW
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
