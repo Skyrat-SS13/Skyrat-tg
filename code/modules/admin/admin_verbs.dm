@@ -137,6 +137,8 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/admin_away,
 	/client/proc/add_mob_ability,
 	/client/proc/remove_mob_ability,
+	/client/proc/command_report_footnote,
+	/client/proc/delay_command_report,
 	/datum/admins/proc/station_traits_panel,
 	/client/proc/spawn_pollution, // SKYRAT EDIT ADDITION
 	/client/proc/spawn_liquid, // SKYRAT EDIT ADDITION
