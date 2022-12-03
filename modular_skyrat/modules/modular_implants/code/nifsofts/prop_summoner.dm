@@ -107,51 +107,51 @@
 ///A somehow wekaer version of the toy katana
 /obj/item/toy/katana/nanite
 	name = "hexblade"
-	desc = "One of the first groups to contribute to the Caeruleam Grimoire's repository were the Malatestan Duelists, a group of mercenary-philosophers seeking to become undisputed masters of the principal art of Cutting. Originally intended as a means of generating perfectly sharp, perfectly unbreakable, and perfectly capable of the Sanctioned Action: to cut. However, these 'blunted' prop Icons are only a mere shadow of what the Duelists originally developed, the only version of the Icon permitted by interstellar law to civilians; normally seen on convention floors or in the hands of those wishing to spar without risk."
+	special_desc = "One of the first groups to contribute to the Caeruleam Grimoire's repository were the Malatestan Duelists, a group of mercenary-philosophers seeking to become undisputed masters of the principal art of Cutting. Originally intended as a means of generating perfectly sharp, perfectly unbreakable, and perfectly capable of the Sanctioned Action: to cut. However, these 'blunted' prop Icons are only a mere shadow of what the Duelists originally developed, the only version of the Icon permitted by interstellar law to civilians; normally seen on convention floors or in the hands of those wishing to spar without risk."
 	force = 0
 	throwforce = 0
 
 /obj/item/storage/dice/nanite
 	name = "dice set"
-	desc = "A gorgeous replication of a gorgeous set of dice. These were modeled after a set of dice originally in the possession of the Selenian Wargaming Society, carved from rare lunar crystals over two hundred years ago. While no one but the Prime Game Master may ever roll even a single piece from the original set, the Society has graciously donated virtual replicas to the Altspace Coven's repo, as a token of their appreciation for aid in more live-action forms of roleplay."
+	special_desc = "A gorgeous replication of a gorgeous set of dice. These were modeled after a set of dice originally in the possession of the Selenian Wargaming Society, carved from rare lunar crystals over two hundred years ago. While no one but the Prime Game Master may ever roll even a single piece from the original set, the Society has graciously donated virtual replicas to the Altspace Coven's repo, as a token of their appreciation for aid in more live-action forms of roleplay."
 
 /obj/item/toy/cards/deck/nanite
 	name = "main deck"
-	desc = "Another piece of gaming equipment graciously donated from the Selenian Wargaming Society, these cards employ a localized field of near-invisible nanites equipped with advanced eye tracking software; to ensure the display on the cards does not allow for peeking. Additionally, over five hundred thousand variations of the standard fifty two card deck are supported, in all known forms of writing."
+	special_desc = "Another piece of gaming equipment graciously donated from the Selenian Wargaming Society, these cards employ a localized field of near-invisible nanites equipped with advanced eye tracking software; to ensure the display on the cards does not allow for peeking. Additionally, over five hundred thousand variations of the standard fifty two card deck are supported, in all known forms of writing."
 
 /obj/item/toy/cards/deck/tarot/nanite
 	name = "tarot deck"
-	desc = "The seventy eight card deck historically used by occultists and esotericists, such as the witches of the Altspace Coven. Containing both the greater secrets of the Major Arcana and the lesser secrets of the Minor Arcana, the full deck is employed as a key tool in cartomancy; and it's said these cards are able to gain insight into the past, present, and future. People who use them for divination ask all sorts of topics, ranging from health to economic issues, but the Coven uses to use them as a guide for traversing their spiritual path, claiming that the non-physical nature of these digitally summonable cards allows readers higher sensitivity to fate itself."
+	special_desc = "The seventy eight card deck historically used by occultists and esotericists, such as the witches of the Altspace Coven. Containing both the greater secrets of the Major Arcana and the lesser secrets of the Minor Arcana, the full deck is employed as a key tool in cartomancy; and it's said these cards are able to gain insight into the past, present, and future. People who use them for divination ask all sorts of topics, ranging from health to economic issues, but the Coven uses to use them as a guide for traversing their spiritual path, claiming that the non-physical nature of these digitally summonable cards allows readers higher sensitivity to fate itself."
 
 /obj/item/toy/cards/deck/kotahi/nanite
 	name = "kotahi deck"
-	desc = "Kotahi in long-haul freighters! Kotahi in low orbit! Kotahi on the floor! Kotahi like never before! For nearly six hundred years, Kotahi has dominated the card gaming category as the galaxy's #1 shedding-type card game! But how do you take a brand beloved by thousands of sophonts to the next level? With the cooperation of the Selenian Wargaming Society, we've elevated Kotahi to a brand new playing field: digitally summonable Kotahi cards, for the low low cost of 200cr, Now you know why we call it number one."
+	special_desc = "Kotahi in long-haul freighters! Kotahi in low orbit! Kotahi on the floor! Kotahi like never before! For nearly six hundred years, Kotahi has dominated the card gaming category as the galaxy's #1 shedding-type card game! But how do you take a brand beloved by thousands of sophonts to the next level? With the cooperation of the Selenian Wargaming Society, we've elevated Kotahi to a brand new playing field: digitally summonable Kotahi cards, for the low low cost of 200cr, Now you know why we call it number one."
 
 /obj/item/cane/nanite
 	name = "staff"
-	desc = "This program was contributed by a mutual aid group, the Sapient Rights Recovery Association located in many regions across the eastern continents of Earth. Cerulean staffs employ more nanomachines than holograms, giving them a solid core and steady tip for use by the disabled. Through ample usage of sound cues to help summoners navigate the menu, a pattern was also developed for sightless individuals both by incident, birth, and biology."
+	special_desc = "This program was contributed by a mutual aid group, the Sapient Rights Recovery Association located in many regions across the eastern continents of Earth. Cerulean staffs employ more nanomachines than holograms, giving them a solid core and steady tip for use by the disabled. Through ample usage of sound cues to help summoners navigate the menu, a pattern was also developed for sightless individuals both by incident, birth, and biology."
 
 	force = 0
 	throwforce = 0
 
 /obj/item/cane/white/nanite
 	name = "white staff"
-	desc = "This program was contributed by a mutual aid group, the Sapient Rights Recovery Association located in many regions across the eastern continents of Earth. Cerulean staffs employ more nanomachines than holograms, giving them a solid core and steady tip for use by the disabled. Through ample usage of sound cues to help summoners navigate the menu, a pattern was also developed for sightless individuals both by incident, birth, and biology."
+	special_desc = "This program was contributed by a mutual aid group, the Sapient Rights Recovery Association located in many regions across the eastern continents of Earth. Cerulean staffs employ more nanomachines than holograms, giving them a solid core and steady tip for use by the disabled. Through ample usage of sound cues to help summoners navigate the menu, a pattern was also developed for sightless individuals both by incident, birth, and biology."
 
 	force = 0
 	throwforce = 0
 
 /obj/item/toy/foamblade/nanite
 	name = "armblade"
-	desc = "This Icon was leaked onto the Grimoire somewhat illegally. It was originally uploaded by a departing member of the Tiger Cooperative, the download text informing the summoner that this Icon was first used by the cultists for use as 'training for their biological Ascension' into shape-shifting entities. Within hours, several variants for all sorts of sapient limb configurations were forked and uploaded, this one an entirely nonlethal one."
+	special_desc = "This Icon was leaked onto the Grimoire somewhat illegally. It was originally uploaded by a departing member of the Tiger Cooperative, the download text informing the summoner that this Icon was first used by the cultists for use as 'training for their biological Ascension' into shape-shifting entities. Within hours, several variants for all sorts of sapient limb configurations were forked and uploaded, this one an entirely nonlethal one."
 
 /obj/item/lighter/nanite
 	name = "catchflame"
-	desc = "A work of art by the standards of normal Icons, this one was worked on for five continuous years by a single summoner; now known as Neophyte Inverse after adoption of the Icon by the few physically-bodied members of the Altspace Coven. The engram's work involves the use of nanites to ignite atmospheric hydrogen molecules, the blue glow from the Icon arising from perfect and complete combustion. This allows the lighter to function exactly as a normal zippo would, the description reading '...useful for lighting hearth fires, candles, and incense; try white sage if you can order some off the net, just pray it doesn't dispel engrams lol.'"
+	special_desc = "A work of art by the standards of normal Icons, this one was worked on for five continuous years by a single summoner; now known as Neophyte Inverse after adoption of the Icon by the few physically-bodied members of the Altspace Coven. The engram's work involves the use of nanites to ignite atmospheric hydrogen molecules, the blue glow from the Icon arising from perfect and complete combustion. This allows the lighter to function exactly as a normal zippo would, the description reading '...useful for lighting hearth fires, candles, and incense; try white sage if you can order some off the net, just pray it doesn't dispel engrams lol.'"
 
 /obj/item/clothing/mask/holocigarette/nanite
 	name = "cloudstick"
-	desc = "One of mankind's many attempts at ending the legacy of Big Tobacco. Contributed by a fully anonymous engram and then forked countless times into countless replications of brands and flavors, the 'Cloudstick' is more of a genre than a single Icon. Most downloadable ones even allow the summoner to change the pixilation of the smoke, to grant them a more 'detached' experience from the real thing. Several summoners report these to help them in quitting smoking, others simply commenting 'it's why i first downloaded the Catchflame"
+	special_desc = "One of mankind's many attempts at ending the legacy of Big Tobacco. Contributed by a fully anonymous engram and then forked countless times into countless replications of brands and flavors, the 'Cloudstick' is more of a genre than a single Icon. Most downloadable ones even allow the summoner to change the pixilation of the smoke, to grant them a more 'detached' experience from the real thing. Several summoners report these to help them in quitting smoking, others simply commenting 'it's why i first downloaded the Catchflame"
 
 
 #undef SUMMONED_ITEM_ALPHA
