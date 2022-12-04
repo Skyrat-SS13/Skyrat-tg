@@ -22,13 +22,8 @@
 	response_harm_continuous = "splats"
 	response_harm_simple = "splat"
 	density = FALSE
-<<<<<<< HEAD
-	faction = list("hostile")
-	//attack_sound = 'sound/effects/reee.ogg' //SKYRAT EDIT REMOVAL
-=======
 	faction = list("hostile", FACTION_MAINT_CREATURES)
-	attack_sound = 'sound/effects/reee.ogg'
->>>>>>> 4c8597b2cd6 (Regal Rat - Maint Creatures DLC Update (#71343))
+	//attack_sound = 'sound/effects/reee.ogg' //SKYRAT EDIT REMOVAL
 	butcher_results = list(/obj/item/food/nugget = 1)
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
 	mob_size = MOB_SIZE_TINY
