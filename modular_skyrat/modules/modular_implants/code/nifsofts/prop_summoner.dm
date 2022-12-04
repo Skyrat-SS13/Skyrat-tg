@@ -1,5 +1,5 @@
 #define SUMMONED_ITEM_ALPHA 180
-
+#define SUMMONED_ITEM_LIGHT 2
 
 /obj/item/disk/nifsoft_uploader/summoner
 	name = "Grimoire Caeruleam"
@@ -51,7 +51,7 @@
 
 	if(holographic_filter)
 		new_item.alpha = SUMMONED_ITEM_ALPHA
-		new_item.set_light(2)
+		new_item.set_light(SUMMONED_ITEM_LIGHT)
 		new_item.add_atom_colour("#acccff", FIXED_COLOUR_PRIORITY)
 
 	if(!linked_mob.put_in_hands(new_item))
@@ -155,3 +155,4 @@
 
 
 #undef SUMMONED_ITEM_ALPHA
+#undef SUMMONED_ITEM_LIGHT
