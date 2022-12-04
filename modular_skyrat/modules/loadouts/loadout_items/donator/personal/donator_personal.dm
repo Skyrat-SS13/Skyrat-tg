@@ -120,7 +120,7 @@
 
 /datum/loadout_item/suit/cjax
 	name = "XuraCorp Labcoat"
-	item_path = /obj/item/clothing/suit/toggle/labcoat/rd/jax
+	item_path = /obj/item/clothing/suit/toggle/labcoat/skyrat/rd/jax
 	ckeywhitelist = list("candlejax")
 
 /datum/loadout_item/suit/jacket/cherno
@@ -380,7 +380,7 @@
 
 /datum/loadout_item/suit/tenrai_coat
 	name = "Tenrai Coat"
-	item_path = /obj/item/clothing/suit/toggle/labcoat/tenrai
+	item_path = /obj/item/clothing/suit/toggle/labcoat/skyrat/tenrai
 	ckeywhitelist = list("cimika")
 
 /datum/loadout_item/neck/fluffycloak
