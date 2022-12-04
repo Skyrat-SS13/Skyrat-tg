@@ -935,18 +935,16 @@
 				if("selected_equipment")
 					for(var/iter_num in opfor_data["selected_equipment"])
 						// If there isn't category data / a given equipment type, OR if either of those don't fit within certain perameters, it continues
-						var/list/iter_eqpmt = opfor_data["selected_equipment"][iter_num]
+						var/list/equipment = opfor_data["selected_equipment"][iter_num]
 
 						if(\
-						!iter_eqpmt["equipment_parent_category"]|| !(iter_eqpmt["equipment_parent_category"] in SSopposing_force.equipment_list)\
-						 || !iter_eqpmt["equipment_parent_type"] || !ispath(text2path(iter_eqpmt["equipment_parent_type"]), /datum/opposing_force_equipment))
+						!equipment["equipment_parent_category"]|| !(equipment["equipment_parent_category"] in SSopposing_force.equipment_list)\
+						 || !equipment["equipment_parent_type"] || !ispath(text2path(equipment["equipment_parent_type"]), /datum/opposing_force_equipment))
 							continue
 
-						// What does this unreadable code chunk do?
-						// It creates a new selected equipment datum using a type gotten from the given equipment type via SSopposing_force.equipment_list
+						// creates a new selected equipment datum using a type gotten from the given equipment type via SSopposing_force.equipment_list
 						var/datum/opposing_force_selected_equipment/opfor_equipment = select_equipment(importer, \
-						locate(text2path(iter_eqpmt["equipment_parent_type"])) in \
-						SSopposing_force.equipment_list[iter_eqpmt["equipment_parent_category"]])
+						locate(text2path(equipment["equipment_parent_type"])) in SSopposing_force.equipment_list[iter_eqpmt["equipment_parent_category"]])
 
 						if(!opfor_equipment)
 							continue
