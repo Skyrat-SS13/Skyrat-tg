@@ -5,6 +5,8 @@
  * To use this template, all that's needed is for cast() to be implemented.
  */
 /datum/action/cooldown/spell/charged
+	active_overlay_icon_state = "bg_spell_border_active_yellow"
+
 	/// What message do we display when we start chanelling?
 	var/channel_message
 	/// Whether we're currently channelling / charging the spell
@@ -49,6 +51,9 @@
 	stop_channel_effect(remove_from)
 	return ..()
 
+/datum/action/cooldown/spell/charged/is_action_active(atom/movable/screen/movable/action_button/current_button)
+	return currently_channeling
+
 /datum/action/cooldown/spell/charged/can_cast_spell(feedback = TRUE)
 	. = ..()
 	if(!.)
@@ -74,8 +79,13 @@
 		cast_on.add_overlay(charge_overlay_instance)
 
 	currently_channeling = TRUE
+<<<<<<< HEAD
 	UpdateButtons(status_only = TRUE)
 	if(!do_after(cast_on, channel_time, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_HELD_ITEM)))
+=======
+	build_all_button_icons(UPDATE_BUTTON_STATUS)
+	if(!do_after(cast_on, channel_time, timed_action_flags = channel_flags))
+>>>>>>> 329921639a9 (Rewrites how action buttons icons are generated, makes them layer nicer. Allows observers to see a mob's action buttons.  (#71339))
 		stop_channel_effect(cast_on)
 		return . | SPELL_CANCEL_CAST
 
@@ -102,7 +112,7 @@
 		playsound(for_who, sound(null, repeat = 0, channel = CHANNEL_CHARGED_SPELL), 50, FALSE)
 
 	currently_channeling = FALSE
-	UpdateButtons(status_only = TRUE)
+	build_all_button_icons(UPDATE_BUTTON_STATUS)
 
 /**
  * ### Channelled "Beam" spells

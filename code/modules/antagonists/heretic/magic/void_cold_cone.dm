@@ -4,9 +4,15 @@
 		Enemies in the cone of the blast will be damaged slightly, slowed, and chilled overtime. \
 		Additionally, objects hit will be frozen and can shatter, and ground hit will be iced over and slippery - \
 		though they may thaw shortly if used in room temperature."
+<<<<<<< HEAD
 	background_icon_state = "bg_ecult"
 	icon_icon = 'icons/mob/actions/actions_ecult.dmi'
 	button_icon_state = "entropic_plume"
+=======
+	background_icon_state = "bg_heretic"
+	overlay_icon_state = "bg_heretic_border"
+	button_icon_state = "icebeam"
+>>>>>>> 329921639a9 (Rewrites how action buttons icons are generated, makes them layer nicer. Allows observers to see a mob's action buttons.  (#71339))
 
 	school = SCHOOL_FORBIDDEN
 	cooldown_time = 1 MINUTES
