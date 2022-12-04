@@ -82,7 +82,7 @@
 	add_fingerprint(user)
 
 /obj/item/healthanalyzer/attack_secondary(mob/living/victim, mob/living/user, params)
-	if(!user.can_read(src) || !(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS)) // SKYRAT EDIT CHANGE: Blind People Can Analyze Again/Power Cost
+	if(!user.can_read(src))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	chemscan(user, victim)
