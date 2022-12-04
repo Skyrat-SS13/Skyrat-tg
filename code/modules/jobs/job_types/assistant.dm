@@ -42,12 +42,8 @@ Assistant
 	name = JOB_ASSISTANT
 	jobtype = /datum/job/assistant
 	id_trim = /datum/id_trim/job/assistant
-<<<<<<< HEAD
-	belt = /obj/item/modular_computer/tablet/pda/assistant
 	uniform = /obj/item/clothing/under/color/random // SKYRAT EDIT ADD
-=======
 	belt = /obj/item/modular_computer/pda/assistant
->>>>>>> 2425531eb2d (Removes tablets (not PDAs) entirely. (#71507))
 
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/target)
 	..()
