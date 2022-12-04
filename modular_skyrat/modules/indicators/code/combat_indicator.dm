@@ -199,3 +199,8 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 		living_user.Paralyze(200)
 		living_user.remove_status_effect(/datum/status_effect/grouped/surrender, src)
 		living_user.set_combat_indicator(FALSE)
+
+/datum/emote/living/surrender/select_message_type(mob/user, intentional)
+	if(user.stat == SOFT_CRIT)
+		return "makes a loud and pained whimper."
+	. = ..()
