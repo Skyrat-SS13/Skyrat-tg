@@ -90,8 +90,8 @@
 	if(nif_generated_item)
 		for(var/obj/item/card/card as anything in initial_cards)
 			card.nif_generated_item = TRUE
-			card.alpha = 180
-			card.set_light(2)
+			card.alpha = SUMMONED_ITEM_ALPHA
+			card.set_light(SUMMONED_ITEM_LIGHT)
 			card.add_atom_colour("#acccff", FIXED_COLOUR_PRIORITY)
 
 /obj/item/storage/dice/Initialize(mapload)
@@ -99,8 +99,8 @@
 	if(nif_generated_item)
 		for(var/obj/item/item as anything in contents)
 			item.nif_generated_item = TRUE
-			item.alpha = 180
-			item.set_light(2)
+			item.alpha = SUMMONED_ITEM_ALPHA
+			item.set_light(SUMMONED_ITEM_LIGHT)
 			item.add_atom_colour("#4e5664", FIXED_COLOUR_PRIORITY)
 
 //Summonable Items
