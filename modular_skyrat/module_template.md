@@ -8,14 +8,14 @@ Module ID: <!-- Uppercase, UNDERSCORE_CONNECTED name of your module, that you us
 
 ### Description:
 
-<!-- Here, try to describe what your PR does, what features it provides and any other directly useful information -->
+<!-- Here, try to describe what your PR does, what features it provides and any other directly useful information. -->
 
 ### TG Proc/File Changes:
 
 - N/A
 <!-- If you edited any core procs, you should list them here. You should specify the files and procs you changed.
 E.g: 
-- `/code/modules/mob/living.dm`: `proc/overriden_proc`, `var/overriden_var`
+- `code/modules/mob/living.dm`: `proc/overriden_proc`, `var/overriden_var`
 -->
 
 ### Modular Overrides:
@@ -23,8 +23,8 @@ E.g:
 - N/A
 <!-- If you added a new modular override (file or code-wise) for your module, you should list it here. Code files should specify what procs they changed, in case of multiple modules using the same file.
 E.g: 
-- `/modular_skyrat/master_files/sound/my_cool_sound.ogg`
-- `/modular_skyrat/master_files/code/my_modular_override.dm`: `proc/overriden_proc`, `var/overriden_var`
+- `modular_skyrat/master_files/sound/my_cool_sound.ogg`
+- `modular_skyrat/master_files/code/my_modular_override.dm`: `proc/overriden_proc`, `var/overriden_var`
 -->
 
 ### Defines:
@@ -32,16 +32,11 @@ E.g:
 - N/A
 <!-- If you needed to add any defines, mention the files you added those defines in, along with the name of the defines. -->
 
-### Master file additions
-
-- N/A
-<!-- Any master file changes you've made to existing master files or if you've added a new master file. Please mark either as #NEW or #CHANGE -->
-
 ### Included files that are not contained in this module:
 
 - N/A
-<!-- Likewise, be it a non-modular file or a modular one that's not contained within the folder belonging to this specific module, it should be mentioned here -->
+<!-- Likewise, be it a non-modular file or a modular one that's not contained within the folder belonging to this specific module, it should be mentioned here. Good examples are icons or sounds that are used between multiple modules, or other such edge-cases. -->
 
 ### Credits:
 
-<!-- Here go the credits to you, dear coder, and in case of collaborative work or ports, credits to the original source of the code -->
+<!-- Here go the credits to you, dear coder, and in case of collaborative work or ports, credits to the original source of the code. -->

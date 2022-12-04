@@ -113,6 +113,16 @@ All assets added by us should be placed into the same modular folder as your cod
 
 - Any additional clothing icon files you add MUST go into the existing files in master_files clothing section.
 
+### The `master_files` Folder
+
+You should always put any modular overrides of icons, sound, code, etc. inside this folder, and it **must** follow the core code folder layout.
+
+Example: `code/modules/mob/living/living.dm` -> `modular_skyrat/master_files/code/modules/mob/living/living.dm`
+
+This is to make it easier to figure out what changed about a base file without having to search through proc definitions. 
+
+It also helps prevent modules needlessly overriding the same proc multiple times. More information on these types of edits come later.
+
 ### Fully modular portions of your code
 
 This section will be fairly straightforward, however, I will try to go over the basics and give simple examples, as the guide is aimed at new contributors likewise.
