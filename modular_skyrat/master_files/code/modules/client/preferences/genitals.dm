@@ -417,7 +417,7 @@
 	relevant_mutant_bodypart = ORGAN_SLOT_BREASTS
 
 /datum/preference/choiced/breasts_size/init_possible_values()
-	return GLOB.preference_breast_sizes
+	return GLOB.breast_size_to_number
 
 /datum/preference/choiced/breasts_size/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
