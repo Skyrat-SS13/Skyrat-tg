@@ -202,5 +202,5 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 
 /datum/emote/living/surrender/select_message_type(mob/user, intentional)
 	if(user.stat == SOFT_CRIT)
-		return "makes a loud and pained whimper."
+		return "raises their hands defensively! They surrender%s!"
 	. = ..()
