@@ -67,7 +67,7 @@
 
 /obj/item/gun/ballistic/automatic/assault_ops_smg
 	name = "\improper IGE-260 submachine gun"
-	desc = "A toploader submachine gun chambered in 9x19mm and painted in an ominous matte black. Strangely, the gun also seems to lack any form of manufacturer markings."
+	desc = "A toploader submachine gun chambered in 9x25mm and painted in an ominous matte black. Strangely, the gun also seems to lack any form of manufacturer markings."
 
 	icon_state = "ige_smg"
 	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/guns.dmi'
@@ -88,26 +88,27 @@
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_FULLY_AUTOMATIC)
 	burst_size = 1
 	fire_delay = 0.8
+	projectile_damage_multiplier = 0.6
 	pin = /obj/item/firing_pin/implant/pindicate
 	company_flag = COMPANY_REMOVED
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg
 	name = "\improper IGE-260 magazine"
-	desc = "A forty round magazine built for 9x19mm, intended for use in the IGE-260 submachine gun."
+	desc = "A forty round magazine built for 9x25mm, intended for use in the IGE-260 submachine gun."
 	icon = 'modular_skyrat/modules/assault_operatives/icons/guns/magazines.dmi'
 	icon_state = "ige_smg_mag"
-	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MMPEACE
+	ammo_type = /obj/item/ammo_casing/c9mm
+	caliber = CALIBER_9MM
 	max_ammo = 40
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_HOLLOWPOINT)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	ammo_type = /obj/item/ammo_casing/c9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg/hp
-	ammo_type = /obj/item/ammo_casing/b9mm/hp
+	ammo_type = /obj/item/ammo_casing/c9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
 // Shotgun
