@@ -1,3 +1,55 @@
+///NRI police patrol with a mission to find out if the fine reason is legitimate and then act from there.
+/datum/pirate_gang/nri_raiders
+	name = "NRI IAC Police Patrol"
+
+	ship_template_id = "nri_raider"
+	ship_name_pool = "imperial_names"
+
+	threat_title = "NRI Audit"
+	threat_content = "Greetings %STATION, this is the %SHIPNAME. \
+	Due to recent Imperial regulatory violations, such as %RESULT and many other smaller issues, your station has been fined %PAYOFF credits. \
+	Inadequate imperial police activity is currently present in your sector, thus the failure to comply might instead result in a military patrol dispatch \
+	for second attempt negotiations. Novaya Rossiyskaya Imperiya collegial secretary out."
+	possible_answers = list("Submit to audit and pay the fine.", "Override the response system for an immediate military dispatch.")
+
+	response_received = "Should be it, thank you for cooperation. Novaya Rossiyskaya Imperiya collegial secretary out."
+	response_too_late = "Your response was very delayed so we have been instructed to send in the patrol ship for second attempt negotiations, stand by."
+	response_not_enough = "Your bank balance does not hold enough money at the moment. We are sending a patrol ship for second attempt negotiations, stand by."
+
+/datum/pirate_gang/nri_raiders/generate_message(payoff)
+	var/number = rand(1,99)
+	///Station name one is the most important pick and is pretty much the station's main argument against getting fined, thus it better be mostly always right.
+	var/station_designation = pick_weight(list(
+	"Nanotrasen Research Station" = 70,
+	"Nanotrasen Refueling Outpost" = 5,
+	"Interdyne Pharmaceuticals Chemical Factory" = 5,
+	"Free Teshari League Engineering Station" = 5,
+	"Agurkrral Military Base" = 5,
+	"Sol Federation Embassy" = 5,
+	"Novaya Rossiyskaya Imperiya Civilian Port" = 5,
+	))
+	///"right" = Right for the raiders to use as an argument; usually pretty difficult to avoid.
+	var/right_pick = pick(
+	"high probability of NRI-affiliated civilian casualties aboard the facility",
+	"highly increased funding by the SolFed authorities; neglected NRI-backed subsidiaries' contracts",
+	"unethical hiring practices and unfair payment allocation for the NRI citizens",
+	"recently discovered BSA-[number] or similar model in close proximity to the neutral space aboard this or nearby affiliated facility",
+	)
+	///"wrong" = Loosely based accusations that can be easily disproven if people think.
+	var/wrong_pick = pick(
+	"inadequate support of the local producer",
+	"unregulated production of Gauss weaponry aboard this installation",
+	"SolFed-backed stationary military formation on the surface of Indecipheres",
+	"AUTOMATED REGULATORY VIOLATION DETECTION SYSTEM CRITICAL FAILURE. PLEASE CONTACT AND INFORM THE DISPATCHED AUTHORITIES TO RESOLVE THE ISSUE. \
+		ANY POSSIBLE INDENTURE HAS BEEN CLEARED. WE APOLOGIZE FOR THE INCONVENIENCE",
+	)
+	var/final_result = pick(right_pick, wrong_pick)
+	var/built_threat_content = replacetext(threat_content, "%SHIPNAME", ship_name)
+	built_threat_content = replacetext(built_threat_content, "%PAYOFF", payoff)
+	built_threat_content = replacetext(built_threat_content, "%RESULT", final_result)
+	built_threat_content = replacetext(built_threat_content, "%STATION", station_designation)
+	return new /datum/comm_message(threat_title, built_threat_content, possible_answers)
+
 /datum/outfit/pirate/nri_officer
 	name = "NRI Field Officer"
 
