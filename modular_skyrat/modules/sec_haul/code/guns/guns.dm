@@ -1,19 +1,3 @@
-/obj/item/gun/ballistic
-	var/emp_damageable = FALSE
-
-/obj/item/gun/ballistic/automatic/emp_act(severity)
-	. = ..()
-	if(emp_damageable)
-		jammed = TRUE
-		playsound(src, 'sound/effects/stall.ogg', 60, TRUE)
-		if(magazine)
-			eject_magazine()
-
-/obj/item/gun/ballistic/automatic/examine(mob/user)
-	. = ..()
-	if(!emp_damageable)
-		. += "It has an EMP prevention system."
-
 /*
 *	GLOCK
 */
@@ -30,8 +14,6 @@
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
-	dirt_modifier = 0.5
-	emp_damageable = TRUE
 	fire_delay = 1.90
 	company_flag = COMPANY_CANTALAN
 
@@ -78,7 +60,6 @@
 	mag_display = FALSE
 	mag_display_ammo = FALSE
 	company_flag = COMPANY_CANTALAN
-	dirt_modifier = 0.7
 
 /obj/item/gun/ballistic/automatic/pistol/g18/add_seclight_point()
 	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
@@ -116,9 +97,6 @@
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
-	realistic = TRUE
-	dirt_modifier = 0.2
-	emp_damageable = FALSE
 	fire_delay = 0.9
 	company_flag = null
 
@@ -144,9 +122,6 @@
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
-	realistic = TRUE
-	dirt_modifier = 0.3
-	emp_damageable = TRUE
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/add_seclight_point()
@@ -163,9 +138,6 @@
 	fire_delay = 8
 	fire_sound_volume = 30
 	spread = 1
-	realistic = TRUE
-	dirt_modifier = 0.1
-	emp_damageable = FALSE
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh
 	name = "12mm PDH-6 magazine"
@@ -176,7 +148,11 @@
 	caliber = CALIBER_12MM
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	possible_types = list("lethal" = AMMO_TYPE_LETHAL, "hollowpoint" = AMMO_TYPE_HOLLOWPOINT, "rubber" = AMMO_TYPE_RUBBER)
+	possible_types = list(
+		AMMO_TYPE_LETHAL,
+		AMMO_TYPE_HOLLOWPOINT,
+		AMMO_TYPE_RUBBER,
+	)
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh/hp
 	ammo_type = /obj/item/ammo_casing/b12mm/hp
@@ -188,7 +164,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/corpo
 	name = "\improper PDH-6M 'Corpo'"
-	desc = "A prestigious ballistic sidearm, from Armadyne's military division, normally given to corporate agents. It has a 3 round burst mode and uses .357 Magnum ammunition."
+	desc = "A prestigious ballistic sidearm, from Armadyne's military division, normally given to high-ranking corporate agents. It has a 3 round burst mode and uses .357 Magnum ammunition."
 	icon_state = "pdh_corpo"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo
@@ -197,8 +173,6 @@
 	burst_size = 3
 	fire_delay = 2
 	spread = 5
-	realistic = TRUE
-	dirt_modifier = 0.1
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo
@@ -207,10 +181,43 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/a357
-	caliber = "357"
+	caliber = CALIBER_357
 	max_ammo = 14
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	possible_types = list("lethal" = AMMO_TYPE_LETHAL)
+	possible_types = list(
+		AMMO_TYPE_LETHAL,
+	)
+
+/*
+* 	PDH STRIKER
+*/
+
+// A temporary home for this gun until the Corporate Diplomat PR goes through.
+/obj/item/gun/ballistic/automatic/pistol/pdh/striker
+	name = "\improper PDH-6 'Striker'"
+	desc = "A sidearm used by Armadyne corporate agents who didn't make the cut for the Corpo model. Chambered in .38 special."
+	icon_state = "pdh_striker"
+	w_class = WEIGHT_CLASS_NORMAL
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_striker
+	can_suppress = FALSE
+	fire_sound = 'modular_skyrat/modules/sec_haul/sound/hpistol_fire.ogg'
+	burst_size = 3
+	fire_delay = 2
+	spread = 9
+	company_flag = COMPANY_ARMADYNE
+
+/obj/item/ammo_box/magazine/multi_sprite/pdh_striker
+	name = "\improper PDH-6M magazine"
+	desc = "A magazine for the PDH-6 'Striker'. Chambered in the strange choice of .38 special."
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon_state = "pdh"
+	ammo_type = /obj/item/ammo_casing/c38
+	caliber = CALIBER_38
+	max_ammo = 10
+	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	possible_types = list(
+		AMMO_TYPE_LETHAL,
+	)
 
 /*
 *	PDH PEACEKEEPER
@@ -223,8 +230,6 @@
 	icon_state = "pdh_peacekeeper"
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/pistol_fire.ogg'
-	realistic = TRUE
-	dirt_modifier = 0.6
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
@@ -268,9 +273,6 @@
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
-	realistic = TRUE
-	dirt_modifier = 0.6
-	emp_damageable = TRUE
 	fire_delay = 4.20
 	company_flag = COMPANY_ARMADYNE
 
@@ -314,8 +316,6 @@
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
-	dirt_modifier = 0.3
-	emp_damageable = TRUE
 	company_flag = COMPANY_IZHEVSK
 
 /obj/item/ammo_box/magazine/multi_sprite/makarov
@@ -356,9 +356,6 @@
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
-	realistic = TRUE
-	dirt_modifier = 0.4
-	emp_damageable = TRUE
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_box/magazine/multi_sprite/mk58
@@ -399,8 +396,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/firefly
 	can_suppress = FALSE
-	realistic = TRUE
-	emp_damageable = TRUE
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/gun/ballistic/automatic/pistol/firefly/add_seclight_point()
@@ -453,9 +448,6 @@
 	mag_display = FALSE
 	mag_display_ammo = FALSE
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_BURST_SHOT)
-	realistic = TRUE
-	dirt_modifier = 1.7 //the croon is an EXTRA piece of shit
-	emp_damageable = TRUE
 	company_flag = COMPANY_IZHEVSK
 
 /obj/item/ammo_box/magazine/multi_sprite/croon
@@ -501,8 +493,6 @@
 	rack_sound = 'sound/weapons/gun/smg/smgrack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
-	realistic = TRUE
-	emp_damageable = TRUE
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer
@@ -550,7 +540,6 @@
 	burst_size = 3
 	can_bayonet = FALSE
 	mag_display = TRUE
-	realistic = TRUE
 	fire_sound_volume = 60
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sniper_fire.ogg'
 	company_flag = COMPANY_ARMADYNE
@@ -681,7 +670,7 @@
 /obj/item/gun/ballistic/automatic/smartgun/process_chamber()
 	. = ..()
 	recharging = TRUE
-	addtimer(CALLBACK(src, .proc/recharge), recharge_time)
+	addtimer(CALLBACK(src, PROC_REF(recharge)), recharge_time)
 
 /obj/item/gun/ballistic/automatic/smartgun/proc/recharge()
 	recharging = FALSE
@@ -758,11 +747,8 @@
 	spread = 10
 	mag_display = TRUE
 	mag_display_ammo = TRUE
-	realistic = TRUE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/ltrifle_fire.ogg'
-	emp_damageable = FALSE
 	can_bayonet = TRUE
-	dirt_modifier = 0.1
 	company_flag = COMPANY_OLDARMS
 
 /obj/item/ammo_box/magazine/multi_sprite/g11
@@ -856,9 +842,7 @@
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	actions_types = null
-	realistic = TRUE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/ltrifle_fire.ogg'
-	emp_damageable = TRUE
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	burst_size = 1
 	fire_delay = 10
@@ -914,12 +898,10 @@
 	can_bayonet = FALSE
 	mag_display = FALSE
 	mag_display_ammo = FALSE
-	realistic = TRUE
 	burst_size = 2
 	fire_delay = 4
 	spread = 10
 	fire_sound = 'sound/weapons/gun/smg/shot_suppressed.ogg'
-	emp_damageable = TRUE
 	company_flag = COMPANY_OLDARMS
 
 /obj/item/gun/ballistic/automatic/vintorez/Initialize(mapload)
@@ -972,9 +954,7 @@
 	can_bayonet = FALSE
 	mag_display = TRUE
 	mag_display_ammo = TRUE
-	realistic = TRUE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/smg_fire.ogg'
-	emp_damageable = TRUE
 	company_flag = COMPANY_BOLT
 
 /obj/item/gun/ballistic/automatic/pcr/add_seclight_point()
@@ -1021,9 +1001,7 @@
 	spread = 15
 	mag_display = TRUE
 	mag_display_ammo = TRUE
-	realistic = TRUE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sfrifle_fire.ogg'
-	emp_damageable = TRUE
 	can_bayonet = TRUE
 	company_flag = COMPANY_BOLT
 
@@ -1077,10 +1055,7 @@
 	burst_size = 2
 	mag_display = TRUE
 	mag_display_ammo = TRUE
-	realistic = TRUE
-	dirt_modifier = 0.4
 	fire_sound = 'sound/weapons/gun/smg/shot.ogg'
-	emp_damageable = TRUE
 	can_bayonet = TRUE
 	company_flag = COMPANY_ARMADYNE
 

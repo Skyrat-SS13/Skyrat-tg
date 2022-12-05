@@ -154,12 +154,12 @@
 	young = TRUE //No.
 
 /obj/item/toy/plush/skyrat/riffplush
-  name = "valid plushie"
-  desc = "A stuffed toy in the likeness of a peculiar demonic one. Likely turned into a plushie to sell such. They look quite alright about it."
-  icon_state = "plushie_riffy"
-  attack_verb_continuous = list("slaps", "challenges")
-  attack_verb_simple = list("slap", "challenge")
-  squeak_override = list('sound/weapons/slap.ogg' = 1)
+	name = "valid plushie"
+	desc = "A stuffed toy in the likeness of a peculiar demonic one. Likely turned into a plushie to sell such. They look quite alright about it."
+	icon_state = "plushie_riffy"
+	attack_verb_continuous = list("slaps", "challenges")
+	attack_verb_simple = list("slap", "challenge")
+	squeak_override = list('sound/weapons/slap.ogg' = 1)
 
 /obj/item/toy/plush/skyrat/ian
 	name = "plush corgi"
@@ -231,12 +231,12 @@
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/wurble.ogg' = 1)
 
 /obj/item/toy/plush/skyrat/commanding_teshari
-    name = "commanding teshari plushy"
-    desc = "A very soft plush resembling a certain science-loving, command inclined Teshari. Just holding it makes you feel cared for."
-    icon_state = "plushie_alara"
-    attack_verb_continuous = list("peeps", "wurbles", "hugs")
-    attack_verb_simple = list("peeps", "wurbles", "hugs")
-    squeak_override = list('modular_skyrat/modules/emotes/sound/voice/peep_once.ogg' = 1)
+	name = "commanding teshari plushy"
+	desc = "A very soft plush resembling a certain science-loving, command inclined Teshari. Just holding it makes you feel cared for."
+	icon_state = "plushie_alara"
+	attack_verb_continuous = list("peeps", "wurbles", "hugs")
+	attack_verb_simple = list("peeps", "wurbles", "hugs")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/peep_once.ogg' = 1)
 
 /obj/item/toy/plush/skyrat/breakdancing_bird
 	name = "breakdancing bird plushie"
@@ -470,8 +470,6 @@
 	squeak_override = list('sound/effects/mousesqueek.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/mothsqueak.ogg' = 1,)
 	responses = list("Rabbits are prey animals and are therefore constantly aware of their surroundings.", "Things to jump up on (they like to be in high places)", "become a rabbit today!", "Be cunning and full of tricks...", "Subscription confirmed! Thank you for choosing RABBITFACTS +TM+!", "Holland Lops are a breed of rabbit originating in the Netherlands.", "Rabbits may need medication to keep themselves healthy, and that's ok! Make sure to take yours too!", "rabbits really liked this product", "A healthy rabbit diet includes fresh vegetables.", "Rabbits do not hibernate. Their schedules are much too busy.", "the rate of bunnies is measured by RPB (rabbits per bunny)", )
 
- //All lowercase messages are intentional
-
 /obj/item/toy/plush/skyrat/chunko/andrew
 	name = "chunko fop green and orange bunny"
 	desc = "An 'adorable', if big eyed rabbit girl(?). This one is green and orange. Produced by the Chunko Fop Company <b><i>TM</i></b>. Spits out various Bunnies of dubious existance."
@@ -480,7 +478,7 @@
 	attack_verb_continuous = list("pats", "hugs", "scolds", "pets")
 	attack_verb_simple = list("pat", "hug", "scold", "pet")
 	squeak_override = list('sound/effects/mousesqueek.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/mothsqueak.ogg' = 1,)
-	//All lowercase messages are intentional
+	// All lowercase messages are intentional
 	responses = list("bunny who you best pray you never encounter, lest you suffer a fate worse than death.", "this is a bunny!", "I wonder what would happen if you took bunnies, and combined them with rabbits, and merged their properties and characteristics. It's something to think about.", "If you're cold, they're cold. Give them the deed to your house.", "bunny that goes yeah! woo! yeah! woo! yeah! woo! yeah! woo! yeah! woo! yeah!", "the bunnies are beyond my comprehension", "it's a bunny thing, you wouldn't get it", "this bunny has an unfathomable power level", "%pull the string and I'll bink at you...I'm your bunny.", "Bunny (1954)", "the bunny that pulls the strings....", )
 
 /obj/item/toy/plush/skyrat/chunko/inessa
@@ -556,3 +554,21 @@
 	name = "handsome chef plushie"
 	desc = "A need to cook only rivaled by a hunger for fox tail."
 	icon_state = "plushie_azyre"
+
+//Donation reward for Razurath
+/obj/item/toy/plush/skyrat/plushie_razurath
+	name = "science shark plushie"
+	desc = "A determined scientist with a hint of mischief in her smile."
+	icon_state = "plush_scishark"
+	attack_verb_continuous = list("bites", "eats", "fin slaps")
+	attack_verb_simple = list("bite", "eat", "fin slap")
+	squeak_override = list('sound/weapons/bite.ogg'=1)
+
+//Donation reward for October23
+/obj/item/toy/plush/skyrat/plushie_elofy
+	name = "bumbling wolfgirl plushie"
+	desc = "A white-haired wolfgirl in a stylish red security skirt. Despite her scary cybernetic arm, she is soft to hug and only wishes to be praised and comforted."
+	icon_state = "plush_lonie"
+	attack_verb_continuous = list("snuggles", "nibbles", "awoos", "tail whaps")
+	attack_verb_simple = list("snuggle", "nibble", "awoo", "tail whap")
+	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/merowr.ogg' = 1)

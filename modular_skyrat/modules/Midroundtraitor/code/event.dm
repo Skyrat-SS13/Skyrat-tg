@@ -26,12 +26,12 @@
 	var/list/spawn_locs = list()
 
 /datum/dynamic_ruleset/midround/from_ghosts/lone_infiltrator/execute()
-	for(var/obj/effect/landmark/carpspawn/C in GLOB.landmarks_list)
-		spawn_locs += (C.loc)
-	if(!spawn_locs.len)
+	for(var/obj/effect/landmark/carpspawn/carp in GLOB.landmarks_list)
+		spawn_locs += carp.loc
+	if(!length(spawn_locs))
 		message_admins("No valid spawn locations found, aborting...")
 		return MAP_ERROR
-	return TRUE
+	return ..()
 
 /datum/dynamic_ruleset/midround/from_ghosts/lone_infiltrator/generate_ruleset_body(mob/applicant)
 	var/datum/mind/player_mind = new /datum/mind(applicant.key)

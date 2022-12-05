@@ -24,7 +24,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	heat_protection = CHEST|ARMS
 
-/obj/item/clothing/suit/det_suit/cowboyvest
+/obj/item/clothing/suit/jacket/det_suit/cowboyvest
 	name = "blonde cowboy vest"
 	desc = "A white cream vest lined with... fur, of all things, for desert weather. There's a small deer head logo sewn into the vest."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -83,12 +83,12 @@
 /// PRISONER
 /obj/item/clothing/under/rank/prisoner/protcust
 	name = "protective custody prisoner jumpsuit"
-	desc = "A mustard coloured prison jumpsuit, often worn by former Security members, informants and former CentComm employees. Its suit sensors are stuck in the \"Fully On\" position."
+	desc = "A mustard coloured prison jumpsuit, often worn by former Security members, informants and former CentCom employees. Its suit sensors are stuck in the \"Fully On\" position."
 	greyscale_colors = "#FFB600"
 
 /obj/item/clothing/under/rank/prisoner/skirt/protcust
 	name = "protective custody prisoner jumpskirt"
-	desc = "A mustard coloured prison jumpskirt, often worn by former Security members, informants and former CentComm employees. Its suit sensors are stuck in the \"Fully On\" position."
+	desc = "A mustard coloured prison jumpskirt, often worn by former Security members, informants and former CentCom employees. Its suit sensors are stuck in the \"Fully On\" position."
 	greyscale_colors = "#FFB600"
 	supports_variations_flags = NONE
 

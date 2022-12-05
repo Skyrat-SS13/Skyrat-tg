@@ -98,8 +98,10 @@
 
 	if(iscarbon(attached_mask.loc)) // If mask is on a mob
 		var/mob/living/carbon/attached_mob = attached_mask.loc
+		// Close external air tank
+		if (attached_mob.external)
+			attached_mob.close_externals()
 		attached_mob.transferItemToLoc(attached_mask, src, TRUE)
-		attached_mob.internal = null
 	else
 		attached_mask.forceMove(src)
 
@@ -128,7 +130,8 @@
 
 	usr.visible_message(span_warning("[usr] attaches the [attached_mask] to [target]."), span_notice("You attach the [attached_mask] to [target]"))
 
-	target.internal = attached_tank
+	// Open the tank externally
+	target.open_internals(attached_tank, is_external = TRUE)
 	mask_out = TRUE
 	START_PROCESSING(SSmachines, src)
 	update_icon()
@@ -137,10 +140,15 @@
 	if(!mask_out) // If not on someone, stop processing
 		return PROCESS_KILL
 
+	var/mob/living/carbon/carbon_target = attached_mask.loc
 	if(get_dist(src, get_turf(attached_mask)) > 1) // If too far away, detach
-		to_chat(attached_mask.loc, span_warning("[attached_mask] is ripped off of your face!"))
+		to_chat(carbon_target, span_warning("[attached_mask] is ripped off of your face!"))
 		retract_mask()
 		return PROCESS_KILL
+
+	// Attempt to restart airflow if it was temporarily interrupted after mask adjustment.
+	if(attached_tank && istype(carbon_target) && !carbon_target.external && !attached_mask.mask_adjusted)
+		carbon_target.open_internals(attached_tank, is_external = TRUE)
 
 /obj/machinery/anesthetic_machine/Destroy()
 	if(mask_out)
@@ -157,8 +165,6 @@
 /obj/item/clothing/mask/breath/anesthetic
 	/// What machine is the mask currently attached to?
 	var/datum/weakref/attached_machine
-
-	clothing_flags = MASKINTERNALS | MASK_EXTEND_RANGE
 
 /obj/item/clothing/mask/breath/anesthetic/Initialize(mapload)
 	. = ..()
@@ -180,6 +186,14 @@
 
 		var/obj/machinery/anesthetic_machine/source_machine = attached_machine
 		source_machine.retract_mask()
+
+/obj/item/clothing/mask/breath/anesthetic/adjustmask(mob/living/carbon/user)
+	..()
+	// Air only goes through the mask, so temporarily pause airflow if mask is getting adjusted.
+	// Since the mask is NODROP, the only possible user is the wearer
+	var/mob/living/carbon/carbon_target = loc
+	if(mask_adjusted && carbon_target.external)
+		carbon_target.close_externals()
 
 /// A boxed version of the Anesthetic Machine. This is what is printed from the medical prolathe.
 /obj/item/anesthetic_machine_kit

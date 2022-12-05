@@ -39,11 +39,11 @@
 	markings_alpha = 130 //This is set lower than the other so that the alpha values don't stack on top of each other so much
 
 	bodypart_overrides = list( //Overriding jelly bodyparts
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/roundstartslime,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/roundstartslime,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/roundstartslime,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/roundstartslime,
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/roundstartslime,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/roundstartslime,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/roundstartslime,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/roundstartslime,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/roundstartslime,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/roundstartslime,
 	)
 
@@ -424,7 +424,7 @@
 				alterer,
 				"Choose your character's breasts size:",
 				"DNA Alteration",
-				GLOB.preference_breast_sizes,
+				GLOB.breast_size_to_number,
 			)
 			if(!new_size)
 				return

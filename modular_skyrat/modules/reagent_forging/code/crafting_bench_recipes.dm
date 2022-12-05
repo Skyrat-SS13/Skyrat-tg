@@ -97,7 +97,7 @@
 	recipe_requirements = list(
 		/obj/item/forging/complete/plate = 8,
 	)
-	resulting_item = /obj/item/shield/riot/buckler/reagent_weapon/pavise
+	resulting_item = /obj/item/shield/buckler/reagent_weapon/pavise
 	required_good_hits = 16
 
 /datum/crafting_bench_recipe/buckler
@@ -105,7 +105,7 @@
 	recipe_requirements = list(
 		/obj/item/forging/complete/plate = 5,
 	)
-	resulting_item = /obj/item/shield/riot/buckler/reagent_weapon
+	resulting_item = /obj/item/shield/buckler/reagent_weapon
 	required_good_hits = 10
 
 /datum/crafting_bench_recipe/coil

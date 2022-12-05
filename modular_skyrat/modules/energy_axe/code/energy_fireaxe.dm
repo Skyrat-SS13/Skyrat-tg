@@ -21,8 +21,8 @@
 
 /obj/item/fireaxe/energy/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/energy_wield, override = TRUE)
-	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/energy_unwield, override = TRUE)
+	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, PROC_REF(energy_wield), override = TRUE)
+	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, PROC_REF(energy_unwield), override = TRUE)
 	AddComponent(/datum/component/two_handed, force_unwielded = 10, force_wielded = 33, icon_wielded = "[base_icon_state]1", wieldsound = 'sound/weapons/saberon.ogg', unwieldsound = 'sound/weapons/saberoff.ogg')
 
 /obj/item/fireaxe/energy/proc/energy_wield(obj/item/source, mob/living/carbon/user)

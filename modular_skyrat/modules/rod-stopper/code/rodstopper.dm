@@ -27,4 +27,4 @@
 /obj/machinery/rodstopper/proc/warn_area()
 	playsound(src, 'sound/misc/bloblarm.ogg', 100)
 	say("Warning! Please clear the area! Failure to do so will result in your immediate annihilation!")
-	addtimer(CALLBACK(src, .proc/warn_area), 15 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE) // the sound is 7 seconds, however.
+	addtimer(CALLBACK(src, PROC_REF(warn_area)), 15 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE) // the sound is 7 seconds, however.

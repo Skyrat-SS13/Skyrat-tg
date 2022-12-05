@@ -29,15 +29,11 @@
 	surplus = 50
 	progression_minimum = 30 MINUTES
 
-/datum/uplink_item/dangerous/holocarp
+/datum/uplink_item/dangerous/guardian/carp
 	name = "Holocarp"
 	desc = "Fishsticks prepared through ritualistic means in honor of the god Carp-sie, capable of binding a holocarp \
 			to act as a servant and guardian to their host."
 	item = /obj/item/guardiancreator/carp/choose
-	cost = 10
-	surplus = 0
-	restricted = TRUE
-	progression_minimum = 30 MINUTES
 
 /datum/uplink_item/dangerous/smgc20r_traitor
 	name = "C-20r Submachine Gun"
@@ -174,9 +170,9 @@
 
 /datum/uplink_item/device_tools/medkit_traitor
 	name = "Syndicate Combat Medic Kit"
-	desc = "This first aid kit is a suspicious brown and red. Included is a combat stimulant injector \
-			for rapid healing, a medical night vision HUD for quick identification of injured personnel, \
-			and other supplies helpful for a field medic."
+	desc = "This first aid kit is a suspicious black and red. Included is a number of atropine medipens \
+			for rapid stabilization, sutures and regenerative mesh for wound treatment, and patches \
+			for faster healing on the field. Also comes with basic medical tools and sterlizer."
 	item = /obj/item/storage/medkit/tactical
 	cost = 4
 	progression_minimum = 15 MINUTES
