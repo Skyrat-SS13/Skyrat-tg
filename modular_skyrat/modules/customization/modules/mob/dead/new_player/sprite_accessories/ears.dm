@@ -351,14 +351,14 @@
 	name = "Mouse II"
 	icon_state = "mouse_two"
 
-/datum/sprite_accessory/ears/mutant/big/temp3
+/datum/sprite_accessory/ears/mutant/big/fourears1
 	name = "Four Ears 1"
 	icon_state = "four_ears_1"
 
-/datum/sprite_accessory/ears/mutant/temp
+/datum/sprite_accessory/ears/mutant/fourears2
 	name = "Four Ears 2"
 	icon_state = "four_ears_2"
 
-/datum/sprite_accessory/ears/mutant/big/temp2
+/datum/sprite_accessory/ears/mutant/big/fourears3
 	name = "Four Ears 3"
 	icon_state = "four_ears_3"
