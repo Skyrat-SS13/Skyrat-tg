@@ -201,6 +201,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 		living_user.set_combat_indicator(FALSE)
 
 /datum/emote/living/surrender/select_message_type(mob/user, intentional)
-	if(user.body_position == LYING_DOWN)
+	var/mob/living/living_mob = user
+	if(living_mob?.body_position == LYING_DOWN)
 		return "raises their hands defensively! They surrender%s!"
 	. = ..()
