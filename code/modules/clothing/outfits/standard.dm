@@ -114,6 +114,7 @@
 	head = /obj/item/clothing/head/helmet/bluetaghelm
 	shoes = /obj/item/clothing/shoes/sneakers/blue
 
+<<<<<<< HEAD
 /datum/outfit/pirate
 	name = "Space Pirate"
 
@@ -194,6 +195,8 @@
 	mask = /obj/item/clothing/mask/cigarette/cigar/havana
 	l_pocket = /obj/item/lighter
 
+=======
+>>>>>>> e9cff525dc5 (Refactors Pirates into Pirate Gangs, Adds the Psyker-gang as new pirates (#71650))
 /datum/outfit/tunnel_clown
 	name = "Tunnel Clown"
 

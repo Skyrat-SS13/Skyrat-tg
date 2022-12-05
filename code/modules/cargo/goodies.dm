@@ -30,8 +30,13 @@
 	desc = "The HoS took your gun and your badge? No problem! Just pay the absurd taxation fee and you too can be reunited with the lethal power of a .38!"
 	cost = PAYCHECK_CREW * 40 //they really mean a premium here
 	access_view = ACCESS_DETECTIVE
+<<<<<<< HEAD
 	contains = list(/obj/item/gun/ballistic/revolver/detective)
 */ //SKYRAT EDIT END
+=======
+	contains = list(/obj/item/gun/ballistic/revolver/c38/detective)
+
+>>>>>>> e9cff525dc5 (Refactors Pirates into Pirate Gangs, Adds the Psyker-gang as new pirates (#71650))
 /datum/supply_pack/goody/stingbang
 	name = "Stingbang Single-Pack"
 	desc = "Contains one \"stingbang\" grenade, perfect for playing meanhearted pranks."
