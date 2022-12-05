@@ -122,8 +122,7 @@
 			write_preference(GLOB.preference_entries[/datum/preference/choiced/breasts_size], GLOB.breast_size_translation["[min(old_breast_prefs, 10)]"])
 
 	if(current_version < 3)
-		var/old_species
-		READ_FILE(save["species"], old_species)
+		var/old_species = save_data["species"]
 		if(istext(old_species) && (old_species in list("synthhuman", "synthliz", "synthmammal", "ipc")))
 
 			var/list/new_color
@@ -132,7 +131,7 @@
 				write_preference(GLOB.preference_entries[/datum/preference/choiced/mutant_choice/synth_chassis], "Human Chassis")
 				write_preference(GLOB.preference_entries[/datum/preference/choiced/mutant_choice/synth_head], "Human Head")
 				// Get human skintone instead of mutant color
-				READ_FILE(save["skin_tone"], new_color)
+				new_color = save_data["skin_tone"]
 				new_color = skintone2hex(new_color)
 			else if(old_species == "synthliz")
 				write_preference(GLOB.preference_entries[/datum/preference/choiced/mutant_choice/synth_chassis], "Lizard Chassis")
@@ -148,7 +147,7 @@
 
 			// If human code hasn't kicked in, grab mutant colour.
 			if(!new_color)
-				READ_FILE(save["mutant_colors_color"], new_color)
+				new_color = save_data["mutant_colors_color"]
 				if(islist(new_color) && new_color.len > 0)
 					new_color = sanitize_hexcolor(new_color[1])
 				// Just let validation pick it's own value.
