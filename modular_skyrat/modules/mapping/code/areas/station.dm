@@ -77,6 +77,12 @@
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "corrections_officer"
 
+// Evidence Storage
+/area/station/security/evidence
+	name = "Evidence Storage"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "evidence"
+
 // Department power stations
 /area/station/cargo/power_station
 	name = "Cargo Power Station"
