@@ -524,19 +524,15 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 		ai_controller?.blackboard[BB_DOG_IS_SLOW] = TRUE
 		is_slow = TRUE
 
-<<<<<<< HEAD:code/modules/mob/living/simple_animal/friendly/dog.dm
-		old = TRUE //SKYRAT EDIT ADDITION
-
-/* SKYRAT EDIT REMOVAL
-/mob/living/simple_animal/pet/dog/corgi/ian/Life(delta_time = SSMOBS_DT, times_fired)
-=======
+// SKYRAT EDIT REMOVAL BEGIN - no ian memory
+/*
 /mob/living/basic/pet/dog/corgi/ian/Life(delta_time = SSMOBS_DT, times_fired)
->>>>>>> ebc0227176b (Makes dog a basic mob [MDB IGNORE] (#70799)):code/modules/mob/living/basic/pets/dog.dm
 	if(!stat && SSticker.current_state == GAME_STATE_FINISHED && !memory_saved)
 		Write_Memory(FALSE)
 		memory_saved = TRUE
 	..()
 */
+// SKYRAT EDIT REMOVAL END
 
 /mob/living/basic/pet/dog/corgi/ian/death()
 	if(!memory_saved)
