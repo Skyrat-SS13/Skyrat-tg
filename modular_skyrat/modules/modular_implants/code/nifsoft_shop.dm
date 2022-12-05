@@ -2,6 +2,7 @@
 	name = "NIFSoft Vendor"
 	desc = "Money can be exchanged here for NIFSofts and other NIF goods." //Placeholder description
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/machines/vendors.dmi'
+	refill_canister = /obj/item/vending_refill/nifsoft_shop
 	icon_state = "proj"
 	density = FALSE
 	default_price = 400
@@ -32,3 +33,6 @@
 		/obj/item/autosurgeon/organ/nif/ghost_role = 5,
 	)
 
+
+/obj/item/vending_refill/nifsoft_shop
+	machine_name = "NIFSoft Vendor"
