@@ -66,6 +66,10 @@
 	/// This mob will not attack mobs randomly if not in anger, the time doubles as a check for anger
 	var/anger_timer_id = null
 
+/mob/living/simple_animal/hostile/megafauna/gladiator/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NO_FLOATING_ANIM, INNATE_TRAIT)
+
 /mob/living/simple_animal/hostile/megafauna/gladiator/Destroy()
 	get_calm()
 	return ..()
