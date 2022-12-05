@@ -484,10 +484,6 @@
 		/mob/living/simple_animal/hostile/zombie/cheesezombie,
 		/mob/living/simple_animal/hostile/zombie/nocorpse,
 		/mob/living/simple_animal/pet/bumbles,
-		/mob/living/simple_animal/pet/dog/corgi/borgi,
-		/mob/living/simple_animal/pet/dog/dobermann,
-		/mob/living/simple_animal/pet/dog/dobermann/walter,
-		/mob/living/simple_animal/pet/dog/markus,
 		/mob/living/simple_animal/pet/gondola/funky,
 		/mob/living/simple_animal/pet/poppy,
 
