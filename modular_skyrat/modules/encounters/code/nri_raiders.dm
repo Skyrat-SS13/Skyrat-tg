@@ -30,10 +30,10 @@
 	))
 	///"right" = Right for the raiders to use as an argument; usually pretty difficult to avoid.
 	var/right_pick = pick(
-	"high probability of NRI-affiliated civilian casualties aboard the facility",
-	"highly increased funding by the SolFed authorities; neglected NRI-backed subsidiaries' contracts",
-	"unethical hiring practices and unfair payment allocation for the NRI citizens",
-	"recently discovered BSA-[number] or similar model in close proximity to the neutral space aboard this or nearby affiliated facility",
+		"high probability of NRI-affiliated civilian casualties aboard the facility",
+		"highly increased funding by the SolFed authorities; neglected NRI-backed subsidiaries' contracts",
+		"unethical hiring practices and unfair payment allocation for the NRI citizens",
+		"recently discovered BSA-[number] or similar model in close proximity to the neutral space aboard this or nearby affiliated facility",
 	)
 	///"wrong" = Loosely based accusations that can be easily disproven if people think.
 	var/wrong_pick = pick(
@@ -75,8 +75,10 @@
 	id = /obj/item/card/id/advanced
 	id_trim = /datum/id_trim/nri_raider/officer
 
-/datum/outfit/pirate/nri_officer/post_equip(mob/living/carbon/human/equipped_human, visualsOnly)
+/datum/outfit/pirate/nri_officer/post_equip(mob/living/carbon/human/equipped)
 	. = ..()
+	equipped.faction -= "pirate"
+	equipped.faction |= "raider"
 
 /datum/id_trim/nri_raider/officer
 	assignment = "NRI Field Officer"
@@ -105,8 +107,10 @@
 	id = /obj/item/card/id/advanced
 	id_trim = /datum/id_trim/nri_raider
 
-/datum/outfit/pirate/nri_marine/post_equip(mob/living/carbon/human/equipped_human, visualsOnly)
+/datum/outfit/pirate/nri_marine/post_equip(mob/living/carbon/human/equipped)
 	. = ..()
+	equipped.faction -= "pirate"
+	equipped.faction |= "raider"
 
 /datum/id_trim/nri_raider
 	assignment = "NRI Marine"
@@ -142,7 +146,6 @@
 	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/Destroy()
-	. = ..()
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
 	return ..()
 
