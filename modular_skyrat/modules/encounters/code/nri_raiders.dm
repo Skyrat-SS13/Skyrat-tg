@@ -236,7 +236,7 @@
 	port_direction = EAST
 	preferred_direction = EAST
 	callTime = 2 MINUTES
-	rechargeTime = 5 MINUTES
+	rechargeTime = 3 MINUTES
 	movement_force = list("KNOCKDOWN"=0,"THROW"=0)
 	can_move_docking_ports = TRUE
 	takeoff_sound = sound('modular_skyrat/modules/encounters/sounds/engine_ignit_int.ogg')
