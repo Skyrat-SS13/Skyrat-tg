@@ -47,9 +47,14 @@
 	return speech_args[SPEECH_MESSAGE]
 
 /obj/item/organ/internal/tongue/Insert(mob/living/carbon/tongue_owner, special = FALSE, drop_if_replaced = TRUE)
+<<<<<<< HEAD
 	..()
 	if(say_mod && tongue_owner.dna && tongue_owner.dna.species)
 		tongue_owner.dna.species.say_mod = say_mod
+=======
+	. = ..()
+	ADD_TRAIT(tongue_owner, TRAIT_SPEAKS_CLEARLY, SPEAKING_FROM_TONGUE)
+>>>>>>> fc576c8656c (Inserted tongues and HUD implants no longer exist outside the body. (#71737))
 	if (modifies_speech)
 		RegisterSignal(tongue_owner, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	tongue_owner.UnregisterSignal(tongue_owner, COMSIG_MOB_SAY)
