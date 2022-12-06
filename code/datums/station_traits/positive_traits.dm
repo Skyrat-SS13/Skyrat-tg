@@ -322,7 +322,7 @@
 		/datum/job/corrections_officer = null,
 		/datum/job/customs_agent = null,
 		/datum/job/engineering_guard = null,
-		/datum/job/nanotrasen_consultant = null,
+		/datum/job/corporate_diplomat = null,
 		/datum/job/orderly = null,
 		/datum/job/science_guard = null,
 		/datum/job/security_medic = null,
