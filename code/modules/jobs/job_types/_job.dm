@@ -441,7 +441,7 @@
 /// Handles finding and picking a valid roundstart effect landmark spawn point, in case no uncommon different spawning events occur.
 /datum/job/proc/get_default_roundstart_spawn_point()
 	for(var/obj/effect/landmark/start/spawn_point as anything in GLOB.start_landmarks_list)
-		if(spawn_point.name != job_spawn_title) // SKYRAT EDIT - Alt job titles // if(spawn_point.name != title) // Original code
+		if(spawn_point.name != job_spawn_title) // SKYRAT EDIT - Alt job titles - ORIGINAL: if(spawn_point.name != title)
 			continue
 		. = spawn_point
 		if(spawn_point.used) //so we can revert to spawning them on top of eachother if something goes wrong
