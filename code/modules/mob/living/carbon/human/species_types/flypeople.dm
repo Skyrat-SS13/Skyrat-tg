@@ -2,12 +2,7 @@
 	name = "Flyperson"
 	plural_form = "Flypeople"
 	id = SPECIES_FLYPERSON
-<<<<<<< HEAD
-	say_mod = "buzzes"
 	species_traits = list(HAS_FLESH, HAS_BONE, TRAIT_ANTENNAE, HAIR, FACEHAIR) //SKYRAT EDIT - gives flypeople hair
-=======
-	species_traits = list(HAS_FLESH, HAS_BONE, TRAIT_ANTENNAE)
->>>>>>> 4fd404aa8f1 (Moves speaking verbs to tongues + subtypes, moves wing sprites to wing subtypes, bodypart damage examines to limbs, fixes sign language not working without a tongue (#71635))
 	inherent_traits = list(
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_TACKLING_FRAIL_ATTACKER,

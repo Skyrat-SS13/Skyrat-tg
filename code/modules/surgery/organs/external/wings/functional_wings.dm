@@ -5,27 +5,6 @@
 	icon_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "flight"
 
-<<<<<<< HEAD:code/modules/surgery/organs/external/wings.dm
-	zone = BODY_ZONE_CHEST
-	slot = ORGAN_SLOT_EXTERNAL_WINGS
-	layers = ALL_EXTERNAL_OVERLAYS
-
-	use_mob_sprite_as_obj_sprite = TRUE
-	feature_key = "wings"
-
-/obj/item/organ/external/wings/can_draw_on_bodypart(mob/living/carbon/human/human)
-	if(!human.wear_suit)
-		return TRUE
-	if(!(human.wear_suit.flags_inv & HIDEJUMPSUIT))
-		return TRUE
-	if(human.wear_suit.species_exception && is_type_in_list(src, human.wear_suit.species_exception))
-		return TRUE
-	return FALSE
-
-///Checks if the wings can soften short falls
-/obj/item/organ/external/wings/proc/can_soften_fall()
-	return FALSE // SKYRAT EDIT - No free fall softening for everyone - Original: return TRUE
-=======
 /datum/action/innate/flight/Activate()
 	var/mob/living/carbon/human/human = owner
 	var/obj/item/organ/external/wings/functional/wings = human.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS)
@@ -36,7 +15,6 @@
 		else
 			to_chat(human, span_notice("You beat your wings and begin to hover gently above the ground..."))
 			human.set_resting(FALSE, TRUE)
->>>>>>> 4fd404aa8f1 (Moves speaking verbs to tongues + subtypes, moves wing sprites to wing subtypes, bodypart damage examines to limbs, fixes sign language not working without a tongue (#71635)):code/modules/surgery/organs/external/wings/functional_wings.dm
 
 ///The true wings that you can use to fly and shit (you cant actually shit with them)
 /obj/item/organ/external/wings/functional
@@ -51,7 +29,7 @@
 	///Are our wings open or closed?
 	var/wings_open = FALSE
 
-// SKYRAT EDIT START - No free fall sooftening for everyone
+// SKYRAT EDIT START - No free fall softening for everyone
 /obj/item/organ/external/wings/functional/can_soften_fall()
 	return TRUE
 // SKYRAT EDIT END
@@ -186,79 +164,6 @@
 	desc = "Using microscopic hover-engines, or \"microwings,\" as they're known in the trade, these tiny devices are able to lift a few grams at a time. Gathering enough of them, and you can lift impressively large things."
 	stored_feature_id = "Robotic"
 
-<<<<<<< HEAD:code/modules/surgery/organs/external/wings.dm
-	//dna_block = DNA_MOTH_WINGS_BLOCK SKYRAT EDIT REMOVAL
-
-	///Are we burned?
-	var/burnt = FALSE
-	///Store our old sprite here for if our burned wings are healed
-	var/original_sprite = ""
-
-/obj/item/organ/external/wings/moth/get_global_feature_list()
-	return GLOB.sprite_accessories["wings"] //SKYRAT EDIT CHANGE
-
-/obj/item/organ/external/wings/moth/can_draw_on_bodypart(mob/living/carbon/human/human)
-	if(!(human.wear_suit?.flags_inv & HIDEMUTWINGS))
-		return TRUE
-	return FALSE
-
-/obj/item/organ/external/wings/moth/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
-	. = ..()
-
-	RegisterSignal(reciever, COMSIG_HUMAN_BURNING, PROC_REF(try_burn_wings))
-	RegisterSignal(reciever, COMSIG_LIVING_POST_FULLY_HEAL, PROC_REF(heal_wings))
-	RegisterSignal(reciever, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(update_float_move))
-
-/obj/item/organ/external/wings/moth/Remove(mob/living/carbon/organ_owner, special, moving)
-	. = ..()
-
-	UnregisterSignal(organ_owner, list(COMSIG_HUMAN_BURNING, COMSIG_LIVING_POST_FULLY_HEAL, COMSIG_MOVABLE_PRE_MOVE))
-	REMOVE_TRAIT(organ_owner, TRAIT_FREE_FLOAT_MOVEMENT, REF(src))
-
-/obj/item/organ/external/wings/moth/can_soften_fall()
-	return !burnt
-
-///Check if we can flutter around
-/obj/item/organ/external/wings/moth/proc/update_float_move()
-	SIGNAL_HANDLER
-
-	if(!isspaceturf(owner.loc) && !burnt)
-		var/datum/gas_mixture/current = owner.loc.return_air()
-		if(current && (current.return_pressure() >= ONE_ATMOSPHERE*0.85)) //as long as there's reasonable pressure and no gravity, flight is possible
-			ADD_TRAIT(owner, TRAIT_FREE_FLOAT_MOVEMENT, REF(src))
-			return
-
-	REMOVE_TRAIT(owner, TRAIT_FREE_FLOAT_MOVEMENT, REF(src))
-
-///check if our wings can burn off ;_;
-/obj/item/organ/external/wings/moth/proc/try_burn_wings(mob/living/carbon/human/human)
-	SIGNAL_HANDLER
-
-	if(!burnt && human.bodytemperature >= 800 && human.fire_stacks > 0) //do not go into the extremely hot light. you will not survive
-		to_chat(human, span_danger("Your precious wings burn to a crisp!"))
-		human.add_mood_event("burnt_wings", /datum/mood_event/burnt_wings)
-
-		burn_wings()
-		human.update_body_parts()
-
-///burn the wings off
-/obj/item/organ/external/wings/moth/proc/burn_wings()
-	burnt = TRUE
-
-	original_sprite = sprite_datum.name
-	set_sprite("Burnt Off")
-
-///heal our wings back up!!
-/obj/item/organ/external/wings/moth/proc/heal_wings(datum/source, heal_flags)
-	SIGNAL_HANDLER
-
-	if(!burnt)
-		return
-
-	if(heal_flags & (HEAL_LIMBS|HEAL_ORGANS))
-		burnt = FALSE
-		set_sprite(original_sprite)
-=======
 ///skeletal wings, which relate to skeletal races.
 /obj/item/organ/external/wings/functional/skeleton
 	name = "skeletal wings"
@@ -283,4 +188,3 @@
 	name = "megamoth wings"
 	desc = "Don't get murderous."
 	stored_feature_id = "Megamoth"
->>>>>>> 4fd404aa8f1 (Moves speaking verbs to tongues + subtypes, moves wing sprites to wing subtypes, bodypart damage examines to limbs, fixes sign language not working without a tongue (#71635)):code/modules/surgery/organs/external/wings/functional_wings.dm

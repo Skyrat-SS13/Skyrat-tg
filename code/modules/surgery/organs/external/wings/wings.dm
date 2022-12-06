@@ -21,4 +21,4 @@
 
 ///Checks if the wings can soften short falls
 /obj/item/organ/external/wings/proc/can_soften_fall()
-	return TRUE
+	return FALSE // SKYRAT EDIT - No free fall softening for everyone - Original: return TRUE

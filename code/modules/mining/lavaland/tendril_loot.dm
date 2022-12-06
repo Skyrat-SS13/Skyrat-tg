@@ -535,26 +535,6 @@
 
 /datum/reagent/flightpotion/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume, show_message = TRUE)
 	. = ..()
-<<<<<<< HEAD
-	if(iscarbon(exposed_mob) && exposed_mob.stat != DEAD)
-		var/mob/living/carbon/exposed_carbon = exposed_mob
-		var/holycheck = ishumanbasic(exposed_carbon)
-		if(!HAS_TRAIT(exposed_carbon, TRAIT_CAN_USE_FLIGHT_POTION) || reac_volume < 5)
-			if((methods & INGEST) && show_message)
-				to_chat(exposed_carbon, span_notice("<i>You feel nothing but a terrible aftertaste.</i>"))
-			return
-		if(exposed_mob.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS)) //Skyrat Edit
-			to_chat(exposed_carbon, span_userdanger("A terrible pain travels down your back as your wings change shape!"))
-		else
-			to_chat(exposed_carbon, span_userdanger("A terrible pain travels down your back as wings burst out!"))
-		exposed_carbon.dna.species.GiveSpeciesFlight(exposed_carbon)
-		if(holycheck)
-			to_chat(exposed_carbon, span_notice("You feel blessed!"))
-			ADD_TRAIT(exposed_carbon, TRAIT_HOLY, FLIGHTPOTION_TRAIT)
-		playsound(exposed_carbon.loc, 'sound/items/poster_ripped.ogg', 50, TRUE, -1)
-		exposed_carbon.adjustBruteLoss(20)
-		exposed_carbon.emote("scream")
-=======
 	if(!ishuman(exposed_mob) || exposed_mob.stat == DEAD)
 		return
 	var/mob/living/carbon/human/exposed_human = exposed_mob
@@ -562,7 +542,7 @@
 		if((methods & INGEST) && show_message)
 			to_chat(exposed_human, span_notice("<i>You feel nothing but a terrible aftertaste.</i>"))
 		return
-	if(exposed_human.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS))
+	if(exposed_mob.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS)) //Skyrat Edit
 		to_chat(exposed_human, span_userdanger("A terrible pain travels down your back as your wings change shape!"))
 	else
 		to_chat(exposed_human, span_userdanger("A terrible pain travels down your back as wings burst out!"))
@@ -573,7 +553,6 @@
 	playsound(exposed_human.loc, 'sound/items/poster_ripped.ogg', 50, TRUE, -1)
 	exposed_human.adjustBruteLoss(20)
 	exposed_human.emote("scream")
->>>>>>> 4fd404aa8f1 (Moves speaking verbs to tongues + subtypes, moves wing sprites to wing subtypes, bodypart damage examines to limbs, fixes sign language not working without a tongue (#71635))
 
 /datum/reagent/flightpotion/proc/get_wing_choice(mob/living/carbon/human/needs_wings)
 	var/list/wing_types = needs_wings.dna.species.wing_types.Copy()
@@ -582,7 +561,8 @@
 	var/list/radial_wings = list()
 	var/list/name2type = list()
 	for(var/obj/item/organ/external/wings/functional/possible_type as anything in wing_types)
-		var/datum/sprite_accessory/accessory = GLOB.wings_list[possible_type.name] //Gets the datum for every wing this species has, then prompts user with a radial menu
+		//var/datum/sprite_accessory/accessory = GLOB.wings_list[W]	//Gets the datum for every wing this species has, then prompts user with a radial menu //ORIGINAL
+		var/datum/sprite_accessory/accessory = GLOB.sprite_accessories["wings"][W] //SKYRAT EDIT CHANGE
 		var/image/img = image(icon = accessory.icon, icon_state = "m_wingsopen_[accessory.icon_state]_BEHIND") //Process the HUD elements
 		img.transform *= 0.5
 		img.pixel_x = -32

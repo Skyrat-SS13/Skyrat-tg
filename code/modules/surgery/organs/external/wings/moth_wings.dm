@@ -7,7 +7,7 @@
 	preference = "feature_moth_wings"
 	layers = EXTERNAL_BEHIND | EXTERNAL_FRONT
 
-	dna_block = DNA_MOTH_WINGS_BLOCK
+	//dna_block = DNA_MOTH_WINGS_BLOCK // SKYRAT EDIT REMOVAL
 
 	///Are we burned?
 	var/burnt = FALSE
@@ -15,7 +15,7 @@
 	var/original_sprite_datum
 
 /obj/item/organ/external/wings/moth/get_global_feature_list()
-	return GLOB.moth_wings_list
+	return GLOB.sprite_accessories["wings"] //SKYRAT EDIT CHANGE
 
 /obj/item/organ/external/wings/moth/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(!(human.wear_suit?.flags_inv & HIDEMUTWINGS))

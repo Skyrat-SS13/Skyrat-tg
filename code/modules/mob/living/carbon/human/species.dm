@@ -73,17 +73,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/disliked_food = GROSS
 	///Bitfield for food types that the species absolutely hates, giving them even more disgust than disliked food. Meat is "toxic" to moths, for example.
 	var/toxic_food = TOXIC
-<<<<<<< HEAD
 	///Inventory slots the race can't equip stuff to. Golems cannot wear jumpsuits, for example.
 	var/list/no_equip = list()
-	/// Allows the species to equip items that normally require a jumpsuit without having one equipped. Used by golems.
-	var/nojumpsuit = FALSE
-	///Affects the speech message, for example: Motharula flutters, "My speech message is flutters!"
-	var/say_mod = "says"
-=======
-	///flags for inventory slots the race can't equip stuff to. Golems cannot wear jumpsuits, for example.
-	var/no_equip_flags
->>>>>>> 4fd404aa8f1 (Moves speaking verbs to tongues + subtypes, moves wing sprites to wing subtypes, bodypart damage examines to limbs, fixes sign language not working without a tongue (#71635))
 	///What languages this species can understand and say. Use a [language holder datum][/datum/language_holder] in this var.
 	var/species_language_holder = /datum/language_holder
 	/**
@@ -1776,46 +1767,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	former_tail_owner.clear_mood_event("tail_balance_lost")
 	former_tail_owner.clear_mood_event("wrong_tail_regained")
 
-<<<<<<< HEAD
-///////////////
-//FLIGHT SHIT//
-///////////////
-
-/datum/species/proc/GiveSpeciesFlight(mob/living/carbon/human/H)
-	if(flying_species) //species that already have flying traits should not work with this proc
-		return
-	flying_species = TRUE
-	var/wings_icon
-	if(wings_icons.len > 1)
-		if(!H.client)
-			wings_icon = pick(wings_icons)
-		else
-			var/list/wings = list()
-			for(var/W in wings_icons)
-				//var/datum/sprite_accessory/S = GLOB.wings_list[W]	//Gets the datum for every wing this species has, then prompts user with a radial menu //ORIGINAL
-				var/datum/sprite_accessory/S = GLOB.sprite_accessories["wings"][W] //SKYRAT EDIT CHANGE
-				var/image/img = image(icon = 'icons/mob/clothing/wings.dmi', icon_state = "m_wingsopen_[S.icon_state]_BEHIND")	//Process the HUD elements
-				img.transform *= 0.5
-				img.pixel_x = -32
-				if(wings[S.name])
-					stack_trace("Different wing types with repeated names. Please fix as this may cause issues.")
-				else
-					wings[S.name] = img
-			wings_icon = show_radial_menu(H, H, wings, tooltips = TRUE)
-			if(!wings_icon)
-				wings_icon = pick(wings_icons)
-	else
-		wings_icon = wings_icons[1]
-
-	var/obj/item/organ/external/wings/functional/wings = new(null, wings_icon, H.physique)
-	// SKYRAT EDIT START - Fixes the loss of wings to just run the insert twice
-	if(H.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS))
-		wings.Insert(H)
-	// SKYRAT EDIT END
-	wings.Insert(H)
-	handle_mutant_bodyparts(H)
-=======
->>>>>>> 4fd404aa8f1 (Moves speaking verbs to tongues + subtypes, moves wing sprites to wing subtypes, bodypart damage examines to limbs, fixes sign language not working without a tongue (#71635))
 /**
  * The human species version of [/mob/living/carbon/proc/get_biological_state]. Depends on the HAS_FLESH and HAS_BONE species traits, having bones lets you have bone wounds, having flesh lets you have burn, slash, and piercing wounds
  */
