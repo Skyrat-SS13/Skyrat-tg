@@ -88,6 +88,7 @@
 	var/last_name = pick(GLOB.last_names)
 	spawned_human.fully_replace_character_name(null, "[rank] [last_name]")
 	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
+	spawned_human.mind.add_antag_datum(/datum/antagonist/pirate)
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/Destroy()
 	. = ..()
