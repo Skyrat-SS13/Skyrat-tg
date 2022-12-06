@@ -611,6 +611,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_GRABWEAKNESS "grab_weakness"
 #define TRAIT_SNOB "snob"
 #define TRAIT_BALD "bald"
+#define TRAIT_SHAVED "shaved"
 #define TRAIT_BADTOUCH "bad_touch"
 #define TRAIT_EXTROVERT "extrovert"
 #define TRAIT_INTROVERT "introvert"
@@ -680,6 +681,12 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// this is used to bypass tongue language restrictions but not tongue disabilities
 #define TRAIT_TOWER_OF_BABEL "tower_of_babel"
+
+/// This target has recently been shot by a marksman coin and is very briefly immune to being hit by one again to prevent recursion
+#define TRAIT_RECENTLY_COINED "recently_coined"
+
+/// Receives echolocation images.
+#define TRAIT_ECHOLOCATION_RECEIVER "echolocation_receiver"
 
 //Medical Categories for quirks
 #define CAT_QUIRK_ALL 0
@@ -991,10 +998,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define RIGHT_LEG_TRAIT "right_leg"
 #define LEFT_LEG_TRAIT "left_leg"
 
-<<<<<<< HEAD
-/// This target has recently been shot by a marksman coin and is very briefly immune to being hit by one again to prevent recursion
-#define TRAIT_RECENTLY_COINED "trait_recently_coined"
-=======
 /// Trait given by echolocation component.
 #define ECHOLOCATION_TRAIT "echolocation"
 
@@ -1007,5 +1010,3 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define SPEAKING_FROM_TONGUE "tongue"
 ///trait source that sign language should use
 #define SPEAKING_FROM_HANDS "hands"
-
->>>>>>> 4fd404aa8f1 (Moves speaking verbs to tongues + subtypes, moves wing sprites to wing subtypes, bodypart damage examines to limbs, fixes sign language not working without a tongue (#71635))
