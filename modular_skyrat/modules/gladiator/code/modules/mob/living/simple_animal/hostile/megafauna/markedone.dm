@@ -50,7 +50,7 @@
 	/// Are we doing the spin attack?
 	var/spinning = FALSE
 	/// Range of spin attack
-	var/spinning_range = 4
+	var/spinning_range = 6
 	/// Are we doing the charge attack
 	var/charging = FALSE
 	/// If we are charging, this is a counter for how many tiles we have ran past
@@ -60,9 +60,9 @@
 	/// We get stunned whenever we ram into a closed turf
 	var/stunned = FALSE
 	/// Move_to_delay but only while we are charging
-	var/move_to_delay_charge = 1.5
-	/// Chance to block damage entirely on phase 1
-	var/phase_1_block_chance = 50
+	var/move_to_delay_charge = 0.6
+	/// Chance to block damage entirely on phases 1 and 4
+	var/block_chance = 50
 	/// This mob will not attack mobs randomly if not in anger, the time doubles as a check for anger
 	var/anger_timer_id = null
 
@@ -107,13 +107,16 @@
 		. = ..()
 		. += span_boldwarning("They are currently in Phase [phase].")
 
-/// Gets him mad at you if you're a species he's not racist towards, and provides the 25% chance to block attacks in the first phase
+/// Gets him mad at you if you're a species he's not racist towards, and provides the 50% to block attacks in the first and fourth phases
 /mob/living/simple_animal/hostile/megafauna/gladiator/adjustHealth(amount, updating_health, forced)
 	get_angry()
 	if(spinning)
 		balloon_alert_to_viewers("damage blocked!")
 		return FALSE
-	else if(prob(phase_1_block_chance) && (phase == 1) && !stunned)
+	else if(prob(block_chance) && (phase == 1) && !stunned)
+		balloon_alert_to_viewers("damage blocked!")
+		return FALSE
+	else if(prob(block_chance) && (phase == 4) && !stunned)
 		balloon_alert_to_viewers("damage blocked!")
 		return FALSE
 	. = ..()
@@ -287,7 +290,7 @@
 				rapid_melee = 4
 				melee_damage_upper = 25
 				melee_damage_lower = 25
-				move_to_delay = 1.7
+				move_to_delay = 1.5
 		if(0 to SHOWDOWN_PERCENT)
 			if (phase == MARKED_ONE_THIRD_PHASE)
 				phase = MARKED_ONE_FINAL_PHASE
@@ -297,7 +300,7 @@
 				rapid_melee = 1
 				melee_damage_upper = 50
 				melee_damage_lower = 50
-				move_to_delay = 2.5
+				move_to_delay = 1.2
 	if(charging)
 		move_to_delay = move_to_delay_charge
 
@@ -349,7 +352,7 @@
 			break
 		sleep(0.75) //addtimer(CALLBACK(src, PROC_REF(convince_zonespace_to_let_me_use_sleeps)), 2 WEEKS)
 	animate(src, color = initial(color), 3)
-	sleep(3)
+	sleep(1)
 	spinning = FALSE
 
 /// The Marked One's charge has an instant travel time, but takes a moment to power-up, allowing you to get behind cover to stun him if he hits a wall. Only ever called when a phase change occurs, as it hardstuns if it lands
