@@ -1,7 +1,7 @@
 /datum/job/head_of_personnel
 	title = JOB_HEAD_OF_PERSONNEL
-	description = "Alter access on ID cards, manage the civilian department, \
-		protect Ian, run the station when the captain dies." //SKYRAT EDIT: HOP ISN'T HEAD OF SUPPLY
+	description = "Alter access on ID cards, manage the service department, \
+		protect Ian, run the station when the captain dies."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	department_head = list(JOB_CAPTAIN)
 	head_announce = list(RADIO_CHANNEL_SERVICE)
