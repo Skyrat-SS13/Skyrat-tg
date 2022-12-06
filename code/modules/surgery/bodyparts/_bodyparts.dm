@@ -966,7 +966,7 @@
 				)
 		*/ // ORIGINAL END
 		for(var/external_layer in external_organ.relevant_layers)
-			external_organ.get_overlays(
+			external_organ.generate_and_retrieve_overlays(
 				.,
 				image_dir,
 				external_layer,

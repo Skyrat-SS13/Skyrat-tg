@@ -10,14 +10,9 @@
 
 	feature_key = "tail"
 	render_key = "tail"
-<<<<<<< HEAD
-	// dna_block = DNA_TAIL_BLOCK // SKYRAT EDIT REMOVAL - Customization - We have our own system to handle DNA.
-=======
-
-	dna_block = DNA_TAIL_BLOCK
+	//dna_block = DNA_TAIL_BLOCK // SKYRAT EDIT REMOVAL - Customization - We have our own system to handle DNA.
 	restyle_flags = EXTERNAL_RESTYLE_FLESH
 
->>>>>>> 46be216cc03 (Ultra-modularizes podperson hair restyling (#71381))
 	///Does this tail have a wagging sprite, and is it currently wagging?
 	var/wag_flags = NONE
 	///The original owner of this tail

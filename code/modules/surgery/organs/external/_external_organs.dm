@@ -284,12 +284,9 @@
 	feature_key = "horns"
 	preference = "feature_lizard_horns"
 
-<<<<<<< HEAD
-=======
-	dna_block = DNA_HORNS_BLOCK
+	//dna_block = DNA_HORNS_BLOCK // SKYRAT EDIT REMOVAL - Customization - We have our own system to handle DNA.
 	restyle_flags = EXTERNAL_RESTYLE_ENAMEL
 
->>>>>>> 46be216cc03 (Ultra-modularizes podperson hair restyling (#71381))
 /obj/item/organ/external/horns/can_draw_on_bodypart(mob/living/carbon/human/human)
 	return TRUE
 
@@ -309,12 +306,9 @@
 	feature_key = "frills"
 	preference = "feature_lizard_frills"
 
-<<<<<<< HEAD
-=======
-	dna_block = DNA_FRILLS_BLOCK
+	//dna_block = DNA_FRILLS_BLOCK // SKYRAT EDIT REMOVAL - Customization - We have our own system to handle DNA.
 	restyle_flags = EXTERNAL_RESTYLE_FLESH
 
->>>>>>> 46be216cc03 (Ultra-modularizes podperson hair restyling (#71381))
 /obj/item/organ/external/frills/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(!(human.head?.flags_inv & HIDEEARS))
 		return TRUE
@@ -338,12 +332,9 @@
 	preference = "feature_lizard_snout"
 	external_bodytypes = BODYTYPE_SNOUTED
 
-<<<<<<< HEAD
-=======
-	dna_block = DNA_SNOUT_BLOCK
+	//dna_block = DNA_SNOUT_BLOCK // SKYRAT EDIT REMOVAL - Customization - We have our own system to handle DNA.
 	restyle_flags = EXTERNAL_RESTYLE_FLESH
 
->>>>>>> 46be216cc03 (Ultra-modularizes podperson hair restyling (#71381))
 /obj/item/organ/external/snout/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(!(human.wear_mask?.flags_inv & HIDESNOUT) && !(human.head?.flags_inv & HIDESNOUT))
 		return TRUE
@@ -365,12 +356,9 @@
 	feature_key = "moth_antennae"
 	preference = "feature_moth_antennae"
 
-<<<<<<< HEAD
-=======
-	dna_block = DNA_MOTH_ANTENNAE_BLOCK
+	//dna_block = DNA_MOTH_ANTENNAE_BLOCK // SKYRAT EDIT REMOVAL - Customization - We have our own system to handle DNA.
 	restyle_flags = EXTERNAL_RESTYLE_FLESH
 
->>>>>>> 46be216cc03 (Ultra-modularizes podperson hair restyling (#71381))
 	///Are we burned?
 	var/burnt = FALSE
 	///Store our old datum here for if our antennae are healed
