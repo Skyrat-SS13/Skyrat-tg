@@ -913,6 +913,7 @@
 	design_ids = list(
 		"paicard",
 		"borg_upgrade_snacks", // SKYRAT ADDITION - BETTER BORG SNACK DISPENSORS
+		"mecha_camera"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 

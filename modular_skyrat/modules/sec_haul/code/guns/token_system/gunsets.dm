@@ -183,7 +183,7 @@
 */
 
 /obj/item/storage/box/gunset/zeta
-	name = "10mm Magnum revolver supply box"
+	name = "10mm revolver supply box"
 	desc = "Ideally contains a slow-firing revolver that packs a punch."
 
 /obj/item/storage/box/gunset/zeta/PopulateContents()
@@ -207,7 +207,7 @@
 	new /obj/item/ammo_box/revolver/revolution(src)
 	new /obj/item/ammo_box/revolver/revolution(src)
 	new /obj/item/ammo_box/revolver/revolution(src)
-	new /obj/item/ammo_box/advanced/b9mm(src)
+	new /obj/item/ammo_box/c9mm(src)
 
 /*
 *	PRIMARIES
@@ -276,7 +276,7 @@
 
 /obj/item/storage/box/gunset/pitbull
 	name = "10mm PDW supply box"
-	desc = "Ideally contains a slow-firing 10mm Auto PDW that packs a punch."
+	desc = "Ideally contains a slow-firing 10mm PDW that packs a punch."
 
 /obj/item/gun/ballistic/automatic/pitbull/nomag
 	spawnwithmagazine = FALSE
