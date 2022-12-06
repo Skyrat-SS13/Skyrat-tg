@@ -36,6 +36,9 @@
 		/datum/computer_file/program/messenger,
 		/datum/computer_file/program/nt_pay,
 		/datum/computer_file/program/notepad,
+		// SKYRAT EDIT ADDITION START
+		/datum/computer_file/program/crew_manifest, // Adds crew manifest to all base tablets
+		// SKRAT EDIT ADDITION END
 	)
 	///List of items that can be stored in a PDA
 	var/static/list/contained_item = list(
@@ -406,46 +409,3 @@
 	if(iscyborg(silicon_owner))
 		var/mob/living/silicon/robot/robo = silicon_owner
 		robo.lamp_color = COLOR_RED //Syndicate likes it red
-<<<<<<< HEAD:code/modules/modular_computers/computers/item/tablet.dm
-
-// Round start tablets
-
-/obj/item/modular_computer/tablet/pda
-	icon = 'icons/obj/modular_pda.dmi'
-	icon_state = "pda"
-	worn_icon_state = "pda"
-
-	greyscale_config = /datum/greyscale_config/tablet
-	greyscale_colors = "#999875#a92323"
-
-	max_capacity = 64
-	bypass_state = TRUE
-	allow_chunky = TRUE
-
-	///Static list of default PDA apps to install on Initialize.
-	var/static/list/datum/computer_file/pda_programs = list(
-		/datum/computer_file/program/messenger,
-		/datum/computer_file/program/nt_pay,
-		/datum/computer_file/program/notepad,
-		// SKYRAT EDIT START
-		/datum/computer_file/program/crew_manifest, // Adds crew manifest to all base tablets
-		// SKRAT EDIT END
-	)
-
-/obj/item/modular_computer/tablet/pda/install_default_programs()
-	for(var/programs as anything in (default_programs + pda_programs + starting_programs))
-		var/datum/computer_file/program/program_type = new programs
-		store_file(program_type)
-
-/obj/item/modular_computer/tablet/pda/update_overlays()
-	. = ..()
-	if(computer_id_slot)
-		. += mutable_appearance(initial(icon), "id_overlay")
-	if(light_on)
-		. += mutable_appearance(initial(icon), "light_overlay")
-
-/obj/item/modular_computer/tablet/pda/attack_ai(mob/user)
-	to_chat(user, span_notice("It doesn't feel right to snoop around like that..."))
-	return // we don't want ais or cyborgs using a private role tablet
-=======
->>>>>>> 2425531eb2d (Removes tablets (not PDAs) entirely. (#71507)):code/modules/modular_computers/computers/item/pda.dm
