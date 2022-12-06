@@ -105,6 +105,7 @@ There are several things that need to be remembered:
 		var/woman
 		if(!uniform_overlay)
 			//BEGIN SPECIES HANDLING
+<<<<<<< HEAD
 			if((dna?.species.bodytype & BODYTYPE_DIGITIGRADE) && (uniform.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 				icon_file = uniform.worn_icon_digi || DIGITIGRADE_UNIFORM_FILE // SKYRAT EDIT CHANGE
 
@@ -114,8 +115,12 @@ There are several things that need to be remembered:
 			// SKYRAT EDIT END
 
 			else if((dna?.species.bodytype & BODYTYPE_MONKEY) && (uniform.supports_variations_flags & CLOTHING_MONKEY_VARIATION)) // SKYRAT EDIT CHANGE: else
+=======
+			if((dna?.species.bodytype & BODYTYPE_MONKEY) && (uniform.supports_variations_flags & CLOTHING_MONKEY_VARIATION))
+>>>>>>> 94036704c48 (Digitigrade clothing fixes (#71626))
 				icon_file = MONKEY_UNIFORM_FILE
-
+			else if((dna?.species.bodytype & BODYTYPE_DIGITIGRADE) && (uniform.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
+				icon_file = DIGITIGRADE_UNIFORM_FILE
 			//Female sprites have lower priority than digitigrade sprites
 			else if(dna.species.sexes && (dna.species.bodytype & BODYTYPE_HUMANOID) && physique == FEMALE && !(uniform.female_sprite_flags & NO_FEMALE_UNIFORM)) //Agggggggghhhhh
 				woman = TRUE
