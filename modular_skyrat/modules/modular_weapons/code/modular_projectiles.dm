@@ -1,28 +1,4 @@
 /*
-*	10mm MAG
-*/
-
-
-/obj/item/ammo_casing/c10mm/rubber
-	name = "10mm Magnum rubber bullet casing"
-	desc = "A 10mm Magnum bullet casing. This fires a non-lethal projectile to cause compliance by pain and bruising. Don't aim for the head."
-	caliber = CALIBER_10MM
-	projectile_type = /obj/projectile/bullet/c10mm/rubber
-	harmful = FALSE
-
-/obj/projectile/bullet/c10mm/rubber
-	name = "10mm Magnum rubber ball"
-	damage = 10
-	stamina = 40
-	ricochets_max = 6
-	ricochet_incidence_leeway = 0
-	ricochet_chance = 130
-	ricochet_decay_damage = 0.7
-	shrapnel_type = null
-	sharpness = NONE
-	embedding = null
-
-/*
 *	.460 Ceres
 */
 
@@ -114,7 +90,6 @@
 *	.244 Acia
 */
 
-
 /obj/item/ammo_casing/a762/rubber
 	name = ".244 Acia rubber bullet casing"
 	desc = "A .244 rubber bullet casing.\
@@ -145,6 +120,7 @@
 
 /// The 5.56 you see pretty much everyone under NATO use.
 #define CALIBER_A556x45 "a556x45"
+
 /obj/item/ammo_casing/a556x45
 	name = "5.56x45mm bullet casing"
 	desc = "A 5.56mm rubber bullet casing."
@@ -163,6 +139,7 @@
 /*
 *	.34 ACP
 */
+
 // Why? Blame CFA, they want their bullets to be *proprietary*
 /obj/item/ammo_casing/c34
 	name = ".34 bullet casing"
@@ -337,8 +314,6 @@
 /*
 *	6.8x43mm
 */
-
-
 
 /obj/item/ammo_casing/a68
 	name = "6.8mm bullet casing"
