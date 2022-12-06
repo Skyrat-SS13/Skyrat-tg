@@ -1,7 +1,12 @@
 /datum/job/head_of_personnel
 	title = JOB_HEAD_OF_PERSONNEL
+<<<<<<< HEAD
 	description = "Alter access on ID cards, manage the civilian department, \
 		protect Ian, run the station when the captain dies." //SKYRAT EDIT: HOP ISN'T HEAD OF SUPPLY
+=======
+	description = "Alter access on ID cards, manage the service department, \
+		protect Ian, run the station when the captain dies."
+>>>>>>> 518080a31d5 (gives hop basic cargo access + desc change (#71742))
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	department_head = list(JOB_CAPTAIN)
 	head_announce = list(RADIO_CHANNEL_SERVICE)
