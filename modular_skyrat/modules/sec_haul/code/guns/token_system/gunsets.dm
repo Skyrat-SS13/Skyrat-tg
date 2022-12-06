@@ -22,7 +22,6 @@
 /obj/item/storage/box/gunset/PopulateContents()
 	. = ..()
 	new /obj/item/storage/bag/ammo(src)
-	new /obj/item/gun_maintenance_supplies(src)
 
 /obj/item/storage/box/gunset/update_icon()
 	. = ..()
@@ -184,7 +183,7 @@
 */
 
 /obj/item/storage/box/gunset/zeta
-	name = "10mm Magnum revolver supply box"
+	name = "10mm revolver supply box"
 	desc = "Ideally contains a slow-firing revolver that packs a punch."
 
 /obj/item/storage/box/gunset/zeta/PopulateContents()
@@ -208,7 +207,7 @@
 	new /obj/item/ammo_box/revolver/revolution(src)
 	new /obj/item/ammo_box/revolver/revolution(src)
 	new /obj/item/ammo_box/revolver/revolution(src)
-	new /obj/item/ammo_box/advanced/b9mm(src)
+	new /obj/item/ammo_box/c9mm(src)
 
 /*
 *	PRIMARIES
@@ -277,7 +276,7 @@
 
 /obj/item/storage/box/gunset/pitbull
 	name = "10mm PDW supply box"
-	desc = "Ideally contains a slow-firing 10mm Auto PDW that packs a punch."
+	desc = "Ideally contains a slow-firing 10mm PDW that packs a punch."
 
 /obj/item/gun/ballistic/automatic/pitbull/nomag
 	spawnwithmagazine = FALSE
@@ -359,6 +358,7 @@
 /obj/item/storage/box/gunset/pdh_corpo
 	name = "pdh 'corporate' supply box"
 	w_class = WEIGHT_CLASS_NORMAL
+
 /obj/item/gun/ballistic/automatic/pistol/pdh/corpo/nomag
 	spawnwithmagazine = FALSE
 
@@ -369,6 +369,25 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo(src)
+
+/*
+*	STRIKER
+*/
+
+/obj/item/storage/box/gunset/pdh_striker
+	name = "pdh 'striker' supply box"
+	w_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/gun/ballistic/automatic/pistol/pdh/striker/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/pdh_striker/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/pistol/pdh/striker/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh_striker(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh_striker(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh_striker(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh_striker(src)
 
 // KRAUT SPACE MAGIC!
 /obj/item/storage/box/gunset/g11

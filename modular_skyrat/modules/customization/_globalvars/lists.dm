@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(breast_size_translation, list(
 	"8" = BREAST_SIZE_H,
 	"9" = BREAST_SIZE_I,
 	"10" = BREAST_SIZE_J,
-	"11" = BREAST_SIZE_K, // Succubus milk moment.
+	"11" = BREAST_SIZE_K,
 	"12" = BREAST_SIZE_L,
 	"13" = BREAST_SIZE_M,
 	"14" = BREAST_SIZE_N,
@@ -33,7 +33,7 @@ GLOBAL_LIST_INIT(breast_size_to_number, list(
 	BREAST_SIZE_H = 8,
 	BREAST_SIZE_I = 9,
 	BREAST_SIZE_J = 10,
-	BREAST_SIZE_K = 11, // Succubus milk moment.
+	BREAST_SIZE_K = 11,
 	BREAST_SIZE_L = 12,
 	BREAST_SIZE_M = 13,
 	BREAST_SIZE_N = 14,
@@ -68,21 +68,6 @@ GLOBAL_LIST_INIT(marking_zones, list(
 	BODY_ZONE_R_ARM,
 	BODY_ZONE_PRECISE_L_HAND,
 	BODY_ZONE_PRECISE_R_HAND,
-	))
-
-///Those are the values available from prefs
-GLOBAL_LIST_INIT(preference_breast_sizes, list(
-	BREAST_SIZE_FLATCHESTED,
-	BREAST_SIZE_A,
-	BREAST_SIZE_B,
-	BREAST_SIZE_C,
-	BREAST_SIZE_D,
-	BREAST_SIZE_E,
-	BREAST_SIZE_F,
-	BREAST_SIZE_G,
-	BREAST_SIZE_H,
-	BREAST_SIZE_I,
-	BREAST_SIZE_J,
 	))
 
 GLOBAL_LIST_INIT(preference_balls_sizes, list(

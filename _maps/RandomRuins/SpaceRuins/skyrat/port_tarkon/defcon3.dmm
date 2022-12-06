@@ -40,7 +40,7 @@
 /area/ruin/space/has_grav/port_tarkon/toolstorage)
 "am" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/mopbucket,
+/obj/structure/mop_bucket,
 /obj/item/mop,
 /obj/item/reagent_containers/cup/bucket,
 /obj/item/soap/nanotrasen,
@@ -4741,9 +4741,13 @@
 "Bo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/firealarm/directional/east,
-/obj/machinery/mineral/equipment_vendor,
 /obj/effect/turf_decal/tile/brown/half{
 	dir = 4
+	},
+/obj/machinery/computer/order_console/mining{
+	uses_ltsrbt = 0;
+	forced_express = 1;
+	express_cost_multiplier = 1
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/mining)

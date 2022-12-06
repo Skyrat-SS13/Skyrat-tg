@@ -170,9 +170,9 @@
 
 /datum/uplink_item/device_tools/medkit_traitor
 	name = "Syndicate Combat Medic Kit"
-	desc = "This first aid kit is a suspicious brown and red. Included is a combat stimulant injector \
-			for rapid healing, a medical night vision HUD for quick identification of injured personnel, \
-			and other supplies helpful for a field medic."
+	desc = "This first aid kit is a suspicious black and red. Included is a number of atropine medipens \
+			for rapid stabilization, sutures and regenerative mesh for wound treatment, and patches \
+			for faster healing on the field. Also comes with basic medical tools and sterlizer."
 	item = /obj/item/storage/medkit/tactical
 	cost = 4
 	progression_minimum = 15 MINUTES
