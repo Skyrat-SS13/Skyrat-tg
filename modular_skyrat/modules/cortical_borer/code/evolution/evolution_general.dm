@@ -70,8 +70,6 @@
 	evo_cost = 6
 	var/static/list/added_chemicals = list(
 		/datum/reagent/toxin/acid/fluacid, // More like anti everything but :shrug:
-		/datum/reagent/toxin/plasma,
-		/datum/reagent/teslium,
 		/datum/reagent/thermite,
 		/datum/reagent/pyrosium,
 		/datum/reagent/oxygen,
