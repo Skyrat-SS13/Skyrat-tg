@@ -189,9 +189,12 @@
 						'modular_skyrat/modules/encounters/sounds/gear_stop.ogg',
 						'modular_skyrat/modules/encounters/sounds/intercom_loop.ogg')
 
-/obj/machinery/computer/shuttle/pirate/nri/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/gps, "NRI Starship")
+/obj/machinery/computer/shuttle/pirate/nri
+	name = "police shuttle console"
+
+/obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/pirate/nri
+	name = "police shuttle navigation computer"
+	desc = "Used to designate a precise transit location for the police shuttle."
 
 /obj/machinery/base_alarm/nri_raider
 	alarm_sound_file = 'modular_skyrat/modules/encounters/sounds/env_horn.ogg'
@@ -232,8 +235,8 @@
 	initial_engine_power = 6
 	port_direction = EAST
 	preferred_direction = EAST
-	callTime = 5 MINUTES
-	rechargeTime = 10 MINUTES
+	callTime = 2 MINUTES
+	rechargeTime = 5 MINUTES
 	movement_force = list("KNOCKDOWN"=0,"THROW"=0)
 	can_move_docking_ports = TRUE
 	takeoff_sound = sound('modular_skyrat/modules/encounters/sounds/engine_ignit_int.ogg')
@@ -241,6 +244,10 @@
 
 /obj/structure/plaque/static_plaque/golden/commission/ks13/nri_raider
 	desc = "NRI Terentiev-Yermolayev Orbital Shipworks, Providence High Orbit, Ship OSTs-02\n'Potato Beetle' Class Corvette\nCommissioned 10/11/2562 'Keeping Promises'"
+
+/obj/structure/plaque/static_plaque/golden/commission/ks13/nri_raider/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/gps, "NRI Starship")
 
 /obj/machinery/computer/centcom_announcement/nri_raider
 	name = "police announcement console"
