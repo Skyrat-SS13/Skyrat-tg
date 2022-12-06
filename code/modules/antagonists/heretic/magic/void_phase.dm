@@ -35,27 +35,8 @@
 	var/turf/source_turf = get_turf(owner)
 	var/turf/targeted_turf = get_turf(cast_on)
 
-<<<<<<< HEAD
-	new /obj/effect/temp_visual/voidin(source_turf)
-	new /obj/effect/temp_visual/voidout(targeted_turf)
-
-	// We handle sounds here so we can disable vary
-	playsound(source_turf, 'sound/magic/voidblink.ogg', 60, FALSE)
-	playsound(targeted_turf, 'sound/magic/voidblink.ogg', 60, FALSE)
-
-	for(var/mob/living/living_mob in range(damage_radius, source_turf))
-		if(IS_HERETIC_OR_MONSTER(living_mob) || living_mob == cast_on)
-			continue
-		living_mob.apply_damage(40, BRUTE, wound_bonus = CANT_WOUND)
-
-	for(var/mob/living/living_mob in range(damage_radius, targeted_turf))
-		if(IS_HERETIC_OR_MONSTER(living_mob) || living_mob == cast_on)
-			continue
-		living_mob.apply_damage(40, BRUTE, wound_bonus = CANT_WOUND)
-=======
 	cause_aoe(source_turf, /obj/effect/temp_visual/voidin)
 	cause_aoe(targeted_turf, /obj/effect/temp_visual/voidout)
->>>>>>> 661eaa985e3 (Important heretic spell rebalancing (#71620))
 
 	do_teleport(
 		owner,
