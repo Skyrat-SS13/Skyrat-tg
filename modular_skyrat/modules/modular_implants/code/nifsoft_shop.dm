@@ -1,6 +1,6 @@
 /obj/machinery/vending/nifsoft
 	name = "NIFSoft Vendor"
-	desc = "Money can be exchanged here for NIFSofts and other NIF goods." //Placeholder description
+	desc = "A hardlight vendor self-contained in a floating projector. This salescreen is far more advanced than the backwater old-style vendors normally found scattered around the Frontier, mostly owing to it not selling any physical product. Instead, this interface is meant for users of Nanite Implant Frameworks, forming a connection with the latent field of nanomachinery surrounding Framework users to download new programming and software from various distribution networks and directories. While many are available, Corporations are actively attempting to stop vendors such as this one from selling NIFsofts capable of harming their assets."
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/machines/vendors.dmi'
 	refill_canister = /obj/item/vending_refill/nifsoft_shop
 	icon_state = "proj"
