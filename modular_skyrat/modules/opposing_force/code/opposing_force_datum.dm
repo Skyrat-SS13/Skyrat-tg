@@ -944,13 +944,13 @@
 
 						// creates a new selected equipment datum using a type gotten from the given equipment type via SSopposing_force.equipment_list
 						var/datum/opposing_force_selected_equipment/opfor_equipment = select_equipment(importer, \
-						locate(text2path(equipment["equipment_parent_type"])) in SSopposing_force.equipment_list[iter_eqpmt["equipment_parent_category"]])
+						locate(text2path(equipment["equipment_parent_type"])) in SSopposing_force.equipment_list[equipment["equipment_parent_category"]])
 
 						if(!opfor_equipment)
 							continue
 
-						set_equipment_reason(importer, opfor_equipment, iter_eqpmt["equipment_reason"])
-						set_equipment_count(importer, opfor_equipment, iter_eqpmt["equipment_count"])
+						set_equipment_reason(importer, opfor_equipment, equipment["equipment_reason"])
+						set_equipment_count(importer, opfor_equipment, equipment["equipment_count"])
 
 	catch //taking 0 risk
 		QDEL_LIST(objectives)
