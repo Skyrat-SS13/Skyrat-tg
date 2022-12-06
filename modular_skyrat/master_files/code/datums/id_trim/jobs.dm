@@ -2,12 +2,22 @@
 
 /datum/id_trim/job/head_of_security
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
+	subdepartment_color = COLOR_ASSEMBLY_BLACK // This actually is the shade of grey formerly used by the static icons! Didn't have to add anything extra! Just thought that was neat.
 
 /datum/id_trim/job/warden
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
+	department_color = COLOR_ASSEMBLY_BLACK
+	subdepartment_color = COLOR_ASSEMBLY_BLACK
 
 /datum/id_trim/job/security_officer
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
+	department_color = COLOR_ASSEMBLY_BLACK
+	subdepartment_color = COLOR_ASSEMBLY_BLACK
+
+/datum/id_trim/job/detective
+	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
+	department_color = COLOR_ASSEMBLY_BLACK
+	subdepartment_color = COLOR_ASSEMBLY_BLACK
 
 
 /datum/id_trim/job/chief_engineer/New()
@@ -40,6 +50,8 @@
 	assignment = "Blueshield"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_blueshield"
+	department_color = COLOR_COMMAND_BLUE
+	subdepartment_color = COLOR_CENTCOM_BLUE // Not the other way around. I think.
 	orbit_icon = "shield-dog"
 	sechud_icon_state = SECHUD_BLUESHIELD
 	extra_access = list(ACCESS_SECURITY, ACCESS_BRIG, ACCESS_COURT, ACCESS_CARGO, ACCESS_GATEWAY) // Someone needs to come back and order these alphabetically, this is a nightmare
@@ -52,8 +64,9 @@
 
 /datum/id_trim/job/nanotrasen_consultant
 	assignment = "Nanotrasen Consultant"
-	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-	trim_state = "trim_nanotrasenconsultant"
+	trim_state = "trim_centcom"
+	department_color = COLOR_GREEN
+	subdepartment_color = COLOR_GREEN
 	orbit_icon = "clipboard-check"
 	sechud_icon_state = SECHUD_NT_CONSULTANT
 	extra_access = list()
@@ -72,6 +85,8 @@
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_securitymedic"
 	orbit_icon = "heart-pulse"
+	department_color = COLOR_ASSEMBLY_BLACK
+	subdepartment_color = COLOR_ASSEMBLY_BLACK
 	sechud_icon_state = SECHUD_SECURITY_MEDIC
 	extra_access = list(ACCESS_DETECTIVE)
 	minimal_access = list(ACCESS_SECURITY, ACCESS_BRIG_ENTRANCE, ACCESS_BRIG, ACCESS_COURT, ACCESS_WEAPONS, ACCESS_MECH_SECURITY, ACCESS_MINERAL_STOREROOM, ACCESS_MAINT_TUNNELS)
@@ -89,6 +104,8 @@
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_corrections_officer"
 	orbit_icon = "hands-bound"
+	department_color = COLOR_ASSEMBLY_BLACK
+	subdepartment_color = COLOR_ASSEMBLY_BLACK
 	sechud_icon_state = SECHUD_CORRECTIONS_OFFICER
 	extra_access = list()
 	minimal_access = list(ACCESS_SECURITY, ACCESS_BRIG_ENTRANCE, ACCESS_BRIG, ACCESS_COURT,
@@ -100,6 +117,8 @@
 	assignment = "Barber"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_barber"
+	department_color = COLOR_SERVICE_LIME
+	subdepartment_color = COLOR_SERVICE_LIME
 	orbit_icon = "scissors"
 	sechud_icon_state = SECHUD_BARBER
 	extra_access = list()
