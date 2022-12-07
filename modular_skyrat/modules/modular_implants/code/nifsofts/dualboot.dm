@@ -54,7 +54,6 @@
 	base_idle_power_usage = 0
 	max_idle_programs = 1 //It's a virtual machine, not a good one.
 	looping_sound = FALSE
-	has_variants = FALSE
 	allow_chunky = TRUE
 	comp_light_luminosity = 0
 
