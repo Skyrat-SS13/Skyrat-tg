@@ -1,7 +1,7 @@
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR GUN.DM
 #define DUALWIELD_PENALTY_EXTRA_MULTIPLIER 1.4
 #define FIRING_PIN_REMOVAL_DELAY 50
 
+// Icon overridden in modular gun.dm
 /obj/item/gun
 	name = "gun"
 	desc = "It's a gun. It's pretty terrible, though."
@@ -337,6 +337,7 @@
 		return FALSE
 	process_chamber()
 	update_appearance()
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) // SKYRAT EDIT ADDITION - AMMO HUD
 	return TRUE
 
 /obj/item/gun/proc/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
@@ -398,6 +399,8 @@
 	if(user)
 		user.update_held_items()
 	SSblackbox.record_feedback("tally", "gun_fired", 1, type)
+
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) // SKYRAT EDIT ADDITION - AMMO HUD
 
 	return TRUE
 
@@ -511,6 +514,7 @@
 
 /obj/item/gun/update_overlays()
 	. = ..()
+	/* // SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 	if(bayonet)
 		var/mutable_appearance/knife_overlay
 		var/state = "bayonet" //Generic state.
@@ -521,6 +525,7 @@
 		knife_overlay.pixel_x = knife_x_offset
 		knife_overlay.pixel_y = knife_y_offset
 		. += knife_overlay
+	*/
 
 /obj/item/gun/proc/handle_suicide(mob/living/carbon/human/user, mob/living/carbon/human/target, params, bypass_timer)
 	if(!ishuman(user) || !ishuman(target))
@@ -573,4 +578,3 @@
 
 #undef FIRING_PIN_REMOVAL_DELAY
 #undef DUALWIELD_PENALTY_EXTRA_MULTIPLIER
-*/
