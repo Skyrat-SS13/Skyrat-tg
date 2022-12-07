@@ -312,17 +312,12 @@
 			. += "The [fitting] is burnt out."
 		if(LIGHT_BROKEN)
 			. += "The [fitting] has been smashed."
-<<<<<<< HEAD
-	if(cell)
-		. += "Its backup power charge meter reads [round((cell.charge / cell.maxcharge) * 100, 0.1)]%."
+	if(cell || has_mock_cell)
+		. += "Its backup power charge meter reads [has_mock_cell ? 100 : round((cell.charge / cell.maxcharge) * 100, 0.1)]%."
 	//SKYRAT EDIT ADDITION
 	if(constant_flickering)
 		. += span_danger("The lighting ballast appears to be damaged, this could be fixed with a multitool.")
 	//SKYRAT EDIT END
-=======
-	if(cell || has_mock_cell)
-		. += "Its backup power charge meter reads [has_mock_cell ? 100 : round((cell.charge / cell.maxcharge) * 100, 0.1)]%."
->>>>>>> aac6d5a8d65 (Defer creation of emergency power lights until needed -- Saves ~0.2s of init time (#71729))
 
 
 
