@@ -86,9 +86,9 @@
 
 	headshot = save_data["headshot"]
 
-	READ_FILE(save["employment"], employment)
-	READ_FILE(save["origin"], origin)
-	READ_FILE(save["social_background"], social_background)
+	employment = save_data["employment"]
+	origin = save_data["origin"]
+	social_background = save_data["social_background"]
 
 	if(needs_update >= 0)
 		update_character_skyrat(needs_update, save_data) // needs_update == savefile_version if we need an update (positive integer)
@@ -147,6 +147,7 @@
 	save_data["origin"] = origin
 	save_data["social_background"] = social_background
 	save_data["modular_version"] = MODULAR_SAVEFILE_VERSION_MAX
+
 /datum/preferences/proc/update_mutant_bodyparts(datum/preference/preference)
 	if (!preference.relevant_mutant_bodypart)
 		return

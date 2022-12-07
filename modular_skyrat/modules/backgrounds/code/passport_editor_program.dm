@@ -40,28 +40,18 @@
 	if(.)
 		return
 
-	var/obj/item/computer_hardware/card_slot/card_slot
-	var/obj/item/computer_hardware/card_slot/card_slot2
-	var/obj/item/computer_hardware/passport_slot/passport_slot
-	if(computer)
-		card_slot = computer.all_components[MC_CARD]
-		card_slot2 = computer.all_components[MC_CARD2]
-		passport_slot = computer.all_components[MC_PASSPORT]
-		if(!card_slot || !card_slot2 || !passport_slot)
-			return
 
 	var/mob/user = usr
-	var/obj/item/card/id/user_id_card = card_slot.stored_card
-	var/obj/item/card/id/target_id_card = card_slot2.stored_card
-	var/obj/item/passport/target_passport = passport_slot.stored_passport
+	var/obj/item/card/id/inserted_auth_card = computer.computer_id_slot
+	var/obj/item/passport/target_passport = computer.passport_slot
 
 	switch(action)
 		// Log in.
 		if("PRG_authenticate")
-			if(!computer || !user_id_card)
+			if(!computer || !inserted_auth_card)
 				playsound(computer, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 				return TRUE
-			if(authenticate(user, user_id_card))
+			if(authenticate(user, inserted_auth_card))
 				playsound(computer, 'sound/machines/terminal_on.ogg', 50, FALSE)
 				return TRUE
 		// Log out.
@@ -72,25 +62,22 @@
 			return TRUE
 		// Eject the ID used to log in to the ID app.
 		if("PRG_ejectauthid")
-			if(!computer || !card_slot)
-				return TRUE
-			if(user_id_card)
-				return card_slot.try_eject(user)
+			if(inserted_auth_card)
+				return computer.RemoveID(user)
 			else
-				var/obj/item/item = user.get_active_held_item()
-				if(isidcard(item))
-					return card_slot.try_insert(item, user)
+				var/obj/item/I = user.get_active_held_item()
+				if(isidcard(I))
+					return computer.InsertID(I, user)
 		// Eject the passport being modified.
 		if("PRG_ejectpassport")
-			if(!computer || !passport_slot)
+			if(!computer)
 				return TRUE
-			if(target_passport && target_id_card)
-				GLOB.data_core.manifest_modify(target_passport.holder_name, target_id_card.assignment, target_id_card.get_trim_assignment())
-				return passport_slot.try_eject(user)
+			if(target_passport)
+				return computer.remove_passport(user)
 			else
 				var/obj/item/item = user.get_active_held_item()
 				if(ispassport(item))
-					return passport_slot.try_insert(item, user)
+					return computer.insert_passport(item, user)
 			return TRUE
 		// Used to reclaim passports from bodies. Helpful for forgery.
 		if("PRG_wipe")
@@ -160,39 +147,27 @@
 /datum/computer_file/program/passport_mod/ui_data(mob/user)
 	var/list/data = get_header_data()
 
-	data["station_name"] = station_name()
-
-	var/obj/item/computer_hardware/card_slot/card_slot
-	var/obj/item/computer_hardware/card_slot/card_slot2
-	var/obj/item/computer_hardware/passport_slot/passport_slot
-
-	if(computer)
-		card_slot = computer.all_components[MC_CARD]
-		card_slot2 = computer.all_components[MC_CARD2]
-		passport_slot = computer.all_components[MC_PASSPORT]
-		data["have_auth_card"] = !!(card_slot)
-		data["have_id_slot"] = !!(card_slot2)
-		data["has_passport_slot"] = !!(passport_slot)
-	else
-		data["has_passport_slot"] = FALSE
-
-	if(!passport_slot)
-		return data //We're just gonna error out on the js side at this point anyway
-
-	var/obj/item/card/id/auth_card = card_slot.stored_card
-	data["authIDName"] = auth_card ? auth_card.name : "-----"
-
+	var/obj/item/card/id/inserted_id = computer.computer_id_slot
+	var/obj/item/passport/inserted_passport = computer.passport_slot
+	data["authIDName"] = inserted_id ? inserted_id.name : "-----"
 	data["authenticatedUser"] = authenticated_card
 
-	var/obj/item/passport/passport = passport_slot.stored_passport
-	data["has_passport"] = !!passport
-	data["name"] = passport ? passport.holder_name : "-----"
-	if(passport)
-		data["age"] = passport.holder_age
+	data["has_id"] = !!inserted_id
+	data["has_passport"] = !!inserted_passport
+	data["id_name"] = inserted_id ? inserted_id.name : "-----"
+
+	if(inserted_id)
+		data["id_rank"] = inserted_id.assignment ? inserted_id.assignment : "Unassigned"
+		data["id_owner"] = inserted_id.registered_name ? inserted_id.registered_name : "-----"
+
+	// Passport stuff.
+	data["name"] = inserted_passport ? inserted_passport.holder_name : "-----"
+	if(inserted_passport)
+		data["age"] = inserted_passport.holder_age
 		// The capitals are intentional.
 		data["selected"] = list(
-			"Faction" = "[passport.holder_faction]",
-			"Employment" = "[passport.holder_employment]",
+			"Faction" = "[inserted_passport.holder_faction]",
+			"Employment" = "[inserted_passport.holder_employment]",
 		)
 
 	return data
@@ -204,10 +179,3 @@
 /obj/machinery/modular_computer/console/preset/id/centcom/LateInitialize()
 	. = ..()
 	cpu.store_file(new /datum/computer_file/program/passport_mod)
-
-/obj/machinery/modular_computer/console/preset/id/Initialize(mapload)
-	. = ..()
-	if(!cpu)
-		return
-
-	cpu.install_component(new /obj/item/computer_hardware/passport_slot)

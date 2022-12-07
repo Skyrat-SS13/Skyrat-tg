@@ -1,5 +1,5 @@
 import { useBackend, useSharedState } from '../backend';
-import { Box, Button, Input, NoticeBox, Section, Stack, NumberInput, Tabs } from '../components';
+import { Box, Button, Input, Section, Stack, NumberInput, Tabs } from '../components';
 import { NtosWindow } from '../layouts';
 import { PassportList } from './common/PassportList';
 
@@ -15,15 +15,7 @@ export const NtosPassport = (props, context) => {
 
 export const NtosPassportContent = (props, context) => {
   const { act, data } = useBackend(context);
-  const { authenticatedUser, has_passport, has_passport_slot } = data;
-
-  if (!has_passport_slot) {
-    return (
-      <NoticeBox>
-        This program requires a passport slot in order to function
-      </NoticeBox>
-    );
-  }
+  const { authenticatedUser, has_passport } = data;
 
   const [selectedTab] = useSharedState(context, 'selectedTab', 'login');
 
