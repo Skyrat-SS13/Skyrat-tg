@@ -1,6 +1,48 @@
 /obj/item/gun
 	icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi' // skyrat edit
 
+<<<<<<< HEAD
+=======
+	var/gun_flags = NONE
+	var/fire_sound = 'sound/weapons/gun/pistol/shot.ogg'
+	var/vary_fire_sound = TRUE
+	var/fire_sound_volume = 50
+	var/dry_fire_sound = 'sound/weapons/gun/general/dry_fire.ogg'
+	var/suppressed = null // whether or not a message is displayed when fired
+	var/can_suppress = FALSE
+	var/suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
+	var/suppressed_volume = 60
+	var/can_unsuppress = TRUE
+	var/recoil = 0 // boom boom shake the room
+	var/clumsy_check = TRUE
+	var/obj/item/ammo_casing/chambered = null
+	trigger_guard = TRIGGER_GUARD_NORMAL // trigger guard on the weapon, hulks can't fire them with their big meaty fingers
+	var/sawn_desc = null // description change if weapon is sawn-off
+	var/sawn_off = FALSE
+	var/burst_size = 1 // how large a burst is
+	var/fire_delay = 0 // rate of fire for burst firing and semi auto
+	var/firing_burst = 0 // Prevent the weapon from firing again while already firing
+	var/semicd = 0 // cooldown handler
+	var/weapon_weight = WEAPON_LIGHT
+	var/dual_wield_spread = 24 // additional spread when dual wielding
+	///Can we hold up our target with this? Default to yes
+	var/can_hold_up = TRUE
+
+	/// Just 'slightly' snowflakey way to modify projectile damage for projectiles fired from this gun.
+	var/projectile_damage_multiplier = 1
+
+	var/spread = 0 // Spread induced by the gun itself.
+	var/randomspread = 1 // Set to 0 for shotguns. This is used for weapons that don't fire all their bullets at once.
+
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
+
+	var/obj/item/firing_pin/pin = /obj/item/firing_pin // standard firing pin for most guns
+
+	var/pinless = FALSE
+
+	var/can_bayonet = FALSE // if a bayonet can be added or removed if it already has one.
+>>>>>>> origin/master
 	var/bayonet_state = "bayonet"
 	var/bayonet_icon = 'icons/obj/weapons/guns/bayonets.dmi'
 

@@ -146,14 +146,16 @@ SUBSYSTEM_DEF(shuttle)
 		if(pack == /datum/supply_pack/armament)
 			continue
 		//SKYRAT EDIT END
-		if(!initial(pack.contains))
-			continue
 		if(ispath(pack, /datum/supply_pack))
 			pack = new pack
 
 		var/list/generated_packs = pack.generate_supply_packs()
 		if(generated_packs)
 			pack_processing += generated_packs
+			continue
+
+		//we have to create the pack before checking if it has 'contains' because generate_supply_packs manually sets it, therefore we cant check initial.
+		if(!pack.contains)
 			continue
 
 		supply_packs[pack.id] = pack
