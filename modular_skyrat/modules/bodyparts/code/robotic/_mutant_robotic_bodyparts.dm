@@ -44,7 +44,7 @@
 	brute_reduction = 0
 	burn_reduction = 0
 
-/obj/item/bodypart/leg/right/robot/digitigrade
+/obj/item/bodypart/leg/left/robot/digitigrade
 	icon_greyscale = BODYPART_ICON_SYNTHLIZARD
 	should_draw_greyscale = TRUE
 	limb_id = "digitigrade"
