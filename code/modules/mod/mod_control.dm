@@ -17,6 +17,7 @@
 	actions_types = list(
 		/datum/action/item_action/mod/deploy,
 		/datum/action/item_action/mod/activate,
+		/datum/action/item_action/mod/sprite_accessories, // SKYRAT EDIT - Hide mutant parts action
 		/datum/action/item_action/mod/panel,
 		/datum/action/item_action/mod/module,
 		/datum/action/item_action/mod/deploy/pai, // SKYRAT EDIT - pAIs in MODsuits
