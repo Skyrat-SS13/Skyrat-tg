@@ -1,16 +1,7 @@
-<<<<<<< HEAD:code/modules/surgery/organs/external/wings.dm
 ///Wing base type. doesn't really do anything
 /obj/item/organ/external/wings
 	name = "wings"
 	desc = "Spread your wings and FLLLLLLLLYYYYY!"
-=======
-///hud action for starting and stopping flight
-/datum/action/innate/flight
-	name = "Toggle Flight"
-	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_IMMOBILE
-	button_icon = 'icons/mob/actions/actions_items.dmi'
-	button_icon_state = "flight"
->>>>>>> 329921639a9 (Rewrites how action buttons icons are generated, makes them layer nicer. Allows observers to see a mob's action buttons.  (#71339)):code/modules/surgery/organs/external/wings/functional_wings.dm
 
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_EXTERNAL_WINGS

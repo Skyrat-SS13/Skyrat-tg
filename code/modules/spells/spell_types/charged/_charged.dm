@@ -79,13 +79,8 @@
 		cast_on.add_overlay(charge_overlay_instance)
 
 	currently_channeling = TRUE
-<<<<<<< HEAD
-	UpdateButtons(status_only = TRUE)
-	if(!do_after(cast_on, channel_time, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_HELD_ITEM)))
-=======
 	build_all_button_icons(UPDATE_BUTTON_STATUS)
 	if(!do_after(cast_on, channel_time, timed_action_flags = channel_flags))
->>>>>>> 329921639a9 (Rewrites how action buttons icons are generated, makes them layer nicer. Allows observers to see a mob's action buttons.  (#71339))
 		stop_channel_effect(cast_on)
 		return . | SPELL_CANCEL_CAST
 

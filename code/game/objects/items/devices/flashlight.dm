@@ -64,12 +64,7 @@
 	on = !on
 	playsound(user, on ? sound_on : sound_off, 40, TRUE)
 	update_brightness(user)
-<<<<<<< HEAD
-	update_action_buttons()
-	return 1
-=======
 	update_item_action_buttons()
->>>>>>> 329921639a9 (Rewrites how action buttons icons are generated, makes them layer nicer. Allows observers to see a mob's action buttons.  (#71339))
 
 /obj/item/flashlight/attack_self(mob/user)
 	toggle_light(user)
