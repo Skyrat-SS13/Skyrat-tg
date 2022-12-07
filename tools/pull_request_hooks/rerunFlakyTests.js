@@ -205,7 +205,7 @@ function createBody({ title, failures }, runUrl) {
 	<!-- title: ${title} -->
 
 	Flaky tests were detected in [this test run](${runUrl}). This means that there was a failure that was cleared when the tests were simply restarted.
-	
+
 	Failures:
 	\`\`\`
 	${failures

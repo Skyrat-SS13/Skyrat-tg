@@ -582,16 +582,16 @@
 	. = ..()
 
 //PDA Greyscale Overrides
-/obj/item/modular_computer/tablet/pda/security
+/obj/item/modular_computer/pda/security
 	greyscale_colors = "#2B356D#1E1E1E"
 
-/obj/item/modular_computer/tablet/pda/detective
+/obj/item/modular_computer/pda/detective
 	greyscale_colors = "#90714F#1E1E1E"
 
-/obj/item/modular_computer/tablet/pda/warden
+/obj/item/modular_computer/pda/warden
 	greyscale_colors = "#2F416E#1E1E1E#ACACAC"
 
-/obj/item/modular_computer/tablet/pda/heads/hos
+/obj/item/modular_computer/pda/heads/hos
 	greyscale_colors = "#2B356D#1E1E1E"
 
 /*
