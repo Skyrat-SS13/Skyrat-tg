@@ -99,7 +99,6 @@ export const InfuserInstructions = (props, context) => {
     </Section>
   );
 };
-
 type InfuserEntryProps = {
   entry: Entry;
 };
