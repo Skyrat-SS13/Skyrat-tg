@@ -84,6 +84,7 @@ export const AiRestorerContent = (props, context) => {
             mt={1}
             onClick={() => act('PRG_beginReconstruction')}
           />
+          {/* SKYRAT ADDITION - Malf Remover */}
           <Button
             fluid
             icon="bug"
