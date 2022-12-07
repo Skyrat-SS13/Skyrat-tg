@@ -242,7 +242,7 @@
 	id = "hospital_gown"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/plastic = 2500)
-	build_path = /obj/item/clothing/suit/toggle/labcoat/hospitalgown
+	build_path = /obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE	//SKYRAT EDIT ADDITION END
 
