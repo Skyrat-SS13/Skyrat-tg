@@ -13,6 +13,8 @@
 	var/currently_channeling = FALSE
 	/// How long it takes to channel the spell.
 	var/channel_time = 10 SECONDS
+	/// Flags of the do_after
+	var/channel_flags = IGNORE_USER_LOC_CHANGE|IGNORE_HELD_ITEM
 
 	// Overlay optional, applied when we start channelling
 	/// What icon should we use for our overlay
