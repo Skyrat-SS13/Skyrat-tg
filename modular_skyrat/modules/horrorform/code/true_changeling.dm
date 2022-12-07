@@ -1,4 +1,4 @@
-#define TRUE_CHANGELING_REFORM_THRESHOLD 5 MINUTES
+#define TRUE_CHANGELING_REFORM_THRESHOLD (5 MINUTES)
 #define TRUE_CHANGELING_PASSIVE_HEAL 3 //Amount of brute damage restored per tick
 
 //Changelings in their true form.
@@ -25,7 +25,7 @@
 	healable = FALSE
 	see_in_dark = 8
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-	environment_smash = TRUE
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	melee_damage_lower = 40
 	melee_damage_upper = 40
 	wander = FALSE

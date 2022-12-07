@@ -529,7 +529,7 @@
 		animate(pixel_x = x_offset, pixel_y = y_offset, time = 1)
 	// Reset our animations
 	animate(pixel_x = base_x, pixel_y = base_y, time = 2)
-	addtimer(CALLBACK(wash_audio, /datum/looping_sound/proc/stop), time_left)
+	addtimer(CALLBACK(wash_audio, TYPE_PROC_REF(/datum/looping_sound, stop)), time_left)
 	addtimer(CALLBACK(src, PROC_REF(turn_off_wash)), finished_by)
 
 /// Called by [deactivate_wash] on a timer to allow noises and animation to play out.
@@ -701,8 +701,8 @@
 
 /obj/item/robot_model/peacekeeper/do_transform_animation()
 	..()
-	to_chat(loc, "<span class='userdanger'>Under ASIMOV, you are an enforcer of the PEACE and preventer of HUMAN HARM. \
-	You are not a security member and you are expected to follow orders and prevent harm above all else. Space law means nothing to you.</span>")
+	to_chat(loc, "<span class='userdanger'>Under Safeguard, you are an enforcer of the PEACE and preventer of HARM. \
+	You are not a security member and you are expected to follow orders and prevent harm above all else. Space law means nothing to you.</span>") // SKYRAT EDIT Changes verbiage off ASIMOV/HUMAN Focus
 
 /obj/item/robot_model/security
 	name = "Security"

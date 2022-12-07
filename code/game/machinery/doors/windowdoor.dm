@@ -22,7 +22,7 @@
 	var/shards = 2
 	var/rods = 2
 	var/cable = 1
-	var/associated_lift = null
+	var/list/debris = list()
 
 /obj/machinery/door/window/Initialize(mapload, set_dir, unres_sides)
 	. = ..()
@@ -170,7 +170,7 @@
 		return TRUE
 
 //used in the AStar algorithm to determinate if the turf the door is on is passable
-/obj/machinery/door/window/CanAStarPass(obj/item/card/id/ID, to_dir, no_id = FALSE)
+/obj/machinery/door/window/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller, no_id = FALSE)
 	return !density || (dir != to_dir) || (check_access(ID) && hasPower() && !no_id)
 
 /obj/machinery/door/window/proc/on_exit(datum/source, atom/movable/leaving, direction)
@@ -232,6 +232,13 @@
 
 	operating = FALSE
 	return 1
+
+///When the tram is in station, the doors are locked to engineering only.
+/obj/machinery/door/window/lock()
+	req_access = list("engineering")
+
+/obj/machinery/door/window/unlock()
+	req_access = null
 
 /obj/machinery/door/window/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
 	switch(damage_type)

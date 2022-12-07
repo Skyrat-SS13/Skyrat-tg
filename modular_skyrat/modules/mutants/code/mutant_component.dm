@@ -6,12 +6,12 @@
  */
 
 
-#define CURE_TIME 10 SECONDS
-#define REVIVE_TIME_LOWER 2 MINUTES
-#define REVIVE_TIME_UPPER 3 MINUTES
-#define IMMUNITY_LOWER 5 MINUTES
-#define IMMUNITY_UPPER 10 MINUTES
-#define RNA_REFRESH_TIME 2 MINUTES // How soon can we extract more RNA?
+#define CURE_TIME (10 SECONDS)
+#define REVIVE_TIME_LOWER (2 MINUTES)
+#define REVIVE_TIME_UPPER (3 MINUTES)
+#define IMMUNITY_LOWER (5 MINUTES)
+#define IMMUNITY_UPPER (10 MINUTES)
+#define RNA_REFRESH_TIME (2 MINUTES) // How soon can we extract more RNA?
 
 /datum/component/mutant_infection
 	/// The reference to our host body.
