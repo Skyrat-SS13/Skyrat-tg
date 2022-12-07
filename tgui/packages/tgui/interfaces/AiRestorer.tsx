@@ -84,6 +84,14 @@ export const AiRestorerContent = (props, context) => {
             mt={1}
             onClick={() => act('PRG_beginReconstruction')}
           />
+          <Button
+            fluid
+            icon="bug"
+            content="Run Dr. Moffson Antivirus"
+            disabled={restoring}
+            mt={1}
+            onClick={() => act('PRG_Moffson')}
+          />
           <Section title="Laws">
             {laws.map((law) => (
               <Box key={law} className="candystripe">
