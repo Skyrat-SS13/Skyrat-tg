@@ -82,7 +82,7 @@ SUBSYSTEM_DEF(area_spawn)
 	turf_list = area_turf_info["[mode]"] = list()
 
 	// Get highest priority items
-	for(var/turf/iterating_turf in area)
+	for(var/turf/iterating_turf as anything in area.get_contained_turfs())
 		// Only retain turfs of the highest priority
 		var/priority = process_turf(iterating_turf, mode)
 		if(priority > 0)
@@ -253,7 +253,7 @@ SUBSYSTEM_DEF(area_spawn)
 	/// See code/__DEFINES/~skyrat_defines/automapper.dm
 	var/mode = AREA_SPAWN_MODE_OPEN
 	/// Map blacklist, this is used to determine what maps we should not spawn on.
-	var/list/blacklisted_stations = list("Blueshift", "Void Raptor", "Runtime Station", "MultiZ Debug")
+	var/list/blacklisted_stations = list("Void Raptor", "Runtime Station", "MultiZ Debug")
 	/// If failing to find a suitable area is OK, then this should be TRUE or CI will fail.
 	/// Should probably be true if the target_areas are random, such as ruins.
 	var/optional = FALSE

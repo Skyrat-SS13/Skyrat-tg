@@ -47,11 +47,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 
 	dir = WEST
 	port_direction = EAST
-	width = 12
-	dwidth = 5
-	height = 7
 	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0)
-
 
 	//Export categories for this run, this is set by console sending the shuttle.
 	var/export_categories = EXPORT_CARGO
@@ -97,8 +93,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 	var/list/misc_costs = list() //list of overall costs sustained by each buyer.
 
 	var/list/empty_turfs = list()
-	for(var/place in shuttle_areas)
-		var/area/shuttle/shuttle_area = place
+	for(var/area/shuttle/shuttle_area as anything in shuttle_areas)
 		for(var/turf/open/floor/T in shuttle_area)
 			if(T.is_blocked_turf())
 				continue
@@ -134,7 +129,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		var/datum/bank_account/paying_for_this
 
 		//department orders EARN money for cargo, not the other way around
-		if(!spawning_order.department_destination)
+		if(!spawning_order.department_destination && spawning_order.charge_on_purchase)
 			if(spawning_order.paying_account) //Someone paid out of pocket
 				paying_for_this = spawning_order.paying_account
 				var/list/current_buyer_orders = goodies_by_buyer[spawning_order.paying_account] // so we can access the length a few lines down
@@ -154,9 +149,10 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 					continue
 
 		if(spawning_order.paying_account)
+			paying_for_this = spawning_order.paying_account
 			if(spawning_order.pack.goody)
 				LAZYADD(goodies_by_buyer[spawning_order.paying_account], spawning_order)
-			if(istype(spawning_order, /datum/supply_order/armament))
+			if(istype(spawning_order, /datum/supply_order/company_import))
 				LAZYADD(forced_briefcases[spawning_order.paying_account], spawning_order)
 			paying_for_this.bank_card_talk("Cargo order #[spawning_order.id] has shipped. [price] credits have been charged to your bank account.")
 			SSeconomy.track_purchase(paying_for_this, price, spawning_order.pack.name)
@@ -199,8 +195,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 			miscboxes[buyer].name = "goody case - purchased by [buyer]"
 		misc_contents[buyer] = list()
 
-		for(var/O in buying_account_orders)
-			var/datum/supply_order/our_order = O
+		for(var/datum/supply_order/our_order as anything in buying_account_orders)
 			for (var/item in our_order.pack.contains)
 				misc_contents[buyer] += item
 			misc_costs[buyer] += our_order.pack.cost
@@ -211,7 +206,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		var/datum/bank_account/buying_account = briefcase_order
 		var/buyer = buying_account.account_holder
 		var/buying_acc_order_num = length(buying_account_orders)
-		for(var/datum/supply_order/armament/the_order in buying_account_orders)
+		for(var/datum/supply_order/company_import/the_order in buying_account_orders)
 			if(!the_order.item_amount || (the_order.item_amount == 1))
 				continue
 			buying_acc_order_num += the_order.item_amount - 1
@@ -219,7 +214,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		if(buying_acc_order_num > 2) // no free shipping, send a crate
 			var/obj/structure/closet/crate/secure/owned/our_crate = new /obj/structure/closet/crate/secure/owned(pick_n_take(empty_turfs))
 			our_crate.buyer_account = buying_account
-			our_crate.name = "armament crate - purchased by [buyer]"
+			our_crate.name = "special import crate - purchased by [buyer]"
 			miscboxes[buyer] = our_crate
 		else //free shipping in a case
 			miscboxes[buyer] = new /obj/item/storage/lockbox/order(pick_n_take(empty_turfs))
@@ -228,7 +223,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 			if(istype(our_case.buyer_account, /datum/bank_account/department))
 				our_case.department_purchase = TRUE
 				our_case.department_account = our_case.buyer_account
-			miscboxes[buyer].name = "armament case - purchased by [buyer]"
+			miscboxes[buyer].name = "special import case - purchased by [buyer]"
 		misc_contents[buyer] = list()
 
 		for(var/datum/supply_order/order in buying_account_orders)

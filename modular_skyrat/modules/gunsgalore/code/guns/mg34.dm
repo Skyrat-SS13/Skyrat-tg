@@ -21,8 +21,6 @@
 	mag_type = /obj/item/ammo_box/magazine/mg34
 	can_suppress = FALSE
 	fire_delay = 1
-	realistic = TRUE
-	dirt_modifier = 0.1
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	tac_reloads = FALSE
@@ -85,8 +83,6 @@
 	fire_delay = 0.04
 	burst_size = 5
 	spread = 5
-	dirt_modifier = 0
-	durability = 500
 	mag_type = /obj/item/ammo_box/magazine/mg34/packapunch
 
 /obj/item/ammo_box/magazine/mg34/packapunch
@@ -101,7 +97,7 @@
 #define SPREAD_UNDEPLOYED 17
 #define SPREAD_DEPLOYED 6
 #define HEAT_PER_SHOT 1.5
-#define TIME_TO_COOLDOWN 20 SECONDS
+#define TIME_TO_COOLDOWN (20 SECONDS)
 #define BARREL_COOLDOWN_RATE 2
 
 /obj/item/gun/ballistic/automatic/mg34/mg42
@@ -161,17 +157,17 @@
 	. = ..()
 	UnregisterSignal(user, COMSIG_LIVING_UPDATED_RESTING)
 	bipod_deployed = FALSE
-	base_spread = SPREAD_UNDEPLOYED
+	spread = SPREAD_UNDEPLOYED
 	update_appearance()
 
 /obj/item/gun/ballistic/automatic/mg34/mg42/proc/deploy_bipod(datum/datum_source, resting)
 	SIGNAL_HANDLER
 	if(resting)
 		bipod_deployed = TRUE
-		base_spread = SPREAD_DEPLOYED
+		spread = SPREAD_DEPLOYED
 	else
 		bipod_deployed = FALSE
-		base_spread = SPREAD_UNDEPLOYED
+		spread = SPREAD_UNDEPLOYED
 	playsound(src, 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg42_bipod.ogg', 100)
 	balloon_alert_to_viewers("bipod [bipod_deployed ? "deployed" : "undeployed"]!")
 	update_appearance()

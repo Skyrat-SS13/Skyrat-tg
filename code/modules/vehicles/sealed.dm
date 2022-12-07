@@ -80,7 +80,6 @@
 	mob_exit(M, silent, randomstep)
 
 /obj/vehicle/sealed/proc/mob_exit(mob/M, silent = FALSE, randomstep = FALSE)
-	SIGNAL_HANDLER
 	if(!istype(M))
 		return FALSE
 	remove_occupant(M)
@@ -104,6 +103,7 @@
 			if(inserted_key) //just in case there's an invalid key
 				inserted_key.forceMove(drop_location())
 			inserted_key = I
+			inserted_key.forceMove(src)
 		else
 			to_chat(user, span_warning("[I] seems to be stuck to your hand!"))
 		return
@@ -117,7 +117,6 @@
 		to_chat(user, span_warning("You must be driving [src] to remove [src]'s key!"))
 		return
 	to_chat(user, span_notice("You remove [inserted_key] from [src]."))
-	inserted_key.forceMove(drop_location())
 	if(!HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
 		user.put_in_hands(inserted_key)
 	else
@@ -130,7 +129,7 @@
 
 /obj/vehicle/sealed/proc/dump_mobs(randomstep = TRUE)
 	for(var/i in occupants)
-		mob_exit(i, null, randomstep)
+		mob_exit(i, randomstep = randomstep)
 		if(iscarbon(i))
 			var/mob/living/carbon/Carbon = i
 			Carbon.Paralyze(40)
@@ -139,7 +138,7 @@
 	for(var/i in occupants)
 		if(!(occupants[i] & flag))
 			continue
-		mob_exit(i, null, randomstep)
+		mob_exit(i, randomstep = randomstep)
 		if(iscarbon(i))
 			var/mob/living/carbon/C = i
 			C.Paralyze(40)

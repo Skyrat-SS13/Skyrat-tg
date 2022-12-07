@@ -1,5 +1,5 @@
 /obj/machinery/vending/autodrobe
-	skyrat_products = list(
+	skyrat_product_categories = list(
 		list(
 			"name" = "Costumes",
 			"icon" = "mask",

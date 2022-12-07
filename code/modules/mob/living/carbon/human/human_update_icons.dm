@@ -304,8 +304,8 @@ There are several things that need to be remembered:
 
 	if(wear_neck)
 		var/obj/item/worn_item = wear_neck
-
-		if(!(ITEM_SLOT_NECK in check_obscured_slots()))
+		update_hud_neck(wear_neck)
+		if(!(ITEM_SLOT_NECK & check_obscured_slots()))
 			var/mutable_appearance/neck_overlay
 			var/icon_file
 
@@ -328,7 +328,6 @@ There are several things that need to be remembered:
 				neck_overlay.pixel_x += dna.species.offset_features[OFFSET_NECK][1]
 				neck_overlay.pixel_y += dna.species.offset_features[OFFSET_NECK][2]
 			overlays_standing[NECK_LAYER] = neck_overlay
-		update_hud_neck(wear_neck)
 
 	apply_overlay(NECK_LAYER)
 
@@ -575,7 +574,7 @@ There are several things that need to be remembered:
 				mutant_override = TRUE
 		// SKYRAT EDIT END
 
-		if(!(ITEM_SLOT_MASK in check_obscured_slots()))
+		if(!(ITEM_SLOT_MASK & check_obscured_slots()))
 
 			if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
 				icon_file = 'icons/mob/clothing/mask.dmi'

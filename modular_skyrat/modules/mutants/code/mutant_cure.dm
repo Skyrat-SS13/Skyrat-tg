@@ -139,7 +139,7 @@
 #define STATUS_IDLE "System Idle"
 #define STATUS_RECOMBINATING_VIRUS "System Synthesising Virus"
 #define STATUS_RECOMBINATING_CURE "System Synthesising Cure"
-#define RECOMBINATION_STEP_TIME 15 SECONDS
+#define RECOMBINATION_STEP_TIME (15 SECONDS)
 #define RECOMBINATION_STEP_AMOUNT 25
 
 /obj/machinery/rnd/rna_recombinator

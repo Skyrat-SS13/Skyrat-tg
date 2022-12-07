@@ -32,7 +32,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/toolstorage)
 "am" = (
-/obj/structure/mopbucket,
+/obj/structure/mop_bucket,
 /obj/item/mop,
 /obj/item/reagent_containers/cup/bucket,
 /obj/item/soap/nanotrasen,
@@ -531,9 +531,9 @@
 	dir = 4;
 	dwidth = 6;
 	height = 16;
-	shuttle_id = "port_tarkon";
 	name = "Port Tarkon";
 	roundstart_template = /datum/map_template/shuttle/ruin/tarkon_driver;
+	shuttle_id = "port_tarkon";
 	width = 14
 	},
 /turf/open/misc/asteroid/airless,
@@ -2469,14 +2469,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/comms)
-"py" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/turf_decal/delivery/red,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/port_tarkon/starboardhall)
 "pz" = (
 /obj/machinery/door/firedoor/solid,
 /obj/effect/spawner/structure/window/reinforced/no_firelock,
@@ -2984,7 +2976,7 @@
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/forehall)
 "sK" = (
-/obj/structure/chair/sofa/corp/right{
+/obj/structure/chair/sofa/corp/left{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -4165,11 +4157,15 @@
 /area/ruin/space/has_grav/port_tarkon/kitchen)
 "Bo" = (
 /obj/machinery/firealarm/directional/east,
-/obj/machinery/mineral/equipment_vendor,
 /obj/effect/turf_decal/tile/brown/half{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/computer/order_console/mining{
+	uses_ltsrbt = 0;
+	forced_express = 1;
+	express_cost_multiplier = 1
+	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/mining)
 "Bp" = (
@@ -4326,10 +4322,10 @@
 /turf/open/floor/iron/dark/airless,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "Cx" = (
-/obj/structure/chair/sofa/corp/left{
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/chair/sofa/corp/right{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/observ)
 "Cy" = (
@@ -4346,7 +4342,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
-/obj/effect/turf_decal/delivery/blue,
 /obj/effect/turf_decal/tile/neutral/half{
 	dir = 8
 	},
@@ -4377,7 +4372,6 @@
 /area/ruin/space/has_grav/port_tarkon/secoff)
 "CG" = (
 /obj/machinery/light/warm/directional/west,
-/obj/effect/turf_decal/delivery/blue,
 /obj/effect/turf_decal/tile/neutral/half{
 	dir = 8
 	},
@@ -6154,14 +6148,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/centerhall)
-"Or" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/obj/effect/turf_decal/delivery/blue,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/port_tarkon/afthall)
 "Os" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -6815,11 +6801,6 @@
 "Sw" = (
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/port_tarkon/dorms)
-"SC" = (
-/obj/effect/turf_decal/delivery/blue,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/port_tarkon/afthall)
 "SG" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/brigdoor/left/directional/south,
@@ -7051,7 +7032,6 @@
 /area/ruin/space/has_grav/port_tarkon/power1)
 "TP" = (
 /obj/machinery/light/warm/directional/east,
-/obj/effect/turf_decal/delivery/blue,
 /obj/effect/turf_decal/tile/neutral/half{
 	dir = 4
 	},
@@ -7678,7 +7658,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
-/obj/effect/turf_decal/delivery/blue,
 /obj/effect/turf_decal/tile/neutral/half{
 	dir = 4
 	},
@@ -10017,7 +9996,7 @@ kO
 dT
 ul
 GM
-Oo
+GM
 GM
 Uz
 ro
@@ -10471,7 +10450,7 @@ ct
 mu
 Pz
 LN
-SC
+LN
 jv
 Wp
 of
@@ -10544,7 +10523,7 @@ tI
 LN
 Pz
 LN
-SC
+LN
 Eq
 LN
 yv
@@ -10617,7 +10596,7 @@ pM
 Pz
 Pz
 fP
-Or
+fP
 fP
 fP
 LN
@@ -11039,7 +11018,7 @@ ik
 xU
 eg
 GM
-Oo
+GM
 ID
 xU
 xU
@@ -11847,7 +11826,7 @@ MF
 CY
 qS
 MF
-py
+MF
 MF
 ka
 eK
