@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/revolver
 	name = "\improper .357 revolver"
-	desc = "A suspicious revolver. Uses .357 ammo." //usually used by syndicates
+	desc = "A suspicious revolver. Uses .357 ammo."
 	icon_state = "revolver"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder
 	fire_sound = 'sound/weapons/gun/revolver/shot_alt.ogg'
@@ -97,7 +97,23 @@
 	if(last_fire && last_fire + 15 SECONDS > world.time)
 		. = span_notice("[user] touches the end of [src] to \the [A], using the residual heat to ignite it in a puff of smoke. What a badass.")
 
+<<<<<<< HEAD
 /obj/item/gun/ballistic/revolver/detective
+=======
+/obj/item/gun/ballistic/revolver/syndicate
+	name = "\improper S-357"
+	desc = "A 7 round revolver chambered in .357. It has 'Scarborough Arms' engraved on it"
+	icon_state = "syndicate_revolver"
+
+/obj/item/gun/ballistic/revolver/c38
+	name = "\improper .38 revolver"
+	desc = "A classic, if not outdated, lethal firearm. Uses .38 Special rounds."
+	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev38
+	icon_state = "c38"
+	fire_sound = 'sound/weapons/gun/revolver/shot.ogg'
+
+/obj/item/gun/ballistic/revolver/c38/detective
+>>>>>>> 0eea6b13025 (Updates the Syndicate revolver into a new revolver (with the same stats) (#71704))
 	name = "\improper Colt Detective Special"
 	desc = "A classic, if not outdated, law enforcement firearm. Uses .38 Special rounds. \nSome spread rumors that if you loosen the barrel with a wrench, you can \"improve\" it."
 	fire_sound = 'sound/weapons/gun/revolver/shot.ogg'
