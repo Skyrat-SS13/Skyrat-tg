@@ -19,7 +19,7 @@
 		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	mutanttongue = mutanttongue = /obj/item/organ/internal/tongue/xeno
+	mutanttongue = /obj/item/organ/internal/tongue/xeno
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
 		"tail" = "Xenomorph Tail",

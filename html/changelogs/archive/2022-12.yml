@@ -192,3 +192,44 @@
       cases, sorry no more living statues
   - bugfix: Void Raptor - removes stray r-wall in Xenobio
   - bugfix: Void Raptor - fixes solar console names
+2022-12-07:
+  Melbert:
+  - balance: 'Heretic: Furious Steel''s cooldown has been doubled (30s -> 60s), and
+      abides by antimagic'
+  - balance: 'Heretic: Cleave''s cooldown has increased by 5s, range has been decreased
+      to 4 tiles, and wound applied now has natural clotting'
+  - balance: 'Heretic: Blood Siphon''s range has been decreased to 6 tiles'
+  - balance: 'Heretic: Void Pull and Phase abide by antimagic'
+  - balance: 'Heretic: Halved Void Blast''s cooldown to 30s'
+  - qol: 'Heretic: Void Blast and Rust Formation now have distinct icons'
+  SkyratBot:
+  - bugfix: Ephedrine now rewards you instead of punishing you for making it pure.
+  - bugfix: queuing clicks should work correctly now
+  - bugfix: fixes being able to stack deepfried bluespace body bags into bluespace
+      body bag
+  - bugfix: Prevents the recycler from destroying indestructible objects.
+  - qol: lockboxes have screentips,
+  - qol: cargo goodies can be opened with your ID even if it is inside a PDA or Wallet
+  - bugfix: captain can no longer open cargo goodies
+  - imageadd: secure lockboxes have a broken sprite when emag'd
+  - qol: hop has basic cargo access
+  - qol: the AI HUD now flex-scales and is reorganized.
+  - bugfix: crab rangoon is not invisible
+  - bugfix: Fixes a typo that meant auxiliary effects from projectiles (.38 rubber
+      stamina, ebow stamina/knockdown/blur) checked a generally nonexistent armor
+      value that was defined on a per-/atom level. As a consequence, such auxiliary
+      effects from projectiles now actually respect the armored equipment of hit targets/limbs/etc.
+      On living mobs that have armor equipped, anyway.
+  - qol: Charlie station stores space suits in proper storage
+  - balance: Geysers now spawn more often, especially wittel geysers.
+  - balance: Change liver to not purge toxins instantly for low amounts. Instead the
+      toxin effect gets skipped while it is metabolized normally, however it still
+      does liver damage. This fixes bite increments for food, cigarettes, and drinks
+      where the toxins would purge without building up to harmful levels.
+  - balance: Change the formula for how toxins effect livers.  Livers will be damaged
+      based on the units of toxin present and their lethality.
+  - balance: Change alien liver toxin resistance value to be -33% and cybernetic liver
+      toxin resistance value to be +50%
+  nevimer:
+  - bugfix: supermatter surge now doesn't overflow values??
+  - code_imp: cleaned up SM surge code a little bit
