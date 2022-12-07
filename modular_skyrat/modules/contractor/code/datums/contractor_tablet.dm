@@ -28,7 +28,7 @@
 		return
 
 	var/mob/living/user = usr
-	var/obj/item/modular_computer/tablet/syndicate_contract_uplink/preset/uplink/uplink_computer = computer
+	var/obj/item/modular_computer/pda/contractor/uplink_computer = computer
 
 	if(!istype(uplink_computer))
 		return
@@ -130,7 +130,7 @@
 /datum/computer_file/program/contract_uplink/ui_data(mob/user)
 	var/list/data = list()
 	var/screen_to_be = null
-	var/obj/item/modular_computer/tablet/syndicate_contract_uplink/preset/uplink/uplink_computer = computer
+	var/obj/item/modular_computer/pda/contractor/uplink_computer = computer
 
 	data["first_load"] = first_load
 
