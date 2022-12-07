@@ -75,6 +75,8 @@
 		. += mutable_appearance(initial(icon), "id_overlay")
 	if(light_on)
 		. += mutable_appearance(initial(icon), "light_overlay")
+	if(inserted_pai)
+		. += mutable_appearance(initial(icon), "pai_inserted")
 
 /obj/item/modular_computer/pda/attack_ai(mob/user)
 	to_chat(user, span_notice("It doesn't feel right to snoop around like that..."))
@@ -85,7 +87,7 @@
 	if(HAS_TRAIT(src, TRAIT_PDA_MESSAGE_MENU_RIGGED))
 		explode(usr, from_message_menu = TRUE)
 
-/obj/item/modular_computer/tablet/attack_self(mob/user)
+/obj/item/modular_computer/pda/attack_self(mob/user)
 	// bypass literacy checks to access syndicate uplink
 	var/datum/component/uplink/hidden_uplink = GetComponent(/datum/component/uplink)
 	if(hidden_uplink?.owner && HAS_TRAIT(user, TRAIT_ILLITERATE))
