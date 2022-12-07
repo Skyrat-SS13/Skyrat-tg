@@ -512,9 +512,9 @@
 	update_appearance()
 	return TRUE
 
+/* // SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 /obj/item/gun/update_overlays()
 	. = ..()
-	/* // SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 	if(bayonet)
 		var/mutable_appearance/knife_overlay
 		var/state = "bayonet" //Generic state.
