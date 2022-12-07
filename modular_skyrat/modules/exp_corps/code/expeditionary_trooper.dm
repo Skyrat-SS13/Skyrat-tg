@@ -1,4 +1,4 @@
-/obj/item/modular_computer/tablet/pda/expeditionary_corps
+/obj/item/modular_computer/pda/expeditionary_corps
 	greyscale_colors = "#891417#000099"
 	name = "surplus military PDA"
 

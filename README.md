@@ -57,11 +57,6 @@ Find `BUILD.bat` here in the root folder of tgstation, and double click it to in
 
 [Interested in some starting lore?](https://github.com/tgstation/common_core)
 
-## Current Skyrat Modules
-* **IC Spawning**: https://github.com/Skyrat-SS13/Skyrat-tg/pull/104
-* **Horrorform**: https://github.com/Skyrat-SS13/Skyrat-tg/pull/241
-* **Blueshield**: https://github.com/Skyrat-SS13/Skyrat-tg/pull/127
-
 ## LICENSE
 
 All code after [commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST](https://github.com/tgstation/tgstation/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under [GNU AGPL v3](https://www.gnu.org/licenses/agpl-3.0.html).
