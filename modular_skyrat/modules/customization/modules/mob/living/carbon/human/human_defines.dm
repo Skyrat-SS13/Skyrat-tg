@@ -7,8 +7,8 @@
 	var/underwear_visibility = NONE
 	///Render key for mutant bodyparts, utilized to reduce the amount of re-rendering
 	var/mutant_renderkey = ""
-	///Whether the human is trying to hide their mutant bodyparts under their clothes intentially
-	var/try_hide_mutant_parts = FALSE
+	///A list of mutant parts the human is trying to hide, read from `mutant_renderkey`
+	var/list/try_hide_mutant_parts
 	///The Examine Panel TGUI.
 	var/datum/examine_panel/tgui = new() //create the datum
 	//Whether or not the human has emissive eyes
