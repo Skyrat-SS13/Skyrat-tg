@@ -1066,16 +1066,11 @@ GLOBAL_LIST_EMPTY(vending_products)
 		else if(age_restrictions && R.age_restricted && (!C.registered_age || C.registered_age < AGE_MINOR))
 			say("You are not of legal age to purchase [R.name].")
 			if(!(usr in GLOB.narcd_underages))
-<<<<<<< HEAD
-				Radio.set_frequency(FREQ_SECURITY)
-				Radio.talk_into(src, "SECURITY ALERT: [usr] recorded attempting to purchase [R.name] in [get_area(src)]. Please watch for substance abuse.", FREQ_SECURITY) //SKYRAT EDIT CHANGE
-=======
 				if (isnull(sec_radio))
 					sec_radio = new
 					sec_radio.set_listening(FALSE)
 				sec_radio.set_frequency(FREQ_SECURITY)
-				sec_radio.talk_into(src, "SECURITY ALERT: Underaged crewmember [usr] recorded attempting to purchase [R.name] in [get_area(src)]. Please watch for substance abuse.", FREQ_SECURITY)
->>>>>>> 6a2c7965b20 (Don't update radio icon unless necessary, don't create radios in vending machines until needed -- Saves 0.091s of init time (#71682))
+				sec_radio.talk_into(src, "SECURITY ALERT: [usr] recorded attempting to purchase [R.name] in [get_area(src)]. Please watch for substance abuse.", FREQ_SECURITY) // SKYRAT EDIT CHANGE
 				GLOB.narcd_underages += usr
 			flick(icon_deny,src)
 			vend_ready = TRUE
