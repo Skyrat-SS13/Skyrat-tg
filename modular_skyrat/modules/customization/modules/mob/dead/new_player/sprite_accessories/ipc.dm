@@ -201,6 +201,11 @@
 /datum/sprite_accessory/synth_chassis/default
 	name = "Default Chassis"
 	icon_state = "ipc"
+	color_src = MUTCOLORS //Here it's used to tell apart greyscalling
+
+/datum/sprite_accessory/synth_chassis/synth
+	name = "Dark Chassis"
+	icon_state = "synth"
 
 /datum/sprite_accessory/synth_chassis/human
 	name = "Human Chassis"
@@ -231,9 +236,8 @@
 	is_digi_compatible = TRUE
 
 /datum/sprite_accessory/synth_chassis/mcgreyscale
-	name = "Morpheus Cyberkinetics (Greyscale)"
+	name = "Morpheus Cyberkinetics"
 	icon_state = "mcgipc"
-	color_src = MUTCOLORS //Here it's used to tell apart greyscalling
 
 /datum/sprite_accessory/synth_chassis/bishopcyberkinetics
 	name = "Bishop Cyberkinetics"
@@ -288,6 +292,11 @@
 
 /datum/sprite_accessory/synth_head/default
 	name = "Default Head"
+	color_src = MUTCOLORS
+
+/datum/sprite_accessory/synth_head/synth
+	name = "Dark Head"
+	icon_state = "synth"
 
 /datum/sprite_accessory/synth_head/human
 	name = "Human Head"
