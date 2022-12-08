@@ -43,7 +43,9 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	var/special_x_dimension
 	///Special case of whether the accessory should have a different icon, check taur genitals for example
 	var/special_icon_case
-	///Special case of applying a different color, like MODsuit tails
+	///Special case for MODsuit overlays
+	var/use_custom_mod_icon
+	///Special case of applying a different color
 	var/special_colorize
 	///Whether it has any extras to render, and their appropriate color sources
 	var/extra = FALSE
@@ -103,6 +105,10 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/proc/get_special_x_dimension(mob/living/carbon/human/H, passed_state)
 	return 0
 
+// A proc for accessories which have 'use_custom_mod_icon' set to TRUE
+/datum/sprite_accessory/proc/get_custom_mod_icon(mob/living/carbon/human/owner)
+	return null
+
 /datum/sprite_accessory/proc/get_default_color(list/features, datum/species/pref_species) //Needs features for the color information
 	var/list/colors
 	switch(default_color)
@@ -142,11 +148,24 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER)
 	genetic = TRUE
 
-/datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	var/obj/item/organ/external/tail/tail = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
-	if(!tail || (H.wear_suit && (H.try_hide_mutant_parts || H.wear_suit.flags_inv & HIDETAIL || H.wear_suit.flags_inv & HIDESPINE)))
+/datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/bodypart)
+	var/obj/item/organ/external/tail/tail = wearer.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+	if(!wearer.w_uniform && !wearer.wear_suit)
+		return FALSE
+	//	Can hide if wearing uniform
+	if(key in wearer.try_hide_mutant_parts)
 		return TRUE
-	return FALSE
+	if(wearer.wear_suit)
+	//	Exception for MODs
+		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
+			return FALSE
+	else if(!tail \
+			|| (wearer.wear_suit \
+				&& (wearer.wear_suit.flags_inv & HIDETAIL \
+				|| wearer.wear_suit.flags_inv & HIDESPINE) \
+			)
+		)
+		return TRUE
 
 /datum/sprite_accessory/spines/get_special_render_state(mob/living/carbon/human/H)
 	var/obj/item/organ/external/tail/tail = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)

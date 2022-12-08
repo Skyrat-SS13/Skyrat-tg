@@ -94,7 +94,6 @@
 	color_src = USE_ONE_COLOR
 	name = "Synthetic Lizard"
 	icon_state = "synthliz"
-	general_type = SPECIES_LIZARD
 	genetic = FALSE
 
 //Synth Antennae
