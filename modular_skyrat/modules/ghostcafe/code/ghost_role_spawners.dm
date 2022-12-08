@@ -5,12 +5,6 @@
 	flavour_text = "You are a robot. This probably shouldn't be happening."
 	mob_type = /mob/living/silicon/robot
 
-/obj/effect/mob_spawn/ghost_role/robot/Initialize(mapload)
-	. = ..()
-
-/obj/effect/mob_spawn/ghost_role/robot/equip(mob/living/silicon/robot/R)
-	. = ..()
-
 /obj/effect/mob_spawn/ghost_role/robot/ghostcafe
 	name = "Cafe Robotic Storage"
 	prompt_name = "a ghost cafe robot"
