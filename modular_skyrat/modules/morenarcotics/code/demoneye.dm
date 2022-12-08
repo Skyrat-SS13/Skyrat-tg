@@ -62,7 +62,7 @@
 
 /datum/reagent/drug/demoneye
 	name = "DemonEye"
-	description = "A performance enhancing drug originally developed on mars.\nA favorite among gangs other outlaws on the planet, though overuse can cause terrible addiction and bodily damage."
+	description = "A performance enhancing drug originally developed on mars.\nA favorite among gangs and other outlaws on the planet, though overuse can cause terrible addiction and bodily damage."
 	reagent_state = LIQUID
 	color = "#af00be"
 	taste_description = "industrial shuttle fuel"
@@ -78,6 +78,7 @@
 
 	ADD_TRAIT(our_guy, TRAIT_UNNATURAL_RED_GLOWY_EYES, TRAIT_NARCOTICS)
 	ADD_TRAIT(our_guy, TRAIT_NOSOFTCRIT, TRAIT_NARCOTICS) // IM FUCKIN INVINCIBLE
+	ADD_TRAIT(our_guy, TRAIT_FEARLESS, TRAIT_NARCOTICS)
 
 	our_guy.eye_color_left = BLOODCULT_EYE
 	our_guy.eye_color_right = BLOODCULT_EYE
@@ -115,6 +116,7 @@
 
 	REMOVE_TRAIT(our_guy, TRAIT_UNNATURAL_RED_GLOWY_EYES, TRAIT_NARCOTICS)
 	REMOVE_TRAIT(our_guy, TRAIT_NOSOFTCRIT, TRAIT_NARCOTICS)
+	REMOVE_TRAIT(our_guy, TRAIT_FEARLESS, TRAIT_NARCOTICS)
 
 	our_guy.eye_color_left = initial(our_guy.eye_color_left)
 	our_guy.eye_color_right = initial(our_guy.eye_color_right)

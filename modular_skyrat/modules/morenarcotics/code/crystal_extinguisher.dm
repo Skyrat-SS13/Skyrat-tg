@@ -57,10 +57,6 @@
 
 	var/atom/movable/plane_master_controller/game_plane_master_controller = our_guy.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
 
-	var/list/col_filter_green = list(0.5,0,0,0, 0,0.6,0,0, 0,0,0.75,0, 0,0,0,1)
-
-	game_plane_master_controller.add_filter("da_foam_filter", 10, color_matrix_filter(col_filter_green, FILTER_COLOR_RGB))
-
 	game_plane_master_controller.add_filter("da_foam_waves", 1, list("type" = "wave", "x" = 32, "size" = 6, "offset" = 1))
 
 	for(var/filter in game_plane_master_controller.get_filters("da_foam_waves"))
@@ -77,7 +73,6 @@
 
 	var/atom/movable/plane_master_controller/game_plane_master_controller = our_guy.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
 
-	game_plane_master_controller.remove_filter("da_foam_filter")
 	game_plane_master_controller.remove_filter("da_foam_waves")
 
 /datum/reagent/drug/crystal_firefighter_foam/on_mob_life(mob/living/carbon/our_guy, delta_time, times_fired)
@@ -87,8 +82,8 @@
 	our_guy.adjust_slurring_up_to(30 SECONDS, 2 MINUTES)
 	our_guy.set_dizzy_if_lower(5 * REM * delta_time * 2 SECONDS)
 
-	if(DT_PROB(5, delta_time))
-		flash_color(our_guy, flash_color = pick(trip_colors), flash_time = 3 SECONDS)
+	if(DT_PROB(25, delta_time))
+		flash_color(our_guy, flash_color = pick(trip_colors), flash_time = 1 SECONDS)
 
 /datum/reagent/drug/crystal_firefighter_foam/overdose_process(mob/living/carbon/our_guy, delta_time, times_fired)
 	. = ..()
