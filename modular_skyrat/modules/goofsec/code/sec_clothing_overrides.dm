@@ -47,18 +47,7 @@
 /obj/item/storage/backpack/security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
-	icon_state = "backpack_black"
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Black Variant" = list(
-			RESKIN_ICON_STATE = "backpack_black",
-			RESKIN_WORN_ICON_STATE = "backpack_black"
-		),
-		"White Variant" = list(
-			RESKIN_ICON_STATE = "backpack_white",
-			RESKIN_WORN_ICON_STATE = "backpack_white"
-		),
-	)
+	icon_state = "backpack_security"
 
 /obj/item/storage/backpack/satchel/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
@@ -68,18 +57,7 @@
 /obj/item/storage/backpack/duffelbag/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
-	icon_state = "security_duffle_blue"
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Blue Variant" = list(
-			RESKIN_ICON_STATE = "security_duffle_blue",
-			RESKIN_WORN_ICON_STATE = "security_duffle_blue"
-		),
-		"White Variant" = list(
-			RESKIN_ICON_STATE = "security_duffle_white",
-			RESKIN_WORN_ICON_STATE = "security_duffle_white"
-		),
-	)
+	icon_state = "security_duffle"
 
 /*
 * BELTS
@@ -87,38 +65,8 @@
 /obj/item/storage/belt/security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
-	icon_state = "belt_white"
-	worn_icon_state = "belt_white"
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Black Variant" = list(
-			RESKIN_ICON_STATE = "belt_black",
-			RESKIN_WORN_ICON_STATE = "belt_black"
-		),
-		"Blue Variant" = list(
-			RESKIN_ICON_STATE = "belt_blue",
-			RESKIN_WORN_ICON_STATE = "belt_blue"
-		),
-		"White Variant" = list(
-			RESKIN_ICON_STATE = "belt_white",
-			RESKIN_WORN_ICON_STATE = "belt_white"
-		),
-		"Slim Variant" = list(
-			RESKIN_ICON_STATE = "belt_slim",
-			RESKIN_WORN_ICON_STATE = "belt_slim"
-		),
-	)
-
-/obj/item/storage/belt/security/webbing
-	uses_advanced_reskins = FALSE
-	unique_reskin = NONE
-	current_skin = "securitywebbing" //Prevents reskinning
-
-/obj/item/storage/belt/security/webbing/peacekeeper //did I mention this codebase is fucking awful
-	current_skin = "peacekeeper_webbing"
-
-/obj/item/storage/belt/security/webbing/peacekeeper/armadyne
-	current_skin = "armadyne_webbing"
+	icon_state = "belt_security"
+	worn_icon_state = "belt_security"
 
 ///Enables you to quickdraw weapons from security holsters
 /datum/storage/security/open_storage(datum/source, mob/user)
@@ -155,19 +103,8 @@
 	glass_colour_type = /datum/client_colour/glass_colour/lightblue
 
 /obj/item/clothing/glasses/hud/security/sunglasses
-	icon_state = "security_hud_black"
+	icon_state = "security_hud_glasses"
 	glass_colour_type = /datum/client_colour/glass_colour/blue
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Dark-Tint Variant" = list(
-			RESKIN_ICON_STATE = "security_hud_black",
-			RESKIN_WORN_ICON_STATE = "security_hud_black"
-		),
-		"Light-Tint Variant" = list(
-			RESKIN_ICON_STATE = "security_hud_blue",
-			RESKIN_WORN_ICON_STATE = "security_hud_blue"
-		),
-	)
 
 /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch
 	icon_state = "security_eyepatch"
