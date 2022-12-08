@@ -505,7 +505,7 @@
 	uniform = /obj/item/clothing/under/misc/skyrat/utility
 	ears = /obj/item/radio/headset/tarkon/ensign
 	id = /obj/item/card/id/away/tarkon/ensign
-	neck = /obj/item/clothing/neck/security_cape/armplate
+	neck = null
 	gloves = /obj/item/clothing/gloves/combat
 	l_pocket = null
 	r_pocket = null

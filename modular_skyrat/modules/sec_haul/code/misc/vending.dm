@@ -59,27 +59,18 @@
 	products = list(/obj/item/clothing/suit/hooded/wintercoat/security = 5,
 					/obj/item/clothing/suit/toggle/jacket/sec = 5,
 					/obj/item/clothing/suit/armor/vest/peacekeeper/brit = 5,
-					/obj/item/clothing/neck/security_cape = 5,
-					/obj/item/clothing/neck/security_cape/armplate = 5,
 					/obj/item/storage/backpack/security = 5,
 					/obj/item/storage/backpack/satchel/sec = 5,
 					/obj/item/storage/backpack/duffelbag/sec = 5,
 					/obj/item/clothing/under/rank/security/officer = 10,
-					/obj/item/clothing/under/rank/security/peacekeeper/tactical = 4,
-					/obj/item/clothing/under/rank/security/peacekeeper/sol/cadet = 3,
-					/obj/item/clothing/under/rank/security/peacekeeper/sol = 3,
+					/obj/item/clothing/under/rank/security/officer/skirt = 10,
 					/obj/item/clothing/shoes/jackboots/sec = 10,
-					/obj/item/clothing/head/security_garrison = 10,
-					/obj/item/clothing/head/security_cap = 10,
-					/obj/item/clothing/head/beret/sec/peacekeeper = 5,
 					/obj/item/clothing/head/costume/ushanka/sec/blue = 10,
-					/obj/item/clothing/head/hats/sec/peacekeeper/sol = 5,
-					/obj/item/clothing/head/hats/sec/peacekeeper/sol/traffic = 5,
+					/obj/item/clothing/head/soft/sec/lopland = 10,
 					/obj/item/clothing/gloves/color/black/security = 10,
 					)
 	premium = list( /obj/item/clothing/under/rank/security/officer/formal = 3,
-					/obj/item/clothing/suit/jacket/officer/blue = 3,
-					/obj/item/clothing/head/beret/sec/navyofficer = 3)
+					/obj/item/clothing/suit/jacket/officer/blue = 3,)
 	refill_canister = /obj/item/vending_refill/wardrobe/peacekeeper_wardrobe
 	payment_department = ACCOUNT_SEC
 	light_color = COLOR_MODERATE_BLUE

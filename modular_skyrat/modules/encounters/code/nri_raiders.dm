@@ -5,7 +5,7 @@
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/guild/command
 	mask = null
-	neck = /obj/item/clothing/neck/security_cape/armplate
+	neck = null
 
 	uniform = /obj/item/clothing/under/costume/nri/captain
 	suit = null
