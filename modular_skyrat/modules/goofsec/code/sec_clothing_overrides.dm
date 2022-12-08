@@ -118,10 +118,11 @@
 * HEAD
 */
 
-//Overrides the bulletproof helm with a non red visor version.
+//Bulletproof helmet
 /obj/item/clothing/head/helmet/alt
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "bulletproof_helmet"
 
 //Standard security helmet
 /obj/item/clothing/head/helmet/sec
@@ -137,7 +138,8 @@
 	desc = "It's a robust baseball hat in tasteful white colour."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "security_cap"
+	icon_state = "loplandsoft"
+	soft_type = "lopland"
 
 /obj/item/clothing/head/hats/hos
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
@@ -263,6 +265,9 @@
 
 /obj/item/clothing/under/rank/security/officer/skirt
 	icon_state = "lopland_suitskirt"
+
+/obj/item/clothing/under/rank/security/officer/formal
+	icon_state = "lopland_formal"
 
 //Warden
 /obj/item/clothing/under/rank/security/warden
