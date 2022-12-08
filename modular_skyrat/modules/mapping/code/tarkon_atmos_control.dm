@@ -2,6 +2,7 @@
 
 /obj/machinery/computer/atmos_control/tarkon
 	circuit = /obj/item/circuitboard/computer/atmos_control/tarkon
+	reconnecting = FALSE // this is hardwired to main station chambers
 
 /obj/item/circuitboard/computer/atmos_control/tarkon
 	name = "Tarkon Atmospheric Control"
@@ -60,6 +61,12 @@
 	name = "mix tank gas sensor"
 	chamber_id = ATMOS_GAS_MONITOR_TARKON_MIX
 
+/obj/machinery/atmospherics/components/unary/outlet_injector/monitored/air_input/tarkon
+	chamber_id = ATMOS_GAS_MONITOR_TARKON_MIX
+
+/obj/machinery/atmospherics/components/unary/vent_pump/high_volume/siphon/monitored/air_output/tarkon
+	chamber_id = ATMOS_GAS_MONITOR_TARKON_MIX
+
 /obj/machinery/computer/atmos_control/tarkon/nitrogen_tank
 	name = "Tarkon Nitrogen Supply Control"
 	circuit = /obj/item/circuitboard/computer/atmos_control/tarkon/nitrogen_tank
@@ -116,12 +123,6 @@
 
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored/carbon_output/tarkon
 	chamber_id = ATMOS_GAS_MONITOR_TARKON_CO2
-
-/obj/machinery/atmospherics/components/unary/outlet_injector/monitored/air_input/tarkon
-	chamber_id = ATMOS_GAS_MONITOR_TARKON_AIR
-
-/obj/machinery/atmospherics/components/unary/vent_pump/high_volume/siphon/monitored/air_output/tarkon
-	chamber_id = ATMOS_GAS_MONITOR_TARKON_AIR
 
 /obj/machinery/computer/atmos_control/tarkon/incinerator
 	name = "Tarkon Incinerator Chamber Control"

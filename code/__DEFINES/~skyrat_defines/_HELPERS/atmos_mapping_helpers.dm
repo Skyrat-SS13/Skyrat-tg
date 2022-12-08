@@ -12,5 +12,4 @@
 #define ATMOS_GAS_MONITOR_TARKON_N2 "tarkon_n2"
 #define ATMOS_GAS_MONITOR_TARKON_N2O "tarkon_n2o"
 #define ATMOS_GAS_MONITOR_TARKON_CO2 "tarkon_co2"
-#define ATMOS_GAS_MONITOR_TARKON_AIR "tarkon_air"
 #define ATMOS_GAS_MONITOR_TARKON_INCINERATOR "tarkon_incinerator"
