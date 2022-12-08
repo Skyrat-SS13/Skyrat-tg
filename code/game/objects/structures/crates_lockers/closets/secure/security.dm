@@ -109,7 +109,7 @@
 	..()
 //	new /obj/item/clothing/suit/armor/vest(src) //SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/suit/armor/vest/alt/sec(src)
-	new /obj/item/clothing/head/security_cap(src) //SKYRAT EDIT ADDITION
+	new /obj/item/clothing/head/soft/sec/lopland(src) //SKYRAT EDIT ADDITION
 	new /obj/item/clothing/head/helmet/sec(src)
 	new /obj/item/radio/headset/headset_sec(src)
 	new /obj/item/radio/headset/headset_sec/alt(src)
