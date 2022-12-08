@@ -68,6 +68,7 @@
 					/obj/item/clothing/head/costume/ushanka/sec/blue = 10,
 					/obj/item/clothing/head/soft/sec/lopland = 10,
 					/obj/item/clothing/gloves/color/black/security = 10,
+					/obj/item/clothing/mask/gas/sechailer/gaiter = 10,
 					)
 	premium = list( /obj/item/clothing/under/rank/security/officer/formal = 3,
 					/obj/item/clothing/suit/jacket/officer/blue = 3,)

@@ -295,6 +295,16 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "security_boots"
 
+// SEC MASK
+
+/obj/item/clothing/mask/gas/sechailer/gaiter
+	name = "security neck gaiter"
+	desc = "A fairly simple face covering for officers that don't enjoy the at times awkward standard issue gas mask."
+	actions_types = list(/datum/action/item_action/adjust)
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
+	icon_state = "sec_gaiter"
+
 //PDA Greyscale Overrides
 /obj/item/modular_computer/pda/security
 	greyscale_colors = "#2B356D#1E1E1E"
@@ -327,7 +337,6 @@
 	worn_icon = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "sunhudsec"
 	glass_colour_type = /datum/client_colour/glass_colour/darkred
-	current_skin = "sunhudsec"	//prevents reskinning; a bit hacky to say its already reskinned but its better than a code rewrite
 
 /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch/redsec
 	icon = 'icons/obj/clothing/glasses.dmi'
@@ -356,7 +365,6 @@
 	icon = 'icons/obj/storage/backpack.dmi'
 	worn_icon = 'icons/mob/clothing/back/backpack.dmi'
 	icon_state = "backpack-security"
-	current_skin = "backpack-security" //prevents reskinning
 
 /obj/item/storage/backpack/satchel/sec/redsec
 	icon = 'icons/obj/storage/backpack.dmi'
@@ -367,7 +375,6 @@
 	icon = 'icons/obj/storage/backpack.dmi'
 	worn_icon = 'icons/mob/clothing/back/backpack.dmi'
 	icon_state = "duffel-security"
-	current_skin = "duffel-security" //prevents reskinning
 
 /*
 *	BELT
@@ -379,7 +386,6 @@
 	icon_state = "security"
 	inhand_icon_state = "security"
 	worn_icon_state = "security"
-	current_skin = "security"	//prevents reskinning
 
 /*
 *	HEAD
@@ -399,7 +405,6 @@
 	icon = 'icons/obj/clothing/under/security.dmi'
 	worn_icon = 'icons/mob/clothing/under/security.dmi'
 	icon_state = "rsecurity"
-	current_skin = "rsecurity"	//prevents reskinning
 
 /obj/item/clothing/under/rank/security/warden/redsec
 	icon = 'icons/obj/clothing/under/security.dmi'
@@ -458,4 +463,3 @@
 	icon_state = "jackboots_sec"
 	icon = 'icons/obj/clothing/shoes.dmi'
 	worn_icon = 'icons/mob/clothing/feet.dmi'
-	current_skin = "jackboots_sec"	//prevents reskinning
