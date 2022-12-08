@@ -259,6 +259,10 @@
 /obj/item/clothing/under/rank/security/officer
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
+	icon_state = "lopland_suit"
+
+/obj/item/clothing/under/rank/security/officer/skirt
+	icon_state = "lopland_suitskirt"
 
 //Warden
 /obj/item/clothing/under/rank/security/warden
