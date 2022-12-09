@@ -45,6 +45,7 @@
 /obj/item/food/drug/smarts
 	name = "SMARTs slice"
 	desc = "A thin slice of SMARTs, a drug capable of vastly increasing the learning skills of whoever takes it."
+	icon = 'modular_skyrat/modules/morenarcotics/icons/drug_items.dmi'
 	icon_state = "smarts_slice"
 	food_reagents = list(
 		/datum/reagent/toxin/spore = 5,
@@ -57,7 +58,6 @@
 /obj/item/food/drug/smarts/block
 	name = "SMARTs brick"
 	desc = "A condensed brick of SMARTs, a drug capable of vastly increasing the learning skills of whoever takes it.\nThough, you should probably cut it into smaller pieces first."
-	icon = 'modular_skyrat/modules/morenarcotics/icons/drug_items.dmi'
 	icon_state = "smarts_block"
 	food_reagents = list(
 		/datum/reagent/toxin/spore = 20,
