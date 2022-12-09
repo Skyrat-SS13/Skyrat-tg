@@ -40,7 +40,7 @@
 			for(var/x in export.total_amount)
 				price += export.total_value[x]
 			if(price)
-				export_text = span_noticealien("This item has an export value of: <b>[price].")
+				export_text = span_noticealien("This item has an export value of: <b>[price] credits.")
 			else
 				export_text = span_warning("This item has no export value.")
 
