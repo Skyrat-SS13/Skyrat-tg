@@ -6,7 +6,7 @@
 	name = "Automatic Appraisal" //Placeholder name until I figure out something cooler
 	program_desc = "Connects the user's brain to a database containing the current monetary values for most items, allowing them to determine their value in realtime"
 	active_mode = TRUE
-	active_cost = 2.5
+	active_cost = 0.5
 	compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif/standard)
 
 /datum/nifsoft/money_sense/activate()

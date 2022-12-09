@@ -10,7 +10,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	program_desc = "Hivemind is a program developed as a more reliable simulacrum of the mysterious means of communication that some varieties of slime share. It's built on a specific configuration of the NIF capable of generating a localized subspace network; the content the user's very thoughts, serving as a high-tech means of telepathic communication between NIF users."
 	activation_cost = 10
 	active_mode = TRUE
-	active_cost = 1
+	active_cost = 0.2
 	///The network that the user is currently hosting
 	var/datum/component/mind_linker/nif/user_network
 	///What networks are the user connected to?
