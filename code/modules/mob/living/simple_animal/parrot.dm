@@ -163,8 +163,12 @@
 	. += "Held Item: [held_item]"
 	. += "Combat mode: [combat_mode ? "On" : "Off"]"
 
+<<<<<<< HEAD
 /* SKYRAT EDIT - MOVED TO modular_skyrat/modules/poly_commands
 /mob/living/simple_animal/parrot/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, list/spans, list/message_mods = list())
+=======
+/mob/living/simple_animal/parrot/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, list/spans, list/message_mods = list(), message_range)
+>>>>>>> 48e36ef2c78 (Saycode refactor, unit tests, and fixes (#69799))
 	. = ..()
 	if(speaker != src && prob(50)) //Dont imitate ourselves
 		if(!radio_freq || prob(10))
