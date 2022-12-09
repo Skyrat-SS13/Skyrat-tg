@@ -150,11 +150,9 @@
 		qdel(src)
 
 /obj/item/disk/nifsoft_uploader/attack_self(mob/user, modifiers)
-	. = ..()
 	attempt_software_install(user)
 
 /obj/item/disk/nifsoft_uploader/attack(mob/living/mob, mob/living/user, params)
-	. = ..()
 	attempt_software_install(mob)
 
 #undef DEFAULT_NIFSOFT_COOLDOWN

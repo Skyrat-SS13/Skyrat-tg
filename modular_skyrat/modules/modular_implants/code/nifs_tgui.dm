@@ -5,11 +5,12 @@
 		"cardtable",
 		"hackerman",
 		"malfunction",
+		"default",
 		"ntos",
 		"wizard",
 	)
 	///What theme is currently being used on the NIF?
-	var/current_theme = "ntos"
+	var/current_theme = "default"
 
 /obj/item/organ/internal/cyberimp/brain/nif/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
