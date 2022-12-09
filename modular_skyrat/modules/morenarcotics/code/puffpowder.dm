@@ -20,10 +20,10 @@
 	var/turf/hit_turf = get_turf(hit_atom)
 	new /obj/effect/decal/cleanable/food/flour(hit_turf) // No, flour
 
-	var/datum/effect_system/fluid_spread/smoke/chem/smoke = new ()
+	var/datum/effect_system/fluid_spread/smoke/chem/quick/smoke = new ()
 	var/poof_location = get_turf(hit_turf)
 	smoke.attach(poof_location)
-	smoke.set_up(range = 2, holder = src, location = poof_location, carry = src.reagents, silent = FALSE)
+	smoke.set_up(range = 1, holder = src, location = poof_location, carry = src.reagents, silent = FALSE)
 	smoke.start(log = TRUE)
 
 	qdel(src)
@@ -43,6 +43,18 @@
 // Refined version of odious puffpowder
 
 /obj/item/food/drug/smarts
+	name = "SMARTs slice"
+	desc = "A thin slice of SMARTs, a drug capable of vastly increasing the learning skills of whoever takes it."
+	icon_state = "smarts_slice"
+	food_reagents = list(
+		/datum/reagent/toxin/spore = 5,
+		/datum/reagent/impurity/healing/medicine_failure = 5,
+		/datum/reagent/toxin/heparin = 5,
+		/datum/reagent/drug/maint/powder = 5,
+	)
+	tastes = list("burnt mushroom" = 3, "chalk" = 1)
+
+/obj/item/food/drug/smarts/block
 	name = "SMARTs brick"
 	desc = "A condensed brick of SMARTs, a drug capable of vastly increasing the learning skills of whoever takes it.\nThough, you should probably cut it into smaller pieces first."
 	icon = 'modular_skyrat/modules/morenarcotics/icons/drug_items.dmi'
@@ -55,18 +67,6 @@
 	)
 	tastes = list("burnt mushroom" = 7, "chalk" = 3, "regret" = 2)
 
-/obj/item/food/drug/smarts/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/drug/smarts/slice, amount_created = 4, 3 SECONDS, table_required = TRUE, screentip_verb = "Slice")
-	AddElement(/datum/element/processable, TOOL_SAW, /obj/item/food/drug/smarts/slice, amount_created = 4, 4 SECONDS, table_required = TRUE, screentip_verb = "Slice")
-
-/obj/item/food/drug/smarts/slice
-	name = "SMARTs slice"
-	desc = "A thin slice of SMARTs, a drug capable of vastly increasing the learning skills of whoever takes it."
-	icon_state = "smarts_slice"
-	food_reagents = list(
-		/datum/reagent/toxin/spore = 5,
-		/datum/reagent/impurity/healing/medicine_failure = 5,
-		/datum/reagent/toxin/heparin = 5,
-		/datum/reagent/drug/maint/powder = 5,
-	)
-	tastes = list("burnt mushroom" = 3, "chalk" = 1)
+/obj/item/food/drug/smarts/block/MakeProcessable()
+	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/drug/smarts, amount_created = 4, 3 SECONDS, table_required = TRUE, screentip_verb = "Slice")
+	AddElement(/datum/element/processable, TOOL_SAW, /obj/item/food/drug/smarts, amount_created = 4, 4 SECONDS, table_required = TRUE, screentip_verb = "Slice")

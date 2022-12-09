@@ -1,5 +1,5 @@
 /obj/item/food/drug/extinguisher_crystal
-	name = "moon rock"
+	name = "firefighting foam crystal"
 	desc = "An aerogel-like substance made of firefighting foam in the shape of a crystal.\nUnder no circumstances ever should you roll this up in rolling paper and smoke it, that would be illegal of course."
 	icon = 'modular_skyrat/modules/morenarcotics/icons/drug_items.dmi'
 	icon_state = "crystal_extinguisher"

@@ -43,7 +43,6 @@
 		/datum/reagent/toxin/mutetoxin,
 		/datum/reagent/toxin/mutagen,
 		/datum/reagent/toxin/cyanide,
-		/datum/reagent/drug/opium,
 		/datum/reagent/drug/mushroomhallucinogen,
 		/datum/reagent/inverse/oculine,
 	)

@@ -13,8 +13,11 @@
 		/obj/item/ammo_box/foambox/riot = 11,
 		/obj/item/soap/syndie = 7,
 		/obj/item/food/drug/smarts = 5,
-		/obj/item/food/drug/smarts/slice = 10,
-		/obj/item/reagent_containers/hypospray/medipen/twitch_injector = 9,
+		/obj/item/food/drug/smarts/block = 10,
+		/obj/item/reagent_containers/hypospray/medipen/twitch_injector = 8,
+		/obj/item/reagent_containers/cup/blastoff_ampoule = 8,
+		/obj/item/food/drug/saturnx = 8,
+		/obj/item/food/drug/moon_rock = 8,
 		/obj/item/food/drug/puffpowder = 13,
 		/obj/item/reagent_containers/hypospray/medipen/demoneye_applicator = 8,
 		/obj/item/storage/pill_bottle/stimulant = 9, //ephedrine and coffee. Can actually change whether someone gets out of a runaway situation
