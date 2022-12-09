@@ -59,7 +59,6 @@
 		ADD_TRAIT(new_spawn, TRAIT_FREE_GHOST, GHOSTROLE_TRAIT)
 		to_chat(new_spawn,span_warning("<b>Ghosting is free!</b>"))
 		var/datum/action/toggle_dead_chat_mob/D = new(new_spawn)
-		new_spawn.put_in_hands(new /obj/item/storage/box/syndie_kit/chameleon/ghostcafe, LEFT_HANDS, forced = TRUE)
 		new_spawn.equip_outfit_and_loadout(/datum/outfit/ghostcafe, new_spawn.client.prefs, FALSE, null)
 		SSquirks.AssignQuirks(new_spawn, new_spawn.client, TRUE, TRUE, null, FALSE, new_spawn)
 		D.Grant(new_spawn)
@@ -69,6 +68,8 @@
 	uniform = /obj/item/clothing/under/color/random
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	id = /obj/item/card/id/advanced/ghost_cafe
+	back = /obj/item/storage/backpack/chameleon
+	backpack_contents = list(/obj/item/storage/box/syndie_kit/chameleon/ghostcafe = 1)
 
 /datum/action/toggle_dead_chat_mob
 	icon_icon = 'icons/mob/simple/mob.dmi'
@@ -90,6 +91,13 @@
 /obj/item/storage/box/syndie_kit/chameleon/ghostcafe
 	name = "cafe costuming kit"
 	desc = "Look just the way you did in life - or better!"
+	icon_state = "ghostcostuming"
+
+/obj/item/storage/box/syndie_kit/chameleon/ghostcafe/Initialize(mapload)
+	. = ..()
+	atom_storage.max_specific_storage = WEIGHT_CLASS_HUGE // This is ghost cafe only, balance is not given a shit about.
+	atom_storage.max_slots = 14 // Holds all the starting stuff, plus a bit of change.
+	atom_storage.max_total_storage = 50 // To actually acommodate the stuff being added.
 
 /obj/item/storage/box/syndie_kit/chameleon/ghostcafe/PopulateContents() // Doesn't contain a PDA, for isolation reasons.
 	new /obj/item/clothing/under/chameleon(src)
@@ -100,7 +108,6 @@
 	new /obj/item/clothing/head/chameleon(src)
 	new /obj/item/clothing/mask/chameleon(src)
 	new /obj/item/clothing/neck/chameleon(src)
-	new /obj/item/storage/backpack/chameleon(src)
 	new /obj/item/storage/belt/chameleon(src)
 	new /obj/item/card/id/advanced/chameleon(src)
 	new /obj/item/hhmirror/syndie(src)
