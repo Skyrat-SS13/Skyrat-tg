@@ -10,10 +10,10 @@
 	var/pod_style = STYLE_CENTCOM
 
 /obj/item/advanced_choice_beacon/attack_self(mob/user, modifiers)
-	if(canUseBeacon(user))
+	if(can_use_beacon(user))
 		display_options(user)
 
-/obj/item/advanced_choice_beacon/proc/canUseBeacon(mob/living/user)
+/obj/item/advanced_choice_beacon/proc/can_use_beacon(mob/living/user)
 	if(user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
 		return TRUE
 	else
@@ -121,7 +121,7 @@
 	icon = 'modular_skyrat/modules/novaya_ert/icons/turret_deployable.dmi'
 	icon_state = "living"
 	base_icon_state = "living"
-	stun_projectile = /obj/projectile/bullet/advanced/b12mm/rubber
+	stun_projectile = /obj/projectile/bullet/b12mm/rubber
 	lethal_projectile = /obj/projectile/bullet/a762x39
 	max_integrity = 150
 	req_access = list(ACCESS_CENT_GENERAL)
