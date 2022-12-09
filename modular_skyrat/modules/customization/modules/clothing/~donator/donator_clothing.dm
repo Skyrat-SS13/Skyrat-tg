@@ -161,19 +161,19 @@
 /datum/action/item_action/dtselectcolor
 	name = "Change Color"
 	desc = "Change your color."
-	icon_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	button_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	button_icon_state = "drawingtablet"
 
 /datum/action/item_action/dtcolormenu
 	name = "Color Menu"
 	desc = "Select, save, or delete a color in your tablet's color menu!"
-	icon_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	button_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	button_icon_state = "drawingtablet"
 
 /datum/action/item_action/dtcleargrid
 	name = "Clear Canvas"
 	desc = "Clear the canvas of your drawing tablet."
-	icon_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	button_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	button_icon_state = "drawingtablet"
 
 // Donation reward for Thedragmeme

@@ -48,10 +48,10 @@
 	for(button in src.actions)
 		if(istype(button, /datum/action/item_action/toggle_breathcontrol))
 			button.button_icon_state = "[current_mask_color]_switch_[mask_on? "on" : "off"]"
-			button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
+			button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 		if(istype(button, /datum/action/item_action/mask_inhale))
 			button.button_icon_state = "[current_mask_color]_breath"
-			button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
+			button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 	update_icon()
 
 /obj/item/clothing/mask/gas/bdsm_mask/handle_speech(datum/source, list/speech_args)

@@ -5,7 +5,7 @@
 
 // Parent of all borer actions
 /datum/action/cooldown/borer
-	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
+	button_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	cooldown_time = 0
 	/// How many chemicals this costs
 	var/chemical_cost = 0

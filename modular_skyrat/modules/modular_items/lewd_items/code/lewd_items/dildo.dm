@@ -280,7 +280,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	var/datum/action/item_action/action_button
 	if(istype(action_button, /datum/action/item_action/take_dildo))
 		action_button.button_icon_state = "dildo_side"
-		action_button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
+		action_button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 	update_icon()
 
 //button stuff
