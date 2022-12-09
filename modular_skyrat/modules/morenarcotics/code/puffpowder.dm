@@ -56,8 +56,8 @@
 	tastes = list("burnt mushroom" = 7, "chalk" = 3, "regret" = 2)
 
 /obj/item/food/drug/smarts/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, slice_type, yield, 3 SECONDS, table_required = TRUE, screentip_verb = "Slice")
-	AddElement(/datum/element/processable, TOOL_SAW, slice_type, yield, 4 SECONDS, table_required = TRUE, screentip_verb = "Slice")
+	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/drug/smarts/slice, amount_created = 4, 3 SECONDS, table_required = TRUE, screentip_verb = "Slice")
+	AddElement(/datum/element/processable, TOOL_SAW, /obj/item/food/drug/smarts/slice, amount_created = 4, 4 SECONDS, table_required = TRUE, screentip_verb = "Slice")
 
 /obj/item/food/drug/smarts/slice
 	name = "SMARTs slice"
