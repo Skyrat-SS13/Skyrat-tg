@@ -192,3 +192,117 @@
       cases, sorry no more living statues
   - bugfix: Void Raptor - removes stray r-wall in Xenobio
   - bugfix: Void Raptor - fixes solar console names
+2022-12-07:
+  Melbert:
+  - balance: 'Heretic: Furious Steel''s cooldown has been doubled (30s -> 60s), and
+      abides by antimagic'
+  - balance: 'Heretic: Cleave''s cooldown has increased by 5s, range has been decreased
+      to 4 tiles, and wound applied now has natural clotting'
+  - balance: 'Heretic: Blood Siphon''s range has been decreased to 6 tiles'
+  - balance: 'Heretic: Void Pull and Phase abide by antimagic'
+  - balance: 'Heretic: Halved Void Blast''s cooldown to 30s'
+  - qol: 'Heretic: Void Blast and Rust Formation now have distinct icons'
+  SkyratBot:
+  - bugfix: Ephedrine now rewards you instead of punishing you for making it pure.
+  - bugfix: queuing clicks should work correctly now
+  - bugfix: fixes being able to stack deepfried bluespace body bags into bluespace
+      body bag
+  - bugfix: Prevents the recycler from destroying indestructible objects.
+  - qol: lockboxes have screentips,
+  - qol: cargo goodies can be opened with your ID even if it is inside a PDA or Wallet
+  - bugfix: captain can no longer open cargo goodies
+  - imageadd: secure lockboxes have a broken sprite when emag'd
+  - qol: hop has basic cargo access
+  - qol: the AI HUD now flex-scales and is reorganized.
+  - bugfix: crab rangoon is not invisible
+  - bugfix: Fixes a typo that meant auxiliary effects from projectiles (.38 rubber
+      stamina, ebow stamina/knockdown/blur) checked a generally nonexistent armor
+      value that was defined on a per-/atom level. As a consequence, such auxiliary
+      effects from projectiles now actually respect the armored equipment of hit targets/limbs/etc.
+      On living mobs that have armor equipped, anyway.
+  - qol: Charlie station stores space suits in proper storage
+  - balance: Geysers now spawn more often, especially wittel geysers.
+  - balance: Change liver to not purge toxins instantly for low amounts. Instead the
+      toxin effect gets skipped while it is metabolized normally, however it still
+      does liver damage. This fixes bite increments for food, cigarettes, and drinks
+      where the toxins would purge without building up to harmful levels.
+  - balance: Change the formula for how toxins effect livers.  Livers will be damaged
+      based on the units of toxin present and their lethality.
+  - balance: Change alien liver toxin resistance value to be -33% and cybernetic liver
+      toxin resistance value to be +50%
+  nevimer:
+  - bugfix: supermatter surge now doesn't overflow values??
+  - code_imp: cleaned up SM surge code a little bit
+2022-12-08:
+  Azlan, Fikou, MTandi:
+  - imageadd: Void suit and jetpack resprited
+  - bugfix: Also fixed the issue with all jetpack sprites not updating on the back
+  SkyratBot:
+  - rscdel: Tablets are now removed, PDAs are now the base 'tablet'. Silicon and nukie
+      tablets are now PDAs.
+  - bugfix: fixed using the changeling tentacle arm via right mouse click holding
+      people up instead of firing it. Now it will fire like normal
+  - bugfix: You can now order canisters again.
+  - rscadd: ' Key can now hurt people by stabbing or throwing.'
+  - code_imp: changed the keys code to make it able to hurt ppl
+  - bugfix: Mining point cards have slightly more readable buttons now, and also can
+      be reused even after running out of points.
+  - bugfix: the atrocinator modsuit module's negative gravity now works again. have
+      fun on the ceiling
+  - bugfix: Fixed being able to move through floors and get to centcomm when moving
+      up/down while inside mechs and similar movable objects.
+  - imageadd: indicator when a pda contains a pai
+  - refactor: Refactors podperson hair. You can now restyle it on any species
+  - qol: You can restyle podperson hair on the person, their decapitated head or straight
+      on the hair organ
+  - code_imp: Restyling is now completely modular, you can make any external organ
+      easily restylable
+  - bugfix: Fixes external organ harddel because limbs would keep the reference on
+      drop_organs
+  - rscadd: Frogs and cockroaches can now be converted to the regal rats army.
+  - bugfix: Converted rat do not attack mouses anymore.
+  - imageadd: New sewer cockroach and trash frog sprites
+  Tralezab code, Azlan + Azarak (Az gaaang) for the organs:
+  - rscadd: Added the DNA infuser to genetics! Person goes in, corpse goes in, and
+      they combine!
+  - rscadd: Try not to turn yourself into a fly, OK?
+  theOOZ:
+  - rscadd: Sprite accessories now generate an energy overlay according to a worn
+      MOD's theme
+  - refactor: Show/Hide mutant parts verb is refactored to allow options as to what
+      to hide.
+  - code_imp: Show/Hide mutant parts verb incorporated into a MOD button
+2022-12-09:
+  A.C.M.O.:
+  - bugfix: Fixed the Bluespace RPD's Alt-click for its "remote piping safety".
+  Rhials:
+  - bugfix: Earning the Mimic loot drop from an abandoned crate now properly spawns
+      the mimic.
+  - balance: Xenomorph nests will now sustain humans that are buckled to them, and
+      gestate xenomorph eggs slightly faster.
+  - balance: Xenomorph nests evolved healing capabilities in exchange for some of
+      their grip. They now take only one minute to escape from.
+  - bugfix: Ethereals cannot crystal revive back from genetic meltdown petrification.
+  SkyratBot:
+  - bugfix: biogenerator converts all plant nutriments into biomass, not just the
+      first found one.
+  - bugfix: fixed mothroach inhands not properly fitting under your arm when facing
+      sideways with the mothroach facing the camera
+  - bugfix: fixed getting kicked out of your body sometimes when pursuing the carp
+      mutant
+  - bugfix: and carp lungs working incorrectly
+  - qol: better ui explanation on the infuser book
+  - qol: can drag people into the infuser chamber
+  - bugfix: The dog's attack command is somewhat more reliable.
+  - admin: Whenever you teleport an atom/mob using the Get function found in many
+      admin utilities, rest assured that it will actually log the destination location
+      of where you are teleporting that thing to- rather than the location they were
+      pre-teleportation.
+  - code_imp: turned axolotls into basic mobs, their idle movement may be slightly
+      different and they won't move while you're pulling them anymore
+  - bugfix: Light replacers will no longer turn invisible.
+  - bugfix: 'fixes shields that don''t actually take damage from attacks (eg: adamantine
+      shields) being unable to block said attacks.'
+  Tralezab code, Fikou's map, PigeonVerde and Halcyon for sprites!:
+  - rscadd: Psyker-gangers are new pirates
+  - refactor: refactored pirate code so we can add more in the future
