@@ -62,58 +62,7 @@
 
 	if(href_list["late_join"])
 		play_lobby_button_sound()
-		if(!SSticker?.IsRoundInProgress())
-			to_chat(src, span_boldwarning("The round is either not ready, or has already finished..."))
-			return
-
-		//Determines Relevent Population Cap
-		var/relevant_cap
-		var/hard_popcap = CONFIG_GET(number/hard_popcap)
-		var/extreme_popcap = CONFIG_GET(number/extreme_popcap)
-		if(hard_popcap && extreme_popcap)
-			relevant_cap = min(hard_popcap, extreme_popcap)
-		else
-			relevant_cap = max(hard_popcap, extreme_popcap)
-
-		if(SSticker.queued_players.len || (relevant_cap && living_player_count() >= relevant_cap && !(ckey(key) in GLOB.admin_datums)))
-			to_chat(src, span_danger("[CONFIG_GET(string/hard_popcap_message)]"))
-
-			var/queue_position = SSticker.queued_players.Find(src)
-			if(queue_position == 1)
-				to_chat(src, span_notice("You are next in line to join the game. You will be notified when a slot opens up."))
-			else if(queue_position)
-				to_chat(src, span_notice("There are [queue_position-1] players in front of you in the queue to join the game."))
-			else
-				SSticker.queued_players += src
-				to_chat(src, span_notice("You have been added to the queue to join the game. Your position in queue is [SSticker.queued_players.len]."))
-			return
-
-		if(length_char(src.client.prefs.read_preference(/datum/preference/text/flavor_text)) < FLAVOR_TEXT_CHAR_REQUIREMENT)
-			to_chat(src, span_notice("You need at least [FLAVOR_TEXT_CHAR_REQUIREMENT] characters of flavor text to join the round. You have [length_char(src.client.prefs.read_preference(/datum/preference/text/flavor_text))] characters."))
-			return
-
-		LateChoices()
-		return
-
-	if(href_list["cancrand"])
-		src << browse(null, "window=randjob") //closes the random job window
-		LateChoices()
-		return
-
-	if(href_list["SelectedJob"])
-		select_job(href_list["SelectedJob"])
-		return
-
-	if(href_list["viewpoll"])
-		play_lobby_button_sound()
-		var/datum/poll_question/poll = locate(href_list["viewpoll"]) in GLOB.polls
-		poll_player(poll)
-		return
-
-	if(href_list["votepollref"])
-		var/datum/poll_question/poll = locate(href_list["votepollref"]) in GLOB.polls
-		vote_on_poll_handler(poll, href_list)
-		return
+		GLOB.latejoin_menu.ui_interact(usr)
 
 	if(href_list["title_is_ready"])
 		title_screen_is_ready = TRUE
