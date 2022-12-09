@@ -114,52 +114,6 @@
 	SEND_SOUND(src, sound('modular_skyrat/master_files/sound/effects/save.ogg'))
 
 /**
- * Selects a new job or gives random if unset.
- */
-/mob/dead/new_player/proc/select_job(job)
-	if(job == "Random")
-		var/list/dept_data = list()
-		for(var/datum/job_department/department as anything in SSjob.joinable_departments)
-			for(var/datum/job/job_datum as anything in department.department_jobs)
-				if(IsJobUnavailable(job_datum.title, TRUE) != JOB_AVAILABLE)
-					continue
-				dept_data += job_datum.title
-		if(dept_data.len <= 0) //Congratufuckinglations
-			tgui_alert(src, "There are literally no random jobs available for you on this server, ahelp for assistance.")
-			return
-		var/random = pick(dept_data)
-		var/randomjob = "<p><center><a href='byond://?src=[REF(src)];SelectedJob=[random]'>[random]</a></center><center><a href='byond://?src=[REF(src)];SelectedJob=Random'>Reroll</a></center><center><a href='byond://?src=[REF(src)];cancrand=[1]'>Cancel</a></center></p>"
-		var/datum/browser/popup = new(src, "randjob", "<div align='center'>Random Job</div>", 200, 150)
-		popup.set_window_options("can_close=0")
-		popup.set_content(randomjob)
-		popup.open(FALSE)
-		return
-
-	if(!SSticker?.IsRoundInProgress())
-		to_chat(usr, span_danger("The round is either not ready, or has already finished..."))
-		return
-
-	if(SSlag_switch.measures[DISABLE_NON_OBSJOBS])
-		to_chat(usr, span_notice("There is an administrative lock on entering the game!"))
-		return
-
-	//Determines Relevent Population Cap
-	var/relevant_cap
-	var/hard_popcap = CONFIG_GET(number/hard_popcap)
-	var/extreme_popcap = CONFIG_GET(number/extreme_popcap)
-	if(hard_popcap && extreme_popcap)
-		relevant_cap = min(hard_popcap, extreme_popcap)
-	else
-		relevant_cap = max(hard_popcap, extreme_popcap)
-
-	if(LAZYLEN(SSticker.queued_players) && !(ckey(key) in GLOB.admin_datums))
-		if((living_player_count() >= relevant_cap) || (src != SSticker.queued_players[1]))
-			to_chat(usr, span_warning("Server is full."))
-			return
-
-	AttemptLateSpawn(job)
-
-/**
  * Allows the player to select a server to join from any loaded servers.
  */
 /mob/dead/new_player/proc/server_swap()

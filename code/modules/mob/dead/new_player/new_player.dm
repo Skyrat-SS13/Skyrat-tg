@@ -55,6 +55,7 @@
 		show_title_screen() // SKYRAT EDIT ADDITION
 		return FALSE
 
+	hide_title_screen() // SKYRAT EDIT ADDITION - Skyrat Titlescreen
 	var/mob/dead/observer/observer = new()
 	spawning = TRUE
 
@@ -76,7 +77,6 @@
 	observer.update_appearance()
 	observer.stop_sound_channel(CHANNEL_LOBBYMUSIC)
 	deadchat_broadcast(" has observed.", "<b>[observer.real_name]</b>", follow_target = observer, turf_target = get_turf(observer), message_type = DEADCHAT_DEATHRATTLE)
-	hide_title_screen() // SKYRAT EDIT ADDITION - Skyrat Titlescreen
 	QDEL_NULL(mind)
 	qdel(src)
 	return TRUE
@@ -169,6 +169,7 @@
 		tgui_alert(usr, "There was an unexpected error putting you into your requested job. If you cannot join with any job, you should contact an admin.")
 		return FALSE
 
+	hide_title_screen()// SKYRAT EDIT ADDITION
 	mind.late_joiner = TRUE
 	var/atom/destination = mind.assigned_role.get_latejoin_spawn_point()
 	if(!destination)
@@ -239,15 +240,13 @@
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CREWMEMBER_JOINED, character, rank)
 
-	//SKYRAT EDIT ADDITION
-	hide_title_screen()
-
+	// SKYRAT EDIT ADDITION START
 	if(humanc)
 		for(var/datum/loadout_item/item as anything in loadout_list_to_datums(humanc?.client?.prefs?.loadout_list))
 			if (item.restricted_roles && length(item.restricted_roles) && !(job.title in item.restricted_roles))
 				continue
 			item.post_equip_item(humanc.client?.prefs, humanc)
-	//SKYRAT EDIT END
+	// SKYRAT EDIT END
 
 /mob/dead/new_player/proc/AddEmploymentContract(mob/living/carbon/human/employee)
 	//TODO:  figure out a way to exclude wizards/nukeops/demons from this.
