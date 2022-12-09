@@ -1,129 +1,72 @@
-/obj/item/reagent_containers/crack
-	name = "crack"
-	desc = "A rock of freebase cocaine, otherwise known as crack."
-	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
-	icon_state = "crack"
-	volume = 10
-	possible_transfer_amounts = list()
-	list_reagents = list(/datum/reagent/drug/cocaine/freebase_cocaine = 10)
+/obj/item/food/drug/puffpowder
+	name = "odious puffpowder"
+	desc = "The cap of an odious puffball with a cocktail of other chemicals mixed into it.\nWhile the powder could be consumed for its slight medicinal properties, its usual use comes from baking it, but you'd never do that right?"
+	icon = 'modular_skyrat/modules/morenarcotics/icons/drug_items.dmi'
+	icon_state = "puffball_powder"
+	food_reagents = list(
+		/datum/reagent/toxin/spore = 10,
+		/datum/reagent/impurity/healing/medicine_failure = 10,
+		/datum/reagent/toxin/heparin = 5,
+	)
+	tastes = list("rotting mushroom" = 3, "chalk" = 2)
 
-/obj/item/reagent_containers/crackbrick
-	name = "crack brick"
-	desc = "A brick of crack cocaine."
-	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
-	icon_state = "crackbrick"
-	volume = 40
-	possible_transfer_amounts = list()
-	list_reagents = list(/datum/reagent/drug/cocaine/freebase_cocaine = 40)
+/obj/item/food/drug/puffpowder/MakeBakeable()
+	AddComponent(/datum/component/bakeable, /obj/item/food/drug/smarts, rand(45 SECONDS, 2 MINUTES), TRUE, TRUE)
 
-/obj/item/reagent_containers/crackbrick/attackby(obj/item/W, mob/user, params)
-	if(W.get_sharpness())
-		user.show_message(span_notice("You cut \the [src] into some rocks."), MSG_VISUAL)
-		for(var/i = 1 to 4)
-			new /obj/item/reagent_containers/crack(user.loc)
-		qdel(src)
-
-/datum/crafting_recipe/crackbrick
-	name = "Crack brick"
-	result = /obj/item/reagent_containers/crackbrick
-	reqs = list(/obj/item/reagent_containers/crack = 4)
-	parts = list(/obj/item/reagent_containers/crack = 4)
-	time = 20
-	category = CAT_CHEMISTRY //i might just make a crafting category for drugs at some point
-
-// Should probably give this the edible component at some point
-/obj/item/reagent_containers/cocaine
-	name = "cocaine"
-	desc = "Reenact your favorite scenes from Scarface!"
-	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
-	icon_state = "cocaine"
-	volume = 5
-	possible_transfer_amounts = list()
-	list_reagents = list(/datum/reagent/drug/cocaine = 5)
-
-/obj/item/reagent_containers/cocaine/proc/snort(mob/living/user)
-	if(!iscarbon(user))
-		return
-	var/covered = ""
-	if(user.is_mouth_covered(head_only = 1))
-		covered = "headgear"
-	else if(user.is_mouth_covered(mask_only = 1))
-		covered = "mask"
-	if(covered)
-		to_chat(user, span_warning("You have to remove your [covered] first!"))
-		return
-	user.visible_message(span_notice("'[user] starts snorting the [src]."))
-	if(do_after(user, 30))
-		to_chat(user, span_notice("You finish snorting the [src]."))
-		if(reagents.total_volume)
-			reagents.trans_to(user, reagents.total_volume, transfered_by = user, methods = INGEST)
-		qdel(src)
-
-/obj/item/reagent_containers/cocaine/attack(mob/target, mob/user)
-	if(target == user)
-		snort(user)
-
-/obj/item/reagent_containers/cocaine/attack_hand_secondary(mob/user, list/modifiers)
-	. = ..()
-	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+/obj/item/food/drug/puffpowder/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	if (..()) // was it caught by a mob?
 		return
 
-	. = SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	var/turf/hit_turf = get_turf(hit_atom)
+	new /obj/effect/decal/cleanable/food/flour(hit_turf) // No, flour
 
-	if(!in_range(user, src) || user.get_active_held_item())
-		return
+	var/datum/effect_system/fluid_spread/smoke/chem/smoke = new ()
+	var/poof_location = get_turf(hit_turf)
+	smoke.attach(poof_location)
+	smoke.set_up(range = 2, holder = src, location = poof_location, carry = src.reagents, silent = FALSE)
+	smoke.start(log = TRUE)
 
-	snort(user)
+	qdel(src)
 
-	return
+/datum/chemical_reaction/puffpowder
+	required_reagents = list(/datum/reagent/toxin/spore = 10, /datum/reagent/lye = 5)
+	mob_react = FALSE
+	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_DRUG | REACTION_TAG_ORGAN | REACTION_TAG_DAMAGING
 
-/obj/item/reagent_containers/cocainebrick
-	name = "cocaine brick"
-	desc = "A brick of cocaine. Good for transport!"
-	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
-	icon_state = "cocainebrick"
-	volume = 25
-	possible_transfer_amounts = list()
-	list_reagents = list(/datum/reagent/drug/cocaine = 25)
+/datum/chemical_reaction/puffpowder/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/iteration in 1 to created_volume)
+		var/obj/item/food/drug/puffpowder/new_powda = new(location)
+		new_powda.pixel_x = rand(-6, 6)
+		new_powda.pixel_y = rand(-6, 6)
 
+// Refined version of odious puffpowder
 
-/obj/item/reagent_containers/cocainebrick/attack_self(mob/user)
-	user.visible_message(span_notice("[user] starts breaking up the [src]."))
-	if(do_after(user,10))
-		to_chat(user, span_notice("You finish breaking up the [src]."))
-		for(var/i = 1 to 5)
-			new /obj/item/reagent_containers/cocaine(user.loc)
-		qdel(src)
+/obj/item/food/drug/smarts
+	name = "SMARTs brick"
+	desc = "A condensed brick of SMARTs, a drug capable of vastly increasing the learning skills of whoever takes it.\nThough, you should probably cut it into smaller pieces first."
+	icon = 'modular_skyrat/modules/morenarcotics/icons/drug_items.dmi'
+	icon_state = "smarts_block"
+	food_reagents = list(
+		/datum/reagent/toxin/spore = 20,
+		/datum/reagent/impurity/healing/medicine_failure = 20,
+		/datum/reagent/toxin/heparin = 20,
+		/datum/reagent/drug/maint/powder = 20, // If you eat the entire brick you WILL overdose
+	)
+	tastes = list("burnt mushroom" = 7, "chalk" = 3, "regret" = 2)
 
-/datum/crafting_recipe/cocainebrick
-	name = "Cocaine brick"
-	result = /obj/item/reagent_containers/cocainebrick
-	reqs = list(/obj/item/reagent_containers/cocaine = 5)
-	parts = list(/obj/item/reagent_containers/cocaine = 5)
-	time = 20
-	category = CAT_CHEMISTRY //i might just make a crafting category for drugs at some point
+/obj/item/food/drug/smarts/MakeProcessable()
+	AddElement(/datum/element/processable, TOOL_KNIFE, slice_type, yield, 3 SECONDS, table_required = TRUE, screentip_verb = "Slice")
+	AddElement(/datum/element/processable, TOOL_SAW, slice_type, yield, 4 SECONDS, table_required = TRUE, screentip_verb = "Slice")
 
-//if you want money, convert it into crackbricks
-/datum/export/crack
-	cost = CARGO_CRATE_VALUE * 0.5
-	unit_name = "crack"
-	export_types = list(/obj/item/reagent_containers/crack)
-	include_subtypes = FALSE
-
-/datum/export/crack/crackbrick
-	cost = CARGO_CRATE_VALUE * 2.5
-	unit_name = "crack brick"
-	export_types = list(/obj/item/reagent_containers/crackbrick)
-	include_subtypes = FALSE
-
-/datum/export/cocaine
-	cost = CARGO_CRATE_VALUE * 0.4
-	unit_name = "cocaine"
-	export_types = list(/obj/item/reagent_containers/cocaine)
-	include_subtypes = FALSE
-
-/datum/export/cocainebrick
-	cost = CARGO_CRATE_VALUE * 2
-	unit_name = "cocaine brick"
-	export_types = list(/obj/item/reagent_containers/cocainebrick)
-	include_subtypes = FALSE
+/obj/item/food/drug/smarts/slice
+	name = "SMARTs slice"
+	desc = "A thin slice of SMARTs, a drug capable of vastly increasing the learning skills of whoever takes it."
+	icon_state = "smarts_slice"
+	food_reagents = list(
+		/datum/reagent/toxin/spore = 5,
+		/datum/reagent/impurity/healing/medicine_failure = 5,
+		/datum/reagent/toxin/heparin = 5,
+		/datum/reagent/drug/maint/powder = 5,
+	)
+	tastes = list("burnt mushroom" = 3, "chalk" = 1)

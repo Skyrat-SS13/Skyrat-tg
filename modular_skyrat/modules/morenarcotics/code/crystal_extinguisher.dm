@@ -51,8 +51,8 @@
 	if((methods & INGEST) && iscarbon(thing_transfered_to))
 		return
 	var/mob/living/carbon/carbon_mob = thing_transfered_to
-	histamine_amount = trans_volume * 2
-	C.reagents.add_reagent(/datum/reagent/toxin/histamine, histamine_amount)
+	var/histamine_amount = trans_volume * 2
+	carbon_mob.reagents.add_reagent(/datum/reagent/toxin/histamine, histamine_amount)
 	..()
 
 /datum/reagent/drug/crystal_firefighter_foam/on_mob_metabolize(mob/living/our_guy)

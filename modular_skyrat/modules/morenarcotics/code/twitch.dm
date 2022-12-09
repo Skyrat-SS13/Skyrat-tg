@@ -154,7 +154,7 @@
 		our_guy.add_filter("overdose_phase", 2, phase_filter(8))
 		addtimer(CALLBACK(our_guy, TYPE_PROC_REF(/atom, remove_filter), "overdose_phase"), 0.5 SECONDS)
 
-/datum/reagent/drug/twitch/proc/fuck_up_hearing()
+/datum/reagent/drug/twitch/proc/fuck_up_hearing(datum/source, list/hearing_args)
 	SIGNAL_HANDLER
 	hearing_args[HEARING_RAW_MESSAGE] = "<span class='[speech_effect_span]'>[hearing_args[HEARING_RAW_MESSAGE]]</span>"
 
