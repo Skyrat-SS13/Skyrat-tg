@@ -109,6 +109,7 @@
 #include "dynamic_ruleset_sanity.dm"
 #include "egg_glands.dm"
 #include "emoting.dm"
+#include "focus_only_tests.dm"
 #include "food_edibility_check.dm"
 #include "food_icons.dm"
 #include "gas_transfer.dm"
