@@ -13,7 +13,8 @@
 	var/mob/living/new_character
 	///Used to make sure someone doesn't get spammed with messages if they're ineligible for roles.
 	var/ineligible_for_roles = FALSE
-
+	/// Used to track if the player's jobs menu sent a message saying it successfully mounted.
+	var/jobs_menu_mounted = FALSE
 
 
 /mob/dead/new_player/Initialize(mapload)
@@ -38,6 +39,7 @@
 /mob/dead/new_player/prepare_huds()
 	return
 
+<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 /mob/dead/new_player/Topic(href, href_list[])
 	if(src != usr)
@@ -115,6 +117,8 @@
 		vote_on_poll_handler(poll, href_list)
 */
 
+=======
+>>>>>>> c60b5575b4b (TGUI Latejoin Menu! (#71531))
 //When you cop out of the round (NB: this HAS A SLEEP FOR PLAYER INPUT IN IT)
 /mob/dead/new_player/proc/make_me_an_observer()
 	if(QDELETED(src) || !src.client)
@@ -135,7 +139,6 @@
 	spawning = TRUE
 
 	observer.started_as_observer = TRUE
-	close_spawn_windows()
 	var/obj/effect/landmark/observer_start/O = locate(/obj/effect/landmark/observer_start) in GLOB.landmarks_list
 	to_chat(src, span_notice("Now teleporting."))
 	if (O)
@@ -185,7 +188,8 @@
 		//SKYRAT EDIT END
 		if(JOB_UNAVAILABLE_ANTAG_INCOMPAT)
 			return "[jobtitle] is not compatible with some antagonist role assigned to you."
-	return "Error: Unknown job availability."
+
+	return GENERIC_JOB_UNAVAILABLE_ERROR
 
 /mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE)
 	var/datum/job/job = SSjob.GetJob(rank)
@@ -227,7 +231,6 @@
 		return FALSE
 
 	if(SSshuttle.arrivals)
-		close_spawn_windows() //In case we get held up
 		if(SSshuttle.arrivals.damaged && CONFIG_GET(flag/arrivals_shuttle_require_safe_latejoin))
 			tgui_alert(usr,"The arrivals shuttle is currently malfunctioning! You cannot join.")
 			return FALSE
@@ -330,6 +333,7 @@
 		if(!employmentCabinet.virgin)
 			employmentCabinet.addFile(employee)
 
+<<<<<<< HEAD
 
 /mob/dead/new_player/proc/LateChoices()
 	var/list/dat = list()
@@ -385,10 +389,11 @@
 	popup.open(FALSE) // 0 is passed to open so that it doesn't use the onclose() proc
 
 
+=======
+>>>>>>> c60b5575b4b (TGUI Latejoin Menu! (#71531))
 /// Creates, assigns and returns the new_character to spawn as. Assumes a valid mind.assigned_role exists.
 /mob/dead/new_player/proc/create_character(atom/destination)
 	spawning = TRUE
-	close_spawn_windows()
 
 	mind.active = FALSE //we wish to transfer the key manually
 	var/mob/living/spawning_mob = mind.assigned_role.get_spawn_mob(client, destination)
@@ -435,12 +440,15 @@
 /mob/dead/new_player/Move()
 	return 0
 
+<<<<<<< HEAD
 
 /mob/dead/new_player/proc/close_spawn_windows()
 	hide_title_screen() // SKYRAT EDIT ADDITION
 	src << browse(null, "window=latechoices") //closes late choices window (Hey numbnuts go make this tgui)
 	src << browse(null, "window=randjob") //closes the random job window
 
+=======
+>>>>>>> c60b5575b4b (TGUI Latejoin Menu! (#71531))
 // Used to make sure that a player has a valid job preference setup, used to knock players out of eligibility for anything if their prefs don't make sense.
 // A "valid job preference setup" in this situation means at least having one job set to low, or not having "return to lobby" enabled
 // Prevents "antag rolling" by setting antag prefs on, all jobs to never, and "return to lobby if preferences not available"
