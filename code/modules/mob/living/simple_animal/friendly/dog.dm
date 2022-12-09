@@ -679,6 +679,9 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 	minbodytemp = TCMB
 	maxbodytemp = T0C + 40
 	held_state = "void_puppy"
+	unsuitable_atmos_damage = 0
+	minimum_survivable_temperature = TCMB
+	maximum_survivable_temperature = T0C + 40
 
 /mob/living/simple_animal/pet/dog/corgi/puppy/void/Initialize(mapload)
 	. = ..()
