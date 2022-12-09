@@ -40,6 +40,8 @@
 	addiction_types = list(/datum/addiction/exotic_stimulants = 15)
 	/// How much time has the drug been in them?
 	var/constant_dose_time = 0
+	/// What type of span class do we change heard speech to?
+	var/speech_effect_span
 
 /datum/reagent/drug/twitch/on_mob_metabolize(mob/living/our_guy)
 	. = ..()
@@ -49,7 +51,10 @@
 
 	our_guy.sound_environment_override = SOUND_ENVIRONMENT_DIZZY
 
-	RegisterSignal(our_guy, COMSIG_MOVABLE_MOVED, PROC_REF(on_movement), TRUE)
+	speech_effect_span = "green"
+
+	RegisterSignal(our_guy, COMSIG_MOVABLE_MOVED, PROC_REF(on_movement))
+	RegisterSignal(our_guy, COMSIG_MOVABLE_HEAR, PROC_REF(fuck_up_hearing))
 
 	if(!our_guy.hud_used)
 		return
@@ -73,6 +78,11 @@
 	our_guy.next_move_modifier += (overdosed ? 0.5 : 0.3)
 
 	our_guy.sound_environment_override = NONE
+
+	speech_effect_span = "hierophant"
+
+	UnregisterSignal(our_guy, COMSIG_MOVABLE_MOVED)
+	UnregisterSignal(our_guy, COMSIG_MOVABLE_HEAR)
 
 	if(constant_dose_time < 100) // Anything less than this and you'll come out fiiiine, aside from a big hit of stamina damage
 		our_guy.visible_message(
@@ -143,6 +153,10 @@
 	if(DT_PROB(10, delta_time))
 		our_guy.add_filter("overdose_phase", 2, phase_filter(8))
 		addtimer(CALLBACK(our_guy, TYPE_PROC_REF(/atom, remove_filter), "overdose_phase"), 0.5 SECONDS)
+
+/datum/reagent/drug/twitch/proc/fuck_up_hearing()
+	SIGNAL_HANDLER
+	hearing_args[HEARING_RAW_MESSAGE] = "<span class='[speech_effect_span]'>[hearing_args[HEARING_RAW_MESSAGE]]</span>"
 
 /// Cool filter that I'm using for some of this :)))
 /proc/phase_filter(size)
