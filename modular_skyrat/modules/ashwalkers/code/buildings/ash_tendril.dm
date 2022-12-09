@@ -10,7 +10,10 @@
 		balloon_alert(user, "must be an ashwalker!")
 		return
 
-	var/obj/item/organ/internal/monster_core/regenerative_core/regen_core = attacking_item
+	qdel(attacking_item)
+
+	var/obj/item/organ/internal/monster_core/regenerative_core/regen_core = new(get_turf(src))
+	user.put_in_active_hand(regen_core)
 
 	if(!regen_core.preserve())
 		balloon_alert(user, "organ decayed!")
