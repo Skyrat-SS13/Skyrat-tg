@@ -143,3 +143,36 @@
 	else
 		to_chat(M, span_warning("A selection has already been made. Self-Destructing..."))
 		return
+<<<<<<< HEAD
+=======
+
+	// Not bothering to cache this stuff because it'll only even be used once
+	var/list/armament_names_to_images = list()
+	var/list/armament_names_to_typepaths = list()
+	for(var/obj/item/storage/box/holy/holy_box as anything in typesof(/obj/item/storage/box/holy))
+		var/box_name = initial(holy_box.name)
+		var/obj/item/preview_item = initial(holy_box.typepath_for_preview)
+		armament_names_to_typepaths[box_name] = holy_box
+		armament_names_to_images[box_name] = image(icon = initial(preview_item.icon), icon_state = initial(preview_item.icon_state))
+
+	var/chosen_name = show_radial_menu(
+		user = user,
+		anchor = src,
+		choices = armament_names_to_images,
+		custom_check = CALLBACK(src, PROC_REF(can_use_beacon), user),
+		require_near = TRUE,
+	)
+	if(!can_use_beacon(user))
+		return
+	var/chosen_type = armament_names_to_typepaths[chosen_name]
+	if(!ispath(chosen_type, /obj/item/storage/box/holy))
+		return
+
+	consume_use(chosen_type, user)
+
+/obj/item/choice_beacon/holy/spawn_option(obj/choice_path, mob/living/user)
+	playsound(src, 'sound/effects/pray_chaplain.ogg', 40, TRUE)
+	SSblackbox.record_feedback("tally", "chaplain_armor", 1, "[choice_path]")
+	GLOB.holy_armor_type = choice_path
+	return ..()
+>>>>>>> 8bd5d20b49c (Fixed an improper proc ref. (#71862))
