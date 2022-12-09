@@ -5,7 +5,7 @@
 	icon_state = "demoneye"
 	base_icon_state = "demoneye"
 	amount_per_transfer_from_this = 10
-	volume = 10
+	volume = 15
 	ignore_flags = FALSE
 	reagent_flags = NONE
 	list_reagents = list(/datum/reagent/drug/demoneye = 10, /datum/reagent/impurity/healing/medicine_failure = 5,) // Medicine failure will randomly heal a tiny bit of a random damage
