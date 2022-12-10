@@ -1,3 +1,12 @@
+
+GLOBAL_LIST_INIT(potential_indicators, list(
+	STUNNED = image(icon = 'modular_skyrat/master_files/icons/mob/status_indicators.dmi', icon_state = STUNNED),
+	WEAKEN = image(icon = 'modular_skyrat/master_files/icons/mob/status_indicators.dmi', icon_state = WEAKEN),
+	PARALYSIS = image(icon = 'modular_skyrat/master_files/icons/mob/status_indicators.dmi', icon_state = PARALYSIS),
+	SLEEPING = image(icon = 'modular_skyrat/master_files/icons/mob/status_indicators.dmi', icon_state = SLEEPING),
+	CONFUSED = image(icon = 'modular_skyrat/master_files/icons/mob/status_indicators.dmi', icon_state = CONFUSED),
+))
+
 /datum/component/status_indicator
 	var/list/status_indicators = null // Will become a list as needed. Contains our status indicator objects. Note, they are actually added to overlays, this just keeps track of what exists.
 	var/mob/living/attached_mob
@@ -28,7 +37,6 @@
 		return TRUE
 
 /datum/component/status_indicator/RegisterWithParent()
-	. = ..()
 	attached_mob = parent
 	// The Basics
 	RegisterSignal(parent, COMSIG_LIVING_DEATH, .proc/cut_indicators_overlays)
@@ -41,7 +49,17 @@
 	RegisterSignal(parent, COMSIG_LIVING_STATUS_IMMOBILIZE, .proc/status_indicator_evaluate)
 	RegisterSignal(parent, COMSIG_LIVING_STATUS_UNCONSCIOUS, .proc/unconcious_indicator_update)
 
-
+/datum/component/status_indicator/UnregisterFromParent()
+	QDEL_NULL(status_indicators)
+	UnregisterSignal(attached_mob, COMSIG_LIVING_DEATH)
+	UnregisterSignal(attached_mob, COMSIG_CARBON_HEALTH_UPDATE)
+	UnregisterSignal(attached_mob, COMSIG_LIVING_LIFE)
+	UnregisterSignal(attached_mob, COMSIG_LIVING_STATUS_STUN)
+	UnregisterSignal(attached_mob, COMSIG_LIVING_STATUS_KNOCKDOWN)
+	UnregisterSignal(attached_mob, COMSIG_LIVING_STATUS_PARALYZE)
+	UnregisterSignal(attached_mob, COMSIG_LIVING_STATUS_IMMOBILIZE)
+	UnregisterSignal(attached_mob, COMSIG_LIVING_STATUS_UNCONSCIOUS)
+	attached_mob = null
 /// This proc makes it so that mobs that have status indicators are checked to remove them, especially in fakeout situations.
 /datum/component/status_indicator/proc/check_indicators()
 	if(status_indicators)
@@ -86,7 +104,8 @@
 	if(get_status_indicator(prospective_indicator)) // No duplicates, please.
 		return
 
-	prospective_indicator = image(icon = 'modular_skyrat/master_files/icons/mob/status_indicators.dmi', loc = src, icon_state = prospective_indicator)
+	prospective_indicator = GLOB.potential_indicators[prospective_indicator]
+	prospective_indicator.loc = src
 
 	LAZYADD(status_indicators, prospective_indicator)
 	handle_status_indicators()
@@ -174,7 +193,6 @@
 	plane = PLANE_STATUS_INDICATOR
 	appearance_flags = PLANE_MASTER
 	blend_mode = BLEND_OVERLAY
-	render_relay_plane = RENDER_PLANE_NON_GAME
 
 #undef STATUS_INDICATOR_Y_OFFSET
 #undef STATUS_INDICATOR_ICON_X_SIZE
