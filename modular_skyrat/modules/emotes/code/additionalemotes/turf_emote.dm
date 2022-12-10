@@ -63,10 +63,9 @@
 				user.allowed_turfs += "tails"
 
 		var/taur_mode = human_user.get_taur_mode()
-		if(taur_mode)
-			if(taur_mode & STYLE_TAUR_SNAKE)
-				user.allowed_turfs -= list("pawprint", "hoofprint", "clawprint")
-				user.allowed_turfs += "constrict"
+		if(taur_mode & STYLE_TAUR_SNAKE)
+			user.allowed_turfs -= list("pawprint", "hoofprint", "clawprint")
+			user.allowed_turfs += "constrict"
 
 		//clothing
 		var/obj/item/shoes = user.get_item_by_slot(ITEM_SLOT_FEET)
