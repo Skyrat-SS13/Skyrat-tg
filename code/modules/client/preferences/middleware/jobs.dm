@@ -1,9 +1,9 @@
 /datum/preference_middleware/jobs
 	action_delegations = list(
-		"set_job_preference" = .proc/set_job_preference,
-	// SKYRAT EDIT
-		"set_job_title" = .proc/set_job_title,
-	// SKYRAT EDIT END
+		"set_job_preference" = PROC_REF(set_job_preference),
+		// SKYRAT EDIT
+		"set_job_title" = PROC_REF(set_job_title),
+		// SKYRAT EDIT END
 	)
 
 /datum/preference_middleware/jobs/proc/set_job_preference(list/params, mob/user)

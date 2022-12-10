@@ -17,6 +17,16 @@ GLOBAL_VAR(test_log)
 /// When unit testing, all logs sent to log_mapping are stored here and retrieved in log_mapping unit test.
 GLOBAL_LIST_EMPTY(unit_test_mapping_logs)
 
+/// The name of the test that is currently focused.
+/// Use the PERFORM_ALL_TESTS macro instead.
+GLOBAL_VAR_INIT(focused_test, focused_test())
+
+/proc/focused_test()
+	for (var/datum/unit_test/unit_test as anything in subtypesof(/datum/unit_test))
+		if (initial(unit_test.focus))
+			return unit_test
+	return null
+
 /datum/unit_test
 	//Bit of metadata for the future maybe
 	var/list/procs_tested
@@ -125,6 +135,9 @@ GLOBAL_LIST_EMPTY(unit_test_mapping_logs)
 	log_world("::[priority] file=[file],line=[line],title=[map_name]: [type]::[annotation_text]")
 
 /proc/RunUnitTest(test_path, list/test_results)
+	if (ispath(test_path, /datum/unit_test/focus_only))
+		return
+
 	var/datum/unit_test/test = new test_path
 
 	GLOB.current_test = test
@@ -178,7 +191,7 @@ GLOBAL_LIST_EMPTY(unit_test_mapping_logs)
 	if(length(focused_tests))
 		tests_to_run = focused_tests
 
-	tests_to_run = sortTim(tests_to_run, /proc/cmp_unit_test_priority)
+	tests_to_run = sortTim(tests_to_run, GLOBAL_PROC_REF(cmp_unit_test_priority))
 
 	var/list/test_results = list()
 

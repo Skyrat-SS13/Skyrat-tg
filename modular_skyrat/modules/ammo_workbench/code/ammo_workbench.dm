@@ -42,7 +42,7 @@
 		)
 
 /obj/machinery/ammo_workbench/Initialize(mapload)
-	AddComponent(/datum/component/material_container, SSmaterials.materials_by_category[MAT_CATEGORY_ITEM_MATERIAL], 0, MATCONTAINER_EXAMINE, allowed_items = /obj/item/stack, _after_insert = CALLBACK(src, .proc/AfterMaterialInsert))
+	AddComponent(/datum/component/material_container, SSmaterials.materials_by_category[MAT_CATEGORY_ITEM_MATERIAL], 0, MATCONTAINER_EXAMINE, allowed_items = /obj/item/stack, _after_insert = CALLBACK(src, PROC_REF(AfterMaterialInsert)))
 	. = ..()
 	wires = new /datum/wires/ammo_workbench(src)
 
@@ -240,7 +240,7 @@
 
 	busy = TRUE
 
-	timer_id = addtimer(CALLBACK(src, .proc/fill_round, casing_type), time_per_round, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(fill_round), casing_type), time_per_round, TIMER_STOPPABLE)
 
 /obj/machinery/ammo_workbench/proc/fill_round(casing_type)
 	if(machine_stat & (NOPOWER|BROKEN))
@@ -291,7 +291,7 @@
 
 	updateDialog()
 
-	timer_id = addtimer(CALLBACK(src, .proc/fill_round, casing_type), time_per_round, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(fill_round), casing_type), time_per_round, TIMER_STOPPABLE)
 
 /obj/machinery/ammo_workbench/proc/ammo_fill_finish(successfully = TRUE)
 	updateDialog()
@@ -515,13 +515,13 @@
 	switch(wire)
 		if(WIRE_HACK)
 			A.adjust_hacked(!A.hacked)
-			addtimer(CALLBACK(A, /obj/machinery/ammo_workbench.proc/reset, wire), 60)
+			addtimer(CALLBACK(A, TYPE_PROC_REF(/obj/machinery/ammo_workbench, reset), wire), 60)
 		if(WIRE_SHOCK)
 			A.shocked = !A.shocked
-			addtimer(CALLBACK(A, /obj/machinery/ammo_workbench.proc/reset, wire), 60)
+			addtimer(CALLBACK(A, TYPE_PROC_REF(/obj/machinery/ammo_workbench, reset), wire), 60)
 		if(WIRE_DISABLE)
 			A.disabled = !A.disabled
-			addtimer(CALLBACK(A, /obj/machinery/ammo_workbench.proc/reset, wire), 60)
+			addtimer(CALLBACK(A, TYPE_PROC_REF(/obj/machinery/ammo_workbench, reset), wire), 60)
 
 /datum/wires/ammo_workbench/on_cut(wire, mend)
 	var/obj/machinery/ammo_workbench/A = holder

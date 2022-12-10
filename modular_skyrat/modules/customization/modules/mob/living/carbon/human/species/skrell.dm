@@ -41,10 +41,10 @@
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/skrell,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/skrell,
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant/skrell,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant/skrell,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/skrell,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/skrell,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/mutant/skrell,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant/skrell,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant/skrell,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/skrell,
 	)
 
 /datum/species/skrell/get_species_description()
@@ -160,4 +160,4 @@
 	icon = 'modular_skyrat/modules/organs/icons/skrell_organ.dmi'
 	alcohol_tolerance = 5
 	toxTolerance = 10 //can shrug off up to 10u of toxins.
-	toxLethality = 0.8 * LIVER_DEFAULT_TOX_LETHALITY //20% less damage than a normal liver
+	liver_resistance = 1.2 * LIVER_DEFAULT_TOX_RESISTANCE // +20%

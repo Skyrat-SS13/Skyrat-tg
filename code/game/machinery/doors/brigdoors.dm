@@ -1,11 +1,11 @@
-//#define MAX_TIMER 15 MINUTES //ORIGINAL
-#define MAX_TIMER 60 MINUTES //SKYRAT EDIT CHANGE
-//#define PRESET_SHORT 2 MINUTES //ORIGINAL
-#define PRESET_SHORT 5 MINUTES //SKYRAT EDIT CHANGE
-//#define PRESET_MEDIUM 3 MINUTES //ORIGINAL
-#define PRESET_MEDIUM 10 MINUTES //SKYRAT EDIT CHANGE
-//#define PRESET_LONG 5 MINUTES //ORIGINAL
-#define PRESET_LONG 15 MINUTES //SKYRAT EDIT CHANGE
+//#define MAX_TIMER (15 MINUTES) //ORIGINAL
+#define MAX_TIMER (60 MINUTES) //SKYRAT EDIT CHANGE
+//#define PRESET_SHORT (2 MINUTES) //ORIGINAL
+#define PRESET_SHORT (5 MINUTES) //SKYRAT EDIT CHANGE
+//#define PRESET_MEDIUM (3 MINUTES) //ORIGINAL
+#define PRESET_MEDIUM (10 MINUTES) //SKYRAT EDIT CHANGE
+//#define PRESET_LONG (5 MINUTES) //ORIGINAL
+#define PRESET_LONG (15 MINUTES) //SKYRAT EDIT CHANGE
 
 /**
  * Brig Door control displays.
@@ -58,6 +58,8 @@
 	if(!length(doors) && !length(flashers) && length(closets))
 		atom_break()
 
+	RegisterSignal(SSdcs, COMSIG_GLOB_GREY_TIDE, PROC_REF(grey_tide))
+
 //Main door timer loop, if it's timing and time is >0 reduce time by 1.
 // if it's less than 0, open door, reset timer
 // update the door_timer window and the icon
@@ -107,7 +109,7 @@
 			continue
 		if(door.density)
 			continue
-		INVOKE_ASYNC(door, /obj/machinery/door/window/brigdoor.proc/close)
+		INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/machinery/door/window/brigdoor, close))
 
 	for(var/datum/weakref/closet_ref as anything in closets)
 		var/obj/structure/closet/secure_closet/brig/closet = closet_ref.resolve()
@@ -147,7 +149,7 @@
 			continue
 		if(!door.density)
 			continue
-		INVOKE_ASYNC(door, /obj/machinery/door/window/brigdoor.proc/open)
+		INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/machinery/door/window/brigdoor, open))
 
 	for(var/datum/weakref/closet_ref as anything in closets)
 		var/obj/structure/closet/secure_closet/brig/closet = closet_ref.resolve()
@@ -264,6 +266,17 @@
 				activation_time = REALTIMEOFDAY // SKYRAT EDIT CHANGE: original was world.time
 		else
 			. = FALSE
+
+/obj/machinery/status_display/door_timer/proc/grey_tide(datum/source, list/grey_tide_areas)
+	SIGNAL_HANDLER
+
+	if(!is_station_level(z))
+		return
+
+	for(var/area_type in grey_tide_areas)
+		if(!istype(get_area(src), area_type))
+			continue
+		timer_end(forced = TRUE)
 
 #undef PRESET_SHORT
 #undef PRESET_MEDIUM

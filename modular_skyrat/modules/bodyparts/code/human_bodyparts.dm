@@ -6,14 +6,14 @@
 /obj/item/bodypart/chest
 	icon_greyscale = BODYPART_ICON_HUMAN
 
-/obj/item/bodypart/l_arm
+/obj/item/bodypart/arm/left
 	icon_greyscale = BODYPART_ICON_HUMAN
 
-/obj/item/bodypart/r_arm
+/obj/item/bodypart/arm/right
 	icon_greyscale = BODYPART_ICON_HUMAN
 
-/obj/item/bodypart/l_leg
+/obj/item/bodypart/leg/left
 	icon_greyscale = BODYPART_ICON_HUMAN
 
-/obj/item/bodypart/r_leg
+/obj/item/bodypart/leg/right
 	icon_greyscale = BODYPART_ICON_HUMAN

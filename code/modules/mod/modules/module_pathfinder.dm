@@ -109,7 +109,7 @@
 		return FALSE
 	var/datum/ai_controller/mod_ai = new /datum/ai_controller/mod(module.mod)
 	module.mod.ai_controller = mod_ai
-	mod_ai.current_movement_target = imp_in
+	mod_ai.set_movement_target(imp_in)
 	mod_ai.blackboard[BB_MOD_TARGET] = imp_in
 	mod_ai.blackboard[BB_MOD_IMPLANT] = src
 	module.mod.interaction_flags_item &= ~INTERACT_ITEM_ATTACK_HAND_PICKUP
@@ -117,7 +117,7 @@
 	ADD_TRAIT(module.mod, TRAIT_MOVE_FLYING, MOD_TRAIT)
 	animate(module.mod, 0.2 SECONDS, pixel_x = base_pixel_y, pixel_y = base_pixel_y)
 	module.mod.add_overlay(jet_icon)
-	RegisterSignal(module.mod, COMSIG_MOVABLE_MOVED, .proc/on_move)
+	RegisterSignal(module.mod, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
 	balloon_alert(imp_in, "suit recalled")
 	return TRUE
 

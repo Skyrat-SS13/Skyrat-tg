@@ -47,12 +47,12 @@
 /mob/living/silicon/robot/Initialize(mapload)
 	. = ..()
 	// Intentionally set like this, because people have different lore for their cyborgs, and there's no real non-invasive way to print posibrains that match.
-	RegisterSignal(src, COMSIG_MOB_MIND_TRANSFERRED_INTO, .proc/update_brain_type)
+	RegisterSignal(src, COMSIG_MOB_MIND_TRANSFERRED_INTO, PROC_REF(update_brain_type))
 
 /// Sets the MMI type for a cyborg, if applicable.
 /mob/living/silicon/robot/proc/update_brain_type()
 	var/obj/item/mmi/new_mmi = prefs_get_brain_to_use(client?.prefs?.read_preference(/datum/preference/choiced/brain_type), TRUE)
-	if(!new_mmi || new_mmi == mmi.type)
+	if(!mmi || !new_mmi || new_mmi == mmi.type)
 		return
 
 	new_mmi = new new_mmi()

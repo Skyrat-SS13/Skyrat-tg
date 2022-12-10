@@ -22,10 +22,10 @@
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/robot/mutant/lizard,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/robot/mutant/lizard,
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/robot/mutant/lizard,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/robot/mutant/lizard,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/robot/mutant/lizard,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/robot/mutant/lizard,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/robot/mutant/lizard,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/robot/mutant/lizard,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/robot/mutant/lizard,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/robot/mutant/lizard,
 	)
 
 /datum/species/robotic/synthliz/get_random_body_markings(list/passed_features)

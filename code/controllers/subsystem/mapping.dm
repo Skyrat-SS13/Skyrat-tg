@@ -47,6 +47,8 @@ SUBSYSTEM_DEF(mapping)
 	var/list/plane_offset_blacklist
 	/// List of render targets that do not allow for offsetting
 	var/list/render_offset_blacklist
+	/// List of plane masters that are of critical priority
+	var/list/critical_planes
 	/// The largest plane offset we've generated so far
 	var/max_plane_offset = 0
 
@@ -110,12 +112,15 @@ SUBSYSTEM_DEF(mapping)
 	true_to_offset_planes["[FLOAT_PLANE]"] = list(FLOAT_PLANE)
 	plane_to_offset["[FLOAT_PLANE]"] = 0
 	plane_offset_blacklist = list()
+	// You aren't allowed to offset a floatplane that'll just fuck it all up
+	plane_offset_blacklist["[FLOAT_PLANE]"] = TRUE
 	render_offset_blacklist = list()
+	critical_planes = list()
 	create_plane_offsets(0, 0)
 	initialize_biomes()
 	loadWorld()
 	determine_fake_sale()
-	repopulate_sorted_areas()
+	require_area_resort()
 	process_teleport_locs() //Sets up the wizard teleport locations
 	preloadTemplates()
 
@@ -142,7 +147,7 @@ SUBSYSTEM_DEF(mapping)
 	run_map_generation()
 	// Add the transit level
 	transit = add_new_zlevel("Transit/Reserved", list(ZTRAIT_RESERVED = TRUE))
-	repopulate_sorted_areas()
+	require_area_resort()
 	// Set up Z-level transitions.
 	setup_map_transitions()
 	generate_station_area_list()
@@ -155,6 +160,7 @@ SUBSYSTEM_DEF(mapping)
 	// Cache for sonic speed
 	var/list/unused_turfs = src.unused_turfs
 	var/list/world_contents = GLOB.areas_by_type[world.area].contents
+	var/list/world_turf_contents = GLOB.areas_by_type[world.area].contained_turfs
 	var/list/lists_to_reserve = src.lists_to_reserve
 	var/index = 0
 	while(index < length(lists_to_reserve))
@@ -168,8 +174,11 @@ SUBSYSTEM_DEF(mapping)
 			T.empty(RESERVED_TURF_TYPE, RESERVED_TURF_TYPE, null, TRUE)
 			LAZYINITLIST(unused_turfs["[T.z]"])
 			unused_turfs["[T.z]"] |= T
+			var/area/old_area = T.loc
+			old_area.turfs_to_uncontain += T
 			T.flags_1 |= UNUSED_RESERVATION_TURF
 			world_contents += T
+			world_turf_contents += T
 			packet.len--
 			packetlen = length(packet)
 
@@ -261,7 +270,7 @@ SUBSYSTEM_DEF(mapping)
 		message_admins("Shuttles in transit detected. Attempting to fast travel. Timeout is [wipe_safety_delay/10] seconds.")
 	var/list/cleared = list()
 	for(var/i in in_transit)
-		INVOKE_ASYNC(src, .proc/safety_clear_transit_dock, i, in_transit[i], cleared)
+		INVOKE_ASYNC(src, PROC_REF(safety_clear_transit_dock), i, in_transit[i], cleared)
 	UNTIL((go_ahead < world.time) || (cleared.len == in_transit.len))
 	do_wipe_turf_reservations()
 	clearing_reserved_turfs = FALSE
@@ -362,7 +371,7 @@ Used by the AI doomsday and the self-destruct nuke.
 	var/start_z = world.maxz + 1
 	var/i = 0
 	for (var/level in traits)
-		add_new_zlevel("[name][i ? " [i + 1]" : ""]", level)
+		add_new_zlevel("[name][i ? " [i + 1]" : ""]", level, contain_turfs = FALSE)
 		++i
 
 	SSautomapper.preload_templates_from_toml(files) // SKYRAT EDIT ADDITION - We need to load our templates AFTER the Z level exists, otherwise, there is no z level to preload.
@@ -372,7 +381,7 @@ Used by the AI doomsday and the self-destruct nuke.
 	for (var/P in parsed_maps)
 		var/datum/parsed_map/pm = P
 		pm.turf_blacklist = turf_blacklist // SKYRAT EDIT ADDITION - apply blacklist
-		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE))
+		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE, new_z = TRUE))
 			errorList |= pm.original_path
 	// SKYRAT EDIT ADDITION BEGIN - We need to load our templates from cache after our space has been carved out.
 	if(!LAZYLEN(errorList))
@@ -431,7 +440,7 @@ Used by the AI doomsday and the self-destruct nuke.
 GLOBAL_LIST_EMPTY(the_station_areas)
 
 /datum/controller/subsystem/mapping/proc/generate_station_area_list()
-	for(var/area/station/station_area in world)
+	for(var/area/station/station_area in GLOB.areas)
 		if (!(station_area.area_flags & UNIQUE_AREA))
 			continue
 		if (is_station_level(station_area.z))
@@ -441,7 +450,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		log_world("ERROR: Station areas list failed to generate!")
 
 /datum/controller/subsystem/mapping/proc/run_map_generation()
-	for(var/area/A in world)
+	for(var/area/A as anything in GLOB.areas)
 		A.RunGeneration()
 
 /datum/controller/subsystem/mapping/proc/maprotate()
@@ -538,11 +547,13 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 /datum/controller/subsystem/mapping/proc/preloadRuinTemplates()
 	// Still supporting bans by filename
-	var/list/banned = generateMapList("lavaruinblacklist.txt")
-	banned += generateMapList("spaceruinblacklist.txt")
-	banned += generateMapList("iceruinblacklist.txt")
+	var/list/banned = generateMapList("spaceruinblacklist.txt")
+	if(config.minetype == "lavaland")
+		banned += generateMapList("lavaruinblacklist.txt")
+	else if(config.blacklist_file)
+		banned += generateMapList(config.blacklist_file)
 
-	for(var/item in sort_list(subtypesof(/datum/map_template/ruin), /proc/cmp_ruincost_priority))
+	for(var/item in sort_list(subtypesof(/datum/map_template/ruin), GLOBAL_PROC_REF(cmp_ruincost_priority)))
 		var/datum/map_template/ruin/ruin_type = item
 		// screen out the abstract subtypes
 		if(!initial(ruin_type.id))
@@ -724,7 +735,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 /// Takes a z level datum, and tells the mapping subsystem to manage it
 /// Also handles things like plane offset generation, and other things that happen on a z level to z level basis
-/datum/controller/subsystem/mapping/proc/manage_z_level(datum/space_level/new_z)
+/datum/controller/subsystem/mapping/proc/manage_z_level(datum/space_level/new_z, filled_with_space, contain_turfs = TRUE)
 	// First, add the z
 	z_list += new_z
 
@@ -743,10 +754,25 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	if(below_offset)
 		update_plane_tracking(new_z)
 
+	if(contain_turfs)
+		build_area_turfs(z_value, filled_with_space)
+
 	// And finally, misc global generation
 
 	// We'll have to update this if offsets change, because we load lowest z to highest z
 	generate_lighting_appearance_by_z(z_value)
+
+/datum/controller/subsystem/mapping/proc/build_area_turfs(z_level, space_guaranteed)
+	// If we know this is filled with default tiles, we can use the default area
+	// Faster
+	if(space_guaranteed)
+		var/area/global_area = GLOB.areas_by_type[world.area]
+		global_area.contained_turfs += Z_TURFS(z_level)
+		return
+
+	for(var/turf/to_contain as anything in Z_TURFS(z_level))
+		var/area/our_area = to_contain.loc
+		our_area.contained_turfs += to_contain
 
 /datum/controller/subsystem/mapping/proc/update_plane_tracking(datum/space_level/update_with)
 	// We're essentially going to walk down the stack of connected z levels, and set their plane offset as we go
@@ -781,6 +807,9 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 	generate_offset_lists(old_max + 1, max_plane_offset)
 	SEND_SIGNAL(src, COMSIG_PLANE_OFFSET_INCREASE, old_max, max_plane_offset)
+	// Sanity check
+	if(max_plane_offset > MAX_EXPECTED_Z_DEPTH)
+		stack_trace("We've loaded a map deeper then the max expected z depth. Preferences won't cover visually disabling all of it!")
 
 /// Takes an offset to generate misc lists to, and a base to start from
 /// Use this to react globally to maintain parity with plane offsets
@@ -811,6 +840,9 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 				render_offset_blacklist[render_target] = TRUE
 				if(plane_offset != 0)
 					continue
+
+			if(initial(master_type.critical) & PLANE_CRITICAL_DISPLAY)
+				critical_planes[string_plane] = TRUE
 
 			plane_offset_to_true[string_plane] = plane_to_use
 			plane_to_offset[string_plane] = plane_offset

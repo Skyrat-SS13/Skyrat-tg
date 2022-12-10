@@ -132,7 +132,7 @@
 
 /datum/antagonist/abductor/get_admin_commands()
 	. = ..()
-	.["Equip"] = CALLBACK(src,.proc/admin_equip)
+	.["Equip"] = CALLBACK(src, PROC_REF(admin_equip))
 
 /datum/antagonist/abductor/proc/admin_equip(mob/admin)
 	if(!ishuman(owner.current))
@@ -157,7 +157,7 @@
 	..()
 	team_number = team_count++
 	name = "Mothership [pick(GLOB.greek_letters)]" //TODO Ensure unique and actual alieny names
-	add_objective(new /datum/objective/experiment)
+	//add_objective(new /datum/objective/experiment) //SKYRAT EDIT REMOVAL
 
 /datum/team/abductor_team/roundend_report()
 	var/list/result = list()
