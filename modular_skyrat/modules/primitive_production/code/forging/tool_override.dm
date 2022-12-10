@@ -1,12 +1,4 @@
 /// Called on an object when a tool with wrench capabilities is used to left click an object
-/atom/proc/billow_act(mob/living/user, obj/item/tool)
-	return
-
-/// Called on an object when a tool with wrench capabilities is used to right click an object
-/atom/proc/billow_act_secondary(mob/living/user, obj/item/tool)
-	return
-
-/// Called on an object when a tool with wrench capabilities is used to left click an object
 /atom/proc/tong_act(mob/living/user, obj/item/tool)
 	return
 
@@ -72,8 +64,6 @@
 			act_result = is_left_clicking ? welder_act(user, tool) : welder_act_secondary(user, tool)
 		if(TOOL_ANALYZER)
 			act_result = is_left_clicking ? analyzer_act(user, tool) : analyzer_act_secondary(user, tool)
-		if(TOOL_BILLOW)
-			act_result = is_left_clicking ? billow_act(user, tool) : billow_act_secondary(user, tool)
 		if(TOOL_TONG)
 			act_result = is_left_clicking ? tong_act(user, tool) : tong_act_secondary(user, tool)
 		if(TOOL_HAMMER)

@@ -54,38 +54,6 @@
 	resulting_item = /obj/item/clothing/shoes/forging_plate_boots
 	required_good_hits = 8
 
-/datum/crafting_bench_recipe/forging/horse_shoes
-	recipe_name = "horse shoes"
-	recipe_requirements = list(
-		/obj/item/forging/complete/chain = 4,
-	)
-	resulting_item = /obj/item/clothing/shoes/horseshoe
-	required_good_hits = 8
-
-/datum/crafting_bench_recipe/forging/ring
-	recipe_name = "ring"
-	recipe_requirements = list(
-		/obj/item/forging/complete/chain = 2,
-	)
-	resulting_item = /obj/item/clothing/gloves/ring/reagent_clothing
-	required_good_hits = 4
-
-/datum/crafting_bench_recipe/forging/collar
-	recipe_name = "collar"
-	recipe_requirements = list(
-		/obj/item/forging/complete/chain = 3,
-	)
-	resulting_item = /obj/item/clothing/neck/collar/reagent_clothing
-	required_good_hits = 6
-
-/datum/crafting_bench_recipe/forging/handcuffs
-	recipe_name = "handcuffs"
-	recipe_requirements = list(
-		/obj/item/forging/complete/chain = 5,
-	)
-	resulting_item = /obj/item/restraints/handcuffs/reagent_clothing
-	required_good_hits = 10
-
 /datum/crafting_bench_recipe/forging/borer_cage
 	recipe_name = "cortical borer cage"
 	recipe_requirements = list(
@@ -99,7 +67,7 @@
 	recipe_requirements = list(
 		/obj/item/forging/complete/plate = 8,
 	)
-	resulting_item = /obj/item/shield/riot/buckler/reagent_weapon/pavise
+	resulting_item = /obj/item/shield/buckler/forging_shield
 	required_good_hits = 16
 
 /datum/crafting_bench_recipe/forging/buckler
@@ -107,16 +75,8 @@
 	recipe_requirements = list(
 		/obj/item/forging/complete/plate = 5,
 	)
-	resulting_item = /obj/item/shield/riot/buckler/reagent_weapon
+	resulting_item = /obj/item/shield/buckler/forging_shield/pavise
 	required_good_hits = 10
-
-/datum/crafting_bench_recipe/forging/coil
-	recipe_name = "coil"
-	recipe_requirements = list(
-		/obj/item/forging/complete/chain = 2,
-	)
-	resulting_item = /obj/item/forging/coil
-	required_good_hits = 4
 
 /datum/crafting_bench_recipe/forging/seed_mesh
 	recipe_name = "seed mesh"
@@ -126,22 +86,6 @@
 	)
 	resulting_item = /obj/item/seed_mesh
 	required_good_hits = 10
-
-/datum/crafting_bench_recipe/forging/centrifuge
-	recipe_name = "centrifuge"
-	recipe_requirements = list(
-		/obj/item/forging/complete/plate = 1,
-	)
-	resulting_item = /obj/item/reagent_containers/cup/primitive_centrifuge
-	required_good_hits = 4
-
-/datum/crafting_bench_recipe/forging/bokken
-	recipe_name = "bokken"
-	recipe_requirements = list(
-		/obj/item/stack/sheet/mineral/wood = 4,
-	)
-	resulting_item = /obj/item/forging/reagent_weapon/bokken
-	required_good_hits = 8
 
 /datum/crafting_bench_recipe/forging/bow
 	recipe_name = "bow"

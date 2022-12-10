@@ -43,11 +43,6 @@
 /datum/armament_entry/company_import/blacksteel/forging_tools
 	subcategory = "Premium Forging Equipment"
 
-/datum/armament_entry/company_import/blacksteel/forging_tools/billows
-	item_type = /obj/item/forging/billow
-	lower_cost = CARGO_CRATE_VALUE * 0.25
-	upper_cost = CARGO_CRATE_VALUE * 0.4
-
 /datum/armament_entry/company_import/blacksteel/forging_tools/hammer
 	item_type = /obj/item/forging/hammer
 	lower_cost = CARGO_CRATE_VALUE * 0.25

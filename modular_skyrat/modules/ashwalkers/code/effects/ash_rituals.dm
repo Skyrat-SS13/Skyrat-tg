@@ -52,13 +52,13 @@
 	desc = "Summons a knife that places a tracking curse on unsuspecting miners who destroy our marked tendrils."
 	required_components = list(
 		"north" = /obj/item/organ/internal/monster_core/regenerative_core,
-		"south" = /obj/item/forging/reagent_weapon/dagger,
+		"south" = /obj/item/melee/forging_weapon/dagger,
 		"east" = /obj/item/stack/sheet/bone,
 		"west" = /obj/item/stack/sheet/sinew,
 	)
 	consumed_components = list(
 		/obj/item/organ/internal/monster_core/regenerative_core,
-		/obj/item/forging/reagent_weapon/dagger,
+		/obj/item/melee/forging_weapon/dagger,
 		/obj/item/stack/sheet/bone,
 		/obj/item/stack/sheet/sinew,
 	)

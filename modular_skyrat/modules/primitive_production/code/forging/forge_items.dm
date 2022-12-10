@@ -13,10 +13,6 @@
 	icon_state = "tong_empty"
 	tool_behaviour = TOOL_TONG
 
-/obj/item/forging/tongs/primitive
-	name = "primitive forging tongs"
-	toolspeed = 2 SECONDS
-
 /obj/item/forging/tongs/attack_self(mob/user, modifiers)
 	. = ..()
 	var/obj/search_obj = locate(/obj) in contents
@@ -32,19 +28,6 @@
 	inhand_icon_state = "hammer"
 	worn_icon_state = "hammer_back"
 	tool_behaviour = TOOL_HAMMER
-
-/obj/item/forging/hammer/primitive
-	name = "primitive forging hammer"
-
-/obj/item/forging/billow
-	name = "forging billow"
-	desc = "A billow specifically crafted for use in forging. Used to stoke the flames and keep the forge lit."
-	icon_state = "billow"
-	tool_behaviour = TOOL_BILLOW
-
-/obj/item/forging/billow/primitive
-	name = "primitive forging billow"
-	toolspeed = 2 SECONDS
 
 //incomplete pre-complete items
 /obj/item/forging/incomplete
@@ -91,11 +74,6 @@
 	name = "incomplete sword blade"
 	icon_state = "hot_blade"
 	spawn_item = /obj/item/forging/complete/sword
-
-/obj/item/forging/incomplete/katana
-	name = "incomplete katana blade"
-	icon_state = "hot_katanablade"
-	spawn_item = /obj/item/forging/complete/katana
 
 /obj/item/forging/incomplete/dagger
 	name = "incomplete dagger blade"
@@ -179,55 +157,49 @@
 	name = "sword blade"
 	desc = "A sword blade, ready to get some wood for completion."
 	icon_state = "blade"
-	spawning_item = /obj/item/forging/reagent_weapon/sword
-
-/obj/item/forging/complete/katana
-	name = "katana blade"
-	desc = "A katana blade, ready to get some wood for completion."
-	icon_state = "katanablade"
-	spawning_item = /obj/item/forging/reagent_weapon/katana
+	spawning_item = /obj/item/melee/forging_weapon/sword
 
 /obj/item/forging/complete/dagger
 	name = "dagger blade"
 	desc = "A dagger blade, ready to get some wood for completion."
 	icon_state = "daggerblade"
-	spawning_item = /obj/item/forging/reagent_weapon/dagger
+	spawning_item = /obj/item/melee/forging_weapon/dagger
 
 /obj/item/forging/complete/staff
 	name = "staff head"
 	desc = "A staff head, ready to get some wood for completion."
 	icon_state = "staffhead"
-	spawning_item = /obj/item/forging/reagent_weapon/staff
+	spawning_item = /obj/item/melee/forging_weapon/staff
 
 /obj/item/forging/complete/spear
 	name = "spear head"
 	desc = "A spear head, ready to get some wood for completion."
 	icon_state = "spearhead"
-	spawning_item = /obj/item/forging/reagent_weapon/spear
+	spawning_item = /obj/item/melee/forging_weapon/spear
 
 /obj/item/forging/complete/axe
 	name = "axe head"
 	desc = "An axe head, ready to get some wood for completion."
 	icon_state = "axehead"
-	spawning_item = /obj/item/forging/reagent_weapon/axe
+	spawning_item = /obj/item/melee/forging_weapon/axe
 
 /obj/item/forging/complete/hammer
 	name = "hammer head"
 	desc = "A hammer head, ready to get some wood for completion."
 	icon_state = "hammerhead"
-	spawning_item = /obj/item/forging/reagent_weapon/hammer
+	spawning_item = /obj/item/melee/forging_weapon/hammer
 
 /obj/item/forging/complete/pickaxe
 	name = "pickaxe head"
 	desc = "A pickaxe head, ready to get some wood for completion."
 	icon_state = "pickaxehead"
-	spawning_item = /obj/item/pickaxe/reagent_weapon
+	spawning_item = /obj/item/pickaxe/forging
 
 /obj/item/forging/complete/shovel
 	name = "shovel head"
 	desc = "A shovel head, ready to get some wood for completion."
 	icon_state = "shovelhead"
-	spawning_item = /obj/item/shovel/reagent_weapon
+	spawning_item = /obj/item/shovel/forging
 
 /obj/item/forging/complete/arrowhead
 	name = "arrowhead"
@@ -241,11 +213,6 @@
 	icon = 'modular_skyrat/modules/ashwalkers/icons/railroad.dmi'
 	icon_state = "nail"
 	spawning_item = /obj/item/stack/rail_track/ten
-
-/obj/item/forging/coil
-	name = "coil"
-	desc = "A simple coil, comprised of coiled iron rods."
-	icon_state = "coil"
 
 /obj/item/forging/incomplete_bow
 	name = "incomplete bow"
@@ -272,16 +239,6 @@
 	for(var/i in 1 to spawning_amount)
 		new /obj/item/ammo_casing/caseless/arrow/wood/forged(src_turf)
 	qdel(src)
-
-/obj/item/stock_parts/cell/attackby(obj/item/attacking_item, mob/user, params)
-	if(istype(attacking_item, /obj/item/forging/coil))
-		var/obj/item/stock_parts/cell/crank/new_crank = new(get_turf(src))
-		new_crank.maxcharge = maxcharge
-		new_crank.charge = charge
-		qdel(attacking_item)
-		qdel(src)
-		return
-	return ..()
 
 /obj/item/stack/tong_act(mob/living/user, obj/item/tool)
 	. = ..()
