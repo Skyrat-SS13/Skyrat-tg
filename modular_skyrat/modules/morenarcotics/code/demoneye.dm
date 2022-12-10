@@ -178,10 +178,8 @@
 	if(DT_PROB(5, delta_time))
 		hurt_that_mans_organs(our_guy, 3, FALSE)
 
-	for(var/possible_twitch in our_guy.reagents.reagent_list) // Combining this with twitch could cause some heart attack problems
-		if(istype(possible_twitch, /datum/reagent/drug/twitch) && DT_PROB(5, delta_time))
-			our_guy.ForceContractDisease(new /datum/disease/heart_failure(), FALSE, TRUE)
-			break
+	if(locate(/datum/reagent/drug/twitch) in our_guy.reagents.reagent_list) // Combining this with twitch could cause some heart attack problems
+		our_guy.ForceContractDisease(new /datum/disease/heart_failure(), FALSE, TRUE)
 
 /datum/reagent/drug/demoneye/overdose_process(mob/living/carbon/our_guy, delta_time, times_fired)
 	. = ..()

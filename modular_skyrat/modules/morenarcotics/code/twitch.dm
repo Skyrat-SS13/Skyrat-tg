@@ -118,10 +118,8 @@
 
 	constant_dose_time += delta_time
 
-	for(var/possible_kronk in our_guy.reagents.reagent_list) // Kronkaine, another heart-straining drug, could cause problems if mixed with this
-		if(istype(possible_kronk, /datum/reagent/drug/kronkaine))
-			our_guy.ForceContractDisease(new /datum/disease/adrenal_crisis(), FALSE, TRUE)
-			break
+	if(locate(/datum/reagent/drug/kronkaine) in our_guy.reagents.reagent_list) // Kronkaine, another heart-straining drug, could cause problems if mixed with this
+		our_guy.ForceContractDisease(new /datum/disease/adrenal_crisis(), FALSE, TRUE)
 
 /datum/reagent/drug/twitch/overdose_start(mob/living/our_guy)
 	. = ..()
