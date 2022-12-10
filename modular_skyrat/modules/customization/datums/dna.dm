@@ -268,7 +268,10 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 		eye_organ.old_eye_color_left = eye_color_left
 		eye_organ.old_eye_color_right = eye_color_right
 
-	facial_hairstyle = GLOB.facial_hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_FACIAL_HAIRSTYLE_BLOCK), GLOB.facial_hairstyles_list.len)]
+	if(HAS_TRAIT(src, TRAIT_SHAVED))
+		hairstyle = "Shaved"
+	else
+		facial_hairstyle = GLOB.facial_hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_FACIAL_HAIRSTYLE_BLOCK), GLOB.facial_hairstyles_list.len)]
 
 	if(HAS_TRAIT(src, TRAIT_BALD))
 		hairstyle = "Bald"

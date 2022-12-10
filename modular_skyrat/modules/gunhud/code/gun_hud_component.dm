@@ -14,7 +14,7 @@
 /datum/component/ammo_hud/proc/wake_up(datum/source, mob/user, slot)
 	SIGNAL_HANDLER
 
-	RegisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED), PROC_REF(turn_off))
+	RegisterSignals(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED), PROC_REF(turn_off))
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -72,9 +72,6 @@
 
 		if(pew.safety)
 			indicator = "safe"
-
-		if(pew.jammed)
-			indicator = "jam"
 
 		switch(length(rounds))
 			if(1)

@@ -1,4 +1,4 @@
-#define REGENERATION_DELAY 5 SECONDS  // After taking damage, how long it takes for automatic regeneration to begin
+#define REGENERATION_DELAY (5 SECONDS)  // After taking damage, how long it takes for automatic regeneration to begin
 
 /datum/species/mutant
 	name = "High-Functioning mutant"

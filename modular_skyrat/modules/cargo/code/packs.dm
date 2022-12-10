@@ -337,7 +337,7 @@
 		/obj/item/storage/belt/military/expeditionary_corps,
 		/obj/item/clothing/under/rank/expeditionary_corps,
 		/obj/item/clothing/shoes/combat/expeditionary_corps,
-		/obj/item/modular_computer/tablet/pda/expeditionary_corps,
+		/obj/item/modular_computer/pda/expeditionary_corps,
 		/obj/item/knife/combat/marksman,
 	)
 	/// How many of the contains to put in the crate
@@ -715,11 +715,11 @@
 		/obj/item/ammo_box/magazine/multi_sprite/makarov,
 		/obj/item/ammo_box/magazine/multi_sprite/makarov,
 		/obj/item/clothing/suit/armor/vest/russian/nri,
-		/obj/item/clothing/head/helmet/rus_helmet,
+		/obj/item/clothing/head/helmet/rus_helmet/nri,
 		/obj/item/storage/backpack/nri,
 		/obj/item/storage/belt/military/nri,
 		/obj/item/clothing/gloves/tackler/combat,
 		/obj/item/clothing/under/costume/nri,
-		/obj/item/clothing/mask/gas/hecu2,
 		/obj/item/clothing/shoes/combat,
+		/obj/item/clothing/mask/gas/hecu2,
 	)

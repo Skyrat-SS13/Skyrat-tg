@@ -170,7 +170,7 @@
 		return TRUE
 
 //used in the AStar algorithm to determinate if the turf the door is on is passable
-/obj/machinery/door/window/CanAStarPass(obj/item/card/id/ID, to_dir, no_id = FALSE)
+/obj/machinery/door/window/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller, no_id = FALSE)
 	return !density || (dir != to_dir) || (check_access(ID) && hasPower() && !no_id)
 
 /obj/machinery/door/window/proc/on_exit(datum/source, atom/movable/leaving, direction)
@@ -358,8 +358,8 @@
 		return turn(dir,180) & unres_sides
 	return ..()
 
-/obj/machinery/door/window/try_to_crowbar(obj/item/I, mob/user)
-	if(!hasPower())
+/obj/machinery/door/window/try_to_crowbar(obj/item/I, mob/user, forced = FALSE)
+	if(!hasPower() || forced)
 		if(density)
 			open(2)
 		else

@@ -68,7 +68,7 @@
 	return initial(default_accessory_type?.name) || "None"
 
 /datum/preference/choiced/genital/init_possible_values()
-	return assoc_to_keys(GLOB.sprite_accessories[relevant_mutant_bodypart])
+	return assoc_to_keys_features(GLOB.sprite_accessories[relevant_mutant_bodypart])
 
 /datum/preference/toggle/genital_skin_tone
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -417,7 +417,7 @@
 	relevant_mutant_bodypart = ORGAN_SLOT_BREASTS
 
 /datum/preference/choiced/breasts_size/init_possible_values()
-	return GLOB.preference_breast_sizes
+	return GLOB.breast_size_to_number
 
 /datum/preference/choiced/breasts_size/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
