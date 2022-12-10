@@ -169,8 +169,6 @@
 	//SKYRAT EDIT END
 	init_network_id(NETWORK_DOOR_AIRLOCKS)
 	wires = set_wires()
-	if(frequency)
-		set_frequency(frequency)
 	if(glass)
 		airlock_material = "glass"
 	if(security_level > AIRLOCK_SECURITY_IRON)
