@@ -83,6 +83,12 @@
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "evidence"
 
+// Prison Laundry
+/area/station/security/prison/laundry
+	name = "\improper Prison Laundry Room"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "prison_laundry"
+
 // Department power stations
 /area/station/cargo/power_station
 	name = "Cargo Power Station"
