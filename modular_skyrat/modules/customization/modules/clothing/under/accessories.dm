@@ -173,4 +173,4 @@
 	// How many hours of playtime left until the green pin expires
 	var/green_time_remaining = sanitize_integer((PLAYTIME_GREEN - user.client?.get_exp_living(pure_numeric = TRUE) / 60), 0, (PLAYTIME_GREEN / 60))
 	if(green_time_remaining > 0)
-		. += span_nicegreen("It reads '[green_time_remaining] hours.'")
+		. += span_nicegreen("It reads '[green_time_remaining] hour[green_time_remaining >= 2 ? "s" : ""].'")

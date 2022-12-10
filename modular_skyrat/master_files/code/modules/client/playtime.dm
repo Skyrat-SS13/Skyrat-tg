@@ -9,7 +9,7 @@
 	if (!..(preferences))
 		return FALSE
 
-	return preferences.parent?.is_green()
+	return preferences?.parent?.is_green()
 
 // If is_green is TRUE, the toggle is set to TRUE
 // This is just to make sure non-noobs don't get their toggle to TRUE without having access to it
@@ -17,7 +17,7 @@
 	if (!..(preferences))
 		return FALSE
 
-	return preferences.parent?.is_green()
+	return preferences?.parent?.is_green()
 
 /datum/preference/toggle/green_pin/apply_to_human(mob/living/carbon/human/wearer, value)
 	return
