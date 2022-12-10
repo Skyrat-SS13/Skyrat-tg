@@ -980,9 +980,6 @@
 		/obj/item/stack/sheet/glass = 1,
 		/obj/item/stack/cable_coil = 2)
 
-<<<<<<< HEAD
-=======
-
 /obj/item/circuitboard/machine/dna_infuser
 	name = "DNA Infuser"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
@@ -994,7 +991,6 @@
 		/obj/item/stack/cable_coil = 2,
 	)
 
->>>>>>> b6bc8c6c297 (Stock part datums: Creates a framework for stock parts to not physically exist in the world (#71693))
 /obj/item/circuitboard/machine/mechpad
 	name = "Mecha Orbital Pad"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
