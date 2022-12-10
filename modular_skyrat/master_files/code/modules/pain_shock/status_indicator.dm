@@ -13,17 +13,33 @@ GLOBAL_LIST_INIT(potential_indicators, list(
 
 /// Returns true if the mob is weakened. Also known as floored.
 /datum/component/status_indicator/proc/is_weakened()
-	if(!indicator_fakeouts() && !HAS_TRAIT_FROM(attached_mob, TRAIT_FLOORED, BUCKLED_TRAIT) && !attached_mob.buckled && HAS_TRAIT(attached_mob, TRAIT_FLOORED) || attached_mob.has_status_effect(/datum/status_effect/incapacitating/knockdown))
+	if(!indicator_fakeouts() && \
+	attached_mob.IsKnockdown() || \
+	HAS_TRAIT(attached_mob, TRAIT_FLOORED) && \
+	!HAS_TRAIT_FROM(attached_mob, TRAIT_FLOORED, BUCKLED_TRAIT)
+	)
 		return TRUE
 
 /// Returns true if the mob is stunned.
 /datum/component/status_indicator/proc/is_stunned()
-	if(!indicator_fakeouts() && HAS_TRAIT_FROM(attached_mob, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT(attached_mob, TRAIT_CRITICAL_CONDITION) || HAS_TRAIT_FROM(attached_mob, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT_FROM(attached_mob, TRAIT_IMMOBILIZED, CHOKEHOLD_TRAIT)  || HAS_TRAIT_FROM(attached_mob, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT_FROM(attached_mob, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)))
+	if(!indicator_fakeouts() && \
+	HAS_TRAIT_FROM(attached_mob, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || \
+	HAS_TRAIT(attached_mob, TRAIT_CRITICAL_CONDITION) || \
+	HAS_TRAIT_FROM(attached_mob, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || \
+	HAS_TRAIT_FROM(attached_mob, TRAIT_IMMOBILIZED, CHOKEHOLD_TRAIT) || \
+	HAS_TRAIT_FROM(attached_mob, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || \
+	HAS_TRAIT_FROM(attached_mob, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT))
+	)
 		return TRUE
 
 /// Returns true if the mob is paralyzed - for can't fight back purposes.
 /datum/component/status_indicator/proc/is_paralyzed()
-	if(!indicator_fakeouts() && HAS_TRAIT_FROM(attached_mob, TRAIT_FLOORED, CHOKEHOLD_TRAIT) || HAS_TRAIT_FROM(attached_mob, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT(attached_mob, TRAIT_CRITICAL_CONDITION)  || HAS_TRAIT_FROM(attached_mob, TRAIT_INCAPACITATED, STAMINA))
+	if(!indicator_fakeouts() && \
+	attached_mob.IsParalyzed() || \
+	HAS_TRAIT_FROM(attached_mob, TRAIT_FLOORED, CHOKEHOLD_TRAIT) || \
+	HAS_TRAIT_FROM(attached_mob, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || \
+	HAS_TRAIT(attached_mob, TRAIT_CRITICAL_CONDITION) || \
+	HAS_TRAIT_FROM(attached_mob, TRAIT_INCAPACITATED, STAMINA))
 		return TRUE
 
 /// Returns true if the mob is unconcious for any reason.
@@ -43,11 +59,11 @@ GLOBAL_LIST_INIT(potential_indicators, list(
 	RegisterSignal(parent, COMSIG_CARBON_HEALTH_UPDATE, .proc/status_indicator_evaluate)
 	RegisterSignal(parent, COMSIG_LIVING_LIFE, .proc/check_indicators)
 	// When things actually happen
-	RegisterSignal(parent, COMSIG_LIVING_STATUS_STUN, .proc/stunned_indicator_update)
-	RegisterSignal(parent, COMSIG_LIVING_STATUS_KNOCKDOWN, .proc/weaken_indicator_update)
-	RegisterSignal(parent, COMSIG_LIVING_STATUS_PARALYZE, .proc/paralyzed_indicator_update)
+	RegisterSignal(parent, COMSIG_LIVING_STATUS_STUN, .proc/status_indicator_evaluate)
+	RegisterSignal(parent, COMSIG_LIVING_STATUS_KNOCKDOWN, .proc/status_indicator_evaluate)
+	RegisterSignal(parent, COMSIG_LIVING_STATUS_PARALYZE, .proc/status_indicator_evaluate)
 	RegisterSignal(parent, COMSIG_LIVING_STATUS_IMMOBILIZE, .proc/status_indicator_evaluate)
-	RegisterSignal(parent, COMSIG_LIVING_STATUS_UNCONSCIOUS, .proc/unconcious_indicator_update)
+	RegisterSignal(parent, COMSIG_LIVING_STATUS_UNCONSCIOUS, .proc/status_indicator_evaluate)
 
 /datum/component/status_indicator/UnregisterFromParent()
 	QDEL_NULL(status_indicators)
@@ -106,9 +122,8 @@ GLOBAL_LIST_INIT(potential_indicators, list(
 
 	prospective_indicator = GLOB.potential_indicators[prospective_indicator]
 	prospective_indicator.loc = src
-
 	LAZYADD(status_indicators, prospective_indicator)
-	handle_status_indicators()
+	handle_status_indicators(prospective_indicator)
 
 /// Similar to add_status_indicator() but removes it instead, and nulls the list if it becomes empty as a result.
 /datum/component/status_indicator/proc/remove_status_indicator(image/prospective_indicator)
@@ -116,7 +131,7 @@ GLOBAL_LIST_INIT(potential_indicators, list(
 
 	attached_mob.cut_overlay(prospective_indicator)
 	LAZYREMOVE(status_indicators, prospective_indicator)
-	handle_status_indicators()
+	handle_status_indicators(prospective_indicator)
 
 /// Finds a status indicator on a mob.
 /datum/component/status_indicator/proc/get_status_indicator(image/prospective_indicator)
@@ -134,7 +149,7 @@ GLOBAL_LIST_INIT(potential_indicators, list(
 
 /// Refreshes the indicators over a mob's head. Should only be called when adding or removing a status indicator with the above procs,
 /// or when the mob changes size visually for some reason.
-/datum/component/status_indicator/proc/handle_status_indicators()
+/datum/component/status_indicator/proc/handle_status_indicators(image/prospective_indicator)
 	// First, get rid of all the overlays.
 
 	cut_indicators_overlays()
@@ -147,6 +162,7 @@ GLOBAL_LIST_INIT(potential_indicators, list(
 	var/icon_scale = get_icon_scale(my_carbon_mob)
 
 	if(my_carbon_mob.stat == DEAD)
+		cut_indicators_overlays()
 		return
 
 	// Now put them back on in the right spot.
@@ -166,12 +182,12 @@ GLOBAL_LIST_INIT(potential_indicators, list(
 	current_x_position -= 16 * (icon_scale - DEFAULT_MOB_SCALE)
 
 	// Now the indicator row can actually be built.
-	for(var/prospective_indicator in status_indicators)
-		var/image/indicator = prospective_indicator
+	for(var/all_indicators in status_indicators)
+		var/image/indicator = all_indicators
 
 		// This is a semi-HUD element, in a similar manner as medHUDs, in that they're 'above' everything else in the world,
 		// but don't pierce obfuscation layers such as blindness or darkness, unlike actual HUD elements like inventory slots.
-		indicator.plane = PLANE_STATUS_INDICATOR
+		indicator.plane = GAME_PLANE_UPPER_FOV_HIDDEN
 		indicator.layer = STATUS_LAYER
 		indicator.appearance_flags = PIXEL_SCALE|TILE_BOUND|NO_CLIENT_COLOR|RESET_COLOR|RESET_ALPHA|RESET_TRANSFORM|KEEP_APART
 		indicator.pixel_y = y_offset
@@ -188,11 +204,6 @@ GLOBAL_LIST_INIT(potential_indicators, list(
 	var/mysize = (passed_mob.dna?.current_body_size ? passed_mob.dna.current_body_size : DEFAULT_MOB_SCALE)
 	return mysize
 
-/atom/movable/screen/plane_master/status
-	name = "status indicator plane master"
-	plane = PLANE_STATUS_INDICATOR
-	appearance_flags = PLANE_MASTER
-	blend_mode = BLEND_OVERLAY
 
 #undef STATUS_INDICATOR_Y_OFFSET
 #undef STATUS_INDICATOR_ICON_X_SIZE
