@@ -35,3 +35,33 @@
 	say_mod = "says"
 	// Not as good as organic tongues, not as bad as the robotic voicebox.
 	taste_sensitivity = 20
+
+/obj/item/organ/internal/tongue/vox
+	name = "vox tongue"
+	desc = "A fleshy muscle mostly used for skreeing."
+	say_mod = "skrees"
+
+/obj/item/organ/internal/tongue/dwarven
+	name = "dwarven tongue"
+	desc = "A fleshy muscle mostly used for bellowing."
+	say_mod = "bellows"
+
+/obj/item/organ/internal/tongue/ghoul
+	name = "ghoulish tongue"
+	desc = "A fleshy muscle mostly used for rasping."
+	say_mod = "rasps"
+
+/obj/item/organ/internal/tongue/insect
+	name = "insect tongue"
+	desc = "A fleshy muscle mostly used for chittering."
+	say_mod = "chitters"
+
+/obj/item/organ/internal/tongue/xeno // like lizard tongue but without taste sensitivity modifiers
+	name = "xenomorph tongue"
+	desc = "A fleshy muscle mostly used for hissing."
+	say_mod = "hisses"
+
+/obj/item/organ/internal/tongue/skrell
+	name = "skrell tongue"
+	desc = "A fleshy muscle mostly used for warbling."
+	say_mod = "warbles"
