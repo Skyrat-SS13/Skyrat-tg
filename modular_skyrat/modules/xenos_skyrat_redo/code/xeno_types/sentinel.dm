@@ -51,7 +51,7 @@
 	to_chat(on_who, span_notice("You prepare your [projectile_name] gland. <B>Left-click to fire at a target!</B>"))
 
 	button_icon_state = "[button_base_icon]_1"
-	UpdateButtons()
+	build_all_button_icons()
 	on_who.update_icons()
 
 /datum/action/cooldown/alien/acid/skyrat/unset_click_ability(mob/on_who, refund_cooldown = TRUE)
@@ -63,7 +63,7 @@
 		to_chat(on_who, span_notice("You empty your [projectile_name] gland."))
 
 	button_icon_state = "[button_base_icon]_0"
-	UpdateButtons()
+	build_all_button_icons()
 	on_who.update_icons()
 
 /datum/action/cooldown/alien/acid/skyrat/InterceptClickOn(mob/living/caller, params, atom/target)
