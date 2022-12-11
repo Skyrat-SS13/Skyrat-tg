@@ -1,6 +1,7 @@
 /obj/item/storage/lockbox
 	name = "lockbox"
 	desc = "A locked box."
+	icon = 'icons/obj/storage/case.dmi'
 	icon_state = "lockbox+l"
 	inhand_icon_state = "lockbox"
 	lefthand_file = 'icons/mob/inhands/equipment/briefcase_lefthand.dmi'
@@ -213,7 +214,10 @@
 /obj/item/storage/lockbox/order
 	name = "order lockbox"
 	desc = "A box used to secure small cargo orders from being looted by those who didn't order it. Yeah, cargo tech, that means you."
+<<<<<<< HEAD
 	icon = 'icons/obj/storage/storage.dmi'
+=======
+>>>>>>> b570ac2846e (Lockboxes and wrapped crates are no longer invisible (#71893))
 	icon_state = "secure"
 	icon_broken = "secure+b"
 	inhand_icon_state = "sec-case"

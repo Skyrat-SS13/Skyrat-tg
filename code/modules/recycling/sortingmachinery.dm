@@ -1,5 +1,9 @@
 /obj/item/delivery
+<<<<<<< HEAD
 	icon = 'icons/obj/storage/storage.dmi'//ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+=======
+	icon = 'icons/obj/storage/wrapping.dmi'
+>>>>>>> b570ac2846e (Lockboxes and wrapped crates are no longer invisible (#71893))
 	inhand_icon_state = "deliverypackage"
 	var/giftwrapped = 0
 	var/sort_tag = 0
