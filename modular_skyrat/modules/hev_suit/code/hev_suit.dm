@@ -200,14 +200,14 @@
 	name = "Toggle HEV Suit"
 	button_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
 	background_icon_state = "bg_hl"
-	icon_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
+	button_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
 	button_icon_state = "system_off"
 
 /datum/action/item_action/hev_toggle_notifs
 	name = "Toggle HEV Suit Notifications"
 	button_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
 	background_icon_state = "bg_hl"
-	icon_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
+	button_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
 	button_icon_state = "sound_VOICE_AND_TEXT"
 
 /datum/action/item_action/hev_toggle_notifs/Trigger(trigger_flags)

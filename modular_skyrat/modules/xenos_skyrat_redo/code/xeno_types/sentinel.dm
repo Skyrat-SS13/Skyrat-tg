@@ -24,7 +24,7 @@
 /datum/action/cooldown/alien/acid/skyrat
 	name = "Spit Neurotoxin"
 	desc = "Spits neurotoxin at someone, exhausting them."
-	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
+	button_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	button_icon_state = "neurospit_0"
 	plasma_cost = 40
 	/// A singular projectile? Use this one and leave acid_casing null

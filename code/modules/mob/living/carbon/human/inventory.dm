@@ -149,7 +149,7 @@
 			if(gloves.breakouttime)
 				ADD_TRAIT(src, TRAIT_RESTRAINED, GLOVES_TRAIT)
 				stop_pulling()
-				update_action_buttons_icon()
+				update_mob_action_buttons()
 			//SKYRAT EDIT ADDITION END
 			update_worn_gloves()
 		if(ITEM_SLOT_FEET)
@@ -251,7 +251,7 @@
 		if(gloves.breakouttime) //when unequipping a straightjacket
 			REMOVE_TRAIT(src, TRAIT_RESTRAINED, GLOVES_TRAIT)
 			drop_all_held_items() //suit is restraining
-			update_action_buttons_icon() //certain action buttons may be usable again.
+			update_mob_action_buttons() //certain action buttons may be usable again.
 		//SKYRAT EDIT ADDITION END
 		gloves = null
 		if(!QDELETED(src))
