@@ -9,10 +9,3 @@
 		held_item = get_inactive_held_item()
 		if(held_item)
 			. = held_item.get_passport()
-
-/mob/living/carbon/human/get_passport(hand_first = TRUE)
-	. = ..()
-	if(. && hand_first)
-		return
-	// Check inventory slots
-	return (passport?.get_passport() || belt?.get_passport())

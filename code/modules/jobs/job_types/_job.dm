@@ -344,6 +344,20 @@
 	if(client?.is_veteran() && client?.prefs.read_preference(/datum/preference/toggle/playtime_reward_cloak))
 		neck = /obj/item/clothing/neck/cloak/skill_reward/playing
 
+	//SKYRAT EDIT ADDITION
+	if(H.client)
+		for(var/datum/loadout_item/item as anything in loadout_list_to_datums(H?.client.prefs?.loadout_list))
+			var/datum/job/job = SSjob.GetJobType(jobtype)
+			if (item.restricted_roles && length(item.restricted_roles) && !(job.title in item.restricted_roles))
+				continue
+			item.post_equip_item(H.client.prefs, H)
+
+		H.give_passport() // SKYRAT EDIT ADDITION - Backgrounds - Kept the skyrat edit part for easier finding.
+		H.origin = H.client.prefs.origin
+		H.social_background = H.client.prefs.social_background
+		H.employment = H.client.prefs.employment
+	//SKYRAT EDIT END
+
 /datum/outfit/job/post_equip(mob/living/carbon/human/equipped, visualsOnly = FALSE)
 	if(visualsOnly)
 		return
@@ -368,6 +382,10 @@
 		var/datum/bank_account/account = SSeconomy.bank_accounts_by_id["[equipped.account_id]"]
 
 		if(account && account.account_id == equipped.account_id)
+			// SKYRAT EDIT START - Backgrounds - Paid by hand
+			var/datum/background_info/employment/employment = GLOB.employments[equipped.employment]
+			account.paid_by_hand = !!(/datum/background_feature/paid_by_hand in employment.features)
+			// SKYRAT EDIT END
 			card.registered_account = account
 			account.bank_cards += card
 
@@ -377,7 +395,7 @@
 
 	if(istype(pda))
 		pda.saved_identification = equipped.real_name
-		pda.saved_job = equipped_job.title
+		pda.saved_job = card ? card.trim.assignment : equipped_job.title // SKYRAT EDIT - Backgrounds - Job alt title fix - ORIGINAL: pda.saved_job = equipped_job.title
 		pda.update_ringtone(equipped_job.job_tone)
 		pda.UpdateDisplay()
 

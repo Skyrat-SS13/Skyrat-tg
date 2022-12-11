@@ -86,9 +86,9 @@
 
 	headshot = save_data["headshot"]
 
-	employment = save_data["employment"]
-	origin = save_data["origin"]
-	social_background = save_data["social_background"]
+	employment = text2path(save_data["employment"])
+	origin = text2path(save_data["origin"])
+	social_background = text2path(save_data["social_background"])
 
 	if(needs_update >= 0)
 		update_character_skyrat(needs_update, save_data) // needs_update == savefile_version if we need an update (positive integer)
