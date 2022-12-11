@@ -1,4 +1,4 @@
-/obj/structure/reagent_water_basin
+/obj/structure/water_basin
 	name = "water basin"
 	desc = "A basin full of water, ready to quench the hot metal."
 	icon = 'modular_skyrat/modules/primitive_production/icons/forge_structures.dmi'
@@ -6,67 +6,17 @@
 	anchored = TRUE
 	density = TRUE
 
-	/// Tracks if you can fish from this basin
-	var/datum/component/fishing_spot/fishable
-
-/obj/structure/reagent_water_basin/Initialize(mapload)
-	. = ..()
-
-/obj/structure/reagent_water_basin/Destroy()
-	QDEL_NULL(fishable)
-	return ..()
-
-/obj/structure/reagent_water_basin/examine(mob/user)
-	. = ..()
-	if(!fishable)
-		. += span_notice("[src] can be upgraded through a bluespace crystal or a journeyman smithy!")
-
-	else
-		. += span_notice("[src] looks to be a bottomless basin of water... You can even see fish swimming around down there!")
-
-/obj/structure/reagent_water_basin/attack_hand(mob/living/user, list/modifiers)
-	. = ..()
-	var/smithing_skill = user.mind.get_skill_level(/datum/skill/smithing)
-	if(smithing_skill < SKILL_LEVEL_JOURNEYMAN || fishable)
-		return
-
-	balloon_alert(user, "the water deepens!")
-	fishable = AddComponent(/datum/component/fishing_spot, /datum/fish_source/water_basin)
-
-/obj/structure/reagent_water_basin/attackby(obj/item/attacking_item, mob/living/user, params)
-	if(istype(attacking_item, /obj/item/stack/ore/glass))
-		var/obj/item/stack/ore/glass/glass_obj = attacking_item
-		if(!glass_obj.use(1))
-			return
-
-		new /obj/item/stack/clay(get_turf(src))
-		user.mind.adjust_experience(/datum/skill/production, 1)
-		return
-
-	if(istype(attacking_item, /obj/item/stack/ore/bluespace_crystal))
-		if(fishable)
-			return
-		var/obj/item/stack/ore/bluespace_crystal/bs_crystal = attacking_item
-
-		if(!bs_crystal.use(1))
-			return
-
-		balloon_alert(user, "the water deepens!")
-		fishable = AddComponent(/datum/component/fishing_spot, /datum/fish_source/water_basin)
-		return
-
-	return ..()
-
-/obj/structure/reagent_water_basin/wrench_act(mob/living/user, obj/item/tool)
+/obj/structure/water_basin/crowbar_act(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src)
-
-	for(var/i in 1 to 5)
-		new /obj/item/stack/sheet/mineral/wood(get_turf(src))
-
+	deconstruct(TRUE)
 	qdel(src)
 	return TRUE
 
-/obj/structure/reagent_water_basin/tong_act(mob/living/user, obj/item/tool)
+/obj/structure/water_basin/deconstruct(disassembled)
+	new /obj/item/stack/sheet/iron/ten(get_turf(src))
+	return ..()
+
+/obj/structure/water_basin/tong_act(mob/living/user, obj/item/tool)
 	var/obj/item/forging/incomplete/search_incomplete = locate(/obj/item/forging/incomplete) in tool.contents
 	if(!search_incomplete)
 		return TOOL_ACT_TOOLTYPE_SUCCESS
@@ -89,20 +39,3 @@
 		qdel(search_incomplete)
 		tool.icon_state = "tong_empty"
 	return TOOL_ACT_TOOLTYPE_SUCCESS
-
-/// Fishing source for fishing out of basins that have been upgraded, contains saltwater fish (lizard fish fall under this too!)
-/datum/fish_source/water_basin
-	catalog_description = "Bottomless Water Basins"
-	fish_table = list(
-		/obj/item/fish/clownfish = 15,
-		/obj/item/fish/pufferfish = 10,
-		/obj/item/fish/cardinal = 15,
-		/obj/item/fish/greenchromis = 15,
-		/obj/item/fish/lanternfish = 5,
-		/obj/item/fish/dwarf_moonfish = 15,
-		/obj/item/fish/gunner_jellyfish = 15,
-		/obj/item/fish/needlefish = 10,
-		/obj/item/fish/armorfish = 10,
-		/obj/effect/spawner/random/maintenance = 10,
-		/obj/effect/spawner/random/trash/garbage = 15,
-	)

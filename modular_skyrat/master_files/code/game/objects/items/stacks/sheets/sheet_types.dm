@@ -27,7 +27,7 @@ GLOBAL_LIST_INIT(skyrat_metal_recipes, list(
 	new/datum/stack_recipe("wrestling turnbuckle", /obj/structure/wrestling_corner, 3, time = 2.5 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE),
 	new/datum/stack_recipe("metal barricade", /obj/structure/deployable_barricade/metal, 2, time = 1 SECONDS, on_solid_ground = TRUE),
 	new/datum/stack_recipe("anvil", /obj/item/forging_anvil, 10, time = 2 SECONDS), \
-	new/datum/stack_recipe("forge", /obj/structure/reagent_forge, 10, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE), \
+	new/datum/stack_recipe("forge", /obj/structure/forge, 10, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE), \
 	new/datum/stack_recipe("throwing wheel", /obj/structure/throwing_wheel, 10, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE),
 ))
 
@@ -66,7 +66,7 @@ GLOBAL_LIST_INIT(skyrat_rod_recipes, list(
 
 GLOBAL_LIST_INIT(skyrat_wood_recipes, list(
 	new/datum/stack_recipe("wooden barricade", /obj/structure/deployable_barricade/wooden, 2, time = 1 SECONDS, on_solid_ground = TRUE), \
-	new/datum/stack_recipe("water basin", /obj/structure/reagent_water_basin, 5, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE), \
+	new/datum/stack_recipe("water basin", /obj/structure/water_basin, 5, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE), \
 	new/datum/stack_recipe("forging work bench", /obj/structure/crafting_bench/forging, 5, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE), \
 	new/datum/stack_recipe("wooden half-barricade", /obj/structure/deployable_barricade/wooden, 5, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE),
 	new/datum/stack_recipe("sauna oven", /obj/structure/sauna_oven, 30, time = 1.5 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE), \

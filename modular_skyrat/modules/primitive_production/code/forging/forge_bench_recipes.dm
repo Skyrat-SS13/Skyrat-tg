@@ -63,7 +63,7 @@
 	required_good_hits = 12
 
 /datum/crafting_bench_recipe/forging/pavise
-	recipe_name = "pavise"
+	recipe_name = "tower shield"
 	recipe_requirements = list(
 		/obj/item/forging/complete/plate = 8,
 	)

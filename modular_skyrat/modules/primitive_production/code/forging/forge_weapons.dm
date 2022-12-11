@@ -1,3 +1,5 @@
+// Weapons
+
 /obj/item/melee/forging_weapon
 	icon = 'modular_skyrat/modules/primitive_production/icons/forge_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/primitive_production/icons/inhands/forge_weapon_l.dmi'
@@ -134,6 +136,12 @@
 	. = ..()
 	AddElement(/datum/element/kneejerk)
 
+/obj/item/pickaxe/forging
+
+/obj/item/shovel/forging
+
+// Shields
+
 /obj/item/shield/buckler/forging_shield
 	name = "buckler"
 	desc = "A small, round shield best used in tandem with a melee weapon in close-quarters combat."
@@ -167,9 +175,7 @@
 	. = ..()
 	AddComponent(/datum/component/two_handed, require_twohands = TRUE, force_wielded = 15)
 
-/obj/item/pickaxe/forging
-
-/obj/item/shovel/forging
+// Arrows
 
 /obj/item/ammo_casing/caseless/arrow/wood/forged
 	desc = "An arrow made of wood, typically fired from a bow. It can be reinforced with sinew."
@@ -191,38 +197,3 @@
 	damage = 25
 	icon_state = "arrow"
 	ammo_type = /obj/item/ammo_casing/caseless/arrow/wood/forged
-
-#define INCREASE_BLOCK_CHANGE 2
-
-/obj/item/forging/reagent_weapon/bokken
-	name = "reagent bokken"
-	desc = "A bokken that is capable of blocking attacks when wielding in two hands, possibly including bullets should the user be brave enough."
-	force = 15
-	icon_state = "bokken"
-	inhand_icon_state = "bokken"
-	worn_icon_state = "bokken_back"
-	throwforce = 10
-	block_chance = 20
-	slot_flags = ITEM_SLOT_BACK
-	w_class = WEIGHT_CLASS_BULKY
-	resistance_flags = FIRE_PROOF
-	attack_verb_continuous = list("bonks", "bashes", "whacks", "pokes", "prods")
-	attack_verb_simple = list("bonk", "bash", "whack", "poke", "prod")
-	///whether the bokken is being wielded or not
-	var/wielded = FALSE
-
-#undef INCREASE_BLOCK_CHANGE
-
-/obj/item/forging/reagent_weapon/bokken/Initialize(mapload)
-	. = ..()
-	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, PROC_REF(on_wield))
-	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, PROC_REF(on_unwield))
-	AddComponent(/datum/component/two_handed, force_unwielded=15, force_wielded=7)
-
-/obj/item/forging/reagent_weapon/bokken/proc/on_wield()
-	SIGNAL_HANDLER
-	wielded = TRUE
-
-/obj/item/forging/reagent_weapon/bokken/proc/on_unwield()
-	SIGNAL_HANDLER
-	wielded = FALSE

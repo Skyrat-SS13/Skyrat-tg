@@ -11,7 +11,7 @@
 #define SMOKE_STATE_BAD 3
 #define SMOKE_STATE_NOT_COOKING 4
 
-/obj/structure/reagent_forge
+/obj/structure/forge
 	name = "forge"
 	desc = "A structure built out of bricks, for heating up metal, or glass, or ceramic, or food, or anything really."
 	icon = 'modular_skyrat/modules/primitive_production/icons/forge_structures.dmi'
@@ -54,7 +54,7 @@
 		/obj/item/stack/sheet/mineral/coal,
 	))
 
-/obj/structure/reagent_forge/examine(mob/user)
+/obj/structure/forge/examine(mob/user)
 	. = ..()
 
 	if(used_tray)
@@ -64,13 +64,13 @@
 
 	return .
 
-/obj/structure/reagent_forge/Initialize(mapload)
+/obj/structure/forge/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 	populate_radial_choice_list()
 
 /// Fills out the radial choice list with everything in the choice_list's contents
-/obj/structure/reagent_forge/proc/populate_radial_choice_list()
+/obj/structure/forge/proc/populate_radial_choice_list()
 	if(!length(choice_list))
 		return
 
@@ -81,14 +81,14 @@
 		var/obj/resulting_item = choice_list[forge_option]
 		radial_choice_list[forge_option] = image(icon = initial(resulting_item.icon), icon_state = initial(resulting_item.icon_state))
 
-/obj/structure/reagent_forge/Destroy()
+/obj/structure/forge/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	QDEL_NULL(particles)
 	if(used_tray)
 		QDEL_NULL(used_tray)
 	. = ..()
 
-/obj/structure/reagent_forge/update_appearance(updates)
+/obj/structure/forge/update_appearance(updates)
 	. = ..()
 	cut_overlays()
 
@@ -97,7 +97,7 @@
 		add_overlay(tray_overlay)
 
 /// Checks the forge's fuel, if just_check is TRUE then we also subtract from the fuel's current time
-/obj/structure/reagent_forge/proc/check_fuel(just_checking = FALSE)
+/obj/structure/forge/proc/check_fuel(just_checking = FALSE)
 	if(forge_fuel) // Check for strong fuel (coal) first, as it has more power over weaker fuels
 		if(just_checking)
 			return TRUE
@@ -108,12 +108,12 @@
 	return FALSE
 
 /// Creates both a fail message balloon alert, and sets in_use to false
-/obj/structure/reagent_forge/proc/fail_message(mob/living/user, message)
+/obj/structure/forge/proc/fail_message(mob/living/user, message)
 	balloon_alert(user, message)
 	in_use = FALSE
 
 /// If the forge is in use, checks if there is an oven tray, then if there are any mobs actually in use range. If not sets the forge to not be in use.
-/obj/structure/reagent_forge/proc/check_in_use()
+/obj/structure/forge/proc/check_in_use()
 	if(!in_use)
 		return
 
@@ -124,7 +124,7 @@
 		if(!living_mob)
 			in_use = FALSE
 
-/obj/structure/reagent_forge/process(delta_time)
+/obj/structure/forge/process(delta_time)
 	if(!COOLDOWN_FINISHED(src, forging_cooldown))
 		return
 
@@ -143,7 +143,7 @@
 	handle_baking_things(delta_time)
 
 /// Sends signals to bake and items on the used tray, setting the smoke state of the forge according to the most cooked item in it
-/obj/structure/reagent_forge/proc/handle_baking_things(delta_time)
+/obj/structure/forge/proc/handle_baking_things(delta_time)
 	/// The worst off item being baked in our forge right now, to ensure people know when gordon ramsay is gonna be upset at them
 	var/worst_cooked_food_state = 0
 	for(var/obj/item/baked_item as anything in used_tray.contents)
@@ -165,7 +165,7 @@
 	set_smoke_state(worst_cooked_food_state)
 
 /// Sets the type of particles that the forge should be generating
-/obj/structure/reagent_forge/proc/set_smoke_state(new_state)
+/obj/structure/forge/proc/set_smoke_state(new_state)
 	if(new_state == smoke_state)
 		return
 
@@ -198,14 +198,14 @@
 	icon_state = "forge_active"
 	set_light(3, 1, LIGHT_COLOR_FIRE)
 
-/obj/structure/reagent_forge/attack_hand(mob/living/user, list/modifiers)
+/obj/structure/forge/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 
 	if(used_tray)
 		remove_tray_from_forge(user)
 		return
 
-/obj/structure/reagent_forge/attackby(obj/item/attacking_item, mob/living/user, params)
+/obj/structure/forge/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(!used_tray && istype(attacking_item, /obj/item/plate/oven_tray))
 		add_tray_to_forge(attacking_item)
 		return TRUE
@@ -239,7 +239,7 @@
 	return ..()
 
 /// Take the given tray and place it inside the forge, updating everything relevant to that
-/obj/structure/reagent_forge/proc/add_tray_to_forge(obj/item/plate/oven_tray/tray)
+/obj/structure/forge/proc/add_tray_to_forge(obj/item/plate/oven_tray/tray)
 	if(used_tray) // This shouldn't be able to happen but just to be safe
 		balloon_alert_to_viewers("already has tray")
 		return
@@ -251,7 +251,7 @@
 	update_appearance()
 
 /// Take the used_tray and spit it out, updating everything relevant to that
-/obj/structure/reagent_forge/proc/remove_tray_from_forge(mob/living/carbon/user)
+/obj/structure/forge/proc/remove_tray_from_forge(mob/living/carbon/user)
 	if(!used_tray)
 		if(user)
 			balloon_alert_to_viewers("no tray")
@@ -266,7 +266,7 @@
 	in_use = FALSE
 
 /// Adds to either the strong or weak fuel timers from the given stack
-/obj/structure/reagent_forge/proc/refuel(obj/item/stack/refueling_stack, mob/living/user)
+/obj/structure/forge/proc/refuel(obj/item/stack/refueling_stack, mob/living/user)
 	in_use = TRUE
 
 	if(forge_fuel >= 5 MINUTES)
@@ -286,7 +286,7 @@
 	user.mind.adjust_experience(/datum/skill/smithing, 5) // You gain small amounts of experience from useful fueling
 
 /// Takes given ore and smelts it, possibly producing extra sheets if upgraded
-/obj/structure/reagent_forge/proc/smelt_ore(obj/item/stack/ore/ore_item, mob/living/user)
+/obj/structure/forge/proc/smelt_ore(obj/item/stack/ore/ore_item, mob/living/user)
 	in_use = TRUE
 
 	if(!check_fuel(just_checking = TRUE))
@@ -317,7 +317,7 @@
 	return
 
 /// Sets ceramic items from their unusable state into their finished form
-/obj/structure/reagent_forge/proc/handle_ceramics(obj/attacking_item, mob/living/user)
+/obj/structure/forge/proc/handle_ceramics(obj/attacking_item, mob/living/user)
 	in_use = TRUE
 
 	if(!check_fuel(just_checking = TRUE))
@@ -345,7 +345,7 @@
 	in_use = FALSE
 
 /// Handles the creation of molten glass from glass sheets
-/obj/structure/reagent_forge/proc/handle_glass_sheet_melting(obj/attacking_item, mob/living/user)
+/obj/structure/forge/proc/handle_glass_sheet_melting(obj/attacking_item, mob/living/user)
 	in_use = TRUE
 
 	if(!check_fuel(just_checking = TRUE))
@@ -368,7 +368,7 @@
 	COOLDOWN_START(spawned_glass, remaining_heat, glassblowing_amount)
 
 /// Handles creating molten glass from a metal cup filled with sand
-/obj/structure/reagent_forge/proc/handle_metal_cup_melting(obj/attacking_item, mob/living/user)
+/obj/structure/forge/proc/handle_metal_cup_melting(obj/attacking_item, mob/living/user)
 	in_use = TRUE
 
 	if(!check_fuel(just_checking = TRUE))
@@ -396,7 +396,7 @@
 	user.mind.adjust_experience(/datum/skill/production, 10)
 	COOLDOWN_START(spawned_glass, remaining_heat, glassblowing_amount)
 
-/obj/structure/reagent_forge/tong_act(mob/living/user, obj/item/tool)
+/obj/structure/forge/tong_act(mob/living/user, obj/item/tool)
 	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER)
 	var/obj/item/forging/forge_item = tool
 
@@ -480,7 +480,7 @@
 	forge_item.in_use = FALSE
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
-/obj/structure/reagent_forge/blowrod_act(mob/living/user, obj/item/tool)
+/obj/structure/forge/blowrod_act(mob/living/user, obj/item/tool)
 	var/obj/item/glassblowing/blowing_rod/blowing_item = tool
 	var/glassblowing_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * BASELINE_ACTION_TIME
 	var/glassblowing_amount = BASELINE_HEATING_DURATION / user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER)
@@ -516,12 +516,12 @@
 	in_use = FALSE
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
-/obj/structure/reagent_forge/crowbar_act(mob/living/user, obj/item/tool)
+/obj/structure/forge/crowbar_act(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src)
 	deconstruct(TRUE)
 	return TRUE
 
-/obj/structure/reagent_forge/deconstruct(disassembled)
+/obj/structure/forge/deconstruct(disassembled)
 	new /obj/item/stack/sheet/iron/ten(get_turf(src))
 	return ..()
 
