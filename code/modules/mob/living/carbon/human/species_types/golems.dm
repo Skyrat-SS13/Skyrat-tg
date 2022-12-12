@@ -576,7 +576,6 @@
 	name = "Bananium Golem"
 	id = SPECIES_GOLEM_BANANIUM
 	fixed_mut_color = "#ffff00"
-	say_mod = "honks"
 	inherent_traits = list(
 		TRAIT_CLUMSY,
 		TRAIT_GENELESS,
@@ -590,6 +589,7 @@
 		TRAIT_RESISTHIGHPRESSURE,
 		TRAIT_RESISTLOWPRESSURE,
 	)
+	mutanttongue = /obj/item/organ/internal/tongue/bananium
 	meat = /obj/item/stack/ore/bananium
 	info_text = "As a <span class='danger'>Bananium Golem</span>, you are made for pranking. Your body emits natural honks, and you can barely even hurt people when punching them. Your skin also bleeds banana peels when damaged."
 	prefix = "Bananium"
@@ -1151,7 +1151,6 @@
 /datum/species/golem/bone
 	name = "Bone Golem"
 	id = SPECIES_GOLEM_BONE
-	say_mod = "rattles"
 	prefix = "Bone"
 	special_names = list("Head", "Broth", "Fracture", "Rattler", "Appetit")
 	liked_food = GROSS | MEAT | RAW | GORE
