@@ -74,3 +74,7 @@
 /turf/open/indestructible/cobble/corner
 	icon_state = "cobble_corner"
 
+
+/turf/open/floor/plating/sandyplating
+	icon = 'modular_skyrat/modules/aesthetics/floors/icons/floors.dmi'
+	icon_state = "sandyplating"

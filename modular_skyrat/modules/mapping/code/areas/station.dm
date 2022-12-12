@@ -210,6 +210,16 @@
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "cafeteria"
 
+//Asteroid station areas
+/area/space/asteroidstation
+	name = "Station Asteroid"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "asteroid"
+	base_lighting_alpha = 0
+	requires_power = TRUE
+	always_unpowered = TRUE
+	area_flags = UNIQUE_AREA
+
 /*
 * Department/Generic maintenance areas
 */
