@@ -4,8 +4,11 @@
 /datum/opposing_force_equipment/melee/switchblade
 	item_type = /obj/item/switchblade
 
-/datum/opposing_force_equipment/melee/switchblade
+/datum/opposing_force_equipment/melee/survival
 	item_type = /obj/item/knife/combat/survival
+
+/datum/opposing_force_equipment/melee/combat
+	item_type = /obj/item/knife/combat
 
 /datum/opposing_force_equipment/melee/metalbat
 	item_type = /obj/item/melee/baseball_bat/ablative
