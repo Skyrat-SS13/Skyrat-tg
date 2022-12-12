@@ -12,7 +12,7 @@
 	#define SYNTH_EMP_BRAIN_DAMAGE_LIGHT 12
 	#define SYNTH_EMP_BRAIN_DAMAGE_MAXIMUM 75
 
-/obj/item/organ/internal/brain/ipc_positron/Insert(mob/living/carbon/user, special = 0, drop_if_replaced = TRUE)
+/obj/item/organ/internal/brain/ipc_positron/Insert(mob/living/carbon/user, special = FALSE, drop_if_replaced = TRUE, no_id_transfer = FALSE)
 	..()
 	if(user.stat == DEAD && ishuman(user))
 		var/mob/living/carbon/human/user_human = user

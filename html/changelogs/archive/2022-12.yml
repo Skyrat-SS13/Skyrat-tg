@@ -192,3 +192,229 @@
       cases, sorry no more living statues
   - bugfix: Void Raptor - removes stray r-wall in Xenobio
   - bugfix: Void Raptor - fixes solar console names
+2022-12-07:
+  Melbert:
+  - balance: 'Heretic: Furious Steel''s cooldown has been doubled (30s -> 60s), and
+      abides by antimagic'
+  - balance: 'Heretic: Cleave''s cooldown has increased by 5s, range has been decreased
+      to 4 tiles, and wound applied now has natural clotting'
+  - balance: 'Heretic: Blood Siphon''s range has been decreased to 6 tiles'
+  - balance: 'Heretic: Void Pull and Phase abide by antimagic'
+  - balance: 'Heretic: Halved Void Blast''s cooldown to 30s'
+  - qol: 'Heretic: Void Blast and Rust Formation now have distinct icons'
+  SkyratBot:
+  - bugfix: Ephedrine now rewards you instead of punishing you for making it pure.
+  - bugfix: queuing clicks should work correctly now
+  - bugfix: fixes being able to stack deepfried bluespace body bags into bluespace
+      body bag
+  - bugfix: Prevents the recycler from destroying indestructible objects.
+  - qol: lockboxes have screentips,
+  - qol: cargo goodies can be opened with your ID even if it is inside a PDA or Wallet
+  - bugfix: captain can no longer open cargo goodies
+  - imageadd: secure lockboxes have a broken sprite when emag'd
+  - qol: hop has basic cargo access
+  - qol: the AI HUD now flex-scales and is reorganized.
+  - bugfix: crab rangoon is not invisible
+  - bugfix: Fixes a typo that meant auxiliary effects from projectiles (.38 rubber
+      stamina, ebow stamina/knockdown/blur) checked a generally nonexistent armor
+      value that was defined on a per-/atom level. As a consequence, such auxiliary
+      effects from projectiles now actually respect the armored equipment of hit targets/limbs/etc.
+      On living mobs that have armor equipped, anyway.
+  - qol: Charlie station stores space suits in proper storage
+  - balance: Geysers now spawn more often, especially wittel geysers.
+  - balance: Change liver to not purge toxins instantly for low amounts. Instead the
+      toxin effect gets skipped while it is metabolized normally, however it still
+      does liver damage. This fixes bite increments for food, cigarettes, and drinks
+      where the toxins would purge without building up to harmful levels.
+  - balance: Change the formula for how toxins effect livers.  Livers will be damaged
+      based on the units of toxin present and their lethality.
+  - balance: Change alien liver toxin resistance value to be -33% and cybernetic liver
+      toxin resistance value to be +50%
+  nevimer:
+  - bugfix: supermatter surge now doesn't overflow values??
+  - code_imp: cleaned up SM surge code a little bit
+2022-12-08:
+  Azlan, Fikou, MTandi:
+  - imageadd: Void suit and jetpack resprited
+  - bugfix: Also fixed the issue with all jetpack sprites not updating on the back
+  SkyratBot:
+  - rscdel: Tablets are now removed, PDAs are now the base 'tablet'. Silicon and nukie
+      tablets are now PDAs.
+  - bugfix: fixed using the changeling tentacle arm via right mouse click holding
+      people up instead of firing it. Now it will fire like normal
+  - bugfix: You can now order canisters again.
+  - rscadd: ' Key can now hurt people by stabbing or throwing.'
+  - code_imp: changed the keys code to make it able to hurt ppl
+  - bugfix: Mining point cards have slightly more readable buttons now, and also can
+      be reused even after running out of points.
+  - bugfix: the atrocinator modsuit module's negative gravity now works again. have
+      fun on the ceiling
+  - bugfix: Fixed being able to move through floors and get to centcomm when moving
+      up/down while inside mechs and similar movable objects.
+  - imageadd: indicator when a pda contains a pai
+  - refactor: Refactors podperson hair. You can now restyle it on any species
+  - qol: You can restyle podperson hair on the person, their decapitated head or straight
+      on the hair organ
+  - code_imp: Restyling is now completely modular, you can make any external organ
+      easily restylable
+  - bugfix: Fixes external organ harddel because limbs would keep the reference on
+      drop_organs
+  - rscadd: Frogs and cockroaches can now be converted to the regal rats army.
+  - bugfix: Converted rat do not attack mouses anymore.
+  - imageadd: New sewer cockroach and trash frog sprites
+  Tralezab code, Azlan + Azarak (Az gaaang) for the organs:
+  - rscadd: Added the DNA infuser to genetics! Person goes in, corpse goes in, and
+      they combine!
+  - rscadd: Try not to turn yourself into a fly, OK?
+  theOOZ:
+  - rscadd: Sprite accessories now generate an energy overlay according to a worn
+      MOD's theme
+  - refactor: Show/Hide mutant parts verb is refactored to allow options as to what
+      to hide.
+  - code_imp: Show/Hide mutant parts verb incorporated into a MOD button
+2022-12-09:
+  A.C.M.O.:
+  - bugfix: Fixed the Bluespace RPD's Alt-click for its "remote piping safety".
+  Rhials:
+  - bugfix: Earning the Mimic loot drop from an abandoned crate now properly spawns
+      the mimic.
+  - balance: Xenomorph nests will now sustain humans that are buckled to them, and
+      gestate xenomorph eggs slightly faster.
+  - balance: Xenomorph nests evolved healing capabilities in exchange for some of
+      their grip. They now take only one minute to escape from.
+  - bugfix: Ethereals cannot crystal revive back from genetic meltdown petrification.
+  SkyratBot:
+  - bugfix: biogenerator converts all plant nutriments into biomass, not just the
+      first found one.
+  - bugfix: fixed mothroach inhands not properly fitting under your arm when facing
+      sideways with the mothroach facing the camera
+  - bugfix: fixed getting kicked out of your body sometimes when pursuing the carp
+      mutant
+  - bugfix: and carp lungs working incorrectly
+  - qol: better ui explanation on the infuser book
+  - qol: can drag people into the infuser chamber
+  - bugfix: The dog's attack command is somewhat more reliable.
+  - admin: Whenever you teleport an atom/mob using the Get function found in many
+      admin utilities, rest assured that it will actually log the destination location
+      of where you are teleporting that thing to- rather than the location they were
+      pre-teleportation.
+  - code_imp: turned axolotls into basic mobs, their idle movement may be slightly
+      different and they won't move while you're pulling them anymore
+  - bugfix: Light replacers will no longer turn invisible.
+  - bugfix: 'fixes shields that don''t actually take damage from attacks (eg: adamantine
+      shields) being unable to block said attacks.'
+  Tralezab code, Fikou's map, PigeonVerde and Halcyon for sprites!:
+  - rscadd: Psyker-gangers are new pirates
+  - refactor: refactored pirate code so we can add more in the future
+2022-12-10:
+  Erol509:
+  - imageadd: New NRI Sprites for Teshari species
+  GoldenAlpharex:
+  - bugfix: Angel, Dragon and Robotic wings are now available in the prefs menu once
+      more!
+  Melbert:
+  - qol: The chaplain's armament beacon now displays a radial instead of a text list,
+      showing previews of what all the armor sets look like
+  - qol: (Almost) all choice beacons now use a pod to send their item, instead of
+      just magicking it under your feet
+  - code_imp: Cleaned up some choice beacon code.
+  RatFromTheJungle:
+  - bugfix: there is no longer a bunch of .357's where there wasn't supposed to be
+  Rhials:
+  - balance: The lights will now flicker more frequently before a Grey Tide event
+  - balance: The lights will now be shut off via the APC when the Grey Tide event
+      opens up a department.
+  - code_imp: Makes some miscellaneous code improvements to the Grey Tide event
+  - code_imp: Grey tide event runs much faster
+  - code_imp: Renames prison_break.dm to grey_tide.dm
+  ShizCalev:
+  - bugfix: The teleporter shutter doors on KiloStation and Meta now properly work
+      off Teleporter access instead of Command access
+  - bugfix: Blobs will no longer attack jaunting and incorporeal mobs (eg revenants)
+  SkyratBot:
+  - rscadd: Replaces a less interesting abductee objective with THE PROMETHEAN HORROR.
+      The Flesh is Weak, the New Flesh is Not So Weak.
+  - balance: space heaters also affect the adjacent tiles other than the one they
+      are on
+  - bugfix: trying to clean something while it's already being cleaned will no longer
+      prematurely remove the cleaning animation
+  - balance: Destroying a petrified human statue will now drop their brain.
+  - code_imp: Switched a single proc ref to the proper format.
+  - qol: Binoculars can be worn on neck now
+  - balance: Tweaks the minimal temperature threshold and optimal temperature for
+      Palladium synthate catalyst.
+  - bugfix: Fixes a missing tram rail along the tram line
+  - balance: jaws of life can pry windoors
+  - balance: Nuclear particles will always irradiate you on hit.
+  - bugfix: Fixes access for a windoor to atmospherics on Delta
+  YakumoChen:
+  - balance: Sensitive Snout trait no longer a negative trait, now neutral
+  Zonespace27:
+  - rscadd: New emote, thump your feet with *thump
+  tf-4:
+  - bugfix: Spawning with loadout items in a briefcase will no longer delete any job
+      items in your hands
+  - bugfix: The "delete job items" loadout option will now actually delete your job
+      items.
+2022-12-11:
+  A.C.M.O.:
+  - bugfix: Fixed the Self-Actualization Device, which was sometimes doubling damage
+      and killing players.
+  GoldenAlpharex:
+  - bugfix: There shouldn't be clickable names in Adminwho that don't do anything
+      anymore.
+  LT3:
+  - bugfix: Improved tram door logic so they don't inadvertently open during departure.
+  - rscdel: Removed the message bubble when you open the tram doors while it's travelling.
+  Melbert:
+  - rscadd: Landmines, rather than triggering when you step onto them, will now trigger
+      when you step off of them.
+  RatFromTheJungle:
+  - bugfix: fixes the revolvers icon state that apparently just changed
+  SkyratBot:
+  - code_imp: quirk dm files are renamed 'positive_quirks.dm', 'negative_quirks.,dm',
+      and 'neutral_quirks.dm'
+  - bugfix: fixed a setting air alarm to refill mode would set scrubber to siphon,
+      thus defeating the purpose of refilling. Now it will set to scrub mode instead.
+  - balance: Rush Gland and Brimdust Sac can be used more frequently when implanted.
+  - balance: An implanted Brimdust Sac will stack the buff on you automatically while
+      on lavaland. Triggering the buff on the station will make you walk slower for
+      a short duration.
+  - balance: Implanted Bimrdust Sacs no longer set you on fire, nor do they explode
+      if you catch fire.
+  - refactor: Refactored wings, tongues, and some examine messages, hopefully with
+      minimal effect on actual changes. A few more species have tongues, angel wings
+      bring the holy trait with them, and wings have new descriptions. should be the
+      biggest parts of it
+  - bugfix: Romerol now successfully converts zombies into the living dead, rather
+      than the uglier but still dead dead.
+2022-12-12:
+  A.C.M.O.:
+  - bugfix: Fixed the DNA Infuser's Space Carp infusion, which was not properly granting
+      its organ set bonus. Having all 4 carp organs infused now makes you space-proof
+      as expected.
+  SkyratBot:
+  - bugfix: Admin removal of Heretic status no longer makes a sound.
+  - rscadd: Fermented drinks give mood buffs according to the stats of fermented fruit
+  - rscadd: holiday specific posters (only a few now)
+  - bugfix: Forced speech from brain damage will no longer trigger the world filter
+  - bugfix: When you examine a mecha, you should now no longer see two integrity messages.
+  - bugfix: The golem trigger guard scalping situation has improved and golems can
+      now once again purchase trigger guards at market rate.
+  - rscadd: forensics scanner can read id access
+  - balance: forensics scanner can detect transforming items
+  - code_imp: forensics scanner was rewritten, items can add their own data to the
+      log
+  - bugfix: Teleporters work properly now with circuits
+  - rscadd: Added entirely new icons for the Chrono MODsuit
+  - qol: allowed stacking machine input, output rotation via console
+  - bugfix: Fried egg reagents halved to meet the raw egg reagent amount
+  - bugfix: fixed a building a rack with telekinesis results in it being built at
+      your feet. Now it will be built at where the rack part is
+  - rscadd: More options are now available when creating and editing signs.
+  - code_imp: there can now be more than one grey tide event running at once.
+  - bugfix: Made the table in Kilostation's QM office reachable.
+  Zergspower:
+  - imageadd: Containers - New Interdyne Container with new mapping default icon
+  - bugfix: Containers - unified the apperance of each one, fixed blemishes and stray
+      pixels
