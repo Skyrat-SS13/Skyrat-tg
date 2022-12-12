@@ -12,6 +12,12 @@
 /datum/opposing_force_equipment/pistol/makarov
 	item_type = /obj/item/gun/ballistic/automatic/pistol
 
+/datum/opposing_force_equipment/pistol/makarov_toy
+	item_type = /obj/item/gun/ballistic/automatic/pistol/toy/riot
+	name = "Toy Pistol with Riot Darts"
+	description = "An innocent-looking toy pistol designed to fire foam darts. Comes loaded with riot-grade \
+			darts effective at incapacitating a target."
+
 /datum/opposing_force_equipment/pistol/aps
 	item_type = /obj/item/gun/ballistic/automatic/pistol/aps
 	admin_note = "WARNING: Roughly on-par with the .357."

@@ -260,3 +260,8 @@
 /datum/opposing_force_equipment/ammo/pepperball
 	name = "Pepperball Magazine"
 	item_type = /obj/item/ammo_box/magazine/pepperball
+
+/datum/opposing_force_equipment/ammo/riot_dart
+	item_type = /obj/item/ammo_box/foambox/riot
+	name = "Box of Riot Darts"
+	description = "A box of 40 Donksoft riot darts, for reloading any compatible foam dart magazine. Don't forget to share!"

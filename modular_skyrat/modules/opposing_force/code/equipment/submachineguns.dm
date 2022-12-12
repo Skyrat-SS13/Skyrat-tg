@@ -56,3 +56,8 @@
 
 /datum/opposing_force_equipment/submachine_gun/c20r
 	item_type = /obj/item/gun/ballistic/automatic/c20r/unrestricted
+
+/datum/opposing_force_equipment/submachine_gun/c20r_toy
+	item_type = /obj/item/gun/ballistic/automatic/c20r/toy/unrestricted/riot
+	name = "Toy Submachine Gun"
+	description = "A fully-loaded Donksoft bullpup submachine gun that fires riot grade darts with a 20-round magazine."
