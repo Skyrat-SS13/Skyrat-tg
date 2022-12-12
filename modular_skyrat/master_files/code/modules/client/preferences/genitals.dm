@@ -68,7 +68,7 @@
 	return initial(default_accessory_type?.name) || "None"
 
 /datum/preference/choiced/genital/init_possible_values()
-	return assoc_to_keys(GLOB.sprite_accessories[relevant_mutant_bodypart])
+	return assoc_to_keys_features(GLOB.sprite_accessories[relevant_mutant_bodypart])
 
 /datum/preference/toggle/genital_skin_tone
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
