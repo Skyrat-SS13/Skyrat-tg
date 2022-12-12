@@ -30,7 +30,7 @@
 
 // Changeling
 /datum/opposing_force_equipment/antagonist_powers/changeling
-	item_type = /obj/item/antag_granter/changling
+	item_type = /obj/item/antag_granter/changeling
 	name = "Changeling Injector"
 	description = "A heavy-duty injector containing a highly infectious virus, turning the user into a \"Changeling\"."
 	admin_note = "Changeling antag granter."
