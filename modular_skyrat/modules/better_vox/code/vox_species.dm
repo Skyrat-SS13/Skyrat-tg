@@ -2,7 +2,6 @@
 	name = "Vox Primalis"
 	id = SPECIES_VOX_PRIMALIS
 	eyes_icon = 'modular_skyrat/modules/better_vox/icons/bodyparts/vox_eyes.dmi'
-	say_mod = "skrees"
 	can_augment = FALSE
 	body_size_restricted = TRUE
 	digitigrade_customization = DIGITIGRADE_NEVER // We have our own unique sprites!
@@ -26,6 +25,7 @@
 	mutantbrain = /obj/item/organ/internal/brain/vox
 	breathid = "n2"
 	mutant_bodyparts = list()
+	mutanttongue = /obj/item/organ/internal/tongue/vox
 	default_mutant_bodyparts = list(
 		"tail" = "Vox Primalis Tail",
 	)
