@@ -432,7 +432,7 @@
 		id_card.update_label()
 		id_card.update_icon()
 	var/obj/item/radio/target_radio = tarkon.ears
-	target_radio.set_frequency(1243)
+	target_radio.set_frequency(FREQ_TARKON)
 	target_radio.recalculateChannels()
 
 	return ..()
