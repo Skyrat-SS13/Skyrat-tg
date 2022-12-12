@@ -59,6 +59,8 @@
 	gold_core_spawnable = NO_SPAWN
 	nofur = TRUE
 	ai_controller = /datum/ai_controller/dog/borgi
+	unsuitable_atmos_damage = 0
+	minimum_survivable_temperature = 0
 
 	// These lights enable when E-N is emagged
 	light_system = MOVABLE_LIGHT_DIRECTIONAL
@@ -72,9 +74,6 @@
 /mob/living/basic/pet/dog/corgi/borgi/Initialize(mapload)
 	. = ..()
 
-	RemoveElement(/datum/element/atmos_requirements)
-	RemoveElement(/datum/element/basic_body_temp_sensitive)
-	AddElement(/datum/element/basic_body_temp_sensitive, min_body_temp = 0)
 	var/static/list/borgi_drops = list(/obj/effect/decal/cleanable/oil/slippery)
 	AddElement(/datum/element/death_drops, borgi_drops)
 
