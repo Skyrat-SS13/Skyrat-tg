@@ -39,11 +39,11 @@
 	. = ..()
 
 	compatible_nifs += /obj/item/organ/internal/cyberimp/brain/nif/debug
+	program_name = name
 
 	if(!recepient_nif.install_nifsoft(src))
 		qdel(src)
 
-	program_name = name
 
 /datum/nifsoft/Destroy()
 	if(active)

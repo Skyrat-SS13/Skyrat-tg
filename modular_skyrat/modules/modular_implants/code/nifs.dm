@@ -298,9 +298,8 @@
 	loaded_nifsoft.parent_nif = src
 	loaded_nifsoft.linked_mob = linked_mob
 
-	update_static_data_for_all_viewers()
-
 	send_message("[loaded_nifsoft] has been added")
+	update_static_data_for_all_viewers()
 	return TRUE
 
 ///Removes a NIFSoft from a NIF. Silent - determines whether or not alerts will be given to the owner of the NIF
