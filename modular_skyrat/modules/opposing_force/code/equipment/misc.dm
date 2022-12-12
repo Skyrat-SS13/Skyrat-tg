@@ -21,11 +21,6 @@
 	name = "20 Raw Telecrystals"
 	description = "A bundle of telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
 
-/datum/opposing_force_equipment/other/c10k
-	name = "10000 Space Cash Bill"
-	item_type = /obj/item/stack/spacecash/c10000
-	description = "Cold hard cash. When you REALLY need to bribe or buy your way in. Or to payroll your gangmembers."
-
 /datum/opposing_force_equipment/other/ninjastar
 	item_type = /obj/item/throwing_star
 	description = "Be the maintenance ninja you always wanted to be. Does not come with multi-throwing cybernetics."

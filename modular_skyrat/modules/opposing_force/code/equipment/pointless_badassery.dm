@@ -39,6 +39,7 @@
 /datum/opposing_force_equipment/pointless_badassery/syndi_gaiter
 	item_type = /obj/item/clothing/mask/gas/sechailer/syndicate
 
+// From the uplink
 /datum/opposing_force_equipment/pointless_badassery/cigpack_syndicate
 	item_type = /obj/item/storage/fancy/cigarettes/cigpack_syndicate
 
@@ -54,6 +55,11 @@
 	description = "A secure briefcase containing 5000 space credits. Useful for bribing personnel, or purchasing goods \
 		and services at lucrative prices. The briefcase also feels a little heavier to hold; it has been \
 		manufactured to pack a little bit more of a punch if your client needs some convincing."
+
+/datum/opposing_force_equipment/pointless_badassery/c10k
+	name = "10000 Space Cash Bill"
+	item_type = /obj/item/stack/spacecash/c10000
+	description = "Cold hard cash. When you REALLY need to bribe or buy your way in. Or to payroll your gangmembers."
 
 /datum/opposing_force_equipment/pointless_badassery/clown_costume
 	item_type = /obj/item/storage/backpack/duffelbag/clown/syndie
