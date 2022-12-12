@@ -3,8 +3,10 @@
 #define RESTING_STATE_REST 2
 
 /mob/living/basic/pet/dog/corgi/ian
-	var/resting_state = 0
+	icon = 'modular_skyrat/modules/chadian/icons/ian.dmi'
 	ai_controller = /datum/ai_controller/dog/corgi/chadian
+
+	var/resting_state = 0
 
 /// AI controller that adds chad ian emotes
 /datum/ai_controller/dog/corgi/chadian
@@ -44,18 +46,24 @@
 
 /mob/living/basic/pet/dog/corgi/ian/update_icons()
 	. = ..()
-	if(is_slow && !stat)
+
+	// Dead
+	if(stat)
+		icon_state = "[initial(icon_state)][is_slow ? "_old" : ""][shaved ? "_shaved" : ""]_dead"
+		return
+
+	// Wheelchair
+	if(is_slow)
 		icon_state = "[initial(icon_state)]_old[shaved ? "_shaved" : ""]"
-	else if(!stat)
-		switch(resting_state)
-			if(RESTING_STATE_NONE)
-				icon_state = initial(icon_state)
-			if(RESTING_STATE_SIT)
-				icon_state = "[initial(icon_state)]_sit[shaved ? "_shaved" : ""]"
-			if(RESTING_STATE_REST)
-				icon_state = "[initial(icon_state)]_rest[shaved ? "_shaved" : ""]"
-	else
-		icon_state = icon_dead
+		return
+
+	switch(resting_state)
+		if(RESTING_STATE_NONE)
+			icon_state = initial(icon_state)
+		if(RESTING_STATE_SIT)
+			icon_state = "[initial(icon_state)]_sit[shaved ? "_shaved" : ""]"
+		if(RESTING_STATE_REST)
+			icon_state = "[initial(icon_state)]_rest[shaved ? "_shaved" : ""]"
 
 #undef RESTING_STATE_NONE
 #undef RESTING_STATE_SIT

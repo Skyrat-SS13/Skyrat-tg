@@ -9,7 +9,7 @@
 	icon_living = "markus"
 	var/static/list/markus_speak = list("Borf!", "Boof!", "Bork!", "Bowwow!", "Burg?")
 	butcher_results = list(/obj/item/food/burger/cheese = 1, /obj/item/food/meat/slab = 2, /obj/item/trash/syndi_cakes = 1)
-	ai_controller = /mob/living/basic/pet/dog/corgi
+	ai_controller = /datum/ai_controller/dog/corgi
 	gender = MALE
 	can_be_held = FALSE
 	gold_core_spawnable = FRIENDLY_SPAWN
@@ -253,7 +253,7 @@
 		BB_DOG_HARASS_FRUSTRATION = null,
 		BB_VISION_RANGE = AI_DOG_VISION_RANGE,
 		BB_DOG_IS_SLOW = TRUE,
-		BB_TARGETTING_DATUM = /datum/targetting_datum/basic,
+		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic(),
 	)
 
 	planning_subtrees = list(

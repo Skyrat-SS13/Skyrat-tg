@@ -490,7 +490,6 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 	real_name = "Ian" //Intended to hold the name without altering it.
 	gender = MALE
 	desc = "He's the HoP's beloved corgi."
-	icon = 'modular_skyrat/modules/chadian/icons/ian.dmi' //SKYRAT EDIT CHANGE
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
 	response_disarm_continuous = "bops"
