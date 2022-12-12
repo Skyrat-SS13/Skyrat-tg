@@ -5,8 +5,8 @@
 	refill_canister = /obj/item/vending_refill/nifsoft_shop
 	icon_state = "proj"
 	density = FALSE
-	default_price = 400
-	extra_price = 750
+	default_price = 300
+	extra_price = 900
 
 	products = list(
 		/obj/item/disk/nifsoft_uploader/shapeshifter = 10,
