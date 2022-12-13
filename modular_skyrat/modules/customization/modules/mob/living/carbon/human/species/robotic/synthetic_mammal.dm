@@ -1,7 +1,6 @@
 /datum/species/robotic/synthetic_mammal
 	name = "Synthetic Anthromorph"
 	id = SPECIES_SYNTHMAMMAL
-	say_mod = "states"
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	species_traits = list(
 		ROBOTIC_DNA_ORGANS,
@@ -23,6 +22,7 @@
 		"head_acc" = "None",
 		"neck_acc" = "None"
 	)
+	mutanttongue = /obj/item/organ/internal/tongue/robot
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/robot/mutant,
