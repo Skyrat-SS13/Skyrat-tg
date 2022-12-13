@@ -16,6 +16,11 @@
 	description = "A fully-kitted toolbox scavenged from maintenance by our highly-paid monkeys. The toolbox \
 		itself is weighted especially to bash any head in and comes with a free pair of insulated combat gloves."
 
+/datum/opposing_force_equipment/gear/jammer
+	item_type = /obj/item/jammer
+	name = "Radio Jammer"
+	description =  = "This device will disrupt any nearby outgoing radio communication when activated. Does not affect binary chat."
+
 /datum/opposing_force_equipment/gear/xraygoggles
 	item_type = /obj/item/clothing/glasses/thermal/xray
 	description = "A pair of low-light x-ray goggles manufactured by the Syndicate. Cannot be chameleon disguised. Makes wearer more vulnerable to bright lights."
