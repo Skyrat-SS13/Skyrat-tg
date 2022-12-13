@@ -1,7 +1,6 @@
 /datum/species/robotic/synthetic_human
 	name = "Synthetic Humanoid"
 	id = SPECIES_SYNTHHUMAN
-	say_mod = "states"
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	species_traits = list(
 		ROBOTIC_DNA_ORGANS,
@@ -20,6 +19,7 @@
 		"taur" = "None",
 		"horns" = "None"
 	)
+	mutanttongue = /obj/item/organ/internal/tongue/robot
 	use_skintones = TRUE
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC

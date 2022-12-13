@@ -252,7 +252,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			return TRUE
 		if ("rotate")
+			/* SKYRAT EDIT - Bi-directional prefs menu rotation - ORIGINAL:
 			character_preview_view.dir = turn(character_preview_view.dir, -90)
+			*/ // ORIGINAL END - SKYRAT EDIT START:
+			var/backwards = params["backwards"]
+			character_preview_view.dir = turn(character_preview_view.dir, backwards ? 90 : -90)
+			// SKYRAT EDIT END
 
 			return TRUE
 		if ("set_preference")

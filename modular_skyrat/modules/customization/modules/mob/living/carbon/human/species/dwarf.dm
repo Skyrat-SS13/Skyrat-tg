@@ -2,7 +2,6 @@
 	name = "Dwarf"
 	id = SPECIES_DWARF
 	examine_limb_id = SPECIES_HUMAN
-	say_mod = "bellows"
 	species_traits = list(
 		EYECOLOR,
 		HAIR,
@@ -18,6 +17,7 @@
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
 	)
+	mutanttongue = /obj/item/organ/internal/tongue/dwarven
 	use_skintones = 1
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
