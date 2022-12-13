@@ -1,5 +1,11 @@
 /obj/item/storage/box/shotgun
 	icon = 'modular_skyrat/modules/shotgunrebalance/icons/shotbox.dmi'
+	var/max_ammo = 7
+	var/ammo_type = null
+
+/obj/item/storage/box/shotgun/PopulateContents()
+	for(var/i in 1 to max_ammo)
+		new ammo_type(src)
 
 // SLUGS
 /obj/item/storage/box/shotgun/slugs
