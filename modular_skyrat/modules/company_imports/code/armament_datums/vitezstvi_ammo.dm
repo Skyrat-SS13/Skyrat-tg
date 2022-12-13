@@ -106,29 +106,29 @@
 	upper_cost = CARGO_CRATE_VALUE * 2
 
 /datum/armament_entry/company_import/vitezstvi/shot_shells/slugs
-	item_type = /obj/item/ammo_box/advanced/s12gauge
+	item_type = /obj/item/storage/box/shotgun/slugs
 	description = "A box of 15 slug shells, large singular shots that pack a punch."
 
 /datum/armament_entry/company_import/vitezstvi/shot_shells/buckshot
-	item_type = /obj/item/ammo_box/advanced/s12gauge/buckshot
+	item_type = /obj/item/storage/box/shotgun/buckshot
 	description = "A box of 15 buckshot shells, a modest spread of weaker projectiles."
 
 /datum/armament_entry/company_import/vitezstvi/shot_shells/beanbag_slugs
-	item_type = /obj/item/ammo_box/advanced/s12gauge/bean
+	item_type = /obj/item/storage/box/shotgun/beanbag
 	description = "A box of 15 beanbag slug shells, large singular beanbags that pack a less-lethal punch."
 
 /datum/armament_entry/company_import/vitezstvi/shot_shells/rubbershot
-	item_type = /obj/item/ammo_box/advanced/s12gauge/rubber
+	item_type = /obj/item/storage/box/shotgun/rubbershot
 	description = "A box of 15 rubbershot shells, a modest spread of weaker less-lethal projectiles."
 
 /datum/armament_entry/company_import/vitezstvi/shot_shells/magnum_buckshot
-	item_type = /obj/item/ammo_box/advanced/s12gauge/magnum
+	item_type = /obj/item/storage/box/shotgun/magnum
 	description = "A box of 15 magnum buckshot shells, a wider spread of larger projectiles."
 
 /datum/armament_entry/company_import/vitezstvi/shot_shells/express_buckshot
-	item_type = /obj/item/ammo_box/advanced/s12gauge/express
+	item_type = /obj/item/storage/box/shotgun/express
 	description = "A box of 15 express buckshot shells, a tighter spread of smaller projectiles."
 
 /datum/armament_entry/company_import/vitezstvi/shot_shells/confetti
-	item_type = /obj/item/ammo_box/advanced/s12gauge/honk
+	item_type = /obj/item/storage/box/shotgun/confetti
 	description = "A box of 35 confetti shells, firing a spread of harmless confetti everywhere, yippie!"

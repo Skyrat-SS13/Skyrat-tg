@@ -1,10 +1,10 @@
 /obj/item/ammo_casing/shotgun
 	icon = 'modular_skyrat/modules/shotgunrebalance/icons/shotshells.dmi'
-	custom_materials = list(/datum/material/iron=1000) //We will be using this to prevent refund scamming mats
+	custom_materials = list(/datum/material/iron = 1000) //We will be using this to prevent refund scamming mats
 
 /obj/item/ammo_casing/shotgun/hp
 	name = "hollow point slug"
-	desc = "A 12 gauge hollow point slug purpose built for unarmored targets."
+	desc = "A 12 gauge hollow point slug purpose-built for unarmored targets."
 	icon_state = "stunshell"
 	projectile_type = /obj/projectile/bullet/shotgun_slug/hp
 
@@ -18,10 +18,14 @@
 
 /obj/item/ammo_casing/shotgun/pt20
 	name = "PT-20 armor piercing slug"
-	desc = "A 12 gauge plastitanium slug purpose built to penetrate armored targets."
+	desc = "A 12 gauge plastitanium slug purpose-built to penetrate armored targets."
 	icon_state = "apshell"
 	projectile_type = /obj/projectile/bullet/shotgun_slug/pt20
-	custom_materials = list(/datum/material/iron=500,/datum/material/plasma=500,/datum/material/titanium=500)
+	custom_materials = list(
+		/datum/material/iron = 500,
+		/datum/material/plasma = 500,
+		/datum/material/titanium = 500,
+	)
 
 /obj/projectile/bullet/shotgun_slug/pt20
 	name = "armor piercing shotgun slug"
@@ -33,13 +37,26 @@
 	desc = "Radically Invasive Projectile Slug that is designed to cause massive damage against unarmored targets by embedding inside them."
 	icon_state = "ripshell"
 	projectile_type = /obj/projectile/bullet/shotgun_slug/rip
-	custom_materials = list(/datum/material/iron=500,/datum/material/plasma=500,/datum/material/diamond=500)
+	custom_materials = list(
+		/datum/material/iron = 500,
+		/datum/material/plasma = 500,
+		/datum/material/diamond = 500,
+	)
 
 /obj/projectile/bullet/shotgun_slug/rip
 	name = "RIP shotgun slug"
 	damage = 50
 	weak_against_armour = TRUE
-	embedding = list(embed_chance=80, pain_chance=40, fall_chance=5, jostle_chance=5, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.5, pain_mult=5, rip_time=30)
+	embedding = list(
+		embed_chance = 80,
+		pain_chance = 40,
+		fall_chance = 5,
+		jostle_chance = 5,
+		ignore_throwspeed_threshold = TRUE,
+		pain_stam_pct = 0.5,
+		pain_mult = 5,
+		rip_time = 30,
+	)
 
 /obj/item/ammo_casing/shotgun/buckshot
 	name = "buckshot shell"
@@ -64,7 +81,7 @@
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_rubbershot
 	pellets = 7
 	variance = 20
-	custom_materials = list(/datum/material/iron=1000)
+	custom_materials = list(/datum/material/iron = 1000)
 	harmful = FALSE
 
 /obj/item/ammo_casing/shotgun/magnum
@@ -101,7 +118,10 @@
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/flechette
 	pellets = 8 //8 x 6 = 48 Damage Potential
 	variance = 25
-	custom_materials = list(/datum/material/iron=500,/datum/material/titanium=500)
+	custom_materials = list(
+		/datum/material/iron = 500,
+		/datum/material/titanium = 500,
+	)
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/flechette
 	name = "flechette"
@@ -117,7 +137,11 @@
 	desc = "A highly experimental non-lethal shell filled with smart nanite pellets that re-aim themselves when bouncing off from surfaces. However they are not able to make out friend from foe."
 	icon_state = "cnrshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/beehive
-	custom_materials = list(/datum/material/iron=500,/datum/material/silver=500,/datum/material/plasma=500)
+	custom_materials = list(
+		/datum/material/iron = 500,
+		/datum/material/silver = 500,
+		/datum/material/plasma = 500,
+	)
 	pellets = 6
 	variance = 20
 	fire_sound = 'sound/weapons/taser.ogg'
@@ -147,7 +171,11 @@
 	desc = "A highly experimental shell filled with nanite electrodes that will embed themselves in soft targets. The electrodes are charged from kinetic movement which means moving targets will get punished more."
 	icon_state = "lasershell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/antitide
-	custom_materials = list(/datum/material/iron=500,/datum/material/gold=500,/datum/material/uranium=500)
+	custom_materials = list(
+		/datum/material/iron = 500,
+		/datum/material/gold = 500,
+		/datum/material/uranium = 500,
+	)
 	pellets = 5
 	variance = 30
 	harmful = FALSE
@@ -168,7 +196,16 @@
 	sharpness = NONE
 	range = 8
 	icon_state = "spark"
-	embedding = list(embed_chance=70, pain_chance=25, fall_chance=15, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=10)
+	embedding = list(
+		embed_chance = 70,
+		pain_chance = 25,
+		fall_chance = 15,
+		jostle_chance = 80,
+		ignore_throwspeed_threshold = TRUE,
+		pain_stam_pct = 0.9,
+		pain_mult = 2,
+		rip_time = 10,
+	)
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/antitide/Initialize(mapload)
 	. = ..()
@@ -180,11 +217,14 @@
 	..()
 
 /obj/item/ammo_casing/shotgun/iceblox
-	name = "Iceshot shell"
+	name = "Iceblox shell"
 	desc = "A highly experimental shell filled with nanites that will lower the body temperature of hit targets."
 	icon_state = "tshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/iceblox
-	custom_materials = list(/datum/material/iron=500,/datum/material/plasma=500)
+	custom_materials = list(
+		/datum/material/iron = 500,
+		/datum/material/plasma = 500,
+	)
 	pellets = 5
 	variance = 20
 
@@ -198,46 +238,23 @@
 /obj/projectile/bullet/pellet/shotgun_buckshot/iceblox/on_hit(atom/target, blocked = FALSE)
 	. = ..()
 	if(isliving(target))
-		var/mob/living/UnluckyBastard = target
-		UnluckyBastard.adjust_bodytemperature(((100-blocked)/100)*(temperature - UnluckyBastard.bodytemperature))
-
-/obj/item/ammo_casing/shotgun/hunter
-	name = "hunter buckshot shell"
-	desc = "A 12 gauge buckshot shell that fires specially charged pellets that deal extra damage to simpler beings."
-	icon_state = "huntershell"
-	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/hunter
-	pellets = 6 // 6 x 30 = 180 damage vs simples
-	variance = 30
-
-/obj/projectile/bullet/pellet/shotgun_buckshot/hunter
-	name = "hunter buckshot pellet"
-	damage = 5
-	wound_bonus = 0
-	weak_against_armour = FALSE
-		/// Bonus force dealt against certain factions
-	var/faction_bonus_force = 25
-		/// Any mob with a faction that exists in this list will take bonus damage/effects
-	var/list/nemesis_path = /mob/living/simple_animal
-
-/obj/projectile/bullet/pellet/shotgun_buckshot/hunter/prehit_pierce(mob/living/target, mob/living/carbon/human/user)
-	if(istype(target, nemesis_path))
-		damage += faction_bonus_force
-	.=..()
+		var/mob/living/unlucky_bastard = target
+		unlucky_bastard.adjust_bodytemperature(((100 - blocked) / 100) * (temperature - unlucky_bastard.bodytemperature))
 
 /obj/projectile/bullet/pellet/shotgun_improvised
 	weak_against_armour = TRUE // We will not have Improvised are Better 2.0
 
-/obj/item/ammo_casing/shotgun/honk
+/obj/item/ammo_casing/shotgun/confetti
 	name = "confetti shell"
-	desc = "A 12 gauge buckshot shell thats been filled to the brim with confetti. Who is making all these?"
-	icon_state = "honkshell"
-	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/honk
+	desc = "A 12 gauge buckshot shell that has been filled to the brim with confetti. Who is making all these?"
+	icon_state = "confettishell"
+	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/confetti
 	pellets = 12
 	variance = 35
 	fire_sound = 'sound/items/bikehorn.ogg'
 	harmful = FALSE
 
-/obj/projectile/bullet/pellet/shotgun_buckshot/honk
+/obj/projectile/bullet/pellet/shotgun_buckshot/confetti
 	name = "confetti"
 	damage = 0
 	stamina = 1
@@ -252,7 +269,7 @@
 	icon_state = "guardian"
 	embedding = null
 
-/obj/projectile/bullet/pellet/shotgun_buckshot/honk/Initialize(mapload)
+/obj/projectile/bullet/pellet/shotgun_buckshot/confetti/Initialize(mapload)
 	. = ..()
 	SpinAnimation()
 	range = rand(6, 12)
@@ -265,6 +282,6 @@
 		COLOR_PRIDE_PURPLE,
 	)
 
-/obj/projectile/bullet/pellet/shotgun_buckshot/honk/on_range()
+/obj/projectile/bullet/pellet/shotgun_buckshot/confetti/on_range()
 	do_sparks(1, TRUE, src)
 	..()

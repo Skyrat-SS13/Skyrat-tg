@@ -19,7 +19,7 @@
 		/obj/item/storage/box/survival/engineer/marine = 1,
 		/obj/item/melee/baton/security/loaded = 1,
 		/obj/item/storage/box/handcuffs = 1,
-		/obj/item/ammo_box/advanced/s12gauge/buckshot/marine = 2,
+		/obj/item/storage/box/shotgun/buckshot = 2,
 	)
 	l_hand = null
 	r_hand = null
