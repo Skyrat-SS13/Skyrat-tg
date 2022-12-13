@@ -1,8 +1,14 @@
 /obj/item/reagent_containers/cup/bowl/generic_material/glass
-	custom_materials = list(/datum/material/glass = MINERAL_MATERIAL_AMOUNT * 0.5)
+
+/obj/item/reagent_Containers/cup/bowl/generic_material/glass/Initialize(mapload)
+	..()
+	set_custom_materials(list(/datum/material/glass = MINERAL_MATERIAL_AMOUNT * 0.5))
 
 /obj/item/reagent_containers/cup/beaker/generic_material/fancy_lookin/glass
-	custom_materials = list(/datum/material/glass = MINERAL_MATERIAL_AMOUNT * 0.5)
+
+/obj/item/reagent_containers/cup/beaker/generic_material/fancy_lookin/glass/Initialize(mapload)
+	..()
+	set_custom_materials(list(/datum/material/glass = MINERAL_MATERIAL_AMOUNT * 0.5))
 
 /obj/item/plate/generic_material/glass
 	custom_materials = list(/datum/material/glass = MINERAL_MATERIAL_AMOUNT * 0.5)

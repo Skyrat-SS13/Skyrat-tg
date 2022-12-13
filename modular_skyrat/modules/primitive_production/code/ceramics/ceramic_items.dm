@@ -21,10 +21,16 @@
 	return TRUE
 
 /obj/item/reagent_containers/cup/bowl/generic_material/ceramic
-	custom_materials = list(/datum/material/ceramic = MINERAL_MATERIAL_AMOUNT * 0.5)
+
+/obj/item/reagent_containers/cup/bowl/generic_material/ceramic/Initialize(mapload)
+	..()
+	set_custom_materials(list(/datum/material/ceramic = MINERAL_MATERIAL_AMOUNT * 0.5))
 
 /obj/item/reagent_containers/cup/beaker/generic_material/ceramic
-	custom_materials = list(/datum/material/ceramic = MINERAL_MATERIAL_AMOUNT * 0.5)
+
+/obj/item/reagent_containers/cup/beaker/generic_material/ceramic/Initialize(mapload)
+	..()
+	set_custom_materials(list(/datum/material/ceramic = MINERAL_MATERIAL_AMOUNT * 0.5))
 
 /obj/item/plate/generic_material/ceramic
 	custom_materials = list(/datum/material/ceramic = MINERAL_MATERIAL_AMOUNT * 0.5)
@@ -37,3 +43,4 @@
 
 /obj/item/plate/oven_tray/generic_material/ceramic
 	custom_materials = list(/datum/material/ceramic = MINERAL_MATERIAL_AMOUNT * 0.5)
+
