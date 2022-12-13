@@ -23,12 +23,14 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 		user.jobs_menu_mounted = TRUE // Don't flood a user's chat if they open and close the UI.
 
 /datum/latejoin_menu/ui_interact(mob/dead/new_player/user, datum/tgui/ui)
+	if(!istype(user))
+		return
+
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		// In case they reopen the GUI
-		if(istype(user))
-			user.jobs_menu_mounted = FALSE
-			addtimer(CALLBACK(src, PROC_REF(scream_at_player), user), 5 SECONDS)
+		user.jobs_menu_mounted = FALSE
+		addtimer(CALLBACK(src, PROC_REF(scream_at_player), user), 5 SECONDS)
 
 		ui = new(user, src, "JobSelection", "Latejoin Menu")
 		ui.open()
@@ -49,7 +51,7 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 		switch(SSshuttle.emergency.mode)
 			if(SHUTTLE_ESCAPE)
 				data["shuttle_status"] = "The station has been evacuated."
-			if(SHUTTLE_CALL, SHUTTLE_DOCKED, SHUTTLE_IGNITING, SHUTTLE_ESCAPE)
+			if(SHUTTLE_CALL || SHUTTLE_DOCKED || SHUTTLE_IGNITING || SHUTTLE_ESCAPE)
 				if(!SSshuttle.canRecall())
 					data["shuttle_status"] = "The station is currently undergoing evacuation procedures."
 
@@ -112,14 +114,8 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 
 	return list("departments_static" = departments)
 
-<<<<<<< HEAD
 /datum/latejoin_menu/ui_state(mob/user)
 	return GLOB.new_player_state
-=======
-// we can't use GLOB.new_player_state here since it also allows any admin to see the ui, which will cause runtimes
-/datum/latejoin_menu/ui_status(mob/user)
-	return isnewplayer(user) ? UI_INTERACTIVE : UI_CLOSE
->>>>>>> upstream/upstream-merge-71883
 
 /datum/latejoin_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -148,15 +144,12 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 				tgui_alert(owner, "There is an administrative lock on entering the game for non-observers!", "Oh No!")
 				return TRUE
 
-<<<<<<< HEAD
 			// SKYRAT EDIT ADDITION START - Flavourtext requirement
 			if(length_char(owner.client.prefs.read_preference(/datum/preference/text/flavor_text)) < FLAVOR_TEXT_CHAR_REQUIREMENT)
 				to_chat(owner, span_notice("You need at least [FLAVOR_TEXT_CHAR_REQUIREMENT] characters of flavor text to join the round. You have [length_char(owner.client.prefs.read_preference(/datum/preference/text/flavor_text))] characters."))
 				return
 			// SKYRAT EDIT END
 
-=======
->>>>>>> upstream/upstream-merge-71883
 			//Determines Relevent Population Cap
 			var/relevant_cap
 			var/hard_popcap = CONFIG_GET(number/hard_popcap)
@@ -171,15 +164,9 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 					tgui_alert(owner, "The server is full!", "Oh No!")
 					return TRUE
 
-<<<<<<< HEAD
 			SStgui.close_user_uis(owner, src) // Bandaid fix cause ui_state doesn't react properly to spawning in.
 			// SAFETY: AttemptLateSpawn has it's own sanity checks. This is perfectly safe.
 			owner.AttemptLateSpawn(params["job"])
-=======
-			// SAFETY: AttemptLateSpawn has it's own sanity checks. This is perfectly safe.
-			owner.AttemptLateSpawn(params["job"])
-
->>>>>>> upstream/upstream-merge-71883
 			return TRUE
 
 		if("viewpoll")
