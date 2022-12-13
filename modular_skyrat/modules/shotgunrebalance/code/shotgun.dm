@@ -25,7 +25,7 @@
 		/datum/material/iron = 500,
 		/datum/material/plasma = 500,
 		/datum/material/titanium = 500,
-		)
+	)
 
 /obj/projectile/bullet/shotgun_slug/pt20
 	name = "armor piercing shotgun slug"
@@ -41,7 +41,7 @@
 		/datum/material/iron = 500,
 		/datum/material/plasma = 500,
 		/datum/material/diamond = 500,
-		)
+	)
 
 /obj/projectile/bullet/shotgun_slug/rip
 	name = "RIP shotgun slug"
@@ -56,7 +56,7 @@
 		pain_stam_pct = 0.5,
 		pain_mult = 5,
 		rip_time = 30,
-		)
+	)
 
 /obj/item/ammo_casing/shotgun/buckshot
 	name = "buckshot shell"
@@ -121,7 +121,7 @@
 	custom_materials = list(
 		/datum/material/iron = 500,
 		/datum/material/titanium = 500,
-		)
+	)
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/flechette
 	name = "flechette"
@@ -141,7 +141,7 @@
 		/datum/material/iron = 500,
 		/datum/material/silver = 500,
 		/datum/material/plasma = 500,
-		)
+	)
 	pellets = 6
 	variance = 20
 	fire_sound = 'sound/weapons/taser.ogg'
@@ -175,7 +175,7 @@
 		/datum/material/iron = 500,
 		/datum/material/gold = 500,
 		/datum/material/uranium = 500,
-		)
+	)
 	pellets = 5
 	variance = 30
 	harmful = FALSE
@@ -205,7 +205,7 @@
 		pain_stam_pct = 0.9,
 		pain_mult = 2,
 		rip_time = 10,
-		)
+	)
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/antitide/Initialize(mapload)
 	. = ..()
@@ -224,7 +224,7 @@
 	custom_materials = list(
 		/datum/material/iron = 500,
 		/datum/material/plasma = 500,
-		)
+	)
 	pellets = 5
 	variance = 20
 
