@@ -31,12 +31,12 @@
 	name = "Xenobiological Slime Hybrid"
 	id = SPECIES_SLIMESTART
 	examine_limb_id = SPECIES_SLIMEPERSON
-	say_mod = "says"
 	coldmod = 3
 	heatmod = 1
 	burnmod = 1
 	specific_alpha = 155
 	markings_alpha = 130 //This is set lower than the other so that the alpha values don't stack on top of each other so much
+	mutanttongue = /obj/item/organ/internal/tongue
 
 	bodypart_overrides = list( //Overriding jelly bodyparts
 		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/roundstartslime,

@@ -1,5 +1,4 @@
 /datum/species/robotic
-	say_mod = "beeps"
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	inherent_traits = list(
 		TRAIT_CAN_STRIP,
@@ -16,6 +15,7 @@
 		TRAIT_OXYIMMUNE,
 		TRAIT_LITERATE,
 	)
+	mutanttongue = /obj/item/organ/internal/tongue/robot
 	mutant_bodyparts = list()
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
