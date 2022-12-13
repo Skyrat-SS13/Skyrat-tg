@@ -61,13 +61,18 @@
 /datum/sprite_accessory/wings/angel
 	color_src = USE_ONE_COLOR
 	default_color = "#FFFFFF"
+	locked = FALSE
 
 /datum/sprite_accessory/wings/megamoth
 	color_src = USE_ONE_COLOR
 	default_color = "#FFFFFF"
 
+/datum/sprite_accessory/wings/robotic
+	locked = FALSE
+
 /datum/sprite_accessory/wings/dragon
 	color_src = USE_ONE_COLOR
+	locked = FALSE
 
 /*
 *	MAMMAL
