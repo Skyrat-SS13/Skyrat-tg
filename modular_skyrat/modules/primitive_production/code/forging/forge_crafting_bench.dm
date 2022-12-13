@@ -15,4 +15,10 @@
 		/datum/crafting_bench_recipe/forging/buckler,
 		/datum/crafting_bench_recipe/forging/seed_mesh,
 		/datum/crafting_bench_recipe/forging/bow,
+		/datum/crafting_bench_recipe/forging/bowl,
+		/datum/crafting_bench_recipe/forging/cup,
+		/datum/crafting_bench_recipe/forging/small_food_plate,
+		/datum/crafting_bench_recipe/forging/normal_food_plate,
+		/datum/crafting_bench_recipe/forging/big_food_plate,
+		/datum/crafting_bench_recipe/forging/oven_tray,
 	)
