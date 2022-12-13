@@ -19,7 +19,7 @@
 /datum/opposing_force_equipment/gear/jammer
 	item_type = /obj/item/jammer
 	name = "Radio Jammer"
-	description =  = "This device will disrupt any nearby outgoing radio communication when activated. Does not affect binary chat."
+	description = "This device will disrupt any nearby outgoing radio communication when activated. Does not affect binary chat."
 
 /datum/opposing_force_equipment/gear/xraygoggles
 	item_type = /obj/item/clothing/glasses/thermal/xray
