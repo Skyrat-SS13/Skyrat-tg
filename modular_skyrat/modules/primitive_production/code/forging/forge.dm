@@ -224,16 +224,12 @@
 		smelt_ore(attacking_item, user)
 		return TRUE
 
-	if(istype(attacking_item, /obj/item/ceramic))
+	if(istype(attacking_item, /obj/item/in_progress_ceramic))
 		handle_ceramics(attacking_item, user)
 		return TRUE
 
 	if(istype(attacking_item, /obj/item/stack/sheet/glass))
 		handle_glass_sheet_melting(attacking_item, user)
-		return TRUE
-
-	if(istype(attacking_item, /obj/item/glassblowing/metal_cup))
-		handle_metal_cup_melting(attacking_item, user)
 		return TRUE
 
 	return ..()
@@ -324,10 +320,10 @@
 		fail_message(user, "forge lacks fuel")
 		return
 
-	var/obj/item/ceramic/ceramic_item = attacking_item
+	var/obj/item/in_progress_ceramic/ceramic_item = attacking_item
 	var/ceramic_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * BASELINE_ACTION_TIME
 
-	if(!ceramic_item.forge_item)
+	if(!ceramic_item.type_to_complete_into)
 		fail_message(user, "cannot set [ceramic_item]")
 		return
 
@@ -338,9 +334,8 @@
 		return
 
 	balloon_alert(user, "finished setting [ceramic_item]")
-	var/obj/item/ceramic/spawned_ceramic = new ceramic_item.forge_item(get_turf(src))
+	new ceramic_item.type_to_complete_into(get_turf(src))
 	user.mind.adjust_experience(/datum/skill/production, 50)
-	spawned_ceramic.color = ceramic_item.color
 	qdel(ceramic_item)
 	in_use = FALSE
 
@@ -363,35 +358,6 @@
 		return
 
 	in_use = FALSE
-	var/obj/item/glassblowing/molten_glass/spawned_glass = new /obj/item/glassblowing/molten_glass(get_turf(src))
-	user.mind.adjust_experience(/datum/skill/production, 10)
-	COOLDOWN_START(spawned_glass, remaining_heat, glassblowing_amount)
-
-/// Handles creating molten glass from a metal cup filled with sand
-/obj/structure/forge/proc/handle_metal_cup_melting(obj/attacking_item, mob/living/user)
-	in_use = TRUE
-
-	if(!check_fuel(just_checking = TRUE))
-		fail_message(user, "forge lacks fuel")
-		return
-
-	var/obj/item/glassblowing/metal_cup/metal_item = attacking_item
-	var/glassblowing_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * BASELINE_ACTION_TIME
-	var/glassblowing_amount = BASELINE_HEATING_DURATION / user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER)
-
-	if(!metal_item.has_sand)
-		fail_message(user, "[metal_item] has no sand")
-		return
-
-	balloon_alert_to_viewers("heating...")
-
-	if(!do_after(user, glassblowing_speed, target = src))
-		fail_message(user, "stopped heating [metal_item]")
-		return
-
-	in_use = FALSE
-	metal_item.has_sand = FALSE
-	metal_item.icon_state = "metal_cup_empty" // This should be handled a better way but presently this is how it works
 	var/obj/item/glassblowing/molten_glass/spawned_glass = new /obj/item/glassblowing/molten_glass(get_turf(src))
 	user.mind.adjust_experience(/datum/skill/production, 10)
 	COOLDOWN_START(spawned_glass, remaining_heat, glassblowing_amount)

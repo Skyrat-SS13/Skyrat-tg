@@ -1,52 +1,39 @@
-/obj/item/reagent_containers/cup/bowl/ceramic
-	name = "ceramic bowl"
-	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
-	icon_state = "clay_bowl"
-	custom_materials = null
+/datum/material/ceramic
+	name = "ceramic"
+	desc = "Ceramic."
 
-/obj/item/ceramic/cup
-	name = "ceramic cup"
-	desc = "A piece of clay with high walls, in the shape of a cup. It can hold 120 units."
-	icon_state = "clay_cup"
-	forge_item = /obj/item/reagent_containers/cup/beaker/large/ceramic
+	color = "#fff7c9"
+	greyscale_colors = "#fff7c9"
+	alpha = 255
 
-/obj/item/reagent_containers/cup/beaker/large/ceramic
-	name = "ceramic cup"
-	desc = "A cup that is made from ceramic."
-	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
-	icon_state = "clay_cup"
-	custom_materials = null
+	sheet_type = null
 
-/obj/item/reagent_containers/cup/bowl/generic_material
-	name = "bowl"
-	desc = "A bowl capable of carrying liquids."
-	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
-	icon_state = "bowl"
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+	integrity_modifier = 0.7
+	armor_modifiers = list(MELEE = 0.3, BULLET = 0.3, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 1, FIRE = 1.5, ACID = 1) // Ceramics are kinda weak to getting hit by stuff you know?
 
-/obj/item/reagent_containers/cup/beaker/generic_material
-	name = "cup"
-	desc = "A cup capable of carrying liquids."
-	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
-	icon_state = "basic_cup"
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+	beauty_modifier = 0.2
 
-/obj/item/plate/generic_material
-	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
-	icon_state = "normal_plate"
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+	item_sound_override = 'sound/effects/glasshit.ogg'
+	turf_sound_override = FOOTSTEP_PLATING
 
-/obj/item/plate/large/generic_material
-	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
-	icon_state = "big_plate"
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+/datum/material/ceramic/on_accidental_mat_consumption(mob/living/carbon/victim, obj/item/source_item)
+	victim.apply_damage(10, BRUTE, BODY_ZONE_HEAD, wound_bonus = 5, sharpness = TRUE) // Mmmm crunchy
+	return TRUE
 
-/obj/item/plate/small/generic_material
-	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
-	icon_state = "small_plate"
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+/obj/item/reagent_containers/cup/bowl/generic_material/ceramic
+	custom_materials = list(/datum/material/ceramic = MINERAL_MATERIAL_AMOUNT * 0.5)
 
-/obj/item/plate/oven_tray/generic_material
-	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
-	icon_state = "oven_tray"
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+/obj/item/reagent_containers/cup/beaker/generic_material/ceramic
+	custom_materials = list(/datum/material/ceramic = MINERAL_MATERIAL_AMOUNT * 0.5)
+
+/obj/item/plate/generic_material/ceramic
+	custom_materials = list(/datum/material/ceramic = MINERAL_MATERIAL_AMOUNT * 0.5)
+
+/obj/item/plate/large/generic_material/ceramic
+	custom_materials = list(/datum/material/ceramic = MINERAL_MATERIAL_AMOUNT * 0.5)
+
+/obj/item/plate/small/generic_material/ceramic
+	custom_materials = list(/datum/material/ceramic = MINERAL_MATERIAL_AMOUNT * 0.5)
+
+/obj/item/plate/oven_tray/generic_material/ceramic
+	custom_materials = list(/datum/material/ceramic = MINERAL_MATERIAL_AMOUNT * 0.5)

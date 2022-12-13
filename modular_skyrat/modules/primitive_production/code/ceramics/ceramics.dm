@@ -34,19 +34,22 @@
 		return
 	return ..()
 
-/obj/item/ceramic
-	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
-	var/forge_item
+/obj/item/in_progress_ceramic
+	name = "unfinished ceramic"
+	desc = "You can finish setting this in a forge!"
+	icon_state = "greyscale_ball"
+	icon = 'modular_skyrat/modules/primitive_production/icons/misc_tools.dmi'
+	color = "#837878"
+	/// What this completes into when set in a forge
+	var/type_to_complete_into
 
-/obj/item/ceramic/attackby(obj/item/attacking_item, mob/living/user, params)
-	if(istype(attacking_item, /obj/item/toy/crayon))
-		var/obj/item/toy/crayon/crayon_item = attacking_item
-		if(!forge_item || !crayon_item.paint_color)
-			return
-		color = crayon_item.paint_color
-		to_chat(user, span_notice("You color [src] with [crayon_item]..."))
+/obj/item/in_progress_ceramic/proc/set_yourself_up(type_to_look_like)
+	if(!type_to_look_like)
 		return
-	return ..()
+	var/obj/resulting_item = type_to_look_like
+	icon = resulting_item.icon
+	icon_state = resulting_item.icon_state
+	type_to_complete_into = resulting_item
 
 /obj/item/stack/clay
 	name = "clay"
@@ -55,62 +58,6 @@
 	icon_state = "clay"
 	merge_type = /obj/item/stack/clay
 	singular_name = "glob of clay"
-
-/datum/export/ceramics
-	cost = CARGO_CRATE_VALUE * 2
-	unit_name = "ceramic product"
-	export_types = list(/obj/item/plate/ceramic,
-						/obj/item/reagent_containers/cup/bowl/ceramic,
-						/obj/item/reagent_containers/cup/beaker/large/ceramic)
-
-/datum/export/ceramics/sell_object(obj/O, datum/export_report/report, dry_run, apply_elastic = FALSE) //I really dont want them to feel gimped
-	. = ..()
-
-/datum/export/ceramics_unfinished
-	cost = CARGO_CRATE_VALUE * 0.5
-	unit_name = "unfinished ceramic product"
-	export_types = list(/obj/item/ceramic/plate,
-						/obj/item/ceramic/bowl,
-						/obj/item/ceramic/cup)
-
-/datum/export/ceramics_unfinished/sell_object(obj/O, datum/export_report/report, dry_run, apply_elastic = FALSE) //I really dont want them to feel gimped
-	. = ..()
-
-/obj/item/ceramic/plate
-	name = "ceramic plate"
-	desc = "A piece of clay that is flat, in the shape of a plate."
-	icon_state = "clay_plate"
-	forge_item = /obj/item/plate/ceramic
-
-/obj/item/plate/ceramic
-	name = "ceramic plate"
-	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
-	icon_state = "clay_plate"
-
-/obj/item/ceramic/bowl
-	name =  "ceramic bowl"
-	desc = "A piece of clay with a raised lip, in the shape of a bowl."
-	icon_state = "clay_bowl"
-	forge_item = /obj/item/reagent_containers/cup/bowl/ceramic
-
-/obj/item/reagent_containers/cup/bowl/ceramic
-	name = "ceramic bowl"
-	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
-	icon_state = "clay_bowl"
-	custom_materials = null
-
-/obj/item/ceramic/cup
-	name = "ceramic cup"
-	desc = "A piece of clay with high walls, in the shape of a cup. It can hold 120 units."
-	icon_state = "clay_cup"
-	forge_item = /obj/item/reagent_containers/cup/beaker/large/ceramic
-
-/obj/item/reagent_containers/cup/beaker/large/ceramic
-	name = "ceramic cup"
-	desc = "A cup that is made from ceramic."
-	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
-	icon_state = "clay_cup"
-	custom_materials = null
 
 /obj/structure/throwing_wheel
 	name = "throwing wheel"
@@ -129,6 +76,15 @@
 		"You place your hands on the clay, slowly shaping it...",
 		"You start becoming satisfied with what you have made...",
 		"You stop the throwing wheel, admiring your new creation...",
+	)
+	/// Static list of all possible results
+	var/static/list/possible_results = list(
+		"Bowl" = /obj/item/reagent_containers/cup/bowl/generic_material/ceramic,
+		"Cup" = /obj/item/reagent_containers/cup/beaker/generic_material/ceramic,
+		"Buffet Plate" = /obj/item/plate/large/generic_material/ceramic,
+		"Plate" = /obj/item/plate/generic_material/ceramic,
+		"Appetizer Plate" = /obj/item/plate/small/generic_material/ceramic,
+		"Oven Tray" = /obj/item/plate/oven_tray/generic_material/ceramic,
 	)
 
 /obj/structure/throwing_wheel/attackby(obj/item/attacking_item, mob/living/user, params)
@@ -154,14 +110,15 @@
 	tool.play_tool_sound(src)
 	anchored = !anchored
 
-/obj/structure/throwing_wheel/proc/use_clay(spawn_type, mob/user)
+/obj/structure/throwing_wheel/proc/use_clay(chosen_type, mob/user)
 	var/spinning_speed = user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER) * DEFAULT_SPIN
 	for(var/loop_try in 1 to length(given_message))
 		if(!do_after(user, spinning_speed, target = src))
 			in_use = FALSE
 			return
 		to_chat(user, span_notice(given_message[loop_try]))
-	new spawn_type(get_turf(src))
+	var/obj/item/in_progress_ceramic/in_progress_ceramic = new /obj/item/in_progress_ceramic(get_turf(src))
+	in_progress_ceramic.set_yourself_up(chosen_type)
 	user.mind.adjust_experience(/datum/skill/production, 50)
 	has_clay = FALSE
 	icon_state = "throw_wheel_empty"
@@ -181,17 +138,11 @@
 		return
 	switch(user_input)
 		if("Create")
-			var/creation_choice = tgui_alert(user, "What you like to create?", "Creation Choice", list("Cup", "Plate", "Bowl"))
+			var/creation_choice = tgui_alert(user, "What you like to create?", "Creation Choice", possible_results)
 			if(!creation_choice)
 				in_use = FALSE
 				return
-			switch(creation_choice)
-				if("Cup")
-					use_clay(/obj/item/ceramic/cup, user)
-				if("Plate")
-					use_clay(/obj/item/ceramic/plate, user)
-				if("Bowl")
-					use_clay(/obj/item/ceramic/bowl, user)
+			use_clay(possible_results[creation_choice], user)
 		if("Remove")
 			if(!do_after(user, spinning_speed, target = src))
 				in_use = FALSE
