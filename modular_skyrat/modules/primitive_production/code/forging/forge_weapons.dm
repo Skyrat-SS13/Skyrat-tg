@@ -1,7 +1,9 @@
 // Weapons
 
 /obj/item/melee/forging_weapon
+	name = "forged weapon of some kind"
 	icon = 'modular_skyrat/modules/primitive_production/icons/forge_items.dmi'
+	icon_state = "sword"
 	lefthand_file = 'modular_skyrat/modules/primitive_production/icons/inhands/forge_weapon_l.dmi'
 	righthand_file = 'modular_skyrat/modules/primitive_production/icons/inhands/forge_weapon_r.dmi'
 	worn_icon = 'modular_skyrat/modules/primitive_production/icons/clothing/forge_weapon_worn.dmi'

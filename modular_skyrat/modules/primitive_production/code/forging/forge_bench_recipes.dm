@@ -12,6 +12,7 @@
 	types_to_not_take_materials_from = list(
 		/obj/item/stack/sheet/mineral/wood,
 	)
+	resulting_item = /obj/item/melee/forging_weapon
 	required_good_hits = 8
 	relevant_skill_reward = 50 // Completing a weapon gives you a bit more than other recipes do
 
@@ -94,3 +95,53 @@
 	)
 	resulting_item = /obj/item/forging/incomplete_bow
 	required_good_hits = 8
+
+// Plates, cups, bowls, so on
+
+/datum/crafting_bench_recipe/forging/bowl
+	recipe_name = "bowl"
+	recipe_requirements = list(
+		/obj/item/forging/complete/plate = 1,
+	)
+	resulting_item = /obj/item/reagent_containers/cup/bowl/generic_material
+	required_good_hits = 4
+
+/datum/crafting_bench_recipe/forging/cup
+	recipe_name = "cup"
+	recipe_requirements = list(
+		/obj/item/forging/complete/plate = 1,
+	)
+	resulting_item = /obj/item/reagent_containers/cup/beaker/generic_material/fancy_lookin
+	required_good_hits = 4
+
+/datum/crafting_bench_recipe/forging/small_food_plate
+	recipe_name = "appetizer plate"
+	recipe_requirements = list(
+		/obj/item/forging/complete/plate = 1,
+	)
+	resulting_item = /obj/item/plate/small/generic_material
+	required_good_hits = 2
+
+/datum/crafting_bench_recipe/forging/normal_food_plate
+	recipe_name = "plate"
+	recipe_requirements = list(
+		/obj/item/forging/complete/plate = 1,
+	)
+	resulting_item = /obj/item/plate/generic_material
+	required_good_hits = 3
+
+/datum/crafting_bench_recipe/forging/big_food_plate
+	recipe_name = "buffet plate"
+	recipe_requirements = list(
+		/obj/item/forging/complete/plate = 2,
+	)
+	resulting_item = /obj/item/plate/large/generic_material
+	required_good_hits = 4
+
+/datum/crafting_bench_recipe/forging/oven_tray
+	recipe_name = "oven_tray"
+	recipe_requirements = list(
+		/obj/item/forging/complete/plate = 1,
+	)
+	resulting_item = /obj/item/plate/oven_tray/generic_material
+	required_good_hits = 3

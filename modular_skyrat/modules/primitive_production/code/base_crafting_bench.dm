@@ -1,6 +1,3 @@
-/// How many planks of wood are required to complete a weapon?
-#define WEAPON_COMPLETION_WOOD_AMOUNT 2
-
 /// The number of hits you are set back when a bad hit is made
 #define BAD_HIT_PENALTY 3
 
@@ -273,4 +270,4 @@
 		. += found_movable_atom
 	return .
 
-#undef WEAPON_COMPLETION_WOOD_AMOUNT
+#undef BAD_HIT_PENALTY
