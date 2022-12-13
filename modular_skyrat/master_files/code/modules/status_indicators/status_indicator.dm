@@ -187,7 +187,7 @@ GLOBAL_LIST_INIT(potential_indicators, list(
 
 		// This is a semi-HUD element, in a similar manner as medHUDs, in that they're 'above' everything else in the world,
 		// but don't pierce obfuscation layers such as blindness or darkness, unlike actual HUD elements like inventory slots.
-		indicator.plane = GAME_PLANE_UPPER_FOV_HIDDEN
+		indicator.plane = SEETHROUGH_PLANE
 		indicator.layer = STATUS_LAYER
 		indicator.appearance_flags = PIXEL_SCALE|TILE_BOUND|NO_CLIENT_COLOR|RESET_COLOR|RESET_ALPHA|RESET_TRANSFORM|KEEP_APART
 		indicator.pixel_y = y_offset
@@ -204,6 +204,11 @@ GLOBAL_LIST_INIT(potential_indicators, list(
 	var/mysize = (passed_mob.dna?.current_body_size ? passed_mob.dna.current_body_size : DEFAULT_MOB_SCALE)
 	return mysize
 
+/atom/movable/screen/plane_master/seethrough/status_indicator
+	name = "Status Indicator Plane"
+	documentation = "Status Indicator Plane"
+	plane = SEETHROUGH_PLANE
+	start_hidden = FALSE
 
 #undef STATUS_INDICATOR_Y_OFFSET
 #undef STATUS_INDICATOR_ICON_X_SIZE
