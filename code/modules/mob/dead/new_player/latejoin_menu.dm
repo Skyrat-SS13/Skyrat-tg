@@ -181,6 +181,7 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 				return TRUE
 
 			owner.vote_on_poll_handler(poll, params)
+
 			return TRUE
 
 /// Gives the user a random job that they can join as, and prompts them if they'd actually like to keep it, rerolling if not. Cancellable by the user.
