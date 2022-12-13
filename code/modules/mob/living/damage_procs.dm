@@ -277,17 +277,13 @@
 /mob/living/proc/getStaminaLoss()
 	return staminaloss
 
-<<<<<<< HEAD
-/mob/living/proc/adjustStaminaLoss(amount, updating_health = TRUE, forced = FALSE)
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_STAMINA, amount) //SKYRAT EDIT ADDITION
-=======
 /mob/living/proc/adjustStaminaLoss(amount, updating_stamina = TRUE, forced = FALSE)
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	staminaloss = clamp((staminaloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, max_stamina)
 	if(updating_stamina)
 		update_stamina()
->>>>>>> 478a969cbbd (Delimbs Stamina (#71663))
+	SEND_SIGNAL(src, COMSIG_MOB_LOSS_STAMINA, amount) //SKYRAT EDIT ADDITION
 	return
 
 /mob/living/proc/setStaminaLoss(amount, updating_stamina = TRUE, forced = FALSE)

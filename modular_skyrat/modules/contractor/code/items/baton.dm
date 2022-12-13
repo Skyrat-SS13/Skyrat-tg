@@ -50,7 +50,7 @@
 		target.adjust_silence(10 SECONDS)
 	if((upgrade_flags & BATON_FOCUS_UPGRADE))
 		if(target == user.mind?.opposing_force?.contractor_hub?.current_contract?.contract.target?.current) // Pain
-			target.apply_damage(BONUS_STAMINA_DAM, STAMINA, BODY_ZONE_CHEST)
+			target.apply_damage(BONUS_STAMINA_DAM, STAMINA)
 			target.adjust_stutter(10 SECONDS)
 
 /obj/item/melee/baton/telescopic/contractor_baton/examine(mob/user)
