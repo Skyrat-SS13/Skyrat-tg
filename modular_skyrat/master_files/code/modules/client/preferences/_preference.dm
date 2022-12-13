@@ -103,7 +103,7 @@
 	return (passed_initial_check || overriding) && part_enabled
 
 /datum/preference/choiced/mutant_choice/init_possible_values()
-	return assoc_to_keys(GLOB.sprite_accessories[relevant_mutant_bodypart])
+	return assoc_to_keys_features(GLOB.sprite_accessories[relevant_mutant_bodypart])
 
 /datum/preference/choiced/mutant_choice/create_default_value()
 	return initial(default_accessory_type?.name) || "None"

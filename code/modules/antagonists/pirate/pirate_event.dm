@@ -1,6 +1,5 @@
-///SKYRAT EDIT START - Roleplay-oriented pirates. An entire quarter of the file.
 /datum/round_event_control/pirates
-	name = "Space Pirates - Random" //SKYRAT EDIT CHANGE
+	name = "Space Pirates"
 	typepath = /datum/round_event/pirates
 	weight = 10
 	max_occurrences = 1
@@ -8,161 +7,68 @@
 	dynamic_should_hijack = TRUE
 	category = EVENT_CATEGORY_INVASION
 	description = "The crew will either pay up, or face a pirate assault."
+	///admin chosen pirate team
+	var/datum/pirate_gang/chosen_gang
 
-#define PIRATES_ROGUES "Rogues"
-#define PIRATES_SILVERSCALES "Silverscales"
-#define PIRATES_DUTCHMAN "Flying Dutchman"
+/datum/round_event_control/pirates/admin_setup(mob/admin)
+	var/list/gang_choices = list("Random")
 
-#define PIRATES_NRI_RAIDERS "NRI Raiders" //SKYRAT EDIT ADDITION
+	for(var/datum/pirate_gang/possible_gang as anything in GLOB.pirate_gangs)
+		gang_choices[possible_gang.name] = possible_gang
+
+	var/datum/pirate_gang/chosen = tgui_input_list(usr, "Select pirate gang", "TICKETS TO THE SPONGEBOB MOVIE!!", gang_choices)
+	if(!chosen)
+		return ADMIN_CANCEL_EVENT
+	if(chosen == "Random")
+		return //still do the event, but chosen_gang is still null, so it will pick from the choices
+	chosen_gang = gang_choices["chosen"]
 
 /datum/round_event_control/pirates/preRunEvent()
 	if (!SSmapping.empty_space)
 		return EVENT_CANT_RUN
 	return ..()
 
-//SKRAT EDIT ADDITiON
-/datum/round_event_control/pirates/rogues
-	name = "Space Pirates - Rogues"
-	typepath = /datum/round_event/pirates/rogues
-	weight = 0
-
-/datum/round_event_control/pirates/silverscales
-	name = "Space Pirates - Silverscales"
-	typepath = /datum/round_event/pirates/silverscales
-	weight = 0
-
-/datum/round_event_control/pirates/dutchman
-	name = "Space Pirates - Dutchman"
-	typepath = /datum/round_event/pirates/dutchman
-	weight = 0
-
-/datum/round_event_control/pirates/nri
-	name = "Space Pirates - NRI Raiders"
-	typepath = /datum/round_event/pirates/nri
-	description = "The crew will either pay up, or face a raider party. More roleplay-oriented variation with higher stakes for the crew, and higher chances of getting away scott free."
-	weight = 0
-
-/datum/round_event/pirates
-	var/pirate_type
-
-/datum/round_event/pirates/rogues
-	pirate_type = PIRATES_ROGUES
-
-/datum/round_event/pirates/silverscales
-	pirate_type = PIRATES_SILVERSCALES
-
-/datum/round_event/pirates/dutchman
-	pirate_type = PIRATES_DUTCHMAN
-
-/datum/round_event/pirates/nri
-	pirate_type = PIRATES_NRI_RAIDERS
-
-//SKYRAT EDIT ADDITION END
-
 /datum/round_event/pirates/start()
-	send_pirate_threat(pirate_type) //SKYRAT EDIT CHANGE
+	var/datum/round_event_control/pirates/pirate_control = control
+	send_pirate_threat(pirate_control.chosen_gang)
 
-/proc/send_pirate_threat(pirate_override)
-	var/pirate_type = pick(PIRATES_ROGUES, PIRATES_SILVERSCALES, PIRATES_DUTCHMAN, PIRATES_NRI_RAIDERS) //SKYRAT EDIT CHANGE
-	if(pirate_override)
-		pirate_type = pirate_override
-	var/ship_template = null
-	var/ship_name = "Space Privateers Association"
-	var/payoff_min = 20000
+/proc/send_pirate_threat(datum/pirate_gang/chosen_gang)
+	if(!chosen_gang)
+		chosen_gang = pick_n_take(GLOB.pirate_gangs)
+	//set payoff
 	var/payoff = 0
-	var/initial_send_time = world.time
-	var/response_max_time = 2 MINUTES
-	var/timeout_response = "Too late to beg for mercy!"
-	var/pay_response = "Thanks for the credits, landlubbers."
-	var/broke_response = "Trying to cheat us? You'll regret this!"
-
+	var/datum/bank_account/account = SSeconomy.get_dep_account(ACCOUNT_CAR)
+	if(account)
+		payoff = max(PAYOFF_MIN, FLOOR(account.account_balance * 0.80, 1000))
+	var/datum/comm_message/threat = chosen_gang.generate_message(payoff)
+	//send message
 	priority_announce("Incoming subspace communication. Secure channel opened at all communication consoles.", "Incoming Message", SSstation.announcer.get_rand_report_sound())
-	var/datum/comm_message/threat = new
-	var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
-	if(D)
-		payoff = max(payoff_min, FLOOR(D.account_balance * 0.80, 1000))
-	switch(pirate_type)
-		if(PIRATES_ROGUES)
-			ship_name = pick(strings(PIRATE_NAMES_FILE, "rogue_names"))
-			ship_template = /datum/map_template/shuttle/pirate/default
-			threat.title = "Sector protection offer"
-			threat.content = "Hey, pal, this is the [ship_name]. Can't help but notice you're rocking a wild and crazy shuttle there with NO INSURANCE! Crazy. What if something happened to it, huh?! We've done a quick evaluation on your rates in this sector and we're offering [payoff] to cover for your shuttle in case of any disaster."
-			threat.possible_answers = list("Purchase Insurance.","Reject Offer.")
-		if(PIRATES_SILVERSCALES)
-			ship_name = pick(strings(PIRATE_NAMES_FILE, "silverscale_names"))
-			ship_template = /datum/map_template/shuttle/pirate/silverscale
-			threat.title = "Tribute to high society"
-			threat.content = "This is the [ship_name]. The Silver Scales wish for some tribute from your plebeian lizards. [payoff] credits should do the trick."
-			threat.possible_answers = list("We'll pay.","Tribute? Really? Go away.")
-		if(PIRATES_DUTCHMAN)
-			ship_name = "Flying Dutchman"
-			ship_template = /datum/map_template/shuttle/pirate/dutchman
-			threat.title = "Business proposition"
-			threat.content = "Ahoy! This be the [ship_name]. Cough up [payoff] credits or you'll walk the plank."
-			threat.possible_answers = list("We'll pay.","We will not be extorted.")
-		//SKYRAT EDIT ADDITION
-		if(PIRATES_NRI_RAIDERS)
-			ship_name = pick(strings(PIRATE_NAMES_FILE, "imperial_names"))
-			ship_template = /datum/map_template/shuttle/pirate/nri_raider
-			var/number = rand(1,99)
-			///Station name one is the most important pick and is pretty much the station's main argument against getting fined, thus it better be mostly always right.
-			var/station_designation = pick_weight(list(
-				"Nanotrasen Research Station" = 70,
-				"Nanotrasen Refueling Outpost" = 5,
-				"Interdyne Pharmaceuticals Chemical Factory" = 5,
-				"Free Teshari League Engineering Station" = 5,
-				"Agurkrral Military Base" = 5,
-				"Sol Federation Embassy" = 5,
-				"Novaya Rossiyskaya Imperiya Civilian Port" = 5,
-			))
-			///"right" = Right for the raiders to use as an argument; usually pretty difficult to avoid.
-			var/right_pick = pick(
-				"high probability of NRI-affiliated civilian casualties aboard the facility",
-				"highly increased funding by the SolFed authorities; neglected NRI-backed subsidiaries' contracts",
-				"unethical hiring practices and unfair payment allocation for the NRI citizens",
-				"recently discovered BSA-[number] or similar model in close proximity to the neutral space aboard this or nearby affiliated facility",
-			)
-			///"wrong" = Loosely based accusations that can be easily disproven if people think.
-			var/wrong_pick = pick(
-				"inadequate support of the local producer",
-				"unregulated production of Gauss weaponry aboard this installation",
-				"SolFed-backed stationary military formation on the surface of Indecipheres",
-				"AUTOMATED REGULATORY VIOLATION DETECTION SYSTEM CRITICAL FAILURE. PLEASE CONTACT AND INFORM THE DISPATCHED AUTHORITIES TO RESOLVE THE ISSUE. \
-					ANY POSSIBLE INDENTURE HAS BEEN CLEARED. WE APOLOGIZE FOR THE INCONVENIENCE",
-			)
-			var/final_result = pick(right_pick, wrong_pick)
-			threat.title = "NRI Audit"
-			threat.content = "Greetings [station_designation], this is the [ship_name]. Due to recent Imperial regulatory violations, such as [final_result] and many other smaller issues, your station has been fined [payoff] credits. Inadequate imperial police activity is currently present in your sector, thus the failure to comply might instead result in a military patrol dispatch for second attempt negotiations. Novaya Rossiyskaya Imperiya collegial secretary out."
-			threat.possible_answers = list("Submit to audit and pay the fine.", "Override the response system for an immediate military dispatch.")
-			timeout_response = "AUTOMATED REGULATORY VIOLATION RESPONSE SYSTEM TIMEOUT. PLEASE CONTACT AND INFORM THE DISPATCHED AUTHORITIES TO RESOLVE THE ISSUE."
-			pay_response = "Should be it, thank you for cooperation. Novaya Rossiyskaya Imperiya collegial secretary out."
-			broke_response = "Your bank balance does not hold enough money at the moment. We are sending a patrol ship for second attempt negotiations, stand by."
-	threat.answer_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(pirates_answered), threat, payoff, ship_name, initial_send_time, response_max_time, ship_template, timeout_response, pay_response, broke_response) //SKYRAT EDIT CHANGE
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(spawn_pirates), threat, ship_template, FALSE), response_max_time)
-	SScommunications.send_message(threat,unique = TRUE)
+	threat.answer_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(pirates_answered), threat, chosen_gang, payoff, world.time)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(spawn_pirates), threat, chosen_gang, FALSE), RESPONSE_MAX_TIME)
+	SScommunications.send_message(threat, unique = TRUE)
 
-/proc/pirates_answered(datum/comm_message/threat, payoff, ship_name, initial_send_time, response_max_time, ship_template, timeout_response, pay_response, broke_response) //SKYRAT EDIT CHANGE
-	if(world.time > initial_send_time + response_max_time)
-		priority_announce(timeout_response,sender_override = ship_name) //SKYRAT EDIT CHANGE
+/proc/pirates_answered(datum/comm_message/threat, datum/pirate_gang/chosen_gang, payoff, initial_send_time)
+	if(world.time > initial_send_time + RESPONSE_MAX_TIME)
+		priority_announce(chosen_gang.response_too_late ,sender_override = chosen_gang.ship_name)
 		return
-	if(threat && threat.answered == 1)
-		var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
-		if(D)
-			if(D.adjust_money(-payoff))
-				priority_announce(pay_response,sender_override = ship_name) //SKYRAT EDIT CHANGE
-				return
+	if(threat?.answered)
+		var/datum/bank_account/plundered_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
+		if(plundered_account)
+			if(plundered_account.adjust_money(-payoff))
+				priority_announce(chosen_gang.response_received, sender_override = chosen_gang.ship_name)
 			else
-				priority_announce(broke_response,sender_override = ship_name) //SKYRAT EDIT CHANGE
-				spawn_pirates(threat, ship_template, TRUE)
-///SKYRAT EDIT END - Roleplay-oriented pirates. An entire quarter of the file.
-/proc/spawn_pirates(datum/comm_message/threat, ship_template, skip_answer_check)
+				priority_announce(chosen_gang.response_not_enough, sender_override = chosen_gang.ship_name)
+				spawn_pirates(threat, chosen_gang, TRUE)
+
+/proc/spawn_pirates(datum/comm_message/threat, datum/pirate_gang/chosen_gang, skip_answer_check)
 	if(!skip_answer_check && threat?.answered == 1)
 		return
 
 	var/list/candidates = poll_ghost_candidates("Do you wish to be considered for pirate crew?", ROLE_TRAITOR)
 	shuffle_inplace(candidates)
 
-	var/datum/map_template/shuttle/pirate/ship = new ship_template
+	var/template_key = "pirate_[chosen_gang.ship_template_id]"
+	var/datum/map_template/shuttle/pirate/ship = SSmapping.shuttle_templates[template_key]
 	var/x = rand(TRANSITIONEDGE,world.maxx - TRANSITIONEDGE - ship.width)
 	var/y = rand(TRANSITIONEDGE,world.maxy - TRANSITIONEDGE - ship.height)
 	var/z = SSmapping.empty_space.z_value
@@ -177,11 +83,11 @@
 		for(var/obj/effect/mob_spawn/ghost_role/human/pirate/spawner in A)
 			if(candidates.len > 0)
 				var/mob/our_candidate = candidates[1]
-				spawner.create(our_candidate)
+				var/mob/spawned_mob = spawner.create(our_candidate)
 				candidates -= our_candidate
-				notify_ghosts("The pirate ship has an object of interest: [our_candidate]!", source=our_candidate, action=NOTIFY_ORBIT, header="Something's Interesting!")
+				notify_ghosts("The pirate ship has an object of interest: [spawned_mob]!", source = spawned_mob, action = NOTIFY_ORBIT, header="Pirates!")
 			else
-				notify_ghosts("The pirate ship has an object of interest: [spawner]!", source=spawner, action=NOTIFY_ORBIT, header="Something's Interesting!")
+				notify_ghosts("The pirate ship has an object of interest: [spawner]!", source = spawner, action = NOTIFY_ORBIT, header="Pirate Spawn Here!")
 
 	priority_announce("Unidentified armed ship detected near the station.")
 
@@ -551,7 +457,7 @@
 /datum/export/pirate/ransom/find_loot()
 	var/list/head_minds = SSjob.get_living_heads()
 	var/list/head_mobs = list()
-	for(var/datum/mind/M in head_minds)
+	for(var/datum/mind/M as anything in head_minds)
 		head_mobs += M.current
 	if(head_mobs.len)
 		return pick(head_mobs)
