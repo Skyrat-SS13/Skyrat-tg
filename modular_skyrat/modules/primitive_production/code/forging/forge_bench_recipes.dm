@@ -68,7 +68,7 @@
 	recipe_requirements = list(
 		/obj/item/forging/complete/plate = 8,
 	)
-	resulting_item = /obj/item/shield/buckler/forging_shield
+	resulting_item = /obj/item/shield/buckler/forging_shield/pavise
 	required_good_hits = 16
 
 /datum/crafting_bench_recipe/forging/buckler
@@ -76,7 +76,7 @@
 	recipe_requirements = list(
 		/obj/item/forging/complete/plate = 5,
 	)
-	resulting_item = /obj/item/shield/buckler/forging_shield/pavise
+	resulting_item = /obj/item/shield/buckler/forging_shield
 	required_good_hits = 10
 
 /datum/crafting_bench_recipe/forging/seed_mesh

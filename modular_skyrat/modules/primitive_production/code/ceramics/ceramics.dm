@@ -138,7 +138,7 @@
 		return
 	switch(user_input)
 		if("Create")
-			var/creation_choice = tgui_alert(user, "What you like to create?", "Creation Choice", possible_results)
+			var/creation_choice = tgui_input_list(user, "What you like to create?", "Creation Choice", possible_results)
 			if(!creation_choice)
 				in_use = FALSE
 				return

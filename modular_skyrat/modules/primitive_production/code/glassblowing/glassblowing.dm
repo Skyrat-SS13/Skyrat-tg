@@ -135,8 +135,8 @@
 				in_use = FALSE
 				return
 			var/datum/glassblowing_recipe/chosen_recipe = possible_results[choice]
-			find_glass.chosen_item = chosen_recipe.resulting_item
-			find_glass.required_actions = chosen_recipe.steps
+			find_glass.chosen_item = initial(chosen_recipe.resulting_item)
+			find_glass.required_actions = initial(chosen_recipe.steps)
 			in_use = FALSE
 			return
 		else

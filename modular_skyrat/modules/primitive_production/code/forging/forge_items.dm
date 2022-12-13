@@ -32,15 +32,15 @@ GLOBAL_LIST_INIT(allowed_in_tongs, typecacheof(list(
 	if(target == src)
 		return ..()
 	if(!is_type_in_typecache(target, GLOB.allowed_in_tongs))
-		user.balloon_alert("[src] cannot hold that")
+		balloon_alert(user, "[src] cannot hold that")
 		return
 	if(length(contents))
-		user.balloon_alert("tongs full")
+		balloon_alert(user, "tongs full")
 		return
 	if(isstack(target))
 		var/obj/item/stack/target_stack = target
 		if(!target_stack.material_type || !target_stack.custom_materials)
-			user.balloon_alert("invalid material")
+			balloon_alert(user, "invalid material")
 			return
 	var/obj/target_object = target
 	target_object.forceMove(src)
