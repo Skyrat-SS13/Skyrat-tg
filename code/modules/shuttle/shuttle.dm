@@ -431,12 +431,11 @@
 	var/can_move_docking_ports = FALSE
 	var/list/hidden_turfs = list()
 
-<<<<<<< HEAD
-	///Can this shuttle be called while it's in transit? (Prevents people recalling it once it's already enroute)
+///Can this shuttle be called while it's in transit? (Prevents people recalling it once it's already enroute)
 	var/can_be_called_in_transit = TRUE //SKYRAT EDIT ADDITION
 
 	var/admin_forced = FALSE //SKYRAT EDIT ADDITION
-=======
+
 #define WORLDMAXX_CUTOFF (world.maxx + 1)
 #define WORLDMAXY_CUTOFF (world.maxx + 1)
 /**
@@ -499,7 +498,6 @@
 			dheight = width - port_x_offset
 #undef WORLDMAXX_CUTOFF
 #undef WORLDMAXY_CUTOFF
->>>>>>> d55dae757aa (Refactors calculating shuttle bounds into a dedicated proc (#71687))
 
 /**
  * Actions to be taken after shuttle is loaded but before it has been moved out of transit z-level to its final location
