@@ -5,7 +5,7 @@
 	icon_state = "tonguenormal"
 	modifies_speech = TRUE
 
-/obj/item/organ/internal/tongue/dog/Insert(mob/living/carbon/signer)
+/obj/item/organ/internal/tongue/dog/Insert(mob/living/carbon/signer, special = FALSE, drop_if_replaced = TRUE)
 	. = ..()
 	signer.verb_ask = "arfs"
 	signer.verb_exclaim = "wans"
@@ -19,3 +19,33 @@
 	speaker.verb_whisper = initial(verb_whisper)
 	speaker.verb_sing = initial(verb_sing)
 	speaker.verb_yell = initial(verb_yell)
+
+/obj/item/organ/internal/tongue/vox
+	name = "vox tongue"
+	desc = "A fleshy muscle mostly used for skreeing."
+	say_mod = "skrees"
+
+/obj/item/organ/internal/tongue/dwarven
+	name = "dwarven tongue"
+	desc = "A fleshy muscle mostly used for bellowing."
+	say_mod = "bellows"
+
+/obj/item/organ/internal/tongue/ghoul
+	name = "ghoulish tongue"
+	desc = "A fleshy muscle mostly used for rasping."
+	say_mod = "rasps"
+
+/obj/item/organ/internal/tongue/insect
+	name = "insect tongue"
+	desc = "A fleshy muscle mostly used for chittering."
+	say_mod = "chitters"
+
+/obj/item/organ/internal/tongue/xeno // like lizard tongue but without taste sensitivity modifiers
+	name = "xenomorph tongue"
+	desc = "A fleshy muscle mostly used for hissing."
+	say_mod = "hisses"
+
+/obj/item/organ/internal/tongue/skrell
+	name = "skrell tongue"
+	desc = "A fleshy muscle mostly used for warbling."
+	say_mod = "warbles"

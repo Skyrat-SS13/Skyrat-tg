@@ -43,7 +43,7 @@
 		/obj/item/suit_voucher = 1,
 		/obj/item/stack/marker_beacon/ten = 1
 		) //SKYRAT EDIT: Suit_Voucher is an addition, one line up
-	belt = /obj/item/modular_computer/tablet/pda/shaftminer
+	belt = /obj/item/modular_computer/pda/shaftminer
 	ears = /obj/item/radio/headset/headset_cargo/mining
 	gloves = /obj/item/clothing/gloves/color/black
 	shoes = /obj/item/clothing/shoes/workboots/mining
