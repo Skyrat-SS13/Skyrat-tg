@@ -10,23 +10,6 @@
 	magnified_number = rand(1,8)
 	icon_state = "useless[magnified_number]"
 
-/obj/item/xenoarch/useless_relic/attackby(obj/item/attacking_item, mob/user, params)
-	if(istype(attacking_item, /obj/item/glassblowing/magnifying_glass))
-		if(istype(src, /obj/item/xenoarch/useless_relic/magnified))
-			balloon_alert(user, "already magnified!")
-			return
-		if(!is_curator_job(user.mind?.assigned_role))
-			balloon_alert(user, "must be a curator!")
-			return
-		balloon_alert(user, "starting analysis!")
-		if(!do_after(user, 5 SECONDS, target = src))
-			balloon_alert(user, "stand still!")
-			return
-		loc.balloon_alert(user, "magnified!")
-		spawn_magnified(magnified_number)
-		return
-	return ..()
-
 #define ANCIENT_URN 1
 #define ANCIENT_BOWL 2
 #define ANCIENT_CROWN 3

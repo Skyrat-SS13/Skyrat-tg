@@ -54,7 +54,7 @@
 /obj/item/stack/clay
 	name = "clay"
 	desc = "A pile of clay that can be used to create ceramic artwork."
-	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
+	icon = 'modular_skyrat/modules/primitive_production/icons/misc_tools.dmi'
 	icon_state = "clay"
 	merge_type = /obj/item/stack/clay
 	singular_name = "glob of clay"
@@ -62,7 +62,7 @@
 /obj/structure/throwing_wheel
 	name = "throwing wheel"
 	desc = "A machine that allows you to throw clay."
-	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
+	icon = 'modular_skyrat/modules/primitive_production/icons/misc_tools.dmi'
 	icon_state = "throw_wheel_empty"
 	density = TRUE
 	anchored = TRUE
