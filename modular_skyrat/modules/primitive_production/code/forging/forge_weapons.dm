@@ -7,7 +7,7 @@
 	lefthand_file = 'modular_skyrat/modules/primitive_production/icons/inhands/forge_weapon_l.dmi'
 	righthand_file = 'modular_skyrat/modules/primitive_production/icons/inhands/forge_weapon_r.dmi'
 	worn_icon = 'modular_skyrat/modules/primitive_production/icons/clothing/forge_weapon_worn.dmi'
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 	resistance_flags = FIRE_PROOF
 
 /obj/item/melee/forging_weapon/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text, final_block_chance, damage, attack_type)
@@ -159,7 +159,7 @@
 	block_chance = 30
 	max_integrity = 100
 	w_class = WEIGHT_CLASS_NORMAL
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
 /obj/item/shield/buckler/forging_shield/pavise
 	name = "tower shield"

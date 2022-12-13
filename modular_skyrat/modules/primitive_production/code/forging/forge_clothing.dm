@@ -11,7 +11,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	resistance_flags = FIRE_PROOF
 	armor = list(MELEE = 30, BULLET = 20, LASER = 20, ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 10)
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
 /obj/item/clothing/suit/armor/forging_plate_armor/Initialize(mapload)
 	. = ..()
@@ -31,7 +31,7 @@
 	icon_state = "plate_gloves"
 	resistance_flags = FIRE_PROOF
 	armor = list(MELEE = 30, BULLET = 20, LASER = 20, ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 10)
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
 // Helmets
 
@@ -48,7 +48,7 @@
 	resistance_flags = FIRE_PROOF
 	flags_inv = null
 	armor = list(MELEE = 30, BULLET = 20, LASER = 20, ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 10)
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
 // Boots
 /obj/item/clothing/shoes/forging_plate_boots
@@ -63,6 +63,6 @@
 	icon_state = "plate_boots"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 	armor = list(MELEE = 30, BULLET = 20, LASER = 20, ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 10)
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 	resistance_flags = FIRE_PROOF
 	can_be_tied = TRUE

@@ -71,7 +71,7 @@ GLOBAL_LIST_INIT(allowed_in_tongs, typecacheof(list(
 	///the path of the item that will be spawned upon completion
 	var/spawn_item
 	//because who doesn't want to have a plasma sword?
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR | MATERIAL_GREYSCALE
 
 /obj/item/forging/incomplete/chain
 	name = "incomplete chain"
@@ -153,7 +153,7 @@ GLOBAL_LIST_INIT(allowed_in_tongs, typecacheof(list(
 	///the path of the item that will be created
 	var/spawning_item
 	//because who doesn't want to have a plasma sword?
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR | MATERIAL_GREYSCALE
 
 /obj/item/forging/complete/examine(mob/user)
 	. = ..()
