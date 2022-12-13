@@ -118,20 +118,12 @@ GLOBAL_LIST_EMPTY(tram_signals)
  * Returns whether we are still processing.
  */
 /obj/machinery/crossing_signal/proc/update_operating()
-<<<<<<< HEAD
-
-	//emagged crossing signals dont update
-	if(obj_flags & EMAGGED)
-		return
-
-=======
 	// Emagged crossing signals don't update
 	if(obj_flags & EMAGGED)
 		return
 	// Malfunctioning signals don't update
 	if(malfunctioning)
 		return
->>>>>>> cd3a0542220 (Visual alert for Tram Malfunction event (#71702))
 	// Immediately process for snappy feedback
 	var/should_process = process() != PROCESS_KILL
 	if(should_process)
