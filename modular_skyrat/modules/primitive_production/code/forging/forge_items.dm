@@ -1,3 +1,8 @@
+GLOBAL_LIST_INIT(allowed_in_tongs, typecacheof(list(
+	/obj/item/stack/sheet,
+	/obj/item/forging/incomplete,
+)))
+
 /obj/item/forging
 	icon = 'modular_skyrat/modules/primitive_production/icons/forge_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/primitive_production/icons/inhands/forge_weapon_l.dmi'
@@ -20,6 +25,26 @@
 		search_obj.forceMove(get_turf(src))
 		icon_state = "tong_empty"
 		return
+
+/obj/item/forging/tongs/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	if(!proximity_flag)
+		return ..()
+	if(target == src)
+		return ..()
+	if(!is_type_in_typecache(target, GLOB.allowed_in_tongs))
+		user.balloon_alert("[src] cannot hold that")
+		return
+	if(length(contents))
+		user.balloon_alert("tongs full")
+		return
+	if(isstack(target))
+		var/obj/item/stack/target_stack = target
+		if(!target_stack.material_type || !target_stack.custom_materials)
+			user.balloon_alert("invalid material")
+			return
+	var/obj/target_object = target
+	target_object.forceMove(src)
+	icon_state = "tong_full"
 
 /obj/item/forging/hammer
 	name = "forging mallet"
@@ -47,14 +72,6 @@
 	var/spawn_item
 	//because who doesn't want to have a plasma sword?
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
-
-/obj/item/forging/incomplete/tong_act(mob/living/user, obj/item/tool)
-	. = ..()
-	if(length(tool.contents) > 0)
-		user.balloon_alert("tongs are full already!")
-		return
-	forceMove(tool)
-	tool.icon_state = "tong_full"
 
 /obj/item/forging/incomplete/chain
 	name = "incomplete chain"
@@ -239,23 +256,3 @@
 	for(var/i in 1 to spawning_amount)
 		new /obj/item/ammo_casing/caseless/arrow/wood/forged(src_turf)
 	qdel(src)
-
-/obj/item/stack/tong_act(mob/living/user, obj/item/tool)
-	. = ..()
-	if(length(tool.contents) > 0)
-		user.balloon_alert(user, "tongs are full already!")
-		return FALSE
-	if(!material_type && !custom_materials)
-		user.balloon_alert(user, "invalid material!")
-		return
-	forceMove(tool)
-	tool.icon_state = "tong_full"
-
-/obj/tong_act(mob/living/user, obj/item/tool)
-	. = ..()
-	if(length(tool.contents))
-		user.balloon_alert(user, "tongs are full already!")
-		return FALSE
-	if(skyrat_obj_flags & ANVIL_REPAIR)
-		forceMove(tool)
-		tool.icon_state = "tong_full"

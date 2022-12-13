@@ -87,22 +87,6 @@
 
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
-	//okay, so we didn't find an incomplete item to hammer, do we have a hammerable item?
-	var/obj/locate_obj = locate() in contents
-	if(locate_obj && (locate_obj.skyrat_obj_flags & ANVIL_REPAIR))
-		if(locate_obj.get_integrity() >= locate_obj.max_integrity)
-			balloon_alert(user, "already repaired")
-			return TOOL_ACT_TOOLTYPE_SUCCESS
-
-		while(locate_obj.get_integrity() < locate_obj.max_integrity)
-			if(!do_after(user, 1 SECONDS, src))
-				balloon_alert(user, "stopped repairing")
-				return TOOL_ACT_TOOLTYPE_SUCCESS
-
-			locate_obj.repair_damage(locate_obj.get_integrity() + 10)
-			user.mind.adjust_experience(/datum/skill/smithing, 5) //repairing does give some experience
-			playsound(src, 'modular_skyrat/modules/primitive_production/sound/hammer_clang.ogg', 50, TRUE, ignore_walls = FALSE)
-
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /obj/item/forging_anvil/hammer_act_secondary(mob/living/user, obj/item/tool)
