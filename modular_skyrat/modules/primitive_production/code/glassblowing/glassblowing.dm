@@ -1,5 +1,8 @@
 #define DEFAULT_TIMED 4 SECONDS
 
+/obj/item/glassblowing // This fucking sucks why is it all subtypes of THIS
+	icon = 'modular_skyrat/modules/primitive_production/icons/misc_tools.dmi'
+
 /obj/item/glassblowing/molten_glass
 	name = "molten glass"
 	desc = "A glob of molten glass, ready to be shaped into art."
