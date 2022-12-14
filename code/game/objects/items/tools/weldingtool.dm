@@ -346,7 +346,7 @@
 /obj/item/weldingtool/largetank/empty
 	starting_fuel = FALSE
 
-/obj/item/weldingtool/largetank/cyborg
+/obj/item/weldingtool/largetank/cyborg //SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "integrated welding tool"
 	desc = "An advanced welder designed to be used in robotic systems. Custom framework doubles the speed of welding."
 	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
