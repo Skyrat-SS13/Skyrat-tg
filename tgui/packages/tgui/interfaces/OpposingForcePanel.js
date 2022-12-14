@@ -182,7 +182,7 @@ export const OpposingForceTab = (props, context) => {
             disabled={!can_edit}
             height="100px"
             value={backstory}
-            placeholder="Provide a description of why you want to do bad things. Include specifics such as what lead upto the events that made you want to do bad things, think of it as though you were your character, react appropriately. If you don't have any ideas, check the #INSERT_CHANNEL_NAME_HERE channel for some."
+            placeholder="Provide a description of why you want to do bad things. Include specifics such as what lead upto the events that made you want to do bad things, think of it as though you were your character, react appropriately. If you don't have any ideas, check the #player-shared-opfors channel for some."
             onChange={(_e, value) =>
               act('set_backstory', {
                 backstory: value,
