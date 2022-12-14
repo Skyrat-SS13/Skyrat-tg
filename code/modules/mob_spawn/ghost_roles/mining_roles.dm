@@ -291,6 +291,7 @@
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/special(mob/living/new_spawn)
 	. = ..()
 	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MIND)
+	new_spawn.mind.add_antag_datum(/datum/antagonist/interdyne, team) //SKYRAT EDIT ADDITION - antag datum - see syndicate_ghost_antag.dm
 
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/comms
 	name = "Syndicate Comms Agent"
