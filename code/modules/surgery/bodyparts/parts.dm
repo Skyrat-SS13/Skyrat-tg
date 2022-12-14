@@ -77,9 +77,14 @@
 	desc = "Hey buddy give me a HAND and report this to the github because you shouldn't be seeing this."
 	attack_verb_continuous = list("slaps", "punches")
 	attack_verb_simple = list("slap", "punch")
+<<<<<<< HEAD
 	max_damage = 60 //SKYRAT EDIT CHANGE - ORIGINAL: 50
 	max_stamina_damage = 60 //SKYRAT EDIT CHANGE - ORIGINAL: 50
 	aux_layer = HANDS_PART_LAYER
+=======
+	max_damage = 50
+	aux_layer = BODYPARTS_HIGH_LAYER
+>>>>>>> 5a1ce081de0 (Reworks how legs are rendered yet again because it was very convaluted i hated it (#71721))
 	body_damage_coeff = 0.75
 	can_be_disabled = TRUE
 	unarmed_attack_verb = "punch" /// The classic punch, wonderfully classic and completely random
@@ -200,7 +205,7 @@
 	icon_state = "default_human_r_arm"
 	plaintext_zone = "right arm"
 	aux_zone = BODY_ZONE_PRECISE_R_HAND
-	aux_layer = HANDS_PART_LAYER
+	aux_layer = BODYPARTS_HIGH_LAYER
 	held_index = 2
 	px_x = 6
 	px_y = 0
@@ -411,13 +416,6 @@
 	px_x = 2
 	px_y = 12
 	bodypart_trait_source = RIGHT_LEG_TRAIT
-	/// We store this here to generate our icon key more easily.
-	var/left_leg_mask_key
-	/// The associated list of all the left leg mask keys associated to their cached left leg masks.
-	/// It's static, so it's shared between all the left legs there is. Be careful.
-	/// Why? Both legs share the same layer for rendering, and since we don't want to do redraws on
-	/// each dir changes, we're doing it with a mask instead, which we cache for efficiency reasons.
-	var/static/list/left_leg_mask_cache = list()
 
 /obj/item/bodypart/leg/right/set_owner(new_owner)
 	. = ..()

@@ -610,6 +610,7 @@
 
 // Mob Overlays Indexes
 /// Total number of layers for mob overlays
+<<<<<<< HEAD
 #define TOTAL_LAYERS 39 //KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
 /// Mutations layer - Tk headglows, cold resistance glow, etc
 #define MUTATIONS_LAYER 38
@@ -617,6 +618,17 @@
 #define BODY_BEHIND_LAYER 37
 /// Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
 #define BODYPARTS_LAYER 36
+=======
+#define TOTAL_LAYERS 33 //KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
+/// Mutations layer - Tk headglows, cold resistance glow, etc
+#define MUTATIONS_LAYER 33
+/// Mutantrace features (tail when looking south) that must appear behind the body parts
+#define BODY_BEHIND_LAYER 32
+/// Layer for bodyparts that should appear behind every other bodypart - Mostly, legs when facing WEST or EAST
+#define BODYPARTS_LOW_LAYER 31
+/// Layer for most bodyparts, appears above BODYPARTS_LOW_LAYER and below BODYPARTS_HIGH_LAYER
+#define BODYPARTS_LAYER 30
+>>>>>>> 5a1ce081de0 (Reworks how legs are rendered yet again because it was very convaluted i hated it (#71721))
 /// Mutantrace features (snout, body markings) that must appear above the body parts
 #define BODY_ADJ_LAYER 35
 /// Underwear, undershirts, socks, eyes, lips(makeup)
@@ -641,8 +653,8 @@
 #define ID_LAYER 24
 /// ID card layer
 #define ID_CARD_LAYER 23
-/// Hands body part layer (or is this for the arm? not sure...)
-#define HANDS_PART_LAYER 22
+/// Layer for bodyparts that should appear above every other bodypart - Currently only used for hands
+#define BODYPARTS_HIGH_LAYER 22
 /// Gloves layer
 #define GLOVES_LAYER 21
 /// Shoes layer
