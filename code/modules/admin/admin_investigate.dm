@@ -2,7 +2,17 @@
 	if(!message || !subject)
 		return
 	var/F = file("[GLOB.log_directory]/[subject].html")
+<<<<<<< HEAD
 	WRITE_FILE(F, "[time_stamp()] [REF(src)] ([x],[y],[z]) || [src] [message]<br>")
+=======
+	var/source = "[src]"
+
+	if(isliving(src))
+		var/mob/living/source_mob = src
+		source += " ([source_mob.ckey ? source_mob.ckey : "*no key*"])"
+
+	WRITE_FILE(F, "[time_stamp(format = "YYYY-MM-DD hh:mm:ss")] [REF(src)] ([x],[y],[z]) || [source] [message]<br>")
+>>>>>>> a77d2987eab (Investigate logs contain dates (#71982))
 
 /client/proc/investigate_show()
 	set name = "Investigate"
