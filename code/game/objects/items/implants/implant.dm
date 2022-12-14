@@ -5,7 +5,12 @@
 	name = "implant"
 	icon = 'icons/obj/implants.dmi'
 	icon_state = "generic" //Shows up as the action button icon
+<<<<<<< HEAD
 	item_flags = DROPDEL
+=======
+	item_flags = ABSTRACT | DROPDEL
+	resistance_flags = INDESTRUCTIBLE
+>>>>>>> ae8ed395e11 (Changes the missing food icon test to cover ALL /obj's (#71908))
 	// This gives the user an action button that allows them to activate the implant.
 	// If the implant needs no action button, then null this out.
 	// Or, if you want to add a unique action button, then replace this.
