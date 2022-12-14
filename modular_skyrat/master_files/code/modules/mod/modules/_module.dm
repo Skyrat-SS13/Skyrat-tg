@@ -20,22 +20,26 @@
 	. = list()
 	var/is_new_vox = FALSE
 	var/is_old_vox = FALSE
+	var/is_teshari = FALSE
 	if(mod.wearer)
 		if(mod.chestplate && (mod.chestplate.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && (mod.wearer.dna.species.bodytype & BODYTYPE_DIGITIGRADE))
 			suit_supports_variations_flags |= CLOTHING_DIGITIGRADE_VARIATION
 
 		if(mod.helmet && (mod.helmet.supports_variations_flags & CLOTHING_SNOUTED_VARIATION) && mod.wearer.dna.species.bodytype & BODYTYPE_SNOUTED)
 			suit_supports_variations_flags |= CLOTHING_SNOUTED_VARIATION
+		is_teshari = isteshari(mod.wearer)
 		is_new_vox = isvoxprimalis(mod.wearer)
 		is_old_vox = isvox(mod.wearer)
 
 	var/icon_to_use = 'icons/mob/clothing/modsuit/mod_modules.dmi'
 	var/icon_state_to_use = module_icon_state
-	if(is_new_vox || is_old_vox)
+	if(is_new_vox || is_old_vox || is_teshari)
 		if(is_new_vox)
 			icon_to_use = worn_icon_better_vox
 		if(is_old_vox)
 			icon_to_use = worn_icon_vox
+		if(is_teshari)
+			icon_to_use = worn_icon_teshari
 
 	if(suit_supports_variations_flags && (supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 		icon_to_use = 'modular_skyrat/master_files/icons/mob/mod.dmi'
@@ -60,6 +64,10 @@
 
 		if(is_new_vox)
 			icon_to_use = 'modular_skyrat/modules/better_vox/icons/clothing/mod_modules.dmi'
+			icon_state_to_use = module_icon_state
+
+		if(is_teshari)
+			icon_to_use = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/mod_modules.dmi'
 			icon_state_to_use = module_icon_state
 
 		var/mutable_appearance/additional_module_icon = mutable_appearance(icon_to_use, icon_state_to_use, layer = standing.layer + 0.1)
