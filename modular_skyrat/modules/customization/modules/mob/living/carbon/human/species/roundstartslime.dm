@@ -62,6 +62,8 @@
 	var/slime_restricted = TRUE
 	///Is the person using this ability oversized?
 	var/oversized_user = FALSE
+	///What text is shown to others when the person uses the ability?
+	var/shapeshift_text = "gains a look of concentration while standing perfectly still. Their body seems to shift and starts getting more goo-like."
 
 /datum/action/innate/alter_form/unrestricted
 	slime_restricted = FALSE
@@ -71,7 +73,7 @@
 	if(slime_restricted && !isjellyperson(alterer))
 		return
 	alterer.visible_message(
-		span_notice("[owner] gains a look of concentration while standing perfectly still. Their body seems to shift and starts getting more goo-like."),
+		span_notice("[owner] [shapeshift_text]"),
 		span_notice("You focus intently on altering your body while standing perfectly still...")
 	)
 	change_form(alterer)
