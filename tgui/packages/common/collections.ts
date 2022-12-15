@@ -300,8 +300,6 @@ export const binaryInsertWith =
     copy.splice(binarySearch(getKey, collection, value), 0, value);
     return copy;
   };
-<<<<<<< HEAD
-=======
 
 /**
  * This method takes a collection of items and a number, returning a collection
@@ -344,4 +342,3 @@ export const deepMerge = (...objects: any[]): any => {
   }
   return target;
 };
->>>>>>> 8ac384f35bf (Converts ForceEvent.js to typescript and overhauls the UI to be good (#71750))
