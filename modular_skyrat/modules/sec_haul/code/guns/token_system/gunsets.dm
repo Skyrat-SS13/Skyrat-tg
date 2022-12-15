@@ -5,7 +5,7 @@
 /obj/item/storage/box/gunset
 	name = "gun case"
 	desc = "A gun case, with foam inserts laid out to fit a weapon, magazines, and gear securely."
-	icon_state = "guncase_ad" //Currently only comes in Armadyne, though there's sprites for generic ones in the icon file. There's also sprites for smaller ones!
+	icon_state = "guncase" //Currently only comes as a generic gray, though there's sprites for Armadyne branded ones in the icon file. There's also sprites for smaller ones!
 	inhand_icon_state = "sec-case"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
 	lefthand_file = 'icons/mob/inhands/equipment/briefcase_lefthand.dmi'
