@@ -125,8 +125,6 @@
 	name = "reinforced porous rock"
 	desc = "This rock is filled with pockets of breathable air. It has metal struts to protect it from mining."
 	decon_type = /turf/closed/mineral/asteroid/porous
-<<<<<<< HEAD
-=======
 
 /turf/closed/wall/space
 	name = "illusionist wall"
@@ -137,4 +135,3 @@
 	smoothing_flags = NONE
 	canSmoothWith = null
 	smoothing_groups = null
->>>>>>> a6afe3d0a22 (Removes icon state randomization from space turfs. (#71746))

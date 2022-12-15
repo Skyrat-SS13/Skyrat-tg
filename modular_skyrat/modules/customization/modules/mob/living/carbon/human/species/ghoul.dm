@@ -2,7 +2,6 @@
 	name = "Ghoul"
 	id = SPECIES_GHOUL
 	examine_limb_id = SPECIES_GHOUL
-	say_mod = "rasps"
 	species_traits = list(NOEYESPRITES, DYNCOLORS, HAS_FLESH, HAS_BONE, HAIR, FACEHAIR)
 	can_have_genitals = FALSE //WHY WOULD YOU WANT TO FUCK ONE OF THESE THINGS?
 	mutant_bodyparts = list("ghoulcolor" = "Tan Necrotic")
@@ -10,6 +9,7 @@
 		"tail" = "None",
 		"ears" = "None"
 	)
+	mutanttongue = /obj/item/organ/internal/tongue/ghoul
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_RADIMMUNE,
