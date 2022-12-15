@@ -18,10 +18,7 @@
 	illustration = null
 	var/opened = FALSE
 
-/obj/item/storage/box/gunset/Initialize()
-	. = ..()
-	//Move this to a subtype or something if you make a generic version using the non-armadyne sprites
-	desc += "<br>It has a textured carbon grip, and the <b>[span_red("Armadyne Corporation")]</b> logo etched into the top."
+//Add this extra line to examine() if you make an armadyne variant: "It has a textured carbon grip, and the <b>[span_red("Armadyne Corporation")]</b> logo etched into the top."
 
 /obj/item/storage/box/gunset/PopulateContents()
 	. = ..()
