@@ -114,6 +114,11 @@
 	var/medium_burn_msg = "blistered"
 	var/heavy_burn_msg = "peeling away"
 
+	//Damage messages used by examine(). the desc that is most common accross all bodyparts gets shown
+
+	var/brute_damage_desc = DEFAULT_BRUTE_EXAMINE_TEXT
+	var/burn_damage_desc = DEFAULT_BURN_EXAMINE_TEXT
+
 	/// The wounds currently afflicting this body part
 	var/list/wounds
 
@@ -181,6 +186,9 @@
 	if(can_be_disabled)
 		RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_PARALYSIS), PROC_REF(on_paralysis_trait_gain))
 		RegisterSignal(src, SIGNAL_REMOVETRAIT(TRAIT_PARALYSIS), PROC_REF(on_paralysis_trait_loss))
+
+	RegisterSignal(src, COMSIG_ATOM_RESTYLE, PROC_REF(on_attempt_feature_restyle))
+
 	if(!IS_ORGANIC_LIMB(src))
 		grind_results = null
 
@@ -372,8 +380,13 @@
 		qdel(current_splint)
 	for(var/obj/item/organ/bodypart_organ in get_organs())
 		bodypart_organ.transfer_to_limb(src, owner)
+	for(var/obj/item/organ/external/external in external_organs)
+		external.remove_from_limb()
+		external.forceMove(drop_loc)
 	for(var/obj/item/item_in_bodypart in src)
 		item_in_bodypart.forceMove(drop_loc)
+
+	update_icon_dropped()
 
 ///since organs aren't actually stored in the bodypart themselves while attached to a person, we have to query the owner for what we should have
 /obj/item/bodypart/proc/get_organs()
@@ -950,7 +963,7 @@
 		/* SKYRAT EDIT START - Customization (better layer handling for external organs) - ORIGINAL:
 		for(var/external_layer in external_organ.all_layers)
 			if(external_organ.layers & external_layer)
-				external_organ.get_overlays(
+				external_organ.generate_and_retrieve_overlays(
 					.,
 					image_dir,
 					external_organ.bitflag_to_layer(external_layer),
@@ -958,7 +971,7 @@
 				)
 		*/ // ORIGINAL END
 		for(var/external_layer in external_organ.relevant_layers)
-			external_organ.get_overlays(
+			external_organ.generate_and_retrieve_overlays(
 				.,
 				image_dir,
 				external_layer,
