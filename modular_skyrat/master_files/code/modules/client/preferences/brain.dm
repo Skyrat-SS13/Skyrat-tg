@@ -25,8 +25,8 @@
 	new_brain = new new_brain()
 	new_brain.Insert(target, drop_if_replaced = FALSE)
 
+	// Prefs can be applied to mindless mobs, let's not try to move the non-existent mind back in!
 	if(!keep_me_safe)
-		message_admins("PREFS: Failed to apply new braintype on [target](\ref[target]) at [get_area(target)] due to no mind!")
 		return
 
 	keep_me_safe.transfer_to(target, TRUE)
