@@ -17,26 +17,24 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 
 	user.AttemptLateSpawn(input_contents)
 
-/datum/ui_close(mob/dead/new_player/user)
+/datum/latejoin_menu/ui_close(mob/dead/new_player/user)
 	. = ..()
 	if(istype(user))
 		user.jobs_menu_mounted = TRUE // Don't flood a user's chat if they open and close the UI.
 
 /datum/latejoin_menu/ui_interact(mob/dead/new_player/user, datum/tgui/ui)
-	if(!istype(user))
-		return
-
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		// In case they reopen the GUI
-		user.jobs_menu_mounted = FALSE
-		addtimer(CALLBACK(src, PROC_REF(scream_at_player), user), 5 SECONDS)
+		if(istype(user))
+			user.jobs_menu_mounted = FALSE
+			addtimer(CALLBACK(src, PROC_REF(scream_at_player), user), 5 SECONDS)
 
 		ui = new(user, src, "JobSelection", "Latejoin Menu")
 		ui.open()
 
 /datum/latejoin_menu/proc/scream_at_player(mob/dead/new_player/player)
-	if(!player.jobs_menu_mounted)
+	if(istype(player) && !player.jobs_menu_mounted)
 		to_chat(player, span_notice("If the late join menu isn't showing, hold CTRL while clicking the join button!"))
 
 /datum/latejoin_menu/ui_data(mob/user)
@@ -44,14 +42,14 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 	var/list/departments = list()
 	var/list/data = list(
 		"disable_jobs_for_non_observers" = SSlag_switch.measures[DISABLE_NON_OBSJOBS],
-		"round_duration" = DisplayTimeText(world.time - SSticker.round_start_time),
+		"round_duration" = DisplayTimeText(world.time - SSticker.round_start_time, round_seconds_to = 1),
 		"departments" = departments,
 	)
 	if(SSshuttle.emergency)
 		switch(SSshuttle.emergency.mode)
 			if(SHUTTLE_ESCAPE)
 				data["shuttle_status"] = "The station has been evacuated."
-			if(SHUTTLE_CALL)
+			if(SHUTTLE_CALL, SHUTTLE_DOCKED, SHUTTLE_IGNITING, SHUTTLE_ESCAPE)
 				if(!SSshuttle.canRecall())
 					data["shuttle_status"] = "The station is currently undergoing evacuation procedures."
 
@@ -114,11 +112,9 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 
 	return list("departments_static" = departments)
 
+// we can't use GLOB.new_player_state here since it also allows any admin to see the ui, which will cause runtimes
 /datum/latejoin_menu/ui_status(mob/user)
 	return isnewplayer(user) ? UI_INTERACTIVE : UI_CLOSE
-
-/datum/latejoin_menu/ui_state(mob/user)
-	return GLOB.always_state
 
 /datum/latejoin_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -146,6 +142,12 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 			if(SSlag_switch.measures[DISABLE_NON_OBSJOBS])
 				tgui_alert(owner, "There is an administrative lock on entering the game for non-observers!", "Oh No!")
 				return TRUE
+
+			// SKYRAT EDIT ADDITION START - Flavourtext requirement
+			if(length_char(owner.client.prefs.read_preference(/datum/preference/text/flavor_text)) < FLAVOR_TEXT_CHAR_REQUIREMENT)
+				to_chat(owner, span_notice("You need at least [FLAVOR_TEXT_CHAR_REQUIREMENT] characters of flavor text to join the round. You have [length_char(owner.client.prefs.read_preference(/datum/preference/text/flavor_text))] characters."))
+				return
+			// SKYRAT EDIT END
 
 			//Determines Relevent Population Cap
 			var/relevant_cap
@@ -179,6 +181,7 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 				return TRUE
 
 			owner.vote_on_poll_handler(poll, params)
+
 			return TRUE
 
 /// Gives the user a random job that they can join as, and prompts them if they'd actually like to keep it, rerolling if not. Cancellable by the user.

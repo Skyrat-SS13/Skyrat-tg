@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Box, Button, StyleableSection, Icon, Stack } from '../components';
+import { Box, Button, StyleableSection, Icon, Stack, NoticeBox } from '../components';
 import { Window } from '../layouts';
 import { Color } from 'common/color';
 import { SFC } from 'inferno';
@@ -31,6 +31,7 @@ type Data = {
   disable_jobs_for_non_observers: BooleanLike;
   priority: BooleanLike;
   round_duration: string;
+  alert_level: { name: string; color: string }; // SKYRAT EDIT ADDITION - Alert level on jobs menu
 };
 
 export const JobEntry: SFC<{
@@ -106,16 +107,40 @@ export const JobSelection = (props, context) => {
   );
 
   return (
-    <Window width={1012} height={666 /* Hahahahahaha */}>
+    <Window
+      width={1012}
+      height={
+        data.shuttle_status
+          ? 916
+          : 900 /* Hahahahahaha */ /* SKYRAT EDIT - Expand UI for available jobs - ORIGINAL: data.shuttle_status ? 690 : 666 */
+      }
+      onComponentDidMount={() => {
+        // Send a heartbeat back to DM to let it know the window is alive and well
+        act('ui_mounted_with_no_bluescreen');
+      }}>
       <Window.Content scrollable>
         <StyleableSection
           title={
-            <Button
-              style={{ 'position': 'absolute', 'right': '1em' }}
-              onClick={() => act('select_job', { 'job': 'Random' })}
-              content="Random Job!"
-              tooltip="Roll target random job. You can re-roll or cancel your random job if you don't like it."
-            />
+            <>
+              {data.shuttle_status && (
+                <NoticeBox info>{data.shuttle_status}</NoticeBox>
+              )}
+              {
+                // SKYRAT EDIT ADDITION - Alert level on jobs menu
+                <NoticeBox color={data.alert_level.color}>
+                  The current alert level is: {data.alert_level.name}
+                </NoticeBox>
+              }
+              <span style={{ 'color': 'grey' }}>
+                It is currently {data.round_duration} into the shift.
+              </span>
+              <Button
+                style={{ 'position': 'absolute', 'right': '1em' }}
+                onClick={() => act('select_job', { 'job': 'Random' })}
+                content="Random Job!"
+                tooltip="Roll target random job. You can re-roll or cancel your random job if you don't like it."
+              />
+            </>
           }
           titleStyle={{ 'min-height': '3.4em' }}>
           <Box wrap="wrap" style={{ 'columns': '20em' }}>
@@ -178,10 +203,6 @@ export const JobSelection = (props, context) => {
                 </Box>
               );
             })}
-            {
-              // Send a heartbeat back to DM to let it know the window is alive and well
-              act('ui_mounted_with_no_bluescreen')
-            }
           </Box>
         </StyleableSection>
       </Window.Content>

@@ -219,22 +219,17 @@
 			to_chat(new_player, span_notice("You have been added to the queue to join the game. Your position in queue is [SSticker.queued_players.len]."))
 		return
 
-<<<<<<< HEAD
 	// SKYRAT EDIT BEGIN
 	if(length_char(new_player.client.prefs.read_preference(/datum/preference/text/flavor_text)) <= FLAVOR_TEXT_CHAR_REQUIREMENT)
 		to_chat(new_player, span_notice("You need at least [FLAVOR_TEXT_CHAR_REQUIREMENT] characters of flavor text to join the round. You have [length_char(new_player.client.prefs.read_preference(/datum/preference/text/flavor_text))] characters."))
 		return
 	// SKYRAT EDIT END
 
-	new_player.LateChoices()
-=======
 	if(!LAZYACCESS(params2list(params), CTRL_CLICK))
 		GLOB.latejoin_menu.ui_interact(new_player)
 	else
 		to_chat(new_player, span_warning("Opening emergency fallback late join menu! If THIS doesn't show, ahelp immediately!"))
 		GLOB.latejoin_menu.fallback_ui(new_player)
-
->>>>>>> c60b5575b4b (TGUI Latejoin Menu! (#71531))
 
 /atom/movable/screen/lobby/button/join/proc/show_join_button()
 	SIGNAL_HANDLER
