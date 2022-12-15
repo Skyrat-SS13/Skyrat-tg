@@ -16,7 +16,6 @@
 		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	say_mod = "warbles"
 	brutemod = 1.70
 	burnmod = 0.60
 	exotic_blood = /datum/reagent/copper
@@ -25,6 +24,7 @@
 	bodytemp_cold_damage_limit = (T20C - 10)
 	species_language_holder = /datum/language_holder/skrell
 	mutant_bodyparts = list()
+	mutanttongue = /obj/item/organ/internal/tongue/skrell
 	toxic_food = DAIRY | MEAT
 	disliked_food = RAW | CLOTH
 	liked_food = TOXIC | FRUIT | VEGETABLES
