@@ -17,14 +17,17 @@
 		/obj/item/electronics/airalarm = 10,
 		/obj/item/electronics/firealarm = 10,
 		/obj/item/electronics/firelock = 10,
+		/obj/item/grenade/heater = 5 // SKYRAT EDIT ADDITON
 	)
 	contraband = list(
 		/obj/item/stock_parts/cell/potato = 3,
+		/obj/item/grenade/clusterbuster/heater = 1  // SKYRAT EDIT ADDITON
 	)
 	premium = list(
 		/obj/item/storage/belt/utility = 3,
 		///obj/item/construction/rcd/loaded = 2, // SKYRAT EDIT REMOVAL
 		/obj/item/storage/box/smart_metal_foam = 1,
+		/obj/item/storage/box/heatergrenades = 1 // SKYRAT EDIT ADDITON
 	)
 	refill_canister = /obj/item/vending_refill/engivend
 	default_price = PAYCHECK_CREW
