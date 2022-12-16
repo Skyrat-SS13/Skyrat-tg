@@ -217,7 +217,7 @@
 /datum/job/proc/announce_head(mob/living/carbon/human/H, channels, job_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: /datum/job/proc/announce_head(mob/living/carbon/human/H, channels)
 	if(H && GLOB.announcement_systems.len)
 		//timer because these should come after the captain announcement
-		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, job_title, channels), 1)) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, PROC_REF(_addtimer), CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
+		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(pick(GLOB.announcement_systems), TYPE_PROC_REF(/obj/machinery/announcement_system, announce), "NEWHEAD", H.real_name, job_title, channels), 1)) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(pick(GLOB.announcement_systems), TYPE_PROC_REF(/obj/machinery/announcement_system, announce), "NEWHEAD", H.real_name, H.job, channels), 1))
 
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/player)
@@ -290,7 +290,7 @@
 	uniform = /obj/item/clothing/under/color/grey
 	id = /obj/item/card/id/advanced
 	ears = /obj/item/radio/headset
-	belt = /obj/item/modular_computer/tablet/pda
+	belt = /obj/item/modular_computer/pda
 	back = /obj/item/storage/backpack
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	box = /obj/item/storage/box/survival
@@ -365,7 +365,7 @@
 
 		equipped.sec_hud_set_ID()
 
-	var/obj/item/modular_computer/tablet/pda/pda = equipped.get_item_by_slot(pda_slot)
+	var/obj/item/modular_computer/pda/pda = equipped.get_item_by_slot(pda_slot)
 
 	if(istype(pda))
 		pda.saved_identification = equipped.real_name
@@ -409,7 +409,7 @@
 /datum/job/proc/get_captaincy_announcement(mob/living/captain)
 	return "Due to extreme staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
 
-//SKYRAT EDIT START
+
 /// Returns an atom where the mob should spawn in.
 /datum/job/proc/get_roundstart_spawn_point()
 	if(random_spawns_possible)
@@ -426,8 +426,12 @@
 				hangover_landmark.used = TRUE
 				break
 			return hangover_spawn_point || get_latejoin_spawn_point()
+	/* if(length(GLOB.jobspawn_overrides[title]))
+		return pick(GLOB.jobspawn_overrides[title]) */ // ORIGINAL CODE
+	// SKYRAT EDIT START - Alt job titles
 	if(length(GLOB.jobspawn_overrides[job_spawn_title]))
 		return pick(GLOB.jobspawn_overrides[job_spawn_title])
+	// SKYRAT EDIT END
 	var/obj/effect/landmark/start/spawn_point = get_default_roundstart_spawn_point()
 	if(!spawn_point) //if there isn't a spawnpoint send them to latejoin, if there's no latejoin go yell at your mapper
 		return get_latejoin_spawn_point()
@@ -437,7 +441,7 @@
 /// Handles finding and picking a valid roundstart effect landmark spawn point, in case no uncommon different spawning events occur.
 /datum/job/proc/get_default_roundstart_spawn_point()
 	for(var/obj/effect/landmark/start/spawn_point as anything in GLOB.start_landmarks_list)
-		if(spawn_point.name != job_spawn_title)
+		if(spawn_point.name != job_spawn_title) // SKYRAT EDIT - Alt job titles - ORIGINAL: if(spawn_point.name != title)
 			continue
 		. = spawn_point
 		if(spawn_point.used) //so we can revert to spawning them on top of eachother if something goes wrong
@@ -447,16 +451,17 @@
 	if(!.)
 		log_world("Couldn't find a round start spawn point for [title]")
 
-
 /// Finds a valid latejoin spawn point, checking for events and special conditions.
 /datum/job/proc/get_latejoin_spawn_point()
+	/* if(length(GLOB.jobspawn_overrides[title]))
+		return pick(GLOB.jobspawn_overrides[title]) */ // ORIGINAL CODE
+	// SKYRAT EDIT START - Alt job titles
 	if(length(GLOB.jobspawn_overrides[job_spawn_title])) //We're doing something special today.
 		return pick(GLOB.jobspawn_overrides[job_spawn_title])
+	// SKYRAT EDIT END
 	if(length(SSjob.latejoin_trackers))
 		return pick(SSjob.latejoin_trackers)
 	return SSjob.get_last_resort_spawn_points()
-
-//SKYRAT EDIT END
 
 /// Spawns the mob to be played as, taking into account preferences and the desired spawn point.
 /datum/job/proc/get_spawn_mob(client/player_client, atom/spawn_point)

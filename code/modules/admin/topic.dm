@@ -738,7 +738,7 @@
 			to_chat(usr, "This can only be used on instances of type /mob/living.", confidential = TRUE)
 			return
 
-		L.revive(full_heal = TRUE, admin_revive = TRUE)
+		L.revive(ADMIN_HEAL_ALL)
 		message_admins(span_danger("Admin [key_name_admin(usr)] healed / revived [key_name_admin(L)]!"))
 		log_admin("[key_name(usr)] healed / Revived [key_name(L)].")
 
@@ -860,7 +860,8 @@
 				var/iterable = 0
 				for(var/datum/antagonist/role in subject.mind.antag_datums)
 					special_role_description += "[role.name]"
-					if(++iterable != length(subject.mind.antag_datums))
+					iterable++
+					if(iterable != length(subject.mind.antag_datums))
 						special_role_description += ", "
 				special_role_description += "</b></font>"
 			else

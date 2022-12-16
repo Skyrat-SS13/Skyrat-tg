@@ -1,3 +1,6 @@
+//	This DMI holds our radial icons for the 'hide mutant parts' verb
+#define HIDING_RADIAL_DMI 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/MOD_sprite_accessories/icons/radial.dmi'
+
 /mob/living/carbon/human
 	var/static/list/possible_genitals = list(ORGAN_SLOT_PENIS, ORGAN_SLOT_TESTICLES, ORGAN_SLOT_VAGINA, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS)
 
@@ -26,17 +29,14 @@
 				tgui.holder = src
 				tgui.ui_interact(usr) //datum has a tgui component, here we open the window
 
-/mob/living/carbon/human/species/synthliz
-	race = /datum/species/robotic/synthliz
-
 /mob/living/carbon/human/species/vox
 	race = /datum/species/vox
 
 /mob/living/carbon/human/species/vox_primalis
 	race = /datum/species/vox_primalis
 
-/mob/living/carbon/human/species/ipc
-	race = /datum/species/robotic/ipc
+/mob/living/carbon/human/species/synth
+	race = /datum/species/synthetic
 
 /mob/living/carbon/human/species/mammal
 	race = /datum/species/mammal
@@ -86,7 +86,7 @@
 		update_body()
 	return
 
-/mob/living/carbon/human/revive(full_heal = FALSE, admin_revive = FALSE)
+/mob/living/carbon/human/revive(full_heal_flags = NONE, excess_healing = 0, force_grab_ghost = FALSE)
 	. = ..()
 	if(.)
 		if(dna && dna.species)
@@ -97,14 +97,89 @@
 	set name = "Show/Hide Mutant Parts"
 	set desc = "Allows you to choose to try and hide your mutant bodyparts under your clothes."
 
+	mutant_part_visibility()
+
+/mob/living/carbon/human/proc/mutant_part_visibility(quick_toggle, re_do)
+	// The parts our particular user can choose
+	var/list/available_selection
+	// The total list of parts choosable
+	var/static/list/total_selection = list(
+	"horns",
+	"ears",
+	"moth_wings",
+	"wings",
+	"tail",
+	"ipc_antenna",
+	"moth_antennae",
+	"xenodorsal",
+	"spines",
+	)
+
+	// Stat check
 	if(stat != CONSCIOUS)
 		to_chat(usr, span_warning("You can't do this right now..."))
 		return
-	if(!try_hide_mutant_parts && !do_after(src, 3 SECONDS,target = src))
+
+	// Only show the 'reveal all' button if we are already hiding something
+	if(try_hide_mutant_parts)
+		LAZYOR(available_selection, "reveal all")
+	// Lets build our parts list
+	for(var/key in total_selection)
+		if(findtext(mutant_renderkey, "[key]"))
+			LAZYOR(available_selection, key)
+
+	// If this proc is called with the 'quick_toggle' flag, we skip the rest
+	if(quick_toggle)
+		if("reveal all" in available_selection)
+			LAZYNULL(try_hide_mutant_parts)
+		else
+			for(var/part in available_selection)
+				LAZYOR(try_hide_mutant_parts, part)
+		update_mutant_bodyparts()
 		return
-	try_hide_mutant_parts = !try_hide_mutant_parts
-	to_chat(usr, span_notice("[try_hide_mutant_parts ? "You try and hide your mutant body parts under your clothes." : "You no longer try and hide your mutant body parts"]"))
+
+	// Dont open the radial automatically just for one button
+	if(re_do && (length(available_selection) == 1))
+		return
+	// If 'reveal all' is our only option just do it
+	if(!re_do && (("reveal all" in available_selection) && (length(available_selection) == 1)))
+		LAZYNULL(try_hide_mutant_parts)
+		update_mutant_bodyparts()
+		return
+
+	// Radial rendering
+	var/list/choices = list()
+	for(var/choice in available_selection)
+		var/datum/radial_menu_choice/option = new
+		var/image/part_image = image(icon = HIDING_RADIAL_DMI, icon_state = initial(choice))
+
+		option.image = part_image
+		if(choice in try_hide_mutant_parts)
+			part_image.underlays += image(icon = HIDING_RADIAL_DMI, icon_state = "module_unable")
+		choices[initial(choice)] = option
+	// Radial choices
+	sort_list(choices)
+	var/pick = show_radial_menu(usr, src, choices, custom_check = FALSE, tooltips = TRUE)
+	if(!pick)
+		return
+
+	// Choice to action
+	if(pick == "reveal all")
+		to_chat(usr, span_notice("You are no longer trying to hide your mutant parts."))
+		LAZYNULL(try_hide_mutant_parts)
+		update_mutant_bodyparts()
+		return
+
+	else if(pick in try_hide_mutant_parts)
+		to_chat(usr, span_notice("You are no longer trying to hide your [pick]."))
+		LAZYREMOVE(try_hide_mutant_parts, pick)
+	else
+		to_chat(usr, span_notice("You are now trying to hide your [pick]."))
+		LAZYOR(try_hide_mutant_parts, pick)
 	update_mutant_bodyparts()
+	// automatically re-do the menu after making a selection
+	mutant_part_visibility(re_do = TRUE)
+
 
 // Feign impairment verb
 #define DEFAULT_TIME 30
@@ -152,3 +227,4 @@
 
 #undef DEFAULT_TIME
 #undef MAX_TIME
+#undef HIDING_RADIAL_DMI

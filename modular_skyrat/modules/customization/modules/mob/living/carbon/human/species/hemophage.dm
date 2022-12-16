@@ -132,7 +132,7 @@
 		var/brute_damage = hemophage.getBruteLoss()
 
 		// We have to check for the damaged bodyparts like this as well, to account for robotic bodyparts, as we don't want to heal those. Stupid, I know, but that's the best proc we got to check that currently.
-		if(brute_damage && length(hemophage.get_damaged_bodyparts(brute = TRUE, burn = FALSE, stamina = FALSE, status = BODYTYPE_ORGANIC)))
+		if(brute_damage && length(hemophage.get_damaged_bodyparts(brute = TRUE, burn = FALSE, status = BODYTYPE_ORGANIC)))
 			brutes_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_BRUTE_AMOUNT, brute_damage) * delta_time)
 			blood_used += brutes_to_heal * blood_to_health_multiplier
 			max_blood_for_regen -= brutes_to_heal * blood_to_health_multiplier
@@ -140,7 +140,7 @@
 		var/burns_to_heal = NONE
 		var/burn_damage = hemophage.getFireLoss()
 
-		if(burn_damage && max_blood_for_regen > NONE && length(hemophage.get_damaged_bodyparts(brute = FALSE, burn = TRUE, stamina = FALSE, status = BODYTYPE_ORGANIC)))
+		if(burn_damage && max_blood_for_regen > NONE && length(hemophage.get_damaged_bodyparts(brute = FALSE, burn = TRUE, status = BODYTYPE_ORGANIC)))
 			burns_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_BURN_AMOUNT, burn_damage) * delta_time)
 			blood_used += burns_to_heal * blood_to_health_multiplier
 			max_blood_for_regen -= burns_to_heal * blood_to_health_multiplier
@@ -377,28 +377,6 @@
 /datum/action/cooldown/hemophage
 	cooldown_time = 3 SECONDS
 	button_icon_state = null
-
-
-// This code had to be copied over from /datum/action/item_action to maintain the tongue and heart display on the button.
-/datum/action/cooldown/hemophage/ApplyIcon(atom/movable/screen/movable/action_button/current_button, force)
-	var/obj/item/item_target = target
-	if(button_icon && button_icon_state)
-		// If set, use the custom icon that we set instead
-		// of the item appearance
-		..()
-	else if((target && current_button.appearance_cache != item_target.appearance) || force) //replace with /ref comparison if this is not valid.
-		var/old_layer = item_target.layer
-		var/old_plane = item_target.plane
-		// reset the x & y offset so that item is aligned center
-		item_target.pixel_x = 0
-		item_target.pixel_y = 0
-		item_target.layer = FLOAT_LAYER // They need to be displayed on the proper layer and plane to show up on the button. We elevate them temporarily just to steal their appearance, and then revert it.
-		item_target.plane = FLOAT_PLANE
-		current_button.cut_overlays()
-		current_button.add_overlay(item_target)
-		item_target.layer = old_layer
-		item_target.plane = old_plane
-		current_button.appearance_cache = item_target.appearance
 
 
 /datum/action/cooldown/hemophage/drain_victim

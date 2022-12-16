@@ -1,3 +1,55 @@
+///NRI police patrol with a mission to find out if the fine reason is legitimate and then act from there.
+/datum/pirate_gang/nri_raiders
+	name = "NRI IAC Police Patrol"
+
+	ship_template_id = "nri_raider"
+	ship_name_pool = "imperial_names"
+
+	threat_title = "NRI Audit"
+	threat_content = "Greetings %STATION, this is the %SHIPNAME. \
+	Due to recent Imperial regulatory violations, such as %RESULT and many other smaller issues, your station has been fined %PAYOFF credits. \
+	Inadequate imperial police activity is currently present in your sector, thus the failure to comply might instead result in a military patrol dispatch \
+	for second attempt negotiations. Novaya Rossiyskaya Imperiya collegial secretary out."
+	possible_answers = list("Submit to audit and pay the fine.", "Override the response system for an immediate military dispatch.")
+
+	response_received = "Should be it, thank you for cooperation. Novaya Rossiyskaya Imperiya collegial secretary out."
+	response_too_late = "Your response was very delayed. We have been instructed to send in the patrol ship for second attempt negotiations, stand by."
+	response_not_enough = "Your bank balance does not hold enough money at the moment or the system has been overriden. We are sending a patrol ship for second attempt negotiations, stand by."
+
+/datum/pirate_gang/nri_raiders/generate_message(payoff)
+	var/number = rand(1,99)
+	///Station name one is the most important pick and is pretty much the station's main argument against getting fined, thus it better be mostly always right.
+	var/station_designation = pick_weight(list(
+		"Nanotrasen Research Station" = 70,
+		"Nanotrasen Refueling Outpost" = 5,
+		"Interdyne Pharmaceuticals Chemical Factory" = 5,
+		"Free Teshari League Engineering Station" = 5,
+		"Agurkrral Military Base" = 5,
+		"Sol Federation Embassy" = 5,
+		"Novaya Rossiyskaya Imperiya Civilian Port" = 5,
+	))
+	///"right" = Right for the raiders to use as an argument; usually pretty difficult to avoid.
+	var/right_pick = pick(
+		"high probability of NRI-affiliated civilian casualties aboard the facility",
+		"highly increased funding by the SolFed authorities; neglected NRI-backed subsidiaries' contracts",
+		"unethical hiring practices and unfair payment allocation for the NRI citizens",
+		"recently discovered BSA-[number] or similar model in close proximity to the neutral space aboard this or nearby affiliated facility",
+	)
+	///"wrong" = Loosely based accusations that can be easily disproven if people think.
+	var/wrong_pick = pick(
+		"inadequate support of the local producer",
+		"unregulated production of Gauss weaponry aboard this installation",
+		"SolFed-backed stationary military formation on the surface of Indecipheres",
+		"AUTOMATED REGULATORY VIOLATION DETECTION SYSTEM CRITICAL FAILURE. PLEASE CONTACT AND INFORM THE DISPATCHED AUTHORITIES TO RESOLVE THE ISSUE. \
+		ANY POSSIBLE INDENTURE HAS BEEN CLEARED. WE APOLOGIZE FOR THE INCONVENIENCE",
+	)
+	var/final_result = pick(right_pick, wrong_pick)
+	var/built_threat_content = replacetext(threat_content, "%SHIPNAME", ship_name)
+	built_threat_content = replacetext(built_threat_content, "%PAYOFF", payoff)
+	built_threat_content = replacetext(built_threat_content, "%RESULT", final_result)
+	built_threat_content = replacetext(built_threat_content, "%STATION", station_designation)
+	return new /datum/comm_message(threat_title, built_threat_content, possible_answers)
+
 /datum/outfit/pirate/nri_officer
 	name = "NRI Field Officer"
 
@@ -16,15 +68,17 @@
 
 	belt = /obj/item/storage/belt/military/nri/captain/pirate_officer
 	back = /obj/item/storage/backpack/satchel/leather
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack/raider = 1, /obj/item/ammo_box/magazine/m9mm_aps = 3, /obj/item/gun/ballistic/automatic/pistol/ladon/nri = 1, /obj/item/crucifix = 1, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/tablet/pda/security = 1)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack/raider = 1, /obj/item/ammo_box/magazine/m9mm_aps = 3, /obj/item/gun/ballistic/automatic/pistol/ladon/nri = 1, /obj/item/crucifix = 1, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/pda/security = 1)
 	l_pocket = /obj/item/paper/fluff/nri_document
 	r_pocket = /obj/item/storage/bag/ammo
 
 	id = /obj/item/card/id/advanced
 	id_trim = /datum/id_trim/nri_raider/officer
 
-/datum/outfit/pirate/nri_officer/post_equip(mob/living/carbon/human/equipped_human, visualsOnly)
+/datum/outfit/pirate/nri_officer/post_equip(mob/living/carbon/human/equipped)
 	. = ..()
+	equipped.faction -= "pirate"
+	equipped.faction |= "raider"
 
 /datum/id_trim/nri_raider/officer
 	assignment = "NRI Field Officer"
@@ -46,20 +100,24 @@
 
 	belt = /obj/item/storage/belt/military/nri/pirate
 	back = /obj/item/storage/backpack/satchel/leather
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack/raider = 1, /obj/item/crucifix = 1, /obj/item/ammo_box/magazine/m9mm = 3, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/tablet/pda/security = 1)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack/raider = 1, /obj/item/crucifix = 1, /obj/item/ammo_box/magazine/m9mm = 3, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/pda/security = 1)
 	l_pocket = /obj/item/gun/ballistic/automatic/pistol
 	r_pocket = /obj/item/storage/bag/ammo
 
 	id = /obj/item/card/id/advanced
 	id_trim = /datum/id_trim/nri_raider
 
-/datum/outfit/pirate/nri_marine/post_equip(mob/living/carbon/human/equipped_human, visualsOnly)
+/datum/outfit/pirate/nri_marine/post_equip(mob/living/carbon/human/equipped)
 	. = ..()
+	equipped.faction -= "pirate"
+	equipped.faction |= "raider"
 
 /datum/id_trim/nri_raider
 	assignment = "NRI Marine"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_nri"
+	department_color = COLOR_RED_LIGHT
+	subdepartment_color = COLOR_COMMAND_BLUE
 	sechud_icon_state = "hud_nri"
 	access = list(ACCESS_SYNDICATE, ACCESS_MAINT_TUNNELS)
 
@@ -77,7 +135,7 @@
 	important_text = "Allowed races are humans, Akulas, IPCs. Follow your field officer's orders. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. Roleplay accordingly."
 	outfit = /datum/outfit/pirate/nri_marine
 	spawner_job_path = null
-	restricted_species = list(/datum/species/human, /datum/species/akula, /datum/species/robotic/ipc)
+	restricted_species = list(/datum/species/human, /datum/species/akula, /datum/species/synthetic)
 	random_appearance = FALSE
 	show_flavor = TRUE
 
@@ -88,7 +146,6 @@
 	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/Destroy()
-	. = ..()
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
 	return ..()
 
@@ -132,9 +189,12 @@
 						'modular_skyrat/modules/encounters/sounds/gear_stop.ogg',
 						'modular_skyrat/modules/encounters/sounds/intercom_loop.ogg')
 
-/obj/machinery/computer/shuttle/pirate/nri/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/gps, "NRI Starship")
+/obj/machinery/computer/shuttle/pirate/nri
+	name = "police shuttle console"
+
+/obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/pirate/nri
+	name = "police shuttle navigation computer"
+	desc = "Used to designate a precise transit location for the police shuttle."
 
 /obj/machinery/base_alarm/nri_raider
 	alarm_sound_file = 'modular_skyrat/modules/encounters/sounds/env_horn.ogg'
@@ -175,8 +235,8 @@
 	initial_engine_power = 6
 	port_direction = EAST
 	preferred_direction = EAST
-	callTime = 5 MINUTES
-	rechargeTime = 10 MINUTES
+	callTime = 2 MINUTES
+	rechargeTime = 3 MINUTES
 	movement_force = list("KNOCKDOWN"=0,"THROW"=0)
 	can_move_docking_ports = TRUE
 	takeoff_sound = sound('modular_skyrat/modules/encounters/sounds/engine_ignit_int.ogg')
@@ -184,6 +244,10 @@
 
 /obj/structure/plaque/static_plaque/golden/commission/ks13/nri_raider
 	desc = "NRI Terentiev-Yermolayev Orbital Shipworks, Providence High Orbit, Ship OSTs-02\n'Potato Beetle' Class Corvette\nCommissioned 10/11/2562 'Keeping Promises'"
+
+/obj/structure/plaque/static_plaque/golden/commission/ks13/nri_raider/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/gps, "NRI Starship")
 
 /obj/machinery/computer/centcom_announcement/nri_raider
 	name = "police announcement console"

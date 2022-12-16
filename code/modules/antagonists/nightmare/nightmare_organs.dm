@@ -11,7 +11,7 @@
 	icon_state = "brain-x-d"
 	var/datum/action/cooldown/spell/jaunt/shadow_walk/our_jaunt
 
-/obj/item/organ/internal/brain/shadow/nightmare/Insert(mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE)
+/obj/item/organ/internal/brain/shadow/nightmare/Insert(mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE, no_id_transfer = FALSE)
 	. = ..()
 	if(M.dna.species.id != SPECIES_NIGHTMARE)
 		M.set_species(/datum/species/shadow/nightmare)
@@ -85,7 +85,7 @@
 	if(respawn_progress < HEART_RESPAWN_THRESHHOLD)
 		return
 
-	owner.revive(full_heal = TRUE, admin_revive = FALSE)
+	owner.revive(HEAL_ALL)
 	if(!(owner.dna.species.id == SPECIES_SHADOW || owner.dna.species.id == SPECIES_NIGHTMARE))
 		var/mob/living/carbon/old_owner = owner
 		Remove(owner, HEART_SPECIAL_SHADOWIFY)

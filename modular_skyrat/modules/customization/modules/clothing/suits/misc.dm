@@ -8,24 +8,6 @@
 	body_parts_covered = CHEST|GROIN
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/toggle/labcoat/hospitalgown
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "hospital gown"
-	desc = "A complicated drapery with an assortment of velcros and strings, designed to keep a patient modest during medical stay and surgeries."
-	icon_state = "hgown"
-	toggle_noun = "drapes"
-	body_parts_covered = NONE
-	armor = NONE
-	equip_delay_other = 8
-
-/obj/item/clothing/suit/toggle/labcoat/medical
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "medical labcoat"
-	desc = "A modest labcoat with medical coloring, meant to distinguish personnel in the line of duty."
-	icon_state = "labcoat_gen"
-
 /obj/item/clothing/suit/dutchjacketsr
 	name = "western jacket"
 	desc = "Botanists screaming of mangos have been rumored to wear this."
@@ -276,7 +258,7 @@
 		for(var/mob/living/silicon/S in orange(2,src))
 			if(istype(S, /mob/living/silicon/ai)) continue
 			step_towards(S,src)
-		for(var/datum/species/robotic/R in orange(2,src))
+		for(var/datum/species/synthetic/R in orange(2,src))
 			step_towards(R,src)
 
 /obj/item/clothing/suit/trenchbrown

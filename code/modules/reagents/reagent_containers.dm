@@ -30,36 +30,6 @@
 		reagents.add_reagent(/datum/reagent/blood, disease_amount, data)
 
 	add_initial_reagents()
-	//SKYRAT EDIT ADDITION
-	AddComponent(/datum/component/liquids_interaction, TYPE_PROC_REF(/obj/item/reagent_containers/cup/beaker, attack_on_liquids_turf))
-
-/obj/item/reagent_containers/proc/attack_on_liquids_turf(obj/item/reagent_containers/my_beaker, turf/T, mob/living/user, obj/effect/abstract/liquid_turf/liquids)
-	if(user.combat_mode)
-		return FALSE
-	if(!my_beaker.spillable)
-		return FALSE
-	if(!user.Adjacent(T))
-		return FALSE
-	if(liquids.fire_state) //Use an extinguisher first
-		to_chat(user, "<span class='warning'>You can't scoop up anything while it's on fire!</span>")
-		return TRUE
-	if(liquids.height == 1)
-		to_chat(user, "<span class='warning'>The puddle is too shallow to scoop anything up!</span>")
-		return TRUE
-	var/free_space = my_beaker.reagents.maximum_volume - my_beaker.reagents.total_volume
-	if(free_space <= 0)
-		to_chat(user, "<span class='warning'>You can't fit any more liquids inside [my_beaker]!</span>")
-		return TRUE
-	var/desired_transfer = my_beaker.amount_per_transfer_from_this
-	if(desired_transfer > free_space)
-		desired_transfer = free_space
-	var/datum/reagents/tempr = liquids.take_reagents_flat(desired_transfer)
-	tempr.trans_to(my_beaker.reagents, tempr.total_volume)
-	to_chat(user, "<span class='notice'>You scoop up around [my_beaker.amount_per_transfer_from_this] units of liquids with [my_beaker].</span>")
-	qdel(tempr)
-	user.changeNext_move(CLICK_CD_MELEE)
-	return TRUE
-	//SKYRAT EDIT END
 
 /obj/item/reagent_containers/examine()
 	. = ..()
@@ -70,7 +40,7 @@
 
 /obj/item/reagent_containers/create_reagents(max_vol, flags)
 	. = ..()
-	RegisterSignal(reagents, list(COMSIG_REAGENTS_NEW_REAGENT, COMSIG_REAGENTS_ADD_REAGENT, COMSIG_REAGENTS_DEL_REAGENT, COMSIG_REAGENTS_REM_REAGENT), PROC_REF(on_reagent_change))
+	RegisterSignals(reagents, list(COMSIG_REAGENTS_NEW_REAGENT, COMSIG_REAGENTS_ADD_REAGENT, COMSIG_REAGENTS_DEL_REAGENT, COMSIG_REAGENTS_REM_REAGENT), PROC_REF(on_reagent_change))
 	RegisterSignal(reagents, COMSIG_PARENT_QDELETING, PROC_REF(on_reagents_del))
 
 /obj/item/reagent_containers/attack(mob/living/target_mob, mob/living/user, params)

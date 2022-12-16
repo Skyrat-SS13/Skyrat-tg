@@ -1011,10 +1011,12 @@ Pass a positive integer as an argument to override a bot's default speed.
 	. = ..()
 	bot_reset()
 
-/mob/living/simple_animal/bot/revive(full_heal = FALSE, admin_revive = FALSE)
-	if(..())
-		update_appearance()
-		. = TRUE
+/mob/living/simple_animal/bot/revive(full_heal_flags = NONE, excess_healing = 0, force_grab_ghost = FALSE)
+	. = ..()
+	if(!.)
+		return
+
+	update_appearance()
 
 /mob/living/simple_animal/bot/ghost()
 	if(stat != DEAD) // Only ghost if we're doing this while alive, the pAI probably isn't dead yet.
@@ -1037,7 +1039,7 @@ Pass a positive integer as an argument to override a bot's default speed.
 
 	var/list/path_images = active_hud_list[DIAG_PATH_HUD]
 	QDEL_LIST(path_images)
-	if(newpath)
+	if(length(newpath))
 		var/mutable_appearance/path_image = new /mutable_appearance()
 		path_image.icon = path_image_icon
 		path_image.icon_state = path_image_icon_state

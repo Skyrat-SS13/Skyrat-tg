@@ -24,13 +24,17 @@
 		connect_techweb(SSresearch.science_tech)
 	wires = new /datum/wires/rnd(src)
 
-/obj/machinery/rnd/proc/connect_techweb(datum/techweb/new_techweb)
-	stored_research = new_techweb
-
 /obj/machinery/rnd/Destroy()
-	stored_research = null
+	if(stored_research)
+		log_research("[src] disconnected from techweb [stored_research] (destroyed).")
+		stored_research = null
 	QDEL_NULL(wires)
 	return ..()
+
+/obj/machinery/rnd/proc/connect_techweb(datum/techweb/new_techweb)
+	if(stored_research)
+		log_research("[src] disconnected from techweb [stored_research] when connected to [new_techweb].")
+	stored_research = new_techweb
 
 /obj/machinery/rnd/proc/shock(mob/user, prb)
 	if(machine_stat & (BROKEN|NOPOWER)) // unpowered, no shock
@@ -129,4 +133,4 @@
 		stack_name = S.name
 		use_power(min(active_power_usage, (amount_inserted / 100)))
 	add_overlay("protolathe_[stack_name]")
-	addtimer(CALLBACK(src, /atom/proc/cut_overlay, "protolathe_[stack_name]"), 10)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, cut_overlay), "protolathe_[stack_name]"), 10)

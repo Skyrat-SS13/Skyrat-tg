@@ -105,7 +105,7 @@
 	replace_in_name("%TARGET%", victim_mind.name)
 	replace_in_name("%JOB TITLE%", victim_mind.assigned_role.title)
 	RegisterSignal(victim, COMSIG_CARBON_LOSE_ORGAN, PROC_REF(check_eye_removal))
-	AddComponent(/datum/component/traitor_objective_register, victim, fail_signals = COMSIG_PARENT_QDELETING)
+	AddComponent(/datum/component/traitor_objective_register, victim, fail_signals = list(COMSIG_PARENT_QDELETING))
 	return TRUE
 
 /datum/traitor_objective/eyesnatching/proc/check_eye_removal(datum/source, obj/item/organ/internal/eyes/removed)
@@ -207,8 +207,12 @@
 	if(prob(20))
 		victim.emote("cry")
 	used = TRUE
-	desc += " It has been used up."
 	update_appearance(UPDATE_ICON)
+
+/obj/item/eyesnatcher/examine(mob/user)
+	. = ..()
+	if(used)
+		. += span_notice("It has been used up.")
 
 /obj/item/eyesnatcher/proc/eyeballs_exist(obj/item/organ/internal/eyes/eyeballies, obj/item/bodypart/head/head, mob/living/carbon/human/victim)
 	if(!eyeballies || QDELETED(eyeballies))
