@@ -12,30 +12,35 @@
 /datum/nifsoft/money_sense/activate()
 	. = ..()
 	if(active)
-		ADD_TRAIT(linked_mob, TRAIT_EXPORT_VALUE_VIEWER, NIFSOFT_TRAIT)
+		linked_mob.money_sense = TRUE
 		return
 
-	if(HAS_TRAIT(linked_mob, TRAIT_EXPORT_VALUE_VIEWER))
-		REMOVE_TRAIT(linked_mob, TRAIT_EXPORT_VALUE_VIEWER, NIFSOFT_TRAIT)
+	if(linked_mob.money_sense)
+		linked_mob.money_sense = FALSE
+
+/mob/living/carbon
+	///Is the mob able to see the monetary value of items by examining them?
+	var/money_sense = FALSE
 
 /obj/item/examine(mob/user)
 	. = ..()
 
-	if(HAS_TRAIT(user, TRAIT_EXPORT_VALUE_VIEWER)) //This nesting isn't ideal, but early returning may cause issues.
-		var/export_text
-		var/scanned_item = src
+	var/mob/living/carbon/looking_mob = user
 
-		//This is the code from the cargo scanner, but without the ability to scan and get tips from items.
-		var/datum/export_report/export = export_item_and_contents(scanned_item, dry_run=TRUE)
-		var/price = 0
+	if(looking_mob) //This nesting isn't ideal, but early returning may cause issues.
+		if(looking_mob.money_sense)
+			var/export_text
+			var/scanned_item = src
 
-		for(var/x in export.total_amount)
-			price += export.total_value[x]
-		if(price)
-			export_text = span_noticealien("This item has an export value of: <b>[price] credits.")
-		else
-			export_text = span_warning("This item has no export value.")
+			//This is the code from the cargo scanner, but without the ability to scan and get tips from items.
+			var/datum/export_report/export = export_item_and_contents(scanned_item, dry_run=TRUE)
+			var/price = 0
 
-		. += export_text
+			for(var/x in export.total_amount)
+				price += export.total_value[x]
+			if(price)
+				export_text = span_noticealien("This item has an export value of: <b>[price] credits.")
+			else
+				export_text = span_warning("This item has no export value.")
 
-
+			. += export_text
