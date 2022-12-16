@@ -442,6 +442,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// If the mob has this trait and die, their bomb implant doesn't detonate automatically. It must be consciously activated.
 #define TRAIT_PREVENT_IMPLANT_AUTO_EXPLOSION "prevent_implant_auto_explosion"
 
+/// Is the mob able to see the cargo export value of an item while examining it?
+#define TRAIT_EXPORT_VALUE_VIEWER "export_value_viewer"
+
 // METABOLISMS
 // Various jobs on the station have historically had better reactions
 // to various drinks and foodstuffs. Security liking donuts is a classic
@@ -886,6 +889,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define CHOKING_TRAIT "choking_trait"
 /// Trait given by hallucinations
 #define HALLUCINATION_TRAIT "hallucination_trait"
+/// Trait given by NIFSofts
+#define NIFSOFT_TRAIT "nifsoft_trait"
 
 /**
 * Trait granted by [/mob/living/carbon/Initialize] and
