@@ -213,27 +213,27 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	use_static = null
 
 /datum/sprite_accessory/socks/socks_norm
-	name = "Normal"
+	name = "Normal (Greyscale)"
 	icon_state = "socks_norm"
 	use_static = null
 
 /datum/sprite_accessory/socks/stirrups_norm
-	name = "Normal Stirrups"
+	name = "Normal Stirrups (Greyscale)"
 	icon_state = "socks_norm-stir"
 	use_static = null
 
 /datum/sprite_accessory/socks/socks_short
-	name = "Short"
+	name = "Short (Greyscale)"
 	icon_state = "socks_short"
 	use_static = null
 
 /datum/sprite_accessory/socks/socks_thigh
-	name = "Thigh-high"
+	name = "Thigh-high (Greyscale)"
 	icon_state = "socks_thigh"
 	use_static = null
 
 /datum/sprite_accessory/socks/stirrups_thigh
-	name = "Thigh-high Stirrups"
+	name = "Thigh-high Stirrups (Greyscale)"
 	icon_state = "socks_thigh-stir"
 	use_static = null
 
