@@ -78,17 +78,3 @@
 /turf/open/floor/plating/sandyplating
 	icon = 'modular_skyrat/modules/aesthetics/floors/icons/floors.dmi'
 	icon_state = "sandyplating"
-
-/turf/open/floor/grass/riverwater
-	name = "shallow water"
-	desc = "Is it wet, or does it make you wet?"
-	icon_state = "riverwater_motion"
-	footstep = FOOTSTEP_WATER
-	barefootstep = FOOTSTEP_WATER
-	clawfootstep = FOOTSTEP_WATER
-	heavyfootstep = FOOTSTEP_WATER
-
-/turf/open/floor/grass/dirt
-	name = "dirt"
-	desc = "It's dirty."
-	icon_state = "dirt"
