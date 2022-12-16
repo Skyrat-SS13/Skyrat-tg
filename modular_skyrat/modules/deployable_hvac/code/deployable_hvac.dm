@@ -1,20 +1,11 @@
+////////////////   ITEMS   //////////////////
+
 /obj/item/grenade/heater
 	name = "Deployable space heater"
 	desc = "An adorable grenade shaped like a miniature space heater.  It has a pin to pull on the side."
 	icon = 'modular_skyrat/modules/deployable_hvac/icons/deployable_hvac.dmi'
 	icon_state = "heatbang"
 	inhand_icon_state = "flashbang"
-
-
-//Clusterbomb version
-/obj/item/grenade/clusterbuster/heater
-	name = "Global Warming"
-	payload = /obj/item/grenade/heater
-	min_spawned = 4
-	max_spawned = 5
-	segment_chance = 35
-	custom_price = PAYCHECK_COMMAND * 10 //Same as black market armament holochip
-	custom_premium_price = PAYCHECK_COMMAND * 10 // I don't want it bought every single round
 
 
 /obj/item/grenade/heater/detonate(mob/living/lanced_by)
@@ -30,6 +21,36 @@
 	qdel(src)
 
 
+//Clusterbomb version
+/obj/item/grenade/clusterbuster/heater
+	name = "Global Warming"
+	payload = /obj/item/grenade/heater
+	min_spawned = 3
+	max_spawned = 5
+	segment_chance = 35
+	custom_price = PAYCHECK_COMMAND * 10 //Same as black market armament holochip
+	custom_premium_price = PAYCHECK_COMMAND * 10 // I don't want it bought every single round
+
+
+// Box for the engi-vend and cargo
+/obj/item/storage/box/heatergrenades
+	name = "box of deployable space heaters"
+	desc = "A box containing adorable grenades shaped like miniature space heaters.  No need to add water, just pull the pin and throw."
+
+/obj/item/storage/box/heatergrenades/PopulateContents()
+	for(var/i in 1 to 6)
+		new /obj/item/grenade/heater(src)
+
+// Cargo supply box.  Same cost as metal foam grenades which make much more of a mess.
+/datum/supply_pack/emergency/metalfoam
+	name = "Deployable Space heater Grenade Crate"
+	desc = "Need a lot of space heaters to somewhere that isn't cargo?  We've got you covered.  Just pull the pin on one of these handy little grenades and it'll expand into a full size space heater."
+	cost = CARGO_CRATE_VALUE * 2.4
+	contains = list(/obj/item/storage/box/heatergrenades)
+	crate_name = "Deployable Space heater grenades"
+
+
+////////////////   MACHINE   //////////////////
 
 /obj/machinery/space_heater/deployable
 	anchored = TRUE
@@ -51,7 +72,6 @@
 /obj/machinery/space_heater/deployable/deconstruct(disassembled = TRUE)
 	if(flags_1 & NODECONSTRUCT_1)
 		return ..() //Just delete us, no need to call anything else.
-
 	on_deconstruction()
 	if(!LAZYLEN(component_parts))
 		return ..() //we don't have any parts.
@@ -62,11 +82,4 @@
 	LAZYCLEARLIST(component_parts)
 	return ..()
 
-// Box for the engi-vend and cargo
-/obj/item/storage/box/heatergrenades
-	name = "box of deployable space heaters"
-	desc = "A box containing adorable grenades shaped like miniature space heaters.  No need to add water, just pull the pin and throw."
 
-/obj/item/storage/box/heatergrenades/PopulateContents()
-	for(var/i in 1 to 6)
-		new /obj/item/grenade/heater(src)

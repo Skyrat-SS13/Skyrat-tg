@@ -5,8 +5,7 @@ MODULE ID: deployable_HVAC
 ### Description:
 
 Adds deployable space heater grenades.  They have a custom grenade and machine texture in `deployable_hvac.dmi`
-
-
+They work based off of the usual grenade code, but when they detonate, they will spawn a special space heater that has less health can doesn't leave a frame on destruction.  (Instead it leaves cardboard!)
 
 ### Non-Modular stuff:
 
