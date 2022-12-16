@@ -20,7 +20,7 @@
 /datum/sprite_accessory/neck_accessory/sylveon_bow
 	name = "Sylveon Neck Bow"
 	icon_state = "sylveon_bow"
-	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_HUMANOID)
+	recommended_species = list(SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTH, SPECIES_FELINE, SPECIES_HUMANOID)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 	color_src = USE_MATRIXED_COLORS
 	ckey_whitelist = list("whirlsam" = TRUE)

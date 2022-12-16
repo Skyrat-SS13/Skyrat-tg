@@ -51,7 +51,7 @@
 	charge_past = 3
 	destroy_objects = FALSE
 	charge_damage = 25
-	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
+	button_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	button_icon_state = "ravager_charge"
 	unset_after_click = TRUE
 
