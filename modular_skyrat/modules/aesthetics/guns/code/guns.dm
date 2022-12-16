@@ -95,15 +95,12 @@
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
 
-/obj/item/gun/ballistic/revolver/mateba
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-
 /obj/item/gun/ballistic/automatic/c20r
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
 /obj/item/gun/ballistic/automatic/m90
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-/obj/item/gun/ballistic/revolver/detective
+/obj/item/gun/ballistic/revolver/c38/detective
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
 /obj/item/gun/ballistic/automatic/pistol/aps
