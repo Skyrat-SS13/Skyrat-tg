@@ -1,9 +1,5 @@
 //Robots
-#define isrobotic(A) (is_species(A,/datum/species/robotic))
-#define isipc(A) (is_species(A,/datum/species/robotic/ipc))
-#define issynthliz(A) (is_species(A,/datum/species/robotic/synthliz))
-#define issynthanthro(A) (is_species(A,/datum/species/robotic/synthetic_mammal))
-#define issynthhuman(A) (is_species(A,/datum/species/robotic/synthetic_human))
+#define issynthetic(A) (is_species(A,/datum/species/synthetic))
 //Actual Species
 #define isvox(A) (is_species(A,/datum/species/vox))
 #define isvoxprimalis(A) (is_species(A,/datum/species/vox_primalis))
