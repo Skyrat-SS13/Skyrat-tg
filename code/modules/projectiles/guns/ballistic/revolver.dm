@@ -130,16 +130,12 @@
 		"Black Panther" = "c38_panther"
 	)
 
-<<<<<<< HEAD
-/obj/item/gun/ballistic/revolver/mateba //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
 /obj/item/gun/ballistic/revolver/syndicate
 	name = "\improper Syndicate Revolver"
 	desc = "A modernized 7 round revolver manufactured by Waffle Co. Uses .357 ammo."
 	icon_state = "revolversyndie"
 
 /obj/item/gun/ballistic/revolver/mateba
->>>>>>> 0ccd96e9104 (Revolver Resprites: Imaginos Edition (#72008))
 	name = "\improper Unica 6 auto-revolver"
 	desc = "A retro high-powered autorevolver typically used by officers of the New Russia military. Uses .357 ammo."
 	icon_state = "mateba"
