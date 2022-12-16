@@ -379,28 +379,6 @@
 	button_icon_state = null
 
 
-// This code had to be copied over from /datum/action/item_action to maintain the tongue and heart display on the button.
-/datum/action/cooldown/hemophage/ApplyIcon(atom/movable/screen/movable/action_button/current_button, force)
-	var/obj/item/item_target = target
-	if(button_icon && button_icon_state)
-		// If set, use the custom icon that we set instead
-		// of the item appearance
-		..()
-	else if((target && current_button.appearance_cache != item_target.appearance) || force) //replace with /ref comparison if this is not valid.
-		var/old_layer = item_target.layer
-		var/old_plane = item_target.plane
-		// reset the x & y offset so that item is aligned center
-		item_target.pixel_x = 0
-		item_target.pixel_y = 0
-		item_target.layer = FLOAT_LAYER // They need to be displayed on the proper layer and plane to show up on the button. We elevate them temporarily just to steal their appearance, and then revert it.
-		item_target.plane = FLOAT_PLANE
-		current_button.cut_overlays()
-		current_button.add_overlay(item_target)
-		item_target.layer = old_layer
-		item_target.plane = old_plane
-		current_button.appearance_cache = item_target.appearance
-
-
 /datum/action/cooldown/hemophage/drain_victim
 	name = "Drain Victim"
 	desc = "Leech blood from any carbon victim you are passively grabbing."
