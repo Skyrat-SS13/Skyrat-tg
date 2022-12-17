@@ -52,7 +52,7 @@
 
 		// Is the APC not charging equipment? And yes, synths are gonna be treated as equipment. Deal with it.
 		if(target_apc.cell.percent() < 20) // 20%, to prevent synths from overstepping and murdering power for department machines and potentially doors.
-			to_chat(user, span_warning("[target_apc]'s equipment power is disabled."))
+			to_chat(user, span_warning("[target_apc]'s power is too low to charge you."))
 			break
 
 		// Calculate how much to draw this cycle
