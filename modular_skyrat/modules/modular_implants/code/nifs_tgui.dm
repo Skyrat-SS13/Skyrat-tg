@@ -89,11 +89,16 @@
 
 		if("change_examine_text")
 			var/text_to_use = html_encode(params["new_text"])
-			if(!text_to_use)
-				linked_mob.nif_examine_text = FALSE
+			var/datum/component/nif_examine/examine_datum = linked_mob.GetComponent(/datum/component/nif_examine)
+
+			if(!examine_datum)
 				return FALSE
 
-			linked_mob.nif_examine_text = span_purple("<b>[text_to_use]</b><br>")
+			if(!text_to_use)
+				examine_datum.nif_examine_text = span_purple("<b>There's a certain spark to their eyes.<b>")
+				return FALSE
+
+			examine_datum.nif_examine_text = span_purple("<b>[text_to_use]</b><br>")
 
 		if("uninstall_nifsoft")
 			var/nifsoft_to_remove = locate(params["nifsoft_to_remove"]) in loaded_nifsofts

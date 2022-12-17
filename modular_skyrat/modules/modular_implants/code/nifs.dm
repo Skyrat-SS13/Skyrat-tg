@@ -140,11 +140,17 @@
 		send_message("Calibration Process Starting!")
 		calibrating = TRUE
 
+	linked_mob.AddComponent(/datum/component/nif_examine)
+
 /obj/item/organ/internal/cyberimp/brain/nif/Remove(mob/living/carbon/organ_owner, special = FALSE)
 	. = ..()
 
 	organ_owner.log_message("[src] was removed from [organ_owner]]",LOG_GAME)
 	STOP_PROCESSING(SSobj, src)
+
+	var/found_component = linked_mob.GetComponent(/datum/component/nif_examine)
+	if(found_component)
+		qdel(found_component)
 
 /obj/item/organ/internal/cyberimp/brain/nif/process(delta_time)
 	. = ..()
@@ -384,6 +390,28 @@
 		installed_nifsoft.on_emp(severity)
 
 	send_message("<b>ELECTROMAGNETIC INTERFERENCE DETECTED</b>", TRUE)
+
+/datum/component/nif_examine
+	///What text is shown when examining someone with NIF Examine text?
+	var/nif_examine_text = span_purple("<b>There's a certain spark to their eyes.</b>")
+
+/datum/component/nif_examine/New()
+	. = ..()
+	if(!ishuman(parent))
+		return COMPONENT_INCOMPATIBLE
+
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/add_examine)
+
+/datum/component/nif_examine/Destroy(force, silent)
+	. = ..()
+	UnregisterSignal(parent, COMSIG_MOB_EXAMINATE)
+
+
+///Adds and examine based on the nif_examine_text of the nif_user
+/datum/component/nif_examine/proc/add_examine(mob/nif_user, mob/looker, list/examine_texts)
+	SIGNAL_HANDLER
+
+	examine_texts += nif_examine_text
 
 /mob/living/carbon/human
 	///What text is shown upon examining a human with a NIF?

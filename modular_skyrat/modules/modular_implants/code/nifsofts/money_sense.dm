@@ -33,6 +33,7 @@
 	. = ..()
 	UnregisterSignal(parent, COMSIG_MOB_EXAMINATE)
 
+///Scans the item the user is looking at and generates the cargo value of it.
 /datum/component/money_sense/proc/add_examine(mob/user, atom/target)
 	SIGNAL_HANDLER
 
