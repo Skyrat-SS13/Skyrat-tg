@@ -156,8 +156,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 
 ///Lets the user add someone to their Hivemind through a choice menu that shows everyone that has the Hivemind NIFSoft.
 /datum/component/mind_linker/nif/proc/invite_user()
-	var/list/hivemind_users = list()
-	hivemind_users += GLOB.hivemind_users
+	var/list/hivemind_users = GLOB.hivemind_users.Copy()
 	var/mob/living/carbon/human/owner = parent
 
 	//This way people already linked don't show up in the selection menu
@@ -208,7 +207,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 
 /datum/component/mind_linker/nif/proc/change_chat_color()
 	var/mob/living/carbon/human/owner = parent
-	var/new_chat_color = input(owner,"","Choose Color", COLOR_ASSEMBLY_GREEN) as color
+	var/new_chat_color = input(owner, "", "Choose Color", COLOR_ASSEMBLY_GREEN) as color
 
 	if(!new_chat_color)
 		return FALSE
