@@ -8,11 +8,6 @@
 	desc = "A specialised cell, for synthetic use only. Has a low-power mode. Without this, synthetics are unable to stay powered."
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
-	burnmod = 1.3 // Every 0.1% is 10% above the base.
-	brutemod = 1.3
-	coldmod = 1.2
-	heatmod = 2 // TWO TIMES DAMAGE FROM BEING TOO HOT?! WHAT?! No wonder lava is literal instant death for us.
-	siemens_coeff = 1.4 //Not more because some shocks will outright crit you, which is very unfun
 
 /obj/item/organ/internal/stomach/synth/emp_act(severity)
 	. = ..()

@@ -62,6 +62,11 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/robot/synth,
 	)
 	digitigrade_customization = DIGITIGRADE_OPTIONAL
+	burnmod = 1.3 // Every 0.1% is 10% above the base.
+	brutemod = 1.3
+	coldmod = 1.2
+	heatmod = 2 // TWO TIMES DAMAGE FROM BEING TOO HOT?! WHAT?! No wonder lava is literal instant death for us.
+	siemens_coeff = 1.4 //Not more because some shocks will outright crit you, which is very unfun
 	/// The innate action that synths get, if they've got a screen selected on species being set.
 	var/datum/action/innate/monitor_change/screen
 	/// This is the screen that is given to the user after they get revived. On death, their screen is temporarily set to BSOD before it turns off, hence the need for this var.
