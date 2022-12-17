@@ -66,18 +66,6 @@
 	icon_state = "flushed_cheeks"
 	default_color = "#CCCCCC"
 	affected_bodyparts = HEAD
-	
-/datum/body_marking/other/blank_face
-	name = "Blank round face (use with monster mouth)"
-	icon_state = "blankface"
-	default_color = "#CCCCCC"
-	affected_bodyparts = HEAD
-	
-/datum/body_marking/other/monster_mouth
-	name = "Monster Mouth"
-	icon_state = "monster"
-	default_color = "#CCCCCC"
-	affected_bodyparts = HEAD
 
 /datum/body_marking/other/blank_face
 	name = "Blank round face (use with monster mouth)"
