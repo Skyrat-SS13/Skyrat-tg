@@ -142,7 +142,7 @@
 				data = species_to_penis[SPECIES_HUMAN]
 
 			exposed_mob.dna.features["penis_sheath"] = data["sheath"]
-			exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_PENIS][MUTANT_INDEX_NAME] = data["index_name"]
+			exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_PENIS][MUTANT_INDEX_NAME] = data["mutant_index"]
 			exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_TESTICLES][MUTANT_INDEX_NAME] = data["balls"]
 			var/colour = data["colour"]
 			if(colour)
