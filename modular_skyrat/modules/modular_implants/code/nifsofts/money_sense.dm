@@ -12,35 +12,44 @@
 /datum/nifsoft/money_sense/activate()
 	. = ..()
 	if(active)
-		linked_mob.money_sense = TRUE
+		linked_mob.AddComponent(/datum/component/money_sense)
 		return
 
-	if(linked_mob.money_sense)
-		linked_mob.money_sense = FALSE
+	var/found_component = linked_mob.GetComponent(/datum/component/money_sense)
+	if(found_component)
+		qdel(found_component)
 
-/mob/living/carbon
-	///Is the mob able to see the monetary value of items by examining them?
-	var/money_sense = FALSE
+///Added whenever the money_sense NIFSoft is active
+/datum/component/money_sense
 
-/obj/item/examine(mob/user)
+/datum/component/money_sense/New()
 	. = ..()
+	if(!ishuman(parent))
+		return COMPONENT_INCOMPATIBLE
 
-	var/mob/living/carbon/looking_mob = user
+	RegisterSignal(parent, COMSIG_MOB_EXAMINATE, .proc/add_examine)
 
-	if(looking_mob) //This nesting isn't ideal, but early returning may cause issues.
-		if(looking_mob.money_sense)
-			var/export_text
-			var/scanned_item = src
+/datum/component/money_sense/Destroy(force, silent)
+	. = ..()
+	UnregisterSignal(parent, COMSIG_MOB_EXAMINATE)
 
-			//This is the code from the cargo scanner, but without the ability to scan and get tips from items.
-			var/datum/export_report/export = export_item_and_contents(scanned_item, dry_run=TRUE)
-			var/price = 0
+/datum/component/money_sense/proc/add_examine(mob/user, atom/target)
+	SIGNAL_HANDLER
 
-			for(var/x in export.total_amount)
-				price += export.total_value[x]
-			if(price)
-				export_text = span_noticealien("This item has an export value of: <b>[price] credits.")
-			else
-				export_text = span_warning("This item has no export value.")
+	var/obj/item/examined_item = target
+	if(!examined_item || !isobj(examined_item))
+		return FALSE
 
-			. += export_text
+	//This is the code from the cargo scanner, but without the ability to scan and get tips from items.
+	var/datum/export_report/export = export_item_and_contents(examined_item, dry_run=TRUE)
+	var/price = 0
+	var/export_text
+
+	for(var/x in export.total_amount)
+		price += export.total_value[x]
+	if(price)
+		export_text = span_noticealien("This item has an export value of: <b>[price] credits.")
+	else
+		export_text = span_warning("This item has no export value.")
+
+	to_chat(parent, export_text)
