@@ -1,3 +1,5 @@
+// Don't know of a better place to put these. They're technically related to synths, so they're going here.
+
 /obj/item/mmi/posibrain/circuit
 	name = "compact AI circuit"
 	desc = "A compact circuit, perfectly dimensioned to fit in the same slot as a cyborg's positronic brain."
@@ -15,24 +17,10 @@
 	new_mob_message = span_notice("The compact AI circuit chimes quietly.")
 	recharge_message = span_warning("The compact AI circuit isn't ready to activate again yet! Give it some time to recharge.")
 
-/obj/item/organ/internal/brain/synth/circuit
-	name = "compact AI circuit"
-	desc = "A compact and extremely complex circuit, perfectly dimensioned to fit in the same slot as a synthetic-compatible positronic brain. It is usually slotted into the chest of synthetic crewmembers."
-	icon = 'modular_skyrat/master_files/icons/obj/alt_silicon_brains.dmi'
-	icon_state = "circuit-occupied"
-	inhand_icon_state = "electronic"
-	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
-
-/obj/item/organ/internal/brain/synth/mmi
-	name = "compact man-machine interface"
-	desc = "A compact man-machine interface, perfectly dimensioned to fit in the same slot as a synthetic-compatible positronic brain. Unfortunately, the brain seems to be permanently attached to the circuitry, and it seems relatively sensitive to it's environment. It is usually slotted into the chest of synthetic crewmembers."
-	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
-	icon_state = "mmi-ipc"
-
 // CODE THAT ACTUALLY APPLIES THE BRAINS.
 // See modular_skyrat/master_files/code/modules/client/preferences/brain.dm for Synth/IPC application.
 
+/// Returns a type to use based off of a given preference value (ORGAN_PREF_POSI_BRAIN, ORGAN_PREF_MMI_BRAIN and ORGAN_PREF_CIRCUIT_BRAIN), and if they're a cyborg or not.
 /mob/living/proc/prefs_get_brain_to_use(value, is_cyborg = FALSE)
 	switch(value)
 		if(ORGAN_PREF_POSI_BRAIN)

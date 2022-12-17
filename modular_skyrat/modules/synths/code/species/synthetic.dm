@@ -17,6 +17,7 @@
 		TRAIT_NO_HUSK,
 		TRAIT_OXYIMMUNE,
 		TRAIT_LITERATE,
+		TRAIT_NOHUNGER,
 	)
 	species_traits = list(
 		ROBOTIC_DNA_ORGANS,
@@ -40,11 +41,6 @@
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
-	burnmod = 1.3 // Every 0.1% is 10% above the base.
-	brutemod = 1.3
-	coldmod = 1.2
-	heatmod = 2
-	siemens_coeff = 1.4 //Not more because some shocks will outright crit you, which is very unfun
 	payday_modifier = 0.75 // Matches the rest of the pay penalties the non-human crew have
 	species_language_holder = /datum/language_holder/machine
 	mutant_organs = list(/obj/item/organ/internal/cyberimp/arm/power_cord)
