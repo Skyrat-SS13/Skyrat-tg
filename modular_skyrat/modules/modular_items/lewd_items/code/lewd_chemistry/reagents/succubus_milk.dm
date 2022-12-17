@@ -92,12 +92,6 @@
 		mob_breasts.update_sprite_suffix()
 		exposed_mob.update_body()
 		enlargement_amount = 0
-	
-		if((mob_breasts?.genital_size >= (max_breast_size - 2)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
-			if(prob(damage_chance))
-				to_chat(exposed_mob, span_danger("Your breasts begin to strain against your clothes!"))
-				exposed_mob.adjustOxyLoss(5)
-				exposed_mob.apply_damage(1, BRUTE, exposed_mob.get_bodypart(BODY_ZONE_CHEST))
 
 		// Checks for cup size.
 		var/translation = mob_breasts.breasts_size_to_cup(mob_breasts.genital_size)
@@ -105,37 +99,35 @@
 		if(mob_breasts.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_topless())
 			switch(translation)
 				if(BREAST_SIZE_FLATCHESTED)
-					return
 				if(BREAST_SIZE_BEYOND_MEASUREMENT)
 					exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(public_bigger_action_text_list)]"))
 					to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [mob_breasts.genital_size] inches in diameter."))
-					return
 				else
 					if(mob_breasts?.genital_size >= (max_breast_size - 2))
 						exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(public_bigger_action_text_list)]"))
 						to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [translation]-cups."))
-						return
 					else
 						exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(boob_text_list)] [pick(public_action_text_list)]"))
 						to_chat(exposed_mob, span_purple("Your [pick(boob_text_list)] [pick(action_text_list)]about [translation]-cups."))
-						return
 		else
 			switch(translation)
 				if(BREAST_SIZE_FLATCHESTED)
-					return
 				if(BREAST_SIZE_BEYOND_MEASUREMENT)
 					exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(boob_text_list)] [pick(public_bigger_action_text_list)]"))
 					to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [mob_breasts.genital_size] inches in diameter."))
-					return
 				else
 					if(mob_breasts?.genital_size >= (max_breast_size - 2))
 						exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(boob_text_list)] [pick(public_bigger_action_text_list)]"))
 						to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [translation]-cups."))
-						return
 					else
 						exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s [pick(covered_boobs_list)] [pick(notice_boobs)]"))
 						to_chat(exposed_mob, span_purple("Your [pick(boob_text_list)] [pick(action_text_list)]about [translation]-cups."))
-						return
+
+		if((mob_breasts?.genital_size >= (max_breast_size - 2)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
+			if(prob(damage_chance))
+				to_chat(exposed_mob, span_danger("Your breasts begin to strain against your clothes!"))
+				exposed_mob.adjustOxyLoss(5)
+				exposed_mob.apply_damage(1, BRUTE, exposed_mob.get_bodypart(BODY_ZONE_CHEST))
 
 // Turns you into a female if character is male. Also adds breasts.
 /datum/reagent/drug/aphrodisiac/succubus_milk/overdose_effects(mob/living/carbon/human/exposed_mob)
