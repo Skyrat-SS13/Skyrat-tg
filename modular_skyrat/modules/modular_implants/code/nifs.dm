@@ -4,6 +4,8 @@
 #define NIF_CALIBRATION_STAGE_2_END 0.9
 #define NIF_CALIBRATION_STAGE_FINISHED 1
 
+#define NIF_DURABILITY_LOSS_HALVED 2
+
 /// This is the original NIF that other NIFs are based on.
 /obj/item/organ/internal/cyberimp/brain/nif
 	name = "Nanite Implant Framework"
@@ -374,7 +376,7 @@
 		if(1)
 			durability -= death_durability_loss
 		if(2)
-			durability -= (death_durability_loss / 2)
+			durability -= (death_durability_loss / NIF_DURABILITY_LOSS_HALVED)
 
 	for(var/datum/nifsoft/installed_nifsoft as anything in loaded_nifsofts)
 		installed_nifsoft.on_emp(severity)
@@ -527,3 +529,4 @@
 #undef NIF_CALIBRATION_STAGE_2
 #undef NIF_CALIBRATION_STAGE_2_END
 #undef NIF_CALIBRATION_STAGE_FINISHED
+#undef NIF_DURABILITY_LOSS_HALVED
