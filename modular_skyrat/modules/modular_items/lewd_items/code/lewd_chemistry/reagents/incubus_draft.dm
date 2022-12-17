@@ -167,11 +167,23 @@
 	
 	// Separates gender change stuff from cock growth.
 	if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/gender_change))
-		if(exposed_mob.gender != MALE)
-			exposed_mob.set_gender(MALE)
+		var double_dosing = 0 //overdosing on succubus milk and incubus draft simultaneously
+		for(var/r in exposed_mob.reagents.reagent_list)
+			var/datum/reagent/reagent = r
+			if(reagent.name == "succubus milk" && reagent.overdosed)
+				double_dosing = 1
+		if (double_dosing)
+			if(exposed_mob.gender != PLURAL)
+				exposed_mob.set_gender(PLURAL)
+				exposed_mob.physique = exposed_mob.gender
+				exposed_mob.update_body()
+				exposed_mob.update_mutations_overlay()
+		else if(exposed_mob.gender != MALE)
+			exposed_mob.set_gender(MALE)		
 			exposed_mob.physique = exposed_mob.gender
 			exposed_mob.update_body()
 			exposed_mob.update_mutations_overlay()
+		
 		// To do breast shrinkage, check if prefs allow for this.
 		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_shrinkage) || exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_removal)) 
 			var/obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
