@@ -385,112 +385,11 @@
 
 	send_message("<b>ELECTROMAGNETIC INTERFERENCE DETECTED</b>", TRUE)
 
-///A surgery that repairs the patient's NIF
-/datum/surgery/repair_nif
-	name = "Repair NIF"
-	steps = list(
-		/datum/surgery_step/incise,
-		/datum/surgery_step/retract_skin,
-		/datum/surgery_step/saw,
-		/datum/surgery_step/clamp_bleeders,
-		/datum/surgery_step/incise,
-		/datum/surgery_step/repair_nif,
-		/datum/surgery_step/close,
-		)
-
-	target_mobtypes = list(/mob/living/carbon/human)
-	possible_locs = list(BODY_ZONE_HEAD)
-	desc = "A surgical procedure that restores the integrity of an installed NIF."
-
-/datum/surgery/repair_nif/can_start(mob/user, mob/living/patient)
-	var/mob/living/carbon/human/nif_patient = patient
-	if(!nif_patient || !nif_patient.installed_nif)
-		return FALSE
-
-	. = ..()
-
-/datum/surgery_step/repair_nif
-	name = "Fix NIF"
-	repeatable = FALSE
-	implements = list(
-		TOOL_MULTITOOL = 100,
-		TOOL_HEMOSTAT = 35,
-		TOOL_SCREWDRIVER = 15,
-	)
-	time = 12 SECONDS
-
-/datum/surgery_step/repair_nif/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, span_notice("You begin to restore the integrity of [target]'s NIF..."),
-		"[user] begins to fix [target]'s NIF.",
-		"[user] begins to perform repairs on [target]'s NIF."
-	)
-
-/datum/surgery_step/repair_nif/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, span_notice("You succeed in restoring the integrity of [target]'s NIF."),
-		"[user] successfully repairs [target]'s NIF!",
-		"[user] completes the repair on [target]'s NIF."
-	)
-
-	var/mob/living/carbon/human/nif_patient = target
-	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = nif_patient.installed_nif
-
-	installed_nif.durability = installed_nif.max_durability
-	installed_nif.send_message("Restored to full integrity!")
-
-	return ..()
-
-/datum/surgery_step/repair_nif/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	if(target.getorganslot(ORGAN_SLOT_BRAIN))
-		display_results(user, target, span_warning("You screw up, causing [target] brain damage!"),
-			span_warning("[user] screws up, while trying to repair [target]'s NIF!"),
-			"[user] fails to complete the repair on [target]'s NIF.")
-
-		target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 20)
-	return FALSE
-
-// Action used to pull up the NIF menu
-/datum/action/item_action/nif
-	button_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
-	background_icon_state = "android"
-	icon_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
-	check_flags = AB_CHECK_CONSCIOUS
-
-/datum/action/item_action/nif/open_menu
-	name = "Open NIF Menu"
-	button_icon_state = "user"
-
-/datum/action/item_action/nif/open_menu/Trigger(trigger_flags)
-	. = ..()
-	var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = target
-
-	if(target_nif.calibrating)
-		target_nif.send_message("The NIF is still calibrating, please wait!", TRUE)
-		return FALSE
-
-	if(target_nif.durability < 1)
-		target_nif.send_message("Durability low!", TRUE)
-		return FALSE
-
-	if(target_nif.broken)
-		target_nif.send_message("The NIF is unable to be used at this time!", TRUE)
-		return FALSE
-
-	if(!.)
-		return
-
-	target_nif.ui_interact(usr)
-
 /mob/living/carbon/human
 	///What text is shown upon examining a human with a NIF?
 	var/nif_examine_text
 	///What, if any NIF is currently installed inside of the mob?
 	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif
-
-/mob/living/carbon/human/examine(mob/user)
-	. = ..()
-
-	if(nif_examine_text)
-		. += nif_examine_text
 
 /mob/living/carbon/human/death()
 	. = ..()
