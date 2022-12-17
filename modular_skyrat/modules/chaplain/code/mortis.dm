@@ -11,7 +11,7 @@
 /obj/item/implant/mortis/implant(mob/living/target, mob/user, silent = FALSE, force = FALSE)
 	. = ..()
 	if(.)
-		RegisterSignal(target, COMSIG_MOB_EMOTED("deathgasp"), .proc/on_deathgasp)
+		RegisterSignal(target, COMSIG_MOB_EMOTED("deathgasp"), PROC_REF(on_deathgasp))
 
 /obj/item/implant/mortis/removed(mob/target, silent = FALSE, special = FALSE)
 	. = ..()

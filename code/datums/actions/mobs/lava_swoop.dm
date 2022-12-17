@@ -3,7 +3,7 @@
 
 /datum/action/cooldown/mob_cooldown/lava_swoop
 	name = "Lava Swoop"
-	icon_icon = 'icons/effects/effects.dmi'
+	button_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "lavastaff_warn"
 	desc = "Allows you to chase a target while raining lava down."
 	cooldown_time = 4 SECONDS
@@ -32,7 +32,7 @@
 	if(enraged)
 		swoop_attack(target, TRUE)
 		return
-	INVOKE_ASYNC(src, .proc/lava_pools, target)
+	INVOKE_ASYNC(src, PROC_REF(lava_pools), target)
 	swoop_attack(target)
 
 /datum/action/cooldown/mob_cooldown/lava_swoop/proc/swoop_attack(atom/target, lava_arena = FALSE)
@@ -213,7 +213,7 @@
 
 /obj/effect/temp_visual/dragon_flight/Initialize(mapload, negative)
 	. = ..()
-	INVOKE_ASYNC(src, .proc/flight, negative)
+	INVOKE_ASYNC(src, PROC_REF(flight), negative)
 
 /obj/effect/temp_visual/dragon_flight/proc/flight(negative)
 	if(negative)

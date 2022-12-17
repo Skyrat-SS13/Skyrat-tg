@@ -148,7 +148,7 @@
 
 /obj/structure/reviving_ashwalker_egg/Initialize(mapload)
 	. = ..()
-	addtimer(CALLBACK(src, .proc/do_revive), 30 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(do_revive)), 30 SECONDS)
 
 /**
  * Proc that will fully revive the living content inside and then destroy itself
@@ -160,7 +160,7 @@
 		qdel(src)
 		return
 
-	living_inside.revive(full_heal = TRUE, admin_revive = TRUE)
+	living_inside.revive(HEAL_ADMIN)
 	living_inside.forceMove(get_turf(src))
 	living_inside.mind.grab_ghost()
 	living_inside.balloon_alert_to_viewers("[living_inside] breaks out of [src]!")

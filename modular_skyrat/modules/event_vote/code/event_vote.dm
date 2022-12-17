@@ -2,12 +2,12 @@
  * A simple voting system to replace the current random events, if no votes are recieved, it will be random.
  */
 
-#define LOW_CHAOS_TIMER_LOWER 5 MINUTES
+#define LOW_CHAOS_TIMER_LOWER (5 MINUTES)
 
-#define LOW_CHAOS_TIMER_UPPER 15 MINUTES
+#define LOW_CHAOS_TIMER_UPPER (15 MINUTES)
 
 /// How long does the vote last?
-#define EVENT_VOTE_TIME 1 MINUTES
+#define EVENT_VOTE_TIME (1 MINUTES)
 
 /// Public vote amount
 #define EVENT_PUBLIC_VOTE_AMOUNT 5
@@ -52,7 +52,10 @@
 	low_chaos_needs_reset = FALSE
 
 /// Triggers a random low chaos event
-/datum/controller/subsystem/events/proc/triger_low_chaos_event()
+/datum/controller/subsystem/events/proc/trigger_low_chaos_event()
+	if(!CONFIG_GET(flag/allow_random_events)) // If random events are disabled we shouldn't be running these
+		return
+
 	if(vote_in_progress || low_chaos_needs_reset) // No two events at once.
 		return
 	for(var/datum/round_event_control/preset/preset_event in control)
@@ -83,7 +86,7 @@
 		if(admin_client?.prefs?.toggles & SOUND_ADMINHELP)
 			SEND_SOUND(admin_client.mob, sound('sound/misc/bloop.ogg')) // Admins need a little boop.
 
-	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(end_vote)), EVENT_VOTE_TIME, TIMER_STOPPABLE)
 	vote_in_progress = TRUE
 	vote_end_time = world.time + EVENT_VOTE_TIME
 
@@ -112,7 +115,7 @@
 			continue
 		possible_events += iterating_preset
 
-	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(end_vote)), EVENT_VOTE_TIME, TIMER_STOPPABLE)
 	vote_in_progress = TRUE
 	vote_end_time = world.time + EVENT_VOTE_TIME
 
@@ -138,7 +141,7 @@
 			event_action.Grant(iterating_user)
 			generated_actions += event_action
 
-	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(end_vote)), EVENT_VOTE_TIME, TIMER_STOPPABLE)
 	vote_in_progress = TRUE
 	vote_end_time = world.time + EVENT_VOTE_TIME
 
@@ -170,7 +173,7 @@
 			event_action.Grant(iterating_user)
 			generated_actions += event_action
 
-	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(end_vote)), EVENT_VOTE_TIME, TIMER_STOPPABLE)
 	vote_in_progress = TRUE
 	vote_end_time = world.time + EVENT_VOTE_TIME
 
@@ -427,12 +430,12 @@
 			register_vote(usr, selected_event)
 			return
 		if("end_vote")
-			if(!check_rights(R_PERMISSIONS))
+			if(!check_rights(R_FUN))
 				return
 			end_vote(usr)
 			return
 		if("cancel_vote")
-			if(!check_rights(R_PERMISSIONS))
+			if(!check_rights(R_FUN))
 				return
 			cancel_vote(usr)
 			return
@@ -469,7 +472,7 @@
 			start_player_vote_chaos(public_vote)
 			return
 		if("reschedule")
-			if(!check_rights(R_PERMISSIONS))
+			if(!check_rights(R_FUN))
 				return
 			var/alert = tgui_alert(usr, "Set custom time?", "Custom time", list("Yes", "No"))
 			if(!alert)
@@ -481,14 +484,14 @@
 			message_admins("[key_name_admin(usr)] has rescheduled the event system.")
 			return
 		if("reschedule_low_chaos")
+			if(!check_rights(R_FUN))
+				return
 			var/alert = tgui_alert(usr, "Set custom time?", "Custom time", list("Yes", "No"))
 			if(!alert)
 				return
 			var/time
 			if(alert == "Yes")
 				time = tgui_input_number(usr, "Input custom time in seconds", "Custom time", 60, 6000, 1) * 10
-			if(!check_rights(R_PERMISSIONS))
-				return
 			reschedule_low_chaos(time)
 			message_admins("[key_name_admin(usr)] has rescheduled the LOW CHAOS event system.")
 			return

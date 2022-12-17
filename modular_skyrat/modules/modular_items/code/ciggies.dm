@@ -23,8 +23,8 @@
 	icon_off = "cigar2off"
 
 /datum/action/item_action/toggle_lit
-    name = "Light"
-    desc = "Light or extinguish the holocigarette"
+	name = "Light"
+	desc = "Light or extinguish the holocigarette"
 
 /datum/action/item_action/toggle_lit/Trigger(trigger_flags)
 	var/obj/item/clothing/mask/holocigarette/smoked = target

@@ -23,7 +23,11 @@
 	speak_emote = list("chitters")
 
 	basic_mob_flags = DEL_ON_DEATH
-	faction = list("hostile")
+	faction = list("hostile", FACTION_MAINT_CREATURES)
+
+	unsuitable_atmos_damage = 0
+	minimum_survivable_temperature = 270
+	maximum_survivable_temperature = INFINITY
 
 	ai_controller = /datum/ai_controller/basic_controller/cockroach
 
@@ -78,7 +82,7 @@
 	melee_damage_upper = 10
 	obj_damage = 10
 	gold_core_spawnable = HOSTILE_SPAWN
-	faction = list("hostile")
+	faction = list("hostile", FACTION_MAINT_CREATURES)
 	ai_controller = /datum/ai_controller/basic_controller/cockroach/glockroach
 	cockroach_cell_line = CELL_LINE_TABLE_GLOCKROACH
 
@@ -112,7 +116,7 @@
 	gold_core_spawnable = HOSTILE_SPAWN
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attack_vis_effect = ATTACK_EFFECT_SLASH
-	faction = list("hostile")
+	faction = list("hostile", FACTION_MAINT_CREATURES)
 	sharpness = SHARP_POINTY
 	ai_controller = /datum/ai_controller/basic_controller/cockroach/hauberoach
 	cockroach_cell_line = CELL_LINE_TABLE_HAUBEROACH
@@ -120,7 +124,7 @@
 /mob/living/basic/cockroach/hauberoach/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/caltrop, min_damage = 10, max_damage = 15, flags = (CALTROP_BYPASS_SHOES | CALTROP_SILENT))
-	AddComponent(/datum/component/squashable, squash_chance = 100, squash_damage = 1, squash_callback = /mob/living/basic/cockroach/hauberoach/.proc/on_squish)
+	AddComponent(/datum/component/squashable, squash_chance = 100, squash_damage = 1, squash_callback = TYPE_PROC_REF(/mob/living/basic/cockroach/hauberoach, on_squish))
 
 ///Proc used to override the squashing behavior of the normal cockroach.
 /mob/living/basic/cockroach/hauberoach/proc/on_squish(mob/living/cockroach, mob/living/living_target)
@@ -144,3 +148,17 @@
 
 /datum/ai_behavior/basic_melee_attack/hauberoach //Slightly slower, as this is being made in feature freeze ;)
 	action_cooldown = 1 SECONDS
+
+/datum/ai_controller/basic_controller/cockroach/sewer
+	planning_subtrees = list(
+		/datum/ai_planning_subtree/random_speech/cockroach,
+		/datum/ai_planning_subtree/simple_find_target,
+		/datum/ai_planning_subtree/basic_melee_attack_subtree/sewer,
+		/datum/ai_planning_subtree/find_and_hunt_target/roach,
+	)
+
+/datum/ai_planning_subtree/basic_melee_attack_subtree/sewer
+	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/sewer
+
+/datum/ai_behavior/basic_melee_attack/sewer
+	action_cooldown = 0.8 SECONDS

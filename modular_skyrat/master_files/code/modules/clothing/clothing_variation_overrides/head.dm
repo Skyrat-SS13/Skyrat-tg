@@ -33,9 +33,6 @@
 /obj/item/clothing/head/hats/hos
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/beret/blueshield
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/head/hats/caphat
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
@@ -114,9 +111,6 @@
 /obj/item/clothing/head/helmet/blueshirt
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/helmet/space/space_ninja
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/head/helmet/space/beret
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
@@ -156,7 +150,7 @@
 /obj/item/clothing/head/hooded/cult_hoodie/eldritch
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/helmet/space/hardsuit/berserker
+/obj/item/clothing/head/hooded/berserker
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/hooded/cloakhood/godslayer
@@ -198,9 +192,6 @@
 	supports_variations_flags = NONE
 
 /obj/item/clothing/head/cone
-	supports_variations_flags = NONE
-
-/obj/item/clothing/head/helmet/space/chronos
 	supports_variations_flags = NONE
 
 /obj/item/clothing/head/hooded/techpriest

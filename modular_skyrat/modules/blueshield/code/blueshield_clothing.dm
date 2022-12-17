@@ -3,13 +3,13 @@
 //Uniform items are in command.dm
 
 /obj/item/clothing/gloves/tackler/combat/insulated/blueshield
-    name = "combat gloves"
-    desc = "These tactical gloves appear to be unique, made out of double woven durathread fibers which make it fireproof as well as acid resistant"
-    icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
-    icon_state = "combat"
-    worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
-    resistance_flags = FIRE_PROOF |  ACID_PROOF
-    armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 100, "acid" = 100)
+	name = "combat gloves"
+	desc = "These tactical gloves appear to be unique, made out of double woven durathread fibers which make it fireproof as well as acid resistant"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
+	icon_state = "combat"
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
+	resistance_flags = FIRE_PROOF |  ACID_PROOF
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 100, "acid" = 100)
 
 /obj/item/radio/headset/headset_bs
 	name = "\proper the blueshield's headset"
@@ -54,6 +54,7 @@
 	//alternate_worn_icon_digi = 'modular_skyrat/icons/mob/head_muzzled.dmi'
 	icon_state = "beret_badge_police"
 	armor = list("melee" = 35, "bullet" = 25, "laser" = 25,"energy" = 15, "bomb" = 25, "bio" = 0, "fire" = 75, "acid" = 75)
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/beret/blueshield/navy
 	name = "navy blueshield's beret"

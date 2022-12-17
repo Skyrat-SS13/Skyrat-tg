@@ -56,19 +56,22 @@
  * * preferences - The relevant character preferences.
  */
 /datum/preference/choiced/genital/proc/is_visible(mob/living/carbon/human/target, datum/preferences/preferences)
-	var/species_type = preferences.read_preference(/datum/preference/choiced/species)
-	var/datum/species/species = new species_type
+	if(!preferences.read_preference(/datum/preference/toggle/master_erp_preferences) || !preferences.read_preference(/datum/preference/toggle/allow_genitals))
+		return FALSE
 
-	var/species_available = (savefile_key in species.get_features())
-	var/overriding = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
-	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
-	return erp_allowed && (species_available || overriding)
+	if(preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts))
+		return TRUE
+
+	var/datum/species/species = preferences.read_preference(/datum/preference/choiced/species)
+	species = new species
+
+	return (savefile_key in species.get_features())
 
 /datum/preference/choiced/genital/create_default_value()
 	return initial(default_accessory_type?.name) || "None"
 
 /datum/preference/choiced/genital/init_possible_values()
-	return assoc_to_keys(GLOB.sprite_accessories[relevant_mutant_bodypart])
+	return assoc_to_keys_features(GLOB.sprite_accessories[relevant_mutant_bodypart])
 
 /datum/preference/toggle/genital_skin_tone
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -417,7 +420,7 @@
 	relevant_mutant_bodypart = ORGAN_SLOT_BREASTS
 
 /datum/preference/choiced/breasts_size/init_possible_values()
-	return GLOB.preference_breast_sizes
+	return GLOB.breast_size_to_number
 
 /datum/preference/choiced/breasts_size/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)

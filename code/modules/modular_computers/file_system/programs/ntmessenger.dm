@@ -47,7 +47,7 @@
 	/// Whether this app can send messages to all.
 	var/spam_mode = FALSE
 
-/datum/computer_file/program/messenger/try_insert(obj/item/attacking_item, mob/living/user)
+/datum/computer_file/program/messenger/application_attackby(obj/item/attacking_item, mob/living/user)
 	if(!istype(attacking_item, /obj/item/photo))
 		return FALSE
 	var/obj/item/photo/pic = attacking_item
@@ -75,9 +75,9 @@
 
 	var/sortmode
 	if(sort_by_job)
-		sortmode = /proc/cmp_pdajob_asc
+		sortmode = GLOBAL_PROC_REF(cmp_pdajob_asc)
 	else
-		sortmode = /proc/cmp_pdaname_asc
+		sortmode = GLOBAL_PROC_REF(cmp_pdaname_asc)
 
 	for(var/obj/item/modular_computer/P in sort_list(GLOB.TabletMessengers, sortmode))
 		for(var/datum/computer_file/program/messenger/app in P.stored_files)
@@ -180,7 +180,7 @@
 				if(sending_virus)
 					var/obj/item/computer_disk/virus/disk = computer.inserted_disk
 					if(istype(disk))
-						disk.send_virus(src, target, usr)
+						disk.send_virus(computer, target, usr)
 						return UI_UPDATE
 
 				send_message(usr, list(target))
@@ -405,6 +405,6 @@
 				send_message(usr, list(locate(href_list["target"])))
 			if("mess_us_up")
 				if(!HAS_TRAIT(src, TRAIT_PDA_CAN_EXPLODE))
-					var/obj/item/modular_computer/tablet/comp = computer
+					var/obj/item/modular_computer/pda/comp = computer
 					comp.explode(usr, from_message_menu = TRUE)
 					return

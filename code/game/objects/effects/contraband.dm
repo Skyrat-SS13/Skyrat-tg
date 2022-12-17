@@ -155,6 +155,8 @@
 			approved_types |= T
 
 	var/obj/structure/sign/poster/selected = pick(approved_types)
+	if(length(GLOB.holidays) && prob(30))  // its the holidays! lets get festive
+		selected = /obj/structure/sign/poster/official/festive
 
 	name = initial(selected.name)
 	desc = initial(selected.desc)
@@ -248,7 +250,7 @@
 	playsound(src, 'sound/items/poster_being_created.ogg', 100, TRUE)
 
 	var/turf/user_drop_location = get_turf(user) //cache this so it just falls to the ground if they move. also no tk memes allowed.
-	if(!do_after(user, PLACE_SPEED, placed_poster, extra_checks = CALLBACK(placed_poster, /obj/structure/sign/poster.proc/snowflake_wall_turf_check, src)))
+	if(!do_after(user, PLACE_SPEED, placed_poster, extra_checks = CALLBACK(placed_poster, TYPE_PROC_REF(/obj/structure/sign/poster, snowflake_wall_turf_check), src)))
 		to_chat(user, span_notice("The poster falls down!"))
 		placed_poster.roll_and_drop(user_drop_location)
 		return
@@ -1040,5 +1042,21 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/official/random, 32)
 	name = "Conserve Power"
 	desc = "A crudely-made poster asking the reader to turn off the power before they leave. Hopefully, it's turned on for their re-opening."
 	icon_state = "gas_power"
+
+/obj/structure/sign/poster/official/festive
+	name = "Festive Notice Poster"
+	desc = "A poster that informs of active holidays. None are today, so you should get back to work."
+	icon_state = "holiday_none"
+
+/obj/structure/sign/poster/official/festive/Initialize()
+	. = ..()
+	if(!length(GLOB.holidays))
+		return
+	var/active_holiday = pick(GLOB.holidays)
+	var/datum/holiday/holi_data = GLOB.holidays[active_holiday]
+
+	name = holi_data.poster_name
+	desc = holi_data.poster_desc
+	icon_state = holi_data.poster_icon
 
 #undef PLACE_SPEED

@@ -26,13 +26,13 @@
 		"rather large",
 		"jiggly",
 		"hefty",
- 	)
+	)
 	/// Synonyms for breasts.
 	var/static/list/boob_text_list = list(
 		"boobs",
 		"tits",
 		"breasts",
- 	)
+	)
 	/// Synonyms for the chest.
 	var/static/list/covered_boobs_list = list(
 		"bust",
@@ -57,14 +57,14 @@
 		"begin to enlarge, growing to ",
 		"suddenly expand to ",
 		"swell out to ",
- 	)
+	)
 	/// Wording chosen to be seen by other mobs, regardless of whether mob is clothed/unclothed.
 	var/static/list/public_bigger_action_text_list = list(
 		"expand and jiggle outward.",
 		"grow a bit larger, bouncing about.",
 		"seem a bit bigger than they were before.",
 		"bounce and jiggle as they suddenly expand.",
- 	)
+	)
 	/// Wording chosen to be seen by other mobs, while mob is unclothed.
 	var/static/list/public_action_text_list = list(
 		"expand outward.",
@@ -77,7 +77,7 @@
 		"seems to be a bit tighter.",
 		"appears to be a bit bigger.",
 		"seems to swell outward a bit.",
- 	)
+	)
 
 /datum/reagent/drug/aphrodisiac/succubus_milk/life_effects(mob/living/carbon/human/exposed_mob) //Increases breast size
 	var/obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)

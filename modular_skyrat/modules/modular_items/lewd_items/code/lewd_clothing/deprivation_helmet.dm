@@ -23,22 +23,24 @@
 	//
 	var/current_helmet_color = "pink"
 	var/static/list/helmet_designs
-	actions_types = list(/datum/action/item_action/toggle_vision,
-						 /datum/action/item_action/toggle_hearing,
-						 /datum/action/item_action/toggle_speech)
+	actions_types = list(
+		/datum/action/item_action/toggle_vision,
+		/datum/action/item_action/toggle_hearing,
+		/datum/action/item_action/toggle_speech,
+	)
 
 //Declare action types
 /datum/action/item_action/toggle_vision
-    name = "Vision switch"
-    desc = "Makes it impossible to see anything"
+	name = "Vision switch"
+	desc = "Makes it impossible to see anything"
 
 /datum/action/item_action/toggle_hearing
-    name = "Hearing switch"
-    desc = "Makes it impossible to hear anything"
+	name = "Hearing switch"
+	desc = "Makes it impossible to hear anything"
 
 /datum/action/item_action/toggle_speech
-    name = "Speech switch"
-    desc = "Makes it impossible to say anything"
+	name = "Speech switch"
+	desc = "Makes it impossible to say anything"
 
 //Vision switcher
 /datum/action/item_action/toggle_vision/Trigger(trigger_flags)
@@ -134,29 +136,29 @@
 		. = ..()
 		if(.)
 			return
-		var/choice = show_radial_menu(user, src, helmet_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, helmet_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		current_helmet_color = choice
 		update_icon()
-		update_action_buttons_icons()
+		update_mob_action_buttonss()
 		color_changed = TRUE
 	else
 		return
 
-/obj/item/clothing/head/helmet/space/deprivation_helmet/proc/update_action_buttons_icons()
+/obj/item/clothing/head/helmet/space/deprivation_helmet/proc/update_mob_action_buttonss()
 	var/datum/action/item_action/action_button
 
 	for(action_button in src.actions)
 		if(istype(action_button, /datum/action/item_action/toggle_vision))
 			action_button.button_icon_state = "[current_helmet_color]_blind"
-			action_button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
+			action_button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 		if(istype(action_button, /datum/action/item_action/toggle_hearing))
 			action_button.button_icon_state = "[current_helmet_color]_deaf"
-			action_button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
+			action_button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 		if(istype(action_button, /datum/action/item_action/toggle_speech))
 			action_button.button_icon_state = "[current_helmet_color]_mute"
-			action_button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
+			action_button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 	update_icon()
 
 // To check if we can change helmet's model
@@ -171,7 +173,7 @@
 	. = ..()
 	update_icon_state()
 	update_icon()
-	update_action_buttons_icons()
+	update_mob_action_buttonss()
 	if(!length(helmet_designs))
 		populate_helmet_designs()
 

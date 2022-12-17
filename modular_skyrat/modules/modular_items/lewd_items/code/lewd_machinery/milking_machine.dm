@@ -182,7 +182,7 @@
 	. = ..()
 	if(.)
 		return FALSE
-	var/choice = show_radial_menu(user, src, milkingmachine_designs, custom_check = CALLBACK(src, .proc/check_menu, user, used_item), radius = 36, require_near = TRUE)
+	var/choice = show_radial_menu(user, src, milkingmachine_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user, used_item), radius = 36, require_near = TRUE)
 	if(!choice)
 		return TRUE
 	machine_color = choice
@@ -332,7 +332,7 @@
 		add_mood_event("handcuffed", /datum/mood_event/handcuffed)
 	else
 		clear_mood_event("handcuffed")
-	update_action_buttons_icon() //some of our action buttons might be unusable when we're handcuffed.
+	update_mob_action_buttons() //some of our action buttons might be unusable when we're handcuffed.
 	update_worn_handcuffs()
 	update_hud_handcuffed()
 

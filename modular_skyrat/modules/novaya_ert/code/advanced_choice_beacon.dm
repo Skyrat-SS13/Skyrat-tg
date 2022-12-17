@@ -10,10 +10,10 @@
 	var/pod_style = STYLE_CENTCOM
 
 /obj/item/advanced_choice_beacon/attack_self(mob/user, modifiers)
-	if(canUseBeacon(user))
+	if(can_use_beacon(user))
 		display_options(user)
 
-/obj/item/advanced_choice_beacon/proc/canUseBeacon(mob/living/user)
+/obj/item/advanced_choice_beacon/proc/can_use_beacon(mob/living/user)
 	if(user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
 		return TRUE
 	else
@@ -121,7 +121,7 @@
 	icon = 'modular_skyrat/modules/novaya_ert/icons/turret_deployable.dmi'
 	icon_state = "living"
 	base_icon_state = "living"
-	stun_projectile = /obj/projectile/bullet/advanced/b12mm/rubber
+	stun_projectile = /obj/projectile/bullet/b12mm/rubber
 	lethal_projectile = /obj/projectile/bullet/a762x39
 	max_integrity = 150
 	req_access = list(ACCESS_CENT_GENERAL)
@@ -152,8 +152,8 @@
 //defensive engineering loadout
 /obj/structure/closet/crate/secure/weapon/nri/engineer/defense
 	name = "defensive engineering supplies"
-	loadout_desc = "An assortment of engineering supplies finely tuned for quick fortification.\
-	 Features barricades, building materials, extra large fuel tank and 5.6mm defensive autoturrets."
+	loadout_desc = "An assortment of engineering supplies finely tuned for quick fortification. \
+		Features barricades, building materials, extra large fuel tank and 5.6mm defensive autoturrets."
 
 /obj/structure/closet/crate/secure/weapon/nri/engineer/defense/PopulateContents()
 	new /obj/item/storage/barricade(src)
@@ -177,8 +177,8 @@
 //offensive engineering loadout
 /obj/structure/closet/crate/secure/weapon/nri/engineer/offense
 	name = "offensive engineering supplies"
-	loadout_desc = "An assortment of engineering supplies finely tuned for rapid approach defortification and area suppression.\
-	 Features way less barricades and building materials than its more defensive analogue, but includes NRI-issued viscerator grenades and a combat RCD."
+	loadout_desc = "An assortment of engineering supplies finely tuned for rapid approach defortification and area suppression. \
+		Features way less barricades and building materials than its more defensive analogue, but includes NRI-issued viscerator grenades and a combat RCD."
 
 /obj/structure/closet/crate/secure/weapon/nri/engineer/offense/PopulateContents()
 	new /obj/item/storage/barricade(src)
@@ -196,9 +196,9 @@
 //defensive heavy loadout
 /obj/structure/closet/crate/secure/weapon/nri/heavy/defense
 	name = "defensive heavy supplies"
-	loadout_desc = "An assortment of heavy soldier supplies finely tuned for stationary fire suppression and explosive fortifications.\
-	 Features a fifty calibre heavy machinegun with a lot of ammo to spare, as well as a bunch of explosive landmines. \
-	 And some bonus frag grenades."
+	loadout_desc = "An assortment of heavy soldier supplies finely tuned for stationary fire suppression and explosive fortifications. \
+		Features a fifty calibre heavy machinegun with a lot of ammo to spare, as well as a bunch of explosive landmines. \
+		And some bonus frag grenades."
 
 /obj/structure/closet/crate/secure/weapon/nri/heavy/defense/PopulateContents()
 	new /obj/item/mounted_machine_gun_folded(src)
@@ -220,8 +220,8 @@
 //offensive heavy loadout
 /obj/structure/closet/crate/secure/weapon/nri/heavy/offense
 	name = "offensive heavy supplies"
-	loadout_desc = "An assortment of heavy soldier supplies finely tuned for rapid approach and munition support.\
-	 Features Scarborough's standard LMG with a spare ammo box, as well as ammunition for Krinkov and PP-542."
+	loadout_desc = "An assortment of heavy soldier supplies finely tuned for rapid approach and munition support. \
+		Features Scarborough's standard LMG with a spare ammo box, as well as ammunition for Krinkov and PP-542."
 
 /obj/structure/closet/crate/secure/weapon/nri/heavy/offense/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/l6_saw/unrestricted(src)
