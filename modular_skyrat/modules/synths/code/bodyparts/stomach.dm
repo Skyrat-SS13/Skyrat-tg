@@ -14,9 +14,9 @@
 	if(!owner || . & EMP_PROTECT_SELF)
 		return
 	switch(severity)
-		if(1)
-			owner.nutrition = 50
-			to_chat(owner, span_warning("Alert: Detected severe battery discharge!"))
-		if(2)
-			owner.nutrition = 250
+		if(EMP_HEAVY)
+			owner.nutrition = max(0, owner.nutrition - 150)
+			to_chat(owner, span_warning("Alert: Severe battery discharge!"))
+		if(EMP_LIGHT)
+			owner.nutrition = max(0, owner.nutrition - 50)
 			to_chat(owner, span_warning("Alert: Minor battery discharge!"))
