@@ -209,6 +209,7 @@
 	hunger_modifier *= nutrition_drain_rate
 	power_usage -= (nutrition_drain_rate * nutrition_conversion_rate)
 	nutrition_drain = TRUE
+	return TRUE
 
 /// Checks to see if the mob has a nutrition that can be drain from
 /obj/item/organ/internal/cyberimp/brain/nif/proc/nutrition_check() //This is a seperate proc so that TGUI can perform this check on the menu
