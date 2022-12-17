@@ -111,6 +111,13 @@
 
 	power_level = max_power
 
+/obj/item/organ/internal/cyberimp/brain/nif/Destroy()
+	linked_mob.nif_examine_text = null
+	linked_mob = null
+
+	QDEL_LIST(loaded_nifsofts)
+	return ..()
+
 /obj/item/organ/internal/cyberimp/brain/nif/Insert(mob/living/carbon/human/insertee, special = FALSE, drop_if_replaced = TRUE)
 	. = ..()
 
@@ -169,13 +176,6 @@
 			nifsoft.activate()
 
 	power_level = min(power_level - power_usage, max_power)
-
-/obj/item/organ/internal/cyberimp/brain/nif/Destroy()
-	linked_mob.nif_examine_text = null
-	linked_mob = null
-
-	QDEL_LIST(loaded_nifsofts)
-	return ..()
 
 ///Subtracts from the power level of the NIF once
 /obj/item/organ/internal/cyberimp/brain/nif/proc/use_power(power_to_use)
@@ -264,10 +264,10 @@
 			var/random_ailment = rand(1, side_effect_risk)
 			switch(random_ailment)
 				if(1)
-					to_chat(linked_mob, span_warning("You feel sick to your stomach"))
+					to_chat(linked_mob, span_warning("You feel sick to your stomach!"))
 					linked_mob.adjust_disgust(25)
 				if(2)
-					to_chat(linked_mob, span_warning("You feel a wave of fatigue roll over you"))
+					to_chat(linked_mob, span_warning("You feel a wave of fatigue roll over you!"))
 					linked_mob.adjustStaminaLoss(50)
 
 		if(NIF_CALIBRATION_STAGE_FINISHED to INFINITY)
@@ -290,7 +290,7 @@
 		return FALSE
 
 	for(var/datum/nifsoft/current_nifsoft as anything in loaded_nifsofts)
-		if(loaded_nifsoft.single_install && loaded_nifsoft.type == current_nifsoft.type)
+		if(loaded_nifsoft.single_install && (loaded_nifsoft.type == current_nifsoft.type))
 			send_message("Multiple of [loaded_nifsoft] cannot be installed", TRUE)
 			return FALSE
 
