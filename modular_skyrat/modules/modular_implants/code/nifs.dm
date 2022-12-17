@@ -395,11 +395,12 @@
 		/datum/surgery_step/clamp_bleeders,
 		/datum/surgery_step/incise,
 		/datum/surgery_step/repair_nif,
-		/datum/surgery_step/close)
+		/datum/surgery_step/close,
+		)
 
 	target_mobtypes = list(/mob/living/carbon/human)
 	possible_locs = list(BODY_ZONE_HEAD)
-	desc = "A surgical procedure that restores the integrity of an installed NIF"
+	desc = "A surgical procedure that restores the integrity of an installed NIF."
 
 /datum/surgery/repair_nif/can_start(mob/user, mob/living/patient)
 	var/mob/living/carbon/human/nif_patient = patient
@@ -441,7 +442,7 @@
 /datum/surgery_step/repair_nif/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(target.getorganslot(ORGAN_SLOT_BRAIN))
 		display_results(user, target, span_warning("You screw up, causing [target] brain damage!"),
-			span_warning("[user] screws up, causing damage to [target]'s brain!"),
+			span_warning("[user] screws up, while trying to repair [target]'s NIF!"),
 			"[user] fails to complete the repair on [target]'s NIF.")
 
 		target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 20)
