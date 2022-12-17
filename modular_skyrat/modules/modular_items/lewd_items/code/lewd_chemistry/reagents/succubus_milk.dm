@@ -149,6 +149,7 @@
 			else
 				exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s chest suddenly bounces a bit."))
 				to_chat(exposed_mob, span_purple("Your chest feels warm, tingling with sensitivity as it strains against your clothes."))
+				
 	// Separates gender change stuff from breast growth.
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
 		var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
@@ -172,7 +173,6 @@
 			if(!mob_testicles || mob_testicles.genital_size <= 1)
 				return
 			mob_testicles.genital_size -= 1
-			return
 
 // Notify the user that they're overdosing. Doesn't affect their mood.
 /datum/reagent/drug/aphrodisiac/succubus_milk/overdose_start(mob/living/carbon/human/exposed_mob)
