@@ -17,7 +17,6 @@
 		TRAIT_NO_HUSK,
 		TRAIT_OXYIMMUNE,
 		TRAIT_LITERATE,
-		TRAIT_NOHUNGER,
 	)
 	species_traits = list(
 		ROBOTIC_DNA_ORGANS,
