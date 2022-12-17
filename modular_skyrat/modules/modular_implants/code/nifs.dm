@@ -145,10 +145,11 @@
 	if(!linked_mob || broken)
 		return FALSE
 
+	if(IS_IN_STASIS(linked_mob))
+		return FALSE
+
 	if(calibrating)
 		perform_calibration()
-
-	if(IS_IN_STASIS(linked_mob))
 		return
 
 	if(nutrition_drain && linked_mob.nutrition < minimum_nutrition) //Turns nutrition drain off if nutrition is lower than minimum
