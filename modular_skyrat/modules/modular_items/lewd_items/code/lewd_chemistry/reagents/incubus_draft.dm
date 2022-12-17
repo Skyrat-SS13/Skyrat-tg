@@ -168,9 +168,9 @@
 		// Makes the balls bigger if they're small.
 		var/obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
 		if(mob_testicles)
-			if(mob_testicles.genital_size > 2)
-				return
-			mob_testicles.genital_size = 2
+			if(mob_testicles.genital_size < 2)
+				mob_testicles.genital_size = 2
+	
 	// Separates gender change stuff from cock growth.
 	var/obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
 	if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/gender_change))
