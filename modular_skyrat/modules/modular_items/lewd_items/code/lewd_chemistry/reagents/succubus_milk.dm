@@ -161,7 +161,7 @@
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
 		var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
 		var/obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
-		if(exposed_mob.gender == MALE)
+		if(exposed_mob.gender != FEMALE)
 			exposed_mob.set_gender(FEMALE)
 			exposed_mob.physique = exposed_mob.gender
 			exposed_mob.update_body()
