@@ -120,7 +120,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 		return FALSE
 
 	to_chat(hivemind_to_leave.parent, span_abductor("[user] has been removed from your Hivemind."))
-	to_chat(user, span_abductor("You have left [hivemind_to_leave.parent]'s hivemind"))
+	to_chat(user, span_abductor("You have left [hivemind_to_leave.parent]'s Hivemind."))
 
 	hivemind.network_list -= hivemind_to_leave
 	hivemind_to_leave.linked_mobs -= user
