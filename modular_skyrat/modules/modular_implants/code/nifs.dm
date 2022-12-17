@@ -414,8 +414,6 @@
 	examine_texts += nif_examine_text
 
 /mob/living/carbon/human
-	///What text is shown upon examining a human with a NIF?
-	var/nif_examine_text
 	///What, if any NIF is currently installed inside of the mob?
 	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif
 
