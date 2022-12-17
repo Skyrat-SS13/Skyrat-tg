@@ -168,7 +168,7 @@
 			exposed_mob.update_mutations_overlay()
 		if(!mob_penis)
 			return
-		if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/penis_enlargement)) // To do cock shrinkage, check if prefs allow for this.
+		if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/penis_shrinkage)) // To do cock shrinkage, check if prefs allow for this.
 			if(mob_penis.genital_size > penis_min_length)
 				mob_penis.genital_size -= penis_size_reduction_step
 				mob_penis.update_sprite_suffix()

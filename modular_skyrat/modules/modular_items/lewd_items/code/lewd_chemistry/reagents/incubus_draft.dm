@@ -172,21 +172,29 @@
 				mob_testicles.genital_size = 2
 	
 	// Separates gender change stuff from cock growth.
-	var/obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
 	if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/gender_change))
 		if(exposed_mob.gender != MALE)
 			exposed_mob.set_gender(MALE)
 			exposed_mob.physique = exposed_mob.gender
 			exposed_mob.update_body()
 			exposed_mob.update_mutations_overlay()
-		if(!mob_breasts)
-			return
-		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_enlargement)) // To do breast shrinkage, check if prefs allow for this.
+		// To do breast shrinkage, check if prefs allow for this.
+		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_shrinkage) || exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_removal)) 
+			var/obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
+			if(!mob_breasts)
+				return
 			if(mob_breasts.genital_size > breast_minimum_size)
 				mob_breasts.genital_size -= breast_size_reduction_step
 				mob_breasts.update_sprite_suffix()
 				exposed_mob.update_body()
 				return
+			else if(mob_breasts.genital_size == breast_minimum_size)
+				if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_removal)) 
+					to_chat(exposed_mob, span_purple("Your breasts have completely tightened into firm, flat pecs."))
+					mob_breasts.Remove(exposed_mob)
+					mob_breasts.update_sprite_suffix()
+					exposed_mob.update_body()
+					return
 
 // Notify the user that they're overdosing. Doesn't affect their mood.
 /datum/reagent/drug/aphrodisiac/incubus_draft/overdose_start(mob/living/carbon/human/exposed_mob)
