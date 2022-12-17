@@ -51,7 +51,7 @@
 			break
 
 		// Is the APC not charging equipment? And yes, synths are gonna be treated as equipment. Deal with it.
-		if(target_apc.equipment == APC_CHANNEL_AUTO_OFF || target_apc.equipment == APC_CHANNEL_OFF) // Better than just 10%, as that's enough margin for synths to overstep and trip doors offline.
+		if(target_apc.cell.percent() < 20) // 20%, to prevent synths from overstepping and murdering power for department machines and potentially doors.
 			to_chat(user, span_warning("[target_apc]'s equipment power is disabled."))
 			break
 
@@ -71,8 +71,6 @@
 
 		// Use the power and increase nutrition.
 		target_apc.cell.use(power_use)
-		// I will gut you if you remove this following code, as it fixes synths powersinking department doors and lights so easily.
-		target_apc.update() // IMPORTANT TO MAKE SURE APCS ARE AWARE OF SYNTH POWERDRAW AS IT HAPPENS.
 
 		user.nutrition += power_use / SYNTH_CHARGE_PER_NUTRITION
 		do_sparks(1, FALSE, target_apc)
