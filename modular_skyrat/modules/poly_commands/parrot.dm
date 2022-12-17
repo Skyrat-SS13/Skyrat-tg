@@ -6,7 +6,7 @@
 	/// Whether the parrot is on a human's shoulder or not
 	var/buckled_to_human = FALSE
 
-/mob/living/simple_animal/parrot/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, list/spans, list/message_mods = list())
+/mob/living/simple_animal/parrot/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, list/spans, list/message_mods = list(), message_range)
 	. = ..()
 	if(check_command(message, speaker))
 		return
