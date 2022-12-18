@@ -171,6 +171,7 @@
 
 /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch
 	icon_state = "security_eyepatch"
+	current_skin = "security_eyepatch"	//prevents reskinning
 
 /obj/item/clothing/glasses/hud/security/night
 	icon_state = "security_hud_nv"
