@@ -17,9 +17,6 @@
 /obj/item/storage/box
 	icon = 'modular_skyrat/modules/aesthetics/storage/storage.dmi'
 
-/obj/item/storage/box/lights
-	icon = 'modular_skyrat/modules/aesthetics/storage/storage.dmi'
-
 /obj/item/storage/box/rubbershot
 	icon_state = "secbox_xl"
 	illustration = "rubbershot"
