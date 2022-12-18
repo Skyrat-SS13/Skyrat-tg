@@ -619,6 +619,7 @@
 /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch/redsec
 	icon = 'icons/obj/clothing/glasses.dmi'
 	worn_icon = 'icons/mob/clothing/eyes.dmi'
+	glass_colour_type = /datum/client_colour/glass_colour/darkred
 	icon_state = "hudpatch"
 
 /obj/item/clothing/glasses/hud/security/night/redsec
