@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-#define HIJACK_SYNDIE 1
-#define RUSKY_PARTY 2
-#define SPIDER_GIFT 3
-#define DEPARTMENT_RESUPPLY 4
-#define ANTIDOTE_NEEDED 5
-#define PIZZA_DELIVERY 6
-#define ITS_HIP_TO 7
-#define MY_GOD_JC 8
-=======
 #define HIJACK_SYNDIE "syndies"
 #define RUSKY_PARTY "ruskies"
 #define SPIDER_GIFT "spiders"
@@ -17,7 +7,6 @@
 #define ITS_HIP_TO "bees"
 #define MY_GOD_JC "bomb"
 #define PAPERS_PLEASE "paperwork"
->>>>>>> 52d97187bc7 (Shuttle Loan now has admin_setup functionality (#71782))
 
 /datum/round_event_control/shuttle_loan
 	name = "Shuttle Loan"
@@ -109,8 +98,6 @@
 			priority_announce("Cargo: We have discovered an active Syndicate bomb near our VIP shuttle's fuel lines. If you feel up to the task, we will pay you for defusing it.", "CentCom Security Division")
 			thanks_msg = "Live explosive ordnance incoming via supply shuttle. Evacuating cargo bay is recommended."
 			bonus_points = 45000 //If you mess up, people die and the shuttle gets turned into swiss cheese
-<<<<<<< HEAD
-=======
 		if(PAPERS_PLEASE)
 			priority_announce("Cargo: A neighboring station needs some help handling some paperwork. Could you help process it for us?", "CentCom Paperwork Division")
 			thanks_msg = "The cargo shuttle should return in five minutes. Payment will be rendered when the paperwork is processed and returned."
@@ -120,7 +107,6 @@
 			kill()
 			return
 	SSshuttle.shuttle_loan = src
->>>>>>> 52d97187bc7 (Shuttle Loan now has admin_setup functionality (#71782))
 
 /datum/round_event/shuttle_loan/proc/loan_shuttle()
 	priority_announce(thanks_msg, "Cargo shuttle commandeered by CentCom.")
