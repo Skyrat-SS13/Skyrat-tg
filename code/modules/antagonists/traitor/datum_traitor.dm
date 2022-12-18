@@ -296,11 +296,15 @@
 	result += objectives_text
 
 	if(uplink_handler)
+<<<<<<< HEAD
 		var/completed_objectives_text = "Completed Uplink Objectives: "
 		for(var/datum/traitor_objective/objective as anything in uplink_handler.completed_objectives)
 			if(objective.objective_state == OBJECTIVE_STATE_COMPLETED)
 				completed_objectives_text += "<br><B>[objective.name]</B> - ([objective.telecrystal_reward] TC, [DISPLAY_PROGRESSION(objective.progression_reward)] Reputation)"
 		result += completed_objectives_text
+=======
+		result += "<br>The traitor had a total of [DISPLAY_PROGRESSION(uplink_handler.progression_points)] Reputation and [uplink_handler.telecrystals] Unused Telecrystals."
+>>>>>>> ef44c138664 (Fixes round end reputation formatting (#72057))
 
 	// SKYRAT EDIT REMOVAL
 	/*
