@@ -276,7 +276,7 @@
 						return
 					if(!HAS_TRAIT(human_user, TRAIT_SECURITY_HUD))
 						return
-					investigate_log("[key_name(src)] has been set from [sec_record.fields["criminal"]] to [setcriminal] by [key_name(usr)].", INVESTIGATE_RECORDS) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
+					investigate_log("has been set from [sec_record.fields["criminal"]] to [setcriminal] by [key_name(human_user)].", INVESTIGATE_RECORDS) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 					sec_record.fields["criminal"] = setcriminal //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 					sec_hud_set_security_status()
 				return
