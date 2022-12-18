@@ -200,14 +200,14 @@
 	name = "Toggle HEV Suit"
 	button_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
 	background_icon_state = "bg_hl"
-	icon_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
+	button_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
 	button_icon_state = "system_off"
 
 /datum/action/item_action/hev_toggle_notifs
 	name = "Toggle HEV Suit Notifications"
 	button_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
 	background_icon_state = "bg_hl"
-	icon_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
+	button_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
 	button_icon_state = "sound_VOICE_AND_TEXT"
 
 /datum/action/item_action/hev_toggle_notifs/Trigger(trigger_flags)
@@ -225,7 +225,7 @@
 
 	playsound(my_suit, 'modular_skyrat/modules/hev_suit/sound/hev/blip.ogg', 50)
 
-	UpdateButtons()
+	build_all_button_icons()
 
 /datum/action/item_action/hev_toggle/Trigger(trigger_flags)
 	var/obj/item/clothing/suit/space/hev_suit/my_suit = target
@@ -243,7 +243,7 @@
 
 	playsound(my_suit, 'modular_skyrat/modules/hev_suit/sound/hev/blip.ogg', 50)
 
-	UpdateButtons()
+	build_all_button_icons()
 
 /obj/item/clothing/suit/space/hev_suit/proc/send_message(message, color = HEV_COLOR_ORANGE)
 	if(send_notifications != HEV_NOTIFICATION_TEXT_AND_VOICE && send_notifications != HEV_NOTIFICATION_TEXT)
