@@ -756,10 +756,6 @@
 	if(!LAZYLEN(component_parts))
 		return ..() //we don't have any parts.
 	spawn_frame(disassembled)
-<<<<<<< HEAD
-	for(var/obj/item/part in component_parts)
-		part.forceMove(loc)
-=======
 
 	for(var/datum/part in component_parts)
 		if(istype(part, /datum/stock_part))
@@ -769,7 +765,6 @@
 			var/obj/item/obj_part = part
 			obj_part.forceMove(loc)
 
->>>>>>> 821a9978244 (RPED Patches (#71840))
 	LAZYCLEARLIST(component_parts)
 	return ..()
 
@@ -926,16 +921,6 @@
 		to_chat(user, display_parts(user))
 	if(!machine_board)
 		return FALSE
-<<<<<<< HEAD
-
-	for(var/obj/item/primary_part as anything in component_parts)
-		for(var/design_type in machine_board.req_components)
-			if(ispath(primary_part.type, design_type))
-				required_type = design_type
-				break
-		for(var/obj/item/secondary_part in replacer_tool.contents)
-			if(!istype(secondary_part, required_type) || !istype(primary_part, required_type))
-=======
 	/**
 	 * sorting is very important especially because we are breaking out when required part is found in the inner for loop
 	 * if the rped first picked up a tier 3 part AND THEN a tier 4 part
@@ -967,7 +952,6 @@
 
 		for(var/obj/item/secondary_part in part_list)
 			if(!istype(secondary_part, required_type))
->>>>>>> 821a9978244 (RPED Patches (#71840))
 				continue
 			// If it's a corrupt or rigged cell, attempting to send it through Bluespace could have unforeseen consequences.
 			if(istype(secondary_part, /obj/item/stock_parts/cell) && replacer_tool.works_from_distance)
@@ -987,14 +971,6 @@
 					component_parts += secondary_inserted
 				else
 					if(replacer_tool.atom_storage.attempt_remove(secondary_part, src))
-<<<<<<< HEAD
-						component_parts += secondary_part
-						secondary_part.forceMove(src)
-				replacer_tool.atom_storage.attempt_insert(primary_part, user, TRUE)
-				component_parts -= primary_part
-				to_chat(user, span_notice("[capitalize(primary_part.name)] replaced with [secondary_part.name]."))
-				shouldplaysound = 1 //Only play the sound when parts are actually replaced!
-=======
 						if (istype(primary_part_base, /datum/stock_part))
 							var/stock_part_datum = GLOB.stock_part_datums_per_object[secondary_part.type]
 							if (isnull(stock_part_datum))
@@ -1019,7 +995,6 @@
 				replacer_tool.atom_storage.attempt_insert(physical_part, user, TRUE)
 				to_chat(user, span_notice("[capitalize(physical_part.name)] replaced with [secondary_part.name]."))
 				shouldplaysound = TRUE //Only play the sound when parts are actually replaced!
->>>>>>> 821a9978244 (RPED Patches (#71840))
 				break
 
 	RefreshParts()
@@ -1039,11 +1014,7 @@
 			var/obj/item/stack/stack_part = component_part
 			part_count[component_part.name] = stack_part.amount
 		else
-<<<<<<< HEAD
-			part_count[component_part.name] = 1
-=======
 			part_count[component_name] = 1
->>>>>>> 821a9978244 (RPED Patches (#71840))
 
 	var/list/printed_components = list()
 
@@ -1051,12 +1022,12 @@
 	for(var/obj/item/component_part as anything in component_parts)
 		if(printed_components[component_part.name])
 			continue //already printed so skip
-		
+
 		var/part_name = component_part.name
 		if (isstack(component_part))
 			var/obj/item/stack/stack_part = component_part
 			part_name = stack_part.singular_name
-		
+
 		text += span_notice("[icon2html(component_part, user)] [part_count[component_part.name]] [part_name]\s.")
 		printed_components[component_part.name] = TRUE
 

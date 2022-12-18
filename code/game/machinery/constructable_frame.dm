@@ -227,18 +227,11 @@
 						// Assign the circuit & parts & move them all at once into the machine
 						// no need to seperatly move circuit board as its already part of the components list
 						new_machine.circuit = circuit
-<<<<<<< HEAD
-
-						for(var/obj/new_part in src)
-							new_part.forceMove(new_machine)
-							new_machine.component_parts += new_part
-=======
 						new_machine.component_parts = components
 						for (var/obj/new_part in components)
 							new_part.forceMove(new_machine)
 
 						//Inform machine that its finished & cleanup
->>>>>>> 821a9978244 (RPED Patches (#71840))
 						new_machine.RefreshParts()
 						new_machine.on_construction()
 						components = null
