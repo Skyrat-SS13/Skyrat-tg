@@ -1102,6 +1102,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
 	icon_state = "rosepatch"
+	base_icon_state = "rosepatch"
 
 // Donation reward for Cimika
 /obj/item/clothing/suit/toggle/labcoat/skyrat/tenrai

@@ -4,6 +4,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
 	icon_state = "eyewrap"
+	base_icon_state = "eyewrap"
 
 /obj/item/clothing/glasses/eyepatch/white
 	name = "white eyepatch"
@@ -11,6 +12,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
 	icon_state = "eyepatch_white"
+	base_icon_state = "eyepatch_white"
 
 ///GLASSSES
 /obj/item/clothing/glasses/thin
