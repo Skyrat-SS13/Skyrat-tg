@@ -112,7 +112,10 @@
 	power_level = max_power
 
 /obj/item/organ/internal/cyberimp/brain/nif/Destroy()
-	linked_mob.nif_examine_text = null
+	var/found_component = linked_mob.GetComponent(/datum/component/nif_examine)
+	if(found_component)
+		qdel(found_component)
+
 	linked_mob = null
 
 	QDEL_LIST(loaded_nifsofts)
@@ -148,7 +151,7 @@
 	organ_owner.log_message("[src] was removed from [organ_owner]]",LOG_GAME)
 	STOP_PROCESSING(SSobj, src)
 
-	var/found_component = linked_mob.GetComponent(/datum/component/nif_examine)
+	var/found_component = organ_owner.GetComponent(/datum/component/nif_examine)
 	if(found_component)
 		qdel(found_component)
 

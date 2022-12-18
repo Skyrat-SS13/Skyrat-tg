@@ -28,7 +28,7 @@
 		return FALSE
 
 	if(installed_nif)
-		if(installed_nif.durability >= 0)
+		if(installed_nif.durability <= 0)
 			installed_nif = FALSE
 
 	if(!installed_nif || (installed_nif && !installed_nif.nif_persistence))
@@ -56,7 +56,15 @@
 	WRITE_FILE(save["nif_durability"], installed_nif.durability)
 	WRITE_FILE(save["saved_nif_theme"], installed_nif.current_theme)
 	WRITE_FILE(save["nif_is_calibrated"], installed_nif.is_calibrated)
-	WRITE_FILE(save["nif_examine_text"], nif_examine_text)
+
+	var/examine_text = ""
+
+	var/datum/component/nif_examine/examine_component = GetComponent(/datum/component/nif_examine)
+	if(examine_component && examine_component.nif_examine_text)
+		examine_text = examine_component.nif_examine_text
+
+	WRITE_FILE(save["nif_examine_text"], examine_text)
+
 
 ///Loads the NIF data for an individual user.
 /mob/living/carbon/human/proc/load_nif_data()
@@ -81,6 +89,9 @@
 	new_nif.durability = save["nif_durability"]
 	new_nif.current_theme = save["saved_nif_theme"]
 	new_nif.is_calibrated = save["nif_is_calibrated"]
-	nif_examine_text = save["nif_examine_text"]
+
+	var/datum/component/nif_examine/examine_component = GetComponent(/datum/component/nif_examine)
+	if(examine_component)
+		examine_component.nif_examine_text = save["nif_examine_text"]
 
 #undef LOSS_WITH_NIF_UNINSTALLED

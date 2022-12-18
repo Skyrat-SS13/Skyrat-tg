@@ -55,8 +55,6 @@
 	var/data = list()
 	//User Preference Variables
 	data["linked_mob_name"] = linked_mob.name
-	data["examine_text"] = linked_mob.nif_examine_text
-
 	data["current_theme"] = current_theme
 
 	//Power Variables
@@ -72,6 +70,13 @@
 
 	//Durability Variables.
 	data["durability"] = durability
+
+	var/datum/component/nif_examine/examine_component = linked_mob.GetComponent(/datum/component/nif_examine)
+	if(!examine_component)
+		data["examine_text"] = ""
+
+	else
+		data["examine_text"] = examine_component.nif_examine_text
 
 	return data
 
