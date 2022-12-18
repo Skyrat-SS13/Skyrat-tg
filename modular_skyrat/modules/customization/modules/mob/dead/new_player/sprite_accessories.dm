@@ -505,7 +505,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "LIZARED Underwear"
 	icon_state = "lizared"
 	use_static = TRUE
-	covers_chest = TRUE
 
 /*
 	Adding covers_chest to TG underwears where applicable
