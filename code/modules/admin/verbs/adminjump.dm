@@ -115,13 +115,11 @@
 		log_admin("[key_name(usr)] teleported [key_name(src)] to nullspace")
 		moveToNullspace()
 	else
-		var/turf/location = get_turf(new_location)
-		log_admin("[key_name(usr)] teleported [key_name(src)] to [AREACOORD(location)]")
+		log_admin("[key_name(usr)] teleported [key_name(src)] to [AREACOORD(loc)]")
 		forceMove(new_location)
 
 /mob/admin_teleport(atom/new_location)
-	var/turf/location = get_turf(new_location)
-	var/msg = "[key_name_admin(usr)] teleported [ADMIN_LOOKUPFLW(src)] to [isnull(new_location) ? "nullspace" : ADMIN_VERBOSEJMP(location)]"
+	var/msg = "[key_name_admin(usr)] teleported [ADMIN_LOOKUPFLW(src)] to [isnull(new_location) ? "nullspace" : ADMIN_VERBOSEJMP(loc)]"
 	message_admins(msg)
 	admin_ticket_log(src, msg)
 	return ..()

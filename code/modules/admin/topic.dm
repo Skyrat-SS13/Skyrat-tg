@@ -860,8 +860,7 @@
 				var/iterable = 0
 				for(var/datum/antagonist/role in subject.mind.antag_datums)
 					special_role_description += "[role.name]"
-					iterable++
-					if(iterable != length(subject.mind.antag_datums))
+					if(++iterable != length(subject.mind.antag_datums))
 						special_role_description += ", "
 				special_role_description += "</b></font>"
 			else

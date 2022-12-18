@@ -615,7 +615,6 @@
 				to_chat(src, "<span class='notice'>You stand up.</span>")*/
 			get_up(instant)
 
-	SEND_SIGNAL(src, COMSIG_LIVING_RESTING, new_resting, silent, instant)
 	update_resting()
 
 
@@ -738,11 +737,11 @@
 	if(status_flags & GODMODE)
 		return
 	set_health(maxHealth - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss())
+	staminaloss = getStaminaLoss()
 	update_stat()
 	med_hud_set_health()
 	med_hud_set_status()
 	update_health_hud()
-	update_stamina()
 
 /mob/living/update_health_hud()
 	var/severity = 0
@@ -1424,9 +1423,9 @@
 				/mob/living/simple_animal/hostile/megafauna/dragon/lesser,
 				/mob/living/simple_animal/hostile/gorilla,
 				/mob/living/simple_animal/parrot,
-				/mob/living/basic/pet/dog/corgi,
+				/mob/living/simple_animal/pet/dog/corgi,
 				/mob/living/simple_animal/crab,
-				/mob/living/basic/pet/dog/pug,
+				/mob/living/simple_animal/pet/dog/pug,
 				/mob/living/simple_animal/pet/cat,
 				/mob/living/basic/mouse,
 				/mob/living/simple_animal/chicken,
@@ -1435,7 +1434,7 @@
 				/mob/living/simple_animal/pet/fox,
 				/mob/living/simple_animal/butterfly,
 				/mob/living/simple_animal/pet/cat/cak,
-				/mob/living/basic/pet/dog/breaddog,
+				/mob/living/simple_animal/pet/dog/breaddog,
 				/mob/living/simple_animal/chick,
 			)
 			new_mob = new picked_animal(loc)

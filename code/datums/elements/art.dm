@@ -47,8 +47,10 @@
 	if(!do_after(user, 2 SECONDS, target = source))
 		return
 	var/mult = 1
-	if(source.uses_integrity)
-		mult = source.get_integrity() / source.max_integrity
+	if(isobj(source))
+		var/obj/art_piece = source
+		mult = art_piece.get_integrity() / art_piece.max_integrity
+
 	apply_moodlet(source, user, impressiveness * mult)
 
 /datum/element/art/rev

@@ -7,7 +7,7 @@ export const Vent = (props, context) => {
   const { vent } = props;
   const { act } = useBackend(context);
   const {
-    ref,
+    id_tag,
     long_name,
     power,
     checks,
@@ -30,7 +30,7 @@ export const Vent = (props, context) => {
           content={power ? 'On' : 'Off'}
           onClick={() =>
             act('power', {
-              ref,
+              id_tag,
               val: Number(!power),
             })
           }
@@ -44,7 +44,7 @@ export const Vent = (props, context) => {
             color={!direction && 'danger'}
             onClick={() =>
               act('direction', {
-                ref,
+                id_tag,
                 val: Number(!direction),
               })
             }
@@ -57,7 +57,7 @@ export const Vent = (props, context) => {
             selected={incheck}
             onClick={() =>
               act('incheck', {
-                ref,
+                id_tag,
                 val: checks,
               })
             }
@@ -68,7 +68,7 @@ export const Vent = (props, context) => {
             selected={excheck}
             onClick={() =>
               act('excheck', {
-                ref,
+                id_tag,
                 val: checks,
               })
             }
@@ -85,7 +85,7 @@ export const Vent = (props, context) => {
               maxValue={5066}
               onChange={(e, value) =>
                 act('set_internal_pressure', {
-                  ref,
+                  id_tag,
                   value,
                 })
               }
@@ -96,7 +96,7 @@ export const Vent = (props, context) => {
               content="Reset"
               onClick={() =>
                 act('reset_internal_pressure', {
-                  ref,
+                  id_tag,
                 })
               }
             />
@@ -113,7 +113,7 @@ export const Vent = (props, context) => {
               maxValue={5066}
               onChange={(e, value) =>
                 act('set_external_pressure', {
-                  ref,
+                  id_tag,
                   value,
                 })
               }
@@ -124,7 +124,7 @@ export const Vent = (props, context) => {
               content="Reset"
               onClick={() =>
                 act('reset_external_pressure', {
-                  ref,
+                  id_tag,
                 })
               }
             />
@@ -138,7 +138,8 @@ export const Vent = (props, context) => {
 export const Scrubber = (props, context) => {
   const { scrubber } = props;
   const { act } = useBackend(context);
-  const { long_name, power, scrubbing, ref, widenet, filter_types } = scrubber;
+  const { long_name, power, scrubbing, id_tag, widenet, filter_types } =
+    scrubber;
   return (
     <Section
       level={2}
@@ -150,7 +151,7 @@ export const Scrubber = (props, context) => {
           selected={power}
           onClick={() =>
             act('power', {
-              ref,
+              id_tag,
               val: Number(!power),
             })
           }
@@ -164,7 +165,7 @@ export const Scrubber = (props, context) => {
             content={scrubbing ? 'Scrubbing' : 'Siphoning'}
             onClick={() =>
               act('scrubbing', {
-                ref,
+                id_tag,
                 val: Number(!scrubbing),
               })
             }
@@ -175,7 +176,7 @@ export const Scrubber = (props, context) => {
             content={widenet ? 'Expanded range' : 'Normal range'}
             onClick={() =>
               act('widenet', {
-                ref,
+                id_tag,
                 val: Number(!widenet),
               })
             }
@@ -192,7 +193,7 @@ export const Scrubber = (props, context) => {
                 selected={filter.enabled}
                 onClick={() =>
                   act('toggle_filter', {
-                    ref,
+                    id_tag,
                     val: filter.gas_id,
                   })
                 }

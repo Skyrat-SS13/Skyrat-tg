@@ -9,6 +9,7 @@
 	density = TRUE
 	circuit = /obj/item/circuitboard/machine/ntnet_relay
 
+	var/datum/ntnet/NTNet = null // This is mostly for backwards reference and to allow varedit modifications from ingame.
 	///On / off status for the relay machine, toggleable by the user.
 	var/relay_enabled = TRUE
 	///(D)DoS-attack-related failure causing it not to be operational any longer.
@@ -115,13 +116,17 @@
 	uid = gl_uid++
 	component_parts = list()
 
-	SSmodular_computers.ntnet_relays.Add(src)
-	SSnetworks.add_log("New quantum relay activated. Current amount of linked relays: [SSmodular_computers.ntnet_relays.len]")
-	return ..()
+	if(SSnetworks.station_network)
+		SSnetworks.relays.Add(src)
+		NTNet = SSnetworks.station_network
+		SSnetworks.add_log("New quantum relay activated. Current amount of linked relays: [SSnetworks.relays.len]")
+	. = ..()
 
 /obj/machinery/ntnet_relay/Destroy()
-	SSmodular_computers.ntnet_relays.Remove(src)
-	SSnetworks.add_log("Quantum relay connection severed. Current amount of linked relays: [SSmodular_computers.ntnet_relays.len]")
+	if(SSnetworks.station_network)
+		SSnetworks.relays.Remove(src)
+		SSnetworks.add_log("Quantum relay connection severed. Current amount of linked relays: [SSnetworks.relays.len]")
+		NTNet = null
 
 	for(var/datum/computer_file/program/ntnet_dos/D in dos_sources)
 		D.target = null

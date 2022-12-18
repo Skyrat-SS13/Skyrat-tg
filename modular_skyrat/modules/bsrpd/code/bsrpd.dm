@@ -50,7 +50,7 @@
 
 /obj/item/pipe_dispenser/bluespace/AltClick(mob/user)
 	. = ..()
-	if(. == FALSE)
+	if(!.)
 		return // too far away
 	remote_piping_toggle = !remote_piping_toggle
 	balloon_alert(user, "remote piping [remote_piping_toggle ? "on" : "off"]")

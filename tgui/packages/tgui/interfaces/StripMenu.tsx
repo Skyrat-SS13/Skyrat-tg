@@ -105,7 +105,7 @@ const SLOTS: Record<
     image: 'inventory-mask.png',
   },
 
-  pet_collar: {
+  corgi_collar: {
     displayName: 'collar',
     gridSpot: getGridSpotKey([1, 2]),
     image: 'inventory-collar.png',

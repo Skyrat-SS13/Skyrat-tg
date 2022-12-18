@@ -75,6 +75,7 @@
 
 
 /obj/item/circuit_component/arrest_console_data/input_received(datum/port/input/port)
+
 	if(!attached_console || !attached_console.authenticated)
 		on_fail.set_output(COMPONENT_SIGNAL)
 		return
@@ -147,6 +148,7 @@
 	on_fail = add_output_port("Failed", PORT_TYPE_SIGNAL)
 
 /obj/item/circuit_component/arrest_console_arrest/input_received(datum/port/input/port)
+
 	if(!attached_console || !attached_console.authenticated)
 		on_fail.set_output(COMPONENT_SIGNAL)
 		return
@@ -953,14 +955,14 @@ What a mess.*/
 								var/mob/living/carbon/human/H = i
 								H.sec_hud_set_security_status()
 					if("Delete Record (Security) Execute")
-						usr.investigate_log("has deleted the security records for [active1.fields["name"]].", INVESTIGATE_RECORDS)
+						investigate_log("[key_name(usr)] has deleted the security records for [active1.fields["name"]].", INVESTIGATE_RECORDS)
 						if(active2)
 							qdel(active2)
 							active2 = null
 
 					if("Delete Record (ALL) Execute")
 						if(active1)
-							usr.investigate_log("has deleted all records for [active1.fields["name"]].", INVESTIGATE_RECORDS)
+							investigate_log("[key_name(usr)] has deleted all records for [active1.fields["name"]].", INVESTIGATE_RECORDS)
 							for(var/datum/data/record/R in GLOB.data_core.medical)
 								if((R.fields["name"] == active1.fields["name"] || R.fields["id"] == active1.fields["id"]))
 									qdel(R)

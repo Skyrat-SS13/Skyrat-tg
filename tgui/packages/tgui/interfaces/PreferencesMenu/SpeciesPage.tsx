@@ -306,13 +306,7 @@ const SpeciesPageInner = (
                           <Diet diet={currentSpecies.diet} />
                         )
                       }>
-                      <Section
-                        /* SKYRAT EDIT START - Scrollable description */
-                        title="Description"
-                        maxHeight="14vh"
-                        overflowY="auto"
-                        /* SKYRAT EDIT END*/
-                      >
+                      <Section title="Description">
                         {currentSpecies.desc}
                       </Section>
 
@@ -333,11 +327,7 @@ const SpeciesPageInner = (
 
               <Box mt={1}>
                 <Section title="Lore">
-                  <BlockQuote /* SKYRAT EDIT START - scrollable lore */
-                    overflowY="auto"
-                    maxHeight="45vh"
-                    mr={-1} /* SKYRAT EDIT END */
-                  >
+                  <BlockQuote>
                     {currentSpecies.lore.map((text, index) => (
                       <Box key={index} maxWidth="100%">
                         {text}

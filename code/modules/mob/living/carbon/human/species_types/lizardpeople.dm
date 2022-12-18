@@ -3,6 +3,7 @@
 	name = "\improper Lizardperson"
 	plural_form = "Lizardfolk"
 	id = SPECIES_LIZARD
+	say_mod = "hisses"
 	species_traits = list(MUTCOLORS, EYECOLOR, LIPS, HAS_FLESH, HAS_BONE)
 	inherent_traits = list(
 		TRAIT_CAN_USE_FLIGHT_POTION,
@@ -30,7 +31,7 @@
 	liked_food = GORE | MEAT | SEAFOOD | NUTS | BUGS
 	inert_mutation = /datum/mutation/human/firebreath
 	death_sound = 'sound/voice/lizard/deathsound.ogg'
-	wing_types = list(/obj/item/organ/external/wings/functional/dragon)
+	wings_icons = list("Dragon")
 	species_language_holder = /datum/language_holder/lizard
 	digitigrade_customization = DIGITIGRADE_OPTIONAL
 

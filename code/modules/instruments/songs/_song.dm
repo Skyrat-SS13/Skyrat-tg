@@ -250,8 +250,7 @@
 		stop_playing(FALSE)
 		return
 	var/list/chord = compiled_chords[current_chord]
-	elapsed_delay++
-	if(elapsed_delay < delay_by)
+	if(++elapsed_delay < delay_by)
 		return
 	play_chord(chord)
 	elapsed_delay = 0

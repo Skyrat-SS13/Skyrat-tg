@@ -53,7 +53,7 @@ const getHealthColor = (health: number) => {
 };
 
 /** Returns the display color based on orbiter numbers */
-const getThreatColor = (orbiters = 0) => {
+const getThreatColor = (orbiters: number) => {
   switch (true) {
     case orbiters > THREAT.High:
       return 'violet';
@@ -66,13 +66,19 @@ const getThreatColor = (orbiters = 0) => {
   }
 };
 
-/** Displays color for buttons based on the health or orbiter count. */
+/**
+ * ### getDisplayColor
+ * Displays color for buttons based on the health or orbiter count. Toggleable.
+ * @param {Observable} item - The point of interest.
+ * @param {boolean} heatMap - Whether the user has heat map toggled.
+ * @param {string} color - OPTIONAL: The color to default to.
+ */
 export const getDisplayColor = (
   item: Observable,
   heatMap: boolean,
   color?: string
 ) => {
-  const { health, orbiters } = item;
+  const { health, orbiters = 0 } = item;
   if (typeof health !== 'number') {
     return color ? 'good' : 'grey';
   }

@@ -84,15 +84,8 @@
 	if(item_parent.sharpness || sharpness_on)
 		RegisterSignal(parent, COMSIG_ITEM_SHARPEN_ACT, PROC_REF(on_sharpen))
 
-	RegisterSignal(parent, COMSIG_DETECTIVE_SCANNED, PROC_REF(on_scan))
-
 /datum/component/transforming/UnregisterFromParent()
-	UnregisterSignal(parent, list(COMSIG_ITEM_ATTACK_SELF, COMSIG_ITEM_SHARPEN_ACT, COMSIG_DETECTIVE_SCANNED))
-
-/datum/component/transforming/proc/on_scan(datum/source, mob/user, list/extra_data)
-	SIGNAL_HANDLER
-	LAZYADD(extra_data[DETSCAN_CATEGORY_NOTES], "Readings suggest some form of state changing.")
-
+	UnregisterSignal(parent, list(COMSIG_ITEM_ATTACK_SELF, COMSIG_ITEM_SHARPEN_ACT))
 
 /*
  * Called on [COMSIG_ITEM_ATTACK_SELF].

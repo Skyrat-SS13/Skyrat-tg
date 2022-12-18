@@ -3,7 +3,7 @@
 /obj/machinery/computer/upload
 	var/mob/living/silicon/current = null //The target of future law uploads
 	icon_screen = "command"
-	time_to_unscrew = 6 SECONDS
+	time_to_screwdrive = 60
 
 /obj/machinery/computer/upload/Initialize(mapload)
 	. = ..()

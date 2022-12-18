@@ -190,19 +190,18 @@
 	. = ..()
 	if(!.)
 		return
-
 	if(!SSticker?.IsRoundInProgress())
 		to_chat(hud.mymob, span_boldwarning("The round is either not ready, or has already finished..."))
 		return
 
 	//Determines Relevent Population Cap
 	var/relevant_cap
-	var/hard_popcap = CONFIG_GET(number/hard_popcap)
-	var/extreme_popcap = CONFIG_GET(number/extreme_popcap)
-	if(hard_popcap && extreme_popcap)
-		relevant_cap = min(hard_popcap, extreme_popcap)
+	var/hpc = CONFIG_GET(number/hard_popcap)
+	var/epc = CONFIG_GET(number/extreme_popcap)
+	if(hpc && epc)
+		relevant_cap = min(hpc, epc)
 	else
-		relevant_cap = max(hard_popcap, extreme_popcap)
+		relevant_cap = max(hpc, epc)
 
 	var/mob/dead/new_player/new_player = hud.mymob
 
@@ -225,11 +224,7 @@
 		return
 	// SKYRAT EDIT END
 
-	if(!LAZYACCESS(params2list(params), CTRL_CLICK))
-		GLOB.latejoin_menu.ui_interact(new_player)
-	else
-		to_chat(new_player, span_warning("Opening emergency fallback late join menu! If THIS doesn't show, ahelp immediately!"))
-		GLOB.latejoin_menu.fallback_ui(new_player)
+	new_player.LateChoices()
 
 /atom/movable/screen/lobby/button/join/proc/show_join_button()
 	SIGNAL_HANDLER

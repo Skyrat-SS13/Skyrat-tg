@@ -1,9 +1,6 @@
 /// A list of all infuser entries
 GLOBAL_LIST_INIT(infuser_entries, prepare_entries())
 
-/// just clarifying that no threshold does some special stuff, since only meme mutants have it
-#define NO_THRESHOLD ""
-
 /proc/prepare_entries()
 	var/list/entries = list()
 	//regardless of names we want the failed mutant case to show first
@@ -27,7 +24,7 @@ GLOBAL_LIST_INIT(infuser_entries, prepare_entries())
 	var/infuse_mob_name = "rejected creature"
 	/// general desc
 	var/desc = "For whatever reason, when the body rejects DNA, the DNA goes sour, ending up as some kind of fly-like DNA jumble."
-	/// desc of what passing the threshold gets you. if this is empty, there is no threshold, so this is also really a tally of whether this is a "meme" mutant or not
+	/// desc of what passing the threshold gets you
 	var/threshold_desc = "the DNA mess takes over, and you become a full-fledged flyperson."
 	/// various little bits
 	var/list/qualities = list(
@@ -99,13 +96,11 @@ GLOBAL_LIST_INIT(infuser_entries, prepare_entries())
 	)
 	infusion_desc = "nomadic"
 
-// just some meme entries, these basically encourage killing staff pets but do not play with the organ bonus system
-
 /datum/infuser_entry/felinid
 	name = "Cat"
 	infuse_mob_name = "feline"
 	desc = "EVERYONE CALM DOWN! I'm not implying anything with this entry. Are we really so surprised that felinids are humans with mixed feline DNA?"
-	threshold_desc = NO_THRESHOLD
+	threshold_desc = "nothing happens. I guess this is why it's a big genetic craze, feline DNA is notably stable."
 	qualities = list(
 		"oh, let me guess, you're a big fan of those japanese tourist bots",
 	)
@@ -122,7 +117,7 @@ GLOBAL_LIST_INIT(infuser_entries, prepare_entries())
 	name = "Fox"
 	infuse_mob_name = "vulpini"
 	desc = "Foxes are now quite rare because of the \"fox ears\" craze back in 2555. I mean, also because we're spacefarers who destroyed foxes' natural habitats ages ago, but that applies to most animals."
-	threshold_desc = NO_THRESHOLD
+	threshold_desc = "nothing happens. Stable DNA."
 	qualities = list(
 		"oh come on really",
 		"you bring SHAME to all geneticists",

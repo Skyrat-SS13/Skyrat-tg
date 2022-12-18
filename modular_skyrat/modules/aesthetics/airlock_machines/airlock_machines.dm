@@ -1,4 +1,4 @@
-/obj/machinery/airlock_controller
+/obj/machinery/embedded_controller/radio/airlock_controller
 	icon = 'modular_skyrat/modules/aesthetics/airlock_machines/airlock_machines.dmi'
 
 /obj/machinery/door_buttons/access_button

@@ -87,10 +87,9 @@
 
 /datum/action/innate/cellular_emporium
 	name = "Cellular Emporium"
-	button_icon = 'icons/obj/drinks.dmi'
+	icon_icon = 'icons/obj/drinks.dmi'
 	button_icon_state = "changelingsting"
 	background_icon_state = "bg_changeling"
-	overlay_icon_state = "bg_changeling_border"
 	/// The cell emporium we open.
 	var/datum/cellular_emporium/cellular_emporium
 

@@ -4,7 +4,6 @@
 	weight = 5
 	max_occurrences = 1
 	min_players = 10
-	category = EVENT_CATEGORY_ENTITIES
 
 /datum/round_event/mold
 	fakeable = FALSE

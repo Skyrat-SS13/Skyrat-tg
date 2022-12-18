@@ -228,9 +228,8 @@
 
 /datum/action/innate/minedrone
 	check_flags = AB_CHECK_CONSCIOUS
-	button_icon = 'icons/mob/actions/actions_mecha.dmi'
+	icon_icon = 'icons/mob/actions/actions_mecha.dmi'
 	background_icon_state = "bg_default"
-	overlay_icon_state = "bg_default_border"
 
 /datum/action/innate/minedrone/toggle_light
 	name = "Toggle Light"

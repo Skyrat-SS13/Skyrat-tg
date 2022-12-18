@@ -251,7 +251,7 @@
 	charges--
 	desc = base_desc
 	desc += "<br><b><u>Has [charges] use\s remaining</u></b>."
-	build_all_button_icons()
+	UpdateButtons()
 	if(charges <= 0)
 		to_chat(caller, span_cult("You have exhausted the spell's power!"))
 		qdel(src)
@@ -309,7 +309,7 @@
 		qdel(src)
 	desc = base_desc
 	desc += "<br><b><u>Has [charges] use\s remaining</u></b>."
-	build_all_button_icons()
+	UpdateButtons()
 
 /datum/action/innate/cult/blood_spell/manipulation
 	name = "Blood Rites"
@@ -358,7 +358,7 @@
 			source.charges = uses
 			source.desc = source.base_desc
 			source.desc += "<br><b><u>Has [uses] use\s remaining</u></b>."
-			source.build_all_button_icons()
+			source.UpdateButtons()
 	return ..()
 
 /obj/item/melee/blood_magic/attack_self(mob/living/user)
@@ -387,7 +387,7 @@
 	else if(source)
 		source.desc = source.base_desc
 		source.desc += "<br><b><u>Has [uses] use\s remaining</u></b>."
-		source.build_all_button_icons()
+		source.UpdateButtons()
 
 //Stun
 /obj/item/melee/blood_magic/stun

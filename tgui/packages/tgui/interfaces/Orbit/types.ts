@@ -1,14 +1,14 @@
-export type Antags = Array<Observable & { antag: string }>;
-
 export type AntagGroup = [string, Antags];
 
+export type Antags = Array<Observable & { antag: string }>;
+
 export type OrbitData = {
-  alive: Observable[];
+  alive: Array<Observable>;
   antagonists: Antags;
-  dead: Observable[];
-  ghosts: Observable[];
-  misc: Observable[];
-  npcs: Observable[];
+  dead: Array<Observable>;
+  ghosts: Array<Observable>;
+  misc: Array<Observable>;
+  npcs: Array<Observable>;
 };
 
 export type Observable = {

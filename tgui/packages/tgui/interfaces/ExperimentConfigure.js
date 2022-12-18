@@ -118,7 +118,7 @@ export const ExperimentConfigure = (props, context) => {
               <Box>
                 {webs.size > 0
                   ? 'Please select a techweb to connect to...'
-                  : 'Found no servers connected to a techweb!'}
+                  : 'Found no available techwebs!'}
               </Box>
               {webs.size > 0 &&
                 Array.from(webs, ([techweb, techwebs]) => (

@@ -14,8 +14,6 @@
 
 	for (var/antennae_name in GLOB.moth_antennae_list)
 		var/datum/sprite_accessory/antennae = GLOB.moth_antennae_list[antennae_name]
-		if(antennae.locked)
-			continue
 
 		var/icon/icon_with_antennae = new(moth_head)
 		icon_with_antennae.Blend(icon(antennae.icon, "m_moth_antennae_[antennae.icon_state]_FRONT"), ICON_OVERLAY)
@@ -59,8 +57,6 @@
 
 	for (var/markings_name in GLOB.moth_markings_list)
 		var/datum/sprite_accessory/markings = GLOB.moth_markings_list[markings_name]
-		if(markings.locked)
-			continue
 		var/icon/icon_with_markings = new(moth_body)
 
 		if (markings_name != "None")

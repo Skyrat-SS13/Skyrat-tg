@@ -315,7 +315,7 @@
 			|| targetspecies.mutantliver != initial(targetspecies.mutantliver) \
 			|| targetspecies.mutantstomach != initial(targetspecies.mutantstomach) \
 			|| targetspecies.mutantappendix != initial(targetspecies.mutantappendix) \
-			|| istype(humantarget.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS), /obj/item/organ/external/wings/functional)
+			|| targetspecies.flying_species != initial(targetspecies.flying_species)
 
 		render_list += "<span class='info ml-1'>Species: [targetspecies.name][mutant ? "-derived mutant" : ""]</span>\n"
 		render_list += "<span class='info ml-1'>Core temperature: [round(humantarget.coretemperature-T0C,0.1)] &deg;C ([round(humantarget.coretemperature*1.8-459.67,0.1)] &deg;F)</span>\n"

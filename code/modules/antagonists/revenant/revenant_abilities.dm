@@ -121,8 +121,7 @@
 	name = "Toggle Darkvision"
 	panel = "Revenant Abilities"
 	background_icon_state = "bg_revenant"
-	overlay_icon_state = "bg_revenant_border"
-	button_icon = 'icons/mob/actions/actions_revenant.dmi'
+	icon_icon = 'icons/mob/actions/actions_revenant.dmi'
 	button_icon_state = "r_nightvision"
 	toggle_span = "revennotice"
 
@@ -131,7 +130,6 @@
 	name = "Revenant Transmit"
 	panel = "Revenant Abilities"
 	background_icon_state = "bg_revenant"
-	overlay_icon_state = "bg_revenant_border"
 
 	telepathy_span = "revennotice"
 	bold_telepathy_span = "revenboldnotice"
@@ -141,8 +139,7 @@
 /datum/action/cooldown/spell/aoe/revenant
 	panel = "Revenant Abilities (Locked)"
 	background_icon_state = "bg_revenant"
-	overlay_icon_state = "bg_revenant_border"
-	button_icon = 'icons/mob/actions/actions_revenant.dmi'
+	icon_icon = 'icons/mob/actions/actions_revenant.dmi'
 
 	antimagic_flags = MAGIC_RESISTANCE_HOLY
 	spell_requirements = NONE
@@ -413,6 +410,7 @@
 	name = "Haunt Object"
 	desc = "Empower nearby objects to you with ghostly energy, causing them to attack nearby mortals. \
 		Items closer to you are more likely to be haunted."
+	icon_icon = 'icons/mob/actions/actions_revenant.dmi'
 	button_icon_state = "r_haunt"
 	max_targets = 7
 	aoe_radius = 5

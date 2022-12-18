@@ -4,7 +4,7 @@ const TITLE_BOT_HEADER = "title: ";
 // Only check jobs that start with these.
 // Helps make sure we don't restart something like screenshot tests or linters, which are not known to be flaky.
 const CONSIDERED_JOBS = [
-  "Integration Tests",
+  "CI Suite / Integration Tests",
 ];
 
 async function getFailedJobsForRun(github, context, workflowRunId, runAttempt) {
@@ -205,7 +205,7 @@ function createBody({ title, failures }, runUrl) {
 	<!-- title: ${title} -->
 
 	Flaky tests were detected in [this test run](${runUrl}). This means that there was a failure that was cleared when the tests were simply restarted.
-
+	
 	Failures:
 	\`\`\`
 	${failures

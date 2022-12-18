@@ -208,8 +208,7 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 		GLOB.AdminProcCaller = user_identifier //if this runtimes, too bad for you
 		++GLOB.AdminProcCallCount
 		. = world.WrapAdminProcCall(target, procname, arguments)
-		GLOB.AdminProcCallCount--
-		if(GLOB.AdminProcCallCount == 0)
+		if(--GLOB.AdminProcCallCount == 0)
 			GLOB.AdminProcCaller = null
 	else
 		. = world.WrapAdminProcCall(target, procname, arguments)

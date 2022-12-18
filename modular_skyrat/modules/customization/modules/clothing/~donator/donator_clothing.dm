@@ -161,19 +161,19 @@
 /datum/action/item_action/dtselectcolor
 	name = "Change Color"
 	desc = "Change your color."
-	button_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	icon_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	button_icon_state = "drawingtablet"
 
 /datum/action/item_action/dtcolormenu
 	name = "Color Menu"
 	desc = "Select, save, or delete a color in your tablet's color menu!"
-	button_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	icon_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	button_icon_state = "drawingtablet"
 
 /datum/action/item_action/dtcleargrid
 	name = "Clear Canvas"
 	desc = "Clear the canvas of your drawing tablet."
-	button_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	icon_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	button_icon_state = "drawingtablet"
 
 // Donation reward for Thedragmeme
@@ -385,7 +385,7 @@
 	goggles = !goggles
 	if(user)
 		user.head_update(src, forced = 1)
-		user.update_mob_action_buttons()
+		user.update_action_buttons_icon()
 
 /obj/item/clothing/head/avipilot/ui_action_click(mob/living/carbon/user, action)
 	adjust_goggles(user)
@@ -561,7 +561,7 @@
 		c_color_index = index
 		update_icon()
 		ooser.update_worn_mask()
-		ooser.update_mob_action_buttons()
+		ooser.update_action_buttons_icon()
 		to_chat(ooser, span_notice("You toggle the [src] to [possible_colors[c_color_index]]."))
 
 // Donation reward for asky / Zulie
@@ -873,7 +873,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/carbon_user = user
 		carbon_user.head_update(src, forced = 1)
-	update_item_action_buttons()
+	update_action_buttons()
 	return TRUE
 
 /// This is the proc that handles toggling the welding protection, while also making sure to update the sight of a mob wearing it.

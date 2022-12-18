@@ -13,10 +13,11 @@
 		if(initial(D.research_icon) && initial(D.research_icon_state)) //If the design has an icon replacement skip the rest
 			icon_file = initial(D.research_icon)
 			icon_state = initial(D.research_icon_state)
-			if (PERFORM_ALL_TESTS(focus_only/invalid_research_designs))
-				if(!(icon_state in icon_states(icon_file)))
-					stack_trace("design [D] with icon '[icon_file]' missing state '[icon_state]'")
-					continue
+			#ifdef UNIT_TESTS
+			if(!(icon_state in icon_states(icon_file)))
+				stack_trace("design [D] with icon '[icon_file]' missing state '[icon_state]'")
+				continue
+			#endif
 			I = icon(icon_file, icon_state, SOUTH)
 
 		else
@@ -45,10 +46,11 @@
 				icon_file = initial(item.icon)
 
 			icon_state = initial(item.icon_state)
-			if (PERFORM_ALL_TESTS(focus_only/invalid_research_designs))
-				if(!(icon_state in icon_states(icon_file)))
-					stack_trace("design [D] with icon '[icon_file]' missing state '[icon_state]'")
-					continue
+			#ifdef UNIT_TESTS
+			if(!(icon_state in icon_states(icon_file)))
+				stack_trace("design [D] with icon '[icon_file]' missing state '[icon_state]'")
+				continue
+			#endif
 			I = icon(icon_file, icon_state, SOUTH)
 
 			// computers (and snowflakes) get their screen and keyboard sprites

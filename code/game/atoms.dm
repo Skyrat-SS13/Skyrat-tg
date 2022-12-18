@@ -259,14 +259,16 @@
 		update_light()
 
 	if (length(smoothing_groups))
-		if (PERFORM_ALL_TESTS(focus_only/sorted_smoothing_groups))
-			assert_sorted(smoothing_groups, "[type].smoothing_groups")
+		#ifdef UNIT_TESTS
+		assert_sorted(smoothing_groups, "[type].smoothing_groups")
+		#endif
 
 		SET_BITFLAG_LIST(smoothing_groups)
 
 	if (length(canSmoothWith))
-		if (PERFORM_ALL_TESTS(focus_only/sorted_smoothing_groups))
-			assert_sorted(canSmoothWith, "[type].canSmoothWith")
+		#ifdef UNIT_TESTS
+		assert_sorted(canSmoothWith, "[type].canSmoothWith")
+		#endif
 
 		if(canSmoothWith[length(canSmoothWith)] > MAX_S_TURF) //If the last element is higher than the maximum turf-only value, then it must scan turf contents for smoothing targets.
 			smoothing_flags |= SMOOTH_OBJ
@@ -1643,7 +1645,7 @@
 
 /obj/item/update_filters()
 	. = ..()
-	update_item_action_buttons()
+	update_action_buttons()
 
 /atom/proc/get_filter(name)
 	if(filter_data && filter_data[name])

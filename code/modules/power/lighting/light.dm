@@ -38,9 +38,6 @@
 	var/switchcount = 0
 	///Cell reference
 	var/obj/item/stock_parts/cell/cell
-	/// If TRUE, then cell is null, but one is pretending to exist.
-	/// This is to defer emergency cell creation unless necessary, as it is very expensive.
-	var/has_mock_cell = TRUE
 	///If true, this fixture generates a very weak cell at roundstart
 	var/start_with_cell = TRUE
 	///Currently in night shift mode?
@@ -88,11 +85,8 @@
 		var/obj/machinery/power/apc/temp_apc = our_area.apc
 		nightshift_enabled = temp_apc?.nightshift_lights
 
-	if(!start_with_cell || no_low_power)
-		has_mock_cell = FALSE
-
-	if(is_station_level(z))
-		RegisterSignal(SSdcs, COMSIG_GLOB_GREY_TIDE_LIGHT, PROC_REF(grey_tide)) //Only put the signal on station lights
+	if(start_with_cell && !no_low_power)
+		cell = new/obj/item/stock_parts/cell/emergency_light(src)
 
 	RegisterSignal(src, COMSIG_LIGHT_EATER_ACT, PROC_REF(on_light_eater))
 	AddElement(/datum/element/atmos_sensitive, mapload)
@@ -297,10 +291,6 @@
 	update()
 
 /obj/machinery/light/get_cell()
-	if (has_mock_cell)
-		cell = new /obj/item/stock_parts/cell/emergency_light(src)
-		has_mock_cell = FALSE
-
 	return cell
 
 // examine verb
@@ -315,8 +305,8 @@
 			. += "The [fitting] is burnt out."
 		if(LIGHT_BROKEN)
 			. += "The [fitting] has been smashed."
-	if(cell || has_mock_cell)
-		. += "Its backup power charge meter reads [has_mock_cell ? 100 : round((cell.charge / cell.maxcharge) * 100, 0.1)]%."
+	if(cell)
+		. += "Its backup power charge meter reads [round((cell.charge / cell.maxcharge) * 100, 0.1)]%."
 	//SKYRAT EDIT ADDITION
 	if(constant_flickering)
 		. += span_danger("The lighting ballast appears to be damaged, this could be fixed with a multitool.")
@@ -407,11 +397,9 @@
 			drop_light_tube()
 		new /obj/item/stack/cable_coil(loc, 1, "red")
 	transfer_fingerprints_to(new_light)
-
-	var/obj/item/stock_parts/cell/real_cell = get_cell()
-	if(!QDELETED(real_cell))
-		new_light.cell = real_cell
-		real_cell.forceMove(new_light)
+	if(!QDELETED(cell))
+		new_light.cell = cell
+		cell.forceMove(new_light)
 		cell = null
 	qdel(src)
 
@@ -462,27 +450,23 @@
 // returns whether this light has emergency power
 // can also return if it has access to a certain amount of that power
 /obj/machinery/light/proc/has_emergency_power(power_usage_amount)
-	if(no_low_power || (!cell && !has_mock_cell))
+	if(no_low_power || !cell)
 		return FALSE
-	if (has_mock_cell)
-		return status == LIGHT_OK
 	if(power_usage_amount ? cell.charge >= power_usage_amount : cell.charge)
 		return status == LIGHT_OK
-	return FALSE
 
 // attempts to use power from the installed emergency cell, returns true if it does and false if it doesn't
 /obj/machinery/light/proc/use_emergency_power(power_usage_amount = LIGHT_EMERGENCY_POWER_USE)
 	if(!has_emergency_power(power_usage_amount))
 		return FALSE
-	var/obj/item/stock_parts/cell/real_cell = get_cell()
-	if(real_cell.charge > 300) //it's meant to handle 120 W, ya doofus
+	if(cell.charge > 300) //it's meant to handle 120 W, ya doofus
 		visible_message(span_warning("[src] short-circuits from too powerful of a power cell!"))
 		burn_out()
 		return FALSE
-	real_cell.use(power_usage_amount)
+	cell.use(power_usage_amount)
 	set_light(
 		l_range = brightness * bulb_low_power_brightness_mul,
-		l_power = max(bulb_low_power_pow_min, bulb_low_power_pow_mul * (real_cell.charge / real_cell.maxcharge)),
+		l_power = max(bulb_low_power_pow_min, bulb_low_power_pow_mul * (cell.charge / cell.maxcharge)),
 		l_color = bulb_low_power_colour
 		)
 	return TRUE
@@ -679,13 +663,8 @@
 	tube?.burn()
 	return
 
-/obj/machinery/light/proc/grey_tide(datum/source, list/grey_tide_areas)
-	SIGNAL_HANDLER
 
-	for(var/area_type in grey_tide_areas)
-		if(!istype(get_area(src), area_type))
-			continue
-		INVOKE_ASYNC(src, PROC_REF(flicker))
+
 
 /obj/machinery/light/floor
 	name = "floor light"

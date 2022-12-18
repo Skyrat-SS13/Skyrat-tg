@@ -3,10 +3,9 @@
 	desc = "Summon three silver blades which orbit you. \
 		While orbiting you, these blades will protect you from from attacks, but will be consumed on use. \
 		Additionally, you can click to fire the blades at a target, dealing damage and causing bleeding."
-	background_icon_state = "bg_heretic"
-	overlay_icon_state = "bg_heretic_border"
-	button_icon = 'icons/mob/actions/actions_ecult.dmi'
-	button_icon_state = "furious_steel"
+	background_icon_state = "bg_ecult"
+	icon_icon = 'icons/mob/actions/actions_ecult.dmi'
+	button_icon_state = "furious_steel0"
 	sound = 'sound/weapons/guillotine.ogg'
 
 	school = SCHOOL_FORBIDDEN
@@ -16,6 +15,7 @@
 
 	spell_requirements = NONE
 
+	base_icon_state = "furious_steel"
 	active_msg = "You summon forth three blades of furious silver."
 	deactive_msg = "You conceal the blades of furious silver."
 	cast_range = 20

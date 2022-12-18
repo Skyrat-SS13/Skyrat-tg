@@ -3,11 +3,11 @@
 /datum/species/monkey
 	name = "Monkey"
 	id = SPECIES_MONKEY
+	say_mod = "chimpers"
 	bodytype = BODYTYPE_ORGANIC | BODYTYPE_MONKEY
 	external_organs = list(
 		/obj/item/organ/external/tail/monkey = "Monkey"
 	)
-	mutanttongue = /obj/item/organ/internal/tongue/monkey
 	mutantbrain = /obj/item/organ/internal/brain/primate
 	skinned_type = /obj/item/stack/sheet/animalhide/monkey
 	meat = /obj/item/food/meat/slab/monkey
@@ -212,18 +212,14 @@
 
 /datum/action/item_action/organ_action/toggle_trip
 	name = "Toggle Tripping"
-	button_icon = 'icons/mob/actions/actions_changeling.dmi'
+	icon_icon = 'icons/mob/actions/actions_changeling.dmi'
 	button_icon_state = "lesser_form"
 	background_icon_state = "bg_default_on"
-	overlay_icon_state = "bg_default_border"
 
 /datum/action/item_action/organ_action/toggle_trip/Trigger(trigger_flags)
 	. = ..()
-	if(!.)
-		return
-
 	var/obj/item/organ/internal/brain/primate/monkey_brain = target
-	if(monkey_brain.tripping)
+	if(monkey_brain.tripping == TRUE)
 		monkey_brain.tripping = FALSE
 		background_icon_state = "bg_default"
 		to_chat(monkey_brain.owner, span_notice("You will now avoid stumbling while colliding with people who are in combat mode."))
@@ -231,10 +227,10 @@
 		monkey_brain.tripping = TRUE
 		background_icon_state = "bg_default_on"
 		to_chat(monkey_brain.owner, span_notice("You will now stumble while while colliding with people who are in combat mode."))
-	build_all_button_icons()
+	UpdateButtons()
 
 
-/obj/item/organ/internal/brain/primate/Insert(mob/living/carbon/primate, special = FALSE, drop_if_replaced = FALSE, no_id_transfer = FALSE)
+/obj/item/organ/internal/brain/primate/Insert(mob/living/carbon/primate, special = FALSE, drop_if_replaced = FALSE)
 	. = ..()
 	RegisterSignal(primate, COMSIG_MOVABLE_CROSS, PROC_REF(on_crossed), TRUE)
 

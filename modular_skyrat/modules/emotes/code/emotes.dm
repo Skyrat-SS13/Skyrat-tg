@@ -511,10 +511,3 @@
 	vary = TRUE
 	sound = 'sound/weapons/bite.ogg'
 
-/datum/emote/living/thump
-	key = "thump"
-	key_third_person = "thumps"
-	message = "thumps their foot!"
-	emote_type = EMOTE_AUDIBLE
-	vary = TRUE
-	sound = 'sound/effects/glassbash.ogg'

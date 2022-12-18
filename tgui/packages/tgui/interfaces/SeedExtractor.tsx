@@ -108,9 +108,7 @@ export const SeedExtractor = (props, context) => {
               </Table.Cell>
               <Table.Cell collapsing p={1}>
                 <Tooltip
-                  content={
-                    'The health pool of the plant that delays death. Affects fermentation quality.'
-                  }>
+                  content={'The health pool of the plant that delays death.'}>
                   <Box
                     style={{ 'cursor': 'pointer' }}
                     onClick={(e) => setSortField('endurance')}>
@@ -120,7 +118,7 @@ export const SeedExtractor = (props, context) => {
               </Table.Cell>
               <Table.Cell collapsing p={1}>
                 <Tooltip
-                  content={`The age at which the plant starts decaying, in ${data.cycle_seconds} second long cycles. Affects fermentation quality.`}>
+                  content={`The age at which the plant starts decaying, in ${data.cycle_seconds} second long cycles.`}>
                   <Box
                     style={{ 'cursor': 'pointer' }}
                     onClick={(e) => setSortField('lifespan')}>

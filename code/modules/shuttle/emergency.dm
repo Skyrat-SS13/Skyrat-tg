@@ -674,14 +674,8 @@
 	anchored = TRUE
 	density = FALSE
 	icon = 'icons/obj/storage/storage.dmi'
-	icon_state = "wall_safe_locked"
+	icon_state = "safe"
 	var/unlocked = FALSE
-
-/obj/item/storage/pod/update_icon()
-	. = ..()
-	icon_state = "wall_safe[unlocked ? "" : "_locked"]"
-
-MAPPING_DIRECTIONAL_HELPERS(/obj/item/storage/pod, 32)
 
 /obj/item/storage/pod/PopulateContents()
 	new /obj/item/clothing/head/helmet/space/orange(src)

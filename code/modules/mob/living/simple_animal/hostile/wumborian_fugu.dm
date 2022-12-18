@@ -75,9 +75,8 @@
 	E.Activate()
 
 /datum/action/innate/fugu
-	button_icon = 'icons/mob/actions/actions_animal.dmi'
+	icon_icon = 'icons/mob/actions/actions_animal.dmi'
 	background_icon_state = "bg_fugu"
-	overlay_icon_state = "bg_fugu_border"
 
 /datum/action/innate/fugu/expand
 	name = "Inflate"

@@ -193,7 +193,7 @@
 	owner.imaginary_group -= src
 	return ..()
 
-/mob/camera/imaginary_friend/Hear(message, atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, list/message_mods = list(), message_range)
+/mob/camera/imaginary_friend/Hear(message, atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, list/message_mods = list())
 	if (client?.prefs.read_preference(/datum/preference/toggle/enable_runechat) && (client.prefs.read_preference(/datum/preference/toggle/enable_runechat_non_mobs) || ismob(speaker)))
 		create_chat_message(speaker, message_language, raw_message, spans)
 	to_chat(src, compose_message(speaker, message_language, raw_message, radio_freq, spans, message_mods))
@@ -430,9 +430,8 @@
 /datum/action/innate/imaginary_join
 	name = "Join"
 	desc = "Join your owner, following them from inside their mind."
-	button_icon = 'icons/mob/actions/actions_minor_antag.dmi'
+	icon_icon = 'icons/mob/actions/actions_minor_antag.dmi'
 	background_icon_state = "bg_revenant"
-	overlay_icon_state = "bg_revenant_border"
 	button_icon_state = "join"
 
 /datum/action/innate/imaginary_join/Activate()
@@ -442,9 +441,8 @@
 /datum/action/innate/imaginary_hide
 	name = "Hide"
 	desc = "Hide yourself from your owner's sight."
-	button_icon = 'icons/mob/actions/actions_minor_antag.dmi'
+	icon_icon = 'icons/mob/actions/actions_minor_antag.dmi'
 	background_icon_state = "bg_revenant"
-	overlay_icon_state = "bg_revenant_border"
 	button_icon_state = "hide"
 
 /datum/action/innate/imaginary_hide/proc/update_status()
@@ -457,32 +455,13 @@
 		name = "Hide"
 		desc = "Hide yourself from your owner's sight."
 		button_icon_state = "hide"
-	build_all_button_icons()
+	UpdateButtons()
 
 /datum/action/innate/imaginary_hide/Activate()
-	var/mob/camera/imaginary_friend/fake_friend = owner
-	fake_friend.hidden = !fake_friend.hidden
-	fake_friend.Show()
-	build_all_button_icons(UPDATE_BUTTON_NAME|UPDATE_BUTTON_ICON)
-
-/datum/action/innate/imaginary_hide/update_button_name(atom/movable/screen/movable/action_button/button, force)
-	var/mob/camera/imaginary_friend/fake_friend = owner
-	if(fake_friend.hidden)
-		name = "Show"
-		desc = "Become visible to your owner."
-	else
-		name = "Hide"
-		desc = "Hide yourself from your owner's sight."
-	return ..()
-
-/datum/action/innate/imaginary_hide/apply_button_icon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
-	var/mob/camera/imaginary_friend/fake_friend = owner
-	if(fake_friend.hidden)
-		button_icon_state = "unhide"
-	else
-		button_icon_state = "hide"
-
-	return ..()
+	var/mob/camera/imaginary_friend/I = owner
+	I.hidden = !I.hidden
+	I.Show()
+	update_status()
 
 //down here is the trapped mind
 //like imaginary friend but a lot less imagination and more like mind prison//

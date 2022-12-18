@@ -15,6 +15,7 @@ type AutolatheDesign = Design & {
   mult25: BooleanLike;
   mult50: BooleanLike;
   sheet: BooleanLike;
+  maxmult: number;
 };
 
 type AutolatheData = {

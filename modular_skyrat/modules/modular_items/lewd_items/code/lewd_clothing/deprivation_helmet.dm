@@ -141,24 +141,24 @@
 			return FALSE
 		current_helmet_color = choice
 		update_icon()
-		update_mob_action_buttonss()
+		update_action_buttons_icons()
 		color_changed = TRUE
 	else
 		return
 
-/obj/item/clothing/head/helmet/space/deprivation_helmet/proc/update_mob_action_buttonss()
+/obj/item/clothing/head/helmet/space/deprivation_helmet/proc/update_action_buttons_icons()
 	var/datum/action/item_action/action_button
 
 	for(action_button in src.actions)
 		if(istype(action_button, /datum/action/item_action/toggle_vision))
 			action_button.button_icon_state = "[current_helmet_color]_blind"
-			action_button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
+			action_button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 		if(istype(action_button, /datum/action/item_action/toggle_hearing))
 			action_button.button_icon_state = "[current_helmet_color]_deaf"
-			action_button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
+			action_button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 		if(istype(action_button, /datum/action/item_action/toggle_speech))
 			action_button.button_icon_state = "[current_helmet_color]_mute"
-			action_button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
+			action_button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 	update_icon()
 
 // To check if we can change helmet's model
@@ -173,7 +173,7 @@
 	. = ..()
 	update_icon_state()
 	update_icon()
-	update_mob_action_buttonss()
+	update_action_buttons_icons()
 	if(!length(helmet_designs))
 		populate_helmet_designs()
 

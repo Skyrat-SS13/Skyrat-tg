@@ -263,7 +263,7 @@
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/scanner_gate
 	req_components = list(
-		/datum/stock_part/scanning_module = 3)
+		/obj/item/stock_parts/scanning_module = 3)
 
 /obj/item/circuitboard/machine/smes
 	name = "SMES"
@@ -623,7 +623,7 @@
 	build_path = /obj/machinery/piratepad/civilian
 	req_components = list(
 		/obj/item/stock_parts/card_reader = 1,
-		/datum/stock_part/scanning_module = 1,
+		/obj/item/stock_parts/scanning_module = 1,
 		/obj/item/stock_parts/micro_laser = 1
 	)
 
@@ -633,7 +633,7 @@
 	build_path = /obj/machinery/fax
 	req_components = list(
 		/obj/item/stock_parts/subspace/crystal = 1,
-		/datum/stock_part/scanning_module = 1,
+		/obj/item/stock_parts/scanning_module = 1,
 		/obj/item/stock_parts/micro_laser = 1,
 		/obj/item/stock_parts/manipulator = 1,)
 
@@ -758,7 +758,7 @@
 	var/custom_cost = 10
 	req_components = list(
 		/obj/item/healthanalyzer = 1,
-		/datum/stock_part/scanning_module = 1)
+		/obj/item/stock_parts/scanning_module = 1)
 
 /obj/item/circuitboard/machine/medical_kiosk/multitool_act(mob/living/user)
 	. = ..()
@@ -877,7 +877,7 @@
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/rnd/destructive_analyzer
 	req_components = list(
-		/datum/stock_part/scanning_module = 1,
+		/obj/item/stock_parts/scanning_module = 1,
 		/obj/item/stock_parts/manipulator = 1,
 		/obj/item/stock_parts/micro_laser = 1)
 
@@ -886,7 +886,7 @@
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/rnd/experimentor
 	req_components = list(
-		/datum/stock_part/scanning_module = 1,
+		/obj/item/stock_parts/scanning_module = 1,
 		/obj/item/stock_parts/manipulator = 2,
 		/obj/item/stock_parts/micro_laser = 2)
 
@@ -944,7 +944,7 @@
 	build_path = /obj/machinery/rnd/server
 	req_components = list(
 		/obj/item/stack/cable_coil = 2,
-		/datum/stock_part/scanning_module = 1)
+		/obj/item/stock_parts/scanning_module = 1)
 
 /obj/item/circuitboard/machine/techfab/department/science
 	name = "\improper Departmental Techfab - Science"
@@ -975,18 +975,19 @@
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/dna_scannernew
 	req_components = list(
-		/datum/stock_part/scanning_module = 1,
+		/obj/item/stock_parts/scanning_module = 1,
 		/obj/item/stock_parts/matter_bin = 1,
 		/obj/item/stock_parts/micro_laser = 1,
 		/obj/item/stack/sheet/glass = 1,
 		/obj/item/stack/cable_coil = 2)
+
 
 /obj/item/circuitboard/machine/dna_infuser
 	name = "DNA Infuser"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/dna_infuser
 	req_components = list(
-		/datum/stock_part/scanning_module = 1,
+		/obj/item/stock_parts/scanning_module = 1,
 		/obj/item/stock_parts/matter_bin = 1,
 		/obj/item/stock_parts/micro_laser = 1,
 		/obj/item/stack/cable_coil = 2,
@@ -1256,7 +1257,7 @@
 		/obj/item/stock_parts/capacitor = 1,
 		/obj/item/stock_parts/manipulator = 1,
 		/obj/item/stock_parts/micro_laser = 1,
-		/datum/stock_part/scanning_module = 1)
+		/obj/item/stock_parts/scanning_module = 1)
 
 //Misc
 /obj/item/circuitboard/machine/sheetifier
@@ -1296,7 +1297,7 @@
 	build_path = /obj/machinery/hypnochair
 	req_components = list(
 		/obj/item/stock_parts/micro_laser = 2,
-		/datum/stock_part/scanning_module = 2
+		/obj/item/stock_parts/scanning_module = 2
 	)
 
 /obj/item/circuitboard/machine/plumbing_receiver
@@ -1316,7 +1317,7 @@
 	req_components = list(
 		/obj/item/stock_parts/matter_bin = 2,
 		/obj/item/stock_parts/micro_laser = 2,
-		/datum/stock_part/scanning_module = 2
+		/obj/item/stock_parts/scanning_module = 2
 	)
 
 /obj/item/circuitboard/machine/destructive_scanner
@@ -1334,7 +1335,7 @@
 	build_path = /obj/machinery/doppler_array
 	req_components = list(
 		/obj/item/stock_parts/micro_laser = 2,
-		/datum/stock_part/scanning_module = 4)
+		/obj/item/stock_parts/scanning_module = 4)
 
 /obj/item/circuitboard/machine/exoscanner
 	name = "Exoscanner"
@@ -1342,7 +1343,7 @@
 	build_path = /obj/machinery/exoscanner
 	req_components = list(
 		/obj/item/stock_parts/micro_laser = 4,
-		/datum/stock_part/scanning_module = 4)
+		/obj/item/stock_parts/scanning_module = 4)
 
 /obj/item/circuitboard/machine/exodrone_launcher
 	name = "Exploration Drone Launcher"
@@ -1350,14 +1351,14 @@
 	build_path = /obj/machinery/exodrone_launcher
 	req_components = list(
 		/obj/item/stock_parts/micro_laser = 4,
-		/datum/stock_part/scanning_module = 4)
+		/obj/item/stock_parts/scanning_module = 4)
 
 /obj/item/circuitboard/machine/ecto_sniffer
 	name = "Ectoscopic Sniffer"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/ecto_sniffer
 	req_components = list(
-		/datum/stock_part/scanning_module = 1)
+		/obj/item/stock_parts/scanning_module = 1)
 
 /obj/item/circuitboard/machine/anomaly_refinery
 	name = "Anomaly Refinery"
@@ -1365,7 +1366,7 @@
 	build_path = /obj/machinery/research/anomaly_refinery
 	req_components = list(
 		/obj/item/stack/sheet/plasteel = 15,
-		/datum/stock_part/scanning_module = 1,
+		/obj/item/stock_parts/scanning_module = 1,
 		/obj/item/stock_parts/manipulator = 1,
 		)
 
@@ -1375,7 +1376,7 @@
 	build_path = /obj/machinery/atmospherics/components/binary/tank_compressor
 	req_components = list(
 		/obj/item/stack/sheet/plasteel = 5,
-		/datum/stock_part/scanning_module = 4,
+		/obj/item/stock_parts/scanning_module = 4,
 		)
 
 /obj/item/circuitboard/machine/coffeemaker

@@ -5,7 +5,4 @@
 	department_experience_type = EXP_TYPE_CENTRAL_COMMAND
 	display_order = 1
 	label_class = "command"
-	ui_color = "#86ff82"
-
-/datum/job_department/security
-	ui_color = "#528ccf"
+	latejoin_color = "#86ff82"

@@ -108,7 +108,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/min_cold_protection_temperature
 
 	///list of /datum/action's that this item has.
-	var/list/datum/action/actions
+	var/list/actions
 	///list of paths of action datums to give to the item on New().
 	var/list/actions_types
 
@@ -1331,12 +1331,12 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
  * Updates all action buttons associated with this item
  *
  * Arguments:
- * * update_flags - Which flags of the action should we update
+ * * status_only - Update only current availability status of the buttons to show if they are ready or not to use
  * * force - Force buttons update even if the given button icon state has not changed
  */
-/obj/item/proc/update_item_action_buttons(update_flags = ALL, force = FALSE)
+/obj/item/proc/update_action_buttons(status_only = FALSE, force = FALSE)
 	for(var/datum/action/current_action as anything in actions)
-		current_action.build_all_button_icons(update_flags, force)
+		current_action.UpdateButtons(status_only, force)
 
 // Update icons if this is being carried by a mob
 /obj/item/wash(clean_types)

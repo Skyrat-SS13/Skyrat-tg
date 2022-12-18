@@ -23,8 +23,6 @@
 	var/tox_loss = 0
 	/// The starting value of oxygen loss at the beginning of the effect
 	var/oxy_loss = 0
-	/// The starting value of stamina loss at the beginning of the effect
-	var/stamina_loss = 0
 	/// The starting value of brain loss at the beginning of the effect
 	var/brain_loss = 0
 	/// The starting value of brute loss at the beginning of the effect
@@ -49,7 +47,6 @@
 		clone_loss = L.getCloneLoss()
 		tox_loss = L.getToxLoss()
 		oxy_loss = L.getOxyLoss()
-		stamina_loss = L.getStaminaLoss()
 		brain_loss = L.getOrganLoss(ORGAN_SLOT_BRAIN)
 		rewind_type = PROC_REF(rewind_living)
 
@@ -99,7 +96,6 @@
 	master.setCloneLoss(clone_loss)
 	master.setToxLoss(tox_loss)
 	master.setOxyLoss(oxy_loss)
-	master.setStaminaLoss(stamina_loss)
 	master.setOrganLoss(ORGAN_SLOT_BRAIN, brain_loss)
 	rewind()
 

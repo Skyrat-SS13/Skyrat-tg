@@ -1,8 +1,7 @@
 // Given to heretic monsters.
 /datum/action/cooldown/spell/pointed/blind/eldritch
 	name = "Eldritch Blind"
-	background_icon_state = "bg_heretic"
-	overlay_icon_state = "bg_heretic_border"
+	background_icon_state = "bg_ecult"
 
 	school = SCHOOL_FORBIDDEN
 	invocation = "E'E'S"

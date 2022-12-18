@@ -70,7 +70,7 @@
 
 	chameleon_extras = list(
 		/obj/item/clothing/glasses/sunglasses,
-		/obj/item/gun/ballistic/revolver/c38/detective,
+		/obj/item/gun/ballistic/revolver/detective,
 		)
 	implants = list(/obj/item/implant/mindshield)
 

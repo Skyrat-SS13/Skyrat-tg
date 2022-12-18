@@ -33,7 +33,7 @@
 	slot = AUGMENT_SLOT_HEAD
 
 /datum/augment_item/limb/head/cyborg
-	name = "Cyborg head"
+	name = "Cyborg"
 	path = /obj/item/bodypart/head/robot/weak
 
 //CHESTS
@@ -41,7 +41,7 @@
 	slot = AUGMENT_SLOT_CHEST
 
 /datum/augment_item/limb/chest/cyborg
-	name = "Cyborg chest"
+	name = "Cyborg"
 	path = /obj/item/bodypart/chest/robot/weak
 
 //LEFT ARMS
@@ -49,12 +49,12 @@
 	slot = AUGMENT_SLOT_L_ARM
 
 /datum/augment_item/limb/l_arm/prosthetic
-	name = "Prosthetic left arm"
+	name = "Prosthetic"
 	path = /obj/item/bodypart/arm/left/robot/surplus
 	cost = -1
 
 /datum/augment_item/limb/l_arm/cyborg
-	name = "Cyborg left arm"
+	name = "Cyborg"
 	path = /obj/item/bodypart/arm/left/robot/weak
 
 //RIGHT ARMS
@@ -62,12 +62,12 @@
 	slot = AUGMENT_SLOT_R_ARM
 
 /datum/augment_item/limb/r_arm/prosthetic
-	name = "Prosthetic right arm"
+	name = "Prosthetic"
 	path = /obj/item/bodypart/arm/right/robot/surplus
 	cost = -1
 
 /datum/augment_item/limb/r_arm/cyborg
-	name = "Cyborg right arm"
+	name = "Cyborg"
 	path = /obj/item/bodypart/arm/right/robot/weak
 
 //LEFT LEGS
@@ -75,12 +75,12 @@
 	slot = AUGMENT_SLOT_L_LEG
 
 /datum/augment_item/limb/l_leg/prosthetic
-	name = "Prosthetic left leg"
+	name = "Prosthetic"
 	path = /obj/item/bodypart/leg/left/robot/surplus
 	cost = -1
 
 /datum/augment_item/limb/l_leg/cyborg
-	name = "Cyborg left leg"
+	name = "Cyborg"
 	path = /obj/item/bodypart/leg/left/robot/weak
 
 //RIGHT LEGS
@@ -88,10 +88,10 @@
 	slot = AUGMENT_SLOT_R_LEG
 
 /datum/augment_item/limb/r_leg/prosthetic
-	name = "Prosthetic right leg"
+	name = "Prosthetic"
 	path = /obj/item/bodypart/leg/right/robot/surplus
 	cost = -1
 
 /datum/augment_item/limb/r_leg/cyborg
-	name = "Cyborg right leg"
+	name = "Cyborg"
 	path = /obj/item/bodypart/leg/right/robot/weak

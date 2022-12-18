@@ -37,12 +37,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/exam_room, 32)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/chemistry, 32)
 
-/obj/structure/sign/departments/chemistry/alt
-	sign_change_name = "Department - Medbay: Chemistry Alt"
-	icon_state = "chemistry2"
-
-MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/chemistry/alt, 32)
-
 /obj/structure/sign/departments/chemistry/pharmacy
 	name = "\improper Pharmacy sign"
 	sign_change_name = "Department - Medbay: Pharmacy"
@@ -80,7 +74,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/engineering, 32)
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/science, 32)
 
 /obj/structure/sign/departments/science/alt
+	name = "\improper Science sign"
 	sign_change_name = "Department - Science Alt"
+	desc = "A sign labelling an area where research and science is performed."
 	icon_state = "science2"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/science/alt, 32)
@@ -92,12 +88,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/science/alt, 32)
 	icon_state = "xenobio"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/xenobio, 32)
-
-/obj/structure/sign/departments/xenobio/alt
-	sign_change_name = "Department - Science: Xenobiology Alt"
-	icon_state = "xenobio2"
-
-MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/xenobio/alt, 32)
 
 /obj/structure/sign/departments/rndserver
 	name ="\improper R&D Server sign"
@@ -111,23 +101,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/rndserver, 32)
 
 /obj/structure/sign/departments/botany
 	name = "\improper Botany sign"
-	sign_change_name = "Department - Botany (Flower)"
+	sign_change_name = "Department - Botany"
 	desc = "A sign labelling an area as a place where plants are grown."
 	icon_state = "hydro1"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/botany, 32)
-
-/obj/structure/sign/departments/botany/alt1
-	sign_change_name = "Department - Botany (Tray)"
-	icon_state = "hydro2"
-
-MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/botany/alt1, 32)
-
-/obj/structure/sign/departments/botany/alt2
-	sign_change_name = "Department - Botany (Watering Can)"
-	icon_state = "hydro3"
-
-MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/botany/alt2, 32)
 
 /obj/structure/sign/departments/custodian
 	name = "\improper Janitor sign"
@@ -233,7 +211,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/telecomms, 32)
 
 /obj/structure/sign/departments/telecomms/alt
 	icon_state = "telecomms2"
-	sign_change_name = "Location - Telecommunications Alt"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/telecomms/alt, 32)
 

@@ -98,8 +98,7 @@
 		play_fake_sound(mech_source)
 		mech_dir = pick(GLOB.cardinals)
 
-	steps_left--
-	if(steps_left <= 0)
+	if(--steps_left <= 0)
 		qdel(src)
 
 	else

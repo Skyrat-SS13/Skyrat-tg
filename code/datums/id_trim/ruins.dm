@@ -111,19 +111,15 @@
 	subdepartment_color = COLOR_MOSTLY_PURE_RED
 	access = list(ACCESS_SYNDICATE)
 
+/// Trim for pirates.
+/datum/id_trim/pirate/silverscale
+	assignment = "Silver Scale Member"
+
 /// Trim for the pirate captain.
 /datum/id_trim/pirate/captain
 	assignment = "Pirate Captain"
 	trim_state = "trim_captain"
 
-/datum/id_trim/pirate/silverscale
-	assignment = "Silver Scale Member"
-
+/// Trim for the pirate captain.
 /datum/id_trim/pirate/captain/silverscale
 	assignment = "Silver Scale VIP"
-
-/datum/id_trim/pirate/psykers
-	assignment = "Psyker-gang Member"
-
-/datum/id_trim/pirate/captain/psykers
-	assignment = "Psyker-gang Leader"

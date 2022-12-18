@@ -88,8 +88,20 @@ const TARGET_SPECIES_LIST = [
     value: 'vulpkanin',
   },
   {
-    name: 'Synthetic Humanoid',
-    value: 'synth',
+    name: 'I.P.C.',
+    value: 'ipc',
+  },
+  {
+    name: 'Synthetic Lizardperson',
+    value: 'synthliz',
+  },
+  {
+    name: 'Synthetic Anthromorph',
+    value: 'synthmammal',
+  },
+  {
+    name: 'Synthetic Human',
+    value: 'synthhuman',
   },
   {
     name: 'Teshari',

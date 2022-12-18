@@ -1,5 +1,9 @@
 //Robots
-#define issynthetic(A) (is_species(A,/datum/species/synthetic))
+#define isrobotic(A) (is_species(A,/datum/species/robotic))
+#define isipc(A) (is_species(A,/datum/species/robotic/ipc))
+#define issynthliz(A) (is_species(A,/datum/species/robotic/synthliz))
+#define issynthanthro(A) (is_species(A,/datum/species/robotic/synthetic_mammal))
+#define issynthhuman(A) (is_species(A,/datum/species/robotic/synthetic_human))
 //Actual Species
 #define isvox(A) (is_species(A,/datum/species/vox))
 #define isvoxprimalis(A) (is_species(A,/datum/species/vox_primalis))
@@ -16,7 +20,6 @@
 #define isteshari(A) (is_species(A, /datum/species/teshari))
 #define ishemophage(A) (is_species(A, /datum/species/hemophage))
 #define issnail(A) (is_species(A, /datum/species/snail))
-#define isluminescent(A) (is_species(A, /datum/species/jelly/luminescent))
 //Antags
 #define ishorrorling(A) (istype(A, /mob/living/simple_animal/hostile/true_changeling))
 #define iscorticalborer(A) (istype(A, /mob/living/basic/cortical_borer))

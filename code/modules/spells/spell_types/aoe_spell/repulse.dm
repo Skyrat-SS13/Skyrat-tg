@@ -64,8 +64,7 @@
 	name = "Tail Sweep"
 	desc = "Throw back attackers with a sweep of your tail."
 	background_icon_state = "bg_alien"
-	overlay_icon_state = "bg_alien_border"
-	button_icon = 'icons/mob/actions/actions_xeno.dmi'
+	icon_icon = 'icons/mob/actions/actions_xeno.dmi'
 	button_icon_state = "tailsweep"
 	panel = "Alien"
 	sound = 'sound/magic/tail_swing.ogg'

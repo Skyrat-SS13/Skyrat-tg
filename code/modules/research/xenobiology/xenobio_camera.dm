@@ -147,7 +147,7 @@
 
 /datum/action/innate/slime_place
 	name = "Place Slimes"
-	button_icon = 'icons/mob/actions/actions_silicon.dmi'
+	icon_icon = 'icons/mob/actions/actions_silicon.dmi'
 	button_icon_state = "slime_down"
 
 /datum/action/innate/slime_place/Activate()
@@ -167,7 +167,7 @@
 
 /datum/action/innate/slime_pick_up
 	name = "Pick up Slime"
-	button_icon = 'icons/mob/actions/actions_silicon.dmi'
+	icon_icon = 'icons/mob/actions/actions_silicon.dmi'
 	button_icon_state = "slime_up"
 
 /datum/action/innate/slime_pick_up/Activate()
@@ -193,7 +193,7 @@
 
 /datum/action/innate/feed_slime
 	name = "Feed Slimes"
-	button_icon = 'icons/mob/actions/actions_silicon.dmi'
+	icon_icon = 'icons/mob/actions/actions_silicon.dmi'
 	button_icon_state = "monkey_down"
 
 /datum/action/innate/feed_slime/Activate()
@@ -219,7 +219,7 @@
 
 /datum/action/innate/monkey_recycle
 	name = "Recycle Monkeys"
-	button_icon = 'icons/mob/actions/actions_silicon.dmi'
+	icon_icon = 'icons/mob/actions/actions_silicon.dmi'
 	button_icon_state = "monkey_up"
 
 /datum/action/innate/monkey_recycle/Activate()
@@ -249,7 +249,7 @@
 
 /datum/action/innate/slime_scan
 	name = "Scan Slime"
-	button_icon = 'icons/mob/actions/actions_silicon.dmi'
+	icon_icon = 'icons/mob/actions/actions_silicon.dmi'
 	button_icon_state = "slime_scan"
 
 /datum/action/innate/slime_scan/Activate()
@@ -266,7 +266,7 @@
 
 /datum/action/innate/feed_potion
 	name = "Apply Potion"
-	button_icon = 'icons/mob/actions/actions_silicon.dmi'
+	icon_icon = 'icons/mob/actions/actions_silicon.dmi'
 	button_icon_state = "slime_potion"
 
 /datum/action/innate/feed_potion/Activate()
@@ -290,7 +290,7 @@
 
 /datum/action/innate/hotkey_help
 	name = "Hotkey Help"
-	button_icon = 'icons/mob/actions/actions_silicon.dmi'
+	icon_icon = 'icons/mob/actions/actions_silicon.dmi'
 	button_icon_state = "hotkey_help"
 
 /datum/action/innate/hotkey_help/Activate()
