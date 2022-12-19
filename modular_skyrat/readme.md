@@ -1,13 +1,13 @@
-# The modularization handbook - Skyrat style, v0.1
+# The modularization handbook - Skyrat style, v0.2
 
-**Failure to follow this guide will result in your PR being denied.**
+## Failure to follow this guide will result in your PR being denied.
 
 ## Introduction
 
 To develop and maintain a separate codebase is a big task, that many have failed and suffered the consequences of, such as outdated, and messy code.
 It's not necessarily the fault of lack of skill of the people maintaining it, merely the lack of resources and how much continuous effort such an endeavor takes.
 
-One of the solutions for such, is to base our server on a solid codebase, that is primarily maintained by somebody else, in this case tgstation, and insert our content in a modular fashion, while following the general direction of the upstream, mirroring any changes they do for parity.
+One of the solutions for such, is to base our server on a solid codebase, that is primarily maintained by somebody else, in this case tgstation, and insert our content in a modular fashion, while following the general code (but not gameplay) direction of the upstream, mirroring any changes they do for parity.
 
 Git, as a version control system, is very useful, however it is just a very methodical thing, that follows its many algorithms, that sadly cannot always intelligently resolve certain changes in the code in an unambiguous way, giving us conflicts, that need to be resolved in a manual fashion.
 
@@ -64,15 +64,17 @@ Our answer to this is modularization of the code.
 ## The modularization protocol
 
 Always start by thinking of the theme/purpose of your work. It's oftentimes a good idea to see if there isn't an already existing one, that you should append to.
+
 **If it's a tgcode-specific tweak or bugfix, first course of action should be an attempt to discuss and PR it upstream, instead of needlessly modularizing it here.**
 
-Otherwise, pick a new ID for your module. E.g. `DNA-FEATURE-WINGS` or `XENOARCHEAOLOGY` or `SHUTTLE_TOGGLE` - We will use this in future documentation. It is essentially your module ID. It must be uniform throughout the entire module. All references MUST be exactly the same.
+Otherwise, pick a new ID for your module. E.g. `DNA-FEATURE-WINGS` or `XENOARCHEAOLOGY` or `SHUTTLE_TOGGLE` - We will use this in future documentation. It is essentially your module ID. It must be uniform throughout the entire module. All references MUST be exactly the same. This is to allow for easy searching.
 
 And then you'll want to establish your core folder that you'll be working out of which is normally your module ID. E.g. `modular_skyrat/modules/shuttle_toggle`
 
 ### Maps
 
 IMPORTANT: MAP CONTRIBUTION GUIDELINES HAVE BEEN UPDATED
+
 When you are adding a new item to the map you MUST follow this procedure:
 Start by deciding how big of a change it is going to be, if it is a small 1 item change, you should use the simple area automapper. If it is an entire room, you should use the template automapper.
 
@@ -91,11 +93,12 @@ Git doesn't handle conflicts of binary files well at all, therefore changes to c
 All assets added by us should be placed into the same modular folder as your code. This means everything is kept inside your module folder, sounds, icons and code files.
 
 - ***Example:*** You're adding a new lavaland mob.
+
   First of all you create your modular folder. E.g. `modular_skyrat/modules/lavalandmob`
 
   And then you'd want to create sub-folders for each component. E.g. `/code` for code and `/sounds` for sound files and `/icons` for any icon files.
 
-  After doing this you'd want to change the references within the code.
+  After doing this, you'll want to set your references within the code.
 
   ```byond
     /mob/lavaland/newmob
@@ -110,14 +113,24 @@ All assets added by us should be placed into the same modular folder as your cod
 
 - Any additional clothing icon files you add MUST go into the existing files in master_files clothing section.
 
+### The `master_files` Folder
+
+You should always put any modular overrides of icons, sound, code, etc. inside this folder, and it **must** follow the core code folder layout.
+
+Example: `code/modules/mob/living/living.dm` -> `modular_skyrat/master_files/code/modules/mob/living/living.dm`
+
+This is to make it easier to figure out what changed about a base file without having to search through proc definitions. 
+
+It also helps prevent modules needlessly overriding the same proc multiple times. More information on these types of edits come later.
+
 ### Fully modular portions of your code
 
 This section will be fairly straightforward, however, I will try to go over the basics and give simple examples, as the guide is aimed at new contributors likewise.
 
 The rule of thumb is that if you don't absolutely have to, you shouldn't make any changes to core codebase files.
 
-In short, most of the modular code will be placed in the subfolders of your main module folder **`modular_skyrat/modules/yourmodule/code/`**, with similar rules as with the assets, in terms of correspondence to the main code locations.
-In case of new content, however, there's a bit more freedom allowed, and it is heavily encouraged to put thematic feature groups under **`modular_skyrat/modules/yourmodule/code`** in their own separate folder, to ensure they're easy to find, manage and maintain.
+In short, most of the modular code will be placed in the subfolders of your main module folder **`modular_skyrat/modules/yourmodule/code/`**, with similar rules as with the assets. Do not mirror core code folder structures inside your modular folder.
+
 For example, `modular_skyrat/modules/xenoarcheaology/code` containing all the code, tools, items and machinery related to it.
 
 Such modules, unless _very_ simple, **need** to have a `readme.md` in their folder, containing the following:
@@ -128,53 +141,17 @@ Such modules, unless _very_ simple, **need** to have a `readme.md` in their fold
 - (optionally) a bit more elaborative documentation for future-proofing the code,  that will be useful further development and maintenance
 - credits
 
-***Template:***
+***Template:*** [Here](module_template.md)
 
-```md
-https://github.com/Skyrat-SS13/Skyrat-tg/pull/<!--PR Number-->
+## Modular Overrides (Important!!)
 
-## Title: <!--Title of your addition-->
-
-MODULE ID: <!-- uppercase, underscore_connected name of your module, that you use to mark files-->
-
-### Description:
-
-<!-- Here, try to describe what your PR does, what features it provides and any other directly useful information -->
-
-### TG Proc/File Changes:
-
-- N/A
-<!-- If you had to edit, or append to any core procs in the process of making this PR, list them here. APPEND: Also, please include any files that you've changed. .DM files that is. -->
-
-### Defines:
-
-- N/A
-<!-- If you needed to add any defines, mention the files you added those defines in -->
-
-### Master file additions
-
-- N/A
-<!-- Any master file changes you've made to existing master files or if you've added a new master file. Please mark either as #NEW or #CHANGE -->
-
-### Included files that are not contained in this module:
-
-- N/A
-<!-- Likewise, be it a non-modular file or a modular one that's not contained within the folder belonging to this specific module, it should be mentioned here -->
-
-### Credits:
-
-<!-- Here go the credits to you, dear coder, and in case of collaborative work or ports, credits to the original source of the code -->
-```
-
-Each such feature/content set should be considered a separate module, and each of its files should be marked with an uppercase comment
-**`//SKYRAT MODULE NAME`**, for example **`//SKYRAT MODULE CLONING`**, the name being preferably one word, or in case of multiple, joined with underscores. In case of a file that contains code from multiple modules, portions of it should usually be clamped between
-**`//SKYRAT MODULE - CLONING -- BEGIN`** and **`//SKYRAT MODULE - CLONING -- END`** for easy searching of all files related to a specific feature set (why will it come in handy will become more obvious in the next section)
-
-**Important:**
 Note, that it is possible to append code in front, or behind a core proc, in a modular fashion, without editing the original proc, through referring the parent proc, using `..()`, in one of the following forms.  And likewise, it is possible to add a new var to an existing datum or obj, without editing the core files.
 
+### These modular overrides should be kept in `master_files`, and you should avoid putting them inside modules as much as possible.
+
 To keep it simple, let's assume you wanted to make guns spark when shot, for simulating muzzle flash or whatever other reasons, and you want potentially to use it with all kinds of guns.
-You could start, in a modular file, by adding a var
+
+You could start, in a modular file, by adding a var.
 
 ```byond
 /obj/item/gun
@@ -210,8 +187,8 @@ In those cases, we've decided to apply the following convention, with examples:
 - **Addition:**
 
   ```byond
-  //SKYRAT EDIT ADDITION BEGIN - SHUTTLE_TOGGLE
-  var/adminEmergencyNoRecall = FALS
+  //SKYRAT EDIT ADDITION BEGIN - SHUTTLE_TOGGLE - (Optional Reason/comment)
+  var/adminEmergencyNoRecall = FALSE
   var/lastMode = SHUTTLE_IDLE
   var/lastCallTime = 6000
   //SKYRAT EDIT ADDITION END
@@ -220,7 +197,7 @@ In those cases, we've decided to apply the following convention, with examples:
 - **Removal:**
 
   ```byond
-  //SKYRAT EDIT REMOVAL BEGIN - SHUTTLE_TOGGLE
+  //SKYRAT EDIT REMOVAL BEGIN - SHUTTLE_TOGGLE - (Optional Reason/comment)
   /*
   for(var/obj/docking_port/stationary/S in stationary)
     if(S.id = id)
@@ -261,7 +238,7 @@ In those cases, we've decided to apply the following convention, with examples:
 - **Change:**
 
   ```byond
-  //SKYRAT EDIT CHANGE BEGIN - SHUTTLE_TOGGLE
+  //SKYRAT EDIT CHANGE BEGIN - SHUTTLE_TOGGLE - (Optional Reason/comment)
   //if(SHUTTLE_STRANDED, SHUTTLE_ESCAPE) - SKYRAT EDIT - ORIGINAL
   if(SHUTTLE_STRANDED, SHUTTLE_ESCAPE, SHUTTLE_DISABLED)
   //SKYRAT EDIT CHANGE END
@@ -277,6 +254,10 @@ From every rule, there's exceptions, due to many circumstances. Don't think abou
 Due to the way byond loads files, it has become necessary to make a different folder for handling our modular defines.
 That folder is **`code/__DEFINES/~skyrat_defines`**, in which you can add them to the existing files, or create those files as necessary.
 
+If you have a define that's used in more than one file, it **must** be declared here.
+
+If you have a define that's used in one file, and won't be used anywhere else, declare it at the top, and `#undef MY_DEFINE` at the bottom of the file. This is to keep context menus clean, and to prevent confusion by those using IDEs with autocomplete.
+
 ### Module folder layout
 
 To keep form and ensure most modules are easy to navigate and to keep control of the amount of files and folders being made in the repository, you are required to follow this layout.
@@ -285,17 +266,19 @@ Ensure the folder names are exactly as stated.
 
 Top most folder: module_id
 
-**code**: Any .DM files must go in here, DO NOT COPY THE DIRECTORY OF THE ORIGINAL FILE YOU ARE ADDING.
+**DO NOT COPY THE CORE CODE FILE STRUCTURE IN YOUR MODULE!!**
+
+**Code**: Any .DM files must go in here.
 
 - Good: /modular_skyrat/modules/example_module/code/disease_mob.dm
 - Bad: /modular_skyrat/modules/example_module/code/modules/antagonists/disease/disease_mob.dm
 
-**icons**: Any .DMI files must go in here, DO NOT COPY THE DIRECTORY OF THE ORIGINAL FILE YOU ARE ADDING.
+**Icons**: Any .DMI files must go in here.
 
 - Good: /modular_skyrat/modules/example_module/icons/mining_righthand.dmi
 - Bad: /modular_skyrat/modules/example_module/icons/mob/inhands/equipment/mining_righthand.dmi
 
-**sound**: Any SOUND files must go in here, DO NOT COPY THE DIRECTORY OF THE ORIGINAL FILE YOU ARE ADDING.
+**Sound**: Any SOUND files must go in here.
 
 - Good: See above.
 - Bad: See above.
@@ -306,7 +289,7 @@ The readme should go into the parent folder, module_id.
 
 ### Commenting out code - DON'T DO IT
 
-If you are commenting out redundant code, do not comment it out, instead, delete it.
+If you are commenting out redundant code in modules, do not comment it out, instead, delete it.
 
 Even if you think someone is going to redo whatever it is you're commenting out, don't, gitblame exists for a reason.
 
