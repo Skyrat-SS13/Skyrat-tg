@@ -12,7 +12,6 @@
 /datum/opposing_force_equipment/language/narsie
 	name = "Nar'Sian"
 	description = "The ancient, blood-soaked, impossibly complex language of Nar'Sian cultists."
-	item_type = /obj/effect/gibspawner/generic
 	language = /datum/language/narsie
 
 /datum/opposing_force_equipment/language/piratespeak
