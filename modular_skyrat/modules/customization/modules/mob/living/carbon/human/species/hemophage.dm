@@ -132,7 +132,7 @@
 		var/brute_damage = hemophage.getBruteLoss()
 
 		// We have to check for the damaged bodyparts like this as well, to account for robotic bodyparts, as we don't want to heal those. Stupid, I know, but that's the best proc we got to check that currently.
-		if(brute_damage && length(hemophage.get_damaged_bodyparts(brute = TRUE, burn = FALSE, stamina = FALSE, status = BODYTYPE_ORGANIC)))
+		if(brute_damage && length(hemophage.get_damaged_bodyparts(brute = TRUE, burn = FALSE, required_bodytype = BODYTYPE_ORGANIC)))
 			brutes_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_BRUTE_AMOUNT, brute_damage) * delta_time)
 			blood_used += brutes_to_heal * blood_to_health_multiplier
 			max_blood_for_regen -= brutes_to_heal * blood_to_health_multiplier
@@ -140,7 +140,7 @@
 		var/burns_to_heal = NONE
 		var/burn_damage = hemophage.getFireLoss()
 
-		if(burn_damage && max_blood_for_regen > NONE && length(hemophage.get_damaged_bodyparts(brute = FALSE, burn = TRUE, stamina = FALSE, status = BODYTYPE_ORGANIC)))
+		if(burn_damage && max_blood_for_regen > NONE && length(hemophage.get_damaged_bodyparts(brute = FALSE, burn = TRUE, required_bodytype = BODYTYPE_ORGANIC)))
 			burns_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_BURN_AMOUNT, burn_damage) * delta_time)
 			blood_used += burns_to_heal * blood_to_health_multiplier
 			max_blood_for_regen -= burns_to_heal * blood_to_health_multiplier
@@ -213,18 +213,59 @@
 
 
 /datum/species/hemophage/get_species_description()
-	return "Oftentimes feared for the different bits of folklore surrounding their condition, \
-		Hemophages are typically mixed amongst the crew, hiding away their blood-deficiency and \
-		the benefits that come from it from most, to enjoy a nearly-normal existence on the Frontier."
+	return "Oftentimes feared or pushed out of society for the predatory nature of their condition, \
+		Hemophages are typically mixed around various Frontier populations, keeping their true nature hidden while \
+		reaping both the benefits and easy access to prey, enjoying unpursued existences on the Frontier."
 
 
 /datum/species/hemophage/get_species_lore()
 	return list(
-		"Though known by many other names, 'Hemophages' are those that have found themselves the host of a bloodthirsty infection. Initially entering their hosts through the bloodstream, or activating after a period of dormancy in infants, this infection initially travels to the chest first. Afterwards, it infects several cells, making countless alterations to their genetic sequence, until it starts rapidly expanding and taking over every nearby organ, notably the heart, lungs, and stomach, forming a massive tumor vaguely reminiscent of an overgrown, coal-black heart, that hijacks them for its own benefit, and in exchange, allows the host to 'sense' the quality, and amount of blood currently occupying their body.",
-		"While this kills the host initially, the tumor will jumpstart the body and begin functioning as a surrogate to keep their host going. This does confer certain advantages to the host, in the interest of keeping them alive; working anaerobically, requiring no food to function, and extending their lifespan dramatically. However, this comes at a cost, as the tumor changes their host into an obligate hemophage; only the enzymes, and iron in blood being able to fuel them. If they are to run out of blood, the tumor will begin consuming its own host.",
-		"Historically, Hemophages have caused great societal strife through their very existence. Many have reported dread on having someone reveal they require blood to survive, worse on learning they have been undead, espiecally in 'superstitious' communities. In many places they occupy a sort of second class, unable to live normal lives due to their condition being a sort of skeleton in their closet. Some can actually be found in slaughterhouses or the agricultural industry, gaining easy access to a large supply of animal blood to feed their eternal thirst.",
-		"Others find their way into mostly-vampiric communities, turning others into their own kind; though, the virus can only transmit to hosts that are incredibly low on blood, taking advantage of their reduced immune system efficiency and higher rate of blood creation to be able to survive the initial few days within their host.",
-		"\"What the fuck does any of this mean?\" - Doctor Micheals, reading their CentCom report about the new 'hires'.",
+		"Though known by many other names, 'Hemophages' are those that have found themselves the host of a bloodthirsty infection. 'Natural' hemophages have their infection first overtake their body through the bloodstream, though methods vary; \
+		Hemophages thought to be a dense cluster of tightly related but distinct strains and variants. It will first take root in the chest, making alterations to the cells making up the host's organs to rapidly expand and take them over. \
+		Lungs will deflate into nothingness, the liver becomes wrapped up and filled with corrupted tissue and the digestive organs will gear themselves towards the intake of the only meal they can have; blood. The host's heart will almost triple in size from this 'cancerous' tissue, forming an overgrown coal-black tumor that now keeps their body standing.",
+
+		"The initial infection process in someone becoming a Hemophage can have varied effects and impacts, though there is a sort of timeline that crops up in the vast majority of cases. The process often begins with the steady decline of the host's heartrate into severe bradycardial agony as it begins to become choked with tumor tissue, chest pains and lightheadedness signaling the first stretch. \
+		Fatigue, exercise intolerance, and near-fainting persist and worsen as the host's lungs slowly begin to atrophy; the second organ to normally be 'attacked' by the process. Coughing and hemoptysis will worsen and worsen until it suddenly stops, alongside the Hemophage's ability and need to continue breathing altogether.",
+
+		"The ability to eat normal food becomes psychologically intolerable quickly after the infection fully takes root in their central nervous system, the tumor no longer holding interest in anything it cannot derive nutrients from. Foods once enjoyed by the host begin to taste completely revolting, many quickly developing an aversion to even try chewing it. \
+		However, new desires quickly begin to form, the host's whole suite of senses rapidly adapting to a keen interest in blood. Hyperosmia in specific kicks in, the iron-tinged scent of a bleeder provoking and agitating hunger like the smell of any fresh cooking would for a human. \
+		Not all blood aids the host the same. It's currently thought that a Hemophage is capable at a subconscious level of recognizing and differentiating different sources of blood, and the tumor within hijacking their psychology to prioritize blood from creatures it is able to reproduce inside of. \
+		Blood from animals is reported to 'be like trying to subsist on milk or whipped cream or heavily fluffed up bread,' harder to digest, taste, or enjoy, necessitating the Hemophage to drink far more of it just to get the same value from a relatively small amount of human blood. \
+		'Storebought' blood, like from refrigerated medical blood bags, is reported to 'taste thin,' like a heavily watered down drink. Only the physical, predatory act of drinking blood fresh from another humanoid is enough to properly 'sate' the tumor, ticking the right psychological and physiological boxes to be fully digested and enjoyed. \
+		The sensation is like nothing else, being extremely pleasurable for the host; even if they don't want it to be.",
+
+		"Photosensitivity of the skin develops. While light artificial or not won't harm them, it's noted that Hemophages seem to be far more comfortable in any level of darkness, their skin and eyes far more sensitive than before to UV. \
+		When taken away from it, and ideally isolated from higher-than-average levels of radiation such as found in orbital habitats, it's noted that the host's body will begin to reconstruct with aid from the tumor inside. Flesh will knit back together, burns will rapidly cast off, and even scar tissue will properly regenerate into normal tissue. \
+		It's thought that this process is even delicate enough to work at the host's DNA, prolonging epigenetic maintenance and ensuring biological systems remain healthy and youthful for far longer than normal. \
+		Given that Hemophages are converted and kept alive by their infection, it will ruthlessly fight off foreign bacteria, viruses, and tissues, repurposing or annihilating them to ensure there's no 'competition' over its host. \
+		Notably, the host's blood will turn almost black like ink due to their blood becoming more 'dense', yet no longer carrying nearly as much oxygen. Due to this hemophages are known to look more 'ashen', their lips often turning to a dark gray, and their skin going more pale than it normally would be. \
+		Their tongues, not an organ the tumor spares, additionally turn a pure black; in some cases, the sclera in their eyes might even turn significantly dark especially when bloodshot.",
+
+		"The psychology of Hemophages is well-studied in the psychiatric field. Over time, hemophages have developed a plethora of conditioned responses and quirks just as humans, their prey, have. \
+		The first few years after a Hemophage is 'changed' is often enough to drive them over the edge. In some cases, the first few days. The process of being turned is a series of traumas in quick succession as the host is often made to murder. \
+		The lucky have a 'moral' source of blood at hand and whoever 'converted' them to guide them through it; the unlucky have to scramble to maintain their sense of self as they become something else. \
+		The physical sensation of first infection is often painful, often terrifying, and often grotesque to experience as the host feels their body shocked with vicious tumor tissue and their mind warped by near-death stretching over potentially days. \
+		Some snap, some grow stone-hard, but it's rare to actually meet a Hemophage that remembers the process. Some hemophages are born into their condition; the infection staying dormant until the child is a few months to a year old, ensuring their stability in being able to handle the tumor. \
+		These hosts tend to live extremely tumultuous childhoods, simply not being strong enough to feed on anything but the weakest of creatures, and trending towards immense loneliness from the high visibility of their condition's treatment during youth.",
+
+		"The hunger is the main driver for these sordid creatures. From the very moment they wake back up from the process of being 'changed,' a powerful hunger is awakened. It twists and throbs in their heart, drowning out coherent thought. \
+		During the 'semi-starvation' phase in humans, the changes are dramatic. Significant decreases in strength and stamina, body temperature, heart rate, and obsession with food. Dreaming and fantasizing about it, reading and talking about it, and savoring what little meals they can get access to; hoarding it for themselves and eating to the last crumb. \
+		In Hemophages, this response is heavily similar, but turned outwards. The hunger of a Hemophage is psychologically pressing in nearly every way, detracting from all other concerns in an urge to be dealt with as soon as it can be. \
+		Panic easily sets in during these times of famine, the host instinctually knowing that it must be sated or the tumor within them will soon run out of blood to feed on, which would result in their mutual death. \
+		Even the very sight and smell of fresh blood can push a Hemophage into this kind of state if they haven't fed in awhile, only drinking from a living creature or intense meditation and concentration being able to push it down.",
+
+		"Socially, Hemophages are mostly solitary hunters. It is extremely easy for them to recognize each other; the unique smell of their blackened ichor, the subtle details of their body and the way it moves, the shallow or nonexistant breathing, or even the likely smell of multiple victims' blood on their breath. \
+		Even normal humans report talking to known Hemophages being psychologically unsettling, linked to being armed with the knowledge that they've likely taken several lives and might take theirs. \
+		This predatory aura surrounding them tends to leave them operating primarily solitarily; always passively running threat analysis on others of their kind, especially given the higher 'value' of their more nutrient-rich blood. \
+		When they do choose to work together, Hemophages gather in groups of no more than ten. Any more, and their activities would surely be impossible to disguise.",
+
+		"'Conversion' tends to be uncommon for Hemophages. The typical line of thought is that one 'wouldn't want to raise a kid every time they go out for dinner,' as the 'creation' of a new Hemophage involves, essentially, becoming an on-site therapist and mentor for an unspecified amount of time. \
+		It's often not worth the risk to potentially allow a fresh 'convert' to gain access to a Hemophage's identity if they're attempting to 'blend', and to potentially turn on them and expose their illegal activities. \
+		However the infection which creates them, like any living creature, has a drive to procreate regardless; often the urge to spread it overtakes a hemophage's sensibilities anyway, and some are known to serially infect others simply to 'stir the pot.",
+
+		"In terms of human society, it's known for Hemophages to be passively strangled by the law itself. In 'civilized' places like Sol, Hemophages that attack or kill humans for their blood are prosecuted heavily; almost disproportionately compared to if the same crimes were committed by a normal person. \
+		Artificial sources of blood are intentionally kept rare by pharmaceutical companies, and those that do end up getting an easier access to such sources seem to almost always be working in the Medical field. \
+		Even adopting pets is made nigh-on-impossible for them. Those that don't leave to places like frontier systems typically end up part of oft-ephemeral networks of others of their kind, offering time-sensitive advice on where certain 'low-risk' or 'less-than-legal' meals may be found and forcing themselves to work past their base instincts to cooperate to an extent; anything else would mean death."
 	)
 
 
@@ -377,28 +418,6 @@
 /datum/action/cooldown/hemophage
 	cooldown_time = 3 SECONDS
 	button_icon_state = null
-
-
-// This code had to be copied over from /datum/action/item_action to maintain the tongue and heart display on the button.
-/datum/action/cooldown/hemophage/ApplyIcon(atom/movable/screen/movable/action_button/current_button, force)
-	var/obj/item/item_target = target
-	if(button_icon && button_icon_state)
-		// If set, use the custom icon that we set instead
-		// of the item appearance
-		..()
-	else if((target && current_button.appearance_cache != item_target.appearance) || force) //replace with /ref comparison if this is not valid.
-		var/old_layer = item_target.layer
-		var/old_plane = item_target.plane
-		// reset the x & y offset so that item is aligned center
-		item_target.pixel_x = 0
-		item_target.pixel_y = 0
-		item_target.layer = FLOAT_LAYER // They need to be displayed on the proper layer and plane to show up on the button. We elevate them temporarily just to steal their appearance, and then revert it.
-		item_target.plane = FLOAT_PLANE
-		current_button.cut_overlays()
-		current_button.add_overlay(item_target)
-		item_target.layer = old_layer
-		item_target.plane = old_plane
-		current_button.appearance_cache = item_target.appearance
 
 
 /datum/action/cooldown/hemophage/drain_victim
