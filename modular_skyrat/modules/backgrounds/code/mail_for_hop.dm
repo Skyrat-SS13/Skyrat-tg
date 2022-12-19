@@ -52,7 +52,6 @@
 	name = "HoP Mail from Central Command"
 	hidden = TRUE
 	access = ACCESS_HOP
-	access_view = ACCESS_HOP
 	crate_name = "Mail for HoP"
 	crate_type = /obj/structure/closet/crate/secure
 
