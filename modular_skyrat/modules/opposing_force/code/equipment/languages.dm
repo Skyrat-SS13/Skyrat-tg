@@ -3,6 +3,7 @@
 	description = "Syndicate operatives can use a series of codewords to convey complex information, while sounding like random concepts and drinks to anyone listening in."
 	category = OPFOR_EQUIPMENT_CATEGORY_LANGUAGES
 	item_type = /obj/effect/gibspawner/generic
+	/// The language datum given to the mind's language holder
 	var/language = /datum/language/codespeak
 
 /datum/opposing_force_equipment/language/on_issue(mob/living/target)
