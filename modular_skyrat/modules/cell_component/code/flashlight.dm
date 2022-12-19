@@ -84,13 +84,13 @@
 	update_brightness()
 	if(noisy)
 		playsound(src, 'modular_skyrat/master_files/sound/effects/flashlight.ogg', 40, TRUE) //Credits to ERIS for the sound
-	update_action_buttons()
+	update_item_action_buttons()
 
 /// Handles turning off the flashlight.
 /obj/item/flashlight/proc/turn_off()
 	on = FALSE
 	update_brightness()
-	update_action_buttons()
+	update_item_action_buttons()
 
 /obj/item/flashlight/process(delta_time)
 	if(!on)
