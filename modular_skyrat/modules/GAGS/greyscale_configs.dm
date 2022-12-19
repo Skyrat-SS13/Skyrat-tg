@@ -716,6 +716,10 @@
 	name = "Worn Ripped Shorts - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
+/datum/greyscale_config/shorts_ripped/worn/teshari
+	name = "Worn Ripped Shorts - Teshari"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/teshari_uniform.dmi'
+
 /datum/greyscale_config/jeans_ripped
 	name = "Ripped Jeans"
 	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'

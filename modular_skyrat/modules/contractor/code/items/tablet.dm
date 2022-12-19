@@ -2,6 +2,12 @@
 	name = "contract PDA"
 	icon = 'icons/obj/contractor_tablet.dmi'
 	icon_state = "tablet"
+	icon_state_unpowered = "tablet"
+	icon_state_powered = "tablet"
+	icon_state_menu = "assign"
+	greyscale_config = null
+	greyscale_colors = null
+	comp_light_luminosity = 6.3
 	saved_identification = "John Doe"
 	saved_job = "Citizen"
 	device_theme = "syndicate"

@@ -452,14 +452,14 @@ DANGER: SNOWFLAKE ZONE
 	if(microfusion_gun.GetComponent(/datum/component/scope))
 		return
 	microfusion_gun.AddComponent(/datum/component/scope, range_modifier = 1.5)
-	microfusion_gun.update_action_buttons()
+	microfusion_gun.update_item_action_buttons()
 
 /obj/item/microfusion_gun_attachment/scope/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
 	var/datum/component_datum = microfusion_gun.GetComponent(/datum/component/scope)
 	if(component_datum)
 		qdel(component_datum)
-	microfusion_gun.update_action_buttons()
+	microfusion_gun.update_item_action_buttons()
 
 /*
 BLACK CAMO ATTACHMENT

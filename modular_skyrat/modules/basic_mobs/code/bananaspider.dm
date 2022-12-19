@@ -23,7 +23,8 @@
 /mob/living/basic/banana_spider/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/slippery, 40)
-	AddElement(/datum/element/death_drops, list(/obj/item/food/deadbanana_spider))
+	var/static/list/banana_drops = list(/obj/item/food/deadbanana_spider)
+	AddElement(/datum/element/death_drops, banana_drops)
 	AddElement(/datum/element/basic_body_temp_sensitive, 270, INFINITY)
 	AddComponent(/datum/component/squashable, squash_chance = 50, squash_damage = 1)
 
