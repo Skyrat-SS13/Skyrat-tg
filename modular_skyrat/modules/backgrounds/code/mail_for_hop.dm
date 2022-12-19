@@ -10,7 +10,7 @@
 	crate_type = /obj/structure/closet/crate/secure
 
 	/// How much money to give.
-	var/var_value
+	var/value
 
 /datum/supply_pack/hop_mail/New(var/value)
 	. = ..()
