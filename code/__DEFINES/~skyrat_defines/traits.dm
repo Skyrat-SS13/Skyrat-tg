@@ -54,6 +54,9 @@
 /// Cargo Loader trait
 #define TRAIT_TRASHMAN "trait_trashman"
 
+/// Trait gained when wearing /obj/item/clothing/suit/pillow_suit
+#define TRAIT_PADDED "trait_padded"
+
 /// Trait source for xeno innate abilities
 #define TRAIT_XENO_INNATE "xeno_innate"
 /// Trait source for something added BY a xeno ability
