@@ -1,4 +1,5 @@
-// Basically a copy-paste of "card_mod"
+// Basically a copy-paste of "card_mod", but for modifying passports specifically.
+// Copy-pasted cause if I were to add onto the card editor, the code would be so really bad.
 
 /datum/computer_file/program/passport_mod
 	filename = "plexagonpassportwriter"

@@ -1,3 +1,4 @@
+// Backgrounds override.
 // Hijacks the manifest_inject proc to allow for off-manifest roles.
 /datum/datacore/manifest_inject(mob/living/carbon/human/human, client/human_client)
 	var/datum/background_info/background_info = human.employment

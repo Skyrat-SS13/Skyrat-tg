@@ -15,7 +15,6 @@
 		if(!issilicon(user) && in_range(src, user))
 			user.put_in_hands(passport_slot)
 		balloon_alert(user, "removed passport")
-		to_chat(user, span_notice("You remove the passport from the passport slot."))
 	else
 		passport_slot.forceMove(drop_location())
 
@@ -42,7 +41,7 @@
 	if(user)
 		if(!user.transferItemToLoc(inserting_passport, src))
 			return FALSE
-		to_chat(user, span_notice("You insert \the [inserting_passport] into the passport slot."))
+		balloon_alert(user, "inserted passport")
 	else
 		inserting_passport.forceMove(src)
 
@@ -57,11 +56,3 @@
 		return
 
 	return ..()
-
-/obj/machinery/modular_computer/console/preset/id/LateInitialize()
-	. = ..()
-	cpu.store_file(new /datum/computer_file/program/passport_mod)
-
-/obj/machinery/modular_computer/console/preset/id/centcom/LateInitialize()
-	. = ..()
-	cpu.store_file(new /datum/computer_file/program/passport_mod)

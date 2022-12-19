@@ -1,3 +1,35 @@
+// Start Backgrounds overrides.
+// For crew, see /datum/controller/subsystem/ticker/proc/equip_characters and /mob/dead/new_player/proc/AttemptLateSpawn.
+/obj/effect/mob_spawn/ghost_role/human/special(mob/living/spawned_mob, mob/mob_possessor)
+	. = ..()
+	var/mob/living/carbon/human/human = spawned_mob
+	human.origin = mob_possessor.client.prefs.origin
+	human.social_background = mob_possessor.client.prefs.social_background
+	human.employment = mob_possessor.client.prefs.employment
+	human.give_passport()
+
+/obj/effect/mob_spawn/ghost_role/human/allow_spawn(mob/user, silent = FALSE)
+	if(!..())
+		return FALSE
+
+	return is_background_valid(user)
+
+/// Checks if a ghost role is allowed in the user's selected backgrounds.
+/obj/effect/mob_spawn/ghost_role/human/proc/is_background_valid(mob/user)
+	if(!user?.client?.prefs)
+		return FALSE
+
+	var/datum/background_info/origin = GLOB.origins[user.client.prefs.origin]
+	var/datum/background_info/social_background = GLOB.social_backgrounds[user.client.prefs.social_background]
+	var/datum/background_info/employment = GLOB.employments[user.client.prefs.employment]
+	if(!origin.is_role_valid(src) || !social_background.is_role_valid(src) || !employment.is_role_valid(src))
+		user.show_message(span_warning("Your background doesn't allow for this ghost role!"))
+		return FALSE
+
+	return TRUE
+
+// End Backgrounds overrides.
+
 /obj/effect/mob_spawn/ghost_role/create(mob/mob_possessor, newname)
 	var/load_prefs = FALSE
 	//if we can load our own appearance and its not restricted, try

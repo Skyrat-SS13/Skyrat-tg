@@ -992,7 +992,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				return TRUE
 			return FALSE
 
-	// SKYRAT EDIT ADDITION START - Modular slots
+	// SKYRAT EDIT ADDITION START - Modular extra slots
 	switch(modular_can_equip(H, I, disable_warning, bypass_equip_delay_self))
 		if(CAN_EQUIP_PASS)
 			// Do nothing.
