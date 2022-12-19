@@ -111,6 +111,10 @@
 	manifest_text += "Contents: <br/>"
 	manifest_text += "<ul>"
 	for(var/atom/movable/AM in container.contents - manifest_paper)
+		// SKYRAT EDIT ADDITION START - Backgrounds - Hidden cargo items.
+		if(AM.datum_components?[/datum/component/hidden_from_cargo_manifest]) // Doesn't use the getter for performance.
+			continue
+		// SKYRAT EDIT END
 		if((manifest_paper.errors & MANIFEST_ERROR_CONTENTS))
 			if(prob(50))
 				manifest_text += "<li>[AM.name]</li>"

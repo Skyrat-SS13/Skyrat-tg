@@ -48,9 +48,6 @@
 /datum/component/hidden_from_cargo_manifest
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 
-/obj/item/hop_package
-	name = "HoP Carepackage"
-
 /datum/supply_pack/hop_mail
 	name = "HoP Mail from Central Command"
 	hidden = TRUE
@@ -58,7 +55,6 @@
 	access_view = ACCESS_HOP
 	crate_name = "Mail for HoP"
 	crate_type = /obj/structure/closet/crate/secure
-	contains = /obj/item/hop_package
 
 	/// How much money to give.
 	var/value
@@ -83,5 +79,3 @@
 /datum/supply_pack/hop_mail/fill(obj/structure/closet/crate/crate)
 	var/obj/item/holochip/chip = new /obj/item/holochip(crate, round(value * rand(0.8, 1.2)))
 	chip.AddComponent(/datum/component/hidden_from_cargo_manifest)
-
-
