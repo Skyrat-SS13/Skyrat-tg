@@ -227,12 +227,8 @@
 /mob/living/proc/getFireLoss()
 	return fireloss
 
-<<<<<<< HEAD
-/mob/living/proc/adjustFireLoss(amount, updating_health = TRUE, forced = FALSE)
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_FIRE, amount) //SKYRAT EDIT ADDITION
-=======
 /mob/living/proc/adjustFireLoss(amount, updating_health = TRUE, forced = FALSE, required_status)
->>>>>>> 5ddfd035e66 (Fix: Robotic/Non-Organic Bodyparts not Healing/Damaging (#71864))
+	SEND_SIGNAL(src, COMSIG_MOB_LOSS_FIRE, amount) //SKYRAT EDIT ADDITION
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	fireloss = clamp((fireloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)

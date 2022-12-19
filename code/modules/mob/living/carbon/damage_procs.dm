@@ -67,11 +67,7 @@
 	if(amount > 0)
 		take_overall_damage(amount, 0, updating_health, required_status)
 	else
-<<<<<<< HEAD
-		heal_overall_damage(abs(amount), 0, 0, required_status ? required_status : BODYTYPE_ORGANIC, updating_health)
-=======
 		heal_overall_damage(abs(amount), 0, required_status, updating_health)
->>>>>>> 5ddfd035e66 (Fix: Robotic/Non-Organic Bodyparts not Healing/Damaging (#71864))
 	return amount
 
 /mob/living/carbon/setBruteLoss(amount, updating_health = TRUE, forced = FALSE, required_status)
@@ -87,11 +83,7 @@
 	if(amount > 0)
 		take_overall_damage(0, amount, updating_health, required_status)
 	else
-<<<<<<< HEAD
-		heal_overall_damage(0, abs(amount), 0, required_status ? required_status : BODYTYPE_ORGANIC, updating_health)
-=======
 		heal_overall_damage(0, abs(amount), required_status, updating_health)
->>>>>>> 5ddfd035e66 (Fix: Robotic/Non-Organic Bodyparts not Healing/Damaging (#71864))
 	return amount
 
 /mob/living/carbon/setFireLoss(amount, updating_health = TRUE, forced = FALSE, required_status)
@@ -283,11 +275,7 @@
 		var/stamina_was = picked.stamina_dam
 
 
-<<<<<<< HEAD
-		update |= picked.receive_damage(brute_per_part, burn_per_part, stamina_per_part, FALSE, required_status, wound_bonus = CANT_WOUND) // disabling wounds from these for now cuz your entire body snapping cause your heart stopped would suck
-=======
 		update |= picked.receive_damage(brute_per_part, burn_per_part, FALSE, updating_health, required_status, wound_bonus = CANT_WOUND) // disabling wounds from these for now cuz your entire body snapping cause your heart stopped would suck
->>>>>>> 5ddfd035e66 (Fix: Robotic/Non-Organic Bodyparts not Healing/Damaging (#71864))
 
 		brute = round(brute - (picked.brute_dam - brute_was), DAMAGE_PRECISION)
 		burn = round(burn - (picked.burn_dam - burn_was), DAMAGE_PRECISION)
