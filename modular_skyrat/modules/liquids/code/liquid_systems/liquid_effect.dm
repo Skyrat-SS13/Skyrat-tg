@@ -604,7 +604,7 @@
 	smoothing_flags = NONE
 	icon_state = "ocean"
 	base_icon_state = "ocean"
-	plane = BLACKNESS_PLANE //Same as weather, etc.
+	plane = DEFAULT_PLANE //Same as weather, etc.
 	layer = ABOVE_MOB_LAYER
 	starting_temp = T20C-150
 	no_effects = TRUE
