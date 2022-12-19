@@ -47,12 +47,8 @@
 			uplink.uplink_handler = uplink_handler
 		else
 			uplink_handler = uplink.uplink_handler
-<<<<<<< HEAD
-		uplink_handler.has_progression = progression_enabled //SKYRAT EDIT
-=======
 		uplink_handler.primary_objectives = objectives
-		uplink_handler.has_progression = TRUE
->>>>>>> 54cfbcce2e6 (Replaces Traitor Greentext Objectives with Assassination/Escape Objectives (#71349))
+		uplink_handler.has_progression = progression_enabled
 		SStraitor.register_uplink_handler(uplink_handler)
 
 		uplink_handler.has_objectives = progression_enabled //SKYRAT EDIT
@@ -154,12 +150,6 @@
 /datum/antagonist/traitor/proc/forge_traitor_objectives()
 	objectives.Cut()
 
-<<<<<<< HEAD
-
-	var/datum/objective/traitor_progression/final_objective = new /datum/objective/traitor_progression()
-	final_objective.owner = owner
-	objectives += final_objective
-=======
 	var/list/kill_targets = list() //for blacklisting already-set targets
 	var/objective_limit = CONFIG_GET(number/traitor_objectives_amount)
 	for(var/i in 1 to objective_limit)
@@ -174,7 +164,6 @@
 				kill_targets += task.target
 				objectives += task
 				continue
->>>>>>> 54cfbcce2e6 (Replaces Traitor Greentext Objectives with Assassination/Escape Objectives (#71349))
 
 		var/datum/objective/task = new /datum/objective/assassinate()
 		task.owner = owner
@@ -182,13 +171,10 @@
 		kill_targets += task.target
 		objectives += task
 
-<<<<<<< HEAD
-=======
 	var/datum/objective/escape/bye = new /datum/objective/escape()
 	objectives += bye
 	bye.owner = owner
 
->>>>>>> 54cfbcce2e6 (Replaces Traitor Greentext Objectives with Assassination/Escape Objectives (#71349))
 /datum/antagonist/traitor/apply_innate_effects(mob/living/mob_override)
 	. = ..()
 	var/mob/living/datum_owner = mob_override || owner.current
