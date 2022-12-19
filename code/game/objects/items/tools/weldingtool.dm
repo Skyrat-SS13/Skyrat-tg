@@ -39,6 +39,8 @@
 	var/status = TRUE
 	/// The max amount of fuel the welder can hold
 	var/max_fuel = 20
+	/// Does the welder start with fuel.
+	var/starting_fuel = TRUE
 	/// Whether or not we're changing the icon based on fuel left.
 	var/change_icons = TRUE
 	/// Used in process(), dictates whether or not we're calling STOP_PROCESSING whilst we're not welding.
@@ -56,7 +58,8 @@
 	AddElement(/datum/element/falling_hazard, damage = force, wound_bonus = wound_bonus, hardhat_safety = TRUE, crushes = FALSE, impact_sound = hitsound)
 
 	create_reagents(max_fuel)
-	reagents.add_reagent(/datum/reagent/fuel, max_fuel)
+	if(starting_fuel)
+		reagents.add_reagent(/datum/reagent/fuel, max_fuel)
 	update_appearance()
 
 /obj/item/weldingtool/update_icon_state()
@@ -327,6 +330,9 @@
 	else
 		return ""
 
+/obj/item/weldingtool/empty
+	starting_fuel = FALSE
+
 /obj/item/weldingtool/largetank
 	name = "industrial welding tool"
 	desc = "A slightly larger welder with a larger tank."
@@ -336,8 +342,11 @@
 
 /obj/item/weldingtool/largetank/flamethrower_screwdriver()
 	return
+	
+/obj/item/weldingtool/largetank/empty
+	starting_fuel = FALSE
 
-/obj/item/weldingtool/largetank/cyborg//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/weldingtool/largetank/cyborg //SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "integrated welding tool"
 	desc = "An advanced welder designed to be used in robotic systems. Custom framework doubles the speed of welding."
 	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
@@ -361,6 +370,9 @@
 
 /obj/item/weldingtool/mini/flamethrower_screwdriver()
 	return
+
+/obj/item/weldingtool/mini/empty
+	starting_fuel = FALSE
 
 /obj/item/weldingtool/abductor
 	name = "alien welding tool"
