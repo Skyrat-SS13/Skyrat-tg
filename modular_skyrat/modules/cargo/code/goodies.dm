@@ -120,3 +120,13 @@
 	desc = "Someone mildly hurt and it's too much of a bother to manually handle their burns or cuts? Look no further than the AFAD, a state-of-the-art pain-relief device!"
 	cost = PAYCHECK_CREW * 40
 	contains = list(/obj/item/gun/medbeam/afad)
+
+/*
+*       SECURITY STUFF
+*/
+/datum/supply_pack/goody/krav_maga_warden
+	name = "Krav Maga Gloves Single-Pack"
+	desc = "The HoS took your martial arts gloves? No problem! Just pay the absurd taxation fee and you too can be reunited with the fists of fury!"
+	cost = PAYCHECK_CREW * 40 //they really mean a premium here
+	access_view = ACCESS_WARDEN
+	contains = list(/obj/item/clothing/gloves/krav_maga)
