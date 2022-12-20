@@ -258,7 +258,7 @@
 
 ///Calibrates the Parent NIF, this is ran every time the parent NIF is first installed inside of someone.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/perform_calibration()
-	if(linked_mob.stat == DEAD)
+	if(linked_mob.stat >= DEAD)
 		return FALSE
 
 	if(!calibration_duration)
