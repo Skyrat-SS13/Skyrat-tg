@@ -412,14 +412,6 @@
 
 	examine_texts += nif_examine_text
 
-///
-/mob/living/carbon/human/proc/get_installed_nif()
-	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
-	if(!installed_nif)
-		return FALSE
-
-	return installed_nif
-
 /mob/living/carbon/human/death()
 	. = ..()
 
