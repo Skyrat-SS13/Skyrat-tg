@@ -33,9 +33,9 @@
 /datum/action/innate/alter_form/nif
 	name = "Polymorph"
 	slime_restricted =  FALSE
-	button_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
+	background_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
 	background_icon_state = "android"
-	icon_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
+	button_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
 	button_icon_state = "slime"
 	shapeshift_text = "closes their eyes to focus, their body subtly shifting and contorting."
 

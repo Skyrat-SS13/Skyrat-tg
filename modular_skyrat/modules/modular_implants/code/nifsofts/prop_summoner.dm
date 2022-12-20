@@ -61,9 +61,9 @@
 		refund_activation_cost()
 		return FALSE
 
-
+///Can the person using the NIFSoft summon an item?
 /datum/nifsoft/summoner/proc/check_menu(mob/living/carbon/human/user)
-	if(!istype(user) || !user.installed_nif)
+	if(!istype(user))
 		return FALSE
 
 	return TRUE

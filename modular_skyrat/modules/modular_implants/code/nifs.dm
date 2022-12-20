@@ -136,7 +136,6 @@
 	stored_ckey = linked_mob.ckey
 
 	loc = insertee // This needs to be done, otherwise TGUI will not pull up.
-	insertee.installed_nif = src
 	START_PROCESSING(SSobj, src)
 
 	if(!is_calibrated)
@@ -223,9 +222,6 @@
 /// Checks to see if the mob has a nutrition that can be drain from
 /obj/item/organ/internal/cyberimp/brain/nif/proc/nutrition_check() //This is a seperate proc so that TGUI can perform this check on the menu
 	if(!linked_mob || !linked_mob.nutrition)
-		return FALSE
-
-	if(isrobotic(linked_mob))
 		return FALSE
 
 	if(HAS_TRAIT(linked_mob, TRAIT_NOHUNGER)) //Hemophages HATE this one simple check.
@@ -416,13 +412,19 @@
 
 	examine_texts += nif_examine_text
 
-/mob/living/carbon/human
-	///What, if any NIF is currently installed inside of the mob?
-	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif
+///
+/mob/living/carbon/human/proc/get_installed_nif()
+	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
+	if(!installed_nif)
+		return FALSE
+
+	return installed_nif
 
 /mob/living/carbon/human/death()
 	. = ..()
 
+
+	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
 	if(!installed_nif)
 		return
 
@@ -433,6 +435,8 @@
 
 ///Checks to see if a human with a NIF has the nifsoft_to_find type of NIFSoft installed?
 /mob/living/carbon/human/proc/find_nifsoft(nifsoft_to_find)
+
+	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
 	var/list/nifsoft_list = installed_nif?.loaded_nifsofts
 	if(!nifsoft_list)
 		return FALSE

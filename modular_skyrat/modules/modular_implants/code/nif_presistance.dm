@@ -23,6 +23,7 @@
 	var/path = "data/player_saves/[ckey[1]]/[ckey]/nif.sav"
 	var/savefile/save = new /savefile(path)
 	var/obj/item/organ/internal/cyberimp/brain/nif/saved_nif
+	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
 
 	if(HAS_TRAIT(src, GHOSTROLE_TRAIT)) //Nothing is lost from playing a ghost role
 		return FALSE

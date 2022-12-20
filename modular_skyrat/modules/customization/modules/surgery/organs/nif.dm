@@ -17,7 +17,9 @@
 
 /datum/surgery/repair_nif/can_start(mob/user, mob/living/patient)
 	var/mob/living/carbon/human/nif_patient = patient
-	if(!nif_patient || !nif_patient.installed_nif)
+	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = nif_patient.getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
+
+	if(!nif_patient || !installed_nif)
 		return FALSE
 
 	. = ..()
@@ -45,7 +47,8 @@
 	)
 
 	var/mob/living/carbon/human/nif_patient = target
-	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = nif_patient.installed_nif
+	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = nif_patient.getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
+
 
 	installed_nif.durability = installed_nif.max_durability
 	installed_nif.send_message("Restored to full integrity!")

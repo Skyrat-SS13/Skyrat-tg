@@ -1,8 +1,8 @@
 /// Action used to pull up the NIF menu
 /datum/action/item_action/nif
-	button_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
+	background_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
 	background_icon_state = "android"
-	icon_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
+	button_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
 	check_flags = AB_CHECK_CONSCIOUS
 
 /datum/action/item_action/nif/open_menu

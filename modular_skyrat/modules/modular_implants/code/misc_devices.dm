@@ -11,7 +11,7 @@
 
 /obj/item/nifsoft_remover/attack(mob/living/carbon/human/target_mob, mob/living/user)
 	. = ..()
-	var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = target_mob.installed_nif
+	var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = target_mob.getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
 
 	if(!target_nif || !length(target_nif.loaded_nifsofts))
 		to_chat(user, span_warning("[user] does not posses a NIF with any installed NIFSofts"))
@@ -84,14 +84,16 @@
 
 /obj/item/nif_repair_kit/attack(mob/living/carbon/human/mob_to_repair, mob/living/user)
 	. = ..()
-	if(!mob_to_repair.installed_nif)
+
+	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = mob_to_repair.getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
+	if(!installed_nif)
 		to_chat(user, span_warning("[mob_to_repair] lacks a NIF"))
 
 	if(!do_after(user, 5 SECONDS, mob_to_repair))
 		balloon_alert(user, "repair cancelled")
 		return FALSE
 
-	if(!mob_to_repair.installed_nif.repair_nif(repair_amount))
+	if(!installed_nif.repair_nif(repair_amount))
 		to_chat(user, span_warning("The NIF you are trying to repair is already at max durbility"))
 		return FALSE
 
