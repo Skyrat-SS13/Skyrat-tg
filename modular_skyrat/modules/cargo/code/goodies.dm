@@ -127,6 +127,6 @@
 /datum/supply_pack/goody/krav_maga_warden
 	name = "Krav Maga Gloves Single-Pack"
 	desc = "The HoS took your martial arts gloves? No problem! Just pay the absurd taxation fee and you too can be reunited with the fists of fury!"
-	cost = PAYCHECK_CREW * 40 //they really mean a premium here
+	cost = PAYCHECK_CREW * 60 //they really mean a premium here
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/clothing/gloves/krav_maga)
