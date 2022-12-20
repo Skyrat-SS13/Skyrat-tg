@@ -720,7 +720,7 @@
 		. = FALSE
 
 
-/mob/living/carbon/adjustOxyLoss(amount, updating_health = TRUE, forced = FALSE)
+/mob/living/carbon/adjustOxyLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype)
 	. = ..()
 	check_passout(.)
 
@@ -729,7 +729,7 @@
 	if(!limb)
 		return
 
-/mob/living/carbon/setOxyLoss(amount, updating_health = TRUE, forced = FALSE)
+/mob/living/carbon/setOxyLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype)
 	. = ..()
 	check_passout(.)
 
