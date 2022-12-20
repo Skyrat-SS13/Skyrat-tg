@@ -6,36 +6,32 @@
 	skill_icon = "brain"
 	activate_message = "<span class='notice'>You can visualize how to defend yourself with martial arts.</span>"
 	deactivate_message = "<span class='notice'>You forget how to control your muscles to execute the arts of Krav Maga.</span>"
-	var/datum/action/Krav_Activate/Krav_Activate = new/datum/action/Krav_Activate()
+	var/datum/action/krav_activate/krav_activate = new
 
-/datum/action/Krav_Activate
-	name = "Activates your Knowledge of Krav Maga"
+/datum/action/krav_activate
+	name = "Activate Krav Maga."
 	button_icon = 'icons/obj/wizard.dmi'
 	button_icon_state = "scroll2"
 
-/datum/action/Krav_Activate/Trigger(trigger_flags)
-	var/mob/living/carbon/human/H = owner
+/datum/action/krav_activate/Trigger(trigger_flags)
 	var/datum/martial_art/krav_maga/style = new
-	if(!ishuman(H))
+	if(!ishuman(owner))
 		return
-	if(!H.mind)
+	if(!owner.mind)
 		return
-	if(H.mind.has_martialart(MARTIALART_KRAVMAGA))
-		var/datum/martial_art/default = H.mind.default_martial_art
-		default.teach(H)
+	if(owner.mind.has_martialart(MARTIALART_KRAVMAGA))
+		var/datum/martial_art/default = owner.mind.default_martial_art
+		default.teach(owner)
 	else
-		style.teach(H, TRUE)
+		style.teach(owner, TRUE)
 
 /obj/item/skillchip/job/warden/on_activate(mob/living/carbon/user, silent = FALSE)
 	. = ..()
-	Krav_Activate.Grant(user)
+	krav_activate.Grant(user)
 
 /obj/item/skillchip/job/warden/on_deactivate(mob/living/carbon/user, silent = FALSE)
 	. = ..()
-	Krav_Activate.Trigger()
-	Krav_Activate.Remove(user)
+	if(user.mind.has_martialart(MARTIALART_KRAVMAGA))
+		krav_activate.Trigger()
+	krav_activate.Remove(user)
 	return ..()
-
-
-
-
