@@ -1,5 +1,5 @@
 /obj/item/skillchip/job/warden
-	name = "Krav Maga Skillchip"
+	name = "\improper Krav Maga Skillchip"
 	desc = "Teaches you the arts of Krav Maga in 5 short instructional videos beamed directly into your eyeballs."
 	skill_name = "Krav Maga"
 	skill_description = "A specialised form of Martial Arts, allowing you to swiftly disable attackers."
