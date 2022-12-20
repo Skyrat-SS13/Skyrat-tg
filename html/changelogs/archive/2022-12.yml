@@ -629,3 +629,45 @@
   - bugfix: Fixed a bug that made certain inserted organs drop on the floor.
   - balance: limits the power miners the dusty shard can summon to charger, protector,
       ranged, standard and support
+2022-12-20:
+  A.C.M.O.:
+  - bugfix: Fixed robotic/surplus limbs not taking damage/healing as expected; including
+      via the Var Viewer, Player Panel, and from sources of spread-damage.
+  LT3:
+  - balance: Getting hit by the tram may now break some of your bones, or more. Be
+      careful!
+  Melbert:
+  - bugfix: Corrects the look of pinned modules
+  Rhials:
+  - admin: You can now select which type of shuttle loan offer will by made when triggering
+      the shuttle loan event.
+  SkyratBot:
+  - code_imp: Makes a lot of the bodypart variables clearer as to what they do. Includes
+      more detailed code comments.
+  - bugfix: Robotic limbs are no longer immune to being disabled through reaching
+      maximum damage.
+  - bugfix: Fixed a stray-tab typo in "item_heal_robotic"
+  - bugfix: Fixed reagents and other effects which were inappropriately affecting
+      robotic limbs.
+  - code_imp: Refactored all of reagents code to be more readable and maintainable.
+  - bugfix: Gibbers no longer show up twice in their techweb node.
+  - balance: Traitors now have two kill and an escape objective for Greentext purposes,
+      though completing a Final Objective will Greentext too.
+  - bugfix: fixed Advanced Scanning Modules Calibration Experiment not registering
+      upgraded machines to its progress
+  - rscadd: TGUI for RCD Just like Rapid Pipe Dispenser
+  - rscadd: Radial menu for RLD
+  - code_imp: silo link upgrades for both RLD & Plumbing RCD
+  - rscdel: Switch Mode, Window Glass, Airlock action icons for construction console
+  - refactor: FURNISHING , FRAMES & SIMPLE_CIRCUITS are banned upgrades for RLD &
+      Plumbing RCD
+  - refactor: The logic of how we well, render things has changed. Make an issue report
+      if anything looks funky, particularly layers. PLEASE USE YOUR EYES
+  - imagedel: non parallax space is now black
+  - bugfix: RPED part display information
+  - bugfix: RPED incorrectly exchanging parts with the wrong tier for datum stock
+      parts
+  - bugfix: RPED unable to install datum stock parts in incomplete machine frames
+  - bugfix: RPED unable to exchange parts for newly constructed machines
+  Tattle:
+  - bugfix: lockboxes' and wrapped crates' invisibility spell has worn off
