@@ -132,10 +132,10 @@
 // Turns you into a female if character is male. Also adds breasts.
 /datum/reagent/drug/aphrodisiac/succubus_milk/overdose_effects(mob/living/carbon/human/exposed_mob)
 	var/double_dosing = FALSE //overdosing on succubus milk and incubus draft simultaneously
-		for(var/r in exposed_mob.reagents.reagent_list)
-			var/datum/reagent/reagent = r
-			if(reagent.name == "incubus draft" && reagent.overdosed)
-				double_dosing = TRUE
+	for(var/r in exposed_mob.reagents.reagent_list)
+		var/datum/reagent/reagent = r
+		if(reagent.name == "incubus draft" && reagent.overdosed)
+			double_dosing = TRUE
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
 		if(!exposed_mob.getorganslot(ORGAN_SLOT_BREASTS) && exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
 			var/obj/item/organ/path = /obj/item/organ/external/genital/breasts
@@ -149,11 +149,11 @@
 			exposed_mob.update_body()
 			enlargement_amount = 0
 			if(new_breasts.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_topless())
-				if(!double_dosing)
+				if(!double_dosing) //So we don't spam chat
 					exposed_mob.visible_message(span_notice("[exposed_mob]'s bust suddenly expands!"))
 					to_chat(exposed_mob, span_purple("Your chest feels warm, tingling with sensitivity as it expands outward."))
 			else
-				if(!double_dosing)
+				if(!double_dosing) //So we don't spam chat
 					exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s chest suddenly bounces a bit."))
 					to_chat(exposed_mob, span_purple("Your chest feels warm, tingling with sensitivity as it strains against your clothes."))
 	
