@@ -19,6 +19,8 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	var/datum/component/mind_linker/nif/active_network
 	///The physical keyboard item being used to send messages
 	var/obj/item/hivemind_keyboard/linked_keyboard
+	///What action is being used to summon the Keyboard?
+	var/datum/action/innate/hivemind_keyboard/keyboard_action
 
 /datum/nifsoft/hivemind/New()
 	. = ..()
@@ -28,6 +30,9 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 		linker_action_path = /datum/action/innate/hivemind_config, \
 	)
 
+	keyboard_action = new
+	keyboard_action.Grant(linked_mob)
+
 	active_network = user_network
 	network_list += user_network
 	GLOB.hivemind_users += linked_mob
@@ -35,6 +40,10 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 /datum/nifsoft/hivemind/Destroy()
 	if(linked_mob in GLOB.hivemind_users)
 		GLOB.hivemind_users -= linked_mob
+
+	if(keyboard_action)
+		keyboard_action.Remove()
+		qdel(keyboard_action)
 
 	for(var/datum/component/mind_linker/nif/hivemind as anything in network_list)
 		hivemind.linked_mobs -= linked_mob
@@ -44,8 +53,6 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 		to_chat(linked_mob, span_abductor("You have left [hivemind_owner]'s Hivemind."))
 
 	qdel(user_network)
-
-	//add in a function that scans the mind_links in the network list and remove the user from each one of them.
 	return ..()
 
 /datum/nifsoft/hivemind/activate()
@@ -68,7 +75,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	background_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
 	background_icon_state = "android"
 	button_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
-	button_icon_state = "phone"
+	button_icon_state = "phone_settings"
 
 /datum/action/innate/hivemind_config/Activate()
 	. = ..()
@@ -136,6 +143,22 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	GLOB.hivemind_users += user
 	to_chat(user, span_abductor("You are now able to receive invites."))
 
+/datum/action/innate/hivemind_keyboard
+	name = "Hivemind Keyboard"
+	background_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
+	background_icon_state = "android"
+	button_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
+	button_icon_state = "phone"
+
+/datum/action/innate/hivemind_keyboard/Activate()
+	. = ..()
+	var/mob/living/carbon/human/user = owner
+	var/datum/nifsoft/hivemind/hivemind_nifsoft = user.find_nifsoft(/datum/nifsoft/hivemind)
+
+	if(!hivemind_nifsoft)
+		return FALSE
+
+	hivemind_nifsoft.activate()
 /datum/component/mind_linker
 	///Is does the component give an action to speak? By default, yes
 	var/speech_action = TRUE
