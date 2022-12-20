@@ -39,9 +39,9 @@
 	/// Smallest girth the chem can make a mob's penis
 	var/penis_minimum_girth = 2
 	/// How much to reduce the size of the penis each time it's run
-	var/penis_size_reduction_step = 2
+	var/penis_size_reduction_step = 1
 	/// How much to reduce the girth of the penis each time it's run
-	var/penis_girth_reduction_step = 2
+	var/penis_girth_reduction_step = 1
 
 	/// Largest size the chem can make a mob's breasts
 	var/max_breast_size = 16

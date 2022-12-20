@@ -147,7 +147,7 @@
 				var/obj/item/organ/external/genital/testicles/new_balls = new /obj/item/organ/external/genital/testicles
 				new_balls.build_from_dna(exposed_mob.dna, ORGAN_SLOT_TESTICLES)
 				new_balls.Insert(exposed_mob, 0, FALSE)
-				new_balls.genital_size = 1
+				new_balls.genital_size = 0
 				new_balls.update_sprite_suffix()
 
 			var/obj/item/organ/external/genital/penis/new_penis = new /obj/item/organ/external/genital/penis
@@ -162,8 +162,10 @@
 		// Makes the balls bigger if they're small.
 		var/obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
 		if(mob_testicles)
-			if(mob_testicles.genital_size < 2)
-				mob_testicles.genital_size = 2
+			if(mob_testicles.genital_size < 3)
+				mob_testicles.genital_size++
+				mob_testicles.update_sprite_suffix()
+				exposed_mob.update_body()
 	
 	// Separates gender change stuff from cock growth.
 	if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/gender_change))
@@ -187,6 +189,8 @@
 		// To do breast shrinkage, check if prefs allow for this.
 		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_shrinkage) || exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_removal)) 
 			var/obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
+			var/obj/item/organ/external/genital/vagina/mob_vagina = exposed_mob.getorganslot(ORGAN_SLOT_VAGINA)
+			var/obj/item/organ/external/genital/womb/mob_womb = exposed_mob.getorganslot(ORGAN_SLOT_WOMB)
 			if(!mob_breasts)
 				return
 			if(mob_breasts.genital_size > breast_minimum_size)
@@ -194,10 +198,13 @@
 				mob_breasts.update_sprite_suffix()
 				exposed_mob.update_body()
 			else if(mob_breasts.genital_size == breast_minimum_size)
-				if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_removal)) 
+				if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_removal)) //If removal is allowed, do it
 					to_chat(exposed_mob, span_purple("Your breasts have completely tightened into firm, flat pecs."))
 					mob_breasts.Remove(exposed_mob)
-					mob_breasts.update_sprite_suffix()
+					if(mob_vagina)
+						mob_vagina.Remove(exposed_mob)
+					if(mob_womb)
+						mob_womb.Remove(exposed_mob)
 					exposed_mob.update_body()
 
 // Notify the user that they're overdosing. Doesn't affect their mood.
