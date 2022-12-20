@@ -169,11 +169,11 @@
 	
 	// Separates gender change stuff from cock growth.
 	if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/gender_change))
-		var double_dosing = 0 //overdosing on succubus milk and incubus draft simultaneously
+		var double_dosing = FALSE //overdosing on succubus milk and incubus draft simultaneously
 		for(var/r in exposed_mob.reagents.reagent_list)
 			var/datum/reagent/reagent = r
 			if(reagent.name == "succubus milk" && reagent.overdosed)
-				double_dosing = 1
+				double_dosing = TRUE
 		if (double_dosing)
 			if(exposed_mob.gender != PLURAL)
 				exposed_mob.set_gender(PLURAL)
@@ -209,7 +209,8 @@
 				exposed_mob.update_body()
 			else if(mob_breasts.genital_size == breast_minimum_size)
 				if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_removal))
-					to_chat(exposed_mob, span_purple("Your breasts have completely tightened into firm, flat pecs."))
+					if(!double_dosing) //To eliminate spamming
+						to_chat(exposed_mob, span_purple("Your breasts have completely tightened into firm, flat pecs."))
 					mob_breasts.Remove(exposed_mob)
 					exposed_mob.update_body()
 
