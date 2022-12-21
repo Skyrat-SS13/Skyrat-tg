@@ -217,7 +217,6 @@
 					exposed_mob.update_body()
 				else if(mob_testicles.genital_size == 0)
 					mob_testicles.Remove(exposed_mob)
-					mob_testicles.update_sprite_suffix()
 					exposed_mob.update_body()
 
 // Notify the user that they're overdosing. Doesn't affect their mood.
