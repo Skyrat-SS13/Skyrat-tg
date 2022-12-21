@@ -30,8 +30,26 @@
 		/obj/item/clothing/mask/holocigarette/nanite,
 	)
 
+	///The objects currently summoned by the NIFSoft
+	var/list/summoned_items = list()
+	///What is the maximum amount of items that can be suummoned?
+	var/max_summoned_items = 5
+
 /datum/nifsoft/summoner/activate()
 	. = ..()
+	if(length(summoned_items) >= max_summoned_items)
+		if(tgui_alert(linked_mob, "You cannot summon any more items, would you like to delete one?", "Grimoire Caeruleam", list("Yes", "No")) == "No")
+			refund_activation_cost()
+			return FALSE
+
+		var/obj/item/choice = tgui_input_list(linked_mob, "Chose an object to desummon", "Grimoire Caeruleam", summoned_items)
+		if(!choice)
+			to_chat(linked_mob, span_warning("You did not chose an item!"))
+			refund_activation_cost()
+			return FALSE
+
+		summoned_items -= choice
+		qdel(choice)
 
 	var/list/summon_choices = list()
 	for(var/obj/item/summon_item as anything in summonable_items)
@@ -60,6 +78,8 @@
 		qdel(new_item)
 		refund_activation_cost()
 		return FALSE
+
+	summoned_items += new_item
 
 ///Can the person using the NIFSoft summon an item?
 /datum/nifsoft/summoner/proc/check_menu(mob/living/carbon/human/user)
