@@ -850,14 +850,14 @@
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 4
 	},
-/obj/machinery/atmospherics/components/binary/pump/on{
-	dir = 4;
-	name = "O2 to Airmix"
-	},
 /obj/machinery/light/warm/directional/west,
 /obj/machinery/camera/directional/west{
 	c_tag = "Atmospherics - Aft Tanks";
 	name = "atmospherics camera"
+	},
+/obj/machinery/atmospherics/components/binary/pump/on{
+	dir = 4;
+	name = "N2 to Airmix"
 	},
 /turf/open/floor/iron/smooth,
 /area/station/engineering/atmos)
@@ -7336,7 +7336,7 @@
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/crew_quarters/bar)
 "clB" = (
-/obj/structure/cable/multilayer,
+/obj/structure/cable/multilayer/connected,
 /turf/open/floor/circuit,
 /area/station/ai_monitored/turret_protected/ai)
 "clD" = (
@@ -61498,11 +61498,11 @@
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 4
 	},
+/obj/machinery/light/warm/directional/west,
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 4;
-	name = "N2 to Airmix"
+	name = "O2 to Airmix"
 	},
-/obj/machinery/light/warm/directional/west,
 /turf/open/floor/iron/smooth,
 /area/station/engineering/atmos)
 "rjI" = (
@@ -83389,7 +83389,7 @@
 "xlr" = (
 /obj/machinery/airalarm/directional/south,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable/multilayer,
+/obj/structure/cable/multilayer/connected,
 /turf/open/floor/circuit,
 /area/station/ai_monitored/turret_protected/aisat/foyer)
 "xlt" = (
