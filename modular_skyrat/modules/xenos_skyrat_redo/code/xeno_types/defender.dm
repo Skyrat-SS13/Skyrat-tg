@@ -44,7 +44,7 @@
 
 	aoe_radius = 1
 
-	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
+	button_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	button_icon_state = "crush_tail"
 
 	sparkle_path = /obj/effect/temp_visual/dir_setting/tailsweep/defender
@@ -109,7 +109,7 @@
 	charge_distance = 5
 	destroy_objects = FALSE
 	charge_damage = 50
-	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
+	button_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	button_icon_state = "defender_charge"
 	unset_after_click = TRUE
 
