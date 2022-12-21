@@ -21,7 +21,7 @@ GLOBAL_LIST_EMPTY(scream_types)
 	name = "Robotic Scream"
 	male_screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_silicon.ogg')
 	female_screamsounds = null
-	restricted_species_type = /datum/species/robotic
+	restricted_species_type = /datum/species/synthetic
 
 /datum/scream_type/lizard
 	name = "Lizard Scream"
