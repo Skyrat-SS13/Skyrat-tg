@@ -622,3 +622,69 @@
   - admin: Stuffing people inside lockers is now logged.
   softcerv:
   - qol: Items with a special_desc show that they can be examined further
+2022-12-19:
+  LT3:
+  - rscadd: Christmas tree no longer hands out debug and admin gear.
+  SkyratBot:
+  - bugfix: Fixed a bug that made certain inserted organs drop on the floor.
+  - balance: limits the power miners the dusty shard can summon to charger, protector,
+      ranged, standard and support
+2022-12-20:
+  A.C.M.O.:
+  - bugfix: Fixed robotic/surplus limbs not taking damage/healing as expected; including
+      via the Var Viewer, Player Panel, and from sources of spread-damage.
+  LT3:
+  - balance: Getting hit by the tram may now break some of your bones, or more. Be
+      careful!
+  Melbert:
+  - bugfix: Corrects the look of pinned modules
+  Rhials:
+  - admin: You can now select which type of shuttle loan offer will by made when triggering
+      the shuttle loan event.
+  SkyratBot:
+  - code_imp: Makes a lot of the bodypart variables clearer as to what they do. Includes
+      more detailed code comments.
+  - bugfix: Robotic limbs are no longer immune to being disabled through reaching
+      maximum damage.
+  - bugfix: Fixed a stray-tab typo in "item_heal_robotic"
+  - bugfix: Fixed reagents and other effects which were inappropriately affecting
+      robotic limbs.
+  - code_imp: Refactored all of reagents code to be more readable and maintainable.
+  - bugfix: Gibbers no longer show up twice in their techweb node.
+  - balance: Traitors now have two kill and an escape objective for Greentext purposes,
+      though completing a Final Objective will Greentext too.
+  - bugfix: fixed Advanced Scanning Modules Calibration Experiment not registering
+      upgraded machines to its progress
+  - rscadd: TGUI for RCD Just like Rapid Pipe Dispenser
+  - rscadd: Radial menu for RLD
+  - code_imp: silo link upgrades for both RLD & Plumbing RCD
+  - rscdel: Switch Mode, Window Glass, Airlock action icons for construction console
+  - refactor: FURNISHING , FRAMES & SIMPLE_CIRCUITS are banned upgrades for RLD &
+      Plumbing RCD
+  - refactor: The logic of how we well, render things has changed. Make an issue report
+      if anything looks funky, particularly layers. PLEASE USE YOUR EYES
+  - imagedel: non parallax space is now black
+  - bugfix: RPED part display information
+  - bugfix: RPED incorrectly exchanging parts with the wrong tier for datum stock
+      parts
+  - bugfix: RPED unable to install datum stock parts in incomplete machine frames
+  - bugfix: RPED unable to exchange parts for newly constructed machines
+  Tattle:
+  - bugfix: lockboxes' and wrapped crates' invisibility spell has worn off
+2022-12-21:
+  Guillaume Prata:
+  - qol: After 3 years of complaints at CentCom's uniform department. Paramedics have
+      been given a jumpsuit/skirt that can be adjusted around their waist instead
+      of just folding it's sleeves, making surgery easier for their fellow doctors.
+  SkyratBot:
+  - rscadd: The followers of Regal Rats will now respond to simple instructions, if
+      given by their rightful lord. Except frogs. They're too busy licking themselves
+      and watching the colours.
+  - bugfix: When you unwrench a flag, you should now no longer see the big flashy
+      red ERROR sign.
+  - spellcheck: Admin fax report names now default to standard report rather than
+      standart.
+  - rscdel: Central Command can no longer be faxed directly from fax machines.
+  - spellcheck: Replaced the ability to contact central command directly by being
+      able to contact a randomly selected nanotrasen department.
+  - bugfix: Machine frames will no longer ask for "s" in place of some components
