@@ -16,8 +16,32 @@ As of 2018-02-04, the typical z-levels for a single-level station are:
 12: Empty space
 13: Transit space
 
+<<<<<<< HEAD
 Multi-Z stations are supported and multi-Z mining and away missions would
 require only minor tweaks.
+=======
+However, if away missions are enabled:
+12: Away Mission
+13: Transit/Reserved Space
+
+Multi-Z stations are supported and Multi-Z mining and away missions would
+require only minor tweaks. They also handle their Z-Levels differently on their
+own case by case basis.
+
+This information will absolutely date quickly with how we handle Z-Levels, and will
+continue to handle them in the future. Currently, you can go into the Debug tab
+of your stat-panel (in game) and hit "Mapping verbs - Enable". You will then get a new tab
+called "Mapping", as well as access to the verb "Debug-Z-Levels". Although the information
+presented in this comment is factual for the time it was written for, it's ill-advised
+to trust the words presented within.
+
+We also provide this information to you so that you can have an at-a-glance look at how
+Z-Levels are arranged. It is extremely ill-advised to ever use the location of a Z-Level
+to assign traits to it or use it in coding. Use Z-Traits (ZTRAITs) for these.
+
+If you want to start toying around with Z-Levels, do not take these words for fact.
+Always compile, always use that verb, and always make sure that it works for what you want to do.
+>>>>>>> b182d6f320a (Lazy Template Loading - Nukie/Wiz (#71785))
 */
 
 // helpers for modifying jobs, used in various job_changes.dm files
