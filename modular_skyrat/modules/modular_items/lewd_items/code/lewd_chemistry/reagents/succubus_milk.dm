@@ -123,11 +123,11 @@
 						exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s [pick(covered_boobs_list)] [pick(notice_boobs)]"))
 						to_chat(exposed_mob, span_purple("Your [pick(boob_text_list)] [pick(action_text_list)]about [translation]-cups."))
 
-		if((mob_breasts?.genital_size >= (max_breast_size - 2)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
-			if(prob(damage_chance))
-				to_chat(exposed_mob, span_danger("Your breasts begin to strain against your clothes!"))
-				exposed_mob.adjustOxyLoss(5)
-				exposed_mob.apply_damage(1, BRUTE, exposed_mob.get_bodypart(BODY_ZONE_CHEST))
+	if((mob_breasts?.genital_size >= (max_breast_size - 2)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
+		if(prob(damage_chance))
+			to_chat(exposed_mob, span_danger("Your breasts begin to strain against your clothes!"))
+			exposed_mob.adjustOxyLoss(5)
+			exposed_mob.apply_damage(1, BRUTE, exposed_mob.get_bodypart(BODY_ZONE_CHEST))
 
 // Turns you into a female if character is male. Also adds breasts.
 /datum/reagent/drug/aphrodisiac/succubus_milk/overdose_effects(mob/living/carbon/human/exposed_mob)
@@ -136,7 +136,9 @@
 		var/datum/reagent/reagent = r
 		if(reagent.name == "incubus draft" && reagent.overdosed)
 			double_dosing = TRUE
+	//Begin breast growth
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
+		//Start making new breasts if prefs allow it and we don't already have them
 		if(!exposed_mob.getorganslot(ORGAN_SLOT_BREASTS) && exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
 			var/obj/item/organ/path = /obj/item/organ/external/genital/breasts
 			exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_BREASTS][MUTANT_INDEX_NAME] = "Pair"
