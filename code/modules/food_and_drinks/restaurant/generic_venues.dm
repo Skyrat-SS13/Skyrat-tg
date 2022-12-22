@@ -86,6 +86,7 @@
 	var/glass_visual
 	var/datum/reagent/reagent_to_order = order
 
+<<<<<<< HEAD
 	if(initial(reagent_to_order.glass_icon_state))
 		glass_visual = initial(reagent_to_order.glass_icon_state)
 	else if(initial(reagent_to_order.shot_glass_icon_state))
@@ -94,6 +95,13 @@
 		glass_visual = initial(reagent_to_order.fallback_icon_state)
 	else
 		stack_trace("[reagent_to_order] has no icon sprite for restaurant code, please set a fallback_icon_state for this reagent.")
+=======
+	// Look for a glass style based on this reagent type
+	for(var/potential_container in GLOB.glass_style_singletons)
+		var/datum/glass_style/draw_as = GLOB.glass_style_singletons[potential_container][reagent_to_order]
+		if(isnull(draw_as))
+			continue
+>>>>>>> 182ba0eb469 (Fixes Bar/Restaurant Bots Orders Sending Infinite Orders (#72135))
 
 	var/image/food_image = image(icon = 'icons/effects/effects.dmi' , icon_state = "thought_bubble")
 	food_image.add_overlay(mutable_appearance('icons/obj/drinks.dmi', glass_visual))
