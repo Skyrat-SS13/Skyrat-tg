@@ -89,6 +89,17 @@
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "prison_laundry"
 
+//Cargo areas
+/area/station/cargo/mailroom
+	name = "\improper Mailroom"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "mailroom"
+
+/area/station/cargo/cargo_breakroom
+	name = "\improper Cargo Breakroom"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "cargo_breakroom"
+
 // Department power stations
 /area/station/cargo/power_station
 	name = "Cargo Power Station"
@@ -515,6 +526,16 @@
 	name = "Xenobiology Disposals"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "xenobio_dispose"
+
+/area/station/maintenance/abandoned_bar
+	name = "Abandoned Bar"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "abadn_bar"
+
+/area/station/maintenance/abandoned_shuttlebay
+	name = "Abandoned Shuttlebay"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "abandon_shuttlebay"
 
 // BlueShift unique rooms, or rooms for ship-class "stations"
 // Thruster rooms
