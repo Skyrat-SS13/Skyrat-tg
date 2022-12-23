@@ -12,70 +12,34 @@
 #define NRI_HEAL_AMOUNT 10
 #define NRI_BLOOD_REPLENISHMENT 20
 
-/obj/item/clothing/suit/armor/vest/russian
+/obj/item/clothing/suit/armor/vest/russian/nri
 	name = "\improper B42M combined armor vest"
 	desc = "A B42M combined body armor designed to protect the torso from bullets, shrapnel and blunt force. This vest performed well in the Border War against SolFed, but NRI required significant design changes due to the enemy's new and improved weaponry. These models were recently phased out and then quickly found their way onto the black market, now commonly seen in the hands (or on the bodies) of insurgents."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "russian_green_armor_old"
+	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/suit.dmi'
+	icon_state = "russian_green_armor"
+	armor = list(MELEE = 30, BULLET = 40, LASER = 20, ENERGY = 30, BOMB = 35, BIO = 0, FIRE = 50, ACID = 50, WOUND = 15)
 	supports_variations_flags = CLOTHING_NO_VARIATION
 	inhand_icon_state = "armor"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Basic" = list(
-			RESKIN_ICON_STATE = "russian_green_armor_old",
-			RESKIN_WORN_ICON_STATE = "russian_green_armor_old"
+			RESKIN_ICON_STATE = "russian_green_armor",
+			RESKIN_WORN_ICON_STATE = "russian_green_armor"
 		),
 		"Corpsman" = list(
-			RESKIN_ICON_STATE = "russian_medic_armor_old",
-			RESKIN_WORN_ICON_STATE = "russian_medic_armor_old"
+			RESKIN_ICON_STATE = "russian_medic_armor",
+			RESKIN_WORN_ICON_STATE = "russian_medic_armor"
 		),
 	)
-
-/obj/item/clothing/suit/armor/vest/russian/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
-	if(is_species(M, /datum/species/teshari))
-		to_chat(M, span_warning("[src] is far too big for you!"))
-		return FALSE
-	return ..()
-
-/obj/item/clothing/suit/armor/vest/nri
-	name = "\improper PPS-4 modular armor vest"
-	desc = "A PPS-4 combined body armor designed to protect the user from whatever bad things might be happening in the battlefield. A modern non-powered body armor designed for use by the imperial militarised police forces commonly widespread across the border, as well as the planetary guard."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
-	icon_state = "xenoarmor"
-	armor = list(MELEE = 35, BULLET = 45, LASER = 25, ENERGY = 30, BOMB = 45, BIO = 0, FIRE = 50, ACID = 50, WOUND = 25)
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
-
-/obj/item/clothing/suit/armor/vest/nri/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
-	if(is_species(M, /datum/species/teshari))
-		to_chat(M, span_warning("[src] is far too big for you!"))
-		return FALSE
-	return ..()
-
-/obj/item/clothing/suit/armor/nri_coat
-	name = "imperial trenchcoat"
-	desc = "A durathread-lined wool greatcoat utilised by the NRI police forces and stylish-feeling officers across the border. Additional plasteel padding around the user's chest is meant to keep them more resilient against small-arms fire without sacrificing the style."
-	icon_state = "nri_coat"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
-	inhand_icon_state = "greatcoat"
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50, WOUND = 15)
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
-	cold_protection = CHEST|GROIN|LEGS|ARMS
-	heat_protection = CHEST|GROIN|LEGS|ARMS
-	strip_delay = 80
-	uses_advanced_reskins = FALSE
-	unique_reskin = null
 
 /obj/item/clothing/suit/armor/heavy/nri
 	name = "\improper Cordun-M armor system"
 	desc = "A robust set of full-body armor designed for the harshest of environments. A modern set of heavy armor recently implemented by NRI Defense Collegium to accomodate with modern specifications. While a combination of lighter materials and a passive internal exoskeleton might assist the user's movement, you'll still be as slow as a snail."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/suit.dmi'
 	icon_state = "russian_heavy_armor"
 	armor = list(MELEE = 60, BULLET = 60, LASER = 50, ENERGY = 50, BOMB = 100, BIO = 100, FIRE = 70, ACID = 70, WOUND = 35)
 	resistance_flags = FIRE_PROOF|UNACIDABLE|ACID_PROOF|FREEZE_PROOF
@@ -83,12 +47,6 @@
 	slowdown = 1.5
 	equip_delay_self = 5 SECONDS
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
-
-/obj/item/clothing/suit/armor/heavy/nri/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
-	if(is_species(M, /datum/species/teshari)) //racist armor
-		to_chat(M, span_warning("[src] is far too big for you!"))
-		return FALSE
-	return ..()
 
 /obj/item/clothing/suit/armor/heavy/nri/old
 	name = "\improper REDUT armor system"
@@ -107,6 +65,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
+	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/suit.dmi'
 	icon_state = "nri_soldier"
 	armor = list(MELEE = 25, BULLET = 25, LASER = 25, ENERGY = 25, BOMB = 25, BIO = 20, FIRE = 20, ACID = 20, WOUND = 10)
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDESEXTOY|HIDETAIL
@@ -165,24 +124,20 @@
 	suit_name = "VOSKHOD"
 	first_use = FALSE //No nice song.
 
-/obj/item/clothing/suit/space/hev_suit/nri/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
-	if(is_species(M, /datum/species/teshari))
-		to_chat(M, span_warning("[src] is far too big for you!"))
-		return FALSE
-	return ..()
+
 
 /datum/action/item_action/hev_toggle/nri
 	name = "Toggle VOSKHOD Suit"
 	button_icon = 'modular_skyrat/modules/novaya_ert/icons/toggles.dmi'
 	background_icon_state = "bg_nri"
-	icon_icon = 'modular_skyrat/modules/novaya_ert/icons/toggles.dmi'
+	button_icon = 'modular_skyrat/modules/novaya_ert/icons/toggles.dmi'
 	button_icon_state = "toggle"
 
 /datum/action/item_action/hev_toggle_notifs/nri
 	name = "Toggle VOSKHOD Suit Notifications"
 	button_icon = 'modular_skyrat/modules/novaya_ert/icons/toggles.dmi'
 	background_icon_state = "bg_nri"
-	icon_icon = 'modular_skyrat/modules/novaya_ert/icons/toggles.dmi'
+	button_icon = 'modular_skyrat/modules/novaya_ert/icons/toggles.dmi'
 	button_icon_state = "sound"
 
 /obj/item/clothing/suit/space/hev_suit/nri/captain

@@ -64,6 +64,7 @@
 	greyscale_config = /datum/greyscale_config/shorts_ripped //These configs are defined in the GAGS module for now; the icons and item will remain in these files.
 	greyscale_config_worn = /datum/greyscale_config/shorts_ripped/worn
 	greyscale_config_worn_digi = /datum/greyscale_config/shorts_ripped/worn/digi
+	greyscale_config_worn_teshari = /datum/greyscale_config/shorts_ripped/worn/teshari
 	greyscale_colors = "#787878#723E0E#202020"
 	flags_1 = IS_PLAYER_COLORABLE_1
 

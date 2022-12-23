@@ -647,3 +647,93 @@
   - imageadd: updated a bunch of plant sprites
   unit0016:
   - bugfix: Skyrat's ID trims are now recolorable, as they are upstream. XOXO.
+2022-11-29:
+  Common fucking sense:
+  - bugfix: The changes to Mafia and holopad say prefixes was reverted.
+  - spellcheck: Mafia changeling say prefix has no longer been changed to .1, and
+      has been returned to .j
+  - spellcheck: AI Holopad say has no longer been changed to .2, and has been returned
+      to .h
+  Jolly:
+  - bugfix: '[Void Raptor] There are now disposal units in the Law and Detectives
+      offices. This means you can receive mail (unwillingly). Have a pipe bomb, detective.'
+  - bugfix: '[Void Raptor] Fixed an active turf. You know, those things that make
+      me SEETHE really hard.'
+  LT3:
+  - spellcheck: Tram Malfunction event now successfully announces 'successfully.'
+  Melbert:
+  - bugfix: Fullheals heal organ damage and oxy again.
+  SkyratBot:
+  - bugfix: Strange Reagent is once again Strange! (it works at all)
+  - qol: quantum keycards light up with the department theyre in (or grey as a fallback)
+  - qol: quantum keycards are custom renamable w/ pen, to help keep em organized
+  - refactor: Cayenne's ability to participate in Nuclear Operations is now a component
+      which any mob can use.
+  - qol: in metastation engineering, the plumbing water tank has been replaced with
+      a proper water tank, and shower water is now plumbed in from the engine maintenance
+  - rscadd: you can saw bread with a saw into bread slices
+  - qol: added screentip verbs to a bunch of food files
+  - code_imp: bread and cake now have slice types and all only have one call on the
+      processable.dm proc
+  - bugfix: Rabbits don't suddenly become more dense when killed than they were in
+      life.
+  - bugfix: A revived basic mob will stand up again rather than inching around as
+      a living corpse.
+  - qol: The photocopier will now tell you when it's not able to find an ID to charge
+      on your person.
+  - qol: You can see what kind of spell a magicarp will cast by hovering your mouse
+      over it.
+  - imageadd: Megacarp now have a random colour.
+  - imagedel: Magicarp are now colour coded based on their spell, or change randomly
+      if they're Chaos Magicarp.
+  - bugfix: TTV bombs can no longer be concealed inside food
+  - spellcheck: removed a reference to radiation collectors in tip of the round
+  - refactor: Moves wall smashing out of simple mob code and into an element we can
+      reuse for basic mobs later
+  - admin: Nanotrashen made some top-of-the-line changes to their top-of-the-line
+      prison by walling off their equipment area and removing some spare guns they
+      somehow left on the tables. We also stole the security computers, so people
+      with telekinesis can't access them.
+  Tattle:
+  - admin: removed message_admins message for tram malfunction failing to run on maps
+      that aren't tram
+2022-11-30:
+  GoldenAlpharex:
+  - refactor: Went through and refactored a lot of the old code of the biogenerator,
+      and made multiple improvements to its logic, which should hopefully make it
+      behave more consistently. Nearly all of it is now also fully documented, so
+      as to make it easier for anyone else that has to sift through it in the future.
+  - qol: The biogenerator now processes items five times faster, up to 20 times faster
+      if properly upgraded!
+  - qol: The biogenerator is no longer capped on biomass. Its visuals will change
+      up until 5000 biomass, but you're free to go as high as you'd like with it!
+      Sky's the limit!
+  - bugfix: Fixed the logic of the biogenerator that would make it so the amount of
+      biomass used for recipes was wildly inconsistent. Now, there's no more back-end
+      rounding up, it's all on the front end when it needs to be, so there's no loss
+      or gain of biomass when there shouldn't be.
+  - spellcheck: Fixed a capitalization issue with the seaweed sheets in the biogenerator
+      recipes.
+  - spellcheck: Fixed multiple inconsistencies between the messages sent to your chat
+      by the biogenerator.
+  Jolly:
+  - bugfix: '[Void Raptor] Maintenance area defines now border maintenance doors.
+      TLDR; if the power goes out in maint and you''re engulfed in a fire, better
+      hope you got a fire extinguisher handy.'
+  - bugfix: '[Void Raptor] Touched up some of the r-wall usage. Removed some stray
+      r-walls and added it to where it would be, like chemistry, and removing it from
+      the pharmacy.'
+  - bugfix: '[Void Raptor] Dept Sec outposts are no longer sec adjacent and no longer
+      have sec related themes and aesthetics.'
+  - bugfix: '[Void Raptor] Dept sec now only have one locker per outpost. This reflects
+      the changes made to Dept Sec equipment in a previous PR.'
+  - bugfix: '[Void Raptor] Chem lab no longer uses pharmacy as the access define.
+      Paramedics, buzz off.'
+  SkyratBot:
+  - bugfix: Rather than having two surgery B's on icebox you get a Surgery North and
+      a Surgery South
+  Tastyfish:
+  - bugfix: Changing the alert level to amber, violet, or orange while the escape
+      shuttle is heading towards the station no longer breaks space-time.
+  Zonespace27:
+  - rscdel: Abductors no longer have an objective to abduct a certain amount of people.

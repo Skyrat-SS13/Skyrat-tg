@@ -484,7 +484,7 @@
 		if(HAS_TRAIT(src, TRAIT_SENSITIVESNOUT) && get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH))
 			to_chat(src, span_warning("[helper] boops you on your sensitive nose, sending you to the ground!"))
 			src.Knockdown(20)
-			src.apply_damage(30, STAMINA, BODY_ZONE_CHEST)
+			src.apply_damage(30, STAMINA)
 		helper.visible_message(span_notice("[helper] boops [src]'s nose."), span_notice("You boop [src] on the nose."))
 	//SKYRAT EDIT ADDITION END
 	else if(check_zone(helper.zone_selected) == BODY_ZONE_HEAD && get_bodypart(BODY_ZONE_HEAD)) //Headpats!
@@ -720,7 +720,7 @@
 		. = FALSE
 
 
-/mob/living/carbon/adjustOxyLoss(amount, updating_health = TRUE, forced = FALSE)
+/mob/living/carbon/adjustOxyLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype)
 	. = ..()
 	check_passout(.)
 
@@ -729,7 +729,7 @@
 	if(!limb)
 		return
 
-/mob/living/carbon/setOxyLoss(amount, updating_health = TRUE, forced = FALSE)
+/mob/living/carbon/setOxyLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype)
 	. = ..()
 	check_passout(.)
 
@@ -823,7 +823,7 @@
 	grasped_part.grasped_by = src
 	grasped_part.refresh_bleed_rate()
 	RegisterSignal(user, COMSIG_PARENT_QDELETING, PROC_REF(qdel_void))
-	RegisterSignal(grasped_part, list(COMSIG_CARBON_REMOVE_LIMB, COMSIG_PARENT_QDELETING), PROC_REF(qdel_void))
+	RegisterSignals(grasped_part, list(COMSIG_CARBON_REMOVE_LIMB, COMSIG_PARENT_QDELETING), PROC_REF(qdel_void))
 
 	user.visible_message(span_danger("[user] grasps at [user.p_their()] [grasped_part.name], trying to stop the bleeding."), span_notice("You grab hold of your [grasped_part.name] tightly."), vision_distance=COMBAT_MESSAGE_RANGE)
 	playsound(get_turf(src), 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)

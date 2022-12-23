@@ -113,6 +113,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/head_muzzled.dmi'
+	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/head.dmi'
 	icon_state = "nri_soldier"
 	armor = list(MELEE = 25, BULLET = 25, LASER = 25, ENERGY = 25, BOMB = 25, BIO = 20, FIRE = 20, ACID = 20, WOUND = 10)
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
@@ -126,12 +127,6 @@
 	visor_flags_inv = HIDEMASK|HIDEEYES|HIDEFACE|HIDEFACIALHAIR
 	visor_flags = STOPSPRESSUREDAMAGE
 	slowdown = 0
-
-/obj/item/clothing/head/helmet/space/hev_suit/nri/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
-	if(is_species(M, /datum/species/teshari))
-		to_chat(M, span_warning("[src] is far too big for you!"))
-		return FALSE
-	return ..()
 
 /obj/item/clothing/head/helmet/space/hev_suit/nri/captain
 	name = "\improper VOSKHOD-2 powered combat armor helmet"
