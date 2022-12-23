@@ -44,6 +44,7 @@
 					CAT_SPAGHETTI,
 		// SKYRAT ADDITION BEGIN - Teshari food category
 					CAT_TESHARI,
+					CAT_HEMOPHAGE,
 		// SKYRAT ADDITION END
 				),
 				CAT_DRINK = CAT_NONE,
