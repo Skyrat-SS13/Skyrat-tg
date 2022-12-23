@@ -98,9 +98,12 @@
 /area/shuttle/pirate/nri)
 "cZ" = (
 /obj/structure/window/reinforced/survival_pod{
-	dir = 1
+	dir = 1;
+	name = "blast shield"
 	},
-/obj/structure/window/reinforced/survival_pod,
+/obj/structure/window/reinforced/survival_pod{
+	name = "blast shield"
+	},
 /obj/machinery/power/shuttle_engine/propulsion/burst{
 	dir = 8
 	},
@@ -400,6 +403,11 @@
 /obj/item/storage/belt/military/nri/engineer,
 /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper,
 /obj/item/clothing/mask/balaclavaadjust,
+/obj/item/clothing/under/costume/nri/marine,
+/obj/item/storage/backpack/nri/marine,
+/obj/item/storage/belt/military/nri/marine,
+/obj/item/clothing/suit/armor/vest/nri,
+/obj/item/clothing/head/helmet/nri,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "pQ" = (
@@ -856,6 +864,11 @@
 /obj/item/clothing/under/costume/nri/medic,
 /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper,
 /obj/item/clothing/mask/balaclavaadjust,
+/obj/item/clothing/under/costume/nri/marine,
+/obj/item/storage/backpack/nri/marine,
+/obj/item/storage/belt/military/nri/marine,
+/obj/item/clothing/suit/armor/vest/nri,
+/obj/item/clothing/head/helmet/nri,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "CP" = (
@@ -981,11 +994,14 @@
 /obj/item/clothing/under/costume/nri/captain,
 /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper,
 /obj/item/clothing/mask/balaclavaadjust,
-/obj/item/clothing/suit/armor/vest/warden/peacekeeper{
-	name = "advanced imperial jacket";
-	armor = list("melee"=30,"bullet"=40,"laser"=20,"energy"=30,"bomb"=35,"bio"=0,"fire"=50,"acid"=50,"wound"=15);
-	desc = "A dark blue jacket with blue rank pips and body armor strapped on top."
-	},
+/obj/item/clothing/under/costume/nri/marine,
+/obj/item/clothing/head/beret/sec/nri,
+/obj/item/clothing/head/beret/sec/nri/cap,
+/obj/item/clothing/suit/armor/nri_coat,
+/obj/item/storage/backpack/nri/marine,
+/obj/item/storage/belt/military/nri/marine,
+/obj/item/clothing/suit/armor/vest/nri,
+/obj/item/clothing/head/helmet/nri,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate/nri)
 "HO" = (
@@ -1332,9 +1348,12 @@
 /turf/open/floor/engine/hull,
 /area/shuttle/pirate/nri)
 "UY" = (
-/obj/structure/window/reinforced/survival_pod,
 /obj/structure/window/reinforced/survival_pod{
-	dir = 1
+	name = "blast shield"
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1;
+	name = "blast shield"
 	},
 /obj/machinery/power/shuttle_engine/propulsion/burst{
 	dir = 8

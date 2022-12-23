@@ -34,6 +34,39 @@
 		),
 	)
 
+/obj/item/clothing/suit/armor/vest/nri
+	name = "\improper PPS-4 modular armor vest"
+	desc = "A PPS-4 combined body armor designed to protect the user from whatever bad things might be happening in the battlefield. A modern non-powered body armor designed for use by the imperial militarised police forces commonly widespread across the border, as well as the planetary guard."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
+	icon_state = "xenoarmor"
+	armor = list(MELEE = 35, BULLET = 45, LASER = 25, ENERGY = 30, BOMB = 45, BIO = 0, FIRE = 50, ACID = 50, WOUND = 25)
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/armor/vest/nri/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
+	if(is_species(M, /datum/species/teshari))
+		to_chat(M, span_warning("[src] is far too big for you!"))
+		return FALSE
+	return ..()
+
+/obj/item/clothing/suit/armor/nri_coat
+	name = "imperial trenchcoat"
+	desc = "A durathread-lined wool greatcoat utilised by the NRI police forces and stylish-feeling officers across the border. Additional plasteel padding around the user's chest is meant to keep them more resilient against small-arms fire without sacrificing the style."
+	icon_state = "nri_coat"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
+	inhand_icon_state = "greatcoat"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50, WOUND = 15)
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+	cold_protection = CHEST|GROIN|LEGS|ARMS
+	heat_protection = CHEST|GROIN|LEGS|ARMS
+	strip_delay = 80
+	uses_advanced_reskins = FALSE
+	unique_reskin = null
+
 /obj/item/clothing/suit/armor/heavy/nri
 	name = "\improper Cordun-M armor system"
 	desc = "A robust set of full-body armor designed for the harshest of environments. A modern set of heavy armor recently implemented by NRI Defense Collegium to accomodate with modern specifications. While a combination of lighter materials and a passive internal exoskeleton might assist the user's movement, you'll still be as slow as a snail."
