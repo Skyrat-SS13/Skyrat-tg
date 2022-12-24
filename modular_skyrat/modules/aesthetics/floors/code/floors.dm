@@ -78,3 +78,8 @@
 /turf/open/floor/plating/sandyplating
 	icon = 'modular_skyrat/modules/aesthetics/floors/icons/floors.dmi'
 	icon_state = "sandyplating"
+
+/turf/open/floor/plating/sandyplating/airless
+	icon = 'modular_skyrat/modules/aesthetics/floors/icons/floors.dmi'
+	icon_state = "sandyplating"
+	initial_gas_mix = AIRLESS_ATMOS
