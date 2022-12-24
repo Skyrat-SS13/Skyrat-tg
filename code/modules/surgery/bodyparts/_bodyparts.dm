@@ -855,7 +855,7 @@
 	var/image/limb = image(layer = -BODYPARTS_LAYER, dir = image_dir)
 	var/image/aux
 
-	//HUSK SHIIIIT
+	// Handles making bodyparts look husked
 	if(is_husked)
 		limb.icon = icon_husk
 		limb.icon_state = "[husk_type]_husk_[body_zone]"
@@ -873,13 +873,14 @@
 		. += limb
 		return .
 
-	//invisibility
+	// Handles invisibility (not alpha or actual invisibility but invisibility)
 	if(is_invisible)
 		limb.icon = icon_invisible
 		limb.icon_state = "invisible_[body_zone]"
 		. += limb
 		return .
 
+<<<<<<< HEAD
 	////This is the MEAT of limb icon code
 	limb.icon = icon_greyscale
 	if(!should_draw_greyscale || !icon_greyscale)
@@ -899,6 +900,23 @@
 		if(new_limb)
 			limb = new_limb
 			limb.overlays = limb_overlays
+=======
+	// Normal non-husk handling
+	if(!is_husked)
+		// This is the MEAT of limb icon code
+		limb.icon = icon_greyscale
+		if(!should_draw_greyscale || !icon_greyscale)
+			limb.icon = icon_static
+
+		if(is_dimorphic) //Does this type of limb have sexual dimorphism?
+			limb.icon_state = "[limb_id]_[body_zone]_[limb_gender]"
+		else
+			limb.icon_state = "[limb_id]_[body_zone]"
+
+		icon_exists(limb.icon, limb.icon_state, TRUE) //Prints a stack trace on the first failure of a given iconstate.
+
+		. += limb
+>>>>>>> be8bbf4c55f (Fixes husk appearances not working, adds a screenshot test for it (#72190))
 
 	. += limb
 
@@ -929,6 +947,7 @@
 			aux_em_block.dir = image_dir
 			aux.overlays += aux_em_block
 
+<<<<<<< HEAD
 	//EMISSIVE CODE END
 	//Draw external organs like horns and frills
 	for(var/obj/item/organ/external/external_organ as anything in external_organs)
@@ -965,6 +984,13 @@
 		for(var/key in markings) // Cycle through all of our currently selected markings.
 			var/datum/body_marking/body_marking = GLOB.body_markings[key]
 			if (!body_marking) // Edge case prevention.
+=======
+	// And finally put external organs on if not husked
+	if(!is_husked)
+		//Draw external organs like horns and frills
+		for(var/obj/item/organ/external/external_organ as anything in external_organs)
+			if(!dropped && !external_organ.can_draw_on_bodypart(owner))
+>>>>>>> be8bbf4c55f (Fixes husk appearances not working, adds a screenshot test for it (#72190))
 				continue
 
 			var/render_limb_string = limb_id == "digitigrade" ? ("digitigrade_1_" + body_zone) : body_zone // I am not sure why there are _1 and _2 versions of digi, so, it's staying like this.
