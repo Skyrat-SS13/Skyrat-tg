@@ -19,6 +19,7 @@
 	min_players = 60
 	max_occurrences = 1
 	earliest_start = 30 MINUTES
+	category = EVENT_CATEGORY_SPACE
 
 /datum/round_event/cme
 	start_when = 6
