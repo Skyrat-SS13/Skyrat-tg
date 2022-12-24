@@ -139,7 +139,7 @@
 #define STATUS_IDLE "System Idle"
 #define STATUS_RECOMBINATING_VIRUS "System Synthesising Virus"
 #define STATUS_RECOMBINATING_CURE "System Synthesising Cure"
-#define RECOMBINATION_STEP_TIME 15 SECONDS
+#define RECOMBINATION_STEP_TIME (15 SECONDS)
 #define RECOMBINATION_STEP_AMOUNT 25
 
 /obj/machinery/rnd/rna_recombinator
@@ -262,7 +262,7 @@
 	playsound(loc, 'sound/items/rped.ogg', 60, 1)
 	flick("h_lathe_wloop", src)
 	use_power(3000)
-	timer_id = addtimer(CALLBACK(src, .proc/recombinate_step), recombination_step_time, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(recombinate_step)), recombination_step_time, TIMER_STOPPABLE)
 
 /obj/machinery/rnd/rna_recombinator/proc/recombinate_step()
 	if(machine_stat & (NOPOWER|BROKEN))
@@ -279,7 +279,7 @@
 	flick("h_lathe_wloop", src)
 	use_power(3000)
 	playsound(loc, 'sound/items/rped.ogg', 60, 1)
-	timer_id = addtimer(CALLBACK(src, .proc/recombinate_step), recombination_step_time, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(recombinate_step)), recombination_step_time, TIMER_STOPPABLE)
 
 /obj/machinery/rnd/rna_recombinator/proc/recombinate_finish()
 	if(machine_stat & (NOPOWER|BROKEN))

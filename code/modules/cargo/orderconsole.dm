@@ -178,9 +178,9 @@
 				SSshuttle.supply.export_categories = get_export_categories()
 				SSshuttle.moveShuttle(cargo_shuttle, docking_away, TRUE)
 				say("The supply shuttle is departing.")
-				investigate_log("[key_name(usr)] sent the supply shuttle away.", INVESTIGATE_CARGO)
+				usr.investigate_log("sent the supply shuttle away.", INVESTIGATE_CARGO)
 			else
-				investigate_log("[key_name(usr)] called the supply shuttle.", INVESTIGATE_CARGO)
+				usr.investigate_log("called the supply shuttle.", INVESTIGATE_CARGO)
 				say("The supply shuttle has been called and will arrive in [SSshuttle.supply.timeLeft(600)] minutes.")
 				SSshuttle.moveShuttle(cargo_shuttle, docking_home, TRUE)
 			. = TRUE
@@ -199,7 +199,7 @@
 			else
 				SSshuttle.shuttle_loan.loan_shuttle()
 				say("The supply shuttle has been loaned to CentCom.")
-				investigate_log("[key_name(usr)] accepted a shuttle loan event.", INVESTIGATE_CARGO)
+				usr.investigate_log("accepted a shuttle loan event.", INVESTIGATE_CARGO)
 				usr.log_message("accepted a shuttle loan event.", LOG_GAME)
 				. = TRUE
 		if("add")
@@ -284,8 +284,8 @@
 					say("Coupon refunded.")
 					SO.applied_coupon.forceMove(get_turf(src))
 				//SKYRAT EDIT START
-				if(istype(SO, /datum/supply_order/armament))
-					var/datum/supply_order/armament/the_order = SO
+				if(istype(SO, /datum/supply_order/company_import))
+					var/datum/supply_order/company_import/the_order = SO
 					the_order.reimburse_armament()
 				//SKYRAT EDIT END
 				SSshuttle.shopping_list -= SO
@@ -319,9 +319,9 @@
 			self_paid = !self_paid
 			. = TRUE
 		//SKYRAT EDIT START
-		if("gun_window")
-			var/datum/component/armament/cargo_gun/gun_comp = GetComponent(/datum/component/armament/cargo_gun)
-			gun_comp.ui_interact(usr)
+		if("company_import_window")
+			var/datum/component/armament/company_imports/company_import_component = GetComponent(/datum/component/armament/company_imports)
+			company_import_component.ui_interact(usr)
 			. = TRUE
 		//SKYRAT EDIT END
 	if(.)

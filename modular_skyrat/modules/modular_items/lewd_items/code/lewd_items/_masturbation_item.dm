@@ -1,4 +1,4 @@
-#define CUM_VOLUME_MULTIPLIER 5 + 5
+#define CUM_VOLUME_MULTIPLIER 10
 
 /obj/item/hand_item/coom
 	name = "cum"

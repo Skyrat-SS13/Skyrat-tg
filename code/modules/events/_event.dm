@@ -51,7 +51,7 @@
 		return FALSE
 	if(players_amt < min_players)
 		return FALSE
-	if(holidayID && (!SSevents.holidays || !SSevents.holidays[holidayID]))
+	if(holidayID && !check_holidays(holidayID))
 		return FALSE
 	if(EMERGENCY_ESCAPED_OR_ENDGAMED)
 		return FALSE
@@ -136,7 +136,7 @@ Runs the event
 	triggering = TRUE
 
 	if(!triggering)
-		RegisterSignal(SSdcs, COMSIG_GLOB_RANDOM_EVENT, .proc/stop_random_event)
+		RegisterSignal(SSdcs, COMSIG_GLOB_RANDOM_EVENT, PROC_REF(stop_random_event))
 		E.cancel_event = TRUE
 		return E
 
@@ -158,6 +158,7 @@ Runs the event
 /// Any special things admins can do while triggering this event to "improve" it.
 /// Return [ADMIN_CANCEL_EVENT] to stop the event from actually happening after all
 /datum/round_event_control/proc/admin_setup(mob/admin)
+	SHOULD_CALL_PARENT(FALSE)
 	return
 
 /datum/round_event //NOTE: Times are measured in master controller ticks!

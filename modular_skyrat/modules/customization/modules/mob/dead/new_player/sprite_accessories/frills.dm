@@ -8,7 +8,7 @@
 /datum/sprite_accessory/frills/is_hidden(mob/living/carbon/human/human, obj/item/bodypart/bodypart)
 	if(
 		(human.head && (human.head.flags_inv & HIDEEARS)) \
-		|| human.try_hide_mutant_parts \
+		|| (key in human.try_hide_mutant_parts) \
 		|| !bodypart \
 	)
 		return TRUE

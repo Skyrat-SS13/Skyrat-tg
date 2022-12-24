@@ -18,8 +18,8 @@
 	one_per_turf = set_turf_limit
 	pixel_shift = set_shift
 	//now lets register the signals
-	RegisterSignal(atom_parent, COMSIG_PARENT_ATTACKBY, .proc/check_attack)
-	RegisterSignal(atom_parent, COMSIG_PARENT_EXAMINE, .proc/check_examine)
+	RegisterSignal(atom_parent, COMSIG_PARENT_ATTACKBY, PROC_REF(check_attack))
+	RegisterSignal(atom_parent, COMSIG_PARENT_EXAMINE, PROC_REF(check_examine))
 
 /datum/component/simple_farm/Destroy(force, silent)
 	//lets not hard del
@@ -187,7 +187,7 @@
 		return
 
 	//if its a regen core, then create four harvests
-	else if(istype(attacking_item, /obj/item/organ/internal/regenerative_core))
+	else if(istype(attacking_item, /obj/item/organ/internal/monster_core/regenerative_core))
 		qdel(attacking_item)
 		for(var/i in 1 to regen_harvest_num)
 			create_harvest()
@@ -201,7 +201,7 @@
 /obj/structure/simple_farm/proc/late_setup()
 	if(!ismovable(attached_atom))
 		return
-	RegisterSignal(attached_atom, COMSIG_MOVABLE_MOVED, .proc/move_plant)
+	RegisterSignal(attached_atom, COMSIG_MOVABLE_MOVED, PROC_REF(move_plant))
 
 /**
  * a simple proc to forcemove the plant on top of the movable atom its attached to

@@ -6,8 +6,7 @@
 	outfit = /datum/outfit/science_team
 	you_are_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 	flavour_text = "You are a scientist near the Ground Zero of a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
-	important_text = "Do not try to explore the level unless Vanguard is already present and close to you, and even then, wait at least 20 minutes before leaving your area. \
-					Allowed races are humans."
+	important_text = "Do not try to explore the level unless an expedition crew is already present and close to you, and even then, wait at least 20 minutes before leaving your area."
 	restricted_species = list(/datum/species/human)
 	random_appearance = FALSE
 
@@ -82,7 +81,7 @@
 	You haven't heard much from the north-west post, except for the sounds of gunshots, and their radios went silent. \
 	On top of that, your escape helicopter was shot down mid-flight, and another one won't arrive so soon; \
 	with your machinegunner being shot down with a precise headshot by something, or SOMEONE. You are likely on your own, at least for now."
-	important_text = "Do not try to explore the level unless Vanguard is dead or cooperative. Stay around your area. Allowed races are humans."
+	important_text = "Do not try to explore the level unless the expedition crew is dead or cooperative. Stay around your area."
 	restricted_species = list(/datum/species/human)
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/hecu/special(mob/living/carbon/human/spawned_human)
@@ -177,7 +176,7 @@
 	On top of that, your escape helicopter was shot down mid-flight, and another one won't arrive so soon; \
 	with your machinegunner being shot down with a precise headshot by something, or SOMEONE. You are likely on your own, at least for now."
 	important_text = "Keep and sustain marines' morale and discipline. Delegate responsibilities at the best of your abilities. \
-	Do not try to explore the level unless Vanguard is dead or cooperative. Stay around your area. Allowed races are humans."
+	Do not try to explore the level unless the expedition crew is dead or cooperative. Stay around your area."
 	restricted_species = list(/datum/species/human)
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/hecu/leader/special(mob/living/carbon/human/spawned_human)

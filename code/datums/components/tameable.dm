@@ -25,8 +25,9 @@
 		src.after_tame = after_tame
 
 
-	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/try_tame)
-	RegisterSignal(parent, COMSIG_SIMPLEMOB_SENTIENCEPOTION, .proc/on_tame) //Instantly succeeds
+	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(try_tame))
+	RegisterSignal(parent, COMSIG_SIMPLEMOB_SENTIENCEPOTION, PROC_REF(on_tame)) //Instantly succeeds
+	RegisterSignal(parent, COMSIG_SIMPLEMOB_TRANSFERPOTION, PROC_REF(on_tame)) //Instantly succeeds
 
 /datum/component/tameable/proc/try_tame(datum/source, obj/item/food, mob/living/attacker, params)
 	SIGNAL_HANDLER
@@ -55,9 +56,8 @@
 
 	after_tame?.Invoke(tamer)//Run custom behavior if needed
 
-	if(ishostile(parent) && isliving(tamer)) //Kinda shit check but this only applies to hostiles atm
-		var/mob/living/simple_animal/hostile/evil_but_now_not_evil = parent
-		evil_but_now_not_evil.friends = tamer
-		evil_but_now_not_evil.faction = tamer.faction.Copy()
+	if (isliving(parent) && isliving(tamer))
+		var/mob/living/tamed = parent
+		INVOKE_ASYNC(tamed, TYPE_PROC_REF(/mob/living, befriend), tamer)
 
 	qdel(src)

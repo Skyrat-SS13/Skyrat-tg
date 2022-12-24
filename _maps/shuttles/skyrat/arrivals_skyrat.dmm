@@ -92,6 +92,9 @@
 /area/shuttle/arrival)
 "s" = (
 /obj/machinery/door/airlock/silver/glass,
+/obj/machinery/status_display/shuttle/directional/south{
+	shuttle_id = "arrivals_shuttle"
+	},
 /turf/open/floor/iron/shuttle/arrivals,
 /area/shuttle/arrival)
 "t" = (
@@ -126,16 +129,6 @@
 	icon_state = "8,4"
 	},
 /area/shuttle/arrival)
-"A" = (
-/obj/structure/chair/sofa/bench/right{
-	dir = 1
-	},
-/obj/machinery/status_display/shuttle{
-	pixel_x = 32;
-	shuttle_id = "arrivals_shuttle"
-	},
-/turf/open/floor/iron/shuttle/arrivals,
-/area/shuttle/arrival)
 "B" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/arrivals{
 	icon_state = "3,0"
@@ -150,16 +143,6 @@
 /turf/closed/wall/mineral/titanium/shuttle_wall/arrivals{
 	icon_state = "12,0"
 	},
-/area/shuttle/arrival)
-"F" = (
-/obj/structure/chair/sofa/bench/left{
-	dir = 1
-	},
-/obj/machinery/status_display/shuttle{
-	pixel_x = -32;
-	shuttle_id = "arrivals_shuttle"
-	},
-/turf/open/floor/iron/shuttle/arrivals,
 /area/shuttle/arrival)
 "G" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/arrivals{
@@ -295,7 +278,7 @@ B
 Q
 m
 x
-F
+O
 h
 "}
 (6,1,1) = {"
@@ -323,7 +306,7 @@ J
 z
 S
 x
-A
+c
 d
 "}
 (10,1,1) = {"

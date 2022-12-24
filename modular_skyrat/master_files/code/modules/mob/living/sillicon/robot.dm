@@ -3,7 +3,7 @@
 
 /datum/component/robot_smoke/RegisterWithParent()
 	add_verb(parent, /mob/living/silicon/robot/proc/toggle_smoke)
-	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, .proc/dir_change)
+	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, PROC_REF(dir_change))
 
 /datum/component/robot_smoke/UnregisterFromParent()
 	remove_verb(parent, /mob/living/silicon/robot/proc/toggle_smoke)
@@ -52,7 +52,7 @@
 
 /mob/living/silicon/robot/proc/dissipate()
 	particles.spawning = 0
-	addtimer(CALLBACK(src, .proc/particles_qdel), 1.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(particles_qdel)), 1.5 SECONDS)
 
 /mob/living/silicon/robot/proc/particles_qdel()
 	QDEL_NULL(particles)

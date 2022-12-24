@@ -15,7 +15,7 @@
 		/obj/item/dest_tagger,
 		/obj/item/crowbar/cyborg,
 		/obj/item/extinguisher,
-		/obj/item/export_scanner,
+		/obj/item/universal_scanner,
 	)
 	radio_channels = list(RADIO_CHANNEL_SUPPLY)
 	emag_modules = list(

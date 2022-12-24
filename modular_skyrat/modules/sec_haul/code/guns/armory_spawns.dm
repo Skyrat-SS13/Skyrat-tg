@@ -17,7 +17,8 @@
 
 
 /obj/effect/spawner/armory_spawn/Initialize(mapload)
-	..()
+	. = ..()
+
 	if(guns)
 		var/current_offset = -10
 		var/offset_percent = 20 / guns.len
@@ -42,8 +43,6 @@
 				var/obj/item/storage/box/ammo_box/microfusion/spawned_box = new(loc)
 				for(var/i in 1 to mags_to_spawn)
 					new spawned_microfusion_gun.cell_type (spawned_box)
-
-	return INITIALIZE_HINT_QDEL
 
 /obj/effect/spawner/armory_spawn/shotguns
 	icon_state = "random_shotgun"

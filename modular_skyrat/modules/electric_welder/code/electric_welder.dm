@@ -16,7 +16,7 @@
 
 /obj/item/weldingtool/electric/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cell, cell_override, CALLBACK(src, .proc/switched_off))
+	AddComponent(/datum/component/cell, cell_override, CALLBACK(src, PROC_REF(switched_off)))
 
 /obj/item/weldingtool/electric/attack_self(mob/user, modifiers)
 	. = ..()

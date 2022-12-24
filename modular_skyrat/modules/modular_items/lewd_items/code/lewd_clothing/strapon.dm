@@ -27,7 +27,7 @@
 		. = ..()
 		if(.)
 			return
-		var/choice = show_radial_menu(user, src, strapon_types, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, strapon_types, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		strapon_type = choice
@@ -49,7 +49,7 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 	update_icon_state()
 	update_icon()
-	update_action_buttons_icons()
+	update_mob_action_buttonss()
 	if(!length(strapon_types))
 		populate_strapon_types()
 
@@ -98,16 +98,16 @@
 	icon_state = "[initial(icon_state)]_[strapon_type]"
 
 //Functionality stuff
-/obj/item/clothing/strapon/proc/update_action_buttons_icons()
+/obj/item/clothing/strapon/proc/update_mob_action_buttonss()
 	for(var/datum/action/item_action/take_strapon/action_button in actions_types)
 		action_button.button_icon_state = "dildo_[strapon_type]"
-		action_button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
+		action_button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	update_icon()
 
 //button stuff
 /datum/action/item_action/take_strapon
-    name = "Put strapon in hand"
-    desc = "Put the strapon in your hand in order to use it properly."
+	name = "Put strapon in hand"
+	desc = "Put the strapon in your hand in order to use it properly."
 
 /datum/action/item_action/take_strapon/Trigger(trigger_flags)
 	var/obj/item/clothing/strapon/affected_item = target

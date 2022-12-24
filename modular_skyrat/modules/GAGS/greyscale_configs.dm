@@ -54,6 +54,62 @@
 	name = "Beret With Fancy Badge Worn - Teshari"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/beret_teshari.dmi'
 
+
+//COWBOY
+/datum/greyscale_config/cowboy_wide
+	name = "Wide Brimmed Hat"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/head/cowboy.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/cowboy/two_layer_hats.json'
+
+/datum/greyscale_config/cowboy_wide/worn
+	name = "Wide Brimmed Hat (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/head/cowboy.dmi'
+
+/datum/greyscale_config/cowboy_wide_feathered
+	name = "Wide Brimmed Feathered Hat"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/head/cowboy.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/cowboy/three_layer_hats.json'
+
+/datum/greyscale_config/cowboy_wide_feathered/worn
+	name = "Wide Brimmed Feathered Hat (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/head/cowboy.dmi'
+
+/datum/greyscale_config/cowboy_flat
+	name = "Flat Brimmed Hat"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/head/cowboy.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/cowboy/two_layer_hats.json'
+
+/datum/greyscale_config/cowboy_flat/worn
+	name = "Flat Brimmed Hat (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/head/cowboy.dmi'
+
+/datum/greyscale_config/cowboy_flat_cowl
+	name = "Flat Brimmed Hat with Cowl"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/head/cowboy.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/cowboy/three_layer_hats.json'
+
+/datum/greyscale_config/cowboy_flat_cowl/worn
+	name = "Flat Brimmed Hat with Cowl (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/head/cowboy.dmi'
+
+/datum/greyscale_config/cowboy_cattleman
+	name = "Cattleman Hat"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/head/cowboy.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/cowboy/two_layer_hats.json'
+
+/datum/greyscale_config/cowboy_cattleman/worn
+	name = "Cattleman Hat (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/head/cowboy.dmi'
+
+/datum/greyscale_config/cowboy_cattleman_wide
+	name = "Wide Brimmed Cattleman Hat"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/head/cowboy.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/cowboy/two_layer_hats.json'
+
+/datum/greyscale_config/cowboy_cattleman_wide/worn
+	name = "Wide Brimmed Cattleman Hat (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/head/cowboy.dmi'
+
 //MUSHROOM CAP
 
 /datum/greyscale_config/mushcap
@@ -356,6 +412,13 @@
 /datum/greyscale_config/apron/worn/oldvox
 	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_oldvox.dmi'
 
+/*
+*	ARMOR
+*/
+
+/datum/greyscale_config/heck_suit/worn/digi
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
+
 // Bathrobes
 
 /datum/greyscale_config/bathrobe
@@ -530,6 +593,19 @@
 	name = "Peacoat (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/peacoat/peacoat_worn.json'
 
+// HAWAIIAN SHIRT
+
+/datum/greyscale_config/hawaiian_shirt
+	name = "Hawaiian Shirt"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/hawaiianshirt.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/hawaiianshirt/hawaiianshirt.json'
+
+/datum/greyscale_config/hawaiian_shirt/worn
+	name = "Hawaiian Shirt (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/hawaiianshirt/hawaiianshirt_worn.json'
+
+// VARSITY JACKET
+
 /datum/greyscale_config/varsity
 	name = "Varsity Jacket"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
@@ -538,6 +614,32 @@
 /datum/greyscale_config/varsity/worn
 	name = "Varsity Jacket (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/varsity/varsity_worn.json'
+
+// TAILORED JACKET
+
+/datum/greyscale_config/tailored_jacket
+	name = "Tailored Jacket"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/tailored_jacket/tailored_jacket.json'
+
+/datum/greyscale_config/tailored_jacket/worn
+	name = "Tailored Jacket (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/tailored_jacket/tailored_jacket_worn.json'
+
+/datum/greyscale_config/tailored_short_jacket
+	name = "Tailored Short Jacket"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/tailored_short_jacket/tailored_short_jacket.json'
+
+/datum/greyscale_config/tailored_short_jacket/worn
+	name = "Tailored Short Jacket (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/tailored_short_jacket/tailored_short_jacket_worn.json'
+
+
+/*
+*	UNDER
+*/
+
 
 // JUMPSUITS
 
@@ -613,6 +715,10 @@
 /datum/greyscale_config/shorts_ripped/worn/digi
 	name = "Worn Ripped Shorts - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
+
+/datum/greyscale_config/shorts_ripped/worn/teshari
+	name = "Worn Ripped Shorts - Teshari"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/teshari_uniform.dmi'
 
 /datum/greyscale_config/jeans_ripped
 	name = "Ripped Jeans"
@@ -704,6 +810,15 @@
 	name = "Worn Pentagram Strapped Dress"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
 
+/datum/greyscale_config/plaidskirt_worn/teshari
+	name = "Worn Plaid Skirt - Teshari"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/dressteshari.dmi'
+
+/datum/greyscale_config/sundress_worn/teshari
+	name = "Worn Sundress - Teshari"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/dressteshari.dmi'
+
+// KILT
 // COSTUMES
 
 /datum/greyscale_config/buttondown_slacks_worn/digi
@@ -908,14 +1023,23 @@ digi
 /datum/greyscale_config/heels
 	name = "High Heels"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/heels.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/heels/heels.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/heels/heels.json'
 
 /datum/greyscale_config/heels/worn
 	name = "High Heels (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/heels/heels_worn.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/heels/heels_worn.json'
 
 /datum/greyscale_config/heels/worn/digi
 	name = "High Heels (Worn Digi)"
+
+/datum/greyscale_config/fancyheels
+	name = "Fancy Heels"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/fancyheels.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/fancyheels/fancyheels.json'
+
+/datum/greyscale_config/fancyheels/worn
+	name = "Fancy Heels (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/fancyheels/fancyheels_worn.json'
 
 // TESHARI FALLBACKS.
 

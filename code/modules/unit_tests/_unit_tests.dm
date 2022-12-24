@@ -53,7 +53,10 @@
 
 #define TEST_PRE 0
 #define TEST_DEFAULT 1
-#define TEST_DEL_WORLD INFINITY
+/// After most test steps, used for tests that run long so shorter issues can be noticed faster
+#define TEST_LONGER 10
+/// This must be the last test to run due to the inherent nature of the test iterating every single tangible atom in the game and qdeleting all of them (while taking long sleeps to make sure the garbage collector fires properly) taking a large amount of time.
+#define TEST_CREATE_AND_DESTROY INFINITY
 
 /// Change color to red on ANSI terminal output, if enabled with -DANSICOLORS.
 #ifdef ANSICOLORS
@@ -79,6 +82,7 @@
 #include "achievements.dm"
 #include "anchored_mobs.dm"
 #include "anonymous_themes.dm"
+#include "area_contents.dm"
 #include "autowiki.dm"
 #include "barsigns.dm"
 #include "bespoke_id.dm"
@@ -95,15 +99,19 @@
 #include "component_tests.dm"
 #include "confusion.dm"
 #include "connect_loc.dm"
+#include "container_sanity.dm"
 #include "crayons.dm"
 #include "create_and_destroy.dm"
 #include "dcs_get_id_from_elements.dm"
 #include "designs.dm"
+#include "dragon_expiration.dm"
 #include "dummy_spawn.dm"
 #include "dynamic_ruleset_sanity.dm"
 #include "egg_glands.dm"
 #include "emoting.dm"
+#include "focus_only_tests.dm"
 #include "food_edibility_check.dm"
+#include "food_icons.dm"
 #include "gas_transfer.dm"
 #include "get_turf_pixel.dm"
 #include "greyscale_config.dm"
@@ -112,16 +120,19 @@
 #include "heretic_rituals.dm"
 #include "holidays.dm"
 #include "human_through_recycler.dm"
+#include "hunger_curse.dm"
 #include "hydroponics_extractor_storage.dm"
 #include "hydroponics_harvest.dm"
 #include "hydroponics_self_mutations.dm"
 #include "hydroponics_validate_genes.dm"
 #include "inhands.dm"
+#include "json_savefile_importing.dm"
 #include "keybinding_init.dm"
 #include "knockoff_component.dm"
 #include "limbsanity.dm"
 #include "load_map_security.dm"
 #include "machine_disassembly.dm"
+#include "mapload_space_verification.dm"
 #include "mapping.dm"
 #include "mecha_damage.dm"
 #include "medical_wounds.dm"
@@ -132,11 +143,13 @@
 #include "mob_spawn.dm"
 #include "modsuit.dm"
 #include "modular_map_loader.dm"
+#include "monkey_business.dm"
 #include "mouse_bite_cable.dm"
 #include "novaflower_burn.dm"
 #include "ntnetwork_tests.dm"
 #include "nuke_cinematic.dm"
 #include "objectives.dm"
+#include "orderable_items.dm"
 #include "operating_table.dm"
 #include "outfit_sanity.dm"
 #include "paintings.dm"
@@ -165,6 +178,7 @@
 #include "security_officer_distribution.dm"
 #include "security_levels.dm"
 #include "serving_tray.dm"
+#include "simple_animal_freeze.dm"
 #include "siunit.dm"
 #include "slips.dm"
 #include "spawn_humans.dm"
@@ -180,7 +194,9 @@
 #include "spell_shapeshift.dm"
 #include "spritesheets.dm"
 #include "stack_singular_name.dm"
+#include "station_trait_tests.dm"
 #include "stomach.dm"
+#include "strange_reagent.dm"
 #include "strippable.dm"
 #include "subsystem_init.dm"
 #include "suit_storage_icons.dm"
@@ -191,6 +207,7 @@
 #include "traitor.dm"
 #include "unit_test.dm"
 #include "verify_config_tags.dm"
+#include "verify_emoji_names.dm"
 #include "wizard_loadout.dm"
 #ifdef REFERENCE_TRACKING_DEBUG //Don't try and parse this file if ref tracking isn't turned on. IE: don't parse ref tracking please mr linter
 #include "find_reference_sanity.dm"

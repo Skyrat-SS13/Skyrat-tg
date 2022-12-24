@@ -52,7 +52,6 @@
 	weapon_weight = WEAPON_MEDIUM
 	w_class = WEIGHT_CLASS_BULKY
 	company_flag = COMPANY_CANTALAN
-	dirt_modifier = 0.2
 
 /obj/item/gun/ballistic/automatic/cfa_wildcat/no_mag
 	spawnwithmagazine = FALSE
@@ -79,7 +78,6 @@
 	weapon_weight = WEAPON_MEDIUM
 	w_class = WEIGHT_CLASS_BULKY
 	company_flag = COMPANY_CANTALAN
-	dirt_modifier = 0.2
 
 /obj/item/gun/ballistic/automatic/cfa_lynx/no_mag
 	spawnwithmagazine = FALSE

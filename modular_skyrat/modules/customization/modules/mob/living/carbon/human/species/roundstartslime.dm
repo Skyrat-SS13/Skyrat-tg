@@ -31,19 +31,19 @@
 	name = "Xenobiological Slime Hybrid"
 	id = SPECIES_SLIMESTART
 	examine_limb_id = SPECIES_SLIMEPERSON
-	say_mod = "says"
 	coldmod = 3
 	heatmod = 1
 	burnmod = 1
 	specific_alpha = 155
 	markings_alpha = 130 //This is set lower than the other so that the alpha values don't stack on top of each other so much
+	mutanttongue = /obj/item/organ/internal/tongue
 
 	bodypart_overrides = list( //Overriding jelly bodyparts
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/roundstartslime,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/roundstartslime,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/roundstartslime,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/roundstartslime,
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/roundstartslime,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/roundstartslime,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/roundstartslime,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/roundstartslime,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/roundstartslime,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/roundstartslime,
 	)
 
@@ -56,10 +56,12 @@
 	name = "Alter Form"
 	check_flags = AB_CHECK_CONSCIOUS
 	button_icon_state = "alter_form"
-	icon_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi'
+	button_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi'
 	background_icon_state = "bg_alien"
 	/// Do you need to be a slime-person to use this ability?
 	var/slime_restricted = TRUE
+	///Is the person using this ability oversized?
+	var/oversized_user = FALSE
 
 /datum/action/innate/alter_form/unrestricted
 	slime_restricted = FALSE
@@ -272,19 +274,31 @@
 		return
 	switch(dna_alteration)
 		if("Body Size")
+			if(oversized_user && !HAS_TRAIT(alterer, TRAIT_OVERSIZED))
+				var/reset_size = tgui_alert(alterer, "Do you wish to return to being oversized?", "Size Change", list("Yes", "No"))
+				if(reset_size == "Yes")
+					alterer.add_quirk(/datum/quirk/oversized)
+					return
+
 			var/new_body_size = tgui_input_number(
 				alterer,
 				"Choose your desired sprite size: ([BODY_SIZE_MIN * 100]% to [BODY_SIZE_MAX * 100]%). Warning: May make your character look distorted",
 				"Size Change",
-				default = alterer.dna.features["body_size"] * 100,
+				default = min(alterer.dna.features["body_size"] * 100, BODY_SIZE_MAX * 100),
 				max_value = BODY_SIZE_MAX * 100,
 				min_value = BODY_SIZE_MIN * 100,
 			)
 			if(!new_body_size)
 				return
+
+			if(HAS_TRAIT(alterer, TRAIT_OVERSIZED))
+				oversized_user = TRUE
+				alterer.remove_quirk(/datum/quirk/oversized)
+
 			new_body_size = new_body_size * 0.01
 			alterer.dna.features["body_size"] = new_body_size
 			alterer.dna.update_body_size()
+
 		if("Genitals")
 			alter_genitals(alterer)
 		if("Mutant Parts")
@@ -410,7 +424,7 @@
 				alterer,
 				"Choose your character's breasts size:",
 				"DNA Alteration",
-				GLOB.preference_breast_sizes,
+				GLOB.breast_size_to_number,
 			)
 			if(!new_size)
 				return

@@ -8,17 +8,17 @@
 	/// When we start mining, what do we tell the user they're mining?
 	var/ore_descriptor = "stone"
 	/// What type of ore do we drop?
-	var/ore_type = /obj/item/stack/ore/stone
+	var/ore_type = /obj/item/stack/stone
 	/// How much ore do we drop?
-	var/ore_amount = 1
+	var/ore_amount = 5
 	/// If the ore vein has been recently mined. If so, we cannot mine and must wait for it to regenerate.
 	var/depleted = FALSE
 	/// How long it takes for the ore to 'respawn' after being mined.
-	var/regeneration_time = 15 SECONDS
+	var/regeneration_time = 3 MINUTES
 	/// How long it takes for a tool to mine the ore vein.
-	var/mining_time = 3 SECONDS
+	var/mining_time = 10 SECONDS
 	/// How many unique sprites for ore we have, we will pick them at random.
-	var/unique_sprites = 1
+	var/unique_sprites = 3
 	/// If we should pick a random sprite for the ore vein or not.
 	var/random_sprite = TRUE
 	/// Our original description to hold. We'll revert to this when switching between the ore vein being depleted and not.
@@ -64,7 +64,7 @@
 		SSblackbox.record_feedback("tally", "pick_used_mining", 1, W.type)
 		depleted = TRUE
 		update_icon_state()
-		addtimer(CALLBACK(src, .proc/regenerate_ore), regeneration_time)
+		addtimer(CALLBACK(src, PROC_REF(regenerate_ore)), regeneration_time)
 
 //	After the ore vein finishes its wait, we make the ore 'respawn' and return the ore to its original post-Initialize() icon_state.
 /obj/structure/ore_vein/proc/regenerate_ore()
@@ -72,63 +72,40 @@
 	update_icon_state()
 
 /obj/structure/ore_vein/stone
-	name = "stone mine"
-	desc = "High-quality stone that once mined and refined, creates a robust construction material."
-	icon_state = "stone"
-	ore_type = /obj/item/stack/ore/stone
-	ore_amount = 1
-	unique_sprites = 2
+	name = "large rocks"
+	desc = "Various types of high quality stone that could probably make a good construction material if dug up and refined."
 
 /obj/structure/ore_vein/iron
-	name = "iron mine"
-	desc = "An iron ore vein!"
+	name = "rusted rocks"
+	desc = "The rusty brown color on these rocks gives away the fact they are full of iron!"
 	icon_state = "iron"
 	ore_descriptor = "iron"
 	ore_type = /obj/item/stack/ore/iron
-	ore_amount = 1
-	unique_sprites = 2
-	mining_time = 5 SECONDS
 
 /obj/structure/ore_vein/silver
-	name = "silver mine"
-	desc = "Silver! In demand for more than it's beautiful lustre."
+	name = "silvery-blue rocks"
+	desc = "These rocks have the giveaway blued-silver look of, well, raw silver."
 	icon_state = "silver"
 	ore_descriptor = "silver"
 	ore_type = /obj/item/stack/ore/silver
-	ore_amount = 1
-	unique_sprites = 1
-	mining_time = 10 SECONDS
-	regeneration_time = 20 SECONDS
 
 /obj/structure/ore_vein/gold
-	name = "gold mine"
-	desc = "Precious shiny gold! A vital component for goods like electronics all the way to un-manned space vehicles."
+	name = "gold streaked rocks"
+	desc = "Fairly normal looking rocks... aside from the streaks of shining gold running through some of them!."
 	icon_state = "gold"
 	ore_descriptor = "gold"
 	ore_type = /obj/item/stack/ore/gold
-	ore_amount = 1
-	unique_sprites = 2
-	mining_time = 10 SECONDS
-	regeneration_time = 20 SECONDS
 
 /obj/structure/ore_vein/plasma
-	name = "plasma mine"
-	desc = "Solid plasma! It's rather common."
+	name = "plasma rich rocks"
+	desc = "Rocks with unrefined plasma visible on the outside of several... Do be careful with open flames near this."
 	icon_state = "plasma"
 	ore_descriptor = "plasma"
 	ore_type = /obj/item/stack/ore/plasma
-	ore_amount = 1
-	unique_sprites = 1
-	mining_time = 5 SECONDS
-	regeneration_time = 20 SECONDS
 
 /obj/structure/ore_vein/diamond
-	name = "diamond mine"
-	desc = "Diamond! It's rare and its industrial applications keep it very valuable."
+	name = "diamond studded rocks"
+	desc = "While nowhere near as rare as you'd think, the diamonds studding these rocks are still both useful and valuable."
 	icon_state = "diamond"
 	ore_descriptor = "diamond"
 	ore_type = /obj/item/stack/ore/diamond
-	ore_amount = 1
-	unique_sprites = 2
-	mining_time = 30 SECONDS
-	regeneration_time = 120 SECONDS

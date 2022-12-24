@@ -253,7 +253,7 @@ GLOBAL_LIST_INIT(transit_tube_recipes, list(
 /obj/item/pipe_dispenser/equipped(mob/user, slot, initial)
 	. = ..()
 	if(slot & ITEM_SLOT_HANDS)
-		RegisterSignal(user, COMSIG_MOUSE_SCROLL_ON, .proc/mouse_wheeled)
+		RegisterSignal(user, COMSIG_MOUSE_SCROLL_ON, PROC_REF(mouse_wheeled))
 	else
 		UnregisterSignal(user,COMSIG_MOUSE_SCROLL_ON)
 
@@ -305,11 +305,11 @@ GLOBAL_LIST_INIT(transit_tube_recipes, list(
 	playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE)
 	qdel(rpd_up)
 
-/obj/item/pipe_dispenser/suicide_act(mob/user)
+/obj/item/pipe_dispenser/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] points the end of the RPD down [user.p_their()] throat and presses a button! It looks like [user.p_theyre()] trying to commit suicide..."))
 	playsound(get_turf(user), 'sound/machines/click.ogg', 50, TRUE)
 	playsound(get_turf(user), 'sound/items/deconstruct.ogg', 50, TRUE)
-	return(BRUTELOSS)
+	return BRUTELOSS
 
 /obj/item/pipe_dispenser/ui_assets(mob/user)
 	return list(
@@ -334,7 +334,7 @@ GLOBAL_LIST_INIT(transit_tube_recipes, list(
 		"preview_rows" = recipe.get_preview(p_dir),
 		"categories" = list(),
 		"selected_color" = paint_color,
-		"mode" = mode
+		"mode" = mode,
 	)
 
 	var/list/recipes
@@ -351,6 +351,8 @@ GLOBAL_LIST_INIT(transit_tube_recipes, list(
 		for(var/i in 1 to cat.len)
 			var/datum/pipe_info/info = cat[i]
 			r += list(list("pipe_name" = info.name, "pipe_index" = i, "selected" = (info == recipe), "all_layers" = info.all_layers))
+			if(info == recipe)
+				data["selected_category"] = c
 		data["categories"] += list(list("cat_name" = c, "recipes" = r))
 
 	var/list/init_directions = list("north" = FALSE, "south" = FALSE, "east" = FALSE, "west" = FALSE)
@@ -621,8 +623,8 @@ GLOBAL_LIST_INIT(transit_tube_recipes, list(
 						tube.setDir(queued_p_dir)
 
 						if(queued_p_flipped)
-							tube.setDir(turn(queued_p_dir, 45))
-							tube.SimpleRotateFlip()
+							tube.setDir(turn(queued_p_dir, 45 + ROTATION_FLIP))
+							tube.AfterRotation(user, ROTATION_FLIP)
 
 						tube.add_fingerprint(usr)
 						if(mode & WRENCH_MODE)

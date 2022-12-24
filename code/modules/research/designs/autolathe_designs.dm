@@ -79,7 +79,7 @@
 	id = "extinguisher"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 90)
-	build_path = /obj/item/extinguisher
+	build_path = /obj/item/extinguisher/empty
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ATMOSPHERICS
@@ -91,7 +91,7 @@
 	id = "pocketfireextinguisher"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 50, /datum/material/glass = 40)
-	build_path = /obj/item/extinguisher/mini
+	build_path = /obj/item/extinguisher/mini/empty
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ATMOSPHERICS
@@ -139,7 +139,7 @@
 	id = "welding_tool"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 70, /datum/material/glass = 20)
-	build_path = /obj/item/weldingtool
+	build_path = /obj/item/weldingtool/empty
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING
@@ -151,7 +151,7 @@
 	id = "mini_welding_tool"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 30, /datum/material/glass = 10)
-	build_path = /obj/item/weldingtool/mini
+	build_path = /obj/item/weldingtool/mini/empty
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING
@@ -1300,7 +1300,7 @@
 	id = "large_welding_tool"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 70, /datum/material/glass = 60)
-	build_path = /obj/item/weldingtool/largetank
+	build_path = /obj/item/weldingtool/largetank/empty
 	category = list(
 		RND_CATEGORY_HACKED,
 		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING
@@ -1400,8 +1400,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/c10mm
-//	name = "Ammo Box (10mm)"			// SKYRAT EDIT: Original
-	name = "Ammo Box (10mm Magnum)"		// SKYRAT EDIT: Calibre rename
+	name = "Ammo Box (10mm)"
 	id = "c10mm"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 30000)
@@ -1466,18 +1465,6 @@
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 250, /datum/material/glass = 125)
 	build_path = /obj/item/dest_tagger
-	category = list(
-		RND_CATEGORY_INITIAL,
-		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_CARGO
-	)
-	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_SERVICE
-
-/datum/design/salestagger
-	name = "Sales Tagger"
-	id = "salestagger"
-	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 700, /datum/material/glass = 200)
-	build_path = /obj/item/sales_tagger
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_CARGO
@@ -1551,18 +1538,6 @@
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 10000, /datum/material/glass = 1000)
 	build_path = /obj/item/modular_computer/laptop/buildable
-	category = list(
-		RND_CATEGORY_INITIAL,
-		RND_CATEGORY_MODULAR_COMPUTERS + RND_SUBCATEGORY_MODULAR_COMPUTERS_FRAMES
-	)
-	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
-
-/datum/design/tablet
-	name = "Tablet Frame"
-	id = "tablet"
-	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 2000, /datum/material/glass = 1000)
-	build_path = /obj/item/modular_computer/tablet
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_MODULAR_COMPUTERS + RND_SUBCATEGORY_MODULAR_COMPUTERS_FRAMES
@@ -1669,18 +1644,6 @@
 		RND_CATEGORY_CONSTRUCTION + RND_SUBCATEGORY_CONSTRUCTION_MATERIALS
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING | DEPARTMENT_BITFLAG_SCIENCE
-
-/datum/design/price_tagger
-	name = "Price Tagger"
-	id = "price_tagger"
-	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 1500, /datum/material/glass = 500)
-	build_path = /obj/item/price_tagger
-	category = list(
-		RND_CATEGORY_INITIAL,
-		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_CARGO
-	)
-	departmental_flags = DEPARTMENT_BITFLAG_CARGO
 
 /datum/design/custom_vendor_refill
 	name = "Custom Vendor Refill"
