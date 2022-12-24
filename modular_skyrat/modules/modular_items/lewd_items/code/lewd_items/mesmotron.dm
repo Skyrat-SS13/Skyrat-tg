@@ -4,8 +4,10 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/pocketwatch.dmi'
 	icon_state = "pocketwatch"
 	w_class = WEIGHT_CLASS_SMALL
-	var/mob/living/carbon/subject = null //the target
-	var/closed = FALSE //Icon State with alt-click
+	/// This stores the target it's successful on for future use in giving suggestions
+	var/mob/living/carbon/subject
+	/// Icon State with alt-click
+	var/closed = FALSE
 
 // Hypnotize Someone
 /obj/item/mesmotron/attack(mob/living/carbon/human/target, mob/living/user)
@@ -17,7 +19,7 @@
 		to_chat(user, span_danger("You can't hypnotize [target] while they're sleeping!"))
 		return
 
-	if(!(user in view(1, loc)) || closed)
+	if(!(in_range(user, target)) || closed)
 		return
 
 	if(!do_mob(user, target, 12 SECONDS))
@@ -64,3 +66,7 @@
 		icon_state = "pocketwatch"
 		desc = "An elaberate gold etched pocket, with an enchanting face, and captivating mechanical tick."
 		closed = FALSE
+
+/obj/item/mesmotron/Destroy(force)
+    subject = null
+    return ..()
