@@ -9,8 +9,13 @@
 	desc = "A bluespace engine used to make shuttles move."
 	icon = 'icons/turf/shuttle.dmi'
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
+<<<<<<< HEAD
 	smoothing_groups = list(SMOOTH_GROUP_SHUTTLE_PARTS)
 	armor = list(MELEE = 100, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 70) //default + ignores melee
+=======
+	smoothing_groups = SMOOTH_GROUP_SHUTTLE_PARTS
+	armor_type = /datum/armor/power_shuttle_engine
+>>>>>>> 72add645201 (Refactors armor into dedicated subtypes (#71986))
 	can_atmos_pass = ATMOS_PASS_DENSITY
 	max_integrity = 500
 	density = TRUE
@@ -25,6 +30,13 @@
 
 	///The mobile ship we are connected to.
 	var/datum/weakref/connected_ship_ref
+
+/datum/armor/power_shuttle_engine
+	melee = 100
+	bullet = 10
+	laser = 10
+	fire = 50
+	acid = 70
 
 /obj/machinery/power/shuttle_engine/connect_to_shuttle(mapload, obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
 	. = ..()

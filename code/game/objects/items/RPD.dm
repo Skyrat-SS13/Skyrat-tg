@@ -185,7 +185,7 @@ GLOBAL_LIST_INIT(transit_tube_recipes, list(
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_BELT
 	custom_materials = list(/datum/material/iron=75000, /datum/material/glass=37500)
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 100, ACID = 50)
+	armor_type = /datum/armor/item_pipe_dispenser
 	resistance_flags = FIRE_PROOF
 	///Sparks system used when changing device in the UI
 	var/datum/effect_system/spark_spread/spark_system
@@ -225,6 +225,10 @@ GLOBAL_LIST_INIT(transit_tube_recipes, list(
 	var/mode = BUILD_MODE | DESTROY_MODE | WRENCH_MODE | REPROGRAM_MODE
 	/// Bitflags for upgrades
 	var/upgrade_flags
+
+/datum/armor/item_pipe_dispenser
+	fire = 100
+	acid = 50
 
 /obj/item/pipe_dispenser/Initialize(mapload)
 	. = ..()
@@ -275,6 +279,16 @@ GLOBAL_LIST_INIT(transit_tube_recipes, list(
 	return ..()
 
 /obj/item/pipe_dispenser/pre_attack_secondary(obj/machinery/atmospherics/target, mob/user, params)
+<<<<<<< HEAD
+=======
+	if(istype(target, /obj/machinery/air_sensor))
+		if(!do_after(user, destroy_speed, target))
+			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+		qdel(target)
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+>>>>>>> 72add645201 (Refactors armor into dedicated subtypes (#71986))
 	if(!istype(target, /obj/machinery/atmospherics))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(target.pipe_color && target.piping_layer)

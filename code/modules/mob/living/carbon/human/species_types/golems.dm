@@ -861,13 +861,22 @@
 	name = "pile of bandages"
 	desc = "It emits a strange aura, as if there was still life within it..."
 	max_integrity = 50
-	armor = list(MELEE = 90, BULLET = 90, LASER = 25, ENERGY = 80, BOMB = 50, BIO = 0, FIRE = -50, ACID = -50)
+	armor_type = /datum/armor/structure_cloth_pile
 	icon = 'icons/obj/weapons/items_and_weapons.dmi'
 	icon_state = "pile_bandages"
 	resistance_flags = FLAMMABLE
 
 	var/revive_time = 90 SECONDS
 	var/mob/living/carbon/human/cloth_golem
+
+/datum/armor/structure_cloth_pile
+	melee = 90
+	bullet = 90
+	laser = 25
+	energy = 80
+	bomb = 50
+	fire = -50
+	acid = -50
 
 /obj/structure/cloth_pile/Initialize(mapload, mob/living/carbon/human/H)
 	. = ..()
@@ -953,6 +962,15 @@
 	examine_limb_id = SPECIES_GOLEM
 	var/last_gong_time = 0
 	var/gong_cooldown = 150
+
+/datum/armor/structure_cloth_pile
+	melee = 90
+	bullet = 90
+	laser = 25
+	energy = 80
+	bomb = 50
+	fire = -50
+	acid = -50
 
 /datum/species/golem/bronze/bullet_act(obj/projectile/P, mob/living/carbon/human/H)
 	if(!(world.time > last_gong_time + gong_cooldown))
@@ -1128,6 +1146,15 @@
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/golem/durathread,
 	)
 
+/datum/armor/structure_cloth_pile
+	melee = 90
+	bullet = 90
+	laser = 25
+	energy = 80
+	bomb = 50
+	fire = -50
+	acid = -50
+
 /datum/species/golem/durathread/spec_unarmedattacked(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	. = ..()
 	target.apply_status_effect(/datum/status_effect/strandling)
@@ -1173,6 +1200,15 @@
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/golem/bone,
 	)
 	var/datum/action/innate/bonechill/bonechill
+
+/datum/armor/structure_cloth_pile
+	melee = 90
+	bullet = 90
+	laser = 25
+	energy = 80
+	bomb = 50
+	fire = -50
+	acid = -50
 
 /datum/species/golem/bone/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	..()
@@ -1222,6 +1258,15 @@
 	var/cooldown = 600
 	var/last_use
 	var/snas_chance = 3
+
+/datum/armor/structure_cloth_pile
+	melee = 90
+	bullet = 90
+	laser = 25
+	energy = 80
+	bomb = 50
+	fire = -50
+	acid = -50
 
 /datum/action/innate/bonechill/Activate()
 	if(world.time < last_use + cooldown)
@@ -1285,6 +1330,15 @@
 	/// A ref to our cryobeam spell we get on species gain.
 	var/datum/action/cooldown/spell/pointed/projectile/cryo/cryo
 
+/datum/armor/structure_cloth_pile
+	melee = 90
+	bullet = 90
+	laser = 25
+	energy = 80
+	bomb = 50
+	fire = -50
+	acid = -50
+
 /datum/species/golem/snow/spec_death(gibbed, mob/living/carbon/human/H)
 	H.visible_message(span_danger("[H] turns into a pile of snow!"))
 	for(var/obj/item/W in H)
@@ -1333,6 +1387,15 @@
 		TRAIT_RESISTHIGHPRESSURE,
 	)
 	examine_limb_id = SPECIES_GOLEM
+
+/datum/armor/structure_cloth_pile
+	melee = 90
+	bullet = 90
+	laser = 25
+	energy = 80
+	bomb = 50
+	fire = -50
+	acid = -50
 
 /datum/species/golem/mhydrogen/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	. = ..()

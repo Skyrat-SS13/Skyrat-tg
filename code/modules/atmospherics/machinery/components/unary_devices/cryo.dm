@@ -73,8 +73,13 @@
 	icon_state = "pod-off"
 	density = TRUE
 	max_integrity = 350
+<<<<<<< HEAD
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 100, BOMB = 0, BIO = 0, FIRE = 30, ACID = 30)
 	layer = MOB_LAYER - 0.2 //SKYRAT EDIT - Fixing the opacity of cryo cells - ORIGINAL: layer = MOB_LAYER
+=======
+	armor_type = /datum/armor/unary_cryo_cell
+	layer = MOB_LAYER
+>>>>>>> 72add645201 (Refactors armor into dedicated subtypes (#71986))
 	state_open = FALSE
 	circuit = /obj/item/circuitboard/machine/cryo_tube
 	pipe_flags = PIPING_ONE_PER_TURF | PIPING_DEFAULT_LAYER_ONLY
@@ -114,6 +119,11 @@
 	fair_market_price = 10
 	payment_department = ACCOUNT_MED
 
+
+/datum/armor/unary_cryo_cell
+	energy = 100
+	fire = 30
+	acid = 30
 
 /obj/machinery/atmospherics/components/unary/cryo_cell/Initialize(mapload)
 	. = ..()
