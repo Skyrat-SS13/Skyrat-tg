@@ -227,3 +227,7 @@
 	. = ..()
 	if(CONFIG_GET(flag/disable_lewd_items))
 		return INITIALIZE_HINT_QDEL
+/obj/item/mesmotron/Initialize(mapload)
+	. = ..()
+	if(CONFIG_GET(flag/disable_lewd_items))
+		return INITIALIZE_HINT_QDEL

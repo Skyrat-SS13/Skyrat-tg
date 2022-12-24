@@ -346,3 +346,84 @@
 	else if(arousal > AROUSAL_MINIMUM_DETECTABLE)
 		. += span_purple("[p_they()] [p_are()] slightly blushed.") + "\n"
 
+
+//Hypnotic
+
+/datum/quirk/hypnotic
+	name = "Hypnotic"
+	desc = "Something about you gives you the ability to captivate others into a trance"
+	value = 0 //There's no mechanical advantage
+	mob_trait = TRAIT_HYPNOTIC
+	gain_text = span_danger("You find yourself able to captivate others into trance")
+	lose_text = span_notice("You loose the ability to mesmorize others")
+	icon = "galaxy"
+	erp_quirk = TRUE
+
+/datum/quirk/hypnotic/post_add()
+	. = ..()
+	var/mob/living/carbon/human/affected_mob = quirk_holder
+	ADD_TRAIT(affected_mob, TRAIT_HYPNOTIC, LEWDQUIRK_TRAIT)
+	var/datum/action/innate/Hypnotize/spell = new
+	spell.Grant(affected_mob)
+	spell.owner = affected_mob
+/datum/quirk/hypnotic/remove()
+	. = ..()
+	var/mob/living/carbon/human/affected_mob = quirk_holder
+	REMOVE_TRAIT(affected_mob, TRAIT_HYPNOTIC, LEWDQUIRK_TRAIT)
+
+
+/datum/action/innate/Hypnotize
+	name = "Hypnotize"
+	desc = "Captivate someone into a trance"
+	button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
+	button_icon_state = "hypno"
+	background_icon_state = "bg_alien"
+	var/mob/living/carbon/T = null //Target
+	var/mob/living/carbon/human/source = null //User
+
+/datum/action/innate/Hypnotize/Activate()
+	var/mob/living/carbon/human/source = owner
+	if(!source.pulling || !isliving(source.pulling) || source.grab_state < GRAB_AGGRESSIVE)
+		to_chat(source, span_warning("You need to be agressively grabbing someone to hypnotize them"))
+		return
+
+	var/mob/living/carbon/T = source.pulling
+
+	if(!T.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+		to_chat(source, span_danger("[T] doesn't want to be hypnotized."))
+		return
+
+	if(T.IsSleeping())
+		to_chat(source, span_warning("You can't hypnotize [T] while they're asleep."))
+	if(!do_mob(source, T, 12 SECONDS))
+		return
+	source.visible_message(span_warning("[source] begins to gradually pull [T] down into a hypnotic trance!"))
+	var/response = tgui_alert(T, "Do you belive in hypnosis? (This will allow [source] to issue hypnotic suggestions)", "Hypnosis", list("Yes", "No"))
+	if(response == "Yes")
+		T.visible_message(span_purple("[T] falls into a deep, hypnotic slumber right at the snap of your finger"), span_purple("You suddenly fall limp at the snap of [source]'s fingers."))
+		T.SetSleeping(1200)
+
+		var/response2 = tgui_alert(source, "Would you like to give [T] a hypnotic suggestion or release them?", "Hypnosis", list("Suggestion", "Release"))
+		if(response2 == "Suggestion")
+			if(get_dist(source, T) > 1)
+				to_chat(source, span_warning("You must be in whisper range to [T] in order to give hypnotic suggestions"))
+				return
+			var/text = input("What would you like to suggest?", "Hypnotic Suggestion", null, null)
+			text = sanitize_text(text)
+			if(!text)
+				return
+			to_chat(source, span_purple("You whisper into [T] ears in a soothing voice"))
+			to_chat(T, span_hypnophrase("[text]"))
+			return
+
+		if(response2 == "Release")
+			T.visible_message(span_purple("[T] wakes up from their slumber"), span_purple("You wake up from your deep, hypnotc slumber and the new compulsions from [source] settle into your mind"))
+			T.SetSleeping(0)
+			T = null
+		return
+	if(response == "No")
+		T.visible_message(span_warning("[T] Attention breaks despite your efforts. They clearly don't seem interested!"), span_danger("Your attention breaks as you realize that you don't want to listen to [source]'s suggestions"))
+		return
+
+
+
