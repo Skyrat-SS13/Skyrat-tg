@@ -45,6 +45,10 @@
 	if (modified_genitals)
 		exposed_mob.update_body()
 
+/datum/reagent/drug/aphrodisiac/camphor/overdose_start(mob/living/carbon/human/exposed_mob)
+	to_chat(exposed_mob, span_userdanger("You feel like you took too much [name]!"))
+	exposed_mob.add_mood_event("[type]_overdose", /datum/mood_event/minor_overdose, name)
+
 /datum/chemical_reaction/crocin
 	results = list(/datum/reagent/drug/aphrodisiac/crocin = 6)
 	required_reagents = list(/datum/reagent/carbon = 2, /datum/reagent/hydrogen = 2, /datum/reagent/oxygen = 2, /datum/reagent/water = 1)

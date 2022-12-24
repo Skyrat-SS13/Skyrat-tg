@@ -1,5 +1,3 @@
-#define OD_CHANCE_NO_TRAUMA 95
-
 // Hexacrocin. Advanced aphrodisiac that can cause brain traumas.
 /datum/reagent/drug/aphrodisiac/crocin/hexacrocin
 	name = "hexacrocin"
@@ -37,13 +35,23 @@
 		var/displayed_extreme_thought = pick(extreme_aroused_thoughts)
 		to_chat(exposed_mob, span_purple("[displayed_extreme_thought]"))
 
-/datum/reagent/drug/aphrodisiac/crocin/hexacrocin/overdose_effects(mob/living/carbon/human/exposed_mob)
-	if(prob(OD_CHANCE_NO_TRAUMA) || HAS_TRAIT(exposed_mob, TRAIT_BIMBO))
-		return ..()
+	if(exposed_mob.reagents.has_reagent(/datum/reagent/drug/aphrodisiac/camphor))
+		exposed_mob.reagents.remove_reagent(/datum/reagent/drug/aphrodisiac/camphor, 5)
 
-	to_chat(exposed_mob, span_purple("Your libido is going haywire! It feels like speaking is much harder..."))
-	exposed_mob.gain_trauma(/datum/brain_trauma/very_special/bimbo, TRAUMA_RESILIENCE_BASIC)
-	ADD_TRAIT(exposed_mob, TRAIT_BIMBO, LEWDCHEM_TRAIT)
+	if(exposed_mob.reagents.has_reagent(/datum/reagent/drug/aphrodisiac/camphor/pentacamphor))
+		exposed_mob.reagents.remove_reagent(/datum/reagent/drug/aphrodisiac/camphor/pentacamphor, 5)
+
+/datum/reagent/drug/aphrodisiac/crocin/hexacrocin/on_mob_metabolize(mob/living/carbon/human/exposed_mob)
+	. = ..()
+	if(HAS_TRAIT(exposed_mob, TRAIT_NEVERBONER))
+		exposed_mob.cure_trauma_type(/datum/brain_trauma/very_special/neverboner, TRAUMA_RESILIENCE_ABSOLUTE)
+
+/datum/reagent/drug/aphrodisiac/crocin/hexacrocin/overdose_effects(mob/living/carbon/human/exposed_mob)
+	. = ..()
+	if(HAS_TRAIT(exposed_mob, TRAIT_BIMBO))
+		return
+	else
+		exposed_mob.gain_trauma(/datum/brain_trauma/very_special/bimbo, TRAUMA_RESILIENCE_ABSOLUTE)
 
 /datum/chemical_reaction/hexacrocin
 	results = list(/datum/reagent/drug/aphrodisiac/crocin/hexacrocin = 1)
@@ -51,5 +59,3 @@
 	required_temp = 600
 	mix_message = "The mixture rapidly condenses and darkens in color..."
 	erp_reaction = TRUE
-
-#undef OD_CHANCE_NO_TRAUMA

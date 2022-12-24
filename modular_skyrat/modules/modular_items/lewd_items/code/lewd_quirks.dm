@@ -168,7 +168,7 @@
 
 //Mood boost
 /datum/mood_event/bimbo
-	description = span_purple("So-o... Help..less... Lo-ve it!\n")
+	description = span_purple("So-o... Help..less... Lo-ve it!")
 
 /*
 *	MASOCHISM
@@ -212,7 +212,8 @@
 	gain_text = span_notice("You don't feel horny anymore.")
 	lose_text = span_notice("A pleasant warmth spreads over your body.")
 	random_gain = FALSE
-	resilience = TRAUMA_RESILIENCE_ABSOLUTE
+	resilience = TRAUMA_RESILIENCE_LOBOTOMY
+	display_scanner = FALSE
 
 /datum/brain_trauma/very_special/neverboner/on_gain()
 	var/mob/living/carbon/human/affected_human = owner
@@ -256,6 +257,7 @@
 	can_gain = TRUE
 	random_gain = FALSE
 	resilience = TRAUMA_RESILIENCE_ABSOLUTE
+	display_scanner = FALSE
 
 /datum/brain_trauma/very_special/sadism/on_life(delta_time, times_fired)
 	var/mob/living/carbon/human/affected_mob = owner
