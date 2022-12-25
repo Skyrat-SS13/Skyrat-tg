@@ -1,4 +1,4 @@
-/mob/living/basic/syndifox
+/mob/living/simple_animal/pet/fox/syndifox
 	name = "Syndi-Fox"
 	real_name = "Syndi-Fox" // Intended to hold the name without altering it.
 	gender = NEUTER
@@ -9,8 +9,15 @@
 	icon_state = "syndifox"
 	icon_living = "syndifox"
 	icon_dead = "syndifox_dead"
+	speak = list("Ack-Ack","Ack-Ack-Ack-Ackawoooo","Geckers","Awoo","Tchoff")
 	speak_emote = list("geckers", "barks")
+	emote_hear = list("howls.","barks.")
+	emote_see = list("shakes their head.", "shivers.")
+	speak_chance = 1
+	turns_per_move = 5
+	see_in_dark = 6
 	can_be_held = FALSE
+	butcher_results = list(/obj/item/food/meat/slab = 3)
 	attack_verb_continuous = "bites"
 	attack_verb_simple = "bite"
 	attack_sound = 'sound/weapons/bite.ogg'
