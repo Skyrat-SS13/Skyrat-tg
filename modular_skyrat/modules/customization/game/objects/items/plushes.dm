@@ -572,3 +572,12 @@
 	attack_verb_continuous = list("snuggles", "nibbles", "awoos", "tail whaps")
 	attack_verb_simple = list("snuggle", "nibble", "awoo", "tail whap")
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/merowr.ogg' = 1)
+
+//Donation reward for syntax1112
+/obj/item/toy/plush/skyrat/plushie_syntax1112
+	name = "Lop Bunny Plushie"
+	desc = "A floppy-eared rabbit in marketable plushie form. Complete with an internal self-inflating squeaker device!"
+	icon_state = "fuzz_bunny"
+	attack_verb_continuous = list("nibbles", "squeaks", "nose twitches", "thumps", "falls over")
+	attack_verb_simple = list("nibble", "squeak", "nose twitch", "thump", "fall over")
+	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg')
