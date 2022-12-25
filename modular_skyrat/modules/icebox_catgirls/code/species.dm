@@ -42,7 +42,7 @@
 			forgotten stuff in just about any part of space.",
 
 		"Sometimes when people go missing, they survive the ordeal. While not common, many incidents have been recorded \
-			Where a ship will crash on a distant frontier world without rescue, and the crew will simply survive and thrive.",
+			where a ship will crash on a distant frontier world without rescue, and the crew will simply survive and thrive.",
 
 		"In cases like this, sometimes the crew is only rediscovered through their offspring several generations later. \
 			If they get rediscovered at all, that is.",
