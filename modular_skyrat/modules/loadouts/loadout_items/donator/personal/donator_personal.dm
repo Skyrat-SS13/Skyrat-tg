@@ -598,7 +598,7 @@
 	item_path = /obj/item/toy/plush/skyrat/plushie_syntax1112
 	ckeywhitelist = list("syntax1112")
 
-/datum/loadout_item/ring/hypno/sonicgotnuked
+/datum/loadout_item/gloves/hypnoring_nuke
 	name = "Suspiciously Glossy Ring"
 	item_path = /obj/item/clothing/gloves/ring/hypno/nuke
 	ckeywhitelist = list("sonicgotnuked")

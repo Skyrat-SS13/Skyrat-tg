@@ -1369,7 +1369,7 @@
 // Donation reward for Sonicgotnuked
 
 /obj/item/clothing/gloves/ring/hypno/nuke
-	name = "Suspiciously Glossy Ring"
+	name = "suspiciously glossy ring"
 	desc = "This ring oozes with an assertive edge as sharp light bends along the smooth, black bronze. Like the finger that wears it, an exceptional amount of polish repels nearly all the light that glances along its surface. If you look closer, a slight golden hue indicates the precious metals inside the alloy."
 	icon = 'modular_skyrat/master_files/icons/obj/ring.dmi'
 	icon_state = "ringblack"
