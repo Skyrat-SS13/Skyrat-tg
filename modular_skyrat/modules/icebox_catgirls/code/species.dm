@@ -17,6 +17,8 @@
 
 	liked_food = SEAFOOD | MEAT | GORE
 
+	always_customizable = TRUE
+
 /datum/species/human/felinid/primitive/prepare_human_for_preview(mob/living/carbon/human/human_for_preview)
 	human_for_preview.hairstyle = "Blunt Bangs Alt"
 	human_for_preview.hair_color = "#323442"
