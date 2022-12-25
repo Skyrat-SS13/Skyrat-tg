@@ -44,6 +44,10 @@
 	spawned_human.remove_language(/datum/language/common)
 	team.players_spawned += (spawned_human.key)
 
+/obj/effect/mob_spawn/ghost_role/human/icebox_catgirl/Initialize(mapload)
+	. = ..()
+	team = new /datum/team/icebox_catgirls()
+
 /datum/job/icebox_catgirl
 	title = "Icemoon Dweller"
 
@@ -59,14 +63,14 @@
 	prevent_roundtype_conversion = FALSE
 	antagpanel_category = "Icemoon Dwellers"
 	count_against_dynamic_roll_chance = FALSE
-	var/datum/team/icebox_catgirls/catgirl_team
+	var/datum/team/icebox_catgirls/feline_team
 
 /datum/antagonist/icebox_catgirl/create_team(datum/team/team)
 	if(team)
-		team = catgirl_team
-		objectives |= catgirl_team.objectives
+		feline_team = team
+		objectives |= feline_team.objectives
 	else
-		catgirl_team = new
+		feline_team = new
 
 /datum/antagonist/icebox_catgirl/get_team()
-	return catgirl_team
+	return feline_team
