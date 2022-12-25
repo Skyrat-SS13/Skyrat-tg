@@ -11,9 +11,7 @@
 	greyscale_config_worn = /datum/greyscale_config/icebox_catgirl_wraps/worn
 	greyscale_colors = "#cec8bf#364660"
 	flags_1 = IS_PLAYER_COLORABLE_1
-"#cec8bf"
-"#364660"
-"#594032"
+
 // Hands
 
 /obj/item/clothing/gloves/fingerless/icebox_catgirl_armwraps
@@ -51,7 +49,7 @@
 	desc = "A pair of heavy boots lined with fur and with soles special built to prevent slipping on ice."
 	icon_state = "boots"
 	icon = 'modular_skyrat/modules/icebox_catgirls/icons/clothing_greyscale.dmi'
-	worn_icon = 'modular_skyrat/modules/icebox_catgirls/icons/clothing_greyscale.dmi
+	worn_icon = 'modular_skyrat/modules/icebox_catgirls/icons/clothing_greyscale.dmi'
 	greyscale_config = /datum/greyscale_config/icebox_catgirl_boots
 	greyscale_config_worn = /datum/greyscale_config/icebox_catgirl_boots/worn
 	greyscale_colors = "#594032#cec8bf"
