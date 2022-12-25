@@ -23,7 +23,7 @@
 	. = ..()
 
 	if(uses)
-		. += span_notice("You can see [uses] figures sound asleep down there.")
+		. += span_notice("You can see <b>[uses]</b> figures sound asleep down there.")
 	else
 		. += span_notice("It looks pretty empty.")
 
@@ -63,7 +63,7 @@
 
 /datum/antagonist/icebox_catgirl/create_team(datum/team/team)
 	if(team)
-		catgirl_team = team
+		team = catgirl_team
 		objectives |= catgirl_team.objectives
 	else
 		catgirl_team = new
