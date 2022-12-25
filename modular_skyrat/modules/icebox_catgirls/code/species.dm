@@ -39,20 +39,20 @@
 
 /datum/species/human/felinid/primitive/get_species_lore()
 	return list(
-		"The galaxy is a large place, and every now and then people and things will just go missing never to be seen. \
-			Everything that goes missing ends up somewhere, people, things, if you look hard enough you can find long \
-			forgotten stuff in just about any part of space.",
+		"The galaxy is a large place. Every now and then, people and things will simply go missing, never to be seen again. \
+			Everything that goes missing ends up somewhere. People, things… If you look hard enough, you can find \
+			long-forgotten stuff in just about any part of space.",
 
-		"Sometimes when people go missing, they survive the ordeal. While not common, many incidents have been recorded \
-			where a ship will crash on a distant frontier world without rescue, and the crew will simply survive and thrive.",
+		"Sometimes, when people go missing, they survive the ordeal. While uncommon, many incidents have been recorded where \
+			a ship will crash on a distant frontier world without rescue, and the crew will manage to survive and thrive.",
 
-		"In cases like this, sometimes the crew is only rediscovered through their offspring several generations later. \
-			If they get rediscovered at all, that is.",
+		"In cases such as this, sometimes the crew is only rediscovered through their offspring several generations later… \
+		If they get rediscovered at all, that is.",
 
-		"Why do I tell you all of this you ask? Reports trickle in from many of our icemoon outposts that they've either \
-			sighted, or been harassed by a group of felinids that look like stuff right out of the history books. \
-			Look at the logbooks and you'll see plenty of ships assumed missing decades ago with a felinid crew on board. \
-			Doesn't take a mastermind to put two and two together.",
+		"Why do I tell you all of this, you ask? Reports trickle in from many of our icemoon outposts that they've either \
+			sighted, or been harassed by a group of felinids that look like stuff straight out of the history books. Look \
+			at the logbooks and you'll see plenty of ships assumed missing or destroyed decades ago with a felinid crew \
+			on board. Doesn't take a mastermind to put two and two together.",
 
 		"- Nanotrasen commander who requested anonymity",
 	)
