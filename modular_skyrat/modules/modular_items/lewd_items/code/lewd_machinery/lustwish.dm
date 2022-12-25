@@ -40,7 +40,6 @@
 					/obj/item/fancy_pillow = 32,
 					/obj/item/stack/shibari_rope/full = 10,
 					/obj/item/stack/shibari_rope/glow/full = 10,
-					/obj/item/mesmotron = 5,
 
 					//clothing facial/head
 					/obj/item/clothing/mask/ballgag = 8,
