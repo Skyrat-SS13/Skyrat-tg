@@ -1,3 +1,19 @@
+// The naming of every path in this file is going to be awful :smiling_imp:
+
+// Outfit Datum
+
+/datum/outfit/icebox_catgirl
+	name = "Icemoon Dweller"
+
+	uniform = /obj/item/clothing/under/dress/skirt/icebox_catgirl_body_wraps
+	shoes = /obj/item/clothing/shoes/winterboots/ice_boots/icebox_catgirl_boots
+	gloves = /obj/item/clothing/gloves/fingerless/icebox_catgirl_armwraps
+	suit = /obj/item/clothing/suit/jacket/icebox_catgirl_coat
+	neck = /obj/item/clothing/neck/large_scarf/icebox_catgirl_scarf
+
+	back = /obj/item/forging/reagent_weapon/axe/fake_copper
+	r_pocket = /obj/item/knife/hunting
+
 // Under
 
 /obj/item/clothing/under/dress/skirt/icebox_catgirl_body_wraps
@@ -54,3 +70,14 @@
 	greyscale_config_worn = /datum/greyscale_config/icebox_catgirl_boots/worn
 	greyscale_colors = "#594032#cec8bf"
 	flags_1 = IS_PLAYER_COLORABLE_1
+
+// Neck
+
+/obj/item/clothing/neck/large_scarf/icebox_catgirl_scarf
+	name = "large scarf"
+	greyscale_colors = "#cec8bf#cec8bf"
+
+// Misc Items
+
+/obj/item/forging/reagent_weapon/axe/fake_copper
+	custom_materials = list(/datum/material/copporcitite = MINERAL_MATERIAL_AMOUNT)
