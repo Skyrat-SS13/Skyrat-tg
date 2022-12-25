@@ -17,6 +17,7 @@
 	ph = 7.33
 	burning_temperature = 2193//ethanol burns at 1970C (at it's peak)
 	burning_volume = 0.1
+<<<<<<< HEAD
 	var/boozepwr = 65 //Higher numbers equal higher hardness, higher hardness equals more intense alcohol poisoning
 
 /*
@@ -37,6 +38,35 @@ All effects don't start immediately, but rather get worse over time; the rate is
 81-90: Extremely high alcohol content - heavy toxin damage, passing out
 91-100: Dangerously toxic - swift death
 */
+=======
+	default_container = /obj/item/reagent_containers/cup/glass/bottle/beer
+	fallback_icon = 'icons/obj/drinks/bottles.dmi'
+	fallback_icon_state = "beer"
+	/**
+	 * Boozepwr Chart
+	 *
+	 * Higher numbers equal higher hardness, higher hardness equals more intense alcohol poisoning
+	 *
+	 * Note that all higher effects of alcohol poisoning will inherit effects for smaller amounts
+	 * (i.e. light poisoning inherts from slight poisoning)
+	 * In addition, severe effects won't always trigger unless the drink is poisonously strong
+	 * All effects don't start immediately, but rather get worse over time; the rate is affected by the imbiber's alcohol tolerance
+	 * (see [/datum/status_effect/inebriated])
+	 *
+	 * * 0: Non-alcoholic
+	 * * 1-10: Barely classifiable as alcohol - occassional slurring
+	 * * 11-20: Slight alcohol content - slurring
+	 * * 21-30: Below average - imbiber begins to look slightly drunk
+	 * * 31-40: Just below average - no unique effects
+	 * * 41-50: Average - mild disorientation, imbiber begins to look drunk
+	 * * 51-60: Just above average - disorientation, vomiting, imbiber begins to look heavily drunk
+	 * * 61-70: Above average - small chance of blurry vision, imbiber begins to look smashed
+	 * * 71-80: High alcohol content - blurry vision, imbiber completely shitfaced
+	 * * 81-90: Extremely high alcohol content - heavy toxin damage, passing out
+	 * * 91-100: Dangerously toxic - swift death
+	 */
+	var/boozepwr = 65
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/reagent/consumable/ethanol/New(list/data)
 	if(LAZYLEN(data))
@@ -292,6 +322,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	shot_glass_icon_state = "shotglassclear"
 	ph = 8.1
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_CLEANS //Very high proof
+	default_container = /obj/item/reagent_containers/cup/glass/bottle/vodka
 
 /datum/reagent/consumable/ethanol/bilk
 	name = "Bilk"
@@ -352,6 +383,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_desc = "Now you want to Pray for a pirate suit, don't you?"
 	shot_glass_icon_state = "shotglassbrown"
 	ph = 6.5
+	default_container = /obj/item/reagent_containers/cup/glass/bottle/rum
 
 /datum/reagent/consumable/ethanol/tequila
 	name = "Tequila"
@@ -393,6 +425,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	ph = 3.45
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	glass_price = DRINK_PRICE_STOCK
+	default_container = /obj/item/reagent_containers/cup/glass/bottle/wine
 
 /datum/reagent/consumable/ethanol/wine/on_merge(data)
 	. = ..()

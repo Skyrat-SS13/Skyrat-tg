@@ -4,26 +4,58 @@
 #define CRAFTING_MACHINERY_USE 0
 
 /datum/crafting_recipe
+<<<<<<< HEAD
 	var/name = "" //in-game display name
 	var/list/reqs = list() //type paths of items consumed associated with how many are needed
 	var/list/blacklist = list() //type paths of items explicitly not allowed as an ingredient
 	var/result //type path of item resulting from this craft
+=======
+	///in-game display name
+	var/name
+	///type paths of items consumed associated with how many are needed
+	var/list/reqs = list()
+	///type paths of items explicitly not allowed as an ingredient
+	var/list/blacklist = list()
+	///type path of item resulting from this craft
+	var/result
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 	/// String defines of items needed but not consumed. Lazy list.
 	var/list/tool_behaviors
 	/// Type paths of items needed but not consumed. Lazy list.
 	var/list/tool_paths
+<<<<<<< HEAD
 	var/time = 30 //time in deciseconds
 	var/list/parts = list() //type paths of items that will be placed in the result
 	var/list/chem_catalysts = list() //like tool_behaviors but for reagents
 	var/category = CAT_NONE //where it shows up in the crafting UI
 	var/subcategory = CAT_NONE
 	var/always_available = TRUE //Set to FALSE if it needs to be learned first.
+=======
+	///time in seconds. Remember to use the SECONDS define!
+	var/time = 3 SECONDS
+	///type paths of items that will be placed in the result
+	var/list/parts = list()
+	///like tool_behaviors but for reagents
+	var/list/chem_catalysts = list()
+	///where it shows up in the crafting UI
+	var/category
+	///Set to FALSE if it needs to be learned first.
+	var/always_available = TRUE
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 	/// Additonal requirements text shown in UI
 	var/additional_req_text
 	///Required machines for the craft, set the assigned value of the typepath to CRAFTING_MACHINERY_CONSUME or CRAFTING_MACHINERY_USE. Lazy associative list: type_path key -> flag value.
 	var/list/machinery
 	///Should only one object exist on the same turf?
 	var/one_per_turf = FALSE
+	/// Steps needed to achieve the result
+	var/list/steps
+	/// Whether the result can be crafted with a crafting menu button
+	var/non_craftable
+	/// Chemical reaction described in the recipe
+	var/datum/chemical_reaction/reaction
+	/// Resulting amount (for stacks only)
+	var/result_amount
 
 /datum/crafting_recipe/New()
 	if(!(result in reqs))
@@ -32,6 +64,19 @@
 		tool_behaviors = string_list(tool_behaviors)
 	if(tool_paths)
 		tool_paths = string_list(tool_paths)
+
+/datum/crafting_recipe/stack/New(obj/item/stack/material, datum/stack_recipe/stack_recipe)
+	if(!material || !stack_recipe || !stack_recipe.result_type)
+		stack_trace("Invalid stack recipe [stack_recipe]")
+		return
+	..()
+
+	src.name = stack_recipe.title
+	src.time = stack_recipe.time
+	src.result = stack_recipe.result_type
+	src.result_amount = stack_recipe.res_amount
+	src.reqs[material] = stack_recipe.req_amount
+	src.category = stack_recipe.category || CAT_MISC
 
 /**
  * Run custom pre-craft checks for this recipe, don't add feedback messages in this because it will spam the client
@@ -61,8 +106,7 @@
 				/obj/item/reagent_containers/cup/soda_cans = 1)
 	parts = list(/obj/item/reagent_containers/cup/soda_cans = 1)
 	time = 1.5 SECONDS
-	category = CAT_WEAPONRY
-	subcategory = CAT_WEAPON
+	category = CAT_CHEMISTRY
 
 /datum/crafting_recipe/strobeshield
 	name = "Strobe Shield"
@@ -70,9 +114,14 @@
 	reqs = list(/obj/item/wallframe/flasher = 1,
 				/obj/item/assembly/flash/handheld = 1,
 				/obj/item/shield/riot = 1)
+<<<<<<< HEAD
 	time = 40
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 4 SECONDS
+	category = CAT_EQUIPMENT
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/strobeshield/New()
 	..()
@@ -85,8 +134,7 @@
 				/obj/item/reagent_containers/cup/glass/bottle = 1)
 	parts = list(/obj/item/reagent_containers/cup/glass/bottle = 1)
 	time = 4 SECONDS
-	category = CAT_WEAPONRY
-	subcategory = CAT_WEAPON
+	category = CAT_CHEMISTRY
 
 /datum/crafting_recipe/stunprod
 	name = "Stunprod"
@@ -94,9 +142,14 @@
 	reqs = list(/obj/item/restraints/handcuffs/cable = 1,
 				/obj/item/stack/rods = 1,
 				/obj/item/assembly/igniter = 1)
+<<<<<<< HEAD
 	time = 40
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 4 SECONDS
+	category = CAT_WEAPON_MELEE
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/teleprod
 	name = "Teleprod"
@@ -105,18 +158,28 @@
 				/obj/item/stack/rods = 1,
 				/obj/item/assembly/igniter = 1,
 				/obj/item/stack/ore/bluespace_crystal = 1)
+<<<<<<< HEAD
 	time = 40
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 4 SECONDS
+	category = CAT_WEAPON_MELEE
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/bola
 	name = "Bola"
 	result = /obj/item/restraints/legcuffs/bola
 	reqs = list(/obj/item/restraints/handcuffs/cable = 1,
 				/obj/item/stack/sheet/iron = 6)
+<<<<<<< HEAD
 	time = 20//15 faster than crafting them by hand!
 	category= CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 2 SECONDS//faster than crafting them by hand!
+	category = CAT_WEAPON_RANGED
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/gonbola
 	name = "Gonbola"
@@ -124,9 +187,14 @@
 	reqs = list(/obj/item/restraints/handcuffs/cable = 1,
 				/obj/item/stack/sheet/iron = 6,
 				/obj/item/stack/sheet/animalhide/gondola = 1)
+<<<<<<< HEAD
 	time = 40
 	category= CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 4 SECONDS
+	category = CAT_WEAPON_RANGED
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/tailclub
 	name = "Tail Club"
@@ -134,9 +202,14 @@
 	reqs = list(/obj/item/organ/external/tail/lizard = 1,
 				/obj/item/stack/sheet/iron = 1)
 	blacklist = list(/obj/item/organ/external/tail/lizard/fake)
+<<<<<<< HEAD
 	time = 40
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 4 SECONDS
+	category = CAT_WEAPON_MELEE
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/tailwhip
 	name = "Liz O' Nine Tails"
@@ -144,18 +217,28 @@
 	reqs = list(/obj/item/organ/external/tail/lizard = 1,
 				/obj/item/stack/cable_coil = 1)
 	blacklist = list(/obj/item/organ/external/tail/lizard/fake)
+<<<<<<< HEAD
 	time = 40
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 4 SECONDS
+	category = CAT_WEAPON_MELEE
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/catwhip
 	name = "Cat O' Nine Tails"
 	result = /obj/item/melee/chainofcommand/tailwhip/kitty
 	reqs = list(/obj/item/organ/external/tail/cat = 1,
 				/obj/item/stack/cable_coil = 1)
+<<<<<<< HEAD
 	time = 40
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 4 SECONDS
+	category = CAT_WEAPON_MELEE
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/reciever
 	name = "Modular Rifle Reciever"
@@ -165,9 +248,14 @@
 				/obj/item/stack/sticky_tape = 1,
 				/obj/item/screwdriver = 1,
 				/obj/item/assembly/mousetrap = 1)
+<<<<<<< HEAD
 	time = 100
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 10 SECONDS
+	category = CAT_WEAPON_RANGED
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/riflestock
 	name = "Wooden Rifle Stock"
@@ -175,9 +263,14 @@
 	result = /obj/item/weaponcrafting/stock
 	reqs = list(/obj/item/stack/sheet/mineral/wood = 8,
 				/obj/item/stack/sticky_tape = 1)
+<<<<<<< HEAD
 	time = 50
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 5 SECONDS
+	category = CAT_WEAPON_RANGED
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/advancedegun
 	name = "Advanced Energy Gun"
@@ -186,9 +279,14 @@
 	reqs = list(/obj/item/gun/energy/e_gun = 1,
 				/obj/item/stack/cable_coil = 5,
 				/obj/item/weaponcrafting/gunkit/nuclear = 1)
+<<<<<<< HEAD
 	time = 200
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 20 SECONDS
+	category = CAT_WEAPON_RANGED
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/advancedegun/New()
 	..()
@@ -201,9 +299,14 @@
 	reqs = list(/obj/item/gun/energy/e_gun = 1,
 				/obj/item/stack/cable_coil = 5,
 				/obj/item/weaponcrafting/gunkit/temperature = 1)
+<<<<<<< HEAD
 	time = 200
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 20 SECONDS
+	category = CAT_WEAPON_RANGED
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/tempgun/New()
 	..()
@@ -218,9 +321,14 @@
 				/obj/item/assembly/signaler/anomaly/grav = 1,
 				/obj/item/stack/cable_coil = 5,
 				/obj/item/weaponcrafting/gunkit/beam_rifle = 1)
+<<<<<<< HEAD
 	time = 200
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 20 SECONDS
+	category = CAT_WEAPON_RANGED
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/beam_rifle/New()
 	..()
@@ -234,9 +342,14 @@
 				/obj/item/stack/cable_coil = 5,
 				/obj/item/weaponcrafting/gunkit/ebow = 1,
 				/datum/reagent/uranium/radium = 15)
+<<<<<<< HEAD
 	time = 200
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 20 SECONDS
+	category = CAT_WEAPON_RANGED
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/xraylaser
 	name = "X-ray Laser Gun"
@@ -245,9 +358,14 @@
 	reqs = list(/obj/item/gun/energy/laser = 1,
 				/obj/item/stack/cable_coil = 5,
 				/obj/item/weaponcrafting/gunkit/xray = 1)
+<<<<<<< HEAD
 	time = 200
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 20 SECONDS
+	category = CAT_WEAPON_RANGED
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/xraylaser/New()
 	..()
@@ -260,9 +378,14 @@
 	reqs = list(/obj/item/gun/energy/laser = 1,
 				/obj/item/stack/cable_coil = 5,
 				/obj/item/weaponcrafting/gunkit/hellgun = 1)
+<<<<<<< HEAD
 	time = 200
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 20 SECONDS
+	category = CAT_WEAPON_RANGED
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/hellgun/New()
 	..()
@@ -275,9 +398,14 @@
 	reqs = list(/obj/item/gun/energy/laser = 1,
 				/obj/item/stack/cable_coil = 5,
 				/obj/item/weaponcrafting/gunkit/ion = 1)
+<<<<<<< HEAD
 	time = 200
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 20 SECONDS
+	category = CAT_WEAPON_RANGED
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/ioncarbine/New()
 	..()
@@ -292,9 +420,14 @@
 				/obj/item/weaponcrafting/gunkit/decloner = 1,
 				/datum/reagent/baldium = 30,
 				/datum/reagent/toxin/mutagen = 40)
+<<<<<<< HEAD
 	time = 200
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 20 SECONDS
+	category = CAT_WEAPON_RANGED
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/decloner/New()
 	..()
@@ -307,9 +440,14 @@
 	reqs = list(/obj/item/assembly/signaler/anomaly/flux = 1,
 				/obj/item/stack/cable_coil = 5,
 				/obj/item/weaponcrafting/gunkit/tesla = 1)
+<<<<<<< HEAD
 	time = 200
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 20 SECONDS
+	category = CAT_WEAPON_RANGED
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/ed209
 	name = "ED209"
@@ -452,9 +590,14 @@
 	reqs = list(/obj/item/stack/sheet/iron = 4,
 				/obj/item/stack/package_wrap = 8,
 				/obj/item/pipe/quaternary = 2)
+<<<<<<< HEAD
 	time = 50
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 5 SECONDS
+	category = CAT_WEAPON_RANGED
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/flamethrower
 	name = "Flamethrower"
@@ -465,9 +608,14 @@
 	parts = list(/obj/item/assembly/igniter = 1,
 				/obj/item/weldingtool = 1)
 	tool_behaviors = list(TOOL_SCREWDRIVER)
+<<<<<<< HEAD
 	time = 10
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 1 SECONDS
+	category = CAT_WEAPON_RANGED
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/meteorslug
 	name = "Meteorslug Shell"
@@ -478,9 +626,14 @@
 				/datum/reagent/consumable/ethanol/rum = 10,
 				/obj/item/stock_parts/manipulator = 2)
 	tool_behaviors = list(TOOL_SCREWDRIVER)
+<<<<<<< HEAD
 	time = 5
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
+=======
+	time = 0.5 SECONDS
+	category = CAT_WEAPON_AMMO
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/pulseslug
 	name = "Pulse Slug Shell"
@@ -489,18 +642,28 @@
 				/obj/item/stock_parts/capacitor/adv = 2,
 				/obj/item/stock_parts/micro_laser/ultra = 1)
 	tool_behaviors = list(TOOL_SCREWDRIVER)
+<<<<<<< HEAD
 	time = 5
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
+=======
+	time = 0.5 SECONDS
+	category = CAT_WEAPON_AMMO
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/dragonsbreath
 	name = "Dragonsbreath Shell"
 	result = /obj/item/ammo_casing/shotgun/dragonsbreath
 	reqs = list(/obj/item/ammo_casing/shotgun/techshell = 1, /datum/reagent/phosphorus = 5)
 	tool_behaviors = list(TOOL_SCREWDRIVER)
+<<<<<<< HEAD
 	time = 5
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
+=======
+	time = 0.5 SECONDS
+	category = CAT_WEAPON_AMMO
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/frag12
 	name = "FRAG-12 Shell"
@@ -510,9 +673,14 @@
 				/datum/reagent/toxin/acid = 5,
 				/datum/reagent/toxin/acid/fluacid = 5)
 	tool_behaviors = list(TOOL_SCREWDRIVER)
+<<<<<<< HEAD
 	time = 5
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
+=======
+	time = 0.5 SECONDS
+	category = CAT_WEAPON_AMMO
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/ionslug
 	name = "Ion Scatter Shell"
@@ -521,9 +689,14 @@
 				/obj/item/stock_parts/micro_laser/ultra = 1,
 				/obj/item/stock_parts/subspace/crystal = 1)
 	tool_behaviors = list(TOOL_SCREWDRIVER)
+<<<<<<< HEAD
 	time = 5
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
+=======
+	time = 0.5 SECONDS
+	category = CAT_WEAPON_AMMO
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/improvisedslug
 	name = "Improvised Shotgun Shell"
@@ -532,9 +705,14 @@
 				/obj/item/stack/cable_coil = 1,
 				/datum/reagent/fuel = 10)
 	tool_behaviors = list(TOOL_SCREWDRIVER)
+<<<<<<< HEAD
 	time = 12
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
+=======
+	time = 1.2 SECONDS
+	category = CAT_WEAPON_AMMO
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/laserslug
 	name = "Scatter Laser Shell"
@@ -543,9 +721,14 @@
 				/obj/item/stock_parts/capacitor/adv = 1,
 				/obj/item/stock_parts/micro_laser/high = 1)
 	tool_behaviors = list(TOOL_SCREWDRIVER)
+<<<<<<< HEAD
 	time = 5
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
+=======
+	time = 0.5 SECONDS
+	category = CAT_WEAPON_AMMO
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/pipegun
 	name = "Pipegun"
@@ -555,9 +738,14 @@
 				/obj/item/weaponcrafting/stock = 1,
 				/obj/item/stack/sticky_tape = 1)
 	tool_behaviors = list(TOOL_SCREWDRIVER)
+<<<<<<< HEAD
 	time = 50
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 5 SECONDS
+	category = CAT_WEAPON_RANGED
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/pipegun_prime
 	name = "Regal Pipegun"
@@ -570,9 +758,14 @@
 				/obj/item/storage/toolbox= 1)
 	tool_behaviors = list(TOOL_SCREWDRIVER)
 	tool_paths = list(/obj/item/clothing/gloves/color/yellow, /obj/item/clothing/mask/gas, /obj/item/melee/baton/security/cattleprod)
+<<<<<<< HEAD
 	time = 300 //contemplate for a bit
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 30 SECONDS //contemplate for a bit
+	category = CAT_WEAPON_RANGED
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/trash_cannon
 	name = "Trash Cannon"
@@ -586,8 +779,7 @@
 		/obj/item/restraints/handcuffs/cable = 1,
 		/obj/item/storage/toolbox = 1,
 	)
-	category = CAT_WEAPONRY
-	subcategory = CAT_WEAPON
+	category = CAT_WEAPON_RANGED
 
 /datum/crafting_recipe/trashball
 	name = "Trashball"
@@ -597,8 +789,7 @@
 		/obj/item/stack/sheet = 5,
 		/datum/reagent/consumable/space_cola = 10,
 	)
-	category = CAT_WEAPONRY
-	subcategory = CAT_AMMO
+	category = CAT_WEAPON_AMMO
 
 /datum/crafting_recipe/chainsaw
 	name = "Chainsaw"
@@ -607,9 +798,14 @@
 				/obj/item/stack/cable_coil = 3,
 				/obj/item/stack/sheet/plasteel = 5)
 	tool_behaviors = list(TOOL_WELDER)
+<<<<<<< HEAD
 	time = 50
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 5 SECONDS
+	category = CAT_WEAPON_MELEE
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/spear
 	name = "Spear"
@@ -618,9 +814,14 @@
 				/obj/item/shard = 1,
 				/obj/item/stack/rods = 1)
 	parts = list(/obj/item/shard = 1)
+<<<<<<< HEAD
 	time = 40
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 4 SECONDS
+	category = CAT_WEAPON_MELEE
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/lizardhat
 	name = "Lizard Cloche Hat"
@@ -653,7 +854,7 @@
 				/obj/item/stack/cable_coil = 2,
 				/obj/item/radio = 1)
 	tool_behaviors = list(TOOL_WIRECUTTER)
-	category = CAT_CLOTHING
+	category = CAT_EQUIPMENT
 
 /datum/crafting_recipe/radiogloves/New()
 	..()
@@ -666,7 +867,7 @@
 	reqs = list(/obj/item/stack/sheet/animalhide/mothroach = 1,
 				/obj/item/organ/internal/heart = 1,
 				/obj/item/stack/sheet/cloth = 3)
-	category = CAT_MISC
+	category = CAT_ENTERTAINMENT
 
 /datum/crafting_recipe/mixedbouquet
 	name = "Mixed bouquet"
@@ -674,25 +875,25 @@
 	reqs = list(/obj/item/food/grown/poppy/lily =2,
 				/obj/item/food/grown/sunflower = 2,
 				/obj/item/food/grown/poppy/geranium = 2)
-	category = CAT_MISC
+	category = CAT_ENTERTAINMENT
 
 /datum/crafting_recipe/sunbouquet
 	name = "Sunflower bouquet"
 	result = /obj/item/bouquet/sunflower
 	reqs = list(/obj/item/food/grown/sunflower = 6)
-	category = CAT_MISC
+	category = CAT_ENTERTAINMENT
 
 /datum/crafting_recipe/poppybouquet
 	name = "Poppy bouquet"
 	result = /obj/item/bouquet/poppy
 	reqs = list (/obj/item/food/grown/poppy = 6)
-	category = CAT_MISC
+	category = CAT_ENTERTAINMENT
 
 /datum/crafting_recipe/rosebouquet
 	name = "Rose bouquet"
 	result = /obj/item/bouquet/rose
 	reqs = list(/obj/item/food/grown/rose = 6)
-	category = CAT_MISC
+	category = CAT_ENTERTAINMENT
 
 /datum/crafting_recipe/spooky_camera
 	name = "Camera Obscura"
@@ -701,7 +902,7 @@
 	reqs = list(/obj/item/camera = 1,
 				/datum/reagent/water/holywater = 10)
 	parts = list(/obj/item/camera = 1)
-	category = CAT_MISC
+	category = CAT_ENTERTAINMENT
 
 
 /datum/crafting_recipe/skateboard
@@ -710,7 +911,7 @@
 	time = 60
 	reqs = list(/obj/item/stack/sheet/iron = 5,
 				/obj/item/stack/rods = 10)
-	category = CAT_MISC
+	category = CAT_ENTERTAINMENT
 
 /datum/crafting_recipe/scooter
 	name = "Scooter"
@@ -718,15 +919,20 @@
 	time = 65
 	reqs = list(/obj/item/stack/sheet/iron = 5,
 				/obj/item/stack/rods = 12)
-	category = CAT_MISC
+	category = CAT_ENTERTAINMENT
 
 /datum/crafting_recipe/wheelchair
 	name = "Wheelchair"
 	result = /obj/vehicle/ridden/wheelchair
 	reqs = list(/obj/item/stack/sheet/iron = 4,
 				/obj/item/stack/rods = 6)
+<<<<<<< HEAD
 	time = 100
 	category = CAT_MISC
+=======
+	time = 10 SECONDS
+	category = CAT_EQUIPMENT
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/motorized_wheelchair
 	name = "Motorized Wheelchair"
@@ -738,8 +944,13 @@
 	parts = list(/obj/item/stock_parts/manipulator = 2,
 		/obj/item/stock_parts/capacitor = 1)
 	tool_behaviors = list(TOOL_WELDER, TOOL_SCREWDRIVER, TOOL_WRENCH)
+<<<<<<< HEAD
 	time = 200
 	category = CAT_MISC
+=======
+	time = 20 SECONDS
+	category = CAT_EQUIPMENT
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/trapdoor_kit
 	name = "Trapdoor Construction Kit"
@@ -751,7 +962,7 @@
 		/obj/item/assembly/signaler = 1)
 	tool_behaviors = list(TOOL_WELDER, TOOL_SCREWDRIVER)
 	time = 10 SECONDS
-	category = CAT_MISC
+	category = CAT_EQUIPMENT
 
 /datum/crafting_recipe/trapdoor_remote
 	name = "Trapdoor Remote"
@@ -762,7 +973,7 @@
 		/obj/item/assembly/trapdoor = 1)
 	tool_behaviors = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
 	time = 5 SECONDS
-	category = CAT_MISC
+	category = CAT_EQUIPMENT
 
 /datum/crafting_recipe/mousetrap
 	name = "Mouse Trap"
@@ -770,14 +981,14 @@
 	time = 10
 	reqs = list(/obj/item/stack/sheet/cardboard = 1,
 				/obj/item/stack/rods = 1)
-	category = CAT_MISC
+	category = CAT_EQUIPMENT
 
 /datum/crafting_recipe/papersack
 	name = "Paper Sack"
 	result = /obj/item/storage/box/papersack
 	time = 10
 	reqs = list(/obj/item/paper = 5)
-	category = CAT_MISC
+	category = CAT_CONTAINERS
 
 
 /datum/crafting_recipe/flashlight_eyes
@@ -788,14 +999,14 @@
 		/obj/item/flashlight = 2,
 		/obj/item/restraints/handcuffs/cable = 1
 	)
-	category = CAT_MISC
+	category = CAT_EQUIPMENT
 
 /datum/crafting_recipe/paperframes
 	name = "Paper Frames"
 	result = /obj/item/stack/sheet/paperframes/five
 	time = 10
 	reqs = list(/obj/item/stack/sheet/mineral/wood = 5, /obj/item/paper = 20)
-	category = CAT_MISC
+	category = CAT_STRUCTURE
 
 /datum/crafting_recipe/naturalpaper
 	name = "Hand-Pressed Paper"
@@ -810,43 +1021,43 @@
 	result =  /obj/item/reagent_containers/cup/glass/sillycup
 	time = 1 SECONDS
 	reqs = list(/obj/item/paper = 2)
-	category = CAT_MISC
+	category = CAT_CONTAINERS
 
 /datum/crafting_recipe/toysword
 	name = "Toy Sword"
 	reqs = list(/obj/item/light/bulb = 1, /obj/item/stack/cable_coil = 1, /obj/item/stack/sheet/plastic = 4)
 	result = /obj/item/toy/sword
-	category = CAT_MISC
+	category = CAT_WEAPON_MELEE
 
 /datum/crafting_recipe/blackcarpet
 	name = "Black Carpet"
 	reqs = list(/obj/item/stack/tile/carpet = 50, /obj/item/toy/crayon/black = 1)
 	result = /obj/item/stack/tile/carpet/black/fifty
-	category = CAT_MISC
+	category = CAT_TILES
 
 /datum/crafting_recipe/curtain
 	name = "Curtains"
 	reqs = list(/obj/item/stack/sheet/cloth = 4, /obj/item/stack/rods = 1)
 	result = /obj/structure/curtain/cloth
-	category = CAT_STRUCTURE
+	category = CAT_FURNITURE
 
 /datum/crafting_recipe/showercurtain
 	name = "Shower Curtains"
 	reqs = list(/obj/item/stack/sheet/cloth = 2, /obj/item/stack/sheet/plastic = 2, /obj/item/stack/rods = 1)
 	result = /obj/structure/curtain
-	category = CAT_STRUCTURE
+	category = CAT_FURNITURE
 
 /datum/crafting_recipe/extendohand_r
 	name = "Extendo-Hand (Right Arm)"
 	reqs = list(/obj/item/bodypart/arm/right/robot = 1, /obj/item/clothing/gloves/boxing = 1)
 	result = /obj/item/extendohand
-	category = CAT_MISC
+	category = CAT_EQUIPMENT
 
 /datum/crafting_recipe/extendohand_l
 	name = "Extendo-Hand (Left Arm)"
 	reqs = list(/obj/item/bodypart/arm/left/robot = 1, /obj/item/clothing/gloves/boxing = 1)
 	result = /obj/item/extendohand
-	category = CAT_MISC
+	category = CAT_EQUIPMENT
 
 /datum/crafting_recipe/chemical_payload
 	name = "Chemical Payload (C4)"
@@ -857,9 +1068,14 @@
 		/obj/item/grenade/chem_grenade = 2
 	)
 	parts = list(/obj/item/stock_parts/matter_bin = 1, /obj/item/grenade/chem_grenade = 2)
+<<<<<<< HEAD
 	time = 30
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 3 SECONDS
+	category = CAT_CHEMISTRY
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/chemical_payload2
 	name = "Chemical Payload (Gibtonite)"
@@ -870,16 +1086,21 @@
 		/obj/item/grenade/chem_grenade = 2
 	)
 	parts = list(/obj/item/stock_parts/matter_bin = 1, /obj/item/grenade/chem_grenade = 2)
+<<<<<<< HEAD
 	time = 50
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+=======
+	time = 5 SECONDS
+	category = CAT_CHEMISTRY
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/bonearmor
 	name = "Bone Armor"
 	result = /obj/item/clothing/suit/armor/bone
 	time = 30
 	reqs = list(/obj/item/stack/sheet/bone = 6)
-	category = CAT_PRIMAL
+	category = CAT_CLOTHING
 
 /datum/crafting_recipe/bonetalisman
 	name = "Bone Talisman"
@@ -887,7 +1108,7 @@
 	time = 20
 	reqs = list(/obj/item/stack/sheet/bone = 2,
 				/obj/item/stack/sheet/sinew = 1)
-	category = CAT_PRIMAL
+	category = CAT_CLOTHING
 
 /datum/crafting_recipe/bonecodpiece
 	name = "Skull Codpiece"
@@ -895,7 +1116,7 @@
 	time = 20
 	reqs = list(/obj/item/stack/sheet/bone = 2,
 				/obj/item/stack/sheet/animalhide/goliath_hide = 1)
-	category = CAT_PRIMAL
+	category = CAT_CLOTHING
 
 /datum/crafting_recipe/skilt
 	name = "Sinew Kilt"
@@ -903,7 +1124,7 @@
 	time = 20
 	reqs = list(/obj/item/stack/sheet/bone = 1,
 				/obj/item/stack/sheet/sinew = 2)
-	category = CAT_PRIMAL
+	category = CAT_CLOTHING
 
 /datum/crafting_recipe/bracers
 	name = "Bone Bracers"
@@ -911,14 +1132,14 @@
 	time = 20
 	reqs = list(/obj/item/stack/sheet/bone = 2,
 				/obj/item/stack/sheet/sinew = 1)
-	category = CAT_PRIMAL
+	category = CAT_CLOTHING
 
 /datum/crafting_recipe/skullhelm
 	name = "Skull Helmet"
 	result = /obj/item/clothing/head/helmet/skull
 	time = 30
 	reqs = list(/obj/item/stack/sheet/bone = 4)
-	category = CAT_PRIMAL
+	category = CAT_CLOTHING
 
 /datum/crafting_recipe/goliathcloak
 	name = "Goliath Cloak"
@@ -927,7 +1148,7 @@
 	reqs = list(/obj/item/stack/sheet/leather = 2,
 				/obj/item/stack/sheet/sinew = 2,
 				/obj/item/stack/sheet/animalhide/goliath_hide = 2) //it takes 4 goliaths to make 1 cloak if the plates are skinned
-	category = CAT_PRIMAL
+	category = CAT_CLOTHING
 
 /datum/crafting_recipe/drakecloak
 	name = "Ash Drake Armour"
@@ -936,13 +1157,14 @@
 	reqs = list(/obj/item/stack/sheet/bone = 10,
 				/obj/item/stack/sheet/sinew = 2,
 				/obj/item/stack/sheet/animalhide/ashdrake = 5)
-	category = CAT_PRIMAL
+	category = CAT_CLOTHING
 
 /datum/crafting_recipe/godslayer
 	name = "Godslayer Armour"
 	result = /obj/item/clothing/suit/hooded/cloak/godslayer
 	time = 60
 	reqs = list(/obj/item/ice_energy_crystal = 1, /obj/item/wendigo_skull = 1, /obj/item/clockwork_alloy = 1)
+<<<<<<< HEAD
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/firebrand
@@ -951,6 +1173,9 @@
 	time = 100 //Long construction time. Making fire is hard work.
 	reqs = list(/obj/item/stack/sheet/mineral/wood = 2)
 	category = CAT_PRIMAL
+=======
+	category = CAT_CLOTHING
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/gold_horn
 	name = "Golden Bike Horn"
@@ -958,15 +1183,19 @@
 	time = 20
 	reqs = list(/obj/item/stack/sheet/mineral/bananium = 5,
 				/obj/item/bikehorn = 1)
-	category = CAT_MISC
+	category = CAT_TOOLS
 
 /datum/crafting_recipe/bonedagger
 	name = "Bone Dagger"
 	result = /obj/item/knife/combat/bone
 	time = 20
 	reqs = list(/obj/item/stack/sheet/bone = 2)
+<<<<<<< HEAD
 	always_available = FALSE //SKYRAT EDIT
 	category = CAT_PRIMAL
+=======
+	category = CAT_WEAPON_MELEE
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/bonespear
 	name = "Bone Spear"
@@ -974,8 +1203,12 @@
 	time = 30
 	reqs = list(/obj/item/stack/sheet/bone = 4,
 				/obj/item/stack/sheet/sinew = 1)
+<<<<<<< HEAD
 	always_available = FALSE //SKYRAT EDIT
 	category = CAT_PRIMAL
+=======
+	category = CAT_WEAPON_MELEE
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/boneaxe
 	name = "Bone Axe"
@@ -983,8 +1216,12 @@
 	time = 50
 	reqs = list(/obj/item/stack/sheet/bone = 6,
 				/obj/item/stack/sheet/sinew = 3)
+<<<<<<< HEAD
 	always_available = FALSE //SKYRAT EDIT
 	category = CAT_PRIMAL
+=======
+	category = CAT_WEAPON_MELEE
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/bonfire
 	name = "Bonfire"
@@ -993,7 +1230,7 @@
 	parts = list(/obj/item/grown/log = 5)
 	blacklist = list(/obj/item/grown/log/steel)
 	result = /obj/structure/bonfire
-	category = CAT_PRIMAL
+	category = CAT_TOOLS
 
 /* SKYRAT EDIT START: Ash Rituals
 /datum/crafting_recipe/skeleton_key
@@ -1002,6 +1239,7 @@
 	reqs = list(/obj/item/stack/sheet/bone = 5)
 	result = /obj/item/skeleton_key
 	always_available = FALSE
+<<<<<<< HEAD
 	category = CAT_PRIMAL
 SKYRAT EDIT STOP: Ash Rituals */
 
@@ -1018,6 +1256,9 @@ SKYRAT EDIT STOP: Ash Rituals */
 	reqs = list(/obj/item/stack/sheet/mineral/wood = 3)
 	result = /obj/item/reagent_containers/cup/bucket/wooden
 	category = CAT_PRIMAL
+=======
+	category = CAT_MISC
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/ore_sensor
 	name = "Ore Sensor"
@@ -1028,7 +1269,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 		/obj/item/stack/sheet/sinew = 1,
 	)
 	result = /obj/item/ore_sensor
-	category = CAT_PRIMAL
+	category = CAT_EQUIPMENT
 
 /datum/crafting_recipe/headpike
 	name = "Spike Head (Glass Spear)"
@@ -1039,7 +1280,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 			/obj/item/spear = 1)
 	blacklist = list(/obj/item/spear/explosive, /obj/item/spear/bonespear, /obj/item/spear/bamboospear)
 	result = /obj/structure/headpike
-	category = CAT_PRIMAL
+	category = CAT_ENTERTAINMENT
 
 /datum/crafting_recipe/headpikebone
 	name = "Spike Head (Bone Spear)"
@@ -1049,7 +1290,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 	parts = list(/obj/item/bodypart/head = 1,
 			/obj/item/spear/bonespear = 1)
 	result = /obj/structure/headpike/bone
-	category = CAT_PRIMAL
+	category = CAT_ENTERTAINMENT
 
 /datum/crafting_recipe/headpikebamboo
 	name = "Spike Head (Bamboo Spear)"
@@ -1059,7 +1300,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 	parts = list(/obj/item/bodypart/head = 1,
 			/obj/item/spear/bamboospear = 1)
 	result = /obj/structure/headpike/bamboo
-	category = CAT_PRIMAL
+	category = CAT_ENTERTAINMENT
 
 /datum/crafting_recipe/pressureplate
 	name = "Pressure Plate"
@@ -1069,7 +1310,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 				/obj/item/stack/tile/iron = 1,
 				/obj/item/stack/cable_coil = 2,
 				/obj/item/assembly/igniter = 1)
-	category = CAT_MISC
+	category = CAT_EQUIPMENT
 
 
 /datum/crafting_recipe/rcl
@@ -1078,7 +1319,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 	time = 40
 	tool_behaviors = list(TOOL_WELDER, TOOL_SCREWDRIVER, TOOL_WRENCH)
 	reqs = list(/obj/item/stack/sheet/iron = 15)
-	category = CAT_MISC
+	category = CAT_EQUIPMENT
 
 /datum/crafting_recipe/mummy
 	name = "Mummification Bandages (Mask)"
@@ -1118,7 +1359,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 				/obj/item/stack/sheet/mineral/wood = 20,
 				/obj/item/stack/cable_coil = 10)
 	tool_behaviors = list(TOOL_SCREWDRIVER, TOOL_WRENCH, TOOL_WELDER)
-	category = CAT_STRUCTURE
+	category = CAT_ENTERTAINMENT
 
 /datum/crafting_recipe/aitater
 	name = "intelliTater"
@@ -1129,7 +1370,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 					/obj/item/food/grown/potato = 1,
 					/obj/item/stack/cable_coil = 5)
 	parts = list(/obj/item/aicard = 1)
-	category = CAT_MISC
+	category = CAT_ROBOT
 
 /datum/crafting_recipe/aitater/aispook
 	name = "intelliLantern"
@@ -1155,7 +1396,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 	result = /obj/item/tank/jetpack/improvised
 	time = 30
 	reqs = list(/obj/item/tank/internals/oxygen = 2, /obj/item/extinguisher = 1, /obj/item/pipe = 3, /obj/item/stack/cable_coil = MAXCOIL)
-	category = CAT_MISC
+	category = CAT_EQUIPMENT
 	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER, TOOL_WIRECUTTER)
 
 /datum/crafting_recipe/rib
@@ -1166,7 +1407,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 		/datum/reagent/fuel/oil = 5,
 	)
 	result = /obj/structure/statue/bone/rib
-	category = CAT_PRIMAL
+	category = CAT_STRUCTURE
 
 /datum/crafting_recipe/skull
 	name = "Skull Carving"
@@ -1176,7 +1417,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 		/datum/reagent/fuel/oil = 5,
 	)
 	result = /obj/structure/statue/bone/skull
-	category = CAT_PRIMAL
+	category = CAT_STRUCTURE
 
 /datum/crafting_recipe/halfskull
 	name = "Cracked Skull Carving"
@@ -1186,7 +1427,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 		/datum/reagent/fuel/oil = 5,
 	)
 	result = /obj/structure/statue/bone/skull/half
-	category = CAT_PRIMAL
+	category = CAT_STRUCTURE
 
 /datum/crafting_recipe/boneshovel
 	name = "Serrated Bone Shovel"
@@ -1197,7 +1438,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 		/obj/item/shovel/spade = 1,
 	)
 	result = /obj/item/shovel/serrated
-	category = CAT_PRIMAL
+	category = CAT_TOOLS
 
 /datum/crafting_recipe/lasso
 	name = "Bone Lasso"
@@ -1206,7 +1447,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 		/obj/item/stack/sheet/sinew = 5,
 	)
 	result = /obj/item/key/lasso
-	category = CAT_PRIMAL
+	category = CAT_TOOLS
 
 /datum/crafting_recipe/gripperoffbrand
 	name = "Improvised Gripper Gloves"
@@ -1215,7 +1456,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 		/obj/item/stack/sticky_tape = 1,
 	)
 	result = /obj/item/clothing/gloves/tackler/offbrand
-	category = CAT_CLOTHING
+	category = CAT_EQUIPMENT
 
 /datum/crafting_recipe/boh
 	name = "Bag of Holding"
@@ -1224,7 +1465,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 		/obj/item/assembly/signaler/anomaly/bluespace = 1,
 	)
 	result = /obj/item/storage/backpack/holding
-	category = CAT_CLOTHING
+	category = CAT_CONTAINERS
 
 /datum/crafting_recipe/ipickaxe
 	name = "Improvised Pickaxe"
@@ -1234,7 +1475,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 		/obj/item/stack/sticky_tape = 1,
 	)
 	result = /obj/item/pickaxe/improvised
-	category = CAT_MISC
+	category = CAT_TOOLS
 
 /datum/crafting_recipe/underwater_basket
 	name = "Underwater Basket (Bamboo)"
@@ -1242,7 +1483,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 		/obj/item/stack/sheet/mineral/bamboo = 20
 	)
 	result = /obj/item/storage/basket
-	category = CAT_MISC
+	category = CAT_CONTAINERS
 	additional_req_text = " being underwater, underwater basketweaving mastery"
 
 /datum/crafting_recipe/underwater_basket/check_requirements(mob/user, list/collected_requirements)
@@ -1282,7 +1523,11 @@ SKYRAT EDIT STOP: Ash Rituals */
 				/obj/item/stack/sheet/glass = 10,
 				/obj/item/stack/cable_coil = 10,
 				)
+<<<<<<< HEAD
 	category = CAT_MISC
+=======
+	category = CAT_ATMOSPHERIC
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/shutters
 	name = "Shutters"
@@ -1293,7 +1538,11 @@ SKYRAT EDIT STOP: Ash Rituals */
 	result = /obj/machinery/door/poddoor/shutters/preopen
 	tool_behaviors = list(TOOL_SCREWDRIVER, TOOL_MULTITOOL, TOOL_WIRECUTTER, TOOL_WELDER)
 	time = 10 SECONDS
+<<<<<<< HEAD
 	category = CAT_MISC
+=======
+	category = CAT_DOORS
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 	one_per_turf = TRUE
 
 /datum/crafting_recipe/blast_doors
@@ -1305,7 +1554,11 @@ SKYRAT EDIT STOP: Ash Rituals */
 	result = /obj/machinery/door/poddoor/preopen
 	tool_behaviors = list(TOOL_SCREWDRIVER, TOOL_MULTITOOL, TOOL_WIRECUTTER, TOOL_WELDER)
 	time = 30 SECONDS
+<<<<<<< HEAD
 	category = CAT_MISC
+=======
+	category = CAT_DOORS
+>>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 	one_per_turf = TRUE
 
 /datum/crafting_recipe/aquarium
@@ -1316,7 +1569,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 				/obj/item/stack/sheet/glass = 10,
 				/obj/item/aquarium_kit = 1
 				)
-	category = CAT_STRUCTURE
+	category = CAT_FURNITURE
 
 /datum/crafting_recipe/mod_core_standard
 	name = "MOD core (Standard)"
@@ -1328,7 +1581,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 				/obj/item/stack/sheet/glass = 1,
 				/obj/item/organ/internal/heart/ethereal = 1,
 				)
-	category = CAT_MISC
+	category = CAT_ROBOT
 
 /datum/crafting_recipe/mod_core_ethereal
 	name = "MOD core (Ethereal)"
@@ -1341,10 +1594,10 @@ SKYRAT EDIT STOP: Ash Rituals */
 				/obj/item/stack/sheet/glass = 1,
 				/obj/item/reagent_containers/syringe = 1,
 				)
-	category = CAT_MISC
+	category = CAT_ROBOT
 
 /datum/crafting_recipe/alcohol_burner
-	name = "Alcohol burner"
+	name = "Burner (Ethanol)"
 	result = /obj/item/burner
 	time = 5 SECONDS
 	reqs = list(/obj/item/reagent_containers/cup/beaker = 1,
@@ -1354,7 +1607,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 	category = CAT_CHEMISTRY
 
 /datum/crafting_recipe/oil_burner
-	name = "Oil burner"
+	name = "Burner (Oil)"
 	result = /obj/item/burner/oil
 	time = 5 SECONDS
 	reqs = list(/obj/item/reagent_containers/cup/beaker = 1,
@@ -1364,7 +1617,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 	category = CAT_CHEMISTRY
 
 /datum/crafting_recipe/fuel_burner
-	name = "Fuel burner"
+	name = "Burner (Fuel)"
 	result = /obj/item/burner/fuel
 	time = 5 SECONDS
 	reqs = list(/obj/item/reagent_containers/cup/beaker = 1,
@@ -1459,12 +1712,12 @@ SKYRAT EDIT STOP: Ash Rituals */
 	reqs = list(/obj/item/inspector/clown = 1, /obj/item/stack/sticky_tape = 3, /obj/item/stack/sheet/mineral/bananium = 5) //the chainsaw of prank tools
 	tool_paths = list(/obj/item/bikehorn)
 	time = 40 SECONDS
-	category = CAT_MISC
+	category = CAT_EQUIPMENT
 
 /datum/crafting_recipe/pipe
 	name = "Smart pipe fitting"
 	tool_behaviors = list(TOOL_WRENCH)
-	result = /obj/item/pipe/quaternary
+	result = /obj/item/pipe/quaternary/pipe
 	reqs = list(/obj/item/stack/sheet/iron = 1)
 	time = 0.5 SECONDS
 	category = CAT_ATMOSPHERIC
@@ -1480,7 +1733,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 /datum/crafting_recipe/layer_adapter
 	name = "Layer manifold fitting"
 	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
-	result = /obj/item/pipe/binary
+	result = /obj/item/pipe/binary/layer_adapter
 	reqs = list(
 		/obj/item/pipe = 1,
 		/obj/item/stack/sheet/iron = 1)
@@ -1501,7 +1754,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 /datum/crafting_recipe/color_adapter
 	name = "Color adapter fitting"
 	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
-	result = /obj/item/pipe/binary
+	result = /obj/item/pipe/binary/color_adapter
 	reqs = list(
 		/obj/item/pipe = 1,
 		/obj/item/stack/sheet/iron = 1)
@@ -1522,7 +1775,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 /datum/crafting_recipe/he_pipe
 	name = "H/E pipe fitting"
 	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
-	result = /obj/item/pipe/quaternary
+	result = /obj/item/pipe/quaternary/he_pipe
 	reqs = list(
 		/obj/item/pipe = 1,
 		/obj/item/stack/sheet/iron = 1)
@@ -1543,7 +1796,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 /datum/crafting_recipe/he_junction
 	name = "H/E junction fitting"
 	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
-	result = /obj/item/pipe/directional
+	result = /obj/item/pipe/directional/he_junction
 	reqs = list(
 		/obj/item/pipe = 1,
 		/obj/item/stack/sheet/iron = 1)
@@ -1564,7 +1817,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 /datum/crafting_recipe/pressure_pump
 	name = "Pressure pump fitting"
 	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
-	result = /obj/item/pipe/binary
+	result = /obj/item/pipe/binary/pressure_pump
 	reqs = list(
 		/obj/item/pipe = 1,
 		/obj/item/stack/sheet/iron = 5,
@@ -1586,7 +1839,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 /datum/crafting_recipe/manual_valve
 	name = "Manual valve fitting"
 	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
-	result = /obj/item/pipe/binary
+	result = /obj/item/pipe/binary/manual_valve
 	reqs = list(
 		/obj/item/pipe = 1,
 		/obj/item/stack/sheet/iron = 1)
@@ -1607,7 +1860,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 /datum/crafting_recipe/vent
 	name = "Vent pump fitting"
 	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
-	result = /obj/item/pipe/directional
+	result = /obj/item/pipe/directional/vent
 	reqs = list(
 		/obj/item/pipe = 1,
 		/obj/item/stack/sheet/iron = 5,
@@ -1629,7 +1882,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 /datum/crafting_recipe/scrubber
 	name = "Scrubber fitting"
 	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
-	result = /obj/item/pipe/directional
+	result = /obj/item/pipe/directional/scrubber
 	reqs = list(
 		/obj/item/pipe = 1,
 		/obj/item/stack/sheet/iron = 5,
@@ -1651,7 +1904,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 /datum/crafting_recipe/filter
 	name = "Filter fitting"
 	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
-	result = /obj/item/pipe/trinary/flippable
+	result = /obj/item/pipe/trinary/flippable/filter
 	reqs = list(
 		/obj/item/pipe = 1,
 		/obj/item/stack/sheet/iron = 5,
@@ -1673,7 +1926,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 /datum/crafting_recipe/mixer
 	name = "Mixer fitting"
 	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
-	result = /obj/item/pipe/trinary/flippable
+	result = /obj/item/pipe/trinary/flippable/mixer
 	reqs = list(
 		/obj/item/pipe = 1,
 		/obj/item/stack/sheet/iron = 5,
@@ -1695,7 +1948,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 /datum/crafting_recipe/connector
 	name = "Portable connector fitting"
 	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
-	result = /obj/item/pipe/directional
+	result = /obj/item/pipe/directional/connector
 	reqs = list(
 		/obj/item/pipe = 1,
 		/obj/item/stack/sheet/iron = 1)
@@ -1716,7 +1969,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 /datum/crafting_recipe/passive_vent
 	name = "Passive vent fitting"
 	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
-	result = /obj/item/pipe/directional
+	result = /obj/item/pipe/directional/passive_vent
 	reqs = list(
 		/obj/item/pipe = 1,
 		/obj/item/stack/sheet/iron = 1)
@@ -1737,7 +1990,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 /datum/crafting_recipe/injector
 	name = "Outlet injector fitting"
 	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
-	result = /obj/item/pipe/directional
+	result = /obj/item/pipe/directional/injector
 	reqs = list(
 		/obj/item/pipe = 1,
 		/obj/item/stack/sheet/iron = 1,
@@ -1759,7 +2012,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 /datum/crafting_recipe/he_exchanger
 	name = "Heat exchanger fitting"
 	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER)
-	result = /obj/item/pipe/directional
+	result = /obj/item/pipe/directional/he_exchanger
 	reqs = list(
 		/obj/item/pipe = 1,
 		/obj/item/stack/sheet/plasteel = 1)
@@ -1784,7 +2037,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 	reqs = list(/obj/item/stack/sheet/iron = 2,
 				/obj/item/stack/tile/iron = 1,
 				/obj/item/stock_parts/water_recycler = 1)
-	category = CAT_STRUCTURE
+	category = CAT_ATMOSPHERIC
 
 /datum/crafting_recipe/coffee_cartridge
 	name = "Bootleg Coffee Cartridge"
@@ -1798,10 +2051,10 @@ SKYRAT EDIT STOP: Ash Rituals */
 
 /datum/crafting_recipe/toiletbong
 	name = "Toiletbong"
-	category = CAT_STRUCTURE
+	category = CAT_ENTERTAINMENT
 	tool_behaviors = list(TOOL_WRENCH)
-	reqs = list(
-		/obj/item/flamethrower = 1)
+	reqs = list(/obj/item/flamethrower = 1)
+	machinery = list( /obj/structure/toilet)
 	result = /obj/structure/toiletbong
 	time = 5 SECONDS
 	additional_req_text = " plasma tank (on flamethrower), toilet"
@@ -1862,8 +2115,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 		/obj/item/roulette_wheel_beacon = 1,
 	)
 	time = 10 SECONDS
-	category = CAT_WEAPONRY
-	subcategory = CAT_WEAPON
+	category = CAT_WEAPON_MELEE
 
 /datum/crafting_recipe/punching_bag
 	name = "Punching Bag"
@@ -1874,7 +2126,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 		/obj/item/stack/rods = 1,
 		/obj/item/pillow = 1,
 	)
-	category = CAT_STRUCTURE
+	category = CAT_ENTERTAINMENT
 	time = 10 SECONDS
 
 /datum/crafting_recipe/stacklifter
@@ -1886,7 +2138,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 		/obj/item/stack/rods = 2,
 		/obj/item/chair = 1,
 	)
-	category = CAT_STRUCTURE
+	category = CAT_ENTERTAINMENT
 	time = 10 SECONDS
 
 /datum/crafting_recipe/weightlifter
@@ -1898,7 +2150,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 		/obj/item/stack/rods = 2,
 		/obj/item/chair = 1,
 	)
-	category = CAT_STRUCTURE
+	category = CAT_ENTERTAINMENT
 	time = 10 SECONDS
 
 #undef CRAFTING_MACHINERY_CONSUME
