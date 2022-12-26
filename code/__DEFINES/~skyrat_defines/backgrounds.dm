@@ -5,3 +5,11 @@
 
 #define LANGUAGE_UNDERSTOOD	1
 #define LANGUAGE_SPOKEN	2
+
+// Item slot defines
+#define ITEM_SLOT_PASSPORT (1<<20)
+#define ui_passport "CENTER-6:8,SOUTH:5"
+#define OFFSET_PASSPORT "passport"
+// This is a constant all the way through layering code. Byond's math precision issues don't matter here.
+#define PASSPORT_LAYER 25.9
+
