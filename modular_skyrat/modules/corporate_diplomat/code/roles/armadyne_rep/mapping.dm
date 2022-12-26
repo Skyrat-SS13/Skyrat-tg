@@ -3,8 +3,6 @@
 	icon_state = "Armadyne Representative"
 	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
 
-/obj/item/gun/ballistic/revolver/revolution // HERE SO A TM WORKS
-
 /obj/structure/closet/secure_closet/armadyne_representative
 	name = "\proper armadyne representative's locker"
 	req_access = list(ACCESS_ARMADYNE)
