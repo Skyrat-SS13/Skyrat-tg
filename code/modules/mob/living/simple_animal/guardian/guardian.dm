@@ -71,9 +71,46 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	return ..()
 
 /// Setter for our summoner mob.
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/guardian/proc/set_summoner(mob/to_who)
 	if(summoner)
 		UnregisterSignal(summoner, list(COMSIG_LIVING_ON_WABBAJACKED, COMSIG_LIVING_SHAPESHIFTED, COMSIG_LIVING_UNSHAPESHIFTED))
+=======
+/mob/living/simple_animal/hostile/guardian/proc/set_summoner(mob/living/to_who, different_person = FALSE)
+	if(QDELETED(to_who))
+		qdel(src) //no gettin off scot-free pal.........
+		return
+	if(summoner)
+		cut_summoner(different_person)
+	summoner = to_who
+	update_health_hud()
+	med_hud_set_health()
+	med_hud_set_status()
+	add_verb(to_who, list(
+		/mob/living/proc/guardian_comm,
+		/mob/living/proc/guardian_recall,
+		/mob/living/proc/guardian_reset,
+	))
+	if(different_person)
+		if(mind)
+			mind.enslave_mind_to_creator(to_who)
+		else //mindless guardian, manually give them factions
+			faction += summoner.faction
+			summoner.faction += "[REF(src)]"
+	remove_all_languages(LANGUAGE_MASTER)
+	copy_languages(to_who, LANGUAGE_MASTER) // make sure holoparasites speak same language as master
+	update_atom_languages()
+	RegisterSignal(to_who, COMSIG_MOVABLE_MOVED, PROC_REF(check_distance))
+	RegisterSignal(to_who, COMSIG_PARENT_QDELETING, PROC_REF(on_summoner_deletion))
+	RegisterSignal(to_who, COMSIG_LIVING_DEATH, PROC_REF(on_summoner_death))
+	RegisterSignal(to_who, COMSIG_LIVING_HEALTH_UPDATE, PROC_REF(on_summoner_health_update))
+	RegisterSignal(to_who, COMSIG_LIVING_ON_WABBAJACKED, PROC_REF(on_summoner_wabbajacked))
+	RegisterSignal(to_who, COMSIG_LIVING_SHAPESHIFTED, PROC_REF(on_summoner_shapeshifted))
+	RegisterSignal(to_who, COMSIG_LIVING_UNSHAPESHIFTED, PROC_REF(on_summoner_unshapeshifted))
+	recall(forced = TRUE)
+	if(to_who.stat == DEAD)
+		on_summoner_death(to_who)
+>>>>>>> 125745d2321 (guardian death checks (#72251))
 
 	summoner = to_who
 	Recall(TRUE)
