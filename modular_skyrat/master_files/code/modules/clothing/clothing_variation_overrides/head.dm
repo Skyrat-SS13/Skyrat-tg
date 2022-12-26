@@ -126,6 +126,9 @@
 /obj/item/clothing/head/costume/santa
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
+/obj/item/clothing/head/helmet/space/santahat/beardless
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+
 /obj/item/clothing/head/helmet/durathread
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
