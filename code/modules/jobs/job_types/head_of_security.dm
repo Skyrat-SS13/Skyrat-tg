@@ -60,13 +60,8 @@
 	belt = /obj/item/modular_computer/pda/heads/hos
 	ears = /obj/item/radio/headset/heads/hos/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-<<<<<<< HEAD
 	gloves = /obj/item/clothing/gloves/color/black/security //SKYRAT EDIT CHANGE - Original: /obj/item/clothing/gloves/color/black
-	head = /obj/item/clothing/head/hos/beret
-=======
-	gloves = /obj/item/clothing/gloves/color/black
 	head = /obj/item/clothing/head/hats/hos/beret
->>>>>>> 9e3a3caae93 (Fixes HOS Beret (and all of its subtypes) having wrong path and thus not being armored (#72024))
 	shoes = /obj/item/clothing/shoes/jackboots/sec
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
