@@ -4,12 +4,15 @@
 	name = "Strawberry Milk"
 	description = "A drink of a bygone era of milk and artificial sweetener back on a rock."
 	color = "#f76aeb"//rgb(247, 106, 235)
-	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
-	glass_icon_state = "pinkmilk"
 	quality = DRINK_VERYGOOD
 	taste_description = "sweet strawberry and milk cream"
-	glass_name = "tall glass of strawberry milk"
-	glass_desc = "Delicious flavored strawberry syrup mixed with milk."
+
+/datum/glass_style/drinking_glass/pinkmilk
+	required_drink_type = /datum/reagent/consumable/pinkmilk
+	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	icon_state = "pinkmilk"
+	name = "tall glass of strawberry milk"
+	desc = "Delicious flavored strawberry syrup mixed with milk."
 
 /datum/reagent/consumable/pinkmilk/on_mob_life(mob/living/carbon/M)
 	if(prob(15))
@@ -21,12 +24,15 @@
 	name = "Strawberry Tea"
 	description = "A timeless classic!"
 	color = "#f76aeb"//rgb(247, 106, 235)
-	glass_icon_state = "pinktea"
 	quality = DRINK_VERYGOOD
 	taste_description = "sweet tea with a hint of strawberry"
-	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
-	glass_name = "mug of strawberry tea"
-	glass_desc = "Delicious traditional tea flavored with strawberries."
+
+/datum/glass_style/drinking_glass/pinktea
+	required_drink_type = /datum/reagent/consumable/pinktea
+	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	icon_state = "pinktea"
+	name = "mug of strawberry tea"
+	desc = "Delicious traditional tea flavored with strawberries."
 
 /datum/reagent/consumable/pinktea/on_mob_life(mob/living/carbon/M)
 	if(prob(10))
@@ -39,10 +45,13 @@
 	description = "A sleepy and tasty catnip tea!"
 	color = "#101000" // rgb: 16, 16, 0
 	taste_description = "sugar and catnip"
-	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
-	glass_icon_state = "catnip_tea"
-	glass_name = "glass of catnip tea"
-	glass_desc = "A purrfect drink for a cat."
+
+/datum/glass_style/drinking_glass/catnip_tea
+	required_drink_type = /datum/reagent/consumable/catnip_tea
+	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	icon_state = "catnip_tea"
+	name = "glass of catnip tea"
+	desc = "A purrfect drink for a cat."
 
 /datum/reagent/consumable/catnip_tea/on_mob_life(mob/living/carbon/M)
 	M.adjustStaminaLoss(min(50 - M.getStaminaLoss(), 3))
@@ -60,6 +69,10 @@
 	description = "Probably not the greatest idea to drink...sludge."
 	color = "#f5f4e9"
 	taste_description = "flour and cheap booze"
-	glass_icon_state = "chocolatepudding"
-	glass_name = "glass of beer batter"
-	glass_desc = "Used in cooking, pure cholesterol, Scottish people eat it."
+
+/datum/glass_style/drinking_glass/beerbatter
+	required_drink_type = /datum/reagent/consumable/beerbatter
+	icon = 'icons/obj/drinks/shakes.dmi'
+	icon_state = "chocolatepudding"
+	name = "glass of beer batter"
+	desc = "Used in cooking, pure cholesterol, Scottish people eat it."
