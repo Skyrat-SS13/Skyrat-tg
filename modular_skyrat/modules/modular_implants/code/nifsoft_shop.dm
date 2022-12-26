@@ -4,20 +4,23 @@
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/machines/vendors.dmi'
 	refill_canister = /obj/item/vending_refill/nifsoft_shop
 	icon_state = "proj"
+	tiltable = FALSE
 	density = FALSE
 	default_price = 300
 	extra_price = 900
 
-	products = list(
-		/obj/item/disk/nifsoft_uploader/shapeshifter = 10,
-		/obj/item/disk/nifsoft_uploader/summoner = 10,
-		/obj/item/disk/nifsoft_uploader/hivemind = 10,
+	product_categories = list(
+		list("name" = "NIFSofts", "icon" = "download", "products" = list(
+			/obj/item/disk/nifsoft_uploader/shapeshifter = 10,
+			/obj/item/disk/nifsoft_uploader/summoner = 10,
+			/obj/item/disk/nifsoft_uploader/hivemind = 10,
+			)
 		)
+	)
 
 	premium = list(
 		/obj/item/autosurgeon/organ/nif/disposable = 5,
 	)
-
 
 /obj/machinery/vending/nifsoft/ghost //Contains every NIFSoft and contains the standard NIF with persistence removed. Mostly here for ghost cafe and syndies
 	products = list(
