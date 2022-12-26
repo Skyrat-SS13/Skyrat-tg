@@ -1088,6 +1088,7 @@
 /obj/item/poster/korpstech
 	name = "Korps Genetics poster"
 	poster_type = /obj/structure/sign/poster/contraband/korpstech
+	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "rolled_poster"
 
 /obj/structure/sign/poster/contraband/korpstech

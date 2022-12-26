@@ -583,7 +583,7 @@
 	item_path = /obj/item/clothing/neck/flower_collar
 	ckeywhitelist = list("thedragmeme")
 
-/datum/loadout_item/suit/goldenkimono
+/datum/loadout_item/under/jumpsuit/goldenkimono
 	name = "Short-Sleeved Kimono"
 	item_path = /obj/item/clothing/under/costume/skyrat/kimono/sigmar
 	ckeywhitelist = list("sigmaralkahest")
