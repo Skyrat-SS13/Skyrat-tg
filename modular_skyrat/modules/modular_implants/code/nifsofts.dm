@@ -84,6 +84,8 @@
 		addtimer(CALLBACK(src, .proc/remove_cooldown), cooldown_duration)
 		on_cooldown = TRUE
 
+	return TRUE
+
 ///Refunds the activation cost of a NIFSoft.
 /datum/nifsoft/proc/refund_activation_cost()
 	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif
