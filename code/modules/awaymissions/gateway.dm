@@ -322,10 +322,6 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 
 /obj/machinery/gateway/away/interact(mob/user, special_state)
 	. = ..()
-	//SKYRAT EDIT ADDITION
-	if(!ishuman(user))
-		return
-	//SKYRAT EDIT END
 	if(!target)
 		if(!GLOB.the_gateway)
 			to_chat(user,span_warning("Home gateway is not responding!"))
