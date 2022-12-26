@@ -63,15 +63,6 @@
 	extra_price = PAYCHECK_COMMAND
 	payment_department = NO_FREEBIES
 
-	/// What language should this vendor speak, for flavor reasons
-	var/language_to_speak = /datum/language/common
-
-/obj/machinery/vending/imported/New()
-	. = ..()
-	var/datum/language_holder/vendor_languages = get_language_holder()
-	grant_all_languages()
-	vendor_languages.selected_language = language_to_speak
-
 /obj/item/vending_refill/snack/imported
 	machine_name = "NT Sustenance Supplier"
 
@@ -113,7 +104,15 @@
 	)
 
 	refill_canister = /obj/item/vending_refill/snack/imported/yangyu
-	language_to_speak = /datum/language/yangyu
+	initial_language_holder = /datum/language_holder/yangyu_vendor
+
+/datum/language_holder/yangyu_vendor
+	understood_languages = list(
+		/datum/language/yangyu = list(LANGUAGE_ATOM),
+		)
+	spoken_languages = list(
+		/datum/language/yangyu = list(LANGUAGE_ATOM),
+		)
 
 /obj/machinery/vending/imported/yangyu/examine_more(mob/user)
 	. = ..()
@@ -161,7 +160,15 @@
 	)
 
 	refill_canister = /obj/item/vending_refill/snack/imported/mothic
-	language_to_speak = /datum/language/moffic
+	initial_language_holder = /datum/language_holder/moffic_vendor
+
+/datum/language_holder/moffic_vendor
+	understood_languages = list(
+		/datum/language/moffic = list(LANGUAGE_ATOM),
+		)
+	spoken_languages = list(
+		/datum/language/moffic = list(LANGUAGE_ATOM),
+		)
 
 /obj/item/vending_refill/snack/imported/mothic
 	machine_name = "Nomad Fleet Ration Chit Exchange"
@@ -203,7 +210,15 @@
 	)
 
 	refill_canister = /obj/item/vending_refill/snack/imported/tizirian
-	language_to_speak = /datum/language/draconic
+	initial_language_holder = /datum/language_holder/draconic_vendor
+
+/datum/language_holder/draconic_vendor
+	understood_languages = list(
+		/datum/language/draconic = list(LANGUAGE_ATOM),
+		)
+	spoken_languages = list(
+		/datum/language/draconic = list(LANGUAGE_ATOM),
+		)
 
 /obj/item/vending_refill/snack/imported/tizirian
 	machine_name = "Tizirian Imported Delicacies"
