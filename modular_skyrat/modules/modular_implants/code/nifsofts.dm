@@ -64,6 +64,7 @@
 
 	if(cooldown && on_cooldown)
 		to_chat(installed_nif.linked_mob, span_warning("The [src.name] is currently on cooldown."))
+		return FALSE
 
 	if(active)
 		active = FALSE
