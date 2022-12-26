@@ -9,10 +9,9 @@
 	shoes = /obj/item/clothing/shoes/winterboots/ice_boots/icebox_catgirl_boots
 	gloves = /obj/item/clothing/gloves/fingerless/icebox_catgirl_armwraps
 	suit = /obj/item/clothing/suit/jacket/icebox_catgirl_coat
-	neck = /obj/item/clothing/neck/large_scarf/icebox_catgirl_scarf
+	neck = /obj/item/clothing/neck/scarf/icebox_catgirl_scarf
 
 	back = /obj/item/forging/reagent_weapon/axe/fake_copper
-	r_pocket = /obj/item/knife/hunting
 
 // Under
 
@@ -73,8 +72,8 @@
 
 // Neck
 
-/obj/item/clothing/neck/large_scarf/icebox_catgirl_scarf
-	name = "large scarf"
+/obj/item/clothing/neck/scarf/icebox_catgirl_scarf
+	name = "scarf"
 	greyscale_colors = "#cec8bf#cec8bf"
 
 // Misc Items
