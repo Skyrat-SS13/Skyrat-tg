@@ -60,7 +60,7 @@
 	var/obj/item/organ/internal/eyes/eyes = user.getorganslot(ORGAN_SLOT_EYES)
 	user.Stun(200)
 	user.visible_message(span_suicide("[user] jams [src] in [user.p_their()] nose. It looks like [user.p_theyre()] trying to commit suicide!"))
-	user.adjust_blurriness(6)
+	user.adjust_eye_blur(12 SECONDS)
 	if(eyes)
 		eyes.applyOrganDamage(rand(impact_eye_damage_lower, impact_eye_damage_higher)) // SKYRAT EDIT START - Better paper planes
 	sleep(1 SECONDS)
@@ -122,10 +122,16 @@
 			// SKYRAT EDIT END
 			return
 		visible_message(span_danger("\The [src] hits [H] in the eye[eyes ? "" : " socket"]!"))
+<<<<<<< HEAD
 		H.adjust_blurriness(6)
 		// SKYRAT EDIT START - Better paper planes
 		eyes?.applyOrganDamage(rand(impact_eye_damage_lower, impact_eye_damage_higher))
 		H.Knockdown(knockdown_duration)
+=======
+		H.adjust_eye_blur(12 SECONDS)
+		eyes?.applyOrganDamage(rand(6,8))
+		H.Paralyze(40)
+>>>>>>> 0d4b56435ba (Converts drowsy and eye blur to status effects, striking yet another two carbon level status vars (#71950))
 		H.emote("scream")
 
 	if(delete_on_impact)
