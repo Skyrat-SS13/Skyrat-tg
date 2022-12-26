@@ -363,7 +363,13 @@
 	desc = "A classic suit of plate armour, highly effective at stopping melee attacks."
 	icon_state = "knight_green"
 	inhand_icon_state = null
-	allowed = list(/obj/item/nullrod, /obj/item/claymore, /obj/item/banner, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
+	allowed = list(
+		/obj/item/banner,
+		/obj/item/claymore,
+		/obj/item/nullrod,
+		/obj/item/tank/internals/emergency_oxygen,
+		/obj/item/tank/internals/plasmaman,
+		)
 
 /obj/item/clothing/suit/armor/riot/knight/yellow
 	icon_state = "knight_yellow"
@@ -424,6 +430,26 @@
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 
+<<<<<<< HEAD
+=======
+/obj/item/clothing/suit/armor/elder_atmosian/Initialize(mapload)
+	. = ..()
+	allowed += list(
+		/obj/item/fireaxe/metal_h2_axe,
+	)
+
+/datum/armor/armor_elder_atmosian
+	melee = 25
+	bullet = 20
+	laser = 30
+	energy = 30
+	bomb = 85
+	bio = 10
+	fire = 65
+	acid = 40
+	wound = 15
+
+>>>>>>> 3689eb01fc7 ([NO GBP] Allows the metal hydrogen/elder atmosian armor to hold a MH axe (#72241))
 /obj/item/clothing/suit/armor/centcom_formal
 	name = "\improper CentCom formal coat"
 	desc = "A stylish coat given to CentCom Commanders. Perfect for sending ERTs to suicide missions with style!"
