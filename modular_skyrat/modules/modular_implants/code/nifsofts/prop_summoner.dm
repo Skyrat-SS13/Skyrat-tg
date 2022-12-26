@@ -118,8 +118,8 @@
 	. = ..()
 
 	if(nif_generated_item)
-		user.visible_message(span_blue("[usr] firmly grasps the [src], causing it to disintegrate into a fine blue ash"),
-		span_blue("You firmly grasp the [src], causing it to disintegrate into a fine blue ash"))
+		user.visible_message(span_blue("[usr] crushes [src], causing it to disintegrate into a fine blue ash"),
+		span_blue("You crush the [src], causing it to disintegrate into a fine blue ash"))
 		qdel(src)
 
 /obj/item/toy/cards/deck/Initialize(mapload)
