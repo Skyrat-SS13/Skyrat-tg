@@ -1,6 +1,6 @@
 // Adds the new HUD icon.
 /datum/hud/human/New(mob/living/carbon/human/owner)
-	// For item slots, copy the next nine lines, and change it to be your desired slot.
+	// For item slots, copy the next eight lines, and change it to be your desired slot.
 	// Note: If you want custom icons for your slot, you will need to create an icon for each theme, and dynamically set it per slot. Good luck.
 	var/atom/movable/screen/inventory/inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "passport"
