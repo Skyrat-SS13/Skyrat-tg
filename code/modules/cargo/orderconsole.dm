@@ -261,7 +261,9 @@
 					coupon_check.moveToNullspace()
 					applied_coupon = coupon_check
 					break
+			//Skyrat Edit Add
 			var/charge_on_purchase = TRUE
+			//Skyrat Edit End
 			var/turf/T = get_turf(src)
 			var/datum/supply_order/SO = new(pack, name, rank, ckey, reason, account, null, applied_coupon, charge_on_purchase)
 			SO.generateRequisition(T)
