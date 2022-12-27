@@ -27,7 +27,7 @@
 	// Still calls regardless, for that sweet flavourful warning!
 	applyOrganDamage(severity == EMP_HEAVY ? SYNTH_EMP_BRAIN_DAMAGE : NONE, SYNTH_EMP_BRAIN_DAMAGE_MAXIMUM)
 
-/obj/item/organ/internal/brain/synth/applyOrganDamage(damage_amount, maximum)
+/obj/item/organ/internal/brain/synth/applyOrganDamage(damage_amount, maximumm, required_organtype)
 	. = ..()
 	if(owner && damage > 0 && (world.time - last_message_time) > SYNTH_BRAIN_DAMAGE_MESSAGE_INTERVAL)
 		last_message_time = world.time
