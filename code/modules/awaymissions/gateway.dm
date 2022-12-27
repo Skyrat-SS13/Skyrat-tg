@@ -138,6 +138,19 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	invisibility = INVISIBILITY_ABSTRACT
 
 /obj/effect/gateway_portal_bumper/Bumped(atom/movable/AM)
+	//SKYRAT EDIT ADDITION
+	var/list/type_blacklist = list(
+		/obj/item/mmi,
+		/mob/living/silicon,
+	)
+	if(is_type_in_list(AM, type_blacklist))
+		return
+	for(var/atom/movable/content_item as anything in AM.contents)
+		if(!is_type_in_list(content_item, type_blacklist))
+			continue
+		to_chat(AM, span_warning("Something on you is blocking you from entering the gateway!"))
+		return
+	//SKYRAT EDIT END
 	if(get_dir(src,AM) == SOUTH)
 		gateway.Transfer(AM)
 
@@ -323,7 +336,16 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 /obj/machinery/gateway/away/interact(mob/user, special_state)
 	. = ..()
 	//SKYRAT EDIT ADDITION
-	if(!ishuman(user))
+	var/list/type_blacklist = list(
+		/obj/item/mmi,
+		/mob/living/silicon,
+	)
+	if(is_type_in_list(user, type_blacklist))
+		return
+	for(var/atom/movable/content_item as anything in user.contents)
+		if(!is_type_in_list(content_item, type_blacklist))
+			continue
+		to_chat(user, span_warning("Something on you is blocking you from entering the gateway!"))
 		return
 	//SKYRAT EDIT END
 	if(!target)
