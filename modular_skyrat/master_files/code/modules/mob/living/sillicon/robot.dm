@@ -64,8 +64,8 @@
 
 /mob/living/silicon/robot/robot_lay_down()
 	. = ..()
-	for(var/mob/living/carbon/human/human in orange(1))
-		if(human && prob(1))
+	for(var/mob/living/carbon/human/human in loc)
+		if(prob(1))
 			. = human.apply_damage(125, BRUTE, BODY_ZONE_HEAD, wound_bonus = 50)
 			if(.)
 				human.visible_message(
