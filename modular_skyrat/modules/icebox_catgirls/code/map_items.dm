@@ -12,21 +12,6 @@
 	icon_state = "empty_shelf_1"
 	icon = 'modular_skyrat/modules/mapping/icons/unique/furniture.dmi'
 
-// Benches but in a more wood color
-
-/obj/structure/chair/sofa/bench/woodlike
-	greyscale_colors = "#5d341f"
-
-/obj/structure/chair/sofa/bench/woodlike/left
-	icon_state = "bench_left"
-	greyscale_config = /datum/greyscale_config/bench_left
-	greyscale_colors = "#5d341f"
-
-/obj/structure/chair/sofa/bench/woodlike/right
-	icon_state = "bench_right"
-	greyscale_config = /datum/greyscale_config/bench_right
-	greyscale_colors = "#5d341f"
-
 // Bonfires but with a grill pre-attached
 
 /obj/structure/bonfire/oh_yeah_its_grilling_time
