@@ -6,6 +6,7 @@
 	attack_verb_simple = "slash"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attack_vis_effect = ATTACK_EFFECT_SLASH
+	sharpness = SHARP_POINTY
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
 	playstyle_string = "<span class='holoparasite'>As an <b>assassin</b> type you do medium damage and have no damage resistance, but can enter stealth, massively increasing the damage of your next attack and causing it to ignore armor. Stealth is broken when you attack or take damage.</span>"
 	magic_fluff_string = "<span class='holoparasite'>..And draw the Space Ninja, a lethal, invisible assassin.</span>"
@@ -14,7 +15,17 @@
 	miner_fluff_string = "<span class='holoparasite'>You encounter... Glass, a sharp, fragile attacker.</span>"
 	toggle_button_type = /atom/movable/screen/guardian/toggle_mode/assassin
 	var/toggle = FALSE
+<<<<<<< HEAD
 	var/stealthcooldown = 160
+=======
+	/// Time between going in stealth.
+	var/stealth_cooldown_time = 16 SECONDS
+	/// Damage added in stealth mode.
+	var/damage_bonus = 35
+	/// Our wound bonus when in stealth mode.
+	var/stealth_wound_bonus = -20 //from -100, you can now wound!
+	/// Screen alert given when we are able to stealth.
+>>>>>>> c50e77ebf5f (tweaks to guardians (#72262))
 	var/atom/movable/screen/alert/canstealthalert
 	var/atom/movable/screen/alert/instealthalert
 
@@ -22,12 +33,15 @@
 	. = ..()
 	stealthcooldown = 0
 
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/guardian/assassin/Life(delta_time = SSMOBS_DT, times_fired)
 	. = ..()
 	updatestealthalert()
 	if(loc == summoner && toggle)
 		ToggleMode(0)
 
+=======
+>>>>>>> c50e77ebf5f (tweaks to guardians (#72262))
 /mob/living/simple_animal/hostile/guardian/assassin/get_status_tab_items()
 	. = ..()
 	if(stealthcooldown >= world.time)
@@ -53,6 +67,7 @@
 		melee_damage_lower = initial(melee_damage_lower)
 		melee_damage_upper = initial(melee_damage_upper)
 		armour_penetration = initial(armour_penetration)
+		wound_bonus = initial(wound_bonus)
 		obj_damage = initial(obj_damage)
 		environment_smash = initial(environment_smash)
 		alpha = initial(alpha)
@@ -60,8 +75,14 @@
 			to_chat(src, "[span_danger("<B>You exit stealth.")]</B>")
 		else
 			visible_message(span_danger("\The [src] suddenly appears!"))
+<<<<<<< HEAD
 			stealthcooldown = world.time + initial(stealthcooldown) //we were forced out of stealth and go on cooldown
 			cooldown = world.time + 40 //can't recall for 4 seconds
+=======
+			COOLDOWN_START(src, stealth_cooldown, stealth_cooldown_time) //we were forced out of stealth and go on cooldown
+			addtimer(CALLBACK(src, PROC_REF(updatestealthalert)), stealth_cooldown_time)
+			COOLDOWN_START(src, manifest_cooldown, 4 SECONDS) //can't recall for 4 seconds
+>>>>>>> c50e77ebf5f (tweaks to guardians (#72262))
 		updatestealthalert()
 		toggle = FALSE
 	else if(stealthcooldown <= world.time)
@@ -71,6 +92,7 @@
 		melee_damage_lower = 50
 		melee_damage_upper = 50
 		armour_penetration = 100
+		wound_bonus = stealth_wound_bonus
 		obj_damage = 0
 		environment_smash = ENVIRONMENT_SMASH_NONE
 		new /obj/effect/temp_visual/guardian/phase/out(get_turf(src))
