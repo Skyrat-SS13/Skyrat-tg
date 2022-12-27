@@ -12,7 +12,7 @@
 /mob/living/carbon/human/update_worn_passport()
 	remove_overlay(PASSPORT_LAYER)
 
-	if(client && hud_used)
+	if(hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_PASSPORT) + 1]
 		inv.update_icon()
 
