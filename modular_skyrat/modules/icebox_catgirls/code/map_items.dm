@@ -42,3 +42,8 @@
 /turf/open/misc/dirt/icemoon
 	baseturfs = /turf/open/openspace/icemoon
 	initial_gas_mix = "ICEMOON_ATMOS"
+
+// The area
+
+/area/ruin/unpowered/icebox_catgirl_den
+	name = "\improper Icewalker Camp"
