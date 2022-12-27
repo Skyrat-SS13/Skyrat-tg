@@ -72,7 +72,7 @@
 /datum/uplink_item/dangerous/oddjob
 	name = "Deadly Bowler Hat"
 	desc = "An incredibly sharp edged bowler hat used by an infamously short operative."
-	item = /obj/item/clothing/head/sus_bowler
+	item = /obj/item/clothing/head/hats/sus_bowler
 	cost = 20
 	progression_minimum = 25 MINUTES
 

@@ -25,7 +25,7 @@
 	hood.set_greyscale(new_coat_colors) //Adopt the suit's grayscale coloring for visual clarity.
 
 /obj/item/clothing/head/hooded/winterhood/colourable
-	icon_state = "winter_hood"
+	icon_state = "hood_winter"
 	greyscale_config = /datum/greyscale_config/winter_hood
 	greyscale_config_worn = /datum/greyscale_config/winter_hood/worn
 
@@ -1102,7 +1102,8 @@
 	desc = "A customized eyepatch with a bright pink HUD floating in front of it. It looks like there's more to it than just an eyepatch, considering the materials it's made of."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
-	icon_state = "rosepatch"
+	icon_state = "rosepatch_R"
+	base_icon_state = "rosepatch"
 
 // Donation reward for Cimika
 /obj/item/clothing/suit/toggle/labcoat/skyrat/tenrai
