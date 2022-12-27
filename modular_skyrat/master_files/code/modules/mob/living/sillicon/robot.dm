@@ -64,7 +64,15 @@
 
 /mob/living/silicon/robot/robot_lay_down()
 	. = ..()
-
+	for(var/mob/living/carbon/human/human in orange(1))
+		if(human && prob(1))
+			. = human.apply_damage(125, BRUTE, BODY_ZONE_HEAD, wound_bonus = 50)
+			if(.)
+				human.visible_message(
+					"[name] slams their PHAT BOOTY into [human]'s head!",
+					"Your face is crushed by [name]'s FAT ASS!",
+					"You hear the sound of a skull being crushed!",
+				)
 	if(GetComponent(/datum/component/robot_smoke))
 		if(robot_resting)
 			dissipate()
