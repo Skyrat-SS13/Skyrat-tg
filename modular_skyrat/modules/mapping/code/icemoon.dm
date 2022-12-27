@@ -22,7 +22,7 @@
 /datum/map_template/ruin/icemoon/underground/skyrat/icewalker_camp
 	name = "Ice Walker Camp"
 	id = "icebox_catgirl_den"
-	description = "A small, at times abandoned looking camp. Make no mistake however, usually the inhabitants are just hibernating in a hole nearby"
+	description = "A small, at times abandoned looking camp. Make no mistake however, as the inhabitants are usually just hibernating in a hole nearby"
 	prefix = "_maps/RandomRuins/IceRuins/skyrat/"
 	suffix = "icemoon_underground_icewalker_den.dmm"
 	always_place = TRUE
