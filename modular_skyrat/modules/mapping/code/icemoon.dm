@@ -19,11 +19,11 @@
 	suffix = "icemoon_underground_mining_site_skyrat.dmm"
 	always_place = TRUE
 
-/datum/map_template/ruin/icemoon/underground/skyrat/ashwalker_nest
-	name = "Ice Walker Nest"
-	id = "ash-walker-ice"
-	description = "A forboding dark stoned castle, it has seen better days but at least the current occupants patched the walls."
+/datum/map_template/ruin/icemoon/underground/skyrat/icewalker_camp
+	name = "Ice Walker Camp"
+	id = "icebox_catgirl_den"
+	description = "A small, at times abandoned looking camp. Make no mistake however, usually the inhabitants are just hibernating in a hole nearby"
 	prefix = "_maps/RandomRuins/IceRuins/skyrat/"
-	suffix = "icemoon_underground_ash_walker1_skyrat.dmm"
+	suffix = "icemoon_underground_icewalker_den.dmm"
 	always_place = TRUE
 	allow_duplicates = FALSE
