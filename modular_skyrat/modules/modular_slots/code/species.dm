@@ -6,4 +6,4 @@
 			if(!disable_warning)
 				to_chat(human, span_warning("You need a jumpsuit before you can store [item.name]!"))
 			return FALSE
-		return equip_delay_self_check(item, human, bypass_equip_delay_self)? TRUE : FALSE
+		return equip_delay_self_check(item, human, bypass_equip_delay_self)
