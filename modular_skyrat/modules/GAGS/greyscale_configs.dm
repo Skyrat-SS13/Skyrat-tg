@@ -1121,12 +1121,12 @@ digi
 // Evil icebox catgirl clothing
 
 /datum/greyscale_config/icebox_catgirl_wraps
-	name = "Primtive Body Wraps"
+	name = "Primitive Body Wraps"
 	icon_file = 'modular_skyrat/modules/icebox_catgirls/icons/clothing_greyscale.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/icebox_catgirl_clothing/body_wraps.json'
 
 /datum/greyscale_config/icebox_catgirl_wraps/worn
-	name = "Primtive Body Wraps (Worn)"
+	name = "Primitive Body Wraps (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/icebox_catgirl_clothing/body_wraps_worn.json'
 
 /datum/greyscale_config/icebox_catgirl_armwraps
