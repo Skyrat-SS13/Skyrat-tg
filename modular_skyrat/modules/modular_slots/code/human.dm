@@ -3,6 +3,11 @@
 	/// The passport the human has in their passport slot.
 	var/obj/item/passport
 
+// Clean up your slots when a human mob is destroyed here.
+/mob/living/carbon/human/Destroy()
+	. = ..()
+	qdel(passport)
+
 // Copy and modify for your own slot. Make sure to do the same for the stub proc in mob.dm.
 /mob/living/carbon/human/update_worn_passport()
 	remove_overlay(PASSPORT_LAYER)
