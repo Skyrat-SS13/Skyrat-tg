@@ -53,6 +53,7 @@
 	if(attack_generic(user, 60, BRUTE, MELEE, 0))
 		playsound(src.loc, 'sound/weapons/slash.ogg', 100, TRUE)
 
+<<<<<<< HEAD
 /obj/attack_basic_mob(mob/living/basic/user, list/modifiers)
 	. = ..()
 	if(!user.melee_damage_upper && !user.obj_damage) //No damage
@@ -66,6 +67,8 @@
 		if(.)
 			playsound(src, 'sound/effects/meteorimpact.ogg', 100, TRUE)
 
+=======
+>>>>>>> 3daf3b06435 (fixes silly stuff about basic mobs (#72260))
 /obj/attack_animal(mob/living/simple_animal/user, list/modifiers)
 	. = ..()
 	if(!user.melee_damage_upper && !user.obj_damage)
