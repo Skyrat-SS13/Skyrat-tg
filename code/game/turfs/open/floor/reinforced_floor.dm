@@ -64,9 +64,14 @@
 	switch(severity)
 		if(EXPLODE_DEVASTATE)
 			if(prob(80))
+<<<<<<< HEAD
 				if(!length(baseturfs) || !ispath(baseturfs[baseturfs.len-1], /turf/open/floor))
 					ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 					ReplaceWithLattice()
+=======
+				if (!ispath(baseturf_at_depth(2), /turf/open/floor))
+					attempt_lattice_replacement()
+>>>>>>> 45dcc6e72bc (Abstract away stuff that acts on baseturfs directly into their own procs, and kills some dead code related to baseturfs + tests (#72117))
 				else
 					ScrapeAway(2, flags = CHANGETURF_INHERIT_AIR)
 			else if(prob(50))

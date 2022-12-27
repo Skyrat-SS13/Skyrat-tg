@@ -261,10 +261,14 @@ GLOBAL_LIST_INIT(typecache_holodeck_linked_floorcheck_ok, typecacheof(list(/turf
 	//makes sure that any time a holoturf is inside a baseturf list (e.g. if someone put a wall over it) its set to the OFFLINE turf
 	//so that you cant bring turfs from previous programs into other ones (like putting the plasma burn turf into lounge for example)
 	for(var/turf/closed/holo_turf in linked)
+<<<<<<< HEAD
 		for(var/baseturf in holo_turf.baseturfs)
 			if(ispath(baseturf, /turf/open/floor/holofloor))
 				holo_turf.baseturfs -= baseturf
 				holo_turf.baseturfs += /turf/open/floor/holofloor/plating
+=======
+		holo_turf.replace_baseturf(/turf/open/floor/holofloor, /turf/open/floor/holofloor/plating)
+>>>>>>> 45dcc6e72bc (Abstract away stuff that acts on baseturfs directly into their own procs, and kills some dead code related to baseturfs + tests (#72117))
 
 ///finalizes objects in the spawned list
 /obj/machinery/computer/holodeck/proc/finish_spawn()

@@ -52,10 +52,11 @@ All ShuttleMove procs go here
 		return
 	// Destination turf changes.
 	// Baseturfs is definitely a list or this proc wouldnt be called.
-	var/shuttle_boundary = baseturfs.Find(/turf/baseturf_skipover/shuttle)
+	var/shuttle_depth = depth_to_find_baseturf(/turf/baseturf_skipover/shuttle)
 
-	if(!shuttle_boundary)
+	if(!shuttle_depth)
 		CRASH("A turf queued to move via shuttle somehow had no skipover in baseturfs. [src]([type]):[loc]")
+<<<<<<< HEAD
 	var/depth = baseturfs.len - shuttle_boundary + 1
 
 	//SKYRAT EDIT ADDITION
@@ -74,6 +75,9 @@ All ShuttleMove procs go here
 		newT.reasses_liquids()
 	//SKYRAT EDIT END
 	newT.CopyOnTop(src, 1, depth, TRUE)
+=======
+	newT.CopyOnTop(src, 1, shuttle_depth, TRUE)
+>>>>>>> 45dcc6e72bc (Abstract away stuff that acts on baseturfs directly into their own procs, and kills some dead code related to baseturfs + tests (#72117))
 	newT.blocks_air = TRUE
 	newT.air_update_turf(TRUE, FALSE)
 	blocks_air = TRUE
@@ -91,10 +95,10 @@ All ShuttleMove procs go here
 	oldT.TransferComponents(src)
 
 	SSexplosions.wipe_turf(src)
-	var/shuttle_boundary = baseturfs.Find(/turf/baseturf_skipover/shuttle)
+	var/shuttle_depth = depth_to_find_baseturf(/turf/baseturf_skipover/shuttle)
 
-	if(shuttle_boundary)
-		oldT.ScrapeAway(baseturfs.len - shuttle_boundary + 1)
+	if(shuttle_depth)
+		oldT.ScrapeAway(shuttle_depth)
 
 	if(rotation)
 		shuttleRotate(rotation) //see shuttle_rotate.dm

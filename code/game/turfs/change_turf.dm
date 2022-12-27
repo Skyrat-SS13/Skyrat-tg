@@ -221,6 +221,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			flags |= CHANGETURF_RECALC_ADJACENT
 		return ..()
 
+<<<<<<< HEAD
 /// Take off the top layer turf and replace it with the next baseturf down
 /turf/proc/ScrapeAway(amount=1, flags)
 	if(!amount)
@@ -338,6 +339,8 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	return newT
 
 
+=======
+>>>>>>> 45dcc6e72bc (Abstract away stuff that acts on baseturfs directly into their own procs, and kills some dead code related to baseturfs + tests (#72117))
 //If you modify this function, ensure it works correctly with lateloaded map templates.
 /turf/proc/AfterChange(flags, oldType) //called after a turf has been replaced in ChangeTurf()
 	levelupdate()

@@ -82,9 +82,14 @@
 		if(EXPLODE_HEAVY)
 			switch(rand(1, 3))
 				if(1)
+<<<<<<< HEAD
 					if(!length(baseturfs) || !ispath(baseturfs[baseturfs.len-1], /turf/open/floor))
 						ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 						ReplaceWithLattice()
+=======
+					if (!ispath(baseturf_at_depth(2), /turf/open/floor))
+						attempt_lattice_replacement()
+>>>>>>> 45dcc6e72bc (Abstract away stuff that acts on baseturfs directly into their own procs, and kills some dead code related to baseturfs + tests (#72117))
 					else
 						ScrapeAway(2, flags = CHANGETURF_INHERIT_AIR)
 					if(prob(33))
@@ -235,8 +240,11 @@
 		if(STAGE_FIVE to INFINITY)
 			if(prob(70))
 				sheer = TRUE
+<<<<<<< HEAD
 			else if(prob(50) && (/turf/open/space in baseturfs))
 				ReplaceWithLattice()
+=======
+>>>>>>> 45dcc6e72bc (Abstract away stuff that acts on baseturfs directly into their own procs, and kills some dead code related to baseturfs + tests (#72117))
 	if(sheer)
 		if(has_tile())
 			remove_tile(null, TRUE, TRUE, TRUE)

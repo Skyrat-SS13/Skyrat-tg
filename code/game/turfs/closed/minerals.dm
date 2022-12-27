@@ -230,8 +230,11 @@
 			var/turf/T = ChangeTurf(path,null,CHANGETURF_IGNORE_AIR)
 			T.flags_1 |= stored_flags
 
+<<<<<<< HEAD
 			T.baseturfs = src.baseturfs
 			T.color = stored_color //SKYRAT EDIT ADDITION
+=======
+>>>>>>> 45dcc6e72bc (Abstract away stuff that acts on baseturfs directly into their own procs, and kills some dead code related to baseturfs + tests (#72117))
 			if(ismineralturf(T))
 				var/turf/closed/mineral/M = T
 				M.turf_type = src.turf_type
