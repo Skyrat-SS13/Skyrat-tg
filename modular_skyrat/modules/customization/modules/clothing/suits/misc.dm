@@ -258,7 +258,7 @@
 		for(var/mob/living/silicon/S in orange(2,src))
 			if(istype(S, /mob/living/silicon/ai)) continue
 			step_towards(S,src)
-		for(var/datum/species/robotic/R in orange(2,src))
+		for(var/datum/species/synthetic/R in orange(2,src))
 			step_towards(R,src)
 
 /obj/item/clothing/suit/trenchbrown

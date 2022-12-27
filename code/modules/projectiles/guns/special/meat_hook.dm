@@ -46,7 +46,7 @@
 
 /obj/projectile/hook/fire(setAngle)
 	if(firer)
-		chain = firer.Beam(src, icon_state = "chain", icon = chain_icon) //SKYRAT EDIT
+		chain = firer.Beam(src, icon_state = "chain", icon = chain_icon, emissive = FALSE) //SKYRAT EDIT, original: chain = firer.Beam(src, icon_state = "chain", emissive = FALSE)
 	..()
 	//TODO: root the firer until the chain returns
 

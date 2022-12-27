@@ -72,7 +72,7 @@
 	backpack_contents = list(/obj/item/storage/box/syndie_kit/chameleon/ghostcafe = 1)
 
 /datum/action/toggle_dead_chat_mob
-	icon_icon = 'icons/mob/simple/mob.dmi'
+	button_icon = 'icons/mob/simple/mob.dmi'
 	button_icon_state = "ghost"
 	name = "Toggle deadchat"
 	desc = "Turn off or on your ability to hear ghosts."
