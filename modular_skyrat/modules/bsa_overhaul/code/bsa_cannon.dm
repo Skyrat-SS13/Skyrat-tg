@@ -358,7 +358,7 @@
 
 /obj/item/circuitboard/machine/bsa/powercore
 	name = "Bluespace Artillery Powercore (Machine Board)"
-	icon_state = "command"
+	greyscale_colors = CIRCUIT_COLOR_COMMAND
 	build_path = /obj/machinery/bsa_powercore
 	req_components = list(
 		/obj/item/stock_parts/capacitor/quadratic = 5,

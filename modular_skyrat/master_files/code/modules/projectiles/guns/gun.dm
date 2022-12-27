@@ -5,7 +5,7 @@
 /obj/item/gun
 	name = "gun"
 	desc = "It's a gun. It's pretty terrible, though."
-	icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi' // skyrat edit
+	icon = 'icons/obj/weapons/guns/ballistic.dmi'
 	icon_state = "detective"
 	inhand_icon_state = "gun"
 	worn_icon_state = "gun"
