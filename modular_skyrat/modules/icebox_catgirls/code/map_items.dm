@@ -26,3 +26,13 @@
 	icon_state = "bench_right"
 	greyscale_config = /datum/greyscale_config/bench_right
 	greyscale_colors = "#5d341f"
+
+// Bonfires but with a grill pre-attached
+
+/obj/structure/bonfire/oh_yeah_its_grilling_time
+
+/obj/structure/bonfire/oh_yeah_its_grilling_time/Initialize(mapload)
+	. = ..()
+
+	grill = TRUE
+	add_overlay("bonfire_grill")
