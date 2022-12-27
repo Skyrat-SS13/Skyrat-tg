@@ -1118,40 +1118,40 @@ digi
 	icon_file = 'modular_skyrat/modules/wargame_projectors/icons/projectors_and_holograms.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/wargame_holoprojector/projector.json'
 
-// Evil icebox catgirl clothing
+// Evil primitive catgirl clothing
 
-/datum/greyscale_config/icebox_catgirl_wraps
+/datum/greyscale_config/primitive_catgirl_wraps
 	name = "Primtive Body Wraps"
-	icon_file = 'modular_skyrat/modules/icebox_catgirls/icons/clothing_greyscale.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/icebox_catgirl_clothing/body_wraps.json'
+	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/body_wraps.json'
 
-/datum/greyscale_config/icebox_catgirl_wraps/worn
+/datum/greyscale_config/primitive_catgirl_wraps/worn
 	name = "Primtive Body Wraps (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/icebox_catgirl_clothing/body_wraps_worn.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/body_wraps_worn.json'
 
-/datum/greyscale_config/icebox_catgirl_armwraps
+/datum/greyscale_config/primitive_catgirl_armwraps
 	name = "Arm Wraps"
-	icon_file = 'modular_skyrat/modules/icebox_catgirls/icons/clothing_greyscale.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/icebox_catgirl_clothing/armwraps.json'
+	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/armwraps.json'
 
-/datum/greyscale_config/icebox_catgirl_armwraps/worn
+/datum/greyscale_config/primitive_catgirl_armwraps/worn
 	name = "Arm Wraps (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/icebox_catgirl_clothing/armwraps_worn.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/armwraps_worn.json'
 
-/datum/greyscale_config/icebox_catgirl_coat
+/datum/greyscale_config/primitive_catgirl_coat
 	name = "Primitive Fur Coat"
-	icon_file = 'modular_skyrat/modules/icebox_catgirls/icons/clothing_greyscale.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/icebox_catgirl_clothing/coat.json'
+	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/coat.json'
 
-/datum/greyscale_config/icebox_catgirl_coat/worn
+/datum/greyscale_config/primitive_catgirl_coat/worn
 	name = "Primitive Fur Coat (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/icebox_catgirl_clothing/coat_worn.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/coat_worn.json'
 
-/datum/greyscale_config/icebox_catgirl_boots
+/datum/greyscale_config/primitive_catgirl_boots
 	name = "Primitive Winter Boots"
-	icon_file = 'modular_skyrat/modules/icebox_catgirls/icons/clothing_greyscale.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/icebox_catgirl_clothing/boots.json'
+	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/boots.json'
 
-/datum/greyscale_config/icebox_catgirl_boots/worn
+/datum/greyscale_config/primitive_catgirl_boots/worn
 	name = "Primitive Winter Boots (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/icebox_catgirl_clothing/boots_worn.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/boots_worn.json'
