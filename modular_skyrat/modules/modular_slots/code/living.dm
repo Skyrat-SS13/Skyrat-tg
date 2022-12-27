@@ -3,5 +3,4 @@
 	if(!length(held_items)) // Early return for mobs without hands.
 		return
 	// Check hands
-	var/obj/item/held_item = get_active_held_item()
-	return held_item? held_item : get_inactive_held_item()
+	return get_active_held_item() || get_inactive_held_item()
