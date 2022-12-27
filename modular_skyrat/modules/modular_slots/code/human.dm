@@ -6,7 +6,8 @@
 // Clean up your slots when a human mob is destroyed here.
 /mob/living/carbon/human/Destroy()
 	. = ..()
-	qdel(passport)
+	if(passport)
+		qdel(passport)
 
 // Copy and modify for your own slot. Make sure to do the same for the stub proc in mob.dm.
 /mob/living/carbon/human/update_worn_passport()
@@ -39,6 +40,7 @@
 	apply_overlay(PASSPORT_LAYER)
 
 // Copy and modify for your own slot.
+/// Updates the current state of the passport item slot, showing the passport item if one is equipped.
 /mob/living/carbon/human/proc/update_hud_passport(obj/item/worn_item)
 	worn_item.screen_loc = ui_passport
 	if((client && hud_used?.hud_shown))
