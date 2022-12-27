@@ -150,7 +150,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 						paying_for_this.bank_card_talk("Cargo order #[spawning_order.id] rejected due to lack of funds. Credits required: [price]")
 					continue
 		//Skyrat Edit Add
-		if(spawning_order.paying_account && !spawning_order.charge_on_purchase)
+		if(spawning_order.paying_account && spawning_order.charge_on_purchase)
 		//Skyrat Edit End
 			paying_for_this = spawning_order.paying_account
 			if(spawning_order.pack.goody)
