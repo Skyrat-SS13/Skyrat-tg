@@ -4,6 +4,9 @@
 #define REQUIRED_EVAPORATION_PROCESSES 80
 #define EVAPORATION_CHANCE 30
 
+/// Portion (out of 1) of reagents that are lost during the transfer from a mop/towel to a container.
+#define SQUEEZING_DISPERSAL_RATIO 0.75
+
 #define REQUIRED_FIRE_PROCESSES 4
 #define REQUIRED_FIRE_POWER_PER_UNIT 5
 

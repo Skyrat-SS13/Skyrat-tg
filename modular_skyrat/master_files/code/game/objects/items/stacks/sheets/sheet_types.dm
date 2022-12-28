@@ -81,10 +81,11 @@ GLOBAL_LIST_INIT(skyrat_wood_recipes, list(
 // Cloth
 
 GLOBAL_LIST_INIT(skyrat_cloth_recipes, list(
-	new/datum/stack_recipe("xenoarch bag", /obj/item/storage/bag/xenoarch, 4),
 	new/datum/stack_recipe("fancy pillow", /obj/item/fancy_pillow, 3),
+	new/datum/stack_recipe("towel", /obj/item/towel, 2),
 	new/datum/stack_recipe("eyepatch wrap", /obj/item/clothing/glasses/eyepatch/wrap, 2),
 	new/datum/stack_recipe("eyepatch", /obj/item/clothing/glasses/eyepatch, 2),
+	new/datum/stack_recipe("xenoarch bag", /obj/item/storage/bag/xenoarch, 4),
 ))
 
 /obj/item/stack/sheet/cloth/get_main_recipes()

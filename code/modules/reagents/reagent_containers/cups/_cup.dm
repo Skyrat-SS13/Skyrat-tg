@@ -379,8 +379,6 @@
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 50)
 	resistance_flags = FLAMMABLE
 
-#define SQUEEZING_DISPERSAL_PERCENT 0.75 //SKYRAT EDIT ADDITION
-
 /obj/item/reagent_containers/cup/bucket/attackby(obj/O, mob/living/user, params) //SKYRAT EDIT CHANGE
 	if(istype(O, /obj/item/mop)) //SKYRAT EDIT CHANGE
 		var/is_right_clicking = LAZYACCESS(params2list(params), RIGHT_CLICK)
@@ -391,7 +389,7 @@
 			if(reagents.total_volume == reagents.maximum_volume)
 				to_chat(user, "<span class='warning'>[src] is full!</span>")
 				return
-			O.reagents.remove_any(O.reagents.total_volume*SQUEEZING_DISPERSAL_PERCENT)
+			O.reagents.remove_any(O.reagents.total_volume * SQUEEZING_DISPERSAL_RATIO)
 			O.reagents.trans_to(src, O.reagents.total_volume, transfered_by = user)
 			to_chat(user, "<span class='notice'>You squeeze the liquids from [O] to [src].</span>")
 		else
@@ -407,8 +405,6 @@
 		var/obj/item/bot_assembly/cleanbot/new_cleanbot_ass = new(null, src)
 		user.put_in_hands(new_cleanbot_ass)
 		return
-
-#undef SQUEEZING_DISPERSAL_PERCENT  //SKYRAT EDIT ADDITION
 
 /obj/item/reagent_containers/cup/bucket/equipped(mob/user, slot)
 	. = ..()
