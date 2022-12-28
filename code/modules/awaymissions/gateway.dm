@@ -339,6 +339,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	var/list/type_blacklist = list(
 		/obj/item/mmi,
 		/mob/living/silicon,
+		/obj/item/borg/upgrade/ai,
 	)
 	if(is_type_in_list(user, type_blacklist))
 		return
