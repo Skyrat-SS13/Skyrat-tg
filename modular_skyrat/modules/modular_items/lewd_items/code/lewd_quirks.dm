@@ -345,4 +345,3 @@
 			. += arousal_message
 	else if(arousal > AROUSAL_MINIMUM_DETECTABLE)
 		. += span_purple("[p_they()] [p_are()] slightly blushed.") + "\n"
-

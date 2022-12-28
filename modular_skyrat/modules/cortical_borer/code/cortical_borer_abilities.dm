@@ -5,7 +5,7 @@
 
 // Parent of all borer actions
 /datum/action/cooldown/borer
-	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
+	button_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	cooldown_time = 0
 	/// How many chemicals this costs
 	var/chemical_cost = 0
@@ -474,6 +474,7 @@
 		owner.balloon_alert(owner, "host required")
 		return
 	healthscan(owner, cortical_owner.human_host, advanced = TRUE) // :thinking:
+	chemscan(owner, cortical_owner.human_host)
 	StartCooldown()
 
 //to either get inside, or out, of a host
