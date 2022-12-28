@@ -125,8 +125,12 @@ Lizard subspecies: ASHWALKERS
 /datum/species/lizard/ashwalker
 	name = "Ash Walker"
 	id = SPECIES_LIZARD_ASH
+<<<<<<< HEAD
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE)
 	mutantlungs = /obj/item/organ/internal/lungs/ashwalker
+=======
+	mutantlungs = /obj/item/organ/internal/lungs/lavaland
+>>>>>>> 50929f054b8 (Goliath dna infusion (#71657))
 	mutantbrain = /obj/item/organ/internal/brain/primitive
 	inherent_traits = list(
 		//TRAIT_LITERATE,
