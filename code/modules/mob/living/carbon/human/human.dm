@@ -12,11 +12,14 @@
 	setup_human_dna()
 	prepare_huds() //Prevents a nasty runtime on human init
 
+<<<<<<< HEAD
 	if(dna.species)
 		INVOKE_ASYNC(src, PROC_REF(set_species), dna.species.type)
 
 	//initialise organs
 	create_internal_organs() //most of it is done in set_species now, this is only for parent call
+=======
+>>>>>>> 6c30cf4ca6c (Removes the parent call of create_internal_organs() from the Initialize() of humans (#72264))
 	physiology = new()
 
 	. = ..()
