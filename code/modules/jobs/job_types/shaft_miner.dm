@@ -40,14 +40,9 @@
 		/obj/item/flashlight/seclite = 1,
 		/obj/item/knife/combat/survival = 1,
 		/obj/item/mining_voucher = 1,
-<<<<<<< HEAD
 		/obj/item/suit_voucher = 1,
-		/obj/item/stack/marker_beacon/ten = 1
-		) //SKYRAT EDIT: Suit_Voucher is an addition, one line up
-=======
 		/obj/item/stack/marker_beacon/ten = 1,
-	)
->>>>>>> 8a75aa216fb (adds an admin combat-ready miner outfit (#72286))
+		) //SKYRAT EDIT: Suit_Voucher is an addition, one line up
 	belt = /obj/item/modular_computer/pda/shaftminer
 	ears = /obj/item/radio/headset/headset_cargo/mining
 	gloves = /obj/item/clothing/gloves/color/black
