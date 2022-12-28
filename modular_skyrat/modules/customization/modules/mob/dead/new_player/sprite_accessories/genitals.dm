@@ -12,19 +12,37 @@
 	if(!badonkers)
 		return TRUE
 	switch(badonkers.visibility_preference)
-		if(GENITAL_ALWAYS_SHOW)
+		if(GENITAL_ALWAYS_SHOW) //Never hidden
 			return FALSE
-		if(GENITAL_HIDDEN_BY_CLOTHES)
+		if(GENITAL_HIDDEN_BY_CLOTHES) //Hidden if the relevant body parts are covered by clothes or underwear
+			//Do they have a Uniform or Suit that covers them?
 			if((H.w_uniform && H.w_uniform.body_parts_covered & genital_location) || (H.wear_suit && H.wear_suit.body_parts_covered & genital_location))
 				return TRUE
-			if(istype(H.wear_suit, /obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown)) //Until this file has a way to force-hide from items, this'll have to do
+			//Do they have a Hospital Gown covering them? (The gown has no body_parts_covered so needs its own check)
+			if(istype(H.wear_suit, /obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown))
 				return TRUE
-			else if (H.underwear != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_UNDIES) && genital_location == CHEST)	//They're wearing not-hidden underwear, let's make sure it doesn't cover the chest (i.e. Bikinis/one-pieces)
-				var/datum/sprite_accessory/underwear/possible_chest_covering_underwear = GLOB.underwear_list[H.underwear]
-				if(possible_chest_covering_underwear?.covers_chest == TRUE) //covers_chest is a var added in `modular_skyrat\modules\customization\modules\mob\dead\new_player\sprite_accessories.dm`
+
+			//Are they wearing an Undershirt?
+			if(H.undershirt != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_SHIRT))
+				var/datum/sprite_accessory/undershirt/worn_undershirt = GLOB.undershirt_list[H.undershirt]
+				//Does this Undershirt cover a relevant slot?
+				if(genital_location == CHEST) //(Undershirt always covers chest)
 					return TRUE
+				else if(genital_location == GROIN && worn_undershirt.hides_groin)
+					return TRUE
+			//Undershirt didn't cover them, are they wearing Underwear?
+			if(H.underwear != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
+				var/datum/sprite_accessory/underwear/worn_underwear = GLOB.underwear_list[H.underwear]
+				//Does this Underwear cover a relevant slot?
+				if(genital_location == GROIN) //(Underwear always covers groin)
+					return TRUE
+				else if(genital_location == CHEST && worn_underwear.hides_breasts)
+					return TRUE
+
+			//Nothing they're wearing will cover them
 			else
 				return FALSE
+		//If not always shown or hidden by clothes, then it defaults to always hidden
 		else
 			return TRUE
 
@@ -51,11 +69,6 @@
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
 	var/can_have_sheath = TRUE
-
-/datum/sprite_accessory/genital/penis/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.underwear != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
-		return TRUE
-	. = ..()
 
 /datum/sprite_accessory/genital/penis/get_special_icon(mob/living/carbon/human/H)
 	var/returned = icon
@@ -132,11 +145,6 @@
 	genetic = TRUE
 	var/has_size = TRUE
 
-/datum/sprite_accessory/genital/testicles/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.underwear != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
-		return TRUE
-	. = ..()
-
 /datum/sprite_accessory/genital/testicles/get_special_icon(mob/living/carbon/human/H)
 	var/returned = icon
 	if(H.dna.species.mutant_bodyparts["taur"] && H.dna.features["penis_taur_mode"])
@@ -180,11 +188,6 @@
 	relevent_layers = list(BODY_FRONT_LAYER)
 	genetic = TRUE
 	var/alt_aroused = TRUE
-
-/datum/sprite_accessory/genital/vagina/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.underwear != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
-		return TRUE
-	. = ..()
 
 /datum/sprite_accessory/genital/vagina/none
 	icon_state = "none"
@@ -250,11 +253,6 @@
 	key = ORGAN_SLOT_ANUS
 	genetic = TRUE
 
-/datum/sprite_accessory/genital/anus/is_hidden(mob/living/carbon/human/owner, obj/item/bodypart/bodypart)
-	if(owner.underwear != "Nude" && !(owner.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
-		return TRUE
-	. = ..()
-
 /datum/sprite_accessory/genital/anus/none
 	icon_state = "none"
 	name = "None"
@@ -277,11 +275,6 @@
 	has_skintone_shading = TRUE
 	genital_location = CHEST
 	genetic = TRUE
-
-/datum/sprite_accessory/genital/breasts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.undershirt != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_SHIRT))
-		return TRUE
-	. = ..()
 
 /datum/sprite_accessory/genital/breasts/none
 	icon_state = "none"
