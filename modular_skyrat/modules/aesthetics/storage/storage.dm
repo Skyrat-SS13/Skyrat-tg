@@ -39,6 +39,9 @@
 /obj/item/storage/box/mothic_goods
 	icon = 'icons/obj/storage/box.dmi'
 
+/obj/item/storage/box/mothic_cans_sauces
+	icon = 'icons/obj/storage/box.dmi'
+
 /obj/item/storage/box/tiziran_meats
 	icon = 'icons/obj/storage/box.dmi'
 
