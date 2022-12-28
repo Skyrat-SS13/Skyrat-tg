@@ -82,8 +82,7 @@
 /obj/item/kirbyplants/photosynthetic
 	name = "photosynthetic potted plant"
 	desc = "A bioluminescent plant."
-	//icon_state = "plant-09" // ORIGINAL
-	icon_state = "plant-9" //SKYRAT EDIT CHANGE
+	icon_state = "plant-09"
 	light_color = COLOR_BRIGHT_BLUE
 	light_range = 3
 
