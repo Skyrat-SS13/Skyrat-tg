@@ -37,6 +37,7 @@
 	w_class = WEIGHT_CLASS_SMALL // Don't ask me why other cloth-related items are considered tiny, and not small like this one.
 	item_flags = NOBLUDGEON
 	resistance_flags = FLAMMABLE
+	flags_inv = SHOWSPRITEEARS // Only relevant when in head shape, but useful to keep around regardless.
 	/// The shape we're currently in.
 	var/shape = TOWEL_FOLDED
 	/// How many units of liquid can this towel store?
@@ -376,7 +377,7 @@
 		flags_inv &= ~HIDEHAIR
 
 	update_appearance()
-	update_slot_flags()
+	update_slot_related_flags()
 
 	if(!silent && user)
 		to_chat(user, span_notice(shape ? "You adjust \the [src] so that it can be worn over your [shape]." : "You fold \the [src] neatly."))
@@ -385,19 +386,23 @@
 /**
  * Helper proc to change the slot flags of the towel based on its shape.
  */
-/obj/item/towel/proc/update_slot_flags()
+/obj/item/towel/proc/update_slot_related_flags()
 	switch(shape)
 		if(TOWEL_FULL)
 			slot_flags = ITEM_SLOT_OCLOTHING
+			body_parts_covered = CHEST | GROIN | LEGS
 
 		if(TOWEL_WAIST)
 			slot_flags = ITEM_SLOT_OCLOTHING
+			body_parts_covered = GROIN | LEGS
 
 		if(TOWEL_HEAD)
 			slot_flags = ITEM_SLOT_HEAD
+			body_parts_covered = HEAD
 
 		else
 			slot_flags = NONE
+			body_parts_covered = NONE
 
 	update_slot_icon()
 
