@@ -54,8 +54,9 @@ GLOBAL_LIST_INIT(skyrat_plasteel_recipes, list(
 // Rods
 
 GLOBAL_LIST_INIT(skyrat_rod_recipes, list(
+	new/datum/stack_recipe("towel bin", /obj/structure/towel_bin/empty, 2, time = 0.5 SECONDS, one_per_turf = FALSE),
 	new/datum/stack_recipe("guard rail", /obj/structure/deployable_barricade/guardrail, 2, time = 1 SECONDS, on_solid_ground = TRUE),
-	new/datum/stack_recipe("wrestling ropes", /obj/structure/railing/wrestling, 3, time = 18, window_checks = TRUE),
+	new/datum/stack_recipe("wrestling ropes", /obj/structure/railing/wrestling, 3, time = 1.8 SECONDS, window_checks = TRUE),
 ))
 
 /obj/item/stack/rods/get_main_recipes()
