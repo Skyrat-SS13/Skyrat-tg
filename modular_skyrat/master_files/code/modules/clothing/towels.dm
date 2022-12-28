@@ -60,14 +60,20 @@
 	. = ..()
 
 	if(wet)
-		. += span_notice("It appears to be wet.\n")
+		. += span_notice("\nIt appears to be wet.")
+
 
 	if(!ishuman(user) && !iscyborg(user))
 		return
 
+	. += "" // Just for an empty line
+
 	var/in_hands = TRUE
 	if(ishuman(user))
 		in_hands = user.get_active_held_item() == src || user.get_inactive_held_item() == src
+
+		if(in_hands)
+			. += span_notice("<b>Use in hand</b> to shape \the [src] into something different.")
 
 	if(in_hands && shape != TOWEL_FOLDED)
 		. += span_notice("<b>Ctrl-click</b> to [wet && ishuman(user) ? "wring parts of the liquids out of \the [src]" : "fold \the [src] neatly"].")
@@ -80,7 +86,7 @@
 
 	if(wet)
 		. += span_notice("<b>Right-click</b> \the [src] on a bucket to wring the liquids out of it and transfer a portion of them to the bucket.")
-		. += span_notice("Wash in a washing machine in order to clean [src].")
+		. += span_notice("<b>Wash in a washing machine</b> in order to clean [src].")
 
 
 /obj/item/towel/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
@@ -88,13 +94,18 @@
 		context[SCREENTIP_CONTEXT_LMB] = "Shred into cloth"
 
 	if(ishuman(user))
+		if((shape == TOWEL_FULL || shape == TOWEL_WAIST))
+			context[SCREENTIP_CONTEXT_ALT_LMB] = "Adjust Fit"
+
 		var/mob/living/carbon/human/towel_user = user
 		var/worn = towel_user.wear_suit == src || towel_user.head == src
-		if(!worn || (shape == TOWEL_FULL || shape == TOWEL_WAIST))
-			context[SCREENTIP_CONTEXT_ALT_LMB] = "Change shape"
 
 		if(!worn)
+			context[SCREENTIP_CONTEXT_LMB] = "Change Shape"
 			context[SCREENTIP_CONTEXT_CTRL_LMB] = wet ? "Wring" : "Fold"
+
+	if(iscyborg(user))
+		context[SCREENTIP_CONTEXT_CTRL_LMB] = wet ? "Wring" : "Fold"
 
 	return CONTEXTUAL_SCREENTIP_SET
 
@@ -158,7 +169,7 @@
 	if(!length(worn_options))
 		for(var/variant in list(TOWEL_FULL, TOWEL_WAIST, TOWEL_HEAD))
 			var/datum/radial_menu_choice/option = new
-			var/image/variant_image = image(icon = TOWEL_WORN_ICON, icon_state = "[base_icon_state]-[variant]")
+			var/image/variant_image = image(icon = TOWEL_OBJ_ICON, icon_state = "[base_icon_state]-[variant]")
 
 			option.image = variant_image
 			worn_options[capitalize(variant)] = option
@@ -219,7 +230,7 @@
 	if(. == FALSE)
 		return
 
-	if(!(shape == TOWEL_FULL || TOWEL_WAIST))
+	if(!(shape == TOWEL_FULL || shape == TOWEL_WAIST))
 		return FALSE
 
 	if(!ishuman(user))
@@ -305,7 +316,8 @@
 /obj/item/towel/dropped(mob/user, silent)
 	. = ..()
 
-	make_used(user, silent = TRUE)
+	if(!ishuman(loc) && shape != TOWEL_FOLDED)
+		make_used(user, silent = TRUE)
 
 
 /**
@@ -327,6 +339,11 @@
 	wet = new_wetness
 
 	color = wet ? "#CCCCCC" : null
+
+	if(wet) // This is to allow it to show what it contains, without saying that it contains nothing when it's dry.
+		reagents.flags |= TRANSPARENT
+	else
+		reagents.flags &= ~TRANSPARENT
 
 	if(update_visuals)
 		update_appearance()
@@ -353,10 +370,10 @@
 
 	icon_state = new_icon_state
 
-	if(shape == TOWEL_FOLDED || shape == TOWEL_USED)
-		icon = TOWEL_OBJ_ICON
+	if(shape == TOWEL_HEAD)
+		flags_inv |= HIDEHAIR
 	else
-		icon = TOWEL_WORN_ICON
+		flags_inv &= ~HIDEHAIR
 
 	update_appearance()
 	update_slot_flags()
@@ -491,6 +508,7 @@
 	var/datum/reagents/tempr = liquids.take_reagents_flat(free_space)
 	tempr.trans_to(reagents, tempr.total_volume)
 	set_wet(reagents.total_volume)
+	make_used(user, silent = TRUE)
 
 	to_chat(user, span_notice("You soak \the [src] with some liquids."))
 
