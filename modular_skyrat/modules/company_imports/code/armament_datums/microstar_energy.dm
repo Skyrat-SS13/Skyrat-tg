@@ -145,7 +145,7 @@
 	stock_mult = 3
 
 /datum/armament_entry/company_import/microstar/mcr_upgrades/bluespace_part_kit
-	name = "microfusion advanced parts"
+	name = "microfusion bluespace parts"
 	item_type = /obj/item/storage/secure/briefcase/white/mcr_parts/bluespace
 	lower_cost = CARGO_CRATE_VALUE * 6
 	upper_cost = CARGO_CRATE_VALUE * 8

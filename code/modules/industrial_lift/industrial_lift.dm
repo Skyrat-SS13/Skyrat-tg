@@ -389,7 +389,7 @@ GLOBAL_LIST_EMPTY(lifts)
 					continue
 				to_chat(collided, span_userdanger("[src] collides into you!"))
 				playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
-				var/damage = rand(5, 10) * collision_lethality
+				var/damage = rand(9, 28) * collision_lethality
 				collided.apply_damage(2 * damage, BRUTE, BODY_ZONE_HEAD)
 				collided.apply_damage(2 * damage, BRUTE, BODY_ZONE_CHEST)
 				collided.apply_damage(0.5 * damage, BRUTE, BODY_ZONE_L_LEG)
@@ -779,9 +779,8 @@ GLOBAL_LIST_EMPTY(lifts)
 	name = "tram"
 	desc = "A tram for tramversing the station."
 	icon = 'icons/turf/floors.dmi'
-	icon_state = "titanium_yellow"
+	icon_state = "titanium"
 	layer = TRAM_FLOOR_LAYER
-	plane = GAME_PLANE
 	base_icon_state = null
 	smoothing_flags = NONE
 	smoothing_groups = null
@@ -802,6 +801,9 @@ GLOBAL_LIST_EMPTY(lifts)
 	var/horizontal_speed = 0.5
 
 	create_multitile_platform = TRUE
+
+/obj/structure/industrial_lift/tram/white
+	icon_state = "titanium_white"
 
 /obj/structure/industrial_lift/tram/AddItemOnLift(datum/source, atom/movable/AM)
 	. = ..()
