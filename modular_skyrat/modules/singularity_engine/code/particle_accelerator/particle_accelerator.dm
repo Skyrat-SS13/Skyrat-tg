@@ -20,7 +20,7 @@
 	name = "particle accelerator"
 	desc = "Part of a Particle Accelerator."
 	icon = 'modular_skyrat/modules/singularity_engine/icons/particle_accelerator.dmi'
-	icon_state = "none"
+	icon_state = "power_box"
 	anchored = FALSE
 	density = TRUE
 	max_integrity = 500

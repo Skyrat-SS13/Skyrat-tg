@@ -1413,8 +1413,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	if(unique_reskin[pick][RESKIN_ICON_STATE])
 		if(is_swappable)
-			reskinned_glasses.current_sprite_state = unique_reskin[pick][RESKIN_ICON_STATE]
-			icon_state = reskinned_glasses.current_sprite_state + "_R"
+			reskinned_glasses.base_icon_state = unique_reskin[pick][RESKIN_ICON_STATE]
+			icon_state = reskinned_glasses.base_icon_state + "_R"
 		else
 			icon_state = unique_reskin[pick][RESKIN_ICON_STATE]
 
