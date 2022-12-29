@@ -4,6 +4,27 @@
 	appearance.color = GLOB.emissive_color
 	return appearance
 
+<<<<<<< HEAD
+=======
+// This is a semi hot proc, so we micro it. saves maybe 150ms
+// sorry :)
+/proc/fast_emissive_blocker(atom/make_blocker)
+	// Note: alpha doesn't "do" anything, since it's overriden by the color set shortly after
+	// Consider removing it someday?
+	var/mutable_appearance/blocker = new()
+	blocker.icon = make_blocker.icon
+	blocker.icon_state = make_blocker.icon_state
+	// blocker.layer = FLOAT_LAYER // Implied, FLOAT_LAYER is default for appearances
+	blocker.appearance_flags |= make_blocker.appearance_flags | EMISSIVE_APPEARANCE_FLAGS
+	blocker.dir = make_blocker.dir
+	blocker.color = GLOB.em_block_color
+
+	// Note, we are ok with null turfs, that's not an error condition we'll just default to 0, the error would be
+	// Not passing ANYTHING in, key difference
+	SET_PLANE_EXPLICIT(blocker, EMISSIVE_PLANE, make_blocker)
+	return blocker
+
+>>>>>>> e874c2116a4 (Fixes emissives, starlight, and a filterrific bug (#72326))
 /// Produces a mutable appearance glued to the [EMISSIVE_PLANE] dyed to be the [EM_BLOCK_COLOR].
 /proc/emissive_blocker(icon, icon_state = "", atom/offset_spokesman, layer = FLOAT_LAYER, alpha = 255, appearance_flags = NONE, offset_const)
 	// Note: alpha doesn't "do" anything, since it's overriden by the color set shortly after
