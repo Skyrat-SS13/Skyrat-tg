@@ -45,7 +45,15 @@
 		name = "bunny"
 
 /datum/ai_controller/basic_controller/rabbit
+<<<<<<< HEAD
 	ai_traits = STOP_MOVING_WHEN_PULLED
+=======
+	blackboard = list(
+		BB_BASIC_MOB_FLEEING = TRUE,
+		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/ignore_faction(),
+	)
+	ai_traits = STOP_MOVING_WHEN_PULLED | STOP_ACTING_WHILE_DEAD
+>>>>>>> eb6c0eb37c0 (Dogs use the Pet Command system (#72045))
 	ai_movement = /datum/ai_movement/basic_avoidance
 	idle_behavior = /datum/idle_behavior/idle_random_walk
 	planning_subtrees = list(/datum/ai_planning_subtree/random_speech/rabbit)

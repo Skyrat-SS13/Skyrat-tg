@@ -1,5 +1,6 @@
-/datum/ai_controller/dog
+/datum/ai_controller/basic_controller/dog
 	blackboard = list(
+<<<<<<< HEAD
 		BB_SIMPLE_CARRY_ITEM = null,
 		BB_FETCH_TARGET = null,
 		BB_FETCH_DELIVER_TO = null,
@@ -9,15 +10,21 @@
 		BB_DOG_PLAYING_DEAD = FALSE,
 		BB_DOG_HARASS_TARGET = null,
 		BB_DOG_HARASS_FRUSTRATION = null,
+=======
+		BB_DOG_HARASS_HARM = TRUE,
+>>>>>>> eb6c0eb37c0 (Dogs use the Pet Command system (#72045))
 		BB_VISION_RANGE = AI_DOG_VISION_RANGE,
+		BB_PET_TARGETTING_DATUM = new /datum/targetting_datum/not_friends(),
 	)
-	ai_movement = /datum/ai_movement/jps
+	ai_movement = /datum/ai_movement/basic_avoidance
 	idle_behavior = /datum/idle_behavior/idle_dog
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/random_speech/dog,
-		/datum/ai_planning_subtree/dog,
+		/datum/ai_planning_subtree/pet_planning,
+		/datum/ai_planning_subtree/dog_harassment,
 	)
 
+<<<<<<< HEAD
 	COOLDOWN_DECLARE(heel_cooldown)
 	COOLDOWN_DECLARE(command_cooldown)
 
@@ -285,11 +292,14 @@
 			queue_behavior(/datum/ai_behavior/harass)
 
 
+=======
+>>>>>>> eb6c0eb37c0 (Dogs use the Pet Command system (#72045))
 /**
  * Same thing but with make tiny corgis and use access cards.
  */
-/datum/ai_controller/dog/corgi
+/datum/ai_controller/basic_controller/dog/corgi
 	blackboard = list(
+<<<<<<< HEAD
 		BB_SIMPLE_CARRY_ITEM = null,
 		BB_FETCH_TARGET = null,
 		BB_FETCH_DELIVER_TO = null,
@@ -299,19 +309,23 @@
 		BB_DOG_PLAYING_DEAD = FALSE,
 		BB_DOG_HARASS_TARGET = null,
 		BB_DOG_HARASS_FRUSTRATION = null,
+=======
+		BB_DOG_HARASS_HARM = TRUE,
+>>>>>>> eb6c0eb37c0 (Dogs use the Pet Command system (#72045))
 		BB_VISION_RANGE = AI_DOG_VISION_RANGE,
-
+		BB_PET_TARGETTING_DATUM = new /datum/targetting_datum/not_friends(),
 		BB_BABIES_PARTNER_TYPES = list(/mob/living/basic/pet/dog),
 		BB_BABIES_CHILD_TYPES = list(/mob/living/basic/pet/dog/corgi/puppy = 95, /mob/living/basic/pet/dog/corgi/puppy/void = 5),
 	)
 
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/random_speech/dog,
-		/datum/ai_planning_subtree/make_babies,
-		/datum/ai_planning_subtree/dog,
+		/datum/ai_planning_subtree/make_babies, // Ian WILL prioritise sex over following your instructions
+		/datum/ai_planning_subtree/pet_planning,
+		/datum/ai_planning_subtree/dog_harassment,
 	)
 
-/datum/ai_controller/dog/corgi/get_access()
+/datum/ai_controller/basic_controller/dog/corgi/get_access()
 	var/mob/living/basic/pet/dog/corgi/corgi_pawn = pawn
 	if(!istype(corgi_pawn))
 		return

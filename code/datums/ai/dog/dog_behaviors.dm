@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /datum/ai_behavior/battle_screech/dog
 	screeches = list("barks","howls")
 
@@ -162,56 +163,65 @@
 
 /// This behavior involves either eating a snack we can reach, or begging someone holding a snack
 /datum/ai_behavior/harass
+=======
+/**
+ * Pursue the target, growl if we're close, and bite if we're adjacent
+ * Dogs are actually not very aggressive and won't attack unless you approach them
+ * Adds a floor to the melee damage of the dog, as most pet dogs don't actually have any melee strength
+ */
+/datum/ai_behavior/basic_melee_attack/dog
+	action_cooldown = 0.8 SECONDS
+>>>>>>> eb6c0eb37c0 (Dogs use the Pet Command system (#72045))
 	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_MOVE_AND_PERFORM
 	required_distance = 1
 
-/datum/ai_behavior/harass/perform(delta_time, datum/ai_controller/controller)
-	. = ..()
+/datum/ai_behavior/basic_melee_attack/dog/perform(delta_time, datum/ai_controller/controller, target_key, targetting_datum_key, hiding_location_key)
+	controller.behavior_cooldowns[src] = world.time + action_cooldown
 	var/mob/living/living_pawn = controller.pawn
-	if(!istype(living_pawn) || !(isturf(living_pawn.loc) || HAS_TRAIT(living_pawn, TRAIT_AI_BAGATTACK)))
+	if(!(isturf(living_pawn.loc) || HAS_TRAIT(living_pawn, TRAIT_AI_BAGATTACK))) // Void puppies can attack from inside bags
+		finish_action(controller, FALSE, target_key, targetting_datum_key, hiding_location_key)
 		return
 
-	var/datum/weakref/harass_ref = controller.blackboard[BB_DOG_HARASS_TARGET]
-	var/atom/movable/harass_target = harass_ref.resolve()
-	if(!harass_target || !can_see(living_pawn, harass_target, length=AI_DOG_VISION_RANGE))
-		finish_action(controller, FALSE)
+	// Unfortunately going to repeat this check in parent call but what can you do
+	var/datum/weakref/weak_target = controller.blackboard[target_key]
+	var/atom/target = weak_target?.resolve()
+	var/datum/targetting_datum/targetting_datum = controller.blackboard[targetting_datum_key]
+	if (!targetting_datum.can_attack(living_pawn, target))
+		finish_action(controller, FALSE, target_key, targetting_datum_key, hiding_location_key)
 		return
 
-	if(controller.blackboard[BB_DOG_FRIENDS][harass_ref])
-		living_pawn.visible_message(span_danger("[living_pawn] looks sideways at [harass_target] for a moment, then shakes [living_pawn.p_their()] head and ceases aggression."))
-		finish_action(controller, FALSE)
+	if (!in_range(living_pawn, target))
+		growl_at(living_pawn, target, delta_time)
 		return
 
-	var/mob/living/living_target = harass_target
-	if(istype(living_target) && (living_target.stat || HAS_TRAIT(living_target, TRAIT_FAKEDEATH)))
-		finish_action(controller, TRUE)
+	if(!controller.blackboard[BB_DOG_HARASS_HARM])
+		paw_harmlessly(living_pawn, target, delta_time)
 		return
 
-	if(!controller.blackboard[BB_DOG_HARASS_FRUSTRATION])
-		controller.blackboard[BB_DOG_HARASS_FRUSTRATION] = world.time
-	else if(controller.blackboard[BB_DOG_HARASS_FRUSTRATION] + AI_DOG_HARASS_FRUSTRATE_TIME < world.time) // if we haven't actually bit them in a while, give up
-		living_pawn.visible_message(span_danger("[living_pawn] yawns and seems to lose interest in harassing [harass_target]."))
-		finish_action(controller, FALSE)
+	// Give Ian some teeth
+	var/old_melee_lower = living_pawn.melee_damage_lower
+	var/old_melee_upper = living_pawn.melee_damage_upper
+	living_pawn.melee_damage_lower = max(5, old_melee_lower)
+	living_pawn.melee_damage_upper = max(10, old_melee_upper)
+
+	. = ..() // Bite time
+
+	living_pawn.melee_damage_lower = old_melee_lower
+	living_pawn.melee_damage_upper = old_melee_upper
+
+/// Swat at someone we don't like but won't hurt
+/datum/ai_behavior/basic_melee_attack/dog/proc/paw_harmlessly(mob/living/living_pawn, atom/target, delta_time)
+	if(!DT_PROB(20, delta_time))
 		return
+	living_pawn.do_attack_animation(target, ATTACK_EFFECT_DISARM)
+	playsound(target, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
+	target.visible_message(span_danger("[living_pawn] paws ineffectually at [target]!"), span_danger("[living_pawn] paws ineffectually at you!"))
 
-	// subtypes of this behavior can change behavior for how eager/averse the pawn is to attack the target as opposed to falling back/making noise/getting help
-	if(in_range(living_pawn, living_target))
-		attack(controller, living_target)
-	else if(DT_PROB(15, delta_time))
-		living_pawn.manual_emote("[pick("barks", "growls", "stares")] menacingly at [harass_target]!")
-		if(DT_PROB(40, delta_time))
-			playsound(living_pawn, pick('sound/creatures/dog/growl1.ogg', 'sound/creatures/dog/growl2.ogg'), 50, TRUE, -1)
-
-/datum/ai_behavior/harass/finish_action(datum/ai_controller/controller, succeeded)
-	. = ..()
-	controller.blackboard[BB_DOG_HARASS_TARGET] = null
-	controller.blackboard[BB_DOG_HARASS_FRUSTRATION] = null
-
-/// A proc representing when the mob is pushed to actually attack the target. Again, subtypes can be used to represent different attacks from different animals, or it can be some other generic behavior
-/datum/ai_behavior/harass/proc/attack(datum/ai_controller/controller, mob/living/living_target)
-	var/mob/living/living_pawn = controller.pawn
-	if(!istype(living_pawn))
+/// Let them know we mean business
+/datum/ai_behavior/basic_melee_attack/dog/proc/growl_at(mob/living/living_pawn, atom/target, delta_time)
+	if(!DT_PROB(15, delta_time))
 		return
+<<<<<<< HEAD
 
 	controller.blackboard[BB_DOG_HARASS_FRUSTRATION] = world.time
 
@@ -225,3 +235,9 @@
 
 	living_pawn.melee_damage_lower = old_melee_lower
 	living_pawn.melee_damage_upper = old_melee_upper
+=======
+	living_pawn.manual_emote("[pick("barks", "growls", "stares")] menacingly at [target]!")
+	if(!DT_PROB(40, delta_time))
+		return
+	playsound(living_pawn, pick('sound/creatures/dog/growl1.ogg', 'sound/creatures/dog/growl2.ogg'), 50, TRUE, -1)
+>>>>>>> eb6c0eb37c0 (Dogs use the Pet Command system (#72045))
