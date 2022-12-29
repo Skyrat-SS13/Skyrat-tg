@@ -55,15 +55,22 @@ GLOBAL_LIST_INIT(potential_indicators, list(
 /datum/component/status_indicator/RegisterWithParent()
 	attached_mob = parent
 	// The Basics
-	RegisterSignal(parent, COMSIG_LIVING_DEATH, .proc/cut_indicators_overlays)
-	RegisterSignal(parent, COMSIG_CARBON_HEALTH_UPDATE, .proc/status_indicator_evaluate)
-	RegisterSignal(parent, COMSIG_LIVING_LIFE, .proc/check_indicators)
+	RegisterSignal(parent, COMSIG_LIVING_DEATH, PROC_REF(cut_indicators_overlays))
+	RegisterSignal(parent, COMSIG_CARBON_HEALTH_UPDATE, PROC_REF(status_indicator_evaluate))
+	RegisterSignal(parent, COMSIG_LIVING_LIFE, PROC_REF(check_indicators))
 	// When things actually happen
-	RegisterSignal(parent, COMSIG_LIVING_STATUS_STUN, .proc/status_indicator_evaluate)
-	RegisterSignal(parent, COMSIG_LIVING_STATUS_KNOCKDOWN, .proc/status_indicator_evaluate)
-	RegisterSignal(parent, COMSIG_LIVING_STATUS_PARALYZE, .proc/status_indicator_evaluate)
-	RegisterSignal(parent, COMSIG_LIVING_STATUS_IMMOBILIZE, .proc/status_indicator_evaluate)
-	RegisterSignal(parent, COMSIG_LIVING_STATUS_UNCONSCIOUS, .proc/status_indicator_evaluate)
+	RegisterSignal(parent, COMSIG_LIVING_STATUS_STUN, PROC_REF(status_indicator_evaluate))
+	RegisterSignal(parent, COMSIG_LIVING_STATUS_KNOCKDOWN, PROC_REF(status_indicator_evaluate))
+	RegisterSignal(parent, COMSIG_LIVING_STATUS_PARALYZE, PROC_REF(status_indicator_evaluate))
+	RegisterSignal(parent, COMSIG_LIVING_STATUS_IMMOBILIZE, PROC_REF(status_indicator_evaluate))
+	RegisterSignal(parent, COMSIG_LIVING_STATUS_UNCONSCIOUS, PROC_REF(status_indicator_evaluate))
+	RegisterSignal(parent, COMSIG_MOB_LOGIN, PROC_REF(apply_pref_on_login))
+
+/datum/component/status_indicator/proc/apply_pref_on_login()
+	var/atom/movable/screen/plane_master/game_world_upper_fov_hidden/status_indicator/local_status = locate() in attached_mob.client.screen
+	if(local_status)
+		. = attached_mob.client.prefs.read_preference(/datum/preference/toggle/enable_status_indicators)
+		local_status.alpha = (.) ? 255 : 0
 
 /datum/component/status_indicator/UnregisterFromParent()
 	QDEL_NULL(status_indicators)
@@ -187,7 +194,7 @@ GLOBAL_LIST_INIT(potential_indicators, list(
 
 		// This is a semi-HUD element, in a similar manner as medHUDs, in that they're 'above' everything else in the world,
 		// but don't pierce obfuscation layers such as blindness or darkness, unlike actual HUD elements like inventory slots.
-		indicator.plane = SEETHROUGH_PLANE
+		indicator.plane = GAME_PLANE_UPPER_FOV_HIDDEN
 		indicator.layer = STATUS_LAYER
 		indicator.appearance_flags = PIXEL_SCALE|TILE_BOUND|NO_CLIENT_COLOR|RESET_COLOR|RESET_ALPHA|RESET_TRANSFORM|KEEP_APART
 		indicator.pixel_y = y_offset
@@ -204,7 +211,7 @@ GLOBAL_LIST_INIT(potential_indicators, list(
 	var/mysize = (passed_mob.dna?.current_body_size ? passed_mob.dna.current_body_size : DEFAULT_MOB_SCALE)
 	return mysize
 
-/atom/movable/screen/plane_master/seethrough/status_indicator
+/atom/movable/screen/plane_master/game_world_upper_fov_hidden/status_indicator
 	name = "Status Indicator Plane"
 	documentation = "Status Indicator Plane"
 	plane = SEETHROUGH_PLANE
