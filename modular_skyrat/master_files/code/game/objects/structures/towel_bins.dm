@@ -22,12 +22,10 @@
 
 /obj/structure/towel_bin/examine(mob/user)
 	. = ..()
-	if(amount < 1)
+	if(amount <= 0)
 		. += "There are no towels in the bin."
-	else if(amount == 1)
-		. += "There is one towel in the bin."
 	else
-		. += "There are [amount] towels in the bin."
+		. += "There [amount == 1 ? "is one towel" : "are [amount] towels"] in the bin."
 
 
 /obj/structure/towel_bin/update_icon_state()
