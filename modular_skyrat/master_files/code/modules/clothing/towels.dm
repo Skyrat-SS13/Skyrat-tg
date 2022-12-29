@@ -74,19 +74,19 @@
 		in_hands = user.get_active_held_item() == src || user.get_inactive_held_item() == src
 
 		if(in_hands)
-			. += span_notice("<b>Use in hand</b> to shape \the [src] into something different.")
+			. += span_notice("<b>Use in hand</b> to shape [src] into something different.")
 
 	if(in_hands && shape != TOWEL_FOLDED)
-		. += span_notice("<b>Ctrl-click</b> to [wet && ishuman(user) ? "wring parts of the liquids out of \the [src]" : "fold \the [src] neatly"].")
+		. += span_notice("<b>Ctrl-click</b> to [wet && ishuman(user) ? "wring parts of the liquids out of [src]" : "fold [src] neatly"].")
 
 	if(iscyborg(user))
 		return
 
 	if(shape == TOWEL_FULL || shape == TOWEL_WAIST)
-		. += span_notice("<b>Alt-click</b> to adjust the fit of \the [src].")
+		. += span_notice("<b>Alt-click</b> to adjust the fit of [src].")
 
 	if(wet)
-		. += span_notice("<b>Right-click</b> \the [src] on a bucket to wring the liquids out of it and transfer a portion of them to the bucket.")
+		. += span_notice("<b>Right-click</b> [src] on a bucket to wring the liquids out of it and transfer a portion of them to the bucket.")
 		. += span_notice("<b>Wash in a washing machine</b> in order to clean [src].")
 
 
@@ -132,20 +132,20 @@
 
 	var/cleaning_themselves = target_mob == user
 
-	target_mob.visible_message(span_notice("[user] starts drying [cleaning_themselves ? "themselves" : target_mob] up with \the [src]."), span_notice("[cleaning_themselves ? "You start drying yourself" : "[user] starts drying you "] up with \the [src]."), ignored_mobs = cleaning_themselves ? null : user)
+	target_mob.visible_message(span_notice("[user] starts drying [cleaning_themselves ? "themselves" : target_mob] up with [src]."), span_notice("[cleaning_themselves ? "You start drying yourself" : "[user] starts drying you "] up with \the [src]."), ignored_mobs = cleaning_themselves ? null : user)
 
 	if(!cleaning_themselves)
-		to_chat(user, span_notice("You start drying [target_mob] up with \the [src]."))
+		to_chat(user, span_notice("You start drying [target_mob] up with [src]."))
 
 	if(!do_after(user, 2 SECONDS, src))
 		to_chat(user, span_notice("You stop drying [target_mob]."))
 		return
 
 
-	target_mob.visible_message(span_notice("[user] finishes drying [cleaning_themselves ? "themselves" : target_mob] up with \the [src]."), span_notice("[cleaning_themselves ? "You finish drying yourself" : "[user] finishes drying you "] up with \the [src]."), ignored_mobs = cleaning_themselves ? null : user)
+	target_mob.visible_message(span_notice("[user] finishes drying [cleaning_themselves ? "themselves" : target_mob] up with [src]."), span_notice("[cleaning_themselves ? "You finish drying yourself" : "[user] finishes drying you "] up with \the [src]."), ignored_mobs = cleaning_themselves ? null : user)
 
 	if(!cleaning_themselves)
-		to_chat(user, span_notice("You finish drying [target_mob] up with \the [src]."))
+		to_chat(user, span_notice("You finish drying [target_mob] up with [src]."))
 
 	var/water_to_remove = min(max(-target_mob.fire_stacks, 0), free_space)
 
@@ -259,7 +259,7 @@
 		to_chat(user, span_warning("You can't fold a towel that's already folded!"))
 		return
 
-	if(!ishuman(user) || !iscyborg(user))
+	if(ishuman(user) || iscyborg(user))
 		if(iscyborg(user) && wet) // Cyborgs can't wring towels.
 			to_chat(user, span_warning("Folding a wet towel doesn't really make sense. You stop yourself before doing that."))
 			return
@@ -288,14 +288,14 @@
 
 		var/turf/current_turf = get_turf(src) // It's done by a user so it should always have a turf.
 
-		var/datum/reagents/tempr = new(max_reagent_volume)
+		var/datum/reagents/temp_holder = new(max_reagent_volume)
 		var/transfer_amount = min(reagents.total_volume, TOWEL_WRING_AMOUNT)
 
-		transfer_towel_reagents_to(tempr, transfer_amount, user, loss_factor = TOWEL_WRING_LOSS_FACTOR, make_used = TRUE)
+		transfer_towel_reagents_to(temp_holder, transfer_amount, user, loss_factor = TOWEL_WRING_LOSS_FACTOR, make_used = TRUE)
 
-		current_turf.add_liquid_from_reagents(tempr)
+		current_turf.add_liquid_from_reagents(temp_holder)
 
-		qdel(tempr)
+		qdel(temp_holder)
 
 		user.visible_message(span_warning("[user] wrings [src], making a mess on \the [current_turf]!"), span_warning("You wring [src], making a mess on \the [current_turf]!"))
 
@@ -367,9 +367,8 @@
 		return
 
 	shape = new_shape
-	var/new_icon_state = "[base_icon_state][shape ? "-[shape]" : ""]"
 
-	icon_state = new_icon_state
+	icon_state = "[base_icon_state][shape ? "-[shape]" : ""]"
 
 	if(shape == TOWEL_HEAD)
 		flags_inv |= HIDEHAIR
@@ -380,7 +379,7 @@
 	update_slot_related_flags()
 
 	if(!silent && user)
-		to_chat(user, span_notice(shape ? "You adjust \the [src] so that it can be worn over your [shape]." : "You fold \the [src] neatly."))
+		to_chat(user, span_notice(shape ? "You adjust [src] so that it can be worn over your [shape]." : "You fold [src] neatly."))
 
 
 /**
@@ -510,14 +509,14 @@
 		to_chat(user, span_warning("Your [src] can't absorb any more liquid!"))
 		return TRUE
 
-	var/datum/reagents/tempr = liquids.take_reagents_flat(free_space)
-	tempr.trans_to(reagents, tempr.total_volume)
+	var/datum/reagents/temp_holder = liquids.take_reagents_flat(free_space)
+	temp_holder.trans_to(reagents, temp_holder.total_volume)
 	set_wet(reagents.total_volume)
 	make_used(user, silent = TRUE)
 
 	to_chat(user, span_notice("You soak \the [src] with some liquids."))
 
-	qdel(tempr)
+	qdel(temp_holder)
 	user.changeNext_move(CLICK_CD_MELEE)
 	return TRUE
 
