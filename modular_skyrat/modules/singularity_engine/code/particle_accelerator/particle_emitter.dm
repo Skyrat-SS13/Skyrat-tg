@@ -2,7 +2,7 @@
 	name = "EM containment grid"
 	desc = "This launches the alpha particles, might not want to stand near this end."
 	icon = 'modular_skyrat/modules/singularity_engine/icons/particle_accelerator.dmi'
-	icon_state = "none"
+	icon_state = "emitter_center"
 	var/fire_delay = 50
 	var/last_shot = 0
 
