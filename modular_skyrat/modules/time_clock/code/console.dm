@@ -1,6 +1,8 @@
 /obj/machinery/time_clock
 	name = "PTO console"
 	desc = "Used to clock in and clock out."
+	icon = 'modular_skyrat/modules/time_clock/icons/machinery/console.dmi'
+	icon_state = "timeclock"
 
 	///Is the console locked?
 	var/locked = FALSE
@@ -21,6 +23,7 @@
 		return FALSE
 
 	inserted_id = used_item
+	icon_state = "timeclock_card"
 
 /obj/machinery/time_clock/AltClick(mob/user)
 	. = ..()
@@ -32,7 +35,8 @@
 		to_chat(user, span_warning("The [src] lacks an ID."))
 		return FALSE
 
-	eject_inserted_id(user)
+	if(!eject_inserted_id(user))
+		return FALSE
 
 ///Ejects the ID stored inside of the parent machine, if there is one.
 /obj/machinery/time_clock/proc/eject_inserted_id(mob/recepient)
@@ -43,5 +47,7 @@
 	recepient.put_in_hands(inserted_id)
 
 	inserted_id = FALSE
+	icon_state = "timeclock"
+
 
 
