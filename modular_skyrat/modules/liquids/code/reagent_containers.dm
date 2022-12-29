@@ -40,7 +40,7 @@
 
 	var/datum/reagents/tempr = liquids.take_reagents_flat(desired_transfer)
 	tempr.trans_to(reagents, tempr.total_volume)
-	to_chat(user, span_notice("You scoop up around [amount_per_transfer_from_this] units of liquids with \the [src]."))
+	to_chat(user, span_notice("You scoop up around [amount_per_transfer_from_this] units of liquids with [src]."))
 	qdel(tempr)
 	user.changeNext_move(CLICK_CD_MELEE)
 	return TRUE
