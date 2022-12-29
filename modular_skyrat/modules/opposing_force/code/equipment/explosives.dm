@@ -70,8 +70,3 @@
 	name = "Flashbang"
 	item_type = /obj/item/grenade/flashbang
 	description = "A flash-and-sonic stun grenade, useful for non-lethally incapacitating crowds."
-
-/datum/opposing_force_equipment/bomb/goosenade
-	name = "Flock of Geese"
-	item_type = /obj/item/grenade/clusterbuster/spawner_goose
-	description = "A grenade that releases a flock of geese upon activation. Beware the geese."

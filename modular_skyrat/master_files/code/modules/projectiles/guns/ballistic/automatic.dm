@@ -333,7 +333,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	inhand_icon_state = "arg"
 	mag_type = /obj/item/ammo_box/magazine/recharge
-	mag_display_ammo = TRUE
+	empty_indicator = TRUE
 	fire_delay = 2
 	can_suppress = FALSE
 	burst_size = 0

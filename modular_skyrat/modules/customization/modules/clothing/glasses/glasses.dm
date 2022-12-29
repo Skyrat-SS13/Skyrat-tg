@@ -10,24 +10,25 @@
 	. = ..()
 	if(.)
 		return
+
 	if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE, floor_okay = !iscyborg(user)))
 		return
-	else
-		switcheye()
+
+	switcheye()
+
 
 /obj/item/clothing/glasses/examine(mob/user)
 	. = ..()
 	if(can_switch_eye)
-		if(current_eye == "_L")
-			. += "Ctrl-click on [src] to wear it over your right eye."
-		else
-			. += "Ctrl-click on [src] to wear it over your left eye."
+		. += "Ctrl-click on [src] to wear it over your [current_eye == "_R" ? "left" : "right"] eye."
+
 
 /obj/item/clothing/glasses/verb/eyepatch_switcheye()
 	set name = "Switch Eyepatch Side"
 	set category = null
 	set src in usr
 	switcheye()
+
 
 /obj/item/clothing/glasses/proc/switcheye()
 	if(!can_use(usr))
@@ -36,26 +37,22 @@
 		to_chat(usr, span_warning("You cannot wear this any differently!"))
 		return
 	eyepatch_do_switch()
-	if(current_eye == "_L")
-		to_chat(usr, span_notice("You adjust the eyepatch to wear it over your left eye."))
-	else if(current_eye == "_R")
-		to_chat(usr, span_notice("You adjust the eyepatch to wear it over your right eye."))
+
+	to_chat(usr, span_notice("You adjust the eyepatch to wear it over your [current_eye == "_L" ? "left" : "right"] eye."))
+
 	usr.update_worn_glasses()
 	usr.update_overlays()
 
+
 /obj/item/clothing/glasses/proc/eyepatch_do_switch()
-	if(current_eye == "_L")
-		current_eye = "_R"
-	else if(current_eye == "_R")
-		current_eye = "_L"
-	src.icon_state = current_sprite_state + current_eye
+	current_eye = current_eye == "_L" ? "_R" : "_L"
+
+	icon_state = base_icon_state + current_eye
 
 /obj/item/clothing/glasses/Initialize(mapload)
 	. = ..()
 	current_sprite_state = icon_state //Stores the standard sprite state.
-	if(!can_switch_eye)	//Just runs the normal code for any item that we havent manually set this as TRUE for
-		return
-	icon_state += current_eye	//Makes sure the icon initially ends in _R so its a valid sprite (Change current_eye in loadout once thats possible to spawn it on the side of your choice)
+
 
 /obj/item/clothing/glasses/alt_click_secondary(mob/user)
 	. = ..()
@@ -65,6 +62,8 @@
 /obj/item/clothing/glasses/eyepatch	//Re-defined here for ease with the left/right switch
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
+	icon_state = "eyepatch_R"
+	base_icon_state = "eyepatch"
 	can_switch_eye = TRUE
 
 /obj/item/clothing/glasses/eyepatch/wrap
@@ -72,14 +71,17 @@
 	desc = "A glorified bandage. At least this one's actually made for your head..."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
-	icon_state = "eyewrap"
+	icon_state = "eyewrap_R"
+	base_icon_state = "eyewrap"
 
 /obj/item/clothing/glasses/eyepatch/white
 	name = "white eyepatch"
 	desc = "This is what happens when a pirate gets a PhD."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
-	icon_state = "eyepatch_white"
+	icon_state = "eyepatch_white_R"
+	base_icon_state = "eyepatch_white"
+
 ///GLASSSES
 /obj/item/clothing/glasses/thin
 	name = "thin glasses"

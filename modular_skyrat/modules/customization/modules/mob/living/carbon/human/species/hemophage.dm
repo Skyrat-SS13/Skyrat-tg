@@ -132,7 +132,7 @@
 		var/brute_damage = hemophage.getBruteLoss()
 
 		// We have to check for the damaged bodyparts like this as well, to account for robotic bodyparts, as we don't want to heal those. Stupid, I know, but that's the best proc we got to check that currently.
-		if(brute_damage && length(hemophage.get_damaged_bodyparts(brute = TRUE, burn = FALSE, status = BODYTYPE_ORGANIC)))
+		if(brute_damage && length(hemophage.get_damaged_bodyparts(brute = TRUE, burn = FALSE, required_bodytype = BODYTYPE_ORGANIC)))
 			brutes_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_BRUTE_AMOUNT, brute_damage) * delta_time)
 			blood_used += brutes_to_heal * blood_to_health_multiplier
 			max_blood_for_regen -= brutes_to_heal * blood_to_health_multiplier
@@ -140,7 +140,7 @@
 		var/burns_to_heal = NONE
 		var/burn_damage = hemophage.getFireLoss()
 
-		if(burn_damage && max_blood_for_regen > NONE && length(hemophage.get_damaged_bodyparts(brute = FALSE, burn = TRUE, status = BODYTYPE_ORGANIC)))
+		if(burn_damage && max_blood_for_regen > NONE && length(hemophage.get_damaged_bodyparts(brute = FALSE, burn = TRUE, required_bodytype = BODYTYPE_ORGANIC)))
 			burns_to_heal = min(max_blood_for_regen, min(BLOOD_REGEN_BURN_AMOUNT, burn_damage) * delta_time)
 			blood_used += burns_to_heal * blood_to_health_multiplier
 			max_blood_for_regen -= burns_to_heal * blood_to_health_multiplier
