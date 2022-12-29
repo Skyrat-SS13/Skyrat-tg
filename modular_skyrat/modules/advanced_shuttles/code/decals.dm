@@ -13,7 +13,7 @@
 //Floor Decals -----
 /obj/effect/turf_decal/shuttle/exploration
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/exploration_floor.dmi'
-	icon_state = "none"
+	icon_state = "decal1"
 
 /obj/effect/turf_decal/shuttle/exploration/medbay
 	icon_state = "decalmed"

@@ -178,9 +178,9 @@
 				SSshuttle.supply.export_categories = get_export_categories()
 				SSshuttle.moveShuttle(cargo_shuttle, docking_away, TRUE)
 				say("The supply shuttle is departing.")
-				investigate_log("[key_name(usr)] sent the supply shuttle away.", INVESTIGATE_CARGO)
+				usr.investigate_log("sent the supply shuttle away.", INVESTIGATE_CARGO)
 			else
-				investigate_log("[key_name(usr)] called the supply shuttle.", INVESTIGATE_CARGO)
+				usr.investigate_log("called the supply shuttle.", INVESTIGATE_CARGO)
 				say("The supply shuttle has been called and will arrive in [SSshuttle.supply.timeLeft(600)] minutes.")
 				SSshuttle.moveShuttle(cargo_shuttle, docking_home, TRUE)
 			. = TRUE
@@ -199,7 +199,7 @@
 			else
 				SSshuttle.shuttle_loan.loan_shuttle()
 				say("The supply shuttle has been loaned to CentCom.")
-				investigate_log("[key_name(usr)] accepted a shuttle loan event.", INVESTIGATE_CARGO)
+				usr.investigate_log("accepted a shuttle loan event.", INVESTIGATE_CARGO)
 				usr.log_message("accepted a shuttle loan event.", LOG_GAME)
 				. = TRUE
 		if("add")
@@ -238,7 +238,10 @@
 				if(!istype(account))
 					say("Invalid bank account.")
 					return
-
+				var/list/access = id_card.GetAccess()
+				if(pack.access_view && !(pack.access_view in access))
+					say("[id_card] lacks the requisite access for this purchase.")
+					return
 			var/reason = ""
 			if(requestonly && !self_paid)
 				reason = tgui_input_text(usr, "Reason", name)
@@ -258,9 +261,11 @@
 					coupon_check.moveToNullspace()
 					applied_coupon = coupon_check
 					break
-
+			//Skyrat Edit Add
+			var/charge_on_purchase = TRUE
 			var/turf/T = get_turf(src)
-			var/datum/supply_order/SO = new(pack, name, rank, ckey, reason, account, null, applied_coupon)
+			var/datum/supply_order/SO = new(pack, name, rank, ckey, reason, account, null, applied_coupon, charge_on_purchase)
+			//Skyrat Edit End
 			SO.generateRequisition(T)
 			if(requestonly && !self_paid)
 				SSshuttle.request_list += SO

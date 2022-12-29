@@ -63,6 +63,8 @@
 	name = "ancient hood"
 	desc = "A torn, dust-caked hood."
 	icon_state = "culthood"
+	icon = 'icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'icons/mob/clothing/head/helmet.dmi'
 	body_parts_covered = HEAD
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEEARS
 	flags_cover = HEADCOVERSEYES

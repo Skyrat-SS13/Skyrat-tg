@@ -470,7 +470,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	body = new
 
 	// Without this, it doesn't show up in the menu
-	body.appearance_flags &= ~KEEP_TOGETHER
+	body.appearance_flags |= KEEP_TOGETHER // SKYRAT EDIT - Fix pixel scaling - ORIGINAL: body.appearance_flags &= ~KEEP_TOGETHER
 
 /datum/preferences/proc/create_character_profiles()
 	var/list/profiles = list()
