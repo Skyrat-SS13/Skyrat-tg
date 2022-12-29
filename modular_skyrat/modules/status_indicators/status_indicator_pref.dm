@@ -8,9 +8,7 @@
 
 /mob/Login()
 	. = ..()
-	for(var/datum/preference/toggle/enable_status_indicators/preference as anything in client.prefs)
-		preference.apply_to_client()
-		log_admin("We have a pref hit!")
+	// TODO - find a way to make the PREF WORK ARHAHAHAHDA
 
 /datum/preference/toggle/enable_status_indicators/apply_to_client(client/client, value)
 	if(client)
