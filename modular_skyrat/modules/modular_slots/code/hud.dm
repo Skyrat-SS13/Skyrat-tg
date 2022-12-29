@@ -21,7 +21,7 @@
 
 	var/mob/living/carbon/human/human = mymob
 
-	if(!human.passport)
+	if(!human.passport || !human.client)
 		return
 
 	var/mob/screenmob = viewer || human
@@ -47,7 +47,7 @@
 	var/mob/living/carbon/human/human = mymob
 	var/mob/screenmob = viewer || human
 
-	if(!screenmob.hud_used)
+	if(!screenmob.hud_used || !screenmob.client)
 		return
 
 	if(screenmob.hud_used.inventory_shown)

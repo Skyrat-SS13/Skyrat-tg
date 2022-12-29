@@ -7,7 +7,7 @@
 /mob/living/carbon/human/Destroy()
 	. = ..()
 	if(passport)
-		qdel(passport)
+		QDEL_NULL(passport)
 
 // Copy and modify for your own slot. Make sure to do the same for the stub proc in mob.dm.
 /mob/living/carbon/human/update_worn_passport()
