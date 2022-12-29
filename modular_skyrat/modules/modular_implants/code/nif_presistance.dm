@@ -85,11 +85,11 @@
 		return
 
 	var/obj/item/organ/internal/cyberimp/brain/nif/new_nif = new nif_path
-	new_nif.Insert(src)
 
 	new_nif.durability = save["nif_durability"]
 	new_nif.current_theme = save["saved_nif_theme"]
 	new_nif.is_calibrated = save["nif_is_calibrated"]
+	new_nif.Insert(src)
 
 	var/datum/component/nif_examine/examine_component = GetComponent(/datum/component/nif_examine)
 	if(examine_component)
