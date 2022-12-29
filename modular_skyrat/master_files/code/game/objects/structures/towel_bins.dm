@@ -9,7 +9,7 @@
 	/// How many towels there is in the bin (separate from the towels list because we won't instanciate 10 towels per bin in existance).
 	var/amount = 10
 	/// The list of already-instanciated towels, for when people put them back in it.
-	var/list/towels = list()
+	var/list/towels
 	/// An item that might be hidden between some towels in the bin.
 	var/obj/item/hidden = null
 
@@ -25,7 +25,7 @@
 	if(amount < 1)
 		. += "There are no towels in the bin."
 	else if(amount == 1)
-		. += "There is one towels in the bin."
+		. += "There is one towel in the bin."
 	else
 		. += "There are [amount] towels in the bin."
 
@@ -54,11 +54,11 @@
 		return FALSE
 
 	if(amount)
-		to_chat(user, span_warning("The [src] must be empty first!"))
+		to_chat(user, span_warning("[src] must be empty first!"))
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
 	if(tool.use_tool(src, user, 0.5 SECONDS, volume = 50))
-		to_chat(user, span_notice("You disassemble the [src]."))
+		to_chat(user, span_notice("You disassemble [src]."))
 		new /obj/item/stack/rods(loc, 2)
 		qdel(src)
 		return TOOL_ACT_TOOLTYPE_SUCCESS
@@ -74,14 +74,14 @@
 	if(istype(attacking_item, /obj/item/towel))
 		if(!user.transferItemToLoc(attacking_item, src))
 			return
-		towels.Add(attacking_item)
+		LAZYADD(towels, attacking_item)
 		amount++
 		to_chat(user, span_notice("You put [attacking_item] in [src]."))
 		update_appearance()
 
 	else if(amount && !hidden && attacking_item.w_class < WEIGHT_CLASS_BULKY) //make sure there's sheets to hide it among, make sure nothing else is hidden in there.
 		if(!user.transferItemToLoc(attacking_item, src))
-			to_chat(user, span_warning("\The [attacking_item] is stuck to your hand, you cannot hide it among the sheets!"))
+			to_chat(user, span_warning("[attacking_item] is stuck to your hand, you cannot hide it among the sheets!"))
 			return
 		hidden = attacking_item
 		to_chat(user, span_notice("You hide [attacking_item] among the sheets."))
@@ -119,7 +119,7 @@
  * * tk - Is the user trying to do this using telekinesis? Defaults to `FALSE`.
  */
 /obj/structure/towel_bin/proc/take_towel_out(mob/user, tk = FALSE)
-	if(amount < 1)
+	if(amount <= 0)
 		to_chat(user, span_warning("You can't figure out how to take a towel out of [src] when it doesn't contain any!"))
 		return
 
@@ -127,12 +127,12 @@
 
 	var/obj/item/towel/towel
 
-	if(towels.len > 0)
-		towel = towels[towels.len]
-		towels.Remove(towel)
+	if(LAZYLEN(towels))
+		towel = towels[LAZYLEN(towels)]
+		LAZYREMOVE(towels, towel)
 
 	else
-		towel = new /obj/item/towel(loc)
+		towel = new (loc)
 
 	towel.forceMove(drop_location())
 	to_chat(user, span_notice("You [tk ? "telekinetically remove" : "take"] \a [towel] out of [src]."))
