@@ -184,6 +184,15 @@
 	desc = "Yarr."
 	icon_state = "eyepatch"
 	inhand_icon_state = null
+<<<<<<< HEAD
+=======
+	actions_types = list(/datum/action/item_action/flip)
+
+/obj/item/clothing/glasses/eyepatch/attack_self(mob/user, modifiers)
+	. = ..()
+	icon_state = (icon_state == base_icon_state) ? "[base_icon_state]_flipped" : base_icon_state
+	user.update_worn_glasses()
+>>>>>>> 6a0c884410f ([no gbp] removes all duplicate armor datums (#72354))
 
 /obj/item/clothing/glasses/monocle
 	name = "monocle"
@@ -367,7 +376,10 @@
 	visor_vars_to_toggle = VISOR_FLASHPROTECT | VISOR_TINT
 	flags_cover = GLASSESCOVERSEYES
 	glass_colour_type = /datum/client_colour/glass_colour/gray
+<<<<<<< HEAD
 	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER // SKYRAT EDIT - Just so it works until I make the change upstream
+=======
+>>>>>>> 6a0c884410f ([no gbp] removes all duplicate armor datums (#72354))
 
 /obj/item/clothing/glasses/welding/attack_self(mob/user)
 	weldingvisortoggle(user)
@@ -509,6 +521,15 @@
 	desc = "An eyepatch with built-in thermal optics."
 	icon_state = "eyepatch"
 	inhand_icon_state = null
+<<<<<<< HEAD
+=======
+	actions_types = list(/datum/action/item_action/flip)
+
+/obj/item/clothing/glasses/thermal/eyepatch/attack_self(mob/user, modifiers)
+	. = ..()
+	icon_state = (icon_state == base_icon_state) ? "[base_icon_state]_flipped" : base_icon_state
+	user.update_worn_glasses()
+>>>>>>> 6a0c884410f ([no gbp] removes all duplicate armor datums (#72354))
 
 /obj/item/clothing/glasses/cold
 	name = "cold goggles"

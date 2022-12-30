@@ -795,7 +795,11 @@ DEFINE_BITFIELD(turret_flags, list(
 	lethal_projectile = /obj/projectile/plasma/turret
 	lethal_projectile_sound = 'sound/weapons/plasma_cutter.ogg'
 	mode = TURRET_LETHAL //It would be useless in stun mode anyway
+<<<<<<< HEAD
 	faction = list("neutral","silicon","turret") //Minebots, medibots, etc that should not be shot.
+=======
+	faction = list(FACTION_NEUTRAL,"silicon","turret") //Minebots, medibots, etc that should not be shot.
+>>>>>>> 6a0c884410f ([no gbp] removes all duplicate armor datums (#72354))
 
 /obj/machinery/porta_turret/aux_base/assess_perp(mob/living/carbon/human/perp)
 	return 0 //Never shoot humanoids. You are on your own if Ashwalkers or the like attack!

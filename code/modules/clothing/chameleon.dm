@@ -646,7 +646,10 @@
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE  // Skyrat edit
 	special_desc = "A pair of chameleon shoes with an anti-slip coating employed by the Syndicate in infiltration operations."  // Skyrat edit
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6a0c884410f ([no gbp] removes all duplicate armor datums (#72354))
 /obj/item/clothing/shoes/chameleon/noslip/broken/Initialize(mapload)
 	. = ..()
 	chameleon_action.emp_randomise(INFINITY)
@@ -656,8 +659,11 @@
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE  // Skyrat edit
 	special_desc = "A chameleon backpack employed by the Syndicate in infiltration operations."  // Skyrat edit
 
+<<<<<<< HEAD
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
+=======
+>>>>>>> 6a0c884410f ([no gbp] removes all duplicate armor datums (#72354))
 /obj/item/storage/backpack/chameleon/Initialize(mapload)
 	. = ..()
 	chameleon_action = new(src)
@@ -682,8 +688,11 @@
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE  // Skyrat edit
 	special_desc = "A chameleon belt employed by the Syndicate in infiltration operations."  // Skyrat edit
 
+<<<<<<< HEAD
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
+=======
+>>>>>>> 6a0c884410f ([no gbp] removes all duplicate armor datums (#72354))
 /obj/item/storage/belt/chameleon/Initialize(mapload)
 	. = ..()
 
@@ -710,8 +719,11 @@
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE  // Skyrat edit
 	special_desc = "A chameleon headset employed by the Syndicate in infiltration operations."  // Skyrat edit
 
+<<<<<<< HEAD
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
+=======
+>>>>>>> 6a0c884410f ([no gbp] removes all duplicate armor datums (#72354))
 /obj/item/radio/headset/chameleon/Initialize(mapload)
 	. = ..()
 	chameleon_action = new(src)

@@ -383,7 +383,11 @@
 	icon_state = "knight_greyscale"
 	inhand_icon_state = null
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS//Can change color and add prefix
+<<<<<<< HEAD
 	armor = list(MELEE = 35, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 10, FIRE = 40, ACID = 40, WOUND = 15)
+=======
+	armor_type = /datum/armor/knight_greyscale
+>>>>>>> 6a0c884410f ([no gbp] removes all duplicate armor datums (#72354))
 
 /obj/item/clothing/suit/armor/vest/durathread
 	name = "durathread vest"

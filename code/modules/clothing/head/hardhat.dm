@@ -128,7 +128,10 @@
 	visor_vars_to_toggle = VISOR_FLASHPROTECT | VISOR_TINT
 	visor_flags_inv = HIDEEYES | HIDEFACE | HIDESNOUT
 	visor_flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
+<<<<<<< HEAD
 	var/visor_sprite_path	//SKYRAT EDIT --- Lets the visor not smush the snout
+=======
+>>>>>>> 6a0c884410f ([no gbp] removes all duplicate armor datums (#72354))
 
 /obj/item/clothing/head/utility/hardhat/weldhat/Initialize(mapload)
 	. = ..()

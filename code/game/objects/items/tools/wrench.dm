@@ -95,7 +95,10 @@
 	attack_verb_continuous = list("devastates", "brutalizes", "commits a war crime against", "obliterates", "humiliates")
 	attack_verb_simple = list("devastate", "brutalize", "commit a war crime against", "obliterate", "humiliate")
 	tool_behaviour = null
+<<<<<<< HEAD
 	toolspeed = null
+=======
+>>>>>>> 6a0c884410f ([no gbp] removes all duplicate armor datums (#72354))
 
 /obj/item/wrench/combat/Initialize(mapload)
 	. = ..()

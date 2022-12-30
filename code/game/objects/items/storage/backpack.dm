@@ -346,8 +346,12 @@
 	desc = "A large duffel bag for holding extra things."
 	icon_state = "duffel"
 	inhand_icon_state = "duffel"
+<<<<<<< HEAD
 	//slowdown = 1 //ORIGINAL
 	slowdown = 0.5 //SKYRAT EDIT CHANGE
+=======
+	slowdown = 1
+>>>>>>> 6a0c884410f ([no gbp] removes all duplicate armor datums (#72354))
 
 /obj/item/storage/backpack/duffelbag/Initialize(mapload)
 	. = ..()
@@ -501,8 +505,11 @@
 	inhand_icon_state = "duffel-syndieammo"
 	slowdown = 0
 	resistance_flags = FIRE_PROOF
+<<<<<<< HEAD
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
 	special_desc = "This duffel bag has the Syndicate logo stiched on the inside. It appears to be made from lighter yet sturdier materials." // Skyrat edit
+=======
+>>>>>>> 6a0c884410f ([no gbp] removes all duplicate armor datums (#72354))
 
 /obj/item/storage/backpack/duffelbag/syndie/Initialize(mapload)
 	. = ..()
