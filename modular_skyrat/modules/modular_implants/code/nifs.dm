@@ -444,12 +444,14 @@
 
 /obj/item/autosurgeon/organ/nif
 	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif/standard
+	uses = 1
 
 /obj/item/organ/internal/cyberimp/brain/nif/debug
 	is_calibrated = TRUE
 
 /obj/item/autosurgeon/organ/nif/debug
 	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif/debug
+	uses = 1
 
 #undef NIF_CALIBRATION_STAGE_1
 #undef NIF_CALIBRATION_STAGE_1_END
