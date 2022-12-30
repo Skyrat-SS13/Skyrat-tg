@@ -28,6 +28,12 @@
 /datum/outfit/syndicate/post_equip(mob/living/carbon/human/nukie, visualsOnly = FALSE)
 	if(visualsOnly)
 		return
+<<<<<<< HEAD
+=======
+
+	// We don't require the nukiebase be loaded to function, but lets go ahead and kick off loading just in case
+	INVOKE_ASYNC(SSmapping, TYPE_PROC_REF(/datum/controller/subsystem/mapping, lazy_load_template), LAZY_TEMPLATE_KEY_NUKIEBASE)
+>>>>>>> 8a8b4a37c4d (Adds support for Rulesets having intrinsic template requirements (#72339))
 	var/obj/item/radio/radio = nukie.ears
 	radio.set_frequency(FREQ_SYNDICATE)
 	radio.freqlock = RADIO_FREQENCY_LOCKED

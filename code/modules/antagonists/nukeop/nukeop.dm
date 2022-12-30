@@ -25,6 +25,11 @@
 	/// The amount of limited discounts that the team get
 	var/discount_limited_amount = 10
 
+/datum/antagonist/nukeop/New()
+	if(send_to_spawnpoint) // lets get the loading started now, but don't block waiting for it
+		INVOKE_ASYNC(SSmapping, TYPE_PROC_REF(/datum/controller/subsystem/mapping, lazy_load_template), LAZY_TEMPLATE_KEY_NUKIEBASE)
+	return ..()
+
 /datum/antagonist/nukeop/proc/equip_op()
 	if(!ishuman(owner.current))
 		return
@@ -120,6 +125,9 @@
 		objectives |= nuke_team.objectives
 
 /datum/antagonist/nukeop/proc/move_to_spawnpoint()
+	// Ensure that the nukiebase is loaded, and wait for it if required
+	SSmapping.lazy_load_template(LAZY_TEMPLATE_KEY_NUKIEBASE)
+
 	var/team_number = 1
 	if(nuke_team)
 		team_number = nuke_team.members.Find(owner)

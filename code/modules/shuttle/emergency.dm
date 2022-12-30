@@ -181,6 +181,12 @@
 
 /obj/machinery/computer/emergency_shuttle/proc/increase_hijack_stage()
 	var/obj/docking_port/mobile/emergency/shuttle = SSshuttle.emergency
+<<<<<<< HEAD
+=======
+	// Begin loading this early, prevents a delay when the shuttle goes to land
+	INVOKE_ASYNC(SSmapping, TYPE_PROC_REF(/datum/controller/subsystem/mapping, lazy_load_template), LAZY_TEMPLATE_KEY_NUKIEBASE)
+
+>>>>>>> 8a8b4a37c4d (Adds support for Rulesets having intrinsic template requirements (#72339))
 	shuttle.hijack_status++
 	if(hijack_announce)
 		announce_hijack_stage()
@@ -540,6 +546,8 @@
 				// unless the shuttle is "hijacked"
 				var/destination_dock = "emergency_away"
 				if(is_hijacked() || elimination_hijack())
+					// just double check
+					SSmapping.lazy_load_template(LAZY_TEMPLATE_KEY_NUKIEBASE)
 					destination_dock = "emergency_syndicate"
 					minor_announce("Corruption detected in \
 						shuttle navigation protocols. Please contact your \
