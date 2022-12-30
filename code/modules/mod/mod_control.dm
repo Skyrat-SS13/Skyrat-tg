@@ -17,6 +17,7 @@
 	actions_types = list(
 		/datum/action/item_action/mod/deploy,
 		/datum/action/item_action/mod/activate,
+		/datum/action/item_action/mod/sprite_accessories, // SKYRAT EDIT - Hide mutant parts action
 		/datum/action/item_action/mod/panel,
 		/datum/action/item_action/mod/module,
 		/datum/action/item_action/mod/deploy/pai, // SKYRAT EDIT - pAIs in MODsuits
@@ -278,6 +279,16 @@
 			balloon_alert(wearer, "retract parts first!")
 			playsound(src, 'sound/machines/scanbuzz.ogg', 25, FALSE, SILENCED_SOUND_EXTRARANGE)
 			return
+
+	// SKYRAT EDIT ADDITION START - Can't remove your MODsuit from your back when it's still active (as it can cause runtimes and even the MODsuit control unit to delete itself)
+	if(active)
+		if(!wearer.incapacitated())
+			balloon_alert(wearer, "deactivate first!")
+			playsound(src, 'sound/machines/scanbuzz.ogg', 25, FALSE, SILENCED_SOUND_EXTRARANGE)
+
+		return
+	// SKYRAT ADDITION END
+		
 	if(!wearer.incapacitated())
 		var/atom/movable/screen/inventory/hand/ui_hand = over_object
 		if(wearer.putItemFromInventoryInHandIfPossible(src, ui_hand.held_index))
@@ -493,7 +504,7 @@
 
 	var/list/all_parts = mod_parts + src
 	for(var/obj/item/part in all_parts)
-		if(!(part.slot_flags in new_species.no_equip) || is_type_in_list(new_species, part.species_exception))
+		if(!(new_species.no_equip_flags & part.slot_flags) || is_type_in_list(new_species, part.species_exception))
 			continue
 		forceMove(drop_location())
 		return

@@ -82,7 +82,8 @@
 	add_fingerprint(user)
 
 /obj/item/healthanalyzer/attack_secondary(mob/living/victim, mob/living/user, params)
-	if(!user.can_read(src) || !(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS)) // SKYRAT EDIT CHANGE: Blind People Can Analyze Again/Power Cost
+	//if(!user.can_read(src) || user.is_blind()) - ORIGINAL
+	if(!user.can_read(src)) // SKYRAT EDIT CHANGE - Blind people can analyse again
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	chemscan(user, victim)
@@ -314,7 +315,7 @@
 			|| targetspecies.mutantliver != initial(targetspecies.mutantliver) \
 			|| targetspecies.mutantstomach != initial(targetspecies.mutantstomach) \
 			|| targetspecies.mutantappendix != initial(targetspecies.mutantappendix) \
-			|| targetspecies.flying_species != initial(targetspecies.flying_species)
+			|| istype(humantarget.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS), /obj/item/organ/external/wings/functional)
 
 		render_list += "<span class='info ml-1'>Species: [targetspecies.name][mutant ? "-derived mutant" : ""]</span>\n"
 		render_list += "<span class='info ml-1'>Core temperature: [round(humantarget.coretemperature-T0C,0.1)] &deg;C ([round(humantarget.coretemperature*1.8-459.67,0.1)] &deg;F)</span>\n"

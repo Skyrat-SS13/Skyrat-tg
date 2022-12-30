@@ -332,7 +332,7 @@
 		add_mood_event("handcuffed", /datum/mood_event/handcuffed)
 	else
 		clear_mood_event("handcuffed")
-	update_action_buttons_icon() //some of our action buttons might be unusable when we're handcuffed.
+	update_mob_action_buttons() //some of our action buttons might be unusable when we're handcuffed.
 	update_worn_handcuffs()
 	update_hud_handcuffed()
 
@@ -1008,7 +1008,8 @@
 	name = "milking machine construction parts"
 	desc = "Construction parts for a milking machine. Assembly requires a wrench."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/milking_machine.dmi'
-	icon_state = "milkbuild"
+	icon_state = "milkbuild_pink"
+	base_icon_state = "milkbuild"
 	var/current_color = "pink"
 
 // Default initialization
@@ -1018,8 +1019,8 @@
 	update_icon()
 
 /obj/item/milking_machine/constructionkit/update_icon_state()
-	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]"
+	icon_state = "[initial(base_icon_state)]_[current_color]"
+	return ..()
 
 // Processor of the process of assembling a kit into a machine
 /obj/item/milking_machine/constructionkit/attackby(obj/item/used_item, mob/living/carbon/user, params)

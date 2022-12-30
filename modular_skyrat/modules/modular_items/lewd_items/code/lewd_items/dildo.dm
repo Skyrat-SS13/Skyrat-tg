@@ -267,7 +267,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 /obj/item/clothing/sextoy/dildo/double_dildo/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-	update_action_buttons_icons()
+	update_mob_action_buttonss()
 
 /obj/item/clothing/sextoy/dildo/double_dildo/populate_dildo_designs()
 	return
@@ -276,11 +276,11 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	return
 
 /// Proc to update the actionbutton icon
-/obj/item/clothing/sextoy/dildo/double_dildo/proc/update_action_buttons_icons()
+/obj/item/clothing/sextoy/dildo/double_dildo/proc/update_mob_action_buttonss()
 	var/datum/action/item_action/action_button
 	if(istype(action_button, /datum/action/item_action/take_dildo))
 		action_button.button_icon_state = "dildo_side"
-		action_button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
+		action_button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 	update_icon()
 
 //button stuff

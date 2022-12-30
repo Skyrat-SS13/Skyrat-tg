@@ -190,7 +190,7 @@
 	name = "Science Guard"
 	jobtype = /datum/job/science_guard
 
-	belt = /obj/item/modular_computer/tablet/pda/science
+	belt = /obj/item/modular_computer/pda/science
 	ears = /obj/item/radio/headset/headset_sci
 	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat
 	shoes = /obj/item/clothing/shoes/jackboots
@@ -293,7 +293,7 @@
 	name = "Orderly"
 	jobtype = /datum/job/orderly
 
-	belt = /obj/item/modular_computer/tablet/pda/medical
+	belt = /obj/item/modular_computer/pda/medical
 	ears = /obj/item/radio/headset/headset_med
 	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/orderly
 	shoes = /obj/item/clothing/shoes/sneakers/white
@@ -390,7 +390,7 @@
 	name = "Engineering Guard"
 	jobtype = /datum/job/engineering_guard
 
-	belt = /obj/item/modular_computer/tablet/pda/engineering
+	belt = /obj/item/modular_computer/pda/engineering
 	ears = /obj/item/radio/headset/headset_eng
 	shoes = /obj/item/clothing/shoes/workboots
 	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard
@@ -493,7 +493,7 @@
 	name = "Customs Agent"
 	jobtype = /datum/job/customs_agent
 
-	belt = /obj/item/modular_computer/tablet/pda/cargo
+	belt = /obj/item/modular_computer/pda/cargo
 	ears = /obj/item/radio/headset/headset_cargo
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/customs_agent
@@ -590,7 +590,7 @@
 	name = "Bouncer"
 	jobtype = /datum/job/bouncer
 
-	belt = /obj/item/modular_computer/tablet/pda/bar
+	belt = /obj/item/modular_computer/pda/bar
 	ears = /obj/item/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/bouncer
 	shoes = /obj/item/clothing/shoes/sneakers/black
@@ -649,6 +649,7 @@
 	name = "departmental stun baton"
 	desc = "A stun baton fitted with a departmental area-lock, based off the station's blueprint layout - outside of its department, it only has three uses."
 	icon = 'modular_skyrat/modules/goofsec/icons/departmental_batons.dmi'
+	icon_state = "prison_baton"
 	var/list/valid_areas = list()
 	var/emagged = FALSE
 	var/non_departmental_uses_left = 4

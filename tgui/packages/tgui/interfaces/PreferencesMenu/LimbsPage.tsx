@@ -3,6 +3,28 @@ import { useBackend } from '../../backend';
 import { PreferencesMenuData } from './data';
 import { CharacterPreview } from './CharacterPreview';
 
+export const RotateCharacterButtons = (props, context) => {
+  const { act } = useBackend<PreferencesMenuData>(context);
+  return (
+    <Box mt={1}>
+      <Button
+        onClick={() => act('rotate', { backwards: false })}
+        fontSize="22px"
+        icon="redo"
+        tooltip="Rotate Clockwise"
+        tooltipPosition="bottom"
+      />
+      <Button
+        onClick={() => act('rotate', { backwards: true })}
+        fontSize="22px"
+        icon="undo"
+        tooltip="Rotate Counter-Clockwise"
+        tooltipPosition="bottom"
+      />
+    </Box>
+  );
+};
+
 export const Markings = (props, context) => {
   const { act } = useBackend<PreferencesMenuData>(context);
   return (
@@ -217,6 +239,7 @@ export const LimbsPage = (props, context) => {
             height="25%"
             width="100%"
           />
+          <RotateCharacterButtons />
           <Box
             style={{
               'margin-top': '3em',

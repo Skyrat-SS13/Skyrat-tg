@@ -111,7 +111,6 @@
 		"status_display_frame",
 		"sticky_tape",
 		"syrup_bottle",
-		"tablet",
 		"tape",
 		"tech_disk",
 		"timer",
@@ -486,7 +485,6 @@
 		"deepfryer",
 		"dish_drive",
 		"fat_sucker",
-		"gibber",
 		"gibber",
 		"griddle",
 		"microwave",
@@ -1350,6 +1348,7 @@
 		"cybernetic_liver_tier2",
 		"cybernetic_lungs_tier2",
 		"cybernetic_stomach_tier2",
+		"cybernetic_tongue", //SKYRAT EDIT ADDITION
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 
