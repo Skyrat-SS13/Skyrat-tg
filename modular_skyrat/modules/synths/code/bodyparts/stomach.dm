@@ -1,3 +1,6 @@
+#define SYNTH_STOMACH_LIGHT_EMP_CHARGE_LOSS 50
+#define SYNTH_STOMACH_HEAVY_EMP_CHARGE_LOSS 150
+
 /obj/item/organ/internal/stomach/synth
 	name = "synth power cell"
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
@@ -11,12 +14,15 @@
 
 /obj/item/organ/internal/stomach/synth/emp_act(severity)
 	. = ..()
+
 	if(!owner || . & EMP_PROTECT_SELF)
 		return
+
 	switch(severity)
 		if(EMP_HEAVY)
-			owner.nutrition = max(0, owner.nutrition - 150)
+			owner.nutrition = max(0, owner.nutrition - SYNTH_STOMACH_HEAVY_EMP_CHARGE_LOSS)
 			to_chat(owner, span_warning("Alert: Severe battery discharge!"))
+
 		if(EMP_LIGHT)
-			owner.nutrition = max(0, owner.nutrition - 50)
+			owner.nutrition = max(0, owner.nutrition - SYNTH_STOMACH_LIGHT_EMP_CHARGE_LOSS)
 			to_chat(owner, span_warning("Alert: Minor battery discharge!"))

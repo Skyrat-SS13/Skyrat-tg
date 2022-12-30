@@ -3,6 +3,7 @@
 #define SYNTH_CHARGE_PER_NUTRITION 10
 #define SYNTH_CHARGE_DELAY_PER_100 10
 #define SYNTH_DRAW_NUTRITION_BUFFER 30
+#define SYNTH_APC_MINIMUM_PERCENT 20
 
 /obj/item/organ/internal/cyberimp/arm/power_cord
 	name = "power cord implant"
@@ -19,27 +20,44 @@
 /obj/item/apc_powercord/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!istype(target, /obj/machinery/power/apc) || !ishuman(user) || !proximity_flag)
 		return ..()
+
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/obj/machinery/power/apc/target_apc = target
 	var/mob/living/carbon/human/ipc = user
 	var/obj/item/organ/internal/stomach/synth/cell = ipc.internal_organs_slot[ORGAN_SLOT_STOMACH]
+
 	if(!cell)
 		to_chat(ipc, span_warning("You try to siphon energy from the [target_apc], but you have no stomach! How are you still standing?"))
 		return
+
 	if(!istype(cell))
 		to_chat(ipc, span_warning("You plug into the APC, but nothing happens! It seems you don't have a cell to charge!"))
 		return
 
-	if(target_apc.cell && target_apc.cell.charge > 0)
-		if(ipc.nutrition >= NUTRITION_LEVEL_WELL_FED)
-			to_chat(user, span_warning("You are already fully charged!"))
-			return
-		else
-			powerdraw_loop(target_apc, ipc)
-			return
+	if(target_apc.cell && target_apc.cell.percent() < SYNTH_APC_MINIMUM_PERCENT)
+		to_chat(user, span_warning("There is no charge to draw from that APC."))
+		return
 
-	to_chat(user, span_warning("There is no charge to draw from that APC."))
+	if(ipc.nutrition >= NUTRITION_LEVEL_WELL_FED)
+		to_chat(user, span_warning("You are already fully charged!"))
+		return
 
+	powerdraw_loop(target_apc, ipc)
+
+/**
+ * Runs a loop to charge a synth cell (stomach) via powercord from an APC.
+ *
+ * Stops when:
+ * - The user is full.
+ * - The APC has less than 20% charge.
+ * - The APC has machine power turned off.
+ * - The APC is unable to provide charge for any other reason.
+ * - The user moves, or anything else that can happen to interrupt a do_after.
+ *
+ * Arguments:
+ * * target_apc - The APC to drain.
+ * * user - The carbon draining the APC.
+ */
 /obj/item/apc_powercord/proc/powerdraw_loop(obj/machinery/power/apc/target_apc, mob/living/carbon/human/user)
 	user.visible_message(span_notice("[user] inserts a power connector into the [target_apc]."), span_notice("You begin to draw power from the [target_apc]."))
 
@@ -51,7 +69,7 @@
 			break
 
 		// Is the APC not charging equipment? And yes, synths are gonna be treated as equipment. Deal with it.
-		if(target_apc.cell.percent() < 20) // 20%, to prevent synths from overstepping and murdering power for department machines and potentially doors.
+		if(target_apc.cell.percent() < SYNTH_APC_MINIMUM_PERCENT) // 20%, to prevent synths from overstepping and murdering power for department machines and potentially doors.
 			to_chat(user, span_warning("[target_apc]'s power is too low to charge you."))
 			break
 
@@ -59,7 +77,7 @@
 		var/power_use = clamp(power_needed, SYNTH_CHARGE_MIN, SYNTH_CHARGE_MAX)
 		power_use = clamp(power_use, 0, target_apc.cell.charge)
 		// Are we able to draw anything?
-		if(power_use == 0)
+		if(power_use <= 0)
 			to_chat(user, span_warning("[target_apc] lacks the power to charge you."))
 			break
 

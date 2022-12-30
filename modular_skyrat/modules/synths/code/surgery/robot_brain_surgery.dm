@@ -26,9 +26,7 @@
 
 /datum/surgery/robot_brain_surgery/can_start(mob/user, mob/living/carbon/target, obj/item/tool)
 	var/obj/item/organ/internal/brain/brain = target.getorganslot(ORGAN_SLOT_BRAIN)
-	if(!brain)
-		return FALSE
-	return TRUE
+	return !!brain
 
 /datum/surgery_step/fix_robot_brain/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(

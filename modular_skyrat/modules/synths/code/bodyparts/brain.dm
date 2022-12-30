@@ -16,24 +16,35 @@
 	var/last_message_time = 0
 
 /obj/item/organ/internal/brain/synth/Insert(mob/living/carbon/user, special = FALSE, drop_if_replaced = TRUE, no_id_transfer = FALSE)
-	..()
-	if(user.stat == DEAD && ishuman(user))
-		var/mob/living/carbon/human/user_human = user
-		if(user_human?.dna?.species && (REVIVES_BY_HEALING in user_human.dna.species.species_traits))
-			if(user_human.health > SYNTH_BRAIN_WAKE_THRESHOLD)
-				user_human.revive(FALSE)
+	. = ..()
+
+	if(user.stat != DEAD || !ishuman(user))
+		return
+
+	var/mob/living/carbon/human/user_human = user
+	if(user_human?.dna?.species && (REVIVES_BY_HEALING in user_human.dna.species.species_traits) && user_human.health > SYNTH_BRAIN_WAKE_THRESHOLD)
+		user_human.revive(FALSE)
 
 /obj/item/organ/internal/brain/synth/emp_act(severity)
-	// Still calls regardless, for that sweet flavourful warning!
-	applyOrganDamage(severity == EMP_HEAVY ? SYNTH_EMP_BRAIN_DAMAGE : NONE, SYNTH_EMP_BRAIN_DAMAGE_MAXIMUM)
+	// This value is the protection value!
+	. = ..()
+
+	// If EMP protected, or light EMPed, don't emp_act.
+	if(. & EMP_PROTECT_SELF || severity != EMP_HEAVY)
+		return
+
+	applyOrganDamage(SYNTH_EMP_BRAIN_DAMAGE, SYNTH_EMP_BRAIN_DAMAGE_MAXIMUM)
 
 /obj/item/organ/internal/brain/synth/applyOrganDamage(damage_amount, maximumm, required_organtype)
 	. = ..()
+
 	if(owner && damage > 0 && (world.time - last_message_time) > SYNTH_BRAIN_DAMAGE_MESSAGE_INTERVAL)
 		last_message_time = world.time
+
 		if(damage > BRAIN_DAMAGE_SEVERE)
 			to_chat(owner, span_warning("Alert: Severe corruption in central processing unit."))
 			return
+
 		if(damage > BRAIN_DAMAGE_MILD)
 			to_chat(owner, span_warning("Alert: Minor corruption in central processing unit."))
 

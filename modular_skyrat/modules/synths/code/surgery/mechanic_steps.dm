@@ -7,7 +7,7 @@
 		/obj/item/knife	= 50,
 		/obj/item = 10,
 	) // 10% success with any sharp item.
-	time = 24
+	time = 2.4 SECONDS
 
 /datum/surgery_step/cut_wires/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(
@@ -30,7 +30,7 @@
 		TOOL_CROWBAR = 100,
 		TOOL_HEMOSTAT = 10,
 	)
-	time = 24
+	time = 2.4 SECONDS
 
 /datum/surgery_step/pry_off_plating/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	do_sparks(rand(5, 9), FALSE, target.loc)
@@ -51,7 +51,7 @@
 	implements = list(
 		TOOL_WELDER = 100,
 	)
-	time = 24
+	time = 2.4 SECONDS
 
 /datum/surgery_step/weld_plating/tool_check(mob/user, obj/item/tool)
 	if(implement_type == TOOL_WELDER && !tool.use_tool(user, user, 0, volume=50, amount=1))
@@ -71,7 +71,7 @@
 /datum/surgery_step/replace_wires
 	name = "replace wires"
 	implements = list(/obj/item/stack/cable_coil = 100)
-	time = 24
+	time = 2.4 SECONDS
 	var/cableamount = 5
 
 /datum/surgery_step/replace_wires/tool_check(mob/user, obj/item/tool)
@@ -100,7 +100,7 @@
 /datum/surgery_step/add_plating
 	name = "add plating"
 	implements = list(/obj/item/stack/sheet/iron = 100)
-	time = 24
+	time = 2.4 SECONDS
 	var/ironamount = 5
 
 /datum/surgery_step/add_plating/tool_check(mob/user, obj/item/tool)
@@ -112,9 +112,7 @@
 
 /datum/surgery_step/add_plating/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/obj/item/stack/sheet/iron/plat = tool
-	if(plat && !(plat.get_amount() < ironamount)) //failproof
-		plat.use(ironamount)
-	return TRUE
+	return plat?.use(ironamount)
 
 /datum/surgery_step/add_plating/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(

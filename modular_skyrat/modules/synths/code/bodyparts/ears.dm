@@ -1,3 +1,8 @@
+#define SYNTH_BAD_EFFECT_DURATION 30 SECONDS
+#define SYNTH_DEAF_STACKS 30
+#define SYNTH_KNOCKDOWN_POWER 40
+#define SYNTH_HEAVY_EMP_MULTIPLIER 2
+
 /obj/item/organ/internal/ears/synth
 	name = "auditory sensors"
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
@@ -11,17 +16,25 @@
 
 /obj/item/organ/internal/ears/synth/emp_act(severity)
 	. = ..()
+
 	if(!owner || . & EMP_PROTECT_SELF)
 		return
+
 	switch(severity)
-		if(1)
-			owner.set_jitter_if_lower(60 SECONDS)
-			owner.set_dizzy_if_lower(60 SECONDS)
-			owner.Knockdown(80)
-			deaf = 30
+		if(EMP_HEAVY)
+			owner.set_jitter_if_lower(SYNTH_BAD_EFFECT_DURATION * SYNTH_HEAVY_EMP_MULTIPLIER)
+			owner.set_dizzy_if_lower(SYNTH_BAD_EFFECT_DURATION * SYNTH_HEAVY_EMP_MULTIPLIER)
+			owner.Knockdown(SYNTH_KNOCKDOWN_POWER * SYNTH_HEAVY_EMP_MULTIPLIER)
+			adjustEarDamage(SYNTH_ORGAN_EMP_DAMAGE, SYNTH_DEAF_STACKS)
 			to_chat(owner, span_warning("Your system reports a complete lack of input from your auditory sensors."))
-		if(2)
-			owner.set_jitter_if_lower(30 SECONDS)
-			owner.set_dizzy_if_lower(30 SECONDS)
-			owner.Knockdown(40)
+
+		if(EMP_LIGHT)
+			owner.set_jitter_if_lower(SYNTH_BAD_EFFECT_DURATION)
+			owner.set_dizzy_if_lower(SYNTH_BAD_EFFECT_DURATION)
+			owner.Knockdown(SYNTH_KNOCKDOWN_POWER)
 			to_chat(owner, span_warning("Your system reports anomalous feedback from your auditory sensors."))
+
+#undef SYNTH_BAD_EFFECT_DURATION
+#undef SYNTH_DEAF_STACKS
+#undef SYNTH_KNOCKDOWN_POWER
+#undef SYNTH_HEAVY_EMP_MODIFIER

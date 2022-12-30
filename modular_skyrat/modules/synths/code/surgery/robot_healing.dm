@@ -1,3 +1,6 @@
+#define DAMAGE_ROUNDING 0.1
+#define FAIL_DAMAGE_MULTIPLIER 0.8
+
 //Almost copypaste of tend wounds, with some changes
 /datum/surgery/robot_healing
 	steps = list(
@@ -63,20 +66,24 @@
 		heals_burn = TRUE
 		woundtype = "wiring"
 
-	if(istype(surgery,/datum/surgery/robot_healing))
-		var/datum/surgery/robot_healing/the_surgery = surgery
-		if(!the_surgery.surgery_preop_message_sent)
-			display_results(
-				user,
-				target,
-				span_notice("You attempt to fix some of [target]'s [woundtype]."),
-				span_notice("[user] attempts to fix some of [target]'s [woundtype]."),
-				span_notice("[user] attempts to fix some of [target]'s [woundtype]."),
-			)
+	if(!istype(surgery, /datum/surgery/robot_healing))
+		return
+
+	var/datum/surgery/robot_healing/the_surgery = surgery
+	if(the_surgery.surgery_preop_message_sent)
+		return
+
+	display_results(
+		user,
+		target,
+		span_notice("You attempt to fix some of [target]'s [woundtype]."),
+		span_notice("[user] attempts to fix some of [target]'s [woundtype]."),
+		span_notice("[user] attempts to fix some of [target]'s [woundtype]."),
+	)
 
 /datum/surgery_step/robot_heal/initiate(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, try_to_fail = FALSE)
 	if(..())
-		while((heals_brute && target.getBruteLoss() && tool.tool_use_check(user,1)) || (heals_burn && target.getFireLoss() && tool))
+		while((heals_brute && target.getBruteLoss() && tool.tool_use_check(user, 1)) || (heals_burn && target.getFireLoss() && tool))
 			if(!..())
 				break
 
@@ -87,7 +94,7 @@
 
 	if(heals_brute)
 		healed_brute = brute_heal_amount
-		tool.use_tool(target, user, 0, volume=50, amount=1)
+		tool.use_tool(target, user, 0, volume = 50, amount=1)
 
 	var/healed_burn = 0
 	if(heals_burn)
@@ -95,15 +102,17 @@
 		healed_burn = burn_heal_amount
 		if(!cable.amount)
 			return
+
 		cable.use(1)
 
 	if(missing_health_bonus)
 		if(target.stat != DEAD)
-			healed_brute += round((target.getBruteLoss()/ missing_health_bonus),0.1)
-			healed_burn += round((target.getFireLoss()/ missing_health_bonus),0.1)
+			healed_brute += round((target.getBruteLoss() / missing_health_bonus), DAMAGE_ROUNDING)
+			healed_burn += round((target.getFireLoss() / missing_health_bonus), DAMAGE_ROUNDING)
+
 		else //less healing bonus for the dead since they're expected to have lots of damage to begin with (to make TW into defib not TOO simple)
-			healed_brute += round((target.getBruteLoss()/ (missing_health_bonus*5)),0.1)
-			healed_burn += round((target.getFireLoss()/ (missing_health_bonus*5)),0.1)
+			healed_brute += round((target.getBruteLoss() / (missing_health_bonus * 5)), DAMAGE_ROUNDING)
+			healed_burn += round((target.getFireLoss() / (missing_health_bonus * 5)), DAMAGE_ROUNDING)
 
 	if(!get_location_accessible(target, target_zone))
 		healed_brute *= 0.55
@@ -132,15 +141,15 @@
 
 	var/brute_damage = 0
 	if(heals_brute)
-		brute_damage = brute_heal_amount * 0.8
+		brute_damage = brute_heal_amount * FAIL_DAMAGE_MULTIPLIER
 
 	var/burn_damage = 0
 	if(heals_burn)
-		burn_damage = burn_heal_amount * 0.8
+		burn_damage = burn_heal_amount * FAIL_DAMAGE_MULTIPLIER
 
 	if(missing_health_bonus)
-		brute_damage += round((target.getBruteLoss()/ (missing_health_bonus*2)),0.1)
-		burn_damage += round((target.getFireLoss()/ (missing_health_bonus*2)),0.1)
+		brute_damage += round((target.getBruteLoss() / (missing_health_bonus * 2)), DAMAGE_ROUNDING)
+		burn_damage += round((target.getFireLoss() / (missing_health_bonus * 2)), DAMAGE_ROUNDING)
 
 	target.take_bodypart_damage(brute_damage, burn_damage)
 	return FALSE
@@ -160,3 +169,6 @@
 	burn_heal_amount = 10
 	missing_health_bonus = 15
 	time = 10
+
+#undef DAMAGE_ROUNDING
+#undef FAIL_DAMAGE_MULTIPLIER

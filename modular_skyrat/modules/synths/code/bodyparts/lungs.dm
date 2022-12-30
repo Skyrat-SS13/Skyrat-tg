@@ -1,3 +1,6 @@
+#define SYNTH_LIGHT_EMP_TEMPERATURE_POWER 30
+#define SYNTH_HEAVY_EMP_TEMPERATURE_POWER 100
+
 /obj/item/organ/internal/lungs/synth
 	name = "heat sink"
 	desc = "A device that transfers generated heat to a fluid medium to cool it down. Required to keep your synthetics cool-headed. It's shape resembles lungs." //Purposefully left the 'fluid medium' ambigious for interpretation of the character, whether it be air or fluid cooling
@@ -16,11 +19,17 @@
 
 /obj/item/organ/internal/lungs/synth/emp_act(severity)
 	. = ..()
+
 	if(. & EMP_PROTECT_SELF)
 		return
+
 	switch(severity)
-		if(1)
+		if(EMP_HEAVY)
 			to_chat(owner, span_warning("Alert: Critical cooling system failure!"))
-			owner.adjust_bodytemperature(100 * TEMPERATURE_DAMAGE_COEFFICIENT)
-		if(2)
-			owner.adjust_bodytemperature(30 * TEMPERATURE_DAMAGE_COEFFICIENT)
+			owner.adjust_bodytemperature(SYNTH_HEAVY_EMP_TEMPERATURE_POWER * TEMPERATURE_DAMAGE_COEFFICIENT)
+
+		if(EMP_LIGHT)
+			owner.adjust_bodytemperature(SYNTH_LIGHT_EMP_TEMPERATURE_POWER * TEMPERATURE_DAMAGE_COEFFICIENT)
+
+#undef SYNTH_LIGHT_EMP_TEMPERATURE_POWER
+#undef SYNTH_HEAVY_EMP_TEMPERATURE_POWER
