@@ -48,7 +48,8 @@
 /obj/item/clothing/sextoy/condom
 	name = "condom"
 	desc = "I wonder if I can put this over my head..."
-	icon_state = "condom"
+	icon_state = "condom_pink_unused"
+	base_icon_state = "condom"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	w_class = WEIGHT_CLASS_TINY
 	var/current_color = "pink"
@@ -57,12 +58,14 @@
 
 /obj/item/clothing/sextoy/condom/Initialize(mapload)
 	. = ..()
-	update_icon_state()
-	update_icon()
+
+	if(current_color != "pink" || condom_state != "unused")
+		update_icon_state()
+		update_icon()
 
 /obj/item/clothing/sextoy/condom/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]_[condom_state]"
+	icon_state = "[base_icon_state]_[current_color]_[condom_state]"
 
 /// Updates the condom's sprite, called after use
 /obj/item/clothing/sextoy/condom/proc/condom_use()
