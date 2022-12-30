@@ -17,11 +17,11 @@
 
 /obj/item/clothing/under/dress/skirt/primitive_catgirl_body_wraps
 	name = "body wraps"
-	desc = "Some pretty simple wraps to cover up the chest and the groin."
+	desc = "Some pretty simple wraps to cover up your lower bits."
 	icon_state = "wraps"
 	icon = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
 	worn_icon = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
-	body_parts_covered = GROIN|CHEST
+	body_parts_covered = GROIN
 	greyscale_config = /datum/greyscale_config/primitive_catgirl_wraps
 	greyscale_config_worn = /datum/greyscale_config/primitive_catgirl_wraps/worn
 	greyscale_colors = "#cec8bf#364660"
@@ -41,6 +41,12 @@
 	greyscale_colors = "#cec8bf"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
+/obj/item/clothing/gloves/fingerless/primitive_catgirl_armwraps/gauntlets
+	name = "gauntlets"
+	desc = "Simple cloth arm wraps with overlying metal protection."
+	icon_state = "gauntlets"
+	greyscale_colors = "#cec8bf#c55a1d"
+
 // Suit
 
 /obj/item/clothing/suit/jacket/primitive_catgirl_coat
@@ -58,8 +64,8 @@
 	greyscale_colors = "#594032#cec8bf"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
-/obj/item/clothing/suit/apron/chef/colorable_apron/primitive_catgirl_off_white
-	greyscale_colors = "#cec8bf"
+/obj/item/clothing/suit/apron/chef/colorable_apron/primitive_catgirl_leather
+	greyscale_colors = "#594032"
 
 // Shoes
 
@@ -90,6 +96,33 @@
 
 /obj/item/clothing/neck/ranger_poncho/primitive_catgirl_leather
 	greyscale_colors = "#594032#594032"
+
+// Masks
+
+/obj/item/clothing/mask/primitive_catgirl_greyscale_gaiter
+	name = "neck gaiter"
+	desc = "A cloth for covering your neck, and usually part of your face too, but that part's optional."
+	icon_state = "gaiter"
+	inhand_icon_state = "balaclava"
+	icon = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
+	worn_icon = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
+	greyscale_config = /datum/greyscale_config/primitive_catgirl_gaiter
+	greyscale_config_worn = /datum/greyscale_config/primitive_catgirl_gaiter/worn
+	greyscale_colors = "#364660"
+	w_class = WEIGHT_CLASS_TINY
+	flags_inv = HIDEFACE|HIDESNOUT
+	flags_cover = MASKCOVERSMOUTH
+	visor_flags_inv = HIDEFACE|HIDESNOUT
+	visor_flags_cover = MASKCOVERSMOUTH
+	actions_types = list(/datum/action/item_action/adjust)
+
+/obj/item/clothing/mask/primitive_catgirl_greyscale_gaiter/attack_self(mob/user)
+	adjustmask(user)
+
+// Head
+
+/obj/item/clothing/head/standalone_hood/primitive_catgirl_colors
+	greyscale_colors = "#594032#364660"
 
 // Misc Items
 
