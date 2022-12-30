@@ -115,6 +115,10 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	hivemind.active_network = new_active_hivemind
 	to_chat(user, span_abductor("You are now sending messages to [new_active_hivemind.name]"))
 
+	if(hivemind.active)
+		hivemind.activate()
+		hivemind.activate()
+
 /datum/action/innate/hivemind_config/proc/leave_hivemind()
 	var/mob/living/carbon/human/user = owner
 	var/datum/nifsoft/hivemind/hivemind = user.find_nifsoft(/datum/nifsoft/hivemind)
