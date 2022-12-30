@@ -165,7 +165,7 @@ const NifSettings = (props, context) => {
           onSelected={(value) => act('change_theme', { target_theme: value })}
         />
       </LabeledList.Item>
-      <LabeledList.Item label="Examine Text">
+      <LabeledList.Item label="NIF Flavor Text">
         <Input
           onInput={(e, value) =>
             act('change_examine_text', { new_text: value })
