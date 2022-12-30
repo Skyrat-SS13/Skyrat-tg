@@ -26,3 +26,6 @@
 		if(EMP_LIGHT)
 			owner.nutrition = max(0, owner.nutrition - SYNTH_STOMACH_LIGHT_EMP_CHARGE_LOSS)
 			to_chat(owner, span_warning("Alert: Minor battery discharge!"))
+
+#undef SYNTH_STOMACH_LIGHT_EMP_CHARGE_LOSS
+#undef SYNTH_STOMACH_HEAVY_EMP_CHARGE_LOSS
