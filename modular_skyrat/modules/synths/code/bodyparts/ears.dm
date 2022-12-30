@@ -25,7 +25,7 @@
 			owner.set_jitter_if_lower(SYNTH_BAD_EFFECT_DURATION * SYNTH_HEAVY_EMP_MULTIPLIER)
 			owner.set_dizzy_if_lower(SYNTH_BAD_EFFECT_DURATION * SYNTH_HEAVY_EMP_MULTIPLIER)
 			owner.Knockdown(SYNTH_KNOCKDOWN_POWER * SYNTH_HEAVY_EMP_MULTIPLIER)
-			adjustEarDamage(SYNTH_ORGAN_EMP_DAMAGE, SYNTH_DEAF_STACKS)
+			adjustEarDamage(SYNTH_ORGAN_HEAVY_EMP_DAMAGE, SYNTH_DEAF_STACKS)
 			to_chat(owner, span_warning("Your system reports a complete lack of input from your auditory sensors."))
 
 		if(EMP_LIGHT)
