@@ -481,7 +481,7 @@
 	else if(helper.zone_selected == BODY_ZONE_PRECISE_MOUTH)
 		nosound = TRUE
 		playsound(src, 'modular_skyrat/modules/emotes/sound/emotes/Nose_boop.ogg', 50, 0)
-		if(HAS_TRAIT(src, TRAIT_SENSITIVESNOUT) && get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH))
+		if(HAS_TRAIT(src, TRAIT_SENSITIVESNOUT))
 			to_chat(src, span_warning("[helper] boops you on your sensitive nose, sending you to the ground!"))
 			src.Knockdown(20)
 			src.apply_damage(30, STAMINA)
