@@ -58,6 +58,9 @@
 	greyscale_colors = "#594032#cec8bf"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
+/obj/item/clothing/suit/apron/chef/colorable_apron/primitive_catgirl_off_white
+	greyscale_colors = "#cec8bf"
+
 // Shoes
 
 /obj/item/clothing/shoes/winterboots/ice_boots/primitive_catgirl_boots
@@ -74,8 +77,19 @@
 // Neck
 
 /obj/item/clothing/neck/scarf/primitive_catgirl_scarf
-	name = "scarf"
 	greyscale_colors = "#cec8bf#cec8bf"
+
+/obj/item/clothing/neck/large_scarf/primitive_catgirl_off_white
+	greyscale_colors = "#cec8bf#cec8bf"
+
+/obj/item/clothing/neck/infinity_scarf/primitive_catgirl_blue
+	greyscale_colors = "#364660"
+
+/obj/item/clothing/neck/mantle/recolorable/primitive_catgirl_off_white
+	greyscale_colors = "#cec8bf"
+
+/obj/item/clothing/neck/ranger_poncho/primitive_catgirl_leather
+	greyscale_colors = "#594032#594032"
 
 // Misc Items
 
