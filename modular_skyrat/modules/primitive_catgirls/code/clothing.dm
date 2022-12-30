@@ -38,7 +38,7 @@
 	worn_icon = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
 	greyscale_config = /datum/greyscale_config/primitive_catgirl_armwraps
 	greyscale_config_worn = /datum/greyscale_config/primitive_catgirl_armwraps/worn
-	greyscale_colors = "#cec8bf"
+	greyscale_colors = "#cec8bf#cec8bf"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/gloves/fingerless/primitive_catgirl_armwraps/gauntlets

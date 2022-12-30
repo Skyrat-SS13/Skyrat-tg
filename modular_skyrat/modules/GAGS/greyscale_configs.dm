@@ -1163,4 +1163,4 @@ digi
 
 /datum/greyscale_config/primitive_catgirl_gaiter/worn
 	name = "Neck Gaiter (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/boots_worn.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gaiter_worn.json'
