@@ -55,8 +55,13 @@
 		/obj/item/food/fishmeat = 1,
 		/obj/item/food/grown/cabbage = 1
 	)
+<<<<<<< HEAD
 	result = /obj/item/food/fishtaco
 	subcategory = CAT_SEAFOOD
+=======
+	result = /obj/item/food/taco/fish
+	category = CAT_SEAFOOD
+>>>>>>> 5c97b13e18b (Food code sweepups + heart boxes have more chocolate variety (#72127))
 
 /datum/crafting_recipe/food/vegetariansushiroll
 	name ="Vegetarian sushi roll"

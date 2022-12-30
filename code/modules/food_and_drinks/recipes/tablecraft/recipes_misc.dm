@@ -396,38 +396,58 @@
 	result = /obj/item/food/raw_vegetarian_calzone
 	subcategory = CAT_MISCFOOD
 
-/datum/crafting_recipe/food/caramel_truffle
+/datum/crafting_recipe/food/bonbon/caramel_truffle
 	name = "Caramel truffle"
 	reqs = list(
 		/obj/item/food/chocolatebar = 1,
 		/datum/reagent/consumable/caramel = 5,
 	)
+<<<<<<< HEAD
 	result = /obj/item/food/caramel_truffle
 	subcategory = CAT_MISCFOOD
+=======
+	result = /obj/item/food/bonbon/caramel_truffle
+	category = CAT_MISCFOOD
+>>>>>>> 5c97b13e18b (Food code sweepups + heart boxes have more chocolate variety (#72127))
 
-/datum/crafting_recipe/food/chocolate_truffle
+/datum/crafting_recipe/food/bonbon/chocolate_truffle
 	name = "Chocolate truffle"
 	reqs = list(
 		/obj/item/food/chocolatebar = 1,
 		/datum/reagent/consumable/sugar = 5,
 	)
+<<<<<<< HEAD
 	result = /obj/item/food/chocolate_truffle
 	subcategory = CAT_MISCFOOD
+=======
+	result = /obj/item/food/bonbon/chocolate_truffle
+	category = CAT_MISCFOOD
+>>>>>>> 5c97b13e18b (Food code sweepups + heart boxes have more chocolate variety (#72127))
 
-/datum/crafting_recipe/food/peanut_truffle
+/datum/crafting_recipe/food/bonbon/peanut_truffle
 	name = "Peanut truffle"
 	reqs = list(
 		/obj/item/food/chocolatebar = 1,
 		/obj/item/food/grown/peanut = 1,
 	)
+<<<<<<< HEAD
 	result = /obj/item/food/peanut_truffle
 	subcategory = CAT_MISCFOOD
+=======
+	result = /obj/item/food/bonbon/peanut_truffle
+	category = CAT_MISCFOOD
+>>>>>>> 5c97b13e18b (Food code sweepups + heart boxes have more chocolate variety (#72127))
 
-/datum/crafting_recipe/food/peanut_butter_cup
+/datum/crafting_recipe/food/bonbon/peanut_butter_cup
 	name = "Peanut butter cup"
 	reqs = list(
 		/obj/item/food/chocolatebar = 1,
 		/datum/reagent/consumable/peanut_butter = 5,
 	)
+<<<<<<< HEAD
 	result = /obj/item/food/peanut_butter_cup
 	subcategory = CAT_MISCFOOD
+=======
+	result = /obj/item/food/bonbon/peanut_butter_cup
+	category = CAT_MISCFOOD
+>>>>>>> 5c97b13e18b (Food code sweepups + heart boxes have more chocolate variety (#72127))
