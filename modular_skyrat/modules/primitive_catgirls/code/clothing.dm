@@ -26,6 +26,7 @@
 	greyscale_config_worn = /datum/greyscale_config/primitive_catgirl_wraps/worn
 	greyscale_colors = "#cec8bf#364660"
 	flags_1 = IS_PLAYER_COLORABLE_1
+	has_sensor = FALSE
 
 // Hands
 

@@ -51,6 +51,8 @@
 /datum/job/primitive_catgirl
 	title = "Icemoon Dweller"
 
+// Antag and team datums
+
 /datum/team/primitive_catgirls
 	name = "Icemoon Dwellers"
 	show_roundend_report = FALSE
@@ -63,7 +65,16 @@
 	prevent_roundtype_conversion = FALSE
 	antagpanel_category = "Icemoon Dwellers"
 	count_against_dynamic_roll_chance = FALSE
+	show_in_roundend = FALSE
+
+	// Tracks the antag datum's 'team' for showing in the ghost orbit menu
 	var/datum/team/primitive_catgirls/feline_team
+
+	antag_recipes = list(
+		/datum/crafting_recipe/boneaxe,
+		/datum/crafting_recipe/bonespear,
+		/datum/crafting_recipe/bonedagger,
+	)
 
 /datum/antagonist/primitive_catgirl/create_team(datum/team/team)
 	if(team)
