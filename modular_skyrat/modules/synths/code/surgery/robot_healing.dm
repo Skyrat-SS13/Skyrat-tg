@@ -1,5 +1,6 @@
 #define DAMAGE_ROUNDING 0.1
 #define FAIL_DAMAGE_MULTIPLIER 0.8
+#define FINAL_STEP_HEAL_MULTIPLIER 0.55
 
 //Almost copypaste of tend wounds, with some changes
 /datum/surgery/robot_healing
@@ -115,12 +116,12 @@
 			healed_burn += round((target.getFireLoss() / (missing_health_bonus * 5)), DAMAGE_ROUNDING)
 
 	if(!get_location_accessible(target, target_zone))
-		healed_brute *= 0.55
-		healed_burn *= 0.55
+		healed_brute *= FINAL_STEP_HEAL_MULTIPLIER
+		healed_burn *= FINAL_STEP_HEAL_MULTIPLIER
 		self_message += " as best as you can while they have clothing on"
 		other_message += " as best as they can while [target] has clothing on"
 
-	target.heal_bodypart_damage(healed_brute,healed_burn, 0, BODYTYPE_ROBOTIC)
+	target.heal_bodypart_damage(healed_brute, healed_burn, 0, BODYTYPE_ROBOTIC)
 	display_results(user, target, span_notice("[self_message]."), "[other_message].", "[other_message].")
 
 	if(istype(surgery, /datum/surgery/robot_healing))
