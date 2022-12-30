@@ -38,15 +38,6 @@
 	item = /obj/item/syndie_glue
 	cost = 3
 
-/datum/uplink_item/device_tools/syndikush
-	name = "Syndikush Green Crack cart"
-	desc = "A cheap Chinese vape cart that contains a potent combination of THC and \
-			stimulants. Not made with real crack."
-	item = /obj/item/reagent_containers/vapecart/syndicate
-	cost = 5
-	surplus = 90
-	progression_minimum = 20 MINUTES
-
 /datum/uplink_item/device_tools/syndicateborg
 	name = "Syndicate Cyborg Upgrade"
 	desc = "A marvel of modern syndicate technology; a syndicate borg hijacker. Allowing for the use of extremely powerful repair nanites, building equipment and otherwise useful upgrades to the standard saboteur modules. Due to its relatively experimental nature, it will only work on cyborgs which have already been jailbroken by an electromagnetic sequencer."
