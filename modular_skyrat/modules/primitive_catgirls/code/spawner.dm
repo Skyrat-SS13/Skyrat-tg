@@ -17,7 +17,7 @@
 	var/datum/team/primitive_catgirls/team
 	restricted_species = list(/datum/species/human/felinid/primitive)
 	random_appearance = FALSE
-	uses = 7
+	uses = 14
 
 /obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/examine()
 	. = ..()
