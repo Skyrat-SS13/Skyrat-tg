@@ -1,5 +1,6 @@
 /area/shuttle/syndicate/cruiser
 	name = "Syndicate Cruiser"
+	requires_power = FALSE
 
 /area/shuttle/syndicate/cruiser/bridge
 	name = "Syndicate Cruiser Control"
