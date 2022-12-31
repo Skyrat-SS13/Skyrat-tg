@@ -22,17 +22,10 @@
 
 /mob/living/simple_animal/hostile/guardian/dextrous/examine(mob/user)
 	if(dextrous)
-<<<<<<< HEAD
 		. = list("<span class='info'>This is [icon2html(src)] \a <b>[src]</b>!\n[desc]", EXAMINE_SECTION_BREAK) //SKYRAT EDIT CHANGE
-		for(var/obj/item/I in held_items)
-			if(!(I.item_flags & ABSTRACT))
-				. += "It has [I.get_examine_string(user)] in its [get_held_index_name(get_held_index_of_item(I))]."
-=======
-		. = list("<span class='info'>This is [icon2html(src)] \a <b>[src]</b>!\n[desc]")
 		for(var/obj/item/held_item in held_items)
 			if(!(held_item.item_flags & ABSTRACT))
 				. += "It has [held_item.get_examine_string(user)] in its [get_held_index_name(get_held_index_of_item(held_item))]."
->>>>>>> 88de64a821b (holopara qol update (#72042))
 		if(internal_storage && !(internal_storage.item_flags & ABSTRACT))
 			. += "It is holding [internal_storage.get_examine_string(user)] in its internal storage."
 		. += "</span>"
