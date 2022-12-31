@@ -68,30 +68,35 @@
 /obj/effect/mapping_helpers/airlock/access/all/supply/customs/get_access()
 	var/list/access_list = ..()
 	access_list += ACCESS_BRIG_ENTRANCE
+	access_list += ACCESS_CARGO
 	return access_list
 
 // Engineering
 /obj/effect/mapping_helpers/airlock/access/all/engineering/engie_guard/get_access()
 	var/list/access_list = ..()
 	access_list += ACCESS_BRIG_ENTRANCE
+	access_list += ACCESS_ENGINEERING
 	return access_list
 
 // Medical
 /obj/effect/mapping_helpers/airlock/access/all/medical/orderly/get_access()
 	var/list/access_list = ..()
 	access_list += ACCESS_BRIG_ENTRANCE
+	access_list += ACCESS_MEDICAL
 	return access_list
 
 // Science
 /obj/effect/mapping_helpers/airlock/access/all/science/sci_guard/get_access()
 	var/list/access_list = ..()
 	access_list += ACCESS_BRIG_ENTRANCE
+	access_list += ACCESS_SCIENCE
 	return access_list
 
 // Service
 /obj/effect/mapping_helpers/airlock/access/all/service/bouncer/get_access()
 	var/list/access_list = ..()
 	access_list += ACCESS_BRIG_ENTRANCE
+	access_list += ACCESS_SERVICE
 	return access_list
 
 // Port Tarkon
