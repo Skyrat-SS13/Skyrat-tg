@@ -47,13 +47,8 @@
 		/obj/item/tank/jetpack/oxygen/captain,
 		)
 	slowdown = 1
-<<<<<<< HEAD
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 100, FIRE = 80, ACID = 70)
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDESEXTOY|HIDETAIL //SKYRAT EDIT CHANGE - ADDED HIDETAIL. ADDED HIDESEXTOY TO PREVENT VISUAL BUGS.
-=======
 	armor_type = /datum/armor/suit_space
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
->>>>>>> 72add645201 (Refactors armor into dedicated subtypes (#71986))
+	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDESEXTOY|HIDETAIL //SKYRAT EDIT CHANGE - ADDED HIDETAIL. ADDED HIDESEXTOY TO PREVENT VISUAL BUGS.
 	cold_protection = CHEST | GROIN | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT_OFF
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS

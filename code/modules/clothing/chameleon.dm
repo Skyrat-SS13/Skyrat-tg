@@ -423,14 +423,9 @@
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
 	resistance_flags = NONE
-<<<<<<< HEAD
-	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 50)
+	armor_type = /datum/armor/suit_chameleon
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
 	special_desc = "A chameleon vest employed by the Syndicate in infiltration operations." // SKYRAT EDIT
-
-=======
-	armor_type = /datum/armor/suit_chameleon
->>>>>>> 72add645201 (Refactors armor into dedicated subtypes (#71986))
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
 /datum/armor/suit_chameleon
@@ -466,14 +461,9 @@
 	icon_state = "meson"
 	inhand_icon_state = "meson"
 	resistance_flags = NONE
-<<<<<<< HEAD
-	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 50)
+	armor_type = /datum/armor/glasses_chameleon
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
 	special_desc = "Chameleon glasses employed by the Syndicate in infiltration operations." // SKYRAT EDIT
-=======
-	armor_type = /datum/armor/glasses_chameleon
->>>>>>> 72add645201 (Refactors armor into dedicated subtypes (#71986))
-
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
 /datum/armor/glasses_chameleon
@@ -685,14 +675,9 @@
 	greyscale_config_worn = /datum/greyscale_config/sneakers_worn
 	desc = "A pair of black shoes."
 	resistance_flags = NONE
-<<<<<<< HEAD
-	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 90, FIRE = 50, ACID = 50)
+	armor_type = /datum/armor/shoes_chameleon
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
 	special_desc = "A pair of chameleon shoes employed by the Syndicate in infiltration operations." // Skyrat edit
-=======
-	armor_type = /datum/armor/shoes_chameleon
->>>>>>> 72add645201 (Refactors armor into dedicated subtypes (#71986))
-
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
 /datum/armor/shoes_chameleon

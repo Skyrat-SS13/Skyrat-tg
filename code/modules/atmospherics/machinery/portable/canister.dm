@@ -89,11 +89,6 @@ GLOBAL_LIST_INIT(gas_id_to_canister, init_gas_id_to_canister())
 
 	var/protected_contents = FALSE
 
-<<<<<<< HEAD
-=======
-	///used while processing to update appearance only when its pressure state changes
-	var/current_pressure_state
-
 /datum/armor/portable_atmospherics_canister
 	melee = 50
 	bullet = 50
@@ -103,7 +98,6 @@ GLOBAL_LIST_INIT(gas_id_to_canister, init_gas_id_to_canister())
 	fire = 80
 	acid = 50
 
->>>>>>> 72add645201 (Refactors armor into dedicated subtypes (#71986))
 /obj/machinery/portable_atmospherics/canister/Initialize(mapload, datum/gas_mixture/existing_mixture)
 	. = ..()
 

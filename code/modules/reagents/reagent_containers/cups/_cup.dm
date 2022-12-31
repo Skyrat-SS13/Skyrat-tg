@@ -384,7 +384,10 @@
 	armor_type = /datum/armor/bucket_wooden
 	resistance_flags = FLAMMABLE
 
-<<<<<<< HEAD
+/datum/armor/bucket_wooden
+	melee = 10
+	acid = 50
+
 #define SQUEEZING_DISPERSAL_PERCENT 0.75 //SKYRAT EDIT ADDITION
 
 /obj/item/reagent_containers/cup/bucket/attackby(obj/O, mob/living/user, params) //SKYRAT EDIT CHANGE
@@ -400,16 +403,6 @@
 			O.reagents.remove_any(O.reagents.total_volume*SQUEEZING_DISPERSAL_PERCENT)
 			O.reagents.trans_to(src, O.reagents.total_volume, transfered_by = user)
 			to_chat(user, "<span class='notice'>You squeeze the liquids from [O] to [src].</span>")
-=======
-/datum/armor/bucket_wooden
-	melee = 10
-	acid = 50
-
-/obj/item/reagent_containers/cup/bucket/attackby(obj/O, mob/user, params)
-	if(istype(O, /obj/item/mop))
-		if(reagents.total_volume < 1)
-			to_chat(user, span_warning("[src] is out of water!"))
->>>>>>> 72add645201 (Refactors armor into dedicated subtypes (#71986))
 		else
 			if(reagents.total_volume < 1)
 				to_chat(user, "<span class='warning'>[src] is out of water!</span>")

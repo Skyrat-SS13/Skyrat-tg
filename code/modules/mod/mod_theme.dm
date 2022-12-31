@@ -1718,7 +1718,17 @@
 		),
 	)
 
-<<<<<<< HEAD
+/datum/armor/mod_theme_administrative
+	melee = 100
+	bullet = 100
+	laser = 100
+	energy = 100
+	bomb = 100
+	bio = 100
+	fire = 100
+	acid = 100
+	wound = 100
+
 /datum/mod_theme/timeline
 	name = "chrono"
 	desc = "A suit beyond our time, beyond time itself. Used to traverse timelines and \"correct their course\"."
@@ -1727,7 +1737,7 @@
 		and sometimes hilariously painful side effects of jumping timelines, while providing inbuilt equipment for \
 		making timeline adjustments to correct a bad course."
 	default_skin = "timeline"
-	armor = list(MELEE = 60, BULLET = 60, LASER = 60, ENERGY = 60, BOMB = 30, BIO = 90, FIRE = 100, ACID = 100)
+	armor_type = /datum/armor/mod_theme_timeline
 	resistance_flags = FIRE_PROOF|ACID_PROOF
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	complexity_max = 15
@@ -1759,15 +1769,13 @@
 			),
 		),
 	)
-=======
-/datum/armor/mod_theme_administrative
-	melee = 100
-	bullet = 100
-	laser = 100
-	energy = 100
-	bomb = 100
-	bio = 100
+
+/datum/armor/mod_theme_timeline
+	melee = 60
+	bullet = 60
+	laser = 60
+	energy = 60
+	bomb = 30
+	bio = 90
 	fire = 100
 	acid = 100
-	wound = 100
->>>>>>> 72add645201 (Refactors armor into dedicated subtypes (#71986))

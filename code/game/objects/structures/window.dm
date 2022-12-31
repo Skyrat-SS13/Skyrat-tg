@@ -445,11 +445,7 @@
 	icon_state = "rwindow"
 	reinf = TRUE
 	heat_resistance = 1600
-<<<<<<< HEAD
-	armor = list(MELEE = 50, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 25, BIO = 0, FIRE = 80, ACID = 100) // SKYRAT EDIT CHANGE
-=======
 	armor_type = /datum/armor/window_reinforced
->>>>>>> 72add645201 (Refactors armor into dedicated subtypes (#71986))
 	max_integrity = 75
 	explosion_block = 1
 	damage_deflection = 11
@@ -462,8 +458,9 @@
 //If you find this like 4 years later and construction still hasn't been refactored, I'm so sorry for this //Adding a timestamp, I found this in 2020, I hope it's from this year -Lemon
 //2021 AND STILLLL GOING STRONG
 //2022 BABYYYYY ~lewc
+
 /datum/armor/window_reinforced
-	melee = 80
+	melee = 50
 	bomb = 25
 	fire = 80
 	acid = 100

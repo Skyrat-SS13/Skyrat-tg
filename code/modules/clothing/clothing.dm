@@ -286,13 +286,8 @@
 		how_cool_are_your_threads += "</span>"
 		. += how_cool_are_your_threads.Join()
 
-<<<<<<< HEAD
-	if(armor.bio || armor.bomb || armor.bullet || armor.energy || armor.laser || armor.melee || armor.fire || armor.acid || flags_cover & HEADCOVERSMOUTH || flags_cover & PEPPERPROOF)
-		. += span_notice("OOC: Click <a href='?src=[REF(src)];list_armor=1'>here</a> to see its protection classes.") // SKYRAT EDIT ORIGINAL: ("It has a <a href='?src=[REF(src)];list_armor=1'>tag</a> listing its protection classes.")
-=======
 	if(armor.has_any_armor() || flags_cover & HEADCOVERSMOUTH || flags_cover & PEPPERPROOF)
-		. += span_notice("It has a <a href='?src=[REF(src)];list_armor=1'>tag</a> listing its protection classes.")
->>>>>>> 72add645201 (Refactors armor into dedicated subtypes (#71986))
+		. += span_notice("OOC: Click <a href='?src=[REF(src)];list_armor=1'>here</a> to see its protection classes.") // SKYRAT EDIT ORIGINAL: ("It has a <a href='?src=[REF(src)];list_armor=1'>tag</a> listing its protection classes.")
 
 /obj/item/clothing/Topic(href, href_list)
 	. = ..()

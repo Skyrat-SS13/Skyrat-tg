@@ -30,7 +30,6 @@
 	/// The heat given off when active.
 	var/active_heat = 3500
 
-<<<<<<< HEAD
 	// SKYRAT EDIT ADD START
 
 	/// The sound played when the item is turned on
@@ -40,11 +39,10 @@
 	var/disable_sound = 'sound/weapons/saberoff.ogg'
 
 	// SKYRAT EDIT ADD END
-=======
+
 /datum/armor/melee_energy
 	fire = 100
 	acid = 30
->>>>>>> 72add645201 (Refactors armor into dedicated subtypes (#71986))
 
 /obj/item/melee/energy/Initialize(mapload)
 	. = ..()

@@ -188,19 +188,10 @@
 	desc = "Yarr."
 	icon_state = "eyepatch"
 	inhand_icon_state = null
-<<<<<<< HEAD
-=======
-	actions_types = list(/datum/action/item_action/flip)
 
 /datum/armor/glasses_science
 	fire = 80
 	acid = 100
-
-/obj/item/clothing/glasses/eyepatch/attack_self(mob/user, modifiers)
-	. = ..()
-	icon_state = (icon_state == base_icon_state) ? "[base_icon_state]_flipped" : base_icon_state
-	user.update_worn_glasses()
->>>>>>> 72add645201 (Refactors armor into dedicated subtypes (#71986))
 
 /obj/item/clothing/glasses/monocle
 	name = "monocle"
@@ -554,19 +545,10 @@
 	desc = "An eyepatch with built-in thermal optics."
 	icon_state = "eyepatch"
 	inhand_icon_state = null
-<<<<<<< HEAD
-=======
-	actions_types = list(/datum/action/item_action/flip)
 
 /datum/armor/glasses_science
 	fire = 80
 	acid = 100
-
-/obj/item/clothing/glasses/thermal/eyepatch/attack_self(mob/user, modifiers)
-	. = ..()
-	icon_state = (icon_state == base_icon_state) ? "[base_icon_state]_flipped" : base_icon_state
-	user.update_worn_glasses()
->>>>>>> 72add645201 (Refactors armor into dedicated subtypes (#71986))
 
 /obj/item/clothing/glasses/cold
 	name = "cold goggles"
