@@ -1164,3 +1164,12 @@ digi
 /datum/greyscale_config/primitive_catgirl_gaiter/worn
 	name = "Neck Gaiter (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gaiter_worn.json'
+
+/datum/greyscale_config/primitive_catgirl_gauntlets
+	name = "Gauntlets"
+	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gauntlets.json'
+
+/datum/greyscale_config/primitive_catgirl_gauntlets/worn
+	name = "Gauntlets (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gauntlets_worn.json'

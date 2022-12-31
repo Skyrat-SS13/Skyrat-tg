@@ -38,14 +38,19 @@
 	worn_icon = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
 	greyscale_config = /datum/greyscale_config/primitive_catgirl_armwraps
 	greyscale_config_worn = /datum/greyscale_config/primitive_catgirl_armwraps/worn
-	greyscale_colors = "#cec8bf#cec8bf"
+	greyscale_colors = "#cec8bf"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
-/obj/item/clothing/gloves/fingerless/primitive_catgirl_armwraps/gauntlets
+/obj/item/clothing/gloves/fingerless/primitive_catgirl_gauntlets
 	name = "gauntlets"
 	desc = "Simple cloth arm wraps with overlying metal protection."
 	icon_state = "gauntlets"
+	icon = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
+	worn_icon = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
+	greyscale_config = /datum/greyscale_config/primitive_catgirl_gauntlets
+	greyscale_config_worn = /datum/greyscale_config/primitive_catgirl_gauntlets/worn
 	greyscale_colors = "#cec8bf#c55a1d"
+	flags_1 = IS_PLAYER_COLORABLE_1
 
 // Suit
 
