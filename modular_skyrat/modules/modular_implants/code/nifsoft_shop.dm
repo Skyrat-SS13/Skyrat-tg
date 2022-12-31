@@ -23,9 +23,11 @@
 	)
 
 /obj/machinery/vending/nifsoft/ghost //Contains every NIFSoft and contains the standard NIF with persistence removed. Mostly here for ghost cafe and syndies
+	default_price = 0
+	extra_price = 0
 	products = list(
 		/obj/item/disk/nifsoft_uploader/shapeshifter = 10,
-		/obj/item/disk/nifsoft_uploader/summoner = 10,
+		/obj/item/disk/nifsoft_uploader/summoner/ghost = 10,
 		/obj/item/disk/nifsoft_uploader/hivemind = 10,
 		/obj/item/disk/nifsoft_uploader/money_sense = 10,
 	)
@@ -33,7 +35,6 @@
 	premium = list(
 		/obj/item/autosurgeon/organ/nif/ghost_role = 5,
 	)
-
 
 /obj/item/vending_refill/nifsoft_shop
 	machine_name = "NIFSoft Vendor"

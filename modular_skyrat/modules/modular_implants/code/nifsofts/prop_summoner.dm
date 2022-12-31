@@ -4,6 +4,11 @@
 /obj/item/disk/nifsoft_uploader/summoner
 	name = "Grimoire Caeruleam"
 	loaded_nifsoft = /datum/nifsoft/summoner
+	custom_price = PAYCHECK_CREW * 3
+
+/obj/item/disk/nifsoft_uploader/summoner/ghost
+	custom_price = 0
+
 
 /datum/nifsoft/summoner
 	name = "Grimoire Caeruleam"
