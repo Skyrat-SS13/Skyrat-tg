@@ -1,8 +1,8 @@
 import { BooleanLike } from 'common/react';
-import { useBackend } from '../../backend';
-import { Section, Stack } from '../../components';
-import { ButtonCheckbox } from '../../components/Button';
-import { Window } from '../../layouts';
+import { useBackend } from '../backend';
+import { Section, Stack } from '../components';
+import { Button, ButtonCheckbox } from '../components/Button';
+import { Window } from '../layouts';
 
 type Data = {
   food_types: Array<string>;
@@ -35,6 +35,9 @@ export const FoodPreferences = (props, context) => {
                 </Stack.Item>
               );
             })}
+            <Button color={'red'} onClick={act('reset')}>
+              Reset
+            </Button>
           </Stack>
         )}
       </Window.Content>
