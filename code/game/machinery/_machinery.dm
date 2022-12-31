@@ -148,8 +148,6 @@
 	var/always_area_sensitive = FALSE
 	///Multiplier for power consumption.
 	var/machine_power_rectifier = 1
-<<<<<<< HEAD
-=======
 	/// What was our power state the last time we updated its appearance?
 	/// TRUE for on, FALSE for off, -1 for never checked
 	var/appearance_power_state = -1
@@ -161,7 +159,6 @@
 	laser = 10
 	fire = 50
 	acid = 70
->>>>>>> 72add645201 (Refactors armor into dedicated subtypes (#71986))
 
 /obj/machinery/Initialize(mapload)
 	. = ..()
