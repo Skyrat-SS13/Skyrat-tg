@@ -131,12 +131,12 @@
 /obj/machinery/porta_turret/syndicate/pod/toolbox/nri/assess_perp(mob/living/carbon/human/perp)
 	return 0
 
-/mob/living/simple_animal/hostile/viscerator/nri
+/mob/living/basic/viscerator/nri
 	faction = list("neutral", FACTION_ERT)
 
 /obj/item/grenade/spawnergrenade/manhacks/nri
 	name = "imperial viscerator delivery grenade"
-	spawner_type = /mob/living/simple_animal/hostile/viscerator/nri
+	spawner_type = /mob/living/basic/viscerator/nri
 	deliveryamt = 10
 
 /obj/structure/closet/crate/secure/weapon/nri
