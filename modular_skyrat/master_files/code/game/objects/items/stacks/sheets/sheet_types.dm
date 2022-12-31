@@ -65,7 +65,6 @@ GLOBAL_LIST_INIT(skyrat_rod_recipes, list(
 // Wood
 
 GLOBAL_LIST_INIT(skyrat_wood_recipes, list(
-	new/datum/stack_recipe("wooden barricade", /obj/structure/deployable_barricade/wooden, 2, time = 1 SECONDS, on_solid_ground = TRUE),
 	new/datum/stack_recipe("water basin", /obj/structure/reagent_water_basin, 5, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE),
 	new/datum/stack_recipe("forging work bench", /obj/structure/reagent_crafting_bench, 5, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE),
 	new/datum/stack_recipe("wooden half-barricade", /obj/structure/deployable_barricade/wooden, 5, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE),
