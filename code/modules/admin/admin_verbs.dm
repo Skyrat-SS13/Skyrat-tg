@@ -98,11 +98,8 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/list_fingerprints,
 	/client/proc/message_pda, /*send a message to somebody on PDA*/
 	/datum/admins/proc/trophy_manager,
-<<<<<<< HEAD
 	/client/proc/fax_panel, /*send a paper to fax*/
-=======
 	/client/proc/force_load_lazy_template,
->>>>>>> b182d6f320a (Lazy Template Loading - Nukie/Wiz (#71785))
 	)
 GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/ban_panel, /client/proc/stickybanpanel))
 GLOBAL_PROTECT(admin_verbs_ban)
