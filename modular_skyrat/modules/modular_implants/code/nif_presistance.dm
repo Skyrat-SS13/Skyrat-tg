@@ -5,15 +5,10 @@
 /datum/controller/subsystem/persistence/proc/save_nifs()
 	for(var/player in GLOB.joined_player_list)
 		var/mob/living/carbon/human/ending_human = get_mob_by_ckey(player)
-		if(!istype(ending_human) || !ending_human.mind?.original_character_slot_index)
+		if(!ending_human || !istype(ending_human))
 			continue
 
-		var/mob/living/carbon/human/original_human = ending_human.mind.original_character.resolve()
-
-		if(!original_human)
-			continue
-
-		original_human.save_nif_data()
+		ending_human.save_nif_data()
 
 ///Saves the NIF data for a individual user.
 /mob/living/carbon/human/proc/save_nif_data()
