@@ -35,9 +35,7 @@
 	quirk_holder.AddComponent(/datum/component/dnr)
 
 /datum/quirk/dnr/remove()
-	var/datum/component/dnr/mydnr = LAZYACCESS(quirk_holder.datum_components, /datum/component/dnr)
-	if(mydnr)
-		QDEL_NULL(mydnr)
+	qdel(quirk_holder.GetComponent(/datum/component/dnr))
 
 /datum/component/dnr
 	var/mob/living/holder
