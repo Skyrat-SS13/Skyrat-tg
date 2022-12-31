@@ -1009,8 +1009,6 @@ GLOBAL_PROTECT(admin_verbs_poll)
 	var/datum/browser/popup = new(mob, "spellreqs", "Spell Requirements", 600, 400)
 	popup.set_content(page_contents)
 	popup.open()
-<<<<<<< HEAD
-=======
 
 /client/proc/force_load_lazy_template()
 	set name = "Load/Jump Lazy Template"
@@ -1048,4 +1046,3 @@ GLOBAL_PROTECT(admin_verbs_poll)
 
 	message_admins("[key_name_admin(usr)] has loaded lazy template '[choice]'")
 	to_chat(usr, span_boldnicegreen("Template loaded, you have been moved to the bottom left of the reservation."))
->>>>>>> 7b19e4a5abf (Fixes inability to declare war as nukies (#72217))
