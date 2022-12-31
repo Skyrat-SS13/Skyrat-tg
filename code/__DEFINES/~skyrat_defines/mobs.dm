@@ -9,9 +9,6 @@
 #define UNDERWEAR_HIDE_SHIRT (1<<1)
 #define UNDERWEAR_HIDE_UNDIES (1<<2)
 
-//Appends to the bottom of Defib fails - DNR TRAIT
-#define DEFIB_FAIL_DNR (1<<11)
-
 ///Defines for icons used for modular bodyparts, created to make it easier to relocate the module or files if necessary.
 #define BODYPART_ICON_HUMAN 'modular_skyrat/modules/bodyparts/icons/human_parts_greyscale.dmi'
 #define BODYPART_ICON_MAMMAL 'modular_skyrat/modules/bodyparts/icons/mammal_parts_greyscale.dmi'

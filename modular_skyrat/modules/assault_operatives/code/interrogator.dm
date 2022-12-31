@@ -97,7 +97,7 @@
 		return FALSE
 	if(!is_station_level(z))
 		return FALSE
-	if(human_occupant.stat == DEAD && !HAS_TRAIT(human_occupant, TRAIT_DNR))
+	if(human_occupant.stat == DEAD)
 		return FALSE
 	return TRUE
 
@@ -115,7 +115,7 @@
 		balloon_alert_to_viewers("invalid target DNA!")
 		return
 	human_occupant = occupant
-	if(human_occupant.stat == DEAD && !HAS_TRAIT(human_occupant, TRAIT_DNR))
+	if(human_occupant.stat == DEAD)
 		balloon_alert_to_viewers("occupant is dead!")
 		return
 	if(!SSgoldeneye.check_goldeneye_target(human_occupant.mind)) // Preventing abuse by method of duplication.

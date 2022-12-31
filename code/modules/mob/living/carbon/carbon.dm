@@ -40,7 +40,7 @@
 
 	if(!isnum(held_index))
 		CRASH("You passed [held_index] into swap_hand instead of a number. WTF man")
-		
+
 	var/oindex = active_hand_index
 	active_hand_index = held_index
 	if(hud_used)
@@ -933,18 +933,10 @@
 /mob/living/carbon/can_be_revived()
 	if(!getorgan(/obj/item/organ/internal/brain) && (!mind || !mind.has_antag_datum(/datum/antagonist/changeling)) || HAS_TRAIT(src, TRAIT_HUSK))
 		return FALSE
-//SKYRAT EDIT ADDITION - DNR TRAIT
-	if(HAS_TRAIT(src, TRAIT_DNR))
-		return FALSE
-//SKYRAT EDIT ADDITION END - DNR TRAIT
 
 	return ..()
 
 /mob/living/carbon/proc/can_defib()
-//SKYRAT EDIT ADDITION - DNR TRAIT
-	if(HAS_TRAIT(src, TRAIT_DNR)) //This is also added when a ghost DNR's!
-		return DEFIB_FAIL_DNR
-//SKYRAT EDIT ADDITION END - DNR TRAIT
 
 	if (suiciding)
 		return DEFIB_FAIL_SUICIDE
