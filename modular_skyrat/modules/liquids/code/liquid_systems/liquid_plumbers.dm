@@ -3,6 +3,7 @@
  */
 /obj/machinery/plumbing/floor_pump
 	icon = 'modular_skyrat/modules/liquids/icons/obj/structures/drains.dmi'
+	icon_state = "active_input"
 	anchored = FALSE
 	density = FALSE
 	idle_power_usage = 10
