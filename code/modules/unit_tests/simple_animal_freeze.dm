@@ -338,6 +338,7 @@
 		/mob/living/simple_animal/hostile/tree,
 		/mob/living/simple_animal/hostile/tree/festivus,
 		/mob/living/simple_animal/hostile/vatbeast,
+		/mob/living/simple_animal/hostile/venom,
 		/mob/living/simple_animal/hostile/venus_human_trap,
 		/mob/living/simple_animal/hostile/viscerator,
 		/mob/living/simple_animal/hostile/wizard,
