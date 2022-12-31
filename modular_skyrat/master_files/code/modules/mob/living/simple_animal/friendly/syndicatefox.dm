@@ -1,16 +1,20 @@
-/mob/living/basic/syndifox
+/mob/living/basic/pet/syndifox
 	name = "Syndi-Fox"
 	real_name = "Syndi-Fox" // Intended to hold the name without altering it.
 	gender = NEUTER
 	mob_biotypes = MOB_ROBOTIC
 	blood_volume = 0
+	unique_pet = TRUE
+	ai_controller = /datum/ai_controller/dog
 	desc = "It's a Cybersun MiniVix robotic model wearing a microsized syndicate MODsuit and a cute little cap. Quite pretty."
 	icon = 'modular_skyrat/master_files/icons/mob/pets.dmi'
 	icon_state = "syndifox"
 	icon_living = "syndifox"
 	icon_dead = "syndifox_dead"
 	speak_emote = list("geckers", "barks")
+	see_in_dark = 6
 	can_be_held = FALSE
+	butcher_results = list(/obj/item/food/meat/slab = 3)
 	attack_verb_continuous = "bites"
 	attack_verb_simple = "bite"
 	attack_sound = 'sound/weapons/bite.ogg'

@@ -2,7 +2,7 @@
 	name = "generic vehicle"
 	desc = "Yell at coderbus."
 	icon = 'icons/obj/vehicles.dmi'
-	icon_state = "fuckyou"
+	icon_state = "error"
 	max_integrity = 300
 	armor_type = /datum/armor/obj_vehicle
 	layer = VEHICLE_LAYER

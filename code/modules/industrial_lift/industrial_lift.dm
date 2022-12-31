@@ -789,7 +789,7 @@ GLOBAL_LIST_EMPTY(lifts)
 	name = "tram"
 	desc = "A tram for tramversing the station."
 	icon = 'icons/turf/floors.dmi'
-	icon_state = "titanium_yellow"
+	icon_state = "titanium"
 	layer = TRAM_FLOOR_LAYER
 	base_icon_state = null
 	smoothing_flags = NONE
@@ -812,8 +812,6 @@ GLOBAL_LIST_EMPTY(lifts)
 
 	create_multitile_platform = TRUE
 
-<<<<<<< HEAD
-=======
 /obj/structure/industrial_lift/tram/white
 	icon_state = "titanium_white"
 
@@ -822,7 +820,6 @@ GLOBAL_LIST_EMPTY(lifts)
 	fire = 80
 	acid = 50
 
->>>>>>> 72add645201 (Refactors armor into dedicated subtypes (#71986))
 /obj/structure/industrial_lift/tram/AddItemOnLift(datum/source, atom/movable/AM)
 	. = ..()
 	if(travelling)

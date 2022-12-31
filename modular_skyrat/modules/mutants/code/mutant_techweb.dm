@@ -1,6 +1,6 @@
 /obj/item/circuitboard/machine/rna_recombinator
 	name = "RNA Recombinator (Machine Board)"
-	icon_state = "science"
+	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/rnd/rna_recombinator
 	req_components = list(
 		/obj/item/stock_parts/scanning_module = 1,

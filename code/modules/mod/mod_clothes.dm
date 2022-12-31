@@ -2,7 +2,7 @@
 	name = "MOD helmet"
 	desc = "A helmet for a MODsuit."
 	icon = 'icons/obj/clothing/modsuit/mod_clothing.dmi'
-	icon_state = "helmet"
+	icon_state = "standard-helmet"
 	worn_icon = 'icons/mob/clothing/modsuit/mod_clothing.dmi'
 	armor_type = /datum/armor/none
 	body_parts_covered = HEAD
@@ -14,7 +14,7 @@
 	name = "MOD chestplate"
 	desc = "A chestplate for a MODsuit."
 	icon = 'icons/obj/clothing/modsuit/mod_clothing.dmi'
-	icon_state = "chestplate"
+	icon_state = "standard-chestplate"
 	worn_icon = 'icons/mob/clothing/modsuit/mod_clothing.dmi'
 	blood_overlay_type = "armor"
 	allowed = list(
@@ -37,7 +37,7 @@
 	name = "MOD gauntlets"
 	desc = "A pair of gauntlets for a MODsuit."
 	icon = 'icons/obj/clothing/modsuit/mod_clothing.dmi'
-	icon_state = "gauntlets"
+	icon_state = "standard-gauntlets"
 	worn_icon = 'icons/mob/clothing/modsuit/mod_clothing.dmi'
 	armor_type = /datum/armor/none
 	body_parts_covered = HANDS|ARMS
@@ -49,7 +49,7 @@
 	name = "MOD boots"
 	desc = "A pair of boots for a MODsuit."
 	icon = 'icons/obj/clothing/modsuit/mod_clothing.dmi'
-	icon_state = "boots"
+	icon_state = "standard-boots"
 	worn_icon = 'icons/mob/clothing/modsuit/mod_clothing.dmi'
 	armor_type = /datum/armor/none
 	body_parts_covered = FEET|LEGS

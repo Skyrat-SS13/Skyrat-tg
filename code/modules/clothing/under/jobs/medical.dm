@@ -108,7 +108,6 @@
 
 /obj/item/clothing/under/rank/medical/scrubs
 	name = "medical scrubs"
-	can_adjust = FALSE
 
 /datum/armor/rank_medical
 	bio = 50
