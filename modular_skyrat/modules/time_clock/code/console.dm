@@ -83,6 +83,10 @@
 	inserted_id.clear_access()
 	inserted_id.update_label()
 
+	var/datum/id_trim/job/current_trim = inserted_id.trim
+	var/datum/job/clocked_out_job = current_trim.job
+	clocked_out_job.current_positions--
+
 	return TRUE
 
 ///Clocks the currently inserted ID Card back in
@@ -93,6 +97,13 @@
 	var/datum/component/off_duty_timer/id_component = inserted_id.GetComponent(/datum/component/off_duty_timer)
 	if(!id_component || id_component.on_cooldown)
 		return FALSE
+
+	var/datum/id_trim/job/current_trim = inserted_id.trim
+	var/datum/job/clocked_in_job = current_trim.job
+	if(clocked_in_job.total_positions <= clocked_in_job.current_positions)
+		return FALSE
+
+	clocked_in_job.current_positions++
 
 	inserted_id.clear_access()
 	inserted_id.add_access(id_component.stored_access)
