@@ -361,7 +361,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 /obj/item/mod/control/pre_equipped/atmospheric/breach_control //Just a different kit as 811 wont be raiding Robotics; otherwise the same look (For now???)
 	theme = /datum/mod_theme/atmospheric/breach_control
 	applied_cell = /obj/item/stock_parts/cell/super
-	initial_modules = list(
+	applied_modules = list(
 		/obj/item/mod/module/storage/large_capacity,
 		/obj/item/mod/module/welding,
 		/obj/item/mod/module/rad_protection,
