@@ -184,7 +184,7 @@
 
 /obj/item/circuitboard/machine/cell_charger_multi
 	name = "Multi-Cell Charger (Machine Board)"
-	icon_state = "engineering"
+	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/cell_charger_multi
 	req_components = list(/obj/item/stock_parts/capacitor = 4)
 	needs_anchored = FALSE
