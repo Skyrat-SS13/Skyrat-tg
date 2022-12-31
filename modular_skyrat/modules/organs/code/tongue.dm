@@ -2,7 +2,7 @@
 	name = "long tongue"
 	desc = "A long and wet tongue. It seems to jump when it's called good, oddly enough."
 	say_mod = "woofs"
-	icon_state = "tonguenormal"
+	icon_state = "tongue"
 	modifies_speech = TRUE
 
 /obj/item/organ/internal/tongue/dog/Insert(mob/living/carbon/signer, special = FALSE, drop_if_replaced = TRUE)

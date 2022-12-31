@@ -89,7 +89,7 @@
 
 /obj/item/reagent_containers/borghypo/borgshaker/specific
 	icon = 'modular_skyrat/modules/borg_buffs/icons/items_cyborg.dmi'
-	icon_state = "shaker"
+	icon_state = "misc"
 
 /obj/item/reagent_containers/borghypo/borgshaker/specific/juice
 	name = "cyborg juice shaker"
