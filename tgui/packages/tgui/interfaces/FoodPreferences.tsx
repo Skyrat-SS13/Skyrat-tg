@@ -27,10 +27,30 @@ export const FoodPreferences = (props, context) => {
               return (
                 <Stack.Item key={element}>
                   <Section title={element}>
-                    <FoodButton foodName={element} foodFlag={3} />
-                    <FoodButton foodName={element} foodFlag={2} />
-                    <FoodButton foodName={element} foodFlag={0} />
-                    <FoodButton foodName={element} foodFlag={1} />
+                    <FoodButton
+                      foodName={element}
+                      foodFlag={3}
+                      content="Toxic"
+                      color="olive"
+                    />
+                    <FoodButton
+                      foodName={element}
+                      foodFlag={2}
+                      content="Disliked"
+                      color="red"
+                    />
+                    <FoodButton
+                      foodName={element}
+                      foodFlag={0}
+                      content="Neutral"
+                      color="grey"
+                    />
+                    <FoodButton
+                      foodName={element}
+                      foodFlag={1}
+                      content="Liked"
+                      color="green"
+                    />
                   </Section>
                 </Stack.Item>
               );
