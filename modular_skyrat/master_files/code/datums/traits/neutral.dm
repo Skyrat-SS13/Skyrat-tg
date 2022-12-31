@@ -52,10 +52,9 @@
 	if(!holder.has_quirk(/datum/quirk/dnr))
 		holder.add_quirk(/datum/quirk/dnr)
 	addtimer(CALLBACK(src, PROC_REF(cleanup)), 60 SECONDS)
-	log_admin("[holder] has died with DNR trait & component, releasing job slot in 60 seconds.")
+	message_admins("[holder] has died with DNR trait & component, releasing job slot in 60 seconds.")
 
-/datum/component/dnr/proc/cleanup()
-
+/datum/component/dnr/proc/cleanup() // What if they gib, though?
 	var/datum/job/job_to_free = SSjob.GetJob(holder.mind.assigned_role.title)
 	job_to_free.current_positions--
 	holder.log_message("has been released via their current body via DNR trait - ([holder])", LOG_GAME, color = COLOR_GREEN)
