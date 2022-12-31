@@ -1,6 +1,6 @@
 import { BooleanLike } from 'common/react';
 import { useBackend } from '../backend';
-import { Section, Stack } from '../components';
+import { Divider, Section, Stack } from '../components';
 import { Button, ButtonCheckbox } from '../components/Button';
 import { Window } from '../layouts';
 
@@ -16,13 +16,14 @@ export const FoodPreferences = (props, context) => {
   return (
     <Window width={600} height={777}>
       <Window.Content scrollable>
-        {data.pref_literally_does_nothing ? (
+        {data.pref_literally_does_nothing === 1 ? (
           <h1>
             You&apos;re using a race which isn&apos;t affected by food
             preferences!
           </h1>
         ) : (
           <Stack vertical>
+            {JSON.stringify(data.food_types)}
             {data.food_types.map((element) => {
               return (
                 <Stack.Item key={element}>
@@ -33,29 +34,30 @@ export const FoodPreferences = (props, context) => {
                       content="Toxic"
                       color="olive"
                     />
-                    <FoodButton
+                    {/* <FoodButton
                       foodName={element}
                       foodFlag={2}
                       content="Disliked"
                       color="red"
-                    />
+                    /> */}
                     <FoodButton
                       foodName={element}
                       foodFlag={0}
                       content="Neutral"
                       color="grey"
                     />
-                    <FoodButton
+                    {/* <FoodButton
                       foodName={element}
                       foodFlag={1}
                       content="Liked"
                       color="green"
-                    />
+                    /> */}
                   </Section>
                 </Stack.Item>
               );
             })}
-            <Button color={'red'} onClick={act('reset')}>
+            <Divider />
+            <Button color={'red'} onClick={act('reset')} maxWidth="10em">
               Reset
             </Button>
           </Stack>
@@ -67,12 +69,30 @@ export const FoodPreferences = (props, context) => {
 
 const FoodButton = (props, context) => {
   const { act } = useBackend(context);
+  const { food_name, food_flag, selected, ...rest } = props;
+  if (selected) {
+    return (
+      <ButtonCheckbox
+        selected
+        onClick={() =>
+          act('change_food', {
+            food_name: food_name,
+            food_flag: food_flag,
+          })
+        }
+        {...rest}
+      />
+    );
+  }
   return (
     <ButtonCheckbox
-      onClick={act('change_food', {
-        food_name: props.foodName,
-        food_flag: props.foodFlag,
-      })}
+      onClick={() =>
+        act('change_food', {
+          food_name: food_name,
+          food_flag: food_flag,
+        })
+      }
+      {...rest}
     />
   );
 };

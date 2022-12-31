@@ -57,6 +57,7 @@ GLOBAL_LIST_INIT(food_flag_to_bitflag, list(
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "FoodPreferences", "Food Preferences")
+		ui.set_autoupdate(FALSE)
 		ui.open()
 
 /datum/food_prefs_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -66,9 +67,10 @@ GLOBAL_LIST_INIT(food_flag_to_bitflag, list(
 
 	if(action == "reset")
 		QDEL_NULL(preferences.food)
+		return
 
 	var/food_name = params["food_name"]
-	var/food_flag = params["food_flat"]
+	var/food_flag = params["food_flag"]
 
 	if(!food_name || !preferences)
 		return TRUE
@@ -101,8 +103,11 @@ GLOBAL_LIST_INIT(food_flag_to_bitflag, list(
 	preferences.food[food_flag] += food_name
 	return TRUE
 
+/datum/preferences/ui_state(mob/user)
+	return GLOB.always_state
+
 /datum/food_prefs_menu/ui_status(mob/user, datum/ui_state/state)
-	return isnewplayer(user) ? UI_INTERACTIVE : UI_CLOSE
+	return user?.client ? UI_INTERACTIVE : UI_CLOSE // Prefs can be accessed from anywhere.
 
 /datum/food_prefs_menu/ui_static_data(mob/user)
 	return list(
@@ -111,10 +116,11 @@ GLOBAL_LIST_INIT(food_flag_to_bitflag, list(
 
 /datum/food_prefs_menu/ui_data(mob/user)
 	var/datum/preferences/preferences = user.client.prefs
-	return list(
-		"selection" = preferences.food,
-		"pref_literally_does_nothing" = isflyperson(preferences.read_preference(/datum/preference/choiced/species)),
-	)
+
+	if(preferences.read_preference(/datum/preference/choiced/species) == /datum/species/fly)
+		return list("pref_literally_does_nothing" = TRUE)
+
+	return list("selection" = preferences.food)
 
 #undef MINIMUM_REQUIRED_TOXICS
 #undef MINIMUM_REQUIRED_DISLIKES
