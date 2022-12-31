@@ -7,7 +7,7 @@
 	resistance_flags = FLAMMABLE
 	item_flags = NOBLUDGEON
 
-/obj/item/stack/smelling_salts/attack(mob/living/mob_attacked, mob/user)
+/obj/item/smelling_salts/attack(mob/living/mob_attacked, mob/user)
 	. = ..()
 	if(!iscarbon(mob_attacked))
 		to_chat(user, span_warning("On second thought, maybe [src] won't work on [mob_attacked]."))
@@ -24,7 +24,7 @@
 	try_revive(mob_attacked, user)
 
 /// If the right conditions are present (basically could this person be defibrilated), revives the target
-/obj/item/stack/smelling_salts/proc/try_revive(mob/living/carbon/carbon_target, mob/user)
+/obj/item/smelling_salts/proc/try_revive(mob/living/carbon/carbon_target, mob/user)
 	if(carbon_target.can_defib() != DEFIB_POSSIBLE)
 		return
 

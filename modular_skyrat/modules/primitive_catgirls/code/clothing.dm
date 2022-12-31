@@ -49,6 +49,8 @@
 	worn_icon = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
 	greyscale_config = /datum/greyscale_config/primitive_catgirl_gauntlets
 	greyscale_config_worn = /datum/greyscale_config/primitive_catgirl_gauntlets/worn
+	greyscale_config_inhand_left = null
+	greyscale_config_inhand_right = null
 	greyscale_colors = "#cec8bf#c55a1d"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
