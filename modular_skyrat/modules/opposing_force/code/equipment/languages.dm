@@ -1,8 +1,8 @@
 /datum/opposing_force_equipment/language
 	category = OPFOR_EQUIPMENT_CATEGORY_LANGUAGES
 	item_type = /obj/effect/gibspawner/generic
-	/// The language datum given to the mind's language holder
-	var/datum/language/language
+	/// The language typepath to be given to the mind's language holder
+	var//language
 
 /datum/opposing_force_equipment/language/on_issue(mob/living/target)
 	target.grant_language(language, TRUE, TRUE, LANGUAGE_MIND)
