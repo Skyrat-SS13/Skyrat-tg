@@ -35,6 +35,11 @@
 	icon_state = "timeclock_card"
 	update_static_data_for_all_viewers()
 
+	if(command_job_check())
+		if(tgui_alert(user, "You are a member of command, make sure that you ahelp and return all job gear before clocking out. If you decide to clock back in later, you will need to go to the Head of Personnel. Do you wish to continue?", "[src]", list("Yes", "No")) != "Yes")
+			eject_inserted_id(user)
+
+
 /obj/machinery/time_clock/AltClick(mob/user)
 	. = ..()
 	if(!Adjacent(user))
@@ -104,12 +109,27 @@
 
 	return TRUE
 
+///Is the job being worked a command job?
+/obj/machinery/time_clock/proc/command_job_check()
+	if(!inserted_id)
+		return FALSE
+
+	var/datum/id_trim/job/current_trim = inserted_id.trim
+	var/datum/job/clocked_in_job = current_trim.job
+	if(/datum/job_department/command in clocked_in_job.departments_list)
+		return TRUE
+
+	return TRUE
+
 ///Is the inserted ID on cooldown? returns TRUE if the ID has a cooldown
 /obj/machinery/time_clock/proc/id_cooldown_check()
 	if(!inserted_id)
 		return FALSE
 
 	var/datum/component/off_duty_timer/id_component = inserted_id.GetComponent(/datum/component/off_duty_timer)
+	if(command_job_check() && id_component)
+		return TRUE
+
 	if(!id_component || !id_component.on_cooldown)
 		return FALSE
 
