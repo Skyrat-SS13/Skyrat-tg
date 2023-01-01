@@ -1,3 +1,15 @@
+// Food preferences replaces this.
+/datum/quirk/deviant_tastes
+	hidden_quirk = TRUE
+
+// Food preferences replaces this.
+/datum/quirk/pineapple_hater
+	hidden_quirk = TRUE
+
+// Food preferences replaces this.
+/datum/quirk/pineapple_liker
+	hidden_quirk = TRUE
+
 /datum/quirk/equipping
 	abstract_parent_type = /datum/quirk/equipping
 	/// the items that will be equipped, formatted in the way of [item_path = list of slots it can be equipped to], will not equip over nodrop items
