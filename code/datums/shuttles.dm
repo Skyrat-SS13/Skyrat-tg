@@ -668,15 +668,21 @@
 	suffix = "small"
 	name = "auxilliary base (Small)"
 
-/* SKYRAT EDIT REMOVAL
 /datum/map_template/shuttle/escape_pod/default
 	suffix = "default"
 	name = "escape pod (Default)"
-*/
 
 /datum/map_template/shuttle/escape_pod/large
 	suffix = "large"
 	name = "escape pod (Large)"
+
+/datum/map_template/shuttle/escape_pod/luxury
+	suffix = "luxury"
+	name = "escape pod (Luxury)"
+
+/datum/map_template/shuttle/escape_pod/cramped
+	suffix = "cramped"
+	name = "escape pod (Cramped)"
 
 /datum/map_template/shuttle/assault_pod/default
 	suffix = "default"

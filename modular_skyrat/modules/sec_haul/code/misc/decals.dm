@@ -3,6 +3,7 @@
 	color = "#486091"
 
 /obj/effect/turf_decal/stripes/blue
+	icon_state = "warningline_blue"
 	icon = 'modular_skyrat/modules/sec_haul/icons/misc/turf_decals.dmi'
 
 /obj/effect/turf_decal/stripes/blue/line
@@ -97,18 +98,3 @@
 
 /obj/effect/turf_decal/trimline/darkblue/filled/shrink_ccw
 	icon_state = "trimline_shrink_ccw"
-
-/obj/effect/turf_decal/stripes/line/blue
-	icon_state = "warningline_blue"
-
-/obj/effect/turf_decal/stripes/end/blue
-	icon_state = "warn_end_blue"
-
-/obj/effect/turf_decal/stripes/corner/blue
-	icon_state = "warninglinecorner_blue"
-
-/obj/effect/turf_decal/stripes/box/blue
-	icon_state = "warn_box_blue"
-
-/obj/effect/turf_decal/stripes/full/blue
-	icon_state = "warn_full_blue"
