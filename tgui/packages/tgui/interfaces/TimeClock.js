@@ -42,7 +42,7 @@ export const TimeClock = (props, context) => {
                 width="95%"
                 disabled={insert_id_cooldown}
                 onClick={() => act('clock_in_or_out')}>
-                <center>{clock_status ? 'clock in' : 'clock out'} </center>
+                <center>{clock_status ? 'Clock In' : 'Clock Out'} </center>
               </Button>
               <Button icon="eject" onClick={() => act('eject_id')} />
             </Box>

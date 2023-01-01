@@ -39,6 +39,7 @@
 		if(tgui_alert(user, "You are a member of command, make sure that you ahelp and return all job gear before clocking out. If you decide to clock back in later, you will need to go to the Head of Personnel. Do you wish to continue?", "[src]", list("Yes", "No")) != "Yes")
 			eject_inserted_id(user)
 
+	playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
 
 /obj/machinery/time_clock/AltClick(mob/user)
 	. = ..()
@@ -60,6 +61,7 @@
 	inserted_id = FALSE
 	icon_state = "timeclock"
 	update_static_data_for_all_viewers()
+	playsound(src, 'sound/machines/terminal_eject.ogg', 50, FALSE)
 
 	return TRUE
 
@@ -119,7 +121,7 @@
 	if(/datum/job_department/command in clocked_in_job.departments_list)
 		return TRUE
 
-	return TRUE
+	return FALSE
 
 ///Is the inserted ID on cooldown? returns TRUE if the ID has a cooldown
 /obj/machinery/time_clock/proc/id_cooldown_check()

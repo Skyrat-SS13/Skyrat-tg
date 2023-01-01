@@ -48,5 +48,7 @@
 				log_admin("[key_name(usr)] clocked out as a [inserted_id.assignment]")
 				clock_out()
 
+			playsound(src, 'sound/machines/ping.ogg', 50, FALSE)
+
 		if("eject_id")
 			eject_inserted_id(usr)
