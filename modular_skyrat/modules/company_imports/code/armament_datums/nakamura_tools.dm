@@ -42,6 +42,7 @@
 	item_type = /obj/item/clothing/shoes/magboots
 	lower_cost = PAYCHECK_CREW * 3
 	upper_cost = PAYCHECK_CREW * 5
+
 /datum/armament_entry/company_import/nakamura_tooling/basic/insuls
 	item_type = /obj/item/clothing/gloves/color/yellow
 	lower_cost = PAYCHECK_CREW * 3
