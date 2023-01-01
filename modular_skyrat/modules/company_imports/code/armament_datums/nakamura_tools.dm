@@ -1,3 +1,9 @@
+#define PRICE_POWERTOOL_LOW 1.5
+#define PRICE_POWERTOOL_HIGH 2.5
+
+#define PRICE_EXPERIMENTALTOOL_LOW 3
+#define PRICE_EXPERIMENTALTOOL_HIGH 3.8
+
 /datum/armament_entry/company_import/nakamura_tooling
 	category = NAKAMURA_ENGINEERING_TOOLING_NAME
 	company_bitflag = CARGO_COMPANY_NAKAMURA_TOOLING
@@ -14,12 +20,12 @@
 
 /datum/armament_entry/company_import/nakamura_tooling/basic/mechanical_toolbox
 	item_type = /obj/item/storage/toolbox/mechanical
-	lower_cost = PAYCHECK_CREW
+	lower_cost = PAYCHECK_CREW * 0.5
 	upper_cost = PAYCHECK_CREW * 1.5
 
 /datum/armament_entry/company_import/nakamura_tooling/basic/electrical_toolbox
 	item_type = /obj/item/storage/toolbox/electrical
-	lower_cost = PAYCHECK_CREW
+	lower_cost = PAYCHECK_CREW * 0.5
 	upper_cost = PAYCHECK_CREW * 1.5
 
 /datum/armament_entry/company_import/nakamura_tooling/basic/multitool
@@ -66,18 +72,18 @@
 
 /datum/armament_entry/company_import/nakamura_tooling/advanced/powerdrill
 	item_type = /obj/item/screwdriver/power
-	lower_cost = CARGO_CRATE_VALUE * 1.5
-	upper_cost = CARGO_CRATE_VALUE * 3
+	lower_cost = CARGO_CRATE_VALUE * PRICE_POWERTOOL_LOW
+	upper_cost = CARGO_CRATE_VALUE * PRICE_POWERTOOL_HIGH
 
 /datum/armament_entry/company_import/nakamura_tooling/advanced/jaws
 	item_type = /obj/item/crowbar/power
-	lower_cost = CARGO_CRATE_VALUE * 1.5
-	upper_cost = CARGO_CRATE_VALUE * 3
+	lower_cost = CARGO_CRATE_VALUE * PRICE_POWERTOOL_LOW
+	upper_cost = CARGO_CRATE_VALUE * PRICE_POWERTOOL_HIGH
 
 /datum/armament_entry/company_import/nakamura_tooling/advanced/hugewelder
 	item_type = /obj/item/weldingtool/hugetank
-	lower_cost = CARGO_CRATE_VALUE * 1.5
-	upper_cost = CARGO_CRATE_VALUE * 3
+	lower_cost = CARGO_CRATE_VALUE * PRICE_POWERTOOL_LOW
+	upper_cost = CARGO_CRATE_VALUE * PRICE_POWERTOOL_HIGH
 
 // Overpriced experimental or gimmick tools
 
@@ -95,25 +101,25 @@
 
 /datum/armament_entry/company_import/nakamura_tooling/experimental/red_screwdriver
 	item_type = /obj/item/screwdriver/caravan
-	lower_cost = CARGO_CRATE_VALUE * 3
-	upper_cost = CARGO_CRATE_VALUE * 7
+	lower_cost = CARGO_CRATE_VALUE * PRICE_EXPERIMENTALTOOL_LOW
+	upper_cost = CARGO_CRATE_VALUE * PRICE_EXPERIMENTALTOOL_HIGH
 
 /datum/armament_entry/company_import/nakamura_tooling/experimental/red_crowbar
 	item_type = /obj/item/crowbar/red/caravan
-	lower_cost = CARGO_CRATE_VALUE * 3
-	upper_cost = CARGO_CRATE_VALUE * 7
+	lower_cost = CARGO_CRATE_VALUE * PRICE_EXPERIMENTALTOOL_LOW
+	upper_cost = CARGO_CRATE_VALUE * PRICE_EXPERIMENTALTOOL_HIGH
 
 /datum/armament_entry/company_import/nakamura_tooling/experimental/red_wirecutters
 	item_type = /obj/item/wirecutters/caravan
-	lower_cost = CARGO_CRATE_VALUE * 3
-	upper_cost = CARGO_CRATE_VALUE * 7
+	lower_cost = CARGO_CRATE_VALUE * PRICE_EXPERIMENTALTOOL_LOW
+	upper_cost = CARGO_CRATE_VALUE * PRICE_EXPERIMENTALTOOL_HIGH
 
 /datum/armament_entry/company_import/nakamura_tooling/experimental/red_wrench
 	item_type = /obj/item/wrench/caravan
-	lower_cost = CARGO_CRATE_VALUE * 3
-	upper_cost = CARGO_CRATE_VALUE * 7
+	lower_cost = CARGO_CRATE_VALUE * PRICE_EXPERIMENTALTOOL_LOW
+	upper_cost = CARGO_CRATE_VALUE * PRICE_EXPERIMENTALTOOL_HIGH
 
 /datum/armament_entry/company_import/nakamura_tooling/experimental/advanced_welder
 	item_type = /obj/item/weldingtool/advanced
-	lower_cost = CARGO_CRATE_VALUE * 3
-	upper_cost = CARGO_CRATE_VALUE * 7
+	lower_cost = CARGO_CRATE_VALUE * PRICE_EXPERIMENTALTOOL_LOW
+	upper_cost = CARGO_CRATE_VALUE * PRICE_EXPERIMENTALTOOL_HIGH
