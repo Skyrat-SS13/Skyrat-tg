@@ -19,28 +19,6 @@
 	. = ..()
 	radio = new radio(src)
 
-///Here for prototyping
-/obj/machinery/time_clock/attack_hand(mob/living/user, list/modifiers)
-	. = ..()
-	if(!inserted_id)
-		to_chat(user, span_warning("There is no ID present!"))
-		return FALSE
-
-	if(!off_duty_check())
-		if(clock_out())
-			to_chat(user, span_notice("You have clocked out"))
-			return TRUE
-		else
-			to_chat(user, span_warning("You are unable to clock out"))
-			return FALSE
-
-	if(!clock_in())
-		to_chat(user, span_warning("You are unable to clock in"))
-		return FALSE
-
-	else
-		to_chat(user, span_notice("You have clocked back in"))
-
 /obj/machinery/time_clock/attackby(obj/item/used_item, mob/user)
 	if(!istype(used_item, /obj/item/card/id))
 		. = ..()
@@ -63,14 +41,8 @@
 		to_chat(user, span_warning("You are out of range of the [src]!"))
 		return FALSE
 
-	if(!inserted_id)
-		to_chat(user, span_warning("The [src] lacks an ID."))
-		return FALSE
-
 	if(!eject_inserted_id(user))
 		return FALSE
-
-	update_static_data_for_all_viewers()
 
 ///Ejects the ID stored inside of the parent machine, if there is one.
 /obj/machinery/time_clock/proc/eject_inserted_id(mob/recepient)
