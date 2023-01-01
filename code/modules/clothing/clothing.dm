@@ -286,14 +286,20 @@
 		how_cool_are_your_threads += "</span>"
 		. += how_cool_are_your_threads.Join()
 
+<<<<<<< HEAD
 	if(armor.bio || armor.bomb || armor.bullet || armor.energy || armor.laser || armor.melee || armor.fire || armor.acid || flags_cover & HEADCOVERSMOUTH || flags_cover & PEPPERPROOF)
 		. += span_notice("OOC: Click <a href='?src=[REF(src)];list_armor=1'>here</a> to see its protection classes.") // SKYRAT EDIT ORIGINAL: ("It has a <a href='?src=[REF(src)];list_armor=1'>tag</a> listing its protection classes.")
+=======
+	if(get_armor().has_any_armor() || (flags_cover & (HEADCOVERSMOUTH|PEPPERPROOF)))
+		. += span_notice("It has a <a href='?src=[REF(src)];list_armor=1'>tag</a> listing its protection classes.")
+>>>>>>> bad13fd49b0 (Fixes clothing not showing armor (#72337))
 
 /obj/item/clothing/Topic(href, href_list)
 	. = ..()
 
 	if(href_list["list_armor"])
 		var/list/readout = list("<span class='notice'><u><b>PROTECTION CLASSES</u></b>")
+<<<<<<< HEAD
 		if(armor.bio || armor.bomb || armor.bullet || armor.energy || armor.laser || armor.melee)
 			readout += "\n<b>ARMOR (I-X)</b>"
 			if(armor.bio)
@@ -314,6 +320,30 @@
 				readout += "\nFIRE [armor_to_protection_class(armor.fire)]"
 			if(armor.acid)
 				readout += "\nACID [armor_to_protection_class(armor.acid)]"
+=======
+
+		var/datum/armor/armor = get_armor()
+		var/added_damage_header = FALSE
+		for(var/damage_key in ARMOR_LIST_DAMAGE())
+			var/rating = armor.get_rating(damage_key)
+			if(!rating)
+				continue
+			if(!added_damage_header)
+				readout += "\n<b>ARMOR (I-X)</b>"
+				added_damage_header = TRUE
+			readout += "\n[armor_to_protection_name(damage_key)] [armor_to_protection_class(rating)]"
+
+		var/added_durability_header = FALSE
+		for(var/durability_key in ARMOR_LIST_DURABILITY())
+			var/rating = armor.get_rating(durability_key)
+			if(!rating)
+				continue
+			if(!added_durability_header)
+				readout += "\n<b>DURABILITY (I-X)</b>"
+				added_damage_header = TRUE
+			readout += "\n[armor_to_protection_name(durability_key)] [armor_to_protection_class(durability_key)]"
+
+>>>>>>> bad13fd49b0 (Fixes clothing not showing armor (#72337))
 		if(flags_cover & HEADCOVERSMOUTH || flags_cover & PEPPERPROOF)
 			var/list/things_blocked = list()
 			if(flags_cover & HEADCOVERSMOUTH)
