@@ -24,6 +24,8 @@ export const FoodPreferences = (props, context) => {
         ) : (
           <Stack vertical>
             {JSON.stringify(data.food_types)}
+            <br />
+            {JSON.stringify(data.selection)}
             {data.food_types.map((element) => {
               return (
                 <Stack.Item key={element}>
@@ -31,33 +33,45 @@ export const FoodPreferences = (props, context) => {
                     <FoodButton
                       foodName={element}
                       foodFlag={3}
+                      selected={
+                        data.selection !== null && data.selection[element] === 3
+                      }
                       content="Toxic"
                       color="olive"
                     />
-                    {/* <FoodButton
+                    <FoodButton
                       foodName={element}
                       foodFlag={2}
+                      selected={
+                        data.selection !== null && data.selection[element] === 2
+                      }
                       content="Disliked"
                       color="red"
-                    /> */}
+                    />
                     <FoodButton
                       foodName={element}
                       foodFlag={0}
+                      selected={
+                        data.selection !== null && data.selection[element] === 0
+                      }
                       content="Neutral"
                       color="grey"
                     />
-                    {/* <FoodButton
+                    <FoodButton
                       foodName={element}
                       foodFlag={1}
+                      selected={
+                        data.selection !== null && data.selection[element] === 1
+                      }
                       content="Liked"
                       color="green"
-                    /> */}
+                    />
                   </Section>
                 </Stack.Item>
               );
             })}
             <Divider />
-            <Button color={'red'} onClick={act('reset')} maxWidth="10em">
+            <Button color={'red'} onClick={() => act('reset')} maxWidth="10em">
               Reset
             </Button>
           </Stack>
@@ -69,27 +83,13 @@ export const FoodPreferences = (props, context) => {
 
 const FoodButton = (props, context) => {
   const { act } = useBackend(context);
-  const { food_name, food_flag, selected, ...rest } = props;
-  if (selected) {
-    return (
-      <ButtonCheckbox
-        selected
-        onClick={() =>
-          act('change_food', {
-            food_name: food_name,
-            food_flag: food_flag,
-          })
-        }
-        {...rest}
-      />
-    );
-  }
+  const { foodName, foodFlag, ...rest } = props;
   return (
     <ButtonCheckbox
       onClick={() =>
         act('change_food', {
-          food_name: food_name,
-          food_flag: food_flag,
+          food_name: foodName,
+          food_flag: foodFlag,
         })
       }
       {...rest}

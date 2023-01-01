@@ -31,10 +31,22 @@ GLOBAL_LIST_INIT(food_flag_to_bitflag, list(
 // Hahahaha, it LIVES!
 
 /datum/preference_middleware/food/apply_to_human(mob/living/carbon/human/target, datum/preferences/preferences)
-	if(!preferences.food)
+	if(!length(preferences.food))
 		return
 
-	if(length(preferences.food[FOOD_LIKED]) > MAXIMUM_LIKES || length(preferences.food[FOOD_DISLIKED]) < MINIMUM_REQUIRED_DISLIKES || length(preferences.food[FOOD_TOXIC]) < MINIMUM_REQUIRED_TOXICS)
+	var/liked_food_length = 0
+	var/disliked_food_length = 0
+	var/toxic_food_length = 0
+
+	for(var/item in preferences.food)
+		if(preferences.food[item] == FOOD_LIKED)
+			liked_food_length++
+		if(preferences.food[item] == FOOD_DISLIKED)
+			disliked_food_length++
+		if(preferences.food[item] == FOOD_TOXIC)
+			toxic_food_length++
+
+	if(liked_food_length > MAXIMUM_LIKES || disliked_food_length < MINIMUM_REQUIRED_DISLIKES || toxic_food_length < MINIMUM_REQUIRED_TOXICS)
 		to_chat(preferences.parent, span_doyourjobidiot("You set up your liked foods in such a way that they can't be applied! Please check your preferences!")) // Sorry, but I don't want folk sleeping on this.
 		return
 
@@ -43,14 +55,13 @@ GLOBAL_LIST_INIT(food_flag_to_bitflag, list(
 	species.disliked_food = NONE
 	species.toxic_food = NONE
 
-	for(var/food in preferences.food[FOOD_LIKED])
-		species.liked_food |= GLOB.food_flag_to_bitflag[food]
-
-	for(var/food in preferences.food[FOOD_DISLIKED])
-		species.disliked_food |= GLOB.food_flag_to_bitflag[food]
-
-	for(var/food in preferences.food[FOOD_TOXIC])
-		species.disliked_food |= GLOB.food_flag_to_bitflag[food]
+	for(var/item in preferences.food)
+		if(preferences.food[item] == FOOD_LIKED)
+			species.liked_food |= GLOB.food_flag_to_bitflag[item]
+		if(preferences.food[item] == FOOD_DISLIKED)
+			species.disliked_food |= GLOB.food_flag_to_bitflag[item]
+		if(preferences.food[item] == FOOD_TOXIC)
+			species.toxic_food |= GLOB.food_flag_to_bitflag[item]
 
 /// Food prefs menu datum. Global datum for performance and memory reasons.
 /datum/food_prefs_menu/ui_interact(mob/dead/new_player/user, datum/tgui/ui)
@@ -61,46 +72,48 @@ GLOBAL_LIST_INIT(food_flag_to_bitflag, list(
 		ui.open()
 
 /datum/food_prefs_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	..()
+	. = ..()
 
 	var/datum/preferences/preferences = ui?.user?.client?.prefs
 
 	if(action == "reset")
 		QDEL_NULL(preferences.food)
-		return
+		preferences.food = list()
+		return TRUE
+
+	if(action != "change_food")
+		return .
 
 	var/food_name = params["food_name"]
 	var/food_flag = params["food_flag"]
+
+	world.log << "[food_name] | [food_flag]"
 
 	if(!food_name || !preferences)
 		return TRUE
 
 	if(!food_flag)
-		if(preferences.food)
-			preferences.food[FOOD_LIKED] -= food_name
-			preferences.food[FOOD_DISLIKED] -= food_name
-			preferences.food[FOOD_TOXIC] -= food_name
+		preferences.food.Remove(food_name)
 		return TRUE
 
 	if(!(food_flag in list(FOOD_LIKED, FOOD_DISLIKED, FOOD_TOXIC)))
 		return TRUE
 
-	var/liked_food_length = length(preferences?.food[FOOD_LIKED])
+	// Do some simple validation.
+	var/liked_food_length = 0
 
-	if(food_flag == FOOD_LIKED && liked_food_length >= MAXIMUM_LIKES)
-		if(preferences.food && liked_food_length > MAXIMUM_LIKES)
-			var/list/food_list = preferences.food[FOOD_LIKED]
-			food_list.Cut(MAXIMUM_LIKES + 1) // Yeet extra likes!
-		return TRUE
+	for(var/item in preferences.food)
+		if(preferences.food[item] == FOOD_LIKED)
+			liked_food_length++
+			if(liked_food_length > MAXIMUM_LIKES)
+				preferences.food.Remove(item)
 
-	if(!preferences.food)
-		preferences.food = list(
-			FOOD_LIKED = list(),
-			FOOD_DISLIKED = list(),
-			FOOD_TOXIC = list(),
-		)
+	if(food_flag == FOOD_LIKED ? liked_food_length > MAXIMUM_LIKES : liked_food_length >= MAXIMUM_LIKES) // Equals as well, cause we're presumably setting something!
+		return TRUE // Fuck you, look your mistakes in the eye.
 
-	preferences.food[food_flag] += food_name
+	LAZYINITLIST(preferences.food)
+
+	preferences.food[food_name] = food_flag
 	return TRUE
 
 /datum/preferences/ui_state(mob/user)
