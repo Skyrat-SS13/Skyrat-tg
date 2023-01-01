@@ -18,8 +18,8 @@
 
 	species_language_holder = /datum/language_holder/primitive_felinid
 
-	bodytemp_normal = 286 // If a normal human gets hugged by one its gonna feel cold
-	bodytemp_heat_damage_limit = T20C // To them normal station atmos would be sweltering
+	bodytemp_normal = 270 // If a normal human gets hugged by one its gonna feel cold
+	bodytemp_heat_damage_limit = 283 // To them normal station atmos would be sweltering
 	bodytemp_cold_damage_limit = 213 // Man up bro its not even that cold out here
 
 	liked_food = SEAFOOD | MEAT | GORE // Yum
