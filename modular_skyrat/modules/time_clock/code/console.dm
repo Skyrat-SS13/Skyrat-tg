@@ -1,4 +1,4 @@
-#define CLOCK_IN_COOLDOWN 30 SECONDS
+#define CLOCK_IN_COOLDOWN 30 SECONDS //This is low for testing
 
 /obj/machinery/time_clock
 	name = "PTO console"
