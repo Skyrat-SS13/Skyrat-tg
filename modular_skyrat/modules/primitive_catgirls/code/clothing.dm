@@ -121,6 +121,7 @@
 	flags_cover = MASKCOVERSMOUTH
 	visor_flags_inv = HIDEFACE|HIDESNOUT
 	visor_flags_cover = MASKCOVERSMOUTH
+	flags_1 = IS_PLAYER_COLORABLE_1
 	actions_types = list(/datum/action/item_action/adjust)
 
 /obj/item/clothing/mask/primitive_catgirl_greyscale_gaiter/attack_self(mob/user)
