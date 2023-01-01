@@ -48,6 +48,9 @@
 				log_admin("[key_name(usr)] clocked out as a [inserted_id.assignment]")
 				clock_out()
 
+				if(command_job_check())
+					message_admins("[key_name(usr)] has clocked out as a head of staff. [ADMIN_JMP(src)]")
+
 			playsound(src, 'sound/machines/ping.ogg', 50, FALSE)
 
 		if("eject_id")
