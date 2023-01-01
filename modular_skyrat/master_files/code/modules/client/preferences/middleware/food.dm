@@ -108,7 +108,7 @@ GLOBAL_LIST_INIT(food_flag_to_bitflag, list(
 			if(liked_food_length > MAXIMUM_LIKES)
 				preferences.food.Remove(item)
 
-	if(food_flag == FOOD_LIKED ? liked_food_length > MAXIMUM_LIKES : liked_food_length >= MAXIMUM_LIKES) // Equals as well, cause we're presumably setting something!
+	if(food_flag == FOOD_LIKED ? liked_food_length >= MAXIMUM_LIKES : liked_food_length > MAXIMUM_LIKES) // Equals as well, cause we're presumably setting something!
 		return TRUE // Fuck you, look your mistakes in the eye.
 
 	LAZYINITLIST(preferences.food)
