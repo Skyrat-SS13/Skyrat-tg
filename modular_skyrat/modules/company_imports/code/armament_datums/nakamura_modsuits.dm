@@ -280,22 +280,22 @@
 
 /datum/armament_entry/company_import/nakamura_modsuits/novelty_modules/kinesis
 	item_type = /obj/item/mod/module/anomaly_locked/kinesis/prebuilt
-	lower_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_LOWER
-	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
+	lower_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_LOWER
+	upper_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_UPPER
 	interest_required = COMPANY_HIGH_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 /datum/armament_entry/company_import/nakamura_modsuits/novelty_modules/antigrav
 	item_type = /obj/item/mod/module/anomaly_locked/antigrav/prebuilt
-	lower_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_LOWER
-	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
+	lower_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_LOWER
+	upper_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_UPPER
 	interest_required = COMPANY_HIGH_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 
 /datum/armament_entry/company_import/nakamura_modsuits/novelty_modules/teleporter
 	item_type = /obj/item/mod/module/anomaly_locked/teleporter/prebuilt
-	lower_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_LOWER
-	upper_cost = CARGO_CRATE_VALUE * MODULE_PRICEY_UPPER
+	lower_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_LOWER
+	upper_cost = CARGO_CRATE_VALUE * MODULE_ANOMALY_UPPER
 	interest_required = COMPANY_HIGH_INTEREST
 	interest_addition = COMPANY_INTEREST_GAIN_BIG
 	contraband = TRUE
