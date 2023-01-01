@@ -11,6 +11,16 @@
 	///What ID card is currently inside?
 	var/obj/item/card/id/inserted_id
 
+	//These variables are the same as the ones that the cryopods use to make annoucements
+	///The radio that is used to announce when someone clocks in and clocks out.
+	var/obj/item/radio/headset/radio = /obj/item/radio/headset/silicon/pai
+	///The channel that the radio broadcasts on.
+	var/announcement_channel = null
+
+/obj/machinery/time_clock/Initialize(mapload)
+	. = ..()
+	radio = new radio(src)
+
 ///Here for prototyping
 /obj/machinery/time_clock/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
@@ -87,6 +97,7 @@
 	var/datum/job/clocked_out_job = current_trim.job
 	clocked_out_job.current_positions--
 
+	radio.talk_into(src, "[inserted_id.registered_name], [current_trim.assignment] has gone off-duty.", announcement_channel)
 	return TRUE
 
 ///Clocks the currently inserted ID Card back in
@@ -109,6 +120,7 @@
 	inserted_id.add_access(id_component.stored_access)
 	inserted_id.add_wildcards(id_component.stored_wildcard_access)
 	inserted_id.assignment = id_component.stored_assignment
+	radio.talk_into(src, "[inserted_id.registered_name], [inserted_id.assignment] has gone on duty.", announcement_channel)
 
 	qdel(id_component)
 	inserted_id.update_label()
