@@ -1,4 +1,4 @@
-#define CLOCK_IN_COOLDOWN 10 SECONDS
+#define CLOCK_IN_COOLDOWN 30 SECONDS
 
 /obj/machinery/time_clock
 	name = "PTO console"
@@ -6,8 +6,6 @@
 	icon = 'modular_skyrat/modules/time_clock/icons/machinery/console.dmi'
 	icon_state = "timeclock"
 
-	///Is the console locked?
-	var/locked = FALSE
 	///What ID card is currently inside?
 	var/obj/item/card/id/inserted_id
 
@@ -28,8 +26,7 @@
 		to_chat(user, span_warning("There is no ID present!"))
 		return FALSE
 
-	var/datum/component/off_duty_timer/id_component = inserted_id.GetComponent(/datum/component/off_duty_timer)
-	if(!id_component)
+	if(!off_duty_check())
 		if(clock_out())
 			to_chat(user, span_notice("You have clocked out"))
 			return TRUE
@@ -58,6 +55,7 @@
 
 	inserted_id = used_item
 	icon_state = "timeclock_card"
+	update_static_data_for_all_viewers()
 
 /obj/machinery/time_clock/AltClick(mob/user)
 	. = ..()
@@ -72,6 +70,8 @@
 	if(!eject_inserted_id(user))
 		return FALSE
 
+	update_static_data_for_all_viewers()
+
 ///Ejects the ID stored inside of the parent machine, if there is one.
 /obj/machinery/time_clock/proc/eject_inserted_id(mob/recepient)
 	if(!inserted_id || !recepient)
@@ -82,7 +82,9 @@
 
 	inserted_id = FALSE
 	icon_state = "timeclock"
+	update_static_data_for_all_viewers()
 
+	return TRUE
 
 ///Clocks out the currently inserted ID Card
 /obj/machinery/time_clock/proc/clock_out()
@@ -98,6 +100,7 @@
 	clocked_out_job.current_positions--
 
 	radio.talk_into(src, "[inserted_id.registered_name], [current_trim.assignment] has gone off-duty.", announcement_channel)
+	update_static_data_for_all_viewers()
 	return TRUE
 
 ///Clocks the currently inserted ID Card back in
@@ -105,9 +108,10 @@
 	if(!inserted_id)
 		return FALSE
 
-	var/datum/component/off_duty_timer/id_component = inserted_id.GetComponent(/datum/component/off_duty_timer)
-	if(!id_component || id_component.on_cooldown)
+	if(id_cooldown_check())
 		return FALSE
+
+	var/datum/component/off_duty_timer/id_component = inserted_id.GetComponent(/datum/component/off_duty_timer)
 
 	var/datum/id_trim/job/current_trim = inserted_id.trim
 	var/datum/job/clocked_in_job = current_trim.job
@@ -124,6 +128,30 @@
 
 	qdel(id_component)
 	inserted_id.update_label()
+	update_static_data_for_all_viewers()
+
+	return TRUE
+
+///Is the inserted ID on cooldown? returns TRUE if the ID has a cooldown
+/obj/machinery/time_clock/proc/id_cooldown_check()
+	if(!inserted_id)
+		return FALSE
+
+	var/datum/component/off_duty_timer/id_component = inserted_id.GetComponent(/datum/component/off_duty_timer)
+	if(!id_component || !id_component.on_cooldown)
+		return FALSE
+
+	return TRUE
+
+///Is the inserted ID off-duty? Returns true if the ID is off-duty
+/obj/machinery/time_clock/proc/off_duty_check()
+	if(!inserted_id)
+		return FALSE
+
+	var/datum/component/off_duty_timer/id_component = inserted_id.GetComponent(/datum/component/off_duty_timer)
+	if(!id_component)
+		return FALSE
+
 	return TRUE
 
 /datum/component/off_duty_timer
