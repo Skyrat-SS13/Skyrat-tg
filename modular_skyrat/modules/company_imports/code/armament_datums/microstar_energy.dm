@@ -128,22 +128,22 @@
 /datum/armament_entry/company_import/microstar/mcr_upgrades/enhanced_part_kit
 	name = "microfusion enhanced parts"
 	item_type = /obj/item/storage/secure/briefcase/white/mcr_parts/enhanced
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 4
+	lower_cost = CARGO_CRATE_VALUE * 1.5
+	upper_cost = CARGO_CRATE_VALUE * 3
 	stock_mult = 3
 
 /datum/armament_entry/company_import/microstar/mcr_upgrades/capacity_booster
 	item_type = /obj/item/microfusion_cell_attachment/overcapacity
 	lower_cost = CARGO_CRATE_VALUE
-	upper_cost = CARGO_CRATE_VALUE * 2
+	upper_cost = CARGO_CRATE_VALUE * 1.5
 	interest_required = COMPANY_SOME_INTEREST
 	stock_mult = 3
 
 /datum/armament_entry/company_import/microstar/mcr_upgrades/advanced_part_kit
 	name = "microfusion advanced parts"
 	item_type = /obj/item/storage/secure/briefcase/white/mcr_parts/advanced
-	lower_cost = CARGO_CRATE_VALUE * 4
-	upper_cost = CARGO_CRATE_VALUE * 6
+	lower_cost = CARGO_CRATE_VALUE * 3
+	upper_cost = CARGO_CRATE_VALUE * 5.5
 	interest_required = COMPANY_SOME_INTEREST
 	stock_mult = 3
 
@@ -157,7 +157,7 @@
 /datum/armament_entry/company_import/microstar/mcr_upgrades/bluespace_part_kit
 	name = "microfusion bluespace parts"
 	item_type = /obj/item/storage/secure/briefcase/white/mcr_parts/bluespace
-	lower_cost = CARGO_CRATE_VALUE * 6
-	upper_cost = CARGO_CRATE_VALUE * 8
+	lower_cost = CARGO_CRATE_VALUE * 5.5
+	upper_cost = CARGO_CRATE_VALUE * 7
 	interest_required = COMPANY_HIGH_INTEREST
 	stock_mult = 3
