@@ -86,6 +86,8 @@
 
 	headshot = save_data["headshot"]
 
+	food = save_data["food_preferences"]
+
 	if(needs_update >= 0)
 		update_character_skyrat(needs_update, save_data) // needs_update == savefile_version if we need an update (positive integer)
 
@@ -174,6 +176,7 @@
 	save_data["alt_job_titles"] = alt_job_titles
 	save_data["languages"] = languages
 	save_data["headshot"] = headshot
+	save_data["food_preferences"] = food
 	save_data["modular_version"] = MODULAR_SAVEFILE_VERSION_MAX
 
 /datum/preferences/proc/update_mutant_bodyparts(datum/preference/preference)
