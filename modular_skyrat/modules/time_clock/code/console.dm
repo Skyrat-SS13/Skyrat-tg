@@ -1,8 +1,8 @@
 #define CLOCK_IN_COOLDOWN 30 SECONDS //This is here for testing
 
 /obj/machinery/time_clock
-	name = "PTO console"
-	desc = "Used to clock in and clock out."
+	name = "time clock"
+	desc = "Allows employees to clock in and out of their jobs"
 	icon = 'modular_skyrat/modules/time_clock/icons/machinery/console.dmi'
 	icon_state = "timeclock"
 	density = FALSE
@@ -189,5 +189,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 ///Sets the on_cooldown variable to false, making it so that the ID can clock back in.
 /datum/component/off_duty_timer/proc/remove_cooldown()
 	on_cooldown = FALSE
+
+/obj/item/wallframe/time_clock
+	name = "time clock frame"
+	desc = "Contains all of the parts needed to assemble a wall-mounted time clock"
+	icon_state = "unanchoredstatusdisplay"
+	result_path = /obj/machinery/time_clock
+	pixel_shift = 28
+	custom_materials = list(/datum/material/iron = 2000, /datum/material/glass = 4000)
 
 #undef CLOCK_IN_COOLDOWN
