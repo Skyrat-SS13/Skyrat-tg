@@ -1,6 +1,6 @@
 import { BooleanLike } from 'common/react';
 import { useBackend } from '../backend';
-import { Box, Dimmer, Divider, Section, Stack, StyleableSection, Tooltip } from '../components';
+import { Box, Dimmer, Divider, Icon, Section, Stack, StyleableSection, Tooltip } from '../components';
 import { Button } from '../components/Button';
 import { Window } from '../layouts';
 
@@ -29,7 +29,7 @@ export const FoodPreferences = (props, context) => {
   const { act, data } = useBackend<Data>(context);
 
   return (
-    <Window width={700} height={500}>
+    <Window width={803} height={500}>
       <Window.Content scrollable>
         {
           <StyleableSection
@@ -105,13 +105,32 @@ export const FoodPreferences = (props, context) => {
               (!data.enabled && (
                 <OhNo>Your food preferences are disabled!</OhNo>
               ))}
-            <Box style={{ 'columns': '20em' }}>
+            <Box style={{ 'columns': '21em' }}>
               {Object.entries(data.food_types).map((element) => {
                 const { 0: foodName, 1: foodPointValues } = element;
                 return (
                   <Box key={foodName} wrap="wrap">
                     <Section
-                      title={foodName}
+                      title={
+                        <>
+                          {foodName}
+                          {foodPointValues['7'] && (
+                            <Tooltip content="This food doesn't count towards your maximum likes, and is free!">
+                              <span
+                                style={{
+                                  'margin-left': '0.3em',
+                                  'vertical-align': 'top',
+                                  'font-size': '0.75em',
+                                }}>
+                                <Icon
+                                  name="star"
+                                  style={{ 'color': 'orange' }}
+                                />
+                              </span>
+                            </Tooltip>
+                          )}
+                        </>
+                      }
                       style={{
                         'break-inside': 'avoid-column',
                         'margin-bottom': '1em',
@@ -125,8 +144,12 @@ export const FoodPreferences = (props, context) => {
                             foodPointValues['5'] === '3')
                         }
                         content={
-                          'Toxic' +
-                          (foodPointValues && ' (' + foodPointValues['3'] + ')')
+                          <>
+                            Toxic
+                            {foodPointValues &&
+                              !foodPointValues['7'] &&
+                              ' (' + foodPointValues['3'] + ')'}
+                          </>
                         }
                         color="olive"
                         tooltip="Your character will almost immediately throw up on eating anything toxic."
@@ -140,8 +163,12 @@ export const FoodPreferences = (props, context) => {
                             foodPointValues['5'] === '2')
                         }
                         content={
-                          'Disliked' +
-                          (foodPointValues && ' (' + foodPointValues['2'] + ')')
+                          <>
+                            Disliked
+                            {foodPointValues &&
+                              !foodPointValues['7'] &&
+                              ' (' + foodPointValues['2'] + ')'}
+                          </>
                         }
                         color="red"
                         tooltip="Your character will become grossed out, before eventually throwing up after a decent intake of disliked food."
@@ -155,8 +182,12 @@ export const FoodPreferences = (props, context) => {
                             foodPointValues['5'] === '6')
                         }
                         content={
-                          'Neutral' +
-                          (foodPointValues && ' (' + foodPointValues['6'] + ')')
+                          <>
+                            Neutral
+                            {foodPointValues &&
+                              !foodPointValues['7'] &&
+                              ' (' + foodPointValues['6'] + ')'}
+                          </>
                         }
                         color="grey"
                         tooltip="Your character has very little to say about something that's neutral."
@@ -170,8 +201,12 @@ export const FoodPreferences = (props, context) => {
                             foodPointValues['5'] === '1')
                         }
                         content={
-                          'Liked' +
-                          (foodPointValues && ' (' + foodPointValues['1'] + ')')
+                          <>
+                            Liked
+                            {foodPointValues &&
+                              !foodPointValues['7'] &&
+                              ' (' + foodPointValues['1'] + ')'}
+                          </>
                         }
                         color="green"
                         tooltip="Your character will enjoy anything that's liked."

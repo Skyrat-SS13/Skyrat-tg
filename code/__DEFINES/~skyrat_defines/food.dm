@@ -3,3 +3,5 @@
 #define FOOD_DEFAULT 5
 /// Used inside the foods prefs menu. Indicates that a food is neither liked or disliked.
 #define FOOD_NEUTRAL 6
+/// Used inside the food prefs menu as an entry. If set to TRUE, the food is completely ignored by the verification system.
+#define FOOD_OBSCURE 7

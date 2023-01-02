@@ -55,7 +55,7 @@ GLOBAL_LIST_INIT(food_ic_flag_to_point_values, list(
 		"[FOOD_DISLIKED]" = 0,
 		"[FOOD_NEUTRAL]" = 2,
 		"[FOOD_LIKED]" = 4,
-		"[FOOD_DEFAULT]" = "[FOOD_NEUTRAL]",
+		"[FOOD_DEFAULT]" = "[FOOD_DISLIKED]",
 	),
 	"Junk food" = list(
 		"[FOOD_TOXIC]" = 1,
@@ -78,7 +78,7 @@ GLOBAL_LIST_INIT(food_ic_flag_to_point_values, list(
 		"[FOOD_LIKED]" = 2,
 		"[FOOD_DEFAULT]" = "[FOOD_NEUTRAL]",
 	),
-	"Dairy products" = list(
+	"Dairy products" = list( // These next three entries have 0 on both neutral and disliked to allow swapping between roughly as common dislikes without too much compromise.
 		"[FOOD_TOXIC]" = 1,
 		"[FOOD_DISLIKED]" = 0,
 		"[FOOD_NEUTRAL]" = 0,
@@ -95,13 +95,13 @@ GLOBAL_LIST_INIT(food_ic_flag_to_point_values, list(
 	"Alcohol" = list(
 		"[FOOD_TOXIC]" = 1,
 		"[FOOD_DISLIKED]" = 0,
-		"[FOOD_NEUTRAL]" = 1,
+		"[FOOD_NEUTRAL]" = 0,
 		"[FOOD_LIKED]" = 2,
 		"[FOOD_DEFAULT]" = "[FOOD_DISLIKED]",
 	),
 	"Sugary food" = list(
-		"[FOOD_TOXIC]" = 0,
-		"[FOOD_DISLIKED]" = 0,
+		"[FOOD_TOXIC]" = 2,
+		"[FOOD_DISLIKED]" = 1,
 		"[FOOD_NEUTRAL]" = 0,
 		"[FOOD_LIKED]" = 3,
 		"[FOOD_DEFAULT]" = "[FOOD_NEUTRAL]",
@@ -126,6 +126,7 @@ GLOBAL_LIST_INIT(food_ic_flag_to_point_values, list(
 		"[FOOD_NEUTRAL]" = 0,
 		"[FOOD_LIKED]" = 0,
 		"[FOOD_DEFAULT]" = "[FOOD_NEUTRAL]",
+		"[FOOD_OBSCURE]" = TRUE,
 	),
 	"Breakfast food" = list(
 		"[FOOD_TOXIC]" = 2,
@@ -147,6 +148,7 @@ GLOBAL_LIST_INIT(food_ic_flag_to_point_values, list(
 		"[FOOD_NEUTRAL]" = 0,
 		"[FOOD_LIKED]" = 0,
 		"[FOOD_DEFAULT]" = "[FOOD_NEUTRAL]",
+		"[FOOD_OBSCURE]" = TRUE,
 	),
 	"Seafood" = list(
 		"[FOOD_TOXIC]" = 2,
@@ -161,6 +163,7 @@ GLOBAL_LIST_INIT(food_ic_flag_to_point_values, list(
 		"[FOOD_NEUTRAL]" = 0,
 		"[FOOD_LIKED]" = 0,
 		"[FOOD_DEFAULT]" = "[FOOD_NEUTRAL]",
+		"[FOOD_OBSCURE]" = TRUE,
 	),
 	"Bugs" = list(
 		"[FOOD_TOXIC]" = 1,

@@ -114,6 +114,9 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 		var/list/food_points_entry = GLOB.food_ic_flag_to_point_values[food_entry]
 		var/food_preference = preferences.food[food_entry] || food_points_entry["[FOOD_DEFAULT]"]
 
+		if(food_points_entry["[FOOD_OBSCURE]"])
+			continue
+
 		switch(food_preference) // Doesn't use defines cause I need this in string form.
 			if("1")
 				liked_food_length++
