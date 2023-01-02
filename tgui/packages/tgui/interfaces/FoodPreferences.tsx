@@ -65,13 +65,13 @@ export const FoodPreferences = (props, context) => {
                 return (
                   <Box key={foodName} wrap="wrap">
                     <Section
-                      title={element}
+                      title={foodName}
                       style={{
                         'break-inside': 'avoid-column',
                         'margin-bottom': '1em',
                       }}>
                       <FoodButton
-                        foodName={element}
+                        foodName={foodName}
                         foodFlag={3}
                         selected={
                           data.selection[foodName] === '3' ||
@@ -85,7 +85,7 @@ export const FoodPreferences = (props, context) => {
                         color="olive"
                       />
                       <FoodButton
-                        foodName={element}
+                        foodName={foodName}
                         foodFlag={2}
                         selected={
                           data.selection[foodName] === '2' ||
@@ -99,7 +99,7 @@ export const FoodPreferences = (props, context) => {
                         color="red"
                       />
                       <FoodButton
-                        foodName={element}
+                        foodName={foodName}
                         foodFlag={0}
                         selected={
                           data.selection[foodName] === '6' ||
@@ -113,7 +113,7 @@ export const FoodPreferences = (props, context) => {
                         color="grey"
                       />
                       <FoodButton
-                        foodName={element}
+                        foodName={foodName}
                         foodFlag={1}
                         selected={
                           data.selection[foodName] === '1' ||
