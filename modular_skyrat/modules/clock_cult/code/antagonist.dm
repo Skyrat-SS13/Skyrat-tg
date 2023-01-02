@@ -1,5 +1,5 @@
 // This'll take a bit of explaining.
-// Clock cult, the (shitty) gamemode is not coming back, this antagonist datum is for the soon-to-come traitor bundle
+// Clock cult, the (shitty) gamemode is not coming back, this antagonist datum is for the soon-to-come OPFOR bundle
 // However, the bundle gives `/datum/antagonist/clock_cultist/solo`, which is the same as `/datum/antagonist/clock_cultist`, but lacks conversion.
 
 /datum/antagonist/clock_cultist
