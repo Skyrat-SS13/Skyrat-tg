@@ -159,17 +159,26 @@ SUBSYSTEM_DEF(garbage)
 	//Normally this isn't expensive, but the gc queue can grow to 40k items, and that gets costly/causes overrun.
 	for (var/i in 1 to length(queue))
 		var/list/L = queue[i]
-		if (length(L) < 2)
+		if (length(L) < GC_QUEUE_ITEM_INDEX_COUNT)
 			count++
 			if (MC_TICK_CHECK)
 				return
 			continue
 
-		var/GCd_at_time = L[1]
-		if(GCd_at_time > cut_off_time)
+		var/queued_at_time = L[GC_QUEUE_ITEM_QUEUE_TIME]
+		var/GCd_at_time = L[GC_QUEUE_ITEM_GCD_DESTROYED]
+		if(queued_at_time > cut_off_time)
 			break // Everything else is newer, skip them
 		count++
+<<<<<<< HEAD
 		var/refID = L[2]
+=======
+
+#ifdef EXPERIMENT_515_QDEL_HARD_REFERENCE
+		var/datum/D = L[GC_QUEUE_ITEM_REF]
+#else
+		var/refID = L[GC_QUEUE_ITEM_REF]
+>>>>>>> 5ebb91f9622 (Keeps gc_destroyed from getting updated on every step thru the gc queue. (#72401))
 		var/datum/D
 		D = locate(refID)
 
@@ -248,13 +257,26 @@ SUBSYSTEM_DEF(garbage)
 	if (level > GC_QUEUE_COUNT)
 		HardDelete(D)
 		return
+<<<<<<< HEAD
 	var/gctime = world.time
 	var/refid = text_ref(D)
 
 	D.gc_destroyed = gctime
+=======
+	var/queue_time = world.time
+
+#ifdef EXPERIMENT_515_QDEL_HARD_REFERENCE
+	var/refid = D
+#else
+	var/refid = text_ref(D)
+#endif
+	if (D.gc_destroyed <= 0)
+		D.gc_destroyed = queue_time
+	
+>>>>>>> 5ebb91f9622 (Keeps gc_destroyed from getting updated on every step thru the gc queue. (#72401))
 	var/list/queue = queues[level]
 
-	queue[++queue.len] = list(gctime, refid) // not += for byond reasons
+	queue[++queue.len] = list(queue_time, refid, D.gc_destroyed) // not += for byond reasons
 
 //this is mainly to separate things profile wise.
 /datum/controller/subsystem/garbage/proc/HardDelete(datum/D)
