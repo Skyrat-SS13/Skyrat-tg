@@ -12,8 +12,9 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 	if(!length(preferences.food) || isdummy(target))
 		return
 
-	if(!GLOB.food_prefs_menu.is_food_valid(preferences))
-		to_chat(preferences.parent, span_doyourjobidiot("You set up your liked foods in such a way that they can't be applied! Please check your preferences!")) // Sorry, but I don't want folk sleeping on this.
+	var/fail_reason = GLOB.food_prefs_menu.is_food_invalid(preferences)
+	if(fail_reason)
+		to_chat(preferences.parent, span_doyourjobidiot("Your food preferences can't be set because of [fail_reason] choices! Please check your preferences!")) // Sorry, but I don't want folk sleeping on this.
 		return
 
 	var/datum/species/species = target.dna.species
@@ -21,13 +22,17 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 	species.disliked_food = NONE
 	species.toxic_food = NONE
 
-	for(var/food_entry in preferences.food)
-		if(preferences.food[food_entry] == "[FOOD_LIKED]")
-			species.liked_food |= GLOB.food_ic_flag_to_bitflag[food_entry]
-		if(preferences.food[food_entry] == "[FOOD_DISLIKED]")
-			species.disliked_food |= GLOB.food_ic_flag_to_bitflag[food_entry]
-		if(preferences.food[food_entry] == "[FOOD_TOXIC]")
-			species.toxic_food |= GLOB.food_ic_flag_to_bitflag[food_entry]
+	for(var/food_entry in GLOB.food_ic_flag_to_point_values)
+		var/list/food_points_entry = GLOB.food_ic_flag_to_point_values[food_entry]
+		var/food_preference = preferences.food[food_entry] || food_points_entry["[FOOD_DEFAULT]"]
+
+		switch(food_preference) // Doesn't use defines cause I need them in string form
+			if("1")
+				species.liked_food |= GLOB.food_ic_flag_to_bitflag[food_entry]
+			if("2")
+				species.disliked_food |= GLOB.food_ic_flag_to_bitflag[food_entry]
+			if("3")
+				species.toxic_food |= GLOB.food_ic_flag_to_bitflag[food_entry]
 
 /// Food prefs menu datum. Global datum for performance and memory reasons.
 /datum/food_prefs_menu/ui_interact(mob/dead/new_player/user, datum/tgui/ui)
@@ -89,34 +94,42 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 /datum/food_prefs_menu/ui_data(mob/user)
 	var/datum/preferences/preferences = user.client.prefs
 
-	if(preferences.read_preference(/datum/preference/choiced/species) == /datum/species/fly)
-		return list("pref_literally_does_nothing" = TRUE)
+	var/datum/species/species = preferences.read_preference(/datum/preference/choiced/species)
 
 	return list(
 		"selection" = preferences.food,
 		"points" = calculate_points(preferences),
 		"enabled" = preferences.food["enabled"],
-		"is_valid" = is_food_valid(preferences),
+		"invalid" = is_food_invalid(preferences),
+		"pref_literally_does_nothing" = !initial(species.allow_food_preferences),
 	)
 
 /// Checks the provided preferences datum to make sure the food pref values are valid. Does not check if the food preferences value is null.
-/datum/food_prefs_menu/proc/is_food_valid(datum/preferences/preferences)
+/datum/food_prefs_menu/proc/is_food_invalid(datum/preferences/preferences)
 	var/liked_food_length = 0
 	var/disliked_food_length = 0
 	var/toxic_food_length = 0
 
-	for(var/food_entry in preferences.food)
-		if(preferences.food[food_entry] == "[FOOD_LIKED]")
-			liked_food_length++
-		if(preferences.food[food_entry] == "[FOOD_DISLIKED]")
-			disliked_food_length++
-		if(preferences.food[food_entry] == "[FOOD_TOXIC]")
-			toxic_food_length++
+	for(var/food_entry in GLOB.food_ic_flag_to_point_values)
+		var/list/food_points_entry = GLOB.food_ic_flag_to_point_values[food_entry]
+		var/food_preference = preferences.food[food_entry] || food_points_entry["[FOOD_DEFAULT]"]
 
-	if(liked_food_length > MAXIMUM_LIKES || disliked_food_length < MINIMUM_REQUIRED_DISLIKES || toxic_food_length < MINIMUM_REQUIRED_TOXICS || calculate_points(preferences) < 0)
-		return FALSE
+		switch(food_preference) // Doesn't use defines cause I need this in string form.
+			if("1")
+				liked_food_length++
+			if("2")
+				disliked_food_length++
+			if("3")
+				toxic_food_length++
 
-	return TRUE
+	if(liked_food_length > MAXIMUM_LIKES)
+		return "too many like choices"
+	if(disliked_food_length < MINIMUM_REQUIRED_DISLIKES)
+		return "too few dislike choices"
+	if(toxic_food_length < MINIMUM_REQUIRED_TOXICS)
+		return "too few toxic choices"
+	if(calculate_points(preferences) < 0)
+		return "not enough points"
 
 /// Calculates the deviance points for food.
 /datum/food_prefs_menu/proc/calculate_points(datum/preferences/preferences)
@@ -128,10 +141,6 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 		if(!food_points_entry)
 			continue
 
-		world.log << food_points_entry
-
-		for(var/i in food_points_entry)
-			world.log << "[i]"
 		var/default_food_flag = food_points_entry["[FOOD_DEFAULT]"]
 		var/point_value = food_points_entry[food_flag]
 

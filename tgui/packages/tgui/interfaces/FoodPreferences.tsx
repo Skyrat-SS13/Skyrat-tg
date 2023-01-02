@@ -1,6 +1,6 @@
 import { BooleanLike } from 'common/react';
 import { useBackend } from '../backend';
-import { Box, Divider, Section, StyleableSection } from '../components';
+import { Box, Dimmer, Divider, Section, Stack, StyleableSection, Tooltip } from '../components';
 import { Button } from '../components/Button';
 import { Window } from '../layouts';
 
@@ -9,8 +9,20 @@ type Data = {
   selection: Record<number, Array<string>>;
   points: number;
   enabled: BooleanLike;
-  is_valid: BooleanLike;
+  invalid: string;
   pref_literally_does_nothing: BooleanLike;
+};
+
+const OhNo = (props, context) => {
+  return (
+    <Dimmer style={{ 'align-items': 'stretch' }}>
+      <Stack vertical mt="7em">
+        <Stack.Item color="#bd2020" textAlign="center">
+          <h1>{props.children}</h1>
+        </Stack.Item>
+      </Stack>
+    </Dimmer>
+  );
 };
 
 export const FoodPreferences = (props, context) => {
@@ -19,12 +31,7 @@ export const FoodPreferences = (props, context) => {
   return (
     <Window width={700} height={500}>
       <Window.Content scrollable>
-        {data.pref_literally_does_nothing ? (
-          <h1 style={{ 'text-align': 'center' }}>
-            You&apos;re using a race which isn&apos;t affected by food
-            preferences!
-          </h1>
-        ) : (
+        {
           <StyleableSection
             style={{
               'margin-bottom': '1em',
@@ -35,18 +42,37 @@ export const FoodPreferences = (props, context) => {
             }}
             title={
               <Box>
-                {!data.enabled && (
-                  <>
-                    <h1>Your food preferences are disabled!</h1>
-                    <Divider />
-                  </>
-                )}
-                <span>Points left: {data.points}</span>
+                <Tooltip
+                  position="bottom"
+                  content={
+                    data.invalid ? (
+                      <>
+                        Your selected food preferences are invalid!
+                        <Divider />
+                        {data.invalid.charAt(0).toUpperCase() +
+                          data.invalid.slice(1)}
+                        !
+                      </>
+                    ) : (
+                      'Your selected food preferences are valid!'
+                    )
+                  }>
+                  <Box inline>
+                    {data.invalid && (
+                      <Button icon="circle-question" mr="0.5em" />
+                    )}
+                    <span
+                      style={{ 'color': data.invalid ? '#bd2020' : 'inherit' }}>
+                      Points left: {data.points}
+                    </span>
+                  </Box>
+                </Tooltip>
 
                 <Button
                   style={{ 'position': 'absolute', 'right': '20em' }}
                   color={'red'}
-                  onClick={() => act('reset')}>
+                  onClick={() => act('reset')}
+                  tooltip="Reset to the default values!">
                   Reset
                 </Button>
 
@@ -54,11 +80,31 @@ export const FoodPreferences = (props, context) => {
                   style={{ 'position': 'absolute', 'right': '0.5em' }}
                   icon={data.enabled ? 'check-square-o' : 'square-o'}
                   color={data.enabled ? 'green' : 'red'}
-                  onClick={() => act('toggle')}>
+                  onClick={() => act('toggle')}
+                  tooltip={
+                    <>
+                      Toggles if these food preferences will be applied to your
+                      character on spawn.
+                      <Divider />
+                      Remember, these are mostly suggestions, and you are
+                      encouraged to roleplay liking meals that your character
+                      likes, even if you don&apos;t have it&apos;s food type
+                      liked here!
+                    </>
+                  }>
                   Use Custom Food Preferences
                 </Button>
               </Box>
             }>
+            {(data.pref_literally_does_nothing && (
+              <OhNo>
+                You&apos;re using a race which isn&apos;t affected by food
+                preferences!
+              </OhNo>
+            )) ||
+              (!data.enabled && (
+                <OhNo>Your food preferences are disabled!</OhNo>
+              ))}
             <Box style={{ 'columns': '20em' }}>
               {Object.entries(data.food_types).map((element) => {
                 const { 0: foodName, 1: foodPointValues } = element;
@@ -83,6 +129,7 @@ export const FoodPreferences = (props, context) => {
                           (foodPointValues && ' (' + foodPointValues['3'] + ')')
                         }
                         color="olive"
+                        tooltip="Your character will almost immediately throw up on eating anything toxic."
                       />
                       <FoodButton
                         foodName={foodName}
@@ -97,6 +144,7 @@ export const FoodPreferences = (props, context) => {
                           (foodPointValues && ' (' + foodPointValues['2'] + ')')
                         }
                         color="red"
+                        tooltip="Your character will become grossed out, before eventually throwing up after a decent intake of disliked food."
                       />
                       <FoodButton
                         foodName={foodName}
@@ -111,6 +159,7 @@ export const FoodPreferences = (props, context) => {
                           (foodPointValues && ' (' + foodPointValues['6'] + ')')
                         }
                         color="grey"
+                        tooltip="Your character has very little to say about something that's neutral."
                       />
                       <FoodButton
                         foodName={foodName}
@@ -125,6 +174,7 @@ export const FoodPreferences = (props, context) => {
                           (foodPointValues && ' (' + foodPointValues['1'] + ')')
                         }
                         color="green"
+                        tooltip="Your character will enjoy anything that's liked."
                       />
                     </Section>
                   </Box>
@@ -132,7 +182,7 @@ export const FoodPreferences = (props, context) => {
               })}
             </Box>
           </StyleableSection>
-        )}
+        }
       </Window.Content>
     </Window>
   );
