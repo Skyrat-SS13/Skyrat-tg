@@ -62,10 +62,6 @@
 	var/slime_restricted = TRUE
 	///Is the person using this ability oversized?
 	var/oversized_user = FALSE
-	///Whar parts are blacklisted?
-	var/list/blacklisted_parts = list(
-		"Megamoth",
-	)
 
 /datum/action/innate/alter_form/unrestricted
 	slime_restricted = FALSE
@@ -327,9 +323,11 @@
 		return
 	var/list/sprite_list = GLOB.sprite_accessories[chosen_key]
 	var/list/choice_list = sprite_list.Copy()
+
 	for(var/choice as anything in choice_list)
-		if(choice in blacklisted_parts)
-			choice_list -= blacklisted_parts
+		var/datum/sprite_accessory/accessory = GLOB.sprite_accessories[chosen_key][choice]
+		if(accessory.locked)
+			choice_list -= choice
 
 	var/chosen_name_key = tgui_input_list(
 		alterer,
