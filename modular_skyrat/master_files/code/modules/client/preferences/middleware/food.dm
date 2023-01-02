@@ -69,6 +69,9 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 			var/liked_food_length = 0
 
 			for(var/food_entry in preferences.food)
+				if(food_points_entry["[FOOD_OBSCURE]"])
+					continue
+
 				if(preferences.food[food_entry] == "[FOOD_LIKED]")
 					liked_food_length++
 					if(liked_food_length > MAXIMUM_LIKES)
