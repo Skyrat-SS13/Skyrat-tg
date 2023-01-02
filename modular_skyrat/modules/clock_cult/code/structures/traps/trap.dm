@@ -4,6 +4,7 @@
 	desc = "don't trust it"
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_objects.dmi'
 	w_class = WEIGHT_CLASS_HUGE
+	/// The path of the trap to make when this is set down
 	var/result_path = /obj/structure/destructible/clockwork/trap
 
 
