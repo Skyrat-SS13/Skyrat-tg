@@ -215,7 +215,18 @@
 			if(!check_tools(a, R, contents))
 				return ", missing tool."
 			var/list/parts = del_reqs(R, a)
+<<<<<<< HEAD
 			var/atom/movable/I = new R.result (get_turf(a.loc))
+=======
+			var/atom/movable/I
+			if(ispath(R.result, /obj/item/stack))
+				I = new R.result (get_turf(a.loc), R.result_amount || 1)
+			else
+				I = new R.result (get_turf(a.loc))
+				if(I.atom_storage)
+					for(var/obj/item/thing in I)
+						qdel(thing)
+>>>>>>> 2465e5cdc18 (Boxes created through the crafting menu no longer spawn with their contents full (#72397))
 			I.CheckParts(parts, R)
 			if(send_feedback)
 				SSblackbox.record_feedback("tally", "object_crafted", 1, I.type)
