@@ -100,7 +100,7 @@ export const FoodPreferences = (props, context) => {
                       />
                       <FoodButton
                         foodName={foodName}
-                        foodFlag={0}
+                        foodFlag={6}
                         selected={
                           data.selection[foodName] === '6' ||
                           (!data.selection[foodName] &&

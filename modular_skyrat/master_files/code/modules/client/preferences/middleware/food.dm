@@ -57,17 +57,10 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 			var/food_name = params["food_name"]
 			var/food_flag = params["food_flag"]
 
-			if(!food_name || !preferences)
+			if(!food_name || !preferences || !food_flag || !(food_flag in list("[FOOD_LIKED]", "[FOOD_NEUTRAL]", "[FOOD_DISLIKED]", "[FOOD_TOXIC]")))
 				return TRUE
 
-			if(!food_flag)
-				preferences.food.Remove(food_name)
-				return TRUE
-
-			if(!(food_flag in list("[FOOD_LIKED]", "[FOOD_DISLIKED]", "[FOOD_TOXIC]")))
-				return TRUE
-
-			// Do some simple validation.
+			// Do some simple validation for max liked foods. Full validation is done on spawn and in the actual menu.
 			var/liked_food_length = 0
 
 			for(var/food_entry in preferences.food)
@@ -76,7 +69,7 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 					if(liked_food_length > MAXIMUM_LIKES)
 						preferences.food.Remove(food_entry)
 
-			if(food_flag == "[FOOD_LIKED]" ? liked_food_length >= MAXIMUM_LIKES : liked_food_length > MAXIMUM_LIKES) // Equals as well, cause we're presumably setting something!
+			if(food_flag == "[FOOD_LIKED]" ? liked_food_length >= MAXIMUM_LIKES : liked_food_length > MAXIMUM_LIKES) // Equals as well, if we're setting a liked food!
 				return TRUE // Fuck you, look your mistakes in the eye.
 
 			preferences.food[food_name] = food_flag
