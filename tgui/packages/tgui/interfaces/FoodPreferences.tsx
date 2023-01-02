@@ -5,7 +5,7 @@ import { Button } from '../components/Button';
 import { Window } from '../layouts';
 
 type Data = {
-  food_types: Record<string, Record<number, number>>;
+  food_types: Record<string, Record<string, string>>;
   selection: Record<number, Array<string>>;
   points: number;
   enabled: BooleanLike;
