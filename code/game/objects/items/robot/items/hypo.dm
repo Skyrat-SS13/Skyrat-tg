@@ -173,6 +173,7 @@
 
 		to_chat(injectee, span_warning("You feel a tiny prick!"))
 		to_chat(user, span_notice("You inject [injectee] with the injector ([selected_reagent.name])."))
+		playsound(loc, pick('modular_skyrat/modules/hyposprays/sound/hypospray.ogg','modular_skyrat/modules/hyposprays/sound/hypospray2.ogg'), 50, 1, -1)
 
 		if(injectee.reagents)
 			hypospray_injector.trans_to(injectee, amount_per_transfer_from_this, transfered_by = user, methods = INJECT)
