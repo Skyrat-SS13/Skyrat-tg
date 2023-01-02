@@ -69,6 +69,7 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 			var/liked_food_length = 0
 
 			for(var/food_entry in preferences.food)
+				var/list/food_points_entry = GLOB.food_ic_flag_to_point_values[food_entry]
 				if(food_points_entry["[FOOD_OBSCURE]"])
 					continue
 
