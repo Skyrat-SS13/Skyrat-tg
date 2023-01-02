@@ -64,7 +64,7 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 				preferences.food.Remove(food_name)
 				return TRUE
 
-			if(!(food_flag in list(FOOD_LIKED]", "[FOOD_DISLIKED]", "[FOOD_TOXIC]")))
+			if(!(food_flag in list("[FOOD_LIKED]", "[FOOD_DISLIKED]", "[FOOD_TOXIC]")))
 				return TRUE
 
 			// Do some simple validation.
