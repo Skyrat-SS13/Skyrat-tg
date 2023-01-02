@@ -5,6 +5,7 @@
 	desc = "Used to clock in and clock out."
 	icon = 'modular_skyrat/modules/time_clock/icons/machinery/console.dmi'
 	icon_state = "timeclock"
+	density = FALSE
 
 	///What ID card is currently inside?
 	var/obj/item/card/id/inserted_id
@@ -15,9 +16,19 @@
 	///The channel that the radio broadcasts on.
 	var/announcement_channel = null
 
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
+
 /obj/machinery/time_clock/Initialize(mapload)
 	. = ..()
 	radio = new radio(src)
+
+/obj/machinery/time_clock/Destroy()
+	. = ..()
+	if(inserted_id)
+		inserted_id.forceMove(drop_location())
+
+	if(radio)
+		QDEL_NULL(radio)
 
 /obj/machinery/time_clock/attackby(obj/item/used_item, mob/user)
 	if(!istype(used_item, /obj/item/card/id))
