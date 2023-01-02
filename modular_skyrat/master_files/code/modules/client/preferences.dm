@@ -54,7 +54,7 @@
 	var/headshot = ""
 
 	/// An assoc list of food types to liked or dislike values. If null or empty, default species tastes are used instead on application.
-	/// If a food doesn't exist in this list, it's a neutral taste.
+	/// If a food doesn't exist in this list, it uses the default value.
 	var/list/food = list()
 
 /datum/preferences/proc/species_updated(species_type)

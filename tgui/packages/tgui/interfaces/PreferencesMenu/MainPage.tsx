@@ -74,7 +74,7 @@ const CharacterControls = (props: {
         <Button
           onClick={props.handleFood}
           fontSize="22px"
-          icon="suitcase"
+          icon="drumstick-bite"
           tooltip="Edit Food Preferences"
           tooltipPosition="top"
         />

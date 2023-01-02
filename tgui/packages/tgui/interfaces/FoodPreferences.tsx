@@ -1,12 +1,15 @@
 import { BooleanLike } from 'common/react';
 import { useBackend } from '../backend';
-import { Box, Section, StyleableSection } from '../components';
+import { Box, Divider, Section, StyleableSection } from '../components';
 import { Button } from '../components/Button';
 import { Window } from '../layouts';
 
 type Data = {
-  food_types: Array<string>;
+  food_types: Record<string, Record<number, number>>;
   selection: Record<number, Array<string>>;
+  points: number;
+  enabled: BooleanLike;
+  is_valid: BooleanLike;
   pref_literally_does_nothing: BooleanLike;
 };
 
@@ -16,8 +19,8 @@ export const FoodPreferences = (props, context) => {
   return (
     <Window width={700} height={500}>
       <Window.Content scrollable>
-        {data.pref_literally_does_nothing === 1 ? (
-          <h1>
+        {data.pref_literally_does_nothing ? (
+          <h1 style={{ 'text-align': 'center' }}>
             You&apos;re using a race which isn&apos;t affected by food
             preferences!
           </h1>
@@ -27,56 +30,100 @@ export const FoodPreferences = (props, context) => {
               'margin-bottom': '1em',
               'break-inside': 'avoid-column',
             }}
+            titleStyle={{
+              'justify-content': 'center',
+            }}
             title={
-              <Button
-                color={'red'}
-                onClick={() => act('reset')}
-                maxWidth="10em">
-                Reset
-              </Button>
+              <Box>
+                {!data.enabled && (
+                  <>
+                    <h1>Your food preferences are disabled!</h1>
+                    <Divider />
+                  </>
+                )}
+                <span>Points left: {data.points}</span>
+
+                <Button
+                  style={{ 'position': 'absolute', 'right': '20em' }}
+                  color={'red'}
+                  onClick={() => act('reset')}>
+                  Reset
+                </Button>
+
+                <Button
+                  style={{ 'position': 'absolute', 'right': '0.5em' }}
+                  icon={data.enabled ? 'check-square-o' : 'square-o'}
+                  color={data.enabled ? 'green' : 'red'}
+                  onClick={() => act('toggle')}>
+                  Use Custom Food Preferences
+                </Button>
+              </Box>
             }>
             <Box style={{ 'columns': '20em' }}>
-              {data.food_types.map((element) => {
+              {Object.entries(data.food_types).map((element) => {
+                const { 0: foodName, 1: foodPointValues } = element;
                 return (
-                  <Box key={element} wrap="wrap">
-                    <Section title={element}>
+                  <Box key={foodName} wrap="wrap">
+                    <Section
+                      title={element}
+                      style={{
+                        'break-inside': 'avoid-column',
+                        'margin-bottom': '1em',
+                      }}>
                       <FoodButton
                         foodName={element}
                         foodFlag={3}
                         selected={
-                          data.selection !== null &&
-                          data.selection[element] === 3
+                          data.selection[foodName] === '3' ||
+                          (!data.selection[foodName] &&
+                            foodPointValues['5'] === '3')
                         }
-                        content="Toxic"
+                        content={
+                          'Toxic' +
+                          (foodPointValues && ' (' + foodPointValues['3'] + ')')
+                        }
                         color="olive"
                       />
                       <FoodButton
                         foodName={element}
                         foodFlag={2}
                         selected={
-                          data.selection !== null &&
-                          data.selection[element] === 2
+                          data.selection[foodName] === '2' ||
+                          (!data.selection[foodName] &&
+                            foodPointValues['5'] === '2')
                         }
-                        content="Disliked"
+                        content={
+                          'Disliked' +
+                          (foodPointValues && ' (' + foodPointValues['2'] + ')')
+                        }
                         color="red"
                       />
                       <FoodButton
                         foodName={element}
                         foodFlag={0}
                         selected={
-                          data.selection !== null && !data.selection[element]
+                          data.selection[foodName] === '6' ||
+                          (!data.selection[foodName] &&
+                            foodPointValues['5'] === '6')
                         }
-                        content="Neutral"
+                        content={
+                          'Neutral' +
+                          (foodPointValues && ' (' + foodPointValues['6'] + ')')
+                        }
                         color="grey"
                       />
                       <FoodButton
                         foodName={element}
                         foodFlag={1}
                         selected={
-                          data.selection !== null &&
-                          data.selection[element] === 1
+                          data.selection[foodName] === '1' ||
+                          (!data.selection[foodName] &&
+                            foodPointValues['5'] === '1')
                         }
-                        content="Liked"
+                        content={
+                          'Liked' +
+                          (foodPointValues && ' (' + foodPointValues['1'] + ')')
+                        }
                         color="green"
                       />
                     </Section>
@@ -101,7 +148,7 @@ const FoodButton = (props, context) => {
       onClick={() =>
         act('change_food', {
           food_name: foodName,
-          food_flag: foodFlag,
+          food_flag: foodFlag.toString(),
         })
       }
       {...rest}

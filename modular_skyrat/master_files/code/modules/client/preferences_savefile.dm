@@ -88,6 +88,9 @@
 
 	food = save_data["food_preferences"]
 
+	if(!islist(food))
+		food = list()
+
 	if(needs_update >= 0)
 		update_character_skyrat(needs_update, save_data) // needs_update == savefile_version if we need an update (positive integer)
 
