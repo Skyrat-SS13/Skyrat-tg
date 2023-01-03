@@ -3,16 +3,6 @@
 // Maybe some day it would be used as unit test.
 // -------- IT IS NOW!
 /datum/unit_test/plantgrowth/Run()
-<<<<<<< HEAD
-	var/list/states = icon_states('icons/obj/hydroponics/growing.dmi')
-	states |= icon_states('icons/obj/hydroponics/growing_fruits.dmi')
-	states |= icon_states('icons/obj/hydroponics/growing_flowers.dmi')
-	states |= icon_states('icons/obj/hydroponics/growing_mushrooms.dmi')
-	states |= icon_states('icons/obj/hydroponics/growing_vegetables.dmi')
-	states |= icon_states('modular_skyrat/master_files/icons/obj/hydroponics/growing.dmi') // SKYRAT ADDITION
-	states |= icon_states('modular_skyrat/modules/xenoarch/icons/growing.dmi') // SKYRAT ADDITION
-=======
->>>>>>> cb3f60ec350 ((Hopefully) makes the `plantgrowth_test` not actually garbage (#72402))
 	var/list/paths = subtypesof(/obj/item/seeds) - /obj/item/seeds - typesof(/obj/item/seeds/sample) - /obj/item/seeds/lavaland
 
 	for(var/seedpath in paths)
