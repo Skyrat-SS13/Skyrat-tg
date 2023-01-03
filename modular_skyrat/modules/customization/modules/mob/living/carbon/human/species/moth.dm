@@ -13,6 +13,7 @@
 		TRAIT_ANTENNAE,
 		MUTCOLORS,
 	)
+	ass_image = "drask"
 
 /datum/species/moth/randomize_features(mob/living/carbon/human/human_mob)
 	human_mob.dna.features["mcolor"] = "#E5CD99"
