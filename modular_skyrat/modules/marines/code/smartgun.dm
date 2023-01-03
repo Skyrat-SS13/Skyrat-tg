@@ -29,6 +29,7 @@
 	mag_display_ammo = FALSE
 	mag_display = FALSE
 	company_flag = COMPANY_NANOTRASEN
+	fire_sound_volume = 30
 	/// If the gun's dustcover is open or not
 	var/cover_open = FALSE
 	/// Factions that the gun cannot shoot under any circumstances
