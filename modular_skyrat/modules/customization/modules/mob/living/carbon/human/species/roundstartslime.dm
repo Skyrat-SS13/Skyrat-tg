@@ -63,10 +63,13 @@
 	///Is the person using this ability oversized?
 	var/oversized_user = FALSE
 	///List containing all of the avalible parts
-	var/static/list/avalible_choices
+	var/static/list/available_choices
 
 /datum/action/innate/alter_form/New(Target)
 	. = ..()
+	if(available_choices)
+		return
+
 	var/list/parts_lists = GLOB.sprite_accessories.Copy()
 	for(var/parts_list in parts_lists)
 		for(var/parts as anything in parts_lists[parts_list])
@@ -74,7 +77,7 @@
 			if(part.locked)
 				parts_lists[parts_list] -= parts
 
-	avalible_choices = parts_lists.Copy()
+	available_choices = parts_lists.Copy()
 
 /datum/action/innate/alter_form/unrestricted
 	slime_restricted = FALSE
@@ -335,7 +338,7 @@
 	if(!chosen_key)
 		return
 
-	var/choice_list = avalible_choices[chosen_key]
+	var/choice_list = available_choices[chosen_key]
 	var/chosen_name_key = tgui_input_list(
 		alterer,
 		"What do you want the part to become?",
