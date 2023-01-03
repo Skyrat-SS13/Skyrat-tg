@@ -260,6 +260,7 @@
 /datum/sprite_accessory/wings/moth/burnt
 	name = "Moth (Burnt)"
 	icon_state = "burnt_off"
+	locked = TRUE
 
 /datum/sprite_accessory/wings/moth/deathhead
 	name = "Moth (Deathshead)"
