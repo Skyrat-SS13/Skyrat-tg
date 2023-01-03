@@ -509,7 +509,7 @@
 // Here's where we rewrite how byond handles movement except slightly different
 // To be removed on step_ conversion
 // All this work to prevent a second bump
-/atom/movable/Move(atom/newloc, direction, glide_size_override = 0)
+/atom/movable/Move(atom/newloc, direction, glide_size_override = 0, update_dir = TRUE)
 	. = FALSE
 	if(!newloc || newloc == loc)
 		return
@@ -517,7 +517,11 @@
 	if(!direction)
 		direction = get_dir(src, newloc)
 
+<<<<<<< HEAD
 	if(set_dir_on_move && dir != direction && !face_mouse) // SKYRAT EDIT CHANGE
+=======
+	if(set_dir_on_move && dir != direction && update_dir)
+>>>>>>> bf73344399f ([READY] DRAMATIC SHUTTLES!! You can now fly around the shuttle (#71906))
 		setDir(direction)
 
 	var/is_multi_tile_object = bound_width > 32 || bound_height > 32
@@ -582,7 +586,7 @@
 
 ////////////////////////////////////////
 
-/atom/movable/Move(atom/newloc, direct, glide_size_override = 0)
+/atom/movable/Move(atom/newloc, direct, glide_size_override = 0, update_dir = TRUE)
 	var/atom/movable/pullee = pulling
 	var/turf/current_turf = loc
 	if(!moving_from_pull)
@@ -643,7 +647,11 @@
 						moving_diagonally = SECOND_DIAG_STEP
 						. = step(src, SOUTH)
 			if(moving_diagonally == SECOND_DIAG_STEP)
+<<<<<<< HEAD
 				if(!. && set_dir_on_move && !face_mouse) // SKYRAT EDIT CHANGE
+=======
+				if(!. && set_dir_on_move && update_dir)
+>>>>>>> bf73344399f ([READY] DRAMATIC SHUTTLES!! You can now fly around the shuttle (#71906))
 					setDir(first_step_dir)
 				else if(!inertia_moving)
 					newtonian_move(direct)
@@ -684,7 +692,11 @@
 
 	last_move = direct
 
+<<<<<<< HEAD
 	if(set_dir_on_move && dir != direct && !face_mouse) // SKYRAT EDIT CHANGE
+=======
+	if(set_dir_on_move && dir != direct && update_dir)
+>>>>>>> bf73344399f ([READY] DRAMATIC SHUTTLES!! You can now fly around the shuttle (#71906))
 		setDir(direct)
 	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override)) //movement failed due to buckled mob(s)
 		. = FALSE
