@@ -11,9 +11,7 @@
 		var/mob/living/carbon/human/H = ass
 		var/datum/species/spec = H.dna.species
 		if(spec.ass_image)
-			temp_img = icon(spec.ass_image)
-		else
-			temp_img = icon('modular_skyrat/master_files/icons/obj/butts.dmi', H.dna.species.butt_sprite)
+			temp_img = icon('modular_skyrat/master_files/icons/obj/butts.dmi', spec.ass_image)
 	else if(isalienadult(ass))
 		temp_img = icon('modular_skyrat/master_files/icons/obj/butts.dmi', "xeno"))
 	else if(issilicon(ass))
