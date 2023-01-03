@@ -35,6 +35,7 @@
 	toxic_food = TOXIC
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
+	ass_image = "vulp" //may or may not be wrong
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant,
