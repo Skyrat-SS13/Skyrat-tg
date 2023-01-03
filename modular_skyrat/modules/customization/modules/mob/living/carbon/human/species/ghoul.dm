@@ -44,6 +44,7 @@
 	stunmod = 1.25 //multiplier for stun durations
 	bodytemp_normal = T20C
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
+	ass_image = "plasma"
 	bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/mutant/ghoul,
 		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant/ghoul,
