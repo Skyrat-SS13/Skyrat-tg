@@ -22,6 +22,7 @@
 		"wings" = "None",
 	)
 	payday_modifier = 0.75
+	ass_image = "skrell"
 
 /datum/species/lizard/randomize_features(mob/living/carbon/human/human_mob)
 	var/main_color = "#[random_color()]"
