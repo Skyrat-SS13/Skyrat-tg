@@ -4,7 +4,8 @@
 	name = "stripper pole"
 	desc = "A pole fastened to the ceiling and floor, used to show of one's goods to company."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/dancing_pole.dmi'
-	icon_state = "pole"
+	icon_state = "pole_purple_off"
+	base_icon_state = "pole"
 	density = TRUE
 	anchored = TRUE
 	max_integrity = 75
@@ -80,7 +81,7 @@
 
 /obj/structure/pole/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_pole_color]_[pole_on? "on" : "off"]"
+	icon_state = "[base_icon_state]_[current_pole_color]_[pole_on? "on" : "off"]"
 
 /obj/structure/pole/proc/update_brightness()
 	set_light_on(pole_on)
