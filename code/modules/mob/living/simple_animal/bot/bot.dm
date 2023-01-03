@@ -429,6 +429,11 @@
 		paicard.emp_act(severity)
 		src.visible_message(span_notice("[paicard] is flies out of [initial(src.name)]!"), span_warning("You are forcefully ejected from [initial(src.name)]!"))
 		ejectpai(0)
+
+	if(prob(70/severity))
+		var/datum/language_holder/bot_languages = get_language_holder()
+		bot_languages.selected_language = bot_languages.get_random_spoken_language()
+
 	if(bot_mode_flags & BOT_MODE_ON)
 		turn_off()
 	addtimer(CALLBACK(src, PROC_REF(emp_reset), was_on), severity * 30 SECONDS)
@@ -1011,10 +1016,12 @@ Pass a positive integer as an argument to override a bot's default speed.
 	. = ..()
 	bot_reset()
 
-/mob/living/simple_animal/bot/revive(full_heal = FALSE, admin_revive = FALSE)
-	if(..())
-		update_appearance()
-		. = TRUE
+/mob/living/simple_animal/bot/revive(full_heal_flags = NONE, excess_healing = 0, force_grab_ghost = FALSE)
+	. = ..()
+	if(!.)
+		return
+
+	update_appearance()
 
 /mob/living/simple_animal/bot/ghost()
 	if(stat != DEAD) // Only ghost if we're doing this while alive, the pAI probably isn't dead yet.
@@ -1037,7 +1044,7 @@ Pass a positive integer as an argument to override a bot's default speed.
 
 	var/list/path_images = active_hud_list[DIAG_PATH_HUD]
 	QDEL_LIST(path_images)
-	if(newpath)
+	if(length(newpath))
 		var/mutable_appearance/path_image = new /mutable_appearance()
 		path_image.icon = path_image_icon
 		path_image.icon_state = path_image_icon_state
@@ -1091,22 +1098,3 @@ Pass a positive integer as an argument to override a bot's default speed.
 
 /mob/living/simple_animal/bot/rust_heretic_act()
 	adjustBruteLoss(400)
-
-/**
- * Randomizes our bot's language if:
- * - They are on the setation Z level
- * OR
- * - They are on the escape shuttle
- */
-/mob/living/simple_animal/bot/proc/randomize_language_if_on_station()
-	var/turf/bot_turf = get_turf(src)
-	var/area/bot_area = get_area(src)
-	if(!is_station_level(bot_turf.z) && !istype(bot_area, /area/shuttle/escape))
-		// Why snowflake check for escape shuttle? Well, a lot of shuttles spawn with bots
-		// but docked at centcom, and I wanted those bots to also speak funny languages
-		return FALSE
-
-	/// The bot's language holder - so we can randomize and change their language
-	var/datum/language_holder/bot_languages = get_language_holder()
-	bot_languages.selected_language = bot_languages.get_random_spoken_uncommon_language()
-	return TRUE

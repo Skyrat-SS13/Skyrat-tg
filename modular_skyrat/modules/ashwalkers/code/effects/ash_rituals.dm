@@ -350,4 +350,4 @@
 		var/mob/living/simple_animal/hostile/hostile_animal = find_animal
 		hostile_animal.attack_same = FALSE
 
-	find_animal.revive(full_heal = TRUE, admin_revive = TRUE)
+	find_animal.revive(HEAL_ALL)

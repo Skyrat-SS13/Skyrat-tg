@@ -337,7 +337,7 @@
 		/obj/item/storage/belt/military/expeditionary_corps,
 		/obj/item/clothing/under/rank/expeditionary_corps,
 		/obj/item/clothing/shoes/combat/expeditionary_corps,
-		/obj/item/modular_computer/tablet/pda/expeditionary_corps,
+		/obj/item/modular_computer/pda/expeditionary_corps,
 		/obj/item/knife/combat/marksman,
 	)
 	/// How many of the contains to put in the crate

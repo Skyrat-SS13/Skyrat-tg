@@ -36,10 +36,13 @@
 		user.update_held_items()
 		return 1
 
-/datum/action/changeling/weapon/sting_action(mob/living/user)
+/datum/action/changeling/weapon/sting_action(mob/living/carbon/user)
 	var/obj/item/held = user.get_active_held_item()
 	if(held && !user.dropItemToGround(held))
 		to_chat(user, span_warning("[held] is stuck to your hand, you cannot grow a [weapon_name_simple] over it!"))
+		return
+	if(!istype(user))
+		to_chat(user, span_warning("You can't do that in this state!"))
 		return
 	..()
 	var/limb_regen = 0
@@ -257,6 +260,7 @@
 	throwforce = 0 //Just to be on the safe side
 	throw_range = 0
 	throw_speed = 0
+	can_hold_up = FALSE
 
 /obj/item/gun/magic/tentacle/Initialize(mapload, silent)
 	. = ..()
@@ -287,7 +291,6 @@
 	desc = "A tentacle."
 	projectile_type = /obj/projectile/tentacle
 	caliber = CALIBER_TENTACLE
-	icon_state = "tentacle_end"
 	firing_effect_type = null
 	var/obj/item/gun/magic/tentacle/gun //the item that shot it
 
@@ -318,7 +321,7 @@
 
 /obj/projectile/tentacle/fire(setAngle)
 	if(firer)
-		chain = firer.Beam(src, icon_state = "tentacle")
+		chain = firer.Beam(src, icon_state = "tentacle", emissive = FALSE)
 	..()
 
 /obj/projectile/tentacle/proc/reset_throw(mob/living/carbon/human/H)
@@ -471,7 +474,8 @@
 
 /obj/item/clothing/suit/space/changeling
 	name = "flesh mass"
-	icon_state = "lingspacesuit"
+	icon_state = "lingspacesuit_t"
+	icon = 'icons/obj/clothing/suits/costume.dmi'
 	desc = "A huge, bulky mass of pressure and temperature-resistant organic tissue, evolved to facilitate space travel."
 	item_flags = DROPDEL
 	clothing_flags = STOPSPRESSUREDAMAGE //Not THICKMATERIAL because it's organic tissue, so if somebody tries to inject something into it, it still ends up in your blood. (also balance but muh fluff)

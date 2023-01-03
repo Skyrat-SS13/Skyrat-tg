@@ -5,11 +5,20 @@
 	tastes = list("bread" = 10)
 	foodtypes = GRAIN
 	eat_time = 3 SECONDS
+	/// type is spawned 5 at a time and replaces this bread loaf when processed by cutting tool
+	var/obj/item/food/breadslice/slice_type
+	/// so that the yield can change if it isnt 5
+	var/yield = 5
 
 /obj/item/food/bread/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/dunkable, 10)
 	AddComponent(/datum/component/food_storage)
+
+/obj/item/food/bread/MakeProcessable()
+	if (slice_type)
+		AddElement(/datum/element/processable, TOOL_KNIFE, slice_type, yield, 3 SECONDS, table_required = TRUE, screentip_verb = "Slice")
+		AddElement(/datum/element/processable, TOOL_SAW, slice_type, yield, 4 SECONDS, table_required = TRUE, screentip_verb = "Slice")
 
 /obj/item/food/breadslice
 	icon = 'icons/obj/food/burgerbread.dmi'
@@ -32,13 +41,11 @@
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_CHEAP
 	burns_in_oven = TRUE
+	slice_type = /obj/item/food/breadslice/plain
 
 /obj/item/food/bread/plain/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/customizable_reagent_holder, /obj/item/food/bread/empty, CUSTOM_INGREDIENT_ICON_FILL, max_ingredients = 8)
-
-/obj/item/food/bread/plain/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/breadslice/plain, 5, 3 SECONDS, table_required = TRUE)
 
 // special subtype we use for the "Bread" Admin Smite (or the breadify proc)
 /obj/item/food/bread/plain/smite
@@ -86,10 +93,7 @@
 	tastes = list("bread" = 10, "meat" = 10)
 	foodtypes = GRAIN | MEAT
 	venue_value = FOOD_PRICE_CHEAP
-
-
-/obj/item/food/bread/meat/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/breadslice/meat, 5, 3 SECONDS, table_required = TRUE)
+	slice_type = /obj/item/food/breadslice/meat
 
 /obj/item/food/breadslice/meat
 	name = "meatbread slice"
@@ -105,9 +109,7 @@
 	foodtypes = GRAIN | MEAT
 	food_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/consumable/nutriment/vitamin = 10, /datum/reagent/consumable/nutriment/protein = 12)
 	tastes = list("bread" = 10, "meat" = 10)
-
-/obj/item/food/bread/sausage/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/breadslice/sausage, 5, 3 SECONDS, table_required = TRUE)
+	slice_type = /obj/item/food/breadslice/sausage
 
 /obj/item/food/breadslice/sausage
 	name = "sausagebread slice"
@@ -124,9 +126,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/consumable/nutriment/vitamin = 10, /datum/reagent/consumable/nutriment/protein = 15)
 	tastes = list("bread" = 10, "acid" = 10)
 	foodtypes = GRAIN | MEAT
-
-/obj/item/food/bread/xenomeat/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/breadslice/xenomeat, 5, 3 SECONDS, table_required = TRUE)
+	slice_type = /obj/item/food/breadslice/xenomeat
 
 /obj/item/food/breadslice/xenomeat
 	name = "xenomeatbread slice"
@@ -142,9 +142,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/toxin = 15, /datum/reagent/consumable/nutriment/vitamin = 10, /datum/reagent/consumable/nutriment/protein = 12)
 	tastes = list("bread" = 10, "cobwebs" = 5)
 	foodtypes = GRAIN | MEAT | TOXIC
-
-/obj/item/food/bread/spidermeat/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/breadslice/spidermeat, 5, 3 SECONDS, table_required = TRUE)
+	slice_type = /obj/item/food/breadslice/spidermeat
 
 /obj/item/food/breadslice/spidermeat
 	name = "spider meat bread slice"
@@ -160,9 +158,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/consumable/banana = 20)
 	tastes = list("bread" = 10) // bananjuice will also flavour
 	foodtypes = GRAIN | FRUIT
-
-/obj/item/food/bread/banana/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/breadslice/banana, 5, 3 SECONDS, table_required = TRUE)
+	slice_type = /obj/item/food/breadslice/banana
 
 /obj/item/food/breadslice/banana
 	name = "banana-nut bread slice"
@@ -179,9 +175,7 @@
 	tastes = list("bread" = 10, "tofu" = 10)
 	foodtypes = GRAIN | VEGETABLES
 	venue_value = FOOD_PRICE_TRASH
-
-/obj/item/food/bread/tofu/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/breadslice/tofu, 5, 3 SECONDS, table_required = TRUE)
+	slice_type = /obj/item/food/breadslice/tofu
 
 /obj/item/food/breadslice/tofu
 	name = "tofubread slice"
@@ -197,9 +191,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/consumable/nutriment/protein = 10, /datum/reagent/consumable/nutriment/vitamin = 10)
 	tastes = list("bread" = 10, "cheese" = 10)
 	foodtypes = GRAIN | DAIRY
-
-/obj/item/food/bread/creamcheese/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/breadslice/creamcheese, 5, 3 SECONDS, table_required = TRUE)
+	slice_type = /obj/item/food/breadslice/creamcheese
 
 /obj/item/food/breadslice/creamcheese
 	name = "cream cheese bread slice"
@@ -211,9 +203,7 @@
 	name = "bread"
 	icon_state = "tofubread"
 	desc = "It's bread, customized to your wildest dreams."
-
-/obj/item/food/bread/empty/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/breadslice/empty, 5, 3 SECONDS, table_required = TRUE)
+	slice_type = /obj/item/food/breadslice/empty
 
 /obj/item/food/bread/mimana
 	name = "mimana bread"
@@ -222,9 +212,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/toxin/mutetoxin = 5, /datum/reagent/consumable/nothing = 5, /datum/reagent/consumable/nutriment/vitamin = 10)
 	tastes = list("bread" = 10, "silence" = 10)
 	foodtypes = GRAIN | FRUIT
-
-/obj/item/food/bread/mimana/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/breadslice/mimana, 5, 3 SECONDS, table_required = TRUE)
+	slice_type = /obj/item/food/breadslice/mimana
 
 /obj/item/food/breadslice/mimana
 	name = "mimana bread slice"
@@ -327,6 +315,24 @@
 	if(!(slot & ITEM_SLOT_HANDS))
 		end_swordplay()
 
+/// Deadly bread used by a mime
+/obj/item/food/baguette/combat
+	sharpness = SHARP_EDGED
+	/// Force when wielded as a sword by a mime
+	var/active_force = 20
+	/// Block chance when wielded as a sword by a mime
+	var/active_block = 50
+
+/obj/item/food/baguette/combat/begin_swordplay(mob/user)
+	. = ..()
+	force = active_force
+	block_chance = active_block
+
+/obj/item/food/baguette/combat/end_swordplay(mob/user)
+	. = ..()
+	force = initial(force)
+	block_chance = initial(block_chance)
+
 /obj/item/food/garlicbread
 	name = "garlic bread"
 	desc = "Alas, it is limited."
@@ -412,3 +418,37 @@
 	foodtypes = GRAIN | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	burns_in_oven = TRUE
+
+/obj/item/food/raw_croissant
+	name = "raw croissant"
+	desc = "Folded dough ready to bake into a croissant."
+	icon = 'icons/obj/food/burgerbread.dmi'
+	icon_state = "raw_croissant"
+	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 2)
+	tastes = list("raw dough" = 1)
+	foodtypes = GRAIN | DAIRY
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/food/raw_croissant/MakeBakeable()
+	AddComponent(/datum/component/bakeable, /obj/item/food/croissant, rand(15 SECONDS, 20 SECONDS), TRUE, TRUE)
+
+/obj/item/food/croissant
+	name = "croissant"
+	desc = "A delicious, buttery croissant. The perfect start to the day."
+	icon = 'icons/obj/food/burgerbread.dmi'
+	icon_state = "croissant"
+	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 2)
+	tastes = list("fluffy bread" = 1, "butter" = 2)
+	foodtypes = GRAIN | DAIRY | BREAKFAST
+	w_class = WEIGHT_CLASS_SMALL
+	burns_in_oven = TRUE
+
+// Enhanced weaponised bread
+/obj/item/food/croissant/throwing
+	throwforce = 20
+	tastes = list("fluffy bread" = 1, "butter" = 2, "metal" = 1)
+	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 2, /datum/reagent/iron = 1)
+
+/obj/item/food/croissant/throwing/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/boomerang, throw_range, TRUE)

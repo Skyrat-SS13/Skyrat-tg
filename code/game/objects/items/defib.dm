@@ -217,7 +217,7 @@
 		remove_paddles(user)
 
 	update_power()
-	update_action_buttons()
+	update_item_action_buttons()
 
 
 /obj/item/defibrillator/equipped(mob/user, slot)
@@ -655,7 +655,7 @@
 					H.set_heartattack(FALSE)
 					if(defib_result == DEFIB_POSSIBLE)
 						H.grab_ghost()
-					H.revive(full_heal = FALSE, admin_revive = FALSE)
+					H.revive()
 					H.emote("gasp")
 					H.set_jitter_if_lower(200 SECONDS)
 					to_chat(H, "<span class='userdanger'>[CONFIG_GET(string/blackoutpolicy)]</span>") //SKYRAT EDIT ADDITION

@@ -16,7 +16,7 @@
 	held_w_class = WEIGHT_CLASS_TINY
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	gold_core_spawnable = FRIENDLY_SPAWN
-	faction = list(FACTION_RAT)
+	faction = list(FACTION_RAT, FACTION_MAINT_CREATURES)
 	butcher_results = list(/obj/item/food/meat/slab/mouse = 1)
 
 	speak_emote = list("squeaks")
@@ -80,12 +80,13 @@
 	adjust_health(-maxHealth)
 
 // On revival, re-add the mouse to the ratcap, or block it if we're at it
-/mob/living/basic/mouse/revive(full_heal = FALSE, admin_revive = FALSE)
+/mob/living/basic/mouse/revive(full_heal_flags = NONE, excess_healing = 0, force_grab_ghost = FALSE)
 	if(!contributes_to_ratcap)
 		return ..()
 
+	var/aheal_included = full_heal_flags & HEAL_ADMIN
 	var/cap = CONFIG_GET(number/ratcap)
-	if(!admin_revive && !ckey && length(SSmobs.cheeserats) >= cap)
+	if(!aheal_included && !ckey && length(SSmobs.cheeserats) >= cap)
 		visible_message(span_warning("[src] twitches, but does not continue moving \
 			due to the overwhelming rodent population on the station!"))
 		return
@@ -177,7 +178,7 @@
 /mob/living/basic/mouse/proc/evolve_into_regal_rat()
 	var/mob/living/simple_animal/hostile/regalrat/controlled/regalrat = new(loc)
 	mind?.transfer_to(regalrat)
-	INVOKE_ASYNC(regalrat, /atom/movable/proc/say, "RISE, MY SUBJECTS! SCREEEEEEE!")
+	INVOKE_ASYNC(regalrat, TYPE_PROC_REF(/atom/movable, say), "RISE, MY SUBJECTS! SCREEEEEEE!")
 	qdel(src)
 
 /// Creates a new mouse based on this mouse's subtype.
@@ -344,7 +345,8 @@
 /// AI controller for rats, slightly more complex than mice becuase they attack people
 /datum/ai_controller/basic_controller/mouse/rat
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/rat(),
+		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic(),
+		BB_PET_TARGETTING_DATUM = new /datum/targetting_datum/not_friends(),
 		BB_BASIC_MOB_CURRENT_TARGET = null, // heathen
 		BB_CURRENT_HUNTING_TARGET = null, // cheese
 		BB_LOW_PRIORITY_HUNTING_TARGET = null, // cable
@@ -354,7 +356,9 @@
 	ai_movement = /datum/ai_movement/basic_avoidance
 	idle_behavior = /datum/idle_behavior/idle_random_walk
 	planning_subtrees = list(
+		/datum/ai_planning_subtree/pet_planning,
 		/datum/ai_planning_subtree/simple_find_target,
+		/datum/ai_planning_subtree/attack_obstacle_in_path/rat,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree/rat,
 		/datum/ai_planning_subtree/find_and_hunt_target/look_for_cheese,
 		/datum/ai_planning_subtree/random_speech/mouse,
@@ -367,5 +371,8 @@
 /datum/ai_behavior/basic_melee_attack/rat
 	action_cooldown = 2 SECONDS
 
-/datum/targetting_datum/basic/rat
-	check_factions_exactly = TRUE
+/datum/ai_planning_subtree/attack_obstacle_in_path/rat
+	attack_behaviour = /datum/ai_behavior/attack_obstructions/rat
+
+/datum/ai_behavior/attack_obstructions/rat
+	action_cooldown = 2 SECONDS

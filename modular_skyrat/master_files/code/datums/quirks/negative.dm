@@ -43,7 +43,7 @@
 // If brainproblems is added to a synth, this detours to the brainproblems/synth quirk.
 // TODO: Add more brain-specific detours when PR #16105 is merged
 /datum/quirk/item_quirk/brainproblems/add_to_holder(mob/living/new_holder, quirk_transfer)
-	if(!(isrobotic(new_holder) && (src.type == /datum/quirk/item_quirk/brainproblems)))
+	if(!(issynthetic(new_holder) && (src.type == /datum/quirk/item_quirk/brainproblems)))
 		// Defer to TG brainproblems if the character isn't robotic.
 		return ..()
 	// TODO: Check brain type and detour to appropriate brainproblems quirk
@@ -77,7 +77,7 @@
 
 // If blooddeficiency is added to a synth, this detours to the blooddeficiency/synth quirk.
 /datum/quirk/blooddeficiency/add_to_holder(mob/living/new_holder, quirk_transfer)
-	if(!(isrobotic(new_holder) && (src.type == /datum/quirk/blooddeficiency)))
+	if(!(issynthetic(new_holder) && (src.type == /datum/quirk/blooddeficiency)))
 		// Defer to TG blooddeficiency if the character isn't robotic.
 		return ..()
 	var/datum/quirk/blooddeficiency/synth/bd_synth = new

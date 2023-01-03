@@ -2,7 +2,7 @@
 	skyrat_products = list(
 		/obj/item/radio/headset/headset_med = 3,
 		/obj/item/clothing/gloves/color/latex/nitrile = 2,
-		/obj/item/clothing/suit/toggle/labcoat/hospitalgown = 5,
+		/obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown = 5,
 		/obj/item/storage/belt/medbandolier = 2,
 		/obj/item/clothing/under/rank/engineering/engineer/skyrat/hazard_chem/emt = 2,
 		/obj/item/clothing/under/rank/medical/scrubs/skyrat/red = 4,
@@ -123,7 +123,7 @@
 		/obj/item/clothing/suit/toggle/deckard = 2,
 		/obj/item/clothing/suit/armor/vest/det_suit/runner = 2,
 		/obj/item/clothing/under/rank/security/detective/runner = 2,
-		/obj/item/clothing/suit/toggle/labcoat/highvis = 2,
+		/obj/item/clothing/suit/toggle/labcoat/skyrat/highvis = 2,
 		/obj/item/clothing/under/rank/security/detective/cowboy = 2,
 		/obj/item/clothing/suit/jacket/det_suit/cowboyvest = 2,
 	)
@@ -217,7 +217,7 @@
 	skyrat_products = list(
 		/obj/item/radio/headset/headset_med = 0,
 		/obj/item/clothing/gloves/color/latex/nitrile = 2,
-		/obj/item/clothing/suit/toggle/labcoat/hospitalgown = 5,
+		/obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown = 5,
 		/obj/item/storage/belt/medbandolier = 2,
 		/obj/item/clothing/under/rank/engineering/engineer/skyrat/hazard_chem/emt = 2,
 		/obj/item/clothing/under/rank/medical/scrubs/skyrat/red = 4,

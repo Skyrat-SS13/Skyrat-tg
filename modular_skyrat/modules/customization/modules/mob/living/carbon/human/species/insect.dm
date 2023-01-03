@@ -1,7 +1,6 @@
 /datum/species/insect
 	name = "Anthromorphic Insect"
 	id = SPECIES_INSECT
-	say_mod = "chitters"
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
@@ -30,6 +29,7 @@
 		"wings" = "Bee",
 		"moth_antennae" = "None"
 	)
+	mutanttongue = /obj/item/organ/internal/tongue/insect
 	liked_food = GROSS | RAW | TOXIC | GORE
 	disliked_food = CLOTH | GRAIN | FRIED
 	toxic_food = DAIRY

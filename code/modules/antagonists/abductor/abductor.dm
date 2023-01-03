@@ -116,6 +116,7 @@
 	. = ..()
 
 /datum/antagonist/abductor/admin_add(datum/mind/new_owner,mob/admin)
+	SSmapping.lazy_load_template(LAZY_TEMPLATE_KEY_ABDUCTOR_SHIPS)
 	var/list/current_teams = list()
 	for(var/datum/team/abductor_team/T in GLOB.antagonist_teams)
 		current_teams[T.name] = T
@@ -157,7 +158,7 @@
 	..()
 	team_number = team_count++
 	name = "Mothership [pick(GLOB.greek_letters)]" //TODO Ensure unique and actual alieny names
-	add_objective(new /datum/objective/experiment)
+	//add_objective(new /datum/objective/experiment) //SKYRAT EDIT REMOVAL
 
 /datum/team/abductor_team/roundend_report()
 	var/list/result = list()

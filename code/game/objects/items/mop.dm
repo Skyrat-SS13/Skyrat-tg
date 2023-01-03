@@ -30,7 +30,6 @@
 	AddComponent(/datum/component/cleaner, mopspeed, pre_clean_callback=CALLBACK(src, PROC_REF(should_clean)), on_cleaned_callback=CALLBACK(src, PROC_REF(apply_reagents)))
 	create_reagents(max_reagent_volume)
 	GLOB.janitor_devices += src
-	AddComponent(/datum/component/liquids_interaction, TYPE_PROC_REF(/obj/item/mop, attack_on_liquids_turf)) //SKYRAT EDIT ADDITION - Liquids
 
 /obj/item/mop/Destroy(force)
 	GLOB.janitor_devices -= src
