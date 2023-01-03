@@ -5747,29 +5747,14 @@
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/crew_quarters/bar)
 "bMe" = (
-/obj/structure/table,
-/obj/item/storage/box/monkeycubes{
-	pixel_x = 6;
-	pixel_y = 9
-	},
-/obj/item/storage/box/monkeycubes{
-	pixel_x = 4
-	},
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 10
-	},
-/obj/item/storage/pill_bottle/mutadone{
-	pixel_x = -8;
-	pixel_y = 9
-	},
-/obj/item/reagent_containers/spray/cleaner{
-	pixel_x = -10;
-	pixel_y = -1
 	},
 /obj/machinery/firealarm/directional/south,
 /obj/machinery/light_switch/directional/south{
 	pixel_x = 9
 	},
+/obj/machinery/dna_infuser,
 /turf/open/floor/iron/white,
 /area/station/science/genetics)
 "bMg" = (
@@ -15274,6 +15259,15 @@
 	},
 /obj/structure/sign/warning/no_smoking/directional/east,
 /obj/machinery/light/warm/directional/east,
+/obj/item/computer_disk/ordnance{
+	pixel_y = 5
+	},
+/obj/item/computer_disk/ordnance{
+	pixel_x = 5
+	},
+/obj/item/computer_disk/ordnance{
+	pixel_x = -5
+	},
 /turf/open/floor/iron/smooth_edge{
 	dir = 8
 	},
@@ -19704,26 +19698,26 @@
 "fHq" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
-/obj/item/folder/white{
-	pixel_x = -4;
-	pixel_y = 4
-	},
-/obj/item/pen{
-	pixel_x = -4;
-	pixel_y = 4
-	},
 /obj/structure/desk_bell{
 	pixel_x = 7;
 	pixel_y = 9
-	},
-/obj/machinery/door/window/left/directional/west{
-	name = "Genetics Desk";
-	req_access = list("genetics")
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	dir = 4;
 	id = "genetics_shutters";
 	name = "Genetics Shutters"
+	},
+/obj/machinery/door/window/left/directional/west{
+	name = "Genetics Desk";
+	req_access = list("genetics")
+	},
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/obj/item/pen{
+	pixel_x = -4;
+	pixel_y = 4
 	},
 /turf/open/floor/iron/white/smooth_large,
 /area/station/science/genetics)
@@ -29431,21 +29425,24 @@
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 6
 	},
-/obj/item/paper_bin{
-	pixel_x = 5;
-	pixel_y = 4
-	},
-/obj/item/pen{
-	pixel_x = 5;
-	pixel_y = 4
-	},
-/obj/item/radio/headset/headset_medsci{
-	pixel_x = -5;
-	pixel_y = 3
-	},
 /obj/machinery/button/door/directional/south{
 	id = "genetics_shutters";
 	name = "Genetics Shutters"
+	},
+/obj/item/storage/box/monkeycubes{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/storage/box/monkeycubes{
+	pixel_x = 4
+	},
+/obj/item/storage/pill_bottle/mutadone{
+	pixel_x = -8;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = -10;
+	pixel_y = -1
 	},
 /turf/open/floor/iron/white,
 /area/station/science/genetics)
@@ -31401,7 +31398,6 @@
 	pixel_x = 4;
 	pixel_y = -2
 	},
-/obj/machinery/light/warm/directional/north,
 /obj/structure/table{
 	name = "Jim Norton's Quebecois Coffee table"
 	},
