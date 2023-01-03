@@ -728,15 +728,15 @@
 /datum/supply_pack/goody/standard_nif
 	name = "Standard Type NIF"
 	desc = "Contains a single standard NIF by itself, surgery is required."
-	cost = CARGO_CRATE_VALUE * 15
+	cost = CARGO_CRATE_VALUE * 7.5 //THIS IS TEMPORARY CHANGE THIS BACK BEFORE THE FULL MERGE
 	contains = list(
 		/obj/item/organ/internal/cyberimp/brain/nif/standard,
 	)
 
 /datum/supply_pack/goody/cheap_nif
-	name = "Econo-Deck Type NIF"//Placeholder name
+	name = "Econo-Deck Type NIF"
 	desc = "Contains a single Econo-Deck NIF by itself, surgery is required."
-	cost = CARGO_CRATE_VALUE * 7.5
+	cost = CARGO_CRATE_VALUE * 3.75 //THIS IS TEMPORARY CHANGE THIS BACK BEFORE THE FULL MERGE
 	contains = list(
 		/obj/item/organ/internal/cyberimp/brain/nif/roleplay_model,
 	)
