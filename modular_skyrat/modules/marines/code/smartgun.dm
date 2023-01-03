@@ -20,7 +20,7 @@
 	spread = 18
 	mag_type = /obj/item/ammo_box/magazine/smartgun_drum
 	can_suppress = FALSE
-	fire_delay = 0.1
+	fire_delay = 0.15
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	tac_reloads = FALSE
