@@ -65,6 +65,7 @@
 	name = "9x25mm Mk.12 IHDF casing"
 	desc = "A modern 9x25mm Mk.12 bullet casing. 'Intelligent High-Impact Dispersal Foam', or in layman's terms, a really strong donk soft riot dart."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
+	icon_state = "si-casing"
 	projectile_type = /obj/projectile/bullet/c9mm/ihdf
 	harmful = FALSE
 
@@ -245,8 +246,8 @@
 
 /obj/item/shrapnel/bullet/smartgun
 	name = "smartgun shredder"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/projectiles.dmi'
-	icon_state = "smartgun_embed"
+	icon = 'icons/obj/weapons/guns/projectiles.dmi'
+	icon_state = "gaussphase"
 	embedding = null
 
 /*
