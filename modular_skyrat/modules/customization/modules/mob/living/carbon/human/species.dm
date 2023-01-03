@@ -27,6 +27,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/list/custom_worn_icons = list()
 	///Is this species restricted from changing their body_size in character creation?
 	var/body_size_restricted = FALSE
+	///If it exists, what's the name of the ass image we use when printing said ass on a photocopier?
+	var/ass_image = "human"
 
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/owner, forced_colour, force_update = FALSE)
 	var/list/standing = list()
