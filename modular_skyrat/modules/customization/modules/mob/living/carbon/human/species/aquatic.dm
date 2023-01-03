@@ -32,6 +32,7 @@
 	disliked_food = CLOTH | GROSS
 	toxic_food = TOXIC
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
+	ass_image = "kidan"
 	examine_limb_id = SPECIES_AKULA
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/akula,
