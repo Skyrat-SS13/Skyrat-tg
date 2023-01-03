@@ -48,7 +48,7 @@ SUBSYSTEM_DEF(persistence)
 	save_photo_persistence() //THIS IS PERSISTENCE, NOT THE LOGGING PORTION.
 	save_randomized_recipes()
 	save_scars()
-	save_nifs() // SKYRAT EDIT ADDITION - NIFs
+	save_modular_persistence() // SKYRAT EDIT ADDITION - MODULAR_PERSISTENCE
 	save_custom_outfits()
 	save_delamination_counter()
 	save_panic_bunker() //SKYRAT EDIT ADDITION - PANICBUNKER
