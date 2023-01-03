@@ -142,6 +142,6 @@
 
 /obj/projectile/bullet/smart/a10x28 // utter peashooter, but it has 6000rpm
 	name = "10x28mm bullet"
-	damage = 7
+	damage = 6
 	wound_bonus = -5
 	wound_falloff_tile = 1
