@@ -20,6 +20,7 @@
 	mutant_bodyparts = list()
 	hair_color = "mutcolor"
 	hair_alpha = 160 //a notch brighter so it blends better.
+	ass_image = "slime"
 
 /datum/species/jelly/get_species_description()
 	return placeholder_description
