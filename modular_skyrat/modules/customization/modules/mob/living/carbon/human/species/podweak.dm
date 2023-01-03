@@ -6,6 +6,7 @@
 		TRAIT_LITERATE,
 	)
 	payday_modifier = 0.75
+	ass_image = "diona"
 
 /datum/species/pod/podweak
 	name = "Podperson"
