@@ -81,3 +81,18 @@ GLOBAL_LIST_INIT(modular_persistence_ignored_vars, list(
 			returned_list[var_name] = var_entry
 
 	return returned_list
+
+/// This is an individual verison of the save_modular_persistence proc, only saving the persistence for the owner.
+/mob/living/carbon/human/proc/save_individual_persistence()
+	if(!mind?.original_character_slot_index || !client?.prefs)
+		return FALSE
+
+	var/json_file = file("data/player_saves/[client.ckey[1]]/[client.ckey]/modular_persistence.json")
+	var/list/json = fexists(json_file) ? json_decode(file2text(json_file)) : list()
+	fdel(json_file)
+
+	if(!islist(json))
+		json = list()
+
+	json["[mind.original_character_slot_index]"] = client.prefs.modular_persistence.serialize_contents_to_list()
+	WRITE_FILE(json_file, json_encode(json))
