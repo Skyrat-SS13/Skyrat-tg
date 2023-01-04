@@ -9,11 +9,12 @@
 	inv_box.screen_loc = ui_passport
 	inv_box.slot_id = ITEM_SLOT_PASSPORT
 	inv_box.hud = src
-	static_inventory += inv_box
+	toggleable_inventory += inv_box
 
 	return ..()
 
 // Does this UI element have contents? Update that icon! Includes a couple checks to save cycles.
+// For slots that CAN be hidden via the backpack button, or similar.
 /datum/hud/human/hidden_inventory_update(mob/viewer)
 	if(!mymob)
 		return
@@ -39,6 +40,8 @@
 		// screenmob.client.screen -= human.ring
 
 // Does this UI element have contents? Update that icon! Includes a couple checks to save cycles.
+// For slots that CAN'T be hidden via the backpack button, or similar.
+/* Uncomment if ever used.
 /datum/hud/human/persistent_inventory_update(mob/viewer)
 	if(!mymob)
 		return
@@ -51,9 +54,8 @@
 		return
 
 	if(screenmob.hud_used.inventory_shown)
-		human.passport.screen_loc = ui_passport
-		screenmob.client.screen += human.passport
 		// Same here as hidden_inventory_update.
 	else
 		screenmob.client.screen -= human.passport
 		// Same here as hidden_inventory_update.
+*/
