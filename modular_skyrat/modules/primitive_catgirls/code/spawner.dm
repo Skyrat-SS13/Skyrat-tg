@@ -17,7 +17,15 @@
 	var/datum/team/primitive_catgirls/team
 	restricted_species = list(/datum/species/human/felinid/primitive)
 	random_appearance = FALSE
-	uses = 14
+	uses = 9
+
+/obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/Initialize(mapload)
+	. = ..()
+	team = new /datum/team/primitive_catgirls()
+
+/obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/Destroy()
+	team = null
+	return ..()
 
 /obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/examine()
 	. = ..()
@@ -43,10 +51,6 @@
 
 	spawned_human.remove_language(/datum/language/common)
 	team.players_spawned += (spawned_human.key)
-
-/obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/Initialize(mapload)
-	. = ..()
-	team = new /datum/team/primitive_catgirls()
 
 /datum/job/primitive_catgirl
 	title = "Icemoon Dweller"
@@ -75,6 +79,10 @@
 		/datum/crafting_recipe/bonespear,
 		/datum/crafting_recipe/bonedagger,
 	)
+
+/datum/antagonist/primitive_catgirl/Destroy()
+	feline_team = null
+	return ..()
 
 /datum/antagonist/primitive_catgirl/create_team(datum/team/team)
 	if(team)

@@ -25,9 +25,6 @@
 
 /// If the right conditions are present (basically could this person be defibrilated), revives the target
 /obj/item/smelling_salts/proc/try_revive(mob/living/carbon/carbon_target, mob/user)
-	if(carbon_target.can_defib() != DEFIB_POSSIBLE)
-		return
-
 	carbon_target.notify_ghost_cloning("You are being brought back to life!")
 	carbon_target.grab_ghost()
 
@@ -68,5 +65,5 @@
 		carbon_target.grab_ghost()
 
 	carbon_target.revive()
-	to_chat(carbon_target, "<span class='userdanger'>[CONFIG_GET(string/blackoutpolicy)]</span>")
+	to_chat(carbon_target, span_userdanger("[CONFIG_GET(string/blackoutpolicy)]"))
 	log_combat(user, carbon_target, "revived", src)
