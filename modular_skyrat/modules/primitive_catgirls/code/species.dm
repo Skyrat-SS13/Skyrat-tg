@@ -10,7 +10,7 @@
 	)
 
 /datum/species/human/felinid/primitive
-	name = "Primitive Felinid"
+	name = "Primitive Demihuman"
 	id = SPECIES_FELINE_PRIMITIVE
 
 	mutantlungs = /obj/item/organ/internal/lungs/icebox_adapted
@@ -45,9 +45,11 @@
 	human_for_preview.update_body(TRUE)
 
 /datum/species/human/felinid/primitive/get_species_description()
-	return "Felinids are one of the many types of bespoke genetic \
-		modifications to come of humanity's mastery of genetic science, and are \
-		also one of the most common. Meow?"
+	return list(
+		"Though their true origin may be unknown, what is well known is that \
+			lavaland's icy moon is home to many types of seemingly primitive demihumans \
+			resembling 'genemodders' of the present day. Scientific surveys of the moon \
+			logged humanoids sporting features from many of the icemoon's local fauna. \
 
 /datum/species/human/felinid/primitive/get_species_lore()
 	return list(
@@ -62,9 +64,9 @@
 		If they get rediscovered at all, that is.",
 
 		"Why do I tell you all of this, you ask? Reports trickle in from many of our icemoon outposts that they've either \
-			sighted, or been harassed by a group of felinids that look like stuff straight out of the history books. Look \
-			at the logbooks and you'll see plenty of ships assumed missing or destroyed decades ago with a felinid crew \
-			on board. Doesn't take a mastermind to put two and two together.",
+			sighted, or been harassed by a group of modders that look like stuff straight out of the history books. Look \
+			at the logbooks and you'll see plenty of ships assumed missing or destroyed decades ago with a crew \
+			that had the tech to genemod on board. Doesn't take a mastermind to put two and two together.",
 
 		"- Nanotrasen commander who requested anonymity",
 	)
