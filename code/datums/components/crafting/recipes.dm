@@ -792,8 +792,14 @@
 
 /datum/crafting_recipe/paperframes
 	name = "Paper Frames"
+<<<<<<< HEAD
 	result = /obj/item/stack/sheet/paperframes/five
 	time = 10
+=======
+	result = /obj/item/stack/sheet/paperframes
+	result_amount = 5
+	time = 1 SECONDS
+>>>>>>> 3365e8987a2 (Fixes Black Carpet and Paper Frames crafting recipes only giving you 1 item in return. (#72434))
 	reqs = list(/obj/item/stack/sheet/mineral/wood = 5, /obj/item/paper = 20)
 	category = CAT_MISC
 
@@ -821,8 +827,14 @@
 /datum/crafting_recipe/blackcarpet
 	name = "Black Carpet"
 	reqs = list(/obj/item/stack/tile/carpet = 50, /obj/item/toy/crayon/black = 1)
+<<<<<<< HEAD
 	result = /obj/item/stack/tile/carpet/black/fifty
 	category = CAT_MISC
+=======
+	result = /obj/item/stack/tile/carpet/black
+	result_amount = 50
+	category = CAT_TILES
+>>>>>>> 3365e8987a2 (Fixes Black Carpet and Paper Frames crafting recipes only giving you 1 item in return. (#72434))
 
 /datum/crafting_recipe/curtain
 	name = "Curtains"
