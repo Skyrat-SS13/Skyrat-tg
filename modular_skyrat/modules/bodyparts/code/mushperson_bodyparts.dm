@@ -4,14 +4,14 @@
 /obj/item/bodypart/chest/mushroom
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
 
-/obj/item/bodypart/l_arm/mushroom
+/obj/item/bodypart/arm/left/mushroom
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
 
-/obj/item/bodypart/r_arm/mushroom
+/obj/item/bodypart/arm/right/mushroom
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
 
-/obj/item/bodypart/l_leg/mushroom
+/obj/item/bodypart/leg/left/mushroom
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
 
-/obj/item/bodypart/r_leg/mushroom
+/obj/item/bodypart/leg/right/mushroom
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC

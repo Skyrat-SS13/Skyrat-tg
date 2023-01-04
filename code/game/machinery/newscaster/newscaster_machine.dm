@@ -1,4 +1,4 @@
-#define ALERT_DELAY 50 SECONDS
+#define ALERT_DELAY (50 SECONDS)
 
 /obj/machinery/newscaster
 	name = "newscaster"
@@ -140,7 +140,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 			data["user"]["department"] = card.registered_account.account_job.paycheck_department
 		else
 			data["user"]["job"] = "No Job"
-			data["user"]["department"] = "No Department"
+			data["user"]["department"] = DEPARTMENT_UNASSIGNED
 	else if(issilicon(user))
 		var/mob/living/silicon/silicon_user = user
 		data["user"] = list()
@@ -488,7 +488,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 		return
 	user.balloon_alert_to_viewers("started welding...", "started repairing...")
 	audible_message(span_hear("You hear welding."))
-	if(!tool.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, .proc/needs_repair)))
+	if(!tool.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, PROC_REF(needs_repair))))
 		user.balloon_alert_to_viewers("stopped welding!", "interrupted the repair!")
 		return
 	user.balloon_alert_to_viewers("repaired [src]")
@@ -623,7 +623,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 			playsound(loc, 'sound/machines/twobeep_high.ogg', 75, TRUE)
 		alert = TRUE
 		update_appearance()
-		addtimer(CALLBACK(src, .proc/remove_alert), ALERT_DELAY, TIMER_UNIQUE|TIMER_OVERRIDE)
+		addtimer(CALLBACK(src, PROC_REF(remove_alert)), ALERT_DELAY, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 	else if(!channel && update_alert)
 		say("Attention! Wanted issue distributed!")

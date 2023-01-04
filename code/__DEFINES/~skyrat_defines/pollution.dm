@@ -24,7 +24,7 @@
 #define POLLUTANT_SMELL_NORMAL 20
 #define POLLUTANT_SMELL_STRONG 40
 
-#define SMELL_COOLDOWN 1 MINUTES
+#define SMELL_COOLDOWN (1 MINUTES)
 
 //Bitflags for pollutants
 #define POLLUTANT_APPEARANCE (1<<0) //Pollutant has an appearance

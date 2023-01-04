@@ -16,9 +16,10 @@
 
 /// Create the designs for the radial menu
 /obj/item/spanking_pad/proc/populate_spankpad_designs()
-    spankpad_designs = list(
-		"pink" = image (icon = src.icon, icon_state = "spankpad_pink"),
-		"teal" = image(icon = src.icon, icon_state = "spankpad_teal"))
+	spankpad_designs = list(
+		"pink" = image(icon = src.icon, icon_state = "spankpad_pink"),
+		"teal" = image(icon = src.icon, icon_state = "spankpad_teal"),
+	)
 
 /// A check to ensure the user can use the radial menu
 /obj/item/spanking_pad/proc/check_menu(mob/living/user)
@@ -47,7 +48,7 @@
 	. = ..()
 	if(.)
 		return
-	var/choice = show_radial_menu(user, src, spankpad_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
+	var/choice = show_radial_menu(user, src, spankpad_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 	if(!choice)
 		return FALSE
 	current_color = choice

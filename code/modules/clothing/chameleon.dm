@@ -2,11 +2,11 @@
 
 /datum/action/item_action/chameleon/drone/randomise
 	name = "Randomise Headgear"
-	icon_icon = 'icons/mob/actions/actions_items.dmi'
+	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "random"
 
 /datum/action/item_action/chameleon/drone/randomise/Trigger(trigger_flags)
-	if(!IsAvailable())
+	if(!IsAvailable(feedback = TRUE))
 		return
 
 	// Damn our lack of abstract interfeces
@@ -22,7 +22,7 @@
 
 /datum/action/item_action/chameleon/drone/togglehatmask
 	name = "Toggle Headgear Mode"
-	icon_icon = 'icons/mob/actions/actions_silicon.dmi'
+	button_icon = 'icons/mob/actions/actions_silicon.dmi'
 
 /datum/action/item_action/chameleon/drone/togglehatmask/New()
 	..()
@@ -33,7 +33,7 @@
 		button_icon_state = "drone_camogear_mask"
 
 /datum/action/item_action/chameleon/drone/togglehatmask/Trigger(trigger_flags)
-	if(!IsAvailable())
+	if(!IsAvailable(feedback = TRUE))
 		return
 
 	// No point making the code more complicated if no non-drone
@@ -84,19 +84,19 @@
 		for(var/path in subtypesof(/datum/outfit/job))
 			var/datum/outfit/O = path
 			standard_outfit_options[initial(O.name)] = path
-		sortTim(standard_outfit_options, /proc/cmp_text_asc)
+		sortTim(standard_outfit_options, GLOBAL_PROC_REF(cmp_text_asc))
 	outfit_options = standard_outfit_options
 
 /datum/action/chameleon_outfit/Trigger(trigger_flags)
 	return select_outfit(owner)
 
 /datum/action/chameleon_outfit/proc/select_outfit(mob/user)
-	if(!user || !IsAvailable())
+	if(!user || !IsAvailable(feedback = TRUE))
 		return FALSE
 	var/selected = tgui_input_list(user, "Select outfit to change into", "Chameleon Outfit", outfit_options)
 	if(isnull(selected))
 		return FALSE
-	if(!IsAvailable() || QDELETED(src) || QDELETED(user))
+	if(!IsAvailable(feedback = TRUE) || QDELETED(src) || QDELETED(user))
 		return FALSE
 	if(isnull(outfit_options[selected]))
 		return FALSE
@@ -165,7 +165,7 @@
 
 /datum/action/item_action/chameleon/change/proc/initialize_disguises()
 	name = "Change [chameleon_name] Appearance"
-	UpdateButtons()
+	build_all_button_icons()
 
 	chameleon_blacklist |= typecacheof(target.type)
 	for(var/V in typesof(chameleon_type))
@@ -179,7 +179,7 @@
 
 /datum/action/item_action/chameleon/change/proc/select_look(mob/user)
 	var/obj/item/picked_item
-	var/picked_name = tgui_input_list(user, "Select [chameleon_name] to change into", "Chameleon Settings", sort_list(chameleon_list, /proc/cmp_typepaths_asc))
+	var/picked_name = tgui_input_list(user, "Select [chameleon_name] to change into", "Chameleon Settings", sort_list(chameleon_list, GLOBAL_PROC_REF(cmp_typepaths_asc)))
 	if(isnull(picked_name))
 		return
 	if(isnull(chameleon_list[picked_name]))
@@ -213,7 +213,7 @@
 		update_item(picked_item)
 		var/obj/item/thing = target
 		thing.update_slot_icon()
-	UpdateButtons()
+	build_all_button_icons()
 
 /datum/action/item_action/chameleon/change/proc/update_item(obj/item/picked_item)
 	var/atom/atom_target = target
@@ -244,7 +244,7 @@
 		atom_target.icon = initial(picked_item.icon)
 
 /datum/action/item_action/chameleon/change/Trigger(trigger_flags)
-	if(!IsAvailable())
+	if(!IsAvailable(feedback = TRUE))
 		return
 
 	select_look(owner)
@@ -330,7 +330,7 @@
 
 /datum/action/item_action/chameleon/change/id_trim/initialize_disguises()
 	name = "Change [chameleon_name] Appearance"
-	UpdateButtons()
+	build_all_button_icons()
 
 	chameleon_blacklist |= typecacheof(target.type)
 	for(var/trim_path in typesof(chameleon_type))
@@ -355,13 +355,13 @@
 
 /datum/action/item_action/chameleon/change/tablet/update_item(obj/item/picked_item)
 	..()
-	var/obj/item/modular_computer/tablet/pda/agent_pda = target
+	var/obj/item/modular_computer/pda/agent_pda = target
 	if(istype(agent_pda))
 		agent_pda.update_appearance()
 
 /datum/action/item_action/chameleon/change/tablet/apply_job_data(datum/job/job_datum)
 	..()
-	var/obj/item/modular_computer/tablet/pda/agent_pda = target
+	var/obj/item/modular_computer/pda/agent_pda = target
 	if(istype(agent_pda) && istype(job_datum))
 		agent_pda.saved_job = job_datum.title
 
@@ -423,6 +423,7 @@
 
 /obj/item/clothing/suit/chameleon/Initialize(mapload)
 	. = ..()
+	allowed = GLOB.security_vest_allowed //should at least act like a vest
 	chameleon_action = new(src)
 	chameleon_action.chameleon_type = /obj/item/clothing/suit
 	chameleon_action.chameleon_name = "Suit"
@@ -544,9 +545,9 @@
 	ADD_TRAIT(src, TRAIT_NODROP, ABSTRACT_ITEM_TRAIT)
 	chameleon_action.random_look()
 	var/datum/action/item_action/chameleon/drone/togglehatmask/togglehatmask_action = new(src)
-	togglehatmask_action.UpdateButtons()
+	togglehatmask_action.build_all_button_icons()
 	var/datum/action/item_action/chameleon/drone/randomise/randomise_action = new(src)
-	randomise_action.UpdateButtons()
+	randomise_action.build_all_button_icons()
 
 /obj/item/clothing/mask/chameleon
 	name = "gas mask"
@@ -601,9 +602,9 @@
 	ADD_TRAIT(src, TRAIT_NODROP, ABSTRACT_ITEM_TRAIT)
 	chameleon_action.random_look()
 	var/datum/action/item_action/chameleon/drone/togglehatmask/togglehatmask_action = new(src)
-	togglehatmask_action.UpdateButtons()
+	togglehatmask_action.build_all_button_icons()
 	var/datum/action/item_action/chameleon/drone/randomise/randomise_action = new(src)
-	randomise_action.UpdateButtons()
+	randomise_action.build_all_button_icons()
 
 /obj/item/clothing/mask/chameleon/drone/attack_self(mob/user)
 	to_chat(user, span_notice("[src] does not have a voice changer."))
@@ -729,26 +730,26 @@
 	. = ..()
 	chameleon_action.emp_randomise(INFINITY)
 
-/obj/item/modular_computer/tablet/pda/chameleon
+/obj/item/modular_computer/pda/chameleon
 	name = "tablet"
 	var/datum/action/item_action/chameleon/change/tablet/chameleon_action
 
-/obj/item/modular_computer/tablet/pda/chameleon/Initialize(mapload)
+/obj/item/modular_computer/pda/chameleon/Initialize(mapload)
 	. = ..()
 	chameleon_action = new(src)
-	chameleon_action.chameleon_type = /obj/item/modular_computer/tablet/pda
+	chameleon_action.chameleon_type = /obj/item/modular_computer/pda
 	chameleon_action.chameleon_name = "tablet"
-	chameleon_action.chameleon_blacklist = typecacheof(list(/obj/item/modular_computer/tablet/pda/heads), only_root_path = TRUE)
+	chameleon_action.chameleon_blacklist = typecacheof(list(/obj/item/modular_computer/pda/heads), only_root_path = TRUE)
 	chameleon_action.initialize_disguises()
 	add_item_action(chameleon_action)
 
-/obj/item/modular_computer/tablet/pda/chameleon/emp_act(severity)
+/obj/item/modular_computer/pda/chameleon/emp_act(severity)
 	. = ..()
 	if(. & EMP_PROTECT_SELF)
 		return
 	chameleon_action.emp_randomise()
 
-/obj/item/modular_computer/tablet/pda/chameleon/broken/Initialize(mapload)
+/obj/item/modular_computer/pda/chameleon/broken/Initialize(mapload)
 	. = ..()
 	chameleon_action.emp_randomise(INFINITY)
 

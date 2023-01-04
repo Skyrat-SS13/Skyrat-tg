@@ -33,7 +33,7 @@
 	slot = AUGMENT_SLOT_HEAD
 
 /datum/augment_item/limb/head/cyborg
-	name = "Cyborg"
+	name = "Cyborg head"
 	path = /obj/item/bodypart/head/robot/weak
 
 //CHESTS
@@ -41,7 +41,7 @@
 	slot = AUGMENT_SLOT_CHEST
 
 /datum/augment_item/limb/chest/cyborg
-	name = "Cyborg"
+	name = "Cyborg chest"
 	path = /obj/item/bodypart/chest/robot/weak
 
 //LEFT ARMS
@@ -49,49 +49,49 @@
 	slot = AUGMENT_SLOT_L_ARM
 
 /datum/augment_item/limb/l_arm/prosthetic
-	name = "Prosthetic"
-	path = /obj/item/bodypart/l_arm/robot/surplus
+	name = "Prosthetic left arm"
+	path = /obj/item/bodypart/arm/left/robot/surplus
 	cost = -1
 
 /datum/augment_item/limb/l_arm/cyborg
-	name = "Cyborg"
-	path = /obj/item/bodypart/l_arm/robot/weak
+	name = "Cyborg left arm"
+	path = /obj/item/bodypart/arm/left/robot/weak
 
 //RIGHT ARMS
 /datum/augment_item/limb/r_arm
 	slot = AUGMENT_SLOT_R_ARM
 
 /datum/augment_item/limb/r_arm/prosthetic
-	name = "Prosthetic"
-	path = /obj/item/bodypart/r_arm/robot/surplus
+	name = "Prosthetic right arm"
+	path = /obj/item/bodypart/arm/right/robot/surplus
 	cost = -1
 
 /datum/augment_item/limb/r_arm/cyborg
-	name = "Cyborg"
-	path = /obj/item/bodypart/r_arm/robot/weak
+	name = "Cyborg right arm"
+	path = /obj/item/bodypart/arm/right/robot/weak
 
 //LEFT LEGS
 /datum/augment_item/limb/l_leg
 	slot = AUGMENT_SLOT_L_LEG
 
 /datum/augment_item/limb/l_leg/prosthetic
-	name = "Prosthetic"
-	path = /obj/item/bodypart/l_leg/robot/surplus
+	name = "Prosthetic left leg"
+	path = /obj/item/bodypart/leg/left/robot/surplus
 	cost = -1
 
 /datum/augment_item/limb/l_leg/cyborg
-	name = "Cyborg"
-	path = /obj/item/bodypart/l_leg/robot/weak
+	name = "Cyborg left leg"
+	path = /obj/item/bodypart/leg/left/robot/weak
 
 //RIGHT LEGS
 /datum/augment_item/limb/r_leg
 	slot = AUGMENT_SLOT_R_LEG
 
 /datum/augment_item/limb/r_leg/prosthetic
-	name = "Prosthetic"
-	path = /obj/item/bodypart/r_leg/robot/surplus
+	name = "Prosthetic right leg"
+	path = /obj/item/bodypart/leg/right/robot/surplus
 	cost = -1
 
 /datum/augment_item/limb/r_leg/cyborg
-	name = "Cyborg"
-	path = /obj/item/bodypart/r_leg/robot/weak
+	name = "Cyborg right leg"
+	path = /obj/item/bodypart/leg/right/robot/weak

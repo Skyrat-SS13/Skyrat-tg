@@ -8,8 +8,9 @@
 	gain_text = "Some of the monkeys we gave the worms seemed far more... willing than others to be a host. I could've sworn one let them climb up their arm."
 	tier = 1
 	unlocked_evolutions = list(/datum/borer_evolution/symbiote/chem_per_level)
+	evo_cost = 1
 
-/datum/borer_evolution/symbiote/willing_host/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/symbiote/willing_host/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	var/datum/action/cooldown/borer/willing_host/attack_action = new()
 	attack_action.Grant(cortical_owner)
@@ -22,7 +23,7 @@
 	tier = 2
 	unlocked_evolutions = list(/datum/borer_evolution/symbiote/expanded_chemicals)
 
-/datum/borer_evolution/symbiote/chem_per_level/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/symbiote/chem_per_level/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	cortical_owner.chem_storage_per_level += 10
 	cortical_owner.chem_regen_per_level += 0.5
@@ -48,7 +49,7 @@
 		/datum/reagent/medicine/omnizine,
 	)
 
-/datum/borer_evolution/symbiote/expanded_chemicals/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/symbiote/expanded_chemicals/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	cortical_owner.potential_chemicals |= added_chemicals
 
@@ -75,7 +76,7 @@
 		/datum/borer_evolution/symbiote/revive_host,
 	)
 
-/datum/borer_evolution/symbiote/harm_decrease/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/symbiote/harm_decrease/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	cortical_owner.host_harm_multiplier -= 0.25
 
@@ -104,7 +105,7 @@
 		/datum/borer_evolution/synthetic_chems_positive,
 	)
 
-/datum/borer_evolution/symbiote/revive_host/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/symbiote/revive_host/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	var/datum/action/cooldown/borer/revive_host/attack_action = new()
 	attack_action.Grant(cortical_owner)

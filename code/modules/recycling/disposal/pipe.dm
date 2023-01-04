@@ -16,10 +16,6 @@
 	var/initialize_dirs = NONE // bitflags of pipe directions added on init, see \code\_DEFINES\pipe_construction.dm
 	var/flip_type // If set, the pipe is flippable and becomes this type when flipped
 	var/obj/structure/disposalconstruct/stored
-	//SKYRAT EDIT: HURTSPOSALS
-	/// Whether a disposal pipe will hurt if a person changes direction. `FALSE` for hurting, `TRUE` to prevent making them hurt.
-	var/padded_corners = FALSE
-	//SKYRAT EDIT: HURTSPOSALS
 
 
 /obj/structure/disposalpipe/Initialize(mapload, obj/structure/disposalconstruct/make_from)
@@ -50,15 +46,24 @@
 		var/turf/turf_loc = loc
 		turf_loc.add_blueprints_preround(src)
 
-// pipe is deleted
-// ensure if holder is present, it is expelled
 /obj/structure/disposalpipe/Destroy()
-	var/obj/structure/disposalholder/H = locate() in src
-	if(H)
-		H.active = FALSE
-		expel(H, get_turf(src), 0)
-	stored = null //The qdel is handled in expel()
+	qdel(stored)
 	return ..()
+
+/**
+ * Expells the pipe's contents.
+ *
+ * This proc checks through src's contents for holder objects,
+ * and then tells each one to empty onto the tile. Called when
+ * the pipe is deconstructed or someone struggles out.
+ */
+/obj/structure/disposalpipe/proc/spew_forth()
+	for(var/obj/structure/disposalholder/holdplease in src)
+		if(!istype(holdplease))
+			continue
+		holdplease.active = FALSE
+		expel(holdplease, get_turf(src), 0)
+	stored = null //The qdel is handled in expel()
 
 /obj/structure/disposalpipe/handle_atom_del(atom/A)
 	if(A == stored && !QDELETED(src))
@@ -85,20 +90,10 @@
 	// find other holder in next loc, if inactive merge it with current
 	var/obj/structure/disposalholder/H2 = locate() in P
 	if(H2 && !H2.active)
-		H.merge(H2)
-	/// SKYRAT EDIT START - HURTSPOSAL
-	if(dir != P.dir && !padded_corners)
-		if(prob(20))
-			for(var/objects_within in H.contents)
-				if(!isliving(objects_within))
-					continue
-				var/mob/living/living_within = objects_within
-				if(living_within.stat == DEAD)
-					continue
-				if(HAS_TRAIT(living_within, TRAIT_TRASHMAN))
-					continue
-				living_within.adjustBruteLoss(5)
-	/// SKYRAT EDIT END
+		if(H2.hasmob) //If it's stopped and there's a mob, add to the pile
+			H2.merge(H)
+			return
+		H.merge(H2)//Otherwise, we push it along through.
 	H.forceMove(P)
 	return P
 
@@ -168,15 +163,13 @@
 				transfer_fingerprints_to(stored)
 				stored.setDir(dir)
 				stored = null
-			if (contents.len > 1) // if there is actually something in the pipe
-				var/obj/structure/disposalholder/holder = locate() in src
-				expel(holder, loc, dir)
 		else
 			var/turf/T = get_turf(src)
 			for(var/D in GLOB.cardinals)
 				if(D & dpdir)
 					var/obj/structure/disposalpipe/broken/P = new(T)
 					P.setDir(D)
+	spew_forth()
 	qdel(src)
 
 

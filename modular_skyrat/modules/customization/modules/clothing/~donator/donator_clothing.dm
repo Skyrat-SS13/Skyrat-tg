@@ -25,7 +25,7 @@
 	hood.set_greyscale(new_coat_colors) //Adopt the suit's grayscale coloring for visual clarity.
 
 /obj/item/clothing/head/hooded/winterhood/colourable
-	icon_state = "winter_hood"
+	icon_state = "hood_winter"
 	greyscale_config = /datum/greyscale_config/winter_hood
 	greyscale_config_worn = /datum/greyscale_config/winter_hood/worn
 
@@ -56,94 +56,6 @@
 	icon_state = "gags_shroud"
 	greyscale_config = /datum/greyscale_config/cloak/shroud
 	greyscale_config_worn = /datum/greyscale_config/cloak/shroud/worn
-
-//UNIFORMS
-/obj/item/clothing/under/dress/skirt/polychromic
-	name = "polychromic skirt"
-	desc = "A fancy skirt made with polychromic threads."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	icon_state = "polyskirt"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#888888")
-
-/obj/item/clothing/under/dress/skirt/polychromic/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/polychromic, poly_colors)
-
-/obj/item/clothing/under/misc/poly_shirt
-	name = "polychromic button-up shirt"
-	desc = "A fancy button-up shirt made with polychromic threads."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	icon_state = "polysuit"
-	supports_variations_flags = NONE
-
-/obj/item/clothing/under/misc/poly_shirt/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#FFFFFF", "#333333", "#333333"))
-
-/obj/item/clothing/under/misc/polyshorts
-	name = "polychromic shorts"
-	desc = "For ease of movement and style."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	icon_state = "polyshorts"
-	can_adjust = FALSE
-	body_parts_covered = CHEST|GROIN|ARMS
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/under/misc/polyshorts/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#333333", "#888888", "#888888"))
-
-/obj/item/clothing/under/misc/polyjumpsuit
-	name = "polychromic tri-tone jumpsuit"
-	desc = "A fancy jumpsuit made with polychromic threads."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	icon_state = "polyjump"
-	can_adjust = FALSE
-	supports_variations_flags = NONE
-
-/obj/item/clothing/under/misc/polyjumpsuit/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#FFFFFF", "#888888", "#333333"))
-
-/obj/item/clothing/under/misc/poly_bottomless
-	name = "polychromic bottomless shirt"
-	desc = "Great for showing off your underwear in dubious style."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	icon_state = "polybottomless"
-	body_parts_covered = CHEST|ARMS	//Because there's no bottom included
-	can_adjust = FALSE
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/under/misc/poly_bottomless/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#888888", "#FF3333", "#FFFFFF"))
-
-/obj/item/clothing/under/misc/poly_tanktop
-	name = "polychromic tank top"
-	desc = "For those lazy summer days."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	icon_state = "polyshimatank"
-	body_parts_covered = CHEST|GROIN
-	can_adjust = FALSE
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	var/list/poly_colors = list("#888888", "#FFFFFF", "#88CCFF")
-
-/obj/item/clothing/under/misc/poly_tanktop/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/polychromic, poly_colors)
-
-/obj/item/clothing/under/misc/poly_tanktop/female
-	name = "polychromic feminine tank top"
-	desc = "Great for showing off your chest in style. Not recommended for males."
-	icon_state = "polyfemtankpantsu"
-	poly_colors = list("#888888", "#FF3333", "#FFFFFF")
 
 /**************CKEY EXCLUSIVES*************/
 
@@ -249,19 +161,19 @@
 /datum/action/item_action/dtselectcolor
 	name = "Change Color"
 	desc = "Change your color."
-	icon_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	button_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	button_icon_state = "drawingtablet"
 
 /datum/action/item_action/dtcolormenu
 	name = "Color Menu"
 	desc = "Select, save, or delete a color in your tablet's color menu!"
-	icon_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	button_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	button_icon_state = "drawingtablet"
 
 /datum/action/item_action/dtcleargrid
 	name = "Clear Canvas"
 	desc = "Clear the canvas of your drawing tablet."
-	icon_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	button_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	button_icon_state = "drawingtablet"
 
 // Donation reward for Thedragmeme
@@ -473,7 +385,7 @@
 	goggles = !goggles
 	if(user)
 		user.head_update(src, forced = 1)
-		user.update_action_buttons_icon()
+		user.update_mob_action_buttons()
 
 /obj/item/clothing/head/avipilot/ui_action_click(mob/living/carbon/user, action)
 	adjust_goggles(user)
@@ -649,7 +561,7 @@
 		c_color_index = index
 		update_icon()
 		ooser.update_worn_mask()
-		ooser.update_action_buttons_icon()
+		ooser.update_mob_action_buttons()
 		to_chat(ooser, span_notice("You toggle the [src] to [possible_colors[c_color_index]]."))
 
 // Donation reward for asky / Zulie
@@ -666,7 +578,7 @@
 
 /obj/item/clothing/head/hooded/cloakhood/zuliecloak
 	name = "NT special issue"
-	desc = "This hat is unquestionably the best one, bluespaced to and from CentComm. It smells of Fish and Tea with a hint of antagonism"
+	desc = "This hat is unquestionably the best one, bluespaced to and from CentCom. It smells of Fish and Tea with a hint of antagonism"
 	icon_state = "zuliecap"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/cloaks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
@@ -803,7 +715,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "plasmaman_jax"
 
-/obj/item/clothing/suit/toggle/labcoat/rd/jax
+/obj/item/clothing/suit/toggle/labcoat/skyrat/rd/jax
 	name = "xuracorp enameled labcoat"
 	desc = "A XuraCorp designed labcoat for Research Directors. Small triangular indents suggest a protective interior."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
@@ -852,9 +764,9 @@
 /obj/item/clothing/under/rax_turtleneck_gray
 	name = "gray turtleneck"
 	desc = "A stylish gray turtleneck."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/command.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/command.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/command_digi.dmi'
 	icon_state = "bs_turtleneck"
 	can_adjust = FALSE
 
@@ -961,7 +873,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/carbon_user = user
 		carbon_user.head_update(src, forced = 1)
-	update_action_buttons()
+	update_item_action_buttons()
 	return TRUE
 
 /// This is the proc that handles toggling the welding protection, while also making sure to update the sight of a mob wearing it.
@@ -1176,11 +1088,13 @@
 /obj/item/poster/korpstech
 	name = "Korps Genetics poster"
 	poster_type = /obj/structure/sign/poster/contraband/korpstech
+	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "rolled_poster"
 
 /obj/structure/sign/poster/contraband/korpstech
 	name = "Korps Genetics"
 	desc = "This poster bears a huge, pink helix on it, with smaller text underneath it that reads 'The Korps institute, advancing the Genetics field since 2423!'"
+	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "korpsposter"
 
 // Donation reward for Kay-Nite
@@ -1189,18 +1103,20 @@
 	desc = "A customized eyepatch with a bright pink HUD floating in front of it. It looks like there's more to it than just an eyepatch, considering the materials it's made of."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
-	icon_state = "rosepatch"
+	icon_state = "rosepatch_R"
+	base_icon_state = "rosepatch"
 
 // Donation reward for Cimika
-/obj/item/clothing/suit/toggle/labcoat/tenrai
+/obj/item/clothing/suit/toggle/labcoat/skyrat/tenrai
 	name = "Tenrai labcoat"
 	desc = "A labcoat crafted from a variety of pristine materials, sewn together with a frightening amount of skill. The fabric is aery, smooth as silk, and exceptionally pleasant to the touch. The golden stripes are visible in the dark, working as a beacon to the injured. A small label on the inside of it reads \"Tenrai Kitsunes Supremacy\"."
 	base_icon_state = "tenraicoat"
 	icon_state = "tenraicoat"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/toggle/labcoat/tenrai/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
+/obj/item/clothing/suit/toggle/labcoat/skyrat/tenrai/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
 	if(!isinhands)
 		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha)
@@ -1263,11 +1179,11 @@
 
 //Donation reward for Konstyantyn
 /obj/item/clothing/accessory/badge/holo/jade
-    name = "jade holobadge"
-    desc = "A strangely green holobadge. 'Lieutenant Uriah' is stamped onto it, above the letters JS."
-    icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
-    worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
-    icon_state = "greenbadge"
+	name = "jade holobadge"
+	desc = "A strangely green holobadge. 'Lieutenant Uriah' is stamped onto it, above the letters JS."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
+	icon_state = "greenbadge"
 
 // Donation reward for Dudewithatude
 /obj/item/clothing/suit/toggle/rainbowcoat
@@ -1374,3 +1290,89 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "tactichill"
+
+// Donation reward for thedragmeme
+/obj/item/clothing/shoes/fancy_heels/drag
+	desc = "A fancy pair of high heels. Clack clack clack... definitely turning a lot of heads."
+
+/obj/item/clothing/shoes/fancy_heels/drag/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/squeak, list('modular_skyrat/modules/modular_items/lewd_items/sounds/highheel1.ogg' = 1, 'modular_skyrat/modules/modular_items/lewd_items/sounds/highheel2.ogg' = 1), 70)
+
+// Donation reward for Razurath
+
+/obj/item/clothing/under/bimpcap
+	name = "Formal Matte Black Captain Uniform"
+	desc = "A professional looking matte black uniform cladded with medals of distintive service and valor, only worn by the highest of station officials."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	icon_state = "bimpcap"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+// Donation reward for Nikohyena
+/obj/item/clothing/glasses/gold_aviators
+	name = "purple and gold aviators"
+	desc = "A round pair of gold aviator glasses, the lenses having been applied with a gem-like purple tint."
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
+	icon_state = "goldaviator"
+
+// Donation reward for Thedragmeme
+/obj/item/clothing/under/caged_dress/skirt
+	name = "Caged Purple Dress"
+	desc = "A silky purple dress with a partially exposed crinoline underneath."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	icon_state = "caged_dress"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+
+// Donation reward for Thedragmeme
+/obj/item/clothing/suit/short_coat
+	name = "Short Purple Coat"
+	desc = "A short black and purple coat, mostly used for asthetics then insulating the person wearing it."
+	icon_state = "short_coat"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+
+// Donation reward for Thedragmeme
+/obj/item/clothing/neck/flower_collar
+	name = "Flower Collar"
+	desc = "A purple collar with a dainty red flower attached to the right side of the item."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/necklaces.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
+	icon_state = "flower_collar"
+
+// Donation reward for Sigmar Alkahest
+/obj/item/clothing/under/costume/skyrat/kimono/sigmar
+	name = "short-sleeved kimono"
+	desc = "A traditional ancient Earth Japanese Kimono. It's white with a gold trim and burnished gold ivy pattern."
+	icon_state = "kimono-gold"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+
+// Donation reward for Sigmar Alkahest
+/obj/item/clothing/head/hooded/sigmarcoat
+	name = "black raincoat hood"
+	desc = "Certainly makes you look more ominous."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "long-coat-hood"
+	supports_variations_flags = NONE
+
+// Donation reward for Sigmar Alkahest
+/obj/item/clothing/suit/hooded/sigmarcoat
+	name = "black open-faced raincoat"
+	desc = "A light black raincoat. You didn't even know they're made in this color."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "long-coat"
+	hoodtype = /obj/item/clothing/head/hooded/sigmarcoat
+	supports_variations_flags = NONE
+
+// Donation reward for Sonicgotnuked
+
+/obj/item/clothing/gloves/ring/hypno/nuke
+	name = "suspiciously glossy ring"
+	desc = "This ring oozes with an assertive edge as sharp light bends along the smooth, black bronze. Like the finger that wears it, an exceptional amount of polish repels nearly all the light that glances along its surface. If you look closer, a slight golden hue indicates the precious metals inside the alloy."
+	icon = 'modular_skyrat/master_files/icons/obj/ring.dmi'
+	icon_state = "ringblack"
+	spans = list("glossy")

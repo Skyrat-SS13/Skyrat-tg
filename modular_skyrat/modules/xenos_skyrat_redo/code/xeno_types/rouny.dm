@@ -3,7 +3,7 @@
 #define EVASION_VENTCRAWL_INABILTY_CD_PERCENTAGE 0.8
 #define RUNNER_BLUR_EFFECT "runner_evasion"
 
-/mob/living/carbon/alien/humanoid/skyrat/runner
+/mob/living/carbon/alien/adult/skyrat/runner
 	name = "alien runner"
 	desc = "A short alien with sleek red chitin, clearly abiding by the 'red ones go faster' theorem and almost always running on all fours."
 	caste = "runner"
@@ -14,10 +14,10 @@
 	var/datum/action/cooldown/alien/skyrat/evade/evade_ability
 	melee_damage_lower = 15
 	melee_damage_upper = 20
-	next_evolution = /mob/living/carbon/alien/humanoid/skyrat/ravager
+	next_evolution = /mob/living/carbon/alien/adult/skyrat/ravager
 	on_fire_pixel_y = 0
 
-/mob/living/carbon/alien/humanoid/skyrat/runner/Initialize(mapload)
+/mob/living/carbon/alien/adult/skyrat/runner/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/tackler, stamina_cost = 0, base_knockdown = 2, range = 10, speed = 2, skill_mod = 7, min_distance = 0)
 	evade_ability = new /datum/action/cooldown/alien/skyrat/evade()
@@ -25,11 +25,11 @@
 
 	add_movespeed_modifier(/datum/movespeed_modifier/alien_quick)
 
-/mob/living/carbon/alien/humanoid/skyrat/runner/Destroy()
+/mob/living/carbon/alien/adult/skyrat/runner/Destroy()
 	QDEL_NULL(evade_ability)
 	return ..()
 
-/mob/living/carbon/alien/humanoid/skyrat/runner/create_internal_organs()
+/mob/living/carbon/alien/adult/skyrat/runner/create_internal_organs()
 	internal_organs += new /obj/item/organ/internal/alien/plasmavessel/small/tiny
 	..()
 
@@ -53,11 +53,11 @@
 	owner.balloon_alert(owner, "evasive movements began")
 	playsound(owner, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_hiss.ogg', 100, TRUE, 8, 0.9)
 	to_chat(owner, span_danger("We take evasive action, making us impossible to hit with projectiles for the next [evasion_duration / 10] seconds."))
-	addtimer(CALLBACK(src, .proc/evasion_deactivate), evasion_duration)
+	addtimer(CALLBACK(src, PROC_REF(evasion_deactivate)), evasion_duration)
 	evade_active = TRUE
-	RegisterSignal(owner, COMSIG_PROJECTILE_ON_HIT, .proc/on_projectile_hit)
+	RegisterSignal(owner, COMSIG_PROJECTILE_ON_HIT, PROC_REF(on_projectile_hit))
 	REMOVE_TRAIT(owner, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
-	addtimer(CALLBACK(src, .proc/give_back_ventcrawl), (cooldown_time * EVASION_VENTCRAWL_INABILTY_CD_PERCENTAGE)) //They cannot ventcrawl until the defined percent of the cooldown has passed
+	addtimer(CALLBACK(src, PROC_REF(give_back_ventcrawl)), (cooldown_time * EVASION_VENTCRAWL_INABILTY_CD_PERCENTAGE)) //They cannot ventcrawl until the defined percent of the cooldown has passed
 	to_chat(owner, span_warning("We will be unable to crawl through vents for the next [(cooldown_time * EVASION_VENTCRAWL_INABILTY_CD_PERCENTAGE) / 10] seconds."))
 	return TRUE
 
@@ -79,10 +79,10 @@
 	owner.visible_message(span_danger("[owner] effortlessly dodges the projectile!"), span_userdanger("You dodge the projectile!"))
 	playsound(get_turf(owner), pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)
 	owner.add_filter(RUNNER_BLUR_EFFECT, 2, gauss_blur_filter(5))
-	addtimer(CALLBACK(owner, /atom.proc/remove_filter, RUNNER_BLUR_EFFECT), 0.5 SECONDS)
+	addtimer(CALLBACK(owner, TYPE_PROC_REF(/atom, remove_filter), RUNNER_BLUR_EFFECT), 0.5 SECONDS)
 	return BULLET_ACT_FORCE_PIERCE
 
-/mob/living/carbon/alien/humanoid/skyrat/runner/bullet_act(obj/projectile/P, def_zone, piercing_hit = FALSE)
+/mob/living/carbon/alien/adult/skyrat/runner/bullet_act(obj/projectile/P, def_zone, piercing_hit = FALSE)
 	if(evade_ability)
 		var/evade_result = evade_ability.on_projectile_hit()
 		if(!(evade_result == BULLET_ACT_HIT))

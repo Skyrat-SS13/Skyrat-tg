@@ -55,13 +55,17 @@
 		if(!atom_check)
 			ritual_fail(checked_rune)
 			return FALSE
+
 		if(is_type_in_list(atom_check, consumed_components))
 			qdel(atom_check)
 			checked_rune.balloon_alert_to_viewers("[checked_component] component has been consumed...")
+
 		else
 			checked_rune.balloon_alert_to_viewers("[checked_component] component has been checked...")
+
 		new ritual_effect(checked_rune.loc)
 		sleep(ritual_time)
+
 	return TRUE
 
 /datum/ash_ritual/proc/ritual_fail(obj/effect/ash_rune/failed_rune)
@@ -74,10 +78,13 @@
 /datum/ash_ritual/proc/ritual_success(obj/effect/ash_rune/success_rune)
 	new ritual_effect(success_rune.loc)
 	success_rune.balloon_alert_to_viewers("ritual has been successful...")
+	log_game("[name] ritual has been successfully activated.")
+
 	var/turf/rune_turf = get_turf(success_rune)
 	if(length(ritual_success_items))
 		for(var/type in ritual_success_items)
 			new type(rune_turf)
+
 	success_rune.current_ritual = null
 	in_use = FALSE
 	return TRUE

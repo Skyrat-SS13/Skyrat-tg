@@ -17,7 +17,7 @@
 	var/tier = 0
 
 /// What happens when a borer gets this evolution
-/datum/borer_evolution/proc/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/proc/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	SHOULD_CALL_PARENT(TRUE)
 	if(gain_text)
 		to_chat(cortical_owner, span_notice(span_italics(gain_text)))

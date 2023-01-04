@@ -77,7 +77,7 @@
 	id = /obj/item/card/id/advanced/ghost_cafe
 
 /datum/action/toggle_dead_chat_mob
-	icon_icon = 'icons/mob/simple/mob.dmi'
+	button_icon = 'icons/mob/simple/mob.dmi'
 	button_icon_state = "ghost"
 	name = "Toggle deadchat"
 	desc = "Turn off or on your ability to hear ghosts."
@@ -109,6 +109,7 @@
 	new /obj/item/storage/backpack/chameleon(src)
 	new /obj/item/storage/belt/chameleon(src)
 	new /obj/item/card/id/advanced/chameleon(src)
+	new /obj/item/hhmirror/syndie(src)
 
 /obj/item/card/id/advanced/ghost_cafe
 	name = "\improper Cafe ID"

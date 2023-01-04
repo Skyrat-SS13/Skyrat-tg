@@ -23,6 +23,8 @@
 	icon_state = "kiri"
 	foodtypes = FRUIT | SUGAR
 	grind_results = list(/datum/reagent/consumable/kiri_jelly = 0.1)
+	distill_reagent = /datum/reagent/consumable/ethanol/shakiri
+	tastes = list("ultra-sweet jelly" = 1)
 
 /obj/item/food/grown/kiri/MakeBakeable()
 	AddComponent(/datum/component/bakeable, /obj/item/food/baked_kiri, rand(15 SECONDS, 25 SECONDS), TRUE, TRUE)

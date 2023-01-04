@@ -18,9 +18,11 @@
 	. = ..()
 	create_reagents(200, OPENCONTAINER)
 
+	AddElement(/datum/element/falling_hazard, damage = 20, wound_bonus = 5, hardhat_safety = TRUE, crushes = FALSE)
+
 /obj/structure/large_mortar/examine(mob/user)
 	. = ..()
-	. += span_notice("It currently contains <b>[length(contents)]/[maximum_contained_items] items.")
+	. += span_notice("It currently contains <b>[length(contents)]/[maximum_contained_items]</b> items.")
 	. += span_notice("It can be (un)secured with <b>Right Click</b>")
 	. += span_notice("You can empty all of the items out of it with <b>Alt Click</b>")
 
@@ -32,6 +34,7 @@
 	if(!length(contents))
 		balloon_alert(user, "nothing inside")
 		return
+
 	drop_everything_contained()
 	balloon_alert(user, "removed all items")
 
@@ -39,6 +42,7 @@
 /obj/structure/large_mortar/proc/drop_everything_contained()
 	if(!length(contents))
 		return
+
 	for(var/obj/target_item as anything in contents)
 		target_item.forceMove(get_turf(src))
 
@@ -46,8 +50,10 @@
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
+
 	if(!can_interact(user) || !user.canUseTopic(src, be_close = TRUE))
 		return
+
 	set_anchored(!anchored)
 	balloon_alert_to_viewers(anchored ? "secured" : "unsecured")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -57,23 +63,29 @@
 		if(!anchored)
 			balloon_alert(user, "secure to ground first")
 			return
+
 		if(!length(contents))
 			balloon_alert(user, "nothing to grind")
 			return
+
 		if(user.getStaminaLoss() > LARGE_MORTAR_STAMINA_MINIMUM)
 			balloon_alert(user, "too tired")
 			return
+
 		var/list/choose_options = list(
 			"Grind" = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_grind"),
 			"Juice" = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_juice")
 		)
 		var/picked_option = show_radial_menu(user, src, choose_options, radius = 38, require_near = TRUE)
+
 		if(!length(contents) || !in_range(src, user) || !user.is_holding(attacking_item) && !picked_option)
 			return
+
 		balloon_alert_to_viewers("grinding...")
 		if(!do_after(user, 5 SECONDS, target = src))
 			balloon_alert_to_viewers("stopped grinding")
 			return
+
 		user.adjustStaminaLoss(LARGE_MORTAR_STAMINA_USE) //This is a bit more tiring than a normal sized mortar and pestle
 		switch(picked_option)
 			if("Juice")
@@ -82,6 +94,7 @@
 						juice_target_item(target_item, user)
 					else
 						grind_target_item(target_item, user)
+
 			if("Grind")
 				for(var/obj/item/target_item as anything in contents)
 					if(target_item.grind_results)
@@ -89,20 +102,25 @@
 					else
 						juice_target_item(target_item, user)
 		return
+
 	if(!attacking_item.juice_results && !attacking_item.grind_results)
 		balloon_alert(user, "can't grind this")
 		return ..()
+
 	if(length(contents) >= maximum_contained_items)
 		balloon_alert(user, "already full")
 		return
+
 	attacking_item.forceMove(src)
 
 ///Juices the passed target item, and transfers any contained chems to the mortar as well
 /obj/structure/large_mortar/proc/juice_target_item(obj/item/to_be_juiced, mob/living/carbon/human/user)
 	to_be_juiced.on_juice()
 	reagents.add_reagent_list(to_be_juiced.juice_results)
+
 	if(to_be_juiced.reagents) //If juiced item has reagents within, transfer them to the mortar
 		to_be_juiced.reagents.trans_to(src, to_be_juiced.reagents.total_volume, transfered_by = user)
+
 	to_chat(user, span_notice("You juice [to_be_juiced] into a fine liquid."))
 	QDEL_NULL(to_be_juiced)
 
@@ -110,8 +128,10 @@
 /obj/structure/large_mortar/proc/grind_target_item(obj/item/to_be_ground, mob/living/carbon/human/user)
 	to_be_ground.on_grind()
 	reagents.add_reagent_list(to_be_ground.grind_results)
+
 	if(to_be_ground.reagents) //If grinded item has reagents within, transfer them to the mortar
 		to_be_ground.reagents.trans_to(src, to_be_ground.reagents.total_volume, transfered_by = user)
+
 	to_chat(user, span_notice("You break [to_be_ground] into powder."))
 	QDEL_NULL(to_be_ground)
 

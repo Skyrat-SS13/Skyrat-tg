@@ -1,6 +1,6 @@
 /// SKYRAT MODULE SKYRAT_XENO_REDO
 
-/mob/living/carbon/alien/humanoid/skyrat/praetorian
+/mob/living/carbon/alien/adult/skyrat/praetorian
 	name = "alien praetorian"
 	desc = "An alien that looks like the awkward half-way point between a queen and a drone, in fact that's likely what it is."
 	caste = "praetorian"
@@ -13,9 +13,9 @@
 	var/datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/hard_throwing/tail_sweep
 	melee_damage_lower = 25
 	melee_damage_upper = 30
-	next_evolution = /mob/living/carbon/alien/humanoid/skyrat/queen
+	next_evolution = /mob/living/carbon/alien/adult/skyrat/queen
 
-/mob/living/carbon/alien/humanoid/skyrat/praetorian/Initialize(mapload)
+/mob/living/carbon/alien/adult/skyrat/praetorian/Initialize(mapload)
 	. = ..()
 	heal_aura_ability = new /datum/action/cooldown/alien/skyrat/heal_aura/juiced()
 	heal_aura_ability.Grant(src)
@@ -27,11 +27,11 @@
 
 	add_movespeed_modifier(/datum/movespeed_modifier/alien_big)
 
-/mob/living/carbon/alien/humanoid/skyrat/praetorian/Destroy()
+/mob/living/carbon/alien/adult/skyrat/praetorian/Destroy()
 	QDEL_NULL(heal_aura_ability)
 	return ..()
 
-/mob/living/carbon/alien/humanoid/skyrat/praetorian/create_internal_organs()
+/mob/living/carbon/alien/adult/skyrat/praetorian/create_internal_organs()
 	internal_organs += new /obj/item/organ/internal/alien/plasmavessel/large
 	internal_organs += new /obj/item/organ/internal/alien/neurotoxin/spitter
 	internal_organs += new /obj/item/organ/internal/alien/resinspinner

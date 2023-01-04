@@ -245,6 +245,7 @@
 	borg_skins = list(
 		"Default" = list(SKIN_ICON_STATE = "sec"),
 		"Zoomba" = list(SKIN_ICON_STATE = "zoomba_sec", SKIN_ICON = CYBORG_ICON_SEC, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL), SKIN_HAT_OFFSET = -13),
+		"Meka" = list(SKIN_ICON_STATE = "mekasec", SKIN_ICON = CYBORG_ICON_SEC_TALL, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_UNIQUETIP, R_TRAIT_TALL), SKIN_HAT_OFFSET = 15),
 		"Default - Treads" = list(SKIN_ICON_STATE = "sec-tread", SKIN_LIGHT_KEY = "sec", SKIN_ICON = CYBORG_ICON_SEC),
 		"Sleek" = list(SKIN_ICON_STATE = "sleeksec", SKIN_ICON = CYBORG_ICON_SEC),
 		"Marina" = list(SKIN_ICON_STATE = "marinasec", SKIN_ICON = CYBORG_ICON_SEC),
@@ -324,14 +325,14 @@
 	)
 
 /obj/item/robot_model/syndicatejack/rebuild_modules()
-    ..()
-    var/mob/living/silicon/robot/syndicatejack = loc
-    syndicatejack.scrambledcodes = TRUE // We're rouge now
+	. = ..()
+	var/mob/living/silicon/robot/syndicatejack = loc
+	syndicatejack.scrambledcodes = TRUE // We're rouge now
 
 /obj/item/robot_model/syndicatejack/remove_module(obj/item/I, delete_after)
-    ..()
-    var/mob/living/silicon/robot/syndicatejack = loc
-    syndicatejack.scrambledcodes = FALSE // Friends with the AI again
+	. = ..()
+	var/mob/living/silicon/robot/syndicatejack = loc
+	syndicatejack.scrambledcodes = FALSE // Friends with the AI again
 
 //NINJA
 /obj/item/robot_model/ninja

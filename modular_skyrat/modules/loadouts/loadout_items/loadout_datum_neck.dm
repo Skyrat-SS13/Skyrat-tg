@@ -187,6 +187,10 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	name = "Colourable Boatcloak"
 	item_path = /obj/item/clothing/neck/cloak/colourable/boat
 
+/datum/loadout_item/neck/gags_mantle
+	name = "Colourable Mantle"
+	item_path = /obj/item/clothing/neck/mantle/recolorable
+
 /*
 *	MANTLES
 */

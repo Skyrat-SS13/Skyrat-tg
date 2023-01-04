@@ -27,7 +27,7 @@
 
 /mob/living/simple_animal/hostile/zombie/Initialize(mapload)
 	. = ..()
-	INVOKE_ASYNC(src, .proc/setup_visuals)
+	INVOKE_ASYNC(src, PROC_REF(setup_visuals))
 
 /* SKYRAT EDIT REMOVAL - MOVED TO MODULAR ZOMBIE.DM
 /mob/living/simple_animal/hostile/zombie/proc/setup_visuals()

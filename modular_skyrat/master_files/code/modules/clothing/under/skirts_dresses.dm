@@ -102,6 +102,13 @@
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	flags_inv = HIDESHOES
 
+/obj/item/clothing/under/dress/skyrat/countess
+	name = "countess dress"
+	desc = "A wide flowing dress fitting for a countess; may be prone to catching onto stuff as you pass."
+	icon_state = "countess"
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	flags_inv = HIDESHOES
+
 /obj/item/clothing/under/dress/skyrat/strapless
 	name = "strapless dress"
 	desc = "Typical formal wear with no straps, instead opting to be tied at the waist. Most likely will need constant adjustments."

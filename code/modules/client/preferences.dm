@@ -66,11 +66,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// A list of instantiated middleware
 	var/list/datum/preference_middleware/middleware = list()
 
-	/// The savefile relating to core preferences, PREFERENCE_PLAYER
-	var/savefile/game_savefile
+	/// The json savefile for this datum
+	var/datum/json_savefile/savefile
 
 	/// The savefile relating to character preferences, PREFERENCE_CHARACTER
-	var/savefile/character_savefile
+	var/list/character_data
 
 	/// A list of keys that have been updated since the last save.
 	var/list/recently_updated_keys = list()
@@ -92,18 +92,23 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	//SKYRAT EDIT END
 	return ..()
 
-/datum/preferences/New(client/C)
-	parent = C
+/datum/preferences/New(client/parent)
+	src.parent = parent
 
 	for (var/middleware_type in subtypesof(/datum/preference_middleware))
 		middleware += new middleware_type(src)
 
-	if(istype(C))
-		if(!is_guest_key(C.key))
-			load_path(C.ckey)
-			unlock_content = !!C.IsByondMember()
+	if(IS_CLIENT_OR_MOCK(parent))
+		if(!is_guest_key(parent.key))
+			load_path(parent.ckey)
+			if(!fexists(path))
+				try_savefile_type_migration()
+			unlock_content = !!parent.IsByondMember()
 			if(unlock_content)
 				max_save_slots = 40 //SKYRAT EDIT CHANGE
+	else
+		CRASH("attempted to create a preferences datum without a client or mock!")
+	load_savefile()
 
 	// give them default keybinds and update their movement keys
 	key_bindings = deep_copy_list(GLOB.default_hotkeys)
@@ -113,15 +118,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/loaded_preferences_successfully = load_preferences()
 	if(loaded_preferences_successfully)
 		if(load_character())
-			// SKYRAT EDIT START - Sanitizing languages
+			// SKYRAT EDIT START - Sanitizing preferences
 			sanitize_languages()
+			sanitize_quirks()
 			// SKYRAT EDIT END
 			return // SKYRAT EDIT - Don't remove this. Just don't. Nothing is worth forced random characters.
 	//we couldn't load character data so just randomize the character appearance + name
 	randomise_appearance_prefs() //let's create a random character then - rather than a fat, bald and naked man.
-	if(C)
+	if(parent)
 		apply_all_client_preferences()
-		C.set_macros()
+		parent.set_macros()
 
 	if(!loaded_preferences_successfully)
 		save_preferences()
@@ -145,7 +151,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		// Lemon from the future: this issue appears to replicate if the byond map (what we're relaying here)
 		// Is shown while the client's mouse is on the screen. As soon as their mouse enters the main map, it's properly scaled
 		// I hate this place
-		addtimer(CALLBACK(character_preview_view, /atom/movable/screen/map_view/char_preview/proc/update_body), 1 SECONDS)
+		addtimer(CALLBACK(character_preview_view, TYPE_PROC_REF(/atom/movable/screen/map_view/char_preview, update_body)), 1 SECONDS)
 
 /datum/preferences/ui_state(mob/user)
 	return GLOB.always_state
@@ -246,7 +252,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			return TRUE
 		if ("rotate")
+			/* SKYRAT EDIT - Bi-directional prefs menu rotation - ORIGINAL:
 			character_preview_view.dir = turn(character_preview_view.dir, -90)
+			*/ // ORIGINAL END - SKYRAT EDIT START:
+			var/backwards = params["backwards"]
+			character_preview_view.dir = turn(character_preview_view.dir, backwards ? 90 : -90)
+			// SKYRAT EDIT END
 
 			return TRUE
 		if ("set_preference")
@@ -459,22 +470,20 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	body = new
 
 	// Without this, it doesn't show up in the menu
-	body.appearance_flags &= ~KEEP_TOGETHER
+	body.appearance_flags |= KEEP_TOGETHER // SKYRAT EDIT - Fix pixel scaling - ORIGINAL: body.appearance_flags &= ~KEEP_TOGETHER
 
 /datum/preferences/proc/create_character_profiles()
 	var/list/profiles = list()
 
-	var/savefile/savefile = new(path)
 	for (var/index in 1 to max_save_slots)
 		// It won't be updated in the savefile yet, so just read the name directly
 		if (index == default_slot)
 			profiles += read_preference(/datum/preference/name/real_name)
 			continue
 
-		savefile.cd = "/character[index]"
-
-		var/name
-		READ_FILE(savefile["real_name"], name)
+		var/tree_key = "character[index]"
+		var/save_data = savefile.get_entry(tree_key)
+		var/name = save_data?["real_name"]
 
 		if (isnull(name))
 			profiles += null

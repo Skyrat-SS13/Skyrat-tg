@@ -8,8 +8,9 @@
 	gain_text = "Over time, some of the more aggressive worms became harder to dissect post-mortem. Their skin membrane has become up to thrice as thick."
 	tier = 1
 	unlocked_evolutions = list(/datum/borer_evolution/diveworm/host_speed)
+	evo_cost = 1
 
-/datum/borer_evolution/diveworm/health_per_level/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/diveworm/health_per_level/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	cortical_owner.health_per_level += 2.5
 	cortical_owner.recalculate_stats()
@@ -22,7 +23,7 @@
 	tier = 2
 	unlocked_evolutions = list(/datum/borer_evolution/diveworm/expanded_chemicals)
 
-/datum/borer_evolution/diveworm/host_speed/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/diveworm/host_speed/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	cortical_owner.upgrade_flags |= BORER_FAST_BORING
 
@@ -48,7 +49,7 @@
 		/datum/reagent/inverse/oculine,
 	)
 
-/datum/borer_evolution/diveworm/expanded_chemicals/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/diveworm/expanded_chemicals/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	cortical_owner.potential_chemicals |= added_chemicals
 
@@ -56,11 +57,13 @@
 	name = "Health Increase II"
 	tier = -1
 	unlocked_evolutions = list(/datum/borer_evolution/diveworm/health_per_level/t3)
+	evo_cost = 2
 
 /datum/borer_evolution/diveworm/health_per_level/t3
 	name = "Health Increase III"
 	tier = -1
 	unlocked_evolutions = list()
+	evo_cost = 2
 
 // T4 + its path
 /datum/borer_evolution/diveworm/harm_increase
@@ -73,7 +76,7 @@
 		/datum/borer_evolution/diveworm/empowered_offspring,
 	)
 
-/datum/borer_evolution/diveworm/harm_increase/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/diveworm/harm_increase/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	cortical_owner.host_harm_multiplier += 0.25
 
@@ -102,7 +105,7 @@
 		/datum/borer_evolution/synthetic_chems_negative,
 	)
 
-/datum/borer_evolution/diveworm/empowered_offspring/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
+/datum/borer_evolution/diveworm/empowered_offspring/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()
 	var/datum/action/cooldown/borer/empowered_offspring/attack_action = new()
 	attack_action.Grant(cortical_owner)

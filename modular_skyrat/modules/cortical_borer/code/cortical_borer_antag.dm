@@ -2,10 +2,10 @@
 
 /proc/printborer(datum/mind/borer)
 	var/list/text = list()
-	var/mob/living/simple_animal/cortical_borer/player_borer = borer.current
+	var/mob/living/basic/cortical_borer/player_borer = borer.current
 	if(!player_borer)
 		text += span_redtext("[span_bold(borer.name)] had their body destroyed.")
-		return text
+		return text.Join("<br>")
 	if(borer.current.stat != DEAD)
 		text += "[span_bold(player_borer.name)] [span_greentext("survived")]"
 	else
@@ -55,9 +55,8 @@
 			if(borer.borers)
 				borers = borer.borers
 				return
-		if(!new_team)
-			borers = new /datum/team/cortical_borers
-			return
+		borers = new /datum/team/cortical_borers
+		return
 	if(!istype(new_team))
 		stack_trace("Wrong team type passed to [type] initialization.")
 	borers = new_team
@@ -70,7 +69,7 @@
 	parts += span_header("The [name] were:")
 	parts += printborerlist(members)
 	var/survival = FALSE
-	for(var/mob/living/simple_animal/cortical_borer/check_borer in GLOB.cortical_borers)
+	for(var/mob/living/basic/cortical_borer/check_borer in GLOB.cortical_borers)
 		if(check_borer.stat == DEAD)
 			continue
 		survival = TRUE
@@ -99,6 +98,7 @@
 	min_players = 999
 	max_occurrences = 1 //should only ever happen once
 	dynamic_should_hijack = TRUE
+	category = EVENT_CATEGORY_ENTITIES
 
 /datum/round_event/ghost_role/cortical_borer
 	announce_when = 400
@@ -133,7 +133,7 @@
 		var/mob/dead/observer/new_borer = pick(candidates)
 		candidates -= new_borer
 		var/turf/vent_turf = get_turf(pick(vents))
-		var/mob/living/simple_animal/cortical_borer/spawned_cb = new /mob/living/simple_animal/cortical_borer(vent_turf)
+		var/mob/living/basic/cortical_borer/spawned_cb = new /mob/living/basic/cortical_borer(vent_turf)
 		spawned_cb.ckey = new_borer.ckey
 		spawned_cb.mind.add_antag_datum(/datum/antagonist/cortical_borer)
 		to_chat(spawned_cb, span_warning("You are a cortical borer! You can fear someone to make them stop moving, but make sure to inhabit them! You only grow/heal/talk when inside a host!"))
@@ -178,7 +178,7 @@
 
 /datum/dynamic_ruleset/midround/from_ghosts/cortical_borer/generate_ruleset_body(mob/applicant)
 	var/obj/vent = pick_n_take(vents)
-	var/mob/living/simple_animal/cortical_borer/new_borer = new(vent.loc)
+	var/mob/living/basic/cortical_borer/new_borer = new(vent.loc)
 	new_borer.key = applicant.key
 	new_borer.move_into_vent(vent)
 	message_admins("[ADMIN_LOOKUPFLW(new_borer)] has been made into a borer by the midround ruleset.")

@@ -67,31 +67,12 @@
 		place.baseturfs = baseturfs_string_list(sanity, place)
 
 		for(var/obj/docking_port/mobile/port in place)
+			port.calculate_docking_port_information(src)
+			// initTemplateBounds explicitly ignores the shuttle's docking port, to ensure that it calculates the bounds of the shuttle correctly
+			// so we need to manually initialize it here
+			SSatoms.InitializeAtoms(list(port))
 			if(register)
 				port.register()
-			if(isnull(port_x_offset))
-				continue
-			switch(port.dir) // Yeah this looks a little ugly but mappers had to do this in their head before
-				if(NORTH)
-					port.width = width
-					port.height = height
-					port.dwidth = port_x_offset - 1
-					port.dheight = port_y_offset - 1
-				if(EAST)
-					port.width = height
-					port.height = width
-					port.dwidth = height - port_y_offset
-					port.dheight = port_x_offset - 1
-				if(SOUTH)
-					port.width = width
-					port.height = height
-					port.dwidth = width - port_x_offset
-					port.dheight = height - port_y_offset
-				if(WEST)
-					port.width = height
-					port.height = width
-					port.dwidth = port_y_offset - 1
-					port.dheight = width - port_x_offset
 
 //Whatever special stuff you want
 /datum/map_template/shuttle/post_load(obj/docking_port/mobile/M)
@@ -161,6 +142,10 @@
 
 /datum/map_template/shuttle/snowdin
 	port_id = "snowdin"
+	who_can_purchase = null
+
+/datum/map_template/shuttle/ert
+	port_id = "ert"
 	who_can_purchase = null
 
 // Shuttles start here:
@@ -462,6 +447,19 @@
 	admin_notes = "The ship is a bit chunky, so watch where you park it."
 	credit_cost = 7777
 
+/datum/map_template/shuttle/emergency/shadow
+	suffix = "shadow"
+	name = "The NTSS Shadow"
+	description = "Guaranteed to get you somewhere FAST. With a custom-built plasma engine, this bad boy will put more distance between you and certain danger than any other!"
+	credit_cost = CARGO_CRATE_VALUE * 50
+
+/datum/map_template/shuttle/emergency/fish
+	suffix = "fish"
+	name = "Angler's Choice Emergency Shuttle"
+	description = "Trades such amenities as 'storage space' and 'sufficient seating' for an artifical environment ideal for fishing, plus ample supplies (also for fishing)."
+	admin_notes = "There's a chasm in it, it has railings but that won't stop determined players."
+	credit_cost = CARGO_CRATE_VALUE * 10
+
 /datum/map_template/shuttle/ferry/base
 	suffix = "base"
 	name = "transport ferry"
@@ -504,7 +502,7 @@
 
 /datum/map_template/shuttle/whiteship/pubby
 	suffix = "pubby"
-	name = "NT White UFO"
+	name = "NT Science Vessel"
 
 /datum/map_template/shuttle/whiteship/cere
 	suffix = "cere"
@@ -529,6 +527,15 @@
 /datum/map_template/shuttle/whiteship/pod
 	suffix = "whiteship_pod"
 	name = "Salvage Pod"
+
+/datum/map_template/shuttle/whiteship/personalshuttle
+	suffix = "personalshuttle"
+	name = "Personal Travel Shuttle"
+
+/datum/map_template/shuttle/whiteship/obelisk
+	suffix = "obelisk"
+	name = "Obelisk"
+	admin_notes = "Not actually an obelisk, has nonsentient cult constructs."
 
 /datum/map_template/shuttle/cargo/kilo
 	suffix = "kilo"
@@ -661,15 +668,21 @@
 	suffix = "small"
 	name = "auxilliary base (Small)"
 
-/* SKYRAT EDIT REMOVAL
 /datum/map_template/shuttle/escape_pod/default
 	suffix = "default"
 	name = "escape pod (Default)"
-*/
 
 /datum/map_template/shuttle/escape_pod/large
 	suffix = "large"
 	name = "escape pod (Large)"
+
+/datum/map_template/shuttle/escape_pod/luxury
+	suffix = "luxury"
+	name = "escape pod (Luxury)"
+
+/datum/map_template/shuttle/escape_pod/cramped
+	suffix = "cramped"
+	name = "escape pod (Cramped)"
 
 /datum/map_template/shuttle/assault_pod/default
 	suffix = "default"
@@ -686,6 +699,10 @@
 /datum/map_template/shuttle/pirate/dutchman
 	suffix = "dutchman"
 	name = "pirate ship (Flying Dutchman)"
+
+/datum/map_template/shuttle/pirate/psykers
+	suffix = "psyker"
+	name = "pirate ship (Psyker-gang)"
 
 /datum/map_template/shuttle/hunter/space_cop
 	suffix = "space_cop"
@@ -719,6 +736,10 @@
 	suffix = "corvette"
 	name = "SBC Starfury Corvette"
 
+/datum/map_template/shuttle/ruin/cyborg_mothership
+	suffix = "cyborg_mothership"
+	name = "Cyborg Mothership"
+
 /datum/map_template/shuttle/ruin/caravan_victim
 	suffix = "caravan_victim"
 	name = "Small Freighter"
@@ -742,5 +763,10 @@
 /datum/map_template/shuttle/snowdin/excavation
 	suffix = "excavation"
 	name = "Snowdin Excavation Elevator"
+
+// Custom ERT shuttles
+/datum/map_template/shuttle/ert/bounty
+	suffix = "bounty"
+	name = "Bounty Hunter ERT Shuttle"
 
 #undef EMAG_LOCKED_SHUTTLE_COST

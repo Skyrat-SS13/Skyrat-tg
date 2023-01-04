@@ -12,7 +12,7 @@
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
 	ears = /obj/item/radio/headset/syndicate/alt
-	l_pocket = /obj/item/modular_computer/tablet/syndicate_contract_uplink/preset/uplink
+	l_pocket = /obj/item/modular_computer/pda/contractor
 	id = /obj/item/card/id/advanced/chameleon
 	backpack_contents = list(
 		/obj/item/storage/box/survival/syndie,

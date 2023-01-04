@@ -100,7 +100,7 @@
 
 /turf/closed/wall/mineral/uranium/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_ATOM_PROPAGATE_RAD_PULSE, .proc/radiate)
+	RegisterSignal(src, COMSIG_ATOM_PROPAGATE_RAD_PULSE, PROC_REF(radiate))
 
 /turf/closed/wall/mineral/uranium/proc/radiate()
 	SIGNAL_HANDLER
@@ -186,7 +186,7 @@
 	name = "bamboo wall"
 	desc = "A wall with a bamboo finish."
 	icon = 'icons/turf/walls/bamboo_wall.dmi'
-	icon_state = "bamboo"
+	icon_state = "wall-0"
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_BAMBOO_WALLS, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_CLOSED_TURFS) // SKYRAT EDIT CHANGE - Sorting them because /tg/ forgot to
 	canSmoothWith = list(SMOOTH_GROUP_BAMBOO_WALLS)

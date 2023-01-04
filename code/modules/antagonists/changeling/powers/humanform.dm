@@ -28,7 +28,7 @@
 	..()
 	changeling.purchased_powers -= src
 	Remove(user)
-	
+
 	// SKYRAT EDIT START
 	var/datum/dna/chosen_dna = chosen_prof.dna
 	var/datum/species/chosen_species = chosen_dna.species
@@ -45,14 +45,28 @@
 
 /datum/action/changeling/humanform/from_monkey/sting_action(mob/living/carbon/user)
 	. = ..()
-	if(!.)
-		return
+	RegisterSignal(user, COMSIG_MONKEY_HUMANIZE, PROC_REF(give_lesserform))
 
-	var/datum/antagonist/changeling/changeling = user.mind.has_antag_datum(/datum/antagonist/changeling)
+/datum/action/changeling/humanform/from_monkey/Remove(mob/remove_from)
+	UnregisterSignal(remove_from, COMSIG_MONKEY_HUMANIZE)
+	return ..()
+
+/**
+ * Called on COMSIG_MONKEY_HUMANIZE
+ * Handles giving the new lesserform ability
+ * Removing ourselves is handled by parent already, so it's not needed here like it is on lesserform.
+ *
+ * Args:
+ * source - Monkey user who is now turning into a human
+ */
+/datum/action/changeling/humanform/from_monkey/proc/give_lesserform(mob/living/carbon/source)
+	SIGNAL_HANDLER
+
+	var/datum/antagonist/changeling/changeling = source.mind.has_antag_datum(/datum/antagonist/changeling)
 	var/datum/action/changeling/lesserform/monkey_form_ability = new()
 	changeling.purchased_powers += monkey_form_ability
 
-	monkey_form_ability.Grant(user)
+	monkey_form_ability.Grant(source)
 
 	// Delete ourselves when we're done.
 	qdel(src)

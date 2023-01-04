@@ -23,7 +23,6 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	light_on = FALSE
 	shift_to_open_context_menu = FALSE
 	var/can_reenter_corpse
-	var/datum/hud/living/carbon/hud = null // hud
 	var/bootime = 0
 	var/started_as_observer //This variable is set to 1 when you enter the game as an observer.
 							//If you died in the game and are a ghost - this will remain as null.
@@ -160,14 +159,14 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	var/old_color = color
 	color = "#960000"
 	animate(src, color = old_color, time = 10, flags = ANIMATION_PARALLEL)
-	addtimer(CALLBACK(src, /atom/proc/update_atom_colour), 10)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_atom_colour)), 10)
 
 /mob/dead/observer/Destroy()
 	if(data_huds_on)
 		remove_data_huds()
 
 	// Update our old body's medhud since we're abandoning it
-	if(mind?.current)
+	if(isliving(mind?.current))
 		mind.current.med_hud_set_status()
 
 	GLOB.ghost_images_default -= ghostimage_default
@@ -421,6 +420,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		//SKYRAT EDIT ADDITION - DNR TRAIT (Technically this is just to fix ghost-DNR'ing not actually DNR'ing, but it pairs with the trait so)
 		if(!current_mob.has_quirk(/datum/quirk/dnr))
 			current_mob.add_quirk(/datum/quirk/dnr)
+		var/datum/job/job_to_free = SSjob.GetJob(current_mob.mind.assigned_role.title)
+		job_to_free.current_positions--
 		//SKYRAT EDIT ADDITION END - DNR TRAIT
 	log_message("has opted to do-not-resuscitate / DNR from their body ([current_mob])", LOG_GAME, color = COLOR_GREEN)
 
@@ -463,8 +464,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(usr, span_warning("Not when you're not dead!"))
 		return
 	var/list/filtered = list()
-	for(var/V in GLOB.sortedAreas)
-		var/area/A = V
+	for(var/area/A as anything in get_sorted_areas())
 		if(!(A.area_flags & HIDDEN_AREA))
 			filtered += A
 	var/area/thearea = tgui_input_list(usr, "Area to jump to", "BOOYEA", filtered)
@@ -896,6 +896,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set_sight(initial(sight))
 	if(target)
 		UnregisterSignal(target, COMSIG_MOVABLE_Z_CHANGED)
+		hide_other_mob_action_buttons(target)
 		LAZYREMOVE(target.observers, src)
 
 /mob/dead/observer/verb/observe()
@@ -936,7 +937,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		client.perspective = EYE_PERSPECTIVE
 		if(is_secret_level(mob_eye.z) && !client?.holder)
 			set_sight(null) //we dont want ghosts to see through walls in secret areas
-		RegisterSignal(mob_eye, COMSIG_MOVABLE_Z_CHANGED, .proc/on_observing_z_changed)
+		RegisterSignal(mob_eye, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_observing_z_changed))
 		if(mob_eye.hud_used)
 			client.screen = list()
 			LAZYOR(mob_eye.observers, src)

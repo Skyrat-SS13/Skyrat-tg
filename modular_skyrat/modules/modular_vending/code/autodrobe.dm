@@ -1,5 +1,5 @@
 /obj/machinery/vending/autodrobe
-	skyrat_products = list(
+	skyrat_product_categories = list(
 		list(
 			"name" = "Costumes",
 			"icon" = "mask",
@@ -25,9 +25,10 @@
 			"name" = "Fancy",
 			"icon" = "user-tie",
 			"products" = list(
-				/obj/item/clothing/under/costume/skyrat/vicvest = 5,
+				/obj/item/clothing/under/pants/skyrat/vicvest = 5,
 				/obj/item/clothing/under/costume/skyrat/kamishimo = 5,
 				/obj/item/clothing/under/costume/skyrat/yukata = 5,
+				/obj/item/clothing/under/costume/skyrat/kimono = 5,
 			),
 		),
 		list(

@@ -3,7 +3,7 @@ GLOBAL_LIST_INIT(tier1_reward, list(
 	/obj/item/stack/sheet/sinew = 1,
 	/obj/item/stack/sheet/animalhide/goliath_hide = 1,
 	/obj/item/stack/sheet/bone = 1,
-	/obj/item/organ/internal/regenerative_core/legion = 1,
+	/obj/item/organ/internal/monster_core/regenerative_core/legion = 1,
 ))
 
 GLOBAL_LIST_INIT(tier2_reward, list(
@@ -47,7 +47,7 @@ GLOBAL_LIST_INIT(weapon_reward, list(
 	/obj/item/claymore/cutlass = 1,
 	/obj/item/gun/ballistic/automatic/pistol = 1,
 	/obj/item/shield/riot = 1,
-	/obj/item/shield/riot/roman = 1,
+	/obj/item/shield/roman = 1,
 	/obj/item/pneumatic_cannon = 1,
 	/obj/item/gun/syringe/rapidsyringe = 1,
 ))
@@ -97,7 +97,7 @@ GLOBAL_LIST_INIT(animal_reward, list(
 	/obj/item/stack/sheet/sinew = 1,
 	/obj/item/stack/sheet/animalhide/goliath_hide = 1,
 	/obj/item/stack/sheet/bone = 1,
-	/obj/item/organ/internal/regenerative_core/legion = 1,
+	/obj/item/organ/internal/monster_core/regenerative_core/legion = 1,
 ))
 
 GLOBAL_LIST_INIT(alien_reward, list(

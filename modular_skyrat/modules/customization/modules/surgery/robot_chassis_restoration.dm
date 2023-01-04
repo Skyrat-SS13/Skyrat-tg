@@ -83,7 +83,7 @@
 	target.grab_ghost()
 	target.updatehealth()
 	target.setOrganLoss(ORGAN_SLOT_BRAIN, target.getOrganLoss(ORGAN_SLOT_BRAIN) - 200)
-	if(target.revive(full_heal = FALSE, admin_revive = FALSE))
+	if(target.revive())
 		target.emote("chime")
 		target.visible_message(span_notice("...[target] reactivates, their chassis coming online!"))
 		to_chat(target, span_danger("[CONFIG_GET(string/blackoutpolicy)]"))

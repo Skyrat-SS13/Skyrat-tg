@@ -44,3 +44,7 @@
 	unmark_patient(potential_patient = patient)
 	if(numbing_capable)
 		thaw_them(patient)
+
+/obj/structure/table/reinforced/Initialize()
+	. = ..()
+	AddElement(/datum/element/liquids_height, 20)

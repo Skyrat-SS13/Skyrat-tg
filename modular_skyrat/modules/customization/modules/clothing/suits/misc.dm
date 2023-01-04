@@ -8,68 +8,14 @@
 	body_parts_covered = CHEST|GROIN
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/toggle/labcoat/hospitalgown
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "hospital gown"
-	desc = "A complicated drapery with an assortment of velcros and strings, designed to keep a patient modest during medical stay and surgeries."
-	icon_state = "hgown"
-	toggle_noun = "drapes"
-	body_parts_covered = NONE
-	armor = NONE
-	equip_delay_other = 8
-
-/obj/item/clothing/suit/toggle/labcoat/medical
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "medical labcoat"
-	desc = "A modest labcoat with medical coloring, meant to distinguish personnel in the line of duty."
-	icon_state = "labcoat_gen"
-
 /obj/item/clothing/suit/dutchjacketsr
 	name = "western jacket"
 	desc = "Botanists screaming of mangos have been rumored to wear this."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "dutchjacket"
-
-/obj/item/clothing/suit/hawaiian_blue
-	name = "blue hawaiian shirt"
-	desc = "Strangely en vouge with aviator wearing shibas."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "hawaiian_blue"
-	body_parts_covered = CHEST|GROIN
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-
-/obj/item/clothing/suit/hawaiian_orange
-	name = "orange hawaiian shirt"
-	desc = "Strangely en vouge with aviator wearing shibas."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "hawaiian_orange"
-	body_parts_covered = CHEST|GROIN
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/suit/hawaiian_purple
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "purple hawaiian shirt"
-	icon_state = "hawaiian_purple"
-	desc = "Strangely en vouge with aviator wearing shibas."
-	body_parts_covered = CHEST|GROIN
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-
-/obj/item/clothing/suit/hawaiian_green
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "green hawaiian shirt"
-	icon_state = "hawaiian_green"
-	desc = "Strangely en vouge with aviator wearing shibas."
-	body_parts_covered = CHEST|GROIN
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/toggle/trackjacket
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -312,7 +258,7 @@
 		for(var/mob/living/silicon/S in orange(2,src))
 			if(istype(S, /mob/living/silicon/ai)) continue
 			step_towards(S,src)
-		for(var/datum/species/robotic/R in orange(2,src))
+		for(var/datum/species/synthetic/R in orange(2,src))
 			step_towards(R,src)
 
 /obj/item/clothing/suit/trenchbrown
@@ -330,3 +276,29 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "bltrenchcoat"
 	body_parts_covered = CHEST|ARMS
+
+/obj/item/clothing/suit/apron/chef/colorable_apron
+	name = "apron"
+	desc = "A basic apron."
+	icon = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
+	worn_icon = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
+	worn_icon_teshari = 'modular_skyrat/modules/GAGS/icons/suit/suit_teshari.dmi'
+	icon_state = "apron"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	greyscale_colors = "#ffffff"
+	greyscale_config = /datum/greyscale_config/apron
+	greyscale_config_worn = /datum/greyscale_config/apron/worn
+	greyscale_config_worn_teshari = /datum/greyscale_config/apron/worn/teshari
+	greyscale_config_worn_better_vox = /datum/greyscale_config/apron/worn/newvox
+	greyscale_config_worn_vox = /datum/greyscale_config/apron/worn/oldvox
+	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/suit/hawaiian_shirt
+	name = "hawaiian shirt"
+	desc = "Strangely en vogue with aviator wearing shibas."
+	icon_state = "hawaiianshirt"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	greyscale_config = /datum/greyscale_config/hawaiian_shirt
+	greyscale_config_worn = /datum/greyscale_config/hawaiian_shirt/worn
+	greyscale_colors = "#313B82#CCCFF0"
+	flags_1 = IS_PLAYER_COLORABLE_1

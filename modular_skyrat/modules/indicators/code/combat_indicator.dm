@@ -1,4 +1,4 @@
-#define COMBAT_NOTICE_COOLDOWN 10 SECONDS
+#define COMBAT_NOTICE_COOLDOWN (10 SECONDS)
 GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 
 /proc/GenerateCombatOverlay()
@@ -101,7 +101,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 		combat_indicator = TRUE
 		apply_status_effect(/datum/status_effect/grouped/surrender, src)
 		log_message("<font color='red'>has turned ON the combat indicator!</font>", LOG_ATTACK)
-		RegisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS, .proc/combat_indicator_unconscious_signal) //From now on, whenever this mob falls unconcious, the referenced proc will fire.
+		RegisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS, PROC_REF(combat_indicator_unconscious_signal)) //From now on, whenever this mob falls unconcious, the referenced proc will fire.
 	else
 		combat_indicator = FALSE
 		remove_status_effect(/datum/status_effect/grouped/surrender, src)
@@ -190,6 +190,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 
 /datum/emote/living/surrender
 	message = "drops to the floor and raises their hands defensively! They surrender%s!"
+	stat_allowed = SOFT_CRIT
 
 /datum/emote/living/surrender/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -198,3 +199,9 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 		living_user.Paralyze(200)
 		living_user.remove_status_effect(/datum/status_effect/grouped/surrender, src)
 		living_user.set_combat_indicator(FALSE)
+
+/datum/emote/living/surrender/select_message_type(mob/user, intentional)
+	var/mob/living/living_mob = user
+	if(living_mob?.body_position == LYING_DOWN)
+		return "raises their hands defensively! They surrender%s!"
+	. = ..()

@@ -33,6 +33,10 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "Knee Boots"
 	item_path = /obj/item/clothing/shoes/jackboots/knee
 
+/datum/loadout_item/shoes/recolorable_jackboots
+	name = "Recolorable Jackboots"
+	item_path = /obj/item/clothing/shoes/jackboots/recolorable
+
 /*
 *	MISC BOOTS
 */
@@ -161,13 +165,21 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "Laceup Shoes"
 	item_path = /obj/item/clothing/shoes/laceup
 
+/datum/loadout_item/shoes/recolorable_laceups
+	name = "Recolorable Laceups"
+	item_path = /obj/item/clothing/shoes/colorable_laceups
+
+/datum/loadout_item/shoes/recolorable_sandals
+	name = "Recolorble Sandals"
+	item_path = /obj/item/clothing/shoes/colorable_sandals
+
 /datum/loadout_item/shoes/high_heels
 	name = "High Heels"
 	item_path = /obj/item/clothing/shoes/high_heels
 
 /datum/loadout_item/shoes/black_heels
-	name = "Black Heels"
-	item_path = /obj/item/clothing/shoes/black_heels
+	name = "Fancy Heels"
+	item_path = /obj/item/clothing/shoes/fancy_heels
 
 /datum/loadout_item/shoes/disco
 	name = "Green Snakeskin Shoes"

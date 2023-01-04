@@ -239,10 +239,10 @@
 	if(!current_user.client) // I hate byond.
 		return
 
-	RegisterSignal(current_user, COMSIG_MOB_LOGIN, .proc/reregister_trigger) // I really really hate byond.
-	RegisterSignal(current_user.client, COMSIG_CLIENT_MOUSEDOWN, .proc/trigger_pulled)
-	RegisterSignal(current_user.client, COMSIG_CLIENT_MOUSEUP, .proc/trigger_released)
-	RegisterSignal(current_user.client, COMSIG_CLIENT_MOUSEDRAG, .proc/update_target_drag)
+	RegisterSignal(current_user, COMSIG_MOB_LOGIN, PROC_REF(reregister_trigger)) // I really really hate byond.
+	RegisterSignal(current_user.client, COMSIG_CLIENT_MOUSEDOWN, PROC_REF(trigger_pulled))
+	RegisterSignal(current_user.client, COMSIG_CLIENT_MOUSEUP, PROC_REF(trigger_released))
+	RegisterSignal(current_user.client, COMSIG_CLIENT_MOUSEDRAG, PROC_REF(update_target_drag))
 
 	user_to_buckle.client?.view_size.setTo(view_range)
 	user_to_buckle.pixel_y = 14
@@ -286,7 +286,7 @@
 
 	last_target_atom = WEAKREF(_target)
 
-	INVOKE_ASYNC(src, .proc/process_fire, shooting_client, params)
+	INVOKE_ASYNC(src, PROC_REF(process_fire), shooting_client, params)
 
 /obj/machinery/mounted_machine_gun/proc/process_fire(client/shooting_client, params)
 	if(!shooting_client)
@@ -295,7 +295,7 @@
 	if(!fire_at(shooting_client, params))
 		return
 
-	nextshot_timer_id = addtimer(CALLBACK(src, .proc/process_fire, shooting_client), fire_delay, TIMER_STOPPABLE)
+	nextshot_timer_id = addtimer(CALLBACK(src, PROC_REF(process_fire), shooting_client), fire_delay, TIMER_STOPPABLE)
 
 /obj/machinery/mounted_machine_gun/proc/fire_at(client/shooting_client, params)
 	if(!current_user)
@@ -326,7 +326,7 @@
 		overheated = TRUE
 		playsound(src, 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg_overheat.ogg', 100)
 		particles = new /particles/smoke()
-		addtimer(CALLBACK(src, .proc/reset_overheat), cooldown_time)
+		addtimer(CALLBACK(src, PROC_REF(reset_overheat)), cooldown_time)
 
 	update_appearance()
 
@@ -351,9 +351,9 @@
 // Re-registers the required signals to the client after they reconnect.
 /obj/machinery/mounted_machine_gun/proc/reregister_trigger(mob/source_mob)
 	SIGNAL_HANDLER
-	RegisterSignal(source_mob, COMSIG_CLIENT_MOUSEDOWN, .proc/trigger_pulled, TRUE)
-	RegisterSignal(source_mob.client, COMSIG_CLIENT_MOUSEUP, .proc/trigger_released, TRUE)
-	RegisterSignal(current_user.client, COMSIG_CLIENT_MOUSEDRAG, .proc/update_target_drag, TRUE)
+	RegisterSignal(source_mob, COMSIG_CLIENT_MOUSEDOWN, PROC_REF(trigger_pulled), TRUE)
+	RegisterSignal(source_mob.client, COMSIG_CLIENT_MOUSEUP, PROC_REF(trigger_released), TRUE)
+	RegisterSignal(current_user.client, COMSIG_CLIENT_MOUSEDRAG, PROC_REF(update_target_drag), TRUE)
 
 // Performs all checks and plays a sound if we can't fire.
 /obj/machinery/mounted_machine_gun/proc/can_fire()

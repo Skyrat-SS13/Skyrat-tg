@@ -1,4 +1,4 @@
-#define TRUE_CHANGELING_REFORM_THRESHOLD 5 MINUTES
+#define TRUE_CHANGELING_REFORM_THRESHOLD (5 MINUTES)
 #define TRUE_CHANGELING_PASSIVE_HEAL 3 //Amount of brute damage restored per tick
 
 //Changelings in their true form.
@@ -25,7 +25,7 @@
 	healable = FALSE
 	see_in_dark = 8
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-	environment_smash = TRUE
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	melee_damage_lower = 40
 	melee_damage_upper = 40
 	wander = FALSE
@@ -106,10 +106,10 @@
 		anchored = TRUE
 		turn_to_human.Remove()
 		AddComponent(/datum/component/pellet_cloud, projectile_type=/obj/projectile/bullet/pellet/bone_fragment, magnitude=8)
-		addtimer(CALLBACK(src, .proc/real_death), rand(3 SECONDS, 6 SECONDS))
+		addtimer(CALLBACK(src, PROC_REF(real_death)), rand(3 SECONDS, 6 SECONDS))
 	else
 		visible_message(span_warning("[src] lets out a waning scream as it falls, twitching, to the floor."))
-		addtimer(CALLBACK(src, .proc/revive_from_death), 45 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(revive_from_death)), 45 SECONDS)
 
 /mob/living/simple_animal/hostile/true_changeling/proc/revive_from_death()
 	if(!src)
@@ -172,89 +172,90 @@
 /datum/action/innate/turn_to_human
 	name = "Re-Form Human Shell"
 	desc = "We turn back into a human. This takes considerable effort and will stun us for some time afterwards."
-	icon_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
+	button_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
 	button_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
 	background_icon_state = "bg_changeling"
 	button_icon_state = "change_to_human"
 
 /datum/action/innate/turn_to_human/Trigger(trigger_flags)
-	var/mob/living/simple_animal/hostile/true_changeling/C = owner
-	if(!C.stored_changeling)
-		to_chat(C,span_warning("We do not have a form other than this!"))
+	var/mob/living/simple_animal/hostile/true_changeling/horrorform = owner
+	if(!horrorform.stored_changeling)
+		horrorform.balloon_alert(horrorform, "our only form!")
 		return FALSE
-	if(C.stored_changeling.stat == DEAD)
-		to_chat(C,span_warning("Our human form is dead!"))
+	if(horrorform.stored_changeling.stat == DEAD)
+		horrorform.balloon_alert(horrorform, "body is dead!")
 		return FALSE
-	if(world.time - C.transformed_time < TRUE_CHANGELING_REFORM_THRESHOLD)
-		var/timeleft = (C.transformed_time + TRUE_CHANGELING_REFORM_THRESHOLD) - world.time
-		to_chat(C,span_warning("We are still unable to change back at will! We need to wait [round(timeleft/600)+1] minutes."))
+	if(world.time - horrorform.transformed_time < TRUE_CHANGELING_REFORM_THRESHOLD)
+		var/timeleft = (horrorform.transformed_time + TRUE_CHANGELING_REFORM_THRESHOLD) - world.time
+		horrorform.balloon_alert(horrorform, "wait [round(timeleft/600)+1] minutes!")
 		return FALSE
-	C.visible_message(span_warning("[C] suddenly crunches and twists into a smaller form!"), \
+	horrorform.visible_message(span_warning("[horrorform] suddenly crunches and twists into a smaller form!"), \
 						span_danger("We return to our lesser form."))
-	C.stored_changeling.loc = get_turf(C)
-	C.mind.transfer_to(C.stored_changeling)
-	C.stored_changeling.Stun(2 SECONDS)
-	C.stored_changeling.status_flags &= ~GODMODE
-	qdel(C)
+	horrorform.stored_changeling.loc = get_turf(horrorform)
+	horrorform.mind.transfer_to(horrorform.stored_changeling)
+	horrorform.stored_changeling.Stun(2 SECONDS)
+	horrorform.stored_changeling.status_flags &= ~GODMODE
+	qdel(horrorform)
 	return TRUE
 
 /datum/action/innate/devour
 	name = "Devour"
 	desc = "We tear into the innards of a human. After some time, they will be significantly damaged and our health partially restored."
-	icon_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
+	button_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
 	background_icon_state = "bg_changeling"
 	button_icon_state = "devour"
 
 /datum/action/innate/devour/Trigger(trigger_flags)
-	var/mob/living/simple_animal/hostile/true_changeling/T = owner
-	if(T.devouring)
-		T << span_warning("We are already feasting on a human!")
+	var/mob/living/simple_animal/hostile/true_changeling/horrorform = owner
+	if(horrorform.devouring)
+		horrorform.balloon_alert(horrorform, "already eating!")
 		return FALSE
 	var/list/potential_targets = list()
-	for(var/mob/living/carbon/human/H in range(1, usr))
-		if(H == T.stored_changeling || (H.mind && H.mind.has_antag_datum(/datum/antagonist/changeling))) //You can't eat changelings in human form
+	for(var/mob/living/carbon/human/victim in range(1, usr))
+		if(victim == horrorform.stored_changeling || (victim.mind && victim.mind.has_antag_datum(/datum/antagonist/changeling))) //You can't eat changelings in human form
 			continue
-		potential_targets.Add(H)
-	if(!potential_targets.len)
-		T << span_warning("There are no humans nearby!")
+		potential_targets.Add(victim)
+	if(!length(potential_targets))
+		horrorform.balloon_alert(horrorform, "no carbons!")
 		return FALSE
 	var/mob/living/carbon/human/lunch
-	if(potential_targets.len == 1)
+	if(length(potential_targets) == 1)
 		lunch = potential_targets[1]
 	else
-		lunch = input(T, "Choose a human to devour.", "Lunch") as null|anything in potential_targets
+		lunch = tgui_input_list(horrorform, "Choose a human to devour.", "Lunch", potential_targets)
 	if(!lunch && !ishuman(lunch))
 		return FALSE
 	if(lunch.getBruteLoss() + lunch.getFireLoss() >= 200) //Overall physical damage, basically
-		T.visible_message(span_warning("[lunch] provides no further nutrients for [T]!"), \
+		horrorform.visible_message(span_warning("[lunch] provides no further nutrients for [horrorform]!"), \
 						span_danger("[lunch] has no more useful flesh for us to consume!!"))
 		return FALSE
-	T.devouring = TRUE
-	T.visible_message(span_warning("[T] begins ripping apart and feasting on [lunch]!"), \
+	horrorform.devouring = TRUE
+	horrorform.visible_message(span_warning("[horrorform] begins ripping apart and feasting on [lunch]!"), \
 					span_danger("We begin to feast upon [lunch]..."))
-	if(!do_mob(usr, 50, target = lunch))
-		T.devouring = FALSE
+	if(!do_mob(usr, lunch, 5 SECONDS))
+		horrorform.devouring = FALSE
 		return FALSE
-	T.devouring = FALSE
+	horrorform.devouring = FALSE
 	lunch.adjustBruteLoss(60)
-	T.visible_message(span_warning("[T] tears a chunk from [lunch]'s flesh!"), \
+	horrorform.visible_message(span_warning("[horrorform] tears a chunk from [lunch]'s flesh!"), \
 					span_danger("We tear a chunk of flesh from [lunch] and devour it!"))
-	lunch << span_userdanger("[T] takes a huge bite out of you!")
+	to_chat(lunch, span_userdanger("[horrorform] takes a huge bite out of you!"))
 	lunch.spawn_gibs()
 	var/dismembered = FALSE
-	for(var/obj/item/bodypart/BP in lunch.bodyparts)
-		if(prob(40) && !dismembered)
-			if(BP.name == "chest" || BP.name == "head")
-				continue
-			BP.dismember()
-			dismembered = TRUE
+	for(var/obj/item/bodypart/guts in lunch.bodyparts)
+		if(dismembered)
+			break
+		if(prob(60) || guts.body_part == CHEST || guts.body_part == HEAD)
+			continue
+		guts.dismember()
+		dismembered = TRUE
 	playsound(lunch, 'sound/effects/splat.ogg', 50, 1)
 	playsound(lunch, 'modular_skyrat/modules/horrorform/sound/tear.ogg', 50, 1)
 	lunch.emote("scream")
 	if(lunch.nutrition >= NUTRITION_LEVEL_FAT)
-		T.adjustBruteLoss(-100) //Tasty leetle peegy
+		horrorform.adjustBruteLoss(-100) //Tasty leetle peegy
 	else
-		T.adjustBruteLoss(-50)
+		horrorform.adjustBruteLoss(-50)
 
 #undef TRUE_CHANGELING_REFORM_THRESHOLD
 #undef TRUE_CHANGELING_PASSIVE_HEAL

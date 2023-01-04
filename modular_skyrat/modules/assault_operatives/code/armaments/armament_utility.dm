@@ -1,40 +1,18 @@
-#define ARMAMENT_CATEGORY_UTILITY "Utility Supplies"
-#define ARMAMENT_CATEGORY_UTILITY_LIMIT 8
-#define ARMAMENT_SUBCATEGORY_UTILITY_ARMOR "Armor"
-
 /datum/armament_entry/assault_operatives/utility
-	category = ARMAMENT_CATEGORY_UTILITY
-	category_item_limit = ARMAMENT_CATEGORY_UTILITY_LIMIT
+	category = "Utility Items"
+	category_item_limit = 8
 
-/datum/armament_entry/assault_operatives/utility/armor
-	subcategory = ARMAMENT_SUBCATEGORY_UTILITY_ARMOR
-
-/datum/armament_entry/assault_operatives/utility/armor/elite_modsuit
-	name = "Elite Syndicate MODsuit"
-	item_type = /obj/item/mod/control/pre_equipped/elite
-	cost = 8
-
-/datum/armament_entry/assault_operatives/utility/armor/infiltrator
-	name = "Infiltrator MODsuit"
-	item_type = /obj/item/mod/control/pre_equipped/infiltrator
-	cost = 4
-
-/datum/armament_entry/assault_operatives/utility/gun_maint
-	item_type = /obj/item/gun_maintenance_supplies
-	cost = 1
-	max_purchase = 5
-
-/datum/armament_entry/assault_operatives/utility/survival_pack
-	item_type = /obj/item/storage/box/nri_survival_pack
+/datum/armament_entry/assault_operatives/utility/suppressor
+	item_type = /obj/item/suppressor
 	cost = 1
 
 /datum/armament_entry/assault_operatives/utility/thermals
 	item_type = /obj/item/clothing/glasses/thermal
 	cost = 4
 
-/datum/armament_entry/assault_operatives/utility/sunglasses
-	item_type = /obj/item/clothing/glasses/sunglasses
-	cost = 1
+/datum/armament_entry/assault_operatives/utility/chem_keycard
+	item_type = /obj/item/keycard/assault_ops_chemistry
+	cost = 3
 
 /datum/armament_entry/assault_operatives/utility/doorjack
 	item_type = /obj/item/card/emag/doorjack
@@ -52,44 +30,17 @@
 	item_type = /obj/item/storage/bag/ammo
 	cost = 1
 
-/datum/armament_entry/assault_operatives/utility/pouch_knives
-	item_type = /obj/item/storage/bag/ammo/marksman
-	description = "A pouch that contains five throwing knives. They are capable of embedding into targets and penetrating protective armor."
-	cost = 3
-	max_purchase = 3
-
-/datum/armament_entry/assault_operatives/utility/toolbox
-	item_type = /obj/item/storage/toolbox/syndicate
-	cost = 1
-
-/datum/armament_entry/assault_operatives/utility/dehy_carp
-	item_type = /obj/item/toy/plush/carpplushie/dehy_carp
-	cost = 1
-
-/datum/armament_entry/assault_operatives/utility/tactical_shield
-	item_type = /obj/item/shield/riot/pointman
-	cost = 2
-
-/datum/armament_entry/assault_operatives/utility/extending_shield
-	item_type = /obj/item/shield/riot/tele
-	cost = 5
-
 /datum/armament_entry/assault_operatives/utility/noslip
 	name = "Chameleon No-Slips"
 	item_type = /obj/item/clothing/shoes/chameleon/noslip
 	description = "No-slip chameleon shoes, for when you plan on running through hell and back."
 	cost = 2
 
-/datum/armament_entry/assault_operatives/utility/holoparasite
-	item_type = /obj/item/guardiancreator/tech/choose/traitor
-	cost = 9
-
-/datum/armament_entry/assault_operatives/utility/launchpad
-	name = "Briefcase Launchpad"
-	item_type = /obj/item/storage/briefcase/launchpad
-	description = "A briefcase containing a launchpad, a device able to teleport items and people to and from targets up to eight tiles away from the briefcase. \
-			Also includes a remote control, disguised as an ordinary folder. Touch the briefcase with the remote to link it."
-	cost = 3
+/datum/armament_entry/assault_operatives/utility/cham_kit
+	name = "Chameleon Kit"
+	item_type = /obj/item/storage/box/syndie_kit/chameleon
+	description = "A full set of clothing that is capable of taking the appearance of any other type of clothing, perfect for hiding in plain sight."
+	cost = 2
 
 /datum/armament_entry/assault_operatives/utility/syndiejaws
 	name = "Syndicate Jaws of Life"
@@ -107,13 +58,6 @@
 /datum/armament_entry/assault_operatives/utility/codespeak
 	item_type = /obj/item/language_manual/codespeak_manual/unlimited
 	cost = 1
-
-/datum/armament_entry/assault_operatives/utility/throwing_weapons
-	name = "Throwing Weapons Kit"
-	description = "A box of shurikens and reinforced bolas from ancient Earth martial arts. They are highly effective throwing weapons. The bolas can knock a target down and the shurikens will embed into limbs."
-	item_type = /obj/item/storage/box/syndie_kit/throwing_weapons
-	cost = 3
-	max_purchase = 3
 
 /datum/armament_entry/assault_operatives/utility/binoculars
 	item_type = /obj/item/binoculars

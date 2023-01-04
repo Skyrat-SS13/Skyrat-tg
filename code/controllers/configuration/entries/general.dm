@@ -111,8 +111,6 @@
 
 /datum/config_entry/flag/log_subtler // log subtler emotes //SKYRAT EDIT ADDITION
 
-/datum/config_entry/flag/lobby_camera // enable lobby camera //SKYRAT EDIT ADDITION
-
 /datum/config_entry/flag/log_econ // log economy actions
 
 /// log emotes
@@ -358,6 +356,8 @@
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
 /datum/config_entry/flag/show_irc_name
+
+/datum/config_entry/flag/no_default_techweb_link
 
 /datum/config_entry/flag/see_own_notes //Can players see their own admin notes
 

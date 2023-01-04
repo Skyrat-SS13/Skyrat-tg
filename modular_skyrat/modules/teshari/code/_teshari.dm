@@ -3,8 +3,6 @@
 #define TESHARI_BRUTEMOD 1.2
 #define TESHARI_HEATMOD 1.3
 #define TESHARI_COLDMOD 0.67 // Except cold.
-#define TESHARI_PUNCH_LOW 2 // Lower bound punch damage
-#define TESHARI_PUNCH_HIGH 6
 
 /datum/species/teshari
 	name = "Teshari"
@@ -31,10 +29,6 @@
 	disliked_food = GROSS | GRAIN | GORE
 	liked_food = MEAT
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	attack_verb = "slash"
-	attack_effect = ATTACK_EFFECT_CLAW
-	attack_sound = 'sound/weapons/slash.ogg'
-	miss_sound = 'sound/weapons/slashmiss.ogg'
 	payday_modifier = 0.75
 	custom_worn_icons = list(
 		LOADOUT_ITEM_HEAD = TESHARI_HEAD_ICON,
@@ -55,8 +49,6 @@
 	heatmod = TESHARI_HEATMOD
 	brutemod = TESHARI_BRUTEMOD
 	burnmod = TESHARI_BURNMOD
-	punchdamagelow = TESHARI_PUNCH_LOW
-	punchdamagehigh = TESHARI_PUNCH_HIGH
 	bodytemp_normal = BODYTEMP_NORMAL + TESHARI_TEMP_OFFSET
 	bodytemp_heat_damage_limit = (BODYTEMP_HEAT_DAMAGE_LIMIT + TESHARI_TEMP_OFFSET)
 	bodytemp_cold_damage_limit = (BODYTEMP_COLD_DAMAGE_LIMIT + TESHARI_TEMP_OFFSET)
@@ -65,10 +57,10 @@
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/teshari,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/teshari,
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant/teshari,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant/teshari,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/teshari,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/teshari,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/mutant/teshari,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant/teshari,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant/teshari,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/teshari,
 	)
 
 /datum/species/teshari/random_name(gender, unique, lastname)

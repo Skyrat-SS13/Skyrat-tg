@@ -6,8 +6,8 @@
 /datum/component/return_on_death/Initialize(mob/source)
 	if(!ismob(parent))
 		return COMPONENT_INCOMPATIBLE
-	RegisterSignal(parent, COMSIG_LIVING_DEATH, .proc/return_to_old_body)
-	RegisterSignal(parent, COMSIG_PARENT_QDELETING, .proc/return_to_old_body)
+	RegisterSignal(parent, COMSIG_LIVING_DEATH, PROC_REF(return_to_old_body))
+	RegisterSignal(parent, COMSIG_PARENT_QDELETING, PROC_REF(return_to_old_body))
 	sourcemob = source
 
 /datum/component/return_on_death/proc/return_to_old_body()

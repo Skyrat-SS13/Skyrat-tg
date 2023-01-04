@@ -59,13 +59,6 @@
 	name = "Nanotrasen Research Facility"
 	description = "A small, recently abandoned research outpost, perhaps there's time to see what went wrong before Nanotrasen wipes it from their records?"
 
-/datum/map_template/ruin/space/skyrat/normal_space_tile
-	id = "normal_space_tile"
-	suffix = "completelynormalspacetile.dmm"
-	name = "Completely Normal Space Tile"
-	description = "A completely normal space tile, nothing strange with it at all."
-	cost = 0 //Wasting space budget on this meme of a ruin is stupid, sorry.
-
 /datum/map_template/ruin/space/skyrat/codealpha
 	id = "codealpha"
 	suffix = "codealpha.dmm"
@@ -78,10 +71,10 @@
 	name = "Suspicious Cargo Installation"
 	description = "*SCREECH* RDM RDM RDM"
 
-/datum/map_template/ruin/space/skyrat/polychromicfacility
-	id = "polychromicfacility"
-	suffix = "polychromicfacility.dmm"
-	name = "Abandoned Polychromic Facility"
+/datum/map_template/ruin/space/skyrat/clothing_facility
+	id = "clothing_facility"
+	suffix = "clothing_facility.dmm"
+	name = "Abandoned Clothing Facility"
 	description = "A den of bad ideas. Secborgs were made here!"
 
 /datum/map_template/ruin/space/skyrat/luna

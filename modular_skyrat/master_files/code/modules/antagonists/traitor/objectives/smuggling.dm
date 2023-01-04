@@ -11,6 +11,8 @@
 	You will instantly fail this objective if anyone else picks up your contraband. If you fail, you are liable for the costs \
 	of the smuggling item."
 
+	progression_minimum = 0
+
 	progression_reward = list(5 MINUTES, 9 MINUTES)
 	telecrystal_reward = list(0, 1)
 
@@ -27,13 +29,14 @@
 		/obj/item/reagent_containers/cup/bottle/ritual_wine = 6, // poison kit price
 	)
 
-/datum/traitor_objective/smuggle/is_duplicate(datum/traitor_objective/smuggle/objective_to_compare)
-	if(objective_to_compare.contraband_type == contraband_type)
-		return TRUE
-	// it's too similar if its from the same area
-	if(objective_to_compare.smuggle_spawn_type == smuggle_spawn_type)
-		return TRUE
-	return FALSE
+/datum/traitor_objective/smuggle/can_generate_objective(datum/mind/generating_for, list/possible_duplicates)
+	for(var/datum/traitor_objective/smuggle/objective_to_compare as anything in possible_duplicates)
+		if(objective_to_compare.contraband_type == contraband_type)
+			return FALSE
+		// it's too similar if its from the same area
+		if(objective_to_compare.smuggle_spawn_type == smuggle_spawn_type)
+			return FALSE
+	return TRUE
 
 /datum/traitor_objective/smuggle/generate_ui_buttons(mob/user)
 	var/list/buttons = list()
@@ -54,7 +57,7 @@
 			contraband = new contraband_type(user.drop_location())
 			user.put_in_hands(contraband)
 			user.balloon_alert(user, "[contraband] materializes in your hand")
-			RegisterSignal(contraband, COMSIG_ITEM_PICKUP, .proc/on_contraband_pickup)
+			RegisterSignal(contraband, COMSIG_ITEM_PICKUP, PROC_REF(on_contraband_pickup))
 			AddComponent(/datum/component/traitor_objective_register, contraband, \
 				succeed_signals = COMSIG_ITEM_EXPORTED, \
 				fail_signals = list(COMSIG_PARENT_QDELETING), \

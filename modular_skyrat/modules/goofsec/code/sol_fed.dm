@@ -316,7 +316,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	shoes = /obj/item/clothing/shoes/cowboy
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/headset_sec/alt
-	head = /obj/item/clothing/head/hunter
+	head = /obj/item/clothing/head/cowboy
 	belt = /obj/item/gun/energy/disabler
 	r_pocket = /obj/item/lighter
 	l_pocket = /obj/item/restraints/handcuffs
@@ -361,7 +361,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 /obj/item/mod/control/pre_equipped/atmospheric/breach_control //Just a different kit as 811 wont be raiding Robotics; otherwise the same look (For now???)
 	theme = /datum/mod_theme/atmospheric/breach_control
 	applied_cell = /obj/item/stock_parts/cell/super
-	initial_modules = list(
+	applied_modules = list(
 		/obj/item/mod/module/storage/large_capacity,
 		/obj/item/mod/module/welding,
 		/obj/item/mod/module/rad_protection,
@@ -433,7 +433,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	shoes = /obj/item/clothing/shoes/jackboots
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/headset_sec/alt
-	head = /obj/item/clothing/head/helmet/riot
+	head = /obj/item/clothing/head/helmet/toggleable/riot
 	belt = /obj/item/gun/energy/disabler
 	suit = /obj/item/clothing/suit/armor/riot
 	r_pocket = /obj/item/lighter

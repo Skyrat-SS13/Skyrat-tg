@@ -1,14 +1,3 @@
-/obj/item/clothing/under/misc/colourable_kilt
-	name = "colourable kilt"
-	desc = "It's not a skirt!"
-	icon_state = "kilt"
-	greyscale_config = /datum/greyscale_config/kilt
-	greyscale_config_worn = /datum/greyscale_config/kilt/worn
-	greyscale_colors = "#008000#777777"
-	flags_1 = IS_PLAYER_COLORABLE_1
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/under/misc/bluetracksuit //ORION TODO: sort out a recolorable solution to this? (Upstream? They have trackpants already...)
 	name = "blue tracksuit"
 	desc = "Found on a dead homeless man squatting in an alleyway, the classic design has been mass produced to bring terror to the galaxy."
@@ -55,8 +44,8 @@
 /obj/item/clothing/under/rank/security/peacekeeper/trousers
 	name = "peacekeeper's trousers"
 	desc = "Some light blue combat trousers, however you get protected by these, I have no idea."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "workpants_blue"
 	body_parts_covered = GROIN
 	can_adjust = FALSE
@@ -66,6 +55,6 @@
 /obj/item/clothing/under/rank/security/peacekeeper/trousers/red
 	name = "security officer's trousers"
 	desc = "Some red combat trousers, however you get protected by these, I have no idea."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "workpants_red"

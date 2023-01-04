@@ -16,6 +16,7 @@
 	exp_required_type = EXP_TYPE_CREW
 	exp_required_type_department = EXP_TYPE_SECURITY
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "HEAD_OF_SECURITY"
 
 	outfit = /datum/outfit/job/hos
 	plasmaman_outfit = /datum/outfit/plasmaman/head_of_security
@@ -24,7 +25,6 @@
 		/datum/job_department/command,
 		)
 
-	mind_traits = list(TRAIT_DONUT_LOVER)
 	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM, TRAIT_ROYAL_METABOLISM)
 
 	paycheck = PAYCHECK_COMMAND
@@ -57,7 +57,7 @@
 		/obj/item/evidencebag = 1,
 		/obj/item/storage/box/gunset/glock18_hos = 1, //SKYRAT EDIT ADDITION
 		)
-	belt = /obj/item/modular_computer/tablet/pda/heads/hos
+	belt = /obj/item/modular_computer/pda/heads/hos
 	ears = /obj/item/radio/headset/heads/hos/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	gloves = /obj/item/clothing/gloves/color/black/security //SKYRAT EDIT CHANGE - Original: /obj/item/clothing/gloves/color/black

@@ -169,7 +169,7 @@
 	duration = 0.8 SECONDS // worth tweaking?
 
 /datum/status_effect/dodgeroll_iframes/on_apply()
-	RegisterSignal(owner, COMSIG_HUMAN_CHECK_SHIELDS, .proc/whiff)
+	RegisterSignal(owner, COMSIG_HUMAN_CHECK_SHIELDS, PROC_REF(whiff))
 	return TRUE
 
 /datum/status_effect/dodgeroll_iframes/on_remove()

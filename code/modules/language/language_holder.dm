@@ -56,7 +56,8 @@ Key procs
 ///datum/language_holder/New(atom/_owner) //ORIGINAL
 /datum/language_holder/New(atom/_owner, datum/preferences/pref_load) //SKYRAT EDIT CHANGE - CUSTOMIZATION
 	if(_owner && QDELETED(_owner))
-		CRASH("Langauge holder added to a qdeleting thing, what the fuck \ref[_owner]")
+		CRASH("Langauge holder added to a qdeleting thing, what the fuck [text_ref(_owner)]")
+
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	if(pref_load)
 		//If we're loading a holder from prefs, override the languages
@@ -67,6 +68,7 @@ Key procs
 			if(pref_load.languages[lang_path] == LANGUAGE_SPOKEN)
 				spoken_languages[lang_path] = list(LANGUAGE_ATOM)
 	//SKYRAT EDIT ADDITION END
+
 	owner = _owner
 	if(istype(owner, /datum/mind))
 		var/datum/mind/M = owner
@@ -430,6 +432,20 @@ Key procs
 								/datum/language/monkey = list(LANGUAGE_ATOM))
 	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
 							/datum/language/monkey = list(LANGUAGE_ATOM))
+
+/datum/language_holder/syndicate
+	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+								/datum/language/codespeak = list(LANGUAGE_ATOM))
+	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+								/datum/language/codespeak = list(LANGUAGE_ATOM))
+
+/datum/language_holder/beachbum
+	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+								/datum/language/beachbum = list(LANGUAGE_ATOM))
+	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+							/datum/language/beachbum = list(LANGUAGE_ATOM))
+	selected_language = /datum/language/beachbum
+
 /datum/language_holder/empty
 	understood_languages = list()
 	spoken_languages = list()

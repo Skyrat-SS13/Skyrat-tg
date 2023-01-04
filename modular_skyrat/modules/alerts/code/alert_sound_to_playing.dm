@@ -8,7 +8,7 @@
 	for(var/m in players)
 		if(ismob(m) && !isnewplayer(m))
 			var/mob/M = m
-			if(M.client.prefs.toggles & SOUND_ANNOUNCEMENTS && M.can_hear())
+			if(M.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements) && M.can_hear())
 				if(override_volume)
 					M.playsound_local(get_turf(M), S, 80, FALSE)
 				else

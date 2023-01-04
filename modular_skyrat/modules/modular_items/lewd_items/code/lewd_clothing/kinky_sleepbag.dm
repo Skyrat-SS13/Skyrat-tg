@@ -26,8 +26,8 @@
 	var/list/bag_states = list("deflated" = "inflated", "inflated" = "deflated")
 	var/state_thing = "deflated"
 	var/mutable_appearance/bag_overlay
-	var/obj/item/bodypart/l_leg/legr
-	var/obj/item/bodypart/l_leg/legl
+	var/obj/item/bodypart/leg/left/legr
+	var/obj/item/bodypart/leg/left/legl
 	slowdown = 2
 	equip_delay_other = 300
 	equip_delay_self = NONE
@@ -61,7 +61,7 @@
 			. = ..()
 			if(.)
 				return
-			var/choice = show_radial_menu(user, src, bag_colors, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
+			var/choice = show_radial_menu(user, src, bag_colors, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 			if(!choice)
 				return FALSE
 			bag_color = choice

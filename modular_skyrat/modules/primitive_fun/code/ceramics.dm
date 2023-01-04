@@ -1,4 +1,4 @@
-#define DEFAULT_SPIN 4 SECONDS
+#define DEFAULT_SPIN (4 SECONDS)
 
 /obj/structure/water_source/puddle/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/stack/ore/glass))

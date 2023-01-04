@@ -1,7 +1,7 @@
 #define SUNBEAM_OBLITERATION_RANGE_FIRE 2
 #define SUNBEAM_OBLITERATION_RANGE_FLATTEN 1
-#define SUNBEAM_OBLITERATION_COOLDOWN 0.2 SECONDS
-#define SUNBEAM_MOVEMENT_COOLDOWN 0.3 SECONDS
+#define SUNBEAM_OBLITERATION_COOLDOWN (0.2 SECONDS)
+#define SUNBEAM_MOVEMENT_COOLDOWN (0.3 SECONDS)
 #define SUNBEAM_DEFAULT_SCALE_X 2
 #define SUNBEAM_DEFAULT_SCALE_Y 2
 #define SUNBEAM_OVERLAYS 16
@@ -148,6 +148,7 @@
 	typepath = /datum/round_event/icarus_sunbeam
 	max_occurrences = 0
 	weight = 0
+	category = EVENT_CATEGORY_SPACE
 
 /datum/round_event/icarus_sunbeam
 	announce_when = 1 // Instant announcement

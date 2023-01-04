@@ -46,7 +46,7 @@
 	. = ..()
 	if(.)
 		return
-	var/choice = show_radial_menu(user, src, dildo_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
+	var/choice = show_radial_menu(user, src, dildo_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 	if(!choice)
 		return FALSE
 	current_color = choice
@@ -159,7 +159,7 @@
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE, ignore_walls = FALSE)
 
 /*
-*	POLYCHROMIC // this doesn't even use polychromism I Want To Die
+*	COLOUR CHANGING
 */
 
 GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
@@ -200,7 +200,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 /obj/item/clothing/sextoy/dildo/custom_dildo/AltClick(mob/living/user)
 	if(!size_changed)
-		var/choice = show_radial_menu(user, src, dildo_sizes, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, dildo_sizes, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		poly_size = choice
@@ -267,7 +267,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 /obj/item/clothing/sextoy/dildo/double_dildo/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-	update_action_buttons_icons()
+	update_mob_action_buttonss()
 
 /obj/item/clothing/sextoy/dildo/double_dildo/populate_dildo_designs()
 	return
@@ -276,17 +276,17 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	return
 
 /// Proc to update the actionbutton icon
-/obj/item/clothing/sextoy/dildo/double_dildo/proc/update_action_buttons_icons()
+/obj/item/clothing/sextoy/dildo/double_dildo/proc/update_mob_action_buttonss()
 	var/datum/action/item_action/action_button
 	if(istype(action_button, /datum/action/item_action/take_dildo))
 		action_button.button_icon_state = "dildo_side"
-		action_button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
+		action_button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 	update_icon()
 
 //button stuff
 /datum/action/item_action/take_dildo
-    name = "Take the other side of the double dildo in hand"
-    desc = "You can feel one side inside you, time to share this feeling with someone..."
+	name = "Take the other side of the double dildo in hand"
+	desc = "You can feel one side inside you, time to share this feeling with someone..."
 
 /datum/action/item_action/take_dildo/Trigger(trigger_flags)
 	var/obj/item/clothing/sextoy/dildo/double_dildo/dildo = target

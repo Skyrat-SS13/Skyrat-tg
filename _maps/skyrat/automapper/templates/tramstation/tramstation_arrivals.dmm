@@ -1113,16 +1113,9 @@
 	dir = 8
 	},
 /obj/machinery/light/directional/west,
-/turf/open/floor/iron,
-/area/station/hallway/secondary/entry)
-"RE" = (
-/obj/effect/turf_decal/tile{
-	dir = 1
+/obj/machinery/status_display/shuttle/directional/west{
+	shuttle_id = "arrivals_shuttle"
 	},
-/obj/effect/turf_decal/tile/yellow{
-	dir = 4
-	},
-/obj/structure/sign/warning/docking/directional/north,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "RG" = (
@@ -1296,6 +1289,9 @@
 	c_tag = "Arrivals - Landing Bay Lounge"
 	},
 /obj/structure/window/reinforced/spawner,
+/obj/machinery/status_display/shuttle/directional/west{
+	shuttle_id = "arrivals_shuttle"
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/hallway/secondary/entry)
 "WL" = (
@@ -1332,6 +1328,22 @@
 /turf/open/floor/iron/stairs{
 	dir = 4
 	},
+/area/station/hallway/secondary/entry)
+"ZE" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile{
+	dir = 8
+	},
+/obj/machinery/status_display/shuttle/directional/south{
+	shuttle_id = "arrivals_shuttle"
+	},
+/turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "ZO" = (
 /obj/machinery/door/firedoor,
@@ -2306,9 +2318,9 @@ BJ
 yC
 QC
 Ul
-ip
+ZE
 QE
-RE
+Tt
 IN
 La
 La

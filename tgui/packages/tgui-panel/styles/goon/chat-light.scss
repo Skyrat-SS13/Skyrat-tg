@@ -986,6 +986,7 @@ h2.alert {
   font-weight: bold;
 }
 
+
 .brass {
   color: #BE8700;
 }
@@ -1011,4 +1012,26 @@ h2.alert {
   font-size: 24px;
   font-weight: bold;
   font-style: italic;
+
+.glossy {
+  color: #9b6000;
+  font-weight: bold;
+  animation: glossy 5000ms infinite;
+}
+@keyframes glossy {
+  0% {
+    color: #9b6000;
+  }
+  30% {
+    color: #c88800;
+  }
+  60% {
+    color: #bdbd00;
+  }
+  70% {
+    color: #c88800;
+  }
+  100% {
+    color: #9b6000;
+  }
 }

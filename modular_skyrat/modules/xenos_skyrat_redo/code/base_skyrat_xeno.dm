@@ -1,6 +1,6 @@
 /// SKYRAT MODULE SKYRAT_XENO_REDO
 
-/mob/living/carbon/alien/humanoid/skyrat
+/mob/living/carbon/alien/adult/skyrat
 	name = "rare bugged alien"
 	icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/big_xenos.dmi'
 	rotate_on_lying = FALSE
@@ -33,7 +33,7 @@
 	var/on_fire_pixel_y = 16
 
 
-/mob/living/carbon/alien/humanoid/skyrat/Initialize(mapload)
+/mob/living/carbon/alien/adult/skyrat/Initialize(mapload)
 	. = ..()
 	small_sprite = new /datum/action/small_sprite/skyrat_xeno()
 	small_sprite.Grant(src)
@@ -50,7 +50,7 @@
 	ADD_TRAIT(src, TRAIT_XENO_HEAL_AURA, TRAIT_XENO_INNATE)
 	real_name = "alien [caste]"
 
-/mob/living/carbon/alien/humanoid/skyrat/Destroy()
+/mob/living/carbon/alien/adult/skyrat/Destroy()
 	QDEL_NULL(small_sprite)
 	QDEL_NULL(rest_button)
 	if(evolve_ability)
@@ -58,31 +58,34 @@
 	return ..()
 
 /// Called when a larva or xeno evolves, adds a configurable timer on evolving again to the xeno
-/mob/living/carbon/alien/humanoid/skyrat/proc/has_just_evolved()
+/mob/living/carbon/alien/adult/skyrat/proc/has_just_evolved()
 	if(has_evolved_recently)
 		return
 	has_evolved_recently = TRUE
-	addtimer(CALLBACK(src, .proc/can_evolve_once_again), evolution_cooldown_time)
+	addtimer(CALLBACK(src, PROC_REF(can_evolve_once_again)), evolution_cooldown_time)
 
 /// Allows xenos to evolve again if they are currently unable to
-/mob/living/carbon/alien/humanoid/skyrat/proc/can_evolve_once_again()
+/mob/living/carbon/alien/adult/skyrat/proc/can_evolve_once_again()
 	if(!has_evolved_recently)
 		return
 	has_evolved_recently = FALSE
 
 /datum/action/cooldown/alien/skyrat
-	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
+	button_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	/// Some xeno abilities block other abilities from being used, this allows them to get around that in cases where it is needed
 	var/can_be_used_always = FALSE
 
-/datum/action/cooldown/alien/skyrat/IsAvailable()
+/datum/action/cooldown/alien/skyrat/IsAvailable(feedback = FALSE)
 	. = ..()
-	if(!isalien(owner))
+	if(!.)
 		return FALSE
-	var/mob/living/carbon/alien/humanoid/skyrat/owner_alien = owner
-	if(!can_be_used_always)
-		if(owner_alien.unable_to_use_abilities)
-			return FALSE
+
+	if(can_be_used_always)
+		return TRUE
+
+	var/mob/living/carbon/alien/adult/skyrat/owner_alien = owner
+	if(!istype(owner_alien) || owner_alien.unable_to_use_abilities)
+		return FALSE
 
 /datum/action/small_sprite/skyrat_xeno
 	small_icon = 'icons/obj/toys/plushes.dmi'
@@ -118,7 +121,7 @@
 	plasma_cost = target_alien.get_max_plasma() //This ability should always require that a xeno be at their max plasma capacity to use
 
 /datum/action/cooldown/alien/skyrat/generic_evolve/Activate()
-	var/mob/living/carbon/alien/humanoid/skyrat/evolver = owner
+	var/mob/living/carbon/alien/adult/skyrat/evolver = owner
 
 	if(!istype(evolver))
 		to_chat(owner, span_warning("You aren't an alien, you can't evolve!"))
@@ -165,7 +168,7 @@
 /datum/movespeed_modifier/alien_big
 	multiplicative_slowdown = 2
 
-/mob/living/carbon/alien/humanoid/skyrat/update_held_items()
+/mob/living/carbon/alien/adult/skyrat/update_held_items()
 	..()
 	remove_overlay(HANDS_LAYER)
 	var/list/hands = list()
@@ -199,8 +202,8 @@
 		return -1
 	return vessel.max_plasma
 
-/mob/living/carbon/alien/humanoid/skyrat/alien_evolve(mob/living/carbon/alien/new_xeno, is_it_a_larva)
-	var/mob/living/carbon/alien/humanoid/skyrat/xeno_to_transfer_to = new_xeno
+/mob/living/carbon/alien/adult/skyrat/alien_evolve(mob/living/carbon/alien/new_xeno, is_it_a_larva)
+	var/mob/living/carbon/alien/adult/skyrat/xeno_to_transfer_to = new_xeno
 
 	xeno_to_transfer_to.setDir(dir)
 	if(!islarva(xeno_to_transfer_to))
@@ -210,7 +213,7 @@
 		mind.transfer_to(xeno_to_transfer_to)
 	qdel(src)
 
-/mob/living/carbon/alien/humanoid/skyrat/update_fire_overlay(stacks, on_fire, last_icon_state, suffix = "")
+/mob/living/carbon/alien/adult/skyrat/update_fire_overlay(stacks, on_fire, last_icon_state, suffix = "")
 	var/fire_icon = "generic_fire[suffix]"
 
 	if(!GLOB.fire_appearances[fire_icon])
@@ -235,10 +238,10 @@
 	apply_overlay(FIRE_LAYER)
 	return null
 
-/mob/living/carbon/alien/humanoid/skyrat/findQueen() //Yes we really do need to do this whole thing to let the queen finder work
+/mob/living/carbon/alien/adult/skyrat/findQueen() //Yes we really do need to do this whole thing to let the queen finder work
 	if(hud_used)
 		hud_used.alien_queen_finder.cut_overlays()
-		var/mob/queen = get_alien_type(/mob/living/carbon/alien/humanoid/skyrat/queen)
+		var/mob/queen = get_alien_type(/mob/living/carbon/alien/adult/skyrat/queen)
 		if(!queen)
 			return
 		var/turf/Q = get_turf(queen)

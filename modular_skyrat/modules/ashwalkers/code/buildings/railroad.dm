@@ -64,6 +64,7 @@
 	desc = "A wonderful form of locomotion. It will only ride while on tracks. It does have storage"
 	icon = 'modular_skyrat/modules/ashwalkers/icons/railroad.dmi'
 	icon_state = "railcart"
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 	/// The mutable appearance used for the overlay over buckled mobs.
 	var/mutable_appearance/railoverlay
 	/// whether there is sand in the cart

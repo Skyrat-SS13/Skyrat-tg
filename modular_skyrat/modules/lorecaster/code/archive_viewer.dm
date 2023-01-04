@@ -45,7 +45,7 @@
 		if(!("text" in uncompiled_stories[story]))
 			uncompiled_stories[story]["text"] = "Someone forgot to fill out the article!"
 		if(!("year" in uncompiled_stories[story]))
-			uncompiled_stories[story]["year"] = "[GLOB.year_integer + 540]"
+			uncompiled_stories[story]["year"] = "[CURRENT_STATION_YEAR]"
 		if(!("month" in uncompiled_stories[story]))
 			uncompiled_stories[story]["month"] = "[time2text(world.timeofday, "MM")]]"
 		if(!("day" in uncompiled_stories[story]))
@@ -67,7 +67,8 @@
 
 	return compiled_stories
 
-/obj/machinery/modular_computer/console/preset/curator/install_programs()
-	. = ..()
-	var/obj/item/computer_hardware/hard_drive/hard_drive = cpu.all_components[MC_HDD]
-	hard_drive.store_file(new/datum/computer_file/program/news_archive())
+/obj/machinery/modular_computer/console/preset/curator
+	starting_programs = list(
+		/datum/computer_file/program/portrait_printer,
+		/datum/computer_file/program/news_archive,
+	)

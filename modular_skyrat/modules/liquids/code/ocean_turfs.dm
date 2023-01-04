@@ -144,14 +144,6 @@
 	turf_type = /turf/open/floor/plating/ocean/rock/heavy
 	color = "#58606b"
 
-//extremely low chance of rare ores, meant mostly for populating stations with large amounts of asteroid
-/turf/closed/mineral/random/stationside
-	icon_state = "rock_nochance"
-	mineralChance = 4
-	mineralSpawnChanceList = list(
-		/obj/item/stack/ore/uranium = 1, /obj/item/stack/ore/diamond = 1, /obj/item/stack/ore/gold = 3, /obj/item/stack/ore/titanium = 5,
-		/obj/item/stack/ore/silver = 4, /obj/item/stack/ore/plasma = 3, /obj/item/stack/ore/iron = 50)
-
 /turf/closed/mineral/random/stationside/ocean
 	baseturfs = /turf/open/floor/plating/ocean/rock/heavy
 	turf_type = /turf/open/floor/plating/ocean/rock/heavy

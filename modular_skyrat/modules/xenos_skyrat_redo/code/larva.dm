@@ -45,7 +45,7 @@
 		)
 
 	var/alien_caste = show_radial_menu(owner, owner, caste_options, radius = 38, require_near = TRUE, tooltips = TRUE)
-	if(QDELETED(src) || QDELETED(owner) || !IsAvailable() || isnull(alien_caste))
+	if(QDELETED(src) || QDELETED(owner) || !IsAvailable(feedback = TRUE) || isnull(alien_caste))
 		return
 
 	spawn_new_xeno(alien_caste)
@@ -63,18 +63,18 @@
 	caste_options[caste_name] = caste_option
 
 /datum/action/cooldown/alien/larva_evolve/proc/spawn_new_xeno(alien_caste)
-	var/mob/living/carbon/alien/humanoid/skyrat/new_xeno
+	var/mob/living/carbon/alien/adult/skyrat/new_xeno
 	var/mob/living/carbon/alien/larva/larva = owner
 
 	switch(alien_caste)
 		if("Runner")
-			new_xeno = new /mob/living/carbon/alien/humanoid/skyrat/runner(larva.loc)
+			new_xeno = new /mob/living/carbon/alien/adult/skyrat/runner(larva.loc)
 		if("Sentinel")
-			new_xeno = new /mob/living/carbon/alien/humanoid/skyrat/sentinel(larva.loc)
+			new_xeno = new /mob/living/carbon/alien/adult/skyrat/sentinel(larva.loc)
 		if("Defender")
-			new_xeno = new /mob/living/carbon/alien/humanoid/skyrat/defender(larva.loc)
+			new_xeno = new /mob/living/carbon/alien/adult/skyrat/defender(larva.loc)
 		if("Drone")
-			new_xeno = new /mob/living/carbon/alien/humanoid/skyrat/drone(larva.loc)
+			new_xeno = new /mob/living/carbon/alien/adult/skyrat/drone(larva.loc)
 		else
 			CRASH("Alien evolve was given an invalid / incorrect alien cast type. Got: [alien_caste]")
 

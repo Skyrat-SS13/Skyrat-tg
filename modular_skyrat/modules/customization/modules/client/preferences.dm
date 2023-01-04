@@ -2,7 +2,7 @@
 /datum/preferences/proc/sanitize_languages()
 	var/languages_edited = FALSE
 	for(var/lang_path as anything in languages)
-		if(isnull(lang_path))
+		if(!lang_path)
 			languages.Remove(lang_path)
 			languages_edited = TRUE
 			continue
@@ -14,3 +14,20 @@
 			languages.Remove(lang_path)
 			languages_edited = TRUE
 	return languages_edited
+
+/// Cleans any quirks that should be hidden, or just simply don't exist from quirk code.
+/datum/preferences/proc/sanitize_quirks()
+	var/quirks_edited = FALSE
+	for(var/datum/quirk/quirk as anything in all_quirks)
+		if(!quirk || !(quirk in SSquirks.quirks))
+			all_quirks.Remove(quirk)
+			quirks_edited = TRUE
+			continue
+
+		quirk = SSquirks.quirks[quirk]
+		// Explanation for this is above.
+		if(!quirk || initial(quirk.hidden_quirk))
+			all_quirks.Remove(quirk)
+			quirks_edited = TRUE
+
+	return quirks_edited

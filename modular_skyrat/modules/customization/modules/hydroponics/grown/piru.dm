@@ -24,3 +24,4 @@
 	icon_state = "piru"
 	foodtypes = VEGETABLES
 	grind_results = list(/datum/reagent/consumable/piru_flour = 0)
+	tastes = list("chalky dryness" = 1)
