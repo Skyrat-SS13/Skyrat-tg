@@ -10,3 +10,5 @@
 		held_item = get_inactive_held_item()
 		if(held_item)
 			. = held_item.get_passport()
+
+	return .
