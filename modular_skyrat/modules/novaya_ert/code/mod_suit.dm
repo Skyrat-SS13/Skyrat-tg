@@ -55,13 +55,13 @@
 
 /obj/item/mod/control/pre_equipped/frontline
 	theme = /datum/mod_theme/frontline
-	initial_modules = list(
+	applied_modules = list(
 		/obj/item/mod/module/storage,
 		/obj/item/mod/module/flashlight,
 	)
 
 /obj/item/mod/control/pre_equipped/frontline/pirate
-	initial_modules = list(
+	applied_modules = list(
 		/obj/item/mod/module/storage/large_capacity,
 		/obj/item/mod/module/thermal_regulator,
 		/obj/item/mod/module/status_readout/generic,
@@ -71,14 +71,23 @@
 		/obj/item/mod/module/magnetic_harness,
 		/obj/item/mod/module/t_ray
 	)
+	default_pins = list(
+		/obj/item/mod/module/tether,
+		/obj/item/mod/module/magboot,
+	)
 
 /obj/item/mod/control/pre_equipped/frontline/ert
 	applied_cell = /obj/item/stock_parts/cell/hyper
-	initial_modules = list(
+	applied_modules = list(
 		/obj/item/mod/module/storage/syndicate,
 		/obj/item/mod/module/thermal_regulator,
 		/obj/item/mod/module/status_readout/generic,
 		/obj/item/mod/module/auto_doc,
+		/obj/item/mod/module/visor/thermal,
+		/obj/item/mod/module/jetpack/advanced,
+		/obj/item/mod/module/magboot/advanced,
+	)
+	default_pins = list(
 		/obj/item/mod/module/visor/thermal,
 		/obj/item/mod/module/jetpack/advanced,
 		/obj/item/mod/module/magboot/advanced,
