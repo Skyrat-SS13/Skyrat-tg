@@ -49,7 +49,8 @@
 		"Though their true origin may be unknown, what is well known is that \
 			lavaland's icy moon is home to many types of seemingly primitive demihumans \
 			resembling 'genemodders' of the present day. Scientific surveys of the moon \
-			logged humanoids sporting features from many of the icemoon's local fauna. \
+			logged humanoids sporting features from many of the icemoon's local fauna."
+	)
 
 /datum/species/human/felinid/primitive/get_species_lore()
 	return list(
