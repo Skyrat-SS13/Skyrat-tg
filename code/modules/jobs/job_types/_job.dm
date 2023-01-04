@@ -200,7 +200,18 @@
 
 /mob/living/carbon/human/on_job_equipping(datum/job/equipping, datum/preferences/used_pref) //SKYRAT EDIT CHANGE
 	var/datum/bank_account/bank_account = new(real_name, equipping, dna.species.payday_modifier)
-	bank_account.payday(STARTING_PAYCHECKS, TRUE)
+	// SKYRAT EDIT ADDITION START - Backgrounds
+	if(client?.prefs)
+		var/datum/preferences/prefs = client.prefs
+		var/datum/background_info/origin = prefs.origin
+		var/datum/background_info/social_background = prefs.social_background
+		var/datum/background_info/employment = prefs.employment
+		if(!BACKGROUND_HAS_FEATURE(origin, /datum/background_feature/penniless) || !BACKGROUND_HAS_FEATURE(social_background, /datum/background_feature/penniless) || !BACKGROUND_HAS_FEATURE(employment, /datum/background_feature/penniless))
+			bank_account.background_multiplier = (initial(origin.economic_power) + initial(social_background.economic_power) + initial(employment.economic_power)) / 3
+		else
+			bank_account.background_multiplier = NONE
+	// SKYRAT EDIT ADDITION END
+	bank_account.payday(STARTING_PAYCHECKS, TRUE, TRUE) // SKYRAT EDIT - BACKGROUNDS - ORIGINAL: bank_account.payday(STARTING_PAYCHECKS, TRUE)
 	account_id = bank_account.account_id
 	bank_account.replaceable = FALSE
 	dress_up_as_job(equipping, FALSE, used_pref) //SKYRAT EDIT CHANGE

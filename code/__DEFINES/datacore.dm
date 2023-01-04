@@ -1,0 +1,1 @@
+GLOBAL_LIST_EMPTY(name_to_datacore_entry)

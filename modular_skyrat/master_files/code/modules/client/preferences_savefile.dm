@@ -86,6 +86,10 @@
 
 	headshot = save_data["headshot"]
 
+	employment = text2path(save_data["employment"])
+	origin = text2path(save_data["origin"])
+	social_background = text2path(save_data["social_background"])
+
 	if(needs_update >= 0)
 		update_character_skyrat(needs_update, save_data) // needs_update == savefile_version if we need an update (positive integer)
 
@@ -174,6 +178,9 @@
 	save_data["alt_job_titles"] = alt_job_titles
 	save_data["languages"] = languages
 	save_data["headshot"] = headshot
+	save_data["employment"] = employment
+	save_data["origin"] = origin
+	save_data["social_background"] = social_background
 	save_data["modular_version"] = MODULAR_SAVEFILE_VERSION_MAX
 
 /datum/preferences/proc/update_mutant_bodyparts(datum/preference/preference)

@@ -53,6 +53,13 @@
 	/// A photo of the character, visible on close examine
 	var/headshot = ""
 
+	/// The datum path for the character's employment.
+	var/employment
+	/// The datum path for the character's social background.
+	var/social_background
+	/// The datum path for the character's origin.
+	var/origin
+
 /datum/preferences/proc/species_updated(species_type)
 	all_quirks = list()
 	// Reset cultural stuff

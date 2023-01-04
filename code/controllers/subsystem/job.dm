@@ -1128,9 +1128,20 @@ SUBSYSTEM_DEF(job)
 	if(length_char(player.client.prefs.read_preference(/datum/preference/text/flavor_text)) <= FLAVOR_TEXT_CHAR_REQUIREMENT)
 		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_FLAVOUR)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_FLAVOUR
-
-
 	//SKYRAT EDIT END
+
+	// SKYRAT EDIT ADDITION BEGIN - BACKGROUNDS
+	if(!player.client.prefs.origin || !player.client.prefs.social_background || !player.client.prefs.employment)
+		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_BACKGROUND_MISSING)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_BACKGROUND_MISSING
+
+	var/datum/background_info/origin = GLOB.origins[player.client.prefs.origin]
+	var/datum/background_info/social_background = GLOB.social_backgrounds[player.client.prefs.social_background]
+	var/datum/background_info/employment = GLOB.employments[player.client.prefs.employment]
+	if(!origin.is_role_valid(possible_job) || !social_background.is_role_valid(possible_job) || !employment.is_role_valid(possible_job))
+		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_BACKGROUND_INVALID)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_BACKGROUND_INVALID
+	// SKYRAT EDIT END
 
 	// Run this check after is_banned_from since it can query the DB which may sleep.
 	// Need to recheck the player exists after is_banned_from since it can query the DB which may sleep.

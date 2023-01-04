@@ -222,6 +222,10 @@ export type PreferencesMenuData = {
   quirks_balance: number;
   positive_quirk_count: number;
   species_restricted_jobs?: string[];
+  origins: Background[];
+  social_backgrounds: SocialBackground[];
+  employments: Background[];
+  features: Record<string, CultureFeature>;
   // SKYRAT EDIT END
   keybindings: Record<string, string[]>;
   overflow_role: string;
@@ -252,3 +256,34 @@ export type ServerData = {
   species: Record<string, Species>;
   [otheyKey: string]: unknown;
 };
+
+// SKYRAT EDIT ADDITION START
+export type Background = {
+  name: string;
+  description: string;
+  economic_power: string;
+  additional_langs: string[];
+  required_lang: string;
+  features: string[];
+  css_class: string;
+  valid: number;
+  selected: number;
+  path: string;
+  sub_cultures: Background[];
+  sub_culture_amount: number;
+};
+
+export type SocialBackground = Background & {
+  ruler: string;
+  distance: string;
+  capital: string;
+  sub_cultures: SocialBackground[];
+};
+
+export type CultureFeature = {
+  name: string;
+  description: string;
+  icon: string;
+  css_class: string;
+};
+// SKYRAT EDIT END
