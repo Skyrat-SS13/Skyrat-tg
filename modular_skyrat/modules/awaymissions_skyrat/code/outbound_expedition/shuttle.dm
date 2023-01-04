@@ -136,12 +136,12 @@
 
 /obj/machinery/computer/outbound_sensor/attackby(obj/item/weapon, mob/user, params)
 	OUTBOUND_CONTROLLER
-	if(!istype(weapon, /obj/item/computer_hardware/hard_drive/portable))
+	if(!istype(weapon, /obj/item/computer_disk))
 		return ..()
 	if(!istype(outbound_controller.current_event, /datum/outbound_random_event/story/radar)) // de-hardcode later if this gets used for anything else
 		return
-	var/obj/item/computer_hardware/hard_drive/portable/our_disk = weapon
-	var/datum/computer_file/found_file = our_disk.find_file_by_name("radardata")
+	var/obj/item/computer_disk/our_disk = weapon
+	var/datum/computer_file/found_file = locate(/datum/computer_file/data/outbound_radar_data) in our_disk.stored_files
 	if(!found_file)
 		balloon_alert(user, "nothing to upload")
 		return

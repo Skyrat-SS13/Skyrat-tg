@@ -190,7 +190,7 @@
 		log_game("Portal Storm failed to spawn effect due to an invalid location.")
 		return
 	select_turf = get_step(select_turf, SOUTHWEST) //align center of image with turf
-	flick_overlay_static(storm, select_turf, 15)
+	select_turf.flick_overlay_static(storm, 15)
 	playsound(select_turf, 'sound/magic/lightningbolt.ogg', rand(80, 100), TRUE)
 
 /datum/outbound_random_event/harmful/resonance_cascade/proc/spawn_the_bads()

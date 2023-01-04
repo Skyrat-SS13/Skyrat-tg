@@ -61,7 +61,7 @@
 /obj/item/mod/control/pre_equipped/raider
 	theme = /datum/mod_theme/raider
 	applied_cell = /obj/item/stock_parts/cell/high
-	initial_modules = list(
+	applied_modules = list(
 		/obj/item/mod/module/storage/large_capacity,
 		/obj/item/mod/module/emp_shield,
 		/obj/item/mod/module/magnetic_harness,
@@ -70,7 +70,7 @@
 	)
 
 /obj/item/mod/control/pre_equipped/raider/leader
-	initial_modules = list(
+	applied_modules = list(
 		/obj/item/mod/module/storage/large_capacity,
 		/obj/item/mod/module/pepper_shoulders, //if nothing else, for identifiability
 		/obj/item/mod/module/emp_shield,
