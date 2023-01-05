@@ -769,18 +769,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/mine/laborcamp)
-"aoI" = (
-/obj/structure/table/wood,
-/obj/item/phone{
-	pixel_x = -5;
-	pixel_y = 6
-	},
-/obj/item/reagent_containers/cup/glass/britcup{
-	pixel_x = 8;
-	pixel_y = 8
-	},
-/turf/open/floor/carpet/red,
-/area/station/commons/vacant_room/office)
 "aoK" = (
 /obj/structure/table,
 /obj/item/toy/cards/deck,
@@ -2398,6 +2386,18 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/plating,
 /area/mine/eva/lower)
+"aNx" = (
+/obj/structure/table/wood,
+/obj/item/phone{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/cup/glass/mug/britcup{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/turf/open/floor/carpet/red,
+/area/station/commons/vacant_room/office)
 "aNP" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -2570,32 +2570,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/science/ordnance)
-"aQv" = (
-/obj/structure/chair/office{
-	dir = 8
-	},
-/obj/machinery/button/flasher{
-	pixel_y = -32;
-	id = "hopflash"
-	},
-/obj/machinery/button/door/directional/south{
-	pixel_x = -8;
-	req_access = list("hop");
-	id = "hopqueue";
-	name = "Queue Shutters Control"
-	},
-/obj/machinery/button/door/directional/south{
-	pixel_y = -24;
-	pixel_x = 8;
-	name = "Privacy Shutters Control";
-	req_access = list("hop");
-	id = "hop"
-	},
-/obj/effect/turf_decal/tile/blue/anticorner/contrasted{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/station/command/heads_quarters/hop)
 "aQJ" = (
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/structure/cable,
@@ -34351,6 +34325,36 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/atmos/pumproom)
+"kyv" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/obj/machinery/button/flasher{
+	pixel_y = -32;
+	id = "hopflash";
+	pixel_x = 8
+	},
+/obj/machinery/button/door/directional/south{
+	pixel_x = -8;
+	req_access = list("hop");
+	id = "hopqueue";
+	name = "Queue Shutters Control"
+	},
+/obj/machinery/button/door/directional/south{
+	pixel_x = 8;
+	name = "Privacy Shutters Control";
+	req_access = list("hop");
+	id = "hop"
+	},
+/obj/effect/turf_decal/tile/blue/anticorner/contrasted{
+	dir = 8
+	},
+/obj/machinery/button/ticket_machine{
+	pixel_x = -8;
+	pixel_y = -32
+	},
+/turf/open/floor/iron,
+/area/station/command/heads_quarters/hop)
 "kyy" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
@@ -37082,10 +37086,6 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/cmo)
-"lmR" = (
-/obj/docking_port/stationary/escape_pod,
-/turf/open/floor/plating/snowed/icemoon,
-/area/icemoon/surface/outdoors/nospawn)
 "lnc" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -49341,6 +49341,12 @@
 /obj/item/storage/book/bible,
 /turf/open/floor/iron/dark,
 /area/station/service/chapel/office)
+"peH" = (
+/obj/docking_port/stationary/escape_pod{
+	dir = 8
+	},
+/turf/open/floor/plating/snowed/icemoon,
+/area/icemoon/surface/outdoors/nospawn)
 "peV" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/plating,
@@ -55621,6 +55627,10 @@
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
 /area/station/hallway/primary/central)
+"rcH" = (
+/obj/docking_port/stationary/escape_pod,
+/turf/open/floor/plating/snowed/icemoon,
+/area/icemoon/surface/outdoors/nospawn)
 "rcN" = (
 /obj/effect/turf_decal/siding/yellow{
 	dir = 5
@@ -58153,6 +58163,12 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/iron/dark/textured,
 /area/station/security/processing)
+"rVz" = (
+/obj/docking_port/stationary/escape_pod{
+	dir = 4
+	},
+/turf/open/floor/plating/snowed/icemoon,
+/area/icemoon/surface/outdoors/nospawn)
 "rVA" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -58937,12 +58953,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
-"shl" = (
-/obj/docking_port/stationary/escape_pod{
-	dir = 4
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/icemoon/surface/outdoors/nospawn)
 "shB" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -69058,12 +69068,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood/parquet,
 /area/station/commons/lounge)
-"vpI" = (
-/obj/docking_port/stationary/escape_pod{
-	dir = 8
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/icemoon/surface/outdoors/nospawn)
 "vpR" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
@@ -218168,7 +218172,7 @@ bln
 sEB
 bln
 sEB
-vpI
+peH
 sEB
 bln
 bln
@@ -218182,7 +218186,7 @@ bln
 bln
 bln
 sEB
-vpI
+peH
 sEB
 bln
 bln
@@ -224613,7 +224617,7 @@ nwT
 hkb
 aaT
 fFT
-aoI
+aNx
 bPw
 tKI
 lgr
@@ -235938,7 +235942,7 @@ hNN
 keN
 kLm
 cac
-aQv
+kyv
 cpm
 dnq
 ylU
@@ -241269,7 +241273,7 @@ xiI
 bln
 bln
 bln
-lmR
+rcH
 pDC
 clq
 qgO
@@ -243691,7 +243695,7 @@ kcG
 qwF
 wYJ
 sEB
-shl
+rVz
 sEB
 nyA
 njm
