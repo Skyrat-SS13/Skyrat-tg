@@ -45,7 +45,7 @@
 	name = "Nanotrasen Consultant"
 	jobtype = /datum/job/nanotrasen_consultant
 
-	belt = /obj/item/modular_computer/tablet/pda/nanotrasen_consultant
+	belt = /obj/item/modular_computer/pda/nanotrasen_consultant
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/heads/nanotrasen_consultant
 	gloves = /obj/item/clothing/gloves/combat
@@ -105,7 +105,7 @@
 	gloves = /obj/item/clothing/gloves/color/captain //Too iconic to be replaced with a plasma version
 	head = /obj/item/clothing/head/helmet/space/plasmaman/centcom_official
 
-/obj/item/modular_computer/tablet/pda/nanotrasen_consultant
+/obj/item/modular_computer/pda/nanotrasen_consultant
 	name = "nanotrasen consultant's PDA"
 	inserted_disk = /obj/item/computer_disk/command/captain
 	inserted_item = /obj/item/pen/fountain/captain

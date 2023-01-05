@@ -23,7 +23,7 @@
 
 /obj/item/clothing/suit/space/emergency/equipped(mob/user, slot)
 	. = ..()
-	RegisterSignal(user, COMSIG_MOB_APPLY_DAMAGE, .proc/user_damaged)
+	RegisterSignal(user, COMSIG_MOB_APPLY_DAMAGE, PROC_REF(user_damaged))
 
 /obj/item/clothing/suit/space/emergency/dropped(mob/user)
 	. = ..()

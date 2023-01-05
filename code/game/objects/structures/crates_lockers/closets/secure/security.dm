@@ -130,18 +130,9 @@
 	icon = 'icons/obj/storage/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/cargo/PopulateContents()
-	new /obj/item/radio/headset/headset_cargo(src)
-	new /obj/item/clothing/shoes/sneakers/black(src)
-	new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/customs_agent(src)
-	new /obj/item/clothing/head/helmet/blueshirt/skyrat/guard(src)
-	new /obj/item/clothing/head/beret/sec/cargo(src)
-	new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent(src)
-	new /obj/item/restraints/handcuffs/cable/orange(src)
-	new /obj/item/assembly/flash/handheld(src)
-	new /obj/item/melee/baton/security/loaded/departmental/cargo(src)
-	new /obj/item/clothing/glasses/hud/security(src)
-	new /obj/item/clothing/glasses/hud/gun_permit(src)
 	new /obj/item/storage/box/gunset/pepperball(src)
+	new /obj/item/storage/bag/garment/customs_agent(src)
+	new /obj/item/restraints/handcuffs/cable/orange(src)
 
 /obj/structure/closet/secure_closet/security/engine
 	name = "\proper engineering guard's locker"
@@ -150,17 +141,9 @@
 	icon = 'icons/obj/storage/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/engine/PopulateContents()
-	new /obj/item/radio/headset/headset_eng(src)
-	new /obj/item/clothing/shoes/workboots(src)
-	new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard(src)
-	new /obj/item/clothing/head/helmet/blueshirt/skyrat/guard(src)
-	new /obj/item/clothing/head/beret/sec/engineering(src)
-	new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard(src)
 	new /obj/item/restraints/handcuffs/cable/yellow(src)
-	new /obj/item/assembly/flash/handheld(src)
-	new /obj/item/melee/baton/security/loaded/departmental/engineering(src)
-	new /obj/item/clothing/glasses/hud/security(src)
 	new /obj/item/storage/box/gunset/pepperball(src)
+	new /obj/item/storage/bag/garment/engineering_guard(src)
 
 /obj/structure/closet/secure_closet/security/science
 	name = "\proper science guard's locker"
@@ -169,17 +152,9 @@
 	icon = 'icons/obj/storage/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/science/PopulateContents()
-	new /obj/item/radio/headset/headset_sci(src)
-	new /obj/item/clothing/shoes/sneakers/black(src)
-	new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat(src)
-	new /obj/item/clothing/head/helmet/blueshirt/skyrat(src)
-	new /obj/item/clothing/head/beret/sec/science(src)
-	new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat(src)
 	new /obj/item/restraints/handcuffs/cable/pink(src)
-	new /obj/item/assembly/flash/handheld(src)
-	new /obj/item/melee/baton/security/loaded/departmental/science(src)
-	new /obj/item/clothing/glasses/hud/security(src)
 	new /obj/item/storage/box/gunset/pepperball(src)
+	new /obj/item/storage/bag/garment/science_guard(src)
 
 /obj/structure/closet/secure_closet/security/med
 	name = "\proper orderly's locker"
@@ -188,17 +163,9 @@
 	icon = 'icons/obj/storage/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/med/PopulateContents()
-	new /obj/item/radio/headset/headset_med(src)
-	new /obj/item/clothing/shoes/sneakers/white(src)
-	new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/orderly(src)
-	new /obj/item/clothing/head/helmet/blueshirt/skyrat/guard(src)
-	new /obj/item/clothing/head/beret/sec/medical(src)
-	new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/orderly(src)
 	new /obj/item/restraints/handcuffs/cable/blue(src)
-	new /obj/item/assembly/flash/handheld(src)
-	new /obj/item/melee/baton/security/loaded/departmental/medical(src)
-	new /obj/item/clothing/glasses/hud/security(src)
 	new /obj/item/storage/box/gunset/pepperball(src)
+	new /obj/item/storage/bag/garment/orderly(src)
 // SKYRAT EDIT CHANGE END -- GOOFSEC DEP GUARDS
 
 /obj/structure/closet/secure_closet/detective

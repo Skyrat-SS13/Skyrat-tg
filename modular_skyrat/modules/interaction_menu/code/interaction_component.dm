@@ -31,7 +31,7 @@
 		interactions.Add(interaction)
 
 /datum/component/interactable/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_CLICK_CTRL_SHIFT, .proc/open_interaction_menu)
+	RegisterSignal(parent, COMSIG_CLICK_CTRL_SHIFT, PROC_REF(open_interaction_menu))
 
 /datum/component/interactable/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_CLICK_CTRL_SHIFT)

@@ -120,7 +120,7 @@
 
 /datum/loadout_item/suit/cjax
 	name = "XuraCorp Labcoat"
-	item_path = /obj/item/clothing/suit/toggle/labcoat/rd/jax
+	item_path = /obj/item/clothing/suit/toggle/labcoat/skyrat/rd/jax
 	ckeywhitelist = list("candlejax")
 
 /datum/loadout_item/suit/jacket/cherno
@@ -380,7 +380,7 @@
 
 /datum/loadout_item/suit/tenrai_coat
 	name = "Tenrai Coat"
-	item_path = /obj/item/clothing/suit/toggle/labcoat/tenrai
+	item_path = /obj/item/clothing/suit/toggle/labcoat/skyrat/tenrai
 	ckeywhitelist = list("cimika")
 
 /datum/loadout_item/neck/fluffycloak
@@ -441,12 +441,12 @@
 	ckeywhitelist = list("konstyantyn")
 
 /datum/loadout_item/toys/plushe_winrow
-    name = "Dark and Brooding Lizard Plushie"
-    item_path = /obj/item/toy/plush/skyrat/plushie_winrow
+	name = "Dark and Brooding Lizard Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_winrow
 
 /datum/loadout_item/toys/plushie_star
-    name = "Star Angel Plushie"
-    item_path = /obj/item/toy/plush/skyrat/plushie_star
+	name = "Star Angel Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_star
 
 /datum/loadout_item/suit/rainbowcoat
 	name = "Rainbow Coat"
@@ -546,3 +546,64 @@
 	name = "Fancy Heels (dragmeme)"
 	item_path = /obj/item/clothing/shoes/fancy_heels/drag
 	ckeywhitelist = list("thedragmeme")
+
+/datum/loadout_item/under/jumpsuit/bimpcap
+	name = "Formal Matte Black Captain Uniform"
+	item_path = /obj/item/clothing/under/bimpcap
+	restricted_roles = list(JOB_CAPTAIN)
+	ckeywhitelist = list("razurath")
+
+/datum/loadout_item/toys/plushie_razurath
+	name = "Science Shark Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_razurath
+	ckeywhitelist = list("razurath")
+
+/datum/loadout_item/toys/plushie_elofy
+	name = "Bumbling Wolfgirl Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_elofy
+	//ckeywhitelist = list("october23") // Asked it to be public.
+
+/datum/loadout_item/glasses/goldaviator
+	name = "Purple and Gold Aviators"
+	item_path = /obj/item/clothing/glasses/gold_aviators
+	ckeywhitelist = list("nikohyena")
+
+/datum/loadout_item/under/jumpsuit/caged_dress
+	name = "Caged Purple Dress"
+	item_path = /obj/item/clothing/under/caged_dress
+	ckeywhitelist = list("thedragmeme")
+
+/datum/loadout_item/suit/shortcoat
+	name = "Short Purple Coat"
+	item_path = /obj/item/clothing/suit/short_coat
+	ckeywhitelist = list("thedragmeme")
+
+/datum/loadout_item/neck/flowercollar
+	name = "Flower Collar"
+	item_path = /obj/item/clothing/neck/flower_collar
+	ckeywhitelist = list("thedragmeme")
+
+/datum/loadout_item/under/jumpsuit/goldenkimono
+	name = "Short-Sleeved Kimono"
+	item_path = /obj/item/clothing/under/costume/skyrat/kimono/sigmar
+	ckeywhitelist = list("sigmaralkahest")
+
+/datum/loadout_item/suit/blackraincoat
+	name = "Black Open-Faced Raincoat"
+	item_path = /obj/item/clothing/suit/hooded/sigmarcoat
+	ckeywhitelist = list("sigmaralkahest")
+
+/datum/loadout_item/toys/plushy_syntax1112
+	name = "Lop Bunny Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_syntax1112
+	ckeywhitelist = list("syntax1112")
+
+/datum/loadout_item/gloves/hypnoring_nuke
+	name = "Suspiciously Glossy Ring"
+	item_path = /obj/item/clothing/gloves/ring/hypno/nuke
+	ckeywhitelist = list("sonicgotnuked")
+
+/datum/loadout_item/head/somerandomowl
+	name = "Starry Witch Hat"
+	item_path = /obj/item/clothing/head/costume/strigihat
+	ckeywhitelist = list("somerandomowl")

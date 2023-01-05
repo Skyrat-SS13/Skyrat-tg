@@ -338,7 +338,7 @@
 	user.visible_message(span_notice("[user] shows [user.p_their()] attorney's badge."), span_notice("You show your attorney's badge."))
 
 /obj/item/clothing/accessory/lawyers_badge/on_uniform_equip(obj/item/clothing/under/U, mob/living/user)
-	RegisterSignal(user, COMSIG_LIVING_SLAM_TABLE, .proc/table_slam)
+	RegisterSignal(user, COMSIG_LIVING_SLAM_TABLE, PROC_REF(table_slam))
 	user.bubble_icon = "lawyer"
 
 /obj/item/clothing/accessory/lawyers_badge/on_uniform_dropped(obj/item/clothing/under/U, mob/living/user)
@@ -347,7 +347,7 @@
 
 /obj/item/clothing/accessory/lawyers_badge/proc/table_slam(mob/living/source, obj/structure/table/the_table)
 	SIGNAL_HANDLER
-	INVOKE_ASYNC(src, .proc/handle_table_slam, source)
+	INVOKE_ASYNC(src, PROC_REF(handle_table_slam), source)
 
 /obj/item/clothing/accessory/lawyers_badge/proc/handle_table_slam(mob/living/user)
 	user.say("Objection!!", spans = list(SPAN_YELL), forced=TRUE)
@@ -452,7 +452,7 @@
 
 /obj/item/clothing/accessory/allergy_dogtag/on_uniform_equip(obj/item/clothing/under/U, user)
 	. = ..()
-	RegisterSignal(U,COMSIG_PARENT_EXAMINE,.proc/on_examine)
+	RegisterSignal(U,COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
 
 /obj/item/clothing/accessory/allergy_dogtag/on_uniform_dropped(obj/item/clothing/under/U, user)
 	. = ..()
@@ -463,20 +463,29 @@
 	SIGNAL_HANDLER
 	examine_list += "The dogtag has a listing of allergies : [display]"
 
+
+/// Reskins for the pride pin accessory, mapped by display name to icon state
+GLOBAL_LIST_INIT(pride_pin_reskins, list(
+	"Rainbow Pride" = "pride",
+	"Bisexual Pride" = "pride_bi",
+	"Pansexual Pride" = "pride_pan",
+	"Asexual Pride" = "pride_ace",
+	"Non-binary Pride" = "pride_enby",
+	"Transgender Pride" = "pride_trans",
+	"Intersex Pride" = "pride_intersex",
+	"Lesbian Pride" = "pride_lesbian",
+))
+
 /obj/item/clothing/accessory/pride
 	name = "pride pin"
-	desc = "A Nanotrasen Diversity & Inclusion Center-sponsored holographic pin to show off your sexuality, reminding the crew of their unwavering commitment to equity, diversity, and inclusion!"
+	desc = "A Nanotrasen Diversity & Inclusion Center-sponsored holographic pin to show off your pride, reminding the crew of their unwavering commitment to equity, diversity, and inclusion!"
 	icon_state = "pride"
 	obj_flags = UNIQUE_RENAME
-	unique_reskin = list("Rainbow Pride" = "pride",
-						"Bisexual Pride" = "pride_bi",
-						"Pansexual Pride" = "pride_pan",
-						"Asexual Pride" = "pride_ace",
-						"Non-binary Pride" = "pride_enby",
-						"Transgender Pride" = "pride_trans",
-						"Intersex Pride" = "pride_intersex",
-						"Lesbian Pride" = "pride_lesbian",
-						)
+	infinite_reskin = TRUE
+
+/obj/item/clothing/accessory/pride/Initialize(mapload)
+	. = ..()
+	unique_reskin = GLOB.pride_pin_reskins
 
 /obj/item/clothing/accessory/deaf_pin
 	name = "deaf personnel pin"

@@ -91,7 +91,7 @@
 	remove_overlay(HALO_LAYER)
 	overlays_standing[HALO_LAYER] = image("icon" = 'modular_skyrat/modules/xenos_skyrat_redo/icons/big_xenos.dmi', "icon_state" = "shriek_waves") //Ehh, suit layer's not being used.
 	apply_overlay(HALO_LAYER)
-	addtimer(CALLBACK(src, .proc/remove_shriekwave), 3 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(remove_shriekwave)), 3 SECONDS)
 
 /mob/living/carbon/alien/adult/skyrat/proc/remove_shriekwave()
 	remove_overlay(HALO_LAYER)

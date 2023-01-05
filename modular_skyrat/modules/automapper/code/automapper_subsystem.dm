@@ -73,7 +73,7 @@ SUBSYSTEM_DEF(automapper)
 		map_names = list(map_names)
 	for(var/datum/map_template/automap_template/iterating_template as anything in preloaded_map_templates)
 		if(iterating_template.affects_builtin_map && ((SSmapping.config.map_file in map_names) || SSmapping.config.map_file == map_names))
-			// CentComm already started loading objects, place them in the netherzone
+			// CentCom already started loading objects, place them in the netherzone
 			for(var/turf/old_turf as anything in iterating_template.get_affected_turfs(iterating_template.load_turf, FALSE))
 				init_contents(old_turf)
 		else if(!(iterating_template.required_map in map_names))
@@ -134,7 +134,7 @@ SUBSYSTEM_DEF(automapper)
 
 	// If this doesn't work right, the map is horribly malformed and shoul fail,
 	// Or you've map-edited template_noop which I'm fine with failing as well.
-	return findtextEx(model, "\n/turf/template_noop,\n")
+	return findtextEx(model, "/turf/template_noop,\n")
 
 /**
  * This returns a list of turfs that have been preloaded and preselected using our templates.

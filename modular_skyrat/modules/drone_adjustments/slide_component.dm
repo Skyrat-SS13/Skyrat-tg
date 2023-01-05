@@ -16,9 +16,9 @@
 	if(allowed_mobs_override)
 		allowed_mobs = allowed_mobs_override
 	//either bumping or ctrl click
-	RegisterSignal(atom_parent, COMSIG_CLICK_CTRL, .proc/check_conditions)
+	RegisterSignal(atom_parent, COMSIG_CLICK_CTRL, PROC_REF(check_conditions))
 	//so that we can know how to do that (sliding under)
-	RegisterSignal(atom_parent, COMSIG_PARENT_EXAMINE, .proc/ExamineMessage)
+	RegisterSignal(atom_parent, COMSIG_PARENT_EXAMINE, PROC_REF(ExamineMessage))
 
 /datum/component/sliding_under/Destroy(force, silent)
 	UnregisterSignal(atom_parent, list(COMSIG_CLICK_CTRL, COMSIG_PARENT_EXAMINE))

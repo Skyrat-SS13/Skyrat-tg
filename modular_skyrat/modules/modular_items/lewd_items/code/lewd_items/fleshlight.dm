@@ -18,12 +18,13 @@
 
 /// Generates a list of toy colors (or designs) for use in the radial color choice menu
 /obj/item/clothing/sextoy/fleshlight/proc/populate_fleshlight_designs()
-    fleshlight_designs = list(
-		"green" = image (icon = src.icon, icon_state = "[initial(icon_state)]_green"),
-		"pink" = image (icon = src.icon, icon_state = "[initial(icon_state)]_pink"),
-		"teal" = image (icon = src.icon, icon_state = "[initial(icon_state)]_teal"),
-		"red" = image (icon = src.icon, icon_state = "[initial(icon_state)]_red"),
-		"yellow" = image(icon = src.icon, icon_state = "[initial(icon_state)]_yellow"))
+	fleshlight_designs = list(
+		"green" = image(icon = src.icon, icon_state = "[initial(icon_state)]_green"),
+		"pink" = image(icon = src.icon, icon_state = "[initial(icon_state)]_pink"),
+		"teal" = image(icon = src.icon, icon_state = "[initial(icon_state)]_teal"),
+		"red" = image(icon = src.icon, icon_state = "[initial(icon_state)]_red"),
+		"yellow" = image(icon = src.icon, icon_state = "[initial(icon_state)]_yellow"),
+	)
 
 /obj/item/clothing/sextoy/fleshlight/Initialize(mapload)
 	. = ..()
@@ -43,7 +44,7 @@
 	. = ..()
 	if(.)
 		return
-	var/choice = show_radial_menu(user, src, fleshlight_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
+	var/choice = show_radial_menu(user, src, fleshlight_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 	if(!choice)
 		return FALSE
 	current_color = choice

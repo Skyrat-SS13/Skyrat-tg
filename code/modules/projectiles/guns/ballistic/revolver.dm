@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/revolver
 	name = "\improper .357 revolver"
-	desc = "A suspicious revolver. Uses .357 ammo." //usually used by syndicates
+	desc = "A suspicious revolver. Uses .357 ammo."
 	icon_state = "revolver"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder
 	fire_sound = 'sound/weapons/gun/revolver/shot_alt.ogg'
@@ -97,80 +97,45 @@
 	if(last_fire && last_fire + 15 SECONDS > world.time)
 		. = span_notice("[user] touches the end of [src] to \the [A], using the residual heat to ignite it in a puff of smoke. What a badass.")
 
-/obj/item/gun/ballistic/revolver/detective
+/obj/item/gun/ballistic/revolver/c38
+	name = "\improper .38 revolver"
+	desc = "A classic, if not outdated, lethal firearm. Uses .38 Special rounds."
+	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev38
+	icon_state = "c38"
+	fire_sound = 'sound/weapons/gun/revolver/shot.ogg'
+
+/obj/item/gun/ballistic/revolver/c38/detective
 	name = "\improper Colt Detective Special"
 	desc = "A classic, if not outdated, law enforcement firearm. Uses .38 Special rounds. \nSome spread rumors that if you loosen the barrel with a wrench, you can \"improve\" it."
-	fire_sound = 'sound/weapons/gun/revolver/shot.ogg'
-	icon_state = "detective"
-	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev38
-	initial_caliber = CALIBER_38
-	alternative_caliber = CALIBER_357
-	initial_fire_sound = 'sound/weapons/gun/revolver/shot.ogg'
-	alternative_fire_sound = 'sound/weapons/gun/revolver/shot_alt.ogg'
+
 	can_modify_ammo = TRUE
+	initial_caliber = CALIBER_38
+	initial_fire_sound = 'sound/weapons/gun/revolver/shot.ogg'
+	alternative_caliber = CALIBER_357
+	alternative_fire_sound = 'sound/weapons/gun/revolver/shot_alt.ogg'
 	alternative_ammo_misfires = TRUE
-	can_misfire = FALSE
 	misfire_probability = 0
 	misfire_percentage_increment = 25 //about 1 in 4 rounds, which increases rapidly every shot
+
 	obj_flags = UNIQUE_RENAME
-	unique_reskin = list("Default" = "detective",
-						"Fitz Special" = "detective_fitz",
-						"Police Positive Special" = "detective_police",
-						"Blued Steel" = "detective_blued",
-						"Stainless Steel" = "detective_stainless",
-						"Gold Trim" = "detective_gold",
-						"Leopard Spots" = "detective_leopard",
-						"The Peacemaker" = "detective_peacemaker",
-						"Black Panther" = "detective_panther"
-						)
+	unique_reskin = list(
+		"Default" = "c38",
+		"Fitz Special" = "c38_fitz",
+		"Police Positive Special" = "c38_police",
+		"Blued Steel" = "c38_blued",
+		"Stainless Steel" = "c38_stainless",
+		"Gold Trim" = "c38_trim",
+		"Golden" = "c38_gold",
+		"The Peacemaker" = "c38_peacemaker",
+		"Black Panther" = "c38_panther"
+	)
 
-	/// Used to avoid some redundancy on a revolver loaded with 357 regarding misfiring while being wrenched.
-	var/skip_357_missfire_check = FALSE
+/obj/item/gun/ballistic/revolver/syndicate
+	name = "\improper Syndicate Revolver"
+	desc = "A modernized 7 round revolver manufactured by Waffle Co. Uses .357 ammo."
+	icon_state = "revolversyndie"
 
-/obj/item/gun/ballistic/revolver/detective/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
-	if(magazine && magazine.caliber != initial(magazine.caliber) && chambered.loaded_projectile && !skip_357_missfire_check)
-		if(prob(70 - (magazine.ammo_count() * 10)))	//minimum probability of 10, maximum of 60
-			to_chat(user, "<span class='userdanger'>[src] misfires!</span>")
-			if(user.get_item_for_held_index(1) == src)
-				user.dropItemToGround(src)
-				return ..(user, user, FALSE, null, BODY_ZONE_L_ARM)
-			else if(user.get_item_for_held_index(2) == src)
-				user.dropItemToGround(src)
-				return ..(user, user, FALSE, null, BODY_ZONE_R_ARM)
-	return ..()
-
-/obj/item/gun/ballistic/revolver/detective/wrench_act(mob/living/user, obj/item/I)
-	if(!user.is_holding(src))
-		to_chat(user, "<span class='notice'>You need to hold [src] to modify its barrel.</span>")
-		return TRUE
-	to_chat(user, "<span class='notice'>You begin to loosen the barrel of [src]...</span>")
-	I.play_tool_sound(src)
-	if(!I.use_tool(src, user, 3 SECONDS))
-		return TRUE
-	if(magazine.ammo_count()) //If it has any ammo inside....
-		user.visible_message("<span class='danger'>[src]'s hammer drops while you're handling it!</span>") //...you learn an important lesson about firearms safety.
-		var/drop_the_gun_it_actually_fired = chambered.loaded_projectile ? TRUE : FALSE //Is a live round chambered?
-		skip_357_missfire_check = TRUE //We set this true, then back to false after process_fire, to reduce redundacy of a round "misfiring" when it's already misfiring from wrench_act
-		process_fire(user, user, FALSE)
-		skip_357_missfire_check = FALSE
-		if(drop_the_gun_it_actually_fired) //We do it like this instead of directly checking chambered.BB here because process_fire will cycle the chamber.
-			user.dropItemToGround(src)
-		return TRUE
-
-	switch(magazine.caliber)
-		if(CALIBER_38)
-			magazine.caliber = CALIBER_357
-			fire_sound = 'sound/weapons/gun/revolver/shot_alt.ogg'
-			desc = "A classic, if not outdated, law enforcement firearm. \nIt has been modified to fire .357 rounds."
-			to_chat(user, "<span class='notice'>You loosen the barrel of [src]. Now it will fire .357 rounds.</span>")
-		else
-			magazine.caliber = CALIBER_38
-			fire_sound = 'sound/weapons/gun/revolver/shot.ogg'
-			desc = initial(desc)
-			to_chat(user, "<span class='notice'>You tighten the barrel of [src]. Now it will fire .38 rounds.</span>")
-
-
-/obj/item/gun/ballistic/revolver/mateba //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+/obj/item/gun/ballistic/revolver/mateba
 	name = "\improper Unica 6 auto-revolver"
 	desc = "A retro high-powered autorevolver typically used by officers of the New Russia military. Uses .357 ammo."
 	icon_state = "mateba"

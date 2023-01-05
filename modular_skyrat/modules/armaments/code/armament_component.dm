@@ -29,8 +29,8 @@
 
 	required_access = needed_access
 
-	RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND, .proc/on_attack_hand)
-	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/on_attackby)
+	RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND, PROC_REF(on_attack_hand))
+	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(on_attackby))
 
 /datum/component/armament/Destroy(force, silent)
 	if(inserted_card)
@@ -66,7 +66,7 @@
 		to_chat(user, span_warning("You don't have the required access!"))
 		return
 
-	INVOKE_ASYNC(src, .proc/ui_interact, user)
+	INVOKE_ASYNC(src, PROC_REF(ui_interact), user)
 
 /datum/component/armament/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

@@ -9,6 +9,8 @@
 	assignment = "NRI Soldier"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_nri"
+	department_color = COLOR_RED_LIGHT
+	subdepartment_color = COLOR_COMMAND_BLUE
 	sechud_icon_state = "hud_nri"
 
 /datum/id_trim/nri/New()
@@ -19,6 +21,8 @@
 /datum/id_trim/nri/commander
 	assignment = "NRI Platoon Commander"
 	trim_state = "trim_nri_commander"
+	department_color = COLOR_RED_LIGHT
+	subdepartment_color = COLOR_COMMAND_BLUE
 	sechud_icon_state = "hud_nri_commander"
 
 /datum/id_trim/nri/heavy
@@ -33,6 +37,8 @@
 /datum/id_trim/nri/diplomat
 	assignment = "NRI Diplomat"
 	trim_state = "trim_nri_commander"
+	department_color = COLOR_RED_LIGHT
+	subdepartment_color = COLOR_COMMAND_BLUE
 	sechud_icon_state = "hud_nri_commander"
 
 /datum/id_trim/nri/diplomat/major

@@ -70,7 +70,7 @@
 	icon_state = "xeno_egg"
 	loot = list(
 		/obj/effect/decal/remains/xeno = 49,
-		/obj/effect/spawner/xeno_egg_delivery = 1,
+		/obj/item/clothing/mask/facehugger/toy = 1, // SKYRAT EDIT - They should be handled by dynamic - ORIGIGNAL: /obj/effect/spawner/xeno_egg_delivery = 1,
 	)
 
 /obj/effect/spawner/random/medical/surgery_tool

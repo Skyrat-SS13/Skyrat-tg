@@ -6,7 +6,7 @@ PROCESSING_SUBSYSTEM_DEF(pollution_emitters)
 
 /datum/element/pollution_emitter
 	element_flags = ELEMENT_DETACH_ON_HOST_DESTROY | ELEMENT_BESPOKE
-	id_arg_index = 2
+	argument_hash_start_idx = 2
 
 	/// List of all affected atoms
 	var/list/affected = list()

@@ -21,7 +21,7 @@
 
 /obj/item/organ/internal/empowered_borer_egg/Insert(mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE)
 	..()
-	addtimer(CALLBACK(src, .proc/try_burst), burst_time)
+	addtimer(CALLBACK(src, PROC_REF(try_burst)), burst_time)
 
 /obj/item/organ/internal/empowered_borer_egg/Remove(mob/living/carbon/M, special = FALSE)
 	. = ..()

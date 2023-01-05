@@ -52,7 +52,7 @@
 			if(toppaper_ref)
 				var/obj/item/paper/toppaper = toppaper_ref?.resolve()
 				UnregisterSignal(toppaper, COMSIG_ATOM_UPDATED_ICON)
-			RegisterSignal(new_paper, COMSIG_ATOM_UPDATED_ICON, .proc/on_top_paper_change)
+			RegisterSignal(new_paper, COMSIG_ATOM_UPDATED_ICON, PROC_REF(on_top_paper_change))
 			toppaper_ref = WEAKREF(new_paper)
 			update_appearance()
 			to_chat(user, span_notice("[src]'s integrated printer whirs to life, spitting out a fresh piece of paper and clipping it into place."))
@@ -115,7 +115,7 @@
 	var/obj/item/robot_model/holder_model = loc
 	cyborg_holding_me = WEAKREF(holder_model.robot)
 
-	RegisterSignal(holder_model.robot, COMSIG_LIVING_DEATH, .proc/empty_contents)
+	RegisterSignal(holder_model.robot, COMSIG_LIVING_DEATH, PROC_REF(empty_contents))
 
 
 /obj/item/borg/hydraulic_clamp/Destroy()
@@ -405,7 +405,7 @@
 /// A simple proc to check if we're at the max amount of planes, if not, we keep on charging. Called by [/obj/item/borg/paperplane_crossbow/proc/charge_paper_planes()].
 /obj/item/borg/paperplane_crossbow/proc/check_amount()
 	if(!charging && planes < max_planes)
-		addtimer(CALLBACK(src, .proc/charge_paper_planes), charge_delay)
+		addtimer(CALLBACK(src, PROC_REF(charge_paper_planes)), charge_delay)
 		charging = TRUE
 
 

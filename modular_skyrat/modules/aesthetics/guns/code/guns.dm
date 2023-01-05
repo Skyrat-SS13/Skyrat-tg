@@ -64,6 +64,15 @@
 	vary_fire_sound = TRUE
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/shotgun_light.ogg'
 
+/obj/item/gun/ballistic/shotgun/riot/syndicate
+	name = "\improper Peacebreaker shotgun"
+	desc = "A Scarborough riot control shotgun fitted with a crimson furnishing and a wooden tactical stock. You swear you've seen this model elsewhere before..."
+	icon_state = "riotshotgun_syndie"
+	inhand_icon_state = "riot_shotgun_syndie"
+	can_be_sawn_off = FALSE
+	can_suppress = FALSE
+	company_flag = COMPANY_SCARBOROUGH
+
 /obj/item/gun/ballistic/shotgun/automatic/combat
 	name = "\improper Peacekeeper combat shotgun"
 	desc = "A semi-automatic Nanotrasen Peacekeeper shotgun with tactical furnishing and heavier internals meant for sustained fire. Lacks a threaded barrel."
@@ -86,15 +95,12 @@
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
 
-/obj/item/gun/ballistic/revolver/mateba
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-
 /obj/item/gun/ballistic/automatic/c20r
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
 /obj/item/gun/ballistic/automatic/m90
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-/obj/item/gun/ballistic/revolver/detective
+/obj/item/gun/ballistic/revolver/c38/detective
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
 /obj/item/gun/ballistic/automatic/pistol/aps
@@ -132,6 +138,7 @@
 
 /obj/item/ammo_casing/energy/laser/rainbow
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/nucgun.dmi'
+	icon_state = "laser"
 	select_name = "kill"
 	projectile_type = /obj/projectile/beam/laser/rainbow
 
@@ -141,6 +148,7 @@
 
 /obj/item/ammo_casing/energy/disabler/rainbow
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/nucgun.dmi'
+	icon_state = "laser"
 	select_name = "disable"
 	projectile_type = /obj/projectile/beam/disabler/rainbow
 
@@ -279,7 +287,6 @@
 	worn_icon_state = "bubba"
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	can_be_sawn_off = FALSE
-	realistic = TRUE
 	company_flag = null //Cargonia's own
 
 /obj/item/ammo_box/magazine/internal/boltaction/bubba

@@ -31,9 +31,9 @@
 		follow_distance = _follow_distance
 	if(_follow_speed)
 		follow_speed = _follow_speed
-	RegisterSignal(parent, COMSIG_HOSTILE_MOB_LOST_TARGET, .proc/lost_target)
-	RegisterSignal(parent, COMSIG_CLICK_ALT, .proc/toggle_follow)
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/on_examine)
+	RegisterSignal(parent, COMSIG_HOSTILE_MOB_LOST_TARGET, PROC_REF(lost_target))
+	RegisterSignal(parent, COMSIG_CLICK_ALT, PROC_REF(toggle_follow))
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
 	parent_mob = parent
 
 /datum/component/follow/Destroy(force, silent)
@@ -54,12 +54,12 @@
 	if(following)
 		if(follow_sounds)
 			playsound(parent_mob, pick(follow_sounds), 100)
-		INVOKE_ASYNC(parent_mob, /atom/movable.proc/say, "Following you!")
+		INVOKE_ASYNC(parent_mob, TYPE_PROC_REF(/atom/movable, say), "Following you!")
 		parent_mob.Goto(living_user, follow_speed, follow_distance)
 	else
 		if(unfollow_sounds)
 			playsound(parent_mob, pick(unfollow_sounds), 100)
-		INVOKE_ASYNC(parent_mob, /atom/movable.proc/say, "No longer following!")
+		INVOKE_ASYNC(parent_mob, TYPE_PROC_REF(/atom/movable, say), "No longer following!")
 		parent_mob.LoseTarget()
 
 /datum/component/follow/proc/on_examine(datum/source, mob/examiner, list/examine_text)

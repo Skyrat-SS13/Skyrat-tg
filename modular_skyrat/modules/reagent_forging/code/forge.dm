@@ -1,8 +1,8 @@
 /// The baseline time to take for doing actions with the forge, like heating glass, setting ceramics, etc.
-#define BASELINE_ACTION_TIME 4 SECONDS
+#define BASELINE_ACTION_TIME (4 SECONDS)
 
 /// The basline for how long an item such as molten glass will be kept workable after heating
-#define BASELINE_HEATING_DURATION 25 SECONDS
+#define BASELINE_HEATING_DURATION (25 SECONDS)
 
 /// The amount the forge's temperature will change per process
 #define FORGE_DEFAULT_TEMPERATURE_CHANGE 5
@@ -11,7 +11,7 @@
 /// The minimum temperature for using the forge
 #define MIN_FORGE_TEMP 50
 /// The duration that objects heated in the forge are heated for
-#define FORGE_HEATING_DURATION 1 MINUTES
+#define FORGE_HEATING_DURATION (1 MINUTES)
 
 /// Defines for different levels of the forge, ranging from no level (you play like a noob) to legendary
 #define FORGE_LEVEL_YOU_PLAY_LIKE_A_NOOB 1
@@ -90,7 +90,7 @@
 	)
 	/// List of possible choices for the selection radial
 	var/list/radial_choice_list = list()
-    /// Blacklist that contains reagents that weapons and armor are unable to be imbued with.
+	/// Blacklist that contains reagents that weapons and armor are unable to be imbued with.
 	var/static/list/disallowed_reagents = typecacheof(list(
 		/datum/reagent/inverse/,
 		/datum/reagent/consumable/entpoly,
@@ -516,7 +516,7 @@
 
 	if(prob(CHARCOAL_CHANCE) && !is_strong_fuel)
 		to_chat(user, span_notice("[src]'s fuel is packed densely enough to have made some charcoal!"))
-		addtimer(CALLBACK(src, .proc/spawn_coal), 1 MINUTES)
+		addtimer(CALLBACK(src, PROC_REF(spawn_coal)), 1 MINUTES)
 
 /// Takes given ore and smelts it, possibly producing extra sheets if upgraded
 /obj/structure/reagent_forge/proc/smelt_ore(obj/item/stack/ore/ore_item, mob/living/user)

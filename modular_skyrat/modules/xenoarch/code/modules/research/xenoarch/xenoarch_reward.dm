@@ -47,7 +47,7 @@ GLOBAL_LIST_INIT(weapon_reward, list(
 	/obj/item/claymore/cutlass = 1,
 	/obj/item/gun/ballistic/automatic/pistol = 1,
 	/obj/item/shield/riot = 1,
-	/obj/item/shield/riot/roman = 1,
+	/obj/item/shield/roman = 1,
 	/obj/item/pneumatic_cannon = 1,
 	/obj/item/gun/syringe/rapidsyringe = 1,
 ))

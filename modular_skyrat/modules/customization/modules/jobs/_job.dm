@@ -24,7 +24,9 @@
 	if(banned_quirks)
 		for(var/Q in pref.all_quirks)
 			if(banned_quirks[Q])
-				return TRUE
+				var/exception = RESTRICTED_QUIRKS_EXCEPTIONS[Q]
+				if (!exception || !pref.all_quirks.Find(exception))
+					return TRUE
 	return FALSE
 
 /datum/job/proc/has_banned_species(datum/preferences/pref)

@@ -17,7 +17,6 @@
 	empty_indicator = TRUE
 	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
 	company_flag = COMPANY_IZHEVSK
-	dirt_modifier = 0.6
 
 /obj/item/gun/ballistic/automatic/plastikov/nri_pirate
 	name = "\improper PP-105 SMG"
@@ -34,17 +33,14 @@
 	projectile_damage_multiplier = 0.35 // It's like 10.5 damage per bullet, it's close enough to 10 shots
 	mag_display = TRUE
 	empty_indicator = TRUE
-	dirt_modifier = 1.25
 
 /obj/item/gun/ballistic/automatic/pistol/ladon/nri
 	name = "\improper Szabo-Ivanek service pistol"
 	desc = "A mass produced NRI-made modified reproduction of the PDH-6 line of handguns rechambered in 9×25mm.\
-	 'PATRIOT DEFENSE SYSTEMS' is inscribed on the receiver, indicating it's been made with a plasteel printer."
+		'PATRIOT DEFENSE SYSTEMS' is inscribed on the receiver, indicating it's been made with a plasteel printer."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/pistol.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	mag_type = /obj/item/ammo_box/magazine/m9mm_aps
 	burst_size = 3
-	dirt_modifier = 0.5
-	emp_damageable = FALSE
 	fire_delay = 3
 	company_flag = COMPANY_IZHEVSK

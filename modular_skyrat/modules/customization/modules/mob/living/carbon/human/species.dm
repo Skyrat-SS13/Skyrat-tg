@@ -45,7 +45,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/new_renderkey = "[id]"
 
 	for(var/key in mutant_bodyparts)
-		if (!islist(mutant_bodyparts[key]))
+		if(!islist(mutant_bodyparts[key]) || !(mutant_bodyparts[key][MUTANT_INDEX_NAME] in GLOB.sprite_accessories[key]))
 			continue
 		var/datum/sprite_accessory/mutant_accessory = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 		if(!mutant_accessory || mutant_accessory.icon_state == "none")
@@ -160,16 +160,35 @@ GLOBAL_LIST_EMPTY(customizable_races)
 							accessory_overlay.color = owner.eye_color_left
 			else
 				accessory_overlay.color = override_color
+
 			if (accessories)
 				for (var/acces in accessories)
 					standing += acces
 			else
 				standing += accessory_overlay
+
 				if (mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][1])
 					var/mutable_appearance/emissive_overlay = emissive_appearance_copy(accessory_overlay, owner)
 					//if (bodypart_accessory.center)
 					//	emissive_overlay = center_image(emissive_overlay, x_shift, bodypart_accessory.dimension_y)
 					standing += emissive_overlay
+
+			// Gets the icon_state of a single or matrix colored accessory and overlays it with a texture
+			if(bodypart_accessory.use_custom_mod_icon)
+				if(bodypart_accessory.color_src == USE_MATRIXED_COLORS && color_layer_list)
+					var/mutable_appearance/MOD_overlay = mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), layer = -layer)
+					// Pastes each of the three(primary, secondary, tertiary) accessory icon_states into one MA
+					for(var/number in color_layer_list)
+						MOD_overlay.add_overlay(mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]_[color_layer_list[number]]"))
+					if(bodypart_accessory.center)
+						MOD_overlay = center_image(MOD_overlay, x_shift, bodypart_accessory.dimension_y)
+					standing += MOD_overlay
+				else
+					// Single color MA
+					var/mutable_appearance/MOD_overlay = mutable_appearance(bodypart_accessory.get_custom_mod_icon(owner), "[render_state]_[layertext]", layer = -layer)
+					if(bodypart_accessory.center)
+						MOD_overlay = center_image(MOD_overlay, x_shift, bodypart_accessory.dimension_y)
+					standing += MOD_overlay
 
 			if(bodypart_accessory.hasinner)
 				var/mutable_appearance/inner_accessory_overlay = mutable_appearance(bodypart_accessory.icon, layer = -layer)
@@ -482,7 +501,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	. = ..()
 	var/robot_organs = (ROBOTIC_DNA_ORGANS in C.dna.species.species_traits)
 	for(var/key in C.dna.mutant_bodyparts)
-		if (!islist(C.dna.mutant_bodyparts[key]))
+		if(!islist(C.dna.mutant_bodyparts[key]) || !(C.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME] in GLOB.sprite_accessories[key]))
 			continue
 		var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][C.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 		if(SA?.factual && SA.organ_type)

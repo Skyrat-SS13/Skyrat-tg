@@ -125,7 +125,7 @@
  */
 /datum/round_event_control/alien_infestation
 	max_occurrences = 0
-	
+
 /**
  * Paperwork Error
  *
@@ -133,5 +133,4 @@
  * Paperwork Error is too intrusive and should be staff-only.
  */
 /datum/round_event_control/bureaucratic_error
-    max_occurrences = 0
-    
+	max_occurrences = 0

@@ -142,7 +142,7 @@
 	resolve_parent.add_fingerprint(user)
 	attempt_remove(gun_to_draw, get_turf(user))
 	playsound(resolve_parent, 'modular_skyrat/modules/sec_haul/sound/holsterout.ogg', 50, TRUE, -5)
-	INVOKE_ASYNC(user, /mob/.proc/put_in_hands, gun_to_draw)
+	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob, put_in_hands), gun_to_draw)
 	user.visible_message(span_warning("[user] draws [gun_to_draw] from [resolve_parent]!"), span_notice("You draw [gun_to_draw] from [resolve_parent]."))
 
 /*
@@ -465,7 +465,7 @@
 //Security Wintercoat (and hood)
 /obj/item/clothing/head/hooded/winterhood/security
 	desc = "A blue, armour-padded winter hood. Definitely not bulletproof, especially not the part where your face goes." //God dammit TG stop putting color in the desc of items like this
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "security_wintercoat_hood"
 
@@ -582,16 +582,16 @@
 	. = ..()
 
 //PDA Greyscale Overrides
-/obj/item/modular_computer/tablet/pda/security
+/obj/item/modular_computer/pda/security
 	greyscale_colors = "#2B356D#1E1E1E"
 
-/obj/item/modular_computer/tablet/pda/detective
+/obj/item/modular_computer/pda/detective
 	greyscale_colors = "#90714F#1E1E1E"
 
-/obj/item/modular_computer/tablet/pda/warden
+/obj/item/modular_computer/pda/warden
 	greyscale_colors = "#2F416E#1E1E1E#ACACAC"
 
-/obj/item/modular_computer/tablet/pda/heads/hos
+/obj/item/modular_computer/pda/heads/hos
 	greyscale_colors = "#2B356D#1E1E1E"
 
 /*

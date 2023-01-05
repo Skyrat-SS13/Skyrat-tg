@@ -82,7 +82,7 @@
 			return
 	. = ..()
 
-/obj/structure/trash_pile/proc/eject_mob(var/mob/living/hidden_mob)
+/obj/structure/trash_pile/proc/eject_mob(mob/living/hidden_mob)
 	hidden_mob.forceMove(src.loc)
 	playsound(hidden_mob.loc, 'sound/machines/chime.ogg', 50, FALSE, -5)
 	hidden_mob.do_alert_animation(hidden_mob)

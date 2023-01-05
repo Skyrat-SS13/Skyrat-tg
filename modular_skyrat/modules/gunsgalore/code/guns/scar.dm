@@ -22,4 +22,3 @@
 	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/scar_mag_in.ogg'
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/scar_mag_out.ogg'
 	alt_icons = TRUE
-	realistic = TRUE

@@ -24,6 +24,9 @@
 
 /datum/element/dusts_on_catatonia/process()
 	for(var/mob/living/attached as anything in attached_mobs)
-		if(!attached.key && !attached.get_ghost())
-			attached.dust(TRUE, force = TRUE)
-			Detach(attached)
+		if(attached.key || attached.get_ghost())
+			continue
+
+		attached.investigate_log("was dusted due to no longer being linked to a player or ghost.", INVESTIGATE_DEATHS)
+		attached.dust(TRUE, force = TRUE)
+		Detach(attached)

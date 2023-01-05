@@ -53,8 +53,8 @@
 
 #define TEST_PRE 0
 #define TEST_DEFAULT 1
-/// This should be one of the last tests to run, because we run it for a little bit over 30 seconds by design and we want to run all of the tests that take a trivial amount of time to complete beforehand.
-#define TEST_MONKEY_BUSINESS 10
+/// After most test steps, used for tests that run long so shorter issues can be noticed faster
+#define TEST_LONGER 10
 /// This must be the last test to run due to the inherent nature of the test iterating every single tangible atom in the game and qdeleting all of them (while taking long sleeps to make sure the garbage collector fires properly) taking a large amount of time.
 #define TEST_CREATE_AND_DESTROY INFINITY
 
@@ -82,6 +82,7 @@
 #include "achievements.dm"
 #include "anchored_mobs.dm"
 #include "anonymous_themes.dm"
+#include "area_contents.dm"
 #include "autowiki.dm"
 #include "barsigns.dm"
 #include "bespoke_id.dm"
@@ -98,14 +99,18 @@
 #include "component_tests.dm"
 #include "confusion.dm"
 #include "connect_loc.dm"
+#include "container_sanity.dm"
 #include "crayons.dm"
 #include "create_and_destroy.dm"
 #include "dcs_get_id_from_elements.dm"
 #include "designs.dm"
+#include "dragon_expiration.dm"
+#include "drink_icons.dm"
 #include "dummy_spawn.dm"
 #include "dynamic_ruleset_sanity.dm"
 #include "egg_glands.dm"
 #include "emoting.dm"
+#include "focus_only_tests.dm"
 #include "food_edibility_check.dm"
 #include "gas_transfer.dm"
 #include "get_turf_pixel.dm"
@@ -115,22 +120,26 @@
 #include "heretic_rituals.dm"
 #include "holidays.dm"
 #include "human_through_recycler.dm"
+#include "hunger_curse.dm"
 #include "hydroponics_extractor_storage.dm"
 #include "hydroponics_harvest.dm"
 #include "hydroponics_self_mutations.dm"
 #include "hydroponics_validate_genes.dm"
 #include "inhands.dm"
+#include "json_savefile_importing.dm"
 #include "keybinding_init.dm"
 #include "knockoff_component.dm"
 #include "limbsanity.dm"
 #include "load_map_security.dm"
 #include "machine_disassembly.dm"
+#include "mapload_space_verification.dm"
 #include "mapping.dm"
 #include "mecha_damage.dm"
 #include "medical_wounds.dm"
 #include "merge_type.dm"
 #include "metabolizing.dm"
 #include "mindbound_actions.dm"
+#include "missing_icons.dm"
 #include "mob_faction.dm"
 #include "mob_spawn.dm"
 #include "modsuit.dm"
@@ -170,6 +179,7 @@
 #include "security_officer_distribution.dm"
 #include "security_levels.dm"
 #include "serving_tray.dm"
+#include "simple_animal_freeze.dm"
 #include "siunit.dm"
 #include "slips.dm"
 #include "spawn_humans.dm"
@@ -185,7 +195,9 @@
 #include "spell_shapeshift.dm"
 #include "spritesheets.dm"
 #include "stack_singular_name.dm"
+#include "station_trait_tests.dm"
 #include "stomach.dm"
+#include "strange_reagent.dm"
 #include "strippable.dm"
 #include "subsystem_init.dm"
 #include "suit_storage_icons.dm"

@@ -24,7 +24,7 @@
 	resistance_flags = FIRE_PROOF
 
 	light_power = 0
-	light_range = 7
+	light_range = 3
 	light_color = COLOR_VIVID_RED
 
 	//Trick to get the glowing overlay visible from a distance
@@ -50,7 +50,7 @@
 	LAZYADD(my_area.firealarms, src)
 
 	AddElement(/datum/element/atmos_sensitive, mapload)
-	RegisterSignal(SSsecurity_level, COMSIG_SECURITY_LEVEL_CHANGED, .proc/check_security_level)
+	RegisterSignal(SSsecurity_level, COMSIG_SECURITY_LEVEL_CHANGED, PROC_REF(check_security_level))
 	soundloop = new(src, FALSE)
 
 	AddComponent(/datum/component/usb_port, list(
@@ -77,11 +77,11 @@
 	if(!.)
 		return
 	var/area/our_area = get_area(src)
-	RegisterSignal(our_area, COMSIG_AREA_FIRE_CHANGED, .proc/handle_fire)
+	RegisterSignal(our_area, COMSIG_AREA_FIRE_CHANGED, PROC_REF(handle_fire))
 
 /obj/machinery/firealarm/on_enter_area(datum/source, area/area_to_register)
 	..()
-	RegisterSignal(area_to_register, COMSIG_AREA_FIRE_CHANGED, .proc/handle_fire)
+	RegisterSignal(area_to_register, COMSIG_AREA_FIRE_CHANGED, PROC_REF(handle_fire))
 	handle_fire(area_to_register, area_to_register.fire)
 
 /obj/machinery/firealarm/on_exit_area(datum/source, area/area_to_unregister)
@@ -107,7 +107,7 @@
 /obj/machinery/firealarm/update_appearance(updates)
 	. = ..()
 	if((my_area?.fire || LAZYLEN(my_area?.active_firelocks)) && !(obj_flags & EMAGGED) && !(machine_stat & (BROKEN|NOPOWER)))
-		set_light(l_power = 0.8)
+		set_light(l_power = 2)
 	else
 		set_light(l_power = 0)
 
@@ -485,8 +485,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/firealarm, 26)
 	. = ..()
 	if(istype(parent, /obj/machinery/firealarm))
 		attached_alarm = parent
-		RegisterSignal(parent, COMSIG_FIREALARM_ON_TRIGGER, .proc/on_firealarm_triggered)
-		RegisterSignal(parent, COMSIG_FIREALARM_ON_RESET, .proc/on_firealarm_reset)
+		RegisterSignal(parent, COMSIG_FIREALARM_ON_TRIGGER, PROC_REF(on_firealarm_triggered))
+		RegisterSignal(parent, COMSIG_FIREALARM_ON_RESET, PROC_REF(on_firealarm_reset))
 
 /obj/item/circuit_component/firealarm/unregister_usb_parent(atom/movable/parent)
 	attached_alarm = null

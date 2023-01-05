@@ -49,7 +49,7 @@
 	var/hack_software = FALSE //Will be able to use hacking actions
 	interaction_range = 7 //wireless control range
 
-	var/obj/item/modular_computer/tablet/integrated/modularInterface
+	var/obj/item/modular_computer/pda/silicon/modularInterface
 
 /mob/living/silicon/Initialize(mapload)
 	. = ..()
@@ -81,7 +81,7 @@
 
 /mob/living/silicon/proc/create_modularInterface()
 	if(!modularInterface)
-		modularInterface = new /obj/item/modular_computer/tablet/integrated(src)
+		modularInterface = new /obj/item/modular_computer/pda/silicon(src)
 	if(isAI(src))
 		modularInterface.saved_job = "AI"
 	if(ispAI(src))
@@ -93,13 +93,13 @@
 
 /mob/living/silicon/robot/create_modularInterface()
 	if(!modularInterface)
-		modularInterface = new /obj/item/modular_computer/tablet/integrated/cyborg(src)
+		modularInterface = new /obj/item/modular_computer/pda/silicon/cyborg(src)
 		modularInterface.saved_job = "Cyborg"
 	return ..()
 
 /mob/living/silicon/robot/model/syndicate/create_modularInterface()
 	if(!modularInterface)
-		modularInterface = new /obj/item/modular_computer/tablet/integrated/syndicate(src)
+		modularInterface = new /obj/item/modular_computer/pda/silicon/cyborg/syndicate(src)
 		modularInterface.saved_job = "Cyborg"
 	return ..()
 
@@ -125,7 +125,7 @@
 	if(in_cooldown)
 		return
 
-	addtimer(CALLBACK(src, .proc/show_alarms), 3 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(show_alarms)), 3 SECONDS)
 
 /mob/living/silicon/proc/show_alarms()
 	if(length(alarms_to_show) < 5)

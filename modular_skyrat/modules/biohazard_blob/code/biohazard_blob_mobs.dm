@@ -166,7 +166,7 @@
 	var/datum/reagents/R = new/datum/reagents(300)
 	R.my_atom = src
 	R.add_reagent(/datum/reagent/toxin/mutagen, 20)
-	chem_splash(loc, 5, list(R))
+	chem_splash(loc, null, 5, list(R))
 	playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
 	return ..()
 

@@ -43,7 +43,7 @@
 	item = /obj/item/storage/backpack/duffelbag/syndie/x4
 	cost = 4
 	cant_discount = TRUE
-
+/* //SKYRAT EDIT REMOVAL START
 /datum/uplink_item/explosives/detomatix
 	name = "Detomatix disk"
 	desc = "When inserted into a tablet, this cartridge gives you four opportunities to \
@@ -53,7 +53,7 @@
 	item = /obj/item/computer_disk/virus/detomatix
 	cost = 6
 	restricted = TRUE
-
+*/ //SKYRAT REMOVAL END
 /datum/uplink_item/explosives/emp
 	name = "EMP Grenades and Implanter Kit"
 	desc = "A box that contains five EMP grenades and an EMP implant with three uses. Useful to disrupt communications, \
@@ -61,6 +61,11 @@
 	progression_minimum = 30 MINUTES
 	item = /obj/item/storage/box/syndie_kit/emp
 	cost = 2
+
+/datum/uplink_item/explosives/emp/New()
+	..()
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_CYBERNETIC_REVOLUTION))
+		cost *= 3
 
 /datum/uplink_item/explosives/pizza_bomb
 	name = "Pizza Bomb"
@@ -87,6 +92,11 @@
 	progression_minimum = 30 MINUTES
 	item = /obj/item/sbeacondrop/emp
 	cost = 7
+
+/datum/uplink_item/explosives/syndicate_bomb/emp/New()
+	..()
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_CYBERNETIC_REVOLUTION))
+		cost *= 2
 
 // High progression cost
 

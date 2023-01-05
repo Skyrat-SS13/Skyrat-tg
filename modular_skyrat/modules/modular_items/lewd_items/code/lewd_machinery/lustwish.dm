@@ -1,7 +1,8 @@
 /obj/machinery/vending/dorms
 	name = "LustWish"
 	desc = "A vending machine with various toys. Not for the faint of heart."
-	icon_state = "lustwish"
+	icon_state = "lustwish_pink"
+	base_icon_state = "lustwish"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/lustwish.dmi'
 	light_mask = "lustwish-light-mask"
 	age_restrictions = TRUE
@@ -37,7 +38,7 @@
 					/obj/item/serviette_pack = 10,
 					/obj/item/restraints/handcuffs/lewd = 8,
 					/obj/item/key/collar = 48,
-					/obj/item/pillow = 32, //cmon, why there is always 0 pillows, where do you guys stuff it.
+					/obj/item/fancy_pillow = 32,
 					/obj/item/stack/shibari_rope/full = 10,
 					/obj/item/stack/shibari_rope/glow/full = 10,
 
@@ -134,9 +135,10 @@
 
 ///Populates vend_designs with different colors for the vending machine
 /obj/machinery/vending/dorms/proc/populate_vend_designs()
-    vend_designs = list(
-        "pink" = image (icon = src.icon, icon_state = "lustwish_pink"),
-        "teal" = image(icon = src.icon, icon_state = "lustwish_teal"))
+	vend_designs = list(
+		"pink" = image (icon = src.icon, icon_state = "lustwish_pink"),
+		"teal" = image(icon = src.icon, icon_state = "lustwish_teal"),
+	)
 
 //Changes the settings on the vendor, if the user uses the discount card.
 /obj/machinery/vending/dorms/attackby(obj/item/used_item, mob/living/user, params)
@@ -164,7 +166,7 @@
 	if(!card_used)
 		return
 
-	var/choice = show_radial_menu(user, src, vend_designs, custom_check = CALLBACK(src, .proc/check_menu, user, used_item), radius = 50, require_near = TRUE)
+	var/choice = show_radial_menu(user, src, vend_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user, used_item), radius = 50, require_near = TRUE)
 	if(choice)
 		current_color = choice
 		update_icon()
@@ -191,10 +193,10 @@
 /obj/machinery/vending/dorms/update_icon_state()
 	..()
 	if(machine_stat & BROKEN)
-		icon_state = "[initial(icon_state)]_[current_color]-broken"
+		icon_state = "[base_icon_state]_[current_color]-broken"
 		return
 
-	icon_state = "[initial(icon_state)]_[current_color][powered() ? null : "-off"]"
+	icon_state = "[base_icon_state]_[current_color][powered() ? null : "-off"]"
 
 //Refill item
 /obj/item/vending_refill/lustwish

@@ -9,7 +9,7 @@
 		return COMPONENT_INCOMPATIBLE
 
 /datum/component/connectable_computer/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_ATOM_UPDATE_OVERLAYS, .proc/on_update_overlays)
+	RegisterSignal(parent, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(on_update_overlays))
 
 	update_neighbors()
 

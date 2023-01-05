@@ -14,8 +14,8 @@
 "ad" = (
 /obj/machinery/power/solar,
 /obj/structure/cable,
-/turf/open/floor/iron/solarpanel,
-/area/template_noop)
+/turf/open/floor/iron/solarpanel/airless,
+/area/ruin/solars/hotel/solars)
 "ae" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/clothing,
@@ -35,8 +35,8 @@
 "ai" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable,
-/turf/open/floor/iron/solarpanel,
-/area/template_noop)
+/turf/open/floor/iron/solarpanel/airless,
+/area/ruin/solars/hotel/solars)
 "aj" = (
 /obj/structure/chair/greyscale{
 	dir = 1
@@ -171,9 +171,6 @@
 "aK" = (
 /obj/structure/chair/comfy/black{
 	dir = 1
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
 	},
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/hotel/dock)
@@ -910,6 +907,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/mapping_helpers/airlock/access/all/away/maintenance,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel/bar)
 "fl" = (
@@ -1971,7 +1969,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/hotel/custodial)
 "jJ" = (
-/obj/structure/janitorialcart,
+/obj/structure/mop_bucket/janitorialcart,
 /obj/item/mop,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/siding/purple{
@@ -2488,7 +2486,7 @@
 /obj/structure/lattice/catwalk,
 /obj/structure/cable,
 /turf/template_noop,
-/area/template_noop)
+/area/ruin/solars/hotel/solars)
 "lS" = (
 /obj/structure/table/wood,
 /obj/structure/bedsheetbin,
@@ -3404,10 +3402,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/carpet/green,
 /area/ruin/space/has_grav/hotel/guestroom/room_4)
-"ra" = (
-/obj/structure/grille,
-/turf/template_noop,
-/area/template_noop)
 "rd" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/curtain/cloth/fancy/mechanical{
@@ -3519,13 +3513,6 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/hotel/custodial)
-"rO" = (
-/obj/effect/turf_decal/siding/dark,
-/obj/effect/turf_decal/siding/dark{
-	dir = 4
-	},
-/turf/open/floor/carpet/black,
-/area/ruin/space/has_grav/hotel)
 "rP" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 8
@@ -3591,10 +3578,10 @@
 /area/ruin/space/has_grav/hotel)
 "sa" = (
 /obj/structure/chair/comfy/black,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
 /obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/dark{
 	dir = 1
 	},
 /turf/open/floor/carpet/royalblack,
@@ -3988,6 +3975,11 @@
 	},
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel)
+"uO" = (
+/obj/structure/table/glass,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/hotel/bar)
 "uQ" = (
 /obj/structure/closet,
 /obj/item/tickle_feather,
@@ -4065,6 +4057,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/carpet/black,
 /area/ruin/space/has_grav/hotel/bar)
 "vo" = (
@@ -4187,14 +4180,6 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/hotel/guestroom/room_6)
-"wf" = (
-/obj/machinery/door/window/left/directional/north,
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "garbage"
-	},
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/hotel/workroom)
 "wm" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -5371,6 +5356,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/carpet/black,
 /area/ruin/space/has_grav/hotel/bar)
 "EA" = (
@@ -5475,11 +5461,8 @@
 /turf/open/indestructible/hoteltile,
 /area/ruin/space/has_grav/hotel/guestroom/room_5)
 "EX" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 8
-	},
 /obj/effect/turf_decal/siding/dark{
-	dir = 8
+	dir = 9
 	},
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/hotel/dock)
@@ -5666,6 +5649,7 @@
 /obj/machinery/atmospherics/components/unary/passive_vent{
 	dir = 1
 	},
+/obj/structure/lattice,
 /turf/template_noop,
 /area/template_noop)
 "Gz" = (
@@ -5929,6 +5913,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/carpet/black,
 /area/ruin/space/has_grav/hotel/bar)
 "HS" = (
@@ -6711,9 +6696,6 @@
 /turf/open/floor/iron/dark/diagonal,
 /area/ruin/space/has_grav/hotel)
 "Nn" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
-	dir = 4
-	},
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
 	},
@@ -6741,7 +6723,7 @@
 /area/ruin/space/has_grav/hotel/workroom/quarters)
 "Nw" = (
 /obj/machinery/mass_driver/trash{
-	dir = 8
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel/workroom)
@@ -6932,15 +6914,6 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/hotel/dock)
-"OR" = (
-/obj/effect/turf_decal/siding/dark{
-	dir = 1
-	},
-/obj/effect/turf_decal/siding/dark{
-	dir = 4
-	},
-/turf/open/floor/carpet/black,
-/area/ruin/space/has_grav/hotel)
 "OW" = (
 /obj/machinery/door/airlock/public/glass,
 /obj/machinery/door/firedoor,
@@ -7220,6 +7193,7 @@
 /area/ruin/space/has_grav/hotel/power)
 "QI" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/carpet/black,
 /area/ruin/space/has_grav/hotel/bar)
 "QK" = (
@@ -8434,6 +8408,12 @@
 /obj/effect/mapping_helpers/airlock/access/all/away/general,
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/hotel/bar)
+"ZJ" = (
+/obj/effect/turf_decal/siding/dark/end{
+	dir = 8
+	},
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/hotel/dock)
 "ZL" = (
 /obj/machinery/computer/pod/old/mass_driver_controller/trash{
 	pixel_x = -25;
@@ -8446,16 +8426,14 @@
 	pixel_y = -4;
 	req_access = list("away_maintenance")
 	},
-/obj/machinery/computer/pod/old/mass_driver_controller/trash{
-	pixel_x = -25;
-	pixel_y = -4
-	},
+/obj/machinery/door/window/left/directional/south,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel/workroom)
 "ZM" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/carpet/black,
 /area/ruin/space/has_grav/hotel/bar)
 "ZN" = (
@@ -8536,14 +8514,14 @@ aa
 aa
 aa
 mF
-ra
-ra
-ra
-ra
-ra
 mF
-ra
-aa
+mF
+mF
+mF
+mF
+mF
+mF
+ac
 aa
 aa
 aa
@@ -8553,40 +8531,40 @@ aa
 aa
 aa
 mF
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
 mF
 ac
 mF
-ra
-ra
-ra
-ra
-ra
 mF
-ac
-ac
+mF
+mF
+mF
+mF
 mF
 ac
 ac
 mF
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
-ra
+ac
+ac
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
 mF
 ac
 aa
@@ -8619,8 +8597,8 @@ aa
 aa
 aa
 mF
-ra
-ra
+mF
+mF
 mF
 ac
 aa
@@ -8684,9 +8662,9 @@ am
 am
 ac
 mF
-ra
-ra
-ra
+mF
+mF
+mF
 mF
 ac
 aa
@@ -8728,7 +8706,7 @@ ad
 aa
 ad
 aa
-ra
+mF
 aa
 "}
 (4,1,1) = {"
@@ -8939,7 +8917,7 @@ aa
 ad
 aa
 aa
-ra
+mF
 "}
 (7,1,1) = {"
 wZ
@@ -8993,7 +8971,7 @@ gK
 yL
 EI
 Do
-sN
+gK
 aa
 aa
 ad
@@ -9148,7 +9126,7 @@ ad
 aa
 ad
 aa
-ra
+mF
 aa
 "}
 (10,1,1) = {"
@@ -9218,7 +9196,7 @@ ad
 aa
 ad
 aa
-ra
+mF
 aa
 "}
 (11,1,1) = {"
@@ -9288,7 +9266,7 @@ lQ
 lQ
 lQ
 ai
-ra
+mF
 aa
 "}
 (12,1,1) = {"
@@ -9358,7 +9336,7 @@ aa
 aa
 aa
 aa
-ra
+mF
 aa
 "}
 (13,1,1) = {"
@@ -9428,7 +9406,7 @@ aa
 aa
 aa
 aa
-ra
+mF
 aa
 "}
 (14,1,1) = {"
@@ -9565,7 +9543,7 @@ SF
 lr
 XF
 aa
-ra
+mF
 aa
 aa
 aa
@@ -9635,7 +9613,7 @@ SF
 ml
 XF
 aa
-ra
+mF
 aa
 aa
 aa
@@ -9705,7 +9683,7 @@ mt
 Lm
 XF
 aa
-ra
+mF
 aa
 aa
 aa
@@ -9775,7 +9753,7 @@ kx
 kx
 XF
 aa
-ra
+mF
 aa
 aa
 aa
@@ -9845,7 +9823,7 @@ SF
 lr
 XF
 aa
-ra
+mF
 aa
 aa
 aa
@@ -9915,7 +9893,7 @@ SF
 ml
 XF
 aa
-ra
+mF
 aa
 aa
 aa
@@ -9985,7 +9963,7 @@ mt
 Lm
 XF
 aa
-ra
+mF
 aa
 aa
 aa
@@ -10055,7 +10033,7 @@ kx
 kx
 XF
 aa
-ra
+mF
 aa
 aa
 aa
@@ -10093,7 +10071,7 @@ th
 fi
 iA
 Fz
-wQ
+uO
 vn
 wQ
 hQ
@@ -10125,7 +10103,7 @@ SF
 lr
 XF
 aa
-ra
+mF
 aa
 aa
 aa
@@ -10195,7 +10173,7 @@ SF
 ml
 XF
 aa
-ra
+mF
 aa
 aa
 aa
@@ -10265,7 +10243,7 @@ mt
 Lm
 XF
 aa
-ra
+mF
 aa
 aa
 aa
@@ -10335,7 +10313,7 @@ jQ
 jQ
 jQ
 aa
-ra
+mF
 aa
 aa
 aa
@@ -10405,7 +10383,7 @@ rW
 BM
 jQ
 aa
-ra
+mF
 aa
 aa
 aa
@@ -10475,7 +10453,7 @@ bk
 rW
 jQ
 aa
-ra
+mF
 aa
 aa
 aa
@@ -10545,7 +10523,7 @@ Rh
 rW
 Ed
 aa
-ra
+mF
 aa
 aa
 aa
@@ -10615,7 +10593,7 @@ Rh
 rW
 Ed
 aa
-ra
+mF
 aa
 aa
 aa
@@ -10685,7 +10663,7 @@ Rh
 rW
 Ed
 aa
-ra
+mF
 aa
 aa
 aa
@@ -10755,7 +10733,7 @@ Rh
 rW
 Ed
 aa
-ra
+mF
 aa
 aa
 aa
@@ -10966,7 +10944,7 @@ rW
 Ed
 aa
 aa
-ra
+mF
 aa
 aa
 aa
@@ -11036,7 +11014,7 @@ rW
 Ed
 aa
 aa
-ra
+mF
 aa
 aa
 aa
@@ -11106,7 +11084,7 @@ rW
 Ed
 aa
 aa
-ra
+mF
 aa
 aa
 aa
@@ -11144,12 +11122,12 @@ am
 Ln
 so
 so
-OR
+Jq
 Vs
 ma
 YQ
 Vs
-rO
+Gd
 so
 Hb
 so
@@ -11176,7 +11154,7 @@ rW
 Ed
 aa
 aa
-ra
+mF
 aa
 aa
 aa
@@ -11246,7 +11224,7 @@ rW
 jQ
 aa
 aa
-ra
+mF
 aa
 aa
 aa
@@ -11316,7 +11294,7 @@ mM
 jQ
 aa
 aa
-ra
+mF
 aa
 aa
 aa
@@ -11456,7 +11434,7 @@ rW
 Ed
 aa
 aa
-ra
+mF
 aa
 aa
 aa
@@ -11494,12 +11472,12 @@ yl
 mu
 in
 in
-rw
+ZJ
 ov
 hr
 gh
 ov
-Zs
+ZJ
 in
 dm
 mG
@@ -11526,7 +11504,7 @@ rW
 Ed
 aa
 aa
-ra
+mF
 aa
 aa
 aa
@@ -11596,7 +11574,7 @@ rW
 Ed
 aa
 aa
-ra
+mF
 aa
 aa
 aa
@@ -11666,7 +11644,7 @@ BM
 jQ
 aa
 aa
-ra
+mF
 aa
 aa
 aa
@@ -11967,7 +11945,7 @@ JW
 di
 Nc
 Lt
-xN
+di
 uJ
 di
 aa
@@ -12038,7 +12016,7 @@ di
 oa
 Lt
 ZL
-wf
+uJ
 di
 aa
 aa
@@ -12050,7 +12028,7 @@ aa
 aa
 aa
 eG
-gw
+xJ
 aI
 gw
 pH
@@ -12155,7 +12133,7 @@ aa
 aa
 ac
 aa
-ra
+mF
 aa
 aa
 aa
@@ -12225,7 +12203,7 @@ aa
 aa
 ac
 aa
-ra
+mF
 aa
 aa
 aa
@@ -12288,11 +12266,11 @@ ac
 ac
 ac
 ac
-ac
-ac
-ac
-ac
-ac
+aa
+aa
+aa
+aa
+aa
 ac
 ac
 mF
@@ -12358,11 +12336,11 @@ aa
 ac
 aa
 mF
-ra
-ra
-ra
-ra
-ra
+mF
+mF
+mF
+mF
+mF
 mF
 aa
 aa
@@ -12483,8 +12461,8 @@ ab
 ab
 ab
 ab
-ra
-ra
+mF
+mF
 mF
 Pj
 kX
@@ -12602,13 +12580,13 @@ aa
 mF
 mF
 ac
-ra
-ra
-ra
+mF
+mF
+mF
 mF
 ac
 mF
-ra
+mF
 ab
 aa
 aa
