@@ -594,10 +594,6 @@
 	color = "#a30000"
 	boozepwr = 20 // The only booze in it is Bloody Mary
 	taste_description = "blood filled to the brim with nutrients of all kinds"
-	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
-	glass_icon_state = "bloodshot"
-	glass_name = "glass of bloodshot"
-	glass_desc = "The history of the 'Bloodshot' is based in a mix of flavor-neutral chems devised to help deliver nutrients to a Hemophage's tumorous organs. Due to the expense of the real thing and the clinical nature of it, this liquor has been designed as a 'improvised' alternative; though, still tasting like a hangover cure. It smells like iron, giving a clue to the key ingredient."
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED | REAGENT_BLOOD_REGENERATING
 
 #define BLOODSHOT_DISGUST 25
