@@ -72,7 +72,7 @@
 		var/mob/living/carbon/human/H = user
 		if(H.glasses == src)
 			H.update_sight()
-	update_action_buttons()
+	update_item_action_buttons()
 	update_appearance()
 
 /obj/item/clothing/glasses/hud/ar/attack_self(mob/user)

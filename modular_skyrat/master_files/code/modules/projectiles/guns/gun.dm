@@ -5,8 +5,8 @@
 /obj/item/gun
 	name = "gun"
 	desc = "It's a gun. It's pretty terrible, though."
-	icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi' // skyrat edit
-	icon_state = "detective"
+	icon = 'icons/obj/weapons/guns/ballistic.dmi'
+	icon_state = "revolver"
 	inhand_icon_state = "gun"
 	worn_icon_state = "gun"
 	flags_1 =  CONDUCT_1
@@ -89,7 +89,7 @@
 
 /datum/action/item_action/toggle_safety
 	name = "Toggle Safety"
-	icon_icon = 'modular_skyrat/modules/gunsafety/icons/actions.dmi'
+	button_icon = 'modular_skyrat/modules/gunsafety/icons/actions.dmi'
 	button_icon_state = "safety_on"
 
 /obj/item/gun/ui_action_click(mob/user, actiontype)
@@ -124,7 +124,7 @@
 	if(fire_select_modes.len > 1)
 		firemode_action = new(src)
 		firemode_action.button_icon_state = "fireselect_[fire_select]"
-		firemode_action.UpdateButtons()
+		firemode_action.build_all_button_icons()
 		add_item_action(firemode_action)
 
 	if(SELECT_FULLY_AUTOMATIC in fire_select_modes)
@@ -248,7 +248,7 @@
 	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
 	update_appearance()
 	firemode_action.button_icon_state = "fireselect_[fire_select]"
-	firemode_action.UpdateButtons()
+	firemode_action.build_all_button_icons()
 	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
 	return TRUE
 
@@ -427,7 +427,7 @@
 	else
 		safety = !safety
 	toggle_safety_action.button_icon_state = "safety_[safety ? "on" : "off"]"
-	toggle_safety_action.UpdateButtons()
+	toggle_safety_action.build_all_button_icons()
 	playsound(src, 'sound/weapons/empty.ogg', 100, TRUE)
 	user.visible_message(
 		span_notice("[user] toggles [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"]."),

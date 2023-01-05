@@ -120,7 +120,8 @@
 		open_machine()
 		return
 
-	if(--next_fact <= 0)
+	next_fact--
+	if(next_fact <= 0)
 		next_fact = rand(initial(next_fact), 2 * initial(next_fact))
 		say(pick(advertisements))
 		playsound(loc, 'sound/machines/chime.ogg', 30, FALSE)
@@ -166,14 +167,14 @@
 		This may be a false positive from changing from a humanized monkey into a character, so be careful.")
 
 	// Apply organ damage
-	patient.adjustOrganLoss(ORGAN_SLOT_HEART, heart_damage)
-	patient.adjustOrganLoss(ORGAN_SLOT_LIVER, liver_damage)
-	patient.adjustOrganLoss(ORGAN_SLOT_LUNGS, lung_damage)
-	patient.adjustOrganLoss(ORGAN_SLOT_STOMACH, stomach_damage)
+	patient.setOrganLoss(ORGAN_SLOT_HEART, heart_damage)
+	patient.setOrganLoss(ORGAN_SLOT_LIVER, liver_damage)
+	patient.setOrganLoss(ORGAN_SLOT_LUNGS, lung_damage)
+	patient.setOrganLoss(ORGAN_SLOT_STOMACH, stomach_damage)
 	// Head organ damage.
-	patient.adjustOrganLoss(ORGAN_SLOT_EYES, eye_damage)
-	patient.adjustOrganLoss(ORGAN_SLOT_EARS, ear_damage)
-	patient.adjustOrganLoss(ORGAN_SLOT_BRAIN, brain_damage)
+	patient.setOrganLoss(ORGAN_SLOT_EYES, eye_damage)
+	patient.setOrganLoss(ORGAN_SLOT_EARS, ear_damage)
+	patient.setOrganLoss(ORGAN_SLOT_BRAIN, brain_damage)
 
 	//Re-Applies Trauma
 	var/obj/item/organ/internal/brain/patient_brain = patient.getorgan(/obj/item/organ/internal/brain)
@@ -182,8 +183,8 @@
 		patient_brain.traumas = trauma_list
 
 	//Re-Applies Damage
-	patient.adjustBruteLoss(brute_damage)
-	patient.adjustFireLoss(burn_damage)
+	patient.setBruteLoss(brute_damage)
+	patient.setFireLoss(burn_damage)
 
 	open_machine()
 	playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, FALSE)
