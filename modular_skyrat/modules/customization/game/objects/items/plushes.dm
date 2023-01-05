@@ -581,3 +581,11 @@
 	attack_verb_continuous = list("nibbles", "squeaks", "nose twitches", "thumps", "whops")
 	attack_verb_simple = list("nibble", "squeak", "nose twitch", "thump", "whop")
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
+
+/obj/item/toy/plush/skyrat/snow_owl
+	name = "snowy owl plush"
+	desc = "A very soft plush resembling a feathery and witch like owl who is known to frequent science and medical."
+	icon_state = "plushie_owl"
+	attack_verb_continuous = list("hoots", "screms", "hugs")
+	attack_verb_simple = list("hoots", "screms", "hugs")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/hoot.ogg' = 1)
