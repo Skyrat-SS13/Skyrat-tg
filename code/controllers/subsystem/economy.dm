@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(economy)
 	name = "Economy"
-	wait = 5 MINUTES
+	wait = 20 MINUTES // SKYRAT EDIT  - BACKGROUNDS - Slower, but larger payouts. Five minutes is too fast. - Original: wait = 5 MINUTES
 	init_order = INIT_ORDER_ECONOMY
 	runlevels = RUNLEVEL_GAME
 	///How many paychecks should players start out the round with?
@@ -160,7 +160,7 @@ SUBSYSTEM_DEF(economy)
 		var/datum/bank_account/dept_account = get_dep_account(cached_processing[i])
 		if(!dept_account)
 			continue
-		dept_account.adjust_money(MAX_GRANT_DPT)
+		dept_account.adjust_money(MAX_GRANT_DPT * (wait / 5 MINUTES)) // SKYRAT EDIT  - BACKGROUNDS - Scaling department grants - Original: dept_account.adjust_money(MAX_GRANT_DPT)
 		if(MC_TICK_CHECK)
 			cached_processing.Cut(1, i + 1)
 			return FALSE
@@ -174,8 +174,8 @@ SUBSYSTEM_DEF(economy)
 	for(var/i in 1 to length(cached_processing))
 		var/datum/bank_account/bank_account = cached_processing[cached_processing[i]]
 		if(bank_account?.account_job && !ispath(bank_account.account_job))
-			temporary_total += (bank_account.account_job.paycheck * STARTING_PAYCHECKS)
-		bank_account.payday(1)
+			temporary_total += (bank_account.account_job.paycheck * STARTING_PAYCHECKS * (wait / 5 MINUTES)) // SKYRAT EDIT  - BACKGROUNDS - Scaling paychecks. - Original: temporary_total += (bank_account.account_job.paycheck * STARTING_PAYCHECKS)
+		bank_account.payday(wait / 5 MINUTES) // SKYRAT EDIT  - BACKGROUNDS - Scaling paychecks - ORIGINAL: bank_account.payday(1)
 		station_total += bank_account.account_balance
 		if(MC_TICK_CHECK)
 			cached_processing.Cut(1, i + 1)

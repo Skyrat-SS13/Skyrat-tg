@@ -152,12 +152,14 @@
  * * amount_of_paychecks - literally the number of salaries, 1 for issuing one salary, 5 for issuing five salaries.
  * * free - issuance of free funds, if TRUE then takes funds from the void, if FALSE (default) tries to send from the department's account.
  */
-/datum/bank_account/proc/payday(amount_of_paychecks, free = FALSE)
+/datum/bank_account/proc/payday(amount_of_paychecks, free = FALSE, initial_paycheck = FALSE) // SKYRAT EDIT - BACKGROUNDS - Proper scaling paychecks - ORIGINAL: /datum/bank_account/proc/payday(amount_of_paychecks, free = FALSE)
 	if(!account_job)
 		return
-	var/money_to_transfer = round(account_job.paycheck * payday_modifier * amount_of_paychecks)
+	var/money_to_transfer = round((initial_paycheck ? (account_job.paycheck * payday_modifier) : clamp(account_job.paycheck * payday_modifier, 0, PAYCHECK_CREW)) * amount_of_paychecks * background_multiplier) // SKYRAT EDIT - BACKGROUNDS - Proper scaling paychecks - ORIGINAL:	var/money_to_transfer = round(account_job.paycheck * payday_modifier * amount_of_paychecks)
+	/* SKYRAT EDIT REMOVAL START - Backgrounds - Proper scaling paychecks
 	if(amount_of_paychecks == 1)
 		money_to_transfer = clamp(money_to_transfer, 0, PAYCHECK_CREW) //We want to limit single, passive paychecks to regular crew income.
+	*/
 	if(free)
 		adjust_money(money_to_transfer, "Nanotrasen: Shift Payment")
 		SSblackbox.record_feedback("amount", "free_income", money_to_transfer)
