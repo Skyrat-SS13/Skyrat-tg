@@ -76,6 +76,10 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
 	icon_state = "combat"
 
+/obj/item/clothing/gloves/combat/wizard
+	icon = 'icons/obj/clothing/gloves.dmi'
+	worn_icon = null
+
 /obj/item/clothing/gloves/tackler/combat/insulated
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
