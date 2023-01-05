@@ -157,10 +157,7 @@
 /obj/item/organ/internal/cyberimp/brain/nif/process(delta_time)
 	. = ..()
 
-	if(!linked_mob || broken)
-		return FALSE
-
-	if(IS_IN_STASIS(linked_mob))
+	if(!linked_mob || broken || IS_IN_STASIS(linked_mob))
 		return FALSE
 
 	if(calibrating)
@@ -358,6 +355,7 @@
 
 	broken = FALSE
 	send_message("Your NIF is now in working condition!")
+	return TRUE
 
 ///Re-enables the durability_loss_vulnerable variable, allowing the parent NIF to take durability damage again.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/make_vulnerable()

@@ -170,10 +170,11 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	var/linking_protection = TRUE
 
 /datum/component/mind_linker/nif
-	///What is the name of the hivemind? This is mostly here for the TGUI selection menus.
-	var/name
 	speech_action = FALSE
 	linking_protection = FALSE
+
+	///What is the name of the hivemind? This is mostly here for the TGUI selection menus.
+	var/name
 
 /datum/component/mind_linker/nif/New()
 	. = ..()
