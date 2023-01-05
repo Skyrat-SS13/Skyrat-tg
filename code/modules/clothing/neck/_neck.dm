@@ -342,6 +342,7 @@
 	. = ..()
 	if(!proximity)
 		return
+	. |= AFTERATTACK_PROCESSED_ITEM
 	var/datum/export_report/ex = export_item_and_contents(I, delete_unsold = selling, dry_run = !selling)
 	var/price = 0
 	for(var/x in ex.total_amount)
@@ -355,6 +356,10 @@
 	else
 		to_chat(user, span_warning("There is no export value for [I] or any items within it."))
 
+<<<<<<< HEAD
+=======
+	return .
+>>>>>>> f54dcda1c0e (afterattack now returns a flag if it's reasonable to suspect the user intends to act on an item (#72320))
 
 /obj/item/clothing/neck/beads
 	name = "plastic bead necklace"
