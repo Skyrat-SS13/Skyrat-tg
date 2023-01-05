@@ -13,7 +13,7 @@
 			"products" = list(
 				/obj/item/hairbrush = 3,
 				/obj/item/clothing/mask/holocigarette = 5,
-				/obj/item/clothing/ears/headphones = 4,
+				/obj/item/clothing/ears/fancy_headphones = 4,
 			),
 		)
 	)

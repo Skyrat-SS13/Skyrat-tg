@@ -18,7 +18,7 @@ GLOBAL_LIST_INIT(loadout_ears, generate_loadout_items(/datum/loadout_item/ears))
 
 /datum/loadout_item/ears/headphones
 	name = "Headphones"
-	item_path = /obj/item/clothing/ears/headphones
+	item_path = /obj/item/clothing/ears/fancy_headphones
 
 /datum/loadout_item/ears/earmuffs
 	name = "Earmuffs"
