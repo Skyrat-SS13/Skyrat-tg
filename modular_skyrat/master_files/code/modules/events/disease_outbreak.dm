@@ -1,4 +1,4 @@
-//We cap max disease symptoms at 3 at a preset severity, making them transmissible no matter our round length.
+//We cap max disease symptoms at 2 at a preset severity, making them transmissible no matter our round length.
 /datum/round_event/disease_outbreak/advanced/start()
 	var/datum/round_event_control/disease_outbreak/advanced/disease_event = control
 	afflicted += disease_event.disease_candidates
@@ -8,7 +8,7 @@
 		max_symptoms = disease_event.chosen_max_symptoms
 		disease_event.chosen_max_symptoms = null
 	else
-		max_symptoms = 3 //Consistent symptoms taking into account severity
+		max_symptoms = 2 //Consistent symptoms taking into account severity
 
 	if(disease_event.chosen_severity)
 		max_severity = disease_event.chosen_severity
