@@ -22,7 +22,7 @@
 	var/name_tag = "cerulean "
 
 	///The list of items that can be summoned from the NIFSoft.
-	var/list/summonable_items = list(
+	var/static/list/summonable_items = list(
 		/obj/item/toy/katana/nanite,
 		/obj/item/cane/nanite,
 		/obj/item/storage/dice/nanite,
@@ -51,7 +51,7 @@
 			to_chat(linked_mob, span_warning("You have no summoned items!"))
 			return FALSE
 
-		var/obj/item/choice = tgui_input_list(linked_mob, "Chose an object to desummon", "Grimoire Caeruleam", summoned_items)
+		var/obj/item/choice = tgui_input_list(linked_mob, "Chose an object to desummon.", "Grimoire Caeruleam", summoned_items)
 
 		if(!choice)
 			to_chat(linked_mob, span_warning("You did not chose an item!"))
@@ -81,7 +81,7 @@
 	new_item.name = name_tag + new_item.name
 
 	if(!linked_mob.put_in_hands(new_item))
-		to_chat(linked_mob, span_warning("The [new_item] fails to materialize in your hands!"))
+		to_chat(linked_mob, span_warning("[new_item] fails to materialize in your hands!"))
 		qdel(new_item)
 		refund_activation_cost()
 		return FALSE
@@ -91,7 +91,7 @@
 
 /datum/nifsoft/summoner/Destroy()
 	QDEL_LIST(summoned_items)
-	. = ..()
+	return ..()
 
 ///Can the person using the NIFSoft summon an item?
 /datum/nifsoft/summoner/proc/check_menu(mob/living/carbon/human/user)

@@ -1,4 +1,4 @@
-///A surgery that repairs the patient's NIF
+// A surgery that repairs the patient's NIF
 /datum/surgery/repair_nif
 	name = "Repair NIF"
 	steps = list(
@@ -9,7 +9,7 @@
 		/datum/surgery_step/incise,
 		/datum/surgery_step/repair_nif,
 		/datum/surgery_step/close,
-		)
+	)
 
 	target_mobtypes = list(/mob/living/carbon/human)
 	possible_locs = list(BODY_ZONE_HEAD)
@@ -22,7 +22,7 @@
 	if(!nif_patient || !installed_nif)
 		return FALSE
 
-	. = ..()
+	return ..()
 
 /datum/surgery_step/repair_nif
 	name = "repair installed NIF (Hemostat)"

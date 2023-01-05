@@ -758,7 +758,7 @@
 		/obj/item/disk/nifsoft_uploader/money_sense,
 		/obj/item/disk/nifsoft_uploader/money_sense,
 		/obj/item/disk/nifsoft_uploader/money_sense,
-		)
+	)
 	crate_name = "Money sense NIFSoft crate"
 
 //NIF CARGO ITEMS

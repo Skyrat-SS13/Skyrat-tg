@@ -43,7 +43,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 
 	if(keyboard_action)
 		keyboard_action.Remove()
-		qdel(keyboard_action)
+		QDEL_NULL(keyboard_action)
 
 	for(var/datum/component/mind_linker/nif/hivemind as anything in network_list)
 		hivemind.linked_mobs -= linked_mob
@@ -108,12 +108,12 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	var/mob/living/carbon/human/user = owner
 	var/datum/nifsoft/hivemind/hivemind = user.find_nifsoft(/datum/nifsoft/hivemind)
 
-	var/datum/component/mind_linker/nif/new_active_hivemind = tgui_input_list(user, "Choose a Hivemind to set as active", "Switch Hivemind", hivemind.network_list)
+	var/datum/component/mind_linker/nif/new_active_hivemind = tgui_input_list(user, "Choose a Hivemind to set as active.", "Switch Hivemind", hivemind.network_list)
 	if(!new_active_hivemind)
 		return FALSE
 
 	hivemind.active_network = new_active_hivemind
-	to_chat(user, span_abductor("You are now sending messages to [new_active_hivemind.name]"))
+	to_chat(user, span_abductor("You are now sending messages to [new_active_hivemind.name]."))
 
 	if(hivemind.active)
 		hivemind.activate()
@@ -126,7 +126,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	var/list/network_list = hivemind.network_list
 	network_list -= hivemind.user_network
 
-	var/datum/component/mind_linker/nif/hivemind_to_leave = tgui_input_list(user, "Choose a Hivemind to disconnect from", "Remove Hivemind", network_list)
+	var/datum/component/mind_linker/nif/hivemind_to_leave = tgui_input_list(user, "Choose a Hivemind to disconnect from.", "Remove Hivemind", network_list)
 	if(!hivemind_to_leave)
 		return FALSE
 
@@ -171,7 +171,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 
 /datum/component/mind_linker/nif
 	///What is the name of the hivemind? This is mostly here for the TGUI selection menus.
-	var/name
+	var/name = ""
 	speech_action = FALSE
 	linking_protection = FALSE
 
@@ -193,7 +193,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 
 	hivemind_users -= owner
 
-	var/mob/living/carbon/human/person_to_add = tgui_input_list(owner, "Choose a person to invite to your Hivemind", "Invite User", hivemind_users)
+	var/mob/living/carbon/human/person_to_add = tgui_input_list(owner, "Choose a person to invite to your Hivemind.", "Invite User", hivemind_users)
 	if(!person_to_add)
 		return
 
@@ -216,7 +216,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 ///Removes a user from the list of connected people within a hivemind
 /datum/component/mind_linker/nif/proc/remove_user()
 	var/mob/living/carbon/human/owner = parent
-	var/mob/living/carbon/human/person_to_remove = tgui_input_list(owner, "Choose a person to remove from your Hivemind", "Remove User", linked_mobs)
+	var/mob/living/carbon/human/person_to_remove = tgui_input_list(owner, "Choose a person to remove from your Hivemind.", "Remove User", linked_mobs)
 
 	if(!person_to_remove)
 		return

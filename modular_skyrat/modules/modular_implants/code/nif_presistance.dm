@@ -23,7 +23,7 @@
 
 	if(!installed_nif || (installed_nif && !installed_nif.nif_persistence)) // If you have a NIF on file but leave the round without one installed, you only take a durability loss instead of losing the implant.
 		if(persistence.nif_path)
-			if(persistence.nif_durability == 0) //There is one round to repair the NIF after it breaks, otherwise it will be lost.
+			if(persistence.nif_durability <= 0) //There is one round to repair the NIF after it breaks, otherwise it will be lost.
 				persistence.nif_path = null
 				persistence.nif_examine_text = null
 				persistence.nif_durability = null

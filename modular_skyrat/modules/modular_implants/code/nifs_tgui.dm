@@ -23,7 +23,7 @@
 	return GLOB.conscious_state
 
 /obj/item/organ/internal/cyberimp/brain/nif/ui_static_data(mob/user)
-	var/data = list()
+	var/list/data = list()
 
 	data["loaded_nifsofts"] = list()
 	for(var/datum/nifsoft/nifsoft as anything in loaded_nifsofts)
@@ -52,7 +52,7 @@
 	return data
 
 /obj/item/organ/internal/cyberimp/brain/nif/ui_data(mob/user)
-	var/data = list()
+	var/list/data = list()
 	//User Preference Variables
 	data["linked_mob_name"] = linked_mob.name
 	data["current_theme"] = current_theme
