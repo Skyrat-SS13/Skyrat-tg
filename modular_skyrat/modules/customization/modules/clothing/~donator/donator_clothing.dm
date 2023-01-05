@@ -1379,7 +1379,7 @@
 
 //reward for SomeRandomOwl
 /obj/item/clothing/head/costume/strigihat
-	name = "Starry Witch Hat"
+	name = "starry witch hat"
 	desc = "A cute witch hat typically worn by an owl-like teshari."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'

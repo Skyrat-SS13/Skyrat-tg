@@ -583,7 +583,7 @@
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
 
 /obj/item/toy/plush/skyrat/snow_owl
-	name = "Snowy Owl Plush"
+	name = "snowy owl plush"
 	desc = "A very soft plush resembling a feathery and witch like owl who is known to frequent science and medical."
 	icon_state = "plushie_owl"
 	attack_verb_continuous = list("hoots", "screms", "hugs")
