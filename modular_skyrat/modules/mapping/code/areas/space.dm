@@ -23,6 +23,9 @@
 /area/ruin/space/has_grav/powered/skyrat/blackmarket
 	name = "Shady Market"
 
+/area/ruin/space/has_grav/powered/skyrat/alien_tool_lab
+	name = "Alien Tool Lab"
+
 /area/ruin/space/has_grav/powered/skyrat/scrapheap
 	name = "Scrap Heap"
 

@@ -92,7 +92,7 @@
 /datum/outfit/armadyne_rep
 	name = "Armadyne Corporate Representative"
 
-	suit_store = /obj/item/modular_computer/tablet/pda/security
+	suit_store = /obj/item/modular_computer/pda/security
 	ears = /obj/item/radio/headset/headset_cent/commander
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne
@@ -129,7 +129,7 @@
 		/obj/item/storage/box/gunset/pdh_striker,
 		/obj/item/storage/box/handcuffs,
 		/obj/item/ammo_box/magazine/multi_sprite/pitbull,
-		/obj/item/modular_computer/tablet/pda/security,
+		/obj/item/modular_computer/pda/security,
 	)
 	back = /obj/item/storage/backpack/security
 	box = /obj/item/storage/box/survival/security
@@ -153,7 +153,7 @@
 		/obj/item/storage/box/gunset/pdh_striker,
 		/obj/item/storage/box/handcuffs,
 		/obj/item/ammo_box/magazine/multi_sprite/norwind,
-		/obj/item/modular_computer/tablet/pda/security,
+		/obj/item/modular_computer/pda/security,
 	)
 	back = /obj/item/storage/backpack/security
 	box = /obj/item/storage/box/survival/security

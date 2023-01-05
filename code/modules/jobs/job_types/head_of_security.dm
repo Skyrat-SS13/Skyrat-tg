@@ -57,7 +57,7 @@
 		/obj/item/evidencebag = 1,
 		/obj/item/storage/box/gunset/glock18_hos = 1, //SKYRAT EDIT ADDITION
 		)
-	belt = /obj/item/modular_computer/tablet/pda/heads/hos
+	belt = /obj/item/modular_computer/pda/heads/hos
 	ears = /obj/item/radio/headset/heads/hos/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	gloves = /obj/item/clothing/gloves/color/black/security //SKYRAT EDIT CHANGE - Original: /obj/item/clothing/gloves/color/black

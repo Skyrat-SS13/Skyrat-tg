@@ -25,10 +25,7 @@
 #define SCANGATE_UNATHI "unathi"
 #define SCANGATE_TAJARAN "tajaran"
 #define SCANGATE_VULPKANIN "vulpkanin"
-#define SCANGATE_IPC "ipc"
-#define SCANGATE_SYNTHLIZ "synthliz"
-#define SCANGATE_SYNTHMAMMAL "synthmammal"
-#define SCANGATE_SYNTHHUMAN "synthhuman"
+#define SCANGATE_SYNTH "synth"
 #define SCANGATE_TESHARI "teshari"
 #define SCANGATE_HEMOPHAGE "hemophage"
 #define SCANGATE_SNAIL "snail"
@@ -194,14 +191,8 @@
 						scan_species = /datum/species/tajaran
 					if(SCANGATE_VULPKANIN)
 						scan_species = /datum/species/vulpkanin
-					if(SCANGATE_IPC)
-						scan_species = /datum/species/robotic/ipc
-					if(SCANGATE_SYNTHLIZ)
-						scan_species = /datum/species/robotic/synthliz
-					if(SCANGATE_SYNTHMAMMAL)
-						scan_species = /datum/species/robotic/synthetic_mammal
-					if(SCANGATE_SYNTHHUMAN)
-						scan_species = /datum/species/robotic/synthetic_human
+					if(SCANGATE_SYNTH)
+						scan_species = /datum/species/synthetic
 					if(SCANGATE_TESHARI)
 						scan_species = /datum/species/teshari
 					if(SCANGATE_HEMOPHAGE)
@@ -366,10 +357,7 @@
 #undef SCANGATE_UNATHI
 #undef SCANGATE_TAJARAN
 #undef SCANGATE_VULPKANIN
-#undef SCANGATE_IPC
-#undef SCANGATE_SYNTHLIZ
-#undef SCANGATE_SYNTHMAMMAL
-#undef SCANGATE_SYNTHHUMAN
+#undef SCANGATE_SYNTH
 #undef SCANGATE_TESHARI
 #undef SCANGATE_HEMOPHAGE
 #undef SCANGATE_SNAIL

@@ -16,7 +16,7 @@
 	held_w_class = WEIGHT_CLASS_TINY
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	gold_core_spawnable = FRIENDLY_SPAWN
-	faction = list(FACTION_RAT)
+	faction = list(FACTION_RAT, FACTION_MAINT_CREATURES)
 	butcher_results = list(/obj/item/food/meat/slab/mouse = 1)
 
 	speak_emote = list("squeaks")
@@ -345,7 +345,8 @@
 /// AI controller for rats, slightly more complex than mice becuase they attack people
 /datum/ai_controller/basic_controller/mouse/rat
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic/rat(),
+		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic(),
+		BB_PET_TARGETTING_DATUM = new /datum/targetting_datum/not_friends(),
 		BB_BASIC_MOB_CURRENT_TARGET = null, // heathen
 		BB_CURRENT_HUNTING_TARGET = null, // cheese
 		BB_LOW_PRIORITY_HUNTING_TARGET = null, // cable
@@ -355,7 +356,9 @@
 	ai_movement = /datum/ai_movement/basic_avoidance
 	idle_behavior = /datum/idle_behavior/idle_random_walk
 	planning_subtrees = list(
+		/datum/ai_planning_subtree/pet_planning,
 		/datum/ai_planning_subtree/simple_find_target,
+		/datum/ai_planning_subtree/attack_obstacle_in_path/rat,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree/rat,
 		/datum/ai_planning_subtree/find_and_hunt_target/look_for_cheese,
 		/datum/ai_planning_subtree/random_speech/mouse,
@@ -368,5 +371,8 @@
 /datum/ai_behavior/basic_melee_attack/rat
 	action_cooldown = 2 SECONDS
 
-/datum/targetting_datum/basic/rat
-	check_factions_exactly = TRUE
+/datum/ai_planning_subtree/attack_obstacle_in_path/rat
+	attack_behaviour = /datum/ai_behavior/attack_obstructions/rat
+
+/datum/ai_behavior/attack_obstructions/rat
+	action_cooldown = 2 SECONDS

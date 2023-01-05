@@ -37,7 +37,7 @@
 /obj/item/gun/ballistic/automatic/pistol
 	company_flag = COMPANY_SCARBOROUGH
 
-/obj/item/gun/ballistic/revolver/detective
+/obj/item/gun/ballistic/revolver/c38/detective
 	company_flag = COMPANY_NANOTRASEN
 
 /obj/item/gun/ballistic/shotgun/doublebarrel

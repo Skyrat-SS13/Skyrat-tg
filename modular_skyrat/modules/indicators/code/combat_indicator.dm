@@ -190,6 +190,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 
 /datum/emote/living/surrender
 	message = "drops to the floor and raises their hands defensively! They surrender%s!"
+	stat_allowed = SOFT_CRIT
 
 /datum/emote/living/surrender/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -198,3 +199,9 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 		living_user.Paralyze(200)
 		living_user.remove_status_effect(/datum/status_effect/grouped/surrender, src)
 		living_user.set_combat_indicator(FALSE)
+
+/datum/emote/living/surrender/select_message_type(mob/user, intentional)
+	var/mob/living/living_mob = user
+	if(living_mob?.body_position == LYING_DOWN)
+		return "raises their hands defensively! They surrender%s!"
+	. = ..()

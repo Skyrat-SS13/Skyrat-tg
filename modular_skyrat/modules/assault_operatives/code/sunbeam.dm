@@ -148,6 +148,7 @@
 	typepath = /datum/round_event/icarus_sunbeam
 	max_occurrences = 0
 	weight = 0
+	category = EVENT_CATEGORY_SPACE
 
 /datum/round_event/icarus_sunbeam
 	announce_when = 1 // Instant announcement

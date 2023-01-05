@@ -30,14 +30,16 @@
 	desc = "The HoS took your gun and your badge? No problem! Just pay the absurd taxation fee and you too can be reunited with the lethal power of a .38!"
 	cost = PAYCHECK_CREW * 40 //they really mean a premium here
 	access_view = ACCESS_DETECTIVE
-	contains = list(/obj/item/gun/ballistic/revolver/detective)
+	contains = list(/obj/item/gun/ballistic/revolver/c38/detective)
 */ //SKYRAT EDIT END
+
 /datum/supply_pack/goody/stingbang
 	name = "Stingbang Single-Pack"
 	desc = "Contains one \"stingbang\" grenade, perfect for playing meanhearted pranks."
 	cost = PAYCHECK_COMMAND * 2.5
 	access_view = ACCESS_BRIG
 	contains = list(/obj/item/grenade/stingbang)
+
 /* //SKYRAT EDIT START - GUN CARGO
 /datum/supply_pack/goody/Survivalknives_single
 	name = "Survival Knife Single-Pack"

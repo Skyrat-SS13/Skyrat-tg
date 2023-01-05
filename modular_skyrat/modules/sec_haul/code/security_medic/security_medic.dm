@@ -48,7 +48,7 @@
 	name = "Security Medic"
 	jobtype = /datum/job/security_medic
 
-	belt = /obj/item/modular_computer/tablet/pda/security
+	belt = /obj/item/modular_computer/pda/security
 	ears = /obj/item/radio/headset/headset_medsec
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/security_medic
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
