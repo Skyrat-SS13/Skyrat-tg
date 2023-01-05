@@ -1,12 +1,8 @@
-## Title: PRIMITIVE FUN
-
-MODULE ID: PRIM_FUN
+## Title: PRIMITIVE PRODUCTION
 
 ### Description:
 
-Adds a variety of primitive style things:
-Glassblowing and ceramics
-A big, stationary version of the mortar and pestle
+Adds a variety of 'primitive' ways to produce items
 
 ### TG Proc/File Changes:
 
@@ -27,4 +23,3 @@ A big, stationary version of the mortar and pestle
 ### Credits:
 
 Jake Park - Glassblowing and ceramics
-Paxilmaniac - Big mortar
