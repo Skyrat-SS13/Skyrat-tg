@@ -79,12 +79,16 @@
 	return check_access_list(I ? I.GetAccess() : null)
 
 /obj/proc/check_access_list(list/access_list)
+<<<<<<< HEAD
 	gen_access()
 
 	if(!islist(req_access)) //something's very wrong
 		return TRUE
 
 	if(!req_access.len && !length(req_one_access))
+=======
+	if(!length(req_access) && !length(req_one_access))
+>>>>>>> 34586a1e310 (Fix access checks when req_access is null (#72458))
 		return TRUE
 
 	if(!length(access_list) || !islist(access_list))
