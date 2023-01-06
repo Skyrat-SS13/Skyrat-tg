@@ -10,7 +10,7 @@
 // This is the original NIF that other NIFs are based on.
 /obj/item/organ/internal/cyberimp/brain/nif
 	name = "Nanite Implant Framework"
-	desc = "A brain implant that infuses the user with nanites." //Coder-lore. Change this later
+	desc = "A brain implant that infuses the user with nanites."
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/nifs.dmi'
 	icon_state = "base_nif"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -285,7 +285,7 @@
 		return FALSE
 
 	if(length(loaded_nifsofts) >= max_nifsofts)
-		send_message("You cannot install any additional NIFSofts, please uninstall one to make room!",TRUE)
+		send_message("You cannot install any additional NIFSofts, please uninstall one to make room!", alert = TRUE)
 		return FALSE
 
 	if(!is_type_in_list(src, loaded_nifsoft.compatible_nifs))
@@ -315,7 +315,7 @@
 		return FALSE
 
 	if(!silent)
-		send_message("[removed_nifsoft.name] has been removed", TRUE)
+		send_message("[removed_nifsoft.name] has been removed", alert = TRUE)
 
 	qdel(removed_nifsoft)
 	update_static_data_for_all_viewers()
@@ -382,7 +382,7 @@
 	broken = TRUE
 	durability_loss_vulnerable = FALSE
 
-	addtimer(CALLBACK(src, .proc/fix_nif), 30 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(fix_nif)), 30 SECONDS)
 	addtimer(CALLBACK(src, .proc/make_vulnerable), 3 MINUTES)
 
 	switch(severity)
