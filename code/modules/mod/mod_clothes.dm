@@ -51,12 +51,8 @@
 	name = "MOD boots"
 	desc = "A pair of boots for a MODsuit."
 	icon = 'icons/obj/clothing/modsuit/mod_clothing.dmi'
-<<<<<<< HEAD
-	icon_state = "boots"
-=======
 	icon_state = "standard-boots"
 	base_icon_state = "boots"
->>>>>>> e79d3bc1c44 (fixes modsuit icons (#71998))
 	worn_icon = 'icons/mob/clothing/modsuit/mod_clothing.dmi'
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 0)
 	body_parts_covered = FEET|LEGS
