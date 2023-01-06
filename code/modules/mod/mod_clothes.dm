@@ -2,12 +2,8 @@
 	name = "MOD helmet"
 	desc = "A helmet for a MODsuit."
 	icon = 'icons/obj/clothing/modsuit/mod_clothing.dmi'
-<<<<<<< HEAD
-	icon_state = "helmet"
-=======
 	icon_state = "standard-helmet"
 	base_icon_state = "helmet"
->>>>>>> e79d3bc1c44 (fixes modsuit icons (#71998))
 	worn_icon = 'icons/mob/clothing/modsuit/mod_clothing.dmi'
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 0)
 	body_parts_covered = HEAD
