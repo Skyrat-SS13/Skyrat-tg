@@ -135,7 +135,7 @@
 	important_text = "Allowed races are humans, Akulas, IPCs. Follow your field officer's orders. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. Roleplay accordingly."
 	outfit = /datum/outfit/pirate/nri_marine
 	spawner_job_path = null
-	restricted_species = list(/datum/species/human, /datum/species/akula, /datum/species/robotic/ipc)
+	restricted_species = list(/datum/species/human, /datum/species/akula, /datum/species/synthetic)
 	random_appearance = FALSE
 	show_flavor = TRUE
 

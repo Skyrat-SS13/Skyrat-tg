@@ -42,16 +42,16 @@
 	. = ..()
 	create_storage(type = /datum/storage/pockets/small/bdsm_mask)
 
-/obj/item/clothing/mask/gas/bdsm_mask/proc/update_action_buttons_icons()
+/obj/item/clothing/mask/gas/bdsm_mask/proc/update_mob_action_buttonss()
 	var/datum/action/item_action/button
 
 	for(button in src.actions)
 		if(istype(button, /datum/action/item_action/toggle_breathcontrol))
 			button.button_icon_state = "[current_mask_color]_switch_[mask_on? "on" : "off"]"
-			button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
+			button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 		if(istype(button, /datum/action/item_action/mask_inhale))
 			button.button_icon_state = "[current_mask_color]_breath"
-			button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
+			button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 	update_icon()
 
 /obj/item/clothing/mask/gas/bdsm_mask/handle_speech(datum/source, list/speech_args)
@@ -78,7 +78,7 @@
 		current_mask_color = choice
 		update_icon_state()
 		update_icon()
-		update_action_buttons_icons()
+		update_mob_action_buttonss()
 		color_changed = TRUE
 		return
 	. = ..()
@@ -97,7 +97,7 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 	update_icon_state()
 	update_icon()
-	update_action_buttons_icons()
+	update_mob_action_buttonss()
 	if(!length(mask_designs))
 		populate_mask_designs()
 
@@ -220,7 +220,7 @@
 	to_chat(user, span_notice("You turn the air filter [mask_on ? "on. Use with caution!" : "off. Now it's safe to wear."]"))
 	playsound(user, mask_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE, ignore_walls = FALSE)
 	update_icon_state()
-	update_action_buttons_icons()
+	update_mob_action_buttonss()
 	update_icon()
 	var/mob/living/carbon/human/affected_human = usr
 	if(mask_on)

@@ -105,16 +105,15 @@ There are several things that need to be remembered:
 		var/woman
 		if(!uniform_overlay)
 			//BEGIN SPECIES HANDLING
-			if((dna?.species.bodytype & BODYTYPE_DIGITIGRADE) && (uniform.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
+			if((dna?.species.bodytype & BODYTYPE_MONKEY) && (uniform.supports_variations_flags & CLOTHING_MONKEY_VARIATION))
+				icon_file = MONKEY_UNIFORM_FILE
+			else if((dna?.species.bodytype & BODYTYPE_DIGITIGRADE) && (uniform.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 				icon_file = uniform.worn_icon_digi || DIGITIGRADE_UNIFORM_FILE // SKYRAT EDIT CHANGE
 
-			// SKYRAT EDIT ADDITION
+			// SKYRAT EDIT ADDITION - birbs
 			else if(dna.species.bodytype & BODYTYPE_CUSTOM)
 				icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform)
 			// SKYRAT EDIT END
-
-			else if((dna?.species.bodytype & BODYTYPE_MONKEY) && (uniform.supports_variations_flags & CLOTHING_MONKEY_VARIATION)) // SKYRAT EDIT CHANGE: else
-				icon_file = MONKEY_UNIFORM_FILE
 
 			//Female sprites have lower priority than digitigrade sprites
 			else if(dna.species.sexes && (dna.species.bodytype & BODYTYPE_HUMANOID) && physique == FEMALE && !(uniform.female_sprite_flags & NO_FEMALE_UNIFORM)) //Agggggggghhhhh

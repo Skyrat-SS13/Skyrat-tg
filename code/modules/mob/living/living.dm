@@ -738,11 +738,11 @@
 	if(status_flags & GODMODE)
 		return
 	set_health(maxHealth - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss())
-	staminaloss = getStaminaLoss()
 	update_stat()
 	med_hud_set_health()
 	med_hud_set_status()
 	update_health_hud()
+	update_stamina()
 
 /mob/living/update_health_hud()
 	var/severity = 0
@@ -1247,6 +1247,8 @@
 	if(is_centcom_level(T.z)) //dont detect mobs on centcom
 		return FALSE
 	if(is_away_level(T.z))
+		return FALSE
+	if(onSyndieBase() && !(ROLE_SYNDICATE in user.faction))
 		return FALSE
 	if(user != null && src == user)
 		return FALSE
@@ -2466,6 +2468,18 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 /mob/living/played_game()
 	. = ..()
 	add_mood_event("gaming", /datum/mood_event/gaming)
+
+/// Proc for giving a mob a new 'friend', generally used for AI control and targetting
+/mob/living/proc/befriend(mob/living/new_friend)
+	SHOULD_CALL_PARENT(TRUE)
+	faction |= REF(new_friend)
+	if (ai_controller)
+		var/list/friends = ai_controller.blackboard[BB_FRIENDS_LIST]
+		if (!friends)
+			friends = list()
+		friends[WEAKREF(new_friend)] = TRUE
+		ai_controller.blackboard[BB_FRIENDS_LIST] = friends
+	SEND_SIGNAL(src, COMSIG_LIVING_BEFRIENDED, new_friend)
 
 /// Admin only proc for making the mob hallucinate a certain thing
 /mob/living/proc/admin_give_hallucination(mob/admin)
