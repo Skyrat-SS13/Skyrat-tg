@@ -22,7 +22,7 @@
 			user.allowed_turfs += list("pawprint", "hoofprint", "clawprint")
 
 		//species & taurs
-		if(islizard(user) || issynthliz(user) || HAS_TRAIT(user, TRAIT_ASH_ASPECT))
+		if(islizard(user) || HAS_TRAIT(user, TRAIT_ASH_ASPECT))
 			user.allowed_turfs += "smoke"
 			user.allowed_turfs -= list("pawprint", "hoofprint")
 
@@ -45,7 +45,7 @@
 		if(ispodperson(user) || ispodweak(user) || HAS_TRAIT(user, TRAIT_FLORAL_ASPECT))
 			user.allowed_turfs += "vines"
 
-		if(isipc(user) || issynthanthro(user) || issynthhuman(user) || issynthliz(user))
+		if(issynthetic(user))
 			if(human_user.dna.species.mutant_bodyparts["taur"])
 				user.allowed_turfs += "holobed" //taurs get the holobed instead
 			else

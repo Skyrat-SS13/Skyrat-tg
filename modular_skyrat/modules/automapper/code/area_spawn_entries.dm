@@ -5,7 +5,7 @@
 
 /datum/area_spawn/bumbles
 	target_areas = list(/area/station/service/hydroponics, /area/station/service/hydroponics/upper)
-	desired_atom = /mob/living/simple_animal/pet/bumbles
+	desired_atom = /mob/living/basic/pet/bumbles
 
 /datum/area_spawn/borgi
 	target_areas = list(/area/station/science/robotics, /area/station/science/robotics/mechbay, /area/station/science/robotics/lab)
@@ -33,11 +33,6 @@
 /datum/area_spawn/ammo_workbench
 	target_areas = list(/area/station/security/lockers, /area/station/security/office)
 	desired_atom = /obj/machinery/ammo_workbench
-	mode = AREA_SPAWN_MODE_HUG_WALL
-
-/datum/area_spawn/gun_vendor
-	target_areas = list(/area/station/security/lockers, /area/station/security/office)
-	desired_atom = /obj/machinery/gun_vendor
 	mode = AREA_SPAWN_MODE_HUG_WALL
 
 /datum/area_spawn/lustwish_public

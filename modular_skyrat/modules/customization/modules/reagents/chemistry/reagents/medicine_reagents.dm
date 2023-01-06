@@ -64,7 +64,7 @@
 
 /datum/reagent/medicine/nanite_slurry/on_mob_life(mob/living/carbon/affected_mob, delta_time)
 	var/heal_amount = healing * REM * delta_time
-	affected_mob.heal_bodypart_damage(heal_amount, heal_amount, required_status = BODYTYPE_ROBOTIC)
+	affected_mob.heal_bodypart_damage(heal_amount, heal_amount, required_bodytype = BODYTYPE_ROBOTIC)
 	..()
 
 /datum/reagent/medicine/nanite_slurry/overdose_process(mob/living/carbon/affected_mob, delta_time, times_fired)
