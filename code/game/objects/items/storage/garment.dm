@@ -93,11 +93,7 @@
 	new /obj/item/clothing/under/rank/rnd/research_director/alt/skirt(src)
 	new /obj/item/clothing/under/rank/rnd/research_director/turtleneck(src)
 	new /obj/item/clothing/under/rank/rnd/research_director/turtleneck/skirt(src)
-<<<<<<< HEAD
 	new /obj/item/clothing/suit/toggle/labcoat/skyrat/rd(src) //SKYRAT EDIT ADDITION
-	new /obj/item/clothing/under/rank/rnd/research_director/turtleneck(src)
-=======
->>>>>>> 48f3c8e7e09 (removes extra turtleneck from research directors garment bag (#72010))
 	new /obj/item/clothing/head/beret/science/rd(src)
 	new /obj/item/clothing/neck/cloak/rd(src)
 	new /obj/item/clothing/shoes/jackboots(src)
