@@ -172,7 +172,7 @@
 /datum/action/innate/turn_to_human
 	name = "Re-Form Human Shell"
 	desc = "We turn back into a human. This takes considerable effort and will stun us for some time afterwards."
-	icon_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
+	button_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
 	button_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
 	background_icon_state = "bg_changeling"
 	button_icon_state = "change_to_human"
@@ -201,7 +201,7 @@
 /datum/action/innate/devour
 	name = "Devour"
 	desc = "We tear into the innards of a human. After some time, they will be significantly damaged and our health partially restored."
-	icon_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
+	button_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
 	background_icon_state = "bg_changeling"
 	button_icon_state = "devour"
 

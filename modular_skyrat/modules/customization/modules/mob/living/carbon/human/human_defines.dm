@@ -19,4 +19,6 @@
 	var/oversized_piggydam = 25
 	/// Paralyze time for oversized piggyback riding in deciseconds. (10 deciseconds = 1 second)
 	var/oversized_piggyknock = 3 SECONDS
+	/// Alpha of the hair. Takes precedent over species hair_alpha if non-null.
+	var/hair_alpha
 

@@ -46,6 +46,7 @@
 	weight = 10
 	max_occurrences = 1
 	min_players = 60
+	category = EVENT_CATEGORY_ENTITIES
 
 /datum/round_event/spacevine
 	fakeable = FALSE

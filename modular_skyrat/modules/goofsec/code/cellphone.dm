@@ -29,7 +29,7 @@ GLOBAL_LIST_EMPTY(gangster_cell_phones)
 		icon_state = "phone_off"
 		activated = FALSE
 
-/obj/item/gangster_cellphone/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods)
+/obj/item/gangster_cellphone/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods, message_range)
 	. = ..()
 	if(!activated)
 		return
