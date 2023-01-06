@@ -61,7 +61,12 @@
 	//SKYRAT EDIT END
 
 	var/list/new_quirks = preferences.all_quirks | quirk_name
-	if (SSquirks.filter_invalid_quirks(new_quirks) != new_quirks)
+	// SKYRAT EDIT BEGIN
+	if (SSquirks.filter_invalid_quirks(new_quirks, preferences.augments) != new_quirks)
+		// If you see these logs in-game, a developer oversight has occurred in Quirks.
+		message_admins("TGUI Quirks client validation failure in give_quirk from ckey [user.client]")
+		log_admin("TGUI Quirks client validation failure in give_quirk from ckey [user.client]")
+		// SKYRAT EDIT END
 		// If the client is sending an invalid give_quirk, that means that
 		// something went wrong with the client prediction, so we should
 		// catch it back up to speed.
@@ -77,10 +82,12 @@
 	var/quirk_name = params["quirk"]
 
 	var/list/new_quirks = preferences.all_quirks - quirk_name
-	if ( \
-		!(quirk_name in preferences.all_quirks) \
-		|| SSquirks.filter_invalid_quirks(new_quirks) != new_quirks \
-	)
+	// SKYRAT EDIT BEGIN
+	if (!(quirk_name in preferences.all_quirks) || SSquirks.filter_invalid_quirks(new_quirks, preferences.augments) != new_quirks)
+		// If you see these logs in-game, a developer oversight has occurred in Quirks.
+		message_admins("TGUI Quirks client validation failure in remove_quirk from ckey [user.client]")
+		log_admin("TGUI Quirks client validation failure in remove_quirk from ckey [user.client]")
+		// SKYRAT EDIT END
 		// If the client is sending an invalid remove_quirk, that means that
 		// something went wrong with the client prediction, so we should
 		// catch it back up to speed.

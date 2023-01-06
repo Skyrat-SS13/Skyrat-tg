@@ -63,6 +63,11 @@
 		preferences.augments -= limbs_to_process[limb_slot]
 	else
 		preferences.augments[limbs_to_process[limb_slot]] = augment_to_path[augment_name]
+	// Remove some positive quirks if the point balance becomes too low.
+	var/list/filtered_quirks = SSquirks.filter_invalid_quirks(preferences.all_quirks, preferences.augments)
+	if(filtered_quirks != preferences.all_quirks)
+		preferences.all_quirks = filtered_quirks
+		preferences.update_static_data(user)
 	preferences.character_preview_view.update_body()
 	return TRUE
 
@@ -183,6 +188,11 @@
 		preferences.augments -= organs_to_process[organ_slot]
 	else
 		preferences.augments[organs_to_process[organ_slot]] = augment_to_path[augment_name]
+	// Remove some positive quirks if the point balance becomes too low.
+	var/list/filtered_quirks = SSquirks.filter_invalid_quirks(preferences.all_quirks, preferences.augments)
+	if(filtered_quirks != preferences.all_quirks)
+		preferences.all_quirks = filtered_quirks
+		preferences.update_static_data(user)
 	preferences.character_preview_view.update_body()
 	return TRUE
 

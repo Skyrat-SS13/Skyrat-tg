@@ -313,7 +313,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if(job_preferences[j] != JP_LOW && job_preferences[j] != JP_MEDIUM && job_preferences[j] != JP_HIGH)
 			job_preferences -= j
 
-	all_quirks = SSquirks.filter_invalid_quirks(SANITIZE_LIST(all_quirks))
+	// SKYRAT EDIT BEGIN
+	var/saved_quirks = SSquirks.filter_invalid_quirks(SANITIZE_LIST(all_quirks), augments)
+	if(saved_quirks != all_quirks)
+		// If you see these logs in-game, a developer oversight has occurred in Quirks.
+		message_admins("TGUI Quirks client validation failure in load_character from ckey [parent]")
+		log_admin("TGUI Quirks client validation failure in load_character from ckey [parent]")
+	all_quirks = saved_quirks
+	// SKYRAT EDIT END
 	validate_quirks()
 
 	return TRUE
