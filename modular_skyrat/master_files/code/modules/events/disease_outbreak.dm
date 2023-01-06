@@ -14,7 +14,7 @@
 		max_severity = disease_event.chosen_severity
 		disease_event.chosen_severity = null
 	else
-		max_severity = 4 //Don't make it too severe
+		max_severity = 5 //Don't make it too severe
 
 	var/datum/disease/advance/advanced_disease = new /datum/disease/advance/random/event(max_symptoms, max_severity)
 
@@ -24,7 +24,7 @@
 
 	var/mob/living/carbon/human/victim = pick_n_take(afflicted)
 	if(victim.ForceContractDisease(advanced_disease, FALSE))
-		message_admins("An event has triggered a random advanced virus outbreak on [ADMIN_LOOKUPFLW(victim)]! It has these symptoms: [english_list(name_symptoms)]")
+		message_admins("An event has triggered a random advanced virus outbreak on [ADMIN_LOOKUPFLW(victim)]! It has these symptoms: [english_list(name_symptoms)]. Transmissibility is [advanced_disease.spread_text].")
 		log_game("An event has triggered a random advanced virus outbreak on [key_name(victim)]! It has these symptoms: [english_list(name_symptoms)].")
 		announce_to_ghosts(victim)
 	else
@@ -46,6 +46,7 @@
 		/datum/symptom/disfiguration,
 		/datum/symptom/dizzy,
 		/datum/symptom/fever,
+		/datum/symptom/flesh_eating,
 		/datum/symptom/hallucigen,
 		/datum/symptom/headache,
 		/datum/symptom/narcolepsy,
@@ -67,23 +68,25 @@
 // Assign the properties that are in the list.
 /datum/disease/advance/random/event/AssignProperties()
 	visibility_flags &= ~HIDDEN_SCANNER
-	var/transmissibility = rand(3, 11)
+	var/transmissibility = rand(1, 10)
 
 	if(properties?.len)
-		if(transmissibility >= 11)
-			SetSpread(DISEASE_SPREAD_AIRBORNE)
-
-		else if(transmissibility >= 7)
-			SetSpread(DISEASE_SPREAD_CONTACT_SKIN)
-
-		else
-			SetSpread(DISEASE_SPREAD_CONTACT_FLUIDS)
-
 		spreading_modifier = max(CEILING(0.4 * properties["transmittable"], 1), 1)
 		cure_chance = clamp(7.5 - (0.5 * properties["resistance"]), 5, 10) // can be between 5 and 10
 		stage_prob = max(0.5 * properties["stage_rate"], 1)
 		SetSeverity(properties["severity"])
 		GenerateCure(properties)
+		if(severity == DISEASE_SEVERITY_DANGEROUS)
+			SetSpread(DISEASE_SPREAD_CONTACT_SKIN)
+
+		else if(transmissibility == 10)
+			SetSpread(DISEASE_SPREAD_AIRBORNE)
+
+		else if(transmissibility >= 4)
+			SetSpread(DISEASE_SPREAD_CONTACT_SKIN)
+
+		else
+			SetSpread(DISEASE_SPREAD_CONTACT_FLUIDS)
 	else
 		CRASH("Our properties were empty or null!")
 
