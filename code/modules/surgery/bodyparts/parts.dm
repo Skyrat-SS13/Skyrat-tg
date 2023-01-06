@@ -75,13 +75,8 @@
 	desc = "Hey buddy give me a HAND and report this to the github because you shouldn't be seeing this."
 	attack_verb_continuous = list("slaps", "punches")
 	attack_verb_simple = list("slap", "punch")
-<<<<<<< HEAD
 	max_damage = 60 //SKYRAT EDIT CHANGE - ORIGINAL: 50
-	aux_layer = HANDS_PART_LAYER
-=======
-	max_damage = 50
 	aux_layer = BODYPARTS_HIGH_LAYER
->>>>>>> 5a1ce081de0 (Reworks how legs are rendered yet again because it was very convaluted i hated it (#71721))
 	body_damage_coeff = 0.75
 	can_be_disabled = TRUE
 	unarmed_attack_verb = "punch" /// The classic punch, wonderfully classic and completely random

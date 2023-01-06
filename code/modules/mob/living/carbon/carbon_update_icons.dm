@@ -554,37 +554,6 @@
 
 	return .
 
-<<<<<<< HEAD
-/**
- * Generates a cache key for masks (mainly only used for right legs now, but perhaps in the future...).
- *
- * This is exactly like generate_icon_key(), except that it doesn't add `"-[draw_color]"`
- * to the returned list under any circumstance. Why? Because it (generate_icon_key()) is
- * a proc that gets called a ton and I don't want this to affect its performance.
- *
- * Returns a list of strings.
- */
-/obj/item/bodypart/proc/generate_mask_key()
-	RETURN_TYPE(/list)
-	. = list()
-	if(is_dimorphic)
-		. += "[limb_gender]"
-	. += "[limb_id]"
-	. += "[body_zone]"
-	for(var/obj/item/organ/external/external_organ as anything in external_organs)
-		if(!external_organ.can_draw_on_bodypart(owner))
-			continue
-		. += "[external_organ.generate_icon_cache()]"
-
-	// SKYRAT EDIT START - Caching digitigrade leg masks
-	if(limb_id == "digitigrade")
-		. += "digitigrade"
-	// SKYRAT EDIT END
-
-	return .
-
-=======
->>>>>>> 5a1ce081de0 (Reworks how legs are rendered yet again because it was very convaluted i hated it (#71721))
 ///Generates a cache key specifically for husks
 /obj/item/bodypart/proc/generate_husk_key()
 	RETURN_TYPE(/list)

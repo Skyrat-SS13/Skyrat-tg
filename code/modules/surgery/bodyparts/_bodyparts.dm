@@ -864,17 +864,6 @@
 		if(aux_zone) //Hand shit
 			aux = image(limb.icon, "[husk_type]_husk_[aux_zone]", -aux_layer, image_dir)
 			. += aux
-<<<<<<< HEAD
-		return .
-	//END HUSK SHIIIIT
-	//invisibility
-	if(is_invisible)
-		limb.icon = icon_invisible
-		limb.icon_state = "invisible_[body_zone]"
-		. += limb
-		return .
-=======
->>>>>>> 5a1ce081de0 (Reworks how legs are rendered yet again because it was very convaluted i hated it (#71721))
 
 	//invisibility
 	if(is_invisible)
@@ -907,18 +896,14 @@
 			draw_color ||= (species_color) || (skin_tone && skintone2hex(skin_tone))
 
 		if(draw_color)
-			limb.color = "[draw_color]"
-			if(aux_zone)
-				aux.color = "[draw_color]"
+			//SKYRAT EDIT BEGIN - Alpha values on limbs //We check if the limb is attached and if the owner has an alpha value to append
+			var/limb_color = owner?.dna?.species && owner.dna.species.specific_alpha != 255 ? "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" : "[draw_color]"
 
-<<<<<<< HEAD
-	if(draw_color)
-		//SKYRAT EDIT BEGIN - Alpha values on limbs //We check if the limb is attached and if the owner has an alpha value to append
-		limb.color = owner?.dna?.species && owner.dna.species.specific_alpha != 255 ? "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" : "[draw_color]"
-		if(aux_zone)
-			aux.color = owner?.dna?.species && owner.dna.species.specific_alpha != 255 ? "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" : "[draw_color]"
-		//SKYRAT EDIT END
-=======
+			limb.color = limb_color
+			if(aux_zone)
+				aux.color = limb_color
+			//SKYRAT EDIT END
+
 		//EMISSIVE CODE START
 		// For some reason this was applied as an overlay on the aux image and limb image before.
 		// I am very sure that this is unnecessary, and i need to treat it as part of the return list
@@ -928,7 +913,6 @@
 			var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, location, alpha = limb.alpha)
 			limb_em_block.dir = image_dir
 			. += limb_em_block
->>>>>>> 5a1ce081de0 (Reworks how legs are rendered yet again because it was very convaluted i hated it (#71721))
 
 			if(aux_zone)
 				var/mutable_appearance/aux_em_block = emissive_blocker(aux.icon, aux.icon_state, location, alpha = aux.alpha)
@@ -945,31 +929,30 @@
 			//add two masked images based on the old one
 			. += leg_source.generate_masked_leg(limb_image, image_dir)
 
-<<<<<<< HEAD
-	//EMISSIVE CODE END
-	//Draw external organs like horns and frills
-	for(var/obj/item/organ/external/external_organ as anything in external_organs)
-		if(!dropped && !external_organ.can_draw_on_bodypart(owner))
-			continue
-		//Some externals have multiple layers for background, foreground and between
-		/* SKYRAT EDIT START - Customization (better layer handling for external organs) - ORIGINAL:
-		for(var/external_layer in external_organ.all_layers)
-			if(external_organ.layers & external_layer)
+	if(!is_husked)
+		//Draw external organs like horns and frills
+		for(var/obj/item/organ/external/external_organ as anything in external_organs)
+			if(!dropped && !external_organ.can_draw_on_bodypart(owner))
+				continue
+			//Some externals have multiple layers for background, foreground and between
+			/* SKYRAT EDIT START - Customization (better layer handling for external organs) - ORIGINAL:
+			for(var/external_layer in external_organ.all_layers)
+				if(external_organ.layers & external_layer)
+					external_organ.generate_and_retrieve_overlays(
+						.,
+						image_dir,
+						external_organ.bitflag_to_layer(external_layer),
+						limb_gender,
+					)
+			*/ // ORIGINAL END
+			for(var/external_layer in external_organ.relevant_layers)
 				external_organ.generate_and_retrieve_overlays(
 					.,
 					image_dir,
-					external_organ.bitflag_to_layer(external_layer),
+					external_layer,
 					limb_gender,
 				)
-		*/ // ORIGINAL END
-		for(var/external_layer in external_organ.relevant_layers)
-			external_organ.generate_and_retrieve_overlays(
-				.,
-				image_dir,
-				external_layer,
-				limb_gender,
-			)
-		// SKYRAT EDIT END
+			// SKYRAT EDIT END
 
 	// SKYRAT EDIT ADDITION BEGIN - MARKINGS CODE
 	var/override_color
@@ -1027,23 +1010,8 @@
 				if (emissive)
 					. += emissive
 	// SKYRAT EDIT END - MARKINGS CODE END
-=======
-	if(!is_husked)
-		//Draw external organs like horns and frills
-		for(var/obj/item/organ/external/external_organ as anything in external_organs)
-			if(!dropped && !external_organ.can_draw_on_bodypart(owner))
-				continue
-			//Some externals have multiple layers for background, foreground and between
-			for(var/external_layer in external_organ.all_layers)
-				if(external_organ.layers & external_layer)
-					external_organ.generate_and_retrieve_overlays(
-						.,
-						image_dir,
-						external_organ.bitflag_to_layer(external_layer),
-						limb_gender,
-					)
+
 	return .
->>>>>>> 5a1ce081de0 (Reworks how legs are rendered yet again because it was very convaluted i hated it (#71721))
 
 /obj/item/bodypart/deconstruct(disassembled = TRUE)
 	SHOULD_CALL_PARENT(TRUE)
