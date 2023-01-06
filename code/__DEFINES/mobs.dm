@@ -610,8 +610,9 @@
 
 // Mob Overlays Indexes
 /// Total number of layers for mob overlays
-// SKYRAT EDIT CHANGE BEGIN - ORIGINAL:
+// SKYRAT EDIT CHANGE BEGIN - ORIGINAL: #define TOTAL_LAYERS 33
 #define TOTAL_LAYERS 39 //KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
+// SKYRAT EDIT CHANGE END
 /// Mutations layer - Tk headglows, cold resistance glow, etc
 #define MUTATIONS_LAYER 39 // SKYRAT EDIT CHANGE - ORIGINAL: 33
 /// Mutantrace features (tail when looking south) that must appear behind the body parts
