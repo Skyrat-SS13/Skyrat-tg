@@ -15,12 +15,8 @@
 	name = "MOD chestplate"
 	desc = "A chestplate for a MODsuit."
 	icon = 'icons/obj/clothing/modsuit/mod_clothing.dmi'
-<<<<<<< HEAD
-	icon_state = "chestplate"
-=======
 	icon_state = "standard-chestplate"
 	base_icon_state = "chestplate"
->>>>>>> e79d3bc1c44 (fixes modsuit icons (#71998))
 	worn_icon = 'icons/mob/clothing/modsuit/mod_clothing.dmi'
 	blood_overlay_type = "armor"
 	allowed = list(
