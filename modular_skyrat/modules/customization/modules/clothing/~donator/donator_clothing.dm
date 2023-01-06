@@ -1376,3 +1376,12 @@
 	icon = 'modular_skyrat/master_files/icons/obj/ring.dmi'
 	icon_state = "ringblack"
 	spans = list("glossy")
+
+//reward for SomeRandomOwl
+/obj/item/clothing/head/costume/strigihat
+	name = "starry witch hat"
+	desc = "A cute witch hat typically worn by an owl-like teshari."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	worn_icon_teshari = 'modular_skyrat/master_files/icons/donator/mob/clothing/head_teshari.dmi'
+	icon_state = "strigihat"
