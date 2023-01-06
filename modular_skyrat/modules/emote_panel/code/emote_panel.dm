@@ -187,10 +187,7 @@
 	)
 	all_emotes += synth_emotes
 	var/static/list/allowed_species_synth = list(
-		/datum/species/robotic/ipc,
-		/datum/species/robotic/synthliz,
-		/datum/species/robotic/synthetic_human,
-		/datum/species/robotic/synthetic_mammal
+		/datum/species/synthetic
 	)
 
 	// modular_skyrat\modules\emotes\code\additionalemotes\overlay_emote.dm

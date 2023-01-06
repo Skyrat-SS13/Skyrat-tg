@@ -339,7 +339,6 @@
 	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/casualman
 	shoes = /obj/item/clothing/shoes/workboots
 	back = /obj/item/storage/backpack
-	backpack_contents = list(/obj/item/armament_token/sidearm_blackmarket)
 	id = /obj/item/card/id/away/freightcrew
 
 /obj/effect/mob_spawn/ghost_role/human/lostminer
@@ -366,8 +365,8 @@
 		/obj/item/mining_voucher=1,
 		/obj/item/t_scanner/adv_mining_scanner/lesser=1,
 		/obj/item/gun/energy/recharge/kinetic_accelerator=1,\
-		/obj/item/stack/marker_beacon/ten=1,\
-		/obj/item/armament_token/sidearm_blackmarket)
+		/obj/item/stack/marker_beacon/ten=1,
+		)
 	r_pocket = /obj/item/storage/bag/ore
 	id = /obj/item/card/id/away/freightmine
 
@@ -392,7 +391,6 @@
 	neck = /obj/item/clothing/neck/cloak/qm
 	back = /obj/item/storage/backpack
 	backpack_contents = list(
-		/obj/item/armament_token/energy=1,
 		/obj/item/megaphone/cargo=1,
 		)
 	id = /obj/item/card/id/away/silver/freightqm
@@ -432,7 +430,7 @@
 		id_card.update_label()
 		id_card.update_icon()
 	var/obj/item/radio/target_radio = tarkon.ears
-	target_radio.set_frequency(1243)
+	target_radio.set_frequency(FREQ_TARKON)
 	target_radio.recalculateChannels()
 
 	return ..()

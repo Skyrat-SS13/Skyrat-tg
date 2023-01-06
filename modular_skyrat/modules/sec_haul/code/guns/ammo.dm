@@ -35,59 +35,25 @@
 *	9mm
 */
 
-/obj/item/ammo_box/advanced/b9mm
-	name = "9x19mm FMJ box"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "pistol_l"
-	ammo_type = /obj/item/ammo_casing/b9mm
-	max_ammo = 30
+/obj/item/ammo_box/c9mm/rubber
+	name = "9x25mm rubber box"
+	ammo_type = /obj/item/ammo_casing/c9mm/rubber
 
-/obj/item/ammo_box/advanced/b9mm/hp
-	name = "9x19mm JHP box"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "pistol"
-	ammo_type = /obj/item/ammo_casing/b9mm/hp
-
-/obj/item/ammo_box/advanced/b9mm/rubber
-	name = "9x19mm rubber box"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "pistol_r"
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-
-/obj/item/ammo_box/advanced/b9mm/ihdf
-	name = "9x19mm IHDF box"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "pistol_hv"
-	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
+/obj/item/ammo_box/c9mm/ihdf
+	name = "9x25mm IHDF box"
+	ammo_type = /obj/item/ammo_casing/c9mm/ihdf
 
 /*
 *	10mm
 */
 
-/obj/item/ammo_box/advanced/b10mm
-	name = "10mm auto box"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "box50"
-	ammo_type = /obj/item/ammo_casing/b10mm
-	max_ammo = 30
-
-/obj/item/ammo_box/advanced/b10mm/hp
-	name = "10mm auto JHP box"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "box50-lethal"
-	ammo_type = /obj/item/ammo_casing/b10mm/hp
-
-/obj/item/ammo_box/advanced/b10mm/rubber
+/obj/item/ammo_box/c10mm/rubber
 	name = "10mm auto rubber box"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "box50-rubber"
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
+	ammo_type = /obj/item/ammo_casing/c10mm/rubber
 
-/obj/item/ammo_box/advanced/b10mm/ihdf
+/obj/item/ammo_box/c10mm/ihdf
 	name = "peacekeeper ammo box (10mm ihdf)"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "box50-hv"
-	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
+	ammo_type = /obj/item/ammo_casing/c10mm/ihdf
 
 /*
 *	12mm

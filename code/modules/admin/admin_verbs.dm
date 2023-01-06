@@ -69,6 +69,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/admin_cancel_shuttle, /*allows us to cancel the emergency shuttle, sending it back to centcom*/
 	/client/proc/admin_disable_shuttle, /*allows us to disable the emergency shuttle admin-wise so that it cannot be called*/
 	/client/proc/admin_enable_shuttle,  /*undoes the above*/
+	/client/proc/admin_hostile_environment, /*Allows admins to prevent the emergency shuttle from leaving, also lets admins clear hostile environments if theres one stuck*/
 	/client/proc/cmd_admin_direct_narrate, /*send text directly to a player with no padding. Useful for narratives and fluff-text*/
 	/client/proc/cmd_admin_world_narrate, /*sends text to all players with no padding*/
 	/client/proc/cmd_admin_local_narrate, /*sends text to all mobs within view of atom*/
@@ -98,6 +99,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/message_pda, /*send a message to somebody on PDA*/
 	/datum/admins/proc/trophy_manager,
 	/client/proc/fax_panel, /*send a paper to fax*/
+	/client/proc/force_load_lazy_template,
 	)
 GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/ban_panel, /client/proc/stickybanpanel))
 GLOBAL_PROTECT(admin_verbs_ban)
@@ -137,6 +139,8 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/admin_away,
 	/client/proc/add_mob_ability,
 	/client/proc/remove_mob_ability,
+	/client/proc/command_report_footnote,
+	/client/proc/delay_command_report,
 	/datum/admins/proc/station_traits_panel,
 	/client/proc/spawn_pollution, // SKYRAT EDIT ADDITION
 	/client/proc/spawn_liquid, // SKYRAT EDIT ADDITION
@@ -1006,3 +1010,40 @@ GLOBAL_PROTECT(admin_verbs_poll)
 	var/datum/browser/popup = new(mob, "spellreqs", "Spell Requirements", 600, 400)
 	popup.set_content(page_contents)
 	popup.open()
+
+/client/proc/force_load_lazy_template()
+	set name = "Load/Jump Lazy Template"
+	set category = "Admin.Events"
+	if(!check_rights(R_ADMIN))
+		return
+
+	if(SSticker.current_state != GAME_STATE_PLAYING)
+		to_chat(usr, span_warning("The game hasnt started yet!"))
+		return
+
+	var/list/choices = LAZY_TEMPLATE_KEY_LIST_ALL()
+	var/choice = tgui_input_list(usr, "Key?", "Lazy Loader", choices)
+	if(!choice)
+		return
+
+	choice = choices[choice]
+	if(!choice)
+		to_chat(usr, span_warning("No template with that key found, report this!"))
+		return
+
+	var/already_loaded = LAZYACCESS(SSmapping.loaded_lazy_templates, choice)
+	var/force_load = FALSE
+	if(already_loaded && (tgui_alert(usr, "Template already loaded.", "", list("Jump", "Load Again")) == "Load Again"))
+		force_load = TRUE
+
+	var/datum/turf_reservation/reservation = SSmapping.lazy_load_template(choice, force = force_load)
+	if(!reservation)
+		to_chat(usr, span_boldwarning("Failed to load template!"))
+		return
+
+	if(!isobserver(usr))
+		admin_ghost()
+	usr.forceMove(coords2turf(reservation.bottom_left_coords))
+
+	message_admins("[key_name_admin(usr)] has loaded lazy template '[choice]'")
+	to_chat(usr, span_boldnicegreen("Template loaded, you have been moved to the bottom left of the reservation."))

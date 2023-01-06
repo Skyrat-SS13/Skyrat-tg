@@ -42,6 +42,7 @@
 			H.set_nutrition(NUTRITION_LEVEL_ALMOST_FULL)
 		if(light_amount > 0.2) //if there's enough light, heal
 			H.heal_overall_damage(0.2 * delta_time, 0.2 * delta_time, 0)
+			H.adjustStaminaLoss(-0.2 * delta_time)
 			H.adjustToxLoss(-0.2 * delta_time)
 			H.adjustOxyLoss(-0.2 * delta_time)
 

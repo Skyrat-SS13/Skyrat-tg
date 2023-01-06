@@ -17,6 +17,8 @@
 
 	var/current_skin //Has the item been reskinned?
 	var/list/unique_reskin //List of options to reskin.
+	///If set to true, we can reskin this item as much as we want.
+	var/infinite_reskin = FALSE
 
 	// Access levels, used in modules\jobs\access.dm
 	var/list/req_access
@@ -58,10 +60,20 @@
 		network_id = NETWORK_NAME_COMBINE(STATION_NETWORK_ROOT, network_id) // I regret nothing!!
 	AddComponent(/datum/component/ntnet_interface, network_id, id_tag)
 
+/// A list of all /obj by their id_tag
+GLOBAL_LIST_EMPTY(objects_by_id_tag)
+
+/obj/Initialize(mapload)
+	. = ..()
+
+	if (id_tag)
+		GLOB.objects_by_id_tag[id_tag] = src
+
 /obj/Destroy(force)
 	if(!ismachinery(src))
 		STOP_PROCESSING(SSobj, src) // TODO: Have a processing bitflag to reduce on unnecessary loops through the processing lists
 	SStgui.close_uis(src)
+	GLOB.objects_by_id_tag -= id_tag
 	. = ..()
 
 /obj/attacked_by(obj/item/attacking_item, mob/living/user)
@@ -283,12 +295,12 @@
 	. = ..()
 	if(obj_flags & UNIQUE_RENAME)
 		. += span_notice("Use a pen on it to rename it or change its description.")
-	if(unique_reskin && !current_skin)
+	if(unique_reskin && (!current_skin || infinite_reskin))
 		. += span_notice("Alt-click it to reskin it.")
 
 /obj/AltClick(mob/user)
 	. = ..()
-	if(unique_reskin && !current_skin && user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE))
+	if(unique_reskin && (!current_skin || infinite_reskin) && user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE))
 		reskin_obj(user)
 
 /**
@@ -325,7 +337,7 @@
 /obj/proc/check_reskin_menu(mob/user)
 	if(QDELETED(src))
 		return FALSE
-	if(current_skin)
+	if(!infinite_reskin && current_skin)
 		return FALSE
 	if(!istype(user))
 		return FALSE

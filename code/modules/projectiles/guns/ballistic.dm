@@ -329,7 +329,7 @@
 	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 
 /obj/item/gun/ballistic/can_shoot()
-	return chambered
+	return chambered?.loaded_projectile
 
 /* SKYRAT EDIT REMOVAL MOVED TO MODULAR BALLISTIC_MASTER.DM
 /obj/item/gun/ballistic/attackby(obj/item/A, mob/user, params)

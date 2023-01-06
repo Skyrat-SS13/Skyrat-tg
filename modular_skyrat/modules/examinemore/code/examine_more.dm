@@ -30,6 +30,11 @@ would only be recognisable with someone that had the syndicate trait.
 	var/list/special_desc_factions
 
 
+/obj/item/examine(mob/user)
+	. = ..()
+	if(special_desc_requirement == EXAMINE_CHECK_NONE && special_desc)
+		. += span_notice("This item could be examined further...")
+
 /obj/item/examine_more(mob/user)
 	. = ..()
 	if(special_desc)

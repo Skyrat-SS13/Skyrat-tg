@@ -211,7 +211,7 @@
 		part.alternate_worn_layer = null
 	else
 		part.flags_cover &= ~part.visor_flags_cover
-		part.flags_inv &= ~part.visor_flags_inv + HIDESPINE // SKYRAT EDIT - Hiding the tail spines from MODsuits
+		part.flags_inv &= ~part.visor_flags_inv
 		part.clothing_flags &= ~part.visor_flags
 		part.heat_protection = NONE
 		part.cold_protection = NONE

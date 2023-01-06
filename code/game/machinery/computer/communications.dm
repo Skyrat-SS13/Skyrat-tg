@@ -972,7 +972,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	var/title
 	var/content
 	var/list/possible_answers = list()
-	var/answered
+	var/answered = FALSE
 	var/datum/callback/answer_callback
 
 /datum/comm_message/New(new_title,new_content,new_possible_answers)

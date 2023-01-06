@@ -181,7 +181,7 @@
 	qdel(src)
 
 
-/obj/item/antag_granter/changling
+/obj/item/antag_granter/changeling
 	name = "viral injector"
 	desc = "A blue injector filled with some viscous, red substance. It has no markings apart from an orange warning stripe near the large needle."
 	icon_state = "changeling_injector"

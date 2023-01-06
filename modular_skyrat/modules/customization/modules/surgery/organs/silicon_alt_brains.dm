@@ -15,7 +15,7 @@
 	new_mob_message = span_notice("The compact AI circuit chimes quietly.")
 	recharge_message = span_warning("The compact AI circuit isn't ready to activate again yet! Give it some time to recharge.")
 
-/obj/item/organ/internal/brain/ipc_positron/circuit
+/obj/item/organ/internal/brain/synth/circuit
 	name = "compact AI circuit"
 	desc = "A compact and extremely complex circuit, perfectly dimensioned to fit in the same slot as a synthetic-compatible positronic brain. It is usually slotted into the chest of synthetic crewmembers."
 	icon = 'modular_skyrat/master_files/icons/obj/alt_silicon_brains.dmi'
@@ -24,7 +24,7 @@
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 
-/obj/item/organ/internal/brain/ipc_positron/mmi
+/obj/item/organ/internal/brain/synth/mmi
 	name = "compact man-machine interface"
 	desc = "A compact man-machine interface, perfectly dimensioned to fit in the same slot as a synthetic-compatible positronic brain. Unfortunately, the brain seems to be permanently attached to the circuitry, and it seems relatively sensitive to it's environment. It is usually slotted into the chest of synthetic crewmembers."
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
@@ -36,13 +36,13 @@
 /mob/living/proc/prefs_get_brain_to_use(value, is_cyborg = FALSE)
 	switch(value)
 		if(ORGAN_PREF_POSI_BRAIN)
-			return is_cyborg ? /obj/item/mmi/posibrain : /obj/item/organ/internal/brain/ipc_positron
+			return is_cyborg ? /obj/item/mmi/posibrain : /obj/item/organ/internal/brain/synth
 
 		if(ORGAN_PREF_MMI_BRAIN)
-			return is_cyborg ? /obj/item/mmi : /obj/item/organ/internal/brain/ipc_positron/mmi
+			return is_cyborg ? /obj/item/mmi : /obj/item/organ/internal/brain/synth/mmi
 
 		if(ORGAN_PREF_CIRCUIT_BRAIN)
-			return is_cyborg ? /obj/item/mmi/posibrain/circuit : /obj/item/organ/internal/brain/ipc_positron/circuit
+			return is_cyborg ? /obj/item/mmi/posibrain/circuit : /obj/item/organ/internal/brain/synth/circuit
 
 /mob/living/silicon/robot/Initialize(mapload)
 	. = ..()
@@ -52,7 +52,7 @@
 /// Sets the MMI type for a cyborg, if applicable.
 /mob/living/silicon/robot/proc/update_brain_type()
 	var/obj/item/mmi/new_mmi = prefs_get_brain_to_use(client?.prefs?.read_preference(/datum/preference/choiced/brain_type), TRUE)
-	if(!new_mmi || new_mmi == mmi.type)
+	if(!mmi || !new_mmi || new_mmi == mmi.type)
 		return
 
 	new_mmi = new new_mmi()

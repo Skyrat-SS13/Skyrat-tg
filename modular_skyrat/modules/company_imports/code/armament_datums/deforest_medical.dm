@@ -176,6 +176,13 @@
 	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
 	interest_required = COMPANY_HIGH_INTEREST
 
+/datum/armament_entry/company_import/deforest/equipment/medigun_upgrade
+	item_type = /obj/item/device/custom_kit/medigun_fastcharge
+	lower_cost = CARGO_CRATE_VALUE * 2
+	upper_cost = CARGO_CRATE_VALUE * 5
+	interest_addition = COMPANY_INTEREST_GAIN_AVERAGE
+	interest_required = COMPANY_SOME_INTEREST
+
 /datum/armament_entry/company_import/deforest/equipment/afad
 	item_type = /obj/item/gun/medbeam/afad
 	lower_cost = CARGO_CRATE_VALUE * 5

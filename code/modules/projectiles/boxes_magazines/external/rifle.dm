@@ -1,6 +1,5 @@
 /obj/item/ammo_box/magazine/m10mm/rifle
-//	name = "rifle magazine (10mm)"			// SKYRAT EDIT: Original
-	name = "rifle magazine (10mm Magnum)"	// SKYRAT EDIT: Calibre rename
+	name = "rifle magazine (10mm)"
 	desc = "A well-worn magazine fitted for the surplus rifle."
 	icon_state = "75-8"
 	base_icon_state = "75"

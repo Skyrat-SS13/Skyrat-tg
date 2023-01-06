@@ -104,28 +104,3 @@
 /obj/item/clothing/suit/toggle/jacket/flannel/brown
 	name = "brown flannel jacket"
 	icon_state = "flannel_brown"
-
-//Labcoats
-/obj/item/clothing/suit/toggle/labcoat/highvis
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "high vis labcoat"
-	desc = "A high visibility vest for emergency responders, intended to draw attention away from the blood."
-	icon_state = "labcoat_highvis"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/suit/toggle/labcoat/para_red
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "red paramedic labcoat"
-	desc = "A red vest with reflective strips for First Responsers."
-	icon_state = "labcoat_pmedred"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/suit/toggle/labcoat/para_red/Initialize(mapload)
-	. = ..()
-	allowed += list(
-		/obj/item/storage/medkit,
-	)
-
-//Costume-suits are located under other_port.dm, to keep them with their costume sets

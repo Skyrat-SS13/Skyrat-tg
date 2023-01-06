@@ -11,7 +11,7 @@
 	return ORGAN_PREF_POSI_BRAIN
 
 /datum/preference/choiced/brain_type/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	if(!isrobotic(target))
+	if(!issynthetic(target))
 		return
 
 	var/obj/item/organ/internal/brain/new_brain = target.prefs_get_brain_to_use(value)

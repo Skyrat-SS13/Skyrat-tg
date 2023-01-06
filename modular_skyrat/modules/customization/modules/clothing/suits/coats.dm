@@ -297,3 +297,10 @@
 /obj/item/clothing/suit/tailored_jacket/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/toggle_icon, "sleeves")
+
+/obj/item/clothing/suit/tailored_jacket/short
+	name = "tailored short jacket"
+	desc = "A jacket tailor made for... however it looks right now!"
+	greyscale_config = /datum/greyscale_config/tailored_short_jacket
+	greyscale_config_worn = /datum/greyscale_config/tailored_short_jacket/worn
+	greyscale_colors = "#8c8c8c#8c8c8c#8c8c8c#bf9f78#8c8c8c#8c8c8c#bf9f78#8c8c8c"
