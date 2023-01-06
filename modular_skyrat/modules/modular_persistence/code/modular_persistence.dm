@@ -78,7 +78,7 @@ GLOBAL_LIST_INIT(modular_persistence_ignored_vars, list(
 
 		var/var_entry = vars[var_name]
 
-		if(var_entry != null)
+		if(!isnull(var_entry))
 			returned_list[var_name] = var_entry
 
 	return returned_list
