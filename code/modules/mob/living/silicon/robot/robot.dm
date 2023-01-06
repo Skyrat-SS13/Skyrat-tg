@@ -279,15 +279,11 @@
 
 /mob/living/silicon/robot/get_status_tab_items()
 	. = ..()
-	. += ""
 	if(cell)
 		. += "Charge Left: [cell.charge]/[cell.maxcharge]"
 	else
 		. += "No Cell Inserted!"
 
-	if(model)
-		for(var/datum/robot_energy_storage/st in model.storages)
-			. += "[st.name]: [st.energy]/[st.max_energy]"
 	if(connected_ai)
 		. += "Master AI: [connected_ai.name]"
 
@@ -380,7 +376,7 @@
 			add_overlay("ov-opencover -c")
 	if(hat)
 		var/mutable_appearance/head_overlay = hat.build_worn_icon(default_layer = 20, default_icon_file = 'icons/mob/clothing/head/default.dmi')
-		head_overlay.pixel_y += hat_offset
+		head_overlay.pixel_z += hat_offset
 		add_overlay(head_overlay)
 	update_fire()
 
@@ -905,7 +901,7 @@
 /datum/action/innate/undeployment
 	name = "Disconnect from shell"
 	desc = "Stop controlling your shell and resume normal core operations."
-	icon_icon = 'icons/mob/actions/actions_AI.dmi'
+	button_icon = 'icons/mob/actions/actions_AI.dmi'
 	button_icon_state = "ai_core"
 
 /datum/action/innate/undeployment/Trigger(trigger_flags)
@@ -993,7 +989,7 @@
 	if(cell)
 		cell.charge = min(cell.charge + amount, cell.maxcharge)
 	if(repairs)
-		heal_bodypart_damage(repairs, repairs - 1)
+		heal_bodypart_damage(repairs, repairs)
 
 /mob/living/silicon/robot/proc/set_connected_ai(new_ai)
 	if(connected_ai == new_ai)

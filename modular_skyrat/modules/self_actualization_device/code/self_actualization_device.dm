@@ -120,7 +120,8 @@
 		open_machine()
 		return
 
-	if(--next_fact <= 0)
+	next_fact--
+	if(next_fact <= 0)
 		next_fact = rand(initial(next_fact), 2 * initial(next_fact))
 		say(pick(advertisements))
 		playsound(loc, 'sound/machines/chime.ogg', 30, FALSE)

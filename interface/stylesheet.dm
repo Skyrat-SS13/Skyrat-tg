@@ -169,6 +169,15 @@ h1.alert, h2.alert		{color: #000000;}
 		100% 	{color: #ff33cc;}
 }
 
+.glossy					{color: #9b6000; font-weight: bold; animation: glossy 5000ms infinite;}
+	@keyframes glossy {
+		0% 		{color: #9b6000}
+		30% 	{color: #c88800}
+		40% 	{color: #bdbd00}
+		50% 	{color: #c88800}
+		100% 	{color: #9b6000}
+}
+
 .doyourjobidiot {
   color: #c51e1e;
   text-shadow: 0 0 4px #e22525;
