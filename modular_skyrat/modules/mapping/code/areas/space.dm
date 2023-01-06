@@ -75,6 +75,9 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison
 	name = "DS-2 Long-Term Brig"
 
+/area/ruin/space/has_grav/skyrat/interdynefob/security/firingrange
+	name = "DS-2 Firing Range"
+
 //Service
 /area/ruin/space/has_grav/skyrat/interdynefob/service
 	name = "DS-2 Service Wing"
