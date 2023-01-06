@@ -70,18 +70,11 @@
 	new /obj/item/clothing/head/hats/hopcap(src)
 	new /obj/item/clothing/neck/cloak/hop(src)
 	new /obj/item/clothing/shoes/laceup(src)
-<<<<<<< HEAD
 	new /obj/item/clothing/suit/hooded/wintercoat/hop(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/hopformal(src)
 
 /obj/item/storage/bag/garment/hos/PopulateContents()
-	//new /obj/item/clothing/under/rank/security/head_of_security/grey(src) //SKYRAT EDIT REMOVAL
-	//new /obj/item/clothing/under/rank/security/head_of_security/skirt(src) //SKYRAT EDIT REMOVAL
-=======
-
-/obj/item/storage/bag/garment/hos/PopulateContents()
 	new /obj/item/clothing/under/rank/security/head_of_security/skirt(src)
->>>>>>> 32a119f903a (QM has a garment bag now (#72111))
 	new /obj/item/clothing/under/rank/security/head_of_security/alt(src)
 	new /obj/item/clothing/under/rank/security/head_of_security/alt/skirt(src)
 	new /obj/item/clothing/under/rank/security/head_of_security/grey(src)
@@ -104,12 +97,9 @@
 	new /obj/item/clothing/under/rank/rnd/research_director/alt/skirt(src)
 	new /obj/item/clothing/under/rank/rnd/research_director/turtleneck(src)
 	new /obj/item/clothing/under/rank/rnd/research_director/turtleneck/skirt(src)
-<<<<<<< HEAD
 	new /obj/item/clothing/suit/toggle/labcoat/skyrat/rd(src) //SKYRAT EDIT ADDITION
 	new /obj/item/clothing/under/rank/rnd/research_director/turtleneck(src)
-=======
 	new /obj/item/clothing/suit/hooded/wintercoat/science/rd(src)
->>>>>>> 32a119f903a (QM has a garment bag now (#72111))
 	new /obj/item/clothing/head/beret/science/rd(src)
 	new /obj/item/clothing/gloves/color/black(src)
 	new /obj/item/clothing/neck/cloak/rd(src)
