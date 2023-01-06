@@ -34,7 +34,7 @@
 		"legs" = "Normal Legs",
 		MUTANT_SYNTH_ANTENNA = "None",
 		MUTANT_SYNTH_SCREEN = "None",
-		MUTANT_SYNTH_CHASSIS = "None",
+		MUTANT_SYNTH_CHASSIS = "Default Chassis",
 		MUTANT_SYNTH_HEAD = "None",
 		MUTANT_SYNTH_HAIR = "None",
 	)
