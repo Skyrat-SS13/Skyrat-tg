@@ -668,15 +668,21 @@
 	suffix = "small"
 	name = "auxilliary base (Small)"
 
-/* SKYRAT EDIT REMOVAL
 /datum/map_template/shuttle/escape_pod/default
 	suffix = "default"
 	name = "escape pod (Default)"
-*/
 
 /datum/map_template/shuttle/escape_pod/large
 	suffix = "large"
 	name = "escape pod (Large)"
+
+/datum/map_template/shuttle/escape_pod/luxury
+	suffix = "luxury"
+	name = "escape pod (Luxury)"
+
+/datum/map_template/shuttle/escape_pod/cramped
+	suffix = "cramped"
+	name = "escape pod (Cramped)"
 
 /datum/map_template/shuttle/assault_pod/default
 	suffix = "default"
@@ -729,6 +735,10 @@
 /datum/map_template/shuttle/starfury/corvette
 	suffix = "corvette"
 	name = "SBC Starfury Corvette"
+
+/datum/map_template/shuttle/ruin/cyborg_mothership
+	suffix = "cyborg_mothership"
+	name = "Cyborg Mothership"
 
 /datum/map_template/shuttle/ruin/caravan_victim
 	suffix = "caravan_victim"

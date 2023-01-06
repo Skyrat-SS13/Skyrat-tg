@@ -100,6 +100,7 @@
 	anchored = TRUE
 	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND | INTERACT_ATOM_UI_INTERACT
 	blocks_emissive = EMISSIVE_BLOCK_GENERIC
+	initial_language_holder = /datum/language_holder/synthetic
 
 	var/machine_stat = NONE
 	var/use_power = IDLE_POWER_USE
@@ -168,6 +169,9 @@
 	if((resistance_flags & INDESTRUCTIBLE) && component_parts){ // This is needed to prevent indestructible machinery still blowing up. If an explosion occurs on the same tile as the indestructible machinery without the PREVENT_CONTENTS_EXPLOSION_1 flag, /datum/controller/subsystem/explosions/proc/propagate_blastwave will call ex_act on all movable atoms inside the machine, including the circuit board and component parts. However, if those parts get deleted, the entire machine gets deleted, allowing for INDESTRUCTIBLE machines to be destroyed. (See #62164 for more info)
 		flags_1 |= PREVENT_CONTENTS_EXPLOSION_1
 	}
+
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_BOTS_GLITCHED))
+		randomize_language_if_on_station()
 
 	return INITIALIZE_HINT_LATELOAD
 
@@ -302,6 +306,10 @@
 	if(use_power && !machine_stat && !(. & EMP_PROTECT_SELF))
 		use_power(7500/severity)
 		new /obj/effect/temp_visual/emp(loc)
+
+		if(prob(70/severity))
+			var/datum/language_holder/machine_languages = get_language_holder()
+			machine_languages.selected_language = machine_languages.get_random_spoken_language()
 
 /**
  * Opens the machine.
@@ -690,6 +698,11 @@
 /obj/machinery/attack_ai(mob/user)
 	if(!(interaction_flags_machine & INTERACT_MACHINE_ALLOW_SILICON) && !isAdminGhostAI(user))
 		return FALSE
+	if(!(ROLE_SYNDICATE in user.faction))
+		if((ACCESS_SYNDICATE in req_access) || (ACCESS_SYNDICATE_LEADER in req_access) || (ACCESS_SYNDICATE in req_one_access) || (ACCESS_SYNDICATE_LEADER in req_one_access))
+			return FALSE
+		if((onSyndieBase() && loc != user))
+			return FALSE
 	if(iscyborg(user))// For some reason attack_robot doesn't work
 		return attack_robot(user)
 	return _try_interact(user)
@@ -768,12 +781,13 @@
 		return ..() //we don't have any parts.
 	spawn_frame(disassembled)
 
-	for(var/obj/item/part in component_parts)
-		part.forceMove(loc)
-
-	for (var/datum/stock_part/stock_part in component_parts)
-		var/part_type = stock_part.physical_object_type
-		new part_type(loc)
+	for(var/datum/part in component_parts)
+		if(istype(part, /datum/stock_part))
+			var/datum/stock_part/datum_part = part
+			new datum_part.physical_object_type(loc)
+		else
+			var/obj/item/obj_part = part
+			obj_part.forceMove(loc)
 
 	LAZYCLEARLIST(component_parts)
 	return ..()
@@ -930,7 +944,13 @@
 		to_chat(user, display_parts(user))
 	if(!machine_board)
 		return FALSE
-
+	/**
+	 * sorting is very important especially because we are breaking out when required part is found in the inner for loop
+	 * if the rped first picked up a tier 3 part AND THEN a tier 4 part
+	 * tier 3 would be installed and the loop would break and check for the next required component thus
+	 * completly ignoring the tier 4 component inside
+	 */
+	var/list/part_list = replacer_tool.get_sorted_parts()
 	for(var/datum/primary_part_base as anything in component_parts)
 		var/current_rating
 		var/required_type
@@ -953,7 +973,7 @@
 			// Not an error, happens with circuitboards.
 			continue
 
-		for(var/obj/item/secondary_part in replacer_tool.contents)
+		for(var/obj/item/secondary_part in part_list)
 			if(!istype(secondary_part, required_type))
 				continue
 			// If it's a corrupt or rigged cell, attempting to send it through Bluespace could have unforeseen consequences.
@@ -983,6 +1003,7 @@
 						else
 							component_parts += secondary_part
 							secondary_part.forceMove(src)
+							part_list -= secondary_part //have to manually remove cause we are no longer refering replacer_tool.contents & forceMove wont remove it from th list
 
 				component_parts -= primary_part_base
 
@@ -1027,9 +1048,6 @@
 			part_count[component_name] = stack_part.amount
 		else
 			part_count[component_name] = 1
-
-	for (var/datum/stock_part/stock_part in component_parts)
-		part_count[stock_part.name()] += 1
 
 	var/list/printed_components = list()
 

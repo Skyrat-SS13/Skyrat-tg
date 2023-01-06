@@ -11,7 +11,7 @@
 
 /obj/item/circuitboard/machine/dish_drive/bullet
 	name = "Bullet Drive (Machine Board)"
-	icon_state = "service"
+	greyscale_colors = CIRCUIT_COLOR_SERVICE
 	build_path = /obj/machinery/dish_drive/bullet
 	req_components = list(
 		/obj/item/stack/sheet/glass = 1,
