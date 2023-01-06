@@ -287,7 +287,7 @@
 
 		return
 	// SKYRAT ADDITION END
-		
+
 	if(!wearer.incapacitated())
 		var/atom/movable/screen/inventory/hand/ui_hand = over_object
 		if(wearer.putItemFromInventoryInHandIfPossible(src, ui_hand.held_index))
@@ -567,6 +567,8 @@
 	new_module.on_install()
 	if(wearer)
 		new_module.on_equip()
+	if(active)
+		new_module.on_suit_activation()
 	// SKYRAT EDIT START - pAIs in MODsuits
 	if(mod_pai)
 		var/datum/action/item_action/mod/pinned_module/action = new_module.pinned_to[ref(mod_pai)]
@@ -580,6 +582,8 @@
 /obj/item/mod/control/proc/uninstall(obj/item/mod/module/old_module, deleting = FALSE)
 	modules -= old_module
 	complexity -= old_module.complexity
+	if(wearer)
+		old_module.on_unequip()
 	if(active)
 		old_module.on_suit_deactivation(deleting = deleting)
 		if(old_module.active)
