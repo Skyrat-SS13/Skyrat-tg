@@ -282,6 +282,11 @@
 /obj/item/proc/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	SEND_SIGNAL(src, COMSIG_ITEM_AFTERATTACK, target, user, proximity_flag, click_parameters)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_AFTERATTACK, target, src, proximity_flag, click_parameters)
+<<<<<<< HEAD
+=======
+	SEND_SIGNAL(target, COMSIG_ATOM_AFTER_ATTACKEDBY, src, user, proximity_flag, click_parameters)
+	return .
+>>>>>>> 583f65f28b5 (Dogs become tamed when given bones (#72363))
 
 /**
  * Called at the end of the attack chain if the user right-clicked.
