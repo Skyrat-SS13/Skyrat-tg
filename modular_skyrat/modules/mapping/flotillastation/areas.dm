@@ -65,11 +65,11 @@
 	name = "\improper Service Upper Hallway Aft"
 	icon_state = "primaryhall"
 
-/area/station/hallway/primary/flotilla/service/upper/wing
+/area/station/hallway/primary/flotilla/service/wing
 	name = "\improper Service Starboard Wing"
 	icon_state = "primaryhall"
 
-/area/station/hallway/primary/flotilla/service/upper/lower
+/area/station/hallway/primary/flotilla/service/lower
 	name = "\improper Service Subdeck Central Hallway"
 	icon_state = "primaryhall"
 
@@ -100,66 +100,66 @@
 
 //THRUSTERS AREAS
 //COMMAND
-/area/station/maintenance/thruster_room/command/upper/port
+/area/station/maintenance/thruster_room/flotilla/command/upper/port
 	name = "\improper Command Upper Portside Thrusters"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "thrust_room"
 
-/area/station/maintenance/thruster_room/command/upper/central
+/area/station/maintenance/thruster_room/flotilla/command/upper/central
 	name = "\improper Command Upper Central Thrusters"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "thrust_room"
 
-/area/station/maintenance/thruster_room/command/lower
+/area/station/maintenance/thruster_room/flotilla/command/lower
 	name = "\improper Command Subdeck Thrusters"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "thrust_room"
 
 //SERVICE
-/area/station/maintenance/thruster_room/service/port
+/area/station/maintenance/thruster_room/flotilla/service/port
 	name = "\improper Service Portside Thrusters"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "thrust_room"
 
-/area/station/maintenance/thruster_room/service/central
+/area/station/maintenance/thruster_room/flotilla/service/central
 	name = "\improper Service Central Thrusters"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "thrust_room"
 
-/area/station/maintenance/thruster_room/service/starboard
+/area/station/maintenance/thruster_room/flotilla/service/starboard
 	name = "\improper Service Starboard Thrusters"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "thrust_room"
 
 //ENGINEERING
-/area/station/maintenance/thruster_room/engineering/upper
+/area/station/maintenance/thruster_room/flotilla/engineering/upper
 	name = "\improper Engineering Upper Thrusters"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "thrust_room"
 
-/area/station/maintenance/thruster_room/engineering/lower
+/area/station/maintenance/thruster_room/flotilla/engineering/lower
 	name = "\improper Engineering Subdeck Thrusters"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "thrust_room"
 
 //MEDICAL
-/area/station/maintenance/thruster_room/medical/upper
+/area/station/maintenance/thruster_room/flotilla/medical/upper
 	name = "\improper Medical Upper Thrusters"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "thrust_room"
 
-/area/station/maintenance/thruster_room/medical/lower
+/area/station/maintenance/thruster_room/flotilla/medical/lower
 	name = "\improper Medical Subdeck Thrusters"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "thrust_room"
 
 //SECURITY
-/area/station/maintenance/thruster_room/security/upper
+/area/station/maintenance/thruster_room/flotilla/security/upper
 	name = "\improper Security Upper Thrusters"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "thrust_room"
 
-/area/station/maintenance/thruster_room/security/lower
+/area/station/maintenance/thruster_room/flotilla/security/lower
 	name = "\improper Security Subdeck Thrusters"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "thrust_room"
