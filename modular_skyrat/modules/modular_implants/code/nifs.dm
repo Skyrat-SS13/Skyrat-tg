@@ -140,7 +140,7 @@
 	START_PROCESSING(SSobj, src)
 
 	if(!is_calibrated)
-		send_message("Calibration Process Starting!")
+		send_message("The calibration process is starting.")
 		calibrating = TRUE
 
 	linked_mob.AddComponent(/datum/component/nif_examine)
@@ -274,7 +274,7 @@
 					linked_mob.adjustStaminaLoss(50)
 
 		if(NIF_CALIBRATION_STAGE_FINISHED to INFINITY)
-			send_message("Installation Proccess Complete!")
+			send_message("The calibration process is complete.")
 
 			calibrating = FALSE
 			is_calibrated = TRUE
