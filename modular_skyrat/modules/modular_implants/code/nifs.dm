@@ -279,6 +279,8 @@
 			calibrating = FALSE
 			is_calibrated = TRUE
 
+			linked_mob.save_individual_persistence()
+
 ///Installs the loaded_nifsoft to the parent NIF.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/install_nifsoft(datum/nifsoft/loaded_nifsoft)
 	if(broken || calibrating) //NIFSofts can't be installed to a broken NIF

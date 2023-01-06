@@ -17,12 +17,13 @@ GLOBAL_LIST_INIT(modular_persistence_ignored_vars, list(
 	"parent_type",
 	"owner",
 	"vars",
+	"stored_character_slot_index",
 ))
 
 /// Saves the contents of the modular persistence datum for the player's client to their file.
 /datum/controller/subsystem/persistence/proc/save_modular_persistence()
 	for(var/mob/living/carbon/human/player as anything in GLOB.human_list)
-		if(!ishuman(player) || !player.mind?.original_character_slot_index || !player.client?.prefs)
+		if(!ishuman(player) || !player.client?.prefs)
 			continue
 
 		var/json_file = file("data/player_saves/[player.client.ckey[1]]/[player.client.ckey]/modular_persistence.json")
@@ -32,13 +33,13 @@ GLOBAL_LIST_INIT(modular_persistence_ignored_vars, list(
 		if(!islist(json))
 			json = list()
 
-		json["[player.mind.original_character_slot_index]"] = player.client.prefs.modular_persistence.serialize_contents_to_list()
+		json["[player.client.prefs.modular_persistence.stored_character_slot_index]"] = player.client.prefs.modular_persistence.serialize_contents_to_list()
 		WRITE_FILE(json_file, json_encode(json))
 
 /// Saves the contents of the modular persistence datum for the player's client to their file.
 /datum/controller/subsystem/persistence/proc/load_modular_persistence(mob/living/carbon/human/player)
-	if(!player.mind?.original_character_slot_index || !player.client?.prefs)
-		return
+	if(!ishuman(player) || !player.client?.prefs)
+		return FALSE
 
 	var/json_file = file("data/player_saves/[player.client.ckey[1]]/[player.client.ckey]/modular_persistence.json")
 	var/list/json = fexists(json_file) ? json_decode(file2text(json_file)) : null
@@ -49,10 +50,14 @@ GLOBAL_LIST_INIT(modular_persistence_ignored_vars, list(
 /datum/modular_persistence
 	/// The human that this is attached to.
 	var/mob/living/carbon/human/owner
+	/// The owner's character slot index.
+	var/stored_character_slot_index
 
 /datum/modular_persistence/New(mob/living/carbon/human/player, list/persistence_data)
 	owner = player
 	. = ..()
+
+	stored_character_slot_index = player.mind?.original_character_slot_index
 
 	if(!persistence_data)
 		return
@@ -84,7 +89,7 @@ GLOBAL_LIST_INIT(modular_persistence_ignored_vars, list(
 
 /// This is an individual verison of the save_modular_persistence proc, only saving the persistence for the owner.
 /mob/living/carbon/human/proc/save_individual_persistence()
-	if(!mind?.original_character_slot_index || !client?.prefs)
+	if(!client?.prefs)
 		return FALSE
 
 	var/json_file = file("data/player_saves/[client.ckey[1]]/[client.ckey]/modular_persistence.json")
@@ -94,5 +99,5 @@ GLOBAL_LIST_INIT(modular_persistence_ignored_vars, list(
 	if(!islist(json))
 		json = list()
 
-	json["[mind.original_character_slot_index]"] = client.prefs.modular_persistence.serialize_contents_to_list()
+	json["[client.prefs.modular_persistence.stored_character_slot_index]"] = client.prefs.modular_persistence.serialize_contents_to_list()
 	WRITE_FILE(json_file, json_encode(json))
