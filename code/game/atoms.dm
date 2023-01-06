@@ -282,6 +282,7 @@
 			stack_trace("Invalid type [armor.type] found in .armor during /atom Initialize()")
 
 		atom_integrity = max_integrity
+	TEST_ONLY_ASSERT((!armor || istype(armor)), "[type] has an armor that contains an invalid value at intialize")
 
 	// apply materials properly from the default custom_materials value
 	// This MUST come after atom_integrity is set above, as if old materials get removed,
