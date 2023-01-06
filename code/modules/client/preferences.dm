@@ -4,17 +4,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/client/parent
 	/// The path to the general savefile for this datum
 	var/path
-<<<<<<< HEAD
-	var/default_slot = 1 //Holder so it doesn't default to slot 1, rather the last one used
-	var/max_save_slots = 30 //SKYRAT EDIT CHANGE
-=======
 	/// Whether or not we allow saving/loading. Used for guests, if they're enabled
 	var/load_and_save = TRUE
 	/// Ensures that we always load the last used save, QOL
 	var/default_slot = 1
 	/// The maximum number of slots we're allowed to contain
-	var/max_save_slots = 3
->>>>>>> a95e2f0b3f8 (Preference support for Guests (#72332))
+	var/max_save_slots = 30 //SKYRAT EDIT - ORIGINAL 3
 
 	/// Bitflags for communications that are muted
 	var/muted = NONE
@@ -110,23 +105,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		middleware += new middleware_type(src)
 
 	if(IS_CLIENT_OR_MOCK(parent))
-<<<<<<< HEAD
-		if(!is_guest_key(parent.key))
-			load_path(parent.ckey)
-			if(!fexists(path))
-				try_savefile_type_migration()
-			unlock_content = !!parent.IsByondMember()
-			if(unlock_content)
-				max_save_slots = 40 //SKYRAT EDIT CHANGE
-=======
 		load_and_save = !is_guest_key(parent.key)
 		load_path(parent.ckey)
 		if(load_and_save && !fexists(path))
 			try_savefile_type_migration()
 		unlock_content = !!parent.IsByondMember()
 		if(unlock_content)
-			max_save_slots = 8
->>>>>>> a95e2f0b3f8 (Preference support for Guests (#72332))
+			max_save_slots = 40 //SKYRAT EDIT - ORIGINAL 8
 	else
 		CRASH("attempted to create a preferences datum without a client or mock!")
 	load_savefile()
