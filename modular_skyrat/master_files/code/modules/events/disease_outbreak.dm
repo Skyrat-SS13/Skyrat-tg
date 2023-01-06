@@ -1,4 +1,4 @@
-//We pick 2 symptoms from a defined list (removing the really bad ones like deafness, blindness, spontaneous combustion etc.)
+//We pick 3 symptoms from a defined list (removing the really bad ones like deafness, blindness, spontaneous combustion etc.)
 /datum/round_event/disease_outbreak/advanced/start()
 	var/datum/round_event_control/disease_outbreak/advanced/disease_event = control
 	afflicted += disease_event.disease_candidates
@@ -8,7 +8,7 @@
 		max_symptoms = disease_event.chosen_max_symptoms
 		disease_event.chosen_max_symptoms = null
 	else
-		max_symptoms = 2 //Consistent symptoms taking into account severity
+		max_symptoms = 3 //Consistent symptoms taking into account severity
 
 	if(disease_event.chosen_severity)
 		max_severity = disease_event.chosen_severity
@@ -34,6 +34,7 @@
 	name = "Experimental Disease"
 	copy_type = /datum/disease/advance
 
+// Pick the symptoms of the generated virus.
 /datum/disease/advance/random/event/New(max_symptoms, max_level = 6)
 	if(!max_symptoms)
 		max_symptoms = rand(1, VIRUS_SYMPTOM_LIMIT)
@@ -57,8 +58,8 @@
 	for(var/i in 1 to max_symptoms)
 		var/datum/symptom/chosen_symptom = pick_n_take(possible_symptoms)
 		if(chosen_symptom)
-			var/datum/symptom/S = new chosen_symptom
-			symptoms += S
+			var/datum/symptom/new_symptom = new chosen_symptom
+			symptoms += new_symptom
 	Refresh()
 
 	name = "Sample #[rand(1,10000)]"
@@ -67,7 +68,6 @@
 /datum/disease/advance/random/event/AssignProperties()
 	visibility_flags &= ~HIDDEN_SCANNER
 	var/transmissibility = rand(3, 11)
-	message_admins("Transmissibility rolled a [transmissibility]")
 
 	if(properties?.len)
 		if(transmissibility >= 11)
@@ -100,3 +100,15 @@
 		if(DISEASE_SPREAD_AIRBORNE)
 			spread_flags = DISEASE_SPREAD_BLOOD | DISEASE_SPREAD_CONTACT_FLUIDS | DISEASE_SPREAD_CONTACT_SKIN | DISEASE_SPREAD_AIRBORNE
 			spread_text = "Airborne"
+
+// Select 1 of 5 groups of potential cures.
+/datum/disease/advance/random/event/GenerateCure()
+	if(properties?.len)
+		var/res = rand(1, 5)
+		if(res == oldres)
+			return
+		cures = list(pick(advance_cures[res]))
+		oldres = res
+		// Get the cure name from the cure_id
+		var/datum/reagent/cure = GLOB.chemical_reagents_list[cures[1]]
+		cure_text = cure.name
