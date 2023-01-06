@@ -1116,8 +1116,7 @@
 	if(!IS_ORGANIC_LIMB(old_limb))
 		cybernetics_level--
 		update_mood()
-<<<<<<< HEAD
-
+		
 /datum/quirk/mute
 	name = "Mute"
 	desc = "For some reason you are completely unable to speak."
@@ -1128,7 +1127,7 @@
 	lose_text = span_notice("You feel a growing strength in your vocal chords.")
 	medical_record_text = "The patient is unable to use their voice in any capacity."
 	hardcore_value = 4
-=======
+
 /datum/quirk/cursed
 	name = "Cursed"
 	desc = "You are cursed with bad luck. You are much more likely to suffer from accidents and mishaps. When it rains, it pours."
@@ -1142,4 +1141,3 @@
 
 /datum/quirk/cursed/add(client/client_source)
 	quirk_holder.AddComponent(/datum/component/omen/quirk)
->>>>>>> 97db4ecca46 (Adds the Cursed quirk  (#72317))
