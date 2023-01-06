@@ -116,3 +116,76 @@
 		return
 
 	qdel(src)
+<<<<<<< HEAD
+=======
+
+/// Severe deaths. Normally lifts the curse.
+/datum/component/omen/proc/check_death(mob/living/our_guy)
+	SIGNAL_HANDLER
+
+	qdel(src)
+
+/// Creates a localized explosion that shakes the camera
+/datum/component/omen/proc/death_explode(mob/living/our_guy)
+	explosion(our_guy, explosion_cause = src)
+
+	for(var/mob/witness in view(2, our_guy))
+		shake_camera(witness, 1 SECONDS, 2)
+
+/**
+ * The smite omen. Permanent.
+ */
+/datum/component/omen/smite
+
+/datum/component/omen/smite/Initialize(vessel, permanent)
+	. = ..()
+	src.permanent = permanent
+
+/datum/component/omen/smite/check_bless(mob/living/our_guy, category)
+	if(!permanent)
+		return ..()
+
+	return
+
+/datum/component/omen/smite/check_death(mob/living/our_guy)
+	if(!permanent)
+		return ..()
+
+	death_explode(our_guy)
+	our_guy.gib()
+
+/**
+ * The quirk omen. Permanent.
+ * Has only a 50% chance of bad things happening, and takes only 25% of normal damage.
+ */
+/datum/component/omen/quirk
+	permanent = TRUE
+	luck_mod = 0.5 // 50% chance of bad things happening
+	damage_mod = 0.25 // 25% of normal damage
+
+/datum/component/omen/quirk/RegisterWithParent()
+	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(check_accident))
+	RegisterSignal(parent, COMSIG_ON_CARBON_SLIP, PROC_REF(check_slip))
+	RegisterSignal(parent, COMSIG_LIVING_DEATH, PROC_REF(check_death))
+
+/datum/component/omen/quirk/UnregisterFromParent()
+	UnregisterSignal(parent, list(COMSIG_ON_CARBON_SLIP, COMSIG_MOVABLE_MOVED, COMSIG_LIVING_DEATH))
+
+/datum/component/omen/quirk/check_death(mob/living/our_guy)
+	if(!iscarbon(our_guy))
+		our_guy.gib()
+		return
+
+	// Don't explode if buckled to a stasis bed
+	if(our_guy.buckled)
+		var/obj/machinery/stasis/stasis_bed = our_guy.buckled
+		if(istype(stasis_bed))
+			return
+
+	death_explode(our_guy)
+	var/mob/living/carbon/player = our_guy
+	player.spread_bodyparts(skip_head = TRUE)
+	player.spawn_gibs()
+
+	return
+>>>>>>> 2a6c6b5df20 (Fixes a bad `as anything` in cursed quirk (#72485))
