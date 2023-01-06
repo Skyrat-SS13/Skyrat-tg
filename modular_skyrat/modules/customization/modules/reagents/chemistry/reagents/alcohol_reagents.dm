@@ -596,6 +596,15 @@
 	taste_description = "blood filled to the brim with nutrients of all kinds"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED | REAGENT_BLOOD_REGENERATING
 
+
+/datum/glass_style/drinking_glass/bloodshot
+	required_drink_type = /datum/reagent/consumable/ethanol/bloodshot
+	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	icon_state = "bloodshot"
+	name = "glass of bloodshot"
+	desc = "The history of the 'Bloodshot' is based in a mix of flavor-neutral chems devised to help deliver nutrients to a Hemophage's tumorous organs. Due to the expense of the real thing and the clinical nature of it, this liquor has been designed as a 'improvised' alternative; though, still tasting like a hangover cure. It smells like iron, giving a clue to the key ingredient."
+
+
 #define BLOODSHOT_DISGUST 25
 
 /datum/reagent/consumable/ethanol/bloodshot/expose_mob(mob/living/exposed_mob, methods, reac_volume)
