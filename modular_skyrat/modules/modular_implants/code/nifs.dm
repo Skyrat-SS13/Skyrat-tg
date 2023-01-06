@@ -5,6 +5,7 @@
 #define NIF_CALIBRATION_STAGE_FINISHED 1
 
 #define NIF_DURABILITY_LOSS_HALVED 2
+#define NIF_MINIMUM_DURABILITY 0
 
 // This is the original NIF that other NIFs are based on.
 /obj/item/organ/internal/cyberimp/brain/nif
@@ -330,6 +331,15 @@
 
 	return TRUE
 
+///Damages the parent NIF based off the damage_amount
+/obj/item/organ/internal/cyberimp/brain/nif/proc/damage_nif(damage_amount)
+	if(!damage_amount || NIF_MINIMUM_DURABILITY >= 0)
+		return FALSE
+
+	durability = max(durability - damage_amount, NIF_MINIMUM_DURABILITY)
+
+	return TRUE
+
 ///Sends a message to the owner of the NIF. Typically used for messages from the NIF itself or from NIFSofts.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/send_message(message_to_send, alert = FALSE)
 	var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
@@ -377,9 +387,9 @@
 
 	switch(severity)
 		if(1)
-			durability -= death_durability_loss
+			damage_nif(death_durability_loss)
 		if(2)
-			durability -= (death_durability_loss / NIF_DURABILITY_LOSS_HALVED)
+			damage_nif(death_durability_loss / NIF_DURABILITY_LOSS_HALVED)
 
 	for(var/datum/nifsoft/installed_nifsoft as anything in loaded_nifsofts)
 		installed_nifsoft.on_emp(severity)
@@ -416,7 +426,7 @@
 	if(!installed_nif)
 		return
 
-	installed_nif.durability -= installed_nif.death_durability_loss
+	installed_nif.damage_nif(installed_nif.death_durability_loss)
 	installed_nif.durability_loss_vulnerable = FALSE
 
 	addtimer(CALLBACK(installed_nif, /obj/item/organ/internal/cyberimp/brain/nif.proc/make_vulnerable), 20 MINUTES) //Players should have a decent grace period on this.
@@ -455,3 +465,4 @@
 #undef NIF_CALIBRATION_STAGE_2_END
 #undef NIF_CALIBRATION_STAGE_FINISHED
 #undef NIF_DURABILITY_LOSS_HALVED
+#undef NIF_MINIMUM_DURABILITY
