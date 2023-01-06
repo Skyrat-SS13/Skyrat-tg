@@ -42,7 +42,7 @@
 		return FALSE
 
 	//This is the code from the cargo scanner, but without the ability to scan and get tips from items.
-	var/datum/export_report/export = export_item_and_contents(examined_item, dry_run=TRUE)
+	var/datum/export_report/export = export_item_and_contents(examined_item, dry_run = TRUE)
 	var/price = 0
 	var/export_text
 

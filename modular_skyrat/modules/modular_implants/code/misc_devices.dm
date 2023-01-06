@@ -18,7 +18,7 @@
 		return
 
 	var/list/installed_nifsofts = target_nif.loaded_nifsofts
-	var/datum/nifsoft/nifsoft_to_remove = tgui_input_list(user, "Chose a NIFSoft to remove", "[src]", installed_nifsofts)
+	var/datum/nifsoft/nifsoft_to_remove = tgui_input_list(user, "Chose a NIFSoft to remove.", "[src]", installed_nifsofts)
 
 	if(!nifsoft_to_remove)
 		return FALSE
@@ -29,14 +29,14 @@
 		return FALSE
 
 	if(!target_nif.remove_nifsoft(nifsoft_to_remove))
-		balloon_alert(user, "removal Failed")
+		balloon_alert(user, "removal failed")
 		return FALSE
 
-	to_chat(user, span_notice("You successfully remove the [nifsoft_to_remove.name]"))
-	user.log_message("[user] removed [nifsoft_to_remove.name] from [target_mob]",LOG_GAME)
+	to_chat(user, span_notice("You successfully remove [nifsoft_to_remove]"))
+	user.log_message("removed [nifsoft_to_remove] from [target_mob]" ,LOG_GAME)
 
 	if(create_disk)
-		var/obj/item/disk/nifsoft_uploader/new_disk = new /obj/item/disk/nifsoft_uploader
+		var/obj/item/disk/nifsoft_uploader/new_disk = new
 		new_disk.loaded_nifsoft = nifsoft_to_remove.type
 		new_disk.name = "[nifsoft_to_remove] datadisk"
 
@@ -49,7 +49,7 @@
 /obj/item/nifsoft_remover/syndie
 	name = "Cybersun 'Scalpel' NIF-Cutter"
 	desc = "A modified version of a NIFSoft remover that allows the user to remove a NIFSoft and have a blank copy of the removed NIFSoft saved to a disk."
-	special_desc = "In the upper echelons of the Corporate world, Nanite Implant Frameworks are everywhere. Valuable targets will almost always be in constant NIF communication with at least one or two points of contact in the event of an emergency. To bypass this unfortunate conundrum, Cybersun Industries invented the 'Scalpel' NIF-Cutter. A device no larger than a PDA, this gift to the field of neurological theft is capable of extracting specific programs from a target in five seconds or less. On top of that, high-grade programming allows for the tool to copy the specific 'soft to a disk for the wielder's own use."
+	special_desc = "In the upper echelons of the corporate world, Nanite Implant Frameworks are everywhere. Valuable targets will almost always be in constant NIF communication with at least one or two points of contact in the event of an emergency. To bypass this unfortunate conundrum, Cybersun Industries invented the 'Scalpel' NIF-Cutter. A device no larger than a PDA, this gift to the field of neurological theft is capable of extracting specific programs from a target in five seconds or less. On top of that, high-grade programming allows for the tool to copy the specific 'soft to a disk for the wielder's own use."
 	icon_state = "nifsoft_remover_syndie"
 	create_disk = TRUE
 

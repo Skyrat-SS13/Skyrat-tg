@@ -6,7 +6,7 @@
 
 #define NIF_DURABILITY_LOSS_HALVED 2
 
-/// This is the original NIF that other NIFs are based on.
+// This is the original NIF that other NIFs are based on.
 /obj/item/organ/internal/cyberimp/brain/nif
 	name = "Nanite Implant Framework"
 	desc = "A brain implant that infuses the user with nanites." //Coder-lore. Change this later
@@ -88,7 +88,7 @@
 	///What programs come already installed on the NIF?
 	var/list/preinstalled_nifsofts = list()
 	///This shows up in the NIF settings screen as a way to ICly display lore.
-	var/manufacturer_notes = "There is no data currently avalible for this product"
+	var/manufacturer_notes = "There is no data currently avalible for this product."
 
 	//Appearance Variables
 	///This is the sound that plays when doing most things!
@@ -125,7 +125,7 @@
 	. = ..()
 
 	if(linked_mob && stored_ckey != insertee.ckey && theft_protection)
-		insertee.audible_message(span_warning("The [src] lets out a negative buzz before forcefully removing itself from [insertee]'s brain."))
+		insertee.audible_message(span_warning("[src] lets out a negative buzz before forcefully removing itself from [insertee]'s brain."))
 		playsound(insertee, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
 		Remove(insertee)
 		forceMove(get_turf(insertee))
@@ -147,7 +147,7 @@
 /obj/item/organ/internal/cyberimp/brain/nif/Remove(mob/living/carbon/organ_owner, special = FALSE)
 	. = ..()
 
-	organ_owner.log_message("[src] was removed from [organ_owner]]",LOG_GAME)
+	organ_owner.log_message("'s [src] was removed from [organ_owner]", LOG_GAME)
 	STOP_PROCESSING(SSobj, src)
 
 	var/found_component = organ_owner.GetComponent(/datum/component/nif_examine)
@@ -293,18 +293,18 @@
 
 	for(var/datum/nifsoft/current_nifsoft as anything in loaded_nifsofts)
 		if(loaded_nifsoft.single_install && (loaded_nifsoft.type == current_nifsoft.type))
-			send_message("Multiple of [loaded_nifsoft] cannot be installed", TRUE)
+			send_message("Multiple of [loaded_nifsoft] cannot be installed.", TRUE)
 			return FALSE
 
 		if(current_nifsoft.type in loaded_nifsoft.mutually_exclusive_programs)
-			send_message("[current_nifsoft] is preventing [loaded_nifsoft] from being installed", TRUE)
+			send_message("[current_nifsoft] is preventing [loaded_nifsoft] from being installed.", TRUE)
 			return FALSE
 
 	loaded_nifsofts += loaded_nifsoft
 	loaded_nifsoft.parent_nif = src
 	loaded_nifsoft.linked_mob = linked_mob
 
-	send_message("[loaded_nifsoft] has been added")
+	send_message("[loaded_nifsoft] has been added.")
 	update_static_data_for_all_viewers()
 	return TRUE
 
@@ -384,7 +384,7 @@
 	for(var/datum/nifsoft/installed_nifsoft as anything in loaded_nifsofts)
 		installed_nifsoft.on_emp(severity)
 
-	send_message("<b>ELECTROMAGNETIC INTERFERENCE DETECTED</b>", TRUE)
+	send_message("<b>ELECTROMAGNETIC INTERFERENCE DETECTED.</b>", TRUE)
 
 /datum/component/nif_examine
 	///What text is shown when examining someone with NIF Examine text?
@@ -398,8 +398,8 @@
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/add_examine)
 
 /datum/component/nif_examine/Destroy(force, silent)
-	. = ..()
 	UnregisterSignal(parent, COMSIG_MOB_EXAMINATE)
+	return ..()
 
 
 ///Adds and examine based on the nif_examine_text of the nif_user
