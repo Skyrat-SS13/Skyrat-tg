@@ -58,15 +58,15 @@
 
 //Service
 /area/station/hallway/primary/flotilla/service/upper/fore
-	name = "\improper Service Upper Hallway Fore"
+	name = "\improper Service Mezzanine Fore"
 	icon_state = "primaryhall"
 
 /area/station/hallway/primary/flotilla/service/upper/aft
-	name = "\improper Service Upper Hallway Aft"
+	name = "\improper Service Mezzanine Aft"
 	icon_state = "primaryhall"
 
 /area/station/hallway/primary/flotilla/service/wing
-	name = "\improper Service Starboard Wing"
+	name = "\improper Service Subdeck Starboard Wing"
 	icon_state = "primaryhall"
 
 /area/station/hallway/primary/flotilla/service/lower
