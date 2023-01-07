@@ -305,6 +305,7 @@
 /obj/item/food/deadmouse/afterattack(obj/target, mob/living/user, proximity_flag)
 	. = ..()
 	if(proximity_flag && reagents && target.is_open_container())
+		. |= AFTERATTACK_PROCESSED_ITEM
 		// is_open_container will not return truthy if target.reagents doesn't exist
 		var/datum/reagents/target_reagents = target.reagents
 		var/trans_amount = reagents.maximum_volume - reagents.total_volume * (4 / 3)
@@ -312,7 +313,7 @@
 			to_chat(user, span_notice("You dip [src] into [target]."))
 		else
 			to_chat(user, span_warning("That's a terrible idea."))
-		return
+		return .
 
 /obj/item/food/deadmouse/moldy
 	name = "moldy dead mouse"
@@ -358,6 +359,7 @@
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/pet_planning,
 		/datum/ai_planning_subtree/simple_find_target,
+		/datum/ai_planning_subtree/attack_obstacle_in_path/rat,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree/rat,
 		/datum/ai_planning_subtree/find_and_hunt_target/look_for_cheese,
 		/datum/ai_planning_subtree/random_speech/mouse,
@@ -368,4 +370,10 @@
 	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/rat
 
 /datum/ai_behavior/basic_melee_attack/rat
+	action_cooldown = 2 SECONDS
+
+/datum/ai_planning_subtree/attack_obstacle_in_path/rat
+	attack_behaviour = /datum/ai_behavior/attack_obstructions/rat
+
+/datum/ai_behavior/attack_obstructions/rat
 	action_cooldown = 2 SECONDS
