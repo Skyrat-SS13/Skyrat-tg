@@ -91,7 +91,7 @@
 	reqs = list(
 		/obj/item/food/grown/muli = 1,
 		/obj/item/food/meat/cutlet = 1,
-		/obj/item/food/grown/kiri = 1,,
+		/obj/item/food/grown/kiri = 1,
 		/obj/item/food/grown/chili = 1,
 		/datum/reagent/consumable/nakati_spice = 2,
 	)
