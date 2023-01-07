@@ -607,3 +607,12 @@
 	name = "Starry Witch Hat"
 	item_path = /obj/item/clothing/head/costume/strigihat
 	ckeywhitelist = list("somerandomowl")
+
+
+/datum/loadout_item/suit/razurathhat
+	name = "Golden Nanotrasen Officer Cap"
+	item_path = /obj/item/clothing/head/razurathhat
+
+/datum/loadout_item/suit/razurathcoat
+	name = "Golden Nanotrasen Officer Coat"
+	item_path = /obj/item/clothing/suit/razurathcoat
