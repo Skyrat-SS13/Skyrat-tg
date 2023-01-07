@@ -7,6 +7,7 @@
 /turf/open/lava
 	name = "lava"
 	icon_state = "lava"
+	desc = "Looks painful to step in. Don't mine down."
 	gender = PLURAL //"That's some lava."
 	baseturfs = /turf/open/lava //lava all the way down
 	slowdown = 2
@@ -253,8 +254,8 @@
 	icon_state = "lava-255"
 	base_icon_state = "lava"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
-	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_FLOOR_LAVA)
-	canSmoothWith = list(SMOOTH_GROUP_FLOOR_LAVA)
+	smoothing_groups = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_FLOOR_LAVA
+	canSmoothWith = SMOOTH_GROUP_FLOOR_LAVA
 	underfloor_accessibility = 2 //This avoids strangeness when routing pipes / wires along catwalks over lava
 
 /turf/open/lava/smooth/lava_land_surface
