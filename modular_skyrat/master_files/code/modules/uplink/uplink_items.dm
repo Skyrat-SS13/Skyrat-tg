@@ -13,6 +13,7 @@
 	item = /obj/item/gun/ballistic/automatic/pistol/aps
 	cost = 10
 	progression_minimum = 30 MINUTES
+	surplus = 50
 
 /datum/uplink_item/dangerous/foamsmg_traitor
 	name = "Toy Submachine Gun"
@@ -43,6 +44,7 @@
 	cost = 12
 	progression_minimum = 35 MINUTES
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
+	surplus = 5
 
 /datum/uplink_item/dangerous/shotgun_traitor
 	name = "Bulldog Shotgun"
@@ -52,6 +54,7 @@
 	cost = 12
 	progression_minimum = 35 MINUTES
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
+	surplus = 50
 
 /datum/uplink_item/dangerous/shield_traitor
 	name = "Energy Shield"
@@ -104,6 +107,7 @@
 	item = /obj/item/radio/headset/chameleon/advanced
 	cost = 4 // Also a BIGBOY tool. Though inconvienent to wield, this allows the wearer to spy and interact with any one frequency they desire, even without the proper encryption key, along with flashbang protection and loudmode. Cannot breach syndiecomms by itself.
 	progression_minimum = 20 MINUTES
+	surplus = 50
 
 /datum/uplink_item/stealthy_tools/syndieshotglasses
 	name = "Extra Large Syndicate Shotglasses"
@@ -333,6 +337,7 @@
 	cost = 15 // If used correctly, You actually get several servants or just get fucked over because no ghosts want to be a shade.
 	restricted_roles = list(JOB_CHAPLAIN)
 	progression_minimum = 20 MINUTES
+	surplus = 0
 
 // LOADOUTS
 /datum/uplink_item/bundles_tc/recon
@@ -441,38 +446,8 @@
 	progression_minimum = 25 MINUTES
 
 // Surplus crates
-/datum/uplink_item/bundles_tc/surplus_crate
-	name = "Surplus Crate"
-	desc = "A dusty crate from the back of the Syndicate warehouse. Rumored to contain a valuable assortment of items, \
-			but you never know. Contents are sorted to always be worth 50 TC."
-	item = /obj/effect/gibspawner/generic
-	cost = 20
-	/// The contents of the surplus crate will be equal to this var in TC
-	var/telecrystal_count = 50
+/datum/uplink_item/bundles_tc/surplus
+	crate_tc_value = 50
 
-/datum/uplink_item/bundles_tc/surplus_crate/spawn_item(spawn_path, mob/user, datum/uplink_handler/uplink_handler, atom/movable/source)
-	telecrystal_count = initial(telecrystal_count)
-	var/list/uplink_items = list()
-	var/obj/structure/closet/crate/holder_crate = new(get_turf(user))
-	for(var/datum/uplink_item/item_path as anything in SStraitor.uplink_items_by_type)
-		var/datum/uplink_item/item = SStraitor.uplink_items_by_type[item_path]
-		if(item.purchasable_from & UPLINK_TRAITORS)
-			uplink_items += item
-
-	while(telecrystal_count)
-		var/datum/uplink_item/uplink_item = pick(uplink_items)
-		if(!uplink_item.surplus || prob(100 - uplink_item.surplus))
-			continue
-		if(telecrystal_count < uplink_item.cost)
-			continue
-		if(!uplink_item.item)
-			continue
-		telecrystal_count -= uplink_item.cost
-		new uplink_item.item(holder_crate)
-
-/datum/uplink_item/bundles_tc/surplus_crate/super
-	name = "Super Surplus Crate"
-	desc = "A dusty SUPER-SIZED crate from the back of the Syndicate warehouse. Rumored to contain a valuable assortment of items, \
-			but you never know. Contents are sorted to always be worth 125 TC."
-	telecrystal_count = 125
-	cost = 40
+/datum/uplink_item/bundles_tc/surplus/united
+	crate_tc_value = 125
