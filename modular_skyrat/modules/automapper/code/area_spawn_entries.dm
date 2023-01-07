@@ -35,11 +35,6 @@
 	desired_atom = /obj/machinery/ammo_workbench
 	mode = AREA_SPAWN_MODE_HUG_WALL
 
-/datum/area_spawn/gun_vendor
-	target_areas = list(/area/station/security/lockers, /area/station/security/office)
-	desired_atom = /obj/machinery/gun_vendor
-	mode = AREA_SPAWN_MODE_HUG_WALL
-
 /datum/area_spawn/lustwish_public
 	target_areas = list(/area/station/commons/locker, /area/station/commons/dorms/laundry, /area/station/commons/dorms)
 	desired_atom = /obj/machinery/vending/dorms
