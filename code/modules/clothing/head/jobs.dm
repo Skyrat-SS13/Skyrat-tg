@@ -99,13 +99,15 @@
 	inhand_icon_state = "det_hat"
 	var/candy_cooldown = 0
 	dog_fashion = /datum/dog_fashion/head/detective
+	///Path for the flask that spawns inside their hat roundstart
+	var/flask_path = /obj/item/reagent_containers/cup/glass/flask/det
 
 /obj/item/clothing/head/fedora/det_hat/Initialize(mapload)
 	. = ..()
 
 	create_storage(type = /datum/storage/pockets/small/fedora/detective)
 
-	new /obj/item/reagent_containers/cup/glass/flask/det(src)
+	new flask_path(src)
 
 /obj/item/clothing/head/fedora/det_hat/examine(mob/user)
 	. = ..()
@@ -122,6 +124,9 @@
 		candy_cooldown = world.time+1200
 	else
 		to_chat(user, span_warning("You just took a candy corn! You should wait a couple minutes, lest you burn through your stash."))
+
+/obj/item/clothing/head/fedora/det_hat/minor
+	flask_path = /obj/item/reagent_containers/cup/glass/flask/det/minor
 
 //Mime
 /obj/item/clothing/head/beret
@@ -146,7 +151,7 @@
 	name = "syndicate cap"
 	desc = "A black cap fit for a high ranking syndicate officer."
 
-/obj/item/clothing/head/hos/beret
+/obj/item/clothing/head/hats/hos/beret
 	name = "head of security's beret"
 	desc = "A robust beret for the Head of Security, for looking stylish while not sacrificing protection."
 	icon_state = "beret_badge"
@@ -155,12 +160,12 @@
 	greyscale_colors = "#39393f#FFCE5B"
 	current_skin = "beret_badge"	//SKYRAT EDIT ADDITION - prevents reskinning the hat; (RESKINNING NEEDS A CODE REWRITE SO IT STOPS SPREADING TO SUBTYPES OR CAN AT LEAST BE SET TO FALSE)
 
-/obj/item/clothing/head/hos/beret/navyhos
+/obj/item/clothing/head/hats/hos/beret/navyhos
 	name = "head of security's formal beret"
 	desc = "A special beret with the Head of Security's insignia emblazoned on it. A symbol of excellence, a badge of courage, a mark of distinction."
 	greyscale_colors = "#3C485A#FFCE5B"
 
-/obj/item/clothing/head/hos/beret/syndicate
+/obj/item/clothing/head/hats/hos/beret/syndicate
 	name = "syndicate beret"
 	desc = "A black beret with thick armor padding inside. Stylish and robust."
 

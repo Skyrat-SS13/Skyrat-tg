@@ -8,12 +8,8 @@
 
 /obj/item/reagent_containers/cup/soda_cans
 	name = "soda can"
-<<<<<<< HEAD
-	icon = 'icons/obj/drinks.dmi'
-=======
 	icon = 'icons/obj/drinks/soda.dmi'
 	icon_state_preview = "cola"
->>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 	reagent_flags = NONE
 	spillable = FALSE
 	custom_price = PAYCHECK_CREW * 0.9

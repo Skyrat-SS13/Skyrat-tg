@@ -54,6 +54,7 @@
 	. = ..()
 	if(!proximity)
 		return
+	. |= AFTERATTACK_PROCESSED_ITEM
 	if(HAS_TRAIT(src, TRAIT_WIELDED))
 		if(charged)
 			charged = FALSE
@@ -64,6 +65,7 @@
 			var/turf/target = get_turf(A)
 			vortex(target,user)
 			addtimer(CALLBACK(src, PROC_REF(recharge)), 100)
+	return .
 
 /obj/item/mjollnir
 	name = "Mjolnir"

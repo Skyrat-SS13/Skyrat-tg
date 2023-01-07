@@ -250,7 +250,7 @@
 /obj/item/storage/backpack/bannerpack
 	name = "\improper Nanotrasen banner backpack"
 	desc = "It's a backpack with lots of extra room.  A banner with Nanotrasen's logo is attached, that can't be removed."
-	icon_state = "bannerpack"
+	icon_state = "backpack-banner"
 
 /obj/item/storage/backpack/bannerpack/Initialize(mapload)
 	. = ..()
@@ -259,18 +259,19 @@
 /obj/item/storage/backpack/bannerpack/red
 	name = "red banner backpack"
 	desc = "It's a backpack with lots of extra room.  A red banner is attached, that can't be removed."
-	icon_state = "bannerpack-red"
+	icon_state = "backpack-banner_red"
 
 /obj/item/storage/backpack/bannerpack/blue
 	name = "blue banner backpack"
 	desc = "It's a backpack with lots of extra room.  A blue banner is attached, that can't be removed."
-	icon_state = "bannerpack-blue"
+	icon_state = "backpack-banner_blue"
 
 //this is all part of one item set
 
 /obj/item/clothing/head/helmet/plate/crusader
 	name = "Crusader's Hood"
 	desc = "A brownish hood."
+	icon = 'icons/obj/clothing/head/chaplain.dmi'
 	icon_state = "crusader"
 	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_NORMAL
@@ -319,6 +320,7 @@
 	. = ..()
 	if(staffcooldown + staffwait > world.time)
 		return
+	. |= AFTERATTACK_PROCESSED_ITEM
 	user.visible_message(span_notice("[user] chants deeply and waves [user.p_their()] staff!"))
 	if(do_after(user, 2 SECONDS, src))
 		target.add_atom_colour(conversion_color, WASHABLE_COLOUR_PRIORITY) //wololo
