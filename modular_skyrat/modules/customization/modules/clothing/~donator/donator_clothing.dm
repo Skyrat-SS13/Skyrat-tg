@@ -1400,6 +1400,6 @@
 	desc = "A fancy Nanotrasen officer coat. Now darker, golder, and cooler than ever!"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
-	icon_state = "razurath_hat"
+	icon_state = "razurath_coat"
 
 
