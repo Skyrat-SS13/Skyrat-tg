@@ -454,15 +454,5 @@
 	if(draw_layer != bitflag_to_layer(color_swapped_layer))
 		return ..()
 
-<<<<<<< HEAD
-/obj/item/organ/external/pod_hair/override_color(rgb_value)
-	// SKYRAT EDIT START - I hate non-sensical errors sometimes.
-	if(!findtext(rgb_value, "#", 1, 2))
-		rgb_value = "#[rgb_value]"
-	// SKYRAT EDIT END
-	var/list/rgb_list = rgb2num(rgb_value)
-	return rgb(255 - rgb_list[1], 255 - rgb_list[2], 255 - rgb_list[3])
-=======
 	var/list/rgb_list = rgb2num(draw_color)
 	return rgb(color_inverse_base - rgb_list[1], color_inverse_base - rgb_list[2], color_inverse_base - rgb_list[3])
->>>>>>> 2130cf589a3 (Fixes podperson hair colors, adds individual layer colors (#71683))
