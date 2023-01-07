@@ -1,11 +1,6 @@
 /datum/crafting_recipe/food
 	var/real_parts
-<<<<<<< HEAD
-	category = CAT_FOOD
-	time = 5 // Skyrat Change, default crafting time is 30 deciseconds, food is crafted much more often and in large numbers.
-=======
 	var/total_nutriment_factor
->>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/crafting_recipe/food/on_craft_completion(mob/user, atom/result)
 	ADD_TRAIT(result, TRAIT_FOOD_CHEF_MADE, REF(user))

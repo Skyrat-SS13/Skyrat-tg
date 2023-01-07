@@ -176,10 +176,8 @@
 	taste_description = "water"
 	var/cooling_temperature = 2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_CLEANS
-<<<<<<< HEAD
-	evaporates = TRUE //SKYRAT EDIT ADDITION
-=======
 	default_container = /obj/item/reagent_containers/cup/glass/waterbottle
+	evaporates = TRUE //SKYRAT EDIT ADDITION
 
 /datum/glass_style/shot_glass/water
 	required_drink_type = /datum/reagent/water
@@ -190,7 +188,6 @@
 	name = "glass of water"
 	desc = "The father of all refreshments."
 	icon_state = "glass_clear"
->>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /datum/glass_style/shot_glass/water
 	required_drink_type = /datum/reagent/water

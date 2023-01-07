@@ -17,50 +17,7 @@
 
 /datum/component/personal_crafting
 	var/busy
-<<<<<<< HEAD
-	var/viewing_category = 1 //typical powergamer starting on the Weapons tab
-	var/viewing_subcategory = 1
-	var/list/categories = list(
-				CAT_WEAPONRY = list(
-					CAT_WEAPON,
-					CAT_AMMO,
-				),
-				CAT_ROBOT = CAT_NONE,
-				CAT_MISC = CAT_NONE,
-				CAT_PRIMAL = CAT_NONE,
-				CAT_FOOD = list(
-					CAT_BREAD,
-					CAT_BURGER,
-					CAT_CAKE,
-					CAT_EGG,
-					CAT_LIZARD,
-					CAT_ICE,
-					CAT_MEAT,
-					CAT_SEAFOOD,
-					CAT_MISCFOOD,
-					CAT_MOTH,
-					CAT_PASTRY,
-					CAT_PIE,
-					CAT_PIZZA,
-					CAT_SALAD,
-					CAT_SANDWICH,
-					CAT_SOUP,
-					CAT_SPAGHETTI,
-		// SKYRAT ADDITION BEGIN - Teshari food category
-					CAT_TESHARI,
-		// SKYRAT ADDITION END
-				),
-				CAT_DRINK = CAT_NONE,
-				CAT_CLOTHING = CAT_NONE,
-				CAT_ATMOSPHERIC = CAT_NONE,
-				CAT_STRUCTURE = CAT_NONE,
-			)
-
-	var/cur_category = CAT_NONE
-	var/cur_subcategory = CAT_NONE
-=======
 	var/mode = CRAFTING
->>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 	var/display_craftable_only = FALSE
 	var/display_compact = FALSE
 

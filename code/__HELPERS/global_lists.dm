@@ -75,13 +75,9 @@
 
 	GLOB.emote_list = init_emote_list()
 
-<<<<<<< HEAD
 	make_skyrat_datum_references() //SKYRAT EDIT ADDITION - CUSTOMIZATION
-	init_crafting_recipes(GLOB.crafting_recipes)
-=======
 	init_crafting_recipes()
 	init_crafting_recipes_atoms()
->>>>>>> 0818d6ae4c7 (Crafting/Cooking menu update (#71779))
 
 /// Inits crafting recipe lists
 /proc/init_crafting_recipes(list/crafting_recipes)
