@@ -139,7 +139,7 @@
 	. = ..()
 	if(!.)
 		return
-	RegisterSignal(mod.wearer, COMSIG_CARBON_HEALTH_UPDATE, PROC_REF(on_use))
+	RegisterSignal(mod.wearer, COMSIG_LIVING_HEALTH_UPDATE, PROC_REF(on_use))
 	drain_power(use_power_cost)
 
 ///	Heals damage (in fact, injects chems) based on the damage received and certain other variables (a single one), i.e. having more than X amount of health, not having enough needed chemicals or so on.
@@ -219,7 +219,7 @@
 
 /obj/item/mod/module/auto_doc/on_deactivation(display_message = TRUE, deleting = FALSE)
 	. = ..()
-	UnregisterSignal(mod.wearer, COMSIG_CARBON_HEALTH_UPDATE)
+	UnregisterSignal(mod.wearer, COMSIG_LIVING_HEALTH_UPDATE)
 
 /obj/item/mod/module/auto_doc/on_install()
 	RegisterSignal(mod, COMSIG_PARENT_ATTACKBY, PROC_REF(on_attackby))
