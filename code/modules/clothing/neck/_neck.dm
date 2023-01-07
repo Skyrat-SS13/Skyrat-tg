@@ -355,11 +355,8 @@
 			new /obj/item/holochip(get_turf(user),true_price)
 	else
 		to_chat(user, span_warning("There is no export value for [I] or any items within it."))
-
-<<<<<<< HEAD
-=======
+		
 	return .
->>>>>>> f54dcda1c0e (afterattack now returns a flag if it's reasonable to suspect the user intends to act on an item (#72320))
 
 /obj/item/clothing/neck/beads
 	name = "plastic bead necklace"
