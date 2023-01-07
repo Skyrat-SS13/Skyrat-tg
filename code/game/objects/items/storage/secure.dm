@@ -36,14 +36,9 @@
 	if(can_hack_open)
 		. += "The service panel is currently <b>[panel_open ? "unscrewed" : "screwed shut"]</b>."
 
-/obj/item/storage/secure/update_icon()
-	..()
-	if(!atom_storage)
-		return
-	if(atom_storage.locked)
-		icon_state = "[initial(icon_state)]_locked"
-	else
-		icon_state = "[initial(icon_state)]"
+/obj/item/storage/secure/update_icon_state()
+	. = ..()
+	icon_state = "[initial(icon_state)][atom_storage?.locked ? "_locked" : null]"
 
 /obj/item/storage/secure/tool_act(mob/living/user, obj/item/tool)
 	if(can_hack_open && atom_storage.locked)
@@ -157,6 +152,18 @@
 	..()
 	for(var/iterator in 1 to 5)
 		new /obj/item/stack/spacecash/c1000(src)
+
+/// A briefcase that contains various sought-after spoils
+/obj/item/storage/secure/briefcase/riches
+
+/obj/item/storage/secure/briefcase/riches/PopulateContents()
+	new /obj/item/clothing/suit/armor/vest(src)
+	new /obj/item/gun/ballistic/automatic/pistol(src)
+	new /obj/item/suppressor(src)
+	new /obj/item/melee/baton/telescopic(src)
+	new /obj/item/clothing/mask/balaclava(src)
+	new /obj/item/bodybag(src)
+	new /obj/item/soap/nanotrasen(src)
 
 ///Secure Safe
 /obj/item/storage/secure/safe
