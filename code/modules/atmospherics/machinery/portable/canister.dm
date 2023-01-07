@@ -38,7 +38,7 @@ GLOBAL_LIST_INIT(gas_id_to_canister, init_gas_id_to_canister())
 	greyscale_colors = "#ffff00#000000"
 	density = TRUE
 	volume = 2000
-	armor_type = /datum/armor/portable_atmospherics_canister
+	armor = list(MELEE = 50, BULLET = 50, LASER = 50, ENERGY = 100, BOMB = 10, BIO = 0, FIRE = 80, ACID = 50)
 	max_integrity = 300
 	integrity_failure = 0.4
 	pressure_resistance = 7 * ONE_ATMOSPHERE
@@ -91,15 +91,6 @@ GLOBAL_LIST_INIT(gas_id_to_canister, init_gas_id_to_canister())
 
 	///used while processing to update appearance only when its pressure state changes
 	var/current_pressure_state
-
-/datum/armor/portable_atmospherics_canister
-	melee = 50
-	bullet = 50
-	laser = 50
-	energy = 100
-	bomb = 10
-	fire = 80
-	acid = 50
 
 /obj/machinery/portable_atmospherics/canister/Initialize(mapload, datum/gas_mixture/existing_mixture)
 	. = ..()
