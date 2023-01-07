@@ -1,6 +1,6 @@
 // This is for all the berets that /tg/ didn't want. You're welcome, they should look better.
 
-/obj/item/clothing/head/hos/beret
+/obj/item/clothing/head/hats/hos/beret
 	name = "head of security beret"
 	desc = "A robust beret for the Head of Security, for looking stylish while not sacrificing protection."
 	icon_state = "beret_badge"
@@ -8,7 +8,7 @@
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	greyscale_colors = "#3F3C40#FFCE5B"
 
-/obj/item/clothing/head/hos/beret/syndicate
+/obj/item/clothing/head/hats/hos/beret/syndicate
 	name = "syndicate beret"
 	desc = "A black beret with thick armor padding inside. Stylish and robust."
 	greyscale_colors = "#3F3C40#DB2929"
