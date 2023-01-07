@@ -129,7 +129,9 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		var/datum/bank_account/paying_for_this
 
 		//department orders EARN money for cargo, not the other way around
+		//Skyrat Edit Add
 		if(!spawning_order.department_destination && spawning_order.charge_on_purchase)
+		//Skyrat Edit End
 			if(spawning_order.paying_account) //Someone paid out of pocket
 				paying_for_this = spawning_order.paying_account
 				var/list/current_buyer_orders = goodies_by_buyer[spawning_order.paying_account] // so we can access the length a few lines down
@@ -147,8 +149,9 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 					if(spawning_order.paying_account)
 						paying_for_this.bank_card_talk("Cargo order #[spawning_order.id] rejected due to lack of funds. Credits required: [price]")
 					continue
-
-		if(spawning_order.paying_account)
+		//Skyrat Edit Add
+		if(spawning_order.paying_account && spawning_order.charge_on_purchase)
+		//Skyrat Edit End
 			paying_for_this = spawning_order.paying_account
 			if(spawning_order.pack.goody)
 				LAZYADD(goodies_by_buyer[spawning_order.paying_account], spawning_order)
@@ -256,10 +259,6 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 
 	for(var/area/shuttle/shuttle_area as anything in shuttle_areas)
 		for(var/atom/movable/AM in shuttle_area)
-			//SKYRAT EDIT ADDITION - cant sell stuff in the cockpit, even if its out of order (dont sell out of my emergency locker...)
-			if(istype(shuttle_area, /area/shuttle/supply/cockpit))
-				continue
-			//SKYRAT EDIT ADDITION END
 			if(iscameramob(AM))
 				continue
 			if(AM.anchored)
