@@ -197,22 +197,15 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		. = ..() //If path == type this will return us, don't bank on making a new type
 		if (!.) // changeturf failed or didn't do anything
 			return
-<<<<<<< HEAD
-		var/turf/open/newTurf = .
+		var/turf/open/new_turf = .
 		//SKYRAT EDIT ADDITION
 		if(stashed_pollution)
-			newTurf.pollution = stashed_pollution
+			new_turf.pollution = stashed_pollution
 			stashed_pollution.handle_overlay()
 		//SKYRAT EDIT END
-		newTurf.air.copy_from(stashed_air)
-		newTurf.excited = stashed_state
-		newTurf.excited_group = stashed_group
-=======
-		var/turf/open/new_turf = .
 		new_turf.air.copy_from(stashed_air)
 		new_turf.excited = stashed_state
 		new_turf.excited_group = stashed_group
->>>>>>> 037905d1463 (Allows you to place plating adjacent to already existing plating (and some code improvement) (#72209))
 		#ifdef VISUALIZE_ACTIVE_TURFS
 		if(stashed_state)
 			new_turf.add_atom_colour(COLOR_VIBRANT_LIME, TEMPORARY_COLOUR_PRIORITY)
