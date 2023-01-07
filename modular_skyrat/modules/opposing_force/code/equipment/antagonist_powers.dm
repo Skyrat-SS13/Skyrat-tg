@@ -43,7 +43,7 @@
 	admin_note = "Heretic antag granter."
 
 // Contractor
-/datum/opposing_force_equipment/loadout/contractor
+/datum/opposing_force_equipment/antagonist_powers/contractor
 	name = "Contractor Bundle"
 	item_type = /obj/item/storage/box/syndicate/contract_kit
 	description = "A box containing everything you need to take contracts from the Syndicate. Kidnap people and drop them off at specified locations for rewards in the form of Telecrystals (Usable in the provided uplink) and Contractor Points."
