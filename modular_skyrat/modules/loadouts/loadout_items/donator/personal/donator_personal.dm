@@ -583,7 +583,7 @@
 	item_path = /obj/item/clothing/neck/flower_collar
 	ckeywhitelist = list("thedragmeme")
 
-/datum/loadout_item/suit/goldenkimono
+/datum/loadout_item/under/jumpsuit/goldenkimono
 	name = "Short-Sleeved Kimono"
 	item_path = /obj/item/clothing/under/costume/skyrat/kimono/sigmar
 	ckeywhitelist = list("sigmaralkahest")
@@ -593,3 +593,27 @@
 	item_path = /obj/item/clothing/suit/hooded/sigmarcoat
 	ckeywhitelist = list("sigmaralkahest")
 
+/datum/loadout_item/toys/plushy_syntax1112
+	name = "Lop Bunny Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_syntax1112
+	ckeywhitelist = list("syntax1112")
+
+/datum/loadout_item/gloves/hypnoring_nuke
+	name = "Suspiciously Glossy Ring"
+	item_path = /obj/item/clothing/gloves/ring/hypno/nuke
+	ckeywhitelist = list("sonicgotnuked")
+
+/datum/loadout_item/head/somerandomowl
+	name = "Starry Witch Hat"
+	item_path = /obj/item/clothing/head/costume/strigihat
+	ckeywhitelist = list("somerandomowl")
+
+/datum/loadout_item/head/razurathhat
+	name = "Golden Nanotrasen Officer Cap"
+	item_path = /obj/item/clothing/head/razurathhat
+	ckeywhitelist = list("razurath")
+
+/datum/loadout_item/suit/razurathcoat
+	name = "Golden Nanotrasen Officer Coat"
+	item_path = /obj/item/clothing/suit/razurathcoat
+	ckeywhitelist = list("razurath")

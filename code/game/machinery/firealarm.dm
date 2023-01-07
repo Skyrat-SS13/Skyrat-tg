@@ -24,7 +24,7 @@
 	resistance_flags = FIRE_PROOF
 
 	light_power = 0
-	light_range = 7
+	light_range = 3
 	light_color = COLOR_VIVID_RED
 
 	//Trick to get the glowing overlay visible from a distance
@@ -42,7 +42,7 @@
 	. = ..()
 	if(building)
 		buildstage = 0
-		panel_open = TRUE
+		set_panel_open(TRUE)
 	if(name == initial(name))
 		name = "[get_area_name(src)] [initial(name)]"
 	update_appearance()
@@ -107,7 +107,7 @@
 /obj/machinery/firealarm/update_appearance(updates)
 	. = ..()
 	if((my_area?.fire || LAZYLEN(my_area?.active_firelocks)) && !(obj_flags & EMAGGED) && !(machine_stat & (BROKEN|NOPOWER)))
-		set_light(l_power = 0.8)
+		set_light(l_power = 2)
 	else
 		set_light(l_power = 0)
 
@@ -256,7 +256,7 @@
 
 	if(tool.tool_behaviour == TOOL_SCREWDRIVER && buildstage == 2)
 		tool.play_tool_sound(src)
-		panel_open = !panel_open
+		toggle_panel_open()
 		to_chat(user, span_notice("The wires have been [panel_open ? "exposed" : "unexposed"]."))
 		update_appearance()
 		return
