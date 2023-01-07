@@ -26,6 +26,10 @@ GLOBAL_LIST_INIT(modular_persistence_ignored_vars, list(
 		if(!ishuman(player) || !player.client?.prefs)
 			continue
 
+		if(!player.client.prefs.modular_persistence)
+			stack_trace("[player] doesn't have a modular_persistence variable in their prefs datum")
+			continue
+
 		var/json_file = file("data/player_saves/[player.client.ckey[1]]/[player.client.ckey]/modular_persistence.json")
 		var/list/json = fexists(json_file) ? json_decode(file2text(json_file)) : list()
 		fdel(json_file)
