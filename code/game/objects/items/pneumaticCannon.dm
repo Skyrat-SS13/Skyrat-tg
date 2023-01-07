@@ -37,7 +37,6 @@
 	var/spin_item = TRUE //Do the projectiles spin when launched?
 	trigger_guard = TRIGGER_GUARD_NORMAL
 
-
 /datum/armor/item_pneumatic_cannon
 	fire = 60
 	acid = 50

@@ -16,7 +16,6 @@
 /obj/machinery/door/password/voice
 	voice_activated = TRUE
 
-
 /datum/armor/door_password
 	melee = 100
 	bullet = 100

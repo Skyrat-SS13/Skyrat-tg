@@ -24,7 +24,6 @@
 	///Whether the headlamp is on or off.
 	var/on = FALSE
 
-
 /datum/armor/utility_hardhat
 	melee = 15
 	bullet = 5

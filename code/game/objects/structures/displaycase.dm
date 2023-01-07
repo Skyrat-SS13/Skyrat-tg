@@ -232,7 +232,6 @@
 	icon_state = "glassbox_chassis"
 	var/obj/item/electronics/airlock/electronics
 
-
 /datum/armor/structure_displaycase
 	melee = 30
 	bomb = 10

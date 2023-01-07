@@ -176,7 +176,7 @@
 	heat_protection = 0
 	max_heat_protection_temperature = null
 	resistance_flags = FLAMMABLE
-	armor = null
+	armor_type = /datum/armor/none
 	cut_type = null
 
 /obj/item/clothing/gloves/tackler/peacekeeper

@@ -17,7 +17,6 @@
 	var/flip_type // If set, the pipe is flippable and becomes this type when flipped
 	var/obj/structure/disposalconstruct/stored
 
-
 /datum/armor/structure_disposalpipe
 	melee = 25
 	bullet = 10

@@ -64,7 +64,6 @@
 	var/knock_sound = 'sound/effects/glassknock.ogg'
 	var/bash_sound = 'sound/effects/glassbash.ogg'
 
-
 /datum/armor/door_firedoor
 	melee = 10
 	bullet = 30

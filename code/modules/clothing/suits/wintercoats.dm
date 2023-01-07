@@ -639,8 +639,16 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "coatsyndie"
 	inhand_icon_state = "coatwinter"
-	armor = list(MELEE = 25, BULLET = 15, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 0, ACID = 45)
+	armor_type = /datum/armor/wintercoat_syndicate
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/syndicate
+
+/datum/armor/wintercoat_syndicate
+	melee = 25
+	bullet = 15
+	laser = 30
+	energy = 40
+	bomb = 25
+	acid = 45
 
 /obj/item/clothing/suit/hooded/wintercoat/syndicate/Initialize(mapload)
 	. = ..()
@@ -651,4 +659,12 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "winterhood_syndie"
-	armor = list(MELEE = 25, BULLET = 15, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 0, ACID = 45)
+	armor_type = /datum/armor/winterhood_syndicate
+
+/datum/armor/winterhood_syndicate
+	melee = 25
+	bullet = 15
+	laser = 30
+	energy = 40
+	bomb = 25
+	acid = 45

@@ -213,7 +213,6 @@ Striking a noncultist, however, will tear their flesh."}
 	max_heat_protection_temperature = ARMOR_MAX_TEMP_PROTECT
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie
 
-
 /datum/armor/hooded_cultrobes
 	melee = 40
 	bullet = 30

@@ -103,7 +103,6 @@
 	can_adjust = FALSE
 	custom_price = PAYCHECK_COMMAND
 
-
 /datum/armor/rank_security
 	melee = 10
 	bio = 10

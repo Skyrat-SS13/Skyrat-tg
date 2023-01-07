@@ -12,7 +12,6 @@
 	var/extinguish_cooldown = 100
 	var/extinguishes_left = 10
 
-
 /datum/armor/eva_plasmaman
 	bio = 100
 	fire = 100
@@ -300,8 +299,13 @@
 	icon_state = "explorer_envirohelm"
 	inhand_icon_state = null
 	visor_icon = "explorer_envisor"
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 100, FIRE = 100, ACID = 75)//SKYRAT EDIT
+	armor_type = /datum/armor/plasmaman_mining
 
+/datum/armor/plasmaman_mining
+	melee = 10
+	bio = 100
+	fire = 100
+	acid = 75
 
 /obj/item/clothing/head/helmet/space/plasmaman/chaplain
 	name = "chaplain's plasma envirosuit helmet"

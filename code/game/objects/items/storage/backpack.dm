@@ -448,7 +448,6 @@
 	inhand_icon_state = "duffel-virology"
 
 
-
 /datum/armor/backpack_holding
 	fire = 60
 	acid = 50

@@ -20,7 +20,6 @@
 	)
 	var/obj/durand_shield/shield
 
-
 /datum/armor/mecha_durand
 	melee = 40
 	bullet = 35
