@@ -64,7 +64,8 @@
 	name = "x stand"
 	desc = "A stand for buckling people in an X shape."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
-	icon_state = "xstand"
+	icon_state = "xstand_open"
+	base_icon_state = "xstand"
 	max_buckled_mobs = 1
 	max_integrity = 75
 	var/stand_state = "open"
@@ -91,7 +92,7 @@
 
 /obj/structure/chair/x_stand/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[stand_state? "open" : "close"]"
+	icon_state = "[base_icon_state]_[stand_state? "open" : "close"]"
 
 //X-Stand LBM interaction handler
 /obj/structure/chair/x_stand/attack_hand(mob/living/user)
