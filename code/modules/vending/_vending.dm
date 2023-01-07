@@ -1445,7 +1445,7 @@
 /obj/machinery/vending/custom/greed/Initialize(mapload)
 	. = ..()
 	//starts in a state where you can move it
-	panel_open = TRUE
+	set_panel_open(TRUE)
 	set_anchored(FALSE)
 	add_overlay(panel_type)
 	//and references the deity
