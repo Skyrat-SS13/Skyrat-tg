@@ -289,13 +289,8 @@
 	item = /obj/item/his_grace
 	cost = 20
 	restricted_roles = list(JOB_CHAPLAIN)
-<<<<<<< HEAD
-	surplus = 5 //Very low chance to get it in a surplus crate even without being the chaplain
-*/ //SKYRAT REMOVAL END
-=======
 	surplus = 5
-
->>>>>>> 7687a28e7ce (refreshes syndi-kits and syndicate surplus crates, introduces shared limited stock (#71869))
+*/ //SKYRAT REMOVAL END
 
 // High progression cost
 
