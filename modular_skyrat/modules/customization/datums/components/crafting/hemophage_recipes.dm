@@ -10,7 +10,7 @@
 
 
 /datum/crafting_recipe/food/hemophage
-	subcategory = CAT_HEMOPHAGE
+	category = CAT_HEMOPHAGE
 
 
 /datum/crafting_recipe/food/hemophage/blood_curd
