@@ -77,7 +77,7 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
-<<<<<<< HEAD
+
 //SKYRAT EDIT ADDITION//
 /datum/design/engi_plumbing
 	name = "Engineering Plumbing Constructor"
@@ -91,7 +91,7 @@
 	)
 	departmental_flags =  DEPARTMENT_BITFLAG_ENGINEERING
 //SKYRAT EDIT END//
-=======
+
 /datum/design/rtd_loaded
 	name = "Rapid Tiling Device"
 	desc = "A tool that can lay & destory floor tiles on the fly."
@@ -103,7 +103,7 @@
 		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING_ADVANCED
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
->>>>>>> 2532317da4a (RTD Rapid Tiling Device (#72256))
+
 
 /datum/design/rcd_ammo
 	name = "RCD Matter Cartridge"
