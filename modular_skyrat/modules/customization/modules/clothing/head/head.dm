@@ -4,9 +4,15 @@
 	name = "flak helmet"
 	icon_state = "m1helm"
 	inhand_icon_state = "helmet"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0.1, "bio" = 0, "fire" = -10, "acid" = -15, "wound" = 1)
+	armor_type = /datum/armor/hats_flakhelm
 	desc = "A dilapidated helmet used in ancient wars. This one is brittle and essentially useless. An ace of spades is tucked into the band around the outer shell."
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+
+/datum/armor/hats_flakhelm
+	bomb = 0.1
+	fire = -10
+	acid = -15
+	wound = 1
 
 /obj/item/clothing/head/hats/flakhelm/Initialize(mapload)
 	. = ..()
@@ -56,9 +62,19 @@
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	greyscale_colors = "#353535#AAAAAA"
 	icon_state = "beret_badge"
-	armor = list(MELEE = 40, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 30, ACID = 50, WOUND = 6)
+	armor_type = /datum/armor/navywarden_syndicate
 	strip_delay = 60
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+
+/datum/armor/navywarden_syndicate
+	melee = 40
+	bullet = 30
+	laser = 30
+	energy = 40
+	bomb = 25
+	fire = 30
+	acid = 50
+	wound = 6
 
 /obj/item/clothing/head/costume/ushanka/sec
 	name = "security ushanka"
@@ -213,7 +229,7 @@
 /obj/item/clothing/head/hats/imperial/ce
 	name = "chief engineer's blast helmet"
 	desc = "Despite seeming like it's made of metal, it's actually a very cheap plastic.."
-	armor = list(MELEE = 15, BULLET = 5, LASER = 20, ENERGY = 10, BOMB = 20, BIO = 10, FIRE = 100, ACID = 50, WOUND = 10)
+	armor_type = /datum/armor/imperial_ce
 	clothing_flags = STOPSPRESSUREDAMAGE
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_HELM_MAX_TEMP_PROTECT
@@ -222,6 +238,17 @@
 	icon_state = "impce"
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 
+
+/datum/armor/imperial_ce
+	melee = 15
+	bullet = 5
+	laser = 20
+	energy = 10
+	bomb = 20
+	bio = 10
+	fire = 100
+	acid = 50
+	wound = 10
 
 /obj/item/clothing/head/hats/imperial/helmet
 	name = "blast helmet"
