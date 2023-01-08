@@ -138,6 +138,7 @@
 
 /obj/item/ammo_casing/energy/laser/rainbow
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/nucgun.dmi'
+	icon_state = "laser"
 	select_name = "kill"
 	projectile_type = /obj/projectile/beam/laser/rainbow
 
@@ -147,6 +148,7 @@
 
 /obj/item/ammo_casing/energy/disabler/rainbow
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/nucgun.dmi'
+	icon_state = "laser"
 	select_name = "disable"
 	projectile_type = /obj/projectile/beam/disabler/rainbow
 

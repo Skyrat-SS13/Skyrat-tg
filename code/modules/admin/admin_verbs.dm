@@ -99,6 +99,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/message_pda, /*send a message to somebody on PDA*/
 	/datum/admins/proc/trophy_manager,
 	/client/proc/fax_panel, /*send a paper to fax*/
+	/client/proc/force_load_lazy_template,
 	)
 GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/ban_panel, /client/proc/stickybanpanel))
 GLOBAL_PROTECT(admin_verbs_ban)
@@ -672,10 +673,12 @@ GLOBAL_PROTECT(admin_verbs_poll)
 	if(!SStrading_card_game.loaded)
 		message_admins("The card subsystem is not currently loaded")
 		return
-	var/message = SStrading_card_game.checkCardpacks(SStrading_card_game.card_packs)
-	message += SStrading_card_game.checkCardDatums()
+	var/message = SStrading_card_game.check_cardpacks(SStrading_card_game.card_packs)
+	message += SStrading_card_game.check_card_datums()
 	if(message)
 		message_admins(message)
+	else
+		message_admins("No errors found in card rarities or overrides.")
 
 /client/proc/test_cardpack_distribution()
 	set name = "Test Cardpack Distribution"
@@ -685,11 +688,14 @@ GLOBAL_PROTECT(admin_verbs_poll)
 	if(!SStrading_card_game.loaded)
 		message_admins("The card subsystem is not currently loaded")
 		return
-	var/pack = input("Which pack should we test?", "You fucked it didn't you") as null|anything in sort_list(SStrading_card_game.card_packs)
-	var/batchCount = input("How many times should we open it?", "Don't worry, I understand") as null|num
-	var/batchSize = input("How many cards per batch?", "I hope you remember to check the validation") as null|num
-	var/guar = input("Should we use the pack's guaranteed rarity? If so, how many?", "We've all been there. Man you should have seen the old system") as null|num
-	SStrading_card_game.checkCardDistribution(pack, batchSize, batchCount, guar)
+	var/pack = tgui_input_list(usr, "Which pack should we test?", "You fucked it didn't you", sort_list(SStrading_card_game.card_packs))
+	if(!pack)
+		return
+	var/batch_count = tgui_input_number(usr, "How many times should we open it?", "Don't worry, I understand")
+	var/batch_size = tgui_input_number(usr, "How many cards per batch?", "I hope you remember to check the validation")
+	var/guar = tgui_input_number(usr, "Should we use the pack's guaranteed rarity? If so, how many?", "We've all been there. Man you should have seen the old system")
+
+	SStrading_card_game.check_card_distribution(pack, batch_size, batch_count, guar)
 
 /client/proc/print_cards()
 	set name = "Print Cards"
@@ -1009,3 +1015,40 @@ GLOBAL_PROTECT(admin_verbs_poll)
 	var/datum/browser/popup = new(mob, "spellreqs", "Spell Requirements", 600, 400)
 	popup.set_content(page_contents)
 	popup.open()
+
+/client/proc/force_load_lazy_template()
+	set name = "Load/Jump Lazy Template"
+	set category = "Admin.Events"
+	if(!check_rights(R_ADMIN))
+		return
+
+	if(SSticker.current_state != GAME_STATE_PLAYING)
+		to_chat(usr, span_warning("The game hasnt started yet!"))
+		return
+
+	var/list/choices = LAZY_TEMPLATE_KEY_LIST_ALL()
+	var/choice = tgui_input_list(usr, "Key?", "Lazy Loader", choices)
+	if(!choice)
+		return
+
+	choice = choices[choice]
+	if(!choice)
+		to_chat(usr, span_warning("No template with that key found, report this!"))
+		return
+
+	var/already_loaded = LAZYACCESS(SSmapping.loaded_lazy_templates, choice)
+	var/force_load = FALSE
+	if(already_loaded && (tgui_alert(usr, "Template already loaded.", "", list("Jump", "Load Again")) == "Load Again"))
+		force_load = TRUE
+
+	var/datum/turf_reservation/reservation = SSmapping.lazy_load_template(choice, force = force_load)
+	if(!reservation)
+		to_chat(usr, span_boldwarning("Failed to load template!"))
+		return
+
+	if(!isobserver(usr))
+		admin_ghost()
+	usr.forceMove(coords2turf(reservation.bottom_left_coords))
+
+	message_admins("[key_name_admin(usr)] has loaded lazy template '[choice]'")
+	to_chat(usr, span_boldnicegreen("Template loaded, you have been moved to the bottom left of the reservation."))

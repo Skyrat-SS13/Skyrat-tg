@@ -19,7 +19,13 @@
 	theme = /datum/mod_theme/prototype/hauler
 	req_access = list(ACCESS_TARKON)
 	applied_cell = /obj/item/stock_parts/cell/high
-	initial_modules = list(/obj/item/mod/module/storage/large_capacity, /obj/item/mod/module/welding, /obj/item/mod/module/clamp, /obj/item/mod/module/flashlight, /obj/item/mod/module/tether)
+	applied_modules = list(
+		/obj/item/mod/module/storage/large_capacity,
+		/obj/item/mod/module/welding,
+		/obj/item/mod/module/clamp,
+		/obj/item/mod/module/flashlight,
+		/obj/item/mod/module/tether,
+	)
 
 /obj/machinery/suit_storage_unit/industrial/hauler
 	mod_type = /obj/item/mod/control/pre_equipped/prototype/hauler
@@ -34,4 +40,10 @@
 	removable = TRUE
 	complexity = 1
 	speed_added = 0.25
-	armor_values = list(MELEE = 20, BULLET = 25, LASER = 15, ENERGY = 20)
+	armor_mod = /datum/armor/retractive_plates
+
+/datum/armor/retractive_plates
+	melee = 20
+	bullet = 25
+	laser = 15
+	energy = 20

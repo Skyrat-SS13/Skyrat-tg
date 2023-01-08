@@ -25,7 +25,7 @@
 	throw_speed = 3
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 100, ACID = 30)
+	armor_type = /datum/armor/item_weldingtool
 	resistance_flags = FIRE_PROOF
 	heat = 3800
 	tool_behaviour = TOOL_WELDER
@@ -50,6 +50,10 @@
 
 	var/activation_sound = 'sound/items/welderactivate.ogg'
 	var/deactivation_sound = 'sound/items/welderdeactivate.ogg'
+
+/datum/armor/item_weldingtool
+	fire = 100
+	acid = 30
 
 /obj/item/weldingtool/Initialize(mapload)
 	. = ..()
@@ -160,17 +164,22 @@
 	if(!proximity)
 		return
 
-	if(isOn() && !QDELETED(attacked_atom) && isliving(attacked_atom)) // can't ignite something that doesn't exist
-		handle_fuel_and_temps(1, user)
-		var/mob/living/attacked_mob = attacked_atom
-		if(attacked_mob.ignite_mob())
-			message_admins("[ADMIN_LOOKUPFLW(user)] set [key_name_admin(attacked_mob)] on fire with [src] at [AREACOORD(user)]")
-			user.log_message("set [key_name(attacked_mob)] on fire with [src].", LOG_ATTACK)
+	if(isOn())
+		. |= AFTERATTACK_PROCESSED_ITEM
+		if (!QDELETED(attacked_atom) && isliving(attacked_atom)) // can't ignite something that doesn't exist
+			handle_fuel_and_temps(1, user)
+			var/mob/living/attacked_mob = attacked_atom
+			if(attacked_mob.ignite_mob())
+				message_admins("[ADMIN_LOOKUPFLW(user)] set [key_name_admin(attacked_mob)] on fire with [src] at [AREACOORD(user)]")
+				user.log_message("set [key_name(attacked_mob)] on fire with [src].", LOG_ATTACK)
 
 	if(!status && attacked_atom.is_refillable())
+		. |= AFTERATTACK_PROCESSED_ITEM
 		reagents.trans_to(attacked_atom, reagents.total_volume, transfered_by = user)
 		to_chat(user, span_notice("You empty [src]'s fuel tank into [attacked_atom]."))
 		update_appearance()
+
+	return .
 
 /obj/item/weldingtool/attack_qdeleted(atom/attacked_atom, mob/user, proximity)
 	. = ..()
@@ -340,6 +349,10 @@
 	max_fuel = 40
 	custom_materials = list(/datum/material/glass=60)
 
+/datum/armor/item_weldingtool
+	fire = 100
+	acid = 30
+
 /obj/item/weldingtool/largetank/flamethrower_screwdriver()
 	return
 	
@@ -352,6 +365,10 @@
 	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
 	icon_state = "indwelder_cyborg"
 	toolspeed = 0.5
+
+/datum/armor/item_weldingtool
+	fire = 100
+	acid = 30
 
 /obj/item/weldingtool/largetank/cyborg/cyborg_unequip(mob/user)
 	if(!isOn())
@@ -367,6 +384,10 @@
 	w_class = WEIGHT_CLASS_TINY
 	custom_materials = list(/datum/material/iron=30, /datum/material/glass=10)
 	change_icons = FALSE
+
+/datum/armor/item_weldingtool
+	fire = 100
+	acid = 30
 
 /obj/item/weldingtool/mini/flamethrower_screwdriver()
 	return
@@ -384,6 +405,10 @@
 	light_system = NO_LIGHT_SUPPORT
 	light_range = 0
 	change_icons = FALSE
+
+/datum/armor/item_weldingtool
+	fire = 100
+	acid = 30
 
 /obj/item/weldingtool/abductor/process()
 	if(get_fuel() <= max_fuel)
@@ -412,6 +437,10 @@
 	toolspeed = 0.5
 	var/last_gen = 0
 	var/nextrefueltick = 0
+
+/datum/armor/item_weldingtool
+	fire = 100
+	acid = 30
 
 /obj/item/weldingtool/experimental/process()
 	..()
