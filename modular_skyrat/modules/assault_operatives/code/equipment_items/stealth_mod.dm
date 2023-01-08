@@ -77,9 +77,10 @@
 /obj/item/mod/control/pre_equipped/stealth_operative
 	worn_icon = 'modular_skyrat/modules/assault_operatives/icons/modsuits/wornmod.dmi'
 	icon = 'modular_skyrat/modules/assault_operatives/icons/modsuits/mod.dmi'
+	icon_state = "stealth-control"
 	theme = /datum/mod_theme/covert
 	applied_cell = /obj/item/stock_parts/cell/hyper
-	initial_modules = list(
+	applied_modules = list(
 		/obj/item/mod/module/dna_lock,
 		/obj/item/mod/module/emp_shield,
 		/obj/item/mod/module/visor/night,

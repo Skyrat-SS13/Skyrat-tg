@@ -602,3 +602,18 @@
 	name = "Suspiciously Glossy Ring"
 	item_path = /obj/item/clothing/gloves/ring/hypno/nuke
 	ckeywhitelist = list("sonicgotnuked")
+
+/datum/loadout_item/head/somerandomowl
+	name = "Starry Witch Hat"
+	item_path = /obj/item/clothing/head/costume/strigihat
+	ckeywhitelist = list("somerandomowl")
+
+/datum/loadout_item/head/razurathhat
+	name = "Golden Nanotrasen Officer Cap"
+	item_path = /obj/item/clothing/head/razurathhat
+	ckeywhitelist = list("razurath")
+
+/datum/loadout_item/suit/razurathcoat
+	name = "Golden Nanotrasen Officer Coat"
+	item_path = /obj/item/clothing/suit/razurathcoat
+	ckeywhitelist = list("razurath")

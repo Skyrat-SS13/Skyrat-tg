@@ -66,13 +66,13 @@
 
 /obj/item/mod/control/pre_equipped/frontline
 	theme = /datum/mod_theme/frontline
-	initial_modules = list(
+	applied_modules = list(
 		/obj/item/mod/module/storage,
 		/obj/item/mod/module/flashlight,
 	)
 
 /obj/item/mod/control/pre_equipped/frontline/pirate
-	initial_modules = list(
+	applied_modules = list(
 		/obj/item/mod/module/storage/large_capacity,
 		/obj/item/mod/module/thermal_regulator,
 		/obj/item/mod/module/status_readout/generic,
@@ -82,14 +82,23 @@
 		/obj/item/mod/module/magnetic_harness,
 		/obj/item/mod/module/t_ray
 	)
+	default_pins = list(
+		/obj/item/mod/module/tether,
+		/obj/item/mod/module/magboot,
+	)
 
 /obj/item/mod/control/pre_equipped/frontline/ert
 	applied_cell = /obj/item/stock_parts/cell/hyper
-	initial_modules = list(
+	applied_modules = list(
 		/obj/item/mod/module/storage/syndicate,
 		/obj/item/mod/module/thermal_regulator,
 		/obj/item/mod/module/status_readout/generic,
 		/obj/item/mod/module/auto_doc,
+		/obj/item/mod/module/visor/thermal,
+		/obj/item/mod/module/jetpack/advanced,
+		/obj/item/mod/module/magboot/advanced,
+	)
+	default_pins = list(
 		/obj/item/mod/module/visor/thermal,
 		/obj/item/mod/module/jetpack/advanced,
 		/obj/item/mod/module/magboot/advanced,
@@ -141,7 +150,7 @@
 	. = ..()
 	if(!.)
 		return
-	RegisterSignal(mod.wearer, COMSIG_CARBON_HEALTH_UPDATE, PROC_REF(on_use))
+	RegisterSignal(mod.wearer, COMSIG_LIVING_HEALTH_UPDATE, PROC_REF(on_use))
 	drain_power(use_power_cost)
 
 ///	Heals damage (in fact, injects chems) based on the damage received and certain other variables (a single one), i.e. having more than X amount of health, not having enough needed chemicals or so on.
@@ -221,7 +230,7 @@
 
 /obj/item/mod/module/auto_doc/on_deactivation(display_message = TRUE, deleting = FALSE)
 	. = ..()
-	UnregisterSignal(mod.wearer, COMSIG_CARBON_HEALTH_UPDATE)
+	UnregisterSignal(mod.wearer, COMSIG_LIVING_HEALTH_UPDATE)
 
 /obj/item/mod/module/auto_doc/on_install()
 	RegisterSignal(mod, COMSIG_PARENT_ATTACKBY, PROC_REF(on_attackby))
