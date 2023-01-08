@@ -1385,3 +1385,21 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	worn_icon_teshari = 'modular_skyrat/master_files/icons/donator/mob/clothing/head_teshari.dmi'
 	icon_state = "strigihat"
+
+//Donation reward for Razurath
+/obj/item/clothing/head/razurathhat
+	name = "Golden Nanotrasen Officer Cap"
+	desc = "A Nanotrasen officer cap. Now darker, golder, and cooler!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "razurath_hat"
+
+//Donation reward for Razurath
+/obj/item/clothing/suit/razurathcoat
+	name = "Golden Nanotrasen Officer Coat"
+	desc = "A fancy Nanotrasen officer coat. Now darker, golder, and cooler than ever!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "razurath_coat"
+
+
