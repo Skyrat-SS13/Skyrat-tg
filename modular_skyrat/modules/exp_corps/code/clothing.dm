@@ -4,11 +4,17 @@
 	icon_state = "exp_corps"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 15, ACID = 15, WOUND = 5)
+	armor_type = /datum/armor/rank_expeditionary_corps
 	strip_delay = 7 SECONDS
 	alt_covers_chest = TRUE
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
+
+/datum/armor/rank_expeditionary_corps
+	bio = 10
+	fire = 15
+	acid = 15
+	wound = 5
 
 /obj/item/storage/belt/military/expeditionary_corps
 	name = "expeditionary corps chest rig"
@@ -100,7 +106,11 @@
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 80, ACID = 50)
+	armor_type = /datum/armor/chief_engineer_expeditionary_corps
+
+/datum/armor/chief_engineer_expeditionary_corps
+	fire = 80
+	acid = 50
 
 /obj/item/clothing/gloves/color/latex/nitrile/expeditionary_corps
 	name = "expeditionary corps medic gloves"
@@ -113,7 +123,11 @@
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 80, ACID = 50)
+	armor_type = /datum/armor/nitrile_expeditionary_corps
+
+/datum/armor/nitrile_expeditionary_corps
+	fire = 80
+	acid = 50
 
 /obj/item/storage/backpack/duffelbag/expeditionary_corps
 	name = "expeditionary corps bag"
@@ -141,7 +155,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	body_parts_covered = CHEST|GROIN|ARMS
-	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 40, BIO = 0, FIRE = 80, ACID = 100, WOUND = 10)
+	armor_type = /datum/armor/vest_expeditionary_corps
 	cold_protection = CHEST|GROIN|ARMS
 	heat_protection = CHEST|GROIN|ARMS
 	dog_fashion = null
@@ -159,17 +173,37 @@
 		)
 
 
+/datum/armor/vest_expeditionary_corps
+	melee = 30
+	bullet = 30
+	laser = 30
+	energy = 30
+	bomb = 40
+	fire = 80
+	acid = 100
+	wound = 10
+
 /obj/item/clothing/head/helmet/expeditionary_corps
 	name = "expeditionary corps helmet"
 	desc = "A robust helmet worn by Expeditionary Corps troopers. Alt+click it to toggle the NV system."
 	icon_state = "exp_corps"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 30, BIO = 0, FIRE = 80, ACID = 100, WOUND = 10)
+	armor_type = /datum/armor/helmet_expeditionary_corps
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	var/nightvision = FALSE
 	var/mob/living/carbon/current_user
 	actions_types = list(/datum/action/item_action/toggle_nv)
+
+/datum/armor/helmet_expeditionary_corps
+	melee = 20
+	bullet = 20
+	laser = 20
+	energy = 20
+	bomb = 30
+	fire = 80
+	acid = 100
+	wound = 10
 
 /datum/action/item_action/toggle_nv
 	name = "Toggle Nightvision"

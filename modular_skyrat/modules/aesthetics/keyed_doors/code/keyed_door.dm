@@ -37,7 +37,7 @@
 	heat_proof = TRUE
 	density = TRUE
 	max_integrity = 600
-	armor = list(MELEE = 100, BULLET = 100, LASER = 100, ENERGY = 100, BOMB = 100, BIO = 100, FIRE = 100, ACID = 100)
+	armor_type = /datum/armor/airlock_keyed
 	resistance_flags = FIRE_PROOF | ACID_PROOF | LAVA_PROOF
 	move_resist = MOVE_FORCE_OVERPOWERING
 	damage_deflection = 70
@@ -51,6 +51,16 @@
 	/// it for something that's meant to have only one unique key.
 	var/respects_master_access = TRUE
 
+
+/datum/armor/airlock_keyed
+	melee = 100
+	bullet = 100
+	laser = 100
+	energy = 100
+	bomb = 100
+	bio = 100
+	fire = 100
+	acid = 100
 
 /obj/machinery/door/airlock/keyed/check_access(obj/item/key_card/used_keycard)
 	if(!used_keycard || !istype(used_keycard))
