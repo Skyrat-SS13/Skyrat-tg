@@ -401,12 +401,8 @@
 
 //This specific mutation only covers floors instead of structures, items, mobs and cant tangle mobs
 /datum/spacevine_mutation/timid/on_birth(obj/structure/spacevine/holder)
-<<<<<<< HEAD
-	holder.plane = FLOOR_PLANE
-=======
 	SET_PLANE_IMPLICIT(holder, FLOOR_PLANE)
 	holder.light_state = PASS_LIGHT
->>>>>>> b5ceed9da0d ([NO GBP] Transparent and timid kudzu mutations wont block light like they are supposed to (#72272))
 	holder.can_tangle = FALSE
 	return ..()
 
