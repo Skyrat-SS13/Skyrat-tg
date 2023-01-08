@@ -5423,12 +5423,7 @@
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
 "bFQ" = (
-/obj/docking_port/stationary{
-	dwidth = 1;
-	height = 4;
-	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
-	width = 3
-	},
+/obj/docking_port/stationary/escape_pod,
 /turf/open/space/basic,
 /area/space)
 "bGx" = (
@@ -6608,12 +6603,8 @@
 /turf/open/floor/plating,
 /area/station/maintenance/port/lesser)
 "ccg" = (
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 1;
-	height = 4;
-	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
-	width = 3
+/obj/docking_port/stationary/escape_pod{
+	dir = 4
 	},
 /turf/open/space/basic,
 /area/space)
@@ -9166,12 +9157,8 @@
 /turf/open/floor/plating/lowpressure,
 /area/space/nearstation)
 "cOd" = (
-/obj/docking_port/stationary{
-	dir = 8;
-	dwidth = 1;
-	height = 4;
-	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
-	width = 3
+/obj/docking_port/stationary/escape_pod{
+	dir = 8
 	},
 /turf/open/space/basic,
 /area/space)
@@ -16193,6 +16180,10 @@
 "ePm" = (
 /turf/open/floor/iron,
 /area/station/maintenance/disposal/incinerator)
+"ePI" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/space/basic,
+/area/space/nearstation)
 "ePU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -22838,6 +22829,12 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/starboard)
+"gCs" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
 "gCu" = (
 /obj/structure/chair{
 	dir = 8
@@ -23495,13 +23492,8 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "gKV" = (
-/obj/docking_port/stationary{
-	dir = 2;
-	dwidth = 1;
-	height = 4;
-	name = "escape pod loader";
-	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
-	width = 3
+/obj/docking_port/stationary/escape_pod{
+	dir = 2
 	},
 /turf/open/space/basic,
 /area/space)
@@ -31686,6 +31678,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/exit/departure_lounge)
+"iSY" = (
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
 "iTj" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters{
@@ -54269,6 +54265,12 @@
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/plating,
 /area/station/maintenance/port/greater)
+"pzk" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
 "pzm" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -64593,6 +64595,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron/showroomfloor,
 /area/station/medical/surgery/aft)
+"svA" = (
+/obj/structure/lattice/catwalk,
+/turf/open/space/basic,
+/area/space)
 "svC" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -79326,7 +79332,6 @@
 	name = "lavaland";
 	shuttle_id = "pod_4_lavaland"
 	},
-/obj/structure/lattice,
 /turf/open/space,
 /area/space/nearstation)
 "wxF" = (
@@ -96665,9 +96670,9 @@ wDI
 aeu
 aeu
 aDT
-beK
+gCs
 lHD
-beK
+gCs
 sRm
 aeu
 ycx
@@ -102626,7 +102631,7 @@ aaa
 aaa
 aaa
 cry
-aoe
+ePI
 acK
 aaa
 aaa
@@ -103140,7 +103145,7 @@ aaa
 aaa
 aaa
 cry
-aoe
+ePI
 acK
 aaa
 aaa
@@ -126173,7 +126178,7 @@ aaa
 aaa
 aaa
 acK
-aDU
+pzk
 cry
 aaa
 aaa
@@ -126687,7 +126692,7 @@ aaB
 aaa
 aaa
 acK
-aDU
+pzk
 cry
 aaa
 aaa
@@ -131088,9 +131093,9 @@ cmU
 aeU
 aof
 qJs
-acK
+cry
 wxy
-acK
+cry
 qJs
 aeu
 aeU
@@ -131345,9 +131350,9 @@ cmU
 aeU
 aeU
 aaQ
-aaa
-aaa
-aaa
+svA
+iSY
+svA
 acm
 aeu
 aeu

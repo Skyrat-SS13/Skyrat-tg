@@ -1,5 +1,3 @@
-#define OBJECTIVE_COUNT 5
-
 /**
  * ASSAULT OPERATIVE ANTAG DATUM
  */
@@ -26,8 +24,7 @@
 	var/spawn_text = "Your mission is to assault NTSS13 and get all of the GoldenEye keys that you can from the heads of staff that reside there. \
 	Use your pinpointer to locate these after you have extracted the GoldenEye key from the head of staff. It will be sent in by droppod. \
 	You must then upload the key to the GoldenEye upload terminal on this GoldenEye station. After you have completed your mission, \
-	The GoldenEye defence network will fall, and we will gain access to Nanotrasen's military systems. Good luck agent. \
-	YOUR PRESENCE WILL BE ANNOUNCED IN APPROXEMATELY 15 MINUTES."
+	The GoldenEye defence network will fall, and we will gain access to Nanotrasen's military systems. Good luck agent."
 	/// A link to our internal pinpointer.
 	var/datum/status_effect/goldeneye_pinpointer/pinpointer
 

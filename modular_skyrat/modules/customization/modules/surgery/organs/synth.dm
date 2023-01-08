@@ -152,7 +152,7 @@
 	organ_flags = ORGAN_SYNTHETIC
 	status = ORGAN_ROBOTIC
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
-	icon_state = "liver-c"
+	icon_state = "liver-ipc"
 	filterToxins = FALSE //We dont filter them, we're immune to them
 
 /obj/item/organ/internal/cyberimp/arm/power_cord
