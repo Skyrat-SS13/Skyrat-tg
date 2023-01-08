@@ -341,3 +341,7 @@
 /datum/sprite_accessory/wings/moth/witchwing
 	name = "Moth (Witch Wing)"
 	icon_state = "witchwing"
+
+/datum/sprite_accessory/wings/moth/moffra
+	name = "Moth (Moffra)"
+	icon_state = "moffra"
