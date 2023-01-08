@@ -170,6 +170,8 @@
 			new_vagina.build_from_dna(exposed_mob.dna, ORGAN_SLOT_VAGINA)
 			new_vagina.Insert(exposed_mob, 0, FALSE)
 			exposed_mob.update_body()
+			if(!double_dosing) //To eliminate spamming
+				to_chat(exposed_mob, span_purple("You feel a warmth in your groin as something blossoms down there."))
 		if(!exposed_mob.getorganslot(ORGAN_SLOT_WOMB))
 			var/obj/item/organ/external/genital/womb/new_womb = new /obj/item/organ/external/genital/womb
 			new_womb.build_from_dna(exposed_mob.dna, ORGAN_SLOT_WOMB)
@@ -217,10 +219,12 @@
 				mob_testicles.genital_size -= 1
 				mob_testicles.update_sprite_suffix()
 				exposed_mob.update_body()
-			else if(mob_testicles.genital_size == 0)
+			else if(mob_testicles.genital_size == 0 && !mob_penis)
 				if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
 					mob_testicles.Remove(exposed_mob)
 					exposed_mob.update_body()
+					if(!double_dosing) //To eliminate spamming
+						to_chat(exposed_mob, span_purple("You feel a tightening sensation in your groin as things seem to smooth out down there."))
 
 // Notify the user that they're overdosing. Doesn't affect their mood.
 /datum/reagent/drug/aphrodisiac/succubus_milk/overdose_start(mob/living/carbon/human/exposed_mob)

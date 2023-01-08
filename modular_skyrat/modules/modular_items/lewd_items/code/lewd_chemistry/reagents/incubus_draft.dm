@@ -76,6 +76,13 @@
 		"suddenly expands to ",
 		"lengthens out to ",
 	)
+	/// Wording chosen to extend the cock, shown only to the mob.
+	var/static/list/ball_action_text_list = list(
+		"begin to swell",
+		"feel heavier all of a sudden",
+		"throb as they increase in size",
+		"begin to pulse, feeling larger than they were before",
+	)
 	/// Wording chosen to be seen by other mobs, while mob is unclothed.
 	var/static/list/public_cock_action_text_list = list(
 		"expands by an inch or so.",
@@ -170,10 +177,20 @@
 		// Makes the balls bigger if they're small.
 		var/obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
 		if(mob_testicles)
-			if(mob_testicles.genital_size < 3)
+			if(mob_testicles.genital_size < 2 && prob(20))
 				mob_testicles.genital_size++
 				mob_testicles.update_sprite_suffix()
 				exposed_mob.update_body()
+				if(!double_dosing)
+					to_chat(exposed_mob, span_purple("Your balls [pick(ball_action_text_list)]. They are now [mob_testicles.balls_size_to_description(mob_testicles.genital_size)]."))
+			else if(mob_testicles.genital_size == 2) 
+				var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
+				if(mob_penis?.genital_size >= penis_max_length-4)
+					mob_testicles.genital_size++
+					mob_testicles.update_sprite_suffix()
+					exposed_mob.update_body()
+					if(!double_dosing)
+						to_chat(exposed_mob, span_purple("You can feel your heavy balls churn as they swell to enormous proportions!"))
 	
 	// Separates gender change stuff from cock growth, breast shrinkage, and female genitalia removal
 	if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/gender_change))
@@ -211,6 +228,9 @@
 		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
 			mob_vagina.Remove(exposed_mob)
 			exposed_mob.update_body()
+			if(!double_dosing) //To eliminate spamming
+				to_chat(exposed_mob, span_purple("You can the feel the muscles in your groin begin to tighten as your vagina seals itself completely shut."))
+			
 	if(mob_womb)
 		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
 			mob_womb.Remove(exposed_mob)
