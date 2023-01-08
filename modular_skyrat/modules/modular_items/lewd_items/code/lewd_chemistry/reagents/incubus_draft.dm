@@ -198,7 +198,7 @@
 				mob_breasts.update_sprite_suffix()
 				exposed_mob.update_body()
 			else if(mob_breasts.genital_size == breast_minimum_size)
-				if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_removal))
+				if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
 					if(!double_dosing) //To eliminate spamming
 						to_chat(exposed_mob, span_purple("Your breasts have completely tightened into firm, flat pecs."))
 					mob_breasts.Remove(exposed_mob)
@@ -208,11 +208,11 @@
 	var/obj/item/organ/external/genital/vagina/mob_vagina = exposed_mob.getorganslot(ORGAN_SLOT_VAGINA)
 	var/obj/item/organ/external/genital/womb/mob_womb = exposed_mob.getorganslot(ORGAN_SLOT_WOMB)
 	if(mob_vagina)
-		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_removal))
+		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
 			mob_vagina.Remove(exposed_mob)
 			exposed_mob.update_body()
 	if(mob_womb)
-		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_removal))
+		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
 			mob_womb.Remove(exposed_mob)
 			exposed_mob.update_body()
 

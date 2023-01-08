@@ -108,6 +108,14 @@ export const erp_sexuality_pref: FeatureChoiced = {
   component: FeatureDropdownInput,
 };
 
+export const genitalia_removal_pref: FeatureToggle = {
+  name: 'ERP Genitalia Removal',
+  category: 'ERP',
+  description:
+    'If checked, allows drugs to remove existing genitalia on your character.',
+  component: CheckboxInput,
+};
+
 export const new_genitalia_growth_pref: FeatureToggle = {
   name: 'ERP New Genitalia Growth',
   category: 'ERP',

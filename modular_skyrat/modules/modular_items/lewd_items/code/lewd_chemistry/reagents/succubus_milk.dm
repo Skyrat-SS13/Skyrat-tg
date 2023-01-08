@@ -198,8 +198,9 @@
 		// Penis shrinkage
 		if(mob_penis)
 			if(mob_penis.genital_size == penis_min_length)
-				mob_penis.Remove(exposed_mob)
-				exposed_mob.update_body()
+				if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
+					mob_penis.Remove(exposed_mob)
+					exposed_mob.update_body()
 			else 
 				if(mob_penis.genital_size > penis_min_length)
 					mob_penis.genital_size -= penis_size_reduction_step
@@ -217,8 +218,9 @@
 				mob_testicles.update_sprite_suffix()
 				exposed_mob.update_body()
 			else if(mob_testicles.genital_size == 0)
-				mob_testicles.Remove(exposed_mob)
-				exposed_mob.update_body()
+				if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
+					mob_testicles.Remove(exposed_mob)
+					exposed_mob.update_body()
 
 // Notify the user that they're overdosing. Doesn't affect their mood.
 /datum/reagent/drug/aphrodisiac/succubus_milk/overdose_start(mob/living/carbon/human/exposed_mob)
