@@ -88,7 +88,7 @@ GLOBAL_LIST_INIT(gas_id_to_canister, init_gas_id_to_canister())
 	var/cell_container_opened = FALSE
 
 	var/protected_contents = FALSE
-  
+
 	///used while processing to update appearance only when its pressure state changes
 	var/current_pressure_state
 
