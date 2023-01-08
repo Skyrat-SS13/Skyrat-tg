@@ -170,15 +170,11 @@ SUBSYSTEM_DEF(garbage)
 		if(queued_at_time > cut_off_time)
 			break // Everything else is newer, skip them
 		count++
-<<<<<<< HEAD
-		var/refID = L[2]
-=======
-
+		
 #ifdef EXPERIMENT_515_QDEL_HARD_REFERENCE
 		var/datum/D = L[GC_QUEUE_ITEM_REF]
 #else
 		var/refID = L[GC_QUEUE_ITEM_REF]
->>>>>>> 5ebb91f9622 (Keeps gc_destroyed from getting updated on every step thru the gc queue. (#72401))
 		var/datum/D
 		D = locate(refID)
 
@@ -257,12 +253,6 @@ SUBSYSTEM_DEF(garbage)
 	if (level > GC_QUEUE_COUNT)
 		HardDelete(D)
 		return
-<<<<<<< HEAD
-	var/gctime = world.time
-	var/refid = text_ref(D)
-
-	D.gc_destroyed = gctime
-=======
 	var/queue_time = world.time
 
 #ifdef EXPERIMENT_515_QDEL_HARD_REFERENCE
@@ -273,7 +263,6 @@ SUBSYSTEM_DEF(garbage)
 	if (D.gc_destroyed <= 0)
 		D.gc_destroyed = queue_time
 	
->>>>>>> 5ebb91f9622 (Keeps gc_destroyed from getting updated on every step thru the gc queue. (#72401))
 	var/list/queue = queues[level]
 
 	queue[++queue.len] = list(queue_time, refid, D.gc_destroyed) // not += for byond reasons
