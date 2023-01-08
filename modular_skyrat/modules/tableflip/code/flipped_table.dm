@@ -2,7 +2,7 @@
 	name = "flipped table"
 	desc = "A flipped table."
 	icon = 'modular_skyrat/modules/tableflip/icons/flipped_tables.dmi'
-	icon_state = "metal-flipped"
+	icon_state = "table"
 	anchored = TRUE
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
