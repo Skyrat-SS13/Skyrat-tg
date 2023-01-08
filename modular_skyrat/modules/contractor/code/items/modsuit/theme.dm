@@ -10,7 +10,7 @@
 		A small tag hangs off of it reading; 'Property of the Gorlex Marauders, with assistance from Cybersun Industries. \
 		All rights reserved, tampering with suit will void warranty."
 	default_skin = "contractor"
-	armor = list(MELEE = 30, BULLET = 40, LASER = 20, ENERGY = 30, BOMB = 30, BIO = 30, FIRE = 80, ACID = 85)
+	armor_type = /datum/armor/mod_theme_contractor
 	atom_flags = PREVENT_CONTENTS_EXPLOSION_1
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	siemens_coefficient = 0
@@ -55,3 +55,13 @@
 			),
 		),
 	)
+
+/datum/armor/mod_theme_contractor
+	melee = 30
+	bullet = 40
+	laser = 20
+	energy = 30
+	bomb = 30
+	bio = 30
+	fire = 80
+	acid = 85

@@ -12,7 +12,7 @@
 	power_channel = AREA_USAGE_ENVIRON
 	pass_flags_self = PASSDOORS
 	max_integrity = 350
-	armor = list(MELEE = 30, BULLET = 30, LASER = 20, ENERGY = 20, BOMB = 10, BIO = 0, FIRE = 80, ACID = 70)
+	armor_type = /datum/armor/machinery_door
 	can_atmos_pass = ATMOS_PASS_DENSITY
 	flags_1 = PREVENT_CLICK_UNDER_1
 	receive_ricochet_chance_mod = 0.8
@@ -44,6 +44,15 @@
 	var/unres_sides = NONE
 	var/can_crush = TRUE /// Whether or not the door can crush mobs.
 	var/can_open_with_hands = TRUE /// Whether or not the door can be opened by hand (used for blast doors and shutters)
+
+/datum/armor/machinery_door
+	melee = 30
+	bullet = 30
+	laser = 20
+	energy = 20
+	bomb = 10
+	fire = 80
+	acid = 70
 
 /obj/machinery/door/Initialize(mapload)
 	. = ..()
@@ -461,6 +470,15 @@
 
 /obj/machinery/door/morgue
 	icon = 'icons/obj/doors/doormorgue.dmi'
+
+/datum/armor/machinery_door
+	melee = 30
+	bullet = 30
+	laser = 20
+	energy = 20
+	bomb = 10
+	fire = 80
+	acid = 70
 
 /obj/machinery/door/get_dumping_location()
 	return null
