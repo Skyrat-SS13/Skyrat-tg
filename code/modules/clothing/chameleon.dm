@@ -380,12 +380,20 @@
 	random_sensor = FALSE
 	resistance_flags = NONE
 	can_adjust = FALSE
-	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 50, ACID = 50)
+	armor_type = /datum/armor/under_chameleon
 
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
 	special_desc = "A chameleon jumpsuit employed by the Syndicate in infiltration operations." // SKYRAT EDIT
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
+
+/datum/armor/under_chameleon
+	melee = 10
+	bullet = 10
+	laser = 10
+	bio = 10
+	fire = 50
+	acid = 50
 
 /obj/item/clothing/under/chameleon/Initialize(mapload)
 	. = ..()
@@ -415,11 +423,17 @@
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
 	resistance_flags = NONE
-	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 50)
+	armor_type = /datum/armor/suit_chameleon
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
 	special_desc = "A chameleon vest employed by the Syndicate in infiltration operations." // SKYRAT EDIT
-
 	var/datum/action/item_action/chameleon/change/chameleon_action
+
+/datum/armor/suit_chameleon
+	melee = 10
+	bullet = 10
+	laser = 10
+	fire = 50
+	acid = 50
 
 /obj/item/clothing/suit/chameleon/Initialize(mapload)
 	. = ..()
@@ -447,11 +461,17 @@
 	icon_state = "meson"
 	inhand_icon_state = "meson"
 	resistance_flags = NONE
-	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 50)
+	armor_type = /datum/armor/glasses_chameleon
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
 	special_desc = "Chameleon glasses employed by the Syndicate in infiltration operations." // SKYRAT EDIT
-
 	var/datum/action/item_action/chameleon/change/chameleon_action
+
+/datum/armor/glasses_chameleon
+	melee = 10
+	bullet = 10
+	laser = 10
+	fire = 50
+	acid = 50
 
 /obj/item/clothing/glasses/chameleon/Initialize(mapload)
 	. = ..()
@@ -481,9 +501,16 @@
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
 	special_desc = "A pair of chameleon gloves employed by the Syndicate in infiltration operations." // Skyrat edit
 	resistance_flags = NONE
-	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 50)
+	armor_type = /datum/armor/gloves_chameleon
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
+
+/datum/armor/gloves_chameleon
+	melee = 10
+	bullet = 10
+	laser = 10
+	fire = 50
+	acid = 50
 
 /obj/item/clothing/gloves/chameleon/Initialize(mapload)
 	. = ..()
@@ -511,9 +538,16 @@
 	worn_icon = 'icons/mob/clothing/head/hats.dmi'
 	icon_state = "greysoft"
 	resistance_flags = NONE
-	armor = list(MELEE = 5, BULLET = 5, LASER = 5, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 50)
+	armor_type = /datum/armor/head_chameleon
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
+
+/datum/armor/head_chameleon
+	melee = 5
+	bullet = 5
+	laser = 5
+	fire = 50
+	acid = 50
 
 /obj/item/clothing/head/chameleon/Initialize(mapload)
 	. = ..()
@@ -537,8 +571,15 @@
 /obj/item/clothing/head/chameleon/drone
 	// The camohat, I mean, holographic hat projection, is part of the
 	// drone itself.
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/none
 	// which means it offers no protection, it's just air and light
+
+/datum/armor/head_chameleon
+	melee = 5
+	bullet = 5
+	laser = 5
+	fire = 50
+	acid = 50
 
 /obj/item/clothing/head/chameleon/drone/Initialize(mapload)
 	. = ..()
@@ -555,7 +596,7 @@
 	icon_state = "gas_alt"
 	inhand_icon_state = "gas_alt"
 	resistance_flags = NONE
-	armor = list(MELEE = 5, BULLET = 5, LASER = 5, ENERGY = 0, BOMB = 0, BIO = 100, FIRE = 50, ACID = 50)
+	armor_type = /datum/armor/mask_chameleon
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH
@@ -566,6 +607,14 @@
 	var/voice_change = 1 ///This determines if the voice changer is on or off.
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
+
+/datum/armor/mask_chameleon
+	melee = 5
+	bullet = 5
+	laser = 5
+	bio = 100
+	fire = 50
+	acid = 50
 
 /obj/item/clothing/mask/chameleon/Initialize(mapload)
 	. = ..()
@@ -593,9 +642,17 @@
 
 /obj/item/clothing/mask/chameleon/drone
 	//Same as the drone chameleon hat, undroppable and no protection
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/none
 	// Can drones use the voice changer part? Let's not find out.
 	voice_change = 0
+
+/datum/armor/mask_chameleon
+	melee = 5
+	bullet = 5
+	laser = 5
+	bio = 100
+	fire = 50
+	acid = 50
 
 /obj/item/clothing/mask/chameleon/drone/Initialize(mapload)
 	. = ..()
@@ -618,11 +675,18 @@
 	greyscale_config_worn = /datum/greyscale_config/sneakers_worn
 	desc = "A pair of black shoes."
 	resistance_flags = NONE
-	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 90, FIRE = 50, ACID = 50)
+	armor_type = /datum/armor/shoes_chameleon
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
 	special_desc = "A pair of chameleon shoes employed by the Syndicate in infiltration operations." // Skyrat edit
-
 	var/datum/action/item_action/chameleon/change/chameleon_action
+
+/datum/armor/shoes_chameleon
+	melee = 10
+	bullet = 10
+	laser = 10
+	bio = 90
+	fire = 50
+	acid = 50
 
 /obj/item/clothing/shoes/chameleon/Initialize(mapload)
 	. = ..()
@@ -647,6 +711,14 @@
 	special_desc = "A pair of chameleon shoes with an anti-slip coating employed by the Syndicate in infiltration operations."  // Skyrat edit
 
 
+/datum/armor/shoes_chameleon
+	melee = 10
+	bullet = 10
+	laser = 10
+	bio = 90
+	fire = 50
+	acid = 50
+
 /obj/item/clothing/shoes/chameleon/noslip/broken/Initialize(mapload)
 	. = ..()
 	chameleon_action.emp_randomise(INFINITY)
@@ -657,6 +729,14 @@
 	special_desc = "A chameleon backpack employed by the Syndicate in infiltration operations."  // Skyrat edit
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
+
+/datum/armor/shoes_chameleon
+	melee = 10
+	bullet = 10
+	laser = 10
+	bio = 90
+	fire = 50
+	acid = 50
 
 /obj/item/storage/backpack/chameleon/Initialize(mapload)
 	. = ..()
@@ -683,6 +763,14 @@
 	special_desc = "A chameleon belt employed by the Syndicate in infiltration operations."  // Skyrat edit
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
+
+/datum/armor/shoes_chameleon
+	melee = 10
+	bullet = 10
+	laser = 10
+	bio = 90
+	fire = 50
+	acid = 50
 
 /obj/item/storage/belt/chameleon/Initialize(mapload)
 	. = ..()
@@ -712,6 +800,14 @@
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
+/datum/armor/shoes_chameleon
+	melee = 10
+	bullet = 10
+	laser = 10
+	bio = 90
+	fire = 50
+	acid = 50
+
 /obj/item/radio/headset/chameleon/Initialize(mapload)
 	. = ..()
 	chameleon_action = new(src)
@@ -733,6 +829,14 @@
 /obj/item/modular_computer/pda/chameleon
 	name = "tablet"
 	var/datum/action/item_action/chameleon/change/tablet/chameleon_action
+
+/datum/armor/shoes_chameleon
+	melee = 10
+	bullet = 10
+	laser = 10
+	bio = 90
+	fire = 50
+	acid = 50
 
 /obj/item/modular_computer/pda/chameleon/Initialize(mapload)
 	. = ..()
@@ -756,6 +860,14 @@
 /obj/item/stamp/chameleon
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
+/datum/armor/shoes_chameleon
+	melee = 10
+	bullet = 10
+	laser = 10
+	bio = 90
+	fire = 50
+	acid = 50
+
 /obj/item/stamp/chameleon/Initialize(mapload)
 	. = ..()
 	chameleon_action = new(src)
@@ -773,7 +885,7 @@
 	desc = "A neosilk clip-on tie."
 	icon_state = "detective" //we use this icon_state since the other ones are all generated by GAGS.
 	resistance_flags = NONE
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 50)
+	armor_type = /datum/armor/neck_chameleon
 	w_class = WEIGHT_CLASS_SMALL
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE  // Skyrat edit
 	special_desc = "A chameleon tie employed by the Syndicate in infiltration operations."  // Skyrat edit
@@ -781,6 +893,10 @@
 
 /obj/item/clothing/neck/chameleon
 	var/datum/action/item_action/chameleon/change/chameleon_action
+
+/datum/armor/neck_chameleon
+	fire = 50
+	acid = 50
 
 /obj/item/clothing/neck/chameleon/Initialize(mapload)
 	. = ..()
@@ -818,6 +934,10 @@
 
 	/// The badmin mode. Makes your projectiles act like the real deal.
 	var/real_hits = FALSE
+
+/datum/armor/neck_chameleon
+	fire = 50
+	acid = 50
 
 /obj/item/gun/energy/laser/chameleon/Initialize(mapload)
 	. = ..()
