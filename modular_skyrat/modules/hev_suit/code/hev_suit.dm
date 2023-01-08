@@ -753,7 +753,8 @@
 	// 	armor_poweroff[9],
 	// 	armor_poweroff[10]
 	// 	)
-	REMOVE_TRAIT(current_helmet, TRAIT_NODROP, "hev_trait")
+	if(current_helmet)
+		REMOVE_TRAIT(current_helmet, TRAIT_NODROP, "hev_trait")
 	if(current_internals_tank)
 		REMOVE_TRAIT(current_internals_tank, TRAIT_NODROP, "hev_trait")
 	if(current_user)
