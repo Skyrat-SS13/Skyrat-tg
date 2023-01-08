@@ -259,12 +259,21 @@
 	desc = "A small barricade made from metal posting, designed to stop you from going places you aren't supposed to."
 	icon_state = "railing_0"
 	max_integrity = 150
-	armor = list(MELEE = 0, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = 15, BIO = 100, FIRE = 100, ACID = 10)
+	armor_type = /datum/armor/deployable_barricade_guardrail
 	stack_type = /obj/item/stack/rods
 	destroyed_stack_amount = 2
 	barricade_type = "railing"
 	allow_thrown_objs = FALSE
 	can_wire = FALSE
+
+/datum/armor/deployable_barricade_guardrail
+	bullet = 50
+	laser = 50
+	energy = 50
+	bomb = 15
+	bio = 100
+	fire = 100
+	acid = 10
 
 /obj/structure/deployable_barricade/guardrail/update_icon()
 	. = ..()
@@ -331,7 +340,7 @@
 	desc = "A durable and easily mounted barricade made from metal plates, often used for rapid fortification. Repairing it requires a welder."
 	icon_state = "metal_0"
 	max_integrity = 200
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 100, FIRE = 80, ACID = 40)
+	armor_type = /datum/armor/deployable_barricade_metal
 	stack_type = /obj/item/stack/sheet/iron
 	stack_amount = 2
 	destroyed_stack_amount = 1
@@ -347,6 +356,11 @@
 	var/repair_amount = 2
 	/// Can we be upgraded?
 	var/can_upgrade = TRUE
+
+/datum/armor/deployable_barricade_metal
+	bio = 100
+	fire = 80
+	acid = 40
 
 /obj/structure/deployable_barricade/metal/AltClick(mob/user)
 	if(portable_type)
@@ -452,11 +466,11 @@
 
 	switch(choice)
 		if(BARRICADE_TYPE_BOMB)
-			armor = armor.modifyRating(bomb = 50)
+			set_armor_rating(BOMB, min(get_armor_rating(BOMB) + 50, 100))
 		if(BARRICADE_TYPE_MELEE)
-			armor = armor.modifyRating(melee = 30, bullet = 30)
+			set_armor(get_armor().generate_new_with_modifiers(list(MELEE = 30, BULLET = 30)))
 		if(BARRICADE_TYPE_ACID)
-			armor = armor.modifyRating(bio = 0, acid = 20)
+			set_armor(get_armor().generate_new_with_modifiers(list(ACID = 20)))
 
 	barricade_upgrade_type = choice
 
@@ -613,17 +627,16 @@
 
 			switch(barricade_upgrade_type)
 				if(BARRICADE_TYPE_BOMB)
-					armor = armor.modifyRating(bomb = -50)
+					set_armor_rating(BOMB, max(get_armor_rating(BOMB) - 50, 0))
 				if(BARRICADE_TYPE_MELEE)
-					armor = armor.modifyRating(melee = -30, bullet = -30)
+					set_armor(get_armor().generate_new_with_modifiers(list(MELEE = -30, BULLET = -30)))
 				if(BARRICADE_TYPE_ACID)
-					armor = armor.modifyRating(bio = 0, acid = -20)
+					set_armor(get_armor().generate_new_with_modifiers(list(ACID = -20)))
 
 			new /obj/item/stack/sheet/iron(loc, BARRICADE_UPGRADE_REQUIRED_SHEETS)
 			barricade_upgrade_type = null
 			update_icon()
 			return TRUE
-
 
 /obj/structure/deployable_barricade/metal/ex_act(severity)
 	switch(severity)
