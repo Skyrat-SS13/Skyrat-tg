@@ -31,6 +31,7 @@
 	var/atmosblock = FALSE
 	var/mob/camera/blob/overmind
 
+
 /datum/armor/structure_blob
 	fire = 80
 	acid = 70

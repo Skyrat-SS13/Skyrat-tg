@@ -17,6 +17,7 @@
 	inhand_icon_state = null
 	armor_type = /datum/armor/plasmaman_atmospherics
 
+
 /datum/armor/plasmaman_atmospherics
 	bio = 100
 	fire = 95

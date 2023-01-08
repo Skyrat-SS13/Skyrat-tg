@@ -144,6 +144,7 @@
 	var/deploy_time = 40
 	var/deploy_message = TRUE
 
+
 /datum/armor/barricade_security
 	melee = 10
 	bullet = 50

@@ -14,6 +14,7 @@
 	max_spores = BLOB_NODE_MAX_SPORES
 	ignore_syncmesh_share = TRUE
 
+
 /datum/armor/special_node
 	fire = 65
 	acid = 90

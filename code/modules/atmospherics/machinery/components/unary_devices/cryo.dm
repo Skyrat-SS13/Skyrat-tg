@@ -114,6 +114,7 @@
 	fair_market_price = 10
 	payment_department = ACCOUNT_MED
 
+
 /datum/armor/unary_cryo_cell
 	energy = 100
 	fire = 30

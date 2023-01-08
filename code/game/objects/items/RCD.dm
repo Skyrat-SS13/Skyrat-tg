@@ -785,6 +785,7 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	banned_upgrades = RCD_UPGRADE_SILO_LINK
 	var/energyfactor = 72
 
+
 /datum/armor/item_construction
 	fire = 100
 	acid = 50
