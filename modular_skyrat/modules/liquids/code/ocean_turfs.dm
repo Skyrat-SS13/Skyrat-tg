@@ -55,8 +55,8 @@
 	icon_state = "fissure-0"
 	base_icon_state = "fissure"
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_FISSURE)
-	canSmoothWith = list(SMOOTH_GROUP_FISSURE)
+	smoothing_groups = SMOOTH_GROUP_FISSURE
+	canSmoothWith = SMOOTH_GROUP_FISSURE
 	light_range = 3
 	light_color = LIGHT_COLOR_LAVA
 
