@@ -536,6 +536,12 @@
 	icon_state = "snail_eyeballs"
 	eyes_layer = ABOVE_BODY_FRONT_HEAD_LAYER //SKYRAT EDIT - Roundstart Snails
 
+/obj/item/organ/internal/eyes/jelly
+	name = "jelly eyes"
+	desc = "These eyes are made of a soft jelly. Unlike all other eyes, though, there are three of them."
+	eye_icon_state = "jelleyes"
+	icon_state = "eyeballs-jelly"
+
 /obj/item/organ/internal/eyes/night_vision/maintenance_adapted
 	name = "adapted eyes"
 	desc = "These red eyes look like two foggy marbles. They give off a particularly worrying glow in the dark."
