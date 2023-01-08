@@ -237,13 +237,14 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 /datum/loadout_item/toys/rubi_plush
 	name = "Huggable Bee Plushie"
 	item_path = /obj/item/toy/plush/skyrat/rubi
-/datum/loadout_item/toys/tracy
-	name = "Creature Plushie"
-	item_path = /obj/item/toy/plush/skyrat/tracy
 
 /datum/loadout_item/toys/derg_plushie
 	name = "Wingless Dragon Plushie"
 	item_path = /obj/item/toy/plush/skyrat/derg_plushie
+
+/datum/loadout_item/toys/tracy
+	name = "Creature Plushie"
+	item_path = /obj/item/toy/plush/skyrat/tracy
 
 /*
 *	CARDS
