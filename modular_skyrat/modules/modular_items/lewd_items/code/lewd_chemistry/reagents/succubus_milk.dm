@@ -129,14 +129,16 @@
 			exposed_mob.adjustOxyLoss(5)
 			exposed_mob.apply_damage(1, BRUTE, exposed_mob.get_bodypart(BODY_ZONE_CHEST))
 
-// Turns you into a female if character is male. Also adds breasts.
+// Turns you into a female if character is male. Also adds breasts and female genitalia. 
 /datum/reagent/drug/aphrodisiac/succubus_milk/overdose_effects(mob/living/carbon/human/exposed_mob)
-	var/double_dosing = FALSE //overdosing on succubus milk and incubus draft simultaneously
+	// Check if overdosing on succubus milk and incubus draft simultaneously, to prevent chat spam
+	var/double_dosing = FALSE 
 	for(var/r in exposed_mob.reagents.reagent_list)
 		var/datum/reagent/reagent = r
 		if(reagent.name == "incubus draft" && reagent.overdosed)
 			double_dosing = TRUE
-	//Begin breast growth
+			
+	// Begin breast growth
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
 		//Start making new breasts if prefs allow it and we don't already have them
 		if(!exposed_mob.getorganslot(ORGAN_SLOT_BREASTS) && exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
@@ -159,10 +161,23 @@
 					exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s chest suddenly bounces a bit."))
 					to_chat(exposed_mob, span_purple("Your chest feels warm, tingling with sensitivity as it strains against your clothes."))
 	
-	// Separates gender change stuff from breast growth.
+	// Add new vagina and womb if prefs allow
+	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
+		if(!exposed_mob.getorganslot(ORGAN_SLOT_VAGINA))
+			var/obj/item/organ/external/genital/vagina/new_vagina = new /obj/item/organ/external/genital/vagina
+			if (exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_VAGINA][MUTANT_INDEX_NAME] == "None")
+				exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_VAGINA][MUTANT_INDEX_NAME] = "Human"
+			new_vagina.build_from_dna(exposed_mob.dna, ORGAN_SLOT_VAGINA)
+			new_vagina.Insert(exposed_mob, 0, FALSE)
+			exposed_mob.update_body()
+		if(!exposed_mob.getorganslot(ORGAN_SLOT_WOMB))
+			var/obj/item/organ/external/genital/womb/new_womb = new /obj/item/organ/external/genital/womb
+			new_womb.build_from_dna(exposed_mob.dna, ORGAN_SLOT_WOMB)
+			new_womb.Insert(exposed_mob, 0, FALSE)
+			exposed_mob.update_body()
+	
+	// Separates gender change stuff from breast growth and shrinkage, as well as from new genitalia growth/removal
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
-		var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
-		var/obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
 		if (double_dosing)
 			if(exposed_mob.gender != PLURAL)
 				exposed_mob.set_gender(PLURAL)
@@ -174,50 +189,36 @@
 			exposed_mob.physique = exposed_mob.gender
 			exposed_mob.update_body()
 			exposed_mob.update_mutations_overlay()
+	
 		
-		//add new vagina and womb if prefs allow
-		if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
-			if(!exposed_mob.getorganslot(ORGAN_SLOT_VAGINA))
-				var/obj/item/organ/external/genital/vagina/new_vagina = new /obj/item/organ/external/genital/vagina
-				if (exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_VAGINA][MUTANT_INDEX_NAME] == "None")
-					exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_VAGINA][MUTANT_INDEX_NAME] = "Human"
-				new_vagina.build_from_dna(exposed_mob.dna, ORGAN_SLOT_VAGINA)
-				new_vagina.Insert(exposed_mob, 0, FALSE)
+	// Cock & ball shrinkage portion. Check if prefs allow for this.
+	var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
+	var/obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/penis_shrinkage))
+		// Penis shrinkage
+		if(mob_penis)
+			if(mob_penis.genital_size == penis_min_length)
+				mob_penis.Remove(exposed_mob)
 				exposed_mob.update_body()
-			if(!exposed_mob.getorganslot(ORGAN_SLOT_WOMB))
-				var/obj/item/organ/external/genital/womb/new_womb = new /obj/item/organ/external/genital/womb
-				new_womb.build_from_dna(exposed_mob.dna, ORGAN_SLOT_WOMB)
-				new_womb.Insert(exposed_mob, 0, FALSE)
-				exposed_mob.update_body()
+			else 
+				if(mob_penis.genital_size > penis_min_length)
+					mob_penis.genital_size -= penis_size_reduction_step
+					mob_penis.update_sprite_suffix()
+					exposed_mob.update_body()
+				if(mob_penis.girth > penis_minimum_girth)
+					mob_penis.girth -= penis_girth_reduction_step
+					mob_penis.update_sprite_suffix()
+					exposed_mob.update_body()
 		
-		//Cock shrinkage portion
-		if(!mob_penis && !mob_testicles)
-			return
-		if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/penis_shrinkage)) // To do cock shrinkage, check if prefs allow for this.
-			// Penis shrinkage
-			if(mob_penis)
-				if(mob_penis.genital_size == penis_min_length)
-					mob_penis.Remove(exposed_mob)
-					exposed_mob.update_body()
-				else 
-					if(mob_penis.genital_size > penis_min_length)
-						mob_penis.genital_size -= penis_size_reduction_step
-						mob_penis.update_sprite_suffix()
-						exposed_mob.update_body()
-					if(mob_penis.girth > penis_minimum_girth)
-						mob_penis.girth -= penis_girth_reduction_step
-						mob_penis.update_sprite_suffix()
-						exposed_mob.update_body()
-			
-			// Testicles shrinkage
-			if(mob_testicles)
-				if(mob_testicles.genital_size > 0)
-					mob_testicles.genital_size -= 1
-					mob_testicles.update_sprite_suffix()
-					exposed_mob.update_body()
-				else if(mob_testicles.genital_size == 0)
-					mob_testicles.Remove(exposed_mob)
-					exposed_mob.update_body()
+		// Testicles shrinkage
+		if(mob_testicles)
+			if(mob_testicles.genital_size > 0)
+				mob_testicles.genital_size -= 1
+				mob_testicles.update_sprite_suffix()
+				exposed_mob.update_body()
+			else if(mob_testicles.genital_size == 0)
+				mob_testicles.Remove(exposed_mob)
+				exposed_mob.update_body()
 
 // Notify the user that they're overdosing. Doesn't affect their mood.
 /datum/reagent/drug/aphrodisiac/succubus_milk/overdose_start(mob/living/carbon/human/exposed_mob)

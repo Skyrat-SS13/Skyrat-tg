@@ -129,6 +129,13 @@
 	return ..()
 
 /datum/reagent/drug/aphrodisiac/incubus_draft/overdose_effects(mob/living/carbon/human/exposed_mob)
+	// Check if overdosing on incubus draft and succubus milk simultaneously, to prevent chat spam
+	var double_dosing = FALSE
+	for(var/r in exposed_mob.reagents.reagent_list)
+		var/datum/reagent/reagent = r
+		if(reagent.name == "succubus milk" && reagent.overdosed)
+			double_dosing = TRUE
+
 	//Begin cock growth
 	if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/penis_enlargement))
 		//Start making new genitals if prefs allow it and if there isn't already one there
@@ -157,7 +164,8 @@
 			new_penis.girth = 3
 			new_penis.update_sprite_suffix()
 			exposed_mob.update_body()
-			to_chat(exposed_mob, span_purple("Your crotch feels warm as something suddenly sprouts between your legs."))
+			if(!double_dosing)
+				to_chat(exposed_mob, span_purple("Your crotch feels warm as something suddenly sprouts between your legs."))
 			
 		// Makes the balls bigger if they're small.
 		var/obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
@@ -167,13 +175,8 @@
 				mob_testicles.update_sprite_suffix()
 				exposed_mob.update_body()
 	
-	// Separates gender change stuff from cock growth.
+	// Separates gender change stuff from cock growth, breast shrinkage, and female genitalia removal
 	if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/gender_change))
-		var double_dosing = FALSE //overdosing on succubus milk and incubus draft simultaneously
-		for(var/r in exposed_mob.reagents.reagent_list)
-			var/datum/reagent/reagent = r
-			if(reagent.name == "succubus milk" && reagent.overdosed)
-				double_dosing = TRUE
 		if (double_dosing)
 			if(exposed_mob.gender != PLURAL)
 				exposed_mob.set_gender(PLURAL)
@@ -186,23 +189,10 @@
 			exposed_mob.update_body()
 			exposed_mob.update_mutations_overlay()
 		
-		// To do breast shrinkage, check if prefs allow for this.
-		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_shrinkage) || exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_removal)) 
-			var/obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
-			var/obj/item/organ/external/genital/vagina/mob_vagina = exposed_mob.getorganslot(ORGAN_SLOT_VAGINA)
-			var/obj/item/organ/external/genital/womb/mob_womb = exposed_mob.getorganslot(ORGAN_SLOT_WOMB)
-			//remove vagina and womb if preferences allow
-			if(mob_vagina)
-				if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_removal))
-					mob_vagina.Remove(exposed_mob)
-					exposed_mob.update_body()
-			if(mob_womb)
-				if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_removal))
-					mob_womb.Remove(exposed_mob)
-					exposed_mob.update_body()
-			//breast shrinkage/removal if prefs allow
-			if(!mob_breasts)
-				return
+	// To do breast shrinkage, check if there are breasts & if prefs allow for this
+	var/obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
+	if(mob_breasts)
+		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_shrinkage)) 
 			if(mob_breasts.genital_size > breast_minimum_size)
 				mob_breasts.genital_size -= breast_size_reduction_step
 				mob_breasts.update_sprite_suffix()
@@ -213,6 +203,18 @@
 						to_chat(exposed_mob, span_purple("Your breasts have completely tightened into firm, flat pecs."))
 					mob_breasts.Remove(exposed_mob)
 					exposed_mob.update_body()
+	
+	// Vagina and womb removal. check if they exist & if prefs allow for this
+	var/obj/item/organ/external/genital/vagina/mob_vagina = exposed_mob.getorganslot(ORGAN_SLOT_VAGINA)
+	var/obj/item/organ/external/genital/womb/mob_womb = exposed_mob.getorganslot(ORGAN_SLOT_WOMB)
+	if(mob_vagina)
+		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_removal))
+			mob_vagina.Remove(exposed_mob)
+			exposed_mob.update_body()
+	if(mob_womb)
+		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_removal))
+			mob_womb.Remove(exposed_mob)
+			exposed_mob.update_body()
 
 // Notify the user that they're overdosing. Doesn't affect their mood.
 /datum/reagent/drug/aphrodisiac/incubus_draft/overdose_start(mob/living/carbon/human/exposed_mob)
