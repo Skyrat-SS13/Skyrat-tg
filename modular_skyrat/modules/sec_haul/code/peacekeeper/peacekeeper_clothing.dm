@@ -37,7 +37,7 @@
 	icon_state = "peacekeeper_sergeant_cap"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/hos/beret/peacekeeper
+/obj/item/clothing/head/hats/hos/beret/peacekeeper
 	name = "head of security's peacekeeper beret"
 	desc = "A special beret with the Head of Security's insignia emblazoned on it. A symbol of excellence, a badge of courage, a mark of distinction."
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
@@ -176,7 +176,7 @@
 	heat_protection = 0
 	max_heat_protection_temperature = null
 	resistance_flags = FLAMMABLE
-	armor = null
+	armor_type = /datum/armor/none
 	cut_type = null
 
 /obj/item/clothing/gloves/tackler/peacekeeper
