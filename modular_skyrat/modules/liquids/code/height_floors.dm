@@ -45,10 +45,10 @@
 	liquid_height = -30
 	turf_height = -30
 
-/turf/open/floor/iron/pool/setup_broken_states()
+/turf/open/floor/iron/pool/broken_states()
 	return list(base_icon_state)
 
-/turf/open/floor/iron/pool/setup_burnt_states()
+/turf/open/floor/iron/pool/burnt_states()
 	return list(base_icon_state)
 
 /turf/open/floor/iron/pool/rust_heretic_act()
@@ -84,10 +84,10 @@
 	liquid_height = 30
 	turf_height = 30
 
-/turf/open/floor/iron/elevated/setup_broken_states()
+/turf/open/floor/iron/elevated/broken_states()
 	return list("elevated_plasteel")
 
-/turf/open/floor/iron/elevated/setup_burnt_states()
+/turf/open/floor/iron/elevated/burnt_states()
 	return list("elevated_plasteel")
 
 /turf/open/floor/iron/elevated/rust_heretic_act()
@@ -105,10 +105,10 @@
 	liquid_height = -30
 	turf_height = -30
 
-/turf/open/floor/iron/lowered/setup_broken_states()
+/turf/open/floor/iron/lowered/broken_states()
 	return list("lowered_plasteel")
 
-/turf/open/floor/iron/lowered/setup_burnt_states()
+/turf/open/floor/iron/lowered/burnt_states()
 	return list("lowered_plasteel")
 
 /turf/open/floor/iron/lowered/rust_heretic_act()
