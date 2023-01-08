@@ -234,6 +234,7 @@
 	response_harm_continuous = "splats"
 	response_harm_simple = "splat"
 	gold_core_spawnable = NO_SPAWN
+	faction = list(FACTION_RAT, FACTION_MAINT_CREATURES, FACTION_NEUTRAL)
 
 /mob/living/basic/mouse/brown/tom/Initialize(mapload)
 	. = ..()
@@ -305,6 +306,7 @@
 /obj/item/food/deadmouse/afterattack(obj/target, mob/living/user, proximity_flag)
 	. = ..()
 	if(proximity_flag && reagents && target.is_open_container())
+		. |= AFTERATTACK_PROCESSED_ITEM
 		// is_open_container will not return truthy if target.reagents doesn't exist
 		var/datum/reagents/target_reagents = target.reagents
 		var/trans_amount = reagents.maximum_volume - reagents.total_volume * (4 / 3)
@@ -312,7 +314,7 @@
 			to_chat(user, span_notice("You dip [src] into [target]."))
 		else
 			to_chat(user, span_warning("That's a terrible idea."))
-		return
+		return .
 
 /obj/item/food/deadmouse/moldy
 	name = "moldy dead mouse"
@@ -326,21 +328,33 @@
 /// The mouse AI controller
 /datum/ai_controller/basic_controller/mouse
 	blackboard = list(
+		BB_BASIC_MOB_FLEEING = TRUE, // Always cowardly
 		BB_CURRENT_HUNTING_TARGET = null, // cheese
 		BB_LOW_PRIORITY_HUNTING_TARGET = null, // cable
+		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic(), // Use this to find people to run away from
 	)
 
 	ai_traits = STOP_MOVING_WHEN_PULLED
 	ai_movement = /datum/ai_movement/basic_avoidance
 	idle_behavior = /datum/idle_behavior/idle_random_walk
 	planning_subtrees = list(
-		// Top priority is to look for and execute hunts for cheese
+		// Top priority is to look for and execute hunts for cheese even if someone is looking at us
 		/datum/ai_planning_subtree/find_and_hunt_target/look_for_cheese,
-		// Try to speak after a cheese hunt, because it's cute
+		// Next priority is see if anyone is looking at us
+		/datum/ai_planning_subtree/simple_find_nearest_target_to_flee,
+		// Skedaddle
+		/datum/ai_planning_subtree/flee_target/mouse,
+		// Try to speak, because it's cute
 		/datum/ai_planning_subtree/random_speech/mouse,
 		// Otherwise, look for and execute hunts for cabling
 		/datum/ai_planning_subtree/find_and_hunt_target/look_for_cables,
 	)
+
+/datum/ai_planning_subtree/flee_target/mouse
+	flee_behaviour = /datum/ai_behavior/run_away_from_target/mouse
+
+/datum/ai_behavior/run_away_from_target/mouse
+	run_distance = 3 // Mostly exists in small tunnels, don't get ahead of yourself
 
 /// AI controller for rats, slightly more complex than mice becuase they attack people
 /datum/ai_controller/basic_controller/mouse/rat

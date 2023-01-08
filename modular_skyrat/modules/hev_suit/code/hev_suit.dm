@@ -41,7 +41,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "hev"
-	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 30, BIO = 40, FIRE = 40, ACID = 40, WOUND = 10)
+	armor_type = /datum/armor/space_hev_suit
 	obj_flags = NO_MAT_REDEMPTION
 	resistance_flags = LAVA_PROOF|FIRE_PROOF|UNACIDABLE|ACID_PROOF|INDESTRUCTIBLE|FREEZE_PROOF
 	clothing_flags = STOPSPRESSUREDAMAGE|THICKMATERIAL|SNUG_FIT|LAVAPROTECT|BLOCK_GAS_SMOKE_EFFECT
@@ -51,13 +51,24 @@
 	dog_fashion = null
 	slowdown = 0
 
+/datum/armor/space_hev_suit
+	melee = 20
+	bullet = 20
+	laser = 20
+	energy = 20
+	bomb = 30
+	bio = 40
+	fire = 40
+	acid = 40
+	wound = 10
+
 /obj/item/clothing/suit/space/hev_suit
 	name = "hazardous environment suit"
 	desc = "The Mark IV HEV suit protects the user from a number of hazardous environments and has in build ballistic protection."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "hev"
-	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 30, BIO = 40, FIRE = 40, ACID = 40, WOUND = 10) //This is gordons suit, of course it's strong.
+	armor_type = /datum/armor/space_hev_suit
 	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/energy/sword, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
 	cell = /obj/item/stock_parts/cell/hyper
 	slowdown = 0 //I am not gimping doctor freeman
@@ -164,6 +175,17 @@
 
 	/// On first activation, we play the user a nice song!
 	var/first_use = TRUE
+
+/datum/armor/space_hev_suit
+	melee = 20
+	bullet = 20
+	laser = 20
+	energy = 20
+	bomb = 30
+	bio = 40
+	fire = 40
+	acid = 40
+	wound = 10
 
 /obj/item/clothing/suit/space/hev_suit/Initialize(mapload)
 	. = ..()
@@ -395,30 +417,31 @@
 		batt_50_alarm = FALSE
 
 /obj/item/clothing/suit/space/hev_suit/proc/powerarmor()
-	armor = armor.setRating(
-		armor_poweron[1],
-		armor_poweron[2],
-		armor_poweron[3],
-		armor_poweron[4],
-		armor_poweron[5],
-		armor_poweron[6],
-		armor_poweron[7],
-		armor_poweron[8],
-		armor_poweron[9],
-		armor_poweron[10]
-		)
-	current_helmet.armor = current_helmet.armor.setRating(
-		armor_poweron[1],
-		armor_poweron[2],
-		armor_poweron[3],
-		armor_poweron[4],
-		armor_poweron[5],
-		armor_poweron[6],
-		armor_poweron[7],
-		armor_poweron[8],
-		armor_poweron[9],
-		armor_poweron[10]
-		)
+	// hi, WHAT THE FUCK IS THIS? I refuse to fix this
+	// armor = armor.setRating(
+	// 	armor_poweron[1],
+	// 	armor_poweron[2],
+	// 	armor_poweron[3],
+	// 	armor_poweron[4],
+	// 	armor_poweron[5],
+	// 	armor_poweron[6],
+	// 	armor_poweron[7],
+	// 	armor_poweron[8],
+	// 	armor_poweron[9],
+	// 	armor_poweron[10]
+	// 	)
+	// current_helmet.armor = current_helmet.armor.setRating(
+	// 	armor_poweron[1],
+	// 	armor_poweron[2],
+	// 	armor_poweron[3],
+	// 	armor_poweron[4],
+	// 	armor_poweron[5],
+	// 	armor_poweron[6],
+	// 	armor_poweron[7],
+	// 	armor_poweron[8],
+	// 	armor_poweron[9],
+	// 	armor_poweron[10]
+	// 	)
 	user_old_bruteloss = current_user.getBruteLoss()
 	user_old_fireloss = current_user.getFireLoss()
 	user_old_toxloss = current_user.getToxLoss()
@@ -704,31 +727,33 @@
 		deltimer(timer_id)
 	STOP_PROCESSING(SSobj, src)
 	REMOVE_TRAIT(src, TRAIT_NODROP, "hev_trait")
-	armor = armor.setRating(
-		armor_poweroff[1],
-		armor_poweroff[2],
-		armor_poweroff[3],
-		armor_poweroff[4],
-		armor_poweroff[5],
-		armor_poweroff[6],
-		armor_poweroff[7],
-		armor_poweroff[8],
-		armor_poweroff[9],
-		armor_poweroff[10]
-		)
+	// See above.
+	// armor = armor.setRating(
+	// 	armor_poweroff[1],
+	// 	armor_poweroff[2],
+	// 	armor_poweroff[3],
+	// 	armor_poweroff[4],
+	// 	armor_poweroff[5],
+	// 	armor_poweroff[6],
+	// 	armor_poweroff[7],
+	// 	armor_poweroff[8],
+	// 	armor_poweroff[9],
+	// 	armor_poweroff[10]
+	// 	)
+	// if(current_helmet)
+	// 	current_helmet.armor = current_helmet.armor.setRating(
+	// 	armor_poweroff[1],
+	// 	armor_poweroff[2],
+	// 	armor_poweroff[3],
+	// 	armor_poweroff[4],
+	// 	armor_poweroff[5],
+	// 	armor_poweroff[6],
+	// 	armor_poweroff[7],
+	// 	armor_poweroff[8],
+	// 	armor_poweroff[9],
+	// 	armor_poweroff[10]
+	// 	)
 	if(current_helmet)
-		current_helmet.armor = current_helmet.armor.setRating(
-		armor_poweroff[1],
-		armor_poweroff[2],
-		armor_poweroff[3],
-		armor_poweroff[4],
-		armor_poweroff[5],
-		armor_poweroff[6],
-		armor_poweroff[7],
-		armor_poweroff[8],
-		armor_poweroff[9],
-		armor_poweroff[10]
-		)
 		REMOVE_TRAIT(current_helmet, TRAIT_NODROP, "hev_trait")
 	if(current_internals_tank)
 		REMOVE_TRAIT(current_internals_tank, TRAIT_NODROP, "hev_trait")
@@ -758,7 +783,7 @@
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob_muzzled.dmi'
 	icon_state = "hecu_helm"
-	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 20, FIRE = 20, ACID = 20, WOUND = 10)
+	armor_type = /datum/armor/hev_suit_pcv
 	flags_inv = HIDEHAIR
 	obj_flags = NO_MAT_REDEMPTION
 	supports_variations_flags = NONE
@@ -790,6 +815,17 @@
 		),
 	)
 
+/datum/armor/hev_suit_pcv
+	melee = 30
+	bullet = 30
+	laser = 30
+	energy = 30
+	bomb = 30
+	bio = 20
+	fire = 20
+	acid = 20
+	wound = 10
+
 /obj/item/clothing/suit/space/hev_suit/pcv
 	name = "powered combat vest"
 	desc = "An electrically charged piece of body armor, the power stiffens the suit's fibers to provide a layer of resilient armor in response to trauma received from kinetic force.  It's fitted with a geiger counter, tactical radio, a heads up display and a combat cocktail injector that allows the user to function normally even after serious injury. The concentration of mass in the lower rear side from the onboard computer makes your ass feel heavy."
@@ -797,7 +833,7 @@
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob_digi.dmi'
 	icon_state = "hecu_vest"
-	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 20, FIRE = 20, ACID = 20, WOUND = 10) //This is muhreens suit, of course it's mildly strong and balanced for PvP.
+	armor_type = /datum/armor/hev_suit_pcv
 	flags_inv = null
 	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/energy/sword, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
 	cell = /obj/item/stock_parts/cell/super
@@ -870,6 +906,17 @@
 	rads_static_cooldown = PCV_COOLDOWN_RADS
 	acid_static_cooldown = PCV_COOLDOWN_ACID
 	suit_name = "PCV MARK II"
+
+/datum/armor/hev_suit_pcv
+	melee = 30
+	bullet = 30
+	laser = 30
+	energy = 30
+	bomb = 30
+	bio = 20
+	fire = 20
+	acid = 20
+	wound = 10
 
 /obj/item/clothing/suit/space/hev_suit/pcv/AltClick(mob/living/user)
 	reskin_obj(user)

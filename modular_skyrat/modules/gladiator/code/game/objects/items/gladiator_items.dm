@@ -50,8 +50,18 @@
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
 	hoodtype = /obj/item/clothing/head/hooded/berserker/gatsu
 	w_class = WEIGHT_CLASS_BULKY
-	armor = list(MELEE = 40, BULLET = 40, LASER = 20, ENERGY = 25, BOMB = 70, BIO = 100, FIRE = 100, ACID = 100)
+	armor_type = /datum/armor/berserker_gatsu
 	resistance_flags = INDESTRUCTIBLE
+
+/datum/armor/berserker_gatsu
+	melee = 40
+	bullet = 40
+	laser = 20
+	energy = 25
+	bomb = 70
+	bio = 100
+	fire = 100
+	acid = 100
 
 /obj/item/clothing/suit/hooded/berserker/gatsu/examine()
 	. = ..()
@@ -64,11 +74,21 @@
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
-	armor = list(MELEE = 40, BULLET = 40, LASER = 20, ENERGY = 25, BOMB = 70, BIO = 100, FIRE = 100, ACID = 100)
+	armor_type = /datum/armor/berserker_gatsu
 	resistance_flags = INDESTRUCTIBLE
 	actions_types = list(/datum/action/item_action/berserk_mode)
 	///tracks whether or not the armor's charge is equal to or greater than 100% so it does not do the bubble alert twice
 	var/charged = FALSE
+
+/datum/armor/berserker_gatsu
+	melee = 40
+	bullet = 40
+	laser = 20
+	energy = 25
+	bomb = 70
+	bio = 100
+	fire = 100
+	acid = 100
 
 /obj/item/clothing/head/hooded/berserker/gatsu/Initialize(mapload)
 	. = ..()
