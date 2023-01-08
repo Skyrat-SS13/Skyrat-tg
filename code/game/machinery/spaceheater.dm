@@ -100,12 +100,10 @@
 	if(panel_open && display_panel)
 		. += "[base_icon_state]-open"
 
-/* //SKYRAT EDIT REMOVAL - listen our mirrors are pretty fucked rn please readd when this compiles
 /obj/machinery/space_heater/on_set_panel_open()
 	update_appearance()
 	return ..()
-*/ //SKYRAT REMOVAL END
-
+	
 /obj/machinery/space_heater/process_atmos()
 	if(!on || !is_operational)
 		if (on) // If it's broken, turn it off too
@@ -289,8 +287,7 @@
 
 /obj/machinery/space_heater/constructed/Initialize(mapload)
 	. = ..()
-	panel_open = TRUE
-	update_appearance()
+	set_panel_open(TRUE)
 
 /obj/machinery/space_heater/proc/toggle_power(user)
 	on = !on

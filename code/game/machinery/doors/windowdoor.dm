@@ -305,7 +305,7 @@
 		return
 	add_fingerprint(user)
 	tool.play_tool_sound(src)
-	panel_open = !panel_open
+	toggle_panel_open()
 	to_chat(user, span_notice("You [panel_open ? "open" : "close"] the maintenance panel."))
 	return TRUE
 
