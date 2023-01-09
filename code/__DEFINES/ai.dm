@@ -163,11 +163,7 @@
 #define BB_FETCH_IGNORE_LIST "BB_FETCH_IGNORE_LISTlist"
 #define BB_FETCH_DELIVER_TO "BB_FETCH_DELIVER_TO"
 #define BB_DOG_HARASS_TARGET "BB_DOG_HARASS_TARGET"
-<<<<<<< HEAD
-#define BB_DOG_HARASS_FRUSTRATION "BB_DOG_HARASS_FRUSTRATION"
-=======
 #define BB_DOG_HARASS_HARM "BB_DOG_HARASS_HARM"
->>>>>>> eb6c0eb37c0 (Dogs use the Pet Command system (#72045))
 #define BB_DOG_IS_SLOW "BB_DOG_IS_SLOW"
 
 /// Basically, what is our vision/hearing range for picking up on things to fetch/
@@ -225,6 +221,9 @@
 
 ///List of mobs who have damaged us
 #define BB_BASIC_MOB_RETALIATE_LIST "BB_basic_mob_shitlist"
+
+/// Flag to set on or off if you want your mob to prioritise running away
+#define BB_BASIC_MOB_FLEEING "BB_basic_fleeing"
 
 ///list of foods this mob likes
 #define BB_BASIC_FOODS "BB_basic_foods"

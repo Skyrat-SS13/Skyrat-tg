@@ -223,6 +223,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	/// This supresses the "dosen't appear to be himself" examine text for if the mob is run by an AI controller. Should be used on any NPC human subtypes. Monkeys are the prime example.
 	var/ai_controlled_species = FALSE
 
+	/// Was on_species_gain ever actually called?
+	/// Species code is really odd...
+	var/properly_gained = FALSE
+
 ///////////
 // PROCS //
 ///////////
@@ -448,7 +452,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	C.mob_biotypes = inherent_biotypes
 
-	replace_body(C, src)
+	if (old_species.type != type)
+		replace_body(C, src)
+
 	regenerate_organs(C, old_species, visual_only = C.visual_only_organs)
 
 	INVOKE_ASYNC(src, PROC_REF(worn_items_fit_body_check), C, TRUE)
@@ -509,6 +515,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	C.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 
 	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
+
+	properly_gained = TRUE
 
 /**
  * Proc called when a carbon is no longer this species.
@@ -809,11 +817,16 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			return "FRONT_OVER"
 		//SKYRAT EDIT ADDITION END
 
-///Proc that will randomise the underwear (i.e. top, pants and socks) of a species' associated mob
-/datum/species/proc/randomize_active_underwear(mob/living/carbon/human/human_mob)
+///Proc that will randomise the underwear (i.e. top, pants and socks) of a species' associated mob,
+/// but will not update the body right away.
+/datum/species/proc/randomize_active_underwear_only(mob/living/carbon/human/human_mob)
 	human_mob.undershirt = random_undershirt(human_mob.gender)
 	human_mob.underwear = random_underwear(human_mob.gender)
 	human_mob.socks = random_socks(human_mob.gender)
+
+///Proc that will randomise the underwear (i.e. top, pants and socks) of a species' associated mob
+/datum/species/proc/randomize_active_underwear(mob/living/carbon/human/human_mob)
+	randomize_active_underwear_only(human_mob)
 	human_mob.update_body()
 
 ///Proc that will randomize all the external organs (i.e. horns, frills, tails etc.) of a species' associated mob
@@ -1772,16 +1785,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	former_tail_owner.clear_mood_event("tail_balance_lost")
 	former_tail_owner.clear_mood_event("wrong_tail_regained")
 
-/**
- * The human species version of [/mob/living/carbon/proc/get_biological_state]. Depends on the HAS_FLESH and HAS_BONE species traits, having bones lets you have bone wounds, having flesh lets you have burn, slash, and piercing wounds
- */
-/datum/species/proc/get_biological_state(mob/living/carbon/human/H)
-	. = BIO_INORGANIC
-	if(HAS_FLESH in species_traits)
-		. |= BIO_JUST_FLESH
-	if(HAS_BONE in species_traits)
-		. |= BIO_JUST_BONE
-
 ///Species override for unarmed attacks because the attack_hand proc was made by a mouth-breathing troglodyte on a tricycle. Also to whoever thought it would be a good idea to make it so the original spec_unarmedattack was not actually linked to unarmed attack needs to be checked by a doctor because they clearly have a vast empty space in their head.
 /datum/species/proc/spec_unarmedattack(mob/living/carbon/human/user, atom/target, modifiers)
 	return FALSE
@@ -2247,3 +2250,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			new_part.replace_limb(target, TRUE)
 			new_part.update_limb(is_creating = TRUE)
 			qdel(old_part)
+
+/// Creates body parts for the target completely from scratch based on the species
+/datum/species/proc/create_fresh_body(mob/living/carbon/target)
+	target.create_bodyparts(bodypart_overrides)
