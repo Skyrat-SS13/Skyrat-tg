@@ -7,8 +7,6 @@
 		HAIR,
 		FACEHAIR,
 		LIPS,
-		HAS_FLESH,
-		HAS_BONE
 	)
 	inherent_traits = list(
 		TRAIT_DWARF,TRAIT_SNOB,

@@ -34,9 +34,8 @@
 		"legs" = "Normal Legs",
 		MUTANT_SYNTH_ANTENNA = "None",
 		MUTANT_SYNTH_SCREEN = "None",
-		MUTANT_SYNTH_CHASSIS = "None",
-		MUTANT_SYNTH_HEAD = "None",
-		MUTANT_SYNTH_HAIR = "None",
+		MUTANT_SYNTH_CHASSIS = "Default Chassis",
+		MUTANT_SYNTH_HEAD = "Default Head",
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
