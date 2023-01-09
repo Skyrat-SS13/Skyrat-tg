@@ -261,9 +261,11 @@
 					coupon_check.moveToNullspace()
 					applied_coupon = coupon_check
 					break
-
+			//Skyrat Edit Add
+			var/charge_on_purchase = TRUE
 			var/turf/T = get_turf(src)
-			var/datum/supply_order/SO = new(pack, name, rank, ckey, reason, account, null, applied_coupon)
+			var/datum/supply_order/SO = new(pack, name, rank, ckey, reason, account, null, applied_coupon, charge_on_purchase)
+			//Skyrat Edit End
 			SO.generateRequisition(T)
 			if(requestonly && !self_paid)
 				SSshuttle.request_list += SO

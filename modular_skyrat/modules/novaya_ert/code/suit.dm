@@ -19,7 +19,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/suit.dmi'
 	icon_state = "russian_green_armor"
-	armor = list(MELEE = 30, BULLET = 40, LASER = 20, ENERGY = 30, BOMB = 35, BIO = 0, FIRE = 50, ACID = 50, WOUND = 15)
+	armor_type = /datum/armor/russian_nri
 	supports_variations_flags = CLOTHING_NO_VARIATION
 	inhand_icon_state = "armor"
 	uses_advanced_reskins = TRUE
@@ -34,6 +34,16 @@
 		),
 	)
 
+/datum/armor/russian_nri
+	melee = 30
+	bullet = 40
+	laser = 20
+	energy = 30
+	bomb = 35
+	fire = 50
+	acid = 50
+	wound = 15
+
 /obj/item/clothing/suit/armor/heavy/nri
 	name = "\improper Cordun-M armor system"
 	desc = "A robust set of full-body armor designed for the harshest of environments. A modern set of heavy armor recently implemented by NRI Defense Collegium to accomodate with modern specifications. While a combination of lighter materials and a passive internal exoskeleton might assist the user's movement, you'll still be as slow as a snail."
@@ -41,12 +51,23 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/suit.dmi'
 	icon_state = "russian_heavy_armor"
-	armor = list(MELEE = 60, BULLET = 60, LASER = 50, ENERGY = 50, BOMB = 100, BIO = 100, FIRE = 70, ACID = 70, WOUND = 35)
+	armor_type = /datum/armor/heavy_nri
 	resistance_flags = FIRE_PROOF|UNACIDABLE|ACID_PROOF|FREEZE_PROOF
 	clothing_flags = STOPSPRESSUREDAMAGE|SNUG_FIT|BLOCK_GAS_SMOKE_EFFECT|THICKMATERIAL
 	slowdown = 1.5
 	equip_delay_self = 5 SECONDS
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/datum/armor/heavy_nri
+	melee = 60
+	bullet = 60
+	laser = 50
+	energy = 50
+	bomb = 100
+	bio = 100
+	fire = 70
+	acid = 70
+	wound = 35
 
 /obj/item/clothing/suit/armor/heavy/nri/old
 	name = "\improper REDUT armor system"
@@ -54,10 +75,21 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "russian_heavy_armor_old"
-	armor = list(MELEE = 50, BULLET = 50, LASER = 40, ENERGY = 40, BOMB = 75, BIO = 60, FIRE = 45, ACID = 45, WOUND = 20)
+	armor_type = /datum/armor/nri_old
 	resistance_flags = FIRE_PROOF|ACID_PROOF|FREEZE_PROOF
 	clothing_flags = SNUG_FIT|THICKMATERIAL
 	slowdown = 2
+
+/datum/armor/nri_old
+	melee = 50
+	bullet = 50
+	laser = 40
+	energy = 40
+	bomb = 75
+	bio = 60
+	fire = 45
+	acid = 45
+	wound = 20
 
 /obj/item/clothing/suit/space/hev_suit/nri
 	name = "\improper VOSKHOD powered combat armor"
@@ -67,7 +99,7 @@
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
 	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/suit.dmi'
 	icon_state = "nri_soldier"
-	armor = list(MELEE = 25, BULLET = 25, LASER = 25, ENERGY = 25, BOMB = 25, BIO = 20, FIRE = 20, ACID = 20, WOUND = 10)
+	armor_type = /datum/armor/hev_suit_nri
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDESEXTOY|HIDETAIL
 	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/energy/sword, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
 	cell = /obj/item/stock_parts/cell/bluespace
@@ -125,6 +157,17 @@
 	first_use = FALSE //No nice song.
 
 
+
+/datum/armor/hev_suit_nri
+	melee = 25
+	bullet = 25
+	laser = 25
+	energy = 25
+	bomb = 25
+	bio = 20
+	fire = 20
+	acid = 20
+	wound = 10
 
 /datum/action/item_action/hev_toggle/nri
 	name = "Toggle VOSKHOD Suit"
