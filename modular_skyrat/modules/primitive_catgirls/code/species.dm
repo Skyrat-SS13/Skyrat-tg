@@ -48,10 +48,10 @@
 
 /datum/species/human/felinid/primitive/get_species_description()
 	return list(
-		"Though their true origin may be unknown, what is well known is that \
-			lavaland's icy moon is home to many types of seemingly primitive demihumans \
-			resembling 'genemodders' of the present day. Scientific surveys of the moon \
-			logged humanoids sporting features from many of the icemoon's local fauna."
+		"Genetically modified humanoids believed to be descendants of a now centuries old colony \
+			ship from the pre-bluespace travel era. Still sharing at least some human traits, they \
+			are most comparable to today's felinids with most sporting features likely spliced from \
+			the icemoon's many fauna."
 	)
 
 /datum/species/human/felinid/primitive/get_species_lore()
