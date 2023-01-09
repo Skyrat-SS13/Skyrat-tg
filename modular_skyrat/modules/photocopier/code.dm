@@ -13,7 +13,7 @@
 		if(spec.ass_image)
 			temp_img = icon('modular_skyrat/master_files/icons/obj/butts.dmi', spec.ass_image)
 	else if(isalienadult(ass))
-		temp_img = icon('modular_skyrat/master_files/icons/obj/butts.dmi', "xeno"))
+		temp_img = icon('modular_skyrat/master_files/icons/obj/butts.dmi', "xeno")
 	else if(issilicon(ass))
 		temp_img = icon('modular_skyrat/master_files/icons/obj/butts.dmi', "machine")
 	else if(isdrone(ass))
