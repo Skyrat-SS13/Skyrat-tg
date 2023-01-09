@@ -76,7 +76,7 @@
 		"suddenly expands to ",
 		"lengthens out to ",
 	)
-	/// Wording chosen to extend the cock, shown only to the mob.
+	/// Wording chosen to grow the balls, shown only to the mob.
 	var/static/list/ball_action_text_list = list(
 		"begin to swell",
 		"feel heavier all of a sudden",
@@ -143,9 +143,9 @@
 		if(reagent.name == "succubus milk" && reagent.overdosed)
 			double_dosing = TRUE
 
-	//Begin cock growth
+	// Begin cock growth
 	if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/penis_enlargement))
-		//Start making new genitals if prefs allow it and if there isn't already one there
+		// Start making new genitals if prefs allow it and if there isn't already one there
 		if(!exposed_mob.getorganslot(ORGAN_SLOT_PENIS) && exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
 			var/list/data = species_to_penis[exposed_mob.dna.species.id]
 			if(!data)
@@ -177,15 +177,15 @@
 		// Makes the balls bigger if they're small.
 		var/obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
 		if(mob_testicles)
-			if(mob_testicles.genital_size < 2 && prob(20))
+			if(mob_testicles.genital_size < 2 && prob(20)) // Add some randomness so growth happens more gradually in most cases
 				mob_testicles.genital_size++
 				mob_testicles.update_sprite_suffix()
 				exposed_mob.update_body()
-				if(!double_dosing)
+				if(!double_dosing) // So we don't spam chat
 					to_chat(exposed_mob, span_purple("Your balls [pick(ball_action_text_list)]. They are now [mob_testicles.balls_size_to_description(mob_testicles.genital_size)]."))
 			else if(mob_testicles.genital_size == 2) 
 				var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
-				if(mob_penis?.genital_size >= penis_max_length-4)
+				if(mob_penis?.genital_size >= penis_max_length-4) // Make the balls enormous only when the penis reaches a certain size theshold
 					mob_testicles.genital_size++
 					mob_testicles.update_sprite_suffix()
 					exposed_mob.update_body()
@@ -213,10 +213,11 @@
 			if(mob_breasts.genital_size > breast_minimum_size)
 				mob_breasts.genital_size -= breast_size_reduction_step
 				mob_breasts.update_sprite_suffix()
-				exposed_mob.update_body()
-			else if(mob_breasts.genital_size == breast_minimum_size)
+				exposed_mob.update_body
+			// Handle completely shrinking away, if prefs allow
+			else if(mob_breasts.genital_size == breast_minimum_size) 
 				if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
-					if(!double_dosing) //To eliminate spamming
+					if(!double_dosing)
 						to_chat(exposed_mob, span_purple("Your breasts have completely tightened into firm, flat pecs."))
 					mob_breasts.Remove(exposed_mob)
 					exposed_mob.update_body()
@@ -228,7 +229,7 @@
 		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
 			mob_vagina.Remove(exposed_mob)
 			exposed_mob.update_body()
-			if(!double_dosing) //To eliminate spamming
+			if(!double_dosing)
 				to_chat(exposed_mob, span_purple("You can the feel the muscles in your groin begin to tighten as your vagina seals itself completely shut."))
 			
 	if(mob_womb)

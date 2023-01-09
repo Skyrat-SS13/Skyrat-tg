@@ -140,7 +140,7 @@
 			
 	// Begin breast growth
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
-		//Start making new breasts if prefs allow it and we don't already have them
+		// Start making new breasts if prefs allow it and we don't already have them
 		if(!exposed_mob.getorganslot(ORGAN_SLOT_BREASTS) && exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
 			var/obj/item/organ/path = /obj/item/organ/external/genital/breasts
 			exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_BREASTS][MUTANT_INDEX_NAME] = "Pair"
@@ -153,11 +153,11 @@
 			exposed_mob.update_body()
 			enlargement_amount = 0
 			if(new_breasts.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_topless())
-				if(!double_dosing) //So we don't spam chat
+				if(!double_dosing) // So we don't spam chat
 					exposed_mob.visible_message(span_notice("[exposed_mob]'s bust suddenly expands!"))
 					to_chat(exposed_mob, span_purple("Your chest feels warm, tingling with sensitivity as it expands outward."))
 			else
-				if(!double_dosing) //So we don't spam chat
+				if(!double_dosing)
 					exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s chest suddenly bounces a bit."))
 					to_chat(exposed_mob, span_purple("Your chest feels warm, tingling with sensitivity as it strains against your clothes."))
 	
@@ -170,7 +170,7 @@
 			new_vagina.build_from_dna(exposed_mob.dna, ORGAN_SLOT_VAGINA)
 			new_vagina.Insert(exposed_mob, 0, FALSE)
 			exposed_mob.update_body()
-			if(!double_dosing) //To eliminate spamming
+			if(!double_dosing)
 				to_chat(exposed_mob, span_purple("You feel a warmth in your groin as something blossoms down there."))
 		if(!exposed_mob.getorganslot(ORGAN_SLOT_WOMB))
 			var/obj/item/organ/external/genital/womb/new_womb = new /obj/item/organ/external/genital/womb
@@ -199,6 +199,7 @@
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/penis_shrinkage))
 		// Penis shrinkage
 		if(mob_penis)
+			// Handle completely shrinking away, if prefs allow
 			if(mob_penis.genital_size == penis_min_length)
 				if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
 					mob_penis.Remove(exposed_mob)
@@ -219,11 +220,11 @@
 				mob_testicles.genital_size -= 1
 				mob_testicles.update_sprite_suffix()
 				exposed_mob.update_body()
-			else if(mob_testicles.genital_size == 0 && !mob_penis)
+			else if(mob_testicles.genital_size == 0 && !mob_penis) // Wait for penis to completely shrink away first before removing balls
 				if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
 					mob_testicles.Remove(exposed_mob)
 					exposed_mob.update_body()
-					if(!double_dosing) //To eliminate spamming
+					if(!double_dosing)
 						to_chat(exposed_mob, span_purple("You feel a tightening sensation in your groin as things seem to smooth out down there."))
 
 // Notify the user that they're overdosing. Doesn't affect their mood.

@@ -93,15 +93,15 @@
 	
 /datum/preference/toggle/erp/breast_shrinkage
 	savefile_key = "breast_shrinkage_pref"
-	
-/datum/preference/toggle/erp/genitalia_removal
-	savefile_key = "genitalia_removal_pref"	
 
 /datum/preference/toggle/erp/penis_enlargement
 	savefile_key = "penis_enlargement_pref"
 	
 /datum/preference/toggle/erp/penis_shrinkage
 	savefile_key = "penis_shrinkage_pref"
+
+/datum/preference/toggle/erp/genitalia_removal
+	savefile_key = "genitalia_removal_pref"	
 
 /datum/preference/toggle/erp/gender_change
 	savefile_key = "gender_change_pref"
