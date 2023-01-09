@@ -3,6 +3,12 @@
 	name = "vox breath mask"
 	actions_types = list()
 	flags_cover = NONE
+	
+/obj/item/clothing/mask/gas/clown_hat/vox
+	starting_filter_type = /obj/item/gas_filter/vox
+	
+/obj/item/clothing/mask/gas/mime/vox
+	starting_filter_type = /obj/item/gas_filter/vox
 
 /obj/item/clothing/mask/gas/glass
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'

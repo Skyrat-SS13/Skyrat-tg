@@ -126,6 +126,7 @@
 		"turbine_part_stator",
 		"turret_control",
 		"voice_analyzer",
+		"vox_gas_filter", //SKYRAT EDIT ADDITION
 		"watering_can",
 	)
 
