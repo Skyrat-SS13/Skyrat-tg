@@ -5423,12 +5423,7 @@
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
 "bFQ" = (
-/obj/docking_port/stationary{
-	dwidth = 1;
-	height = 4;
-	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
-	width = 3
-	},
+/obj/docking_port/stationary/escape_pod,
 /turf/open/space/basic,
 /area/space)
 "bGx" = (
@@ -6608,12 +6603,8 @@
 /turf/open/floor/plating,
 /area/station/maintenance/port/lesser)
 "ccg" = (
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 1;
-	height = 4;
-	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
-	width = 3
+/obj/docking_port/stationary/escape_pod{
+	dir = 4
 	},
 /turf/open/space/basic,
 /area/space)
@@ -8267,6 +8258,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall,
 /area/station/maintenance/port/fore)
+"cvZ" = (
+/mob/living/basic/carp{
+	environment_smash = 0;
+	name = "Tuna";
+	real_name = "Tuna"
+	},
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "cwj" = (
 /obj/machinery/modular_computer/console/preset/id,
 /obj/effect/turf_decal/bot,
@@ -9166,12 +9165,8 @@
 /turf/open/floor/plating/lowpressure,
 /area/space/nearstation)
 "cOd" = (
-/obj/docking_port/stationary{
-	dir = 8;
-	dwidth = 1;
-	height = 4;
-	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
-	width = 3
+/obj/docking_port/stationary/escape_pod{
+	dir = 8
 	},
 /turf/open/space/basic,
 /area/space)
@@ -16193,6 +16188,10 @@
 "ePm" = (
 /turf/open/floor/iron,
 /area/station/maintenance/disposal/incinerator)
+"ePI" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/space/basic,
+/area/space/nearstation)
 "ePU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -22838,6 +22837,12 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/starboard)
+"gCs" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
 "gCu" = (
 /obj/structure/chair{
 	dir = 8
@@ -23495,13 +23500,8 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "gKV" = (
-/obj/docking_port/stationary{
-	dir = 2;
-	dwidth = 1;
-	height = 4;
-	name = "escape pod loader";
-	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
-	width = 3
+/obj/docking_port/stationary/escape_pod{
+	dir = 2
 	},
 /turf/open/space/basic,
 /area/space)
@@ -27017,11 +27017,6 @@
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/station/science/genetics)
-"hIs" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/mob/living/simple_animal/hostile/retaliate/ghost,
-/turf/open/floor/wood,
-/area/station/maintenance/starboard/fore)
 "hIS" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/techstorage/rnd_all,
@@ -31686,6 +31681,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/exit/departure_lounge)
+"iSY" = (
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
 "iTj" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters{
@@ -54269,6 +54268,12 @@
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/plating,
 /area/station/maintenance/port/greater)
+"pzk" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
 "pzm" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -61171,6 +61176,11 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+"rwY" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/mob/living/basic/ghost,
+/turf/open/floor/wood,
+/area/station/maintenance/starboard/fore)
 "rxi" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -64593,6 +64603,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron/showroomfloor,
 /area/station/medical/surgery/aft)
+"svA" = (
+/obj/structure/lattice/catwalk,
+/turf/open/space/basic,
+/area/space)
 "svC" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -68347,6 +68361,15 @@
 	},
 /turf/open/space/basic,
 /area/space/nearstation)
+"tvS" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/ghost,
+/turf/open/floor/iron/dark,
+/area/station/maintenance/starboard/fore)
 "twc" = (
 /obj/effect/turf_decal/plaque{
 	icon_state = "L13"
@@ -76826,15 +76849,6 @@
 "vOX" = (
 /turf/closed/wall/rust,
 /area/station/maintenance/starboard)
-"vOZ" = (
-/obj/machinery/computer/security/telescreen/entertainment/directional/south,
-/obj/structure/reagent_dispensers/wall/peppertank/directional/east,
-/obj/structure/bed/dogbed/cayenne{
-	name = "Lia's bed"
-	},
-/mob/living/simple_animal/hostile/carp/lia,
-/turf/open/floor/iron/dark,
-/area/station/command/heads_quarters/hos)
 "vPd" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -78728,14 +78742,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/security/prison)
-"woH" = (
-/mob/living/simple_animal/hostile/carp{
-	environment_smash = 0;
-	name = "Tuna";
-	real_name = "Tuna"
-	},
-/turf/open/misc/asteroid/airless,
-/area/space/nearstation)
 "woJ" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -79326,7 +79332,6 @@
 	name = "lavaland";
 	shuttle_id = "pod_4_lavaland"
 	},
-/obj/structure/lattice,
 /turf/open/space,
 /area/space/nearstation)
 "wxF" = (
@@ -80291,6 +80296,15 @@
 "wJo" = (
 /turf/open/floor/plating,
 /area/station/maintenance/department/security)
+"wJs" = (
+/obj/machinery/computer/security/telescreen/entertainment/directional/south,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/east,
+/obj/structure/bed/dogbed/cayenne{
+	name = "Lia's bed"
+	},
+/mob/living/basic/carp/pet/lia,
+/turf/open/floor/iron/dark,
+/area/station/command/heads_quarters/hos)
 "wJw" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -85184,15 +85198,6 @@
 /obj/machinery/recharger,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/captain)
-"yeH" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/retaliate/ghost,
-/turf/open/floor/iron/dark,
-/area/station/maintenance/starboard/fore)
 "yeK" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/neutral{
@@ -96665,9 +96670,9 @@ wDI
 aeu
 aeu
 aDT
-beK
+gCs
 lHD
-beK
+gCs
 sRm
 aeu
 ycx
@@ -99977,7 +99982,7 @@ aeu
 aeU
 aeU
 coy
-woH
+cvZ
 aDS
 tpp
 bFI
@@ -102626,7 +102631,7 @@ aaa
 aaa
 aaa
 cry
-aoe
+ePI
 acK
 aaa
 aaa
@@ -103140,7 +103145,7 @@ aaa
 aaa
 aaa
 cry
-aoe
+ePI
 acK
 aaa
 aaa
@@ -105962,7 +105967,7 @@ lZr
 jPG
 sYu
 mIR
-vOZ
+wJs
 afL
 aeu
 aeU
@@ -118225,7 +118230,7 @@ cIX
 cIX
 fvU
 plG
-yeH
+tvS
 yaY
 iBv
 wxI
@@ -118484,7 +118489,7 @@ fvU
 nUi
 iVF
 elc
-hIs
+rwY
 jre
 rsZ
 qaI
@@ -126173,7 +126178,7 @@ aaa
 aaa
 aaa
 acK
-aDU
+pzk
 cry
 aaa
 aaa
@@ -126687,7 +126692,7 @@ aaB
 aaa
 aaa
 acK
-aDU
+pzk
 cry
 aaa
 aaa
@@ -131088,9 +131093,9 @@ cmU
 aeU
 aof
 qJs
-acK
+cry
 wxy
-acK
+cry
 qJs
 aeu
 aeU
@@ -131345,9 +131350,9 @@ cmU
 aeU
 aeU
 aaQ
-aaa
-aaa
-aaa
+svA
+iSY
+svA
 acm
 aeu
 aeu

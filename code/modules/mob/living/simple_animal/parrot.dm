@@ -163,9 +163,7 @@
 
 /mob/living/simple_animal/parrot/get_status_tab_items()
 	. = ..()
-	. += ""
 	. += "Held Item: [held_item]"
-	. += "Combat mode: [combat_mode ? "On" : "Off"]"
 
 // SKYRAT EDIT REMOVAL BEGIN - MOVED TO modular_skyrat/modules/poly_commands
 /*

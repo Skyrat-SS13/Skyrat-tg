@@ -17,7 +17,7 @@
 	mag_display_ammo = FALSE
 	mag_type = /obj/item/ammo_box/magazine/m44a
 	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
+	slot_flags = ITEM_SLOT_BELT
 	company_flag = COMPANY_NANOTRASEN
 
 /obj/item/ammo_box/magazine/m44a
