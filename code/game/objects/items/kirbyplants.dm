@@ -56,19 +56,14 @@
 
 /obj/item/kirbyplants/proc/generate_states()
 	random_plant_states = list()
-	/* ORIGINAL
-	for(var/i in 1 to 25)
+	for(var/i in 1 to random_state_cap) //SKYRAT EDIT CHANGE - ORIGINAL: for(var/i in 1 to 25)
 		var/number
 		if(i < 10)
 			number = "0[i]"
 		else
 			number = "[i]"
 		random_plant_states += "plant-[number]"
-	random_plant_states += "applebush"
-	*/
-	for(var/i in 1 to random_state_cap) //SKYRAT EDIT CHANGE
-		random_plant_states += "plant-[i]" //SKYRAT EDIT CHANGE
-	random_plant_states += list("applebush", "monkeyplant") //SKYRAT EDIT CHANGE
+	random_plant_states += list("applebush", "monkeyplant") //SKYRAT EDIT CHANGE - ORIGINAL:random_plant_states += "applebush"
 
 /obj/item/kirbyplants/dead
 	name = "RD's potted plant"
@@ -87,8 +82,7 @@
 /obj/item/kirbyplants/photosynthetic
 	name = "photosynthetic potted plant"
 	desc = "A bioluminescent plant."
-	//icon_state = "plant-09" // ORIGINAL
-	icon_state = "plant-9" //SKYRAT EDIT CHANGE
+	icon_state = "plant-09"
 	light_color = COLOR_BRIGHT_BLUE
 	light_range = 3
 

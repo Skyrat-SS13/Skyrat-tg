@@ -33,6 +33,25 @@
 /obj/item/storage/box/cyber_implants
 	illustration = null //Included in the sprite
 
+/obj/item/storage/box/mothic_rations
+	icon = 'icons/obj/storage/box.dmi'
+
+/obj/item/storage/box/mothic_goods
+	icon = 'icons/obj/storage/box.dmi'
+
+/obj/item/storage/box/mothic_cans_sauces
+	icon = 'icons/obj/storage/box.dmi'
+
+/obj/item/storage/box/tiziran_meats
+	icon = 'icons/obj/storage/box.dmi'
+
+/obj/item/storage/box/tiziran_cans
+	icon = 'icons/obj/storage/box.dmi'
+
+/obj/item/storage/box/tiziran_goods
+	icon = 'icons/obj/storage/box.dmi'
+
+
 /*
 // Medical
 */
