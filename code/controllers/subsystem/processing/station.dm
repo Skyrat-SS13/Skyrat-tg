@@ -26,16 +26,8 @@ PROCESSING_SUBSYSTEM_DEF(station)
 
 ///Rolls for the amount of traits and adds them to the traits list
 /datum/controller/subsystem/processing/station/proc/SetupTraits()
-<<<<<<< HEAD
-	// SKYRAT EDIT ADDITION
-	#ifdef LOWMEMORYMODE // NO MORE FUCKING STUPID STATION TRAITS ON STARTUP WHEN IM TESTING SHIT FUCK YOU
-	return
-	#endif
-	// SKYRAT EDIT END
-=======
 	if (CONFIG_GET(flag/forbid_station_traits))
 		return
->>>>>>> c2a3ba8b755 (Add config for station traits (#72408))
 
 	if (fexists(FUTURE_STATION_TRAITS_FILE))
 		var/forced_traits_contents = file2text(FUTURE_STATION_TRAITS_FILE)
