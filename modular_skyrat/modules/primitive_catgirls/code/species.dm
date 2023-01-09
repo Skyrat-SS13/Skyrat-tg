@@ -49,7 +49,7 @@
 /datum/species/human/felinid/primitive/get_species_description()
 	return list(
 		"Genetically modified humanoids believed to be descendants of a now centuries old colony \
-			ship from the pre-bluespace travel era. Still sharing at least some human traits, they \
+			ship from the pre-bluespace travel era. Still having at least some human traits, they \
 			are most comparable to today's felinids with most sporting features likely spliced from \
 			the icemoon's many fauna."
 	)
