@@ -1,3 +1,5 @@
+#define ASS_TONER_USE 0.625
+
 /// The exact same as the standard /tg/ photocopier ass proc, except it uses a .dmi for the ass images and accepts far more species. Hurray!
 /obj/machinery/photocopier/proc/make_ass_copy()
 	if(!check_ass() || !toner_cartridge)
@@ -26,3 +28,5 @@
 	toEmbed.psize_y = 128
 	copied_ass.set_picture(toEmbed, TRUE, TRUE)
 	toner_cartridge.charges -= ASS_TONER_USE
+
+#undef ASS_TONER_USE
