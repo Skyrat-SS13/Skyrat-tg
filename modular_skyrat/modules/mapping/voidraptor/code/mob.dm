@@ -28,7 +28,6 @@
 	gold_core_spawnable = FRIENDLY_SPAWN
 	turns_per_move = 10
 	can_be_held = TRUE
-	ai_controller = /datum/ai_controller/dog //Tegus can be taught to fetch
 	stop_automated_movement = TRUE
 
 /mob/living/simple_animal/hostile/retaliate/tegu/Initialize(mapload)
