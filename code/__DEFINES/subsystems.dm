@@ -20,11 +20,7 @@
  *
  * make sure you add an update to the schema_version stable in the db changelog
  */
-<<<<<<< HEAD
-#define DB_MINOR_VERSION 24
-=======
-#define DB_MINOR_VERSION 23
->>>>>>> 9740f104d07 (Contextual tutorials for swapping hands and dropping items (#72292))
+#define DB_MINOR_VERSION 25
 
 
 //! ## Timing subsystem
