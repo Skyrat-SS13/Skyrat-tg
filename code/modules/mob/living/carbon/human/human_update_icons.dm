@@ -93,7 +93,6 @@ There are several things that need to be remembered:
 			target_overlay = "[target_overlay]_d"
 
 		var/mutable_appearance/uniform_overlay
-
 		//This is how non-humanoid clothing works. You check if the mob has the right bodyflag, and the clothing has the corresponding clothing flag.
 		//handled_by_bodytype is used to track whether or not we successfully used an alternate sprite. It's set to TRUE to ease up on copy-paste.
 		//icon_file MUST be set to null by default, or it causes issues.
@@ -285,7 +284,7 @@ There are several things that need to be remembered:
 				mutant_override = TRUE
 		// SKYRAT EDIT END
 
-		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
+		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/ears.dmi'
 
 		var/mutable_appearance/ears_overlay = ears.build_worn_icon(default_layer = EARS_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
@@ -320,7 +319,7 @@ There are several things that need to be remembered:
 				mutant_override = TRUE
 		// SKYRAT EDIT END
 
-		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
+		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/neck.dmi'
 
 		var/mutable_appearance/neck_overlay = worn_item.build_worn_icon(default_layer = NECK_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
@@ -349,6 +348,7 @@ There are several things that need to be remembered:
 		if(check_obscured_slots(transparent_protection = TRUE) & ITEM_SLOT_FEET)
 			return
 
+		var/icon_file
 		var/mutant_override = FALSE // SKYRAT EDIT ADDITION
 
 		if((dna.species.bodytype & BODYTYPE_DIGITIGRADE) && (worn_item.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
@@ -365,7 +365,7 @@ There are several things that need to be remembered:
 			return // We just don't want shoes that float if we're not displaying legs (useful for taurs, for now)
 		// SKYRAT EDIT END
 
-		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
+		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = DEFAULT_SHOES_FILE
 
 		var/mutable_appearance/shoes_overlay = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
@@ -429,7 +429,7 @@ There are several things that need to be remembered:
 				mutant_override = TRUE
 		// SKYRAT EDIT END
 
-		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
+		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/head/default.dmi'
 
 		var/mutable_appearance/head_overlay = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
@@ -466,7 +466,7 @@ There are several things that need to be remembered:
 				mutant_override = TRUE
 		// SKYRAT EDIT END
 
-		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
+		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/belt.dmi'
 
 		var/mutable_appearance/belt_overlay = belt.build_worn_icon(default_layer = BELT_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
@@ -576,7 +576,7 @@ There are several things that need to be remembered:
 				mutant_override = TRUE
 		// SKYRAT EDIT END
 
-		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
+		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/mask.dmi'
 
 		var/mutable_appearance/mask_overlay = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
