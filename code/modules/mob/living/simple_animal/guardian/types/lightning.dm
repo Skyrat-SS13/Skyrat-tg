@@ -1,10 +1,10 @@
-//Beam
 /obj/effect/ebeam/chain
 	name = "lightning chain"
 	layer = LYING_MOB_LAYER
 	plane = GAME_PLANE_FOV_HIDDEN
 
-/mob/living/simple_animal/hostile/guardian/beam
+//Lightning
+/mob/living/simple_animal/hostile/guardian/lightning
 	melee_damage_lower = 7
 	melee_damage_upper = 7
 	attack_verb_continuous = "shocks"
@@ -13,13 +13,6 @@
 	attack_sound = 'sound/machines/defib_zap.ogg'
 	damage_coeff = list(BRUTE = 0.7, BURN = 0.7, TOX = 0.7, CLONE = 0.7, STAMINA = 0, OXY = 0.7)
 	range = 7
-<<<<<<< HEAD
-	playstyle_string = "<span class='holoparasite'>As a <b>lightning</b> type, you will apply lightning chains to targets on attack and have a lightning chain to your summoner. Lightning chains will shock anyone near them.</span>"
-	magic_fluff_string = "<span class='holoparasite'>..And draw the Tesla, a shocking, lethal source of power.</span>"
-	tech_fluff_string = "<span class='holoparasite'>Boot sequence complete. Lightning modules active. Holoparasite swarm online.</span>"
-	carp_fluff_string = "<span class='holoparasite'>CARP CARP CARP! Caught one! It's a lightning carp! Everyone else goes zap zap.</span>"
-	miner_fluff_string = "<span class='holoparasite'>You encounter... Iron, a conductive master of lightning.</span>"
-=======
 	playstyle_string = span_holoparasite("As a <b>lightning</b> type, you will apply lightning chains to targets on attack and have a lightning chain to your summoner. Lightning chains will shock anyone near them.")
 	magic_fluff_string = span_holoparasite("..And draw the Tesla, a shocking, lethal source of power.")
 	tech_fluff_string = span_holoparasite("Boot sequence complete. Lightning modules active. Holoparasite swarm online.")
@@ -29,7 +22,6 @@
 	creator_desc = "Attacks apply lightning chains to targets. Has a lightning chain to the user. Lightning chains shock everything near them, doing constant damage."
 	creator_icon = "lightning"
 	/// Beam datum of our lightning chain to the summoner.
->>>>>>> c50e77ebf5f (tweaks to guardians (#72262))
 	var/datum/beam/summonerchain
 	/// List of all lightning chains attached to enemies.
 	var/list/enemychains = list()
@@ -38,7 +30,7 @@
 	/// Cooldown between shocks.
 	COOLDOWN_DECLARE(shock_cooldown)
 
-/mob/living/simple_animal/hostile/guardian/beam/AttackingTarget()
+/mob/living/simple_animal/hostile/guardian/lightning/AttackingTarget(atom/attacked_target)
 	. = ..()
 	if(!. || !isliving(target) || target == summoner || hasmatchingsummoner(target))
 		return
@@ -52,9 +44,6 @@
 		enemychains -= enemy_chain
 	enemychains += Beam(target, "lightning[rand(1,12)]", maxdistance=7, beam_type=/obj/effect/ebeam/chain)
 
-<<<<<<< HEAD
-/mob/living/simple_animal/hostile/guardian/beam/Destroy()
-=======
 /mob/living/simple_animal/hostile/guardian/lightning/manifest_effects()
 	START_PROCESSING(SSfastprocess, src)
 	if(summoner)
@@ -62,30 +51,8 @@
 
 /mob/living/simple_animal/hostile/guardian/lightning/recall_effects()
 	STOP_PROCESSING(SSfastprocess, src)
->>>>>>> c50e77ebf5f (tweaks to guardians (#72262))
 	removechains()
-	return ..()
 
-<<<<<<< HEAD
-/mob/living/simple_animal/hostile/guardian/beam/Manifest()
-	. = ..()
-	if(.)
-		if(summoner)
-			summonerchain = Beam(summoner, "lightning[rand(1,12)]", beam_type=/obj/effect/ebeam/chain)
-		while(loc != summoner)
-			if(successfulshocks > 5)
-				successfulshocks = 0
-			if(shockallchains())
-				successfulshocks++
-			SLEEP_CHECK_DEATH(3, src)
-
-/mob/living/simple_animal/hostile/guardian/beam/Recall()
-	. = ..()
-	if(.)
-		removechains()
-
-/mob/living/simple_animal/hostile/guardian/beam/proc/cleardeletedchains()
-=======
 /mob/living/simple_animal/hostile/guardian/lightning/process(delta_time)
 	if(!COOLDOWN_FINISHED(src, shock_cooldown))
 		return
@@ -96,14 +63,13 @@
 	COOLDOWN_START(src, shock_cooldown, 0.3 SECONDS)
 
 /mob/living/simple_animal/hostile/guardian/lightning/proc/cleardeletedchains()
->>>>>>> c50e77ebf5f (tweaks to guardians (#72262))
 	if(summonerchain && QDELETED(summonerchain))
 		summonerchain = null
 	for(var/datum/chain as anything in enemychains)
 		if(QDELETED(chain))
 			enemychains -= chain
 
-/mob/living/simple_animal/hostile/guardian/beam/proc/shockallchains()
+/mob/living/simple_animal/hostile/guardian/lightning/proc/shockallchains()
 	. = 0
 	cleardeletedchains()
 	if(summonerchain)
@@ -111,24 +77,13 @@
 	for(var/chain in enemychains)
 		. += chainshock(chain)
 
-<<<<<<< HEAD
-/mob/living/simple_animal/hostile/guardian/beam/proc/removechains()
-	if(summonerchain)
-		qdel(summonerchain)
-		summonerchain = null
-	if(enemychains.len)
-		for(var/chain in enemychains)
-			qdel(chain)
-		enemychains = list()
-=======
 /mob/living/simple_animal/hostile/guardian/lightning/proc/removechains()
 	QDEL_NULL(summonerchain)
 	for(var/chain in enemychains)
 		qdel(chain)
 	enemychains = list()
->>>>>>> c50e77ebf5f (tweaks to guardians (#72262))
 
-/mob/living/simple_animal/hostile/guardian/beam/proc/chainshock(datum/beam/B)
+/mob/living/simple_animal/hostile/guardian/lightning/proc/chainshock(datum/beam/B) //fuck you, fuck this
 	. = 0
 	var/list/turfs = list()
 	for(var/E in B.elements)
