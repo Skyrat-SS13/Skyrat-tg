@@ -1,7 +1,8 @@
 /obj/item/clothing/glasses/hypno
 	name = "hypnotic goggles"
 	desc = "Woaa-a-ah... This is lewd."
-	icon_state = "hypnogoggles"
+	icon_state = "hypnogoggles_pink"
+	base_icon_state = "hypnogoggles"
 	inhand_icon_state = "hypnogoggles_pink"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_eyes.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_eyes.dmi'
@@ -88,8 +89,8 @@
 
 /obj/item/clothing/glasses/hypno/update_icon_state()
 	. = ..()
-	icon_state = icon_state = "[initial(icon_state)]_[current_hypnogoggles_color]"
-	inhand_icon_state = "[initial(icon_state)]_[current_hypnogoggles_color]"
+	icon_state = "[base_icon_state]_[current_hypnogoggles_color]"
+	inhand_icon_state = "[base_icon_state]_[current_hypnogoggles_color]"
 
 /datum/brain_trauma/very_special/induced_hypnosis
 	name = "Hypnosis"

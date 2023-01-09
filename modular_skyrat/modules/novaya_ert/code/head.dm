@@ -51,6 +51,7 @@
 	name = "\improper REDUT helmet"
 	desc = "A heavy Russian combat helmet with a strong ballistic visor. Alt+click to adjust."
 	icon_state = "russian_heavy_helmet_old"
+	worn_icon_state = "russian_heavy_helmet" // Add a proper worn icon state if you still want it to look like the old one, can't be bothered to find it myself.
 	armor = list(MELEE = 50, BULLET = 50, LASER = 40, ENERGY = 50, BOMB = 75, BIO = 60, FIRE = 45, ACID = 45, WOUND = 20)
 	resistance_flags = FIRE_PROOF|ACID_PROOF|FREEZE_PROOF
 	clothing_flags = SNUG_FIT|THICKMATERIAL
