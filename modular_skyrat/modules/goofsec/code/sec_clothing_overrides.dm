@@ -171,6 +171,7 @@
 
 /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch
 	icon_state = "security_eyepatch"
+	base_icon_state = "security_eyepatch"
 
 /obj/item/clothing/glasses/hud/security/night
 	icon_state = "security_hud_nv"
@@ -638,6 +639,7 @@
 	icon = 'icons/obj/clothing/glasses.dmi'
 	worn_icon = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "hudpatch"
+	base_icon_state = "hudpatch"
 
 /obj/item/clothing/glasses/hud/security/night/redsec
 	icon = 'icons/obj/clothing/glasses.dmi'

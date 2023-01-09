@@ -1383,7 +1383,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	/// if the item are glasses, this variable stores the item.
 	var/obj/item/clothing/glasses/reskinned_glasses
 
-	if(istype(src, /obj/item/clothing/glasses))
+	if(istype(src, /obj/item/clothing/glasses)) // TODO - Remove this mess about glasses, it shouldn't be necessary anymore.
 		reskinned_glasses = src
 		if(reskinned_glasses.can_switch_eye)
 			is_swappable = TRUE
@@ -1392,7 +1392,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 
 	for(var/reskin_option in unique_reskin)
-		var/image/item_image = image(icon = unique_reskin[reskin_option][RESKIN_ICON] ? unique_reskin[reskin_option][RESKIN_ICON] : icon, icon_state = "[unique_reskin[reskin_option][RESKIN_ICON_STATE]][is_swappable ? "_R" : ""]")
+		var/image/item_image = image(icon = unique_reskin[reskin_option][RESKIN_ICON] ? unique_reskin[reskin_option][RESKIN_ICON] : icon, icon_state = "[unique_reskin[reskin_option][RESKIN_ICON_STATE]]")
 		items += list("[reskin_option]" = item_image)
 	sort_list(items)
 
@@ -1408,8 +1408,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	if(unique_reskin[pick][RESKIN_ICON_STATE])
 		if(is_swappable)
-			reskinned_glasses.base_icon_state = unique_reskin[pick][RESKIN_ICON_STATE]
-			icon_state = reskinned_glasses.base_icon_state + "_R"
+			base_icon_state = unique_reskin[pick][RESKIN_ICON_STATE]
+			icon_state = base_icon_state
 		else
 			icon_state = unique_reskin[pick][RESKIN_ICON_STATE]
 
@@ -1417,11 +1417,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		worn_icon = unique_reskin[pick][RESKIN_WORN_ICON]
 
 	if(unique_reskin[pick][RESKIN_WORN_ICON_STATE])
-		if(is_swappable)
-			reskinned_glasses.current_worn_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
-			worn_icon_state = reskinned_glasses.current_worn_state + "_R"
-		else
-			worn_icon_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
+		worn_icon_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
 
 	if(unique_reskin[pick][RESKIN_INHAND_L])
 		lefthand_file = unique_reskin[pick][RESKIN_INHAND_L]
