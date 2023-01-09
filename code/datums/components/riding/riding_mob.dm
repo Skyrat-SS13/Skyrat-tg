@@ -438,15 +438,6 @@
 	set_vehicle_dir_offsets(EAST, movable_parent.pixel_x, 0)
 	set_vehicle_dir_offsets(WEST, movable_parent.pixel_x, 0)
 
-<<<<<<< HEAD
-
-//SKYRAT EDIT START: Human Riding Defines
-#undef OVERSIZED_OFFSET
-#undef OVERSIZED_SIDE_OFFSET
-#undef REGULAR_OFFSET
-#undef REGULAR_SIDE_OFFSET
-//SKYRAT EDIT END
-=======
 /datum/component/riding/creature/guardian
 	can_be_driven = FALSE
 
@@ -463,4 +454,11 @@
 	if(!istype(charger))
 		return ..()
 	return charger.summoner == user
->>>>>>> c50e77ebf5f (tweaks to guardians (#72262))
+
+
+//SKYRAT EDIT START: Human Riding Defines
+#undef OVERSIZED_OFFSET
+#undef OVERSIZED_SIDE_OFFSET
+#undef REGULAR_OFFSET
+#undef REGULAR_SIDE_OFFSET
+//SKYRAT EDIT END
