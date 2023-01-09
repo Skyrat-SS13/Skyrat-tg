@@ -126,7 +126,11 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/suit_brownfurrich
+
+/datum/armor/suit_brownfurrich
+	melee = 10
+	bullet = 10
 
 /obj/item/clothing/suit/brownfurrich/public
 	name = "fur coat"
@@ -163,7 +167,11 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/suit_british_officer
+
+/datum/armor/suit_british_officer
+	melee = 10
+	bullet = 10
 
 /obj/item/clothing/suit/modern_winter
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -196,7 +204,13 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	armor = list(MELEE = 10, BULLET = 10, LASER = 20,ENERGY = 20, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/suit_gautumn
+
+/datum/armor/suit_gautumn
+	melee = 10
+	bullet = 10
+	laser = 20
+	energy = 20
 
 /obj/item/clothing/suit/autumn
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -208,7 +222,11 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/suit_autumn
+
+/datum/armor/suit_autumn
+	melee = 10
+	bullet = 10
 
 /obj/item/clothing/suit/texas
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'

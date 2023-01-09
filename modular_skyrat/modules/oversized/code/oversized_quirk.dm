@@ -13,8 +13,9 @@
 	mob_trait = TRAIT_OVERSIZED
 	icon = "expand-arrows-alt"
 	veteran_only = TRUE
+	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_CHANGES_APPEARANCE
 
-/datum/quirk/oversized/add()
+/datum/quirk/oversized/add(client/client_source)
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	human_holder.dna.features["body_size"] = 2
 	human_holder.maptext_height = 32 * human_holder.dna.features["body_size"] //Adjust runechat height
