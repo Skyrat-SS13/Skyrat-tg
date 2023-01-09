@@ -8,8 +8,6 @@
 	species_traits = list(
 		NOBLOOD,
 		NOZOMBIE,
-		HAS_FLESH,
-		HAS_BONE,
 		NOEYESPRITES,
 		LIPS,
 		HAIR

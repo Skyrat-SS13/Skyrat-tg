@@ -5,7 +5,7 @@
 	var/mob/living/basic/cortical_borer/player_borer = borer.current
 	if(!player_borer)
 		text += span_redtext("[span_bold(borer.name)] had their body destroyed.")
-		return text
+		return text.Join("<br>")
 	if(borer.current.stat != DEAD)
 		text += "[span_bold(player_borer.name)] [span_greentext("survived")]"
 	else
@@ -55,9 +55,8 @@
 			if(borer.borers)
 				borers = borer.borers
 				return
-		if(!new_team)
-			borers = new /datum/team/cortical_borers
-			return
+		borers = new /datum/team/cortical_borers
+		return
 	if(!istype(new_team))
 		stack_trace("Wrong team type passed to [type] initialization.")
 	borers = new_team
