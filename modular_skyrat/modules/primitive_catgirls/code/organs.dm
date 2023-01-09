@@ -3,7 +3,7 @@
 // Lungs
 
 /obj/item/organ/internal/lungs/icebox_adapted
-	name = "hardy lungs" // blackened from necropolis exposure
+	name = "hardy lungs"
 	desc = "Lungs adapted to frozen environments that would be otherwise inhospitable to most races. Feels cold."
 
 /obj/item/organ/internal/lungs/icebox_adapted/Initialize(mapload)
@@ -11,7 +11,7 @@
 
 	var/datum/gas_mixture/immutable/planetary/mix = SSair.planetary[ICEMOON_DEFAULT_ATMOS]
 
-	if(!mix?.total_moles()) // this typically means we didn't load lavaland, like if we're using #define LOWMEMORYMODE
+	if(!mix?.total_moles()) // If there is no icemoon atmos then we have problems, return now
 		return
 
 	// Take a "breath" of the air
