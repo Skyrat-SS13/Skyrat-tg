@@ -42,16 +42,6 @@
 			to_chat(attacker, span_warning("[parent] is dead!"))
 			return COMPONENT_CANCEL_ATTACK_CHAIN
 
-<<<<<<< HEAD
-	attacker.visible_message(span_notice("[attacker] hand-feeds [food] to [parent]."), span_notice("You hand-feed [food] to [parent]."))
-	qdel(food)
-	if(tame)
-		return COMPONENT_CANCEL_ATTACK_CHAIN
-	if (prob(tame_chance)) //note: lack of feedback message is deliberate, keep them guessing!
-		on_tame(attacker)
-	else
-		tame_chance += bonus_tame_chance
-=======
 	var/atom/atom_parent = source
 	atom_parent.balloon_alert(attacker, "fed")
 	if(unique || !already_friends(attacker))
@@ -61,7 +51,6 @@
 			current_tame_chance += bonus_tame_chance
 
 	qdel(food)
->>>>>>> 583f65f28b5 (Dogs become tamed when given bones (#72363))
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /// Check if the passed mob is already considered one of our friends
@@ -72,15 +61,9 @@
 	return living_parent.faction.Find(REF(potential_friend))
 
 ///Ran once taming succeeds
-/datum/component/tameable/proc/on_tame(mob/living/tamer)
+/datum/component/tameable/proc/on_tame(mob/living/tamer, atom/food)
 	SIGNAL_HANDLER
-<<<<<<< HEAD
-	tame = TRUE
-
-	after_tame?.Invoke(tamer)//Run custom behavior if needed
-=======
 	after_tame?.Invoke(tamer, food)//Run custom behavior if needed
->>>>>>> 583f65f28b5 (Dogs become tamed when given bones (#72363))
 
 	if(isliving(parent) && isliving(tamer))
 		var/mob/living/tamed = parent

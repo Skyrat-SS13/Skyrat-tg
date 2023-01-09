@@ -136,7 +136,7 @@
 	var/market_verb = "Customer"
 	var/payment_department = ACCOUNT_ENG
 
-	// For storing and overriding ui id
+	/// For storing and overriding ui id
 	var/tgui_id // ID of TGUI interface
 	///Is this machine currently in the atmos machinery queue?
 	var/atmos_processing = FALSE
@@ -149,10 +149,19 @@
 	var/always_area_sensitive = FALSE
 	///Multiplier for power consumption.
 	var/machine_power_rectifier = 1
+	/// What was our power state the last time we updated its appearance?
+	/// TRUE for on, FALSE for off, -1 for never checked
+	var/appearance_power_state = -1
+	armor_type = /datum/armor/obj_machinery
+
+/datum/armor/obj_machinery
+	melee = 25
+	bullet = 10
+	laser = 10
+	fire = 50
+	acid = 70
 
 /obj/machinery/Initialize(mapload)
-	if(!armor)
-		armor = list(MELEE = 25, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 70)
 	. = ..()
 	GLOB.machines += src
 
@@ -550,6 +559,21 @@
 /obj/machinery/proc/on_set_is_operational(old_value)
 	return
 
+///Called when we want to change the value of the `panel_open` variable. Boolean.
+/obj/machinery/proc/set_panel_open(new_value)
+	if(panel_open == new_value)
+		return
+	var/old_value = panel_open
+	panel_open = new_value
+	on_set_panel_open(old_value)
+
+///Called when the value of `panel_open` changes, so we can react to it.
+/obj/machinery/proc/on_set_panel_open(old_value)
+	return
+
+/// Toggles the panel_open var. Defined for convienience
+/obj/machinery/proc/toggle_panel_open()
+	set_panel_open(!panel_open)
 
 /obj/machinery/can_interact(mob/user)
 	if((machine_stat & (NOPOWER|BROKEN)) && !(interaction_flags_machine & INTERACT_MACHINE_OFFLINE)) // Check if the machine is broken, and if we can still interact with it if so
@@ -863,12 +887,11 @@
 		return FALSE
 
 	screwdriver.play_tool_sound(src, 50)
-	if(!panel_open)
-		panel_open = TRUE
+	toggle_panel_open()
+	if(panel_open)
 		icon_state = icon_state_open
 		to_chat(user, span_notice("You open the maintenance hatch of [src]."))
 	else
-		panel_open = FALSE
 		icon_state = icon_state_closed
 		to_chat(user, span_notice("You close the maintenance hatch of [src]."))
 	return TRUE

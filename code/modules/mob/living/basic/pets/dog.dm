@@ -1,5 +1,21 @@
 //Dogs.
 
+// Add 'walkies' as valid input
+/datum/pet_command/follow/dog
+	speech_commands = list("heel", "follow", "walkies")
+
+// Add 'good dog' as valid input
+/datum/pet_command/good_boy/dog
+	speech_commands = list("good dog")
+
+// Set correct attack behaviour
+/datum/pet_command/point_targetting/attack/dog
+	attack_behaviour = /datum/ai_behavior/basic_melee_attack/dog
+
+/datum/pet_command/point_targetting/attack/dog/set_command_active(mob/living/parent, mob/living/commander)
+	. = ..()
+	parent.ai_controller.blackboard[BB_DOG_HARASS_HARM] = TRUE
+
 /mob/living/basic/pet/dog
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	response_help_continuous = "pets"
@@ -9,26 +25,33 @@
 	response_harm_continuous = "kicks"
 	response_harm_simple = "kick"
 	speak_emote = list("barks", "woofs")
-	faction = list("neutral")
+	faction = list(FACTION_NEUTRAL)
 	see_in_dark = 5
 	can_be_held = TRUE
-	ai_controller = /datum/ai_controller/dog
-	///In the case 'melee_damage_upper' is somehow raised above 0
+	ai_controller = /datum/ai_controller/basic_controller/dog
+	// The dog attack pet command can raise melee attack above 0
 	attack_verb_continuous = "bites"
 	attack_verb_simple = "bite"
 	attack_sound = 'sound/weapons/bite.ogg'
 	attack_vis_effect = ATTACK_EFFECT_BITE
+	/// Instructions you can give to dogs
+	var/static/list/pet_commands = list(
+		/datum/pet_command/idle,
+		/datum/pet_command/free,
+		/datum/pet_command/good_boy/dog,
+		/datum/pet_command/follow/dog,
+		/datum/pet_command/point_targetting/attack/dog,
+		/datum/pet_command/point_targetting/fetch,
+		/datum/pet_command/play_dead,
+	)
 
 /mob/living/basic/pet/dog/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/pet_bonus, "woofs happily!")
 	AddElement(/datum/element/footstep, FOOTSTEP_MOB_CLAW)
-<<<<<<< HEAD
-=======
 	AddElement(/datum/element/unfriend_attacker, untamed_reaction = "%SOURCE% fixes %TARGET% with a look of betrayal.")
 	AddComponent(/datum/component/tameable, food_types = list(/obj/item/food/meat/slab/human/mutant/skeleton, /obj/item/stack/sheet/bone), tame_chance = 30, bonus_tame_chance = 15, after_tame = CALLBACK(src, PROC_REF(tamed)), unique = FALSE)
 	AddComponent(/datum/component/obeys_commands, pet_commands)
->>>>>>> 583f65f28b5 (Dogs become tamed when given bones (#72363))
 
 /mob/living/basic/pet/dog/proc/update_dog_speech(datum/ai_planning_subtree/random_speech/speech)
 	speech.speak = string_list(list("YAP", "Woof!", "Bark!", "AUUUUUU"))
@@ -51,7 +74,7 @@
 	butcher_results = list(/obj/item/food/meat/slab/corgi = 3, /obj/item/stack/sheet/animalhide/corgi = 1)
 	gold_core_spawnable = FRIENDLY_SPAWN
 	collar_icon_state = "corgi"
-	ai_controller = /datum/ai_controller/dog/corgi
+	ai_controller = /datum/ai_controller/basic_controller/dog/corgi
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back
 	/// Access card for Ian.
@@ -383,16 +406,16 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 	if(def_zone)
 		if(def_zone == BODY_ZONE_HEAD)
 			if(inventory_head)
-				armorval = inventory_head.armor.getRating(type)
+				armorval = inventory_head.get_armor_rating(type)
 		else
 			if(inventory_back)
-				armorval = inventory_back.armor.getRating(type)
+				armorval = inventory_back.get_armor_rating(type)
 		return armorval
 	else
 		if(inventory_head)
-			armorval += inventory_head.armor.getRating(type)
+			armorval += inventory_head.get_armor_rating(type)
 		if(inventory_back)
-			armorval += inventory_back.armor.getRating(type)
+			armorval += inventory_back.get_armor_rating(type)
 	return armorval*0.5
 
 /mob/living/basic/pet/dog/corgi/attackby(obj/item/O, mob/user, params)
@@ -531,6 +554,7 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 		desc = "At a ripe old age of [record_age], Ian's not as spry as he used to be, but he'll always be the HoP's beloved corgi." //RIP
 		ai_controller?.blackboard[BB_DOG_IS_SLOW] = TRUE
 		is_slow = TRUE
+		speed = 2
 
 /mob/living/basic/pet/dog/corgi/ian/Life(delta_time = SSMOBS_DT, times_fired)
 	if(!stat && SSticker.current_state == GAME_STATE_FINISHED && !memory_saved)
@@ -601,7 +625,7 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 	icon_state = "narsian"
 	icon_living = "narsian"
 	icon_dead = "narsian_dead"
-	faction = list("neutral", "cult")
+	faction = list(FACTION_NEUTRAL, "cult")
 	gold_core_spawnable = NO_SPAWN
 	nofur = TRUE
 	unique_pet = TRUE
@@ -727,9 +751,6 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 /mob/living/basic/pet/dog/corgi/puppy/void/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_AI_BAGATTACK, INNATE_TRAIT)
-	RemoveElement(/datum/element/atmos_requirements)
-	RemoveElement(/datum/element/basic_body_temp_sensitive)
-	AddElement(/datum/element/basic_body_temp_sensitive, TCMB, T0C + 40)
 
 /mob/living/basic/pet/dog/corgi/puppy/void/Process_Spacemove(movement_dir = 0, continuous_move = FALSE)
 	return 1 //Void puppies can navigate space.

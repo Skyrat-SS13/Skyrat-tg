@@ -10,7 +10,7 @@
 		/datum/reagent/consumable/salt = 1,
 	)
 	result = /obj/item/food/snacks/store/bread/haggis
-	subcategory = CAT_MISCFOOD
+	category = CAT_MISCFOOD
 
 /datum/crafting_recipe/food/neep_tatty_haggis
 	name = "Haggis With Neeps and Tatties"
@@ -21,7 +21,7 @@
 		/obj/item/food/grown/whitebeet = 1
 		)
 	result = /obj/item/food/snacks/neep_tatty_haggis
-	subcategory = CAT_MISCFOOD
+	category = CAT_MISCFOOD
 
 /datum/crafting_recipe/food/batter
 	name = "Battered Sausage"
@@ -30,7 +30,7 @@
 		/obj/item/food/sausage = 1,
 	)
 	result = /obj/item/food/sausage/battered
-	subcategory = CAT_MISCFOOD
+	category = CAT_MISCFOOD
 
 /datum/crafting_recipe/food/shortbread
 	name = "Shortbread"
@@ -41,7 +41,7 @@
 		/obj/item/food/butter = 1
 	)
 	result = /obj/item/food/cookie/shortbread
-	subcategory = CAT_PASTRY
+	category = CAT_PASTRY
 
 /datum/crafting_recipe/food/tuna
 	name = "Can of Tuna"
@@ -50,4 +50,4 @@
 		/obj/item/food/fishmeat = 2
 	)
 	result = /obj/item/food/canned/tuna
-	subcategory = CAT_SEAFOOD
+	category = CAT_SEAFOOD

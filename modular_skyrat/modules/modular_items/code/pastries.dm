@@ -31,7 +31,7 @@
 		/obj/item/food/pastrybase = 1
 	)
 	result = /obj/item/food/mince_pie
-	subcategory = CAT_PASTRY
+	category = CAT_PASTRY
 
 /datum/crafting_recipe/food/mimce_pie
 	name = "Mimce pie"
@@ -42,4 +42,4 @@
 		/obj/item/food/pastrybase = 1
 	)
 	result = /obj/item/food/mimce_pie
-	subcategory = CAT_PASTRY
+	category = CAT_PASTRY
