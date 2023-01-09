@@ -378,7 +378,6 @@
 		/mob/living/simple_animal/hostile/blackmesa/xen/nihilanth,
 		/mob/living/simple_animal/hostile/blackmesa/xen/vortigaunt,
 		/mob/living/simple_animal/hostile/blackmesa/xen/vortigaunt/slave,
-		/mob/living/simple_animal/hostile/carp/megacarp/shorki,
 		/mob/living/simple_animal/hostile/cazador,
 		/mob/living/simple_animal/hostile/cult,
 		/mob/living/simple_animal/hostile/cult/assassin,
