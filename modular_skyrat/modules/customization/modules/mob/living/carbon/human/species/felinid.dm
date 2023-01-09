@@ -1,2 +1,2 @@
 /datum/species/human/felinid
-	ass_icon = "cat"
+	ass_image = "cat"
