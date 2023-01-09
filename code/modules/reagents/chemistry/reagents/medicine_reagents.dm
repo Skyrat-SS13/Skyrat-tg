@@ -85,7 +85,7 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/medicine/synaptizine/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
-	affected_mob.adjust_drowsyness(-5 * REM * delta_time)
+	affected_mob.adjust_drowsiness(-10 SECONDS * REM * delta_time)
 	affected_mob.AdjustStun(-20 * REM * delta_time)
 	affected_mob.AdjustKnockdown(-20 * REM * delta_time)
 	affected_mob.AdjustUnconscious(-20 * REM * delta_time)
@@ -107,7 +107,7 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/medicine/synaphydramine/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
-	affected_mob.adjust_drowsyness(-5 * REM * delta_time)
+	affected_mob.adjust_drowsiness(-10 SECONDS * REM * delta_time)
 	if(holder.has_reagent(/datum/reagent/toxin/mindbreaker))
 		holder.remove_reagent(/datum/reagent/toxin/mindbreaker, 5 * REM * delta_time)
 	if(holder.has_reagent(/datum/reagent/toxin/histamine))
@@ -564,7 +564,7 @@
 
 /datum/reagent/medicine/diphenhydramine/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
 	if(DT_PROB(5, delta_time))
-		affected_mob.adjust_drowsyness(1)
+		affected_mob.adjust_drowsiness(2 SECONDS)
 	affected_mob.adjust_jitter(-2 SECONDS * REM * delta_time)
 	holder.remove_reagent(/datum/reagent/toxin/histamine, 3 * REM * delta_time)
 	..()
@@ -599,7 +599,7 @@
 		if(11)
 			to_chat(affected_mob, span_warning("You start to feel tired...") )
 		if(12 to 24)
-			affected_mob.adjust_drowsyness(1 * REM * delta_time)
+			affected_mob.adjust_drowsiness(2 SECONDS * REM * delta_time)
 		if(24 to INFINITY)
 			affected_mob.Sleeping(40 * REM * delta_time)
 			. = TRUE
@@ -668,7 +668,7 @@
 
 /datum/reagent/medicine/oculine/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
 	affected_mob.adjust_blindness(-2 * REM * delta_time * normalise_creation_purity())
-	affected_mob.adjust_blurriness(-2 * REM * delta_time * normalise_creation_purity())
+	affected_mob.adjust_eye_blur(-4 SECONDS * REM * delta_time * normalise_creation_purity())
 	var/obj/item/organ/internal/eyes/eyes = affected_mob.getorganslot(ORGAN_SLOT_EYES)
 	if (!eyes)
 		return ..()
@@ -681,11 +681,11 @@
 			to_chat(affected_mob, span_warning("Your vision slowly returns..."))
 			affected_mob.cure_blind(EYE_DAMAGE)
 			affected_mob.cure_nearsighted(EYE_DAMAGE)
-			affected_mob.blur_eyes(35)
+			affected_mob.set_eye_blur_if_lower(70 SECONDS)
 	else if(HAS_TRAIT_FROM(affected_mob, TRAIT_NEARSIGHT, EYE_DAMAGE))
 		to_chat(affected_mob, span_warning("The blackness in your peripheral vision fades."))
 		affected_mob.cure_nearsighted(EYE_DAMAGE)
-		affected_mob.blur_eyes(10)
+		affected_mob.set_eye_blur_if_lower(20 SECONDS)
 	..()
 
 /datum/reagent/medicine/oculine/on_mob_delete(mob/living/affected_mob)
@@ -1030,12 +1030,18 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	inverse_chem_val = 0.35
 	inverse_chem = /datum/reagent/inverse/antihol
+	/// All status effects we remove on metabolize.
+	/// Does not include drunk (despite what you may thing) as that's decresed gradually
+	var/static/list/status_effects_to_clear = list(
+		/datum/status_effect/confusion,
+		/datum/status_effect/dizziness,
+		/datum/status_effect/drowsiness,
+		/datum/status_effect/speech/slurring/drunk,
+	)
 
 /datum/reagent/medicine/antihol/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
-	affected_mob.remove_status_effect(/datum/status_effect/dizziness)
-	affected_mob.set_drowsyness(0)
-	affected_mob.remove_status_effect(/datum/status_effect/speech/slurring/drunk)
-	affected_mob.remove_status_effect(/datum/status_effect/confusion)
+	for(var/effect in status_effects_to_clear)
+		affected_mob.remove_status_effect(effect)
 	affected_mob.reagents.remove_all_type(/datum/reagent/consumable/ethanol, 3 * REM * delta_time * normalise_creation_purity(), FALSE, TRUE)
 	affected_mob.adjustToxLoss(-0.2 * REM * delta_time, FALSE, required_biotype = affected_biotype)
 	affected_mob.adjust_drunk_effect(-10 * REM * delta_time * normalise_creation_purity())
@@ -1233,7 +1239,7 @@
 /datum/reagent/medicine/haloperidol/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
 	for(var/datum/reagent/drug/R in affected_mob.reagents.reagent_list)
 		affected_mob.reagents.remove_reagent(R.type, 5 * REM * delta_time)
-	affected_mob.adjust_drowsyness(2 * REM * delta_time)
+	affected_mob.adjust_drowsiness(4 SECONDS * REM * delta_time)
 
 	if(affected_mob.get_timed_status_effect_duration(/datum/status_effect/jitter) >= 6 SECONDS)
 		affected_mob.adjust_jitter(-6 SECONDS * REM * delta_time)
@@ -1615,21 +1621,28 @@
 	description = "Ancient Clown Lore says that pulped banana peels are good for your blood, but are you really going to take medical advice from a clown about bananas?"
 	color = "#50531a" // rgb: 175, 175, 0
 	taste_description = "horribly stringy, bitter pulp"
-	glass_name = "glass of banana peel pulp"
-	glass_desc = "Ancient Clown Lore says that pulped banana peels are good for your blood, but are you really going to take medical advice from a clown about bananas?"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	clot_rate = 0.2
 	passive_bleed_modifier = 0.8
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+
+/datum/glass_style/drinking_glass/banana_peel
+	required_drink_type = /datum/reagent/medicine/coagulant/banana_peel
+	name = "glass of banana peel pulp"
+	desc = "Ancient Clown Lore says that pulped banana peels are good for your blood, \
+		but are you really going to take medical advice from a clown about bananas?"
 
 /datum/reagent/medicine/coagulant/seraka_extract
 	name = "Seraka Extract"
 	description = "A deeply coloured oil present in small amounts in Seraka Mushrooms. Acts as an effective blood clotting agent, but has a low overdose threshold."
 	color = "#00767C"
 	taste_description = "intensely savoury bitterness"
-	glass_name = "glass of seraka extract"
-	glass_desc = "Deeply savoury, bitter, and makes your blood clot up in your veins. A great drink, all things considered."
 	metabolization_rate = 0.2 * REAGENTS_METABOLISM
 	clot_rate = 0.4 //slightly better than regular coagulant
 	passive_bleed_modifier = 0.5
 	overdose_threshold = 10 //but easier to overdose on
+
+/datum/glass_style/drinking_glass/seraka_extract
+	required_drink_type = /datum/reagent/medicine/coagulant/seraka_extract
+	name = "glass of seraka extract"
+	desc = "Deeply savoury, bitter, and makes your blood clot up in your veins. A great drink, all things considered."
