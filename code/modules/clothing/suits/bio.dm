@@ -32,11 +32,7 @@
 	slowdown = 0.5
 	allowed = list(/obj/item/tank/internals, /obj/item/reagent_containers/dropper, /obj/item/flashlight/pen, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/reagent_containers/cup/beaker, /obj/item/gun/syringe)
 	armor_type = /datum/armor/suit_bio_suit
-<<<<<<< HEAD
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL // SKYRAT EDIT ADDITION - HIDETAIL
-=======
-	flags_inv = HIDEGLOVES|HIDEJUMPSUIT
->>>>>>> 751eacf62b9 (Fixes biosuits, nun robes, narsien hardened armor making your shoes invisible (#72542))
+	flags_inv = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL // SKYRAT EDIT ADDITION - HIDETAIL
 	strip_delay = 70
 	equip_delay_other = 70
 	resistance_flags = ACID_PROOF
