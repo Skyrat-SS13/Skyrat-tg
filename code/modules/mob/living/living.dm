@@ -743,6 +743,7 @@
 	med_hud_set_status()
 	update_health_hud()
 	update_stamina()
+	SEND_SIGNAL(src, COMSIG_LIVING_HEALTH_UPDATE)
 
 /mob/living/update_health_hud()
 	var/severity = 0
@@ -1247,6 +1248,8 @@
 	if(is_centcom_level(T.z)) //dont detect mobs on centcom
 		return FALSE
 	if(is_away_level(T.z))
+		return FALSE
+	if(onSyndieBase() && !(ROLE_SYNDICATE in user.faction))
 		return FALSE
 	if(user != null && src == user)
 		return FALSE
