@@ -158,7 +158,7 @@
 		oven_loop.stop()
 
 ///Updates the smoke state to something else, setting particles if relevant
-/obj/machinery/oven/proc/set_smoke_state(new_state)
+/obj/machinery/oven/set_smoke_state(new_state)
 	if(new_state == smoke_state)
 		return
 	smoke_state = new_state
