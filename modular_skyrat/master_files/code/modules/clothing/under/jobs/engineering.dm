@@ -22,8 +22,13 @@
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/syndicate
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) // Same stats as the tactical turtleneck.
+	armor_type = /datum/armor/utility_syndicate
 	has_sensor = NO_SENSORS
+
+/datum/armor/utility_syndicate
+	melee = 10
+	fire = 50
+	acid = 40
 
 /obj/item/clothing/under/rank/engineering/engineer/skyrat/trouser
 	name = "engineer's trousers"
@@ -37,19 +42,29 @@
 	name = "chemical hazard jumpsuit"
 	desc = "A high visibility jumpsuit with additional protection from gas and chemical hazards, at the cost of less fire-proofing."
 	icon_state = "hazard_green"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 20, ACID = 60)
+	armor_type = /datum/armor/skyrat_hazard_chem
 	resistance_flags = ACID_PROOF
 	alt_covers_chest = TRUE
+
+/datum/armor/skyrat_hazard_chem
+	bio = 10
+	fire = 20
+	acid = 60
 
 /obj/item/clothing/under/rank/engineering/engineer/skyrat/hazard_chem/emt
 	name = "chemical hazard EMT jumpsuit"
 	desc = "An EMT jumpsuit used for first responders in situations involving gas and/or chemical hazards. The label reads, \"Not designed for prolonged exposure\"."
 	icon_state = "hazard_white"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 10, ACID = 50) // Worse stats than the proper chem-hazard uniform
+	armor_type = /datum/armor/hazard_chem_emt
 
 /*
 *	CHIEF ENGINEER
 */
+
+/datum/armor/hazard_chem_emt
+	bio = 10
+	fire = 10
+	acid = 50
 
 /obj/item/clothing/under/rank/engineering/chief_engineer/skyrat/imperial
 	desc = "A gray naval suit with a lead-lined vest and a rank badge denoting the Officer of the Internal Engineering Division. Doesn't come with a death machine building guide."
