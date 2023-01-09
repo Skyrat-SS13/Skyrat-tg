@@ -21,7 +21,7 @@
 	update_baking_audio()
 	update_appearance()
 
-/obj/machinery/oven/stone/proc/set_smoke_state(new_state)
+/obj/machinery/oven/stone/set_smoke_state(new_state)
 	. = ..()
 
 	particles.position = list(0, 10, 0)
