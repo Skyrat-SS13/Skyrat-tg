@@ -1,7 +1,7 @@
 /obj/item/clothing/sextoy/vibroring
 	name = "vibrating ring"
 	desc = "A ring toy used to keep your erection going strong."
-	icon_state = "vibroring_pink"
+	icon_state = "vibroring_pink_off"
 	base_icon_state = "vibroring"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	/// If the toy is currently on or not
