@@ -213,7 +213,7 @@
 			if(mob_breasts.genital_size > breast_minimum_size)
 				mob_breasts.genital_size -= breast_size_reduction_step
 				mob_breasts.update_sprite_suffix()
-				exposed_mob.update_body
+				exposed_mob.update_body()
 			// Handle completely shrinking away, if prefs allow
 			else if(mob_breasts.genital_size == breast_minimum_size) 
 				if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
