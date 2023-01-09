@@ -730,17 +730,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon_state = "fishnet_sleeves_alt"
 	use_static = null
 
-/datum/sprite_accessory/undershirt/fishnet_gloves
-	name = "Fishnet - Sleeved with Gloves"
-	icon_state = "fishnet_gloves"
-	gender = FEMALE
-	use_static = TRUE
-
-/datum/sprite_accessory/undershirt/fishnet_gloves/alt
-	name = "Fishnet - Sleeved with Gloves (Greyscale)"
-	icon_state = "fishnet_gloves_alt"
-	use_static = null
-
 /datum/sprite_accessory/undershirt/fishnet_base
 	name = "Fishnet - Sleeveless"
 	icon_state = "fishnet_body"
