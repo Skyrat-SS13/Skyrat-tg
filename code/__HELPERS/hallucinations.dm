@@ -66,12 +66,9 @@ GLOBAL_LIST_EMPTY(all_ongoing_hallucinations)
 		if(HAS_TRAIT(nearby_living, TRAIT_MADNESS_IMMUNE) || (nearby_living.mind && HAS_TRAIT(nearby_living.mind, TRAIT_MADNESS_IMMUNE)))
 			continue
 
-<<<<<<< HEAD
-=======
 		if(nearby_living.mob_biotypes & NO_HALLUCINATION_BIOTYPES)
 			continue
 
->>>>>>> 0d4b56435ba (Converts drowsy and eye blur to status effects, striking yet another two carbon level status vars (#71950))
 		if(nearby_living.is_blind())
 			continue
 
