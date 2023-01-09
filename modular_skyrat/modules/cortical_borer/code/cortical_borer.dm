@@ -233,8 +233,6 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 /mob/living/basic/cortical_borer/Destroy()
 	human_host = null
 	GLOB.cortical_borers -= src
-	if(mind)
-		mind.remove_all_antag_datums()
 	QDEL_NULL(reagent_holder)
 	return ..()
 
@@ -248,8 +246,6 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		deathgasp_once = TRUE
 		for(var/borers in GLOB.cortical_borers)
 			to_chat(borers, span_boldwarning("[src] has left the hivemind forcibly!"))
-	if(mind)
-		mind.remove_all_antag_datums()
 	QDEL_NULL(reagent_holder)
 	return ..()
 

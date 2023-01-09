@@ -238,8 +238,6 @@
 	quirk_holder.clear_mood_event("family_heirloom_missing")
 	quirk_holder.clear_mood_event("family_heirloom")
 
-<<<<<<< HEAD
-=======
 /datum/quirk/glass_jaw
 	name = "Glass Jaw"
 	desc = "You have a very fragile jaw. Any sufficiently hard blow to your head might knock you out."
@@ -291,7 +289,6 @@
 		)
 		source.Unconscious(3 SECONDS)
 
->>>>>>> 717e4f435c9 (Quirks are passed an incoming client when applied, allowing quirks to read preferences in `add` and `add_unique`. Renders visual quirks on the preference menu dummy. (#72158))
 /datum/quirk/frail
 	name = "Frail"
 	desc = "You have skin of paper and bones of glass! You suffer wounds much more easily than most."
@@ -376,13 +373,7 @@
 		if ("Circle")
 			glasses_type = /obj/item/clothing/glasses/regular/circle
 		if ("Hipster")
-<<<<<<< HEAD
-			glasses = /obj/item/clothing/glasses/regular/hipster
-		if ("Modern")
-			glasses = /obj/item/clothing/glasses/betterunshit
-=======
 			glasses_type = /obj/item/clothing/glasses/regular/hipster
->>>>>>> 717e4f435c9 (Quirks are passed an incoming client when applied, allowing quirks to read preferences in `add` and `add_unique`. Renders visual quirks on the preference menu dummy. (#72158))
 		else
 			glasses_type = /obj/item/clothing/glasses/regular
 

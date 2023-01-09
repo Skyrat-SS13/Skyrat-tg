@@ -1,7 +1,8 @@
 /obj/machinery/vending/dorms
 	name = "LustWish"
 	desc = "A vending machine with various toys. Not for the faint of heart."
-	icon_state = "lustwish"
+	icon_state = "lustwish_pink"
+	base_icon_state = "lustwish"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/lustwish.dmi'
 	light_mask = "lustwish-light-mask"
 	age_restrictions = TRUE
@@ -192,10 +193,10 @@
 /obj/machinery/vending/dorms/update_icon_state()
 	..()
 	if(machine_stat & BROKEN)
-		icon_state = "[initial(icon_state)]_[current_color]-broken"
+		icon_state = "[base_icon_state]_[current_color]-broken"
 		return
 
-	icon_state = "[initial(icon_state)]_[current_color][powered() ? null : "-off"]"
+	icon_state = "[base_icon_state]_[current_color][powered() ? null : "-off"]"
 
 //Refill item
 /obj/item/vending_refill/lustwish

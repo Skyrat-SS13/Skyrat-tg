@@ -36,12 +36,18 @@
 	icon_state = "util_med"
 
 /obj/item/clothing/under/rank/medical/doctor/skyrat/utility/syndicate
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) // Same stats as the tactical turtleneck.
+	armor_type = /datum/armor/utility_syndicate
 	has_sensor = NO_SENSORS
 
 /*
 *	SCRUBS
 */
+
+/datum/armor/utility_syndicate
+	melee = 10
+	fire = 50
+	acid = 40
+
 /obj/item/clothing/under/rank/medical/scrubs/skyrat/red
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in a deep red."
 	icon_state = "scrubsred"

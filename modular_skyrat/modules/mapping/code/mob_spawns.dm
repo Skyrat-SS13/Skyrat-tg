@@ -264,7 +264,7 @@
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
 	back = /obj/item/storage/backpack/satchel/sec/redsec
-	head = /obj/item/clothing/head/hos/beret/syndicate
+	head = /obj/item/clothing/head/hats/hos/beret/syndicate
 	r_pocket = /obj/item/flashlight/seclite
 	implants = list(
 		/obj/item/implant/weapons_auth,
@@ -339,7 +339,6 @@
 	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/casualman
 	shoes = /obj/item/clothing/shoes/workboots
 	back = /obj/item/storage/backpack
-	backpack_contents = list(/obj/item/armament_token/sidearm_blackmarket)
 	id = /obj/item/card/id/away/freightcrew
 
 /obj/effect/mob_spawn/ghost_role/human/lostminer
@@ -366,8 +365,8 @@
 		/obj/item/mining_voucher=1,
 		/obj/item/t_scanner/adv_mining_scanner/lesser=1,
 		/obj/item/gun/energy/recharge/kinetic_accelerator=1,\
-		/obj/item/stack/marker_beacon/ten=1,\
-		/obj/item/armament_token/sidearm_blackmarket)
+		/obj/item/stack/marker_beacon/ten=1,
+		)
 	r_pocket = /obj/item/storage/bag/ore
 	id = /obj/item/card/id/away/freightmine
 
@@ -392,7 +391,6 @@
 	neck = /obj/item/clothing/neck/cloak/qm
 	back = /obj/item/storage/backpack
 	backpack_contents = list(
-		/obj/item/armament_token/energy=1,
 		/obj/item/megaphone/cargo=1,
 		)
 	id = /obj/item/card/id/away/silver/freightqm
