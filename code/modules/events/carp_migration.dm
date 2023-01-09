@@ -32,14 +32,6 @@
 	start_when = rand(40, 60)
 
 /datum/round_event/carp_migration/announce(fake)
-<<<<<<< HEAD
-	priority_announce("Unknown biological entities have been detected near [station_name()], please stand-by.", "Lifesign Alert", ANNOUNCER_CARP)
-
-
-/datum/round_event/carp_migration/start()
-	var/mob/living/simple_animal/hostile/carp/fish
-	for(var/obj/effect/landmark/carpspawn/C in GLOB.landmarks_list)
-=======
 	priority_announce("[fluff_signal] have been detected near [station_name()], please stand-by.", "Lifesign Alert")
 
 /datum/round_event/carp_migration/start()
@@ -49,15 +41,10 @@
 	var/list/z_migration_paths = list()
 
 	for(var/obj/effect/landmark/carpspawn/spawn_point in GLOB.landmarks_list)
->>>>>>> 6200bc23602 (Basic Mob Carp IX: Carp Rifts & Migration (#72265))
 		if(prob(95))
 			fish = new carp_type(spawn_point.loc)
 		else
-<<<<<<< HEAD
-			fish = new /mob/living/simple_animal/hostile/carp/megacarp(C.loc)
-=======
 			fish = new boss_type(spawn_point.loc)
->>>>>>> 6200bc23602 (Basic Mob Carp IX: Carp Rifts & Migration (#72265))
 			fishannounce(fish) //Prefer to announce the megacarps over the regular fishies
 
 		var/z_level_key = "[spawn_point.z]"
