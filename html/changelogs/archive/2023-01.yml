@@ -232,3 +232,79 @@
   - code_imp: Turned most syndicate mobs into basicmobs, making their AI better and
       (possibly) more deadlier!
   - rscdel: Removed syndicate mech pilots and syndicate civvies
+2023-01-09:
+  A.C.M.O.:
+  - bugfix: Fixed the DNA Infuser's Goliaths infusion, which was not properly granting
+      its organ set bonus. Having all 4 goliath organs infused now makes you lava-proof
+      as expected.
+  Guillaume Prata:
+  - bugfix: Metal Hydrogen/Elder Atmosian suits can carry a MH Axe on its suit slot
+      now.
+  LT3:
+  - bugfix: Hilbert's tram call button is now linked to the correct tram
+  - imageadd: Hazard lights added to the tram collision counter
+  Oxotnak:
+  - rscadd: Added moffra wings from upstream
+  ShizCalev:
+  - bugfix: Fixed the gulag item reclaimer sometimes not giving you all your items
+      back.
+  - bugfix: Fixed indestructible glass sometimes having the grill ontop of it instead
+      of underneath it.
+  - bugfix: Fixed a minor runtime which occurred when an airlock got deleted if an
+      AI was actively hacking it.
+  SkyratBot:
+  - balance: Moved the account console board to the service lathe
+  - bugfix: Implemented "jelly eyes" to make jellypeople and stargazers use the proper
+      eyes sprite.
+  - rscadd: Mice who are fed cheese by hand will accept humans as friends, at least
+      until reminded otherwise by their rightful lord.
+  - bugfix: Fixed a runtime preventing mice from acting correctly when trying to flee
+      and also eat cheese at the same time.
+  - rscadd: Introducing a new holodeck map, the TGC Arena, featuring hologram projectors
+      for your trading cards.
+  - bugfix: Janitor and Intern TGC cards are now considered creatures rather than
+      just humans.
+  - balance: The price of card packs has been reduced from double a paycheck to 3
+      quarters of one.
+  - balance: The number of cards available in the good clean fun vendor has been doubled.
+  - balance: You can now place plating adjacent to already existing plating without
+      having to place rods first.
+  - admin: Logbuddy should no longer fail to parse logs with multi-line adminhelp
+      replies
+  - bugfix: You can right-click microwaves again.
+  - rscadd: Venom antag
+  - qol: Rewrote the crafting/cooking menu UI
+  - qol: Split crafting and cooking menus in two different menus
+  - qol: Crafting is no longer blocking the entire UI, only the "Make" buttons are
+      disabled
+  - qol: Added stack crafting recipes to the crafting menu
+  - qol: Added cooking recipes that were absent in the crafting menu before (tool
+      recipes, machine recipes, reactions)
+  - qol: Added option to search recipes by title
+  - qol: Added option to filter recipes by required materials/ingredients
+  - qol: Added food types to the cooking menu, highlighting diet of your species (liked,
+      disliked foods)
+  - qol: Added total nutrition value of the result to the cooking menu
+  - qol: Added option to filter cooking recipes by the food type of the resulting
+      food
+  - qol: Added "Can make" category that lists all currently craftable recipes throughout
+      all categories
+  - refactor: changed categories and reshuffled some items in them
+  - code_imp: Reagents now have default container to get an icon from the reagent
+      datum
+  - code_imp: Objects now have `desc_controls` var for OOC information about mouse
+      controls that are visible on examine, but not in the description
+  - bugfix: Fixed alignment on many food icons
+  - bugfix: Fixed missing icon for beef stroganoff
+  - refactor: armor, from the ground up basically
+  - qol: Medipen refillers now use balloon alerts and progress bars instead of to
+      chat messages and invisible timers
+  - code_imp: Medipen refillers now refill your pen instead of delete it and create
+      a new one. This also means that refilling them will leave the medipen in your
+      hand instead of drop it at the refiller's tile.
+  - qol: examining armor tags now shows you the wound armor value
+  - bugfix: Beer nukes no longer runtime on detonation.
+  - admin: Admins can now modify what reagent beer nukes produce, now your parties
+      can be alcohol free!
+  - admin: Admins can now creature custom reagent scrubber overflows, TC trade 20TC
+      for superlube flood?
