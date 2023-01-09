@@ -327,7 +327,8 @@
  * Calls `check_ass()` first to make sure that `ass` exists, among other conditions. Since this proc is called from a timer, it's possible that it was removed.
  * Additionally checks that the mob has their clothes off.
  */
-/obj/machinery/photocopier/proc/make_ass_copy()
+/**
+/obj/machinery/photocopier/proc/make_ass_copy() //SKYRAT EDIT - SEE PHOTOCOPIER MODULAR FILE
 	if(!check_ass() || !toner_cartridge)
 		return
 	if(ishuman(ass) && (ass.get_item_by_slot(ITEM_SLOT_ICLOTHING) || ass.get_item_by_slot(ITEM_SLOT_OCLOTHING)))
@@ -356,7 +357,7 @@
 	toEmbed.psize_y = 128
 	copied_ass.set_picture(toEmbed, TRUE, TRUE)
 	toner_cartridge.charges -= ASS_TONER_USE
-
+*/
 /**
  * Inserts the item into the copier. Called in `attackby()` after a human mob clicked on the copier with a paper, photo, or document.
  *
