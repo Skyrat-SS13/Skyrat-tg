@@ -56,20 +56,48 @@
 
 /datum/species/human/felinid/primitive/get_species_lore()
 	return list(
-		"The galaxy is a large place. Every now and then, people and things will simply go missing, never to be seen again. \
-			Everything that goes missing ends up somewhere. People, things… If you look hard enough, you can find \
-			long-forgotten stuff in just about any part of space.",
+		"The Hearthkin are a culture of disparate Scandinavian groups all sharing a common origin \
+			as descendents from demihuman genemodders aboard the good ship Stjarndrakkr, or Star Dragon; \
+			an enormous colony ship almost 40km tall. This ship first reached the orbit of its last \
+			resting place three hundred years ago, before the advent of bluespace travel; coming from \
+			a world known to the Hearthkin as 'Asgard.' When it reached the atmosphere of the ice moon, \
+			or 'Niflheim' as they consider it, the vessel detonated in low orbit for unknown reasons. \
+			Large sections of the Star Dragon broke up and sealed themselves, \
+			coming to a rest all over the moon itself.",
 
-		"Sometimes, when people go missing, they survive the ordeal. While uncommon, many incidents have been recorded where \
-			a ship will crash on a distant frontier world without rescue, and the crew will manage to survive and thrive.",
+		"At first, life was incredibly difficult for the would-be colonists. Generations were very short, \
+			and most of the personnel able to even fix the vessel had died either on impact, or later on. \
+			While their genetic modifications and pre-existing comfort in frozen climates somewhat helped them, \
+			the Ancestors were said to have made one last desperate move to put all their resources together to \
+			fully modify and adapt themselves to the climes of Niflheim; forever.",
 
-		"In cases such as this, sometimes the crew is only rediscovered through their offspring several generations later… \
-		If they get rediscovered at all, that is.",
+		"Nowadays, the Hearthkin are removed from the original culture of the Ancestors, building one all of their own. \
+			Many of the original, largest segments of the Star Dragon are buried under ice and snow, and the Hearthkin have \
+			created a culture of building separate dwellings to keep them secret. Dwelling in longhouses and sleeping in the \
+			warm undergrounds of Niflheim, and hunting native creatures and those coming from portals to the moon's planet; \
+			Muspelheim. Their pagan faith has strengthened over the centuries, from occasional prayers for a blizzard to end \
+			soon, to now full-on worship and sacrifices to their various Gods. Hearthkin still hold immense reverence for their \
+			Ancestors, but tend to have varying opinions and speculation on what exactly they were like, and why they came to \
+			Niflheim in the first place.",
 
-		"Why do I tell you all of this, you ask? Reports trickle in from many of our icemoon outposts that they've either \
-			sighted, or been harassed by a group of modders that look like stuff straight out of the history books. Look \
-			at the logbooks and you'll see plenty of ships assumed missing or destroyed decades ago with a crew \
-			that had the tech to genemod on board. Doesn't take a mastermind to put two and two together.",
+		"Their names are two-part; a birth name, and a title. Their birth names still hold resemblance to 'Asgardian' culture, \
+			typically a Nordic name such as 'Solveig Helgasdottir,' or 'Bjorn Lukasson.' However, their last name is then exchanged \
+			for a 'Title' when the Hearthkin is no longer 'Unproven.' These are a two-parter, based on either great deeds, \
+			embarrassing moments, or aspects of the person's personality. Some examples would be 'Soul-Drowner' after the night of \
+			a Hearthkin drinking herself half-dead, or one might be known as 'Glacier-Shaped' for being abnormally large. \
+			These titles are always given by ones' kin.",
 
-		"- Nanotrasen commander who requested anonymity",
+		"The Hearth itself is an area that the kindred hold incredibly sacred, primarily hating Outsiders for more \
+			practical reasons. They think themselves as having been there first, many of them knowing they were 'promised' \
+			Niflheim by the Ancestors. Unlike the Ashwalkers of Muspelheim, the Hearthkin are a more technologically \
+			advanced society; having use for not only metal, but gold and silver for accessory. They are known to employ \
+			artifacts thought to be of either the planet their moon orbits, or leftovers from their Ancestors; however, for \
+			a variety of reasons from Kin to Kin, they tend to shy away from using modern human technology.",
+
+		"Physically, the Hearthkin always come in the form of demihumans; appearing similar to normal Earthlings, \
+			but with the tails, ears, and sometimes limbs of various arctic animals; wolves, bears, and felines to only name a few. \
+			They seem perfectly adapted to their lands of ice and mist, but find even the mild controlled temperatures of \
+			NanoTrasen stations to be swelteringly hot. Their view of 'station' genemodders is that of 'halflings': \
+			Ancestral bodies, but with the blood and spirit of the humans of Midgard, \
+			tending to look down on them even more than other aliens.",
 	)
