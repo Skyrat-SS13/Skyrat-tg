@@ -100,7 +100,8 @@
 	if(!EN)
 		return
 
-	var/is_friend = EN.blackboard[BB_FRIENDS_LIST][WEAKREF(target)]
+	var/list/friends_list = EN.blackboard[BB_FRIENDS_LIST]
+	var/is_friend = friends_list && friends_list[WEAKREF(target)]
 
 	if(always_shoot || !is_friend)
 		INVOKE_ASYNC(src, PROC_REF(shoot_at), target)
