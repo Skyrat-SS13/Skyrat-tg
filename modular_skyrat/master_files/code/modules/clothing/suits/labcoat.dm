@@ -13,7 +13,13 @@
 	desc = "A Nanotrasen standard labcoat for certified Research Directors. It has an extra plastic-latex lining on the outside for more protection from chemical and viral hazards."
 	icon_state = "labcoat_rd"
 	body_parts_covered = CHEST|ARMS|LEGS
-	armor = list(MELEE = 5, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 80, FIRE = 80, ACID = 70)
+	armor_type = /datum/armor/skyrat_rd
+
+/datum/armor/skyrat_rd
+	melee = 5
+	bio = 80
+	fire = 80
+	acid = 70
 
 /obj/item/clothing/suit/toggle/labcoat/skyrat/highvis
 	name = "high vis labcoat"
@@ -33,7 +39,7 @@
 	icon_state = "hgown"
 	toggle_noun = "drapes"
 	body_parts_covered = NONE //Allows surgeries despite wearing it; hiding genitals is handled in /datum/sprite_accessory/genital/is_hidden() (Only place it'd work sadly)
-	armor = NONE
+	armor_type = /datum/armor/none
 	equip_delay_other = 8
 
 /obj/item/clothing/suit/toggle/labcoat/roboticist //Overwrite the TG Roboticist labcoat to Black and Red (not the Interdyne labcoat though)

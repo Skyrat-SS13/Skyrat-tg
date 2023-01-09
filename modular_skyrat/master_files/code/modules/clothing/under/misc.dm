@@ -53,5 +53,10 @@
 	can_adjust = FALSE
 
 /obj/item/clothing/under/misc/skyrat/utility/syndicate
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
+	armor_type = /datum/armor/utility_syndicate
 	has_sensor = NO_SENSORS
+
+/datum/armor/utility_syndicate
+	melee = 10
+	fire = 50
+	acid = 40

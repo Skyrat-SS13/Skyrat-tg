@@ -9,7 +9,11 @@
 	icon_state = "combat"
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
 	resistance_flags = FIRE_PROOF |  ACID_PROOF
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 100, "acid" = 100)
+	armor_type = /datum/armor/insulated_blueshield
+
+/datum/armor/insulated_blueshield
+	fire = 100
+	acid = 100
 
 /obj/item/radio/headset/headset_bs
 	name = "\proper the blueshield's headset"
@@ -33,7 +37,17 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/plasmaman_hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/plasmaman_head.dmi'
 	icon_state = "bs_envirohelm"
-	armor = list("melee" = 30, "bullet" = 20, "laser" = 20,"energy" = 20, "bomb" = 25, "bio" = 100, "fire" = 100, "acid" = 90)
+	armor_type = /datum/armor/plasmaman_blueshield
+
+/datum/armor/plasmaman_blueshield
+	melee = 30
+	melee = 20
+	laser = 20
+	energy = 20
+	bomb = 25
+	bio = 100
+	fire = 100
+	acid = 90
 
 /obj/item/clothing/under/plasmaman/blueshield
 	name = "blueshield envirosuit"
@@ -41,9 +55,17 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/plasmaman.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/plasmaman.dmi'
 	icon_state = "bs_envirosuit"
-	armor = list("melee" = 10, "bullet" = 0, "laser" = 10,"energy" = 0, "bomb" = 5, "bio" = 100, "fire" = 95, "acid" = 95)
+	armor_type = /datum/armor/plasmaman_blueshield
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
+
+/datum/armor/plasmaman_blueshield
+	melee = 10
+	laser = 10
+	bomb = 5
+	bio = 100
+	fire = 95
+	acid = 95
 
 /obj/item/clothing/head/beret/blueshield
 	name = "blueshield's beret"
@@ -53,8 +75,17 @@
 	greyscale_colors = "#3A4E7D#DEB63D"
 	//alternate_worn_icon_digi = 'modular_skyrat/icons/mob/head_muzzled.dmi'
 	icon_state = "beret_badge_police"
-	armor = list("melee" = 35, "bullet" = 25, "laser" = 25,"energy" = 15, "bomb" = 25, "bio" = 0, "fire" = 75, "acid" = 75)
+	armor_type = /datum/armor/beret_blueshield
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+
+/datum/armor/beret_blueshield
+	melee = 35
+	melee = 25
+	laser = 25
+	energy = 15
+	bomb = 25
+	fire = 75
+	acid = 75
 
 /obj/item/clothing/head/beret/blueshield/navy
 	name = "navy blueshield's beret"
@@ -94,7 +125,16 @@
 	//alternate_worn_icon_digi = 'modular_skyrat/icons/mob/suit_digi.dmi'
 	icon_state = "blueshield"
 	body_parts_covered = CHEST|ARMS
-	armor = list("melee" = 35, "bullet" = 25, "laser" = 25,"energy" = 25, "bomb" = 30, "bio" = 0, "fire" = 75, "acid" = 75)
+	armor_type = /datum/armor/vest_blueshield
+
+/datum/armor/vest_blueshield
+	melee = 35
+	melee = 25
+	laser = 25
+	energy = 25
+	bomb = 30
+	fire = 75
+	acid = 75
 
 /obj/item/clothing/suit/armor/vest/blueshield/Initialize(mapload)
 	. = ..()
@@ -107,7 +147,16 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "blueshieldarmor"
 	body_parts_covered = CHEST
-	armor = list("melee" = 35, "bullet" = 25, "laser" = 25,"energy" = 25, "bomb" = 30, "bio" = 0, "fire" = 75, "acid" = 75)
+	armor_type = /datum/armor/vest_blueshieldarmor
+
+/datum/armor/vest_blueshieldarmor
+	melee = 35
+	melee = 25
+	laser = 25
+	energy = 25
+	bomb = 30
+	fire = 75
+	acid = 75
 
 /obj/item/clothing/suit/hooded/wintercoat/blueshield
 	name = "blueshield's winter coat"
@@ -117,7 +166,16 @@
 	desc = "A comfy kevlar-lined coat with blue highlights, for the blueshield."
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/blueshield
 	allowed = list(/obj/item/melee/baton/security/loaded)
-	armor = list("melee" = 35, "bullet" = 25, "laser" = 25,"energy" = 25, "bomb" = 30, "bio" = 0, "fire" = 75, "acid" = 75)
+	armor_type = /datum/armor/wintercoat_blueshield
+
+/datum/armor/wintercoat_blueshield
+	melee = 35
+	melee = 25
+	laser = 25
+	energy = 25
+	bomb = 30
+	fire = 75
+	acid = 75
 
 /obj/item/clothing/suit/hooded/wintercoat/blueshield/Initialize(mapload)
 	. = ..()
@@ -128,4 +186,13 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "winterhood_blueshield"
 	desc = "A comfy kevlar-lined hood to go with the comfy kevlar-lined coat."
-	armor = list("melee" = 35, "bullet" = 25, "laser" = 25,"energy" = 15, "bomb" = 25, "bio" = 0, "fire" = 75, "acid" = 75)
+	armor_type = /datum/armor/winterhood_blueshield
+
+/datum/armor/winterhood_blueshield
+	melee = 35
+	melee = 25
+	laser = 25
+	energy = 15
+	bomb = 25
+	fire = 75
+	acid = 75
