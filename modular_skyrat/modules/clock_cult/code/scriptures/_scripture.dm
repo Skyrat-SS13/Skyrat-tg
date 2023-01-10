@@ -1,5 +1,7 @@
 GLOBAL_LIST_EMPTY(clock_scriptures)
 
+// Scriptures are the "spells" of clock cultists
+// They're usable through their clockwork slab, and cannot be invoked otherwise
 /datum/scripture
 	/// Name of the scripture
 	var/name = ""
@@ -131,6 +133,7 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 	for(var/mob/living/potential_invoker in viewers(invoker))
 		if(potential_invoker.stat)
 			continue
+
 		if(IS_CLOCK(potential_invoker))
 			invokers++
 
@@ -199,7 +202,7 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 		return FALSE
 
 	if(locate(/obj/structure/destructible/clockwork) in get_turf(invoker))
-		to_chat(invoker, span_brass("You cannot invoke that here, the tile is occupied by a structure already!"))
+		invoker.balloon_alert(invoker, "structure already on tile!")
 		return FALSE
 
 	return TRUE

@@ -1,3 +1,7 @@
+#define REGULAR_PICKUP_MOD 1
+#define CULTIST_PICKUP_MOD 2
+#define PICKUP_SHOCK_DAMAGE 25
+
 /datum/element/clockwork_pickup
 	element_flags = ELEMENT_BESPOKE | ELEMENT_DETACH_ON_HOST_DESTROY
 	argument_hash_start_idx = 2
@@ -38,12 +42,16 @@
 		return
 
 	var/mob/living/equipper_living = equipper
-	var/power_multiplier = 1
+	var/power_multiplier = REGULAR_PICKUP_MOD
 
 	if(IS_CULTIST(equipper_living))
-		power_multiplier = 2
+		power_multiplier = CULTIST_PICKUP_MOD
 
 	to_chat(equipper_living, span_warning("As you [slot == ITEM_SLOT_HANDS ? "touch" : "equip"] [source], you feel a jolt course through you!"))
 
 	equipper_living.dropItemToGround(source, TRUE)
-	equipper_living.electrocute_act(25 * power_multiplier, src, 1, SHOCK_NOGLOVES, SHOCK_SUPPRESS_MESSAGE)
+	equipper_living.electrocute_act(PICKUP_SHOCK_DAMAGE * power_multiplier, src, 1, SHOCK_NOGLOVES, SHOCK_SUPPRESS_MESSAGE)
+
+#undef REGULAR_PICKUP_MOD
+#undef CULTIST_PICKUP_MOD
+#undef PICKUP_SHOCK_DAMAGE

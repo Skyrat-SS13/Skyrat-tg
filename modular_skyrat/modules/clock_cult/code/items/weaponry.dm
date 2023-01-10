@@ -35,13 +35,13 @@
 
 /obj/item/clockwork/weapon/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	. = ..()
+	if(.)
+		return
+
 	if(!isliving(hit_atom))
 		return
 
 	var/mob/living/target = hit_atom
-
-	if(.)
-		return
 
 	if(!target.can_block_magic(MAGIC_RESISTANCE_HOLY) && !(IS_CLOCK(target)))
 		hit_effect(target, throwingdatum.thrower, TRUE)
@@ -78,8 +78,8 @@
 /obj/item/clockwork/weapon/brass_battlehammer/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/two_handed, \
-	force_unwielded=15, \
-	force_wielded=28, \
+		force_unwielded = 15, \
+		force_wielded = 28, \
 	)
 
 
@@ -107,6 +107,7 @@
 /obj/item/clockwork/weapon/brass_sword/hit_effect(mob/living/target, mob/living/user, thrown)
 	if(!COOLDOWN_FINISHED(src, emp_cooldown))
 		return
+
 	COOLDOWN_START(src, emp_cooldown, 30 SECONDS)
 
 	target.emp_act(EMP_LIGHT)
@@ -125,6 +126,7 @@
 
 	if(!COOLDOWN_FINISHED(src, emp_cooldown))
 		return
+
 	COOLDOWN_START(src, emp_cooldown, 20 SECONDS)
 
 	var/obj/vehicle/sealed/mecha/target = attacked_obj
@@ -147,6 +149,7 @@
 	righthand_file = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_righthand.dmi'
 	icon_state = "bow_clockwork"
 	inhand_icon_state = "clockwork_bow"
+	base_icon_state = "bow_clockwork"
 	force = 10
 	mag_type = /obj/item/ammo_box/magazine/internal/bow/clockwork
 	/// Time between bolt recharges
@@ -203,7 +206,7 @@
 
 /obj/item/gun/ballistic/bow/clockwork/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[!!chambered]_[drawn]"
+	icon_state = "[base_icon_state]_[chambered ? "chambered" : "unchambered"]_[drawn ? "drawn" : "undrawn"]"
 
 
 /obj/item/ammo_box/magazine/internal/bow/clockwork

@@ -7,12 +7,27 @@
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_garb.dmi'
 	worn_icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_garb_worn.dmi'
 	icon_state = "clockwork_cuirass"
-	armor = list(MELEE = 50, BULLET = 60, LASER = 30, ENERGY = 80, BOMB = 80, BIO = 100, FIRE = 100, ACID = 100)
+	armor_type = /datum/armor/suit_clockwork
 	slowdown = 0.6
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	w_class = WEIGHT_CLASS_BULKY
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-	allowed = list(/obj/item/clockwork, /obj/item/stack/tile/bronze, /obj/item/gun/ballistic/bow/clockwork, /obj/item/gun/ballistic/rifle/lionhunter/clockwork)
+	allowed = list(
+		/obj/item/clockwork,
+		/obj/item/stack/tile/bronze,
+		/obj/item/gun/ballistic/bow/clockwork,
+		/obj/item/gun/ballistic/rifle/lionhunter/clockwork,
+	)
+
+/datum/armor/suit_clockwork
+	melee = 50
+	bullet = 60
+	laser = 30
+	energy = 80
+	bomb = 80
+	bio = 100
+	fire = 100
+	acid = 100
 
 
 /obj/item/clothing/suit/clockwork/Initialize(mapload)
@@ -25,16 +40,24 @@
 	desc = "A shiny suit, glowing with a vibrant energy. The wearer will be able to move quickly across battlefields, but will be able to withstand less damage before falling."
 	icon_state = "clockwork_cuirass_speed"
 	slowdown = -0.3
-	supports_variations_flags = NONE //undo once halc gets me it
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	armor = list(MELEE = 40, BULLET = 40, LASER = 10, ENERGY = -20, BOMB = 60, BIO = 100, FIRE = 100, ACID = 100)
+	armor_type = /datum/armor/clockwork_speed
 
+/datum/armor/clockwork_speed
+	melee = 40
+	bullet = 30
+	laser = 10
+	energy = -20
+	bomb = 60
+	bio = 100
+	fire = 100
+	acid = 100
 
 /obj/item/clothing/suit/clockwork/cloak
 	name = "shrouding cloak"
 	desc = "A faltering cloak that bends light around it, distorting the user's appearance, making it hard to see them with the naked eye. However, it provides very little protection."
 	icon_state = "clockwork_cloak"
-	armor = list(MELEE = 10, BULLET = 60, LASER = 40, ENERGY = 20, BOMB = 40, BIO = 100, FIRE = 100, ACID = 100)
+	armor_type = /datum/armor/clockwork_cloak
 	actions_types = list(/datum/action/item_action/toggle/clock)
 	slowdown = 0.4
 	resistance_flags = FIRE_PROOF | ACID_PROOF
@@ -46,6 +69,15 @@
 	/// Who is wearing this
 	var/mob/living/wearer
 
+/datum/armor/clockwork_cloak
+	melee = 10
+	bullet = 60
+	laser = 40
+	energy = 20
+	bomb = 40
+	bio = 100
+	fire = 100
+	acid = 100
 
 /obj/item/clothing/suit/clockwork/cloak/Destroy()
 	wearer = null
@@ -366,10 +398,20 @@
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_garb.dmi'
 	worn_icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_garb_worn.dmi'
 	icon_state = "clockwork_helmet"
-	armor = list(MELEE = 50, BULLET = 60, LASER = 30, ENERGY = 80, BOMB = 80, BIO = 100, FIRE = 100, ACID = 100)
+	armor_type = /datum/armor/helmet_clockwork
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	w_class = WEIGHT_CLASS_BULKY
 	flash_protect = FLASH_PROTECTION_FLASH
+
+/datum/armor/helmet_clockwork
+	melee = 50
+	bullet = 60
+	laser = 30
+	energy = 80
+	bomb = 80
+	bio = 100
+	fire = 100
+	acid = 100
 
 /obj/item/clothing/head/helmet/clockwork/Initialize(mapload)
 	. = ..()
@@ -402,7 +444,17 @@
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = NONE
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 80, ACID = 50)
+	armor_type = /datum/armor/gloves_clockwork
+
+/datum/armor/gloves_clockwork
+	melee = 0
+	bullet = 0
+	laser = 0
+	energy = 0
+	bomb = 0
+	bio = 0
+	fire = 80
+	acid = 50
 
 /obj/item/clothing/gloves/clockwork/Initialize(mapload)
 	. = ..()

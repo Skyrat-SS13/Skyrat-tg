@@ -1,3 +1,5 @@
+#define MENDING_MANTRA_SCALE 2
+
 //temporary visual effects(/obj/effect/temp_visual) used by clock stuff
 /obj/effect/temp_visual/ratvar
 	name = "ratvar's light"
@@ -85,7 +87,7 @@
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_effects.dmi'
 	icon_state = "belligerent_eye"
 	pixel_y = 20
-	duration = 20
+	duration = 2 SECONDS
 
 
 /obj/effect/temp_visual/ratvar/belligerent_cast/Initialize(mapload)
@@ -95,7 +97,7 @@
 
 /obj/effect/temp_visual/ratvar/mending_mantra
 	layer = ABOVE_MOB_LAYER
-	duration = 20
+	duration = 2 SECONDS
 	alpha = 200
 	icon_state = "mending_mantra"
 	light_range = 1.5
@@ -104,7 +106,7 @@
 
 /obj/effect/temp_visual/ratvar/mending_mantra/Initialize(mapload)
 	. = ..()
-	transform = matrix() * 2
+	transform = matrix() * MENDING_MANTRA_SCALE
 	var/matrix/mantra_matrix = transform
 	mantra_matrix.Turn(90)
 	animate(src, alpha = 20, time = duration, easing = BOUNCE_EASING, flags = ANIMATION_PARALLEL)
@@ -211,3 +213,5 @@
 
 	playsound(src, 'sound/machines/clockcult/steam_whoosh.ogg', 30)
 	return INITIALIZE_HINT_QDEL
+
+#undef MENDING_MANTRA_SCALE

@@ -17,6 +17,7 @@
 
 		if(!istype(trap, result_path))
 			continue
+
 		user.balloon_alert(user, "space occupied!")
 		return
 
@@ -29,8 +30,8 @@
 
 //Thing you stick on the wall
 /obj/item/wallframe/clocktrap
-	name = "Clockwork trap item"
-	desc = "It's a... wait what?"
+	name = "clockwork trap item"
+	desc = "It's a... Wait what?"
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_objects.dmi'
 	pixel_shift = 24
 	w_class = WEIGHT_CLASS_HUGE
@@ -46,7 +47,7 @@
 
 //Wall item (either spawned by a wallframe or directly)
 /obj/structure/destructible/clockwork/trap
-	name = "Clockwork trap item"
+	name = "clockwork trap item"
 	desc = "Probably doesn't do much."
 	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_objects.dmi'
 	density = FALSE

@@ -1,7 +1,8 @@
 #define SIGIL_INVOCATION_ALPHA 120
 #define SIGIL_INVOKED_ALPHA 200
+#define SIGIL_MATRIX_SCALE 1.2
 
-//==========Sigil Base=========
+//Sigil base
 /obj/structure/destructible/clockwork/sigil
 	name = "sigil"
 	desc = "It's a sigil that does something."
@@ -101,7 +102,7 @@
 	active_timer = null
 	currently_affecting = null
 	color = fail_color
-	transform = matrix() * 1.2
+	transform = matrix() * SIGIL_MATRIX_SCALE
 	alpha = 140
 	animate(src, transform = matrix(), color = idle_color, alpha = initial(alpha), time = 0.5 SECONDS)
 
@@ -114,7 +115,7 @@
 		return FALSE
 
 	color = pulse_color
-	transform = matrix() * 1.2
+	transform = matrix() * SIGIL_MATRIX_SCALE
 	alpha = SIGIL_INVOKED_ALPHA
 
 	if(looping)
@@ -136,3 +137,4 @@
 
 #undef SIGIL_INVOCATION_ALPHA
 #undef SIGIL_INVOKED_ALPHA
+#undef SIGIL_MATRIX_SCALE

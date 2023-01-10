@@ -33,6 +33,7 @@
 
 	if(!COOLDOWN_FINISHED(src, stab_cooldown))
 		return
+
 	COOLDOWN_START(src, stab_cooldown, 10 SECONDS)
 
 	extended = TRUE
@@ -59,6 +60,7 @@
 	if(target_stabbed)
 		if(!stab_overlay)
 			stab_overlay = mutable_appearance('modular_skyrat/modules/clock_cult/icons/clockwork_objects.dmi', "brass_skewer_pokeybit", layer = ABOVE_MOB_LAYER)
+
 		add_overlay(stab_overlay)
 
 
@@ -71,11 +73,11 @@
 
 	balloon_alert(buckled_mob, "climbing off of [src]...")
 
-	if(do_after(buckled_mob, 5 SECONDS, target = src))
-		return ..()
-
-	else
+	if(!do_after(buckled_mob, 5 SECONDS, target = src))
 		balloon_alert(buckled_mob, "failed to climb off [src]")
+		return
+
+	return ..()
 
 
 /obj/structure/destructible/clockwork/trap/skewer/post_unbuckle_mob(mob/living/stabbed_mob)

@@ -1,3 +1,5 @@
+#define BRASS_TOOLSPEED_MOD 0.5
+
 /obj/item/wirecutters/brass
 	name = "brass wirecutters"
 	desc = "A pair of wirecutters made of brass. The handle feels faintly warm."
@@ -5,7 +7,7 @@
 	icon = 'modular_skyrat/modules/clock_cult/icons/tools.dmi'
 	icon_state = "cutters_brass"
 	random_color = FALSE
-	toolspeed = 0.5
+	toolspeed = BRASS_TOOLSPEED_MOD
 
 /obj/item/screwdriver/brass
 	name = "brass screwdriver"
@@ -13,7 +15,7 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	icon = 'modular_skyrat/modules/clock_cult/icons/tools.dmi'
 	icon_state = "screwdriver_brass"
-	toolspeed = 0.5
+	toolspeed = BRASS_TOOLSPEED_MOD
 	random_color = FALSE
 	greyscale_config_inhand_left = null
 	greyscale_config_inhand_right = null
@@ -24,7 +26,7 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	icon = 'modular_skyrat/modules/clock_cult/icons/tools.dmi'
 	icon_state = "welder_brass"
-	toolspeed = 0.5
+	toolspeed = BRASS_TOOLSPEED_MOD
 
 /obj/item/crowbar/brass
 	name = "brass crowbar"
@@ -32,7 +34,7 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	icon = 'modular_skyrat/modules/clock_cult/icons/tools.dmi'
 	icon_state = "crowbar_brass"
-	toolspeed = 0.5
+	toolspeed = BRASS_TOOLSPEED_MOD
 
 /obj/item/wrench/brass
 	name = "brass wrench"
@@ -40,7 +42,7 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	icon = 'modular_skyrat/modules/clock_cult/icons/tools.dmi'
 	icon_state = "wrench_brass"
-	toolspeed = 0.5
+	toolspeed = BRASS_TOOLSPEED_MOD
 
 /obj/item/storage/belt/utility/clock
 	name = "old toolbelt"
@@ -53,3 +55,5 @@
 	new /obj/item/wirecutters/brass(src)
 	new /obj/item/wrench/brass(src)
 	new /obj/item/multitool(src)
+
+#undef BRASS_TOOLSPEED_MOD

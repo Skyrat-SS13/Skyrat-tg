@@ -29,7 +29,7 @@
 	)
 	AddComponent(/datum/component/connect_loc_behalf, parent, loc_connections)
 
-
+/// Trigger all connected traps now that someone's stepped on the tile
 /datum/component/clockwork_trap/pressure_sensor/proc/on_entered(datum/source, atom/movable/entered_movable)
 	SIGNAL_HANDLER
 

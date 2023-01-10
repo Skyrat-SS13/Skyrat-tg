@@ -4,6 +4,11 @@ import { Icon, Box, Button, Section, Table, Divider, Grid, ProgressBar, Collapsi
 import { Window } from '../layouts';
 import { TableRow } from '../components/Table';
 
+const brassColor = '#DFC69C';
+const replicaFab = '#B5FD9D';
+const cogScarab = '#DED09F';
+const clockMarauder = '#FF9D9D';
+
 const convertPower = (power_in) => {
   const units = ['W', 'kW', 'MW', 'GW'];
   let power = 0;
@@ -70,7 +75,7 @@ const ClockworkHelp = (props, context) => {
           <br />
           <b>
             Install&nbsp;
-            <font color="#DFC69C">Integration Cogs&nbsp;</font>
+            <font color={brassColor}>Integration Cogs&nbsp;</font>
             to unlock more scriptures and siphon power!
           </b>
           <br />
@@ -81,7 +86,7 @@ const ClockworkHelp = (props, context) => {
           Most scriptures require <b>cogs</b> to unlock.
           <br />
           Invoke&nbsp;
-          <font color="#DFC69C">
+          <font color={brassColor}>
             <b>Integration Cog&nbsp;</b>
           </font>
           to summon an Integration Cog, which can be placed into any&nbsp;
@@ -104,19 +109,19 @@ const ClockworkHelp = (props, context) => {
           </b>
           <br />
           <b>
-            <font color="#B5FD9D">Replicant Fabricator:&nbsp;</font>
+            <font color={replicaFab}>Replicant Fabricator:&nbsp;</font>
           </b>
           A powerful tool that can rapidly construct Brass structures, or
           convert most materials to Brass.
           <br />
           <b>
-            <font color="#DED09F">Cogscarab:&nbsp;</font>
+            <font color={cogScarab}>Cogscarab:&nbsp;</font>
           </b>
           A small drone possessed by the spirits of the fallen soldiers which
           will protect Reebe while you go out and spread the truth!
           <br />
           <b>
-            <font color="#FF9D9D">Clockwork Marauder:&nbsp;</font>
+            <font color={clockMarauder}>Clockwork Marauder:&nbsp;</font>
           </b>
           A powerful shell that can deflect ranged attacks and delivers a strong
           blow in close quarter combat.

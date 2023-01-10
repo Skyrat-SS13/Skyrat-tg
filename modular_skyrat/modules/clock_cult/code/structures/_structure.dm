@@ -1,4 +1,4 @@
-//The base clockwork structure. Can have an alternate desc and will show up in the list of clockwork objects.
+/// The base clockwork structure. Can have an alternate desc and will show up in the list of clockwork objects.
 /obj/structure/destructible/clockwork
 	name = "meme structure"
 	desc = "Some frog or something, the fuck?"
@@ -12,7 +12,7 @@
 	debris = list(
 		/obj/structure/fluff/clockwork/alloy_shards/large = 1,
 		/obj/structure/fluff/clockwork/alloy_shards/medium = 2,
-		/obj/structure/fluff/clockwork/alloy_shards/small = 3
+		/obj/structure/fluff/clockwork/alloy_shards/small = 3,
 	)
 	///if we ignore attacks from servants of ratvar instead of taking damage
 	var/immune_to_servant_attacks = FALSE
@@ -47,12 +47,12 @@
 /obj/structure/destructible/clockwork/crowbar_act(mob/living/user, obj/item/tool)
 	if(IS_CLOCK(user))
 		setDir(turn(dir, 90))
-		balloon_alert(user, "rotated to [dir2text(dir)]")
+		balloon_alert(user, "rotated [dir2text(dir)]")
 
 	return TRUE
 
 
-//the base clockwork machinery, which isn't actually a machine subtype, but happens to use power
+/// The base clockwork machinery, which isn't actually a machine subtype, but happens to use power
 /obj/structure/destructible/clockwork/powered
 	/// Ref to the targetted APC that we draw power from
 	var/obj/machinery/power/apc/target_apc

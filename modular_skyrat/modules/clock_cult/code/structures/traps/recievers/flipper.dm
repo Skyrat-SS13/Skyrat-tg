@@ -25,9 +25,11 @@
 	if(!COOLDOWN_FINISHED(src, flip_cooldown) && IS_CLOCK(user))
 		. += span_brass("It's not ready to activate again yet!")
 
+/// Send all `atom/movable`s flying in the set direction for a decent distance
 /obj/structure/destructible/clockwork/trap/flipper/proc/flip()
 	if(!COOLDOWN_FINISHED(src, flip_cooldown))
 		return
+
 	COOLDOWN_START(src, flip_cooldown, cooldown_flip)
 	addtimer(CALLBACK(src, PROC_REF(cooldown_done)), cooldown_flip)
 
@@ -40,6 +42,7 @@
 
 		movable_atom.throw_at(get_edge_target_turf(src, dir), FLIP_DISTANCE, FLIP_SPEED)
 
+/// Visual update when the cooldown's finished
 /obj/structure/destructible/clockwork/trap/flipper/proc/cooldown_done()
 	visible_message(span_brass("[src] whirrs with a loud *CLANK* as it resets."))
 
