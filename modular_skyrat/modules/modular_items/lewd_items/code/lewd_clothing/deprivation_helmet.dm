@@ -3,8 +3,9 @@
 
 /obj/item/clothing/head/helmet/space/deprivation_helmet
 	name = "deprivation helmet"
-	desc = "Сompletely cuts off the wearer from the outside world."
-	icon_state = "dephelmet"
+	desc = "Completely cuts off the wearer from the outside world."
+	icon_state = "dephelmet_pink"
+	base_icon_state = "dephelmet"
 	inhand_icon_state = "dephelmet_pinkn"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_hats.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_hats.dmi'
@@ -20,7 +21,7 @@
 	var/muzzle = FALSE
 	var/earmuffs = FALSE
 	var/prevent_vision = FALSE
-	//
+	/// The current color of the helmet.
 	var/current_helmet_color = "pink"
 	var/static/list/helmet_designs
 	actions_types = list(
@@ -186,8 +187,8 @@
 // Updating both and icon in hands and icon worn
 /obj/item/clothing/head/helmet/space/deprivation_helmet/update_icon_state()
 	.=..()
-	icon_state = "[initial(icon_state)]_[current_helmet_color]"
-	inhand_icon_state = "[initial(icon_state)]_[current_helmet_color]"
+	icon_state = "[base_icon_state]_[current_helmet_color]"
+	inhand_icon_state = "[base_icon_state]_[current_helmet_color]"
 
 // Here goes code that applies stuff on the wearer
 /obj/item/clothing/head/helmet/space/deprivation_helmet/equipped(mob/living/carbon/human/user, slot)

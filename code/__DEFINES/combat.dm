@@ -56,18 +56,15 @@
 #define FIRELOSS (1<<1)
 #define TOXLOSS (1<<2)
 #define OXYLOSS (1<<3)
-#define SHAME             (1<<4)
+#define SHAME (1<<4)
 #define MANUAL_SUICIDE (1<<5) //suicide_act will do the actual killing.
-#define MANUAL_SUICIDE_NONLETHAL (1<<6)  //when the suicide is conditionally lethal
+#define MANUAL_SUICIDE_NONLETHAL (1<<6) //when the suicide is conditionally lethal
 
 #define EFFECT_STUN "stun"
 #define EFFECT_KNOCKDOWN "knockdown"
 #define EFFECT_UNCONSCIOUS "unconscious"
 #define EFFECT_PARALYZE "paralyze"
 #define EFFECT_IMMOBILIZE "immobilize"
-#define EFFECT_EYE_BLUR "eye_blur"
-#define EFFECT_DROWSY "drowsy"
-
 //Bitflags defining which status effects could be or are inflicted on a mob
 #define CANSTUN (1<<0)
 #define CANKNOCKDOWN (1<<1)
