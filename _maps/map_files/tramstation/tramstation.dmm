@@ -8754,7 +8754,7 @@
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/command/storage/eva)
 "dgc" = (
-/obj/structure/industrial_lift/tram/white,
+/obj/structure/industrial_lift/tram/subfloor,
 /obj/structure/window/reinforced/shuttle/tram,
 /turf/open/floor/noslip/tram_plate,
 /area/station/hallway/primary/tram/center)
@@ -10490,8 +10490,9 @@
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
 "dJx" = (
-/obj/structure/industrial_lift/tram/white,
+/obj/structure/industrial_lift/tram/subfloor,
 /obj/structure/window/reinforced/shuttle/tram,
+/obj/machinery/computer/tram_controls/directional/north,
 /turf/open/openspace,
 /area/station/hallway/primary/tram/center)
 "dJF" = (
@@ -17236,6 +17237,11 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/service)
+"gkZ" = (
+/obj/structure/industrial_lift/tram/subfloor,
+/obj/structure/tramwall/titanium,
+/turf/open/openspace,
+/area/station/hallway/primary/tram/center)
 "glf" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 4
@@ -19588,7 +19594,7 @@
 /turf/open/floor/iron/dark,
 /area/station/commons/fitness/recreation/entertainment)
 "hat" = (
-/obj/structure/industrial_lift/tram/white,
+/obj/structure/industrial_lift/tram/subfloor,
 /obj/structure/fluff/tram_rail,
 /obj/structure/window/reinforced/shuttle/tram,
 /turf/open/openspace,
@@ -19954,9 +19960,11 @@
 /turf/open/floor/glass/reinforced,
 /area/station/security/warden)
 "hhS" = (
-/obj/structure/industrial_lift/tram,
+/obj/structure/industrial_lift/tram/accessible/north,
 /obj/structure/fluff/tram_rail,
-/obj/structure/chair/sofa/bench/tram/left,
+/obj/structure/railing{
+	dir = 1
+	},
 /turf/open/openspace,
 /area/station/hallway/primary/tram/center)
 "hhT" = (
@@ -20577,7 +20585,7 @@
 	dir = 1
 	},
 /obj/structure/industrial_lift/tram,
-/obj/structure/chair/sofa/bench/tram/right{
+/obj/structure/chair/sofa/bench/tram/solo{
 	dir = 1
 	},
 /turf/open/openspace,
@@ -20596,7 +20604,7 @@
 	},
 /area/station/hallway/secondary/service)
 "hya" = (
-/obj/structure/industrial_lift/tram/white,
+/obj/structure/industrial_lift/tram/subfloor,
 /obj/structure/window/reinforced/shuttle/tram,
 /obj/structure/fluff/tram_rail{
 	dir = 1
@@ -32182,7 +32190,7 @@
 "lBL" = (
 /obj/effect/landmark/tram/middle_part,
 /obj/structure/industrial_lift/tram,
-/obj/machinery/computer/tram_controls,
+/obj/structure/sign/plaques/tram,
 /turf/open/floor/noslip/tram_plate,
 /area/station/hallway/primary/tram/center)
 "lBQ" = (
@@ -32960,7 +32968,7 @@
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "lQJ" = (
-/obj/structure/industrial_lift/tram/white,
+/obj/structure/industrial_lift/tram/subfloor,
 /obj/structure/fluff/tram_rail{
 	dir = 1
 	},
@@ -41986,6 +41994,14 @@
 	},
 /turf/open/floor/plating,
 /area/station/engineering/supermatter)
+"phi" = (
+/obj/structure/industrial_lift/tram/accessible/south,
+/obj/structure/fluff/tram_rail{
+	dir = 1
+	},
+/obj/structure/railing,
+/turf/open/openspace,
+/area/station/hallway/primary/tram/center)
 "phu" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -43700,11 +43716,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/service)
-"pKT" = (
-/obj/structure/industrial_lift/tram,
-/obj/structure/tramwall/titanium,
-/turf/open/openspace,
-/area/station/hallway/primary/tram/center)
 "pKZ" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp,
@@ -47232,6 +47243,12 @@
 	},
 /turf/open/floor/iron,
 /area/station/commons/dorms)
+"qUG" = (
+/obj/structure/industrial_lift/tram/subfloor,
+/obj/structure/window/reinforced/shuttle/tram,
+/obj/machinery/computer/tram_controls/directional/south,
+/turf/open/openspace,
+/area/station/hallway/primary/tram/center)
 "qUH" = (
 /obj/structure/stairs/west,
 /turf/open/floor/iron/stairs/medium{
@@ -47439,7 +47456,7 @@
 /turf/open/floor/iron/dark,
 /area/station/tcommsat/computer)
 "qYR" = (
-/obj/structure/industrial_lift/tram/white,
+/obj/structure/industrial_lift/tram/subfloor,
 /obj/structure/tramwall/titanium,
 /obj/machinery/destination_sign{
 	dir = 1;
@@ -60286,7 +60303,7 @@
 /obj/structure/fluff/tram_rail,
 /obj/effect/landmark/start/hangover,
 /obj/structure/industrial_lift/tram,
-/obj/structure/chair/sofa/bench/tram/right,
+/obj/structure/chair/sofa/bench/tram/solo,
 /turf/open/openspace,
 /area/station/hallway/primary/tram/center)
 "vFV" = (
@@ -163757,11 +163774,11 @@ izU
 jpv
 aEM
 cRU
-wew
+gkZ
 hat
 dgc
 hya
-wew
+gkZ
 lyv
 eOi
 agt
@@ -164271,11 +164288,11 @@ vyH
 qGw
 bqI
 izU
-wew
+gkZ
 hhS
 duZ
 xSu
-wew
+gkZ
 izU
 gYR
 vJF
@@ -165042,7 +165059,7 @@ vyH
 vRL
 vjl
 fld
-dJx
+qUG
 krX
 lBL
 meY
@@ -165813,11 +165830,11 @@ vyH
 jfC
 kBX
 izU
-wew
+gkZ
 uRh
 duZ
-oCu
-pKT
+phi
+gkZ
 izU
 nWl
 vJF
@@ -166331,7 +166348,7 @@ wew
 hat
 dgc
 lQJ
-wew
+gkZ
 lyv
 ebF
 vsR
