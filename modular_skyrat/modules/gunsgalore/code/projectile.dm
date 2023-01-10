@@ -126,3 +126,12 @@
 ///At the moment, all of them are too low-velocity to be even remotely hitscan. I mean, come on, a lollipop/gumball, a foam darn, and an arrow.
 /obj/projectile/bullet/reusable
 	hitscan = FALSE
+
+/obj/projectile/bullet/ciws
+	hitscan = FALSE
+
+/obj/projectile/energy/bolt
+	hitscan = FALSE
+
+/obj/projectile/beam/laser/accelerator
+	hitscan = FALSE
