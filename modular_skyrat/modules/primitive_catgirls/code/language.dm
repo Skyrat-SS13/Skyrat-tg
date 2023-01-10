@@ -15,3 +15,4 @@
     icon_state = "omgkittyhiii"
     icon = 'modular_skyrat/modules/primitive_catgirls/icons/language_icon.dmi'
     default_priority = 94
+	secret = TRUE
