@@ -24,6 +24,7 @@
 /obj/machinery/oven/stone/set_smoke_state(new_state)
 	. = ..()
 
-	particles.position = list(0, 10, 0)
+	if(particles)
+		particles.position = list(0, 10, 0)
 
 #undef OVEN_TRAY_Y_OFFSET
