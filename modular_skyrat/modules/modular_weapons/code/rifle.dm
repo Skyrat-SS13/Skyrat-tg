@@ -14,7 +14,8 @@
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile40x32.dmi'
 	icon_state = "irifle"
 	inhand_icon_state = "irifle"
-	worn_icon_state = null
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
+	worn_icon_state = "norwind_worn"
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/improvised
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
@@ -122,7 +123,7 @@
 	inhand_y_dimension = 64
 	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_right.dmi'
-	worn_icon_state = null
+	worn_icon_state = "gun"
 	mag_type = /obj/item/ammo_box/magazine/cm68
 	fire_delay = 5
 	can_suppress = FALSE

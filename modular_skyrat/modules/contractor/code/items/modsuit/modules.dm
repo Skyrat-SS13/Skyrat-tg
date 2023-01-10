@@ -43,11 +43,17 @@
 	complexity = 0
 
 /obj/item/mod/module/armor_booster/contractor // Much flatter distribution because contractor suit gets a shitton of armor already
-	armor_values = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20)
+	armor_mod = /datum/armor/contract_booster
 	speed_added = -0.5 //Bulky as shit
 	desc = "An embedded set of armor plates, allowing the suit's already extremely high protection \
 		to be increased further. However, the plating, while deployed, will slow down the user \
 		and make the suit unable to vacuum seal so this extra armor provides zero ability for extravehicular activity while deployed."
+
+/datum/armor/contract_booster
+	melee = 20
+	bullet = 20
+	laser = 20
+	energy = 20
 
 /obj/item/mod/module/springlock/contractor
 	name = "MOD magnetic deployment module"
