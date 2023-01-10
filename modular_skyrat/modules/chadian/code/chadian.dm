@@ -4,16 +4,16 @@
 
 /mob/living/basic/pet/dog/corgi/ian
 	icon = 'modular_skyrat/modules/chadian/icons/ian.dmi'
-	ai_controller = /datum/ai_controller/dog/corgi/chadian
+	ai_controller = /datum/ai_controller/basic_controller/dog/corgi/chadian
 
 	var/resting_state = 0
 
 /// AI controller that adds chad ian emotes
-/datum/ai_controller/dog/corgi/chadian
+/datum/ai_controller/basic_controller/dog/corgi/chadian
 	idle_behavior = /datum/idle_behavior/idle_dog/chadian
 
 /// Actual idle behavior that adds chad ian emotes
-/datum/idle_behavior/idle_dog/chadian/perform_idle_behavior(delta_time, datum/ai_controller/dog/controller)
+/datum/idle_behavior/idle_dog/chadian/perform_idle_behavior(delta_time, datum/ai_controller/basic_controller/dog/controller)
 	. = ..()
 
 	var/mob/living/basic/pet/dog/corgi/ian/ian_pawn = controller.pawn
