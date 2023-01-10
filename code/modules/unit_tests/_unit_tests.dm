@@ -104,7 +104,9 @@
 #include "create_and_destroy.dm"
 #include "dcs_get_id_from_elements.dm"
 #include "designs.dm"
+#include "door_access.dm"
 #include "dragon_expiration.dm"
+#include "drink_icons.dm"
 #include "dummy_spawn.dm"
 #include "dynamic_ruleset_sanity.dm"
 #include "egg_glands.dm"
@@ -174,6 +176,7 @@
 #include "screenshot_antag_icons.dm"
 #include "screenshot_basic.dm"
 #include "screenshot_humanoids.dm"
+#include "screenshot_husk.dm"
 #include "screenshot_saturnx.dm"
 #include "security_officer_distribution.dm"
 #include "security_levels.dm"
@@ -209,6 +212,7 @@
 #include "verify_config_tags.dm"
 #include "verify_emoji_names.dm"
 #include "wizard_loadout.dm"
+#include "worn_icons.dm"
 #ifdef REFERENCE_TRACKING_DEBUG //Don't try and parse this file if ref tracking isn't turned on. IE: don't parse ref tracking please mr linter
 #include "find_reference_sanity.dm"
 #endif
