@@ -74,6 +74,7 @@
 		minor_announce("Engineering staff will have expanded access to areas of the station during the emergency.", "Engineering Emergency")
 		return
 
+/*
 /// Check for the three states of open access. Emergency, Unrestricted, and Engineering Override
 /obj/machinery/door/airlock/allowed(mob/user)
 	if(emergency)
@@ -92,6 +93,7 @@
 			return TRUE
 
 	return ..()
+*/
 
 // When the signal is received of a changed security level, check if it's orange.
 /obj/machinery/door/airlock/check_security_level(datum/source, new_level)
