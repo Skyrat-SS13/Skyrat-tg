@@ -1045,7 +1045,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	if(!outfit_important_for_life)
 		return
 
-	outfit_important_for_life = new outfit_important_for_life //SKYRAT EDIT CHANGE
+	outfit_important_for_life= new()
 	outfit_important_for_life.equip(human_to_equip)
 
 /**
