@@ -831,6 +831,16 @@
 		UNTYPED_LIST_ADD(keys, key)
 	return keys
 
+/// Turns an associative list into a flat list of keys, but for sprite accessories, respecting the locked variable
+/proc/assoc_to_keys_features(list/input)
+	var/list/keys = list()
+	for(var/key in input)
+		var/datum/sprite_accessory/value = input[key]
+		if(value?.locked)
+			continue
+		UNTYPED_LIST_ADD(keys, key)
+	return keys
+
 ///compare two lists, returns TRUE if they are the same
 /proc/compare_list(list/l,list/d)
 	if(!islist(l) || !islist(d))
@@ -1089,3 +1099,11 @@
 			stack_trace("[name] is not sorted. value at [index] ([value]) is in the wrong place compared to the previous value of [last_value] (when compared to by [cmp])")
 
 		last_value = value
+
+/**
+ * Converts a list of coordinates, or an assosciative list if passed, into a turf by calling locate(x, y, z) based on the values in the list
+ */
+/proc/coords2turf(list/coords)
+	if("x" in coords)
+		return locate(coords["x"], coords["y"], coords["z"])
+	return locate(coords[1], coords[2], coords[3])

@@ -47,7 +47,7 @@
 	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/nanotrasen_bolt_weapons/lethal_sidearm/detective_revolver
-	item_type = /obj/item/gun/ballistic/revolver/detective
+	item_type = /obj/item/gun/ballistic/revolver/c38/detective
 	lower_cost = CARGO_CRATE_VALUE * 4
 	upper_cost = CARGO_CRATE_VALUE * 6
 

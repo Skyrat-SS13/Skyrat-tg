@@ -47,7 +47,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/comms)
 "ap" = (
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav/port_tarkon/atmos)
@@ -278,7 +278,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/glass,
 /turf/open/floor/iron/airless,
@@ -289,7 +289,7 @@
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "bX" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/observ)
@@ -321,7 +321,7 @@
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "ce" = (
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark/airless,
 /area/ruin/space/has_grav/port_tarkon/developement)
@@ -590,7 +590,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/cargo)
 "dN" = (
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/lattice,
 /turf/open/misc/asteroid/airless,
@@ -754,7 +754,7 @@
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "eT" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/forehall)
@@ -891,7 +891,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/loading_area,
 /obj/effect/decal/cleanable/dirt/dust,
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /turf/open/floor/iron/dark/airless,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "fL" = (
@@ -909,9 +909,8 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/afthall)
 "fR" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored/plasma_output{
-	dir = 8;
-	frequency = 1243
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored/plasma_output/tarkon{
+	dir = 8
 	},
 /turf/open/floor/engine/plasma,
 /area/ruin/space/has_grav/port_tarkon/atmos)
@@ -989,7 +988,7 @@
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "gs" = (
 /obj/machinery/door/airlock/public/glass/incinerator/tarkon_interior,
-/obj/machinery/embedded_controller/radio/airlock_controller/incinerator_tarkon{
+/obj/machinery/airlock_controller/incinerator_tarkon{
 	pixel_x = 40;
 	pixel_y = 5
 	},
@@ -1106,7 +1105,7 @@
 "hi" = (
 /obj/machinery/firealarm/directional/north,
 /obj/effect/decal/cleanable/glass,
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/atmos)
@@ -1292,7 +1291,7 @@
 "ih" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/glass,
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /turf/open/floor/iron/dark/airless,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "ik" = (
@@ -1435,7 +1434,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "iW" = (
-/mob/living/simple_animal/hostile/carp/megacarp,
+/mob/living/basic/carp/mega,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/atmos)
@@ -1448,9 +1447,8 @@
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/porthall)
 "jj" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/monitored/nitrogen_input{
-	dir = 4;
-	frequency = 1243
+/obj/machinery/atmospherics/components/unary/outlet_injector/monitored/nitrogen_input/tarkon{
+	dir = 4
 	},
 /turf/open/floor/engine/n2,
 /area/ruin/space/has_grav/port_tarkon/atmos)
@@ -1800,9 +1798,8 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/secoff)
 "ld" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored/nitrous_output{
-	dir = 8;
-	frequency = 1243
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored/nitrous_output/tarkon{
+	dir = 8
 	},
 /turf/open/floor/engine/n2o,
 /area/ruin/space/has_grav/port_tarkon/atmos)
@@ -2328,9 +2325,8 @@
 /turf/closed/wall,
 /area/ruin/space/has_grav/port_tarkon/storage)
 "oI" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored/oxygen_output{
-	dir = 4;
-	frequency = 1243
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored/oxygen_output/tarkon{
+	dir = 4
 	},
 /turf/open/floor/engine/o2,
 /area/ruin/space/has_grav/port_tarkon/atmos)
@@ -2533,9 +2529,8 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/secoff)
 "pU" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/monitored/carbon_input{
-	dir = 8;
-	frequency = 1243
+/obj/machinery/atmospherics/components/unary/outlet_injector/monitored/carbon_input/tarkon{
+	dir = 8
 	},
 /turf/open/floor/engine/co2,
 /area/ruin/space/has_grav/port_tarkon/atmos)
@@ -2638,13 +2633,13 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/centerhall)
 "qw" = (
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "qD" = (
 /obj/structure/lattice,
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /turf/open/space/basic,
 /area/template_noop)
 "qF" = (
@@ -2697,7 +2692,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/starboardhall)
 "qT" = (
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /obj/item/stack/rods,
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav)
@@ -2903,14 +2898,13 @@
 /area/ruin/space/has_grav/port_tarkon/starboardhall)
 "sf" = (
 /obj/structure/cable,
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "sj" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored/nitrogen_output{
-	dir = 4;
-	frequency = 1243
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored/nitrogen_output/tarkon{
+	dir = 4
 	},
 /turf/open/floor/engine/n2,
 /area/ruin/space/has_grav/port_tarkon/atmos)
@@ -3026,9 +3020,8 @@
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/port_tarkon/kitchen)
 "te" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/high_volume/siphon/monitored/air_output{
-	dir = 4;
-	frequency = 1243
+/obj/machinery/atmospherics/components/unary/vent_pump/high_volume/siphon/monitored/air_output/tarkon{
+	dir = 4
 	},
 /turf/open/floor/engine/vacuum,
 /area/ruin/space/has_grav/port_tarkon/atmos)
@@ -3231,7 +3224,7 @@
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/storage)
 "uk" = (
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/port_tarkon/atmos)
@@ -3253,7 +3246,7 @@
 /turf/open/floor/iron/dark/airless,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "uo" = (
-/mob/living/simple_animal/hostile/carp/megacarp,
+/mob/living/basic/carp/mega,
 /obj/structure/lattice,
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav)
@@ -3620,9 +3613,8 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/trauma)
 "xj" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored/carbon_output{
-	dir = 8;
-	frequency = 1243
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored/carbon_output/tarkon{
+	dir = 8
 	},
 /turf/open/floor/engine/co2,
 /area/ruin/space/has_grav/port_tarkon/atmos)
@@ -3988,7 +3980,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/forehall)
@@ -4013,9 +4005,8 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/trauma)
 "Ak" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/monitored/incinerator_input{
-	dir = 8;
-	frequency = 1243
+/obj/machinery/atmospherics/components/unary/outlet_injector/monitored/incinerator_input/tarkon{
+	dir = 8
 	},
 /turf/open/floor/engine/vacuum,
 /area/ruin/space/has_grav/port_tarkon/atmos)
@@ -4056,7 +4047,7 @@
 /area/ruin/space/has_grav/port_tarkon/power1)
 "Ax" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/mob/living/simple_animal/hostile/carp/megacarp,
+/mob/living/basic/carp/mega,
 /turf/open/floor/iron/dark/airless,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "AA" = (
@@ -4071,9 +4062,8 @@
 /turf/open/floor/iron/dark/airless,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "AF" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/monitored/oxygen_input{
-	dir = 4;
-	frequency = 1243
+/obj/machinery/atmospherics/components/unary/outlet_injector/monitored/oxygen_input/tarkon{
+	dir = 4
 	},
 /turf/open/floor/engine/o2,
 /area/ruin/space/has_grav/port_tarkon/atmos)
@@ -4535,7 +4525,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt/dust,
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/porthall)
 "DN" = (
@@ -4585,7 +4575,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/comms)
 "Eb" = (
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav)
 "Ed" = (
@@ -4695,7 +4685,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/trauma)
 "EW" = (
-/mob/living/simple_animal/hostile/carp/megacarp,
+/mob/living/basic/carp/mega,
 /turf/open/space/basic,
 /area/template_noop)
 "EY" = (
@@ -4978,7 +4968,7 @@
 /turf/open/floor/engine/n2o,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "GD" = (
-/mob/living/simple_animal/hostile/carp/megacarp,
+/mob/living/basic/carp/mega,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/dark/airless,
@@ -5144,7 +5134,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/mining)
 "HP" = (
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/observ)
@@ -5259,7 +5249,7 @@
 /area/ruin/space/has_grav/port_tarkon/dorms)
 "Io" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /obj/effect/turf_decal/caution/stand_clear,
 /obj/effect/turf_decal/tile/brown/half,
 /turf/open/floor/iron/airless,
@@ -5708,7 +5698,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt/dust,
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /turf/open/floor/iron/dark/airless,
 /area/ruin/space/has_grav/port_tarkon/developement)
 "KZ" = (
@@ -5821,7 +5811,7 @@
 /area/ruin/space/has_grav/port_tarkon/centerhall)
 "LH" = (
 /obj/machinery/firealarm/directional/north,
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/forehall)
@@ -6400,9 +6390,8 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/cargo)
 "Qk" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/monitored/plasma_input{
-	dir = 8;
-	frequency = 1243
+/obj/machinery/atmospherics/components/unary/outlet_injector/monitored/plasma_input/tarkon{
+	dir = 8
 	},
 /turf/open/floor/engine/plasma,
 /area/ruin/space/has_grav/port_tarkon/atmos)
@@ -6474,9 +6463,8 @@
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/port_tarkon/cargo)
 "QH" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/monitored/air_input{
-	dir = 4;
-	frequency = 1243
+/obj/machinery/atmospherics/components/unary/outlet_injector/monitored/air_input/tarkon{
+	dir = 4
 	},
 /turf/open/floor/engine/vacuum,
 /area/ruin/space/has_grav/port_tarkon/atmos)
@@ -6493,7 +6481,7 @@
 	locked = 0;
 	start_charge = 0
 	},
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/observ)
@@ -6542,9 +6530,8 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/mining)
 "Rf" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/monitored/nitrous_input{
-	dir = 8;
-	frequency = 1243
+/obj/machinery/atmospherics/components/unary/outlet_injector/monitored/nitrous_input/tarkon{
+	dir = 8
 	},
 /turf/open/floor/engine/n2o,
 /area/ruin/space/has_grav/port_tarkon/atmos)
@@ -6566,7 +6553,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/garden)
 "Rk" = (
-/mob/living/simple_animal/hostile/carp/megacarp,
+/mob/living/basic/carp/mega,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/port_tarkon/atmos)
@@ -6646,7 +6633,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon)
 "RM" = (
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /turf/open/space/basic,
 /area/template_noop)
 "RN" = (
@@ -6676,7 +6663,7 @@
 /area/ruin/space/has_grav/port_tarkon/observ)
 "RT" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark/airless,
 /area/ruin/space/has_grav/port_tarkon/developement)
@@ -6977,7 +6964,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/decal/cleanable/dirt/dust,
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/porthall)
 "TF" = (
@@ -7317,7 +7304,7 @@
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/forehall)
 "VQ" = (
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/forehall)
@@ -7466,7 +7453,7 @@
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/forehall)
 "WL" = (
-/mob/living/simple_animal/hostile/carp/megacarp,
+/mob/living/basic/carp/mega,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/forehall)
@@ -7527,7 +7514,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/garden)
 "Xk" = (
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/stack/rods,
 /turf/open/floor/iron/airless,
@@ -7743,7 +7730,7 @@
 /obj/effect/turf_decal/stripes{
 	dir = 1
 	},
-/mob/living/simple_animal/hostile/carp,
+/mob/living/basic/carp,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark/airless,
 /area/ruin/space/has_grav/port_tarkon/atmos)
@@ -7831,7 +7818,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/centerhall)
 "ZF" = (
-/mob/living/simple_animal/hostile/carp/megacarp,
+/mob/living/basic/carp/mega,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav/port_tarkon/observ)

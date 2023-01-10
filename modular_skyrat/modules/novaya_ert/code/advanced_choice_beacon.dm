@@ -10,10 +10,10 @@
 	var/pod_style = STYLE_CENTCOM
 
 /obj/item/advanced_choice_beacon/attack_self(mob/user, modifiers)
-	if(canUseBeacon(user))
+	if(can_use_beacon(user))
 		display_options(user)
 
-/obj/item/advanced_choice_beacon/proc/canUseBeacon(mob/living/user)
+/obj/item/advanced_choice_beacon/proc/can_use_beacon(mob/living/user)
 	if(user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
 		return TRUE
 	else
@@ -131,12 +131,12 @@
 /obj/machinery/porta_turret/syndicate/pod/toolbox/nri/assess_perp(mob/living/carbon/human/perp)
 	return 0
 
-/mob/living/simple_animal/hostile/viscerator/nri
+/mob/living/basic/viscerator/nri
 	faction = list("neutral", FACTION_ERT)
 
 /obj/item/grenade/spawnergrenade/manhacks/nri
 	name = "imperial viscerator delivery grenade"
-	spawner_type = /mob/living/simple_animal/hostile/viscerator/nri
+	spawner_type = /mob/living/basic/viscerator/nri
 	deliveryamt = 10
 
 /obj/structure/closet/crate/secure/weapon/nri

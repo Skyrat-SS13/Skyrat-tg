@@ -134,8 +134,8 @@
 /datum/outfit/armadyne_rep
 	name = "Armadyne Corporate Representative"
 
-	suit_store = /obj/item/modular_computer/tablet/pda/security
-	ears = /obj/item/radio/headset/armadyne/commander/alt
+	suit_store = /obj/item/modular_computer/pda/security
+	ears = ears = /obj/item/radio/headset/armadyne/commander/alt
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne
 	head =  /obj/item/clothing/head/beret/sec/peacekeeper/armadyne
@@ -170,7 +170,7 @@
 		/obj/item/storage/box/gunset/pdh_striker,
 		/obj/item/storage/box/handcuffs,
 		/obj/item/ammo_box/magazine/multi_sprite/pitbull = 2,
-		/obj/item/modular_computer/tablet/pda/security,
+		/obj/item/modular_computer/pda/security,
 	)
 	back = /obj/item/storage/backpack/security
 	box = /obj/item/storage/box/survival/security
@@ -193,8 +193,8 @@
 	backpack_contents = list(
 		/obj/item/storage/box/gunset/pdh_striker,
 		/obj/item/storage/box/handcuffs,
-		/obj/item/ammo_box/magazine/multi_sprite/norwind,
-		/obj/item/modular_computer/tablet/pda/security,
+		/obj/item/ammo_box/magazine/multi_sprite/norwind = 2,
+		/obj/item/modular_computer/pda/security,
 	)
 	back = /obj/item/storage/backpack/security
 	box = /obj/item/storage/box/survival/security
@@ -221,14 +221,13 @@
 		/obj/item/melee/baton/telescopic,
 		/obj/item/storage/box/gunset/pdh_corpo,
 		/obj/item/storage/box/handcuffs,
-		/obj/item/ammo_box/magazine/dmr = 2,
+		/obj/item/ammo_box/magazine/dmr = 3,
 	)
 
 /obj/item/card/id/advanced/armadyne
 	name = "\improper Armadyne ID"
 	desc = "An Armadyne ID card."
 	icon_state = "card_centcom"
-	worn_icon_state = "card_centcom"
 	assigned_icon_state = "assigned_centcom"
 	registered_age = null
 	trim = /datum/id_trim/centcom/armadyne

@@ -15,7 +15,7 @@
 	desc = "An innocent-looking toy pistol designed to fire foam darts. Comes loaded with riot-grade \
 			darts effective at incapacitating a target."
 	item = /obj/item/gun/ballistic/automatic/pistol/toy/riot
-	cost = 1 //SKYRAT EDIT: ORIGINAL COST 2
+	cost = 2
 	surplus = 10
 	purchasable_from = ~UPLINK_NUKE_OPS
 
@@ -27,7 +27,7 @@
 			with suppressors."
 	progression_minimum = 10 MINUTES
 	item = /obj/item/gun/ballistic/automatic/pistol
-	cost = 5 //SKYRAT EDIT: ORIGINAL COST 7
+	cost = 7
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
 
 /datum/uplink_item/dangerous/throwingweapons
@@ -87,7 +87,7 @@
 	desc = "Though capable of near sorcerous feats via use of hardlight holograms and nanomachines, they require an \
 			organic host as a home base and source of fuel. Holoparasites come in various types and share damage with their host."
 	progression_minimum = 30 MINUTES
-	item = /obj/item/storage/box/syndie_kit/guardian
+	item = /obj/item/guardiancreator/tech/choose/traitor
 	cost = 18
 	surplus = 0
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
@@ -95,9 +95,9 @@
 
 /datum/uplink_item/dangerous/revolver
 	name = "Syndicate Revolver"
-	desc = "A brutally simple Syndicate revolver that fires .357 Magnum rounds and has 7 chambers."
-	item = /obj/item/gun/ballistic/revolver
+	desc = "Waffle Co.'s modernized Syndicate revolver. Fires 7 brutal rounds of .357 Magnum."
+	item = /obj/item/gun/ballistic/revolver/syndicate
 	progression_minimum = 30 MINUTES
-	cost = 12 //SKYRAT EDIT: ORIGINAL COST 13
+	cost = 13
 	surplus = 50
 	purchasable_from = ~UPLINK_CLOWN_OPS

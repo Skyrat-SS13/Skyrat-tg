@@ -10,7 +10,7 @@
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	lights_power = 7
 	step_energy_drain = 15 //slightly higher energy drain since you movin those wheels FAST
-	armor = list(MELEE = 20, BULLET = 10, LASER = 20, ENERGY = 10, BOMB = 60, BIO = 0, FIRE = 100, ACID = 100) //low armor to compensate for fire protection and speed
+	armor_type = /datum/armor/working_clarke
 	equip_by_category = list(
 		MECHA_L_ARM = null,
 		MECHA_R_ARM = null,
@@ -28,6 +28,15 @@
 	enter_delay = 40
 	mecha_flags = ADDING_ACCESS_POSSIBLE | IS_ENCLOSED | HAS_LIGHTS | MMI_COMPATIBLE | OMNIDIRECTIONAL_ATTACKS
 	internals_req_access = list(ACCESS_MECH_ENGINE, ACCESS_MECH_SCIENCE, ACCESS_MECH_MINING)
+
+/datum/armor/working_clarke
+	melee = 20
+	bullet = 10
+	laser = 20
+	energy = 10
+	bomb = 60
+	fire = 100
+	acid = 100
 
 /obj/vehicle/sealed/mecha/working/clarke/Initialize(mapload)
 	. = ..()
@@ -54,6 +63,15 @@
 	/// Var to avoid istype checking every time the topic button is pressed. This will only work inside Clarke mechs.
 	var/obj/vehicle/sealed/mecha/working/clarke/hostmech
 
+/datum/armor/working_clarke
+	melee = 20
+	bullet = 10
+	laser = 20
+	energy = 10
+	bomb = 60
+	fire = 100
+	acid = 100
+
 /obj/item/mecha_parts/mecha_equipment/orebox_manager/attach(obj/vehicle/sealed/mecha/M, attach_right = FALSE)
 	. = ..()
 	if(istype(M, /obj/vehicle/sealed/mecha/working/clarke))
@@ -76,6 +94,15 @@
 	button_icon_state = "mech_search_ruins"
 	COOLDOWN_DECLARE(search_cooldown)
 
+/datum/armor/working_clarke
+	melee = 20
+	bullet = 10
+	laser = 20
+	energy = 10
+	bomb = 60
+	fire = 100
+	acid = 100
+
 /datum/action/vehicle/sealed/mecha/mech_search_ruins/Trigger(trigger_flags)
 	if(!owner || !chassis || !(owner in chassis.occupants))
 		return
@@ -86,10 +113,10 @@
 		return
 	var/mob/living/living_owner = owner
 	button_icon_state = "mech_search_ruins_cooldown"
-	UpdateButtons()
+	build_all_button_icons()
 	COOLDOWN_START(src, search_cooldown, SEARCH_COOLDOWN)
 	addtimer(VARSET_CALLBACK(src, button_icon_state, "mech_search_ruins"), SEARCH_COOLDOWN)
-	addtimer(CALLBACK(src, PROC_REF(UpdateButtons)), SEARCH_COOLDOWN)
+	addtimer(CALLBACK(src, PROC_REF(build_all_button_icons)), SEARCH_COOLDOWN)
 	var/obj/pinpointed_ruin
 	for(var/obj/effect/landmark/ruin/ruin_landmark as anything in GLOB.ruin_landmarks)
 		if(ruin_landmark.z != chassis.z)
@@ -112,6 +139,15 @@
 	minimum_range = 5
 	range_mid = 20
 	range_far = 50
+
+/datum/armor/working_clarke
+	melee = 20
+	bullet = 10
+	laser = 20
+	energy = 10
+	bomb = 60
+	fire = 100
+	acid = 100
 
 /datum/status_effect/agent_pinpointer/ruin/scan_for_target()
 	return

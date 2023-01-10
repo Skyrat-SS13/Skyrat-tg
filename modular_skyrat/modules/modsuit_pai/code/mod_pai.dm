@@ -103,7 +103,7 @@
 	if(wearer && !wearer.Process_Spacemove(direction))
 		return FALSE
 	var/atom/movable/mover = wearer || src
-	return step(mover, direction)
+	return mover.try_step_multiz(direction)
 
 #undef MOVE_DELAY
 #undef WEARER_DELAY

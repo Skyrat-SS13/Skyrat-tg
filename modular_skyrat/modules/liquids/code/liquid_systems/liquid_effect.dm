@@ -13,8 +13,8 @@
 	light_color = LIGHT_COLOR_FIRE
 
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_WATER)
-	canSmoothWith = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_WINDOW_FULLTILE, SMOOTH_GROUP_WATER)
+	smoothing_groups = SMOOTH_GROUP_WATER
+	canSmoothWith = SMOOTH_GROUP_WATER + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS
 
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/height = 1
@@ -604,7 +604,7 @@
 	smoothing_flags = NONE
 	icon_state = "ocean"
 	base_icon_state = "ocean"
-	plane = BLACKNESS_PLANE //Same as weather, etc.
+	plane = DEFAULT_PLANE //Same as weather, etc.
 	layer = ABOVE_MOB_LAYER
 	starting_temp = T20C-150
 	no_effects = TRUE

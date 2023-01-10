@@ -77,7 +77,7 @@
 	id = /obj/item/card/id/advanced/ghost_cafe
 
 /datum/action/toggle_dead_chat_mob
-	icon_icon = 'icons/mob/simple/mob.dmi'
+	button_icon = 'icons/mob/simple/mob.dmi'
 	button_icon_state = "ghost"
 	name = "Toggle deadchat"
 	desc = "Turn off or on your ability to hear ghosts."
@@ -115,7 +115,6 @@
 	name = "\improper Cafe ID"
 	desc = "An ID straight from God."
 	icon_state = "card_centcom"
-	worn_icon_state = "card_centcom"
 	assigned_icon_state = "assigned_centcom"
 	registered_age = null
 	trim = /datum/id_trim/admin
