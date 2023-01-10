@@ -18,6 +18,7 @@
 	desc = "The seedpod of the opium poppy plant, which contain opium latex."
 	icon = 'modular_skyrat/master_files/icons/obj/hydroponics/harvest.dmi'
 	icon_state = "opiumpoppy"
+	worn_icon_state = "map_flower"
 	greyscale_config = null
 	greyscale_config_worn = /datum/greyscale_config/flower_simple_worn
 	greyscale_colors = "#01690f"
