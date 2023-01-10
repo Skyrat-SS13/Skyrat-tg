@@ -103,7 +103,26 @@
 	hitscan = TRUE
 	hitscan_light_intensity = 0.75
 
+///Literally felt like it; changes nothing but it looks cool.
 /obj/projectile/plasma
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/blue_laser
 	hitscan = TRUE
 	hitscan_light_intensity = 0.75
+
+///It's not a bullet it's a coin and its purpose is quite literally being hit consistently visibly not instantly.
+/obj/projectile/bullet/coin
+	hitscan = FALSE
+
+///Those three're possibly the last ones you'd wanna be instantly hit with.
+/obj/projectile/bullet/gyro
+	hitscan = FALSE
+
+/obj/projectile/bullet/rocket
+	hitscan = FALSE
+
+/obj/projectile/bullet/a40mm
+	hitscan = FALSE
+
+///At the moment, all of them are too low-velocity to be even remotely hitscan. I mean, come on, a lollipop/gumball, a foam darn, and an arrow.
+/obj/projectile/bullet/reusable
+	hitscan = FALSE
