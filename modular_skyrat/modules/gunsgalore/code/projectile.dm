@@ -96,7 +96,14 @@
 /obj/projectile/bullet
 	tracer_type = /obj/effect/projectile/tracer/sniper ///It's, really, just a straight line; might as well reuse it until I get some proper smoke tracer.
 	hitscan = TRUE
+	hitscan_light_intensity = 0.5
 
 /obj/projectile/beam
 	tracer_type = /obj/effect/projectile/tracer/laser
 	hitscan = TRUE
+	hitscan_light_intensity = 0.75
+
+/obj/projectile/plasma
+	impact_effect_type = /obj/effect/temp_visual/impact_effect/blue_laser
+	hitscan = TRUE
+	hitscan_light_intensity = 0.75
