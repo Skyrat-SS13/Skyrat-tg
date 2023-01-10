@@ -455,20 +455,15 @@ SUBSYSTEM_DEF(explosions)
 			if(EXPLODE_HEAVY)
 				SSexplosions.medturf += explode
 			if(EXPLODE_LIGHT)
-<<<<<<< HEAD
-				SSexplosions.lowturf += T
+				SSexplosions.lowturf += explode
+		
 		//SKYRAT EDIT ADDITION
-		for(var/obj/machinery/light/iterating_light in T)
+		for(var/obj/machinery/light/iterating_light in explode)
 			iterating_light.start_flickering()
 		//SKYRAT EDIT END
-		if(flame_dist && prob(40) && !isspaceturf(T) && !T.density)
-			flameturf += T
-=======
-				SSexplosions.lowturf += explode
 
 		if(prob(40) && dist < flame_range && !isspaceturf(explode) && !explode.density)
 			flameturf += explode
->>>>>>> 858da9f19a9 (Optimizes explosions (very slightly) (#71763))
 
 		//--- THROW ITEMS AROUND ---
 		if (explode.explosion_throw_details)
