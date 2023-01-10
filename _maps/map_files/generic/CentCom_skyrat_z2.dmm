@@ -2318,8 +2318,8 @@
 	dir = 4
 	},
 /obj/structure/chair/sofa/bench/right{
-	dir = 1;
-	greyscale_colors = "#AA8A61"
+	greyscale_colors = "#AA8A61";
+	dir = 1
 	},
 /obj/machinery/light/warm/directional/south,
 /turf/open/floor/wood,
@@ -4500,23 +4500,6 @@
 	icon_state = "cafeteria"
 	},
 /area/centcom/holding/cafe)
-"aZD" = (
-/obj/docking_port/stationary{
-	dir = 8;
-	dwidth = 7;
-	height = 21;
-	name = "Goldeneye Satellite Dock";
-	roundstart_template = /datum/map_template/shuttle/goldeneye_cruiser;
-	shuttle_id = "goldeneye_cruiser_dock";
-	width = 31
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/open/space/basic,
-/area/space)
 "aZF" = (
 /obj/structure/table/wood,
 /obj/item/papercutter{
@@ -4768,8 +4751,8 @@
 /area/centcom/holding/cafepark)
 "bBv" = (
 /obj/structure/sign/directions/security{
-	dir = 8;
-	pixel_y = -8
+	pixel_y = -8;
+	dir = 8
 	},
 /obj/structure/sign/directions/medical{
 	dir = 8
@@ -5037,8 +5020,8 @@
 "ceK" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/poddoor/shutters/indestructible{
-	id = "il_kitchen";
-	name = "Interlink Kitchen Shutters"
+	name = "Interlink Kitchen Shutters";
+	id = "il_kitchen"
 	},
 /turf/open/floor/iron/cafeteria,
 /area/centcom/interlink)
@@ -5103,8 +5086,8 @@
 	pixel_y = -8
 	},
 /obj/structure/sign/directions/dorms{
-	dir = 4;
-	pixel_y = 8
+	pixel_y = 8;
+	dir = 4
 	},
 /turf/closed/indestructible/riveted,
 /area/centcom/interlink)
@@ -5126,8 +5109,8 @@
 "cof" = (
 /obj/structure/table/wood,
 /obj/item/stamp/centcom{
-	pixel_x = -8;
-	pixel_y = 10
+	pixel_y = 10;
+	pixel_x = -8
 	},
 /obj/item/stamp{
 	pixel_y = 10
@@ -5295,8 +5278,8 @@
 /area/centcom/interlink)
 "cHq" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4;
-	name = "Interlink Aux Garden"
+	name = "Interlink Aux Garden";
+	dir = 4
 	},
 /obj/effect/turf_decal/siding/white{
 	dir = 4
@@ -5359,11 +5342,11 @@
 	dir = 8
 	},
 /obj/machinery/button/door/directional/west{
-	id = "room8";
-	name = "Door Lock";
-	normaldoorcontrol = 1;
 	pixel_y = -8;
-	specialfunctions = 4
+	name = "Door Lock";
+	id = "room8";
+	specialfunctions = 4;
+	normaldoorcontrol = 1
 	},
 /turf/open/floor/wood,
 /area/centcom/interlink)
@@ -5377,8 +5360,8 @@
 /area/centcom/interlink)
 "cNS" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4;
-	name = "Interlink Cafe"
+	name = "Interlink Cafe";
+	dir = 4
 	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
@@ -5451,11 +5434,11 @@
 	dir = 8
 	},
 /obj/machinery/button/door/directional/west{
-	id = "room6";
-	name = "Door Lock";
-	normaldoorcontrol = 1;
 	pixel_y = -8;
-	specialfunctions = 4
+	name = "Door Lock";
+	id = "room6";
+	specialfunctions = 4;
+	normaldoorcontrol = 1
 	},
 /turf/open/floor/wood,
 /area/centcom/interlink)
@@ -5539,8 +5522,8 @@
 	height = 50;
 	json_key = "emergency";
 	name = "CentCom Emergency Shuttle Dock";
-	shuttle_id = "emergency_away";
-	width = 50
+	width = 50;
+	shuttle_id = "emergency_away"
 	},
 /turf/open/space/basic,
 /area/space)
@@ -5565,9 +5548,9 @@
 "dep" = (
 /obj/machinery/photocopier,
 /obj/machinery/button/door/directional/south{
+	pixel_x = 8;
 	id = "bs_shutters";
 	name = "Privacy Shutter Comtrol";
-	pixel_x = 8;
 	req_access = list("command")
 	},
 /obj/effect/turf_decal/bot,
@@ -5578,10 +5561,10 @@
 	dir = 1
 	},
 /obj/machinery/button/door/directional/south{
-	id = "stall1";
-	name = "Door Lock";
 	normaldoorcontrol = 1;
-	specialfunctions = 4
+	specialfunctions = 4;
+	name = "Door Lock";
+	id = "stall1"
 	},
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/iron/dark,
@@ -5686,10 +5669,10 @@
 	dir = 1
 	},
 /obj/machinery/button/door/directional/south{
-	id = "stall2";
-	name = "Door Lock";
 	normaldoorcontrol = 1;
-	specialfunctions = 4
+	specialfunctions = 4;
+	name = "Door Lock";
+	id = "stall2"
 	},
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/iron/dark,
@@ -5699,9 +5682,9 @@
 	dir = 10
 	},
 /obj/machinery/button/door/directional/west{
-	id = "il_bar";
-	name = "Bar Shutter Control";
 	pixel_y = -8;
+	name = "Bar Shutter Control";
+	id = "il_bar";
 	req_access = list("bar")
 	},
 /turf/open/floor/iron/dark,
@@ -5864,8 +5847,8 @@
 	pixel_y = 7
 	},
 /obj/item/folder/yellow{
-	pixel_x = -5;
-	pixel_y = 3
+	pixel_y = 3;
+	pixel_x = -5
 	},
 /obj/effect/turf_decal/tile/red/opposingcorners,
 /turf/open/floor/iron/dark,
@@ -5971,8 +5954,8 @@
 	pixel_y = 6
 	},
 /obj/item/paper/crumpled{
-	pixel_x = -2;
-	pixel_y = -4
+	pixel_y = -4;
+	pixel_x = -2
 	},
 /obj/item/paper/crumpled,
 /obj/effect/turf_decal/tile/green/opposingcorners,
@@ -6056,11 +6039,11 @@
 /obj/machinery/door/airlock/centcom{
 	name = "NanoTrasen Consultant's Office"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/cent_com/rep_door,
 /obj/effect/turf_decal/siding/white{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/green/opposingcorners,
-/obj/effect/mapping_helpers/airlock/access/all/admin/general,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "enb" = (
@@ -6099,11 +6082,11 @@
 	},
 /obj/item/kirbyplants/random,
 /obj/machinery/button/door/directional/south{
-	id = "room2";
+	pixel_x = -8;
 	name = "Door Lock";
 	normaldoorcontrol = 1;
-	pixel_x = -8;
-	specialfunctions = 4
+	specialfunctions = 4;
+	id = "room2"
 	},
 /turf/open/floor/wood,
 /area/centcom/interlink)
@@ -6382,8 +6365,8 @@
 	height = 13;
 	name = "tram dock";
 	roundstart_template = /datum/map_template/shuttle/arrivals_skyrat;
-	shuttle_id = "arrivals_shuttle";
-	width = 5
+	width = 5;
+	shuttle_id = "arrivals_shuttle"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -6398,8 +6381,8 @@
 	name = "Coffee Counter"
 	},
 /obj/item/reagent_containers/cup/glass/coffee_cup{
-	pixel_x = -5;
-	pixel_y = 12
+	pixel_y = 12;
+	pixel_x = -5
 	},
 /obj/item/reagent_containers/cup/glass/coffee_cup{
 	pixel_y = 4
@@ -6408,8 +6391,8 @@
 /area/centcom/interlink)
 "frG" = (
 /obj/machinery/door/poddoor/shutters/window/indestructible{
-	id = "interlink_hall";
-	name = "Windowed Interlink Access Shutters"
+	name = "Windowed Interlink Access Shutters";
+	id = "interlink_hall"
 	},
 /obj/effect/turf_decal/caution/stand_clear,
 /turf/open/floor/iron,
@@ -6696,8 +6679,8 @@
 	pixel_y = 7
 	},
 /obj/item/folder/blue{
-	pixel_x = -9;
-	pixel_y = -2
+	pixel_y = -2;
+	pixel_x = -9
 	},
 /obj/item/pen/blue{
 	pixel_x = 3;
@@ -6716,9 +6699,9 @@
 /area/centcom/holding/cafepark)
 "ggr" = (
 /obj/machinery/button/door/directional/east{
+	pixel_y = -8;
 	id = "arr_hall_lookout";
 	name = "Lookout Shutters Control";
-	pixel_y = -8;
 	req_access = list("command")
 	},
 /turf/open/floor/iron/dark,
@@ -6908,8 +6891,8 @@
 /area/centcom/interlink)
 "gJr" = (
 /obj/structure/chair/sofa/bench/left{
-	dir = 1;
-	greyscale_colors = "#AA8A61"
+	greyscale_colors = "#AA8A61";
+	dir = 1
 	},
 /turf/open/floor/wood,
 /area/centcom/interlink)
@@ -7111,16 +7094,16 @@
 /area/cruiser_dock)
 "hhW" = (
 /obj/machinery/button/door/directional/west{
-	id = "interlink_hall2";
-	name = "Arrivals Hall Shutter Control";
 	pixel_y = -8;
+	name = "Arrivals Hall Shutter Control";
+	id = "interlink_hall2";
 	req_access = list("security")
 	},
 /obj/machinery/light/cold/directional/west,
 /obj/machinery/button/door/directional/west{
-	id = "arriv_hall";
-	name = "Arrivals Access Shutter Control";
 	pixel_y = 8;
+	name = "Arrivals Access Shutter Control";
+	id = "arriv_hall";
 	req_access = list("security")
 	},
 /obj/effect/turf_decal/tile/red/opposingcorners,
@@ -7365,9 +7348,9 @@
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/machinery/vending/imported/mothic{
 	default_price = 0;
-	extended_inventory = 1;
 	extra_price = 0;
-	fair_market_price = 0
+	fair_market_price = 0;
+	extended_inventory = 1
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "floor"
@@ -7498,8 +7481,8 @@
 	pixel_y = 5
 	},
 /obj/item/folder/yellow{
-	pixel_x = -5;
-	pixel_y = 3
+	pixel_y = 3;
+	pixel_x = -5
 	},
 /obj/item/stamp{
 	pixel_x = 8;
@@ -7517,9 +7500,9 @@
 /area/centcom/interlink)
 "ikG" = (
 /obj/machinery/button/door/directional/east{
+	pixel_y = -8;
 	id = "interlink_hall2";
 	name = "Arrivals Hall Shutter Control";
-	pixel_y = -8;
 	req_access = list("security")
 	},
 /obj/structure/closet/crate/bin,
@@ -7539,9 +7522,9 @@
 	},
 /obj/machinery/light/cold/directional/east,
 /obj/machinery/button/door/directional/east{
+	pixel_y = 8;
 	id = "arriv_hall";
 	name = "Arrivals Access Shutter Control";
-	pixel_y = 8;
 	req_access = list("security")
 	},
 /obj/effect/turf_decal/tile/red/opposingcorners,
@@ -7697,9 +7680,9 @@
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/machinery/vending/imported{
 	default_price = 0;
-	extended_inventory = 1;
 	extra_price = 0;
-	fair_market_price = 0
+	fair_market_price = 0;
+	extended_inventory = 1
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "floor"
@@ -7841,8 +7824,8 @@
 	name = "Jim Norton's Quebecois Coffee table"
 	},
 /obj/item/reagent_containers/condiment/sugar{
-	pixel_x = -4;
-	pixel_y = 4
+	pixel_y = 4;
+	pixel_x = -4
 	},
 /obj/item/reagent_containers/condiment/sugar{
 	pixel_y = 4
@@ -8064,8 +8047,8 @@
 /area/centcom/interlink)
 "jyh" = (
 /obj/structure/sign/directions/security{
-	dir = 8;
-	pixel_y = -8
+	pixel_y = -8;
+	dir = 8
 	},
 /obj/structure/sign/directions/medical,
 /obj/structure/sign/directions/arrival{
@@ -8170,16 +8153,16 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4;
-	name = "Interlink Cafe"
+	name = "Interlink Cafe";
+	dir = 4
 	},
 /turf/open/floor/wood/parquet,
 /area/centcom/interlink)
 "jMw" = (
 /obj/structure/table,
 /obj/machinery/microwave{
-	pixel_x = -2;
-	pixel_y = 7
+	pixel_y = 7;
+	pixel_x = -2
 	},
 /turf/open/floor/iron/cafeteria,
 /area/centcom/interlink)
@@ -8481,11 +8464,11 @@
 	},
 /obj/item/kirbyplants/random,
 /obj/machinery/button/door/directional/south{
-	id = "room4";
+	pixel_x = -8;
 	name = "Door Lock";
 	normaldoorcontrol = 1;
-	pixel_x = -8;
-	specialfunctions = 4
+	specialfunctions = 4;
+	id = "room4"
 	},
 /turf/open/floor/wood,
 /area/centcom/interlink)
@@ -8656,9 +8639,9 @@
 /area/centcom/interlink)
 "kZT" = (
 /obj/machinery/button/door/directional/east{
+	pixel_y = -8;
 	id = "evac_hall_lookout";
 	name = "Lookout Shutters Control";
-	pixel_y = -8;
 	req_access = list("command")
 	},
 /turf/open/floor/iron/dark,
@@ -8677,11 +8660,11 @@
 /obj/machinery/door/airlock/centcom{
 	name = "NanoTrasen Consultant's Office"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/cent_com/rep_door,
 /obj/effect/turf_decal/siding/white{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/green/opposingcorners,
-/obj/effect/mapping_helpers/airlock/access/all/admin/general,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "lgh" = (
@@ -8847,8 +8830,8 @@
 "lDQ" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/indestructible{
-	id = "ntrep_shutters";
-	name = "NanoTrasen Consultant's Shutters"
+	name = "NanoTrasen Consultant's Shutters";
+	id = "ntrep_shutters"
 	},
 /turf/open/floor/plating,
 /area/centcom/interlink)
@@ -9016,8 +8999,8 @@
 /area/centcom/interlink)
 "maj" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4;
-	name = "Interlink Garden"
+	name = "Interlink Garden";
+	dir = 4
 	},
 /obj/effect/turf_decal/trimline/green/arrow_ccw,
 /obj/effect/turf_decal/siding/white{
@@ -9058,8 +9041,8 @@
 "meZ" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/poddoor/shutters/indestructible{
-	id = "il_bar";
-	name = "Interlink Bar Shutters"
+	name = "Interlink Bar Shutters";
+	id = "il_bar"
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
@@ -9138,9 +9121,9 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/all/command/general,
 /obj/machinery/button/door/directional/west{
+	pixel_y = -8;
 	id = "evac_hall_lookout";
 	name = "Lookout Shutters Control";
-	pixel_y = -8;
 	req_access = list("command")
 	},
 /obj/effect/turf_decal/trimline/dark_green/corner{
@@ -9177,8 +9160,8 @@
 /area/centcom/interlink)
 "mvp" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 8;
-	name = "Interlink Longue"
+	name = "Interlink Longue";
+	dir = 8
 	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
@@ -9284,8 +9267,8 @@
 "mEb" = (
 /obj/structure/table,
 /obj/machinery/computer/libraryconsole{
-	dir = 1;
-	pixel_y = 6
+	pixel_y = 6;
+	dir = 1
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
@@ -9302,11 +9285,11 @@
 	dir = 8
 	},
 /obj/machinery/button/door/directional/west{
-	id = "room7";
-	name = "Door Lock";
-	normaldoorcontrol = 1;
 	pixel_y = -8;
-	specialfunctions = 4
+	name = "Door Lock";
+	id = "room7";
+	specialfunctions = 4;
+	normaldoorcontrol = 1
 	},
 /turf/open/floor/wood,
 /area/centcom/interlink)
@@ -9327,8 +9310,8 @@
 /area/centcom/holding/cafepark)
 "mKs" = (
 /obj/structure/sign/directions/security{
-	dir = 8;
-	pixel_y = -8
+	pixel_y = -8;
+	dir = 8
 	},
 /obj/structure/sign/directions/medical,
 /obj/structure/sign/directions/arrival{
@@ -9613,8 +9596,8 @@
 	pixel_y = 8
 	},
 /obj/item/folder/blue{
-	pixel_x = 4;
-	pixel_y = 5
+	pixel_y = 5;
+	pixel_x = 4
 	},
 /obj/item/folder/yellow,
 /obj/item/stamp{
@@ -9831,11 +9814,11 @@
 	dir = 8
 	},
 /obj/machinery/button/door/directional/west{
-	id = "room5";
-	name = "Door Lock";
-	normaldoorcontrol = 1;
 	pixel_y = -8;
-	specialfunctions = 4
+	name = "Door Lock";
+	id = "room5";
+	specialfunctions = 4;
+	normaldoorcontrol = 1
 	},
 /turf/open/floor/wood,
 /area/centcom/interlink)
@@ -10265,9 +10248,9 @@
 /obj/machinery/light,
 /obj/machinery/vending/imported/tizirian{
 	default_price = 0;
-	extended_inventory = 1;
 	extra_price = 0;
-	fair_market_price = 0
+	fair_market_price = 0;
+	extended_inventory = 1
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "floor"
@@ -10300,9 +10283,9 @@
 /area/centcom/holding/cafe)
 "ptf" = (
 /obj/machinery/button/door/directional/north{
-	id = "il_kitchen";
-	name = "Kitchen Shutter Control";
 	pixel_x = -8;
+	name = "Kitchen Shutter Control";
+	id = "il_kitchen";
 	req_access = list("kitchen")
 	},
 /turf/open/floor/iron/cafeteria,
@@ -10587,11 +10570,11 @@
 	},
 /obj/item/kirbyplants/random,
 /obj/machinery/button/door/directional/south{
-	id = "room3";
+	pixel_x = -8;
 	name = "Door Lock";
 	normaldoorcontrol = 1;
-	pixel_x = -8;
-	specialfunctions = 4
+	specialfunctions = 4;
+	id = "room3"
 	},
 /turf/open/floor/wood,
 /area/centcom/interlink)
@@ -10606,8 +10589,8 @@
 /area/centcom/interlink)
 "pUc" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4;
-	name = "Interlink Locker Room"
+	name = "Interlink Locker Room";
+	dir = 4
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
@@ -11091,15 +11074,15 @@
 "rrE" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/indestructible{
-	id = "bs_shutters";
-	name = "BlueShields Shutters"
+	name = "BlueShields Shutters";
+	id = "bs_shutters"
 	},
 /turf/open/floor/plating,
 /area/centcom/interlink)
 "rwn" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4;
-	name = "Interlink Bar"
+	name = "Interlink Bar";
+	dir = 4
 	},
 /obj/effect/turf_decal/trimline/green/corner{
 	dir = 8
@@ -11122,10 +11105,10 @@
 "rBR" = (
 /obj/machinery/recharge_station,
 /obj/machinery/button/door/directional/south{
-	id = "stall3";
-	name = "Door Lock";
 	normaldoorcontrol = 1;
-	specialfunctions = 4
+	specialfunctions = 4;
+	name = "Door Lock";
+	id = "stall3"
 	},
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/iron/dark,
@@ -11370,15 +11353,15 @@
 "sbB" = (
 /obj/structure/chair/office,
 /obj/machinery/button/door/directional/west{
-	id = "interlink_hall";
-	name = "Evac Hall Shutter Control";
 	pixel_y = -8;
+	name = "Evac Hall Shutter Control";
+	id = "interlink_hall";
 	req_access = list("security")
 	},
 /obj/machinery/button/door/directional/west{
-	id = "evac_hall";
-	name = "Evac Access Shutter Control";
 	pixel_y = 8;
+	name = "Evac Access Shutter Control";
+	id = "evac_hall";
 	req_access = list("security")
 	},
 /obj/machinery/light/cold/directional/west,
@@ -11585,11 +11568,11 @@
 	},
 /obj/item/kirbyplants/random,
 /obj/machinery/button/door/directional/south{
-	id = "room1";
+	pixel_x = -8;
 	name = "Door Lock";
 	normaldoorcontrol = 1;
-	pixel_x = -8;
-	specialfunctions = 4
+	specialfunctions = 4;
+	id = "room1"
 	},
 /turf/open/floor/wood,
 /area/centcom/interlink)
@@ -11615,8 +11598,8 @@
 "sGw" = (
 /obj/structure/table,
 /obj/item/storage/fancy/donut_box{
-	pixel_x = 2;
-	pixel_y = 10
+	pixel_y = 10;
+	pixel_x = 2
 	},
 /obj/item/storage/fancy/donut_box{
 	pixel_x = -4;
@@ -12042,9 +12025,9 @@
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/machinery/vending/imported/yangyu{
 	default_price = 0;
-	extended_inventory = 1;
 	extra_price = 0;
-	fair_market_price = 0
+	fair_market_price = 0;
+	extended_inventory = 1
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "floor"
@@ -12101,8 +12084,8 @@
 	pixel_y = 2
 	},
 /obj/item/pen{
-	pixel_x = 6;
-	pixel_y = 10
+	pixel_y = 10;
+	pixel_x = 6
 	},
 /turf/open/floor/carpet/executive,
 /area/centcom/interlink)
@@ -12384,8 +12367,8 @@
 "uCT" = (
 /obj/structure/table,
 /obj/machinery/microwave{
-	pixel_x = -2;
-	pixel_y = 6
+	pixel_y = 6;
+	pixel_x = -2
 	},
 /obj/effect/turf_decal/tile/red/opposingcorners,
 /turf/open/floor/iron/dark,
@@ -12714,8 +12697,8 @@
 /area/centcom/interlink)
 "vzR" = (
 /obj/machinery/door/poddoor/shutters/window/indestructible{
-	id = "interlink_hall2";
-	name = "Windowed Interlink Access Shutters"
+	name = "Windowed Interlink Access Shutters";
+	id = "interlink_hall2"
 	},
 /obj/effect/turf_decal/caution/stand_clear,
 /turf/open/floor/iron,
@@ -12768,8 +12751,8 @@
 	dir = 1
 	},
 /obj/structure/sign/directions/dorms{
-	dir = 4;
-	pixel_y = 8
+	pixel_y = 8;
+	dir = 4
 	},
 /turf/closed/indestructible/riveted,
 /area/centcom/interlink)
@@ -13158,15 +13141,15 @@
 "wRh" = (
 /obj/structure/chair/office,
 /obj/machinery/button/door/directional/east{
+	pixel_y = -8;
 	id = "interlink_hall";
 	name = "Evac Hall Shutter Control";
-	pixel_y = -8;
 	req_access = list("security")
 	},
 /obj/machinery/button/door/directional/east{
+	pixel_y = 8;
 	id = "evac_hall";
 	name = "Evac Access Shutter Control";
-	pixel_y = 8;
 	req_access = list("security")
 	},
 /obj/machinery/light/cold/directional/east,
@@ -13690,9 +13673,9 @@
 "yeP" = (
 /obj/machinery/photocopier,
 /obj/machinery/button/door/directional/north{
-	id = "ntrep_shutters";
-	name = "Privacy Shutter Comtrol";
 	pixel_x = 8;
+	name = "Privacy Shutter Comtrol";
+	id = "ntrep_shutters";
 	req_access = list("command")
 	},
 /obj/effect/turf_decal/bot,
@@ -53539,7 +53522,7 @@ aaa
 aaa
 aaa
 aaa
-aZD
+aaa
 aaa
 aaa
 aaa

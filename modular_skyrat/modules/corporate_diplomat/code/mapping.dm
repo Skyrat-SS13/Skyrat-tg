@@ -29,6 +29,7 @@
 
 	if (pixel_x != 0)
 		spawned_object.pixel_x = pixel_x
+
 	if (pixel_y != 0)
 		spawned_object.pixel_y = pixel_y
 

@@ -7403,9 +7403,9 @@
 /obj/structure/sign/painting/library{
 	pixel_x = -32
 	},
-/obj/effect/mapping_helpers/corporate_diplomat/regular_floor,
 /obj/effect/spawner/corporate_diplomat/fancy_table,
 /obj/effect/spawner/corporate_diplomat/fax,
+/obj/effect/mapping_helpers/corporate_diplomat/regular_floor,
 /turf/open/floor/wood/large,
 /area/command/heads_quarters/captain/private/corp_diplomat)
 "clD" = (
@@ -9875,15 +9875,15 @@
 /area/station/maintenance/starboard/lesser)
 "cYB" = (
 /obj/effect/mapping_helpers/corporate_diplomat/good_floor,
-/obj/effect/spawner/corporate_diplomat/fancy_table,
-/obj/item/flashlight/lamp/green{
-	pixel_x = 7;
-	pixel_y = 10
-	},
 /obj/item/book/manual/wiki/security_space_law{
 	pixel_x = -5;
 	pixel_y = 3
 	},
+/obj/item/flashlight/lamp/green{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/effect/spawner/corporate_diplomat/fancy_table,
 /turf/open/floor/carpet/green,
 /area/command/heads_quarters/captain/private/corp_diplomat)
 "cYE" = (
@@ -11252,11 +11252,11 @@
 "drC" = (
 /obj/docking_port/stationary{
 	dir = 8;
+	dwidth = 1;
+	height = 13;
 	name = "arrivals";
 	shuttle_id = "arrivals_stationary";
-	dwidth = 1;
-	width = 5;
-	height = 13
+	width = 5
 	},
 /turf/open/space/basic,
 /area/space/nearstation)
@@ -22536,11 +22536,11 @@
 /area/station/engineering/atmos)
 "gyJ" = (
 /obj/machinery/airalarm/directional/north,
-/obj/effect/mapping_helpers/corporate_diplomat/good_floor,
 /obj/effect/spawner/corporate_diplomat/fancy_table,
 /obj/item/modular_computer/laptop/preset/civilian{
 	pixel_y = 7
 	},
+/obj/effect/mapping_helpers/corporate_diplomat/good_floor,
 /turf/open/floor/carpet/green,
 /area/command/heads_quarters/captain/private/corp_diplomat)
 "gyK" = (
@@ -29158,10 +29158,10 @@
 /obj/structure/table/reinforced,
 /obj/machinery/computer/security/telescreen{
 	desc = "Used for monitoring the engine.";
+	dir = 4;
 	name = "Engine Monitor";
 	network = list("engine");
-	pixel_x = -32;
-	dir = 4
+	pixel_x = -32
 	},
 /turf/open/floor/iron/smooth_edge{
 	dir = 4
@@ -35862,17 +35862,17 @@
 	pixel_x = 3;
 	pixel_y = 4
 	},
-/obj/machinery/airalarm/directional/west,
-/obj/effect/spawner/corporate_diplomat/fancy_table,
-/obj/effect/mapping_helpers/corporate_diplomat/regular_floor,
-/obj/item/flashlight/lamp/green{
-	pixel_x = -9;
-	pixel_y = 5
-	},
 /obj/item/pen/fountain{
 	pixel_x = 3;
 	pixel_y = 4
 	},
+/obj/machinery/airalarm/directional/west,
+/obj/effect/spawner/corporate_diplomat/fancy_table,
+/obj/item/flashlight/lamp/green{
+	pixel_x = -9;
+	pixel_y = 5
+	},
+/obj/effect/mapping_helpers/corporate_diplomat/regular_floor,
 /turf/open/floor/wood/large,
 /area/command/heads_quarters/captain/private/corp_diplomat)
 "kpH" = (
@@ -41467,11 +41467,11 @@
 /turf/open/floor/iron/dark/diagonal,
 /area/station/hallway/secondary/exit/departure_lounge)
 "lNF" = (
-/obj/effect/mapping_helpers/corporate_diplomat/good_floor,
 /obj/effect/spawner/corporate_diplomat/fancy_table,
 /obj/item/statuebust/hippocratic{
 	pixel_y = 8
 	},
+/obj/effect/mapping_helpers/corporate_diplomat/good_floor,
 /turf/open/floor/carpet/green,
 /area/command/heads_quarters/captain/private/corp_diplomat)
 "lNL" = (
@@ -44613,7 +44613,10 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/spawner/corporate_diplomat/stamp,
+/obj/effect/spawner/corporate_diplomat/stamp{
+	pixel_x = 5;
+	pixel_y = 7
+	},
 /obj/effect/mapping_helpers/corporate_diplomat/good_floor,
 /turf/open/floor/carpet/green,
 /area/command/heads_quarters/captain/private/corp_diplomat)
@@ -55318,7 +55321,6 @@
 /area/station/maintenance/aft/lesser)
 "pyI" = (
 /obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/access/all/corp_diplomat,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -55332,6 +55334,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/corporate/corp_diplomat,
+/obj/effect/mapping_helpers/airlock/access/all/corp_diplomat,
+/obj/effect/mapping_helpers/corporate_diplomat/regular_floor,
 /turf/open/floor/iron/dark/smooth_large,
 /area/command/heads_quarters/captain/private/corp_diplomat)
 "pyQ" = (
@@ -60185,7 +60189,7 @@
 /obj/machinery/door/airlock/corporate{
 	name = "Consultant's Quarters"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/corp_diplomat,
+/obj/effect/mapping_helpers/airlock/access/any/cent_com/rep_door,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/siding/wood/end,
 /obj/effect/turf_decal/siding/wood{
@@ -67901,11 +67905,11 @@
 "sST" = (
 /obj/docking_port/stationary{
 	dir = 4;
+	dwidth = 9;
+	height = 25;
 	name = "DeltaStation emergency evac bay";
 	shuttle_id = "emergency_home";
-	dwidth = 9;
-	width = 29;
-	height = 25
+	width = 29
 	},
 /turf/open/space/basic,
 /area/space/nearstation)
