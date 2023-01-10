@@ -1,3 +1,5 @@
+#define ICECAT_POLICY_LINK "https://wiki.skyrat13.tk/w/index.php/Ghost_Role_policy#Icewalkers"
+
 /obj/effect/mob_spawn/ghost_role/human/primitive_catgirl
 	name = "hole in the ground"
 	desc = "A clearly hand dug hole in the ground that appears to lead into a small cave of some kind? It's pretty dark in there."
@@ -9,10 +11,10 @@
 	density = FALSE
 	you_are_text = "You are an icemoon dweller."
 	flavour_text = "For as long as you can remember, the icemoon has been your home. \
-	It's been the home of your ancestors, and their ancestors, and the ones before them, \
-	and now outsiders seek to soil these sacred lands. Protect your kin and protect \
-	your ancestral homeland from destruction."
-	important_text = "Do NOT abandon your kin and your camp."
+	It's been the home of your ancestors, and their ancestors, and the ones before them. \
+	Currently, you and your kin live in uneasy tension with your nearby human-and-otherwise \
+	neighbors. Keep your village and your Kin safe, but bringing death on their heads from \
+	being reckless with the outsiders will not have the Gods be so kind."
 	spawner_job_path = /datum/job/primitive_catgirl
 	var/datum/team/primitive_catgirls/team
 	restricted_species = list(/datum/species/human/felinid/primitive)
@@ -22,6 +24,8 @@
 /obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/Initialize(mapload)
 	. = ..()
 	team = new /datum/team/primitive_catgirls()
+
+	important_text = "Read the full policy <a href=[ICECAT_POLICY_LINK]>here</a>."
 
 /obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/Destroy()
 	team = null
@@ -58,11 +62,11 @@
 // Antag and team datums
 
 /datum/team/primitive_catgirls
-	name = "Icemoon Dwellers"
+	name = "Icewalkers"
 	show_roundend_report = FALSE
 
 /datum/antagonist/primitive_catgirl
-	name = "\improper Icemoon Dweller"
+	name = "\improper Icewalker"
 	job_rank = ROLE_LAVALAND // If you're ashwalker banned you should also not be playing this, other way around as well
 	show_in_antagpanel = FALSE
 	show_to_ghosts = TRUE
@@ -93,3 +97,5 @@
 
 /datum/antagonist/primitive_catgirl/get_team()
 	return feline_team
+
+#undef ICECAT_POLICY_LINK
