@@ -7,8 +7,6 @@
 	icon = 'icons/stationmap.dmi'
 	icon_state = "station_map"
 	layer = ABOVE_WINDOW_LAYER
-	anchored = TRUE
-	density = FALSE
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 10
 	active_power_usage = 500
@@ -22,7 +20,7 @@
 	var/image/panel
 
 	var/original_zLevel = 1	// zLevel on which the station map was initialized.
-	var/bogus = TRUE		// set to 0 when you initialize the station map on a zLevel that has its own icon formatted for use by station holomaps.
+	var/bogus = TRUE		// set to FALSE when you initialize the station map on a zLevel that has its own icon formatted for use by station holomaps.
 	var/datum/station_holomap/holomap_datum
 
 /obj/machinery/station_map/Initialize()
@@ -46,21 +44,28 @@
 	bogus = FALSE
 	var/turf/current_turf = get_turf(src)
 	original_zLevel = current_turf.z
-	if(!("[HOLOMAP_EXTRA_STATIONMAP]_[original_zLevel]" in SSholomaps.extraMiniMaps))
+	if(!("[HOLOMAP_EXTRA_STATIONMAP]_[original_zLevel]" in SSholomaps.extra_holomaps))
 		bogus = TRUE
 		holomap_datum.initialize_holomap_bogus()
 		update_icon()
 		return
 
-	holomap_datum.initialize_holomap(current_turf, reinit = TRUE)
+	var/list/extra_overlays = list()
+	for(var/z_transition in SSholomaps.holomap_z_transitions["[original_zLevel]"])
+		var/list/position = splittext(z_transition, ":")
+		var/image/transition_image = image('icons/holomap_markers.dmi', "z_marker")
+		transition_image.pixel_x = text2num(position[1]) + HOLOMAP_CENTER_X - 1
+		transition_image.pixel_y = text2num(position[2]) + HOLOMAP_CENTER_Y
+		extra_overlays += transition_image
 
-	small_station_map = image(SSholomaps.extraMiniMaps["[HOLOMAP_EXTRA_STATIONMAPSMALL]_[original_zLevel]"], dir = dir)
+	holomap_datum.initialize_holomap(current_turf, reinit_base_map = TRUE, extra_overlays = extra_overlays)
+
+	small_station_map = image(SSholomaps.extra_holomaps["[HOLOMAP_EXTRA_STATIONMAPSMALL]_[original_zLevel]"], dir = dir)
 
 	floor_markings = image('icons/stationmap.dmi', "decal_station_map")
 	floor_markings.dir = src.dir
 
-	spawn(1) //When built from frames, need to allow time for it to set pixel_x and pixel_y
-		update_icon()
+	update_icon()
 
 /obj/machinery/station_map/attack_hand(var/mob/user)
 	if(user == watching_mob)
@@ -79,17 +84,18 @@
 		setup_holomap()
 
 	var/datum/hud/human/user_hud = user.hud_used
-	holomap_datum.station_map.loc = user_hud.holomap  // Put the image on the holomap hud
-	holomap_datum.station_map.alpha = 0 // Set to transparent so we can fade in
+	holomap_datum.base_map.loc = user_hud.holomap  // Put the image on the holomap hud
+	holomap_datum.base_map.alpha = 0 // Set to transparent so we can fade in
 
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(check_position))
 
 	playsound(src, 'modular_skyrat/modules/holomap/sound/holomap_open.ogg', 125)
-	animate(holomap_datum.station_map, alpha = 255, time = 5, easing = LINEAR_EASING)
-	add_overlay("station_map_activate")
+	animate(holomap_datum.base_map, alpha = 255, time = 5, easing = LINEAR_EASING)
+	icon_state = "station_map_active"
 
-	user.client.screen |= user.hud_used.holomap // TODO: Move this shit elsewhere eventually
-	user.client.images |= holomap_datum.station_map
+	user.hud_used.holomap.used_station_map = src
+	user.client.screen |= user.hud_used.holomap
+	user.client.images |= holomap_datum.base_map
 
 	watching_mob = user
 	update_use_power(ACTIVE_POWER_USE)
@@ -120,11 +126,13 @@
 
 	UnregisterSignal(watching_mob, COMSIG_MOVABLE_MOVED)
 	playsound(src, 'modular_skyrat/modules/holomap/sound/holomap_close.ogg', 125)
-	cut_overlay("station_map_activate")
+	icon_state = "station_map"
 	if(watching_mob.client)
-		animate(holomap_datum.station_map, alpha = 0, time = 5, easing = LINEAR_EASING)
+		animate(holomap_datum.base_map, alpha = 0, time = 5, easing = LINEAR_EASING)
 		spawn(5) //we give it time to fade out
-			watching_mob.client.images -= holomap_datum.station_map
+			watching_mob.client.screen -= watching_mob.hud_used.holomap
+			watching_mob.client.images -= holomap_datum.base_map
+			watching_mob.hud_used.holomap.used_station_map = null
 
 	watching_mob = null
 	update_use_power(IDLE_POWER_USE)
@@ -149,16 +157,16 @@
 
 	cut_overlays()
 	if(machine_stat & BROKEN)
-		icon_state = "station_mapb"
+		icon_state = "station_map_broken"
 	else if((machine_stat & NOPOWER) || !anchored)
-		icon_state = "station_map0"
+		icon_state = "station_map_off"
 	else
 		icon_state = "station_map"
 
 		if(bogus)
 			holomap_datum.initialize_holomap_bogus()
 		else
-			small_station_map = image(SSholomaps.extraMiniMaps["[HOLOMAP_EXTRA_STATIONMAPSMALL]_[original_zLevel]"], dir = src.dir)
+			small_station_map = image(SSholomaps.extra_holomaps["[HOLOMAP_EXTRA_STATIONMAPSMALL]_[original_zLevel]"], dir = src.dir)
 			add_overlay(small_station_map)
 			holomap_datum.initialize_holomap(get_turf(src))
 
@@ -174,11 +182,10 @@
 	else
 		cut_overlay("station_map-panel")
 
-/obj/machinery/station_map/attackby(item, mob/user)
-	src.add_fingerprint(user)
-	if(default_deconstruction_screwdriver(user, item))
+/obj/machinery/station_map/tool_act(item, mob/user)
+	if(default_deconstruction_screwdriver(user, "station_map_opened", "station_map_off", item))
 		return
-	if(default_deconstruction_crowbar(user, item))
+	if(default_deconstruction_crowbar(item))
 		return
 	return ..()
 

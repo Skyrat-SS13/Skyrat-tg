@@ -56,6 +56,8 @@
 // Service
 /area/station/service
 	holomap_color = HOLOMAP_AREACOLOR_CIV
+/area/station/commons/lounge
+	holomap_color = HOLOMAP_AREACOLOR_CIV
 
 // Cargo
 /area/station/cargo

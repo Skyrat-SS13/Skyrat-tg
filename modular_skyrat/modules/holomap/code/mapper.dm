@@ -247,13 +247,13 @@
 		map_app.layer = HUD_LAYER
 		map_app.color = map_color
 
-		if(!SSholomaps.holoMiniMaps["[T_z]"])
+		if(!SSholomaps.holomaps["[T_z]"])
 			var/obj/screen/mapper/map/baddo = map_image_cache["bad"]
 			map_app.icon = icon(baddo.icon)
 			badmap = TRUE
 		// SSholomaps did map it and we're allowed to see it
 		else
-			map_app.icon = icon(SSholomaps.holoMiniMaps["[T.z]"])
+			map_app.icon = icon(SSholomaps.holomaps["[T.z]"])
 
 			// Apply markers
 			for(var/marker in holomap_markers)
