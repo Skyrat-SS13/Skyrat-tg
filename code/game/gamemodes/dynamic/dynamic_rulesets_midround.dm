@@ -194,6 +194,7 @@
 
 /// Fired when there are no valid candidates. Will spawn a sleeper agent or latejoin traitor.
 /datum/dynamic_ruleset/midround/from_ghosts/proc/attempt_replacement()
+	/* // SKYRAT EDIT START
 	var/datum/dynamic_ruleset/midround/from_living/autotraitor/sleeper_agent = new
 
 	mode.configure_ruleset(sleeper_agent)
@@ -202,6 +203,9 @@
 		return
 
 	mode.picking_specific_rule(/datum/dynamic_ruleset/latejoin/infiltrator)
+	*/
+	return
+	// SKYRAT EDIT END
 
 ///subtype to handle checking players
 /datum/dynamic_ruleset/midround/from_living
