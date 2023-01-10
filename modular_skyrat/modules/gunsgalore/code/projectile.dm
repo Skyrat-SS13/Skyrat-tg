@@ -92,3 +92,11 @@
 		L.log_message("has been shot by [firer] with [src]", LOG_ATTACK, color="orange")
 
 	return BULLET_ACT_HIT
+
+/obj/projectile/bullet
+	tracer_type = /obj/effect/projectile/tracer/sniper ///It's, really, just a straight line; might as well reuse it until I get some proper smoke tracer.
+	hitscan = TRUE
+
+/obj/projectile/beam
+	tracer_type = /obj/effect/projectile/tracer/laser
+	hitscan = TRUE
