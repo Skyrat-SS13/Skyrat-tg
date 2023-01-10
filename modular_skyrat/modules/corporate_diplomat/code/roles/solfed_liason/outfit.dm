@@ -2,7 +2,7 @@
 	name = "Solar Federation Liaison"
 	jobtype = /datum/job/corporate_diplomat
 
-	belt = /obj/item/modular_computer/tablet/pda/solfed_lasion
+	belt = /obj/item/modular_computer/pda/solfed_lasion
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/solfed/liaison
 	uniform = /obj/item/clothing/under/rank/solfed_liaison

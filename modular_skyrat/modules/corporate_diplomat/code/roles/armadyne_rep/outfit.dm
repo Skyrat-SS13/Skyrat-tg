@@ -2,7 +2,7 @@
 	name = "Armadyne Representative"
 	jobtype = /datum/job/corporate_diplomat
 
-	belt = /obj/item/modular_computer/tablet/pda/armadyne_representative
+	belt = /obj/item/modular_computer/pda/armadyne_representative
 	glasses = /obj/item/clothing/glasses/sunglasses // Armadyne glasses are sechuds and make you look like a tool
 	ears = /obj/item/radio/headset/armadyne/representative
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne

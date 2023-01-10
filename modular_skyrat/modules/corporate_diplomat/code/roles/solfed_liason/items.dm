@@ -56,7 +56,7 @@
 	greyscale_colors = "#C39C00#f28a1b"
 
 
-/obj/item/modular_computer/tablet/pda/solfed_lasion
+/obj/item/modular_computer/pda/solfed_lasion
 	name = "\improper Solar Federation Liaison's PDA"
 	inserted_disk = /obj/item/computer_disk/command
 	inserted_item = /obj/item/pen/fountain

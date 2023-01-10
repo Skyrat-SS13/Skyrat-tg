@@ -1,6 +1,6 @@
 #define STACKS_OF_CASH 4
 
-/obj/item/modular_computer/tablet/pda/armadyne_representative
+/obj/item/modular_computer/pda/armadyne_representative
 	name = "armadyne representative's PDA"
 	inserted_disk = /obj/item/computer_disk/command
 	inserted_item = /obj/item/pen/fountain

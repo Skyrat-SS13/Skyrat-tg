@@ -135,7 +135,7 @@
 	name = "Armadyne Corporate Representative"
 
 	suit_store = /obj/item/modular_computer/pda/security
-	ears = ears = /obj/item/radio/headset/armadyne/commander/alt
+	ears = /obj/item/radio/headset/armadyne/commander/alt
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne
 	head =  /obj/item/clothing/head/beret/sec/peacekeeper/armadyne
