@@ -11131,6 +11131,7 @@
 /turf/open/floor/iron/edge,
 /area/station/commons/fitness/recreation/entertainment)
 "drv" = (
+/obj/effect/turf_decal/bot,
 /obj/structure/chair/office{
 	dir = 8
 	},
@@ -11856,10 +11857,6 @@
 "dAo" = (
 /obj/machinery/status_display/evac/directional/east,
 /obj/structure/closet/secure_closet/detective,
-/obj/item/camera/detective{
-	pixel_x = 1;
-	pixel_y = -2
-	},
 /turf/open/floor/carpet,
 /area/station/security/detectives_office)
 "dAp" = (
@@ -17751,11 +17748,9 @@
 "fdi" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/turf_decal/bot,
 /obj/effect/landmark/start/detective,
 /obj/effect/turf_decal/siding/wood{
-	dir = 4
-	},
-/obj/structure/chair/office{
 	dir = 4
 	},
 /turf/open/floor/iron/grimy,
@@ -29107,10 +29102,12 @@
 /turf/open/floor/iron/smooth_large,
 /area/station/hallway/secondary/service)
 "iti" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 8
+/obj/structure/table/wood,
+/obj/machinery/fax{
+	fax_name = "Detective's Office";
+	name = "Detective's Fax Machine";
+	pixel_y = 3
 	},
-/obj/machinery/disposal/bin,
 /turf/open/floor/carpet,
 /area/station/security/detectives_office)
 "itk" = (
@@ -35061,14 +35058,18 @@
 	pixel_x = -2;
 	pixel_y = 3
 	},
-/obj/item/hand_labeler{
-	pixel_x = 6
-	},
 /obj/item/reagent_containers/cup/glass/flask/det{
 	pixel_x = -12
 	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
+	},
+/obj/item/flashlight/lamp/green{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/obj/item/hand_labeler{
+	pixel_x = 6
 	},
 /turf/open/floor/iron/grimy,
 /area/station/security/detectives_office)
@@ -66975,18 +66976,14 @@
 /area/station/security/warden)
 "sGX" = (
 /obj/structure/table/wood,
-/obj/machinery/light/warm/directional/north,
-/obj/effect/turf_decal/siding/wood{
-	dir = 8
-	},
-/obj/item/paper_bin/carbon{
-	pixel_x = -3;
-	pixel_y = 7
-	},
 /obj/item/restraints/handcuffs,
 /obj/item/book/manual/wiki/detective,
 /obj/item/reagent_containers/cup/glass/flask/det{
 	pixel_x = 10
+	},
+/obj/machinery/light/warm/directional/north,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
 	},
 /turf/open/floor/iron/grimy,
 /area/station/security/detectives_office)
@@ -68742,6 +68739,12 @@
 	pixel_y = 7
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/item/camera/detective{
+	pixel_x = -10
+	},
+/obj/item/storage/fancy/cigarettes{
+	pixel_x = 11
+	},
 /obj/item/book/manual/wiki/detective,
 /obj/item/restraints/handcuffs,
 /turf/open/floor/carpet,
@@ -77560,17 +77563,10 @@
 /turf/open/floor/plating,
 /area/station/command/heads_quarters/rd)
 "vzJ" = (
-/obj/structure/table/wood,
-/obj/item/flashlight/lamp/green{
-	pixel_x = 1;
-	pixel_y = 5
+/obj/structure/disposalpipe/trunk{
+	dir = 8
 	},
-/obj/item/storage/fancy/cigarettes{
-	pixel_x = 11
-	},
-/obj/item/camera/detective{
-	pixel_x = -10
-	},
+/obj/machinery/disposal/bin,
 /turf/open/floor/carpet,
 /area/station/security/detectives_office)
 "vzN" = (
@@ -85190,13 +85186,15 @@
 /area/space/nearstation)
 "xIC" = (
 /obj/structure/table/wood,
+/obj/item/paper_bin/carbon{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/item/camera/detective{
+	pixel_x = -10
+	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
-	},
-/obj/machinery/fax{
-	fax_name = "Detective's Office";
-	name = "Detective's Fax Machine";
-	pixel_y = 3
 	},
 /turf/open/floor/iron/grimy,
 /area/station/security/detectives_office)
@@ -122013,9 +122011,9 @@ xMV
 oaL
 geF
 hjW
-iti
-ajg
 vzJ
+ajg
+iti
 teQ
 fqI
 iMs
