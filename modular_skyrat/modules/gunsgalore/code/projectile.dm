@@ -123,7 +123,7 @@
 /obj/projectile/bullet/a40mm
 	hitscan = FALSE
 
-///At the moment, all of them are too low-velocity to be even remotely hitscan. I mean, come on, a lollipop/gumball, a foam darn, and an arrow.
+///At the moment, all of them are too low-velocity to be even remotely hitscan. I mean, come on, a lollipop/gumball, a foam dart, and an arrow.
 /obj/projectile/bullet/reusable
 	hitscan = FALSE
 
@@ -134,4 +134,10 @@
 	hitscan = FALSE
 
 /obj/projectile/beam/laser/accelerator
+	hitscan = FALSE
+
+/obj/projectile/colossus
+	hitscan = FALSE
+
+/obj/projectile/temp/basilisk
 	hitscan = FALSE
