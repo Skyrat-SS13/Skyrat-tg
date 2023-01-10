@@ -9,7 +9,7 @@
 		Aside from that, there are no manufcaturer marks or tags to be found, and even the color scheme is unfamiliar when \
 		it comes to most known MOD producers."
 	default_skin = "stealth"
-	armor = list(MELEE = 30, BULLET = 50, LASER = 40, ENERGY = 30, BOMB = 30, BIO = 30, FIRE = 100, ACID = 100, WOUND = 25)
+	armor_type = /datum/armor/mod_theme_covert
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	atom_flags = PREVENT_CONTENTS_EXPLOSION_1
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
@@ -62,6 +62,17 @@
 			),
 		),
 	)
+
+/datum/armor/mod_theme_covert
+	melee = 30
+	bullet = 50
+	laser = 40
+	energy = 30
+	bomb = 30
+	bio = 30
+	fire = 100
+	acid = 100
+	wound = 25
 
 /obj/item/mod/control/pre_equipped/stealth_operative
 	worn_icon = 'modular_skyrat/modules/assault_operatives/icons/modsuits/wornmod.dmi'

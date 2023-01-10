@@ -73,7 +73,8 @@
 /obj/item/serviette_pack
 	name = "pack of serviettes"
 	desc = "I wonder why LustWish makes them..."
-	icon_state = "serviettepack"
+	icon_state = "serviettepack_4"
+	base_icon_state = "serviettepack"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	/// A count of how many serviettes are left in the pack
 	var/number_remaining = 4
@@ -81,7 +82,7 @@
 
 /obj/item/serviette_pack/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[number_remaining]"
+	icon_state = "[base_icon_state]_[number_remaining]"
 
 /obj/item/serviette_pack/Initialize(mapload)
 	. = ..()

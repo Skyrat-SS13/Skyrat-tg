@@ -154,6 +154,7 @@
 
 /obj/item/storage/wallet/random
 	icon_state = "random_wallet" // for mapping purposes
+	worn_icon_state = "wallet"
 
 /obj/item/storage/wallet/random/Initialize(mapload)
 	. = ..()
