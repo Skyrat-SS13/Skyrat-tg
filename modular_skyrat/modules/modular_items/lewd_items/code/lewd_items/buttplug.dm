@@ -1,8 +1,9 @@
 /obj/item/clothing/sextoy/buttplug
 	name = "buttplug"
 	desc = "I'm meant to put that WHERE?!"
-	icon_state = "buttplug"
-	worn_icon_state = "buttplug"
+	icon_state = "buttplug_pink_small"
+	base_icon_state = "buttplug"
+	worn_icon_state = "buttplug_pink"
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi'
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
@@ -79,8 +80,8 @@
 
 /obj/item/clothing/sextoy/buttplug/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]_[current_size]"
-	worn_icon_state = "[initial(icon_state)]_[current_color]"
+	icon_state = "[base_icon_state]_[current_color]_[current_size]"
+	worn_icon_state = "[base_icon_state]_[current_color]"
 
 /obj/item/clothing/sextoy/buttplug/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
