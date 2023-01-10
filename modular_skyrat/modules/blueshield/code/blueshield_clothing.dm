@@ -20,11 +20,13 @@
 	icon = 'modular_skyrat/modules/blueshield/icons/radio.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/ears.dmi'
 	icon_state = "bshield_headset"
+	worn_icon_state = "bshield_headset"
 	keyslot = new /obj/item/encryptionkey/heads/blueshield
 	keyslot2 = new /obj/item/encryptionkey/headset_cent
 
 /obj/item/radio/headset/headset_bs/alt
 	icon_state = "bshield_headset_alt"
+	worn_icon_state = "bshield_headset_alt"
 
 /obj/item/radio/headset/headset_bs/alt/Initialize(mapload)
 	. = ..()

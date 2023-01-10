@@ -308,3 +308,108 @@
       can be alcohol free!
   - admin: Admins can now creature custom reagent scrubber overflows, TC trade 20TC
       for superlube flood?
+2023-01-10:
+  Big chungus wholesome 100:
+  - bugfix: Amputated and reattached limbs now get wounded based on their own biology,
+      not the current owner's biology.
+  Fikou:
+  - admin: admins can now give someone a holoparasite through a new menu in vv dropdown
+  - qol: alt click holopara abilities were moved to right click
+  - qol: support holoparas heal with right click
+  - admin: holoparas have less hardcoded stuff so admins can edit them easier
+  - qol: holoparasites now get their light color from their guardian color
+  - bugfix: holoparasites no longer have the hostile faction, things will attack them
+  - bugfix: holoparasites fly over chasms and stuff properly again
+  - qol: holoparasites update their health every time the summoner gets damaged, rather
+      than every 2 seconds. they also instantly react to the summoner's death, deletion
+      and have a screen overlay of how damaged the summoner is
+  - qol: holoparasite creation now uses a radial menu with tooltips for each subtype,
+      as such, the guide papers no longer exist. it also shows ghosts which type you
+      picked
+  - bugfix: holoparasites can no longer be fugu'd
+  - bugfix: fixes overlay lighting runtiming if deleted during a signal queue
+  - bugfix: fixes negative gravity being weird, and gravitokinetic holoparasite's
+      turf slams not working
+  - bugfix: fixes invisible info tooltips for radial menus
+  - admin: you can now make holoparas not controlled by anyone
+  Gofawful5:
+  - rscadd: Added a plushie based on a strange white-haired cat-thing.
+  GoldenAlpharex:
+  - bugfix: Changing species will now by default update the visuals of the affected
+      mob. This should hopefully provide more consistent behavior all around.
+  - bugfix: Xenobiological Slime Hybrids no longer have grown a third eye overnight.
+  - bugfix: Fixed bad armor values on some clothes available on Interdyne.
+  Jolly:
+  - code_imp: The lists in admin_verbs.dm was organized to be made better. This shouldn't
+      affect the panels admins use at all, since they're already alphabetized.
+  LT3:
+  - bugfix: Disposal pipes and cable wires now co-exist with the tram bridge
+  Melbert:
+  - bugfix: Wedding dresses no longer render their shoes over the dress
+  - bugfix: Things which have inv flags set should more consistently actually hide
+      the things they mean to hide
+  - qol: The preview dummy in the preferences menu now shows some visual quirks, like
+      Heterochromia or nearsighted.
+  - bugfix: Fixed some quirks which read a preference roundstart not applying the
+      preference.
+  - refactor: Refactored some bits of quirk datums and the quirk application process.
+  - refactor: Drowsiness and Blurred Eyes are now tracked via status effect.
+  SkyratBot:
+  - rscadd: Carp will now run away if their health gets low, meaning they may have
+      a chance to regenerate.
+  - rscadd: Lia will now fight back if attacked instead of letting herself get killed,
+      watch out!
+  - balance: Magicarp will now aim their spells more intelligently.
+  - rscadd: Tame Magicarp can be ordered to use their spells on things.
+  - refactor: Carp are now "Basic Mobs" instead of "Simple Mobs"
+  - bugfix: Dehydrated carp no longer give you a bad feeling when they're your friend
+      and a good feeling when they're going to attack you.
+  - balance: Tamed carp are now friendly only to their tamer rather than their whole
+      faction, which should make dehydrated carp more active. Order them to stay or
+      follow you if you want them to behave around your friends.
+  - bugfix: The small carton no longer randomly disappears.
+  - bugfix: Pre-filled bottles of cola & nuka cola, and glasses of soda now have the
+      correct sprite.
+  - bugfix: guardian spirits check for death before they add themselves to you
+  - bugfix: Starlight will actually show now, instead of just being replaced by fullbright
+      most of the time
+  - bugfix: Emissive lighting will once again work. Sorry lads
+  - rscadd: Added new fishnet style socks, in a choice of three lengths
+  - imageadd: New look and animations for the Heretic's transmutation rune
+  - rscadd: Space Carp seem to have begun associating the station with food and attempting
+      to enter from the outside, rather than simply congregating around solar panels.
+      Employees are advised that these are wild animals, and should not be fed.
+  - rscadd: Space Carp can intermittently teleport short distances, leaving a short
+      lived rift which other nearby carp will be attracted to follow them through.
+  - bugfix: Fixes boring changeling gameplay by making shrieks not work while ventcrawling.
+  - code_imp: Ghosts are now basic mobs! You might not notice any difference, but...
+  - code_imp: Ghost mobs now spawn with hair and sometimes facial hair.
+  - balance: While Ian still enjoys being petted, his heart will now most closely
+      belong to anyone who gives him an expensive luxury dog bone.
+  - code_imp: Using an item which _can_ deal damage on a mob tracking hostile actions
+      (such as a dog) won't automatically be considered to be a hostile action if
+      you aren't actually hitting it with the item.
+  - bugfix: fixes moonicorns not applying pax
+  - rscadd: Ian has learned some new tricks, tell him what a good boy he is!
+  - rscadd: Ian will come on a walk with you, if you are his friend.
+  - refactor: Ian's tricks work the same way as some other mobs' tricks and should
+      be extendable to future mobs.
+  - bugfix: Dogs no longer run at the maximum possible speed for a mob at all times.
+  - rscadd: When Ian gets old, he also slows down. Poor little guy.
+  - rscadd: Dogs will no longer dislike the presence of Felinids who have taken the
+      time to befriend them.
+  - balance: standard holoparasites and assassin holoparasites in stealth mode can
+      deal wounds
+  - balance: you can now ride charger holoparasites
+  - balance: charger holoparasites have a bit less armor and speed
+  - bugfix: burn chambers will not get stuck on depressurizing while cycling to exterior
+      airlocks
+  - bugfix: using an airlock sensor will properly cycle the air inside the chamber
+  - bugfix: Fix antags being revealed by hallucinations
+  - bugfix: fixed biosuits, nun robes, narsien hardened armor making your shoes invisible
+  - admin: Added config for disabling station traits
+  - bugfix: New players connecting via an active Panic Bunker Interview System can
+      now close out the window once they have their interview approved by an admin.
+  - rscadd: you can flip eyepatches
+  - bugfix: blindfolds now take into consideration both eye colors for their color
+  - bugfix: Space Carp can now breathe in space

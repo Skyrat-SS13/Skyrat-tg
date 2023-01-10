@@ -1,7 +1,8 @@
 /obj/item/clothing/sextoy/vibroring
 	name = "vibrating ring"
 	desc = "A ring toy used to keep your erection going strong."
-	icon_state = "vibroring"
+	icon_state = "vibroring_pink_off"
+	base_icon_state = "vibroring"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	/// If the toy is currently on or not
 	var/toy_on = FALSE
@@ -63,8 +64,8 @@
 
 /obj/item/clothing/sextoy/vibroring/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]_[toy_on? "on" : "off"]"
-	inhand_icon_state = "[initial(icon_state)]_[current_color]"
+	icon_state = "[base_icon_state]_[current_color]_[toy_on? "on" : "off"]"
+	inhand_icon_state = "[base_icon_state]_[current_color]"
 
 /obj/item/clothing/sextoy/vibroring/equipped(mob/living/carbon/human/user, slot, initial)
 	. = ..()
