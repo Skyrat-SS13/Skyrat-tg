@@ -1,6 +1,6 @@
 /datum/corporate_diplomat_role/solfed_liaison
 	title = JOB_SOLFED_LIAISON
-	description = "Make sure law and order is upheld on the station, report the Head of Security abusing the Clown, bore people to death with your ballpoint pen collection."
+	description = "Make sure law and order is upheld on the station, tattle on the Head of Security abusing the clown, bore people to death with your ballpoint pen collection."
 	department_head = list(
 		"Solar Federation",
 	)
@@ -20,6 +20,7 @@
 		/obj/item/pen/fountain,
 		/obj/item/pen/screwdriver,
 		/obj/item/pen/survival,
+		/obj/item/pen/red,
 	) // I WAS NOT LYING ABOUT THE BALLPOINT PEN COLLECTION
 
 	mail_goodies = list(

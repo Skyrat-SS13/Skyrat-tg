@@ -2,12 +2,11 @@
 	name = "\improper PDH-6 'Striker'"
 	desc = "A sidearm used by Armadyne corporate agents who didn't make the cut for the Corpo model. Chambered in .38 special."
 	icon_state = "pdh_striker"
-	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_striker
 	can_suppress = FALSE
 	fire_sound = 'modular_skyrat/modules/corporate_diplomat/sound/pistol_shot.ogg'
 	burst_size = 2
-	fire_delay = 2.5
+	fire_delay = 3
 	spread = 9
 	company_flag = COMPANY_ARMADYNE
 

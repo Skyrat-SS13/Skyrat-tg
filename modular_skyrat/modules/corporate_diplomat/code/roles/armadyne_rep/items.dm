@@ -1,4 +1,4 @@
-#define STACKS_OF_CASH 3
+#define STACKS_OF_CASH 4
 
 /obj/item/modular_computer/tablet/pda/armadyne_representative
 	name = "armadyne representative's PDA"
@@ -45,6 +45,7 @@
 		Signed
 		Corporate Outreach Director James Walker
 		"}
+
 	update_icon_state()
 	return ..()
 

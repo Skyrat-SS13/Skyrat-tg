@@ -34,6 +34,7 @@
 	if(charge_cell)
 		. += "[span_info("The cell is currently at: ")][span_boldnotice("[charge_cell.percent()]")][span_info("% power remaining.")]"
 		. += span_notice("You can remove the cell with <b>Right Click</b>.")
+
 	else
 		. += span_notice("There is a slot for a <b>power cell</b> near the barrel of the gun.")
 
@@ -49,6 +50,7 @@
 
 	else
 		balloon_alert(user, "no cell to remove")
+
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 
@@ -63,6 +65,7 @@
 
 	else
 		balloon_alert(user, "no cell to remove")
+
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 

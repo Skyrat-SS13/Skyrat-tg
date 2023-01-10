@@ -3,6 +3,7 @@
 	icon_state = "Armadyne Representative"
 	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
 
+
 /obj/structure/closet/secure_closet/armadyne_representative
 	name = "\proper armadyne representative's locker"
 	req_access = list(ACCESS_ARMADYNE)
@@ -25,6 +26,7 @@
 	new /obj/item/radio/headset/armadyne/representative/alt(src)
 	new /obj/item/storage/backpack/satchel/leather(src)
 
+
 /obj/machinery/fax/armadyne
 	name = "\improper Armadyne Representative's Fax Machine"
 	desc = "A fax machine containing the proper encryption keys for sending a message to the Armadyne corporation."
@@ -32,7 +34,6 @@
 	fax_keys = list(
 		FAX_KEY_ARMADYNE,
 	)
-
 
 /obj/item/circuitboard/machine/fax/armadyne
 	name = "Fax Machine (Armadyne)"

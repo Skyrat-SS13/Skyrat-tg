@@ -77,6 +77,18 @@
 	arm_rep_path = /obj/machinery/fax/armadyne
 	sol_lia_path = /obj/machinery/fax/solfed
 
+/obj/effect/spawner/corporate_diplomat/fancychair
+	icon_state = "fax" // FIXME
+	nt_con_path = /obj/structure/chair/comfy/green
+	arm_rep_path = /obj/structure/chair/comfy/red
+	sol_lia_path = /obj/structure/chair/comfy/brown //TODO: decide on beige or brown
+
+/obj/effect/spawner/corporate_diplomat/bedsheet
+	icon_state = "fax" // FIXME
+	nt_con_path = /obj/item/bedsheet/centcom/double
+	arm_rep_path = /obj/item/bedsheet/red/double
+	sol_lia_path = /obj/item/bedsheet/yellow/double
+
 // Mapping helpers
 
 // - Access Helpers
@@ -127,13 +139,18 @@
 		return
 
 	var/turf/open/floor/floor = get_turf(src)
+
 	switch(SSjob.corporate_diplomat_type)
+
 		if(/datum/corporate_diplomat_role/nanotrasen_consultant)
 			floor.ChangeTurf(/turf/open/floor/wood)
+
 		if(/datum/corporate_diplomat_role/armadyne_representative)
 			floor.ChangeTurf(/turf/open/floor/iron/dark/textured)
+
 		if(/datum/corporate_diplomat_role/solfed_liaison)
 			floor.ChangeTurf(/turf/open/floor/iron/smooth_large)
+
 	qdel(src)
 
 
@@ -147,13 +164,17 @@
 		return
 
 	var/turf/open/floor/floor = get_turf(src)
+
 	switch(SSjob.corporate_diplomat_type)
 		if(/datum/corporate_diplomat_role/nanotrasen_consultant)
 			floor.ChangeTurf(/turf/open/floor/carpet/executive)
+
 		if(/datum/corporate_diplomat_role/armadyne_representative)
 			floor.ChangeTurf(/turf/open/floor/carpet/red)
+
 		if(/datum/corporate_diplomat_role/solfed_liaison)
 			floor.ChangeTurf(/turf/open/floor/carpet)
+
 	qdel(src)
 
 
@@ -165,3 +186,9 @@
 /obj/machinery/door/airlock/corporate/corp_diplomat/Initialize(mapload)
 	. = ..()
 	name = "[initial(SSjob?.corporate_diplomat_type.title)]'s Office"
+
+/obj/structure/chair/comfy/green
+	color = "#439C1E"
+
+/obj/structure/chair/comfy/red
+	color = "#a6281c"
