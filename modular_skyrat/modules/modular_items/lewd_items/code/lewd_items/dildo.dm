@@ -9,7 +9,7 @@
 	desc = "A large plastic penis, much like the one in your mother's bedside drawer."
 	icon_state = "dildo_human"
 	base_icon_state = "dildo"
-	inhand_icon_state = "dildo_canine_human"
+	inhand_icon_state = "dildo_human"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'

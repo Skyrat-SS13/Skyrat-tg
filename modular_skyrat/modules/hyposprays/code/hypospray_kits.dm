@@ -96,7 +96,7 @@
 	name = "deluxe hypospray kit"
 	desc = "A kit containing a deluxe hypospray and vials."
 	icon_state = "tactical-mini"
-	inhand_icon_state = "medkit_tactical"
+	worn_icon_state = "medkit_tactical"
 	current_case = "tactical"
 	cmo_case = TRUE
 
