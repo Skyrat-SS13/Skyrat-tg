@@ -200,7 +200,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/species_cookie = /obj/item/food/cookie
 
 	///For custom overrides for species ass images
-	//var/icon/ass_image //SKYRAT EDIT REMOVAL - SEE CUSTOMIZATION MODULE
+	//var/icon/ass_image //SKYRAT EDIT - MODULAR NON-PNG ASS ICONS
 
 	/// List of family heirlooms this species can get with the family heirloom quirk. List of types.
 	var/list/family_heirlooms
