@@ -52,10 +52,11 @@
 
 	var/list/extra_overlays = list()
 	for(var/z_transition in SSholomaps.holomap_z_transitions["[original_zLevel]"])
+		world.log << "Loading map transition at [z_transition]"
 		var/list/position = splittext(z_transition, ":")
 		var/image/transition_image = image('icons/holomap_markers.dmi', "z_marker")
-		transition_image.pixel_x = text2num(position[1]) + HOLOMAP_CENTER_X - 1
-		transition_image.pixel_y = text2num(position[2]) + HOLOMAP_CENTER_Y
+		transition_image.pixel_x = text2num(position[1]) - 1
+		transition_image.pixel_y = text2num(position[2])
 		extra_overlays += transition_image
 
 	holomap_datum.initialize_holomap(current_turf, reinit_base_map = TRUE, extra_overlays = extra_overlays)
@@ -94,6 +95,7 @@
 	icon_state = "station_map_active"
 
 	user.hud_used.holomap.used_station_map = src
+	user.hud_used.holomap.mouse_opacity = MOUSE_OPACITY_ICON
 	user.client.screen |= user.hud_used.holomap
 	user.client.images |= holomap_datum.base_map
 
@@ -133,8 +135,8 @@
 			watching_mob.client.screen -= watching_mob.hud_used.holomap
 			watching_mob.client.images -= holomap_datum.base_map
 			watching_mob.hud_used.holomap.used_station_map = null
+			watching_mob = null
 
-	watching_mob = null
 	update_use_power(IDLE_POWER_USE)
 
 /obj/machinery/station_map/power_change()
@@ -168,7 +170,6 @@
 		else
 			small_station_map = image(SSholomaps.extra_holomaps["[HOLOMAP_EXTRA_STATIONMAPSMALL]_[original_zLevel]"], dir = src.dir)
 			add_overlay(small_station_map)
-			holomap_datum.initialize_holomap(get_turf(src))
 
 	// Put the little "map" overlay down where it looks nice
 	if(floor_markings)
@@ -178,9 +179,9 @@
 		add_overlay(floor_markings)
 
 	if(panel_open)
-		add_overlay("station_map-panel")
+		add_overlay("station_map_panel")
 	else
-		cut_overlay("station_map-panel")
+		cut_overlay("station_map_panel")
 
 /obj/machinery/station_map/tool_act(item, mob/user)
 	if(default_deconstruction_screwdriver(user, "station_map_opened", "station_map_off", item))

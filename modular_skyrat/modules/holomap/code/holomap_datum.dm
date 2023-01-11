@@ -10,6 +10,7 @@
 	legend = image('icons/64x64.dmi', "legend")
 
 /datum/station_holomap/proc/initialize_holomap(var/turf/turf, var/mob/user = null, var/reinit_base_map = FALSE, extra_overlays = list())
+	world.log << "Init holomap with [length(extra_overlays)]"
 	if(!base_map || reinit_base_map)
 		base_map = image(SSholomaps.extra_holomaps["[HOLOMAP_EXTRA_STATIONMAP]_[turf.z]"])
 
@@ -35,6 +36,7 @@
 		base_map.add_overlay(cursor)
 
 	for(var/image/map_layer as anything in overlays_to_use)
+		world.log << "Adding overlay to map"
 		base_map.add_overlay(map_layer)
 
 /datum/station_holomap/proc/initialize_holomap_bogus()

@@ -100,7 +100,8 @@
 	var/icon/small_map = icon(HOLOMAP_ICON, "blank")
 	small_map.Blend(map_base, ICON_OVERLAY)
 	small_map.Blend(canvas, ICON_OVERLAY)
-	small_map.Scale(32, 32)
+	small_map.Scale(40, 40)
+	small_map.Crop(5, 5, 36, 36)
 
 	// And rotate it in every direction of course!
 	var/icon/actual_small_map = icon(small_map)
