@@ -328,7 +328,7 @@
  * Additionally checks that the mob has their clothes off.
  */
 /**
-/obj/machinery/photocopier/proc/make_ass_copy() //SKYRAT EDIT - SEE PHOTOCOPIER MODULAR FILE
+/obj/machinery/photocopier/proc/make_ass_copy() //SKYRAT EDIT - MODULAR NON-PNG ASS ICONS, SEE PHOTOCOPIER MODULE
 	if(!check_ass() || !toner_cartridge)
 		return
 	if(ishuman(ass) && (ass.get_item_by_slot(ITEM_SLOT_ICLOTHING) || ass.get_item_by_slot(ITEM_SLOT_OCLOTHING)))
