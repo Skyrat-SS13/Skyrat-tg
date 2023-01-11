@@ -148,13 +148,13 @@ There are several things that need to be remembered:
 		inv.update_icon()
 
 	//var/mutable_appearance/id_overlay = overlays_standing[ID_LAYER] //SKRAY EDIT REMOVAL - PDA B-GONE
-//SKYRAT EDIT REMOVAL BEGIN - PDA-B-GONE
-/*
 
 	if(wear_id)
 		var/obj/item/worn_item = wear_id
 		update_hud_id(worn_item)
-		var/icon_file
+		//var/icon_file SKYRAT EDIT REMOVAL - PDA-B-GONE
+//SKYRAT EDIT REMOVAL BEGIN - PDA-B-GONE
+/*
 
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/id.dmi'
