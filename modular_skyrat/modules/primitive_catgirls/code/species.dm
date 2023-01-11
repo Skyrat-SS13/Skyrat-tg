@@ -10,6 +10,7 @@
 		/datum/language/primitive_catgirl = list(LANGUAGE_ATOM),
 		/datum/language/uncommon = list(LANGUAGE_ATOM),
 	)
+	selected_language = /datum/language/primitive_catgirl
 
 /datum/species/human/felinid/primitive
 	name = "Primitive Demihuman"
