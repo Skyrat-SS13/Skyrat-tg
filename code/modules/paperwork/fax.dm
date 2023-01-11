@@ -58,7 +58,7 @@ GLOBAL_VAR_INIT(nt_fax_department, pick("NT HR Department", "NT Legal Department
 		syndicate = list(fax_name = "Sabotage Department", fax_id = "syndicate", color = "red", emag_needed = TRUE),
 	)
 	*/
-	/// List with a fake-networks(not a fax actually), for request manager.
+	/// List with a fake-networks (not a fax actually), for request manager.
 	var/list/special_networks = list(
 		list(fax_name = "Central Command", fax_id = "central_command", color = "teal", emag_needed = FALSE, fax_key_needed = FAX_KEY_CENTCOM), // HEY GUESS WHAT FUCKO NONE OF THESE VAR-LOOKING THINGS
 		list(fax_name = "Sabotage Department", fax_id = "syndicate", color = "red", emag_needed = TRUE), // IN THESE LISTS ARE ACTUALLY _VARS_
