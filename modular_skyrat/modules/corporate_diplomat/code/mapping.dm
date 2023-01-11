@@ -33,6 +33,8 @@
 	if (pixel_y != 0)
 		spawned_object.pixel_y = pixel_y
 
+	spawned_object.dir = dir
+
 
 /obj/effect/spawner/corporate_diplomat/spawn_landmark
 	icon_state = "person"
@@ -78,13 +80,15 @@
 	sol_lia_path = /obj/machinery/fax/solfed
 
 /obj/effect/spawner/corporate_diplomat/fancychair
-	icon_state = "fax" // FIXME
+	icon = 'icons/effects/random_spawners.dmi'
+	icon_state = "chair"
 	nt_con_path = /obj/structure/chair/comfy/green
 	arm_rep_path = /obj/structure/chair/comfy/red
 	sol_lia_path = /obj/structure/chair/comfy/brown //TODO: decide on beige or brown
 
 /obj/effect/spawner/corporate_diplomat/bedsheet
-	icon_state = "fax" // FIXME
+	icon = 'icons/effects/random_spawners.dmi'
+	icon_state = "bedsheet"
 	nt_con_path = /obj/item/bedsheet/centcom/double
 	arm_rep_path = /obj/item/bedsheet/red/double
 	sol_lia_path = /obj/item/bedsheet/yellow/double
