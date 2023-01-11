@@ -22,4 +22,4 @@ Adds a variety of 'primitive' ways to produce items
 
 ### Credits:
 
-Jake Park - Glassblowing and ceramics
+Jake Park
