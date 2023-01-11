@@ -244,6 +244,7 @@
 	set_broken()
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/station_map, 32)
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/station_map/engineering, 32)
 
 /obj/item/circuitboard/machine/station_map
 	name = "Station Map"

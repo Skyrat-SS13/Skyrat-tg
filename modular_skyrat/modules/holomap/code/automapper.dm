@@ -1,28 +1,23 @@
+// Doing it via macros is far more readable than doing an entry per.
 #define HOLOMAP_SPAWN(name, ar, amt) /datum/area_spawn/holomap_##name {\
 	target_areas = list(##ar); \
 	desired_atom = /obj/machinery/station_map; \
 	mode = AREA_SPAWN_MODE_MOUNT_WALL; \
 	amount_to_spawn = amt; }
 
-HOLOMAP_SPAWN(arrivals, /area/station/hallway/secondary/entry, 3)
+#define HOLOMAP_SPAWN_ENGI(name, ar, amt) /datum/area_spawn/holomap_##name {\
+	target_areas = list(##ar); \
+	desired_atom = /obj/machinery/station_map/engineering; \
+	mode = AREA_SPAWN_MODE_MOUNT_WALL; \
+	amount_to_spawn = amt; }
 
-/datum/area_spawn/holomap_engi
-	target_areas = list(/area/station/engineering/main)
-	desired_atom = /obj/machinery/station_map
-	mode = AREA_SPAWN_MODE_MOUNT_WALL
-	amount_to_spawn = 2
+HOLOMAP_SPAWN(arrivals, /area/station/hallway/primary/fore, 2)
+HOLOMAP_SPAWN(medbay, /area/station/medical/medbay/lobby, 1)
+HOLOMAP_SPAWN(medbay, /area/station/medical/medbay/lobby, 1)
 
-/datum/area_spawn/holomap_atmos
-	target_areas = list(/area/station/engineering/atmos)
-	desired_atom = /obj/machinery/station_map
-	mode = AREA_SPAWN_MODE_MOUNT_WALL
+HOLOMAP_SPAWN_ENGI(engineering, /area/station/engineering/main, 2)
+HOLOMAP_SPAWN_ENGI(atmos, /area/station/engineering/atmos, 1)
+HOLOMAP_SPAWN_ENGI(ai, /area/station/ai_monitored/turret_protected/ai, 1)
+HOLOMAP_SPAWN_ENGI(bridge, /area/station/command/bridge, 1)
 
-/datum/area_spawn/holomap_ai
-	target_areas = list(/area/station/ai_monitored/turret_protected/ai)
-	desired_atom = /obj/machinery/station_map
-	mode = AREA_SPAWN_MODE_MOUNT_WALL
-
-/datum/area_spawn/holomap_bridge
-	target_areas = list(/area/station/command/bridge)
-	desired_atom = /obj/machinery/station_map
-	mode = AREA_SPAWN_MODE_MOUNT_WALL
+#undef HOLOMAP_SPAWN
