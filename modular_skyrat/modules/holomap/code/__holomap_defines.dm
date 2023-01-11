@@ -83,5 +83,7 @@ GLOBAL_LIST_EMPTY(holomap_markers)
 GLOBAL_LIST_EMPTY(mapping_units)
 GLOBAL_LIST_EMPTY(mapping_beacons)
 
+GLOBAL_LIST_EMPTY(station_fire_alarms)
+
 #define HOLOMAP_CENTER_X round((HOLOMAP_ICON_SIZE / 2) - (world.maxx / 2))
 #define HOLOMAP_CENTER_Y round((HOLOMAP_ICON_SIZE / 2) - (world.maxy / 2))

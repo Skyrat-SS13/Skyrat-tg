@@ -4,7 +4,7 @@
 //
 SUBSYSTEM_DEF(holomaps)
 	name = "Holomaps"
-	init_order = -2
+	init_order = 31
 	flags = SS_NO_FIRE
 
 	var/static/list/valid_map_indexes = list()
