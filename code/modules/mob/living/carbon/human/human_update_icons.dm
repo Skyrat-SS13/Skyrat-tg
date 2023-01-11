@@ -141,13 +141,15 @@ There are several things that need to be remembered:
 	update_mutant_bodyparts()
 
 /mob/living/carbon/human/update_worn_id()
-	remove_overlay(ID_LAYER)
+	//remove_overlay(ID_CARD_LAYER) //SKYRAT EDIT REMOVAL - PDA-B_GONE
 
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_ID) + 1]
 		inv.update_icon()
 
-	var/mutable_appearance/id_overlay = overlays_standing[ID_LAYER]
+	//var/mutable_appearance/id_overlay = overlays_standing[ID_LAYER] //SKRAY EDIT REMOVAL - PDA B-GONE
+//SKYRAT EDIT REMOVAL BEGIN - PDA-B-GONE
+/*
 
 	if(wear_id)
 		var/obj/item/worn_item = wear_id
@@ -167,6 +169,9 @@ There are several things that need to be remembered:
 		overlays_standing[ID_LAYER] = id_overlay
 
 	apply_overlay(ID_LAYER)
+
+*/
+//SKYRAT EDIT REMOVAL END - PDA-B-GONE
 
 /mob/living/carbon/human/update_worn_gloves()
 	remove_overlay(GLOVES_LAYER)
