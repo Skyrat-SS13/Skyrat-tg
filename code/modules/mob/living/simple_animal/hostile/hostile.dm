@@ -668,5 +668,7 @@
 
 /mob/living/simple_animal/hostile/befriend(mob/living/new_friend)
 	. = ..()
+	if (!.)
+		return
 	friends += new_friend
 	faction = new_friend.faction.Copy()

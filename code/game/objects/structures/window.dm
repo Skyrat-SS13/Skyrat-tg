@@ -40,6 +40,7 @@
 	acid = 100
 
 /obj/structure/window/Initialize(mapload, direct)
+	AddElement(/datum/element/blocks_explosives)
 	. = ..()
 	if(direct)
 		setDir(direct)
@@ -55,9 +56,9 @@
 		setDir()
 		AddElement(/datum/element/can_barricade)
 
-	//windows only block while reinforced and fulltile, so we'll use the proc
-	real_explosion_block = explosion_block
-	explosion_block = EXPLOSION_BLOCK_PROC
+	//windows only block while reinforced and fulltile
+	if(!reinf || !fulltile)
+		set_explosion_block(0)
 
 	flags_1 |= ALLOW_DARK_PAINTS_1
 	RegisterSignal(src, COMSIG_OBJ_PAINTED, PROC_REF(on_painted))
@@ -183,7 +184,7 @@
 /obj/structure/window/attack_generic(mob/user, damage_amount = 0, damage_type = BRUTE, damage_flag = 0, sound_effect = 1) //used by attack_alien, attack_animal, and attack_slime
 	if(!can_be_reached(user))
 		return
-	..()
+	return ..()
 
 /obj/structure/window/tool_act(mob/living/user, obj/item/tool, tool_type, is_right_clicking)
 	if(!can_be_reached(user))
@@ -423,9 +424,6 @@
 		return FALSE
 
 	return TRUE
-
-/obj/structure/window/GetExplosionBlock()
-	return reinf && fulltile ? real_explosion_block : 0
 
 /obj/structure/window/spawner/east
 	dir = EAST

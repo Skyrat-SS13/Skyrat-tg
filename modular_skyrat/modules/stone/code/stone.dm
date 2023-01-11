@@ -85,7 +85,7 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	icon_state = "wall-0"
 	base_icon_state = "wall"
 	sheet_type = /obj/item/stack/sheet/mineral/stone
-	explosion_block = 2 // Rock and stone to the bone, or at least a bit longer than walls made of metal sheets!
+	explosive_resistance = 2 // Rock and stone to the bone, or at least a bit longer than walls made of metal sheets!
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = SMOOTH_GROUP_STONE_WALLS + SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS
 	canSmoothWith = SMOOTH_GROUP_STONE_WALLS
