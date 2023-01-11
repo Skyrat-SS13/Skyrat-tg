@@ -132,7 +132,6 @@
 /obj/structure/closet/secure_closet/security/cargo/PopulateContents()
 	new /obj/item/storage/bag/garment/customs_agent(src)
 	new /obj/item/restraints/handcuffs/cable/orange(src)
-	new /obj/item/melee/baton/security/loaded/departmental/cargo(src)
 	new /obj/item/assembly/flash/handheld(src)
 
 /obj/structure/closet/secure_closet/security/engine
@@ -144,7 +143,6 @@
 /obj/structure/closet/secure_closet/security/engine/PopulateContents()
 	new /obj/item/restraints/handcuffs/cable/yellow(src)
 	new /obj/item/storage/bag/garment/engineering_guard(src)
-	new /obj/item/melee/baton/security/loaded/departmental/engineering(src)
 	new /obj/item/assembly/flash/handheld(src)
 
 /obj/structure/closet/secure_closet/security/science
@@ -156,7 +154,6 @@
 /obj/structure/closet/secure_closet/security/science/PopulateContents()
 	new /obj/item/restraints/handcuffs/cable/pink(src)
 	new /obj/item/storage/bag/garment/science_guard(src)
-	new /obj/item/melee/baton/security/loaded/departmental/science(src)
 	new /obj/item/assembly/flash/handheld(src)
 
 /obj/structure/closet/secure_closet/security/med
@@ -168,7 +165,6 @@
 /obj/structure/closet/secure_closet/security/med/PopulateContents()
 	new /obj/item/restraints/handcuffs/cable/blue(src)
 	new /obj/item/storage/bag/garment/orderly(src)
-	new /obj/item/melee/baton/security/loaded/departmental/medical(src)
 	new /obj/item/assembly/flash/handheld(src)
 // SKYRAT EDIT CHANGE END -- GOOFSEC DEP GUARDS
 
