@@ -153,6 +153,7 @@
 	desc = "A set of prayer beads used by many of the more traditional religions in space"
 	icon = 'modular_skyrat/modules/chaplain/icons/holy_weapons.dmi'
 	icon_state = "rosary"
+	worn_icon_state = "nullrod"
 	force = 4
 	throwforce = 0
 	attack_verb_simple = list("whipped", "repented", "lashed", "flagellated")
@@ -213,3 +214,4 @@
 	desc = "Made of clear crystal, the blade refracts the light slightly. Purity, so close yet unattainable in this form."
 	icon_state = "void_blade"
 	inhand_icon_state = "void_blade"
+	worn_icon_state = "dark_blade"
