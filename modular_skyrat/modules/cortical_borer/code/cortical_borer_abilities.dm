@@ -367,7 +367,7 @@
 	var/obj/item/organ/internal/brain/victim_brain = cortical_owner.human_host.getorganslot(ORGAN_SLOT_BRAIN)
 	if(victim_brain)
 		cortical_owner.human_host.adjustOrganLoss(ORGAN_SLOT_BRAIN, 10 * cortical_owner.host_harm_multiplier)
-	cortical_owner.human_host.adjust_blurriness(3 * cortical_owner.host_harm_multiplier) //about 12 seconds' worth by default
+	cortical_owner.human_host.adjust_eye_blur(6 SECONDS * cortical_owner.host_harm_multiplier) //about 12 seconds' worth by default
 	to_chat(cortical_owner, span_notice("You have grown!"))
 	to_chat(cortical_owner.human_host, span_warning("You feel a sharp pressure in your head!"))
 	StartCooldown()

@@ -88,7 +88,7 @@
 
 	feature_spawn_list = null
 
-	mob_spawn_list = list(/mob/living/simple_animal/hostile/carp = 1)
+	mob_spawn_list = list(/mob/living/basic/carp = 1)
 	mob_spawn_chance = 1
 
 	flora_spawn_chance = 4

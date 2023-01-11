@@ -115,7 +115,6 @@
 	name = "\improper Cafe ID"
 	desc = "An ID straight from God."
 	icon_state = "card_centcom"
-	worn_icon_state = "card_centcom"
 	assigned_icon_state = "assigned_centcom"
 	registered_age = null
 	trim = /datum/id_trim/admin
