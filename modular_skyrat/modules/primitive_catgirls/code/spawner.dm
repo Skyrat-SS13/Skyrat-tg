@@ -99,7 +99,6 @@
 	holder.grant_language(/datum/language/primitive_catgirl, TRUE, TRUE, LANGUAGE_ALL)
 	holder.selected_language = /datum/language/primitive_catgirl
 
-
 /datum/antagonist/primitive_catgirl/create_team(datum/team/team)
 	if(team)
 		feline_team = team
