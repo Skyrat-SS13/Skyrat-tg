@@ -149,7 +149,8 @@
 /obj/item/clothing/glasses/clockwork/wraith_spectacles
 	name = "wraith spectacles"
 	desc = "Mystical glasses that glow with a bright energy. Some say they can see things that shouldn't be seen."
-	icon_state = "wraith_specs"
+	icon_state = "wraith_specs_0"
+	base_icon_state = "wraith_specs"
 	invis_view = SEE_INVISIBLE_OBSERVER
 	invis_override = null
 	flash_protect = FLASH_PROTECTION_SENSITIVE
@@ -179,7 +180,7 @@
 
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[!enabled]"
+	icon_state = "[base_icon_state]_[!enabled]"
 	worn_icon_state = "[initial(icon_state)]_[!enabled]"
 
 
@@ -269,7 +270,8 @@
 /obj/item/clothing/glasses/clockwork/judicial_visor
 	name = "judicial visor"
 	desc = "A purple visor gilt with Ratvarian runes, allowing a user to see, unfettered by others. The cogs on the sides look pretty tight..."
-	icon_state = "judicial_visor"
+	icon_state = "judicial_visor_0"
+	base_icon_state = "judicial_visor"
 	flash_protect = FLASH_PROTECTION_WELDER
 	strip_delay = 10 SECONDS
 	glass_colour_type = /datum/client_colour/glass_colour/purple
@@ -295,8 +297,8 @@
 
 /obj/item/clothing/glasses/clockwork/judicial_visor/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[enabled]"
-	worn_icon_state = "[initial(icon_state)]_[enabled]"
+	icon_state = "[base_icon_state]_[enabled]"
+	worn_icon_state = "[base_icon_state]_[enabled]"
 
 
 /obj/item/clothing/glasses/clockwork/judicial_visor/attack_self(mob/user, modifiers)

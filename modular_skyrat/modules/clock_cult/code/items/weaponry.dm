@@ -3,7 +3,7 @@
 #define BRASS_RIFLE_REDUCED_DELAY 0.2 SECONDS
 
 /obj/item/clockwork/weapon
-	name = "Clockwork Weapon"
+	name = "clockwork weapon"
 	desc = "Something"
 	icon = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_weapons.dmi'
 	lefthand_file = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_lefthand.dmi'
@@ -147,7 +147,7 @@
 	icon = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_weapons.dmi'
 	lefthand_file = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_righthand.dmi'
-	icon_state = "bow_clockwork"
+	icon_state = "bow_clockwork_0_0"
 	inhand_icon_state = "clockwork_bow"
 	base_icon_state = "bow_clockwork"
 	force = 10
@@ -281,7 +281,7 @@
 	name = "stripper clip (7.62mm brass)"
 	desc = "A stripper clip that's just as brass as the rounds it holds."
 	icon = 'modular_skyrat/modules/clock_cult/icons/weapons/ammo.dmi'
-	icon_state = "762"
+	icon_state = "762_brass"
 	ammo_type = /obj/item/ammo_casing/a762/lionhunter/clock
 	max_ammo = 3
 	multiple_sprites = AMMO_BOX_PER_BULLET

@@ -84,7 +84,7 @@
 
 /obj/effect/temp_visual/ratvar/belligerent
 	layer = ABOVE_MOB_LAYER
-	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_effects.dmi'
+	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_objects.dmi'
 	icon_state = "belligerent_eye"
 	pixel_y = 20
 	duration = 2 SECONDS
@@ -126,17 +126,8 @@
 	pixel_y = rand(-10, 10)
 	animate(src, alpha = 0, time = duration, easing = EASE_OUT)
 
-
-/obj/effect/temp_visual/ratvar/geis_binding
-	icon_state = "geisbinding"
-
-
-/obj/effect/temp_visual/ratvar/geis_binding/top
-	icon_state = "geisbinding_top"
-
-
 /obj/effect/temp_visual/ratvar/component
-	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_effects.dmi'
+	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_objects.dmi'
 	icon_state = "belligerent_eye"
 	layer = ABOVE_MOB_LAYER
 	duration = 1 SECONDS
