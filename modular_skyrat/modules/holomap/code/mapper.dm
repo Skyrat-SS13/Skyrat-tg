@@ -443,3 +443,29 @@
 #undef HOLOMAP_YOU
 #undef HOLOMAP_OTHER
 #undef HOLOMAP_DEAD
+
+
+/datum/holomap_marker
+	var/x
+	var/y
+	var/z
+	var/offset_x = -8
+	var/offset_y = -8
+	var/filter
+	var/id // used for icon_state of the marker on maps
+	var/icon = 'icons/holomap_markers.dmi'
+	var/color //used by path rune markers
+
+/obj/effect/landmark/holomarker
+	var/filter = HOLOMAP_FILTER_STATIONMAP
+	var/id = "generic"
+
+/obj/effect/landmark/holomarker/Initialize()
+	. = ..()
+	var/datum/holomap_marker/holomarker = new()
+	holomarker.id = id
+	holomarker.filter = filter
+	holomarker.x = src.x
+	holomarker.y = src.y
+	holomarker.z = src.z
+	GLOB.holomap_markers["[id]_\ref[src]"] = holomarker

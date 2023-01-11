@@ -75,6 +75,7 @@
 		// Check sleeping after each row to avoid *completely* destroying the server
 		CHECK_TICK
 
+	valid_map_indexes += z_level
 	holomaps["[z_level]"] = canvas
 	holomap_z_transitions["[z_level]"] = z_transition_positions
 	holomap_position_to_name["[z_level]"] = position_to_name

@@ -30,7 +30,7 @@
 	var/list/modifiers = params2list(params)
 	var/icon_x = text2num(LAZYACCESS(modifiers, ICON_X))
 	var/icon_y = text2num(LAZYACCESS(modifiers, ICON_Y))
-	var/list/position_to_name = SSholomaps.holomap_position_to_name["[used_station_map.original_zLevel]"]
+	var/list/position_to_name = SSholomaps.holomap_position_to_name["[used_station_map.current_z_level]"]
 
 	if(!position_to_name || !usr.hud_used)
 		return

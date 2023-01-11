@@ -7,6 +7,7 @@ SUBSYSTEM_DEF(holomaps)
 	init_order = -2
 	flags = SS_NO_FIRE
 
+	var/static/list/valid_map_indexes = list()
 	var/static/list/holomaps = list()
 	var/static/list/extra_holomaps = list()
 	var/static/list/station_holomaps = list()

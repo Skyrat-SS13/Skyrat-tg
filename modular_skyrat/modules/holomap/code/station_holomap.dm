@@ -11,21 +11,20 @@
 	idle_power_usage = 10
 	active_power_usage = 500
 	circuit = /obj/item/circuitboard/machine/station_map
-	vis_flags = VIS_HIDE // They have an emissive that looks bad in openspace due to their wall-mounted nature
-	light_color = "#64C864"
+	light_color = HOLOMAP_HOLOFIER
 
 	var/mob/watching_mob
 	var/image/small_station_map
 	var/image/floor_markings
 	var/image/panel
 
-	var/original_zLevel = 1	// zLevel on which the station map was initialized.
-	var/bogus = TRUE		// set to FALSE when you initialize the station map on a zLevel that has its own icon formatted for use by station holomaps.
+	var/current_z_level // zLevel on which the station map was initialized.
+	var/bogus = TRUE // set to FALSE when you initialize the station map on a zLevel that has its own icon formatted for use by station holomaps.
 	var/datum/station_holomap/holomap_datum
 
 /obj/machinery/station_map/Initialize()
 	. = ..()
-	original_zLevel = loc.z
+	current_z_level = loc.z
 	SSholomaps.station_holomaps += src
 
 /obj/machinery/station_map/LateInitialize()
@@ -43,15 +42,15 @@
 	holomap_datum = new()
 	bogus = FALSE
 	var/turf/current_turf = get_turf(src)
-	original_zLevel = current_turf.z
-	if(!("[HOLOMAP_EXTRA_STATIONMAP]_[original_zLevel]" in SSholomaps.extra_holomaps))
+	current_z_level = current_turf.z
+	if(!("[HOLOMAP_EXTRA_STATIONMAP]_[current_z_level]" in SSholomaps.extra_holomaps))
 		bogus = TRUE
 		holomap_datum.initialize_holomap_bogus()
 		update_icon()
 		return
 
 	var/list/extra_overlays = list()
-	for(var/z_transition in SSholomaps.holomap_z_transitions["[original_zLevel]"])
+	for(var/z_transition in SSholomaps.holomap_z_transitions["[current_z_level]"])
 		world.log << "Loading map transition at [z_transition]"
 		var/list/position = splittext(z_transition, ":")
 		var/image/transition_image = image('icons/holomap_markers.dmi', "z_marker")
@@ -61,7 +60,7 @@
 
 	holomap_datum.initialize_holomap(current_turf, reinit_base_map = TRUE, extra_overlays = extra_overlays)
 
-	small_station_map = image(SSholomaps.extra_holomaps["[HOLOMAP_EXTRA_STATIONMAPSMALL]_[original_zLevel]"], dir = dir)
+	small_station_map = image(SSholomaps.extra_holomaps["[HOLOMAP_EXTRA_STATIONMAPSMALL]_[current_z_level]"], dir = dir)
 
 	floor_markings = image('icons/stationmap.dmi', "decal_station_map")
 	floor_markings.dir = src.dir
@@ -93,6 +92,7 @@
 	playsound(src, 'modular_skyrat/modules/holomap/sound/holomap_open.ogg', 125)
 	animate(holomap_datum.base_map, alpha = 255, time = 5, easing = LINEAR_EASING)
 	icon_state = "station_map_active"
+	set_light(2, 3)
 
 	user.hud_used.holomap.used_station_map = src
 	user.hud_used.holomap.mouse_opacity = MOUSE_OPACITY_ICON
@@ -146,7 +146,7 @@
 	if(machine_stat & NOPOWER)
 		set_light(0)
 	else
-		set_light(1, 1)
+		set_light(1, 2)
 
 /obj/machinery/station_map/proc/set_broken()
 	machine_stat |= BROKEN
@@ -168,7 +168,7 @@
 		if(bogus)
 			holomap_datum.initialize_holomap_bogus()
 		else
-			small_station_map = image(SSholomaps.extra_holomaps["[HOLOMAP_EXTRA_STATIONMAPSMALL]_[original_zLevel]"], dir = src.dir)
+			small_station_map = image(SSholomaps.extra_holomaps["[HOLOMAP_EXTRA_STATIONMAPSMALL]_[current_z_level]"], dir = src.dir)
 			add_overlay(small_station_map)
 
 	// Put the little "map" overlay down where it looks nice
@@ -183,12 +183,44 @@
 	else
 		cut_overlay("station_map_panel")
 
-/obj/machinery/station_map/tool_act(item, mob/user)
-	if(default_deconstruction_screwdriver(user, "station_map_opened", "station_map_off", item))
-		return
-	if(default_deconstruction_crowbar(item))
-		return
-	return ..()
+/obj/machinery/station_map/screwdriver_act(mob/living/user, obj/item/tool)
+	. = default_deconstruction_screwdriver(user, "station_map_opened", "station_map_off", tool)
+
+	if(!.) // Prevent re-running setup holomap for no reason.
+		return FALSE
+
+	if(!panel_open)
+		setup_holomap()
+
+	return .
+
+/obj/machinery/station_map/screwdriver_act_secondary(mob/living/user, obj/item/tool)
+	if(!panel_open)
+		to_chat(user, span_warning("You need to open the panel to change the [src]'[p_s()] settings!"))
+		return FALSE
+
+	if(SSholomaps.valid_map_indexes.len > current_z_level)
+		current_z_level = 1
+	else
+		current_z_level += 1
+
+	to_chat(span_info("You set the [src]'[p_s()] database index to [current_z_level]."))
+	return TRUE
+
+/obj/machinery/station_map/crowbar_act(mob/living/user, obj/item/tool)
+	return default_deconstruction_crowbar(tool)
+
+/obj/machinery/station_map/wrench_act(mob/living/user, obj/item/tool)
+	rotate_map(-90)
+	return TRUE
+
+/obj/machinery/station_map/wrench_act_secondary(mob/living/user, obj/item/tool)
+	rotate_map(90)
+	return TRUE
+
+/// Rotates the map machine by the given amount of degrees. See byond's builtin `turn` for more info.
+/obj/machinery/station_map/proc/rotate_map(direction)
+	dir = turn(dir, direction)
 
 // These are fragile!
 /obj/machinery/station_map/ex_act(severity)
@@ -211,33 +243,10 @@
 /obj/machinery/station_map/emp_act(severity)
 	set_broken()
 
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/station_map, 32)
+
 /obj/item/circuitboard/machine/station_map
 	name = "Station Map"
 	specific_parts = TRUE // Fuck you, triphasic scanner and an ultra laser to rebuild these.
 	build_path = /obj/machinery/station_map
-	req_components = list(/obj/item/stock_parts/scanning_module/triphasic, /obj/item/stock_parts/micro_laser/ultra)
-
-/datum/holomap_marker
-	var/x
-	var/y
-	var/z
-	var/offset_x = -8
-	var/offset_y = -8
-	var/filter
-	var/id // used for icon_state of the marker on maps
-	var/icon = 'icons/holomap_markers.dmi'
-	var/color //used by path rune markers
-
-/obj/effect/landmark/holomarker
-	var/filter = HOLOMAP_FILTER_STATIONMAP
-	var/id = "generic"
-
-/obj/effect/landmark/holomarker/Initialize()
-	. = ..()
-	var/datum/holomap_marker/holomarker = new()
-	holomarker.id = id
-	holomarker.filter = filter
-	holomarker.x = src.x
-	holomarker.y = src.y
-	holomarker.z = src.z
-	GLOB.holomap_markers["[id]_\ref[src]"] = holomarker
+	req_components = list(/obj/item/stock_parts/scanning_module/triphasic = 3, /obj/item/stock_parts/micro_laser/ultra = 4)
