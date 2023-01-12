@@ -72,15 +72,7 @@
 		/datum/language/shadowtongue,
 		/datum/language/terrum,
 		/datum/language/nekomimetic,
-<<<<<<< HEAD
-	))
-
-/obj/item/organ/internal/tongue/Initialize(mapload)
-	. = ..()
-	languages_possible = languages_possible_base
-=======
 	)
->>>>>>> 779fdb98166 (Refactors how tongue languages are set (#72080))
 
 /obj/item/organ/internal/tongue/proc/handle_speech(datum/source, list/speech_args)
 	SIGNAL_HANDLER
