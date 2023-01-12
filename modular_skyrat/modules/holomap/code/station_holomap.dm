@@ -53,7 +53,7 @@
 		update_icon()
 		return
 
-	holomap_datum.initialize_holomap(current_turf.x, current_turf.y, current_turf.z, reinit_base_map = TRUE, extra_overlays = handle_extra_overlays())
+	holomap_datum.initialize_holomap(current_turf.x, current_turf.y, current_z_level, reinit_base_map = TRUE, extra_overlays = handle_extra_overlays())
 
 	small_station_map = image(SSholomaps.extra_holomaps["[HOLOMAP_EXTRA_STATIONMAPSMALL]_[current_z_level]"], dir = dir)
 
