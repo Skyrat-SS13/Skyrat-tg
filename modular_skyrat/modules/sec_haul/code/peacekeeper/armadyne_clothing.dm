@@ -187,7 +187,6 @@
 	name = "\improper Armadyne ID"
 	desc = "An Armadyne ID card."
 	icon_state = "card_centcom"
-	worn_icon_state = "card_centcom"
 	assigned_icon_state = "assigned_centcom"
 	registered_age = null
 	trim = /datum/id_trim/centcom/armadyne

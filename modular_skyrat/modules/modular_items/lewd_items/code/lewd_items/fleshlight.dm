@@ -1,7 +1,8 @@
 /obj/item/clothing/sextoy/fleshlight
 	name = "fleshlight"
 	desc = "What a strange flashlight."
-	icon_state = "fleshlight"
+	icon_state = "fleshlight_pink"
+	base_icon_state = "fleshlight"
 	inhand_icon_state = "fleshlight_pink"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
@@ -19,11 +20,11 @@
 /// Generates a list of toy colors (or designs) for use in the radial color choice menu
 /obj/item/clothing/sextoy/fleshlight/proc/populate_fleshlight_designs()
 	fleshlight_designs = list(
-		"green" = image(icon = src.icon, icon_state = "[initial(icon_state)]_green"),
-		"pink" = image(icon = src.icon, icon_state = "[initial(icon_state)]_pink"),
-		"teal" = image(icon = src.icon, icon_state = "[initial(icon_state)]_teal"),
-		"red" = image(icon = src.icon, icon_state = "[initial(icon_state)]_red"),
-		"yellow" = image(icon = src.icon, icon_state = "[initial(icon_state)]_yellow"),
+		"green" = image(icon = src.icon, icon_state = "[base_icon_state]_green"),
+		"pink" = image(icon = src.icon, icon_state = "[base_icon_state]_pink"),
+		"teal" = image(icon = src.icon, icon_state = "[base_icon_state]_teal"),
+		"red" = image(icon = src.icon, icon_state = "[base_icon_state]_red"),
+		"yellow" = image(icon = src.icon, icon_state = "[base_icon_state]_yellow"),
 	)
 
 /obj/item/clothing/sextoy/fleshlight/Initialize(mapload)
@@ -35,8 +36,8 @@
 
 /obj/item/clothing/sextoy/fleshlight/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]"
-	inhand_icon_state = "[initial(icon_state)]_[current_color]"
+	icon_state = "[base_icon_state]_[current_color]"
+	inhand_icon_state = "[base_icon_state]_[current_color]"
 
 /obj/item/clothing/sextoy/fleshlight/AltClick(mob/user)
 	if(color_changed)

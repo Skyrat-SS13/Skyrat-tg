@@ -208,8 +208,7 @@
 	current_user = null
 
 /obj/item/clothing/suit/space/hev_suit/Destroy()
-	if(internal_radio)
-		qdel(internal_radio)
+	QDEL_NULL(internal_radio)
 	if(current_internals_tank)
 		REMOVE_TRAIT(current_internals_tank, TRAIT_NODROP, "hev_trait")
 		current_internals_tank = null
