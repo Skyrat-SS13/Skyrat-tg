@@ -503,6 +503,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
 	icon_state = "darksheath"
+	worn_icon_state = "darksheath"
 
 /obj/item/storage/belt/sabre/darksabre/Initialize(mapload)
 	. = ..()
