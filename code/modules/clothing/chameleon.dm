@@ -404,6 +404,10 @@
 	chameleon_action.initialize_disguises()
 	add_item_action(chameleon_action)
 
+/obj/item/clothing/under/chameleon/Destroy()
+	QDEL_NULL(chameleon_action)
+	return ..()
+
 /obj/item/clothing/under/chameleon/emp_act(severity)
 	. = ..()
 	if(. & EMP_PROTECT_SELF)
@@ -445,6 +449,10 @@
 	chameleon_action.initialize_disguises()
 	add_item_action(chameleon_action)
 
+/obj/item/clothing/suit/chameleon/Destroy()
+	QDEL_NULL(chameleon_action)
+	return ..()
+
 /obj/item/clothing/suit/chameleon/emp_act(severity)
 	. = ..()
 	if(. & EMP_PROTECT_SELF)
@@ -481,6 +489,10 @@
 	chameleon_action.chameleon_blacklist = typecacheof(/obj/item/clothing/glasses/changeling, only_root_path = TRUE)
 	chameleon_action.initialize_disguises()
 	add_item_action(chameleon_action)
+
+/obj/item/clothing/glasses/chameleon/Destroy()
+	QDEL_NULL(chameleon_action)
+	return ..()
 
 /obj/item/clothing/glasses/chameleon/emp_act(severity)
 	. = ..()
@@ -521,6 +533,10 @@
 	chameleon_action.initialize_disguises()
 	add_item_action(chameleon_action)
 
+/obj/item/clothing/gloves/chameleon/Destroy()
+	QDEL_NULL(chameleon_action)
+	return ..()
+
 /obj/item/clothing/gloves/chameleon/emp_act(severity)
 	. = ..()
 	if(. & EMP_PROTECT_SELF)
@@ -557,6 +573,10 @@
 	chameleon_action.chameleon_blacklist = typecacheof(/obj/item/clothing/head/changeling, only_root_path = TRUE)
 	chameleon_action.initialize_disguises()
 	add_item_action(chameleon_action)
+
+/obj/item/clothing/head/chameleon/Destroy()
+	QDEL_NULL(chameleon_action)
+	return ..()
 
 /obj/item/clothing/head/chameleon/emp_act(severity)
 	. = ..()
@@ -624,6 +644,10 @@
 	chameleon_action.chameleon_blacklist = typecacheof(/obj/item/clothing/mask/changeling, only_root_path = TRUE)
 	chameleon_action.initialize_disguises()
 	add_item_action(chameleon_action)
+
+/obj/item/clothing/mask/chameleon/Destroy()
+	QDEL_NULL(chameleon_action)
+	return ..()
 
 /obj/item/clothing/mask/chameleon/emp_act(severity)
 	. = ..()
@@ -698,6 +722,10 @@
 	chameleon_action.initialize_disguises()
 	add_item_action(chameleon_action)
 
+/obj/item/clothing/shoes/chameleon/Destroy()
+	QDEL_NULL(chameleon_action)
+	return ..()
+
 /obj/item/clothing/shoes/chameleon/emp_act(severity)
 	. = ..()
 	if(. & EMP_PROTECT_SELF)
@@ -746,6 +774,10 @@
 	chameleon_action.initialize_disguises()
 	add_item_action(chameleon_action)
 
+/obj/item/storage/backpack/chameleon/Destroy()
+	QDEL_NULL(chameleon_action)
+	return ..()
+
 /obj/item/storage/backpack/chameleon/emp_act(severity)
 	. = ..()
 	if(. & EMP_PROTECT_SELF)
@@ -783,6 +815,10 @@
 
 	atom_storage.silent = TRUE
 
+/obj/item/storage/belt/chameleon/Destroy()
+	QDEL_NULL(chameleon_action)
+	return ..()
+
 /obj/item/storage/belt/chameleon/emp_act(severity)
 	. = ..()
 	if(. & EMP_PROTECT_SELF)
@@ -816,6 +852,10 @@
 	chameleon_action.initialize_disguises()
 	add_item_action(chameleon_action)
 
+/obj/item/radio/headset/chameleon/Destroy()
+	QDEL_NULL(chameleon_action)
+	return ..()
+
 /obj/item/radio/headset/chameleon/emp_act(severity)
 	. = ..()
 	if(. & EMP_PROTECT_SELF)
@@ -847,6 +887,10 @@
 	chameleon_action.initialize_disguises()
 	add_item_action(chameleon_action)
 
+/obj/item/modular_computer/pda/chameleon/Destroy()
+	QDEL_NULL(chameleon_action)
+	return ..()
+
 /obj/item/modular_computer/pda/chameleon/emp_act(severity)
 	. = ..()
 	if(. & EMP_PROTECT_SELF)
@@ -875,6 +919,10 @@
 	chameleon_action.chameleon_name = "Stamp"
 	chameleon_action.initialize_disguises()
 	add_item_action(chameleon_action)
+
+/obj/item/stamp/chameleon/Destroy()
+	QDEL_NULL(chameleon_action)
+	return ..()
 
 /obj/item/stamp/chameleon/broken/Initialize(mapload)
 	. = ..()
@@ -952,8 +1000,9 @@
 	set_chameleon_disguise(/obj/item/gun/energy/laser)
 
 /obj/item/gun/energy/laser/chameleon/Destroy()
-	. = ..()
 	chameleon_projectile_vars.Cut()
+	QDEL_NULL(chameleon_action)
+	return ..()
 
 /obj/item/gun/energy/laser/chameleon/emp_act(severity)
 	return
