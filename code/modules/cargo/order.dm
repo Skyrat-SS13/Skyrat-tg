@@ -50,13 +50,10 @@
 	var/datum/supply_pack/pack
 	var/datum/bank_account/paying_account
 	var/obj/item/coupon/applied_coupon
-<<<<<<< HEAD
-=======
 	///Boolean on whether the manifest can fail or not.
 	var/manifest_can_fail = TRUE
 	///Boolean on whether the manifest can be cancelled through cargo consoles.
 	var/can_be_cancelled = TRUE
->>>>>>> 5367560fb58 (Minor improvements to mining order console (#72239))
 
 /datum/supply_order/New(
 	datum/supply_pack/pack,
@@ -67,14 +64,10 @@
 	paying_account,
 	department_destination,
 	coupon,
-<<<<<<< HEAD
-	charge_on_purchase,
-=======
 	charge_on_purchase = TRUE,
 	manifest_can_fail = TRUE,
 	cost_type = "cr",
 	can_be_cancelled = TRUE,
->>>>>>> 5367560fb58 (Minor improvements to mining order console (#72239))
 )
 	id = SSshuttle.order_number++
 	src.cost_type = cost_type
@@ -87,11 +80,8 @@
 	src.department_destination = department_destination
 	src.applied_coupon = coupon
 	src.charge_on_purchase = charge_on_purchase
-<<<<<<< HEAD
-=======
 	src.manifest_can_fail = manifest_can_fail
 	src.can_be_cancelled = can_be_cancelled
->>>>>>> 5367560fb58 (Minor improvements to mining order console (#72239))
 
 /datum/supply_order/proc/generateRequisition(turf/T)
 	var/obj/item/paper/requisition_paper = new(T)

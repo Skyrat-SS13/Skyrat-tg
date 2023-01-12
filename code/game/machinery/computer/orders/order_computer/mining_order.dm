@@ -45,12 +45,9 @@
 		department_destination = null,
 		coupon = null,
 		charge_on_purchase = FALSE,
-<<<<<<< HEAD
-=======
 		manifest_can_fail = FALSE,
 		cost_type = "mp",
 		can_be_cancelled = FALSE,
->>>>>>> 5367560fb58 (Minor improvements to mining order console (#72239))
 	)
 	if(ltsrbt_delivered)
 		var/obj/machinery/mining_ltsrbt/ltsrbt
