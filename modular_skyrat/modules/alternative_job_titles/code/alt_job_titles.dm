@@ -40,7 +40,7 @@
 	alt_titles = list("Captain", "Station Commander", "Commanding Officer", "Site Manager")
 
 /datum/job/cargo_technician
-	alt_titles = list("Cargo Technician", "Deck Worker", "Mailman")
+	alt_titles = list("Warehouse Technician", "Deck Worker", "Mailman", "Union Associate")
 
 /datum/job/chaplain
 	alt_titles = list("Chaplain", "Priest", "Preacher", "Reverend", "Oracle", "Pontifex", "Magister", "High Priest", "Imam", "Rabbi", "Monk") //i would add OT III but honestly, thats way too specific
@@ -64,7 +64,7 @@
 	alt_titles = list("Curator", "Librarian", "Journalist", "Archivist")
 
 /datum/job/customs_agent
-	alt_titles = list("Customs Agent", "Customs Guard", "Supply Guard")
+	alt_titles = list("Customs Agent", "Asset Retention Specialist", "Supply Guard")
 
 /datum/job/cyborg
 	alt_titles = list("Cyborg", "Robot", "Android")
@@ -111,7 +111,7 @@
 	alt_titles = list("Psychologist", "Psychiatrist", "Therapist", "Counsellor")
 
 /datum/job/quartermaster
-	alt_titles = list("Quartermaster", "Deck Chief", "Supply Foreman", "Head of Supply", "Chief Requisition Officer", "Logistics Officer")
+	alt_titles = list("Union Quartermaster", "Deck Chief", "Supply Foreman", "Head of Supply", "Chief Requisition Officer", "Logistics Officer")
 
 /datum/job/research_director
 	alt_titles = list("Research Director", "Silicon Administrator", "Lead Researcher", "Biorobotics Director", "Research Supervisor", "Chief Science Officer")
@@ -122,20 +122,7 @@
 /datum/job/science_guard //See orderly
 
 /datum/job/scientist
-	alt_titles = list(
-		"Scientist",
-		"Circuitry Designer",
-		"Xenobiologist",
-		"Cytologist",
-		"Plasma Researcher",
-		"Anomalist",
-		"Lab Technician",
-		"Theoretical Physicist",
-		"Ordnance Technician",
-		"Xenoarchaeologist",
-		"Research Assistant",
-		"Graduate Student",
-	)
+	alt_titles = list("Scientist", "Circuitry Designer", "Xenobiologist", "Cytologist", "Plasma Researcher", "Anomalist", "Lab Technician", "Theoretical Physicist", "Ordnance Technician", "Xenoarchaeologist", "Research Assistant", "Graduate Student")
 
 /datum/job/security_medic
 	alt_titles = list("Security Medic", "Field Medic", "Security Corpsman", "Brig Physician", "Combat Medic")
@@ -144,7 +131,7 @@
 	alt_titles = list("Security Officer", "Security Operative", "Peacekeeper", "Security Cadet")
 
 /datum/job/shaft_miner
-	alt_titles = list("Shaft Miner", "Excavator", "Spelunker", "Drill Technician", "Prospector")
+	alt_titles = list("Union Miner", "Excavator", "Spelunker", "Drill Technician", "Prospector")
 
 /datum/job/station_engineer
 	alt_titles = list("Station Engineer", "Emergency Damage Control Technician", "Electrician", "Engine Technician", "EVA Technician", "Mechanic", "Apprentice Engineer", "Engineering Trainee")
