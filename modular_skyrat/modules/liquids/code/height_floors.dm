@@ -46,10 +46,10 @@
 	turf_height = -30
 
 /turf/open/floor/iron/pool/broken_states()
-	return list(base_icon_state)
+	return list("pool_tile")
 
 /turf/open/floor/iron/pool/burnt_states()
-	return list(base_icon_state)
+	return list("pool_tile")
 
 /turf/open/floor/iron/pool/rust_heretic_act()
 	return
