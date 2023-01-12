@@ -4,7 +4,7 @@
 /obj/structure/large_mortar
 	name = "large mortar"
 	desc = "A large bowl perfect for grinding or juicing a large number of things at once."
-	icon = 'modular_skyrat/modules/primitive_fun/icons/cooking_structures.dmi'
+	icon = 'modular_skyrat/modules/primitive_cooking_additions/icons/cooking_structures.dmi'
 	icon_state = "big_mortar"
 	density = TRUE
 	anchored = TRUE

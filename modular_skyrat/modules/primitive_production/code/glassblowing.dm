@@ -1,7 +1,7 @@
 #define DEFAULT_TIMED (4 SECONDS)
 
 /obj/item/glassblowing
-	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
+	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 
 /obj/item/glassblowing/glass_globe
 	name = "glass globe"
@@ -30,7 +30,7 @@
 /obj/item/reagent_containers/cup/bowl/blowing_glass
 	name = "glass bowl"
 	desc = "A glass bowl that is capable of carrying things."
-	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
+	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 	icon_state = "glass_bowl"
 	material_flags = MATERIAL_COLOR
 	custom_materials = list(/datum/material/glass = 1000)
@@ -38,7 +38,7 @@
 /obj/item/reagent_containers/cup/beaker/large/blowing_glass
 	name = "glass cup"
 	desc = "A glass cup that is capable of carrying liquids."
-	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
+	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 	icon_state = "glass_cup"
 	material_flags = MATERIAL_COLOR
 	custom_materials = list(/datum/material/glass = 1000)
@@ -46,7 +46,7 @@
 /obj/item/plate/blowing_glass
 	name = "glass plate"
 	desc = "A glass plate that is capable of carrying things."
-	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
+	icon = 'modular_skyrat/modules/primitive_production/icons/prim_fun.dmi'
 	icon_state = "glass_plate"
 	material_flags = MATERIAL_COLOR
 	custom_materials = list(/datum/material/glass = 1000)
