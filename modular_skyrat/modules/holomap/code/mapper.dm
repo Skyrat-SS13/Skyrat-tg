@@ -453,7 +453,7 @@
 	var/offset_y = -8
 	var/filter
 	var/id // used for icon_state of the marker on maps
-	var/icon = 'icons/holomap_markers.dmi'
+	var/icon = 'modular_skyrat/modules/holomap/icons/holomap_markers.dmi'
 	var/color //used by path rune markers
 
 /obj/effect/landmark/holomarker

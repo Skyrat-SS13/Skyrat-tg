@@ -10,8 +10,8 @@
 
 /datum/station_holomap/New()
 	. = ..()
-	cursor = image('icons/holomap_markers.dmi', "you")
-	legend = image('icons/64x64.dmi', "legend")
+	cursor = image('modular_skyrat/modules/holomap/icons/holomap_markers.dmi', "you")
+	legend = image('modular_skyrat/modules/holomap/icons/64x64.dmi', "legend")
 
 /datum/station_holomap/proc/initialize_holomap(map_x, map_y, map_z, var/mob/user = null, var/reinit_base_map = FALSE, extra_overlays = list())
 	src.map_x = map_x
@@ -48,9 +48,9 @@
 		base_map.add_overlay(map_layer)
 
 /datum/station_holomap/proc/initialize_holomap_bogus()
-	base_map = image('icons/480x480.dmi', "stationmap")
+	base_map = image('modular_skyrat/modules/holomap/icons/480x480.dmi', "stationmap")
 
-	var/image/legend = image('icons/64x64.dmi', "notfound")
+	var/image/legend = image('modular_skyrat/modules/holomap/icons/64x64.dmi', "notfound")
 	legend.pixel_x = 192
 	legend.pixel_y = 224
 

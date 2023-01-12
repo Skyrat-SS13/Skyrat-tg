@@ -2,7 +2,7 @@
 // Constants and standard colors for the holomap
 //
 
-#define HOLOMAP_ICON 'icons/480x480.dmi' // Icon file to start with when drawing holomaps (to get a 480x480 canvas).
+#define HOLOMAP_ICON 'modular_skyrat/modules/holomap/icons/480x480.dmi' // Icon file to start with when drawing holomaps (to get a 480x480 canvas).
 #define HOLOMAP_ICON_SIZE 480 // Pixel width & height of the holomap icon.  Used for auto-centering etc.
 #define ui_holomap "CENTER-7,CENTER-7" // Screen location of the holomap "hud"
 

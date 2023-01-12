@@ -4,7 +4,7 @@
 /obj/machinery/station_map
 	name = "\improper station holomap"
 	desc = "A virtual map of the surrounding station."
-	icon = 'icons/stationmap.dmi'
+	icon = 'modular_skyrat/modules/holomap/icons/stationmap.dmi'
 	icon_state = "station_map"
 	layer = ABOVE_WINDOW_LAYER
 	use_power = IDLE_POWER_USE
@@ -57,7 +57,7 @@
 
 	small_station_map = image(SSholomaps.extra_holomaps["[HOLOMAP_EXTRA_STATIONMAPSMALL]_[current_z_level]"], dir = dir)
 
-	floor_markings = image('icons/stationmap.dmi', "decal_station_map")
+	floor_markings = image('modular_skyrat/modules/holomap/icons/stationmap.dmi', "decal_station_map")
 	floor_markings.dir = src.dir
 
 	update_icon()
@@ -254,7 +254,7 @@
 	var/list/extra_overlays = list()
 	for(var/z_transition in SSholomaps.holomap_z_transitions["[current_z_level]"])
 		var/list/position = splittext(z_transition, ":")
-		var/image/transition_image = image('icons/holomap_markers.dmi', "z_marker")
+		var/image/transition_image = image('modular_skyrat/modules/holomap/icons/holomap_markers.dmi', "z_marker")
 		transition_image.pixel_x = text2num(position[1]) - 1
 		transition_image.pixel_y = text2num(position[2])
 		extra_overlays += transition_image
@@ -273,14 +273,14 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/station_map, 32)
 	if(!bogus)
 		for(var/obj/machinery/firealarm/alarm as anything in GLOB.station_fire_alarms["[current_z_level]"])
 			if(alarm?.z == current_z_level && alarm?.my_area?.active_alarms[ALARM_FIRE])
-				var/image/alarm_icon = image('icons/holomap_markers.dmi', "fire_marker")
+				var/image/alarm_icon = image('modular_skyrat/modules/holomap/icons/holomap_markers.dmi', "fire_marker")
 				alarm_icon.pixel_x = alarm.x + HOLOMAP_CENTER_X - 1
 				alarm_icon.pixel_y = alarm.y + HOLOMAP_CENTER_Y
 				extra_overlays += alarm_icon
 
 		for(var/obj/machinery/airalarm/air_alarm as anything in GLOB.air_alarms)
 			if(air_alarm?.z == current_z_level && air_alarm?.my_area?.active_alarms[ALARM_ATMOS])
-				var/image/alarm_icon = image('icons/holomap_markers.dmi', "atmos_marker")
+				var/image/alarm_icon = image('modular_skyrat/modules/holomap/icons/holomap_markers.dmi', "atmos_marker")
 				alarm_icon.pixel_x = air_alarm.x + HOLOMAP_CENTER_X - 1
 				alarm_icon.pixel_y = air_alarm.y + HOLOMAP_CENTER_Y
 				extra_overlays += alarm_icon
