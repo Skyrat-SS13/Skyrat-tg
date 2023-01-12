@@ -159,7 +159,6 @@
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = SUPERVISOR_RD
-	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
 	config_tag = "SCIENCE_GUARD"
 
@@ -261,7 +260,6 @@
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = SUPERVISOR_CMO
-	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
 	config_tag = "ORDERLY"
 
@@ -359,7 +357,6 @@
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = SUPERVISOR_CE
-	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
 	config_tag = "ENGINEERING_GUARD"
 
@@ -462,7 +459,6 @@
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = SUPERVISOR_QM
-	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
 	config_tag = "CUSTOMS_AGENT"
 
@@ -559,7 +555,6 @@
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = SUPERVISOR_HOP
-	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
 	config_tag = "BOUNCER"
 

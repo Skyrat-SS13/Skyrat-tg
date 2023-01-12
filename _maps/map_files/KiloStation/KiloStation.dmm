@@ -8258,6 +8258,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall,
 /area/station/maintenance/port/fore)
+"cvZ" = (
+/mob/living/basic/carp{
+	environment_smash = 0;
+	name = "Tuna";
+	real_name = "Tuna"
+	},
+/turf/open/misc/asteroid/airless,
+/area/space/nearstation)
 "cwj" = (
 /obj/machinery/modular_computer/console/preset/id,
 /obj/effect/turf_decal/bot,
@@ -27009,11 +27017,6 @@
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/station/science/genetics)
-"hIs" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/mob/living/simple_animal/hostile/retaliate/ghost,
-/turf/open/floor/wood,
-/area/station/maintenance/starboard/fore)
 "hIS" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/techstorage/rnd_all,
@@ -61173,6 +61176,11 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+"rwY" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/mob/living/basic/ghost,
+/turf/open/floor/wood,
+/area/station/maintenance/starboard/fore)
 "rxi" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -68353,6 +68361,15 @@
 	},
 /turf/open/space/basic,
 /area/space/nearstation)
+"tvS" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/mob/living/basic/ghost,
+/turf/open/floor/iron/dark,
+/area/station/maintenance/starboard/fore)
 "twc" = (
 /obj/effect/turf_decal/plaque{
 	icon_state = "L13"
@@ -76832,15 +76849,6 @@
 "vOX" = (
 /turf/closed/wall/rust,
 /area/station/maintenance/starboard)
-"vOZ" = (
-/obj/machinery/computer/security/telescreen/entertainment/directional/south,
-/obj/structure/reagent_dispensers/wall/peppertank/directional/east,
-/obj/structure/bed/dogbed/cayenne{
-	name = "Lia's bed"
-	},
-/mob/living/simple_animal/hostile/carp/lia,
-/turf/open/floor/iron/dark,
-/area/station/command/heads_quarters/hos)
 "vPd" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -78734,14 +78742,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/security/prison)
-"woH" = (
-/mob/living/simple_animal/hostile/carp{
-	environment_smash = 0;
-	name = "Tuna";
-	real_name = "Tuna"
-	},
-/turf/open/misc/asteroid/airless,
-/area/space/nearstation)
 "woJ" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -80296,6 +80296,15 @@
 "wJo" = (
 /turf/open/floor/plating,
 /area/station/maintenance/department/security)
+"wJs" = (
+/obj/machinery/computer/security/telescreen/entertainment/directional/south,
+/obj/structure/reagent_dispensers/wall/peppertank/directional/east,
+/obj/structure/bed/dogbed/cayenne{
+	name = "Lia's bed"
+	},
+/mob/living/basic/carp/pet/lia,
+/turf/open/floor/iron/dark,
+/area/station/command/heads_quarters/hos)
 "wJw" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -85189,15 +85198,6 @@
 /obj/machinery/recharger,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/captain)
-"yeH" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/retaliate/ghost,
-/turf/open/floor/iron/dark,
-/area/station/maintenance/starboard/fore)
 "yeK" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/neutral{
@@ -99982,7 +99982,7 @@ aeu
 aeU
 aeU
 coy
-woH
+cvZ
 aDS
 tpp
 bFI
@@ -105967,7 +105967,7 @@ lZr
 jPG
 sYu
 mIR
-vOZ
+wJs
 afL
 aeu
 aeU
@@ -118230,7 +118230,7 @@ cIX
 cIX
 fvU
 plG
-yeH
+tvS
 yaY
 iBv
 wxI
@@ -118489,7 +118489,7 @@ fvU
 nUi
 iVF
 elc
-hIs
+rwY
 jre
 rsZ
 qaI

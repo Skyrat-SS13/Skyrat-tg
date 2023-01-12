@@ -59,7 +59,7 @@
 	verb_exclaim = "beeps"
 	max_integrity = 300
 	integrity_failure = 0.33
-	armor = list(MELEE = 20, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 70)
+	armor_type = /datum/armor/machinery_vending
 	circuit = /obj/item/circuitboard/machine/vendor
 	payment_department = ACCOUNT_SRV
 	light_power = 0.5
@@ -195,6 +195,11 @@
  * * FALSE - if the machine was maploaded on a zlevel that doesn't pass the is_station_level check
  * * TRUE - all other cases
  */
+/datum/armor/machinery_vending
+	melee = 20
+	fire = 50
+	acid = 70
+
 /obj/machinery/vending/Initialize(mapload)
 	var/build_inv = FALSE
 	if(!refill_canister)
@@ -325,7 +330,6 @@
 			if (dump_amount >= 16)
 				return
 
-GLOBAL_LIST_EMPTY(vending_products)
 /**
  * Build the inventory of the vending machine from it's product and record lists
  *
@@ -353,7 +357,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 		var/obj/item/temp = typepath
 		var/datum/data/vending_product/R = new /datum/data/vending_product()
-		GLOB.vending_products[typepath] = 1
 		R.name = initial(temp.name)
 		R.product_path = typepath
 		if(!start_empty)
@@ -1261,6 +1264,11 @@ GLOBAL_LIST_EMPTY(vending_products)
 	var/list/base64_cache = list()
 	panel_type = "panel20"
 
+/datum/armor/machinery_vending
+	melee = 20
+	fire = 50
+	acid = 70
+
 /obj/machinery/vending/custom/compartmentLoadAccessCheck(mob/user)
 	. = FALSE
 	if(!isliving(user))
@@ -1418,6 +1426,11 @@ GLOBAL_LIST_EMPTY(vending_products)
 	icon_state = "refill_custom"
 	custom_premium_price = PAYCHECK_CREW
 
+/datum/armor/machinery_vending
+	melee = 20
+	fire = 50
+	acid = 70
+
 /obj/machinery/vending/custom/greed //name and like decided by the spawn
 	icon_state = "greed"
 	icon_deny = "greed-deny"
@@ -1430,7 +1443,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/machinery/vending/custom/greed/Initialize(mapload)
 	. = ..()
 	//starts in a state where you can move it
-	panel_open = TRUE
+	set_panel_open(TRUE)
 	set_anchored(FALSE)
 	add_overlay(panel_type)
 	//and references the deity

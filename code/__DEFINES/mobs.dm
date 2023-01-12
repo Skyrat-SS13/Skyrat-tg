@@ -8,7 +8,7 @@
 
 //movement intent defines for the m_intent var
 #define MOVE_INTENT_WALK "walk"
-#define MOVE_INTENT_RUN  "run"
+#define MOVE_INTENT_RUN "run"
 
 //Blood levels
 #define BLOOD_VOLUME_MAX_LETHAL 2150
@@ -35,8 +35,8 @@
 #define MOB_SIZE_HUGE 4 // Use this for things you don't want bluespace body-bagged
 
 //Ventcrawling defines
-#define VENTCRAWLER_NONE   0
-#define VENTCRAWLER_NUDE   1
+#define VENTCRAWLER_NONE 0
+#define VENTCRAWLER_NUDE 1
 #define VENTCRAWLER_ALWAYS 2
 
 //Mob bio-types flags
@@ -183,12 +183,12 @@
 #define BRAIN_TRAUMA_SPECIAL /datum/brain_trauma/special
 #define BRAIN_TRAUMA_MAGIC /datum/brain_trauma/magic
 
-#define TRAUMA_RESILIENCE_BASIC 1      //Curable with chems
-#define TRAUMA_RESILIENCE_SURGERY 2    //Curable with brain surgery
-#define TRAUMA_RESILIENCE_LOBOTOMY 3   //Curable with lobotomy
-#define TRAUMA_RESILIENCE_WOUND 4    //Curable by healing the head wound
-#define TRAUMA_RESILIENCE_MAGIC 5      //Curable only with magic
-#define TRAUMA_RESILIENCE_ABSOLUTE 6   //This is here to stay
+#define TRAUMA_RESILIENCE_BASIC 1 //Curable with chems
+#define TRAUMA_RESILIENCE_SURGERY 2 //Curable with brain surgery
+#define TRAUMA_RESILIENCE_LOBOTOMY 3 //Curable with lobotomy
+#define TRAUMA_RESILIENCE_WOUND 4 //Curable by healing the head wound
+#define TRAUMA_RESILIENCE_MAGIC 5 //Curable only with magic
+#define TRAUMA_RESILIENCE_ABSOLUTE 6 //This is here to stay
 
 //Limit of traumas for each resilience tier
 #define TRAUMA_LIMIT_BASIC 3
@@ -349,7 +349,7 @@
 //determines if a mob can smash through it
 #define ENVIRONMENT_SMASH_NONE 0
 #define ENVIRONMENT_SMASH_STRUCTURES 1 //crates, lockers, ect
-#define ENVIRONMENT_SMASH_WALLS 2  //walls
+#define ENVIRONMENT_SMASH_WALLS 2 //walls
 #define ENVIRONMENT_SMASH_RWALLS 3 //rwalls
 
 #define NO_SLIP_WHEN_WALKING (1<<0)
@@ -420,12 +420,12 @@
 //#define AGE_MIN 17	//youngest a character can be //ORIGINAL
 #define AGE_MIN	18	//youngest a character can be //SKYRAT EDIT CHANGE - age
 #define AGE_MAX 85 //oldest a character can be
-#define AGE_MINOR 20  //legal age of space drinking and smoking
+#define AGE_MINOR 20 //legal age of space drinking and smoking
 #define WIZARD_AGE_MIN 30 //youngest a wizard can be
 #define APPRENTICE_AGE_MIN 29 //youngest an apprentice can be
 
 #define SHOES_SLOWDOWN 0 //How much shoes slow you down by default. Negative values speed you up
-#define SHOES_SPEED_SLIGHT  SHOES_SLOWDOWN - 1 // slightest speed boost to movement
+#define SHOES_SPEED_SLIGHT SHOES_SLOWDOWN - 1 // slightest speed boost to movement
 #define POCKET_STRIP_DELAY (4 SECONDS) //time taken to search somebody's pockets
 #define DOOR_CRUSH_DAMAGE 15 //the amount of damage that airlocks deal when they crush you
 
@@ -610,27 +610,32 @@
 
 // Mob Overlays Indexes
 /// Total number of layers for mob overlays
+// SKYRAT EDIT CHANGE BEGIN - ORIGINAL: #define TOTAL_LAYERS 33
 #define TOTAL_LAYERS 39 //KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
+// SKYRAT EDIT CHANGE END
 /// Mutations layer - Tk headglows, cold resistance glow, etc
-#define MUTATIONS_LAYER 38
+#define MUTATIONS_LAYER 39 // SKYRAT EDIT CHANGE - ORIGINAL: 33
 /// Mutantrace features (tail when looking south) that must appear behind the body parts
-#define BODY_BEHIND_LAYER 37
-/// Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
-#define BODYPARTS_LAYER 36
+#define BODY_BEHIND_LAYER 38 // SKYRAT EDIT CHANGE - ORIGINAL: 32
+/// Layer for bodyparts that should appear behind every other bodypart - Mostly, legs when facing WEST or EAST
+#define BODYPARTS_LOW_LAYER 37 // SKYRAT EDIT CHANGE - ORIGINAL: 31
+/// Layer for most bodyparts, appears above BODYPARTS_LOW_LAYER and below BODYPARTS_HIGH_LAYER
+#define BODYPARTS_LAYER 36 // SKYRAT EDIT CHANGE - ORIGINAL: 30
 /// Mutantrace features (snout, body markings) that must appear above the body parts
-#define BODY_ADJ_LAYER 35
+#define BODY_ADJ_LAYER 35 // SKYRAT EDIT CHANGE - ORIGINAL: 29
 /// Underwear, undershirts, socks, eyes, lips(makeup)
-#define BODY_LAYER 34
+#define BODY_LAYER 34 // SKYRAT EDIT CHANGE - ORIGINAL: 28
 /// Mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
-#define FRONT_MUTATIONS_LAYER 33
+#define FRONT_MUTATIONS_LAYER 33 // SKYRAT EDIT CHANGE - ORIGINAL: 27
 /// Damage indicators (cuts and burns)
-#define DAMAGE_LAYER 32
-//SKYRAT EDIT ADDITION BEGIN. This layer is used for things that shouldn't be over clothes, but should be over mutations - BUMPED UP ^
+#define DAMAGE_LAYER 32 // SKYRAT EDIT CHANGE - ORIGINAL: 26
+// SKYRAT EDIT ADDITION BEGIN.
+/// This layer is used for things that shouldn't be over clothes, but should be over mutations
 #define BODY_FRONT_UNDER_CLOTHES 31
-//SKYRAT EDIT ADDITION END
+// SKYRAT EDIT ADDITION END
 /// Jumpsuit clothing layer
-#define UNIFORM_LAYER 30
-//SKYRAT EDIT ADDITION BEGIN - BUMPED UP ^
+#define UNIFORM_LAYER 30 // SKYRAT EDIT CHANGE - ORIGINAL: 25
+// SKYRAT EDIT ADDITION BEGIN - cursed layers under clothing
 #define ANUS_LAYER 29
 #define VAGINA_LAYER 28
 #define PENIS_LAYER 27
@@ -641,8 +646,8 @@
 #define ID_LAYER 24
 /// ID card layer
 #define ID_CARD_LAYER 23
-/// Hands body part layer (or is this for the arm? not sure...)
-#define HANDS_PART_LAYER 22
+/// Layer for bodyparts that should appear above every other bodypart - Currently only used for hands
+#define BODYPARTS_HIGH_LAYER 22
 /// Gloves layer
 #define GLOVES_LAYER 21
 /// Shoes layer

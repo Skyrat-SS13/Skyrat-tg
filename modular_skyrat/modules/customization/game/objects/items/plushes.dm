@@ -600,3 +600,13 @@
 	attack_verb_continuous = list("wehs", "wehs softly", "stutters")
 	attack_verb_simple = list("wehs", "wehs softly", "stutters")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
+
+// Donation reward for Gofawful5
+/obj/item/toy/plush/skyrat/tracy
+	name = "creature plushie"
+	desc = "An astonishingly well-endowed catfox plushie... It seems content."
+	icon_state = "plush_tracy"
+	attack_verb_continuous = list("expands")
+	attack_verb_simple = list("expand")
+	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/tracymrowr.ogg' = 1)
+	gender = FEMALE

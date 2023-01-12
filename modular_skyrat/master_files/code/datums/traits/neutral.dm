@@ -36,13 +36,26 @@
 	name = "Pseudobulbar Affect"
 	desc = "At random intervals, you suffer uncontrollable bursts of laughter."
 	value = 0
+	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_PROCESSES
 	medical_record_text = "Patient suffers with sudden and uncontrollable bursts of laughter."
 	var/pcooldown = 0
 	var/pcooldown_time = 60 SECONDS
 	icon = "grin-squint-tears"
 
-/datum/quirk/item_quirk/joker/add_unique()
+/datum/quirk/item_quirk/joker/add_unique(client/client_source)
 	give_item_to_holder(/obj/item/paper/joker, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS))
+
+/datum/quirk/item_quirk/joker/process()
+	if(pcooldown > world.time)
+		return
+	pcooldown = world.time + pcooldown_time
+	var/mob/living/carbon/human/user = quirk_holder
+	if(user && istype(user))
+		if(user.stat == CONSCIOUS)
+			if(prob(20))
+				user.emote("laugh")
+				addtimer(CALLBACK(user, /mob/proc/emote, "laugh"), 5 SECONDS)
+				addtimer(CALLBACK(user, /mob/proc/emote, "laugh"), 10 SECONDS)
 
 /obj/item/paper/joker
 	name = "disability card"
@@ -153,18 +166,6 @@
 
 	balloon_alert(user, "card flipped")
 
-/datum/quirk/item_quirk/joker/process()
-	if(pcooldown > world.time)
-		return
-	pcooldown = world.time + pcooldown_time
-	var/mob/living/carbon/human/user = quirk_holder
-	if(user && istype(user))
-		if(user.stat == CONSCIOUS)
-			if(prob(20))
-				user.emote("laugh")
-				addtimer(CALLBACK(user, /mob/proc/emote, "laugh"), 5 SECONDS)
-				addtimer(CALLBACK(user, /mob/proc/emote, "laugh"), 10 SECONDS)
-
 /datum/quirk/feline_aspect
 	name = "Feline Traits"
 	desc = "You happen to act like a feline, for whatever reason."
@@ -181,7 +182,7 @@
 	value = 0
 	medical_record_text = "Patient was seen digging through the trash can. Keep an eye on them."
 
-/datum/quirk/item_quirk/canine/add_unique()
+/datum/quirk/item_quirk/canine/add_unique(client/client_source)
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	var/obj/item/organ/internal/tongue/old_tongue = human_holder.getorganslot(ORGAN_SLOT_TONGUE)
 	old_tongue.Remove(human_holder)
