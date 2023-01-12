@@ -1,5 +1,5 @@
 /obj/machinery/computer/order_console/mining
-	name = "mining equipment vendor"
+	name = "mining equipment order console"
 	desc = "An equipment shop for miners, points collected at an ore redemption machine can be spent here."
 	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "mining"
@@ -34,17 +34,24 @@
 	for(var/datum/orderable_item/item as anything in groceries)
 		things_to_order[item.item_path] = groceries[item]
 
-	var/datum/supply_pack/custom/mining_pack = new(purchaser, things_to_order)
+	var/datum/supply_pack/custom/mining_pack = new(
+		purchaser = purchaser, \
+		cost = get_total_cost(), \
+		contains = things_to_order,
+	)
 	var/datum/supply_order/new_order = new(
-		pack = mining_pack, \
-		orderer = purchaser, \
-		orderer_rank = "Mining Vendor", \
-		orderer_ckey = purchaser.ckey, \
-		reason = "", \
-		paying_account = card.registered_account, \
-		department_destination = null, \
-		coupon = null, \
+		pack = mining_pack,
+		orderer = purchaser,
+		orderer_rank = "Mining Vendor",
+		orderer_ckey = purchaser.ckey,
+		reason = "",
+		paying_account = card.registered_account,
+		department_destination = null,
+		coupon = null,
 		charge_on_purchase = FALSE,
+		manifest_can_fail = FALSE,
+		cost_type = "mp",
+		can_be_cancelled = FALSE,
 	)
 	if(ltsrbt_delivered)
 		var/obj/machinery/mining_ltsrbt/ltsrbt
