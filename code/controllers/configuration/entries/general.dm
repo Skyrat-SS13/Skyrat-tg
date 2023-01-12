@@ -649,3 +649,5 @@
 	default = 50
 
 /datum/config_entry/string/morgue_cadaver_override_species
+
+/datum/config_entry/flag/toast_notification_on_init

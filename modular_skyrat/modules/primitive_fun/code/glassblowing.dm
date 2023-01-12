@@ -265,7 +265,7 @@
 
 /datum/crafting_recipe/glassblowing_recipe
 	reqs = list(/obj/item/stack/sheet/iron = 5)
-	category = CAT_PRIMAL
+	category = CAT_MISC
 
 /obj/item/glassblowing/blowing_rod
 	name = "blowing rod"

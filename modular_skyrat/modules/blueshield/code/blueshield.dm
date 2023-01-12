@@ -7,7 +7,6 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "Central Command and the Nanotrasen Consultant"
-	selection_color = "#c6ffe0"
 	minimal_player_age = 7
 	exp_requirements = 2400
 	exp_required_type = EXP_TYPE_CREW
@@ -105,5 +104,6 @@
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
 	icon_state = "hellfirepdw"
+	worn_icon_state = "hellfirepdw"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hellfire/bs)
 	company_flag = COMPANY_ALLSTAR
