@@ -47,7 +47,6 @@
 	holomap_datum = new()
 	bogus = FALSE
 	var/turf/current_turf = get_turf(src)
-	current_z_level = current_turf.z
 	if(!("[HOLOMAP_EXTRA_STATIONMAP]_[current_z_level]" in SSholomaps.extra_holomaps))
 		bogus = TRUE
 		holomap_datum.initialize_holomap_bogus()
@@ -183,25 +182,24 @@
 		add_overlay(floor_markings)
 
 /obj/machinery/station_map/screwdriver_act(mob/living/user, obj/item/tool)
-	. = default_deconstruction_screwdriver(user, "station_map_opened", "station_map_off", tool)
+	if(!default_deconstruction_screwdriver(user, "station_map_opened", "station_map_off", tool))
+		return FALSE
+
 	close_map()
 	update_icon()
-
-	if(!.) // Prevent re-running setup holomap for no reason.
-		return FALSE
 
 	if(!panel_open)
 		setup_holomap()
 
-	return .
+	return TRUE
 
 /obj/machinery/station_map/multitool_act(mob/living/user, obj/item/tool)
 	if(!panel_open)
 		to_chat(user, span_warning("You need to open the panel to change the [src]'[p_s()] settings!"))
-		return TRUE
+		return FALSE
 	if(!SSholomaps.valid_map_indexes.len > 1)
 		to_chat(user, span_warning("There are no other maps available for [src]!"))
-		return TRUE
+		return FALSE
 
 	tool.play_tool_sound(user, 50)
 	var/current_index = SSholomaps.valid_map_indexes.Find(current_z_level)

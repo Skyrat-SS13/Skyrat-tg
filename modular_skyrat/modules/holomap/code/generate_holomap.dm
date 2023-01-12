@@ -54,8 +54,16 @@
 				position_to_name["[offset_x]:[offset_y]"] = tile.loc:holomap_color == HOLOMAP_AREACOLOR_MAINTENANCE ? "Maintenance" : tile.loc.name
 
 			if(tile.loc:holomapAlwaysDraw())
-				if(HAS_Z_TRANSITION(tile))
+				var/z_transition_obj = HAS_Z_TRANSITION(tile)
+				if(z_transition_obj)
 					z_transition_positions += "[offset_x]:[offset_y]"
+
+					// Add transition markers for stairs.
+					if(istype(z_transition_obj, /obj/structure/stairs))
+						var/turf/checking = get_step_multiz(get_turf(src), UP)
+						var/list/transitions = SSholomaps.holomap_z_transitions["[checking?.z]"]
+						if(istype(checking) && transitions)
+							transitions += "[checking.x + HOLOMAP_CENTER_X]:[checking.y + HOLOMAP_CENTER_Y]"
 
 				if(IS_ROCK(tile))
 					canvas.DrawBox(HOLOMAP_ROCK, offset_x, offset_y)
