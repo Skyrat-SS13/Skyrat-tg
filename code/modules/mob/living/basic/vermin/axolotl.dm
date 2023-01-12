@@ -35,21 +35,7 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
-	var/list/habitable_atmos = string_assoc_list(list(
-		"min_oxy" = 5,
-		"max_oxy" = 0,
-		"min_plas" = 0,
-		"max_plas" = 1,
-		"min_co2" = 0,
-		"max_co2" = 5,
-		"min_n2" = 0,
-		"max_n2" = 0,
-	))
-
-	AddElement(/datum/element/atmos_requirements, habitable_atmos, unsuitable_atmos_damage = 1)
-	AddElement(/datum/element/basic_body_temp_sensitive)
-
 /datum/ai_controller/basic_controller/axolotl
-	ai_traits = STOP_MOVING_WHEN_PULLED
+	ai_traits = STOP_MOVING_WHEN_PULLED | STOP_ACTING_WHILE_DEAD
 	ai_movement = /datum/ai_movement/basic_avoidance
 	idle_behavior = /datum/idle_behavior/idle_random_walk

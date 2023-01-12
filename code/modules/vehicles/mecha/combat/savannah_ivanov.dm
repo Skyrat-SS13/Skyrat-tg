@@ -23,7 +23,7 @@
 	mech_type = EXOSUIT_MODULE_SAVANNAH
 	movedelay = 3
 	max_integrity = 450 //really tanky, like damn
-	armor = list(MELEE = 45, BULLET = 40, LASER = 30, ENERGY = 30, BOMB = 40, BIO = 0, FIRE = 100, ACID = 100)
+	armor_type = /datum/armor/mecha_savannah_ivanov
 	max_temperature = 30000
 	force = 30
 	destruction_sleep_duration = 40
@@ -37,6 +37,15 @@
 	)
 	//no tax on flying, since the power cost is in the leap itself.
 	phasing_energy_drain = 0
+
+/datum/armor/mecha_savannah_ivanov
+	melee = 45
+	bullet = 40
+	laser = 30
+	energy = 30
+	bomb = 40
+	fire = 100
+	acid = 100
 
 /obj/vehicle/sealed/mecha/savannah_ivanov/get_mecha_occupancy_state()
 	var/driver_present = driver_amount() != 0
@@ -68,6 +77,15 @@
 	var/skyfall_cooldown_time = 1 MINUTES
 	///skyfall builds up in charges every 2 seconds, when it reaches 5 charges the ability actually starts
 	var/skyfall_charge_level = 0
+
+/datum/armor/mecha_savannah_ivanov
+	melee = 45
+	bullet = 40
+	laser = 30
+	energy = 30
+	bomb = 40
+	fire = 100
+	acid = 100
 
 /datum/action/vehicle/sealed/mecha/skyfall/Trigger(trigger_flags)
 	if(!owner || !chassis || !(owner in chassis.occupants))
@@ -121,7 +139,7 @@
 		return
 	S_TIMER_COOLDOWN_START(chassis, COOLDOWN_MECHA_SKYFALL, skyfall_cooldown_time)
 	button_icon_state = "mech_savannah_cooldown"
-	UpdateButtons()
+	build_all_button_icons()
 	addtimer(CALLBACK(src, PROC_REF(reset_button_icon)), skyfall_cooldown_time)
 	for(var/mob/living/shaken in range(7, chassis))
 		shake_camera(shaken, 3, 3)
@@ -224,7 +242,7 @@
  */
 /datum/action/vehicle/sealed/mecha/skyfall/proc/reset_button_icon()
 	button_icon_state = "mech_savannah"
-	UpdateButtons()
+	build_all_button_icons()
 
 /datum/action/vehicle/sealed/mecha/ivanov_strike
 	name = "Ivanov Strike"
@@ -234,6 +252,15 @@
 	///how many rockets can we send with ivanov strike
 	var/rockets_left = 0
 	var/aiming_missile = FALSE
+
+/datum/armor/mecha_savannah_ivanov
+	melee = 45
+	bullet = 40
+	laser = 30
+	energy = 30
+	bomb = 40
+	fire = 100
+	acid = 100
 
 /datum/action/vehicle/sealed/mecha/ivanov_strike/Destroy()
 	if(aiming_missile)
@@ -259,7 +286,7 @@
  */
 /datum/action/vehicle/sealed/mecha/ivanov_strike/proc/reset_button_icon()
 	button_icon_state = "mech_ivanov"
-	UpdateButtons()
+	build_all_button_icons()
 
 /**
  * ## start_missile_targeting
@@ -327,7 +354,7 @@
 		"explosionSize" = list(0,0,1,2)
 	))
 	button_icon_state = "mech_ivanov_cooldown"
-	UpdateButtons()
+	build_all_button_icons()
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/action/vehicle/sealed/mecha/ivanov_strike, reset_button_icon)), strike_cooldown_time)
 
 //misc effects
@@ -344,6 +371,15 @@
 	alpha = 0
 	///reference to mecha following
 	var/obj/vehicle/sealed/mecha/mecha
+
+/datum/armor/mecha_savannah_ivanov
+	melee = 45
+	bullet = 40
+	laser = 30
+	energy = 30
+	bomb = 40
+	fire = 100
+	acid = 100
 
 /obj/effect/skyfall_landingzone/Initialize(mapload, obj/vehicle/sealed/mecha/mecha)
 	. = ..()

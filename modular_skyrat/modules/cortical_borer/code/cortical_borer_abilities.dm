@@ -5,7 +5,7 @@
 
 // Parent of all borer actions
 /datum/action/cooldown/borer
-	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
+	button_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	cooldown_time = 0
 	/// How many chemicals this costs
 	var/chemical_cost = 0
@@ -367,7 +367,7 @@
 	var/obj/item/organ/internal/brain/victim_brain = cortical_owner.human_host.getorganslot(ORGAN_SLOT_BRAIN)
 	if(victim_brain)
 		cortical_owner.human_host.adjustOrganLoss(ORGAN_SLOT_BRAIN, 10 * cortical_owner.host_harm_multiplier)
-	cortical_owner.human_host.adjust_blurriness(3 * cortical_owner.host_harm_multiplier) //about 12 seconds' worth by default
+	cortical_owner.human_host.adjust_eye_blur(6 SECONDS * cortical_owner.host_harm_multiplier) //about 12 seconds' worth by default
 	to_chat(cortical_owner, span_notice("You have grown!"))
 	to_chat(cortical_owner.human_host, span_warning("You feel a sharp pressure in your head!"))
 	StartCooldown()
@@ -474,6 +474,7 @@
 		owner.balloon_alert(owner, "host required")
 		return
 	healthscan(owner, cortical_owner.human_host, advanced = TRUE) // :thinking:
+	chemscan(owner, cortical_owner.human_host)
 	StartCooldown()
 
 //to either get inside, or out, of a host
@@ -513,7 +514,7 @@
 	var/list/usable_hosts = list()
 	for(var/mob/living/carbon/human/listed_human in range(1, cortical_owner))
 		// no non-human hosts
-		if(!ishuman(listed_human))
+		if(!ishuman(listed_human) || ismonkey(listed_human))
 			continue
 		// cannot have multiple borers (for now)
 		if(listed_human.has_borer())

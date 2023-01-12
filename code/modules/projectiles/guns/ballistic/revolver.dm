@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/revolver
 	name = "\improper .357 revolver"
-	desc = "A suspicious revolver. Uses .357 ammo." //usually used by syndicates
+	desc = "A suspicious revolver. Uses .357 ammo."
 	icon_state = "revolver"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder
 	fire_sound = 'sound/weapons/gun/revolver/shot_alt.ogg'
@@ -124,13 +124,18 @@
 		"Police Positive Special" = "c38_police",
 		"Blued Steel" = "c38_blued",
 		"Stainless Steel" = "c38_stainless",
-		"Gold Trim" = "c38_gold",
-		"Leopard Spots" = "c38_leopard",
+		"Gold Trim" = "c38_trim",
+		"Golden" = "c38_gold",
 		"The Peacemaker" = "c38_peacemaker",
 		"Black Panther" = "c38_panther"
 	)
 
-/obj/item/gun/ballistic/revolver/mateba //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+/obj/item/gun/ballistic/revolver/syndicate
+	name = "\improper Syndicate Revolver"
+	desc = "A modernized 7 round revolver manufactured by Waffle Co. Uses .357 ammo."
+	icon_state = "revolversyndie"
+
+/obj/item/gun/ballistic/revolver/mateba
 	name = "\improper Unica 6 auto-revolver"
 	desc = "A retro high-powered autorevolver typically used by officers of the New Russia military. Uses .357 ammo."
 	icon_state = "mateba"
@@ -176,6 +181,11 @@
 	update_appearance()
 	A.update_appearance()
 	return
+
+/obj/item/gun/ballistic/revolver/russian/can_trigger_gun(mob/living/user, akimbo_usage)
+	if(akimbo_usage)
+		return FALSE
+	return ..()
 
 /obj/item/gun/ballistic/revolver/russian/attack_self(mob/user)
 	if(!spun)
@@ -268,7 +278,9 @@
 /obj/item/gun/ballistic/revolver/reverse //Fires directly at its user... unless the user is a clown, of course.
 	clumsy_check = FALSE
 
-/obj/item/gun/ballistic/revolver/reverse/can_trigger_gun(mob/living/user)
+/obj/item/gun/ballistic/revolver/reverse/can_trigger_gun(mob/living/user, akimbo_usage)
+	if(akimbo_usage)
+		return FALSE
 	if(HAS_TRAIT(user, TRAIT_CLUMSY) || is_clown_job(user.mind?.assigned_role))
 		return ..()
 	if(process_fire(user, user, FALSE, null, BODY_ZONE_HEAD))

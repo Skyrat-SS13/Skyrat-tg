@@ -1,7 +1,7 @@
 /datum/action/item_action/mod/sprite_accessories
 	name = "Hide/Show mutant parts"
 	desc = "LMB: Deploy/Undeploy part. RMB: Deploy/Undeploy all parts."
-	icon_icon = 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/MOD_sprite_accessories/icons/radial.dmi' // What a great var name
+	button_icon = 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/MOD_sprite_accessories/icons/radial.dmi' // What a great var name
 	button_icon_state = "open"
 
 /datum/action/item_action/mod/sprite_accessories/Trigger(trigger_flags)

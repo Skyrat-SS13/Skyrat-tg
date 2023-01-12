@@ -107,10 +107,20 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "ert_ntrauma"
 	slowdown = 0.3
-	armor = list(MELEE = 10, BULLET = 10, LASER = 10,ENERGY = 10, BOMB = 10, BIO = 100, FIRE = 80, ACID = 80)
+	armor_type = /datum/armor/space_ntrauma
 	resistance_flags = ACID_PROOF
 	cell = /obj/item/stock_parts/cell/super
 	supports_variations_flags = NONE	//Traumateam NEEDS to look nondescript. Its the whole gimmick, tactical healing.
+
+/datum/armor/space_ntrauma
+	melee = 10
+	bullet = 10
+	laser = 10
+	energy = 10
+	bomb = 10
+	bio = 100
+	fire = 80
+	acid = 80
 
 /obj/item/clothing/head/helmet/space/ntrauma
 	name = "trauma team helmet"

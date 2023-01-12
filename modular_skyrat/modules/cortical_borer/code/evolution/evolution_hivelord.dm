@@ -8,6 +8,7 @@
 	gain_text = "The way that a Cortical Borer produces an egg is a strange one. So far, we have not seen how it produces one, or it doing so outside a host."
 	tier = 1
 	unlocked_evolutions = list(/datum/borer_evolution/hivelord/blood_chemical)
+	evo_cost = 1
 
 /datum/borer_evolution/hivelord/produce_offspring/on_evolve(mob/living/basic/cortical_borer/cortical_owner)
 	. = ..()

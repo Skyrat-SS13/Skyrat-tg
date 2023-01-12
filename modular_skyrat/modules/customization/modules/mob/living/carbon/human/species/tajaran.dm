@@ -1,13 +1,10 @@
 /datum/species/tajaran
 	name = "Tajaran"
 	id = SPECIES_TAJARAN
-	say_mod = "meows"
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
 		LIPS,
-		HAS_FLESH,
-		HAS_BONE,
 		HAIR
 	)
 	inherent_traits = list(
@@ -16,6 +13,7 @@
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
 	)
+	mutanttongue = /obj/item/organ/internal/tongue/cat
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(

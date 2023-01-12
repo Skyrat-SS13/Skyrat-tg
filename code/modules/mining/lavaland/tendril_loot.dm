@@ -169,7 +169,7 @@
 		ADD_TRAIT(user, TRAIT_NODEATH, CLOTHING_TRAIT)
 		ADD_TRAIT(user, TRAIT_NOHARDCRIT, CLOTHING_TRAIT)
 		ADD_TRAIT(user, TRAIT_NOCRITDAMAGE, CLOTHING_TRAIT)
-		RegisterSignal(user, COMSIG_CARBON_HEALTH_UPDATE, PROC_REF(check_health))
+		RegisterSignal(user, COMSIG_LIVING_HEALTH_UPDATE, PROC_REF(check_health))
 		icon_state = "memento_mori_active"
 		active_owner = user
 
@@ -177,7 +177,7 @@
 	icon_state = "memento_mori"
 	if(!active_owner)
 		return
-	UnregisterSignal(active_owner, COMSIG_CARBON_HEALTH_UPDATE)
+	UnregisterSignal(active_owner, COMSIG_LIVING_HEALTH_UPDATE)
 	var/mob/living/carbon/human/H = active_owner //to avoid infinite looping when dust unequips the pendant
 	active_owner = null
 	to_chat(H, span_userdanger("You feel your life rapidly slipping away from you!"))
@@ -209,7 +209,7 @@
 
 /obj/item/clothing/neck/necklace/memento_mori/proc/regurgitate_guardian(mob/living/simple_animal/hostile/guardian/guardian)
 	guardian.locked = FALSE
-	guardian.Recall(TRUE)
+	guardian.recall(forced = TRUE)
 	to_chat(guardian, span_notice("You have been returned back from your summoner's pendant!"))
 	guardian.playsound_local(get_turf(guardian), 'sound/magic/repulse.ogg', 50, TRUE)
 
@@ -535,25 +535,47 @@
 
 /datum/reagent/flightpotion/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume, show_message = TRUE)
 	. = ..()
-	if(iscarbon(exposed_mob) && exposed_mob.stat != DEAD)
-		var/mob/living/carbon/exposed_carbon = exposed_mob
-		var/holycheck = ishumanbasic(exposed_carbon)
-		if(!HAS_TRAIT(exposed_carbon, TRAIT_CAN_USE_FLIGHT_POTION) || reac_volume < 5)
-			if((methods & INGEST) && show_message)
-				to_chat(exposed_carbon, span_notice("<i>You feel nothing but a terrible aftertaste.</i>"))
-			return
-		if(exposed_mob.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS)) //Skyrat Edit
-			to_chat(exposed_carbon, span_userdanger("A terrible pain travels down your back as your wings change shape!"))
-		else
-			to_chat(exposed_carbon, span_userdanger("A terrible pain travels down your back as wings burst out!"))
-		exposed_carbon.dna.species.GiveSpeciesFlight(exposed_carbon)
-		if(holycheck)
-			to_chat(exposed_carbon, span_notice("You feel blessed!"))
-			ADD_TRAIT(exposed_carbon, TRAIT_HOLY, FLIGHTPOTION_TRAIT)
-		playsound(exposed_carbon.loc, 'sound/items/poster_ripped.ogg', 50, TRUE, -1)
-		exposed_carbon.adjustBruteLoss(20)
-		exposed_carbon.emote("scream")
+	if(!ishuman(exposed_mob) || exposed_mob.stat == DEAD)
+		return
+	var/mob/living/carbon/human/exposed_human = exposed_mob
+	if(!HAS_TRAIT(exposed_human, TRAIT_CAN_USE_FLIGHT_POTION) || reac_volume < 5 || !exposed_human.dna)
+		if((methods & INGEST) && show_message)
+			to_chat(exposed_human, span_notice("<i>You feel nothing but a terrible aftertaste.</i>"))
+		return
+	if(exposed_mob.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS)) //Skyrat Edit
+		to_chat(exposed_human, span_userdanger("A terrible pain travels down your back as your wings change shape!"))
+	else
+		to_chat(exposed_human, span_userdanger("A terrible pain travels down your back as wings burst out!"))
+	var/obj/item/organ/external/wings/functional/wings = get_wing_choice(exposed_human)
+	wings = new wings()
+	wings.Insert(exposed_human)
+	exposed_human.dna.species.handle_mutant_bodyparts(exposed_human)
+	playsound(exposed_human.loc, 'sound/items/poster_ripped.ogg', 50, TRUE, -1)
+	exposed_human.adjustBruteLoss(20)
+	exposed_human.emote("scream")
 
+/datum/reagent/flightpotion/proc/get_wing_choice(mob/living/carbon/human/needs_wings)
+	var/list/wing_types = needs_wings.dna.species.wing_types.Copy()
+	if(wing_types.len == 1 || !needs_wings.client)
+		return wing_types[1]
+	var/list/radial_wings = list()
+	var/list/name2type = list()
+	for(var/obj/item/organ/external/wings/functional/possible_type as anything in wing_types)
+		//var/datum/sprite_accessory/accessory = GLOB.wings_list[possible_type.name]	//Gets the datum for every wing this species has, then prompts user with a radial menu //ORIGINAL
+		var/datum/sprite_accessory/accessory = GLOB.sprite_accessories["wings"][possible_type.name] //SKYRAT EDIT CHANGE
+		var/image/img = image(icon = accessory.icon, icon_state = "m_wingsopen_[accessory.icon_state]_BEHIND") //Process the HUD elements
+		img.transform *= 0.5
+		img.pixel_x = -32
+		if(radial_wings[accessory.name])
+			stack_trace("Different wing types with repeated names. Please fix as this may cause issues.")
+		else
+			radial_wings[accessory.name] = img
+			name2type[accessory.name] = possible_type
+	var/wing_name = show_radial_menu(needs_wings, needs_wings, radial_wings, tooltips = TRUE)
+	var/wing_type = name2type[wing_name]
+	if(!wing_type)
+		wing_type = pick(wing_types)
+	return wing_type
 
 /obj/item/jacobs_ladder
 	name = "jacob's ladder"
@@ -593,7 +615,16 @@
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = LAVA_PROOF | FIRE_PROOF //they are from lavaland after all
-	armor = list(MELEE = 15, BULLET = 25, LASER = 15, ENERGY = 15, BOMB = 100, BIO = 0, FIRE = 100, ACID = 30) //mostly bone bracer armor
+	armor_type = /datum/armor/gloves_gauntlets
+
+/datum/armor/gloves_gauntlets
+	melee = 15
+	bullet = 25
+	laser = 15
+	energy = 15
+	bomb = 100
+	fire = 100
+	acid = 30
 
 /obj/item/clothing/gloves/gauntlets/equipped(mob/user, slot)
 	. = ..()
@@ -628,7 +659,7 @@
 	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
 	hoodtype = /obj/item/clothing/head/hooded/berserker
-	armor = list(MELEE = 30, BULLET = 30, LASER = 10, ENERGY = 20, BOMB = 50, BIO = 0, FIRE = 100, ACID = 100)
+	armor_type = /datum/armor/hooded_berserker
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -648,6 +679,15 @@
 		/obj/item/melee/cleaving_saw,
 	)
 
+/datum/armor/hooded_berserker
+	melee = 30
+	bullet = 30
+	laser = 10
+	energy = 20
+	bomb = 50
+	fire = 100
+	acid = 100
+
 /obj/item/clothing/suit/hooded/berserker/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/anti_magic, ALL, inventory_flags = ITEM_SLOT_OCLOTHING)
@@ -665,7 +705,7 @@
 	icon_state = "berserker"
 	icon = 'icons/obj/clothing/head/helmet.dmi'
 	worn_icon = 'icons/mob/clothing/head/helmet.dmi'
-	armor = list(MELEE = 30, BULLET = 30, LASER = 10, ENERGY = 20, BOMB = 50, BIO = 0, FIRE = 100, ACID = 100)
+	armor_type = /datum/armor/hooded_berserker
 	actions_types = list(/datum/action/item_action/berserk_mode)
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
@@ -677,6 +717,15 @@
 	var/berserk_charge = 0
 	/// Status of berserk
 	var/berserk_active = FALSE
+
+/datum/armor/hooded_berserker
+	melee = 30
+	bullet = 30
+	laser = 10
+	energy = 20
+	bomb = 50
+	fire = 100
+	acid = 100
 
 /obj/item/clothing/head/hooded/berserker/Initialize(mapload)
 	. = ..()
@@ -717,7 +766,7 @@
 	to_chat(user, span_warning("You enter berserk mode."))
 	playsound(user, 'sound/magic/staff_healing.ogg', 50)
 	user.add_movespeed_modifier(/datum/movespeed_modifier/berserk)
-	user.physiology.armor.melee += BERSERK_MELEE_ARMOR_ADDED
+	user.physiology.armor = user.physiology.armor.generate_new_with_modifiers(list(MELEE = BERSERK_MELEE_ARMOR_ADDED))
 	user.next_move_modifier *= BERSERK_ATTACK_SPEED_MODIFIER
 	user.add_atom_colour(COLOR_BUBBLEGUM_RED, TEMPORARY_COLOUR_PRIORITY)
 	ADD_TRAIT(user, TRAIT_NOGUNS, BERSERK_TRAIT)
@@ -735,7 +784,7 @@
 	to_chat(user, span_warning("You exit berserk mode."))
 	playsound(user, 'sound/magic/summonitems_generic.ogg', 50)
 	user.remove_movespeed_modifier(/datum/movespeed_modifier/berserk)
-	user.physiology.armor.melee -= BERSERK_MELEE_ARMOR_ADDED
+	user.physiology.armor = user.physiology.armor.generate_new_with_modifiers(list(MELEE = -BERSERK_MELEE_ARMOR_ADDED))
 	user.next_move_modifier /= BERSERK_ATTACK_SPEED_MODIFIER
 	user.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, COLOR_BUBBLEGUM_RED)
 	REMOVE_TRAIT(user, TRAIT_NOGUNS, BERSERK_TRAIT)
@@ -760,6 +809,15 @@
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	custom_materials = null
 	var/datum/action/cooldown/scan/scan_ability
+
+/datum/armor/hooded_berserker
+	melee = 30
+	bullet = 30
+	laser = 10
+	energy = 20
+	bomb = 50
+	fire = 100
+	acid = 100
 
 /obj/item/clothing/glasses/godeye/Initialize(mapload)
 	. = ..()
@@ -794,12 +852,22 @@
 	name = "Scan"
 	desc = "Scan an enemy, to get their location and stagger them, increasing their time between attacks."
 	background_icon_state = "bg_clock"
-	icon_icon = 'icons/mob/actions/actions_items.dmi'
+	overlay_icon_state = "bg_clock_border"
+	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "scan"
 
 	click_to_activate = TRUE
 	cooldown_time = 45 SECONDS
 	ranged_mousepointer = 'icons/effects/mouse_pointers/scan_target.dmi'
+
+/datum/armor/hooded_berserker
+	melee = 30
+	bullet = 30
+	laser = 10
+	energy = 20
+	bomb = 50
+	fire = 100
+	acid = 100
 
 /datum/action/cooldown/scan/IsAvailable(feedback = FALSE)
 	return ..() && isliving(owner)
@@ -843,6 +911,15 @@
 	range_mid = 5
 	range_far = 15
 
+/datum/armor/hooded_berserker
+	melee = 30
+	bullet = 30
+	laser = 10
+	energy = 20
+	bomb = 50
+	fire = 100
+	acid = 100
+
 /datum/status_effect/agent_pinpointer/scan/scan_for_target()
 	return
 
@@ -860,6 +937,15 @@
 	items_to_create = list(/obj/item/cursed_katana)
 	extend_sound = 'sound/items/unsheath.ogg'
 	retract_sound = 'sound/items/sheath.ogg'
+
+/datum/armor/hooded_berserker
+	melee = 30
+	bullet = 30
+	laser = 10
+	energy = 20
+	bomb = 50
+	fire = 100
+	acid = 100
 
 /obj/item/organ/internal/cyberimp/arm/katana/attack_self(mob/user, modifiers)
 	. = ..()
@@ -929,6 +1015,15 @@
 		ATTACK_CLOAK = list(COMBO_STEPS = list(LEFT_SLASH, RIGHT_SLASH, LEFT_SLASH, RIGHT_SLASH), COMBO_PROC = PROC_REF(cloak)),
 		ATTACK_SHATTER = list(COMBO_STEPS = list(RIGHT_SLASH, LEFT_SLASH, RIGHT_SLASH, LEFT_SLASH), COMBO_PROC = PROC_REF(shatter)),
 	)
+
+/datum/armor/hooded_berserker
+	melee = 30
+	bullet = 30
+	laser = 10
+	energy = 20
+	bomb = 50
+	fire = 100
+	acid = 100
 
 /obj/item/cursed_katana/Initialize(mapload)
 	. = ..()
