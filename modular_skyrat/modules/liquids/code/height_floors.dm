@@ -45,12 +45,6 @@
 	liquid_height = -30
 	turf_height = -30
 
-/turf/open/floor/iron/pool/broken_states()
-	return list("pool_tile")
-
-/turf/open/floor/iron/pool/burnt_states()
-	return list("pool_tile")
-
 /turf/open/floor/iron/pool/rust_heretic_act()
 	return
 
@@ -84,12 +78,6 @@
 	liquid_height = 30
 	turf_height = 30
 
-/turf/open/floor/iron/elevated/broken_states()
-	return list("elevated_plasteel")
-
-/turf/open/floor/iron/elevated/burnt_states()
-	return list("elevated_plasteel")
-
 /turf/open/floor/iron/elevated/rust_heretic_act()
 	return
 
@@ -104,12 +92,6 @@
 	canSmoothWith = list(SMOOTH_GROUP_LOWERED_PLASTEEL, SMOOTH_GROUP_WALLS)
 	liquid_height = -30
 	turf_height = -30
-
-/turf/open/floor/iron/lowered/broken_states()
-	return list("lowered_plasteel")
-
-/turf/open/floor/iron/lowered/burnt_states()
-	return list("lowered_plasteel")
 
 /turf/open/floor/iron/lowered/rust_heretic_act()
 	return

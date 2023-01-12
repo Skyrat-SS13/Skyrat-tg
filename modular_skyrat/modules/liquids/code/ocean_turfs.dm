@@ -198,12 +198,6 @@
 	liquid_height = -30
 	turf_height = -30
 
-/turf/open/floor/iron/submarine/broken_states()
-	return list("submarine_floor")
-
-/turf/open/floor/iron/submarine/burnt_states()
-	return list("submarine_floor")
-
 /turf/open/floor/iron/submarine/rust_heretic_act()
 	return
 
@@ -215,12 +209,6 @@
 	liquid_height = -30
 	turf_height = -30
 
-/turf/open/floor/iron/submarine_vents/broken_states()
-	return list("submarine_vents")
-
-/turf/open/floor/iron/submarine_vents/burnt_states()
-	return list("submarine_vents")
-
 /turf/open/floor/iron/submarine_vents/rust_heretic_act()
 	return
 
@@ -231,12 +219,6 @@
 	icon_state = "submarine_perf"
 	liquid_height = -30
 	turf_height = -30
-
-/turf/open/floor/iron/submarine_perf/broken_states()
-	return list("submarine_perf")
-
-/turf/open/floor/iron/submarine_perf/burnt_states()
-	return list("submarine_perf")
 
 /turf/open/floor/iron/submarine_perf/rust_heretic_act()
 	return
