@@ -32,7 +32,7 @@
 	return
 
 /atom/movable/screen/holomap/MouseMove(location, control, params)
-	if(isobserver(usr) ! used_station_map)
+	if(isobserver(usr) || !used_station_map)
 		return
 
 	var/list/modifiers = params2list(params)
