@@ -290,7 +290,11 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 	// If it got to this part, just pick one high impact ruleset if it exists
 	for(var/datum/dynamic_ruleset/rule in executed_rules)
 		if(rule.flags & HIGH_IMPACT_RULESET)
-			return rule.round_result()
+			rule.round_result()
+			// One was set, so we're done here
+			if(SSticker.news_report)
+				return
+
 	return ..()
 
 /datum/game_mode/dynamic/proc/send_intercept()
@@ -503,6 +507,7 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 		rule.acceptable(roundstart_pop_ready, threat_level) // Assigns some vars in the modes, running it here for consistency
 		rule.candidates = candidates.Copy()
 		rule.trim_candidates()
+		rule.load_templates()
 		if (rule.ready(roundstart_pop_ready, TRUE))
 			var/cost = rule.cost
 			var/scaled_times = 0
@@ -523,6 +528,7 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 		if (rule.acceptable(roundstart_pop_ready, threat_level) && round_start_budget >= rule.cost) // If we got the population and threat required
 			rule.candidates = candidates.Copy()
 			rule.trim_candidates()
+			rule.load_templates()
 			if (rule.ready(roundstart_pop_ready) && rule.candidates.len > 0)
 				drafted_rules[rule] = rule.weight
 
@@ -630,6 +636,7 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 	var/population = GLOB.alive_player_list.len
 	if((new_rule.acceptable(population, threat_level) && (ignore_cost || new_rule.cost <= mid_round_budget)) || forced)
 		new_rule.trim_candidates()
+		new_rule.load_templates()
 		if (new_rule.ready(forced))
 			if (!ignore_cost)
 				spend_midround_budget(new_rule.cost, threat_log, "[worldtime2text()]: Forced rule [new_rule.name]")
@@ -682,6 +689,7 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 	if (forced_latejoin_rule)
 		forced_latejoin_rule.candidates = list(newPlayer)
 		forced_latejoin_rule.trim_candidates()
+		forced_latejoin_rule.load_templates()
 		log_dynamic("Forcing ruleset [forced_latejoin_rule]")
 		if (forced_latejoin_rule.ready(TRUE))
 			if (!forced_latejoin_rule.repeatable)
@@ -704,6 +712,7 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 
 				rule.candidates = list(newPlayer)
 				rule.trim_candidates()
+				rule.load_templates()
 				if (rule.ready())
 					drafted_rules[rule] = rule.get_weight()
 

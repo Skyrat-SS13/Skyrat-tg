@@ -198,10 +198,14 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	supports_variations_flags = NONE
 	can_adjust = FALSE //There wasnt an adjustable sprite anyways
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 5)	//same armor as a greyshirt - DONOR ITEMS ARE PURELY COSMETIC
+	armor_type = /datum/armor/tacticool_black
 	has_sensor = HAS_SENSORS	//Actually has sensors, to balance the new lack of armor
 
 // Donation reward for Thedragmeme
+
+/datum/armor/tacticool_black
+	wound = 5
+
 /obj/item/clothing/shoes/jackboots/heel
 	name = "high-heeled jackboots"
 	desc = "Almost like regular jackboots... why are they on a high heel?"
@@ -499,6 +503,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
 	icon_state = "darksheath"
+	worn_icon_state = "darksheath"
 
 /obj/item/storage/belt/sabre/darksabre/Initialize(mapload)
 	. = ..()
@@ -520,7 +525,7 @@
 	blood_overlay_type = "armor"
 	dog_fashion = /datum/dog_fashion/back
 	supports_variations_flags = NONE
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 0, "acid" = 0)
+	armor_type = /datum/armor/none
 
 // Donation reward for inferno707
 /obj/item/clothing/mask/hheart
@@ -722,10 +727,17 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "labcoat_xc"
 	body_parts_covered = CHEST|ARMS|LEGS
-	armor = list(MELEE = 5, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 80, FIRE = 80, ACID = 70)
+	armor_type = /datum/armor/rd_jax
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 // Donation reward for Raxraus
+
+/datum/armor/rd_jax
+	melee = 5
+	bio = 80
+	fire = 80
+	acid = 70
+
 /obj/item/clothing/under/rax_turtleneck
 	icon = 'icons/obj/clothing/under/security.dmi'
 	worn_icon = 'icons/mob/clothing/under/security.dmi'
@@ -1376,3 +1388,30 @@
 	icon = 'modular_skyrat/master_files/icons/obj/ring.dmi'
 	icon_state = "ringblack"
 	spans = list("glossy")
+
+//reward for SomeRandomOwl
+/obj/item/clothing/head/costume/strigihat
+	name = "starry witch hat"
+	desc = "A cute witch hat typically worn by an owl-like teshari."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	worn_icon_teshari = 'modular_skyrat/master_files/icons/donator/mob/clothing/head_teshari.dmi'
+	icon_state = "strigihat"
+
+//Donation reward for Razurath
+/obj/item/clothing/head/razurathhat
+	name = "Golden Nanotrasen Officer Cap"
+	desc = "A Nanotrasen officer cap. Now darker, golder, and cooler!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "razurath_hat"
+
+//Donation reward for Razurath
+/obj/item/clothing/suit/razurathcoat
+	name = "Golden Nanotrasen Officer Coat"
+	desc = "A fancy Nanotrasen officer coat. Now darker, golder, and cooler than ever!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "razurath_coat"
+
+

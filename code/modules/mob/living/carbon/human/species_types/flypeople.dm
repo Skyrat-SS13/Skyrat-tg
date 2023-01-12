@@ -2,10 +2,15 @@
 	name = "Flyperson"
 	plural_form = "Flypeople"
 	id = SPECIES_FLYPERSON
-	species_traits = list(HAS_FLESH, HAS_BONE, TRAIT_ANTENNAE, HAIR, FACEHAIR) //SKYRAT EDIT - gives flypeople hair
+	//SKYRAT EDIT - Flypeople deserve fancy hair
+	species_traits = list(
+		HAIR,
+		FACEHAIR
+	)
 	inherent_traits = list(
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_TACKLING_FRAIL_ATTACKER,
+		TRAIT_ANTENNAE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
 	meat = /obj/item/food/meat/slab/human/mutant/fly
