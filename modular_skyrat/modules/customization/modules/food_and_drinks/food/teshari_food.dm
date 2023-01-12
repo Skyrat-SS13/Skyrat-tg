@@ -8,13 +8,13 @@
 	tastes = list("minty dough" = 1)
 	foodtypes = VEGETABLES
 
-/obj/item/food/piru_dough/MakeProcessable()
+/obj/item/food/piru_dough/make_processable()
 	AddElement(/datum/element/processable, TOOL_ROLLINGPIN, /obj/item/food/flat_piru_dough, 1, 3 SECONDS, table_required = TRUE, screentip_verb = "Flatten")
 
-/obj/item/food/piru_dough/MakeGrillable()
+/obj/item/food/piru_dough/make_grillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/piru_loaf, rand(15 SECONDS, 25 SECONDS), TRUE, TRUE)
 
-/obj/item/food/piru_dough/MakeBakeable()
+/obj/item/food/piru_dough/make_bakeable()
 	AddComponent(/datum/component/bakeable, /obj/item/food/piru_loaf, rand(15 SECONDS, 25 SECONDS), TRUE, TRUE)
 
 /obj/item/food/piru_loaf
@@ -28,7 +28,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	burns_on_grill = TRUE
 
-/obj/item/food/piru_loaf/MakeProcessable()
+/obj/item/food/piru_loaf/make_processable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/breadslice/piru, 4, 3 SECONDS, table_required = TRUE, screentip_verb = "Slice")
 
 /obj/item/food/breadslice/piru
@@ -49,13 +49,13 @@
 	tastes = list("minty dough" = 1)
 	foodtypes = VEGETABLES
 
-/obj/item/food/flat_piru_dough/MakeProcessable()
+/obj/item/food/flat_piru_dough/make_processable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/piru_pasta, 3, 3 SECONDS, table_required = TRUE, screentip_verb = "Slice")
 
-/obj/item/food/flat_piru_dough/MakeGrillable()
+/obj/item/food/flat_piru_dough/make_grillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/grilled_piru_flatbread, rand(15 SECONDS, 25 SECONDS), TRUE, TRUE)
 
-/obj/item/food/flat_piru_dough/MakeBakeable()
+/obj/item/food/flat_piru_dough/make_bakeable()
 	AddComponent(/datum/component/bakeable, /obj/item/food/grilled_piru_flatbread, rand(15 SECONDS, 25 SECONDS), TRUE, TRUE)
 
 /obj/item/food/grilled_piru_flatbread
@@ -152,7 +152,7 @@
 	tastes = list("crispy minty flatbread" = 1, "minty muli pods" = 1, "tomato sauce" = 1, "tangy spice" = 1, "baked meat" = 1)
 	foodtypes = VEGETABLES | MEAT
 
-/obj/item/food/sirisai_flatbread/MakeProcessable()
+/obj/item/food/sirisai_flatbread/make_processable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/sirisai_flatbread_slice, 4, 3 SECONDS, table_required = TRUE, screentip_verb = "Slice")
 
 /obj/item/food/sirisai_flatbread_slice

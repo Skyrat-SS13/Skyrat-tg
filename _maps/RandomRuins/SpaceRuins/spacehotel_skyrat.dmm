@@ -903,7 +903,7 @@
 "fj" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Hotel Maintenance";
-	req_access_txt = "200,201"
+	req_access = list("away_general","away_command")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/mapping_helpers/airlock/access/all/away/maintenance,
@@ -1618,7 +1618,7 @@
 "ij" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Hotel Maintenance";
-	req_access_txt = "200,201"
+	req_access = list("away_general","away_command")
 	},
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
@@ -1739,7 +1739,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/airlock/engineering{
 	name = "Power Storage";
-	req_access_txt = "200,201"
+	req_access = list("away_general","away_command")
 	},
 /obj/effect/mapping_helpers/airlock/access/all/away/maintenance,
 /obj/structure/disposalpipe/segment{
@@ -2622,7 +2622,7 @@
 "mx" = (
 /obj/machinery/door/airlock{
 	name = "Custodial Closet";
-	req_access_txt = "200,201"
+	req_access = list("away_general","away_command")
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
@@ -7822,7 +7822,7 @@
 "Vk" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Hotel Maintenance";
-	req_access_txt = "200,201"
+	req_access = list("away_general","away_command")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
