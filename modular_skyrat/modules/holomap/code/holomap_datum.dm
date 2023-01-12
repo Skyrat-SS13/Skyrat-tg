@@ -38,8 +38,8 @@
 		cursor.pixel_x = map_x - 6 + HOLOMAP_CENTER_X
 		cursor.pixel_y = map_y - 6 + HOLOMAP_CENTER_Y
 
-		legend.pixel_x = 96
-		legend.pixel_y = 96
+		legend.pixel_x = HOLOMAP_LEGEND_X
+		legend.pixel_y = HOLOMAP_LEGEND_Y
 
 		base_map.add_overlay(legend)
 		base_map.add_overlay(cursor)

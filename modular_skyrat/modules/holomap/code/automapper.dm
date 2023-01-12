@@ -12,9 +12,10 @@
 	amount_to_spawn = amt; }
 
 HOLOMAP_SPAWN(arrivals, /area/station/hallway/primary/fore, 2)
+HOLOMAP_SPAWN(arrivals, /area/station/hallway/primary/aft, 2)
+HOLOMAP_SPAWN(arrivals, /area/station/hallway/primary/central, 2)
 HOLOMAP_SPAWN(medbay, /area/station/medical/medbay/lobby, 1)
 HOLOMAP_SPAWN(dorms, /area/station/commons/dorms, 1)
-HOLOMAP_SPAWN(cryo, /area/station/common/cryopods, 1)
 HOLOMAP_SPAWN(sec, /area/station/security/office, 2)
 
 HOLOMAP_SPAWN_ENGI(engineering, /area/station/engineering/main, 2)
@@ -33,3 +34,4 @@ HOLOMAP_SPAWN_ENGI(bridge, /area/station/command/bridge, 1)
 	. = ..()
 
 #undef HOLOMAP_SPAWN
+#undef HOLOMAP_SPAWN_ENGI

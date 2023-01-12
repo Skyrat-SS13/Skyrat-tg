@@ -1,5 +1,9 @@
+#define HOLOMAP_LOW_LIGHT 1, 2
+#define HOLOMAP_HIGH_LIGHT 2, 3
+#define HOLOMAP_LIGHT_OFF 0
+
 // Wall mounted holomap of the station
-// Credit to polaris for the code which this map was based off of, and credit to VG for making it in the first place.
+// Credit to polaris for the code which this current map was originally based off of, and credit to VG for making it in the first place.
 
 /obj/machinery/station_map
 	name = "\improper station holomap"
@@ -71,7 +75,7 @@
 
 /// Tries to open the map for the given mob. Returns FALSE if it doesn't meet the criteria, TRUE if the map successfully opened with no runtimes.
 /obj/machinery/station_map/proc/open_map(var/mob/user)
-	if(!anchored || (machine_stat & (NOPOWER | BROKEN)) || !user?.client || panel_open)
+	if(!anchored || (machine_stat & (NOPOWER | BROKEN)) || !user?.client || panel_open || user.hud_used.holomap.used_station_map)
 		return FALSE
 
 	if(!holomap_datum)
@@ -90,7 +94,7 @@
 	playsound(src, 'modular_skyrat/modules/holomap/sound/holomap_open.ogg', 125)
 	animate(holomap_datum.base_map, alpha = 255, time = 5, easing = LINEAR_EASING)
 	icon_state = "station_map_active"
-	set_light(2, 3)
+	set_light(HOLOMAP_HIGH_LIGHT)
 
 	user.hud_used.holomap.used_station_map = src
 	user.hud_used.holomap.mouse_opacity = MOUSE_OPACITY_ICON
@@ -136,7 +140,7 @@
 			watching_mob.client.images -= holomap_datum.base_map
 			watching_mob.hud_used.holomap.used_station_map = null
 			watching_mob = null
-			set_light(1, 2)
+			set_light(HOLOMAP_LOW_LIGHT)
 
 	update_use_power(IDLE_POWER_USE)
 
@@ -145,9 +149,9 @@
 	update_icon()
 
 	if(machine_stat & NOPOWER)
-		set_light(0)
+		set_light(HOLOMAP_LIGHT_OFF)
 	else
-		set_light(1, 2)
+		set_light(HOLOMAP_LOW_LIGHT)
 
 /obj/machinery/station_map/proc/set_broken()
 	machine_stat |= BROKEN
@@ -245,7 +249,7 @@
 			pixel_x = -32
 			pixel_y = 0
 
-	setup_holomap() // Required to refresh the small map icon.
+	update_icon() // Required to refresh the small map icon.
 
 /obj/machinery/station_map/emp_act(severity)
 	set_broken()
@@ -300,3 +304,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/station_map/engineering, 32)
 	specific_parts = TRUE // Fuck you, triphasic scanner and an ultra laser to rebuild these, oh, and cause they make engineering's life that much easier, enjoy making a subspace analyser too.
 	build_path = /obj/machinery/station_map/engineering/directional/north
 	req_components = list(/obj/item/stock_parts/scanning_module/triphasic = 3, /obj/item/stock_parts/micro_laser/ultra = 4, /obj/item/stock_parts/subspace/analyzer = 1)
+
+#undef HOLOMAP_LOW_LIGHT
+#undef HOLOMAP_HIGH_LIGHT
+#undef HOLOMAP_LIGHT_OFF

@@ -17,8 +17,21 @@
 
 /atom/movable/screen/holomap/Click(location, control, params)
 	. = ..()
-	if(used_station_map)
+	if(!used_station_map)
+		return
+
+	if(LAZYACCESS(params2list(params), RIGHT_CLICK))
 		used_station_map.close_map()
+		return
+
+	var/list/modifiers = params2list(params)
+	var/icon_x = text2num(LAZYACCESS(modifiers, ICON_X))
+	var/icon_y = text2num(LAZYACCESS(modifiers, ICON_Y))
+
+	if(icon_x < HOLOMAP_LEGEND_X || icon_x > HOLOMAP_LEGEND_X + HOLOMAP_LEGEND_WIDTH || icon_x < HOLOMAP_LEGEND_Y || icon_x > HOLOMAP_LEGEND_Y + 128)
+		return
+
+	// Nothing yet
 
 /atom/movable/screen/holomap/MouseEntered(location, control, params)
 	. = ..()
@@ -29,7 +42,7 @@
 	return
 
 /atom/movable/screen/holomap/MouseMove(location, control, params)
-	if(isobserver(usr) || !used_station_map)
+	if(!used_station_map)
 		return
 
 	var/list/modifiers = params2list(params)

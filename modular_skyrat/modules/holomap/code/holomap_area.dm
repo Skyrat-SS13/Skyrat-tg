@@ -55,9 +55,9 @@
 
 // Service
 /area/station/service
-	holomap_color = HOLOMAP_AREACOLOR_CIV
+	holomap_color = HOLOMAP_AREACOLOR_SERVICE
 /area/station/commons/lounge
-	holomap_color = HOLOMAP_AREACOLOR_CIV
+	holomap_color = HOLOMAP_AREACOLOR_SERVICE
 
 // Cargo
 /area/station/cargo
@@ -83,7 +83,7 @@
 /area/mine/living_quarters
 	holomap_color = HOLOMAP_AREACOLOR_DORMS
 /area/mine/hydroponics
-	holomap_color = HOLOMAP_AREACOLOR_CIV
+	holomap_color = HOLOMAP_AREACOLOR_SERVICE
 /area/mine/medical
 	holomap_color = HOLOMAP_AREACOLOR_MEDICAL
 
@@ -93,7 +93,7 @@
 /area/station/hallway/secondary/command
 	holomap_color = HOLOMAP_AREACOLOR_COMMAND
 /area/station/hallway/secondary/service
-	holomap_color = HOLOMAP_AREACOLOR_CIV
+	holomap_color = HOLOMAP_AREACOLOR_SERVICE
 /area/station/hallway/secondary/exit/departure_lounge
 	holomap_color = HOLOMAP_AREACOLOR_ESCAPE
 /area/station/hallway/secondary/entry
@@ -127,7 +127,7 @@
 /area/station/command/heads_quarters/captain
 	holomap_color = HOLOMAP_AREACOLOR_COMMAND
 /area/station/command/heads_quarters/hop
-	holomap_color = HOLOMAP_AREACOLOR_CIV
+	holomap_color = HOLOMAP_AREACOLOR_SERVICE
 /area/station/command/heads_quarters/rd
 	holomap_color = HOLOMAP_AREACOLOR_SCIENCE
 /area/station/command/heads_quarters/ce
