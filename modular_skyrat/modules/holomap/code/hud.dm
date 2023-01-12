@@ -17,11 +17,8 @@
 
 /atom/movable/screen/holomap/Click(location, control, params)
 	. = ..()
-	// if(LAZYACCESS(params2list(params), RIGHT_CLICK))
-	// 	used_station_map.cycle_map_filter()
-	// 	return
-
-	used_station_map.close_map()
+	if(used_station_map)
+		used_station_map.close_map()
 
 /atom/movable/screen/holomap/MouseEntered(location, control, params)
 	. = ..()
