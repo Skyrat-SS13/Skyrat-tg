@@ -53,7 +53,7 @@
 	// Let them dump on the ground.
 	device = null
 	board = null
-	. = ..()
+	return ..()
 
 /obj/machinery/button/update_icon_state()
 	if(panel_open)
