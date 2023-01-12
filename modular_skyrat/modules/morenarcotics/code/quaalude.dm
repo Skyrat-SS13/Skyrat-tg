@@ -56,7 +56,7 @@
 
 	affected_carbon.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.25 * REM * delta_time)
 	affected_carbon.adjustToxLoss(0.25 * REM * delta_time, 0)
-	affected_carbon.adjust_drowsyness(0.25 * REM * normalise_creation_purity() * delta_time)
+	affected_carbon.adjust_drowsiness(0.5 SECONDS * REM * normalise_creation_purity() * delta_time)
 
 	if(DT_PROB(3.5, delta_time))
 		affected_carbon.emote("twitch")

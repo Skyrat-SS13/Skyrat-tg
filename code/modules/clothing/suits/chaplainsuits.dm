@@ -59,7 +59,7 @@
 	icon_state = "nun"
 	inhand_icon_state = "nun"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS|HANDS
-	flags_inv = HIDESHOES|HIDEJUMPSUIT
+	flags_inv = HIDEJUMPSUIT
 
 /datum/armor/chaplainsuit_armor
 	melee = 50
