@@ -44,7 +44,8 @@
 		overlay_entry.maptext_width = 64
 		base_map.add_overlay(overlay_entry)
 
-		overlay_data["[round(legend_y / 10)]"] = overlay_name
+		if(length(overlay_entry["markers"]))
+			overlay_data["[round(legend_y / 10)]"] = overlay_name
 
 		if(overlay_name in disabled_overlays)
 			var/image/disabled_marker = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "legend_cross")
