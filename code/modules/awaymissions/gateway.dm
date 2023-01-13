@@ -346,7 +346,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	for(var/atom/movable/content_item as anything in user.get_contents())
 		if(!is_type_in_list(content_item, type_blacklist))
 			continue
-		to_chat(user, span_warning("Something on you is blocking you from entering the gateway!"))
+		to_chat(user, span_warning("[content_item] seems to be blocking you from entering the gateway!"))
 		return
 	//SKYRAT EDIT END
 	if(!target)
