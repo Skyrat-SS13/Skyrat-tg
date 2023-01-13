@@ -300,7 +300,7 @@
 	"Deck Chief", 
 	"Supply Foreman", 
 	"Head of Supply", 
-	"Chief Requisition Officer", 
+	"Chief Requisitions Officer", 
 	"Logistics Officer",
 	)
 
