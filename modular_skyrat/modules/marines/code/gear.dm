@@ -77,6 +77,10 @@
 	underbarrel = new /obj/item/gun/ballistic/shotgun/automatic/as2/ubsg(src)
 	update_appearance()
 
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/shotgun/Destroy()
+	QDEL_NULL(underbarrel)
+	return ..()
+
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/shotgun/afterattack_secondary(atom/target, mob/living/user, flag, params)
 	underbarrel.afterattack(target, user, flag, params)
 	return SECONDARY_ATTACK_CONTINUE_CHAIN
@@ -100,6 +104,10 @@
 	. = ..()
 	underbarrel = new /obj/item/gun/ballistic/revolver/grenadelauncher/unrestricted(src)
 	update_appearance()
+
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/grenadelauncher/Destroy()
+	QDEL_NULL(underbarrel)
+	return ..()
 
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/grenadelauncher/afterattack_secondary(atom/target, mob/living/user, flag, params)
 	underbarrel.afterattack(target, user, flag, params)

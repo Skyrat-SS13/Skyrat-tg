@@ -1,7 +1,8 @@
 /obj/item/clothing/sextoy/magic_wand
 	name = "magic wand"
 	desc = "Not sure where is magic in this thing, but if you press button - it makes funny vibrations"
-	icon_state = "magicwand"
+	icon_state = "magicwand_off"
+	base_icon_state = "magicwand"
 	worn_icon_state = "magicwand"
 	inhand_icon_state = "magicwand"
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi'
@@ -55,7 +56,7 @@
 
 /obj/item/clothing/sextoy/magic_wand/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[vibration_mode]"
+	icon_state = "[base_icon_state]_[vibration_mode]"
 
 /obj/item/clothing/sextoy/magic_wand/equipped(mob/living/carbon/human/user, slot)
 	. = ..()

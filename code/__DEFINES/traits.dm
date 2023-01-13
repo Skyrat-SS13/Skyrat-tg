@@ -147,6 +147,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_BLIND "blind"
 /// Mute. Can't talk.
 #define TRAIT_MUTE "mute"
+/// Gibs on death and slips like ice.
+#define TRAIT_CURSED "cursed"
 /// Emotemute. Can't... emote.
 #define TRAIT_EMOTEMUTE "emotemute"
 #define TRAIT_DEAF "deaf"
@@ -510,6 +512,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PARALYSIS "paralysis"
 /// Used for limbs.
 #define TRAIT_DISABLED_BY_WOUND "disabled-by-wound"
+/// This movable atom has the explosive block element
+#define TRAIT_BLOCKING_EXPLOSIVES "blocking_explosives"
 
 /// Mobs with this trait can't send the mining shuttle console when used outside the station itself
 #define TRAIT_FORBID_MINING_SHUTTLE_CONSOLE_OUTSIDE_STATION "forbid_mining_shuttle_console_outside_station"
@@ -691,12 +695,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_ECHOLOCATION_RECEIVER "echolocation_receiver"
 /// Echolocation has a higher range.
 #define TRAIT_ECHOLOCATION_EXTRA_RANGE "echolocation_extra_range"
-
-//Medical Categories for quirks
-#define CAT_QUIRK_ALL 0
-#define CAT_QUIRK_NOTES 1
-#define CAT_QUIRK_MINOR_DISABILITY 2
-#define CAT_QUIRK_MAJOR_DISABILITY 3
 
 // common trait sources
 #define TRAIT_GENERIC "generic"

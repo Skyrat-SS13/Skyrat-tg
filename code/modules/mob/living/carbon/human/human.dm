@@ -4,19 +4,17 @@
 
 	icon_state = "" //Remove the inherent human icon that is visible on the map editor. We're rendering ourselves limb by limb, having it still be there results in a bug where the basic human icon appears below as south in all directions and generally looks nasty.
 
-	//initialize limbs first
-	create_bodyparts()
-
 	setup_mood()
 
+	create_dna()
+	dna.species.create_fresh_body(src)
 	setup_human_dna()
+
+	create_carbon_reagents()
+	set_species(dna.species.type)
+
 	prepare_huds() //Prevents a nasty runtime on human init
 
-	if(dna.species)
-		INVOKE_ASYNC(src, PROC_REF(set_species), dna.species.type)
-
-	//initialise organs
-	create_internal_organs() //most of it is done in set_species now, this is only for parent call
 	physiology = new()
 
 	. = ..()
@@ -43,7 +41,6 @@
 
 /mob/living/carbon/human/proc/setup_human_dna()
 	//initialize dna. for spawned humans; overwritten by other code
-	create_dna(src)
 	randomize_human(src)
 	dna.initialize_dna()
 
@@ -1067,9 +1064,10 @@
 	var/race = null
 	var/use_random_name = TRUE
 
-/mob/living/carbon/human/species/Initialize(mapload)
-	. = ..()
-	INVOKE_ASYNC(src, PROC_REF(set_species), race)
+/mob/living/carbon/human/species/create_dna()
+	dna = new /datum/dna(src)
+	if (!isnull(race))
+		dna.species = new race
 
 /mob/living/carbon/human/species/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE, list/override_features, list/override_mutantparts, list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE) // SKYRAT EDIT - Customization
 	. = ..()
