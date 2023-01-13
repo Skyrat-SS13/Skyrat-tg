@@ -101,10 +101,7 @@
 				continue
 
 			if(IS_CLOCK(human))
-				if(GLOB.clock_power < POWER_GIVE)
-					continue
-
-				if(power_cell.charge < power_cell.maxcharge)
+				if((power_cell.charge < power_cell.maxcharge) && GLOB.clock_power >= POWER_GIVE)
 					power_cell.give(power_cell.chargerate)
 					GLOB.clock_power -= POWER_GIVE
 
