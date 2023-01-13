@@ -532,8 +532,8 @@
 
 /datum/greyscale_config/overalls
 	name = "Overalls"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/under/under.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/overalls/overalls.json'
 
 /datum/greyscale_config/overalls/worn
 	name = "Overalls (Worn)"
