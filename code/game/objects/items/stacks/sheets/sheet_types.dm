@@ -126,7 +126,7 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	new/datum/stack_recipe("shower frame", /obj/structure/showerframe, 2, time= 2 SECONDS, category = CAT_FURNITURE)
 ))
 
-/obj/item/stack/sheet/iron//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/stack/sheet/iron
 	name = "iron"
 	desc = "Sheets made out of iron."
 	singular_name = "iron sheet"
@@ -250,7 +250,7 @@ GLOBAL_LIST_INIT(plasteel_recipes, list ( \
 	)), \
 ))
 
-/obj/item/stack/sheet/plasteel//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/stack/sheet/plasteel
 	name = "plasteel"
 	singular_name = "plasteel sheet"
 	desc = "This sheet is an alloy of iron and plasma."
@@ -340,7 +340,6 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 	armor_type = /datum/armor/mineral_wood
 	resistance_flags = FLAMMABLE
 	merge_type = /obj/item/stack/sheet/mineral/wood
-	novariants = TRUE
 	material_type = /datum/material/wood
 	grind_results = list(/datum/reagent/cellulose = 20) //no lignocellulose or lignin reagents yet,
 	walltype = /turf/closed/wall/mineral/wood
@@ -749,7 +748,7 @@ GLOBAL_LIST_INIT(plastic_recipes, list(
 	new /datum/stack_recipe("warning cone", /obj/item/clothing/head/cone, 2, category = CAT_EQUIPMENT), \
 	new /datum/stack_recipe("blank wall sign", /obj/item/sign, 1, category = CAT_FURNITURE)))
 
-/obj/item/stack/sheet/plastic//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/stack/sheet/plastic
 	name = "plastic"
 	desc = "Compress dinosaur over millions of years, then refine, split and mold, and voila! You have plastic."
 	singular_name = "plastic sheet"
