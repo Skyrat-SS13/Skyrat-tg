@@ -31,7 +31,7 @@
 	if(icon_x < HOLOMAP_LEGEND_X || icon_x > HOLOMAP_LEGEND_X + HOLOMAP_LEGEND_WIDTH || icon_y < HOLOMAP_LEGEND_Y || icon_y > used_station_map.holomap_datum.total_legend_y)
 		return
 
-	var/selected_entry = round(icon_y / 10, 1) // Always round down
+	var/selected_entry = round(icon_y / 10, 1) - 1 // Always round for a whole number, and subtract one cause I have no fucking idea what I'm doing
 	var/list/overlay_data = used_station_map.holomap_datum.overlay_data
 
 	if(!("[selected_entry]" in overlay_data))
