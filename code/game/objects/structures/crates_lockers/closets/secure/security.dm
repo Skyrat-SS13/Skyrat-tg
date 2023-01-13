@@ -29,6 +29,7 @@
 
 /obj/structure/closet/secure_closet/hop/PopulateContents()
 	..()
+	new /obj/item/dog_bone(src)
 	new /obj/item/storage/bag/garment/hop(src)
 	new /obj/item/storage/lockbox/medal/service(src)
 	new /obj/item/computer_disk/command/hop(src)
@@ -80,6 +81,7 @@
 
 /obj/structure/closet/secure_closet/warden/PopulateContents()
 	..()
+	new /obj/item/dog_bone(src)
 	new /obj/item/radio/headset/headset_sec(src)
 	new /obj/item/clothing/suit/armor/vest/warden(src)
 	//new /obj/item/clothing/head/hats/warden(src) SKYRAT EDIT REMOVAL
@@ -130,20 +132,20 @@
 	icon = 'icons/obj/storage/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/cargo/PopulateContents()
-	new /obj/item/storage/box/gunset/pepperball(src)
 	new /obj/item/storage/bag/garment/customs_agent(src)
 	new /obj/item/restraints/handcuffs/cable/orange(src)
+	new /obj/item/assembly/flash/handheld(src)
 
 /obj/structure/closet/secure_closet/security/engine
 	name = "\proper engineering guard's locker"
-	req_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ENGINE_EQUIP)
+	req_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ENGINEERING)
 	icon_state = "eng_secure"
 	icon = 'icons/obj/storage/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/engine/PopulateContents()
 	new /obj/item/restraints/handcuffs/cable/yellow(src)
-	new /obj/item/storage/box/gunset/pepperball(src)
 	new /obj/item/storage/bag/garment/engineering_guard(src)
+	new /obj/item/assembly/flash/handheld(src)
 
 /obj/structure/closet/secure_closet/security/science
 	name = "\proper science guard's locker"
@@ -153,8 +155,8 @@
 
 /obj/structure/closet/secure_closet/security/science/PopulateContents()
 	new /obj/item/restraints/handcuffs/cable/pink(src)
-	new /obj/item/storage/box/gunset/pepperball(src)
 	new /obj/item/storage/bag/garment/science_guard(src)
+	new /obj/item/assembly/flash/handheld(src)
 
 /obj/structure/closet/secure_closet/security/med
 	name = "\proper orderly's locker"
@@ -164,8 +166,8 @@
 
 /obj/structure/closet/secure_closet/security/med/PopulateContents()
 	new /obj/item/restraints/handcuffs/cable/blue(src)
-	new /obj/item/storage/box/gunset/pepperball(src)
 	new /obj/item/storage/bag/garment/orderly(src)
+	new /obj/item/assembly/flash/handheld(src)
 // SKYRAT EDIT CHANGE END -- GOOFSEC DEP GUARDS
 
 /obj/structure/closet/secure_closet/detective

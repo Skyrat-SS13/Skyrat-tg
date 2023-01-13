@@ -6,7 +6,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 50, /datum/reagent/consumable/nutriment/vitamin = 25)
 	foodtypes = MEAT | GRAIN
 
-/obj/item/food/snacks/store/bread/haggis/MakeProcessable()
+/obj/item/food/snacks/store/bread/haggis/make_processable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/snacks/breadslice/haggis, 5, 30, screentip_verb = "Slice")
 
 /obj/item/food/snacks/breadslice/haggis
