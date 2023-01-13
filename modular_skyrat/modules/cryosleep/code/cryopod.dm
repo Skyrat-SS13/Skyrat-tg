@@ -204,10 +204,6 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 		if(mob_occupant && mob_occupant.stat != DEAD)
 			to_chat(occupant, span_notice("<b>You feel cool air surround you. You go numb as your senses turn inward.</b>"))
 
-		var/mob/living/carbon/human/human_occupant = occupant
-		if(human_occupant)
-			human_occupant.save_individual_persistence()
-
 		COOLDOWN_START(src, despawn_world_time, time_till_despawn)
 	icon_state = "cryopod"
 
@@ -307,6 +303,10 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 /obj/machinery/cryopod/proc/despawn_occupant()
 	var/mob/living/mob_occupant = occupant
 	var/list/crew_member = list()
+
+	if(ishuman(occupant))
+		var/mob/living/carbon/human/human = occupant
+		human.save_individual_persistence()
 
 	crew_member["name"] = mob_occupant.real_name
 
