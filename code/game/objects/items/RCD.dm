@@ -442,10 +442,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 
 // `initial` does not work here. Neither does instantiating a wall/whatever
 // and referencing that. I don't know why.
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
-
 /proc/init_holographic_wall()
 	return getHologramIcon(
 		icon('icons/turf/walls/wall.dmi', "wall-0"),
@@ -518,10 +514,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 /obj/effect/rcd_hologram
 	name = "hologram"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
 
 /obj/effect/rcd_hologram/Initialize(mapload)
 	. = ..()
@@ -786,10 +778,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	var/energyfactor = 72
 
 
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
-
 /obj/item/construction/rcd/borg/useResource(amount, mob/user)
 	if(!iscyborg(user))
 		return 0
@@ -887,10 +875,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	inhand_icon_state = "oldrcd"
 	has_ammobar = FALSE
 
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
-
 /obj/item/construction/rcd/arcd/afterattack(atom/A, mob/user)
 	. = ..()
 	if(range_check(A,user))
@@ -950,10 +934,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	///will contain the original icons modified with the color choice
 	var/list/display_options = list()
 	var/color_choice = null
-
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
 
 /obj/item/construction/rld/Initialize(mapload)
 	. = ..()
@@ -1152,10 +1132,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 		"Fourth Layer" = 4,
 		"Fifth Layer" = 5,
 	)
-
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
 
 /obj/item/construction/plumbing/Initialize(mapload)
 	. = ..()
@@ -1410,10 +1386,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
 	has_ammobar = TRUE
 
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
-
 /obj/item/construction/plumbing/research/set_plumbing_designs()
 	plumbing_design_types = list(
 		//category 1 synthesizers
@@ -1439,10 +1411,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	desc = "A type of plumbing constructor designed to rapidly deploy the machines needed to make a brewery."
 	icon_state = "plumberer_service"
 	has_ammobar = TRUE
-
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
 
 /obj/item/construction/plumbing/service/set_plumbing_designs()
 	plumbing_design_types = list(

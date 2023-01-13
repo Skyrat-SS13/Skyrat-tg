@@ -77,16 +77,6 @@
 	resistance_flags = INDESTRUCTIBLE
 	actions_types = list(/datum/action/item_action/berserk_mode)
 
-/datum/armor/berserker_gatsu
-	melee = 40
-	bullet = 40
-	laser = 20
-	energy = 25
-	bomb = 70
-	bio = 100
-	fire = 100
-	acid = 100
-
 /obj/item/clothing/head/hooded/berserker/gatsu/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, LOCKED_HELMET_TRAIT)
