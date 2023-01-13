@@ -320,3 +320,12 @@
 	greyscale_config_worn = /datum/greyscale_config/hawaiian_shirt/worn
 	greyscale_colors = "#313B82#CCCFF0"
 	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/suit/apron/overalls/greyscale
+	desc = "A set of overalls."
+	icon_state = "overalls"
+	greyscale_config = /datum/greyscale_config/overalls
+	greyscale_config_worn = /datum/greyscale_config/overalls/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/overalls/worn/digi
+	greyscale_colors = "#594032"
+	flags_1 = IS_PLAYER_COLORABLE_1
