@@ -24,7 +24,7 @@
 	color = "#810000"
 	foodtypes = GRAIN | GORE | BLOODY | RAW
 
-/obj/item/food/hemophage/blood_rice_pearl/raw/make_microwavable()
+/obj/item/food/hemophage/blood_rice_pearl/raw/make_microwaveable()
 	AddElement(/datum/element/microwavable, /obj/item/food/hemophage/blood_rice_pearl)
 
 
@@ -47,7 +47,7 @@
 	tastes = list("blood" = 5, "raw pasta" = 1)
 	foodtypes = GRAIN | GORE | BLOODY | RAW
 
-/obj/item/food/hemophage/blood_noodles/raw/make_microwavable()
+/obj/item/food/hemophage/blood_noodles/raw/make_microwaveable()
 	AddElement(/datum/element/microwavable, /obj/item/food/hemophage/blood_noodles)
 
 
