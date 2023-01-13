@@ -619,6 +619,6 @@
 	ckeywhitelist = list("razurath")
 
 /datum/loadout_item/pocket_items/masvedishcigar
-	name = "Bright Cosmos cigar"
-	item_path = /obj/item/clothing/mask/holocigarette/masvedishcigar
+	name = "Holocigar"
+	item_path = /obj/item/clothing/mask/hollocigarette/masvedishcigar
 	ckeywhitelist = list("masvedish")
