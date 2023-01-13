@@ -223,7 +223,7 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 	name = "Charge Slab"
 	end_on_invocation = FALSE
 	/// Time to perform this
-	var/use_time = 10
+	var/use_time = 1 SECONDS
 	/// Overlay for the item/inhand state while this is invoked
 	var/slab_overlay = "volt"
 	/// Progressbar datum for count_down()
