@@ -20,35 +20,39 @@ GLOBAL_LIST_INIT(modular_persistence_ignored_vars, list(
 	"stored_character_slot_index",
 ))
 
+/mob/living/carbon/human
+	/// The modular persistence data for a character.
+	var/datum/modular_persistence/modular_persistence
+
 /// Saves the contents of the modular persistence datum for the player's client to their file.
 /datum/controller/subsystem/persistence/proc/save_modular_persistence()
 	for(var/mob/living/carbon/human/player as anything in GLOB.human_list)
-		if(!ishuman(player) || !player.client?.prefs)
+		if(!ishuman(player))
 			continue
 
-		if(!player.client.prefs.modular_persistence)
+		if(!player.modular_persistence)
 			stack_trace("[player] doesn't have a modular_persistence variable in their prefs datum")
 			continue
 
-		var/json_file = file("data/player_saves/[player.client.ckey[1]]/[player.client.ckey]/modular_persistence.json")
+		var/json_file = file("data/player_saves/[player.ckey[1]]/[player.ckey]/modular_persistence.json")
 		var/list/json = fexists(json_file) ? json_decode(file2text(json_file)) : list()
 		fdel(json_file)
 
 		if(!islist(json))
 			json = list()
 
-		json["[player.client.prefs.modular_persistence.stored_character_slot_index]"] = player.client.prefs.modular_persistence.serialize_contents_to_list()
+		json["[player.modular_persistence.stored_character_slot_index]"] = player.modular_persistence.serialize_contents_to_list()
 		WRITE_FILE(json_file, json_encode(json))
 
 /// Saves the contents of the modular persistence datum for the player's client to their file.
 /datum/controller/subsystem/persistence/proc/load_modular_persistence(mob/living/carbon/human/player)
-	if(!ishuman(player) || !player.client?.prefs)
+	if(!ishuman(player))
 		return FALSE
 
-	var/json_file = file("data/player_saves/[player.client.ckey[1]]/[player.client.ckey]/modular_persistence.json")
+	var/json_file = file("data/player_saves/[player.ckey[1]]/[player.ckey]/modular_persistence.json")
 	var/list/json = fexists(json_file) ? json_decode(file2text(json_file)) : null
 
-	player.client.prefs.modular_persistence = new(player, islist(json) ? json["[player.mind.original_character_slot_index]"] : null)
+	player.modular_persistence = new(player, islist(json) ? json["[player.mind.original_character_slot_index]"] : null)
 
 /// The master persistence datum. Add vars onto this in your own code. Just be aware that you'll need to use simple data types, such as strings, ints, and lists.
 /datum/modular_persistence
@@ -96,12 +100,12 @@ GLOBAL_LIST_INIT(modular_persistence_ignored_vars, list(
 	if(!client?.prefs)
 		return FALSE
 
-	var/json_file = file("data/player_saves/[client.ckey[1]]/[client.ckey]/modular_persistence.json")
+	var/json_file = file("data/player_saves/[ckey[1]]/[ckey]/modular_persistence.json")
 	var/list/json = fexists(json_file) ? json_decode(file2text(json_file)) : list()
 	fdel(json_file)
 
 	if(!islist(json))
 		json = list()
 
-	json["[client.prefs.modular_persistence.stored_character_slot_index]"] = client.prefs.modular_persistence.serialize_contents_to_list()
+	json["[modular_persistence.stored_character_slot_index]"] = modular_persistence.serialize_contents_to_list()
 	WRITE_FILE(json_file, json_encode(json))

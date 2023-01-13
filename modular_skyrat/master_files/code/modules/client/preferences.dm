@@ -53,9 +53,6 @@
 	/// A photo of the character, visible on close examine
 	var/headshot = ""
 
-	/// The modular persistence data for a character.
-	var/datum/modular_persistence/modular_persistence
-
 /datum/preferences/proc/species_updated(species_type)
 	all_quirks = list()
 	// Reset cultural stuff
