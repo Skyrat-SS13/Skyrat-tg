@@ -47,7 +47,7 @@
 	var/penis_girth_reduction_step = 1
 	
 	/// Largest size the chem can make a mob's balls
-	var/balls_max_size = TESTICLES_MAX_SIZE - 1
+	var/balls_max_size = TESTICLES_MAX_SIZE
 	/// Make the balls enormous only when the penis reaches a certain size
 	var/balls_enormous_size_threshold = PENIS_MAX_LENGTH - 4
 
