@@ -655,7 +655,6 @@
 		"mesons_prescription",
 		"multi_cell_charger",
 		"tray_goggles_prescription",
-		"plumbing_chem",
 		"plumbing_eng",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
