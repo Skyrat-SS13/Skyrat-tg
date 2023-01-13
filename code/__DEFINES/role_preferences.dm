@@ -43,6 +43,7 @@
 #define ROLE_BORER "Borer"
 #define ROLE_DRIFTING_CONTRACTOR "Drifting Contractor"
 #define ROLE_MUTANT "Mutated Abomination"
+#define ROLE_CLOCK_CULTIST "Clock Cultist"
 // SKYRAT EDIT END
 
 // Latejoin roles

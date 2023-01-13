@@ -7,3 +7,6 @@
 
 // ERT faction
 #define FACTION_ERT "ert"
+
+// Clock cult's faction
+#define FACTION_CLOCK "clock"

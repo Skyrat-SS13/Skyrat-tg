@@ -133,7 +133,6 @@
 		special_desc_requirement = NONE // No point in keeping something that can't no longer be used
 		narsian = TRUE
 
-/* The other one isn't merged yet so we'll wait.
 /obj/item/nullrod/spear
 	special_desc_requirement = EXAMINE_CHECK_JOB
 	special_desc_jobs = list(JOB_CHAPLAIN)
@@ -142,11 +141,12 @@
 
 /obj/item/nullrod/spear/attack_self(mob/user)
 	if(ratvarian)
-	else if(user.mind && (user.mind.holy_role))
+		return ..()
+	else if(user.mind?.holy_role)
+		to_chat(user, span_bigbrass("The sound of cogs permeates your head..."))
 		user.grant_language(/datum/language/ratvar, TRUE, TRUE, LANGUAGE_MIND)
 		special_desc_requirement = NONE // No point in keeping something that can't no longer be used
 		ratvarian = TRUE
-*/
 
 /obj/item/nullrod/rosary
 	name = "prayer beads"
