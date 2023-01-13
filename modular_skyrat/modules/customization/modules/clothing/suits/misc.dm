@@ -349,11 +349,11 @@
 		to_chat(user, span_warning("You must be holding [src] in order to adjust it!"))
 		return
 	switch(slot_flags)
-		if(slot_flags & ITEM_SLOT_ICLOTHING)
+		if(ITEM_SLOT_ICLOTHING)
 			slot_flags = ITEM_SLOT_OCLOTHING
 			to_chat(user, span_warning("You adjust [src] to let you wear it over jumpsuits."))
 			return
-		if(slot_flags & ITEM_SLOT_OCLOTHING)
+		if(ITEM_SLOT_OCLOTHING)
 			slot_flags = ITEM_SLOT_ICLOTHING
 			to_chat(user, span_warning("You adjust [src] to let you wear it as a jumpsuit."))
 			return
