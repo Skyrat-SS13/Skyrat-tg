@@ -146,12 +146,16 @@
 	if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/penis_enlargement))
 		// Start making new genitals if prefs allow it and if there isn't already one there
 		if(!exposed_mob.getorganslot(ORGAN_SLOT_PENIS) && exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
+			// If the user has not defined prefs for their penis type, try to assign is based on the species, defaulting to human
 			var/list/data = species_to_penis[exposed_mob.dna.species.id]
 			if(!data)
 				data = species_to_penis[SPECIES_HUMAN]
-			exposed_mob.dna.features["penis_sheath"] = data["sheath"]
-			exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_PENIS][MUTANT_INDEX_NAME] = data["mutant_index"]
-			exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_TESTICLES][MUTANT_INDEX_NAME] = data["balls"]
+			if(exposed_mob.dna.features["penis_sheath"] == "None")
+				exposed_mob.dna.features["penis_sheath"] = data["sheath"]
+			if(exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_PENIS][MUTANT_INDEX_NAME] == "None")
+				exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_PENIS][MUTANT_INDEX_NAME] = data["mutant_index"]
+			if(exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_TESTICLES][MUTANT_INDEX_NAME] == "None")
+				exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_TESTICLES][MUTANT_INDEX_NAME] = data["balls"]
 			var/colour = data["colour"]
 			if(colour)
 				exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_PENIS][MUTANT_INDEX_COLOR_LIST] = list(colour)
