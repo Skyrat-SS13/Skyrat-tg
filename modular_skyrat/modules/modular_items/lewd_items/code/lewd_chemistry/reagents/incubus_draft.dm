@@ -163,7 +163,7 @@
 				new_balls.genital_size = 0
 				new_balls.update_sprite_suffix()
 
-			var/obj/item/organ/external/genital/penis/new_penis = new /obj/item/organ/external/genital/penis
+			var/obj/item/organ/external/genital/penis/new_penis = new
 			new_penis.build_from_dna(exposed_mob.dna, ORGAN_SLOT_PENIS)
 			new_penis.Insert(exposed_mob, 0, FALSE)
 			new_penis.genital_size = 4

@@ -140,12 +140,11 @@
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
 		// Start making new breasts if prefs allow it and we don't already have them
 		if(!exposed_mob.getorganslot(ORGAN_SLOT_BREASTS) && exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
-			var/obj/item/organ/path = /obj/item/organ/external/genital/breasts
-			exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_BREASTS][MUTANT_INDEX_NAME] = "Pair"
-			path = new /obj/item/organ/external/genital/breasts
-			path.build_from_dna(exposed_mob.dna, ORGAN_SLOT_BREASTS)
-			path.Insert(exposed_mob, FALSE, FALSE)
-			var/obj/item/organ/external/genital/new_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
+			if (exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_BREASTS][MUTANT_INDEX_NAME] == "None")
+				exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_BREASTS][MUTANT_INDEX_NAME] = "Pair"
+			var/obj/item/organ/external/genital/breasts/new_breasts = new
+			new_breasts.build_from_dna(exposed_mob.dna, ORGAN_SLOT_BREASTS)
+			new_breasts.Insert(exposed_mob, FALSE, FALSE)
 			new_breasts.genital_size = 2
 			new_breasts.update_sprite_suffix()
 			exposed_mob.update_body()
@@ -162,7 +161,7 @@
 	// Add new vagina and womb if prefs allow
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
 		if(!exposed_mob.getorganslot(ORGAN_SLOT_VAGINA))
-			var/obj/item/organ/external/genital/vagina/new_vagina = new /obj/item/organ/external/genital/vagina
+			var/obj/item/organ/external/genital/vagina/new_vagina = new
 			if (exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_VAGINA][MUTANT_INDEX_NAME] == "None")
 				exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_VAGINA][MUTANT_INDEX_NAME] = "Human"
 			new_vagina.build_from_dna(exposed_mob.dna, ORGAN_SLOT_VAGINA)
@@ -171,7 +170,9 @@
 			if(!incubus_draft)
 				to_chat(exposed_mob, span_purple("You feel a warmth in your groin as something blossoms down there."))
 		if(!exposed_mob.getorganslot(ORGAN_SLOT_WOMB))
-			var/obj/item/organ/external/genital/womb/new_womb = new /obj/item/organ/external/genital/womb
+			var/obj/item/organ/external/genital/womb/new_womb = new
+			if (exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_WOMB][MUTANT_INDEX_NAME] == "None")
+				exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_WOMB][MUTANT_INDEX_NAME] = "Normal"
 			new_womb.build_from_dna(exposed_mob.dna, ORGAN_SLOT_WOMB)
 			new_womb.Insert(exposed_mob, 0, FALSE)
 			exposed_mob.update_body()
