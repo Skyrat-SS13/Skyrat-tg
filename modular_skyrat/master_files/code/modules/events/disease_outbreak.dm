@@ -1,4 +1,7 @@
-// We pick 3 symptoms from a defined list (removing the really bad ones like deafness, blindness, spontaneous combustion etc.)
+#define EVENT_MIN_SYMPTOMS 2
+#define EVENT_MAX_SYMPTOMS 4
+
+// We pick symptoms from a defined list (removing the really bad ones like deafness, blindness, spontaneous combustion etc.)
 /datum/round_event/disease_outbreak/advanced/start()
 	var/datum/round_event_control/disease_outbreak/advanced/disease_event = control
 	afflicted += disease_event.disease_candidates
@@ -8,7 +11,7 @@
 		max_symptoms = disease_event.chosen_max_symptoms
 		disease_event.chosen_max_symptoms = null
 	else
-		max_symptoms = 3 // Consistent symptoms taking into account severity
+		max_symptoms = rand(EVENT_MIN_SYMPTOMS,EVENT_MAX_SYMPTOMS) // Pick how many symptoms
 
 	if(disease_event.chosen_severity)
 		max_severity = disease_event.chosen_severity
@@ -122,3 +125,6 @@
 		// Get the cure name from the cure_id
 		var/datum/reagent/cure = GLOB.chemical_reagents_list[cures[1]]
 		cure_text = cure.name
+
+#undef EVENT_MIN_SYMPTOMS
+#undef EVENT_MAX_SYMPTOMS
