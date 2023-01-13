@@ -152,10 +152,7 @@ There are several things that need to be remembered:
 	if(wear_id)
 		var/obj/item/worn_item = wear_id
 		update_hud_id(worn_item)
-		var/icon_file
-
-		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
-			icon_file = 'icons/mob/clothing/id.dmi'
+		var/icon_file = 'icons/mob/clothing/id.dmi'
 
 		id_overlay = wear_id.build_worn_icon(default_layer = ID_LAYER, default_icon_file = icon_file)
 
@@ -196,6 +193,7 @@ There are several things that need to be remembered:
 		if(check_obscured_slots(transparent_protection = TRUE) & ITEM_SLOT_GLOVES)
 			return
 
+<<<<<<< HEAD
 		var/icon_file
 
 		// SKYRAT EDIT ADDITION
@@ -208,6 +206,9 @@ There are several things that need to be remembered:
 
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/hands.dmi'
+=======
+		var/icon_file = 'icons/mob/clothing/hands.dmi'
+>>>>>>> 74069f815a7 (Removes cargo culting from human mob icon update (#72641))
 
 		var/mutable_appearance/gloves_overlay = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
 
@@ -235,6 +236,7 @@ There are several things that need to be remembered:
 		if(check_obscured_slots(transparent_protection = TRUE) & ITEM_SLOT_EYES)
 			return
 
+<<<<<<< HEAD
 		var/icon_file
 
 		// SKYRAT EDIT ADDITION
@@ -247,6 +249,9 @@ There are several things that need to be remembered:
 
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/eyes.dmi'
+=======
+		var/icon_file = 'icons/mob/clothing/eyes.dmi'
+>>>>>>> 74069f815a7 (Removes cargo culting from human mob icon update (#72641))
 
 		var/mutable_appearance/glasses_overlay = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
 
@@ -274,6 +279,7 @@ There are several things that need to be remembered:
 		if(check_obscured_slots(transparent_protection = TRUE) & ITEM_SLOT_EARS)
 			return
 
+<<<<<<< HEAD
 		var/icon_file
 
 		// SKYRAT EDIT ADDITION
@@ -286,6 +292,9 @@ There are several things that need to be remembered:
 
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/ears.dmi'
+=======
+		var/icon_file = 'icons/mob/clothing/ears.dmi'
+>>>>>>> 74069f815a7 (Removes cargo culting from human mob icon update (#72641))
 
 		var/mutable_appearance/ears_overlay = ears.build_worn_icon(default_layer = EARS_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
 
@@ -309,6 +318,7 @@ There are several things that need to be remembered:
 		if(check_obscured_slots(transparent_protection = TRUE) & ITEM_SLOT_NECK)
 			return
 
+<<<<<<< HEAD
 		var/icon_file
 
 		// SKYRAT EDIT ADDITION
@@ -321,6 +331,9 @@ There are several things that need to be remembered:
 
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/neck.dmi'
+=======
+		var/icon_file = 'icons/mob/clothing/neck.dmi'
+>>>>>>> 74069f815a7 (Removes cargo culting from human mob icon update (#72641))
 
 		var/mutable_appearance/neck_overlay = worn_item.build_worn_icon(default_layer = NECK_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
 
@@ -348,6 +361,7 @@ There are several things that need to be remembered:
 		if(check_obscured_slots(transparent_protection = TRUE) & ITEM_SLOT_FEET)
 			return
 
+<<<<<<< HEAD
 		var/icon_file
 		var/mutant_override = FALSE // SKYRAT EDIT ADDITION
 
@@ -367,6 +381,9 @@ There are several things that need to be remembered:
 
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = DEFAULT_SHOES_FILE
+=======
+		var/icon_file = DEFAULT_SHOES_FILE
+>>>>>>> 74069f815a7 (Removes cargo culting from human mob icon update (#72641))
 
 		var/mutable_appearance/shoes_overlay = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
 
@@ -415,6 +432,7 @@ There are several things that need to be remembered:
 		if(check_obscured_slots(transparent_protection = TRUE) & ITEM_SLOT_HEAD)
 			return
 
+<<<<<<< HEAD
 		var/icon_file
 
 		// SKYRAT EDIT ADDITION - This needs to be refactored.
@@ -431,6 +449,9 @@ There are several things that need to be remembered:
 
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/head/default.dmi'
+=======
+		var/icon_file = 'icons/mob/clothing/head/default.dmi'
+>>>>>>> 74069f815a7 (Removes cargo culting from human mob icon update (#72641))
 
 		var/mutable_appearance/head_overlay = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
 
@@ -456,6 +477,7 @@ There are several things that need to be remembered:
 		if(check_obscured_slots(transparent_protection = TRUE) & ITEM_SLOT_BELT)
 			return
 
+<<<<<<< HEAD
 		var/icon_file
 
 		// SKYRAT EDIT ADDITION
@@ -468,6 +490,9 @@ There are several things that need to be remembered:
 
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/belt.dmi'
+=======
+		var/icon_file = 'icons/mob/clothing/belt.dmi'
+>>>>>>> 74069f815a7 (Removes cargo culting from human mob icon update (#72641))
 
 		var/mutable_appearance/belt_overlay = belt.build_worn_icon(default_layer = BELT_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
 
@@ -488,6 +513,7 @@ There are several things that need to be remembered:
 	if(wear_suit)
 		var/obj/item/worn_item = wear_suit
 		update_hud_wear_suit(worn_item)
+<<<<<<< HEAD
 		var/icon_file
 
 		var/mutant_override = FALSE // SKYRAT EDIT ADDITION
@@ -506,6 +532,9 @@ There are several things that need to be remembered:
 
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = DEFAULT_SUIT_FILE
+=======
+		var/icon_file = DEFAULT_SUIT_FILE
+>>>>>>> 74069f815a7 (Removes cargo culting from human mob icon update (#72641))
 
 		// SKYRAT EDIT ADDITION START - Taur-friendly suits!
 		var/obj/item/clothing/suit/worn_suit = wear_suit
@@ -562,6 +591,7 @@ There are several things that need to be remembered:
 		if(check_obscured_slots(transparent_protection = TRUE) & ITEM_SLOT_MASK)
 			return
 
+<<<<<<< HEAD
 		var/icon_file
 
 		// SKYRAT EDIT ADDITION
@@ -578,6 +608,9 @@ There are several things that need to be remembered:
 
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/mask.dmi'
+=======
+		var/icon_file = 'icons/mob/clothing/mask.dmi'
+>>>>>>> 74069f815a7 (Removes cargo culting from human mob icon update (#72641))
 
 		var/mutable_appearance/mask_overlay = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
 
@@ -600,6 +633,7 @@ There are several things that need to be remembered:
 		var/obj/item/worn_item = back
 		var/mutable_appearance/back_overlay
 		update_hud_back(worn_item)
+<<<<<<< HEAD
 		var/icon_file
 
 		// SKYRAT EDIT ADDITION
@@ -612,6 +646,9 @@ There are several things that need to be remembered:
 
 		if(!icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 			icon_file = 'icons/mob/clothing/back.dmi'
+=======
+		var/icon_file = 'icons/mob/clothing/back.dmi'
+>>>>>>> 74069f815a7 (Removes cargo culting from human mob icon update (#72641))
 
 		back_overlay = back.build_worn_icon(default_layer = BACK_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
 
