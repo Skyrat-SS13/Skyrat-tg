@@ -145,7 +145,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	)
 	if(is_type_in_list(AM, type_blacklist))
 		return
-	for(var/atom/movable/content_item as anything in AM.contents)
+	for(var/atom/movable/content_item as anything in AM.get_all_contents())
 		if(!is_type_in_list(content_item, type_blacklist))
 			continue
 		to_chat(AM, span_warning("Something on you is blocking you from entering the gateway!"))
@@ -342,7 +342,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	)
 	if(is_type_in_list(user, type_blacklist))
 		return
-	for(var/atom/movable/content_item as anything in user.contents)
+	for(var/atom/movable/content_item as anything in user.get_contents())
 		if(!is_type_in_list(content_item, type_blacklist))
 			continue
 		to_chat(user, span_warning("Something on you is blocking you from entering the gateway!"))
