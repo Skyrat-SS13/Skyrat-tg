@@ -302,7 +302,6 @@
 		"xlarge_beaker",
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
-		"engi_plumbing",
 		"hospital_gown",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
@@ -394,6 +393,7 @@
 	description = "What makes us tick." //the MC, silly!
 	prereq_ids = list("base")
 	design_ids = list(
+
 		"beer_dispenser",
 		"blood_pack",
 		"chem_dispenser",
@@ -415,6 +415,7 @@
 		"medipen_refiller",
 		"pandemic",
 		"soda_dispenser",
+
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	required_experiments = list(/datum/experiment/dissection/human)
@@ -655,7 +656,6 @@
 		"tray_goggles_prescription",
 		"plumbing_chem",
 		"plumbing_eng",
-		"plumbing_sci"
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 15000)
