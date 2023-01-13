@@ -330,6 +330,13 @@
 	greyscale_colors = "#594032"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
+/obj/item/clothing/suit/apron/overalls/greyscale/examine(mob/user)
+	. = ..()
+
+	. += span_notice("With <b>Alt + Click</b> you can switch this between making it overclothes or jumpsuit slot wearable.")
+
+	return .
+
 /obj/item/clothing/suit/apron/overalls/greyscale/AltClick(mob/user)
 	. = ..()
 	if(!iscarbon(user))
