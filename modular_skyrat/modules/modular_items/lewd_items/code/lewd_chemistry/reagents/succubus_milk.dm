@@ -190,7 +190,6 @@
 			exposed_mob.physique = exposed_mob.gender
 			exposed_mob.update_body()
 			exposed_mob.update_mutations_overlay()
-	
 		
 	// Cock & ball shrinkage portion. Check if prefs allow for this.
 	var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
