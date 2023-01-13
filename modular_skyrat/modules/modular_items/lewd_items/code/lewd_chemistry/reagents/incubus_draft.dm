@@ -185,7 +185,7 @@
 					to_chat(exposed_mob, span_purple("Your balls [pick(ball_action_text_list)]. They are now [mob_testicles.balls_size_to_description(mob_testicles.genital_size)]."))
 			else if(mob_testicles.genital_size == 2) 
 				var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
-				if(mob_penis?.genital_size >= penis_max_length-4) // Make the balls enormous only when the penis reaches a certain size theshold
+				if(mob_penis?.genital_size >= penis_max_length - 4) // Make the balls enormous only when the penis reaches a certain size theshold
 					mob_testicles.genital_size++
 					mob_testicles.update_sprite_suffix()
 					exposed_mob.update_body()
