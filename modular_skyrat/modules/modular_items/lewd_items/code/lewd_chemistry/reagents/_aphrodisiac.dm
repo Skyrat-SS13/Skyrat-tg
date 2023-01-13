@@ -25,6 +25,9 @@
 
 	/// % chance for damage to be applied when the organ is too large and the mob is clothed
 	var/damage_chance = 20
+	
+	/// % chance for testicle growth to occur
+	var/balls_increase_chance = 20
 
 	/// Largest length the chem can make a mob's penis
 	var/penis_max_length = PENIS_MAX_LENGTH
@@ -42,6 +45,11 @@
 	var/penis_size_reduction_step = 1
 	/// How much to reduce the girth of the penis each time it's run
 	var/penis_girth_reduction_step = 1
+	
+	/// Largest size the chem can make a mob's balls
+	var/balls_max_size = TESTICLES_MAX_SIZE - 1
+	/// Make the balls enormous only when the penis reaches a certain size
+	var/balls_enormous_size_threshold = PENIS_MAX_LENGTH - 4
 
 	/// Largest size the chem can make a mob's breasts
 	var/max_breast_size = 16

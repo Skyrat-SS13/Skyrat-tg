@@ -15,6 +15,7 @@
 	metabolization_rate = 0.25
 	life_pref_datum = /datum/preference/toggle/erp/penis_enlargement
 	overdose_pref_datum = /datum/preference/toggle/erp
+	balls_max_size = TESTICLES_MAX_SIZE - 1
 
 	// Not important at all, really, but I don't want folk complaining about a removed feature.
 	var/static/list/species_to_penis = list(
@@ -137,11 +138,9 @@
 
 /datum/reagent/drug/aphrodisiac/incubus_draft/overdose_effects(mob/living/carbon/human/exposed_mob)
 	// Check if overdosing on incubus draft and succubus milk simultaneously, to prevent chat spam
-	var double_dosing = FALSE
-	for(var/r in exposed_mob.reagents.reagent_list)
-		var/datum/reagent/reagent = r
-		if(reagent.name == "succubus milk" && reagent.overdosed)
-			double_dosing = TRUE
+	var/datum/reagent/drug/aphrodisiac/succubus_milk/succubus_milk = locate(/datum/reagent/drug/aphrodisiac/succubus_milk) in exposed_mob.reagents.reagent_list 
+	if(succubus_milk && !succubus_milk.overdosed)
+		succubus_milk  = null
 
 	// Begin cock growth
 	if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/penis_enlargement))
@@ -171,30 +170,30 @@
 			new_penis.girth = 3
 			new_penis.update_sprite_suffix()
 			exposed_mob.update_body()
-			if(!double_dosing)
+			if(!succubus_milk)
 				to_chat(exposed_mob, span_purple("Your crotch feels warm as something suddenly sprouts between your legs."))
 			
 		// Makes the balls bigger if they're small.
 		var/obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
 		if(mob_testicles)
-			if(mob_testicles.genital_size < 2 && prob(20)) // Add some randomness so growth happens more gradually in most cases
+			if(mob_testicles.genital_size < balls_max_size && prob(balls_increase_chance)) // Add some randomness so growth happens more gradually in most cases
 				mob_testicles.genital_size++
 				mob_testicles.update_sprite_suffix()
 				exposed_mob.update_body()
-				if(!double_dosing) // So we don't spam chat
+				if(!succubus_milk) // So we don't spam chat
 					to_chat(exposed_mob, span_purple("Your balls [pick(ball_action_text_list)]. They are now [mob_testicles.balls_size_to_description(mob_testicles.genital_size)]."))
-			else if(mob_testicles.genital_size == 2) 
+			else if(mob_testicles.genital_size == balls_max_size) 
 				var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
-				if(mob_penis?.genital_size >= penis_max_length - 4) // Make the balls enormous only when the penis reaches a certain size theshold
+				if(mob_penis?.genital_size >= balls_enormous_size_threshold) // Make the balls enormous only when the penis reaches a certain size
 					mob_testicles.genital_size++
 					mob_testicles.update_sprite_suffix()
 					exposed_mob.update_body()
-					if(!double_dosing)
+					if(!succubus_milk)
 						to_chat(exposed_mob, span_purple("You can feel your heavy balls churn as they swell to enormous proportions!"))
 	
 	// Separates gender change stuff from cock growth, breast shrinkage, and female genitalia removal
 	if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/gender_change))
-		if (double_dosing)
+		if (succubus_milk)
 			if(exposed_mob.gender != PLURAL)
 				exposed_mob.set_gender(PLURAL)
 				exposed_mob.physique = exposed_mob.gender
@@ -217,7 +216,7 @@
 			// Handle completely shrinking away, if prefs allow
 			else if(mob_breasts.genital_size == breast_minimum_size) 
 				if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
-					if(!double_dosing)
+					if(!succubus_milk)
 						to_chat(exposed_mob, span_purple("Your breasts have completely tightened into firm, flat pecs."))
 					mob_breasts.Remove(exposed_mob)
 					exposed_mob.update_body()
@@ -229,7 +228,7 @@
 		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
 			mob_vagina.Remove(exposed_mob)
 			exposed_mob.update_body()
-			if(!double_dosing)
+			if(!succubus_milk)
 				to_chat(exposed_mob, span_purple("You can the feel the muscles in your groin begin to tighten as your vagina seals itself completely shut."))
 			
 	if(mob_womb)

@@ -132,11 +132,9 @@
 // Turns you into a female if character is male. Also adds breasts and female genitalia. 
 /datum/reagent/drug/aphrodisiac/succubus_milk/overdose_effects(mob/living/carbon/human/exposed_mob)
 	// Check if overdosing on succubus milk and incubus draft simultaneously, to prevent chat spam
-	var/double_dosing = FALSE 
-	for(var/r in exposed_mob.reagents.reagent_list)
-		var/datum/reagent/reagent = r
-		if(reagent.name == "incubus draft" && reagent.overdosed)
-			double_dosing = TRUE
+	var/datum/reagent/drug/aphrodisiac/incubus_draft/incubus_draft = locate(/datum/reagent/drug/aphrodisiac/incubus_draft) in exposed_mob.reagents.reagent_list 
+	if(incubus_draft && !incubus_draft.overdosed)
+		incubus_draft  = null
 			
 	// Begin breast growth
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
@@ -153,11 +151,11 @@
 			exposed_mob.update_body()
 			enlargement_amount = 0
 			if(new_breasts.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_topless())
-				if(!double_dosing) // So we don't spam chat
+				if(!incubus_draft) // So we don't spam chat
 					exposed_mob.visible_message(span_notice("[exposed_mob]'s bust suddenly expands!"))
 					to_chat(exposed_mob, span_purple("Your chest feels warm, tingling with sensitivity as it expands outward."))
 			else
-				if(!double_dosing)
+				if(!incubus_draft)
 					exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s chest suddenly bounces a bit."))
 					to_chat(exposed_mob, span_purple("Your chest feels warm, tingling with sensitivity as it strains against your clothes."))
 	
@@ -170,7 +168,7 @@
 			new_vagina.build_from_dna(exposed_mob.dna, ORGAN_SLOT_VAGINA)
 			new_vagina.Insert(exposed_mob, 0, FALSE)
 			exposed_mob.update_body()
-			if(!double_dosing)
+			if(!incubus_draft)
 				to_chat(exposed_mob, span_purple("You feel a warmth in your groin as something blossoms down there."))
 		if(!exposed_mob.getorganslot(ORGAN_SLOT_WOMB))
 			var/obj/item/organ/external/genital/womb/new_womb = new /obj/item/organ/external/genital/womb
@@ -180,7 +178,7 @@
 	
 	// Separates gender change stuff from breast growth and shrinkage, as well as from new genitalia growth/removal
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
-		if (double_dosing)
+		if (incubus_draft)
 			if(exposed_mob.gender != PLURAL)
 				exposed_mob.set_gender(PLURAL)
 				exposed_mob.physique = exposed_mob.gender
@@ -224,7 +222,7 @@
 				if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
 					mob_testicles.Remove(exposed_mob)
 					exposed_mob.update_body()
-					if(!double_dosing)
+					if(!incubus_draft)
 						to_chat(exposed_mob, span_purple("You feel a tightening sensation in your groin as things seem to smooth out down there."))
 
 // Notify the user that they're overdosing. Doesn't affect their mood.
