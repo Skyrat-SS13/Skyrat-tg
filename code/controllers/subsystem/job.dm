@@ -1132,6 +1132,8 @@ SUBSYSTEM_DEF(job)
 
 	//SKYRAT EDIT END
 
+	SSpersistence.load_modular_persistence(player) // SKYRAT EDIT ADDITION - MODULAR_PERSISTENCE
+
 	// Run this check after is_banned_from since it can query the DB which may sleep.
 	// Need to recheck the player exists after is_banned_from since it can query the DB which may sleep.
 	if(QDELETED(player))
