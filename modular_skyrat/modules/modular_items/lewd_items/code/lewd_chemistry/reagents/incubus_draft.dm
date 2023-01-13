@@ -158,7 +158,7 @@
 				exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_PENIS][MUTANT_INDEX_COLOR_LIST] = list(colour)
 
 			if(!exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES))
-				var/obj/item/organ/external/genital/testicles/new_balls = new /obj/item/organ/external/genital/testicles
+				var/obj/item/organ/external/genital/testicles/new_balls = new
 				new_balls.build_from_dna(exposed_mob.dna, ORGAN_SLOT_TESTICLES)
 				new_balls.Insert(exposed_mob, 0, FALSE)
 				new_balls.genital_size = 0
