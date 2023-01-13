@@ -148,7 +148,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	for(var/atom/movable/content_item as anything in AM.get_all_contents())
 		if(!is_type_in_list(content_item, type_blacklist))
 			continue
-		to_chat(AM, span_warning("Something on you is blocking you from entering the gateway!"))
+		to_chat(AM, span_warning("[content_item] seems to be blocking you from entering the gateway!"))
 		return
 	//SKYRAT EDIT END
 	if(get_dir(src,AM) == SOUTH)
@@ -339,6 +339,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	var/list/type_blacklist = list(
 		/obj/item/mmi,
 		/mob/living/silicon,
+		/obj/item/borg/upgrade/ai,
 	)
 	if(is_type_in_list(user, type_blacklist))
 		return
