@@ -42,7 +42,23 @@ SUBSYSTEM_DEF(holomaps)
 		if(!generate_holomap(z))
 			. = FALSE
 
+	if(!generate_default_holomap_legend())
+		. = FALSE
+
 	return .
+
+/datum/controller/subsystem/holomaps/proc/generate_default_holomap_legend()
+	for(var/department_color in GLOB.holomap_color_to_name)
+		var/image/marker_icon = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "area_legend")
+		var/icon/marker_color_overlay = icon('modular_skyrat/modules/holomap/icons/8x8.dmi', "area_legend")
+		marker_color_overlay.DrawBox(department_color, 1, 1, 8, 8) // Get the whole icon
+		marker_icon.add_overlay(marker_color_overlay)
+		GLOB.holomap_default_legend += list(GLOB.holomap_color_to_name[department_color] = list(
+			"icon" =  marker_icon,
+			"markers" = list(),
+		))
+
+	return TRUE
 
 /// Generates the base holomap and the area holomap, before passing the latter to setup_station_map to tidy it up for viewing.
 /datum/controller/subsystem/holomaps/proc/generate_holomap(var/z_level = 1)
@@ -72,7 +88,7 @@ SUBSYSTEM_DEF(holomaps)
 			if(tile.loc:holomapAlwaysDraw())
 				var/z_transition_obj = HAS_Z_TRANSITION(tile)
 				if(z_transition_obj)
-					z_transition_positions += "[offset_x]:[offset_y]"
+					z_transition_positions += list(list(offset_x, offset_y))
 
 					// Add transition markers for stairs.
 					if(istype(z_transition_obj, /obj/structure/stairs))

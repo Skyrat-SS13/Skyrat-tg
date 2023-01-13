@@ -57,7 +57,7 @@
 		update_icon()
 		return
 
-	holomap_datum.initialize_holomap(current_turf.x, current_turf.y, current_z_level, reinit_base_map = TRUE, extra_overlays = handle_extra_overlays())
+	holomap_datum.initialize_holomap(current_turf.x, current_turf.y, current_z_level, reinit_base_map = TRUE, extra_overlays = handle_overlays())
 
 	small_station_map = image(SSholomaps.extra_holomaps["[HOLOMAP_EXTRA_STATIONMAPSMALL]_[current_z_level]"], dir = dir)
 
@@ -83,7 +83,7 @@
 		message_admins("\[HOLOMAP] WARNING: Holomap at [x], [y], [z] [ADMIN_FLW(src)] had to set itself up on interact! Something during Initialize went very wrong!")
 		setup_holomap()
 
-	holomap_datum.update_map(handle_extra_overlays())
+	holomap_datum.update_map(handle_overlays())
 
 	var/datum/hud/human/user_hud = user.hud_used
 	holomap_datum.base_map.loc = user_hud.holomap  // Put the image on the holomap hud
@@ -133,11 +133,11 @@
 	UnregisterSignal(watching_mob, COMSIG_MOVABLE_MOVED)
 	playsound(src, 'modular_skyrat/modules/holomap/sound/holomap_close.ogg', 125)
 	icon_state = initial(icon_state)
-	if(watching_mob.client)
+	if(watching_mob?.client)
 		animate(holomap_datum.base_map, alpha = 0, time = 5, easing = LINEAR_EASING)
 		spawn(5) //we give it time to fade out
-			watching_mob.client.screen -= watching_mob.hud_used.holomap
-			watching_mob.client.images -= holomap_datum.base_map
+			watching_mob.client?.screen -= watching_mob.hud_used.holomap
+			watching_mob.client?.images -= holomap_datum.base_map
 			watching_mob.hud_used.holomap.used_station_map = null
 			watching_mob = null
 			set_light(HOLOMAP_LOW_LIGHT)
@@ -252,18 +252,30 @@
 	update_icon() // Required to refresh the small map icon.
 
 /obj/machinery/station_map/emp_act(severity)
+	if(severity == EMP_LIGHT && !prob(50))
+		return
+
+	do_sparks(8, TRUE, src)
 	set_broken()
 
-/obj/machinery/station_map/proc/handle_extra_overlays()
-	var/list/extra_overlays = list()
-	for(var/z_transition in SSholomaps.holomap_z_transitions["[current_z_level]"])
-		var/list/position = splittext(z_transition, ":")
-		var/image/transition_image = image('modular_skyrat/modules/holomap/icons/holomap_markers.dmi', "z_marker")
-		transition_image.pixel_x = text2num(position[1]) - 1
-		transition_image.pixel_y = text2num(position[2])
-		extra_overlays += transition_image
+/obj/machinery/station_map/proc/handle_overlays()
+	// Each entry in this list contains the text for the legend, and the icon and icon_state use. Null or non-existent icon_state ignore hiding logic.
+	// If an entry contains an icon,
+	var/list/legend = list() + GLOB.holomap_default_legend
 
-	return extra_overlays
+	var/image/base_transition_image = image('modular_skyrat/modules/holomap/icons/holomap_markers.dmi', "z_marker")
+	var/list/markers = list()
+	var/list/extra_overlays = list("icon" = image(base_transition_image), "markers" = markers)
+	for(var/list/z_transition in SSholomaps.holomap_z_transitions["[current_z_level]"])
+		var/image/transition_image = image(base_transition_image)
+		transition_image.pixel_x = text2num(z_transition[1]) - 1
+		transition_image.pixel_y = text2num(z_transition[2])
+		markers += transition_image
+
+	if(extra_overlays.len)
+		legend += list("Stairways / Ladders" = extra_overlays)
+
+	return legend
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/station_map, 32)
 
@@ -272,22 +284,38 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/station_map, 32)
 	icon_state = "station_map_engi"
 	circuit = /obj/item/circuitboard/machine/station_map/engineering
 
-/obj/machinery/station_map/engineering/handle_extra_overlays()
-	var/list/extra_overlays = ..()
-	if(!bogus)
-		for(var/obj/machinery/firealarm/alarm as anything in GLOB.station_fire_alarms["[current_z_level]"])
-			if(alarm?.z == current_z_level && alarm?.my_area?.active_alarms[ALARM_FIRE])
-				var/image/alarm_icon = image('modular_skyrat/modules/holomap/icons/holomap_markers.dmi', "fire_marker")
-				alarm_icon.pixel_x = alarm.x + HOLOMAP_CENTER_X - 1
-				alarm_icon.pixel_y = alarm.y + HOLOMAP_CENTER_Y
-				extra_overlays += alarm_icon
+/obj/machinery/station_map/engineering/attack_hand(mob/user)
+	. = ..()
 
-		for(var/obj/machinery/airalarm/air_alarm as anything in GLOB.air_alarms)
-			if(air_alarm?.z == current_z_level && air_alarm?.my_area?.active_alarms[ALARM_ATMOS])
-				var/image/alarm_icon = image('modular_skyrat/modules/holomap/icons/holomap_markers.dmi', "atmos_marker")
-				alarm_icon.pixel_x = air_alarm.x + HOLOMAP_CENTER_X - 1
-				alarm_icon.pixel_y = air_alarm.y + HOLOMAP_CENTER_Y
-				extra_overlays += alarm_icon
+	if(.)
+		holomap_datum.update_map(handle_overlays())
+
+/obj/machinery/station_map/engineering/handle_overlays()
+	var/list/extra_overlays = ..()
+	if(bogus)
+		return extra_overlays
+
+	var/list/fire_alarms = list()
+	for(var/obj/machinery/firealarm/alarm as anything in GLOB.station_fire_alarms["[current_z_level]"])
+		if(alarm?.z == current_z_level && alarm?.my_area?.active_alarms[ALARM_FIRE])
+			var/image/alarm_icon = image('modular_skyrat/modules/holomap/icons/holomap_markers.dmi', "fire_marker")
+			alarm_icon.pixel_x = alarm.x + HOLOMAP_CENTER_X - 1
+			alarm_icon.pixel_y = alarm.y + HOLOMAP_CENTER_Y
+			fire_alarms += alarm_icon
+
+	if(length(fire_alarms))
+		extra_overlays += list("Fire Alarms" = list("icon" = image('modular_skyrat/modules/holomap/icons/holomap_markers.dmi', "fire_marker"), "markers" = fire_alarms))
+
+	var/list/air_alarms = list()
+	for(var/obj/machinery/airalarm/air_alarm as anything in GLOB.air_alarms)
+		if(air_alarm?.z == current_z_level && air_alarm?.my_area?.active_alarms[ALARM_ATMOS])
+			var/image/alarm_icon = image('modular_skyrat/modules/holomap/icons/holomap_markers.dmi', "atmos_marker")
+			alarm_icon.pixel_x = air_alarm.x + HOLOMAP_CENTER_X - 1
+			alarm_icon.pixel_y = air_alarm.y + HOLOMAP_CENTER_Y
+			air_alarms += alarm_icon
+
+	if(length(air_alarms))
+		extra_overlays += list("Air Alarms" = list("icon" = image('modular_skyrat/modules/holomap/icons/holomap_markers.dmi', "atmos_marker"), "markers" = air_alarms))
 
 	return extra_overlays
 
@@ -301,6 +329,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/station_map/engineering, 32)
 
 /obj/item/circuitboard/machine/station_map/engineering
 	name = "Engineering Station Map"
+	desc = "A virtual map of the surrounding station. Also shows any active fire and atmos alarms."
 	specific_parts = TRUE // Fuck you, triphasic scanner and an ultra laser to rebuild these, oh, and cause they make engineering's life that much easier, enjoy making a subspace analyser too.
 	build_path = /obj/machinery/station_map/engineering/directional/north
 	req_components = list(/obj/item/stock_parts/scanning_module/triphasic = 3, /obj/item/stock_parts/micro_laser/ultra = 4, /obj/item/stock_parts/subspace/analyzer = 1)

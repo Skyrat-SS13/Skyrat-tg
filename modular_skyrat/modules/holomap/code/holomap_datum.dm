@@ -2,7 +2,10 @@
 /datum/station_holomap
 	var/image/base_map
 	var/image/cursor
-	var/image/legend
+
+	var/list/overlay_data = list()
+	var/list/disabled_overlays = list()
+	var/total_legend_y
 
 	var/map_x
 	var/map_y
@@ -11,7 +14,6 @@
 /datum/station_holomap/New()
 	. = ..()
 	cursor = image('modular_skyrat/modules/holomap/icons/holomap_markers.dmi', "you")
-	legend = image('modular_skyrat/modules/holomap/icons/64x64.dmi', "legend")
 
 /datum/station_holomap/proc/initialize_holomap(map_x, map_y, map_z, var/mob/user = null, var/reinit_base_map = FALSE, extra_overlays = list())
 	src.map_x = map_x
@@ -22,30 +24,59 @@
 		base_map = image(SSholomaps.extra_holomaps["[HOLOMAP_EXTRA_STATIONMAP]_[map_z]"])
 
 	if(isAI(user) || isaicamera(user))
-		var/turf/eye_turf = get_turf(user.client.eye)
+		var/turf/eye_turf = get_turf(user?.client?.eye)
+		if(!eye_turf)
+			return
 		src.map_x = eye_turf.x
 		src.map_y = eye_turf.y
 
 	update_map(extra_overlays)
 
+/datum/station_holomap/proc/generate_legend(list/overlays_to_use = list())
+	var/legend_y = HOLOMAP_LEGEND_Y
+	for(var/list/overlay_name as anything in overlays_to_use)
+		var/image/overlay_entry = overlays_to_use[overlay_name]["icon"]
+
+		overlay_entry.pixel_x = HOLOMAP_LEGEND_X
+		overlay_entry.pixel_y = legend_y
+		overlay_entry.maptext = "<span class='maptext' style='font-size: 6px'>[overlay_name]</span>"
+		overlay_entry.maptext_x = 10
+		overlay_entry.maptext_width = 64
+		base_map.add_overlay(overlay_entry)
+
+		overlay_data["[round(legend_y / 10)]"] = overlay_name
+
+		if(overlay_name in disabled_overlays)
+			var/image/disabled_marker = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "legend_cross")
+			disabled_marker.pixel_x = HOLOMAP_LEGEND_X
+			disabled_marker.pixel_y = legend_y
+			base_map.add_overlay(disabled_marker)
+
+		legend_y += 10
+
+	total_legend_y = legend_y
+
 /// Updates the map with the provided overlays, with any, removing any overlays it already had that aren't the cursor or legend.
 /// If there is no turf, then it doesn't add the cursor or legend back.
 /// Make sure to set the pixel x and y of your overlays, or they'll render in the far bottom left.
 /datum/station_holomap/proc/update_map(list/overlays_to_use = list())
+
 	base_map.cut_overlays()
 
 	if(map_x && map_y)
 		cursor.pixel_x = map_x - 6 + HOLOMAP_CENTER_X
 		cursor.pixel_y = map_y - 6 + HOLOMAP_CENTER_Y
 
-		legend.pixel_x = HOLOMAP_LEGEND_X
-		legend.pixel_y = HOLOMAP_LEGEND_Y
-
-		base_map.add_overlay(legend)
 		base_map.add_overlay(cursor)
 
-	for(var/image/map_layer as anything in overlays_to_use)
-		base_map.add_overlay(map_layer)
+	for(var/overlay as anything in overlays_to_use)
+		if(overlay in disabled_overlays)
+			continue
+
+		for(var/image/map_layer in overlays_to_use[overlay]["markers"])
+			base_map.add_overlay(map_layer)
+
+	generate_legend(overlays_to_use)
 
 /datum/station_holomap/proc/initialize_holomap_bogus()
 	base_map = image('modular_skyrat/modules/holomap/icons/480x480.dmi', "stationmap")

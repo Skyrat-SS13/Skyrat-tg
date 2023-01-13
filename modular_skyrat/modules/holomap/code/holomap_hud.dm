@@ -28,10 +28,23 @@
 	var/icon_x = text2num(LAZYACCESS(modifiers, ICON_X))
 	var/icon_y = text2num(LAZYACCESS(modifiers, ICON_Y))
 
-	if(icon_x < HOLOMAP_LEGEND_X || icon_x > HOLOMAP_LEGEND_X + HOLOMAP_LEGEND_WIDTH || icon_x < HOLOMAP_LEGEND_Y || icon_x > HOLOMAP_LEGEND_Y + 128)
+	if(icon_x < HOLOMAP_LEGEND_X || icon_x > HOLOMAP_LEGEND_X + HOLOMAP_LEGEND_WIDTH || icon_y < HOLOMAP_LEGEND_Y || icon_y > used_station_map.holomap_datum.total_legend_y)
 		return
 
-	// Nothing yet
+	var/selected_entry = round(icon_y / 10, 1) // Always round down
+	var/list/overlay_data = used_station_map.holomap_datum.overlay_data
+
+	if(!("[selected_entry]" in overlay_data))
+		return
+
+	var/list/disabled_overlays = used_station_map.holomap_datum.disabled_overlays
+
+	if(overlay_data["[selected_entry]"] in disabled_overlays)
+		disabled_overlays -= overlay_data["[selected_entry]"]
+	else
+		disabled_overlays += overlay_data["[selected_entry]"]
+
+	used_station_map.holomap_datum.update_map(used_station_map.handle_overlays())
 
 /atom/movable/screen/holomap/MouseEntered(location, control, params)
 	. = ..()
