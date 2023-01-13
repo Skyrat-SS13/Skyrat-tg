@@ -1422,6 +1422,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
 	lefthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_left.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_right.dmi'
+	inhand_icon_state = "masvedishcigar_off"
 	worn_icon_state = "masvedishcigar_off"
 	icon_state = "masvedishcigar_off"
 	icon_on = "masvedishcigar_on"
