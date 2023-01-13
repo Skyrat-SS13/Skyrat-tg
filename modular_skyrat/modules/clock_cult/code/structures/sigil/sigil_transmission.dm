@@ -65,7 +65,7 @@
 			return
 
 		if(is_clockie)
-			if(power_cell.charge < power_cell.maxcharge && GLOB.clock_power >= POWER_GIVE)
+			if((power_cell.charge < power_cell.maxcharge) && GLOB.clock_power >= POWER_GIVE)
 				target_mech.give_power(power_cell.chargerate)
 				GLOB.clock_power -= POWER_GIVE
 
