@@ -329,3 +329,24 @@
 	greyscale_config_worn_digi = /datum/greyscale_config/overalls/worn/digi
 	greyscale_colors = "#594032"
 	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/suit/apron/overalls/greyscale/AltClick(mob/user)
+	. = ..()
+	if(!iscarbon(user))
+		return
+	var/mob/living/carbon/carbon_user = user
+	if(carbon_user.get_item_by_slot(slot_flags) == src)
+		to_chat(user, span_warning("You must take [src] off before adjusting it!"))
+		return
+	if(!user.is_holding(src))
+		to_chat(user, span_warning("You must be holding [src] in order to adjust it!"))
+		return
+	switch(slot_flags)
+		if(slot_flags & ITEM_SLOT_ICLOTHING)
+			slot_flags = ITEM_SLOT_OCLOTHING
+			to_chat(user, span_warning("You adjust [src] to let you wear it over jumpsuits."))
+			return
+		if(slot_flags & ITEM_SLOT_OCLOTHING)
+			slot_flags = ITEM_SLOT_ICLOTHING
+			to_chat(user, span_warning("You adjust [src] to let you wear it as a jumpsuit."))
+			return
