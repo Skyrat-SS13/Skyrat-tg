@@ -89,7 +89,7 @@
 		else if(transmissibility == 10)
 			SetSpread(DISEASE_SPREAD_AIRBORNE)
 
-		else if(transmissibility >= 4)
+		else if(transmissibility >= 3)
 			SetSpread(DISEASE_SPREAD_CONTACT_SKIN)
 
 		else
