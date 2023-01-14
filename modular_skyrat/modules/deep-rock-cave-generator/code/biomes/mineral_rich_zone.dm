@@ -31,7 +31,7 @@
 
 /turf/closed/mineral/random/high_chance/mineral_rich_zone
 	color = "#bd654b"
-	baseturfs = /turf/open/misc/sandy_dirt/planet/openspace_baseturf
+	baseturfs = /turf/open/misc/ashplanet/rocky/openspace_baseturf
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 
 /turf/open/misc/ashplanet/rocky/openspace_baseturf
