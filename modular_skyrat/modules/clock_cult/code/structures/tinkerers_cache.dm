@@ -1,7 +1,3 @@
-//===============
-//Tinkerer's Cache Structure
-//===============
-
 /obj/structure/destructible/clockwork/gear_base/tinkerers_cache
 	name = "tinkerer's cache"
 	desc = "A bronze store filled with parts and components."
