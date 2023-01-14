@@ -81,9 +81,6 @@
 		selected_biome = SSmapping.biomes[selected_biome] //Get the instance of this biome from SSmapping
 		selected_biome.generate_turf(gen_turf, closed, generate_in, mobs_allowed)
 
-		if(!(gen_turf.z in levels_to_make_rivers_at))
-			levels_to_make_rivers_at += gen_turf.z
-
 		CHECK_TICK
 
 	var/message = "[name] finished in [(REALTIMEOFDAY - start_time)/10]s!"
