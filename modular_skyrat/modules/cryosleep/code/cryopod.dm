@@ -161,7 +161,7 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	var/tucked = FALSE
 
 	/// What was the ckey of the client that entered the cryopod?
-	var/stored_ckey = FALSE
+	var/stored_ckey = null
 
 /obj/machinery/cryopod/quiet
 	quiet = TRUE
@@ -217,7 +217,7 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	set_density(TRUE)
 	name = initial(name)
 	tucked = FALSE
-	stored_ckey = FALSE
+	stored_ckey = null
 
 /obj/machinery/cryopod/container_resist_act(mob/living/user)
 	visible_message(span_notice("[occupant] emerges from [src]!"),
