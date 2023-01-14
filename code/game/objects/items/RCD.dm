@@ -150,6 +150,13 @@ RLD
 	if(prob(20))
 		spark_system.start()
 
+/obj/item/construction/update_overlays()
+	. = ..()
+	if(has_ammobar)
+		var/ratio = CEILING((matter / max_matter) * ammo_sections, 1)
+		if(ratio > 0)
+			. += "[icon_state]_charge[ratio]"
+
 /obj/item/construction/proc/useResource(amount, mob/user)
 	if(!silo_mats || !silo_link)
 		if(matter < amount)
@@ -435,10 +442,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 
 // `initial` does not work here. Neither does instantiating a wall/whatever
 // and referencing that. I don't know why.
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
-
 /proc/init_holographic_wall()
 	return getHologramIcon(
 		icon('icons/turf/walls/wall.dmi', "wall-0"),
@@ -511,10 +514,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 /obj/effect/rcd_hologram
 	name = "hologram"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
 
 /obj/effect/rcd_hologram/Initialize(mapload)
 	. = ..()
@@ -628,7 +627,7 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 
 	var/category_icon_state
 	var/category_icon_suffix
-	for(var/list/sub_category as anything in root_categories[root_category])
+	for(var/sub_category as anything in root_categories[root_category])
 		var/list/target_category =  root_categories[root_category][sub_category]
 		if(target_category.len == 0)
 			continue
@@ -664,7 +663,7 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 			//sanitize them so you dont go insane when icon names contain spaces in them
 			icon_state = sanitize_css_class_name(icon_state)
 
-			designs += list(list("design_id" = i, TITLE = design[TITLE], ICON = icon_state))
+			designs += list(list(TITLE = design[TITLE], ICON = icon_state))
 		data["categories"] += list(list("cat_name" = sub_category, "designs" = designs))
 
 	//merge airlock_electronics ui data with this
@@ -768,13 +767,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	explosion(src, light_impact_range = 3, flame_range = 1, flash_range = 1)
 	qdel(src)
 
-/obj/item/construction/rcd/update_overlays()
-	. = ..()
-	if(has_ammobar)
-		var/ratio = CEILING((matter / max_matter) * ammo_sections, 1)
-		if(ratio > 0)
-			. += "[icon_state]_charge[ratio]"
-
 /obj/item/construction/rcd/Initialize(mapload)
 	. = ..()
 	update_appearance()
@@ -785,10 +777,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	banned_upgrades = RCD_UPGRADE_SILO_LINK
 	var/energyfactor = 72
 
-
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
 
 /obj/item/construction/rcd/borg/useResource(amount, mob/user)
 	if(!iscyborg(user))
@@ -868,7 +856,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	custom_materials = list(/datum/material/iron=48000, /datum/material/glass=32000)
 	ammoamt = 160
 
-
 /obj/item/construction/rcd/combat/admin
 	name = "admin RCD"
 	max_matter = INFINITY
@@ -887,10 +874,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	icon_state = "arcd"
 	inhand_icon_state = "oldrcd"
 	has_ammobar = FALSE
-
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
 
 /obj/item/construction/rcd/arcd/afterattack(atom/A, mob/user)
 	. = ..()
@@ -927,7 +910,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	matter = 200
 	max_matter = 200
 	slot_flags = ITEM_SLOT_BELT
-	desc = "It contains the design for chairs, stools, tables, and glass tables."
 	///it does not make sense why any of these should be installed
 	banned_upgrades = RCD_UPGRADE_FRAMES | RCD_UPGRADE_SIMPLE_CIRCUITS | RCD_UPGRADE_FURNISHING
 
@@ -952,10 +934,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	///will contain the original icons modified with the color choice
 	var/list/display_options = list()
 	var/color_choice = null
-
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
 
 /obj/item/construction/rld/Initialize(mapload)
 	. = ..()
@@ -1154,10 +1132,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 		"Fourth Layer" = 4,
 		"Fifth Layer" = 5,
 	)
-
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
 
 /obj/item/construction/plumbing/Initialize(mapload)
 	. = ..()
@@ -1412,10 +1386,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
 	has_ammobar = TRUE
 
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
-
 /obj/item/construction/plumbing/research/set_plumbing_designs()
 	plumbing_design_types = list(
 		//category 1 synthesizers
@@ -1441,10 +1411,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	desc = "A type of plumbing constructor designed to rapidly deploy the machines needed to make a brewery."
 	icon_state = "plumberer_service"
 	has_ammobar = TRUE
-
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
 
 /obj/item/construction/plumbing/service/set_plumbing_designs()
 	plumbing_design_types = list(
@@ -1492,6 +1458,7 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 /obj/item/rcd_upgrade/silo_link
 	desc = "It contains direct silo connection RCD upgrade."
 	upgrade = RCD_UPGRADE_SILO_LINK
+
 /obj/item/rcd_upgrade/furnishing
 	desc = "It contains the design for chairs, stools, tables, and glass tables."
 	upgrade = RCD_UPGRADE_FURNISHING

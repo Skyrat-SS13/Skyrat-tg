@@ -645,6 +645,7 @@
 		"rcd_loaded",
 		"rcd_ammo",
 		"rpd_loaded",
+		"rtd_loaded",
 		"sheetifier",
 		"weldingmask",
 
