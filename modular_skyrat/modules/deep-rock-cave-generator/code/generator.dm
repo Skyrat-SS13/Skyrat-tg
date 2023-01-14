@@ -15,9 +15,9 @@
 	/// Amount of smoothing iterations
 	var/smoothing_iterations = 20
 	/// How much neighbours does a dead cell need to become alive
-	var/birth_limit = 5
+	var/birth_limit = 4
 	/// How little neighbours does a alive cell need to die
-	var/death_limit = 4
+	var/death_limit = 3
 
 	/// Used to select "zoom" level into the perlin noise, higher numbers result in slower transitions
 	var/perlin_zoom = 65
@@ -25,7 +25,9 @@
 	/// Weighted list of what types of turf to use for random rivers
 	var/list/weighted_river_turf_list = list()
 	/// Expanded list of what types of turfs to use for random rivers
-	var/list/river_turf_list
+	var/list/river_turf_list = list(
+		/turf/open/water/overlay/hotspring/planet/outdoors,
+	)
 
 	/// What openspace turf we should be using
 	var/openspace_turf_type = /turf/open/openspace
@@ -73,9 +75,9 @@
 				selected_biome = BIOME_HELLSCAPE
 
 		// I'm fairly certain this needs to happen before generate turf on the biome does, maybe I'm wrong
-		var/turf/open/turf_above = get_step_multiz(get_turf(gen_turf), UP)
+		var/turf/open/turf_above = gen_turf.above()
 		if(turf_above && istype(turf_above))
-			turf_above.ChangeTurf(openspace_turf_type, flags = CHANGETURF_INHERIT_AIR)
+			turf_above = new openspace_turf_type(turf_above)
 
 		selected_biome = SSmapping.biomes[selected_biome] //Get the instance of this biome from SSmapping
 		selected_biome.generate_turf(gen_turf, closed, generate_in, mobs_allowed)
