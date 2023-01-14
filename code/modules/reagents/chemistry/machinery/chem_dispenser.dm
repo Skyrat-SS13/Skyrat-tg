@@ -482,6 +482,7 @@
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		if (M.rating > 1)
 			dispensable_reagents |= upgrade_reagents
+<<<<<<< HEAD
 		//SKYRAT EDIT START
 		if (M.rating > 2)
 			dispensable_reagents |= upgrade_reagents2
@@ -489,6 +490,11 @@
 			dispensable_reagents |= upgrade_reagents3
 		//SKYRAT EDIT END
 		parts_rating += M.rating
+=======
+		else
+			dispensable_reagents -= upgrade_reagents
+		parts_rating += manipulator.tier
+>>>>>>> 2e7ed423271 (Fix chem dispensers not reverting upgrade chems if stock parts are downgraded (#72667))
 	powerefficiency = round(newpowereff, 0.01)
 
 /obj/machinery/chem_dispenser/proc/replace_beaker(mob/living/user, obj/item/reagent_containers/new_beaker)
