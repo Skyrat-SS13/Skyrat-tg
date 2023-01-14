@@ -70,14 +70,13 @@
 	if(available_choices)
 		return
 
-	var/list/parts_lists = GLOB.sprite_accessories.Copy()
-	for(var/parts_list in parts_lists)
-		for(var/parts as anything in parts_lists[parts_list])
-			var/datum/sprite_accessory/part = parts_lists[parts_list][parts]
+	available_choices = GLOB.sprite_accessories.Copy()
+	for(var/parts_list in available_choices)
+		for(var/parts in available_choices[parts_list])
+			var/datum/sprite_accessory/part = available_choices[parts_list][parts]
 			if(part.locked)
-				parts_lists[parts_list] -= parts
+				available_choices[parts_list] -= parts
 
-	available_choices = parts_lists.Copy()
 
 /datum/action/innate/alter_form/unrestricted
 	slime_restricted = FALSE
