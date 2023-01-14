@@ -160,6 +160,9 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	/// Has the occupant been tucked in?
 	var/tucked = FALSE
 
+	/// What was the ckey of the client that entered the cryopod?
+	var/stored_ckey = null
+
 /obj/machinery/cryopod/quiet
 	quiet = TRUE
 
@@ -203,6 +206,7 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 		var/mob/living/mob_occupant = occupant
 		if(mob_occupant && mob_occupant.stat != DEAD)
 			to_chat(occupant, span_notice("<b>You feel cool air surround you. You go numb as your senses turn inward.</b>"))
+			stored_ckey = mob_occupant.ckey
 
 		COOLDOWN_START(src, despawn_world_time, time_till_despawn)
 	icon_state = "cryopod"
@@ -213,6 +217,7 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	set_density(TRUE)
 	name = initial(name)
 	tucked = FALSE
+	stored_ckey = null
 
 /obj/machinery/cryopod/container_resist_act(mob/living/user)
 	visible_message(span_notice("[occupant] emerges from [src]!"),
@@ -363,6 +368,8 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 			mob_occupant.transferItemToLoc(item_content, control_computer, force = TRUE, silent = TRUE)
 			control_computer.frozen_item += item_content
 		else mob_occupant.transferItemToLoc(item_content, drop_location(), force = TRUE, silent = TRUE)
+
+	GLOB.joined_player_list -= stored_ckey
 
 	handle_objectives()
 	QDEL_NULL(occupant)
