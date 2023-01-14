@@ -148,13 +148,6 @@
 /obj/item/modular_computer/laptop/preset,
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/powered)
-"fB" = (
-/obj/machinery/door/airlock/highsecurity{
-	name = "Loot Storage";
-	req_access_txt = "19;23"
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/powered)
 "fK" = (
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 8
@@ -201,6 +194,17 @@
 /obj/effect/turf_decal/tile/brown/full,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
+"gl" = (
+/mob/living/basic/syndicate/ranged{
+	desc = "Yarr-harr fiddley dee.";
+	faction = list("pirate");
+	name = "Pirate Operative"
+	},
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
 "gy" = (
 /obj/structure/table,
 /obj/machinery/microwave,
@@ -215,6 +219,16 @@
 /obj/structure/table/wood,
 /obj/item/modular_computer/pda/cargo,
 /turf/open/floor/wood,
+/area/ruin/space/has_grav/powered)
+"gZ" = (
+/mob/living/basic/carp/mega{
+	faction = list("pirate");
+	health = 50;
+	maxHealth = 50;
+	name = "Jack"
+	},
+/obj/effect/turf_decal/trimline/dark_red/filled/line,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "hd" = (
 /obj/effect/turf_decal/trimline/dark_red/filled/corner{
@@ -276,16 +290,6 @@
 	},
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/powered)
-"jO" = (
-/mob/living/basic/carp/mega{
-	faction = list("pirate");
-	health = 50;
-	maxHealth = 50;
-	name = "Jack"
-	},
-/obj/effect/turf_decal/trimline/dark_red/filled/line,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/powered)
 "kb" = (
 /turf/open/misc/asteroid/lowpressure,
 /area/ruin/space)
@@ -326,17 +330,6 @@
 /obj/machinery/vending/toyliberationstation,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered)
-"lq" = (
-/mob/living/basic/syndicate/ranged{
-	desc = "Yarr-harr fiddley dee.";
-	faction = list("pirate");
-	name = "Pirate Operative"
-	},
-/obj/effect/turf_decal/trimline/dark_red/filled/corner{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/powered)
 "lC" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/marker_beacon/burgundy,
@@ -369,12 +362,31 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
+"na" = (
+/mob/living/basic/syndicate/melee{
+	desc = "Yo-ho-ho he took a bite'a gum-gum.";
+	faction = list("pirate");
+	name = "Pirate Operative"
+	},
+/obj/effect/turf_decal/trimline/dark_red/filled/line,
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
 "nf" = (
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 1
 	},
 /obj/effect/turf_decal/trimline/dark_red/filled/line,
 /turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"nj" = (
+/obj/machinery/door/airlock/highsecurity{
+	name = "Prison Cell";
+	req_access = list("command","tech_storage")
+	},
+/turf/open/floor/engine,
 /area/ruin/space/has_grav/powered)
 "nw" = (
 /obj/effect/turf_decal/bot,
@@ -433,7 +445,7 @@
 "oZ" = (
 /turf/open/floor/engine,
 /area/ruin/space)
-"pf" = (
+"pu" = (
 /mob/living/basic/syndicate/ranged{
 	desc = "Yarr-harr fiddley dee.";
 	faction = list("pirate");
@@ -456,28 +468,10 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered)
-"pF" = (
-/obj/machinery/door/airlock/highsecurity{
-	name = "Armory";
-	req_access_txt = "19;23"
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/powered)
 "pS" = (
 /mob/living/simple_animal/hostile/pirate/melee,
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/powered)
-"pT" = (
-/mob/living/basic/syndicate/melee{
-	desc = "Yo-ho-ho he took a bite'a gum-gum.";
-	faction = list("pirate");
-	name = "Pirate Operative"
-	},
-/obj/effect/turf_decal/trimline/dark_red/filled/line{
-	dir = 4
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
@@ -495,6 +489,14 @@
 /obj/effect/spawner/random/exotic/syndie,
 /obj/effect/turf_decal/tile/dark_blue/fourcorners,
 /turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"qy" = (
+/mob/living/basic/syndicate/melee{
+	desc = "Yo-ho-ho he took a bite'a gum-gum.";
+	faction = list("pirate");
+	name = "Pirate Operative"
+	},
+/turf/open/floor/wood,
 /area/ruin/space/has_grav/powered)
 "qX" = (
 /obj/structure/closet/secure_closet/freezer/meat{
@@ -563,13 +565,6 @@
 	dir = 4
 	},
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/powered)
-"tA" = (
-/obj/machinery/door/airlock/highsecurity{
-	name = "Prison Cell";
-	req_access_txt = "19;23"
-	},
-/turf/open/floor/engine,
 /area/ruin/space/has_grav/powered)
 "tC" = (
 /obj/structure/closet/crate/secure{
@@ -738,6 +733,17 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
+"xD" = (
+/mob/living/basic/syndicate/melee{
+	desc = "Yo-ho-ho he took a bite'a gum-gum.";
+	faction = list("pirate");
+	name = "Pirate Operative"
+	},
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
 "xL" = (
 /obj/structure/table,
 /obj/item/reagent_containers/cocaine,
@@ -867,7 +873,7 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
-"Cj" = (
+"BV" = (
 /mob/living/basic/syndicate/ranged{
 	desc = "Yarr-harr fiddley dee.";
 	faction = list("pirate");
@@ -989,6 +995,13 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered)
+"FL" = (
+/obj/machinery/door/airlock/highsecurity{
+	name = "Loot Storage";
+	req_access = list("command","tech_storage")
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
 "FP" = (
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 5
@@ -1042,18 +1055,6 @@
 /obj/effect/spawner/random/engineering/material_cheap,
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/powered)
-"HP" = (
-/mob/living/basic/syndicate/melee{
-	desc = "Yo-ho-ho he took a bite'a gum-gum.";
-	faction = list("pirate");
-	name = "Pirate Operative"
-	},
-/obj/effect/turf_decal/trimline/dark_red/filled/line,
-/obj/effect/turf_decal/trimline/dark_red/filled/corner{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/powered)
 "Iy" = (
 /obj/structure/table/wood,
 /turf/open/floor/wood,
@@ -1063,14 +1064,6 @@
 	dir = 6
 	},
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/powered)
-"Jl" = (
-/mob/living/basic/syndicate/melee{
-	desc = "Yo-ho-ho he took a bite'a gum-gum.";
-	faction = list("pirate");
-	name = "Pirate Operative"
-	},
-/turf/open/floor/wood,
 /area/ruin/space/has_grav/powered)
 "Js" = (
 /turf/open/floor/wood,
@@ -1147,20 +1140,6 @@
 /obj/effect/turf_decal/tile/brown/full,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
-"MG" = (
-/mob/living/basic/syndicate/melee{
-	desc = "Yo-ho-ho he took a bite'a gum-gum.";
-	faction = list("pirate");
-	name = "Pirate Operative"
-	},
-/obj/effect/turf_decal/trimline/brown/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/brown/filled/line{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/powered)
 "MX" = (
 /obj/machinery/computer/slot_machine,
 /turf/open/floor/wood,
@@ -1176,6 +1155,20 @@
 /obj/effect/turf_decal/trimline/brown/filled/line,
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"Nz" = (
+/mob/living/basic/syndicate/melee{
+	desc = "Yo-ho-ho he took a bite'a gum-gum.";
+	faction = list("pirate");
+	name = "Pirate Operative"
+	},
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
@@ -1202,6 +1195,13 @@
 /obj/structure/table/reinforced/plasmarglass,
 /obj/machinery/cell_charger_multi,
 /obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"Oo" = (
+/obj/machinery/door/airlock/highsecurity{
+	name = "Armory";
+	req_access = list("command","tech_storage")
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Ph" = (
@@ -1986,14 +1986,14 @@ oR
 hl
 xg
 eV
-MG
+Nz
 Et
 fN
 oR
 WT
 us
 Js
-Jl
+qy
 Js
 Js
 Js
@@ -2071,7 +2071,7 @@ oR
 oR
 oR
 oR
-fB
+FL
 oR
 oR
 yr
@@ -2194,11 +2194,11 @@ Js
 Js
 oR
 Gm
-Cj
+BV
 dP
 dP
 dP
-jO
+gZ
 oR
 qX
 us
@@ -2297,8 +2297,8 @@ oR
 oR
 oR
 oR
-pF
-pF
+Oo
+Oo
 oR
 oR
 FP
@@ -2382,7 +2382,7 @@ rA
 AA
 uc
 Zj
-HP
+na
 pV
 oR
 Gm
@@ -2457,7 +2457,7 @@ Kj
 Kj
 Kj
 Kj
-pT
+xD
 Kj
 zx
 oR
@@ -2546,7 +2546,7 @@ Js
 pA
 oR
 Dy
-pf
+pu
 hN
 hN
 hN
@@ -2613,7 +2613,7 @@ vY
 kh
 oR
 FP
-lq
+gl
 dP
 dP
 dP
@@ -2630,11 +2630,11 @@ Js
 Js
 oR
 oR
-tA
+nj
 oR
 nf
 oR
-tA
+nj
 oR
 oR
 oR
