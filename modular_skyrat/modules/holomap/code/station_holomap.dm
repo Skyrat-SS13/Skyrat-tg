@@ -59,8 +59,6 @@
 
 	holomap_datum.initialize_holomap(current_turf.x, current_turf.y, current_z_level, reinit_base_map = TRUE, extra_overlays = handle_overlays())
 
-	small_station_map = image(SSholomaps.extra_holomaps["[HOLOMAP_EXTRA_STATIONMAPSMALL]_[current_z_level]"], dir = dir)
-
 	floor_markings = image('modular_skyrat/modules/holomap/icons/stationmap.dmi', "decal_station_map")
 	floor_markings.dir = src.dir
 
@@ -112,6 +110,9 @@
 	return TRUE
 
 /obj/machinery/station_map/attack_ai(var/mob/living/silicon/robot/user)
+	attack_hand(user)
+
+/obj/machinery/station_map/attack_robot(mob/user)
 	attack_hand(user)
 
 /obj/machinery/station_map/process()

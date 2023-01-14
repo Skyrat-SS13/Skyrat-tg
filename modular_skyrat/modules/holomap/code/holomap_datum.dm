@@ -63,7 +63,7 @@
 /datum/station_holomap/proc/update_map(list/overlays_to_use = list())
 	base_map.cut_overlays()
 
-	if(map_x && map_y)
+	if(map_x && map_y && SSmapping.level_has_all_traits(map_z, ZTRAIT_STATION))
 		cursor.pixel_x = map_x - 3 + HOLOMAP_CENTER_X
 		cursor.pixel_y = map_y - 3 + HOLOMAP_CENTER_Y
 

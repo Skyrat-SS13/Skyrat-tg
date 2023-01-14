@@ -8,8 +8,6 @@
 #define IS_PATH(tile) istype(tile, /turf/open/floor)
 /// Turfs that contain a Z transition, like ladders and stairs. They show with special animations on the map.
 #define HAS_Z_TRANSITION(tile) ((locate(/obj/structure/ladder) in tile) || (locate(/obj/structure/stairs) in tile))
-#define HAS_LADDER(tile) (locate(/obj/structure/ladder) in tile)
-#define HAS_STAIRS(tile) (locate(/obj/structure/stairs) in tile)
 
 // Holo-Minimaps Generation Subsystem handles initialization of the holo minimaps.
 
@@ -40,7 +38,7 @@ SUBSYSTEM_DEF(holomaps)
 	holomaps.Cut()
 	extra_holomaps.Cut()
 
-	for(var/z in SSmapping.levels_by_trait(ZTRAIT_STATION))
+	for(var/z in SSmapping.levels_by_any_trait(list(ZTRAIT_STATION, ZTRAIT_LAVA_RUINS, ZTRAIT_ICE_RUINS, ZTRAIT_ICE_RUINS_UNDERGROUND)))
 		if(!generate_holomap(z))
 			. = FALSE
 
@@ -81,70 +79,70 @@ SUBSYSTEM_DEF(holomaps)
 			var/turf/tile = locate(x, y, z_level)
 			var/offset_x = HOLOMAP_CENTER_X + x
 			var/offset_y = HOLOMAP_CENTER_Y + y
+			var/area/tile_area = get_area(tile)
 
-			if(!tile)
+			if(!tile || !tile_area.holomap_should_draw)
 				continue
 
-			if(tile.loc && tile.loc:holomap_color) // No var casting cause that costs precious time.
-				area_canvas.DrawBox(tile.loc:holomap_color, HOLOMAP_CENTER_X + x, HOLOMAP_CENTER_Y + y)
-				position_to_name["[offset_x]:[offset_y]"] = tile.loc:holomap_color == HOLOMAP_AREACOLOR_MAINTENANCE ? "Maintenance" : tile.loc.name
+			if(tile_area.holomap_color)
+				area_canvas.DrawBox(tile_area.holomap_color, offset_x, offset_y)
+				position_to_name["[offset_x]:[offset_y]"] = tile_area.holomap_color == HOLOMAP_AREACOLOR_MAINTENANCE ? "Maintenance" : tile_area.name
 
-			if(tile.loc:holomapAlwaysDraw())
-				if(IS_ROCK(tile))
-					canvas.DrawBox(HOLOMAP_ROCK, offset_x, offset_y)
+			if(IS_ROCK(tile))
+				canvas.DrawBox(HOLOMAP_ROCK, offset_x, offset_y)
+
+			else if(IS_OBSTACLE(tile))
+				canvas.DrawBox(HOLOMAP_OBSTACLE, offset_x, offset_y)
+
+			else if(IS_SOFT_OBSTACLE(tile))
+				canvas.DrawBox(HOLOMAP_SOFT_OBSTACLE, offset_x, offset_y)
+
+			else if(IS_PATH(tile))
+				canvas.DrawBox(HOLOMAP_PATH, offset_x, offset_y)
+
+			var/z_transition_obj = HAS_Z_TRANSITION(tile)
+			if(!z_transition_obj)
+				continue
+
+			var/image/image_to_use
+
+			if(istype(z_transition_obj, /obj/structure/stairs))
+				if(!z_transition_positions["Stairs Up"])
+					z_transition_positions["Stairs Up"] = list("icon" = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "stairs"), "markers" = list())
+
+				image_to_use = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "stairs")
+				image_to_use.pixel_x = offset_x
+				image_to_use.pixel_y = offset_y
+
+				z_transition_positions["Stairs Up"]["markers"] += image_to_use
+
+				var/turf/checking = get_step_multiz(get_turf(z_transition_obj), UP)
+				if(!istype(checking))
 					continue
 
-				if(IS_OBSTACLE(tile))
-					canvas.DrawBox(HOLOMAP_OBSTACLE, offset_x, offset_y)
-					continue
+				var/list/transitions = SSholomaps.holomap_z_transitions["[checking.z]"]
+				if(!transitions)
+					transitions = list()
+					SSholomaps.holomap_z_transitions["[checking.z]"] = transitions
 
-				if(IS_SOFT_OBSTACLE(tile))
-					canvas.DrawBox(HOLOMAP_SOFT_OBSTACLE, offset_x, offset_y)
-					continue
+				image_to_use = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "stairs_down")
+				image_to_use.pixel_x = checking.x + HOLOMAP_CENTER_X
+				image_to_use.pixel_y = checking.y + HOLOMAP_CENTER_Y
 
-				if(IS_PATH(tile))
-					canvas.DrawBox(HOLOMAP_PATH, offset_x, offset_y)
+				if(!transitions["Stairs Down"])
+					transitions["Stairs Down"] = list("icon" = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "stairs_down"), "markers" = list())
 
-				var/z_transition_obj = HAS_Z_TRANSITION(tile)
-				if(!z_transition_obj)
-					continue
-				var/image/image_to_use
+				transitions["Stairs Down"]["markers"] += image_to_use
+				continue
 
-				if(istype(z_transition_obj, /obj/structure/stairs))
-					if(!z_transition_positions["Stairs Up"])
-						z_transition_positions["Stairs Up"] = list("icon" = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "stairs"), "markers" = list())
-					image_to_use = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "stairs")
-					image_to_use.pixel_x = offset_x
-					image_to_use.pixel_y = offset_y
+			if(!z_transition_positions["Ladders"])
+				z_transition_positions["Ladders"] = list("icon" = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "ladder"), "markers" = list())
 
-					z_transition_positions["Stairs Up"]["markers"] += image_to_use
+			image_to_use = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "ladder")
+			image_to_use.pixel_x = offset_x
+			image_to_use.pixel_y = offset_y
 
-					var/turf/checking = get_step_multiz(get_turf(z_transition_obj), UP)
-					if(!istype(checking))
-						continue
-
-					var/list/transitions = SSholomaps.holomap_z_transitions["[checking.z]"]
-					if(!transitions)
-						transitions = list()
-						SSholomaps.holomap_z_transitions["[checking.z]"] = transitions
-
-					image_to_use = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "stairs_down")
-					image_to_use.pixel_x = checking.x + HOLOMAP_CENTER_X
-					image_to_use.pixel_y = checking.y + HOLOMAP_CENTER_Y
-
-					if(!transitions["Stairs Down"])
-						transitions["Stairs Down"] = list("icon" = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "stairs_down"), "markers" = list())
-
-					transitions["Stairs Down"]["markers"] += image_to_use
-
-				else if(istype(z_transition_obj, /obj/structure/ladder))
-					if(!z_transition_positions["Ladders"])
-						z_transition_positions["Ladders"] = list("icon" = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "ladder"), "markers" = list())
-					image_to_use = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "ladder")
-					image_to_use.pixel_x = offset_x
-					image_to_use.pixel_y = offset_y
-
-					z_transition_positions["Ladders"]["markers"] += image_to_use
+			z_transition_positions["Ladders"]["markers"] += image_to_use
 
 		// Check sleeping after each row to avoid *completely* destroying the server
 		CHECK_TICK
@@ -179,10 +177,10 @@ SUBSYSTEM_DEF(holomaps)
 
 	// And rotate it in every direction of course!
 	var/icon/actual_small_map = icon(small_map)
-	actual_small_map.Insert(new_icon = small_map, dir = SOUTH)
-	actual_small_map.Insert(new_icon = turn(small_map, 90), dir = WEST)
-	actual_small_map.Insert(new_icon = turn(small_map, 180), dir = NORTH)
-	actual_small_map.Insert(new_icon = turn(small_map, 270), dir = EAST)
+	actual_small_map.Insert(new_icon = small_map, dir = NORTH)
+	actual_small_map.Insert(new_icon = turn(small_map, 90), dir = EAST)
+	actual_small_map.Insert(new_icon = turn(small_map, 180), dir = SOUTH)
+	actual_small_map.Insert(new_icon = turn(small_map, 270), dir = WEST)
 	extra_holomaps["[HOLOMAP_EXTRA_STATIONMAPSMALL]_[z_level]"] = actual_small_map
 	return TRUE
 
