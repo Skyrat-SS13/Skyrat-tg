@@ -29,12 +29,9 @@
 	resistance_flags = FIRE_PROOF
 	wound_bonus = -10
 	bare_wound_bonus = 20
-<<<<<<< HEAD
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE_TOY // Skyrat edit
 	special_desc = "A double bladed energy sword employed by the Syndicate in raids" // Skyrat edit
-=======
 	item_flags = NO_BLOOD_ON_ITEM
->>>>>>> 8d67f614b5c (Fix blood overlays on energy daggers (#72624))
 	var/w_class_on = WEIGHT_CLASS_BULKY
 	var/saber_color = "green"
 	var/two_hand_force = 34
