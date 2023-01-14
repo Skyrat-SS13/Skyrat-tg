@@ -99,7 +99,7 @@
 				examine_datum.nif_examine_text = span_purple("<b>There's a certain spark to their eyes.<b>")
 				return FALSE
 
-			examine_datum.nif_examine_text = span_purple("<b>[text_to_use]</b><br>")
+			examine_datum.nif_examine_text = text_to_use
 
 		if("uninstall_nifsoft")
 			var/nifsoft_to_remove = locate(params["nifsoft_to_remove"]) in loaded_nifsofts

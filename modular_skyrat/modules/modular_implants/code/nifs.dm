@@ -400,7 +400,7 @@
 
 /datum/component/nif_examine
 	///What text is shown when examining someone with NIF Examine text?
-	var/nif_examine_text = span_purple("<b>There's a certain spark to their eyes.</b>")
+	var/nif_examine_text = "There's a certain spark to their eyes"
 
 /datum/component/nif_examine/New()
 	. = ..()
@@ -418,7 +418,7 @@
 /datum/component/nif_examine/proc/add_examine(mob/nif_user, mob/looker, list/examine_texts)
 	SIGNAL_HANDLER
 
-	examine_texts += nif_examine_text
+	examine_texts += span_purple("<b>[nif_examine_text]</b>")
 
 /mob/living/carbon/human/death()
 	. = ..()
