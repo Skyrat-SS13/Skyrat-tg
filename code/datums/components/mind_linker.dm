@@ -74,9 +74,11 @@
 	master_speech.Grant(owner)
 	*/ //ORIGINAL CODE END
 
-	if(speech_action) //SKYRAT EDIT - NIFs
+	//SKYRAT EDIT - NIFs
+	if(speech_action)
 		master_speech = new(src)
 		master_speech.Grant(owner)
+	//SKYRAT EDIT END
 
 	to_chat(owner, span_boldnotice("You establish a [network_name], allowing you to link minds to communicate telepathically."))
 
