@@ -182,12 +182,8 @@
 /mob/living/proc/getOxyLoss()
 	return oxyloss
 
-<<<<<<< HEAD
-/mob/living/proc/adjustOxyLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype)
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_OXY, amount) //SKYRAT EDIT ADDITION
-=======
 /mob/living/proc/adjustOxyLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype = MOB_ORGANIC)
->>>>>>> 31506f885cf (Fixes issue where mob biotype requirements were always being ignored when applying reagent based tox and oxy damage to mobs (#72664))
+	SEND_SIGNAL(src, COMSIG_MOB_LOSS_OXY, amount) //SKYRAT EDIT ADDITION
 	if(!forced && (status_flags & GODMODE))
 		return
 	if(!(mob_biotypes & required_biotype))
