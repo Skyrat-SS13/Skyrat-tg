@@ -484,6 +484,13 @@
 	button_icon_state = null
 
 
+/datum/action/cooldown/hemophage/New(Target)
+	. = ..()
+
+	if(target && isnull(button_icon_state))
+		AddComponent(/datum/component/action_item_overlay, target)
+
+
 /datum/action/cooldown/hemophage/drain_victim
 	name = "Drain Victim"
 	desc = "Leech blood from any carbon victim you are passively grabbing."
