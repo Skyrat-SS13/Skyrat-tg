@@ -14,7 +14,7 @@
 	var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = target_mob.getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
 
 	if(!target_nif || !length(target_nif.loaded_nifsofts))
-		to_chat(user, span_warning("[user] does not posses a NIF with any installed NIFSofts"))
+		balloon_alert(user, "[target_mob] has no NIFSofts")
 		return
 
 	var/list/installed_nifsofts = target_nif.loaded_nifsofts
@@ -23,7 +23,7 @@
 	if(!nifsoft_to_remove)
 		return FALSE
 
-	user.visible_message(span_warning("[user] starts to use the [src] on [target_mob]"), span_notice("You start to use the [src] on [target_mob]"))
+	user.visible_message(span_warning("[user] starts to use [src] on [target_mob]"), span_notice("You start to use [src] on [target_mob]"))
 	if(!do_after(user, 5 SECONDS, target_mob))
 		balloon_alert(user, "removal cancelled")
 		return FALSE
