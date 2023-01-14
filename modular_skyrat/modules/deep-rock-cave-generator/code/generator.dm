@@ -40,8 +40,6 @@
 /datum/map_generator/deep_rock_cave_generator/generate_terrain(list/turfs, area/generate_in)
 	. = ..()
 
-	var/list/levels_to_make_rivers_at = list()
-
 	var/mobs_allowed = (generate_in.area_flags & MOB_SPAWN_ALLOWED)
 
 	var/biome_seed = rand(0, 50000)
@@ -61,9 +59,12 @@
 				gen_turf = new openspace_turf_type(gen_turf)
 				continue
 
-		var/biome_type = text2num(rustg_noise_get_at_coordinates("[biome_seed]", "[gen_turf.x]", "[gen_turf.y]"))
+		var/perlin_x = gen_turf.x / perlin_zoom
+		var/perlin_y = gen_turf.y / perlin_zoom
 
-		var/datum/biome/deep_rock/selected_biome
+		var/biome_type = text2num(rustg_noise_get_at_coordinates("[biome_seed]", "[perlin_x]", "[perlin_y]"))
+
+		var/datum/biome/selected_biome
 
 		switch(biome_type)
 			if(0 to 0.2)
@@ -85,21 +86,10 @@
 
 		CHECK_TICK
 
-	if(length(levels_to_make_rivers_at))
-		for(var/zlevel as anything in levels_to_make_rivers_at)
-			generate_random_river_type(zlevel)
-
 	var/message = "[name] finished in [(REALTIMEOFDAY - start_time)/10]s!"
 
 	add_startup_message(message)
 	log_world(message)
-
-/datum/map_generator/deep_rock_cave_generator/proc/generate_random_river_type(z_level_to_do_it_at)
-	var/number_of_rivers = rand(1,5)
-
-	var/river_turf_type = pick(river_turf_list)
-
-	spawn_rivers(z_level_to_do_it_at, number_of_rivers, river_turf_type)
 
 // Areas to use for generation
 
