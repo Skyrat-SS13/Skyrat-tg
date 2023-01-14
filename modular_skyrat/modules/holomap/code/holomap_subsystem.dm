@@ -55,10 +55,10 @@ SUBSYSTEM_DEF(holomaps)
 		var/icon/marker_color_overlay = icon('modular_skyrat/modules/holomap/icons/8x8.dmi', "area_legend")
 		marker_color_overlay.DrawBox(department_color, 1, 1, 8, 8) // Get the whole icon
 		marker_icon.add_overlay(marker_color_overlay)
-		GLOB.holomap_default_legend += list(GLOB.holomap_color_to_name[department_color] = list(
+		GLOB.holomap_default_legend[GLOB.holomap_color_to_name[department_color]] = list(
 			"icon" =  marker_icon,
 			"markers" = list(),
-		))
+		)
 
 	return TRUE
 
@@ -90,42 +90,6 @@ SUBSYSTEM_DEF(holomaps)
 				position_to_name["[offset_x]:[offset_y]"] = tile.loc:holomap_color == HOLOMAP_AREACOLOR_MAINTENANCE ? "Maintenance" : tile.loc.name
 
 			if(tile.loc:holomapAlwaysDraw())
-				var/z_transition_obj = HAS_Z_TRANSITION(tile)
-				if(z_transition_obj)
-					var/image/image_to_use
-
-					if(istype(z_transition_obj, /obj/structure/stairs))
-						LAZYADD(z_transition_positions["Stairs Up"], list("icon" = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "stairs"), "markers" = list()))
-						image_to_use = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "stairs")
-						image_to_use.pixel_x = offset_x
-						image_to_use.pixel_y = offset_y
-
-						z_transition_positions["Stairs Up"]["markers"] += image_to_use
-
-						var/turf/checking = get_step_multiz(get_turf(z_transition_obj), UP)
-						var/list/transitions = SSholomaps.holomap_z_transitions["[checking?.z]"]
-						if(istype(checking))
-							if(!transitions)
-								transitions = list()
-								SSholomaps.holomap_z_transitions["[checking.z]"] = transitions
-
-							image_to_use = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "stairs_down")
-							image_to_use.pixel_x = checking.x + HOLOMAP_CENTER_X
-							image_to_use.pixel_y = checking.y + HOLOMAP_CENTER_Y
-
-							if(!transitions["Stairs Down"])
-								transitions["Stairs Down"] = list("icon" = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "stairs_down"), "markers" = list())
-
-							transitions["Stairs Down"]["markers"] += image_to_use
-
-					else if(istype(z_transition_obj, /obj/structure/ladder))
-						LAZYADD(z_transition_positions["Ladders"], list("icon" = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "ladders"), "markers" = list()))
-						image_to_use = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "ladder")
-						image_to_use.pixel_x = offset_x
-						image_to_use.pixel_y = offset_y
-
-						z_transition_positions["Ladders"]["markers"] += image_to_use
-
 				if(IS_ROCK(tile))
 					canvas.DrawBox(HOLOMAP_ROCK, offset_x, offset_y)
 					continue
@@ -141,14 +105,49 @@ SUBSYSTEM_DEF(holomaps)
 				if(IS_PATH(tile))
 					canvas.DrawBox(HOLOMAP_PATH, offset_x, offset_y)
 
+				var/z_transition_obj = HAS_Z_TRANSITION(tile)
+				if(!z_transition_obj)
+					continue
+				var/image/image_to_use
+
+				if(istype(z_transition_obj, /obj/structure/stairs))
+					if(!z_transition_positions["Stairs Up"])
+						z_transition_positions["Stairs Up"] = list("icon" = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "stairs"), "markers" = list())
+					image_to_use = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "stairs")
+					image_to_use.pixel_x = offset_x
+					image_to_use.pixel_y = offset_y
+
+					z_transition_positions["Stairs Up"]["markers"] += image_to_use
+
+					var/turf/checking = get_step_multiz(get_turf(z_transition_obj), UP)
+					if(!istype(checking))
+						continue
+
+					var/list/transitions = SSholomaps.holomap_z_transitions["[checking.z]"]
+					if(!transitions)
+						transitions = list()
+						SSholomaps.holomap_z_transitions["[checking.z]"] = transitions
+
+					image_to_use = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "stairs_down")
+					image_to_use.pixel_x = checking.x + HOLOMAP_CENTER_X
+					image_to_use.pixel_y = checking.y + HOLOMAP_CENTER_Y
+
+					if(!transitions["Stairs Down"])
+						transitions["Stairs Down"] = list("icon" = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "stairs_down"), "markers" = list())
+
+					transitions["Stairs Down"]["markers"] += image_to_use
+
+				else if(istype(z_transition_obj, /obj/structure/ladder))
+					if(!z_transition_positions["Ladders"])
+						z_transition_positions["Ladders"] = list("icon" = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "ladder"), "markers" = list())
+					image_to_use = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "ladder")
+					image_to_use.pixel_x = offset_x
+					image_to_use.pixel_y = offset_y
+
+					z_transition_positions["Ladders"]["markers"] += image_to_use
+
 		// Check sleeping after each row to avoid *completely* destroying the server
 		CHECK_TICK
-
-	if(!length(z_transition_positions["Stairs Up"]["markers"]))
-		z_transition_positions.Remove("Stairs Up")
-
-	if(!length(z_transition_positions["Ladders"]["markers"]))
-		z_transition_positions.Remove("Ladders")
 
 	valid_map_indexes += z_level
 	holomaps["[z_level]"] = canvas

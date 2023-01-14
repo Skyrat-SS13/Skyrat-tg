@@ -61,7 +61,6 @@
 /// If there is no turf, then it doesn't add the cursor or legend back.
 /// Make sure to set the pixel x and y of your overlays, or they'll render in the far bottom left.
 /datum/station_holomap/proc/update_map(list/overlays_to_use = list())
-
 	base_map.cut_overlays()
 
 	if(map_x && map_y)

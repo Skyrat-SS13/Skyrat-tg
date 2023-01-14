@@ -13,7 +13,7 @@
 	layer = ABOVE_WINDOW_LAYER
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 10
-	active_power_usage = 500
+	active_power_usage = 100
 	circuit = /obj/item/circuitboard/machine/station_map
 	light_color = HOLOMAP_HOLOFIER
 
@@ -296,7 +296,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/station_map, 32)
 			fire_alarms += alarm_icon
 
 	if(length(fire_alarms))
-		extra_overlays += list("Fire Alarms" = list("icon" = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "fire_marker"), "markers" = fire_alarms))
+		extra_overlays["Fire Alarms"] = list("icon" = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "fire_marker"), "markers" = fire_alarms)
 
 	var/list/air_alarms = list()
 	for(var/obj/machinery/airalarm/air_alarm as anything in GLOB.air_alarms)
@@ -307,7 +307,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/station_map, 32)
 			air_alarms += alarm_icon
 
 	if(length(air_alarms))
-		extra_overlays += list("Air Alarms" = list("icon" = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "atmos_marker"), "markers" = air_alarms))
+		extra_overlays["Air Alarms"] = list("icon" = image('modular_skyrat/modules/holomap/icons/8x8.dmi', "atmos_marker"), "markers" = air_alarms)
 
 	return extra_overlays
 
