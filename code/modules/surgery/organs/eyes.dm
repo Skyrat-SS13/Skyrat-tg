@@ -106,7 +106,7 @@
 	eye_owner.cure_blind(EYE_DAMAGE)
 	eye_owner.cure_nearsighted(EYE_DAMAGE)
 	eye_owner.set_blindness(0)
-	eye_owner.set_blurriness(0)
+	eye_owner.remove_status_effect(/datum/status_effect/eye_blur)
 	eye_owner.clear_fullscreen("eye_damage", 0)
 	eye_owner.update_sight()
 	is_emissive = FALSE // SKYRAT EDIT ADDITION
@@ -535,6 +535,12 @@
 	eye_icon_state = "snail_eyes"
 	icon_state = "snail_eyeballs"
 	eyes_layer = ABOVE_BODY_FRONT_HEAD_LAYER //SKYRAT EDIT - Roundstart Snails
+
+/obj/item/organ/internal/eyes/jelly
+	name = "jelly eyes"
+	desc = "These eyes are made of a soft jelly. Unlike all other eyes, though, there are three of them."
+	eye_icon_state = "jelleyes"
+	icon_state = "eyeballs-jelly"
 
 /obj/item/organ/internal/eyes/night_vision/maintenance_adapted
 	name = "adapted eyes"

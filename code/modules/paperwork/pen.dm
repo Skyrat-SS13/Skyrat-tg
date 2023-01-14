@@ -100,7 +100,7 @@
 	result = /obj/item/pen/charcoal
 	reqs = list(/obj/item/stack/sheet/mineral/wood = 1, /datum/reagent/ash = 30)
 	time = 3 SECONDS
-	category = CAT_PRIMAL
+	category = CAT_TOOLS
 
 /obj/item/pen/fountain/captain
 	name = "captain's fountain pen"
@@ -253,6 +253,7 @@
 	sharpness = SHARP_POINTY
 	armour_penetration = 20
 	bare_wound_bonus = 10
+	item_flags = NO_BLOOD_ON_ITEM
 	light_system = MOVABLE_LIGHT
 	light_range = 1.5
 	light_power = 0.75

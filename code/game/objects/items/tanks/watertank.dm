@@ -12,11 +12,15 @@
 	slowdown = 1
 	actions_types = list(/datum/action/item_action/toggle_mister)
 	max_integrity = 200
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 100, ACID = 30)
+	armor_type = /datum/armor/item_watertank
 	resistance_flags = FIRE_PROOF
 
 	var/obj/item/noz
 	var/volume = 500
+
+/datum/armor/item_watertank
+	fire = 100
+	acid = 30
 
 /obj/item/watertank/Initialize(mapload)
 	. = ..()
@@ -135,6 +139,10 @@
 	if(!tank?.reagents)
 		return INITIALIZE_HINT_QDEL
 	reagents = tank.reagents //This mister is really just a proxy for the tank's reagents
+
+/obj/item/reagent_containers/spray/mister/Destroy(force)
+	tank = null
+	return ..()
 
 /obj/item/reagent_containers/spray/mister/afterattack(obj/target, mob/user, proximity)
 	if(target.loc == loc) //Safety check so you don't fill your mister with mutagen or something and then blast yourself in the face with it
