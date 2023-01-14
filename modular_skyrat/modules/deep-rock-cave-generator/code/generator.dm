@@ -23,11 +23,11 @@
 	var/perlin_zoom = 65
 
 	/// Weighted list of what types of turf to use for random rivers
-	var/list/weighted_river_turf_list = list()
-	/// Expanded list of what types of turfs to use for random rivers
-	var/list/river_turf_list = list(
+	var/list/weighted_river_turf_list = list(
 		/turf/open/water/overlay/hotspring/planet/outdoors,
 	)
+	/// Expanded list of what types of turfs to use for random rivers
+	var/list/river_turf_list = list()
 
 	/// What openspace turf we should be using
 	var/openspace_turf_type = /turf/open/openspace
