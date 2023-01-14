@@ -30,7 +30,7 @@
 	var/list/river_turf_list = list()
 
 	/// What openspace turf we should be using
-	var/openspace_turf_type = /turf/open/openspace
+	var/openspace_turf_type = /turf/open/openspace/planetary
 
 /datum/map_generator/deep_rock_cave_generator/New()
 	. = ..()
@@ -40,7 +40,7 @@
 /datum/map_generator/deep_rock_cave_generator/generate_terrain(list/turfs, area/generate_in)
 	. = ..()
 
-	var/last_river_level
+	var/list/levels_to_make_rivers_at = list()
 
 	var/mobs_allowed = (generate_in.area_flags & MOB_SPAWN_ALLOWED)
 
@@ -80,11 +80,14 @@
 		selected_biome = SSmapping.biomes[selected_biome] //Get the instance of this biome from SSmapping
 		selected_biome.generate_turf(gen_turf, closed, generate_in, mobs_allowed)
 
-		if(gen_turf.z != last_river_level)
-			generate_random_river_type(gen_turf.z)
-			last_river_level = gen_turf.z
+		if(!(gen_turf.z in levels_to_make_rivers_at))
+			levels_to_make_rivers_at += gen_turf.z
 
 		CHECK_TICK
+
+	if(length(levels_to_make_rivers_at))
+		for(var/zlevel as anything in levels_to_make_rivers_at)
+			generate_random_river_type(zlevel)
 
 	var/message = "[name] finished in [(REALTIMEOFDAY - start_time)/10]s!"
 
