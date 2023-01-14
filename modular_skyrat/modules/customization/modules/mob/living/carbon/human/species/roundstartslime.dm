@@ -67,7 +67,7 @@
 
 /datum/action/innate/alter_form/New(Target)
 	. = ..()
-	if(available_choices)
+	if(length(available_choices))
 		return
 
 	available_choices = GLOB.sprite_accessories.Copy()
