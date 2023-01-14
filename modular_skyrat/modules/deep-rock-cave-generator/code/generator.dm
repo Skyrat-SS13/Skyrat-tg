@@ -24,7 +24,7 @@
 
 	/// Weighted list of what types of turf to use for random rivers
 	var/list/weighted_river_turf_list = list(
-		/turf/open/water/overlay/hotspring/planet/outdoors,
+		/turf/open/water/overlay/hotspring/planet/outdoors = 1,
 	)
 	/// Expanded list of what types of turfs to use for random rivers
 	var/list/river_turf_list = list()
@@ -53,10 +53,13 @@
 
 		var/turf/gen_turf = iterated_turf
 
-		if(istype(gen_turf, openspace_turf_type))
-			continue
-
 		var/closed = string_gen[world.maxx * (gen_turf.y - 1) + gen_turf.x] != "0"
+
+		if(!closed)
+			var/turf/open/turf_below = gen_turf.below()
+			if(turf_below && istype(turf_below))
+				gen_turf = new openspace_turf_type(gen_turf)
+				continue
 
 		var/biome_type = text2num(rustg_noise_get_at_coordinates("[biome_seed]", "[gen_turf.x]", "[gen_turf.y]"))
 
@@ -73,11 +76,6 @@
 				selected_biome = BIOME_MINERAL_RICH_ZONE
 			if(0.8 to 1)
 				selected_biome = BIOME_HELLSCAPE
-
-		// I'm fairly certain this needs to happen before generate turf on the biome does, maybe I'm wrong
-		var/turf/open/turf_above = gen_turf.above()
-		if(turf_above && istype(turf_above))
-			turf_above = new openspace_turf_type(turf_above)
 
 		selected_biome = SSmapping.biomes[selected_biome] //Get the instance of this biome from SSmapping
 		selected_biome.generate_turf(gen_turf, closed, generate_in, mobs_allowed)
