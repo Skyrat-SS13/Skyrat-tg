@@ -1,4 +1,6 @@
 /datum/biome/deep_rock/underground_jungle
+	flora_spawn_chance = 80
+
 	weighted_open_turf_types = list(
 		/turf/open/misc/dirt/planet/openspace_baseturf = 2,
 		/turf/open/misc/grass/jungle/planet/openspace_baseturf = 5,
@@ -16,11 +18,14 @@
 	weighted_flora_spawn_list = list(
 		/obj/structure/flora/ash/seraka = 2,
 		/obj/structure/flora/biolumi/mine/weaklight = 2,
+		/obj/structure/flora/biolumi/flower/weaklight = 2,
 		/obj/structure/flora/bush/fullgrass/style_random = 3,
 		/obj/structure/flora/bush/sparsegrass/style_random = 3,
 		/obj/structure/flora/bush/jungle/a/style_random = 5,
 		/obj/structure/flora/bush/jungle/b/style_random = 5,
 		/obj/structure/flora/bush/jungle/c/style_random = 5,
+		/obj/structure/flora/grass/jungle/a/style_random = 3,
+		/obj/structure/flora/grass/jungle/b/style_random = 3,
 		/obj/structure/flora/tree/jungle/small/style_random = 3
 	)
 	weighted_feature_spawn_list = list(
@@ -31,13 +36,16 @@
 	)
 
 /turf/closed/mineral/ash_rock/underground_jungle
+	turf_type = /turf/open/misc/dirt/planet/openspace_baseturf
 	baseturfs = /turf/open/misc/dirt/planet/openspace_baseturf
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 
 /turf/open/misc/grass/jungle/planet/openspace_baseturf
 	baseturfs = /turf/open/openspace/planetary
+	planetary_atmos = TRUE
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 
 /turf/open/misc/dirt/planet/openspace_baseturf
 	baseturfs = /turf/open/openspace/planetary
+	planetary_atmos = TRUE
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS

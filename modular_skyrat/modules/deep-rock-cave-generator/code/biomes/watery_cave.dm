@@ -41,10 +41,12 @@
 
 /turf/open/water/overlay/hotspring/planet/outdoors/openspace_baseturf
 	baseturfs = /turf/open/openspace/planetary
+	planetary_atmos = TRUE
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 
 /turf/open/misc/sandy_dirt/planet/openspace_baseturf
 	baseturfs = /turf/open/openspace/planetary
+	planetary_atmos = TRUE
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 
 /turf/open/openspace/planetary
