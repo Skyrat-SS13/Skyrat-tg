@@ -95,7 +95,7 @@
 			if(!examine_datum)
 				return FALSE
 
-			if(!text_to_use)
+			if(!text_to_use || length(text_to_use) <= 6)
 				examine_datum.nif_examine_text = span_purple("<b>There's a certain spark to their eyes.<b>")
 				return FALSE
 
