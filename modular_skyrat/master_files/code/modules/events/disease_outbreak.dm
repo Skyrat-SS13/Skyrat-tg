@@ -1,4 +1,4 @@
-#define EVENT_MIN_SYMPTOMS 2
+#define EVENT_MIN_SYMPTOMS 3
 #define EVENT_MAX_SYMPTOMS 4
 
 // We pick symptoms from a defined list (removing the really bad ones like deafness, blindness, spontaneous combustion etc.)
