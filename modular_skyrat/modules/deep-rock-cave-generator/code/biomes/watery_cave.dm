@@ -8,8 +8,8 @@
 	)
 
 	weighted_mob_spawn_list = list(
-		/obj/item/fish/chasm_crab = 2,
-		/mob/living/basic/axolotl = 2,
+		/obj/item/fish/chasm_crab = 6,
+		/mob/living/basic/axolotl = 3,
 		/mob/living/basic/carp = 1,
 	)
 	weighted_flora_spawn_list = list(

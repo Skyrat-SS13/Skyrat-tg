@@ -13,11 +13,11 @@
 	/// Chance of cells starting closed
 	var/initial_closed_chance = 45
 	/// Amount of smoothing iterations
-	var/smoothing_iterations = 40
+	var/smoothing_iterations = 20
 	/// How much neighbours does a dead cell need to become alive
-	var/birth_limit = 4
+	var/birth_limit = 5
 	/// How little neighbours does a alive cell need to die
-	var/death_limit = 3
+	var/death_limit = 4
 
 	/// Used to select "zoom" level into the perlin noise, higher numbers result in slower transitions
 	var/perlin_zoom = 65
@@ -72,16 +72,17 @@
 			if(0.8 to 1)
 				selected_biome = BIOME_HELLSCAPE
 
+		// I'm fairly certain this needs to happen before generate turf on the biome does, maybe I'm wrong
+		var/turf/open/turf_above = get_step_multiz(get_turf(gen_turf), UP)
+		if(turf_above && istype(turf_above))
+			turf_above.ChangeTurf(openspace_turf_type, flags = CHANGETURF_INHERIT_AIR)
+
 		selected_biome = SSmapping.biomes[selected_biome] //Get the instance of this biome from SSmapping
 		selected_biome.generate_turf(gen_turf, closed, generate_in, mobs_allowed)
 
 		if(gen_turf.z != last_river_level)
 			generate_random_river_type(gen_turf.z)
 			last_river_level = gen_turf.z
-
-		var/turf/open/turf_above = get_step_multiz(get_turf(src), UP)
-		if(turf_above && istype(turf_above))
-			turf_above.ChangeTurf(openspace_turf_type, flags = CHANGETURF_INHERIT_AIR)
 
 		CHECK_TICK
 
