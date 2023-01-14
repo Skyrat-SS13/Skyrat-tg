@@ -11,7 +11,7 @@
 	var/string_gen
 
 	/// Chance of cells starting closed
-	var/initial_closed_chance = 30
+	var/initial_closed_chance = 40
 	/// Amount of smoothing iterations
 	var/smoothing_iterations = 20
 	/// How much neighbours does a dead cell need to become alive
@@ -20,7 +20,7 @@
 	var/death_limit = 3
 
 	/// Used to select "zoom" level into the perlin noise, higher numbers result in slower transitions
-	var/perlin_zoom = 125
+	var/perlin_zoom = 90
 
 	/// Weighted list of what types of turf to use for random rivers
 	var/list/weighted_river_turf_list = list(

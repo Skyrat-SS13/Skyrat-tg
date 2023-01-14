@@ -19,7 +19,7 @@
 	)
 	weighted_feature_spawn_list = list(
 		/obj/structure/flora/rock/pile/style_random = 5,
-		/obj/structure/flora/rock/style_random = 5
+		/obj/structure/flora/rock/style_random = 5,
 		/obj/structure/ore_vein/stone = 1,
 		/obj/structure/ore_vein/iron = 3,
 	)
