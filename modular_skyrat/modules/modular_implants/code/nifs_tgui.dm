@@ -27,10 +27,6 @@
 
 	data["loaded_nifsofts"] = list()
 	for(var/datum/nifsoft/nifsoft as anything in loaded_nifsofts)
-		if(isnull(nifsoft))
-			qdel(nifsoft)
-			continue
-
 		var/list/nifsoft_data = list(
 			"name" = nifsoft.program_name,
 			"desc" = nifsoft.program_desc,
