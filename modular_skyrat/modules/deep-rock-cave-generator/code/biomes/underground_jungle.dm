@@ -1,11 +1,10 @@
 /datum/biome/deep_rock/underground_jungle
 	weighted_open_turf_types = list(
 		/turf/open/misc/dirt/planet/openspace_baseturf = 2,
-		/turf/open/water/overlay/hotspring/planet/outdoors/openspace_baseturf = 1,
 		/turf/open/misc/grass/jungle/planet/openspace_baseturf = 5,
 	)
 	weighted_closed_turf_types = list(
-		/turf/closed/mineral/ash_rock/underground_jungle = 2,
+		/turf/closed/mineral/ash_rock/underground_jungle = 3,
 		/turf/closed/mineral/random/water_cave = 1
 	)
 
