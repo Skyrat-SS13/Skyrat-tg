@@ -471,3 +471,91 @@
   - rscadd: you can now use regex for text highlighting. The syntax is /[regex expression]/,
       eg /dog[0-9]/. There are no quantifiers, but you can use capture groups. The
       regex must read a minimum of two characters.
+2023-01-14:
+  Improvedname:
+  - bugfix: Adds missing contrabrand spawners to deltastation locker
+  - bugfix: fixes cummerbunds holding 7 items instead of 3(as fannypacks do)
+  Melbert:
+  - bugfix: Ethereals and Flypeople and Aliens who learn Uncommon language can speak
+      it with their tongues like they could speak Common, no this doesn't mean they
+      can naturally speak or understand Uncommon
+  - refactor: Refactored how tongues set up their languages lists
+  - bugfix: Fixed a runtime from neck slices on headless mobs.
+  - qol: Neck sliced folk now have an examine message saying as much.
+  - bugfix: Fixes runtimes from cursed people dying
+  Paxilmaniac:
+  - imageadd: The colors on the cutting board have been changed to be less dull and
+      more like the mortars
+  PestoVerde, Imaginos, Wallem:
+  - imageadd: New material and ore sprites by PestoVerde & Imaginos
+  Rhials:
+  - qol: The Scrubber Clog event now gives an orbit popup to ghosts!
+  - qol: the light replacer now allows you to click on either the light, or the floor
+      beneath it, to refill lights.
+  - code_imp: light replacer code is now a bit prettier.
+  ShizCalev:
+  - qol: Airlock interfaces will now open up automatically if access is restored early
+      while an AI is hacking it.
+  SkyratBot:
+  - bugfix: pancakes no longer show an error sprite when added to a stack
+  - rscadd: Adds ear surgery to repair damaged ears/deafness.
+  - bugfix: There is no longer a button on a window at the CentCom Thunderdome.
+  - qol: Successfully fending off a blob now has a cross station news report again.
+      More pressing reports will take priority over it, though.
+  - qol: Successfully killing a wizard (and all of their apprentices) now has a cross
+      station news report again.
+  - qol: If more than half of a cultist team manages to escape on the shuttle (rather
+      than summoning Nar'sie), they will send a unique cross station news report.
+      This is still a loss, by the way. Summon Nar'sie!
+  - qol: Nuclear Operatives successfully nuking the station now has its unique cross
+      station news report again, and no longer uses the generic "The station was nuked"
+      report.
+  - qol: Nuking the station to stop a blob infection now has a unique cross station
+      news report again. Good luck convincing admins to allow this.
+  - qol: Cult ghosts from "Spirit Realm" no longer persist on the cult's team after
+      being desummoned, meaning they will not show up on roundend report.
+  - qol: Heads of staff will now always show up on revolution roundend report - even
+      if their body was fully destroyed.
+  - qol: fixes chisels
+  - rscadd: Faithless will now also break lights and drag victims around
+  - refactor: Faithless into basic mob
+  - bugfix: Bald/Shaved ghosts will no longer cause a runtime and spawn without a
+      name.
+  - rscadd: RTD Rapid Tiling Device
+  - imageadd: Sprite for RTD
+  - code_imp: moved update_overlays() from rcd to obj/item/construction so anyone
+      can use it
+  - rscdel: cooldown of 3 seconds when changing turf type
+  - qol: Faster Turf decoration
+  - qol: Biogenerator shows default reagent containers instead of beakers
+  - bugfix: viewing the botkeeper app as an observer will no longer runtime.
+  - bugfix: Those with kitchen access should now once again be the only one who are
+      allowed to vending-machine-restock individual snacking items via their trusty
+      tray.
+  - qol: Pinpointers now tell what they are tracking when examined
+  - qol: Mining order consoles are now named 'order console'.
+  - qol: Orders from said mining order consoles can now no longer be cancelled, and
+      are listed as 'mp' (mining points) in the Cargo console instead of 'cr'.
+  - qol: Order consoles now have a + button that will instantly add 1 of the item.
+  - bugfix: Departmental orders can no longer be cancelled through the NTos cargo
+      application.
+  - bugfix: Wearing an ID will no longer break order consoles.
+  - bugfix: You should now no longer get a confusing message whenever you try to add
+      flour from a flour sack into a bowl.
+  - bugfix: you can nolonger use a goldgrub as a shield to kill colossus
+  - spellcheck: Head-spears are now named properly when using alternate spear types.
+  - rscadd: 'Hope you saved for a rainy day: Added the ''Cursed'' quirk which causes
+      excessive slippage and... other difficulties.'
+  - bugfix: Boxes created through the crafting menu no longer spawn with their contents
+      full
+  Tastyfish:
+  - bugfix: Teshari uniform accessory rendering now works as expected again.
+  Tattle:
+  - bugfix: projectile hits on mobs are logged globally
+  YakumoChen:
+  - qol: Department guards now spawn with all the gear they need to police their department
+  - qol: Department guard lockers contain a full, spare set of gear, for people getting
+      a job change.
+  Zonespace27:
+  - balance: ERT smartgun now fires faster while doing less damage and having nearly
+      all wounding potential removed
