@@ -87,14 +87,14 @@
 
 	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = mob_to_repair.getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
 	if(!installed_nif)
-		to_chat(user, span_warning("[mob_to_repair] lacks a NIF"))
+		balloon_alert(user, "[mob_to_repair] lacks a NIF")
 
 	if(!do_after(user, 5 SECONDS, mob_to_repair))
 		balloon_alert(user, "repair cancelled")
 		return FALSE
 
 	if(!installed_nif.repair_nif(repair_amount))
-		to_chat(user, span_warning("The NIF you are trying to repair is already at max durbility"))
+		balloon_alert(user, "target NIF is at max duarbility")
 		return FALSE
 
 	to_chat(user, span_notice("You successfully repair [mob_to_repair]'s NIF"))
