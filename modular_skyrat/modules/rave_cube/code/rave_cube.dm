@@ -13,6 +13,15 @@
 	var/list/spotlights = list()
 	var/list/sparkles = list()
 
+/obj/item/circuitboard/machine/rave_cube
+	name = "Rave Cube"
+	greyscale_colors = CIRCUIT_COLOR_MEDICAL
+	build_path = /obj/machinery/rave_cube
+	req_components = list(
+		/obj/item/stock_parts/micro_laser = 4,
+		/obj/item/stock_parts/capacitor = 1,
+		/obj/item/stack/sheet/glass = 6)
+
 /obj/machinery/rave_cube/proc/turnOn(mob/user)
 	active = TRUE
 	icon_state = "ravecube_active"
