@@ -123,3 +123,5 @@
 
 /area/deep_rock_caves/caves/actually_generates/mobless
 	area_flags = UNIQUE_AREA
+
+/area/deep_rock_caves/caves/terry
