@@ -8,11 +8,10 @@
 	anchored = FALSE
 	density = TRUE
 	resistance_flags = FREEZE_PROOF | FIRE_PROOF
-	chat_color = "#ffffff"
-	chat_color_darkened = "#ffffff"
 	var/active = FALSE
 	var/list/spotlights = list()
 	var/list/sparkles = list()
+	var/xfx_mode = TRUE
 
 /datum/supply_pack/costumes_toys/ravecube
 	name = "Rave Cube Crate"
@@ -43,7 +42,7 @@
 /obj/machinery/rave_cube/attack_hand(mob/living/carbon/human/user, list/modifiers)
 	. = ..()
 	if(!anchored)
-		to_chat(user, span_warning("You have to lock the rave cube in place before powering it on!"))
+		to_chat(user, span_warning("You have to anchor the rave cube in place before powering it on!"))
 		return
 	if(active)
 		turn_off(user)
@@ -52,12 +51,27 @@
 
 /obj/machinery/rave_cube/examine(mob/user)
 	. = ..()
-	. += span_notice("<b>Alt+Click</b> to [anchored ? null : "un"]anchor [src].") 
+	. += span_notice("Alt+Click to [anchored ? "un" : null]anchor [src].")
+	. += span_notice("Ctrl+Shift+Click to [xfx_mode ? "dis" : "en"]able extra effects mode.")
 
 /obj/machinery/rave_cube/AltClick(mob/living/carbon/human/user)
 	. = ..()
 	set_anchored(!anchored)
-	balloon_alert(user, "[anchored ? null : "un"]anchored"))
+
+	if(active && !anchored)
+		turn_off(user)
+
+	balloon_alert(user, "[anchored ? null : "un"]anchored")
+
+/obj/machinery/rave_cube/CtrlShiftClick(mob/living/carbon/human/user)
+	. = ..()
+	if(xfx_mode)
+		xfx_mode = FALSE
+
+	else
+		xfx_mode = TRUE
+
+	balloon_alert(user, "Extra effects [xfx_mode ? "en" : "dis"]abled")
 
 /obj/machinery/rave_cube/update_icon_state()
 	. = ..()
@@ -195,12 +209,14 @@
 						glow.set_light_color(COLOR_SOFT_RED)
 					glow.even_cycle = !glow.even_cycle
 		if(prob(2))  // Unique effects for the dance floor that show up randomly to mix things up
-			INVOKE_ASYNC(src, PROC_REF(hierofunk))
+			if(!xfx_mode)
+				return
+			INVOKE_ASYNC(src, PROC_REF(extra_effects))
 		sleep(4)
 		if(QDELETED(src))
 			return
 
-/obj/machinery/rave_cube/proc/hierofunk()
+/obj/machinery/rave_cube/proc/extra_effects()
 	for(var/i in 1 to 10)
 		spawn_atom_to_turf(/obj/effect/temp_visual/hierophant/telegraph/edge, src, 1, FALSE)
 		sleep(0.5 SECONDS)
