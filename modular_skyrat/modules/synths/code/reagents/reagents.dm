@@ -1,3 +1,6 @@
+#define NANITE_SLURRY_ORGANIC_PURGE_RATE 4
+#define NANITE_SLURRY_ORGANIC_VOMIT_CHANCE 25
+
 /datum/reagent/medicine/syndicate_nanites //Used exclusively by Syndicate medical cyborgs
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC //Let's not cripple synth ops
 
@@ -10,9 +13,7 @@
 /datum/reagent/medicine/leporazine
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
-//REAGENTS FOR SYNTHS
-#define NANITE_SLURRY_ORGANIC_PURGE_RATE 4
-#define NANITE_SLURRY_ORGANIC_VOMIT_CHANCE 25
+// REAGENTS FOR SYNTHS
 
 /datum/reagent/medicine/system_cleaner
 	name = "System Cleaner"
@@ -25,13 +26,13 @@
 
 /datum/reagent/medicine/system_cleaner/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
 	affected_mob.adjustToxLoss(-2 * REM * delta_time, 0)
-	. = 1
 	var/remove_amount = 1 * REM * delta_time;
 	for(var/thing in affected_mob.reagents.reagent_list)
 		var/datum/reagent/reagent = thing
 		if(reagent != src)
 			affected_mob.reagents.remove_reagent(reagent.type, remove_amount)
 	..()
+	return TRUE
 
 /datum/reagent/medicine/liquid_solder
 	name = "Liquid Solder"
@@ -45,7 +46,7 @@
 	affected_mob.adjustOrganLoss(ORGAN_SLOT_BRAIN, -3 * REM * delta_time)
 	if(prob(10))
 		affected_mob.cure_trauma_type(resilience = TRAUMA_RESILIENCE_BASIC)
-	..()
+	return ..()
 
 /datum/reagent/medicine/nanite_slurry
 	name = "Nanite Slurry"
@@ -65,7 +66,7 @@
 /datum/reagent/medicine/nanite_slurry/on_mob_life(mob/living/carbon/affected_mob, delta_time)
 	var/heal_amount = healing * REM * delta_time
 	affected_mob.heal_bodypart_damage(heal_amount, heal_amount, required_bodytype = BODYTYPE_ROBOTIC)
-	..()
+	return ..()
 
 /datum/reagent/medicine/nanite_slurry/overdose_process(mob/living/carbon/affected_mob, delta_time, times_fired)
 	if(affected_mob.mob_biotypes & MOB_ROBOTIC)
@@ -74,8 +75,7 @@
 	affected_mob.reagents.remove_reagent(type, NANITE_SLURRY_ORGANIC_PURGE_RATE) //gets removed from organics very fast
 	if(prob(NANITE_SLURRY_ORGANIC_VOMIT_CHANCE))
 		affected_mob.vomit(vomit_type = VOMIT_NANITE)
-	..()
-	. = 1
+	return TRUE
 
 #undef NANITE_SLURRY_ORGANIC_PURGE_RATE
 #undef NANITE_SLURRY_ORGANIC_VOMIT_CHANCE
