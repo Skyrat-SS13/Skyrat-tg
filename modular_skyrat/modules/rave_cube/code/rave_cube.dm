@@ -106,6 +106,7 @@
 	FOR_DVIEW_END
 
 /obj/machinery/rave_cube/proc/lights_spin()
+	visible_message(span_info("Rave cube is initalising... Please wait."))
 	for(var/i in 1 to 25)
 		if(QDELETED(src) || !active)
 			return
@@ -126,6 +127,7 @@
 	for(var/overlay in sparkles)
 		var/obj/effect/overlay/sparkles/reveal = overlay
 		reveal.alpha = 255
+	visible_message(span_info("Rave cube initialisation complete!"))
 	while(active)
 		for(var/lightstrip in spotlights) // The multiples reflects custom adjustments to each colors after dozens of tests
 			var/obj/item/flashlight/spotlight/rave/glow = lightstrip
