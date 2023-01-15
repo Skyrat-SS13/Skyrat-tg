@@ -8,6 +8,8 @@
 	anchored = FALSE
 	density = TRUE
 	resistance_flags = FREEZE_PROOF | FIRE_PROOF
+	chat_color = "#ffffff"
+	chat_color_darkened = "#ffffff"
 	var/active = FALSE
 	var/list/spotlights = list()
 	var/list/sparkles = list()
@@ -75,37 +77,37 @@
 	desc = "Fits in with your glowing cat ears headband. Or your actual ears if you're a feline, I suppose."
 
 /obj/machinery/rave_cube/proc/lights_setup()
-	var/turf/cen = get_turf(src)
+	var/turf/centre = get_turf(src)
 	FOR_DVIEW(var/turf/turf, 3, get_turf(src),INVISIBILITY_LIGHTING)
-		if(turf.x == cen.x && turf.y > cen.y)
+		if(turf.x == centre.x && turf.y > centre.y)
 			spotlights += new /obj/item/flashlight/spotlight/rave(turf, 1 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), COLOR_SOFT_RED)
 			continue
-		if(turf.x == cen.x && turf.y < cen.y)
+		if(turf.x == centre.x && turf.y < centre.y)
 			spotlights += new /obj/item/flashlight/spotlight/rave(turf, 1 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), LIGHT_COLOR_PURPLE)
 			continue
-		if(turf.x > cen.x && turf.y == cen.y)
+		if(turf.x > centre.x && turf.y == centre.y)
 			spotlights += new /obj/item/flashlight/spotlight/rave(turf, 1 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), LIGHT_COLOR_YELLOW)
 			continue
-		if(turf.x < cen.x && turf.y == cen.y)
+		if(turf.x < centre.x && turf.y == centre.y)
 			spotlights += new /obj/item/flashlight/spotlight/rave(turf, 1 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), LIGHT_COLOR_GREEN)
 			continue
-		if((turf.x+1 == cen.x && turf.y+1 == cen.y) || (turf.x+2==cen.x && turf.y+2 == cen.y))
+		if((turf.x+1 == centre.x && turf.y+1 == centre.y) || (turf.x+2==centre.x && turf.y+2 == centre.y))
 			spotlights += new /obj/item/flashlight/spotlight/rave(turf, 1.4 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), LIGHT_COLOR_ORANGE)
 			continue
-		if((turf.x-1 == cen.x && turf.y-1 == cen.y) || (turf.x-2==cen.x && turf.y-2 == cen.y))
+		if((turf.x-1 == centre.x && turf.y-1 == centre.y) || (turf.x-2==centre.x && turf.y-2 == centre.y))
 			spotlights += new /obj/item/flashlight/spotlight/rave(turf, 1.4 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), LIGHT_COLOR_CYAN)
 			continue
-		if((turf.x-1 == cen.x && turf.y+1 == cen.y) || (turf.x-2==cen.x && turf.y+2 == cen.y))
+		if((turf.x-1 == centre.x && turf.y+1 == centre.y) || (turf.x-2==centre.x && turf.y+2 == centre.y))
 			spotlights += new /obj/item/flashlight/spotlight/rave(turf, 1.4 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), LIGHT_COLOR_BLUEGREEN)
 			continue
-		if((turf.x+1 == cen.x && turf.y-1 == cen.y) || (turf.x+2==cen.x && turf.y-2 == cen.y))
+		if((turf.x+1 == centre.x && turf.y-1 == centre.y) || (turf.x+2==centre.x && turf.y-2 == centre.y))
 			spotlights += new /obj/item/flashlight/spotlight/rave(turf, 1.4 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), LIGHT_COLOR_BLUE)
 			continue
 		continue
 	FOR_DVIEW_END
 
 /obj/machinery/rave_cube/proc/lights_spin()
-	visible_message(span_info("Rave cube is initialising... Please wait."))
+	say("Rave cube is initialising... Please wait.")
 	icon_state = "ravecube_init"
 	for(var/i in 1 to 25)
 		if(QDELETED(src) || !active)
@@ -128,7 +130,7 @@
 		var/obj/effect/overlay/sparkles/reveal = overlay
 		reveal.alpha = 255
 	icon_state = "ravecube_active"
-	visible_message(span_info("Rave cube initialisation complete!"))
+	say("Rave cube initialisation complete!")
 	while(active)
 		for(var/lightstrip in spotlights) // The multiples reflects custom adjustments to each colors after dozens of tests
 			var/obj/item/flashlight/spotlight/rave/glow = lightstrip
