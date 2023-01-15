@@ -10,10 +10,13 @@
 	extra_price = 900
 
 	product_categories = list(
-		list("name" = "NIFSofts", "icon" = "download", "products" = list(
-			/obj/item/disk/nifsoft_uploader/shapeshifter = 10,
-			/obj/item/disk/nifsoft_uploader/summoner = 10,
-			/obj/item/disk/nifsoft_uploader/hivemind = 10,
+		list(
+			"name" = "NIFSofts",
+			"icon" = "download",
+			"products" = list(
+				/obj/item/disk/nifsoft_uploader/shapeshifter = 10,
+				/obj/item/disk/nifsoft_uploader/summoner = 10,
+				/obj/item/disk/nifsoft_uploader/hivemind = 10,
 			)
 		)
 	)
