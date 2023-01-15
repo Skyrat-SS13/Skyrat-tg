@@ -52,15 +52,12 @@
 
 /obj/machinery/rave_cube/examine(mob/user)
 	. = ..()
-	if(!anchored)
-		. += span_notice("<b>Alt+Click</b> to lock the rave cube in place.")
-	else
-		. += span_notice("<b>Alt+Click</b> to unlock the rave cube for travel.")
+	. += span_notice("<b>Alt+Click</b> to [anchored ? null : "un"]anchor [src].") 
 
 /obj/machinery/rave_cube/AltClick(mob/living/carbon/human/user)
 	. = ..()
 	set_anchored(!anchored)
-	to_chat(user, span_notice("You [anchored ? null : "un"]lock the rave cube."))
+	balloon_alert(user, "[anchored ? null : "un"]anchored"))
 
 /obj/machinery/rave_cube/update_icon_state()
 	. = ..()
