@@ -51,7 +51,9 @@
 		+ pain_haver.getStaminaLoss() \
 		/ MAGIC_PAIN_DIVISOR)
 	pain_score_tick = clamp(ROUND_UP(pain_score_tick), PAIN_MIN, PAIN_CAP)
-	pain_score_tick >= pain_score ? (clamp(pain_score += pain_score_tick / MAGIC_PAIN_DIVISOR, PAIN_MIN, pain_score_tick)) : (pain_score -= 1 - pain_score_tick / MAGIC_PAIN_DIVISOR)
+	pain_score_tick >= pain_score ? \
+		(clamp(pain_score += pain_score_tick / MAGIC_PAIN_DIVISOR, PAIN_MIN, pain_score_tick)) \
+		: (pain_score -= 1 - pain_score_tick / MAGIC_PAIN_DIVISOR)
 	. = pain_score_tick
 	if(pain_score >= .)
 		pain_score = .
