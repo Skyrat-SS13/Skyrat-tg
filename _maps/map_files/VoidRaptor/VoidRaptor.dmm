@@ -5729,29 +5729,14 @@
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/crew_quarters/bar)
 "bMe" = (
-/obj/structure/table,
-/obj/item/storage/box/monkeycubes{
-	pixel_x = 6;
-	pixel_y = 9
-	},
-/obj/item/storage/box/monkeycubes{
-	pixel_x = 4
-	},
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 10
-	},
-/obj/item/storage/pill_bottle/mutadone{
-	pixel_x = -8;
-	pixel_y = 9
-	},
-/obj/item/reagent_containers/spray/cleaner{
-	pixel_x = -10;
-	pixel_y = -1
 	},
 /obj/machinery/firealarm/directional/south,
 /obj/machinery/light_switch/directional/south{
 	pixel_x = 9
 	},
+/obj/machinery/dna_infuser,
 /turf/open/floor/iron/white,
 /area/station/science/genetics)
 "bMg" = (
@@ -11704,6 +11689,9 @@
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/structure/cable,
 /obj/machinery/computer/med_data,
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
 /turf/open/floor/carpet,
 /area/station/security/detectives_office)
 "dyd" = (
@@ -11903,6 +11891,10 @@
 "dAo" = (
 /obj/machinery/status_display/evac/directional/east,
 /obj/structure/closet/secure_closet/detective,
+/obj/item/camera/detective,
+/obj/item/reagent_containers/cup/glass/flask/det{
+	pixel_x = -1
+	},
 /turf/open/floor/carpet,
 /area/station/security/detectives_office)
 "dAp" = (
@@ -15336,6 +15328,15 @@
 	},
 /obj/structure/sign/warning/no_smoking/directional/east,
 /obj/machinery/light/warm/directional/east,
+/obj/item/computer_disk/ordnance{
+	pixel_y = 5
+	},
+/obj/item/computer_disk/ordnance{
+	pixel_x = 5
+	},
+/obj/item/computer_disk/ordnance{
+	pixel_x = -5
+	},
 /turf/open/floor/iron/smooth_edge{
 	dir = 8
 	},
@@ -15411,6 +15412,13 @@
 /obj/effect/turf_decal/tile/neutral/diagonal_centre,
 /turf/open/floor/iron/dark/diagonal,
 /area/station/security/execution/transfer)
+"etf" = (
+/obj/machinery/door/airlock/security{
+	name = "Interrogation"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/security/general,
+/turf/open/floor/iron/dark,
+/area/station/security/interrogation)
 "eti" = (
 /obj/effect/turf_decal/trimline/dark_blue/filled/line{
 	dir = 1
@@ -16479,6 +16487,7 @@
 /obj/structure/closet{
 	name = "Evidence Closet"
 	},
+/obj/machinery/airalarm/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/security/warden)
 "eId" = (
@@ -19715,27 +19724,28 @@
 "fHq" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
-/obj/item/folder/white{
-	pixel_x = -4;
-	pixel_y = 4
-	},
-/obj/item/pen{
-	pixel_x = -4;
-	pixel_y = 4
-	},
 /obj/structure/desk_bell{
 	pixel_x = 7;
 	pixel_y = 9
-	},
-/obj/machinery/door/window/left/directional/west{
-	name = "Genetics Desk";
-	req_access = list("genetics")
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	dir = 4;
 	id = "genetics_shutters";
 	name = "Genetics Shutters"
 	},
+/obj/machinery/door/window/left/directional/west{
+	name = "Genetics Desk";
+	req_access = list("genetics")
+	},
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/obj/item/pen{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/folder/white,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/science/genetics)
 "fHx" = (
@@ -29414,21 +29424,24 @@
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 6
 	},
-/obj/item/paper_bin{
-	pixel_x = 5;
-	pixel_y = 4
-	},
-/obj/item/pen{
-	pixel_x = 5;
-	pixel_y = 4
-	},
-/obj/item/radio/headset/headset_medsci{
-	pixel_x = -5;
-	pixel_y = 3
-	},
 /obj/machinery/button/door/directional/south{
 	id = "genetics_shutters";
 	name = "Genetics Shutters"
+	},
+/obj/item/storage/box/monkeycubes{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/storage/box/monkeycubes{
+	pixel_x = 4
+	},
+/obj/item/storage/pill_bottle/mutadone{
+	pixel_x = -8;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = -10;
+	pixel_y = -1
 	},
 /turf/open/floor/iron/white,
 /area/station/science/genetics)
@@ -35136,17 +35149,18 @@
 "kbz" = (
 /obj/structure/table/wood,
 /obj/item/taperecorder{
-	pixel_x = -2;
+	pixel_x = -9;
 	pixel_y = 3
-	},
-/obj/item/hand_labeler{
-	pixel_x = 6
-	},
-/obj/item/reagent_containers/cup/glass/flask/det{
-	pixel_x = -12
 	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
+	},
+/obj/item/flashlight/lamp/green{
+	pixel_x = 7;
+	pixel_y = 12
+	},
+/obj/item/hand_labeler{
+	pixel_x = 6
 	},
 /turf/open/floor/iron/grimy,
 /area/station/security/detectives_office)
@@ -38078,6 +38092,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
+/obj/machinery/light/warm/directional/north,
 /turf/open/floor/iron/dark/smooth_edge,
 /area/station/hallway/primary/fore)
 "kPt" = (
@@ -54992,6 +55007,7 @@
 /obj/structure/chair{
 	dir = 4
 	},
+/obj/machinery/light/small/directional/south,
 /turf/open/floor/iron/dark/smooth_edge{
 	dir = 1
 	},
@@ -57509,10 +57525,10 @@
 	},
 /area/station/engineering/atmos/hfr_room)
 "qal" = (
-/obj/structure/table,
-/obj/item/stack/package_wrap,
-/obj/item/hand_labeler,
-/obj/machinery/airalarm/directional/west,
+/obj/machinery/door/airlock/security{
+	name = "Detective's Office"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/security/detective,
 /turf/open/floor/iron/dark,
 /area/station/security/warden)
 "qap" = (
@@ -60381,6 +60397,10 @@
 	},
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/secure_closet/detective,
+/obj/item/camera/detective,
+/obj/item/reagent_containers/cup/glass/flask/det{
+	pixel_x = 4
+	},
 /turf/open/floor/iron/grimy,
 /area/station/security/detectives_office)
 "qOu" = (
@@ -62847,7 +62867,6 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 10
 	},
-/obj/machinery/light/small/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/security/interrogation)
 "rAD" = (
@@ -63558,7 +63577,6 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/light/warm/directional/north,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -63866,7 +63884,6 @@
 /obj/machinery/door/airlock/security{
 	name = "Interrogation"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/security/general,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -63874,6 +63891,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/airlock/access/all/security/brig,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/interrogation)
 "rNC" = (
@@ -67035,19 +67053,16 @@
 /area/station/hallway/primary/aft)
 "sGT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet{
-	name = "Evidence Closet"
-	},
 /obj/machinery/light/warm/directional/west,
+/obj/structure/table,
+/obj/item/hand_labeler,
+/obj/item/stack/package_wrap,
 /turf/open/floor/iron/dark,
 /area/station/security/warden)
 "sGX" = (
 /obj/structure/table/wood,
 /obj/item/restraints/handcuffs,
 /obj/item/book/manual/wiki/detective,
-/obj/item/reagent_containers/cup/glass/flask/det{
-	pixel_x = 10
-	},
 /obj/machinery/light/warm/directional/north,
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -68209,6 +68224,9 @@
 /area/station/security/execution/education)
 "sVK" = (
 /obj/machinery/computer/secure_data,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/carpet,
 /area/station/security/detectives_office)
 "sVP" = (
@@ -69366,16 +69384,11 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
 	},
-/obj/item/taperecorder{
-	pixel_x = -2;
-	pixel_y = 3
-	},
 /obj/item/hand_labeler{
 	pixel_x = 6
 	},
 /obj/item/flashlight/lamp/green{
-	pixel_x = 1;
-	pixel_y = 5
+	pixel_y = 13
 	},
 /turf/open/floor/iron/grimy,
 /area/station/security/detectives_office)
@@ -72611,7 +72624,7 @@
 /obj/machinery/door/airlock/security{
 	name = "Evidence Storage"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/security/general,
+/obj/effect/mapping_helpers/airlock/access/all/security/brig,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/office)
 "uhm" = (
@@ -73393,8 +73406,7 @@
 /area/station/cargo/warehouse)
 "urd" = (
 /obj/structure/cable,
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/carpet,
 /area/station/security/detectives_office)
 "urg" = (
@@ -77622,17 +77634,10 @@
 /turf/open/floor/plating,
 /area/station/command/heads_quarters/rd)
 "vzJ" = (
-/obj/structure/table/wood,
-/obj/item/flashlight/lamp/green{
-	pixel_x = 1;
-	pixel_y = 5
+/obj/structure/disposalpipe/trunk{
+	dir = 8
 	},
-/obj/item/storage/fancy/cigarettes{
-	pixel_x = 11
-	},
-/obj/item/camera/detective{
-	pixel_x = -10
-	},
+/obj/machinery/disposal/bin,
 /turf/open/floor/carpet,
 /area/station/security/detectives_office)
 "vzN" = (
@@ -85189,6 +85194,10 @@
 	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
+	},
+/obj/item/taperecorder{
+	pixel_x = 11;
+	pixel_y = 3
 	},
 /turf/open/floor/iron/grimy,
 /area/station/security/detectives_office)
@@ -122005,9 +122014,9 @@ xMV
 oaL
 geF
 hjW
-iti
-ajg
 vzJ
+ajg
+iti
 teQ
 fqI
 iMs
@@ -123036,7 +123045,7 @@ aDR
 aDR
 aDR
 aDR
-aDR
+qal
 aDR
 vEP
 wst
@@ -123293,7 +123302,7 @@ eIc
 xcV
 pQS
 sGT
-qal
+wWQ
 aDR
 caN
 qVK
@@ -126131,8 +126140,8 @@ qRF
 uny
 kGz
 rAy
-olv
-dVb
+etf
+rIV
 brb
 rjX
 twq
@@ -126389,7 +126398,7 @@ kvT
 fVF
 pph
 olv
-rIV
+dVb
 hzL
 rjX
 twq
