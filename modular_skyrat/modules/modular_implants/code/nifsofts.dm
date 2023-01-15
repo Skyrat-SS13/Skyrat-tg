@@ -63,12 +63,12 @@
 	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif
 
 	if(cooldown && on_cooldown)
-		balloon_alert(installed_nif.linked_mob, "[src.name] is currently on cooldown.")
+		installed_nif.balloon_alert(installed_nif.linked_mob, "[src.name] is currently on cooldown.")
 		return FALSE
 
 	if(active)
 		active = FALSE
-		balloon_alert(installed_nif.linked_mob, "[src.name] is no longer running")
+		installed_nif.balloon_alert(installed_nif.linked_mob, "[src.name] is no longer running")
 		installed_nif.power_usage -= active_cost
 		return TRUE
 
@@ -76,7 +76,7 @@
 		return FALSE
 
 	if(active_mode)
-		balloon_alert(installed_nif.linked_mob, "The [src.name] is now running")
+		installed_nif.balloon_alert(installed_nif.linked_mob, "The [src.name] is now running")
 		installed_nif.power_usage += active_cost
 		active = TRUE
 

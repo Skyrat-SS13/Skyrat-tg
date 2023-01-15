@@ -25,9 +25,9 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 /datum/nifsoft/hivemind/New()
 	. = ..()
 
-	user_network = linked_mob.AddComponent(/datum/component/mind_linker/nif,
-		network_name = "Hivemind Link",
-		linker_action_path = /datum/action/innate/hivemind_config,
+	user_network = linked_mob.AddComponent(/datum/component/mind_linker/nif, \
+		network_name = "Hivemind Link", \
+		linker_action_path = /datum/action/innate/hivemind_config, \
 	)
 
 	keyboard_action = new
