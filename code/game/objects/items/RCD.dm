@@ -442,10 +442,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 
 // `initial` does not work here. Neither does instantiating a wall/whatever
 // and referencing that. I don't know why.
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
-
 /proc/init_holographic_wall()
 	return getHologramIcon(
 		icon('icons/turf/walls/wall.dmi', "wall-0"),
@@ -519,10 +515,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	name = "hologram"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
-
 /obj/effect/rcd_hologram/Initialize(mapload)
 	. = ..()
 	QDEL_IN(src, RCD_HOLOGRAM_FADE_TIME)
@@ -571,7 +563,14 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 		return FALSE
 	if(rcd_results["mode"] == RCD_MACHINE || rcd_results["mode"] == RCD_COMPUTER || rcd_results["mode"] == RCD_FURNISHING)
 		var/turf/target_turf = get_turf(A)
-		if(target_turf.is_blocked_turf(exclude_mobs = TRUE))
+		//ignore all directional windows on the turf
+		var/static/list/ignored_atoms = list(/obj/structure/window, /obj/structure/window/reinforced)
+		var/list/ignored_content = list()
+		for(var/atom/movable/movable_content in target_turf)
+			if(is_type_in_list(movable_content, ignored_atoms))
+				ignored_content += movable_content
+		//check if the machine can fit on this turf
+		if(target_turf.is_blocked_turf(exclude_mobs = TRUE, source_atom = null, ignore_atoms = ignored_content))
 			playsound(loc, 'sound/machines/click.ogg', 50, TRUE)
 			qdel(rcd_effect)
 			return FALSE
@@ -786,10 +785,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	var/energyfactor = 72
 
 
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
-
 /obj/item/construction/rcd/borg/useResource(amount, mob/user)
 	if(!iscyborg(user))
 		return 0
@@ -887,10 +882,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	inhand_icon_state = "oldrcd"
 	has_ammobar = FALSE
 
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
-
 /obj/item/construction/rcd/arcd/afterattack(atom/A, mob/user)
 	. = ..()
 	if(range_check(A,user))
@@ -950,10 +941,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	///will contain the original icons modified with the color choice
 	var/list/display_options = list()
 	var/color_choice = null
-
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
 
 /obj/item/construction/rld/Initialize(mapload)
 	. = ..()
@@ -1152,10 +1139,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 		"Fourth Layer" = 4,
 		"Fifth Layer" = 5,
 	)
-
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
 
 /obj/item/construction/plumbing/Initialize(mapload)
 	. = ..()
@@ -1410,10 +1393,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
 	has_ammobar = TRUE
 
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
-
 /obj/item/construction/plumbing/research/set_plumbing_designs()
 	plumbing_design_types = list(
 		//category 1 synthesizers
@@ -1439,10 +1418,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	desc = "A type of plumbing constructor designed to rapidly deploy the machines needed to make a brewery."
 	icon_state = "plumberer_service"
 	has_ammobar = TRUE
-
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
 
 /obj/item/construction/plumbing/service/set_plumbing_designs()
 	plumbing_design_types = list(
