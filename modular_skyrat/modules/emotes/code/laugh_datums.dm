@@ -26,6 +26,25 @@ GLOBAL_LIST_EMPTY(laugh_types)
 			'modular_skyrat/modules/emotes/sound/emotes/nyaha.ogg',
 			'modular_skyrat/modules/emotes/sound/emotes/nyahehe.ogg')
 	female_laughsounds = null
+	
+/datum/laugh_type/hyena
+	name = "Hyena Laugh"
+	male_laughsounds = list('modular_skyrat/modules/emotes/sound/emotes/hyenalaugh1.ogg',
+			'modular_skyrat/modules/emotes/sound/emotes/hyenalaugh2.ogg',
+			'modular_skyrat/modules/emotes/sound/emotes/hyenalaugh3.ogg',
+			'modular_skyrat/modules/emotes/sound/emotes/hyenalaugh4.ogg')
+	female_laughsounds = null
+
+/datum/laugh_type/snake
+	name = "Snake Laugh"
+	male_laughsounds = list('modular_skyrat/modules/emotes/sound/emotes/sneklaugh1.ogg')
+	female_laughsounds = null
+
+/datum/laugh_type/corvid
+	name = "Corvid Laugh"
+	male_laughsounds = list('modular_skyrat/modules/emotes/sound/emotes/crowlaugh1.ogg',
+			'modular_skyrat/modules/emotes/sound/emotes/crowlaugh2.ogg')
+	female_laughsounds = null
 
 /datum/laugh_type/moth
 	name = "Moth Laugh"
