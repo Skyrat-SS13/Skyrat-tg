@@ -259,7 +259,6 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	. = ..()
 	connected_network = null
 
-
 /obj/item/hivemind_keyboard/attack_self(mob/user, modifiers)
 	. = ..()
 	send_message(user)
