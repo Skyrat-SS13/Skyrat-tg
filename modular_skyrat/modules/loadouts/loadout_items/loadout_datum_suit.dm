@@ -104,6 +104,11 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Green Labcoat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/mad
 
+/datum/loadout_item/suit/labcoat_medical
+	name = "Medical Labcoat"
+	item_path = /obj/item/clothing/suit/toggle/labcoat/medical
+	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER)
+
 /*
 *	PONCHOS
 */
