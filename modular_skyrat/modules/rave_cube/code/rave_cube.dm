@@ -21,7 +21,6 @@
 
 /obj/machinery/rave_cube/proc/turn_on(mob/user)
 	active = TRUE
-	icon_state = "ravecube_active"
 	to_chat(user, span_notice("You turn the rave cube on!"))
 	update_icon()
 	START_PROCESSING(SSobj, src)
@@ -107,6 +106,7 @@
 
 /obj/machinery/rave_cube/proc/lights_spin()
 	visible_message(span_info("Rave cube is initialising... Please wait."))
+	icon_state = "ravecube_init"
 	for(var/i in 1 to 25)
 		if(QDELETED(src) || !active)
 			return
@@ -127,6 +127,7 @@
 	for(var/overlay in sparkles)
 		var/obj/effect/overlay/sparkles/reveal = overlay
 		reveal.alpha = 255
+	icon_state = "ravecube_active"
 	visible_message(span_info("Rave cube initialisation complete!"))
 	while(active)
 		for(var/lightstrip in spotlights) // The multiples reflects custom adjustments to each colors after dozens of tests
