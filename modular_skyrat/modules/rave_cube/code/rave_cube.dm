@@ -5,34 +5,21 @@
 	desc = "Party in a box! With bright lights and dazzling sparkles, dance the night away to your Neko Nation Anthem! Drugs not included."
 	icon = 'modular_skyrat/modules/rave_cube/icons/rave_cube.dmi'
 	icon_state = "ravecube"
-	verb_say = "states"
-	anchored = TRUE
+	anchored = FALSE
 	density = TRUE
+	resistance_flags = FREEZE_PROOF | FIRE_PROOF
 	var/active = FALSE
 	var/list/spotlights = list()
 	var/list/sparkles = list()
 
-/obj/item/circuitboard/machine/rave_cube
-	name = "Rave Cube"
-	greyscale_colors = CIRCUIT_COLOR_MEDICAL
-	build_path = /obj/machinery/rave_cube
-	req_components = list(
-		/obj/item/stock_parts/micro_laser = 4,
-		/obj/item/stock_parts/capacitor = 1,
-		/obj/item/stack/sheet/glass = 6)
+/datum/supply_pack/costumes_toys/ravecube
+	name = "Rave Cube Crate"
+	desc = "Party in a box! With bright lights and dazzling sparkles, dance the night away to your Neko Nation Anthem! Drugs not included."
+	cost = CARGO_CRATE_VALUE * 3.5
+	contains = list(/obj/machinery/rave_cube)
+	crate_name = "rave cube crate"
 
-/datum/design/board/rave_cube
-	name = "Rave Cube Board"
-	desc = "The circuit board for a rave cube."
-	id = "ravecube"
-	build_path = /obj/item/circuitboard/machine/rave_cube
-	category = list(
-		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_SERVICE
-	)
-	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING | DEPARTMENT_BITFLAG_SERVICE
-
-
-/obj/machinery/rave_cube/proc/turnOn(mob/user)
+/obj/machinery/rave_cube/proc/turn_on(mob/user)
 	active = TRUE
 	icon_state = "ravecube_active"
 	to_chat(user, span_notice("You turn the rave cube on!"))
@@ -41,7 +28,7 @@
 	lights_setup()
 	lights_spin()
 
-/obj/machinery/rave_cube/proc/turnOff(mob/user)
+/obj/machinery/rave_cube/proc/turn_off(mob/user)
 	active = FALSE
 	icon_state = "ravecube"
 	to_chat(user, span_notice("You turn the rave cube off!"))
@@ -54,10 +41,20 @@
 
 /obj/machinery/rave_cube/attack_hand(mob/living/carbon/human/user, list/modifiers)
 	. = ..()
+	if(!anchored)
+		to_chat(user, span_warning("You have to lock the rave cube in place before powering it on!"))
+		return
 	if(active)
-		turnOff(user)
+		turn_off(user)
 	else
-		turnOn(user)
+		turn_on(user)
+
+/obj/machinery/rave_cube/examine(mob/user)
+	. = ..()
+	if(!anchored)
+		. += span_notice("<b>Alt+Click</b> to lock the rave cube in place.")
+	else
+		. += span_notice("<b>Alt+Click</b> to unlock the rave cube for travel.")
 
 /obj/machinery/rave_cube/AltClick(mob/living/carbon/human/user)
 	. = ..()
@@ -74,32 +71,36 @@
 		SSvis_overlays.add_vis_overlay(src, icon, "active", layer, plane, dir, alpha)
 		SSvis_overlays.add_vis_overlay(src, icon, "active", 0, EMISSIVE_PLANE, dir, alpha)
 
+/obj/item/flashlight/spotlight/rave
+	name = "rave light"
+	desc = "Fits in with your glowing cat ears headband. Or your actual ears if you're a feline, I suppose."
+
 /obj/machinery/rave_cube/proc/lights_setup()
 	var/turf/cen = get_turf(src)
 	FOR_DVIEW(var/turf/turf, 3, get_turf(src),INVISIBILITY_LIGHTING)
 		if(turf.x == cen.x && turf.y > cen.y)
-			spotlights += new /obj/item/flashlight/spotlight(turf, 1 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), COLOR_SOFT_RED)
+			spotlights += new /obj/item/flashlight/spotlight/rave(turf, 1 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), COLOR_SOFT_RED)
 			continue
 		if(turf.x == cen.x && turf.y < cen.y)
-			spotlights += new /obj/item/flashlight/spotlight(turf, 1 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), LIGHT_COLOR_PURPLE)
+			spotlights += new /obj/item/flashlight/spotlight/rave(turf, 1 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), LIGHT_COLOR_PURPLE)
 			continue
 		if(turf.x > cen.x && turf.y == cen.y)
-			spotlights += new /obj/item/flashlight/spotlight(turf, 1 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), LIGHT_COLOR_YELLOW)
+			spotlights += new /obj/item/flashlight/spotlight/rave(turf, 1 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), LIGHT_COLOR_YELLOW)
 			continue
 		if(turf.x < cen.x && turf.y == cen.y)
-			spotlights += new /obj/item/flashlight/spotlight(turf, 1 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), LIGHT_COLOR_GREEN)
+			spotlights += new /obj/item/flashlight/spotlight/rave(turf, 1 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), LIGHT_COLOR_GREEN)
 			continue
 		if((turf.x+1 == cen.x && turf.y+1 == cen.y) || (turf.x+2==cen.x && turf.y+2 == cen.y))
-			spotlights += new /obj/item/flashlight/spotlight(turf, 1.4 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), LIGHT_COLOR_ORANGE)
+			spotlights += new /obj/item/flashlight/spotlight/rave(turf, 1.4 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), LIGHT_COLOR_ORANGE)
 			continue
 		if((turf.x-1 == cen.x && turf.y-1 == cen.y) || (turf.x-2==cen.x && turf.y-2 == cen.y))
-			spotlights += new /obj/item/flashlight/spotlight(turf, 1.4 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), LIGHT_COLOR_CYAN)
+			spotlights += new /obj/item/flashlight/spotlight/rave(turf, 1.4 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), LIGHT_COLOR_CYAN)
 			continue
 		if((turf.x-1 == cen.x && turf.y+1 == cen.y) || (turf.x-2==cen.x && turf.y+2 == cen.y))
-			spotlights += new /obj/item/flashlight/spotlight(turf, 1.4 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), LIGHT_COLOR_BLUEGREEN)
+			spotlights += new /obj/item/flashlight/spotlight/rave(turf, 1.4 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), LIGHT_COLOR_BLUEGREEN)
 			continue
 		if((turf.x+1 == cen.x && turf.y-1 == cen.y) || (turf.x+2==cen.x && turf.y-2 == cen.y))
-			spotlights += new /obj/item/flashlight/spotlight(turf, 1.4 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), LIGHT_COLOR_BLUE)
+			spotlights += new /obj/item/flashlight/spotlight/rave(turf, 1.4 + get_dist(src, turf), 30 - (get_dist(src, turf) * 8), LIGHT_COLOR_BLUE)
 			continue
 		continue
 	FOR_DVIEW_END
@@ -127,7 +128,7 @@
 		reveal.alpha = 255
 	while(active)
 		for(var/lightstrip in spotlights) // The multiples reflects custom adjustments to each colors after dozens of tests
-			var/obj/item/flashlight/spotlight/glow = lightstrip
+			var/obj/item/flashlight/spotlight/rave/glow = lightstrip
 			if(QDELETED(glow))
 				stack_trace("[glow?.gc_destroyed ? "Qdeleting glow" : "null entry"] found in [src].[gc_destroyed ? " Source qdeleting at the time." : ""]")
 				return

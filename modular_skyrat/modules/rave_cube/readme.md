@@ -7,7 +7,6 @@ MODULE ID: RAVE_CUBE
 Adds a party light that isn't attached to a jukebox, since the jukebox kills our server.
 
 ### TG Proc Changes:
-\code\__DEFINES\research\research_categories.dm
 
 ### Defines:
 
