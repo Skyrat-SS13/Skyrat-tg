@@ -106,7 +106,7 @@
 	FOR_DVIEW_END
 
 /obj/machinery/rave_cube/proc/lights_spin()
-	visible_message(span_info("Rave cube is initalising... Please wait."))
+	visible_message(span_info("Rave cube is initialising... Please wait."))
 	for(var/i in 1 to 25)
 		if(QDELETED(src) || !active)
 			return
