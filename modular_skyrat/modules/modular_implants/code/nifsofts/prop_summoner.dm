@@ -48,13 +48,13 @@
 	if(tgui_alert(linked_mob, "Do you wish to summon a new item or dispel an already existing item?", "Grimoire Caeruleam", list("Summon", "Dispel")) == "Dispel")
 		refund_activation_cost()
 		if(!length(summoned_items))
-			to_chat(linked_mob, span_warning("You have no summoned items!"))
+			balloon_alert(linked_mob, "You have no summoned items!")
 			return FALSE
 
 		var/obj/item/choice = tgui_input_list(linked_mob, "Chose an object to desummon.", "Grimoire Caeruleam", summoned_items)
 
 		if(!choice)
-			to_chat(linked_mob, span_warning("You did not chose an item!"))
+			balloon_alert(linked_mob, "You did not chose an item!")
 			return FALSE
 
 		summoned_items -= choice
@@ -62,7 +62,7 @@
 		return TRUE
 
 	if(length(summoned_items) >= max_summoned_items)
-		to_chat(linked_mob, span_warning("You have the max ammount of items summoned at once. Dispel one of your already summoned items first!"))
+		balloon_alert(linked_mob, "You have the max ammount of items summoned!")
 		refund_activation_cost()
 		return FALSE
 
@@ -81,7 +81,7 @@
 	new_item.name = name_tag + new_item.name
 
 	if(!linked_mob.put_in_hands(new_item))
-		to_chat(linked_mob, span_warning("[new_item] fails to materialize in your hands!"))
+		balloon_alert(linked_mob, "[new_item] fails to materialize in your hands!")
 		qdel(new_item)
 		refund_activation_cost()
 		return FALSE
