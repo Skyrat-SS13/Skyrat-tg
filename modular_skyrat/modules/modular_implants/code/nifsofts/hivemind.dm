@@ -25,9 +25,9 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 /datum/nifsoft/hivemind/New()
 	. = ..()
 
-	user_network = linked_mob.AddComponent(/datum/component/mind_linker/nif, \
-		network_name = "Hivemind Link", \
-		linker_action_path = /datum/action/innate/hivemind_config, \
+	user_network = linked_mob.AddComponent(/datum/component/mind_linker/nif,
+		network_name = "Hivemind Link",
+		linker_action_path = /datum/action/innate/hivemind_config,
 	)
 
 	keyboard_action = new
@@ -163,6 +163,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 		return FALSE
 
 	hivemind_nifsoft.activate()
+
 /datum/component/mind_linker
 	///Is does the component give an action to speak? By default, yes
 	var/speech_action = TRUE
@@ -204,8 +205,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 
 	linked_mobs += person_to_add
 
-	var/datum/nifsoft/hivemind/target_hivemind
-	target_hivemind = person_to_add.find_nifsoft(/datum/nifsoft/hivemind)
+	var/datum/nifsoft/hivemind/target_hivemind = person_to_add.find_nifsoft(/datum/nifsoft/hivemind)
 
 	if(!target_hivemind)
 		return FALSE
@@ -254,6 +254,11 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	var/datum/component/mind_linker/nif/connected_network
 	//Who owns the controller?
 	var/datum/weakref/source_user
+
+/obj/item/hivemind_keyboard/Destroy(force)
+	. = ..()
+	connected_network = null
+
 
 /obj/item/hivemind_keyboard/attack_self(mob/user, modifiers)
 	. = ..()
