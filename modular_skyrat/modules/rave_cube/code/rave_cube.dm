@@ -9,7 +9,6 @@
 	anchored = TRUE
 	density = TRUE
 	var/active = FALSE
-	var/stop = 0
 	var/list/spotlights = list()
 	var/list/sparkles = list()
 
@@ -21,6 +20,17 @@
 		/obj/item/stock_parts/micro_laser = 4,
 		/obj/item/stock_parts/capacitor = 1,
 		/obj/item/stack/sheet/glass = 6)
+
+/datum/design/board/rave_cube
+	name = "Rave Cube Board"
+	desc = "The circuit board for a rave cube."
+	id = "ravecube"
+	build_path = /obj/item/circuitboard/machine/rave_cube
+	category = list(
+		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_SERVICE
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING | DEPARTMENT_BITFLAG_SERVICE
+
 
 /obj/machinery/rave_cube/proc/turnOn(mob/user)
 	active = TRUE

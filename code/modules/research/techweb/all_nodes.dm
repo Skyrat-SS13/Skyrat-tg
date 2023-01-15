@@ -1104,9 +1104,10 @@
 		"inducer",
 		"tray_goggles",
 		"holopad",
-		//SKYRAT EDIT - ADDITION MEDIGUNS
+		//SKYRAT EDIT - ADDITION
 		"gownmedicell",
 		"bedmedicell",
+		"ravecube",
 		//SKYRAT EDIT END
 		"vendatray",
 	)
