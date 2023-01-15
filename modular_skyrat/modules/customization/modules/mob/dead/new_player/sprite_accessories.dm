@@ -836,6 +836,10 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	use_static = null
 	gender = NEUTER
 
+/datum/sprite_accessory/undershirt/turtleneck
+	name = "Sweater - Smooth Turtleneck"
+	icon_state = "turtleneck_smooth"
+
 /datum/sprite_accessory/undershirt/turtleneck/sleeveless
 	name = "Sweater - Sleeveless Turtleneck"
 	icon_state = "turtleneck_sleeveless"
@@ -845,6 +849,16 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon_state = "one_arm"
 	gender = FEMALE
 	use_static = null
+
+/datum/sprite_accessory/undershirt/buttondown
+	name = "Shirt - Buttondown"
+	icon_state = "buttondown"
+	gender = NEUTER
+	use_static = null
+
+/datum/sprite_accessory/undershirt/buttondown/short_sleeve
+	name = "Shirt - Short Sleeved Buttondown"
+	icon_state = "buttondown_short"
 
 /datum/sprite_accessory/undershirt/leotard
 	name = "Shirt - Leotard"

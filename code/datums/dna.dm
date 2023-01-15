@@ -540,14 +540,14 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		log_mob_tag("SPECIES: [key_name(src)] \[[mrace]\]")
 
 */
-//SKYRAT EDIT REMOVAL BEGIN
-/*
+//SKYRAT EDIT REMOVAL END
+
 /mob/living/carbon/human/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
 	..()
 	if(icon_update)
 		update_body(is_creating = TRUE)
 		update_mutations_overlay()// no lizard with human hulk overlay please.
-*/
+
 
 /mob/proc/has_dna()
 	return

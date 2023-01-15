@@ -55,6 +55,7 @@
 	acid = 70
 
 /obj/machinery/door/Initialize(mapload)
+	AddElement(/datum/element/blocks_explosives)
 	. = ..()
 	set_init_door_layer()
 	update_freelook_sight()
@@ -70,7 +71,7 @@
 
 	//doors only block while dense though so we have to use the proc
 	real_explosion_block = explosion_block
-	explosion_block = EXPLOSION_BLOCK_PROC
+	update_explosive_block()
 	RegisterSignal(SSsecurity_level, COMSIG_SECURITY_LEVEL_CHANGED, PROC_REF(check_security_level))
 
 	var/static/list/loc_connections = list(
@@ -471,15 +472,6 @@
 /obj/machinery/door/morgue
 	icon = 'icons/obj/doors/doormorgue.dmi'
 
-/datum/armor/machinery_door
-	melee = 30
-	bullet = 30
-	laser = 20
-	energy = 20
-	bomb = 10
-	fire = 80
-	acid = 70
-
 /obj/machinery/door/get_dumping_location()
 	return null
 
@@ -501,9 +493,6 @@
 	//if it blows up a wall it should blow up a door
 	return ..(severity ? min(EXPLODE_DEVASTATE, severity + 1) : EXPLODE_NONE, target)
 
-/obj/machinery/door/GetExplosionBlock()
-	return density ? real_explosion_block : 0
-
 /obj/machinery/door/power_change()
 	. = ..()
 	if(. && !(machine_stat & NOPOWER))
@@ -518,5 +507,20 @@
 	SIGNAL_HANDLER
 
 	INVOKE_ASYNC(src, PROC_REF(open))
+
+/obj/machinery/door/set_density(new_value)
+	. = ..()
+	update_explosive_block()
+
+/obj/machinery/door/proc/update_explosive_block()
+	set_explosion_block(real_explosion_block)
+
+// Kinda roundabout, essentially if we're dense, we respect real_explosion_block
+// Otherwise, we block nothing
+/obj/machinery/door/set_explosion_block(explosion_block)
+	real_explosion_block = explosion_block
+	if(density)
+		return ..()
+	return ..(0)
 
 #undef DOOR_CLOSE_WAIT

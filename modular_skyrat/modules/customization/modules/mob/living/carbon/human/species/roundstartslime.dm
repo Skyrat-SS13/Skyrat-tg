@@ -36,6 +36,7 @@
 	burnmod = 1
 	specific_alpha = 155
 	markings_alpha = 130 //This is set lower than the other so that the alpha values don't stack on top of each other so much
+	mutanteyes = /obj/item/organ/internal/eyes
 	mutanttongue = /obj/item/organ/internal/tongue
 
 	bodypart_overrides = list( //Overriding jelly bodyparts
@@ -62,6 +63,21 @@
 	var/slime_restricted = TRUE
 	///Is the person using this ability oversized?
 	var/oversized_user = FALSE
+	///List containing all of the avalible parts
+	var/static/list/available_choices
+
+/datum/action/innate/alter_form/New(Target)
+	. = ..()
+	if(length(available_choices))
+		return
+
+	available_choices = GLOB.sprite_accessories.Copy()
+	for(var/parts_list in available_choices)
+		for(var/parts in available_choices[parts_list])
+			var/datum/sprite_accessory/part = available_choices[parts_list][parts]
+			if(part.locked)
+				available_choices[parts_list] -= parts
+
 
 /datum/action/innate/alter_form/unrestricted
 	slime_restricted = FALSE
@@ -321,7 +337,8 @@
 	)
 	if(!chosen_key)
 		return
-	var/choice_list = GLOB.sprite_accessories[chosen_key]
+
+	var/choice_list = available_choices[chosen_key]
 	var/chosen_name_key = tgui_input_list(
 		alterer,
 		"What do you want the part to become?",
