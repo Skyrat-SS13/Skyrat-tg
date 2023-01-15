@@ -9,7 +9,7 @@
 	icon_living = "markus"
 	var/static/list/markus_speak = list("Borf!", "Boof!", "Bork!", "Bowwow!", "Burg?")
 	butcher_results = list(/obj/item/food/burger/cheese = 1, /obj/item/food/meat/slab = 2, /obj/item/trash/syndi_cakes = 1)
-	ai_controller = /datum/ai_controller/dog/corgi
+	ai_controller = /datum/ai_controller/basic_controller/dog/corgi
 	gender = MALE
 	can_be_held = FALSE
 	gold_core_spawnable = FRIENDLY_SPAWN
@@ -58,7 +58,7 @@
 	death_message = "beeps, its mechanical parts hissing before the chassis collapses in a loud thud."
 	gold_core_spawnable = NO_SPAWN
 	nofur = TRUE
-	ai_controller = /datum/ai_controller/dog/borgi
+	ai_controller = /datum/ai_controller/basic_controller/dog/borgi
 	unsuitable_atmos_damage = 0
 	minimum_survivable_temperature = 0
 
@@ -96,11 +96,12 @@
  * * always_shoot - always shoot the target, as opposed to only if not a friend.
  */
 /mob/living/basic/pet/dog/corgi/borgi/proc/harass_target(mob/living/target, always_shoot = FALSE)
-	var/datum/ai_controller/dog/EN = ai_controller
+	var/datum/ai_controller/basic_controller/dog/EN = ai_controller
 	if(!EN)
 		return
 
-	var/is_friend = EN.blackboard[BB_DOG_FRIENDS][WEAKREF(target)]
+	var/list/friends_list = EN.blackboard[BB_FRIENDS_LIST]
+	var/is_friend = friends_list && friends_list[WEAKREF(target)]
 
 	if(always_shoot || !is_friend)
 		INVOKE_ASYNC(src, PROC_REF(shoot_at), target)
@@ -110,7 +111,7 @@
 
 	EN.set_movement_target(target)
 	EN.blackboard[BB_DOG_HARASS_TARGET] = WEAKREF(target)
-	EN.queue_behavior(/datum/ai_behavior/harass)
+	EN.queue_behavior(/datum/ai_behavior/basic_melee_attack/dog, BB_DOG_HARASS_TARGET, BB_PET_TARGETTING_DATUM)
 
 /mob/living/basic/pet/dog/corgi/borgi/proc/on_attack_hand(datum/source, mob/living/target)
 	SIGNAL_HANDLER
@@ -206,7 +207,7 @@
 	UnregisterSignal(src, COMSIG_ATOM_EMAG_ACT)
 
 	do_sparks(3, 1, src)
-	var/datum/ai_controller/dog/EN = ai_controller
+	var/datum/ai_controller/basic_controller/dog/EN = ai_controller
 	LAZYCLEARLIST(EN.current_behaviors)
 
 /mob/living/basic/pet/dog/corgi/borgi/proc/on_emag_act(mob/living/basic/pet/dog/target, mob/user)
@@ -239,26 +240,19 @@
 	gib() // Yuck, robo-blood
 
 /// Dog controller but with emag attack support
-/datum/ai_controller/dog/borgi
+/datum/ai_controller/basic_controller/dog/borgi
 	blackboard = list(
-		BB_SIMPLE_CARRY_ITEM = null,
-		BB_FETCH_TARGET = null,
-		BB_FETCH_DELIVER_TO = null,
-		BB_DOG_FRIENDS = list(),
-		BB_FETCH_IGNORE_LIST = list(),
-		BB_DOG_ORDER_MODE = DOG_COMMAND_NONE,
-		BB_DOG_PLAYING_DEAD = FALSE,
-		BB_DOG_HARASS_TARGET = null,
-		BB_DOG_HARASS_FRUSTRATION = null,
+		BB_DOG_HARASS_HARM = TRUE,
 		BB_VISION_RANGE = AI_DOG_VISION_RANGE,
 		BB_DOG_IS_SLOW = TRUE,
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic(),
+		BB_PET_TARGETTING_DATUM = new /datum/targetting_datum/basic(),
 	)
 
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/emagged_borgi,
 		/datum/ai_planning_subtree/random_speech/dog,
-		/datum/ai_planning_subtree/dog,
+		/datum/ai_planning_subtree/pet_planning,
+		/datum/ai_planning_subtree/dog_harassment,
 	)
 
 /// Subtree that schedules borgi to randomly shoot if they're emagged.
@@ -283,7 +277,7 @@
 		if(!DT_PROB(chance, delta_time))
 			return
 
-		controller.queue_behavior(/datum/ai_behavior/find_potential_targets, BB_BASIC_MOB_CURRENT_TARGET, BB_TARGETTING_DATUM, BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)
+		controller.queue_behavior(/datum/ai_behavior/find_potential_targets, BB_BASIC_MOB_CURRENT_TARGET, BB_PET_TARGETTING_DATUM, BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)
 		return
 
 	// Attack.
