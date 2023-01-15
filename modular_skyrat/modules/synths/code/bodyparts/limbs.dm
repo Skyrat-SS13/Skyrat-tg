@@ -1,6 +1,5 @@
 // Synth bois!
 /obj/item/bodypart/head/robot/synth
-	organic_render = FALSE
 	icon_greyscale = BODYPART_ICON_IPC
 	limb_id = SPECIES_SYNTH
 	should_draw_greyscale = TRUE
@@ -9,7 +8,6 @@
 	burn_reduction = 0
 
 /obj/item/bodypart/chest/robot/synth
-	organic_render = FALSE
 	icon_greyscale = BODYPART_ICON_IPC
 	should_draw_greyscale = TRUE
 	limb_id = SPECIES_SYNTH
@@ -17,7 +15,6 @@
 	burn_reduction = 0
 
 /obj/item/bodypart/arm/left/robot/synth
-	organic_render = FALSE
 	icon_greyscale = BODYPART_ICON_IPC
 	limb_id = SPECIES_SYNTH
 	should_draw_greyscale = TRUE
@@ -25,7 +22,6 @@
 	burn_reduction = 0
 
 /obj/item/bodypart/arm/right/robot/synth
-	organic_render = FALSE
 	icon_greyscale = BODYPART_ICON_IPC
 	limb_id = SPECIES_SYNTH
 	should_draw_greyscale = TRUE
@@ -33,7 +29,6 @@
 	burn_reduction = 0
 
 /obj/item/bodypart/leg/left/robot/synth
-	organic_render = FALSE
 	icon_greyscale = BODYPART_ICON_IPC
 	limb_id = SPECIES_SYNTH
 	should_draw_greyscale = TRUE
@@ -42,7 +37,6 @@
 	burn_reduction = 0
 
 /obj/item/bodypart/leg/right/robot/synth
-	organic_render = FALSE
 	icon_greyscale = BODYPART_ICON_IPC
 	should_draw_greyscale = TRUE
 	limb_id = SPECIES_SYNTH
@@ -51,7 +45,6 @@
 	burn_reduction = 0
 
 /obj/item/bodypart/leg/left/robot/digitigrade
-	organic_render = FALSE
 	icon_greyscale = BODYPART_ICON_SYNTHLIZARD
 	should_draw_greyscale = TRUE
 	limb_id = "digitigrade"
@@ -65,7 +58,6 @@
 	check_mutant_compatability()
 
 /obj/item/bodypart/leg/right/robot/digitigrade
-	organic_render = FALSE
 	icon_greyscale = BODYPART_ICON_SYNTHLIZARD
 	should_draw_greyscale = TRUE
 	limb_id = "digitigrade"
