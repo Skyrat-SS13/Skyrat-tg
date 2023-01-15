@@ -23,7 +23,17 @@
 	name = "leather overcoat"
 	desc = "An armored leather overcoat, intended as the go-to wear for any aspiring gunman."
 	body_parts_covered = CHEST|GROIN|ARMS
-	armor = list(MELEE = 45, BULLET = 40, LASER = 40, ENERGY = 50, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50, WOUND = 10) //makes it in line with the rest of the armor
+	armor_type = /datum/armor/leather_gunman
+
+/datum/armor/leather_gunman
+	melee = 45
+	bullet = 40
+	laser = 40
+	energy = 50
+	bomb = 25
+	fire = 50
+	acid = 50
+	wound = 10
 
 /obj/item/storage/box/syndie_kit/gunman_outfit/PopulateContents() // 45, 40 armor on general without a helmet.
 	new /obj/item/clothing/under/pants/black/robohand(src)
@@ -54,9 +64,19 @@
 /obj/item/clothing/suit/toggle/lawyer/black/better/heister
 	name = "armored suit jacket"
 	desc = "A professional suit jacket, it feels much heavier than a regular jacket. A label on the inside reads \"Nanite-based Self-repairing Kevlar weave\"."
-	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50, WOUND = 10)
+	armor_type = /datum/armor/better_heister
 	/// How many hits we can take before the armor breaks, PAYDAY style
 	var/armor_stacks = 2
+
+/datum/armor/better_heister
+	melee = 35
+	bullet = 30
+	laser = 30
+	energy = 40
+	bomb = 25
+	fire = 50
+	acid = 50
+	wound = 10
 
 /obj/item/clothing/suit/toggle/lawyer/black/better/heister/Initialize(mapload)
 	. = ..()
@@ -91,7 +111,16 @@
 	var/obj/picked_mask = pick(non_cursed_masks)
 	var/obj/item/clothing/mask/animal/new_mask = new picked_mask(src)
 	new_mask.clothing_flags = VOICEBOX_DISABLED
-	new_mask.armor = list(MELEE = 30, BULLET = 25, LASER = 25, ENERGY = 25, BOMB = 0, BIO = 0, FIRE = 100, ACID = 100)
+	new_mask.set_armor(new_mask.get_armor().generate_new_with_specific(list(
+		MELEE = 30,
+		BULLET = 25,
+		LASER = 25,
+		ENERGY = 25,
+		BOMB = 0,
+		BIO = 0,
+		FIRE = 100,
+		ACID = 100,
+	)))
 	new /obj/item/clothing/gloves/color/latex/nitrile/heister(src)
 	new /obj/item/clothing/under/suit/black(src)
 	new /obj/item/clothing/shoes/laceup(src)

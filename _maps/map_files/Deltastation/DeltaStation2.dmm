@@ -3852,6 +3852,15 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/lobby)
+"aTH" = (
+/obj/structure/closet/secure_closet/contraband/armory,
+/obj/machinery/light/directional/east,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/turf_decal/bot,
+/obj/effect/spawner/random/maintenance/three,
+/obj/effect/spawner/random/contraband/armory,
+/turf/open/floor/iron/dark,
+/area/station/ai_monitored/security/armory)
 "aTL" = (
 /obj/structure/sign/departments/medbay/alt/directional/west,
 /obj/effect/turf_decal/tile/blue{
@@ -4156,13 +4165,7 @@
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "aXU" = (
-/obj/docking_port/stationary{
-	dwidth = 1;
-	height = 4;
-	name = "escape pod loader";
-	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
-	width = 3
-	},
+/obj/docking_port/stationary/escape_pod,
 /turf/open/space/basic,
 /area/space)
 "aXV" = (
@@ -9414,14 +9417,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/lockers)
-"chd" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/siding/dark_red{
-	dir = 1
-	},
-/mob/living/simple_animal/hostile/carp/lia,
-/turf/open/floor/iron/grimy,
-/area/station/command/heads_quarters/hos)
 "chi" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/preopen{
@@ -34784,6 +34779,24 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/plating,
 /area/station/maintenance/department/security)
+"iuY" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/window/right/directional/west{
+	name = "Chemistry Desk";
+	req_access = list("plumbing")
+	},
+/obj/item/paper{
+	pixel_x = -1;
+	pixel_y = 3
+	},
+/obj/structure/desk_bell{
+	pixel_x = 7;
+	pixel_y = -1
+	},
+/obj/item/pen,
+/turf/open/floor/iron,
+/area/station/medical/chemistry)
 "ivg" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/visible{
 	dir = 1
@@ -34972,6 +34985,14 @@
 /obj/machinery/power/apc/auto_name/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/security/detectives_office)
+"ixY" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/dark_red{
+	dir = 1
+	},
+/mob/living/basic/carp/pet/lia,
+/turf/open/floor/iron/grimy,
+/area/station/command/heads_quarters/hos)
 "ixZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/holopad,
@@ -37162,24 +37183,6 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/iron,
 /area/station/science/xenobiology)
-"jbc" = (
-/obj/structure/table/reinforced,
-/obj/machinery/door/firedoor,
-/obj/machinery/door/window/right/directional/west{
-	name = "Chemistry Desk";
-	req_access = list("chemistry")
-	},
-/obj/item/paper{
-	pixel_x = -1;
-	pixel_y = 3
-	},
-/obj/structure/desk_bell{
-	pixel_x = 7;
-	pixel_y = -1
-	},
-/obj/item/pen,
-/turf/open/floor/iron,
-/area/station/medical/chemistry)
 "jbn" = (
 /obj/structure/cable,
 /obj/machinery/computer/security/telescreen{
@@ -40173,30 +40176,6 @@
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/service/library/lounge)
-"jJL" = (
-/obj/item/paper_bin{
-	pixel_x = -7
-	},
-/obj/item/pen{
-	pixel_x = -7
-	},
-/obj/item/reagent_containers/cup/glass/britcup{
-	pixel_x = 6;
-	pixel_y = -4
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/structure/window{
-	dir = 1
-	},
-/obj/structure/table,
-/obj/structure/extinguisher_cabinet/directional/west,
-/obj/effect/turf_decal/tile/brown/anticorner/contrasted{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/station/cargo/drone_bay)
 "jJM" = (
 /obj/effect/landmark/start/hangover,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -55480,13 +55459,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos)
-"nyy" = (
-/obj/structure/closet/secure_closet/contraband/armory,
-/obj/machinery/light/directional/east,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/effect/turf_decal/bot,
-/turf/open/floor/iron/dark,
-/area/station/ai_monitored/security/armory)
 "nyC" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Library Access"
@@ -59140,6 +59112,30 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/department/chapel)
+"otv" = (
+/obj/item/paper_bin{
+	pixel_x = -7
+	},
+/obj/item/pen{
+	pixel_x = -7
+	},
+/obj/item/reagent_containers/cup/glass/mug/britcup{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/window{
+	dir = 1
+	},
+/obj/structure/table,
+/obj/structure/extinguisher_cabinet/directional/west,
+/obj/effect/turf_decal/tile/brown/anticorner/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/cargo/drone_bay)
 "otB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -98619,13 +98615,8 @@
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/qm)
 "xZM" = (
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 1;
-	height = 4;
-	name = "escape pod loader";
-	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
-	width = 3
+/obj/docking_port/stationary/escape_pod{
+	dir = 4
 	},
 /turf/open/space/basic,
 /area/space)
@@ -137244,7 +137235,7 @@ jDq
 rlA
 loe
 eoE
-jbc
+iuY
 eoE
 etc
 etc
@@ -139721,7 +139712,7 @@ xeH
 qAV
 xYZ
 vGf
-jJL
+otv
 cAw
 sJd
 khn
@@ -154147,7 +154138,7 @@ aaa
 aad
 bLs
 bLs
-nyy
+aTH
 xWI
 vhx
 gYv
@@ -154644,7 +154635,7 @@ aad
 aad
 bRF
 wQo
-chd
+ixY
 hOw
 trV
 hOw

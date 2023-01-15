@@ -465,6 +465,11 @@
 	icon_file = 'icons/obj/sofa.dmi'
 	json_config = 'code/datums/greyscale/json_configs/bench_right.json'
 
+/datum/greyscale_config/bench_solo
+	name = "Bench Solo"
+	icon_file = 'icons/obj/sofa.dmi'
+	json_config = 'code/datums/greyscale/json_configs/bench_solo.json'
+
 /datum/greyscale_config/bench_corner
 	name = "Bench Corner"
 	icon_file = 'icons/obj/sofa.dmi'
@@ -987,3 +992,8 @@
 	name = "Quantum Keycard"
 	icon_file = 'icons/obj/device.dmi'
 	json_config = 'code/datums/greyscale/json_configs/quantum_keycard.json'
+
+/datum/greyscale_config/heretic_rune
+	name = "Transmutation Rune"
+	icon_file = 'icons/effects/96x96.dmi'
+	json_config = 'code/datums/greyscale/json_configs/heretic_rune.json'
