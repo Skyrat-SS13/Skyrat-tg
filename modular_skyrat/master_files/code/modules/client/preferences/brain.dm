@@ -17,11 +17,12 @@
 	var/obj/item/organ/internal/brain/new_brain = target.prefs_get_brain_to_use(value)
 	var/obj/item/organ/internal/brain/old_brain = target.getorganslot(ORGAN_SLOT_BRAIN)
 
-	new_brain.modular_persistence = old_brain.modular_persistence
-	old_brain.modular_persistence = null
-
 	if(!new_brain || new_brain == old_brain.type)
 		return
 
 	new_brain = new new_brain()
+
+	new_brain.modular_persistence = old_brain.modular_persistence
+	old_brain.modular_persistence = null
+
 	new_brain.Insert(target, TRUE, FALSE)
