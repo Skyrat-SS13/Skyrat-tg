@@ -143,7 +143,8 @@
 			// If the user has not defined their own prefs for their breast type, default to two breasts
 			if (exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_BREASTS][MUTANT_INDEX_NAME] == "None")
 				exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_BREASTS][MUTANT_INDEX_NAME] = "Pair"
-				
+			
+			// Create the new breasts
 			var/obj/item/organ/external/genital/breasts/new_breasts = new
 			new_breasts.build_from_dna(exposed_mob.dna, ORGAN_SLOT_BREASTS)
 			new_breasts.Insert(exposed_mob, FALSE, FALSE)
