@@ -123,6 +123,7 @@
 	for(var/i in 1 to 25)
 		if(QDELETED(src) || !active)
 			return
+
 		var/obj/effect/overlay/sparkles/spark = new /obj/effect/overlay/sparkles(src)
 		spark.alpha = 0
 		sparkles += spark
@@ -136,10 +137,13 @@
 			if(25)
 				spark.pixel_y = 7
 				spark.forceMove(get_turf(src))
+
 		sleep(0.7 SECONDS)
+
 	for(var/overlay in sparkles)
 		var/obj/effect/overlay/sparkles/reveal = overlay
 		reveal.alpha = 255
+
 	icon_state = "ravecube_active"
 	say("Rave cube initialisation complete!")
 	while(active)
@@ -148,6 +152,7 @@
 			if(QDELETED(glow))
 				stack_trace("[glow?.gc_destroyed ? "Qdeleting glow" : "null entry"] found in [src].[gc_destroyed ? " Source qdeleting at the time." : ""]")
 				return
+
 			switch(glow.light_color)
 				if(COLOR_SOFT_RED)
 					if(glow.even_cycle)
@@ -208,10 +213,13 @@
 						glow.set_light_on(FALSE)
 						glow.set_light_color(COLOR_SOFT_RED)
 					glow.even_cycle = !glow.even_cycle
+
 		if(prob(2))  // Unique effects for the dance floor that show up randomly to mix things up
 			if(!xfx_mode)
 				return
+
 			INVOKE_ASYNC(src, PROC_REF(extra_effects))
+
 		sleep(4)
 		if(QDELETED(src))
 			return
