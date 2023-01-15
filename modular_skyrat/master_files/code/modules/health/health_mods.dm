@@ -56,7 +56,7 @@
 	if(pain_score >= .)
 		pain_score = .
 //	pain_haver.maxHealth = ((MAX_HUMAN_LIFE * 2) -= pain_score_tick)
-	pain_haver.hud_used?.healths?.maptext = MAPTEXT("[pain_score] [pain_score_tick]")
+	pain_haver.hud_used?.healths?.maptext = MAPTEXT("[pain_score] [pain_score_tick]") // This will runtime roundstart if not checked.
 	if(pain_score >= SHOCK_THRESH)
 		REMOVE_TRAIT(pain_haver, TRAIT_NOHARDCRIT, PAIN)
 		REMOVE_TRAIT(pain_haver, TRAIT_NOSOFTCRIT, PAIN)
