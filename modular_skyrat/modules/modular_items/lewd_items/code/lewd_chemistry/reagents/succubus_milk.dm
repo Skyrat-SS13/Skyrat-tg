@@ -140,8 +140,10 @@
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
 		// Start making new breasts if prefs allow it and we don't already have them
 		if(!exposed_mob.getorganslot(ORGAN_SLOT_BREASTS) && exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
+			// If the user has not defined their own prefs for their breast type, default to two breasts
 			if (exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_BREASTS][MUTANT_INDEX_NAME] == "None")
 				exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_BREASTS][MUTANT_INDEX_NAME] = "Pair"
+				
 			var/obj/item/organ/external/genital/breasts/new_breasts = new
 			new_breasts.build_from_dna(exposed_mob.dna, ORGAN_SLOT_BREASTS)
 			new_breasts.Insert(exposed_mob, FALSE, FALSE)
@@ -161,18 +163,21 @@
 	// Add new vagina and womb if prefs allow
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
 		if(!exposed_mob.getorganslot(ORGAN_SLOT_VAGINA))
-			var/obj/item/organ/external/genital/vagina/new_vagina = new
 			if (exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_VAGINA][MUTANT_INDEX_NAME] == "None")
 				exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_VAGINA][MUTANT_INDEX_NAME] = "Human"
+				
+			var/obj/item/organ/external/genital/vagina/new_vagina = new
 			new_vagina.build_from_dna(exposed_mob.dna, ORGAN_SLOT_VAGINA)
 			new_vagina.Insert(exposed_mob, 0, FALSE)
 			exposed_mob.update_body()
 			if(!incubus_draft)
 				to_chat(exposed_mob, span_purple("You feel a warmth in your groin as something blossoms down there."))
+				
 		if(!exposed_mob.getorganslot(ORGAN_SLOT_WOMB))
-			var/obj/item/organ/external/genital/womb/new_womb = new
 			if (exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_WOMB][MUTANT_INDEX_NAME] == "None")
 				exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_WOMB][MUTANT_INDEX_NAME] = "Normal"
+				
+			var/obj/item/organ/external/genital/womb/new_womb = new
 			new_womb.build_from_dna(exposed_mob.dna, ORGAN_SLOT_WOMB)
 			new_womb.Insert(exposed_mob, 0, FALSE)
 			exposed_mob.update_body()

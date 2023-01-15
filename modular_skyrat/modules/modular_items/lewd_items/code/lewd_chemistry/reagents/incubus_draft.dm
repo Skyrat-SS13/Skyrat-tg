@@ -146,7 +146,7 @@
 	if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/penis_enlargement))
 		// Start making new genitals if prefs allow it and if there isn't already one there
 		if(!exposed_mob.getorganslot(ORGAN_SLOT_PENIS) && exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
-			// If the user has not defined prefs for their penis type, try to assign is based on the species, defaulting to human
+			// If the user has not defined their own prefs for their penis type, try to assign a default based on their species, defaulting to human
 			var/list/data = species_to_penis[exposed_mob.dna.species.id]
 			if(!data)
 				data = species_to_penis[SPECIES_HUMAN]
@@ -160,6 +160,7 @@
 			if(colour)
 				exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_PENIS][MUTANT_INDEX_COLOR_LIST] = list(colour)
 
+			// Create the new testicles
 			if(!exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES))
 				var/obj/item/organ/external/genital/testicles/new_balls = new
 				new_balls.build_from_dna(exposed_mob.dna, ORGAN_SLOT_TESTICLES)
@@ -167,6 +168,7 @@
 				new_balls.genital_size = 0
 				new_balls.update_sprite_suffix()
 
+			// Create the new penis
 			var/obj/item/organ/external/genital/penis/new_penis = new
 			new_penis.build_from_dna(exposed_mob.dna, ORGAN_SLOT_PENIS)
 			new_penis.Insert(exposed_mob, 0, FALSE)
