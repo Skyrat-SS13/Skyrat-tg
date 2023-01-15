@@ -617,3 +617,8 @@
 	name = "Golden Nanotrasen Officer Coat"
 	item_path = /obj/item/clothing/suit/razurathcoat
 	ckeywhitelist = list("razurath")
+
+/datum/loadout_item/pocket_items/masvedishcigar
+	name = "Holocigar"
+	item_path = /obj/item/clothing/mask/holocigarette/masvedishcigar
+	ckeywhitelist = list("masvedish")
