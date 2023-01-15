@@ -44,7 +44,12 @@
 		if(internal.damage)
 			pain_score_tick += internal.damage / MAGIC_PAIN_DIVISOR
 	skip
-	pain_score_tick += pain_haver.getBruteLoss() + pain_haver.getFireLoss() + pain_haver.getToxLoss() + pain_haver.getOxyLoss() + pain_haver.getStaminaLoss() / MAGIC_PAIN_DIVISOR
+	pain_score_tick += (pain_haver.getBruteLoss() \
+		+ pain_haver.getFireLoss() \
+		+ pain_haver.getToxLoss() \
+		+ pain_haver.getOxyLoss() \
+		+ pain_haver.getStaminaLoss() \
+		/ MAGIC_PAIN_DIVISOR)
 	pain_score_tick = clamp(ROUND_UP(pain_score_tick), PAIN_MIN, PAIN_CAP)
 	pain_score_tick >= pain_score ? (clamp(pain_score += pain_score_tick / MAGIC_PAIN_DIVISOR, PAIN_MIN, pain_score_tick)) : (pain_score -= 1 - pain_score_tick / MAGIC_PAIN_DIVISOR)
 	. = pain_score_tick
@@ -54,7 +59,7 @@
 	pain_haver.hud_used?.healths?.maptext = MAPTEXT("[pain_score] [pain_score_tick]")
 	if(pain_score >= SHOCK_THRESH)
 		REMOVE_TRAIT(pain_haver, TRAIT_NOHARDCRIT, PAIN)
-		REMOVE_TRAIT(pain_haver, TRAIT_NOHARDCRIT, PAIN)
+		REMOVE_TRAIT(pain_haver, TRAIT_NOSOFTCRIT, PAIN)
 		if(prob(5) && pain_haver.can_heartattack())
 			var/datum/disease/heart_disease = new /datum/disease/heart_failure()
 			pain_haver.ForceContractDisease(heart_disease, FALSE, TRUE)
