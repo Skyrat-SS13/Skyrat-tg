@@ -213,9 +213,9 @@
 			break //Only count the first bedsheet
 
 		if(healing > 0 && health_ratio > 0.8)
-			owner.adjustBruteLoss(-1 * healing)
-			owner.adjustFireLoss(-1 * healing)
-			owner.adjustToxLoss(-1 * healing * 0.5, TRUE, TRUE)
+			owner.adjustBruteLoss(-1 * healing, required_bodytype = BODYTYPE_ORGANIC)
+			owner.adjustFireLoss(-1 * healing, required_bodytype = BODYTYPE_ORGANIC)
+			owner.adjustToxLoss(-1 * healing * 0.5, TRUE, TRUE, required_biotype = MOB_ORGANIC)
 		owner.adjustStaminaLoss(min(-1 * healing, -1 * HEALING_SLEEP_DEFAULT))
 	// Drunkenness gets reduced by 0.3% per tick (6% per 2 seconds)
 	owner.set_drunk_effect(owner.get_drunk_amount() * 0.997)
@@ -417,23 +417,33 @@
 	alert_type = null
 	duration = -1
 
+/datum/status_effect/neck_slice/on_apply()
+	if(!ishuman(owner))
+		return FALSE
+	if(!owner.get_bodypart(BODY_ZONE_HEAD))
+		return FALSE
+	return TRUE
+
 /datum/status_effect/neck_slice/tick()
-	var/mob/living/carbon/human/H = owner
-	var/obj/item/bodypart/throat = H.get_bodypart(BODY_ZONE_HEAD)
-	if(H.stat == DEAD || !throat)
-		H.remove_status_effect(/datum/status_effect/neck_slice)
+	var/obj/item/bodypart/throat = owner.get_bodypart(BODY_ZONE_HEAD)
+	if(owner.stat == DEAD || !throat) // they can lose their head while it's going.
+		qdel(src)
+		return
 
 	var/still_bleeding = FALSE
-	for(var/thing in throat.wounds)
-		var/datum/wound/W = thing
-		if(W.wound_type == WOUND_SLASH && W.severity > WOUND_SEVERITY_MODERATE)
+	for(var/datum/wound/bleeding_thing as anything in throat.wounds)
+		if(bleeding_thing.wound_type == WOUND_SLASH && bleeding_thing.severity > WOUND_SEVERITY_MODERATE)
 			still_bleeding = TRUE
 			break
 	if(!still_bleeding)
-		H.remove_status_effect(/datum/status_effect/neck_slice)
+		qdel(src)
+		return
 
 	if(prob(10))
-		H.emote(pick("gasp", "gag", "choke"))
+		owner.emote(pick("gasp", "gag", "choke"))
+
+/datum/status_effect/neck_slice/get_examine_text()
+	return span_warning("[owner.p_their(TRUE)] neck is cut and is bleeding profusely!")
 
 /mob/living/proc/apply_necropolis_curse(set_curse)
 	var/datum/status_effect/necropolis_curse/C = has_status_effect(/datum/status_effect/necropolis_curse)
@@ -856,7 +866,7 @@
 					leg.receive_damage(3,0)
 				if(50) // 2% chance
 					to_chat(victim, span_danger("You rub some ants away from your eyes!"))
-					victim.blur_eyes(3)
+					victim.set_eye_blur_if_lower(6 SECONDS)
 					ants_remaining -= 5 // To balance out the blindness, it'll be a little shorter.
 	ants_remaining--
 	if(ants_remaining <= 0 || victim.stat >= HARD_CRIT)

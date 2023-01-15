@@ -259,6 +259,8 @@
 /mob/dead/new_player/proc/create_character(atom/destination)
 	spawning = TRUE
 
+	hide_title_screen() // SKYRAT EDIT ADDITION - titlescreen
+
 	mind.active = FALSE //we wish to transfer the key manually
 	var/mob/living/spawning_mob = mind.assigned_role.get_spawn_mob(client, destination)
 	if(QDELETED(src) || !client)

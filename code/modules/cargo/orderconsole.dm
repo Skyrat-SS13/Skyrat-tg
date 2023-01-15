@@ -120,12 +120,14 @@
 	data["cart"] = list()
 	for(var/datum/supply_order/SO in SSshuttle.shopping_list)
 		data["cart"] += list(list(
+			"cost_type" = SO.cost_type,
 			"object" = SO.pack.name,
 			"cost" = SO.pack.get_cost(),
 			"id" = SO.id,
 			"orderer" = SO.orderer,
 			"paid" = !isnull(SO.paying_account), //paid by requester
-			"dep_order" = SO.department_destination ? TRUE : FALSE
+			"dep_order" = !!SO.department_destination,
+			"can_be_cancelled" = SO.can_be_cancelled,
 		))
 
 	data["requests"] = list()
@@ -238,7 +240,10 @@
 				if(!istype(account))
 					say("Invalid bank account.")
 					return
-
+				var/list/access = id_card.GetAccess()
+				if(pack.access_view && !(pack.access_view in access))
+					say("[id_card] lacks the requisite access for this purchase.")
+					return
 			var/reason = ""
 			if(requestonly && !self_paid)
 				reason = tgui_input_text(usr, "Reason", name)
@@ -258,9 +263,11 @@
 					coupon_check.moveToNullspace()
 					applied_coupon = coupon_check
 					break
-
+			//Skyrat Edit Add
+			var/charge_on_purchase = TRUE
 			var/turf/T = get_turf(src)
-			var/datum/supply_order/SO = new(pack, name, rank, ckey, reason, account, null, applied_coupon)
+			var/datum/supply_order/SO = new(pack, name, rank, ckey, reason, account, null, applied_coupon, charge_on_purchase)
+			//Skyrat Edit End
 			SO.generateRequisition(T)
 			if(requestonly && !self_paid)
 				SSshuttle.request_list += SO
@@ -293,8 +300,8 @@
 				break
 		if("clear")
 			for(var/datum/supply_order/cancelled_order in SSshuttle.shopping_list)
-				if(cancelled_order.department_destination)
-					continue //don't cancel other department's orders
+				if(cancelled_order.department_destination || cancelled_order.can_be_cancelled)
+					continue //don't cancel other department's orders or orders that can't be cancelled
 				SSshuttle.shopping_list -= cancelled_order
 			. = TRUE
 		if("approve")

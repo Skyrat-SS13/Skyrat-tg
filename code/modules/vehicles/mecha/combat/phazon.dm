@@ -6,7 +6,7 @@
 	movedelay = 2
 	step_energy_drain = 3
 	max_integrity = 200
-	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 0, FIRE = 100, ACID = 100)
+	armor_type = /datum/armor/mecha_phazon
 	max_temperature = 25000
 	internals_req_access = list(ACCESS_MECH_SCIENCE, ACCESS_MECH_SECURITY)
 	destruction_sleep_duration = 40
@@ -20,6 +20,15 @@
 		MECHA_ARMOR = 2,
 	)
 	phase_state = "phazon-phase"
+
+/datum/armor/mecha_phazon
+	melee = 30
+	bullet = 30
+	laser = 30
+	energy = 30
+	bomb = 30
+	fire = 100
+	acid = 100
 
 /obj/vehicle/sealed/mecha/phazon/generate_actions()
 	. = ..()
@@ -47,7 +56,7 @@
 	chassis.damtype = new_damtype
 	button_icon_state = "mech_damtype_[new_damtype]"
 	playsound(chassis, 'sound/mecha/mechmove01.ogg', 50, TRUE)
-	UpdateButtons()
+	build_all_button_icons()
 
 /datum/action/vehicle/sealed/mecha/mech_toggle_phasing
 	name = "Toggle Phasing"
@@ -59,4 +68,4 @@
 	chassis.phasing = chassis.phasing ? "" : "phasing"
 	button_icon_state = "mech_phasing_[chassis.phasing ? "on" : "off"]"
 	chassis.balloon_alert(owner, "[chassis.phasing ? "enabled" : "disabled"] phasing")
-	UpdateButtons()
+	build_all_button_icons()
