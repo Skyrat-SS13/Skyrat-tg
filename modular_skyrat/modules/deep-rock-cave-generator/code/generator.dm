@@ -1,3 +1,7 @@
+#define ZTRAIT_OPENSPACE_CREVICES "Openspace_Crevices"
+#define ZTRAIT_SURFACE_RIVERS "Surface_Rivers"
+#define ZTRAIT_HELL_LAVA_RIVERS "Lava_Rivers_In_Hell"
+
 #define BIOME_WATERY_CAVE ( /datum/biome/deep_rock/water_cave )
 #define BIOME_UNDERGROUND_JUNGLE ( /datum/biome/deep_rock/underground_jungle )
 #define BIOME_DEVOID_OF_LIFE ( /datum/biome/deep_rock/lifeless_cave )
