@@ -2550,6 +2550,9 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "jU" = (
 /obj/machinery/firealarm/directional/south,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
 /turf/open/floor/iron/dark/side,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/firingrange)
 "jW" = (
@@ -2871,6 +2874,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/firingrange)
 "li" = (
@@ -2938,6 +2942,10 @@
 /obj/machinery/firealarm/directional/north,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
+"lA" = (
+/obj/structure/chair,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "lD" = (
 /obj/effect/turf_decal/siding/thinplating/dark,
 /obj/effect/turf_decal/trimline/dark_red/line,
@@ -3117,6 +3125,13 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
+"mq" = (
+/obj/effect/turf_decal/stripes/red/line,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/skyrat/interdynefob/security/firingrange)
 "mr" = (
 /obj/effect/turf_decal/siding/dark/corner{
 	dir = 8
@@ -3842,9 +3857,6 @@
 	dir = 1
 	},
 /obj/machinery/light/cold/directional/south,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
-	},
 /turf/open/floor/iron/dark/side,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/firingrange)
 "pt" = (
@@ -4349,7 +4361,9 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/wood/large,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms)
 "rk" = (
@@ -5099,6 +5113,7 @@
 /obj/machinery/door/airlock/grunge{
 	name = "Cell 1"
 	},
+/obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "uV" = (
@@ -5811,14 +5826,12 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "yP" = (
-/obj/structure/chair,
-/obj/machinery/firealarm/directional/west,
-/obj/machinery/camera/directional/west{
-	network = list("ds2");
-	c_tag = "DS-2 Dormitories"
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 1
 	},
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/skyrat/interdynefob/halls)
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/skyrat/interdynefob/security/firingrange)
 "yR" = (
 /turf/open/floor/iron/white/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
@@ -7213,6 +7226,7 @@
 "EV" = (
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/dark/side{
 	dir = 1
 	},
@@ -7409,6 +7423,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
 "FH" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/firingrange)
 "FJ" = (
@@ -7574,6 +7589,13 @@
 	},
 /turf/open/floor/wood/parquet,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/lounge)
+"Gu" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "Gx" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
@@ -7898,9 +7920,6 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "HE" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
@@ -9106,6 +9125,7 @@
 	color = "#596479";
 	dir = 8
 	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/wood/large,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms)
 "No" = (
@@ -9331,6 +9351,11 @@
 /obj/structure/chair{
 	dir = 1
 	},
+/obj/machinery/camera/directional/west{
+	network = list("ds2");
+	c_tag = "DS-2 Dormitories"
+	},
+/obj/machinery/firealarm/directional/west,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "NX" = (
@@ -9691,6 +9716,7 @@
 /obj/machinery/door/airlock/grunge{
 	name = "Cell 2"
 	},
+/obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "PA" = (
@@ -12024,9 +12050,8 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "YA" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/firingrange)
 "YC" = (
@@ -12054,6 +12079,7 @@
 	},
 /obj/effect/turf_decal/siding/dark/corner,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/firingrange)
 "YI" = (
@@ -12608,9 +12634,9 @@ IQ
 br
 ev
 IQ
-Fw
+yP
 YA
-rs
+mq
 kF
 pX
 uS
@@ -13086,8 +13112,8 @@ zI
 qh
 NB
 cU
-cU
 ok
+cU
 cU
 Kf
 GG
@@ -13141,15 +13167,15 @@ qh
 NB
 on
 Fj
-on
-yP
+lA
 sO
 NW
+on
 HE
 Lz
 XR
 Lz
-Lz
+Gu
 Lz
 yn
 oO
