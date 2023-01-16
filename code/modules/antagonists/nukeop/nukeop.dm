@@ -39,7 +39,11 @@
 	if(!nukeop_outfit) // this variable is null in instances where an antagonist datum is granted via enslaving the mind (/datum/mind/proc/enslave_mind_to_creator), like in golems.
 		return
 
-	operative.set_species(/datum/species/human) //Plasmamen burn up otherwise, and besides, all other species are vulnerable to asimov AIs. Let's standardize all operatives being human.
+	// SKYRAT EDIT START
+	//operative.set_species(/datum/species/human) //Plasmamen burn up otherwise, and besides, all other species are vulnerable to asimov AIs. Let's standardize all operatives being human.
+	if(isplasmaman(operative))
+		operative.equipOutfit(/datum/outfit/plasmaman) // they lose the turtleneck but that's fine
+	// SKYRAT EDIT END
 
 	operative.equipOutfit(nukeop_outfit)
 	return TRUE

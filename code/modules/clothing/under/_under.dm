@@ -59,7 +59,7 @@
 
 	return screentip_change ? CONTEXTUAL_SCREENTIP_SET : NONE
 
-/obj/item/clothing/under/worn_overlays(mutable_appearance/standing, isinhands = FALSE)
+/obj/item/clothing/under/worn_overlays(mutable_appearance/standing, isinhands = FALSE, file2use = null, mutant_styles = NONE)
 	. = ..()
 	if(isinhands)
 		return
@@ -69,7 +69,7 @@
 	if(GET_ATOM_BLOOD_DNA_LENGTH(src))
 		. += mutable_appearance('icons/effects/blood.dmi', "uniformblood")
 	if(accessory_overlay)
-		. += accessory_overlay
+		. += modify_accessory_overlay() // SKYRAT EDIT CHANGE - ORIGINAL: . += accessory_overlay
 
 /obj/item/clothing/under/attackby(obj/item/I, mob/user, params)
 	if((has_sensor == BROKEN_SENSORS) && istype(I, /obj/item/stack/cable_coil))
@@ -364,10 +364,6 @@
 
 /obj/item/clothing/under/rank
 	dying_key = DYE_REGISTRY_UNDER
-
-/datum/armor/clothing_under
-	bio = 10
-	wound = 5
 
 /obj/item/clothing/under/proc/dump_attachment()
 	if(!attached_accessory)

@@ -462,9 +462,10 @@
 //Overlays for the worn overlay so you can overlay while you overlay
 //eg: ammo counters, primed grenade flashing, etc.
 //"icon_file" is used automatically for inhands etc. to make sure it gets the right inhand file
-//SKYRAT EDIT CHANGE - CUSTOMIZATION
-///obj/item/proc/worn_overlays(mutable_appearance/standing, isinhands = FALSE, icon_file) (original)
+// SKYRAT EDIT CHANGE BEGIN - CUSTOMIZATION
+// obj/item/proc/worn_overlays(mutable_appearance/standing, isinhands = FALSE, icon_file) - original
 /obj/item/proc/worn_overlays(mutable_appearance/standing, isinhands = FALSE, icon_file, mutant_styles = NONE)
+// SKYRAT EDIT CHANGE END
 	SHOULD_CALL_PARENT(TRUE)
 	RETURN_TYPE(/list)
 
