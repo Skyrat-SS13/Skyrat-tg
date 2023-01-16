@@ -1,4 +1,5 @@
 #define RAVE_LIGHT_RANGE (rand(85, 115)*0.01)
+#define RAVE_DANCE_LENGTH 64
 
 /obj/machinery/rave_cube
 	name = "rave cube"
@@ -11,7 +12,8 @@
 	var/active = FALSE
 	var/list/spotlights = list()
 	var/list/sparkles = list()
-	var/xfx_mode = TRUE
+	var/list/ravers = list()
+	var/xfx_mode = FALSE
 
 /datum/supply_pack/costumes_toys/ravecube
 	name = "Rave Cube Crate"
@@ -23,10 +25,8 @@
 /obj/machinery/rave_cube/proc/turn_on(mob/user)
 	active = TRUE
 	to_chat(user, span_notice("You turn the rave cube on!"))
-	update_icon()
-	START_PROCESSING(SSobj, src)
 	lights_setup()
-	lights_spin()
+	lights_run()
 
 /obj/machinery/rave_cube/proc/turn_off(mob/user)
 	active = FALSE
@@ -34,10 +34,7 @@
 	to_chat(user, span_notice("You turn the rave cube off!"))
 	set_light(0)
 	remove_atom_colour(TEMPORARY_COLOUR_PRIORITY)
-	STOP_PROCESSING(SSobj, src)
-	QDEL_LIST(spotlights)
-	QDEL_LIST(sparkles)
-	update_appearance()
+	rave_end()
 
 /obj/machinery/rave_cube/attack_hand(mob/living/carbon/human/user, list/modifiers)
 	. = ..()
@@ -52,7 +49,7 @@
 /obj/machinery/rave_cube/examine(mob/user)
 	. = ..()
 	. += span_notice("Alt+Click to [anchored ? "un" : null]anchor [src].")
-	. += span_notice("Ctrl+Shift+Click to [xfx_mode ? "dis" : "en"]able extra effects mode.")
+	. += span_notice("Ctrl+Shift+Click to [xfx_mode ? "dis" : "en"]able dance mode!")
 
 /obj/machinery/rave_cube/AltClick(mob/living/carbon/human/user)
 	. = ..()
@@ -67,11 +64,13 @@
 	. = ..()
 	if(xfx_mode)
 		xfx_mode = FALSE
+		STOP_PROCESSING(SSobj, src)
 
 	else
 		xfx_mode = TRUE
+		START_PROCESSING(SSobj, src)
 
-	balloon_alert(user, "Extra effects [xfx_mode ? "en" : "dis"]abled")
+	balloon_alert(user, "Dance mode [xfx_mode ? "en" : "dis"]abled")
 
 /obj/machinery/rave_cube/update_icon_state()
 	. = ..()
@@ -117,9 +116,10 @@
 		continue
 	FOR_DVIEW_END
 
-/obj/machinery/rave_cube/proc/lights_spin()
+/obj/machinery/rave_cube/proc/lights_run()
 	say("Rave cube is initialising... Please wait.")
 	icon_state = "ravecube_init"
+
 	for(var/i in 1 to 25)
 		if(QDELETED(src) || !active)
 			return
@@ -127,6 +127,7 @@
 		var/obj/effect/overlay/sparkles/spark = new /obj/effect/overlay/sparkles(src)
 		spark.alpha = 0
 		sparkles += spark
+
 		switch(i)
 			if(1 to 8)
 				spark.orbit(src, 30, TRUE, 60, 36, TRUE)
@@ -145,10 +146,13 @@
 		reveal.alpha = 255
 
 	icon_state = "ravecube_active"
+	rave_init()
 	say("Rave cube initialisation complete!")
+	START_PROCESSING(SSobj, src)
 	while(active)
 		for(var/lightstrip in spotlights) // The multiples reflects custom adjustments to each colors after dozens of tests
 			var/obj/item/flashlight/spotlight/rave/glow = lightstrip
+
 			if(QDELETED(glow))
 				stack_trace("[glow?.gc_destroyed ? "Qdeleting glow" : "null entry"] found in [src].[gc_destroyed ? " Source qdeleting at the time." : ""]")
 				return
@@ -212,23 +216,186 @@
 					else
 						glow.set_light_on(FALSE)
 						glow.set_light_color(COLOR_SOFT_RED)
+
 					glow.even_cycle = !glow.even_cycle
 
-		if(prob(2))  // Unique effects for the dance floor that show up randomly to mix things up
-			if(!xfx_mode)
-				return
-
-			INVOKE_ASYNC(src, PROC_REF(extra_effects))
+		if(prob(4))  // Unique effects for the dance floor that show up randomly to mix things up
+			if(xfx_mode)
+				INVOKE_ASYNC(src, PROC_REF(xfx_run))
 
 		sleep(4)
 		if(QDELETED(src))
 			return
 
-/obj/machinery/rave_cube/proc/extra_effects()
+/obj/machinery/rave_cube/proc/dance(mob/living/peep) //Show your moves
+	set waitfor = FALSE
+	switch(rand(1, 3))
+		if(1)
+			dance1(peep)
+		if(2)
+			dance2(peep)
+		if(3)
+			dance3(peep)
+
+/obj/machinery/rave_cube/proc/dance1(mob/living/peep)
+	for(var/i in 0 to 9)
+		dance_rotate(peep, CALLBACK(peep, TYPE_PROC_REF(/mob, dance_flip)))
+		sleep(2 SECONDS)
+
+/obj/machinery/rave_cube/proc/dance2(mob/living/peep)
+	set waitfor = FALSE
+	var/matrix/initial_matrix = matrix(peep.transform)
+	for (var/i in 1 to 180)
+		if (!peep)
+			return
+
+		switch(i)
+			if (1 to 15)
+				initial_matrix = matrix(peep.transform)
+				initial_matrix.Translate(0,1)
+				animate(peep, transform = initial_matrix, time = 1, loop = 0)
+			if (16 to 30)
+				initial_matrix = matrix(peep.transform)
+				initial_matrix.Translate(1,-1)
+				animate(peep, transform = initial_matrix, time = 1, loop = 0)
+			if (31 to 45)
+				initial_matrix = matrix(peep.transform)
+				initial_matrix.Translate(-1,-1)
+				animate(peep, transform = initial_matrix, time = 1, loop = 0)
+			if (46 to 60)
+				initial_matrix = matrix(peep.transform)
+				initial_matrix.Translate(-1,1)
+				animate(peep, transform = initial_matrix, time = 1, loop = 0)
+			if (61 to 75)
+				initial_matrix = matrix(peep.transform)
+				initial_matrix.Translate(1,0)
+				animate(peep, transform = initial_matrix, time = 1, loop = 0)
+			if (76 to 90)
+				initial_matrix = matrix(peep.transform)
+				initial_matrix.Translate(0,1)
+				animate(peep, transform = initial_matrix, time = 1, loop = 0)
+			if (91 to 105)
+				initial_matrix = matrix(peep.transform)
+				initial_matrix.Translate(1,-1)
+				animate(peep, transform = initial_matrix, time = 1, loop = 0)
+			if (106 to 120)
+				initial_matrix = matrix(peep.transform)
+				initial_matrix.Translate(-1,-1)
+				animate(peep, transform = initial_matrix, time = 1, loop = 0)
+			if (121 to 135)
+				initial_matrix = matrix(peep.transform)
+				initial_matrix.Translate(-1,1)
+				animate(peep, transform = initial_matrix, time = 1, loop = 0)
+			if (136 to 165)
+				initial_matrix = matrix(peep.transform)
+				initial_matrix.Translate(1,0)
+				animate(peep, transform = initial_matrix, time = 1, loop = 0)
+			if (166 to 180)
+				initial_matrix = matrix(peep.transform)
+				initial_matrix.Translate(0,1)
+				animate(peep, transform = initial_matrix, time = 1, loop = 0)
+
+		peep.setDir(turn(peep.dir, 90))
+
+		switch (peep.dir)
+			if (NORTH)
+				initial_matrix = matrix(peep.transform)
+				initial_matrix.Translate(0,3)
+				animate(peep, transform = initial_matrix, time = 1, loop = 0)
+			if (SOUTH)
+				initial_matrix = matrix(peep.transform)
+				initial_matrix.Translate(0,-3)
+				animate(peep, transform = initial_matrix, time = 1, loop = 0)
+			if (EAST)
+				initial_matrix = matrix(peep.transform)
+				initial_matrix.Translate(3,0)
+				animate(peep, transform = initial_matrix, time = 1, loop = 0)
+			if (WEST)
+				initial_matrix = matrix(peep.transform)
+				initial_matrix.Translate(-3,0)
+				animate(peep, transform = initial_matrix, time = 1, loop = 0)
+
+		sleep(0.1 SECONDS)
+
+	peep.lying_fix()
+
+/obj/machinery/rave_cube/proc/dance3(mob/living/peep)
+	animate(peep, transform = matrix(180, MATRIX_ROTATE), time = 1, loop = 0)
+	var/matrix/initial_matrix = matrix(peep.transform)
+	for (var/i in 1 to 180)
+		if (!peep)
+			return
+
+		if(!active)
+			break
+
+		if (i<91)
+			initial_matrix = matrix(peep.transform)
+			initial_matrix.Translate(0,1)
+			animate(peep, transform = initial_matrix, time = 1, loop = 0)
+		if (i>90)
+			initial_matrix = matrix(peep.transform)
+			initial_matrix.Translate(0,-1)
+			animate(peep, transform = initial_matrix, time = 1, loop = 0)
+
+		peep.setDir(turn(peep.dir, 90))
+
+		switch (peep.dir)
+			if (NORTH)
+				initial_matrix = matrix(peep.transform)
+				initial_matrix.Translate(0,3)
+				animate(peep, transform = initial_matrix, time = 1, loop = 0)
+			if (SOUTH)
+				initial_matrix = matrix(peep.transform)
+				initial_matrix.Translate(0,-3)
+				animate(peep, transform = initial_matrix, time = 1, loop = 0)
+			if (EAST)
+				initial_matrix = matrix(peep.transform)
+				initial_matrix.Translate(3,0)
+				animate(peep, transform = initial_matrix, time = 1, loop = 0)
+			if (WEST)
+				initial_matrix = matrix(peep.transform)
+				initial_matrix.Translate(-3,0)
+				animate(peep, transform = initial_matrix, time = 1, loop = 0)
+		sleep(0.1 SECONDS)
+
+	peep.lying_fix()
+
+/obj/machinery/rave_cube/proc/xfx_run()
+	rave_init()
+	for(var/mob/living/peep in ravers)
+		dance(peep)
+
 	for(var/i in 1 to 10)
 		spawn_atom_to_turf(/obj/effect/temp_visual/hierophant/telegraph/edge, src, 1, FALSE)
 		sleep(0.5 SECONDS)
 		if(QDELETED(src))
 			return
 
+/obj/machinery/rave_cube/proc/rave_end()
+	for(var/mob/living/peep in ravers)
+		if(!peep || !peep.client)
+			continue
+
+	ravers = list()
+
+	STOP_PROCESSING(SSobj, src)
+	QDEL_LIST(spotlights)
+	QDEL_LIST(sparkles)
+
+/obj/machinery/rave_cube/proc/rave_init()
+	for(var/mob/peep in range(4,src))
+		if(!peep.client || !(peep.client.prefs.read_preference(/datum/preference/toggle/sound_jukebox)))
+			continue
+
+		if(!(peep in ravers))
+			ravers[peep] = TRUE
+
+	for(var/mob/location in ravers)
+		if(get_dist(src,location) > 4 || !(location.client.prefs.read_preference(/datum/preference/toggle/sound_jukebox)))
+			ravers -= location
+			if(!location || !location.client)
+				continue
+
 #undef RAVE_LIGHT_RANGE
+#undef RAVE_DANCE_LENGTH
