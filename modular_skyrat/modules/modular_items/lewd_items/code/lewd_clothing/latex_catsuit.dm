@@ -39,7 +39,7 @@
 		else
 			icon_state = "latex_catsuit_female"
 			
-	affected_mob.update_worn_undersuit()
+		affected_mob.update_worn_undersuit()
 
 	breasts_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform.dmi', "none")
 	update_overlays()
