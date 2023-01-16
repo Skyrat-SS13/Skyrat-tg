@@ -41,7 +41,8 @@
 	desc = "A sausage coated in thick beer batter, best served with a portion of chips wrapped in a newspaper, it however, is pure cholesterol, Scottish people eat it. Few of them make 60."
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "grilled_batteredsausage"
-	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 5,/datum/reagent/consumable/nutriment/vitamin = 2, /datum/reagent/consumable/nutriment = 2)
+	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 5,/datum/reagent/consumable/nutriment/vitamin = 2, /datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/cooking_oil = 2)
+	foodtypes = MEAT | BREAKFAST | FRIED
 
 /obj/item/food/sausage/make_processable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/salami, 6, 3 SECONDS, table_required = TRUE,  screentip_verb = "Slice")
