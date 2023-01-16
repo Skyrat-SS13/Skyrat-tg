@@ -20,9 +20,17 @@
 	if(!new_brain || new_brain == old_brain.type)
 		return
 
+	var/datum/mind/keep_me_safe = target.mind
+
 	new_brain = new new_brain()
 
 	new_brain.modular_persistence = old_brain.modular_persistence
 	old_brain.modular_persistence = null
 
-	new_brain.Insert(target, TRUE, FALSE)
+	new_brain.Insert(target, drop_if_replaced = FALSE)
+
+	// Prefs can be applied to mindless mobs, let's not try to move the non-existent mind back in!
+	if(!keep_me_safe)
+		return
+
+	keep_me_safe.transfer_to(target, TRUE)
