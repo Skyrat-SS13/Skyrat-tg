@@ -30,9 +30,7 @@ GLOBAL_LIST_EMPTY(laugh_types)
 /datum/laugh_type/hyena
 	name = "Hyena Laugh"
 	male_laughsounds = list('modular_skyrat/modules/emotes/sound/emotes/hyenalaugh1.ogg',
-			'modular_skyrat/modules/emotes/sound/emotes/hyenalaugh2.ogg',
-			'modular_skyrat/modules/emotes/sound/emotes/hyenalaugh3.ogg',
-			'modular_skyrat/modules/emotes/sound/emotes/hyenalaugh4.ogg')
+			'modular_skyrat/modules/emotes/sound/emotes/hyenalaugh2.ogg')
 	female_laughsounds = null
 
 /datum/laugh_type/snake
