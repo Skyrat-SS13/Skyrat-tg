@@ -1,5 +1,4 @@
 #define RAVE_LIGHT_RANGE (rand(85, 115)*0.01)
-#define RAVE_DANCE_LENGTH 64
 
 /obj/machinery/rave_cube
 	name = "rave cube"
@@ -398,4 +397,3 @@
 				continue
 
 #undef RAVE_LIGHT_RANGE
-#undef RAVE_DANCE_LENGTH
