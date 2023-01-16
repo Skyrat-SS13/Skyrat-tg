@@ -364,10 +364,11 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 				var/obj/item/modular_computer/computer = item_content
 				for(var/datum/computer_file/program/messenger/message_app in computer.stored_files)
 					message_app.invisible = TRUE
-			item_content.dropped(mob_occupant)
 			mob_occupant.transferItemToLoc(item_content, control_computer, force = TRUE, silent = TRUE)
+			item_content.dropped(mob_occupant)
 			control_computer.frozen_item += item_content
-		else mob_occupant.transferItemToLoc(item_content, drop_location(), force = TRUE, silent = TRUE)
+		else
+			mob_occupant.transferItemToLoc(item_content, drop_location(), force = TRUE, silent = TRUE)
 
 	GLOB.joined_player_list -= stored_ckey
 
