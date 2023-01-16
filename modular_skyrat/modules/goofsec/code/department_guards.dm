@@ -736,6 +736,40 @@
 	icon_state = "prison_baton"
 	valid_areas = list(/area/station/security/prison, /area/station/security/processing, /area/shuttle/escape)
 
+/datum/supply_pack/security/baton_prison
+	name = "Prison Baton Crate"
+	desc = "Contains an extra baton for Corrections Officers. Just in case you hated the idea of a normal baton in their hands. Requires Security access to open."
+	cost = CARGO_CRATE_VALUE * 2
+	access_view = ACCESS_SECURITY
+	contains = list(/obj/item/melee/baton/security/loaded/departmental/prison)
+
+/datum/supply_pack/service/baton_service
+	name = "Service Baton Crate"
+	desc = "Contains an extra baton for Bouncers. Requires Security access to open."
+	cost = CARGO_CRATE_VALUE * 2
+	access_view = ACCESS_SECURITY
+	contains = list(/obj/item/melee/baton/security/loaded/departmental/service)
+
+/datum/supply_pack/medical/baton_medical
+	name = "Medical Baton Crate"
+	desc = "Contains an extra baton for Orderlies. Requires Security access to open."
+	cost = CARGO_CRATE_VALUE * 2
+	access_view = ACCESS_SECURITY
+	contains = list(/obj/item/melee/baton/security/loaded/departmental/medical)
+
+/datum/supply_pack/engineering/baton_engineering
+	name = "Engineering Baton Crate"
+	desc = "Contains an extra baton for Engineering Guards. Requires Security access to open."
+	cost = CARGO_CRATE_VALUE * 2
+	access_view = ACCESS_SECURITY
+	contains = list(/obj/item/melee/baton/security/loaded/departmental/engineering)
+
+/datum/supply_pack/science/baton_science
+	name = "Science Baton Crate"
+	desc = "Contains an extra baton for Science Guards. Requires Security access to open."
+	cost = CARGO_CRATE_VALUE * 2
+	access_view = ACCESS_SECURITY
+	contains = list(/obj/item/melee/baton/security/loaded/departmental/science)
 /*
 * Garment Bags
 */
