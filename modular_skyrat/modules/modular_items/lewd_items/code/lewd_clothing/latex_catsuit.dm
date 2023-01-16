@@ -34,21 +34,19 @@
 	var/mob/living/carbon/human/affected_human = affected_mob
 	var/obj/item/organ/external/genital/breasts/affected_breasts = affected_human.getorganslot(ORGAN_SLOT_BREASTS)
 	if(src == affected_human.w_uniform)
-		if(affected_mob.gender == FEMALE)
-			icon_state = "latex_catsuit_female"
-			affected_mob.update_worn_undersuit()
-
 		if(affected_mob.gender == MALE)
 			icon_state = "latex_catsuit_male"
-			affected_mob.update_worn_undersuit()
+		else
+			icon_state = "latex_catsuit_female"
+			
+	affected_mob.update_worn_undersuit()
 
-	//For giving taurs proper sprites
-	if(affected_human.dna.species.mutant_bodyparts["taur"])
-		breasts_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform-snake.dmi', "none")
-		update_overlays()
-	else
-		breasts_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform.dmi', "none")
-		update_overlays()
+	//For giving taurs proper sprites -- does not currently render correctly, perhaps that was an old sprite?
+	//if(affected_human.dna.species.mutant_bodyparts["taur"])
+	//	breasts_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform-snake.dmi', "none")
+	//	update_overlays()
+	breasts_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform.dmi', "none")
+	update_overlays()
 
 	//Breasts overlay for catsuit
 	if(affected_breasts?.genital_size >= 6 || affected_breasts?.genital_type == "pair")
@@ -70,9 +68,9 @@
 		add_overlay(breasts_icon_overlay)
 		update_overlays()
 
-	if(affected_human.dna.species.mutant_bodyparts["taur"] && src == affected_human.w_uniform)
-		affected_human.remove_overlay(BODY_BEHIND_LAYER)
-		affected_human.remove_overlay(BODY_FRONT_LAYER)
+	//if(affected_human.dna.species.mutant_bodyparts["taur"] && src == affected_human.w_uniform) This is old and no longer needed it would seem
+	//	affected_human.remove_overlay(BODY_BEHIND_LAYER)
+	//	affected_human.remove_overlay(BODY_FRONT_LAYER)
 	affected_human.regenerate_icons()
 
 /obj/item/clothing/under/misc/latex_catsuit/dropped(mob/living/affected_mob)
@@ -82,9 +80,9 @@
 	breasts_overlay.icon_state = "none"
 	cut_overlay(breasts_icon_overlay)
 	breasts_icon_overlay.icon_state = "none"
-	if(affected_human.dna.species.mutant_bodyparts["taur"] && src == affected_human.w_uniform)
-		affected_human.apply_overlay(BODY_BEHIND_LAYER)
-		affected_human.apply_overlay(BODY_FRONT_LAYER)
+	//if(affected_human.dna.species.mutant_bodyparts["taur"] && src == affected_human.w_uniform)
+	//	affected_human.apply_overlay(BODY_BEHIND_LAYER)
+	//	affected_human.apply_overlay(BODY_FRONT_LAYER)
 
 //Plug to bypass the bug with instant suit equip/drop
 /obj/item/clothing/under/misc/latex_catsuit/MouseDrop(atom/over_object)
