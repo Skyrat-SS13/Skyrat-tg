@@ -27,7 +27,8 @@
 	name = "Battered Sausage"
 	reqs = list(
 		/datum/reagent/consumable/beerbatter = 5,
-		/obj/item/food/sausage = 1,
+		/obj/item/food/raw_meatball = 1,
+		/obj/item/food/meat/rawcutlet = 2
 	)
 	result = /obj/item/food/sausage/battered
 	category = CAT_MISCFOOD
