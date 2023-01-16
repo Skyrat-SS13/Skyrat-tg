@@ -68,7 +68,6 @@
 
 /obj/item/clothing/under/misc/latex_catsuit/dropped(mob/living/affected_mob)
 	. = ..()
-	var/mob/living/carbon/human/affected_human = affected_mob
 	accessory_overlay = null
 	breasts_overlay.icon_state = "none"
 	cut_overlay(breasts_icon_overlay)
