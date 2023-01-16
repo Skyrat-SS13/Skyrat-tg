@@ -31,7 +31,7 @@
 	desc = "A raw sausage coated in thick beer batter."
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "batteredsausage"
-	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 5,/datum/reagent/consumable/nutriment/vitamin = 2, /datum/reagent/consumable/ethanol/beerbatter = 5)
+	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 5, /datum/reagent/consumable/nutriment/vitamin = 2, /datum/reagent/consumable/ethanol/beerbatter = 5)
 	
 /obj/item/food/raw_sausage/battered/make_grillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/sausage/battered, rand(60 SECONDS, 75 SECONDS), TRUE)
