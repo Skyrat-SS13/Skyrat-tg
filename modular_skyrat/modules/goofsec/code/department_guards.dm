@@ -770,6 +770,13 @@
 	cost = CARGO_CRATE_VALUE * 2
 	access_view = ACCESS_SECURITY
 	contains = list(/obj/item/melee/baton/security/loaded/departmental/science)
+
+/datum/supply_pack/misc/baton_cargo
+	name = "Cargo Baton Crate"
+	desc = "Contains an extra baton for Customs Agents. Requires Security access to open."
+	cost = CARGO_CRATE_VALUE * 2
+	access_view = ACCESS_SECURITY
+	contains = list(/obj/item/melee/baton/security/loaded/departmental/cargo)
 /*
 * Garment Bags
 */
