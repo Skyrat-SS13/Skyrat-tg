@@ -745,7 +745,7 @@
 
 /datum/supply_pack/service/baton_service
 	name = "Service Baton Crate"
-	desc = "Contains an extra baton for Bouncers. Requires Security access to open."
+	desc = "Contains an extra baton for Service Guards. Requires Security access to open."
 	cost = CARGO_CRATE_VALUE * 2
 	access_view = ACCESS_SECURITY
 	contains = list(/obj/item/melee/baton/security/loaded/departmental/service)
