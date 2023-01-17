@@ -1,7 +1,7 @@
 /obj/machinery/vending/dorms
 	name = "LustWish"
 	desc = "A vending machine with various toys. Not for the faint of heart."
-	icon_state = "lustwish_pink"
+	icon_state = "lustwish"
 	base_icon_state = "lustwish"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/lustwish.dmi'
 	light_mask = "lustwish-light-mask"
