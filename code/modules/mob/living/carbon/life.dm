@@ -376,7 +376,7 @@
 			return
 		for(var/obj/item/organ/internal/organ as anything in internal_organs)
 			// On-death is where organ decay is handled
-			organ.on_death(delta_time, times_fired)
+			organ?.on_death(delta_time, times_fired) // organ can be null due to reagent metabolization causing organ shuffling
 			// We need to re-check the stat every organ, as one of our others may have revived us
 			if(stat != DEAD)
 				break
@@ -712,7 +712,7 @@
 /mob/living/carbon/proc/needs_heart()
 	if(HAS_TRAIT(src, TRAIT_STABLEHEART))
 		return FALSE
-	if(dna && dna.species && (NOBLOOD in dna.species.species_traits)) //not all carbons have species!
+	if(dna && dna.species && HAS_TRAIT(src, TRAIT_NOBLOOD)) //not all carbons have species!
 		return FALSE
 	return TRUE
 
