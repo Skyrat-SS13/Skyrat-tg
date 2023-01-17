@@ -2,9 +2,11 @@
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
-		NOBLOOD,
 		HAIR,
 		FACEHAIR,
+	)
+	inherent_traits = list(
+		TRAIT_NOBLOOD
 	)
 	default_mutant_bodyparts = list(
 		"tail" = "None",
