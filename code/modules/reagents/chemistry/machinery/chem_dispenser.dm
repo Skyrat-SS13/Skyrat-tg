@@ -566,24 +566,22 @@
 		/datum/reagent/consumable/tomatojuice,
 		/datum/reagent/consumable/tonic,
 		/datum/reagent/water,
-	)
+
 	//SKYRAT EDIT ADDITION BEGIN - Skyrat-SS13/Skyrat-tg#2429
-	upgrade_reagents = list(
 		/datum/reagent/consumable/applejuice,
-		/datum/reagent/consumable/pumpkinjuice,
-		/datum/reagent/consumable/vanilla
-	)
-	upgrade_reagents2 = list(
 		/datum/reagent/consumable/banana,
 		/datum/reagent/consumable/berryjuice,
-		/datum/reagent/consumable/blumpkinjuice
-	)
-	upgrade_reagents3 = list(
-		/datum/reagent/consumable/watermelonjuice,
+		/datum/reagent/consumable/blumpkinjuice,
 		/datum/reagent/consumable/peachjuice,
-		/datum/reagent/consumable/sol_dry
-	)
+		/datum/reagent/consumable/pumpkinjuice,
+		/datum/reagent/consumable/sol_dry,
+		/datum/reagent/consumable/vanilla,
+		/datum/reagent/consumable/watermelonjuice
 	//SKYRAT EDIT ADDITION END
+	)
+	upgrade_reagents = null
+	upgrade_reagents2 = null //SKYRAT EDIT
+	upgrade_reagents3 = null //SKYRAT EDIT
 	emagged_reagents = list(
 		/datum/reagent/consumable/ethanol/thirteenloko,
 		/datum/reagent/consumable/ethanol/whiskey_cola,
