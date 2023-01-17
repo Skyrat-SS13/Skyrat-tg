@@ -738,9 +738,11 @@
 
 /datum/supply_pack/security/baton_prison
 	name = "Prison Baton Crate"
-	desc = "Contains an extra baton for Corrections Officers. Just in case you hated the idea of a normal baton in their hands."
+	desc = "Contains an extra baton for Corrections Officers. \
+		Just in case you hated the idea of a normal baton in their hands."
 	cost = CARGO_CRATE_VALUE * 2
 	access_view = ACCESS_SECURITY
+	access = ACCESS_SECURITY
 	contains = list(/obj/item/melee/baton/security/loaded/departmental/prison)
 
 /datum/supply_pack/service/baton_service
@@ -748,6 +750,7 @@
 	desc = "Contains an extra baton for Service Guards."
 	cost = CARGO_CRATE_VALUE * 2
 	access_view = ACCESS_SECURITY
+	access = ACCESS_SECURITY
 	contains = list(/obj/item/melee/baton/security/loaded/departmental/service)
 
 /datum/supply_pack/medical/baton_medical
@@ -755,6 +758,7 @@
 	desc = "Contains an extra baton for Orderlies."
 	cost = CARGO_CRATE_VALUE * 2
 	access_view = ACCESS_SECURITY
+	access = ACCESS_SECURITY
 	contains = list(/obj/item/melee/baton/security/loaded/departmental/medical)
 
 /datum/supply_pack/engineering/baton_engineering
@@ -762,6 +766,7 @@
 	desc = "Contains an extra baton for Engineering Guards."
 	cost = CARGO_CRATE_VALUE * 2
 	access_view = ACCESS_SECURITY
+	access = ACCESS_SECURITY
 	contains = list(/obj/item/melee/baton/security/loaded/departmental/engineering)
 
 /datum/supply_pack/science/baton_science
@@ -769,6 +774,7 @@
 	desc = "Contains an extra baton for Science Guards."
 	cost = CARGO_CRATE_VALUE * 2
 	access_view = ACCESS_SECURITY
+	access = ACCESS_SECURITY
 	contains = list(/obj/item/melee/baton/security/loaded/departmental/science)
 
 /datum/supply_pack/misc/baton_cargo
@@ -776,6 +782,7 @@
 	desc = "Contains an extra baton for Customs Agents."
 	cost = CARGO_CRATE_VALUE * 2
 	access_view = ACCESS_SECURITY
+	access = ACCESS_SECURITY
 	contains = list(/obj/item/melee/baton/security/loaded/departmental/cargo)
 /*
 * Garment Bags
