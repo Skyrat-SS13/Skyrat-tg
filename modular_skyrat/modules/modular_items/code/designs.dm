@@ -46,7 +46,7 @@
 	materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/gold = 350)
 	build_path = /obj/item/clothing/glasses/hud/ar/aviator/meson
 	category = list(
-		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_ENGINEERING + RND_SUBCATEGORY_EQUIPMENT_CARGO
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_ENGINEERING
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING
 
@@ -106,7 +106,7 @@
 	materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/silver = 350)
 	build_path = /obj/item/clothing/glasses/hud/ar/projector/meson
 	category = list(
-		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_ENGINEERING + RND_SUBCATEGORY_EQUIPMENT_CARGO
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_ENGINEERING
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING
 

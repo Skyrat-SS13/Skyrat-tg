@@ -75,7 +75,6 @@
 #define RND_CATEGORY_EQUIPMENT "/Equipment"
 #define RND_SUBCATEGORY_EQUIPMENT_SERVICE "/Service Equipment"
 #define RND_SUBCATEGORY_EQUIPMENT_JOKE "/Top-Secret Equipment"
-#define RND_SUBCATEGORY_EQUIPMENT_CARGO "/Cargo and Mining Equipment" // SkyRat Edit - why was this not here before?
 #define RND_SUBCATEGORY_EQUIPMENT_CHEMISTRY "/Chemistry Equipment"
 #define RND_SUBCATEGORY_EQUIPMENT_MEDICAL "/Medical Equipment"
 #define RND_SUBCATEGORY_EQUIPMENT_SECURITY "/Security Equipment"

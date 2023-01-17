@@ -393,7 +393,6 @@
 	description = "What makes us tick." //the MC, silly!
 	prereq_ids = list("base")
 	design_ids = list(
-
 		"beer_dispenser",
 		"blood_pack",
 		"chem_dispenser",
@@ -415,7 +414,6 @@
 		"medipen_refiller",
 		"pandemic",
 		"soda_dispenser",
-
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	required_experiments = list(/datum/experiment/dissection/human)
