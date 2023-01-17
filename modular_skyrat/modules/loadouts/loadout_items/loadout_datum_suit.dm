@@ -276,6 +276,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Recolorable Apron"
 	item_path = /obj/item/clothing/suit/apron/chef/colorable_apron
 
+/datum/loadout_item/suit/recolorable_overalls
+	name = "Recolorable Overalls"
+	item_path = /obj/item/clothing/suit/apron/overalls/greyscale
+
 /datum/loadout_item/suit/denim_overalls
 	name = "Denim Overalls"
 	item_path = /obj/item/clothing/suit/apron/overalls
