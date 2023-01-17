@@ -1,3 +1,7 @@
+/**
+* This file holds the list of various dance procs run by the rave cube.
+* When you add a new dance, put it in this first dance() proc, adding to the rand and switch
+*/
 /obj/machinery/rave_cube/proc/dance(mob/living/peep) //Show your moves
 	set waitfor = FALSE
 	switch(rand(1, 3))

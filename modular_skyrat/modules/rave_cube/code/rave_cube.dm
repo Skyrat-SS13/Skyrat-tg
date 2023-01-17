@@ -1,5 +1,9 @@
 #define RAVE_LIGHT_RANGE (rand(85, 115)*0.01)
 
+/**
+* This file holds the rave cube object and its functional procs.
+* You don't need to touch any of this to modify dances, those are stored in rave_dances.dm
+*/
 /obj/machinery/rave_cube
 	name = "rave cube"
 	desc = "Party in a box! With bright lights and dazzling sparkles, dance the night away to your Neko Nation Anthem! Drugs not included."

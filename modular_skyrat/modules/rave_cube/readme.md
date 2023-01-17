@@ -15,6 +15,7 @@ RAVE_LIGHT_RANGE
 ### Included files:
 
 rave_cube.dm
+rave_dances.dm
 rave_cube.dmi
 
 ### Credits:
