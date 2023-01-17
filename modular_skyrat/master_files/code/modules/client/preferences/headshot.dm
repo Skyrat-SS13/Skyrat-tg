@@ -33,7 +33,7 @@
 		return
 
 	find_index = findtext(value, link_regex)
-	if(find_index != 7)
+	if(find_index != 9)
 		to_chat(usr, span_warning("The image must be hosted on one of the following sites: 'Gyazo, Discord, Imjur'"))
 		return
 
