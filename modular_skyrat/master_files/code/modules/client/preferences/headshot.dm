@@ -18,7 +18,7 @@
 
 	var/find_index = findtext(value, "https://")
 	if(find_index != 1)
-		to_chat(usr, span_warning("Your link must be https!")
+		to_chat(usr, span_warning("Your link must be https!"))
 		return
 
 	if(!findtext(value, "."))
