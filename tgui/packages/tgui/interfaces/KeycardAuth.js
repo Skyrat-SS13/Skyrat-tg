@@ -44,18 +44,21 @@ export const KeycardAuth = (props, context) => {
                       onClick={() => act('emergency_maint')}
                       content="Emergency Maintenance Access"
                     />
+                    {/* SKYRAT EDIT ADDITION START */}
                     <Button
                       icon="id-card-o"
                       fluid
                       onClick={() => act('eng_override')}
                       content="Engineering Override Access"
                     />
+                    {/* SKYRAT EDIT ADDITION END */}
                     <Button
                       icon="meteor"
                       fluid
                       onClick={() => act('bsa_unlock')}
                       content="Bluespace Artillery Unlock"
                     />
+                    {/* SKYRAT EDIT ADDITION START */}
                     {!!data.permit_pins && (
                       <Button
                         icon="key"
@@ -64,6 +67,7 @@ export const KeycardAuth = (props, context) => {
                         content="Permit-Locked Firing Pin Unrestriction"
                       />
                     )}
+                    {/* SKYRAT EDIT ADDITION EMD */}
                   </>
                 )}
               </>

@@ -235,11 +235,11 @@ const PageMain = (props, context) => {
     canSendToSectors,
     canSetAlertLevel,
     canToggleEmergencyAccess,
-    canToggleEngineeringOverride,
+    canToggleEngineeringOverride, // SKYRAT EDIT - Engineering Override
     emagged,
     syndicate,
     emergencyAccess,
-    engineeringOverride,
+    engineeringOverride, // SKYRAT EDIT - Engineering Override
     importantActionReady,
     sectors,
     shuttleCalled,
@@ -392,6 +392,7 @@ const PageMain = (props, context) => {
               onClick={() => act('toggleEmergencyAccess')}
             />
           )}
+          {/* SKYRAT EDIT ADDITION START */}
           {!!canToggleEngineeringOverride && (
             <Button.Confirm
               icon="id-card-o"
@@ -402,6 +403,7 @@ const PageMain = (props, context) => {
               onClick={() => act('toggleEngOverride')}
             />
           )}
+          {/* SKYRAT EDIT ADDITION END */}
           {!syndicate && (
             <Button
               icon="desktop"
