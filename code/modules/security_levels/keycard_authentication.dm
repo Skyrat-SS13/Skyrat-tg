@@ -4,7 +4,7 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 #define KEYCARD_EMERGENCY_MAINTENANCE_ACCESS "Emergency Maintenance Access"
 #define KEYCARD_BSA_UNLOCK "Bluespace Artillery Unlock"
 #define KEYCARD_PIN_UNRESTRICT "Unrestrict Permit Firing Pins" //SKYRAT EDIT
-#define KEYCARD_ENG_OVERRIDE "Engineering Door Override" //SKYRAT EDIT
+#define KEYCARD_ENG_OVERRIDE "Engineering Override Access" //SKYRAT EDIT
 
 /obj/machinery/keycard_auth
 	name = "Keycard Authentication Device"
