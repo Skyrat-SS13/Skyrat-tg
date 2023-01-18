@@ -279,7 +279,8 @@
 			calibrating = FALSE
 			is_calibrated = TRUE
 
-			linked_mob.save_individual_persistence()
+			if(!linked_mob.save_individual_persistence())
+				stack_trace("persistence was not saved for [linked_mob]!")
 
 ///Installs the loaded_nifsoft to the parent NIF.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/install_nifsoft(datum/nifsoft/loaded_nifsoft)

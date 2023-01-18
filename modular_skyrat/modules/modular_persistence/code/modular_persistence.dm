@@ -29,7 +29,7 @@ GLOBAL_LIST_INIT(modular_persistence_ignored_vars, list(
 	for(var/mob/living/carbon/human/player in GLOB.human_list)
 		player.save_individual_persistence()
 
-/// Saves the contents of the modular persistence datum for the player's client to their file.
+/// Loads the contents of the player's modular_persistence file to their character.
 /datum/controller/subsystem/persistence/proc/load_modular_persistence(mob/living/carbon/human/player)
 	if(!ishuman(player))
 		return FALSE
