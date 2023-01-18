@@ -83,7 +83,10 @@
 	desc = "A kiri fruit baked in an oven, causing the jelly inside to caramelize into a jelly donut-like crispy treat. Try not to get addicted."
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "baked_kiri"
-	food_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/kiri_jelly = 6)
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 6, 
+		/datum/reagent/consumable/kiri_jelly = 6
+	)
 	burns_in_oven = TRUE
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("crispy sweetness" = 1, "caramelized jelly" = 1)
@@ -94,7 +97,11 @@
 	desc = "A muli pod baked in an oven, causing the minty liquid inside to condense and the exterior to soften, giving the vegetable a hard-boiled egg consistency. Remarkably tasty and healthy!"
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "baked_muli"
-	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 4, /datum/reagent/consumable/muli_juice = 4)
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 4, 
+		/datum/reagent/consumable/nutriment/vitamin = 4, 
+		/datum/reagent/consumable/muli_juice = 4
+	)
 	burns_in_oven = TRUE
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("zesty mintyness" = 1)
@@ -105,7 +112,10 @@
 	desc = "A segment of meat seasoned with nakati spice and dehydrated. Makes for a tasty, chewy snack."
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "spiced_jerky"
-	food_reagents = list(/datum/reagent/consumable/nutriment = 8, /datum/reagent/consumable/nutriment/protein = 6)
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 8, 
+		/datum/reagent/consumable/nutriment/protein = 6
+	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("tough, spicy jerky" = 1)
 	foodtypes = MEAT
@@ -115,7 +125,11 @@
 	desc = "Meat and cabbage seasoned with nakati spice and wrapped tightly in flattened piru bread. Simple, light, delicious."
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "sirisai_wrap"
-	food_reagents = list(/datum/reagent/consumable/nutriment = 8, /datum/reagent/consumable/nutriment/protein = 6, /datum/reagent/consumable/nutriment/vitamin = 6)
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 8, 
+		/datum/reagent/consumable/nutriment/protein = 6, 
+		/datum/reagent/consumable/nutriment/vitamin = 6
+	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("cooked cabbage" = 1, "spiced meat" = 1, "minty piru bread" = 1)
 	foodtypes = MEAT | VEGETABLES
@@ -126,7 +140,12 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "sweet_piru_noodles"
 	trash_type = /obj/item/reagent_containers/cup/bowl
-	food_reagents = list(/datum/reagent/consumable/nutriment = 8, /datum/reagent/consumable/kiri_jelly = 4, /datum/reagent/consumable/muli_juice = 4, /datum/reagent/consumable/nutriment/vitamin = 4)
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 8, 
+		/datum/reagent/consumable/kiri_jelly = 4, 
+		/datum/reagent/consumable/muli_juice = 4, 
+		/datum/reagent/consumable/nutriment/vitamin = 4
+	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("minty piru noodles" = 1, "minty muli juice" = 1, "sugary kiri jelly" = 1, "baked carrots" = 1)
 	foodtypes = VEGETABLES | FRUIT | SUGAR
@@ -137,7 +156,12 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "kiri_curry"
 	trash_type = /obj/item/reagent_containers/cup/bowl
-	food_reagents = list(/datum/reagent/consumable/nutriment = 8, /datum/reagent/consumable/nutriment/protein = 4, /datum/reagent/consumable/kiri_jelly = 6, /datum/reagent/consumable/nutriment/vitamin = 4)
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 8, 
+		/datum/reagent/consumable/nutriment/protein = 4, 
+		/datum/reagent/consumable/kiri_jelly = 6, 
+		/datum/reagent/consumable/nutriment/vitamin = 4
+	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("heavily seasoned meat" = 1, "sweetened minty piru noodles" = 1, "zesty chilis" = 1)
 	foodtypes = VEGETABLES | FRUIT | SUGAR | MEAT
@@ -147,7 +171,12 @@
 	desc = "Piru flatbread grilled until crispy and topped with meat, chopped muli pods, and tomato sauce. Looks similar to a pizza, but way more purple and blue. Can be sliced!"
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "sirisai_flatbread"
-	food_reagents = list(/datum/reagent/consumable/nutriment = 24, /datum/reagent/consumable/nutriment/protein = 16, /datum/reagent/consumable/muli_juice = 12, /datum/reagent/consumable/nutriment/vitamin = 16)
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 24, 
+		/datum/reagent/consumable/nutriment/protein = 16, 
+		/datum/reagent/consumable/muli_juice = 12, 
+		/datum/reagent/consumable/nutriment/vitamin = 16
+	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("crispy minty flatbread" = 1, "minty muli pods" = 1, "tomato sauce" = 1, "tangy spice" = 1, "baked meat" = 1)
 	foodtypes = VEGETABLES | MEAT
@@ -160,7 +189,12 @@
 	desc = "A slice of piru flatbread grilled until crispy and topped with meat, chopped muli pods, and tomato sauce. Looks similar to a slice of pizza, but way more purple and blue."
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "sirisai_flatbread_slice"
-	food_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/nutriment/protein = 4, /datum/reagent/consumable/muli_juice = 3, /datum/reagent/consumable/nutriment/vitamin = 4)
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 6, 
+		/datum/reagent/consumable/nutriment/protein = 4, 
+		/datum/reagent/consumable/muli_juice = 3, 
+		/datum/reagent/consumable/nutriment/vitamin = 4
+	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("crispy minty flatbread" = 1, "minty muli pods" = 1, "tomato sauce" = 1, "tangy spice" = 1, "baked meat" = 1)
 	foodtypes = VEGETABLES | MEAT
@@ -170,7 +204,10 @@
 	desc = "A spiced cracker made of flattened, dried piru bread. The name comes from the blue stain often left on feathers when eaten with muli dip."
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "bluefeather_crisp"
-	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 2)
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 4, 
+		/datum/reagent/consumable/nutriment/vitamin = 2
+	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("chewy crackers" = 1, "zesty spice" = 1, "pleasant mintyness" = 1)
 	foodtypes = VEGETABLES
@@ -180,7 +217,11 @@
 	desc = "Bluefeather crisp crackers, now with dip made of muli juice and tomatoes. The name comes from the blue stain often left on feathers when dripped onto them."
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "bluefeather_crisps_and_dip"
-	food_reagents = list(/datum/reagent/consumable/nutriment = 12, /datum/reagent/consumable/muli_juice = 8, /datum/reagent/consumable/nutriment/vitamin = 6)
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 12, 
+		/datum/reagent/consumable/muli_juice = 8, 
+		/datum/reagent/consumable/nutriment/vitamin = 6
+	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("chewy crackers" = 1, "tangy dip" = 1, "pleasant mintyness" = 1)
 	foodtypes = VEGETABLES
@@ -191,7 +232,12 @@
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "stewed_muli"
 	trash_type = /obj/item/reagent_containers/cup/bowl
-	food_reagents = list(/datum/reagent/consumable/nutriment = 10, /datum/reagent/consumable/nutriment/protein = 8, /datum/reagent/consumable/nutriment/vitamin = 6, /datum/reagent/consumable/muli_juice = 6)
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 10, 
+		/datum/reagent/consumable/nutriment/protein = 8, 
+		/datum/reagent/consumable/nutriment/vitamin = 6, 
+		/datum/reagent/consumable/muli_juice = 6
+	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("hearty spiced meat" = 1, "baked carrots" = 1, "baked cabbage" = 1, "minty broth" = 1)
 	foodtypes = VEGETABLES | MEAT
@@ -201,7 +247,12 @@
 	desc = "A cooked muli pod, now stuffed with meat, minced kiri fruit, and chili. Chewy sweet and spicy all in one!"
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "stuffed_muli_pod"
-	food_reagents = list(/datum/reagent/consumable/nutriment = 8, /datum/reagent/consumable/nutriment/protein = 4, /datum/reagent/consumable/nutriment/vitamin = 4, /datum/reagent/consumable/muli_juice = 4)
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 8, 
+		/datum/reagent/consumable/nutriment/protein = 4, 
+		/datum/reagent/consumable/nutriment/vitamin = 4, 
+		/datum/reagent/consumable/muli_juice = 4
+	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("spiced meat" = 1, "minty muli pod" = 1, "super-sweet kiri fruit" = 1, "chili" = 1)
 	foodtypes = VEGETABLES | FRUIT | MEAT | SUGAR
@@ -211,7 +262,10 @@
 	desc = "A toasted slice of piru bread with a generous slathering of thick caramel and sweet kiri jelly. Is this supposed to be breakfast or desert?"
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "caramel_jelly_toast"
-	food_reagents = list(/datum/reagent/consumable/nutriment = 8, /datum/reagent/consumable/nutriment/vitamin = 6)
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 8, 
+		/datum/reagent/consumable/nutriment/vitamin = 6
+	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("minty piru bread" = 1, "sweet caramel" = 1, "super-sweet kiri jelly" = 1)
 	foodtypes = VEGETABLES | FRUIT | SUGAR
@@ -221,7 +275,11 @@
 	desc = "A piece of piru bread puffed and rolled into a thick disk, containing a kiri jelly and cream filling and sprinkled with piru flour. Just one will never be enough."
 	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
 	icon_state = "kiri_jellypuff"
-	food_reagents = list(/datum/reagent/consumable/nutriment = 8, /datum/reagent/consumable/nutriment/vitamin = 6, /datum/reagent/consumable/kiri_jelly = 4)
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 8, 
+		/datum/reagent/consumable/nutriment/vitamin = 6, 
+		/datum/reagent/consumable/kiri_jelly = 4
+	)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("puffed minty piru bread" = 1, "rich cream" = 1, "super-sweet kiri jelly" = 1)
 	foodtypes = VEGETABLES | FRUIT | SUGAR
