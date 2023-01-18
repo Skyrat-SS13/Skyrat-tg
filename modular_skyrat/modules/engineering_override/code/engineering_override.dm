@@ -1,6 +1,5 @@
 // This module sets airlocks in certain areas to be able to have an Engineer Override on orange alert.
 // Crew with ID cards with the engineering flag will be able to access these areas during those times.
-#define COMSIG_GLOB_FORCE_ENG_OVERRIDE "force_engineering_override"
 
 /area
 	/// Is this area eligible for engineer override?
