@@ -99,16 +99,16 @@
 	return ..()
 
 // When the signal is received of a changed security level, check if it's orange.
-/obj/machinery/door/airlock/check_security_level(datum/source, new_level)
+/obj/machinery/door/airlock/check_security_level(datum/source, level)
 	. = ..()
 	var/area/source_area = get_area(src)
 	if(!source_area.engineering_override_eligible)
 		return
 
-	if(new_level != SEC_LEVEL_ORANGE && engineering_override)
+	if(level != SEC_LEVEL_ORANGE && GLOB.force_eng_override)
 		return
 
-	if(new_level == SEC_LEVEL_ORANGE)
+	if(level == SEC_LEVEL_ORANGE)
 		engineering_override = TRUE
 		normalspeed = FALSE
 		update_appearance()
@@ -131,8 +131,12 @@ GLOBAL_VAR_INIT(force_eng_override, FALSE)
 	else
 		GLOB.force_eng_override = FALSE
 		minor_announce("Expanded engineering access has been disabled.", "Engineering Emergency")
-		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FORCE_ENG_OVERRIDE, FALSE)
+		var/level = SSsecurity_level.get_current_level_as_number()
+		message_admins("sec level is [sec_level]")
 		SSblackbox.record_feedback("nested tally", "keycard_auths", 1, list("engineer override access", "disabled"))
+		if(level == SEC_LEVEL_ORANGE)
+			return
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FORCE_ENG_OVERRIDE, FALSE)
 		return
 
 /obj/machinery/door/airlock/proc/force_eng_override(datum/source, status)
