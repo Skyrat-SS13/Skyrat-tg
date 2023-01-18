@@ -4,6 +4,7 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 #define KEYCARD_EMERGENCY_MAINTENANCE_ACCESS "Emergency Maintenance Access"
 #define KEYCARD_BSA_UNLOCK "Bluespace Artillery Unlock"
 #define KEYCARD_PIN_UNRESTRICT "Unrestrict Permit Firing Pins" //SKYRAT EDIT
+#define KEYCARD_ENG_OVERRIDE "Engineering Door Override" //SKYRAT EDIT
 
 /obj/machinery/keycard_auth
 	name = "Keycard Authentication Device"
@@ -48,6 +49,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/keycard_auth, 26)
 	data["emergency_maint"] = GLOB.emergency_access
 	data["bsa_unlock"] = GLOB.bsa_unlock
 	data["permit_pins"] = (CONFIG_GET(flag/permit_pins) ? TRUE : FALSE) //SKYRAT EDIT
+	data["eng_override"] = GLOB.force_eng_override //SKYRAT EDIT
 	return data
 
 /obj/machinery/keycard_auth/ui_status(mob/user)
@@ -89,6 +91,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/keycard_auth, 26)
 		if("pin_unrestrict")
 			if(!event_source)
 				sendEvent(KEYCARD_PIN_UNRESTRICT)
+				. = TRUE
+		if("eng_override")
+			if(!event_source)
+				sendEvent(KEYCARD_ENG_OVERRIDE)
 				. = TRUE
 		//SKYRAT EDIT END
 
@@ -147,6 +153,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/keycard_auth, 26)
 		//SKYRAT EDIT START
 		if(KEYCARD_PIN_UNRESTRICT)
 			toggle_permit_pins()
+		if(KEYCARD_ENG_OVERRIDE)
+			toggle_eng_override()
 		//SKYRAT EDIT END
 
 GLOBAL_VAR_INIT(emergency_access, FALSE)
@@ -179,3 +187,4 @@ GLOBAL_VAR_INIT(emergency_access, FALSE)
 #undef KEYCARD_EMERGENCY_MAINTENANCE_ACCESS
 #undef KEYCARD_BSA_UNLOCK
 #undef KEYCARD_PIN_UNRESTRICT //SKYRAT EDIT
+#undef KEYCARD_ENG_OVERRIDE //SKYRAT EDIT

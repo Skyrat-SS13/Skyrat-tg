@@ -1,5 +1,6 @@
 // This module sets airlocks in certain areas to be able to have an Engineer Override on orange alert.
 // Crew with ID cards with the engineering flag will be able to access these areas during those times.
+#define COMSIG_GLOB_FORCE_ENG_OVERRIDE "force_engineering_override"
 
 /area
 	/// Is this area eligible for engineer override?
@@ -67,6 +68,10 @@
 	/// Determines if engineers get access to this door on orange alert
 	var/engineering_override = FALSE
 
+/obj/machinery/door/airlock/Initialize(mapload)
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_FORCE_ENG_OVERRIDE, PROC_REF(force_eng_override))
+
 /// Announce the new expanded access when engineer override is enabled.
 /datum/controller/subsystem/security_level/announce_security_level(datum/security_level/selected_level)
 	..()
@@ -100,6 +105,9 @@
 	if(!source_area.engineering_override_eligible)
 		return
 
+	if(new_level != SEC_LEVEL_ORANGE && engineering_override)
+		return
+
 	if(new_level == SEC_LEVEL_ORANGE)
 		engineering_override = TRUE
 		normalspeed = FALSE
@@ -110,6 +118,33 @@
 	normalspeed = TRUE
 	update_appearance()
 	return
+
+// Manual override for when it's not orange alert.
+GLOBAL_VAR_INIT(force_eng_override, FALSE)
+/proc/toggle_eng_override()
+	if(!GLOB.force_eng_override)
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FORCE_ENG_OVERRIDE, TRUE)
+
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FORCE_ENG_OVERRIDE, FALSE)
+	return
+
+/obj/machinery/door/airlock/proc/force_eng_override(datum/source, status)
+	SIGNAL_HANDLER
+
+	if(!status)
+		engineering_override = FALSE
+		normalspeed = TRUE
+		update_appearance()
+		return
+	var/area/source_area = get_area(src)
+	if(!source_area.engineering_override_eligible)
+		return
+
+	engineering_override = TRUE
+	normalspeed = FALSE
+	update_appearance()
+	return
+
 
 // Pulse to disable emergency access/engineering override and flash the red lights.
 /datum/wires/airlock/on_pulse(wire)
