@@ -235,9 +235,11 @@ const PageMain = (props, context) => {
     canSendToSectors,
     canSetAlertLevel,
     canToggleEmergencyAccess,
+    canToggleEngineeringOverride,
     emagged,
     syndicate,
     emergencyAccess,
+    engineeringOverride,
     importantActionReady,
     sectors,
     shuttleCalled,
@@ -382,7 +384,7 @@ const PageMain = (props, context) => {
           )}
           {!!canToggleEmergencyAccess && (
             <Button.Confirm
-              icon="id-card-o"
+              icon="wrench"
               content={`${
                 emergencyAccess ? 'Disable' : 'Enable'
               } Emergency Maintenance Access`}
@@ -390,7 +392,16 @@ const PageMain = (props, context) => {
               onClick={() => act('toggleEmergencyAccess')}
             />
           )}
-
+          {!!canToggleEngineeringOverride && (
+            <Button.Confirm
+              icon="id-card-o"
+              content={`${
+                engineeringOverride ? 'Disable' : 'Enable'
+              } Engineering Override Access`}
+              color={engineeringOverride ? 'bad' : undefined}
+              onClick={() => act('toggleEngOverride')}
+            />
+          )}
           {!syndicate && (
             <Button
               icon="desktop"

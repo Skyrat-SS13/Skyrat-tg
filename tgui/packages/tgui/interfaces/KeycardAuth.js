@@ -39,22 +39,22 @@ export const KeycardAuth = (props, context) => {
                       content="Red Alert"
                     />
                     <Button
-                      icon="key"
+                      icon="wrench"
                       fluid
                       onClick={() => act('emergency_maint')}
                       content="Emergency Maintenance Access"
+                    />
+                    <Button
+                      icon="id-card-o"
+                      fluid
+                      onClick={() => act('eng_override')}
+                      content="Engineering Override Access"
                     />
                     <Button
                       icon="meteor"
                       fluid
                       onClick={() => act('bsa_unlock')}
                       content="Bluespace Artillery Unlock"
-                    />
-                    <Button
-                      icon="wrench"
-                      fluid
-                      onClick={() => act('eng_override')}
-                      content="Airlock Engineering Override"
                     />
                     {!!data.permit_pins && (
                       <Button
