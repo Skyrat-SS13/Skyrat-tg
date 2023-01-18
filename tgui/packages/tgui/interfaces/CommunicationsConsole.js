@@ -384,7 +384,7 @@ const PageMain = (props, context) => {
           )}
           {!!canToggleEmergencyAccess && (
             <Button.Confirm
-              icon="wrench"
+              icon="wrench" // SKYRAT EDIT
               content={`${
                 emergencyAccess ? 'Disable' : 'Enable'
               } Emergency Maintenance Access`}
