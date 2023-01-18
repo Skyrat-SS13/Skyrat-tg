@@ -76,7 +76,7 @@
 		return FALSE
 
 	if(active_mode)
-		installed_nif.balloon_alert(installed_nif.linked_mob, "The [src.name] is now running")
+		installed_nif.balloon_alert(installed_nif.linked_mob, "[src.name] is now running")
 		installed_nif.power_usage += active_cost
 		active = TRUE
 

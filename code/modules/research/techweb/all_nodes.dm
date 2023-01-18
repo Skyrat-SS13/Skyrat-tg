@@ -1279,6 +1279,7 @@
 		"meson_hud_projector",
 		"science_hud_projector",
 		"permit_glasses",
+		"nifsoft_money_sense",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)

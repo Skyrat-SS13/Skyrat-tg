@@ -3,7 +3,7 @@
 	loaded_nifsoft = /datum/nifsoft/money_sense
 
 /datum/nifsoft/money_sense
-	name = "Automatic Appraisal" //Placeholder name until I figure out something cooler
+	name = "Automatic Appraisal"
 	program_desc = "Connects the user's brain to a database containing the current monetary values for most items, allowing them to determine their value in realtime"
 	active_mode = TRUE
 	active_cost = 0.5

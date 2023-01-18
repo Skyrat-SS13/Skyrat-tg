@@ -53,16 +53,6 @@
 	icon_state = "nifsoft_remover_syndie"
 	create_disk = TRUE
 
-/datum/design/nifsoft_remover
-	name = "Lopland 'Wrangler' NIF-Cutter"
-	desc = "A small device that lets the user remove NIFSofts from a NIF user"
-	id = "nifsoft_remover"
-	build_type = PROTOLATHE | AWAY_LATHE
-	build_path = /obj/item/nifsoft_remover
-	materials = list(/datum/material/iron = 200, /datum/material/silver = 500, /datum/material/uranium = 500)
-	category = list(RND_CATEGORY_EQUIPMENT)
-	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
-
 /datum/uplink_item/device_tools/nifsoft_remover
 	name = "Cybersun 'Scalpel' NIF-Cutter"
 	desc = "A modified version of a NIFSoft remover that allows the user to remove a NIFSoft and have a blank copy of the removed NIFSoft saved to a disk."
