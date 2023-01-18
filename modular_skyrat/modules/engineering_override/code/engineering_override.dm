@@ -146,7 +146,7 @@ GLOBAL_VAR_INIT(force_eng_override, FALSE)
 		normalspeed = TRUE
 		update_appearance()
 		return
-		
+
 	var/area/source_area = get_area(src)
 	if(!source_area.engineering_override_eligible)
 		return
@@ -154,7 +154,6 @@ GLOBAL_VAR_INIT(force_eng_override, FALSE)
 	engineering_override = TRUE
 	normalspeed = FALSE
 	update_appearance()
-	return
 
 
 // Pulse to disable emergency access/engineering override and flash the red lights.
