@@ -131,14 +131,11 @@
 	item_flags = NOBLUDGEON | ABSTRACT  // don't put in storage
 	slot_flags = NONE
 
-	var/obj/item/watertank/tank
-
 /obj/item/reagent_containers/spray/mister/Initialize(mapload)
 	. = ..()
-	tank = loc
-	if(!tank?.reagents)
+	if(!loc?.reagents)
 		return INITIALIZE_HINT_QDEL
-	reagents = tank.reagents //This mister is really just a proxy for the tank's reagents
+	reagents = loc.reagents //This mister is really just a proxy for the tank's reagents
 
 /obj/item/reagent_containers/spray/mister/Destroy(force)
 	tank = null
