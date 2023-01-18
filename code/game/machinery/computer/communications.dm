@@ -585,7 +585,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				data["canSendToSectors"] = FALSE
 				data["canSetAlertLevel"] = FALSE
 				data["canToggleEmergencyAccess"] = FALSE
-				data["canToggleEngineeringOverride"] = FALSE
+				data["canToggleEngineeringOverride"] = FALSE //SKYRAT EDIT - Engineering Override Toggle
 				data["importantActionReady"] = COOLDOWN_FINISHED(src, important_action_cooldown)
 				data["shuttleCalled"] = FALSE
 				data["shuttleLastCalled"] = FALSE
@@ -617,8 +617,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				if (authenticated_as_silicon_or_captain(user))
 					data["canToggleEmergencyAccess"] = TRUE
 					data["emergencyAccess"] = GLOB.emergency_access
-					data["canToggleEngineeringOverride"] = TRUE
-					data["engineeringOverride"] = GLOB.force_eng_override
+					data["canToggleEngineeringOverride"] = TRUE //SKYRAT EDIT - Engineering Override Toggle
+					data["engineeringOverride"] = GLOB.force_eng_override //SKYRAT EDIT - Engineering Override Toggle
 
 					data["alertLevelTick"] = alert_level_tick
 					data["canMakeAnnouncement"] = TRUE
