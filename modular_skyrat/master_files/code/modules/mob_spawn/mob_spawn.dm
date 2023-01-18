@@ -22,6 +22,9 @@
 	if(loadout_enabled)
 		spawned_human.equip_outfit_and_loadout(outfit, spawned_human.client.prefs)
 
+	if(!loadout_enabled)
+		equip(spawned_human)
+
 	return spawned_human
 
 /// This edit would cause somewhat ugly diffs, so I'm just replacing it.
