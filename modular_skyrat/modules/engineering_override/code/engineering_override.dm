@@ -123,10 +123,13 @@
 GLOBAL_VAR_INIT(force_eng_override, FALSE)
 /proc/toggle_eng_override()
 	if(!GLOB.force_eng_override)
+		GLOB.force_eng_override = TRUE
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FORCE_ENG_OVERRIDE, TRUE)
-
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FORCE_ENG_OVERRIDE, FALSE)
-	return
+		return
+	else
+		GLOB.force_eng_override = FALSE
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FORCE_ENG_OVERRIDE, FALSE)
+		return
 
 /obj/machinery/door/airlock/proc/force_eng_override(datum/source, status)
 	SIGNAL_HANDLER
