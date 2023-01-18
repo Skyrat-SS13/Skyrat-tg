@@ -2,7 +2,7 @@
 
 /datum/round_event/meteor_wave/New()
 	..()
-	start_when = rand(210,240)
+	start_when = rand(210, 240)
 	end_when = start_when + METEOR_WAVE_DURATION
 
 /datum/round_event/meteor_wave/announce(fake)
