@@ -23,7 +23,7 @@
 	initial_language_holder = /datum/language_holder/synthetic
 	bubble_icon = "machine"
 	speech_span = SPAN_ROBOT
-	faction = list("neutral", "silicon", "turret")
+	faction = list(FACTION_NEUTRAL, "silicon", "turret")
 	light_system = MOVABLE_LIGHT
 	light_range = 3
 	light_power = 0.9
@@ -213,6 +213,8 @@
 		return TRUE
 	if(!(bot_cover_flags & BOT_COVER_LOCKED)) // Unlocked.
 		return TRUE
+	if(!istype(user)) // Non-living mobs shouldn't be manipulating bots (like observes using the botkeeper UI).
+		return FALSE
 
 	var/obj/item/card/id/used_id = id || user.get_idcard(TRUE)
 
