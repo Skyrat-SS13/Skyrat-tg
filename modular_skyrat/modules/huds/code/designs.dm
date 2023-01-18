@@ -28,6 +28,18 @@
 	category = list(RND_CATEGORY_EQUIPMENT)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
+/datum/design/science_hud_prescription
+	name = "Prescription Science HUD"
+	desc = "These glasses scan the contents of containers and projects their contents to the user in an easy to read format. This one has a prescription lens."
+	id = "science_hud_prescription"
+	build_type = PROTOLATHE
+	materials = list(/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/gold = 350)
+	build_path = /obj/item/clothing/glasses/hud/science/prescription
+	category = list(
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_SCIENCE
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_MEDICAL
+
 /datum/design/mesons_prescription
 	name = "Prescription Optical Meson Scanners"
 	desc = "Used by engineering and mining staff to see basic structural and terrain layouts through walls, regardless of lighting condition. Prescription lens has been added into this design."

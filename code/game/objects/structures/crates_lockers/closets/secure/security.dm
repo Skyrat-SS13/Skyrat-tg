@@ -17,7 +17,7 @@
 	new /obj/item/radio/headset/heads/captain/alt(src)
 	new /obj/item/radio/headset/heads/captain(src)
 	new /obj/item/storage/belt/sabre(src)
-	new /obj/item/storage/box/gunset/pdh_captain(src) // SKYRAT EDIT ADDITION
+	new /obj/item/storage/box/gunset/pdh(src) // SKYRAT EDIT CHANGE - ORIGINAL: new /obj/item/gun/energy/e_gun(src)
 	new /obj/item/door_remote/captain(src)
 	new /obj/item/storage/photo_album/captain(src)
 
@@ -38,7 +38,7 @@
 	new /obj/item/storage/box/ids(src)
 	new /obj/item/megaphone/command(src)
 	new /obj/item/assembly/flash/handheld(src)
-	new /obj/item/storage/box/gunset/pdh(src) // SKYRAT EDIT ADDITION
+	new /obj/item/gun/energy/e_gun(src)
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/pet_carrier(src)
 	new /obj/item/door_remote/civilian(src)
