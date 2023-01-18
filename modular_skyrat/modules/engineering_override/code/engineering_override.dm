@@ -146,6 +146,7 @@ GLOBAL_VAR_INIT(force_eng_override, FALSE)
 		normalspeed = TRUE
 		update_appearance()
 		return
+		
 	var/area/source_area = get_area(src)
 	if(!source_area.engineering_override_eligible)
 		return
