@@ -8,7 +8,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 #define SPRITE_ACCESSORY_HIDE_SHOES (1<<2)
 
 /datum/sprite_accessory
-	///Unique key of an accessroy. All tails should have "tail", ears "ears" etc.
+	///Unique key of an accessory. All tails should have "tail", ears "ears" etc.
 	var/key = null
 	///If an accessory is special, it wont get included in the normal accessory lists
 	var/special = FALSE
@@ -191,10 +191,25 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/socks
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
 	use_static = TRUE
+/datum/sprite_accessory/socks/socks_norm
+	name = "Normal (Greyscale)"
+	icon_state = "white_norm"
+	use_static = null
+
+/datum/sprite_accessory/socks/stirrups_norm
+	name = "Normal Stirrups (Greyscale)"
+	icon_state = "socks_norm-stir"
+	use_static = null
+
+/datum/sprite_accessory/socks/socks_short
+	name = "Short (Greyscale)"
+	icon_state = "white_short"
+	use_static = null
+
 
 /datum/sprite_accessory/socks/socks_knee
-	name = "Knee-high"
-	icon_state = "socks_knee"
+	name = "Knee-high (Greyscale)"
+	icon_state = "white_knee"
 	use_static = null
 
 /datum/sprite_accessory/socks/stirrups_knee
@@ -212,28 +227,13 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon_state = "thin_knee"
 	use_static = null
 
-/datum/sprite_accessory/socks/socks_norm
-	name = "Normal"
-	icon_state = "socks_norm"
-	use_static = null
-
-/datum/sprite_accessory/socks/stirrups_norm
-	name = "Normal Stirrups"
-	icon_state = "socks_norm-stir"
-	use_static = null
-
-/datum/sprite_accessory/socks/socks_short
-	name = "Short"
-	icon_state = "socks_short"
-	use_static = null
-
 /datum/sprite_accessory/socks/socks_thigh
-	name = "Thigh-high"
-	icon_state = "socks_thigh"
+	name = "Thigh-high (Greyscale)"
+	icon_state = "white_thigh"
 	use_static = null
 
 /datum/sprite_accessory/socks/stirrups_thigh
-	name = "Thigh-high Stirrups"
+	name = "Thigh-high Stirrups (Greyscale)"
 	icon_state = "socks_thigh-stir"
 	use_static = null
 
@@ -246,6 +246,11 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "Thigh-high (Striped Stirrups)"
 	icon_state = "striped_thigh-stir"
 	use_static = null
+
+/datum/sprite_accessory/socks/leggings/stirrups/gym
+	name = "Thigh-high Stirrups (black with stripe)"
+	icon_state = "leggings-stir-black"
+	use_static = TRUE
 
 /datum/sprite_accessory/socks/bee_thigh
 	name = "Thigh-high - Bee (Old)"
@@ -291,6 +296,10 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "Thigh-high - Green Candy Cane"
 	icon_state = "candycaneg_thigh"
 
+/datum/sprite_accessory/socks/rainbow_thigh
+	name = "Thigh-high - Rainbow"
+	icon_state = "rainbow_thigh"
+
 /datum/sprite_accessory/socks/rainbow_knee
 	name = "Knee-high - Rainbow"
 	icon_state = "rainbow_knee"
@@ -299,20 +308,16 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "Knee-high - Rainbow Stirrups"
 	icon_state = "rainbow_knee-stir"
 
-/datum/sprite_accessory/socks/rainbow_thigh
-	name = "Thigh-high - Rainbow"
-	icon_state = "rainbow_thigh"
-
 /datum/sprite_accessory/socks/rainbow_thigh/stirrups
 	name = "Thigh-high - Rainbow Stirrups"
 	icon_state = "rainbow_thigh-stir"
 
-/datum/sprite_accessory/socks/fishnet_thigh
+/datum/sprite_accessory/socks/fishnet_thigh_sr //TG has one, but this one matches with several tops that I'll get whined to if I change soooo
 	name = "Thigh-high - Fishnet"
 	icon_state = "fishnet"
 
 /datum/sprite_accessory/socks/fishnet_thigh/alt
-	name = "Thigh-high - Fishnet Alt"
+	name = "Thigh-high - Fishnet (Greyscale)"
 	icon_state = "fishnet_alt"
 	use_static = null
 
@@ -344,11 +349,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "Leggings - Stirrups"
 	icon_state = "leggings-stir"
 	use_static = null
-
-/datum/sprite_accessory/socks/leggings/stirrups/gym
-	name = "Leggings - Stirrups black with stripe"
-	icon_state = "leggings-stir-black"
-	use_static = TRUE
 
 /datum/sprite_accessory/socks/leggings/latex
 	name = "Socks - Latex"
@@ -388,7 +388,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	use_static = TRUE
 
 /datum/sprite_accessory/underwear/fishnet_lower/alt
-	name = "Panties - Fishnet Alt"
+	name = "Panties - Fishnet (Greyscale)"
 	icon_state = "fishnet_lower_alt"
 	use_static = null
 
@@ -446,11 +446,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "Panties - Thin"
 	icon_state = "panties_thin"
 	gender = FEMALE
-
-/datum/sprite_accessory/underwear/longjon
-	name = "Long John Bottoms"
-	icon_state = "ljonb"
-	has_digitigrade = TRUE
 
 /datum/sprite_accessory/underwear/swimsuit_red
 	name = "Swimsuit, One Piece - Red"
@@ -510,7 +505,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "LIZARED Underwear"
 	icon_state = "lizared"
 	use_static = TRUE
-	covers_chest = TRUE
 
 /*
 	Adding covers_chest to TG underwears where applicable
@@ -726,35 +720,24 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	use_static = null
 
 /datum/sprite_accessory/undershirt/fishnet_sleeves
-	name = "Fishnet - Sleeves"
+	name = "Fishnet - Sleeved"
 	icon_state = "fishnet_sleeves"
 	gender = FEMALE
 	use_static = TRUE
 
 /datum/sprite_accessory/undershirt/fishnet_sleeves/alt
-	name = "Fishnet - Sleeves Alt"
+	name = "Fishnet - Sleeved (Greyscale)"
 	icon_state = "fishnet_sleeves_alt"
 	use_static = null
 
-/datum/sprite_accessory/undershirt/fishnet_gloves
-	name = "Fishnet - Gloves"
-	icon_state = "fishnet_gloves"
-	gender = FEMALE
-	use_static = TRUE
-
-/datum/sprite_accessory/undershirt/fishnet_gloves/alt
-	name = "Fishnet - Gloves Alt"
-	icon_state = "fishnet_gloves_alt"
-	use_static = null
-
 /datum/sprite_accessory/undershirt/fishnet_base
-	name = "Fishnet - Top"
+	name = "Fishnet - Sleeveless"
 	icon_state = "fishnet_body"
 	gender = FEMALE
 	use_static = TRUE
 
 /datum/sprite_accessory/undershirt/fishnet_base/alt
-	name = "Fishnet - Top Alt"
+	name = "Fishnet - Sleeveless (Greyscale)"
 	icon_state = "fishnet_body_alt"
 	use_static = null
 
