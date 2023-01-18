@@ -132,7 +132,6 @@ GLOBAL_VAR_INIT(force_eng_override, FALSE)
 		GLOB.force_eng_override = FALSE
 		minor_announce("Expanded engineering access has been disabled.", "Engineering Emergency")
 		var/level = SSsecurity_level.get_current_level_as_number()
-		message_admins("sec level is [sec_level]")
 		SSblackbox.record_feedback("nested tally", "keycard_auths", 1, list("engineer override access", "disabled"))
 		if(level == SEC_LEVEL_ORANGE)
 			return
