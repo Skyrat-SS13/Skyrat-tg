@@ -23,3 +23,8 @@
 
 /obj/machinery/door/firedoor/closed
 	alarm_type = FIRELOCK_ALARM_TYPE_GENERIC
+
+/datum/looping_sound/firealarm
+	mid_sounds = list('modular_skyrat/modules/aesthetics/firedoor/sound/firedoor_alarm.ogg' = 1)
+	mid_length = 4.5 SECONDS
+	volume = 50
