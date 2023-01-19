@@ -28,20 +28,24 @@
 				//Does this Undershirt cover a relevant slot?
 				if(genital_location == CHEST) //(Undershirt always covers chest)
 					return TRUE
+
 				else if(genital_location == GROIN && worn_undershirt.hides_groin)
 					return TRUE
+
 			//Undershirt didn't cover them, are they wearing Underwear?
 			if(H.underwear != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
 				var/datum/sprite_accessory/underwear/worn_underwear = GLOB.underwear_list[H.underwear]
 				//Does this Underwear cover a relevant slot?
 				if(genital_location == GROIN) //(Underwear always covers groin)
 					return TRUE
+
 				else if(genital_location == CHEST && worn_underwear.hides_breasts)
 					return TRUE
 
 			//Nothing they're wearing will cover them
 			else
 				return FALSE
+
 		//If not always shown or hidden by clothes, then it defaults to always hidden
 		else
 			return TRUE
