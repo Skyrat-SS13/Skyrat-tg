@@ -1262,6 +1262,7 @@
 		"health_hud_prescription",
 		"security_hud_prescription",
 		"diagnostic_hud_prescription",
+		"science_hud_prescription",
 		"health_hud_aviator",
 		"security_hud_aviator",
 		"diagnostic_hud_aviator",

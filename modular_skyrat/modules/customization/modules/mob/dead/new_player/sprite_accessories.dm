@@ -819,7 +819,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	use_static = null
 	gender = NEUTER
 
-/datum/sprite_accessory/undershirt/turtleneck
+/datum/sprite_accessory/undershirt/turtleneck/smooth
 	name = "Sweater - Smooth Turtleneck"
 	icon_state = "turtleneck_smooth"
 
