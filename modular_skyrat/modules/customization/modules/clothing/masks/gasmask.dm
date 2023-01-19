@@ -90,12 +90,10 @@
 
 /obj/item/clothing/mask/gas/clown_hat/vox
 	desc = "A true prankster's facial attire. A clown is incomplete without his wig and mask. This one's got an easily accessible feeding port to be more suitable for the Vox crewmembers."
-	clothing_flags = MASKINTERNALS | GAS_FILTERING
 	starting_filter_type = /obj/item/gas_filter/vox
 	
 /obj/item/clothing/mask/gas/mime/vox
 	desc = "The traditional mime's mask. It has an eerie facial posture. This one's got an easily accessible feeding port to be more suitable for the Vox crewmembers."
-	clothing_flags = MASKINTERNALS | GAS_FILTERING
 	starting_filter_type = /obj/item/gas_filter/vox
 	
 /obj/item/clothing/mask/gas/atmos/vox
