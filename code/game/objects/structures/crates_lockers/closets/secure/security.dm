@@ -17,7 +17,7 @@
 	new /obj/item/radio/headset/heads/captain/alt(src)
 	new /obj/item/radio/headset/heads/captain(src)
 	new /obj/item/storage/belt/sabre(src)
-	new /obj/item/storage/box/gunset/pdh_captain(src) // SKYRAT EDIT ADDITION
+	new /obj/item/storage/box/gunset/pdh(src) // SKYRAT EDIT CHANGE - ORIGINAL: new /obj/item/gun/energy/e_gun(src)
 	new /obj/item/door_remote/captain(src)
 	new /obj/item/storage/photo_album/captain(src)
 
@@ -38,7 +38,7 @@
 	new /obj/item/storage/box/ids(src)
 	new /obj/item/megaphone/command(src)
 	new /obj/item/assembly/flash/handheld(src)
-	new /obj/item/storage/box/gunset/pdh(src) // SKYRAT EDIT ADDITION
+	new /obj/item/gun/energy/e_gun(src)
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/pet_carrier(src)
 	new /obj/item/door_remote/civilian(src)
@@ -132,20 +132,20 @@
 	icon = 'icons/obj/storage/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/cargo/PopulateContents()
-	new /obj/item/storage/box/gunset/pepperball(src)
 	new /obj/item/storage/bag/garment/customs_agent(src)
 	new /obj/item/restraints/handcuffs/cable/orange(src)
+	new /obj/item/assembly/flash/handheld(src)
 
 /obj/structure/closet/secure_closet/security/engine
 	name = "\proper engineering guard's locker"
-	req_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ENGINE_EQUIP)
+	req_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ENGINEERING)
 	icon_state = "eng_secure"
 	icon = 'icons/obj/storage/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/engine/PopulateContents()
 	new /obj/item/restraints/handcuffs/cable/yellow(src)
-	new /obj/item/storage/box/gunset/pepperball(src)
 	new /obj/item/storage/bag/garment/engineering_guard(src)
+	new /obj/item/assembly/flash/handheld(src)
 
 /obj/structure/closet/secure_closet/security/science
 	name = "\proper science guard's locker"
@@ -155,8 +155,8 @@
 
 /obj/structure/closet/secure_closet/security/science/PopulateContents()
 	new /obj/item/restraints/handcuffs/cable/pink(src)
-	new /obj/item/storage/box/gunset/pepperball(src)
 	new /obj/item/storage/bag/garment/science_guard(src)
+	new /obj/item/assembly/flash/handheld(src)
 
 /obj/structure/closet/secure_closet/security/med
 	name = "\proper orderly's locker"
@@ -166,8 +166,8 @@
 
 /obj/structure/closet/secure_closet/security/med/PopulateContents()
 	new /obj/item/restraints/handcuffs/cable/blue(src)
-	new /obj/item/storage/box/gunset/pepperball(src)
 	new /obj/item/storage/bag/garment/orderly(src)
+	new /obj/item/assembly/flash/handheld(src)
 // SKYRAT EDIT CHANGE END -- GOOFSEC DEP GUARDS
 
 /obj/structure/closet/secure_closet/detective
