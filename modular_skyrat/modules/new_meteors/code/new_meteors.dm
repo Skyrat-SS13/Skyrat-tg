@@ -1,5 +1,5 @@
-#define METEOR_WAVE_MIN_NOTICE 15
-#define METEOR_WAVE_MAX_NOTICE 17
+#define METEOR_WAVE_MIN_NOTICE 210
+#define METEOR_WAVE_MAX_NOTICE 240
 #define METEOR_WAVE_DURATION 37
 
 /datum/round_event_control/meteor_wave
