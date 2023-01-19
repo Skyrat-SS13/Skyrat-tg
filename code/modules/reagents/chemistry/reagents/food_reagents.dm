@@ -40,9 +40,13 @@
 			exposed_mob.add_mood_event("quality_drink", /datum/mood_event/quality_verygood)
 		if (DRINK_FANTASTIC)
 			exposed_mob.add_mood_event("quality_drink", /datum/mood_event/quality_fantastic)
-			exposed_mob.mind?.add_memory(MEMORY_DRINK, list(DETAIL_DRINK = src), story_value = STORY_VALUE_OKAY)
+			exposed_mob.add_mob_memory(/datum/memory/good_drink, drink = src)
 		if (FOOD_AMAZING)
 			exposed_mob.add_mood_event("quality_food", /datum/mood_event/amazingtaste)
+			// The food this was in was really tasty, not the reagent itself
+			var/obj/item/the_real_food = holder.my_atom
+			if(isitem(the_real_food) && !is_reagent_container(the_real_food))
+				exposed_mob.add_mob_memory(/datum/memory/good_food, food = the_real_food)
 		// SKYRAT ADDITION BEGIN - Racial Drinks
 		if (RACE_DRINK)
 			exposed_mob.add_mood_event("quality_drink", /datum/mood_event/race_drink)
@@ -387,7 +391,7 @@
 			if(prob(5))
 				victim.emote("scream")
 			victim.emote("cry")
-			victim.blur_eyes(5) // 10 seconds
+			victim.set_eye_blur_if_lower(10 SECONDS)
 			victim.adjust_blindness(3) // 6 seconds
 			victim.set_confusion_if_lower(5 SECONDS)
 			victim.Knockdown(3 SECONDS)
@@ -399,7 +403,7 @@
 			if(prob(15))
 				to_chat(exposed_mob, span_danger("[pick("Your head pounds.", "Your mouth feels like it's on fire.", "You feel dizzy.")]"))
 			if(prob(10))
-				victim.blur_eyes(1)
+				victim.set_eye_blur_if_lower(2 SECONDS)
 			if(prob(10))
 				victim.set_dizzy_if_lower(2 SECONDS)
 			if(prob(5))
@@ -494,7 +498,7 @@
 		if (!tear_proof)
 			to_chat(exposed_mob, span_warning("Your eyes sting!"))
 			victim.emote("cry")
-			victim.blur_eyes(3) // 6 seconds
+			victim.set_eye_blur_if_lower(6 SECONDS)
 
 /datum/reagent/consumable/sprinkles
 	name = "Sprinkles"
@@ -760,7 +764,7 @@
 		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2*REM, 150, affected_biotype)
 		M.adjustToxLoss(3*REM, FALSE, required_biotype = affected_biotype)
 		M.adjustStaminaLoss(10*REM, FALSE, required_biotype = affected_biotype)
-		M.blur_eyes(5)
+		M.set_eye_blur_if_lower(10 SECONDS)
 		. = TRUE
 	..()
 

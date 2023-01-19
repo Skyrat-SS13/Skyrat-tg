@@ -23,13 +23,14 @@
 	result = /obj/item/food/snacks/neep_tatty_haggis
 	category = CAT_MISCFOOD
 
-/datum/crafting_recipe/food/batter
-	name = "Battered Sausage"
+/datum/crafting_recipe/food/raw_battered_sausage
+	name = "Raw Battered Sausage"
 	reqs = list(
-		/datum/reagent/consumable/beerbatter = 5,
-		/obj/item/food/sausage = 1,
+		/datum/reagent/consumable/ethanol/beerbatter = 5,
+		/obj/item/food/raw_meatball = 1,
+		/obj/item/food/meat/rawcutlet = 2
 	)
-	result = /obj/item/food/sausage/battered
+	result = /obj/item/food/raw_sausage/battered
 	category = CAT_MISCFOOD
 
 /datum/crafting_recipe/food/shortbread
@@ -51,3 +52,11 @@
 	)
 	result = /obj/item/food/canned/tuna
 	category = CAT_SEAFOOD
+
+// Recipes that provide crafting instructions and don't yield any result
+
+/datum/crafting_recipe/food/grill/battered_sausage
+	reqs = list(
+		/obj/item/food/raw_sausage/battered = 1
+	)
+	result = /obj/item/food/sausage/battered
