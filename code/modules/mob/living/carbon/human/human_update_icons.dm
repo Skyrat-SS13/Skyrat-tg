@@ -159,7 +159,7 @@ There are several things that need to be remembered:
 	if(wear_id)
 		var/obj/item/worn_item = wear_id
 		update_hud_id(worn_item)
-		var/icon_file = 'icons/mob/clothing/id.dmi'
+		//var/icon_file = 'icons/mob/clothing/id.dmi' SKYRAT EDIT REMOVAL - PDA-B-GONE
 		/* SKYRAT EDIT START - PDA-B-GONE
 		id_overlay = wear_id.build_worn_icon(default_layer = ID_LAYER, default_icon_file = icon_file)
 		*/ //SKYRAT EDIT END - PDA-B-GONE
