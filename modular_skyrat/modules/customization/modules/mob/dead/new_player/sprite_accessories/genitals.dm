@@ -7,8 +7,8 @@
 	///Where the genital is on the body. If clothing doesn't cover it, it shows up!
 	var/genital_location = GROIN
 
-/datum/sprite_accessory/genital/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	var/obj/item/organ/external/genital/badonkers = H.getorganslot(associated_organ_slot)
+/datum/sprite_accessory/genital/is_hidden(mob/living/carbon/human/target_mob, obj/item/bodypart/genital_to_hide)
+	var/obj/item/organ/external/genital/badonkers = target_mob.getorganslot(associated_organ_slot)
 	if(!badonkers)
 		return TRUE
 	switch(badonkers.visibility_preference)
@@ -16,15 +16,15 @@
 			return FALSE
 		if(GENITAL_HIDDEN_BY_CLOTHES) //Hidden if the relevant body parts are covered by clothes or underwear
 			//Do they have a Uniform or Suit that covers them?
-			if((H.w_uniform && H.w_uniform.body_parts_covered & genital_location) || (H.wear_suit && H.wear_suit.body_parts_covered & genital_location))
+			if((target_mob.w_uniform && target_mob.w_uniform.body_parts_covered & genital_location) || (target_mob.wear_suit && target_mob.wear_suit.body_parts_covered & genital_location))
 				return TRUE
 			//Do they have a Hospital Gown covering them? (The gown has no body_parts_covered so needs its own check)
-			if(istype(H.wear_suit, /obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown))
+			if(istype(target_mob.wear_suit, /obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown))
 				return TRUE
 
 			//Are they wearing an Undershirt?
-			if(H.undershirt != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_SHIRT))
-				var/datum/sprite_accessory/undershirt/worn_undershirt = GLOB.undershirt_list[H.undershirt]
+			if(target_mob.undershirt != "Nude" && !(target_mob.underwear_visibility & UNDERWEAR_HIDE_SHIRT))
+				var/datum/sprite_accessory/undershirt/worn_undershirt = GLOB.undershirt_list[target_mob.undershirt]
 				//Does this Undershirt cover a relevant slot?
 				if(genital_location == CHEST) //(Undershirt always covers chest)
 					return TRUE
@@ -33,8 +33,8 @@
 					return TRUE
 
 			//Undershirt didn't cover them, are they wearing Underwear?
-			if(H.underwear != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
-				var/datum/sprite_accessory/underwear/worn_underwear = GLOB.underwear_list[H.underwear]
+			if(target_mob.underwear != "Nude" && !(target_mob.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
+				var/datum/sprite_accessory/underwear/worn_underwear = GLOB.underwear_list[target_mob.underwear]
 				//Does this Underwear cover a relevant slot?
 				if(genital_location == GROIN) //(Underwear always covers groin)
 					return TRUE
@@ -74,18 +74,18 @@
 	genetic = TRUE
 	var/can_have_sheath = TRUE
 
-/datum/sprite_accessory/genital/penis/get_special_icon(mob/living/carbon/human/H)
+/datum/sprite_accessory/genital/penis/get_special_icon(mob/living/carbon/human/target_mob)
 	var/returned = icon
-	var/taur_mode = H.get_taur_mode()
-	if(taur_mode && H.dna.features["penis_taur_mode"])
+	var/taur_mode = target_mob.get_taur_mode()
+	if(taur_mode && target_mob.dna.features["penis_taur_mode"])
 		if(!(taur_mode & STYLE_TAUR_SNAKE))
 			returned = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/taur_penis_onmob.dmi'
 	return returned
 
-/datum/sprite_accessory/genital/penis/get_special_x_dimension(mob/living/carbon/human/H)
+/datum/sprite_accessory/genital/penis/get_special_x_dimension(mob/living/carbon/human/target_mob)
 	var/returned = dimension_x
-	var/taur_mode = H.get_taur_mode()
-	if(taur_mode && H.dna.features["penis_taur_mode"])
+	var/taur_mode = target_mob.get_taur_mode()
+	if(taur_mode && target_mob.dna.features["penis_taur_mode"])
 		if(!(taur_mode & STYLE_TAUR_SNAKE))
 			returned = 64
 	return returned
@@ -149,18 +149,18 @@
 	genetic = TRUE
 	var/has_size = TRUE
 
-/datum/sprite_accessory/genital/testicles/get_special_icon(mob/living/carbon/human/H)
+/datum/sprite_accessory/genital/testicles/get_special_icon(mob/living/carbon/human/target_mob)
 	var/returned = icon
-	var/taur_mode = H.get_taur_mode()
-	if(taur_mode && H.dna.features["penis_taur_mode"])
+	var/taur_mode = target_mob.get_taur_mode()
+	if(taur_mode && target_mob.dna.features["penis_taur_mode"])
 		if(!(taur_mode & STYLE_TAUR_SNAKE))
 			returned = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/taur_testicles_onmob.dmi'
 	return returned
 
-/datum/sprite_accessory/genital/testicles/get_special_x_dimension(mob/living/carbon/human/H)
+/datum/sprite_accessory/genital/testicles/get_special_x_dimension(mob/living/carbon/human/target_mob)
 	var/returned = dimension_x
-	var/taur_mode = H.get_taur_mode()
-	if(taur_mode && H.dna.features["penis_taur_mode"])
+	var/taur_mode = target_mob.get_taur_mode()
+	if(taur_mode && target_mob.dna.features["penis_taur_mode"])
 		if(!(taur_mode & STYLE_TAUR_SNAKE))
 			returned = 64
 	return returned
