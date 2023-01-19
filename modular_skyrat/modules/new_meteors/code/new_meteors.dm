@@ -1,6 +1,7 @@
-#define METEOR_WAVE_MIN_NOTICE 210
-#define METEOR_WAVE_MAX_NOTICE 240
-#define METEOR_WAVE_DURATION 37
+// 1 tick = 2 seconds
+#define METEOR_WAVE_MIN_NOTICE 210 // 7 minutes (420 seconds)
+#define METEOR_WAVE_MAX_NOTICE 270 // 9 minutes (540 seconds)
+#define METEOR_WAVE_DURATION 37 // 74 seconds
 
 /datum/round_event_control/meteor_wave
 	///Where will the meteors be coming from? -- Established in admin_setup, passed down to round_event
