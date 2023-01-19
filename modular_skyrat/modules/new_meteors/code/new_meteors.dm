@@ -19,8 +19,12 @@
 	if(!check_rights(R_FUN))
 		return ADMIN_CANCEL_EVENT
 
-	if(tgui_alert(usr, "Choose a side to throw rocks at?", "Interrupt some ERP.", list("Yes", "No")) == "Yes")
-		var/chosen_direction = tgui_input_list(usr, "Pick one!","Make things interesting.", list("North", "South", "East", "West"))
+	var/force_dir = tgui_alert(usr, "Choose a side to throw rocks at?", "Interrupt some ERP?", list("Yes", "No", "Cancel"))
+	if(force_dir == "Cancel")
+		return ADMIN_CANCEL_EVENT
+
+	if(force_dir == "Yes")
+		var/chosen_direction = tgui_input_list(usr, "Pick one!","Plausible Deniability.", list("North", "South", "East", "West"))
 		switch(chosen_direction)
 			if("North")
 				start_side = NORTH
