@@ -172,7 +172,6 @@ There are several things that need to be remembered:
 
 	apply_overlay(ID_LAYER)
 
-
 /mob/living/carbon/human/update_worn_gloves()
 	remove_overlay(GLOVES_LAYER)
 
