@@ -110,6 +110,9 @@
 /obj/item/clothing/head/beret/engi
 	greyscale_config_worn_teshari = /datum/greyscale_config/beret_badge/worn/teshari
 
+/obj/item/clothing/head/beret/atmos
+	greyscale_config_worn_teshari = /datum/greyscale_config/beret_badge/worn/teshari
+
 /obj/item/clothing/head/beret/cargo/qm
 	greyscale_config_worn_teshari = /datum/greyscale_config/beret_badge/worn/teshari
 
