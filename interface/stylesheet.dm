@@ -127,6 +127,8 @@ h1.alert, h2.alert		{color: #000000;}
 
 .interface				{color: #330033;}
 
+.blob					{color: #556B2F;	font-weight: bold;	font-size: 3;}
+
 .sans					{font-family: "Comic Sans MS", cursive, sans-serif;}
 .papyrus				{font-family: "Papyrus", cursive, sans-serif;}
 .robot					{font-family: "Courier New", cursive, sans-serif;}
@@ -167,6 +169,15 @@ h1.alert, h2.alert		{color: #000000;}
 		50% 	{color: #00997a;}
 		60% 	{color: #ffb31a;}
 		100% 	{color: #ff33cc;}
+}
+
+.glossy					{color: #9b6000; font-weight: bold; animation: glossy 5000ms infinite;}
+	@keyframes glossy {
+		0% 		{color: #9b6000}
+		30% 	{color: #c88800}
+		40% 	{color: #bdbd00}
+		50% 	{color: #c88800}
+		100% 	{color: #9b6000}
 }
 
 .doyourjobidiot {

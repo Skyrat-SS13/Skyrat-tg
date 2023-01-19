@@ -2,7 +2,8 @@
 	name = "ore vein"
 	desc = "An ore vein that can mined."
 	icon = 'modular_skyrat/modules/stone/icons/ore.dmi'
-	icon_state = "stone"
+	icon_state = "stone1"
+	base_icon_state = "stone"
 	density = TRUE
 	anchored = TRUE
 	/// When we start mining, what do we tell the user they're mining?
@@ -27,16 +28,15 @@
 /obj/structure/ore_vein/Initialize(mapload)
 	. = ..()
 	base_desc = desc
-	if(random_sprite == TRUE)
-		icon_state += "[rand(1, (unique_sprites))]"
-	base_icon_state = icon_state
+	if(random_sprite)
+		base_icon_state += "[rand(1, (unique_sprites))]"
+
+	icon_state = base_icon_state
 
 /obj/structure/ore_vein/update_icon_state()
-	. = ..()
-	if(depleted == TRUE)
-		icon_state = "[base_icon_state]_depleted"
-	else
-		icon_state = "[base_icon_state]"
+	icon_state = "[base_icon_state][depleted ? "_depleted" : ""]"
+
+	return ..()
 
 /obj/structure/ore_vein/examine()
 	. = ..()
@@ -55,7 +55,7 @@
 	if(depleted == TRUE)
 		to_chat(user, span_notice("This ore vein is exhausted."))
 		return FALSE
-//	Our early return checks to tell the user what went wrong.
+	// Our early return checks to tell the user what went wrong.
 	to_chat(user, span_notice("You start mining the [ore_descriptor]..."))
 	if(W.use_tool(src, user, src.mining_time, volume=50))
 		to_chat(user, span_notice("You mine the [ore_descriptor]."))
@@ -66,7 +66,7 @@
 		update_icon_state()
 		addtimer(CALLBACK(src, PROC_REF(regenerate_ore)), regeneration_time)
 
-//	After the ore vein finishes its wait, we make the ore 'respawn' and return the ore to its original post-Initialize() icon_state.
+/// After the ore vein finishes its wait, we make the ore 'respawn' and return the ore to its original post-Initialize() icon_state.
 /obj/structure/ore_vein/proc/regenerate_ore()
 	depleted = FALSE
 	update_icon_state()
@@ -78,34 +78,39 @@
 /obj/structure/ore_vein/iron
 	name = "rusted rocks"
 	desc = "The rusty brown color on these rocks gives away the fact they are full of iron!"
-	icon_state = "iron"
+	icon_state = "iron1"
+	base_icon_state = "iron"
 	ore_descriptor = "iron"
 	ore_type = /obj/item/stack/ore/iron
 
 /obj/structure/ore_vein/silver
 	name = "silvery-blue rocks"
 	desc = "These rocks have the giveaway blued-silver look of, well, raw silver."
-	icon_state = "silver"
+	icon_state = "silver1"
+	base_icon_state = "silver"
 	ore_descriptor = "silver"
 	ore_type = /obj/item/stack/ore/silver
 
 /obj/structure/ore_vein/gold
 	name = "gold streaked rocks"
 	desc = "Fairly normal looking rocks... aside from the streaks of shining gold running through some of them!."
-	icon_state = "gold"
+	icon_state = "gold1"
+	base_icon_state = "gold"
 	ore_descriptor = "gold"
 	ore_type = /obj/item/stack/ore/gold
 
 /obj/structure/ore_vein/plasma
 	name = "plasma rich rocks"
 	desc = "Rocks with unrefined plasma visible on the outside of several... Do be careful with open flames near this."
-	icon_state = "plasma"
+	icon_state = "plasma1"
+	base_icon_state = "plasma"
 	ore_descriptor = "plasma"
 	ore_type = /obj/item/stack/ore/plasma
 
 /obj/structure/ore_vein/diamond
 	name = "diamond studded rocks"
 	desc = "While nowhere near as rare as you'd think, the diamonds studding these rocks are still both useful and valuable."
-	icon_state = "diamond"
+	icon_state = "diamond1"
+	base_icon_state = "diamond"
 	ore_descriptor = "diamond"
 	ore_type = /obj/item/stack/ore/diamond

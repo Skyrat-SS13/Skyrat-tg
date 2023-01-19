@@ -129,7 +129,9 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		var/datum/bank_account/paying_for_this
 
 		//department orders EARN money for cargo, not the other way around
+		//Skyrat Edit Add
 		if(!spawning_order.department_destination && spawning_order.charge_on_purchase)
+		//Skyrat Edit End
 			if(spawning_order.paying_account) //Someone paid out of pocket
 				paying_for_this = spawning_order.paying_account
 				var/list/current_buyer_orders = goodies_by_buyer[spawning_order.paying_account] // so we can access the length a few lines down
@@ -147,14 +149,16 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 					if(spawning_order.paying_account)
 						paying_for_this.bank_card_talk("Cargo order #[spawning_order.id] rejected due to lack of funds. Credits required: [price]")
 					continue
-
-		if(spawning_order.paying_account)
+		//Skyrat Edit Add
+		if(spawning_order.paying_account && spawning_order.charge_on_purchase)
+		//Skyrat Edit End
 			paying_for_this = spawning_order.paying_account
 			if(spawning_order.pack.goody)
 				LAZYADD(goodies_by_buyer[spawning_order.paying_account], spawning_order)
-			if(istype(spawning_order, /datum/supply_order/company_import))
-				LAZYADD(forced_briefcases[spawning_order.paying_account], spawning_order)
-			paying_for_this.bank_card_talk("Cargo order #[spawning_order.id] has shipped. [price] credits have been charged to your bank account.")
+			var/reciever_message = "Cargo order #[spawning_order.id] has shipped."
+			if(spawning_order.charge_on_purchase)
+				reciever_message += " [price] credits have been charged to your bank account"
+			paying_for_this.bank_card_talk(reciever_message)
 			SSeconomy.track_purchase(paying_for_this, price, spawning_order.pack.name)
 			var/datum/bank_account/department/cargo = SSeconomy.get_dep_account(ACCOUNT_CAR)
 			cargo.adjust_money(price - spawning_order.pack.get_cost()) //Cargo gets the handling fee
@@ -199,7 +203,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 			for (var/item in our_order.pack.contains)
 				misc_contents[buyer] += item
 			misc_costs[buyer] += our_order.pack.cost
-			misc_order_num[buyer] = "[misc_order_num[buyer]]#[our_order.id]  "
+			misc_order_num[buyer] = "[misc_order_num[buyer]]#[our_order.id] "
 	//SKYRAT EDIT START
 	for(var/briefcase_order in forced_briefcases)
 		var/list/buying_account_orders = forced_briefcases[briefcase_order]
@@ -256,10 +260,6 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 
 	for(var/area/shuttle/shuttle_area as anything in shuttle_areas)
 		for(var/atom/movable/AM in shuttle_area)
-			//SKYRAT EDIT ADDITION - cant sell stuff in the cockpit, even if its out of order (dont sell out of my emergency locker...)
-			if(istype(shuttle_area, /area/shuttle/supply/cockpit))
-				continue
-			//SKYRAT EDIT ADDITION END
 			if(iscameramob(AM))
 				continue
 			if(AM.anchored)

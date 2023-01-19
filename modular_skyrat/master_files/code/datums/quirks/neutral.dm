@@ -1,11 +1,12 @@
 /datum/quirk/equipping
 	abstract_parent_type = /datum/quirk/equipping
+	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_CHANGES_APPEARANCE
 	/// the items that will be equipped, formatted in the way of [item_path = list of slots it can be equipped to], will not equip over nodrop items
 	var/list/items = list()
 	/// the items that will be forcefully equipped, formatted in the way of [item_path = list of slots it can be equipped to], will equip over nodrop items
 	var/list/forced_items = list()
 
-/datum/quirk/equipping/add_unique()
+/datum/quirk/equipping/add_unique(client/client_source)
 	var/mob/living/carbon/carbon_holder = quirk_holder
 	if (!items || !carbon_holder)
 		return
@@ -56,7 +57,7 @@
 	items = list(/obj/item/clothing/accessory/breathing = list(ITEM_SLOT_BACKPACK))
 	var/breath_type = "oxygen"
 
-/datum/quirk/equipping/lungs/add()
+/datum/quirk/equipping/lungs/add(client/client_source)
 	var/mob/living/carbon/human/carbon_holder = quirk_holder
 	if (!istype(carbon_holder) || !lungs_typepath)
 		return

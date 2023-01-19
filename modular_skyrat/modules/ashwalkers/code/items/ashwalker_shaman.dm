@@ -55,4 +55,4 @@
 		/obj/item/stack/sheet/sinew = 1,
 	)
 	time = 4 SECONDS
-	category = CAT_PRIMAL
+	category = CAT_TOOLS
