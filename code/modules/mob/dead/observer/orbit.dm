@@ -1,13 +1,10 @@
 GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 
 /datum/orbit_menu
-<<<<<<< HEAD
-=======
 	///mobs worth orbiting. Because spaghetti, all mobs have the point of interest, but only some are allowed to actually show up.
 	///this obviously should be changed in the future, so we only add mobs as POI if they actually are interesting, and we don't use
 	///a typecache.
 	var/static/list/mob_allowed_typecache
->>>>>>> e9930877bce (Deadchat controlled mobs/objects now appear in the orbit menu. (#72628))
 
 /datum/orbit_menu/ui_state(mob/user)
 	return GLOB.observer_state
@@ -173,11 +170,7 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
  */
 /datum/orbit_menu/proc/validate_mob_poi(datum/point_of_interest/mob_poi/potential_poi)
 	var/mob/potential_mob_poi = potential_poi.target
-	// Skip mindless and ckeyless mobs except bots, cameramobs and megafauna.
 	if(!potential_mob_poi.mind && !potential_mob_poi.ckey)
-<<<<<<< HEAD
-		if(!isbot(potential_mob_poi) && !iscameramob(potential_mob_poi) && !ismegafauna(potential_mob_poi))
-=======
 		if(!mob_allowed_typecache)
 			mob_allowed_typecache = typecacheof(list(
 				/mob/living/simple_animal/bot,
@@ -186,7 +179,6 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 				/mob/living/simple_animal/hostile/regalrat,
 			))
 		if(!is_type_in_typecache(potential_mob_poi, mob_allowed_typecache) && !potential_mob_poi.GetComponent(/datum/component/deadchat_control))
->>>>>>> e9930877bce (Deadchat controlled mobs/objects now appear in the orbit menu. (#72628))
 			return FALSE
 
 	return potential_poi.validate()
