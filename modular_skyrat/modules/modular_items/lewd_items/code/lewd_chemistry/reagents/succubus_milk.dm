@@ -224,6 +224,7 @@
 				mob_testicles.genital_size -= 1
 				mob_testicles.update_sprite_suffix()
 				exposed_mob.update_body()
+
 			else if(mob_testicles.genital_size == 0 && !mob_penis) // Wait for penis to completely shrink away first before removing balls
 				if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
 					mob_testicles.Remove(exposed_mob)
