@@ -77,16 +77,6 @@
 	resistance_flags = INDESTRUCTIBLE
 	actions_types = list(/datum/action/item_action/berserk_mode)
 
-/datum/armor/berserker_gatsu
-	melee = 40
-	bullet = 40
-	laser = 20
-	energy = 25
-	bomb = 70
-	bio = 100
-	fire = 100
-	acid = 100
-
 /obj/item/clothing/head/hooded/berserker/gatsu/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, LOCKED_HELMET_TRAIT)
@@ -138,6 +128,7 @@
 	armour_penetration = 35 //this boss is really hard and this sword is really big
 	block_chance = 25
 	sharpness = SHARP_EDGED
+	item_flags = NO_BLOOD_ON_ITEM
 	// aughhghghgh this really should be elementized but this works for now
 	var/faction_bonus_force = 100
 	var/static/list/nemesis_factions = list("mining", "boss")
@@ -149,9 +140,6 @@
 /obj/item/claymore/dragonslayer/examine()
 	. = ..()
 	. += span_warning("Tempered against lavaland foes and bosses through supernatural energies. Right click to dodge at the cost of stamina.")
-
-/obj/item/claymore/dragonslayer/add_blood_DNA(list/blood_dna) //110% stain-proof! or so they tell me
-	return FALSE
 
 /obj/item/claymore/dragonslayer/attack(mob/living/target, mob/living/carbon/human/user)
 	var/is_nemesis_faction = FALSE

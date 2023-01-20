@@ -133,16 +133,16 @@
 
 	var/obj/item/watertank/tank
 
-/datum/armor/item_watertank
-	fire = 100
-	acid = 30
-
 /obj/item/reagent_containers/spray/mister/Initialize(mapload)
 	. = ..()
 	tank = loc
 	if(!tank?.reagents)
 		return INITIALIZE_HINT_QDEL
 	reagents = tank.reagents //This mister is really just a proxy for the tank's reagents
+
+/obj/item/reagent_containers/spray/mister/Destroy(force)
+	tank = null
+	return ..()
 
 /obj/item/reagent_containers/spray/mister/afterattack(obj/target, mob/user, proximity)
 	if(target.loc == loc) //Safety check so you don't fill your mister with mutagen or something and then blast yourself in the face with it
@@ -156,10 +156,6 @@
 	icon_state = "waterbackpackjani"
 	inhand_icon_state = "waterbackpackjani"
 	custom_price = PAYCHECK_CREW * 5
-
-/datum/armor/item_watertank
-	fire = 100
-	acid = 30
 
 /obj/item/watertank/janitor/Initialize(mapload)
 	. = ..()
@@ -177,10 +173,6 @@
 	possible_transfer_amounts = list(5, 10)
 	current_range = 5
 
-/datum/armor/item_watertank
-	fire = 100
-	acid = 30
-
 /obj/item/watertank/janitor/make_noz()
 	return new /obj/item/reagent_containers/spray/mister/janitor(src)
 
@@ -197,10 +189,6 @@
 	custom_price = PAYCHECK_CREW * 2
 	volume = 1000
 
-/datum/armor/item_watertank
-	fire = 100
-	acid = 30
-
 /obj/item/watertank/pepperspray/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent(/datum/reagent/consumable/condensedcapsaicin, 1000)
@@ -216,10 +204,6 @@
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = list(5, 10)
 	current_range = 6
-
-/datum/armor/item_watertank
-	fire = 100
-	acid = 30
 
 /obj/item/watertank/pepperspray/make_noz()
 	return new /obj/item/reagent_containers/spray/mister/pepperspray(src)
@@ -241,10 +225,6 @@
 	worn_icon_state = "waterbackpackatmos"
 	volume = 200
 	slowdown = 0
-
-/datum/armor/item_watertank
-	fire = 100
-	acid = 30
 
 /obj/item/watertank/atmos/Initialize(mapload)
 	. = ..()
@@ -281,10 +261,6 @@
 	var/nozzle_mode = 0
 	var/metal_synthesis_cooldown = 0
 	COOLDOWN_DECLARE(resin_cooldown)
-
-/datum/armor/item_watertank
-	fire = 100
-	acid = 30
 
 /obj/item/extinguisher/mini/nozzle/Initialize(mapload)
 	. = ..()
@@ -393,10 +369,6 @@
 	pass_flags = PASSTABLE
 	anchored = TRUE
 
-/datum/armor/item_watertank
-	fire = 100
-	acid = 30
-
 /obj/effect/resin_container/proc/Smoke()
 	var/datum/effect_system/fluid_spread/foam/metal/resin/foaming = new
 	foaming.set_up(4, holder = src, location = loc)
@@ -436,10 +408,6 @@
 	possible_transfer_amounts = list(5,10,15)
 	fill_icon_thresholds = list(0, 15, 60)
 	fill_icon_state = "backpack"
-
-/datum/armor/item_watertank
-	fire = 100
-	acid = 30
 
 /obj/item/reagent_containers/chemtank/ui_action_click()
 	toggle_injection()

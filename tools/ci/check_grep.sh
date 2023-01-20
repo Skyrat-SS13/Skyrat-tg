@@ -409,13 +409,13 @@ if [ "$pcre2_support" -eq 1 ]; then
 		echo
 		echo -e "${RED}ERROR: TIMER_OVERRIDE used without TIMER_UNIQUE.${NC}"
 		st=1
-	fi
+	fi;
 	part "trailing newlines"
 	if $grep -PU '[^\n]$(?!\n)' $code_files; then
 		echo
 		echo -e "${RED}ERROR: File(s) with no trailing newline detected, please add one.${NC}"
 		st=1
-	fi
+	fi;
 	part "docking_port varedits"
 	if $grep -PU '^/obj/docking_port/mobile.*\{\n[^}]*(width|height|dwidth|dheight)[^}]*[}]' $map_files; then
 		echo
@@ -423,10 +423,16 @@ if [ "$pcre2_support" -eq 1 ]; then
 		echo -e "\t\tPlease remove the width, height, dwidth, and dheight varedits from the docking_port.${NC}"
 		st=1
 	fi;
+	part "datum stockpart sanity"
+	if $grep -P 'for\b.*/obj/item/stock_parts/(?!cell)(?![\w_]+ in )' $code_files; then
+		echo
+		echo -e "${RED}ERROR: Should be using datum/stock_part instead"
+		st=1
+	fi;
 else
 	echo -e "${RED}pcre2 not supported, skipping checks requiring pcre2"
 	echo -e "if you want to run these checks install ripgrep with pcre2 support.${NC}"
-fi
+fi;
 
 if [ $st = 0 ]; then
     echo
