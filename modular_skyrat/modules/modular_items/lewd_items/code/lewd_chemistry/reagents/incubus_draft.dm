@@ -200,6 +200,7 @@
 					mob_testicles.genital_size++
 					mob_testicles.update_sprite_suffix()
 					exposed_mob.update_body()
+
 					if(!succubus_milk)
 						to_chat(exposed_mob, span_purple("You can feel your heavy balls churn as they swell to enormous proportions!"))
 	
