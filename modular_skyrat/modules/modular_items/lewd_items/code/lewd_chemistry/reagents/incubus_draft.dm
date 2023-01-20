@@ -195,6 +195,7 @@
 
 			else if(mob_testicles.genital_size == balls_max_size) 
 				var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
+
 				if(mob_penis?.genital_size >= balls_enormous_size_threshold) // Make the balls enormous only when the penis reaches a certain size
 					mob_testicles.genital_size++
 					mob_testicles.update_sprite_suffix()
