@@ -184,6 +184,7 @@
 	zone_select.update_appearance()
 	static_inventory += zone_select
 
+
 /datum/hud/proc/toggle_show_robot_modules()
 	if(!iscyborg(mymob))
 		return

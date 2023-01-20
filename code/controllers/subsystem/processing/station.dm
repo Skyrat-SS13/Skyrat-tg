@@ -59,11 +59,11 @@ PROCESSING_SUBSYSTEM_DEF(station)
 		if(initial(trait_typepath.trait_flags) & STATION_TRAIT_ABSTRACT)
 			continue //Dont add abstract ones to it
 		selectable_traits_by_types[initial(trait_typepath.trait_type)][trait_typepath] = initial(trait_typepath.weight)
-
+	// SKYRAT EDIT BEGIN - STATION TRAIT NUMBERS
 	var/positive_trait_count = pick(12;0, 5;1, 1;2)
 	var/neutral_trait_count = pick(5;0, 10;1, 3;2)
 	var/negative_trait_count = pick(12;0, 5;1, 1;2)
-
+	// SKYRAT EDIT END - STATION TRAIT NUMBERS
 	pick_traits(STATION_TRAIT_POSITIVE, positive_trait_count)
 	pick_traits(STATION_TRAIT_NEUTRAL, neutral_trait_count)
 	pick_traits(STATION_TRAIT_NEGATIVE, negative_trait_count)

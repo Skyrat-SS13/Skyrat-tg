@@ -296,18 +296,21 @@
 /*
 Policy file should be a json file with a single object.
 Value is raw html.
+
 Possible keywords :
 Job titles / Assigned roles (ghost spawners for example) : Assistant , Captain , Ash Walker
 Mob types : /mob/living/basic/carp
 Antagonist types : /datum/antagonist/highlander
 Species types : /datum/species/lizard
 special keywords defined in _DEFINES/admin.dm
+
 Example config:
 {
 	JOB_ASSISTANT : "Don't kill everyone",
 	"/datum/antagonist/highlander" : "<b>Kill everyone</b>",
 	"Ash Walker" : "Kill all spacemans"
 }
+
 */
 /datum/controller/configuration/proc/LoadPolicy()
 	policy = list()

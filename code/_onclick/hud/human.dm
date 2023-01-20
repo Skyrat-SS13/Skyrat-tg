@@ -404,6 +404,8 @@
 		if(H.head)
 			screenmob.client.screen -= H.head
 
+
+
 /datum/hud/human/persistent_inventory_update(mob/viewer)
 	if(!mymob)
 		return
@@ -432,7 +434,6 @@
 			if(H.r_store)
 				H.r_store.screen_loc = ui_storage2
 				screenmob.client.screen += H.r_store
-
 		else
 			if(H.s_store)
 				screenmob.client.screen -= H.s_store

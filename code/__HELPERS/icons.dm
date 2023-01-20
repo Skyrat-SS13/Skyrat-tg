@@ -1,14 +1,22 @@
 /*
 IconProcs README
+
 A BYOND library for manipulating icons and colors
+
 by Lummox JR
+
 version 1.0
+
 The IconProcs library was made to make a lot of common icon operations much easier. BYOND's icon manipulation
 routines are very capable but some of the advanced capabilities like using alpha transparency can be unintuitive to beginners.
+
 CHANGING ICONS
+
 Several new procs have been added to the /icon datum to simplify working with icons. To use them,
 remember you first need to setup an /icon var like so:
+
 GLOBAL_DATUM_INIT(my_icon, /icon, new('iconfile.dmi'))
+
 icon/ChangeOpacity(amount = 1)
 	A very common operation in DM is to try to make an icon more or less transparent. Making an icon more
 	transparent is usually much easier than making it less so, however. This proc basically is a frontend
@@ -40,26 +48,35 @@ icon/UseAlphaMask(mask, mode)
 	Sometimes you may want to take the alpha values from one icon and use them on a different icon.
 	This proc will do that. Just supply the icon whose alpha mask you want to use, and src will change
 	so it has the same colors as before but uses the mask for opacity.
+
 COLOR MANAGEMENT AND HSV
+
 RGB isn't the only way to represent color. Sometimes it's more useful to work with a model called HSV, which stands for hue, saturation, and value.
+
 	* The hue of a color describes where it is along the color wheel. It goes from red to yellow to green to
 	cyan to blue to magenta and back to red.
 	* The saturation of a color is how much color is in it. A color with low saturation will be more gray,
 	and with no saturation at all it is a shade of gray.
 	* The value of a color determines how bright it is. A high-value color is vivid, moderate value is dark,
 	and no value at all is black.
+
 Just as BYOND uses "#rrggbb" to represent RGB values, a similar format is used for HSV: "#hhhssvv". The hue is three
 hex digits because it ranges from 0 to 0x5FF.
+
 	* 0 to 0xFF - red to yellow
 	* 0x100 to 0x1FF - yellow to green
 	* 0x200 to 0x2FF - green to cyan
 	* 0x300 to 0x3FF - cyan to blue
 	* 0x400 to 0x4FF - blue to magenta
 	* 0x500 to 0x5FF - magenta to red
+
 Knowing this, you can figure out that red is "#000ffff" in HSV format, which is hue 0 (red), saturation 255 (as colorful as possible),
 value 255 (as bright as possible). Green is "#200ffff" and blue is "#400ffff".
+
 More than one HSV color can match the same RGB color.
+
 Here are some procs you can use for color management:
+
 ReadRGB(rgb)
 	Takes an RGB string like "#ffaa55" and converts it to a list such as list(255,170,85). If an RGBA format is used
 	that includes alpha, the list will have a fourth item for the alpha value.
@@ -101,33 +118,42 @@ ColorTone(rgb, tone)
 
 /*
 Get Flat Icon DEMO by DarkCampainger
+
 This is a test for the get flat icon proc, modified approprietly for icons and their states.
 Probably not a good idea to run this unless you want to see how the proc works in detail.
 mob
 	icon = 'old_or_unused.dmi'
 	icon_state = "green"
+
 	Login()
 		// Testing image underlays
 		underlays += image(icon='old_or_unused.dmi',icon_state="red")
 		underlays += image(icon='old_or_unused.dmi',icon_state="red", pixel_x = 32)
 		underlays += image(icon='old_or_unused.dmi',icon_state="red", pixel_x = -32)
+
 		// Testing image overlays
 		add_overlay(image(icon='old_or_unused.dmi',icon_state="green", pixel_x = 32, pixel_y = -32))
 		add_overlay(image(icon='old_or_unused.dmi',icon_state="green", pixel_x = 32, pixel_y = 32))
 		add_overlay(image(icon='old_or_unused.dmi',icon_state="green", pixel_x = -32, pixel_y = -32))
+
 		// Testing icon file overlays (defaults to mob's state)
 		add_overlay('_flat_demoIcons2.dmi')
+
 		// Testing icon_state overlays (defaults to mob's icon)
 		add_overlay("white")
+
 		// Testing dynamic icon overlays
 		var/icon/I = icon('old_or_unused.dmi', icon_state="aqua")
 		I.Shift(NORTH,16,1)
 		add_overlay(I)
+
 		// Testing dynamic image overlays
 		I=image(icon=I,pixel_x = -32, pixel_y = 32)
 		add_overlay(I)
+
 		// Testing object types (and layers)
 		add_overlay(/obj/effect/overlay_test)
+
 		loc = locate (10,10,1)
 	verb
 		Browse_Icon()
@@ -138,9 +164,11 @@ mob
 			src<<browse_rsc(getFlatIcon(src), iconName)
 			// Display the icon in their browser
 			src<<browse("<body bgcolor='#000000'><p><img src='[iconName]'></p></body>")
+
 		Output_Icon()
 			set name = "2. Output Icon"
 			to_chat(src, "Icon is: [icon2base64html(getFlatIcon(src))]")
+
 		Label_Icon()
 			set name = "3. Label Icon"
 			// Give it a name for the cache
@@ -151,9 +179,11 @@ mob
 			src<<browse_rsc(I, iconName)
 			// Update the label to show it
 			winset(src,"imageLabel","image='[REF(I)]'");
+
 		Add_Overlay()
 			set name = "4. Add Overlay"
 			add_overlay(image(icon='old_or_unused.dmi',icon_state="yellow",pixel_x = rand(-64,32), pixel_y = rand(-64,32))
+
 		Stress_Test()
 			set name = "5. Stress Test"
 			for(var/i = 0 to 1000)
@@ -162,17 +192,20 @@ mob
 				if(prob(5))
 					Add_Overlay()
 			Browse_Icon()
+
 		Cache_Test()
 			set name = "6. Cache Test"
 			for(var/i = 0 to 1000)
 				getFlatIcon(src)
 			Browse_Icon()
+
 /obj/effect/overlay_test
 	icon = 'old_or_unused.dmi'
 	icon_state = "blue"
 	pixel_x = -24
 	pixel_y = 24
 	layer = TURF_LAYER // Should appear below the rest of the overlays
+
 world
 	view = "7x7"
 	maxx = 20
@@ -254,17 +287,23 @@ world
 
 /*
 	HSV format is represented as "#hhhssvv" or "#hhhssvvaa"
+
 	Hue ranges from 0 to 0x5ff (1535)
+
 		0x000 = red
 		0x100 = yellow
 		0x200 = green
 		0x300 = cyan
 		0x400 = blue
 		0x500 = magenta
+
 	Saturation is from 0 to 0xff (255)
+
 		More saturation = more color
 		Less saturation = more gray
+
 	Value ranges from 0 to 0xff (255)
+
 		Higher value means brighter color
  */
 
@@ -277,7 +316,7 @@ world
 	if(text2ascii(rgb) == 35) ++start // skip opening #
 	var/ch,which=0,r=0,g=0,b=0,alpha=0,usealpha
 	var/digits=0
-	for(i=start, i<=length(rgb), ++i)
+	for(i=start, i <= length(rgb), ++i)
 		ch = text2ascii(rgb, i)
 		if(ch < 48 || (ch > 57 && ch < 65) || (ch > 70 && ch < 97) || ch > 102)
 			break
@@ -342,7 +381,7 @@ world
 		++start // skip opening #
 	var/ch,which=0,hue=0,sat=0,val=0,alpha=0,usealpha
 	var/digits=0
-	for(i=start, i<=length(hsv), ++i)
+	for(i=start, i <= length(hsv), ++i)
 		ch = text2ascii(hsv, i)
 		if(ch < 48 || (ch > 57 && ch < 65) || (ch > 70 && ch < 97) || ch > 102)
 			break
@@ -485,9 +524,11 @@ world
 
 /*
 	Smooth blend between HSV colors
+
 	amount=0 is the first color
 	amount=1 is the second color
 	amount=0.5 is directly between the two colors
+
 	amount<0 or amount>1 are allowed
  */
 /proc/BlendHSV(hsv1, hsv2, amount)
@@ -551,9 +592,11 @@ world
 
 /*
 	Smooth blend between RGB colors
+
 	amount=0 is the first color
 	amount=1 is the second color
 	amount=0.5 is directly between the two colors
+
 	amount<0 or amount>1 are allowed
  */
 /proc/BlendRGB(rgb1, rgb2, amount)
@@ -658,7 +701,7 @@ world
 	var/lo3 = text2ascii(hex, 7) // B
 	var/hi4 = text2ascii(hex, 8) // A
 	var/lo4 = text2ascii(hex, 9) // A
-	return list(((hi1>= 65 ? hi1-55 : hi1-48)<<4) | (lo1 >= 65 ? lo1-55 : lo1-48),
+	return list(((hi1 >= 65 ? hi1-55 : hi1-48)<<4) | (lo1 >= 65 ? lo1-55 : lo1-48),
 		((hi2 >= 65 ? hi2-55 : hi2-48)<<4) | (lo2 >= 65 ? lo2-55 : lo2-48),
 		((hi3 >= 65 ? hi3-55 : hi3-48)<<4) | (lo3 >= 65 ? lo3-55 : lo3-48),
 		((hi4 >= 65 ? hi4-55 : hi4-48)<<4) | (lo4 >= 65 ? lo4-55 : lo4-48))
@@ -1257,7 +1300,6 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 		return SSassets.transport.get_asset_url(key)
 	return "<img class='[extra_classes] icon icon-[icon_state]' src='[SSassets.transport.get_asset_url(key)]'>"
 
-
 /proc/icon2base64html(thing)
 	if (!thing)
 		return
@@ -1305,6 +1347,7 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 	return icon2html(I, target, sourceonly = sourceonly)
 
 GLOBAL_LIST_EMPTY(transformation_animation_objects)
+
 
 /*
  * Creates animation that turns current icon into result appearance from top down.

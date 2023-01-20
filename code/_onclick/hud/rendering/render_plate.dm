@@ -202,7 +202,6 @@
 	plane = RENDER_PLANE_NON_GAME
 	render_relay_planes = list(RENDER_PLANE_MASTER)
 
-
 /**
  * Plane master proc called in Initialize() that creates relay objects, and sets them uo as needed
  * Sets:

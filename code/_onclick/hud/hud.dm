@@ -16,29 +16,8 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	"Trasen-Knox" = 'icons/hud/screen_trasenknox.dmi'
 ))
 
-//SKYRAT EDIT - ADDITION - ERP ICONS FIX
-
-GLOBAL_LIST_INIT(available_erp_ui_styles, list(
-	"Midnight" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/midnight.dmi',
-	"Retro" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/retro.dmi',
-	"Plasmafire" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/plasmafire.dmi',
-	"Slimecore" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/slimecore.dmi',
-	"Operative" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/operative.dmi',
-	"Clockwork" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/clockwork.dmi',
-	"Glass" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/glass.dmi'
-))
-
-//SKYRAT EDIT - ADDITION - ERP ICONS FIX - END
-
 /proc/ui_style2icon(ui_style)
 	return GLOB.available_ui_styles[ui_style] || GLOB.available_ui_styles[GLOB.available_ui_styles[1]]
-
-//SKYRAT EDIT - ADDITION - ERP ICONS FIX
-
-/proc/erp_ui_style2icon(ui_style)
-	return GLOB.available_erp_ui_styles[ui_style] || GLOB.available_erp_ui_styles[GLOB.available_erp_ui_styles[1]]
-
-//SKYRAT EDIT - ADDITION - ERP ICONS FIX - END
 
 /datum/hud
 	var/mob/mymob
@@ -115,7 +94,6 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	var/atom/movable/screen/spacesuit
 	// subtypes can override this to force a specific UI style
 	var/ui_style
-	var/erp_ui_style //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 
 /datum/hud/New(mob/owner)
 	mymob = owner
@@ -123,7 +101,6 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	if (!ui_style)
 		// will fall back to the default if any of these are null
 		ui_style = ui_style2icon(owner.client?.prefs?.read_preference(/datum/preference/choiced/ui_style))
-		erp_ui_style = erp_ui_style2icon(owner.client?.prefs?.read_preference(/datum/preference/choiced/ui_style)) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 
 	toggle_palette = new()
 	toggle_palette.set_hud(src)
