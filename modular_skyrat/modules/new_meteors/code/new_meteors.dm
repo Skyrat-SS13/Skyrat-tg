@@ -1,6 +1,6 @@
 // 1 tick = 2 seconds
-#define METEOR_WAVE_MIN_NOTICE 210 // 7 minutes (420 seconds)
-#define METEOR_WAVE_MAX_NOTICE 270 // 9 minutes (540 seconds)
+#define METEOR_WAVE_MIN_NOTICE 120 // 4 minutes (240 seconds)
+#define METEOR_WAVE_MAX_NOTICE 210 // 7 minutes (420 seconds)
 #define METEOR_WAVE_DURATION 37 // 74 seconds
 
 /datum/round_event_control/meteor_wave
@@ -43,7 +43,22 @@
 	else
 		start_side = pick(GLOB.cardinals)
 
-	priority_announce("Meteors have been detected on collision course with the station. The early warning system estimates first collision in approximately [start_when * 2] seconds, coming from the [dir2text(start_side)]. Ensure all sensitive areas and equipment are shielded.", "Meteor Alert", ANNOUNCER_METEORS)
+	var/start_side_text = "unknown"
+	switch(start_side)
+		if(NORTH)
+			start_side_text = "fore"
+		if(SOUTH)
+			start_side_text = "aft"
+		if(EAST)
+			start_side_text = "starboard"
+		if(WEST)
+			start_side_text = "port"
+		else
+			stack_trace("Sandstorm event given [start_side] as unrecognized direction. Cancelling event...")
+			kill()
+			return
+
+	priority_announce("Meteors have been detected on collision course with the station. The early warning system estimates first collision in approximately [start_when * 2] seconds, coming from the [start_side_text] side of the station. Ensure all sensitive areas and equipment are shielded.", "Meteor Alert", ANNOUNCER_METEORS)
 
 /datum/round_event/meteor_wave/tick()
 	if(ISMULTIPLE(activeFor, 3))
