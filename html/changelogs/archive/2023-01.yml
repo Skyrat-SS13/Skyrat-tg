@@ -790,3 +790,65 @@
   - code_imp: made beer batter reagent weakly alchoholic, it's 1/3 as alchoholic as
       the beer it contains. so if you have nothing else...you can get drunk off it
       now I guess.
+2023-01-20:
+  Guillaume Prata:
+  - qol: APCs have contextual screen tips now.
+  JohnFulpWillard, sprites by Tramzz:
+  - rscadd: Added Maintenance tablet applications, applications that can't be cloned
+      or downloaded from the store, instead you can find one app in maintenance.
+  - balance: The Analyzer tablet application is also a maintenance tablet application
+      now.
+  Nerev4r:
+  - bugfix: Snails no longer have bones, and their unarmed damage is back to its proper
+      state.
+  RatFromTheJungle:
+  - rscdel: removed the PDA worn icon; again
+  Rhials:
+  - code_imp: The ninja module folder is now stored in the antagonists folder.
+  SkyratBot:
+  - bugfix: fixed give_important_for_life proc in species.dm, which is supposed to
+      be used to help ensure plasmamen (and potentially other races) are always spawned
+      with internals and such
+  - bugfix: fixed issue where plasmamen who are spawned without a plasmaman-specific
+      job outfit could spawn without internals and a suit, and just start dying immediately
+  - bugfix: the examine text for damage now properly uses the most common examine
+      text out of all the mob's limbs
+  - bugfix: all robotic limbs now have the robotic damage descriptions (charring,
+      denting)
+  - code_imp: improved the get_majority_bodypart_damage_desc() proc to reduce redundancies
+      and add support for limb-based cellular damage
+  - qol: A few recipes that were microwave only (like boiling rice, heating ready
+      donk, so on) can now also be made in an oven
+  - bugfix: The tables on the bridge of the NTSS Independence are now usable. Fancy!
+  - bugfix: Strange geysers have random reagents again
+  - bugfix: Geysers regen reagents again
+  - bugfix: Firebots no longer attempt to extinguish themselves constantly
+  - bugfix: fixes wizard rod form infinitely travelling in hyperspace
+  - bugfix: Canisters no longer keep their shielding when their shielding cell fails
+  - bugfix: Fixed the Survivalist N2O System
+  - code_imp: datum stock part for every obj stock part
+  - refactor: all machines & dependent experiments to use datum stock parts
+  - bugfix: Pickle crafting no longer gives an empty beaker
+  - bugfix: Pickle crafting costs/gives 10 cucumbers/pickles
+  - rscadd: New circuit component, list pick!
+  - rscadd: UI for ordering bulk amount of stuff from ccargo
+  - qol: order bulk stuff from cargo more efficiently
+  - bugfix: clear cart button which now properly clears cart & refunds coupons
+  - bugfix: If there are several techwebs, sabotaging the master server of one of
+      them will no longer cut research point generation of the rest.
+  - bugfix: AI eyes, megafauna and robots will appear in the orbit menu NPC section
+      again.
+  - qol: Everything deadchat controlled will now be highlighted in the orbit menu.
+  - qol: Theres now a visual indicator when you attempt to grab an object or person
+      restrained by the HAUL gauntlets.
+  Wallem:
+  - imageadd: Made the station's iron sheets less shiny to increase sprite legibility.
+  Zenitheevee:
+  - bugfix: Ghost roles without loadouts spawn with their outfits now
+  Zergspower:
+  - bugfix: Void Raptor - Fixes for lights in Sci/Atmos/Brig/Arrivals
+  - bugfix: Void Raptor - Spawns the correct chefs knife in the kitchen
+  - qol: Protolathes and the like had their printable items categorized further
+  - bugfix: fixes a few uncategorized items in protolathes and the like
+  - refactor: Cleaner techweb code with more categories to break apart individual
+      printable items at proto/mech fabs
