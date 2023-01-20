@@ -68,6 +68,20 @@
 /datum/reagent/drug/aphrodisiac/proc/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/genital) 
 	return
 
+/// Handle creation of new genitals
+/datum/reagent/drug/aphrodisiac/proc/create_genitals(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
+
+/// Handle genital shrinkage
+/datum/reagent/drug/aphrodisiac/proc/shrink_genitals(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital) 
+	return
+
+/// Called after growth that alters appearance
+/datum/reagent/drug/aphrodisiac/proc/update_appearance(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/genital)
+	if(genital)
+		genital.update_sprite_suffix()
+	if(exposed_mob) 
+		exposed_mob.update_body()
+
 /// Runs on OD process after preference checks. Use this instead of overdose_process
 /datum/reagent/drug/aphrodisiac/proc/overdose_effects(mob/living/carbon/human/exposed_mob)
 	return
