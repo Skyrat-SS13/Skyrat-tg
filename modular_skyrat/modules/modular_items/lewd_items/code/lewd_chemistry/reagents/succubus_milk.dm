@@ -210,7 +210,7 @@
 					exposed_mob.update_body()
 			else 
 				if(mob_penis.genital_size > penis_min_length)
-					mob_penis.genital_size -= penis_size_reduction_step
+					mob_penis.genital_size = max(mob_penis.genital_size - penis_size_reduction_step, penis_min_length)
 					mob_penis.update_sprite_suffix()
 					exposed_mob.update_body()
 				if(mob_penis.girth > penis_minimum_girth)
