@@ -39,7 +39,11 @@
 	if(!nukeop_outfit) // this variable is null in instances where an antagonist datum is granted via enslaving the mind (/datum/mind/proc/enslave_mind_to_creator), like in golems.
 		return
 
-	operative.set_species(/datum/species/human) //Plasmamen burn up otherwise, and besides, all other species are vulnerable to asimov AIs. Let's standardize all operatives being human.
+	// SKYRAT EDIT START
+	//operative.set_species(/datum/species/human) //Plasmamen burn up otherwise, and besides, all other species are vulnerable to asimov AIs. Let's standardize all operatives being human.
+	if(isplasmaman(operative))
+		operative.equipOutfit(/datum/outfit/plasmaman) // they lose the turtleneck but that's fine
+	// SKYRAT EDIT END
 
 	operative.equipOutfit(nukeop_outfit)
 	return TRUE
@@ -113,7 +117,7 @@
 /datum/antagonist/nukeop/proc/memorize_code()
 	if(nuke_team && nuke_team.tracked_nuke && nuke_team.memorized_code)
 		antag_memory += "<B>[nuke_team.tracked_nuke] Code</B>: [nuke_team.memorized_code]<br>"
-		owner.add_memory(MEMORY_NUKECODE, list(DETAIL_NUKE_CODE = nuke_team.memorized_code, DETAIL_PROTAGONIST = owner.current), story_value = STORY_VALUE_AMAZING, memory_flags = MEMORY_FLAG_NOLOCATION | MEMORY_FLAG_NOMOOD | MEMORY_FLAG_NOPERSISTENCE)
+		owner.add_memory(/datum/memory/key/nuke_code, nuclear_code = nuke_team.memorized_code)
 		to_chat(owner, "The nuclear authorization code is: <B>[nuke_team.memorized_code]</B>")
 	else
 		to_chat(owner, "Unfortunately the syndicate was unable to provide you with nuclear authorization code.")
