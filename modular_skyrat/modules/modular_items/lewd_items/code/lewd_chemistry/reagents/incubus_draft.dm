@@ -192,6 +192,7 @@
 				exposed_mob.update_body()
 				if(!succubus_milk) // So we don't spam chat
 					to_chat(exposed_mob, span_purple("Your balls [pick(ball_action_text_list)]. They are now [mob_testicles.balls_size_to_description(mob_testicles.genital_size)]."))
+
 			else if(mob_testicles.genital_size == balls_max_size) 
 				var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
 				if(mob_penis?.genital_size >= balls_enormous_size_threshold) // Make the balls enormous only when the penis reaches a certain size
