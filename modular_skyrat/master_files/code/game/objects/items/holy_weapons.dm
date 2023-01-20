@@ -56,7 +56,7 @@
 	inhand_icon_state = "cultrobes"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	armor_type = /datum/armor/hooded_cultlain_robe
-	allowed = list(/obj/item/storage/book/bible, /obj/item/nullrod, /obj/item/reagent_containers/cup/glass/bottle/holywater, /obj/item/storage/fancy/candle_box, /obj/item/candle, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
+	allowed = list(/obj/item/storage/book/bible, /obj/item/nullrod, /obj/item/reagent_containers/cup/glass/bottle/holywater, /obj/item/storage/fancy/candle_box, /obj/item/flashlight/flare/candle, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
 	hoodtype = /obj/item/clothing/head/hooded/cultlain_hood
 
 /datum/armor/hooded_cultlain_robe
@@ -153,6 +153,7 @@
 	desc = "A set of prayer beads used by many of the more traditional religions in space"
 	icon = 'modular_skyrat/modules/chaplain/icons/holy_weapons.dmi'
 	icon_state = "rosary"
+	worn_icon_state = "nullrod"
 	force = 4
 	throwforce = 0
 	attack_verb_simple = list("whipped", "repented", "lashed", "flagellated")
@@ -213,3 +214,4 @@
 	desc = "Made of clear crystal, the blade refracts the light slightly. Purity, so close yet unattainable in this form."
 	icon_state = "void_blade"
 	inhand_icon_state = "void_blade"
+	worn_icon_state = "dark_blade"

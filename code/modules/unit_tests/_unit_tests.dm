@@ -85,6 +85,7 @@
 #include "area_contents.dm"
 #include "autowiki.dm"
 #include "barsigns.dm"
+#include "baseturfs.dm"
 #include "bespoke_id.dm"
 #include "binary_insert.dm"
 #include "bloody_footprints.dm"
@@ -115,6 +116,7 @@
 #include "food_edibility_check.dm"
 #include "gas_transfer.dm"
 #include "get_turf_pixel.dm"
+#include "geyser.dm"
 #include "greyscale_config.dm"
 #include "hallucination_icons.dm"
 #include "heretic_knowledge.dm"
@@ -208,10 +210,12 @@
 #include "tgui_create_message.dm"
 #include "timer_sanity.dm"
 #include "traitor.dm"
+#include "tutorial_sanity.dm"
 #include "unit_test.dm"
 #include "verify_config_tags.dm"
 #include "verify_emoji_names.dm"
 #include "wizard_loadout.dm"
+#include "worn_icons.dm"
 #ifdef REFERENCE_TRACKING_DEBUG //Don't try and parse this file if ref tracking isn't turned on. IE: don't parse ref tracking please mr linter
 #include "find_reference_sanity.dm"
 #endif

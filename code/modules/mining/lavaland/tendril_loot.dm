@@ -718,15 +718,6 @@
 	/// Status of berserk
 	var/berserk_active = FALSE
 
-/datum/armor/hooded_berserker
-	melee = 30
-	bullet = 30
-	laser = 10
-	energy = 20
-	bomb = 50
-	fire = 100
-	acid = 100
-
 /obj/item/clothing/head/hooded/berserker/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, LOCKED_HELMET_TRAIT)
@@ -810,15 +801,6 @@
 	custom_materials = null
 	var/datum/action/cooldown/scan/scan_ability
 
-/datum/armor/hooded_berserker
-	melee = 30
-	bullet = 30
-	laser = 10
-	energy = 20
-	bomb = 50
-	fire = 100
-	acid = 100
-
 /obj/item/clothing/glasses/godeye/Initialize(mapload)
 	. = ..()
 	scan_ability = new(src)
@@ -859,15 +841,6 @@
 	click_to_activate = TRUE
 	cooldown_time = 45 SECONDS
 	ranged_mousepointer = 'icons/effects/mouse_pointers/scan_target.dmi'
-
-/datum/armor/hooded_berserker
-	melee = 30
-	bullet = 30
-	laser = 10
-	energy = 20
-	bomb = 50
-	fire = 100
-	acid = 100
 
 /datum/action/cooldown/scan/IsAvailable(feedback = FALSE)
 	return ..() && isliving(owner)
@@ -911,15 +884,6 @@
 	range_mid = 5
 	range_far = 15
 
-/datum/armor/hooded_berserker
-	melee = 30
-	bullet = 30
-	laser = 10
-	energy = 20
-	bomb = 50
-	fire = 100
-	acid = 100
-
 /datum/status_effect/agent_pinpointer/scan/scan_for_target()
 	return
 
@@ -937,15 +901,6 @@
 	items_to_create = list(/obj/item/cursed_katana)
 	extend_sound = 'sound/items/unsheath.ogg'
 	retract_sound = 'sound/items/sheath.ogg'
-
-/datum/armor/hooded_berserker
-	melee = 30
-	bullet = 30
-	laser = 10
-	energy = 20
-	bomb = 50
-	fire = 100
-	acid = 100
 
 /obj/item/organ/internal/cyberimp/arm/katana/attack_self(mob/user, modifiers)
 	. = ..()
@@ -1015,15 +970,6 @@
 		ATTACK_CLOAK = list(COMBO_STEPS = list(LEFT_SLASH, RIGHT_SLASH, LEFT_SLASH, RIGHT_SLASH), COMBO_PROC = PROC_REF(cloak)),
 		ATTACK_SHATTER = list(COMBO_STEPS = list(RIGHT_SLASH, LEFT_SLASH, RIGHT_SLASH, LEFT_SLASH), COMBO_PROC = PROC_REF(shatter)),
 	)
-
-/datum/armor/hooded_berserker
-	melee = 30
-	bullet = 30
-	laser = 10
-	energy = 20
-	bomb = 50
-	fire = 100
-	acid = 100
 
 /obj/item/cursed_katana/Initialize(mapload)
 	. = ..()

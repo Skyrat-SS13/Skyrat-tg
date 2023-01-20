@@ -8,6 +8,7 @@
 		/obj/item/clothing/under/rank/medical/scrubs/skyrat/red = 4,
 		/obj/item/clothing/under/rank/medical/scrubs/skyrat/white = 4,
 		/obj/item/clothing/under/rank/medical/doctor/skyrat/utility = 4,
+		/obj/item/clothing/suit/toggle/labcoat/medical = 4
 	)
 
 /obj/machinery/vending/wardrobe/engi_wardrobe

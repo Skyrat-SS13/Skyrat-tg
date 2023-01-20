@@ -20,11 +20,13 @@
 	icon = 'modular_skyrat/modules/blueshield/icons/radio.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/ears.dmi'
 	icon_state = "bshield_headset"
+	worn_icon_state = "bshield_headset"
 	keyslot = new /obj/item/encryptionkey/heads/blueshield
 	keyslot2 = new /obj/item/encryptionkey/headset_cent
 
 /obj/item/radio/headset/headset_bs/alt
 	icon_state = "bshield_headset_alt"
+	worn_icon_state = "bshield_headset_alt"
 
 /obj/item/radio/headset/headset_bs/alt/Initialize(mapload)
 	. = ..()
@@ -37,9 +39,9 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/plasmaman_hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/plasmaman_head.dmi'
 	icon_state = "bs_envirohelm"
-	armor_type = /datum/armor/plasmaman_blueshield
+	armor_type = /datum/armor/helmet_plasmaman_blueshield
 
-/datum/armor/plasmaman_blueshield
+/datum/armor/helmet_plasmaman_blueshield
 	melee = 30
 	melee = 20
 	laser = 20
@@ -55,11 +57,11 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/plasmaman.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/plasmaman.dmi'
 	icon_state = "bs_envirosuit"
-	armor_type = /datum/armor/plasmaman_blueshield
+	armor_type = /datum/armor/under_plasmaman_blueshield
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
-/datum/armor/plasmaman_blueshield
+/datum/armor/under_plasmaman_blueshield
 	melee = 10
 	laser = 10
 	bomb = 5

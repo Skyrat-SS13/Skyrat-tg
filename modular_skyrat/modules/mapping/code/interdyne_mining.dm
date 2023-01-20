@@ -9,7 +9,6 @@
 	circuit = /obj/item/circuitboard/computer/order_console/mining/interdyne
 	forced_express = TRUE
 	express_cost_multiplier = 1
-	uses_ltsrbt = FALSE
 	order_categories = list(
 		CATEGORY_MINING,
 		CATEGORY_CONSUMABLES,
