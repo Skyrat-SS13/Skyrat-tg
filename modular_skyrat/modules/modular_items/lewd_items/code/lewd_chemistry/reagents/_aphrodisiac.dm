@@ -64,6 +64,10 @@
 /datum/reagent/drug/aphrodisiac/proc/life_effects(mob/living/carbon/human/exposed_mob)
 	return
 
+/// Used to display the messages that appear in chat while the growth is occurring
+/datum/reagent/drug/aphrodisiac/proc/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/genital) 
+	return
+
 /// Runs on OD process after preference checks. Use this instead of overdose_process
 /datum/reagent/drug/aphrodisiac/proc/overdose_effects(mob/living/carbon/human/exposed_mob)
 	return

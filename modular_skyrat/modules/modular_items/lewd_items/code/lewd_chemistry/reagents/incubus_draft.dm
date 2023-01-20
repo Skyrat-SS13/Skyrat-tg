@@ -109,25 +109,6 @@
 		exposed_mob.update_body()
 		enlargement_amount = 0
 
-		if(mob_penis.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_bottomless())
-			if(mob_penis?.genital_size >= (penis_max_length - 2))
-				if(exposed_mob.dna.features["penis_sheath"] == SHEATH_SLIT)
-					if(mob_penis.aroused != AROUSAL_FULL)
-						to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
-				exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(public_cock_action_text_list)]"))
-				to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
-			else
-				if(exposed_mob.dna.features["penis_sheath"] == SHEATH_SLIT)
-					if(mob_penis.aroused != AROUSAL_FULL)
-						to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
-				exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(cock_text_list)] [pick(public_cock_action_text_list)]"))
-				to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
-		else
-			if(mob_penis?.genital_size >= (penis_max_length - 2))
-				to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
-			else
-				to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
-
 	if((mob_penis?.genital_size >= (penis_max_length - 2)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
 		var/target_bodypart = exposed_mob.get_bodypart(BODY_ZONE_PRECISE_GROIN)
 		if(prob(damage_chance))
@@ -224,7 +205,7 @@
 	if(mob_breasts)
 		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_shrinkage)) 
 			if(mob_breasts.genital_size > breast_minimum_size)
-				mob_breasts.genital_size -= breast_size_reduction_step
+				mob_breasts.genital_size = max(mob_breasts.genital_size - breast_size_reduction_step, breast_minimum_size)
 				mob_breasts.update_sprite_suffix()
 				exposed_mob.update_body()
 			// Handle completely shrinking away, if prefs allow
@@ -249,6 +230,27 @@
 		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
 			mob_womb.Remove(exposed_mob)
 			exposed_mob.update_body()
+
+/datum/reagent/drug/aphrodisiac/incubus_draft/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/penis/mob_penis)
+	if(mob_penis.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_bottomless())
+		if(mob_penis?.genital_size >= (penis_max_length - 2))
+			if(exposed_mob.dna.features["penis_sheath"] == SHEATH_SLIT)
+				if(mob_penis.aroused != AROUSAL_FULL)
+					to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
+			exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(public_cock_action_text_list)]"))
+			to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
+		else
+			if(exposed_mob.dna.features["penis_sheath"] == SHEATH_SLIT)
+				if(mob_penis.aroused != AROUSAL_FULL)
+					to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
+			exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(cock_text_list)] [pick(public_cock_action_text_list)]"))
+			to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
+	else
+		if(mob_penis?.genital_size >= (penis_max_length - 2))
+			to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
+		else
+			to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
+			
 
 // Notify the user that they're overdosing. Doesn't affect their mood.
 /datum/reagent/drug/aphrodisiac/incubus_draft/overdose_start(mob/living/carbon/human/exposed_mob)
