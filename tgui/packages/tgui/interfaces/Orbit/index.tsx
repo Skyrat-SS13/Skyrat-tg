@@ -34,6 +34,7 @@ const ObservableSearch = (props, context) => {
   const {
     alive = [],
     antagonists = [],
+    deadchat_controlled = [],
     dead = [],
     ghosts = [],
     misc = [],
@@ -56,8 +57,6 @@ const ObservableSearch = (props, context) => {
     ''
   );
 
-  /** Gets a list of Observables, then filters the most relevant to orbit */
-  const orbitMostRelevant = (searchQuery: string) => {
     const mostRelevant = getMostRelevant(searchQuery, [
       alive,
       antagonists,
@@ -137,6 +136,7 @@ const ObservableContent = (props, context) => {
   const {
     alive = [],
     antagonists = [],
+    deadchat_controlled = [],
     dead = [],
     ghosts = [],
     misc = [],
@@ -161,6 +161,11 @@ const ObservableContent = (props, context) => {
           />
         );
       })}
+      <ObservableSection
+        color="purple"
+        section={deadchat_controlled}
+        title="Deadchat Controlled"
+      />
       <ObservableSection color="blue" section={alive} title="Alive" />
       <ObservableSection section={dead} title="Dead" />
       <ObservableSection section={ghosts} title="Ghosts" />
