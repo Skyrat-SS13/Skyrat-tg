@@ -212,6 +212,7 @@
 				exposed_mob.physique = exposed_mob.gender
 				exposed_mob.update_body()
 				exposed_mob.update_mutations_overlay()
+
 		else if(exposed_mob.gender != MALE)
 			exposed_mob.set_gender(MALE)		
 			exposed_mob.physique = exposed_mob.gender
