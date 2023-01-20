@@ -245,11 +245,11 @@
 		temp = getCloneLoss()
 		if(temp)
 			if(temp < 25)
-				msg += "[t_He] [t_has] minor [dna.species.cellular_damage_desc].\n"
+				msg += "[t_He] [t_has] minor [damage_desc[CLONE]].\n"
 			else if(temp < 50)
-				msg += "[t_He] [t_has] <b>moderate</b> [dna.species.cellular_damage_desc]!\n"
+				msg += "[t_He] [t_has] <b>moderate</b> [damage_desc[CLONE]]!\n"
 			else
-				msg += "<b>[t_He] [t_has] severe [dna.species.cellular_damage_desc]!</b>\n"
+				msg += "<b>[t_He] [t_has] severe [damage_desc[CLONE]]!</b>\n"
 
 
 	if(has_status_effect(/datum/status_effect/fire_handler/fire_stacks))
@@ -277,7 +277,7 @@
 			msg += "[t_He] look[p_s()] extremely disgusted.\n"
 
 	var/apparent_blood_volume = blood_volume
-	if(skin_tone == "albino")
+	if(dna.species.use_skintones && skin_tone == "albino")
 		apparent_blood_volume -= 150 // enough to knock you down one tier
 	switch(apparent_blood_volume)
 		if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)

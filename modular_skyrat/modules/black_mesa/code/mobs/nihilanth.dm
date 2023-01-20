@@ -4,10 +4,7 @@
 	icon = 'modular_skyrat/modules/black_mesa/icons/nihilanth.dmi'
 	icon_state = "nihilanth"
 	icon_living = "nihilanth"
-	pixel_x = -32
-	pixel_y = -32
-	base_pixel_x = -32
-	base_pixel_y = -32
+	SET_BASE_PIXEL(-32, -32)
 	speed = 3
 	bound_height = 64
 	bound_width = 64

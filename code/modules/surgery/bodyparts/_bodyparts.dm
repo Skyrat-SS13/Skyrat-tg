@@ -22,6 +22,14 @@
 	/// DO NOT MODIFY DIRECTLY. Use set_owner()
 	var/mob/living/carbon/owner
 
+	/**
+	 * A bitfield of biological states, exclusively used to determine which wounds this limb will get,
+	 * as well as how easily it will happen.
+	 * Set to BIO_FLESH_BONE because most species have both flesh and bone in their limbs.
+	 *
+	 * This has absolutely no meaning for robotic limbs.
+	 */
+	var/biological_state = BIO_FLESH_BONE
 	///A bitfield of bodytypes for clothing, surgery, and misc information
 	var/bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC
 	///Defines when a bodypart should not be changed. Example: BP_BLOCK_CHANGE_SPECIES prevents the limb from being overwritten on species gain
@@ -117,9 +125,7 @@
 	var/heavy_burn_msg = "peeling away"
 
 	//Damage messages used by examine(). the desc that is most common accross all bodyparts gets shown
-
-	var/brute_damage_desc = DEFAULT_BRUTE_EXAMINE_TEXT
-	var/burn_damage_desc = DEFAULT_BURN_EXAMINE_TEXT
+	var/list/damage_examines = list(BRUTE = DEFAULT_BRUTE_EXAMINE_TEXT, BURN = DEFAULT_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
 
 	// Wounds related variables
 	/// The wounds currently afflicting this body part
@@ -458,9 +464,9 @@
 		var/easy_dismember = HAS_TRAIT(owner, TRAIT_EASYDISMEMBER) // if we have easydismember, we don't reduce damage when redirecting damage to different types (slashing weapons on mangled/skinless limbs attack at 100% instead of 50%)
 
 		//Handling for bone only/flesh only(none right now)/flesh and bone targets
-		switch(owner.get_biological_state())
+		switch(biological_state)
 			// if we're bone only, all cutting attacks go straight to the bone
-			if(BIO_JUST_BONE)
+			if(BIO_BONE)
 				if(wounding_type == WOUND_SLASH)
 					wounding_type = WOUND_BLUNT
 					wounding_dmg *= (easy_dismember ? 1 : 0.6)
@@ -469,7 +475,7 @@
 					wounding_dmg *= (easy_dismember ? 1 : 0.75)
 				if((mangled_state & BODYPART_MANGLED_BONE) && try_dismember(wounding_type, wounding_dmg, wound_bonus, bare_wound_bonus))
 					return
-			// note that there's no handling for BIO_JUST_FLESH since we don't have any that are that right now (slimepeople maybe someday)
+			// note that there's no handling for BIO_FLESH since we don't have any that are that right now (slimepeople maybe someday)
 			// standard humanoids
 			if(BIO_FLESH_BONE)
 				//SKYRAT EDIT ADDITION BEGIN - MEDICAL
@@ -479,14 +485,14 @@
 				//SKYRAT EDIT ADDITION END
 				// if we've already mangled the skin (critical slash or piercing wound), then the bone is exposed, and we can damage it with sharp weapons at a reduced rate
 				// So a big sharp weapon is still all you need to destroy a limb
-				if(mangled_state == BODYPART_MANGLED_FLESH && sharpness)
+				if((mangled_state & BODYPART_MANGLED_FLESH) && !(mangled_state & BODYPART_MANGLED_BONE) && sharpness)
 					playsound(src, "sound/effects/wounds/crackandbleed.ogg", 100)
 					if(wounding_type == WOUND_SLASH && !easy_dismember)
 						wounding_dmg *= 0.6 // edged weapons pass along 60% of their wounding damage to the bone since the power is spread out over a larger area
 					if(wounding_type == WOUND_PIERCE && !easy_dismember)
 						wounding_dmg *= 0.75 // piercing weapons pass along 75% of their wounding damage to the bone since it's more concentrated
 					wounding_type = WOUND_BLUNT
-				else if(mangled_state == BODYPART_MANGLED_BOTH && try_dismember(wounding_type, wounding_dmg, wound_bonus, bare_wound_bonus))
+				else if((mangled_state & BODYPART_MANGLED_FLESH) && (mangled_state & BODYPART_MANGLED_BONE) && try_dismember(wounding_type, wounding_dmg, wound_bonus, bare_wound_bonus))
 					return
 
 		// now we have our wounding_type and are ready to carry on with wounds and dealing the actual damage
@@ -663,8 +669,8 @@
 			UnregisterSignal(old_owner, list(
 				SIGNAL_REMOVETRAIT(TRAIT_NOLIMBDISABLE),
 				SIGNAL_ADDTRAIT(TRAIT_NOLIMBDISABLE),
-				SIGNAL_REMOVETRAIT(TRAIT_NOBLEED),
-				SIGNAL_ADDTRAIT(TRAIT_NOBLEED),
+				SIGNAL_REMOVETRAIT(TRAIT_NOBLOOD),
+				SIGNAL_ADDTRAIT(TRAIT_NOBLOOD),
 				))
 	if(owner)
 		if(initial(can_be_disabled))
@@ -674,8 +680,8 @@
 			RegisterSignal(owner, SIGNAL_REMOVETRAIT(TRAIT_NOLIMBDISABLE), PROC_REF(on_owner_nolimbdisable_trait_loss))
 			RegisterSignal(owner, SIGNAL_ADDTRAIT(TRAIT_NOLIMBDISABLE), PROC_REF(on_owner_nolimbdisable_trait_gain))
 			// Bleeding stuff
-			RegisterSignal(owner, SIGNAL_REMOVETRAIT(TRAIT_NOBLEED), PROC_REF(on_owner_nobleed_loss))
-			RegisterSignal(owner, SIGNAL_ADDTRAIT(TRAIT_NOBLEED), PROC_REF(on_owner_nobleed_gain))
+			RegisterSignal(owner, SIGNAL_REMOVETRAIT(TRAIT_NOBLOOD), PROC_REF(on_owner_nobleed_loss))
+			RegisterSignal(owner, SIGNAL_ADDTRAIT(TRAIT_NOBLOOD), PROC_REF(on_owner_nobleed_gain))
 
 		if(needs_update_disabled)
 			update_disabled()
@@ -683,6 +689,7 @@
 
 	refresh_bleed_rate()
 	return old_owner
+
 /obj/item/bodypart/proc/on_removal()
 	for(var/trait in bodypart_traits)
 		REMOVE_TRAIT(owner, trait, bodypart_trait_source)
@@ -788,7 +795,6 @@
 	// There should technically to be an ishuman(owner) check here, but it is absent because no basetype carbons use bodyparts
 	// No, xenos don't actually use bodyparts. Don't ask.
 	var/mob/living/carbon/human/human_owner = owner
-
 	var/datum/species/owner_species = human_owner.dna.species
 	species_flags_list = owner_species.species_traits
 	limb_gender = (human_owner.physique == MALE) ? "m" : "f"
@@ -843,7 +849,7 @@
 
 	. = list()
 
-	var/image_dir = 0
+	var/image_dir = NONE
 	if(dropped)
 		image_dir = SOUTH
 		if(dmg_overlay_type)
@@ -855,7 +861,7 @@
 	var/image/limb = image(layer = -BODYPARTS_LAYER, dir = image_dir)
 	var/image/aux
 
-	//HUSK SHIIIIT
+	// Handles making bodyparts look husked
 	if(is_husked)
 		limb.icon = icon_husk
 		limb.icon_state = "[husk_type]_husk_[body_zone]"
@@ -864,95 +870,97 @@
 		if(aux_zone) //Hand shit
 			aux = image(limb.icon, "[husk_type]_husk_[aux_zone]", -aux_layer, image_dir)
 			. += aux
-		return .
-	//END HUSK SHIIIIT
-	//invisibility
+
+	// Handles invisibility (not alpha or actual invisibility but invisibility)
 	if(is_invisible)
 		limb.icon = icon_invisible
 		limb.icon_state = "invisible_[body_zone]"
 		. += limb
 		return .
 
-	//invisibility
-	if(is_invisible)
-		limb.icon = icon_invisible
-		limb.icon_state = "invisible_[body_zone]"
+	// Normal non-husk handling
+	if(!is_husked)
+		// This is the MEAT of limb icon code
+		limb.icon = icon_greyscale
+		if(!should_draw_greyscale || !icon_greyscale)
+			limb.icon = icon_static
+
+		if(is_dimorphic) //Does this type of limb have sexual dimorphism?
+			limb.icon_state = "[limb_id]_[body_zone]_[limb_gender]"
+		else
+			limb.icon_state = "[limb_id]_[body_zone]"
+
+		icon_exists(limb.icon, limb.icon_state, TRUE) //Prints a stack trace on the first failure of a given iconstate.
+
 		. += limb
-		return .
 
-	////This is the MEAT of limb icon code
-	limb.icon = icon_greyscale
-	if(!should_draw_greyscale || !icon_greyscale)
-		limb.icon = icon_static
+		if(aux_zone) //Hand shit
+			aux = image(limb.icon, "[limb_id]_[aux_zone]", -aux_layer, image_dir)
+			. += aux
 
-	if(is_dimorphic) //Does this type of limb have sexual dimorphism?
-		limb.icon_state = "[limb_id]_[body_zone]_[limb_gender]"
-	else
-		limb.icon_state = "[limb_id]_[body_zone]"
+		draw_color = variable_color
+		if(should_draw_greyscale) //Should the limb be colored outside of a forced color?
+			draw_color ||= (species_color) || (skin_tone && skintone2hex(skin_tone))
 
-	icon_exists(limb.icon, limb.icon_state, TRUE) //Prints a stack trace on the first failure of a given iconstate.
+		if(draw_color)
+			//SKYRAT EDIT BEGIN - Alpha values on limbs //We check if the limb is attached and if the owner has an alpha value to append
+			var/limb_color = owner?.dna?.species && owner.dna.species.specific_alpha != 255 ? "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" : "[draw_color]"
 
-	if(body_zone == BODY_ZONE_R_LEG)
-		var/obj/item/bodypart/leg/right/leg = src
-		var/limb_overlays = limb.overlays
-		var/image/new_limb = leg.generate_masked_right_leg(limb.icon, limb.icon_state, image_dir)
-		if(new_limb)
-			limb = new_limb
-			limb.overlays = limb_overlays
+			limb.color = limb_color
+			if(aux_zone)
+				aux.color = limb_color
+			//SKYRAT EDIT END
 
-	. += limb
+		//EMISSIVE CODE START
+		// For some reason this was applied as an overlay on the aux image and limb image before.
+		// I am very sure that this is unnecessary, and i need to treat it as part of the return list
+		// to be able to mask it proper in case this limb is a leg.
+		if(blocks_emissive)
+			var/atom/location = loc || owner || src
+			var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, location, alpha = limb.alpha)
+			limb_em_block.dir = image_dir
+			. += limb_em_block
 
-	if(aux_zone) //Hand shit
-		aux = image(limb.icon, "[limb_id]_[aux_zone]", -aux_layer, image_dir)
-		. += aux
+			if(aux_zone)
+				var/mutable_appearance/aux_em_block = emissive_blocker(aux.icon, aux.icon_state, location, alpha = aux.alpha)
+				aux_em_block.dir = image_dir
+				. += aux_em_block
+		//EMISSIVE CODE END
 
-	draw_color = variable_color
-	if(should_draw_greyscale) //Should the limb be colored outside of a forced color?
-		draw_color ||= (species_color) || (skin_tone && skintone2hex(skin_tone))
+	//Ok so legs are a bit goofy in regards to layering, and we will need two images instead of one to fix that
+	if((body_zone == BODY_ZONE_R_LEG) || (body_zone == BODY_ZONE_L_LEG))
+		var/obj/item/bodypart/leg/leg_source = src
+		for(var/image/limb_image in .)
+			//remove the old, unmasked image
+			. -= limb_image
+			//add two masked images based on the old one
+			. += leg_source.generate_masked_leg(limb_image, image_dir)
 
-	if(draw_color)
-		//SKYRAT EDIT BEGIN - Alpha values on limbs //We check if the limb is attached and if the owner has an alpha value to append
-		limb.color = owner?.dna?.species && owner.dna.species.specific_alpha != 255 ? "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" : "[draw_color]"
-		if(aux_zone)
-			aux.color = owner?.dna?.species && owner.dna.species.specific_alpha != 255 ? "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" : "[draw_color]"
-		//SKYRAT EDIT END
-
-	//EMISSIVE CODE START
-	if(blocks_emissive)
-		var/atom/location = loc || owner || src
-		var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, location, alpha = limb.alpha)
-		limb_em_block.dir = image_dir
-		limb.overlays += limb_em_block
-
-		if(aux_zone)
-			var/mutable_appearance/aux_em_block = emissive_blocker(aux.icon, aux.icon_state, location, alpha = aux.alpha)
-			aux_em_block.dir = image_dir
-			aux.overlays += aux_em_block
-
-	//EMISSIVE CODE END
-	//Draw external organs like horns and frills
-	for(var/obj/item/organ/external/external_organ as anything in external_organs)
-		if(!dropped && !external_organ.can_draw_on_bodypart(owner))
-			continue
-		//Some externals have multiple layers for background, foreground and between
-		/* SKYRAT EDIT START - Customization (better layer handling for external organs) - ORIGINAL:
-		for(var/external_layer in external_organ.all_layers)
-			if(external_organ.layers & external_layer)
+	// And finally put external organs on if not husked
+	if(!is_husked)
+		//Draw external organs like horns and frills
+		for(var/obj/item/organ/external/external_organ as anything in external_organs)
+			if(!dropped && !external_organ.can_draw_on_bodypart(owner))
+				continue
+			//Some externals have multiple layers for background, foreground and between
+			/* SKYRAT EDIT START - Customization (better layer handling for external organs) - ORIGINAL:
+			for(var/external_layer in external_organ.all_layers)
+				if(external_organ.layers & external_layer)
+					external_organ.generate_and_retrieve_overlays(
+						.,
+						image_dir,
+						external_organ.bitflag_to_layer(external_layer),
+						limb_gender,
+					)
+			*/ // ORIGINAL END
+			for(var/external_layer in external_organ.relevant_layers)
 				external_organ.generate_and_retrieve_overlays(
 					.,
 					image_dir,
-					external_organ.bitflag_to_layer(external_layer),
+					external_layer,
 					limb_gender,
 				)
-		*/ // ORIGINAL END
-		for(var/external_layer in external_organ.relevant_layers)
-			external_organ.generate_and_retrieve_overlays(
-				.,
-				image_dir,
-				external_layer,
-				limb_gender,
-			)
-		// SKYRAT EDIT END
+			// SKYRAT EDIT END
 
 	// SKYRAT EDIT ADDITION BEGIN - MARKINGS CODE
 	var/override_color
@@ -1010,6 +1018,8 @@
 				if (emissive)
 					. += emissive
 	// SKYRAT EDIT END - MARKINGS CODE END
+
+	return .
 
 /obj/item/bodypart/deconstruct(disassembled = TRUE)
 	SHOULD_CALL_PARENT(TRUE)
@@ -1075,7 +1085,7 @@
 	if(!owner)
 		return
 
-	if(HAS_TRAIT(owner, TRAIT_NOBLEED) || !IS_ORGANIC_LIMB(src))
+	if(HAS_TRAIT(owner, TRAIT_NOBLOOD) || !IS_ORGANIC_LIMB(src))
 		if(cached_bleed_rate != old_bleed_rate)
 			update_part_wound_overlay()
 		return
@@ -1116,7 +1126,7 @@
 /obj/item/bodypart/proc/update_part_wound_overlay()
 	if(!owner)
 		return FALSE
-	if(HAS_TRAIT(owner, TRAIT_NOBLEED) || !IS_ORGANIC_LIMB(src) || (NOBLOOD in species_flags_list))
+	if(HAS_TRAIT(owner, TRAIT_NOBLOOD) || !IS_ORGANIC_LIMB(src))
 		if(bleed_overlay_icon)
 			bleed_overlay_icon = null
 			owner.update_wound_overlays()

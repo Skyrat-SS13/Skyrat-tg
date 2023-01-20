@@ -124,13 +124,7 @@
 /turf/open/space,
 /area/space/nearstation)
 "fy" = (
-/obj/docking_port/stationary{
-	dwidth = 1;
-	height = 4;
-	name = "escape pod loader";
-	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
-	width = 3
-	},
+/obj/docking_port/stationary/escape_pod,
 /turf/open/space/basic,
 /area/space)
 "fV" = (
@@ -624,14 +618,7 @@
 	},
 /area/station/hallway/secondary/entry)
 "zX" = (
-/obj/docking_port/stationary{
-	dwidth = 3;
-	height = 5;
-	shuttle_id = "commonmining_home";
-	name = "SS13: Common Mining Dock";
-	roundstart_template = /datum/map_template/shuttle/mining_common/meta;
-	width = 7
-	},
+/obj/docking_port/stationary/public_mining_dock,
 /turf/open/space/basic,
 /area/space)
 "Af" = (
@@ -878,7 +865,6 @@
 	height = 13;
 	shuttle_id = "arrivals_stationary";
 	name = "arrivals";
-	roundstart_template = null;
 	width = 5
 	},
 /turf/open/space/basic,

@@ -23,6 +23,7 @@
 
 /obj/item/trash/can/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/janitor.dmi'
+	icon_state = "lemonade"
 
 /*
 *	SKYRAT SODA CANS

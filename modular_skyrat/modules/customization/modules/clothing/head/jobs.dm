@@ -1,6 +1,6 @@
 // This is for all the berets that /tg/ didn't want. You're welcome, they should look better.
 
-/obj/item/clothing/head/hos/beret
+/obj/item/clothing/head/hats/hos/beret
 	name = "head of security beret"
 	desc = "A robust beret for the Head of Security, for looking stylish while not sacrificing protection."
 	icon_state = "beret_badge"
@@ -8,7 +8,7 @@
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	greyscale_colors = "#3F3C40#FFCE5B"
 
-/obj/item/clothing/head/hos/beret/syndicate
+/obj/item/clothing/head/hats/hos/beret/syndicate
 	name = "syndicate beret"
 	desc = "A black beret with thick armor padding inside. Stylish and robust."
 	greyscale_colors = "#3F3C40#DB2929"
@@ -20,8 +20,18 @@
 	greyscale_config = /datum/greyscale_config/beret_badge_fancy
 	greyscale_config_worn = /datum/greyscale_config/beret_badge_fancy/worn
 	greyscale_colors = "#3C485A#FF0000#00AEEF"
-	armor = list(MELEE = 40, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 30, ACID = 50, WOUND = 6)
+	armor_type = /datum/armor/sec_navywarden
 	strip_delay = 60
+
+/datum/armor/sec_navywarden
+	melee = 40
+	bullet = 30
+	laser = 30
+	energy = 40
+	bomb = 25
+	fire = 30
+	acid = 50
+	wound = 6
 
 /obj/item/clothing/head/beret/sec/navyofficer
 	desc = "A special beret with the security insignia emblazoned on it. For officers with class."
@@ -65,15 +75,6 @@
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	greyscale_colors = "#FFBC30#EFEFEF"
-	flags_1 = NONE
-
-/obj/item/clothing/head/beret/atmos
-	name = "atmospheric beret"
-	desc = "While \"pipes\" and \"style\" might not rhyme, this beret sure makes you feel like they should!"
-	icon_state = "beret_badge"
-	greyscale_config = /datum/greyscale_config/beret_badge
-	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
-	greyscale_colors = "#FFDE15#00A5FF"
 	flags_1 = NONE
 
 
