@@ -7,6 +7,7 @@
 	category = list(RND_CATEGORY_WEAPONS)
 
 // EMITTERS
+
 /datum/design/microfusion/enhanced_phase_emitter
 	name = "Enhanced Microfusion Phase Emitter"
 	desc = "The core of a microfusion projection weapon, produces the laser."
@@ -26,6 +27,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 /datum/design/microfusion/bluespace_phase_emitter
 	name = "Bluespace Microfusion Phase Emitter"
 	desc = "The core of a microfusion projection weapon, produces the laser."
@@ -37,6 +39,7 @@
 	)
 
 // CELLS
+
 /datum/design/microfusion/cell
 	name = "Microfusion Cell"
 	desc = "A microfusion cell."
@@ -63,6 +66,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
 	)
+
 /datum/design/microfusion/cell/advanced
 	name = "Advanced Microfusion Cell"
 	desc = "An advanced microfusion cell with a capacity of 1700 MF and 2 attachment points."
@@ -73,6 +77,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
 	)
+
 /datum/design/microfusion/cell/bluespace
 	name = "Bluespace Microfusion Cell"
 	desc = "A bluespace microfusion cell with a capacity of 2000 MF and 3 attachment points."
@@ -83,6 +88,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
 	)
+
 // CELL UPGRADES
 
 /datum/design/microfusion/cell_attachment_stabiliser
@@ -94,6 +100,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 /datum/design/microfusion/cell_attachment_overcapacity
 	name = "Overcapacity Microfusion Cell Attachment"
 	desc = "An attachment for microfusion cells that increases MF capacity."
@@ -103,6 +110,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 /datum/design/microfusion/cell_attachment_selfcharging
 	name = "Self-Charging Microfusion Cell Attachment"
 	desc = "Contains a small amount of infinitely decaying nuclear material, causing the fusion reaction to be self sustaining. WARNING: May cause radiation burns if not stabilised."
@@ -112,7 +120,9 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 // RAIL MODS
+
 /datum/design/microfusion/gun_attachment_scope
 	name = "Microfusion Weapon Scope"
 	desc = "A scope... for microfusion weapon platforms."
@@ -122,6 +132,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 /datum/design/microfusion/gun_attachment_rail
 	name = "Microfusion Weapon Rail"
 	desc = "A rail system for any additional attachments, such as a torch."
@@ -131,7 +142,9 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 // BARREL MODS
+
 /datum/design/microfusion/gun_attachment_grip
 	name = "Microfusion Weapon Grip"
 	desc = "A grip... for microfusion weapon platforms."
@@ -141,6 +154,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 /datum/design/microfusion/gun_attachment_heatsink
 	name = "Phase Emitter Heatsink"
 	desc = "A heatsink attachment for your microfusion weapon. Massively increases cooling potential."
@@ -150,6 +164,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 /datum/design/microfusion/gun_attachment_suppressor
 	name = "Suppressor Lens Attachment"
 	desc = "An experimental barrel attachment that dampens the soundwave of the emitter, making the laser shots far more stealthy!"
@@ -159,6 +174,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 /datum/design/microfusion/gun_attachment_honk
 	name = "Bananium Phase Emitter Upgrade"
 	desc = "Makes your lasers into the greatest clowning tool ever made. HONK!"
@@ -168,6 +184,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 /datum/design/microfusion/gun_attachment_lance
 	name = "Lance Induction Carriage"
 	desc = "Turns the gun into a designated marksman rifle."
@@ -177,7 +194,9 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 // EMITTER UPGRADES
+
 /datum/design/microfusion/gun_attachment_scatter
 	name = "Diffuser Microfusion Lens Attachment"
 	desc = "Splits the microfusion laser beam entering the lens!"
@@ -187,6 +206,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 /datum/design/microfusion/gun_attachment_superheat
 	name = "Superheating Phase Emitter Upgrade"
 	desc = "Superheats the beam, causing targets to ignite!"
@@ -196,6 +216,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 /datum/design/microfusion/gun_attachment_hellfire
 	name = "Hellfire Phase Emitter Upgrade"
 	desc = "Overheats the beam, causing nastier wounds and higher damage!"
@@ -205,6 +226,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 /datum/design/microfusion/gun_attachment_penetrator
 	name = "Focused Repeating Phase Emitter Upgrade"
 	desc = "Upgrades the central phase emitter to repeat twice and penetrate armor."
@@ -214,6 +236,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 /datum/design/microfusion/gun_attachment_scattermax
 	name = "Crystalline Diffuser Microfusion Lens Attachment"
 	desc = "Splits the microfusion laser beam entering the lens even more!"
@@ -223,6 +246,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 /datum/design/microfusion/gun_attachment_repeater
 	name = "Repeating Phase Emitter Upgrade"
 	desc = "Upgrades the central phase emitter to repeat twice."
@@ -232,6 +256,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 /datum/design/microfusion/gun_attachment_xray
 	name = "Phase Inverter Emitter Array"
 	desc = "Experimental technology that inverts the central phase emitter causing the wave frequency to shift into X-ray. CAUTION: Phase emitter heats up very quickly."
@@ -241,7 +266,9 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 // COSMETICS
+
 /datum/design/microfusion/gun_attachment_rgb
 	name = "Phase Emitter Spectrograph"
 	desc = "An attachment hooked up to the phase emitter, allowing the user to adjust the color of the beam outputted. This has seen widespread use by various factions capable of getting their hands on microfusion weapons, whether as a calling card or simply for entertainment."
@@ -251,6 +278,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 /datum/design/microfusion/gun_attachment_black_camo
 	name = "Black Camo Microfusion Frame"
 	desc = "A frame modification for the MCR-10, changing the color of the gun to black."
@@ -260,6 +288,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 /datum/design/microfusion/gun_attachment_nt_camo
 	name = "Nanotrasen Camo Microfusion Frame"
 	desc = "A frame modification for the MCR-01, changing the color of the gun to blue."
@@ -269,6 +298,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 /datum/design/microfusion/gun_attachment_syndi_camo
 	name = "Blood Red Camo Microfusion Frame"
 	desc = "A frame modification for the MCR-01, changing the color of the gun to a slick blood red."
@@ -278,6 +308,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
 	)
+
 /datum/design/microfusion/gun_attachment_honk_camo
 	name = "Bananium Microfusion Frame"
 	desc = "A frame modification for the MCR-01, plating the gun in bananium."
