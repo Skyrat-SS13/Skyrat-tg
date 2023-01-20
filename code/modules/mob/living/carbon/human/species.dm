@@ -347,13 +347,15 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 		var/obj/item/organ/oldorgan = C.getorganslot(slot) //used in removing
 		var/obj/item/organ/neworgan = slot_mutantorgans[slot] //used in adding
+		if(!neworgan) //these can be null, if so we shouldn't regenerate
+			continue
 
 		if(visual_only && !initial(neworgan.visual))
 			continue
 
 		var/used_neworgan = FALSE
 		neworgan = SSwardrobe.provide_type(neworgan)
-		var/should_have = neworgan.get_availability(src) //organ proc that points back to a species trait (so if the species is supposed to have this organ)
+		var/should_have = neworgan.get_availability(src, C) //organ proc that points back to a species trait (so if the species is supposed to have this organ)
 
 		/*
 		 * There is an existing organ in this slot, what should we do with it? Probably remove it!
@@ -1045,8 +1047,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	if(!outfit_important_for_life)
 		return
 
-	outfit_important_for_life= new()
-	outfit_important_for_life.equip(human_to_equip)
+	human_to_equip.equipOutfit(outfit_important_for_life)
 
 /**
  * Species based handling for irradiation
@@ -2082,8 +2083,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 /datum/species/proc/create_pref_blood_perks()
 	var/list/to_add = list()
 
-	// NOBLOOD takes priority by default
-	if(NOBLOOD in species_traits)
+	// TRAIT_NOBLOOD takes priority by default
+	if(TRAIT_NOBLOOD in inherent_traits)
 		to_add += list(list(
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "tint-slash",
