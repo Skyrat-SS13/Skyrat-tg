@@ -1458,7 +1458,4 @@
 	desc = "More for style than function, barely covers more than the palm of your hand."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/hands.dmi'
-	lefthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_left.dmi'
-	righthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_right.dmi'
 	icon_state = "lt3_gloves"
-	inhand_icon_state = "lt3_gloves"
