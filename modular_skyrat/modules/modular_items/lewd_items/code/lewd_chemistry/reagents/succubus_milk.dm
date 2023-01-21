@@ -130,7 +130,7 @@
 	if(!exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
 		return
 		
-	if (incubus_draft) // we are overdosing on both
+	if(incubus_draft) // we are overdosing on both
 		if(exposed_mob.gender != PLURAL)
 			exposed_mob.set_gender(PLURAL)
 			exposed_mob.physique = exposed_mob.gender
@@ -146,7 +146,7 @@
 	// Check if prefs allow for this
 	if(!exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/penis_shrinkage))
 		return
-		
+	
 	shrink_penis(exposed_mob, suppress_chat)
 	shrink_testicles(exposed_mob, suppress_chat)
 

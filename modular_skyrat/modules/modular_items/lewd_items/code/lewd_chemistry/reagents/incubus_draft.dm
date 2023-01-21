@@ -125,7 +125,7 @@
 	if(!exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/gender_change))
 		return
 		
-	if (succubus_milk)
+	if(succubus_milk)
 		if(exposed_mob.gender != PLURAL)
 			exposed_mob.set_gender(PLURAL)
 			exposed_mob.physique = exposed_mob.gender
@@ -235,8 +235,6 @@
 	
 	if(!suppress_chat)
 		to_chat(exposed_mob, span_purple("Your crotch feels warm as something suddenly sprouts between your legs."))
-		
-	return new_penis
 
 // Attempt to create new testicles
 /datum/reagent/drug/aphrodisiac/incubus_draft/create_testicles(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 

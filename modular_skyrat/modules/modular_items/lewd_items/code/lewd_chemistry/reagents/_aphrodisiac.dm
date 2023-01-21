@@ -66,6 +66,7 @@
 
 /// Runs on life after preference checks. Use this instead of on_mob_life
 /datum/reagent/drug/aphrodisiac/proc/life_effects(mob/living/carbon/human/exposed_mob)
+	return
 
 /// Runs on OD process after preference checks. Use this instead of overdose_process
 /datum/reagent/drug/aphrodisiac/proc/overdose_effects(mob/living/carbon/human/exposed_mob)
