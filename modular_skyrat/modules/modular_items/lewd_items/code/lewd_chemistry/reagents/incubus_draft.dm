@@ -46,6 +46,7 @@
 
 // Handle gender change
 /datum/reagent/drug/aphrodisiac/incubus_draft/change_gender(mob/living/carbon/human/exposed_mob, succubus_milk = FALSE) 
+
 	// Check if prefs allow this
 	if(!exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/gender_change))
 		return
@@ -63,26 +64,25 @@
 
 // Handle genital shrinkage 
 /datum/reagent/drug/aphrodisiac/incubus_draft/shrink_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
+
 	shrink_breasts(exposed_mob, suppress_chat)
 	remove_genitals(exposed_mob, suppress_chat)
 
 // Attempt vagina and womb removal
 /datum/reagent/drug/aphrodisiac/incubus_draft/remove_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 		
+
 	remove_vagina(exposed_mob, suppress_chat)
 	remove_womb(exposed_mob, suppress_chat)
 
-
 // Attempt new genital creation
 /datum/reagent/drug/aphrodisiac/incubus_draft/create_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
-	// Make sure prefs allow this
-	if(!exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
-		return
 		
 	create_penis(exposed_mob, suppress_chat)
 	create_testicles(exposed_mob, suppress_chat)
 	
 // Helper function to display a growth message		
-/datum/reagent/drug/aphrodisiac/incubus_draft/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/penis/mob_penis)
+/datum/reagent/drug/aphrodisiac/incubus_draft/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/penis/mob_penis = exposed_mob?.getorganslot(ORGAN_SLOT_PENIS))
+
 	if(mob_penis.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_bottomless())
 		if(mob_penis?.genital_size >= (penis_max_length - 2))
 			if(exposed_mob.dna.features["penis_sheath"] == SHEATH_SLIT)

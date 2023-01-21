@@ -167,6 +167,7 @@
 
 //  Attempt to create new penis
 /datum/reagent/drug/aphrodisiac/proc/create_penis(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
+	
 	// Create the new penis if we don't already have one and if prefs allow
 	var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
 	
@@ -282,8 +283,7 @@
 // ---- Growth functions : Male genitals ----
 
 // Attempt to grow penis
-/datum/reagent/drug/aphrodisiac/proc/grow_penis(mob/living/carbon/human/exposed_mob) 
-	var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
+/datum/reagent/drug/aphrodisiac/proc/grow_penis(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/penis/mob_penis = exposed_mob?.getorganslot(ORGAN_SLOT_PENIS)) 
 	
 	// Check if we actually have a penis to grow
 	if(!mob_penis)
@@ -315,11 +315,14 @@
 			exposed_mob.apply_damage(1, BRUTE, target_bodypart)
 
 // Attempt to grow balls
-/datum/reagent/drug/aphrodisiac/proc/grow_balls(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
-	//no balls
-	var/obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+/datum/reagent/drug/aphrodisiac/proc/grow_balls(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob?.getorganslot(ORGAN_SLOT_TESTICLES)) 
 	
+	//no balls
 	if(!mob_testicles)
+		return
+
+	// Check if prefs allow this
+	if(!exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/penis_enlargement))
 		return
 
 	var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
@@ -340,7 +343,7 @@
 // ---- Genital Growth : Female genitals ----
 
 // Handle breast growth
-/datum/reagent/drug/aphrodisiac/proc/grow_breasts(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)) 
+/datum/reagent/drug/aphrodisiac/proc/grow_breasts(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.getorganslot(ORGAN_SLOT_BREASTS)) 
 	
 	if(!mob_breasts)
 		return
@@ -372,10 +375,9 @@
 // ---- Genital Shrinkage : Male genitals ----
 
 // Attempt penis shrinkage
-/datum/reagent/drug/aphrodisiac/proc/shrink_penis(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 	
+/datum/reagent/drug/aphrodisiac/proc/shrink_penis(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/penis/mob_penis = exposed_mob?.getorganslot(ORGAN_SLOT_PENIS)) 	
+
 	// Is there a penis to shrink?
-	var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
-	
 	if(!mob_penis)
 		return
 	
@@ -395,9 +397,7 @@
 			update_appearance(exposed_mob, mob_penis)
 
 // Attempt ball shrinkage			
-/datum/reagent/drug/aphrodisiac/proc/shrink_testicles(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
-	var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
-	var/obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+/datum/reagent/drug/aphrodisiac/proc/shrink_testicles(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/penis/mob_penis = exposed_mob?.getorganslot(ORGAN_SLOT_PENIS), obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob?.getorganslot(ORGAN_SLOT_TESTICLES)) 
 	
 	if(!mob_testicles)
 		return
@@ -417,9 +417,8 @@
 // ---- Genital Shrinkage : Female genitals ----
 
 // Handle breast shrinkage
-/datum/reagent/drug/aphrodisiac/proc/shrink_breasts(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
-	var/obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
-	
+/datum/reagent/drug/aphrodisiac/proc/shrink_breasts(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.getorganslot(ORGAN_SLOT_BREASTS)) 
+
 	if(!mob_breasts) 
 		return
 

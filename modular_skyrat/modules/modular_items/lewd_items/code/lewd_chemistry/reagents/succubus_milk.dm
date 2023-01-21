@@ -85,6 +85,7 @@
 
 // Turns you into a female if character is male. Also adds breasts and female genitalia. 
 /datum/reagent/drug/aphrodisiac/succubus_milk/overdose_effects(mob/living/carbon/human/exposed_mob)
+
 	// Check if overdosing on succubus milk and incubus draft simultaneously, to prevent chat spam
 	var/suppress_chat = FALSE
 	var/datum/reagent/drug/aphrodisiac/incubus_draft/incubus_draft = locate(/datum/reagent/drug/aphrodisiac/incubus_draft) in exposed_mob.reagents.reagent_list 
@@ -103,6 +104,7 @@
 
 // Handle gender change
 /datum/reagent/drug/aphrodisiac/succubus_milk/change_gender(mob/living/carbon/human/exposed_mob, incubus_draft = FALSE) 
+	
 	//Check if prefs allow for this
 	if(!exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
 		return
@@ -119,25 +121,20 @@
 		update_appearance(exposed_mob, mutations_overlay = TRUE)
 
 // Attempt genital shrinkage
-/datum/reagent/drug/aphrodisiac/succubus_milk/shrink_genitals(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/penis/mob_penis, obj/item/organ/external/genital/testicles/mob_testicles, suppress_chat = FALSE) 
-	// Check if prefs allow for this
-	if(!exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/penis_shrinkage))
-		return
+/datum/reagent/drug/aphrodisiac/succubus_milk/shrink_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
 	
 	shrink_penis(exposed_mob, suppress_chat)
 	shrink_testicles(exposed_mob, suppress_chat)
 
 // Attempt to create new genitals if prefs allow this
 /datum/reagent/drug/aphrodisiac/succubus_milk/create_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE)
-	if(!exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
-		return
 	
 	create_breasts(exposed_mob, suppress_chat)
 	create_vagina(exposed_mob, suppress_chat)
 	create_womb(exposed_mob, suppress_chat)
 
 // Helper function to display a growth message	
-/datum/reagent/drug/aphrodisiac/succubus_milk/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/breasts/mob_breasts)
+/datum/reagent/drug/aphrodisiac/succubus_milk/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.getorganslot(ORGAN_SLOT_BREASTS))
 	// Checks for cup size.
 	var/translation = mob_breasts.breasts_size_to_cup(mob_breasts.genital_size)
 
