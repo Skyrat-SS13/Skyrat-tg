@@ -1453,7 +1453,7 @@
 	icon_state = "lt3_jeans"
 	inhand_icon_state = "lt3_jeans"
 
-/obj/item/clothing/gloves/combat/skyy
+/obj/item/clothing/gloves/skyy
 	name = "charcoal fingerless gloves"
 	desc = "More for style than function, barely covers more than the palm of your hand."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/gloves.dmi'
