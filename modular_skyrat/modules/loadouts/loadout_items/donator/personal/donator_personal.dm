@@ -633,12 +633,12 @@
 	item_path = /obj/item/clothing/under/skyy
 	ckeywhitelist = list("lt3")
 
-/datum/loadout_item/suit/lt3_gloves
+/datum/loadout_item/gloves/lt3_gloves
 	name = "Charcoal Fingerless Gloves"
 	item_path = /obj/item/clothing/gloves/combat/skyy
 	ckeywhitelist = list("lt3")
 
-/datum/loadout_item/suit/lt3_backpack
+/datum/loadout_item/accessory/lt3_backpack
 	name = "Charcoal Backpack"
 	item_path = /obj/item/storage/backpack/skyy
 	ckeywhitelist = list("lt3")
