@@ -776,7 +776,7 @@
 /datum/crafting_recipe/flashlight_eyes
 	name = "Flashlight Eyes"
 	result = /obj/item/organ/internal/eyes/robotic/flashlight
-	time = 1 SECONDS
+	time = 10
 	reqs = list(
 		/obj/item/flashlight = 2,
 		/obj/item/restraints/handcuffs/cable = 1
@@ -1125,7 +1125,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 /datum/crafting_recipe/ghettojetpack
 	name = "Improvised Jetpack"
 	result = /obj/item/tank/jetpack/improvised
-	time = 3 SECONDS
+	time = 30
 	reqs = list(/obj/item/tank/internals/oxygen = 2, /obj/item/extinguisher = 1, /obj/item/pipe = 3, /obj/item/stack/cable_coil = MAXCOIL)
 	category = CAT_EQUIPMENT
 	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER, TOOL_WIRECUTTER)
