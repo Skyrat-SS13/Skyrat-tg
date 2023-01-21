@@ -85,32 +85,32 @@
 /datum/reagent/drug/aphrodisiac/proc/change_gender(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
 
 /// Handle creation of new genitals
-/datum/reagent/drug/aphrodisiac/proc/create_genitals(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac)
-/datum/reagent/drug/aphrodisiac/proc/create_breasts(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
-/datum/reagent/drug/aphrodisiac/proc/create_penis(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
-/datum/reagent/drug/aphrodisiac/proc/create_testicles(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
-/datum/reagent/drug/aphrodisiac/proc/create_vagina(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
-/datum/reagent/drug/aphrodisiac/proc/create_womb(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
+/datum/reagent/drug/aphrodisiac/proc/create_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE)
+/datum/reagent/drug/aphrodisiac/proc/create_breasts(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
+/datum/reagent/drug/aphrodisiac/proc/create_penis(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
+/datum/reagent/drug/aphrodisiac/proc/create_testicles(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
+/datum/reagent/drug/aphrodisiac/proc/create_vagina(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
+/datum/reagent/drug/aphrodisiac/proc/create_womb(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
 
 /// Handle removal of old genitals
-/datum/reagent/drug/aphrodisiac/proc/remove_genitals(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
-/datum/reagent/drug/aphrodisiac/proc/remove_penis(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
-/datum/reagent/drug/aphrodisiac/proc/remove_testicles(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
-/datum/reagent/drug/aphrodisiac/proc/remove_vagina(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
-/datum/reagent/drug/aphrodisiac/proc/remove_womb(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
+/datum/reagent/drug/aphrodisiac/proc/remove_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
+/datum/reagent/drug/aphrodisiac/proc/remove_penis(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
+/datum/reagent/drug/aphrodisiac/proc/remove_testicles(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
+/datum/reagent/drug/aphrodisiac/proc/remove_vagina(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
+/datum/reagent/drug/aphrodisiac/proc/remove_womb(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
 
 /// Handle penis growth
-/datum/reagent/drug/aphrodisiac/proc/grow_penis(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
+/datum/reagent/drug/aphrodisiac/proc/grow_penis(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
 /// Handle ball growth
-/datum/reagent/drug/aphrodisiac/proc/grow_balls(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
+/datum/reagent/drug/aphrodisiac/proc/grow_balls(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
 /// Handle breast growth
-/datum/reagent/drug/aphrodisiac/proc/grow_breasts(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
+/datum/reagent/drug/aphrodisiac/proc/grow_breasts(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
 
 /// Handle genital shrinkage
-/datum/reagent/drug/aphrodisiac/proc/shrink_genitals(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital) 
-/datum/reagent/drug/aphrodisiac/proc/shrink_penis(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital) 
-/datum/reagent/drug/aphrodisiac/proc/shrink_testicles(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital) 
-/datum/reagent/drug/aphrodisiac/proc/shrink_breasts(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital) 
+/datum/reagent/drug/aphrodisiac/proc/shrink_genitals(mob/living/carbon/human/exposed_mob) 
+/datum/reagent/drug/aphrodisiac/proc/shrink_penis(mob/living/carbon/human/exposed_mob) 
+/datum/reagent/drug/aphrodisiac/proc/shrink_testicles(mob/living/carbon/human/exposed_mob) 
+/datum/reagent/drug/aphrodisiac/proc/shrink_breasts(mob/living/carbon/human/exposed_mob) 
 
 /// Used to display the messages that appear in chat while the growth is occurring
 /datum/reagent/drug/aphrodisiac/proc/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/genital) 
