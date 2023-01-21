@@ -121,12 +121,14 @@
 // ---- New Genital Creation : Male genitals ----
 
 //  Attempt to create new penis
-/datum/reagent/drug/aphrodisiac/proc/create_penis(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
+/datum/reagent/drug/aphrodisiac/proc/create_penis(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/penis/mob_penis = exposed_mob?.getorganslot(ORGAN_SLOT_PENIS)) 
 	
 	// Create the new penis if we don't already have one and if prefs allow
-	var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
-	
 	if(mob_penis)
+		return
+	
+// Check if prefs allow it	
+	if(!exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
 		return
 	
 	// If the user has not defined their own prefs for their penis type, try to assign a default based on their species, defaulting to human
@@ -159,11 +161,13 @@
 		to_chat(exposed_mob, span_purple("Your crotch feels warm as something suddenly sprouts between your legs."))
 
 // Attempt to create new testicles
-/datum/reagent/drug/aphrodisiac/proc/create_testicles(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
-	// Create the new testicles if we don't already have them and if prefs allow
-	var/obj/item/organ/external/genital/testicles/mob_balls = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+/datum/reagent/drug/aphrodisiac/proc/create_testicles(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/testicles/mob_balls = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)) 
 	
+	// Create the new testicles if we don't already have them and if prefs allow
 	if(mob_balls)
+		return
+		
+	if(!exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
 		return
 		
 	var/obj/item/organ/external/genital/testicles/new_balls = new
@@ -177,10 +181,13 @@
 // ---- New Genital Creation : Female genitals ----
 
 // Attempt to create new breasts
-/datum/reagent/drug/aphrodisiac/proc/create_breasts(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, mob_breasts = exposed_mob?.getorganslot(ORGAN_SLOT_BREASTS)) 
+/datum/reagent/drug/aphrodisiac/proc/create_breasts(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.getorganslot(ORGAN_SLOT_BREASTS)) 
 
 	// Make sure we don't already have them
 	if(mob_breasts)
+		return
+		
+	if(!exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
 		return
 		
 	// If the user has not defined their own prefs for their breast type, default to two breasts
@@ -206,7 +213,7 @@
 	
 	return new_breasts
 
-/datum/reagent/drug/aphrodisiac/proc/create_vagina(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, mob_vagina = exposed_mob?.getorganslot(ORGAN_SLOT_VAGINA))
+/datum/reagent/drug/aphrodisiac/proc/create_vagina(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/vagina/mob_vagina = exposed_mob?.getorganslot(ORGAN_SLOT_VAGINA))
 	
 	// Add new vagina if we don't already have one. Use dna prefs before assigning a default human one.
 	if(mob_vagina)
@@ -226,7 +233,7 @@
 		if(!suppress_chat)
 			to_chat(exposed_mob, span_purple("You feel a warmth in your groin as something blossoms down there."))
 
-/datum/reagent/drug/aphrodisiac/proc/create_womb(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, mob_womb = exposed_mob?.getorganslot(ORGAN_SLOT_WOMB))
+/datum/reagent/drug/aphrodisiac/proc/create_womb(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/womb/mob_womb = exposed_mob?.getorganslot(ORGAN_SLOT_WOMB))
 	
 	// Add a new womb if we don't already have one. Use dna prefs before assigning a default normal one.
 	if(mob_womb)
@@ -432,10 +439,11 @@
 	if(!exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
 		return
 		
-	if(!suppress_chat)
-		to_chat(exposed_mob, span_purple("Your breasts have completely tightened into firm, flat pecs."))
 	mob_breasts.Remove(exposed_mob)
 	update_appearance(exposed_mob)
+	
+	if(!suppress_chat)
+		to_chat(exposed_mob, span_purple("Your breasts have completely tightened into firm, flat pecs."))
 
 // Removes the vagina if it exists
 /datum/reagent/drug/aphrodisiac/proc/remove_vagina(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/vagina/mob_vagina = exposed_mob?.getorganslot(ORGAN_SLOT_VAGINA)) 
@@ -448,6 +456,7 @@
 		
 	mob_vagina.Remove(exposed_mob)
 	update_appearance(exposed_mob)
+	
 	if(!suppress_chat)
 		to_chat(exposed_mob, span_purple("You can the feel the muscles in your groin begin to tighten as your vagina seals itself completely shut."))
 
