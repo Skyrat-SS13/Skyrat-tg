@@ -1429,7 +1429,7 @@
 	icon_off = "masvedishcigar_off"
 
 // Donation reward for LT3
-/obj/item/clothing/suit/armor/lt3jacket
+/obj/item/clothing/suit/armor/skyy
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	name = "silver jacket"
 	desc = "A synthetic fabric jacket enhanced with a special alloy for some extra protection and style for those with a commanding presence."
@@ -1444,7 +1444,7 @@
 	cold_protection = CHEST|GROIN|ARMS
 	heat_protection = CHEST|GROIN|ARMS
 
-/obj/item/clothing/under/lt3jeans
+/obj/item/clothing/under/skyy
 	name = "silver jeans"
 	desc = "A shining, silver denim enhanced with a special alloy for some extra protection and style for those with a commanding presence."
 	armor_type = /datum/armor/under_syndicate
@@ -1455,7 +1455,7 @@
 	icon_state = "lt3_jeans"
 	inhand_icon_state = "lt3_jeans"
 
-/obj/item/clothing/gloves/combat/lt3gloves
+/obj/item/clothing/gloves/combat/skyy
 	name = "charcoal fingerless gloves"
 	desc = "More for style than function, barely covers more than the palm of your hand."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/gloves.dmi'
@@ -1465,7 +1465,7 @@
 	icon_state = "lt3_gloves"
 	inhand_icon_state = "lt3_gloves"
 
-/obj/item/storage/backpack/lt3backpack
+/obj/item/storage/backpack/skyy
 	name = "charcoal backpack"
 	desc = "More for style than function."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/backpack.dmi'
