@@ -7,7 +7,7 @@
 	///Where the genital is on the body. If clothing doesn't cover it, it shows up!
 	var/genital_location = GROIN
 
-/datum/sprite_accessory/genital/is_hidden(mob/living/carbon/human/target_mob, obj/item/bodypart/genital_to_hide)
+/datum/sprite_accessory/genital/is_hidden(mob/living/carbon/human/target_mob, obj/item/bodypart/head)
 	var/obj/item/organ/external/genital/badonkers = target_mob.getorganslot(associated_organ_slot)
 	if(!badonkers)
 		return TRUE
