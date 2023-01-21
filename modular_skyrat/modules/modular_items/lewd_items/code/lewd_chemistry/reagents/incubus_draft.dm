@@ -165,7 +165,8 @@
 
 // Attempt vagina and womb removal
 /datum/reagent/drug/aphrodisiac/incubus_draft/remove_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 		
-	remove_genitals(exposed_mob, suppress_chat)
+	remove_vagina(exposed_mob, suppress_chat)
+	remove_womb(exposed_mob, suppress_chat)
 
 // Removes the vagina if it exists
 /datum/reagent/drug/aphrodisiac/incubus_draft/remove_vagina(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
