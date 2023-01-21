@@ -159,10 +159,10 @@ There are several things that need to be remembered:
 	if(wear_id)
 		var/obj/item/worn_item = wear_id
 		update_hud_id(worn_item)
+		/* SKYRAT EDIT START - PDA-B-GONE
 		var/icon_file = 'icons/mob/clothing/id.dmi'
-
 		id_overlay = wear_id.build_worn_icon(default_layer = ID_LAYER, default_icon_file = icon_file)
-
+		*/ //SKYRAT EDIT END - PDA-B-GONE
 		if(!id_overlay)
 			return
 		if(OFFSET_ID in dna.species.offset_features)
@@ -413,7 +413,7 @@ There are several things that need to be remembered:
 			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_HEAD, head)
 			if(icon_file)
 				mutant_override = TRUE
-		if(!icon_file && (dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
+		if((!icon_file || icon_file == 'icons/mob/clothing/head/default.dmi') && (dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			icon_file = worn_item.worn_icon_muzzled || SNOUTED_HEAD_FILE
 			if(icon_file && icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 				mutant_override = TRUE
@@ -554,7 +554,7 @@ There are several things that need to be remembered:
 			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_MASK, wear_mask)
 			if(icon_file)
 				mutant_override = TRUE
-		if(!icon_file && (dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
+		if((!icon_file || icon_file == 'icons/mob/clothing/mask.dmi') && (dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			icon_file = worn_item.worn_icon_muzzled || SNOUTED_MASK_FILE
 			if(icon_file && icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
 				mutant_override = TRUE
