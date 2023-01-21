@@ -1442,7 +1442,7 @@
 	cold_protection = CHEST|GROIN|ARMS
 	heat_protection = CHEST|GROIN|ARMS
 
-/obj/item/clothing/under/skyy
+/obj/item/clothing/under/pants/skyy
 	name = "silver jeans"
 	desc = "A shining, silver denim enhanced with a special alloy for some extra protection and style for those with a commanding presence."
 	armor_type = /datum/armor/under_syndicate
