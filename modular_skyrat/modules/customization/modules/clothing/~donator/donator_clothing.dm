@@ -1438,9 +1438,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "lt3_jacket"
 	inhand_icon_state = "syndicate"
-	body_parts_covered = CHEST|GROIN|ARMS
-	cold_protection = CHEST|GROIN|ARMS
-	heat_protection = CHEST|GROIN|ARMS
 
 /obj/item/clothing/under/pants/skyy
 	name = "silver jeans"
