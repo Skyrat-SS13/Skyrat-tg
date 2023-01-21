@@ -82,9 +82,14 @@
 /datum/reagent/drug/aphrodisiac/succubus_milk/life_effects(mob/living/carbon/human/exposed_mob) //Increases breast size
 	var/obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
 	enlargement_amount += enlarger_increase_step
+	
 	// Adds a check for breasts in the first place.
 	if(!mob_breasts)
 		return
+		
+	if(!exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
+		return
+		
 	if(enlargement_amount >= enlargement_threshold)
 		if(mob_breasts?.genital_size >= max_breast_size)
 			return
@@ -93,7 +98,8 @@
 		enlargement_amount = 0
 
 		growth_to_chat(exposed_mob, mob_breasts)
-					
+
+	// Damage from being too big for your clothes
 	if((mob_breasts?.genital_size >= (max_breast_size - 2)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
 		if(prob(damage_chance))
 			to_chat(exposed_mob, span_danger("Your breasts begin to strain against your clothes!"))
@@ -137,27 +143,79 @@
 			update_appearance(exposed_mob)
 	
 	// Separates gender change stuff from breast growth and shrinkage, as well as from new genitalia growth/removal
-	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
-		if (incubus_draft)
-			if(exposed_mob.gender != PLURAL)
-				exposed_mob.set_gender(PLURAL)
-				exposed_mob.physique = exposed_mob.gender
-				update_appearance(exposed_mob)
-				exposed_mob.update_mutations_overlay()
-		else if(exposed_mob.gender != FEMALE)
-			exposed_mob.set_gender(FEMALE)
-			exposed_mob.physique = exposed_mob.gender
-			update_appearance(exposed_mob)
-			exposed_mob.update_mutations_overlay()
+	change_gender(exposed_mob, incubus_draft)
 		
-	// Cock & ball shrinkage portion. Check if prefs allow for this.
+	// Cock & ball shrinkage 
+	shrink_genitals(exposed_mob, incubus_draft)
+
+// Handle gender change
+/datum/reagent/drug/aphrodisiac/incubus_draft/change_gender(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/incubus_draft/incubus_draft) 
+	//Check if prefs allow for this
+	if(!exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
+		return
+	if (incubus_draft)
+		if(exposed_mob.gender != PLURAL)
+			exposed_mob.set_gender(PLURAL)
+			exposed_mob.physique = exposed_mob.gender
+			update_appearance(exposed_mob, mutations_overlay = TRUE)
+	else if(exposed_mob.gender != FEMALE)
+		exposed_mob.set_gender(FEMALE)
+		exposed_mob.physique = exposed_mob.gender
+		update_appearance(exposed_mob, mutations_overlay = TRUE)
+
+// Attempt genital shrinkage if prefs allow for this
+/datum/reagent/drug/aphrodisiac/succubus_milk/shrink_genitals(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/penis/mob_penis, obj/item/organ/external/genital/testicles/mob_testicles, datum/reagent/drug/aphrodisiac/incubus_draft/incubus_draft) 
+	if(!exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/penis_shrinkage))
+		return
+		
+	shrink_penis(exposed_mob, incubus_draft)
+	shrink_testicles(exposed_mob, incubus_draft)
+
+// Attempt penis shrinkage
+/datum/reagent/drug/aphrodisiac/succubus_milk/shrink_penis(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/incubus_draft/incubus_draft) 	
+	// Is there a penis to shrink?
+	var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
+	if(!mob_penis)
+		return
+		
+	// Handle completely shrinking away, if prefs allow
+	if(mob_penis.genital_size == penis_min_length)
+		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
+			mob_penis.Remove(exposed_mob)
+			update_appearance(exposed_mob)
+	else 
+		if(mob_penis.genital_size > penis_min_length)
+			mob_penis.genital_size = max(mob_penis.genital_size - penis_size_reduction_step, penis_min_length)
+			update_appearance(exposed_mob, mob_penis)
+		if(mob_penis.girth > penis_minimum_girth)
+			mob_penis.girth = max(mob_penis.girth - penis_girth_reduction_step, penis_minimum_girth)
+			update_appearance(exposed_mob, mob_penis)
+
+// Attempt ball shrinkage			
+/datum/reagent/drug/aphrodisiac/succubus_milk/shrink_testicles(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/incubus_draft/incubus_draft) 
+	// Testicles shrinkage
 	var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
 	var/obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
-	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/penis_shrinkage))
-		shrink_genitals(exposed_mob, mob_penis, mob_testicles, incubus_draft)
+	if(!mob_testicles)
+		return
+		
+	if(mob_testicles.genital_size > balls_min_size)
+		mob_testicles.genital_size = max(mob_testicles.genital_size - testicles_reduction_step, balls_min_size)
+		update_appearance(exposed_mob, mob_testicles)
 
+	else if(mob_testicles.genital_size == balls_min_size && !mob_penis) // Wait for penis to completely shrink away first before removing balls
+		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
+			mob_testicles.Remove(exposed_mob)
+			update_appearance(exposed_mob)
+			if(!incubus_draft)
+				to_chat(exposed_mob, span_purple("You feel a tightening sensation in your groin as things seem to smooth out down there."))
 
+// Attempt to create new genitals
 /datum/reagent/drug/aphrodisiac/succubus_milk/create_genitals(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/incubus_draft/incubus_draft) 
+	create_breasts(exposed_mob, incubus_draft)
+	
+// Attempt to create new breasts
+/datum/reagent/drug/aphrodisiac/succubus_milk/create_breasts(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/incubus_draft/incubus_draft) 
 	// If the user has not defined their own prefs for their breast type, default to two breasts
 	if (exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_BREASTS][MUTANT_INDEX_NAME] == "None")
 		exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_BREASTS][MUTANT_INDEX_NAME] = "Pair"
@@ -181,35 +239,7 @@
 	
 	return new_breasts
 
-/datum/reagent/drug/aphrodisiac/succubus_milk/shrink_genitals(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/penis/mob_penis, obj/item/organ/external/genital/testicles/mob_testicles, datum/reagent/drug/aphrodisiac/incubus_draft/incubus_draft) 
-	// Penis shrinkage
-	if(mob_penis)
-		// Handle completely shrinking away, if prefs allow
-		if(mob_penis.genital_size == penis_min_length)
-			if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
-				mob_penis.Remove(exposed_mob)
-				update_appearance(exposed_mob)
-		else 
-			if(mob_penis.genital_size > penis_min_length)
-				mob_penis.genital_size = max(mob_penis.genital_size - penis_size_reduction_step, penis_min_length)
-				update_appearance(exposed_mob, mob_penis)
-			if(mob_penis.girth > penis_minimum_girth)
-				mob_penis.girth = max(mob_penis.girth - penis_girth_reduction_step, penis_minimum_girth)
-				update_appearance(exposed_mob, mob_penis)
-	
-	// Testicles shrinkage
-	if(mob_testicles)
-		if(mob_testicles.genital_size > 0)
-			mob_testicles.genital_size -= 1
-			update_appearance(exposed_mob, mob_testicles)
-
-		else if(mob_testicles.genital_size == 0 && !mob_penis) // Wait for penis to completely shrink away first before removing balls
-			if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
-				mob_testicles.Remove(exposed_mob)
-				update_appearance(exposed_mob)
-				if(!incubus_draft)
-					to_chat(exposed_mob, span_purple("You feel a tightening sensation in your groin as things seem to smooth out down there."))
-
+// Helper function to display a growth message	
 /datum/reagent/drug/aphrodisiac/succubus_milk/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/breasts/mob_breasts)
 	// Checks for cup size.
 	var/translation = mob_breasts.breasts_size_to_cup(mob_breasts.genital_size)

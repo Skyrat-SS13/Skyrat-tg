@@ -45,9 +45,13 @@
 	var/penis_size_reduction_step = 1
 	/// How much to reduce the girth of the penis each time it's run
 	var/penis_girth_reduction_step = 1
+	/// How much to reduce the size of the balls each time it's run
+	var/testicles_reduction_step = 1
 	
 	/// Largest size the chem can make a mob's balls
 	var/balls_max_size = TESTICLES_MAX_SIZE
+	/// Smallest size the chem can make a mob's balls
+	var/balls_min_size = TESTICLES_MIN_SIZE
 	/// Make the balls enormous only when the penis reaches a certain size
 	var/balls_enormous_size_threshold = PENIS_MAX_LENGTH - 4
 
@@ -62,25 +66,6 @@
 
 /// Runs on life after preference checks. Use this instead of on_mob_life
 /datum/reagent/drug/aphrodisiac/proc/life_effects(mob/living/carbon/human/exposed_mob)
-	return
-
-/// Used to display the messages that appear in chat while the growth is occurring
-/datum/reagent/drug/aphrodisiac/proc/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/genital) 
-	return
-
-/// Handle creation of new genitals
-/datum/reagent/drug/aphrodisiac/proc/create_genitals(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
-
-/// Handle genital shrinkage
-/datum/reagent/drug/aphrodisiac/proc/shrink_genitals(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital) 
-	return
-
-/// Called after growth that alters appearance
-/datum/reagent/drug/aphrodisiac/proc/update_appearance(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/genital)
-	if(genital)
-		genital.update_sprite_suffix()
-	if(exposed_mob) 
-		exposed_mob.update_body()
 
 /// Runs on OD process after preference checks. Use this instead of overdose_process
 /datum/reagent/drug/aphrodisiac/proc/overdose_effects(mob/living/carbon/human/exposed_mob)
@@ -94,4 +79,47 @@
 /datum/reagent/drug/aphrodisiac/overdose_process(mob/living/carbon/human/exposed_mob)
 	. = ..()
 	if(overdose_pref_datum && exposed_mob.client?.prefs.read_preference(overdose_pref_datum) && ishuman(exposed_mob))
-		overdose_effects(exposed_mob)
+		overdose_effects(exposed_mob)		
+
+/// Handle changing of gender
+/datum/reagent/drug/aphrodisiac/proc/change_gender(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
+
+/// Handle creation of new genitals
+/datum/reagent/drug/aphrodisiac/proc/create_genitals(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac)
+/datum/reagent/drug/aphrodisiac/proc/create_breasts(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
+/datum/reagent/drug/aphrodisiac/proc/create_penis(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
+/datum/reagent/drug/aphrodisiac/proc/create_testicles(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
+/datum/reagent/drug/aphrodisiac/proc/create_vagina(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
+/datum/reagent/drug/aphrodisiac/proc/create_womb(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
+
+/// Handle removal of old genitals
+/datum/reagent/drug/aphrodisiac/proc/remove_genitals(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
+/datum/reagent/drug/aphrodisiac/proc/remove_penis(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
+/datum/reagent/drug/aphrodisiac/proc/remove_testicles(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
+/datum/reagent/drug/aphrodisiac/proc/remove_vagina(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
+/datum/reagent/drug/aphrodisiac/proc/remove_womb(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
+
+/// Handle penis growth
+/datum/reagent/drug/aphrodisiac/proc/grow_penis(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
+/// Handle ball growth
+/datum/reagent/drug/aphrodisiac/proc/grow_balls(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
+/// Handle breast growth
+/datum/reagent/drug/aphrodisiac/proc/grow_breasts(mob/living/carbon/human/exposed_mob, datum/reagent/drug/aphrodisiac/aphrodisiac) 
+
+/// Handle genital shrinkage
+/datum/reagent/drug/aphrodisiac/proc/shrink_genitals(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital) 
+/datum/reagent/drug/aphrodisiac/proc/shrink_penis(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital) 
+/datum/reagent/drug/aphrodisiac/proc/shrink_testicles(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital) 
+/datum/reagent/drug/aphrodisiac/proc/shrink_breasts(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital) 
+
+/// Used to display the messages that appear in chat while the growth is occurring
+/datum/reagent/drug/aphrodisiac/proc/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/genital) 
+
+/// Called after growth that alters appearance
+/datum/reagent/drug/aphrodisiac/proc/update_appearance(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/genital, mutations_overlay = FALSE)
+	if(genital)
+		genital.update_sprite_suffix()
+	if(exposed_mob) 
+		exposed_mob.update_body()
+		if(mutations_overlay)
+			exposed_mob.update_mutations_overlay()
