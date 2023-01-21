@@ -17,6 +17,53 @@
 	overdose_pref_datum = /datum/preference/toggle/erp
 	balls_max_size = TESTICLES_MAX_SIZE - 1
 
+	/// Words for the cock when huge.
+	var/static/list/words_for_bigger_cock = list(
+		"huge",
+		"massive",
+		"gigantic",
+		"rather lengthy",
+		"colossal",
+		"hefty",
+	)
+	/// Synonyms for cock.
+	var/static/list/cock_text_list = list(
+		"cock",
+		"penis",
+		"dick",
+		"member",
+		"richard",
+		"johnston",
+		"johnson",
+	)
+	/// Synonyms for bigger cock.
+	var/static/list/bigger_cock_text_list = list(
+		"rod",
+		"shaft",
+		"cock",
+		"penis",
+		"dick",
+		"member",
+		"richard",
+		"johnston",
+		"johnson",
+	)
+	/// Wording chosen to extend the cock, shown only to the mob.
+	var/static/list/cock_action_text_list = list(
+		"extends to ",
+		"grows out to ",
+		"begins to enlarge, growing to ",
+		"suddenly expands to ",
+		"lengthens out to ",
+	)
+	/// Wording chosen to be seen by other mobs, while mob is unclothed.
+	var/static/list/public_cock_action_text_list = list(
+		"expands by an inch or so.",
+		"appears to grow a bit longer.",
+		"seems a bit bigger than it was before.",
+		"suddenly lengthens about an inch or two.",
+	)
+
 /datum/reagent/drug/aphrodisiac/incubus_draft/life_effects(mob/living/carbon/human/exposed_mob)
 	// Attempt to grow penis
 	grow_penis(exposed_mob)
