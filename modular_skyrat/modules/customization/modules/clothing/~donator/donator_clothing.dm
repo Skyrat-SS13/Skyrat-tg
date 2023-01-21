@@ -1436,8 +1436,8 @@
 	armor_type = /datum/armor/armor_hos
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
-	icon_state = "syndicate"
-	inhand_icon_state = "lt3_jacket"
+	icon_state = "lt3_jacket"
+	inhand_icon_state = "syndicate"
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
 	heat_protection = CHEST|GROIN|ARMS
@@ -1462,11 +1462,3 @@
 	righthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_right.dmi'
 	icon_state = "lt3_gloves"
 	inhand_icon_state = "lt3_gloves"
-
-/obj/item/storage/backpack/skyy
-	name = "charcoal backpack"
-	desc = "More for style than function."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/backpack.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/back.dmi'
-	icon_state = "lt3_backpack"
-	inhand_icon_state = "lt3_backpack"

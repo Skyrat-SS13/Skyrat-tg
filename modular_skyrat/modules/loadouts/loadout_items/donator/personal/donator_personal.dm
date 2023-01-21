@@ -628,7 +628,7 @@
 	item_path = /obj/item/clothing/suit/armor/skyy
 	ckeywhitelist = list("lt3")
 
-/datum/loadout_item/under/lt3_jacket
+/datum/loadout_item/under/miscellaneous/lt3_jeans
 	name = "Silver Jeans"
 	item_path = /obj/item/clothing/under/skyy
 	ckeywhitelist = list("lt3")
@@ -636,9 +636,4 @@
 /datum/loadout_item/gloves/lt3_gloves
 	name = "Charcoal Fingerless Gloves"
 	item_path = /obj/item/clothing/gloves/combat/skyy
-	ckeywhitelist = list("lt3")
-
-/datum/loadout_item/accessory/lt3_backpack
-	name = "Charcoal Backpack"
-	item_path = /obj/item/storage/backpack/skyy
 	ckeywhitelist = list("lt3")
