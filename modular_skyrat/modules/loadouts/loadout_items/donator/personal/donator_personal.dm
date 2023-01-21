@@ -622,3 +622,23 @@
 	name = "Holocigar"
 	item_path = /obj/item/clothing/mask/holocigarette/masvedishcigar
 	ckeywhitelist = list("masvedish")
+
+/datum/loadout_item/suit/lt3_jacket
+	name = "Silver Jacket"
+	item_path = /obj/item/clothing/suit/armor/skyy
+	ckeywhitelist = list("lt3")
+
+/datum/loadout_item/under/lt3_jacket
+	name = "Silver Jeans"
+	item_path = /obj/item/clothing/under/skyy
+	ckeywhitelist = list("lt3")
+
+/datum/loadout_item/suit/lt3_gloves
+	name = "Charcoal Fingerless Gloves"
+	item_path = /obj/item/clothing/gloves/combat/skyy
+	ckeywhitelist = list("lt3")
+
+/datum/loadout_item/suit/lt3_backpack
+	name = "Charcoal Backpack"
+	item_path = /obj/item/storage/backpack/skyy
+	ckeywhitelist = list("lt3")
