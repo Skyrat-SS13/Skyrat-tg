@@ -1427,3 +1427,30 @@
 	icon_state = "masvedishcigar_off"
 	icon_on = "masvedishcigar_on"
 	icon_off = "masvedishcigar_off"
+
+// Donation reward for LT3
+/obj/item/clothing/suit/armor/lt3jacket
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	name = "silver jacket"
+	desc = "A synthetic fabric jacket enhanced with a special alloy for some extra protection and style for those with a commanding presence."
+	armor_type = /datum/armor/armor_hos
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	lefthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_left.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_right.dmi'
+	icon_state = "lt3_jacket"
+	inhand_icon_state = "lt3_jacket"
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	heat_protection = CHEST|GROIN|ARMS
+
+/obj/item/clothing/under/lt3jeans
+	name = "silver jeans"
+	desc = "A shining, silver denim enhanced with a special alloy for some extra protection and style for those with a commanding presence."
+	armor_type = /datum/armor/under_syndicate
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	lefthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_left.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_right.dmi'
+	icon_state = "lt3_jeans"
+	inhand_icon_state = "lt3_jeans"
