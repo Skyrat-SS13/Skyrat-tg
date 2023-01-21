@@ -544,6 +544,14 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 *	JOB BERETS
 */
 
+/datum/loadout_item/head/atmos_beret
+	name = "Atmospherics Beret"
+	item_path = /obj/item/clothing/head/beret/atmos
+	restricted_roles = list(
+		JOB_ATMOSPHERIC_TECHNICIAN,
+		JOB_CHIEF_ENGINEER,
+	)
+
 /datum/loadout_item/head/engi_beret
 	name = "Engineering Beret"
 	item_path = /obj/item/clothing/head/beret/engi
