@@ -80,31 +80,8 @@
 	)
 
 /datum/reagent/drug/aphrodisiac/succubus_milk/life_effects(mob/living/carbon/human/exposed_mob) //Increases breast size
-	var/obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
-	enlargement_amount += enlarger_increase_step
-	
-	// Adds a check for breasts in the first place.
-	if(!mob_breasts)
-		return
-		
-	if(!exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
-		return
-		
-	if(enlargement_amount >= enlargement_threshold)
-		if(mob_breasts?.genital_size >= max_breast_size)
-			return
-		mob_breasts.genital_size += breast_size_increase_step
-		update_appearance(exposed_mob, mob_breasts)
-		enlargement_amount = 0
-
-		growth_to_chat(exposed_mob, mob_breasts)
-
-	// Damage from being too big for your clothes
-	if((mob_breasts?.genital_size >= (max_breast_size - 2)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
-		if(prob(damage_chance))
-			to_chat(exposed_mob, span_danger("Your breasts begin to strain against your clothes!"))
-			exposed_mob.adjustOxyLoss(5)
-			exposed_mob.apply_damage(1, BRUTE, exposed_mob.get_bodypart(BODY_ZONE_CHEST))
+	// Attempt to grow breasts!
+	grow_breasts(exposed_mob)
 
 // Turns you into a female if character is male. Also adds breasts and female genitalia. 
 /datum/reagent/drug/aphrodisiac/succubus_milk/overdose_effects(mob/living/carbon/human/exposed_mob)
@@ -150,81 +127,14 @@
 	shrink_penis(exposed_mob, suppress_chat)
 	shrink_testicles(exposed_mob, suppress_chat)
 
-// Attempt penis shrinkage
-/datum/reagent/drug/aphrodisiac/succubus_milk/shrink_penis(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 	
-	// Is there a penis to shrink?
-	var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
-	if(!mob_penis)
-		return
-		
-	// Handle completely shrinking away, if prefs allow
-	if(mob_penis.genital_size == penis_min_length)
-		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
-			mob_penis.Remove(exposed_mob)
-			update_appearance(exposed_mob)
-	else 
-		if(mob_penis.genital_size > penis_min_length)
-			mob_penis.genital_size = max(mob_penis.genital_size - penis_size_reduction_step, penis_min_length)
-			update_appearance(exposed_mob, mob_penis)
-		if(mob_penis.girth > penis_minimum_girth)
-			mob_penis.girth = max(mob_penis.girth - penis_girth_reduction_step, penis_minimum_girth)
-			update_appearance(exposed_mob, mob_penis)
-
-// Attempt ball shrinkage			
-/datum/reagent/drug/aphrodisiac/succubus_milk/shrink_testicles(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
-	// Testicles shrinkage
-	var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
-	var/obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
-	if(!mob_testicles)
-		return
-		
-	if(mob_testicles.genital_size > balls_min_size)
-		mob_testicles.genital_size = max(mob_testicles.genital_size - testicles_reduction_step, balls_min_size)
-		update_appearance(exposed_mob, mob_testicles)
-
-	else if(mob_testicles.genital_size == balls_min_size && !mob_penis) // Wait for penis to completely shrink away first before removing balls
-		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
-			mob_testicles.Remove(exposed_mob)
-			update_appearance(exposed_mob)
-			if(!suppress_chat)
-				to_chat(exposed_mob, span_purple("You feel a tightening sensation in your groin as things seem to smooth out down there."))
-
 // Attempt to create new genitals if prefs allow this
 /datum/reagent/drug/aphrodisiac/succubus_milk/create_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE)
 	if(!exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
 		return
 	
 	create_breasts(exposed_mob, suppress_chat)
-	
-// Attempt to create new breasts
-/datum/reagent/drug/aphrodisiac/succubus_milk/create_breasts(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
-	// Make sure we don't already have them
-	var/obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
-	if(mob_breasts)
-		return
-		
-	// If the user has not defined their own prefs for their breast type, default to two breasts
-	if (exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_BREASTS][MUTANT_INDEX_NAME] == "None")
-		exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_BREASTS][MUTANT_INDEX_NAME] = "Pair"
-	
-	// Create the new breasts
-	var/obj/item/organ/external/genital/breasts/new_breasts = new
-	new_breasts.build_from_dna(exposed_mob.dna, ORGAN_SLOT_BREASTS)
-	new_breasts.Insert(exposed_mob, FALSE, FALSE)
-	new_breasts.genital_size = 2
-	update_appearance(exposed_mob, new_breasts)
-	enlargement_amount = 0
-	
-	if(new_breasts.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_topless())
-		if(!suppress_chat) // So we don't spam chat
-			exposed_mob.visible_message(span_notice("[exposed_mob]'s bust suddenly expands!"))
-			to_chat(exposed_mob, span_purple("Your chest feels warm, tingling with sensitivity as it expands outward."))
-	else
-		if(!suppress_chat)
-			exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s chest suddenly bounces a bit."))
-			to_chat(exposed_mob, span_purple("Your chest feels warm, tingling with sensitivity as it strains against your clothes."))
-	
-	return new_breasts
+	create_vagina(exposed_mob, suppress_chat)
+	create_womb(exposed_mob, suppress_chat)
 
 // Helper function to display a growth message	
 /datum/reagent/drug/aphrodisiac/succubus_milk/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/breasts/mob_breasts)
