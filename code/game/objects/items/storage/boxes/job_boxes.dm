@@ -30,9 +30,33 @@
 	if(!isnull(mask_type))
 		new mask_type(src)
 	//SKYRAT EDIT ADDITION START - VOX INTERNALS - Honestly I dont know if this has a function any more with wardrobe_removal(), but TG still uses the plasmaman one so better safe than sorry
+	//Nitrogenbreather setup is replaced in wardrobe_removal as well- see there for full comments
+	//BEGIN SETUP FOR NITROGEN BREATHER
+	var/nitrolungs = FALSE
+	if(ishuman(loc))
+		var/mob/living/carbon/human/humtemp = loc
+		var/qrk
+		if(humtemp.client)
+			if(humtemp.client.prefs)
+				for(qrk in humtemp.client.prefs.all_quirks)
+					if(qrk == "Nitrogen Breather") //hardcoded- this isn't great but whatever
+						nitrolungs = TRUE
+		else
+			//This is a really ugly hack but necessary to grab their client so those who roundstartjoin aren't screwed over
+			for(var/mob/dead/new_player/new_player_mob as anything in GLOB.new_player_list)
+				if(new_player_mob.new_character == loc)
+					for(qrk in new_player_mob.client.prefs.all_quirks)
+						if(qrk == "Nitrogen Breather") //hardcoded- this isn't great but whatever
+							nitrolungs = TRUE
+		if(!nitrolungs)
+			nitrolungs = istype(humtemp.internal_organs_slot["lungs"], /obj/item/organ/internal/lungs/nitrogen)
+	//END SETUP FOR NITROGEN BREATHER
 	if(!isplasmaman(loc))
-		if(isvox(loc))
-			new /obj/item/tank/internals/nitrogen/belt/emergency(src)
+		if(isvox(loc) || isvoxprimalis(loc) || nitrolungs)
+			if(internal_type == /obj/item/tank/internals/emergency_oxygen/engi)
+				new /obj/item/tank/internals/nitrogen/belt/(src)
+			else
+				new /obj/item/tank/internals/nitrogen/belt/emergency(src)
 		else
 			new internal_type(src)
 	else
@@ -53,15 +77,38 @@
 	new /obj/item/radio/off(src)
 
 /obj/item/storage/box/survival/proc/wardrobe_removal()
-	if(!isplasmaman(loc) && !isvox(loc)) //We need to specially fill the box with plasmaman gear, since it's intended for one	//SKYRAT EDIT: && !isvox(loc)
+	//SKYRAT EDIT BEGIN: setup for nitrogen-breathing quirk
+	var/nitrolungs = FALSE
+	if(ishuman(loc)) //make sure fuckery hasn't occurred
+		var/mob/living/carbon/human/humtemp = loc
+		var/qrk
+		if(humtemp.client) //if it already has a client (latejoin), hunt their prefs for the nitro-breather quirk & set a bool if so
+			if(humtemp.client.prefs)
+				for(qrk in humtemp.client.prefs.all_quirks)
+					if(qrk == "Nitrogen Breather") //hardcoded to the name of nitrogen breather.  if this is defined it'll be cleaner but it's not my code to change
+						nitrolungs = TRUE
+		else //otherwise it's a roundstart join, which doesn't get a client during loadout setup for some ungodly reason
+			//so we hunt through remaining new players, look for the one with this mob, and check the new_player_mob's prefs instead of our mob since it actually has prefs
+			for(var/mob/dead/new_player/new_player_mob as anything in GLOB.new_player_list)
+				if(new_player_mob.new_character == loc)
+					for(qrk in new_player_mob.client.prefs.all_quirks)
+						if(qrk == "Nitrogen Breather") //hardcoded- this isn't great but whatever
+							nitrolungs = TRUE
+		if(!nitrolungs) //finally check for nitrogen-based lungs as a last fallback
+			nitrolungs = istype(humtemp.internal_organs_slot["lungs"], /obj/item/organ/internal/lungs/nitrogen)
+	//SKYRAT EDIT END
+	if(!isplasmaman(loc) && !(isvox(loc) || isvoxprimalis(loc) || nitrolungs)) //We need to specially fill the box with plasmaman gear, since it's intended for one	//SKYRAT EDIT: && !(isvox(loc) || isvoxprimalis(loc) || nitrolungs)
 		return
 	var/obj/item/mask = locate(mask_type) in src
 	var/obj/item/internals = locate(internal_type) in src
 	//SKYRAT EDIT ADDITION START - VOX INTERNALS - Vox mimic the above and below behavior, removing the redundant mask/internals; they dont mimic the plasma breathing though
-	if(!isvox(loc))
+	if(!(isvox(loc) || isvoxprimalis(loc) || nitrolungs))
 		new /obj/item/tank/internals/plasmaman/belt(src)
 	else
-		new /obj/item/tank/internals/nitrogen/belt/emergency(src)
+		if(internal_type == /obj/item/tank/internals/emergency_oxygen/engi) //engineers get extended tanks
+			new /obj/item/tank/internals/nitrogen/belt/(src)
+		else
+			new /obj/item/tank/internals/nitrogen/belt/emergency(src)
 	//SKYRAT EDIT ADDITION END - VOX INTERNALS
 	qdel(mask) // Get rid of the items that shouldn't be
 	qdel(internals)
