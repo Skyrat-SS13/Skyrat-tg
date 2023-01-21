@@ -37,6 +37,8 @@
 	var/penis_length_increase_step = 1
 	/// How much the penis is increased in girth each time it's run
 	var/penis_girth_increase_step = 1
+	/// How much the testicles are increased in size each time it's run
+	var/testicles_size_increase_step = 1
 	/// Largest girth the chem can make a mob's penis
 	var/penis_max_girth = PENIS_MAX_GIRTH
 	/// Smallest girth the chem can make a mob's penis
@@ -46,7 +48,7 @@
 	/// How much to reduce the girth of the penis each time it's run
 	var/penis_girth_reduction_step = 1
 	/// How much to reduce the size of the balls each time it's run
-	var/testicles_reduction_step = 1
+	var/testicles_size_reduction_step = 1
 	
 	/// Largest size the chem can make a mob's balls
 	var/balls_max_size = TESTICLES_MAX_SIZE
@@ -205,7 +207,10 @@
 	return new_breasts
 
 /datum/reagent/drug/aphrodisiac/proc/create_vagina(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, mob_vagina = exposed_mob?.getorganslot(ORGAN_SLOT_VAGINA))
+	
 	// Add new vagina if we don't already have one. Use dna prefs before assigning a default human one.
+	if(mob_vagina)
+		return
 	
 	if(!exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
 		return
@@ -222,16 +227,18 @@
 			to_chat(exposed_mob, span_purple("You feel a warmth in your groin as something blossoms down there."))
 
 /datum/reagent/drug/aphrodisiac/proc/create_womb(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, mob_womb = exposed_mob?.getorganslot(ORGAN_SLOT_WOMB))
+	
 	// Add a new womb if we don't already have one. Use dna prefs before assigning a default normal one.
+	if(mob_womb)
+		return
 		
-	if(!mob_womb)
-		if (exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_WOMB][MUTANT_INDEX_NAME] == "None")
-			exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_WOMB][MUTANT_INDEX_NAME] = "Normal"
+	if (exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_WOMB][MUTANT_INDEX_NAME] == "None")
+		exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_WOMB][MUTANT_INDEX_NAME] = "Normal"
 			
-		var/obj/item/organ/external/genital/womb/new_womb = new
-		new_womb.build_from_dna(exposed_mob.dna, ORGAN_SLOT_WOMB)
-		new_womb.Insert(exposed_mob, 0, FALSE)
-		update_appearance(exposed_mob)
+	var/obj/item/organ/external/genital/womb/new_womb = new
+	new_womb.build_from_dna(exposed_mob.dna, ORGAN_SLOT_WOMB)
+	new_womb.Insert(exposed_mob, 0, FALSE)
+	update_appearance(exposed_mob)
 
 // ---- Growth functions : Male genitals ----
 
@@ -250,8 +257,8 @@
 	
 	if(enlargement_amount >= enlargement_threshold)
 		if(mob_penis?.genital_size >= penis_max_length)
-			return ..()
-		mob_penis.genital_size += penis_length_increase_step
+			return
+		mob_penis.genital_size = min(mob_penis.genital_size + penis_length_increase_step, penis_max_length)
 		// Improvision to girth to not make it random chance.
 		if(mob_penis?.girth < penis_max_girth) // Because any higher is ridiculous. However, should still allow for regular penis growth.
 			mob_penis.girth = round(mob_penis.girth + (mob_penis.genital_size/mob_penis.girth))
@@ -281,13 +288,13 @@
 	var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
 	
 	if(mob_testicles.genital_size < balls_max_size && prob(balls_increase_chance)) // Add some randomness so growth happens more gradually in most cases
-		mob_testicles.genital_size++
+		mob_testicles.genital_size = min(mob_testicles.genital_size + testicles_size_increase_step, balls_max_size)
 		update_appearance(exposed_mob, mob_testicles)
 		if(!suppress_chat) // So we don't spam chat
 			to_chat(exposed_mob, span_purple("Your balls [pick(ball_action_text_list)]. They are now [mob_testicles.balls_size_to_description(mob_testicles.genital_size)]."))
 
 	else if(mob_testicles.genital_size == balls_max_size && mob_penis?.genital_size >= balls_enormous_size_threshold) // Make the balls enormous only when the penis reaches a certain size
-		mob_testicles.genital_size++
+		mob_testicles.genital_size = min(mob_testicles.genital_size + testicles_size_increase_step, balls_max_size)
 		update_appearance(exposed_mob, mob_testicles)
 
 		if(!suppress_chat)
@@ -309,7 +316,7 @@
 	if(enlargement_amount >= enlargement_threshold)
 		if(mob_breasts?.genital_size >= max_breast_size)
 			return
-		mob_breasts.genital_size += breast_size_increase_step
+		mob_breasts.genital_size = min(mob_breasts.genital_size + breast_size_increase_step, max_breast_size)
 		update_appearance(exposed_mob, mob_breasts)
 		enlargement_amount = 0
 		
@@ -360,7 +367,7 @@
 		return
 		
 	if(mob_testicles.genital_size > balls_min_size)
-		mob_testicles.genital_size = max(mob_testicles.genital_size - testicles_reduction_step, balls_min_size)
+		mob_testicles.genital_size = max(mob_testicles.genital_size - testicles_size_reduction_step, balls_min_size)
 		update_appearance(exposed_mob, mob_testicles)
 
 	else if(mob_testicles.genital_size == balls_min_size && !mob_penis) // Wait for penis to completely shrink away first before removing balls
