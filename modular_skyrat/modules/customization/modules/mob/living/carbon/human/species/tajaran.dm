@@ -12,6 +12,7 @@
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
+		TRAIT_HATED_BY_DOGS,
 	)
 	mutanttongue = /obj/item/organ/internal/tongue/cat
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
