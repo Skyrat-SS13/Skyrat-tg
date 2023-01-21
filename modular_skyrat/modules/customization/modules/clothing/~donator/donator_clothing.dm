@@ -1449,8 +1449,28 @@
 	desc = "A shining, silver denim enhanced with a special alloy for some extra protection and style for those with a commanding presence."
 	armor_type = /datum/armor/under_syndicate
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_digi.dmi'
 	lefthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_left.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_right.dmi'
 	icon_state = "lt3_jeans"
 	inhand_icon_state = "lt3_jeans"
+
+/obj/item/clothing/gloves/combat/lt3gloves
+	name = "charcoal fingerless gloves"
+	desc = "More for style than function, barely covers more than the palm of your hand."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/gloves.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/hands.dmi'
+	lefthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_left.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_right.dmi'
+	icon_state = "lt3_gloves"
+	inhand_icon_state = "lt3_gloves"
+
+/obj/item/storage/backpack/lt3backpack
+	name = "charcoal backpack"
+	desc = "More for style than function."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/backpack.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/back.dmi'
+	lefthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_left.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_right.dmi'
+	icon_state = "lt3_backpack"
+	inhand_icon_state = "lt3_backpack"
