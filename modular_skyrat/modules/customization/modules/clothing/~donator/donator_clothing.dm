@@ -1432,7 +1432,7 @@
 /obj/item/clothing/suit/armor/skyy
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	name = "silver jacket"
-	desc = "A synthetic fabric jacket enhanced with a special alloy for some extra protection and style for those with a commanding presence."
+	desc = "A jacket for those with a commanding presence. Made of synthetic fabric, it's interwoven with a special alloy that provides extra protection and style."
 	armor_type = /datum/armor/armor_hos
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
