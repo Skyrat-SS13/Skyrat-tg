@@ -29,7 +29,7 @@
 	var/tile_placed = FALSE
 	
 	///category for plumbing RCD
-	category="Liquids"
+	category = "Liquids"
 
 /obj/machinery/plumbing/floor_pump/Initialize(mapload, bolt, layer)
 	. = ..()
