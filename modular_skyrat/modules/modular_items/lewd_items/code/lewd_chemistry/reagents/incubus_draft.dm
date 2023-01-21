@@ -129,7 +129,10 @@
 	
 // Helper function to display a growth message		
 /datum/reagent/drug/aphrodisiac/incubus_draft/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/penis/mob_penis = exposed_mob?.getorganslot(ORGAN_SLOT_PENIS))
-
+	
+	if(!mob_penis)
+		return
+		
 	if(mob_penis.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_bottomless())
 		if(mob_penis?.genital_size >= (penis_max_length - 2))
 			if(exposed_mob.dna.features["penis_sheath"] == SHEATH_SLIT)
