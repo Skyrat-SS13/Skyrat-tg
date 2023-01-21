@@ -127,5 +127,5 @@ Bonus
 	if(chems)
 		M.reagents.add_reagent_list(list(/datum/reagent/toxin/heparin = 2, /datum/reagent/toxin/lipolicide = 2))
 	if(zombie)
-		M.reagents.add_reagent(/datum/reagent/hnz, 1)
+		M.reagents.add_reagent(/datum/reagent/hnz, 1) // SKYRAT EDIT - HNZ1 - OG - /datum/reagent/romerol
 	return 1
