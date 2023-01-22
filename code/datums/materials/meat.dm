@@ -36,6 +36,7 @@
 		eat_time = 3 SECONDS, \
 		tastes = list("Fleshy"))
 
+
 /datum/material/meat/mob_meat
 	init_flags = MATERIAL_INIT_BESPOKE
 	var/subjectname = ""

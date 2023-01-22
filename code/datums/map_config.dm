@@ -31,7 +31,7 @@
 
 	var/allow_custom_shuttles = TRUE
 	var/shuttles = list(
-		"cargo" = "cargo_skyrat",
+		"cargo" = "cargo_skyrat", // SKYRAT EDIT CHANGE
 		"ferry" = "ferry_fancy",
 		"whiteship" = "whiteship_meta",
 		"emergency" = "emergency_skyrat") //SKYRAT EDIT CHANGE
@@ -144,7 +144,7 @@
 		log_world("map_config shuttles is not a list!")
 		return
 
-	shuttles["emergency"] = "emergency_skyrat"
+	shuttles["emergency"] = "emergency_skyrat" // SKYRAT EDIT ADDITION
 
 	traits = json["traits"]
 	// "traits": [{"Linkage": "Cross"}, {"Space Ruins": true}]

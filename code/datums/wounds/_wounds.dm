@@ -340,7 +340,7 @@
 	return FALSE
 
 /// Like try_treating() but for unhanded interactions from humans, used by joint dislocations for manual bodypart chiropractice for example. Ignores thick material checks since you can pop an arm into place through a thick suit unlike using sutures
-/datum/wound/proc/try_handling(mob/living/carbon/human/user, modifiers)
+/datum/wound/proc/try_handling(mob/living/carbon/human/user, modifiers) // SKYRAT EDIT ADDITION
 	return FALSE
 
 /// Someone is using something that might be used for treating the wound on this limb
