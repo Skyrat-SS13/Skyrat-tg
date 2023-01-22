@@ -100,6 +100,7 @@
 		"Deck Worker", 
 		"Mailman", 
 		"Union Associate",
+		"Inventory associate",
 	)
 
 /datum/job/chaplain
@@ -169,7 +170,6 @@
 /datum/job/customs_agent
 	alt_titles = list(
 		"Customs Agent", 
-		"Asset Retention Specialist", 
 		"Supply Guard",
 	)
 
@@ -296,12 +296,13 @@
 
 /datum/job/quartermaster
 	alt_titles = list(
-		"Union Quartermaster", 
-		"Deck Chief", 
+		"Union Requisitions Officer", 
+		"Deck Chief",
+		"Warehouse supervisor",
 		"Supply Foreman", 
 		"Head of Supply", 
-		"Chief Requisitions Officer", 
-		"Logistics Officer",
+		"Chief ", 
+		"Logistics coordinator",
 	)
 
 /datum/job/research_director
