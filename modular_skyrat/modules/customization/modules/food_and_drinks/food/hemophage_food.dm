@@ -9,7 +9,10 @@
 	name = "kessen shinju"
 	desc = "A fun finger food. Little clumps of sticky rice with a bit of ground pork and green onion, all soaked and rolled in fresh blood; giving it a crimson hue. Recommended to serve hot!"
 	icon_state = "blood_rice_pearl"
-	food_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/blood = 10)
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 6,
+		/datum/reagent/blood = 10,
+	)
 	tastes = list("rice" = 3, "blood" = 5)
 	foodtypes = GRAIN | GORE | BLOODY
 
@@ -19,7 +22,10 @@
 	desc = "A clump of raw rice, drenched in blood."
 	icon = 'icons/obj/food/food.dmi'
 	icon_state = "uncooked_rice"
-	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/blood = 10)
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 4,
+		/datum/reagent/blood = 10,
+	)
 	tastes = list("raw rice" = 3, "blood" = 5)
 	color = "#810000"
 	foodtypes = GRAIN | GORE | BLOODY | RAW
@@ -34,7 +40,10 @@
 	icon = 'icons/obj/food/spaghetti.dmi'
 	icon_state = "spaghettiboiled"
 	color = "#810000"
-	food_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/blood = 20)
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 6,
+		/datum/reagent/blood = 20,
+	)
 	tastes = list("blood" = 5, "pasta" = 1)
 	foodtypes = GRAIN | GORE | BLOODY
 
@@ -43,7 +52,10 @@
 	name = "raw blood noodles"
 	desc = "Noodles thoroughly soaked in blood. Eating them raw doesn't sound appetizing. Nor does eating them at all, really."
 	color = "#ad0000"
-	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/blood = 15) // You should really be cooking those if you want the full amount of blood out of them
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 4,
+		/datum/reagent/blood = 15, // You should really be cooking those if you want the full amount of blood out of them
+	)
 	tastes = list("blood" = 5, "raw pasta" = 1)
 	foodtypes = GRAIN | GORE | BLOODY | RAW
 
@@ -70,7 +82,10 @@
 	name = "blood curd"
 	desc = "Also known as 'blood tofu' or 'blood pudding,' this Yangyu delicacy looks to be made of congealed and cooked blood. It's soft and smooth, slightly chewy, and rich in riboflavin."
 	icon_state = "blood_curd"
-	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 5, /datum/reagent/blood = 15) // You don't get the most out of this from just eating it raw, just to promote making dishes out of it.
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment/protein = 5,
+		/datum/reagent/blood = 15,
+	)
 	tastes = list("congealed blood" = 1)
 	foodtypes = GORE | BLOODY | RAW
 
