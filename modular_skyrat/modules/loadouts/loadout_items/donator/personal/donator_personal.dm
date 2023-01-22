@@ -634,7 +634,7 @@
 	item_path = /obj/item/clothing/suit/jacket/skyy
 	ckeywhitelist = list("lt3")
 
-/datum/loadout_item/under/pants/lt3_jeans
+/datum/loadout_item/under/miscellaneous/lt3_jeans
 	name = "Silver Jeans"
 	item_path = /obj/item/clothing/under/pants/skyy
 	ckeywhitelist = list("lt3")
