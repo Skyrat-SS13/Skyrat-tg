@@ -14,7 +14,7 @@
 	var/start_side
 
 /datum/round_event/meteor_wave/New()
-	..()
+	. = ..()
 	start_when = rand(METEOR_WAVE_MIN_NOTICE, METEOR_WAVE_MAX_NOTICE)
 	end_when = start_when + METEOR_WAVE_DURATION
 
