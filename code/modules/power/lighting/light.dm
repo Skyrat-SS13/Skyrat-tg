@@ -337,7 +337,7 @@
 	//Light replacer code
 	if(istype(tool, /obj/item/lightreplacer))
 		var/obj/item/lightreplacer/replacer = tool
-		replacer.ReplaceLight(src, user)
+		replacer.replace_light(src, user)
 		return
 
 	// attempt to insert light

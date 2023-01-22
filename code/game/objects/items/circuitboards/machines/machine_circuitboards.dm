@@ -6,7 +6,7 @@
 	build_path = /obj/machinery/bsa/back //No freebies!
 	specific_parts = TRUE
 	req_components = list(
-		/obj/item/stock_parts/capacitor/quadratic = 5,
+		/datum/stock_part/capacitor/quadratic = 5,
 		/obj/item/stack/cable_coil = 2)
 
 /obj/item/circuitboard/machine/bsa/front
@@ -15,7 +15,7 @@
 	build_path = /obj/machinery/bsa/front
 	specific_parts = TRUE
 	req_components = list(
-		/obj/item/stock_parts/manipulator/femto = 5,
+		/datum/stock_part/manipulator/femto = 5,
 		/obj/item/stack/cable_coil = 2)
 
 /obj/item/circuitboard/machine/bsa/middle
@@ -32,8 +32,8 @@
 	build_path = /obj/machinery/dna_vault //No freebies!
 	specific_parts = TRUE
 	req_components = list(
-		/obj/item/stock_parts/capacitor/super = 5,
-		/obj/item/stock_parts/manipulator/pico = 5,
+		/datum/stock_part/capacitor/super = 5,
+		/datum/stock_part/manipulator/pico = 5,
 		/obj/item/stack/cable_coil = 2)
 
 //Engineering
@@ -51,15 +51,15 @@
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/autolathe
 	req_components = list(
-		/obj/item/stock_parts/matter_bin = 3,
-		/obj/item/stock_parts/manipulator = 1,
+		/datum/stock_part/matter_bin = 3,
+		/datum/stock_part/manipulator = 1,
 		/obj/item/stack/sheet/glass = 1)
 
 /obj/item/circuitboard/machine/grounding_rod
 	name = "Grounding Rod"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/power/energy_accumulator/grounding_rod
-	req_components = list(/obj/item/stock_parts/capacitor = 1)
+	req_components = list(/datum/stock_part/capacitor = 1)
 	needs_anchored = FALSE
 
 
@@ -68,92 +68,92 @@
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/telecomms/broadcaster
 	req_components = list(
-		/obj/item/stock_parts/manipulator = 2,
+		/datum/stock_part/manipulator = 2,
 		/obj/item/stack/cable_coil = 1,
-		/obj/item/stock_parts/subspace/filter = 1,
-		/obj/item/stock_parts/subspace/crystal = 1,
-		/obj/item/stock_parts/micro_laser = 2)
+		/datum/stock_part/filter = 1,
+		/datum/stock_part/crystal = 1,
+		/datum/stock_part/micro_laser = 2)
 
 /obj/item/circuitboard/machine/telecomms/bus
 	name = "Bus Mainframe"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/telecomms/bus
 	req_components = list(
-		/obj/item/stock_parts/manipulator = 2,
+		/datum/stock_part/manipulator = 2,
 		/obj/item/stack/cable_coil = 1,
-		/obj/item/stock_parts/subspace/filter = 1)
+		/datum/stock_part/filter = 1)
 
 /obj/item/circuitboard/machine/telecomms/hub
 	name = "Hub Mainframe"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/telecomms/hub
 	req_components = list(
-		/obj/item/stock_parts/manipulator = 2,
+		/datum/stock_part/manipulator = 2,
 		/obj/item/stack/cable_coil = 2,
-		/obj/item/stock_parts/subspace/filter = 2)
+		/datum/stock_part/filter = 2)
 
 /obj/item/circuitboard/machine/telecomms/message_server
 	name = "Messaging Server"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/telecomms/message_server
 	req_components = list(
-		/obj/item/stock_parts/manipulator = 2,
+		/datum/stock_part/manipulator = 2,
 		/obj/item/stack/cable_coil = 1,
-		/obj/item/stock_parts/subspace/filter = 3)
+		/datum/stock_part/filter = 3)
 
 /obj/item/circuitboard/machine/telecomms/processor
 	name = "Processor Unit"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/telecomms/processor
 	req_components = list(
-		/obj/item/stock_parts/manipulator = 3,
-		/obj/item/stock_parts/subspace/filter = 1,
-		/obj/item/stock_parts/subspace/treatment = 2,
-		/obj/item/stock_parts/subspace/analyzer = 1,
+		/datum/stock_part/manipulator = 3,
+		/datum/stock_part/filter = 1,
+		/datum/stock_part/treatment = 2,
+		/datum/stock_part/analyzer = 1,
 		/obj/item/stack/cable_coil = 2,
-		/obj/item/stock_parts/subspace/amplifier = 1)
+		/datum/stock_part/amplifier = 1)
 
 /obj/item/circuitboard/machine/telecomms/receiver
 	name = "Subspace Receiver"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/telecomms/receiver
 	req_components = list(
-		/obj/item/stock_parts/subspace/ansible = 1,
-		/obj/item/stock_parts/subspace/filter = 1,
-		/obj/item/stock_parts/manipulator = 2,
-		/obj/item/stock_parts/micro_laser = 1)
+		/datum/stock_part/ansible = 1,
+		/datum/stock_part/filter = 1,
+		/datum/stock_part/manipulator = 2,
+		/datum/stock_part/micro_laser = 1)
 
 /obj/item/circuitboard/machine/telecomms/relay
 	name = "Relay Mainframe"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/telecomms/relay
 	req_components = list(
-		/obj/item/stock_parts/manipulator = 2,
+		/datum/stock_part/manipulator = 2,
 		/obj/item/stack/cable_coil = 2,
-		/obj/item/stock_parts/subspace/filter = 2)
+		/datum/stock_part/filter = 2)
 
 /obj/item/circuitboard/machine/telecomms/server
 	name = "Telecommunication Server"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/telecomms/server
 	req_components = list(
-		/obj/item/stock_parts/manipulator = 2,
+		/datum/stock_part/manipulator = 2,
 		/obj/item/stack/cable_coil = 1,
-		/obj/item/stock_parts/subspace/filter = 1)
+		/datum/stock_part/filter = 1)
 
 /obj/item/circuitboard/machine/tesla_coil
 	name = "Tesla Controller"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	desc = "Does not let you shoot lightning from your hands."
 	build_path = /obj/machinery/power/energy_accumulator/tesla_coil
-	req_components = list(/obj/item/stock_parts/capacitor = 1)
+	req_components = list(/datum/stock_part/capacitor = 1)
 	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/cell_charger
 	name = "Cell Charger"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/cell_charger
-	req_components = list(/obj/item/stock_parts/capacitor = 1)
+	req_components = list(/datum/stock_part/capacitor = 1)
 	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/circulator
@@ -167,8 +167,8 @@
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/power/emitter
 	req_components = list(
-		/obj/item/stock_parts/micro_laser = 1,
-		/obj/item/stock_parts/manipulator = 1)
+		/datum/stock_part/micro_laser = 1,
+		/datum/stock_part/manipulator = 1)
 	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/generator
@@ -183,7 +183,7 @@
 	build_path = /obj/machinery/ntnet_relay
 	req_components = list(
 		/obj/item/stack/cable_coil = 2,
-		/obj/item/stock_parts/subspace/filter = 1)
+		/datum/stock_part/filter = 1)
 
 /obj/item/circuitboard/machine/pacman
 	name = "PACMAN-type Generator"
@@ -245,7 +245,7 @@
 	build_path = /obj/machinery/power/rtg
 	req_components = list(
 		/obj/item/stack/cable_coil = 5,
-		/obj/item/stock_parts/capacitor = 1,
+		/datum/stock_part/capacitor = 1,
 		/obj/item/stack/sheet/mineral/uranium = 10) // We have no Pu-238, and this is the closest thing to it.
 
 /obj/item/circuitboard/machine/rtg/advanced
@@ -253,8 +253,8 @@
 	build_path = /obj/machinery/power/rtg/advanced
 	req_components = list(
 		/obj/item/stack/cable_coil = 5,
-		/obj/item/stock_parts/capacitor = 1,
-		/obj/item/stock_parts/micro_laser = 1,
+		/datum/stock_part/capacitor = 1,
+		/datum/stock_part/micro_laser = 1,
 		/obj/item/stack/sheet/mineral/uranium = 10,
 		/obj/item/stack/sheet/mineral/plasma = 5)
 
@@ -272,7 +272,7 @@
 	req_components = list(
 		/obj/item/stack/cable_coil = 5,
 		/obj/item/stock_parts/cell = 5,
-		/obj/item/stock_parts/capacitor = 1)
+		/datum/stock_part/capacitor = 1)
 	def_components = list(/obj/item/stock_parts/cell = /obj/item/stock_parts/cell/high/empty)
 
 /obj/item/circuitboard/machine/techfab/department/engineering
@@ -286,8 +286,8 @@
 	build_path = /obj/machinery/atmospherics/components/unary/thermomachine/freezer
 	var/pipe_layer = PIPING_LAYER_DEFAULT
 	req_components = list(
-		/obj/item/stock_parts/matter_bin = 2,
-		/obj/item/stock_parts/micro_laser = 2,
+		/datum/stock_part/matter_bin = 2,
+		/datum/stock_part/micro_laser = 2,
 		/obj/item/stack/cable_coil = 1,
 		/obj/item/stack/sheet/glass = 1)
 
@@ -371,8 +371,8 @@
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/rnd/production/circuit_imprinter
 	req_components = list(
-		/obj/item/stock_parts/matter_bin = 1,
-		/obj/item/stock_parts/manipulator = 1,
+		/datum/stock_part/matter_bin = 1,
+		/datum/stock_part/manipulator = 1,
 		/obj/item/reagent_containers/cup/beaker = 2)
 
 /obj/item/circuitboard/machine/circuit_imprinter/offstation
@@ -388,7 +388,7 @@
 	name = "AI Holopad"
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/holopad
-	req_components = list(/obj/item/stock_parts/capacitor = 1)
+	req_components = list(/datum/stock_part/capacitor = 1)
 	needs_anchored = FALSE //wew lad
 	var/secure = FALSE
 
@@ -414,7 +414,7 @@
 	build_path = /obj/machinery/launchpad
 	req_components = list(
 		/obj/item/stack/ore/bluespace_crystal = 1,
-		/obj/item/stock_parts/manipulator = 1)
+		/datum/stock_part/manipulator = 1)
 	def_components = list(/obj/item/stack/ore/bluespace_crystal = /obj/item/stack/ore/bluespace_crystal/artificial)
 
 /obj/item/circuitboard/machine/protolathe
@@ -422,8 +422,8 @@
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/rnd/production/protolathe
 	req_components = list(
-		/obj/item/stock_parts/matter_bin = 2,
-		/obj/item/stock_parts/manipulator = 2,
+		/datum/stock_part/matter_bin = 2,
+		/datum/stock_part/manipulator = 2,
 		/obj/item/reagent_containers/cup/beaker = 2)
 
 /obj/item/circuitboard/machine/protolathe/offstation
@@ -440,13 +440,13 @@
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/reagentgrinder/constructed
 	req_components = list(
-		/obj/item/stock_parts/manipulator = 1)
+		/datum/stock_part/manipulator = 1)
 	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/smartfridge
 	name = "Smartfridge"
 	build_path = /obj/machinery/smartfridge
-	req_components = list(/obj/item/stock_parts/matter_bin = 1)
+	req_components = list(/datum/stock_part/matter_bin = 1)
 	var/static/list/fridges_name_paths = list(/obj/machinery/smartfridge = "plant produce",
 		/obj/machinery/smartfridge/food = "food",
 		/obj/machinery/smartfridge/drinks = "drinks",
@@ -486,8 +486,8 @@
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/space_heater/constructed
 	req_components = list(
-		/obj/item/stock_parts/micro_laser = 1,
-		/obj/item/stock_parts/capacitor = 1,
+		/datum/stock_part/micro_laser = 1,
+		/datum/stock_part/capacitor = 1,
 		/obj/item/stack/cable_coil = 3)
 	needs_anchored = FALSE
 
@@ -496,8 +496,8 @@
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/electrolyzer
 	req_components = list(
-		/obj/item/stock_parts/manipulator = 2,
-		/obj/item/stock_parts/capacitor = 2,
+		/datum/stock_part/manipulator = 2,
+		/datum/stock_part/capacitor = 2,
 		/obj/item/stack/cable_coil = 5,
 		/obj/item/stack/sheet/glass = 1)
 
@@ -509,8 +509,8 @@
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/rnd/production/techfab
 	req_components = list(
-		/obj/item/stock_parts/matter_bin = 2,
-		/obj/item/stock_parts/manipulator = 2,
+		/datum/stock_part/matter_bin = 2,
+		/datum/stock_part/manipulator = 2,
 		/obj/item/reagent_containers/cup/beaker = 2)
 
 /obj/item/circuitboard/machine/techfab/department
@@ -621,9 +621,9 @@
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/piratepad/civilian
 	req_components = list(
-		/obj/item/stock_parts/card_reader = 1,
+		/datum/stock_part/card_reader = 1,
 		/datum/stock_part/scanning_module = 1,
-		/obj/item/stock_parts/micro_laser = 1
+		/datum/stock_part/micro_laser = 1
 	)
 
 /obj/item/circuitboard/machine/fax
@@ -631,10 +631,10 @@
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/fax
 	req_components = list(
-		/obj/item/stock_parts/subspace/crystal = 1,
+		/datum/stock_part/crystal = 1,
 		/datum/stock_part/scanning_module = 1,
-		/obj/item/stock_parts/micro_laser = 1,
-		/obj/item/stock_parts/manipulator = 1,)
+		/datum/stock_part/micro_laser = 1,
+		/datum/stock_part/manipulator = 1,)
 
 //Medical
 
@@ -643,9 +643,9 @@
 	greyscale_colors = CIRCUIT_COLOR_MEDICAL
 	build_path = /obj/machinery/chem_dispenser
 	req_components = list(
-		/obj/item/stock_parts/matter_bin = 2,
-		/obj/item/stock_parts/capacitor = 1,
-		/obj/item/stock_parts/manipulator = 1,
+		/datum/stock_part/matter_bin = 2,
+		/datum/stock_part/capacitor = 1,
+		/datum/stock_part/manipulator = 1,
 		/obj/item/stack/sheet/glass = 1,
 		/obj/item/stock_parts/cell = 1)
 	def_components = list(/obj/item/stock_parts/cell = /obj/item/stock_parts/cell/high)
@@ -655,9 +655,9 @@
 	build_path = /obj/machinery/chem_dispenser/fullupgrade
 	specific_parts = TRUE
 	req_components = list(
-		/obj/item/stock_parts/matter_bin/bluespace = 2,
-		/obj/item/stock_parts/capacitor/quadratic = 2,
-		/obj/item/stock_parts/manipulator/femto = 2,
+		/datum/stock_part/matter_bin/bluespace = 2,
+		/datum/stock_part/capacitor/quadratic = 2,
+		/datum/stock_part/manipulator/femto = 2,
 		/obj/item/stack/sheet/glass = 1,
 		/obj/item/stock_parts/cell/bluespace = 1,
 	)
@@ -666,9 +666,9 @@
 	build_path = /obj/machinery/chem_dispenser/mutagensaltpeter
 	specific_parts = TRUE
 	req_components = list(
-		/obj/item/stock_parts/matter_bin/bluespace = 2,
-		/obj/item/stock_parts/capacitor/quadratic = 2,
-		/obj/item/stock_parts/manipulator/femto = 2,
+		/datum/stock_part/matter_bin/bluespace = 2,
+		/datum/stock_part/capacitor/quadratic = 2,
+		/datum/stock_part/manipulator/femto = 2,
 		/obj/item/stack/sheet/glass = 1,
 		/obj/item/stock_parts/cell/bluespace = 1,
 	)
@@ -680,9 +680,9 @@
 	build_path = /obj/machinery/chem_dispenser/abductor
 	specific_parts = TRUE
 	req_components = list(
-		/obj/item/stock_parts/matter_bin/bluespace = 2,
-		/obj/item/stock_parts/capacitor/quadratic = 2,
-		/obj/item/stock_parts/manipulator/femto = 2,
+		/datum/stock_part/matter_bin/bluespace = 2,
+		/datum/stock_part/capacitor/quadratic = 2,
+		/datum/stock_part/manipulator/femto = 2,
 		/obj/item/stack/sheet/glass = 1,
 		/obj/item/stock_parts/cell/bluespace = 1,
 	)
@@ -693,7 +693,7 @@
 	greyscale_colors = CIRCUIT_COLOR_MEDICAL
 	build_path = /obj/machinery/chem_heater
 	req_components = list(
-		/obj/item/stock_parts/micro_laser = 1,
+		/datum/stock_part/micro_laser = 1,
 		/obj/item/stack/sheet/glass = 1)
 
 /obj/item/circuitboard/machine/chem_mass_spec
@@ -701,7 +701,7 @@
 	greyscale_colors = CIRCUIT_COLOR_MEDICAL
 	build_path = /obj/machinery/chem_mass_spec
 	req_components = list(
-	/obj/item/stock_parts/micro_laser = 1,
+	/datum/stock_part/micro_laser = 1,
 	/obj/item/stack/cable_coil = 5)
 
 /obj/item/circuitboard/machine/chem_master
@@ -711,7 +711,7 @@
 	desc = "You can turn the \"mode selection\" dial using a screwdriver."
 	req_components = list(
 		/obj/item/reagent_containers/cup/beaker = 2,
-		/obj/item/stock_parts/manipulator = 1,
+		/datum/stock_part/manipulator = 1,
 		/obj/item/stack/sheet/glass = 1)
 	needs_anchored = FALSE
 
@@ -733,7 +733,7 @@
 	greyscale_colors = CIRCUIT_COLOR_MEDICAL
 	build_path = /obj/machinery/atmospherics/components/unary/cryo_cell
 	req_components = list(
-		/obj/item/stock_parts/matter_bin = 1,
+		/datum/stock_part/matter_bin = 1,
 		/obj/item/stack/cable_coil = 1,
 		/obj/item/stack/sheet/glass = 4)
 
@@ -741,14 +741,14 @@
 	name = "Lipid Extractor"
 	greyscale_colors = CIRCUIT_COLOR_MEDICAL
 	build_path = /obj/machinery/fat_sucker
-	req_components = list(/obj/item/stock_parts/micro_laser = 1,
+	req_components = list(/datum/stock_part/micro_laser = 1,
 		/obj/item/kitchen/fork = 1)
 
 /obj/item/circuitboard/machine/harvester
 	name = "Harvester"
 	greyscale_colors = CIRCUIT_COLOR_MEDICAL
 	build_path = /obj/machinery/harvester
-	req_components = list(/obj/item/stock_parts/micro_laser = 4)
+	req_components = list(/datum/stock_part/micro_laser = 4)
 
 /obj/item/circuitboard/machine/medical_kiosk
 	name = "Medical Kiosk"
@@ -779,7 +779,7 @@
 	greyscale_colors = CIRCUIT_COLOR_MEDICAL
 	build_path = /obj/machinery/limbgrower
 	req_components = list(
-		/obj/item/stock_parts/manipulator = 1,
+		/datum/stock_part/manipulator = 1,
 		/obj/item/reagent_containers/cup/beaker = 2,
 		/obj/item/stack/sheet/glass = 1)
 
@@ -788,7 +788,7 @@
 	greyscale_colors = CIRCUIT_COLOR_MEDICAL
 	build_path = /obj/machinery/limbgrower
 	req_components = list(
-		/obj/item/stock_parts/manipulator/femto  = 1,
+		/datum/stock_part/manipulator/femto  = 1,
 		/obj/item/reagent_containers/cup/beaker/bluespace = 2,
 		/obj/item/stack/sheet/glass = 1)
 
@@ -802,16 +802,16 @@
 	greyscale_colors = CIRCUIT_COLOR_MEDICAL
 	build_path = /obj/machinery/sleeper
 	req_components = list(
-		/obj/item/stock_parts/matter_bin = 1,
-		/obj/item/stock_parts/manipulator = 1,
+		/datum/stock_part/matter_bin = 1,
+		/datum/stock_part/manipulator = 1,
 		/obj/item/stack/cable_coil = 1,
 		/obj/item/stack/sheet/glass = 2)
 
 /obj/item/circuitboard/machine/sleeper/fullupgrade
 	build_path = /obj/machinery/sleeper/syndie/fullupgrade
 	req_components = list(
-		/obj/item/stock_parts/matter_bin/bluespace = 1,
-		/obj/item/stock_parts/manipulator/femto = 1,
+		/datum/stock_part/matter_bin/bluespace = 1,
+		/datum/stock_part/manipulator/femto = 1,
 		/obj/item/stack/cable_coil = 1,
 		/obj/item/stack/sheet/glass = 2)
 
@@ -824,9 +824,9 @@
 	greyscale_colors = CIRCUIT_COLOR_MEDICAL
 	build_path = /obj/machinery/smoke_machine
 	req_components = list(
-		/obj/item/stock_parts/matter_bin = 2,
-		/obj/item/stock_parts/capacitor = 1,
-		/obj/item/stock_parts/manipulator = 1,
+		/datum/stock_part/matter_bin = 2,
+		/datum/stock_part/capacitor = 1,
+		/datum/stock_part/manipulator = 1,
 		/obj/item/stack/sheet/glass = 1,
 		/obj/item/stock_parts/cell = 1)
 	needs_anchored = FALSE
@@ -837,15 +837,15 @@
 	build_path = /obj/machinery/stasis
 	req_components = list(
 		/obj/item/stack/cable_coil = 3,
-		/obj/item/stock_parts/manipulator = 1,
-		/obj/item/stock_parts/capacitor = 1)
+		/datum/stock_part/manipulator = 1,
+		/datum/stock_part/capacitor = 1)
 
 /obj/item/circuitboard/machine/medipen_refiller
 	name = "Medipen Refiller"
 	greyscale_colors = CIRCUIT_COLOR_MEDICAL
 	build_path = /obj/machinery/medipen_refiller
 	req_components = list(
-		/obj/item/stock_parts/matter_bin = 1)
+		/datum/stock_part/matter_bin = 1)
 
 /obj/item/circuitboard/machine/techfab/department/medical
 	name = "\improper Departmental Techfab - Medical"
@@ -864,9 +864,9 @@
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/recharge_station
 	req_components = list(
-		/obj/item/stock_parts/capacitor = 2,
+		/datum/stock_part/capacitor = 2,
 		/obj/item/stock_parts/cell = 1,
-		/obj/item/stock_parts/manipulator = 1)
+		/datum/stock_part/manipulator = 1)
 	def_components = list(/obj/item/stock_parts/cell = /obj/item/stock_parts/cell/high)
 
 /obj/item/circuitboard/machine/destructive_analyzer
@@ -875,8 +875,8 @@
 	build_path = /obj/machinery/rnd/destructive_analyzer
 	req_components = list(
 		/datum/stock_part/scanning_module = 1,
-		/obj/item/stock_parts/manipulator = 1,
-		/obj/item/stock_parts/micro_laser = 1)
+		/datum/stock_part/manipulator = 1,
+		/datum/stock_part/micro_laser = 1)
 
 /obj/item/circuitboard/machine/experimentor
 	name = "E.X.P.E.R.I-MENTOR"
@@ -884,8 +884,8 @@
 	build_path = /obj/machinery/rnd/experimentor
 	req_components = list(
 		/datum/stock_part/scanning_module = 1,
-		/obj/item/stock_parts/manipulator = 2,
-		/obj/item/stock_parts/micro_laser = 2)
+		/datum/stock_part/manipulator = 2,
+		/datum/stock_part/micro_laser = 2)
 
 /obj/item/circuitboard/machine/mech_recharger
 	name = "Mechbay Recharger"
@@ -893,16 +893,16 @@
 	build_path = /obj/machinery/mech_bay_recharge_port
 	req_components = list(
 		/obj/item/stack/cable_coil = 2,
-		/obj/item/stock_parts/capacitor = 5)
+		/datum/stock_part/capacitor = 5)
 
 /obj/item/circuitboard/machine/mechfab
 	name = "Exosuit Fabricator"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/mecha_part_fabricator
 	req_components = list(
-		/obj/item/stock_parts/matter_bin = 2,
-		/obj/item/stock_parts/manipulator = 1,
-		/obj/item/stock_parts/micro_laser = 1,
+		/datum/stock_part/matter_bin = 2,
+		/datum/stock_part/manipulator = 1,
+		/datum/stock_part/micro_laser = 1,
 		/obj/item/stack/sheet/glass = 1)
 
 /obj/item/circuitboard/machine/monkey_recycler
@@ -910,8 +910,8 @@
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/monkey_recycler
 	req_components = list(
-		/obj/item/stock_parts/matter_bin = 1,
-		/obj/item/stock_parts/manipulator = 1)
+		/datum/stock_part/matter_bin = 1,
+		/datum/stock_part/manipulator = 1)
 	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/processor/slime
@@ -930,8 +930,8 @@
 	build_path = /obj/machinery/quantumpad
 	req_components = list(
 		/obj/item/stack/ore/bluespace_crystal = 1,
-		/obj/item/stock_parts/capacitor = 1,
-		/obj/item/stock_parts/manipulator = 1,
+		/datum/stock_part/capacitor = 1,
+		/datum/stock_part/manipulator = 1,
 		/obj/item/stack/cable_coil = 1)
 	def_components = list(/obj/item/stack/ore/bluespace_crystal = /obj/item/stack/ore/bluespace_crystal/artificial)
 
@@ -954,7 +954,7 @@
 	build_path = /obj/machinery/teleport/hub
 	req_components = list(
 		/obj/item/stack/ore/bluespace_crystal = 3,
-		/obj/item/stock_parts/matter_bin = 1)
+		/datum/stock_part/matter_bin = 1)
 	def_components = list(/obj/item/stack/ore/bluespace_crystal = /obj/item/stack/ore/bluespace_crystal/artificial)
 
 /obj/item/circuitboard/machine/teleporter_station
@@ -963,7 +963,7 @@
 	build_path = /obj/machinery/teleport/station
 	req_components = list(
 		/obj/item/stack/ore/bluespace_crystal = 2,
-		/obj/item/stock_parts/capacitor = 2,
+		/datum/stock_part/capacitor = 2,
 		/obj/item/stack/sheet/glass = 1)
 	def_components = list(/obj/item/stack/ore/bluespace_crystal = /obj/item/stack/ore/bluespace_crystal/artificial)
 
@@ -973,8 +973,8 @@
 	build_path = /obj/machinery/dna_scannernew
 	req_components = list(
 		/datum/stock_part/scanning_module = 1,
-		/obj/item/stock_parts/matter_bin = 1,
-		/obj/item/stock_parts/micro_laser = 1,
+		/datum/stock_part/matter_bin = 1,
+		/datum/stock_part/micro_laser = 1,
 		/obj/item/stack/sheet/glass = 1,
 		/obj/item/stack/cable_coil = 2)
 
@@ -984,8 +984,8 @@
 	build_path = /obj/machinery/dna_infuser
 	req_components = list(
 		/datum/stock_part/scanning_module = 1,
-		/obj/item/stock_parts/matter_bin = 1,
-		/obj/item/stock_parts/micro_laser = 1,
+		/datum/stock_part/matter_bin = 1,
+		/datum/stock_part/micro_laser = 1,
 		/obj/item/stack/cable_coil = 2,
 	)
 
@@ -1012,7 +1012,7 @@
 	name = "Weapon Recharger"
 	greyscale_colors = CIRCUIT_COLOR_SECURITY
 	build_path = /obj/machinery/recharger
-	req_components = list(/obj/item/stock_parts/capacitor = 1)
+	req_components = list(/datum/stock_part/capacitor = 1)
 	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/techfab/department/security
@@ -1027,8 +1027,8 @@
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
 	build_path = /obj/machinery/biogenerator
 	req_components = list(
-		/obj/item/stock_parts/matter_bin = 1,
-		/obj/item/stock_parts/manipulator = 1,
+		/datum/stock_part/matter_bin = 1,
+		/datum/stock_part/manipulator = 1,
 		/obj/item/stack/cable_coil = 1,
 		/obj/item/stack/sheet/glass = 1)
 
@@ -1040,9 +1040,9 @@
 /obj/item/circuitboard/machine/chem_dispenser/drinks/fullupgrade
 	build_path = /obj/machinery/chem_dispenser/drinks/fullupgrade
 	req_components = list(
-		/obj/item/stock_parts/matter_bin/bluespace = 2,
-		/obj/item/stock_parts/capacitor/quadratic = 2,
-		/obj/item/stock_parts/manipulator/femto = 2,
+		/datum/stock_part/matter_bin/bluespace = 2,
+		/datum/stock_part/capacitor/quadratic = 2,
+		/datum/stock_part/manipulator/femto = 2,
 		/obj/item/stack/sheet/glass = 1,
 		/obj/item/stock_parts/cell/bluespace = 1,
 	)
@@ -1055,9 +1055,9 @@
 /obj/item/circuitboard/machine/chem_dispenser/drinks/beer/fullupgrade
 	build_path = /obj/machinery/chem_dispenser/drinks/beer/fullupgrade
 	req_components = list(
-		/obj/item/stock_parts/matter_bin/bluespace = 2,
-		/obj/item/stock_parts/capacitor/quadratic = 2,
-		/obj/item/stock_parts/manipulator/femto = 2,
+		/datum/stock_part/matter_bin/bluespace = 2,
+		/datum/stock_part/capacitor/quadratic = 2,
+		/datum/stock_part/manipulator/femto = 2,
 		/obj/item/stack/sheet/glass = 1,
 		/obj/item/stock_parts/cell/bluespace = 1,
 	)
@@ -1071,21 +1071,21 @@
 	name = "Deep Fryer"
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
 	build_path = /obj/machinery/deepfryer
-	req_components = list(/obj/item/stock_parts/micro_laser = 1)
+	req_components = list(/datum/stock_part/micro_laser = 1)
 	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/griddle
 	name = "Griddle"
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
 	build_path = /obj/machinery/griddle
-	req_components = list(/obj/item/stock_parts/micro_laser = 1)
+	req_components = list(/datum/stock_part/micro_laser = 1)
 	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/oven
 	name = "Oven"
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
 	build_path = /obj/machinery/oven
-	req_components = list(/obj/item/stock_parts/micro_laser = 1)
+	req_components = list(/datum/stock_part/micro_laser = 1)
 	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/dish_drive
@@ -1094,8 +1094,8 @@
 	build_path = /obj/machinery/dish_drive
 	req_components = list(
 		/obj/item/stack/sheet/glass = 1,
-		/obj/item/stock_parts/manipulator = 1,
-		/obj/item/stock_parts/matter_bin = 2)
+		/datum/stock_part/manipulator = 1,
+		/datum/stock_part/matter_bin = 2)
 	var/suction = TRUE
 	var/transmit = TRUE
 	needs_anchored = FALSE
@@ -1120,8 +1120,8 @@
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
 	build_path = /obj/machinery/gibber
 	req_components = list(
-		/obj/item/stock_parts/matter_bin = 1,
-		/obj/item/stock_parts/manipulator = 1)
+		/datum/stock_part/matter_bin = 1,
+		/datum/stock_part/manipulator = 1)
 	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/hydroponics
@@ -1129,8 +1129,8 @@
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
 	build_path = /obj/machinery/hydroponics/constructable
 	req_components = list(
-		/obj/item/stock_parts/matter_bin = 2,
-		/obj/item/stock_parts/manipulator = 1,
+		/datum/stock_part/matter_bin = 2,
+		/datum/stock_part/manipulator = 1,
 		/obj/item/stack/sheet/glass = 1)
 	needs_anchored = FALSE
 
@@ -1139,8 +1139,8 @@
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
 	build_path = /obj/machinery/microwave
 	req_components = list(
-		/obj/item/stock_parts/micro_laser = 1,
-		/obj/item/stock_parts/matter_bin = 1,
+		/datum/stock_part/micro_laser = 1,
+		/datum/stock_part/matter_bin = 1,
 		/obj/item/stack/cable_coil = 2,
 		/obj/item/stack/sheet/glass = 2)
 	needs_anchored = FALSE
@@ -1150,8 +1150,8 @@
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
 	build_path = /obj/machinery/processor
 	req_components = list(
-		/obj/item/stock_parts/matter_bin = 1,
-		/obj/item/stock_parts/manipulator = 1)
+		/datum/stock_part/matter_bin = 1,
+		/datum/stock_part/manipulator = 1)
 	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/processor/screwdriver_act(mob/living/user, obj/item/tool)
@@ -1175,7 +1175,7 @@
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
 	build_path = /obj/machinery/recycler
 	req_components = list(
-		/obj/item/stock_parts/manipulator = 1)
+		/datum/stock_part/manipulator = 1)
 	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/seed_extractor
@@ -1183,8 +1183,8 @@
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
 	build_path = /obj/machinery/seed_extractor
 	req_components = list(
-		/obj/item/stock_parts/matter_bin = 1,
-		/obj/item/stock_parts/manipulator = 1)
+		/datum/stock_part/matter_bin = 1,
+		/datum/stock_part/manipulator = 1)
 	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/techfab/department/service
@@ -1197,7 +1197,7 @@
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
 	build_path = /obj/structure/displaycase/forsale
 	req_components = list(
-		/obj/item/stock_parts/card_reader = 1)
+		/datum/stock_part/card_reader = 1)
 
 //Supply
 /obj/item/circuitboard/machine/ore_redemption
@@ -1206,9 +1206,9 @@
 	build_path = /obj/machinery/mineral/ore_redemption
 	req_components = list(
 		/obj/item/stack/sheet/glass = 1,
-		/obj/item/stock_parts/matter_bin = 1,
-		/obj/item/stock_parts/micro_laser = 1,
-		/obj/item/stock_parts/manipulator = 1,
+		/datum/stock_part/matter_bin = 1,
+		/datum/stock_part/micro_laser = 1,
+		/datum/stock_part/manipulator = 1,
 		/obj/item/assembly/igniter = 1)
 	needs_anchored = FALSE
 
@@ -1228,8 +1228,8 @@
 	greyscale_colors = CIRCUIT_COLOR_SUPPLY
 	build_path = /obj/machinery/mineral/stacking_machine
 	req_components = list(
-		/obj/item/stock_parts/manipulator = 2,
-		/obj/item/stock_parts/matter_bin = 2)
+		/datum/stock_part/manipulator = 2,
+		/datum/stock_part/matter_bin = 2)
 
 /obj/item/circuitboard/machine/stacking_unit_console
 	name = "Stacking Machine Console"
@@ -1250,9 +1250,9 @@
 	build_path = /obj/machinery/rnd/bepis
 	req_components = list(
 		/obj/item/stack/cable_coil = 5,
-		/obj/item/stock_parts/capacitor = 1,
-		/obj/item/stock_parts/manipulator = 1,
-		/obj/item/stock_parts/micro_laser = 1,
+		/datum/stock_part/capacitor = 1,
+		/datum/stock_part/manipulator = 1,
+		/datum/stock_part/micro_laser = 1,
 		/datum/stock_part/scanning_module = 1)
 
 //Misc
@@ -1261,8 +1261,8 @@
 	greyscale_colors = CIRCUIT_COLOR_SUPPLY
 	build_path = /obj/machinery/sheetifier
 	req_components = list(
-		/obj/item/stock_parts/manipulator = 2,
-		/obj/item/stock_parts/matter_bin = 2)
+		/datum/stock_part/manipulator = 2,
+		/datum/stock_part/matter_bin = 2)
 	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/restaurant_portal
@@ -1280,19 +1280,19 @@
 	name_extension = "(Void Core)"
 	build_path = /obj/machinery/power/rtg/abductor
 	req_components = list(
-		/obj/item/stock_parts/capacitor = 1,
-		/obj/item/stock_parts/micro_laser = 1,
+		/datum/stock_part/capacitor = 1,
+		/datum/stock_part/micro_laser = 1,
 		/obj/item/stock_parts/cell/infinite/abductor = 1)
 	def_components = list(
-		/obj/item/stock_parts/capacitor = /obj/item/stock_parts/capacitor/quadratic,
-		/obj/item/stock_parts/micro_laser = /obj/item/stock_parts/micro_laser/quadultra)
+		/datum/stock_part/capacitor = /datum/stock_part/capacitor/quadratic,
+		/datum/stock_part/micro_laser = /datum/stock_part/micro_laser/quadultra)
 
 /obj/item/circuitboard/machine/hypnochair
 	name = "Enhanced Interrogation Chamber"
 	greyscale_colors = CIRCUIT_COLOR_SECURITY
 	build_path = /obj/machinery/hypnochair
 	req_components = list(
-		/obj/item/stock_parts/micro_laser = 2,
+		/datum/stock_part/micro_laser = 2,
 		/datum/stock_part/scanning_module = 2
 	)
 
@@ -1302,7 +1302,7 @@
 	build_path = /obj/machinery/plumbing/receiver
 	req_components = list(
 		/obj/item/stack/ore/bluespace_crystal = 1,
-		/obj/item/stock_parts/capacitor = 2,
+		/datum/stock_part/capacitor = 2,
 		/obj/item/stack/sheet/glass = 1)
 	def_components = list(/obj/item/stack/ore/bluespace_crystal = /obj/item/stack/ore/bluespace_crystal/artificial)
 	needs_anchored = FALSE
@@ -1311,8 +1311,8 @@
 	name = "Skill Station"
 	build_path = /obj/machinery/skill_station
 	req_components = list(
-		/obj/item/stock_parts/matter_bin = 2,
-		/obj/item/stock_parts/micro_laser = 2,
+		/datum/stock_part/matter_bin = 2,
+		/datum/stock_part/micro_laser = 2,
 		/datum/stock_part/scanning_module = 2
 	)
 
@@ -1321,16 +1321,16 @@
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/destructive_scanner
 	req_components = list(
-		/obj/item/stock_parts/micro_laser = 2,
-		/obj/item/stock_parts/matter_bin = 1,
-		/obj/item/stock_parts/manipulator = 2)
+		/datum/stock_part/micro_laser = 2,
+		/datum/stock_part/matter_bin = 1,
+		/datum/stock_part/manipulator = 2)
 
 /obj/item/circuitboard/machine/doppler_array
 	name = "Tachyon-Doppler Research Array"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/doppler_array
 	req_components = list(
-		/obj/item/stock_parts/micro_laser = 2,
+		/datum/stock_part/micro_laser = 2,
 		/datum/stock_part/scanning_module = 4)
 
 /obj/item/circuitboard/machine/exoscanner
@@ -1338,7 +1338,7 @@
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/exoscanner
 	req_components = list(
-		/obj/item/stock_parts/micro_laser = 4,
+		/datum/stock_part/micro_laser = 4,
 		/datum/stock_part/scanning_module = 4)
 
 /obj/item/circuitboard/machine/exodrone_launcher
@@ -1346,7 +1346,7 @@
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/exodrone_launcher
 	req_components = list(
-		/obj/item/stock_parts/micro_laser = 4,
+		/datum/stock_part/micro_laser = 4,
 		/datum/stock_part/scanning_module = 4)
 
 /obj/item/circuitboard/machine/ecto_sniffer
@@ -1363,7 +1363,7 @@
 	req_components = list(
 		/obj/item/stack/sheet/plasteel = 15,
 		/datum/stock_part/scanning_module = 1,
-		/obj/item/stock_parts/manipulator = 1,
+		/datum/stock_part/manipulator = 1,
 		)
 
 /obj/item/circuitboard/machine/tank_compressor
@@ -1382,9 +1382,9 @@
 	req_components = list(
 		/obj/item/stack/sheet/glass = 1,
 		/obj/item/reagent_containers/cup/beaker = 2,
-		/obj/item/stock_parts/water_recycler = 1,
-		/obj/item/stock_parts/capacitor = 1,
-		/obj/item/stock_parts/micro_laser = 1,
+		/datum/stock_part/water_recycler = 1,
+		/datum/stock_part/capacitor = 1,
+		/datum/stock_part/micro_laser = 1,
 	)
 
 /obj/item/circuitboard/machine/coffeemaker/impressa
@@ -1394,7 +1394,7 @@
 	req_components = list(
 		/obj/item/stack/sheet/glass = 1,
 		/obj/item/reagent_containers/cup/beaker = 2,
-		/obj/item/stock_parts/water_recycler = 1,
-		/obj/item/stock_parts/capacitor/adv = 1,
-		/obj/item/stock_parts/micro_laser/high = 2,
+		/datum/stock_part/water_recycler = 1,
+		/datum/stock_part/capacitor/adv = 1,
+		/datum/stock_part/micro_laser/high = 2,
 	)

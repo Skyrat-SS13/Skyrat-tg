@@ -52,6 +52,7 @@
 /obj/machinery/shower/directional/south,
 /obj/structure/curtain/bounty,
 /obj/structure/drain,
+/obj/effect/spawner/random/trash/soap,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "hk" = (
@@ -66,6 +67,10 @@
 /obj/effect/turf_decal/bot_white,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"hK" = (
+/obj/machinery/suit_storage_unit/cmo,
+/turf/template_noop,
+/area/template_noop)
 "hO" = (
 /turf/closed/mineral/random,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
@@ -119,6 +124,7 @@
 /obj/item/reagent_containers/cup/beaker{
 	pixel_x = -13
 	},
+/obj/item/holosign_creator/atmos,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "lp" = (
@@ -301,7 +307,8 @@
 "vj" = (
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/suit_storage_unit/industrial{
-	mod_type = /obj/item/mod/control/pre_equipped/standard
+	mod_type = /obj/item/mod/control/pre_equipped/standard;
+	mask_type = /obj/item/clothing/mask/breath
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
@@ -451,10 +458,12 @@
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "FG" = (
 /obj/structure/table,
+/obj/structure/sign/poster/contraband/random/directional/west,
+/obj/effect/spawner/random/contraband/armory,
+/obj/effect/spawner/random/contraband/prison,
 /obj/item/modular_computer/laptop/preset/civilian{
 	pixel_y = 1
 	},
-/obj/structure/sign/poster/contraband/random/directional/west,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "FJ" = (
@@ -471,9 +480,12 @@
 "IS" = (
 /obj/structure/extinguisher_cabinet/directional/west,
 /obj/structure/closet/crate/cardboard/mothic,
-/obj/item/circuitboard/machine/techfab,
 /obj/item/stock_parts/manipulator/nano,
 /obj/item/reagent_containers/cup/beaker,
+/obj/item/circuitboard/machine/protolathe/offstation,
+/obj/item/circuitboard/machine/circuit_imprinter/offstation{
+	pixel_y = 4
+	},
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "IZ" = (
@@ -1397,7 +1409,7 @@ SQ
 hO
 lp
 lp
-lp
+hK
 lp
 lp
 lp
