@@ -84,7 +84,6 @@
 
 /area/ruin/space/has_grav/hotel/pool
 	name = "\improper Hotel Pool Room"
-	icon_state = "fitness"
 
 /area/ruin/space/has_grav/hotel/bar
 	name = "\improper Hotel Bar"

@@ -175,7 +175,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 /datum/crewmonitor/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "CrewConsoleSkyrat")
+		ui = new(user, src, "CrewConsoleSkyrat") // SKYRAT EDIT
 		ui.open()
 
 /datum/crewmonitor/proc/show(mob/M, source)

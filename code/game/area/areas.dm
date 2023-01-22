@@ -468,6 +468,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 
 	SEND_SOUND(src, sound(my_area.ambient_buzz, repeat = 1, wait = 0, volume = my_area.ambient_buzz_vol, channel = CHANNEL_BUZZ))
 
+
 /**
  * Called when an atom exits an area
  *

@@ -151,7 +151,7 @@
 // Shuttles start here:
 
 /datum/map_template/shuttle/emergency/backup
-	prefix = "_maps/shuttles/"
+	prefix = "_maps/shuttles/" // SKYRAT EDIT ADDITION
 	suffix = "backup"
 	name = "Backup Shuttle"
 	who_can_purchase = null

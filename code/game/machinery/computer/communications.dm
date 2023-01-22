@@ -776,7 +776,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	SScommunications.emergency_meeting(user)
 	deadchat_broadcast(" called an emergency meeting from [span_name("[get_area_name(usr, TRUE)]")].", span_name("[user.real_name]"), user, message_type=DEADCHAT_ANNOUNCEMENT)
 
-
 /obj/machinery/computer/communications/proc/make_announcement(mob/living/user)
 	var/is_ai = issilicon(user)
 	if(!SScommunications.can_announce(user, is_ai))
