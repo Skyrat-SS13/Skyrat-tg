@@ -23,20 +23,19 @@
 		return ADMIN_CANCEL_EVENT
 
 	var/force_dir = tgui_alert(usr, "Choose a side to throw rocks at?", "Interrupt some ERP?", list("Yes", "No", "Cancel"))
-	if(force_dir == "Cancel")
+	if(force_dir != "Yes")
 		return ADMIN_CANCEL_EVENT
 
-	if(force_dir == "Yes")
-		var/chosen_direction = tgui_input_list(usr, "Pick one!","Plausible Deniability.", list("North", "South", "East", "West"))
-		switch(chosen_direction)
-			if("North")
-				start_side = NORTH
-			if("South")
-				start_side = SOUTH
-			if("East")
-				start_side = EAST
-			if("West")
-				start_side = WEST
+	var/chosen_direction = tgui_input_list(usr, "Pick one!","Plausible Deniability.", list("North", "South", "East", "West"))
+	switch(chosen_direction)
+		if("North")
+			start_side = NORTH
+		if("South")
+			start_side = SOUTH
+		if("East")
+			start_side = EAST
+		if("West")
+			start_side = WEST
 
 /datum/round_event/meteor_wave/announce(fake)
 	var/datum/round_event_control/meteor_wave/meteor_event = control
