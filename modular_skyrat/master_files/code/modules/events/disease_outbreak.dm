@@ -58,8 +58,10 @@
 		/datum/symptom/narcolepsy,
 		/datum/symptom/polyvitiligo,
 		/datum/symptom/sneeze,
+		/datum/symptom/viraladaptation,
 		/datum/symptom/vomit,
 		/datum/symptom/weight_loss,
+		/datum/symptom/youth,
 	)
 
 	for(var/i in 1 to max_symptoms)
