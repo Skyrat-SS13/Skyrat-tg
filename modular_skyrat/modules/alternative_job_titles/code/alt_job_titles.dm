@@ -301,7 +301,6 @@
 		"Warehouse supervisor",
 		"Supply Foreman", 
 		"Head of Supply", 
-		"Chief ", 
 		"Logistics coordinator",
 	)
 
