@@ -623,17 +623,22 @@
 	item_path = /obj/item/clothing/mask/holocigarette/masvedishcigar
 	ckeywhitelist = list("masvedish")
 
-/datum/loadout_item/suit/lt3_jacket
-	name = "Silver Jacket"
+/datum/loadout_item/suit/lt3_armor
+	name = "Silver Jacket mk II"
 	item_path = /obj/item/clothing/suit/armor/skyy
 	ckeywhitelist = list("lt3")
 
-/datum/loadout_item/under/miscellaneous/lt3_jeans
+/datum/loadout_item/suit/lt3_jacket
+	name = "Silver Jacket"
+	item_path = /obj/item/clothing/suit/jacket/skyy
+	ckeywhitelist = list("lt3")
+
+/datum/loadout_item/under/pants/lt3_jeans
 	name = "Silver Jeans"
 	item_path = /obj/item/clothing/under/skyy
 	ckeywhitelist = list("lt3")
 
 /datum/loadout_item/gloves/lt3_gloves
 	name = "Charcoal Fingerless Gloves"
-	item_path = /obj/item/clothing/gloves/combat/skyy
+	item_path = /obj/item/clothing/gloves/skyy
 	ckeywhitelist = list("lt3")
