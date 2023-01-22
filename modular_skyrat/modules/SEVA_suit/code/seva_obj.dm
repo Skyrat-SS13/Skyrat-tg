@@ -47,17 +47,6 @@
 	resistance_flags = FIRE_PROOF
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION //I can't find the snout sprite so I'm just gonna force it to do this
 
-/datum/armor/hooded_seva
-	melee = 20
-	bullet = 10
-	laser = 10
-	energy = 10
-	bomb = 30
-	bio = 50
-	fire = 100
-	acid = 50
-	wound = 10
-
 /obj/item/clothing/mask/gas/seva
 	name = "SEVA mask"
 	desc = "A head-covering mask that can be connected to an external air supply. Intended for use with the SEVA Suit."

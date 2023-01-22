@@ -22,15 +22,6 @@
 	clothing_flags = null
 	armor_type = /datum/armor/plate_larp
 
-/datum/armor/plate_larp
-	melee = 10
-	bullet = 5
-	laser = 5
-	energy = 5
-	bomb = 5
-	fire = 60
-	acid = 60
-
 /obj/item/clothing/shoes/plate/larp/red
 	icon_state = "crusader-red"
 
