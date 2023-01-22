@@ -222,7 +222,7 @@
 
 					glow.even_cycle = !glow.even_cycle
 
-		if(prob(4))  // Unique effects for the dance floor that show up randomly to mix things up
+		if(prob(7))  // Unique effects for the dance floor that show up randomly to mix things up
 			if(xfx_mode)
 				INVOKE_ASYNC(src, PROC_REF(xfx_run))
 
@@ -235,11 +235,12 @@
 	for(var/mob/living/peep in ravers)
 		dance(peep)
 
-	for(var/i in 1 to 10)
-		spawn_atom_to_turf(/obj/effect/temp_visual/hierophant/telegraph/edge, src, 1, FALSE)
-		sleep(0.5 SECONDS)
-		if(QDELETED(src))
-			return
+	if(prob(15))
+		for(var/i in 1 to 10)
+			spawn_atom_to_turf(/obj/effect/temp_visual/hierophant/telegraph/edge, src, 1, FALSE)
+			sleep(0.5 SECONDS)
+			if(QDELETED(src))
+				return
 
 /obj/machinery/rave_cube/proc/rave_end()
 	for(var/mob/living/peep in ravers)
