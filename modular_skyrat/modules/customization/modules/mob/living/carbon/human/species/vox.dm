@@ -3,14 +3,11 @@
 	name = "Vox"
 	id = SPECIES_VOX
 	eyes_icon = 'modular_skyrat/modules/organs/icons/vox_eyes.dmi'
-	say_mod = "skrees"
 	can_augment = FALSE
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
 		LIPS,
-		HAS_FLESH,
-		HAS_BONE,
 		HAIR,
 		FACEHAIR
 	)
@@ -21,6 +18,7 @@
 		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
+	mutanttongue = /obj/item/organ/internal/tongue/vox
 	mutantlungs = /obj/item/organ/internal/lungs/nitrogen/vox
 	mutantbrain = /obj/item/organ/internal/brain/vox
 	breathid = "n2"

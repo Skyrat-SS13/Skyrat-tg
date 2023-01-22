@@ -71,7 +71,7 @@
 	has_evolved_recently = FALSE
 
 /datum/action/cooldown/alien/skyrat
-	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
+	button_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	/// Some xeno abilities block other abilities from being used, this allows them to get around that in cases where it is needed
 	var/can_be_used_always = FALSE
 

@@ -35,9 +35,6 @@
 	/// Supervisors, who this person answers to directly
 	var/supervisors = ""
 
-	/// Selection screen color
-	var/selection_color = "#ffffff"
-
 	/// What kind of mob type joining players with this job as their assigned role are spawned as.
 	var/spawn_type = /mob/living/carbon/human
 
@@ -409,7 +406,7 @@
 /datum/job/proc/get_captaincy_announcement(mob/living/captain)
 	return "Due to extreme staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
 
-//SKYRAT EDIT START
+
 /// Returns an atom where the mob should spawn in.
 /datum/job/proc/get_roundstart_spawn_point()
 	if(random_spawns_possible)
@@ -426,8 +423,12 @@
 				hangover_landmark.used = TRUE
 				break
 			return hangover_spawn_point || get_latejoin_spawn_point()
+	/* if(length(GLOB.jobspawn_overrides[title]))
+		return pick(GLOB.jobspawn_overrides[title]) */ // ORIGINAL CODE
+	// SKYRAT EDIT START - Alt job titles
 	if(length(GLOB.jobspawn_overrides[job_spawn_title]))
 		return pick(GLOB.jobspawn_overrides[job_spawn_title])
+	// SKYRAT EDIT END
 	var/obj/effect/landmark/start/spawn_point = get_default_roundstart_spawn_point()
 	if(!spawn_point) //if there isn't a spawnpoint send them to latejoin, if there's no latejoin go yell at your mapper
 		return get_latejoin_spawn_point()
@@ -437,7 +438,7 @@
 /// Handles finding and picking a valid roundstart effect landmark spawn point, in case no uncommon different spawning events occur.
 /datum/job/proc/get_default_roundstart_spawn_point()
 	for(var/obj/effect/landmark/start/spawn_point as anything in GLOB.start_landmarks_list)
-		if(spawn_point.name != job_spawn_title)
+		if(spawn_point.name != job_spawn_title) // SKYRAT EDIT - Alt job titles - ORIGINAL: if(spawn_point.name != title)
 			continue
 		. = spawn_point
 		if(spawn_point.used) //so we can revert to spawning them on top of eachother if something goes wrong
@@ -447,16 +448,17 @@
 	if(!.)
 		log_world("Couldn't find a round start spawn point for [title]")
 
-
 /// Finds a valid latejoin spawn point, checking for events and special conditions.
 /datum/job/proc/get_latejoin_spawn_point()
+	/* if(length(GLOB.jobspawn_overrides[title]))
+		return pick(GLOB.jobspawn_overrides[title]) */ // ORIGINAL CODE
+	// SKYRAT EDIT START - Alt job titles
 	if(length(GLOB.jobspawn_overrides[job_spawn_title])) //We're doing something special today.
 		return pick(GLOB.jobspawn_overrides[job_spawn_title])
+	// SKYRAT EDIT END
 	if(length(SSjob.latejoin_trackers))
 		return pick(SSjob.latejoin_trackers)
 	return SSjob.get_last_resort_spawn_points()
-
-//SKYRAT EDIT END
 
 /// Spawns the mob to be played as, taking into account preferences and the desired spawn point.
 /datum/job/proc/get_spawn_mob(client/player_client, atom/spawn_point)

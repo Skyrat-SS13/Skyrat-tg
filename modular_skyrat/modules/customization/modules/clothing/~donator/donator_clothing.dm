@@ -25,7 +25,7 @@
 	hood.set_greyscale(new_coat_colors) //Adopt the suit's grayscale coloring for visual clarity.
 
 /obj/item/clothing/head/hooded/winterhood/colourable
-	icon_state = "winter_hood"
+	icon_state = "hood_winter"
 	greyscale_config = /datum/greyscale_config/winter_hood
 	greyscale_config_worn = /datum/greyscale_config/winter_hood/worn
 
@@ -161,19 +161,19 @@
 /datum/action/item_action/dtselectcolor
 	name = "Change Color"
 	desc = "Change your color."
-	icon_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	button_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	button_icon_state = "drawingtablet"
 
 /datum/action/item_action/dtcolormenu
 	name = "Color Menu"
 	desc = "Select, save, or delete a color in your tablet's color menu!"
-	icon_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	button_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	button_icon_state = "drawingtablet"
 
 /datum/action/item_action/dtcleargrid
 	name = "Clear Canvas"
 	desc = "Clear the canvas of your drawing tablet."
-	icon_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	button_icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	button_icon_state = "drawingtablet"
 
 // Donation reward for Thedragmeme
@@ -198,10 +198,14 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	supports_variations_flags = NONE
 	can_adjust = FALSE //There wasnt an adjustable sprite anyways
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 5)	//same armor as a greyshirt - DONOR ITEMS ARE PURELY COSMETIC
+	armor_type = /datum/armor/tacticool_black
 	has_sensor = HAS_SENSORS	//Actually has sensors, to balance the new lack of armor
 
 // Donation reward for Thedragmeme
+
+/datum/armor/tacticool_black
+	wound = 5
+
 /obj/item/clothing/shoes/jackboots/heel
 	name = "high-heeled jackboots"
 	desc = "Almost like regular jackboots... why are they on a high heel?"
@@ -385,7 +389,7 @@
 	goggles = !goggles
 	if(user)
 		user.head_update(src, forced = 1)
-		user.update_action_buttons_icon()
+		user.update_mob_action_buttons()
 
 /obj/item/clothing/head/avipilot/ui_action_click(mob/living/carbon/user, action)
 	adjust_goggles(user)
@@ -499,6 +503,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
 	icon_state = "darksheath"
+	worn_icon_state = "darksheath"
 
 /obj/item/storage/belt/sabre/darksabre/Initialize(mapload)
 	. = ..()
@@ -520,7 +525,7 @@
 	blood_overlay_type = "armor"
 	dog_fashion = /datum/dog_fashion/back
 	supports_variations_flags = NONE
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 0, "acid" = 0)
+	armor_type = /datum/armor/none
 
 // Donation reward for inferno707
 /obj/item/clothing/mask/hheart
@@ -561,7 +566,7 @@
 		c_color_index = index
 		update_icon()
 		ooser.update_worn_mask()
-		ooser.update_action_buttons_icon()
+		ooser.update_mob_action_buttons()
 		to_chat(ooser, span_notice("You toggle the [src] to [possible_colors[c_color_index]]."))
 
 // Donation reward for asky / Zulie
@@ -722,10 +727,17 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "labcoat_xc"
 	body_parts_covered = CHEST|ARMS|LEGS
-	armor = list(MELEE = 5, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 80, FIRE = 80, ACID = 70)
+	armor_type = /datum/armor/rd_jax
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 // Donation reward for Raxraus
+
+/datum/armor/rd_jax
+	melee = 5
+	bio = 80
+	fire = 80
+	acid = 70
+
 /obj/item/clothing/under/rax_turtleneck
 	icon = 'icons/obj/clothing/under/security.dmi'
 	worn_icon = 'icons/mob/clothing/under/security.dmi'
@@ -764,9 +776,9 @@
 /obj/item/clothing/under/rax_turtleneck_gray
 	name = "gray turtleneck"
 	desc = "A stylish gray turtleneck."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/command.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/command.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/command_digi.dmi'
 	icon_state = "bs_turtleneck"
 	can_adjust = FALSE
 
@@ -873,7 +885,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/carbon_user = user
 		carbon_user.head_update(src, forced = 1)
-	update_action_buttons()
+	update_item_action_buttons()
 	return TRUE
 
 /// This is the proc that handles toggling the welding protection, while also making sure to update the sight of a mob wearing it.
@@ -1088,11 +1100,13 @@
 /obj/item/poster/korpstech
 	name = "Korps Genetics poster"
 	poster_type = /obj/structure/sign/poster/contraband/korpstech
+	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "rolled_poster"
 
 /obj/structure/sign/poster/contraband/korpstech
 	name = "Korps Genetics"
 	desc = "This poster bears a huge, pink helix on it, with smaller text underneath it that reads 'The Korps institute, advancing the Genetics field since 2423!'"
+	icon = 'modular_skyrat/modules/aesthetics/posters/contraband.dmi'
 	icon_state = "korpsposter"
 
 // Donation reward for Kay-Nite
@@ -1101,7 +1115,8 @@
 	desc = "A customized eyepatch with a bright pink HUD floating in front of it. It looks like there's more to it than just an eyepatch, considering the materials it's made of."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
-	icon_state = "rosepatch"
+	icon_state = "rosepatch_R"
+	base_icon_state = "rosepatch"
 
 // Donation reward for Cimika
 /obj/item/clothing/suit/toggle/labcoat/skyrat/tenrai
@@ -1364,3 +1379,51 @@
 	icon_state = "long-coat"
 	hoodtype = /obj/item/clothing/head/hooded/sigmarcoat
 	supports_variations_flags = NONE
+
+// Donation reward for Sonicgotnuked
+
+/obj/item/clothing/gloves/ring/hypno/nuke
+	name = "suspiciously glossy ring"
+	desc = "This ring oozes with an assertive edge as sharp light bends along the smooth, black bronze. Like the finger that wears it, an exceptional amount of polish repels nearly all the light that glances along its surface. If you look closer, a slight golden hue indicates the precious metals inside the alloy."
+	icon = 'modular_skyrat/master_files/icons/obj/ring.dmi'
+	icon_state = "ringblack"
+	spans = list("glossy")
+
+//reward for SomeRandomOwl
+/obj/item/clothing/head/costume/strigihat
+	name = "starry witch hat"
+	desc = "A cute witch hat typically worn by an owl-like teshari."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	worn_icon_teshari = 'modular_skyrat/master_files/icons/donator/mob/clothing/head_teshari.dmi'
+	icon_state = "strigihat"
+
+//Donation reward for Razurath
+/obj/item/clothing/head/razurathhat
+	name = "Golden Nanotrasen Officer Cap"
+	desc = "A Nanotrasen officer cap. Now darker, golder, and cooler!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "razurath_hat"
+
+//Donation reward for Razurath
+/obj/item/clothing/suit/razurathcoat
+	name = "Golden Nanotrasen Officer Coat"
+	desc = "A fancy Nanotrasen officer coat. Now darker, golder, and cooler than ever!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "razurath_coat"
+
+// Donation reward for MaSvedish
+/obj/item/clothing/mask/holocigarette/masvedishcigar
+	name = "holocigar"
+	desc = "A soft buzzing device that, using holodeck technology, replicates a slow burn cigar. Now with less-shock technology."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
+	lefthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_left.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_right.dmi'
+	inhand_icon_state = "masvedishcigar_off"
+	worn_icon_state = "masvedishcigar_off"
+	icon_state = "masvedishcigar_off"
+	icon_on = "masvedishcigar_on"
+	icon_off = "masvedishcigar_off"

@@ -99,13 +99,8 @@
 	desc = "A deprecated field protective mask developed during the 20th century in Sol-3. It's designed to protect from chemical agents, biological agents, and nuclear fallout particles. It does not protect the user from ammonia or from lack of oxygen, though the filter can be replaced with a tube for any air tank."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
+	worn_icon_teshari = 'modular_skyrat/master_files/icons/mob/clothing/species/teshari/mask.dmi'
 	icon_state = "hecu2"
-
-/obj/item/clothing/mask/gas/hecu2/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
-	if(is_species(M, /datum/species/teshari))
-		to_chat(M, span_warning("[src] is far too big for you!"))
-		return FALSE
-	return ..()
 
 /obj/item/clothing/mask/gas/soviet
 	name = "soviet gas mask"

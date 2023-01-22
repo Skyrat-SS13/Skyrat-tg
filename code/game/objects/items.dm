@@ -108,7 +108,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/min_cold_protection_temperature
 
 	///list of /datum/action's that this item has.
-	var/list/actions
+	var/list/datum/action/actions
 	///list of paths of action datums to give to the item on New().
 	var/list/actions_types
 
@@ -678,6 +678,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 /obj/item/proc/pickup(mob/user)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
+	SEND_SIGNAL(user, COMSIG_LIVING_PICKED_UP_ITEM, src)
 	item_flags |= IN_INVENTORY
 
 /// called when "found" in pockets and storage items. Returns 1 if the search should end.
@@ -899,18 +900,20 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	else
 		. = SFX_DESECRATION
 
+/// Creates an ignition hotspot if item is lit and located on turf, in mask, or in hand
 /obj/item/proc/open_flame(flame_heat=700)
 	var/turf/location = loc
 	if(ismob(location))
-		var/mob/M = location
+		var/mob/pyromanic = location
 		var/success = FALSE
-		if(src == M.get_item_by_slot(ITEM_SLOT_MASK))
+		if(src == pyromanic.get_item_by_slot(ITEM_SLOT_MASK) || (src in pyromanic.held_items))
 			success = TRUE
 		if(success)
-			location = get_turf(M)
+			location = get_turf(pyromanic)
 	if(isturf(location))
 		location.hotspot_expose(flame_heat, 5)
 
+/// If an object can successfully be used as a fire starter it will return a message
 /obj/item/proc/ignition_effect(atom/A, mob/user)
 	if(get_temperature())
 		. = span_notice("[user] lights [A] with [src].")
@@ -924,11 +927,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	return FALSE
 
 /obj/item/attack_animal(mob/living/simple_animal/user, list/modifiers)
-	if (obj_flags & CAN_BE_HIT)
-		return ..()
-	return 0
-
-/obj/item/attack_basic_mob(mob/living/basic/user, list/modifiers)
 	if (obj_flags & CAN_BE_HIT)
 		return ..()
 	return 0
@@ -1331,12 +1329,12 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
  * Updates all action buttons associated with this item
  *
  * Arguments:
- * * status_only - Update only current availability status of the buttons to show if they are ready or not to use
+ * * update_flags - Which flags of the action should we update
  * * force - Force buttons update even if the given button icon state has not changed
  */
-/obj/item/proc/update_action_buttons(status_only = FALSE, force = FALSE)
+/obj/item/proc/update_item_action_buttons(update_flags = ALL, force = FALSE)
 	for(var/datum/action/current_action as anything in actions)
-		current_action.UpdateButtons(status_only, force)
+		current_action.build_all_button_icons(update_flags, force)
 
 // Update icons if this is being carried by a mob
 /obj/item/wash(clean_types)
@@ -1356,9 +1354,10 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
  * * Return TRUE if you want to interrupt the offer.
  *
  * * Arguments:
- * * offerer - the person offering the item
+ * * offerer - The person offering the item.
+ * * offered - The person being offered the item.
  */
-/obj/item/proc/on_offered(mob/living/carbon/offerer)
+/obj/item/proc/on_offered(mob/living/carbon/offerer, mob/living/carbon/offered)
 	if(SEND_SIGNAL(src, COMSIG_ITEM_OFFERING, offerer) & COMPONENT_OFFER_INTERRUPT)
 		return TRUE
 
@@ -1387,7 +1386,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	/// if the item are glasses, this variable stores the item.
 	var/obj/item/clothing/glasses/reskinned_glasses
 
-	if(istype(src, /obj/item/clothing/glasses))
+	if(istype(src, /obj/item/clothing/glasses)) // TODO - Remove this mess about glasses, it shouldn't be necessary anymore.
 		reskinned_glasses = src
 		if(reskinned_glasses.can_switch_eye)
 			is_swappable = TRUE
@@ -1396,7 +1395,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 
 	for(var/reskin_option in unique_reskin)
-		var/image/item_image = image(icon = unique_reskin[reskin_option][RESKIN_ICON] ? unique_reskin[reskin_option][RESKIN_ICON] : icon, icon_state = "[unique_reskin[reskin_option][RESKIN_ICON_STATE]][is_swappable ? "_R" : ""]")
+		var/image/item_image = image(icon = unique_reskin[reskin_option][RESKIN_ICON] ? unique_reskin[reskin_option][RESKIN_ICON] : icon, icon_state = "[unique_reskin[reskin_option][RESKIN_ICON_STATE]]")
 		items += list("[reskin_option]" = item_image)
 	sort_list(items)
 
@@ -1412,8 +1411,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	if(unique_reskin[pick][RESKIN_ICON_STATE])
 		if(is_swappable)
-			reskinned_glasses.current_sprite_state = unique_reskin[pick][RESKIN_ICON_STATE]
-			icon_state = reskinned_glasses.current_sprite_state + "_R"
+			base_icon_state = unique_reskin[pick][RESKIN_ICON_STATE]
+			icon_state = base_icon_state
 		else
 			icon_state = unique_reskin[pick][RESKIN_ICON_STATE]
 
@@ -1421,11 +1420,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		worn_icon = unique_reskin[pick][RESKIN_WORN_ICON]
 
 	if(unique_reskin[pick][RESKIN_WORN_ICON_STATE])
-		if(is_swappable)
-			reskinned_glasses.current_worn_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
-			worn_icon_state = reskinned_glasses.current_worn_state + "_R"
-		else
-			worn_icon_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
+		worn_icon_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
 
 	if(unique_reskin[pick][RESKIN_INHAND_L])
 		lefthand_file = unique_reskin[pick][RESKIN_INHAND_L]

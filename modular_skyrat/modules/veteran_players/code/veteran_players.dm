@@ -22,7 +22,7 @@ GLOBAL_LIST(veteran_players)
 		return FALSE
 	if(GLOB.veteran_players[user.ckey])
 		return TRUE
-	if(check_rights(R_ADMIN, FALSE))
+	if(check_rights_for(user, R_ADMIN))
 		return TRUE
 	return FALSE
 

@@ -80,11 +80,15 @@
 
 /datum/augment_item/organ/tongue/normal
 	name = "Organic tongue"
-	path = /obj/item/organ/internal/tongue
+	path = /obj/item/organ/internal/tongue/human
 
 /datum/augment_item/organ/tongue/robo
 	name = "Robotic voicebox"
 	path = /obj/item/organ/internal/tongue/robot
+
+/datum/augment_item/organ/tongue/cybernetic
+	name = "Cybernetic tongue"
+	path = /obj/item/organ/internal/tongue/cybernetic
 
 /datum/augment_item/organ/tongue/forked
 	name = "Forked tongue"

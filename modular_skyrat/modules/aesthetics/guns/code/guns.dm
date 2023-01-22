@@ -95,15 +95,12 @@
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
 
-/obj/item/gun/ballistic/revolver/mateba
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-
 /obj/item/gun/ballistic/automatic/c20r
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
 /obj/item/gun/ballistic/automatic/m90
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-/obj/item/gun/ballistic/revolver/detective
+/obj/item/gun/ballistic/revolver/c38/detective
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
 /obj/item/gun/ballistic/automatic/pistol/aps
@@ -141,6 +138,7 @@
 
 /obj/item/ammo_casing/energy/laser/rainbow
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/nucgun.dmi'
+	icon_state = "laser"
 	select_name = "kill"
 	projectile_type = /obj/projectile/beam/laser/rainbow
 
@@ -150,6 +148,7 @@
 
 /obj/item/ammo_casing/energy/disabler/rainbow
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/nucgun.dmi'
+	icon_state = "laser"
 	select_name = "disable"
 	projectile_type = /obj/projectile/beam/disabler/rainbow
 
@@ -202,6 +201,7 @@
 /obj/item/gun/ballistic/automatic/sniper_rifle/syndicate
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = "sniper2"
+	worn_icon_state = "sniper"
 	fire_delay = 5.5 SECONDS
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/modular
@@ -209,6 +209,7 @@
 	desc = "A devastating Aussec Armory heavy sniper rifle, fitted with a modern scope."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = "sniper"
+	worn_icon_state = "sniper"
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle.ogg'
 	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle_s.ogg'
 	w_class = WEIGHT_CLASS_BULKY
