@@ -75,7 +75,7 @@ GLOBAL_VAR_INIT(nt_fax_department, pick("NT HR Department", "NT Legal Department
 		fax_name = "Unregistered fax " + fax_id
 	wires = new /datum/wires/fax(src)
 	register_context()
-	special_networks["nanotrasen"]["fax_name"] = GLOB.nt_fax_department
+	//special_networks["nanotrasen"]["fax_name"] = GLOB.nt_fax_department // SKYRAT EDIT REMOVAL
 
 /obj/machinery/fax/Destroy()
 	QDEL_NULL(loaded_item_ref)

@@ -11,6 +11,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
 	door_anim_time = 0
 
+
 /obj/structure/closet/secure_closet/armadyne_representative/PopulateContents()
 	. = ..()
 	new /obj/item/storage/secure/briefcase/armadyne_incentive(src)
@@ -34,6 +35,7 @@
 	fax_keys = list(
 		FAX_KEY_ARMADYNE,
 	)
+
 
 /obj/item/circuitboard/machine/fax/armadyne
 	name = "Fax Machine (Armadyne)"

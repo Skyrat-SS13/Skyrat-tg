@@ -5,17 +5,21 @@
 	freqlock = TRUE
 	keyslot = new /obj/item/encryptionkey/headset_solfed
 
+
 /obj/item/radio/headset/solfed/command
 	command = TRUE
+
 
 /obj/item/radio/headset/solfed/liaison
 	name = "\improper Solar Federation liaison headset"
 	keyslot = new /obj/item/encryptionkey/headset_solfed/liaison
 	command = TRUE
 
+
 /obj/item/radio/headset/solfed/liaison/alt
 	icon = 'modular_skyrat/modules/corporate_diplomat/icons/solfed_liaison/headset.dmi'
 	icon_state = "sol_headset_alt"
+
 
 /obj/item/radio/headset/solfed/liaison/alt/Initialize(mapload)
 	. = ..()
@@ -27,6 +31,7 @@
 	icon_state = "sol_headset_alt"
 	keyslot2 = new /obj/item/encryptionkey/headset_sec
 
+
 /obj/item/radio/headset/solfed/marshal/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
@@ -34,6 +39,7 @@
 
 /obj/item/radio/headset/solfed/breach_control
 	keyslot2 = new /obj/item/encryptionkey/headset_eng
+
 
 /obj/item/radio/headset/solfed/emt
 	keyslot2 = new /obj/item/encryptionkey/headset_med
@@ -61,6 +67,7 @@
 	inserted_disk = /obj/item/computer_disk/command
 	inserted_item = /obj/item/pen/fountain
 	greyscale_colors = "#C39C00#0060b8"
+
 
 /obj/item/stamp/solfed
 	name = "SolFed rubber stamp"

@@ -57,19 +57,23 @@
 		RADIO_CHANNEL_COMMAND = 1,
 	)
 
+
 /obj/item/radio/headset/armadyne/representative
 	name = "armadyne representative headset"
 	command = TRUE
 	keyslot = new /obj/item/encryptionkey/headset_sec/armadyne/rep
+
 
 /obj/item/radio/headset/armadyne/representative/alt
 	name = "armadyne representative bowman headset"
 	desc = "A radio for communicating on classified corporate frequiencies. Protects ears from flashbangs."
 	icon_state = "armadyne_headset_alt"
 
+
 /obj/item/radio/headset/armadyne/representative/alt/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
+
 
 /obj/item/stamp/armadyne
 	name = "Armadyne rubber stamp"

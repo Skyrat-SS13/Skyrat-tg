@@ -527,6 +527,8 @@ SUBSYSTEM_DEF(job)
 	// The alt job title, if user picked one, or the default
 	var/chosen_title = player_client?.prefs.alt_job_titles[job.title] || job.title
 	var/default_title = job.title
+
+	job.pre_spawn(equipping, player_client)
 	// SKYRAT EDIT ADDITION END - job.title
 
 	equipping.job = job.title

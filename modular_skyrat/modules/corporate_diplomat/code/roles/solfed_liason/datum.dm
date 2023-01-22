@@ -5,9 +5,8 @@
 		"Solar Federation",
 	)
 	supervisors = "Solar Federation"
-	selection_color = "#c39c00"
 	departments_list = list(
-		/datum/job_department/command,
+		/datum/job_department/solar_federation,
 	)
 
 	outfit = /datum/outfit/job/solfed_liaison

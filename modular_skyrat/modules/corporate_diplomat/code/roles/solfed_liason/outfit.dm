@@ -12,12 +12,13 @@
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic = 1,
 		/obj/item/storage/box/gunset/rebellion = 1,
-		)
+	)
 
 	l_pocket = /obj/item/clothing/accessory/medal/solfed_pin // It somewhat clashes so they get the option to wear it or not
 
 	id = /obj/item/card/id/advanced/solfed
 	id_trim = /datum/id_trim/job/solfed/liasion
+
 
 /datum/outfit/plasmaman/solfed_liaison
 	name = "Solar Federation Liaison Plasmaman"

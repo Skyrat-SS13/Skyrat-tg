@@ -23,6 +23,7 @@
 	id = /obj/item/card/id/advanced/black
 	id_trim = /datum/id_trim/job/armadyne_representative
 
+
 /datum/outfit/plasmaman/armadyne_representative
 	name = "Armadyne Representative Plasmaman"
 

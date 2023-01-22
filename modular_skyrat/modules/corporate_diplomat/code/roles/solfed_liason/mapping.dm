@@ -3,12 +3,14 @@
 	icon_state = "SolFed Liaison"
 	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
 
+
 /obj/structure/closet/secure_closet/solfed_liaison
 	name = "\proper solar federation liaison's locker"
 	req_access = list(ACCESS_SOLFED)
 	icon_state = "solfed"
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
 	door_anim_time = 0
+
 
 /obj/structure/closet/secure_closet/solfed_liaison/PopulateContents()
 	. = ..()
@@ -23,6 +25,7 @@
 	new /obj/item/clothing/under/rank/solfed_liaison/casual(src)
 	new /obj/item/clothing/suit/jacket/solfed_liaison/casual(src)
 	new /obj/item/clothing/suit/jacket/solfed_liaison/formal(src)
+
 
 /obj/machinery/fax/solfed
 	name = "\improper SolFed Liaison's Fax Machine"

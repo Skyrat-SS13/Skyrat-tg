@@ -1,6 +1,8 @@
+GLOBAL_LIST_EMPTY(corporate_diplomat_spawners)
+
 // Object spawners
 
-/obj/effect/spawner/corporate_diplomat
+/obj/effect/corporate_diplomat
 	icon = 'modular_skyrat/modules/corporate_diplomat/icons/helpers.dmi'
 	/// What to spawn for an NT consultant
 	var/nt_con_path = /obj/effect/gibspawner/generic
@@ -9,11 +11,18 @@
 	/// What to spawn for a SolFed liaison
 	var/sol_lia_path = /obj/effect/gibspawner/generic
 
-/obj/effect/spawner/corporate_diplomat/Initialize(mapload)
-	. = ..()
-	if(!SSjob.corporate_diplomat_type)
-		return INITIALIZE_HINT_QDEL
 
+/obj/effect/corporate_diplomat/Initialize(mapload)
+	. = ..()
+	GLOB.corporate_diplomat_spawners += src
+
+
+/obj/effect/corporate_diplomat/Destroy(force)
+	GLOB.corporate_diplomat_spawners -= src
+	return ..()
+
+
+/obj/effect/corporate_diplomat/proc/spawn_object()
 	var/obj/spawned_object
 
 	switch(SSjob.corporate_diplomat_type)
@@ -35,15 +44,17 @@
 
 	spawned_object.dir = dir
 
+	qdel(src)
 
-/obj/effect/spawner/corporate_diplomat/spawn_landmark
+
+/obj/effect/corporate_diplomat/spawn_landmark
 	icon_state = "person"
 	nt_con_path = /obj/effect/landmark/start/nanotrasen_consultant
 	arm_rep_path = /obj/effect/landmark/start/armadyne_rep
 	sol_lia_path = /obj/effect/landmark/start/solfed_liaison
 
 
-/obj/effect/spawner/corporate_diplomat/locker
+/obj/effect/corporate_diplomat/locker
 	icon = 'icons/effects/random_spawners.dmi'
 	icon_state = "locker_clothing"
 	nt_con_path = /obj/structure/closet/secure_closet/nanotrasen_consultant/station
@@ -51,7 +62,7 @@
 	sol_lia_path = /obj/structure/closet/secure_closet/solfed_liaison
 
 
-/obj/effect/spawner/corporate_diplomat/stamp
+/obj/effect/corporate_diplomat/stamp
 	icon = 'icons/effects/random_spawners.dmi'
 	icon_state = "stamp"
 	nt_con_path = /obj/item/stamp/centcom
@@ -59,34 +70,34 @@
 	sol_lia_path = /obj/item/stamp/solfed
 
 
-/obj/effect/spawner/corporate_diplomat/filing_cabinet
+/obj/effect/corporate_diplomat/filing_cabinet
 	icon_state = "filing_cabinet"
 	nt_con_path = /obj/structure/filingcabinet/employment
 	arm_rep_path = /obj/structure/filingcabinet // No high-value documents for off-station personnel
 	sol_lia_path = /obj/structure/filingcabinet
 
 
-/obj/effect/spawner/corporate_diplomat/fancy_table
+/obj/effect/corporate_diplomat/fancy_table
 	icon_state = "fancy_table"
 	nt_con_path = /obj/structure/table/wood/fancy/green
 	arm_rep_path = /obj/structure/table/wood/fancy/red
 	sol_lia_path = /obj/structure/table/wood/fancy
 
 
-/obj/effect/spawner/corporate_diplomat/fax
+/obj/effect/corporate_diplomat/fax
 	icon_state = "fax"
 	nt_con_path = /obj/machinery/fax/nanotrasen
 	arm_rep_path = /obj/machinery/fax/armadyne
 	sol_lia_path = /obj/machinery/fax/solfed
 
-/obj/effect/spawner/corporate_diplomat/fancychair
+/obj/effect/corporate_diplomat/fancychair
 	icon = 'icons/effects/random_spawners.dmi'
 	icon_state = "chair"
 	nt_con_path = /obj/structure/chair/comfy/green
 	arm_rep_path = /obj/structure/chair/comfy/red
 	sol_lia_path = /obj/structure/chair/comfy/brown //TODO: decide on beige or brown
 
-/obj/effect/spawner/corporate_diplomat/bedsheet
+/obj/effect/corporate_diplomat/bedsheet
 	icon = 'icons/effects/random_spawners.dmi'
 	icon_state = "bedsheet"
 	nt_con_path = /obj/item/bedsheet/centcom/double

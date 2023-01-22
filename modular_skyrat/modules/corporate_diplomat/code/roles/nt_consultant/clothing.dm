@@ -17,6 +17,7 @@
 	max_heat_protection_temperature = ARMOR_MAX_TEMP_PROTECT
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
+
 /obj/item/clothing/head/nanotrasen_consultant
 	name = "nanotrasen consultant's hat"
 	desc = "A cap made from durathread, it has an insignia on the front denoting the rank of \"Nanotrasen Consultant\"."
@@ -30,6 +31,7 @@
 	dog_fashion = null
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
+
 /datum/armor/head_nanotrasen_consultant
 	melee = 15
 	bullet = 5
@@ -40,6 +42,7 @@
 	acid = 5
 	wound = 4
 
+
 /obj/item/clothing/head/nanotrasen_consultant/beret
 	name = "nanotrasen consultant's beret"
 	desc = "A beret made from durathread, it has an insignia on the front denoting the rank of \"Nanotrasen Consultant\"."
@@ -48,8 +51,10 @@
 	greyscale_colors = "#3F3C40#155326"
 	icon_state = "beret_badge"
 
+
 /obj/item/clothing/head/beret/centcom_formal/nt_consultant
 	armor_type = /datum/armor/beret_centcom_formal_nt_consultant
+
 
 /datum/armor/beret_centcom_formal_nt_consultant
 	melee = 15
@@ -61,8 +66,10 @@
 	acid = 5
 	wound = 4
 
+
 /obj/item/clothing/suit/armor/centcom_formal/nt_consultant
 	armor_type = /datum/armor/armor_centcom_formal_nt_consultant
+
 
 /datum/armor/armor_centcom_formal_nt_consultant
 	melee = 35
@@ -74,8 +81,10 @@
 	acid = 50
 	wound = 10
 
+
 /obj/item/clothing/suit/hooded/wintercoat/centcom/nt_consultant
 	armor_type = /datum/armor/centcom_nt_consultant
+
 
 /datum/armor/centcom_nt_consultant
 	melee = 35

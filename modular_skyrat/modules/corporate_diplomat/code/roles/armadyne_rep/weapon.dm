@@ -10,6 +10,7 @@
 	spread = 9
 	company_flag = COMPANY_ARMADYNE
 
+
 /obj/item/ammo_box/magazine/multi_sprite/pdh_striker
 	name = "\improper PDH-6M magazine"
 	desc = "A magazine for the PDH-6 'Striker'. Chambered in the strange choice of .38 special."

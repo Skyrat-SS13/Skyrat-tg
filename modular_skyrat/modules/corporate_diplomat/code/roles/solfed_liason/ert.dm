@@ -18,6 +18,7 @@
 	id = /obj/item/card/id/advanced/solfed
 	id_trim = /datum/id_trim/solfed
 
+
 /datum/outfit/solfed_marshal/leader
 	name = "SolFed Response Marshal Leader"
 	suit = /obj/item/clothing/suit/armor/bulletproof
@@ -30,6 +31,7 @@
 		/obj/item/ammo_box/advanced/s12gauge/buckshot = 1,
 	)
 
+
 /datum/ert/solfed_marshal
 	roles = list(/datum/antagonist/ert/solfed_marshal)
 	leader_role = /datum/antagonist/ert/solfed_marshal/leader
@@ -37,10 +39,12 @@
 	polldesc = "a group of SolFed Response Marshals"
 	ert_template = /datum/map_template/shuttle/ert/solfed
 
+
 /datum/antagonist/ert/solfed_marshal
 	name = "SolFed Response Marshal"
 	outfit = /datum/outfit/solfed_marshal
 	role = "Marshal"
+
 
 /datum/antagonist/ert/solfed_marshal/leader
 	name = "SolFed Response Marshal Leader"

@@ -4,8 +4,10 @@
 	icon_state = "tie_greyscale_untied"
 	greyscale_colors = "#c39c00"
 
+
 /obj/item/clothing/neck/tie/solfed/tied
 	is_tied = TRUE
+
 
 /obj/item/clothing/under/rank/solfed_liaison
 	name = "tan undershirt"
@@ -17,10 +19,12 @@
 	inhand_icon_state = "det"
 	can_adjust = FALSE
 
+
 /obj/item/clothing/under/rank/solfed_liaison/casual
 	name = "casual blue undershirt"
 	desc = "A plain white formal shirt with blue slacks, for less official occasions."
 	icon_state = "blue_undershirt"
+
 
 /obj/item/clothing/suit/jacket/solfed_liaison
 	name = "tan suit jacket"
@@ -30,15 +34,18 @@
 	icon_state = "tan_jacket"
 	inhand_icon_state = "det_suit"
 
+
 /obj/item/clothing/suit/jacket/solfed_liaison/casual
 	name = "outing jacket"
 	desc = "A brown jacket that is more comfortable than most formal attire if still a bit stiff."
 	icon_state = "casual_jacket"
 
+
 /obj/item/clothing/suit/jacket/solfed_liaison/formal
 	name = "formal jacket"
 	desc = "A jacket so uncomfortable you'd think it was made of cardboard. Looks stylish at a funeral, though."
 	icon_state = "formal_jacket"
+
 
 /obj/item/clothing/accessory/medal/solfed_pin
 	name = "\improper Solar Federation Pin"

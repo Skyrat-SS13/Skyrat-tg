@@ -6,9 +6,11 @@
 		FAX_KEY_CENTCOM,
 	)
 
+
 /obj/item/circuitboard/machine/fax/nanotrasen
 	name = "Fax Machine (Nanotrasen)"
 	build_path = /obj/machinery/fax/nanotrasen
+
 
 /obj/structure/closet/secure_closet/nanotrasen_consultant/station
 	name = "\proper nanotrasen consultant's locker"
@@ -16,6 +18,7 @@
 	icon_state = "cc"
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
 	door_anim_time = 0
+
 
 /obj/structure/closet/secure_closet/nanotrasen_consultant/station/PopulateContents()
 	..()

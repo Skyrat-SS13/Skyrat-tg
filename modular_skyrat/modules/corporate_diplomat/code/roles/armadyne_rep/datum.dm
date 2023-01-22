@@ -5,9 +5,8 @@
 		"Armadyne Corporation",
 	)
 	supervisors = "Armadyne Corporation"
-	selection_color = "#d71e1e"
 	departments_list = list(
-		/datum/job_department/command,
+		/datum/job_department/armadyne_corporation,
 	)
 
 	outfit = /datum/outfit/job/armadyne_representative
