@@ -627,6 +627,7 @@
 	name = "Silver Jacket mk II"
 	item_path = /obj/item/clothing/suit/armor/skyy
 	ckeywhitelist = list("lt3")
+	restricted_roles = list(JOB_HEAD_OF_PERSONNEL, JOB_NT_REP)
 
 /datum/loadout_item/suit/lt3_jacket
 	name = "Silver Jacket"
