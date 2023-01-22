@@ -1,6 +1,8 @@
 // 1 tick = 2 seconds
-#define METEOR_WAVE_MIN_NOTICE 210 // 7 minutes (420 seconds)
-#define METEOR_WAVE_MAX_NOTICE 270 // 9 minutes (540 seconds)
+/// Each tick lasts two seconds.
+#define IN_TICKS * 0.5
+#define METEOR_WAVE_MIN_NOTICE 7 MINUTES IN_TICKS
+#define METEOR_WAVE_MAX_NOTICE 9 MINUTES IN_TICKS
 #define METEOR_WAVE_DURATION 37 // 74 seconds
 
 /datum/round_event_control/meteor_wave
