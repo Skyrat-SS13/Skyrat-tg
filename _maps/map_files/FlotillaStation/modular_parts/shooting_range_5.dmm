@@ -29,7 +29,9 @@
 /area/station/security/range)
 "bd" = (
 /obj/machinery/computer/security{
-	dir = 4
+	dir = 4;
+	network = list("shoothouse");
+	name = "shoothouse monitor"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -302,7 +304,8 @@
 /obj/machinery/disposal/bin,
 /obj/effect/turf_decal/delivery,
 /obj/machinery/camera/xray/directional/east{
-	c_tag = "Security - Shoot house"
+	c_tag = "Security - Shoot house";
+	network = list("ss13","shoothouse")
 	},
 /turf/open/floor/plating/nitrogen,
 /area/station/security/range)

@@ -18,6 +18,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark/nitrogen,
 /area/station/security/range)
+"e" = (
+/obj/structure/noticeboard/directional/north,
+/turf/open/floor/iron/dark/nitrogen,
+/area/station/security/range)
 "f" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -75,12 +79,16 @@
 /area/station/security/range)
 "m" = (
 /obj/machinery/door/airlock/maintenance,
-/obj/effect/mapping_helpers/airlock/access/all/security/armory,
+/obj/effect/mapping_helpers/airlock/access/any/security/maintenance,
 /turf/open/floor/plating/nitrogen,
 /area/station/security/range)
 "n" = (
-/obj/machinery/computer/security,
 /obj/machinery/status_display/evac/directional/north,
+/obj/machinery/computer/security{
+	network = list("shoothouse");
+	name = "shoothouse monitor"
+	},
+/obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark/nitrogen,
 /area/station/security/range)
 "o" = (
@@ -88,6 +96,13 @@
 /obj/machinery/computer/security/wooden_tv,
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/iron/dark/nitrogen,
+/area/station/security/range)
+"p" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/light/directional/south,
+/turf/open/floor/plating/nitrogen,
 /area/station/security/range)
 "q" = (
 /obj/structure/table,
@@ -168,6 +183,13 @@
 "z" = (
 /obj/structure/filingcabinet/security,
 /turf/open/floor/iron/dark/nitrogen,
+/area/station/security/range)
+"A" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/light/directional/west,
+/turf/open/floor/plating/nitrogen,
 /area/station/security/range)
 "B" = (
 /obj/structure/toilet{
@@ -259,6 +281,13 @@
 /obj/structure/sign/nanotrasen,
 /turf/closed/wall/r_wall,
 /area/station/security/range)
+"R" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/light/directional/east,
+/turf/open/floor/plating/nitrogen,
+/area/station/security/range)
 "S" = (
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron/dark/nitrogen,
@@ -290,7 +319,8 @@
 "X" = (
 /obj/item/kirbyplants/random,
 /obj/machinery/camera/xray/directional/east{
-	c_tag = "Security - Shoot house"
+	c_tag = "Security - Shoot house";
+	network = list("ss13","shoothouse")
 	},
 /turf/open/floor/iron/dark/nitrogen,
 /area/station/security/range)
@@ -322,7 +352,7 @@ Y
 Y
 L
 L
-L
+R
 D
 F
 J
@@ -351,7 +381,7 @@ a
 S
 "}
 (3,1,1) = {"
-T
+p
 Y
 Y
 I
@@ -382,9 +412,9 @@ G
 Y
 Z
 a
+W
+W
 a
-W
-W
 "}
 (5,1,1) = {"
 T
@@ -400,9 +430,9 @@ P
 Y
 n
 a
+W
+W
 a
-W
-W
 "}
 (6,1,1) = {"
 T
@@ -416,14 +446,14 @@ k
 o
 M
 Y
-a
-a
+e
 a
 W
 W
+a
 "}
 (7,1,1) = {"
-T
+p
 Y
 Y
 Y
@@ -436,9 +466,9 @@ Y
 Y
 q
 a
+W
+W
 a
-W
-W
 "}
 (8,1,1) = {"
 T
@@ -483,7 +513,7 @@ V
 V
 V
 V
-V
+A
 U
 a
 a
