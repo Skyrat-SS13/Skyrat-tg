@@ -173,6 +173,14 @@ do
     done < <(jq -r '[.map_file] | flatten | .[]' $json)
 done
 
+part "updatepaths validity"
+lines=$(find tools/UpdatePaths/Scripts -type f ! -name "*.txt" | wc -l)
+if [ $lines -gt 0 ]; then
+    echo
+    echo -e "${RED}ERROR: Found an UpdatePaths File that doesn't end in .txt! Please add the proper file extension!${NC}"
+    st=1
+fi;
+
 section "515 Proc Syntax"
 part "proc ref syntax"
 if $grep '\.proc/' $code_x_515 ; then
@@ -194,17 +202,23 @@ if [ "$pcre2_support" -eq 1 ]; then
 		echo
 		echo -e "${RED}ERROR: TIMER_OVERRIDE used without TIMER_UNIQUE.${NC}"
 		st=1
-	fi
+	fi;
 	part "trailing newlines"
 	if $grep -PU '[^\n]$(?!\n)' $code_files; then
 		echo
 		echo -e "${RED}ERROR: File(s) with no trailing newline detected, please add one.${NC}"
 		st=1
-	fi
+	fi;
+	part "datum stockpart sanity"
+	if $grep -P 'for\b.*/obj/item/stock_parts/(?!cell)(?![\w_]+ in )' $code_files; then
+		echo
+		echo -e "${RED}ERROR: Should be using datum/stock_part instead"
+		st=1
+	fi;
 else
 	echo -e "${RED}pcre2 not supported, skipping checks requiring pcre2"
 	echo -e "if you want to run these checks install ripgrep with pcre2 support.${NC}"
-fi
+fi;
 
 if [ $st = 0 ]; then
     echo

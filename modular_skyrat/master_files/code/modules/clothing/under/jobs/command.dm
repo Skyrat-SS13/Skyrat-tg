@@ -117,11 +117,6 @@
 	armor_type = /datum/armor/utility_syndicate
 	has_sensor = NO_SENSORS
 
-/datum/armor/utility_syndicate
-	melee = 10
-	fire = 50
-	acid = 40
-
 /obj/item/clothing/under/rank/captain/skyrat/imperial/generic
 	desc = "A grey naval suit with a rank badge denoting an Officer. Doesn't protect against blaster fire."
 	name = "grey officer's naval jumpsuit"
