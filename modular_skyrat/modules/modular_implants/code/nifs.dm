@@ -237,11 +237,11 @@
 	if(!blood_drain)
 		power_usage += (blood_drain_rate * blood_conversion_rate)
 
-		to_chat(linked_mob, span_notice("Blood draining is now disabled"))
+		balloon_alert(linked_mob, "Blood draining disabled")
 		return
 
 	power_usage -= (blood_drain_rate * blood_conversion_rate)
-	to_chat(linked_mob, span_notice("Blood draining is now enabled."))
+	balloon_alert(linked_mob, "Blood draining enabled")
 
 ///Checks if the NIF is able to draw blood as a power source?
 /obj/item/organ/internal/cyberimp/brain/nif/proc/blood_check()
