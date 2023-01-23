@@ -67,6 +67,10 @@ GLOBAL_LIST_INIT(modular_persistence_ignored_vars, list(
 
 	owner.load_nif_data(src)
 
+/datum/modular_persistence/Destroy(force, ...)
+	owner = null
+	return ..()
+
 // On a base datum, this should be empty, at a glance.
 /datum/modular_persistence/proc/serialize_contents_to_list()
 	var/list/returned_list = list()
