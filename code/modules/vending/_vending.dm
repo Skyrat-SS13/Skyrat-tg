@@ -754,7 +754,7 @@
 			. = TRUE
 			playsound(L, 'sound/effects/blobattack.ogg', 40, TRUE)
 			playsound(L, 'sound/effects/splat.ogg', 50, TRUE)
-			add_memory_in_range(L, 7, MEMORY_VENDING_CRUSHED, list(DETAIL_PROTAGONIST = L, DETAIL_WHAT_BY = src), story_value = STORY_VALUE_AMAZING, memory_flags = MEMORY_CHECK_BLINDNESS, protagonist_memory_flags = MEMORY_SKIP_UNCONSCIOUS)
+			add_memory_in_range(L, 7, /datum/memory/witness_vendor_crush, protagonist = L, antagonist = src)
 
 	var/matrix/M = matrix()
 	M.Turn(pick(90, 270))
@@ -1264,11 +1264,6 @@
 	var/list/base64_cache = list()
 	panel_type = "panel20"
 
-/datum/armor/machinery_vending
-	melee = 20
-	fire = 50
-	acid = 70
-
 /obj/machinery/vending/custom/compartmentLoadAccessCheck(mob/user)
 	. = FALSE
 	if(!isliving(user))
@@ -1425,11 +1420,6 @@
 	machine_name = "Custom Vendor"
 	icon_state = "refill_custom"
 	custom_premium_price = PAYCHECK_CREW
-
-/datum/armor/machinery_vending
-	melee = 20
-	fire = 50
-	acid = 70
 
 /obj/machinery/vending/custom/greed //name and like decided by the spawn
 	icon_state = "greed"

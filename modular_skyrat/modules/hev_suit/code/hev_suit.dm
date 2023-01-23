@@ -176,17 +176,6 @@
 	/// On first activation, we play the user a nice song!
 	var/first_use = TRUE
 
-/datum/armor/space_hev_suit
-	melee = 20
-	bullet = 20
-	laser = 20
-	energy = 20
-	bomb = 30
-	bio = 40
-	fire = 40
-	acid = 40
-	wound = 10
-
 /obj/item/clothing/suit/space/hev_suit/Initialize(mapload)
 	. = ..()
 	internal_radio = new(src)
@@ -905,17 +894,6 @@
 	rads_static_cooldown = PCV_COOLDOWN_RADS
 	acid_static_cooldown = PCV_COOLDOWN_ACID
 	suit_name = "PCV MARK II"
-
-/datum/armor/hev_suit_pcv
-	melee = 30
-	bullet = 30
-	laser = 30
-	energy = 30
-	bomb = 30
-	bio = 20
-	fire = 20
-	acid = 20
-	wound = 10
 
 /obj/item/clothing/suit/space/hev_suit/pcv/AltClick(mob/living/user)
 	reskin_obj(user)
