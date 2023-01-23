@@ -54,8 +54,9 @@ GLOBAL_LIST_INIT(skyrat_plasteel_recipes, list(
 // Rods
 
 GLOBAL_LIST_INIT(skyrat_rod_recipes, list(
+	new/datum/stack_recipe("towel bin", /obj/structure/towel_bin/empty, 2, time = 0.5 SECONDS, one_per_turf = FALSE),
 	new/datum/stack_recipe("guard rail", /obj/structure/deployable_barricade/guardrail, 2, time = 1 SECONDS, on_solid_ground = TRUE),
-	new/datum/stack_recipe("wrestling ropes", /obj/structure/railing/wrestling, 3, time = 18, window_checks = TRUE),
+	new/datum/stack_recipe("wrestling ropes", /obj/structure/railing/wrestling, 3, time = 1.8 SECONDS, window_checks = TRUE),
 ))
 
 /obj/item/stack/rods/get_main_recipes()
@@ -80,10 +81,11 @@ GLOBAL_LIST_INIT(skyrat_wood_recipes, list(
 // Cloth
 
 GLOBAL_LIST_INIT(skyrat_cloth_recipes, list(
-	new/datum/stack_recipe("xenoarch bag", /obj/item/storage/bag/xenoarch, 4),
 	new/datum/stack_recipe("fancy pillow", /obj/item/fancy_pillow, 3),
+	new/datum/stack_recipe("towel", /obj/item/towel, 2),
 	new/datum/stack_recipe("eyepatch wrap", /obj/item/clothing/glasses/eyepatch/wrap, 2),
 	new/datum/stack_recipe("eyepatch", /obj/item/clothing/glasses/eyepatch, 2),
+	new/datum/stack_recipe("xenoarch bag", /obj/item/storage/bag/xenoarch, 4),
 ))
 
 /obj/item/stack/sheet/cloth/get_main_recipes()

@@ -95,6 +95,12 @@ if $grep '/obj/structure/cable(/\w+)+[{]' $map_files;	then
     echo -e "${RED}ERROR: Variable editted cables detected, please remove them.${NC}"
     st=1
 fi;
+part "invalid map procs"
+if $grep '(new|newlist|icon|matrix|sound)\(.+\)' $map_files;	then
+	echo
+	echo -e "${RED}ERROR: Using unsupported procs in variables in a map file! Please remove all instances of this.${NC}"
+	st=1
+fi;
 part "invalid cables"
 if $grep '\td[1-2] =' $map_files;	then
 	echo
@@ -269,12 +275,27 @@ if $grep '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' $code_files; then
     echo -e "${RED}ERROR: Changed files contains a proc argument starting with 'var'.${NC}"
     st=1
 fi;
+
 part "balloon_alert sanity"
 if $grep 'balloon_alert\(".*"\)' $code_files; then
 	echo
 	echo -e "${RED}ERROR: Found a balloon alert with improper arguments.${NC}"
 	st=1
 fi;
+
+if $grep 'balloon_alert(.*span_)' $code_files; then
+	echo
+	echo -e "${RED}ERROR: Balloon alerts should never contain spans.${NC}"
+	st=1
+fi;
+
+part "balloon_alert idiomatic usage"
+if $grep 'balloon_alert\(.*?, ?"[A-Z]' $code_files; then
+	echo
+	echo -e "${RED}ERROR: Balloon alerts should not start with capital letters. This includes text like 'AI'. If this is a false positive, wrap the text in UNLINT().${NC}"
+	st=1
+fi;
+
 part "common spelling mistakes"
 if $grep -i 'centcomm' $code_files; then
 	echo
@@ -312,6 +333,14 @@ do
         fi
     done < <(jq -r '[.map_file] | flatten | .[]' $json)
 done
+
+part "updatepaths validity"
+lines=$(find tools/UpdatePaths/Scripts -type f ! -name "*.txt" | wc -l)
+if [ $lines -gt 0 ]; then
+    echo
+    echo -e "${RED}ERROR: Found an UpdatePaths File that doesn't end in .txt! Please add the proper file extension!${NC}"
+    st=1
+fi;
 
 section "515 Proc Syntax"
 part "proc ref syntax"
@@ -388,13 +417,13 @@ if [ "$pcre2_support" -eq 1 ]; then
 		echo
 		echo -e "${RED}ERROR: TIMER_OVERRIDE used without TIMER_UNIQUE.${NC}"
 		st=1
-	fi
+	fi;
 	part "trailing newlines"
 	if $grep -PU '[^\n]$(?!\n)' $code_files; then
 		echo
 		echo -e "${RED}ERROR: File(s) with no trailing newline detected, please add one.${NC}"
 		st=1
-	fi
+	fi;
 	part "docking_port varedits"
 	if $grep -PU '^/obj/docking_port/mobile.*\{\n[^}]*(width|height|dwidth|dheight)[^}]*[}]' $map_files; then
 		echo
@@ -402,10 +431,16 @@ if [ "$pcre2_support" -eq 1 ]; then
 		echo -e "\t\tPlease remove the width, height, dwidth, and dheight varedits from the docking_port.${NC}"
 		st=1
 	fi;
+	part "datum stockpart sanity"
+	if $grep -P 'for\b.*/obj/item/stock_parts/(?!cell)(?![\w_]+ in )' $code_files; then
+		echo
+		echo -e "${RED}ERROR: Should be using datum/stock_part instead"
+		st=1
+	fi;
 else
 	echo -e "${RED}pcre2 not supported, skipping checks requiring pcre2"
 	echo -e "if you want to run these checks install ripgrep with pcre2 support.${NC}"
-fi
+fi;
 
 if [ $st = 0 ]; then
     echo

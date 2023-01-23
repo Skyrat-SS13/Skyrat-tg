@@ -11,6 +11,14 @@
 #ifdef TESTING
 #define DATUMVAR_DEBUGGING_MODE
 
+/// Enables update_appearance "relevence" tracking
+/// This allows us to check which update_appearance procs are actually doing anything. Good thing to look in on once a year or so
+/// You'll need to run a two regexes/search and replaces to make it work
+/// First, one to convert type refs (PROC_REF.*)(update_appearance\)) -> $1_$2
+/// Second, one to convert definitions /update_appearance\( -> /_update_appearance(
+/// We'll use another define to convert uses of the proc over. That'll be all
+// #define APPEARANCE_SUCCESS_TRACKING
+
 ///Used to find the sources of harddels, quite laggy, don't be surpised if it freezes your client for a good while
 //#define REFERENCE_TRACKING
 #ifdef REFERENCE_TRACKING
@@ -34,6 +42,11 @@
 * * Requires TESTING to be defined to work.
 */
 //#define REAGENTS_TESTING
+
+// Displays static object lighting updates
+// Also enables some debug vars on sslighting that can be used to modify
+// How extensively we prune lighting corners to update
+#define VISUALIZE_LIGHT_UPDATES
 
 #define VISUALIZE_ACTIVE_TURFS //Highlights atmos active turfs in green
 #define TRACK_MAX_SHARE //Allows max share tracking, for use in the atmos debugging ui
