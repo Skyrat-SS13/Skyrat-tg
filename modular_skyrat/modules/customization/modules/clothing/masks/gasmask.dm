@@ -90,18 +90,110 @@
 
 /obj/item/clothing/mask/gas/clown_hat/vox
 	desc = "A true prankster's facial attire. A clown is incomplete without his wig and mask. This one's got an easily accessible feeding port to be more suitable for the Vox crewmembers."
+	icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
+	worn_icon_better_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
+	worn_icon_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	starting_filter_type = /obj/item/gas_filter/vox
+
+/obj/item/clothing/mask/gas/clown_hat/vox/Initialize(mapload)
+	.=..()
+	clownmask_designs = list(
+		"True Form" = image(icon = src.icon, icon_state = "clown"),
+		"The Feminist" = image(icon = src.icon, icon_state = "sexyclown"),
+		"The Wizard" = image(icon = src.icon, icon_state = "wizzclown"),
+		"The Jester" = image(icon = src.icon, icon_state = "chaos"),
+		"The Madman" = image(icon = src.icon, icon_state = "joker"),
+		"The Rainbow Color" = image(icon = src.icon, icon_state = "rainbow")
+		)
+
+/obj/item/clothing/mask/gas/clown_hat/vox/ui_action_click(mob/user)
+	if(!istype(user) || user.incapacitated())
+		return
+
+	var/list/options = list()
+	options["True Form"] = "clown"
+	options["The Feminist"] = "sexyclown"
+	options["The Wizard"] = "wizzclown"
+	options["The Madman"] = "joker"
+	options["The Rainbow Color"] ="rainbow"
+	options["The Jester"] ="chaos"
+
+	var/choice = show_radial_menu(user,src, clownmask_designs, custom_check = FALSE, radius = 36, require_near = TRUE)
+	if(!choice)
+		return FALSE
+
+	if(src && choice && !user.incapacitated() && in_range(user,src))
+		icon_state = options[choice]
+		user.update_worn_mask()
+		update_item_action_buttons()
+		to_chat(user, span_notice("Your Clown Mask has now morphed into [choice], all praise the Honkmother!"))
+		return TRUE
 	
 /obj/item/clothing/mask/gas/mime/vox
 	desc = "The traditional mime's mask. It has an eerie facial posture. This one's got an easily accessible feeding port to be more suitable for the Vox crewmembers."
+	icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
+	worn_icon_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
+	worn_icon_better_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	starting_filter_type = /obj/item/gas_filter/vox
 	
+/obj/item/clothing/mask/gas/mime/vox/Initialize(mapload)
+	.=..()
+	mimemask_designs = list(
+		"Blanc" = image(icon = src.icon, icon_state = "mime"),
+		"Excité" = image(icon = src.icon, icon_state = "sexymime"),
+		"Triste" = image(icon = src.icon, icon_state = "sadmime"),
+		"Effrayé" = image(icon = src.icon, icon_state = "scaredmime")
+		)
+
+/obj/item/clothing/mask/gas/mime/vox/ui_action_click(mob/user)
+	if(!istype(user) || user.incapacitated())
+		return
+
+	var/list/options = list()
+	options["Blanc"] = "mime"
+	options["Triste"] = "sadmime"
+	options["Effrayé"] = "scaredmime"
+	options["Excité"] ="sexymime"
+
+	var/choice = show_radial_menu(user,src, mimemask_designs, custom_check = FALSE, radius = 36, require_near = TRUE)
+	if(!choice)
+		return FALSE
+
+	if(src && choice && !user.incapacitated() && in_range(user,src))
+		var/mob/living/carbon/human/human_user = user
+		if(human_user.dna.species.mutant_bodyparts["snout"])
+			icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
+			worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask_muzzled.dmi'
+			var/list/avian_snouts = list("Beak", "Big Beak", "Corvid Beak")
+			if(human_user.dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_NAME] in avian_snouts)
+				icon_state = "[options[choice]]_b"
+		else
+			icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
+			worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
+			icon_state = options[choice]
+		icon_state = options[choice]
+		
+		user.update_worn_mask()
+		update_item_action_buttons()
+		to_chat(user, span_notice("Your Mime Mask has now morphed into [choice]!"))
+		return TRUE
+
 /obj/item/clothing/mask/gas/atmos/vox
 	desc = "Improved gas mask utilized by atmospheric technicians. It's flameproof! This one's got an easily accessible feeding port to be more suitable for the Vox crewmembers."
+	icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
+	worn_icon_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
+	worn_icon_better_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	starting_filter_type = /obj/item/gas_filter/vox
 
 /obj/item/clothing/mask/gas/sechailer/vox
 	desc = "A standard issue Security gas mask with integrated 'Compli-o-nator 3000' device. Plays over a dozen pre-recorded compliance phrases designed to get scumbags to stand still whilst you tase them. Do not tamper with the device. This one's got an easily accessible feeding port to be more suitable for the Vox crewmembers."
+	icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
+	worn_icon_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
+	worn_icon_better_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS | GAS_FILTERING
 	visor_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS | GAS_FILTERING
 	starting_filter_type = /obj/item/gas_filter/vox
