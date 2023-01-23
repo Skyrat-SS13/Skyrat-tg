@@ -302,7 +302,6 @@
 		"xlarge_beaker",
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
-		"engi_plumbing",
 		"hospital_gown",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
@@ -654,9 +653,7 @@
 		"mesons_prescription",
 		"multi_cell_charger",
 		"tray_goggles_prescription",
-		"plumbing_chem",
 		"plumbing_eng",
-		"plumbing_sci"
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 15000)
@@ -1265,6 +1262,7 @@
 		"health_hud_prescription",
 		"security_hud_prescription",
 		"diagnostic_hud_prescription",
+		"science_hud_prescription",
 		"health_hud_aviator",
 		"security_hud_aviator",
 		"diagnostic_hud_aviator",

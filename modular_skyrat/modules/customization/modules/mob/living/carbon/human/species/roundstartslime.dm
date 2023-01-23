@@ -2,7 +2,6 @@
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
-		NOBLOOD,
 		HAIR,
 		FACEHAIR,
 	)
