@@ -583,11 +583,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 	cost = 100
 	one_purchase = TRUE
 	power_type = /datum/action/innate/ai/place_transformer
-<<<<<<< HEAD
-	unlock_text = "<span class='notice'>You make contact with Space Amazon and request a robot factory for delivery.</span>"
-=======
 	unlock_text = span_notice("You make contact with Space Amazon and request a robotics factory for delivery.")
->>>>>>> 97446833f47 (Better cyborg creation logging (#72532))
 	unlock_sound = 'sound/machines/ping.ogg'
 
 /datum/action/innate/ai/place_transformer
@@ -615,13 +611,8 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 		active = FALSE
 		return
 	var/turf/T = get_turf(owner_AI.eyeobj)
-<<<<<<< HEAD
 	var/obj/machinery/transformer_rp/conveyor = new(T) //SKYRAT EDIT CHANGE - SILLICONQOL - ORIGINAL: var/obj/machinery/transformer/conveyor = new(T)
-	conveyor.masterAI = owner
-=======
-	var/obj/machinery/transformer/conveyor = new(T)
 	conveyor.master_ai = owner
->>>>>>> 97446833f47 (Better cyborg creation logging (#72532))
 	playsound(T, 'sound/effects/phasein.ogg', 100, TRUE)
 	owner_AI.can_shunt = FALSE
 	to_chat(owner, span_warning("You are no longer able to shunt your core to APCs."))
