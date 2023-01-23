@@ -49,7 +49,7 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 
 	switch(action)
 		if("reset")
-			QDEL_NULL(preferences.food)
+			qdel(preferences.food)
 			preferences.food = list()
 			return TRUE
 
@@ -88,7 +88,7 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 	return GLOB.always_state
 
 /datum/food_prefs_menu/ui_status(mob/user, datum/ui_state/state)
-	return user?.client ? UI_INTERACTIVE : UI_CLOSE // Prefs can be accessed from anywhere.
+	return UI_INTERACTIVE // Prefs can be accessed from anywhere.
 
 /datum/food_prefs_menu/ui_static_data(mob/user)
 	return list(
@@ -151,7 +151,7 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 		var/default_food_flag = food_points_entry["[FOOD_DEFAULT]"]
 		var/point_value = food_points_entry[food_flag]
 
-		if(point_value && GLOB.food_flag_to_order_value[food_flag] > GLOB.food_flag_to_order_value[default_food_flag])
+		if(point_value && (GLOB.food_flag_to_order_value[food_flag] > GLOB.food_flag_to_order_value[default_food_flag]))
 			points -= point_value
 		else
 			points += point_value
