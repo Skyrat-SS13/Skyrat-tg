@@ -58,6 +58,8 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "balaclavam"
 	inhand_icon_state = "balaclava"
+	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
+	visor_flags_inv = HIDEHAIR
 
 /obj/item/clothing/mask/balaclava/threehole/green
 	name = "three hole green balaclava"
