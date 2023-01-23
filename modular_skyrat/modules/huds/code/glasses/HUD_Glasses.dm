@@ -28,7 +28,7 @@
 	icon = 'modular_skyrat/modules/huds/icons/huds.dmi'
 	icon_state = "glasses_sciencehud"
 	worn_icon = 'modular_skyrat/modules/huds/icons/hudeyes.dmi'
-	vision_correction = TRUE
+	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
 	flash_protect = FLASH_PROTECTION_NONE
 	glass_colour_type = /datum/client_colour/glass_colour/purple
 	resistance_flags = ACID_PROOF
