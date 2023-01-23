@@ -45,6 +45,11 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 		keyboard_action.Remove()
 		QDEL_NULL(keyboard_action)
 
+	if(linked_keyboard)
+		qdel(linked_keyboard)
+
+	linked_keyboard = null
+
 	for(var/datum/component/mind_linker/nif/hivemind as anything in network_list)
 		hivemind.linked_mobs -= linked_mob
 		var/mob/living/hivemind_owner = hivemind.parent
@@ -58,8 +63,10 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 /datum/nifsoft/hivemind/activate()
 	. = ..()
 	if(!active)
-		qdel(linked_keyboard)
-		linked_keyboard = null
+		if(linked_keyboard)
+			qdel(linked_keyboard)
+			linked_keyboard = null
+
 		return TRUE
 
 	linked_keyboard = new
@@ -81,7 +88,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	. = ..()
 	var/datum/component/mind_linker/nif/link = target
 
-	var/choice = tgui_input_list(owner, "Chose your option", "Hivemind Configuration Menu", list("Link a user","Remove a user","Change Hivemind color","Change active Hivemind","Leave a Hivemind", "Toggle Invites"))
+	var/choice = tgui_input_list(owner, "Chose your option", "Hivemind Configuration Menu", list("Link a user","Remove a user","Change Hivemind color","Change active Hivemind","Leave a Hivemind", "Toggle invites"))
 	if(!choice)
 		return
 
@@ -101,7 +108,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 		if("Change Hivemind color")
 			link.change_chat_color()
 
-		if("Toggle Invites")
+		if("Toggle invites")
 			toggle_invites()
 
 /datum/action/innate/hivemind_config/proc/change_hivemind()
