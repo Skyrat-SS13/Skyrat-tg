@@ -38,6 +38,10 @@
 		return
 
 	var/selection = tgui_input_list(user, "Select an item to create at the forge.", "Forging", craft_possibilities)
+	
+	if(!selection)
+		return
+		
 	var/datum/tinker_cache_item/chosen_item = craft_possibilities[selection]
 
 	if(!can_interact(user) || !anchored || depowered || !chosen_item)
