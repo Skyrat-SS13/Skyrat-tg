@@ -27,6 +27,9 @@
 	var/is_pumping = FALSE
 	/// Floor tile is placed down
 	var/tile_placed = FALSE
+	
+	///category for plumbing RCD
+	category = "Liquids"
 
 /obj/machinery/plumbing/floor_pump/Initialize(mapload, bolt, layer)
 	. = ..()
