@@ -207,9 +207,9 @@ RLD
 	if(.)
 		return
 
-	if(action == "toggle_silo")
+	if(action == "toggle_silo" && (upgrade & RCD_UPGRADE_SILO_LINK))
 		if(silo_mats)
-			if(!silo_mats.mat_container && !silo_link) // Allow them to turn off an invalid link
+			if(!silo_mats.mat_container && !silo_link) // Allow them to turn off an invalid link.
 				to_chat(usr, span_alert("No silo link detected. Connect to silo via multitool."))
 				return FALSE
 			silo_link = !silo_link
@@ -346,7 +346,7 @@ RLD
 			),
 
 			//Glass Airlocks[airlock_glass = TRUE is implied,do fill_closed overlay]
-			"Glass AirLocks" = list(
+			"Glass Airlocks" = list(
 				list(AIRLOCK_TYPE = /obj/machinery/door/airlock/glass, TITLE = "Standard", CATEGORY_ICON_STATE = TITLE_ICON, CATEGORY_ICON_SUFFIX = "Glass"),
 				list(AIRLOCK_TYPE = /obj/machinery/door/airlock/public/glass, TITLE = "Public"),
 				list(AIRLOCK_TYPE = /obj/machinery/door/airlock/engineering/glass, TITLE = "Engineering"),
@@ -372,7 +372,7 @@ RLD
 			),
 
 			//Solid Airlocks[airlock_glass = FALSE is implied,no fill_closed overlay]
-			"Solid AirLocks" = list(
+			"Solid Airlocks" = list(
 				list(AIRLOCK_TYPE = /obj/machinery/door/airlock, TITLE = "Standard", CATEGORY_ICON_STATE = TITLE_ICON),
 				list(AIRLOCK_TYPE = /obj/machinery/door/airlock/public, TITLE = "Public"),
 				list(AIRLOCK_TYPE = /obj/machinery/door/airlock/engineering, TITLE = "Engineering"),
@@ -442,10 +442,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 
 // `initial` does not work here. Neither does instantiating a wall/whatever
 // and referencing that. I don't know why.
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
-
 /proc/init_holographic_wall()
 	return getHologramIcon(
 		icon('icons/turf/walls/wall.dmi', "wall-0"),
@@ -519,10 +515,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	name = "hologram"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
-
 /obj/effect/rcd_hologram/Initialize(mapload)
 	. = ..()
 	QDEL_IN(src, RCD_HOLOGRAM_FADE_TIME)
@@ -571,7 +563,14 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 		return FALSE
 	if(rcd_results["mode"] == RCD_MACHINE || rcd_results["mode"] == RCD_COMPUTER || rcd_results["mode"] == RCD_FURNISHING)
 		var/turf/target_turf = get_turf(A)
-		if(target_turf.is_blocked_turf(exclude_mobs = TRUE))
+		//ignore all directional windows on the turf
+		var/static/list/ignored_atoms = list(/obj/structure/window, /obj/structure/window/reinforced)
+		var/list/ignored_content = list()
+		for(var/atom/movable/movable_content in target_turf)
+			if(is_type_in_list(movable_content, ignored_atoms))
+				ignored_content += movable_content
+		//check if the machine can fit on this turf
+		if(target_turf.is_blocked_turf(exclude_mobs = TRUE, source_atom = null, ignore_atoms = ignored_content))
 			playsound(loc, 'sound/machines/click.ogg', 50, TRUE)
 			qdel(rcd_effect)
 			return FALSE
@@ -702,6 +701,18 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 			var/list/category = root[category_name]
 			if(category == null) //not a valid category
 				return TRUE
+
+			/**
+			 * The advantage of organizing designs into categories is that
+			 * You can ignore an complete category if the design disk upgrade for that category isn't installed.
+			 */
+			//You can't select designs from the Machines category if you dont have the frames upgrade installed.
+			if(category == "Machines" && !(upgrade & RCD_UPGRADE_FRAMES))
+				return TRUE
+			//You can't select designs from the Furniture category if you dont have the furnishing upgrade installed.
+			if(category == "Furniture" && !(upgrade & RCD_UPGRADE_FURNISHING))
+				return TRUE
+
 			var/list/design = category[index]
 			if(design == null) //not a valid design
 				return TRUE
@@ -729,7 +740,7 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 
 			if(root_category == "Airlocks")
 				construction_mode = RCD_AIRLOCK
-				airlock_glass = (category_name != "Solid AirLocks")
+				airlock_glass = (category_name != "Solid Airlocks")
 				airlock_type = design[AIRLOCK_TYPE]
 
 		else
@@ -742,7 +753,7 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	ui_interact(user)
 
 /obj/item/construction/rcd/proc/target_check(atom/A, mob/user) // only returns true for stuff the device can actually work with
-	if((isturf(A) && A.density && mode==RCD_DECONSTRUCT) || (isturf(A) && !A.density) || (istype(A, /obj/machinery/door/airlock) && mode==RCD_DECONSTRUCT) || istype(A, /obj/structure/grille) || (istype(A, /obj/structure/window) && mode==RCD_DECONSTRUCT) || istype(A, /obj/structure/girder))
+	if((isturf(A) && A.density && mode == RCD_DECONSTRUCT) || (isturf(A) && !A.density) || (istype(A, /obj/machinery/door/airlock) && mode == RCD_DECONSTRUCT) || istype(A, /obj/structure/grille) || (istype(A, /obj/structure/window) && mode == RCD_DECONSTRUCT) || istype(A, /obj/structure/girder))
 		return TRUE
 	else
 		return FALSE
@@ -785,10 +796,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	banned_upgrades = RCD_UPGRADE_SILO_LINK
 	var/energyfactor = 72
 
-
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
 
 /obj/item/construction/rcd/borg/useResource(amount, mob/user)
 	if(!iscyborg(user))
@@ -887,10 +894,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	inhand_icon_state = "oldrcd"
 	has_ammobar = FALSE
 
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
-
 /obj/item/construction/rcd/arcd/afterattack(atom/A, mob/user)
 	. = ..()
 	if(range_check(A,user))
@@ -950,10 +953,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	///will contain the original icons modified with the color choice
 	var/list/display_options = list()
 	var/color_choice = null
-
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
 
 /obj/item/construction/rld/Initialize(mapload)
 	. = ..()
@@ -1152,10 +1151,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 		"Fourth Layer" = 4,
 		"Fifth Layer" = 5,
 	)
-
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
 
 /obj/item/construction/plumbing/Initialize(mapload)
 	. = ..()
@@ -1410,10 +1405,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
 	has_ammobar = TRUE
 
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
-
 /obj/item/construction/plumbing/research/set_plumbing_designs()
 	plumbing_design_types = list(
 		//category 1 synthesizers
@@ -1439,10 +1430,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	desc = "A type of plumbing constructor designed to rapidly deploy the machines needed to make a brewery."
 	icon_state = "plumberer_service"
 	has_ammobar = TRUE
-
-/datum/armor/item_construction
-	fire = 100
-	acid = 50
 
 /obj/item/construction/plumbing/service/set_plumbing_designs()
 	plumbing_design_types = list(

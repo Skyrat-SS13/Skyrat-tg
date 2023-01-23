@@ -594,13 +594,6 @@
 	armor_type = /datum/armor/none
 	// which means it offers no protection, it's just air and light
 
-/datum/armor/head_chameleon
-	melee = 5
-	bullet = 5
-	laser = 5
-	fire = 50
-	acid = 50
-
 /obj/item/clothing/head/chameleon/drone/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, ABSTRACT_ITEM_TRAIT)
@@ -670,14 +663,6 @@
 	// Can drones use the voice changer part? Let's not find out.
 	voice_change = 0
 
-/datum/armor/mask_chameleon
-	melee = 5
-	bullet = 5
-	laser = 5
-	bio = 100
-	fire = 50
-	acid = 50
-
 /obj/item/clothing/mask/chameleon/drone/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, ABSTRACT_ITEM_TRAIT)
@@ -739,14 +724,6 @@
 	special_desc = "A pair of chameleon shoes with an anti-slip coating employed by the Syndicate in infiltration operations."  // Skyrat edit
 
 
-/datum/armor/shoes_chameleon
-	melee = 10
-	bullet = 10
-	laser = 10
-	bio = 90
-	fire = 50
-	acid = 50
-
 /obj/item/clothing/shoes/chameleon/noslip/broken/Initialize(mapload)
 	. = ..()
 	chameleon_action.emp_randomise(INFINITY)
@@ -757,14 +734,6 @@
 	special_desc = "A chameleon backpack employed by the Syndicate in infiltration operations."  // Skyrat edit
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
-
-/datum/armor/shoes_chameleon
-	melee = 10
-	bullet = 10
-	laser = 10
-	bio = 90
-	fire = 50
-	acid = 50
 
 /obj/item/storage/backpack/chameleon/Initialize(mapload)
 	. = ..()
@@ -795,14 +764,6 @@
 	special_desc = "A chameleon belt employed by the Syndicate in infiltration operations."  // Skyrat edit
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
-
-/datum/armor/shoes_chameleon
-	melee = 10
-	bullet = 10
-	laser = 10
-	bio = 90
-	fire = 50
-	acid = 50
 
 /obj/item/storage/belt/chameleon/Initialize(mapload)
 	. = ..()
@@ -836,14 +797,6 @@
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
-/datum/armor/shoes_chameleon
-	melee = 10
-	bullet = 10
-	laser = 10
-	bio = 90
-	fire = 50
-	acid = 50
-
 /obj/item/radio/headset/chameleon/Initialize(mapload)
 	. = ..()
 	chameleon_action = new(src)
@@ -870,14 +823,6 @@
 	name = "tablet"
 	var/datum/action/item_action/chameleon/change/tablet/chameleon_action
 
-/datum/armor/shoes_chameleon
-	melee = 10
-	bullet = 10
-	laser = 10
-	bio = 90
-	fire = 50
-	acid = 50
-
 /obj/item/modular_computer/pda/chameleon/Initialize(mapload)
 	. = ..()
 	chameleon_action = new(src)
@@ -903,14 +848,6 @@
 
 /obj/item/stamp/chameleon
 	var/datum/action/item_action/chameleon/change/chameleon_action
-
-/datum/armor/shoes_chameleon
-	melee = 10
-	bullet = 10
-	laser = 10
-	bio = 90
-	fire = 50
-	acid = 50
 
 /obj/item/stamp/chameleon/Initialize(mapload)
 	. = ..()
@@ -982,10 +919,6 @@
 
 	/// The badmin mode. Makes your projectiles act like the real deal.
 	var/real_hits = FALSE
-
-/datum/armor/neck_chameleon
-	fire = 50
-	acid = 50
 
 /obj/item/gun/energy/laser/chameleon/Initialize(mapload)
 	. = ..()
