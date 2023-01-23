@@ -100,7 +100,7 @@
 		"Deck Worker", 
 		"Mailman", 
 		"Union Associate",
-		"Inventory associate",
+		"Inventory Associate",
 	)
 
 /datum/job/chaplain
@@ -298,10 +298,10 @@
 	alt_titles = list(
 		"Union Requisitions Officer", 
 		"Deck Chief",
-		"Warehouse supervisor",
+		"Warehouse Supervisor",
 		"Supply Foreman", 
 		"Head of Supply", 
-		"Logistics coordinator",
+		"Logistics Coordinator",
 	)
 
 /datum/job/research_director
