@@ -36,10 +36,15 @@
 
 /obj/item/storage/secure/briefcase/update_overlays()
 	. = ..()
-	if(atom_storage.locked)
+	if(atom_storage?.locked)
 		. += "briefcase_locked"
 	else
 		. += "briefcase_open"
+
+/obj/item/storage/secure/briefcase/update_icon_state()
+	. = ..()
+	// Remove icon state functionality in favor of the overlays above.
+	icon_state = "[initial(icon_state)]"
 
 /obj/item/storage/secure/briefcase/white
 	name = "white secure briefcase"
