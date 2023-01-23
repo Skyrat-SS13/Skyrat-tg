@@ -50,62 +50,13 @@
 
 /obj/item/organ/internal/eyes/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = FALSE)
 	. = ..()
-<<<<<<< HEAD
-	if(ishuman(eye_owner))
-		var/mob/living/carbon/human/human_owner = eye_owner
-		// SKYRAT EDIT ADDITION
-		if(human_owner.emissive_eyes)
-			is_emissive = TRUE
-		// SKYRAT EDIT END
-		old_eye_color_left = human_owner.eye_color_left
-		old_eye_color_right = human_owner.eye_color_right
-		if(initial(eye_color_left))
-			human_owner.eye_color_left = eye_color_left
-		else
-			eye_color_left = human_owner.eye_color_left
-		if(initial(eye_color_right))
-			human_owner.eye_color_right = eye_color_right
-		else
-			eye_color_right = human_owner.eye_color_right
-		if(HAS_TRAIT(human_owner, TRAIT_NIGHT_VISION) && !lighting_alpha)
-			lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
-		if(CONFIG_GET(flag/native_fov) && native_fov)
-			human_owner.add_fov_trait(type, native_fov)
-	eye_owner.update_tint()
-	owner.update_sight()
-	if(eye_owner.has_dna() && ishuman(eye_owner))
-		eye_owner.dna.species.handle_body(eye_owner) //updates eye icon
-=======
 	owner.cure_blind(NO_EYES)
 	apply_damaged_eye_effects()
 	refresh()
->>>>>>> c3a1f21c1af (Converts blindness and nearsightedness to status effects, scratches some VERY dumb blindness handling that resulted in mobs becoming "incurably" blind (#72267))
 
 /// Refreshes the visuals of the eyes
 /// If call_update is TRUE, we also will call udpate_body
 /obj/item/organ/internal/eyes/proc/refresh(call_update = TRUE)
-<<<<<<< HEAD
-	if(ishuman(owner))
-		var/mob/living/carbon/human/affected_human = owner
-		// SKYRAT EDIT ADDITION
-		if (affected_human.emissive_eyes)
-			is_emissive = TRUE
-		// SKYRAT EDIT END
-		old_eye_color_left = affected_human.eye_color_left
-		old_eye_color_right = affected_human.eye_color_right
-		if(initial(eye_color_left))
-			affected_human.eye_color_left = eye_color_left
-		else
-			eye_color_left = affected_human.eye_color_left
-		if(initial(eye_color_right))
-			affected_human.eye_color_right = eye_color_right
-		else
-			eye_color_right = affected_human.eye_color_right
-		if(HAS_TRAIT(affected_human, TRAIT_NIGHT_VISION) && !lighting_alpha)
-			lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
-	owner.update_tint()
-=======
->>>>>>> c3a1f21c1af (Converts blindness and nearsightedness to status effects, scratches some VERY dumb blindness handling that resulted in mobs becoming "incurably" blind (#72267))
 	owner.update_sight()
 	owner.update_tint()
 
@@ -127,6 +78,11 @@
 		lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 	if(CONFIG_GET(flag/native_fov) && native_fov)
 		owner.add_fov_trait(type, native_fov)
+
+	// SKYRAT EDIT ADDITION - EMISSIVES
+	if (affected_human.emissive_eyes)
+		is_emissive = TRUE
+	// SKYRAT EDIT END
 
 	if(call_update)
 		owner.dna?.species?.handle_body(affected_human) //updates eye icon
