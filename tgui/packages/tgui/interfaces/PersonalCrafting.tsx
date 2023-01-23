@@ -651,7 +651,7 @@ const RecipeContentCompact = ({ item, craftable, busy, mode }, context) => {
                     item.machinery
                       .map((item) => data.atom_data[(item as any) - 1]?.name)
                       .join(', ')}
-				{item.structures &&
+                {item.structures &&
                   ', ' +
                     item.structures
                       .map((item) => data.atom_data[(item as any) - 1]?.name)
