@@ -786,7 +786,7 @@ const RecipeContent = ({ item, craftable, busy, mode, diet }, context) => {
                     ))}
                   </Box>
                 )}
-				 {item.structures && (
+                {item.structures && (
                   <Box>
                     <GroupTitle title="Structures" />
                     {item.structures.map((atom_id) => (
