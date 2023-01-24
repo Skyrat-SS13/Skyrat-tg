@@ -83,7 +83,7 @@
 		balloon_alert(user, "repair cancelled")
 		return FALSE
 
-	if(!installed_nif.repair_nif(repair_amount))
+	if(!installed_nif.adjust_durability(repair_amount))
 		balloon_alert(user, "target NIF is at max duarbility")
 		return FALSE
 

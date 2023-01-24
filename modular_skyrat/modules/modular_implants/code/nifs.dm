@@ -331,22 +331,16 @@
 
 	return TRUE
 
-///Repairs the parent NIF based off the repair_amount
-/obj/item/organ/internal/cyberimp/brain/nif/proc/repair_nif(repair_amount)
-	if(durability >= max_durability)
+///Adjusts the NIF based on the adjustment_amount. Positive values repair, negative values damage
+/obj/item/organ/internal/cyberimp/brain/nif/proc/adjust_durability(adjustment_amount)
+	if(!adjustment_amount || ((adjustment_amount > 0) && (durability >= max_durability) || ((adjustment_amount < 0) && (durability <= NIF_MINIMUM_DURABILITY))))
 		return FALSE
 
-	durability = min(durability + repair_amount, max_durability)
+	if(adjustment_amount < 0)
+		durability = max((durability + adjustment_amount), NIF_MINIMUM_DURABILITY)
+		return TRUE
 
-	return TRUE
-
-///Damages the parent NIF based off the damage_amount
-/obj/item/organ/internal/cyberimp/brain/nif/proc/damage_nif(damage_amount)
-	if(!damage_amount || durability <= 0)
-		return FALSE
-
-	durability = max(durability - damage_amount, NIF_MINIMUM_DURABILITY)
-
+	durability = min((durability + adjustment_amount), max_durability)
 	return TRUE
 
 ///Sends a message to the owner of the NIF. Typically used for messages from the NIF itself or from NIFSofts.
@@ -396,9 +390,9 @@
 
 	switch(severity)
 		if(1)
-			damage_nif(death_durability_loss)
+			adjust_durability(-death_durability_loss)
 		if(2)
-			damage_nif(death_durability_loss / NIF_DURABILITY_LOSS_HALVED)
+			adjust_durability(-death_durability_loss / NIF_DURABILITY_LOSS_HALVED)
 
 	for(var/datum/nifsoft/installed_nifsoft as anything in loaded_nifsofts)
 		installed_nifsoft.on_emp(severity)
@@ -412,7 +406,7 @@
 	if(!durability_loss_vulnerable)
 		return FALSE
 
-	damage_nif(death_durability_loss)
+	adjust_durability(-death_durability_loss)
 	durability_loss_vulnerable = FALSE
 
 	addtimer(CALLBACK(src, PROC_REF(make_vulnerable)), 20 MINUTES) //Players should have a decent grace period on this.
