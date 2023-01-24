@@ -63,7 +63,7 @@
 	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif
 
 	if(installed_nif.broken)
-		installed_nif.balloon_alert(installed_nif.linked_mob, "Your NIF is broken!")
+		installed_nif.balloon_alert(installed_nif.linked_mob, "your NIF is broken")
 		return FALSE
 
 	if(cooldown && on_cooldown)
@@ -152,6 +152,7 @@
 	var/datum/nifsoft/installed_nifsoft = new loaded_nifsoft(installed_nif)
 
 	if(!installed_nifsoft.parent_nif)
+		balloon_alert(usuer, "installation failed")
 		return FALSE
 
 	if(!reusable)
@@ -161,6 +162,10 @@
 	attempt_software_install(user)
 
 /obj/item/disk/nifsoft_uploader/attack(mob/living/mob, mob/living/user, params)
+	if(mob != user && !do_after(user, 5 SECONDS, mob))
+		balloon_alert(user, "installation failed")
+		return FALSE
+
 	attempt_software_install(mob)
 
 #undef DEFAULT_NIFSOFT_COOLDOWN
