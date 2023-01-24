@@ -121,6 +121,8 @@
 	return attack_hand(user, modifiers)
 
 /turf/open/space/proc/CanBuildHere()
+	if(destination_z)
+		return FALSE
 	return TRUE
 
 /turf/open/space/handle_slip()
@@ -219,7 +221,7 @@
 /turf/open/space/rust_heretic_act()
 	return FALSE
 
-/turf/open/space/ReplaceWithLattice()
+/turf/open/space/attempt_lattice_replacement()
 	var/dest_x = destination_x
 	var/dest_y = destination_y
 	var/dest_z = destination_z
