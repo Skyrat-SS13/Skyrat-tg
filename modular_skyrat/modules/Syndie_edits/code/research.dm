@@ -11,11 +11,6 @@
 	organization = "Interdyne Pharmaceuticals"
 	should_generate_points = TRUE
 
-/datum/techweb/interdyne/New()
-	. = ..()
-	for(var/i in SSresearch.point_types)
-		research_points[i] = 15000
-
 /obj/machinery/rnd/server/interdyne
 	stored_research = /datum/techweb/interdyne
 
