@@ -44,7 +44,7 @@
 		if("security")
 			special_networks["nanotrasen"]["fax_name"] = pick("CC Security Reporting", "SolFed Police Report", "Armadyne Security Inquires")
 		if("medical")
-			special_networks["nanotrasen"]["fax_name"] = pick("CC Medical Wing", "Veymed Support", "SolFed Medical Support", "Frontier Medical Clinic", "Interdyne Pharma Support")
+			special_networks["nanotrasen"]["fax_name"] = pick("CC Medical Wing", "Veymed Support", "SolFed Medical Support", "Frontier Medical Clinic", "Solfed EMT")
 		if("engineering")
 			special_networks["nanotrasen"]["fax_name"] = pick("CC Engineering Inquires", "SolFed Enginner Technical Support", "Frontier Engineering Anonymous", "Nakamura Engineering")
 		if("service")
@@ -56,7 +56,7 @@
 		if("legal")
 			special_networks["nanotrasen"]["fax_name"] = pick("CC Legal Department", "CC Legal Inquires", "SolFed Legal Reports", "Solfed Law Office")
 		if("command")
-			special_networks["nanotrasen"]["fax_name"] = pick("Central Command", "CC Fleet Dispatch", "SolFed Central Dispatch")
+			special_networks["nanotrasen"]["fax_name"] = pick("Central Command", "CC Fleet Dispatch")
 
 	special_networks["external"]["fax_name"] = pick("Pencil Pushers Anonymous", "Legalese and you", "Legal Advice Helpline", "Corpo Cubical Collective", "Frontier News Network", "Peoples Union", "Corporate Jargon", "Alcoholics Anonymous")
 
