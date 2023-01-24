@@ -980,3 +980,99 @@
   vinylspiders:
   - bugfix: liquid pumps now show up in the RCD under the 'liquids' category instead
       of in a hidden blank one
+2023-01-24:
+  A.C.M.O.:
+  - bugfix: Fixed the DNA Infuser's Goliath Infusion and its organ set bonus. The
+      Goliath hammer will now apply bonus attack damage as expected.
+  - bugfix: Fixed incorrect grammar and pronoun usage in the DNA Infuser's noticeable
+      organs examine-text.
+  - bugfix: Fixed the DNA Infuser giving mutated organs to androids and other non-organic/DNA-less
+      species.
+  - bugfix: Fixed the DNA Infuser mutating organs which the occupant doesn't have.
+  - bugfix: Fixed the DNA Infuser not allowing addition of dead creatures.
+  - bugfix: Fixed buggy organ filtering code in the DNA Infuser which stopped it from
+      infusing organs.
+  LT3:
+  - qol: Reduced volume of firedoor alarm sound loop
+  - bugfix: Tram hit counter now only increments when actual players are hit. No more
+      free points hitting the horrible goose
+  OrionTheFox:
+  - imagedel: deleted modular newscaster override, they've been reverted to new TG
+      sprites
+  - bugfix: Randomized round-start posters now pull from the selected poster's icon
+      file, meaning TG Downstreams can have them in a seperate .dmi (Fixes Skyrat
+      poster icons)
+  Paxilmaniac:
+  - imagedel: The icon override for portable scrubbers and pumps has been removed,
+      making us use the tg version again
+  RimiNosha:
+  - qol: The Synth charging cable is now far more consistent, actually stops when
+      you're full, and can no longer can be indirectly used as a powersink on a department's
+      doors.
+  - balance: Synths should no longer get guaranteed traumas from literally any kind
+      of EMP, light EMPs now have no effect on synth brains.
+  - bugfix: Fixed a runtime when a synth brain outside a body gets EMPed.
+  - code_imp: Synth surgery code is now no longer unreadable.
+  - bugfix: Fixes synths being able to gain charge from being EMPed, despite flavor
+      text stating otherwise.
+  - qol: Renames "positronic brain carcass" to "compact positronic brain" to match
+      the rest of the synth naming scheme.
+  - balance: Synth ears now take damage on EMP, like all their other organs.
+  SkyratBot:
+  - imageadd: Two new corporate themed posters.
+  - bugfix: Tape recorders are not deaf anymore
+  - code_imp: Replaced some random() procs in lavaland elite code with prob() procs
+  - bugfix: bluespace light replacer from fixing lights/turfs containing lights not
+      in its line of sight
+  - bugfix: beaming any turf even those not containing lights from causing lag
+  - bugfix: Morphs now properly move faster when disguised rather than slowing down.
+  - bugfix: Nanotrasen has pushed an update to their Transit System Consoles, which
+      just makes sure the buttons look visually appropriate.
+  - bugfix: Bundles of disposal packages that contain a wrapped parcel will be now
+      successfully redirected by the wrapping sorters
+  - bugfix: fixed a bug where petri dish smartfridges could not be constructed from
+      a circuit board
+  - rscadd: Burn Medkit to Mining Vendor
+  - soundadd: Chisels now make sculpting sounds when used on carving blocks
+  - qol: Chisels now give balloon alerts when selecting a target, cancelling, or sculpting
+  - qol: Chisels used on carving blocks that were interrupted will now continue
+  - bugfix: Fix chisel targets to have no range requirement (so you can use binoculars,
+      cameras, etc.)
+  - bugfix: Fix standard mineral blocks (uranium, diamond, plasma, etc.) not letting
+      people use the radial menu to craft abstract statues properly.  This does not
+      work with custom mineral blocks. (pizza, glass, etc.)
+  - code_imp: Change chisel and statue code to be more readable
+  - rscadd: Some prisoner backgrounds have more or less tattoos.
+  - rscadd: More Memories to collect involving fishing and getting converted
+  - rscadd: Bartenders can now mix up the Mississippi Queen for those willing to take
+      the plunge.
+  - bugfix: Wielded high frequency blades no longer ignore pacifism
+  - bugfix: Fixes players bypassing the gas mask FOV restrictions with biohoods that
+      do almost everything the mask does without an FOV
+  - bugfix: Monkey Humans no longer have their AI turned on upon revival
+  - bugfix: Monkey cultists are now able to invoke cult runes
+  - bugfix: Spacemen with a clear lack of genetics powers can no longer bend space
+      and time to pull out pH indicator strips.
+  - bugfix: Hacked autolathes and Limbgrowers can now properly print things again.
+  - bugfix: NanoTrasen Engineering has identified and resolved an issue with MechOS
+      that prevented diagnostics for internal shorting
+  - spellcheck: Cucumber greek is now Greek cucumber
+  - spellcheck: Fixed attack verbs on the greek cucumber
+  Tastyfish:
+  - bugfix: Secure briefcases no longer disappear when locked.
+  - bugfix: Fixes a bunch of cases of windows not being where they were supposed to
+      be, tables/chairs stacking on each other, and other very small stuff you've
+      never noticed before.
+  Tattle:
+  - qol: urinals and noticeboards can be handcrafted
+  - qol: pod computers can be deconstructed
+  - qol: fireaxe cabinets, mech removal cabinets, and mirrors can now all be crafted
+  Wallem:
+  - balance: Kheiral Cuffs now cost 750 mining points instead of 2000.
+  Winter Schock:
+  - bugfix: Blind doll with monophobia dont get stress while someone in 1 tile range
+  Zonespace27:
+  - bugfix: Ammo workbenches can now fit materials, up to 100 sheets.
+  vinylspiders:
+  - bugfix: fixed an issue that was causing a crafted crusader belt to spawn without
+      its pouch
