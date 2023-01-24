@@ -41,7 +41,7 @@
 	data["ui_themes"] = ui_themes
 	data["max_nifsofts"] = max_nifsofts
 	data["max_durability"] = max_durability
-	data["max_power"] = max_power
+	data["max_power"] = max_power_level
 	data["max_blood_level"] = linked_mob.blood_volume_normal
 	data["product_notes"] = manufacturer_notes
 

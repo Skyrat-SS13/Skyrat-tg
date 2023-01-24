@@ -29,8 +29,7 @@
 				persistence.nif_durability = null
 				return
 
-			persistence_nif.damage_nif(LOSS_WITH_NIF_UNINSTALLED)
-			persistence.nif_durability = max(persistence.nif_durability, 0)
+			persistence.nif_durability = max((persistence.nif_durability - LOSS_WITH_NIF_UNINSTALLED), 0)
 			return
 
 		persistence.nif_path = null

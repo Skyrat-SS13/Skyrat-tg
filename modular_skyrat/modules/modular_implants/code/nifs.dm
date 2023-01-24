@@ -6,6 +6,7 @@
 
 #define NIF_DURABILITY_LOSS_HALVED 2
 #define NIF_MINIMUM_DURABILITY 0
+#define NIF_MINIMUM_POWER_LEVEL 0
 
 // This is the original NIF that other NIFs are based on.
 /obj/item/organ/internal/cyberimp/brain/nif
@@ -37,7 +38,7 @@
 
 	//Power Variables
 	///What is the maximum power level of the NIF?
-	var/max_power = 1000
+	var/max_power_level = 1000
 	///How much power is currently inside of the NIF?
 	var/power_level = 0
 	///How much power is the NIF currently using? Negative usage will result in power being gained.
@@ -110,7 +111,7 @@
 	for(var/datum/nifsoft/preinstalled_nifsoft as anything in preinstalled_nifsofts)
 		install_nifsoft(preinstalled_nifsoft)
 
-	power_level = max_power
+	power_level = max_power_level
 
 /obj/item/organ/internal/cyberimp/brain/nif/Destroy()
 	var/found_component = linked_mob.GetComponent(/datum/component/nif_examine)
@@ -187,22 +188,21 @@
 
 			nifsoft.activate()
 
-	power_level = min(power_level - power_usage, max_power)
+	change_power_level(power_usage)
 
-///Subtracts from the power level of the NIF once
-/obj/item/organ/internal/cyberimp/brain/nif/proc/use_power(power_to_use)
-	if(power_level < power_to_use)
+///Modifies power based off power_to_change. Negative numbers add charge, positive numbers remove charge
+/obj/item/organ/internal/cyberimp/brain/nif/proc/change_power_level(power_to_change)
+	if(!power_to_change)
+		return TRUE
+
+	if((!power_level && (power_to_change > 0)) || ((power_to_change < 0) && (power_level >= max_power_level)))
 		return FALSE
 
-	power_level -= power_to_use
-	return TRUE
+	if(power_to_change > 0)
+		power_level = max((power_level - power_to_change), NIF_MINIMUM_POWER_LEVEL)
+		return TRUE
 
-///Adds power to a NIF once.
-/obj/item/organ/internal/cyberimp/brain/nif/proc/add_power(power_to_add)
-	if(power_level >= max_power)
-		return FALSE
-
-	power_level = min(power_level + power_to_add, max_power)
+	power_level = min((power_level - power_to_change), max_power_level)
 	return TRUE
 
 ///Toggles nutrition drain as a power source on NIFs on/off. Bypass - Ignores the need to perform the nutirition_check() proc.
@@ -476,3 +476,4 @@
 #undef NIF_CALIBRATION_STAGE_FINISHED
 #undef NIF_DURABILITY_LOSS_HALVED
 #undef NIF_MINIMUM_DURABILITY
+#undef NIF_MINIMUM_POWER_LEVEL

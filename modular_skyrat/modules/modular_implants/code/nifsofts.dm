@@ -72,7 +72,7 @@
 		installed_nif.power_usage -= active_cost
 		return TRUE
 
-	if(!installed_nif.use_power(activation_cost))
+	if(!installed_nif.change_power_level(activation_cost))
 		return FALSE
 
 	if(active_mode)
@@ -89,7 +89,7 @@
 ///Refunds the activation cost of a NIFSoft.
 /datum/nifsoft/proc/refund_activation_cost()
 	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif
-	installed_nif.add_power(activation_cost)
+	installed_nif.change_power_level(-activation_cost)
 
 ///Removes the cooldown from a NIFSoft
 /datum/nifsoft/proc/remove_cooldown()
