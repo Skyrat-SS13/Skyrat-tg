@@ -3,13 +3,18 @@
 	name = "\improper Jellyperson"
 	plural_form = "Jellypeople"
 	id = SPECIES_JELLYPERSON
-	species_traits = list(MUTCOLORS,EYECOLOR,NOBLOOD)
+	species_traits = list(
+		MUTCOLORS,
+		EYECOLOR,
+	)
 	inherent_traits = list(
 		TRAIT_TOXINLOVER,
+		TRAIT_NOBLOOD,
 	)
 	mutanttongue = /obj/item/organ/internal/tongue/jelly
 	mutantlungs = /obj/item/organ/internal/lungs/slime
 	mutanteyes = /obj/item/organ/internal/eyes/jelly
+	mutantheart = null
 	meat = /obj/item/food/meat/slab/human/mutant/slime
 	exotic_blood = /datum/reagent/toxin/slimejelly
 	var/datum/action/innate/regenerate_limbs/regenerate_limbs
@@ -93,7 +98,7 @@
 	qdel(consumed_limb)
 	H.blood_volume += 20
 
-// Slimes have both NOBLOOD and an exotic bloodtype set, so they need to be handled uniquely here.
+// Slimes have both TRAIT_NOBLOOD and an exotic bloodtype set, so they need to be handled uniquely here.
 // They may not be roundstart but in the unlikely event they become one might as well not leave a glaring issue open.
 /datum/species/jelly/create_pref_blood_perks()
 	var/list/to_add = list()
@@ -157,7 +162,7 @@
 	name = "\improper Slimeperson"
 	plural_form = "Slimepeople"
 	id = SPECIES_SLIMEPERSON
-	species_traits = list(MUTCOLORS,EYECOLOR,HAIR,FACEHAIR,NOBLOOD)
+	species_traits = list(MUTCOLORS,EYECOLOR,HAIR,FACEHAIR)
 	hair_color = "mutcolor"
 	hair_alpha = 150
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
@@ -293,7 +298,7 @@
 	var/datum/species/jelly/slime/spare_datum = spare.dna.species
 	spare_datum.bodies = origin_datum.bodies
 
-	H.transfer_trait_datums(spare)
+	H.transfer_quirk_datums(spare)
 	H.mind.transfer_to(spare)
 	spare.visible_message("<span class='warning'>[H] distorts as a new body \
 		\"steps out\" of [H.p_them()].</span>",
@@ -439,7 +444,7 @@
 			span_notice("You stop moving this body..."))
 	else
 		to_chat(M.current, span_notice("You abandon this body..."))
-	M.current.transfer_trait_datums(dupe)
+	M.current.transfer_quirk_datums(dupe)
 	M.transfer_to(dupe)
 	dupe.visible_message("<span class='notice'>[dupe] blinks and looks \
 		around.</span>",

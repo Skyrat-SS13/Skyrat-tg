@@ -64,7 +64,7 @@
 				to_chat(H, span_danger("[src] overloads and blinds you!"))
 				H.flash_act(visual = 1)
 				H.adjust_blindness(3)
-				H.blur_eyes(5)
+				H.set_eye_blur_if_lower(10 SECONDS)
 				eyes.applyOrganDamage(5)
 
 /obj/item/clothing/glasses/AltClick(mob/user)
@@ -187,7 +187,14 @@
 	name = "eyepatch"
 	desc = "Yarr."
 	icon_state = "eyepatch"
+	base_icon_state = "eyepatch"
 	inhand_icon_state = null
+	actions_types = list(/datum/action/item_action/flip)
+
+/obj/item/clothing/glasses/eyepatch/attack_self(mob/user, modifiers)
+	. = ..()
+	icon_state = (icon_state == base_icon_state) ? "[base_icon_state]_flipped" : base_icon_state
+	user.update_worn_glasses()
 
 /datum/armor/glasses_science
 	fire = 80
@@ -237,10 +244,6 @@
 	icon_state = "glasses"
 	inhand_icon_state = "glasses"
 	vision_correction = TRUE //corrects nearsightedness
-
-/datum/armor/glasses_science
-	fire = 80
-	acid = 100
 
 /obj/item/clothing/glasses/regular/Initialize(mapload)
 	. = ..()
@@ -381,10 +384,6 @@
 	glass_colour_type = /datum/client_colour/glass_colour/gray
 	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER // SKYRAT EDIT - Just so it works until I make the change upstream
 
-/datum/armor/glasses_science
-	fire = 80
-	acid = 100
-
 /obj/item/clothing/glasses/welding/attack_self(mob/user)
 	weldingvisortoggle(user)
 
@@ -401,10 +400,6 @@
 	tint = 3
 	darkness_view = 1
 	dog_fashion = /datum/dog_fashion/head
-
-/datum/armor/glasses_science
-	fire = 80
-	acid = 100
 
 /obj/item/clothing/glasses/blindfold/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
@@ -428,10 +423,6 @@
 	inhand_icon_state = null
 	var/colored_before = FALSE
 
-/datum/armor/glasses_science
-	fire = 80
-	acid = 100
-
 /obj/item/clothing/glasses/blindfold/white/visual_equipped(mob/living/carbon/human/user, slot)
 	if(ishuman(user) && (slot & ITEM_SLOT_EYES))
 		update_icon(ALL, user)
@@ -441,7 +432,7 @@
 /obj/item/clothing/glasses/blindfold/white/update_icon(updates=ALL, mob/living/carbon/human/user)
 	. = ..()
 	if(ishuman(user) && !colored_before)
-		add_atom_colour(user.eye_color_left, FIXED_COLOUR_PRIORITY) // I want this to be an average of the colors of both eyes, but that can be done later
+		add_atom_colour(BlendRGB(user.eye_color_left, user.eye_color_right, 0.5), FIXED_COLOUR_PRIORITY)
 		colored_before = TRUE
 
 /obj/item/clothing/glasses/blindfold/white/worn_overlays(mutable_appearance/standing, isinhands = FALSE, file2use)
@@ -470,10 +461,6 @@
 	flash_protect = FLASH_PROTECTION_SENSITIVE
 	glass_colour_type = /datum/client_colour/glass_colour/red
 
-/datum/armor/glasses_science
-	fire = 80
-	acid = 100
-
 /obj/item/clothing/glasses/thermal/emp_act(severity)
 	. = ..()
 	if(. & EMP_PROTECT_SELF)
@@ -484,10 +471,6 @@
 	name = "syndicate xray goggles"
 	desc = "A pair of xray goggles manufactured by the Syndicate."
 	vision_flags = SEE_TURFS|SEE_MOBS|SEE_OBJS
-
-/datum/armor/glasses_science
-	fire = 80
-	acid = 100
 
 /obj/item/clothing/glasses/thermal/xray/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
@@ -528,10 +511,6 @@
 	icon_state = "thermoncle"
 	flags_1 = null //doesn't protect eyes because it's a monocle, duh
 
-/datum/armor/glasses_science
-	fire = 80
-	acid = 100
-
 /obj/item/clothing/glasses/thermal/monocle/examine(mob/user) //Different examiners see a different description!
 	if(user.gender == MALE)
 		desc = replacetext(desc, "person", "man")
@@ -544,7 +523,14 @@
 	name = "optical thermal eyepatch"
 	desc = "An eyepatch with built-in thermal optics."
 	icon_state = "eyepatch"
+	base_icon_state = "eyepatch"
 	inhand_icon_state = null
+	actions_types = list(/datum/action/item_action/flip)
+
+/obj/item/clothing/glasses/thermal/eyepatch/attack_self(mob/user, modifiers)
+	. = ..()
+	icon_state = (icon_state == base_icon_state) ? "[base_icon_state]_flipped" : base_icon_state
+	user.update_worn_glasses()
 
 /datum/armor/glasses_science
 	fire = 80
@@ -590,7 +576,8 @@
 
 /obj/item/clothing/glasses/debug
 	name = "debug glasses"
-	desc = "Medical, security and diagnostic hud. Alt click to toggle xray."
+	desc = "Medical, security and diagnostic hud."
+	desc_controls = "Alt click to toggle xray."
 	icon_state = "nvgmeson"
 	inhand_icon_state = "nvgmeson"
 	flags_cover = GLASSESCOVERSEYES
@@ -602,10 +589,6 @@
 	clothing_traits = list(TRAIT_REAGENT_SCANNER, TRAIT_MADNESS_IMMUNE)
 	var/list/hudlist = list(DATA_HUD_MEDICAL_ADVANCED, DATA_HUD_DIAGNOSTIC_ADVANCED, DATA_HUD_SECURITY_ADVANCED)
 	var/xray = FALSE
-
-/datum/armor/glasses_science
-	fire = 80
-	acid = 100
 
 /obj/item/clothing/glasses/debug/equipped(mob/user, slot)
 	. = ..()
@@ -656,10 +639,6 @@
 	inhand_icon_state = "salesman"
 	///Tells us who the current wearer([BIGSHOT]) is.
 	var/mob/living/carbon/human/bigshot
-
-/datum/armor/glasses_science
-	fire = 80
-	acid = 100
 
 /obj/item/clothing/glasses/salesman/equipped(mob/living/carbon/human/user, slot)
 	..()

@@ -393,8 +393,6 @@
 	melee = 10
 	acid = 50
 
-#define SQUEEZING_DISPERSAL_PERCENT 0.75 //SKYRAT EDIT ADDITION
-
 /obj/item/reagent_containers/cup/bucket/attackby(obj/O, mob/living/user, params) //SKYRAT EDIT CHANGE
 	if(istype(O, /obj/item/mop)) //SKYRAT EDIT CHANGE
 		var/is_right_clicking = LAZYACCESS(params2list(params), RIGHT_CLICK)
@@ -405,7 +403,7 @@
 			if(reagents.total_volume == reagents.maximum_volume)
 				to_chat(user, "<span class='warning'>[src] is full!</span>")
 				return
-			O.reagents.remove_any(O.reagents.total_volume*SQUEEZING_DISPERSAL_PERCENT)
+			O.reagents.remove_any(O.reagents.total_volume * SQUEEZING_DISPERSAL_RATIO)
 			O.reagents.trans_to(src, O.reagents.total_volume, transfered_by = user)
 			to_chat(user, "<span class='notice'>You squeeze the liquids from [O] to [src].</span>")
 		else
@@ -421,8 +419,6 @@
 		var/obj/item/bot_assembly/cleanbot/new_cleanbot_ass = new(null, src)
 		user.put_in_hands(new_cleanbot_ass)
 		return
-
-#undef SQUEEZING_DISPERSAL_PERCENT  //SKYRAT EDIT ADDITION
 
 /obj/item/reagent_containers/cup/bucket/equipped(mob/user, slot)
 	. = ..()
@@ -456,7 +452,8 @@
 
 /obj/item/reagent_containers/cup/mortar
 	name = "mortar"
-	desc = "A specially formed bowl of ancient design. It is possible to crush or juice items placed in it using a pestle; however the process, unlike modern methods, is slow and physically exhausting. <b>Alt click to eject the item.</b>"
+	desc = "A specially formed bowl of ancient design. It is possible to crush or juice items placed in it using a pestle; however the process, unlike modern methods, is slow and physically exhausting."
+	desc_controls = "Alt click to eject the item."
 	icon_state = "mortar"
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5, 10, 15, 20, 25, 30, 50, 100)
@@ -465,10 +462,6 @@
 	reagent_flags = OPENCONTAINER
 	spillable = TRUE
 	var/obj/item/grinded
-
-/datum/armor/bucket_wooden
-	melee = 10
-	acid = 50
 
 /obj/item/reagent_containers/cup/mortar/AltClick(mob/user)
 	if(grinded)

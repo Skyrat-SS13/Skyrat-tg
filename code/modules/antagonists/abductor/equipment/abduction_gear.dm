@@ -196,7 +196,7 @@
 	else
 		mode = GIZMO_SCAN
 		icon_state = "gizmo_scan"
-	to_chat(user, span_notice("You switch the device to [mode==GIZMO_SCAN? "SCAN": "MARK"] MODE"))
+	to_chat(user, span_notice("You switch the device to [mode == GIZMO_SCAN? "SCAN": "MARK"] MODE"))
 
 /obj/item/abductor/gizmo/attack(mob/living/M, mob/user)
 	if(!ScientistCheck(user))
@@ -322,7 +322,7 @@
 	else
 		mode = MIND_DEVICE_MESSAGE
 		icon_state = "mind_device_message"
-	to_chat(user, span_notice("You switch the device to [mode==MIND_DEVICE_MESSAGE? "TRANSMISSION": "COMMAND"] MODE"))
+	to_chat(user, span_notice("You switch the device to [mode == MIND_DEVICE_MESSAGE? "TRANSMISSION": "COMMAND"] MODE"))
 
 /obj/item/abductor/mind_device/afterattack(atom/target, mob/living/user, flag, params)
 	. = ..()
@@ -561,7 +561,7 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 			to_chat(user, span_warning("The specimen has some kind of mental protection that is interfering with the sleep inducement! It seems you've been foiled."))
 			L.visible_message(span_danger("[user] tried to induced sleep in [L] with [src], but is unsuccessful!"), \
 			span_userdanger("You feel a strange wave of heavy drowsiness wash over you!"))
-			L.adjust_drowsyness(2)
+			L.adjust_drowsiness(4 SECONDS)
 			return
 		L.visible_message(span_danger("[user] induces sleep in [L] with [src]!"), \
 		span_userdanger("You suddenly feel very drowsy!"))
@@ -573,7 +573,7 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 			L.visible_message(span_danger("[user] tried to induce sleep in [L] with [src], but is unsuccessful!"), \
 			span_userdanger("Any sense of drowsiness is quickly diminished!"))
 			return
-		L.adjust_drowsyness(1)
+		L.adjust_drowsiness(2 SECONDS)
 		to_chat(user, span_warning("Sleep inducement works fully only on stunned specimens! "))
 		L.visible_message(span_danger("[user] tried to induce sleep in [L] with [src]!"), \
 							span_userdanger("You suddenly feel drowsy!"))

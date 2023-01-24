@@ -43,11 +43,6 @@
 *	SCRUBS
 */
 
-/datum/armor/utility_syndicate
-	melee = 10
-	fire = 50
-	acid = 40
-
 /obj/item/clothing/under/rank/medical/scrubs/skyrat/red
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in a deep red."
 	icon_state = "scrubsred"

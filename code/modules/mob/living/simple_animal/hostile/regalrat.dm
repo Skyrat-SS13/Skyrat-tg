@@ -118,7 +118,7 @@
 	if(stat == DEAD || !environment || !environment.gases[/datum/gas/miasma])
 		return
 	var/miasma_percentage = environment.gases[/datum/gas/miasma][MOLES] / environment.total_moles()
-	if(miasma_percentage>=0.25)
+	if(miasma_percentage >= 0.25)
 		heal_bodypart_damage(1)
 
 #define REGALRAT_INTERACTION "regalrat"
@@ -396,7 +396,7 @@
 /datum/pet_command/point_targetting/attack/mouse
 	speech_commands = list("attack", "sic", "kill", "cheese em")
 	command_feedback = "squeak!" // Frogs and roaches can squeak too it's fine
-	pointed_reaction = "squeaks aggressively!"
+	pointed_reaction = "and squeaks aggressively"
 	refuse_reaction = "quivers"
 	attack_behaviour = /datum/ai_behavior/basic_melee_attack/rat
 
@@ -404,7 +404,7 @@
 /datum/pet_command/point_targetting/attack/glockroach
 	speech_commands = list("attack", "sic", "kill", "cheese em")
 	command_feedback = "squeak!"
-	pointed_reaction = "cocks gun"
+	pointed_reaction = "and cocks its gun"
 	refuse_reaction = "quivers"
 	attack_behaviour = /datum/ai_behavior/basic_ranged_attack/glockroach
 

@@ -106,7 +106,7 @@
 	eye_owner.cure_blind(EYE_DAMAGE)
 	eye_owner.cure_nearsighted(EYE_DAMAGE)
 	eye_owner.set_blindness(0)
-	eye_owner.set_blurriness(0)
+	eye_owner.remove_status_effect(/datum/status_effect/eye_blur)
 	eye_owner.clear_fullscreen("eye_damage", 0)
 	eye_owner.update_sight()
 	is_emissive = FALSE // SKYRAT EDIT ADDITION
@@ -564,9 +564,7 @@
 	ADD_TRAIT(adapted, TRAIT_UNNATURAL_RED_GLOWY_EYES, ORGAN_TRAIT)
 
 /obj/item/organ/internal/eyes/night_vision/maintenance_adapted/on_life(delta_time, times_fired)
-	var/turf/owner_turf = get_turf(owner)
-	var/lums = owner_turf.get_lumcount()
-	if(lums > 0.5) //we allow a little more than usual so we can produce light from the adapted eyes
+	if(!HAS_TRAIT(owner, TRAIT_BLIND) && isturf(owner.loc) && owner.has_light_nearby(light_amount=0.5)) //we allow a little more than usual so we can produce light from the adapted eyes
 		to_chat(owner, span_danger("Your eyes! They burn in the light!"))
 		applyOrganDamage(10) //blind quickly
 		playsound(owner, 'sound/machines/grill/grillsizzle.ogg', 50)

@@ -55,7 +55,7 @@
 		human_owner.set_jitter_if_lower(40 SECONDS)
 		lust_message = "You feel a static sensation all across your skin..."
 	if(stress >= 120)
-		human_owner.blur_eyes(10)
+		human_owner.set_eye_blur_if_lower(20 SECONDS)
 		lust_message = "You vision begins to blur, the heat beginning to rise..."
 	if(stress >= 180)
 		owner.adjust_hallucinations(60 SECONDS)

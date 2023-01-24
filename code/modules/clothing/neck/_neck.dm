@@ -83,6 +83,8 @@
 
 /obj/item/clothing/neck/tie/update_icon()
 	. = ..()
+	if(clip_on)
+		return
 	// Normal strip & equip delay, along with 2 second self equip since you need to squeeze your head through the hole.
 	if(is_tied)
 		icon_state = "tie_greyscale_tied"
@@ -211,6 +213,8 @@
 /obj/item/clothing/neck/scarf
 	name = "scarf"
 	icon_state = "scarf"
+	icon_preview = 'icons/obj/previews.dmi'
+	icon_state_preview = "scarf_cloth"
 	desc = "A stylish scarf. The perfect winter accessory for those with a keen fashion sense, and those who just can't handle a cold breeze on their necks."
 	w_class = WEIGHT_CLASS_TINY
 	custom_price = PAYCHECK_CREW
@@ -337,10 +341,6 @@
 	/// toggles between sell (TRUE) and get price post-fees (FALSE)
 	var/selling = FALSE
 
-/datum/armor/large_scarf_syndie
-	fire = 50
-	acid = 40
-
 /obj/item/clothing/neck/necklace/dope/merchant/attack_self(mob/user)
 	. = ..()
 	selling = !selling
@@ -374,10 +374,6 @@
 	color = "#ffffff"
 	custom_price = PAYCHECK_CREW * 0.2
 	custom_materials = (list(/datum/material/plastic = 500))
-
-/datum/armor/large_scarf_syndie
-	fire = 50
-	acid = 40
 
 /obj/item/clothing/neck/beads/Initialize(mapload)
 	. = ..()

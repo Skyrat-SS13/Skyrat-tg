@@ -82,6 +82,7 @@
 	name = "\improper REDUT helmet"
 	desc = "A heavy Russian combat helmet with a strong ballistic visor. Alt+click to adjust."
 	icon_state = "russian_heavy_helmet_old"
+	worn_icon_state = "russian_heavy_helmet" // Add a proper worn icon state if you still want it to look like the old one, can't be bothered to find it myself.
 	armor_type = /datum/armor/nri_heavy_old
 	resistance_flags = FIRE_PROOF|ACID_PROOF|FREEZE_PROOF
 	clothing_flags = SNUG_FIT|THICKMATERIAL
@@ -117,17 +118,6 @@
 	visor_flags_inv = HIDEMASK|HIDEEYES|HIDEFACE|HIDEFACIALHAIR
 	visor_flags = STOPSPRESSUREDAMAGE
 	slowdown = 0
-
-/datum/armor/hev_suit_nri
-	melee = 25
-	bullet = 25
-	laser = 25
-	energy = 25
-	bomb = 25
-	bio = 20
-	fire = 20
-	acid = 20
-	wound = 10
 
 /obj/item/clothing/head/helmet/space/hev_suit/nri/captain
 	name = "\improper VOSKHOD-2 powered combat armor helmet"
