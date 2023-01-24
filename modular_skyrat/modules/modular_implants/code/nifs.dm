@@ -119,7 +119,7 @@
 
 		var/found_component = linked_mob.GetComponent(/datum/component/nif_examine)
 		if(found_component)
-		qdel(found_component)
+			qdel(found_component)
 
 	linked_mob = null
 
