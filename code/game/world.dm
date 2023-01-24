@@ -199,73 +199,7 @@ GLOBAL_VAR(restart_counter)
 		GLOB.picture_logging_prefix = "O_[override_dir]_"
 		GLOB.picture_log_directory = "data/picture_logs/[override_dir]"
 
-<<<<<<< HEAD
-	GLOB.demo_log = "[GLOB.log_directory]/demo.log"
-	GLOB.dynamic_log = "[GLOB.log_directory]/dynamic.log"
-	GLOB.filter_log = "[GLOB.log_directory]/filters.log"
-	GLOB.lua_log = "[GLOB.log_directory]/lua.log"
-	GLOB.query_debug_log = "[GLOB.log_directory]/query_debug.log"
-	GLOB.signals_log = "[GLOB.log_directory]/signals.log"
-	GLOB.sql_error_log = "[GLOB.log_directory]/sql.log"
-	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
-	GLOB.world_asset_log = "[GLOB.log_directory]/asset.log"
-	GLOB.world_attack_log = "[GLOB.log_directory]/attack.log"
-	GLOB.world_cloning_log = "[GLOB.log_directory]/cloning.log"
-	GLOB.world_econ_log = "[GLOB.log_directory]/econ.log"
-	GLOB.world_game_log = "[GLOB.log_directory]/game.log"
-	GLOB.world_href_log = "[GLOB.log_directory]/hrefs.log"
-	GLOB.world_job_debug_log = "[GLOB.log_directory]/job_debug.log"
-	GLOB.world_manifest_log = "[GLOB.log_directory]/manifest.log"
-	GLOB.world_map_error_log = "[GLOB.log_directory]/map_errors.log"
-	GLOB.world_mecha_log = "[GLOB.log_directory]/mecha.log"
-	GLOB.world_mob_tag_log = "[GLOB.log_directory]/mob_tags.log"
-	GLOB.world_qdel_log = "[GLOB.log_directory]/qdel.log"
-	GLOB.world_paper_log = "[GLOB.log_directory]/paper.log"
-	GLOB.world_pda_log = "[GLOB.log_directory]/pda.log"
-	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
-	GLOB.world_shuttle_log = "[GLOB.log_directory]/shuttle.log"
-	GLOB.world_silicon_log = "[GLOB.log_directory]/silicon.log"
-	GLOB.world_speech_indicators_log = "[GLOB.log_directory]/speech_indicators.log"
-	GLOB.world_suspicious_login_log = "[GLOB.log_directory]/suspicious_logins.log"
-	GLOB.world_telecomms_log = "[GLOB.log_directory]/telecomms.log"
-	GLOB.world_tool_log = "[GLOB.log_directory]/tools.log"
-	GLOB.world_uplink_log = "[GLOB.log_directory]/uplink.log"
-	GLOB.world_virus_log = "[GLOB.log_directory]/virus.log"
-
-	GLOB.character_creation_log = "[GLOB.log_directory]/creator.log" // SKYRAT EDIT ADDITION
-	GLOB.event_vote_log = "[GLOB.log_directory]/event_vote.log" // SKYRAT EDIT ADDITION
-
-#ifdef UNIT_TESTS
-	GLOB.test_log = "[GLOB.log_directory]/tests.log"
-	start_log(GLOB.test_log)
-#endif
-
-#ifdef REFERENCE_DOING_IT_LIVE
-	GLOB.harddel_log = "[GLOB.log_directory]/harddels.log"
-	start_log(GLOB.harddel_log)
-#endif
-	start_log(GLOB.tgui_log)
-	start_log(GLOB.world_attack_log)
-	start_log(GLOB.world_econ_log)
-	start_log(GLOB.world_game_log)
-	start_log(GLOB.world_href_log)
-	start_log(GLOB.world_job_debug_log)
-	start_log(GLOB.world_manifest_log)
-	start_log(GLOB.world_mob_tag_log)
-	start_log(GLOB.world_qdel_log)
-	start_log(GLOB.world_runtime_log)
-	start_log(GLOB.world_shuttle_log)
-	start_log(GLOB.world_telecomms_log)
-	start_log(GLOB.world_uplink_log)
-	start_log(GLOB.world_pda_log)
-=======
 	GLOB.logger.init_logging()
->>>>>>> 3ceee2aab49 (World Initialization Refactor (#74808))
-
-	// SKYRAT EDIT ADDITION
-	start_log(GLOB.event_vote_log)
-	start_log(GLOB.character_creation_log)
-	// SKYRAT EDIT END
 
 	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
 	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
@@ -379,12 +313,12 @@ GLOBAL_VAR(restart_counter)
 			TgsEndProcess()
 
 	log_world("World rebooted at [time_stamp()]")
-	
+
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
 	auxcleanup()
-	
+
 	TgsReboot() // TGS can decide to kill us right here, so it's important to do it last
-	
+
 	..()
 
 /world/proc/auxcleanup()
@@ -397,8 +331,7 @@ GLOBAL_VAR(restart_counter)
 	auxcleanup()
 	. = ..()
 
-/* SKYRAT EDIT CHANGE - MOVED TO MODULAR
-
+/* SKYRAT EDIT REMOVAL - OVERRIDEN
 /world/proc/update_status()
 
 	var/list/features = list()
