@@ -2,11 +2,25 @@ import { filter, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { capitalizeFirst, multiline } from 'common/string';
 import { useBackend, useLocalState } from 'tgui/backend';
-import { Button, Collapsible, Icon, Input, LabeledList, NoticeBox, Section, Stack } from 'tgui/components';
+import {
+  Button,
+  Collapsible,
+  Icon,
+  Input,
+  LabeledList,
+  NoticeBox,
+  Section,
+  Stack,
+} from 'tgui/components';
 import { Window } from 'tgui/layouts';
 import { JobToIcon } from '../common/JobToIcon';
 import { ANTAG2COLOR } from './constants';
-import { collateAntagonists, getDisplayColor, getDisplayName, isJobOrNameMatch } from './helpers';
+import {
+  collateAntagonists,
+  getDisplayColor,
+  getDisplayName,
+  isJobOrNameMatch,
+} from './helpers';
 import type { AntagGroup, Observable, OrbitData } from './types';
 
 export const Orbit = (props, context) => {
@@ -237,7 +251,7 @@ const ObservableItem = (
 ) => {
   const { act } = useBackend<OrbitData>(context);
   const { color, item } = props;
-  const { extra, full_name, job, job_icon, health, name, orbiters, ref } = item;
+  const { extra, full_name, job, health, name, orbiters, ref } = item;
 
   const [autoObserve] = useLocalState<boolean>(context, 'autoObserve', false);
   const [heatMap] = useLocalState<boolean>(context, 'heatMap', false);
@@ -245,7 +259,7 @@ const ObservableItem = (
   return (
     <Button
       color={getDisplayColor(item, heatMap, color)}
-      icon={job_icon || (job && JobToIcon[job]) || null}
+      icon={(job && JOB2ICON[job]) || null}
       onClick={() => act('orbit', { auto_observe: autoObserve, ref: ref })}
       tooltip={(!!health || !!extra) && <ObservableTooltip item={item} />}
       tooltipPosition="bottom-start">

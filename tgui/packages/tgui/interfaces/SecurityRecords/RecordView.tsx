@@ -1,5 +1,14 @@
 import { useBackend, useLocalState } from 'tgui/backend';
-import { NoticeBox, Stack, Section, Button, LabeledList, Box, RestrictedInput, Table } from 'tgui/components';
+import {
+  NoticeBox,
+  Stack,
+  Section,
+  Button,
+  LabeledList,
+  Box,
+  RestrictedInput,
+  Table,
+} from 'tgui/components';
 import { CharacterPreview } from '../common/CharacterPreview';
 import { EditableText } from '../common/EditableText';
 import { CRIMESTATUS2COLOR, CRIMESTATUS2DESC } from './constants';

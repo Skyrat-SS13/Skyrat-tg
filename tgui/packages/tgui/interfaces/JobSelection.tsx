@@ -1,5 +1,12 @@
 import { useBackend } from '../backend';
-import { Box, Button, StyleableSection, Icon, Stack, NoticeBox } from '../components';
+import {
+  Box,
+  Button,
+  StyleableSection,
+  Icon,
+  Stack,
+  NoticeBox,
+} from '../components';
 import { Window } from '../layouts';
 import { Color } from 'common/color';
 import { SFC } from 'inferno';
@@ -12,7 +19,6 @@ type Job = {
   command: BooleanLike;
   open_slots: number;
   used_slots: number;
-  icon: string;
   prioritized: BooleanLike;
   description: string;
 };
@@ -43,7 +49,7 @@ export const JobEntry: SFC<{
   const jobName = data.jobName;
   const job = data.job;
   const department = data.department;
-  const jobIcon = job.icon || JobToIcon[jobName] || null;
+  const jobIcon = JOB2ICON[jobName] || null;
   return (
     <Button
       fluid
@@ -52,15 +58,11 @@ export const JobEntry: SFC<{
         'background-color': job.unavailable_reason
           ? '#949494' // Grey background
           : job.prioritized
-            ? '#16fc0f' // Bright green background
-            : Color.fromHex(department.color)
-              .darken(10)
-              .toString(),
+          ? '#16fc0f' // Bright green background
+          : Color.fromHex(department.color).darken(10).toString(),
         'color': job.unavailable_reason
           ? '#616161' // Dark grey font
-          : Color.fromHex(department.color)
-            .darken(90)
-            .toString(),
+          : Color.fromHex(department.color).darken(90).toString(),
         'font-size': '1.1rem',
         'cursor': job.unavailable_reason ? 'initial' : 'pointer',
       }}
@@ -180,9 +182,7 @@ export const JobSelection = (props, context) => {
                         .toString(),
                     }}
                     textStyle={{
-                      'color': Color.fromHex(entry.color)
-                        .darken(80)
-                        .toString(),
+                      'color': Color.fromHex(entry.color).darken(80).toString(),
                     }}>
                     <Stack vertical>
                       {Object.entries(entry.jobs).map((job) => (
