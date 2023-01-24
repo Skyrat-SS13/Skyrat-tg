@@ -413,7 +413,7 @@
 
 /datum/component/nif_examine
 	///What text is shown when examining someone with NIF Examine text?
-	var/nif_examine_text = "There's a certain spark to their eyes"
+	var/nif_examine_text = "There's a certain spark to their eyes."
 
 /datum/component/nif_examine/New()
 	. = ..()
