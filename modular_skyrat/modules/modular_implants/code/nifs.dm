@@ -73,8 +73,6 @@
 	var/death_durability_loss = 10
 	///Does the NIF stay between rounds? By default, they do.
 	var/nif_persistence = TRUE
-	///Is the NIF disabled? This will make it so that the NIF TGUI can still be seen, but not used.
-	var/disabled = FALSE
 	///Is the NIF completely broken? If this is true, the user won't be able to pull up the TGUI menu at all.
 	var/broken = FALSE
 	///Does the NIF have theft protection? This should only be disabled if admins need to fix something.
@@ -382,10 +380,12 @@
 	if(!durability_loss_vulnerable)
 		return FALSE
 
-	broken = TRUE
 	durability_loss_vulnerable = FALSE
 
-	addtimer(CALLBACK(src, PROC_REF(fix_nif)), 30 SECONDS)
+	if(!broken)
+		broken = TRUE
+		addtimer(CALLBACK(src, PROC_REF(fix_nif)), 30 SECONDS)
+
 	addtimer(CALLBACK(src, .proc/make_vulnerable), 3 MINUTES)
 
 	switch(severity)

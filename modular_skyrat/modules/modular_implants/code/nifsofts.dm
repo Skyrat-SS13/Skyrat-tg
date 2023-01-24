@@ -62,6 +62,10 @@
 /datum/nifsoft/proc/activate()
 	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif
 
+	if(installed_nif.broken)
+		installed_nif.balloon_alert(installed_nif.linked_mob, "Your NIF is broken!")
+		return FALSE
+
 	if(cooldown && on_cooldown)
 		installed_nif.balloon_alert(installed_nif.linked_mob, "[src.name] is currently on cooldown.")
 		return FALSE
