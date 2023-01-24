@@ -435,16 +435,18 @@
 	addtimer(CALLBACK(installed_nif, /obj/item/organ/internal/cyberimp/brain/nif.proc/make_vulnerable), 20 MINUTES) //Players should have a decent grace period on this.
 
 ///Checks to see if a human with a NIF has the nifsoft_to_find type of NIFSoft installed?
-/mob/living/carbon/human/proc/find_nifsoft(nifsoft_to_find)
-
+/mob/living/carbon/human/proc/find_nifsoft(datum/nifsoft/nifsoft_to_find)
 	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
 	var/list/nifsoft_list = installed_nif?.loaded_nifsofts
+
 	if(!nifsoft_list)
 		return FALSE
 
-	for(var/datum/nifsoft/nifsoft as anything in nifsoft_list)
-		if(nifsoft.type == nifsoft_to_find)
-			return nifsoft
+	var/datum/nifsoft/located_nifsoft =	locate(nifsoft_to_find) in nifsoft_list
+	if(located_nifsoft)
+		return located_nifsoft
+
+	return FALSE
 
 /datum/asset/spritesheet/chat/create_spritesheets()
 	. = ..()
