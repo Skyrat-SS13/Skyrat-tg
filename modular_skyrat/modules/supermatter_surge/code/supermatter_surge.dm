@@ -18,6 +18,7 @@
 	name = "Supermatter Surge"
 	typepath = /datum/round_event/supermatter_surge
 	weight = 20
+	category = EVENT_CATEGORY_ENGINEERING
 	max_occurrences = 4
 	earliest_start = 20 MINUTES
 
