@@ -152,7 +152,7 @@
 	var/datum/nifsoft/installed_nifsoft = new loaded_nifsoft(installed_nif)
 
 	if(!installed_nifsoft.parent_nif)
-		balloon_alert(usuer, "installation failed")
+		balloon_alert(user, "installation failed")
 		return FALSE
 
 	if(!reusable)
