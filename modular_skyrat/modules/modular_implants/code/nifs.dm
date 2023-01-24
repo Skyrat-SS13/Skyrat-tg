@@ -112,12 +112,14 @@
 	power_level = max_power_level
 
 /obj/item/organ/internal/cyberimp/brain/nif/Destroy()
-	var/found_component = linked_mob.GetComponent(/datum/component/nif_examine)
-	if(found_component)
-		qdel(found_component)
+
 
 	if(linked_mob)
 		UnregisterSignal(linked_mob, COMSIG_LIVING_DEATH, PROC_REF(damage_on_death))
+
+		var/found_component = linked_mob.GetComponent(/datum/component/nif_examine)
+		if(found_component)
+		qdel(found_component)
 
 	linked_mob = null
 
