@@ -2,8 +2,9 @@
 	var/datum/techweb/interdyne/interdyne_tech
 
 /datum/controller/subsystem/research/Initialize()
-	interdyne_tech = new /datum/techweb/interdyne
 	. = ..()
+	interdyne_tech = new /datum/techweb/interdyne
+	return SS_INIT_SUCCESS
 
 /datum/techweb/interdyne
 	id = "INTERDYNE"
