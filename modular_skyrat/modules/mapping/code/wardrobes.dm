@@ -27,7 +27,10 @@
 					/obj/item/clothing/shoes/combat/coldres = 2)
 	premium = list(/obj/item/knife/combat/survival = 1,
 					/obj/item/storage/fancy/cigarettes/cigpack_syndicate = 5,
-					/obj/item/clothing/gloves/combat = 3)
+					/obj/item/clothing/gloves/combat = 3,
+					/obj/item/clothing/under/syndicate/skyrat/maid = 5,
+					/obj/item/clothing/gloves/combat/maid = 5,
+					/obj/item/clothing/head/maidheadband/syndicate = 5)
 	refill_canister = /obj/item/vending_refill/wardrobe/syndie_wardrobe
 	light_color = COLOR_MOSTLY_PURE_RED
 
