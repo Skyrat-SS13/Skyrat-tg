@@ -68,7 +68,7 @@
 	var/max_durability = 100
 	///What level of durability is the NIF at?
 	var/durability = 100
-	//How much durability is lost per death if any?
+	//How much durability is lost upon dying, if any.
 	var/death_durability_loss = 10
 	///Does the NIF stay between rounds? By default, they do.
 	var/nif_persistence = TRUE
@@ -117,6 +117,9 @@
 	if(found_component)
 		qdel(found_component)
 
+	if(linked_mob)
+		UnregisterSignal(linked_mob, COMSIG_LIVING_DEATH, PROC_REF(damage_on_death))
+
 	linked_mob = null
 
 	QDEL_LIST(loaded_nifsofts)
@@ -144,6 +147,7 @@
 		calibrating = TRUE
 
 	linked_mob.AddComponent(/datum/component/nif_examine)
+	RegisterSignal(linked_mob, COMSIG_LIVING_DEATH, PROC_REF(damage_on_death))
 
 /obj/item/organ/internal/cyberimp/brain/nif/Remove(mob/living/carbon/organ_owner, special = FALSE)
 	. = ..()
@@ -154,6 +158,8 @@
 	var/found_component = organ_owner.GetComponent(/datum/component/nif_examine)
 	if(found_component)
 		qdel(found_component)
+
+	UnregisterSignal(linked_mob, COMSIG_LIVING_DEATH, PROC_REF(damage_on_death))
 
 /obj/item/organ/internal/cyberimp/brain/nif/process(delta_time)
 	. = ..()
@@ -327,7 +333,7 @@
 
 ///Repairs the parent NIF based off the repair_amount
 /obj/item/organ/internal/cyberimp/brain/nif/proc/repair_nif(repair_amount)
-	if(durability == max_durability)
+	if(durability >= max_durability)
 		return FALSE
 
 	durability = min(durability + repair_amount, max_durability)
@@ -336,7 +342,7 @@
 
 ///Damages the parent NIF based off the damage_amount
 /obj/item/organ/internal/cyberimp/brain/nif/proc/damage_nif(damage_amount)
-	if(!damage_amount || NIF_MINIMUM_DURABILITY >= 0)
+	if(!damage_amount || durability <= 0)
 		return FALSE
 
 	durability = max(durability - damage_amount, NIF_MINIMUM_DURABILITY)
@@ -399,6 +405,18 @@
 
 	send_message("<b>ELECTROMAGNETIC INTERFERENCE DETECTED.</b>", TRUE)
 
+///Applies damage to the parent NIF whenever the user dies.
+/obj/item/organ/internal/cyberimp/brain/nif/proc/damage_on_death()
+	SIGNAL_HANDLER
+
+	if(!durability_loss_vulnerable)
+		return FALSE
+
+	damage_nif(death_durability_loss)
+	durability_loss_vulnerable = FALSE
+
+	addtimer(CALLBACK(src, PROC_REF(make_vulnerable)), 20 MINUTES) //Players should have a decent grace period on this.
+
 /datum/component/nif_examine
 	///What text is shown when examining someone with NIF Examine text?
 	var/nif_examine_text = "There's a certain spark to their eyes"
@@ -420,19 +438,6 @@
 	SIGNAL_HANDLER
 
 	examine_texts += span_purple("<b>[nif_examine_text]</b>")
-
-/mob/living/carbon/human/death()
-	. = ..()
-
-
-	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
-	if(!installed_nif)
-		return
-
-	installed_nif.damage_nif(installed_nif.death_durability_loss)
-	installed_nif.durability_loss_vulnerable = FALSE
-
-	addtimer(CALLBACK(installed_nif, /obj/item/organ/internal/cyberimp/brain/nif.proc/make_vulnerable), 20 MINUTES) //Players should have a decent grace period on this.
 
 ///Checks to see if a human with a NIF has the nifsoft_to_find type of NIFSoft installed?
 /mob/living/carbon/human/proc/find_nifsoft(datum/nifsoft/nifsoft_to_find)
