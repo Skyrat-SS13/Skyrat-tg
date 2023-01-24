@@ -1,4 +1,4 @@
-#define INTERDICTION_LENS_RANGE 5
+#define INTERDICTION_LENS_RANGE 4
 #define POWER_PER_PERSON 5
 #define PASSIVE_POWER_USE 25
 
@@ -95,7 +95,7 @@
 		if(!IS_CLOCK(living_mob) && use_power(POWER_PER_PERSON))
 			living_mob.apply_status_effect(/datum/status_effect/interdiction)
 
-	for(var/obj/vehicle/sealed/mecha/mech in dview(INTERDICTION_LENS_RANGE, src, SEE_INVISIBLE_MINIMUM))
+	for(var/obj/vehicle/sealed/mecha/mech in range(INTERDICTION_LENS_RANGE, src))
 		if(!use_power(POWER_PER_PERSON))
 			continue
 
