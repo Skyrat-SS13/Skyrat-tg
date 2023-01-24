@@ -867,6 +867,8 @@
 	pixel_y = 30;
 	req_access = list("syndicate")
 	},
+/obj/structure/filingcabinet,
+/obj/item/folder/syndicate/mining,
 /turf/open/floor/iron/edge,
 /area/ruin/syndicate_lava_base/main)
 "ik" = (
@@ -1125,6 +1127,10 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
+"lq" = (
+/obj/machinery/rnd/destructive_analyzer/interdyne,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/syndicate_lava_base/testlab)
 "ls" = (
 /obj/machinery/door/firedoor,
 /obj/structure/table/reinforced,
@@ -1701,6 +1707,10 @@
 "qX" = (
 /obj/structure/cable,
 /turf/open/floor/catwalk_floor/iron_dark,
+/area/ruin/syndicate_lava_base/testlab)
+"qY" = (
+/obj/machinery/destructive_scanner,
+/turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/testlab)
 "rf" = (
 /obj/structure/railing{
@@ -2316,11 +2326,7 @@
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/engineering)
 "yf" = (
-/obj/structure/frame/machine{
-	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
-	},
+/obj/machinery/rnd/production/protolathe/offstation/interdyne,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -2923,6 +2929,12 @@
 /obj/machinery/processor,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/bar)
+"DB" = (
+/obj/machinery/computer/rdservercontrol/interdyne{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/testlab)
 "DJ" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
@@ -3408,9 +3420,8 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "IZ" = (
-/obj/structure/frame/computer{
-	dir = 4;
-	anchored = 1
+/obj/machinery/computer/rdconsole/interdyne{
+	dir = 4
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/testlab)
@@ -3632,8 +3643,7 @@
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/syndicate_lava_base/main)
 "KS" = (
-/obj/structure/filingcabinet,
-/obj/item/folder/syndicate/mining,
+/obj/machinery/rnd/server/interdyne,
 /turf/open/floor/iron/corner{
 	dir = 8
 	},
@@ -3977,6 +3987,7 @@
 /area/ruin/syndicate_lava_base/engineering)
 "Or" = (
 /obj/machinery/light/small/directional/east,
+/obj/machinery/rnd/server/master/interdyne,
 /turf/open/floor/iron/edge{
 	dir = 8
 	},
@@ -4107,7 +4118,6 @@
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/virology)
 "PE" = (
-/obj/item/stack/cable_coil,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/catwalk_floor/iron_dark,
@@ -4317,11 +4327,7 @@
 /turf/open/floor/catwalk_floor/iron,
 /area/ruin/syndicate_lava_base/medbay)
 "Ru" = (
-/obj/structure/frame/machine{
-	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
-	},
+/obj/machinery/rnd/production/circuit_imprinter/offstation/interdyne,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/testlab)
 "Rx" = (
@@ -5636,7 +5642,7 @@ OW
 FX
 IF
 LK
-Mv
+DB
 RJ
 OW
 YF
@@ -5753,7 +5759,7 @@ ab
 HA
 Gu
 IZ
-Ru
+lq
 Ru
 Cl
 OW
@@ -5870,7 +5876,7 @@ ab
 ab
 HA
 Gu
-Ru
+qY
 yf
 ME
 RY

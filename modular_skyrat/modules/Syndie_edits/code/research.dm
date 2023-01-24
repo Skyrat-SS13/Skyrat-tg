@@ -2,18 +2,8 @@
 	var/datum/techweb/interdyne/interdyne_tech
 
 /datum/controller/subsystem/research/Initialize()
-
-	point_types = TECHWEB_POINT_TYPE_LIST_ASSOCIATIVE_NAMES
-	initialize_all_techweb_designs()
-	initialize_all_techweb_nodes()
-	populate_ordnance_experiments()
-	science_tech = new /datum/techweb/science
-	admin_tech = new /datum/techweb/admin
 	interdyne_tech = new /datum/techweb/interdyne
-	autosort_categories()
-	error_design = new
-	error_node = new
-	return SS_INIT_SUCCESS
+	. = ..()
 
 /datum/techweb/interdyne
 	id = "INTERDYNE"
@@ -50,6 +40,14 @@
 	. = ..()
 	connect_techweb(SSresearch.interdyne_tech)
 
+/obj/machinery/rnd/production/circuit_imprinter/offstation/interdyne/Initialize(mapload)
+	. = ..()
+	connect_techweb(SSresearch.interdyne_tech)
+
 /obj/machinery/rnd/destructive_analyzer/interdyne/Initialize(mapload)
 	. = ..()
 	connect_techweb(SSresearch.interdyne_tech)
+
+/obj/machinery/computer/rdservercontrol/interdyne/Initialize(mapload, obj/item/circuitboard/C)
+	. = ..()
+	stored_research = SSresearch.interdyne_tech

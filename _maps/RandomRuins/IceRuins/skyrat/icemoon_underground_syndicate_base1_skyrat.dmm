@@ -395,8 +395,7 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/main)
 "cm" = (
-/obj/structure/filingcabinet,
-/obj/item/folder/syndicate/mining,
+/obj/machinery/rnd/server/interdyne,
 /turf/open/floor/iron/corner{
 	dir = 8
 	},
@@ -433,6 +432,7 @@
 /area/ruin/syndicate_lava_base/main)
 "cQ" = (
 /obj/machinery/light/small/directional/east,
+/obj/machinery/rnd/server/master/interdyne,
 /turf/open/floor/iron/edge{
 	dir = 8
 	},
@@ -609,10 +609,6 @@
 /area/ruin/syndicate_lava_base/bar)
 "dT" = (
 /obj/structure/table/glass,
-/obj/item/storage/box/rndboards{
-	pixel_y = 15;
-	pixel_x = 2
-	},
 /obj/item/storage/part_replacer{
 	pixel_y = 6
 	},
@@ -951,6 +947,10 @@
 /obj/item/storage/toolbox/mechanical,
 /turf/open/floor/plating/icemoon,
 /area/ruin/syndicate_lava_base/cargo)
+"hq" = (
+/obj/machinery/destructive_scanner,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/syndicate_lava_base/testlab)
 "ht" = (
 /obj/structure/railing,
 /obj/structure/rack/shelf,
@@ -1654,6 +1654,8 @@
 	pixel_y = 30;
 	req_access = list("syndicate")
 	},
+/obj/structure/filingcabinet,
+/obj/item/folder/syndicate/mining,
 /turf/open/floor/iron/edge,
 /area/ruin/syndicate_lava_base/main)
 "oe" = (
@@ -2387,9 +2389,8 @@
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/cargo)
 "vw" = (
-/obj/structure/frame/computer{
-	dir = 4;
-	anchored = 1
+/obj/machinery/computer/rdconsole/interdyne{
+	dir = 4
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/testlab)
@@ -2686,11 +2687,7 @@
 /turf/closed/wall/r_wall/syndicate,
 /area/ruin/syndicate_lava_base/testlab)
 "yF" = (
-/obj/structure/frame/machine{
-	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
-	},
+/obj/machinery/rnd/destructive_analyzer/interdyne,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/testlab)
 "yH" = (
@@ -3901,6 +3898,10 @@
 	dir = 1
 	},
 /area/ruin/syndicate_lava_base/bar)
+"Ls" = (
+/obj/machinery/rnd/production/circuit_imprinter/offstation/interdyne,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/syndicate_lava_base/testlab)
 "Lw" = (
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron,
@@ -4551,6 +4552,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/engineering)
+"SZ" = (
+/obj/machinery/computer/rdservercontrol/interdyne{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/testlab)
 "Tc" = (
 /obj/machinery/firealarm/directional/east{
 	dir = 8
@@ -4888,7 +4895,6 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/cargo)
 "Wt" = (
-/obj/item/stack/cable_coil,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/catwalk_floor/iron_dark,
@@ -4958,11 +4964,7 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "Xa" = (
-/obj/structure/frame/machine{
-	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
-	},
+/obj/machinery/rnd/production/protolathe/offstation/interdyne,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -5663,7 +5665,7 @@ kf
 Mc
 LR
 dT
-jo
+SZ
 Tn
 kf
 km
@@ -5781,7 +5783,7 @@ VL
 MP
 vw
 yF
-yF
+Ls
 DY
 kf
 kr
@@ -5897,7 +5899,7 @@ ab
 ab
 VL
 MP
-yF
+hq
 Xa
 bL
 Mp
