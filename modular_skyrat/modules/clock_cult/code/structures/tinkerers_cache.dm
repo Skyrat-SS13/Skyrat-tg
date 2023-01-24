@@ -96,3 +96,8 @@
 	name = "Judicial Visor"
 	item_path = /obj/item/clothing/glasses/clockwork/judicial_visor
 	power_use = 200
+
+/datum/tinker_cache_item/replica_fabricator
+	name = "Replica Fabricator"
+	item_path = /obj/item/clockwork/replica_fabricator
+	power_use = 200
