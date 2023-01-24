@@ -293,9 +293,11 @@
 	if(istype(potential_storage, /obj/item/aicard))
 		var/obj/item/aicard/card = potential_storage
 		being = card.AI // why is this one capitalized and the other one not? i wish i knew.
-	else if(istype(potential_storage, /obj/item/mod/control))
+	// SKYRAT REMOVAL START - MOD PAI
+	/*else if(istype(potential_storage, /obj/item/mod/control))
 		var/obj/item/mod/control/suit = potential_storage
 		being = suit.ai
+	*/ // SKYRAT REMOVAL END
 	else
 		stack_trace("check_special_completion() called on [src] with [potential_storage] ([potential_storage.type])! That's not supposed to happen!")
 		return FALSE
