@@ -126,6 +126,10 @@
 
 /**
 * Handle changing of gender
+*
+* exposed_mob - the mob being affected by the reagent
+* new_gender - the gender to change to
+* gender_fluid - whether the user has consumed both succubus milk and incubus draft simultaneously
 */
 /datum/reagent/drug/aphrodisiac/proc/change_gender(mob/living/carbon/human/exposed_mob, new_gender = MALE, gender_fluid = FALSE) 
 
@@ -147,6 +151,10 @@
 /** ---- Genital Shrinkage ----
 *
 * Handle genital shrinkage
+*
+* exposed_mob - the mob being affected by the reagent
+* suppress_chat - whether or not to display a message in chat
+* genitals_to_shrink - a list of the genitals to be shrunk
 */
 /datum/reagent/drug/aphrodisiac/proc/shrink_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, list/genitals_to_shrink) 
 	for(var/mob_genital in genitals_to_shrink)
@@ -164,6 +172,10 @@
 
 /**
 * Handle penis shrinkage
+*
+* exposed_mob - the mob being affected by the reagent
+* suppress_chat - whether or not to display a message in chat
+* mob_penis the penis to shrink
 */
 /datum/reagent/drug/aphrodisiac/proc/shrink_penis(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/penis/mob_penis = exposed_mob?.getorganslot(ORGAN_SLOT_PENIS)) 	
 
@@ -188,6 +200,11 @@
 
 /**
 * Handle testicle shrinkage
+*
+* exposed_mob - the mob being affected by the reagent
+* suppress_chat - whether or not to display a message in chat
+* mob_penis, mob_testicles - the mob's penis and testicles
+* message - the message to send to chat
 */		
 /datum/reagent/drug/aphrodisiac/proc/shrink_testicles(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/penis/mob_penis = exposed_mob?.getorganslot(ORGAN_SLOT_PENIS), obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob?.getorganslot(ORGAN_SLOT_TESTICLES)) 
 	
@@ -208,6 +225,11 @@
 
 /*
 * Handle breast shrinkage
+*
+* exposed_mob - the mob being affected by the reagent
+* suppress_chat - whether or not to display a message in chat
+* mob_breasts - the breasts to be shrunk
+* message - the message to send to chat
 */
 /datum/reagent/drug/aphrodisiac/proc/shrink_breasts(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.getorganslot(ORGAN_SLOT_BREASTS)) 
 
@@ -227,6 +249,11 @@
 
 /*
 * Handle vagina shrinkage
+*
+* exposed_mob - the mob being affected by the reagent
+* suppress_chat - whether or not to display a message in chat
+* mob_vagina - the vagina to shrink
+* message - the message to send to chat
 */
 /datum/reagent/drug/aphrodisiac/proc/shrink_vagina(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/vagina/mob_vagina = exposed_mob?.getorganslot(ORGAN_SLOT_VAGINA))
 	var/message = "You can the feel the muscles in your groin begin to tighten as your vagina seals itself completely shut."	
@@ -234,6 +261,10 @@
 	
 /*
 * Handle womb shrinkage
+*
+* exposed_mob - the mob being affected by the reagent
+* suppress_chat - whether or not to display a message in chat
+* mob_womb - the womb to shrink
 */
 /datum/reagent/drug/aphrodisiac/proc/shrink_womb(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/womb/mob_womb = exposed_mob?.getorganslot(ORGAN_SLOT_WOMB)) 
 	remove_genital(exposed_mob, mob_womb, suppress_chat)
@@ -241,6 +272,11 @@
 /** ---- Genital Removal ----
 *
 * Handle removal of old genitals
+*
+* exposed_mob - the mob being affected by the reagent
+* suppress_chat - whether or not to display a message in chat
+* genitals_to_remove - the list of genitals to be removed
+* message - the message to send to chat
 */
 /datum/reagent/drug/aphrodisiac/proc/remove_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, list/genitals_to_remove, message) 
 	for(var/obj/item/organ/external/genital/mob_genital in genitals_to_remove)
@@ -266,6 +302,10 @@
 /** ---- New genitalia creation ----
 *
 * Handle creation of new genitals
+*
+* exposed_mob - the mob being affected by the reagent
+* suppress_chat - whether or not to display a message in chat
+* genitals_to_create - a list of the genitals to create
 */
 /datum/reagent/drug/aphrodisiac/proc/create_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, list/genitals_to_create) 
 	for(var/mob_genital in genitals_to_create)
@@ -283,6 +323,10 @@
 
 /**
 * Handle creation of penis
+*
+* exposed_mob - the mob being affected by the reagent
+* suppress_chat - whether or not to display a message in chat
+* mob_penis the mob's penis
 */
 /datum/reagent/drug/aphrodisiac/proc/create_penis(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/penis/mob_penis = exposed_mob?.getorganslot(ORGAN_SLOT_PENIS)) 
 	
@@ -325,6 +369,10 @@
 
 /**
 * Handle creation of testicles
+*
+* exposed_mob - the mob being affected by the reagent
+* suppress_chat - whether or not to display a message in chat
+* mob_testicles - the mob's testicles
 */
 /datum/reagent/drug/aphrodisiac/proc/create_testicles(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/testicles/mob_balls = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)) 
 	
@@ -345,6 +393,11 @@
 
 /**
 * Handle creation of breasts
+*
+* exposed_mob - the mob being affected by the reagent
+* suppress_chat - whether or not to display a message in chat
+* mob_breasts - the mob's breasts
+*/
 */
 /datum/reagent/drug/aphrodisiac/proc/create_breasts(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.getorganslot(ORGAN_SLOT_BREASTS)) 
 
@@ -380,6 +433,11 @@
 
 /**
 * Handle creation of vagina
+*
+* exposed_mob - the mob being affected by the reagent
+* suppress_chat - whether or not to display a message in chat
+* mob_vagina - the mob's vagina
+*/
 */
 /datum/reagent/drug/aphrodisiac/proc/create_vagina(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/vagina/mob_vagina = exposed_mob?.getorganslot(ORGAN_SLOT_VAGINA))
 	
@@ -402,6 +460,11 @@
 
 /**
 * Handle creation of womb
+*
+* exposed_mob - the mob being affected by the reagent
+* suppress_chat - whether or not to display a message in chat
+* mob_womb - the mob's womb
+*/
 */
 /datum/reagent/drug/aphrodisiac/proc/create_womb(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/womb/mob_womb = exposed_mob?.getorganslot(ORGAN_SLOT_WOMB))
 	
@@ -419,6 +482,9 @@
 
 /**
 * Helper function used to display the messages that appear in chat while the growth is occurring
+*
+* exposed_mob - the mob being affected by the reagent
+* genital - the genital that is causing the update
 */ 
 /datum/reagent/drug/aphrodisiac/proc/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/genital) 
 

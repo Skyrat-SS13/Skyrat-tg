@@ -105,6 +105,10 @@
 /** ---- Genital Growth ----
 *
 * Handle breast growth
+*
+* exposed_mob - the mob being affected by the reagent
+* suppress_chat - whether or not to display a message in chat
+* mob_breasts the breasts to cause to grow
 */
 /datum/reagent/drug/aphrodisiac/proc/grow_breasts(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.getorganslot(ORGAN_SLOT_BREASTS)) 
 	
@@ -134,6 +138,10 @@
 
 /**
 * Helper function used to display the messages that appear in chat while the growth is occurring
+*
+* exposed_mob - the mob being affected by the reagent
+* genital - the genital that is causing the update
+*/ 
 */ 
 /datum/reagent/drug/aphrodisiac/succubus_milk/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.getorganslot(ORGAN_SLOT_BREASTS))
 	
