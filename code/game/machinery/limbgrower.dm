@@ -164,9 +164,10 @@
 
 		if("make_limb")
 			var/design_id = params["design_id"]
-			if(!stored_research.researched_designs.Find(design_id) && !imported_designs.Find(design_id))
+			if(!stored_research.researched_designs.Find(design_id) && !stored_research.hacked_designs.Find(design_id) && !imported_designs.Find(design_id))
 				return
-			/// All the reagents we're using to make our organ.
+			being_built = SSresearch.techweb_design_by_id(design_id)
+			// All the reagents we're using to make our organ.
 			var/list/consumed_reagents_list = being_built.reagents_list.Copy()
 			/// The amount of power we're going to use, based on how much reagent we use.
 			var/power = 0
@@ -186,9 +187,7 @@
 			icon_state = "limbgrower_idleon"
 			selected_category = params["active_tab"]
 			addtimer(CALLBACK(src, PROC_REF(build_item), consumed_reagents_list), production_speed * production_coefficient)
-			. = TRUE
-
-	return
+			return TRUE
 
 /*
  * The process of beginning to build a limb or organ.
@@ -255,8 +254,8 @@
 		reagents.maximum_volume += our_beaker.volume
 		our_beaker.reagents.trans_to(src, our_beaker.reagents.total_volume)
 	production_coefficient = 1.25
-	for(var/obj/item/stock_parts/manipulator/our_manipulator in component_parts)
-		production_coefficient -= our_manipulator.rating * 0.25
+	for(var/datum/stock_part/manipulator/our_manipulator in component_parts)
+		production_coefficient -= our_manipulator.tier * 0.25
 	production_coefficient = clamp(production_coefficient, 0, 1) // coefficient goes from 1 -> 0.75 -> 0.5 -> 0.25
 
 /obj/machinery/limbgrower/examine(mob/user)
