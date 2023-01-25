@@ -17,7 +17,7 @@
 	if(iscarbon(target)) // Is the target carbon?
 		var/mob/living/carbon/carbon = target // This allows us to check several things about a carbon target, such as their combat_mode state
 
-		if(HAS_TRAIT(carbon,TRAIT_DONOTLICK)) // Does the target have the Do Not Lick trait?
+		if(HAS_TRAIT(carbon, TRAIT_DONOTLICK)) // Does the target have the Do Not Lick trait?
 
 			if(carbon.combat_mode && (!HAS_TRAIT(carbon, TRAIT_PACIFISM)) && (carbon.stat != UNCONSCIOUS) && (!carbon.handcuffed)) // Combat mode slap - must be conscious, unpacified and uncuffed
 				borg.visible_message(span_danger("\the [borg] tries to lick \the [carbon], but they get slapped instead!"),

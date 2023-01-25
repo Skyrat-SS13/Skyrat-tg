@@ -29,7 +29,7 @@
 	medical_record_text = "Patient shows an aversion to being licked by canine cyborgs."
 	value = 0
 	mob_trait = TRAIT_DONOTLICK
-	icon = "" // Please add
+	icon = "tongue" // Placeholder, please add
 
 /datum/quirk/dnr
 	name = "Do Not Revive"
