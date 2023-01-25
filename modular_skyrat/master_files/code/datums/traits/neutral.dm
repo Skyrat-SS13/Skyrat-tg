@@ -21,6 +21,16 @@
 	mob_trait = TRAIT_PERSONALSPACE
 	icon = "hand-paper"
 
+/datum/quirk/do_not_lick // Prevents dogborgs from licking you
+	name = "Do Not Lick"
+	desc = "You don't like it when cyborgs lick you. You're on the DNL index."
+	gain_text = span_notice("Cyborg dog tongues gross you out.")
+	lose_text = span_notice("You don't mind cyborg dog tongues as much.")
+	medical_record_text = "Patient shows an aversion to being licked by canine cyborgs."
+	value = 0
+	mob_trait = TRAIT_DONOTLICK
+	icon = "" // Please add
+
 /datum/quirk/dnr
 	name = "Do Not Revive"
 	desc = "For whatever reason, you cannot be revived in any way."
