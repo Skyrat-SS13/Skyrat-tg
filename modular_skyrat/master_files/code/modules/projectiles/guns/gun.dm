@@ -72,24 +72,8 @@
 	// Zooming
 	var/pb_knockback = 0
 
-	var/datum/action/item_action/toggle_firemode/firemode_action
-	/// Current fire selection, can choose between burst, single, and full auto.
-	var/fire_select = SELECT_SEMI_AUTOMATIC
-	var/fire_select_index = 1
-	/// What modes does this weapon have? Put SELECT_FULLY_AUTOMATIC in here to enable fully automatic behaviours.
-	var/list/fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
-	/// if i`1t has an icon for a selector switch indicating current firemode.
-	var/selector_switch_icon = FALSE
 	/// Bitflags for the company that produces the gun, do not give more than one company.
 	var/company_flag
-
-/obj/item/gun/ui_action_click(mob/user, actiontype)
-	if(istype(actiontype, /datum/action/item_action/toggle_firemode))
-		fire_select()
-	else if(istype(actiontype, toggle_safety_action))
-		toggle_safety(user)
-	else
-		..()
 
 /obj/item/gun/Initialize(mapload)
 	. = ..()
@@ -97,11 +81,6 @@
 		pin = new pin(src)
 
 	add_seclight_point()
-
-	if(has_gun_safety)
-		safety = TRUE
-		toggle_safety_action = new(src)
-		add_item_action(toggle_safety_action)
 
 	if(burst_size > 1 && !(SELECT_BURST_SHOT in fire_select_modes))
 		fire_select_modes.Add(SELECT_BURST_SHOT)
