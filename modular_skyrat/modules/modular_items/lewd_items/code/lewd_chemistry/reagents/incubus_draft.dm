@@ -159,7 +159,7 @@
 		return
 	
 	// Display a different message when they reach 'enormous'
-	if(mob_testicles.genital_size < balls_big_size) 
+	if(mob_testicles.genital_size <= balls_big_size) 
 		to_chat(exposed_mob, span_purple("Your balls [pick(ball_action_text_list)]. They are now [mob_testicles.balls_size_to_description(mob_testicles.genital_size)]."))	
 	else if(mob_testicles.genital_size == balls_max_size)
 		to_chat(exposed_mob, span_purple("You can feel your heavy balls churn as they swell to enormous proportions!"))		
