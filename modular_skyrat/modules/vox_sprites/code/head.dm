@@ -43,6 +43,9 @@
 /obj/item/clothing/head/beret/engi
 	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 
+/obj/item/clothing/head/beret/atmos
+	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
+
 /obj/item/clothing/head/beret/cargo/qm
 	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 
