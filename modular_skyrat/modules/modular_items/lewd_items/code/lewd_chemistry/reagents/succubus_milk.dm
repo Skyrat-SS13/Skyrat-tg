@@ -94,10 +94,13 @@
 			
 	// Begin breast growth if prefs allow it
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
-		create_genitals(exposed_mob, suppress_chat, list(breasts, vagina, womb))
+		create_genitals(exposed_mob, suppress_chat, list(breasts))
 	
 	// Separates gender change stuff from breast growth and shrinkage, as well as from new genitalia growth/removal
 	change_gender(exposed_mob, FEMALE, suppress_chat)
+	
+	// Womb and vagina creation
+	create_genitals(exposed_mob, suppress_chat, list(vagina, womb))
 		
 	// Cock & ball shrinkage 
 	shrink_genitals(exposed_mob, suppress_chat, list(penis, testicles))
