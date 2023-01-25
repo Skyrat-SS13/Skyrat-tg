@@ -144,7 +144,6 @@
 * suppress_chat - whether or not to display a message in chat
 * mob_testicles - the testicles to cause to grow
 */ 
-*/
 /datum/reagent/drug/aphrodisiac/incubus_draft/proc/grow_balls(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob?.getorganslot(ORGAN_SLOT_TESTICLES)) 
 	
 	//no balls
@@ -175,7 +174,6 @@
 *
 * exposed_mob - the mob being affected by the reagent
 * genital - the genital that is causing the update
-*/ 
 */ 
 /datum/reagent/drug/aphrodisiac/incubus_draft/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/penis/mob_penis = exposed_mob?.getorganslot(ORGAN_SLOT_PENIS))
 	

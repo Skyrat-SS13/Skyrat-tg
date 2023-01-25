@@ -398,7 +398,6 @@
 * suppress_chat - whether or not to display a message in chat
 * mob_breasts - the mob's breasts
 */
-*/
 /datum/reagent/drug/aphrodisiac/proc/create_breasts(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.getorganslot(ORGAN_SLOT_BREASTS)) 
 
 	// Make sure we don't already have them
@@ -438,7 +437,6 @@
 * suppress_chat - whether or not to display a message in chat
 * mob_vagina - the mob's vagina
 */
-*/
 /datum/reagent/drug/aphrodisiac/proc/create_vagina(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/vagina/mob_vagina = exposed_mob?.getorganslot(ORGAN_SLOT_VAGINA))
 	
 	// Add new vagina if we don't already have one. Use dna prefs before assigning a default human one.
@@ -464,7 +462,6 @@
 * exposed_mob - the mob being affected by the reagent
 * suppress_chat - whether or not to display a message in chat
 * mob_womb - the mob's womb
-*/
 */
 /datum/reagent/drug/aphrodisiac/proc/create_womb(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/womb/mob_womb = exposed_mob?.getorganslot(ORGAN_SLOT_WOMB))
 	

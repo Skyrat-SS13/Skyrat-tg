@@ -145,7 +145,6 @@
 * exposed_mob - the mob being affected by the reagent
 * genital - the genital that is causing the update
 */ 
-*/ 
 /datum/reagent/drug/aphrodisiac/succubus_milk/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.getorganslot(ORGAN_SLOT_BREASTS))
 	
 	if(!mob_breasts)
