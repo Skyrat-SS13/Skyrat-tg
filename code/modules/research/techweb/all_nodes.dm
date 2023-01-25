@@ -302,7 +302,6 @@
 		"xlarge_beaker",
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
-		"engi_plumbing",
 		"hospital_gown",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
@@ -568,6 +567,9 @@
 	design_ids = list(
 		"bounty_pad",
 		"bounty_pad_control",
+		//SKYRAT EDIT ADDITION - START
+		"nifsoft_vendor"
+		//SKYRAT EDIT ADDITION - END
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -654,9 +656,7 @@
 		"mesons_prescription",
 		"multi_cell_charger",
 		"tray_goggles_prescription",
-		"plumbing_chem",
 		"plumbing_eng",
-		"plumbing_sci"
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 15000)
@@ -1277,6 +1277,7 @@
 		"meson_hud_projector",
 		"science_hud_projector",
 		"permit_glasses",
+		"nifsoft_money_sense",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
@@ -1542,6 +1543,7 @@
 		"seclite",
 		"zipties",
 		"inspector",
+		"nifsoft_remover", //SKYRAT EDIT ADDITION - NIFs
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 
