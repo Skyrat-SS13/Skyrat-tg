@@ -116,8 +116,8 @@
 	options["The Feminist"] = "sexyclown"
 	options["The Wizard"] = "wizzclown"
 	options["The Madman"] = "joker"
-	options["The Rainbow Color"] ="rainbow"
-	options["The Jester"] ="chaos"
+	options["The Rainbow Color"] = "rainbow"
+	options["The Jester"] = "chaos"
 
 	var/choice = show_radial_menu(user,src, clownmask_designs, custom_check = FALSE, radius = 36, require_near = TRUE)
 	if(!choice)
@@ -155,7 +155,7 @@
 	options["Blanc"] = "mime"
 	options["Triste"] = "sadmime"
 	options["Effrayé"] = "scaredmime"
-	options["Excité"] ="sexymime"
+	options["Excité"] = "sexymime"
 
 	var/choice = show_radial_menu(user,src, mimemask_designs, custom_check = FALSE, radius = 36, require_near = TRUE)
 	if(!choice)
