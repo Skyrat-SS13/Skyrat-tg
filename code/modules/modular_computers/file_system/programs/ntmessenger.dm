@@ -283,6 +283,10 @@
 
 	if (prob(1))
 		message += " Sent from my PDA"
+	// SKYRAT EDIT BEGIN - PDA messages show a visible message; again!
+	user.visible_message(span_notice("[user]'s PDA rings out with the soft sound of keypresses."), span_notice("You send a message on your PDA."))
+	user.balloon_alert_to_viewers("sent a PDA message")
+	//SKYRAT EDIT END
 
 	var/datum/signal/subspace/messaging/tablet_msg/signal = new(computer, list(
 		"name" = fake_name || computer.saved_identification,
