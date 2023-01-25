@@ -86,13 +86,6 @@
 			"balls" = "Internal"
 		),
 	)
-	/// Wording chosen to grow the balls, shown only to the mob.
-	var/static/list/ball_action_text_list = list(
-		"begin to swell",
-		"feel heavier all of a sudden",
-		"throb as they increase in size",
-		"begin to pulse, feeling larger than they were before",
-	)
 
 /// Runs on life after preference checks. Use this instead of on_mob_life
 /datum/reagent/drug/aphrodisiac/proc/life_effects(mob/living/carbon/human/exposed_mob)
@@ -247,99 +240,10 @@
 	new_womb.Insert(exposed_mob, 0, FALSE)
 	update_appearance(exposed_mob)
 
-// ---- Growth functions : Male genitals ----
-
-// Attempt to grow penis
-/datum/reagent/drug/aphrodisiac/proc/grow_penis(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/penis/mob_penis = exposed_mob?.getorganslot(ORGAN_SLOT_PENIS)) 
-	
-	// Check if we actually have a penis to grow
-	if(!mob_penis)
-		return
-	
-	// Check if prefs allow this
-	if(!exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/penis_enlargement))
-		return
-		
-	enlargement_amount += enlarger_increase_step
-	
-	if(enlargement_amount >= enlargement_threshold)
-		if(mob_penis?.genital_size >= penis_max_length)
-			return
-		mob_penis.genital_size = min(mob_penis.genital_size + penis_length_increase_step, penis_max_length)
-		// Improvision to girth to not make it random chance.
-		if(mob_penis?.girth < penis_max_girth) // Because any higher is ridiculous. However, should still allow for regular penis growth.
-			mob_penis.girth = round(mob_penis.girth + (mob_penis.genital_size/mob_penis.girth))
-		update_appearance(exposed_mob, mob_penis)
-		enlargement_amount = 0
-	
-		growth_to_chat(exposed_mob, mob_penis)
-
-	// Damage from being too big for your clothes
-	if((mob_penis?.genital_size >= (penis_max_length - 2)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
-		var/target_bodypart = exposed_mob.get_bodypart(BODY_ZONE_PRECISE_GROIN)
-		if(prob(damage_chance))
-			to_chat(exposed_mob, span_danger("You feel a tightness in your pants!"))
-			exposed_mob.apply_damage(1, BRUTE, target_bodypart)
-
-// Attempt to grow balls
-/datum/reagent/drug/aphrodisiac/proc/grow_balls(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob?.getorganslot(ORGAN_SLOT_TESTICLES)) 
-	
-	//no balls
-	if(!mob_testicles)
-		return
-
-	// Check if prefs allow this
-	if(!exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/penis_enlargement))
-		return
-
-	var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
-	
-	if(mob_testicles.genital_size < balls_max_size && prob(balls_increase_chance)) // Add some randomness so growth happens more gradually in most cases
-		mob_testicles.genital_size = min(mob_testicles.genital_size + testicles_size_increase_step, balls_max_size)
-		update_appearance(exposed_mob, mob_testicles)
-		if(!suppress_chat) // So we don't spam chat
-			to_chat(exposed_mob, span_purple("Your balls [pick(ball_action_text_list)]. They are now [mob_testicles.balls_size_to_description(mob_testicles.genital_size)]."))
-
-	else if(mob_testicles.genital_size == balls_max_size && mob_penis?.genital_size >= balls_enormous_size_threshold) // Make the balls enormous only when the penis reaches a certain size
-		mob_testicles.genital_size = min(mob_testicles.genital_size + testicles_size_increase_step, balls_max_size)
-		update_appearance(exposed_mob, mob_testicles)
-
-		if(!suppress_chat)
-			to_chat(exposed_mob, span_purple("You can feel your heavy balls churn as they swell to enormous proportions!"))
-
-// ---- Genital Growth : Female genitals ----
-
-// Handle breast growth
-/datum/reagent/drug/aphrodisiac/proc/grow_breasts(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.getorganslot(ORGAN_SLOT_BREASTS)) 
-	
-	if(!mob_breasts)
-		return
-		
-	if(!exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
-		return
-	
-	enlargement_amount += enlarger_increase_step
-	
-	if(enlargement_amount >= enlargement_threshold)
-		if(mob_breasts?.genital_size >= max_breast_size)
-			return
-		mob_breasts.genital_size = min(mob_breasts.genital_size + breast_size_increase_step, max_breast_size)
-		update_appearance(exposed_mob, mob_breasts)
-		enlargement_amount = 0
-		
-		growth_to_chat(exposed_mob, mob_breasts)
-		
-	// Damage from being too big for your clothes
-	if((mob_breasts?.genital_size >= (max_breast_size - 2)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
-		if(prob(damage_chance))
-			to_chat(exposed_mob, span_danger("Your breasts begin to strain against your clothes!"))
-			exposed_mob.adjustOxyLoss(5)
-			exposed_mob.apply_damage(1, BRUTE, exposed_mob.get_bodypart(BODY_ZONE_CHEST))
-
 /// Handle genital shrinkage
 /datum/reagent/drug/aphrodisiac/proc/shrink_genitals(mob/living/carbon/human/exposed_mob) 
 
-// ---- Genital Shrinkage : Male genitals ----
+// ---- Genital Shrinkage : Male ----
 
 // Attempt penis shrinkage
 /datum/reagent/drug/aphrodisiac/proc/shrink_penis(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/penis/mob_penis = exposed_mob?.getorganslot(ORGAN_SLOT_PENIS)) 	
@@ -354,7 +258,7 @@
 		
 	// Handle completely shrinking away, if prefs allow
 	if(mob_penis.genital_size == penis_min_length)
-		remove_penis(exposed_mob, suppress_chat, mob_penis)
+		remove_genital(exposed_mob, mob_penis, suppress_chat)
 	else 
 		if(mob_penis.genital_size > penis_min_length)
 			mob_penis.genital_size = max(mob_penis.genital_size - penis_size_reduction_step, penis_min_length)
@@ -378,10 +282,10 @@
 		update_appearance(exposed_mob, mob_testicles)
 
 	else if(mob_testicles.genital_size == balls_min_size && !mob_penis) // Wait for penis to completely shrink away first before removing balls
-		remove_testicles(exposed_mob, suppress_chat, mob_testicles)
+		var/message = "You feel a tightening sensation in your groin as things seem to smooth out down there."
+		remove_genital(exposed_mob, mob_testicles, message, suppress_chat)
 
-
-// ---- Genital Shrinkage : Female genitals ----
+// ---- Genital Shrinkage : Female ----
 
 // Handle breast shrinkage
 /datum/reagent/drug/aphrodisiac/proc/shrink_breasts(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.getorganslot(ORGAN_SLOT_BREASTS)) 
@@ -397,80 +301,27 @@
 		update_appearance(exposed_mob, mob_breasts)
 		
 	else if(mob_breasts.genital_size == breast_minimum_size) // Handle completely shrinking away, if prefs allow
-		remove_breasts(exposed_mob, suppress_chat, mob_breasts)
+		var/message = "Your breasts have completely tightened into firm, flat pecs."
+		remove_genital(exposed_mob, mob_breasts, message, suppress_chat)
 
 /// Handle removal of old genitals
 /datum/reagent/drug/aphrodisiac/proc/remove_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
 
-// ---- Genital Removal : Male genitals ----
+// ---- Genital Removal ----
 
-/datum/reagent/drug/aphrodisiac/proc/remove_penis(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/penis/mob_penis = exposed_mob?.getorganslot(ORGAN_SLOT_PENIS)) 
+/datum/reagent/drug/aphrodisiac/proc/remove_genital(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/mob_genital, message, suppress_chat = FALSE) 
 
-	if(!mob_penis)
+	if(!mob_genital)
 		return
 		
 	if(!exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
 		return
 		
-	mob_penis.Remove(exposed_mob)
+	mob_genital.Remove(exposed_mob)
 	update_appearance(exposed_mob)
 	
-/datum/reagent/drug/aphrodisiac/proc/remove_testicles(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob?.getorganslot(ORGAN_SLOT_TESTICLES))
-
-	if(!mob_testicles) 
-		return
-		
-	if(!exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
-		return
-		
-	mob_testicles.Remove(exposed_mob)
-	update_appearance(exposed_mob)
-	
-	if(!suppress_chat)
-		to_chat(exposed_mob, span_purple("You feel a tightening sensation in your groin as things seem to smooth out down there."))
-
-// ---- Genital Removal : Female genitals ----
-
-/datum/reagent/drug/aphrodisiac/proc/remove_breasts(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.getorganslot(ORGAN_SLOT_BREASTS)) 
-
-	if(!mob_breasts)
-		return
-
-	if(!exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))
-		return
-		
-	mob_breasts.Remove(exposed_mob)
-	update_appearance(exposed_mob)
-	
-	if(!suppress_chat)
-		to_chat(exposed_mob, span_purple("Your breasts have completely tightened into firm, flat pecs."))
-
-// Removes the vagina if it exists
-/datum/reagent/drug/aphrodisiac/proc/remove_vagina(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/vagina/mob_vagina = exposed_mob?.getorganslot(ORGAN_SLOT_VAGINA)) 
-
-	if(!mob_vagina)
-		return
-	
-	if(!exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))	
-		return 
-		
-	mob_vagina.Remove(exposed_mob)
-	update_appearance(exposed_mob)
-	
-	if(!suppress_chat)
-		to_chat(exposed_mob, span_purple("You can the feel the muscles in your groin begin to tighten as your vagina seals itself completely shut."))
-
-// Removes the womb if it exists
-/datum/reagent/drug/aphrodisiac/proc/remove_womb(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/womb/mob_womb = exposed_mob?.getorganslot(ORGAN_SLOT_WOMB))		
-
-	if(!mob_womb)
-		return
-
-	if(!exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/genitalia_removal))	
-		return 
-	
-	mob_womb.Remove(exposed_mob)
-	update_appearance(exposed_mob)
+	if(!suppress_chat && message)
+		to_chat(exposed_mob, span_purple(message))
 
 /// Used to display the messages that appear in chat while the growth is occurring
 /datum/reagent/drug/aphrodisiac/proc/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/genital) 

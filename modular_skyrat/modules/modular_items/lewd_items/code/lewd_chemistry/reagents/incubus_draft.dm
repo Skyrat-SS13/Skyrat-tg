@@ -63,6 +63,13 @@
 		"seems a bit bigger than it was before.",
 		"suddenly lengthens about an inch or two.",
 	)
+	/// Wording chosen to grow the balls, shown only to the mob.
+	var/static/list/ball_action_text_list = list(
+		"begin to swell",
+		"feel heavier all of a sudden",
+		"throb as they increase in size",
+		"begin to pulse, feeling larger than they were before",
+	)
 
 /datum/reagent/drug/aphrodisiac/incubus_draft/life_effects(mob/living/carbon/human/exposed_mob)
 	// Attempt to grow penis
@@ -118,15 +125,76 @@
 // Attempt vagina and womb removal
 /datum/reagent/drug/aphrodisiac/incubus_draft/remove_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 		
 
-	remove_vagina(exposed_mob, suppress_chat)
-	remove_womb(exposed_mob, suppress_chat)
+	var/message = "You can the feel the muscles in your groin begin to tighten as your vagina seals itself completely shut."
+	remove_genital(exposed_mob, exposed_mob.getorganslot(ORGAN_SLOT_VAGINA), message, suppress_chat)
+	remove_genital(exposed_mob, exposed_mob.getorganslot(ORGAN_SLOT_WOMB), suppress_chat)
 
 // Attempt new genital creation
 /datum/reagent/drug/aphrodisiac/incubus_draft/create_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
 		
 	create_penis(exposed_mob, suppress_chat)
 	create_testicles(exposed_mob, suppress_chat)
+
+// ---- Growth functions ----
+
+// Attempt to grow penis
+/datum/reagent/drug/aphrodisiac/incubus_draft/proc/grow_penis(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/penis/mob_penis = exposed_mob?.getorganslot(ORGAN_SLOT_PENIS)) 
 	
+	// Check if we actually have a penis to grow
+	if(!mob_penis)
+		return
+	
+	// Check if prefs allow this
+	if(!exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/penis_enlargement))
+		return
+		
+	enlargement_amount += enlarger_increase_step
+	
+	if(enlargement_amount >= enlargement_threshold)
+		if(mob_penis?.genital_size >= penis_max_length)
+			return
+		mob_penis.genital_size = min(mob_penis.genital_size + penis_length_increase_step, penis_max_length)
+		// Improvision to girth to not make it random chance.
+		if(mob_penis?.girth < penis_max_girth) // Because any higher is ridiculous. However, should still allow for regular penis growth.
+			mob_penis.girth = round(mob_penis.girth + (mob_penis.genital_size/mob_penis.girth))
+		update_appearance(exposed_mob, mob_penis)
+		enlargement_amount = 0
+	
+		growth_to_chat(exposed_mob, mob_penis)
+
+	// Damage from being too big for your clothes
+	if((mob_penis?.genital_size >= (penis_max_length - 2)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
+		var/target_bodypart = exposed_mob.get_bodypart(BODY_ZONE_PRECISE_GROIN)
+		if(prob(damage_chance))
+			to_chat(exposed_mob, span_danger("You feel a tightness in your pants!"))
+			exposed_mob.apply_damage(1, BRUTE, target_bodypart)
+
+// Attempt to grow balls
+/datum/reagent/drug/aphrodisiac/incubus_draft/proc/grow_balls(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob?.getorganslot(ORGAN_SLOT_TESTICLES)) 
+	
+	//no balls
+	if(!mob_testicles)
+		return
+
+	// Check if prefs allow this
+	if(!exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/penis_enlargement))
+		return
+
+	var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
+	
+	if(mob_testicles.genital_size < balls_max_size && prob(balls_increase_chance)) // Add some randomness so growth happens more gradually in most cases
+		mob_testicles.genital_size = min(mob_testicles.genital_size + testicles_size_increase_step, balls_max_size)
+		update_appearance(exposed_mob, mob_testicles)
+		if(!suppress_chat) // So we don't spam chat
+			to_chat(exposed_mob, span_purple("Your balls [pick(ball_action_text_list)]. They are now [mob_testicles.balls_size_to_description(mob_testicles.genital_size)]."))
+
+	else if(mob_testicles.genital_size == balls_max_size && mob_penis?.genital_size >= balls_enormous_size_threshold) // Make the balls enormous only when the penis reaches a certain size
+		mob_testicles.genital_size = min(mob_testicles.genital_size + testicles_size_increase_step, balls_max_size)
+		update_appearance(exposed_mob, mob_testicles)
+
+		if(!suppress_chat)
+			to_chat(exposed_mob, span_purple("You can feel your heavy balls churn as they swell to enormous proportions!"))
+
 // Helper function to display a growth message		
 /datum/reagent/drug/aphrodisiac/incubus_draft/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/penis/mob_penis = exposed_mob?.getorganslot(ORGAN_SLOT_PENIS))
 	

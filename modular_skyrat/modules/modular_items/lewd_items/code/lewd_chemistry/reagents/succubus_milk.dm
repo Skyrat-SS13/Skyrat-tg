@@ -133,6 +133,35 @@
 	create_vagina(exposed_mob, suppress_chat)
 	create_womb(exposed_mob, suppress_chat)
 
+// ---- Genital Growth ----
+
+// Handle breast growth
+/datum/reagent/drug/aphrodisiac/proc/grow_breasts(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.getorganslot(ORGAN_SLOT_BREASTS)) 
+	
+	if(!mob_breasts)
+		return
+		
+	if(!exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
+		return
+	
+	enlargement_amount += enlarger_increase_step
+	
+	if(enlargement_amount >= enlargement_threshold)
+		if(mob_breasts?.genital_size >= max_breast_size)
+			return
+		mob_breasts.genital_size = min(mob_breasts.genital_size + breast_size_increase_step, max_breast_size)
+		update_appearance(exposed_mob, mob_breasts)
+		enlargement_amount = 0
+		
+		growth_to_chat(exposed_mob, mob_breasts)
+		
+	// Damage from being too big for your clothes
+	if((mob_breasts?.genital_size >= (max_breast_size - 2)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
+		if(prob(damage_chance))
+			to_chat(exposed_mob, span_danger("Your breasts begin to strain against your clothes!"))
+			exposed_mob.adjustOxyLoss(5)
+			exposed_mob.apply_damage(1, BRUTE, exposed_mob.get_bodypart(BODY_ZONE_CHEST))
+
 // Helper function to display a growth message	
 /datum/reagent/drug/aphrodisiac/succubus_milk/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.getorganslot(ORGAN_SLOT_BREASTS))
 	
