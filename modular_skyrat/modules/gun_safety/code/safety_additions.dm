@@ -1,32 +1,40 @@
-/obj/item/gun/ballistic
-	has_gun_safety = TRUE
+/// Proc that is overridden in /gun/ballistic and /gun/energy to attach the gun safety component to a gun
+/obj/item/gun/proc/give_gun_safeties()
+	return
 
-/obj/item/gun/ballistic/bow
-	has_gun_safety = FALSE
+// Ballistic Weapons
 
-/obj/item/gun/energy
-	has_gun_safety = TRUE
+/obj/item/gun/ballistic/give_gun_safeties()
+	AddComponent(/datum/component/gun_safety)
 
-/obj/item/gun/energy/plasmacutter
-	has_gun_safety = FALSE
+/obj/item/gun/ballistic/bow/give_gun_safeties()
+	return
 
-/obj/item/gun/energy/kinetic_accelerator
-	has_gun_safety = FALSE
+/obj/item/gun/ballistic/rifle/enchanted/give_gun_safeties()
+	return
 
-/obj/item/gun/ballistic/rifle/enchanted
-	has_gun_safety = FALSE
+/obj/item/gun/ballistic/automatic/laser/ctf/give_gun_safeties()
+	return
 
-/obj/item/gun/ballistic/automatic/laser/ctf
-	has_gun_safety = FALSE
+/obj/item/gun/ballistic/shotgun/ctf/give_gun_safeties()
+	return
 
-/obj/item/gun/ballistic/shotgun/ctf
-	has_gun_safety = FALSE
+/obj/item/gun/ballistic/automatic/laser/ctf/marksman/give_gun_safeties()
+	return
 
-/obj/item/gun/ballistic/automatic/laser/ctf/marksman
-	has_gun_safety = FALSE
+/obj/item/gun/ballistic/automatic/pistol/deagle/ctf/give_gun_safeties()
+	return
 
-/obj/item/gun/ballistic/automatic/pistol/deagle/ctf
-	has_gun_safety = FALSE
+/obj/item/gun/ballistic/automatic/pistol/g17/mesa/give_gun_safeties()
+	return
 
-/obj/item/gun/ballistic/automatic/pistol/g17/mesa
-	has_gun_safety = FALSE
+// Energy Weapons
+
+/obj/item/gun/energy/give_gun_safeties()
+	AddComponent(/datum/component/gun_safety)
+
+/obj/item/gun/energy/plasmacutter/give_gun_safeties()
+	return
+
+/obj/item/gun/energy/kinetic_accelerator/give_gun_safeties()
+	return

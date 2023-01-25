@@ -72,10 +72,6 @@
 	// Zooming
 	var/pb_knockback = 0
 
-	var/safety = FALSE /// Internal variable for keeping track whether the safety is on or off
-	var/has_gun_safety = FALSE /// Whether the gun actually has a gun safety
-	var/datum/action/item_action/toggle_safety/toggle_safety_action
-
 	var/datum/action/item_action/toggle_firemode/firemode_action
 	/// Current fire selection, can choose between burst, single, and full auto.
 	var/fire_select = SELECT_SEMI_AUTOMATIC

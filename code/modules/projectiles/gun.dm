@@ -75,6 +75,7 @@
 		pin = new pin(src)
 
 	add_seclight_point()
+	give_gun_safeties() // SKYRAT EDIT ADDITION - GUN SAFETIES
 
 /obj/item/gun/Destroy()
 	if(isobj(pin)) //Can still be the initial path, then we skip
