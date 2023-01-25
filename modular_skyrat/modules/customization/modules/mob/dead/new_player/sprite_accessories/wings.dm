@@ -6,7 +6,7 @@
 * Check some of the wings that make use of them for examples on how to make it look decent.
 */
 /datum/sprite_accessory/wings
-	icon = 'icons/mob/clothing/wings.dmi'
+	icon = 'icons/mob/species/wings.dmi'
 	generic = "Wings"
 	key = "wings"
 	color_src = USE_ONE_COLOR
@@ -32,7 +32,7 @@
 			)
 			return TRUE
 
-/obj/item/organ/external/wings/can_draw_on_bodypart(mob/living/carbon/human/wearer)
+/datum/bodypart_overlay/mutant/wings/can_draw_on_bodypart(mob/living/carbon/human/wearer)
 	if(!wearer.w_uniform && !wearer.wear_suit)
 		return ..()
 	//	Can hide if wearing uniform
