@@ -3,6 +3,11 @@
 /datum/reagent/consumable/ethanol/whiskey
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC //let's not force the detective to change his alcohol brand
 
+
+/datum/reagent/consumable/ethanol/bloody_mary
+	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING
+
+
 // ROBOT ALCOHOL PAST THIS POINT
 // WOOO!
 
@@ -594,7 +599,8 @@
 	color = "#a30000"
 	boozepwr = 20 // The only booze in it is Bloody Mary
 	taste_description = "blood filled to the brim with nutrients of all kinds"
-	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED | REAGENT_BLOOD_REGENERATING
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING
 
 
 /datum/glass_style/drinking_glass/bloodshot

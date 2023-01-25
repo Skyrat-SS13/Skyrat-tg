@@ -87,7 +87,8 @@
 	color = "#AAAAAA77"
 	reagent_state = LIQUID
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
-	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED | REAGENT_BLOOD_REGENERATING // It has REAGENT_BLOOD_REGENERATING only because it makes it so Hemophages can safely drink it, which makes complete sense considering this is meant to suppress their tumor's reactiveness to anything that doesn't regenerate blood.
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING // It has REAGENT_BLOOD_REGENERATING only because it makes it so Hemophages can safely drink it, which makes complete sense considering this is meant to suppress their tumor's reactiveness to anything that doesn't regenerate blood.
 
 
 /datum/reagent/medicine/taste_suppressor/on_mob_metabolize(mob/living/affected_mob)

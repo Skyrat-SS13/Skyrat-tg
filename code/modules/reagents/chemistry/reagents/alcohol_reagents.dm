@@ -878,7 +878,7 @@
 	boozepwr = 55
 	quality = DRINK_GOOD
 	taste_description = "tomatoes with a hint of lime"
-	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED | REAGENT_BLOOD_REGENERATING // SKYRAT EDIT -  Hemophages can't casually drink what's not going to regenerate their blood - ORIGINAL: chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/glass_style/drinking_glass/bloody_mary
 	required_drink_type = /datum/reagent/consumable/ethanol/bloody_mary

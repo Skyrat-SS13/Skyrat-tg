@@ -426,7 +426,7 @@
 	if(HAS_TRAIT(owner, TRAIT_AGEUSIA)) // They don't taste anything, their body shouldn't react strongly to the taste of that stuff.
 		return
 
-	if(container.reagents.has_chemical_flag(REAGENT_BLOOD_REGENERATING, container.reagents.total_volume * MINIMUM_BLOOD_REGENING_REAGENT_RATIO)) // At least 75% of the content of the cup needs to be something that's counting as blood-regenerating for the tumor not to freak out.
+	if(container.reagents.has_chemical_flag_skyrat(REAGENT_BLOOD_REGENERATING, container.reagents.total_volume * MINIMUM_BLOOD_REGENING_REAGENT_RATIO)) // At least 75% of the content of the cup needs to be something that's counting as blood-regenerating for the tumor not to freak out.
 		return
 
 	var/mob/living/carbon/body = owner

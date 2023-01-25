@@ -1074,7 +1074,7 @@
 	reagent_state = SOLID
 	taste_description = "iron"
 	material = /datum/material/iron
-	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED | REAGENT_BLOOD_REGENERATING // SKYRAT EDIT - Hemophages can't casually drink what's not going to regenerate their blood - ORIGINAL: chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	color = "#606060" //pure iron? let's make it violet of course
 	ph = 6
 
