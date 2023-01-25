@@ -15,7 +15,6 @@
 	metabolization_rate = 0.25
 	life_pref_datum = /datum/preference/toggle/erp/penis_enlargement
 	overdose_pref_datum = /datum/preference/toggle/erp
-	balls_max_size = TESTICLES_MAX_SIZE - 1
 
 	/// Words for the cock when huge.
 	var/static/list/words_for_bigger_cock = list(
@@ -98,90 +97,35 @@
 	// Attempt genital shrinkage where applicable
 	shrink_genitals(exposed_mob, suppress_chat, list(breasts, vagina, womb))
 
-/** ---- Genital Growth ----
-*
-* Handle penis growth
-*
-* exposed_mob - the mob being affected by the reagent
-* suppress_chat - whether or not to display a message in chat
-* mob_penis the penis to cause to grow
-*/
-/datum/reagent/drug/aphrodisiac/incubus_draft/proc/grow_penis(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/penis/mob_penis = exposed_mob?.getorganslot(ORGAN_SLOT_PENIS)) 
-	
-	// Check if we actually have a penis to grow
-	if(!mob_penis)
-		return
-	
-	// Check if prefs allow this
-	if(!exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/penis_enlargement))
-		return
-		
-	enlargement_amount += enlarger_increase_step
-	
-	if(enlargement_amount >= enlargement_threshold)
-		if(mob_penis?.genital_size >= penis_max_length)
-			return
-		mob_penis.genital_size = min(mob_penis.genital_size + penis_length_increase_step, penis_max_length)
-		// Improvision to girth to not make it random chance.
-		if(mob_penis?.girth < penis_max_girth) // Because any higher is ridiculous. However, should still allow for regular penis growth.
-			mob_penis.girth = round(mob_penis.girth + (mob_penis.genital_size/mob_penis.girth))
-		update_appearance(exposed_mob, mob_penis)
-		enlargement_amount = 0
-	
-		growth_to_chat(exposed_mob, mob_penis)
-
-	// Damage from being too big for your clothes
-	if((mob_penis?.genital_size >= (penis_max_length - 2)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
-		var/target_bodypart = exposed_mob.get_bodypart(BODY_ZONE_PRECISE_GROIN)
-		if(prob(damage_chance))
-			to_chat(exposed_mob, span_danger("You feel a tightness in your pants!"))
-			exposed_mob.apply_damage(1, BRUTE, target_bodypart)
-
-/**
-* Handle testicle growth
-*
-* exposed_mob - the mob being affected by the reagent
-* suppress_chat - whether or not to display a message in chat
-* mob_testicles - the testicles to cause to grow
-*/ 
-/datum/reagent/drug/aphrodisiac/incubus_draft/proc/grow_balls(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob?.getorganslot(ORGAN_SLOT_TESTICLES)) 
-	
-	//no balls
-	if(!mob_testicles)
-		return
-
-	// Check if prefs allow this
-	if(!exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/penis_enlargement))
-		return
-
-	var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
-	
-	if(mob_testicles.genital_size < balls_max_size && prob(balls_increase_chance)) // Add some randomness so growth happens more gradually in most cases
-		mob_testicles.genital_size = min(mob_testicles.genital_size + testicles_size_increase_step, balls_max_size)
-		update_appearance(exposed_mob, mob_testicles)
-		if(!suppress_chat) // So we don't spam chat
-			to_chat(exposed_mob, span_purple("Your balls [pick(ball_action_text_list)]. They are now [mob_testicles.balls_size_to_description(mob_testicles.genital_size)]."))
-
-	else if(mob_testicles.genital_size == balls_max_size && mob_penis?.genital_size >= balls_enormous_size_threshold) // Make the balls enormous only when the penis reaches a certain size
-		mob_testicles.genital_size = min(mob_testicles.genital_size + testicles_size_increase_step, balls_max_size)
-		update_appearance(exposed_mob, mob_testicles)
-
-		if(!suppress_chat)
-			to_chat(exposed_mob, span_purple("You can feel your heavy balls churn as they swell to enormous proportions!"))
-
 /**
 * Helper function used to display the messages that appear in chat while the growth is occurring
 *
 * exposed_mob - the mob being affected by the reagent
-* genital - the genital that is causing the update
+* genital - the genital that is causing the messages
 */ 
-/datum/reagent/drug/aphrodisiac/incubus_draft/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/penis/mob_penis = exposed_mob?.getorganslot(ORGAN_SLOT_PENIS))
+/datum/reagent/drug/aphrodisiac/incubus_draft/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/mob_genital, suppress_chat = FALSE)
+	if(!mob_genital)
+		return
 	
+	if(istype(mob_genital, /obj/item/organ/external/genital/penis))
+		penis_growth_to_chat(exposed_mob, mob_genital)
+	else if(istype(mob_genital, /obj/item/organ/external/genital/testicles))
+		testicles_growth_to_chat(exposed_mob, mob_genital, suppress_chat)
+
+/**
+* Helper function for the helper function used to display the messages that appear in chat while the growth is occurring
+*
+* exposed_mob - the mob being affected by the reagent
+* mob_penis - the penis that is causing the message
+* NOTE: this function doesn't get called often enough to warrant suppressing chat, hence the var's omission
+*/ 
+/datum/reagent/drug/aphrodisiac/incubus_draft/proc/penis_growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/penis/mob_penis)
+
 	if(!mob_penis)
 		return
 		
 	if(mob_penis.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_bottomless())
-		if(mob_penis?.genital_size >= (penis_max_length - 2))
+		if(mob_penis.genital_size >= (penis_max_length - 2))
 			if(exposed_mob.dna.features["penis_sheath"] == SHEATH_SLIT)
 				if(mob_penis.aroused != AROUSAL_FULL)
 					to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
@@ -194,10 +138,31 @@
 			exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(cock_text_list)] [pick(public_cock_action_text_list)]"))
 			to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
 	else
-		if(mob_penis?.genital_size >= (penis_max_length - 2))
+		if(mob_penis.genital_size >= (penis_max_length - 2))
 			to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger_cock)] [pick(bigger_cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
 		else
 			to_chat(exposed_mob, span_purple("Your [pick(cock_text_list)] [pick(cock_action_text_list)]about [mob_penis.genital_size] inches long, and [mob_penis.girth] inches in circumference."))
+			
+/**
+* Helper function for the helper function used to display the messages that appear in chat while the testicles growth is occurring
+*
+* exposed_mob - the mob being affected by the reagent
+* mob_testicles - the testicles that are causing the message
+*/ 
+/datum/reagent/drug/aphrodisiac/incubus_draft/proc/testicles_growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/testicles/mob_testicles, suppress_chat = FALSE)
+
+	// So we don't spam chat
+	if(suppress_chat)
+		return
+
+	if(!mob_testicles)
+		return
+	
+	// Display a different message when they reach 'enormous'
+	if(mob_testicles.genital_size < balls_big_size) 
+		to_chat(exposed_mob, span_purple("Your balls [pick(ball_action_text_list)]. They are now [mob_testicles.balls_size_to_description(mob_testicles.genital_size)]."))	
+	else if(mob_testicles.genital_size == balls_max_size)
+		to_chat(exposed_mob, span_purple("You can feel your heavy balls churn as they swell to enormous proportions!"))		
 			
 // Notify the user that they're overdosing. Doesn't affect their mood.
 /datum/reagent/drug/aphrodisiac/incubus_draft/overdose_start(mob/living/carbon/human/exposed_mob)

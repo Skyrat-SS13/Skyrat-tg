@@ -105,45 +105,13 @@
 	// Cock & ball shrinkage 
 	shrink_genitals(exposed_mob, suppress_chat, list(penis, testicles))
 
-/** ---- Genital Growth ----
-*
-* Handle breast growth
-*
-* exposed_mob - the mob being affected by the reagent
-* suppress_chat - whether or not to display a message in chat
-* mob_breasts the breasts to cause to grow
-*/
-/datum/reagent/drug/aphrodisiac/proc/grow_breasts(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.getorganslot(ORGAN_SLOT_BREASTS)) 
-	
-	if(!mob_breasts)
-		return
-		
-	if(!exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
-		return
-	
-	enlargement_amount += enlarger_increase_step
-	
-	if(enlargement_amount >= enlargement_threshold)
-		if(mob_breasts?.genital_size >= max_breast_size)
-			return
-		mob_breasts.genital_size = min(mob_breasts.genital_size + breast_size_increase_step, max_breast_size)
-		update_appearance(exposed_mob, mob_breasts)
-		enlargement_amount = 0
-		
-		growth_to_chat(exposed_mob, mob_breasts)
-		
-	// Damage from being too big for your clothes
-	if((mob_breasts?.genital_size >= (max_breast_size - 2)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
-		if(prob(damage_chance))
-			to_chat(exposed_mob, span_danger("Your breasts begin to strain against your clothes!"))
-			exposed_mob.adjustOxyLoss(5)
-			exposed_mob.apply_damage(1, BRUTE, exposed_mob.get_bodypart(BODY_ZONE_CHEST))
-
 /**
 * Helper function used to display the messages that appear in chat while the growth is occurring
 *
 * exposed_mob - the mob being affected by the reagent
-* genital - the genital that is causing the update
+* genital - the genital that is causing the messages
+* suppress_chat - whether or not to display a message in chat
+* NOTE: this function doesn't get called often enough to warrant suppressing chat, hence the var's omission
 */ 
 /datum/reagent/drug/aphrodisiac/succubus_milk/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.getorganslot(ORGAN_SLOT_BREASTS))
 	
