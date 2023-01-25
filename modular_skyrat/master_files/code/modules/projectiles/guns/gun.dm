@@ -87,11 +87,6 @@
 	/// Bitflags for the company that produces the gun, do not give more than one company.
 	var/company_flag
 
-/datum/action/item_action/toggle_safety
-	name = "Toggle Safety"
-	button_icon = 'modular_skyrat/modules/gunsafety/icons/actions.dmi'
-	button_icon_state = "safety_on"
-
 /obj/item/gun/ui_action_click(mob/user, actiontype)
 	if(istype(actiontype, /datum/action/item_action/toggle_firemode))
 		fire_select()
