@@ -65,7 +65,8 @@
 /obj/item/clockwork/weapon/brass_battlehammer
 	name = "brass battle-hammer"
 	desc = "A brass hammer glowing with energy."
-	icon_state = "ratvarian_hammer"
+	base_icon_state = "ratvarian_hammer"
+	icon_state = "ratvarian_hammer0"
 	throwforce = 25
 	armour_penetration = 6
 	attack_verb_simple = list("bash", "hammer", "attack", "smash")
@@ -79,6 +80,7 @@
 	. = ..()
 	AddComponent(/datum/component/two_handed, \
 		force_unwielded = 15, \
+		icon_wielded = "[base_icon_state]1", \
 		force_wielded = 28, \
 	)
 
@@ -90,6 +92,9 @@
 	var/atom/throw_target = get_edge_target_turf(target, get_dir(src, get_step_away(target, src)))
 	target.throw_at(throw_target, thrown ? HAMMER_THROW_FLING_DISTANCE : HAMMER_FLING_DISTANCE, 4)
 
+/obj/item/clockwork/weapon/brass_battlehammer/update_icon_state()
+	icon_state = "[base_icon_state]0"
+	return ..()
 
 /obj/item/clockwork/weapon/brass_sword
 	name = "brass longsword"
@@ -233,7 +238,7 @@
 /obj/item/gun/ballistic/rifle/lionhunter/clockwork
 	name = "brass rifle"
 	desc = "An antique, brass rifle made with the finest of care. It has an ornate scope in the shape of a cog built into the top."
-	icon = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_weapons.dmi'
+	icon = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_weapons_40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_righthand.dmi'
 	worn_icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_garb_worn.dmi'
@@ -256,6 +261,7 @@
 
 
 /obj/item/ammo_casing/a762/lionhunter/clock
+	name = "brass rifle round"
 	projectile_type = /obj/projectile/bullet/a762/lionhunter/clock
 	min_distance = 3
 

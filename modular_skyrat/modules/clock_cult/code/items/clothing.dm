@@ -61,11 +61,10 @@
 	actions_types = list(/datum/action/item_action/toggle/clock)
 	slowdown = 0.4
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	supports_variations_flags = NONE
 	/// Is the shroud itself active or not
 	var/shroud_active = FALSE
 	/// Previous alpha value of the user when removing/disabling the jacket
-	var/previous_alpha
+	var/previous_alpha = 255
 	/// Who is wearing this
 	var/mob/living/wearer
 
@@ -89,13 +88,14 @@
 	. = ..()
 	if(shroud_active)
 		disable()
+
 	else
 		enable()
 
 
 /obj/item/clothing/suit/clockwork/cloak/equipped(mob/user, slot)
 	. = ..()
-	if(slot != ITEM_SLOT_OCLOTHING || !(IS_CLOCK(user)))
+	if(slot != ITEM_SLOT_OCLOTHING || !IS_CLOCK(user))
 		return
 
 	wearer = user
@@ -106,7 +106,7 @@
 
 /obj/item/clothing/suit/clockwork/cloak/dropped(mob/user)
 	. = ..()
-	if(!shroud_active)
+	if(shroud_active)
 		disable()
 
 	wearer = null
@@ -181,7 +181,7 @@
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/update_icon_state()
 	. = ..()
 	icon_state = "[base_icon_state]_[!enabled]"
-	worn_icon_state = "[initial(icon_state)]_[!enabled]"
+	worn_icon_state = "[base_icon_state]_[!enabled]"
 
 
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/attack_self(mob/user, modifiers)
