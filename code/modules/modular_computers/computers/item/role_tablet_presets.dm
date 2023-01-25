@@ -348,11 +348,6 @@
 		/datum/computer_file/program/newscaster,
 	)
 
-/obj/item/modular_computer/pda/curator/Initialize(mapload)
-	. = ..()
-	for(var/datum/computer_file/program/messenger/msg in stored_files)
-		msg.ringer_status = FALSE
-
 /**
  * No Department
  */
