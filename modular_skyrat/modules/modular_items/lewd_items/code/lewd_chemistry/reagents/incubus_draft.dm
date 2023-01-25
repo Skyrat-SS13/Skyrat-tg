@@ -87,57 +87,21 @@
 	// Do prefs allow penis enlargement?
 	if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/penis_enlargement))
 		// Attempt to make new male genitals if applicable
-		create_genitals(exposed_mob, suppress_chat)
+		create_genitals(exposed_mob, suppress_chat, list(penis, testicles))
 				
 		// Make the balls bigger if they're small.
 		grow_balls(exposed_mob, suppress_chat)
 	
 	// Separates gender change stuff from cock growth, breast shrinkage, and female genitalia removal
-	change_gender(exposed_mob, suppress_chat)
+	change_gender(exposed_mob, MALE, suppress_chat)
 		
 	// Attempt genital shrinkage where applicable
-	shrink_genitals(exposed_mob, suppress_chat)
+	shrink_genitals(exposed_mob, suppress_chat, list(breasts, vagina, womb))
 
-// Handle gender change
-/datum/reagent/drug/aphrodisiac/incubus_draft/change_gender(mob/living/carbon/human/exposed_mob, succubus_milk = FALSE) 
-
-	// Check if prefs allow this
-	if(!exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/gender_change))
-		return
-		
-	if(succubus_milk)
-		if(exposed_mob.gender != PLURAL)
-			exposed_mob.set_gender(PLURAL)
-			exposed_mob.physique = exposed_mob.gender
-			update_appearance(exposed_mob, mutations_overlay = TRUE)
-
-	else if(exposed_mob.gender != MALE)
-		exposed_mob.set_gender(MALE)		
-		exposed_mob.physique = exposed_mob.gender
-		update_appearance(exposed_mob, mutations_overlay = TRUE)
-
-// Handle genital shrinkage 
-/datum/reagent/drug/aphrodisiac/incubus_draft/shrink_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
-
-	shrink_breasts(exposed_mob, suppress_chat)
-	remove_genitals(exposed_mob, suppress_chat)
-
-// Attempt vagina and womb removal
-/datum/reagent/drug/aphrodisiac/incubus_draft/remove_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 		
-
-	var/message = "You can the feel the muscles in your groin begin to tighten as your vagina seals itself completely shut."
-	remove_genital(exposed_mob, exposed_mob.getorganslot(ORGAN_SLOT_VAGINA), message, suppress_chat)
-	remove_genital(exposed_mob, exposed_mob.getorganslot(ORGAN_SLOT_WOMB), suppress_chat)
-
-// Attempt new genital creation
-/datum/reagent/drug/aphrodisiac/incubus_draft/create_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
-		
-	create_penis(exposed_mob, suppress_chat)
-	create_testicles(exposed_mob, suppress_chat)
-
-// ---- Growth functions ----
-
-// Attempt to grow penis
+/** ---- Genital Growth ----
+*
+* Handle penis growth
+*/
 /datum/reagent/drug/aphrodisiac/incubus_draft/proc/grow_penis(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/penis/mob_penis = exposed_mob?.getorganslot(ORGAN_SLOT_PENIS)) 
 	
 	// Check if we actually have a penis to grow
@@ -169,7 +133,9 @@
 			to_chat(exposed_mob, span_danger("You feel a tightness in your pants!"))
 			exposed_mob.apply_damage(1, BRUTE, target_bodypart)
 
-// Attempt to grow balls
+/**
+* Handle testicle growth
+*/
 /datum/reagent/drug/aphrodisiac/incubus_draft/proc/grow_balls(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob?.getorganslot(ORGAN_SLOT_TESTICLES)) 
 	
 	//no balls
@@ -195,7 +161,9 @@
 		if(!suppress_chat)
 			to_chat(exposed_mob, span_purple("You can feel your heavy balls churn as they swell to enormous proportions!"))
 
-// Helper function to display a growth message		
+/**
+* Helper function used to display the messages that appear in chat while the growth is occurring
+*/ 
 /datum/reagent/drug/aphrodisiac/incubus_draft/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/penis/mob_penis = exposed_mob?.getorganslot(ORGAN_SLOT_PENIS))
 	
 	if(!mob_penis)

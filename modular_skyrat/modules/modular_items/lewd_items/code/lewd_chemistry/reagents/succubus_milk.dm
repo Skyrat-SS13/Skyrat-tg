@@ -94,48 +94,18 @@
 			
 	// Begin breast growth if prefs allow it
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
-		create_genitals(exposed_mob, suppress_chat)
+		create_genitals(exposed_mob, suppress_chat, list(breasts, vagina, womb))
 	
 	// Separates gender change stuff from breast growth and shrinkage, as well as from new genitalia growth/removal
-	change_gender(exposed_mob, suppress_chat)
+	change_gender(exposed_mob, FEMALE, suppress_chat)
 		
 	// Cock & ball shrinkage 
-	shrink_genitals(exposed_mob, suppress_chat)
+	shrink_genitals(exposed_mob, suppress_chat, list(penis, testicles))
 
-// Handle gender change
-/datum/reagent/drug/aphrodisiac/succubus_milk/change_gender(mob/living/carbon/human/exposed_mob, incubus_draft = FALSE) 
-	
-	//Check if prefs allow for this
-	if(!exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
-		return
-		
-	if(incubus_draft) // we are overdosing on both
-		if(exposed_mob.gender != PLURAL)
-			exposed_mob.set_gender(PLURAL)
-			exposed_mob.physique = exposed_mob.gender
-			update_appearance(exposed_mob, mutations_overlay = TRUE)
-			
-	else if(exposed_mob.gender != FEMALE)
-		exposed_mob.set_gender(FEMALE)
-		exposed_mob.physique = exposed_mob.gender
-		update_appearance(exposed_mob, mutations_overlay = TRUE)
-
-// Attempt genital shrinkage
-/datum/reagent/drug/aphrodisiac/succubus_milk/shrink_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE) 
-	
-	shrink_penis(exposed_mob, suppress_chat)
-	shrink_testicles(exposed_mob, suppress_chat)
-
-// Attempt to create new genitals if prefs allow this
-/datum/reagent/drug/aphrodisiac/succubus_milk/create_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE)
-	
-	create_breasts(exposed_mob, suppress_chat)
-	create_vagina(exposed_mob, suppress_chat)
-	create_womb(exposed_mob, suppress_chat)
-
-// ---- Genital Growth ----
-
-// Handle breast growth
+/** ---- Genital Growth ----
+*
+* Handle breast growth
+*/
 /datum/reagent/drug/aphrodisiac/proc/grow_breasts(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.getorganslot(ORGAN_SLOT_BREASTS)) 
 	
 	if(!mob_breasts)
@@ -162,7 +132,9 @@
 			exposed_mob.adjustOxyLoss(5)
 			exposed_mob.apply_damage(1, BRUTE, exposed_mob.get_bodypart(BODY_ZONE_CHEST))
 
-// Helper function to display a growth message	
+/**
+* Helper function used to display the messages that appear in chat while the growth is occurring
+*/ 
 /datum/reagent/drug/aphrodisiac/succubus_milk/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.getorganslot(ORGAN_SLOT_BREASTS))
 	
 	if(!mob_breasts)
