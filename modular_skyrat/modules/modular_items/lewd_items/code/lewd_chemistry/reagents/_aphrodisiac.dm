@@ -204,7 +204,7 @@
 
 	else if(mob_testicles.genital_size == balls_min_size && !mob_penis) // Wait for penis to completely shrink away first before removing balls
 		var/message = "You feel a tightening sensation in your groin as things seem to smooth out down there."
-		remove_genital(exposed_mob, mob_testicles, message, suppress_chat)
+		remove_genital(exposed_mob, mob_testicles, suppress_chat, message)
 
 /*
 * Handle breast shrinkage
@@ -223,33 +223,33 @@
 		
 	else if(mob_breasts.genital_size == breast_minimum_size) // Handle completely shrinking away, if prefs allow
 		var/message = "Your breasts have completely tightened into firm, flat pecs."
-		remove_genital(exposed_mob, mob_breasts, message, suppress_chat)
+		remove_genital(exposed_mob, mob_breasts, suppress_chat, message)
 
 /*
 * Handle vagina shrinkage
 */
 /datum/reagent/drug/aphrodisiac/proc/shrink_vagina(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/vagina/mob_vagina = exposed_mob?.getorganslot(ORGAN_SLOT_VAGINA))
 	var/message = "You can the feel the muscles in your groin begin to tighten as your vagina seals itself completely shut."	
-	remove_genital(exposed_mob, mob_vagina, suppress_chat = FALSE, message)
+	remove_genital(exposed_mob, mob_vagina, suppress_chat, message)
 	
 /*
 * Handle womb shrinkage
 */
 /datum/reagent/drug/aphrodisiac/proc/shrink_womb(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, obj/item/organ/external/genital/womb/mob_womb = exposed_mob?.getorganslot(ORGAN_SLOT_WOMB)) 
-	remove_genital(exposed_mob, mob_womb, suppress_chat = FALSE)
+	remove_genital(exposed_mob, mob_womb, suppress_chat)
 
 /** ---- Genital Removal ----
 *
 * Handle removal of old genitals
 */
-/datum/reagent/drug/aphrodisiac/proc/remove_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, message, list/genitals_to_remove) 
+/datum/reagent/drug/aphrodisiac/proc/remove_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, list/genitals_to_remove, message) 
 	for(var/obj/item/organ/external/genital/mob_genital in genitals_to_remove)
-		remove_genital(exposed_mob, mob_genital, suppress_chat)
+		remove_genital(exposed_mob, mob_genital, suppress_chat, message)
 	
 	if(!suppress_chat && message)
 		to_chat(exposed_mob, span_purple(message))
 
-/datum/reagent/drug/aphrodisiac/proc/remove_genital(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/mob_genital, message, suppress_chat = FALSE) 
+/datum/reagent/drug/aphrodisiac/proc/remove_genital(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/mob_genital, suppress_chat = FALSE, message) 
 
 	if(!mob_genital)
 		return
