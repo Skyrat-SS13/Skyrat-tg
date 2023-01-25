@@ -1,14 +1,14 @@
 import { useBackend } from '../backend';
-import { Window } from '../layouts';
+import { NtosWindow } from '../layouts';
 import { BlockQuote, Button, Collapsible, Flex, Section, Box } from '../components';
 
-export const NifsoftCatalog = (props, context) => {
+export const NtosNifsoftCatalog = (props, context) => {
   const { act, data } = useBackend(context);
   const { product_list = [], current_user } = data;
 
   return (
-    <Window width={500} height={700}>
-      <Window.Content>
+    <NtosWindow width={500} height={700}>
+      <NtosWindow.Content scrollable>
         <Flex direction="column">
           {/* {product_list[1].nifsofts.length}a */}
           {product_list.map((product_category) => (
@@ -17,8 +17,8 @@ export const NifsoftCatalog = (props, context) => {
             </Flex.Item>
           ))}
         </Flex>
-      </Window.Content>
-    </Window>
+      </NtosWindow.Content>
+    </NtosWindow>
   );
 };
 

@@ -4,64 +4,39 @@ GLOBAL_LIST_INIT(available_nifsofts, list(
 	/datum/nifsoft/shapeshifter,
 ))
 
-/obj/item/nifsoft_catalog
-	name = "NIFSoft Catalog"
-	desc = "A virtual tablet that displays avalible NIFSofts and other NIF products."
-	icon = 'modular_skyrat/modules/modular_implants/icons/obj/devices.dmi'
-	icon_state = "nifsoft_remover"
-	///Who is currently using the catalog?
-	var/datum/weakref/current_user
-	///Are products free from the catalog? This is so ghost roles can get NIFSofts for free.
-	var/unlocked = FALSE
+/datum/computer_file/program/nifsoft_downloader
+	filename = "nifsoftcatalog"
+	filedesc = "NIFSoft Catalog"
+	extended_desc = "A virtual storefront that allows the user to install NIFSofts and purchase various NIF related products"
+	category = PROGRAM_CATEGORY_MISC
+	size = 3
+	tgui_id = "NtosNifsoftCatalog"
+	program_icon = "bag-shopping"
+	usage_flags = PROGRAM_TABLET
+	///What bank account is money being drawn out of?
+	var/datum/bank_account/paying_account
+	///What NIF are the NIFSofts being sent to?
+	var/datum/weakref/target_nif
 
-/obj/item/nifsoft_catalog/pickup(mob/user)
+/datum/computer_file/program/nifsoft_downloader/Destroy(force)
 	. = ..()
-	current_user = user
-
-/obj/item/nifsoft_catalog/dropped(mob/user, silent)
-	. = ..()
-	current_user = null
-
-///Checks to see if the user has a NIF, if so, it is returned
-/obj/item/nifsoft_catalog/proc/get_installed_nif()
-	var/mob/living/carbon/human/nif_user = current_user
-	if(!nif_user)
-		return FALSE
-
-	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = nif_user.getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
-	if(!installed_nif)
-		return FALSE
-
-	return installed_nif
-
-///Attemps to see if the nifsoft_to_purchase can be purchased
-/obj/item/nifsoft_catalog/proc/check_nifsoft_purchase(datum/nifsoft/nifsoft_to_purchase)
-	var/mob/living/carbon/human/user = current_user
-	if(!user)
-		return FALSE
-
-	var/obj/item/card/id/id_card = user.get_idcard(TRUE)
-	if(!id_card || !id_card.registered_account || !id_card.registered_account.account_job)
-		balloon_alert(user, "There is no account to draw from!")
-		return FALSE
-
-	var/datum/bank_account/user_bank_account = id_card.registered_account
-	if(!user_bank_account || !user_bank_account.has_money(initial(nifsoft_to_purchase.purchase_price)))
-		balloon_alert(user, "You lack the funds to purchase this item!")
-		return FALSE
+	paying_account = null
+	target_nif = null
 
 //TGUI STUFF
-/obj/item/nifsoft_catalog/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-
-	if(!ui)
-		ui = new(user, src, "NifsoftCatalog", name)
-		ui.open()
-
-/obj/item/nifsoft_catalog/ui_static_data(mob/user)
+/datum/computer_file/program/nifsoft_downloader/ui_static_data(mob/user)
 	var/list/data = list()
 	var/list/product_list = list()
 
+	var/mob/living/carbon/human/nif_user = user
+	if(nif_user)
+		var/obj/item/organ/internal/cyberimp/brain/nif/user_nif = nif_user.getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
+		if(user_nif)
+			target_nif = user_nif
+		else
+			target_nif = null
+
+	paying_account = computer.computer_id_slot?.registered_account || null
 
 	for(var/nifsoft in GLOB.available_nifsofts)
 		var/datum/nifsoft/buyable_nifsoft = nifsoft
@@ -86,15 +61,7 @@ GLOBAL_LIST_INIT(available_nifsofts, list(
 
 	return data
 
-/obj/item/nifsoft_catalog/ui_data(mob/user)
-	var/list/data = list()
-	var/mob/living/carbon/human/catalog_user = current_user
-
-	data["current_user"] = catalog_user
-
-	return data
-
-/obj/item/nifsoft_catalog/ui_act(action, list/params)
+/datum/computer_file/program/nifsoft_downloader/ui_act(action, list/params)
 	. = ..()
 	if(.)
 		return
@@ -102,18 +69,24 @@ GLOBAL_LIST_INIT(available_nifsofts, list(
 	switch(action)
 		if("purchase_product")
 			var/product_to_buy = text2path(params["product_to_buy"])
-			if(!product_to_buy || !current_user)
+			if(!product_to_buy || !paying_account)
 				return FALSE
 
-			if(ispath(product_to_buy, /datum/nifsoft))
-				var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = get_installed_nif()
-				if(!installed_nif)
-					return FALSE
+			if(!paying_account.has_money(params["product_cost"]))
+				paying_account.bank_card_talk("You lack the money to make this purchase.")
 
-				var/datum/nifsoft/nifsoft_to_buy = locate(product_to_buy) in GLOB.available_nifsofts
+			if(!ispath(product_to_buy, /datum/nifsoft))
+				return FALSE
 
-				if(!nifsoft_to_buy || (attempt_charge(src, current_user, params["product_price"]) & COMPONENT_OBJ_CANCEL_CHARGE))
-					return FALSE
+			if(!target_nif)
+				return FALSE
 
-				new nifsoft_to_buy(installed_nif)
-				return TRUE
+			var/datum/nifsoft/installed_nifsoft = new product_to_buy(target_nif)
+			if(!installed_nifsoft.parent_nif)
+				paying_account.bank_card_talk("Install failed, your purchase has been refunded.")
+				return FALSE
+
+			paying_account.adjust_money(params["product_cost"], "NIFSoft purchase")
+			paying_account.bank_card_talk("Transaction complete, you have been charged [params["product_cost"]].")
+
+			return TRUE
