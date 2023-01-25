@@ -75,10 +75,7 @@ GLOBAL_LIST_INIT(available_nifsofts, list(
 			if(!paying_account.has_money(params["product_cost"]))
 				paying_account.bank_card_talk("You lack the money to make this purchase.")
 
-			if(!ispath(product_to_buy, /datum/nifsoft))
-				return FALSE
-
-			if(!target_nif)
+			if(!ispath(product_to_buy, /datum/nifsoft) || !target_nif)
 				return FALSE
 
 			var/datum/nifsoft/installed_nifsoft = new product_to_buy(target_nif)
