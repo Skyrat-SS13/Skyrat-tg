@@ -109,9 +109,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		load_path(parent.ckey)
 		if(load_and_save && !fexists(path))
 			try_savefile_type_migration()
-		unlock_content = !!parent.IsByondMember()
+		unlock_content = !!parent.IsByondMember() || GLOB.donator_list[parent.ckey] //SKYRAT EDIT - ADDED DONATOR CHECK
 		if(unlock_content)
-			max_save_slots = 40 //SKYRAT EDIT - ORIGINAL 8
+			max_save_slots = 50 //SKYRAT EDIT - ORIGINAL 8
 	else
 		CRASH("attempted to create a preferences datum without a client or mock!")
 	load_savefile()
