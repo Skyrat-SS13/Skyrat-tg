@@ -5,7 +5,6 @@
 	name = "Grimoire Caeruleam"
 	loaded_nifsoft = /datum/nifsoft/summoner
 	custom_price = PAYCHECK_CREW * 3
-	buying_category = NIFSOFT_CATEGORY_FUN
 
 /obj/item/disk/nifsoft_uploader/summoner/ghost
 	custom_price = 0
