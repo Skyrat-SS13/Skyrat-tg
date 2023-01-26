@@ -3,11 +3,6 @@
 #define MINIMUM_REQUIRED_DISLIKES 3
 #define MAXIMUM_LIKES 3
 
-#define STRING_FOOD_LIKED "1"
-#define STRING_FOOD_DISLIKED "2"
-#define STRING_FOOD_TOXIC "3"
-#define STRING_FOOD_NEUTRAL "6"
-
 // Performance and RAM friendly menu. You can thank me later.
 GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 
@@ -29,14 +24,14 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 
 	for(var/food_entry in GLOB.food_ic_flag_to_point_values)
 		var/list/food_points_entry = GLOB.food_ic_flag_to_point_values[food_entry]
-		var/food_preference = preferences.food_preferences[food_entry] || food_points_entry["[FOOD_DEFAULT]"]
+		var/food_preference = preferences.food_preferences[food_entry] || food_points_entry[FOOD_PREFERENCE_DEFAULT]
 
 		switch(food_preference)
-			if(STRING_FOOD_LIKED)
+			if(FOOD_PREFERENCE_LIKED)
 				species.liked_food |= GLOB.food_ic_flag_to_bitflag[food_entry]
-			if(STRING_FOOD_LIKED)
+			if(FOOD_PREFERENCE_DISLIKED)
 				species.disliked_food |= GLOB.food_ic_flag_to_bitflag[food_entry]
-			if(STRING_FOOD_TOXIC)
+			if(FOOD_PREFERENCE_TOXIC)
 				species.toxic_food |= GLOB.food_ic_flag_to_bitflag[food_entry]
 
 /// Food prefs menu datum. Global datum for performance and memory reasons.
@@ -67,7 +62,7 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 			var/food_name = params["food_name"]
 			var/food_preference = params["food_preference"]
 
-			if(!food_name || !preferences || !food_preference || !(food_preference in list(STRING_FOOD_LIKED, STRING_FOOD_NEUTRAL, STRING_FOOD_DISLIKED, STRING_FOOD_TOXIC)))
+			if(!food_name || !preferences || !food_preference || !(food_preference in list(FOOD_PREFERENCE_LIKED, FOOD_PREFERENCE_NEUTRAL, FOOD_PREFERENCE_DISLIKED, FOOD_PREFERENCE_TOXIC)))
 				return TRUE
 
 			// Do some simple validation for max liked foods. Full validation is done on spawn and in the actual menu.
@@ -75,15 +70,15 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 
 			for(var/food_entry in preferences.food_preferences)
 				var/list/food_points_entry = GLOB.food_ic_flag_to_point_values[food_entry]
-				if(food_points_entry["[FOOD_OBSCURE]"])
+				if(length(food_points_entry) >= FOOD_PREFERENCE_OBSCURE && food_points_entry[FOOD_PREFERENCE_OBSCURE])
 					continue
 
-				if(preferences.food_preferences[food_entry] == STRING_FOOD_LIKED)
+				if(preferences.food_preferences[food_entry] == FOOD_PREFERENCE_LIKED)
 					liked_food_length++
 					if(liked_food_length > MAXIMUM_LIKES)
 						preferences.food_preferences.Remove(food_entry)
 
-			if(food_preference == STRING_FOOD_LIKED ? liked_food_length >= MAXIMUM_LIKES : liked_food_length > MAXIMUM_LIKES) // Equals as well, if we're setting a liked food!
+			if(food_preference == FOOD_PREFERENCE_LIKED ? liked_food_length >= MAXIMUM_LIKES : liked_food_length > MAXIMUM_LIKES) // Equals as well, if we're setting a liked food!
 				return TRUE // Fuck you, look your mistakes in the eye.
 
 			preferences.food_preferences[food_name] = food_preference
@@ -121,17 +116,17 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 
 	for(var/food_entry in GLOB.food_ic_flag_to_point_values)
 		var/list/food_points_entry = GLOB.food_ic_flag_to_point_values[food_entry]
-		var/food_preference = preferences.food_preferences[food_entry] || food_points_entry["[FOOD_DEFAULT]"]
+		var/food_preference = preferences.food_preferences[food_entry] || food_points_entry[FOOD_PREFERENCE_DEFAULT]
 
-		if(food_points_entry["[FOOD_OBSCURE]"])
+		if(length(food_points_entry) >= FOOD_PREFERENCE_OBSCURE && food_points_entry[FOOD_PREFERENCE_OBSCURE])
 			continue
 
 		switch(food_preference)
-			if(STRING_FOOD_LIKED)
+			if(FOOD_PREFERENCE_LIKED)
 				liked_food_length++
-			if(STRING_FOOD_DISLIKED)
+			if(FOOD_PREFERENCE_DISLIKED)
 				disliked_food_length++
-			if(STRING_FOOD_TOXIC)
+			if(FOOD_PREFERENCE_TOXIC)
 				toxic_food_length++
 
 	if(liked_food_length > MAXIMUM_LIKES)
@@ -160,8 +155,3 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 #undef MINIMUM_REQUIRED_TOXICS
 #undef MINIMUM_REQUIRED_DISLIKES
 #undef MAXIMUM_LIKES
-
-#undef STRING_FOOD_LIKED
-#undef STRING_FOOD_DISLIKED
-#undef STRING_FOOD_TOXIC
-#undef STRING_FOOD_NEUTRAL

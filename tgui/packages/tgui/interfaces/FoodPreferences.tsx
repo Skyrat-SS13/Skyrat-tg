@@ -102,7 +102,7 @@ export const FoodPreferences = (props, context) => {
                       title={
                         <>
                           {foodName}
-                          {foodPointValues['7'] && (
+                          {foodPointValues['6'] && (
                             <Tooltip content="This food doesn't count towards your maximum likes, and is free!">
                               <span
                                 style={{
@@ -127,16 +127,16 @@ export const FoodPreferences = (props, context) => {
                         foodName={foodName}
                         foodFlag={3}
                         selected={
-                          data.selection[foodName] === '3' ||
+                          data.selection[foodName] === '1' ||
                           (!data.selection[foodName] &&
-                            foodPointValues['5'] === '3')
+                            foodPointValues['5'] === '1')
                         }
                         content={
                           <>
                             Toxic
                             {foodPointValues &&
-                              !foodPointValues['7'] &&
-                              ' (' + foodPointValues['3'] + ')'}
+                              !foodPointValues['6'] &&
+                              ' (' + foodPointValues['1'] + ')'}
                           </>
                         }
                         color="olive"
@@ -154,7 +154,7 @@ export const FoodPreferences = (props, context) => {
                           <>
                             Disliked
                             {foodPointValues &&
-                              !foodPointValues['7'] &&
+                              !foodPointValues['6'] &&
                               ' (' + foodPointValues['2'] + ')'}
                           </>
                         }
@@ -163,18 +163,18 @@ export const FoodPreferences = (props, context) => {
                       />
                       <FoodButton
                         foodName={foodName}
-                        foodFlag={6}
+                        foodFlag={3}
                         selected={
-                          data.selection[foodName] === '6' ||
+                          data.selection[foodName] === '3' ||
                           (!data.selection[foodName] &&
-                            foodPointValues['5'] === '6')
+                            foodPointValues['5'] === '3')
                         }
                         content={
                           <>
                             Neutral
                             {foodPointValues &&
-                              !foodPointValues['7'] &&
-                              ' (' + foodPointValues['6'] + ')'}
+                              !foodPointValues['6'] &&
+                              ' (' + foodPointValues['3'] + ')'}
                           </>
                         }
                         color="grey"
@@ -184,16 +184,16 @@ export const FoodPreferences = (props, context) => {
                         foodName={foodName}
                         foodFlag={1}
                         selected={
-                          data.selection[foodName] === '1' ||
+                          data.selection[foodName] === '4' ||
                           (!data.selection[foodName] &&
-                            foodPointValues['5'] === '1')
+                            foodPointValues['5'] === '4')
                         }
                         content={
                           <>
                             Liked
                             {foodPointValues &&
-                              !foodPointValues['7'] &&
-                              ' (' + foodPointValues['1'] + ')'}
+                              !foodPointValues['6'] &&
+                              ' (' + foodPointValues['4'] + ')'}
                           </>
                         }
                         color="green"
@@ -221,7 +221,7 @@ const FoodButton = (props, context) => {
       onClick={() =>
         act('change_food', {
           food_name: foodName,
-          food_flag: foodFlag.toString(),
+          food_flag: foodFlag,
         })
       }
       {...rest}
