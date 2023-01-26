@@ -58,7 +58,7 @@ const ProductCategory = (props, context) => {
                   onClick={() =>
                     act('purchase_product', {
                       product_to_buy: product.reference,
-                      product_price: product.price,
+                      product_cost: product.price,
                     })
                   }
                   fluid>

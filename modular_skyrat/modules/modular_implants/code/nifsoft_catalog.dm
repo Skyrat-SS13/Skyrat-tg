@@ -81,8 +81,11 @@ GLOBAL_LIST_INIT(available_nifsofts, list(
 			if(!product_to_buy || !paying_account)
 				return FALSE
 
-			if(!paying_account.has_money(params["product_cost"]))
+			var/amount_to_charge = (params["product_cost"])
+
+			if(!paying_account.has_money(amount_to_charge))
 				paying_account.bank_card_talk("You lack the money to make this purchase.")
+				return FALSE
 
 			if(!ispath(product_to_buy, /datum/nifsoft) || !target_nif)
 				return FALSE
@@ -92,7 +95,7 @@ GLOBAL_LIST_INIT(available_nifsofts, list(
 				paying_account.bank_card_talk("Install failed, your purchase has been refunded.")
 				return FALSE
 
-			paying_account.adjust_money(params["product_cost"], "NIFSoft purchase")
+			paying_account.adjust_money(-amount_to_charge, "NIFSoft purchase")
 			paying_account.bank_card_talk("Transaction complete, you have been charged [params["product_cost"]].")
 
 			return TRUE
