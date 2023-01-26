@@ -31,7 +31,7 @@
 	if(!name)
 		name = "unknown user"
 
-	message_list += list(list(sender_name = recieved_name, message = recieved_message))
+	message_list += list(list(sender_name = recieved_name, message = recieved_message, timestamp = station_time_timestamp()))
 	return TRUE
 
 ///Removes a message from the message_list based on the message_to_remove
@@ -46,9 +46,49 @@
 // TEST STUFF
 /datum/nifsoft/station_pass/activate()
 	. = ..()
-	var/choice = tgui_input_list(linked_mob,"Chose a message to view", name, message_list)
-	if(!choice)
-		return FALSE
+	ui_interact(linked_mob)
 
-	to_chat(linked_mob, span_purple("[choice["sender_name"]] sent [choice["message"]]"))
-	return TRUE
+/datum/nifsoft/station_pass/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(linked_mob, src, ui)
+
+	if(!ui)
+		ui = new(linked_mob, src, "NifStationPass", name)
+		ui.open()
+
+/datum/nifsoft/station_pass/ui_data(mob/user)
+	var/list/data = list()
+	data["messages"] = list()
+
+	for(var/message in message_list)
+		data["messages"] += list(message)
+
+	return data
+
+/datum/nifsoft/station_pass/ui_static_data(mob/user)
+	var/list/data = list()
+
+	data["name_to_send"] = transmitted_name
+	data["text_to_send"] = transmitted_message
+
+	return data
+
+/datum/nifsoft/station_pass/ui_act(action, list/params)
+	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		if("change_message")
+			if(!params["new_message"])
+				return FALSE
+
+			transmitted_message = params["new_message"]
+			return TRUE
+
+		if("change_name")
+			if(!params["new_name"])
+				return FALSE
+
+			transmitted_name = params["new_name"]
+			return TRUE
+

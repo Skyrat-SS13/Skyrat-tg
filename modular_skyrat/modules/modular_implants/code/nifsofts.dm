@@ -117,6 +117,9 @@
 	program_name = scrambled_name
 	addtimer(CALLBACK(src, .proc/restore_name), 60 SECONDS)
 
+/datum/nifsoft/ui_state(mob/user)
+	return GLOB.conscious_state
+
 /// A disk that can upload NIFSofts to a recpient with a NIFSoft installed.
 /obj/item/disk/nifsoft_uploader
 	name = "Generic NIFSoft datadisk"
