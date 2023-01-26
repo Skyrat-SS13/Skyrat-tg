@@ -1,7 +1,3 @@
-#define SELECT_SEMI_AUTOMATIC 1
-#define SELECT_BURST_SHOT 2
-#define SELECT_FULLY_AUTOMATIC 3
-
 // Bitflags for what company produces the gun
 #define COMPANY_CANTALAN (1<<0)
 #define COMPANY_ARMADYNE (1<<1)
