@@ -550,6 +550,7 @@
 	var/datum/bank_account/offstation_bank_account = new(owner.real_name)
 	owner.account_id = offstation_bank_account.account_id
 	offstation_bank_account.replaceable = FALSE
+	offstation_bank_account.account_job = null //note to self: replace with additional proc check if ghost roles get department/jobs
 	owner.add_mob_memory(/datum/memory/key/account, remembered_id = owner.account_id)
 	if(owner.wear_id)
 		var/obj/item/card/id/id_card = owner.wear_id
