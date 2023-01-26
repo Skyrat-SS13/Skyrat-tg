@@ -19,9 +19,10 @@ GLOBAL_LIST_INIT(available_nifsofts, list(
 	var/datum/weakref/target_nif
 
 /datum/computer_file/program/nifsoft_downloader/Destroy(force)
-	. = ..()
 	paying_account = null
 	target_nif = null
+
+	return ..()
 
 //TGUI STUFF
 
@@ -47,8 +48,7 @@ GLOBAL_LIST_INIT(available_nifsofts, list(
 
 	data["target_nif"] = target_nif
 
-	for(var/nifsoft in GLOB.available_nifsofts)
-		var/datum/nifsoft/buyable_nifsoft = nifsoft
+	for(var/datum/nifsoft/buyable_nifsoft as anything in GLOB.available_nifsofts)
 		if(!buyable_nifsoft)
 			continue
 
