@@ -88,6 +88,7 @@ GLOBAL_LIST_INIT(available_nifsofts, list(
 				return FALSE
 
 			if(!ispath(product_to_buy, /datum/nifsoft) || !target_nif)
+				paying_account.bank_card_talk("You are unable to buy this.")
 				return FALSE
 
 			var/datum/nifsoft/installed_nifsoft = new product_to_buy(target_nif)
