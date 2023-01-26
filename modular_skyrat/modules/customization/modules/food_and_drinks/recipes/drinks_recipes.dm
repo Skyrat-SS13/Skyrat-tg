@@ -158,6 +158,12 @@
 	required_reagents = list(/datum/reagent/consumable/catnip_tea = 1,  /datum/reagent/consumable/milk = 1)
 	required_temp = 296 //Just above room temp (22.85'C)
 
+/datum/chemical_reaction/drink/bloodshot
+	results = list(/datum/reagent/consumable/ethanol/bloodshot = 5)
+	required_reagents = list(/datum/reagent/blood = 3, /datum/reagent/consumable/ethanol/bloody_mary = 1, /datum/reagent/consumable/sugar = 1)
+	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_OTHER
+
+
 // Non-Booze, see modular_skyrat\modules\customization\modules\reagents\chemistry\reagents\drink_reagents.dm
 
 /datum/chemical_reaction/drink/pinkmilk
