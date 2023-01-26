@@ -20,9 +20,9 @@
 		/obj/item/clothing/under/misc/overalls = 3,
 		/obj/item/clothing/suit/toggle/jacket/engi = 3,
 		/obj/item/clothing/head/utility/hardhat/orange = 2,
-		/obj/item/clothing/head/utility/hardhat/weldhat/orange = 2,
+		/obj/item/clothing/head/utility/hardhat/welding/orange = 2,
 		/obj/item/clothing/head/utility/hardhat/dblue = 2,
-		/obj/item/clothing/head/utility/hardhat/weldhat/dblue = 2,
+		/obj/item/clothing/head/utility/hardhat/welding/dblue = 2,
 		/obj/item/clothing/head/utility/hardhat/red = 2
 	)
 
@@ -237,8 +237,8 @@
 		/obj/item/clothing/under/misc/overalls = 3,
 		/obj/item/clothing/suit/toggle/jacket/engi = 3,
 		/obj/item/clothing/head/utility/hardhat/orange = 2,
-		/obj/item/clothing/head/utility/hardhat/weldhat/orange = 2,
+		/obj/item/clothing/head/utility/hardhat/welding/orange = 2,
 		/obj/item/clothing/head/utility/hardhat/dblue = 2,
-		/obj/item/clothing/head/utility/hardhat/weldhat/dblue = 2,
+		/obj/item/clothing/head/utility/hardhat/welding/dblue = 2,
 		/obj/item/clothing/head/utility/hardhat/red = 2
 	)
