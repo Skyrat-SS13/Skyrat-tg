@@ -28,6 +28,9 @@
 /obj/item/gun/ballistic/automatic/pistol/g17/mesa/give_gun_safeties()
 	return
 
+/obj/item/gun/ballistic/revolver/grenadelauncher/give_gun_safeties()
+	return
+
 // Energy Weapons
 
 /obj/item/gun/energy/give_gun_safeties()
@@ -37,4 +40,9 @@
 	return
 
 /obj/item/gun/energy/kinetic_accelerator/give_gun_safeties()
+	return
+
+// Syringe Guns
+
+/obj/item/gun/syringe/blowgun/give_gun_safeties()
 	return

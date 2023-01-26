@@ -22,6 +22,9 @@
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
 	company_flag = COMPANY_OLDARMS
 
+/obj/item/gun/ballistic/automatic/pps/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_OLDARMS)
+
 /obj/item/ammo_box/magazine/pps
 	name = "pps magazine (7.62x25mm)"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'

@@ -23,11 +23,13 @@
 	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magin.ogg'
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magout.ogg'
 	eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magout.ogg'
-	company_flag = COMPANY_OLDARMS
 
 /obj/item/gun/ballistic/automatic/fg42/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/scope, range_modifier = 1)
+
+/obj/item/gun/ballistic/automatic/fg42/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_OLDARMS)
 
 /obj/item/ammo_box/magazine/fg42
 	name = "fg42 magazine (7.92x57mm)"
