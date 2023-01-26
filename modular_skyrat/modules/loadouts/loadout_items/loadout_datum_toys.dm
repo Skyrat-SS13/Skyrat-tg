@@ -186,6 +186,10 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	name = "Commanding Teshari Plushy"
 	item_path = /obj/item/toy/plush/skyrat/commanding_teshari
 
+/datum/loadout_item/toys/snow_owl
+	name = "Snowy Owl Plush"
+	item_path = /obj/item/toy/plush/skyrat/snow_owl
+
 /datum/loadout_item/toys/breakdancing_bird
 	name = "Breakdancing Bird Plushie"
 	item_path = /obj/item/toy/plush/skyrat/breakdancing_bird
@@ -233,6 +237,14 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 /datum/loadout_item/toys/rubi_plush
 	name = "Huggable Bee Plushie"
 	item_path = /obj/item/toy/plush/skyrat/rubi
+
+/datum/loadout_item/toys/derg_plushie
+	name = "Wingless Dragon Plushie"
+	item_path = /obj/item/toy/plush/skyrat/derg_plushie
+
+/datum/loadout_item/toys/tracy
+	name = "Creature Plushie"
+	item_path = /obj/item/toy/plush/skyrat/tracy
 
 /*
 *	CARDS

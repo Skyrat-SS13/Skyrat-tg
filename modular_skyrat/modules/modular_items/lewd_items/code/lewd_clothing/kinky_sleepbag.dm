@@ -8,7 +8,8 @@
 	worn_icon_taur_paw = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/sleepbag_special.dmi'
 	worn_icon_taur_hoof = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/sleepbag_special.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION|STYLE_TAUR_ALL
-	icon_state = "sleepbag"
+	icon_state = "sleepbag_pink_deflated_folded"
+	base_icon_state = "sleepbag"
 	w_class = WEIGHT_CLASS_SMALL
 	var/bag_state = "deflated"
 	var/bag_fold = TRUE
@@ -97,8 +98,8 @@
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[bag_color]_[bag_state]_[bag_fold? "folded" : "unfolded"]"
-	inhand_icon_state = "[initial(icon_state)]_[bag_color]_[bag_state]_[bag_fold? "folded" : "unfolded"]"
+	icon_state = "[base_icon_state]_[bag_color]_[bag_state]_[bag_fold? "folded" : "unfolded"]"
+	inhand_icon_state = "[base_icon_state]_[bag_color]_[bag_state]_[bag_fold? "folded" : "unfolded"]"
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/equipped(mob/user, slot)
 	var/mob/living/carbon/human/affected_human = user
