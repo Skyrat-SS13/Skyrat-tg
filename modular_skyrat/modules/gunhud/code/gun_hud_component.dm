@@ -62,17 +62,6 @@
 		var/oth_t
 		var/oth_h
 
-		switch(pew.fire_select)
-			if(SELECT_SEMI_AUTOMATIC)
-				indicator = "semi"
-			if(SELECT_BURST_SHOT)
-				indicator = "burst"
-			if(SELECT_FULLY_AUTOMATIC)
-				indicator = "auto"
-
-		if(pew.safety)
-			indicator = "safe"
-
 		switch(length(rounds))
 			if(1)
 				oth_o = "o[rounds[1]]"
