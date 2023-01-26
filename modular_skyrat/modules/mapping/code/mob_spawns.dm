@@ -32,11 +32,6 @@
 	id = /obj/item/card/id/away/blackmarket
 
 /datum/outfit/black_market/post_equip(mob/living/carbon/human/shady, visualsOnly)
-	var/obj/item/card/id/id_card = shady.wear_id
-	if(istype(id_card))
-		id_card.registered_name = shady.real_name
-		id_card.update_label()
-		id_card.update_icon()
 	handlebank(shady)
 	return ..()
 
@@ -312,7 +307,7 @@
 		id_card.registered_name = staff.real_name
 		id_card.update_label()
 		id_card.update_icon()
-
+	handlebank(staff)
 	return ..()
 
 /datum/outfit/hotelstaff/manager

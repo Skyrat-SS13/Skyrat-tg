@@ -30,7 +30,7 @@
 		id_card.registered_name = syndicate.real_name
 		id_card.update_label()
 		id_card.update_icon()
-
+	handlebank(syndicate)
 	return ..()
 
 /datum/outfit/lavaland_syndicate/ice
