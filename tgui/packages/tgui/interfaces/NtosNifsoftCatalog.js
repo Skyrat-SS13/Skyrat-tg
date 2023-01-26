@@ -19,7 +19,6 @@ export const NtosNifsoftCatalog = (props, context) => {
     <NtosWindow width={500} height={700}>
       <NtosWindow.Content scrollable>
         <Tabs fluid>
-          {/* {product_list[1].nifsofts.length}a */}
           {product_list.map((product_category) => (
             <Tabs.Tab
               key={product_category.key}

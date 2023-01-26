@@ -96,6 +96,6 @@ GLOBAL_LIST_INIT(available_nifsofts, list(
 				return FALSE
 
 			paying_account.adjust_money(-amount_to_charge, "NIFSoft purchase")
-			paying_account.bank_card_talk("Transaction complete, you have been charged [params["product_cost"]].")
+			paying_account.bank_card_talk("Transaction complete, you have been charged [amount_to_charge]cr.")
 
 			return TRUE
