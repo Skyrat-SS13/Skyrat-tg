@@ -47,12 +47,14 @@
 	icon = 'modular_skyrat/modules/medical/icons/obj/dartguns.dmi'
 	icon_state = "smartdartgun"
 	worn_icon_state = "medicalsyringegun"
-	has_gun_safety = TRUE
 	item_flags = null
 
 /obj/item/gun/syringe/smartdart/Initialize(mapload)
 	. = ..()
 	chambered = new /obj/item/ammo_casing/syringegun/dart(src)
+
+/obj/item/gun/syringe/smartdart/give_gun_safeties()
+	return
 
 /obj/item/gun/syringe/smartdart/attackby(obj/item/container, mob/user, params, show_msg = TRUE)
 	if(istype(container, /obj/item/reagent_containers/syringe/smartdart))

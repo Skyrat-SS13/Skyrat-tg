@@ -15,8 +15,10 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	fire_delay = 1.90
-	company_flag = COMPANY_CANTALAN
 	projectile_damage_multiplier = 0.5
+
+/obj/item/gun/ballistic/automatic/pistol/g17/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_CANTALAN)
 
 /obj/item/gun/ballistic/automatic/pistol/g17/add_seclight_point()
 	return
@@ -60,8 +62,10 @@
 	spread = 8
 	mag_display = FALSE
 	mag_display_ammo = FALSE
-	company_flag = COMPANY_CANTALAN
 	projectile_damage_multiplier = 0.5
+
+/obj/item/gun/ballistic/automatic/pistol/g18/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_CANTALAN)
 
 /obj/item/gun/ballistic/automatic/pistol/g18/add_seclight_point()
 	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
@@ -100,7 +104,9 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	fire_delay = 0.9
-	company_flag = null
+
+/obj/item/gun/ballistic/automatic/pistol/g17/mesa/give_manufacturer_examine()
+	return
 
 /obj/item/gun/ballistic/automatic/pistol/g17/mesa/add_seclight_point()
 	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
@@ -124,7 +130,9 @@
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
-	company_flag = COMPANY_ARMADYNE
+
+/obj/item/gun/ballistic/automatic/pistol/pdh/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_ARMADYNE)
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/add_seclight_point()
 	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
@@ -175,7 +183,6 @@
 	burst_size = 3
 	fire_delay = 2
 	spread = 5
-	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo
 	name = "\improper PDH-6M magazine"
@@ -206,7 +213,8 @@
 	burst_size = 3
 	fire_delay = 2
 	spread = 9
-	company_flag = COMPANY_ARMADYNE
+
+/obj/item/gun/ballistic/
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_striker
 	name = "\improper PDH-6M magazine"
@@ -232,7 +240,6 @@
 	icon_state = "pdh_peacekeeper"
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/pistol_fire.ogg'
-	company_flag = COMPANY_ARMADYNE
 	projectile_damage_multiplier = 0.5
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
@@ -277,8 +284,10 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	fire_delay = 4.20
-	company_flag = COMPANY_ARMADYNE
 	projectile_damage_multiplier = 0.7
+
+/obj/item/gun/ballistic/automatic/pistol/ladon/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_ARMADYNE)
 
 /obj/item/gun/ballistic/automatic/pistol/ladon/add_seclight_point()
 	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
@@ -320,8 +329,10 @@
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
-	company_flag = COMPANY_IZHEVSK
 	projectile_damage_multiplier = 0.6
+
+/obj/item/gun/ballistic/automatic/pistol/makarov/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_IZHEVSK)
 
 /obj/item/ammo_box/magazine/multi_sprite/makarov
 	name = "\improper R-C Makarov magazine"
@@ -361,8 +372,10 @@
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
-	company_flag = COMPANY_ARMADYNE
 	projectile_damage_multiplier = 0.5
+
+/obj/item/gun/ballistic/automatic/pistol/mk58/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_ARMADYNE)
 
 /obj/item/ammo_box/magazine/multi_sprite/mk58
 	name = "\improper MK-58 magazine"
@@ -402,8 +415,10 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/firefly
 	can_suppress = FALSE
-	company_flag = COMPANY_ARMADYNE
 	projectile_damage_multiplier = 0.5
+
+/obj/item/gun/ballistic/automatic/pistol/firefly/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_ARMADYNE)
 
 /obj/item/gun/ballistic/automatic/pistol/firefly/add_seclight_point()
 	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
@@ -454,8 +469,9 @@
 	spread = 25
 	mag_display = FALSE
 	mag_display_ammo = FALSE
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_BURST_SHOT)
-	company_flag = COMPANY_IZHEVSK
+
+/obj/item/gun/ballistic/automatic/croon/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_IZHEVSK)
 
 /obj/item/ammo_box/magazine/multi_sprite/croon
 	name = "\improper Croon magazine"
@@ -495,12 +511,13 @@
 	mag_display_ammo = FALSE
 	burst_size = 2
 	fire_delay = 1.90
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_BURST_SHOT)
 	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
 	rack_sound = 'sound/weapons/gun/smg/smgrack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
-	company_flag = COMPANY_ARMADYNE
+
+/obj/item/gun/ballistic/automatic/dozer/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_ARMADYNE)
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer
 	name = "\improper Dozer magazine"
@@ -549,7 +566,9 @@
 	mag_display = TRUE
 	fire_sound_volume = 60
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sniper_fire.ogg'
-	company_flag = COMPANY_ARMADYNE
+
+/obj/item/gun/ballistic/automatic/dmr/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_ARMADYNE)
 
 /obj/item/ammo_box/magazine/dmr
 	name = "\improper Gen-2 Ripper magazine"
@@ -576,7 +595,9 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/zeta
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/revolver_fire.ogg'
 	fire_delay = 3
-	company_flag = COMPANY_BOLT
+
+/obj/item/gun/ballistic/revolver/zeta/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_BOLT)
 
 /obj/item/ammo_box/magazine/internal/cylinder/zeta
 	name = "\improper Zeta-6 cylinder"
@@ -613,8 +634,10 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/revolution
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/revolver_fire.ogg'
 	fire_delay = 1.90
-	company_flag = COMPANY_BOLT
 	projectile_damage_multiplier = 0.5
+
+/obj/item/gun/ballistic/revolver/revolution/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_BOLT)
 
 /obj/item/ammo_box/magazine/internal/cylinder/revolution
 	name = "\improper Revolution-8 cylinder"
@@ -673,7 +696,9 @@
 	load_empty_sound = 'modular_skyrat/modules/sec_haul/sound/chaingun_magout.ogg'
 	var/recharge_time = 5 SECONDS
 	var/recharging = FALSE
-	company_flag = COMPANY_ARMADYNE
+
+/obj/item/gun/ballistic/automatic/smartgun/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_ARMADYNE)
 
 /obj/item/gun/ballistic/automatic/smartgun/process_chamber()
 	. = ..()
@@ -757,7 +782,9 @@
 	mag_display_ammo = TRUE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/ltrifle_fire.ogg'
 	can_bayonet = TRUE
-	company_flag = COMPANY_OLDARMS
+
+/obj/item/gun/ballistic/automatic/g11/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_OLDARMS)
 
 /obj/item/ammo_box/magazine/multi_sprite/g11
 	name = "\improper G-11 magazine"
@@ -790,7 +817,9 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/m23
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
-	company_flag = COMPANY_BOLT
+
+/obj/item/gun/ballistic/shotgun/m23/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_BOLT)
 
 /obj/item/ammo_box/magazine/internal/shot/m23
 	name = "m23 shotgun internal magazine"
@@ -819,7 +848,9 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/as2
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
-	company_flag = COMPANY_ARMADYNE
+
+/obj/item/gun/ballistic/shotgun/automatic/as2/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_ARMADYNE)
 
 /obj/item/ammo_box/magazine/internal/shot/as2
 	name = "shotgun internal magazine"
@@ -853,14 +884,15 @@
 	mag_display_ammo = TRUE
 	actions_types = null
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/ltrifle_fire.ogg'
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	burst_size = 1
 	fire_delay = 10
-	company_flag = COMPANY_ARMADYNE
 
 /obj/item/gun/ballistic/automatic/norwind/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/scope, range_modifier = 1.75)
+
+/obj/item/gun/ballistic/automatic/norwind/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_ARMADYNE)
 
 /obj/item/gun/ballistic/automatic/norwind/add_seclight_point()
 	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
@@ -912,12 +944,14 @@
 	fire_delay = 4
 	spread = 10
 	fire_sound = 'sound/weapons/gun/smg/shot_suppressed.ogg'
-	company_flag = COMPANY_OLDARMS
 	projectile_damage_multiplier = 0.5
 
 /obj/item/gun/ballistic/automatic/vintorez/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/scope, range_modifier = 1.5)
+
+/obj/item/gun/ballistic/automatic/vintorez/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_OLDARMS)
 
 /obj/item/ammo_box/magazine/multi_sprite/vintorez
 	name = "\improper VKC magazine"
@@ -966,8 +1000,10 @@
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/smg_fire.ogg'
-	company_flag = COMPANY_BOLT
 	projectile_damage_multiplier = 0.5
+
+/obj/item/gun/ballistic/automatic/pcr/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_BOLT)
 
 /obj/item/gun/ballistic/automatic/pcr/add_seclight_point()
 	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
@@ -1015,8 +1051,10 @@
 	mag_display_ammo = TRUE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sfrifle_fire.ogg'
 	can_bayonet = TRUE
-	company_flag = COMPANY_BOLT
 	projectile_damage_multiplier = 0.7
+
+/obj/item/gun/ballistic/automatic/pitbull/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_BOLT)
 
 /obj/item/gun/ballistic/automatic/pitbull/add_seclight_point()
 	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
@@ -1070,7 +1108,9 @@
 	mag_display_ammo = TRUE
 	fire_sound = 'sound/weapons/gun/smg/shot.ogg'
 	can_bayonet = TRUE
-	company_flag = COMPANY_ARMADYNE
+
+/obj/item/gun/ballistic/automatic/ostwind/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_ARMADYNE)
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind
 	name = "\improper DTR-6 magazine"

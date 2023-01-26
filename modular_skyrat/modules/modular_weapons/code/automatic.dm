@@ -51,7 +51,9 @@
 	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
 	weapon_weight = WEAPON_MEDIUM
 	w_class = WEIGHT_CLASS_BULKY
-	company_flag = COMPANY_CANTALAN
+
+/obj/item/gun/ballistic/automatic/cfa_wildcat/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_CANTALAN)
 
 /obj/item/gun/ballistic/automatic/cfa_wildcat/no_mag
 	spawnwithmagazine = FALSE
@@ -77,7 +79,9 @@
 	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
 	weapon_weight = WEAPON_MEDIUM
 	w_class = WEIGHT_CLASS_BULKY
-	company_flag = COMPANY_CANTALAN
+
+/obj/item/gun/ballistic/automatic/cfa_lynx/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_CANTALAN)
 
 /obj/item/gun/ballistic/automatic/cfa_lynx/no_mag
 	spawnwithmagazine = FALSE

@@ -20,7 +20,6 @@
 	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
 	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
-	company_flag = COMPANY_OLDARMS
 
 /obj/item/gun/ballistic/automatic/pps/give_manufacturer_examine()
 	AddComponent(/datum/component/manufacturer_examine, COMPANY_OLDARMS)

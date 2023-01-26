@@ -11,7 +11,9 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	fire_sound_volume = 50
-	company_flag = COMPANY_BOLT
+
+/obj/item/gun/ballistic/automatic/pistol/pepperball/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_BOLT)
 
 /obj/item/gun/ballistic/automatic/pistol/pepperball/add_seclight_point()
 	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
