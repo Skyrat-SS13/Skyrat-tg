@@ -1,22 +1,36 @@
-import { useBackend } from '../backend';
+import { useBackend, useSharedState } from '../backend';
 import { NtosWindow } from '../layouts';
-import { BlockQuote, Button, Collapsible, Flex, Section, Box } from '../components';
+import { BlockQuote, Button, Collapsible, Flex, Section, Tabs, Divider } from '../components';
 
 export const NtosNifsoftCatalog = (props, context) => {
   const { act, data } = useBackend(context);
-  const { product_list = [], current_user } = data;
+  const { product_list = [] } = data;
+  const [tab, setTab] = useSharedState(
+    context,
+    'product_category',
+    product_list[0].name
+  );
+
+  const products =
+    product_list.find((product_category) => product_category.name === tab)
+      ?.products || [];
 
   return (
     <NtosWindow width={500} height={700}>
       <NtosWindow.Content scrollable>
-        <Flex direction="column">
+        <Tabs fluid>
           {/* {product_list[1].nifsofts.length}a */}
           {product_list.map((product_category) => (
-            <Flex.Item key={product_category.key}>
-              <ProductCategory product_category={product_category} />
-            </Flex.Item>
+            <Tabs.Tab
+              key={product_category.key}
+              textAlign="center"
+              onClick={() => setTab(product_category.name)}
+              selected={tab === product_category.name}>
+              <b>{product_category.name}</b>
+            </Tabs.Tab>
           ))}
-        </Flex>
+        </Tabs>
+        <ProductCategory products={products} />
       </NtosWindow.Content>
     </NtosWindow>
   );
@@ -24,33 +38,36 @@ export const NtosNifsoftCatalog = (props, context) => {
 
 const ProductCategory = (props, context) => {
   const { act, data } = useBackend(context);
-  const { product_category } = props;
+  const { target_nif, paying_account } = data;
+  const { products } = props;
 
   return (
-    <Section title={product_category.name}>
+    <Section>
       <Flex direction="Column">
-        {product_category.products.map((product) => (
-          <Flex.Item key={product.key}>
-            <Box textAlign="center" fontSize="15px">
-              <b>{product.name}</b>
-            </Box>
-            <Collapsible
-              title="Product Notes"
-              buttons={
+        {products.map((product) => (
+          <>
+            <Flex.Item key={product.key}>
+              <Section title={product.name} fill={false}>
+                <Collapsible title="Product Notes">
+                  <BlockQuote>{product.desc}</BlockQuote>
+                </Collapsible>
                 <Button
                   icon="shopping-bag"
                   color="green"
+                  disabled={!paying_account}
                   onClick={() =>
                     act('purchase_product', {
                       product_to_buy: product.reference,
                       product_price: product.price,
                     })
                   }
-                />
-              }>
-              <BlockQuote>{product.desc}</BlockQuote>
-            </Collapsible>
-          </Flex.Item>
+                  fluid>
+                  Purchase for {product.price}cr
+                </Button>
+              </Section>
+            </Flex.Item>
+            <Divider />
+          </>
         ))}
       </Flex>
     </Section>

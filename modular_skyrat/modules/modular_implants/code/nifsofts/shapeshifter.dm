@@ -9,6 +9,7 @@
 	active_mode = TRUE
 	active_cost = 1
 	compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif/standard)
+	buying_category = NIFSOFT_CATEGORY_COSMETIC
 
 	///The NIF version of the Shapeshifter Ability
 	var/datum/action/innate/alter_form/nif/shapeshifter

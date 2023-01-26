@@ -24,8 +24,17 @@ GLOBAL_LIST_INIT(available_nifsofts, list(
 	target_nif = null
 
 //TGUI STUFF
-/datum/computer_file/program/nifsoft_downloader/ui_static_data(mob/user)
+
+/datum/computer_file/program/nifsoft_downloader/ui_data(mob/user)
 	var/list/data = list()
+
+	paying_account = computer.computer_id_slot?.registered_account || null
+	data["paying_account"] = paying_account
+
+	return data
+
+/datum/computer_file/program/nifsoft_downloader/ui_static_data(mob/user)
+	var/list/data = get_header_data()
 	var/list/product_list = list()
 
 	var/mob/living/carbon/human/nif_user = user
@@ -36,7 +45,7 @@ GLOBAL_LIST_INIT(available_nifsofts, list(
 		else
 			target_nif = null
 
-	paying_account = computer.computer_id_slot?.registered_account || null
+	data["target_nif"] = target_nif
 
 	for(var/nifsoft in GLOB.available_nifsofts)
 		var/datum/nifsoft/buyable_nifsoft = nifsoft
