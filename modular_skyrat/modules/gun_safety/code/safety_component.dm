@@ -64,6 +64,12 @@
 		span_notice("You toggle [src]'s safety [safety_currently_on ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].")
 	)
 
+/// Adds the gun safety's current status to the gun's examine
+/datum/component/gun_safety/proc/on_examine(obj/item/source, mob/examiner, list/examine_list)
+	SIGNAL_HANDLER
+
+	examine_list += "<span>The safety is [safety_currently_on ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].</span>"
+
 // The actual action, used by the component
 /datum/action/item_action/gun_safety_toggle
 	name = "Toggle Gun Safety"
