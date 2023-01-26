@@ -412,6 +412,7 @@
 	random_appearance = FALSE
 	quirks_enabled = TRUE
 	loadout_enabled = TRUE
+
 /datum/outfit/freighter_boss
 	name = "Freighter Boss"
 	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/turtleneck
