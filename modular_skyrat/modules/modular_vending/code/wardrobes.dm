@@ -1,7 +1,7 @@
 /obj/machinery/vending/wardrobe/medi_wardrobe
 	skyrat_products = list(
 		/obj/item/radio/headset/headset_med = 3,
-		/obj/item/clothing/gloves/color/latex/nitrile = 2,
+		/obj/item/clothing/gloves/latex/nitrile = 2,
 		/obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown = 5,
 		/obj/item/storage/belt/medbandolier = 2,
 		/obj/item/clothing/under/rank/engineering/engineer/skyrat/hazard_chem/emt = 2,
@@ -219,7 +219,7 @@
 /obj/machinery/vending/wardrobe/medi_wardrobe/ghost_cafe
 	skyrat_products = list(
 		/obj/item/radio/headset/headset_med = 0,
-		/obj/item/clothing/gloves/color/latex/nitrile = 2,
+		/obj/item/clothing/gloves/latex/nitrile = 2,
 		/obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown = 5,
 		/obj/item/storage/belt/medbandolier = 2,
 		/obj/item/clothing/under/rank/engineering/engineer/skyrat/hazard_chem/emt = 2,
