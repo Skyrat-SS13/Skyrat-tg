@@ -20,14 +20,7 @@ GLOBAL_LIST_INIT(food_ic_flag_to_bitflag, list(
 	"Oranges" = ORANGES, // Why is this even a foodtype?!
 	"Bugs" = BUGS,
 	"Gore" = GORE,
-))
-
-/// Stringified number to numerical order value. Used to decide if the preference is lower or higher than the default value for a food type.
-GLOBAL_LIST_INIT(food_flag_to_order_value, list(
-	"[FOOD_TOXIC]" = 0,
-	"[FOOD_DISLIKED]" = 1,
-	"[FOOD_NEUTRAL]" = 2,
-	"[FOOD_LIKED]" = 3,
+	"Bloody" = BLOODY,
 ))
 
 /// Point values are based on commonality in my arbitrary view, with gameplay being a secondary thought. Balancing this around gameplay is dumb on a supposed RP server.
@@ -40,84 +33,84 @@ GLOBAL_LIST_INIT(food_ic_flag_to_point_values, list(
 		"[FOOD_TOXIC]" = 2,
 		"[FOOD_DISLIKED]" = 1,
 		"[FOOD_NEUTRAL]" = 0,
-		"[FOOD_LIKED]" = 2,
+		"[FOOD_LIKED]" = -2,
 		"[FOOD_DEFAULT]" = "[FOOD_NEUTRAL]",
 	),
 	"Vegetables" = list(
 		"[FOOD_TOXIC]" = 2,
 		"[FOOD_DISLIKED]" = 1,
 		"[FOOD_NEUTRAL]" = 0,
-		"[FOOD_LIKED]" = 2,
+		"[FOOD_LIKED]" = -2,
 		"[FOOD_DEFAULT]" = "[FOOD_NEUTRAL]",
 	),
 	"Raw food" = list(
 		"[FOOD_TOXIC]" = 1,
 		"[FOOD_DISLIKED]" = 0,
-		"[FOOD_NEUTRAL]" = 2,
-		"[FOOD_LIKED]" = 4,
+		"[FOOD_NEUTRAL]" = -2,
+		"[FOOD_LIKED]" = -4,
 		"[FOOD_DEFAULT]" = "[FOOD_DISLIKED]",
 	),
 	"Junk food" = list(
 		"[FOOD_TOXIC]" = 1,
 		"[FOOD_DISLIKED]" = 0,
 		"[FOOD_NEUTRAL]" = 0,
-		"[FOOD_LIKED]" = 3,
+		"[FOOD_LIKED]" = -3,
 		"[FOOD_DEFAULT]" = "[FOOD_NEUTRAL]",
 	),
 	"Grain" = list(
 		"[FOOD_TOXIC]" = 2,
 		"[FOOD_DISLIKED]" = 1,
 		"[FOOD_NEUTRAL]" = 0,
-		"[FOOD_LIKED]" = 2,
+		"[FOOD_LIKED]" = -2,
 		"[FOOD_DEFAULT]" = "[FOOD_NEUTRAL]",
 	),
 	"Fruits" = list(
 		"[FOOD_TOXIC]" = 2,
 		"[FOOD_DISLIKED]" = 1,
 		"[FOOD_NEUTRAL]" = 0,
-		"[FOOD_LIKED]" = 2,
+		"[FOOD_LIKED]" = -2,
 		"[FOOD_DEFAULT]" = "[FOOD_NEUTRAL]",
 	),
 	"Dairy products" = list( // These next three entries have 0 on both neutral and disliked to allow swapping between roughly as common dislikes without too much compromise.
 		"[FOOD_TOXIC]" = 1,
 		"[FOOD_DISLIKED]" = 0,
 		"[FOOD_NEUTRAL]" = 0,
-		"[FOOD_LIKED]" = 2,
+		"[FOOD_LIKED]" = -2,
 		"[FOOD_DEFAULT]" = "[FOOD_NEUTRAL]",
 	),
 	"Fried food" = list(
 		"[FOOD_TOXIC]" = 1,
 		"[FOOD_DISLIKED]" = 0,
 		"[FOOD_NEUTRAL]" = 0,
-		"[FOOD_LIKED]" = 3,
+		"[FOOD_LIKED]" = -3,
 		"[FOOD_DEFAULT]" = "[FOOD_NEUTRAL]",
 	),
 	"Alcohol" = list(
 		"[FOOD_TOXIC]" = 1,
 		"[FOOD_DISLIKED]" = 0,
 		"[FOOD_NEUTRAL]" = 0,
-		"[FOOD_LIKED]" = 2,
+		"[FOOD_LIKED]" = -2,
 		"[FOOD_DEFAULT]" = "[FOOD_DISLIKED]",
 	),
 	"Sugary food" = list(
 		"[FOOD_TOXIC]" = 2,
 		"[FOOD_DISLIKED]" = 1,
 		"[FOOD_NEUTRAL]" = 0,
-		"[FOOD_LIKED]" = 3,
+		"[FOOD_LIKED]" = -3,
 		"[FOOD_DEFAULT]" = "[FOOD_NEUTRAL]",
 	),
 	"Gross food" = list(
 		"[FOOD_TOXIC]" = 0,
 		"[FOOD_DISLIKED]" = 0,
-		"[FOOD_NEUTRAL]" = 3,
-		"[FOOD_LIKED]" = 5,
+		"[FOOD_NEUTRAL]" = -3,
+		"[FOOD_LIKED]" = -5,
 		"[FOOD_DEFAULT]" = "[FOOD_DISLIKED]",
 	),
 	"Toxic food" = list(
 		"[FOOD_TOXIC]" = 0,
 		"[FOOD_DISLIKED]" = 2,
-		"[FOOD_NEUTRAL]" = 4,
-		"[FOOD_LIKED]" = 6,
+		"[FOOD_NEUTRAL]" = -4,
+		"[FOOD_LIKED]" = -6,
 		"[FOOD_DEFAULT]" = "[FOOD_TOXIC]",
 	),
 	"Pineapples" = list( // I know why this is a food type, but this is pointless to the Nth degree...
@@ -132,14 +125,14 @@ GLOBAL_LIST_INIT(food_ic_flag_to_point_values, list(
 		"[FOOD_TOXIC]" = 2,
 		"[FOOD_DISLIKED]" = 1,
 		"[FOOD_NEUTRAL]" = 0,
-		"[FOOD_LIKED]" = 2,
+		"[FOOD_LIKED]" = -2,
 		"[FOOD_DEFAULT]" = "[FOOD_NEUTRAL]",
 	),
 	"Clothing" = list(
 		"[FOOD_TOXIC]" = 1,
 		"[FOOD_DISLIKED]" = 0,
-		"[FOOD_NEUTRAL]" = 2,
-		"[FOOD_LIKED]" = 4,
+		"[FOOD_NEUTRAL]" = -2,
+		"[FOOD_LIKED]" = -4,
 		"[FOOD_DEFAULT]" = "[FOOD_DISLIKED]",
 	),
 	"Nuts" = list( // Too obscure.
@@ -154,7 +147,7 @@ GLOBAL_LIST_INIT(food_ic_flag_to_point_values, list(
 		"[FOOD_TOXIC]" = 2,
 		"[FOOD_DISLIKED]" = 1,
 		"[FOOD_NEUTRAL]" = 0,
-		"[FOOD_LIKED]" = 2,
+		"[FOOD_LIKED]" = -2,
 		"[FOOD_DEFAULT]" = "[FOOD_NEUTRAL]",
 	),
 	"Oranges" = list( // Why is this even a foodtype?!
@@ -168,15 +161,22 @@ GLOBAL_LIST_INIT(food_ic_flag_to_point_values, list(
 	"Bugs" = list(
 		"[FOOD_TOXIC]" = 1,
 		"[FOOD_DISLIKED]" = 0,
-		"[FOOD_NEUTRAL]" = 2,
-		"[FOOD_LIKED]" = 4,
+		"[FOOD_NEUTRAL]" = -2,
+		"[FOOD_LIKED]" = -4,
 		"[FOOD_DEFAULT]" = "[FOOD_DISLIKED]",
 	),
 	"Gore" = list(
 		"[FOOD_TOXIC]" = 0,
 		"[FOOD_DISLIKED]" = 0,
-		"[FOOD_NEUTRAL]" = 4,
-		"[FOOD_LIKED]" = 6,
+		"[FOOD_NEUTRAL]" = -4,
+		"[FOOD_LIKED]" = -6,
+		"[FOOD_DEFAULT]" = "[FOOD_TOXIC]", // Toxic by default to allow default values to be usable from the start.
+	),
+	"Bloody" = list(
+		"[FOOD_TOXIC]" = 0,
+		"[FOOD_DISLIKED]" = 0,
+		"[FOOD_NEUTRAL]" = -3,
+		"[FOOD_LIKED]" = -5,
 		"[FOOD_DEFAULT]" = "[FOOD_TOXIC]", // Toxic by default to allow default values to be usable from the start.
 	),
 ))

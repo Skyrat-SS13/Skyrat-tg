@@ -95,6 +95,7 @@
 	var/tumor_status = PULSATING_TUMOR_MISSING
 
 	veteran_only = TRUE
+	allow_food_preferences = FALSE // Special diet requirements.
 
 
 /datum/species/hemophage/check_roundstart_eligible()

@@ -10,26 +10,14 @@ type Data = {
   points: number;
   enabled: BooleanLike;
   invalid: string;
-  pref_literally_does_nothing: BooleanLike;
-};
-
-const OhNo = (props, context) => {
-  return (
-    <Dimmer style={{ 'align-items': 'stretch' }}>
-      <Stack vertical mt="7em">
-        <Stack.Item color="#bd2020" textAlign="center">
-          <h1>{props.children}</h1>
-        </Stack.Item>
-      </Stack>
-    </Dimmer>
-  );
+  race_disabled: BooleanLike;
 };
 
 export const FoodPreferences = (props, context) => {
   const { act, data } = useBackend<Data>(context);
 
   return (
-    <Window width={803} height={500}>
+    <Window width={800} height={500}>
       <Window.Content scrollable>
         {
           <StyleableSection
@@ -96,14 +84,14 @@ export const FoodPreferences = (props, context) => {
                 </Button>
               </Box>
             }>
-            {(data.pref_literally_does_nothing && (
-              <OhNo>
+            {(data.race_disabled && (
+              <ErrorOverlay>
                 You&apos;re using a race which isn&apos;t affected by food
                 preferences!
-              </OhNo>
+              </ErrorOverlay>
             )) ||
               (!data.enabled && (
-                <OhNo>Your food preferences are disabled!</OhNo>
+                <ErrorOverlay>Your food preferences are disabled!</ErrorOverlay>
               ))}
             <Box style={{ 'columns': '21em' }}>
               {Object.entries(data.food_types).map((element) => {
@@ -238,5 +226,17 @@ const FoodButton = (props, context) => {
       }
       {...rest}
     />
+  );
+};
+
+const ErrorOverlay = (props, context) => {
+  return (
+    <Dimmer style={{ 'align-items': 'stretch' }}>
+      <Stack vertical mt="7em">
+        <Stack.Item color="#bd2020" textAlign="center">
+          <h1>{props.children}</h1>
+        </Stack.Item>
+      </Stack>
+    </Dimmer>
   );
 };

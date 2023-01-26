@@ -1,7 +1,12 @@
 // To make this system not a massive meta-pick for gamers, while still allowing plenty of room for unique combinations.
-#define MINIMUM_REQUIRED_TOXICS 2
+#define MINIMUM_REQUIRED_TOXICS 1
 #define MINIMUM_REQUIRED_DISLIKES 3
 #define MAXIMUM_LIKES 3
+
+#define STRING_FOOD_LIKED "1"
+#define STRING_FOOD_DISLIKED "2"
+#define STRING_FOOD_TOXIC "3"
+#define STRING_FOOD_NEUTRAL "6"
 
 // Performance and RAM friendly menu. You can thank me later.
 GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
@@ -9,7 +14,7 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 // Hahahaha, it LIVES!
 
 /datum/preference_middleware/food/apply_to_human(mob/living/carbon/human/target, datum/preferences/preferences)
-	if(!length(preferences.food) || isdummy(target))
+	if(!length(preferences.food_preferences) || isdummy(target))
 		return
 
 	var/fail_reason = GLOB.food_prefs_menu.is_food_invalid(preferences)
@@ -24,14 +29,14 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 
 	for(var/food_entry in GLOB.food_ic_flag_to_point_values)
 		var/list/food_points_entry = GLOB.food_ic_flag_to_point_values[food_entry]
-		var/food_preference = preferences.food[food_entry] || food_points_entry["[FOOD_DEFAULT]"]
+		var/food_preference = preferences.food_preferences[food_entry] || food_points_entry["[FOOD_DEFAULT]"]
 
-		switch(food_preference) // Doesn't use defines cause I need them in string form
-			if("1")
+		switch(food_preference)
+			if(STRING_FOOD_LIKED)
 				species.liked_food |= GLOB.food_ic_flag_to_bitflag[food_entry]
-			if("2")
+			if(STRING_FOOD_LIKED)
 				species.disliked_food |= GLOB.food_ic_flag_to_bitflag[food_entry]
-			if("3")
+			if(STRING_FOOD_TOXIC)
 				species.toxic_food |= GLOB.food_ic_flag_to_bitflag[food_entry]
 
 /// Food prefs menu datum. Global datum for performance and memory reasons.
@@ -49,39 +54,39 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 
 	switch(action)
 		if("reset")
-			qdel(preferences.food)
-			preferences.food = list()
+			qdel(preferences.food_preferences)
+			preferences.food_preferences = list()
 			return TRUE
 
 		if("toggle")
-			preferences.food["enabled"] = !preferences.food["enabled"]
+			preferences.food_preferences["enabled"] = !preferences.food_preferences["enabled"]
 			return TRUE
 
 		if("change_food")
 
 			var/food_name = params["food_name"]
-			var/food_flag = params["food_flag"]
+			var/food_preference = params["food_preference"]
 
-			if(!food_name || !preferences || !food_flag || !(food_flag in list("[FOOD_LIKED]", "[FOOD_NEUTRAL]", "[FOOD_DISLIKED]", "[FOOD_TOXIC]")))
+			if(!food_name || !preferences || !food_preference || !(food_preference in list(STRING_FOOD_LIKED, STRING_FOOD_NEUTRAL, STRING_FOOD_DISLIKED, STRING_FOOD_TOXIC)))
 				return TRUE
 
 			// Do some simple validation for max liked foods. Full validation is done on spawn and in the actual menu.
 			var/liked_food_length = 0
 
-			for(var/food_entry in preferences.food)
+			for(var/food_entry in preferences.food_preferences)
 				var/list/food_points_entry = GLOB.food_ic_flag_to_point_values[food_entry]
 				if(food_points_entry["[FOOD_OBSCURE]"])
 					continue
 
-				if(preferences.food[food_entry] == "[FOOD_LIKED]")
+				if(preferences.food_preferences[food_entry] == STRING_FOOD_LIKED)
 					liked_food_length++
 					if(liked_food_length > MAXIMUM_LIKES)
-						preferences.food.Remove(food_entry)
+						preferences.food_preferences.Remove(food_entry)
 
-			if(food_flag == "[FOOD_LIKED]" ? liked_food_length >= MAXIMUM_LIKES : liked_food_length > MAXIMUM_LIKES) // Equals as well, if we're setting a liked food!
+			if(food_preference == STRING_FOOD_LIKED ? liked_food_length >= MAXIMUM_LIKES : liked_food_length > MAXIMUM_LIKES) // Equals as well, if we're setting a liked food!
 				return TRUE // Fuck you, look your mistakes in the eye.
 
-			preferences.food[food_name] = food_flag
+			preferences.food_preferences[food_name] = food_preference
 			return TRUE
 
 /datum/preferences/ui_state(mob/user)
@@ -101,11 +106,11 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 	var/datum/species/species = preferences.read_preference(/datum/preference/choiced/species)
 
 	return list(
-		"selection" = preferences.food,
+		"selection" = preferences.food_preferences,
 		"points" = calculate_points(preferences),
-		"enabled" = preferences.food["enabled"],
+		"enabled" = preferences.food_preferences["enabled"],
 		"invalid" = is_food_invalid(preferences),
-		"pref_literally_does_nothing" = !initial(species.allow_food_preferences),
+		"race_disabled" = !initial(species.allow_food_preferences),
 	)
 
 /// Checks the provided preferences datum to make sure the food pref values are valid. Does not check if the food preferences value is null.
@@ -116,17 +121,17 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 
 	for(var/food_entry in GLOB.food_ic_flag_to_point_values)
 		var/list/food_points_entry = GLOB.food_ic_flag_to_point_values[food_entry]
-		var/food_preference = preferences.food[food_entry] || food_points_entry["[FOOD_DEFAULT]"]
+		var/food_preference = preferences.food_preferences[food_entry] || food_points_entry["[FOOD_DEFAULT]"]
 
 		if(food_points_entry["[FOOD_OBSCURE]"])
 			continue
 
-		switch(food_preference) // Doesn't use defines cause I need this in string form.
-			if("1")
+		switch(food_preference)
+			if(STRING_FOOD_LIKED)
 				liked_food_length++
-			if("2")
+			if(STRING_FOOD_DISLIKED)
 				disliked_food_length++
-			if("3")
+			if(STRING_FOOD_TOXIC)
 				toxic_food_length++
 
 	if(liked_food_length > MAXIMUM_LIKES)
@@ -142,22 +147,21 @@ GLOBAL_DATUM_INIT(food_prefs_menu, /datum/food_prefs_menu, new)
 /datum/food_prefs_menu/proc/calculate_points(datum/preferences/preferences)
 	var/points = 0
 
-	for(var/food_entry in preferences.food)
-		var/list/food_flag = preferences.food[food_entry]
+	for(var/food_entry in preferences.food_preferences)
+		var/list/food_preference = preferences.food_preferences[food_entry]
 		var/list/food_points_entry = GLOB.food_ic_flag_to_point_values[food_entry]
 		if(!food_points_entry)
 			continue
 
-		var/default_food_flag = food_points_entry["[FOOD_DEFAULT]"]
-		var/point_value = food_points_entry[food_flag]
-
-		if(point_value && (GLOB.food_flag_to_order_value[food_flag] > GLOB.food_flag_to_order_value[default_food_flag]))
-			points -= point_value
-		else
-			points += point_value
+		points += food_points_entry[food_preference]
 
 	return points
 
 #undef MINIMUM_REQUIRED_TOXICS
 #undef MINIMUM_REQUIRED_DISLIKES
 #undef MAXIMUM_LIKES
+
+#undef STRING_FOOD_LIKED
+#undef STRING_FOOD_DISLIKED
+#undef STRING_FOOD_TOXIC
+#undef STRING_FOOD_NEUTRAL
