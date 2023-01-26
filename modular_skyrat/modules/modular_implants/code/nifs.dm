@@ -467,7 +467,7 @@
 
 /obj/item/storage/box/nif_ghost_box
 	name = "NIF Starter Kit"
-	desc = "Contains a calibration-free NIF along with a variety of NIFSofts"
+	desc = "Contains a calibration-free NIF along with a variety of NIFSofts."
 	illustration = "disk_kit"
 
 /obj/item/storage/box/nif_ghost_box/PopulateContents()
