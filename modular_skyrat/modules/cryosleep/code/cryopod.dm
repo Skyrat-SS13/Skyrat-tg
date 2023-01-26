@@ -309,6 +309,10 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	var/mob/living/mob_occupant = occupant
 	var/list/crew_member = list()
 
+	if(ishuman(occupant))
+		var/mob/living/carbon/human/human = occupant
+		human.save_individual_persistence()
+
 	crew_member["name"] = mob_occupant.real_name
 
 	if(mob_occupant.mind)
