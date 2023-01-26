@@ -1,6 +1,6 @@
 import { useBackend, useSharedState } from '../backend';
 import { NtosWindow } from '../layouts';
-import { BlockQuote, Button, Collapsible, Flex, Section, Tabs, Divider } from '../components';
+import { BlockQuote, Button, Collapsible, Flex, Section, Tabs } from '../components';
 
 export const NtosNifsoftCatalog = (props, context) => {
   const { act, data } = useBackend(context);
@@ -44,29 +44,26 @@ const ProductCategory = (props, context) => {
     <Section>
       <Flex direction="Column">
         {products.map((product) => (
-          <>
-            <Flex.Item key={product.key}>
-              <Section title={product.name} fill={false}>
-                <Collapsible title="Product Notes">
-                  <BlockQuote>{product.desc}</BlockQuote>
-                </Collapsible>
-                <Button
-                  icon="shopping-bag"
-                  color="green"
-                  disabled={!paying_account}
-                  onClick={() =>
-                    act('purchase_product', {
-                      product_to_buy: product.reference,
-                      product_cost: product.price,
-                    })
-                  }
-                  fluid>
-                  Purchase for {product.price}cr
-                </Button>
-              </Section>
-            </Flex.Item>
-            <Divider />
-          </>
+          <Flex.Item key={product.key}>
+            <Section title={product.name} fill={false}>
+              <Collapsible title="Product Notes">
+                <BlockQuote>{product.desc}</BlockQuote>
+              </Collapsible>
+              <Button
+                icon="shopping-bag"
+                color="green"
+                disabled={!paying_account}
+                onClick={() =>
+                  act('purchase_product', {
+                    product_to_buy: product.reference,
+                    product_cost: product.price,
+                  })
+                }
+                fluid>
+                Purchase for {product.price}cr
+              </Button>
+            </Section>
+          </Flex.Item>
         ))}
       </Flex>
     </Section>
