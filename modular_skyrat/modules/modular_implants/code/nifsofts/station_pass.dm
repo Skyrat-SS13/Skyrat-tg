@@ -108,7 +108,7 @@
 		return FALSE
 
 	var/datum/nifsoft/station_pass/recieving_nifsoft = parent_nifsoft
-	if(!recieving_nifsoft)
+	if(!recieving_nifsoft || (!recieving_nifsoft.transmitting_data && !recieving_nifsoft.recieving_data))
 		return FALSE
 
 	var/mob/living/carbon/human/entered_human = entered
