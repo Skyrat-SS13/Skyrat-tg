@@ -15,76 +15,119 @@
 	/// Iconstate for when the status is off (TODO:  off_state --> modes_states list for expandability)
 	var/off_state = "salesman_fzz"
 	/// Sets a list of modes to cycle through
-	var/list/modes = list(MODE_OFF = MODE_ON, MODE_ON = MODE_OFF)
-	/// Defines initial mode upon initialisation, best to leave this on MODE_ON
-	var/mode = MODE_ON
+	var/list/modes = list(MODE_OFF, MODE_ON)
+	/// The current operating mode
+	var/mode
 	/// Defines messages that will be shown to the user upon switching modes (e.g. turning it on)
 	var/list/modes_msg = list(MODE_ON = "You activate the optical matrix on the ", MODE_OFF = "You deactivate the optical matrix on the ")
-	/// These are used in toggle_mode to restore the initial values, because initial() will not work on subtypes from within the parent
-	var/worn_icon_initial
-	var/icon_state_initial
-	var/tint_initial
-	var/flash_protect_initial
-	var/vision_flags_initial
-	var/hud_type_initial
-	var/hud_trait_initial
-	var/clothing_traits_initial
+	/// Because initial() will not work on subtypes from within the parent we need to store a reference to the type of the glasses calling the procs
+	var/obj/item/clothing/glasses/hud/ar/glasses_type
 
 /// Reuse logic from engine_goggles.dm
 /obj/item/clothing/glasses/hud/ar/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
+	AddElement(/datum/element/update_icon_updates_onmob, ITEM_SLOT_EYES)
 	
 	// Set our initial values
-	worn_icon_initial = worn_icon
-	icon_state_initial = icon_state
-	tint_initial = tint
-	flash_protect_initial = flash_protect
-	vision_flags_initial = vision_flags
-	clothing_traits_initial = clothing_traits
+	mode = MODE_ON
+	glasses_type = type
 
 /obj/item/clothing/glasses/hud/ar/Destroy()
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/clothing/glasses/hud/ar/proc/toggle_mode(mob/user, voluntary)
+
+	if(!istype(user) || user.incapacitated())
+		return
+
 	if(mode == modes[mode])
 		return // If there is only really one mode to cycle through, early return
+		
 	if(mode == MODE_FREEZE_ANIMATION)
-		icon = initial(icon) /// Resets icon to initial value after MODE_FREEZE_ANIMATION, since MODE_FREEZE_ANIMATION replaces it with non-animated version of initial
-	mode = modes[mode] // Change modes
-	balloon_alert(user, span_notice("[modes_msg[mode]][src].")) /// Print the message defined for this mode as a balloon over the user
+		icon = initial(glasses_type.icon) /// Resets icon to initial value after MODE_FREEZE_ANIMATION, since MODE_FREEZE_ANIMATION replaces it with non-animated version of initial
+
+	mode = get_next_mode(mode)
+	
 	switch(mode)
 		if(MODE_ON)
-			/// Resets all the vars to their initial values (THIS PRESUMES THE DEFAULT STATE IS ON)
-			worn_icon = initial(worn_icon)
-			icon_state = initial(icon_state)
-			flash_protect = flash_protect_initial
-			tint = tint_initial
-			vision_flags = vision_flags_initial
-			clothing_traits = clothing_traits_initial
+			balloon_alert(user, span_notice("[modes_msg[mode]][src]."))
+			reset_vars() // Resets all the vars to their initial values (THIS PRESUMES THE DEFAULT STATE IS ON)
 			add_hud(user)
 		if(MODE_FREEZE_ANIMATION)
-			/// Create new icon and worn_icon, with only the first frame of every state and setting that as icon.
-			/// this practically freezes the animation :)
-			var/icon/frozen_icon = new(icon, frame = 1)
-			icon = frozen_icon
-			var/icon/frozen_worn_icon = new(worn_icon, frame = 1)
-			worn_icon = frozen_worn_icon
-			user.update_appearance() // worn sprites need to be updated after doing this
-	if(mode == MODE_OFF || mode == MODE_OFF_FLASH_PROTECTION) /// pass both off modes to this step
-		icon_state = off_state /// Sets icon_state to be the off variant set in the vars
-		flash_protect = (mode == MODE_OFF_FLASH_PROTECTION) ? FLASH_PROTECTION_FLASH : FLASH_PROTECTION_NONE /// when off is supposed to have flash protection
-		tint = (mode == MODE_OFF_FLASH_PROTECTION) ? 0 : 1 /// when off is suppost to tint the glasses
-		vision_flags = 0 /// Sets vision_flags to 0 to disable meson view mainly
-		lighting_alpha = user.default_lighting_alpha() // Resets lighting_alpha to user's default one
-		clothing_traits = null /// also disables the options for Science functionality
-		remove_hud(user, TRUE)
+			balloon_alert(user, span_notice("[modes_msg[mode]][src]."))
+			freeze_animation()
+		if(MODE_OFF)
+			if(MODE_OFF_FLASH_PROTECTION in modes)
+				flash_protect = FLASH_PROTECTION_FLASH
+				balloon_alert(user, span_notice("[modes_msg[MODE_OFF_FLASH_PROTECTION]][src]."))
+			else
+				balloon_alert(user, span_notice("[modes_msg[mode]][src]."))
+			icon_state = off_state
+			disable_vars(user)
+			remove_hud(user)
 		
 	playsound(src, modeswitch_sound, 50, TRUE) // play sound set in vars!
 	update_sight(user)
 	update_item_action_buttons()
 	update_appearance()
+
+/obj/item/clothing/glasses/hud/ar/proc/get_next_mode(current_mode)
+	switch(current_mode)
+		if(MODE_ON)
+			if(MODE_FREEZE_ANIMATION in modes) // AR projectors go from on to freeze animation mode
+				return MODE_FREEZE_ANIMATION
+			else
+				return MODE_OFF
+		if(MODE_OFF)
+			return MODE_ON	
+		if(MODE_FREEZE_ANIMATION)
+			return MODE_OFF
+
+/obj/item/clothing/glasses/hud/ar/proc/add_hud(mob/user)
+	if(ishuman(user)) // Make sure they're a human wearing the glasses first
+		var/mob/living/carbon/human/human = user
+		if(human.glasses == src) 
+			var/datum/atom_hud/our_hud = GLOB.huds[initial(glasses_type.hud_type)]
+			our_hud.show_to(human)
+			ADD_TRAIT(human, initial(glasses_type.hud_trait), GLASSES_TRAIT)
+			
+/obj/item/clothing/glasses/hud/ar/proc/remove_hud(mob/user)
+	if(ishuman(user)) // Make sure they're a human wearing the glasses first
+		var/mob/living/carbon/human/human = user
+		if(human.glasses == src) 
+			var/datum/atom_hud/our_hud = GLOB.huds[initial(glasses_type.hud_type)]
+			our_hud.hide_from(human)
+			REMOVE_TRAIT(human, initial(glasses_type.hud_trait), GLASSES_TRAIT)
+
+/obj/item/clothing/glasses/hud/ar/proc/reset_vars()
+		worn_icon = initial(glasses_type.worn_icon)
+		icon_state = initial(glasses_type.icon_state)
+		flash_protect = initial(glasses_type.flash_protect)
+		tint = initial(glasses_type.tint)
+		lighting_alpha = initial(glasses_type.lighting_alpha)
+		vision_flags = initial(glasses_type.vision_flags)
+		hud_type = initial(glasses_type.hud_type)
+		hud_trait = initial(glasses_type.hud_trait)
+		//initial does not currently work on lists so we must do this
+		var/obj/item/clothing/glasses/hud/ar/glasses_object = new glasses_type // make a temporary glasses obj
+		clothing_traits = glasses_object.clothing_traits // pull the list from the created obj
+		qdel(glasses_object) // delete the object
+		
+/obj/item/clothing/glasses/hud/ar/proc/disable_vars(mob/user)
+	vision_flags = 0 /// Sets vision_flags to 0 to disable meson view mainly
+	lighting_alpha = user.default_lighting_alpha() // Resets lighting_alpha to user's default one
+	clothing_traits = null /// also disables the options for Science functionality
+	hud_type = null
+	hud_trait = null
+
+/// Create new icon and worn_icon, with only the first frame of every state and setting that as icon.
+/// this practically freezes the animation :)
+/obj/item/clothing/glasses/hud/ar/proc/freeze_animation()
+	var/icon/frozen_icon = new(icon, frame = 1)
+	icon = frozen_icon
+	var/icon/frozen_worn_icon = new(worn_icon, frame = 1)
+	worn_icon = frozen_worn_icon
 
 // Blah blah, fix vision and update icons
 /obj/item/clothing/glasses/hud/ar/proc/update_sight(mob/user)
@@ -93,22 +136,6 @@
 		if(human.glasses == src)
 			human.update_sight()
 
-/obj/item/clothing/glasses/hud/ar/proc/add_hud(mob/user)
-	if(ishuman(user)) // Make sure they're a human wearing the glasses first
-		var/mob/living/carbon/human/human = user
-		if(human.glasses == src) 
-			var/datum/atom_hud/our_hud = GLOB.huds[hud_type]
-			our_hud.show_to(human)
-			ADD_TRAIT(human, hud_trait, GLASSES_TRAIT)
-			
-/obj/item/clothing/glasses/hud/ar/proc/remove_hud(mob/user)
-	if(ishuman(user)) // Make sure they're a human wearing the glasses first
-		var/mob/living/carbon/human/human = user
-		if(human.glasses == src) 
-			var/datum/atom_hud/our_hud = GLOB.huds[hud_type]
-			our_hud.hide_from(human)
-			REMOVE_TRAIT(human, hud_trait, GLASSES_TRAIT)
-			
 /obj/item/clothing/glasses/hud/ar/attack_self(mob/user)
 	toggle_mode(user, TRUE)
 
@@ -117,12 +144,12 @@
 	desc = "A pair of designer sunglasses with electrochromatic darkening lenses!"
 	worn_icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses_mob.dmi'
 	icon_state = "aviator"
+	off_state = "aviator_off"
 	icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses.dmi'
 	darkness_view = 1
 	flash_protect = FLASH_PROTECTION_FLASH
-	modes = list(MODE_OFF = MODE_ON, MODE_ON = MODE_OFF)
+	modes = list(MODE_OFF, MODE_ON)
 	tint = 0
-	off_state = "aviator_off"
 
 /obj/item/clothing/glasses/fake_sunglasses/aviator
 	name = "aviators"
@@ -141,8 +168,8 @@
 	hud_type = DATA_HUD_SECURITY_ADVANCED
 	hud_trait = TRAIT_SECURITY_HUD
 	glass_colour_type = /datum/client_colour/glass_colour/red
-	modes = list(MODE_OFF_FLASH_PROTECTION = MODE_ON, MODE_ON = MODE_OFF_FLASH_PROTECTION)
-	modes_msg = list(MODE_ON = "You switch to flash protection mode and deactivate the optical matrix on the  ", MODE_OFF_FLASH_PROTECTION = "You switch to HUD mode, activating the optical matrix on the ")
+	modes = list(MODE_OFF, MODE_ON, MODE_OFF_FLASH_PROTECTION)
+	modes_msg = list(MODE_OFF_FLASH_PROTECTION = "You switch to flash protection mode and deactivate the optical matrix on ", MODE_ON = "You switch to HUD mode, activating the optical matrix on ")
 
 // Medical Aviators
 /obj/item/clothing/glasses/hud/ar/aviator/health
@@ -226,8 +253,8 @@
 	icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses.dmi'
 	flags_cover = null /// It doesn't actually cover up any parts
 	off_state = "projector-off"
-	modes = list(MODE_OFF = MODE_ON, MODE_ON = MODE_FREEZE_ANIMATION, MODE_FREEZE_ANIMATION = MODE_OFF)
-	modes_msg = list(MODE_ON = "You activate the projector, a projector folds out as it starts flashing on your ", MODE_FREEZE_ANIMATION = "You switch to a continuous beam on your ", MODE_OFF = "As you press a button on the side. The projector deactivates, the projector folds inward back into the " )
+	modes = list(MODE_OFF, MODE_ON, MODE_FREEZE_ANIMATION)
+	modes_msg = list(MODE_ON = "You activate the projector, a projector folds out as it starts flashing on ", MODE_FREEZE_ANIMATION = "You switch to a continuous beam on ", MODE_OFF = "As you press a button on the side, the projector turns off and folds inward back into " )
 
 /obj/item/clothing/glasses/hud/ar/projector/meson
 	name = "retinal projector meson HUD"
