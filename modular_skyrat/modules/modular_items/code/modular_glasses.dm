@@ -168,7 +168,7 @@
 	hud_type = DATA_HUD_SECURITY_ADVANCED
 	hud_trait = TRAIT_SECURITY_HUD
 	glass_colour_type = /datum/client_colour/glass_colour/red
-	modes = list(MODE_OFF, MODE_ON, MODE_OFF_FLASH_PROTECTION)
+	modes = list(MODE_OFF_FLASH_PROTECTION, MODE_ON)
 	modes_msg = list(MODE_OFF_FLASH_PROTECTION = "You switch to flash protection mode and deactivate the optical matrix on ", MODE_ON = "You switch to HUD mode, activating the optical matrix on ")
 
 // Medical Aviators
