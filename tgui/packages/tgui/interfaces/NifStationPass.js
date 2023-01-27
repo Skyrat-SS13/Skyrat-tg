@@ -49,7 +49,6 @@ export const NifStationPass = (props, context) => {
                   act('change_message', { new_message: value })
                 }
                 width="100%"
-                height="100px"
               />
             </LabeledList.Item>
             <LabeledList.Item label="Toggle transmitting">
