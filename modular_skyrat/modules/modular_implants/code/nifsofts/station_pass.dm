@@ -15,7 +15,7 @@
 	///What message is being sent to other users?
 	var/transmitted_message = ""
 	///What messages has the user recieved?
-	var/message_list = list()
+	var/list/message_list = list()
 	///The datum that is being used to receive messages
 	var/datum/proximity_monitor/advanced/station_pass/proximity_datum
 
@@ -40,8 +40,14 @@
 		return FALSE
 	if(!name)
 		name = "unknown user"
+	else
+		for(var/message in message_list)
+			if(message["sender_name"] == recieved_name)
+				message["message"] = recieved_message
+				message["timestamp"] = station_time_timestamp()
+				return TRUE
 
-	message_list += list(list(sender_name = recieved_name, message = recieved_message, timestamp = station_time_timestamp()))
+	message_list.Insert(1, list(list(sender_name = recieved_name, message = recieved_message, timestamp = station_time_timestamp())))
 	return TRUE
 
 ///Removes a message from the message_list based on the message_to_remove
@@ -50,7 +56,7 @@
 	if(!removed_message)
 		return FALSE
 
-	message_list -= removed_message
+	message_list -= list(removed_message)
 	return TRUE
 
 /datum/nifsoft/station_pass/activate()
@@ -68,7 +74,7 @@
 		return FALSE
 
 	var/datum/nifsoft/station_pass/recieving_nifsoft = parent_nifsoft
-	if(!recieving_nifsoft || !recieving_nifsoft.recieving_data)
+	if(!recieving_nifsoft)
 		return FALSE
 
 	var/mob/living/carbon/human/entered_human = entered
@@ -76,16 +82,13 @@
 		return FALSE
 
 	var/datum/nifsoft/station_pass/sending_nifsoft = entered_human.find_nifsoft(/datum/nifsoft/station_pass)
-	if(!sending_nifsoft || !sending_nifsoft.transmitting_data)
+	if(!sending_nifsoft)
 		return FALSE
 
-	for(var/message in recieving_nifsoft.message_list)
-		if(message["sender_name"] == sending_nifsoft.transmitted_name)
-			message["message"] = sending_nifsoft.transmitted_message
-			message["timestamp"] = station_time_timestamp()
-			return TRUE
-
-	recieving_nifsoft.add_message(sending_nifsoft.transmitted_name, sending_nifsoft.transmitted_message)
+	if(recieving_nifsoft.recieving_data && sending_nifsoft.transmitting_data)
+		recieving_nifsoft.add_message(sending_nifsoft.transmitted_name, sending_nifsoft.transmitted_message)
+	if(sending_nifsoft.recieving_data && recieving_nifsoft.transmitting_data)
+		sending_nifsoft.add_message(recieving_nifsoft.transmitted_name, recieving_nifsoft.transmitted_message)
 	return TRUE
 
 //TGUI
@@ -134,6 +137,15 @@
 				return FALSE
 
 			transmitted_name = params["new_name"]
+			return TRUE
+
+		if("remove_message")
+			if(!params["message_to_remove"])
+				return FALSE
+
+			if(!remove_message(list(params["message_to_remove"])))
+				return FALSE
+
 			return TRUE
 
 		if("toggle_transmitting")

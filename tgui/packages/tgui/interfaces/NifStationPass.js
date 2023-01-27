@@ -1,10 +1,16 @@
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-import { Section, Divider, Flex, Box, BlockQuote, Input, LabeledList } from '../components';
+import { Section, Divider, Flex, Box, BlockQuote, Input, LabeledList, Button } from '../components';
 
 export const NifStationPass = (props, context) => {
   const { act, data } = useBackend(context);
-  const { name_to_send, text_to_send, messages = [] } = data;
+  const {
+    name_to_send,
+    text_to_send,
+    messages = [],
+    recieving_data,
+    transmitting_data,
+  } = data;
   return (
     <Window width={500} height={700}>
       <Window.Content scrollable>
@@ -12,12 +18,18 @@ export const NifStationPass = (props, context) => {
           {messages.map((message) => (
             <Flex.Item key={message.key}>
               <Box textAlign="center" fontSize="14px">
-                <b>{message.sender_name}</b>
+                <b>{message.sender_name} </b>
+                <Button
+                  icon="trash"
+                  tooltip={'Delete this message'}
+                  onClick={() =>
+                    act('remove_message', { message_to_remove: message })
+                  }></Button>
               </Box>
+              <Divider />
               <Box>{message.message}</Box>
               <br />
               <BlockQuote>Time Recieved: {message.timestamp}</BlockQuote>
-              <Divider />
             </Flex.Item>
           ))}
         </Section>
@@ -37,7 +49,24 @@ export const NifStationPass = (props, context) => {
                   act('change_message', { new_message: value })
                 }
                 width="100%"
+                height="100px"
               />
+            </LabeledList.Item>
+            <LabeledList.Item label="Toggle transmitting">
+              <Button
+                fluid
+                onClick={() => act('toggle_transmitting', {})}
+                color={transmitting_data ? 'green' : 'red'}>
+                {transmitting_data ? 'True' : 'False'}
+              </Button>
+            </LabeledList.Item>
+            <LabeledList.Item label="Toggle recieving">
+              <Button
+                fluid
+                onClick={() => act('toggle_recieving', {})}
+                color={recieving_data ? 'green' : 'red'}>
+                {recieving_data ? 'True' : 'False'}
+              </Button>
             </LabeledList.Item>
           </LabeledList>
         </Section>
