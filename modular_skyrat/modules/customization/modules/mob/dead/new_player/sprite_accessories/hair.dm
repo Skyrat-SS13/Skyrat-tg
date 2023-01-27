@@ -460,8 +460,8 @@
 	icon_state = "hair_jay"
 
 /datum/sprite_accessory/hair/skyrat/zoe
-	name = "Zoe"
-	icon_state = "hair_zoe"
+	name = "Zoey"
+	icon_state = "hair_zoey"
 
 /datum/sprite_accessory/hair/skyrat/runner
 	name = "Runner"
