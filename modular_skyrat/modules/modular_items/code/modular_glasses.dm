@@ -41,8 +41,6 @@
 	tint_initial = tint
 	flash_protect_initial = flash_protect
 	vision_flags_initial = vision_flags
-	hud_type_initial = hud_type
-	hud_trait_initial = hud_trait
 	clothing_traits_initial = clothing_traits
 
 /obj/item/clothing/glasses/hud/ar/Destroy()
@@ -64,8 +62,6 @@
 			flash_protect = flash_protect_initial
 			tint = tint_initial
 			vision_flags = vision_flags_initial
-			hud_type = hud_type_initial
-			hud_trait = hud_trait_initial
 			clothing_traits = clothing_traits_initial
 			ADD_TRAIT(user, hud_trait, GLASSES_TRAIT)
 		if(MODE_FREEZE_ANIMATION)
@@ -81,9 +77,9 @@
 		tint = (mode == MODE_OFF_FLASH_PROTECTION) ? 0 : 1 /// when off is suppost to tint the glasses
 		vision_flags = 0 /// Sets vision_flags to 0 to disable meson view mainly
 		lighting_alpha = user.default_lighting_alpha() // Resets lighting_alpha to user's default one
-		hud_type = null /// no hud when off, obviously!
-		hud_trait = null /// no hud when off, obviously!
 		clothing_traits = null /// also disables the options for Science functionality
+		var/datum/atom_hud/our_hud = GLOB.huds[hud_type] // properly remove the hud
+		our_hud.hide_from(user)
 		REMOVE_TRAIT(user, hud_trait, GLASSES_TRAIT)
 	playsound(src, modeswitch_sound, 50, TRUE) // play sound set in vars!
 	// Blah blah, fix vision and update icons
