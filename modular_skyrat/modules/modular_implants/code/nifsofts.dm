@@ -35,6 +35,9 @@
 	///What NIF models can this software be installed on?
 	var/list/compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif)
 
+	///Does the NIFSoft have anything that is saved cross-round?
+	var/persistence = FALSE
+
 /datum/nifsoft/New(obj/item/organ/internal/cyberimp/brain/nif/recepient_nif)
 	. = ..()
 
@@ -44,6 +47,7 @@
 	if(!recepient_nif.install_nifsoft(src))
 		qdel(src)
 
+	load_persistence_data()
 
 /datum/nifsoft/Destroy()
 	if(active)

@@ -143,8 +143,9 @@
 	linked_mob.AddComponent(/datum/component/nif_examine)
 	RegisterSignal(linked_mob, COMSIG_LIVING_DEATH, PROC_REF(damage_on_death))
 
-	for(var/datum/nifsoft/preinstalled_nifsoft as anything in preinstalled_nifsofts)
-		new preinstalled_nifsoft(src)
+	if(preinstalled_nifsofts)
+		send_message("Loading preinstalled NIFSofts, please wait...")
+		addtimer(CALLBACK(src, PROC_REF(install_preinstalled_nifsofts)), 3 SECONDS)
 
 /obj/item/organ/internal/cyberimp/brain/nif/Remove(mob/living/carbon/organ_owner, special = FALSE)
 	. = ..()
@@ -157,6 +158,16 @@
 		qdel(found_component)
 
 	UnregisterSignal(linked_mob, COMSIG_LIVING_DEATH, PROC_REF(damage_on_death))
+
+///Installs preinstalled NIFSofts
+/obj/item/organ/internal/cyberimp/brain/nif/proc/install_preinstalled_nifsofts()
+	if(!preinstalled_nifsofts)
+		return FALSE
+
+	for(var/datum/nifsoft/preinstalled_nifsoft as anything in preinstalled_nifsofts)
+		new preinstalled_nifsoft(src)
+
+	return TRUE
 
 /obj/item/organ/internal/cyberimp/brain/nif/process(delta_time)
 	. = ..()

@@ -2,9 +2,17 @@
 	name = "Automatic Apprasial"
 	loaded_nifsoft = /datum/nifsoft/station_pass
 
+//Modular Persistence variables for the station_pass NIFSoft
+/datum/modular_persistence
+	///What name is saved to the station pass NIFSoft?
+	var/station_pass_nifsoft_name
+	///What message is saved to the station pass NIFSoft?
+	var/station_pass_nifsoft_message
+
 /datum/nifsoft/station_pass
 	name = "Station Pass" //WIP NAME
 	program_desc = "Allows the user to share and recieve data from other NIF users with this NIF installed"
+	persistence = TRUE
 
 	///Is the NIFSoft transmitting data?
 	var/transmitting_data = TRUE
@@ -24,8 +32,11 @@
 
 /datum/nifsoft/station_pass/New()
 	. = ..()
-	transmitted_name = linked_mob.name
-	transmitted_message = "Hello, I am [transmitted_name], it's nice to meet you!"
+
+	if(!transmitted_name)
+		transmitted_name = linked_mob.name
+	if(!transmitted_message)
+		transmitted_message = "Hello, I am [transmitted_name], it's nice to meet you!"
 	transmitted_identifier = linked_mob.ckey
 
 	add_message("station_pass_nifsoft", name, "Hello World")
@@ -67,6 +78,24 @@
 /datum/nifsoft/station_pass/activate()
 	. = ..()
 	ui_interact(linked_mob)
+
+
+/datum/nifsoft/station_pass/load_persistence_data()
+	. = ..()
+	var/datum/modular_persistence/persistence = .
+	if(!persistence)
+		return FALSE
+
+	transmitted_name = persistence.station_pass_nifsoft_name
+	transmitted_message = persistence.station_pass_nifsoft_message
+
+/datum/nifsoft/station_pass/save_persistence_data(datum/modular_persistence/persistence)
+	. = ..()
+	if(!.)
+		return FALSE
+
+	persistence.station_pass_nifsoft_message = transmitted_message
+	persistence.station_pass_nifsoft_name = transmitted_name
 
 ///The proximty_monitor datum used by the station_pass NIFSoft
 /datum/proximity_monitor/advanced/station_pass
