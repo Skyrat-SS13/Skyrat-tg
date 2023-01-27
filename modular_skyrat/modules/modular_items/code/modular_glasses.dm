@@ -63,7 +63,12 @@
 			tint = tint_initial
 			vision_flags = vision_flags_initial
 			clothing_traits = clothing_traits_initial
-			ADD_TRAIT(user, hud_trait, GLASSES_TRAIT)
+			if(ishuman(user)) // Make sure they're a human wearing the glasses before giving them a HUD
+				var/mob/living/carbon/human/human = user
+				if(human.glasses == src) 
+					var/datum/atom_hud/our_hud = GLOB.huds[hud_type]
+					our_hud.show_to(human)
+					ADD_TRAIT(human, hud_trait, GLASSES_TRAIT)
 		if(MODE_FREEZE_ANIMATION)
 			/// Create new icon and worn_icon, with only the first frame of every state and setting that as icon.
 			/// this practically freezes the animation :)
@@ -78,9 +83,12 @@
 		vision_flags = 0 /// Sets vision_flags to 0 to disable meson view mainly
 		lighting_alpha = user.default_lighting_alpha() // Resets lighting_alpha to user's default one
 		clothing_traits = null /// also disables the options for Science functionality
-		var/datum/atom_hud/our_hud = GLOB.huds[hud_type] // properly remove the hud
-		our_hud.hide_from(user)
-		REMOVE_TRAIT(user, hud_trait, GLASSES_TRAIT)
+		if(ishuman(user)) // Make sure they're a human wearing the glasses and not some other pair
+			var/mob/living/carbon/human/human = user
+			if(human.glasses == src) 
+				var/datum/atom_hud/our_hud = GLOB.huds[hud_type]
+				our_hud.hide_from(human)
+				REMOVE_TRAIT(human, hud_trait, GLASSES_TRAIT)
 	playsound(src, modeswitch_sound, 50, TRUE) // play sound set in vars!
 	// Blah blah, fix vision and update icons
 	if(ishuman(user))
