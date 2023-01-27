@@ -28,8 +28,6 @@
 	base_icon_state = "switchblade"
 	desc = "A sharp, concealable, spring-loaded comb."
 	hitsound = 'sound/weapons/genhit.ogg'
-	attack_verb_continuous = list("stubs", "pokes")
-	attack_verb_simple = list("stub", "poke")
 	resistance_flags = FIRE_PROOF
 	var/extended = FALSE
 
