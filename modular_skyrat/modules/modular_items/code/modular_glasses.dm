@@ -20,6 +20,9 @@
 	var/mode = MODE_ON
 	/// Defines messages that will be shown to the user upon switching modes (e.g. turning it on)
 	var/list/modes_msg = list(MODE_ON = "You activate the optical matrix on the ", MODE_OFF = "You deactivate the optical matrix on the ")
+	/// These are used in toggle_mode to restore the initial values, because initial() will not work on subtypes from within the parent
+	var/worn_icon_initial
+	var/icon_state_initial
 	var/tint_initial
 	var/flash_protect_initial
 	var/vision_flags_initial
@@ -32,6 +35,9 @@
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 	
+	// Set our initial values
+	worn_icon_initial = worn_icon
+	icon_state_initial = icon_state
 	tint_initial = tint
 	flash_protect_initial = flash_protect
 	vision_flags_initial = vision_flags
@@ -67,7 +73,7 @@
 			/// this practically freezes the animation :)
 			var/icon/frozen_icon = new(icon, frame = 1)
 			icon = frozen_icon
-			var/icon/frozen_worn_icon =new(worn_icon, frame = 1)
+			var/icon/frozen_worn_icon = new(worn_icon, frame = 1)
 			worn_icon = frozen_worn_icon
 	if(mode == MODE_OFF || mode == MODE_OFF_FLASH_PROTECTION) /// pass both off modes to this step
 		icon_state = off_state /// Sets icon_state to be the off variant set in the vars
