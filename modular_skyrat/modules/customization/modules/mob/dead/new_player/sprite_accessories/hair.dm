@@ -459,7 +459,7 @@
 	name = "Jay"
 	icon_state = "hair_jay"
 
-/datum/sprite_accessory/hair/skyrat/zoe
+/datum/sprite_accessory/hair/skyrat/zoey
 	name = "Zoey"
 	icon_state = "hair_zoey"
 
