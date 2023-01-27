@@ -374,7 +374,7 @@
 /mob/proc/click_random_mob()
 	var/list/nearby_mobs = list()
 	for(var/mob/living/L in range(1, src))
-		if(L!=src)
+		if(L != src)
 			nearby_mobs |= L
 	if(nearby_mobs.len)
 		var/mob/living/T = pick(nearby_mobs)
@@ -473,3 +473,11 @@
 	if(!istype(player, /client))
 		return
 	return player
+
+/proc/health_percentage(mob/living/mob)
+	var/divided_health = mob.health / mob.maxHealth
+	if(iscyborg(mob) || islarva(mob))
+		divided_health = (mob.health + mob.maxHealth) / (mob.maxHealth * 2)
+	else if(iscarbon(mob) || isAI(mob) || isbrain(mob))
+		divided_health = abs(HEALTH_THRESHOLD_DEAD - mob.health) / abs(HEALTH_THRESHOLD_DEAD - mob.maxHealth)
+	return divided_health * 100

@@ -6,7 +6,7 @@
 	head = /obj/item/clothing/head/helmet/space/ntrauma
 	glasses = /obj/item/clothing/glasses/hud/health/night
 	ears = /obj/item/radio/headset/headset_cent/alt
-	gloves = /obj/item/clothing/gloves/color/latex/nitrile/ntrauma
+	gloves = /obj/item/clothing/gloves/latex/nitrile/ntrauma
 	l_hand = /obj/item/gun/energy/e_gun/stun
 	shoes = /obj/item/clothing/shoes/combat
 	belt = /obj/item/storage/belt/military/ntrauma
@@ -91,7 +91,7 @@
 	new /obj/item/reagent_containers/pill/patch/aiuri(src)
 	new	/obj/item/holosign_creator/medical (src)
 
-/obj/item/clothing/gloves/color/latex/nitrile/ntrauma
+/obj/item/clothing/gloves/latex/nitrile/ntrauma
 	name = "trauma specialist gloves"
 	desc = "A pair of nitrile-alternative gloves used by Trauma Team specialists, with a unique (and expensive) acid-repellent coating to prevent damage handling chemical hazards. Wont protect the rest of your body, though."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
@@ -107,10 +107,20 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "ert_ntrauma"
 	slowdown = 0.3
-	armor = list(MELEE = 10, BULLET = 10, LASER = 10,ENERGY = 10, BOMB = 10, BIO = 100, FIRE = 80, ACID = 80)
+	armor_type = /datum/armor/space_ntrauma
 	resistance_flags = ACID_PROOF
 	cell = /obj/item/stock_parts/cell/super
 	supports_variations_flags = NONE	//Traumateam NEEDS to look nondescript. Its the whole gimmick, tactical healing.
+
+/datum/armor/space_ntrauma
+	melee = 10
+	bullet = 10
+	laser = 10
+	energy = 10
+	bomb = 10
+	bio = 100
+	fire = 80
+	acid = 80
 
 /obj/item/clothing/head/helmet/space/ntrauma
 	name = "trauma team helmet"

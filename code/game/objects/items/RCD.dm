@@ -24,7 +24,7 @@ RLD
 	w_class = WEIGHT_CLASS_NORMAL
 	custom_materials = list(/datum/material/iron=100000)
 	req_access = list(ACCESS_ENGINE_EQUIP)
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 100, ACID = 50)
+	armor_type = /datum/armor/item_construction
 	resistance_flags = FIRE_PROOF
 	var/datum/effect_system/spark_spread/spark_system
 	var/matter = 0
@@ -38,6 +38,10 @@ RLD
 	var/banned_upgrades = NONE
 	var/datum/component/remote_materials/silo_mats //remote connection to the silo
 	var/silo_link = FALSE //switch to use internal or remote storage
+
+/datum/armor/item_construction
+	fire = 100
+	acid = 50
 
 /obj/item/construction/Initialize(mapload)
 	. = ..()
@@ -146,6 +150,13 @@ RLD
 	if(prob(20))
 		spark_system.start()
 
+/obj/item/construction/update_overlays()
+	. = ..()
+	if(has_ammobar)
+		var/ratio = CEILING((matter / max_matter) * ammo_sections, 1)
+		if(ratio > 0)
+			. += "[icon_state]_charge[ratio]"
+
 /obj/item/construction/proc/useResource(amount, mob/user)
 	if(!silo_mats || !silo_link)
 		if(matter < amount)
@@ -196,9 +207,9 @@ RLD
 	if(.)
 		return
 
-	if(action == "toggle_silo")
+	if(action == "toggle_silo" && (upgrade & RCD_UPGRADE_SILO_LINK))
 		if(silo_mats)
-			if(!silo_mats.mat_container && !silo_link) // Allow them to turn off an invalid link
+			if(!silo_mats.mat_container && !silo_link) // Allow them to turn off an invalid link.
 				to_chat(usr, span_alert("No silo link detected. Connect to silo via multitool."))
 				return FALSE
 			silo_link = !silo_link
@@ -335,7 +346,7 @@ RLD
 			),
 
 			//Glass Airlocks[airlock_glass = TRUE is implied,do fill_closed overlay]
-			"Glass AirLocks" = list(
+			"Glass Airlocks" = list(
 				list(AIRLOCK_TYPE = /obj/machinery/door/airlock/glass, TITLE = "Standard", CATEGORY_ICON_STATE = TITLE_ICON, CATEGORY_ICON_SUFFIX = "Glass"),
 				list(AIRLOCK_TYPE = /obj/machinery/door/airlock/public/glass, TITLE = "Public"),
 				list(AIRLOCK_TYPE = /obj/machinery/door/airlock/engineering/glass, TITLE = "Engineering"),
@@ -361,7 +372,7 @@ RLD
 			),
 
 			//Solid Airlocks[airlock_glass = FALSE is implied,no fill_closed overlay]
-			"Solid AirLocks" = list(
+			"Solid Airlocks" = list(
 				list(AIRLOCK_TYPE = /obj/machinery/door/airlock, TITLE = "Standard", CATEGORY_ICON_STATE = TITLE_ICON),
 				list(AIRLOCK_TYPE = /obj/machinery/door/airlock/public, TITLE = "Public"),
 				list(AIRLOCK_TYPE = /obj/machinery/door/airlock/engineering, TITLE = "Engineering"),
@@ -552,7 +563,14 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 		return FALSE
 	if(rcd_results["mode"] == RCD_MACHINE || rcd_results["mode"] == RCD_COMPUTER || rcd_results["mode"] == RCD_FURNISHING)
 		var/turf/target_turf = get_turf(A)
-		if(target_turf.is_blocked_turf(exclude_mobs = TRUE))
+		//ignore all directional windows on the turf
+		var/static/list/ignored_atoms = list(/obj/structure/window, /obj/structure/window/reinforced)
+		var/list/ignored_content = list()
+		for(var/atom/movable/movable_content in target_turf)
+			if(is_type_in_list(movable_content, ignored_atoms))
+				ignored_content += movable_content
+		//check if the machine can fit on this turf
+		if(target_turf.is_blocked_turf(exclude_mobs = TRUE, source_atom = null, ignore_atoms = ignored_content))
 			playsound(loc, 'sound/machines/click.ogg', 50, TRUE)
 			qdel(rcd_effect)
 			return FALSE
@@ -616,7 +634,7 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 
 	var/category_icon_state
 	var/category_icon_suffix
-	for(var/list/sub_category as anything in root_categories[root_category])
+	for(var/sub_category as anything in root_categories[root_category])
 		var/list/target_category =  root_categories[root_category][sub_category]
 		if(target_category.len == 0)
 			continue
@@ -652,7 +670,7 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 			//sanitize them so you dont go insane when icon names contain spaces in them
 			icon_state = sanitize_css_class_name(icon_state)
 
-			designs += list(list("design_id" = i, TITLE = design[TITLE], ICON = icon_state))
+			designs += list(list(TITLE = design[TITLE], ICON = icon_state))
 		data["categories"] += list(list("cat_name" = sub_category, "designs" = designs))
 
 	//merge airlock_electronics ui data with this
@@ -683,6 +701,18 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 			var/list/category = root[category_name]
 			if(category == null) //not a valid category
 				return TRUE
+
+			/**
+			 * The advantage of organizing designs into categories is that
+			 * You can ignore an complete category if the design disk upgrade for that category isn't installed.
+			 */
+			//You can't select designs from the Machines category if you dont have the frames upgrade installed.
+			if(category == "Machines" && !(upgrade & RCD_UPGRADE_FRAMES))
+				return TRUE
+			//You can't select designs from the Furniture category if you dont have the furnishing upgrade installed.
+			if(category == "Furniture" && !(upgrade & RCD_UPGRADE_FURNISHING))
+				return TRUE
+
 			var/list/design = category[index]
 			if(design == null) //not a valid design
 				return TRUE
@@ -710,7 +740,7 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 
 			if(root_category == "Airlocks")
 				construction_mode = RCD_AIRLOCK
-				airlock_glass = (category_name != "Solid AirLocks")
+				airlock_glass = (category_name != "Solid Airlocks")
 				airlock_type = design[AIRLOCK_TYPE]
 
 		else
@@ -723,7 +753,7 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	ui_interact(user)
 
 /obj/item/construction/rcd/proc/target_check(atom/A, mob/user) // only returns true for stuff the device can actually work with
-	if((isturf(A) && A.density && mode==RCD_DECONSTRUCT) || (isturf(A) && !A.density) || (istype(A, /obj/machinery/door/airlock) && mode==RCD_DECONSTRUCT) || istype(A, /obj/structure/grille) || (istype(A, /obj/structure/window) && mode==RCD_DECONSTRUCT) || istype(A, /obj/structure/girder))
+	if((isturf(A) && A.density && mode == RCD_DECONSTRUCT) || (isturf(A) && !A.density) || (istype(A, /obj/machinery/door/airlock) && mode == RCD_DECONSTRUCT) || istype(A, /obj/structure/grille) || (istype(A, /obj/structure/window) && mode == RCD_DECONSTRUCT) || istype(A, /obj/structure/girder))
 		return TRUE
 	else
 		return FALSE
@@ -755,13 +785,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 /obj/item/construction/rcd/proc/detonate_pulse_explode()
 	explosion(src, light_impact_range = 3, flame_range = 1, flash_range = 1)
 	qdel(src)
-
-/obj/item/construction/rcd/update_overlays()
-	. = ..()
-	if(has_ammobar)
-		var/ratio = CEILING((matter / max_matter) * ammo_sections, 1)
-		if(ratio > 0)
-			. += "[icon_state]_charge[ratio]"
 
 /obj/item/construction/rcd/Initialize(mapload)
 	. = ..()
@@ -852,7 +875,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	custom_materials = list(/datum/material/iron=48000, /datum/material/glass=32000)
 	ammoamt = 160
 
-
 /obj/item/construction/rcd/combat/admin
 	name = "admin RCD"
 	max_matter = INFINITY
@@ -876,6 +898,7 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	. = ..()
 	if(range_check(A,user))
 		pre_attack(A, user)
+		return . | AFTERATTACK_PROCESSED_ITEM
 
 /obj/item/construction/rcd/arcd/afterattack_secondary(atom/target, mob/user, proximity_flag, click_parameters)
 	if(range_check(target,user))
@@ -906,7 +929,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	matter = 200
 	max_matter = 200
 	slot_flags = ITEM_SLOT_BELT
-	desc = "It contains the design for chairs, stools, tables, and glass tables."
 	///it does not make sense why any of these should be installed
 	banned_upgrades = RCD_UPGRADE_FRAMES | RCD_UPGRADE_SIMPLE_CIRCUITS | RCD_UPGRADE_FURNISHING
 
@@ -1029,7 +1051,7 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 							if(istype(O))
 								var/x0 = O.x
 								var/y0 = O.y
-								var/contender = cheap_hypotenuse(start.x, start.y, x0, y0)
+								var/contender = CHEAP_HYPOTENUSE(start.x, start.y, x0, y0)
 								if(!winner)
 									winner = O
 									winning_dist = contender
@@ -1455,6 +1477,7 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 /obj/item/rcd_upgrade/silo_link
 	desc = "It contains direct silo connection RCD upgrade."
 	upgrade = RCD_UPGRADE_SILO_LINK
+
 /obj/item/rcd_upgrade/furnishing
 	desc = "It contains the design for chairs, stools, tables, and glass tables."
 	upgrade = RCD_UPGRADE_FURNISHING

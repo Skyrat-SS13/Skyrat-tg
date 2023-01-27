@@ -8,13 +8,13 @@ GLOBAL_LIST_EMPTY(lifts)
 	base_icon_state = "catwalk"
 	density = FALSE
 	anchored = TRUE
-	armor = list(MELEE = 50, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 80, ACID = 50)
+	armor_type = /datum/armor/structure_industrial_lift
 	max_integrity = 50
 	layer = LATTICE_LAYER //under pipes
 	plane = FLOOR_PLANE
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_INDUSTRIAL_LIFT)
-	canSmoothWith = list(SMOOTH_GROUP_INDUSTRIAL_LIFT)
+	smoothing_groups = SMOOTH_GROUP_INDUSTRIAL_LIFT
+	canSmoothWith = SMOOTH_GROUP_INDUSTRIAL_LIFT
 	obj_flags = CAN_BE_HIT | BLOCK_Z_OUT_DOWN
 	appearance_flags = PIXEL_SCALE|KEEP_TOGETHER //no TILE_BOUND since we're potentially multitile
 	// If we don't do this, we'll build our overlays early, and fuck up how we're rendered
@@ -66,6 +66,11 @@ GLOBAL_LIST_EMPTY(lifts)
 	var/radial_travel = TRUE
 	/// A lazylist of REFs to all mobs which have a radial open currently
 	var/list/current_operators
+
+/datum/armor/structure_industrial_lift
+	melee = 50
+	fire = 80
+	acid = 50
 
 /obj/structure/industrial_lift/Initialize(mapload)
 	. = ..()
@@ -413,7 +418,7 @@ GLOBAL_LIST_EMPTY(lifts)
 				var/datum/callback/land_slam = new(collided, TYPE_PROC_REF(/mob/living/, tram_slam_land))
 				collided.throw_at(throw_target, 200 * collision_lethality, 4 * collision_lethality, callback = land_slam)
 
-				SEND_SIGNAL(src, COMSIG_TRAM_COLLISION)
+				SEND_SIGNAL(src, COMSIG_TRAM_COLLISION, collided)
 
 	unset_movement_registrations(exited_locs)
 	group_move(things_to_move, going)
@@ -810,6 +815,26 @@ GLOBAL_LIST_EMPTY(lifts)
 
 /obj/structure/industrial_lift/tram/white
 	icon_state = "titanium_white"
+
+/obj/structure/industrial_lift/tram/subfloor
+	name = "tram"
+	desc = "A tram for tramversing the station."
+	icon_state = "tram_subfloor"
+
+/datum/armor/structure_industrial_lift
+	melee = 50
+	fire = 80
+	acid = 50
+
+/obj/structure/industrial_lift/tram/accessible
+	icon_state = "titanium_accessible_north"
+
+/obj/structure/industrial_lift/tram/accessible/north
+	icon_state = "titanium_accessible_north"
+
+/obj/structure/industrial_lift/tram/accessible/south
+	icon_state = "titanium_accessible_south"
+
 
 /obj/structure/industrial_lift/tram/AddItemOnLift(datum/source, atom/movable/AM)
 	. = ..()

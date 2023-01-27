@@ -216,7 +216,7 @@
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/medicalofficer
 	suit = /obj/item/clothing/suit/toggle/labcoat/interdyne
 	belt = /obj/item/storage/belt/medical/paramedic
-	gloves = /obj/item/clothing/gloves/color/latex/nitrile/ntrauma
+	gloves = /obj/item/clothing/gloves/latex/nitrile/ntrauma
 	back = /obj/item/storage/backpack/satchel
 	backpack_contents = list(
 		/obj/item/storage/box/survival = 1,
@@ -264,7 +264,7 @@
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
 	back = /obj/item/storage/backpack/satchel/sec/redsec
-	head = /obj/item/clothing/head/hos/beret/syndicate
+	head = /obj/item/clothing/head/hats/hos/beret/syndicate
 	r_pocket = /obj/item/flashlight/seclite
 	implants = list(
 		/obj/item/implant/weapons_auth,
