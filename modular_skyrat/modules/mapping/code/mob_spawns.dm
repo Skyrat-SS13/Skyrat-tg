@@ -216,7 +216,7 @@
 	id_trim = /datum/id_trim/syndicom/skyrat/ds2/medicalofficer
 	suit = /obj/item/clothing/suit/toggle/labcoat/interdyne
 	belt = /obj/item/storage/belt/medical/paramedic
-	gloves = /obj/item/clothing/gloves/color/latex/nitrile/ntrauma
+	gloves = /obj/item/clothing/gloves/latex/nitrile/ntrauma
 	back = /obj/item/storage/backpack/satchel
 	backpack_contents = list(
 		/obj/item/storage/box/survival = 1,
