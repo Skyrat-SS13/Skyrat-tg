@@ -16,6 +16,8 @@
 	var/transmitted_message = ""
 	///What messages has the user recieved?
 	var/message_list = list()
+	///The datum that is being used to receive messages
+	var/datum/proximity_monitor/advanced/station_pass/proximity_datum
 
 /datum/nifsoft/station_pass/New()
 	. = ..()
@@ -23,6 +25,14 @@
 	transmitted_message = "Hello, I am [transmitted_name], it's nice to meet you!"
 
 	add_message(name, "Hello World")
+	proximity_datum = new(linked_mob, 1)
+	proximity_datum.parent_nifsoft = src
+
+/datum/nifsoft/station_pass/New()
+	qdel(proximity_datum)
+	proximity_datum = null
+
+	return ..()
 
 ///Adds a message to the message_list based off the name and message
 /datum/nifsoft/station_pass/proc/add_message(recieved_name, recieved_message)
@@ -43,11 +53,42 @@
 	message_list -= removed_message
 	return TRUE
 
-// TEST STUFF
 /datum/nifsoft/station_pass/activate()
 	. = ..()
 	ui_interact(linked_mob)
 
+///The proximty_monitor datum used by the station_pass NIFSoft
+/datum/proximity_monitor/advanced/station_pass
+	///What NIFSoft is this currently attached to?
+	var/datum/weakref/parent_nifsoft
+
+/datum/proximity_monitor/advanced/station_pass/on_entered(turf/source, atom/movable/entered)
+	. = ..()
+	if(host == entered)
+		return FALSE
+
+	var/datum/nifsoft/station_pass/recieving_nifsoft = parent_nifsoft
+	if(!recieving_nifsoft || !recieving_nifsoft.recieving_data)
+		return FALSE
+
+	var/mob/living/carbon/human/entered_human = entered
+	if(!entered)
+		return FALSE
+
+	var/datum/nifsoft/station_pass/sending_nifsoft = entered_human.find_nifsoft(/datum/nifsoft/station_pass)
+	if(!sending_nifsoft || !sending_nifsoft.transmitting_data)
+		return FALSE
+
+	for(var/message in recieving_nifsoft.message_list)
+		if(message["sender_name"] == sending_nifsoft.transmitted_name)
+			message["message"] = sending_nifsoft.transmitted_message
+			message["timestamp"] = station_time_timestamp()
+			return TRUE
+
+	recieving_nifsoft.add_message(sending_nifsoft.transmitted_name, sending_nifsoft.transmitted_message)
+	return TRUE
+
+//TGUI
 /datum/nifsoft/station_pass/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(linked_mob, src, ui)
 
@@ -61,6 +102,9 @@
 
 	for(var/message in message_list)
 		data["messages"] += list(message)
+
+	data["recieving_data"] = recieving_data
+	data["transmitting_data"] = transmitting_data
 
 	return data
 
@@ -92,3 +136,10 @@
 			transmitted_name = params["new_name"]
 			return TRUE
 
+		if("toggle_transmitting")
+			transmitting_data = !transmitting_data
+			return TRUE
+
+		if("toggle_recieving")
+			recieving_data = !recieving_data
+			return TRUE
