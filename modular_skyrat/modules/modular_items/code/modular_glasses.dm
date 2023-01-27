@@ -20,11 +20,24 @@
 	var/mode = MODE_ON
 	/// Defines messages that will be shown to the user upon switching modes (e.g. turning it on)
 	var/list/modes_msg = list(MODE_ON = "You activate the optical matrix on the ", MODE_OFF = "You deactivate the optical matrix on the ")
+	var/tint_initial
+	var/flash_protect_initial
+	var/vision_flags_initial
+	var/hud_type_initial
+	var/hud_trait_initial
+	var/clothing_traits_initial
 
 /// Reuse logic from engine_goggles.dm
 /obj/item/clothing/glasses/hud/ar/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
+	
+	tint_initial = tint
+	flash_protect_initial = flash_protect
+	vision_flags_initial = vision_flags
+	hud_type_initial = hud_type
+	hud_trait_initial = hud_trait
+	clothing_traits_initial = clothing_traits
 
 /obj/item/clothing/glasses/hud/ar/Destroy()
 	. = ..()
@@ -42,12 +55,12 @@
 			/// Resets all the vars to their initial values (THIS PRESUMES THE DEFAULT STATE IS ON)
 			worn_icon = initial(worn_icon)
 			icon_state = initial(icon_state)
-			flash_protect = initial(flash_protect)
-			tint = initial(tint)
-			vision_flags = initial(vision_flags)
-			hud_type = initial(hud_type)
-			hud_trait = initial(hud_trait)
-			clothing_traits = initial(clothing_traits)
+			flash_protect = flash_protect_initial
+			tint = tint_initial
+			vision_flags = vision_flags_initial
+			hud_type = hud_type_initial
+			hud_trait = hud_trait_initial
+			clothing_traits = clothing_traits_initial
 			ADD_TRAIT(user, hud_trait, GLASSES_TRAIT)
 		if(MODE_FREEZE_ANIMATION)
 			/// Create new icon and worn_icon, with only the first frame of every state and setting that as icon.
