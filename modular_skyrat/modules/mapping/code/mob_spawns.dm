@@ -143,6 +143,7 @@
 		id_card.registered_name = syndicate.real_name
 		id_card.update_label()
 		id_card.update_icon()
+
 	handlebank(syndicate)
 	return ..()
 
@@ -307,6 +308,7 @@
 		id_card.registered_name = staff.real_name
 		id_card.update_label()
 		id_card.update_icon()
+
 	handlebank(staff)
 	return ..()
 
@@ -354,6 +356,7 @@
 		id_card.registered_name = crewman.real_name
 		id_card.update_label()
 		id_card.update_icon()
+
 	handlebank(crewman)
 	return ..()
 
@@ -394,6 +397,7 @@
 		id_card.registered_name = crewman.real_name
 		id_card.update_label()
 		id_card.update_icon()
+
 	handlebank(crewman)
 	return ..()
 
@@ -430,6 +434,7 @@
 		id_card.registered_name = crewman.real_name
 		id_card.update_label()
 		id_card.update_icon()
+
 	handlebank(crewman)
 	return ..()
 
@@ -470,6 +475,7 @@
 	var/obj/item/radio/target_radio = tarkon.ears
 	target_radio.set_frequency(FREQ_TARKON)
 	target_radio.recalculateChannels()
+
 	handlebank(tarkon)
 	return ..()
 
