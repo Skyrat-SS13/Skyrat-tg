@@ -14,6 +14,9 @@
 	var/transmitted_name = ""
 	///What message is being sent to other users?
 	var/transmitted_message = ""
+	///What ckey is being used by the owner? This is mostly here so that messages can't get spammed
+	var/transmitted_identifier = ""
+
 	///What messages has the user recieved?
 	var/list/message_list = list()
 	///The datum that is being used to receive messages
@@ -23,8 +26,9 @@
 	. = ..()
 	transmitted_name = linked_mob.name
 	transmitted_message = "Hello, I am [transmitted_name], it's nice to meet you!"
+	transmitted_identifier = linked_mob.ckey
 
-	add_message(name, "Hello World")
+	add_message("station_pass_nifsoft", name, "Hello World")
 	proximity_datum = new(linked_mob, 1)
 	proximity_datum.parent_nifsoft = src
 
@@ -35,19 +39,20 @@
 	return ..()
 
 ///Adds a message to the message_list based off the name and message
-/datum/nifsoft/station_pass/proc/add_message(recieved_name, recieved_message)
+/datum/nifsoft/station_pass/proc/add_message(sender_identifier, recieved_name, recieved_message)
 	if(!recieved_message)
 		return FALSE
 	if(!name)
-		name = "unknown user"
+		name = "Unknown User"
 	else
 		for(var/message in message_list)
-			if(message["sender_name"] == recieved_name)
+			if(message["identifier"] == sender_identifier)
+				message["sender_name"] = recieved_name
 				message["message"] = recieved_message
 				message["timestamp"] = station_time_timestamp()
 				return TRUE
 
-	message_list.Insert(1, list(list(sender_name = recieved_name, message = recieved_message, timestamp = station_time_timestamp())))
+	message_list.Insert(1, list(list(identifier = sender_identifier, sender_name = recieved_name, message = recieved_message, timestamp = station_time_timestamp())))
 	return TRUE
 
 ///Removes a message from the message_list based on the message_to_remove
@@ -86,9 +91,9 @@
 		return FALSE
 
 	if(recieving_nifsoft.recieving_data && sending_nifsoft.transmitting_data)
-		recieving_nifsoft.add_message(sending_nifsoft.transmitted_name, sending_nifsoft.transmitted_message)
+		recieving_nifsoft.add_message(sending_nifsoft.transmitted_identifier, sending_nifsoft.transmitted_name, sending_nifsoft.transmitted_message)
 	if(sending_nifsoft.recieving_data && recieving_nifsoft.transmitting_data)
-		sending_nifsoft.add_message(recieving_nifsoft.transmitted_name, recieving_nifsoft.transmitted_message)
+		sending_nifsoft.add_message(recieving_nifsoft.transmitted_identifier, recieving_nifsoft.transmitted_name, recieving_nifsoft.transmitted_message)
 	return TRUE
 
 //TGUI
