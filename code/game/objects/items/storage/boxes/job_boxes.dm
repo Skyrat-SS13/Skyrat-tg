@@ -80,20 +80,19 @@
 	qdel(internals)
 
 /obj/item/storage/box/survival/proc/CheckNitrogenLungs() //SKYRAT EDIT: A utility function to look for those with the Nitrogen Breather quirk or other sources of nitrogen lungs.
-	if(ishuman(loc))
+	if(!ishuman(loc))
+		return FALSE
 		var/mob/living/carbon/human/checked_human = loc
-		var/qrk
-		if(checked_human.client)
-			if(checked_human.client.prefs)
-				for(qrk in checked_human.client.prefs.all_quirks)
-					if(qrk == "Nitrogen Breather") //hardcoded- this isn't great but whatever
-						return TRUE
+		if(checked_human?.client?.prefs)
+			for(var/quirk in checked_human?.client?.prefs?.all_quirks)
+				if(quirk == "Nitrogen Breather") //hardcoded- this isn't great but whatever
+					return TRUE
 		else
 			//This is a really ugly hack but necessary to grab their client so those who roundstartjoin aren't screwed over
 			for(var/mob/dead/new_player/new_player_mob as anything in GLOB.new_player_list)
 				if(new_player_mob.new_character == loc)
-					for(qrk in new_player_mob.client.prefs.all_quirks)
-						if(qrk == "Nitrogen Breather") //hardcoded- this isn't great but whatever
+					for(var/quirk in new_player_mob?.client?.prefs?.all_quirks)
+						if(quirk == "Nitrogen Breather") //hardcoded- this isn't great but whatever
 							return TRUE
 		if(istype(checked_human.internal_organs_slot["lungs"], /obj/item/organ/internal/lungs/nitrogen))
 			return TRUE
