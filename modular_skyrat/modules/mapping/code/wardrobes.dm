@@ -37,7 +37,7 @@
 		/obj/item/clothing/under/syndicate/skyrat/maid = 5,
 		/obj/item/clothing/gloves/combat/maid = 5,
 		/obj/item/clothing/head/maidheadband/syndicate = 5,
-    /obj/item/storage/box/nif_ghost_box = 10,
+    	/obj/item/storage/box/nif_ghost_box = 10,
 	)
 
 	refill_canister = /obj/item/vending_refill/wardrobe/syndie_wardrobe
