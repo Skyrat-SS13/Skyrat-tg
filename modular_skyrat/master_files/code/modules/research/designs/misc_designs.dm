@@ -45,3 +45,14 @@
 		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_EQUIPMENT_MEDICAL
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+
+/datum/design/nifosft_vendor
+	name = "NIFSoft Vendor Refill"
+	desc = "A refill canister for NIFSoft Vendors"
+	id = "nifsoft_vendor"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 10000, /datum/material/plastic = 5000, /datum/material/silver = 2000, /datum/material/gold = 2000)
+	build_path = /obj/item/vending_refill/nifsoft_shop
+	category = list(RND_CATEGORY_STOCK_PARTS + RND_SUBCATEGORY_STOCK_PARTS_MISC)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+

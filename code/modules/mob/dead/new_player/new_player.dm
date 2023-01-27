@@ -236,6 +236,7 @@
 
 		humanc.increment_scar_slot()
 		humanc.load_persistent_scars()
+		SSpersistence.load_modular_persistence(humanc) // SKYRAT EDIT ADDITION - MODULAR_PERSISTENCE
 
 		if(GLOB.curse_of_madness_triggered)
 			give_madness(humanc, GLOB.curse_of_madness_triggered)

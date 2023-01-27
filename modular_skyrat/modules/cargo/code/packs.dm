@@ -723,3 +723,40 @@
 		/obj/item/clothing/shoes/combat,
 		/obj/item/clothing/mask/gas/hecu2,
 	)
+
+//NIF CARGO ITEMS
+/datum/supply_pack/goody/standard_nif
+	name = "Standard Type NIF"
+	desc = "Contains a single standard NIF by itself, surgery is required."
+	cost = CARGO_CRATE_VALUE * 15
+	contains = list(
+		/obj/item/organ/internal/cyberimp/brain/nif/standard,
+	)
+
+/datum/supply_pack/goody/cheap_nif
+	name = "Econo-Deck Type NIF"
+	desc = "Contains a single Econo-Deck NIF by itself, surgery is required."
+	cost = CARGO_CRATE_VALUE * 7.5
+	contains = list(
+		/obj/item/organ/internal/cyberimp/brain/nif/roleplay_model,
+	)
+
+/datum/supply_pack/goody/nif_repair_kit
+	name = "Cerulean NIF Regenerator"
+	desc = "Contains a single container of NIF repair fluid, good for up to 5 uses."
+	cost = CARGO_CRATE_VALUE * 3
+	contains = list(
+		/obj/item/nif_repair_kit,
+	)
+
+/datum/supply_pack/service/money_nifsoft
+	name = "Money Sense NIFSofts"
+	desc = "Contains three Money Sense NIFSoft datadisks."
+	cost = CARGO_CRATE_VALUE * 5
+	access_view = ACCESS_CARGO
+	contains = list(
+		/obj/item/disk/nifsoft_uploader/money_sense,
+		/obj/item/disk/nifsoft_uploader/money_sense,
+		/obj/item/disk/nifsoft_uploader/money_sense,
+	)
+	crate_name = "Money sense NIFSoft crate"
