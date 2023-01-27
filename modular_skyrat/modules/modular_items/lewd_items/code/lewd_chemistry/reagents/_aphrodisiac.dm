@@ -69,23 +69,11 @@
 	var/breast_size_reduction_step = 1
 
 	/// Used for determining which genitals the chemical should affect
-	#define PENIS_ID 1
-	#define TESTICLES_ID 2
-	#define BREASTS_ID 3
-	#define VAGINA_ID 4
-	#define WOMB_ID 5
-
-	var/const/penis = PENIS_ID
-	var/const/testicles = TESTICLES_ID
-	var/const/breasts = BREASTS_ID
-	var/const/vagina = VAGINA_ID
-	var/const/womb = WOMB_ID
-	
-	#undef PENIS_ID
-	#undef TESTICLES_ID
-	#undef BREASTS_ID
-	#undef VAGINA_ID
-	#undef WOMB_ID			
+	var/const/penis = 1
+	var/const/testicles = 2
+	var/const/breasts = 3
+	var/const/vagina = 4
+	var/const/womb = 5
 
 	// Not important at all, really, but I don't want folk complaining about a removed feature.
 	var/static/list/species_to_penis = list(
