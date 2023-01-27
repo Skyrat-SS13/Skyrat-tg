@@ -63,12 +63,7 @@
 			tint = tint_initial
 			vision_flags = vision_flags_initial
 			clothing_traits = clothing_traits_initial
-			if(ishuman(user)) // Make sure they're a human wearing the glasses before giving them a HUD
-				var/mob/living/carbon/human/human = user
-				if(human.glasses == src) 
-					var/datum/atom_hud/our_hud = GLOB.huds[hud_type]
-					our_hud.show_to(human)
-					ADD_TRAIT(human, hud_trait, GLASSES_TRAIT)
+			add_hud(user)
 		if(MODE_FREEZE_ANIMATION)
 			/// Create new icon and worn_icon, with only the first frame of every state and setting that as icon.
 			/// this practically freezes the animation :)
@@ -76,6 +71,7 @@
 			icon = frozen_icon
 			var/icon/frozen_worn_icon = new(worn_icon, frame = 1)
 			worn_icon = frozen_worn_icon
+			user.update_appearance() // worn sprites need to be updated after doing this
 	if(mode == MODE_OFF || mode == MODE_OFF_FLASH_PROTECTION) /// pass both off modes to this step
 		icon_state = off_state /// Sets icon_state to be the off variant set in the vars
 		flash_protect = (mode == MODE_OFF_FLASH_PROTECTION) ? FLASH_PROTECTION_FLASH : FLASH_PROTECTION_NONE /// when off is supposed to have flash protection
@@ -83,21 +79,36 @@
 		vision_flags = 0 /// Sets vision_flags to 0 to disable meson view mainly
 		lighting_alpha = user.default_lighting_alpha() // Resets lighting_alpha to user's default one
 		clothing_traits = null /// also disables the options for Science functionality
-		if(ishuman(user)) // Make sure they're a human wearing the glasses and not some other pair
-			var/mob/living/carbon/human/human = user
-			if(human.glasses == src) 
-				var/datum/atom_hud/our_hud = GLOB.huds[hud_type]
-				our_hud.hide_from(human)
-				REMOVE_TRAIT(human, hud_trait, GLASSES_TRAIT)
+		remove_hud(user, TRUE)
+		
 	playsound(src, modeswitch_sound, 50, TRUE) // play sound set in vars!
-	// Blah blah, fix vision and update icons
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(H.glasses == src)
-			H.update_sight()
+	update_sight(user)
 	update_item_action_buttons()
 	update_appearance()
 
+// Blah blah, fix vision and update icons
+/obj/item/clothing/glasses/hud/ar/proc/update_sight(mob/user)
+	if(ishuman(user))
+		var/mob/living/carbon/human/human = user
+		if(human.glasses == src)
+			human.update_sight()
+
+/obj/item/clothing/glasses/hud/ar/proc/add_hud(mob/user)
+	if(ishuman(user)) // Make sure they're a human wearing the glasses first
+		var/mob/living/carbon/human/human = user
+		if(human.glasses == src) 
+			var/datum/atom_hud/our_hud = GLOB.huds[hud_type]
+			our_hud.show_to(human)
+			ADD_TRAIT(human, hud_trait, GLASSES_TRAIT)
+			
+/obj/item/clothing/glasses/hud/ar/proc/remove_hud(mob/user)
+	if(ishuman(user)) // Make sure they're a human wearing the glasses first
+		var/mob/living/carbon/human/human = user
+		if(human.glasses == src) 
+			var/datum/atom_hud/our_hud = GLOB.huds[hud_type]
+			our_hud.hide_from(human)
+			REMOVE_TRAIT(human, hud_trait, GLASSES_TRAIT)
+			
 /obj/item/clothing/glasses/hud/ar/attack_self(mob/user)
 	toggle_mode(user, TRUE)
 
