@@ -162,8 +162,8 @@
 
 /obj/item/clothing/suit/hooded/wintercoat/blueshield
 	name = "blueshield's winter coat"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/wintercoat.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/wintercoat.dmi'
 	icon_state = "coatblueshield"
 	desc = "A comfy kevlar-lined coat with blue highlights, for the blueshield."
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/blueshield

@@ -62,11 +62,11 @@
 	cold_protection = CHEST|GROIN|ARMS
 	heat_protection = CHEST|GROIN|ARMS
 
-/obj/item/clothing/suit/hooded/wintercoat/hopformal
+/obj/item/clothing/suit/hooded/wintercoat/hopformal //ORION TODO: REMOVE WHEN TG WINTERCOATS ARE UPDATED
 	name = "head of personnel's formal winter coat"
 	desc = "A long cozy winter coat, covered in thick fur. The breast features a proud yellow chevron, reminding everyone that you're the second banana. Someone at CC most really like you, huh?"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/wintercoat.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/wintercoat.dmi'
 	icon_state = "coathopformal"
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/hopformal
 

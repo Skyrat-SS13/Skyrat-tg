@@ -28,18 +28,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Greyscale Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/custom
 
-/datum/loadout_item/suit/aformal
-	name = "Assistant's formal winter coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/aformal
-
-/datum/loadout_item/suit/runed
-	name = "Runed winter coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/narsie/fake
-
-/datum/loadout_item/suit/brass
-	name = "Brass winter coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/ratvar/fake
-
 /datum/loadout_item/suit/korea
 	name = "Eastern winter coat"
 	item_path = /obj/item/clothing/suit/koreacoat
@@ -504,12 +492,12 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/coat_paramedic
 	name = "Paramedic Winter Coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/paramedic
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/medical/paramedic
 	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_PARAMEDIC) // Reserve it to Paramedics and their boss, the Chief Medical Officer
 
 /datum/loadout_item/suit/coat_robotics
 	name = "Robotics Winter Coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/robotics
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/science/robotics
 	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_ROBOTICIST)
 
 /datum/loadout_item/suit/coat_sci

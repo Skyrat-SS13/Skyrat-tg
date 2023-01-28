@@ -168,8 +168,8 @@
 /obj/item/clothing/suit/hooded/wintercoat/syndicate
 	name = "syndicate winter coat"
 	desc = "A sinister black coat with red accents and a fancy mantle, it feels like it can take a hit. The zipper tab looks like a triple headed snake in the shape of an S, spooky."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/wintercoat.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/wintercoat.dmi'
 	icon_state = "coatsyndie"
 	inhand_icon_state = "coatwinter"
 	armor_type = /datum/armor/wintercoat_syndicate
