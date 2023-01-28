@@ -35,7 +35,7 @@
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob, ITEM_SLOT_HANDS)
 
-//This is called when you transform it
+///This is called when you transform it
 /obj/item/hairbrush/switchblade/attack_self(mob/user, modifiers)
 	extended = !extended
 	icon_state = "switchblade[extended ? "_on" : ""]"
@@ -43,7 +43,7 @@
 	playsound(user || src, 'sound/weapons/batonextend.ogg', 30, TRUE)
 
 
-// This makes it so you have to extend it.
+/// This makes it so you have to extend it.
 /obj/item/hairbrush/switchblade/attack(mob/target, mob/user)
 	if(!extended)
 		to_chat(user, span_warning("Try extending the blade first, silly!"))
