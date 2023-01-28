@@ -259,6 +259,7 @@
 		"wirebrush",
 		"wirecutters",
 		"wrench",
+		"pickaxe",
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
 		"bowl",
