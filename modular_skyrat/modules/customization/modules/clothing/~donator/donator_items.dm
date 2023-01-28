@@ -37,13 +37,10 @@
 
 //This is called when you transform it
 /obj/item/hairbrush/switchblade/attack_self(mob/user, modifiers)
-	if(src.extended)
-		src.extended = FALSE
-		icon_state = "switchblade"
-	else
-		icon_state = "switchblade_on"
-		src.extended = TRUE
-	playsound(user ? user : src, 'sound/weapons/batonextend.ogg', 30, TRUE)
+	extended = !extended
+	icon_state = "switchblade[extended ? "_on" : ""]"
+
+	playsound(user || src, 'sound/weapons/batonextend.ogg', 30, TRUE)
 
 
 // This makes it so you have to extend it.
