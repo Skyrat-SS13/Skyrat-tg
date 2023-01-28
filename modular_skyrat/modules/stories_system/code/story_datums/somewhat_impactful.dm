@@ -82,7 +82,6 @@
 	poor_sod = null
 	return ..()
 
-<<<<<<< HEAD
 /datum/story_type/somewhat_impactful/paradigm_shift
 	name = "Paradigm Shift"
 	desc = "Nanotrasen has seen fit to send middle management to every department to help efficiently operationalize our strategy to invest in world class technology \
@@ -95,7 +94,7 @@
 		/datum/story_actor/ghost/spawn_in_arrivals/middle_management/engineering = 1,
 		/datum/story_actor/ghost/spawn_in_arrivals/middle_management/medbay = 1,
 	)
-=======
+
 /*
 	NRI R&R
 		Plot Summary:
@@ -113,4 +112,3 @@
 		/datum/story_actor/ghost/spawn_in_arrivals/nri_shore_leave = 3,
 	)
 	maximum_execute_times = 1
->>>>>>> e3bef5a336e7f5d7c1682f18c0878d79e8acbf4c

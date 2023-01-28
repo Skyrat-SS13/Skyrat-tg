@@ -101,7 +101,6 @@
 	)
 	maximum_execute_times = 1
 
-<<<<<<< HEAD
 
 /*
 	TPS Reports (Multiple Departments):
@@ -164,7 +163,6 @@
 	actor_datums_to_make = list(
 		/datum/story_actor/ghost/spawn_in_arrivals/middle_management/cargo = 1,
 	)
-=======
 /*
 	Medical Students
 		Plot Summary:
@@ -182,4 +180,3 @@
 		/datum/story_actor/ghost/spawn_in_arrivals/med_student = 3,
 	)
 	maximum_execute_times = 2
->>>>>>> e3bef5a336e7f5d7c1682f18c0878d79e8acbf4c

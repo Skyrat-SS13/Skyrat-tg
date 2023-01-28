@@ -163,10 +163,6 @@
 	worn_id.registered_name = equipped_human.real_name
 	worn_id.update_label()
 
-/datum/outfit/medical_student
-	name = "Medical Student"
-
-<<<<<<< HEAD
 
 /datum/outfit/construction_worker
 	name = "Construction Worker"
@@ -274,7 +270,9 @@
 
 /datum/outfit/middle_management/science
 	id_trim = /datum/id_trim/centcom/centcom_inspector/middle_management/science
-=======
+
+/datum/outfit/medical_student
+	name = "Medical Student"
 	id = /obj/item/card/id/passport
 	id_trim = /datum/id_trim/job/assistant/med_student
 	uniform = /obj/item/clothing/under/rank/medical/scrubs/green
@@ -289,6 +287,14 @@
 		/obj/item/pen = 1,
 		/obj/item/paper = 2,
 	)
+
+/datum/outfit/medical_student/post_equip(mob/living/carbon/human/equipped_human, visualsOnly = FALSE)
+	if(visualsOnly)
+		return
+
+	var/obj/item/card/id/worn_id = equipped_human.wear_id
+	worn_id.registered_name = equipped_human.real_name
+	worn_id.update_label()
 
 /datum/outfit/nri_shore_leave
 	name = "Shore Leave NRI Marine"
@@ -317,4 +323,3 @@
 	nri_human.set_drunk_effect(45) //This isn't time; it's how drunk they are
 	nri_human.remove_all_languages()
 	nri_human.grant_language(/datum/language/panslavic)
->>>>>>> e3bef5a336e7f5d7c1682f18c0878d79e8acbf4c
