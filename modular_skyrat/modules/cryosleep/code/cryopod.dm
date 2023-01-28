@@ -323,6 +323,8 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 		if(LAZYLEN(mob_occupant.mind.objectives))
 			mob_occupant.mind.objectives.Cut()
 			mob_occupant.mind.special_role = null
+		if(mob_occupant.mind.holy_role == HOLY_ROLE_HIGHPRIEST) // Reset religion to the default so the new chaplain becomes high priest and can change the sect
+			GLOB.religion = null
 	else
 		crew_member["job"] = "N/A"
 
