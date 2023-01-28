@@ -324,7 +324,7 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 			mob_occupant.mind.objectives.Cut()
 			mob_occupant.mind.special_role = null
 		if(mob_occupant.mind.holy_role == HOLY_ROLE_HIGHPRIEST) // Reset religion to the default so the new chaplain becomes high priest and can change the sect, armor, weapon type, etc
-			qdel(GLOB.religious_sect)
+			QDEL_NULL(GLOB.religious_sect) // queue for removal but also set it to null, in case a new chaplain joins before it can be deleted
 			GLOB.religion = null
 			GLOB.holy_armor_type = null
 			GLOB.holy_weapon_type = null
