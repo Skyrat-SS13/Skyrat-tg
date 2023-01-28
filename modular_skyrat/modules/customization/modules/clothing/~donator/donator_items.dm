@@ -45,11 +45,14 @@
 
 // This makes it so you have to extend it.
 /obj/item/hairbrush/switchblade/attack(mob/target, mob/user)
-	if(src.extended == FALSE)
-		to_chat(usr, span_warning("Try extending the blade first, silly!"))
-		return
+	if(!extended)
+		to_chat(user, span_warning("Try extending the blade first, silly!"))
+		return COMPONENT_CANCEL_ATTACK_CHAIN
+
 	if(target.stat == DEAD)
-		to_chat(usr, span_warning("There isn't much point brushing someone who can't appreciate it!"))
-		return
+		to_chat(user, span_warning("There isn't much point brushing someone who can't appreciate it!"))
+		return COMPONENT_CANCEL_ATTACK_CHAIN
+
 	brush(target, user)
+
 	return COMPONENT_CANCEL_ATTACK_CHAIN
