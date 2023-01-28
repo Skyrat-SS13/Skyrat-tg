@@ -14,10 +14,8 @@
 
 	src.safety_currently_on = safety_currently_on
 
-	toggle_safety_action = new(src)
-
-	var/obj/item/gun/parent_gun = parent
-	parent_gun.add_item_action(toggle_safety_action)
+	var/obj/item/item_parent = parent
+	toggle_safety_action = item_parent.add_item_action(/datum/action/item_action/gun_safety_toggle)
 
 /datum/component/gun_safety/Destroy()
 	if(toggle_safety_action)
@@ -45,7 +43,7 @@
 		return COMPONENT_CANCEL_GUN_FIRE
 
 /// Calls toggle_safeties if the action type for doing so is used
-/datum/component/gun_safety/proc/we_may_be_toggling_safeties(source, user, actiontype)
+/datum/component/gun_safety/proc/we_may_be_toggling_safeties(source, user, datum/actiontype)
 	SIGNAL_HANDLER
 
 	if(istype(actiontype, toggle_safety_action))
