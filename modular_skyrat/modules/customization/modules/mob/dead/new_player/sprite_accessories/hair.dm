@@ -407,16 +407,16 @@
 	name = "Stacy Bun"
 	icon_state = "hair_stacy_bun"
 
-/datum/sprite_accessory/hair/skyrat/braided_front
-	name = "Braided Front"
+/datum/sprite_accessory/hair/skyrat/curly_front
+	name = "Curly Front"
 	icon_state = "hair_braided_front"
 
 /datum/sprite_accessory/hair/skyrat/phoenix
 	name = "Phoenix"
 	icon_state = "hair_phoenix"
 
-/datum/sprite_accessory/hair/skyrat/spikey
-	name = "Spikey"
+/datum/sprite_accessory/hair/skyrat/spiky4
+	name = "Spiky 4"
 	icon_state = "hair_spikey"
 
 /datum/sprite_accessory/hair/skyrat/short_tassles
