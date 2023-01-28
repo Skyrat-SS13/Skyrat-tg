@@ -103,14 +103,14 @@
 /obj/item/clothing/suit/space/ntrauma
 	name = "trauma team softsuit"
 	desc = "A lightweight, minimally armored, entirely sterile softsuit, used by Trauma Teams to operate in potentially hazardous environments of all sorts. It's coated in acid-repellent chemicals."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/spacesuit.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/spacesuit.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suits/spacesuit_digi.dmi'
 	icon_state = "ert_ntrauma"
 	slowdown = 0.3
 	armor_type = /datum/armor/space_ntrauma
 	resistance_flags = ACID_PROOF
 	cell = /obj/item/stock_parts/cell/super
-	supports_variations_flags = NONE	//Traumateam NEEDS to look nondescript. Its the whole gimmick, tactical healing.
 
 /datum/armor/space_ntrauma
 	melee = 10
