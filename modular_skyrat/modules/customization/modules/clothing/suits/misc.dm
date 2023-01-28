@@ -321,6 +321,10 @@
 	greyscale_colors = "#313B82#CCCFF0"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
+/obj/item/clothing/suit/hawaiian_shirt/random/Initialize(mapload)
+	. = ..()
+	set_greyscale(list(random_color(), random_color()))
+
 /obj/item/clothing/suit/apron/overalls/greyscale
 	desc = "A set of overalls."
 	icon_state = "overalls"

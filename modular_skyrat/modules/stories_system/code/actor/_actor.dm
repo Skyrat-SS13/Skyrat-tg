@@ -67,7 +67,7 @@
 
 	target.ui_interact(owner)
 
-/datum/action/story_participant_info/IsAvailable()
+/datum/action/story_participant_info/IsAvailable(feedback = FALSE)
 	if(!target)
 		stack_trace("[type] was used without a story participant datum!")
 		return FALSE

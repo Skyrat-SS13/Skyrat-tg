@@ -29,3 +29,6 @@
 
 /obj/item/card/id/passport/government/update_label()
 	name = registered_name ? "[registered_name]'s Passport ([government_seal]" : "[initial(name)] ([government_seal])"
+
+/obj/item/card/id/passport/government/nri
+	government_seal = "Novaya Rossiyskaya Imperiya"

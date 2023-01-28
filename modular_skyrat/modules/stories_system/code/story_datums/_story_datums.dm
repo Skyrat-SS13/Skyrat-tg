@@ -13,6 +13,12 @@
 	var/list/actor_datums_to_make = list()
 	/// Assoc list of mind ref:actor ref involved in the story
 	var/list/mind_actor_list = list()
+	/// How many acts does this story have? If more than 1, make sure code for the act execution is written.
+	var/num_of_acts = 1
+	/// What's our current act?
+	var/current_act = 1
+	/// If we have acts, then what's the time between acts? Defaults to 45 minutes.
+	var/time_between_acts = 45 MINUTES
 
 /datum/story_type/Destroy(force, ...)
 	return ..()
@@ -24,8 +30,13 @@
 		return FALSE
 	return TRUE
 
+/// If a story need to do pre-execution stuff before picking actors, do it here.
+/datum/story_type/proc/pre_execute()
+	return TRUE
+
 /// The general proc That Does Things, may get split later
 /datum/story_type/proc/execute_story()
+	pre_execute()
 	var/involves_ghosts = 0
 	var/involves_crew = 0
 	for(var/datum/story_actor/actor_path as anything in actor_datums_to_make)
@@ -49,11 +60,13 @@
 			actor_datum.handle_spawning(pick_n_take(ghost_list), src)
 		else
 			actor_datum.handle_spawning(pick_n_take(player_list), src)
-
+	if(num_of_acts > 1)
+		addtimer(CALLBACK(src, .proc/update_act), time_between_acts)
 	return TRUE
 
 /// Proc for attempting to execute a story at roundstart, DOES NOT WORK ELSEWHERE
 /datum/story_type/proc/execute_roundstart_story()
+	pre_execute()
 	var/involved_amount = 0
 	for(var/datum/story_actor/actor_path as anything in actor_datums_to_make)
 		involved_amount += actor_datums_to_make[actor_path]
@@ -71,7 +84,6 @@
 		var/mob/dead/observer/observer = new()
 		chosen_player.spawning = TRUE
 		observer.started_as_observer = TRUE
-		chosen_player.close_spawn_windows()
 		var/obj/effect/landmark/observer_start/start_point = locate(/obj/effect/landmark/observer_start) in GLOB.landmarks_list
 		if(start_point)
 			observer.forceMove(get_turf(start_point))
@@ -88,9 +100,17 @@
 		qdel(chosen_player)
 
 		actor_datum.handle_spawning(observer, src)
-
+	if(num_of_acts > 1)
+		addtimer(CALLBACK(src, .proc/update_act), time_between_acts)
 	return TRUE
 
+/// Runs based on the time_between_acts after executing the story for the first time, will re-queue if there's any remaining acts when it finishes running.
+/datum/story_type/proc/update_act()
+	SHOULD_CALL_PARENT(TRUE)
+	current_act++
+	message_admins("STORY: [src] is progressing to Act [current_act]; Actor information has been updated.")
+	if(current_act < num_of_acts)
+		addtimer(CALLBACK(src, .proc/update_act), time_between_acts) // Begin the timer to progress to the next act, if there's acts left.
 
 /// A proc for getting a list of ghosts and returning an equal amount to `ghosts_involved`
 /datum/story_type/proc/get_ghosts(ghosts_to_get)

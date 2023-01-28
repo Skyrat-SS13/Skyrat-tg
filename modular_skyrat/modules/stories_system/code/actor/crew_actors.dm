@@ -78,3 +78,22 @@
 	actor_goal = "Do the deal at %LOCATION% with the Reds to trade your case of the goods for their case of cash, \
 	or attempt to keep both and pull one over on them."
 	box_to_give = /obj/item/storage/box/blue_clothing/boss
+
+/datum/story_actor/crew/ominous
+	name = "Ominous"
+	actor_info = "You never meant for it to end like that.\n\n\
+	You did everything you could, but it still wasn't enough. Even today, the memories of that moment stalk you like a killer. \
+	Yet words fail you whenever you try to talk about it, it was just that horrifying. You'll never be the same… and you're certain to make everyone aware of the fact."
+	actor_goal = "Survive the shift. Provide helpful advice. Constantly make references to 'the event'."
+
+/datum/story_actor/crew/apprentice
+	name = "Apprentice"
+	actor_info = "Long have you trained, and at last the day is upon you!\n\n\
+	You've scoured the SpaceNet for every crumb of information, thrown yourself at the foot of every Zoldorf machine, and attended one too many Astrology classes. \
+	But now, the power rests within you. The pathways of destiny have been made clear, and at last, you understand how to bend fate to your whims… \
+	so long as there are some credits to be had."
+	actor_goal = "Perform Tarot readings. “Accurately” predict the future. Survive the shift (with pockets full of credits)."
+
+/datum/story_actor/crew/apprentice/handle_spawning(mob/living/carbon/human/picked_spawner, datum/story_type/current_story)
+	. = ..()
+	picked_spawner.put_in_hands(new /obj/item/toy/cards/deck/tarot, ignore_animation = TRUE)

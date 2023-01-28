@@ -67,7 +67,7 @@
 	var/list/bridge_tiles = list()
 	for(var/turf/open/floor/floor_tile in bridge_area)
 		bridge_tiles += floor_tile
-	to_send_human.revive(full_heal = TRUE, admin_revive = TRUE)
+	to_send_human.revive(ADMIN_HEAL_ALL)
 	podspawn(list(
 		"target" = pick(bridge_tiles),
 		"style" = STYLE_CENTCOM,
@@ -100,7 +100,7 @@
 	var/list/bridge_tiles = list()
 	for(var/turf/open/floor/floor_tile in bridge_area)
 		bridge_tiles += floor_tile
-	to_send_human.revive(full_heal = TRUE, admin_revive = TRUE)
+	to_send_human.revive(ADMIN_HEAL_ALL)
 	podspawn(list(
 		"target" = pick(bridge_tiles),
 		"style" = STYLE_CENTCOM,

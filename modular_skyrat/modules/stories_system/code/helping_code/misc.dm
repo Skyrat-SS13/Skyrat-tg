@@ -1,4 +1,4 @@
-/obj/item/modular_computer/tablet/pda/centcom
+/obj/item/modular_computer/pda/centcom
 	name = "\improper Centcom PDA"
 	starting_programs = list(
 		/datum/computer_file/program/crew_manifest,

@@ -12,7 +12,7 @@
 	backpack_contents = list(
 		/obj/item/paper = 1,
 		/obj/item/pen/fountain = 1,
-		/obj/item/modular_computer/tablet/pda/centcom = 1,
+		/obj/item/modular_computer/pda/centcom = 1,
 	)
 
 
@@ -30,7 +30,7 @@
 	backpack_contents = list(
 		/obj/item/paper = 1,
 		/obj/item/pen/fountain = 1,
-		/obj/item/modular_computer/tablet/pda/centcom = 1,
+		/obj/item/modular_computer/pda/centcom = 1,
 	)
 	implants = list(
 		/obj/item/implant/storage = 1, // So they can hide the nuke/SM kit
@@ -44,7 +44,7 @@
 	backpack_contents = list(
 		/obj/item/paper = 1,
 		/obj/item/pen/fountain = 1,
-		/obj/item/modular_computer/tablet/pda/centcom = 1,
+		/obj/item/modular_computer/pda/centcom = 1,
 		/obj/item/storage/box/syndie_kit/nuke = 1,
 	)
 	steal_item = "the nuclear core"
@@ -54,7 +54,7 @@
 	backpack_contents = list(
 		/obj/item/paper = 1,
 		/obj/item/pen/fountain = 1,
-		/obj/item/modular_computer/tablet/pda/centcom = 1,
+		/obj/item/modular_computer/pda/centcom = 1,
 		/obj/item/storage/box/syndie_kit/supermatter = 1,
 	)
 	steal_item = "a supermatter sliver"
@@ -64,7 +64,7 @@
 	backpack_contents = list(
 		/obj/item/paper = 1,
 		/obj/item/pen/fountain = 1,
-		/obj/item/modular_computer/tablet/pda/centcom = 1,
+		/obj/item/modular_computer/pda/centcom = 1,
 		/obj/item/storage/box/syndie_kit/rnd_server = 1,
 	)
 	steal_item = "the R&D server HDD"
@@ -236,7 +236,7 @@
 	glasses = /obj/item/clothing/glasses/regular/hipster
 	id = /obj/item/card/id/advanced/centcom
 	id_trim = /datum/id_trim/centcom/centcom_inspector/middle_management
-	belt = /obj/item/modular_computer/tablet/pda/centcom
+	belt = /obj/item/modular_computer/pda/centcom
 	l_hand = /obj/item/clipboard
 	r_hand = /obj/item/reagent_containers/cup/glass/coffee
 	back = /obj/item/storage/backpack/satchel
@@ -312,14 +312,62 @@
 		/obj/item/storage/box/nri_survival_pack = 1,
 		/obj/item/crucifix = 1,
 		/obj/item/ammo_box/magazine/m9mm_aps = 1,
-		/obj/item/modular_computer/tablet/pda/security = 1,
+		/obj/item/modular_computer/pda/security = 1,
 	)
 
 	l_pocket = /obj/item/gun/ballistic/automatic/pistol/ladon/nri
-	id = /obj/item/card/id/advanced
-	id_trim = /datum/id_trim/enclave
+	id = /obj/item/card/id/passport/government/nri
+	id_trim = /datum/id_trim/nri
 
 /datum/outfit/nri_shore_leave/post_equip(mob/living/carbon/human/nri_human, visualsOnly)
 	nri_human.set_drunk_effect(45) //This isn't time; it's how drunk they are
 	nri_human.remove_all_languages()
 	nri_human.grant_language(/datum/language/panslavic)
+
+
+/datum/outfit/story_author
+	name = "Author"
+	id = /obj/item/card/id/passport
+	id_trim = /datum/id_trim/job/assistant/author
+	uniform = /obj/item/clothing/under/rank/civilian/curator
+	glasses = /obj/item/clothing/glasses/rosecolored
+	ears = /obj/item/radio/headset
+	shoes = /obj/item/clothing/shoes/laceup
+	l_hand = /obj/item/pen/fountain
+
+	back = /obj/item/storage/backpack/satchel
+
+/datum/outfit/story_author/post_equip(mob/living/carbon/human/equipped_human, visualsOnly = FALSE)
+	if(visualsOnly)
+		return
+
+	var/obj/item/card/id/worn_id = equipped_human.wear_id
+	worn_id.registered_name = equipped_human.real_name
+	worn_id.update_label()
+
+/datum/outfit/story_agent
+	name = "Agent"
+	id = /obj/item/card/id/passport
+	id_trim = /datum/id_trim/job/assistant/agent
+	uniform = /obj/item/clothing/under/rank/civilian/lawyer/black
+	glasses = /obj/item/clothing/glasses/osi
+	ears = /obj/item/radio/headset
+	shoes = /obj/item/clothing/shoes/laceup
+	l_hand = /obj/item/pen/fountain
+	r_hand = /obj/item/clipboard
+	mask = /obj/item/clothing/mask/cigarette/space_cigarette
+
+	back = /obj/item/storage/backpack/satchel
+	backpack_contents = list(
+		/obj/item/lighter = 1,
+		/obj/item/storage/fancy/cigarettes = 5,
+	)
+
+/datum/outfit/story_agent/post_equip(mob/living/carbon/human/equipped_human, visualsOnly = FALSE)
+	if(visualsOnly)
+		return
+
+	var/obj/item/card/id/worn_id = equipped_human.wear_id
+	worn_id.registered_name = equipped_human.real_name
+	worn_id.update_label()
+

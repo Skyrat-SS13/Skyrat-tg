@@ -71,3 +71,10 @@
 
 /datum/id_trim/job/assistant/med_student
 	assignment = "Medical Student"
+
+/datum/id_trim/job/assistant/author
+	assignment = "Best-Selling Author"
+
+/datum/id_trim/job/assistant/agent
+	assignment = "Agent"
+

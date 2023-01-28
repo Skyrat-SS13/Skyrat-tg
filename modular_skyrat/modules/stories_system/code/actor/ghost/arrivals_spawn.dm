@@ -223,3 +223,37 @@
 	actor_info = "You and your comrades thought you were ready for some time off, so you all shared a bottle of vodka and took a small shuttle from your patrol vessel for some \
 	well deserved R&R. You found this station out in the middle of nowhere and called it good. After all, everywhere speaks Pan-Slavic, right?"
 	actor_goal = "Get even more drunk. Confuse everyone else by only comprehending Space Russian. Potentially cause the start of a war between the NRI and Nanotrasen."
+
+/datum/story_actor/ghost/spawn_in_arrivals/agent
+	name = "Agent"
+	actor_outfits = list(
+		/datum/outfit/story_agent,
+	)
+	actor_info = "Honestly you've probably screwed the captain's cat on this one.\n\n\
+	In an effort to boost your client's sales, you figured a book tour was in order. A visit to inhabitable worlds (and even some inhospitable ones too) didn't do much for royalties,\
+	and getting robbed by the space mafia didn't help either. So you signed both your souls away to NanoTrasen in hopes of tapping into the corporate market…\n\n\
+	Shame that also means you're working for them now."
+	actor_goal = "Survive the shift. Help your client sell their book. Collect your 10% at all costs."
+
+/datum/story_actor/ghost/spawn_in_arrivals/author
+	name = "Author"
+	actor_outfits = list(
+		/datum/outfit/story_author,
+	)
+	actor_info = "You're not quite sure what drove you to write. An attempt to fulfill a childhood dream? A yearning passion to speak of the burning injustices dominating the galaxy? \
+	Or the thought of rolling around in a pile of money? Either way, you've utterly failed in this career thus far. So much so that your agent has signed you up to work on \
+	a space station, among the plebs of society. Fantastic. Still, there's an opportunity to sell some books here… and to figure out what to do with your agent."
+	actor_goal = "Survive the shift. Sell your books. Figure out what to do with your agent."
+
+/datum/story_actor/ghost/spawn_in_arrivals/author/send_them_in(mob/living/carbon/human/to_send_human)
+	. = ..()
+	var/datum/story_type/unimpactful/auteurs_in_space/story = involved_story
+	var/list/slots = list (
+		"backpack" = ITEM_SLOT_BACKPACK,
+		"left pocket" = ITEM_SLOT_LPOCKET,
+		"right pocket" = ITEM_SLOT_RPOCKET
+	)
+	for(var/i in 1 to 5)
+		var/obj/item/book/authors_book/book = new
+		book.book_data = new(story.chosen_book_name, to_send_human.name, "The text is so dense, so unending, that you can't make sense of a single word.")
+		to_send_human.equip_in_one_of_slots(book, slots)

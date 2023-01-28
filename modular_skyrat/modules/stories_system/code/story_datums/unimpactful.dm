@@ -180,3 +180,77 @@
 		/datum/story_actor/ghost/spawn_in_arrivals/med_student = 3,
 	)
 	maximum_execute_times = 2
+
+/*
+	Ominous Past
+	Written by Oscar Gilmour
+		Plot Summary:
+			No one knows what happened to them… and at this point, people are afraid to ask.
+		Actors:
+			Crew:
+				Ominous (1)
+*/
+
+/datum/story_type/unimpactful/ominous
+	name = "Ominous Past"
+	desc = "No one knows what happened to them… and at this point, people are afraid to ask.\n\
+	Written by Oscar Gilmour."
+	actor_datums_to_make = list(
+		/datum/story_actor/crew/ominous = 1,
+	)
+	maximum_execute_times = 1
+
+/*
+	Zoldorf’s Apprentice
+	Written by Oscar Gilmour
+		Plot Summary:
+			The future is yours to wield… about 27% of the time.
+		Actors:
+			Crew:
+				Ominous (1)
+*/
+
+/datum/story_type/unimpactful/zoldorfs_apprentice
+	name = "Zoldorf's Apprentice"
+	desc = "The future is yours to wield… about 27% of the time.\n\
+	Written by Oscar Gilmour."
+	actor_datums_to_make = list(
+		/datum/story_actor/crew/apprentice = 1,
+	)
+	maximum_execute_times = 1
+
+/*
+	Auteurs in Space
+	Written by Oscar Gilmour
+		Plot Summary:
+			Your book tour has brought you to the darkest corner of the galaxy.
+		Actors:
+			Ghost:
+				Author (1)
+				Agent (1)
+*/
+
+/datum/story_type/unimpactful/auteurs_in_space
+	name = "Auteurs in Space"
+	desc = "Your book tour has brought you to the darkest corner of the galaxy.\n\
+	Written by Oscar Gilmour."
+	actor_datums_to_make = list(
+		/datum/story_actor/ghost/spawn_in_arrivals/author = 1,
+		/datum/story_actor/ghost/spawn_in_arrivals/agent = 1,
+	)
+	maximum_execute_times = 1
+	/// The list of potential book names.
+	var/list/book_names = list(
+		"The Monkey Butt Diet - Fifty-two Scented Recipes!",
+		"If I Did Done Do It - A Nuclear Operative's Tale",
+		"Traits of Traitors - A Study in Antagonism ",
+		"Canceling Death - The secrets doctors won't teach you!",
+		"Does anybody love me? The Mailman's Tragedy",
+		"Honk - A Biography",
+		"Oh Captain, My Captain - Tales from the Bridge",
+		"Please behave for one fucking shift - A plea from Security",
+		"Racked with Guilt - That time I programmed a bad law",
+		"Nanotrasen Exposed! You won't believe what they're putting in the drinks!",
+	)
+	/// The chosen book name, used to populate info on the Author's books.
+	var/chosen_book_name = "Variable Defaults And You - A Shocking Tale Of Broken Code"
