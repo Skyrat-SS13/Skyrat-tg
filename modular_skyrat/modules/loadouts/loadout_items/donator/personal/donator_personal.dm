@@ -645,6 +645,6 @@
 	ckeywhitelist = list("lt3")
 
 /datum/loadout_item/toys/switchcomb
-	name = "Switchblade comb"
+	name = "Switchblade Comb"
 	item_path = /obj/item/hairbrush/switchblade
 	ckeywhitelist = list("stonetear")
