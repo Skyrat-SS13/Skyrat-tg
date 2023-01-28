@@ -323,7 +323,9 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 		if(LAZYLEN(mob_occupant.mind.objectives))
 			mob_occupant.mind.objectives.Cut()
 			mob_occupant.mind.special_role = null
-		if(mob_occupant.mind.holy_role == HOLY_ROLE_HIGHPRIEST) // Reset religion to the default so the new chaplain becomes high priest and can change the sect, armor, weapon type, etc
+		if(mob_occupant.mind.holy_role == HOLY_ROLE_HIGHPRIEST)                 // Reset religion to the default so the new chaplain becomes high priest and can change the sect, armor, weapon type, etc
+			for(var/obj/structure/altar_of_gods/altar in GLOB.chaplain_altars)  // remove pointers to the old religious_sect
+				altar.sect_to_altar = null 
 			QDEL_NULL(GLOB.religious_sect) // queue for removal but also set it to null, in case a new chaplain joins before it can be deleted
 			GLOB.religion = null
 			GLOB.holy_armor_type = null
