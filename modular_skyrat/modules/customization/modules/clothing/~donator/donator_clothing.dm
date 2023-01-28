@@ -1463,3 +1463,19 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/hands.dmi'
 	icon_state = "lt3_gloves"
+
+// Donation Reward for Joe_duhan
+/obj/item/clothing/under/pants/joe
+	name = "maisonette shirt"
+	desc = "A stylish white shirt rolled up."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "maisonette_shirt"
+
+/obj/item/clothing/suit/jacket/joe
+	name = "drywall jacket"
+	desc = "A very tough made jacket made by standard spacewall INC."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "drywall_jacket"
+
