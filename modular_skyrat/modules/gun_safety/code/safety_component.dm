@@ -5,7 +5,7 @@
 	/// Holder for the toggle safety action
 	var/datum/action/item_action/gun_safety_toggle/toggle_safety_action
 
-/datum/component/gun_safety/Initialize(safety_currently_on)
+/datum/component/gun_safety/Initialize(safety_currently_on = TRUE)
 	. = ..()
 
 	// Obviously gun safety should only apply to guns
@@ -16,6 +16,8 @@
 
 	var/obj/item/item_parent = parent
 	toggle_safety_action = item_parent.add_item_action(/datum/action/item_action/gun_safety_toggle)
+
+	update_action_button_state()
 
 /datum/component/gun_safety/Destroy()
 	if(toggle_safety_action)
@@ -55,8 +57,7 @@
 /datum/component/gun_safety/proc/toggle_safeties(mob/user)
 	safety_currently_on = !safety_currently_on
 
-	toggle_safety_action.button_icon_state = "safety_[safety_currently_on ? "on" : "off"]"
-	toggle_safety_action.build_all_button_icons()
+	update_action_button_state()
 
 	playsound(parent, 'sound/weapons/empty.ogg', 100, TRUE)
 	user.visible_message(
@@ -69,6 +70,14 @@
 	SIGNAL_HANDLER
 
 	examine_list += "<span>The safety is [safety_currently_on ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].</span>"
+
+/// Small proc to update the actio button's icon, just so I can not have to copypaste the same thing several times.
+/datum/component/gun_safety/proc/update_action_button_state()
+	if(!toggle_safety_action)
+		return
+
+	toggle_safety_action.button_icon_state = "safety_[safety_currently_on ? "on" : "off"]"
+	toggle_safety_action.build_all_button_icons()
 
 // The actual action, used by the component
 /datum/action/item_action/gun_safety_toggle
