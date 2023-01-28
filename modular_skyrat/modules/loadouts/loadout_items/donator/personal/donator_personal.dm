@@ -643,3 +643,13 @@
 	name = "Charcoal Fingerless Gloves"
 	item_path = /obj/item/clothing/gloves/skyy
 	ckeywhitelist = list("lt3")
+
+/datum/loadout_item/gloves/joe_shirt
+	name = "Maisonette Shirt"
+	item_path = /obj/item/clothing/under/pants/joe
+	ckeywhitelist = list("Joe_duhan")
+
+/datum/loadout_item/gloves/joe_jacket
+	name = "Drywall Jacket"
+	item_path = /obj/item/clothing/suit/jacket/joe
+	ckeywhitelist = list("Joe_duhan")
