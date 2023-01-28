@@ -190,7 +190,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		return
 	for(var/datum/mutation/human/HM in group)
 		if((HM.class in classes) && !(HM.mutadone_proof && mutadone))
-			force_lose(HM)
+			remove_mutation(HM)
 
 /datum/dna/proc/generate_unique_identity()
 	. = ""
@@ -500,6 +500,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 /////////////////////////// DNA MOB-PROCS //////////////////////
 
 /mob/proc/set_species(datum/species/mrace, icon_update = 1)
+	SHOULD_NOT_SLEEP(TRUE)
 	return
 
 /mob/living/brain/set_species(datum/species/mrace, icon_update = 1)
@@ -524,7 +525,10 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		else
 			return
 		death_sound = new_race.death_sound
-		dna.species.on_species_loss(src, new_race, pref_load)
+
+		if (dna.species.properly_gained)
+			dna.species.on_species_loss(src, new_race, pref_load)
+
 		var/datum/species/old_species = dna.species
 		dna.species = new_race
 		dna.species.on_species_gain(src, old_species, pref_load)
@@ -536,14 +540,14 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		log_mob_tag("SPECIES: [key_name(src)] \[[mrace]\]")
 
 */
-//SKYRAT EDIT REMOVAL BEGIN
-/*
+//SKYRAT EDIT REMOVAL END
+
 /mob/living/carbon/human/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
 	..()
 	if(icon_update)
 		update_body(is_creating = TRUE)
 		update_mutations_overlay()// no lizard with human hulk overlay please.
-*/
+
 
 /mob/proc/has_dna()
 	return
@@ -619,7 +623,10 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	skin_tone = GLOB.skin_tones[deconstruct_block(get_uni_identity_block(structure, DNA_SKIN_TONE_BLOCK), GLOB.skin_tones.len)]
 	eye_color_left = sanitize_hexcolor(get_uni_identity_block(structure, DNA_EYE_COLOR_LEFT_BLOCK))
 	eye_color_right = sanitize_hexcolor(get_uni_identity_block(structure, DNA_EYE_COLOR_RIGHT_BLOCK))
-	facial_hairstyle = GLOB.facial_hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_FACIAL_HAIRSTYLE_BLOCK), GLOB.facial_hairstyles_list.len)]
+	if(HAS_TRAIT(src, TRAIT_SHAVED))
+		hairstyle = "Shaved"
+	else
+		facial_hairstyle = GLOB.facial_hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_FACIAL_HAIRSTYLE_BLOCK), GLOB.facial_hairstyles_list.len)]
 	if(HAS_TRAIT(src, TRAIT_BALD))
 		hairstyle = "Bald"
 	else
@@ -697,7 +704,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 //Return the active mutation of a type if there is one
 /datum/dna/proc/get_mutation(A)
 	for(var/datum/mutation/human/HM in mutations)
-		if(HM.type == A)
+		if(istype(HM, A))
 			return HM
 
 /datum/dna/proc/check_block_string(mutation)
@@ -805,7 +812,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(!M.has_dna())
 		CRASH("[M] does not have DNA")
 	if(se)
-		for(var/i=1, i<=DNA_MUTATION_BLOCKS, i++)
+		for(var/i=1, i <= DNA_MUTATION_BLOCKS, i++)
 			if(prob(probability))
 				M.dna.generate_dna_blocks()
 		M.domutcheck()
@@ -884,7 +891,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 				if(elligible_organs.len)
 					var/obj/item/organ/O = pick(elligible_organs)
 					O.Remove(src)
-					visible_message(span_danger("[src] vomits up their [O.name]!"), span_danger("You vomit up your [O.name]")) //no "vomit up your heart"
+					visible_message(span_danger("[src] vomits up [p_their()] [O.name]!"), span_danger("You vomit up your [O.name]")) //no "vomit up your heart"
 					O.forceMove(drop_location())
 					if(prob(20))
 						O.animate_atom_living()
@@ -892,21 +899,25 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 				ForceContractDisease(new/datum/disease/gastrolosis())
 				to_chat(src, span_notice("Oh, I actually feel quite alright!"))
 	else
-		switch(rand(0,5))
+		switch(rand(0,6))
 			if(0)
+				investigate_log("has been gibbed by DNA instability.", INVESTIGATE_DEATHS)
 				gib()
 			if(1)
+				investigate_log("has been dusted by DNA instability.", INVESTIGATE_DEATHS)
 				dust()
-
 			if(2)
+				investigate_log("has been transformed into a statue by DNA instability.", INVESTIGATE_DEATHS)
 				death()
 				petrify(INFINITY)
+				ghostize(FALSE)
 			if(3)
 				if(prob(95))
 					var/obj/item/bodypart/BP = get_bodypart(pick(BODY_ZONE_CHEST,BODY_ZONE_HEAD))
 					if(BP)
 						BP.dismember()
 					else
+						investigate_log("has been gibbed by DNA instability.", INVESTIGATE_DEATHS)
 						gib()
 				else
 					set_species(/datum/species/dullahan)
@@ -915,10 +926,12 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 				spawn_gibs()
 				set_species(/datum/species/skeleton)
 				if(prob(90))
-					addtimer(CALLBACK(src, .proc/death), 30)
+					addtimer(CALLBACK(src, PROC_REF(death)), 30)
 			if(5)
 				to_chat(src, span_phobia("LOOK UP!"))
-				addtimer(CALLBACK(src, .proc/something_horrible_mindmelt), 30)
+				addtimer(CALLBACK(src, PROC_REF(something_horrible_mindmelt)), 30)
+			if(6)
+				slow_psykerize()
 
 /mob/living/carbon/human/proc/something_horrible_mindmelt()
 	if(!is_blind())
@@ -928,4 +941,4 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		eyes.Remove(src)
 		qdel(eyes)
 		visible_message(span_notice("[src] looks up and their eyes melt away!"), span_userdanger("I understand now."))
-		addtimer(CALLBACK(src, .proc/adjustOrganLoss, ORGAN_SLOT_BRAIN, 200), 20)
+		addtimer(CALLBACK(src, PROC_REF(adjustOrganLoss), ORGAN_SLOT_BRAIN, 200), 20)

@@ -27,11 +27,16 @@
 
 /obj/machinery/rnd/server/Initialize(mapload)
 	. = ..()
+	if(CONFIG_GET(flag/no_default_techweb_link))
+		stored_research = new /datum/techweb
+	stored_research.techweb_servers |= src
 	name += " [num2hex(rand(1,65535), -1)]" //gives us a random four-digit hex number as part of the name. Y'know, for fluff.
-	SSresearch.servers |= src
 
 /obj/machinery/rnd/server/Destroy()
-	SSresearch.servers -= src
+	if(stored_research)
+		stored_research.techweb_servers -= src
+	if(CONFIG_GET(flag/no_default_techweb_link))
+		QDEL_NULL(stored_research)
 	return ..()
 
 /obj/machinery/rnd/server/update_icon_state()
@@ -60,12 +65,12 @@
 	update_current_power_usage()
 	update_appearance(UPDATE_ICON_STATE)
 
-/obj/machinery/rnd/server/emp_act()
+/obj/machinery/rnd/server/emp_act(severity)
 	. = ..()
 	if(. & EMP_PROTECT_SELF)
 		return
 	set_machine_stat(machine_stat | EMPED)
-	addtimer(CALLBACK(src, .proc/fix_emp), 60 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(fix_emp)), 60 SECONDS)
 	refresh_working()
 
 /// Callback to un-emp the server afetr some time.
@@ -94,18 +99,28 @@
 
 	return SERVER_NOMINAL_TEXT
 
+/obj/machinery/rnd/server/multitool_act(mob/living/user, obj/item/multitool/tool)
+	if(!stored_research)
+		return
+	tool.buffer = stored_research
+	to_chat(user, span_notice("Stored [src]'s techweb information in [tool]."))
+	return TRUE
+
 /obj/machinery/computer/rdservercontrol
 	name = "R&D Server Controller"
 	desc = "Used to manage access to research and manufacturing databases."
 	icon_screen = "rdcomp"
 	icon_keyboard = "rd_key"
-	var/screen = 0
-	var/obj/machinery/rnd/server/temp_server
-	var/list/servers = list()
-	var/list/consoles = list()
-	req_access = list(ACCESS_RD)
-	var/badmin = 0
 	circuit = /obj/item/circuitboard/computer/rdservercontrol
+	req_access = list(ACCESS_RD)
+	var/list/servers = list()
+	///Connected techweb node the server is connected to.
+	var/datum/techweb/stored_research
+
+/obj/machinery/computer/rdservercontrol/Initialize(mapload, obj/item/circuitboard/C)
+	. = ..()
+	if(!CONFIG_GET(flag/no_default_techweb_link))
+		stored_research = SSresearch.science_tech
 
 /obj/machinery/computer/rdservercontrol/Topic(href, href_list)
 	if(..())
@@ -114,7 +129,7 @@
 	add_fingerprint(usr)
 	if (href_list["toggle"])
 		if(allowed(usr) || obj_flags & EMAGGED)
-			var/obj/machinery/rnd/server/S = locate(href_list["toggle"]) in SSresearch.servers
+			var/obj/machinery/rnd/server/S = locate(href_list["toggle"]) in stored_research.techweb_servers
 			S.toggle_disable(usr)
 		else
 			to_chat(usr, span_danger("Access Denied."))
@@ -128,7 +143,7 @@
 
 	dat += "<b>Connected Servers:</b>"
 	dat += "<table><tr><td style='width:25%'><b>Server</b></td><td style='width:25%'><b>Status</b></td><td style='width:25%'><b>Control</b></td>"
-	for(var/obj/machinery/rnd/server/server in GLOB.machines)
+	for(var/obj/machinery/rnd/server/server as anything in stored_research.techweb_servers)
 		var/server_info = ""
 
 		var/status_text = server.get_status_text()
@@ -143,11 +158,10 @@
 	dat += "</table></br>"
 
 	dat += "<b>Research Log</b></br>"
-	var/datum/techweb/stored_research = SSresearch.science_tech
-	if(length(stored_research.research_logs))
+	if(stored_research && length(stored_research.research_logs))
 		dat += "<table BORDER=\"1\">"
 		dat += "<tr><td><b>Entry</b></td><td><b>Research Name</b></td><td><b>Cost</b></td><td><b>Researcher Name</b></td><td><b>Console Location</b></td></tr>"
-		for(var/i=stored_research.research_logs.len, i>0, i--)
+		for(var/i = stored_research.research_logs.len, i>0, i--)
 			dat += "<tr><td>[i]</td>"
 			for(var/j in stored_research.research_logs[i])
 				dat += "<td>[j]</td>"
@@ -186,15 +200,12 @@
 	name = "\improper Master " + name
 	desc += "\nIt looks incredibly resistant to damage!"
 	source_code_hdd = new(src)
-	SSresearch.master_servers += src
 
 	add_overlay("RD-server-objective-stripes")
 
 /obj/machinery/rnd/server/master/Destroy()
 	if (source_code_hdd && (deconstruction_state == HDD_OVERLOADED))
 		QDEL_NULL(source_code_hdd)
-
-	SSresearch.master_servers -= src
 
 	return ..()
 
@@ -289,7 +300,7 @@
 			to_chat(user, span_notice("You cut the final wire and remove [source_code_hdd]."))
 			try_put_in_hand(source_code_hdd, user)
 			source_code_hdd = null
-			SSresearch.income_modifier *= 0.5
+			stored_research.income_modifier *= 0.5
 			return TRUE
 		to_chat(user, span_notice("You delicately cut the wire. [hdd_wires] wire\s left..."))
 	return TRUE

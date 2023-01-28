@@ -1,6 +1,6 @@
 /turf/open/space
 	icon = 'icons/turf/space.dmi'
-	icon_state = "0"
+	icon_state = "space"
 	name = "\proper space"
 	overfloor_placed = FALSE
 	underfloor_accessibility = UNDERFLOOR_INTERACTABLE
@@ -52,11 +52,11 @@
  */
 /turf/open/space/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)
-	icon_state = SPACE_ICON_STATE(x, y, z)
 	air = space_gas
 
-	if(flags_1 & INITIALIZED_1)
-		stack_trace("Warning: [src]([type]) initialized multiple times!")
+	if (PERFORM_ALL_TESTS(focus_only/multiple_space_initialization))
+		if(flags_1 & INITIALIZED_1)
+			stack_trace("Warning: [src]([type]) initialized multiple times!")
 	flags_1 |= INITIALIZED_1
 
 
@@ -113,7 +113,7 @@
 			if(isspaceturf(t))
 				//let's NOT update this that much pls
 				continue
-			set_light(2)
+			set_light(2, 1.25, COLOR_BLUE_WHITE)
 			return
 		set_light(0)
 
@@ -121,6 +121,8 @@
 	return attack_hand(user, modifiers)
 
 /turf/open/space/proc/CanBuildHere()
+	if(destination_z)
+		return FALSE
 	return TRUE
 
 /turf/open/space/handle_slip()
@@ -190,7 +192,7 @@
 
 /turf/open/space/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
 	underlay_appearance.icon = 'icons/turf/space.dmi'
-	underlay_appearance.icon_state = SPACE_ICON_STATE(x, y, z)
+	underlay_appearance.icon_state = "space"
 	SET_PLANE(underlay_appearance, PLANE_SPACE, src)
 	return TRUE
 
@@ -219,7 +221,7 @@
 /turf/open/space/rust_heretic_act()
 	return FALSE
 
-/turf/open/space/ReplaceWithLattice()
+/turf/open/space/attempt_lattice_replacement()
 	var/dest_x = destination_x
 	var/dest_y = destination_y
 	var/dest_z = destination_z

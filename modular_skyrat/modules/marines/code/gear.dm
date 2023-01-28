@@ -12,14 +12,12 @@
 	spread = 6
 	pin = /obj/item/firing_pin/implant/mindshield
 	can_suppress = FALSE
-	emp_damageable = FALSE
 	can_bayonet = FALSE
-	realistic = FALSE
 	mag_display = TRUE
 	mag_display_ammo = FALSE
 	mag_type = /obj/item/ammo_box/magazine/m44a
 	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
+	slot_flags = ITEM_SLOT_BELT
 	company_flag = COMPANY_NANOTRASEN
 
 /obj/item/ammo_box/magazine/m44a
@@ -79,6 +77,10 @@
 	underbarrel = new /obj/item/gun/ballistic/shotgun/automatic/as2/ubsg(src)
 	update_appearance()
 
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/shotgun/Destroy()
+	QDEL_NULL(underbarrel)
+	return ..()
+
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/shotgun/afterattack_secondary(atom/target, mob/living/user, flag, params)
 	underbarrel.afterattack(target, user, flag, params)
 	return SECONDARY_ATTACK_CONTINUE_CHAIN
@@ -102,6 +104,10 @@
 	. = ..()
 	underbarrel = new /obj/item/gun/ballistic/revolver/grenadelauncher/unrestricted(src)
 	update_appearance()
+
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/grenadelauncher/Destroy()
+	QDEL_NULL(underbarrel)
+	return ..()
 
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/grenadelauncher/afterattack_secondary(atom/target, mob/living/user, flag, params)
 	underbarrel.afterattack(target, user, flag, params)

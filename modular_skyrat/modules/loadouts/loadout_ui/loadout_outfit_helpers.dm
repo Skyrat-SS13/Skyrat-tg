@@ -46,7 +46,7 @@
 			new item.item_path(briefcase)
 
 		briefcase.name = "[preference_source.read_preference(/datum/preference/name/real_name)]'s travel suitcase"
-
+		equipOutfit(equipped_outfit, visuals_only)
 		put_in_hands(briefcase)
 	else
 		for(var/datum/loadout_item/item as anything in loadout_datums)
@@ -55,12 +55,17 @@
 					to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job restrictions!"))
 				continue
 
-			item.insert_path_into_outfit(equipped_outfit, src, visuals_only)
+			item.insert_path_into_outfit(equipped_outfit, src, visuals_only, override_preference)
 
-	equipOutfit(equipped_outfit, visuals_only)
+
+		equipOutfit(equipped_outfit, visuals_only)
 
 	for(var/datum/loadout_item/item as anything in loadout_datums)
 		item.on_equip_item(preference_source, src, visuals_only)
+
+	if(preference_source?.read_preference(/datum/preference/toggle/green_pin))
+		var/obj/item/clothing/under/uniform = w_uniform
+		uniform?.attach_accessory(new /obj/item/clothing/accessory/green_pin(), src, FALSE)
 
 	regenerate_icons()
 	return TRUE

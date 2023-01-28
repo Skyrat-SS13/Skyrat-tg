@@ -53,7 +53,7 @@
 		return FALSE
 	owner.balloon_alert(owner, "healing aura started")
 	to_chat(owner, span_danger("We emit pheromones that encourage sisters near us to heal themselves for the next [aura_duration / 10] seconds."))
-	addtimer(CALLBACK(src, .proc/aura_deactivate), aura_duration)
+	addtimer(CALLBACK(src, PROC_REF(aura_deactivate)), aura_duration)
 	aura_active = TRUE
 	aura_healing_component = owner.AddComponent(/datum/component/aura_healing, range = aura_range, requires_visibility = TRUE, brute_heal = aura_healing_amount, burn_heal = aura_healing_amount, limit_to_trait = TRAIT_XENO_HEAL_AURA, healing_color = aura_healing_color)
 	return TRUE

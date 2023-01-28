@@ -14,7 +14,9 @@
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile40x32.dmi'
 	icon_state = "irifle"
 	inhand_icon_state = "irifle"
-	worn_icon_state = null
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
+	worn_icon_state = "norwind_worn"
+	bolt_type = BOLT_TYPE_LOCKING
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/improvised
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
@@ -44,6 +46,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	force = 10
 	slot_flags = null
+	bolt_type = BOLT_TYPE_LOCKING
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/improvised
 	sawn_desc = "A break-action 12 gauge shotgun, but with most of the stock and some of the barrel removed. You still need both hands to fire this."
 	unique_reskin = null
@@ -88,22 +91,25 @@
 	if(sawn_off)
 		. += "ishotgun_sawn"
 
-/obj/item/gun/ballistic/rifle/ishotgun/sawoff(mob/user)
+/obj/item/gun/ballistic/rifle/ishotgun/sawoff(mob/user, obj/item/saw, handle_modifications = FALSE)
 	. = ..()
+	if(!.)
+		return
 	if(. && slung) //sawing off the gun removes the sling
 		new /obj/item/stack/cable_coil(get_turf(src), 10)
 		slung = 0
 		update_icon()
-		lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_left.dmi'
-		righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_right.dmi'
+	name = "sawn-off [src.name]"
+	desc = sawn_desc
+	w_class = WEIGHT_CLASS_NORMAL
+	slot_flags |= ITEM_SLOT_BELT
+	recoil = SAWN_OFF_RECOIL
+	update_appearance()
+	return TRUE
 
 /obj/item/gun/ballistic/rifle/ishotgun/sawn
 	name = "sawn-off improvised shotgun"
 	desc = "A break-action 12 gauge shotgun, but with most of the stock and some of the barrel removed. You still need both hands to fire this."
-	icon_state = "ishotgun_sawn"
-	inhand_icon_state = "ishotgun_sawn"
-	worn_icon_state = "gun"
-	worn_icon = null
 	w_class = WEIGHT_CLASS_NORMAL
 	sawn_off = TRUE
 	slot_flags = ITEM_SLOT_BELT
@@ -122,7 +128,7 @@
 	inhand_y_dimension = 64
 	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_right.dmi'
-	worn_icon_state = null
+	worn_icon_state = "gun"
 	mag_type = /obj/item/ammo_box/magazine/cm68
 	fire_delay = 5
 	can_suppress = FALSE
@@ -137,7 +143,6 @@
 	has_gun_safety = FALSE
 	w_class = WEIGHT_CLASS_BULKY
 	company_flag = COMPANY_CANTALAN
-	dirt_modifier = 0.25
 
 /obj/item/gun/ballistic/automatic/cfa_rifle/Initialize(mapload)
 	. = ..()

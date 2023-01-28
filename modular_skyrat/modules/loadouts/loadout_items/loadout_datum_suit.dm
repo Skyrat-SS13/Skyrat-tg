@@ -104,6 +104,11 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Green Labcoat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/mad
 
+/datum/loadout_item/suit/labcoat_medical
+	name = "Medical Labcoat"
+	item_path = /obj/item/clothing/suit/toggle/labcoat/medical
+	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER)
+
 /*
 *	PONCHOS
 */
@@ -164,6 +169,14 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/jacket_fancy
 	name = "Recolorable Fancy Fur Coat"
 	item_path = /obj/item/clothing/suit/jacket/fancy
+
+/datum/loadout_item/suit/tailored_jacket
+	name = "Recolorable Tailored Jacket"
+	item_path = /obj/item/clothing/suit/tailored_jacket
+
+/datum/loadout_item/suit/tailored_short_jacket
+	name = "Recolorable Tailored Short Jacket"
+	item_path = /obj/item/clothing/suit/tailored_jacket/short
 
 /datum/loadout_item/suit/ethereal_raincoat
 	name = "Ethereal Raincoat"
@@ -262,6 +275,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/recolorable_apron
 	name = "Recolorable Apron"
 	item_path = /obj/item/clothing/suit/apron/chef/colorable_apron
+
+/datum/loadout_item/suit/recolorable_overalls
+	name = "Recolorable Overalls"
+	item_path = /obj/item/clothing/suit/apron/overalls/greyscale
 
 /datum/loadout_item/suit/denim_overalls
 	name = "Denim Overalls"
@@ -591,14 +608,9 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CUSTOMS_AGENT)
 
 // LABCOATS
-/datum/loadout_item/suit/labcoat_parared
-	name = "Red Paramedic Labcoat"
-	item_path = /obj/item/clothing/suit/toggle/labcoat/para_red
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_PARAMEDIC, JOB_SECURITY_MEDIC) // its a medic jacket anyway screw you
-
 /datum/loadout_item/suit/labcoat_highvis
 	name = "High-Vis Labcoat"
-	item_path = /obj/item/clothing/suit/toggle/labcoat/highvis
+	item_path = /obj/item/clothing/suit/toggle/labcoat/skyrat/highvis
 	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_PARAMEDIC, JOB_ATMOSPHERIC_TECHNICIAN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CHEMIST, JOB_ORDERLY) // And now chemist and orderly get it too.
 
 /*

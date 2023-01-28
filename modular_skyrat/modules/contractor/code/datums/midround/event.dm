@@ -3,6 +3,7 @@
 	typepath = /datum/round_event/ghost_role/contractor
 	weight = 8
 	max_occurrences = 1
+	category = EVENT_CATEGORY_INVASION
 
 /datum/round_event/ghost_role/contractor
 	minimum_required = 1

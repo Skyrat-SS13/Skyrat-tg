@@ -7,7 +7,6 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "Central Command and the Nanotrasen Consultant"
-	selection_color = "#c6ffe0"
 	minimal_player_age = 7
 	exp_requirements = 2400
 	exp_required_type = EXP_TYPE_CREW
@@ -63,7 +62,7 @@
 	duffelbag = /obj/item/storage/backpack/duffelbag/blueshield
 	head = /obj/item/clothing/head/beret/blueshield
 	box = /obj/item/storage/box/survival/security
-	belt = /obj/item/modular_computer/tablet/pda/security
+	belt = /obj/item/modular_computer/pda/security
 
 	id_trim = /datum/id_trim/job/blueshield
 
@@ -84,7 +83,11 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/cmg(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/cmg/lethal(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/cmg/lethal(src)
-	new /obj/item/suppressor/nanotrasen(src) //why the fuck does BS need a suppressed gun is beyond me
+	new /obj/item/suppressor/nanotrasen(src)
+
+/obj/item/suppressor/nanotrasen
+	name = "NT-S suppressor"
+	desc = "A Nanotrasen brand small-arms suppressor, including a large NT logo stamped on the side."
 
 /obj/item/ammo_casing/energy/laser/hellfire/bs
 	projectile_type = /obj/projectile/beam/laser/hellfire
@@ -94,12 +97,13 @@
 /obj/item/gun/energy/laser/hellgun/blueshield
 	name = "\improper Allstar SC-3 PDW 'Hellfire'"
 	desc = "A prototype energy carbine, despite NT's ban on hellfire weaponry due to negative press. \
-            Allstar continued to work on it, compacting it into a small form-factor for personal defense. \
-            As part of the Asset Retention Program created by Nanotrasen, Allstar's prototype began to be put into use."
+		Allstar continued to work on it, compacting it into a small form-factor for personal defense. \
+		As part of the Asset Retention Program created by Nanotrasen, Allstar's prototype began to be put into use."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
 	icon_state = "hellfirepdw"
+	worn_icon_state = "hellfirepdw"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hellfire/bs)
 	company_flag = COMPANY_ALLSTAR

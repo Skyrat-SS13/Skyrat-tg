@@ -105,7 +105,7 @@
 	autoclose = TRUE
 	explosion_block = 1
 	hud_possible = list(DIAG_AIRLOCK_HUD)
-	smoothing_groups = list(SMOOTH_GROUP_AIRLOCK)
+	smoothing_groups = SMOOTH_GROUP_AIRLOCK
 
 	interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_REQUIRES_SILICON | INTERACT_MACHINE_OPEN
 	blocks_emissive = NONE // Custom emissive blocker. We don't want the normal behavior.
@@ -169,8 +169,6 @@
 	//SKYRAT EDIT END
 	init_network_id(NETWORK_DOOR_AIRLOCKS)
 	wires = set_wires()
-	if(frequency)
-		set_frequency(frequency)
 	if(glass)
 		airlock_material = "glass"
 	if(security_level > AIRLOCK_SECURITY_IRON)
@@ -188,12 +186,12 @@
 
 	diag_hud_set_electrified()
 
-	RegisterSignal(src, COMSIG_MACHINERY_BROKEN, .proc/on_break)
-	RegisterSignal(src, COMSIG_COMPONENT_NTNET_RECEIVE, .proc/ntnet_receive)
+	RegisterSignal(src, COMSIG_MACHINERY_BROKEN, PROC_REF(on_break))
+	RegisterSignal(src, COMSIG_COMPONENT_NTNET_RECEIVE, PROC_REF(ntnet_receive))
 
 	// Click on the floor to close airlocks
 	var/static/list/connections = list(
-		COMSIG_ATOM_ATTACK_HAND = .proc/on_attack_hand
+		COMSIG_ATOM_ATTACK_HAND = PROC_REF(on_attack_hand)
 	)
 	AddElement(/datum/element/connect_loc, connections)
 
@@ -264,9 +262,9 @@
 				return
 
 			if(density)
-				INVOKE_ASYNC(src, .proc/open)
+				INVOKE_ASYNC(src, PROC_REF(open))
 			else
-				INVOKE_ASYNC(src, .proc/close)
+				INVOKE_ASYNC(src, PROC_REF(close))
 
 		if("bolt")
 			if(command_value == "on" && locked)
@@ -370,6 +368,9 @@
 		update_appearance()
 
 /obj/machinery/door/airlock/bumpopen(mob/living/user)
+	if(!hasPower())
+		return
+
 	if(issilicon(user) || !iscarbon(user))
 		return ..()
 
@@ -388,7 +389,7 @@
 	return ((aiControlDisabled != AI_WIRE_DISABLED) && !isAllPowerCut())
 
 /obj/machinery/door/airlock/proc/canAIHack()
-	return ((aiControlDisabled==AI_WIRE_DISABLED) && (!hackProof) && (!isAllPowerCut()));
+	return ((aiControlDisabled == AI_WIRE_DISABLED) && (!hackProof) && (!isAllPowerCut()));
 
 /obj/machinery/door/airlock/hasPower()
 	return ((!secondsMainPowerLost || !secondsBackupPowerLost) && !(machine_stat & NOPOWER))
@@ -430,7 +431,7 @@
 			secondsBackupPowerLost = 10
 	if(!spawnPowerRestoreRunning)
 		spawnPowerRestoreRunning = TRUE
-	INVOKE_ASYNC(src, .proc/handlePowerRestore)
+	INVOKE_ASYNC(src, PROC_REF(handlePowerRestore))
 	update_appearance()
 
 /obj/machinery/door/airlock/proc/loseBackupPower()
@@ -438,7 +439,7 @@
 		secondsBackupPowerLost = 60
 	if(!spawnPowerRestoreRunning)
 		spawnPowerRestoreRunning = TRUE
-	INVOKE_ASYNC(src, .proc/handlePowerRestore)
+	INVOKE_ASYNC(src, PROC_REF(handlePowerRestore))
 	update_appearance()
 
 /obj/machinery/door/airlock/proc/regainBackupPower()
@@ -581,7 +582,7 @@
 			if(!machine_stat)
 				update_icon(ALL, AIRLOCK_DENY)
 				playsound(src,doorDeni,50,FALSE,3)
-				addtimer(CALLBACK(src, /atom/proc/update_icon, ALL, AIRLOCK_CLOSED), AIRLOCK_DENY_ANIMATION_TIME)
+				addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_icon), ALL, AIRLOCK_CLOSED), AIRLOCK_DENY_ANIMATION_TIME)
 
 /obj/machinery/door/airlock/examine(mob/user)
 	. = ..()
@@ -697,52 +698,61 @@
 
 	ui_interact(user)
 
+///Performs basic checks to make sure we are still able to hack an airlock. If control is restored early through outside means, opens the airlock's control interface.
+/obj/machinery/door/airlock/proc/check_hacking(mob/user, success_message)
+	if(QDELETED(src))
+		to_chat(user, span_warning("Connection lost! Unable to locate airlock on network."))
+		aiHacking = FALSE
+		return FALSE
+	if(canAIControl(user))
+		to_chat(user, span_notice("Alert cancelled. Airlock control has been restored without our assistance."))
+		aiHacking = FALSE
+		if(user)
+			attack_ai(user) //bring up airlock dialog
+		return
+	else if(!canAIHack())
+		to_chat(user, span_warning("Connection lost! Unable to hack airlock."))
+		aiHacking = FALSE
+		return
+	if(success_message)
+		to_chat(user, span_notice(success_message))
+	return TRUE
+
+///Attemps to override airlocks that have the AI control wire disabled.
 /obj/machinery/door/airlock/proc/hack(mob/user)
 	set waitfor = 0
 	if(!aiHacking)
 		aiHacking = TRUE
 		to_chat(user, span_warning("Airlock AI control has been blocked. Beginning fault-detection."))
 		sleep(5 SECONDS)
-		if(canAIControl(user))
-			to_chat(user, span_notice("Alert cancelled. Airlock control has been restored without our assistance."))
-			aiHacking = FALSE
+
+		if(!check_hacking(user, "Fault confirmed: airlock control wire disabled or cut."))
 			return
-		else if(!canAIHack())
-			to_chat(user, span_warning("Connection lost! Unable to hack airlock."))
-			aiHacking = FALSE
-			return
-		to_chat(user, span_notice("Fault confirmed: airlock control wire disabled or cut."))
 		sleep(2 SECONDS)
-		to_chat(user, span_notice("Attempting to hack into airlock. This may take some time."))
+
+		if(!check_hacking(user, "Attempting to hack into airlock. This may take some time."))
+			return
 		sleep(20 SECONDS)
-		if(canAIControl(user))
-			to_chat(user, span_notice("Alert cancelled. Airlock control has been restored without our assistance."))
-			aiHacking = FALSE
+
+		if(!check_hacking(user, "Upload access confirmed. Loading control program into airlock software."))
 			return
-		else if(!canAIHack())
-			to_chat(user, span_warning("Connection lost! Unable to hack airlock."))
-			aiHacking = FALSE
-			return
-		to_chat(user, span_notice("Upload access confirmed. Loading control program into airlock software."))
 		sleep(17 SECONDS)
-		if(canAIControl(user))
-			to_chat(user, span_notice("Alert cancelled. Airlock control has been restored without our assistance."))
-			aiHacking = FALSE
+
+		if(!check_hacking(user,"Transfer complete. Forcing airlock to execute program."))
 			return
-		else if(!canAIHack())
-			to_chat(user, span_warning("Connection lost! Unable to hack airlock."))
-			aiHacking = FALSE
-			return
-		to_chat(user, span_notice("Transfer complete. Forcing airlock to execute program."))
 		sleep(5 SECONDS)
-		//disable blocked control
-		aiControlDisabled = AI_WIRE_HACKED
-		to_chat(user, span_notice("Receiving control information from airlock."))
+
+		if(!check_hacking(user, "Receiving control information from airlock."))
+			return
+		aiControlDisabled = AI_WIRE_HACKED //disable blocked control
 		sleep(1 SECONDS)
-		//bring up airlock dialog
+
 		aiHacking = FALSE
+		if(QDELETED(src))
+			to_chat(user, span_warning("Connection lost! Unable to locate airlock on network."))
+			return
 		if(user)
-			attack_ai(user)
+			attack_ai(user) //bring up airlock dialog
 
 /obj/machinery/door/airlock/attack_animal(mob/user, list/modifiers)
 	if(isElectrified() && shock(user, 100))
@@ -754,7 +764,7 @@
 
 /obj/machinery/door/airlock/proc/on_attack_hand(atom/source, mob/user, list/modifiers)
 	SIGNAL_HANDLER
-	INVOKE_ASYNC(src, /atom/proc/attack_hand, user, modifiers)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, attack_hand), user, modifiers)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/door/airlock/attack_hand(mob/user, list/modifiers)
@@ -803,7 +813,7 @@
 	if(panel_open && detonated)
 		to_chat(user, span_warning("[src] has no maintenance panel!"))
 		return TOOL_ACT_TOOLTYPE_SUCCESS
-	panel_open = !panel_open
+	toggle_panel_open()
 	to_chat(user, span_notice("You [panel_open ? "open":"close"] the maintenance panel of the airlock."))
 	tool.play_tool_sound(src)
 	update_appearance()
@@ -942,7 +952,7 @@
 
 /obj/machinery/door/airlock/attackby(obj/item/C, mob/user, params)
 	if(!issilicon(user) && !isAdminGhostAI(user))
-		if(isElectrified() && shock(user, 75))
+		if(isElectrified() && (C.flags_1 & CONDUCT_1) && shock(user, 75))
 			return
 	add_fingerprint(user)
 
@@ -1019,7 +1029,7 @@
 			user.visible_message(span_notice("[user] begins welding the airlock."), \
 							span_notice("You begin repairing the airlock..."), \
 							span_hear("You hear welding."))
-			if(W.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, .proc/weld_checks, W, user)))
+			if(W.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, PROC_REF(weld_checks), W, user)))
 				atom_integrity = max_integrity
 				set_machine_stat(machine_stat & ~BROKEN)
 				user.visible_message(span_notice("[user] finishes welding [src]."), \
@@ -1034,7 +1044,7 @@
 	user.visible_message(span_notice("[user] begins [welded ? "unwelding":"welding"] the airlock."), \
 		span_notice("You begin [welded ? "unwelding":"welding"] the airlock..."), \
 		span_hear("You hear welding."))
-	if(!tool.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, .proc/weld_checks, tool, user)))
+	if(!tool.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, PROC_REF(weld_checks), tool, user)))
 		return
 	welded = !welded
 	user.visible_message(span_notice("[user] [welded? "welds shut":"unwelds"] [src]."), \
@@ -1145,7 +1155,7 @@
 		if(istype(I, /obj/item/fireaxe) && !HAS_TRAIT(I, TRAIT_WIELDED)) //being fireaxe'd
 			to_chat(user, span_warning("You need to be wielding [I] to do that!"))
 			return
-		INVOKE_ASYNC(src, (density ? .proc/open : .proc/close), 2)
+		INVOKE_ASYNC(src, density ? PROC_REF(open) : PROC_REF(close), 2)
 
 /obj/machinery/door/airlock/open(forced=0)
 	if( operating || welded || locked || seal )
@@ -1169,7 +1179,7 @@
 		return TRUE
 
 	if(closeOther != null && istype(closeOther, /obj/machinery/door/airlock))
-		addtimer(CALLBACK(closeOther, .proc/close), 2)
+		addtimer(CALLBACK(closeOther, PROC_REF(close)), 2)
 
 	if(close_others)
 		for(var/obj/machinery/door/airlock/otherlock as anything in close_others)
@@ -1177,14 +1187,14 @@
 				if(otherlock.operating)
 					otherlock.delayed_close_requested = TRUE
 				else
-					addtimer(CALLBACK(otherlock, .proc/close), 2)
+					addtimer(CALLBACK(otherlock, PROC_REF(close)), 2)
 
 	if(cyclelinkedairlock)
 		if(!shuttledocked && !emergency && !cyclelinkedairlock.shuttledocked && !cyclelinkedairlock.emergency)
 			if(cyclelinkedairlock.operating)
 				cyclelinkedairlock.delayed_close_requested = TRUE
 			else
-				addtimer(CALLBACK(cyclelinkedairlock, .proc/close), 2)
+				addtimer(CALLBACK(cyclelinkedairlock, PROC_REF(close)), 2)
 
 	SEND_SIGNAL(src, COMSIG_AIRLOCK_OPEN, forced)
 	operating = TRUE
@@ -1210,7 +1220,7 @@
 	operating = FALSE
 	if(delayed_close_requested)
 		delayed_close_requested = FALSE
-		addtimer(CALLBACK(src, .proc/close), 1)
+		addtimer(CALLBACK(src, PROC_REF(close)), 1)
 	return TRUE
 
 
@@ -1382,8 +1392,7 @@
 /obj/machinery/door/airlock/proc/on_break()
 	SIGNAL_HANDLER
 
-	if(!panel_open)
-		panel_open = TRUE
+	set_panel_open(TRUE)
 	wires.cut_all()
 
 /obj/machinery/door/airlock/emp_act(severity)
@@ -1398,7 +1407,7 @@
 	secondsElectrified = seconds
 	diag_hud_set_electrified()
 	if(secondsElectrified > MACHINE_NOT_ELECTRIFIED)
-		INVOKE_ASYNC(src, .proc/electrified_loop)
+		INVOKE_ASYNC(src, PROC_REF(electrified_loop))
 
 	if(user)
 		var/message
@@ -1452,7 +1461,6 @@
 			var/obj/item/electronics/airlock/ae
 			if(!electronics)
 				ae = new/obj/item/electronics/airlock(loc)
-				gen_access()
 				if(length(req_one_access))
 					ae.one_access = 1
 					ae.accesses = req_one_access

@@ -7,7 +7,8 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
-	icon_state = "candle"
+	icon_state = "candle_pink_off"
+	base_icon_state = "candle"
 	inhand_icon_state = "candle_pink_off"
 	w_class = WEIGHT_CLASS_TINY
 	light_color = LIGHT_COLOR_FIRE
@@ -24,19 +25,21 @@
 	var/static/list/candle_designs
 	/// Static list of possible colors for the candle
 	var/static/list/candlelights = list(
-                                "pink" = LIGHT_COLOR_FIRE,
-                                "teal" = COLOR_CYAN)
+		"pink" = LIGHT_COLOR_FIRE,
+		"teal" = COLOR_CYAN,
+	)
 
 //to change color of candle
 //create radial menu
 /obj/item/bdsm_candle/proc/populate_candle_designs()
-    candle_designs = list(
-        "pink" = image (icon = src.icon, icon_state = "candle_pink_lit"),
-        "teal" = image(icon = src.icon, icon_state = "candle_teal_lit"))
+	candle_designs = list(
+		"pink" = image(icon = src.icon, icon_state = "candle_pink_lit"),
+		"teal" = image(icon = src.icon, icon_state = "candle_teal_lit"),
+	)
 
 /obj/item/bdsm_candle/proc/update_brightness()
-    set_light_on(lit)
-    update_light()
+	set_light_on(lit)
+	update_light()
 
 /obj/item/bdsm_candle/proc/check_menu(mob/living/user)
 	if(!istype(user))
@@ -56,8 +59,8 @@
 
 /obj/item/bdsm_candle/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]_[lit ? "lit" : "off"]"
-	inhand_icon_state = "[initial(icon_state)]_[current_color]_[lit ? "lit" : "off"]"
+	icon_state = "[base_icon_state]_[current_color]_[lit ? "lit" : "off"]"
+	inhand_icon_state = "[base_icon_state]_[current_color]_[lit ? "lit" : "off"]"
 
 /obj/item/bdsm_candle/attackby(obj/item/object, mob/user, params)
 	var/msg = object.ignition_effect(src, user)
@@ -110,7 +113,7 @@
 	if(!lit)
 		if(color_changed)
 			return
-		var/choice = show_radial_menu(user, src, candle_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, candle_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		current_color = choice

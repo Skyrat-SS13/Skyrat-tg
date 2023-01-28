@@ -48,7 +48,7 @@
 		hair_hidden = TRUE
 		facial_hair_hidden = TRUE
 
-	if(!hair_hidden && !owner.getorganslot(ORGAN_SLOT_BRAIN) && !(NOBLOOD in species_flags_list))
+	if(!hair_hidden && !owner.getorganslot(ORGAN_SLOT_BRAIN) && !HAS_TRAIT(owner, TRAIT_NOBLOOD))
 		show_debrained = TRUE
 	else
 		show_debrained = FALSE
@@ -60,7 +60,7 @@
 	hair_overlay = null
 	hair_gradient_overlay = null
 
-	hair_alpha = owner_species.hair_alpha
+	hair_alpha = human_head_owner.hair_alpha ? human_head_owner.hair_alpha : owner_species.hair_alpha // SKYRAT EDIT - Customization - Hair alpha //hair_alpha = owner_species.hair_alpha // ORIGINAL
 	hair_color = human_head_owner.hair_color
 	facial_hair_color = human_head_owner.facial_hair_color
 	fixed_hair_color = owner_species.fixed_mut_color //Can be null

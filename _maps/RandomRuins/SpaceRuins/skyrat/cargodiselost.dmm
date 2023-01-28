@@ -55,12 +55,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/bridge)
-"bk" = (
-/obj/structure/table/reinforced,
-/obj/item/modular_computer/tablet/pda/clear,
-/obj/effect/turf_decal/tile/blue/fourcorners,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/cargodise_freighter/bridge)
 "bo" = (
 /obj/machinery/light/directional/north,
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
@@ -242,8 +236,11 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/cargodise_freighter/trauma)
 "fm" = (
-/obj/machinery/mineral/equipment_vendor/golem,
-/obj/effect/turf_decal/tile/brown/fourcorners,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/computer/order_console/mining{
+	forced_express = 1;
+	express_cost_multiplier = 1
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/mining)
 "fy" = (
@@ -767,7 +764,7 @@
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
 "nE" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/mob/living/simple_animal/hostile/syndicate/melee/anthro{
+/mob/living/basic/syndicate/melee/anthro{
 	desc = "An anthromorphic bandit, geared up in tactical gear.";
 	faction = list("hostile");
 	name = "Geared Pirate"
@@ -1027,7 +1024,7 @@
 	},
 /obj/item/clothing/suit/armor/riot,
 /obj/item/shield/riot,
-/obj/item/clothing/head/helmet/riot,
+/obj/item/clothing/head/helmet/toggleable/riot,
 /obj/effect/spawner/random/exotic/antag_gear,
 /obj/effect/spawner/random/exotic/antag_gear_weak,
 /obj/structure/closet/crate/secure/weapon{
@@ -1343,6 +1340,12 @@
 /obj/structure/table/reinforced,
 /obj/item/paper_bin/carbon,
 /obj/item/pen,
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/cargodise_freighter/bridge)
+"wb" = (
+/obj/structure/table/reinforced,
+/obj/item/modular_computer/pda/engineering,
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/bridge)
@@ -1779,15 +1782,6 @@
 /obj/machinery/portable_atmospherics/pump,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/cargodise_freighter/utility)
-"BM" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/mob/living/simple_animal/pet/dog/dobermann{
-	desc = "The freighter's loyal, canine companion!";
-	dir = 8;
-	name = "Ace"
-	},
-/turf/open/floor/carpet,
-/area/ruin/space/has_grav/cargodise_freighter/quarters)
 "BN" = (
 /obj/item/storage/cans/sixsoda,
 /obj/structure/cable,
@@ -2426,6 +2420,15 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/cargodise_freighter/utility)
+"Mx" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/mob/living/basic/pet/dog/dobermann{
+	desc = "The freighter's loyal, canine companion!";
+	dir = 8;
+	name = "Ace"
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/cargodise_freighter/quarters)
 "Mz" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -2498,6 +2501,12 @@
 /obj/effect/turf_decal/tile/brown/fourcorners,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/mining)
+"Ng" = (
+/obj/structure/table/reinforced,
+/obj/item/modular_computer/pda/clear,
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/cargodise_freighter/bridge)
 "Nk" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 8
@@ -2645,7 +2654,7 @@
 /obj/effect/turf_decal/bot,
 /obj/effect/spawner/random/exotic/tool,
 /obj/structure/closet/crate/secure/engineering{
-	req_one_access_txt = "150"
+	req_one_access = list("syndicate")
 	},
 /obj/effect/spawner/random/exotic/tool,
 /turf/open/floor/iron,
@@ -3103,10 +3112,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/checker,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
-"Ul" = (
-/obj/machinery/gun_vendor/no_alert,
-/turf/open/floor/wood,
-/area/ruin/space/has_grav/cargodise_freighter/quarters)
 "Um" = (
 /obj/machinery/light/directional/south,
 /turf/open/floor/wood,
@@ -3147,12 +3152,6 @@
 /obj/effect/spawner/random/engineering/flashlight,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
-"UM" = (
-/obj/structure/table/reinforced,
-/obj/item/modular_computer/tablet/pda/engineering,
-/obj/effect/turf_decal/tile/blue/fourcorners,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/cargodise_freighter/bridge)
 "UX" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/effect/turf_decal/tile/brown/fourcorners,
@@ -3294,7 +3293,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
 "Xd" = (
-/obj/structure/janitorialcart{
+/obj/structure/mop_bucket/janitorialcart{
 	dir = 4
 	},
 /obj/item/mop/advanced,
@@ -3967,7 +3966,7 @@ Zy
 qq
 eb
 lV
-BM
+Mx
 su
 su
 ZU
@@ -4319,7 +4318,7 @@ Ra
 Ra
 Ra
 IA
-Ul
+yn
 Ra
 Al
 YF
@@ -4996,7 +4995,7 @@ AC
 ww
 Vs
 am
-Vs
+fm
 Vs
 tP
 NZ
@@ -5072,7 +5071,7 @@ UX
 UX
 Qj
 RA
-fm
+RA
 gV
 Zy
 OP
@@ -5090,9 +5089,9 @@ wd
 GT
 PC
 GT
-UM
+wb
 GT
-bk
+Ng
 Yp
 PK
 lp

@@ -20,8 +20,7 @@
 	spread = 18
 	mag_type = /obj/item/ammo_box/magazine/smartgun_drum
 	can_suppress = FALSE
-	fire_delay = 0.5
-	realistic = FALSE
+	fire_delay = 0.15
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	tac_reloads = FALSE
@@ -30,6 +29,7 @@
 	mag_display_ammo = FALSE
 	mag_display = FALSE
 	company_flag = COMPANY_NANOTRASEN
+	fire_sound_volume = 30
 	/// If the gun's dustcover is open or not
 	var/cover_open = FALSE
 	/// Factions that the gun cannot shoot under any circumstances
@@ -82,7 +82,7 @@
 	. += "[base_icon_state]_door_open"
 
 /obj/item/gun/ballistic/automatic/smart_machine_gun/unrestricted
-    pin = /obj/item/firing_pin
+	pin = /obj/item/firing_pin
 // Magazine itself
 
 /obj/item/ammo_box/magazine/smartgun_drum
@@ -102,7 +102,7 @@
 
 /obj/item/ammo_casing/smart/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_CHAMBERED_BULLET_FIRE, .proc/iff_transfer)
+	RegisterSignal(src, COMSIG_CHAMBERED_BULLET_FIRE, PROC_REF(iff_transfer))
 
 /obj/item/ammo_casing/smart/proc/iff_transfer(datum/source, list/iff_factions)
 	SIGNAL_HANDLER
@@ -141,9 +141,8 @@
 /obj/projectile/bullet/smart
 	ignore_direct_target = TRUE
 
-/obj/projectile/bullet/smart/a10x28
+/obj/projectile/bullet/smart/a10x28 // utter peashooter, but it has 6000rpm
 	name = "10x28mm bullet"
-	damage = 12
-	armour_penetration = 5
-	wound_bonus = 15
+	damage = 6
+	wound_bonus = -5
 	wound_falloff_tile = 1

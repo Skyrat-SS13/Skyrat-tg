@@ -35,12 +35,6 @@
 	. = ..()
 	. += span_notice("Alt-click [src] to toggle the limb damage readout.")
 
-//SKYRAT EDIT ADDITION BEGIN
-/obj/item/healthanalyzer/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/cell)
-//SKYRAT EDIT END
-
 /obj/item/healthanalyzer/suicide_act(mob/living/carbon/user)
 	user.visible_message(span_suicide("[user] begins to analyze [user.p_them()]self with [src]! The display shows that [user.p_theyre()] dead!"))
 	return BRUTELOSS
@@ -57,10 +51,6 @@
 			to_chat(user, span_notice("You switch the health analyzer to report extra info on wounds."))
 
 /obj/item/healthanalyzer/attack(mob/living/M, mob/living/carbon/human/user)
-	//SKYRAT EDIT ADDITION
-	if(!(item_use_power(power_use_amount, user, FALSE) & COMPONENT_POWER_SUCCESS))
-		return
-	//SKYRAT EDIT END
 	if(!user.can_read(src)) //SKYRAT EDIT: Blind People Can Analyze Again
 		return
 
@@ -76,7 +66,7 @@
 				\n[span_info("Body temperature: ???")]")
 		return
 
-	if(ispodperson(M)&& !advanced)
+	if(ispodperson(M) && !advanced)
 		to_chat(user, "<span class='info'>[M]'s biological structure is too complex for the health analyzer.")
 		return
 
@@ -92,7 +82,8 @@
 	add_fingerprint(user)
 
 /obj/item/healthanalyzer/attack_secondary(mob/living/victim, mob/living/user, params)
-	if(!user.can_read(src) || !(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS)) // SKYRAT EDIT CHANGE: Blind People Can Analyze Again/Power Cost
+	//if(!user.can_read(src) || user.is_blind()) - ORIGINAL
+	if(!user.can_read(src)) // SKYRAT EDIT CHANGE - Blind people can analyse again
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	chemscan(user, victim)
@@ -282,15 +273,15 @@
 			var/missing_organs = list()
 			if(!humantarget.getorganslot(ORGAN_SLOT_BRAIN))
 				missing_organs += "brain"
-			if(!(NOBLOOD in the_dudes_species.species_traits) && !humantarget.getorganslot(ORGAN_SLOT_HEART))
+			if(!HAS_TRAIT(humantarget, TRAIT_NOBLOOD) && !humantarget.getorganslot(ORGAN_SLOT_HEART))
 				missing_organs += "heart"
 			if(!(TRAIT_NOBREATH in the_dudes_species.inherent_traits) && !humantarget.getorganslot(ORGAN_SLOT_LUNGS))
 				missing_organs += "lungs"
 			if(!(TRAIT_NOMETABOLISM in the_dudes_species.inherent_traits) && !humantarget.getorganslot(ORGAN_SLOT_LIVER))
 				missing_organs += "liver"
-			if(!(NOSTOMACH in the_dudes_species.species_traits) && !humantarget.getorganslot(ORGAN_SLOT_STOMACH))
+			if(!the_dudes_species.mutantstomach && !humantarget.getorganslot(ORGAN_SLOT_STOMACH))
 				missing_organs += "stomach"
-			if(!(NO_TONGUE in the_dudes_species.species_traits) && !humantarget.getorganslot(ORGAN_SLOT_TONGUE))
+			if(!the_dudes_species.mutanttongue && !humantarget.getorganslot(ORGAN_SLOT_TONGUE))
 				missing_organs += "tongue"
 			if(!humantarget.getorganslot(ORGAN_SLOT_EARS))
 				missing_organs += "ears"
@@ -324,7 +315,7 @@
 			|| targetspecies.mutantliver != initial(targetspecies.mutantliver) \
 			|| targetspecies.mutantstomach != initial(targetspecies.mutantstomach) \
 			|| targetspecies.mutantappendix != initial(targetspecies.mutantappendix) \
-			|| targetspecies.flying_species != initial(targetspecies.flying_species)
+			|| istype(humantarget.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS), /obj/item/organ/external/wings/functional)
 
 		render_list += "<span class='info ml-1'>Species: [targetspecies.name][mutant ? "-derived mutant" : ""]</span>\n"
 		render_list += "<span class='info ml-1'>Core temperature: [round(humantarget.coretemperature-T0C,0.1)] &deg;C ([round(humantarget.coretemperature*1.8-459.67,0.1)] &deg;F)</span>\n"
@@ -470,7 +461,6 @@
 	icon_state = "health_adv"
 	desc = "A hand-held body scanner able to distinguish vital signs of the subject with high accuracy."
 	advanced = TRUE
-	power_use_amount = POWER_CELL_USE_HIGH //SKYRAT EDIT ADDITION CHANGE
 
 /// Displays wounds with extended information on their status vs medscanners
 /proc/woundscan(mob/user, mob/living/carbon/patient, obj/item/healthanalyzer/wound/scanner)

@@ -37,7 +37,7 @@ This will not clean any inverted reagents. Inverted reagents will still be corre
 
 /obj/machinery/chem_mass_spec/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, DO_NOT_SPLASH, src.type)
+	ADD_TRAIT(src, TRAIT_DO_NOT_SPLASH, INNATE_TRAIT)
 	if(mapload)
 		beaker2 = new /obj/item/reagent_containers/cup/beaker/large(src)
 
@@ -55,8 +55,8 @@ This will not clean any inverted reagents. Inverted reagents will still be corre
 /obj/machinery/chem_mass_spec/RefreshParts()
 	. = ..()
 	cms_coefficient = 1
-	for(var/obj/item/stock_parts/micro_laser/laser in component_parts)
-		cms_coefficient /= laser.rating
+	for(var/datum/stock_part/micro_laser/laser in component_parts)
+		cms_coefficient /= laser.tier
 
 /obj/machinery/chem_mass_spec/deconstruct(disassembled)
 	if(beaker1)
@@ -219,7 +219,7 @@ This will not clean any inverted reagents. Inverted reagents will still be corre
 				var/datum/reagent/inverse_reagent = GLOB.chemical_reagents_list[reagent.inverse_chem]
 				if(inverse_reagent.mass < lower_mass_range || inverse_reagent.mass > upper_mass_range)
 					in_range = FALSE
-				beakerContents.Add(list(list("name" = inverse_reagent.name, "volume" = round(reagent.volume, 0.01), "mass" = inverse_reagent.mass, "purity" = round(1-reagent.purity, 0.01)*100, "selected" = in_range, "color" = "#b60046", "type" = "Inverted")))
+				beakerContents.Add(list(list("name" = inverse_reagent.name, "volume" = round(reagent.volume, 0.01), "mass" = inverse_reagent.mass, "purity" = round(reagent.get_inverse_purity(), 0.01)*100, "selected" = in_range, "color" = "#b60046", "type" = "Inverted")))
 				data["peakHeight"] = max(data["peakHeight"], reagent.volume)
 				continue
 			if(reagent.mass < lower_mass_range || reagent.mass > upper_mass_range)
@@ -332,7 +332,7 @@ This will not clean any inverted reagents. Inverted reagents will still be corre
 			if(inverse_reagent.mass < lower_mass_range || inverse_reagent.mass > upper_mass_range)
 				continue
 			log += list(inverse_reagent.type = "Cannot purify inverted") //Might as well make it do something - just updates the reagent's name
-			beaker2.reagents.add_reagent(reagent.inverse_chem, volume, reagtemp = beaker1.reagents.chem_temp, added_purity = 1-reagent.purity)
+			beaker2.reagents.add_reagent(reagent.inverse_chem, volume, reagtemp = beaker1.reagents.chem_temp, added_purity = reagent.get_inverse_purity())
 			beaker1.reagents.remove_reagent(reagent.type, volume)
 			continue
 
@@ -398,7 +398,6 @@ This will not clean any inverted reagents. Inverted reagents will still be corre
 			continue
 		if(reagent.mass < lower_mass_range || reagent.mass > upper_mass_range)
 			continue
-		var/inverse_purity = 1-reagent.purity
-		time += (((reagent.mass * reagent.volume) + (reagent.mass * inverse_purity * 0.1)) * 0.0035) + 10 ///Roughly 10 - 30s?
+		time += (((reagent.mass * reagent.volume) + (reagent.mass * reagent.get_inverse_purity() * 0.1)) * 0.0035) + 10 ///Roughly 10 - 30s?
 	delay_time = (time * cms_coefficient)
 	return delay_time

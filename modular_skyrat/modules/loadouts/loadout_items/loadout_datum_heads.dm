@@ -64,10 +64,6 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Greyscale Beret"
 	item_path = /obj/item/clothing/head/beret
 
-/datum/loadout_item/head/black_beret
-	name = "Black Beret"
-	item_path = /obj/item/clothing/head/beret/black
-
 /*
 *	CAPS
 */
@@ -100,9 +96,9 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Red Cap"
 	item_path = /obj/item/clothing/head/soft/red
 
-/datum/loadout_item/head/white_cap
-	name = "White Cap"
-	item_path = /obj/item/clothing/head/soft
+/datum/loadout_item/head/grey_cap
+	name = "Grey Cap"
+	item_path = /obj/item/clothing/head/soft/grey
 
 /datum/loadout_item/head/yellow_cap
 	name = "Yellow Cap"
@@ -380,40 +376,40 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 */
 
 /datum/loadout_item/head/cowboyhat
-	name = "Cowboy Hat (Brown)"
-	item_path = /obj/item/clothing/head/costume/cowboyhat
+	name = "Recolorable Cattleman Hat"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/cattleman
 
 /datum/loadout_item/head/cowboyhat_black
-	name = "Cowboy Hat (Black)"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/black
-
-/datum/loadout_item/head/cowboyhat_blackwide
-	name = "Wide Cowboy Hat (Black)"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/blackwide
+	name = "Recolorable Wide-Brimmed Cattleman Hat"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/cattleman/wide
 
 /datum/loadout_item/head/cowboyhat_wide
-	name = "Wide Cowboy Hat (Brown)"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/wide
+	name = "Wide-Brimmed Hat"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/wide
 
-/datum/loadout_item/head/cowboyhat_white
-	name = "Cowboy Hat (White)"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/white
+/datum/loadout_item/head/cowboyhat_wide_feather
+	name = "Wide-Brimmed Feathered Hat"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/wide/feathered
 
-/datum/loadout_item/head/cowboyhat_pink
-	name = "Cowboy Hat (Pink)"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/pink
+/datum/loadout_item/head/cowboyhat_flat
+	name = "Flat-Brimmed Hat"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/flat
 
-/datum/loadout_item/head/cowboyhat_winter
-	name = "Winter Cowboy Hat"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/sheriff
+/datum/loadout_item/head/cowboyhat_flat_cowl
+	name = "Flat-Brimmed Hat with Cowl"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/flat/cowl
 
 /datum/loadout_item/head/cowboyhat_sheriff
 	name = "Sheriff Hat"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/sheriff/alt
+	item_path = /obj/item/clothing/head/cowboy/skyrat/flat/sheriff
 
 /datum/loadout_item/head/cowboyhat_deputy
 	name = "Deputy Hat"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/deputy
+	item_path = /obj/item/clothing/head/cowboy/skyrat/flat/deputy
+
+/datum/loadout_item/head/cowboyhat_winter
+	name = "Winter Cowboy Hat"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/flat/cowl/sheriff
 
 /*
 *	TREK HATS (JOB-LOCKED)
@@ -470,13 +466,13 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	restricted_roles = list(JOB_CHIEF_ENGINEER)
 
 /datum/loadout_item/head/cowboyhat_sec
-	name = "Cowboy Hat, Security"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/sec
+	name = "Cattleman Hat, Security"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/cattleman/sec
 	restricted_roles = list(JOB_WARDEN,JOB_DETECTIVE,JOB_SECURITY_MEDIC,JOB_SECURITY_OFFICER,JOB_HEAD_OF_SECURITY,JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/head/cowboyhat_secwide
-	name = "Wide Cowboy Hat, Security"
-	item_path = /obj/item/clothing/head/costume/cowboyhat/wide/sec
+	name = "Wide-Brimmed Cattleman Hat, Security"
+	item_path = /obj/item/clothing/head/cowboy/skyrat/cattleman/wide/sec
 	restricted_roles = list(JOB_WARDEN,JOB_DETECTIVE,JOB_SECURITY_MEDIC,JOB_SECURITY_OFFICER,JOB_HEAD_OF_SECURITY,JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/head/ushanka/sec
@@ -551,12 +547,20 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/atmos_beret
 	name = "Atmospherics Beret"
 	item_path = /obj/item/clothing/head/beret/atmos
-	restricted_roles = list(JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_CHIEF_ENGINEER, JOB_ENGINEERING_GUARD)
+	restricted_roles = list(
+		JOB_ATMOSPHERIC_TECHNICIAN,
+		JOB_CHIEF_ENGINEER,
+	)
 
 /datum/loadout_item/head/engi_beret
 	name = "Engineering Beret"
 	item_path = /obj/item/clothing/head/beret/engi
 	restricted_roles = list(JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_CHIEF_ENGINEER, JOB_ENGINEERING_GUARD)
+
+/datum/loadout_item/head/cargo_beret
+	name = "Supply Beret"
+	item_path = /obj/item/clothing/head/beret/cargo
+	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CUSTOMS_AGENT)
 
 /datum/loadout_item/head/beret_med
 	name = "Medical Beret"

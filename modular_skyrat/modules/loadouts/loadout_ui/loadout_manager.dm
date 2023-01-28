@@ -175,12 +175,12 @@
 		src,
 		usr,
 		allowed_configs,
-		CALLBACK(src, .proc/set_slot_greyscale, colored_item),
+		CALLBACK(src, PROC_REF(set_slot_greyscale), colored_item),
 		starting_icon_state = initial(colored_item.icon_state),
 		starting_config = initial(colored_item.greyscale_config),
 		starting_colors = slot_starting_colors,
 	)
-	RegisterSignal(menu, COMSIG_PARENT_PREQDELETED, /datum/loadout_manager.proc/cleanup_greyscale_menu)
+	RegisterSignal(menu, COMSIG_PARENT_PREQDELETED, TYPE_PROC_REF(/datum/loadout_manager, cleanup_greyscale_menu))
 	menu.ui_interact(usr)
 
 /// A proc to make sure our menu gets null'd properly when it's deleted.

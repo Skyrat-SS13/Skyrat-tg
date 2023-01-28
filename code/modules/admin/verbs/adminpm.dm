@@ -396,7 +396,7 @@
 		var/already_logged = FALSE
 		// Full boinks will always be done to players, so we are not guarenteed that they won't have a ticket
 		if(!recipient_ticket)
-			new /datum/admin_help(send_message, recipient, TRUE)
+			new /datum/admin_help(send_message, recipient, TRUE, src) // SKYRAT EDIT - Handling tickets - ORIGINAL: new /datum/admin_help(send_message, recipient, TRUE)
 			already_logged = TRUE
 			// This action mutates our existing cached ticket information, so we recache
 			ticket = current_ticket
@@ -433,6 +433,12 @@
 		//always play non-admin recipients the adminhelp sound
 		SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg'))
 		return TRUE
+
+	//SKYRAT EDIT ADDITION BEGIN - ADMIN
+	// Basically, if we realized that we shouldn't've been handling the ticket, let's bail. Otherwise, we just change who's handling it.
+	if(ticket && our_holder && !ticket.handle_issue())
+		return
+	// SKYRAT EDIT END
 
 	// Ok if we're here, either this message is for an admin, or someone somehow figured out how to send a new message as a player
 	// First case well, first
@@ -549,9 +555,9 @@
 	if(ambiguious_recipient == EXTERNAL_PM_USER)
 		// Guard against the possibility of a null, since it'll runtime and spit out the contents of what should be a private ticket.
 		if(ticket)
-			log_admin_private("PM: Ticket #[ticket_id]: [our_name]->External: [raw_message]")
+			log_admin_private("PM: Ticket #[ticket_id]: [our_name]->External: [sanitize_text(trim(raw_message))]")
 		else
-			log_admin_private("PM: [our_name]->External: [raw_message]")
+			log_admin_private("PM: [our_name]->External: [sanitize_text(trim(raw_message))]")
 		for(var/client/lad in GLOB.admins)
 			to_chat(lad,
 				type = MESSAGE_TYPE_ADMINPM,
@@ -575,9 +581,9 @@
 
 	window_flash(recipient, ignorepref = TRUE)
 	if(ticket)
-		log_admin_private("PM: Ticket #[ticket_id]: [our_name]->[recipient_name]: [raw_message]")
+		log_admin_private("PM: Ticket #[ticket_id]: [our_name]->[recipient_name]: [sanitize_text(trim(raw_message))]")
 	else
-		log_admin_private("PM: [our_name]->[recipient_name]: [raw_message]")
+		log_admin_private("PM: [our_name]->[recipient_name]: [sanitize_text(trim(raw_message))]")
 	//we don't use message_admins here because the sender/receiver might get it too
 	for(var/client/lad in GLOB.admins)
 		if(lad.key == key || lad.key == recipient_key) //check to make sure client/lad isn't the sender or recipient

@@ -12,7 +12,7 @@
 #define SYSTEM_RELOADING "SYSTEM RELOADING"
 #define SYSTEM_INTERRUPTED "SYSTEM INTERRUPTED"
 
-#define SUPERWEAPON_RELOAD_TIME 30 SECONDS
+#define SUPERWEAPON_RELOAD_TIME (30 SECONDS)
 
 /datum/station_goal/bluespace_cannon
 	name = "Bluespace Artillery"
@@ -136,7 +136,7 @@
 	name = "Bluespace Artillery"
 	desc = "Long range bluespace artillery."
 	icon = 'icons/obj/lavaland/cannon.dmi'
-	icon_state = "orbital_cannon1"
+	icon_state = "cannon_west"
 	var/static/mutable_appearance/top_layer
 	use_power = NO_POWER_USE
 	var/ex_power = 5
@@ -202,7 +202,7 @@
 		system_state = SYSTEM_PREFIRE
 		message_admins("[user] has started the fire cycle of [src]! Firing at: [ADMIN_VERBOSEJMP(bullseye)]")
 		set_light(5, 5, COLOR_BLUE_LIGHT)
-		addtimer(CALLBACK(src, .proc/fire, user, bullseye), 20 SECONDS, TIMER_CLIENT_TIME)
+		addtimer(CALLBACK(src, PROC_REF(fire), user, bullseye), 20 SECONDS, TIMER_CLIENT_TIME)
 		START_PROCESSING(SSobj, src)
 	return system_state
 
@@ -279,7 +279,7 @@
 	system_state = SYSTEM_RELOADING
 	set_light(0)
 	STOP_PROCESSING(SSobj, src)
-	addtimer(CALLBACK(src, .proc/ready_cannon), SUPERWEAPON_RELOAD_TIME)
+	addtimer(CALLBACK(src, PROC_REF(ready_cannon)), SUPERWEAPON_RELOAD_TIME)
 
 /obj/machinery/bsa/full/proc/ready_cannon()
 	system_state = SYSTEM_READY
@@ -358,7 +358,7 @@
 
 /obj/item/circuitboard/machine/bsa/powercore
 	name = "Bluespace Artillery Powercore (Machine Board)"
-	icon_state = "command"
+	greyscale_colors = CIRCUIT_COLOR_COMMAND
 	build_path = /obj/machinery/bsa_powercore
 	req_components = list(
 		/obj/item/stock_parts/capacitor/quadratic = 5,

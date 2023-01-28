@@ -1,18 +1,11 @@
-#define DESTINATION_WEST_ACTIVE "west-active"
-#define DESTINATION_WEST_IDLE "west-idle"
-#define DESTINATION_CENTRAL_EASTBOUND_ACTIVE "central-eb-active"
-#define DESTINATION_CENTRAL_WESTBOUND_ACTIVE "central-wb-active"
-#define DESTINATION_CENTRAL_IDLE "central-idle"
-#define DESTINATION_EAST_ACTIVE "east-active"
-#define DESTINATION_EAST_IDLE "east-idle"
-#define DESTINATION_NOT_IN_SERVICE "NIS"
+GLOBAL_LIST_EMPTY(tram_signs)
 
 /obj/machinery/destination_sign
 	name = "destination sign"
 	desc = "A display to show you what direction the tram is travelling."
 	icon = 'icons/obj/machines/tram_sign.dmi'
-	icon_state = "desto-central-idle"
-	base_icon_state = "desto-"
+	icon_state = "desto_central_idle"
+	base_icon_state = "desto_"
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.05
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 0.02
 	anchored = TRUE
@@ -27,8 +20,8 @@
 	var/previous_destination
 
 /obj/machinery/destination_sign/indicator
-	icon_state = "indicator-central-idle"
-	base_icon_state = "indicator-"
+	icon_state = "indicator_central_idle"
+	base_icon_state = "indicator_"
 
 /obj/machinery/destination_sign/Initialize(mapload)
 	. = ..()
@@ -40,9 +33,11 @@
 
 	var/datum/lift_master/tram/tram_part = tram_ref?.resolve()
 	if(tram_part)
-		RegisterSignal(tram_part, COMSIG_TRAM_SET_TRAVELLING, .proc/on_tram_travelling)
+		RegisterSignal(tram_part, COMSIG_TRAM_SET_TRAVELLING, PROC_REF(on_tram_travelling))
+		GLOB.tram_signs += src
 
 /obj/machinery/destination_sign/Destroy()
+	GLOB.tram_signs -= src
 	. = ..()
 
 	var/datum/lift_master/tram/tram_part = tram_ref?.resolve()

@@ -42,12 +42,12 @@
 
 /datum/wound/slash/wound_injury(datum/wound/slash/old_wound = null, attack_direction)
 	if(old_wound)
-		blood_flow = max(old_wound.blood_flow, initial_flow)
+		set_blood_flow(max(old_wound.blood_flow, initial_flow))
 		if(old_wound.severity > severity && old_wound.highest_scar)
 			highest_scar = old_wound.highest_scar
 			old_wound.highest_scar = null
 	else
-		blood_flow = initial_flow
+		set_blood_flow(initial_flow)
 		if(attack_direction && victim.blood_volume > BLOOD_VOLUME_OKAY)
 			victim.spray_blood(attack_direction, severity)
 
@@ -82,7 +82,7 @@
 
 /datum/wound/slash/receive_damage(wounding_type, wounding_dmg, wound_bonus)
 	if(victim.stat != DEAD && wound_bonus != CANT_WOUND && wounding_type == WOUND_SLASH) // can't stab dead bodies to make it bleed faster this way
-		blood_flow += WOUND_SLASH_DAMAGE_FLOW_COEFF * wounding_dmg
+		adjust_blood_flow(WOUND_SLASH_DAMAGE_FLOW_COEFF * wounding_dmg)
 
 /datum/wound/slash/drag_bleed_amount()
 	// say we have 3 severe cuts with 3 blood flow each, pretty reasonable
@@ -104,7 +104,7 @@
 
 /datum/wound/slash/handle_process()
 	if(victim.stat == DEAD)
-		blood_flow -= max(clot_rate, WOUND_SLASH_DEAD_CLOT_MIN)
+		adjust_blood_flow(-max(clot_rate, WOUND_SLASH_DEAD_CLOT_MIN))
 		if(blood_flow < minimum_flow)
 			if(demotes_to)
 				replace_wound(demotes_to)
@@ -112,24 +112,24 @@
 			qdel(src)
 			return
 
-	blood_flow = min(blood_flow, WOUND_SLASH_MAX_BLOODFLOW)
+	set_blood_flow(min(blood_flow, WOUND_SLASH_MAX_BLOODFLOW))
 
 	if(HAS_TRAIT(victim, TRAIT_BLOODY_MESS))
-		blood_flow += 0.5 // old heparin used to just add +2 bleed stacks per tick, this adds 0.5 bleed flow to all open cuts which is probably even stronger as long as you can cut them first
+		adjust_blood_flow(0.5) // old heparin used to just add +2 bleed stacks per tick, this adds 0.5 bleed flow to all open cuts which is probably even stronger as long as you can cut them first
 
 	if(limb.current_gauze)
 		if(clot_rate > 0)
-			blood_flow -= clot_rate
+			adjust_blood_flow(-clot_rate)
 		//SKYRAT EDIT CHANGE BEGIN - MEDICAL
 		/*
 		blood_flow -= limb.current_gauze.absorption_rate
 		limb.seep_gauze(limb.current_gauze.absorption_rate)
 		*/
 		if(limb.current_gauze && limb.current_gauze.seep_gauze(limb.current_gauze.absorption_rate, GAUZE_STAIN_BLOOD))
-			blood_flow -= limb.current_gauze.absorption_rate
+			adjust_blood_flow(-limb.current_gauze.absorption_rate)
 		//SKYRAT EDIT CHANGE END
 	else
-		blood_flow -= clot_rate
+		adjust_blood_flow(-clot_rate)
 
 	if(blood_flow > highest_flow)
 		highest_flow = blood_flow
@@ -193,12 +193,12 @@
 
 	user.visible_message(span_notice("[user] begins licking the wounds on [victim]'s [parse_zone(limb.body_zone)]."), span_notice("You begin licking the wounds on [victim]'s [parse_zone(limb.body_zone)]..."), ignored_mobs=victim)
 	to_chat(victim, span_notice("[user] begins to lick the wounds on your [parse_zone(limb.body_zone)]."))
-	if(!do_after(user, base_treat_time, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
+	if(!do_after(user, base_treat_time, target=victim, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
 		return
 
 	user.visible_message(span_notice("[user] licks the wounds on [victim]'s [parse_zone(limb.body_zone)]."), span_notice("You lick some of the wounds on [victim]'s [parse_zone(limb.body_zone)]"), ignored_mobs=victim)
 	to_chat(victim, span_green("[user] licks the wounds on your [parse_zone(limb.body_zone)]!"))
-	blood_flow -= 0.5
+	adjust_blood_flow(-0.5)
 
 	if(blood_flow > minimum_flow)
 		try_handling(user)
@@ -207,17 +207,17 @@
 
 /datum/wound/slash/on_xadone(power)
 	. = ..()
-	blood_flow -= 0.03 * power // i think it's like a minimum of 3 power, so .09 blood_flow reduction per tick is pretty good for 0 effort
+	adjust_blood_flow(-(0.03 * power)) // i think it's like a minimum of 3 power, so .09 blood_flow reduction per tick is pretty good for 0 effort
 
 /datum/wound/slash/on_synthflesh(power)
 	. = ..()
-	blood_flow -= 0.075 * power // 20u * 0.075 = -1.5 blood flow, pretty good for how little effort it is
+	adjust_blood_flow(-(0.075 * power)) // 20u * 0.075 = -1.5 blood flow, pretty good for how little effort it is
 
 /// If someone's putting a laser gun up to our cut to cauterize it
 /datum/wound/slash/proc/las_cauterize(obj/item/gun/energy/laser/lasgun, mob/user)
 	var/self_penalty_mult = (user == victim ? 1.25 : 1)
 	user.visible_message(span_warning("[user] begins aiming [lasgun] directly at [victim]'s [parse_zone(limb.body_zone)]..."), span_userdanger("You begin aiming [lasgun] directly at [user == victim ? "your" : "[victim]'s"] [parse_zone(limb.body_zone)]..."))
-	if(!do_after(user, base_treat_time  * self_penalty_mult, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
+	if(!do_after(user, base_treat_time  * self_penalty_mult, target=victim, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
 		return
 	var/damage = lasgun.chambered.loaded_projectile.damage
 	lasgun.chambered.loaded_projectile.wound_bonus -= 30
@@ -234,7 +234,7 @@
 	var/self_penalty_mult = (user == victim ? 1.5 : 1) // 50% longer and less effective if you do it to yourself
 
 	user.visible_message(span_danger("[user] begins cauterizing [victim]'s [parse_zone(limb.body_zone)] with [used_cautery]..."), span_warning("You begin cauterizing [user == victim ? "your" : "[victim]'s"] [parse_zone(limb.body_zone)] with [used_cautery]..."))
-	if(!do_after(user, base_treat_time * self_penalty_mult * improv_penalty_mult, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
+	if(!do_after(user, base_treat_time * self_penalty_mult * improv_penalty_mult, target=victim, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
 		return
 
 	user.visible_message(span_green("[user] cauterizes some of the bleeding on [victim]."), span_green("You cauterize some of the bleeding on [victim]."))
@@ -242,7 +242,7 @@
 	if(prob(30))
 		victim.emote("scream")
 	var/blood_cauterized = (0.6 / (self_penalty_mult * improv_penalty_mult))
-	blood_flow -= blood_cauterized
+	adjust_blood_flow(-blood_cauterized)
 
 	if(blood_flow > minimum_flow)
 		try_treating(used_cautery, user)
@@ -254,11 +254,11 @@
 	var/self_penalty_mult = (user == victim ? 1.4 : 1)
 	user.visible_message(span_notice("[user] begins stitching [victim]'s [parse_zone(limb.body_zone)] with [used_suture]..."), span_notice("You begin stitching [user == victim ? "your" : "[victim]'s"] [parse_zone(limb.body_zone)] with [used_suture]..."))
 
-	if(!do_after(user, base_treat_time * self_penalty_mult, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
+	if(!do_after(user, base_treat_time * self_penalty_mult, target=victim, extra_checks = CALLBACK(src, PROC_REF(still_exists))))
 		return
 	user.visible_message(span_green("[user] stitches up some of the bleeding on [victim]."), span_green("You stitch up some of the bleeding on [user == victim ? "yourself" : "[victim]"]."))
 	var/blood_sutured = used_suture.stop_bleeding / self_penalty_mult
-	blood_flow -= blood_sutured
+	adjust_blood_flow(-blood_sutured)
 	limb.heal_damage(used_suture.heal_brute, used_suture.heal_burn)
 	used_suture.use(1)
 
@@ -324,3 +324,13 @@
 	desc = "Patient's skin has numerous small slashes and cuts, generating moderate blood loss."
 	examine_desc = "has a ton of small cuts"
 	occur_text = "is cut numerous times, leaving many small slashes."
+
+// Subtype for cleave (heretic spell)
+/datum/wound/slash/critical/cleave
+	name = "Burning Avulsion"
+	examine_desc = "is ruptured, spraying blood wildly"
+	clot_rate = 0.01
+
+/datum/wound/slash/critical/cleave/update_descriptions()
+	if(no_bleeding)
+		occur_text = "is ruptured"

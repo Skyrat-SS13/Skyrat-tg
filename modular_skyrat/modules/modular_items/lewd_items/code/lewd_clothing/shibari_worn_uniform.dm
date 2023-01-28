@@ -43,12 +43,12 @@
 
 /obj/item/clothing/under/shibari/equipped(mob/user, slot)
 	. = ..()
-	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, .proc/handle_take_off, user)
+	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, PROC_REF(handle_take_off), user)
 
 
 /obj/item/clothing/under/shibari/proc/handle_take_off(datum/source, mob/user)
 	SIGNAL_HANDLER
-	INVOKE_ASYNC(src, .proc/handle_take_off_async, user)
+	INVOKE_ASYNC(src, PROC_REF(handle_take_off_async), user)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /obj/item/clothing/under/shibari/proc/handle_take_off_async(mob/user)

@@ -1,6 +1,6 @@
 /obj/item/circuitboard/machine/rna_recombinator
 	name = "RNA Recombinator (Machine Board)"
-	icon_state = "science"
+	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/rnd/rna_recombinator
 	req_components = list(
 		/obj/item/stock_parts/scanning_module = 1,
@@ -22,17 +22,21 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 3000, /datum/material/silver = 1000)
 	build_path = /obj/item/rna_vial
-	category = list(RND_CATEGORY_EQUIPMENT)
+	category = list(
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_MEDICAL + RND_SUBCATEGORY_EQUIPMENT_SCIENCE
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/rna_extractor
-	name = "Empty RNA vial"
+	name = "RNA Extractor Device"
 	desc = "An RNA extraction device, use this on any subect you'd like to extract RNA data from, needs RNA vials to work."
 	id = "rna_extractor"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 3000, /datum/material/gold = 3000, /datum/material/uranium = 1000, /datum/material/diamond = 1000)
 	build_path = /obj/item/rna_extractor
-	category = list(RND_CATEGORY_EQUIPMENT)
+	category = list(
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_MEDICAL + RND_SUBCATEGORY_EQUIPMENT_SCIENCE
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/board/rna_recombinator

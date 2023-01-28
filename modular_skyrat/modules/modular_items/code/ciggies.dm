@@ -23,21 +23,24 @@
 	icon_off = "cigar2off"
 
 /datum/action/item_action/toggle_lit
-    name = "Light"
-    desc = "Light or extinguish the holocigarette"
+	name = "Light"
+	desc = "Light or extinguish the holocigarette"
 
 /datum/action/item_action/toggle_lit/Trigger(trigger_flags)
 	var/obj/item/clothing/mask/holocigarette/smoked = target
 	var/mob/living/carbon/smoker = owner
 	if(smoked.lit == FALSE)
 		smoked.icon_state = smoked.icon_on
+		smoked.worn_icon_state = smoked.icon_on
 		smoked.inhand_icon_state = smoked.icon_on
 		smoked.lit = TRUE
 		smoked.name = "lit [smoked.name]"
 	else
 		smoked.icon_state = smoked.icon_off
+		smoked.worn_icon_state = smoked.icon_off
 		smoked.inhand_icon_state = smoked.icon_off
 		smoked.lit = FALSE
 		smoked.name = copytext_char(smoked.name, 5) //5 == length_char("lit ") + 1
 	smoked.update_icon()
 	smoker.update_worn_mask()
+	smoker.update_held_items()

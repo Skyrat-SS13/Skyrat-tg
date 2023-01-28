@@ -24,7 +24,7 @@
 /datum/action/cooldown/alien/acid/skyrat
 	name = "Spit Neurotoxin"
 	desc = "Spits neurotoxin at someone, exhausting them."
-	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
+	button_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	button_icon_state = "neurospit_0"
 	plasma_cost = 40
 	/// A singular projectile? Use this one and leave acid_casing null
@@ -40,7 +40,7 @@
 	shared_cooldown = MOB_SHARED_COOLDOWN_3
 	cooldown_time = 5 SECONDS
 
-/datum/action/cooldown/alien/acid/skyrat/IsAvailable()
+/datum/action/cooldown/alien/acid/skyrat/IsAvailable(feedback = FALSE)
 	return ..() && isturf(owner.loc)
 
 /datum/action/cooldown/alien/acid/skyrat/set_click_ability(mob/on_who)
@@ -51,7 +51,7 @@
 	to_chat(on_who, span_notice("You prepare your [projectile_name] gland. <B>Left-click to fire at a target!</B>"))
 
 	button_icon_state = "[button_base_icon]_1"
-	UpdateButtons()
+	build_all_button_icons()
 	on_who.update_icons()
 
 /datum/action/cooldown/alien/acid/skyrat/unset_click_ability(mob/on_who, refund_cooldown = TRUE)
@@ -63,7 +63,7 @@
 		to_chat(on_who, span_notice("You empty your [projectile_name] gland."))
 
 	button_icon_state = "[button_base_icon]_0"
-	UpdateButtons()
+	build_all_button_icons()
 	on_who.update_icons()
 
 /datum/action/cooldown/alien/acid/skyrat/InterceptClickOn(mob/living/caller, params, atom/target)

@@ -142,7 +142,7 @@
 	resolve_parent.add_fingerprint(user)
 	attempt_remove(gun_to_draw, get_turf(user))
 	playsound(resolve_parent, 'modular_skyrat/modules/sec_haul/sound/holsterout.ogg', 50, TRUE, -5)
-	INVOKE_ASYNC(user, /mob/.proc/put_in_hands, gun_to_draw)
+	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob, put_in_hands), gun_to_draw)
 	user.visible_message(span_warning("[user] draws [gun_to_draw] from [resolve_parent]!"), span_notice("You draw [gun_to_draw] from [resolve_parent]."))
 
 /*
@@ -171,6 +171,7 @@
 
 /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch
 	icon_state = "security_eyepatch"
+	base_icon_state = "security_eyepatch"
 
 /obj/item/clothing/glasses/hud/security/night
 	icon_state = "security_hud_nv"
@@ -190,32 +191,40 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "security_helmet"
-	toggle_message = "You pull the visor down on"
-	alt_toggle_message = "You push the visor up on"
+	base_icon_state = "security_helmet"
 	actions_types = list(/datum/action/item_action/toggle)
-	can_toggle = TRUE
-	toggle_cooldown = 0
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
 	flags_cover = HEADCOVERSEYES | PEPPERPROOF
 	visor_flags_cover = HEADCOVERSEYES | PEPPERPROOF
+	dog_fashion = null
 
-//Need to do some fuckery to make sure the mounted light preserves the current visor instead of throwing a fit sprite-wise
+	///chat message when the visor is toggled down.
+	var/toggle_message = "You pull the visor down on"
+	///chat message when the visor is toggled up.
+	var/alt_toggle_message = "You push the visor up on"
+	///Can toggle?
+	var/can_toggle = TRUE
+
+/// Duplication of toggleable logic - only way to make it toggleable without worse hacks due to being in base maps.
 /obj/item/clothing/head/helmet/sec/attack_self(mob/user)
-	if(can_toggle && !user.incapacitated())
-		if(world.time > cooldown + toggle_cooldown)
-			cooldown = world.time
-			up = !up
-			flags_1 ^= visor_flags
-			flags_inv ^= visor_flags_inv
-			flags_cover ^= visor_flags_cover
-			icon_state = "[initial(icon_state)][up ? "up" : ""]"
-			//End of our only change
-			to_chat(user, span_notice("[up ? alt_toggle_message : toggle_message] \the [src]."))
+	. = ..()
+	if(.)
+		return
+	if(user.incapacitated() || !can_toggle)
+		return
+	up = !up
+	flags_1 ^= visor_flags
+	flags_inv ^= visor_flags_inv
+	flags_cover ^= visor_flags_cover
+	// This part is changed to work with the seclight.
+	base_icon_state = "[initial(icon_state)][up ? "up" : ""]"
+	update_icon_state()
+	to_chat(user, span_notice("[up ? alt_toggle_message : toggle_message] \the [src]."))
 
-			user.update_worn_head()
-			if(iscarbon(user))
-				var/mob/living/carbon/C = user
-				C.head_update(src, forced = 1)
+	user.update_worn_head()
+	if(iscarbon(user))
+		var/mob/living/carbon/carbon_user = user
+		carbon_user.head_update(src, forced = TRUE)
 
 //Beret replacement
 /obj/item/clothing/head/security_garrison
@@ -225,7 +234,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "garrison_black"
 	uses_advanced_reskins = TRUE
-	armor = list(MELEE = 30, BULLET = 25, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50)
+	armor_type = /datum/armor/head_security_garrison
 	strip_delay = 60
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	unique_reskin = list(
@@ -240,6 +249,16 @@
 	)
 
 //Normal Cap
+
+/datum/armor/head_security_garrison
+	melee = 30
+	bullet = 25
+	laser = 25
+	energy = 35
+	bomb = 25
+	fire = 20
+	acid = 50
+
 /obj/item/clothing/head/security_cap
 	name = "security cap"
 	desc = "A robust cap with the security insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
@@ -247,7 +266,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "security_cap_black"
 	uses_advanced_reskins = TRUE
-	armor = list(MELEE = 30, BULLET = 25, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50)
+	armor_type = /datum/armor/head_security_cap
 	strip_delay = 60
 	dog_fashion = null
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
@@ -265,6 +284,15 @@
 			RESKIN_WORN_ICON_STATE = "security_cap_white"
 		),
 	)
+
+/datum/armor/head_security_cap
+	melee = 30
+	bullet = 25
+	laser = 25
+	energy = 35
+	bomb = 25
+	fire = 20
+	acid = 50
 
 /obj/item/clothing/head/hats/hos
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
@@ -457,7 +485,7 @@
 //Security Wintercoat (and hood)
 /obj/item/clothing/head/hooded/winterhood/security
 	desc = "A blue, armour-padded winter hood. Definitely not bulletproof, especially not the part where your face goes." //God dammit TG stop putting color in the desc of items like this
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "security_wintercoat_hood"
 
@@ -574,16 +602,16 @@
 	. = ..()
 
 //PDA Greyscale Overrides
-/obj/item/modular_computer/tablet/pda/security
+/obj/item/modular_computer/pda/security
 	greyscale_colors = "#2B356D#1E1E1E"
 
-/obj/item/modular_computer/tablet/pda/detective
+/obj/item/modular_computer/pda/detective
 	greyscale_colors = "#90714F#1E1E1E"
 
-/obj/item/modular_computer/tablet/pda/warden
+/obj/item/modular_computer/pda/warden
 	greyscale_colors = "#2F416E#1E1E1E#ACACAC"
 
-/obj/item/modular_computer/tablet/pda/heads/hos
+/obj/item/modular_computer/pda/heads/hos
 	greyscale_colors = "#2B356D#1E1E1E"
 
 /*
@@ -611,6 +639,7 @@
 	icon = 'icons/obj/clothing/glasses.dmi'
 	worn_icon = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "hudpatch"
+	base_icon_state = "hudpatch"
 
 /obj/item/clothing/glasses/hud/security/night/redsec
 	icon = 'icons/obj/clothing/glasses.dmi'
@@ -664,9 +693,10 @@
 */
 
 /obj/item/clothing/head/helmet/sec/redsec
-	icon = 'icons/obj/clothing/head/hats.dmi'
-	worn_icon = 'icons/mob/clothing/head/hats.dmi'
+	icon = 'icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'icons/mob/clothing/head/helmet.dmi'
 	icon_state = "helmet"
+	base_icon_state = "helmet"
 	actions_types = null
 	can_toggle = FALSE
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON

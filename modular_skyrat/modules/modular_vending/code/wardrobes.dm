@@ -1,13 +1,14 @@
 /obj/machinery/vending/wardrobe/medi_wardrobe
 	skyrat_products = list(
 		/obj/item/radio/headset/headset_med = 3,
-		/obj/item/clothing/gloves/color/latex/nitrile = 2,
-		/obj/item/clothing/suit/toggle/labcoat/hospitalgown = 5,
+		/obj/item/clothing/gloves/latex/nitrile = 2,
+		/obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown = 5,
 		/obj/item/storage/belt/medbandolier = 2,
 		/obj/item/clothing/under/rank/engineering/engineer/skyrat/hazard_chem/emt = 2,
 		/obj/item/clothing/under/rank/medical/scrubs/skyrat/red = 4,
 		/obj/item/clothing/under/rank/medical/scrubs/skyrat/white = 4,
 		/obj/item/clothing/under/rank/medical/doctor/skyrat/utility = 4,
+		/obj/item/clothing/suit/toggle/labcoat/medical = 4
 	)
 
 /obj/machinery/vending/wardrobe/engi_wardrobe
@@ -19,15 +20,16 @@
 		/obj/item/clothing/under/misc/overalls = 3,
 		/obj/item/clothing/suit/toggle/jacket/engi = 3,
 		/obj/item/clothing/head/utility/hardhat/orange = 2,
-		/obj/item/clothing/head/utility/hardhat/weldhat/orange = 2,
+		/obj/item/clothing/head/utility/hardhat/welding/orange = 2,
 		/obj/item/clothing/head/utility/hardhat/dblue = 2,
-		/obj/item/clothing/head/utility/hardhat/weldhat/dblue = 2,
+		/obj/item/clothing/head/utility/hardhat/welding/dblue = 2,
 		/obj/item/clothing/head/utility/hardhat/red = 2
 	)
 
 /obj/machinery/vending/wardrobe/atmos_wardrobe
 	skyrat_products = list(
 		/obj/item/clothing/glasses/meson/engine = 2,
+		/obj/item/clothing/head/beret/atmos = 4,
 	)
 
 /obj/machinery/vending/wardrobe/cargo_wardrobe
@@ -35,11 +37,12 @@
 		/obj/item/clothing/under/rank/cargo/tech/skyrat/long = 3,
 		/obj/item/clothing/under/rank/cargo/tech/skyrat/gorka = 3,
 		/obj/item/clothing/under/rank/cargo/tech/skyrat/turtleneck = 3,
+		/obj/item/clothing/under/rank/cargo/tech/skyrat/turtleneck/skirt = 3,
 		/obj/item/clothing/under/rank/cargo/tech/skyrat/utility = 3,
 		/obj/item/clothing/under/rank/cargo/tech/skyrat/casualman = 3,
 		/obj/item/clothing/suit/gorka/supply = 3,
 		/obj/item/clothing/suit/toggle/jacket/supply = 3,
-		/obj/item/clothing/glasses/hud/gun_permit = 5, //from Gun_Cargo module
+		/obj/item/clothing/glasses/hud/gun_permit = 5, //from company imports module
 	)
 
 	skyrat_contraband = list(
@@ -123,9 +126,9 @@
 		/obj/item/clothing/suit/toggle/deckard = 2,
 		/obj/item/clothing/suit/armor/vest/det_suit/runner = 2,
 		/obj/item/clothing/under/rank/security/detective/runner = 2,
-		/obj/item/clothing/suit/toggle/labcoat/highvis = 2,
+		/obj/item/clothing/suit/toggle/labcoat/skyrat/highvis = 2,
 		/obj/item/clothing/under/rank/security/detective/cowboy = 2,
-		/obj/item/clothing/suit/det_suit/cowboyvest = 2,
+		/obj/item/clothing/suit/jacket/det_suit/cowboyvest = 2,
 	)
 
 /obj/machinery/vending/wardrobe/law_wardrobe
@@ -216,8 +219,8 @@
 /obj/machinery/vending/wardrobe/medi_wardrobe/ghost_cafe
 	skyrat_products = list(
 		/obj/item/radio/headset/headset_med = 0,
-		/obj/item/clothing/gloves/color/latex/nitrile = 2,
-		/obj/item/clothing/suit/toggle/labcoat/hospitalgown = 5,
+		/obj/item/clothing/gloves/latex/nitrile = 2,
+		/obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown = 5,
 		/obj/item/storage/belt/medbandolier = 2,
 		/obj/item/clothing/under/rank/engineering/engineer/skyrat/hazard_chem/emt = 2,
 		/obj/item/clothing/under/rank/medical/scrubs/skyrat/red = 4,
@@ -234,8 +237,8 @@
 		/obj/item/clothing/under/misc/overalls = 3,
 		/obj/item/clothing/suit/toggle/jacket/engi = 3,
 		/obj/item/clothing/head/utility/hardhat/orange = 2,
-		/obj/item/clothing/head/utility/hardhat/weldhat/orange = 2,
+		/obj/item/clothing/head/utility/hardhat/welding/orange = 2,
 		/obj/item/clothing/head/utility/hardhat/dblue = 2,
-		/obj/item/clothing/head/utility/hardhat/weldhat/dblue = 2,
+		/obj/item/clothing/head/utility/hardhat/welding/dblue = 2,
 		/obj/item/clothing/head/utility/hardhat/red = 2
 	)

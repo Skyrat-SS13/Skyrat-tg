@@ -6,7 +6,7 @@
 	righthand_file = 'icons/mob/inhands/clothing/suits_righthand.dmi'
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	slot_flags = ITEM_SLOT_ICLOTHING
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 0, ACID = 0, WOUND = 5)
+	armor_type = /datum/armor/clothing_under
 	equip_sound = 'sound/items/equip/jumpsuit_equip.ogg'
 	drop_sound = 'sound/items/handling/cloth_drop.ogg'
 	pickup_sound = 'sound/items/handling/cloth_pickup.ogg'
@@ -21,7 +21,10 @@
 	var/alt_covers_chest = FALSE // for adjusted/rolled-down jumpsuits, FALSE = exposes chest and arms, TRUE = exposes arms only
 	var/obj/item/clothing/accessory/attached_accessory
 	var/mutable_appearance/accessory_overlay
-	var/freshly_laundered = FALSE
+
+/datum/armor/clothing_under
+	bio = 10
+	wound = 5
 
 /obj/item/clothing/under/Initialize(mapload)
 	. = ..()
@@ -56,7 +59,7 @@
 
 	return screentip_change ? CONTEXTUAL_SCREENTIP_SET : NONE
 
-/obj/item/clothing/under/worn_overlays(mutable_appearance/standing, isinhands = FALSE)
+/obj/item/clothing/under/worn_overlays(mutable_appearance/standing, isinhands = FALSE, file2use = null, mutant_styles = NONE)
 	. = ..()
 	if(isinhands)
 		return
@@ -66,7 +69,7 @@
 	if(GET_ATOM_BLOOD_DNA_LENGTH(src))
 		. += mutable_appearance('icons/effects/blood.dmi', "uniformblood")
 	if(accessory_overlay)
-		. += accessory_overlay
+		. += modify_accessory_overlay() // SKYRAT EDIT CHANGE - ORIGINAL: . += accessory_overlay
 
 /obj/item/clothing/under/attackby(obj/item/I, mob/user, params)
 	if((has_sensor == BROKEN_SENSORS) && istype(I, /obj/item/stack/cable_coil))
@@ -138,12 +141,6 @@
 		H.fan_hud_set_fandom()
 		if(attached_accessory.above_suit)
 			H.update_worn_oversuit()
-
-/obj/item/clothing/under/equipped(mob/living/user, slot)
-	..()
-	if((slot & ITEM_SLOT_ICLOTHING) && freshly_laundered)
-		freshly_laundered = FALSE
-		user.add_mood_event("fresh_laundry", /datum/mood_event/fresh_laundry)
 
 /obj/item/clothing/under/dropped(mob/user)
 	if(attached_accessory)
@@ -234,8 +231,6 @@
 
 /obj/item/clothing/under/examine(mob/user)
 	. = ..()
-	if(freshly_laundered)
-		. += "It looks fresh and clean."
 	if(can_adjust)
 		if(adjusted == ALT_STYLE)
 			. += "Alt-click on [src] to wear it normally."

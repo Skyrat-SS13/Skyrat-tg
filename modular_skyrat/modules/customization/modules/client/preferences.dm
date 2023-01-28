@@ -2,7 +2,7 @@
 /datum/preferences/proc/sanitize_languages()
 	var/languages_edited = FALSE
 	for(var/lang_path as anything in languages)
-		if(isnull(lang_path))
+		if(!lang_path)
 			languages.Remove(lang_path)
 			languages_edited = TRUE
 			continue
@@ -19,14 +19,14 @@
 /datum/preferences/proc/sanitize_quirks()
 	var/quirks_edited = FALSE
 	for(var/datum/quirk/quirk as anything in all_quirks)
-		if(isnull(quirk))
+		if(!quirk || !(quirk in SSquirks.quirks))
 			all_quirks.Remove(quirk)
 			quirks_edited = TRUE
 			continue
 
-		quirk = new quirk()
+		quirk = SSquirks.quirks[quirk]
 		// Explanation for this is above.
-		if(!(quirk.type in subtypesof(/datum/quirk)) || quirk.hidden_quirk)
+		if(!quirk || initial(quirk.hidden_quirk))
 			all_quirks.Remove(quirk)
 			quirks_edited = TRUE
 

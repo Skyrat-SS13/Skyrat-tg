@@ -7,7 +7,7 @@
 // Takes care blood loss and regeneration
 /mob/living/carbon/human/handle_blood(delta_time, times_fired)
 
-	if(NOBLOOD in dna.species.species_traits || HAS_TRAIT(src, TRAIT_NOBLEED) || (HAS_TRAIT(src, TRAIT_FAKEDEATH)))
+	if(HAS_TRAIT(src, TRAIT_NOBLOOD) || (HAS_TRAIT(src, TRAIT_FAKEDEATH)))
 		return
 
 	if(bodytemperature < BLOOD_STOP_TEMP || (HAS_TRAIT(src, TRAIT_HUSK))) //cold or husked people do not pump the blood.
@@ -42,6 +42,7 @@
 		if(BLOOD_VOLUME_EXCESS to BLOOD_VOLUME_MAX_LETHAL)
 			if(DT_PROB(7.5, delta_time))
 				to_chat(src, span_userdanger("Blood starts to tear your skin apart. You're going to burst!"))
+				investigate_log("has been gibbed by having too much blood.", INVESTIGATE_DEATHS)
 				inflate_gib()
 		if(blood_volume_max to BLOOD_VOLUME_EXCESS) // SKYRAT EDIT - Oversized quirk - ORIGINAL: if(BLOOD_VOLUME_MAXIMUM to BLOOD_VOLUME_EXCESS)
 			if(DT_PROB(5, delta_time))
@@ -53,7 +54,7 @@
 		if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
 			adjustOxyLoss(round(0.01 * (blood_volume_normal - blood_volume) * delta_time, 1)) //SKYRAT EDIT CHANGE - Oversized quirk
 			if(DT_PROB(2.5, delta_time))
-				blur_eyes(6)
+				set_eye_blur_if_lower(12 SECONDS)
 				to_chat(src, span_warning("You feel very [word]."))
 		if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
 			adjustOxyLoss(2.5 * delta_time)
@@ -62,6 +63,7 @@
 				to_chat(src, span_warning("You feel extremely [word]."))
 		if(-INFINITY to BLOOD_VOLUME_SURVIVE)
 			if(!HAS_TRAIT(src, TRAIT_NODEATH))
+				investigate_log("has died of bloodloss.", INVESTIGATE_DEATHS)
 				death()
 
 	var/temp_bleed = 0
@@ -94,7 +96,7 @@
 
 /mob/living/carbon/human/bleed(amt)
 	amt *= physiology.bleed_mod
-	if(!(NOBLOOD in dna.species.species_traits))
+	if(!HAS_TRAIT(src, TRAIT_NOBLOOD))
 		..()
 
 /// A helper to see how much blood we're losing per tick
@@ -108,7 +110,7 @@
 	return bleed_amt
 
 /mob/living/carbon/human/get_bleed_rate()
-	if((NOBLOOD in dna.species.species_traits))
+	if(HAS_TRAIT(src, TRAIT_NOBLOOD))
 		return
 	. = ..()
 	. *= physiology.bleed_mod
@@ -173,7 +175,7 @@
 	COOLDOWN_START(src, bleeding_message_cd, next_cooldown)
 
 /mob/living/carbon/human/bleed_warn(bleed_amt = 0, forced = FALSE)
-	if(!(NOBLOOD in dna.species.species_traits))
+	if(!HAS_TRAIT(src, TRAIT_NOBLOOD))
 		return ..()
 
 /mob/living/proc/restore_blood()
@@ -285,7 +287,7 @@
 		return /datum/reagent/colorful_reagent
 	if(dna.species.exotic_blood)
 		return dna.species.exotic_blood
-	else if((NOBLOOD in dna.species.species_traits))
+	else if(HAS_TRAIT(src, TRAIT_NOBLOOD))
 		return
 	return /datum/reagent/blood
 
@@ -356,7 +358,7 @@
 		B.add_blood_DNA(temp_blood_DNA)
 
 /mob/living/carbon/human/add_splatter_floor(turf/T, small_drip)
-	if(!(NOBLOOD in dna.species.species_traits))
+	if(!HAS_TRAIT(src, TRAIT_NOBLOOD))
 		..()
 
 /mob/living/carbon/alien/add_splatter_floor(turf/T, small_drip)

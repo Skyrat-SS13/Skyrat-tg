@@ -12,7 +12,7 @@
 #define DESTROY_AI_PROB(denominator) (100 / denominator)
 
 /// Generates a complete set of traitor objectives up to the traitor objective limit, including non-generic objectives such as martyr and hijack.
-/datum/antagonist/traitor/saboteur/forge_traitor_objectives()
+/datum/antagonist/traitor/forge_traitor_objectives()
 	objectives.Cut()
 
 	var/objective_count = 0
@@ -30,7 +30,7 @@
 
 
 /// Adds a generic kill or steal objective to this datum's objective list.
-/datum/antagonist/traitor/saboteur/proc/forge_single_generic_objective()
+/datum/antagonist/traitor/proc/forge_single_generic_objective()
 	if(prob(KILL_PROB))
 		var/list/active_ais = active_ais()
 		if(length(active_ais) && prob(DESTROY_AI_PROB(length(GLOB.joined_player_list))))
@@ -54,7 +54,7 @@
  *
  * Forges the endgame objective and adds it to this datum's objective list.
  */
-/datum/antagonist/traitor/saboteur/proc/forge_ending_objective()
+/datum/antagonist/traitor/proc/forge_ending_objective()
 	if(is_hijacker)
 		ending_objective = new /datum/objective/hijack
 		ending_objective.owner = owner
@@ -79,7 +79,7 @@
 	objectives += ending_objective
 
 /// Forges a single escape objective and adds it to this datum's objective list.
-/datum/antagonist/traitor/saboteur/proc/forge_escape_objective()
+/datum/antagonist/traitor/proc/forge_escape_objective()
 	var/is_martyr = prob(MARTYR_PROB)
 	var/martyr_compatibility = TRUE
 

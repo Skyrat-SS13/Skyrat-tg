@@ -7,7 +7,6 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = SUPERVISOR_HOS
-	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 120
 	exp_required_type = EXP_TYPE_CREW
@@ -48,10 +47,10 @@
 	name = "Security Medic"
 	jobtype = /datum/job/security_medic
 
-	belt = /obj/item/modular_computer/tablet/pda/security
+	belt = /obj/item/modular_computer/pda/security
 	ears = /obj/item/radio/headset/headset_medsec
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/security_medic
-	gloves = /obj/item/clothing/gloves/color/latex/nitrile
+	gloves = /obj/item/clothing/gloves/latex/nitrile
 	shoes = /obj/item/clothing/shoes/jackboots/sec
 	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/security_medic
@@ -100,9 +99,9 @@
 
 /obj/structure/closet/secure_closet/security_medic/PopulateContents()
 	..()
-	new /obj/item/clothing/suit/toggle/labcoat/security_medic(src)
+	new /obj/item/clothing/suit/toggle/labcoat/skyrat/security_medic(src)
 	new /obj/item/clothing/suit/hazardvest/security_medic(src)
-	new /obj/item/clothing/suit/toggle/labcoat/security_medic/blue(src)
+	new /obj/item/clothing/suit/toggle/labcoat/skyrat/security_medic/blue(src)
 	new /obj/item/clothing/suit/hazardvest/security_medic/blue(src)
 	new /obj/item/clothing/head/helmet/sec/peacekeeper/security_medic(src)
 	new /obj/item/clothing/under/rank/security/peacekeeper/tactical(src)

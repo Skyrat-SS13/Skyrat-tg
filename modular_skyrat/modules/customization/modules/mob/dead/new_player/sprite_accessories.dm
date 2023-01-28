@@ -8,7 +8,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 #define SPRITE_ACCESSORY_HIDE_SHOES (1<<2)
 
 /datum/sprite_accessory
-	///Unique key of an accessroy. All tails should have "tail", ears "ears" etc.
+	///Unique key of an accessory. All tails should have "tail", ears "ears" etc.
 	var/key = null
 	///If an accessory is special, it wont get included in the normal accessory lists
 	var/special = FALSE
@@ -43,7 +43,9 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	var/special_x_dimension
 	///Special case of whether the accessory should have a different icon, check taur genitals for example
 	var/special_icon_case
-	///Special case of applying a different color, like MODsuit tails
+	///Special case for MODsuit overlays
+	var/use_custom_mod_icon
+	///Special case of applying a different color
 	var/special_colorize
 	///Whether it has any extras to render, and their appropriate color sources
 	var/extra = FALSE
@@ -103,7 +105,11 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/proc/get_special_x_dimension(mob/living/carbon/human/H, passed_state)
 	return 0
 
-/datum/sprite_accessory/proc/get_default_color(var/list/features, var/datum/species/pref_species) //Needs features for the color information
+// A proc for accessories which have 'use_custom_mod_icon' set to TRUE
+/datum/sprite_accessory/proc/get_custom_mod_icon(mob/living/carbon/human/owner)
+	return null
+
+/datum/sprite_accessory/proc/get_default_color(list/features, datum/species/pref_species) //Needs features for the color information
 	var/list/colors
 	switch(default_color)
 		if(DEFAULT_PRIMARY)
@@ -142,11 +148,24 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER)
 	genetic = TRUE
 
-/datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	var/obj/item/organ/external/tail/tail = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
-	if(!tail || (H.wear_suit && (H.try_hide_mutant_parts || H.wear_suit.flags_inv & HIDETAIL || H.wear_suit.flags_inv & HIDESPINE)))
+/datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/bodypart)
+	var/obj/item/organ/external/tail/tail = wearer.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+	if(!wearer.w_uniform && !wearer.wear_suit)
+		return FALSE
+	//	Can hide if wearing uniform
+	if(key in wearer.try_hide_mutant_parts)
 		return TRUE
-	return FALSE
+	if(wearer.wear_suit)
+	//	Exception for MODs
+		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
+			return FALSE
+	else if(!tail \
+			|| (wearer.wear_suit \
+				&& (wearer.wear_suit.flags_inv & HIDETAIL \
+				|| wearer.wear_suit.flags_inv & HIDESPINE) \
+			)
+		)
+		return TRUE
 
 /datum/sprite_accessory/spines/get_special_render_state(mob/living/carbon/human/H)
 	var/obj/item/organ/external/tail/tail = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
@@ -172,10 +191,25 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/socks
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
 	use_static = TRUE
+/datum/sprite_accessory/socks/socks_norm
+	name = "Normal (Greyscale)"
+	icon_state = "white_norm"
+	use_static = null
+
+/datum/sprite_accessory/socks/stirrups_norm
+	name = "Normal Stirrups (Greyscale)"
+	icon_state = "socks_norm-stir"
+	use_static = null
+
+/datum/sprite_accessory/socks/socks_short
+	name = "Short (Greyscale)"
+	icon_state = "white_short"
+	use_static = null
+
 
 /datum/sprite_accessory/socks/socks_knee
-	name = "Knee-high"
-	icon_state = "socks_knee"
+	name = "Knee-high (Greyscale)"
+	icon_state = "white_knee"
 	use_static = null
 
 /datum/sprite_accessory/socks/stirrups_knee
@@ -193,33 +227,13 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon_state = "thin_knee"
 	use_static = null
 
-/datum/sprite_accessory/socks/socks_norm
-	name = "Normal"
-	icon_state = "socks_norm"
-	use_static = null
-
-/datum/sprite_accessory/socks/stirrups_norm
-	name = "Normal Stirrups"
-	icon_state = "socks_norm-stir"
-	use_static = null
-
-/datum/sprite_accessory/socks/stirrups_mid
-	name = "Mid-Length Stirrups"
-	icon_state = "socks_mid-stir"
-	use_static = null
-
-/datum/sprite_accessory/socks/socks_short
-	name = "Short"
-	icon_state = "socks_short"
-	use_static = null
-
 /datum/sprite_accessory/socks/socks_thigh
-	name = "Thigh-high"
-	icon_state = "socks_thigh"
+	name = "Thigh-high (Greyscale)"
+	icon_state = "white_thigh"
 	use_static = null
 
 /datum/sprite_accessory/socks/stirrups_thigh
-	name = "Thigh-high Stirrups"
+	name = "Thigh-high Stirrups (Greyscale)"
 	icon_state = "socks_thigh-stir"
 	use_static = null
 
@@ -232,6 +246,11 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "Thigh-high (Striped Stirrups)"
 	icon_state = "striped_thigh-stir"
 	use_static = null
+
+/datum/sprite_accessory/socks/leggings/stirrups/gym
+	name = "Thigh-high Stirrups (black with stripe)"
+	icon_state = "leggings-stir-black"
+	use_static = TRUE
 
 /datum/sprite_accessory/socks/bee_thigh
 	name = "Thigh-high - Bee (Old)"
@@ -277,6 +296,10 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "Thigh-high - Green Candy Cane"
 	icon_state = "candycaneg_thigh"
 
+/datum/sprite_accessory/socks/rainbow_thigh
+	name = "Thigh-high - Rainbow"
+	icon_state = "rainbow_thigh"
+
 /datum/sprite_accessory/socks/rainbow_knee
 	name = "Knee-high - Rainbow"
 	icon_state = "rainbow_knee"
@@ -285,20 +308,16 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "Knee-high - Rainbow Stirrups"
 	icon_state = "rainbow_knee-stir"
 
-/datum/sprite_accessory/socks/rainbow_thigh
-	name = "Thigh-high - Rainbow"
-	icon_state = "rainbow_thigh"
-
 /datum/sprite_accessory/socks/rainbow_thigh/stirrups
 	name = "Thigh-high - Rainbow Stirrups"
 	icon_state = "rainbow_thigh-stir"
 
-/datum/sprite_accessory/socks/fishnet_thigh
+/datum/sprite_accessory/socks/fishnet_thigh_sr //TG has one, but this one matches with several tops that I'll get whined to if I change soooo
 	name = "Thigh-high - Fishnet"
 	icon_state = "fishnet"
 
 /datum/sprite_accessory/socks/fishnet_thigh/alt
-	name = "Thigh-high - Fishnet Alt"
+	name = "Thigh-high - Fishnet (Greyscale)"
 	icon_state = "fishnet_alt"
 	use_static = null
 
@@ -331,11 +350,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon_state = "leggings-stir"
 	use_static = null
 
-/datum/sprite_accessory/socks/leggings/stirrups/gym
-	name = "Leggings - Stirrups black with stripe"
-	icon_state = "leggings-stir-black"
-	use_static = TRUE
-
 /datum/sprite_accessory/socks/leggings/latex
 	name = "Socks - Latex"
 	icon_state = "socks_latex"
@@ -346,6 +360,8 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
 	///Whether the underwear uses a special sprite for digitigrade style (i.e. briefs, not panties). Adds a "_d" suffix to the icon state
 	var/has_digitigrade = FALSE
+	///Whether this underwear includes a top (Because gender = FEMALE doesn't actually apply here.). Hides breasts, nothing more.
+	var/hides_breasts = FALSE
 
 /datum/sprite_accessory/underwear/male_bee
 	name = "Boxers - Bee"
@@ -365,11 +381,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon_state = "panties"
 	gender = FEMALE
 
-/datum/sprite_accessory/underwear/panties_alt
-	name = "Panties - Alt"
-	icon_state = "panties_alt"
-	gender = FEMALE
-
 /datum/sprite_accessory/underwear/fishnet_lower
 	name = "Panties - Fishnet"
 	icon_state = "fishnet_lower"
@@ -377,7 +388,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	use_static = TRUE
 
 /datum/sprite_accessory/underwear/fishnet_lower/alt
-	name = "Panties - Fishnet Alt"
+	name = "Panties - Fishnet (Greyscale)"
 	icon_state = "fishnet_lower_alt"
 	use_static = null
 
@@ -436,28 +447,26 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon_state = "panties_thin"
 	gender = FEMALE
 
-/datum/sprite_accessory/underwear/longjon
-	name = "Long John Bottoms"
-	icon_state = "ljonb"
-	has_digitigrade = TRUE
-
 /datum/sprite_accessory/underwear/swimsuit_red
 	name = "Swimsuit, One Piece - Red"
 	icon_state = "swimming_red"
 	gender = FEMALE
 	use_static = TRUE
+	hides_breasts = TRUE
 
 /datum/sprite_accessory/underwear/swimsuit
 	name = "Swimsuit, One Piece - Black"
 	icon_state = "swimming_black"
 	gender = FEMALE
 	use_static = TRUE
+	hides_breasts = TRUE
 
 /datum/sprite_accessory/underwear/swimsuit_blue
 	name = "Swimsuit, One Piece - Striped Blue"
 	icon_state = "swimming_blue"
 	gender = FEMALE
 	use_static = TRUE
+	hides_breasts = TRUE
 
 /datum/sprite_accessory/underwear/thong
 	name = "Thong"
@@ -487,18 +496,74 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	use_static = TRUE
 	erp_accessory = TRUE
 
+/datum/sprite_accessory/undershirt/lizared
+	name = "LIZARED Top"
+	icon_state = "lizared_top"
+	use_static = TRUE
+
 /datum/sprite_accessory/underwear/lizared
 	name = "LIZARED Underwear"
 	icon_state = "lizared"
 	use_static = TRUE
+	hides_breasts = TRUE
 
-/datum/sprite_accessory/underwear/digibriefs
-	name = "Digi Briefs"
-	icon_state = "briefs_d"
-
-/datum/sprite_accessory/underwear/male_briefs
+/datum/sprite_accessory/underwear/boyshorts
+	name = "Boyshorts"
+	icon_state = "boyshorts"
 	has_digitigrade = TRUE
+	gender = FEMALE
 
+/*
+	Adding hides_breasts to TG underwears where applicable
+*/
+/datum/sprite_accessory/underwear/female_bikini
+	hides_breasts = TRUE
+
+/datum/sprite_accessory/underwear/female_lace
+	hides_breasts = TRUE
+
+/datum/sprite_accessory/underwear/female_bralette
+	hides_breasts = TRUE
+
+/datum/sprite_accessory/underwear/female_sport
+	hides_breasts = TRUE
+
+/datum/sprite_accessory/underwear/female_strapless
+	hides_breasts = TRUE
+
+/datum/sprite_accessory/underwear/female_babydoll
+	hides_breasts = TRUE
+
+/datum/sprite_accessory/underwear/swimsuit_onepiece
+	hides_breasts = TRUE
+
+/datum/sprite_accessory/underwear/swimsuit_strapless_onepiece
+	hides_breasts = TRUE
+
+/datum/sprite_accessory/underwear/swimsuit_twopiece
+	hides_breasts = TRUE
+
+/datum/sprite_accessory/underwear/swimsuit_strapless_twopiece
+	hides_breasts = TRUE
+
+/datum/sprite_accessory/underwear/swimsuit_stripe
+	hides_breasts = TRUE
+
+/datum/sprite_accessory/underwear/swimsuit_halter
+	hides_breasts = TRUE
+
+/datum/sprite_accessory/underwear/female_white_neko
+	hides_breasts = TRUE
+
+/datum/sprite_accessory/underwear/female_black_neko
+	hides_breasts = TRUE
+
+/datum/sprite_accessory/underwear/female_uk
+	hides_breasts = TRUE
+
+/*
+	End of adding hides_breasts to TG stuff, start of adding has_digitigrade to TG stuff
+*/
 /datum/sprite_accessory/underwear/male_boxers
 	has_digitigrade = TRUE
 
@@ -523,10 +588,18 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/underwear/male_uk
 	has_digitigrade = TRUE
 
+/datum/sprite_accessory/underwear/female_sport
+    has_digitigrade = TRUE
+
+/*
+	End of adding has_digitigrade to TG stuff
+*/
 
 /datum/sprite_accessory/undershirt
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
 	use_static = TRUE
+	///Whether this underwear includes a bottom (For Leotards and the likes)
+	var/hides_groin = FALSE
 
 /datum/sprite_accessory/undershirt/tanktop_alt
 	name = "Tank Top - Alt"
@@ -659,35 +732,24 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	use_static = null
 
 /datum/sprite_accessory/undershirt/fishnet_sleeves
-	name = "Fishnet - Sleeves"
+	name = "Fishnet - Sleeved"
 	icon_state = "fishnet_sleeves"
 	gender = FEMALE
 	use_static = TRUE
 
 /datum/sprite_accessory/undershirt/fishnet_sleeves/alt
-	name = "Fishnet - Sleeves Alt"
+	name = "Fishnet - Sleeved (Greyscale)"
 	icon_state = "fishnet_sleeves_alt"
 	use_static = null
 
-/datum/sprite_accessory/undershirt/fishnet_gloves
-	name = "Fishnet - Gloves"
-	icon_state = "fishnet_gloves"
-	gender = FEMALE
-	use_static = TRUE
-
-/datum/sprite_accessory/undershirt/fishnet_gloves/alt
-	name = "Fishnet - Gloves Alt"
-	icon_state = "fishnet_gloves_alt"
-	use_static = null
-
 /datum/sprite_accessory/undershirt/fishnet_base
-	name = "Fishnet - Top"
+	name = "Fishnet - Sleeveless"
 	icon_state = "fishnet_body"
 	gender = FEMALE
 	use_static = TRUE
 
 /datum/sprite_accessory/undershirt/fishnet_base/alt
-	name = "Fishnet - Top Alt"
+	name = "Fishnet - Sleeveless (Greyscale)"
 	icon_state = "fishnet_body_alt"
 	use_static = null
 
@@ -697,23 +759,12 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	gender = FEMALE
 	use_static = null
 
-/datum/sprite_accessory/undershirt/swimsuit_alt
-	name = "Swimsuit Top - Strapless"
-	icon_state = "bra_swimming_alt"
-	gender = FEMALE
-	use_static = null
-
-/datum/sprite_accessory/undershirt/tubetop
-	name = "Tube Top"
-	icon_state = "tubetop"
-	gender = FEMALE
-	use_static = null
-
 /datum/sprite_accessory/undershirt/corset
 	name = "Corset"
 	icon_state = "corset"
 	gender = FEMALE
 	use_static = TRUE
+	hides_groin = TRUE
 
 /datum/sprite_accessory/undershirt/chastbra
 	name = "Chastity Bra"
@@ -781,6 +832,10 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	use_static = null
 	gender = NEUTER
 
+/datum/sprite_accessory/undershirt/turtleneck/smooth
+	name = "Sweater - Smooth Turtleneck"
+	icon_state = "turtleneck_smooth"
+
 /datum/sprite_accessory/undershirt/turtleneck/sleeveless
 	name = "Sweater - Sleeveless Turtleneck"
 	icon_state = "turtleneck_sleeveless"
@@ -791,11 +846,22 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	gender = FEMALE
 	use_static = null
 
+/datum/sprite_accessory/undershirt/buttondown
+	name = "Shirt - Buttondown"
+	icon_state = "buttondown"
+	gender = NEUTER
+	use_static = null
+
+/datum/sprite_accessory/undershirt/buttondown/short_sleeve
+	name = "Shirt - Short Sleeved Buttondown"
+	icon_state = "buttondown_short"
+
 /datum/sprite_accessory/undershirt/leotard
 	name = "Shirt - Leotard"
 	icon_state = "leotard"
 	gender = FEMALE
 	use_static = null
+	hides_groin = TRUE
 
 /datum/sprite_accessory/undershirt/leotard/turtleneck
 	name = "Shirt - Turtleneck Leotard"

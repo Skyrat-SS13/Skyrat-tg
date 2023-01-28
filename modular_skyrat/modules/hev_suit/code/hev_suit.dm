@@ -17,12 +17,12 @@
 #define HEV_POWERUSE_HIT 100
 #define HEV_POWERUSE_HEAL 150
 
-#define HEV_COOLDOWN_HEAL 10 SECONDS
-#define HEV_COOLDOWN_RADS 20 SECONDS
-#define HEV_COOLDOWN_ACID 20 SECONDS
-#define PCV_COOLDOWN_HEAL 15 SECONDS
-#define PCV_COOLDOWN_RADS 30 SECONDS
-#define PCV_COOLDOWN_ACID 30 SECONDS
+#define HEV_COOLDOWN_HEAL (10 SECONDS)
+#define HEV_COOLDOWN_RADS (20 SECONDS)
+#define HEV_COOLDOWN_ACID (20 SECONDS)
+#define PCV_COOLDOWN_HEAL (15 SECONDS)
+#define PCV_COOLDOWN_RADS (30 SECONDS)
+#define PCV_COOLDOWN_ACID (30 SECONDS)
 
 #define HEV_HEAL_AMOUNT 10
 #define PCV_HEAL_AMOUNT 5
@@ -41,7 +41,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "hev"
-	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 30, BIO = 40, FIRE = 40, ACID = 40, WOUND = 10)
+	armor_type = /datum/armor/space_hev_suit
 	obj_flags = NO_MAT_REDEMPTION
 	resistance_flags = LAVA_PROOF|FIRE_PROOF|UNACIDABLE|ACID_PROOF|INDESTRUCTIBLE|FREEZE_PROOF
 	clothing_flags = STOPSPRESSUREDAMAGE|THICKMATERIAL|SNUG_FIT|LAVAPROTECT|BLOCK_GAS_SMOKE_EFFECT
@@ -51,13 +51,24 @@
 	dog_fashion = null
 	slowdown = 0
 
+/datum/armor/space_hev_suit
+	melee = 20
+	bullet = 20
+	laser = 20
+	energy = 20
+	bomb = 30
+	bio = 40
+	fire = 40
+	acid = 40
+	wound = 10
+
 /obj/item/clothing/suit/space/hev_suit
 	name = "hazardous environment suit"
 	desc = "The Mark IV HEV suit protects the user from a number of hazardous environments and has in build ballistic protection."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "hev"
-	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 30, BIO = 40, FIRE = 40, ACID = 40, WOUND = 10) //This is gordons suit, of course it's strong.
+	armor_type = /datum/armor/space_hev_suit
 	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/energy/sword, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
 	cell = /obj/item/stock_parts/cell/hyper
 	slowdown = 0 //I am not gimping doctor freeman
@@ -186,8 +197,7 @@
 	current_user = null
 
 /obj/item/clothing/suit/space/hev_suit/Destroy()
-	if(internal_radio)
-		qdel(internal_radio)
+	QDEL_NULL(internal_radio)
 	if(current_internals_tank)
 		REMOVE_TRAIT(current_internals_tank, TRAIT_NODROP, "hev_trait")
 		current_internals_tank = null
@@ -200,14 +210,14 @@
 	name = "Toggle HEV Suit"
 	button_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
 	background_icon_state = "bg_hl"
-	icon_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
+	button_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
 	button_icon_state = "system_off"
 
 /datum/action/item_action/hev_toggle_notifs
 	name = "Toggle HEV Suit Notifications"
 	button_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
 	background_icon_state = "bg_hl"
-	icon_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
+	button_icon = 'modular_skyrat/modules/hev_suit/icons/toggles.dmi'
 	button_icon_state = "sound_VOICE_AND_TEXT"
 
 /datum/action/item_action/hev_toggle_notifs/Trigger(trigger_flags)
@@ -225,7 +235,7 @@
 
 	playsound(my_suit, 'modular_skyrat/modules/hev_suit/sound/hev/blip.ogg', 50)
 
-	UpdateButtons()
+	build_all_button_icons()
 
 /datum/action/item_action/hev_toggle/Trigger(trigger_flags)
 	var/obj/item/clothing/suit/space/hev_suit/my_suit = target
@@ -243,7 +253,7 @@
 
 	playsound(my_suit, 'modular_skyrat/modules/hev_suit/sound/hev/blip.ogg', 50)
 
-	UpdateButtons()
+	build_all_button_icons()
 
 /obj/item/clothing/suit/space/hev_suit/proc/send_message(message, color = HEV_COLOR_ORANGE)
 	if(send_notifications != HEV_NOTIFICATION_TEXT_AND_VOICE && send_notifications != HEV_NOTIFICATION_TEXT)
@@ -273,7 +283,7 @@
 		playing_voice_line = TRUE
 		playsound(src, voice, volume)
 		queued_voice_lines -= voice_line
-		addtimer(CALLBACK(src, .proc/reset_sound), 4 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(reset_sound)), 4 SECONDS)
 		return
 
 	playing_voice_line = TRUE
@@ -282,7 +292,7 @@
 	voice.status = SOUND_STREAM
 	playsound(src, voice, volume)
 
-	addtimer(CALLBACK(src, .proc/reset_sound), 4 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(reset_sound)), 4 SECONDS)
 
 /obj/item/clothing/suit/space/hev_suit/proc/reset_sound()
 	playing_voice_line = FALSE
@@ -336,7 +346,7 @@
 	send_message("...CALIBRATED", HEV_COLOR_GREEN)
 
 	send_message("CALIBRATING REACTIVE ARMOR SYSTEMS...")
-	timer_id = addtimer(CALLBACK(src, .proc/powerarmor), 10 SECONDS, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(powerarmor)), 10 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hev_suit/proc/use_hev_power(amount)
 	var/power_test = item_use_power(amount)
@@ -395,40 +405,41 @@
 		batt_50_alarm = FALSE
 
 /obj/item/clothing/suit/space/hev_suit/proc/powerarmor()
-	armor = armor.setRating(
-		armor_poweron[1],
-		armor_poweron[2],
-		armor_poweron[3],
-		armor_poweron[4],
-		armor_poweron[5],
-		armor_poweron[6],
-		armor_poweron[7],
-		armor_poweron[8],
-		armor_poweron[9],
-		armor_poweron[10]
-		)
-	current_helmet.armor = current_helmet.armor.setRating(
-		armor_poweron[1],
-		armor_poweron[2],
-		armor_poweron[3],
-		armor_poweron[4],
-		armor_poweron[5],
-		armor_poweron[6],
-		armor_poweron[7],
-		armor_poweron[8],
-		armor_poweron[9],
-		armor_poweron[10]
-		)
+	// hi, WHAT THE FUCK IS THIS? I refuse to fix this
+	// armor = armor.setRating(
+	// 	armor_poweron[1],
+	// 	armor_poweron[2],
+	// 	armor_poweron[3],
+	// 	armor_poweron[4],
+	// 	armor_poweron[5],
+	// 	armor_poweron[6],
+	// 	armor_poweron[7],
+	// 	armor_poweron[8],
+	// 	armor_poweron[9],
+	// 	armor_poweron[10]
+	// 	)
+	// current_helmet.armor = current_helmet.armor.setRating(
+	// 	armor_poweron[1],
+	// 	armor_poweron[2],
+	// 	armor_poweron[3],
+	// 	armor_poweron[4],
+	// 	armor_poweron[5],
+	// 	armor_poweron[6],
+	// 	armor_poweron[7],
+	// 	armor_poweron[8],
+	// 	armor_poweron[9],
+	// 	armor_poweron[10]
+	// 	)
 	user_old_bruteloss = current_user.getBruteLoss()
 	user_old_fireloss = current_user.getFireLoss()
 	user_old_toxloss = current_user.getToxLoss()
 	user_old_cloneloss = current_user.getCloneLoss()
 	user_old_oxyloss = current_user.getOxyLoss()
-	RegisterSignal(current_user, COMSIG_MOB_RUN_ARMOR, .proc/process_hit)
+	RegisterSignal(current_user, COMSIG_MOB_RUN_ARMOR, PROC_REF(process_hit))
 	playsound(src, armor_sound, 50)
 	send_message("...CALIBRATED", HEV_COLOR_GREEN)
 	send_message("CALIBRATING ATMOSPHERIC CONTAMINANT SENSORS...")
-	timer_id = addtimer(CALLBACK(src, .proc/atmospherics), 4 SECONDS, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(atmospherics)), 4 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hev_suit/proc/process_hit()
 	SIGNAL_HANDLER
@@ -484,7 +495,7 @@
 	if(!tank || !istype(tank))
 		send_message("...FAILURE, NO TANK DETECTED", HEV_COLOR_RED)
 		send_message("CALIBRATING VITALSIGN MONITORING SYSTEMS...")
-		timer_id = addtimer(CALLBACK(src, .proc/vitalsigns), 4 SECONDS, TIMER_STOPPABLE)
+		timer_id = addtimer(CALLBACK(src, PROC_REF(vitalsigns)), 4 SECONDS, TIMER_STOPPABLE)
 		return
 	current_internals_tank = tank
 	ADD_TRAIT(current_internals_tank, TRAIT_NODROP, "hev_trait")
@@ -492,7 +503,7 @@
 	playsound(src, atmospherics_sound, 50)
 	send_message("...CALIBRATED", HEV_COLOR_GREEN)
 	send_message("CALIBRATING VITALSIGN MONITORING SYSTEMS...")
-	timer_id = addtimer(CALLBACK(src, .proc/vitalsigns), 4 SECONDS, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(vitalsigns)), 4 SECONDS, TIMER_STOPPABLE)
 
 
 /obj/item/clothing/suit/space/hev_suit/proc/handle_tank()
@@ -502,11 +513,11 @@
 		current_internals_tank.populate_gas()
 
 /obj/item/clothing/suit/space/hev_suit/proc/vitalsigns()
-	RegisterSignal(current_user, COMSIG_MOB_STATCHANGE, .proc/stat_changed)
+	RegisterSignal(current_user, COMSIG_MOB_STATCHANGE, PROC_REF(stat_changed))
 	playsound(src, vitalsigns_sound, 50)
 	send_message("...CALIBRATED", HEV_COLOR_GREEN)
 	send_message("CALIBRATING AUTOMATIC MEDICAL SYSTEMS...")
-	timer_id = addtimer(CALLBACK(src, .proc/medical_systems), 3 SECONDS, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(medical_systems)), 3 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hev_suit/proc/stat_changed(datum/source, new_stat)
 	SIGNAL_HANDLER
@@ -516,13 +527,13 @@
 		deactivate()
 
 /obj/item/clothing/suit/space/hev_suit/proc/medical_systems()
-	RegisterSignal(current_user, COMSIG_CARBON_GAIN_WOUND, .proc/process_wound)
-	RegisterSignal(current_user, COMSIG_ATOM_ACID_ACT, .proc/process_acid)
+	RegisterSignal(current_user, COMSIG_CARBON_GAIN_WOUND, PROC_REF(process_wound))
+	RegisterSignal(current_user, COMSIG_ATOM_ACID_ACT, PROC_REF(process_acid))
 	START_PROCESSING(SSobj, src)
 	playsound(src, automedic_sound, 50)
 	send_message("...CALIBRATED", HEV_COLOR_GREEN)
 	send_message("CALIBRATING DEFENSIVE WEAPON SELECTION SYSTEMS...")
-	timer_id = addtimer(CALLBACK(src, .proc/weaponselect), 3 SECONDS, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(weaponselect)), 3 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hev_suit/process(delta_time)
 	if(!activated)
@@ -676,20 +687,20 @@
 	playsound(src, weaponselect_sound, 50)
 	send_message("...CALIBRATED", HEV_COLOR_GREEN)
 	send_message("CALIBRATING MUNITION LEVEL MONITORING SYSTEMS...")
-	timer_id = addtimer(CALLBACK(src, .proc/munitions_monitoring), 4 SECONDS, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(munitions_monitoring)), 4 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hev_suit/proc/munitions_monitoring()
 	//Crickets, not sure what to make this do!
 	playsound(src, munitions_sound, 50)
 	send_message("...CALIBRATED", HEV_COLOR_GREEN)
 	send_message("CALIBRATING COMMUNICATIONS SYSTEMS...")
-	timer_id = addtimer(CALLBACK(src, .proc/comms_system), 4 SECONDS, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(comms_system)), 4 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hev_suit/proc/comms_system()
 
 	playsound(src, communications_sound, 50)
 	send_message("...CALIBRATED", HEV_COLOR_GREEN)
-	timer_id = addtimer(CALLBACK(src, .proc/finished), 4 SECONDS, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(finished)), 4 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hev_suit/proc/finished()
 	to_chat(current_user, span_notice("You feel [src] seal around your body, locking it in place!"))
@@ -704,31 +715,33 @@
 		deltimer(timer_id)
 	STOP_PROCESSING(SSobj, src)
 	REMOVE_TRAIT(src, TRAIT_NODROP, "hev_trait")
-	armor = armor.setRating(
-		armor_poweroff[1],
-		armor_poweroff[2],
-		armor_poweroff[3],
-		armor_poweroff[4],
-		armor_poweroff[5],
-		armor_poweroff[6],
-		armor_poweroff[7],
-		armor_poweroff[8],
-		armor_poweroff[9],
-		armor_poweroff[10]
-		)
+	// See above.
+	// armor = armor.setRating(
+	// 	armor_poweroff[1],
+	// 	armor_poweroff[2],
+	// 	armor_poweroff[3],
+	// 	armor_poweroff[4],
+	// 	armor_poweroff[5],
+	// 	armor_poweroff[6],
+	// 	armor_poweroff[7],
+	// 	armor_poweroff[8],
+	// 	armor_poweroff[9],
+	// 	armor_poweroff[10]
+	// 	)
+	// if(current_helmet)
+	// 	current_helmet.armor = current_helmet.armor.setRating(
+	// 	armor_poweroff[1],
+	// 	armor_poweroff[2],
+	// 	armor_poweroff[3],
+	// 	armor_poweroff[4],
+	// 	armor_poweroff[5],
+	// 	armor_poweroff[6],
+	// 	armor_poweroff[7],
+	// 	armor_poweroff[8],
+	// 	armor_poweroff[9],
+	// 	armor_poweroff[10]
+	// 	)
 	if(current_helmet)
-		current_helmet.armor = current_helmet.armor.setRating(
-		armor_poweroff[1],
-		armor_poweroff[2],
-		armor_poweroff[3],
-		armor_poweroff[4],
-		armor_poweroff[5],
-		armor_poweroff[6],
-		armor_poweroff[7],
-		armor_poweroff[8],
-		armor_poweroff[9],
-		armor_poweroff[10]
-		)
 		REMOVE_TRAIT(current_helmet, TRAIT_NODROP, "hev_trait")
 	if(current_internals_tank)
 		REMOVE_TRAIT(current_internals_tank, TRAIT_NODROP, "hev_trait")
@@ -758,7 +771,7 @@
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob_muzzled.dmi'
 	icon_state = "hecu_helm"
-	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 20, FIRE = 20, ACID = 20, WOUND = 10)
+	armor_type = /datum/armor/hev_suit_pcv
 	flags_inv = HIDEHAIR
 	obj_flags = NO_MAT_REDEMPTION
 	supports_variations_flags = NONE
@@ -790,6 +803,17 @@
 		),
 	)
 
+/datum/armor/hev_suit_pcv
+	melee = 30
+	bullet = 30
+	laser = 30
+	energy = 30
+	bomb = 30
+	bio = 20
+	fire = 20
+	acid = 20
+	wound = 10
+
 /obj/item/clothing/suit/space/hev_suit/pcv
 	name = "powered combat vest"
 	desc = "An electrically charged piece of body armor, the power stiffens the suit's fibers to provide a layer of resilient armor in response to trauma received from kinetic force.  It's fitted with a geiger counter, tactical radio, a heads up display and a combat cocktail injector that allows the user to function normally even after serious injury. The concentration of mass in the lower rear side from the onboard computer makes your ass feel heavy."
@@ -797,7 +821,7 @@
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob_digi.dmi'
 	icon_state = "hecu_vest"
-	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 20, FIRE = 20, ACID = 20, WOUND = 10) //This is muhreens suit, of course it's mildly strong and balanced for PvP.
+	armor_type = /datum/armor/hev_suit_pcv
 	flags_inv = null
 	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/energy/sword, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
 	cell = /obj/item/stock_parts/cell/super

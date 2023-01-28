@@ -106,7 +106,7 @@
 	eye_owner.cure_blind(EYE_DAMAGE)
 	eye_owner.cure_nearsighted(EYE_DAMAGE)
 	eye_owner.set_blindness(0)
-	eye_owner.set_blurriness(0)
+	eye_owner.remove_status_effect(/datum/status_effect/eye_blur)
 	eye_owner.clear_fullscreen("eye_damage", 0)
 	eye_owner.update_sight()
 	is_emissive = FALSE // SKYRAT EDIT ADDITION
@@ -407,7 +407,7 @@
 
 /obj/item/organ/internal/eyes/robotic/glow/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = FALSE)
 	. = ..()
-	RegisterSignal(eye_owner, COMSIG_ATOM_DIR_CHANGE, .proc/update_visuals)
+	RegisterSignal(eye_owner, COMSIG_ATOM_DIR_CHANGE, PROC_REF(update_visuals))
 	//SKYRAT EDIT ADDITION
 	var/eye_color = owner.client?.prefs?.read_preference(/datum/preference/color/eye_color)
 	mob_overlay.color = eye_color
@@ -536,13 +536,11 @@
 	icon_state = "snail_eyeballs"
 	eyes_layer = ABOVE_BODY_FRONT_HEAD_LAYER //SKYRAT EDIT - Roundstart Snails
 
-/obj/item/organ/internal/eyes/fly
-	name = "fly eyes"
-	desc = "These eyes seem to stare back no matter the direction you look at it from."
-	eye_icon_state = "flyeyes"
-	icon_state = "eyeballs-fly"
-	flash_protect = FLASH_PROTECTION_HYPER_SENSITIVE
-	native_fov = NONE //flies can see all around themselves.
+/obj/item/organ/internal/eyes/jelly
+	name = "jelly eyes"
+	desc = "These eyes are made of a soft jelly. Unlike all other eyes, though, there are three of them."
+	eye_icon_state = "jelleyes"
+	icon_state = "eyeballs-jelly"
 
 /obj/item/organ/internal/eyes/night_vision/maintenance_adapted
 	name = "adapted eyes"
@@ -566,9 +564,7 @@
 	ADD_TRAIT(adapted, TRAIT_UNNATURAL_RED_GLOWY_EYES, ORGAN_TRAIT)
 
 /obj/item/organ/internal/eyes/night_vision/maintenance_adapted/on_life(delta_time, times_fired)
-	var/turf/owner_turf = get_turf(owner)
-	var/lums = owner_turf.get_lumcount()
-	if(lums > 0.5) //we allow a little more than usual so we can produce light from the adapted eyes
+	if(!HAS_TRAIT(owner, TRAIT_BLIND) && isturf(owner.loc) && owner.has_light_nearby(light_amount=0.5)) //we allow a little more than usual so we can produce light from the adapted eyes
 		to_chat(owner, span_danger("Your eyes! They burn in the light!"))
 		applyOrganDamage(10) //blind quickly
 		playsound(owner, 'sound/machines/grill/grillsizzle.ogg', 50)

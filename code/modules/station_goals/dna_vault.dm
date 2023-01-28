@@ -110,11 +110,10 @@
 	return ..()
 
 /obj/machinery/dna_vault/Destroy()
-	for(var/V in fillers)
-		var/obj/structure/filler/filler = V
+	for(var/obj/structure/filler/filler as anything in fillers)
 		filler.parent = null
 		qdel(filler)
-	. = ..()
+	return ..()
 
 /obj/machinery/dna_vault/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -191,7 +190,7 @@
 
 /obj/machinery/dna_vault/proc/upgrade(mob/living/carbon/human/H, upgrade_type)
 	var/datum/weakref/human_weakref = WEAKREF(H)
-	if(!(upgrade_type in power_lottery[human_weakref])||(HAS_TRAIT(H, TRAIT_USED_DNA_VAULT)))
+	if(!(upgrade_type in power_lottery[human_weakref]) || (HAS_TRAIT(H, TRAIT_USED_DNA_VAULT)))
 		return
 	var/datum/species/S = H.dna.species
 	switch(upgrade_type)

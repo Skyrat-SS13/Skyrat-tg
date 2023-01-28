@@ -55,7 +55,7 @@
 		human_owner.set_jitter_if_lower(40 SECONDS)
 		lust_message = "You feel a static sensation all across your skin..."
 	if(stress >= 120)
-		human_owner.blur_eyes(10)
+		human_owner.set_eye_blur_if_lower(20 SECONDS)
 		lust_message = "You vision begins to blur, the heat beginning to rise..."
 	if(stress >= 180)
 		owner.adjust_hallucinations(60 SECONDS)
@@ -154,7 +154,7 @@
 	owner.add_mood_event("bimbo", /datum/mood_event/bimbo)
 	if(!HAS_TRAIT_FROM(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT))
 		ADD_TRAIT(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT)
-	RegisterSignal(owner, COMSIG_MOB_SAY, .proc/handle_speech)
+	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	if(!HAS_TRAIT_FROM(owner, TRAIT_MASOCHISM, APHRO_TRAIT))
 		ADD_TRAIT(owner, TRAIT_MASOCHISM, APHRO_TRAIT)
 
@@ -345,4 +345,3 @@
 			. += arousal_message
 	else if(arousal > AROUSAL_MINIMUM_DETECTABLE)
 		. += span_purple("[p_they()] [p_are()] slightly blushed.") + "\n"
-

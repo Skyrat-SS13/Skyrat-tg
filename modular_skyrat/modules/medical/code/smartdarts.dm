@@ -46,6 +46,7 @@
 	w_class = WEIGHT_CLASS_NORMAL //I might need to look into changing this later depending on feedback
 	icon = 'modular_skyrat/modules/medical/icons/obj/dartguns.dmi'
 	icon_state = "smartdartgun"
+	worn_icon_state = "medicalsyringegun"
 	has_gun_safety = TRUE
 	item_flags = null
 
@@ -83,7 +84,7 @@
 		/datum/reagent/medicine,
 		/datum/reagent/vaccine
 	)
-        ///Blacklist that contains medicines that SmartDarts are unable to inject.
+	///Blacklist that contains medicines that SmartDarts are unable to inject.
 	var/list/disallowed_medicine = list(
 		/datum/reagent/inverse/,
 		/datum/reagent/medicine/morphine,

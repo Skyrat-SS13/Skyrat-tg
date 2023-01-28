@@ -27,16 +27,6 @@
 	user.physiology.brute_mod /= 1.25
 	user.physiology.burn_mod /= 1.2
 
-/datum/quirk/sensitivesnout
-	name = "Sensitive Snout"
-	desc = "Your face has always been sensitive, and it really hurts when someone pokes it!"
-	gain_text = span_notice("Your face is awfully sensitive.")
-	lose_text = span_notice("Your face feels numb.")
-	medical_record_text = "Patient's nose seems to have a cluster of nerves in the tip, would advise against direct contact."
-	value = -2
-	mob_trait = TRAIT_SENSITIVESNOUT
-	icon = "fingerprint"
-
 /datum/quirk/monophobia
 	name = "Monophobia"
 	desc = "You will become increasingly stressed when not in company of others, triggering panic reactions ranging from sickness to heart attacks."
@@ -72,22 +62,6 @@
 	gain_text = span_notice("You feel like you won't be able to use guns anymore...")
 	lose_text = span_notice("You suddenly feel like you can use guns again!")
 	medical_record_text = "Patient is unable to use firearms. Reasoning unknown."
-	value = -4
+	value = -6
 	mob_trait = TRAIT_NOGUNS
 	icon = "none"
-
-/datum/quirk/mute
-	name = "Mute"
-	desc = "Due to some accident, medical condition, or simply by choice, you are completely unable to speak."
-	value = -2 // HALP MAINTS
-	gain_text = span_danger("You find yourself unable to speak!")
-	lose_text = span_notice("You feel a growing strength in your vocal chords.")
-	medical_record_text = "Functionally mute, patient is unable to use their voice in any capacity."
-
-/datum/quirk/mute/add()
-	var/mob/living/carbon/human/user = quirk_holder
-	user.gain_trauma(new /datum/brain_trauma/severe/mute, TRAUMA_RESILIENCE_ABSOLUTE)
-
-/datum/quirk/mute/remove()
-	var/mob/living/carbon/human/user = quirk_holder
-	user?.cure_trauma_type(/datum/brain_trauma/severe/mute, TRAUMA_RESILIENCE_ABSOLUTE)

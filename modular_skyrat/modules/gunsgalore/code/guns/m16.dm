@@ -22,7 +22,6 @@
 	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magin.ogg'
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magout.ogg'
 	alt_icons = TRUE
-	realistic = TRUE
 
 /obj/item/ammo_box/magazine/m16
 	name = "\improper XM-2537 magazine"

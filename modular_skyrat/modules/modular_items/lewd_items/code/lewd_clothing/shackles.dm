@@ -8,13 +8,15 @@
 	worn_icon_taur_snake = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/lewd_suits-snake.dmi'
 	worn_icon_taur_paw = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/lewd_suits-paw.dmi'
 	worn_icon_taur_hoof = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/lewd_suits-hoof.dmi'
-	icon_state = "shackles"
+	icon_state = "shackles_metal"
+	base_icon_state = "shackles"
 	body_parts_covered = null//they don't cover anything, but these code parts need to be here, because if they are not here - they make clothing disappear. Magic.
 	flags_inv = null
 	equip_delay_self = NONE
 	strip_delay = 120
 	breakouttime = 10
 	slowdown = 1
+	/// The current variant of the shackles' color.
 	var/current_color = "metal" //yes, metal color. Don't ask.
 	var/color_changed = FALSE
 	var/static/list/shackles_designs
@@ -36,7 +38,7 @@
 		. = ..()
 		if(.)
 			return
-		var/choice = show_radial_menu(user, src, shackles_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, shackles_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		current_color = choice
@@ -63,8 +65,8 @@
 
 /obj/item/clothing/suit/straight_jacket/shackles/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]"
-	inhand_icon_state = "[initial(icon_state)]_[current_color]"
+	icon_state = "[base_icon_state]_[current_color]"
+	inhand_icon_state = "[base_icon_state]_[current_color]"
 
 //message when equipping that thing
 /obj/item/clothing/suit/straight_jacket/shackles/equipped(mob/user, slot)
@@ -84,15 +86,16 @@
 
 //reinforcing normal version by using handcuffs on it.
 /obj/item/clothing/suit/straight_jacket/shackles/attackby(obj/item/used_item, mob/user, params) //That part allows reinforcing this item with normal straightjacket
-    if(istype(used_item, /obj/item/restraints/handcuffs))
-        var/obj/item/clothing/suit/straight_jacket/shackles/reinforced/shackles = new /obj/item/clothing/suit/straight_jacket/shackles/reinforced
-        remove_item_from_storage(user)
-        user.put_in_hands(shackles)
-        to_chat(user, span_notice("You reinforced the locks on [src] with [used_item]."))
-        qdel(used_item)
-        qdel(src)
-        return
-    . = ..()
+	if(istype(used_item, /obj/item/restraints/handcuffs))
+		var/obj/item/clothing/suit/straight_jacket/shackles/reinforced/shackles = new()
+		remove_item_from_storage(user)
+		user.put_in_hands(shackles)
+		to_chat(user, span_notice("You reinforced the locks on [src] with [used_item]."))
+		qdel(used_item)
+		qdel(src)
+		return TRUE
+
+	return ..()
 
 //reinforced version.
 /obj/item/clothing/suit/straight_jacket/shackles/reinforced

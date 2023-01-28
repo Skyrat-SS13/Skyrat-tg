@@ -17,7 +17,8 @@
 /obj/item/clothing/accessory/lewdapron
 	name = "shiny maid apron"
 	desc = "The best part of a maid costume. Now with different colors!"
-	icon_state = "lewdapron"
+	icon_state = "lewdapron_pink"
+	base_icon_state = "lewdapron"
 	inhand_icon_state = "lewdapron_pink"
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi'
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
@@ -53,7 +54,7 @@
 	. = ..()
 	if(.)
 		return
-	var/choice = show_radial_menu(user, src, apron_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
+	var/choice = show_radial_menu(user, src, apron_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 	if(!choice)
 		return FALSE
 	current_color = choice
@@ -78,8 +79,8 @@
 
 /obj/item/clothing/accessory/lewdapron/update_icon_state()
 	. = ..()
-	icon_state = icon_state = "[initial(icon_state)]_[current_color]"
-	inhand_icon_state = "[initial(icon_state)]_[current_color]"
+	icon_state = icon_state = "[initial(base_icon_state)]_[current_color]"
+	inhand_icon_state = "[initial(base_icon_state)]_[current_color]"
 
 /obj/item/clothing/under/costume/lewdmaid/attach_accessory(obj/item/attack_item)
 	. = ..()

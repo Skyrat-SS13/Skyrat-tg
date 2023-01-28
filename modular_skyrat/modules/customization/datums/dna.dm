@@ -199,7 +199,8 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 		else
 			return
 		death_sound = new_race.death_sound
-		dna.species.on_species_loss(src, new_race, pref_load)
+		if (dna.species.properly_gained)
+			dna.species.on_species_loss(src, new_race, pref_load)
 		var/datum/species/old_species = dna.species
 		dna.species = new_race
 
@@ -268,7 +269,10 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 		eye_organ.old_eye_color_left = eye_color_left
 		eye_organ.old_eye_color_right = eye_color_right
 
-	facial_hairstyle = GLOB.facial_hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_FACIAL_HAIRSTYLE_BLOCK), GLOB.facial_hairstyles_list.len)]
+	if(HAS_TRAIT(src, TRAIT_SHAVED))
+		hairstyle = "Shaved"
+	else
+		facial_hairstyle = GLOB.facial_hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_FACIAL_HAIRSTYLE_BLOCK), GLOB.facial_hairstyles_list.len)]
 
 	if(HAS_TRAIT(src, TRAIT_BALD))
 		hairstyle = "Bald"

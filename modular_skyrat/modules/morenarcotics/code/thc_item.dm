@@ -21,7 +21,7 @@
 	desc = "A brick of hash. Good for transport!"
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	icon_state = "hashbrick"
-	volume = 25
+	volume = 80
 	possible_transfer_amounts = list()
 	list_reagents = list(/datum/reagent/drug/cocaine = 60, /datum/reagent/toxin/lipolicide = 20)
 

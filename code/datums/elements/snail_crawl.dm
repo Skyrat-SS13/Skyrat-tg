@@ -1,5 +1,5 @@
 /datum/element/snailcrawl
-	element_flags = ELEMENT_DETACH
+	element_flags = ELEMENT_DETACH_ON_HOST_DESTROY
 
 /datum/element/snailcrawl/Attach(datum/target)
 	. = ..()
@@ -7,9 +7,9 @@
 		return ELEMENT_INCOMPATIBLE
 	var/P
 	if(iscarbon(target))
-		P = .proc/snail_crawl
+		P = PROC_REF(snail_crawl)
 	else
-		P = .proc/lubricate
+		P = PROC_REF(lubricate)
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, P)
 
 /datum/element/snailcrawl/Detach(mob/living/carbon/target)
@@ -32,4 +32,5 @@
 	var/turf/open/OT = get_turf(snail)
 	if(istype(OT))
 		OT.MakeSlippery(TURF_WET_WATER, 1 SECONDS) //SKYRAT EDIT: Roundstart Snails - No more lube
+		OT.wash(CLEAN_WASH) //SKYRAT EDIT: Roundstart Snails - Snails Keep Clean
 		return TRUE

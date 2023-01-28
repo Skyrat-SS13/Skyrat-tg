@@ -13,7 +13,6 @@
 	w_class = WEIGHT_CLASS_SMALL
 	has_gun_safety = FALSE
 	company_flag = COMPANY_CANTALAN
-	dirt_modifier = 0.2
 
 /obj/item/gun/ballistic/automatic/pistol/cfa_snub/empty
 	spawnwithmagazine = FALSE
@@ -29,7 +28,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	has_gun_safety = FALSE
 	company_flag = COMPANY_CANTALAN
-	dirt_modifier = 0.2
 
 /obj/item/gun/ballistic/automatic/pistol/cfa_ruby/empty
 	spawnwithmagazine = FALSE

@@ -1,6 +1,6 @@
 // This is for all the berets that /tg/ didn't want. You're welcome, they should look better.
 
-/obj/item/clothing/head/hos/beret
+/obj/item/clothing/head/hats/hos/beret
 	name = "head of security beret"
 	desc = "A robust beret for the Head of Security, for looking stylish while not sacrificing protection."
 	icon_state = "beret_badge"
@@ -8,7 +8,7 @@
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	greyscale_colors = "#3F3C40#FFCE5B"
 
-/obj/item/clothing/head/hos/beret/syndicate
+/obj/item/clothing/head/hats/hos/beret/syndicate
 	name = "syndicate beret"
 	desc = "A black beret with thick armor padding inside. Stylish and robust."
 	greyscale_colors = "#3F3C40#DB2929"
@@ -20,8 +20,18 @@
 	greyscale_config = /datum/greyscale_config/beret_badge_fancy
 	greyscale_config_worn = /datum/greyscale_config/beret_badge_fancy/worn
 	greyscale_colors = "#3C485A#FF0000#00AEEF"
-	armor = list(MELEE = 40, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 30, ACID = 50, WOUND = 6)
+	armor_type = /datum/armor/sec_navywarden
 	strip_delay = 60
+
+/datum/armor/sec_navywarden
+	melee = 40
+	bullet = 30
+	laser = 30
+	energy = 40
+	bomb = 25
+	fire = 30
+	acid = 50
+	wound = 6
 
 /obj/item/clothing/head/beret/sec/navyofficer
 	desc = "A special beret with the security insignia emblazoned on it. For officers with class."
@@ -76,7 +86,6 @@
 	greyscale_colors = "#FFDE15#00A5FF"
 	flags_1 = NONE
 
-
 // From this point forth will be berets that are made especially for Skyrat. Those are loosely based off of the ones that were ported initially, but they might not be 1:1
 
 /obj/item/clothing/head/beret/engi/ce
@@ -99,17 +108,20 @@
 	desc = "A beret custom-fit to the Chief Medical Officer, repaired once or twice after Runtime got a hold of it. This one is made out of white fabric. Fancy."
 	greyscale_colors = "#FFFFFF#34CCEE"
 
+/obj/item/clothing/head/beret/science/fancy
+	desc = "A science-themed beret for our hardworking scientists. This one comes with a fancy badge!"
+	icon_state = "beret_badge"
+	greyscale_config = /datum/greyscale_config/beret_badge
+	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_config_worn_teshari = /datum/greyscale_config/beret_badge/worn/teshari
+	greyscale_colors = "#8D008F#FFFFFF"
+
 /obj/item/clothing/head/beret/science/fancy/robo
 	name = "robotics beret"
 	desc = "A sleek black beret designed with high-durability nano-mesh fiber - or so the roboticists claim."
 	greyscale_colors = "#4F4F4F#730000"
 
-/obj/item/clothing/head/beret/science/fancy/rd
-	name = "research director's beret"
-	desc = "A custom-tailored beret for the Research Director. Lamarr thinks it looks great."
-	greyscale_colors = "#8D008F#D8D39C"
-
-/obj/item/clothing/head/beret/science/fancy/rd/alt
+/obj/item/clothing/head/beret/science/rd/alt
 	name = "research director's beret"
 	desc = "A custom-tailored beret for the Research Director. Lamarr thinks it looks great. This one is made out of white fabric. Fancy."
 	greyscale_colors = "#FFFFFF#8D008F"

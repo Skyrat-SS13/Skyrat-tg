@@ -12,7 +12,7 @@
 	heat_protection = NONE
 	min_cold_protection_temperature = EMERGENCY_SUIT_MIN_TEMP_PROTECT
 	max_heat_protection_temperature = EMERGENCY_SUIT_MAX_TEMP_PROTECT
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 20, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/space_emergency
 	clothing_flags = STOPSPRESSUREDAMAGE | SNUG_FIT
 	actions_types = null
 	show_hud = FALSE
@@ -21,9 +21,12 @@
 	/// Have we been damaged?
 	var/torn = FALSE
 
+/datum/armor/space_emergency
+	bio = 20
+
 /obj/item/clothing/suit/space/emergency/equipped(mob/user, slot)
 	. = ..()
-	RegisterSignal(user, COMSIG_MOB_APPLY_DAMAGE, .proc/user_damaged)
+	RegisterSignal(user, COMSIG_MOB_APPLY_DAMAGE, PROC_REF(user_damaged))
 
 /obj/item/clothing/suit/space/emergency/dropped(mob/user)
 	. = ..()
@@ -58,7 +61,7 @@
 	icon_state = "syndicate-helm-orange"
 	inhand_icon_state = "syndicate-helm-orange"
 	heat_protection = NONE
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 20, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/space_emergency
 	flash_protect = 0
 	clothing_flags = STOPSPRESSUREDAMAGE | SNUG_FIT
 	min_cold_protection_temperature = EMERGENCY_HELMET_MIN_TEMP_PROTECT
@@ -70,6 +73,7 @@
 #undef EMERGENCY_SUIT_MAX_TEMP_PROTECT
 
 // Lil box to hold em in
+
 /obj/item/storage/box/emergency_spacesuit
 	name = "emergency space suit case"
 	desc =  "A small case containing an emergency space suit and helmet."

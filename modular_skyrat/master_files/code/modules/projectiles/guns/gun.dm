@@ -5,8 +5,8 @@
 /obj/item/gun
 	name = "gun"
 	desc = "It's a gun. It's pretty terrible, though."
-	icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi' // skyrat edit
-	icon_state = "detective"
+	icon = 'icons/obj/weapons/guns/ballistic.dmi'
+	icon_state = "revolver"
 	inhand_icon_state = "gun"
 	worn_icon_state = "gun"
 	flags_1 =  CONDUCT_1
@@ -43,6 +43,8 @@
 	var/semicd = 0 // cooldown handler
 	var/weapon_weight = WEAPON_LIGHT
 	var/dual_wield_spread = 24 // additional spread when dual wielding
+	///Can we hold up our target with this? Default to yes
+	var/can_hold_up = TRUE
 
 	/// Just 'slightly' snowflakey way to modify projectile damage for projectiles fired from this gun.
 	var/projectile_damage_multiplier = 1
@@ -87,7 +89,7 @@
 
 /datum/action/item_action/toggle_safety
 	name = "Toggle Safety"
-	icon_icon = 'modular_skyrat/modules/gunsafety/icons/actions.dmi'
+	button_icon = 'modular_skyrat/modules/gunsafety/icons/actions.dmi'
 	button_icon_state = "safety_on"
 
 /obj/item/gun/ui_action_click(mob/user, actiontype)
@@ -117,12 +119,12 @@
 
 	burst_size = 1
 
-	sort_list(fire_select_modes, /proc/cmp_numeric_asc)
+	sort_list(fire_select_modes, GLOBAL_PROC_REF(cmp_numeric_asc))
 
 	if(fire_select_modes.len > 1)
 		firemode_action = new(src)
 		firemode_action.button_icon_state = "fireselect_[fire_select]"
-		firemode_action.UpdateButtons()
+		firemode_action.build_all_button_icons()
 		add_item_action(firemode_action)
 
 	if(SELECT_FULLY_AUTOMATIC in fire_select_modes)
@@ -246,7 +248,7 @@
 	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
 	update_appearance()
 	firemode_action.button_icon_state = "fireselect_[fire_select]"
-	firemode_action.UpdateButtons()
+	firemode_action.build_all_button_icons()
 	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
 	return TRUE
 
@@ -319,6 +321,8 @@
 /obj/item/gun/afterattack_secondary(mob/living/victim, mob/living/user, params)
 	if(!isliving(victim) || !IN_GIVEN_RANGE(user, victim, GUNPOINT_SHOOTER_STRAY_RANGE))
 		return ..() //if they're out of range, just shootem.
+	if(!can_hold_up)
+		return ..()
 	var/datum/component/gunpoint/gunpoint_component = user.GetComponent(/datum/component/gunpoint)
 	if (gunpoint_component)
 		if(gunpoint_component.target == victim)
@@ -388,7 +392,7 @@
 			else if(held_gun.can_trigger_gun(user))
 				bonus_spread += dual_wield_spread
 				loop_counter++
-				addtimer(CALLBACK(held_gun, /obj/item/gun.proc/process_fire, target, user, TRUE, params, null, bonus_spread), loop_counter)
+				addtimer(CALLBACK(held_gun, TYPE_PROC_REF(/obj/item/gun, process_fire), target, user, TRUE, params, null, bonus_spread), loop_counter)
 
 	return process_fire(target, user, TRUE, params, null, bonus_spread)
 
@@ -423,7 +427,7 @@
 	else
 		safety = !safety
 	toggle_safety_action.button_icon_state = "safety_[safety ? "on" : "off"]"
-	toggle_safety_action.UpdateButtons()
+	toggle_safety_action.build_all_button_icons()
 	playsound(src, 'sound/weapons/empty.ogg', 100, TRUE)
 	user.visible_message(
 		span_notice("[user] toggles [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"]."),
@@ -512,7 +516,7 @@
 	if(burst_size > 1)
 		firing_burst = TRUE
 		for(var/i = 1 to burst_size)
-			addtimer(CALLBACK(src, .proc/process_burst, user, target, message, params, zone_override, sprd, randomized_gun_spread, randomized_bonus_spread, rand_spr, i), fire_delay * (i - 1))
+			addtimer(CALLBACK(src, PROC_REF(process_burst), user, target, message, params, zone_override, sprd, randomized_gun_spread, randomized_bonus_spread, rand_spr, i), fire_delay * (i - 1))
 	else
 		if(chambered)
 			if(HAS_TRAIT(user, TRAIT_PACIFISM)) // If the user has the pacifist trait, then they won't be able to fire [src] if the round chambered inside of [src] is lethal.
@@ -535,7 +539,7 @@
 		process_chamber()
 		update_appearance()
 		semicd = TRUE
-		addtimer(CALLBACK(src, .proc/reset_semicd), fire_delay)
+		addtimer(CALLBACK(src, PROC_REF(reset_semicd)), fire_delay)
 
 	if(user)
 		user.update_held_items()

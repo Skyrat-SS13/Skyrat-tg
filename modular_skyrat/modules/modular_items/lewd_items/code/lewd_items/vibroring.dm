@@ -1,7 +1,8 @@
 /obj/item/clothing/sextoy/vibroring
 	name = "vibrating ring"
 	desc = "A ring toy used to keep your erection going strong."
-	icon_state = "vibroring"
+	icon_state = "vibroring_pink_off"
+	base_icon_state = "vibroring"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	/// If the toy is currently on or not
 	var/toy_on = FALSE
@@ -41,7 +42,7 @@
 	. = ..()
 	if(.)
 		return
-	var/choice = show_radial_menu(user, src, vibroring_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
+	var/choice = show_radial_menu(user, src, vibroring_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 	if(!choice)
 		return FALSE
 	current_color = choice
@@ -63,8 +64,8 @@
 
 /obj/item/clothing/sextoy/vibroring/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]_[toy_on? "on" : "off"]"
-	inhand_icon_state = "[initial(icon_state)]_[current_color]"
+	icon_state = "[base_icon_state]_[current_color]_[toy_on? "on" : "off"]"
+	inhand_icon_state = "[base_icon_state]_[current_color]"
 
 /obj/item/clothing/sextoy/vibroring/equipped(mob/living/carbon/human/user, slot, initial)
 	. = ..()

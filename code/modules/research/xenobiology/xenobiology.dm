@@ -126,7 +126,7 @@
 			user.visible_message(span_warning("[user] starts shaking!"),span_notice("Your [name] starts pulsing gently..."))
 			if(do_after(user, 40, target = user))
 				var/mob/living/spawned_mob = create_random_mob(user.drop_location(), FRIENDLY_SPAWN)
-				spawned_mob.faction |= "neutral"
+				spawned_mob.faction |= FACTION_NEUTRAL
 				playsound(user, 'sound/effects/splat.ogg', 50, TRUE)
 				user.visible_message(span_warning("[user] spits out [spawned_mob]!"), span_notice("You spit out [spawned_mob]!"))
 				return 300
@@ -136,7 +136,7 @@
 			if(do_after(user, 50, target = user))
 				var/mob/living/spawned_mob = create_random_mob(user.drop_location(), HOSTILE_SPAWN)
 				if(!user.combat_mode)
-					spawned_mob.faction |= "neutral"
+					spawned_mob.faction |= FACTION_NEUTRAL
 				else
 					spawned_mob.faction |= "slime"
 				playsound(user, 'sound/effects/splat.ogg', 50, TRUE)
@@ -156,7 +156,7 @@
 		if(SLIME_ACTIVATE_MINOR)
 			var/food_type = get_random_food()
 			var/obj/item/food/food_item = new food_type
-			food_item.mark_silver_slime_reaction()
+			ADD_TRAIT(food_item, TRAIT_FOOD_SILVER, INNATE_TRAIT)
 			if(!user.put_in_active_hand(food_item))
 				food_item.forceMove(user.drop_location())
 			playsound(user, 'sound/effects/splat.ogg', 50, TRUE)
@@ -270,7 +270,7 @@
 				to_chat(user, span_warning("Your glow is already enhanced!"))
 				return
 			species.update_glow(user, 5)
-			addtimer(CALLBACK(species, /datum/species/jelly/luminescent.proc/update_glow, user, LUMINESCENT_DEFAULT_GLOW), 600)
+			addtimer(CALLBACK(species, TYPE_PROC_REF(/datum/species/jelly/luminescent, update_glow), user, LUMINESCENT_DEFAULT_GLOW), 600)
 			to_chat(user, span_notice("You start glowing brighter."))
 
 		if(SLIME_ACTIVATE_MAJOR)
@@ -459,6 +459,7 @@
 			if(do_after(user, 60, target = user))
 				to_chat(user, span_userdanger("You explode!"))
 				explosion(user, devastation_range = 1, heavy_impact_range = 3, light_impact_range = 6, explosion_cause = src)
+				user.investigate_log("has been gibbed by an oil slime extract explosion.", INVESTIGATE_DEATHS)
 				user.gib()
 				return
 			to_chat(user, span_notice("You stop feeding [src], and the feeling passes."))
@@ -477,7 +478,7 @@
 				return
 			to_chat(user, span_notice("You feel your skin harden and become more resistant."))
 			species.armor += 25
-			addtimer(CALLBACK(src, .proc/reset_armor, species), 1200)
+			addtimer(CALLBACK(src, PROC_REF(reset_armor), species), 1200)
 			return 450
 
 		if(SLIME_ACTIVATE_MAJOR)
@@ -754,7 +755,7 @@
 		return
 	if(prompted || !ismob(switchy_mob))
 		return
-	if(!(isanimal(switchy_mob) || isbasicmob(switchy_mob))|| switchy_mob.ckey) //much like sentience, these will not work on something that is already player controlled
+	if(!(isanimal(switchy_mob) || isbasicmob(switchy_mob)) || switchy_mob.ckey) //much like sentience, these will not work on something that is already player controlled
 		to_chat(user, span_warning("[switchy_mob] already has a higher consciousness!"))
 		return ..()
 	if(switchy_mob.stat)
@@ -780,7 +781,7 @@
 		return
 
 	prompted = 1
-	if(tgui_alert(usr,"This will permanently transfer your consciousness to [switchy_mob]. Are you sure you want to do this?",,list("Yes","No"))=="No")
+	if(tgui_alert(usr,"This will permanently transfer your consciousness to [switchy_mob]. Are you sure you want to do this?",,list("Yes","No")) == "No")
 		prompted = 0
 		return
 
@@ -888,6 +889,7 @@
 	if(!istype(C))
 		to_chat(user, span_warning("The potion can only be used on objects!"))
 		return
+	. |= AFTERATTACK_PROCESSED_ITEM
 	if(SEND_SIGNAL(C, COMSIG_SPEED_POTION_APPLIED, src, user) & SPEED_POTION_STOP)
 		return
 	if(isitem(C))
@@ -926,6 +928,7 @@
 	if(!uses)
 		qdel(src)
 		return
+	. |= AFTERATTACK_PROCESSED_ITEM
 	if(!istype(C))
 		to_chat(user, span_warning("The potion can only be used on clothing!"))
 		return

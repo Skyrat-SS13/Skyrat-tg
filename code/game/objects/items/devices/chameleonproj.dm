@@ -43,6 +43,7 @@
 	. = ..()
 	if(!proximity)
 		return
+	. |= AFTERATTACK_PROCESSED_ITEM
 	if(!check_sprite(target))
 		return
 	if(active_dummy)//I now present you the blackli(f)st
@@ -171,7 +172,7 @@
 				amount = 25
 
 		can_move = world.time + amount
-		step(src, direction)
+		try_step_multiz(direction)
 	return
 
 /obj/effect/dummy/chameleon/Destroy()

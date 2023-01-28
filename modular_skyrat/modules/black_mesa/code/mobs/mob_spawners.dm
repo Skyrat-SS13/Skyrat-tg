@@ -27,7 +27,7 @@
 /obj/effect/random_mob_placer/Initialize(mapload)
 	. = ..()
 	for(var/turf/iterating_turf in range(MOB_PLACER_RANGE, src))
-		RegisterSignal(iterating_turf, COMSIG_ATOM_ENTERED, .proc/trigger)
+		RegisterSignal(iterating_turf, COMSIG_ATOM_ENTERED, PROC_REF(trigger))
 
 /obj/effect/random_mob_placer/proc/trigger(datum/source, atom/movable/entered_atom)
 	SIGNAL_HANDLER
@@ -120,7 +120,7 @@
 	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/hlscience
 	suit = /obj/item/clothing/suit/toggle/labcoat
 	shoes = /obj/item/clothing/shoes/laceup
-	gloves = /obj/item/clothing/gloves/color/latex
+	gloves = /obj/item/clothing/gloves/latex
 
 /obj/effect/mob_spawn/corpse/human/guard_zombie
 	name = "Security Guard"

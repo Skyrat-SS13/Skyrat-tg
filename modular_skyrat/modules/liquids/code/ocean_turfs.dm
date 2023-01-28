@@ -55,8 +55,8 @@
 	icon_state = "fissure-0"
 	base_icon_state = "fissure"
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_FISSURE)
-	canSmoothWith = list(SMOOTH_GROUP_FISSURE)
+	smoothing_groups = SMOOTH_GROUP_FISSURE
+	canSmoothWith = SMOOTH_GROUP_FISSURE
 	light_range = 3
 	light_color = LIGHT_COLOR_LAVA
 
@@ -144,14 +144,6 @@
 	turf_type = /turf/open/floor/plating/ocean/rock/heavy
 	color = "#58606b"
 
-//extremely low chance of rare ores, meant mostly for populating stations with large amounts of asteroid
-/turf/closed/mineral/random/stationside
-	icon_state = "rock_nochance"
-	mineralChance = 4
-	mineralSpawnChanceList = list(
-		/obj/item/stack/ore/uranium = 1, /obj/item/stack/ore/diamond = 1, /obj/item/stack/ore/gold = 3, /obj/item/stack/ore/titanium = 5,
-		/obj/item/stack/ore/silver = 4, /obj/item/stack/ore/plasma = 3, /obj/item/stack/ore/iron = 50)
-
 /turf/closed/mineral/random/stationside/ocean
 	baseturfs = /turf/open/floor/plating/ocean/rock/heavy
 	turf_type = /turf/open/floor/plating/ocean/rock/heavy
@@ -206,12 +198,6 @@
 	liquid_height = -30
 	turf_height = -30
 
-/turf/open/floor/iron/submarine/setup_broken_states()
-	return list("submarine_floor")
-
-/turf/open/floor/iron/submarine/setup_burnt_states()
-	return list("submarine_floor")
-
 /turf/open/floor/iron/submarine/rust_heretic_act()
 	return
 
@@ -223,12 +209,6 @@
 	liquid_height = -30
 	turf_height = -30
 
-/turf/open/floor/iron/submarine_vents/setup_broken_states()
-	return list("submarine_vents")
-
-/turf/open/floor/iron/submarine_vents/setup_burnt_states()
-	return list("submarine_vents")
-
 /turf/open/floor/iron/submarine_vents/rust_heretic_act()
 	return
 
@@ -239,12 +219,6 @@
 	icon_state = "submarine_perf"
 	liquid_height = -30
 	turf_height = -30
-
-/turf/open/floor/iron/submarine_perf/setup_broken_states()
-	return list("submarine_perf")
-
-/turf/open/floor/iron/submarine_perf/setup_burnt_states()
-	return list("submarine_perf")
 
 /turf/open/floor/iron/submarine_perf/rust_heretic_act()
 	return

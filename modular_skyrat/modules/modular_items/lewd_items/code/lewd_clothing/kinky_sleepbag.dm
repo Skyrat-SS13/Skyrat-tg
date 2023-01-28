@@ -8,7 +8,8 @@
 	worn_icon_taur_paw = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/sleepbag_special.dmi'
 	worn_icon_taur_hoof = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/sleepbag_special.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION|STYLE_TAUR_ALL
-	icon_state = "sleepbag"
+	icon_state = "sleepbag_pink_deflated_folded"
+	base_icon_state = "sleepbag"
 	w_class = WEIGHT_CLASS_SMALL
 	var/bag_state = "deflated"
 	var/bag_fold = TRUE
@@ -26,8 +27,8 @@
 	var/list/bag_states = list("deflated" = "inflated", "inflated" = "deflated")
 	var/state_thing = "deflated"
 	var/mutable_appearance/bag_overlay
-	var/obj/item/bodypart/l_leg/legr
-	var/obj/item/bodypart/l_leg/legl
+	var/obj/item/bodypart/leg/left/legr
+	var/obj/item/bodypart/leg/left/legl
 	slowdown = 2
 	equip_delay_other = 300
 	equip_delay_self = NONE
@@ -61,7 +62,7 @@
 			. = ..()
 			if(.)
 				return
-			var/choice = show_radial_menu(user, src, bag_colors, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
+			var/choice = show_radial_menu(user, src, bag_colors, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 			if(!choice)
 				return FALSE
 			bag_color = choice
@@ -97,8 +98,8 @@
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[bag_color]_[bag_state]_[bag_fold? "folded" : "unfolded"]"
-	inhand_icon_state = "[initial(icon_state)]_[bag_color]_[bag_state]_[bag_fold? "folded" : "unfolded"]"
+	icon_state = "[base_icon_state]_[bag_color]_[bag_state]_[bag_fold? "folded" : "unfolded"]"
+	inhand_icon_state = "[base_icon_state]_[bag_color]_[bag_state]_[bag_fold? "folded" : "unfolded"]"
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/equipped(mob/user, slot)
 	var/mob/living/carbon/human/affected_human = user

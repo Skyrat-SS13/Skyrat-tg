@@ -22,7 +22,7 @@
 			user.allowed_turfs += list("pawprint", "hoofprint", "clawprint")
 
 		//species & taurs
-		if(islizard(user) || issynthliz(user) || HAS_TRAIT(user, TRAIT_ASH_ASPECT))
+		if(islizard(user) || HAS_TRAIT(user, TRAIT_ASH_ASPECT))
 			user.allowed_turfs += "smoke"
 			user.allowed_turfs -= list("pawprint", "hoofprint")
 
@@ -45,7 +45,7 @@
 		if(ispodperson(user) || ispodweak(user) || HAS_TRAIT(user, TRAIT_FLORAL_ASPECT))
 			user.allowed_turfs += "vines"
 
-		if(isipc(user) || issynthanthro(user) || issynthhuman(user) || issynthliz(user))
+		if(issynthetic(user))
 			if(human_user.dna.species.mutant_bodyparts["taur"])
 				user.allowed_turfs += "holobed" //taurs get the holobed instead
 			else
@@ -62,12 +62,10 @@
 			if(tail.fluffy)
 				user.allowed_turfs += "tails"
 
-		if(human_user.dna.species.mutant_bodyparts["taur"])
-			var/name = human_user.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]
-			var/datum/sprite_accessory/taur/taur = GLOB.sprite_accessories["taur"][name]
-			if(taur.taur_mode & STYLE_TAUR_SNAKE)
-				user.allowed_turfs -= list("pawprint", "hoofprint", "clawprint")
-				user.allowed_turfs += "constrict"
+		var/taur_mode = human_user.get_taur_mode()
+		if(taur_mode & STYLE_TAUR_SNAKE)
+			user.allowed_turfs -= list("pawprint", "hoofprint", "clawprint")
+			user.allowed_turfs += "constrict"
 
 		//clothing
 		var/obj/item/shoes = user.get_item_by_slot(ITEM_SLOT_FEET)
@@ -88,7 +86,7 @@
 		display_turf[initial(choice)] = option
 
 	sort_list(display_turf)
-	var/chosen_turf = show_radial_menu(user, user, display_turf, custom_check = CALLBACK(src, .proc/check_menu, user))
+	var/chosen_turf = show_radial_menu(user, user, display_turf, custom_check = CALLBACK(src, PROC_REF(check_menu), user))
 
 	if(QDELETED(src) || QDELETED(user) || !chosen_turf)
 		return FALSE
@@ -158,7 +156,7 @@
 			owned_turf.transform = owned_turf.transform.Translate(0, translate)
 			owned_turf.appearance_flags = PIXEL_SCALE
 
-		RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/turf_owner, override = TRUE)
+		RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(turf_owner), override = TRUE)
 
 	return ..()
 

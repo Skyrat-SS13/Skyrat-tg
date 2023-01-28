@@ -40,6 +40,8 @@
 	var/picture_size_y_max = 4
 	var/can_customise = TRUE
 	var/default_picture_name
+	///Whether the camera should print pictures immediately when a picture is taken.
+	var/print_picture_on_snap = TRUE
 
 /obj/item/camera/Initialize(mapload)
 	. = ..()
@@ -64,7 +66,7 @@
 	if(!desired_x || QDELETED(user) || QDELETED(src) || !user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE) || loc != user)
 		return FALSE
 	var/desired_y = tgui_input_number(user, "How high do you want the camera to shoot", "Zoom", picture_size_y, picture_size_y_max, picture_size_y_min)
-	if(!desired_y|| QDELETED(user) || QDELETED(src) || !user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE) || loc != user)
+	if(!desired_y || QDELETED(user) || QDELETED(src) || !user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE) || loc != user)
 		return FALSE
 	picture_size_x = min(clamp(desired_x, picture_size_x_min, picture_size_x_max), CAMERA_PICTURE_SIZE_HARD_LIMIT)
 	picture_size_y = min(clamp(desired_y, picture_size_y_min, picture_size_y_max), CAMERA_PICTURE_SIZE_HARD_LIMIT)
@@ -125,6 +127,8 @@
 	return TRUE
 
 /obj/item/camera/afterattack(atom/target, mob/user, flag)
+	. |= AFTERATTACK_PROCESSED_ITEM
+
 	if (disk)
 		if(ismob(target))
 			if (disk.record)
@@ -142,11 +146,11 @@
 		return
 
 	on = FALSE
-	addtimer(CALLBACK(src, .proc/cooldown), cooldown)
+	addtimer(CALLBACK(src, PROC_REF(cooldown)), cooldown)
 
 	icon_state = state_off
 
-	INVOKE_ASYNC(src, .proc/captureimage, target, user, picture_size_x - 1, picture_size_y - 1)
+	INVOKE_ASYNC(src, PROC_REF(captureimage), target, user, picture_size_x - 1, picture_size_y - 1)
 
 
 /obj/item/camera/proc/cooldown()
@@ -163,7 +167,7 @@
 /obj/item/camera/proc/captureimage(atom/target, mob/user, size_x = 1, size_y = 1)
 	if(flash_enabled)
 		set_light_on(TRUE)
-		addtimer(CALLBACK(src, .proc/flash_end), FLASH_LIGHT_DURATION, TIMER_OVERRIDE|TIMER_UNIQUE)
+		addtimer(CALLBACK(src, PROC_REF(flash_end)), FLASH_LIGHT_DURATION, TIMER_OVERRIDE|TIMER_UNIQUE)
 	blending = TRUE
 	var/turf/target_turf = get_turf(target)
 	if(!isturf(target_turf))
@@ -214,25 +218,26 @@
 	after_picture(user, picture)
 	SEND_SIGNAL(src, COMSIG_CAMERA_IMAGE_CAPTURED, target, user)
 	blending = FALSE
-
+	return picture
 
 /obj/item/camera/proc/flash_end()
 	set_light_on(FALSE)
 
 
 /obj/item/camera/proc/after_picture(mob/user, datum/picture/picture)
-	printpicture(user, picture)
+	if(print_picture_on_snap)
+		printpicture(user, picture)
 
 /obj/item/camera/proc/printpicture(mob/user, datum/picture/picture) //Normal camera proc for creating photos
-	var/obj/item/photo/p = new(get_turf(src), picture)
-	if(user && in_range(src, user)) //needed because of TK
-		if(!ispAI(user))
-			user.put_in_hands(p)
-			pictures_left--
-			to_chat(user, span_notice("[pictures_left] photos left."))
-		var/customise = "No"
-		if(can_customise)
-			customise = tgui_alert(user, "Do you want to customize the photo?", "Customization", list("Yes", "No"))
+	if(!user)
+		return
+	pictures_left--
+	var/obj/item/photo/new_photo = new(get_turf(src), picture)
+	if(in_range(new_photo, user) && user.put_in_hands(new_photo)) //needed because of TK
+		to_chat(user, span_notice("[pictures_left] photos left."))
+
+	if(can_customise)
+		var/customise = tgui_alert(user, "Do you want to customize the photo?", "Customization", list("Yes", "No"))
 		if(customise == "Yes")
 			var/name1 = tgui_input_text(user, "Set a name for this photo, or leave blank.", "Name", max_length = 32)
 			var/desc1 = tgui_input_text(user, "Set a description to add to photo, or leave blank.", "Description", max_length = 128)
@@ -243,11 +248,10 @@
 				picture.picture_desc = "[desc1] - [picture.picture_desc]"
 			if(caption)
 				picture.caption = caption
-		else
-			if(default_picture_name)
-				picture.picture_name = default_picture_name
+		else if(default_picture_name)
+			picture.picture_name = default_picture_name
 
-	p.set_picture(picture, TRUE, TRUE)
+	new_photo.set_picture(picture, TRUE, TRUE)
 	if(CONFIG_GET(flag/picture_logging_camera))
 		picture.log_to_file()
 
@@ -280,13 +284,13 @@
 	picture_target = add_input_port("Picture Target", PORT_TYPE_ATOM)
 	picture_coord_x = add_input_port("Picture Coordinate X", PORT_TYPE_NUMBER)
 	picture_coord_y = add_input_port("Picture Coordinate Y", PORT_TYPE_NUMBER)
-	adjust_size_x = add_input_port("Picture Size X", PORT_TYPE_NUMBER, trigger = .proc/sanitize_picture_size)
-	adjust_size_y = add_input_port("Picture Size Y", PORT_TYPE_NUMBER, trigger = .proc/sanitize_picture_size)
+	adjust_size_x = add_input_port("Picture Size X", PORT_TYPE_NUMBER, trigger = PROC_REF(sanitize_picture_size))
+	adjust_size_y = add_input_port("Picture Size Y", PORT_TYPE_NUMBER, trigger = PROC_REF(sanitize_picture_size))
 
 /obj/item/circuit_component/camera/register_shell(atom/movable/shell)
 	. = ..()
 	camera = shell
-	RegisterSignal(shell, COMSIG_CAMERA_IMAGE_CAPTURED, .proc/on_image_captured)
+	RegisterSignal(shell, COMSIG_CAMERA_IMAGE_CAPTURED, PROC_REF(on_image_captured))
 
 /obj/item/circuit_component/camera/unregister_shell(atom/movable/shell)
 	UnregisterSignal(shell, COMSIG_CAMERA_IMAGE_CAPTURED)
@@ -311,6 +315,6 @@
 			return
 	if(!camera.can_target(target))
 		return
-	INVOKE_ASYNC(camera, /obj/item/camera.proc/captureimage, target, null, camera.picture_size_y  - 1, camera.picture_size_y - 1)
+	INVOKE_ASYNC(camera, TYPE_PROC_REF(/obj/item/camera, captureimage), target, null, camera.picture_size_y  - 1, camera.picture_size_y - 1)
 
 #undef CAMERA_PICTURE_SIZE_HARD_LIMIT
