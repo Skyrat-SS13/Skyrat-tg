@@ -1,6 +1,6 @@
 /obj/item/conveyor_sorter
 	name = "conveyor sorter lister"
-	desc = "A tool that is used to not only create the conveyor sorters, but give lists to the conveyor sorters."
+	desc = "A tool that is used to not only create the conveyor sorters, but give lists to the conveyor sorters. It has a limit of four sorters"
 	icon = 'modular_skyrat/modules/conveyor_sorter/icons/conveyor_sorter.dmi'
 	icon_state = "lister"
 	///the list of conveyor sorters spawned by
@@ -15,16 +15,17 @@
 
 /obj/item/conveyor_sorter/examine(mob/user)
 	. = ..()
-	. += span_notice("Use it to place down a conveyor sorter, up to three.")
+	. += span_notice("Use it to place down a conveyor sorter, up to a limit.")
 	. += span_notice("Use Alt-Click to reset the sorting list.")
 	. += span_notice("Attack things to attempt to add to the sorting list.")
 
 /obj/item/conveyor_sorter/attack_self(mob/user, modifiers)
-	if(length(spawned_sorters) >= 3)
-		to_chat(user, span_warning("You may only have three spawned conveyor sorters!"))
+	if(length(spawned_sorters) >= 4)
+		to_chat(user, span_warning("You may only have four spawned conveyor sorters!"))
 		return
 	var/obj/effect/decal/cleanable/conveyor_sorter/new_cs = new /obj/effect/decal/cleanable/conveyor_sorter(get_turf(src))
 	new_cs.parent_item = src
+	new_cs.sorting_list = src.current_sort
 	spawned_sorters += new_cs
 
 /obj/item/conveyor_sorter/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
@@ -99,7 +100,7 @@
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 
 /obj/effect/decal/cleanable/conveyor_sorter/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/conveyor_sorter))
+	if(istype(W, /obj/item/conveyor_sorter) || istype(W, /obj/item/conveyor_sorter/improved))
 		var/obj/item/conveyor_sorter/cs_item = W
 		sorting_list = cs_item.current_sort
 		visible_message("[src] pings, updating its sorting list!")
@@ -145,3 +146,71 @@
 		"conveysorter",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+
+/obj/item/conveyor_sorter/improved
+	name = "improved conveyor sorter lister"
+	desc = "A tool that is used to not only create the conveyor sorters, but give lists to the conveyor sorters. This one has an increased capacity of eight."
+	icon_state = "lister_improved"
+
+/obj/item/conveyor_sorter/improved/examine(mob/user)
+	. = ..()
+	. += span_notice("This version of the sorter allows up to eight sorters to be placed.")
+
+/obj/item/conveyor_sorter/improved/attack_self(mob/user, modifiers)
+	if(length(spawned_sorters) >= 8)
+		to_chat(user, span_warning("You may only have eight spawned conveyor sorters!"))
+		return
+	var/obj/effect/decal/cleanable/conveyor_sorter/improved/new_cs = new /obj/effect/decal/cleanable/conveyor_sorter/improved(get_turf(src))
+	new_cs.parent_item = src
+	new_cs.sorting_list = src.current_sort
+	spawned_sorters += new_cs
+
+/obj/effect/decal/cleanable/conveyor_sorter/improved
+	name = "improved conveyor sorter"
+	desc = "A mark that will sort items out based on what they are. This one can sort in multiple directions."
+	icon = 'modular_skyrat/modules/conveyor_sorter/icons/conveyor_sorter.dmi'
+	icon_state = "sorter_improved"
+	light_range = 3
+	light_color = COLOR_BLUE_LIGHT
+
+/obj/effect/decal/cleanable/conveyor_sorter/improved/attack_hand(mob/living/user, list/modifiers)
+	var/user_choice_improved = tgui_input_list(user, "Choose which direction to sort to!", "Direction choice", list("North", "East", "South", "West", "North-East", "North-West", "South-East", "South-West"))
+	if(!user_choice_improved)
+		return ..()
+	switch(user_choice_improved)
+		if("North")
+			setDir(NORTH)
+		if("East")
+			setDir(EAST)
+		if("South")
+			setDir(SOUTH)
+		if("West")
+			setDir(WEST)
+		if("North-East")
+			setDir(NORTHEAST)
+		if("North-West")
+			setDir(NORTHWEST)
+		if("South-East")
+			setDir(SOUTHEAST)
+		if("South-West")
+			setDir(SOUTHWEST)
+	visible_message("[src] pings, updating its sorting direction!")
+	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
+
+/datum/design/conveyor_sorter/improved
+	name = "Improved Conveyor Sorter"
+	desc = "A wonderful item that can set markers and forcefully move stuff to a direction. With more capacity to sort more!"
+	id = "conveysorterimproved"
+	build_path = /obj/item/conveyor_sorter/improved
+	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500, /datum/material/gold = 500, /datum/material/bluespace = 500)
+
+
+/datum/techweb_node/conveyor_sorter/improved
+	id = "conveysorterimproved"
+	display_name = "Improved Conveyor Sorter"
+	description = "An improved version of the conveyor sorter, this one allows for more control over sorting."
+	prereq_ids = list("bluespace_basic", "practical_bluespace", "engineering", "conveysorter")
+	design_ids = list(
+		"conveysorterimproved",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
