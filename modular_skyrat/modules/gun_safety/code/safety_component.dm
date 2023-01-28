@@ -56,10 +56,10 @@
 	toggle_safety_action.button_icon_state = "safety_[safety_currently_on ? "on" : "off"]"
 	toggle_safety_action.build_all_button_icons()
 
-	playsound(src, 'sound/weapons/empty.ogg', 100, TRUE)
+	playsound(parent, 'sound/weapons/empty.ogg', 100, TRUE)
 	user.visible_message(
-		span_notice("[user] toggles [src]'s safety [safety_currently_on ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"]."),
-		span_notice("You toggle [src]'s safety [safety_currently_on ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].")
+		span_notice("[user] toggles [parent]'s safety [safety_currently_on ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"]."),
+		span_notice("You toggle [parent]'s safety [safety_currently_on ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].")
 	)
 
 /// Adds the gun safety's current status to the gun's examine
