@@ -1,7 +1,7 @@
 /obj/machinery/vending/wardrobe/medi_wardrobe
 	skyrat_products = list(
 		/obj/item/radio/headset/headset_med = 3,
-		/obj/item/clothing/gloves/color/latex/nitrile = 2,
+		/obj/item/clothing/gloves/latex/nitrile = 2,
 		/obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown = 5,
 		/obj/item/storage/belt/medbandolier = 2,
 		/obj/item/clothing/under/rank/engineering/engineer/skyrat/hazard_chem/emt = 2,
@@ -20,9 +20,9 @@
 		/obj/item/clothing/under/misc/overalls = 3,
 		/obj/item/clothing/suit/toggle/jacket/engi = 3,
 		/obj/item/clothing/head/utility/hardhat/orange = 2,
-		/obj/item/clothing/head/utility/hardhat/weldhat/orange = 2,
+		/obj/item/clothing/head/utility/hardhat/welding/orange = 2,
 		/obj/item/clothing/head/utility/hardhat/dblue = 2,
-		/obj/item/clothing/head/utility/hardhat/weldhat/dblue = 2,
+		/obj/item/clothing/head/utility/hardhat/welding/dblue = 2,
 		/obj/item/clothing/head/utility/hardhat/red = 2
 	)
 
@@ -219,7 +219,7 @@
 /obj/machinery/vending/wardrobe/medi_wardrobe/ghost_cafe
 	skyrat_products = list(
 		/obj/item/radio/headset/headset_med = 0,
-		/obj/item/clothing/gloves/color/latex/nitrile = 2,
+		/obj/item/clothing/gloves/latex/nitrile = 2,
 		/obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown = 5,
 		/obj/item/storage/belt/medbandolier = 2,
 		/obj/item/clothing/under/rank/engineering/engineer/skyrat/hazard_chem/emt = 2,
@@ -237,8 +237,8 @@
 		/obj/item/clothing/under/misc/overalls = 3,
 		/obj/item/clothing/suit/toggle/jacket/engi = 3,
 		/obj/item/clothing/head/utility/hardhat/orange = 2,
-		/obj/item/clothing/head/utility/hardhat/weldhat/orange = 2,
+		/obj/item/clothing/head/utility/hardhat/welding/orange = 2,
 		/obj/item/clothing/head/utility/hardhat/dblue = 2,
-		/obj/item/clothing/head/utility/hardhat/weldhat/dblue = 2,
+		/obj/item/clothing/head/utility/hardhat/welding/dblue = 2,
 		/obj/item/clothing/head/utility/hardhat/red = 2
 	)
