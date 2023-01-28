@@ -49,6 +49,8 @@
 	if(istype(actiontype, toggle_safety_action))
 		toggle_safeties(user)
 
+	return COMPONENT_ACTION_HANDLED
+
 /// Toggles the safeties on or off
 /datum/component/gun_safety/proc/toggle_safeties(mob/user)
 	safety_currently_on = !safety_currently_on
