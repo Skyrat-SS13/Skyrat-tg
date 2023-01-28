@@ -101,18 +101,18 @@
 			REMOVE_TRAIT(human, initial(glasses_type.hud_trait), GLASSES_TRAIT)
 
 /obj/item/clothing/glasses/hud/ar/proc/reset_vars()
-		worn_icon = initial(glasses_type.worn_icon)
-		icon_state = initial(glasses_type.icon_state)
-		flash_protect = initial(glasses_type.flash_protect)
-		tint = initial(glasses_type.tint)
-		lighting_alpha = initial(glasses_type.lighting_alpha)
-		vision_flags = initial(glasses_type.vision_flags)
-		hud_type = initial(glasses_type.hud_type)
-		hud_trait = initial(glasses_type.hud_trait)
-		//initial does not currently work on lists so we must do this
-		var/obj/item/clothing/glasses/hud/ar/glasses_object = new glasses_type // make a temporary glasses obj
-		clothing_traits = glasses_object.clothing_traits // pull the list from the created obj
-		qdel(glasses_object) // delete the object
+	worn_icon = initial(glasses_type.worn_icon)
+	icon_state = initial(glasses_type.icon_state)
+	flash_protect = initial(glasses_type.flash_protect)
+	tint = initial(glasses_type.tint)
+	lighting_alpha = initial(glasses_type.lighting_alpha)
+	vision_flags = initial(glasses_type.vision_flags)
+	hud_type = initial(glasses_type.hud_type)
+	hud_trait = initial(glasses_type.hud_trait)
+	//initial does not currently work on lists so we must do this
+	var/obj/item/clothing/glasses/hud/ar/glasses_object = new glasses_type // make a temporary glasses obj
+	clothing_traits = glasses_object.clothing_traits // pull the list from the created obj
+	qdel(glasses_object) // delete the object
 		
 /obj/item/clothing/glasses/hud/ar/proc/disable_vars(mob/user)
 	vision_flags = 0 /// Sets vision_flags to 0 to disable meson view mainly
