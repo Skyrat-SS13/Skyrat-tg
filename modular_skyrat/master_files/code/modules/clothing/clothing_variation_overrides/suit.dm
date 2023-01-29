@@ -118,6 +118,9 @@
  * Clothing that does not have a digitigrade version, and thus will squash legs to fit.
  */
 
+/obj/item/clothing/suit/armor/vest/ctf
+	supports_variations_flags = NONE
+
 /obj/item/clothing/suit/armor/vest/marine/security
 	supports_variations_flags = NONE
 
