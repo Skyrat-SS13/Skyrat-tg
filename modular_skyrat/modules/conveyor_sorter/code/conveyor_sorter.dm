@@ -211,7 +211,7 @@
 	id = "conveysorterimproved"
 	display_name = "Improved Conveyor Sorter"
 	description = "An improved version of the conveyor sorter, this one allows for more control over sorting."
-	prereq_ids = list("bluespace_basic", "practical_bluespace", "engineering", "conveysorter")
+	prereq_ids = list("practical_bluespace", "conveyorsorter")
 	design_ids = list(
 		"conveysorterimproved",
 	)
