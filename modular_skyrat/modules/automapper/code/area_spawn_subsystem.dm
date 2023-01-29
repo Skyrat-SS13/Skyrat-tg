@@ -30,10 +30,12 @@ SUBSYSTEM_DEF(area_spawn)
 	// And dense things aren't on walls. These objects should have normal density logic flipped.
 	var/list/flip_density_wall_mount_objects_list = list(
 		/obj/machinery,
-		/obj/item/radio/intercom,
 		/obj/structure/table,
 		/obj/structure/rack,
+		/obj/item/radio/intercom,
 		/obj/structure/noticeboard,
+		/obj/structure/sign,
+		/obj/structure/extinguisher_cabinet,
 	)
 
 	/// Cache of area turf info.
@@ -285,6 +287,8 @@ SUBSYSTEM_DEF(area_spawn)
 	for(var/i in 1 to amount_to_spawn)
 		var/turf/candidate_turf = SSarea_spawn.pick_turf_candidate(available_turfs)
 
+		var/final_desired_atom = desired_atom
+
 		if(mode == AREA_SPAWN_MODE_MOUNT_WALL)
 			// For wall mounts, we have to find the wall and spawn the right directional.
 			for(var/dir in GLOB.cardinals)
@@ -292,10 +296,10 @@ SUBSYSTEM_DEF(area_spawn)
 				if(isopenturf(neighbor_turf))
 					continue
 
-				desired_atom = text2path("[desired_atom]/directional/[dir2text(dir)]")
+				final_desired_atom = text2path("[desired_atom]/directional/[dir2text(dir)]")
 				break
 
-		new desired_atom(candidate_turf)
+		new final_desired_atom(candidate_turf)
 
 /obj/effect/turf_test
 	name = "PASS"

@@ -6,7 +6,7 @@
 	head = /obj/item/clothing/head/helmet/space/ntrauma
 	glasses = /obj/item/clothing/glasses/hud/health/night
 	ears = /obj/item/radio/headset/headset_cent/alt
-	gloves = /obj/item/clothing/gloves/color/latex/nitrile/ntrauma
+	gloves = /obj/item/clothing/gloves/latex/nitrile/ntrauma
 	l_hand = /obj/item/gun/energy/e_gun/stun
 	shoes = /obj/item/clothing/shoes/combat
 	belt = /obj/item/storage/belt/military/ntrauma
@@ -91,7 +91,7 @@
 	new /obj/item/reagent_containers/pill/patch/aiuri(src)
 	new	/obj/item/holosign_creator/medical (src)
 
-/obj/item/clothing/gloves/color/latex/nitrile/ntrauma
+/obj/item/clothing/gloves/latex/nitrile/ntrauma
 	name = "trauma specialist gloves"
 	desc = "A pair of nitrile-alternative gloves used by Trauma Team specialists, with a unique (and expensive) acid-repellent coating to prevent damage handling chemical hazards. Wont protect the rest of your body, though."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
