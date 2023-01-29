@@ -2,7 +2,7 @@
 	turf_flags = IS_SOLID | CAN_DECAY_BREAK_1 // We do it this way because we can then easily pick what we don't want to be broken.
 
 /turf/closed/wall
-	flags_1 = IS_SOLID | CAN_BE_DIRTY_1
+	flags_1 = CAN_BE_DIRTY_1
 
 /turf/open/floor/plating
 	turf_flags = IS_SOLID /// No breaking the plating
