@@ -17,7 +17,7 @@
 	item_flags = NOBLUDGEON
 
 /obj/item/paper/inspector_letter/Initialize(mapload)
-	..()
+	. = ..()
 	name = "letter to the esteemed inspector"
 	add_raw_text("<center>Dear <del>dumbass</del> Inspector</center>\
 	<BR><BR>\

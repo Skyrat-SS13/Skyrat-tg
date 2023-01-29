@@ -112,3 +112,22 @@
 		/datum/story_actor/ghost/spawn_in_arrivals/nri_shore_leave = 3,
 	)
 	maximum_execute_times = 1
+
+/*
+	Guardian Angel
+	Written by Oscar Gilmour
+		Plot Summary:
+			An old veteran works to protect their charge from those who would seek to harm them…
+		Actors:
+			Ghost:
+				Veteran (1)
+*/
+
+/datum/story_type/somewhat_impactful/guardian_angel
+	name = "Guardian Angel"
+	desc = "An old veteran works to protect their charge from those who would seek to harm them…\n\
+	Written by Oscar Gilmour."
+	actor_datums_to_make = list(
+		/datum/story_actor/ghost/spawn_in_arrivals/veteran = 1,
+	)
+	maximum_execute_times = 1

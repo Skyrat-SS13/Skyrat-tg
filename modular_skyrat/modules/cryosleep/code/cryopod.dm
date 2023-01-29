@@ -307,6 +307,7 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 // This function can not be undone; do not call this unless you are sure
 /obj/machinery/cryopod/proc/despawn_occupant()
 	var/mob/living/mob_occupant = occupant
+	SEND_SIGNAL(mob_occupant, COMSIG_LIVING_CRYO, mob_occupant)
 	var/list/crew_member = list()
 
 	if(ishuman(occupant))

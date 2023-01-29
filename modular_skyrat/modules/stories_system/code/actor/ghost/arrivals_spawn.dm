@@ -267,3 +267,56 @@
 	and straight-up spaced you one time you corrected a fellow student on the proper amount of wiring to power solar panels. Now, your hard work has paid off. \
 	The academy has sent you here to ensure the station is up to code. At least, you're pretty sure they did. That was an official letter you received, right?"
 	actor_goal = "Uncover every single regulatory violation, even the most minute ones. Ensure the captain knows about all of them. Rant about the nichest information from your book."
+
+/datum/story_actor/ghost/spawn_in_arrivals/veteran
+	name = "Veteran"
+	actor_outfits = list(
+		/datum/outfit/veteran,
+	)
+	actor_info = "It's been a long and bloodied life…\n\n\
+	Broken bones. Bullets rending flesh. Explosions shattering apart everything you've ever known. You put all of that behind you, for a time. \
+	You found work on vessels drifting into the darkest depths, seeking to distance yourself from those you served. Oh certainly there were those who questioned your origins. \
+	Syndicate? Merc? Gunner for the Black Hole Barons? You glared them all off…\n\n\
+	And now you find yourself here. Something stirs within you as you gaze upon them. An echo of your old life. One that must be preserved at all costs."
+	actor_goal = "Ensure your charge survives the shift. Only harm those who are hostile to your charge."
+	/// Stores their charge reference
+	var/mob/living/carbon/human/charge
+	/// Stores the charge's name.
+	var/charge_name
+	/// Has the charge gone into critical condition already to prevent message spam?
+	var/is_charge_in_critical = FALSE
+
+/datum/story_actor/ghost/spawn_in_arrivals/veteran/send_them_in(mob/living/carbon/human/to_send_human)
+	. = ..()
+	var/list/potential_charges = list()
+	for (var/datum/mind/crewmember as anything in get_crewmember_minds())
+		if(crewmember.current?.stat == DEAD || !crewmember.current.client) // dont select someone as their charge if they're dead already or don't have a client
+			continue
+		if(crewmember.current == to_send_human) // haha, no
+			continue
+		potential_charges += crewmember.current
+	if(!length(potential_charges))
+		CRASH("No potential charges for the Guardian Angel story to function on. This should never occur.")
+	charge = pick(potential_charges)
+	charge_name = charge.real_name
+	to_chat(to_send_human, span_boldannounce("Your mission is to protect [charge_name]"))
+	actor_goal = "Ensure your charge, [charge_name], survives the shift. Only harm those who are hostile to your charge."
+	RegisterSignal(charge, COMSIG_LIVING_DEATH, PROC_REF(charge_death))
+	RegisterSignal(charge, COMSIG_LIVING_HEALTH_UPDATE, PROC_REF(charge_health_changed))
+	RegisterSignal(charge, COMSIG_LIVING_CRYO, PROC_REF(charge_cryo))
+
+/datum/story_actor/ghost/spawn_in_arrivals/veteran/proc/charge_death(mob/living/source)
+	SIGNAL_HANDLER
+	to_chat(actor_ref.current, span_boldannounce("[charge_name] is dead. You have failed."))
+
+/datum/story_actor/ghost/spawn_in_arrivals/veteran/proc/charge_health_changed(mob/living/source)
+	SIGNAL_HANDLER
+	if(source.stat <= SOFT_CRIT && !is_charge_in_critical)
+		is_charge_in_critical = TRUE
+		to_chat(actor_ref.current, span_boldannounce("A terrible feeling washes over you. [charge_name] is in grave danger."))
+	else if(source.stat == CONSCIOUS)
+		is_charge_in_critical = FALSE
+
+/datum/story_actor/ghost/spawn_in_arrivals/veteran/proc/charge_cryo(mob/living/source)
+	SIGNAL_HANDLER
+	to_chat(actor_ref.current, span_boldannounce("[charge_name] is safe in cryo. For now, you can rest."))

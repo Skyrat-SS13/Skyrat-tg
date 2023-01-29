@@ -139,3 +139,8 @@
 
 /// From /mob/living/unfriend() : (mob/living/old_friend)
 #define COMSIG_LIVING_UNFRIENDED "living_unfriended"
+
+// SKYRAT EDIT BEGIN
+/// From /obj/machinery/cryopod/despawn_occupant() : (mob/living/cryoed_human)
+#define COMSIG_LIVING_CRYO "living_cryo"
+// SKYRAT EDIT END

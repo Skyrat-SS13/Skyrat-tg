@@ -401,3 +401,27 @@
 	worn_id.registered_name = equipped_human.real_name
 	worn_id.update_label()
 
+/datum/outfit/veteran
+	name = "Veteran"
+
+	id = /obj/item/card/id/passport
+	id_trim = /datum/id_trim/job/assistant/tourist
+	uniform = /obj/item/clothing/under/suit/tan
+	suit = /obj/item/clothing/suit/armor
+	ears = /obj/item/radio/headset
+	glasses = /obj/item/clothing/glasses/fake_sunglasses/aviator
+	head = /obj/item/clothing/head/helmet
+	shoes = /obj/item/clothing/shoes
+	l_hand = /obj/item/storage/briefcase/veteran
+	back = /obj/item/storage/backpack/satchel
+	backpack_contents = list(
+		/obj/item/holochip/thousand = 1,
+	)
+
+/datum/outfit/veteran/post_equip(mob/living/carbon/human/equipped_human, visualsOnly = FALSE)
+	if(visualsOnly)
+		return
+
+	var/obj/item/card/id/worn_id = equipped_human.wear_id
+	worn_id.registered_name = equipped_human.real_name
+	worn_id.update_label()

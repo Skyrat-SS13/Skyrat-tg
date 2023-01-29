@@ -348,7 +348,7 @@
 
 /datum/story_type/unimpactful/visions
 	name = "Visions"
-	desc = "You’ve been here before, and you know disaster is less than ninety minutes away…\n\
+	desc = "You've been here before, and you know disaster is less than ninety minutes away…\n\
 	Written by Oscar Gilmour."
 	actor_datums_to_make = list(
 		/datum/story_actor/crew/visionist = 1,
