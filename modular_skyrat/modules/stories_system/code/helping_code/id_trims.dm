@@ -12,6 +12,9 @@
 /datum/id_trim/job/assistant/government_official
 	assignment = "Government Official"
 
+/datum/id_trim/job/assistant/inspector
+	assignment = "Inspector"
+
 /datum/id_trim/centcom/centcom_inspector/middle_management
 	assignment = JOB_CENTCOM_MIDDLE_MANAGEMENT
 

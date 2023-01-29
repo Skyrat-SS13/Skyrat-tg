@@ -371,3 +371,33 @@
 	worn_id.registered_name = equipped_human.real_name
 	worn_id.update_label()
 
+
+/datum/outfit/inspector
+	name = "Inspector"
+
+	id = /obj/item/card/id/passport/government/inspector
+	id_trim = /datum/id_trim/job/assistant/inspector
+	uniform = /obj/item/clothing/under/suit/beige
+	ears = /obj/item/radio/headset
+	head = /obj/item/clothing/head/utility/hardhat
+	suit = /obj/item/clothing/suit/hazardvest
+	shoes = /obj/item/clothing/shoes/workboots
+	l_hand = /obj/item/clipboard
+	r_hand = /obj/item/pen/fourcolor
+	back = /obj/item/storage/backpack/satchel
+	backpack_contents = list(
+		/obj/item/book/inspectors_book = 1,
+		/obj/item/paper/inspector_letter = 1,
+		/obj/item/paper_bin = 1,
+		/obj/item/stamp = 1,
+		/obj/item/stamp/denied = 1,
+	)
+
+/datum/outfit/inspector/post_equip(mob/living/carbon/human/equipped_human, visualsOnly = FALSE)
+	if(visualsOnly)
+		return
+
+	var/obj/item/card/id/worn_id = equipped_human.wear_id
+	worn_id.registered_name = equipped_human.real_name
+	worn_id.update_label()
+

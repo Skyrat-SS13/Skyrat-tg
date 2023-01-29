@@ -254,3 +254,103 @@
 	)
 	/// The chosen book name, used to populate info on the Author's books.
 	var/chosen_book_name = "Variable Defaults And You - A Shocking Tale Of Broken Code"
+
+/datum/story_type/unimpactful/auteurs_in_space/pre_execute()
+	chosen_book_name = pick(book_names)
+
+/*
+	Sample Smuggler
+	Written by Oscar Gilmour
+		Plot Summary:
+			Smuggle goods off the station for an anonymous client.
+		Actors:
+			Crew:
+				Smuggler (1)
+*/
+
+/datum/story_type/unimpactful/sample_smuggler
+	name = "Sample Smuggler"
+	desc = "Smuggle goods off the station for an anonymous client.\n\
+	Written by Oscar Gilmour."
+	actor_datums_to_make = list(
+		/datum/story_actor/crew/smuggler = 1,
+	)
+	maximum_execute_times = 1
+
+/*
+	The Quest for the Perfect Brew
+	Written by Oscar Gilmour
+		Plot Summary:
+			Find the perfect blend of coffee that made you feel happy for the first time…
+		Actors:
+			Crew:
+				Coffee Critic (1)
+*/
+
+/datum/story_type/unimpactful/the_quest_for_the_perfect_brew
+	name = "The Quest for the Perfect Brew"
+	desc = "Find the perfect blend of coffee that made you feel happy for the first time…\n\
+	Written by Oscar Gilmour."
+	actor_datums_to_make = list(
+		/datum/story_actor/crew/coffee_critic = 1,
+	)
+	maximum_execute_times = 1
+
+
+/*
+	Alternative Medicine
+	Written by Oscar Gilmour
+		Plot Summary:
+			Who knows what they’re putting in those Medbots? Time for some natural medicine.
+		Actors:
+			Crew:
+				Salesperson (1)
+*/
+
+/datum/story_type/unimpactful/alternative_medicine
+	name = "Alternative Medicine"
+	desc = "Who knows what they’re putting in those Medbots? Time for some natural medicine.\n\
+	Written by Oscar Gilmour."
+	actor_datums_to_make = list(
+		/datum/story_actor/crew/salesperson = 1,
+	)
+	maximum_execute_times = 1
+
+
+/*
+	Regulation Station
+	Written by Oscar Gilmour
+		Plot Summary:
+			The hardiest corpo won’t bat an eyelid at the Syndicate, but they’ll quake in fear when you show them the 127 ways they violated Space Law.
+		Actors:
+			Ghost:
+				Inspector (1)
+*/
+
+/datum/story_type/unimpactful/regulation_station
+	name = "Regulation Station"
+	desc = "The hardiest corpo won't bat an eyelid at the Syndicate, but they'll quake in fear when you show them the 127 ways they violated Space Law.\n\
+	Written by Oscar Gilmour."
+	actor_datums_to_make = list(
+		/datum/story_actor/ghost/spawn_in_arrivals/inspector = 1,
+	)
+	maximum_execute_times = 1
+
+/*
+	Regulation Station
+	Written by Oscar Gilmour
+		Plot Summary:
+			You’ve been here before, and you know disaster is less than ninety minutes away…
+		Actors:
+			Ghost:
+				Visionist (1)
+*/
+
+/datum/story_type/unimpactful/visions
+	name = "Visions"
+	desc = "You’ve been here before, and you know disaster is less than ninety minutes away…\n\
+	Written by Oscar Gilmour."
+	actor_datums_to_make = list(
+		/datum/story_actor/crew/visionist = 1,
+	)
+	maximum_execute_times = 1

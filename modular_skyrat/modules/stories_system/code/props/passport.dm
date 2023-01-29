@@ -32,3 +32,6 @@
 
 /obj/item/card/id/passport/government/nri
 	government_seal = "Novaya Rossiyskaya Imperiya"
+
+/obj/item/card/id/passport/government/inspector
+	government_seal = "Regulatory Space Academy"

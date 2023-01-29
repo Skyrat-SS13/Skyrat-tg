@@ -257,3 +257,13 @@
 		var/obj/item/book/authors_book/book = new
 		book.book_data = new(story.chosen_book_name, to_send_human.name, "The text is so dense, so unending, that you can't make sense of a single word.")
 		to_send_human.equip_in_one_of_slots(book, slots)
+
+/datum/story_actor/ghost/spawn_in_arrivals/inspector
+	name = "Inspector"
+	actor_outfits = list(
+		/datum/outfit/inspector,
+	)
+	actor_info = "They all used to laugh at you. Mocked you for memorizing Space Structure Regulations, giggled when you recited the top seventeen vessel violations, \
+	and straight-up spaced you one time you corrected a fellow student on the proper amount of wiring to power solar panels. Now, your hard work has paid off. \
+	The academy has sent you here to ensure the station is up to code. At least, you're pretty sure they did. That was an official letter you received, right?"
+	actor_goal = "Uncover every single regulatory violation, even the most minute ones. Ensure the captain knows about all of them. Rant about the nichest information from your book."
