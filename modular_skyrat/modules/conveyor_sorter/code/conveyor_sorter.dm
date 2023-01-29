@@ -7,6 +7,7 @@
 	var/list/spawned_sorters = list()
 	///the list of things that are currently within the sorting list
 	var/list/current_sort = list()
+	var/max_sorters = 4
 
 /obj/item/conveyor_sorter/Destroy()
 	for(var/deleting_sorters in spawned_sorters)
@@ -20,8 +21,8 @@
 	. += span_notice("Attack things to attempt to add to the sorting list.")
 
 /obj/item/conveyor_sorter/attack_self(mob/user, modifiers)
-	if(length(spawned_sorters) >= 4)
-		to_chat(user, span_warning("You may only have four spawned conveyor sorters!"))
+	if(length(spawned_sorters) >= max_sorters)
+		to_chat(user, span_warning("You may only have [max_sorters] spawned conveyor sorters!"))
 		return
 	var/obj/effect/decal/cleanable/conveyor_sorter/new_cs = new /obj/effect/decal/cleanable/conveyor_sorter(get_turf(src))
 	new_cs.parent_item = src
@@ -151,14 +152,15 @@
 	name = "improved conveyor sorter lister"
 	desc = "A tool that is used to not only create the conveyor sorters, but give lists to the conveyor sorters. This one has an increased capacity of eight."
 	icon_state = "lister_improved"
+	max_sorters = 8
 
 /obj/item/conveyor_sorter/improved/examine(mob/user)
 	. = ..()
 	. += span_notice("This version of the sorter allows up to eight sorters to be placed.")
 
 /obj/item/conveyor_sorter/improved/attack_self(mob/user, modifiers)
-	if(length(spawned_sorters) >= 8)
-		to_chat(user, span_warning("You may only have eight spawned conveyor sorters!"))
+	if(length(spawned_sorters) >= max_sorters)
+		to_chat(user, span_warning("You may only have [max_sorters] spawned conveyor sorters!"))
 		return
 	var/obj/effect/decal/cleanable/conveyor_sorter/improved/new_cs = new /obj/effect/decal/cleanable/conveyor_sorter/improved(get_turf(src))
 	new_cs.parent_item = src
