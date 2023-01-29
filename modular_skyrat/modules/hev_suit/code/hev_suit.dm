@@ -41,7 +41,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "hev"
-	inhand_icon_state = "syndicate-orange"
 	armor_type = /datum/armor/space_hev_suit
 	obj_flags = NO_MAT_REDEMPTION
 	resistance_flags = LAVA_PROOF|FIRE_PROOF|UNACIDABLE|ACID_PROOF|INDESTRUCTIBLE|FREEZE_PROOF
@@ -70,6 +69,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/spacesuit.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suits/spacesuit_digi.dmi'
 	icon_state = "hev"
+	inhand_icon_state = "syndicate-orange"
 	armor_type = /datum/armor/space_hev_suit
 	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/energy/sword, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
 	cell = /obj/item/stock_parts/cell/hyper
