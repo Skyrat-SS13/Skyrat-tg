@@ -4,3 +4,7 @@
 
 /obj/item/clothing/suit/bio_suit
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suits/bio_digi.dmi'
+
+/obj/item/clothing/suit/wizrobe
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suits/wizard_digi.dmi'
+
