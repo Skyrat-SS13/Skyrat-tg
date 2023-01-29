@@ -93,12 +93,13 @@
 
 /obj/item/clothing/gloves/latex/nitrile/ntrauma
 	name = "trauma specialist gloves"
-	desc = "A pair of nitrile-alternative gloves used by Trauma Team specialists, with a unique (and expensive) acid-repellent coating to prevent damage handling chemical hazards. Wont protect the rest of your body, though."
+	desc = "A pair of nitrile-alternative gloves used by Trauma Team specialists, sealable to protect from pressure and with a unique (and expensive) acid-repellent coating to prevent damage handling chemical hazards. Wont protect the rest of your body, though."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
 	icon_state = "ert_ntrauma"
 	alternate_worn_layer = ABOVE_BODY_FRONT_LAYER	//So the LONG gloves can be shown off
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL //Combines with spacesuit
 
 /obj/item/clothing/suit/space/ntrauma
 	name = "trauma team softsuit"
@@ -107,9 +108,11 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/spacesuit.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suits/spacesuit_digi.dmi'
 	icon_state = "ert_ntrauma"
+	inhand_icon_state = "syndicate-blue"
 	slowdown = 0.3
 	armor_type = /datum/armor/space_ntrauma
 	resistance_flags = ACID_PROOF
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS|FEET
 	cell = /obj/item/stock_parts/cell/super
 
 /datum/armor/space_ntrauma
