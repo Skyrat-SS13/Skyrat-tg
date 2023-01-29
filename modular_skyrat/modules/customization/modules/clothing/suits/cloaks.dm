@@ -1,4 +1,2 @@
-/obj/item/clothing/neck/cloak/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/surgery_initiator)
-	flags_inv &= ~HIDESUITSTORAGE //removes the HIDESUITSTORAGE flag
+/obj/item/clothing/neck/cloak/
+	flags_inv = NONE //removes the HIDESUITSTORAGE flag
