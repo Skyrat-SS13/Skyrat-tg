@@ -77,6 +77,29 @@
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "corrections_officer"
 
+// Evidence Storage
+/area/station/security/evidence
+	name = "Evidence Storage"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "evidence"
+
+// Prison Laundry
+/area/station/security/prison/laundry
+	name = "\improper Prison Laundry Room"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "prison_laundry"
+
+//Cargo areas
+/area/station/cargo/mailroom
+	name = "\improper Mailroom"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "mailroom"
+
+/area/station/cargo/cargo_breakroom
+	name = "\improper Cargo Breakroom"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "cargo_breakroom"
+
 // Department power stations
 /area/station/cargo/power_station
 	name = "Cargo Power Station"
@@ -197,6 +220,16 @@
 	name = "Cafeteria"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "cafeteria"
+
+//Asteroid station areas
+/area/space/asteroidstation
+	name = "Station Asteroid"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "asteroid"
+	base_lighting_alpha = 0
+	requires_power = TRUE
+	always_unpowered = TRUE
+	area_flags = UNIQUE_AREA
 
 /*
 * Department/Generic maintenance areas
@@ -493,6 +526,16 @@
 	name = "Xenobiology Disposals"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "xenobio_dispose"
+
+/area/station/maintenance/abandoned_bar
+	name = "Abandoned Bar"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "abadn_bar"
+
+/area/station/maintenance/abandoned_shuttlebay
+	name = "Abandoned Shuttlebay"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "abandon_shuttlebay"
 
 // BlueShift unique rooms, or rooms for ship-class "stations"
 // Thruster rooms
