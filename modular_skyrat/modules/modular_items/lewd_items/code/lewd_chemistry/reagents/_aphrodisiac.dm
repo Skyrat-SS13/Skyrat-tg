@@ -371,7 +371,7 @@
 */
 /datum/reagent/drug/aphrodisiac/proc/remove_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, list/genitals_to_remove, message) 
 	for(var/obj/item/organ/external/genital/mob_genital in genitals_to_remove)
-		remove_genital(exposed_mob, mob_genital, suppress_chat, message)
+		remove_genital(exposed_mob, mob_genital, suppress_chat)
 	
 	if(!suppress_chat && message)
 		to_chat(exposed_mob, span_purple(message))
