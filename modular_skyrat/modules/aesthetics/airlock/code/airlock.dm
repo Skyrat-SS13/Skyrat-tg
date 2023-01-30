@@ -8,6 +8,7 @@
 #define AIRLOCK_EMERGENCY_LIGHT_COLOR "#d1d11d"
 #define AIRLOCK_ENGINEERING_LIGHT_COLOR "#fd8719"
 #define AIRLOCK_DENY_LIGHT_COLOR "#c22323"
+#define AIRLOCK_SECURITY_LIGHT_COLOR "#c22323"
 //SKYRAT ADDITION END
 
 #define AIRLOCK_CLOSED	1
@@ -40,6 +41,7 @@
 	var/light_color_access = AIRLOCK_ACCESS_LIGHT_COLOR
 	var/light_color_emergency = AIRLOCK_EMERGENCY_LIGHT_COLOR
 	var/light_color_engineering = AIRLOCK_ENGINEERING_LIGHT_COLOR
+	var/light_color_security = AIRLOCK_SECURITY_LIGHT_COLOR
 	var/light_color_deny = AIRLOCK_DENY_LIGHT_COLOR
 	var/door_light_range = AIRLOCK_LIGHT_RANGE
 	var/door_light_power = AIRLOCK_LIGHT_POWER
@@ -80,6 +82,10 @@
 				light_state = AIRLOCK_LIGHT_ENGINEERING
 				lights_overlay = "lights_engineering"
 				pre_light_color = light_color_engineering
+			else if(security_override)
+				light_state = AIRLOCK_LIGHT_SECURITY
+				lights_overlay = "lights_security"
+				pre_light_color = light_color_security
 			else
 				lights_overlay = "lights_poweron"
 				pre_light_color = light_color_poweron
