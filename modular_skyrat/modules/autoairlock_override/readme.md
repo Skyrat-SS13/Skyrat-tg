@@ -6,6 +6,7 @@ MODULE ID: AUTOAIRLOCK_OVERRIDE
 
 ### Description:
 Adds functionality to the airlocks so that when the alert level is set to orange, engineers receive expanded access so they aren't stuck at an airlock when disaster happens.
+On red alert, same thing, but for security.
 
 ### TG Proc/File Changes:
 code/game/machinery/computer/communications.dm
@@ -17,6 +18,8 @@ tgui/packages/tgui/interfaces/KeycardAuth.js
 ### Defines:
 AIRLOCK_LIGHT_ENGINEERING in \Skyrat-tg\modular_skyrat\modules\aesthetics\airlock\code\airlock.dm
 AIRLOCK_ENGINEERING_LIGHT_COLOR in \Skyrat-tg\modular_skyrat\modules\aesthetics\airlock\code\airlock.dm
+AIRLOCK_LIGHT_SECURITY in \Skyrat-tg\modular_skyrat\modules\aesthetics\airlock\code\airlock.dm
+AIRLOCK_SECURITY_LIGHT_COLOR in \Skyrat-tg\modular_skyrat\modules\aesthetics\airlock\code\airlock.dm
 
 ### Credits:
 LT3

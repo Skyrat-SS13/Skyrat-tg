@@ -9,6 +9,15 @@
 // Maintenance, bridge, departmental lobbies and inner rooms. No access to security.
 // Sensitive areas like the vault, command quarters, heads' offices, etc. are not applicable.
 
+/area/station/ai_monitored/turret_protected/ai
+	engineering_override_eligible = TRUE
+
+/area/station/ai_monitored/turret_protected/aisat_interior
+	engineering_override_eligible = TRUE
+
+/area/station/ai_monitored/turret_protected/ai_upload
+	engineering_override_eligible = TRUE
+
 /area/station/ai_monitored/command/storage/eva
 	engineering_override_eligible = TRUE
 
@@ -16,6 +25,9 @@
 	engineering_override_eligible = TRUE
 
 /area/station/command/bridge
+	engineering_override_eligible = TRUE
+
+/area/station/command/corporate_showroom
 	engineering_override_eligible = TRUE
 
 /area/station/command/teleporter
@@ -71,13 +83,6 @@
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_FORCE_ENG_OVERRIDE, PROC_REF(force_eng_override))
 
-/// Announce the new expanded access when engineer override is enabled.
-/datum/controller/subsystem/security_level/announce_security_level(datum/security_level/selected_level)
-	..()
-	if(selected_level.number_level == SEC_LEVEL_ORANGE)
-		minor_announce("Engineering staff will have expanded access to areas of the station during the emergency.", "Engineering Emergency")
-		return
-
 /// Check for the three states of open access. Emergency, Unrestricted, and Engineering Override
 /obj/machinery/door/airlock/allowed(mob/user)
 	if(emergency)
@@ -129,7 +134,7 @@ GLOBAL_VAR_INIT(force_eng_override, FALSE)
 		return
 	else
 		GLOB.force_eng_override = FALSE
-		minor_announce("Expanded engineering access has been disabled.", "Engineering Emergency")
+		minor_announce("Expanded engineering access has been revoked.", "Engineering Emergency")
 		var/level = SSsecurity_level.get_current_level_as_number()
 		SSblackbox.record_feedback("nested tally", "keycard_auths", 1, list("engineer override access", "disabled"))
 		if(level == SEC_LEVEL_ORANGE)
@@ -153,19 +158,3 @@ GLOBAL_VAR_INIT(force_eng_override, FALSE)
 	engineering_override = TRUE
 	normalspeed = FALSE
 	update_appearance()
-
-
-// Pulse to disable emergency access/engineering override and flash the red lights.
-/datum/wires/airlock/on_pulse(wire)
-	. = ..()
-	var/obj/machinery/door/airlock/airlock = holder
-	switch(wire)
-		if(WIRE_IDSCAN)
-			if(airlock.hasPower() && airlock.density)
-				airlock.do_animate("deny")
-				if(airlock.emergency)
-					airlock.emergency = FALSE
-					airlock.update_appearance()
-				if(airlock.engineering_override)
-					airlock.engineering_override = FALSE
-					airlock.update_appearance()

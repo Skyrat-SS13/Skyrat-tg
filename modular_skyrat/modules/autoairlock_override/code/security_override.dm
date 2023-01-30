@@ -1,55 +1,84 @@
-// This module sets airlocks in certain areas to be able to have an Engineer Override on orange alert.
-// Crew with ID cards with the engineering flag will be able to access these areas during those times.
+// This module sets airlocks in certain areas to be able to have a Security Override on red+ alert.
+// Crew with ID cards with the security flag will be able to access these areas during those times.
 
 /area
-	/// Is this area eligible for engineer override?
+	/// Is this area eligible for security override?
 	var/security_override_eligible = FALSE
 
-// Set the areas that will receive expanded access for security on red alert
-// exceptions go here
-// blah blah blah
+// Set the areas that will receive expanded access for security on red+ alert
+
+/area/station/ai_monitored/turret_protected/ai
+	security_override_eligible = TRUE
+
+/area/station/ai_monitored/turret_protected/aisat_interior
+	security_override_eligible = TRUE
+
+/area/station/ai_monitored/turret_protected/ai_upload
+	security_override_eligible = TRUE
+
+/area/station/ai_monitored/security/armory
+	security_override_eligible = TRUE
 
 /area/station/ai_monitored/command/storage/eva
+	security_override_eligible = TRUE
+
+/area/station/cargo
+	security_override_eligible = TRUE
+
+/area/station/command/bridge
+	security_override_eligible = TRUE
+
+/area/station/command/heads_quarters
+	security_override_eligible = TRUE
+
+/area/station/command/teleporter
+	security_override_eligible = TRUE
+
+/area/station/command/gateway
+	security_override_eligible = TRUE
+
+/area/station/construction/storage_wing
+	security_override_eligible = TRUE
+
+/area/station/engineering
+	security_override_eligible = TRUE
+
+/area/station/engineering/storage/tcomms
+	security_override_eligible = TRUE
+
+/area/station/hallway/secondary/service
+	security_override_eligible = TRUE
+
+/area/station/hallway/secondary/command
+	security_override_eligible = TRUE
+
+/area/station/maintenance
 	security_override_eligible = TRUE
 
 /area/station/medical
 	security_override_eligible = TRUE
 
+/area/station/service
+	security_override_eligible = TRUE
+
+/area/station/science
+	security_override_eligible = TRUE
+
+/area/station/security
+	security_override_eligible = TRUE
+
+/area/station/tcommsat
+	security_override_eligible = TRUE
+
 /obj/machinery/door/airlock
-	/// Determines if engineers get access to this door on orange alert
+	/// Determines if security get access to this door on red+ alert
 	var/security_override = FALSE
 
 /obj/machinery/door/airlock/Initialize(mapload)
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_FORCE_SEC_OVERRIDE, PROC_REF(force_sec_override))
 
-/// Announce the new expanded access when engineer override is enabled.
-/datum/controller/subsystem/security_level/announce_security_level(datum/security_level/selected_level)
-	..()
-	if(selected_level.number_level >= SEC_LEVEL_RED)
-		minor_announce("Security staff will have expanded access to areas of the station during the emergency.", "Security Emergency")
-		return
-
-/// Check for the three states of open access. Emergency, Unrestricted, and Engineering Override
-/obj/machinery/door/airlock/allowed(mob/user)
-	if(emergency)
-		return TRUE
-
-	if(unrestricted_side(user))
-		return TRUE
-
-	if(security_override)
-		var/mob/living/carbon/human/interacting_human = user
-		if(!istype(interacting_human))
-			return ..()
-
-		var/obj/item/card/id/card = interacting_human.get_idcard(TRUE)
-		if(ACCESS_SECURITY in card?.access)
-			return TRUE
-
-	return ..()
-
-// When the signal is received of a changed security level, check if it's orange.
+// When the signal is received of a changed security level, check if it's red or higher.
 /obj/machinery/door/airlock/check_security_level(datum/source, level)
 	. = ..()
 	var/area/source_area = get_area(src)
@@ -68,7 +97,7 @@
 	update_appearance()
 	return
 
-// Manual override for when it's not orange alert.
+// Manual override for when it's not red alert.
 GLOBAL_VAR_INIT(force_sec_override, FALSE)
 /proc/toggle_sec_override()
 	if(!GLOB.force_sec_override)
@@ -79,7 +108,7 @@ GLOBAL_VAR_INIT(force_sec_override, FALSE)
 		return
 	else
 		GLOB.force_eng_override = FALSE
-		minor_announce("Expanded engineering access has been disabled.", "Security Emergency")
+		minor_announce("Expanded security access has been disabled.", "Security Emergency")
 		var/level = SSsecurity_level.get_current_level_as_number()
 		SSblackbox.record_feedback("nested tally", "keycard_auths", 1, list("security override access", "disabled"))
 		if(level >= SEC_LEVEL_RED)
@@ -101,19 +130,3 @@ GLOBAL_VAR_INIT(force_sec_override, FALSE)
 
 	security_override = TRUE
 	update_appearance()
-
-
-// Pulse to disable emergency access/engineering override and flash the red lights.
-/datum/wires/airlock/on_pulse(wire)
-	. = ..()
-	var/obj/machinery/door/airlock/airlock = holder
-	switch(wire)
-		if(WIRE_IDSCAN)
-			if(airlock.hasPower() && airlock.density)
-				airlock.do_animate("deny")
-				if(airlock.emergency)
-					airlock.emergency = FALSE
-					airlock.update_appearance()
-				if(airlock.security_override)
-					airlock.security_override = FALSE
-					airlock.update_appearance()
