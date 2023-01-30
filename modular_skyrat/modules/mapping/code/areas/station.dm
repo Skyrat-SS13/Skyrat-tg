@@ -70,6 +70,11 @@
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "tele_sci"
 
+/area/station/science/sociology_lab
+	name = "Sociology Lab"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "sociology_lab"
+
 // Security areas
 // CO Office
 /area/station/security/corrections_officer
@@ -255,6 +260,11 @@
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "port_maint_upper"
 
+/area/station/maintenance/port/rock_and_stone
+	name = "Rock And Stone"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "rock_and_stone"
+
 // Science
 /area/station/maintenance/department/science/lower
 	name = "Lower Science Maintenance"
@@ -355,6 +365,11 @@
 	name = "Upper Prison Maintenance"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "prison_maint_upper"
+
+/area/station/maintenance/department/security/prison
+	name = "Prison Maintenance"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "prison_maint"
 
 /area/station/maintenance/department/security/upper
 	name = "Upper Security Maintenance"
