@@ -18,6 +18,9 @@
 /area/station/ai_monitored/turret_protected/ai_upload
 	engineering_override_eligible = TRUE
 
+/area/station/ai_monitored/turret_protected/ai_upload_foyer
+	engineering_override_eligible = TRUE
+
 /area/station/ai_monitored/command/storage/eva
 	engineering_override_eligible = TRUE
 

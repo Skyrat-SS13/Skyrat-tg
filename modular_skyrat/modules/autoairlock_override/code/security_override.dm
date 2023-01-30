@@ -16,6 +16,9 @@
 /area/station/ai_monitored/turret_protected/ai_upload
 	security_override_eligible = TRUE
 
+/area/station/ai_monitored/turret_protected/ai_upload_foyer
+	security_override_eligible = TRUE
+
 /area/station/ai_monitored/security/armory
 	security_override_eligible = TRUE
 
@@ -65,6 +68,9 @@
 	security_override_eligible = TRUE
 
 /area/station/security
+	security_override_eligible = TRUE
+
+/area/station/security/execution/education
 	security_override_eligible = TRUE
 
 /area/station/tcommsat
