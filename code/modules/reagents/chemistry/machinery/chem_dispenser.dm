@@ -483,14 +483,24 @@
 		/* SKYRAT EDIT - ORIGINAL
 		if (manipulator.tier > 3)
 			dispensable_reagents |= upgrade_reagents
+		else
+			dispensable_reagents -= upgrade_reagents
 		*/
 		//SKYRAT EDIT START
 		if (manipulator.tier > 1)
 			dispensable_reagents |= upgrade_reagents
+		else
+			dispensable_reagents -= upgrade_reagents
+
 		if (manipulator.tier > 2)
 			dispensable_reagents |= upgrade_reagents2
+		else
+			dispensable_reagents -= upgrade_reagents2
+
 		if (manipulator.tier > 3)
 			dispensable_reagents |= upgrade_reagents3
+		else
+			dispensable_reagents -= upgrade_reagents3
 		//SKYRAT EDIT END
 		parts_rating += manipulator.tier
 	powerefficiency = round(newpowereff, 0.01)
@@ -671,7 +681,7 @@
 	emagged_reagents = list(
 		/datum/reagent/consumable/ethanol,
 		/datum/reagent/iron,
-		/datum/reagent/toxin/minttoxin,
+		/datum/reagent/consumable/mintextract,
 		/datum/reagent/consumable/ethanol/atomicbomb,
 		/datum/reagent/consumable/ethanol/fernet
 	)

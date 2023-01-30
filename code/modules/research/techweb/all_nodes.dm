@@ -302,7 +302,6 @@
 		"xlarge_beaker",
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
-		"engi_plumbing",
 		"hospital_gown",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
@@ -316,6 +315,7 @@
 		"circuit_multitool",
 		"comp_access_checker",
 		"comp_arithmetic",
+		"comp_assoc_list_pick",
 		"comp_binary_convert",
 		"comp_clock",
 		"comp_comparison",
@@ -346,6 +346,7 @@
 		"comp_list_assoc_literal",
 		"comp_list_clear",
 		"comp_list_literal",
+		"comp_list_pick",
 		"comp_list_remove",
 		"comp_logic",
 		"comp_matscanner",
@@ -383,7 +384,7 @@
 		"component_printer",
 		"integrated_circuit",
 		"module_duplicator",
-		"usb_cable",
+		"usb_cable"
 	)
 
 /////////////////////////Biotech/////////////////////////
@@ -568,6 +569,9 @@
 	design_ids = list(
 		"bounty_pad",
 		"bounty_pad_control",
+		//SKYRAT EDIT ADDITION - START
+		"nifsoft_vendor"
+		//SKYRAT EDIT ADDITION - END
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -654,9 +658,7 @@
 		"mesons_prescription",
 		"multi_cell_charger",
 		"tray_goggles_prescription",
-		"plumbing_chem",
 		"plumbing_eng",
-		"plumbing_sci"
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 15000)
@@ -1277,6 +1279,7 @@
 		"meson_hud_projector",
 		"science_hud_projector",
 		"permit_glasses",
+		"nifsoft_money_sense",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
@@ -1526,6 +1529,7 @@
 		"mechanicalpinches",
 		"rangedanalyzer",
 		"searingtool",
+		"adv_fire_extinguisher",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
 	discount_experiments = list(/datum/experiment/scanning/random/material/hard/one = 5000)
@@ -1542,6 +1546,7 @@
 		"seclite",
 		"zipties",
 		"inspector",
+		"nifsoft_remover", //SKYRAT EDIT ADDITION - NIFs
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 
