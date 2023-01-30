@@ -28,3 +28,21 @@
 	Regards,<BR>\
 	Regulatory Space Academy, Board of Directors</center>")
 
+/obj/item/paper/fugitive_newspaper
+	name = "newspaper clipping"
+	icon = 'icons/obj/bureaucracy.dmi'
+	icon_state = "newspaper"
+	inhand_icon_state = "newspaper"
+	lefthand_file = 'icons/mob/inhands/items/books_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/books_righthand.dmi'
+	throw_range = 3
+	throw_speed = 3
+	item_flags = NOBLUDGEON
+
+/obj/item/paper/fugitive_newspaper/Initialize(mapload)
+	. = ..()
+	add_raw_text("<center><b>Tragedy at Pick 'n Dig Corporation! Seventeen dead in chemical explosion!</b></center>\
+	<BR><BR>\
+	Markets and families were rocked today (physically and spiritually) with an explosion at a Pick 'n Dig Corporation mining facility on Festan IV. \
+	The foreman expressed his sadness at the untimely deaths of seventeen workers, apparently caused due to a miasma leak. Alongside thirty-seven injuries, \
+	there still remains one miner unaccounted for…")

@@ -131,3 +131,33 @@
 		/datum/story_actor/ghost/spawn_in_arrivals/veteran = 1,
 	)
 	maximum_execute_times = 1
+
+/*
+	Guardnapped!
+	Written by Oscar Gilmour
+		Plot Summary:
+			After an incident involving a guard and a baton, a fugitive must now hide from the law… as the law.
+		Actors:
+			Ghost:
+				Fugitive (1)
+				Real Guard (1)
+*/
+
+/datum/story_type/somewhat_impactful/guardnapped
+	name = "Guardnapped!"
+	desc = "After an incident involving a guard and a baton, a fugitive must now hide from the law… as the law.\n\
+	Written by Oscar Gilmour."
+	actor_datums_to_make = list(
+		/datum/story_actor/ghost/spawn_in_maint/fugitive = 1,
+	)
+	maximum_execute_times = 1
+	num_of_acts = 2
+
+/datum/story_type/somewhat_impactful/guardnapped/update_act()
+	. = ..()
+	switch(current_act)
+		if(2)
+			var/succeeded = add_actors(list(/datum/story_actor/ghost/spawn_in_maint/real_guard = 1))
+			if(!succeeded)
+				message_admins("STORY: Guardnapped! failed to spawn the real guard due to a lack of candidates.")
+				CRASH("STORY: Guardnapped! failed to spawn the real guard due to a lack of candidates.")

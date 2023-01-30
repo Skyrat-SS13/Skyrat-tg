@@ -25,6 +25,7 @@
 		REGION_CENTCOM,
 		REGION_ACCESS_COMMAND,
 		REGION_ACCESS_SUPPLY,
+
 	))
 
 /datum/id_trim/centcom/centcom_inspector/middle_management/security/New()
@@ -81,3 +82,10 @@
 /datum/id_trim/job/assistant/agent
 	assignment = "Agent"
 
+/datum/id_trim/real_guard
+	assignment = "Unemployed"
+
+/datum/id_trim/real_guard/New()
+	. = ..()
+
+	access = SSid_access.get_access_flag(ACCESS_MAINT_TUNNELS)

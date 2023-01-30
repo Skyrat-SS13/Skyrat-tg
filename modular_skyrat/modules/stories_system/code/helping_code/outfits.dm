@@ -425,3 +425,11 @@
 	var/obj/item/card/id/worn_id = equipped_human.wear_id
 	worn_id.registered_name = equipped_human.real_name
 	worn_id.update_label()
+
+
+/datum/outfit/real_guard
+	name = "Real Guard"
+
+	id = /obj/item/card/id
+	id_trim = /datum/id_trim/real_guard
+	uniform = /obj/item/clothing/under/shorts/red

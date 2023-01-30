@@ -34,6 +34,33 @@
 /datum/story_type/proc/pre_execute()
 	return TRUE
 
+/// Add new actors to an existing story with this proc. Returns FALSE if it failed to get candidates.
+/datum/story_type/proc/add_actors(list/actors_to_add)
+	var/involves_ghosts = 0
+	var/involves_crew = 0
+	for(var/datum/story_actor/actor_path as anything in actors_to_add)
+		if(initial(actor_path.ghost_actor))
+			involves_ghosts += actors_to_add[actor_path]
+		else
+			involves_crew += actors_to_add[actor_path]
+
+	var/list/ghost_list
+	var/list/player_list
+	if(involves_ghosts)
+		ghost_list = get_ghosts(involves_ghosts)
+	if(involves_crew)
+		player_list = get_players(involves_crew)
+	if((involves_ghosts && !length(ghost_list)) || (involves_crew && !length(player_list)))
+		return FALSE
+
+	for(var/actor_path in actors_to_add)
+		var/datum/story_actor/actor_datum = new actor_path(src)
+		if(actor_datum.ghost_actor)
+			actor_datum.handle_spawning(pick_n_take(ghost_list), src)
+		else
+			actor_datum.handle_spawning(pick_n_take(player_list), src)
+	return TRUE
+
 /// The general proc That Does Things, may get split later
 /datum/story_type/proc/execute_story()
 	pre_execute()

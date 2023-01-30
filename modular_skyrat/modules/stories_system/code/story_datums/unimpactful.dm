@@ -342,7 +342,7 @@
 		Plot Summary:
 			You’ve been here before, and you know disaster is less than ninety minutes away…
 		Actors:
-			Ghost:
+			Crew:
 				Visionist (1)
 */
 
