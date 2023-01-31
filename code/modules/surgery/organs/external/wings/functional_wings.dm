@@ -43,7 +43,7 @@
 
 	if(isnull(fly))
 		fly = new
-		fly.Grant(reciever)
+		fly.Grant(receiver)
 
 /obj/item/organ/external/wings/functional/Remove(mob/living/carbon/organ_owner, special, moving)
 	. = ..()

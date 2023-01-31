@@ -30,16 +30,16 @@
 /obj/item/organ/external/tail/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
 	. = ..()
 	if(.)
-		RegisterSignal(reciever, COMSIG_ORGAN_WAG_TAIL, PROC_REF(wag))
-		original_owner ||= reciever //One and done
+		RegisterSignal(receiver, COMSIG_ORGAN_WAG_TAIL, PROC_REF(wag))
+		original_owner ||= WEAKREF(receiver)
 
-		reciever.clear_mood_event("tail_lost")
-		reciever.clear_mood_event("tail_balance_lost")
+		receiver.clear_mood_event("tail_lost")
+		receiver.clear_mood_event("tail_balance_lost")
 
-		if(original_owner == reciever)
-			reciever.clear_mood_event("wrong_tail_regained")
-		else if(type in reciever.dna.species.external_organs)
-			reciever.add_mood_event("wrong_tail_regained", /datum/mood_event/tail_regained_wrong)
+		if(IS_WEAKREF_OF(receiver, original_owner))
+			receiver.clear_mood_event("wrong_tail_regained")
+		else if(type in receiver.dna.species.external_organs)
+			receiver.add_mood_event("wrong_tail_regained", /datum/mood_event/tail_regained_wrong)
 
 /obj/item/organ/external/tail/Remove(mob/living/carbon/organ_owner, special, moving)
 	if(wag_flags & WAG_WAGGING)
