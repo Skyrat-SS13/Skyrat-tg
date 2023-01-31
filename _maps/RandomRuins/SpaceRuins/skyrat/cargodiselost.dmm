@@ -235,15 +235,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/cargodise_freighter/trauma)
-"fm" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/computer/order_console/mining{
-	uses_ltsrbt = 0;
-	forced_express = 1;
-	express_cost_multiplier = 1
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/cargodise_freighter/mining)
 "fy" = (
 /obj/effect/turf_decal/tile/green/anticorner/contrasted{
 	dir = 4
@@ -763,16 +754,6 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
-"nE" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/mob/living/simple_animal/hostile/syndicate/melee/anthro{
-	desc = "An anthromorphic bandit, geared up in tactical gear.";
-	faction = list("hostile");
-	name = "Geared Pirate"
-	},
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "nM" = (
 /obj/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -995,14 +976,6 @@
 /obj/item/restraints/handcuffs/cable/zipties,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
-"re" = (
-/obj/machinery/light/directional/west,
-/obj/machinery/computer/cryopod/directional/west,
-/obj/effect/turf_decal/tile/green/half/contrasted{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "rm" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/carpet/green,
@@ -1259,6 +1232,14 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/checker,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
+"uT" = (
+/obj/machinery/light/directional/west,
+/obj/machinery/computer/cryopod/directional/west,
+/obj/effect/turf_decal/tile/green/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "uU" = (
 /obj/machinery/firealarm/directional/north,
 /obj/effect/turf_decal/tile/green/half/contrasted{
@@ -1582,6 +1563,14 @@
 "yG" = (
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
+"yP" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/computer/order_console/mining{
+	forced_express = 1;
+	express_cost_multiplier = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/cargodise_freighter/mining)
 "yT" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/iron/showroomfloor,
@@ -2648,15 +2637,6 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
-"Ps" = (
-/obj/effect/turf_decal/bot,
-/obj/effect/spawner/random/exotic/tool,
-/obj/structure/closet/crate/secure/engineering{
-	req_one_access_txt = "150"
-	},
-/obj/effect/spawner/random/exotic/tool,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/cargodise_freighter/cargo)
 "Pu" = (
 /obj/machinery/door/firedoor/closed,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
@@ -2982,6 +2962,15 @@
 /obj/item/soap/syndie,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
+"Tn" = (
+/obj/effect/turf_decal/bot,
+/obj/effect/spawner/random/exotic/tool,
+/obj/structure/closet/crate/secure/engineering{
+	req_one_access = list("syndicate")
+	},
+/obj/effect/spawner/random/exotic/tool,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/cargodise_freighter/cargo)
 "Tr" = (
 /obj/structure/marker_beacon/burgundy,
 /obj/structure/lattice/catwalk,
@@ -3169,6 +3158,16 @@
 /obj/effect/spawner/random/engineering/material,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
+"Vr" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/mob/living/basic/syndicate/melee/anthro{
+	desc = "An anthromorphic bandit, geared up in tactical gear.";
+	faction = list("hostile");
+	name = "Geared Pirate"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "Vs" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/iron/dark,
@@ -3689,7 +3688,7 @@ yv
 PG
 Ra
 kB
-re
+uT
 ys
 ME
 oo
@@ -4005,7 +4004,7 @@ Rt
 Ra
 FB
 YF
-nE
+Vr
 YF
 fG
 YF
@@ -4233,7 +4232,7 @@ Zw
 YK
 pj
 Sc
-Ps
+Tn
 uc
 Zy
 "}
@@ -4993,7 +4992,7 @@ AC
 ww
 Vs
 am
-fm
+yP
 Vs
 tP
 NZ

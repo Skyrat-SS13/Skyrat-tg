@@ -5,8 +5,6 @@
 
 	update_gravity(has_gravity())
 
-	handle_status_effects(delta_time, times_fired)
-
 	handle_traits(delta_time, times_fired)
 
 	if(malfhack?.aidisabled)
@@ -62,6 +60,7 @@
 	update_stat()
 	diag_hud_set_health()
 	disconnect_shell()
+	SEND_SIGNAL(src, COMSIG_LIVING_HEALTH_UPDATE)
 
 /mob/living/silicon/ai/update_stat()
 	if(status_flags & GODMODE)
@@ -111,7 +110,7 @@
 	var/obj/machinery/power/apc/theAPC = null
 
 	var/PRP //like ERP with the code, at least this stuff is no more 4x sametext
-	for (PRP=1, PRP<=4, PRP++)
+	for (PRP=1, PRP <= 4, PRP++)
 		T = get_turf(src)
 		AIarea = get_area(src)
 		if(AIarea)

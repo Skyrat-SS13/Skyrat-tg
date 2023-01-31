@@ -258,6 +258,49 @@
 /obj/structure/table/reinforced/plastitaniumglass,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/hydroponics)
+"aQ" = (
+/obj/structure/closet/secure_closet{
+	icon_state = "warden";
+	name = "master at arms' locker";
+	req_access = list("syndicate_leader")
+	},
+/obj/item/storage/belt/security/full,
+/obj/item/radio/headset/interdyne,
+/obj/item/clothing/suit/armor/vest/warden/syndicate,
+/obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate,
+/obj/item/clothing/head/beret/sec/navywarden/syndicate,
+/obj/item/clothing/under/suit/skyrat/helltaker{
+	has_sensor = 0;
+	random_sensor = 0
+	},
+/obj/item/clothing/suit/armor/hos/trenchcoat{
+	desc = "A trenchcoat enhanced with a special lightweight kevlar. It has little Syndicate logos sewn onto the shoulder badges with the letters 'MAA' just under it.";
+	name = "Master at arms' armored trenchcoat"
+	},
+/obj/item/clothing/suit/armor/hos{
+	desc = "A greatcoat enhanced with a special alloy for some extra protection and style for those with a likely chance to get bullied for being outside of the brig";
+	name = "Master at arms' armored greatcoat"
+	},
+/obj/item/gun/energy/disabler,
+/obj/item/clothing/head/hats/hos/beret/syndicate,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 4
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 6
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/item/clothing/mask/gas/sechailer/syndicate,
+/obj/item/watertank/pepperspray,
+/obj/item/clothing/accessory/medal/silver{
+	name = "military excellence medal";
+	desc = "The Sothran Syndicate's dictionary defines excellence as \"the ability to crush NT scum under one's boot\". This is awarded to those rare operatives who fit that definition."
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/skyrat/interdynefob/security)
 "aR" = (
 /obj/effect/turf_decal/trimline/dark_green/warning{
 	dir = 4
@@ -887,6 +930,20 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood/large,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms)
+"dl" = (
+/obj/machinery/cryopod{
+	dir = 8
+	},
+/obj/effect/turf_decal/delivery/white{
+	color = "#00ff00";
+	name = "green"
+	},
+/obj/machinery/computer/cryopod/interdyne{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "dn" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white/diagonal,
@@ -2701,41 +2758,6 @@
 /obj/effect/spawner/random/engineering/tool,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
-"lg" = (
-/obj/item/card/id/advanced/chameleon/black,
-/obj/item/card/id/advanced/chameleon/black,
-/obj/item/card/id/advanced/chameleon/black,
-/obj/structure/closet/secure_closet{
-	icon_state = "hop";
-	name = "\proper corporate liaison's locker";
-	req_access = list("syndicate_leader")
-	},
-/obj/effect/turf_decal/siding/wood{
-	dir = 8
-	},
-/obj/structure/window/reinforced/survival_pod{
-	dir = 4
-	},
-/obj/item/language_manual/codespeak_manual/unlimited,
-/obj/item/clothing/under/syndicate/skyrat/baseball,
-/obj/item/clothing/under/rank/captain/skyrat/utility/syndicate,
-/obj/item/clothing/under/suit/skyrat/helltaker{
-	has_sensor = 0;
-	random_sensor = 0
-	},
-/obj/item/clothing/neck/chaplain/black{
-	desc = "An unique cloak that shimmers with the Corporate Liaison's emblem.";
-	name = "corporate liaison's cloak"
-	},
-/obj/item/binoculars,
-/obj/item/radio/headset/interdyne/command,
-/obj/item/clothing/head/hos/beret/syndicate,
-/obj/item/clothing/glasses/sunglasses,
-/obj/item/encryptionkey/headset_syndicate/interdyne,
-/obj/item/encryptionkey/headset_syndicate/interdyne,
-/obj/item/encryptionkey/headset_syndicate/interdyne,
-/turf/open/floor/iron/dark/smooth_large,
-/area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
 "li" = (
 /obj/structure/table/glass,
 /obj/item/storage/pill_bottle/mannitol{
@@ -2801,6 +2823,41 @@
 /obj/machinery/firealarm/directional/north,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
+"lz" = (
+/obj/item/card/id/advanced/chameleon/black,
+/obj/item/card/id/advanced/chameleon/black,
+/obj/item/card/id/advanced/chameleon/black,
+/obj/structure/closet/secure_closet{
+	icon_state = "hop";
+	name = "\proper corporate liaison's locker";
+	req_access = list("syndicate_leader")
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 4
+	},
+/obj/item/language_manual/codespeak_manual/unlimited,
+/obj/item/clothing/under/syndicate/skyrat/baseball,
+/obj/item/clothing/under/rank/captain/skyrat/utility/syndicate,
+/obj/item/clothing/under/suit/skyrat/helltaker{
+	has_sensor = 0;
+	random_sensor = 0
+	},
+/obj/item/clothing/neck/chaplain/black{
+	desc = "An unique cloak that shimmers with the Corporate Liaison's emblem.";
+	name = "corporate liaison's cloak"
+	},
+/obj/item/binoculars,
+/obj/item/radio/headset/interdyne/command,
+/obj/item/clothing/head/hats/hos/beret/syndicate,
+/obj/item/clothing/glasses/sunglasses,
+/obj/item/encryptionkey/headset_syndicate/interdyne,
+/obj/item/encryptionkey/headset_syndicate/interdyne,
+/obj/item/encryptionkey/headset_syndicate/interdyne,
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
 "lD" = (
 /obj/effect/turf_decal/siding/thinplating/dark,
 /obj/effect/turf_decal/trimline/dark_red/line,
@@ -3694,23 +3751,6 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
-"ps" = (
-/obj/machinery/computer/cryopod/interdyne{
-	dir = 8;
-	pixel_x = -24
-	},
-/obj/structure/table,
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 4
-	},
-/turf/open/floor/iron/diagonal,
-/area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "pt" = (
 /obj/machinery/light/warm/directional/north,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
@@ -5054,32 +5094,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/wood/large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
-"vx" = (
-/obj/structure/closet/secure_closet{
-	icon_state = "cap";
-	name = "\proper station admiral's locker";
-	req_access = list("syndicate")
-	},
-/obj/item/clothing/head/hats/hos/syndicate,
-/obj/item/clothing/head/hos/beret/syndicate,
-/obj/item/clothing/suit/armor/vest/capcarapace/syndicate,
-/obj/item/clothing/under/rank/captain/skyrat/utility/syndicate,
-/obj/item/radio/headset/interdyne/command,
-/obj/item/clothing/suit/armor/vest/capcarapace/syndicate/winter,
-/obj/effect/turf_decal/siding/wood{
-	dir = 4
-	},
-/obj/structure/window/reinforced/survival_pod{
-	dir = 8
-	},
-/obj/item/clothing/glasses/sunglasses,
-/obj/item/ammo_box/magazine/m9mm_aps,
-/obj/item/clothing/accessory/medal/gold{
-	name = "medal of admiralty";
-	desc = "A golden medal awarded exclusively to those promoted to the rank of captain. It signifies the codified responsibilities of an Admiral to the Sothran Syndicate, and their undisputable authority over their crew."
-	},
-/turf/open/floor/iron/dark/smooth_large,
-/area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
 "vA" = (
 /obj/machinery/quantumpad{
 	map_pad_id = "ds2";
@@ -6534,6 +6548,32 @@
 /obj/machinery/power/shuttle_engine/heater,
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/skyrat/interdynefob)
+"CN" = (
+/obj/structure/closet/secure_closet{
+	icon_state = "cap";
+	name = "\proper station admiral's locker";
+	req_access = list("syndicate")
+	},
+/obj/item/clothing/head/hats/hos/syndicate,
+/obj/item/clothing/head/hats/hos/beret/syndicate,
+/obj/item/clothing/suit/armor/vest/capcarapace/syndicate,
+/obj/item/clothing/under/rank/captain/skyrat/utility/syndicate,
+/obj/item/radio/headset/interdyne/command,
+/obj/item/clothing/suit/armor/vest/capcarapace/syndicate/winter,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
+	},
+/obj/item/clothing/glasses/sunglasses,
+/obj/item/ammo_box/magazine/m9mm_aps,
+/obj/item/clothing/accessory/medal/gold{
+	name = "medal of admiralty";
+	desc = "A golden medal awarded exclusively to those promoted to the rank of captain. It signifies the codified responsibilities of an Admiral to the Sothran Syndicate, and their undisputable authority over their crew."
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
 "CS" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -7235,27 +7275,6 @@
 /obj/item/storage/box/syringes,
 /turf/open/floor/iron/white/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/hydroponics)
-"FO" = (
-/obj/structure/closet/secure_closet{
-	icon_state = "med_secure";
-	name = "medical gear locker";
-	req_access = list("syndicate")
-	},
-/obj/item/clothing/gloves/color/latex/nitrile/ntrauma,
-/obj/item/clothing/suit/toggle/labcoat/interdyne,
-/obj/item/clothing/suit/toggle/labcoat/interdyne,
-/obj/item/storage/belt/medbandolier{
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/obj/item/storage/belt/medbandolier{
-	pixel_x = 2;
-	pixel_y = -2
-	},
-/obj/item/clothing/glasses/hud/ar/aviator/health,
-/obj/item/clothing/glasses/hud/ar/aviator/health,
-/turf/open/floor/iron/white,
-/area/ruin/space/has_grav/skyrat/interdynefob/medbay/chem)
 "FP" = (
 /obj/machinery/computer/crew/syndie{
 	dir = 4
@@ -8030,51 +8049,6 @@
 "JC" = (
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
-"JD" = (
-/obj/structure/closet/secure_closet{
-	icon_state = "warden";
-	name = "master at arms' locker";
-	req_access = list("syndicate_leader")
-	},
-/obj/item/storage/belt/security/full,
-/obj/item/radio/headset/interdyne,
-/obj/item/clothing/suit/armor/vest/warden/syndicate,
-/obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate,
-/obj/item/clothing/head/beret/sec/navywarden/syndicate,
-/obj/item/clothing/under/suit/skyrat/helltaker{
-	has_sensor = 0;
-	random_sensor = 0
-	},
-/obj/item/clothing/suit/armor/hos/trenchcoat{
-	armor = list("melee"=35,"bullet"=30,"laser"=30,"energy"=40,"bomb"=25,"bio"=0,"fire"=50,"acid"=50,"wound"=10);
-	desc = "A trenchcoat enhanced with a special lightweight kevlar. It has little Syndicate logos sewn onto the shoulder badges with the letters 'MAA' just under it.";
-	name = "Master at arms' armored trenchcoat"
-	},
-/obj/item/clothing/suit/armor/hos{
-	armor = list("melee"=35,"bullet"=30,"laser"=30,"energy"=40,"bomb"=25,"bio"=0,"fire"=50,"acid"=50,"wound"=10);
-	desc = "A greatcoat enhanced with a special alloy for some extra protection and style for those with a likely chance to get bullied for being outside of the brig";
-	name = "Master at arms' armored greatcoat"
-	},
-/obj/item/gun/energy/disabler,
-/obj/item/clothing/head/hos/beret/syndicate,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 4
-	},
-/obj/structure/window/reinforced/survival_pod{
-	dir = 6
-	},
-/obj/effect/turf_decal/siding/dark{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/item/clothing/mask/gas/sechailer/syndicate,
-/obj/item/watertank/pepperspray,
-/obj/item/clothing/accessory/medal/silver{
-	name = "military excellence medal";
-	desc = "The Sothran Syndicate's dictionary defines excellence as \"the ability to crush NT scum under one's boot\". This is awarded to those rare operatives who fit that definition."
-	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/ruin/space/has_grav/skyrat/interdynefob/security)
 "JE" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -8387,6 +8361,23 @@
 /obj/machinery/atmospherics/miner/plasma,
 /turf/open/floor/engine/plasma,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
+"Lj" = (
+/obj/machinery/computer/cryopod/interdyne{
+	dir = 8;
+	pixel_x = -24
+	},
+/obj/structure/table,
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/turf/open/floor/iron/diagonal,
+/area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "Ll" = (
 /obj/effect/turf_decal/siding/dark,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -9286,20 +9277,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
-"OT" = (
-/obj/machinery/cryopod{
-	dir = 8
-	},
-/obj/effect/turf_decal/delivery/white{
-	color = "#00ff00";
-	name = "green"
-	},
-/obj/machinery/computer/cryopod/interdyne{
-	dir = 4;
-	pixel_x = 24
-	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "OU" = (
 /obj/effect/turf_decal/trimline/dark_green/corner{
 	dir = 4
@@ -11704,6 +11681,27 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/lawyer)
+"Ym" = (
+/obj/structure/closet/secure_closet{
+	icon_state = "med_secure";
+	name = "medical gear locker";
+	req_access = list("syndicate")
+	},
+/obj/item/clothing/gloves/latex/nitrile/ntrauma,
+/obj/item/clothing/suit/toggle/labcoat/interdyne,
+/obj/item/clothing/suit/toggle/labcoat/interdyne,
+/obj/item/storage/belt/medbandolier{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/storage/belt/medbandolier{
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/obj/item/clothing/glasses/hud/ar/aviator/health,
+/obj/item/clothing/glasses/hud/ar/aviator/health,
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/skyrat/interdynefob/medbay/chem)
 "Yn" = (
 /obj/effect/turf_decal/trimline/dark_green/line{
 	dir = 4
@@ -12313,7 +12311,7 @@ kF
 kF
 hC
 Lw
-OT
+dl
 Vb
 hA
 GD
@@ -12633,7 +12631,7 @@ AK
 AW
 Xh
 aY
-JD
+aQ
 Va
 Xh
 bq
@@ -12790,7 +12788,7 @@ ok
 cU
 Kf
 GG
-ps
+Lj
 GG
 uV
 tY
@@ -13175,7 +13173,7 @@ fa
 of
 RX
 RX
-lg
+lz
 Qs
 vv
 Rt
@@ -13505,7 +13503,7 @@ Ke
 of
 EY
 EY
-vx
+CN
 IZ
 XI
 Rt
@@ -13680,7 +13678,7 @@ ue
 vl
 TA
 ow
-FO
+Ym
 sV
 TX
 So

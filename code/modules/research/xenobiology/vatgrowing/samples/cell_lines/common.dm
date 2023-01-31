@@ -187,7 +187,7 @@
 		/datum/reagent/oxygen = -3)
 
 	virus_suspectibility = 2
-	resulting_atoms = list(/mob/living/simple_animal/hostile/carp = 1)
+	resulting_atoms = list(/mob/living/basic/carp = 1)
 
 /datum/micro_organism/cell_line/megacarp
 	desc = "Cartilaginous cyprinid cells"
@@ -208,7 +208,7 @@
 		/datum/reagent/oxygen = -3)
 
 	virus_suspectibility = 1
-	resulting_atoms = list(/mob/living/simple_animal/hostile/carp/megacarp = 1)
+	resulting_atoms = list(/mob/living/basic/carp/mega = 1)
 
 /datum/micro_organism/cell_line/snake
 	desc = "Ophidic cells"
@@ -304,7 +304,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1)
 
 	suppressive_reagents = list(
-		/datum/reagent/toxin/minttoxin = -3,
+		/datum/reagent/consumable/mintextract = -3,
 		/datum/reagent/consumable/frostoil = -2,
 		/datum/reagent/consumable/ice = -1)
 
@@ -530,7 +530,7 @@
 
 	suppressive_reagents = list(
 		/datum/reagent/consumable/clownstears = -8,
-		/datum/reagent/toxin/minttoxin = -6,
+		/datum/reagent/consumable/mintextract = -6,
 		/datum/reagent/consumable/ethanol/silencer = -3,
 		/datum/reagent/consumable/ethanol/fernet = -3,
 		/datum/reagent/toxin/lipolicide = -3,
@@ -563,7 +563,7 @@
 	resulting_atoms = list(/mob/living/simple_animal/hostile/retaliate/clown/longface = 1)
 
 /datum/micro_organism/cell_line/frog
-	desc = "amphibian cells"
+	desc = "anura amphibian cells"
 	required_reagents = list(/datum/reagent/consumable/nutriment/protein)
 
 	supplementary_reagents = list(
@@ -582,6 +582,29 @@
 
 	virus_suspectibility = 0.5
 	resulting_atoms = list(/mob/living/basic/frog = 1)
+
+/datum/micro_organism/cell_line/axolotl
+	desc = "caudata amphibian cells"
+	required_reagents = list(/datum/reagent/consumable/nutriment/protein)
+
+	supplementary_reagents = list(
+		/datum/reagent/ants = 3,
+		/datum/reagent/liquidgibs = 2,
+		/datum/reagent/consumable/salt = 1,
+		/datum/reagent/consumable/eggwhite= 1,
+		/datum/reagent/consumable/nutriment/vitamin = 1,)
+
+	suppressive_reagents = list(
+		/datum/reagent/ammonia = -3,
+		/datum/reagent/toxin/bungotoxin = -3,
+		/datum/reagent/toxin/spore = -3,
+		/datum/reagent/toxin/plantbgone = -2, //GAY AXOLOTLS
+		/datum/reagent/drying_agent = -4,
+		/datum/reagent/consumable/mold = -2,
+		/datum/reagent/toxin = -1)
+
+	virus_suspectibility = 0.5
+	resulting_atoms = list(/mob/living/basic/axolotl = 1)
 
 /datum/micro_organism/cell_line/walking_mushroom
 	desc = "motile fungal hyphae"

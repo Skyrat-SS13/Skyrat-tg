@@ -163,6 +163,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	/// Has the occupant been tucked in?
 	var/tucked = FALSE
 
+	/// What was the ckey of the client that entered the cryopod?
+	var/stored_ckey = null
+
 /obj/machinery/cryopod/quiet
 	quiet = TRUE
 
@@ -206,6 +209,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 		var/mob/living/mob_occupant = occupant
 		if(mob_occupant && mob_occupant.stat != DEAD)
 			to_chat(occupant, span_notice("<b>You feel cool air surround you. You go numb as your senses turn inward.</b>"))
+			stored_ckey = mob_occupant.ckey
 
 		COOLDOWN_START(src, despawn_world_time, time_till_despawn)
 
@@ -214,6 +218,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	set_density(TRUE)
 	name = initial(name)
 	tucked = FALSE
+	stored_ckey = null
 
 /obj/machinery/cryopod/container_resist_act(mob/living/user)
 	visible_message(span_notice("[occupant] emerges from [src]!"),
@@ -305,6 +310,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	var/mob/living/mob_occupant = occupant
 	var/list/crew_member = list()
 
+	if(ishuman(occupant))
+		var/mob/living/carbon/human/human = occupant
+		human.save_individual_persistence()
+
 	crew_member["name"] = mob_occupant.real_name
 
 	if(mob_occupant.mind)
@@ -315,6 +324,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 		if(LAZYLEN(mob_occupant.mind.objectives))
 			mob_occupant.mind.objectives.Cut()
 			mob_occupant.mind.special_role = null
+		if(mob_occupant.mind.holy_role == HOLY_ROLE_HIGHPRIEST)
+			reset_religion() // Reset religion to its default state so the new chaplain becomes high priest and can change the sect, armor, weapon type, etc
 	else
 		crew_member["job"] = "N/A"
 
@@ -360,15 +371,38 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 				var/obj/item/modular_computer/computer = item_content
 				for(var/datum/computer_file/program/messenger/message_app in computer.stored_files)
 					message_app.invisible = TRUE
-			item_content.dropped(mob_occupant)
 			mob_occupant.transferItemToLoc(item_content, control_computer, force = TRUE, silent = TRUE)
+			item_content.dropped(mob_occupant)
 			control_computer.frozen_item += item_content
-		else mob_occupant.transferItemToLoc(item_content, drop_location(), force = TRUE, silent = TRUE)
+		else
+			mob_occupant.transferItemToLoc(item_content, drop_location(), force = TRUE, silent = TRUE)
+
+	GLOB.joined_player_list -= stored_ckey
 
 	handle_objectives()
 	QDEL_NULL(occupant)
 	open_machine()
 	name = initial(name)
+
+// It's time to kill GLOB
+/obj/machinery/cryopod/proc/reset_religion()
+
+ // set the altar references to the old religious_sect to null
+	for(var/obj/structure/altar_of_gods/altar in GLOB.chaplain_altars)     
+		altar.GetComponent(/datum/component/religious_tool).easy_access_sect = null
+		altar.sect_to_altar = null
+		
+	QDEL_NULL(GLOB.religious_sect) // queue for removal but also set it to null, in case a new chaplain joins before it can be deleted
+	
+	// set the rest of the global vars to null for the new chaplain
+	GLOB.religion = null
+	GLOB.deity = null
+	GLOB.bible_name = null
+	GLOB.bible_icon_state = null
+	GLOB.bible_inhand_icon_state = null
+	GLOB.holy_armor_type = null
+	GLOB.holy_weapon_type = null
+	GLOB.holy_successor = TRUE // We need to do this so new priests can get a new null rod
 
 /obj/machinery/cryopod/MouseDrop_T(mob/living/target, mob/user)
 	if(!istype(target) || !can_interact(user) || !target.Adjacent(user) || !ismob(target) || isanimal(target) || !istype(user.loc, /turf) || target.buckled)
