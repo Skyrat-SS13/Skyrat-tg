@@ -451,6 +451,7 @@
 		/obj/machinery/smartfridge/food = "food",
 		/obj/machinery/smartfridge/drinks = "drinks",
 		/obj/machinery/smartfridge/extract = "slimes",
+		/obj/machinery/smartfridge/petri = "petri",
 		/obj/machinery/smartfridge/organ = "organs",
 		/obj/machinery/smartfridge/chemistry = "chems",
 		/obj/machinery/smartfridge/chemistry/virology = "viruses",
@@ -569,6 +570,7 @@
 		/obj/machinery/vending/tool = "YouTool",
 		/obj/machinery/vending/custom = "Custom Vendor",
 		/obj/machinery/vending/dorms = "LustWish",	//SKYRAT EDIT CHANGE - ERP UPDATE - ORIGINAL: /obj/machinery/vending/dorms = "KinkVend"
+		/obj/machinery/vending/nifsoft = "NIFSoft Vendor", //SKYRAT EDIT ADDITION NIFs
 		/obj/machinery/vending/access/command = "Command Outfitting Station", //SKYRAT EDIT ADDITION
 		/obj/machinery/vending/barbervend = "Fab-O-Vend", //SKYRAT EDIT ADDITION
 		/obj/machinery/vending/imported = "NT Sustenance Supplier", //SKYRAT EDIT ADDITION
