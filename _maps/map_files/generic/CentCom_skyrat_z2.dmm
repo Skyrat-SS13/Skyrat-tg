@@ -3056,7 +3056,7 @@
 /area/centcom/holding/cafedorms)
 "aMI" = (
 /obj/machinery/vending/hydronutrients{
-	products = list(/obj/item/reagent_containers/cup/bottle/nutrient/ez=50,/obj/item/reagent_containers/cup/bottle/nutrient/l4z=20,/obj/item/reagent_containers/cup/bottle/nutrient/rh=10,/obj/item/reagent_containers/spray/pestspray=30,/obj/item/reagent_containers/syringe=5,/obj/item/storage/bag/plants=30,/obj/item/cultivator=10,/obj/item/shovel/spade=10,/obj/item/plant_analyzer=10)
+	products = list(/obj/item/reagent_containers/cup/bottle/nutrient/ez = 50, /obj/item/reagent_containers/cup/bottle/nutrient/l4z = 20, /obj/item/reagent_containers/cup/bottle/nutrient/rh = 10, /obj/item/reagent_containers/spray/pestspray = 30, /obj/item/reagent_containers/syringe = 5, /obj/item/storage/bag/plants = 30, /obj/item/cultivator = 10, /obj/item/shovel/spade = 10, /obj/item/plant_analyzer = 10)
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "darkfull"
@@ -3189,13 +3189,13 @@
 /obj/item/storage/box/ingredients/american,
 /obj/item/storage/box/ingredients/exotic,
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour=90);
+	list_reagents = list(/datum/reagent/consumable/flour = 90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour=90);
+	list_reagents = list(/datum/reagent/consumable/flour = 90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
@@ -4777,11 +4777,10 @@
 /area/centcom/interlink)
 "bDM" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Communications Access";
-	req_one_access = list("cent_general","captain")
+	name = "Communications Access"
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
-/obj/effect/mapping_helpers/airlock/access/all/admin/general,
+/obj/effect/mapping_helpers/airlock/access/any/cent_com/rep_or_captain,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "bEI" = (
@@ -5309,13 +5308,12 @@
 /area/centcom/interlink)
 "cOV" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Administrative Offices";
-	req_one_access = list("cent_general","captain")
+	name = "Administrative Offices"
 	},
 /obj/effect/turf_decal/siding/white{
 	dir = 8
 	},
-/obj/effect/mapping_helpers/airlock/access/all/command/general,
+/obj/effect/mapping_helpers/airlock/access/any/cent_com/rep_or_captain,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "cQq" = (
@@ -6852,12 +6850,12 @@
 /obj/item/reagent_containers/condiment/soysauce,
 /obj/item/reagent_containers/condiment/sugar,
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice=90);
+	list_reagents = list(/datum/reagent/consumable/rice = 90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice=90);
+	list_reagents = list(/datum/reagent/consumable/rice = 90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
@@ -9681,24 +9679,24 @@
 /obj/item/storage/box/ingredients/american,
 /obj/item/storage/box/ingredients/exotic,
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour=90);
+	list_reagents = list(/datum/reagent/consumable/flour = 90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour=90);
+	list_reagents = list(/datum/reagent/consumable/flour = 90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice=90);
+	list_reagents = list(/datum/reagent/consumable/rice = 90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice=90);
+	list_reagents = list(/datum/reagent/consumable/rice = 90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
@@ -10147,10 +10145,8 @@
 /area/centcom/interlink)
 "pDd" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Administrative Offices";
-	req_one_access = list("cent_general","captain")
+	name = "Administrative Offices"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/command/general,
 /obj/machinery/button/door/directional/west{
 	pixel_y = -8;
 	id = "evac_hall_lookout";
@@ -10165,6 +10161,7 @@
 	name = "Interlink Access Shutters"
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/access/any/cent_com/rep_or_captain,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "pDN" = (
@@ -10234,16 +10231,15 @@
 /area/centcom/interlink)
 "pHe" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Administrative Offices";
-	req_one_access = list("cent_general","captain")
+	name = "Administrative Offices"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/command/captain,
 /obj/effect/turf_decal/trimline/dark_green/corner,
 /obj/machinery/door/poddoor/shutters/indestructible{
 	id = "arr_hall_lookout";
 	name = "Interlink Access Shutters"
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/access/any/cent_com/rep_or_captain,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "pHi" = (
@@ -13019,13 +13015,12 @@
 /area/centcom/interlink)
 "wyL" = (
 /obj/machinery/door/airlock/centcom{
-	name = "ERT Access";
-	req_one_access = list("cent_general","captain")
+	name = "ERT Access"
 	},
 /obj/effect/turf_decal/siding/white{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/all/admin/general,
+/obj/effect/mapping_helpers/airlock/access/any/cent_com/rep_or_captain,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "wzZ" = (
