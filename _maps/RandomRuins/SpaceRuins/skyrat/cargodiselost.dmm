@@ -235,6 +235,14 @@
 	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/cargodise_freighter/trauma)
+"fm" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/computer/order_console/mining{
+	forced_express = 1;
+	express_cost_multiplier = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/cargodise_freighter/mining)
 "fy" = (
 /obj/effect/turf_decal/tile/green/anticorner/contrasted{
 	dir = 4
@@ -754,6 +762,16 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
+"nE" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/mob/living/basic/syndicate/melee/anthro{
+	desc = "An anthromorphic bandit, geared up in tactical gear.";
+	faction = list("hostile");
+	name = "Geared Pirate"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "nM" = (
 /obj/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -976,6 +994,14 @@
 /obj/item/restraints/handcuffs/cable/zipties,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
+"re" = (
+/obj/machinery/light/directional/west,
+/obj/machinery/computer/cryopod/directional/west,
+/obj/effect/turf_decal/tile/green/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "rm" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/carpet/green,
@@ -1907,16 +1933,6 @@
 /obj/effect/turf_decal/tile/brown/fourcorners,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/mining)
-"EW" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/mob/living/basic/syndicate/melee/anthro{
-	desc = "An anthromorphic bandit, geared up in tactical gear.";
-	faction = list("hostile");
-	name = "Geared Pirate"
-	},
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "Ff" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
@@ -1999,14 +2015,6 @@
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/green/half/contrasted{
 	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/cargodise_freighter/primaryhall)
-"Gl" = (
-/obj/machinery/light/directional/west,
-/obj/machinery/computer/cryopod/directional/west,
-/obj/effect/turf_decal/tile/green/half/contrasted{
-	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
@@ -2514,14 +2522,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
-"Ns" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/computer/order_console/mining{
-	forced_express = 1;
-	express_cost_multiplier = 1
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/cargodise_freighter/mining)
 "Nu" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/crate,
@@ -2645,6 +2645,15 @@
 /obj/effect/turf_decal/tile/brown/half/contrasted{
 	dir = 1
 	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/cargodise_freighter/cargo)
+"Ps" = (
+/obj/effect/turf_decal/bot,
+/obj/effect/spawner/random/exotic/tool,
+/obj/structure/closet/crate/secure/engineering{
+	req_one_access = list("syndicate")
+	},
+/obj/effect/spawner/random/exotic/tool,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
 "Pu" = (
@@ -3341,15 +3350,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
-"Xw" = (
-/obj/effect/turf_decal/bot,
-/obj/effect/spawner/random/exotic/tool,
-/obj/structure/closet/crate/secure/engineering{
-	req_one_access = list("syndicate")
-	},
-/obj/effect/spawner/random/exotic/tool,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/cargodise_freighter/cargo)
 "XB" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/effect/turf_decal/tile/green/half/contrasted{
@@ -3688,7 +3688,7 @@ yv
 PG
 Ra
 kB
-Gl
+re
 ys
 ME
 oo
@@ -4004,7 +4004,7 @@ Rt
 Ra
 FB
 YF
-EW
+nE
 YF
 fG
 YF
@@ -4232,7 +4232,7 @@ Zw
 YK
 pj
 Sc
-Xw
+Ps
 uc
 Zy
 "}
@@ -4992,7 +4992,7 @@ AC
 ww
 Vs
 am
-Ns
+fm
 Vs
 tP
 NZ
