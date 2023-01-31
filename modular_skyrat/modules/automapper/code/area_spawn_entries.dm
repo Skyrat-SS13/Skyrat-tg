@@ -88,3 +88,8 @@
 /datum/area_spawn/customs_agent_landmark
 	desired_atom = /obj/effect/landmark/start/customs_agent
 	target_areas = list(/area/station/security/checkpoint/supply, /area/station/cargo/storage)
+
+/datum/area_spawn_over/prison_curtains
+	desired_atom = /obj/structure/curtain/cloth/prison
+	over_atoms = list(/obj/structure/window/reinforced/fulltile, /obj/machinery/door/airlock/security/glass, /obj/machinery/door/airlock/public/glass)
+	target_areas = list(/area/station/security/prison/safe)
