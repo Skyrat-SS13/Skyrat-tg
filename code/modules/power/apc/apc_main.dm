@@ -120,24 +120,10 @@
 	fire = 90
 	acid = 50
 
-/obj/machinery/power/apc/New(turf/loc, ndir, building=0)
-	if(!req_access)
-		req_access = list(ACCESS_ENGINE_EQUIP)
-	..()
-	GLOB.apcs_list += src
-
-	wires = new /datum/wires/apc(src)
-
-	if(building)
-		area = get_area(src)
-		opened = APC_COVER_OPENED
-		operating = FALSE
-		name = "\improper [get_area_name(area, TRUE)] APC"
-		set_machine_stat(machine_stat | MAINT)
-		update_appearance()
-		addtimer(CALLBACK(src, PROC_REF(update)), 5)
-		dir = ndir
-
+/obj/machinery/power/apc/Initialize(mapload, ndir)
+	. = ..()
+	//Pixel offset its appearance based on its direction
+	dir = ndir
 	switch(dir)
 		if(NORTH)
 			offset_old = pixel_y
@@ -184,9 +170,32 @@
 			log_mapping("Duplicate APC created at [AREACOORD(src)] [area.type]. Original at [AREACOORD(area.apc)] [area.type].")
 		area.apc = src
 
-	update_appearance()
+	//Initialize name & access of the apc. Name requires area to be assigned first
+	if(!req_access)
+		req_access = list(ACCESS_ENGINE_EQUIP)
+	if(auto_name)
+		name = "\improper [get_area_name(area, TRUE)] APC"
 
-	make_terminal()
+	//Initialize its electronics
+	wires = new /datum/wires/apc(src)
+	alarm_manager = new(src)
+	AddElement(/datum/element/atmos_sensitive, mapload)
+	// for apcs created during map load make them fully functional
+	if(mapload)
+		has_electronics = APC_ELECTRONICS_SECURED
+		// is starting with a power cell installed, create it and set its charge level
+		if(cell_type)
+			cell = new cell_type(src)
+			cell.charge = start_charge * cell.maxcharge / 100 // (convert percentage to actual value)
+		make_terminal()
+		///This is how we test to ensure that mappers use the directional subtypes of APCs, rather than use the parent and pixel-shift it themselves.
+		if(abs(offset_old) != APC_PIXEL_OFFSET)
+			log_mapping("APC: ([src]) at [AREACOORD(src)] with dir ([dir] | [uppertext(dir2text(dir))]) has pixel_[dir & (WEST|EAST) ? "x" : "y"] value [offset_old] - should be [dir & (SOUTH|EAST) ? "-" : ""][APC_PIXEL_OFFSET]. Use the directional/ helpers!")
+	// For apcs created during the round players need to configure them from scratch
+	else
+		opened = APC_COVER_OPENED
+		operating = FALSE
+		set_machine_stat(machine_stat | MAINT)
 
 	addtimer(CALLBACK(src, PROC_REF(update)), 5)
 
