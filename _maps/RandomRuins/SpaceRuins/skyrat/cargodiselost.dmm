@@ -1232,14 +1232,6 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/checker,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
-"uT" = (
-/obj/machinery/light/directional/west,
-/obj/machinery/computer/cryopod/directional/west,
-/obj/effect/turf_decal/tile/green/half/contrasted{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "uU" = (
 /obj/machinery/firealarm/directional/north,
 /obj/effect/turf_decal/tile/green/half/contrasted{
@@ -1563,14 +1555,6 @@
 "yG" = (
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
-"yP" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/computer/order_console/mining{
-	forced_express = 1;
-	express_cost_multiplier = 1
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/cargodise_freighter/mining)
 "yT" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/iron/showroomfloor,
@@ -1923,6 +1907,16 @@
 /obj/effect/turf_decal/tile/brown/fourcorners,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/mining)
+"EW" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/mob/living/basic/syndicate/melee/anthro{
+	desc = "An anthromorphic bandit, geared up in tactical gear.";
+	faction = list("hostile");
+	name = "Geared Pirate"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "Ff" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
@@ -2005,6 +1999,14 @@
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/green/half/contrasted{
 	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/cargodise_freighter/primaryhall)
+"Gl" = (
+/obj/machinery/light/directional/west,
+/obj/machinery/computer/cryopod/directional/west,
+/obj/effect/turf_decal/tile/green/half/contrasted{
+	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
@@ -2512,6 +2514,14 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
+"Ns" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/computer/order_console/mining{
+	forced_express = 1;
+	express_cost_multiplier = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/cargodise_freighter/mining)
 "Nu" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/crate,
@@ -2962,15 +2972,6 @@
 /obj/item/soap/syndie,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
-"Tn" = (
-/obj/effect/turf_decal/bot,
-/obj/effect/spawner/random/exotic/tool,
-/obj/structure/closet/crate/secure/engineering{
-	req_one_access = list("syndicate")
-	},
-/obj/effect/spawner/random/exotic/tool,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/cargodise_freighter/cargo)
 "Tr" = (
 /obj/structure/marker_beacon/burgundy,
 /obj/structure/lattice/catwalk,
@@ -3158,16 +3159,6 @@
 /obj/effect/spawner/random/engineering/material,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
-"Vr" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/mob/living/basic/syndicate/melee/anthro{
-	desc = "An anthromorphic bandit, geared up in tactical gear.";
-	faction = list("hostile");
-	name = "Geared Pirate"
-	},
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "Vs" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/iron/dark,
@@ -3348,6 +3339,15 @@
 /area/ruin/space/has_grav/cargodise_freighter/bridge)
 "Xu" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/cargodise_freighter/cargo)
+"Xw" = (
+/obj/effect/turf_decal/bot,
+/obj/effect/spawner/random/exotic/tool,
+/obj/structure/closet/crate/secure/engineering{
+	req_one_access = list("syndicate")
+	},
+/obj/effect/spawner/random/exotic/tool,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
 "XB" = (
@@ -3688,7 +3688,7 @@ yv
 PG
 Ra
 kB
-uT
+Gl
 ys
 ME
 oo
@@ -4004,7 +4004,7 @@ Rt
 Ra
 FB
 YF
-Vr
+EW
 YF
 fG
 YF
@@ -4232,7 +4232,7 @@ Zw
 YK
 pj
 Sc
-Tn
+Xw
 uc
 Zy
 "}
@@ -4992,7 +4992,7 @@ AC
 ww
 Vs
 am
-yP
+Ns
 Vs
 tP
 NZ
