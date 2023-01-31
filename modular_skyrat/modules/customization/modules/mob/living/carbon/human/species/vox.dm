@@ -65,7 +65,6 @@
 		equipping.equipOutfit(job.vox_outfit, visuals_only)
 	else
 		give_important_for_life(equipping)
-	equipping.open_internals(equipping.get_item_for_held_index(2))
 
 /datum/species/vox/random_name(gender,unique,lastname)
 	if(unique)
