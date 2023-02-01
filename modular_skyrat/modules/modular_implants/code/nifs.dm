@@ -160,7 +160,8 @@
 	if(found_component)
 		qdel(found_component)
 
-	UnregisterSignal(linked_mob, COMSIG_LIVING_DEATH, PROC_REF(damage_on_death))
+	if(linked_mob)
+		UnregisterSignal(linked_mob, COMSIG_LIVING_DEATH, PROC_REF(damage_on_death))
 
 /obj/item/organ/internal/cyberimp/brain/nif/process(delta_time)
 	. = ..()
