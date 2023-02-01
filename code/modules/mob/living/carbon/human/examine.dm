@@ -441,13 +441,27 @@
 		if(HAS_TRAIT(user, TRAIT_SECURITY_HUD))
 			if(!user.stat && user != src)
 			//|| !user.canmove || user.restrained()) Fluff: Sechuds have eye-tracking technology and sets 'arrest' to people that the wearer looks and blinks at.
+<<<<<<< HEAD
 				var/criminal = "None"
+=======
+				var/wanted_status = WANTED_NONE
+				var/security_note = "None."
+>>>>>>> 3715cae41d0 (Records: Clerical expansion (#73022))
 
 				target_record = find_record("name", perpname, GLOB.data_core.security)
 				if(target_record)
+<<<<<<< HEAD
 					criminal = target_record.fields["criminal"]
 
 				. += "<span class='deptradio'>Criminal status:</span> <a href='?src=[REF(src)];hud=s;status=1;examine_time=[world.time]'>\[[criminal]\]</a>"
+=======
+					wanted_status = target_record.wanted_status
+					if(target_record.security_note)
+						security_note = target_record.security_note
+
+				. += "<span class='deptradio'>Criminal status:</span> <a href='?src=[REF(src)];hud=s;status=1;examine_time=[world.time]'>\[[wanted_status]\]</a>"
+				. += "<span class='deptradio'>Important Notes: [security_note]"
+>>>>>>> 3715cae41d0 (Records: Clerical expansion (#73022))
 				. += jointext(list("<span class='deptradio'>Security record:</span> <a href='?src=[REF(src)];hud=s;view=1;examine_time=[world.time]'>\[View\]</a>",
 					"<a href='?src=[REF(src)];hud=s;add_citation=1;examine_time=[world.time]'>\[Add citation\]</a>",
 					"<a href='?src=[REF(src)];hud=s;add_crime=1;examine_time=[world.time]'>\[Add crime\]</a>",
