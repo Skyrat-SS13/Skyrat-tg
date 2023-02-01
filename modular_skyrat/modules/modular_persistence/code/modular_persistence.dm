@@ -92,7 +92,7 @@ GLOBAL_LIST_INIT(modular_persistence_ignored_vars, list(
 /mob/living/carbon/human/proc/save_individual_persistence()
 	var/obj/item/organ/internal/brain/brain = getorganslot(ORGAN_SLOT_BRAIN)
 
-	if(!client?.prefs || !brain || ! brain.modular_persistence)
+	if(!brain || ! brain.modular_persistence)
 		return FALSE
 
 	var/json_file = file("data/player_saves/[ckey[1]]/[ckey]/modular_persistence.json")
