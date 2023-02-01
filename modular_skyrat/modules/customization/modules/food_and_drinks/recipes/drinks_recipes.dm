@@ -112,6 +112,14 @@
 /datum/chemical_reaction/drink/blizzard_brew
 	results = list(/datum/reagent/consumable/ethanol/blizzard_brew = 3)
 	required_reagents = list(/datum/reagent/consumable/ethanol/iced_beer = 1, /datum/reagent/consumable/ice = 1, /datum/reagent/inverse/cryostylane = 1)
+	mix_message = "You hear crackling ice as it mixes."
+	mix_sound = 'sound/effects/ice_shovel.ogg'
+
+/datum/chemical_reaction/drink/molten_mead
+	results = list(/datum/reagent/consumable/ethanol/molten_mead = 3)
+	required_reagents = list(/datum/reagent/consumable/condensedcapsaicin = 2, /datum/reagent/consumable/ethanol/mead = 2, /datum/reagent/consumable/ethanol/mauna_loa = 1)
+	mix_message = "You hear sizzling flesh and angry wasps buzzing as it mixes."
+	mix_sound = 'sound/effects/wounds/sizzle2.ogg'
 
 // RACE SPECIFIC DRINKS
 

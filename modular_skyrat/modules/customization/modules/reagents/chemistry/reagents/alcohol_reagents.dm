@@ -362,7 +362,7 @@
 	boozepwr = 25
 	quality = DRINK_NICE
 	metabolization_rate = 1.25 * REAGENTS_METABOLISM
-	taste_description = "icicles"
+	taste_description = "ancient icicles"
 	overdose_threshold = 25
 	var/obj/structure/ice_stasis/cube
 	var/atom/movable/screen/alert/status_effect/freon/cryostylane_alert
@@ -387,6 +387,29 @@
 	QDEL_NULL(cube)
 	drinker.clear_alert("cryostylane_alert")
 	..()
+
+/datum/reagent/consumable/ethanol/molten_mead
+	name = "Molten Mead"
+	description = "Famously known to set beards aflame. Ingest at your own risk!"
+	color = rgb(224, 78, 16)
+	boozepwr = 35
+	quality = DRINK_VERYGOOD
+	metabolization_rate = 1.25 * REAGENTS_METABOLISM
+	taste_description = "burning wasps"
+	overdose_threshold = 25
+
+/datum/glass_style/drinking_glass/molten_mead
+	required_drink_type = /datum/reagent/consumable/ethanol/molten_mead
+	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	icon_state = "molten_mead"
+	name = "glass of Molten Mead"
+	desc = "Famously known to set beards aflame. Ingest at your own risk!"
+
+/datum/reagent/consumable/ethanol/molten_mead/overdose_start(mob/living/carbon/drinker)
+	drinker.adjust_fire_stacks(2)
+	drinker.ignite_mob()
+	..()
+
 
 // RACE SPECIFIC DRINKS
 
