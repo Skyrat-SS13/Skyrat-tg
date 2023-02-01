@@ -1,0 +1,96 @@
+2023-02-01:
+  A.C.M.O.:
+  - refactor: Refactored breathing, mostly check_breath, for Carbons and lungs organ.
+  - rscadd: Added the space-breathing trait for lungs.
+  - bugfix: Fixed the Space Carp DNA infusion to apply the Spacewalk trait, allowing
+      you to fly through space.
+  - bugfix: Fixed the Space Carp lungs, allowing you to breathe in space with them.
+  - bugfix: Fixed gas status indicators re-playing their on-throw animation when they
+      are refreshed.
+  - bugfix: Fixed gas status indicators getting stuck to the screen in some situations.
+  - bugfix: Fixed gas side effects, such as euphoria and hallucinations, to reset
+      when expected.
+  - bugfix: For Humans, fixed Miasma only being consumed from the air when Helium
+      is present.
+  Danny Boy:
+  - qol: Curator PDA now spawns with ringer ON by default
+  LT3:
+  - bugfix: Tram platform no longer magically levitates objects when the tram walls
+      are destroyed or dismantled
+  - imageadd: Hilbert Research Facility's tram controls have finally been picked up
+      off the floor and mounted to the wall
+  - bugfix: Hilbert Research Facility's tram doors are no longer linked to the main
+      station tram
+  - code_imp: Hilbert Research Facility now has proper tram atmos barriers installed
+  Melbert:
+  - bugfix: Maybe fixes some issues with spirit holding, particularly relating to
+      it being in-exorcism-able.
+  Nerev4r:
+  - rscadd: PDAs now let nearby people know you're messaging someone.
+  OrionTheFox:
+  - bugfix: fixed hash bricks containing cocaine
+  Rhials:
+  - bugfix: The chemical scanner will now properly display that "no" reagents are
+      present in a subject when only invisible reagents are present.
+  ShamanSliph:
+  - bugfix: pAI's can now talk over the Radio while in Card form.
+  ShizCalev:
+  - bugfix: Fixed the cops not being called when minors try to purchase cigarettes
+      from vending machines.
+  SkyratBot:
+  - qol: prevents mob spawner plasmamen from spawning without their suit and internals.
+  - code_imp: the equip proc can now find internals in the hand slot and automatically
+      open them, allowing for less snowflakey code down the line.
+  - code_imp: Greater support for variability in weapon attack speed
+  - admin: Admins are now able to grief you by hitting you with a toolbox 10 times
+      in one second.
+  - qol: Add clown firing pin to techweb
+  - bugfix: You now should no longer be able to accidentally offer someone your "off-hand"
+      item, since it's an abstract thing that shouldn't be considered a physical entity.
+  - qol: ghosts now get an orbit notification for wise cows!
+  - bugfix: Precision of purity scanners has been increased
+  - bugfix: Removing a malf AIs brain and inserting it into a new core no-longer clears
+      its zeroth law
+  - qol: Add mining scanners to techweb
+  - admin: When a player-owned mob is deleted from the game world, a stack trace is
+      now dropped in the runtime logs. This allows admins and coders to investigate
+      these issues easier.
+  - rscadd: Axolotl lovers rejoice! I added axolotls to cytology and as such are now
+      swabbable.
+  - rscadd: Frog cells are now named "anura amphibian cells." This literally means
+      "frog amphibian cells."
+  - rscadd: Axolotl are "caudata amphibian cells." This literally means "salamander
+      amphibian cells."
+  - qol: Posters now tell that you can trap them with a glass shard when examined
+  - bugfix: fixed fire cabinet examine text falsely saying to alt-click to open/close;
+      it now has contextual screentips, and uses balloon alerts when relevant
+  - rscadd: Adds a new crate to cargo, the "Amphibian Friends Crate!" Gives you one
+      frog and one axolotl.
+  - bugfix: the MODsuit control maint app now links up to MOdsuits.
+  - bugfix: The ORM's input and output lights are once again visible
+  - qol: Musicians rejoice! You can now interact with the instrument UI while laying
+      down.
+  - bugfix: fixed air alarm breaking on gasless tiles.
+  - rscadd: You can print universal scanners (export scanners, price taggers, sales
+      taggers) from the lathe again
+  - balance: The carp migration event won't trigger if there are fewer than 12 players.
+  - rscadd: Added a new emergency shuttle, the Venture
+  - bugfix: adds some messing bitfield defines for turf_flags
+  - bugfix: Fixes parallax showing up ABOVE the game if you moved z levels while disconnected
+  Vladoricious:
+  - qol: Nuclear PDAs now actually work like a PDA should, with the power to download
+      normal programs and delete them too. The nerds over at Cybersun even installed
+      a new "Why Fy Dry Ver", allowing you to download your programs while still on
+      the base!
+  - bugfix: As a result, Lone Ops will no longer get scammed out of over 1/5th of
+      their TC when buying the Detomatix cartridge and Midround Traitors with stolen
+      Nuclear PDAs will not be denied an uplink.
+  vinylspiders:
+  - bugfix: items equipped in the suit storage slot no longer have their sprites hidden
+      by cloaks
+  - qol: new chaplains can now be chosen as a successor to the previous one if the
+      role has been freed via cryopod, enabling them to change the sect, holy weapon,
+      bible, etc just as the initial chaplain would have been able to.
+  - bugfix: fixes a bug that was causing you to always burn bread and other baked
+      goods when using a forge
+  - bugfix: fixes liquid carpet reagent not working on most of the turfs in the game
