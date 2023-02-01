@@ -355,6 +355,39 @@
 	name = "glass of zen star"
 	desc = "You'd think something so balanced would actually taste nice... you'd be dead wrong."
 
+/datum/reagent/consumable/ethanol/blizzard_brew
+	name = "Blizzard Brew"
+	description = "An ancient recipe. Served best chilled as much as dwarvenly possible."
+	color = rgb(180, 231, 216)
+	boozepwr = 25
+	quality = DRINK_NICE
+	metabolization_rate = 1.25 * REAGENTS_METABOLISM
+	taste_description = "icicles"
+	overdose_threshold = 25
+	var/obj/structure/ice_stasis/cube
+	var/atom/movable/screen/alert/status_effect/freon/cryostylane_alert
+
+/datum/glass_style/drinking_glass/blizzard_brew
+	required_drink_type = /datum/reagent/consumable/ethanol/blizzard_brew
+	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	icon_state = "blizzard_brew"
+	name = "glass of Blizzard Brew"
+	desc = "An ancient recipe. Served best chilled as much as dwarvenly possible."
+
+/datum/reagent/consumable/ethanol/blizzard_brew/overdose_start(mob/living/carbon/drinker)
+	cube = new /obj/structure/ice_stasis(get_turf(drinker))
+	cube.color = COLOR_CYAN
+	cube.set_anchored(TRUE)
+	drinker.forceMove(cube)
+	cryostylane_alert = drinker.throw_alert("cryostylane_alert", /atom/movable/screen/alert/status_effect/freon/cryostylane)
+	cryostylane_alert.attached_effect = src //so the alert can reference us, if it needs to
+	..()
+
+/datum/reagent/consumable/ethanol/blizzard_brew/on_mob_delete(mob/living/carbon/drinker, amount)
+	QDEL_NULL(cube)
+	drinker.clear_alert("cryostylane_alert")
+	..()
+
 // RACE SPECIFIC DRINKS
 
 /datum/reagent/consumable/ethanol/coldscales
