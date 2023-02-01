@@ -73,6 +73,88 @@ GLOBAL_LIST_EMPTY(antagonists)
 	owner = null
 	return ..()
 
+<<<<<<< HEAD
+=======
+/datum/antagonist/Topic(href,href_list)
+	if(!check_rights(R_ADMIN))
+		return
+
+	//Some commands might delete/modify this datum clearing or changing owner
+	var/datum/mind/persistent_owner = owner
+
+	var/commands = get_admin_commands()
+	var/admin_command = href_list["command"]
+	if(!(admin_command in commands))
+		return
+	var/datum/callback/call_async = commands[admin_command]
+	call_async.Invoke(usr)
+	persistent_owner.traitor_panel()
+
+//This one is created by admin tools for custom objectives
+/datum/antagonist/custom
+	antagpanel_category = "Custom"
+	show_name_in_check_antagonists = TRUE //They're all different
+	var/datum/team/custom_team
+
+/datum/antagonist/custom/create_team(datum/team/team)
+	custom_team = team
+
+/datum/antagonist/custom/get_team()
+	return custom_team
+
+/datum/antagonist/custom/admin_add(datum/mind/new_owner,mob/admin)
+	var/custom_name = stripped_input(admin, "Custom antagonist name:", "Custom antag", "Antagonist")
+	if(!custom_name)
+		return
+	name = custom_name
+	..()
+
+///ANTAGONIST UI STUFF
+
+/datum/antagonist/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, ui_name, name)
+		ui.open()
+
+/datum/antagonist/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/antagonist/ui_static_data(mob/user)
+	var/list/data = list()
+	data["antag_name"] = name
+	data["objectives"] = get_objectives()
+	return data
+
+//button for antags to review their descriptions/info
+/datum/action/antag_info
+	name = "Open Special Role Information:"
+	button_icon_state = "round_end"
+	show_to_observers = FALSE
+
+/datum/action/antag_info/New(Target)
+	. = ..()
+	name = "Open [target] Information:"
+
+/datum/action/antag_info/Trigger(trigger_flags)
+	. = ..()
+	if(!.)
+		return
+
+	target.ui_interact(owner)
+
+/datum/action/antag_info/IsAvailable(feedback = FALSE)
+	if(!target)
+		stack_trace("[type] was used without a target antag datum!")
+		return FALSE
+	. = ..()
+	if(!.)
+		return
+	if(!owner.mind || !(target in owner.mind.antag_datums))
+		return FALSE
+	return TRUE
+
+>>>>>>> d4db2909986 (Renames Antagonist UI Button "Antag" -> "Special Role" (#73016))
 /datum/antagonist/proc/can_be_owned(datum/mind/new_owner)
 	. = TRUE
 	var/datum/mind/tested = new_owner || owner
