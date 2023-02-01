@@ -66,6 +66,10 @@
 	if(H.mind)
 		H.mind.holy_role = HOLY_ROLE_HIGHPRIEST
 
+	// SKYRAT EDIT
+	if(GLOB.holy_successor) // so priests who spawn after the previous high priest has entered cryosleep can get their own null rod
+		H.put_in_hands(new /obj/item/nullrod(H))
+	// SKYRAT EDIT END
 	var/new_religion = player_client?.prefs?.read_preference(/datum/preference/name/religion) || DEFAULT_RELIGION
 	var/new_deity = player_client?.prefs?.read_preference(/datum/preference/name/deity) || DEFAULT_DEITY
 	var/new_bible = player_client?.prefs?.read_preference(/datum/preference/name/bible) || DEFAULT_BIBLE
