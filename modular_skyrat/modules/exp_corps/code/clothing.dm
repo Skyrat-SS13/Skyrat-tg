@@ -95,7 +95,7 @@
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF
 
-/obj/item/clothing/gloves/color/chief_engineer/expeditionary_corps
+/obj/item/clothing/gloves/chief_engineer/expeditionary_corps
 	name = "expeditionary corps insulated gloves"
 	icon_state = "exp_corps_eng"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
@@ -112,7 +112,7 @@
 	fire = 80
 	acid = 50
 
-/obj/item/clothing/gloves/color/latex/nitrile/expeditionary_corps
+/obj/item/clothing/gloves/latex/nitrile/expeditionary_corps
 	name = "expeditionary corps medic gloves"
 	icon_state = "exp_corps_med"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
