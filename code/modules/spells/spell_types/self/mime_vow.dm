@@ -9,6 +9,7 @@
 
 	school = SCHOOL_MIME
 	cooldown_time = 5 MINUTES
+	spell_requirements = NONE
 
 	spell_requirements = SPELL_REQUIRES_HUMAN|SPELL_REQUIRES_MIND
 	spell_max_level = 1
