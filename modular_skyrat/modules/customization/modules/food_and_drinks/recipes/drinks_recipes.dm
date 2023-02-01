@@ -111,7 +111,7 @@
 
 /datum/chemical_reaction/drink/blizzard_brew
 	results = list(/datum/reagent/consumable/ethanol/blizzard_brew = 3)
-	required_reagents = list(/datum/reagent/consumable/ethanol/iced_beer = 1, /datum/reagent/consumable/ice = 1, /datum/reagent/cryostylane = 1)
+	required_reagents = list(/datum/reagent/consumable/ethanol/iced_beer = 1, /datum/reagent/consumable/ice = 1, /datum/reagent/inverse/cryostylane = 1)
 
 // RACE SPECIFIC DRINKS
 
