@@ -440,6 +440,29 @@
 	..()
 	. = TRUE
 
+/datum/reagent/consumable/ethanol/research_rum
+	name = "Research Rum"
+	description = "Cooked up by dwarven scientists, this glowing pink brew is sure to supercharge your thinking. How? Science!"
+	color = rgb(169, 69, 169)
+	boozepwr = 50
+	quality = DRINK_GOOD
+	taste_description = "slippery grey matter"
+	overdose_threshold = 30
+
+/datum/glass_style/drinking_glass/research_rum
+	required_drink_type = /datum/reagent/consumable/ethanol/research_rum
+	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	icon_state = "research_rum"
+	name = "glass of Research Rum"
+	desc = "Cooked up by dwarven scientists, this glowing pink brew is sure to supercharge your thinking. How? Science!"
+
+/datum/reagent/consumable/ethanol/research_rum/on_mob_life(mob/living/carbon/drinker, delta_time, times_fired)
+	if(prob(3))
+		drinker.say(pick_list_replacements(VISTA_FILE, "ballmer_good_msg"), forced = "ballmer")
+	..()
+	. = TRUE
+
+
 // RACE SPECIFIC DRINKS
 
 /datum/reagent/consumable/ethanol/coldscales
