@@ -133,6 +133,12 @@
 	mix_message = "You hear gurgling and dinging as it mixes."
 	mix_sound = 'sound/machines/microwave/microwave-end.ogg'
 
+/datum/chemical_reaction/drink/golden_grog
+	results = list(/datum/reagent/consumable/ethanol/golden_grog = 5)
+	required_reagents = list(/datum/reagent/consumable/ethanol/goldschlager = 10, /datum/reagent/gold = 1, /datum/reagent/silver = 1, /datum/reagent/cellulose = 1, /datum/reagent/spraytan = 1)
+	mix_message = "You hear golden coins and snobby rich laughing as it mixes."
+	mix_sound = 'sound/items/coinflip.ogg'
+
 // RACE SPECIFIC DRINKS
 
 /datum/chemical_reaction/drink/coldscales

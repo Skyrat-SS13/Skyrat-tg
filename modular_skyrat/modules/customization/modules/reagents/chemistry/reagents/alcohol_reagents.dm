@@ -447,7 +447,6 @@
 	boozepwr = 50
 	quality = DRINK_GOOD
 	taste_description = "slippery grey matter"
-	overdose_threshold = 30
 
 /datum/glass_style/drinking_glass/research_rum
 	required_drink_type = /datum/reagent/consumable/ethanol/research_rum
@@ -457,11 +456,25 @@
 	desc = "Cooked up by dwarven scientists, this glowing pink brew is sure to supercharge your thinking. How? Science!"
 
 /datum/reagent/consumable/ethanol/research_rum/on_mob_life(mob/living/carbon/drinker, delta_time, times_fired)
-	if(prob(3))
+	if(prob(5))
 		drinker.say(pick_list_replacements(VISTA_FILE, "ballmer_good_msg"), forced = "ballmer")
 	..()
 	. = TRUE
 
+/datum/reagent/consumable/ethanol/golden_grog
+	name = "Golden Grog"
+	description = "A drink concocted by a dwarven Quartermaster who had too much time and money on his hands. Commonly ordered by influencers looking to flaunt their wealth."
+	color = rgb(247, 230, 141)
+	boozepwr = 70
+	quality = DRINK_FANTASTIC
+	taste_description = "sweet credit holochips"
+
+/datum/glass_style/drinking_glass/golden_grog
+	required_drink_type = /datum/reagent/consumable/ethanol/golden_grog
+	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	icon_state = "golden_grog"
+	name = "glass of Golden Grog"
+	desc = "A drink concocted by a dwarven Quartermaster who had too much time and money on his hands. Commonly ordered by influencers looking to flaunt their wealth."
 
 // RACE SPECIFIC DRINKS
 
