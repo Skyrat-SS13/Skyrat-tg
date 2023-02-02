@@ -578,8 +578,12 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 	if(affecting && !IS_ORGANIC_LIMB(affecting))
 		if(user == H)
 			user.visible_message(span_notice("[user] starts to fix some of the wires in [H]'s [affecting.name]."), span_notice("You start fixing some of the wires in [H == user ? "your" : "[H]'s"] [affecting.name]."))
+<<<<<<< HEAD
 			/* SKYRAT EDIT START - ORIGINAL:
 			if(!do_mob(user, H, 50))
+=======
+			if(!do_after(user, 50, H))
+>>>>>>> c097f167b11 (Completely removes do_mob and do_after_mob (#73117))
 				return
 			*/
 		// SKYRAT EDIT CHANGE START

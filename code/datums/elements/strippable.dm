@@ -217,7 +217,7 @@
 	if (!ismob(source))
 		return FALSE
 
-	if (!do_mob(user, source, get_equip_delay(equipping)))
+	if (!do_after(user, get_equip_delay(equipping), source))
 		return FALSE
 
 	if (!equipping.mob_can_equip(source, item_slot, disable_warning = TRUE, bypass_equip_delay_self = TRUE))
@@ -274,9 +274,13 @@
 
 /// A utility function for `/datum/strippable_item`s to start unequipping an item from a mob.
 /proc/start_unequip_mob(obj/item/item, mob/source, mob/user, strip_delay)
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION - THIEVING GLOVES
 	//if (!do_mob(user, source, strip_delay || item.strip_delay, interaction_key = REF(item)))
 	if (!do_mob(user, source, (strip_delay || item.strip_delay) * (HAS_TRAIT(user, TRAIT_STICKY_FINGERS) ? THIEVING_GLOVES_STRIP_SLOWDOWN : NORMAL_STRIP_SLOWDOWN), interaction_key = REF(item)))
+=======
+	if (!do_after(user, strip_delay || item.strip_delay, source, interaction_key = REF(item)))
+>>>>>>> c097f167b11 (Completely removes do_mob and do_after_mob (#73117))
 		return FALSE
 
 	return TRUE
