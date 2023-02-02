@@ -410,6 +410,35 @@
 	drinker.ignite_mob()
 	..()
 
+/datum/reagent/consumable/ethanol/hippie_hooch
+	name = "Hippie Hooch"
+	description = "Peace and love! Under request of the HR department, this drink is sure to sober you up quickly."
+	color = rgb(77, 138, 34)
+	boozepwr = -20
+	quality = DRINK_FANTASTIC
+	taste_description = "eggy hemp"
+	var/static/list/status_effects_to_clear = list(
+		/datum/status_effect/confusion,
+		/datum/status_effect/dizziness,
+		/datum/status_effect/drowsiness,
+		/datum/status_effect/speech/slurring/drunk,
+	)
+
+/datum/glass_style/drinking_glass/hippie_hooch
+	required_drink_type = /datum/reagent/consumable/ethanol/hippie_hooch
+	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	icon_state = "hippie_hooch"
+	name = "glass of Hippie Hooch"
+	desc = "Peace and love! Under request of the HR department, this drink is sure to sober you up quickly."
+
+/datum/reagent/consumable/ethanol/hippie_hooch/on_mob_life(mob/living/carbon/drinker, delta_time, times_fired)
+	for(var/effect in status_effects_to_clear)
+		drinker.remove_status_effect(effect)
+	drinker.reagents.remove_all_type(/datum/reagent/consumable/ethanol, 3 * REM * delta_time, FALSE, TRUE)
+	drinker.adjustToxLoss(-0.2 * REM * delta_time, FALSE, required_biotype = affected_biotype)
+	drinker.adjust_drunk_effect(-10 * REM * delta_time)
+	..()
+	. = TRUE
 
 // RACE SPECIFIC DRINKS
 

@@ -121,6 +121,12 @@
 	mix_message = "You hear sizzling flesh and angry wasps buzzing as it mixes."
 	mix_sound = 'sound/effects/wounds/sizzle2.ogg'
 
+/datum/chemical_reaction/drink/hippie_hooch
+	results = list(/datum/reagent/consumable/ethanol/hippie_hooch = 5)
+	required_reagents = list(/datum/reagent/medicine/antihol = 1, /datum/reagent/consumable/ethanol/crevice_spike = 3, /datum/reagent/medicine/earthsblood = 1)
+	mix_message = "You hear wood flutes and nature as it mixes."
+	mix_sound = 'modular_skyrat/modules/emotes/sound/voice/hoot.ogg'
+
 // RACE SPECIFIC DRINKS
 
 /datum/chemical_reaction/drink/coldscales
