@@ -103,18 +103,19 @@
 	icon_state = "podfloor_dark"
 	floor_tile = /obj/item/stack/tile/pod/dark
 
-
 /turf/open/floor/noslip
 	name = "high-traction floor"
 	icon_state = "noslip"
 	floor_tile = /obj/item/stack/tile/noslip
 	slowdown = -0.3
+	flags_1 = NO_SCREENTIPS_1 // SKYRAT EDIT - tram/noslip ignore ssDecay
 
 /turf/open/floor/noslip/tram_plate
 	name = "linear induction plate"
 	desc = "The linear induction plate that powers the tram."
 	icon_state = "tram_plate"
 	base_icon_state = "tram_plate"
+	flags_1 = null // SKYRAT EDIT - tram/noslip ignore ssDecay
 
 /turf/open/floor/noslip/tram_platform
 	name = "tram platform"
