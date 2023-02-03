@@ -85,7 +85,7 @@
 			else if(security_override)
 				light_state = AIRLOCK_LIGHT_SECURITY
 				lights_overlay = "lights_security"
-				pre_light_color = light_color_security
+				pre_light_color = AIRLOCK_SECURITY_LIGHT_COLOR
 			else
 				lights_overlay = "lights_poweron"
 				pre_light_color = light_color_poweron
