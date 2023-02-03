@@ -392,7 +392,7 @@ const PageMain = (props, context) => {
               onClick={() => act('toggleEmergencyAccess')}
             />
           )}
-          {/* SKYRAT EDIT ADDITION START */}
+          {/* SKYRAT EDIT ADDITION START - Engineering Override */}
           {!!canToggleEngineeringOverride && (
             <Button.Confirm
               icon="id-card-o"
