@@ -137,10 +137,6 @@
 		return INITIALIZE_HINT_QDEL
 	reagents = loc.reagents //This mister is really just a proxy for the tank's reagents
 
-/obj/item/reagent_containers/spray/mister/Destroy(force)
-	tank = null
-	return ..()
-
 /obj/item/reagent_containers/spray/mister/afterattack(obj/target, mob/user, proximity)
 	if(target.loc == loc) //Safety check so you don't fill your mister with mutagen or something and then blast yourself in the face with it
 		return
@@ -324,7 +320,7 @@
 		return
 
 	if(nozzle_mode == RESIN_FOAM)
-		if(!Adj|| !isturf(target))
+		if(!Adj || !isturf(target))
 			balloon_alert(user, "too far!")
 			return
 		for(var/S in target)
