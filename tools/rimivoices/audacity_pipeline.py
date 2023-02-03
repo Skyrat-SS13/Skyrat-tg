@@ -128,15 +128,17 @@ def process_audio(extra_content: dict = None):
         do_command('Import2: Filename="' + in_file + '.wav"')
         track_index += check_effects(IMPORT, extra_effects, track_index)
         do_command('SelectAll:')
-        do_command('ChangeTempo: Percentage="12.575" SBSMS="0"')
+        # do_command('ChangeTempo: Percentage="15" SBSMS="0"')
+        do_command('ChangeTempo: Percentage="10" SBSMS="0"')
         track_index += check_effects(TEMPO, extra_effects, track_index)
-        do_command('ChangePitch: Percentage="-12" SBSMS="0"')
+        # do_command('ChangePitch: Percentage="-20" SBSMS="1"')
         track_index += check_effects(PITCH, extra_effects, track_index)
-        do_command('Distortion: DC_Block="0" Noise_Floor="-70" Parameter_1="20" Parameter_2="56" Repeats="1" Threshold_dB="-6" Type="Rectifier Distortion"')  # This masks some AI voice roughness. Also makes it sound less 'human'. Also makes it sound like it's coming from a cheap speaker system.
+        # do_command('Distortion: DC_Block="0" Noise_Floor="-70" Parameter_1="20" Parameter_2="56" Repeats="1" Threshold_dB="-6" Type="Rectifier Distortion"')  # This masks some AI voice roughness. Also makes it sound less 'human'. Also makes it sound like it's coming from a cheap speaker system.
+        do_command('Distortion: DC_Block="0" Noise_Floor="-70" Parameter_1="30" Parameter_2="56" Repeats="1" Threshold_dB="-6" Type="Rectifier Distortion"')  # This masks some AI voice roughness. Also makes it sound less 'human'. Also makes it sound like it's coming from a cheap speaker system.
         track_index += check_effects(DISTORTION, extra_effects, track_index)
         do_command('SelectTime: Start="0" End="0" RelativeTo="ProjectEnd"')
         do_command('Paste:')
         do_command('SelectNone:')
-        do_command('Reverb: Delay="12" DryGain="-1" HfDamping="41" Reverberance="70" RoomSize="40" StereoWidth="100" ToneHigh="100" ToneLow="60" WetGain="-8" WetOnly="0"')
+        do_command('Reverb: Delay="12" DryGain="-1" HfDamping="41" Reverberance="70" RoomSize="100" StereoWidth="100" ToneHigh="100" ToneLow="60" WetGain="-8" WetOnly="0"')
         track_index += check_effects(REVERB, extra_effects, track_index)
         do_command('Export2: Filename="' + output_dir + filename + '.ogg"')
