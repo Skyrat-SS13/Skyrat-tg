@@ -384,7 +384,7 @@ const PageMain = (props, context) => {
           )}
           {!!canToggleEmergencyAccess && (
             <Button.Confirm
-              icon="wrench" // SKYRAT EDIT
+              icon="id-card-o"
               content={`${
                 emergencyAccess ? 'Disable' : 'Enable'
               } Emergency Maintenance Access`}
@@ -392,10 +392,10 @@ const PageMain = (props, context) => {
               onClick={() => act('toggleEmergencyAccess')}
             />
           )}
-          {/* SKYRAT EDIT ADDITION START */}
+          {/* SKYRAT EDIT ADDITION START - Engineering Override */}
           {!!canToggleEngineeringOverride && (
             <Button.Confirm
-              icon="id-card-o"
+              icon=""wrench"
               content={`${
                 engineeringOverride ? 'Disable' : 'Enable'
               } Engineering Override Access`}

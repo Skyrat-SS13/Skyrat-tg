@@ -58,7 +58,7 @@ export const KeycardAuth = (props, context) => {
                       onClick={() => act('bsa_unlock')}
                       content="Bluespace Artillery Unlock"
                     />
-                    {/* SKYRAT EDIT ADDITION START */}
+                    {/* SKYRAT EDIT ADDITION START - Permit Pins */}
                     {!!data.permit_pins && (
                       <Button
                         icon="key"
@@ -67,7 +67,7 @@ export const KeycardAuth = (props, context) => {
                         content="Permit-Locked Firing Pin Unrestriction"
                       />
                     )}
-                    {/* SKYRAT EDIT ADDITION EMD */}
+                    {/* SKYRAT EDIT ADDITION END */}
                   </>
                 )}
               </>
