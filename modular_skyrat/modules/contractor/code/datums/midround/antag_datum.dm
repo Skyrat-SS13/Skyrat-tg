@@ -24,7 +24,7 @@
 	. = ..()
 	equip_guy()
 
-/datum/antagonist/contractor/proc/forge_objectives()
+/datum/antagonist/contractor/forge_objectives()
 	var/datum/objective/contractor_total/contract_objectives = new
 	contract_objectives.owner = owner
 	objectives += contract_objectives
