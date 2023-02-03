@@ -1,4 +1,4 @@
-GLOBAL_LIST_INIT(available_nifsofts, list(
+GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 	/datum/nifsoft/hivemind,
 	/datum/nifsoft/summoner,
 	/datum/nifsoft/shapeshifter,
@@ -45,7 +45,7 @@ GLOBAL_LIST_INIT(available_nifsofts, list(
 
 	data["target_nif"] = target_nif
 
-	for(var/datum/nifsoft/buyable_nifsoft as anything in GLOB.available_nifsofts)
+	for(var/datum/nifsoft/buyable_nifsoft as anything in GLOB.purchasable_nifsofts)
 		if(!buyable_nifsoft)
 			continue
 
