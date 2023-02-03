@@ -39,14 +39,14 @@ export const KeycardAuth = (props, context) => {
                       content="Red Alert"
                     />
                     <Button
-                      icon="wrench"
+                      icon="idcard-o"
                       fluid
                       onClick={() => act('emergency_maint')}
                       content="Emergency Maintenance Access"
                     />
-                    {/* SKYRAT EDIT ADDITION START */}
+                    {/* SKYRAT EDIT ADDITION START - Engineering Override */}
                     <Button
-                      icon="id-card-o"
+                      icon="wrench"
                       fluid
                       onClick={() => act('eng_override')}
                       content="Engineering Override Access"
