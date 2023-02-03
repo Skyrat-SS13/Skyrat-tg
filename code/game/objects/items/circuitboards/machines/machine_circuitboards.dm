@@ -365,6 +365,23 @@
 		/obj/item/stack/sheet/plasteel = 5)
 
 //Generic
+/obj/item/circuitboard/machine/component_printer
+	name = "\improper Component Printer (Machine Board)"
+	greyscale_colors = CIRCUIT_COLOR_SCIENCE
+	build_path = /obj/machinery/component_printer
+	req_components = list(
+		/datum/stock_part/matter_bin = 2,
+		/datum/stock_part/manipulator = 2,
+	)
+
+/obj/item/circuitboard/machine/module_duplicator
+	name = "\improper Module Duplicator (Machine Board)"
+	greyscale_colors = CIRCUIT_COLOR_SCIENCE
+	build_path = /obj/machinery/module_duplicator
+	req_components = list(
+		/datum/stock_part/matter_bin = 2,
+		/datum/stock_part/manipulator = 2,
+	)
 
 /obj/item/circuitboard/machine/circuit_imprinter
 	name = "Circuit Imprinter"
@@ -451,6 +468,7 @@
 		/obj/machinery/smartfridge/food = "food",
 		/obj/machinery/smartfridge/drinks = "drinks",
 		/obj/machinery/smartfridge/extract = "slimes",
+		/obj/machinery/smartfridge/petri = "petri",
 		/obj/machinery/smartfridge/organ = "organs",
 		/obj/machinery/smartfridge/chemistry = "chems",
 		/obj/machinery/smartfridge/chemistry/virology = "viruses",
@@ -569,6 +587,7 @@
 		/obj/machinery/vending/tool = "YouTool",
 		/obj/machinery/vending/custom = "Custom Vendor",
 		/obj/machinery/vending/dorms = "LustWish",	//SKYRAT EDIT CHANGE - ERP UPDATE - ORIGINAL: /obj/machinery/vending/dorms = "KinkVend"
+		/obj/machinery/vending/nifsoft = "NIFSoft Vendor", //SKYRAT EDIT ADDITION NIFs
 		/obj/machinery/vending/access/command = "Command Outfitting Station", //SKYRAT EDIT ADDITION
 		/obj/machinery/vending/barbervend = "Fab-O-Vend", //SKYRAT EDIT ADDITION
 		/obj/machinery/vending/imported = "NT Sustenance Supplier", //SKYRAT EDIT ADDITION
