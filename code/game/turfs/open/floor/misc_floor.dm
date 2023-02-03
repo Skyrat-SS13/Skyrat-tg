@@ -116,12 +116,14 @@
 	icon_state = "tram_plate"
 	base_icon_state = "tram_plate"
 	flags_1 = null // SKYRAT EDIT - tram/noslip ignore ssDecay
+	slowdown = 0
 
 /turf/open/floor/noslip/tram_platform
 	name = "tram platform"
 	desc = "A sturdy looking tram platform."
 	icon_state = "tram_platform"
 	base_icon_state = "tram_platform"
+	slowdown = 0
 
 /turf/open/floor/noslip/broken_states()
 	return list("noslip-damaged1","noslip-damaged2","noslip-damaged3")
