@@ -67,7 +67,7 @@ export const KeycardAuth = (props, context) => {
                         content="Permit-Locked Firing Pin Unrestriction"
                       />
                     )}
-                    {/* SKYRAT EDIT ADDITION EMD */}
+                    {/* SKYRAT EDIT ADDITION END */}
                   </>
                 )}
               </>
