@@ -323,6 +323,8 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 		if(LAZYLEN(mob_occupant.mind.objectives))
 			mob_occupant.mind.objectives.Cut()
 			mob_occupant.mind.special_role = null
+		if(mob_occupant.mind.holy_role == HOLY_ROLE_HIGHPRIEST)
+			reset_religion() // Reset religion to its default state so the new chaplain becomes high priest and can change the sect, armor, weapon type, etc
 	else
 		crew_member["job"] = "N/A"
 
@@ -380,6 +382,26 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	QDEL_NULL(occupant)
 	open_machine()
 	name = initial(name)
+
+// It's time to kill GLOB
+/obj/machinery/cryopod/proc/reset_religion()
+
+ // set the altar references to the old religious_sect to null
+	for(var/obj/structure/altar_of_gods/altar in GLOB.chaplain_altars)     
+		altar.GetComponent(/datum/component/religious_tool).easy_access_sect = null
+		altar.sect_to_altar = null
+		
+	QDEL_NULL(GLOB.religious_sect) // queue for removal but also set it to null, in case a new chaplain joins before it can be deleted
+	
+	// set the rest of the global vars to null for the new chaplain
+	GLOB.religion = null
+	GLOB.deity = null
+	GLOB.bible_name = null
+	GLOB.bible_icon_state = null
+	GLOB.bible_inhand_icon_state = null
+	GLOB.holy_armor_type = null
+	GLOB.holy_weapon_type = null
+	GLOB.holy_successor = TRUE // We need to do this so new priests can get a new null rod
 
 /obj/machinery/cryopod/MouseDrop_T(mob/living/target, mob/user)
 	if(!istype(target) || !can_interact(user) || !target.Adjacent(user) || !ismob(target) || isanimal(target) || !istype(user.loc, /turf) || target.buckled)
