@@ -395,7 +395,7 @@ const PageMain = (props, context) => {
           {/* SKYRAT EDIT ADDITION START - Engineering Override */}
           {!!canToggleEngineeringOverride && (
             <Button.Confirm
-              icon="id-card-o"
+              icon=""wrench"
               content={`${
                 engineeringOverride ? 'Disable' : 'Enable'
               } Engineering Override Access`}
