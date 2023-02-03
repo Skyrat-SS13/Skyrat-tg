@@ -9,18 +9,6 @@
 // Maintenance, bridge, departmental lobbies and inner rooms. No access to security.
 // Sensitive areas like the vault, command quarters, heads' offices, etc. are not applicable.
 
-/area/station/ai_monitored/turret_protected/ai
-	engineering_override_eligible = TRUE
-
-/area/station/ai_monitored/turret_protected/aisat_interior
-	engineering_override_eligible = TRUE
-
-/area/station/ai_monitored/turret_protected/ai_upload
-	engineering_override_eligible = TRUE
-
-/area/station/ai_monitored/turret_protected/ai_upload_foyer
-	engineering_override_eligible = TRUE
-
 /area/station/ai_monitored/command/storage/eva
 	engineering_override_eligible = TRUE
 

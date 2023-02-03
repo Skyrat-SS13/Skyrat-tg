@@ -2,7 +2,7 @@ https://github.com/Skyrat-SS13/Skyrat-tg/pull/16787
 
 ## Title:
 Engineering override for airlocks on orange alert
-MODULE ID: AUTOAIRLOCK_OVERRIDE
+MODULE ID: AIRLOCK_OVERRIDE
 
 ### Description:
 Adds functionality to the airlocks so that when the alert level is set to orange, engineers receive expanded access so they aren't stuck at an airlock when disaster happens.
