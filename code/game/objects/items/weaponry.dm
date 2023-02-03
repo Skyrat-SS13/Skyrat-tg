@@ -139,7 +139,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	if(ishuman(loc))
 		var/mob/living/carbon/human/holder = loc
 		SET_PLANE_EXPLICIT(holder, GAME_PLANE_UPPER_FOV_HIDDEN, src) //NO HIDING BEHIND PLANTS FOR YOU, DICKWEED (HA GET IT, BECAUSE WEEDS ARE PLANTS)
-		ADD_TRAIT(holder, TRAIT_NOBLEED, HIGHLANDER_TRAIT) //AND WE WON'T BLEED OUT LIKE COWARDS
+		ADD_TRAIT(holder, TRAIT_NOBLOOD, HIGHLANDER_TRAIT) //AND WE WON'T BLEED OUT LIKE COWARDS
 	else
 		if(!(flags_1 & ADMIN_SPAWNED_1))
 			qdel(src)
@@ -980,6 +980,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	bare_wound_bonus = 50
 	throwforce = 25
 	throw_speed = 4
+	attack_speed = CLICK_CD_HYPER_RAPID
 	embedding = list("embed_chance" = 100)
 	block_chance = 25
 	sharpness = SHARP_EDGED
@@ -1018,7 +1019,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 		return TRUE
 
 /obj/item/highfrequencyblade/attack(mob/living/target, mob/living/user, params)
-	if(!HAS_TRAIT(src, TRAIT_WIELDED))
+	if(!HAS_TRAIT(src, TRAIT_WIELDED) || HAS_TRAIT(src, TRAIT_PACIFISM))
 		return ..()
 	slash(target, user, params)
 
@@ -1044,7 +1045,6 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	update_icon(UPDATE_ICON_STATE)
 
 /obj/item/highfrequencyblade/proc/slash(atom/target, mob/living/user, params)
-	user.changeNext_move(0.1 SECONDS)
 	user.do_attack_animation(target, "nothing")
 	var/list/modifiers = params2list(params)
 	var/damage_mod = 1

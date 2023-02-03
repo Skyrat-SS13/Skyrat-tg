@@ -83,8 +83,6 @@ GLOBAL_LIST_INIT(stock_part_datums, generate_stock_part_datums())
 /datum/stock_part/scanning_module/tier4
 	tier = 4
 	physical_object_type = /obj/item/stock_parts/scanning_module/triphasic
-<<<<<<< HEAD
-=======
 
 /datum/stock_part/capacitor
 	tier = 1
@@ -200,4 +198,3 @@ GLOBAL_LIST_INIT(stock_part_datums, generate_stock_part_datums())
 	tier = 1
 	physical_object_type = /obj/item/stock_parts/water_recycler
 	physical_object_base_type = /obj/item/stock_parts/water_recycler
->>>>>>> 70cd2ef8581 (Renames Datum Parts above tier 1 accordingly to their tier. (#72731))

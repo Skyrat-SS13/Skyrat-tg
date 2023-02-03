@@ -119,7 +119,7 @@
 /datum/chemical_reaction/candlefication/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i in 1 to created_volume)
-		new /obj/item/candle(location)
+		new /obj/item/flashlight/flare/candle(location)
 
 /datum/chemical_reaction/meatification
 	required_reagents = list(/datum/reagent/liquidgibs = 10, /datum/reagent/consumable/nutriment = 10, /datum/reagent/carbon = 10)
@@ -611,7 +611,23 @@
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_UNIQUE
 
 /datum/chemical_reaction/scream/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
-	playsound(holder.my_atom, pick(list( 'sound/voice/human/malescream_1.ogg', 'sound/voice/human/malescream_2.ogg', 'sound/voice/human/malescream_3.ogg', 'sound/voice/human/malescream_4.ogg', 'sound/voice/human/malescream_5.ogg', 'sound/voice/human/malescream_6.ogg', 'sound/voice/human/femalescream_1.ogg', 'sound/voice/human/femalescream_2.ogg', 'sound/voice/human/femalescream_3.ogg', 'sound/voice/human/femalescream_4.ogg', 'sound/voice/human/femalescream_5.ogg', 'sound/voice/human/wilhelm_scream.ogg')), created_volume*5,TRUE)
+	/// List of screams to play.
+	var/static/list/screams = list(
+		'sound/voice/human/femalescream_1.ogg',
+		'sound/voice/human/femalescream_2.ogg',
+		'sound/voice/human/femalescream_3.ogg',
+		'sound/voice/human/femalescream_4.ogg',
+		'sound/voice/human/femalescream_5.ogg',
+		'sound/voice/human/malescream_1.ogg',
+		'sound/voice/human/malescream_2.ogg',
+		'sound/voice/human/malescream_3.ogg',
+		'sound/voice/human/malescream_4.ogg',
+		'sound/voice/human/malescream_5.ogg',
+		'sound/voice/human/malescream_6.ogg',
+		'sound/voice/human/wilhelm_scream.ogg',
+	)
+	
+	playsound(holder.my_atom, pick(screams), created_volume*5,TRUE)
 
 /datum/chemical_reaction/hair_dye
 	results = list(/datum/reagent/hair_dye = 5)
