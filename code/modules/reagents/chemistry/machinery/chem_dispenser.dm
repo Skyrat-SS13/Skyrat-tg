@@ -681,7 +681,7 @@
 	emagged_reagents = list(
 		/datum/reagent/consumable/ethanol,
 		/datum/reagent/iron,
-		/datum/reagent/toxin/minttoxin,
+		/datum/reagent/consumable/mintextract,
 		/datum/reagent/consumable/ethanol/atomicbomb,
 		/datum/reagent/consumable/ethanol/fernet
 	)
