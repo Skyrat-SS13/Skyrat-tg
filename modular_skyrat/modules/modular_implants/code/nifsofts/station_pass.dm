@@ -35,8 +35,10 @@
 
 	if(!transmitted_name)
 		transmitted_name = linked_mob.name
+
 	if(!transmitted_message)
 		transmitted_message = "Hello, I am [transmitted_name], it's nice to meet you!"
+
 	transmitted_identifier = linked_mob.ckey
 
 	add_message("station_pass_nifsoft", name, "Hello World")
