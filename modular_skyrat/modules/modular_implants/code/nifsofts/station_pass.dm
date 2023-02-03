@@ -1,5 +1,5 @@
 /obj/item/disk/nifsoft_uploader/station_pass
-	name = "Automatic Apprasial"
+	name = "Automatic Appraisal"
 	loaded_nifsoft = /datum/nifsoft/station_pass
 
 //Modular Persistence variables for the station_pass NIFSoft
