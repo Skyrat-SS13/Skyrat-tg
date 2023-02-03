@@ -6,6 +6,7 @@
 	job_rank = ROLE_DRIFTING_CONTRACTOR
 	hud_icon = 'modular_skyrat/modules/contractor/icons/hud_icon.dmi'
 	antag_hud_name = "contractor"
+	antagpanel_category = ANTAG_GROUP_SYNDICATE
 	antag_moodlet = /datum/mood_event/focused
 	show_to_ghosts = TRUE
 	suicide_cry = "FOR THE CONTRACTS!!"
