@@ -160,9 +160,13 @@
 		to_chat(user, span_notice("There's no wounds that require bandaging on [user == M ? "your" : "[M]'s"] [limb.plaintext_zone]!")) // good problem to have imo
 		return
 
+<<<<<<< HEAD
 	//SKYRAT EDIT CHANGE BEGIN - MEDICAL
 	/*
 	if(limb.current_gauze && (limb.current_gauze.absorption_capacity * 0.8 > absorption_capacity)) // ignore if our new wrap is < 20% better than the current one, so someone doesn't bandage it 5 times in a row
+=======
+	if(limb.current_gauze && (limb.current_gauze.absorption_capacity * 1.2 > absorption_capacity)) // ignore if our new wrap is < 20% better than the current one, so someone doesn't bandage it 5 times in a row
+>>>>>>> 9c06a13d0c2 (Burn wounds bugfixing (#73113))
 		to_chat(user, span_warning("The bandage currently on [user == M ? "your" : "[M]'s"] [limb.plaintext_zone] is still in good condition!"))
 		return
 	*/
