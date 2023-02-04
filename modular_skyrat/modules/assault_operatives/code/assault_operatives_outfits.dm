@@ -1,6 +1,3 @@
-
-
-//KITS
 /datum/outfit/assaultops
 	name = "Assault Ops - Default"
 
@@ -30,3 +27,8 @@
 	equipping_human.faction |= ROLE_SYNDICATE
 
 	equipping_human.update_icons()
+
+/datum/outfit/assaultops/suited_up
+	name = "Assault Ops - MODsuit Preview"
+
+	belt = /obj/item/mod/control/pre_equipped/stealth_operative
