@@ -19,6 +19,7 @@
 	name = "engineering utility uniform"
 	desc = "A utility uniform worn by Engineering personnel."
 	icon_state = "util_eng"
+	supports_variations_flags = CLOTHING_MONKEY_VARIATION
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/syndicate

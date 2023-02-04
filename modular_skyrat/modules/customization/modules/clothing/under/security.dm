@@ -57,6 +57,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "policealt"
+	supports_variations_flags = CLOTHING_MONKEY_VARIATION
 
 ///WARDEN
 /obj/item/clothing/under/rank/security/warden/peacekeeper/sol

@@ -509,6 +509,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "security_black"
+	supports_variations_flags = CLOTHING_MONKEY_VARIATION
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
