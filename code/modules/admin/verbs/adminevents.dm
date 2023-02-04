@@ -413,7 +413,10 @@
 	log_admin("[key_name(usr)] removed mob ability [ability_name] from mob [marked_mob].")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Remove Mob Ability") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d67555a0b52 (the inevitable Revert "Refactors admin verbs from giant ass lists into datums" in case stuff breaks (#73206))
 /client/proc/command_report_footnote()
 	set category = "Admin.Events"
 	set name = "Command Report Footnote"
@@ -458,4 +461,7 @@
 	else
 		SScommunications.block_command_report++
 		message_admins("[usr] has delayed the roundstart command report.")
+<<<<<<< HEAD
 
+=======
+>>>>>>> d67555a0b52 (the inevitable Revert "Refactors admin verbs from giant ass lists into datums" in case stuff breaks (#73206))

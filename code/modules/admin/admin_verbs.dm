@@ -21,11 +21,14 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/secrets,
 	/client/proc/stop_sounds,
 	/client/proc/tag_datum_mapview,
+<<<<<<< HEAD
 
 	/client/proc/addbunkerbypass,		/*SKYRAT EDIT ADDITION - PANICBUNKER*/
 	/client/proc/cmd_loud_admin_say,	/*admin-only chat except its annoying - SKYRAT EDIT ADDITION - ADMIN*/
 	/client/proc/remove_liquid,			/*SKYRAT EDIT ADDITION*/
 	/client/proc/revokebunkerbypass,	/*SKYRAT EDIT ADDITION - PANICBUNKER*/
+=======
+>>>>>>> d67555a0b52 (the inevitable Revert "Refactors admin verbs from giant ass lists into datums" in case stuff breaks (#73206))
 	)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 GLOBAL_PROTECT(admin_verbs_admin)
@@ -95,6 +98,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/toggle_AI_interact, /*toggle admin ability to interact with machines as an AI*/
 	/client/proc/toggle_combo_hud, /* toggle display of the combination pizza antag and taco sci/med/eng hud */
 	/client/proc/toggle_view_range, /*changes how far we can see*/
+<<<<<<< HEAD
 
 	/datum/admins/proc/toggleaooc,		/*Toggle Antag OOC - SKYRAT EDIT ADDITION*/
 	/datum/admins/proc/toggledchat, 	/*SKYRAT EDIT ADDITION*/
@@ -103,6 +107,8 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/admin_open_event_spawners_menu,	/*EVENTS - SKYRAT EDIT ADDITION*/
 	/client/proc/request_help,						/*SKYRAT EDIT ADDITION*/
 	/client/proc/view_opfors,						/*OPFOR - SKYRAT EDIT ADDITION*/
+=======
+>>>>>>> d67555a0b52 (the inevitable Revert "Refactors admin verbs from giant ass lists into datums" in case stuff breaks (#73206))
 	)
 GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/ban_panel, /client/proc/stickybanpanel))
 GLOBAL_PROTECT(admin_verbs_ban)
@@ -138,6 +144,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/summon_ert,
 	/client/proc/toggle_nuke,
 	/client/proc/toggle_random_events,
+<<<<<<< HEAD
 
 	/client/proc/admin_change_title_screen, 	/*SKYRAT EDIT ADDITION*/
 	/client/proc/change_title_screen_html, 		/*SKYRAT EDIT ADDITION*/
@@ -150,6 +157,8 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/spawn_mob_spawner,				/*SKYRAT EDIT ADDITION*/
 	/client/proc/spawn_pollution,				/*SKYRAT EDIT ADDITION*/
 	/client/proc/spawn_sunbeam,					/*SKYRAT EDIT ADDITION*/
+=======
+>>>>>>> d67555a0b52 (the inevitable Revert "Refactors admin verbs from giant ass lists into datums" in case stuff breaks (#73206))
 	))
 GLOBAL_PROTECT(admin_verbs_fun)
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(/datum/admins/proc/spawn_atom, /datum/admins/proc/podspawn_atom, /datum/admins/proc/spawn_cargo, /datum/admins/proc/spawn_objasmob, /client/proc/respawn_character, /datum/admins/proc/beaker_panel))
@@ -249,6 +258,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/validate_cards,
 	/client/proc/validate_puzzgrids,
 	/client/proc/view_runtimes,
+<<<<<<< HEAD
 
 	/client/proc/reload_interactions,	/*SKYRAT EDIT ADDITION*/
 	/client/proc/test_area_spawner,		/*AUTOMAPPER - SKYRAT EDIT ADDITION*/
@@ -262,6 +272,12 @@ GLOBAL_LIST_INIT(admin_verbs_permissions, list(
 	/client/proc/manage_player_ranks
 	))
 /// SKYRAT EDIT END
+=======
+	)
+GLOBAL_LIST_INIT(admin_verbs_possess, list(/proc/possess, /proc/release))
+GLOBAL_PROTECT(admin_verbs_possess)
+GLOBAL_LIST_INIT(admin_verbs_permissions, list(/client/proc/edit_admin_permissions))
+>>>>>>> d67555a0b52 (the inevitable Revert "Refactors admin verbs from giant ass lists into datums" in case stuff breaks (#73206))
 GLOBAL_PROTECT(admin_verbs_permissions)
 GLOBAL_LIST_INIT(admin_verbs_poll, list(/client/proc/poll_panel))
 GLOBAL_PROTECT(admin_verbs_poll)

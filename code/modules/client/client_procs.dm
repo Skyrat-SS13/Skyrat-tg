@@ -248,11 +248,14 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	else if(GLOB.deadmins[ckey])
 		add_verb(src, /client/proc/readmin)
 		connecting_admin = TRUE
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION //We will check the population here, because we need to know if the client is an admin or not.
 	if(!check_population(connecting_admin))
 		qdel(src)
 		return
 	// SKYRAT EDIT END
+=======
+>>>>>>> d67555a0b52 (the inevitable Revert "Refactors admin verbs from giant ass lists into datums" in case stuff breaks (#73206))
 	if(CONFIG_GET(flag/autoadmin))
 		if(!GLOB.admin_datums[ckey])
 			var/list/autoadmin_ranks = ranks_from_rank_name(CONFIG_GET(string/autoadmin_rank))

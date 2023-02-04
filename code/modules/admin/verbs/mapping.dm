@@ -288,7 +288,11 @@ GLOBAL_VAR_INIT(say_disabled, FALSE)
 		message_admins("[key] used 'Disable all communication verbs', killing all communication methods.")
 	else
 		message_admins("[key] used 'Disable all communication verbs', restoring all communication methods.")
+<<<<<<< HEAD
 /* SKYRAT EDIT: lol, lmao, fuck icon bugs from byond
+=======
+
+>>>>>>> d67555a0b52 (the inevitable Revert "Refactors admin verbs from giant ass lists into datums" in case stuff breaks (#73206))
 //This generates the icon states for job starting location landmarks.
 /client/proc/create_mapping_job_icons()
 	set name = "Generate job landmarks icons"
@@ -353,6 +357,13 @@ GLOBAL_VAR_INIT(say_disabled, FALSE)
 	set name = "Debug Z-Levels"
 	set category = "Mapping"
 
+<<<<<<< HEAD
+=======
+/client/proc/debug_z_levels()
+	set name = "Debug Z-Levels"
+	set category = "Mapping"
+
+>>>>>>> d67555a0b52 (the inevitable Revert "Refactors admin verbs from giant ass lists into datums" in case stuff breaks (#73206))
 	var/list/z_list = SSmapping.z_list
 	var/list/messages = list()
 	messages += "<b>World</b>: [world.maxx] x [world.maxy] x [world.maxz]<br><br>"

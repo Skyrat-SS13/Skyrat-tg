@@ -18,6 +18,9 @@
 			var/datum/gas_mixture/GM = SSair.parse_gas_string(F.initial_gas_mix, /datum/gas_mixture/turf)
 			F.copy_air(GM)
 			F.update_visuals()
+<<<<<<< HEAD
 
 			if(F.pollution) //SKYRAT EDIT ADDITION
 				qdel(F.pollution)
+=======
+>>>>>>> d67555a0b52 (the inevitable Revert "Refactors admin verbs from giant ass lists into datums" in case stuff breaks (#73206))

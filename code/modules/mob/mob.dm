@@ -1329,7 +1329,10 @@
 		if(!check_rights(R_DEBUG))
 			return
 		usr.client.edit_plane_masters(src)
+<<<<<<< HEAD
 
+=======
+>>>>>>> d67555a0b52 (the inevitable Revert "Refactors admin verbs from giant ass lists into datums" in case stuff breaks (#73206))
 /**
  * extra var handling for the logging var
  */

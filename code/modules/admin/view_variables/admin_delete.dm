@@ -25,6 +25,7 @@
 			qdel(D)
 			if(!QDELETED(D))
 				vv_update_display(D, "deleted", "")
+<<<<<<< HEAD
 		// Skyrat edit addition start -- optional bluespace sparks on delete
 		if(T && prefs.read_preference(/datum/preference/toggle/admin/delete_sparks))
 			playsound(T, 'sound/magic/Repulse.ogg', 100, 1)
@@ -32,3 +33,5 @@
 			sparks.set_up(10, 1, T)
 			sparks.attach(T)
 			sparks.start()
+=======
+>>>>>>> d67555a0b52 (the inevitable Revert "Refactors admin verbs from giant ass lists into datums" in case stuff breaks (#73206))

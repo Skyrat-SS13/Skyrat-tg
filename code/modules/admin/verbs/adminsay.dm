@@ -24,7 +24,10 @@
 
 	mob.log_talk(msg, LOG_ASAY)
 	msg = keywords_lookup(msg)
+<<<<<<< HEAD
 	send_asay_to_other_server(ckey, msg) //SKYRAT EDIT ADDITION
+=======
+>>>>>>> d67555a0b52 (the inevitable Revert "Refactors admin verbs from giant ass lists into datums" in case stuff breaks (#73206))
 	var/asay_color = prefs.read_preference(/datum/preference/color/asay_color)
 	var/custom_asay_color = (CONFIG_GET(flag/allow_admin_asaycolor) && asay_color) ? "<font color=[asay_color]>" : "<font color='[DEFAULT_ASAY_COLOR]'>"
 	msg = "[span_adminsay("[span_prefix("ADMIN:")] <EM>[key_name(usr, 1)]</EM> [ADMIN_FLW(mob)]: [custom_asay_color]<span class='message linkify'>[msg]")]</span>[custom_asay_color ? "</font>":null]"

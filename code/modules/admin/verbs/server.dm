@@ -133,7 +133,11 @@
 	set desc = "Prevent the server from restarting"
 	set name = "Delay Round End"
 
+<<<<<<< HEAD
 	if(!check_rights(R_ADMIN)) // SKYRAT EDIT - Admins can delay the round end - ORIGINAL: if(!check_rights(R_SERVER))
+=======
+	if(!check_rights(R_SERVER))
+>>>>>>> d67555a0b52 (the inevitable Revert "Refactors admin verbs from giant ass lists into datums" in case stuff breaks (#73206))
 		return
 
 	if(SSticker.delay_end)
