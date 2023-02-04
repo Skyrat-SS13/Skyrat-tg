@@ -321,9 +321,16 @@ GLOBAL_PROTECT(admin_verbs_poll)
 		/client/proc/readmin
 		))
 
+<<<<<<< HEAD
 /client/proc/hide_verbs()
 	set name = "Adminverbs - Hide All"
 	set category = "Admin"
+=======
+ADMIN_VERB(admin, hide_all_verbs, "Hide All Verbs", "Hide all of your Admin Verbs", NONE)
+	usr.client.remove_admin_verbs()
+	add_verb(usr.client, /client/proc/show_verbs)
+	to_chat(usr, span_admin("Almost all of your adminverbs have been hidden."))
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 
 	remove_admin_verbs()
 	add_verb(src, /client/proc/show_verbs)
@@ -342,6 +349,13 @@ GLOBAL_PROTECT(admin_verbs_poll)
 	to_chat(src, span_interface("All of your adminverbs are now visible."), confidential = TRUE)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Show Adminverbs") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+<<<<<<< HEAD
+=======
+ADMIN_VERB(game, aghost, "AGhost", "Observe without leaving the game", R_ADMIN)
+	if(isnewplayer(usr))
+		to_chat(usr, span_red("Error: AGhost: Cannot admin-ghost wile in the lobby. Join or Observe first."))
+		return
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 
 
 
@@ -359,12 +373,32 @@ GLOBAL_PROTECT(admin_verbs_poll)
 		if(!ghost.can_reenter_corpse)
 			log_admin("[key_name(usr)] re-entered corpse")
 			message_admins("[key_name_admin(usr)] re-entered corpse")
+<<<<<<< HEAD
 		ghost.can_reenter_corpse = 1 //force re-entering even when otherwise not possible
 		ghost.reenter_corpse()
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Admin Reenter") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	else if(isnewplayer(mob))
 		to_chat(src, "<font color='red'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</font>", confidential = TRUE)
 		return FALSE
+=======
+			admin_ghost.can_reenter_corpse = TRUE
+		admin_ghost.reenter_corpse()
+		return
+
+	log_admin("[key_name(usr)] admin ghosted.")
+	message_admins("[key_name_admin(usr)] admin ghosted.")
+	usr.ghostize(TRUE)
+	if(usr && !usr.key)
+		usr.key = "@[key]" // If the key starts with '@' it designates an admin ghost
+
+ADMIN_VERB(game, invisimin, "Invisimin", "Toggles ghost-like invisibility", R_ADMIN)
+	if(initial(usr.invisibility) == INVISIBILITY_OBSERVER)
+		to_chat(usr, span_boldannounce("Invisimin toggle failed. You are already an invisible mob like a ghost."), confidential = TRUE)
+		return
+	if(usr.invisibility == INVISIBILITY_OBSERVER)
+		usr.invisibility = initial(usr.invisibility)
+		to_chat(usr, span_boldannounce("Invisimin off. Invisibility reset."), confidential = TRUE)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	else
 		//ghostize
 		log_admin("[key_name(usr)] admin ghosted.")
@@ -376,6 +410,7 @@ GLOBAL_PROTECT(admin_verbs_poll)
 			body.key = "@[key]" //Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Admin Ghost") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+<<<<<<< HEAD
 /client/proc/invisimin()
 	set name = "Invisimin"
 	set category = "Admin.Game"
@@ -479,6 +514,43 @@ GLOBAL_PROTECT(admin_verbs_poll)
 		return
 	holder.poll_list_panel()
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Server Poll Management") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+=======
+ADMIN_VERB(game, check_antagonists, "Check Antagonists", "", R_ADMIN)
+	usr.client.holder.check_antagonists()
+	log_admin("[key_name(usr)] checked antagonists.") //for tsar~ get a room you two
+	if(!isobserver(usr) && SSticker.HasRoundStarted())
+		message_admins("[key_name_admin(usr)] checked antagonists.")
+
+ADMIN_VERB(game, list_bombers, "List Bombers", "", R_ADMIN)
+	usr.client.holder.list_bombers()
+
+ADMIN_VERB(game, list_signalers, "List Signalers", "", R_ADMIN)
+	usr.client.holder.list_signalers()
+
+ADMIN_VERB(game, list_law_changes, "List Law Changes", "", R_ADMIN)
+	usr.client.holder.list_law_changes()
+
+ADMIN_VERB(game, show_manifest, "Show Manifest", "", R_ADMIN)
+	usr.client.holder.show_manifest()
+
+ADMIN_VERB(game, list_dna, "List DNA", "", R_ADMIN)
+	usr.client.holder.list_dna()
+
+ADMIN_VERB(game, list_fingerprints, "List Fingerprints", "", R_ADMIN)
+	usr.client.holder.list_fingerprints()
+
+ADMIN_VERB(admin, banning_panel, "Banning Panel", "", R_BAN)
+	usr.client.holder.ban_panel()
+
+ADMIN_VERB(admin, unbanning_panel, "Unbanning Panel", "", R_BAN)
+	usr.client.holder.unban_panel()
+
+ADMIN_VERB(game, game_panel, "Game Panel", "", NONE)
+	usr.client.holder.Game()
+
+ADMIN_VERB(admin, server_poll_management, "Server Poll Management", "", R_POLL)
+	usr.client.holder.poll_list_panel()
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 
 /// Returns this client's stealthed ckey
 /client/proc/getStealthKey()
@@ -513,6 +585,7 @@ GLOBAL_PROTECT(admin_verbs_poll)
 /client/proc/createStealthKey()
 	GLOB.stealthminID["[ckey]"] = generateStealthCkey()
 
+<<<<<<< HEAD
 /client/proc/stealth()
 	set category = "Admin"
 	set name = "Stealth Mode"
@@ -521,6 +594,11 @@ GLOBAL_PROTECT(admin_verbs_poll)
 
 	if(holder.fakekey)
 		disable_stealth_mode()
+=======
+ADMIN_VERB(admin, stealth_mode, "Stealth Mode", "Makes you unable to be seen through most means", R_STEALTH)
+	if(usr.client.holder.fakekey)
+		usr.client.disable_stealth_mode()
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	else
 		enable_stealth_mode()
 
@@ -567,11 +645,15 @@ GLOBAL_PROTECT(admin_verbs_poll)
 
 #undef STEALTH_MODE_TRAIT
 
+<<<<<<< HEAD
 /client/proc/drop_bomb()
 	set category = "Admin.Fun"
 	set name = "Drop Bomb"
 	set desc = "Cause an explosion of varying strength at your location."
 
+=======
+ADMIN_VERB(fun, drop_bomb, "Drop Bomb", "Cause an explosion of varying strength at your location", R_FUN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/list/choices = list("Small Bomb (1, 2, 3, 3)", "Medium Bomb (2, 3, 4, 4)", "Big Bomb (3, 5, 7, 5)", "Maxcap", "Custom Bomb")
 	var/choice = tgui_input_list(src, "What size explosion would you like to produce? NOTE: You can do all this rapidly and in an IC manner (using cruise missiles!) with the Config/Launch Supplypod verb. WARNING: These ignore the maxcap", "Drop Bomb", choices)
 	if(isnull(choice))
@@ -609,6 +691,7 @@ GLOBAL_PROTECT(admin_verbs_poll)
 	log_admin("[key_name(usr)] created an admin explosion at [epicenter.loc].")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Drop Bomb") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+<<<<<<< HEAD
 /client/proc/drop_dynex_bomb()
 	set category = "Admin.Fun"
 	set name = "Drop DynEx Bomb"
@@ -616,29 +699,44 @@ GLOBAL_PROTECT(admin_verbs_poll)
 
 	var/ex_power = input("Explosive Power:") as null|num
 	var/turf/epicenter = mob.loc
+=======
+ADMIN_VERB(fun, drop_dynex_bomb, "Drop Dynex Bomb", "Cause an explosion of varting strength at your location", R_FUN)
+	var/ex_power = input(usr, "Explosive Power:") as null|num
+	var/turf/epicenter = get_turf(usr)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if(ex_power && epicenter)
 		dyn_explosion(epicenter, ex_power)
 		message_admins("[ADMIN_LOOKUPFLW(usr)] creating an admin explosion at [epicenter.loc].")
 		log_admin("[key_name(usr)] created an admin explosion at [epicenter.loc].")
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Drop Dynamic Bomb") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+<<<<<<< HEAD
 /client/proc/get_dynex_range()
 	set category = "Debug"
 	set name = "Get DynEx Range"
 	set desc = "Get the estimated range of a bomb, using explosive power."
 
 	var/ex_power = input("Explosive Power:") as null|num
+=======
+ADMIN_VERB(debug, get_dynex_range, "Get Dynex Range", "Get the estimated range of a bomb, using explosive power", R_FUN)
+	var/ex_power = input(usr, "Explosive Power:") as null|num
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if (isnull(ex_power))
 		return
 	var/range = round((2 * ex_power)**GLOB.DYN_EX_SCALE)
 	to_chat(usr, "Estimated Explosive Range: (Devastation: [round(range*0.25)], Heavy: [round(range*0.5)], Light: [round(range)])", confidential = TRUE)
 
+<<<<<<< HEAD
 /client/proc/get_dynex_power()
 	set category = "Debug"
 	set name = "Get DynEx Power"
 	set desc = "Get the estimated required power of a bomb, to reach a specific range."
 
 	var/ex_range = input("Light Explosion Range:") as null|num
+=======
+ADMIN_VERB(debug, get_dynex_power, "Get Dynex Power", "Get the estimated power of a bomb, to reach the specific range", R_FUN)
+	var/ex_range = input(usr, "Light Explosion Range:") as null|num
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if (isnull(ex_range))
 		return
 	var/power = (0.5 * ex_range)**(1/GLOB.DYN_EX_SCALE)
@@ -649,6 +747,10 @@ GLOBAL_PROTECT(admin_verbs_poll)
 	set name = "Set DynEx Scale"
 	set desc = "Set the scale multiplier of dynex explosions. The default is 0.5."
 
+<<<<<<< HEAD
+=======
+ADMIN_VERB(debug, set_dynex_scale, "Set Dynex Scale", "Set the scale multiplier on dynex explosions. Default of 0.5", R_FUN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/ex_scale = input("New DynEx Scale:") as null|num
 	if(!ex_scale)
 		return
@@ -656,6 +758,7 @@ GLOBAL_PROTECT(admin_verbs_poll)
 	log_admin("[key_name(usr)] has modified Dynamic Explosion Scale: [ex_scale]")
 	message_admins("[key_name_admin(usr)] has  modified Dynamic Explosion Scale: [ex_scale]")
 
+<<<<<<< HEAD
 /client/proc/atmos_control()
 	set name = "Atmos Control Panel"
 	set category = "Debug"
@@ -670,9 +773,18 @@ GLOBAL_PROTECT(admin_verbs_poll)
 		return
 	if(!SStrading_card_game.loaded)
 		message_admins("The card subsystem is not currently loaded")
+=======
+ADMIN_VERB(debug, atmos_control_panel, "Atmos Control Panel", "", R_DEBUG)
+	SSair.ui_interact(usr)
+
+ADMIN_VERB(trading_card_game, reload_cards, "Reload Cards", "", R_DEBUG)
+	if(!SStrading_card_game.loaded)
+		to_chat(usr, span_admin("The card subsystem is not currently loaded!"))
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 		return
 	SStrading_card_game.reloadAllCardFiles()
 
+<<<<<<< HEAD
 /client/proc/validate_cards()
 	set name = "Validate Cards"
 	set category = "Debug"
@@ -680,6 +792,11 @@ GLOBAL_PROTECT(admin_verbs_poll)
 		return
 	if(!SStrading_card_game.loaded)
 		message_admins("The card subsystem is not currently loaded")
+=======
+ADMIN_VERB(trading_card_game, validate_cards, "Validate Cards", "", R_DEBUG)
+	if(!SStrading_card_game.loaded)
+		to_chat(usr, span_admin("The card subsystem is not currently loaded!"))
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 		return
 	var/message = SStrading_card_game.check_cardpacks(SStrading_card_game.card_packs)
 	message += SStrading_card_game.check_card_datums()
@@ -688,6 +805,7 @@ GLOBAL_PROTECT(admin_verbs_poll)
 	else
 		message_admins("No errors found in card rarities or overrides.")
 
+<<<<<<< HEAD
 /client/proc/test_cardpack_distribution()
 	set name = "Test Cardpack Distribution"
 	set category = "Debug"
@@ -695,6 +813,11 @@ GLOBAL_PROTECT(admin_verbs_poll)
 		return
 	if(!SStrading_card_game.loaded)
 		message_admins("The card subsystem is not currently loaded")
+=======
+ADMIN_VERB(trading_card_game, test_cardpack_distribution, "Test Cardpack Distribution", "", R_DEBUG)
+	if(!SStrading_card_game.loaded)
+		to_chat(usr, span_admin("The card subsystem is not currently loaded!"))
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 		return
 	var/pack = tgui_input_list(usr, "Which pack should we test?", "You fucked it didn't you", sort_list(SStrading_card_game.card_packs))
 	if(!pack)
@@ -705,6 +828,7 @@ GLOBAL_PROTECT(admin_verbs_poll)
 
 	SStrading_card_game.check_card_distribution(pack, batch_size, batch_count, guar)
 
+<<<<<<< HEAD
 /client/proc/print_cards()
 	set name = "Print Cards"
 	set category = "Debug"
@@ -715,6 +839,16 @@ GLOBAL_PROTECT(admin_verbs_poll)
 	set name = "Give Spell"
 	set desc = "Gives a spell to a mob."
 
+=======
+ADMIN_VERB(trading_card_game, print_cards, "Print Cards", "", R_DEBUG)
+	if(!SStrading_card_game.loaded)
+		to_chat(usr, span_admin("The card subsystem is not currently loaded!"))
+		return
+
+	SStrading_card_game.printAllCards()
+
+ADMIN_VERB(fun, give_mob_spell, "Give Mob Spell", "", R_FUN, mob/spell_recipient in GLOB.mob_list)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/which = tgui_alert(usr, "Chose by name or by type path?", "Chose option", list("Name", "Typepath"))
 	if(!which)
 		return
@@ -761,11 +895,15 @@ GLOBAL_PROTECT(admin_verbs_poll)
 		to_chat(usr, span_userdanger("Spells given to mindless mobs will belong to the mob and not their mind, \
 			and as such will not be transferred if their mind changes body (Such as from Mindswap)."))
 
+<<<<<<< HEAD
 /client/proc/remove_spell(mob/removal_target in GLOB.mob_list)
 	set category = "Admin.Fun"
 	set name = "Remove Spell"
 	set desc = "Remove a spell from the selected mob."
 
+=======
+ADMIN_VERB(fun, remove_spell, "Remove Spell", "", R_FUN, mob/removal_target in GLOB.mob_list)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/list/target_spell_list = list()
 	for(var/datum/action/cooldown/spell/spell in removal_target.actions)
 		target_spell_list[spell.name] = spell
@@ -785,12 +923,18 @@ GLOBAL_PROTECT(admin_verbs_poll)
 	message_admins("[key_name_admin(usr)] removed the spell [chosen_spell] from [key_name_admin(removal_target)].")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Remove Spell") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+<<<<<<< HEAD
 /client/proc/give_disease(mob/living/T in GLOB.mob_living_list)
 	set category = "Admin.Fun"
 	set name = "Give Disease"
 	set desc = "Gives a Disease to a mob."
 	if(!istype(T))
 		to_chat(src, span_notice("You can only give a disease to a mob of type /mob/living."), confidential = TRUE)
+=======
+ADMIN_VERB(fun, give_disease, "Give Disease", "", R_FUN, mob/living/victim in GLOB.mob_living_list)
+	var/datum/disease/disease_type = input(usr, "Choose the disease to give to that guy", "ACHOO") as null|anything in sort_list(SSdisease.diseases, GLOBAL_PROC_REF(cmp_typepaths_asc))
+	if(!disease_type)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 		return
 	var/datum/disease/D = input("Choose the disease to give to that guy", "ACHOO") as null|anything in sort_list(SSdisease.diseases, GLOBAL_PROC_REF(cmp_typepaths_asc))
 	if(!D)
@@ -820,6 +964,7 @@ GLOBAL_PROTECT(admin_verbs_poll)
 		togglebuildmode(src.mob)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle Build Mode") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+<<<<<<< HEAD
 /client/proc/check_ai_laws()
 	set name = "Check AI Laws"
 	set category = "Admin.Game"
@@ -830,6 +975,15 @@ GLOBAL_PROTECT(admin_verbs_poll)
 	set name = "Deadmin"
 	set category = "Admin"
 	set desc = "Shed your admin powers."
+=======
+ADMIN_VERB(build_mode, toggle_build_mode_self, "Toggle Build Mode Self", "", R_BUILD)
+	togglebuildmode(usr)
+
+ADMIN_VERB(game, check_ai_laws, "Check AI Laws", "", R_ADMIN)
+	var/law_bound_entities = 0
+	for(var/mob/living/silicon/subject as anything in GLOB.silicon_mobs)
+		law_bound_entities++
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 
 	if(!holder)
 		return
@@ -866,21 +1020,32 @@ GLOBAL_PROTECT(admin_verbs_poll)
 	log_admin("[src] re-adminned themselves.")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Readmin")
 
+<<<<<<< HEAD
 /client/proc/populate_world(amount = 50)
 	set name = "Populate World"
 	set category = "Debug"
 	set desc = "(\"Amount of mobs to create\") Populate the world with test mobs."
 
+=======
+ADMIN_VERB(debug, populate_world, "Populate World", "Populate the world with the given number of test mobs", R_DEBUG, amount = 50 as num)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	for (var/i in 1 to amount)
 		var/turf/tile = get_safe_random_station_turf()
 		var/mob/living/carbon/human/hooman = new(tile)
 		hooman.equipOutfit(pick(subtypesof(/datum/outfit)))
 		testing("Spawned test mob at [get_area_name(tile, TRUE)] ([tile.x],[tile.y],[tile.z])")
 
+<<<<<<< HEAD
 /client/proc/toggle_AI_interact()
 	set name = "Toggle Admin AI Interact"
 	set category = "Admin.Game"
 	set desc = "Allows you to interact with most machines as an AI would as a ghost"
+=======
+ADMIN_VERB(game, toggle_admin_ai_interaction, "Toggle Admin AI Interaction", "Allows you to interact with most machines as an AI would as a ghost", R_ADMIN)
+	usr.client.AI_Interact = !usr.client.AI_Interact
+	if(usr && isAdminGhostAI(usr))
+		usr.has_unlimited_silicon_privilege = usr.client.AI_Interact
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 
 	AI_Interact = !AI_Interact
 	if(mob && isAdminGhostAI(mob))
@@ -902,11 +1067,16 @@ GLOBAL_PROTECT(admin_verbs_poll)
 	var/datum/admins/admin = GLOB.admin_datums[ckey]
 	admin?.associate(src)
 
+<<<<<<< HEAD
 /client/proc/display_sendmaps()
 	set name = "Send Maps Profile"
 	set category = "Debug"
 
 	src << link("?debug=profile&type=sendmaps&window=test")
+=======
+ADMIN_VERB(debug, send_maps_profile, "Send Maps Profile", "", R_DEBUG)
+	usr.client << link("?debug=profile&type=sendmaps&window=test")
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 
 /**
  * Debug verb that spawns human crewmembers
@@ -926,6 +1096,10 @@ GLOBAL_PROTECT(admin_verbs_poll)
 
 	var/mob/admin = usr
 
+<<<<<<< HEAD
+=======
+ADMIN_VERB(debug, spawn_debug_full_crew, "Spawn Full Debug Crew", "Creates a full crew for the station, filling the datacore and assigning them all minds/jobs. Don't do this on live", R_DEBUG)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if(SSticker.current_state != GAME_STATE_PLAYING)
 		to_chat(admin, "You should only be using this after a round has setup and started.")
 		return
@@ -991,6 +1165,10 @@ GLOBAL_PROTECT(admin_verbs_poll)
 	set name = "Show Spell Requirements"
 	set category = "Debug"
 
+<<<<<<< HEAD
+=======
+ADMIN_VERB(debug, show_spell_requirements, "Show Spell Requirements", "seeing at a glance what all spells have as set requirements", R_DEBUG)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/header = "<tr><th>Name</th> <th>Requirements</th>"
 	var/all_requirements = list()
 	for(var/datum/action/cooldown/spell/spell as anything in typesof(/datum/action/cooldown/spell))
@@ -1024,12 +1202,16 @@ GLOBAL_PROTECT(admin_verbs_poll)
 	popup.set_content(page_contents)
 	popup.open()
 
+<<<<<<< HEAD
 /client/proc/force_load_lazy_template()
 	set name = "Load/Jump Lazy Template"
 	set category = "Admin.Events"
 	if(!check_rights(R_ADMIN))
 		return
 
+=======
+ADMIN_VERB(events, load_jump_lazy_template, "Load or Jump Lazy Template", "", R_ADMIN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/list/choices = LAZY_TEMPLATE_KEY_LIST_ALL()
 	var/choice = tgui_input_list(usr, "Key?", "Lazy Loader", choices)
 	if(!choice)

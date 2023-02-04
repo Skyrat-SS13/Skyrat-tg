@@ -217,6 +217,7 @@ GLOBAL_LIST_INIT(circuit_dupe_whitelisted_types, list(
 	rel_x = component_data["rel_x"]
 	rel_y = component_data["rel_y"]
 
+<<<<<<< HEAD
 /client/proc/load_circuit()
 	set name = "Load Circuit"
 	set category = "Admin.Fun"
@@ -224,6 +225,9 @@ GLOBAL_LIST_INIT(circuit_dupe_whitelisted_types, list(
 	if(!check_rights(R_VAREDIT))
 		return
 
+=======
+ADMIN_VERB(fun, load_circuit, "Load Circuit", "", R_VAREDIT)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/list/errors = list()
 
 	var/option = alert(usr, "Load by file or direct input?", "Load by file or string", "File", "Direct Input")

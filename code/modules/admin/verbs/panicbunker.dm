@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 /client/proc/panicbunker()
 	set category = "Server"
 	set name = "Toggle Panic Bunker"
+=======
+ADMIN_VERB(server, toggle_panic_bunker, "Toggle Panic Bunker", "", R_SERVER)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if (!CONFIG_GET(flag/sql_enabled))
 		to_chat(usr, span_adminnotice("The Database is not enabled!"), confidential = TRUE)
 		return
@@ -26,9 +30,13 @@
 		message_admins("The Database is not connected! Panic bunker will not work until the connection is reestablished.")
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Panic Bunker", "[new_pb ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+<<<<<<< HEAD
 /client/proc/toggle_interviews()
 	set category = "Server"
 	set name = "Toggle PB Interviews"
+=======
+ADMIN_VERB(server, toggle_pb_interviews, "Toggle PB Interviews", "", R_SERVER)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if (!CONFIG_GET(flag/panic_bunker))
 		to_chat(usr, span_adminnotice("NOTE: The panic bunker is not enabled, so this change will not effect anything until it is enabled."), confidential = TRUE)
 	var/new_interview = !CONFIG_GET(flag/panic_bunker_interview)

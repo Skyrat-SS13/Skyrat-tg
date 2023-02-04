@@ -149,11 +149,17 @@
 	usr << browse(body, "window=adminplayeropts-[REF(M)];size=550x515")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Player Panel") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+<<<<<<< HEAD
 /client/proc/cmd_admin_godmode(mob/M in GLOB.mob_list)
 	set category = "Admin.Game"
 	set name = "Godmode"
 	if(!check_rights(R_ADMIN))
 		return
+=======
+ADMIN_VERB(game, toggle_godmode, "Toggle Godmode", "", R_ADMIN, mob/demigod in view())
+	demigod.status_flags ^= GODMODE
+	to_chat(usr, span_adminnotice("Toggled [(demigod.status_flags & GODMODE) ? "ON" : "OFF"]"), confidential = TRUE)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 
 	M.status_flags ^= GODMODE
 	to_chat(usr, span_adminnotice("Toggled [(M.status_flags & GODMODE) ? "ON" : "OFF"]"), confidential = TRUE)
@@ -168,6 +174,7 @@
 If a guy was gibbed and you want to revive him, this is a good way to do so.
 Works kind of like entering the game with a new character. Character receives a new mind if they didn't have one.
 Traitors and the like can also be revived with the previous role mostly intact.
+<<<<<<< HEAD
 /N */
 /client/proc/respawn_character()
 	set category = "Admin.Game"
@@ -180,6 +187,10 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!input)
 		return
 
+=======
+*/
+ADMIN_VERB(game, respawn_character, "Respawn Character", "Respawn a player that has been gibbed/dusted/killed. They must be a ghost", R_SPAWN, input as text)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/mob/dead/observer/G_found
 	for(var/mob/dead/observer/G in GLOB.player_list)
 		if(G.ckey == input)
@@ -299,6 +310,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Respawn Character") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return new_character
 
+<<<<<<< HEAD
 /client/proc/cmd_admin_list_open_jobs()
 	set category = "Admin.Game"
 	set name = "Manage Job Slots"
@@ -307,6 +319,10 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 	holder.manage_free_slots()
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Manage Job Slots") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+=======
+ADMIN_VERB(game, manage_job_slots, "Manage Job Slots", "", R_ADMIN)
+	usr.client.holder.manage_free_slots()
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 
 /datum/admins/proc/manage_free_slots()
 	if(!check_rights())
@@ -348,16 +364,22 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	browser.set_content(dat.Join())
 	browser.open()
 
+<<<<<<< HEAD
 /client/proc/toggle_view_range()
 	set category = "Admin.Game"
 	set name = "Change View Range"
 	set desc = "switches between 1x and custom views"
 
+=======
+ADMIN_VERB(game, change_view_range, "Change View Range", "Switch between default and larger views", R_ADMIN)
+	var/datum/view_data/view_size = usr.client.view_size
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if(view_size.getView() == view_size.default)
 		view_size.setTo(input("Select view range:", "FUCK YE", 7) in list(1,2,3,4,5,6,7,8,9,10,11,12,13,14,37) - 7)
 	else
 		view_size.resetToDefault(getScreenSize(prefs.read_preference(/datum/preference/toggle/widescreen)))
 
+<<<<<<< HEAD
 	log_admin("[key_name(usr)] changed their view range to [view].")
 	//message_admins("\blue [key_name_admin(usr)] changed their view range to [view].") //why? removed by order of XSI
 
@@ -373,6 +395,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	if (combo_hud_enabled)
 		disable_combo_hud()
+=======
+ADMIN_VERB(game, toggle_combo_hud, "Toggle Combo HUD", "Toggles the Admin Combo HUD (all huds)", R_ADMIN)
+	if(usr.client.combo_hud_enabled)
+		usr.client.disable_combo_hud()
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	else
 		enable_combo_hud()
 
@@ -413,11 +440,16 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	mob.lighting_alpha = mob.default_lighting_alpha()
 	mob.update_sight()
 
+<<<<<<< HEAD
 /datum/admins/proc/show_traitor_panel(mob/target_mob in GLOB.mob_list)
 	set category = "Admin.Game"
 	set desc = "Edit mobs's memory and role"
 	set name = "Show Traitor Panel"
 	var/datum/mind/target_mind = target_mob.mind
+=======
+ADMIN_VERB(game, traitor_panel, "Traitor Panel", "", R_ADMIN, mob/traitor in view())
+	var/datum/mind/target_mind = traitor.mind
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if(!target_mind)
 		to_chat(usr, "This mob has no mind!", confidential = TRUE)
 		return
@@ -427,6 +459,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	target_mind.traitor_panel()
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Traitor Panel") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+<<<<<<< HEAD
 /datum/admins/proc/show_skill_panel(target)
 	set category = "Admin.Game"
 	set desc = "Edit mobs's experience and skill levels"
@@ -439,15 +472,29 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		target_mind = target
 	else
 		to_chat(usr, "This can only be used on instances of type /mob and /mind", confidential = TRUE)
+=======
+ADMIN_VERB(game, skill_panel, "Skill Panel", "", R_ADMIN, mob/skilled in view())
+	if(!SSticker.HasRoundStarted())
+		tgui_alert(usr,"The game hasn't started yet!")
+		return
+
+	var/datum/mind/target_mind = skilled.mind
+	if(!target_mind)
+		to_chat(usr, "This mob has no mind!", confidential = TRUE)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 		return
 	var/datum/skill_panel/SP = new(usr, target_mind)
 	SP.ui_interact(usr)
 
+<<<<<<< HEAD
 /datum/admins/proc/show_lag_switch_panel()
 	set category = "Admin.Game"
 	set name = "Show Lag Switches"
 	set desc="Display the controls for drastic lag mitigation measures."
 
+=======
+ADMIN_VERB(game, show_lag_switches, "Show Lag Switches", "Display the controls for drastic lag mitigation measures", R_ADMIN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if(!SSlag_switch.initialized)
 		to_chat(usr, span_notice("The Lag Switch subsystem has not yet been initialized."))
 		return

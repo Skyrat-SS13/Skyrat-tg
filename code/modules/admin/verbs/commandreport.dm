@@ -7,6 +7,7 @@
 #define WIZARD_PRESET "The Wizard Federation"
 #define CUSTOM_PRESET "Custom Command Name"
 
+<<<<<<< HEAD
 /// Verb to change the global command name.
 /client/proc/cmd_change_command_name()
 	set category = "Admin.Events"
@@ -15,6 +16,9 @@
 	if(!check_rights(R_ADMIN))
 		return
 
+=======
+ADMIN_VERB(events, change_command_name, "Change Command NAme", "", R_ADMIN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/input = input(usr, "Please input a new name for Central Command.", "What?", "") as text|null
 	if(!input)
 		return
@@ -22,6 +26,7 @@
 	message_admins("[key_name_admin(src)] has changed Central Command's name to [input]")
 	log_admin("[key_name(src)] has changed the Central Command name to: [input]")
 
+<<<<<<< HEAD
 /// Verb to open the create command report window and send command reports.
 /client/proc/cmd_admin_create_centcom_report()
 	set category = "Admin.Events"
@@ -31,6 +36,9 @@
 		return
 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Create Command Report") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+=======
+ADMIN_VERB(events, create_command_report, "Create Command Report", "", R_ADMIN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/datum/command_report_menu/tgui = new(usr)
 	tgui.ui_interact(usr)
 

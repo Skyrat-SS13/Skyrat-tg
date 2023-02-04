@@ -141,10 +141,14 @@
 // HERE BE DEBUG DRAGONS //
 ///////////////////////////
 
+<<<<<<< HEAD
 /client/proc/debugNatureMapGenerator()
 	set name = "Test Nature Map Generator"
 	set category = "Debug"
 
+=======
+ADMIN_VERB(debug, test_nature_map_generator, "Test Nature Map Generator", "", R_DEBUG)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/datum/map_generator/nature/N = new()
 	var/startInput = input(usr,"Start turf of Map, (X;Y;Z)", "Map Gen Settings", "1;1;1") as text|null
 

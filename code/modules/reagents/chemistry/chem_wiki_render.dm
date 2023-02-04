@@ -1,8 +1,12 @@
 //Generates a wikitable txt file for use with the wiki - does not support productless reactions at the moment
+<<<<<<< HEAD
 /client/proc/generate_wikichem_list()
 	set category = "Debug"
 	set name = "Parse Wikichems"
 
+=======
+ADMIN_VERB(debug, generate_wikichem_list, "Generate Wikichem List", "Generate a wikichem list for the wiki", R_DEBUG)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	//If we're a reaction product
 	var/prefix_reaction = {"{| class=\"wikitable sortable\" style=\"width:100%; text-align:left; border: 3px solid #FFDD66; cellspacing=0; cellpadding=2; background-color:white;\"
 ! scope=\"col\" style='width:150px; background-color:#FFDD66;'|Name

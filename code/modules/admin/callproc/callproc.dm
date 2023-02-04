@@ -92,11 +92,16 @@ GLOBAL_PROTECT(AdminProcCallHandler)
 	usr = lastusr
 	handler.remove_caller(user)
 
+<<<<<<< HEAD
 /client/proc/callproc()
 	set category = "Debug"
 	set name = "Advanced ProcCall"
 	set waitfor = FALSE
 	callproc_blocking()
+=======
+ADMIN_VERB(debug, advanced_proccall, "Advanced ProcCall", "", R_DEBUG)
+	usr.client.callproc_blocking()
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 
 /client/proc/callproc_blocking(list/get_retval)
 	if(!check_rights(R_DEBUG))

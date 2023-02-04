@@ -3,7 +3,14 @@
 	set name = "Modify Station Traits"
 	set category = "Admin.Events"
 
+<<<<<<< HEAD
 	var/static/datum/station_traits_panel/station_traits_panel = new
+=======
+ADMIN_VERB(events, modify_station_traits, "Modify Station Traits", "", R_FUN)
+	var/static/datum/station_traits_panel/station_traits_panel
+	if(!station_traits_panel)
+		station_traits_panel = new
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	station_traits_panel.ui_interact(usr)
 
 /datum/station_traits_panel

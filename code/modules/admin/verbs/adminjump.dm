@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /client/proc/jumptoarea(area/A in get_sorted_areas())
 	set name = "Jump to Area"
 	set desc = "Area to jump to"
@@ -5,6 +6,10 @@
 	if(!src.holder)
 		to_chat(src, "Only administrators may use this command.", confidential = TRUE)
 		return
+=======
+ADMIN_VERB(game, jump_to_area, "Jump to Area", "Jump to the specified area", NONE, area/destination in world)
+	var/turf/point
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 
 	if(!A)
 		return
@@ -26,11 +31,22 @@
 		return
 
 
+<<<<<<< HEAD
 /client/proc/jumptoturf(turf/T in world)
 	set name = "Jump to Turf"
 	set category = "Admin.Game"
 	if(!src.holder)
 		to_chat(src, "Only administrators may use this command.", confidential = TRUE)
+=======
+ADMIN_VERB(game, jump_to_turf, "Jump to Turf", "", NONE, turf/destination in world)
+	usr.forceMove(destination)
+	log_admin("[key_name(usr)] jumped to [AREACOORD(destination)]")
+	key_name_admin("[key_name(usr)] jumped to [AREACOORD(destination)]")
+
+ADMIN_VERB(game, jump_to_mob, "Jump to Mob", "", NONE, mob/destination)
+	destination ||= tgui_input_list(usr, "Select a mob to teleport to you", "Admin Jump", GLOB.mob_list - usr)
+	if(!destination)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 		return
 
 	log_admin("[key_name(usr)] jumped to [AREACOORD(T)]")
@@ -39,12 +55,18 @@
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Jump To Turf") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
+<<<<<<< HEAD
 /client/proc/jumptomob(mob/M in GLOB.mob_list)
 	set category = "Admin.Game"
 	set name = "Jump to Mob"
 
 	if(!src.holder)
 		to_chat(src, "Only administrators may use this command.", confidential = TRUE)
+=======
+ADMIN_VERB(game, jump_to_coordinate, "Jump to Coordinate", "", NONE, x as num, y as num, z as num)
+	if(x < 1 || y < 1 || z < 1 || x > world.maxx || y > world.maxy || z > world.maxz)
+		to_chat(usr, span_warning("Invaild coordinates"))
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 		return
 
 	log_admin("[key_name(usr)] jumped to [key_name(M)]")
@@ -58,9 +80,16 @@
 		else
 			to_chat(A, "This mob is not located in the game world.", confidential = TRUE)
 
+<<<<<<< HEAD
 /client/proc/jumptocoord(tx as num, ty as num, tz as num)
 	set category = "Admin.Game"
 	set name = "Jump to Coordinate"
+=======
+ADMIN_VERB(game, jump_to_player, "Jump to Player", "", NONE)
+	var/list/players = list()
+	for(var/client/player as anything in GLOB.clients)
+		players[key_name(player)] = WEAKREF(player.mob)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 
 	if (!holder)
 		to_chat(src, "Only administrators may use this command.", confidential = TRUE)
@@ -73,12 +102,18 @@
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Jump To Coordiate") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	message_admins("[key_name_admin(usr)] jumped to coordinates [tx], [ty], [tz]")
 
+<<<<<<< HEAD
 /client/proc/jumptokey()
 	set category = "Admin.Game"
 	set name = "Jump to Key"
 
 	if(!src.holder)
 		to_chat(src, "Only administrators may use this command.", confidential = TRUE)
+=======
+ADMIN_VERB(game, get_mob, "Get Mob", "", NONE, mob/teleportee)
+	teleportee ||= tgui_input_list(usr, "Select a mob to teleport to you", "Admin Jump", GLOB.mob_list - usr)
+	if(!teleportee)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 		return
 
 	var/list/keys = list()
@@ -126,6 +161,13 @@
 	admin_ticket_log(src, msg)
 	return ..()
 
+<<<<<<< HEAD
+=======
+ADMIN_VERB(game, get_player, "Get Player", "", NONE)
+	var/list/players = list()
+	for(var/client/player as anything in GLOB.clients)
+		players[key_name(player)] = WEAKREF(player.mob)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 
 /client/proc/Getkey()
 	set category = "Admin.Game"

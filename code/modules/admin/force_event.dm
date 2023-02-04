@@ -1,4 +1,5 @@
 ///Allows an admin to force an event
+<<<<<<< HEAD
 /client/proc/forceEvent()
 	set name = "Trigger Event"
 	set category = "Admin.Events"
@@ -7,6 +8,10 @@
 		return
 
 	holder.forceEvent()
+=======
+ADMIN_VERB(events, trigger_event, "Trigger Event", "", R_FUN)
+	usr.client.holder.forceEvent()
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 
 ///Opens up the Force Event Panel
 /datum/admins/proc/forceEvent()

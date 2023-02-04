@@ -611,6 +611,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 		holodeck_templates[holo_template.template_id] = holo_template
 
+<<<<<<< HEAD
 //Manual loading of away missions.
 /client/proc/admin_away()
 	set name = "Load Away Mission"
@@ -620,6 +621,9 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		return
 
 
+=======
+ADMIN_VERB(events, load_away_mission, "Load Away Mission", "", R_FUN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if(!GLOB.the_gateway)
 		if(tgui_alert(usr, "There's no home gateway on the station. You sure you want to continue ?", "Uh oh", list("Yes", "No")) != "Yes")
 			return

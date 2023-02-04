@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /datum/admins/proc/spawn_objasmob(object as text)
 	set category = "Debug"
 	set desc = "(obj path) Spawn object-mob"
@@ -6,6 +7,9 @@
 	if(!check_rights(R_SPAWN))
 		return
 
+=======
+ADMIN_VERB(debug, spawn_object_as_mob, "Spawn Object as Mob", "Spawn an object-mob", R_SPAWN, object as text)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/chosen = pick_closest_path(object, make_types_fancy(subtypesof(/obj)))
 
 	if (!chosen)

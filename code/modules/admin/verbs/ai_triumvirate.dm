@@ -27,10 +27,14 @@ GLOBAL_DATUM(triple_ai_controller, /datum/triple_ai_controller)
 	GLOB.triple_ai_controller = null
 	. = ..()
 
+<<<<<<< HEAD
 /client/proc/triple_ai()
 	set category = "Admin.Events"
 	set name = "Toggle AI Triumvirate"
 
+=======
+ADMIN_VERB(events, toggle_ai_triumvirate, "Toggle AI Triumvirate", "", R_FUN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if(SSticker.current_state > GAME_STATE_PREGAME)
 		to_chat(usr, "This option is currently only usable during pregame. This may change at a later date.", confidential = TRUE)
 		return

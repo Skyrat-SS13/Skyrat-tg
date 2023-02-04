@@ -60,11 +60,15 @@
 		reagents.add_reagent(reagenttype, amount)
 	return container
 
+<<<<<<< HEAD
 /datum/admins/proc/beaker_panel()
 	set category = "Admin.Events"
 	set name = "Spawn reagent container"
 	if(!check_rights())
 		return
+=======
+ADMIN_VERB(events, spawn_reagent_container, "Spawn Reagent Container", "", R_SPAWN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/namespaced/common)
 	asset_datum.send(usr)
 	//Could somebody tell me why this isn't using the browser datum, given that it copypastes all of browser datum's html

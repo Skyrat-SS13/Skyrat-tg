@@ -1,5 +1,6 @@
 // Admin Tab - Admin Verbs
 
+<<<<<<< HEAD
 /client/proc/show_tip()
 	set category = "Admin"
 	set name = "Show Tip"
@@ -9,6 +10,9 @@
 	if(!check_rights(R_ADMIN))
 		return
 
+=======
+ADMIN_VERB(admin, show_tip, "Show Tip", "Sends a tip, which you specify, to all players", R_ADMIN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/input = input(usr, "Please specify your tip that you want to send to the players.", "Tip", "") as message|null
 	if(!input)
 		return
@@ -26,6 +30,7 @@
 	log_admin("[key_name(usr)] sent \"[input]\" as the Tip of the Round.")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Show Tip")
 
+<<<<<<< HEAD
 /datum/admins/proc/announce()
 	set category = "Admin"
 	set name = "Announce"
@@ -48,6 +53,13 @@
 		SSjob.SendToLateJoin(M)
 		message_admins("[key_name_admin(usr)] has unprisoned [key_name_admin(M)]")
 		log_admin("[key_name(usr)] has unprisoned [key_name(M)]")
+=======
+ADMIN_VERB(admin, release_from_prison, "Release from Prison", "", R_ADMIN, mob/freeing in world)
+	if(is_centcom_level(freeing.z))
+		SSjob.SendToLateJoin(freeing)
+		message_admins("[key_name_admin(usr)] has unprisoned [key_name_admin(freeing)]")
+		log_admin("[key_name(usr)] has unprisoned [key_name(freeing)]")
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	else
 		tgui_alert(usr,"[M.name] is not prisoned.")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Unprison") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -58,6 +70,10 @@
 	if(!check_rights(R_ADMIN))
 		return
 
+<<<<<<< HEAD
+=======
+ADMIN_VERB(admin, player_playtime, "Player Playtime", "Check the playtime for connected players", R_ADMIN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if(!CONFIG_GET(flag/use_exp_tracking))
 		to_chat(usr, span_warning("Tracking is disabled in the server configuration file."), confidential = TRUE)
 		return
@@ -69,9 +85,13 @@
 	msg += "</UL></BODY></HTML>"
 	src << browse(msg.Join(), "window=Player_playtime_check")
 
+<<<<<<< HEAD
 /client/proc/trigger_centcom_recall()
 	if(!check_rights(R_ADMIN))
 		return
+=======
+ADMIN_VERB(admin, trigger_centcom_recall, "Trigger Centcom Recall", "", R_ADMIN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/message = pick(GLOB.admiral_messages)
 	message = input("Enter message from the on-call admiral to be put in the recall report.", "Admiral Message", message) as text|null
 
@@ -82,6 +102,12 @@
 	usr.log_message("triggered a CentCom recall, with the message of: [message]", LOG_GAME)
 	SSshuttle.centcom_recall(SSshuttle.emergency.timer, message)
 
+<<<<<<< HEAD
+=======
+ADMIN_VERB(admin, player_panel, "Player Panel", "", R_ADMIN)
+	usr.client.holder?.player_panel_new()
+
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 /datum/admins/proc/cmd_show_exp_panel(client/client_to_check)
 	if(!check_rights(R_ADMIN))
 		return
@@ -164,6 +190,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
+<<<<<<< HEAD
 /client/proc/cmd_admin_drop_everything(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Drop Everything"
@@ -171,6 +198,10 @@
 		return
 
 	var/confirm = tgui_alert(usr, "Make [M] drop everything?", "Message", list("Yes", "No"))
+=======
+ADMIN_VERB(admin, drop_everything, "Drop Everything", "", R_ADMIN, mob/target in world)
+	var/confirm = tgui_alert(usr, "Make [target] drop everything?", "Message", list("Yes", "No"))
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if(confirm != "Yes")
 		return
 

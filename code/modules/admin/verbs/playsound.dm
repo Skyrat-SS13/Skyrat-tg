@@ -3,12 +3,16 @@
 #define SHELLEO_STDOUT 2
 #define SHELLEO_STDERR 3
 
+<<<<<<< HEAD
 /client/proc/play_sound(S as sound)
 	set category = "Admin.Fun"
 	set name = "Play Global Sound"
 	if(!check_rights(R_SOUND))
 		return
 
+=======
+ADMIN_VERB(fun, play_global_sound, "Play Global Sound", "", R_SOUND, sound/to_play as sound)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/freq = 1
 	var/vol = input(usr, "What volume would you like the sound to play at?",, 100) as null|num
 	if(!vol)
@@ -41,6 +45,7 @@
 			SEND_SOUND(M, admin_sound)
 			admin_sound.volume = vol
 
+<<<<<<< HEAD
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Play Global Sound") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 
@@ -74,8 +79,23 @@
 	set category = "Admin.Fun"
 	set name = "Play Internet Sound"
 	if(!check_rights(R_SOUND))
+=======
+ADMIN_VERB(fun, play_local_sound, "Play Local Sound", "", R_SOUND, sound/playing as sound)
+	log_admin("[key_name(usr)] played a local sound [playing]")
+	message_admins("[key_name_admin(usr)] played a local sound [playing]")
+	playsound(get_turf(usr), playing, 50, FALSE, FALSE)
+
+ADMIN_VERB(fun, play_direct_mob_sound, "Play Direct Mob Sound", "", R_SOUND, sound/playing as sound, mob/target as mob in view())
+	if(!target)
+		target = input(usr, "Choose a mob to play the sound to. Only they will hear it.", "Play Mob Sound") as null|anything in sort_names(GLOB.player_list)
+	if(!target || QDELETED(target))
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 		return
 
+<<<<<<< HEAD
+=======
+ADMIN_VERB(fun, play_internet_sound, "Play Internet Sound", "", R_SOUND)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/ytdl = CONFIG_GET(string/invoke_youtubedl)
 	if(!ytdl)
 		to_chat(src, span_boldwarning("Youtube-dl was not configured, action unavailable"), confidential = TRUE) //Check config.txt for the INVOKE_YOUTUBEDL value
@@ -172,7 +192,12 @@
 					else
 						C.tgui_panel?.stop_music()
 
+<<<<<<< HEAD
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Play Internet Sound")
+=======
+ADMIN_VERB(fun, set_round_end_sound, "Set Round End Sound", "", R_SOUND, sound/to_play as sound)
+	SSticker.SetRoundEndSound(to_play)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 
 /client/proc/set_round_end_sound(S as sound)
 	set category = "Admin.Fun"

@@ -1,4 +1,5 @@
 //replaces the old Ticklag verb, fps is easier to understand
+<<<<<<< HEAD
 /client/proc/set_server_fps()
 	set category = "Debug"
 	set name = "Set Server FPS"
@@ -7,6 +8,9 @@
 	if(!check_rights(R_DEBUG))
 		return
 
+=======
+ADMIN_VERB(debug, set_server_fps, "Set Server FPS", "Sets game speed in frames-per-second. Will break the game, but that's why it's fun!", R_DEBUG)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/cfg_fps = CONFIG_GET(number/fps)
 	var/new_fps = round(input("Sets game frames-per-second. Can potentially break the game (default: [cfg_fps])","FPS", world.fps) as num|null)
 

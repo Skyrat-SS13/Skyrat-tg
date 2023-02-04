@@ -266,11 +266,15 @@
 
 	return
 
+<<<<<<< HEAD
 /client/proc/summon_ert()
 	set category = "Admin.Fun"
 	set name = "Summon ERT"
 	set desc = "Summons an emergency response team"
 
+=======
+ADMIN_VERB(fun, summon_ert, "Summon ERT", "Summons an Emergency Response Team", R_FUN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	message_admins("[key_name(usr)] is creating a CentCom response team...")
 	if(holder?.makeEmergencyresponseteam())
 		message_admins("[key_name(usr)] created a CentCom response team.")

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /client/proc/cmd_admin_debug_traitor_objectives()
 	set name = "Debug Traitor Objectives"
 	set category = "Debug"
@@ -5,6 +6,9 @@
 	if(!check_rights(R_DEBUG))
 		return
 
+=======
+ADMIN_VERB(debug, debug_traitor_objectives, "Debug Traitor Objectives", "", R_DEBUG)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	SStraitor.traitor_debug_panel?.ui_interact(usr)
 
 /datum/traitor_objective_debug

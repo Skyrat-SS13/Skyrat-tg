@@ -1,5 +1,6 @@
 // Admin Tab - Fun Verbs
 
+<<<<<<< HEAD
 /client/proc/cmd_admin_explosion(atom/O as obj|mob|turf in world)
 	set category = "Admin.Fun"
 	set name = "Explosion"
@@ -7,6 +8,9 @@
 	if(!check_rights(R_ADMIN))
 		return
 
+=======
+ADMIN_VERB(game, explosion, "Explosion", "", R_ADMIN, atom/target as obj|mob|turf in view())
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/devastation = input("Range of total devastation. -1 to none", text("Input"))  as num|null
 	if(devastation == null)
 		return
@@ -40,6 +44,10 @@
 	if(!check_rights(R_ADMIN))
 		return
 
+<<<<<<< HEAD
+=======
+ADMIN_VERB(game, emp, "EMPulse", "", R_ADMIN, atom/target as obj|mob|turf in view())
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/heavy = input("Range of heavy pulse.", text("Input"))  as num|null
 	if(heavy == null)
 		return
@@ -82,11 +90,18 @@
 		else
 			living_victim.gib(TRUE)
 
+<<<<<<< HEAD
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Gib") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_gib_self()
 	set name = "Gibself"
 	set category = "Admin.Fun"
+=======
+ADMIN_VERB(fun, gibself, "Gibself", "", R_ADMIN)
+	if(!isliving(usr))
+		to_chat(usr, span_warning("You must be alive to use this!"))
+		return
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 
 	var/confirm = tgui_alert(usr, "You sure?", "Confirm", list("Yes", "No"))
 	if(confirm == "Yes")
@@ -103,6 +118,10 @@
 	set name = "Make Everyone Random"
 	set desc = "Make everyone have a random appearance. You can only use this before rounds!"
 
+<<<<<<< HEAD
+=======
+ADMIN_VERB(fun, make_everyone_random, "Make Everyone Random", "Make everyone have a random appearance. You can only use this before rounds!", R_FUN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if(SSticker.HasRoundStarted())
 		to_chat(usr, "Nope you can't do this, the game's already started. This only works before rounds!", confidential = TRUE)
 		return
@@ -126,6 +145,7 @@
 
 	to_chat(usr, "<i>Remember: you can always disable the randomness by using the verb again, assuming the round hasn't started yet</i>.", confidential = TRUE)
 
+<<<<<<< HEAD
 	CONFIG_SET(flag/force_random_names, TRUE)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Make Everyone Random") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -138,6 +158,9 @@
 	if(!check_rights(R_ADMIN))
 		return
 
+=======
+ADMIN_VERB(fun, mass_zombie_infection, "Mass Zombie Infection", "Infects all humans with a latent organ that will zombify them upon death", R_FUN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/confirm = tgui_alert(usr, "Please confirm you want to add latent zombie organs in all humans?", "Confirm Zombies", list("Yes", "No"))
 	if(confirm != "Yes")
 		return
@@ -157,6 +180,11 @@
 	if(!check_rights(R_ADMIN))
 		return
 
+<<<<<<< HEAD
+=======
+// Infecting everyone needs R_FUN, but curing only needs R_ADMIN
+ADMIN_VERB(fun, mass_zombie_cure, "Mass Zombie Cure", "Removes the admin zombie infection from all humans, returning them to normal", R_ADMIN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/confirm = tgui_alert(usr, "Please confirm you want to cure all zombies?", "Confirm Zombie Cure", list("Yes", "No"))
 	if(confirm != "Yes")
 		return
@@ -176,6 +204,10 @@
 	if(!check_rights(R_ADMIN))
 		return
 
+<<<<<<< HEAD
+=======
+ADMIN_VERB(fun, polymorph_all_mobs, "Polymorph All Mobs", "This will prove to be a terrible idea", R_FUN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/confirm = tgui_alert(usr, "Please confirm you want polymorph all mobs?", "Confirm Polymorph", list("Yes", "No"))
 	if(confirm != "Yes")
 		return

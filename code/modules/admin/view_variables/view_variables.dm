@@ -1,7 +1,14 @@
+<<<<<<< HEAD:code/modules/admin/view_variables/view_variables.dm
 /client/proc/debug_variables(datum/D in world)
 	set category = "Debug"
 	set name = "View Variables"
 	//set src in world
+=======
+ADMIN_CONTEXT_ENTRY(contextcmd_vv, "View Variables", NONE, datum/target in world)
+	SSadmin_verbs.dynamic_invoke_admin_verb(src, /mob/admin_module_holder/debug/view_variables, target)
+
+ADMIN_VERB(debug, view_variables, "View Variables", "View a list of all vars on most datums aswell as provide additional functions via a dropdown", NONE, selected as anything)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214)):code/modules/admin_verbs/vv_admin_verb.dm
 	var/static/cookieoffset = rand(1, 9999) //to force cookies to reset after the round.
 
 	if(!usr.client || !usr.client.holder) //This is usr because admins can call the proc on other clients, even if they're not admins, to show them VVs.

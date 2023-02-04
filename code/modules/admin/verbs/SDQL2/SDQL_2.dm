@@ -198,12 +198,16 @@
 		state = SDQL2_STATE_ERROR;\
 		CRASH("SDQL2 fatal error");};
 
+<<<<<<< HEAD
 /client/proc/SDQL2_query(query_text as message)
 	set category = "Debug"
 	if(!check_rights(R_DEBUG))  //Shouldn't happen... but just to be safe.
 		message_admins(span_danger("ERROR: Non-admin [key_name(usr)] attempted to execute a SDQL query!"))
 		usr.log_message("non-admin attempted to execute a SDQL query!", LOG_ADMIN)
 		return FALSE
+=======
+ADMIN_VERB(debug, query_text, "Query Text", "", R_DEBUG, query_text as message)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/list/results = world.SDQL2_query(query_text, key_name_admin(usr), "[key_name(usr)]")
 	if(length(results) == 3)
 		for(var/I in 1 to 3)

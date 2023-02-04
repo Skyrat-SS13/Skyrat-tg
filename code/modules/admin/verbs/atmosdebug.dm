@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /client/proc/atmosscan()
 	set category = "Mapping"
 	set name = "Check Plumbing"
@@ -6,6 +7,9 @@
 		return
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Check Plumbing") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+=======
+ADMIN_VERB(mapping, check_plumbing, "Check Plumbing", "", R_DEBUG)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	//all plumbing - yes, some things might get stated twice, doesn't matter.
 	for(var/obj/machinery/atmospherics/components/pipe in GLOB.machines)
 		if(pipe.z && (!pipe.nodes || !pipe.nodes.len || (null in pipe.nodes)))
@@ -24,6 +28,7 @@
 			if(!(node1 in node2.nodes))
 				to_chat(usr, "One-way connection in [node1.name] located at [ADMIN_VERBOSEJMP(node1)]", confidential = TRUE)
 
+<<<<<<< HEAD
 /client/proc/powerdebug()
 	set category = "Mapping"
 	set name = "Check Power"
@@ -31,6 +36,9 @@
 		to_chat(src, "Only administrators may use this command.", confidential = TRUE)
 		return
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Check Power") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+=======
+ADMIN_VERB(mapping, check_power, "Check Power", "", R_DEBUG)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/list/results = list()
 
 	for (var/datum/powernet/PN in SSmachines.powernets)

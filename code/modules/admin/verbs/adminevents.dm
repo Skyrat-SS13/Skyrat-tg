@@ -64,9 +64,16 @@
 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Headset Message") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+<<<<<<< HEAD
 /client/proc/cmd_admin_world_narrate()
 	set category = "Admin.Events"
 	set name = "Global Narrate"
+=======
+ADMIN_VERB(events, global_narrate, "Global Narrate", "Send raw html to all conneted clients", R_ADMIN, raw_html as message)
+	to_chat(world, "[raw_html]")
+	log_admin("GlobalNarrate: [key_name(usr)] : [raw_html]")
+	message_admins(span_adminnotice("[key_name_admin(usr)] Sent a global narrate"))
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 
 	if(!check_rights(R_ADMIN))
 		return
@@ -133,6 +140,10 @@
 	if(!check_rights(R_ADMIN))
 		return
 
+<<<<<<< HEAD
+=======
+ADMIN_VERB(fun, add_ion_law, "Add Ion Law", "Add an ion law to all silicons", R_FUN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/input = input(usr, "Please enter anything you want the AI to do. Anything. Serious.", "What?", "") as text|null
 	if(!input)
 		return
@@ -147,12 +158,16 @@
 	ion.announce_chance = announce_ion_laws
 	ion.ionMessage = input
 
+<<<<<<< HEAD
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Add Custom AI Law") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/admin_call_shuttle()
 	set category = "Admin.Events"
 	set name = "Call Shuttle"
 
+=======
+ADMIN_VERB(events, call_shuttle, "Call Shuttle", "", R_ADMIN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if(EMERGENCY_AT_LEAST_DOCKED)
 		return
 
@@ -173,11 +188,15 @@
 	message_admins(span_adminnotice("[key_name_admin(usr)] admin-called the emergency shuttle[confirm == "Yes (No Recall)" ? " (non-recallable)" : ""]."))
 	return
 
+<<<<<<< HEAD
 /client/proc/admin_cancel_shuttle()
 	set category = "Admin.Events"
 	set name = "Cancel Shuttle"
 	if(!check_rights(0))
 		return
+=======
+ADMIN_VERB(events, recall_shuttle, "Recall Shuttle", "", R_ADMIN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if(tgui_alert(usr, "You sure?", "Confirm", list("Yes", "No")) != "Yes")
 		return
 
@@ -192,6 +211,7 @@
 	log_admin("[key_name(usr)] admin-recalled the emergency shuttle.")
 	message_admins(span_adminnotice("[key_name_admin(usr)] admin-recalled the emergency shuttle."))
 
+<<<<<<< HEAD
 	return
 
 /client/proc/admin_disable_shuttle()
@@ -201,6 +221,9 @@
 	if(!check_rights(R_ADMIN))
 		return
 
+=======
+ADMIN_VERB(events, disable_shuttle, "Disable Shuttle", "", R_ADMIN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if(SSshuttle.emergency.mode == SHUTTLE_DISABLED)
 		to_chat(usr, span_warning("Error, shuttle is already disabled."))
 		return
@@ -217,6 +240,7 @@
 	SSshuttle.emergency.mode = SHUTTLE_DISABLED
 	priority_announce("Warning: Emergency Shuttle uplink failure, shuttle disabled until further notice.", "Emergency Shuttle Uplink Alert", 'sound/misc/announce_dig.ogg')
 
+<<<<<<< HEAD
 /client/proc/admin_enable_shuttle()
 	set category = "Admin.Events"
 	set name = "Enable Shuttle"
@@ -224,6 +248,9 @@
 	if(!check_rights(R_ADMIN))
 		return
 
+=======
+ADMIN_VERB(events, enable_shuttle, "Enable Shuttle", "", R_ADMIN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if(SSshuttle.emergency.mode != SHUTTLE_DISABLED)
 		to_chat(usr, span_warning("Error, shuttle not disabled."))
 		return
@@ -247,8 +274,19 @@
 	set category = "Admin.Events"
 	set name = "Hostile Environment"
 
+<<<<<<< HEAD
 	if(!check_rights(R_ADMIN))
 		return
+=======
+ADMIN_VERB(events, hostile_environments, "Hostile Environments", "", R_ADMIN)
+	switch(tgui_alert(usr, "Select an Option", "Hostile Environment Manager", HOSTILE_ENVIRONMENT_OPTIONS))
+		if(HOSTILE_ENVIRONMENT_ENABLE)
+			if(SSshuttle.hostile_environments["Admin"])
+				to_chat(usr, span_warning("Admin Hostile Environment already enabled!"))
+				return
+			message_admins(span_adminnotice("[key_name_admin(usr)] Enabled an admin hostile environment"))
+			SSshuttle.registerHostileEnvironment("Admin")
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 
 	switch(tgui_alert(usr, "Select an Option", "Hostile Environment Manager", list("Enable", "Disable", "Clear All")))
 		if("Enable")
@@ -268,6 +306,7 @@
 			SSshuttle.hostile_environments.Cut()
 			SSshuttle.checkHostileEnvironment()
 
+<<<<<<< HEAD
 /client/proc/toggle_nuke(obj/machinery/nuclearbomb/N in GLOB.nuke_list)
 	set category = "Admin.Events"
 	set name = "Toggle Nuke"
@@ -277,6 +316,11 @@
 
 	if(!N.timing)
 		var/newtime = input(usr, "Set activation timer.", "Activate Nuke", "[N.timer_set]") as num|null
+=======
+ADMIN_VERB(events, toggle_nuke, "Toggle Nuke", "", (R_ADMIN|R_DEBUG), obj/machinery/nuclearbomb/nuke in GLOB.nuke_list)
+	if(!nuke.timing)
+		var/newtime = input(usr, "Set activation timer.", "Activate Nuke", "[nuke.timer_set]") as num|null
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 		if(!newtime)
 			return
 		N.timer_set = newtime
@@ -295,6 +339,10 @@
 	if(!check_rights(R_ADMIN))
 		return
 
+<<<<<<< HEAD
+=======
+ADMIN_VERB(events, set_security_level, "Set Security Level", "Changes the security level. Announcement only, i.e. setting to Delta won't activate nuke", R_ADMIN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/level = tgui_input_list(usr, "Select Security Level:", "Set Security Level", SSsecurity_level.available_levels)
 
 	if(!level)
@@ -306,6 +354,7 @@
 	message_admins("[key_name_admin(usr)] changed the security level to [level]")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Set Security Level [capitalize(level)]") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+<<<<<<< HEAD
 /client/proc/run_weather()
 	set category = "Admin.Events"
 	set name = "Run Weather"
@@ -315,6 +364,10 @@
 		return
 
 	var/weather_type = input("Choose a weather", "Weather")  as null|anything in sort_list(subtypesof(/datum/weather), GLOBAL_PROC_REF(cmp_typepaths_asc))
+=======
+ADMIN_VERB(events, run_weather, "Run Weather", "Triggers a weather on the specified z-level", R_FUN)
+	var/weather_type = input(usr, "Choose a weather", "Weather")  as null|anything in sort_list(subtypesof(/datum/weather), GLOBAL_PROC_REF(cmp_typepaths_asc))
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if(!weather_type)
 		return
 
@@ -337,6 +390,11 @@
 	if(!holder)
 		return
 
+<<<<<<< HEAD
+=======
+ADMIN_VERB(events, add_mob_ability, "Add Mob Ability", "Adds an ability to a marked mob", R_FUN)
+	var/datum/admins/holder = usr.client.holder
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if(!isliving(holder.marked_datum))
 		to_chat(usr, span_warning("Error: Please mark a mob to add actions to it."))
 		return
@@ -391,6 +449,11 @@
 	if(!holder)
 		return
 
+<<<<<<< HEAD
+=======
+ADMIN_VERB(events, remove_mob_ability, "Remove Mob Ability", "Removes an ability from the marked mob", R_FUN)
+	var/datum/admins/holder = usr.client.holder
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if(!isliving(holder.marked_datum))
 		to_chat(usr, span_warning("Error: Please mark a mob to remove actions from it."))
 		return
@@ -422,6 +485,10 @@
 	if(!check_rights(R_ADMIN))
 		return
 
+<<<<<<< HEAD
+=======
+ADMIN_VERB(events, command_report_footnote, "Command Report Footnote", "Adds a footnote to the roundstart command report", R_ADMIN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/datum/command_footnote/command_report_footnote = new /datum/command_footnote()
 	SScommunications.block_command_report++ //Add a blocking condition to the counter until the inputs are done.
 
@@ -444,6 +511,7 @@
 	var/message
 	var/signature
 
+<<<<<<< HEAD
 /client/proc/delay_command_report()
 	set category = "Admin.Events"
 	set name = "Delay Command Report"
@@ -452,6 +520,9 @@
 	if(!check_rights(R_ADMIN))
 		return
 
+=======
+ADMIN_VERB(events, delay_command_report, "Delay Command Report", "Prevents the roundstart command report from being sent until toggled", R_ADMIN)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if(SScommunications.block_command_report) //If it's anything other than 0, decrease. If 0, increase.
 		SScommunications.block_command_report--
 		message_admins("[usr] has enabled the roundstart command report.")

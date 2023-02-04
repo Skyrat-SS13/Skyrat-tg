@@ -222,11 +222,15 @@
 	. = ..()
 	qdel(src)
 
+<<<<<<< HEAD
 /client/proc/open_lua_editor()
 	set name = "Open Lua Editor"
 	set category = "Debug"
 	if(!check_rights_for(src, R_DEBUG))
 		return
+=======
+ADMIN_VERB(debug, open_lua_editor, "Open Lua Editor", "", R_DEBUG)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if(SSlua.initialized != TRUE)
 		to_chat(usr, span_warning("SSlua is not initialized!"))
 		return

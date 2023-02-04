@@ -132,6 +132,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	else
 		GLOB.dooc_allowed = !GLOB.dooc_allowed
 
+<<<<<<< HEAD
 
 /client/proc/set_ooc()
 	set name = "Set Player OOC Color"
@@ -139,6 +140,9 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	set category = "Server"
 	if(IsAdminAdvancedProcCall())
 		return
+=======
+ADMIN_VERB(server, set_player_ooc_color, "Set Player OOC Color", "Set the default OOC color", (R_FUN|R_ADMIN))
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/newColor = input(src, "Please select the new player OOC color.", "OOC color") as color|null
 	if(isnull(newColor))
 		return
@@ -151,6 +155,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	log_admin("[key_name_admin(usr)] has set the player ooc color to [new_color].")
 	GLOB.OOC_COLOR = new_color
 
+<<<<<<< HEAD
 
 /client/proc/reset_ooc()
 	set name = "Reset Player OOC Color"
@@ -158,6 +163,9 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	set category = "Server"
 	if(IsAdminAdvancedProcCall())
 		return
+=======
+ADMIN_VERB(server, reset_player_ooc_color, "Reset Player OOC Color", "Returns all player colors to default", (R_FUN|R_ADMIN))
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if(tgui_alert(usr, "Are you sure you want to reset the OOC color of all players?", "Reset Player OOC Color", list("Yes", "No")) != "Yes")
 		return
 	if(!check_rights(R_FUN))

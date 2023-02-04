@@ -1,3 +1,4 @@
+<<<<<<< HEAD:code/modules/fishing/admin.dm
 // Helper tool to see fishing probabilities with different setups
 /datum/admins/proc/fishing_calculator()
 	set name = "Fishing Calculator"
@@ -5,6 +6,9 @@
 
 	if(!check_rights(R_DEBUG))
 		return
+=======
+ADMIN_VERB(debug, fishing_calculator, "Fishing Calculator", "Helper tool to see fishing probabilities with different setups", R_DEBUG)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214)):code/modules/admin_verbs/fishing_calculator.dm
 	var/datum/fishing_calculator/ui = new(usr)
 	ui.ui_interact(usr)
 

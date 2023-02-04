@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 /client/proc/forcerandomrotate()
 	set category = "Server"
 	set name = "Trigger Random Map Rotation"
+=======
+ADMIN_VERB(server, trigger_random_map_rotation, "Trigger Random Map Rotation", "", R_SERVER)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/rotate = tgui_alert(usr,"Force a random map rotation to trigger?", "Rotate map?", list("Yes", "Cancel"))
 	if (rotate != "Yes")
 		return
@@ -8,9 +12,13 @@
 	log_admin("[key_name(usr)] is forcing a random map rotation.")
 	SSmapping.maprotate()
 
+<<<<<<< HEAD
 /client/proc/adminchangemap()
 	set category = "Server"
 	set name = "Change Map"
+=======
+ADMIN_VERB(server, change_map, "Change Map", "", R_SERVER)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/list/maprotatechoices = list()
 	for (var/map in config.maplist)
 		var/datum/map_config/virtual_map = config.maplist[map]

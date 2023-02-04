@@ -68,10 +68,15 @@
 	/// Optional, force this threat level instead of picking randomly through the lorentz distribution
 	var/forced_threat_level
 
+<<<<<<< HEAD
 /client/proc/run_dynamic_simulations()
 	set name = "Run Dynamic Simulations"
 	set category = "Debug"
 
+=======
+#ifdef TESTING
+ADMIN_VERB(debug, run_dynamic_simulations, "Run Dynamic Simulations", "", R_DEBUG)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/simulations = input(usr, "Enter number of simulations") as num
 	var/roundstart_players = input(usr, "Enter number of round start players") as num
 	var/forced_threat_level = input(usr, "Enter forced threat level, if you want one") as num | null

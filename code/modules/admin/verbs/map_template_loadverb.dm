@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 /client/proc/map_template_load()
 	set category = "Debug"
 	set name = "Map template - Place"
 
+=======
+ADMIN_VERB(debug, map_template_load, "Map Template Load", "", R_DEBUG)
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	var/datum/map_template/template
 
 	var/map = input(src, "Choose a Map Template to place at your CURRENT LOCATION","Place Map Template") as null|anything in sort_list(SSmapping.map_templates)
@@ -42,11 +46,16 @@
 			to_chat(src, "Failed to place map", confidential = TRUE)
 	images -= preview
 
+<<<<<<< HEAD
 /client/proc/map_template_upload()
 	set category = "Debug"
 	set name = "Map Template - Upload"
 
 	var/map = input(src, "Choose a Map Template to upload to template storage","Upload Map Template") as null|file
+=======
+ADMIN_VERB(debug, map_template_upload, "Map Template Upload", "", R_DEBUG)
+	var/map = input(usr, "Choose a Map Template to upload to template storage","Upload Map Template") as null|file
+>>>>>>> fca90f5c78b (Redoes the admin verb define to require passing in an Admin Visible Name, and restores the usage of '-' for the verb bar when you want to call verbs from the command bar. Also cleans up and organizes the backend for drawing verbs to make it easier in the future for me to make it look better (#73214))
 	if(!map)
 		return
 	if(copytext("[map]", -4) != ".dmm")//4 == length(".dmm")
