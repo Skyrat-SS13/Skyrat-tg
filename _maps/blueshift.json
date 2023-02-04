@@ -1,0 +1,40 @@
+{
+	"version": 1,
+	"map_name": "Blueshift",
+	"map_path": "map_files/Blueshift",
+	"map_file": [
+		"BlueShift_lower.dmm",
+		"BlueShift_middle.dmm",
+		"BlueShift_upper.dmm"
+	],
+	"space_ruin_levels": 0,
+	"space_empty_levels": 0,
+	"shuttles": {
+		"cargo": "cargo_skyrat",
+		"ferry": "ferry_skyrat",
+		"whiteship": "whiteship_meta",
+		"emergency": "emergency_skyrat"
+	},
+	"traits": [
+		{
+			"Up": 1,
+			"Linkage": "Cross"
+		},
+		{
+			"Down": -1,
+			"Up": 1,
+			"Baseturf": "/turf/open/openspace",
+			"Linkage": "Cross"
+		},
+		{
+			"Down": -1,
+			"Baseturf": "/turf/open/openspace",
+			"Linkage": "Cross"
+		}
+	],
+	"job_changes": {
+		"cook": {
+			"additional_cqc_areas": ["/area/service/kitchen/diner"]
+		}
+	}
+}
