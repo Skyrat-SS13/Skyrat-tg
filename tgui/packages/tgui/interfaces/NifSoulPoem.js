@@ -2,7 +2,7 @@ import { useBackend } from '../backend';
 import { Window } from '../layouts';
 import { Section, Divider, Flex, Box, BlockQuote, Input, LabeledList, Button } from '../components';
 
-export const NifStationPass = (props, context) => {
+export const NifSoulPoem = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     name_to_send,
@@ -24,7 +24,8 @@ export const NifStationPass = (props, context) => {
                   tooltip={'Delete this message'}
                   onClick={() =>
                     act('remove_message', { message_to_remove: message })
-                  }></Button>
+                  }
+                />
               </Box>
               <Divider />
               <Box>{message.message}</Box>

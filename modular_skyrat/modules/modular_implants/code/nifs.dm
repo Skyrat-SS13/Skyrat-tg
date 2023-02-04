@@ -86,7 +86,7 @@
 	///What programs are currently loaded onto the NIF?
 	var/list/loaded_nifsofts = list()
 	///What programs come already installed on the NIF?
-	var/list/preinstalled_nifsofts = list(/datum/nifsoft/station_pass)
+	var/list/preinstalled_nifsofts = list(/datum/nifsoft/soul_poem)
 	///This shows up in the NIF settings screen as a way to ICly display lore.
 	var/manufacturer_notes = "There is no data currently avalible for this product."
 
