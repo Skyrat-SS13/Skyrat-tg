@@ -55,15 +55,17 @@
 /datum/nifsoft/soul_poem/proc/add_message(sender_identifier, recieved_name, recieved_message)
 	if(!recieved_message)
 		return FALSE
-	if(!name)
-		name = "Unknown User"
-	else
-		for(var/message in message_list)
-			if(message["identifier"] == sender_identifier)
-				message["sender_name"] = recieved_name
-				message["message"] = recieved_message
-				message["timestamp"] = station_time_timestamp()
-				return TRUE
+
+	var/message_name = "Unkown User"
+	if(recieved_name)
+		message_name = recieved_name
+
+	for(var/message in message_list)
+		if(message["identifier"] == sender_identifier)
+			message["sender_name"] = message_name
+			message["message"] = recieved_message
+			message["timestamp"] = station_time_timestamp()
+			return TRUE
 
 	message_list.Insert(1, list(list(identifier = sender_identifier, sender_name = recieved_name, message = recieved_message, timestamp = station_time_timestamp())))
 	return TRUE
