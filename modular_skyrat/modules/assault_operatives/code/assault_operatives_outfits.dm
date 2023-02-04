@@ -28,6 +28,8 @@
 
 	equipping_human.update_icons()
 
+// ICONS FOR PREVIEW USE ONLY
+
 /datum/outfit/assaultops_preview
 	name = "Assault Ops - Preview ONLY"
 
@@ -37,7 +39,7 @@
 	ears = /obj/item/radio/headset/syndicate/alt
 	glasses = /obj/item/clothing/glasses/sunglasses
 
-/datum/outfit/assaultops_preview/modsuit
-	name = "Assault Ops - MOD - Preview ONLY"
+/datum/outfit/assaultops_preview/background
+	name = "Assault Ops - Background Dudes - Preview ONLY"
 
-	belt = /obj/item/mod/control/pre_equipped/stealth_operative
+	mask = /obj/item/clothing/mask/gas/sechailer/syndicate

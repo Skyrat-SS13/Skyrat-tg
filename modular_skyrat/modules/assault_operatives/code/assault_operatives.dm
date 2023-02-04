@@ -14,7 +14,7 @@
 
 	preview_outfit = /datum/outfit/assaultops_preview
 	/// In the preview icon, the operatives who are behind the leader
-	var/preview_outfit_behind = /datum/outfit/assaultops_preview/modsuit
+	var/preview_outfit_behind = /datum/outfit/assaultops_preview/background
 
 	ui_name = "AntagInfoAssaultops"
 	/// The default outfit given BEFORE they choose their equipment.
