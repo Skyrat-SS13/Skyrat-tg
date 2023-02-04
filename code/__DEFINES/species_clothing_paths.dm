@@ -8,7 +8,7 @@
 
 //MONKEY PATHS
 ///The dmi for monkey uniforms
-#define MONKEY_UNIFORM_FILE 'icons/mob/species/monkey/uniform.dmi'
+#define MONKEY_UNIFORM_FILE 'modular_skyrat/master_files/icons/mob/clothing/species/monkey/uniform.dmi' // SKYRAT EDIT CHANGE
 
 //DIGITIGRADE PATHS
 ///The dmi containing digitigrade uniforms
