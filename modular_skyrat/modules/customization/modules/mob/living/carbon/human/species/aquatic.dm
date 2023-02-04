@@ -32,12 +32,12 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	examine_limb_id = SPECIES_AKULA
 	bodypart_overrides = list(
-		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/akula,
-		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/akula,
-		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/mutant/akula,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant/akula,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant/akula,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/akula,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/mutant,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant,
 	)
 
 /datum/species/aquatic/randomize_features(mob/living/carbon/human/human_mob)

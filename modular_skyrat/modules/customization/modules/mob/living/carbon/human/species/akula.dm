@@ -1,6 +1,15 @@
 /datum/species/akula
 	name = "Akula"
 	id = SPECIES_AKULA
+	offset_features = list(
+		OFFSET_GLASSES = list(0,1),
+		OFFSET_EARS = list(0,2),
+		OFFSET_FACEMASK = list(0,2),
+		OFFSET_HEAD = list(0,1),
+		OFFSET_HAIR = list(0,1),
+	)
+	eyes_icon = 'modular_skyrat/modules/organs/icons/akula_eyes.dmi'
+	mutanteyes = /obj/item/organ/internal/eyes/akula
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
@@ -18,8 +27,6 @@
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,
-		"snout" = ACC_RANDOM,
-		"ears" = ACC_RANDOM,
 		"legs" = "Normal Legs"
 	)
 	payday_modifier = 0.75
@@ -61,6 +68,10 @@
 	human_mob.dna.features["mcolor2"] = second_color
 	human_mob.dna.features["mcolor3"] = second_color
 
+/obj/item/organ/internal/eyes/akula
+	// Eyes over hair as bandaid for the low amounts of head matching hair
+	eyes_layer = (HAIR_LAYER - 0.5)
+
 /datum/species/akula/get_random_body_markings(list/passed_features)
 	var/name = "Shark"
 	var/datum/body_marking_set/BMS = GLOB.body_marking_sets[name]
@@ -81,8 +92,6 @@
 	human.dna.features["mcolor"] = main_color
 	human.dna.features["mcolor2"] = secondary_color
 	human.dna.features["mcolor3"] = secondary_color
-	human.dna.species.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Shark", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, secondary_color))
-	human.dna.species.mutant_bodyparts["snout"] = list(MUTANT_INDEX_NAME = "hShark", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, secondary_color))
-	human.dna.species.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Sergal", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, secondary_color))
+	human.dna.species.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Akula", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, secondary_color))
 	human.update_mutant_bodyparts(TRUE)
 	human.update_body(TRUE)

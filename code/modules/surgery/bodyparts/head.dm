@@ -245,6 +245,8 @@
 					var/image/hair_overlay = image(sprite2.icon, "[sprite2.icon_state]", -HAIR_LAYER, SOUTH)
 					hair_overlay.color = hair_color
 					hair_overlay.alpha = hair_alpha
+					hair_overlay.pixel_x = owner.dna?.species.offset_features[OFFSET_HAIR][1] // SKYRAT ADDITION
+					hair_overlay.pixel_y = owner.dna?.species.offset_features[OFFSET_HAIR][2] // SKYRAT ADDITION
 					. += hair_overlay
 
 
@@ -276,8 +278,12 @@
 
 		else if(!hair_hidden && hair_overlay && (HAIR in species_flags_list))
 			hair_overlay.alpha = hair_alpha
+			hair_overlay.pixel_x = owner.dna?.species.offset_features[OFFSET_HAIR][1] // SKYRAT ADDITION
+			hair_overlay.pixel_y = owner.dna?.species.offset_features[OFFSET_HAIR][2] // SKYRAT ADDITION
 			. += hair_overlay
 			if(hair_gradient_overlay)
+				hair_gradient_overlay.pixel_x = owner.dna?.species.offset_features[OFFSET_HAIR][1] // SKYRAT ADDITION
+				hair_gradient_overlay.pixel_y = owner.dna?.species.offset_features[OFFSET_HAIR][2] // SKYRAT ADDITION
 				. += hair_gradient_overlay
 
 /mob/living/proc/set_haircolor(hex_string, override)

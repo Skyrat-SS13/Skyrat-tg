@@ -42,6 +42,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		OFFSET_SUIT = list(0,0),
 		OFFSET_NECK = list(0,0),
 		OFFSET_ACCESSORY = list(0, 0), // SKYRAT EDIT ADDITION
+		OFFSET_HAIR = list(0, 0), // SKYRAT EDIT ADDITION
 	)
 
 	///The maximum number of bodyparts this species can have.

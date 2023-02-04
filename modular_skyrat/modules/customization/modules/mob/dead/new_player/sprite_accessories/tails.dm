@@ -333,6 +333,11 @@
 	name = "Shade (Striped)"
 	icon_state = "shadekinlongstriped_large"
 
+/datum/sprite_accessory/tails/mammal/akula/akula
+	name = "Akula"
+	icon_state = "akula"
+	color_src = USE_ONE_COLOR
+
 /datum/sprite_accessory/tails/mammal/wagging/akula/shark
 	name = "Shark"
 	icon_state = "shark"
