@@ -25,7 +25,7 @@
 	///What ckey is being used by the owner? This is mostly here so that messages can't get spammed
 	var/transmitted_identifier = ""
 
-	///What messages has the user recieved?
+	///What messages has the user received?
 	var/list/message_list = list()
 	///The datum that is being used to receive messages
 	var/datum/proximity_monitor/advanced/soul_poem/proximity_datum
@@ -43,7 +43,7 @@
 
 	add_message("soul_poem_nifsoft", name, "Hello World")
 	proximity_datum = new(linked_mob, 1)
-	proximity_datum.parent_nifsoft = src
+	proximity_datum.parent_nifsoft = WEAKREF(src)
 
 /datum/nifsoft/soul_poem/New()
 	qdel(proximity_datum)
@@ -51,23 +51,23 @@
 
 	return ..()
 
-///Adds a message to the message_list based off the name and message
-/datum/nifsoft/soul_poem/proc/add_message(sender_identifier, recieved_name, recieved_message)
-	if(!recieved_message)
+///Adds a message to the message_list based off the received_name and received_message. sender_identifier is used to determine the user sending the message, this is to prevent messages from the same person filling the message_list.
+/datum/nifsoft/soul_poem/proc/add_message(sender_identifier, received_name, received_message)
+	if(!received_message)
 		return FALSE
 
 	var/message_name = "Unkown User"
-	if(recieved_name)
-		message_name = recieved_name
+	if(received_name)
+		message_name = received_name
 
 	for(var/message in message_list)
 		if(message["identifier"] == sender_identifier)
 			message["sender_name"] = message_name
-			message["message"] = recieved_message
+			message["message"] = received_message
 			message["timestamp"] = station_time_timestamp()
 			return TRUE
 
-	message_list.Insert(1, list(list(identifier = sender_identifier, sender_name = recieved_name, message = recieved_message, timestamp = station_time_timestamp())))
+	message_list.Insert(1, list(list(identifier = sender_identifier, sender_name = received_name, message = received_message, timestamp = station_time_timestamp())))
 	return TRUE
 
 ///Removes a message from the message_list based on the message_to_remove
@@ -111,7 +111,7 @@
 	if(host == entered)
 		return FALSE
 
-	var/datum/nifsoft/soul_poem/recieving_nifsoft = parent_nifsoft
+	var/datum/nifsoft/soul_poem/recieving_nifsoft = parent_nifsoft.resolve()
 	if(!recieving_nifsoft || (!recieving_nifsoft.transmitting_data && !recieving_nifsoft.recieving_data))
 		return FALSE
 
@@ -134,7 +134,7 @@
 	ui = SStgui.try_update_ui(linked_mob, src, ui)
 
 	if(!ui)
-		ui = new(linked_mob, src, "NifStationPass", name)
+		ui = new(linked_mob, src, "NifSoulPoem", name)
 		ui.open()
 
 /datum/nifsoft/soul_poem/ui_data(mob/user)
