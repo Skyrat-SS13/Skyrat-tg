@@ -136,7 +136,7 @@
 	name = "Bluespace Artillery"
 	desc = "Long range bluespace artillery."
 	icon = 'icons/obj/lavaland/cannon.dmi'
-	icon_state = "orbital_cannon1"
+	icon_state = "cannon_west"
 	var/static/mutable_appearance/top_layer
 	use_power = NO_POWER_USE
 	var/ex_power = 5
@@ -358,12 +358,13 @@
 
 /obj/item/circuitboard/machine/bsa/powercore
 	name = "Bluespace Artillery Powercore (Machine Board)"
-	icon_state = "command"
+	greyscale_colors = CIRCUIT_COLOR_COMMAND
 	build_path = /obj/machinery/bsa_powercore
 	req_components = list(
-		/obj/item/stock_parts/capacitor/quadratic = 5,
+		/datum/stock_part/capacitor/tier4 = 5,
 		/obj/item/stock_parts/cell/bluespace = 1,
-		/obj/item/stack/cable_coil = 2)
+		/obj/item/stack/cable_coil = 2,
+	)
 
 #undef SYSTEM_OFFLINE
 #undef SYSTEM_READY

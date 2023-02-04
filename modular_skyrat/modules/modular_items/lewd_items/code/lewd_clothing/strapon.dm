@@ -1,7 +1,8 @@
 /obj/item/clothing/strapon
 	name = "strapon"
 	desc = "Sometimes you need a special way to humiliate someone."
-	icon_state = "strapon"
+	icon_state = "strapon_human"
+	base_icon_state = "strapon"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi'
 	slot_flags = ITEM_SLOT_BELT
@@ -49,7 +50,7 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 	update_icon_state()
 	update_icon()
-	update_action_buttons_icons()
+	update_mob_action_buttonss()
 	if(!length(strapon_types))
 		populate_strapon_types()
 
@@ -95,13 +96,13 @@
 
 /obj/item/clothing/strapon/update_icon_state()
 	.=..()
-	icon_state = "[initial(icon_state)]_[strapon_type]"
+	icon_state = "[base_icon_state]_[strapon_type]"
 
 //Functionality stuff
-/obj/item/clothing/strapon/proc/update_action_buttons_icons()
+/obj/item/clothing/strapon/proc/update_mob_action_buttonss()
 	for(var/datum/action/item_action/take_strapon/action_button in actions_types)
 		action_button.button_icon_state = "dildo_[strapon_type]"
-		action_button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
+		action_button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	update_icon()
 
 //button stuff
@@ -169,7 +170,8 @@
 	name = "strapon"
 	desc = "An item with which to be menacing and merciless."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
-	icon_state = "dildo"
+	icon_state = "dildo_human"
+	base_icon_state = "dildo"
 	inhand_icon_state = "nothing"
 	force = 0
 	throwforce = 0
@@ -183,8 +185,8 @@
 	ADD_TRAIT(src, TRAIT_NODROP, STRAPON_TRAIT)
 
 /obj/item/strapon_dildo/update_icon_state()
-	.=..()
-	icon_state = "[initial(icon_state)]_[strapon_type]"
+	. = ..()
+	icon_state = "[base_icon_state]_[strapon_type]"
 
 /obj/item/strapon_dildo/attack(mob/living/carbon/human/hit_mob, mob/living/carbon/human/user)
 	if(hit_mob == user)

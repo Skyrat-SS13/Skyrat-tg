@@ -191,7 +191,7 @@
 		var/damage_text
 		if(HAS_TRAIT(body_part, TRAIT_DISABLED_BY_WOUND))
 			continue // skip if it's disabled by a wound (cuz we'll be able to see the bone sticking out!)
-		if(!(body_part.get_damage(include_stamina = FALSE) >= body_part.max_damage)) //we don't care if it's stamcritted
+		if(!(body_part.get_damage() >= body_part.max_damage)) //we don't care if it's stamcritted
 			damage_text = "limp and lifeless"
 		else
 			damage_text = (body_part.brute_dam >= body_part.burn_dam) ? body_part.heavy_brute_msg : body_part.heavy_burn_msg
@@ -201,7 +201,7 @@
 	var/l_limbs_missing = 0
 	var/r_limbs_missing = 0
 	for(var/t in missing)
-		if(t==BODY_ZONE_HEAD)
+		if(t == BODY_ZONE_HEAD)
 			msg += "<span class='deadsay'><B>[t_His] [parse_zone(t)] is missing!</B><span class='warning'>\n"
 			continue
 		if(t == BODY_ZONE_L_ARM || t == BODY_ZONE_L_LEG)
@@ -245,11 +245,11 @@
 		temp = getCloneLoss()
 		if(temp)
 			if(temp < 25)
-				msg += "[t_He] [t_has] minor [dna.species.cellular_damage_desc].\n"
+				msg += "[t_He] [t_has] minor [damage_desc[CLONE]].\n"
 			else if(temp < 50)
-				msg += "[t_He] [t_has] <b>moderate</b> [dna.species.cellular_damage_desc]!\n"
+				msg += "[t_He] [t_has] <b>moderate</b> [damage_desc[CLONE]]!\n"
 			else
-				msg += "<b>[t_He] [t_has] severe [dna.species.cellular_damage_desc]!</b>\n"
+				msg += "<b>[t_He] [t_has] severe [damage_desc[CLONE]]!</b>\n"
 
 
 	if(has_status_effect(/datum/status_effect/fire_handler/fire_stacks))
@@ -277,7 +277,7 @@
 			msg += "[t_He] look[p_s()] extremely disgusted.\n"
 
 	var/apparent_blood_volume = blood_volume
-	if(skin_tone == "albino")
+	if(dna.species.use_skintones && skin_tone == "albino")
 		apparent_blood_volume -= 150 // enough to knock you down one tier
 	switch(apparent_blood_volume)
 		if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
@@ -352,7 +352,7 @@
 				if(mob_mood.sanity <= SANITY_DISTURBED)
 					msg += "[t_He] seem[p_s()] distressed.\n"
 					living_user.add_mood_event("empath", /datum/mood_event/sad_empath, src)
-				if (is_blind())
+				if(is_blind())
 					msg += "[t_He] appear[p_s()] to be staring off into space.\n"
 				if (HAS_TRAIT(src, TRAIT_DEAF))
 					msg += "[t_He] appear[p_s()] to not be responding to noises.\n"

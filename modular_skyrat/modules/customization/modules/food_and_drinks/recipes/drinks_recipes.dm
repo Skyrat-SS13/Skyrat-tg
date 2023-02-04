@@ -158,6 +158,12 @@
 	required_reagents = list(/datum/reagent/consumable/catnip_tea = 1,  /datum/reagent/consumable/milk = 1)
 	required_temp = 296 //Just above room temp (22.85'C)
 
+/datum/chemical_reaction/drink/bloodshot
+	results = list(/datum/reagent/consumable/ethanol/bloodshot = 5)
+	required_reagents = list(/datum/reagent/blood = 3, /datum/reagent/consumable/ethanol/bloody_mary = 1, /datum/reagent/consumable/sugar = 1)
+	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_OTHER
+
+
 // Non-Booze, see modular_skyrat\modules\customization\modules\reagents\chemistry\reagents\drink_reagents.dm
 
 /datum/chemical_reaction/drink/pinkmilk
@@ -173,7 +179,7 @@
 	required_reagents = list(/datum/reagent/consumable/tea = 5, /datum/reagent/pax/catnip = 2)
 
 /datum/chemical_reaction/drink/beerbatter
-	results = list(/datum/reagent/consumable/beerbatter = 4)
+	results = list(/datum/reagent/consumable/ethanol/beerbatter = 4)
 	required_reagents = list(/datum/reagent/consumable/cooking_oil = 1, /datum/reagent/consumable/ethanol/beer = 1, /datum/reagent/consumable/flour = 1)
 	mix_message = "Sizzling and cracking is heard as you beat the mixture into submission."
 

@@ -87,10 +87,12 @@
 	if(health > 0)
 		return
 	var/datum/status_effect/crusher_damage/crusher_dmg = has_status_effect(/datum/status_effect/crusher_damage)
+	///Whether we killed the megafauna with primarily crusher damage or not
 	var/crusher_kill = FALSE
-	if(crusher_dmg && crusher_loot && crusher_dmg.total_damage >= maxHealth * 0.6)
-		spawn_crusher_loot()
+	if(crusher_dmg && crusher_dmg.total_damage >= maxHealth * 0.6)
 		crusher_kill = TRUE
+		if(crusher_loot) // spawn crusher loot, if any
+			spawn_crusher_loot()
 	//SKYRAT ADDITION START - ASHWALKER TROPHIES
 	var/datum/status_effect/ashwalker_damage/ashie_damage = has_status_effect(/datum/status_effect/ashwalker_damage)
 	if(!crusher_kill && ashie_damage && crusher_loot && ashie_damage.total_damage >= maxHealth * 0.6)
@@ -184,7 +186,7 @@
 	for(var/mob/living/L in grant_achievement)
 		if(L.stat || !L.client)
 			continue
-		L?.mind.add_memory(MEMORY_MEGAFAUNA_KILL, list(DETAIL_PROTAGONIST = L, DETAIL_DEUTERAGONIST = src), STORY_VALUE_LEGENDARY, memory_flags = MEMORY_CHECK_BLIND_AND_DEAF)
+		L.add_mob_memory(/datum/memory/megafauna_slayer, antagonist = src)
 		L.client.give_award(/datum/award/achievement/boss/boss_killer, L)
 		L.client.give_award(achievement_type, L)
 		if(crusher_kill && istype(L.get_active_held_item(), /obj/item/kinetic_crusher))
@@ -195,7 +197,7 @@
 
 /datum/action/innate/megafauna_attack
 	name = "Megafauna Attack"
-	icon_icon = 'icons/mob/actions/actions_animal.dmi'
+	button_icon = 'icons/mob/actions/actions_animal.dmi'
 	button_icon_state = ""
 	var/chosen_message
 	var/chosen_attack_num = 0

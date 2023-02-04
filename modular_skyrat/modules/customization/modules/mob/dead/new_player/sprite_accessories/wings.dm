@@ -10,7 +10,7 @@
 	generic = "Wings"
 	key = "wings"
 	color_src = USE_ONE_COLOR
-	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_LIZARD, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_SYNTHLIZ)
+	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTH, SPECIES_FELINE, SPECIES_LIZARD, SPECIES_MAMMAL)
 	organ_type = /obj/item/organ/external/wings
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER, BODY_ADJ_LAYER)
 	genetic = TRUE
@@ -81,7 +81,7 @@
 /datum/sprite_accessory/wings/mammal
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/wings.dmi'
 	default_color = DEFAULT_PRIMARY
-	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_LIZARD, SPECIES_INSECT, SPECIES_SYNTHLIZ)
+	recommended_species = list(SPECIES_MAMMAL, SPECIES_LIZARD, SPECIES_INSECT)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 	dimension_x = 46
 	dimension_y = 34
@@ -241,7 +241,7 @@
 /datum/sprite_accessory/wings/moth
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/moth_wings.dmi' // Needs new icon to suit new naming convention
 	default_color = "#FFFFFF"
-	recommended_species = list(SPECIES_MOTH, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_INSECT) // Mammals too, I guess. They wont get flight though, see the wing organs for that logic
+	recommended_species = list(SPECIES_MOTH, SPECIES_MAMMAL, SPECIES_INSECT) // Mammals too, I guess. They wont get flight though, see the wing organs for that logic
 	organ_type = /obj/item/organ/external/wings/moth
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
@@ -341,3 +341,7 @@
 /datum/sprite_accessory/wings/moth/witchwing
 	name = "Moth (Witch Wing)"
 	icon_state = "witchwing"
+
+/datum/sprite_accessory/wings/moth/moffra
+	name = "Moth (Moffra)"
+	icon_state = "moffra"

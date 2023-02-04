@@ -61,21 +61,28 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 
 	update_explanation_text()
 
-/datum/objective/proc/considered_escaped(datum/mind/M)
-	if(!considered_alive(M))
+/**
+ * Checks if the passed mind is considered "escaped".
+ *
+ * Escaped mobs are used to check certain antag objectives / results.
+ *
+ * Escaped includes minds with alive, non-exiled mobs generally.
+ */
+/proc/considered_escaped(datum/mind/escapee)
+	if(!considered_alive(escapee))
 		return FALSE
-	if(considered_exiled(M))
+	if(considered_exiled(escapee))
 		return FALSE
-	if(M.force_escaped)
+	if(escapee.force_escaped)
 		return TRUE
 	if(SSticker.force_ending || GLOB.station_was_nuked) // Just let them win.
 		return TRUE
 	if(SSshuttle.emergency.mode != SHUTTLE_ENDGAME)
 		return FALSE
-	var/area/current_area = get_area(M.current)
+	var/area/current_area = get_area(escapee.current)
 	if(!current_area || istype(current_area, /area/shuttle/escape/brig)) // Fails if they are in the shuttle brig
 		return FALSE
-	var/turf/current_turf = get_turf(M.current)
+	var/turf/current_turf = get_turf(escapee.current)
 	return current_turf.onCentCom() || current_turf.onSyndieBase()
 
 /datum/objective/proc/check_completion()
@@ -106,7 +113,7 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 	return target
 
 //dupe_search_range is a list of antag datums / minds / teams
-/datum/objective/proc/find_target(dupe_search_range, blacklist)
+/datum/objective/proc/find_target(dupe_search_range, list/blacklist)
 	var/list/datum/mind/owners = get_owners()
 	if(!dupe_search_range)
 		dupe_search_range = get_owners()
@@ -172,7 +179,7 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 /datum/action/special_equipment_fallback
 	name = "Request Objective-specific Equipment"
 	desc = "Call down a supply pod containing the equipment required for specific objectives."
-	icon_icon = 'icons/obj/device.dmi'
+	button_icon = 'icons/obj/device.dmi'
 	button_icon_state = "beacon"
 
 /datum/action/special_equipment_fallback/Trigger(trigger_flags)
@@ -297,7 +304,6 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 	admin_grantable = TRUE
 	var/target_role_type = FALSE
 	var/human_check = TRUE
-
 
 /datum/objective/protect/check_completion()
 	var/obj/item/organ/internal/brain/brain_target
@@ -465,7 +471,7 @@ GLOBAL_LIST_EMPTY(objectives) //SKYRAT EDIT ADDITION
 	var/target_real_name // Has to be stored because the target's real_name can change over the course of the round
 	var/target_missing_id
 
-/datum/objective/escape/escape_with_identity/find_target(dupe_search_range)
+/datum/objective/escape/escape_with_identity/find_target(dupe_search_range, list/blacklist)
 	target = ..()
 	update_explanation_text()
 
@@ -579,7 +585,7 @@ GLOBAL_LIST_EMPTY(possible_items)
 		for(var/I in subtypesof(/datum/objective_item/steal))
 			new I
 
-/datum/objective/steal/find_target(dupe_search_range)
+/datum/objective/steal/find_target(dupe_search_range, list/blacklist)
 	var/list/datum/mind/owners = get_owners()
 	if(!dupe_search_range)
 		dupe_search_range = get_owners()
@@ -662,7 +668,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		for(var/I in subtypesof(/datum/objective_item/special) + subtypesof(/datum/objective_item/stack))
 			new I
 
-/datum/objective/steal/special/find_target(dupe_search_range)
+/datum/objective/steal/special/find_target(dupe_search_range, list/blacklist)
 	return set_target(pick(GLOB.possible_items_special))
 
 /datum/objective/capture
@@ -824,8 +830,9 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	name = "destroy AI"
 	martyr_compatible = TRUE
 
-/datum/objective/destroy/find_target(dupe_search_range)
-	var/list/possible_targets = active_ais(1)
+/datum/objective/destroy/find_target(dupe_search_range, list/blacklist)
+	var/list/possible_targets = active_ais(TRUE)
+	possible_targets -= blacklist
 	var/mob/living/silicon/ai/target_ai = pick(possible_targets)
 	target = target_ai.mind
 	update_explanation_text()

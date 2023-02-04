@@ -583,7 +583,7 @@
 	item_path = /obj/item/clothing/neck/flower_collar
 	ckeywhitelist = list("thedragmeme")
 
-/datum/loadout_item/suit/goldenkimono
+/datum/loadout_item/under/jumpsuit/goldenkimono
 	name = "Short-Sleeved Kimono"
 	item_path = /obj/item/clothing/under/costume/skyrat/kimono/sigmar
 	ckeywhitelist = list("sigmaralkahest")
@@ -593,3 +593,53 @@
 	item_path = /obj/item/clothing/suit/hooded/sigmarcoat
 	ckeywhitelist = list("sigmaralkahest")
 
+/datum/loadout_item/toys/plushy_syntax1112
+	name = "Lop Bunny Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_syntax1112
+	ckeywhitelist = list("syntax1112")
+
+/datum/loadout_item/gloves/hypnoring_nuke
+	name = "Suspiciously Glossy Ring"
+	item_path = /obj/item/clothing/gloves/ring/hypno/nuke
+	ckeywhitelist = list("sonicgotnuked")
+
+/datum/loadout_item/head/somerandomowl
+	name = "Starry Witch Hat"
+	item_path = /obj/item/clothing/head/costume/strigihat
+	ckeywhitelist = list("somerandomowl")
+
+/datum/loadout_item/head/razurathhat
+	name = "Golden Nanotrasen Officer Cap"
+	item_path = /obj/item/clothing/head/razurathhat
+	ckeywhitelist = list("razurath")
+
+/datum/loadout_item/suit/razurathcoat
+	name = "Golden Nanotrasen Officer Coat"
+	item_path = /obj/item/clothing/suit/razurathcoat
+	ckeywhitelist = list("razurath")
+
+/datum/loadout_item/pocket_items/masvedishcigar
+	name = "Holocigar"
+	item_path = /obj/item/clothing/mask/holocigarette/masvedishcigar
+	ckeywhitelist = list("masvedish")
+
+/datum/loadout_item/suit/lt3_armor
+	name = "Silver Jacket Mk II"
+	item_path = /obj/item/clothing/suit/armor/skyy
+	ckeywhitelist = list("lt3")
+	restricted_roles = list(JOB_HEAD_OF_PERSONNEL, JOB_NT_REP)
+
+/datum/loadout_item/suit/lt3_jacket
+	name = "Silver Jacket"
+	item_path = /obj/item/clothing/suit/jacket/skyy
+	ckeywhitelist = list("lt3")
+
+/datum/loadout_item/under/miscellaneous/lt3_jeans
+	name = "Silver Jeans"
+	item_path = /obj/item/clothing/under/pants/skyy
+	ckeywhitelist = list("lt3")
+
+/datum/loadout_item/gloves/lt3_gloves
+	name = "Charcoal Fingerless Gloves"
+	item_path = /obj/item/clothing/gloves/skyy
+	ckeywhitelist = list("lt3")

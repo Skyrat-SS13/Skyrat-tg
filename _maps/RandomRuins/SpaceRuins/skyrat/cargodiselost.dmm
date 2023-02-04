@@ -238,7 +238,6 @@
 "fm" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/machinery/computer/order_console/mining{
-	uses_ltsrbt = 0;
 	forced_express = 1;
 	express_cost_multiplier = 1
 	},
@@ -765,7 +764,7 @@
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
 "nE" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/mob/living/simple_animal/hostile/syndicate/melee/anthro{
+/mob/living/basic/syndicate/melee/anthro{
 	desc = "An anthromorphic bandit, geared up in tactical gear.";
 	faction = list("hostile");
 	name = "Geared Pirate"
@@ -2655,7 +2654,7 @@
 /obj/effect/turf_decal/bot,
 /obj/effect/spawner/random/exotic/tool,
 /obj/structure/closet/crate/secure/engineering{
-	req_one_access_txt = "150"
+	req_one_access = list("syndicate")
 	},
 /obj/effect/spawner/random/exotic/tool,
 /turf/open/floor/iron,
@@ -3113,10 +3112,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/checker,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
-"Ul" = (
-/obj/machinery/gun_vendor/no_alert,
-/turf/open/floor/wood,
-/area/ruin/space/has_grav/cargodise_freighter/quarters)
 "Um" = (
 /obj/machinery/light/directional/south,
 /turf/open/floor/wood,
@@ -4323,7 +4318,7 @@ Ra
 Ra
 Ra
 IA
-Ul
+yn
 Ra
 Al
 YF

@@ -61,16 +61,19 @@
 				set_light_power(initial(light_power))
 				to_chat(user, span_notice("You set [src] to low."))
 
-/obj/item/flashlight/attack_self(mob/user)
-	. = ..()
+/obj/item/flashlight/proc/toggle_light()
 	if(on)
 		turn_off()
 	else
-		if(uses_battery && !(item_use_power(power_use_amount, user, TRUE) & COMPONENT_POWER_SUCCESS))
+		if(uses_battery && !(item_use_power(power_use_amount, TRUE) & COMPONENT_POWER_SUCCESS))
 			return
 		turn_on(makes_noise_when_lit)
-	playsound(user, on ? sound_on : sound_off, 40, TRUE)
+	playsound(src, on ? sound_on : sound_off, 40, TRUE)
 	return TRUE
+
+/obj/item/flashlight/attack_self(mob/user)
+	. = ..()
+	toggle_light()
 
 /**
  * Handles turning on the flashlight.
@@ -84,13 +87,13 @@
 	update_brightness()
 	if(noisy)
 		playsound(src, 'modular_skyrat/master_files/sound/effects/flashlight.ogg', 40, TRUE) //Credits to ERIS for the sound
-	update_action_buttons()
+	update_item_action_buttons()
 
 /// Handles turning off the flashlight.
 /obj/item/flashlight/proc/turn_off()
 	on = FALSE
 	update_brightness()
-	update_action_buttons()
+	update_item_action_buttons()
 
 /obj/item/flashlight/process(delta_time)
 	if(!on)

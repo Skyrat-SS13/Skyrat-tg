@@ -180,7 +180,7 @@
 				if(sending_virus)
 					var/obj/item/computer_disk/virus/disk = computer.inserted_disk
 					if(istype(disk))
-						disk.send_virus(src, target, usr)
+						disk.send_virus(computer, target, usr)
 						return UI_UPDATE
 
 				send_message(usr, list(target))
@@ -283,6 +283,9 @@
 
 	if (prob(1))
 		message += " Sent from my PDA"
+	// SKYRAT EDIT BEGIN - PDA messages show a visible message; again!
+	user.visible_message(span_notice("[user]'s PDA rings out with the soft sound of keypresses."), vision_distance = COMBAT_MESSAGE_RANGE)
+	//SKYRAT EDIT END
 
 	var/datum/signal/subspace/messaging/tablet_msg/signal = new(computer, list(
 		"name" = fake_name || computer.saved_identification,
