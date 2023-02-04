@@ -24,7 +24,12 @@
  *
  * Parent call
  */
-/mob/Destroy()//This makes sure that mobs with clients/keys are not just deleted from the game.
+/mob/Destroy()
+	if(client)
+		stack_trace("Mob with client has been deleted.")
+	else if(ckey)
+		stack_trace("Mob without client but with associated ckey has been deleted.")
+
 	remove_from_mob_list()
 	remove_from_dead_mob_list()
 	remove_from_alive_mob_list()
@@ -206,7 +211,7 @@
 	msg = copytext_char(msg, 1, MAX_MESSAGE_LEN)
 
 	if(type)
-		if(type & MSG_VISUAL && is_blind() )//Vision related
+		if(type & MSG_VISUAL && is_blind())//Vision related
 			if(!alt_msg)
 				return
 			else
@@ -1186,10 +1191,6 @@
 /mob/proc/has_nightvision()
 	return see_in_dark >= NIGHTVISION_FOV_RANGE
 
-/// Is this mob affected by nearsight
-/mob/proc/is_nearsighted()
-	return HAS_TRAIT(src, TRAIT_NEARSIGHT)
-
 /// This mob is abile to read books
 /mob/proc/is_literate()
 	return HAS_TRAIT(src, TRAIT_LITERATE) && !HAS_TRAIT(src, TRAIT_ILLITERATE)
@@ -1396,9 +1397,6 @@
 			. = TRUE
 		if(NAMEOF(src, stat))
 			set_stat(var_value)
-			. = TRUE
-		if(NAMEOF(src, eye_blind))
-			set_blindness(var_value)
 			. = TRUE
 
 	if(!isnull(.))
