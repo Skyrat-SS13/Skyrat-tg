@@ -6,13 +6,13 @@
 	gloves =  /obj/item/clothing/gloves/combat
 	back = /obj/item/storage/backpack/chameleon
 	ears = /obj/item/radio/headset/syndicate/alt
-	id = /obj/item/card/id/advanced/chameleon
 	glasses = /obj/item/clothing/glasses/sunglasses
 	mask = /obj/item/clothing/mask/gas/sechailer/syndicate
 
 	l_pocket = /obj/item/switchblade
 	r_pocket = /obj/item/armament_points_card/assaultops
 
+	id = /obj/item/card/id/advanced/chameleon
 	id_trim = /datum/id_trim/chameleon/operative
 
 /datum/outfit/assaultops/post_equip(mob/living/carbon/human/equipping_human)
@@ -28,7 +28,16 @@
 
 	equipping_human.update_icons()
 
-/datum/outfit/assaultops/maskless
-	name = "Assault Ops - Maskless Preview"
+/datum/outfit/assaultops_preview
+	name = "Assault Ops - Preview ONLY"
 
-	mask = null
+	uniform = /obj/item/clothing/under/syndicate/sniper
+	shoes = /obj/item/clothing/shoes/jackboots
+	gloves =  /obj/item/clothing/gloves/combat
+	ears = /obj/item/radio/headset/syndicate/alt
+	glasses = /obj/item/clothing/glasses/sunglasses
+
+/datum/outfit/assaultops_preview/modsuit
+	name = "Assault Ops - MOD - Preview ONLY"
+
+	belt = /obj/item/mod/control/pre_equipped/stealth_operative

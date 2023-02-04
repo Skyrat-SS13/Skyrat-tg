@@ -12,9 +12,9 @@
 	show_to_ghosts = TRUE
 	hijack_speed = 2
 
-	preview_outfit = /datum/outfit/assaultops/maskless
+	preview_outfit = /datum/outfit/assaultops_preview
 	/// In the preview icon, the operatives who are behind the leader
-	var/preview_outfit_behind = /datum/outfit/assaultops
+	var/preview_outfit_behind = /datum/outfit/assaultops_preview/modsuit
 
 	ui_name = "AntagInfoAssaultops"
 	/// The default outfit given BEFORE they choose their equipment.
