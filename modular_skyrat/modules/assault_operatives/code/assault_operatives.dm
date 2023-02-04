@@ -189,6 +189,10 @@
 		final_icon.Blend(teammate, ICON_UNDERLAY, -world.icon_size / 4, 0)
 		final_icon.Blend(teammate, ICON_UNDERLAY, world.icon_size / 4, 0)
 
+	var/icon/disky = icon('modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi', "goldeneye_key")
+	disky.Shift(SOUTH, 12)
+	final_icon.Blend(disky, ICON_OVERLAY)
+
 	return finish_preview_icon(final_icon)
 
 /**
