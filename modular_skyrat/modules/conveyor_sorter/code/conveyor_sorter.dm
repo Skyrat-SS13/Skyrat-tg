@@ -8,6 +8,7 @@
 	///the list of things that are currently within the sorting list
 	var/list/current_sort = list()
 	var/max_sorters = 4 //This controls the maximum amount of sorters that can be spawned by one lister item.
+	var/conveyor_type = /obj/effect/decal/cleanable/conveyor_sorter // This is used for the improved sorter, so that it can use the improved sorter type instead of the normal sorter type.
 
 /obj/item/conveyor_sorter/Destroy()
 	for(var/deleting_sorters in spawned_sorters)
@@ -24,7 +25,7 @@
 	if(length(spawned_sorters) >= max_sorters)
 		to_chat(user, span_warning("You may only have [max_sorters] spawned conveyor sorters!"))
 		return
-	var/obj/effect/decal/cleanable/conveyor_sorter/new_cs = new /obj/effect/decal/cleanable/conveyor_sorter(get_turf(src))
+	var/obj/effect/decal/cleanable/conveyor_sorter/new_cs = new conveyor_type(get_turf(src))
 	new_cs.parent_item = src
 	new_cs.sorting_list = current_sort
 	spawned_sorters += new_cs
@@ -101,7 +102,7 @@
 
 /obj/effect/decal/cleanable/conveyor_sorter/attackby(obj/item/used_item, mob/user, params)
 	if(istype(used_item, /obj/item/conveyor_sorter) || istype(used_item, /obj/item/conveyor_sorter/improved))
-		var/obj/item/conveyor_sorter/cs_item = used_item
+		var/obj/item/conveyor_sorter/cs_item = used_item 
 		sorting_list = cs_item.current_sort
 		visible_message("[src] pings, updating its sorting list!")
 		playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
@@ -152,15 +153,7 @@
 	desc = "A tool that is used to not only create the conveyor sorters, but give lists to the conveyor sorters."
 	icon_state = "lister_improved"
 	max_sorters = 8
-
-/obj/item/conveyor_sorter/improved/attack_self(mob/user, modifiers)
-	if(length(spawned_sorters) >= max_sorters)
-		to_chat(user, span_warning("You may only have [max_sorters] spawned conveyor sorters!"))
-		return
-	var/obj/effect/decal/cleanable/conveyor_sorter/improved/new_cs = new /obj/effect/decal/cleanable/conveyor_sorter/improved(get_turf(src))
-	new_cs.parent_item = src
-	new_cs.sorting_list = src.current_sort
-	spawned_sorters += new_cs
+	conveyor_type = /obj/effect/decal/cleanable/conveyor_sorter/improved
 
 /obj/effect/decal/cleanable/conveyor_sorter/improved
 	name = "improved conveyor sorter"
