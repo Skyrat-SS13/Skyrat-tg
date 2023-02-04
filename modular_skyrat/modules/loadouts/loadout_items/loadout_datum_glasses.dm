@@ -24,8 +24,6 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 		equipper.update_glasses_color(equipped_glasses, TRUE)
 	if(equipped_glasses.tint)
 		equipper.update_tint()
-	if(equipped_glasses.vision_correction)
-		equipper.clear_fullscreen("nearsighted")
 	if(equipped_glasses.vision_flags \
 		|| equipped_glasses.darkness_view \
 		|| equipped_glasses.invis_override \

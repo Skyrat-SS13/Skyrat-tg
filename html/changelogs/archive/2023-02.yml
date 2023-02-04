@@ -152,3 +152,87 @@
   itseasytosee:
   - rscdel: You are less likely to see underwear in places it logically should not
       be.
+2023-02-04:
+  Cursor:
+  - rscdel: Removed swears from the  Personal Space quirk.
+  LT3:
+  - imageadd: Nanotrasen's insurance provider finally sprung the cash for a new tram.
+      Made with the latest in lightweight and mostly* non-flammable materials, travel
+      in comfort and style!
+  - code_imp: All tram components are now organised based on type
+  - code_imp: Tram is now aware if it has power or not
+  - rscdel: Removed movement slowdown running on tram plates
+  - bugfix: Tram call buttons will not work calling an unpowered tram
+  - bugfix: Tram doors will no longer cycle open/closed when they're already in the
+      correct position
+  - bugfix: Fixed an edge case where running onto the tram you bounce off the open
+      door as if it was closed
+  - bugfix: Unpowered tram doors can only be forced into the open position
+  - bugfix: Westbound travel shows the correct controls animation
+  - rscadd: Tram doors take a chunk of flesh if you run at them last minute
+  - qol: Reduced duration of amber stage on tram crossing signals
+  Melbert:
+  - refactor: Refactored blindness and nearsightedness. Important to note is that
+      all mobs are naturally blind until their eyes are actually created.
+  - refactor: Refactored "is covered" procs
+  - bugfix: Less sources of blindness now cause permanent blindness. Includes the
+      "Blind" Spell and "Blind Sting" from changelings.
+  - admin: Ahealing someone no longer flashes the blind overlay for 1 tick.
+  - admin: I removed an unused (sort of) inaccessible admin verb that allowed you
+      to toggle the tint from all welding helmets (and clothing) (and lack of eyes)
+      in existence, let me know if you want similar back
+  - balance: Changeling "Blind Sting" now causes eye damage (enough to blind) rather
+      than arbitrarily forcing blindness.
+  - balance: Visionloss virus symptom now causes eye damage (enough to blind) rather
+      than arbitrarily forcing blindness.
+  - balance: Oculine has been reworked slightly. Prior, Oculine arbitrarily healed
+      blindness and nearsightedness from eye damage reagrdless of how damaged the
+      eyes were, and applied blur on success. Now, Oculine just heals eye damage,
+      and blindness / nearsightedness is restored in the process. There is now a probability
+      every tick that eye blur is applied based on how pure the oculine is while healing
+      very damaged eyes.
+  - balance: Pacifists can no longer eyestab.
+  - balance: Any clothing item that covers your eyes contributes to getting the bonus
+      while sleeping, and to removing temporary blindness faster
+  Rhials:
+  - rscadd: Adds the Terrify spell and Terrified status effect. Terrified victims
+      will suffer increasingly detrimental effects until they're calmed down.
+  - balance: Nightmares can now cast the Terrify spell on victims to plague their
+      prey with. Attacking a Terrified human with your open hand will trip them up.
+  - imageadd: Adds status effect and spell icons for Terrify/Terrified.
+  - spellcheck: fixes a typo in the message for consuming a nightmare heart.
+  SkyratBot:
+  - bugfix: Made the northwest arrow icon in build mode actually point northwest
+  - bugfix: Nanotrasen Artificial Intelligence Department has repelled a Cybersun
+      attack on AI personalities and advanced camera frameworks that was based on
+      the last year's AI GRID OF DOOM ion law incident. Free-look camera consoles
+      and AIs should no longer have a grid of free vision that also prevents interacting
+      with stuff on the grid.
+  - bugfix: The wizard's magickal printing press has been corrected such that ye magickal
+      text describing what the semi-randomize option do is no longer printed _underneath_
+      the semi-randomize button.
+  - refactor: renames datum parts above tier 1 accordingly to their tier
+  - balance: Gibs now provide a small amount of nutriment.
+  - spellcheck: changes the snake crate description from poisonous to venomous
+  - rscadd: You can now mark TGC cards on the holodeck battle arena, useful for keeping
+      track of effects such as hivemind.
+  - rscadd: Right clicking a card holder on the TGC holodeck battle arena will allow
+      you to generate a "blank card", useful for when using cards that summon other
+      cards, such as the xenomorph hivelord.
+  - spellcheck: Capitalized some descriptions for TGC machines
+  - refactor: stack components no longer exist inside a machine's component_parts
+  - refactor: move component printer & module duplicator circuitboards into machine_circuitboards.dm
+  - spellcheck: The regenerative sepia crossbreed's usage description has been corrected
+  - qol: Tape recorder actions (e.g. starting/stopping playback) now use balloon alerts
+      instead of say() to reduce chat spam
+  - bugfix: You can no longer get a tape stuck in the tape recorder by unspooling
+      it before inserting
+  - spellcheck: Whenever you offer your hand to someone in need, or just wanting to
+      pull them around- the alert that shows up to them should be a bit more clear
+      now with a 100% decrease in non-necessary pronouns and articles.
+  Tattle:
+  - admin: cyborg creation details (synced AI and default laws) are now logged
+  Zenitheevee:
+  - bugfix: Shady market - Black Market Chevvy now flies correctly
+  - bugfix: Shady market - Things that shouldn't have spawned on Shady Market now
+      dont spawn
