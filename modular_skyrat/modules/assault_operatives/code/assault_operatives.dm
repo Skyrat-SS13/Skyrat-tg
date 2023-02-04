@@ -180,10 +180,6 @@
 	if (!preview_outfit)
 		return null
 
-	var/icon/final_icon =
-
-	return finish_preview_icon(final_icon)
-
 	var/icon/final_icon = render_preview_outfit(preview_outfit)
 
 	if (!isnull(preview_outfit_behind))
