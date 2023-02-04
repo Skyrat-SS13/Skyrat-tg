@@ -30,6 +30,14 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 		/obj/merge_conflict_marker,
 		//briefcase launchpads erroring
 		/obj/machinery/launchpad/briefcase,
+<<<<<<< HEAD
+=======
+		//Shouldn't be created
+		/mob/admin_module_holder,
+		//Both are abstract types meant to scream bloody murder if spawned in raw
+		/obj/item/organ/external,
+		/obj/item/organ/external/wings,
+>>>>>>> 7f25d7f17bd (Refactors admin verbs from giant ass lists into datums (#72407))
 	)
 	//Say it with me now, type template
 	ignore += typesof(/obj/effect/mapping_helpers)

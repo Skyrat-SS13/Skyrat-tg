@@ -1,4 +1,4 @@
-/client/proc/admin_delete(datum/D)
+/datum/admins/proc/admin_delete(datum/D)
 	var/atom/A = D
 	var/coords = ""
 	var/jmp_coords = ""
@@ -21,9 +21,10 @@
 			T = D // SKYRAT EDIT, orginal: var/turf/T = D
 			T.ScrapeAway()
 		else
-			vv_update_display(D, "deleted", VV_MSG_DELETED)
+			owner?.vv_update_display(D, "deleted", VV_MSG_DELETED)
 			qdel(D)
 			if(!QDELETED(D))
+<<<<<<< HEAD
 				vv_update_display(D, "deleted", "")
 		// Skyrat edit addition start -- optional bluespace sparks on delete
 		if(T && prefs.read_preference(/datum/preference/toggle/admin/delete_sparks))
@@ -32,3 +33,6 @@
 			sparks.set_up(10, 1, T)
 			sparks.attach(T)
 			sparks.start()
+=======
+				owner?.vv_update_display(D, "deleted", "")
+>>>>>>> 7f25d7f17bd (Refactors admin verbs from giant ass lists into datums (#72407))
