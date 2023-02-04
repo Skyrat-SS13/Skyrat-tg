@@ -12,9 +12,9 @@
 	show_to_ghosts = TRUE
 	hijack_speed = 2
 
-	preview_outfit = /datum/outfit/assaultops
+	preview_outfit = /datum/outfit/assaultops/maskless
 	/// In the preview icon, the operatives who are behind the leader
-	var/preview_outfit_behind = /datum/outfit/assaultops/suited_up
+	var/preview_outfit_behind = /datum/outfit/assaultops
 
 	ui_name = "AntagInfoAssaultops"
 	/// The default outfit given BEFORE they choose their equipment.
@@ -188,10 +188,6 @@
 
 		final_icon.Blend(teammate, ICON_UNDERLAY, -world.icon_size / 4, 0)
 		final_icon.Blend(teammate, ICON_UNDERLAY, world.icon_size / 4, 0)
-
-	var/icon/disky = icon('modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi', "goldeneye_key")
-	disky.Shift(SOUTH, 6)
-	final_icon.Blend(disky, ICON_OVERLAY)
 
 	return finish_preview_icon(final_icon)
 
