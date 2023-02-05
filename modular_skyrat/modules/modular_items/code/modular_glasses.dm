@@ -19,7 +19,7 @@
 	/// The current operating mode
 	var/mode
 	/// Defines messages that will be shown to the user upon switching modes (e.g. turning it on)
-	var/list/modes_msg = list(MODE_ON = "You activate the optical matrix on the ", MODE_OFF = "You deactivate the optical matrix on the ")
+	var/list/modes_msg = list(MODE_ON = "Optical matrix enabled", MODE_OFF = "Optical matrix disabled")
 	/// Because initial() will not work on subtypes from within the parent we need to store a reference to the type of the glasses calling the procs
 	var/obj/item/clothing/glasses/hud/ar/glasses_type
 
@@ -51,18 +51,18 @@
 	
 	switch(mode)
 		if(MODE_ON)
-			balloon_alert(user, span_notice("[modes_msg[mode]][src]."))
+			balloon_alert(user, span_notice("[modes_msg[mode]]"))
 			reset_vars() // Resets all the vars to their initial values (THIS PRESUMES THE DEFAULT STATE IS ON)
 			add_hud(user)
 		if(MODE_FREEZE_ANIMATION)
-			balloon_alert(user, span_notice("[modes_msg[mode]][src]."))
+			balloon_alert(user, span_notice("[modes_msg[mode]]"))
 			freeze_animation()
 		if(MODE_OFF)
 			if(MODE_OFF_FLASH_PROTECTION in modes)
 				flash_protect = FLASH_PROTECTION_FLASH
-				balloon_alert(user, span_notice("[modes_msg[MODE_OFF_FLASH_PROTECTION]][src]."))
+				balloon_alert(user, span_notice("[modes_msg[MODE_OFF_FLASH_PROTECTION]]"))
 			else
-				balloon_alert(user, span_notice("[modes_msg[mode]][src]."))
+				balloon_alert(user, span_notice("[modes_msg[mode]]"))
 			icon_state = off_state
 			disable_vars(user)
 			remove_hud(user)
@@ -169,7 +169,7 @@
 	hud_trait = TRAIT_SECURITY_HUD
 	glass_colour_type = /datum/client_colour/glass_colour/red
 	modes = list(MODE_OFF_FLASH_PROTECTION, MODE_ON)
-	modes_msg = list(MODE_OFF_FLASH_PROTECTION = "You switch to flash protection mode and deactivate the optical matrix on ", MODE_ON = "You switch to HUD mode, activating the optical matrix on ")
+	modes_msg = list(MODE_OFF_FLASH_PROTECTION = "Flash protection enabled", MODE_ON = "Optical matrix enabled")
 
 // Medical Aviators
 /obj/item/clothing/glasses/hud/ar/aviator/health
@@ -254,7 +254,7 @@
 	flags_cover = null /// It doesn't actually cover up any parts
 	off_state = "projector-off"
 	modes = list(MODE_OFF, MODE_ON, MODE_FREEZE_ANIMATION)
-	modes_msg = list(MODE_ON = "You activate the projector, a projector folds out as it starts flashing on ", MODE_FREEZE_ANIMATION = "You switch to a continuous beam on ", MODE_OFF = "As you press a button on the side, the projector turns off and folds inward back into " )
+	modes_msg = list(MODE_ON = "Projector enabled", MODE_FREEZE_ANIMATION = "Continuous beam mode", MODE_OFF = "Projector disabled" )
 
 /obj/item/clothing/glasses/hud/ar/projector/meson
 	name = "retinal projector meson HUD"
