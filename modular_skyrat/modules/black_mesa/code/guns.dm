@@ -46,7 +46,6 @@
 	mag_type = /obj/item/ammo_box/magazine/mp5
 	bolt_type = BOLT_TYPE_LOCKING
 	can_suppress = TRUE
-	burst_size = 3
 	fire_delay = 1.25
 	spread = 2.5
 	mag_display = TRUE
@@ -64,6 +63,11 @@
 	weapon_weight = WEAPON_MEDIUM
 	w_class = WEIGHT_CLASS_NORMAL
 	projectile_damage_multiplier = 0.7
+
+/obj/item/gun/ballistic/automatic/mp5/Initialize(mapload)
+	. = ..()
+
+	AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/ammo_box/magazine/mp5
 	name = "MP5 magazine (10mm Auto)"

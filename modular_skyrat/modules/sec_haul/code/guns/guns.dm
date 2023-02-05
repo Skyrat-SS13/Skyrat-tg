@@ -561,11 +561,15 @@
 	mag_type = /obj/item/ammo_box/magazine/dmr
 	fire_delay = 1.7
 	can_suppress = FALSE
-	burst_size = 3
 	can_bayonet = FALSE
 	mag_display = TRUE
 	fire_sound_volume = 60
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sniper_fire.ogg'
+
+/obj/item/gun/ballistic/automatic/dmr/Initialize(mapload)
+	. = ..()
+
+	AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/gun/ballistic/automatic/dmr/give_manufacturer_examine()
 	AddComponent(/datum/component/manufacturer_examine, COMPANY_ARMADYNE)
@@ -775,13 +779,17 @@
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/g11
 	can_suppress = FALSE
-	burst_size = 3
 	fire_delay = 0.5
 	spread = 10
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/ltrifle_fire.ogg'
 	can_bayonet = TRUE
+
+/obj/item/gun/ballistic/auotmatic/g11/Initialize(mapload)
+	. = ..()
+
+	AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/gun/ballistic/automatic/g11/give_manufacturer_examine()
 	AddComponent(/datum/component/manufacturer_examine, COMPANY_OLDARMS)
@@ -940,7 +948,6 @@
 	can_bayonet = FALSE
 	mag_display = FALSE
 	mag_display_ammo = FALSE
-	burst_size = 2
 	fire_delay = 4
 	spread = 10
 	fire_sound = 'sound/weapons/gun/smg/shot_suppressed.ogg'
@@ -948,7 +955,10 @@
 
 /obj/item/gun/ballistic/automatic/vintorez/Initialize(mapload)
 	. = ..()
+
 	AddComponent(/datum/component/scope, range_modifier = 1.5)
+
+	AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/gun/ballistic/automatic/vintorez/give_manufacturer_examine()
 	AddComponent(/datum/component/manufacturer_examine, COMPANY_OLDARMS)
@@ -994,13 +1004,17 @@
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pcr
 	fire_delay = 1.80
 	can_suppress = FALSE
-	burst_size = 5
 	spread = 10
 	can_bayonet = FALSE
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/smg_fire.ogg'
 	projectile_damage_multiplier = 0.5
+
+/obj/item/gun/ballistic/automatic/pcr/Initialize(mapload)
+	. = ..()
+
+	AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/gun/ballistic/automatic/pcr/give_manufacturer_examine()
 	AddComponent(/datum/component/manufacturer_examine, COMPANY_BOLT)
@@ -1052,6 +1066,11 @@
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sfrifle_fire.ogg'
 	can_bayonet = TRUE
 	projectile_damage_multiplier = 0.7
+
+/obj/item/gun/ballistic/automatic/pitbull/Initialize(mapload)
+	. = ..()
+
+	AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/gun/ballistic/automatic/pitbull/give_manufacturer_examine()
 	AddComponent(/datum/component/manufacturer_examine, COMPANY_BOLT)
@@ -1108,6 +1127,11 @@
 	mag_display_ammo = TRUE
 	fire_sound = 'sound/weapons/gun/smg/shot.ogg'
 	can_bayonet = TRUE
+
+/obj/item/gun/ballistic/automatic/ostwind/Initialize(mapload)
+	. = ..()
+
+	AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/gun/ballistic/automatic/ostwind/give_manufacturer_examine()
 	AddComponent(/datum/component/manufacturer_examine, COMPANY_ARMADYNE)

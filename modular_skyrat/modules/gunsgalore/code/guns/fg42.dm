@@ -26,7 +26,10 @@
 
 /obj/item/gun/ballistic/automatic/fg42/Initialize(mapload)
 	. = ..()
+
 	AddComponent(/datum/component/scope, range_modifier = 1)
+
+	AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/gun/ballistic/automatic/fg42/give_manufacturer_examine()
 	AddComponent(/datum/component/manufacturer_examine, COMPANY_OLDARMS)

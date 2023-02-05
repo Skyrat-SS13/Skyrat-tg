@@ -22,6 +22,11 @@
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magout.ogg'
 	alt_icons = TRUE
 
+/obj/item/gun/ballistic/automatic/akm/Initialize(mapload)
+	. = ..()
+
+	AddComponent(/datum/component/automatic_fire, fire_delay)
+
 /obj/item/gun/ballistic/automatic/akm/give_manufacturer_examine()
 	AddComponent(/datum/component/manufacturer_examine, COMPANY_IZHEVSK)
 
