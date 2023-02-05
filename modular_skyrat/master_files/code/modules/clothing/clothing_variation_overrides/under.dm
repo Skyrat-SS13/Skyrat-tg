@@ -208,7 +208,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	gets_cropped_on_taurs = FALSE
 
-/obj/item/clothing/under/color/white
+/obj/item/clothing/under/color
 	supports_variations_flags = CLOTHING_MONKEY_VARIATION
 
 /obj/item/clothing/under/changeling
