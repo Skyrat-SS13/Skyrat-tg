@@ -339,7 +339,7 @@
 
 /obj/item/clothing/head/beret/badge
 	name = "badged beret"
-	desc = "The latest in Anti-Territorial Government fashion!"
+	desc = "A beret. With a badge. What do you want, a dissertation? It's a hat."
 	icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
