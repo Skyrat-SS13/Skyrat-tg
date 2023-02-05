@@ -31,7 +31,11 @@
 ///Asks the external organs inside the limb if they can restyle
 /obj/item/bodypart/proc/attempt_feature_restyle(atom/source, mob/living/trimmer, atom/movable/original_target, body_zone, restyle_type, style_speed)
 	var/list/valid_features = list()
+<<<<<<< HEAD
 	for(var/obj/item/organ/external/feature as anything in external_organs)
+=======
+	for(var/obj/item/organ/external/feature in contents)
+>>>>>>> 46af88ffe8f (Fixes pod person hair restyling (#73196))
 		if(feature.restyle_flags & restyle_type)
 			valid_features.Add(feature)
 

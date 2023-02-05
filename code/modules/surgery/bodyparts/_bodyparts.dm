@@ -672,6 +672,7 @@
 				SIGNAL_REMOVETRAIT(TRAIT_NOBLOOD),
 				SIGNAL_ADDTRAIT(TRAIT_NOBLOOD),
 				))
+		UnregisterSignal(old_owner, COMSIG_ATOM_RESTYLE)
 	if(owner)
 		if(initial(can_be_disabled))
 			if(HAS_TRAIT(owner, TRAIT_NOLIMBDISABLE))
@@ -686,6 +687,7 @@
 		if(needs_update_disabled)
 			update_disabled()
 
+		RegisterSignal(owner, COMSIG_ATOM_RESTYLE, PROC_REF(on_attempt_feature_restyle_mob))
 
 	refresh_bleed_rate()
 	return old_owner
