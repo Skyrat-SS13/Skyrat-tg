@@ -169,7 +169,7 @@
 	hud_trait = TRAIT_SECURITY_HUD
 	glass_colour_type = /datum/client_colour/glass_colour/red
 	modes = list(MODE_OFF_FLASH_PROTECTION, MODE_ON)
-	modes_msg = list(MODE_OFF_FLASH_PROTECTION = "Flash protection enabled", MODE_ON = "Optical matrix enabled")
+	modes_msg = list(MODE_OFF_FLASH_PROTECTION = "Flash protection mode", MODE_ON = "Optical matrix enabled")
 
 // Medical Aviators
 /obj/item/clothing/glasses/hud/ar/aviator/health
