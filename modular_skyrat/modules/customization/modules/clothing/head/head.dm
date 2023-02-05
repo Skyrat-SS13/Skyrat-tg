@@ -345,4 +345,12 @@
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	greyscale_colors = "#972A2A#EFEFEF"
 	flags_1 = IS_PLAYER_COLORABLE_1
+  
+/obj/item/clothing/head/costume/cowboyhat_old
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	name = "old cowboy hat"
+	desc = "An older cowboy hat, perfect for any outlaw, though lacking fancy colour magic."
+	icon_state = "cowboyhat_black"
+	inhand_icon_state = "cowboy_hat_black"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
