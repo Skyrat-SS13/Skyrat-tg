@@ -40,6 +40,7 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	/// The channel to be broadcast on, valid values are the values of any of the "RADIO_CHANNEL_" defines.
 	var/announcement_channel = null // RADIO_CHANNEL_COMMON doesn't work here.
 
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 
 /obj/machinery/computer/cryopod/Initialize(mapload)
 	. = ..()
@@ -134,11 +135,13 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	desc = "Suited for Cyborgs and Humanoids, the pod is a safe place for personnel affected by the Space Sleep Disorder to get some rest."
 	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi'
 	icon_state = "cryopod-open"
+	base_icon_state = "cryopod"
 	use_power = FALSE
 	density = TRUE
 	anchored = TRUE
 	state_open = TRUE
 
+	var/open_icon_state = "cryopod-open"
 	var/on_store_message = "has entered long-term storage."
 	var/on_store_name = "Cryogenic Oversight"
 	/// Whether the cryopod respects the minimum time someone has to be disconnected before they can be put into cryo by another player
@@ -209,11 +212,9 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 			stored_ckey = mob_occupant.ckey
 
 		COOLDOWN_START(src, despawn_world_time, time_till_despawn)
-	icon_state = "cryopod"
 
 /obj/machinery/cryopod/open_machine()
 	..()
-	icon_state = "cryopod-open"
 	set_density(TRUE)
 	name = initial(name)
 	tucked = FALSE
@@ -509,6 +510,28 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 		qdel(weapon)
 		user.add_mood_event("tucked", /datum/mood_event/tucked_in, occupant)
 		tucked = TRUE
+
+/obj/machinery/cryopod/update_icon_state()
+	icon_state = state_open ? open_icon_state : base_icon_state
+	return ..()
+
+/// Special wall mounted cryopod for the prison, making it easier to autospawn.
+/obj/machinery/cryopod/prison
+	icon_state = "prisonpod"
+	base_icon_state = "prisonpod"
+	open_icon_state = "prisonpod"
+	density = FALSE
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cryopod/prison, 18)
+
+/obj/machinery/cryopod/prison/set_density(new_value)
+	// Simple way to make it always non-dense.
+	return ..(FALSE)
+
+/obj/machinery/cryopod/prison/close_machine(atom/movable/target)
+	. = ..()
+	// Flick the pod for a second when user enters
+	flick("prisonpod-open", src)
 
 // Wake-up notifications
 
