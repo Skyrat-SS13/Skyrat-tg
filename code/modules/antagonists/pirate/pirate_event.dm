@@ -100,14 +100,6 @@
 
 /datum/event_admin_setup/pirates/apply_to_event(datum/round_event/pirates/event)
 
-/obj/machinery/shuttle_scrambler/proc/toggle_on(mob/user)
-	SSshuttle.registerTradeBlockade(src)
-	AddComponent(/datum/component/gps, "Nautical Signal")
-	active = TRUE
-	to_chat(user,span_notice("You toggle [src] [active ? "on":"off"]."))
-	to_chat(user,span_warning("The scrambling signal can be now tracked by GPS."))
-	START_PROCESSING(SSobj,src)
-
 /obj/machinery/shuttle_scrambler/interact(mob/user)
 	if(active)
 		dump_loot(user)
@@ -120,30 +112,6 @@
 	toggle_on(user)
 	update_appearance()
 	send_notification()
-
-//interrupt_research
-/obj/machinery/shuttle_scrambler/proc/interrupt_research()
-	for(var/obj/machinery/rnd/server/S as anything in SSresearch.science_tech.techweb_servers)
-		if(S.machine_stat & (NOPOWER|BROKEN))
-			continue
-		S.emp_act()
-		new /obj/effect/temp_visual/emp(get_turf(S))
-
-/obj/machinery/shuttle_scrambler/proc/dump_loot(mob/user)
-	if(credits_stored) // Prevents spamming empty holochips
-		new /obj/item/holochip(drop_location(), credits_stored)
-		to_chat(user,span_notice("You retrieve the siphoned credits!"))
-		credits_stored = 0
-	else
-		to_chat(user,span_notice("There's nothing to withdraw."))
-
-/obj/machinery/shuttle_scrambler/proc/send_notification()
-	priority_announce("Data theft signal detected, source registered on local gps units.")
-
-/obj/machinery/shuttle_scrambler/proc/toggle_off(mob/user)
-	SSshuttle.clearTradeBlockade(src)
-	active = FALSE
-	STOP_PROCESSING(SSobj,src)
 
 /obj/machinery/shuttle_scrambler/update_icon_state()
 	icon_state = active ? "dominator-Blue" : "dominator"
@@ -190,15 +158,6 @@
 	mask_type = /obj/item/clothing/mask/breath
 	storage_type = /obj/item/tank/internals/oxygen
 
-/obj/machinery/loot_locator
-	name = "Booty Locator"
-	desc = "This sophisticated machine scans the nearby space for items of value."
-	icon = 'icons/obj/machines/research.dmi'
-	icon_state = "tdoppler"
-	density = TRUE
-	var/cooldown = 300
-	var/next_use = 0
-
 /obj/machinery/loot_locator/interact(mob/user)
 	if(world.time <= next_use)
 		to_chat(user,span_warning("[src] is recharging."))
@@ -209,33 +168,6 @@
 		say("No valuables located. Try again later.")
 	else
 		say("Located: [AM.name] at [get_area_name(AM)]")
-
-/obj/machinery/loot_locator/proc/find_random_loot()
-	if(!GLOB.exports_list.len)
-		setupExports()
-	var/list/possible_loot = list()
-	for(var/datum/export/pirate/E in GLOB.exports_list)
-		possible_loot += E
-	var/datum/export/pirate/P
-	var/atom/movable/AM
-	while(!AM && possible_loot.len)
-		P = pick_n_take(possible_loot)
-		AM = P.find_loot()
-	return AM
-
-//Pad & Pad Terminal
-/obj/machinery/piratepad
-	name = "cargo hold pad"
-	icon = 'icons/obj/telescience.dmi'
-	icon_state = "lpad-idle-off"
-	///This is the icon_state that this telepad uses when it's not in use.
-	var/idle_state = "lpad-idle-off"
-	///This is the icon_state that this telepad uses when it's warming up for goods teleportation.
-	var/warmup_state = "lpad-idle"
-	///This is the icon_state to flick when the goods are being sent off by the telepad.
-	var/sending_state = "lpad-beam"
-	///This is the cargo hold ID used by the piratepad_control. Match these two to link them together.
-	var/cargo_hold_id
 
 /obj/machinery/piratepad/multitool_act(mob/living/user, obj/item/multitool/I)
 	. = ..()
@@ -309,10 +241,6 @@
 			stop_sending()
 			. = TRUE
 
-/obj/machinery/computer/piratepad_control/proc/recalc()
-	if(sending)
-		return
-
 	status_report = "Predicted value: "
 	var/value = 0
 	var/datum/export_report/ex = new
@@ -329,77 +257,6 @@
 
 	if(!value)
 		status_report += "0"
-
-/obj/machinery/computer/piratepad_control/proc/send()
-	if(!sending)
-		return
-
-	var/datum/export_report/ex = new
-	var/obj/machinery/piratepad/pad = pad_ref?.resolve()
-
-	for(var/atom/movable/AM in get_turf(pad))
-		if(AM == pad)
-			continue
-		export_item_and_contents(AM, EXPORT_PIRATE | EXPORT_CARGO | EXPORT_CONTRABAND | EXPORT_EMAG, apply_elastic = FALSE, delete_unsold = FALSE, external_report = ex)
-
-	status_report = "Sold: "
-	var/value = 0
-	for(var/datum/export/E in ex.total_amount)
-		var/export_text = E.total_printout(ex,notes = FALSE) //Don't want nanotrasen messages, makes no sense here.
-		if(!export_text)
-			continue
-
-		status_report += export_text
-		status_report += " "
-		value += ex.total_value[E]
-
-	if(!total_report)
-		total_report = ex
-	else
-		total_report.exported_atoms += ex.exported_atoms
-		for(var/datum/export/E in ex.total_amount)
-			total_report.total_amount[E] += ex.total_amount[E]
-			total_report.total_value[E] += ex.total_value[E]
-		playsound(loc, 'sound/machines/wewewew.ogg', 70, TRUE)
-
-	points += value
-
-	if(!value)
-		status_report += "Nothing"
-
-	pad.visible_message(span_notice("[pad] activates!"))
-	flick(pad.sending_state,pad)
-	pad.icon_state = pad.idle_state
-	sending = FALSE
-
-/obj/machinery/computer/piratepad_control/proc/start_sending()
-	var/obj/machinery/piratepad/pad = pad_ref?.resolve()
-	if(!pad)
-		status_report = "No pad detected. Build or link a pad."
-		pad.audible_message(span_notice("[pad] beeps."))
-		return
-	if(pad?.panel_open)
-		status_report = "Please screwdrive pad closed to send. "
-		pad.audible_message(span_notice("[pad] beeps."))
-		return
-	if(sending)
-		return
-	sending = TRUE
-	status_report = "Sending... "
-	pad.visible_message(span_notice("[pad] starts charging up."))
-	pad.icon_state = pad.warmup_state
-	sending_timer = addtimer(CALLBACK(src, PROC_REF(send)),warmup_time, TIMER_STOPPABLE)
-
-/obj/machinery/computer/piratepad_control/proc/stop_sending(custom_report)
-	if(!sending)
-		return
-	sending = FALSE
-	status_report = "Ready for delivery."
-	if(custom_report)
-		status_report = custom_report
-	var/obj/machinery/piratepad/pad = pad_ref?.resolve()
-	pad.icon_state = pad.idle_state
-	deltimer(sending_timer)
 
 /datum/export/pirate/ransom
 	cost = 3000
