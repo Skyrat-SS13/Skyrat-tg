@@ -1463,3 +1463,21 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/hands.dmi'
 	icon_state = "lt3_gloves"
+
+// Donation reward for Lolpopomg101
+/obj/item/clothing/suit/hooded/colorblockhoodie
+	name = "color-block hoodie"
+	desc = "A soft pastel color-block hoodie from an unrecognizable brand."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "colorblockhoodie"
+	hoodtype = /obj/item/clothing/head/hooded/colorblockhoodie
+
+/obj/item/clothing/head/hooded/colorblockhoodie
+	name = "hood"
+	desc = "Very soft on the inside!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "colorblockhood"
+	flags_inv = HIDEHAIR
+	supports_variations_flags = NONE
