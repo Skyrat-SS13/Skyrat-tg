@@ -26,7 +26,7 @@
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
-		"tail" = ACC_RANDOM,
+		"tail" = "None",
 		"legs" = "Normal Legs"
 	)
 	payday_modifier = 0.75
@@ -44,36 +44,20 @@
 	)
 
 /datum/species/akula/randomize_features(mob/living/carbon/human/human_mob)
-	var/main_color
-	var/second_color
-	var/random = rand(1,5)
-	//Choose from a variety of sharkish colors, with a whiter secondary and tertiary
-	switch(random)
-		if(1)
-			main_color = "#668899"
-			second_color = "#BBCCDD"
-		if(2)
-			main_color = "#334455"
-			second_color = "#DDDDEE"
-		if(3)
-			main_color = "#445566"
-			second_color = "#DDDDEE"
-		if(4)
-			main_color = "#666655"
-			second_color = "#DDDDEE"
-		if(5)
-			main_color = "#444444"
-			second_color = "#DDDDEE"
+	var/main_color = "#668899"
+	var/secondary_color = "#BBCCDD"
+	var/tertiary_color = "#BBCCDD"
+	// Yeah its not random, oh well
 	human_mob.dna.features["mcolor"] = main_color
-	human_mob.dna.features["mcolor2"] = second_color
-	human_mob.dna.features["mcolor3"] = second_color
+	human_mob.dna.features["mcolor2"] = secondary_color
+	human_mob.dna.features["mcolor3"] = tertiary_color
 
 /obj/item/organ/internal/eyes/akula
 	// Eyes over hair as bandaid for the low amounts of head matching hair
 	eyes_layer = (HAIR_LAYER - 0.5)
 
 /datum/species/akula/get_random_body_markings(list/passed_features)
-	var/name = "Shark"
+	var/name = "Akula"
 	var/datum/body_marking_set/BMS = GLOB.body_marking_sets[name]
 	var/list/markings = list()
 	if(BMS)
@@ -87,11 +71,12 @@
 	return list(placeholder_lore)
 
 /datum/species/akula/prepare_human_for_preview(mob/living/carbon/human/human)
-	var/main_color = "#394b66"
-	var/secondary_color = "#818b9b"
+	var/main_color = "#668899"
+	var/secondary_color = "#BBCCDD"
+	var/tertiary_color = "#BBCCDD"
 	human.dna.features["mcolor"] = main_color
 	human.dna.features["mcolor2"] = secondary_color
-	human.dna.features["mcolor3"] = secondary_color
-	human.dna.species.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Akula", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, secondary_color))
+	human.dna.features["mcolor3"] = tertiary_color
+	human.dna.species.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Akula", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, tertiary_color))
 	human.update_mutant_bodyparts(TRUE)
 	human.update_body(TRUE)
