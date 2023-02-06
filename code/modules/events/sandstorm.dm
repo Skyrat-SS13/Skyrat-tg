@@ -15,6 +15,7 @@
 	earliest_start = 35 MINUTES
 	category = EVENT_CATEGORY_SPACE
 	description = "A wave of space dust continually grinds down a side of the station."
+<<<<<<< HEAD
 	///Where will the sandstorm be coming from -- Established in admin_setup, passed down to round_event
 	var/start_side
 
@@ -33,6 +34,10 @@
 				start_side = EAST
 			if("Left")
 				start_side = WEST
+=======
+	admin_setup = /datum/event_admin_setup/listed_options/sandstorm
+	map_flags = EVENT_SPACE_ONLY
+>>>>>>> cfb2d9feb95 (Meteor events won't try and run on icebox (#73241))
 
 /datum/round_event/sandstorm
 	start_when = 60
@@ -89,6 +94,7 @@
 	earliest_start = 0 MINUTES
 	category = EVENT_CATEGORY_SPACE
 	description = "The station is pelted by an extreme amount of dust, from all sides, for several minutes. Very destructive and likely to cause lag. Use at own risk."
+	map_flags = EVENT_SPACE_ONLY
 
 /datum/round_event/sandstorm_classic
 	start_when = 1

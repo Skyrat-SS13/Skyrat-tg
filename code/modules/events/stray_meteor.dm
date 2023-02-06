@@ -7,6 +7,7 @@
 	earliest_start = 20 MINUTES
 	category = EVENT_CATEGORY_SPACE
 	description = "Throw a random meteor somewhere near the station."
+<<<<<<< HEAD
 	///The selected meteor type if chosen through admin setup.
 	var/chosen_meteor
 
@@ -18,6 +19,10 @@
 		var/list/meteor_list = list()
 		meteor_list += subtypesof(/obj/effect/meteor)
 		chosen_meteor = tgui_input_list(usr, "Too lazy for buildmode?","Throw meteor", meteor_list)
+=======
+	admin_setup = /datum/event_admin_setup/listed_options/stray_meteor
+	map_flags = EVENT_SPACE_ONLY
+>>>>>>> cfb2d9feb95 (Meteor events won't try and run on icebox (#73241))
 
 /datum/round_event/stray_meteor
 	announce_when = 1

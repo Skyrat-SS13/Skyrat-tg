@@ -7,6 +7,7 @@
 	dynamic_should_hijack = TRUE
 	category = EVENT_CATEGORY_INVASION
 	description = "The crew will either pay up, or face a pirate assault."
+<<<<<<< HEAD
 	///admin chosen pirate team
 	var/datum/pirate_gang/chosen_gang
 
@@ -22,9 +23,13 @@
 	if(chosen == "Random")
 		return //still do the event, but chosen_gang is still null, so it will pick from the choices
 	chosen_gang = gang_choices[chosen]
+=======
+	admin_setup = /datum/event_admin_setup/pirates
+	map_flags = EVENT_SPACE_ONLY
+>>>>>>> cfb2d9feb95 (Meteor events won't try and run on icebox (#73241))
 
 /datum/round_event_control/pirates/preRunEvent()
-	if (!SSmapping.empty_space)
+	if (!SSmapping.is_planetary())
 		return EVENT_CANT_RUN
 	return ..()
 
