@@ -666,6 +666,16 @@
 	name = "Worn Prison Jumpsuit - Digitigrade"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/color_digi.dmi'
 
+/datum/greyscale_config/jumpsuit_worn/monkey
+	name = "Worn Jumpsuit - Monkey"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/monkey/uniform.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/jumpsuit/jumpsuit_worn_monkey.json'
+
+/datum/greyscale_config/jumpsuit_prison_worn/monkey
+	name = "Worn Prison Jumpsuit - Monkey"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/monkey/uniform.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/jumpsuit/jumpsuit_prison_worn_monkey.json'
+
 /datum/greyscale_config/jumpsuit_worn/vox
 	name = "Worn Jumpsuit - Vox"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_vox.dmi'
