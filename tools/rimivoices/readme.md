@@ -11,4 +11,4 @@ Also partially made out of spite CAUSE NO ONE DOCUMENTS HOW THE FUCK THEY MADE T
 
 Basic understanding of python and audacity's [macro script](https://manual.audacityteam.org/man/scripting_reference.html) system is **required** to leverage this system properly.
 
-Librosa is required for the python scripts (`pip install librosa`).
+Librosa is required for the python scripts (`pip install librosa`), though the parts of the script that use it can be safely commented out if you don't care for added SFX.

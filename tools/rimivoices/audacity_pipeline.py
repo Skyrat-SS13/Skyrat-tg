@@ -90,7 +90,16 @@ def check_effects(key, extra_effects, track_index):
     return track_index
 
 
-def process_audio(extra_content: dict = None):
+def check_commands(key, command_list):
+    commands = check_dict(key, command_list)
+    if commands is None:
+        return
+
+    for command in commands:
+        do_command(command)
+
+
+def process_audio(voice, commands, extra_content: dict = None):
     """
     Processes everything in the sounds folder. Takes an optional dict for passing extra sounds in at various steps.
     Dict format:
@@ -104,7 +113,7 @@ def process_audio(extra_content: dict = None):
 
     e.g: {"meteors" = {IMPORT = [["0", "explosion.ogg"], ["3.87", "kaboom.ogg"]]}}
     """
-    output_dir = os.getcwd() + "/output/"
+    output_dir = os.getcwd() + "/output/" + voice + "/"
     if os.path.exists(output_dir):
         shutil.rmtree(output_dir)
     os.makedirs(output_dir)
@@ -116,7 +125,7 @@ def process_audio(extra_content: dict = None):
     do_command('Copy:')
     do_command('RemoveTracks:')
 
-    folder_path = os.getcwd() + "/sounds/"
+    folder_path = os.getcwd() + "/sounds/" + voice + "/"
     for file in os.listdir(folder_path):
         track_index = 2
         filename = file[:-4]
@@ -126,19 +135,18 @@ def process_audio(extra_content: dict = None):
         do_command('SelectAll:')
         do_command('RemoveTracks:')
         do_command('Import2: Filename="' + in_file + '.wav"')
+        check_commands(IMPORT, commands)
         track_index += check_effects(IMPORT, extra_effects, track_index)
         do_command('SelectAll:')
-        # do_command('ChangeTempo: Percentage="15" SBSMS="0"')
-        do_command('ChangeTempo: Percentage="10" SBSMS="0"')
+        check_commands(TEMPO, commands)
         track_index += check_effects(TEMPO, extra_effects, track_index)
-        # do_command('ChangePitch: Percentage="-20" SBSMS="1"')
+        check_commands(PITCH, commands)
         track_index += check_effects(PITCH, extra_effects, track_index)
-        # do_command('Distortion: DC_Block="0" Noise_Floor="-70" Parameter_1="20" Parameter_2="56" Repeats="1" Threshold_dB="-6" Type="Rectifier Distortion"')  # This masks some AI voice roughness. Also makes it sound less 'human'. Also makes it sound like it's coming from a cheap speaker system.
-        do_command('Distortion: DC_Block="0" Noise_Floor="-70" Parameter_1="30" Parameter_2="56" Repeats="1" Threshold_dB="-6" Type="Rectifier Distortion"')  # This masks some AI voice roughness. Also makes it sound less 'human'. Also makes it sound like it's coming from a cheap speaker system.
+        check_commands(DISTORTION, commands)  # This masks some AI voice roughness. Also makes it sound less 'human'. Also makes it sound like it's coming from a cheap speaker system.
         track_index += check_effects(DISTORTION, extra_effects, track_index)
         do_command('SelectTime: Start="0" End="0" RelativeTo="ProjectEnd"')
         do_command('Paste:')
         do_command('SelectNone:')
-        do_command('Reverb: Delay="12" DryGain="-1" HfDamping="41" Reverberance="70" RoomSize="100" StereoWidth="100" ToneHigh="100" ToneLow="60" WetGain="-8" WetOnly="0"')
+        check_commands(REVERB, commands)
         track_index += check_effects(REVERB, extra_effects, track_index)
         do_command('Export2: Filename="' + output_dir + filename + '.ogg"')
