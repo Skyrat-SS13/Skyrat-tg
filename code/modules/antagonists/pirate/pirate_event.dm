@@ -254,27 +254,6 @@
 	default_deconstruction_crowbar(tool)
 	return TRUE
 
-/obj/machinery/computer/piratepad_control
-	name = "cargo hold control terminal"
-	///Message to display on the TGUI window.
-	var/status_report = "Ready for delivery."
-	///Reference to the specific pad that the control computer is linked up to.
-	var/datum/weakref/pad_ref
-	///How long does it take to warmup the pad to teleport?
-	var/warmup_time = 100
-	///Is the teleport pad/computer sending something right now? TRUE/FALSE
-	var/sending = FALSE
-	///For the purposes of space pirates, how many points does the control pad have collected.
-	var/points = 0
-	///Reference to the export report totaling all sent objects and mobs.
-	var/datum/export_report/total_report
-	///Callback holding the sending timer for sending the goods after a delay.
-	var/sending_timer
-	///This is the cargo hold ID used by the piratepad machine. Match these two to link them together.
-	var/cargo_hold_id
-	///Interface name for the ui_interact call for different subtypes.
-	var/interface_type = "CargoHoldTerminal"
-
 /obj/machinery/computer/piratepad_control/Initialize(mapload)
 	..()
 	return INITIALIZE_HINT_LATELOAD
@@ -421,10 +400,6 @@
 	var/obj/machinery/piratepad/pad = pad_ref?.resolve()
 	pad.icon_state = pad.idle_state
 	deltimer(sending_timer)
-
-//Attempts to find the thing on station
-/datum/export/pirate/proc/find_loot()
-	return
 
 /datum/export/pirate/ransom
 	cost = 3000
