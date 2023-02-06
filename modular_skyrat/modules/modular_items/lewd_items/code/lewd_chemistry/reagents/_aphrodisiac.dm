@@ -289,12 +289,16 @@
 	if(mob_penis.genital_size == penis_min_length)
 		remove_genital(exposed_mob, mob_penis, suppress_chat)
 	else 
+		var/needs_updating = FALSE
 		if(mob_penis.genital_size > penis_min_length)
 			mob_penis.genital_size = max(mob_penis.genital_size - penis_size_reduction_step, penis_min_length)
-			update_appearance(exposed_mob, mob_penis)
-
+			needs_updating = TRUE
+			
 		if(mob_penis.girth > penis_minimum_girth)
 			mob_penis.girth = max(mob_penis.girth - penis_girth_reduction_step, penis_minimum_girth)
+			needs_updating = TRUE
+
+		if(needs_updating)
 			update_appearance(exposed_mob, mob_penis)
 
 /**
