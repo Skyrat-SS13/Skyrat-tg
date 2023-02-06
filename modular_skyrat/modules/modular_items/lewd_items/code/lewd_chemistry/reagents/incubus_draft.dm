@@ -86,7 +86,7 @@
 	// Do prefs allow penis enlargement?
 	if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/penis_enlargement))
 		// Attempt to make new male genitals if applicable
-		create_genitals(exposed_mob, suppress_chat, list(penis, testicles))
+		create_genitals(exposed_mob, suppress_chat, list(GENITAL_PENIS, GENITAL_TESTICLES))
 				
 		// Make the balls bigger if they're small.
 		grow_balls(exposed_mob, suppress_chat)
@@ -95,7 +95,7 @@
 	change_gender(exposed_mob, MALE, suppress_chat)
 		
 	// Attempt genital shrinkage where applicable
-	shrink_genitals(exposed_mob, suppress_chat, list(breasts, vagina, womb))
+	shrink_genitals(exposed_mob, suppress_chat, list(GENITAL_BREASTS, GENITAL_VAGINA, GENITAL_WOMB))
 
 /**
 * Helper function used to display the messages that appear in chat while the growth is occurring

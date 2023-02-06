@@ -69,11 +69,15 @@
 	var/breast_size_reduction_step = 1
 
 	/// Used for determining which genitals the chemical should affect
-	var/const/penis = 1
-	var/const/testicles = 2
-	var/const/breasts = 3
-	var/const/vagina = 4
-	var/const/womb = 5
+	#define GENITAL_PENIS 1
+	#define GENITAL_TESTICLES 2
+	#define GENITAL_BREASTS 3
+	#define GENITAL_VAGINA 4
+	#define GENITAL_WOMB 5
+	
+	// damage to take from being too big
+	#define TAKE_DAMAGE_THRESHOLD_PENIS penis_max_length - 2
+	#define TAKE_DAMAGE_THRESHOLD_BREASTS max_breast_size - 2
 
 	// Not important at all, really, but I don't want folk complaining about a removed feature.
 	var/static/list/species_to_penis = list(
@@ -171,7 +175,7 @@
 		growth_to_chat(exposed_mob, mob_penis, suppress_chat)
 
 	// Damage from being too big for your clothes
-	if((mob_penis?.genital_size >= (penis_max_length - 2)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
+	if((mob_penis?.genital_size >= (TAKE_DAMAGE_THRESHOLD_PENIS)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
 		var/target_bodypart = exposed_mob.get_bodypart(BODY_ZONE_PRECISE_GROIN)
 		if(prob(damage_chance))
 			to_chat(exposed_mob, span_danger("You feel a tightness in your pants!"))
@@ -233,7 +237,7 @@
 		growth_to_chat(exposed_mob, mob_breasts, suppress_chat)
 		
 	// Damage from being too big for your clothes
-	if((mob_breasts?.genital_size >= (max_breast_size - 2)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
+	if((mob_breasts?.genital_size >= (TAKE_DAMAGE_THRESHOLD_BREASTS)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
 		if(prob(damage_chance))
 			to_chat(exposed_mob, span_danger("Your breasts begin to strain against your clothes!"))
 			exposed_mob.adjustOxyLoss(5)
@@ -250,15 +254,15 @@
 /datum/reagent/drug/aphrodisiac/proc/shrink_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, list/genitals_to_shrink) 
 	for(var/mob_genital in genitals_to_shrink)
 		switch(mob_genital)
-			if(penis)
+			if(GENITAL_PENIS)
 				shrink_penis(exposed_mob, suppress_chat)
-			if(testicles)
+			if(GENITAL_TESTICLES)
 				shrink_testicles(exposed_mob, suppress_chat)
-			if(breasts)
+			if(GENITAL_BREASTS)
 				shrink_breasts(exposed_mob, suppress_chat)
-			if(vagina)
+			if(GENITAL_VAGINA)
 				shrink_vagina(exposed_mob, suppress_chat)
-			if(womb)
+			if(GENITAL_WOMB)
 				shrink_womb(exposed_mob, suppress_chat)
 
 /**
@@ -401,15 +405,15 @@
 /datum/reagent/drug/aphrodisiac/proc/create_genitals(mob/living/carbon/human/exposed_mob, suppress_chat = FALSE, list/genitals_to_create) 
 	for(var/mob_genital in genitals_to_create)
 		switch(mob_genital)
-			if(penis)
+			if(GENITAL_PENIS)
 				create_penis(exposed_mob, suppress_chat)
-			if(testicles)
+			if(GENITAL_TESTICLES)
 				create_testicles(exposed_mob, suppress_chat)
-			if(breasts)
+			if(GENITAL_BREASTS)
 				create_breasts(exposed_mob, suppress_chat)
-			if(vagina)
+			if(GENITAL_VAGINA)
 				create_vagina(exposed_mob, suppress_chat)
-			if(womb)
+			if(GENITAL_WOMB)
 				create_womb(exposed_mob, suppress_chat)
 
 /**
@@ -586,4 +590,7 @@
 	if(exposed_mob) 
 		exposed_mob.update_body()
 		if(mutations_overlay)
-			exposed_mob.update_mutations_overlay()			
+			exposed_mob.update_mutations_overlay()
+			
+#undef TAKE_DAMAGE_THRESHOLD_PENIS
+#undef TAKE_DAMAGE_THRESHOLD_BREASTS			
