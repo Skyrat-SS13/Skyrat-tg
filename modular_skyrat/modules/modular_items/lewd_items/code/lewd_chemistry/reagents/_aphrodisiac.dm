@@ -161,10 +161,12 @@
 	if(enlargement_amount >= enlargement_threshold)
 		if(mob_penis?.genital_size >= penis_max_length)
 			return
+
 		mob_penis.genital_size = min(mob_penis.genital_size + penis_length_increase_step, penis_max_length)
 		// Improvision to girth to not make it random chance.
 		if(mob_penis?.girth < penis_max_girth) // Because any higher is ridiculous. However, should still allow for regular penis growth.
 			mob_penis.girth = round(mob_penis.girth + (mob_penis.genital_size/mob_penis.girth))
+
 		update_appearance(exposed_mob, mob_penis)
 		enlargement_amount = 0
 	
@@ -226,6 +228,7 @@
 	if(enlargement_amount >= enlargement_threshold)
 		if(mob_breasts?.genital_size >= max_breast_size)
 			return
+
 		mob_breasts.genital_size = min(mob_breasts.genital_size + breast_size_increase_step, max_breast_size)
 		update_appearance(exposed_mob, mob_breasts)
 		enlargement_amount = 0
@@ -285,6 +288,7 @@
 		if(mob_penis.genital_size > penis_min_length)
 			mob_penis.genital_size = max(mob_penis.genital_size - penis_size_reduction_step, penis_min_length)
 			update_appearance(exposed_mob, mob_penis)
+
 		if(mob_penis.girth > penis_minimum_girth)
 			mob_penis.girth = max(mob_penis.girth - penis_girth_reduction_step, penis_minimum_girth)
 			update_appearance(exposed_mob, mob_penis)
