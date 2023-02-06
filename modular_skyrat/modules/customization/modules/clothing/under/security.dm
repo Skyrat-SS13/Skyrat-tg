@@ -90,6 +90,10 @@
 	acid = 30
 	wound = 10
 
+/obj/item/clothing/under/rank/prisoner
+	supports_variations_flags = CLOTHING_MONKEY_VARIATION
+	greyscale_config_worn_monkey = /datum/greyscale_config/jumpsuit_prison_worn/monkey
+
 /obj/item/clothing/under/rank/prisoner/protcust
 	name = "protective custody prisoner jumpsuit"
 	desc = "A mustard coloured prison jumpsuit, often worn by former Security members, informants and former CentCom employees. Its suit sensors are stuck in the \"Fully On\" position."
@@ -146,6 +150,7 @@
 	greyscale_config_inhand_left = null
 	greyscale_config_inhand_right = null
 	greyscale_config_worn = null
+	supports_variations_flags = NONE
 
 /obj/item/clothing/under/rank/prisoner/syndicate
 	name = "syndicate prisoner jumpsuit"
