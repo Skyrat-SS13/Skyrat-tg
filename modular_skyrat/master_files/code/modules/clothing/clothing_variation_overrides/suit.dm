@@ -41,9 +41,6 @@
 /obj/item/clothing/suit/hooded/bee_costume
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/space/hunter
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/suit/chaplainsuit/holidaypriest
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
@@ -51,9 +48,6 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/costume/pirate/captain
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/suit/space/officer
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/hooded/chaplain_hoodie
@@ -113,6 +107,9 @@
 /obj/item/clothing/suit/jacket/fancy
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
+/obj/item/clothing/suit/space/officer
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
 /**
  * NONE(Squash)
  * Clothing that does not have a digitigrade version, and thus will squash legs to fit.
@@ -128,6 +125,9 @@
 	supports_variations_flags = NONE
 
 /obj/item/clothing/suit/armor/vest/leather //This item blows
+	supports_variations_flags = NONE
+
+/obj/item/clothing/suit/space/hunter
 	supports_variations_flags = NONE
 
 /obj/item/clothing/suit/costume/deckers
