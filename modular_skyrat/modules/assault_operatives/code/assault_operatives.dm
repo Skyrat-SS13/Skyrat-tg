@@ -133,7 +133,7 @@
 	return goldeneye_keys
 
 
-/datum/antagonist/assault_operative/proc/forge_objectives()
+/datum/antagonist/assault_operative/forge_objectives()
 	if(assault_team)
 		objectives |= assault_team.objectives
 
