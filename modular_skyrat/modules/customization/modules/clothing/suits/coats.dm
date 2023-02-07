@@ -1,45 +1,29 @@
 /obj/item/clothing/suit/hooded/wintercoat
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/hooded/wintercoat/paramedic
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "paramedic winter coat"
-	desc = "A winter coat with blue markings. Warm, but probably won't protect from biological agents. For the cozy doctor on the go."
-	icon_state = "coatparamed"
+/obj/item/clothing/suit/hooded/wintercoat/medical/paramedic
 	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/flashlight/pen, /obj/item/reagent_containers/cup/bottle, /obj/item/reagent_containers/cup/beaker, /obj/item/reagent_containers/pill, /obj/item/storage/pill_bottle, /obj/item/paper, /obj/item/melee/baton/telescopic, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
 	armor_type = /datum/armor/wintercoat_paramedic
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/paramedic
 
 /datum/armor/wintercoat_paramedic
 	bio = 50
 	acid = 45
 	wound = 3
 
-/obj/item/clothing/head/hooded/winterhood/paramedic
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	desc = "A white winter coat hood with blue markings."
-	icon_state = "winterhood_paramed"
-
-/obj/item/clothing/suit/hooded/wintercoat/robotics
+/obj/item/clothing/suit/hooded/wintercoat/bartender
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "robotics winter coat"
-	desc = "A black winter coat with a badass flaming robotic skull for the zipper tab. This one has bright red designs and a few useless buttons."
-	icon_state = "coatrobotics"
-	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/melee/baton/telescopic, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/screwdriver, /obj/item/crowbar, /obj/item/wrench, /obj/item/stack/cable_coil, /obj/item/weldingtool, /obj/item/multitool)
-	armor_type = /datum/armor/wintercoat_robotics
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/robotics
+	name = "bartender's winter coat"
+	desc = "A heavy jacket made from wool originally stolen from the chef's goat. This new design is made to fit the classic suit-and-tie aesthetic, but without the hypothermia."
+	icon_state = "coatbar"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/reagent_containers/cup/glass/shaker, /obj/item/reagent_containers/cup/glass/flask, /obj/item/reagent_containers/cup/rag)
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/bartender
 
-/datum/armor/wintercoat_robotics
-	bomb = 10
-
-/obj/item/clothing/head/hooded/winterhood/robotics
+/obj/item/clothing/head/hooded/winterhood/bartender
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	desc = "A black winter coat hood. You can pull it down over your eyes and pretend that you're an outdated, late 1980s interpretation of a futuristic mechanized police force. They'll fix you. They fix everything."
-	icon_state = "winterhood_robotics"
+	icon_state = "winterhood_bar"
 
 /obj/item/clothing/suit/hooded/wintercoat/aformal
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -107,7 +91,7 @@
 /obj/item/clothing/head/hooded/winterhood/narsie
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	desc = "A black winter hood full of whispering secrets that only She shall ever know."
+	desc = "A black winter hood full of whispering secrets that only she shall ever know."
 	icon_state = "winterhood_narsie"
 
 /obj/item/clothing/suit/hooded/wintercoat/ratvar/fake
