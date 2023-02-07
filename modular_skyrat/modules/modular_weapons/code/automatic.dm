@@ -14,16 +14,19 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/ap
-	ammo_type = /obj/item/ammo_casing/c34/ap
+	subtype_ammo = /obj/item/ammo_casing/c34/ap
 	round_type = AMMO_TYPE_AP
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/rubber
-	ammo_type = /obj/item/ammo_casing/c34/rubber
+	subtype_ammo = /obj/item/ammo_casing/c34/rubber
 	round_type = AMMO_TYPE_RUBBER
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/incendiary
-	ammo_type = /obj/item/ammo_casing/c34_incendiary
+	subtype_ammo = /obj/item/ammo_casing/c34_incendiary
 	round_type = AMMO_TYPE_INCENDIARY
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/empty
 	start_empty = 1
@@ -94,16 +97,19 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/ap
-	ammo_type = /obj/item/ammo_casing/c42x30mm/ap
+	subtype_ammo = /obj/item/ammo_casing/c42x30mm/ap
 	round_type = AMMO_TYPE_AP
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/rubber
-	ammo_type = /obj/item/ammo_casing/c42x30mm/rubber
+	subtype_ammo = /obj/item/ammo_casing/c42x30mm/rubber
 	round_type = AMMO_TYPE_RUBBER
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/incendiary
-	ammo_type = /obj/item/ammo_casing/c42x30mm/inc
+	subtype_ammo = /obj/item/ammo_casing/c42x30mm/inc
 	round_type = AMMO_TYPE_INCENDIARY
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/empty
 	start_empty = TRUE

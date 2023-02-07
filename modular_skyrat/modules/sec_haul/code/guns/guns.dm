@@ -32,16 +32,19 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/g17/hp
-	ammo_type = /obj/item/ammo_casing/c9mm/hp
+	subtype_ammo = /obj/item/ammo_casing/c9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/g17/ihdf
-	ammo_type = /obj/item/ammo_casing/c9mm/ihdf
+	subtype_ammo = /obj/item/ammo_casing/c9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/g17/rubber
-	ammo_type = /obj/item/ammo_casing/c9mm/rubber
+	subtype_ammo = /obj/item/ammo_casing/c9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
+	is_subtype = TRUE
 
 /obj/item/gun/ballistic/automatic/pistol/g18
 	name = "\improper GK-18"
@@ -77,16 +80,19 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/g18/hp
-	ammo_type = /obj/item/ammo_casing/c9mm/hp
+	subtype_ammo = /obj/item/ammo_casing/c9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/g18/ihdf
-	ammo_type = /obj/item/ammo_casing/c9mm/ihdf
+	subtype_ammo = /obj/item/ammo_casing/c9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/g18/rubber
-	ammo_type = /obj/item/ammo_casing/c9mm/rubber
+	subtype_ammo = /obj/item/ammo_casing/c9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
+	is_subtype = TRUE
 
 /obj/item/gun/ballistic/automatic/pistol/g17/mesa
 	name = "\improper Glock 20"
@@ -157,12 +163,14 @@
 	)
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh/hp
-	ammo_type = /obj/item/ammo_casing/b12mm/hp
+	subtype_ammo = /obj/item/ammo_casing/b12mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber
-	ammo_type = /obj/item/ammo_casing/b12mm/rubber
+	subtype_ammo = /obj/item/ammo_casing/b12mm/rubber
 	round_type = AMMO_TYPE_RUBBER
+	is_subtype = TRUE
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/corpo
 	name = "\improper PDH-6M 'Corpo'"
@@ -246,16 +254,19 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/hp
-	ammo_type = /obj/item/ammo_casing/c9mm/hp
+	subtype_ammo = /obj/item/ammo_casing/c9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/ihdf
-	ammo_type = /obj/item/ammo_casing/c9mm/ihdf
+	subtype_ammo = /obj/item/ammo_casing/c9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/rubber
-	ammo_type = /obj/item/ammo_casing/c9mm/rubber
+	subtype_ammo = /obj/item/ammo_casing/c9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
+	is_subtype = TRUE
 
 /*
 *	LADON 40x32
@@ -294,16 +305,19 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/ladon/hp
-	ammo_type = /obj/item/ammo_casing/c10mm/hp
+	subtype_ammo = /obj/item/ammo_casing/c10mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/ladon/ihdf
-	ammo_type = /obj/item/ammo_casing/c10mm/ihdf
+	subtype_ammo = /obj/item/ammo_casing/c10mm/ihdf
 	round_type = AMMO_TYPE_IHDF
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/ladon/rubber
-	ammo_type = /obj/item/ammo_casing/c10mm/rubber
+	subtype_ammo = /obj/item/ammo_casing/c10mm/rubber
 	round_type = AMMO_TYPE_RUBBER
+	is_subtype = TRUE
 
 /*
 *	MAKAROV
@@ -334,16 +348,19 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/makarov/hp
-	ammo_type = /obj/item/ammo_casing/c10mm/hp
+	subtype_ammo = /obj/item/ammo_casing/c10mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/makarov/ihdf
-	ammo_type = /obj/item/ammo_casing/c10mm/ihdf
+	subtype_ammo = /obj/item/ammo_casing/c10mm/ihdf
 	round_type = AMMO_TYPE_IHDF
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/makarov/rubber
-	ammo_type = /obj/item/ammo_casing/c10mm/rubber
+	subtype_ammo = /obj/item/ammo_casing/c10mm/rubber
 	round_type = AMMO_TYPE_RUBBER
+	is_subtype = TRUE
 
 /*
 *	MK-58
@@ -375,16 +392,19 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/mk58/hp
-	ammo_type = /obj/item/ammo_casing/c9mm/hp
+	subtype_ammo = /obj/item/ammo_casing/c9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/mk58/ihdf
-	ammo_type = /obj/item/ammo_casing/c9mm/ihdf
+	subtype_ammo = /obj/item/ammo_casing/c9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/mk58/rubber
-	ammo_type = /obj/item/ammo_casing/c9mm/rubber
+	subtype_ammo = /obj/item/ammo_casing/c9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
+	is_subtype = TRUE
 
 /*
 *	FIREFLY
@@ -420,16 +440,19 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/firefly/hp
-	ammo_type = /obj/item/ammo_casing/c9mm/hp
+	subtype_ammo = /obj/item/ammo_casing/c9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber
-	ammo_type = /obj/item/ammo_casing/c9mm/rubber
+	subtype_ammo = /obj/item/ammo_casing/c9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/firefly/ihdf
-	ammo_type = /obj/item/ammo_casing/c9mm/ihdf
+	subtype_ammo = /obj/item/ammo_casing/c9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
+	is_subtype = TRUE
 /*
 *	CROON 40x32
 */
@@ -469,12 +492,14 @@
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
 
 /obj/item/ammo_box/magazine/multi_sprite/croon/rubber
-	ammo_type = /obj/item/ammo_casing/b6mm/rubber
+	subtype_ammo = /obj/item/ammo_casing/b6mm/rubber
 	round_type = AMMO_TYPE_RUBBER
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/croon/ihdf
-	ammo_type = /obj/item/ammo_casing/b6mm/ihdf
+	subtype_ammo = /obj/item/ammo_casing/b6mm/ihdf
 	round_type = AMMO_TYPE_IHDF
+	is_subtype = TRUE
 
 /*
 *	DOZER
@@ -514,16 +539,19 @@
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_INCENDIARY, AMMO_TYPE_AP)
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer/hp
-	ammo_type = /obj/item/ammo_casing/c9mm/hp
+	subtype_ammo = /obj/item/ammo_casing/c9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer/ap
-	ammo_type = /obj/item/ammo_casing/c9mm/ap
+	subtype_ammo = /obj/item/ammo_casing/c9mm/ap
 	round_type = AMMO_TYPE_AP
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer/inc
-	ammo_type = /obj/item/ammo_casing/c9mm/fire
+	subtype_ammo = /obj/item/ammo_casing/c9mm/fire
 	round_type = AMMO_TYPE_INCENDIARY
+	is_subtype = TRUE
 
 /*
 *	DMR 40x32
@@ -770,12 +798,14 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/g11/hp
-	ammo_type = /obj/item/ammo_casing/caseless/b473/hp
+	subtype_ammo = /obj/item/ammo_casing/caseless/b473/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/g11/ihdf
-	ammo_type = /obj/item/ammo_casing/caseless/b473/ihdf
+	subtype_ammo = /obj/item/ammo_casing/caseless/b473/ihdf
 	round_type = AMMO_TYPE_IHDF
+	is_subtype = TRUE
 
 /*
 *	SHOTGUNS
@@ -877,12 +907,14 @@
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER)
 
 /obj/item/ammo_box/magazine/multi_sprite/norwind/hp
-	ammo_type = /obj/item/ammo_casing/b12mm/hp
+	subtype_ammo = /obj/item/ammo_casing/b12mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/norwind/rubber
-	ammo_type = /obj/item/ammo_casing/b12mm/rubber
+	subtype_ammo = /obj/item/ammo_casing/b12mm/rubber
 	round_type = AMMO_TYPE_RUBBER
+	is_subtype = TRUE
 
 /*
 *	VINTOREZ
@@ -930,16 +962,19 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/vintorez/hp
-	ammo_type = /obj/item/ammo_casing/c9mm/hp
+	subtype_ammo = /obj/item/ammo_casing/c9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/vintorez/ihdf
-	ammo_type = /obj/item/ammo_casing/c9mm/ihdf
+	subtype_ammo = /obj/item/ammo_casing/c9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/vintorez/rubber
-	ammo_type = /obj/item/ammo_casing/c9mm/rubber
+	subtype_ammo = /obj/item/ammo_casing/c9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
+	is_subtype = TRUE
 
 /*
 *	PCR-9
@@ -983,16 +1018,19 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/pcr/hp
-	ammo_type = /obj/item/ammo_casing/c9mm/hp
+	subtype_ammo = /obj/item/ammo_casing/c9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/pcr/ihdf
-	ammo_type = /obj/item/ammo_casing/c9mm/ihdf
+	subtype_ammo = /obj/item/ammo_casing/c9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/pcr/rubber
-	ammo_type = /obj/item/ammo_casing/c9mm/rubber
+	subtype_ammo = /obj/item/ammo_casing/c9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
+	is_subtype = TRUE
 
 /obj/item/gun/ballistic/automatic/pitbull
 	name = "\improper Pitbull PDW"
@@ -1032,16 +1070,19 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/pitbull/hp
-	ammo_type = /obj/item/ammo_casing/c10mm/hp
+	subtype_ammo = /obj/item/ammo_casing/c10mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/pitbull/ihdf
-	ammo_type = /obj/item/ammo_casing/c10mm/ihdf
+	subtype_ammo = /obj/item/ammo_casing/c10mm/ihdf
 	round_type = AMMO_TYPE_IHDF
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/pitbull/rubber
-	ammo_type = /obj/item/ammo_casing/c10mm/rubber
+	subtype_ammo = /obj/item/ammo_casing/c10mm/rubber
 	round_type = AMMO_TYPE_RUBBER
+	is_subtype = TRUE
 
 /*
 *	DTR-6
@@ -1084,9 +1125,11 @@
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind/rubber
-	ammo_type = /obj/item/ammo_casing/b6mm/rubber
+	subtype_ammo = /obj/item/ammo_casing/b6mm/rubber
 	round_type = AMMO_TYPE_RUBBER
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind/ihdf
-	ammo_type = /obj/item/ammo_casing/b6mm/ihdf
+	subtype_ammo = /obj/item/ammo_casing/b6mm/ihdf
 	round_type = AMMO_TYPE_IHDF
+	is_subtype = TRUE

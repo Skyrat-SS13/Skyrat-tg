@@ -111,6 +111,8 @@
 	var/round_type = AMMO_TYPE_LETHAL
 	var/base_name = ""
 	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
+	var/is_subtype = FALSE	//Is magazine using an ammo subtype?
+	var/subtype_ammo = null	//ammo for it to spawn with if it is a subtype. Leave null otherwise.
 
 /obj/item/ammo_box/magazine/multi_sprite/Initialize(mapload)
 	. = ..()
@@ -147,6 +149,12 @@
 			material_amount = (material_amount*stored_ammo.len) + base_cost[material]
 			temp_materials[material] = material_amount
 		set_custom_materials(temp_materials)
+
+/obj/item/ammo_box/magazine/multi_sprite/top_off(load_type, starting)
+	if(!load_type)
+		if(is_subtype)
+			load_type = subtype_ammo
+	..()
 
 /obj/item/ammo_box/revolver
 	name = "speed loader"

@@ -33,22 +33,25 @@
 	name = "9x25mm PDW magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g11"
-	ammo_type = /obj/item/ammo_casing/c9mm/rubber
+	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MM
 	max_ammo = 24
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	round_type = AMMO_TYPE_RUBBER
+	is_subtype = TRUE
+	subtype_ammo = /obj/item/ammo_casing/c9mm/rubber
 
 /obj/item/ammo_box/magazine/multi_sprite/cmg/hp
-	ammo_type = /obj/item/ammo_casing/c9mm/hp
+	subtype_ammo = /obj/item/ammo_casing/c9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/cmg/ihdf
-	ammo_type = /obj/item/ammo_casing/c9mm/ihdf
+	subtype_ammo = /obj/item/ammo_casing/c9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/cmg/lethal
-	ammo_type = /obj/item/ammo_casing/c9mm
 	round_type = AMMO_TYPE_LETHAL
 
 /obj/item/storage/box/gunset/cmg

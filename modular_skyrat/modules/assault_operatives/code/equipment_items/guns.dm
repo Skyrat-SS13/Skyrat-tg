@@ -56,12 +56,14 @@
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_AP)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle/rubber
-	ammo_type = /obj/item/ammo_casing/realistic/a762x39/civilian/rubber
+	subtype_ammo = /obj/item/ammo_casing/realistic/a762x39/civilian/rubber
 	round_type = AMMO_TYPE_RUBBER
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_rifle/ap
-	ammo_type = /obj/item/ammo_casing/realistic/a762x39/ap
+	subtype_ammo = /obj/item/ammo_casing/realistic/a762x39/ap
 	round_type = AMMO_TYPE_AP
+	is_subtype = TRUE
 
 // SMG
 
@@ -104,12 +106,14 @@
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_HOLLOWPOINT)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg/rubber
-	ammo_type = /obj/item/ammo_casing/c9mm/rubber
+	subtype_ammo = /obj/item/ammo_casing/c9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_smg/hp
-	ammo_type = /obj/item/ammo_casing/c9mm/hp
+	subtype_ammo = /obj/item/ammo_casing/c9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
+	is_subtype = TRUE
 
 // Shotgun
 
@@ -153,24 +157,29 @@
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_AP, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_IHDF, AMMO_TYPE_INCENDIARY)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/rubbershot
-	ammo_type = /obj/item/ammo_casing/shotgun/rubbershot
+	subtype_ammo = /obj/item/ammo_casing/shotgun/rubbershot
 	round_type = AMMO_TYPE_RUBBER
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/flechette
-	ammo_type = /obj/item/ammo_casing/shotgun/flechette
+	subtype_ammo = /obj/item/ammo_casing/shotgun/flechette
 	round_type = AMMO_TYPE_AP
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/hollowpoint
-	ammo_type = /obj/item/ammo_casing/shotgun/hp
+	subtype_ammo = /obj/item/ammo_casing/shotgun/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/beehive
-	ammo_type = /obj/item/ammo_casing/shotgun/beehive
+	subtype_ammo = /obj/item/ammo_casing/shotgun/beehive
 	round_type = AMMO_TYPE_IHDF
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_shotgun/dragonsbreath
-	ammo_type = /obj/item/ammo_casing/shotgun/dragonsbreath
+	subtype_ammo = /obj/item/ammo_casing/shotgun/dragonsbreath
 	round_type = AMMO_TYPE_INCENDIARY
+	is_subtype = TRUE
 
 // Sniper
 
@@ -222,9 +231,11 @@
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_AP)
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper/sleepytime
-	ammo_type = /obj/item/ammo_casing/p50/soporific
+	subtype_ammo = /obj/item/ammo_casing/p50/soporific
 	round_type = AMMO_TYPE_RUBBER
+	is_subtype = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/assault_ops_sniper/penetrator
-	ammo_type = /obj/item/ammo_casing/p50/penetrator
+	subtype_ammo = /obj/item/ammo_casing/p50/penetrator
 	round_type = AMMO_TYPE_AP
+	is_subtype = TRUE
