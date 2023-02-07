@@ -778,6 +778,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron/cafeteria,
 /area/awaymission/cabin)
+"cK" = (
+/obj/structure/table/wood/fancy,
+/obj/item/reagent_containers/cup/glass/bottle/juice/smallcarton{
+	pixel_y = 4
+	},
+/turf/open/floor/wood,
+/area/awaymission/cabin)
 "cL" = (
 /obj/machinery/light/small/directional/west,
 /obj/structure/cable,
@@ -1805,6 +1812,10 @@
 	desc = "Jail.";
 	name = "Jail Cell 7212"
 	},
+/area/awaymission/cabin/caves/mountain)
+"fT" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
 /area/awaymission/cabin/caves/mountain)
 "fU" = (
 /obj/machinery/door/airlock/centcom{
@@ -2959,10 +2970,6 @@
 /obj/item/pen/fountain,
 /turf/open/floor/wood/freezing,
 /area/awaymission/cabin/lumbermill)
-"kh" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/awaymission/cabin/caves/mountain)
 "ki" = (
 /turf/open/floor/wood/freezing,
 /area/awaymission/cabin/caves)
@@ -3635,32 +3642,6 @@
 	slowdown = 0
 	},
 /area/awaymission/cabin/snowforest)
-"qB" = (
-/obj/structure/statue/snow/snowman{
-	anchored = 1;
-	name = "Who"
-	},
-/obj/item/clothing/head/helmet/knight/yellow{
-	armor = list("melee"=11,"bullet"=2,"laser"=1,"energy"=1,"bomb"=5,"bio"=2,"fire"=0,"acid"=10);
-	desc = "A classic metal helmet. The cold has made it unreliable though.";
-	name = "old medieval helmet";
-	pixel_y = 7
-	},
-/obj/item/claymore/weak/ceremonial{
-	desc = "Brought to you by the guys in charge of making replica katana toys!";
-	force = 1;
-	layer = 3.01;
-	name = "replica claymore";
-	pixel_x = 5;
-	pixel_y = 8;
-	throwforce = 2
-	},
-/obj/item/shield/roman/fake{
-	layer = 3.01;
-	pixel_x = -7
-	},
-/turf/open/misc/asteroid/snow/snow_cabin,
-/area/awaymission/cabin/snowforest)
 "qR" = (
 /turf/open/misc/ice/smooth,
 /area/awaymission/cabin/snowforest)
@@ -4069,10 +4050,6 @@
 	slowdown = 1
 	},
 /area/awaymission/cabin/caves)
-"Ax" = (
-/obj/item/flashlight/flare/candle/infinite,
-/turf/open/floor/plating/snowed,
-/area/awaymission/cabin/caves)
 "AC" = (
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /obj/structure/sign/poster/official/no_erp{
@@ -4223,19 +4200,31 @@
 	slowdown = 0
 	},
 /area/awaymission/cabin/snowforest)
-"HW" = (
-/obj/effect/decal/cleanable/blood/old,
-/obj/effect/decal/cleanable/glitter/blue{
-	desc = "It looks like fancy glitter to me.";
-	name = "icy wind"
+"Hw" = (
+/obj/structure/statue/snow/snowman{
+	anchored = 1;
+	name = "Who"
 	},
-/obj/item/clothing/head/helmet/skull{
-	armor = list("melee"=15,"bullet"=5,"laser"=5,"energy"=2,"bomb"=10,"bio"=5,"fire"=20,"acid"=20);
-	desc = "It's not bloody for some reason. Dear god.";
-	name = "human skull"
+/obj/item/clothing/head/helmet/knight/yellow{
+	desc = "A classic metal helmet. The cold has made it unreliable though.";
+	name = "old medieval helmet";
+	pixel_y = 7
+	},
+/obj/item/claymore/weak/ceremonial{
+	desc = "Brought to you by the guys in charge of making replica katana toys!";
+	force = 1;
+	layer = 3.01;
+	name = "replica claymore";
+	pixel_x = 5;
+	pixel_y = 8;
+	throwforce = 2
+	},
+/obj/item/shield/roman/fake{
+	layer = 3.01;
+	pixel_x = -7
 	},
 /turf/open/misc/asteroid/snow/snow_cabin,
-/area/awaymission/cabin/caves)
+/area/awaymission/cabin/snowforest)
 "HY" = (
 /obj/structure/fence/door/opened,
 /obj/structure/barricade/wooden/crude/snow,
@@ -4251,23 +4240,6 @@
 	},
 /turf/open/misc/asteroid/snow/snow_cabin,
 /area/awaymission/cabin/caves)
-"Ij" = (
-/obj/effect/turf_decal/tile/blue/fourcorners,
-/obj/item/clothing/shoes/sneakers/brown,
-/obj/item/clothing/head/hats/warden/police{
-	armor = list("melee"=5,"bullet"=5,"laser"=5,"energy"=2,"bomb"=15,"bio"=0,"fire"=20,"acid"=20);
-	desc = "I am the law!"
-	},
-/obj/structure/closet{
-	anchored = 1;
-	name = "uniform closet"
-	},
-/obj/item/clothing/under/rank/security/officer/spacepol{
-	armor = list("melee"=2,"bullet"=0,"laser"=0,"energy"=0,"bomb"=0,"bio"=0,"fire"=10,"acid"=10);
-	desc = "Anyone enjoying their time while working in a megacorporation, planetary government, or band of pirates is under the jurisdiction of the fun police."
-	},
-/turf/open/floor/iron/dark,
-/area/awaymission/cabin/caves/mountain)
 "IU" = (
 /obj/effect/decal/cleanable/shreds,
 /turf/open/misc/asteroid/snow/snow_cabin,
@@ -4621,13 +4593,6 @@
 	},
 /turf/open/misc/asteroid/snow/snow_cabin,
 /area/awaymission/cabin/caves)
-"RV" = (
-/obj/structure/table/wood/fancy,
-/obj/item/reagent_containers/cup/glass/bottle/juice/smallcarton{
-	pixel_y = 4
-	},
-/turf/open/floor/wood,
-/area/awaymission/cabin)
 "RY" = (
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /obj/structure/sign/poster/official/do_not_question{
@@ -4700,6 +4665,21 @@
 /obj/effect/decal/cleanable/molten_object/large,
 /turf/open/misc/asteroid/snow/snow_cabin,
 /area/awaymission/cabin/caves)
+"Te" = (
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/item/clothing/shoes/sneakers/brown,
+/obj/item/clothing/head/hats/warden/police{
+	desc = "I am the law!"
+	},
+/obj/structure/closet{
+	anchored = 1;
+	name = "uniform closet"
+	},
+/obj/item/clothing/under/rank/security/officer/spacepol{
+	desc = "Anyone enjoying their time while working in a megacorporation, planetary government, or band of pirates is under the jurisdiction of the fun police."
+	},
+/turf/open/floor/iron/dark,
+/area/awaymission/cabin/caves/mountain)
 "Tm" = (
 /obj/structure/chair,
 /turf/open/misc/asteroid/snow/snow_cabin,
@@ -4769,6 +4749,15 @@
 	set_luminosity = 6
 	},
 /obj/structure/flora/tree/pine/style_random,
+/turf/open/misc/asteroid/snow/snow_cabin,
+/area/awaymission/cabin/caves)
+"UL" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/glitter/blue{
+	desc = "It looks like fancy glitter to me.";
+	name = "icy wind"
+	},
+/obj/item/clothing/head/helmet/skull,
 /turf/open/misc/asteroid/snow/snow_cabin,
 /area/awaymission/cabin/caves)
 "UO" = (
@@ -4847,6 +4836,10 @@
 /obj/item/storage/medkit/fire,
 /turf/open/floor/iron/white,
 /area/awaymission/cabin)
+"WF" = (
+/obj/item/flashlight/flare/candle/infinite,
+/turf/open/floor/plating/snowed,
+/area/awaymission/cabin/caves)
 "WK" = (
 /obj/structure/statue/snow/snowman{
 	anchored = 1;
@@ -8269,7 +8262,7 @@ cx
 cx
 td
 Xy
-Ij
+Te
 cx
 co
 co
@@ -9805,7 +9798,7 @@ fr
 fq
 fJ
 fN
-kh
+fT
 Pd
 cx
 cx
@@ -28136,7 +28129,7 @@ ab
 jm
 Oe
 RC
-qB
+Hw
 RC
 nE
 RC
@@ -29227,7 +29220,7 @@ hb
 bU
 ev
 eu
-RV
+cK
 cD
 an
 aq
@@ -47869,9 +47862,9 @@ gx
 gx
 gx
 hM
-Ax
+WF
 hQ
-Ax
+WF
 wI
 PV
 Oe
@@ -48383,9 +48376,9 @@ gx
 gx
 gx
 hM
-Ax
+WF
 hQ
-Ax
+WF
 Rz
 PV
 PV
@@ -51854,7 +51847,7 @@ Lj
 tC
 Dw
 tC
-HW
+UL
 gx
 Oe
 gx
