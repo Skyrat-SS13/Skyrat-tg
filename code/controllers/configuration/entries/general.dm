@@ -524,6 +524,18 @@
 	return "" //default broadcast
 
 /datum/config_entry/string/chat_announce_new_game
+<<<<<<< HEAD
+=======
+	deprecated_by = /datum/config_entry/string/channel_announce_new_game
+
+/datum/config_entry/string/chat_announce_new_game/DeprecationUpdate(value)
+	return "" //default broadcast
+
+/datum/config_entry/string/channel_announce_new_game
+	default = null
+
+/datum/config_entry/string/channel_announce_end_game
+>>>>>>> bb3947e68f7 (add a stack_trace to config validation checking (#73160))
 	default = null
 
 /datum/config_entry/string/chat_new_game_notifications
@@ -651,3 +663,6 @@
 /datum/config_entry/string/morgue_cadaver_override_species
 
 /datum/config_entry/flag/toast_notification_on_init
+
+/datum/config_entry/flag/config_errors_runtime
+	default = FALSE
