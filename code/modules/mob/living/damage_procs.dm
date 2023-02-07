@@ -182,23 +182,31 @@
 /mob/living/proc/getOxyLoss()
 	return oxyloss
 
+<<<<<<< HEAD
 /mob/living/proc/adjustOxyLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype = MOB_ORGANIC)
 	SEND_SIGNAL(src, COMSIG_MOB_LOSS_OXY, amount) //SKYRAT EDIT ADDITION
+=======
+/mob/living/proc/adjustOxyLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype, required_respiration_type = ALL)
+>>>>>>> e41cc398889 (Fixes being able to breathe in space, fixes any lingering biotype related damage issues (#73147))
 	if(!forced && (status_flags & GODMODE))
 		return
-	if(!forced && !(mob_biotypes & required_biotype))
-		return
+	if(iscarbon(src))
+		var/obj/item/organ/internal/lungs/affected_lungs = getorganslot(ORGAN_SLOT_LUNGS)
+		if(!forced && !(affected_lungs?.respiration_type & required_respiration_type))
+			return
 	. = oxyloss
 	oxyloss = clamp((oxyloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
 	if(updating_health)
 		updatehealth()
 
 
-/mob/living/proc/setOxyLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype)
+/mob/living/proc/setOxyLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype, required_respiration_type = ALL)
 	if(!forced && (status_flags & GODMODE))
 		return
-	if(required_biotype && !(mob_biotypes & required_biotype))
-		return
+	if(iscarbon(src))
+		var/obj/item/organ/internal/lungs/affected_lungs = getorganslot(ORGAN_SLOT_LUNGS)
+		if(!forced && !(affected_lungs?.respiration_type & required_respiration_type))
+			return
 	. = oxyloss
 	oxyloss = amount
 	if(updating_health)
@@ -212,7 +220,7 @@
 	SEND_SIGNAL(src, COMSIG_MOB_LOSS_TOX, amount) //SKYRAT EDIT ADDITION
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
-	if(required_biotype && !(mob_biotypes & required_biotype))
+	if(!forced && !(mob_biotypes & required_biotype))
 		return
 	toxloss = clamp((toxloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
 	if(updating_health)
@@ -222,7 +230,7 @@
 /mob/living/proc/setToxLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype)
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
-	if(required_biotype && !(mob_biotypes & required_biotype))
+	if(!forced && !(mob_biotypes & required_biotype))
 		return
 	toxloss = amount
 	if(updating_health)
