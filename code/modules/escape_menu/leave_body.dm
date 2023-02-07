@@ -8,6 +8,8 @@
 		else
 			stack_trace("The leave body menu was opened before the atoms SS. This shouldn't be possible, as the leave body menu should only be accessible when you have a body.")
 
+	//SKYRAT EDIT REMOVAL BEGIN - Suicide Disabled
+	/*
 	page_holder.give_screen_object(new /atom/movable/screen/escape_menu/leave_body_button(
 		src,
 		"Suicide",
@@ -16,6 +18,8 @@
 		CALLBACK(src, PROC_REF(leave_suicide)),
 		/* button_overlay = */ dead_clown,
 	))
+	*/
+	//SKYRAT EDIT REMOVAL END
 
 	page_holder.give_screen_object(
 		new /atom/movable/screen/escape_menu/leave_body_button(
@@ -64,12 +68,16 @@
 	var/mob/living/living_user = client?.mob
 	living_user?.ghost()
 
+//SKYRAT EDIT REMOVAL BEGIN - Suicide Disabled
+/*
 /datum/escape_menu/proc/leave_suicide()
 	PRIVATE_PROC(TRUE)
 
 	// Not guaranteed to be human. Everything defines verb/suicide separately. Fuck you, still.
 	var/mob/living/carbon/human/human_user = client?.mob
 	human_user?.suicide()
+*/
+//SKYRAT EDIT REMOVAL END
 
 /atom/movable/screen/escape_menu/leave_body_button
 	icon = 'icons/hud/escape_menu_leave_body.dmi'
