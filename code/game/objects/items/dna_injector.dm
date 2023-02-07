@@ -82,7 +82,11 @@
 	if(target != user)
 		target.visible_message(span_danger("[user] is trying to inject [target] with [src]!"), \
 			span_userdanger("[user] is trying to inject you with [src]!"))
+<<<<<<< HEAD
 		if(!do_mob(user, target) || used)
+=======
+		if(!do_after(user, 3 SECONDS, target) || used)
+>>>>>>> 93cbbaa5b27 (Fixes force-drinking being instananeous, and a few others (#73280))
 			return
 		target.visible_message(span_danger("[user] injects [target] with the syringe with [src]!"), \
 						span_userdanger("[user] injects you with the syringe with [src]!"))

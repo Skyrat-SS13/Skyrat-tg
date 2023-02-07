@@ -70,7 +70,11 @@
 	if(target_mob != user)
 		target_mob.visible_message(span_danger("[user] attempts to feed [target_mob] something from [src]."), \
 					span_userdanger("[user] attempts to feed you something from [src]."))
+<<<<<<< HEAD
 		if(!do_mob(user, target_mob))
+=======
+		if(!do_after(user, 3 SECONDS, target_mob))
+>>>>>>> 93cbbaa5b27 (Fixes force-drinking being instananeous, and a few others (#73280))
 			return
 		if(!reagents || !reagents.total_volume)
 			return // The drink might be empty after the delay, such as by spam-feeding

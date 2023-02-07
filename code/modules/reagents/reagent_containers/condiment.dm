@@ -55,7 +55,11 @@
 	else
 		M.visible_message(span_warning("[user] attempts to feed [M] from [src]."), \
 			span_warning("[user] attempts to feed you from [src]."))
+<<<<<<< HEAD
 		if(!do_mob(user, M))
+=======
+		if(!do_after(user, 3 SECONDS, M))
+>>>>>>> 93cbbaa5b27 (Fixes force-drinking being instananeous, and a few others (#73280))
 			return
 		if(!reagents || !reagents.total_volume)
 			return // The condiment might be empty after the delay.
