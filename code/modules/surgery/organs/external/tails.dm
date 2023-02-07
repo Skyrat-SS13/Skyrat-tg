@@ -27,7 +27,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/organ/external/tail/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
+/obj/item/organ/external/tail/Insert(mob/living/carbon/receiver, special, drop_if_replaced)
 	. = ..()
 	if(.)
 		RegisterSignal(receiver, COMSIG_ORGAN_WAG_TAIL, PROC_REF(wag))

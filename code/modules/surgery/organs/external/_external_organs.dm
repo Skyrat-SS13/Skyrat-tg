@@ -87,14 +87,14 @@
 		return
 
 	if(!stored_feature_id) //We only want this set *once*
-		stored_feature_id = reciever.dna.features[feature_key]
+		stored_feature_id = receiver.dna.features[feature_key]
 		// SKYRAT EDIT START - Customization (we use mutant_bodyparts for a lot of things)
 		if(!stored_feature_id)
-			stored_feature_id = reciever.dna.mutant_bodyparts[feature_key]?["name"]
+			stored_feature_id = receiver.dna.mutant_bodyparts[feature_key]?["name"]
 
 	receiver.external_organs.Add(src)
 	if(slot)
-		reciever.external_organs_slot[slot] = src
+		receiver.external_organs_slot[slot] = src
 
 	ownerlimb = limb
 	add_to_limb(ownerlimb)

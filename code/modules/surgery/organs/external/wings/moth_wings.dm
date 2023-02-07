@@ -22,7 +22,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/organ/external/wings/moth/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
+/obj/item/organ/external/wings/moth/Insert(mob/living/carbon/receiver, special, drop_if_replaced)
 	. = ..()
 
 	RegisterSignal(receiver, COMSIG_HUMAN_BURNING, PROC_REF(try_burn_wings))
