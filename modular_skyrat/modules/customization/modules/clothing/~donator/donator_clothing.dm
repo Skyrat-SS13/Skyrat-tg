@@ -1,6 +1,6 @@
 /**************SKYRAT REWARDS**************/
 //SUITS
-/obj/item/clothing/suit/hooded/wintercoat/colourable
+/obj/item/clothing/suit/hooded/wintercoat/colourable //ORION TO-DO: Kill this (make it its own seperate gags (upstream?))
 	name = "custom winter coat"
 	icon_state = "winter_coat"
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/colourable

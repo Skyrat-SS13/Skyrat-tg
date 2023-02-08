@@ -66,7 +66,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 
-/obj/item/clothing/shoes/combat
+/obj/item/clothing/shoes/combat //TO-DO: Move these overrides out of a syndicate file!
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "combat"
@@ -123,6 +123,15 @@
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
+/obj/item/clothing/head/soft/sec/syndicate
+	name = "engine tech utility cover"
+	desc = "A utility cover for an engine technician, there's a tag that reads 'IP-DS-2'."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "dssoft"
+	soft_type = "ds"
+
+//Maid Outfit
 /obj/item/clothing/head/maidheadband/syndicate
 	name = "tactical maid headband"
 	desc = "Tacticute."
@@ -157,23 +166,14 @@
 	minimize_when_attached = FALSE
 	attachment_slot = null
 
-/obj/item/clothing/head/soft/sec/syndicate
-	name = "engine tech utility cover"
-	desc = "A utility cover for an engine technician, there's a tag that reads 'IP-DS-2'."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "dssoft"
-	soft_type = "ds"
-
-/obj/item/clothing/suit/hooded/wintercoat/syndicate
+//Wintercoat & Hood
+/obj/item/clothing/suit/hooded/wintercoat/skyrat/syndicate
 	name = "syndicate winter coat"
 	desc = "A sinister black coat with red accents and a fancy mantle, it feels like it can take a hit. The zipper tab looks like a triple headed snake in the shape of an S, spooky."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "coatsyndie"
 	inhand_icon_state = "coatwinter"
 	armor_type = /datum/armor/wintercoat_syndicate
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/syndicate
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/skyrat/syndicate
 
 /datum/armor/wintercoat_syndicate
 	melee = 25
@@ -183,14 +183,12 @@
 	bomb = 25
 	acid = 45
 
-/obj/item/clothing/suit/hooded/wintercoat/syndicate/Initialize(mapload)
+/obj/item/clothing/suit/hooded/wintercoat/skyrat/syndicate/Initialize(mapload)
 	. = ..()
 	allowed += GLOB.security_wintercoat_allowed
 
-/obj/item/clothing/head/hooded/winterhood/syndicate
+/obj/item/clothing/head/hooded/winterhood/skyrat/syndicate
 	desc = "A sinister black hood with armor padding."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "winterhood_syndie"
 	armor_type = /datum/armor/winterhood_syndicate
 
