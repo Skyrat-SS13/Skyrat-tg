@@ -169,7 +169,7 @@
 	hud_trait = TRAIT_SECURITY_HUD
 	glass_colour_type = /datum/client_colour/glass_colour/red
 	modes = list(MODE_OFF_FLASH_PROTECTION, MODE_ON)
-	modes_msg = list(MODE_OFF_FLASH_PROTECTION = "Flash protection mode", MODE_ON = "Optical matrix enabled")
+	modes_msg = list(MODE_OFF_FLASH_PROTECTION = "flash protection mode", MODE_ON = "optical matrix enabled")
 
 // Medical Aviators
 /obj/item/clothing/glasses/hud/ar/aviator/health
@@ -254,7 +254,7 @@
 	flags_cover = null /// It doesn't actually cover up any parts
 	off_state = "projector-off"
 	modes = list(MODE_OFF, MODE_ON, MODE_FREEZE_ANIMATION)
-	modes_msg = list(MODE_ON = "Projector enabled", MODE_FREEZE_ANIMATION = "Continuous beam mode", MODE_OFF = "Projector disabled" )
+	modes_msg = list(MODE_ON = "projector enabled", MODE_FREEZE_ANIMATION = "continuous beam mode", MODE_OFF = "projector disabled" )
 
 /obj/item/clothing/glasses/hud/ar/projector/meson
 	name = "retinal projector meson HUD"
