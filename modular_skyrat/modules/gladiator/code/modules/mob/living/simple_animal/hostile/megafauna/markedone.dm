@@ -110,10 +110,7 @@
 /// Gets him mad at you if you're a species he's not racist towards, and provides the 50% to block attacks in the first and fourth phases
 /mob/living/simple_animal/hostile/megafauna/gladiator/adjustHealth(amount, updating_health, forced)
 	get_angry()
-	if(spinning)
-		balloon_alert_to_viewers("damage blocked!")
-		return FALSE
-	else if(prob(block_chance) && (phase == 1) && !stunned)
+	if(prob(block_chance) && (phase == 1) && !stunned)
 		balloon_alert_to_viewers("damage blocked!")
 		return FALSE
 	else if(prob(block_chance) && (phase == 4) && !stunned)
@@ -206,7 +203,6 @@
 	if(anger_timer_id)
 		deltimer(anger_timer_id)
 	anger_timer_id = addtimer(CALLBACK(src, PROC_REF(get_calm)), MARKED_ONE_ANGER_DURATION, TIMER_STOPPABLE)
-	balloon_alert_to_viewers("angered!")
 
 /// Makes the Marked One a sleepy boy that don't wanna hurt nobody. He starts like this and progresses to his hostile state after seeing an ash walker or being punched in the noggin.
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/get_calm()
@@ -285,8 +281,8 @@
 		if(SHOWDOWN_PERCENT to FIFTY_PERCENT)
 			if(phase == MARKED_ONE_SECOND_PHASE)
 				phase = MARKED_ONE_THIRD_PHASE
-				INVOKE_ASYNC(src, PROC_REF(charge), target, 21)
-				ranged_cooldown += 8 SECONDS
+				INVOKE_ASYNC(src, PROC_REF(aim_cannon))
+				ranged_cooldown += 5 SECONDS
 				rapid_melee = 4
 				melee_damage_upper = 25
 				melee_damage_lower = 25
@@ -355,7 +351,7 @@
 	sleep(1)
 	spinning = FALSE
 
-/// The Marked One's charge has an instant travel time, but takes a moment to power-up, allowing you to get behind cover to stun him if he hits a wall. Only ever called when a phase change occurs, as it hardstuns if it lands
+/// The Marked One's charge is extremely quick, but takes a moment to power-up, allowing you to get behind cover to stun him if he hits a wall. Only ever called when a phase change occurs, as it stuns if it lands
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/charge(atom/target, range = 1)
 	face_atom(target)
 	var/static/list/charge_messages = list(
@@ -375,7 +371,7 @@
 	charging = TRUE
 	update_phase()
 
-/// Discharge damages the Marked One and stuns him when he slams into a wall whilst charging
+/// Discharge stuns the marked one momentarily after landing a charge into a wall or a person
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/discharge(modifier = 1)
 	stunned = TRUE
 	charging = FALSE
@@ -445,6 +441,45 @@
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/stomp()
 	ground_pound(2, 0.2 SECONDS, 3)
 
+/// Initial setup for the cannon
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/aim_cannon()
+	anchored = TRUE
+	for(var/mob/living/possible_target in oview(9, src))
+		if(possible_target.stat == DEAD || possible_target.stat == UNCONSCIOUS)
+			continue
+		if(faction_check(faction, possible_target.faction))
+			continue
+		fire(possible_target)
+		return
+	fire(get_edge_target_turf(src, pick(GLOB.cardinals)))
+	balloon_alert_to_viewers("aiming cannon!")
+
+// Tracers for the cannon (shameless legion tracer reuse)
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/fire(atom/target)
+	var/turf/target_turf = get_turf(target)
+	var/turf/source_turf = get_turf(src)
+	if(!target_turf || !source_turf)
+		return
+	var/angle = get_angle(source_turf, target_turf)
+	var/datum/point/vector/targeting_angle = new(source_turf.x, source_turf.y, source_turf.z, 0, 0, angle)
+	generate_tracer_between_points(targeting_angle, targeting_angle.return_vector_after_increments(10), /obj/effect/projectile/tracer/legion/tracer, 0, 3, 0, 0, 0, null)
+	playsound(src, 'sound/effects/fuse.ogg', 100, TRUE)
+	addtimer(CALLBACK(src, PROC_REF(fire_cannonball), angle), 3)
+
+// CANNON
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/fire_cannonball(angle)
+	var/obj/projectile/kaboom = new /obj/projectile/bullet/cannonball/guts(loc)
+	kaboom.firer = src
+	kaboom.fire(angle)
+	playsound(src, 'sound/weapons/gun/general/cannon.ogg', 100, TRUE)
+	anchored = FALSE
+
+/obj/projectile/bullet/cannonball/guts
+	damage = 40
+	paralyze = null
+	stutter = null
+	knockdown = null
+
 /// Used to determine what attacks the Marked One actually uses. This works by making him a ranged mob without a projectile. Shitcode? Maybe! But it woooorks.
 /mob/living/simple_animal/hostile/megafauna/gladiator/OpenFire()
 	if(!COOLDOWN_FINISHED(src, ranged_cooldown))
@@ -474,9 +509,8 @@
 						INVOKE_ASYNC(src, PROC_REF(swordslam))
 						ranged_cooldown += 2 SECONDS
 				else
-					INVOKE_ASYNC(src, PROC_REF(bone_knife_throw), target)
-					INVOKE_ASYNC(src, PROC_REF(teleport), target)
-					ranged_cooldown += 2 SECONDS
+					INVOKE_ASYNC(src, PROC_REF(aim_cannon))
+					ranged_cooldown += 5 SECONDS
 			else
 				INVOKE_ASYNC(src, PROC_REF(teleport), target)
 				ranged_cooldown += 0.5 SECONDS
@@ -487,11 +521,11 @@
 						INVOKE_ASYNC(src, PROC_REF(spinattack))
 						ranged_cooldown += 3 SECONDS
 					else
-						INVOKE_ASYNC(src, PROC_REF(swordslam))
-						ranged_cooldown += 2 SECONDS
+						INVOKE_ASYNC(src, PROC_REF(aim_cannon))
+						ranged_cooldown += 4 SECONDS
 				else
 					INVOKE_ASYNC(src, PROC_REF(bone_knife_throw), target)
-					INVOKE_ASYNC(src, PROC_REF(teleport), target)
+					INVOKE_ASYNC(src, PROC_REF(swordslam))
 					ranged_cooldown += 2 SECONDS
 			else
 				INVOKE_ASYNC(src, PROC_REF(bone_knife_throw), target)
@@ -513,9 +547,9 @@
 					INVOKE_ASYNC(src, PROC_REF(stomp))
 					ranged_cooldown += 0.5 SECONDS
 			else
-				INVOKE_ASYNC(src, PROC_REF(teleport), target)
+				INVOKE_ASYNC(src, PROC_REF(aim_cannon))
 				INVOKE_ASYNC(src, PROC_REF(stomp))
-				ranged_cooldown += 0.5 SECONDS
+				ranged_cooldown += 2.5 SECONDS
 
 #undef MARKED_ONE_STUN_DURATION
 #undef MARKED_ONE_ANGER_DURATION
