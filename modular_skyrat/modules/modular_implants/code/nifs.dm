@@ -469,6 +469,18 @@
 	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif/debug
 	uses = 1
 
+/obj/item/storage/box/nif_ghost_box
+	name = "\improper NIF Starter Kit"
+	desc = "Contains a calibration-free NIF along with a variety of NIFSofts."
+	illustration = "disk_kit"
+
+/obj/item/storage/box/nif_ghost_box/PopulateContents()
+	new /obj/item/autosurgeon/organ/nif/ghost_role(src)
+	new /obj/item/disk/nifsoft_uploader/hivemind(src)
+	new /obj/item/disk/nifsoft_uploader/shapeshifter(src)
+	new /obj/item/disk/nifsoft_uploader/summoner(src)
+	new /obj/item/disk/nifsoft_uploader/money_sense(src)
+
 #undef NIF_CALIBRATION_STAGE_1
 #undef NIF_CALIBRATION_STAGE_1_END
 #undef NIF_CALIBRATION_STAGE_2
