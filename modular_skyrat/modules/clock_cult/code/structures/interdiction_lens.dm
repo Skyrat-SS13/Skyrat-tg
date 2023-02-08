@@ -45,7 +45,7 @@
 		return
 
 	if(!update_power() && !enabled)
-		to_chat(user, span_warning("[src] does not have enough power!"))
+		balloon_alert(user, "not enough power!")
 		return
 
 	enabled = !enabled
