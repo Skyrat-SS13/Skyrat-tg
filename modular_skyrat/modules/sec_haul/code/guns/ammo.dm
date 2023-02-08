@@ -111,8 +111,10 @@
 	var/round_type = AMMO_TYPE_LETHAL
 	var/base_name = ""
 	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
-	var/is_subtype = FALSE	//Is magazine using an ammo subtype?
-	var/subtype_ammo = null	//ammo for it to spawn with if it is a subtype. Leave null otherwise.
+	///Is magazine using an ammo subtype?
+	var/is_subtype = FALSE
+	///ammo for it to spawn with if it is a subtype. Leave null otherwise.
+	var/subtype_ammo = null
 
 /obj/item/ammo_box/magazine/multi_sprite/Initialize(mapload)
 	. = ..()
