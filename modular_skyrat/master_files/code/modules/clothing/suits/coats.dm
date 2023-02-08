@@ -39,3 +39,24 @@
 
 /obj/item/clothing/head/hooded/winterhood/hopformal
 	icon_state = "hood_hopformal"
+
+//Ratvar-themed
+/obj/item/clothing/suit/hooded/wintercoat/skyrat/ratvar
+	name = "ratvarian winter coat"
+	desc = "A brass-plated button up winter coat. Instead of a zipper tab, it has a brass cog with a tiny red gemstone inset."
+	icon_state = "coatratvar"
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/skyrat/ratvar
+
+/obj/item/clothing/head/hooded/winterhood/skyrat/ratvar
+	icon_state = "hood_ratvar"
+
+//Nar'sie-themed
+/obj/item/clothing/suit/hooded/wintercoat/skyrat/narsie
+	name = "narsian winter coat"
+	desc = "A somber button-up in dark tones of grey entropy and a wicked crimson zipper. It's covered in intricate runes and symbols, and the zipper tab looks like a single drop of blood."
+	icon_state = "coatnarsie"
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/skyrat/narsie
+
+/obj/item/clothing/head/hooded/winterhood/skyrat/narsie
+	desc = "A black winter hood full of whispering secrets that only she shall ever know."
+	icon_state = "hood_narsie"

@@ -34,11 +34,11 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/runed
 	name = "Runed winter coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/narsie/fake
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat/narsie
 
 /datum/loadout_item/suit/brass
 	name = "Brass winter coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/ratvar/fake
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat/ratvar
 
 /datum/loadout_item/suit/korea
 	name = "Eastern winter coat"
