@@ -22,7 +22,6 @@
 	desc = "A heavy jacket made from wool originally stolen from the chef's goat. This new design is made to fit the classic suit-and-tie aesthetic, but without the hypothermia."
 	icon_state = "coatbar"
 	allowed = list(
-		/obj/item/flashlight,
 		/obj/item/reagent_containers/cup/glass/shaker,
 		/obj/item/reagent_containers/cup/glass/flask,
 		/obj/item/reagent_containers/cup/rag
