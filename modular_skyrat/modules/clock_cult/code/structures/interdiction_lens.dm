@@ -41,7 +41,7 @@
 		return ..()
 
 	if(!anchored)
-		to_chat(user, span_warning("[src] needs to be fastened to the floor!"))
+		balloon_alert(user, "not fastened!")
 		return
 
 	if(!update_power() && !enabled)
