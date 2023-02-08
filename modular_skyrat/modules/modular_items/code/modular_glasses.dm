@@ -19,7 +19,7 @@
 	/// The current operating mode
 	var/mode
 	/// Defines messages that will be shown to the user upon switching modes (e.g. turning it on)
-	var/list/modes_msg = list(MODE_ON = "Optical matrix enabled", MODE_OFF = "Optical matrix disabled")
+	var/list/modes_msg = list(MODE_ON = "optical matrix enabled", MODE_OFF = "optical matrix disabled")
 	/// Because initial() will not work on subtypes from within the parent we need to store a reference to the type of the glasses calling the procs
 	var/obj/item/clothing/glasses/hud/ar/glasses_type
 
