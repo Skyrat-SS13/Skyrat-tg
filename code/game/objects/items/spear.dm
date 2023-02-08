@@ -215,6 +215,7 @@
 
 	throwforce = 22
 	armour_penetration = 15 //Enhanced armor piercing
+	custom_materials = list(/datum/material/bone=7000)
 	force_unwielded = 8 // SKYRAT EDIT CHANGE - ORIGINAL: 12
 	force_wielded = 16 // SKYRAT EDIT CHANGE - ORIGINAL: 20
 
