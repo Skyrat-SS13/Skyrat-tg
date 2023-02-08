@@ -32,16 +32,6 @@
 /obj/item/clothing/head/hooded/winterhood/skyrat/bartender
 	icon_state = "hood_bar"
 
-//HoP's Formal
-/obj/item/clothing/suit/hooded/wintercoat/skyrat/hopformal
-	name = "head of personnel's formal winter coat"
-	desc = "A long cozy winter coat, covered in thick fur. The breast features a proud yellow chevron, reminding everyone that you're the second banana. Someone at CC most really like you, huh?"
-	icon_state = "coathopformal"
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/hopformal
-
-/obj/item/clothing/head/hooded/winterhood/hopformal
-	icon_state = "hood_hopformal"
-
 //Ratvar-themed
 /obj/item/clothing/suit/hooded/wintercoat/skyrat/ratvar
 	name = "ratvarian winter coat"
