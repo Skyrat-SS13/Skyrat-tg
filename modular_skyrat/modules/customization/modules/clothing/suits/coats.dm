@@ -25,21 +25,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "winterhood_bar"
 
-/obj/item/clothing/suit/hooded/wintercoat/aformal
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "assistant's formal winter coat"
-	desc = "A black button up winter coat."
-	icon_state = "coataformal"
-	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter,/obj/item/clothing/gloves/color/yellow)
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/aformal
-
-/obj/item/clothing/head/hooded/winterhood/aformal
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	desc = "A black winter coat hood."
-	icon_state = "winterhood_aformal"
-
 /obj/item/clothing/suit/hooded/wintercoat/ratvar
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
@@ -247,15 +232,6 @@
 
 /obj/item/clothing/head/hooded/winterhood/christmas/green
 	icon_state = "christmashoodg"
-
-/obj/item/clothing/suit/hooded/wintercoat/christmas/gamerpc
-	name = "red and green christmas coat"
-	desc = "A festive red and green Christmas coat! Smells like Candy Cane!"
-	icon_state = "christmascoatrg"
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/christmas/gamerpc
-
-/obj/item/clothing/head/hooded/winterhood/christmas/gamerpc
-	icon_state = "christmashoodrg"
 
 /obj/item/clothing/suit/armor/vest/det_suit/runner
 	name = "joyful coat"

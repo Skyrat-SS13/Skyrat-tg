@@ -30,7 +30,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/aformal
 	name = "Assistant's formal winter coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/aformal
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat
 
 /datum/loadout_item/suit/runed
 	name = "Runed winter coat"
