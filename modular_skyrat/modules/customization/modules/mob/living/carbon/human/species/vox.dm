@@ -95,8 +95,8 @@
 	if(item_slot == LOADOUT_ITEM_SHOES)
 		var/obj/item/bodypart/leg = bodypart_overrides[BODY_ZONE_L_LEG] || bodypart_overrides[BODY_ZONE_R_LEG]
 		if(initial(leg?.limb_id) != "digitigrade")
-			// normal legs, force using human shoes
-			return item.worn_icon || item.icon
+			// normal legs, use normal human shoes
+			return DEFAULT_SHOES_FILE
 
 	return item.worn_icon_vox
 

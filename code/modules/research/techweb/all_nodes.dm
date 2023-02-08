@@ -571,9 +571,6 @@
 	design_ids = list(
 		"bounty_pad",
 		"bounty_pad_control",
-		//SKYRAT EDIT ADDITION - START
-		"nifsoft_vendor"
-		//SKYRAT EDIT ADDITION - END
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
