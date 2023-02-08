@@ -9,3 +9,7 @@
 		return get_random_jumpskirt()
 
 	return get_random_jumpsuit()
+
+/obj/item/clothing/under/color
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
+	greyscale_config_worn_monkey = /datum/greyscale_config/jumpsuit_worn/monkey

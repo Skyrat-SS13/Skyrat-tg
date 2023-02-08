@@ -208,9 +208,5 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	gets_cropped_on_taurs = FALSE
 
-/obj/item/clothing/under/color
-	supports_variations_flags = CLOTHING_MONKEY_VARIATION
-	greyscale_config_worn_monkey = /datum/greyscale_config/jumpsuit_worn/monkey
-
 /obj/item/clothing/under/changeling
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
