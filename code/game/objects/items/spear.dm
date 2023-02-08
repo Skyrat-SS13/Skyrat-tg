@@ -212,21 +212,13 @@
 	icon_prefix = "bone_spear"
 	name = "bone spear"
 	desc = "A haphazardly-constructed yet still deadly weapon. The pinnacle of modern technology."
-	force = 8 //SKYRAT EDIT
+
 	throwforce = 22
-	reach = 2 // SKYRAT EDIT
 	armour_penetration = 15 //Enhanced armor piercing
-<<<<<<< HEAD
+	force_unwielded = 8 // SKYRAT EDIT CHANGE - ORIGINAL: 12
+	force_wielded = 16 // SKYRAT EDIT CHANGE - ORIGINAL: 20
 
-
-/obj/item/spear/bonespear/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/two_handed, force_unwielded=8, force_wielded=16, icon_wielded="[icon_prefix]1") //SKYRAT EDIT
-=======
-	custom_materials = list(/datum/material/bone=7000)
-	force_unwielded = 12
-	force_wielded = 20
->>>>>>> fe284200208 (Changes spear custom_materials values to be more appropriate (#73120))
+	reach = 2 // SKYRAT EDIT ADD
 
 /*
  * Bamboo Spear
