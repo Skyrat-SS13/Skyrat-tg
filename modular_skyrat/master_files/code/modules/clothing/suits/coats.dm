@@ -13,4 +13,29 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/winterhood.dmi'
 	icon_state = "hood_aformal"
 
+//Bartender
+/obj/item/clothing/suit/hooded/wintercoat/skyrat/bartender
+	name = "bartender's winter coat"
+	desc = "A heavy jacket made from wool originally stolen from the chef's goat. This new design is made to fit the classic suit-and-tie aesthetic, but without the hypothermia."
+	icon_state = "coatbar"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	allowed = list(
+		/obj/item/flashlight,
+		/obj/item/reagent_containers/cup/glass/shaker,
+		/obj/item/reagent_containers/cup/glass/flask,
+		/obj/item/reagent_containers/cup/rag
+	)
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/skyrat/bartender
 
+/obj/item/clothing/head/hooded/winterhood/skyrat/bartender
+	icon_state = "hood_bar"
+
+//HoP's Formal
+/obj/item/clothing/suit/hooded/wintercoat/skyrat/hopformal
+	name = "head of personnel's formal winter coat"
+	desc = "A long cozy winter coat, covered in thick fur. The breast features a proud yellow chevron, reminding everyone that you're the second banana. Someone at CC most really like you, huh?"
+	icon_state = "coathopformal"
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/hopformal
+
+/obj/item/clothing/head/hooded/winterhood/hopformal
+	icon_state = "hood_hopformal"

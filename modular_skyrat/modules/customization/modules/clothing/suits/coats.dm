@@ -21,21 +21,6 @@
 	acid = 45
 	wound = 3
 
-/obj/item/clothing/suit/hooded/wintercoat/bartender
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "bartender's winter coat"
-	desc = "A heavy jacket made from wool originally stolen from the chef's goat. This new design is made to fit the classic suit-and-tie aesthetic, but without the hypothermia."
-	icon_state = "coatbar"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/reagent_containers/cup/glass/shaker, /obj/item/reagent_containers/cup/glass/flask, /obj/item/reagent_containers/cup/rag)
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/bartender
-
-/obj/item/clothing/head/hooded/winterhood/bartender
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "winterhood_bar"
-
 /obj/item/clothing/suit/hooded/wintercoat/ratvar
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'

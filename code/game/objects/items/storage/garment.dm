@@ -71,7 +71,7 @@
 	new /obj/item/clothing/neck/cloak/hop(src)
 	new /obj/item/clothing/shoes/laceup(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/hop(src)
-	new /obj/item/clothing/suit/hooded/wintercoat/hopformal(src)
+	new /obj/item/clothing/suit/hooded/wintercoat/skyrat/hopformal(src) //SKYRAT EDIT ADDITION - HOP FORMAL COAT
 
 /obj/item/storage/bag/garment/hos/PopulateContents()
 	new /obj/item/clothing/under/rank/security/head_of_security/skirt(src)
