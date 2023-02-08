@@ -49,7 +49,7 @@
 		return
 
 	enabled = !enabled
-	to_chat(user, span_brass("You flick the switch on [src], turning it [enabled ? "on" : "off"]!"))
+	balloon_alert(user, "turned [enabled ? "on" : "off"]")
 
 	if(enabled)
 		repowered()
