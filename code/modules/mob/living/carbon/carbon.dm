@@ -202,8 +202,8 @@
 	//SKYRAT EDIT END
 	if(neckgrab_throw)
 		power_throw++
-		do_attack_animation(target, no_effect = 1) //SKYRAT EDIT ADDITION - AESTHETICS
-		playsound(loc, 'sound/weapons/punchmiss.ogg', 50, TRUE, -1) //SKYRAT EDIT ADDITION - AESTHETICS
+	do_attack_animation(target, no_effect = 1) //SKYRAT EDIT ADDITION - AESTHETICS
+	playsound(loc, 'sound/weapons/punchmiss.ogg', 50, TRUE, -1) //SKYRAT EDIT ADDITION - AESTHETICS
 	visible_message("<span class='danger'>[src] throws [thrown_thing][power_throw ? " really hard!" : "."]</span>", \
 					"<span class='danger'>You throw [thrown_thing][power_throw ? " really hard!" : "."]</span>")
 	log_message("has thrown [thrown_thing] [power_throw ? "really hard" : ""]", LOG_ATTACK)
