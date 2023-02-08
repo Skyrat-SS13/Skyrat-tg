@@ -668,12 +668,12 @@
 
 /datum/greyscale_config/jumpsuit_worn/monkey
 	name = "Worn Jumpsuit - Monkey"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/monkey/uniform.dmi'
+	icon_file = MONKEY_UNIFORM_FILE
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/jumpsuit/jumpsuit_worn_monkey.json'
 
 /datum/greyscale_config/jumpsuit_prison_worn/monkey
 	name = "Worn Prison Jumpsuit - Monkey"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/monkey/uniform.dmi'
+	icon_file = MONKEY_UNIFORM_FILE
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/jumpsuit/jumpsuit_prison_worn_monkey.json'
 
 /datum/greyscale_config/jumpsuit_worn/vox

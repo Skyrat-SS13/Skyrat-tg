@@ -142,9 +142,6 @@
 /obj/item/clothing/suit/hooded/cloak/godslayer
 	supports_variations_flags = NONE
 
-/obj/item/clothing/under/suit/henchmen
-	supports_variations_flags = NONE
-
 /obj/item/clothing/suit/hooded/techpriest
 	supports_variations_flags = NONE
 

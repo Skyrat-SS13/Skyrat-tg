@@ -1,3 +1,6 @@
+/obj/item/clothing/under/color
+	greyscale_config_worn_monkey = /datum/greyscale_config/jumpsuit_worn/monkey
+
 /**
  * Random jumpsuit is the preferred style of the wearer if loaded as an outfit.
  * This is cleaner than creating a ../skirt variant as skirts are precached into SSwardrobe
@@ -9,7 +12,3 @@
 		return get_random_jumpskirt()
 
 	return get_random_jumpsuit()
-
-/obj/item/clothing/under/color
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
-	greyscale_config_worn_monkey = /datum/greyscale_config/jumpsuit_worn/monkey
