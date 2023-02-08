@@ -1,3 +1,6 @@
+//File for modular wintercoats that aren't bundled with other stuff
+//If the coat is part of a module (i.e. the Blueshield coat) then make sure it's subtyped under wintercoat/skyrat, but don't put it in this file!
+
 //Coat Basetype (The Assistant's Formal Coat)
 /obj/item/clothing/suit/hooded/wintercoat/skyrat
 	name = "assistant's formal winter coat"
@@ -18,7 +21,6 @@
 	name = "bartender's winter coat"
 	desc = "A heavy jacket made from wool originally stolen from the chef's goat. This new design is made to fit the classic suit-and-tie aesthetic, but without the hypothermia."
 	icon_state = "coatbar"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	allowed = list(
 		/obj/item/flashlight,
 		/obj/item/reagent_containers/cup/glass/shaker,
@@ -60,3 +62,20 @@
 /obj/item/clothing/head/hooded/winterhood/skyrat/narsie
 	desc = "A black winter hood full of whispering secrets that only she shall ever know."
 	icon_state = "hood_narsie"
+
+//Christmas
+/obj/item/clothing/suit/hooded/wintercoat/skyrat/christmas
+	name = "christmas winter coat"
+	desc = "A festive Christmas coat, warm and lined with white, soft fabric. The zipper tab is a small Candy Cane!"
+	icon_state = "coatchristmas"
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/skyrat/christmas
+
+/obj/item/clothing/head/hooded/winterhood/skyrat/christmas
+	icon_state = "hood_christmas"
+
+/obj/item/clothing/suit/hooded/wintercoat/skyrat/christmas/green
+	icon_state = "coatchristmas_green"
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/skyrat/christmas/green
+
+/obj/item/clothing/head/hooded/winterhood/skyrat/christmas/green
+	icon_state = "hood_christmas_green"

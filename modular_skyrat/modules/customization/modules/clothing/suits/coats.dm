@@ -137,30 +137,6 @@
 	icon_state = "suitjacket_white"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/hooded/wintercoat/christmas
-	name = "red christmas coat"
-	desc = "A festive red Christmas coat! Smells like Candy Cane!"
-	icon_state = "christmascoatr"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/christmas
-
-/obj/item/clothing/head/hooded/winterhood/christmas
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "christmashoodr"
-
-/obj/item/clothing/suit/hooded/wintercoat/christmas/green
-	name = "green christmas coat"
-	desc = "A festive green Christmas coat! Smells like Candy Cane!"
-	icon_state = "christmascoatg"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/christmas/green
-
-/obj/item/clothing/head/hooded/winterhood/christmas/green
-	icon_state = "christmashoodg"
-
 /obj/item/clothing/suit/armor/vest/det_suit/runner
 	name = "joyful coat"
 	desc = "<i>\"You look like a good Joe.\"</i>"
