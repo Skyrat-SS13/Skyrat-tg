@@ -507,6 +507,12 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	use_static = TRUE
 	hides_breasts = TRUE
 
+/datum/sprite_accessory/underwear/boyshorts
+	name = "Boyshorts"
+	icon_state = "boyshorts"
+	has_digitigrade = TRUE
+	gender = FEMALE
+
 /*
 	Adding hides_breasts to TG underwears where applicable
 */
@@ -581,6 +587,9 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 
 /datum/sprite_accessory/underwear/male_uk
 	has_digitigrade = TRUE
+
+/datum/sprite_accessory/underwear/female_sport
+    has_digitigrade = TRUE
 
 /*
 	End of adding has_digitigrade to TG stuff
