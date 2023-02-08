@@ -9,8 +9,8 @@
 
 //Hood Basetype (The Assistant's Formal Coat Hood)
 /obj/item/clothing/head/hooded/winterhood/skyrat
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/wintercoat.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/wintercoat.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/winterhood.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/winterhood.dmi'
 	icon_state = "hood_aformal"
 
 
