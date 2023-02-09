@@ -130,10 +130,10 @@
 	subtler_message = span_emote("<b>[user]</b>[space]<i>[user.say_emphasis(subtler_message)]</i>")
 
 	if(istype(target, /mob))
-		var/mob/M = target
+		var/mob/target_mob = target
 		user.show_message(subtler_message, alt_msg = subtler_message)
-		if(get_dist(user.loc, M.loc) <= SUBTLE_DEFAULT_DISTANCE)
-			M.show_message(subtler_message, alt_msg = subtler_message)
+		if(get_dist(user.loc, target_mob.loc) <= SUBTLE_DEFAULT_DISTANCE)
+			target_mob.show_message(subtler_message, alt_msg = subtler_message)
 		else
 			to_chat(user, span_warning("Your emote was unable to be sent to your target: Too far away."))
 	else if(istype(target, /obj/effect/overlay/holo_pad_hologram))
