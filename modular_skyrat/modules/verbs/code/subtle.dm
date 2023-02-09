@@ -45,12 +45,12 @@
 
 	var/list/viewers = get_hearers_in_view(SUBTLE_DEFAULT_DISTANCE, user)
 
-	var/obj/effect/overlay/holo_pad_hologram/h = GLOB.hologram_impersonators[user]
-	if(h)
+	var/obj/effect/overlay/holo_pad_hologram/hologram = GLOB.hologram_impersonators[user]
+	if(hologram)
 		viewers |= get_hearers_in_view(SUBTLE_DEFAULT_DISTANCE, h)
 
-	for(var/obj/effect/overlay/holo_pad_hologram/holo in viewers)
-		if(holo?.Impersonation?.client)
+	for(var/obj/effect/overlay/holo_pad_hologram/hologram in viewers)
+		if(hologram?.Impersonation?.client)
 			viewers |= holo.Impersonation
 
 	for(var/mob/ghost as anything in GLOB.dead_mob_list)
@@ -92,9 +92,9 @@
 
 		var/list/in_view = get_hearers_in_view(1, user)
 
-		var/obj/effect/overlay/holo_pad_hologram/h = GLOB.hologram_impersonators[user]
-		if(h)
-			in_view |= get_hearers_in_view(1, h)
+		var/obj/effect/overlay/holo_pad_hologram/hologram = GLOB.hologram_impersonators[user]
+		if(hologram)
+			in_view |= get_hearers_in_view(1, hologram)
 
 		in_view -= GLOB.dead_mob_list
 		in_view.Remove(user)
@@ -143,9 +143,9 @@
 	else
 		var/ghostless = get_hearers_in_view(target, user) - GLOB.dead_mob_list
 
-		var/obj/effect/overlay/holo_pad_hologram/h = GLOB.hologram_impersonators[user]
-		if(h)
-			ghostless |= get_hearers_in_view(target, h)
+		var/obj/effect/overlay/holo_pad_hologram/hologram = GLOB.hologram_impersonators[user]
+		if(hologram)
+			ghostless |= get_hearers_in_view(target, hologram)
 
 		for(var/obj/effect/overlay/holo_pad_hologram/holo in ghostless)
 			if(holo?.Impersonation?.client)

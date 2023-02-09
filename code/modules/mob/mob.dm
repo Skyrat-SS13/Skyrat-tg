@@ -323,6 +323,7 @@
  */
 /atom/proc/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE, separation = " ") // SKYRAT EDIT ADDITION - Better emotes
 	var/list/hearers = get_hearers_in_view(hearing_distance, src)
+
 	//SKYRAT EDIT ADDITION BEGIN - AI QoL
 	for(var/mob/camera/ai_eye/ai_eye in hearers)
 		if(ai_eye.ai.client && !(ai_eye.ai.stat == DEAD))
@@ -333,6 +334,7 @@
 		if(holo.Impersonation?.client)
 			hearers |= holo.Impersonation
 	//SKYRAT EDIT ADDITION END - AI QoL
+
 	if(self_message)
 		hearers -= src
 	var/raw_msg = message

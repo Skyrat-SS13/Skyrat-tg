@@ -132,14 +132,14 @@
 				to_chat(viewer, msg)
 
 	// SKYRAT EDIT -- BEGIN -- ADDITION -- AI QOL - RELAY EMOTES OVER HOLOPADS
-	var/obj/effect/overlay/holo_pad_hologram/h = GLOB.hologram_impersonators[user]
-	if(h)
+	var/obj/effect/overlay/holo_pad_hologram/hologram = GLOB.hologram_impersonators[user]
+	if(hologram)
 		if(emote_type & (EMOTE_AUDIBLE | EMOTE_VISIBLE))
-			h.audible_message(msg, deaf_message = "<span class='emote'>You see how <b>[user]</b> [msg]</span>", audible_message_flags = EMOTE_MESSAGE)
+			hologram.audible_message(msg, deaf_message = span_emote("You see how <b>[user]</b> [msg]"), audible_message_flags = EMOTE_MESSAGE)
 		else if(emote_type & EMOTE_VISIBLE)
-			h.visible_message(msg, visible_message_flags = EMOTE_MESSAGE)
+			hologram.visible_message(msg, visible_message_flags = EMOTE_MESSAGE)
 		if(emote_type & EMOTE_IMPORTANT)
-			for(var/mob/living/viewer in viewers(world.view, h))
+			for(var/mob/living/viewer in viewers(world.view, hologram))
 				if(viewer.is_blind() && !viewer.can_hear())
 					to_chat(viewer, msg)
 	// SKYRAT EDIT -- END

@@ -7,8 +7,8 @@ GLOBAL_LIST_EMPTY(hologram_impersonators)
 	. = ..()
 
 /obj/machinery/holopad/clear_holo(mob/living/user)
-	var/obj/effect/overlay/holo_pad_hologram/h = GLOB.hologram_impersonators[user]
-	if(h)
-		h.lose_hearing_sensitivity()
+	var/obj/effect/overlay/holo_pad_hologram/hologram = GLOB.hologram_impersonators[user]
+	if(hologram)
+		hologram.lose_hearing_sensitivity()
 		GLOB.hologram_impersonators -= user
 	. = ..()

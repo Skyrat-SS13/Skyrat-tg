@@ -1,5 +1,5 @@
 /mob/living/silicon
-	var/datum/examine_panel/tgui = new() //create the datum
+	var/datum/examine_panel/examine_panel = new() //create the datum
 
 /mob/living/silicon/robot
 	var/robot_resting = FALSE
