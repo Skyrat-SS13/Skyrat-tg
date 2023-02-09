@@ -19,7 +19,6 @@
 	name = "supply utility uniform"
 	desc = "A utility uniform worn by employees of the Supply department."
 	icon_state = "util_cargo"
-	supports_variations_flags = CLOTHING_MONKEY_VARIATION
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/cargo/tech/skyrat/utility/syndicate

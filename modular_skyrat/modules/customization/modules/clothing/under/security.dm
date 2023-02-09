@@ -57,7 +57,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "policealt"
-	supports_variations_flags = CLOTHING_MONKEY_VARIATION
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
 
 ///WARDEN
 /obj/item/clothing/under/rank/security/warden/peacekeeper/sol
@@ -89,10 +89,6 @@
 	fire = 30
 	acid = 30
 	wound = 10
-
-/obj/item/clothing/under/rank/prisoner
-	supports_variations_flags = CLOTHING_MONKEY_VARIATION
-	greyscale_config_worn_monkey = /datum/greyscale_config/jumpsuit_prison_worn/monkey
 
 /obj/item/clothing/under/rank/prisoner/protcust
 	name = "protective custody prisoner jumpsuit"

@@ -220,11 +220,29 @@
  * SUBTYPE WITH NEW ICON
  * Clothing that has a digitigrade version, but its parent was set to something else earlier in this file.
  */
+/obj/item/clothing/under/misc/bouncer
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
 /obj/item/clothing/under/color
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
 
 /obj/item/clothing/under/suit/waiter
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
 
-/obj/item/clothing/under/misc/bouncer
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+/obj/item/clothing/under/rank/prisoner
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
+
+/obj/item/clothing/under/rank/security/officer
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
+
+/obj/item/clothing/under/rank/security/skyrat/utility
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
+
+/obj/item/clothing/under/rank/cargo/tech/skyrat/utility
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
+
+/obj/item/clothing/under/rank/captain/skyrat/utility
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
+
+/obj/item/clothing/under/rank/engineering/engineer/skyrat/utility
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
