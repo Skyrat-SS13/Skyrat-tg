@@ -262,7 +262,7 @@
 
 	//SKYRAT EDIT ADDITION BEGIN - AI QoL
 	for(var/mob/camera/ai_eye/ai_eye in hearers)
-		if(ai_eye.ai.client && !(ai_eye.ai.stat == DEAD))
+		if(ai_eye.ai?.client && !(ai_eye.ai.stat == DEAD))
 			hearers -= ai_eye
 			hearers |= ai_eye.ai
 
