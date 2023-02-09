@@ -138,11 +138,11 @@
 			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
 			RESKIN_WORN_ICON_STATE = "trenchcloak"
 		),
-		"Peacekeeper" = list(
+		"Black" = list(
 			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "peacekeeper_trench_hos",
+			RESKIN_ICON_STATE = "hos_black",
 			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeeper_trench_hos",
+			RESKIN_WORN_ICON_STATE = "hos_black",
 			RESKIN_SUPPORTS_VARIATIONS_FLAGS = NONE
 		)
 	)

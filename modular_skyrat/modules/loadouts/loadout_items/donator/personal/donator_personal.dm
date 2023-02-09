@@ -648,3 +648,9 @@
 	name = "Switchblade Comb"
 	item_path = /obj/item/hairbrush/switchblade
 	ckeywhitelist = list("stonetear")
+
+/datum/loadout_item/suit/colorblockhoodie
+	name = "Color-Block Hoodie"
+	item_path = /obj/item/clothing/suit/hooded/colorblockhoodie
+	ckeywhitelist = list("lolpopomg101")
+  

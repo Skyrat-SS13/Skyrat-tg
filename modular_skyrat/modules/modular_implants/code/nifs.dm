@@ -8,6 +8,8 @@
 #define NIF_MINIMUM_DURABILITY 0
 #define NIF_MINIMUM_POWER_LEVEL 0
 
+#define NIF_SETUP_BLINDNESS "nif_setup"
+
 // This is the original NIF that other NIFs are based on.
 /obj/item/organ/internal/cyberimp/brain/nif
 	name = "Nanite Implant Framework"
@@ -160,7 +162,8 @@
 	if(found_component)
 		qdel(found_component)
 
-	UnregisterSignal(linked_mob, COMSIG_LIVING_DEATH, PROC_REF(damage_on_death))
+	if(linked_mob)
+		UnregisterSignal(linked_mob, COMSIG_LIVING_DEATH, PROC_REF(damage_on_death))
 
 /obj/item/organ/internal/cyberimp/brain/nif/process(delta_time)
 	. = ..()
@@ -267,9 +270,10 @@
 	var/percentage_done = (world.time - (calibration_duration - (calibration_time))) / calibration_time
 	switch(percentage_done)
 		if(NIF_CALIBRATION_STAGE_1 to NIF_CALIBRATION_STAGE_1_END)
-			linked_mob.set_blindness(5)
+			linked_mob.become_blind(NIF_SETUP_BLINDNESS)
 
 		if(NIF_CALIBRATION_STAGE_2 to NIF_CALIBRATION_STAGE_2_END)
+			linked_mob.cure_blind(NIF_SETUP_BLINDNESS)
 			var/random_ailment = rand(1, side_effect_risk)
 			switch(random_ailment)
 				if(1)
@@ -465,6 +469,18 @@
 	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif/debug
 	uses = 1
 
+/obj/item/storage/box/nif_ghost_box
+	name = "\improper NIF Starter Kit"
+	desc = "Contains a calibration-free NIF along with a variety of NIFSofts."
+	illustration = "disk_kit"
+
+/obj/item/storage/box/nif_ghost_box/PopulateContents()
+	new /obj/item/autosurgeon/organ/nif/ghost_role(src)
+	new /obj/item/disk/nifsoft_uploader/hivemind(src)
+	new /obj/item/disk/nifsoft_uploader/shapeshifter(src)
+	new /obj/item/disk/nifsoft_uploader/summoner(src)
+	new /obj/item/disk/nifsoft_uploader/money_sense(src)
+
 #undef NIF_CALIBRATION_STAGE_1
 #undef NIF_CALIBRATION_STAGE_1_END
 #undef NIF_CALIBRATION_STAGE_2
@@ -473,3 +489,4 @@
 #undef NIF_DURABILITY_LOSS_HALVED
 #undef NIF_MINIMUM_DURABILITY
 #undef NIF_MINIMUM_POWER_LEVEL
+#undef NIF_SETUP_BLINDNESS
