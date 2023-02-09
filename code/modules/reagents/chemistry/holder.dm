@@ -282,7 +282,7 @@
 
 
 /// Remove a specific reagent
-/datum/reagents/proc/remove_reagent(reagent, amount, safety = TRUE, no_react = FALSE)//Added a safety check for the trans_id_to
+/datum/reagents/proc/remove_reagent(reagent, amount, safety = TRUE)//Added a safety check for the trans_id_to
 	if(isnull(amount))
 		stack_trace("null amount passed to reagent code")
 		return FALSE
