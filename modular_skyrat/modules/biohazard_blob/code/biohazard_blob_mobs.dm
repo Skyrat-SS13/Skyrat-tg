@@ -30,6 +30,7 @@
 	attack_sound = 'sound/effects/attackblob.ogg'
 	melee_damage_type = BURN
 	del_on_death = TRUE
+	death_message = "evaporates!"
 	light_system = MOVABLE_LIGHT
 	light_range = 2
 	light_power = 1
@@ -43,10 +44,6 @@
 /mob/living/simple_animal/hostile/biohazard_blob/oil_shambler/Initialize(mapload)
 	. = ..()
 	update_overlays()
-
-/mob/living/simple_animal/hostile/biohazard_blob/oil_shambler/death()
-	visible_message(span_warning("The [src] evaporates!"))
-	return ..()
 
 /mob/living/simple_animal/hostile/biohazard_blob/oil_shambler/update_overlays()
 	. = ..()
