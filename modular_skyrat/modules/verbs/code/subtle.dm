@@ -148,8 +148,8 @@
 			ghostless |= get_hearers_in_view(target, h)
 
 		for(var/obj/effect/overlay/holo_pad_hologram/holo in ghostless)
-		if(holo?.Impersonation?.client)
-			ghostless |= holo.Impersonation
+			if(holo?.Impersonation?.client)
+				ghostless |= holo.Impersonation
 
 		for(var/mob/reciever in ghostless)
 			reciever.show_message(subtler_message, alt_msg = subtler_message)
