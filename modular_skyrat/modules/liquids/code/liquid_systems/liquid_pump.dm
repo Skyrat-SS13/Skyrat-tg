@@ -55,7 +55,7 @@
 		if(!reagents.total_volume)
 			return
 		var/datum/reagents/tempr = new(10000)
-		reagents.trans_to(tempr, (reagents.total_volume * pump_speed_percentage) + pump_speed_flat, no_react = TRUE, safety = FALSE)
+		reagents.trans_to(tempr, (reagents.total_volume * pump_speed_percentage) + pump_speed_flat, no_react = TRUE)
 		T.add_liquid_from_reagents(tempr)
 		qdel(tempr)
 	else

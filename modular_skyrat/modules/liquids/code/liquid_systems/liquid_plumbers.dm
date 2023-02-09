@@ -280,7 +280,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/input/on/waste, 0
 		target_value = reagents.total_volume
 
 	var/datum/reagents/tempr = new(10000)
-	reagents.trans_to(tempr, target_value, no_react = TRUE, safety = FALSE)
+	reagents.trans_to(tempr, target_value, no_react = TRUE)
 	affected_turf.add_liquid_from_reagents(tempr)
 	qdel(tempr)
 

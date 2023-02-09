@@ -465,7 +465,7 @@
  * * round_robin - if round_robin=TRUE, so transfer 5 from 15 water, 15 sugar and 15 plasma becomes 10, 15, 15 instead of 13.3333, 13.3333 13.3333. Good if you hate floating point errors
  * * ignore_stomach - when using methods INGEST will not use the stomach as the target
  */
-/datum/reagents/proc/trans_to(obj/target, amount = 1, multiplier = 1, preserve_data = TRUE, no_react = FALSE, mob/transfered_by, remove_blacklisted = FALSE, methods = NONE, show_message = TRUE, round_robin = FALSE, ignore_stomach = FALSE, safety = TRUE) //SKYRAT EDIT CHANGE
+/datum/reagents/proc/trans_to(obj/target, amount = 1, multiplier = 1, preserve_data = TRUE, no_react = FALSE, mob/transfered_by, remove_blacklisted = FALSE, methods = NONE, show_message = TRUE, round_robin = FALSE, ignore_stomach = FALSE)
 	var/list/cached_reagents = reagent_list
 	if(!target || !total_volume)
 		return
@@ -528,7 +528,7 @@
 			var/transfer_amount = reagent.volume * part
 			if(methods)
 				reagent.on_transfer(target_atom, methods, transfer_amount * multiplier)
-			remove_reagent(reagent.type, transfer_amount, safety) //SKYRAT EDIT CHANGE
+			remove_reagent(reagent.type, transfer_amount)
 			var/list/reagent_qualities = list(REAGENT_TRANSFER_AMOUNT = transfer_amount, REAGENT_PURITY = reagent.purity)
 			transfer_log[reagent.type] = reagent_qualities
 
@@ -555,7 +555,7 @@
 				else
 					R.expose_single(reagent, target_atom, methods, transfer_amount, show_message)
 				reagent.on_transfer(target_atom, methods, transfer_amount * multiplier)
-			remove_reagent(reagent.type, transfer_amount, safety) //SKYRAT EDIT CHANGE
+			remove_reagent(reagent.type, transfer_amount)
 			var/list/reagent_qualities = list(REAGENT_TRANSFER_AMOUNT = transfer_amount, REAGENT_PURITY = reagent.purity)
 			transfer_log[reagent.type] = reagent_qualities
 
