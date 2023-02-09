@@ -545,7 +545,8 @@ Possible to do for anyone motivated enough:
 		Hologram.layer = FLY_LAYER //Above all the other objects/mobs. Or the vast majority of them.
 		SET_PLANE_EXPLICIT(Hologram, ABOVE_GAME_PLANE, src)
 		Hologram.set_anchored(TRUE)//So space wind cannot drag it.
-		Hologram.name = "[user.name] (Hologram)"//If someone decides to right click.
+		// Hologram.name = "[user.name] (Hologram)"//If someone decides to right click. //SKYRAT EDIT -- ORIGINAL
+		Hologram.name = "[user.name]" //SKYRAT EDIT -- Make the name exact, so that the double-emotes are less jarring in the chat
 		Hologram.set_light(2) //hologram lighting
 		move_hologram()
 
