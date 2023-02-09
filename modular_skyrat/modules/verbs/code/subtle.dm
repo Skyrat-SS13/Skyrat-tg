@@ -47,11 +47,11 @@
 
 	var/obj/effect/overlay/holo_pad_hologram/hologram = GLOB.hologram_impersonators[user]
 	if(hologram)
-		viewers |= get_hearers_in_view(SUBTLE_DEFAULT_DISTANCE, h)
+		viewers |= get_hearers_in_view(SUBTLE_DEFAULT_DISTANCE, hologram)
 
 	for(var/obj/effect/overlay/holo_pad_hologram/hologram in viewers)
 		if(hologram?.Impersonation?.client)
-			viewers |= holo.Impersonation
+			viewers |= hologram.Impersonation
 
 	for(var/mob/ghost as anything in GLOB.dead_mob_list)
 		if((ghost.client?.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(ghost in viewers))
