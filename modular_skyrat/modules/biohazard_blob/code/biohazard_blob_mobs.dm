@@ -44,7 +44,7 @@
 	. = ..()
 	update_overlays()
 
-/mob/living/simple_animal/hostile/biohazard_blob/oil_shambler/Destroy()
+/mob/living/simple_animal/hostile/biohazard_blob/oil_shambler/death()
 	visible_message(span_warning("The [src] evaporates!"))
 	return ..()
 
