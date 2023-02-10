@@ -39,8 +39,8 @@
 	///HUD images that this atom can provide.
 	var/list/hud_possible
 
-	///Value used to increment ex_act() if reactionary_explosions is on
-	var/explosion_block = 0
+	///How much this atom resists explosions by, in the end
+	var/explosive_resistance = 0
 
 	/**
 	 * used to store the different colors on an atom
@@ -265,6 +265,7 @@
 
 	if(uses_integrity)
 		atom_integrity = max_integrity
+	TEST_ONLY_ASSERT((!armor || istype(armor)), "[type] has an armor that contains an invalid value at intialize")
 
 	// apply materials properly from the default custom_materials value
 	// This MUST come after atom_integrity is set above, as if old materials get removed,
@@ -324,8 +325,10 @@
 
 	LAZYNULL(managed_overlays)
 
-	QDEL_NULL(light)
 	QDEL_NULL(ai_controller)
+	QDEL_NULL(light)
+	if (length(light_sources))
+		light_sources.Cut()
 
 	if(smoothing_flags & SMOOTH_QUEUED)
 		SSicon_smooth.remove_from_queues(src)
@@ -1771,11 +1774,10 @@
  * Fetches a list of all of the materials this object has of the desired type. Returns null if there is no valid materials of the type
  *
  * Arguments:
- * - [mat_type][/datum/material]: The type of material we are checking for
- * - exact: Whether to search for the _exact_ material type
+ * - [required_material][/datum/material]: The type of material we are checking for
  * - mat_amount: The minimum required amount of material
  */
-/atom/proc/has_material_type(datum/material/mat_type, exact=FALSE, mat_amount=0)
+/atom/proc/has_material_type(datum/material/required_material, mat_amount = 0)
 	var/list/cached_materials = custom_materials
 	if(!length(cached_materials))
 		return null
@@ -1785,7 +1787,7 @@
 		if(cached_materials[current_material] < mat_amount)
 			continue
 		var/datum/material/material = GET_MATERIAL_REF(current_material)
-		if(exact ? material.type != current_material : !istype(material, mat_type))
+		if(!istype(material, required_material))
 			continue
 		LAZYSET(materials_of_type, material, cached_materials[current_material])
 
@@ -1876,6 +1878,10 @@
 
 	pixel_y = pixel_y + base_pixel_y - .
 
+// Not a valid operation, turfs and movables handle block differently
+/atom/proc/set_explosion_block(explosion_block)
+	return
+
 /**
  * Returns true if this atom has gravity for the passed in turf
  *
@@ -1900,18 +1906,15 @@
 			return 0
 
 	var/list/forced_gravity = list()
-	if(SEND_SIGNAL(src, COMSIG_ATOM_HAS_GRAVITY, gravity_turf, forced_gravity))
-		if(!length(forced_gravity))
-			SEND_SIGNAL(gravity_turf, COMSIG_TURF_HAS_GRAVITY, src, forced_gravity)
+	SEND_SIGNAL(src, COMSIG_ATOM_HAS_GRAVITY, gravity_turf, forced_gravity)
+	SEND_SIGNAL(gravity_turf, COMSIG_TURF_HAS_GRAVITY, src, forced_gravity)
+	if(length(forced_gravity))
+		var/positive_grav = max(forced_gravity)
+		var/negative_grav = min(min(forced_gravity), 0) //negative grav needs to be below or equal to 0
 
-		var/positive_grav = 0
-		var/negative_grav = 0
 		//our gravity is sum of the most massive positive and negative numbers returned by the signal
 		//so that adding two forced_gravity elements with an effect size of 1 each doesnt add to 2 gravity
 		//but negative force gravity effects can cancel out positive ones
-		for(var/gravity_influence in forced_gravity)
-			positive_grav = max(positive_grav, gravity_influence)
-			negative_grav = min(negative_grav, gravity_influence)
 
 		return (positive_grav + negative_grav)
 

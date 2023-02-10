@@ -105,6 +105,13 @@
 	affected_mob.adjustPlasma(20 * REM * delta_time)
 	return ..()
 
+/datum/reagent/toxin/plasma/on_mob_metabolize(mob/living/carbon/affected_mob)
+	if(HAS_TRAIT(affected_mob, TRAIT_PLASMA_LOVER_METABOLISM)) // sometimes mobs can temporarily metabolize plasma (e.g. plasma fixation disease symptom)
+		toxpwr = 0
+
+/datum/reagent/toxin/plasma/on_mob_end_metabolize(mob/living/carbon/affected_mob)
+	toxpwr = initial(toxpwr)
+
 /// Handles plasma boiling.
 /datum/reagent/toxin/plasma/proc/on_temp_change(datum/reagents/_holder, old_temp)
 	SIGNAL_HANDLER
@@ -152,6 +159,13 @@
 		var/mob/living/carbon/human/humi = affected_mob
 		humi.adjust_coretemperature(-7 * REM * TEMPERATURE_DAMAGE_COEFFICIENT * delta_time, affected_mob.get_body_temp_normal())
 	return ..()
+
+/datum/reagent/toxin/hot_ice/on_mob_metabolize(mob/living/carbon/affected_mob)
+	if(HAS_TRAIT(affected_mob, TRAIT_PLASMA_LOVER_METABOLISM))
+		toxpwr = 0
+
+/datum/reagent/toxin/hot_ice/on_mob_end_metabolize(mob/living/carbon/affected_mob)
+	toxpwr = initial(toxpwr)
 
 /datum/reagent/toxin/lexorin
 	name = "Lexorin"
@@ -207,21 +221,6 @@
 		. = TRUE
 	..()
 
-/datum/reagent/toxin/minttoxin
-	name = "Mint Toxin"
-	description = "Useful for dealing with undesirable customers."
-	color = "#CF3600" // rgb: 207, 54, 0
-	toxpwr = 0
-	taste_description = "mint"
-	ph = 8
-	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-
-/datum/reagent/toxin/minttoxin/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
-	if(HAS_TRAIT(affected_mob, TRAIT_FAT))
-		affected_mob.investigate_log("has been gibbed by consuming [src] while fat.", INVESTIGATE_DEATHS)
-		affected_mob.inflate_gib()
-	return ..()
-
 /datum/reagent/toxin/carpotoxin
 	name = "Carpotoxin"
 	description = "A deadly neurotoxin produced by the dreaded spess carp."
@@ -271,7 +270,7 @@
 	switch(current_cycle)
 		if(1 to 5)
 			affected_mob.adjust_confusion(1 SECONDS * REM * delta_time)
-			affected_mob.adjust_drowsyness(1 * REM * delta_time)
+			affected_mob.adjust_drowsiness(2 SECONDS * REM * delta_time)
 			affected_mob.adjust_slurring(6 SECONDS * REM * delta_time)
 		if(5 to 8)
 			affected_mob.adjustStaminaLoss(40 * REM * delta_time, 0)
@@ -436,7 +435,7 @@
 /datum/reagent/toxin/spore/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
 	affected_mob.damageoverlaytemp = 60
 	affected_mob.update_damage_hud()
-	affected_mob.blur_eyes(3 * REM * delta_time)
+	affected_mob.set_eye_blur_if_lower(6 SECONDS * REM * delta_time)
 	return ..()
 
 /datum/reagent/toxin/spore_burning
@@ -471,7 +470,7 @@
 	switch(current_cycle)
 		if(1 to 10)
 			affected_mob.adjust_confusion(2 SECONDS * REM * normalise_creation_purity() * delta_time)
-			affected_mob.adjust_drowsyness(2 * REM * normalise_creation_purity() * delta_time)
+			affected_mob.adjust_drowsiness(4 SECONDS * REM * normalise_creation_purity() * delta_time)
 		if(10 to 50)
 			affected_mob.Sleeping(40 * REM * normalise_creation_purity() * delta_time)
 			. = TRUE
@@ -605,7 +604,7 @@
 		switch(pick(1, 2, 3, 4))
 			if(1)
 				to_chat(affected_mob, span_danger("You can barely see!"))
-				affected_mob.blur_eyes(3)
+				affected_mob.set_eye_blur_if_lower(6 SECONDS)
 			if(2)
 				affected_mob.emote("cough")
 			if(3)

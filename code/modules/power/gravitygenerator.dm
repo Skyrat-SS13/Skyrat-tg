@@ -170,7 +170,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 /obj/machinery/gravity_generator/main/proc/setup_parts()
 	var/turf/our_turf = get_turf(src)
 	// 9x9 block obtained from the bottom middle of the block
-	var/list/spawn_turfs = block(locate(our_turf.x - 1, our_turf.y + 2, our_turf.z), locate(our_turf.x + 1, our_turf.y, our_turf.z))
+	var/list/spawn_turfs = CORNER_BLOCK(our_turf, 3, 3)
 	var/count = 10
 	for(var/turf/T in spawn_turfs)
 		count--
@@ -393,6 +393,8 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 			shake_camera(mobs, 15, 1)
 			mobs.playsound_local(T, null, 100, 1, 0.5, sound_to_use = alert_sound)
 	//SKYRAT EDIT ADDITON BEGIN
+	if(!SSmapping.level_has_any_trait(z, ZTRAIT_STATION)) // SHUT THE FUCK UP ABANDONED STATIONS, I DON'T CARE
+		return
 	if(on)
 		priority_announce("A gravity generator has successfully restarted its graviton field, artificial gravity is online.", "Gravity Generator", ANNOUNCER_GRAVGENON)
 	else

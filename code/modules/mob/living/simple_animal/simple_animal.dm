@@ -221,6 +221,7 @@
 		adjustStaminaLoss(-stamina_recovery * delta_time, FALSE, TRUE)
 
 /mob/living/simple_animal/Destroy()
+	QDEL_NULL(access_card)
 	GLOB.simple_animals[AIStatus] -= src
 	SSnpcpool.currentrun -= src
 
@@ -495,7 +496,7 @@
 			return FALSE
 	return TRUE
 
-/mob/living/simple_animal/ignite_mob()
+/mob/living/simple_animal/ignite_mob(silent)
 	if(!flammable)
 		return FALSE
 	return ..()
@@ -615,7 +616,7 @@
 	else
 		mode()
 
-/mob/living/simple_animal/swap_hand(hand_index)
+/mob/living/simple_animal/perform_hand_swap(hand_index)
 	. = ..()
 	if(!.)
 		return

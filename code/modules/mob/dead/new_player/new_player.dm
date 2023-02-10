@@ -39,6 +39,24 @@
 /mob/dead/new_player/prepare_huds()
 	return
 
+/mob/dead/new_player/Topic(href, href_list)
+	if (usr != src)
+		return
+
+	if (!client)
+		return
+
+	if (client.interviewee)
+		return
+
+	if (href_list["viewpoll"])
+		var/datum/poll_question/poll = locate(href_list["viewpoll"]) in GLOB.polls
+		poll_player(poll)
+
+	if (href_list["votepollref"])
+		var/datum/poll_question/poll = locate(href_list["votepollref"]) in GLOB.polls
+		vote_on_poll_handler(poll, href_list)
+
 //When you cop out of the round (NB: this HAS A SLEEP FOR PLAYER INPUT IN IT)
 /mob/dead/new_player/proc/make_me_an_observer()
 	if(QDELETED(src) || !src.client)
@@ -218,6 +236,7 @@
 
 		humanc.increment_scar_slot()
 		humanc.load_persistent_scars()
+		SSpersistence.load_modular_persistence(humanc.getorganslot(ORGAN_SLOT_BRAIN)) // SKYRAT EDIT ADDITION - MODULAR_PERSISTENCE
 
 		if(GLOB.curse_of_madness_triggered)
 			give_madness(humanc, GLOB.curse_of_madness_triggered)

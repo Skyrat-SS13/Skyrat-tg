@@ -50,7 +50,7 @@ GLOBAL_LIST_INIT(meteors_sandstorm, list(/obj/effect/meteor/sand=45, /obj/effect
 		picked_start = spaceDebrisStartLoc(start_side, start_Z)
 		picked_goal = spaceDebrisFinishLoc(start_side, start_Z)
 		max_i--
-		if(max_i<=0)
+		if(max_i <= 0)
 			return
 	var/new_meteor = pick_weight(meteor_types)
 	new new_meteor(picked_start, picked_goal)
@@ -387,14 +387,14 @@ GLOBAL_LIST_INIT(meteors_sandstorm, list(/obj/effect/meteor/sand=45, /obj/effect
 	desc = "Am I glad he's frozen in there, and that we're out here."
 	hits = 4
 	meteorsound = 'sound/effects/ethereal_revive_fail.ogg'
-	meteordrop = list(/mob/living/simple_animal/hostile/carp)
+	meteordrop = list(/mob/living/basic/carp)
 	dropamt = 1
 	threat = 5
 	signature = "fishing and trawling"
 
 /obj/effect/meteor/carp/Initialize(mapload)
 	if(prob(2))
-		meteordrop = list(/mob/living/simple_animal/hostile/carp/megacarp) //hehe
+		meteordrop = list(/mob/living/basic/carp/mega) //hehe
 	return ..()
 
 //bluespace meteor

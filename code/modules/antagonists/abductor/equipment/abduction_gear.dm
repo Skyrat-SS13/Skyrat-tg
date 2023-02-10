@@ -196,7 +196,7 @@
 	else
 		mode = GIZMO_SCAN
 		icon_state = "gizmo_scan"
-	to_chat(user, span_notice("You switch the device to [mode==GIZMO_SCAN? "SCAN": "MARK"] MODE"))
+	to_chat(user, span_notice("You switch the device to [mode == GIZMO_SCAN? "SCAN": "MARK"] MODE"))
 
 /obj/item/abductor/gizmo/attack(mob/living/M, mob/user)
 	if(!ScientistCheck(user))
@@ -322,7 +322,7 @@
 	else
 		mode = MIND_DEVICE_MESSAGE
 		icon_state = "mind_device_message"
-	to_chat(user, span_notice("You switch the device to [mode==MIND_DEVICE_MESSAGE? "TRANSMISSION": "COMMAND"] MODE"))
+	to_chat(user, span_notice("You switch the device to [mode == MIND_DEVICE_MESSAGE? "TRANSMISSION": "COMMAND"] MODE"))
 
 /obj/item/abductor/mind_device/afterattack(atom/target, mob/living/user, flag, params)
 	. = ..()
@@ -363,6 +363,7 @@
 			return
 
 		if(C.can_block_magic(MAGIC_RESISTANCE_MIND, charge_cost = 0))
+			user.balloon_alert(user, "foiled!")
 			to_chat(user, span_warning("Your target seems to have some sort of mental blockage, preventing the message from being sent! It seems you've been foiled."))
 			return
 
@@ -381,6 +382,7 @@
 		if(QDELETED(L) || L.stat == DEAD)
 			return
 
+		L.balloon_alert(L, "you hear a voice")
 		to_chat(L, span_hear("You hear a voice in your head saying: </span><span class='abductor'>[message]"))
 		to_chat(user, span_notice("You send the message to your target."))
 		log_directed_talk(user, L, message, LOG_SAY, "abductor whisper")
@@ -561,7 +563,7 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 			to_chat(user, span_warning("The specimen has some kind of mental protection that is interfering with the sleep inducement! It seems you've been foiled."))
 			L.visible_message(span_danger("[user] tried to induced sleep in [L] with [src], but is unsuccessful!"), \
 			span_userdanger("You feel a strange wave of heavy drowsiness wash over you!"))
-			L.adjust_drowsyness(2)
+			L.adjust_drowsiness(4 SECONDS)
 			return
 		L.visible_message(span_danger("[user] induces sleep in [L] with [src]!"), \
 		span_userdanger("You suddenly feel very drowsy!"))
@@ -573,7 +575,7 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 			L.visible_message(span_danger("[user] tried to induce sleep in [L] with [src], but is unsuccessful!"), \
 			span_userdanger("Any sense of drowsiness is quickly diminished!"))
 			return
-		L.adjust_drowsyness(1)
+		L.adjust_drowsiness(2 SECONDS)
 		to_chat(user, span_warning("Sleep inducement works fully only on stunned specimens! "))
 		L.visible_message(span_danger("[user] tried to induce sleep in [L] with [src]!"), \
 							span_userdanger("You suddenly feel drowsy!"))

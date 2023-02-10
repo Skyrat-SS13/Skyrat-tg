@@ -64,9 +64,9 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Greyscale Beret"
 	item_path = /obj/item/clothing/head/beret
 
-/datum/loadout_item/head/black_beret
-	name = "Black Beret"
-	item_path = /obj/item/clothing/head/beret/black
+/datum/loadout_item/head/greyscale_beret/badge
+	name = "Greyscale Beret with Badge"
+	item_path = /obj/item/clothing/head/beret/badge
 
 /*
 *	CAPS
@@ -551,12 +551,20 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/atmos_beret
 	name = "Atmospherics Beret"
 	item_path = /obj/item/clothing/head/beret/atmos
-	restricted_roles = list(JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_CHIEF_ENGINEER, JOB_ENGINEERING_GUARD)
+	restricted_roles = list(
+		JOB_ATMOSPHERIC_TECHNICIAN,
+		JOB_CHIEF_ENGINEER,
+	)
 
 /datum/loadout_item/head/engi_beret
 	name = "Engineering Beret"
 	item_path = /obj/item/clothing/head/beret/engi
 	restricted_roles = list(JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_CHIEF_ENGINEER, JOB_ENGINEERING_GUARD)
+
+/datum/loadout_item/head/cargo_beret
+	name = "Supply Beret"
+	item_path = /obj/item/clothing/head/beret/cargo
+	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_SHAFT_MINER, JOB_CUSTOMS_AGENT)
 
 /datum/loadout_item/head/beret_med
 	name = "Medical Beret"
@@ -663,3 +671,8 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/donator/enclaveo
 	name = "Enclave Cap - Officer"
 	item_path = /obj/item/clothing/head/soft/enclaveo
+
+// Legacy unpaintable cowboy hat because it fits a character better
+/datum/loadout_item/head/cowboyhat_legacy
+	name = "Cowboy Hat (Legacy)"
+	item_path = /obj/item/clothing/head/costume/cowboyhat_old

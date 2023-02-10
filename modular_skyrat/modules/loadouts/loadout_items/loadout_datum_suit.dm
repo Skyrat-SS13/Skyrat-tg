@@ -104,6 +104,11 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Green Labcoat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/mad
 
+/datum/loadout_item/suit/labcoat_medical
+	name = "Medical Labcoat"
+	item_path = /obj/item/clothing/suit/toggle/labcoat/medical
+	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER)
+
 /*
 *	PONCHOS
 */
@@ -270,6 +275,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/recolorable_apron
 	name = "Recolorable Apron"
 	item_path = /obj/item/clothing/suit/apron/chef/colorable_apron
+
+/datum/loadout_item/suit/recolorable_overalls
+	name = "Recolorable Overalls"
+	item_path = /obj/item/clothing/suit/apron/overalls/greyscale
 
 /datum/loadout_item/suit/denim_overalls
 	name = "Denim Overalls"
@@ -491,52 +500,52 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/coat_med
 	name = "Medical Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/medical
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_ORDERLY) // Reserve it to Medical Doctors, Orderlies, and their boss, the Chief Medical Officer
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_ORDERLY) // Reserved for Medical Doctors, Orderlies, and their boss, the Chief Medical Officer
 
 /datum/loadout_item/suit/coat_paramedic
 	name = "Paramedic Winter Coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/paramedic
-	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_PARAMEDIC) // Reserve it to Paramedics and their boss, the Chief Medical Officer
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/medical/paramedic
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_PARAMEDIC) // Reserved for Paramedics and their boss, the Chief Medical Officer
 
 /datum/loadout_item/suit/coat_robotics
 	name = "Robotics Winter Coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/robotics
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/science/robotics
 	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_ROBOTICIST)
 
 /datum/loadout_item/suit/coat_sci
 	name = "Science Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/science
-	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, JOB_SCIENCE_GUARD) // Reserve it to the Science Departement
+	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, JOB_SCIENCE_GUARD) // Reserved for the Science Departement
 
 /datum/loadout_item/suit/coat_eng
 	name = "Engineering Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/engineering
-	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_STATION_ENGINEER, JOB_ENGINEERING_GUARD) // Reserve it to Station Engineers, Engineering Guards, and their boss, the Chief Engineer
+	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_STATION_ENGINEER, JOB_ENGINEERING_GUARD) // Reserved for Station Engineers, Engineering Guards, and their boss, the Chief Engineer
 
 /datum/loadout_item/suit/coat_atmos
 	name = "Atmospherics Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/engineering/atmos
-	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN) // Reserve it to Atmos Techs and their boss, the Chief Engineer
+	restricted_roles = list(JOB_CHIEF_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN) // Reserved for Atmos Techs and their boss, the Chief Engineer
 
 /datum/loadout_item/suit/coat_hydro
 	name = "Hydroponics Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/hydro
-	restricted_roles = list(JOB_HEAD_OF_PERSONNEL, JOB_BOTANIST) // Reserve it to Botanists and their boss, the Head of Personnel
+	restricted_roles = list(JOB_HEAD_OF_PERSONNEL, JOB_BOTANIST) // Reserved for Botanists and their boss, the Head of Personnel
 
 /datum/loadout_item/suit/coat_bar
 	name = "Bartender Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/bartender
-	restricted_roles = list(JOB_HEAD_OF_PERSONNEL, JOB_BARTENDER) //Reserved for Bartenders and their head-of-staff
+	restricted_roles = list(JOB_HEAD_OF_PERSONNEL, JOB_BARTENDER) //Reserved for Bartenders and their boss, the Head of Personnel
 
 /datum/loadout_item/suit/coat_cargo
 	name = "Cargo Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/cargo
-	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_CUSTOMS_AGENT) // Reserve it to Cargo Techs, Customs Agentes, and their boss, the Quartermaster
+	restricted_roles = list(JOB_QUARTERMASTER, JOB_CARGO_TECHNICIAN, JOB_CUSTOMS_AGENT) // Reserved for Cargo Techs, Customs Agents, and their boss, the Quartermaster
 
 /datum/loadout_item/suit/coat_miner
 	name = "Mining Winter Coat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/miner
-	restricted_roles = list(JOB_QUARTERMASTER, JOB_SHAFT_MINER) // Reserve it to Miners and their boss, the Quartermaster
+	restricted_roles = list(JOB_QUARTERMASTER, JOB_SHAFT_MINER) // Reserved for Miners and their boss, the Quartermaster
 
 // JACKETS
 /datum/loadout_item/suit/navybluejacketofficer

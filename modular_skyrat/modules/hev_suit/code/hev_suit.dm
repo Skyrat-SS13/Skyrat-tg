@@ -65,9 +65,11 @@
 /obj/item/clothing/suit/space/hev_suit
 	name = "hazardous environment suit"
 	desc = "The Mark IV HEV suit protects the user from a number of hazardous environments and has in build ballistic protection."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/spacesuit.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/spacesuit.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suits/spacesuit_digi.dmi'
 	icon_state = "hev"
+	inhand_icon_state = "syndicate-orange"
 	armor_type = /datum/armor/space_hev_suit
 	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/energy/sword, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
 	cell = /obj/item/stock_parts/cell/hyper
@@ -176,17 +178,6 @@
 	/// On first activation, we play the user a nice song!
 	var/first_use = TRUE
 
-/datum/armor/space_hev_suit
-	melee = 20
-	bullet = 20
-	laser = 20
-	energy = 20
-	bomb = 30
-	bio = 40
-	fire = 40
-	acid = 40
-	wound = 10
-
 /obj/item/clothing/suit/space/hev_suit/Initialize(mapload)
 	. = ..()
 	internal_radio = new(src)
@@ -208,8 +199,7 @@
 	current_user = null
 
 /obj/item/clothing/suit/space/hev_suit/Destroy()
-	if(internal_radio)
-		qdel(internal_radio)
+	QDEL_NULL(internal_radio)
 	if(current_internals_tank)
 		REMOVE_TRAIT(current_internals_tank, TRAIT_NODROP, "hev_trait")
 		current_internals_tank = null
@@ -906,17 +896,6 @@
 	rads_static_cooldown = PCV_COOLDOWN_RADS
 	acid_static_cooldown = PCV_COOLDOWN_ACID
 	suit_name = "PCV MARK II"
-
-/datum/armor/hev_suit_pcv
-	melee = 30
-	bullet = 30
-	laser = 30
-	energy = 30
-	bomb = 30
-	bio = 20
-	fire = 20
-	acid = 20
-	wound = 10
 
 /obj/item/clothing/suit/space/hev_suit/pcv/AltClick(mob/living/user)
 	reskin_obj(user)

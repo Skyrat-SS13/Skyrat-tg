@@ -26,11 +26,8 @@ PROCESSING_SUBSYSTEM_DEF(station)
 
 ///Rolls for the amount of traits and adds them to the traits list
 /datum/controller/subsystem/processing/station/proc/SetupTraits()
-	// SKYRAT EDIT ADDITION
-	#ifdef LOWMEMORYMODE // NO MORE FUCKING STUPID STATION TRAITS ON STARTUP WHEN IM TESTING SHIT FUCK YOU
-	return
-	#endif
-	// SKYRAT EDIT END
+	if (CONFIG_GET(flag/forbid_station_traits))
+		return
 
 	if (fexists(FUTURE_STATION_TRAITS_FILE))
 		var/forced_traits_contents = file2text(FUTURE_STATION_TRAITS_FILE)
@@ -63,20 +60,22 @@ PROCESSING_SUBSYSTEM_DEF(station)
 			continue //Dont add abstract ones to it
 		selectable_traits_by_types[initial(trait_typepath.trait_type)][trait_typepath] = initial(trait_typepath.weight)
 
-	var/positive_trait_count = pick(12;0, 5;1, 1;2)
-	var/neutral_trait_count = pick(5;0, 10;1, 3;2)
-	var/negative_trait_count = pick(12;0, 5;1, 1;2)
+	var/positive_trait_count = pick(20;0, 5;1, 1;2)
+	var/neutral_trait_count = pick(10;0, 10;1, 3;2)
+	var/negative_trait_count = pick(20;0, 5;1, 1;2)
 
 	pick_traits(STATION_TRAIT_POSITIVE, positive_trait_count)
 	pick_traits(STATION_TRAIT_NEUTRAL, neutral_trait_count)
 	pick_traits(STATION_TRAIT_NEGATIVE, negative_trait_count)
 
-///Picks traits of a specific category (e.g. bad or good) and a specified amount, then initializes them and adds them to the list of traits.
+///Picks traits of a specific category (e.g. bad or good) and a specified amount, then initializes them, adds them to the list of traits,
+///then removes them from possible traits as to not roll twice.
 /datum/controller/subsystem/processing/station/proc/pick_traits(trait_sign, amount)
 	if(!amount)
 		return
 	for(var/iterator in 1 to amount)
 		var/datum/station_trait/trait_type = pick_weight(selectable_traits_by_types[trait_sign]) //Rolls from the table for the specific trait type
+		selectable_traits_by_types[trait_sign] -= trait_type
 		setup_trait(trait_type)
 
 ///Creates a given trait of a specific type, while also removing any blacklisted ones from the future pool.

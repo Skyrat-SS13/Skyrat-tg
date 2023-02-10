@@ -28,7 +28,6 @@
 	gold_core_spawnable = FRIENDLY_SPAWN
 	turns_per_move = 10
 	can_be_held = TRUE
-	ai_controller = /datum/ai_controller/dog //Tegus can be taught to fetch
 	stop_automated_movement = TRUE
 
 /mob/living/simple_animal/hostile/retaliate/tegu/Initialize(mapload)
@@ -55,15 +54,20 @@
 	resize = 0.5
 	update_transform()
 
-/mob/living/simple_animal/hostile/carp/megacarp/shorki
+/mob/living/basic/carp/mega/shorki
+	name = "Shorki"
 	desc = "A not so ferocious, fang bearing creature that resembles a shark. This one seems a little big for its tank."
 	faction = list("neutral")
 	gender = MALE
+	gold_core_spawnable = NO_SPAWN
+	ai_controller = /datum/ai_controller/basic_controller/carp/pet
 
-/mob/living/simple_animal/hostile/carp/megacarp/shorki/Initialize(mapload)
+/mob/living/basic/carp/mega/shorki/Initialize(mapload)
 	. = ..()
-	name = "Shorki"
-	real_name = "Shorki"
+	AddElement(/datum/element/ai_retaliate)
+	AddElement(/datum/element/pet_bonus, "bloops happily!")
+	name = initial(name)
+	real_name = initial(name)
 
 /mob/living/simple_animal/pet/gondola/funky
 	name = "Funky"

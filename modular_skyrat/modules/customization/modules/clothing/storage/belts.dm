@@ -108,7 +108,7 @@
 	name = "storage pouch"
 	desc = span_notice("Click on this to open your belt's inventory!")
 	icon_state = "storage_pouch_icon"
-	worn_icon_state = "no name"	//Intentionally sets the worn icon to an error
+	worn_icon_state = "no_name"	//Intentionally sets the worn icon to an error
 	w_class = WEIGHT_CLASS_BULKY //Still cant put it in your bags, its technically a belt
 	anchored = 1	//Dont want people taking it out with their hands
 

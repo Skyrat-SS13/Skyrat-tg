@@ -565,7 +565,9 @@
 	unregister()
 	destination = null
 	previous = null
-	QDEL_NULL(assigned_transit) //don't need it where we're goin'!
+	if(!QDELETED(assigned_transit))
+		qdel(assigned_transit, force = TRUE)
+		assigned_transit = null
 	shuttle_areas = null
 	remove_ripples()
 	return ..()
@@ -766,11 +768,9 @@
 		oldT.empty(FALSE)
 
 		// Here we locate the bottommost shuttle boundary and remove all turfs above it
-		var/list/baseturf_cache = oldT.baseturfs
-		for(var/k in 1 to length(baseturf_cache))
-			if(ispath(baseturf_cache[k], /turf/baseturf_skipover/shuttle))
-				oldT.ScrapeAway(baseturf_cache.len - k + 1)
-				break
+		var/shuttle_tile_depth = oldT.depth_to_find_baseturf(/turf/baseturf_skipover/shuttle)
+		if (!isnull(shuttle_tile_depth))
+			oldT.ScrapeAway(shuttle_tile_depth)
 
 	qdel(src, force=TRUE)
 
@@ -812,8 +812,6 @@
 		var/turf/T1 = L1[i]
 		if(!T0 || !T1)
 			continue  // out of bounds
-		if(T0.type == T0.baseturfs)
-			continue  // indestructible
 		if(!istype(T0.loc, area_type) || istype(T0.loc, /area/shuttle/transit))
 			continue  // not part of the shuttle
 		ripple_turfs += T1

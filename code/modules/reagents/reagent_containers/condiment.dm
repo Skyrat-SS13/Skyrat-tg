@@ -62,6 +62,8 @@
 		M.visible_message(span_warning("[user] fed [M] from [src]."), \
 			span_warning("[user] fed you from [src]."))
 		log_combat(user, M, "fed", reagents.get_reagent_log_string())
+
+	SEND_SIGNAL(M, COMSIG_GLASS_DRANK, src, user) // SKYRAT EDIT ADDITION - Hemophages can't casually drink what's not going to regenerate their blood
 	reagents.trans_to(M, 10, transfered_by = user, methods = INGEST)
 	playsound(M.loc,'sound/items/drink.ogg', rand(10,50), TRUE)
 	return TRUE
@@ -299,6 +301,13 @@
 	desc = "A jar of super-sweet cherry jelly."
 	icon_state = "cherryjelly"
 	list_reagents = list(/datum/reagent/consumable/cherryjelly = 50)
+	fill_icon_thresholds = null
+
+/obj/item/reagent_containers/condiment/honey
+	name = "honey"
+	desc = "A jar of sweet and viscous honey."
+	icon_state = "honey"
+	list_reagents = list(/datum/reagent/consumable/honey = 50)
 	fill_icon_thresholds = null
 
 //technically condiment packs but they are non transparent

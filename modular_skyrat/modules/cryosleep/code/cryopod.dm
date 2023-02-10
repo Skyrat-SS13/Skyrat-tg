@@ -40,6 +40,7 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	/// The channel to be broadcast on, valid values are the values of any of the "RADIO_CHANNEL_" defines.
 	var/announcement_channel = null // RADIO_CHANNEL_COMMON doesn't work here.
 
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 
 /obj/machinery/computer/cryopod/Initialize(mapload)
 	. = ..()
@@ -134,11 +135,13 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	desc = "Suited for Cyborgs and Humanoids, the pod is a safe place for personnel affected by the Space Sleep Disorder to get some rest."
 	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi'
 	icon_state = "cryopod-open"
+	base_icon_state = "cryopod"
 	use_power = FALSE
 	density = TRUE
 	anchored = TRUE
 	state_open = TRUE
 
+	var/open_icon_state = "cryopod-open"
 	var/on_store_message = "has entered long-term storage."
 	var/on_store_name = "Cryogenic Oversight"
 	/// Whether the cryopod respects the minimum time someone has to be disconnected before they can be put into cryo by another player
@@ -159,6 +162,9 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 
 	/// Has the occupant been tucked in?
 	var/tucked = FALSE
+
+	/// What was the ckey of the client that entered the cryopod?
+	var/stored_ckey = null
 
 /obj/machinery/cryopod/quiet
 	quiet = TRUE
@@ -203,16 +209,16 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 		var/mob/living/mob_occupant = occupant
 		if(mob_occupant && mob_occupant.stat != DEAD)
 			to_chat(occupant, span_notice("<b>You feel cool air surround you. You go numb as your senses turn inward.</b>"))
+			stored_ckey = mob_occupant.ckey
 
 		COOLDOWN_START(src, despawn_world_time, time_till_despawn)
-	icon_state = "cryopod"
 
 /obj/machinery/cryopod/open_machine()
 	..()
-	icon_state = "cryopod-open"
 	set_density(TRUE)
 	name = initial(name)
 	tucked = FALSE
+	stored_ckey = null
 
 /obj/machinery/cryopod/container_resist_act(mob/living/user)
 	visible_message(span_notice("[occupant] emerges from [src]!"),
@@ -304,6 +310,10 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	var/mob/living/mob_occupant = occupant
 	var/list/crew_member = list()
 
+	if(ishuman(occupant))
+		var/mob/living/carbon/human/human = occupant
+		human.save_individual_persistence()
+
 	crew_member["name"] = mob_occupant.real_name
 
 	if(mob_occupant.mind)
@@ -314,6 +324,8 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 		if(LAZYLEN(mob_occupant.mind.objectives))
 			mob_occupant.mind.objectives.Cut()
 			mob_occupant.mind.special_role = null
+		if(mob_occupant.mind.holy_role == HOLY_ROLE_HIGHPRIEST)
+			reset_religion() // Reset religion to its default state so the new chaplain becomes high priest and can change the sect, armor, weapon type, etc
 	else
 		crew_member["job"] = "N/A"
 
@@ -359,15 +371,39 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 				var/obj/item/modular_computer/computer = item_content
 				for(var/datum/computer_file/program/messenger/message_app in computer.stored_files)
 					message_app.invisible = TRUE
-			item_content.dropped(mob_occupant)
 			mob_occupant.transferItemToLoc(item_content, control_computer, force = TRUE, silent = TRUE)
+			item_content.dropped(mob_occupant)
 			control_computer.frozen_item += item_content
-		else mob_occupant.transferItemToLoc(item_content, drop_location(), force = TRUE, silent = TRUE)
+		else
+			mob_occupant.transferItemToLoc(item_content, drop_location(), force = TRUE, silent = TRUE)
+
+	GLOB.joined_player_list -= stored_ckey
 
 	handle_objectives()
+	mob_occupant.ghostize()
 	QDEL_NULL(occupant)
 	open_machine()
 	name = initial(name)
+
+// It's time to kill GLOB
+/obj/machinery/cryopod/proc/reset_religion()
+
+ // set the altar references to the old religious_sect to null
+	for(var/obj/structure/altar_of_gods/altar in GLOB.chaplain_altars)
+		altar.GetComponent(/datum/component/religious_tool).easy_access_sect = null
+		altar.sect_to_altar = null
+
+	QDEL_NULL(GLOB.religious_sect) // queue for removal but also set it to null, in case a new chaplain joins before it can be deleted
+
+	// set the rest of the global vars to null for the new chaplain
+	GLOB.religion = null
+	GLOB.deity = null
+	GLOB.bible_name = null
+	GLOB.bible_icon_state = null
+	GLOB.bible_inhand_icon_state = null
+	GLOB.holy_armor_type = null
+	GLOB.holy_weapon_type = null
+	GLOB.holy_successor = TRUE // We need to do this so new priests can get a new null rod
 
 /obj/machinery/cryopod/MouseDrop_T(mob/living/target, mob/user)
 	if(!istype(target) || !can_interact(user) || !target.Adjacent(user) || !ismob(target) || isanimal(target) || !istype(user.loc, /turf) || target.buckled)
@@ -475,6 +511,28 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 		qdel(weapon)
 		user.add_mood_event("tucked", /datum/mood_event/tucked_in, occupant)
 		tucked = TRUE
+
+/obj/machinery/cryopod/update_icon_state()
+	icon_state = state_open ? open_icon_state : base_icon_state
+	return ..()
+
+/// Special wall mounted cryopod for the prison, making it easier to autospawn.
+/obj/machinery/cryopod/prison
+	icon_state = "prisonpod"
+	base_icon_state = "prisonpod"
+	open_icon_state = "prisonpod"
+	density = FALSE
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cryopod/prison, 18)
+
+/obj/machinery/cryopod/prison/set_density(new_value)
+	// Simple way to make it always non-dense.
+	return ..(FALSE)
+
+/obj/machinery/cryopod/prison/close_machine(atom/movable/target)
+	. = ..()
+	// Flick the pod for a second when user enters
+	flick("prisonpod-open", src)
 
 // Wake-up notifications
 

@@ -30,6 +30,8 @@
 	var/delayedbig = FALSE //delay wire pulsed?
 	var/delayedlittle = FALSE //activation wire pulsed?
 	var/obj/effect/countdown/syndicatebomb/countdown
+	/// Whether the countdown is visible on examine
+	var/examinable_countdown = TRUE
 
 	var/next_beep
 	var/detonation_timer
@@ -104,7 +106,12 @@
 
 /obj/machinery/syndicatebomb/examine(mob/user)
 	. = ..()
-	// . += {"A digital display on it reads "[seconds_remaining()]"."} SKYRAT EDIT : - commented out to make people fear it more.
+	. += {"The patented external shell design is resistant to "probably all" forms of external explosive compression, protecting the electronically-trigged bomb core from accidental early detonation."}
+	. += "A small window reveals some information about the payload: [payload.desc]."
+	if(examinable_countdown)
+		// . += {"A digital display on it reads "[seconds_remaining()]"."} SKYRAT EDIT : - commented out to make people fear it more.
+	else
+		. +={"The digital display on it is inactive."}
 
 /obj/machinery/syndicatebomb/update_icon_state()
 	icon_state = "[initial(icon_state)][active ? "-active" : "-inactive"][open_panel ? "-wires" : ""]"
@@ -113,6 +120,7 @@
 /obj/machinery/syndicatebomb/proc/seconds_remaining()
 	if(active)
 		. = max(0, round((detonation_timer - world.time) / 10))
+
 	else
 		. = timer_set
 
@@ -209,7 +217,7 @@
 	next_beep = world.time + 10
 	detonation_timer = world.time + (timer_set * 10)
 	playsound(loc, 'sound/machines/click.ogg', 30, TRUE)
-	notify_ghosts("\A [src] has been activated at [get_area(src)]!", source = src, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Bomb Planted")
+	update_appearance()
 
 /obj/machinery/syndicatebomb/proc/settings(mob/user)
 	if(!user.canUseTopic(src, !issilicon(user)) || !user.can_interact_with(src))
@@ -227,13 +235,16 @@
 		return
 	visible_message(span_danger("[icon2html(src, viewers(loc))] [timer_set] seconds until detonation, please clear the area."))
 	activate()
-	user.mind?.add_memory(MEMORY_BOMB_PRIMED, list(DETAIL_BOMB_TYPE = src), story_value = STORY_VALUE_AMAZING)
-	update_appearance()
 	add_fingerprint(user)
-	if(payload && !istype(payload, /obj/item/bombcore/training))
-		log_bomber(user, "has primed a", src, "for detonation (Payload: [payload.name])")
-		payload.adminlog = "The [name] that [key_name(user)] had primed detonated!"
-		user.log_message("primed the [src]. (Payload: [payload.name])", LOG_GAME, log_globally = FALSE)
+	// We don't really concern ourselves with duds or fakes after this
+	if(isnull(payload) || istype(payload, /obj/machinery/syndicatebomb/training))
+		return
+
+	notify_ghosts("\A [src] has been activated at [get_area(src)]!", source = src, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Bomb Planted")
+	user.add_mob_memory(/datum/memory/bomb_planted/syndicate, antagonist = src)
+	log_bomber(user, "has primed a", src, "for detonation (Payload: [payload.name])")
+	payload.adminlog = "The [name] that [key_name(user)] had primed detonated!"
+	user.log_message("primed the [src]. (Payload: [payload.name])", LOG_GAME, log_globally = FALSE)
 
 ///Bomb Subtypes///
 

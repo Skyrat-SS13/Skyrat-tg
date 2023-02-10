@@ -407,12 +407,6 @@
 	greyscale_colors = "#FFBC30"
 	flags_1 = NONE
 
-/obj/item/clothing/head/beret/atmos
-	name = "atmospheric beret"
-	desc = "While \"pipes\" and \"style\" might not rhyme, this beret sure makes you feel like they should!"
-	greyscale_colors = "#FFDE15"
-	flags_1 = NONE
-
 //Cargo
 /obj/item/clothing/head/beret/cargo
 	name = "cargo beret"
@@ -426,19 +420,12 @@
 	desc = "You got red text today kid, but it doesn't mean you have to like it."
 	icon_state = "curator"
 
-//Miscellaneous
-/obj/item/clothing/head/beret/black
-	name = "black beret"
-	desc = "A black beret, perfect for war veterans and dark, brooding, anti-hero mimes."
-	icon_state = "beret"
-	greyscale_config = /datum/greyscale_config/beret
-	greyscale_config_worn = /datum/greyscale_config/beret/worn
-	greyscale_colors = "#3f3c40"
-
 /obj/item/clothing/head/beret/durathread
 	name = "durathread beret"
 	desc = "A beret made from durathread, its resilient fibers provide some protection to the wearer."
 	icon_state = "beret_badge"
+	icon_preview = 'icons/obj/previews.dmi'
+	icon_state_preview = "beret_durathread"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	greyscale_colors = "#C5D4F3#ECF1F8"

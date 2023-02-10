@@ -89,6 +89,9 @@ Runes can either be invoked by one's self or with many different cultists. Each 
 		if(req_keyword && keyword)
 			. += "<b>Keyword:</b> [keyword]"
 
+/obj/effect/rune/attack_paw(mob/living/user, list/modifiers)
+	return attack_hand(user, modifiers)
+
 /obj/effect/rune/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(.)
@@ -869,7 +872,8 @@ structure_check() searches for nearby cultist structures required for the invoca
 		to_chat(user, span_cultitalic("Your blood begins flowing into [src]. You must remain in place and conscious to maintain the forms of those summoned. This will hurt you slowly but surely..."))
 		var/obj/structure/emergency_shield/cult/weak/N = new(T)
 		new_human.key = ghost_to_spawn.key
-		new_human.mind?.add_antag_datum(/datum/antagonist/cult)
+		var/datum/antagonist/cult/created_cultist = new_human.mind?.add_antag_datum(/datum/antagonist/cult)
+		created_cultist?.silent = TRUE
 		to_chat(new_human, span_cultitalic("<b>You are a servant of the Geometer. You have been made semi-corporeal by the cult of Nar'Sie, and you are to serve them at all costs.</b>"))
 
 		while(!QDELETED(src) && !QDELETED(user) && !QDELETED(new_human) && (user in T))
@@ -885,7 +889,9 @@ structure_check() searches for nearby cultist structures required for the invoca
 					span_cultlarge("Your link to the world fades. Your form breaks apart."))
 			for(var/obj/I in new_human)
 				new_human.dropItemToGround(I, TRUE)
+			new_human.mind?.remove_antag_datum(/datum/antagonist/cult)
 			new_human.dust()
+
 	else if(choice == "Ascend as a Dark Spirit")
 		affecting = user
 		affecting.add_atom_colour(RUNE_COLOR_DARKRED, ADMIN_COLOUR_PRIORITY)
@@ -1008,7 +1014,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 			to_chat(M, span_cultlarge("An Apocalypse Rune was invoked in the [place.name], it is no longer available as a summoning site!"))
 			SEND_SOUND(M, 'sound/effects/pope_entry.ogg')
 	image_handler(images, duration)
-	if(intensity>=285) // Based on the prior formula, this means the cult makes up <15% of current players
+	if(intensity >= 285) // Based on the prior formula, this means the cult makes up <15% of current players
 		var/outcome = rand(1,100)
 		switch(outcome)
 			if(1 to 10)

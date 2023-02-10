@@ -138,11 +138,11 @@
 			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
 			RESKIN_WORN_ICON_STATE = "trenchcloak"
 		),
-		"Peacekeeper" = list(
+		"Black" = list(
 			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "peacekeeper_trench_hos",
+			RESKIN_ICON_STATE = "hos_black",
 			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeeper_trench_hos",
+			RESKIN_WORN_ICON_STATE = "hos_black",
 			RESKIN_SUPPORTS_VARIATIONS_FLAGS = NONE
 		)
 	)
@@ -476,7 +476,13 @@
 	desc = "A classic suit of plate armour, highly effective at stopping melee attacks."
 	icon_state = "knight_green"
 	inhand_icon_state = null
-	allowed = list(/obj/item/nullrod, /obj/item/claymore, /obj/item/banner, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
+	allowed = list(
+		/obj/item/banner,
+		/obj/item/claymore,
+		/obj/item/nullrod,
+		/obj/item/tank/internals/emergency_oxygen,
+		/obj/item/tank/internals/plasmaman,
+		)
 
 /obj/item/clothing/suit/armor/riot/knight/yellow
 	icon_state = "knight_yellow"
@@ -497,17 +503,6 @@
 	inhand_icon_state = null
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS//Can change color and add prefix
 	armor_type = /datum/armor/knight_greyscale
-
-/datum/armor/knight_greyscale
-	melee = 35
-	bullet = 10
-	laser = 10
-	energy = 10
-	bomb = 10
-	bio = 10
-	fire = 40
-	acid = 40
-	wound = 15
 
 /obj/item/clothing/suit/armor/vest/durathread
 	name = "durathread vest"
@@ -576,6 +571,12 @@
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+
+/obj/item/clothing/suit/armor/elder_atmosian/Initialize(mapload)
+	. = ..()
+	allowed += list(
+		/obj/item/fireaxe/metal_h2_axe,
+	)
 
 /datum/armor/armor_elder_atmosian
 	melee = 25

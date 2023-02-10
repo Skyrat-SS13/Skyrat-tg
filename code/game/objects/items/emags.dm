@@ -64,7 +64,7 @@
 
 /obj/item/card/emag/Initialize(mapload)
 	. = ..()
-	type_blacklist = list(typesof(/obj/machinery/door/airlock), typesof(/obj/machinery/door/window/), typesof(/obj/machinery/door/firedoor)) //list of all typepaths that require a specialized emag to hack.
+	type_blacklist = list(typesof(/obj/machinery/door/airlock) + typesof(/obj/machinery/door/window/) +  typesof(/obj/machinery/door/firedoor) - typesof(/obj/machinery/door/window/tram/)) //list of all typepaths that require a specialized emag to hack.
 
 /obj/item/card/emag/attack()
 	return
@@ -145,7 +145,7 @@
 	desc = "An ominous card that contains the location of the station, and when applied to a communications console, \
 	the ability to long-distance contact the Syndicate fleet."
 	icon_state = "battlecruisercaller"
-	worn_icon_state = "battlecruisercaller"
+	worn_icon_state = "emag"
 	///whether we have called the battlecruiser
 	var/used = FALSE
 	/// The battlecruiser team that the battlecruiser will get added to
