@@ -383,7 +383,11 @@
 
 /obj/machinery/disposal/bin/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
 	if(isitem(AM) && AM.CanEnterDisposals())
+<<<<<<< HEAD
 		if(prob(75))
+=======
+		if((throwingdatum.thrower && HAS_TRAIT(throwingdatum.thrower, TRAIT_THROWINGARM)) || prob(75))
+>>>>>>> 987de552752 (Fixes a logic error in disposal bin hitby (thrown objects don't always have a throwing mob) (#73296))
 			AM.forceMove(src)
 			visible_message(span_notice("[AM] lands in [src]."))
 			update_appearance()
