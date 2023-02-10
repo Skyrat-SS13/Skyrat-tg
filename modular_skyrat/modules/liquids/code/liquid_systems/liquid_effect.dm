@@ -279,7 +279,7 @@
 /obj/effect/abstract/liquid_turf/proc/take_reagents_flat(flat_amount)
 	var/datum/reagents/tempr = new(10000)
 	if(flat_amount >= total_reagents)
-		tempr.add_reagent_list(reagent_list, no_react = TRUE)
+		tempr.add_noreact_reagent_list(reagent_list)
 		qdel(src, TRUE)
 	else
 		var/fraction = flat_amount/total_reagents
@@ -289,7 +289,7 @@
 			reagent_list[reagent_type] -= amount
 			total_reagents -= amount
 			passed_list[reagent_type] = amount
-		tempr.add_reagent_list(passed_list, no_react = TRUE)
+		tempr.add_noreact_reagent_list(passed_list)
 		has_cached_share = FALSE
 	tempr.chem_temp = temp
 	return tempr
@@ -306,7 +306,7 @@
 		if(amount_threshold && amount < amount_threshold)
 			continue
 		passed_list[reagent_type] = amount
-	tempr.add_reagent_list(passed_list, no_react = TRUE)
+	tempr.add_noreact_reagent_list(passed_list)
 	tempr.chem_temp = temp
 	return tempr
 
@@ -314,14 +314,14 @@
 /obj/effect/abstract/liquid_turf/proc/simulate_reagents_flat(flat_amount)
 	var/datum/reagents/tempr = new(10000)
 	if(flat_amount >= total_reagents)
-		tempr.add_reagent_list(reagent_list, no_react = TRUE)
+		tempr.add_noreact_reagent_list(reagent_list)
 	else
 		var/fraction = flat_amount/total_reagents
 		var/passed_list = list()
 		for(var/reagent_type in reagent_list)
 			var/amount = fraction * reagent_list[reagent_type]
 			passed_list[reagent_type] = amount
-		tempr.add_reagent_list(passed_list, no_react = TRUE)
+		tempr.add_noreact_reagent_list(passed_list)
 	tempr.chem_temp = temp
 	return tempr
 
