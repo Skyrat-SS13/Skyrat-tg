@@ -198,6 +198,8 @@
 	//SKYRAT ADDITION START
 	/// If this should be able to hit the target even on direct firing when `ignored_factions` applies
 	var/ignore_direct_target = FALSE
+	/// Will projectile ignore gun's projectile_damage_multiplier variable?
+	var/ignore_projectile_damage_multiplier = FALSE
 	//SKYRAT ADDITION END
 
 	/// If true directly targeted turfs can be hit
