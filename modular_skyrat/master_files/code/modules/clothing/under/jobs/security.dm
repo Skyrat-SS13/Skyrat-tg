@@ -25,7 +25,7 @@
 /obj/item/clothing/under/rank/security/skyrat/utility/redsec
 	desc = "A utility uniform worn by trained Security officers."
 	icon_state = "util_sec_old"
-	supports_variations_flags = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate //MOVE ALL /SYNDICATES TO THE SYNDICATE.DM WHEN THE .dmi IS MADE (soon, after centcom.dmi)
