@@ -73,8 +73,6 @@ GLOBAL_LIST_EMPTY(antagonists)
 	owner = null
 	return ..()
 
-<<<<<<< HEAD
-=======
 /datum/antagonist/Topic(href,href_list)
 	if(!check_rights(R_ADMIN))
 		return
@@ -154,7 +152,6 @@ GLOBAL_LIST_EMPTY(antagonists)
 		return FALSE
 	return TRUE
 
->>>>>>> d4db2909986 (Renames Antagonist UI Button "Antag" -> "Special Role" (#73016))
 /datum/antagonist/proc/can_be_owned(datum/mind/new_owner)
 	. = TRUE
 	var/datum/mind/tested = new_owner || owner
