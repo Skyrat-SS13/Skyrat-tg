@@ -91,15 +91,6 @@
 	balloon_alert(user, "transferring [amount_per_transfer_from_this]u")
 	mode_change_message(user)
 
-//SKYRAT EDIT CHANGE BEGIN - CHEMISTRY QOL
-/obj/item/reagent_containers/AltClick(mob/user)
-	. = ..()
-	var/transfer_amount = input("Amount per transfer from this:","[src]") as null|anything in possible_transfer_amounts
-	amount_per_transfer_from_this = transfer_amount
-	to_chat(user, "<span class='notice'>[src]'s transfer amount is now [amount_per_transfer_from_this] units.</span>")
-	return
-//SKYRAT EDIT END
-
 /obj/item/reagent_containers/attack(mob/M, mob/living/user, def_zone)
 	if(user.combat_mode)
 		return ..()
