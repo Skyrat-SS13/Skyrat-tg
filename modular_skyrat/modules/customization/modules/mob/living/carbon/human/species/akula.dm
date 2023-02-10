@@ -44,9 +44,27 @@
 	)
 
 /datum/species/akula/randomize_features(mob/living/carbon/human/human_mob)
-	var/main_color = "#296786"
-	var/secondary_color = "#8ce0bd"
-	var/tertiary_color = "#ccf6e2"
+	var/main_color
+	var/secondary_color
+	var/tertiary_color
+	var/random = rand(1,4)
+	switch(random)
+		if(1)
+			main_color = "#1CD3E5"
+			secondary_color = "#6AF1D6"
+			tertiary_color = "#CCF6E2"
+		if(2)
+			main_color = "#CF3565"
+			secondary_color = "#d93554"
+			tertiary_color = "#fbc2dd"
+		if(3)
+			main_color = "#FFC44D"
+			secondary_color = "#FFE85F"
+			tertiary_color = "#FFF9D6"
+		if(4)
+			main_color = "#DB35DE"
+			secondary_color = "#BE3AFE"
+			tertiary_color = "#F5E2EE"
 	human_mob.dna.features["mcolor"] = main_color
 	human_mob.dna.features["mcolor2"] = secondary_color
 	human_mob.dna.features["mcolor3"] = tertiary_color
