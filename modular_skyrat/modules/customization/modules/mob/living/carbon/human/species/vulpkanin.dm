@@ -70,6 +70,7 @@
 		markings = assemble_body_markings_from_set(BMS, passed_features, src)
 	return markings
 
+/*	Runtime in vulpkanin.dm,78: pick() from empty list
 /datum/species/vulpkanin/random_name(gender,unique,lastname)
 	var/randname
 	if(gender == MALE)
@@ -83,6 +84,7 @@
 		randname += " [pick(GLOB.last_names_vulp)]"
 
 	return randname
+*/
 
 /datum/species/vulpkanin/get_species_description()
 	return placeholder_description
