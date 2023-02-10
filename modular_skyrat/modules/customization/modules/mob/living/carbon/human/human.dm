@@ -65,15 +65,12 @@
 /mob/living/carbon/human/species/teshari
 	race = /datum/species/teshari
 
-<<<<<<< Updated upstream
-=======
 /mob/living/carbon/human/species/akula
 	race = /datum/species/akula
 
 /mob/living/carbon/human/species/skrell
 	race = /datum/species/skrell
 
->>>>>>> Stashed changes
 /mob/living/carbon/human/verb/toggle_undies()
 	set category = "IC"
 	set name = "Toggle underwear visibility"
