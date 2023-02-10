@@ -27,16 +27,16 @@
 	var/list/colors
 	switch(default_color)
 		if(DEFAULT_PRIMARY)
-			colors = features["mcolor"]
+			colors = sanitize_hexcolor(features["mcolor"])
 		if(DEFAULT_SECONDARY)
-			colors = features["mcolor2"]
+			colors = sanitize_hexcolor(features["mcolor2"])
 		if(DEFAULT_TERTIARY)
-			colors = features["mcolor3"]
+			colors = sanitize_hexcolor(features["mcolor3"])
 		if(DEFAULT_SKIN_OR_PRIMARY)
 			if(pref_species && pref_species.use_skintones)
-				colors = features["skin_color"]
+				colors = sanitize_hexcolor(features["skin_color"])
 			else
-				colors = features["mcolor"]
+				colors = sanitize_hexcolor(features["mcolor"])
 		else
 			colors = default_color
 
