@@ -312,15 +312,8 @@ GLOBAL_LIST_EMPTY(species_list)
 /proc/do_after(mob/user, delay, atom/target, timed_action_flags = NONE, progress = TRUE, datum/callback/extra_checks, interaction_key, max_interact_count = 1)
 	if(!user)
 		return FALSE
-<<<<<<< HEAD
-	var/atom/target_loc = null
-	if(target && !isturf(target))
-		target_loc = target.loc
-
-=======
 	if(!isnum(delay))
 		CRASH("do_after was passed a non-number delay: [delay || "null"].")
->>>>>>> 93cbbaa5b27 (Fixes force-drinking being instananeous, and a few others (#73280))
 	if(!interaction_key && target)
 		interaction_key = target //Use the direct ref to the target
 	if(interaction_key) //Do we have a interaction_key now?
