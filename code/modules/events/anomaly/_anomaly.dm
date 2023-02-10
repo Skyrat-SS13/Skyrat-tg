@@ -51,8 +51,26 @@
 	if(anomaly_turf)
 		newAnomaly = new anomaly_path(anomaly_turf)
 	if (newAnomaly)
+		apply_anomaly_properties(newAnomaly)
 		announce_to_ghosts(newAnomaly)
 
+<<<<<<< HEAD
 /datum/round_event/anomaly/end()
 	var/datum/round_event_control/anomaly/anomaly_event = control
 	anomaly_event.spawn_location = null
+=======
+/// Make any further post-creation modifications to the anomaly
+/datum/round_event/anomaly/proc/apply_anomaly_properties(obj/effect/anomaly/new_anomaly)
+	return
+
+/datum/event_admin_setup/anomaly
+	///The admin-chosen spawn location.
+	var/turf/spawn_location
+
+/datum/event_admin_setup/anomaly/prompt_admins()
+	if(tgui_alert(usr, "Spawn anomaly at your current location?", "Anomaly Alert", list("Yes", "No")) == "Yes")
+		spawn_location = get_turf(usr)
+
+/datum/event_admin_setup/anomaly/apply_to_event(datum/round_event/anomaly/event)
+	event.spawn_location = spawn_location
+>>>>>>> 2ff892757fd (Correct instances of destroying baseturfs in ChangeTurf & Select dimensional anomaly theme (#73177))

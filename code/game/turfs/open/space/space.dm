@@ -277,3 +277,37 @@
 				return FALSE
 		return TRUE
 	return FALSE
+<<<<<<< HEAD
+=======
+
+/turf/open/space/openspace/enable_starlight()
+	var/turf/below = SSmapping.get_turf_below(src)
+	// Override = TRUE beacuse we could have our starlight updated many times without a failure, which'd trigger this
+	RegisterSignal(below, COMSIG_TURF_CHANGE, PROC_REF(on_below_change), override = TRUE)
+	if(!isspaceturf(below))
+		return
+	set_light(2)
+
+/turf/open/space/openspace/update_starlight()
+	. = ..()
+	if(.)
+		return
+	// If we're here, the starlight is not to be
+	var/turf/below = SSmapping.get_turf_below(src)
+	UnregisterSignal(below, COMSIG_TURF_CHANGE)
+
+/turf/open/space/openspace/proc/on_below_change(turf/source, path, list/new_baseturfs, flags, list/post_change_callbacks)
+	SIGNAL_HANDLER
+	if(isspaceturf(source) && !ispath(path, /turf/open/space))
+		set_light(2)
+	else if(!isspaceturf(source) && ispath(path, /turf/open/space))
+		set_light(0)
+
+/turf/open/space/replace_floor(turf/open/new_floor_path, flags)
+	if (!initial(new_floor_path.overfloor_placed))
+		ChangeTurf(new_floor_path, flags = flags)
+		return
+	// Create plating under tiled floor we try to create directly onto space
+	PlaceOnTop(/turf/open/floor/plating, flags = flags)
+	PlaceOnTop(new_floor_path, flags = flags)
+>>>>>>> 2ff892757fd (Correct instances of destroying baseturfs in ChangeTurf & Select dimensional anomaly theme (#73177))
