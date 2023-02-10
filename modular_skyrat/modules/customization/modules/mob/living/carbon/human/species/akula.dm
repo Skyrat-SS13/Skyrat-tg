@@ -43,29 +43,23 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/akula,
 	)
 
-/datum/species/akula/randomize_features(mob/living/carbon/human/human)
-	var/main_color = "#668899"
-	var/secondary_color = "#BBCCDD"
-	var/tertiary_color = "#ffffff"
-	human.dna.features["mcolor"] = main_color
-	human.dna.features["mcolor2"] = secondary_color
-	human.dna.features["mcolor3"] = tertiary_color
-	human.undershirt = "Nude"
-	human.underwear = "Nude"
-	human.socks = "Nude"
-	human.dna.body_markings = human.dna.species.get_random_body_markings(human.dna.unique_features)
-	human.dna.species.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Akula", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, tertiary_color))
+/datum/species/akula/randomize_features(mob/living/carbon/human/human_mob)
+	var/main_color = "#296786"
+	var/secondary_color = "#8ce0bd"
+	var/tertiary_color = "#ccf6e2"
+	human_mob.dna.features["mcolor"] = main_color
+	human_mob.dna.features["mcolor2"] = secondary_color
+	human_mob.dna.features["mcolor3"] = tertiary_color
 
-/datum/species/akula/prepare_human_for_preview(mob/living/carbon/human/human)
-	var/main_color = "#668899"
-	var/secondary_color = "#BBCCDD"
-	var/tertiary_color = "#ffffff"
-	human.dna.features["mcolor"] = main_color
-	human.dna.features["mcolor2"] = secondary_color
-	human.dna.features["mcolor3"] = tertiary_color
-	human.dna.body_markings = human.dna.species.get_random_body_markings(human.dna.unique_features)
-	human.update_mutant_bodyparts(TRUE)
-	human.update_body(TRUE)
+/datum/species/akula/prepare_human_for_preview(mob/living/carbon/human/akula)
+	var/main_color = "#296786"
+	var/secondary_color = "#8ce0bd"
+	var/tertiary_color = "#ccf6e2"
+	akula.dna.features["mcolor"] = main_color
+	akula.dna.features["mcolor2"] = secondary_color
+	akula.dna.features["mcolor3"] = tertiary_color
+	akula.update_mutant_bodyparts(TRUE)
+	akula.update_body(TRUE)
 
 /obj/item/organ/internal/eyes/akula
 	// Eyes over hair as bandaid for the low amounts of head matching hair
