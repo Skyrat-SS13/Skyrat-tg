@@ -146,6 +146,7 @@
 	. = ..()
 	var/datum/atom_hud/datahud = GLOB.huds[health_hud]
 	datahud.show_to(src)
+<<<<<<< HEAD
 
 /mob/living/simple_animal/hostile/giant_spider/nurse/AttackingTarget()
 	if(DOING_INTERACTION(src, INTERACTION_SPIDER_KEY))
@@ -175,6 +176,14 @@
 	visible_message(
 		span_notice("[src] wraps the wounds of [hurt_spider]."),
 		span_notice("You wrap the wounds of [hurt_spider]."),
+=======
+	AddComponent(\
+		/datum/component/healing_touch,\
+		interaction_key = DOAFTER_SOURCE_SPIDER,\
+		valid_targets_typecache = typecacheof(list(/mob/living/simple_animal/hostile/giant_spider)),\
+		action_text = "%SOURCE% begins wrapping the wounds of %TARGET%.",\
+		complete_text = "%SOURCE% wraps the wounds of %TARGET%.",\
+>>>>>>> 3335b5e59fb (Basic Mob Spiders II: Elements (#73202))
 	)
 
 /**
@@ -202,8 +211,6 @@
 	mob_size = MOB_SIZE_LARGE
 	gold_core_spawnable = NO_SPAWN
 	menu_description = "Tank spider variant with an enormous amount of health and damage, but is very slow when not on webbing. It also has a charge ability to close distance with a target after a small windup."
-	/// Whether or not the tarantula is currently walking on webbing.
-	var/silk_walking = TRUE
 	/// Charging ability
 	var/datum/action/cooldown/mob_cooldown/charge/basic_charge/charge
 
@@ -211,6 +218,7 @@
 	. = ..()
 	charge = new /datum/action/cooldown/mob_cooldown/charge/basic_charge()
 	charge.Grant(src)
+	AddElement(/datum/element/web_walker, /datum/movespeed_modifier/tarantula_web)
 
 /mob/living/simple_animal/hostile/giant_spider/tarantula/Destroy()
 	QDEL_NULL(charge)
@@ -220,16 +228,6 @@
 	if(client)
 		return
 	charge.Trigger(target = target)
-
-/mob/living/simple_animal/hostile/giant_spider/tarantula/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
-	. = ..()
-	var/obj/structure/spider/stickyweb/web = locate() in loc
-	if(web && !silk_walking)
-		remove_movespeed_modifier(/datum/movespeed_modifier/tarantula_web)
-		silk_walking = TRUE
-	else if(!web && silk_walking)
-		add_movespeed_modifier(/datum/movespeed_modifier/tarantula_web)
-		silk_walking = FALSE
 
 /**
  * # Spider Viper
@@ -742,7 +740,19 @@
 	AddComponent(/datum/component/blood_walk, \
 		blood_type = /obj/effect/decal/cleanable/blood/bubblegum, \
 		blood_spawn_chance = 5)
+	AddComponent(\
+		/datum/component/healing_touch,\
+		heal_brute = maxHealth * 0.5,\
+		heal_burn = maxHealth * 0.5,\
+		self_targetting = HEALING_TOUCH_SELF_ONLY,\
+		interaction_key = DOAFTER_SOURCE_SPIDER,\
+		valid_targets_typecache = typecacheof(list(/mob/living/simple_animal/hostile/giant_spider/hunter/flesh)),\
+		extra_checks = CALLBACK(src, PROC_REF(can_mend)),\
+		action_text = "%SOURCE% begins mending themselves...",\
+		complete_text = "%SOURCE%'s wounds mend together.",\
+	)
 
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/giant_spider/hunter/flesh/AttackingTarget()
 	if(DOING_INTERACTION(src, INTERACTION_SPIDER_KEY))
 		return
@@ -760,6 +770,14 @@
 			visible_message(span_notice("[src]'s wounds mend together."),span_notice("You mend your wounds together."))
 		return
 	return ..()
+=======
+/// Prevent you from healing other flesh spiders, or healing when on fire
+/mob/living/simple_animal/hostile/giant_spider/hunter/flesh/proc/can_mend(mob/living/source, mob/living/target)
+	if (on_fire)
+		balloon_alert(src, "on fire!")
+		return FALSE
+	return TRUE
+>>>>>>> 3335b5e59fb (Basic Mob Spiders II: Elements (#73202))
 
 /**
  * # Viper Spider (Wizard)
