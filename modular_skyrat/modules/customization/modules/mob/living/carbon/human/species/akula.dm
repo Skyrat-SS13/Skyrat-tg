@@ -26,7 +26,7 @@
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
-		"tail" = "None",
+		"tail" = ACC_RANDOM,
 		"legs" = "Normal Legs"
 	)
 	payday_modifier = 0.75
@@ -43,22 +43,36 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/akula,
 	)
 
-/datum/species/akula/randomize_features(mob/living/carbon/human/human_mob)
+/datum/species/akula/randomize_features(mob/living/carbon/human/human)
 	var/main_color = "#668899"
 	var/secondary_color = "#BBCCDD"
-	var/tertiary_color = "#BBCCDD"
-	// Yeah its not random, oh well
-	human_mob.dna.features["mcolor"] = main_color
-	human_mob.dna.features["mcolor2"] = secondary_color
-	human_mob.dna.features["mcolor3"] = tertiary_color
+	var/tertiary_color = "#ffffff"
+	human.dna.features["mcolor"] = main_color
+	human.dna.features["mcolor2"] = secondary_color
+	human.dna.features["mcolor3"] = tertiary_color
+	human.undershirt = "Nude"
+	human.underwear = "Nude"
+	human.socks = "Nude"
+	human.dna.body_markings = human.dna.species.get_random_body_markings(human.dna.unique_features)
+	human.dna.species.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Akula", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, tertiary_color))
+
+/datum/species/akula/prepare_human_for_preview(mob/living/carbon/human/human)
+	var/main_color = "#668899"
+	var/secondary_color = "#BBCCDD"
+	var/tertiary_color = "#ffffff"
+	human.dna.features["mcolor"] = main_color
+	human.dna.features["mcolor2"] = secondary_color
+	human.dna.features["mcolor3"] = tertiary_color
+	human.dna.body_markings = human.dna.species.get_random_body_markings(human.dna.unique_features)
+	human.update_mutant_bodyparts(TRUE)
+	human.update_body(TRUE)
 
 /obj/item/organ/internal/eyes/akula
 	// Eyes over hair as bandaid for the low amounts of head matching hair
 	eyes_layer = (HAIR_LAYER - 0.5)
 
 /datum/species/akula/get_random_body_markings(list/passed_features)
-	var/name = "Akula"
-	var/datum/body_marking_set/BMS = GLOB.body_marking_sets[name]
+	var/datum/body_marking_set/BMS = GLOB.body_marking_sets["Akula"]
 	var/list/markings = list()
 	if(BMS)
 		markings = assemble_body_markings_from_set(BMS, passed_features, src)
@@ -69,14 +83,3 @@
 
 /datum/species/akula/get_species_lore()
 	return list(placeholder_lore)
-
-/datum/species/akula/prepare_human_for_preview(mob/living/carbon/human/human)
-	var/main_color = "#668899"
-	var/secondary_color = "#BBCCDD"
-	var/tertiary_color = "#BBCCDD"
-	human.dna.features["mcolor"] = main_color
-	human.dna.features["mcolor2"] = secondary_color
-	human.dna.features["mcolor3"] = tertiary_color
-	human.dna.species.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Akula", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, tertiary_color))
-	human.update_mutant_bodyparts(TRUE)
-	human.update_body(TRUE)

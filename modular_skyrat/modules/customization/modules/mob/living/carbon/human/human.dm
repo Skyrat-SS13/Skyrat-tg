@@ -56,6 +56,9 @@
 /mob/living/carbon/human/species/teshari
 	race = /datum/species/teshari
 
+/mob/living/carbon/human/species/akula
+	race = /datum/species/akula
+
 /mob/living/carbon/human/verb/toggle_undies()
 	set category = "IC"
 	set name = "Toggle underwear visibility"

@@ -19,12 +19,12 @@
 /obj/item/bodypart/leg/left/mutant/akula
 	icon_greyscale = BODYPART_ICON_AKULA
 	limb_id = SPECIES_AKULA
-	digitigrade_type = /obj/item/bodypart/leg/left/digitigrade/akula
+	digitigrade_type = null
 
 /obj/item/bodypart/leg/right/mutant/akula
 	icon_greyscale = BODYPART_ICON_AKULA
 	limb_id = SPECIES_AKULA
-	digitigrade_type = /obj/item/bodypart/leg/right/digitigrade/akula
+	digitigrade_type = null
 
 /obj/item/bodypart/leg/left/digitigrade/akula
 	icon_greyscale = BODYPART_ICON_AKULA
