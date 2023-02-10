@@ -667,6 +667,8 @@ GLOBAL_LIST_INIT(human_heights_to_offsets, list(
 #define NIPPLES_LAYER 26
 #define BANDAGE_LAYER 25
 //SKYRAT EDIT ADDITION END
+/// ID card layer
+#define ID_LAYER 24
 /// ID card layer (might be deprecated)
 #define ID_CARD_LAYER 23
 /// Layer for bodyparts that should appear above every other bodypart - Currently only used for hands
