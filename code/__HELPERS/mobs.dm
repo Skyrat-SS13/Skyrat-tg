@@ -323,6 +323,7 @@ GLOBAL_LIST_EMPTY(species_list)
 		LAZYSET(user.do_afters, interaction_key, current_interaction_count + 1)
 
 	var/atom/user_loc = user.loc
+	var/atom/target_loc = target?.loc
 
 	var/drifting = FALSE
 	if(SSmove_manager.processing_on(user, SSspacedrift))
