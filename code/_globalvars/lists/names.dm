@@ -31,7 +31,7 @@ GLOBAL_LIST_INIT(last_names_vulp, world.file2list("modular_skyrat/modules/custom
 GLOBAL_LIST_INIT(first_names_male_taj, world.file2list("modular_skyrat/modules/customization/strings/names/first_male_taj.txt"))
 GLOBAL_LIST_INIT(first_names_female_taj, world.file2list("modular_skyrat/modules/customization/strings/names/first_female_taj.txt"))
 GLOBAL_LIST_INIT(last_names_taj, world.file2list("modular_skyrat/modules/customization/strings/names/last_taj.txt"))
-//SKYRAT BEGIN END
+//SKYRAT ADD END
 
 GLOBAL_LIST_INIT(verbs, world.file2list("strings/names/verbs.txt"))
 GLOBAL_LIST_INIT(ing_verbs, world.file2list("strings/names/ing_verbs.txt"))
