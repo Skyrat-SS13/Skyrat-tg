@@ -132,14 +132,15 @@
 	if(istype(target, /mob))
 		var/mob/target_mob = target
 		user.show_message(subtler_message, alt_msg = subtler_message)
-		if(get_dist(user.loc, target_mob.loc) <= SUBTLE_DEFAULT_DISTANCE)
+		var/obj/effect/overlay/holo_pad_hologram/hologram = GLOB.hologram_impersonators[user]
+		if((get_dist(user.loc, target_mob.loc) <= SUBTLE_DEFAULT_DISTANCE) || (hologram && get_dist(hologram.loc, target_mob.loc) <= SUBTLE_DEFAULT_DISTANCE))
 			target_mob.show_message(subtler_message, alt_msg = subtler_message)
 		else
 			to_chat(user, span_warning("Your emote was unable to be sent to your target: Too far away."))
 	else if(istype(target, /obj/effect/overlay/holo_pad_hologram))
-		var/obj/effect/overlay/holo_pad_hologram/holo = target
-		if(holo.Impersonation?.client)
-			holo.Impersonation.show_message(subtler_message, alt_msg = subtler_message)
+		var/obj/effect/overlay/holo_pad_hologram/hologram = target
+		if(hologram.Impersonation?.client)
+			hologram.Impersonation.show_message(subtler_message, alt_msg = subtler_message)
 	else
 		var/ghostless = get_hearers_in_view(target, user) - GLOB.dead_mob_list
 
