@@ -235,14 +235,5 @@
 /obj/item/clothing/under/rank/security/officer
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
 
-/obj/item/clothing/under/rank/security/skyrat/utility
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
-
-/obj/item/clothing/under/rank/cargo/tech/skyrat/utility
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
-
-/obj/item/clothing/under/rank/captain/skyrat/utility
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
-
-/obj/item/clothing/under/rank/engineering/engineer/skyrat/utility
+/obj/item/clothing/under/rank/medical/scrubs
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
