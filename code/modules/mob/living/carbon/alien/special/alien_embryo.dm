@@ -143,6 +143,7 @@
 		owner.log_message("had an alien larva within them escape (without being gibbed).", LOG_ATTACK, log_globally = FALSE)
 		owner.adjustBruteLoss(40)
 		owner.cut_overlay(overlay)
+	owner.investigate_log("has been gibbed by an alien larva.", INVESTIGATE_DEATHS)
 	qdel(src)
 
 
