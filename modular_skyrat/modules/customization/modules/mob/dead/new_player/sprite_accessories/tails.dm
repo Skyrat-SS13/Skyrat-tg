@@ -329,7 +329,7 @@
 	name = "Shade (Striped)"
 	icon_state = "shadekinlongstriped_large"
 
-/datum/sprite_accessory/tails/mammal/wagging/akula
+/datum/sprite_accessory/tails/mammal/wagging/akula/akula
 	name = "Akula"
 	icon_state = "akula"
 
