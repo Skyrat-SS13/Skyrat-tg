@@ -47,9 +47,9 @@
 /obj/item/bodypart/leg/left/robot/digitigrade
 	icon_greyscale = BODYPART_ICON_SYNTHLIZARD
 	should_draw_greyscale = TRUE
-	limb_id = "digitigrade"
+	limb_id = BODYPART_ID_DIGITIGRADE
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_DIGITIGRADE
-	base_limb_id = SPECIES_SYNTH
+	base_limb_id = BODYPART_ID_DIGITIGRADE
 	brute_reduction = 0
 	burn_reduction = 0
 
@@ -60,9 +60,9 @@
 /obj/item/bodypart/leg/right/robot/digitigrade
 	icon_greyscale = BODYPART_ICON_SYNTHLIZARD
 	should_draw_greyscale = TRUE
-	limb_id = "digitigrade"
+	limb_id = BODYPART_ID_DIGITIGRADE
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_DIGITIGRADE
-	base_limb_id = SPECIES_SYNTH
+	base_limb_id = BODYPART_ID_DIGITIGRADE
 	brute_reduction = 0
 	burn_reduction = 0
 

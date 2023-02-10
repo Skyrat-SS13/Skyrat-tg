@@ -12,6 +12,10 @@
 	var/datum/weakref/parent_nif
 	///Who is the NIF currently linked to?
 	var/mob/living/carbon/human/linked_mob
+	///How much does the program cost to buy in credits?
+	var/purchase_price = 300
+	///What catagory is the NIFSoft under?
+	var/buying_category = NIFSOFT_CATEGORY_GENERAL
 
 	///Can the program be installed with other instances of itself?
 	var/single_install = TRUE
