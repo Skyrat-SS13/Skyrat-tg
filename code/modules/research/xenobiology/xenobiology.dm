@@ -719,7 +719,7 @@
 		smart_animal.sentience_act()
 	dumb_mob.mind.add_antag_datum(/datum/antagonist/sentient_creature)
 	balloon_alert(user, "success")
-		dumb_mob.copy_languages(user, LANGUAGE_MASTER)
+	dumb_mob.copy_languages(user, LANGUAGE_MASTER)
 	after_success(user, dumb_mob)
 	qdel(src)
 
