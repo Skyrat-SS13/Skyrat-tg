@@ -61,6 +61,8 @@
 
 	return appearance
 
+//SKYRAT EDIT REMOVAL BEGIN - Suicide/Ghost
+/*
 /datum/escape_menu/proc/leave_ghost()
 	PRIVATE_PROC(TRUE)
 
@@ -68,8 +70,8 @@
 	var/mob/living/living_user = client?.mob
 	living_user?.ghost()
 
-//SKYRAT EDIT REMOVAL BEGIN - Suicide Disabled
-/*
+
+
 /datum/escape_menu/proc/leave_suicide()
 	PRIVATE_PROC(TRUE)
 

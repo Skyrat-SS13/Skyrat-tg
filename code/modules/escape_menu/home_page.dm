@@ -28,15 +28,37 @@
 		)
 	)
 
+// SKYRAT EDIT ADDITION START
+	page_holder.give_screen_object(
+		new /atom/movable/screen/escape_menu/home_button/opfor(
+			null,
+			src,
+			"OPFOR",
+			/* offset = */ 3,
+			CALLBACK(src, PROC_REF(home_opfor)),
+		)
+	)
+
 	page_holder.give_screen_object(
 		new /atom/movable/screen/escape_menu/home_button/leave_body(
 			null,
 			src,
-			"Leave Body",
-			/* offset = */ 3,
-			CALLBACK(src, PROC_REF(open_leave_body)),
+			"Ghost",
+			/* offset = */ 4,
+			CALLBACK(src, PROC_REF(home_ghost)),
 		)
 	)
+
+	page_holder.give_screen_object(
+		new /atom/movable/screen/escape_menu/home_button/respawn(
+			null,
+			src,
+			"Respawn",
+			/* offset = */ 5,
+			CALLBACK(src, PROC_REF(home_respawn)),
+		)
+	)
+	//SKYRAT EDIT ADDITION END
 
 /datum/escape_menu/proc/home_resume()
 	qdel(src)
@@ -44,6 +66,30 @@
 /datum/escape_menu/proc/home_open_settings()
 	client?.prefs.ui_interact(client?.mob)
 	qdel(src)
+
+// SKYRAT EDIT ADDITION START
+/datum/escape_menu/proc/home_respawn()
+	PRIVATE_PROC(TRUE)
+	client?.mob.abandon_mob()
+	qdel(src)
+
+/datum/escape_menu/proc/home_ghost()
+	PRIVATE_PROC(TRUE)
+
+	// Not guaranteed to be living. Everything defines verb/ghost separately. Fuck you.
+	var/mob/living/living_user = client?.mob
+	//living_user?.ghost()
+	living_user?.ghost()
+	qdel(src)
+
+/datum/escape_menu/proc/home_opfor()
+	PRIVATE_PROC(TRUE)
+
+	// Not guaranteed to be living. Everything defines verb/ghost separately. Fuck you.
+	var/mob/living/living_user = client?.mob
+	living_user?.opposing_force()
+	qdel(src)
+//SKYRAT EDIT ADDITION END
 
 /atom/movable/screen/escape_menu/home_button
 	mouse_opacity = MOUSE_OPACITY_OPAQUE
@@ -283,3 +329,39 @@
 	SIGNAL_HANDLER
 
 	home_button_text.update_text()
+
+// SKYRAT ADDITION START
+/atom/movable/screen/escape_menu/home_button/respawn
+
+/atom/movable/screen/escape_menu/home_button/respawn/Initialize(
+	mapload,
+	datum/escape_menu/escape_menu,
+	button_text,
+	offset,
+	on_click_callback,
+)
+	. = ..()
+
+/atom/movable/screen/escape_menu/home_button/respawn/enabled()
+	if (!..())
+		return FALSE
+
+	return !isliving(escape_menu.client?.mob)
+
+/atom/movable/screen/escape_menu/home_button/opfor
+
+/atom/movable/screen/escape_menu/home_button/opfor/Initialize(
+	mapload,
+	datum/escape_menu/escape_menu,
+	button_text,
+	offset,
+	on_click_callback,
+)
+	. = ..()
+
+/atom/movable/screen/escape_menu/home_button/opfor/enabled()
+	if (!..())
+		return FALSE
+
+	return isliving(escape_menu.client?.mob)
+// SKYRAT ADDITION END

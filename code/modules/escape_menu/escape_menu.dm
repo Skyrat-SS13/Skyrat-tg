@@ -80,8 +80,8 @@ GLOBAL_LIST_EMPTY(escape_menus)
 	switch (menu_page)
 		if (PAGE_HOME)
 			show_home_page()
-		if (PAGE_LEAVE_BODY)
-			show_leave_body_page()
+//		if (PAGE_LEAVE_BODY) //SKYRAT EDIT REMOVAL
+//			show_leave_body_page() //SKYRAT EDIT REMOVAL
 		else
 			CRASH("Unknown escape menu page: [menu_page]")
 
@@ -115,6 +115,12 @@ GLOBAL_LIST_EMPTY(escape_menus)
 
 	plane_master_controller = plane_master_controllers[PLANE_MASTERS_NON_MASTER]
 	plane_master_controller.add_filter("escape_menu_blur", 1, list("type" = "blur", "size" = 2))
+
+/datum/escape_menu/proc/respawn()
+	PRIVATE_PROC(TRUE)
+
+	var/mob/living/client_mob = client?.mob
+	client_mob?.abandon_mob()
 
 /atom/movable/screen/escape_menu
 	plane = ESCAPE_MENU_PLANE
