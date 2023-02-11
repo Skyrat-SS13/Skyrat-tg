@@ -189,7 +189,7 @@
 
 /obj/item/clothing/head/hooded/winterhood/skyrat/syndicate
 	desc = "A sinister black hood with armor padding."
-	icon_state = "winterhood_syndie"
+	icon_state = "hood_syndie"
 	armor_type = /datum/armor/winterhood_syndicate
 
 /datum/armor/winterhood_syndicate
