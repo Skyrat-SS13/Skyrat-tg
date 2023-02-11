@@ -4,9 +4,6 @@
 	mob_type_allowed_typecache = /mob/living
 	mob_type_blacklist_typecache = list(/mob/living/brain)
 
-/// The time it takes for the blush visual to be removed
-#define BLUSH_DURATION (5.2 SECONDS)
-
 /datum/emote/living/blush
 	key = "blush"
 	key_third_person = "blushes"
@@ -14,6 +11,7 @@
 
 /datum/emote/living/blush/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
+<<<<<<< HEAD
 	if(. && ishuman(user)) // Give them a visual blush effect if they're human
 		var/mob/living/carbon/human/human_user = user
 		ADD_TRAIT(human_user, TRAIT_BLUSHING, "[type]")
@@ -32,6 +30,12 @@
 		human_user.update_body_parts()
 
 #undef BLUSH_DURATION
+=======
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/human_user = user
+	QDEL_IN(human_user.give_emote_overlay(/datum/bodypart_overlay/simple/emote/blush), 5.2 SECONDS)
+>>>>>>> 9f8797f7d34 (refactors emote visuals (#73146))
 
 /datum/emote/living/sing_tune
 	key = "tunesing"
