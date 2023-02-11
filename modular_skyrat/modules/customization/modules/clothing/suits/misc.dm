@@ -1,4 +1,4 @@
-/obj/item/clothing/suit/wornshirt
+/obj/item/clothing/suit/wornshirt //ORION TODO: kill or fix literally everything below this line
 	name = "worn shirt"
 	desc = "A worn out (or perhaps just baggy), curiously comfortable t-shirt."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -46,7 +46,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "eastern winter coat"
-	desc = "War crimes make people cold, not just on the inside, but on the outside as well, just ask Germany, France, Sweden, Germany again, Russia themselves and Poland, this coat's a touch more eastern, however."
+	desc = "War makes people cold, not just on the inside, but on the outside as well... luckily this coat's not seen any hardships like that, and is actually quite warm!"
 	icon_state = "chi_korea_coat"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -295,6 +295,7 @@
 	icon_state = "bltrenchcoat"
 	body_parts_covered = CHEST|ARMS
 
+ //ORION TODO: stop killing below this line these are fine just sort 'em
 /obj/item/clothing/suit/apron/chef/colorable_apron
 	name = "apron"
 	desc = "A basic apron."

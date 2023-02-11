@@ -68,8 +68,3 @@
 
 /obj/item/clothing/head/hooded/winterhood/skyrat/christmas/green
 	icon_state = "hood_christmas_green"
-
-//TO-DO: These ones have weird placement and suggest they're wintercoats...
-// /obj/item/clothing/suit/koreacoat
-// /obj/item/clothing/suit/modernwintercoatthing
-// /obj/item/clothing/suit/brownfurrich & subtypes
