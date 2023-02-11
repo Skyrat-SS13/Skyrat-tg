@@ -29,6 +29,7 @@
 				/obj/item/clothing/under/costume/skyrat/kamishimo = 5,
 				/obj/item/clothing/under/costume/skyrat/yukata = 5,
 				/obj/item/clothing/under/costume/skyrat/kimono = 5,
+				/obj/item/clothing/head/beret/badge = 5,
 			),
 		),
 		list(
