@@ -3056,7 +3056,7 @@
 /area/centcom/holding/cafedorms)
 "aMI" = (
 /obj/machinery/vending/hydronutrients{
-	products = list(/obj/item/reagent_containers/cup/bottle/nutrient/ez=50,/obj/item/reagent_containers/cup/bottle/nutrient/l4z=20,/obj/item/reagent_containers/cup/bottle/nutrient/rh=10,/obj/item/reagent_containers/spray/pestspray=30,/obj/item/reagent_containers/syringe=5,/obj/item/storage/bag/plants=30,/obj/item/cultivator=10,/obj/item/shovel/spade=10,/obj/item/plant_analyzer=10)
+	products = list(/obj/item/reagent_containers/cup/bottle/nutrient/ez = 50, /obj/item/reagent_containers/cup/bottle/nutrient/l4z = 20, /obj/item/reagent_containers/cup/bottle/nutrient/rh = 10, /obj/item/reagent_containers/spray/pestspray = 30, /obj/item/reagent_containers/syringe = 5, /obj/item/storage/bag/plants = 30, /obj/item/cultivator = 10, /obj/item/shovel/spade = 10, /obj/item/plant_analyzer = 10)
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "darkfull"
@@ -3189,13 +3189,13 @@
 /obj/item/storage/box/ingredients/american,
 /obj/item/storage/box/ingredients/exotic,
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour=90);
+	list_reagents = list(/datum/reagent/consumable/flour = 90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour=90);
+	list_reagents = list(/datum/reagent/consumable/flour = 90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
@@ -3740,7 +3740,7 @@
 /obj/item/storage/pill_bottle/mutadone,
 /obj/item/storage/pill_bottle/mannitol,
 /obj/structure/table/glass,
-/obj/item/clothing/gloves/color/latex,
+/obj/item/clothing/gloves/latex,
 /obj/item/flashlight/pen{
 	pixel_x = 4;
 	pixel_y = 3
@@ -3817,6 +3817,17 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/structure/rack,
+/obj/item/storage/box/nif_ghost_box,
+/obj/item/storage/box/nif_ghost_box,
+/obj/item/storage/box/nif_ghost_box,
+/obj/item/storage/box/nif_ghost_box,
+/obj/item/storage/box/nif_ghost_box,
+/obj/item/storage/box/nif_ghost_box,
+/obj/item/storage/box/nif_ghost_box,
+/obj/item/storage/box/nif_ghost_box,
+/obj/item/storage/box/nif_ghost_box,
+/obj/item/storage/box/nif_ghost_box,
 /turf/open/indestructible/hoteltile{
 	icon_state = "floor"
 	},
@@ -4777,11 +4788,10 @@
 /area/centcom/interlink)
 "bDM" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Communications Access";
-	req_one_access = list("cent_general","captain")
+	name = "Communications Access"
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
-/obj/effect/mapping_helpers/airlock/access/all/admin/general,
+/obj/effect/mapping_helpers/airlock/access/any/cent_com/rep_or_captain,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "bEI" = (
@@ -4875,9 +4885,7 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "bNi" = (
-/obj/machinery/computer/cryopod{
-	pixel_x = -32
-	},
+/obj/machinery/computer/cryopod/directional/west,
 /obj/machinery/cryopod/quiet{
 	dir = 1
 	},
@@ -5309,13 +5317,12 @@
 /area/centcom/interlink)
 "cOV" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Administrative Offices";
-	req_one_access = list("cent_general","captain")
+	name = "Administrative Offices"
 	},
 /obj/effect/turf_decal/siding/white{
 	dir = 8
 	},
-/obj/effect/mapping_helpers/airlock/access/all/command/general,
+/obj/effect/mapping_helpers/airlock/access/any/cent_com/rep_or_captain,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "cQq" = (
@@ -6812,9 +6819,6 @@
 /turf/open/floor/eighties,
 /area/centcom/holding/cafe)
 "gSD" = (
-/obj/structure/window/paperframe{
-	can_atmos_pass = 0
-	},
 /obj/effect/turf_decal/siding/wood,
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -6855,12 +6859,12 @@
 /obj/item/reagent_containers/condiment/soysauce,
 /obj/item/reagent_containers/condiment/sugar,
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice=90);
+	list_reagents = list(/datum/reagent/consumable/rice = 90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice=90);
+	list_reagents = list(/datum/reagent/consumable/rice = 90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
@@ -6906,9 +6910,6 @@
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "hge" = (
-/obj/structure/window/paperframe{
-	can_atmos_pass = 0
-	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
@@ -9309,9 +9310,7 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "nqQ" = (
-/obj/machinery/computer/cryopod{
-	pixel_y = 32
-	},
+/obj/machinery/computer/cryopod/directional/north,
 /obj/effect/landmark/latejoin,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
@@ -9687,24 +9686,24 @@
 /obj/item/storage/box/ingredients/american,
 /obj/item/storage/box/ingredients/exotic,
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour=90);
+	list_reagents = list(/datum/reagent/consumable/flour = 90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour=90);
+	list_reagents = list(/datum/reagent/consumable/flour = 90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice=90);
+	list_reagents = list(/datum/reagent/consumable/rice = 90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice=90);
+	list_reagents = list(/datum/reagent/consumable/rice = 90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
@@ -10153,10 +10152,8 @@
 /area/centcom/interlink)
 "pDd" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Administrative Offices";
-	req_one_access = list("cent_general","captain")
+	name = "Administrative Offices"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/command/general,
 /obj/machinery/button/door/directional/west{
 	pixel_y = -8;
 	id = "evac_hall_lookout";
@@ -10171,6 +10168,7 @@
 	name = "Interlink Access Shutters"
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/access/any/cent_com/rep_or_captain,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "pDN" = (
@@ -10240,16 +10238,15 @@
 /area/centcom/interlink)
 "pHe" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Administrative Offices";
-	req_one_access = list("cent_general","captain")
+	name = "Administrative Offices"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/command/captain,
 /obj/effect/turf_decal/trimline/dark_green/corner,
 /obj/machinery/door/poddoor/shutters/indestructible{
 	id = "arr_hall_lookout";
 	name = "Interlink Access Shutters"
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/access/any/cent_com/rep_or_captain,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "pHi" = (
@@ -11516,6 +11513,22 @@
 	},
 /turf/open/floor/grass,
 /area/centcom/interlink)
+"sIb" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/turf/open/indestructible/hoteltile{
+	icon_state = "floor"
+	},
+/area/centcom/holding/cafe)
 "sIH" = (
 /obj/structure/chair/sofa/left/brown{
 	dir = 1
@@ -12349,7 +12362,7 @@
 /obj/effect/turf_decal/siding/wood,
 /obj/item/flashlight/flare/candle/infinite{
 	pixel_x = -12;
-	pixel_y = -45
+	pixel_y = -42
 	},
 /obj/item/fancy_pillow{
 	pixel_x = -22;
@@ -13008,13 +13021,12 @@
 /area/centcom/interlink)
 "wyL" = (
 /obj/machinery/door/airlock/centcom{
-	name = "ERT Access";
-	req_one_access = list("cent_general","captain")
+	name = "ERT Access"
 	},
 /obj/effect/turf_decal/siding/white{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/all/admin/general,
+/obj/effect/mapping_helpers/airlock/access/any/cent_com/rep_or_captain,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "wzZ" = (
@@ -13646,10 +13658,6 @@
 	},
 /obj/structure/beebox{
 	name = "Shrine"
-	},
-/obj/item/flashlight/flare/candle/infinite{
-	pixel_x = 17;
-	pixel_y = -22
 	},
 /turf/open/floor/wood,
 /area/centcom/holding/cafedorms)
@@ -59059,7 +59067,7 @@ azT
 azT
 azT
 asC
-aSg
+sIb
 ang
 aUo
 aUo
@@ -60344,7 +60352,7 @@ aOI
 aKB
 aWq
 aDA
-aSg
+sIb
 ang
 aUo
 aUo

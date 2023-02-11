@@ -316,7 +316,7 @@
 	icon_state = "sergal"
 	fluffy = TRUE
 
-/datum/sprite_accessory/tails/mammal/servelyn
+/datum/sprite_accessory/tails/mammal/wagging/servelyn
 	name = "Servelyn"
 	icon_state = "tiger2"
 
