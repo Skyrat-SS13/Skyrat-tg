@@ -475,6 +475,122 @@
 	name = "Tri Bun Long"
 	icon_state = "hair_tri_bun_long"
 
+/datum/sprite_accessory/hair/skyrat/BobCut_OverEye1
+	name = "Bobcut over eye1"
+	icon_state = "hair_BobCut_OverEye1"
+
+/datum/sprite_accessory/hair/skyrat/BobCut_OverEye2
+	name = "Bobcut over eye2"
+	icon_state = "hair_BobCut_OverEye2"
+
+/datum/sprite_accessory/hair/skyrat/BobCut_OverEye3
+	name = "Bobcut over eye3"
+	icon_state = "hair_BobCut_OverEye3"
+
+/datum/sprite_accessory/hair/skyrat/Bun_low
+	name = "Bun low"
+	icon_state = "hair_Bun_low"
+
+/datum/sprite_accessory/hair/skyrat/Casual
+	name = "Casual"
+	icon_state = "hair_Casual"
+
+/datum/sprite_accessory/hair/skyrat/Fluffy
+	name = "Fluffy"
+	icon_state = "hair_Fluffy"
+
+/datum/sprite_accessory/hair/skyrat/Jennifer
+	name = "Jennifer"
+	icon_state = "hair_Jennifer"
+
+/datum/sprite_accessory/hair/skyrat/Khmuro
+	name = "Khmuro"
+	icon_state = "hair_Khmuro"
+
+/datum/sprite_accessory/hair/skyrat/Leia
+	name = "Leia"
+	icon_state = "hair_Leia"
+
+/datum/sprite_accessory/hair/skyrat/Mess
+	name = "Mess"
+	icon_state = "hair_Mess"
+
+/datum/sprite_accessory/hair/skyrat/Morning
+	name = "Morning"
+	icon_state = "hair_Morning"
+
+/datum/sprite_accessory/hair/skyrat/Ponytail_high
+	name = "Ponytail high"
+	icon_state = "hair_Ponytail_high"
+
+/datum/sprite_accessory/hair/skyrat/Ponytail_low
+	name = "Ponytail low"
+	icon_state = "hair_Ponytail_low"
+
+/datum/sprite_accessory/hair/skyrat/Ponytail_short
+	name = "Ponytail short"
+	icon_state = "hair_Ponytail_short"
+
+/datum/sprite_accessory/hair/skyrat/Ponytail_thin_medium
+	name = "Ponytail thin medium"
+	icon_state = "hair_Ponytail_thin_medium"
+
+/datum/sprite_accessory/hair/skyrat/Ponytail_thin_short
+	name = "Ponytail_thin_short"
+	icon_state = "hair_Ponytail_thin_short"
+
+/datum/sprite_accessory/hair/skyrat/Robyn
+	name = "Robyn"
+	icon_state = "hair_Robyn"
+
+/datum/sprite_accessory/hair/skyrat/Short_over_eye
+	name = "Short over eye"
+	icon_state = "hair_Short_over_eye"
+
+/datum/sprite_accessory/hair/skyrat/Strict
+	name = "Strict"
+	icon_state = "hair_Strict"
+
+/datum/sprite_accessory/hair/skyrat/Strict_long
+	name = "Strict long"
+	icon_state = "hair_Strict_long"
+
+/datum/sprite_accessory/hair/skyrat/Strict_short
+	name = "Strict short"
+	icon_state = "hair_Strict_short"
+
+/datum/sprite_accessory/hair/skyrat/Tidy
+	name = "Tidy"
+	icon_state = "hair_Tidy"
+
+/datum/sprite_accessory/hair/skyrat/Twintails_long
+	name = "Twintails long"
+	icon_state = "hair_Twintails_long"
+
+/datum/sprite_accessory/hair/skyrat/Twintails_medium
+	name = "Twintails medium"
+	icon_state = "hair_Twintails_medium"
+
+/datum/sprite_accessory/hair/skyrat/Twintails_short
+	name = "Twintails short"
+	icon_state = "hair_Twintails_short"
+
+/datum/sprite_accessory/hair/skyrat/Upwards
+	name = "Upwards"
+	icon_state = "hair_Upwards"
+
+/datum/sprite_accessory/hair/skyrat/Wave
+	name = "Wave"
+	icon_state = "hair_Wave"
+
+/datum/sprite_accessory/hair/skyrat/Kobeni
+	name = "Kobeni"
+	icon_state = "hair_Kobeni"
+
+/datum/sprite_accessory/hair/skyrat/Kobeni2
+	name = "Kobeni2"
+	icon_state = "hair_Kobeni2"
+
 // Facial hair
 
 /datum/sprite_accessory/facial_hair/skyrat
