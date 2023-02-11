@@ -148,26 +148,6 @@
 		COMSIG_ITEM_OFFER_TAKEN,
 	))
 
-/// Registers all signal procs for the hand.
-/datum/action/cooldown/spell/touch/proc/register_hand_signals()
-	SHOULD_CALL_PARENT(TRUE)
-
-	RegisterSignal(attached_hand, COMSIG_ITEM_AFTERATTACK, PROC_REF(on_hand_hit))
-	RegisterSignal(attached_hand, COMSIG_ITEM_AFTERATTACK_SECONDARY, PROC_REF(on_secondary_hand_hit))
-	RegisterSignal(attached_hand, COMSIG_ITEM_DROPPED, PROC_REF(on_hand_dropped))
-	RegisterSignal(attached_hand, COMSIG_PARENT_QDELETING, PROC_REF(on_hand_deleted))
-
-/// Unregisters all signal procs for the hand.
-/datum/action/cooldown/spell/touch/proc/unregister_hand_signals()
-	SHOULD_CALL_PARENT(TRUE)
-
-	UnregisterSignal(attached_hand, list(
-		COMSIG_ITEM_AFTERATTACK,
-		COMSIG_ITEM_AFTERATTACK_SECONDARY,
-		COMSIG_ITEM_DROPPED,
-		COMSIG_PARENT_QDELETING,
-	))
-
 // Touch spells don't go on cooldown OR give off an invocation until the hand is used itself.
 /datum/action/cooldown/spell/touch/before_cast(atom/cast_on)
 	return ..() | SPELL_NO_FEEDBACK | SPELL_NO_IMMEDIATE_COOLDOWN
