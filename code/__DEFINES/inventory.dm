@@ -205,12 +205,9 @@ GLOBAL_LIST_INIT(detective_vest_allowed, list(
 	/obj/item/tank/internals/plasmaman,
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
-<<<<<<< HEAD
 	/obj/item/storage/belt/holster/thermal,
-	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
-=======
 	/obj/item/storage/belt/holster/energy,
->>>>>>> 35f0a93023b (Purchasing weapon goodie packs require weapon permits, rather than actually being a head of security (includes other small changes) (#73044))
+	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
 ))
 
 GLOBAL_LIST_INIT(security_vest_allowed, list(
@@ -227,12 +224,9 @@ GLOBAL_LIST_INIT(security_vest_allowed, list(
 	/obj/item/tank/internals/plasmaman,
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
-<<<<<<< HEAD
 	/obj/item/storage/belt/holster/thermal,
-	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
-=======
 	/obj/item/storage/belt/holster/energy,
->>>>>>> 35f0a93023b (Purchasing weapon goodie packs require weapon permits, rather than actually being a head of security (includes other small changes) (#73044))
+	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
 ))
 
 GLOBAL_LIST_INIT(security_wintercoat_allowed, list(
@@ -245,12 +239,9 @@ GLOBAL_LIST_INIT(security_wintercoat_allowed, list(
 	/obj/item/restraints/handcuffs,
 	/obj/item/storage/belt/holster/detective,
 	/obj/item/storage/belt/holster/nukie,
-<<<<<<< HEAD
 	/obj/item/storage/belt/holster/thermal,
-	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
-=======
 	/obj/item/storage/belt/holster/energy,
->>>>>>> 35f0a93023b (Purchasing weapon goodie packs require weapon permits, rather than actually being a head of security (includes other small changes) (#73044))
+	/obj/item/gun/microfusion, //SKYRAT EDIT ADDITION
 ))
 
 /// String for items placed into the left pocket.
