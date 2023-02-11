@@ -86,14 +86,9 @@
 	name = "Thermal Pistol Holster Single-Pack"
 	desc = "Contains twinned thermal pistols in a holster, ready for use in the field."
 	cost = PAYCHECK_COMMAND * 15
-<<<<<<< HEAD
-	access_view = ACCESS_ARMORY
-	contains = list(/obj/item/storage/belt/holster/thermal)
-*/ //SKYRAT EDIT END
-=======
 	access_view = ACCESS_WEAPONS
 	contains = list(/obj/item/storage/belt/holster/energy/thermal)
->>>>>>> 35f0a93023b (Purchasing weapon goodie packs require weapon permits, rather than actually being a head of security (includes other small changes) (#73044))
+*/ //SKYRAT EDIT END
 
 /datum/supply_pack/goody/sologamermitts
 	name = "Insulated Gloves Single-Pack"
