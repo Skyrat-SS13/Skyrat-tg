@@ -7,9 +7,12 @@
 	var/list/spawned_sorters = list()
 	///the list of things that are currently within the sorting list
 	var/list/current_sort = list()
-	var/max_sorters = 4 //This controls the maximum amount of sorters that can be spawned by one lister item.
-	var/max_items = 5 //This controls the maximum amount of items that can be added to the sorting list.
-	var/conveyor_type = /obj/effect/decal/cleanable/conveyor_sorter // This is used for the improved sorter, so that it can use the improved sorter type instead of the normal sorter type.
+	///This controls the maximum amount of sorters that can be spawned by one lister item.
+	var/max_sorters = 4
+	///This controls the maximum amount of items that can be added to the sorting list.
+	var/max_items = 5
+	/// This is used for the improved sorter, so that it can use the improved sorter type instead of the normal sorter type.
+	var/conveyor_type = /obj/effect/decal/cleanable/conveyor_sorter
 
 /obj/item/conveyor_sorter/Destroy()
 	for(var/deleting_sorters in spawned_sorters)
@@ -173,10 +176,10 @@
 	id = "conveyor_sorter_improved"
 	build_path = /obj/item/conveyor_sorter/improved
 	materials = list(
-        /datum/material/iron = 500,
-        /datum/material/plastic = 500,
-        /datum/material/gold = 500,
-        /datum/material/bluespace = 500,
+		/datum/material/iron = 500,
+	    /datum/material/plastic = 500,
+	    /datum/material/gold = 500,
+	    /datum/material/bluespace = 500,
     )
 
 
