@@ -167,7 +167,6 @@
 		SetBounds()
 	update_overlays()
 	//SKYRAT EDIT END
-	init_network_id(NETWORK_DOOR_AIRLOCKS)
 	wires = set_wires()
 	if(glass)
 		airlock_material = "glass"
