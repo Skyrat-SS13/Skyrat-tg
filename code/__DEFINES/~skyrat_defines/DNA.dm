@@ -58,6 +58,9 @@
 #define PENIS_MIN_LENGTH 1
 #define PENIS_MAX_LENGTH 20
 
+#define TESTICLES_MIN_SIZE 0
+#define TESTICLES_MAX_SIZE 3
+
 #define SHEATH_NONE	"None"
 #define SHEATH_NORMAL "Sheath"
 #define SHEATH_SLIT	"Slit"

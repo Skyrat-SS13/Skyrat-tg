@@ -296,7 +296,7 @@
 	var/worst_cooked_food_state = 0
 	for(var/obj/item/baked_item as anything in used_tray.contents)
 
-		var/signal_result = SEND_SIGNAL(baked_item, COMSIG_ITEM_BAKED, src, delta_time)
+		var/signal_result = SEND_SIGNAL(baked_item, COMSIG_ITEM_OVEN_PROCESS, src, delta_time)
 
 		if(signal_result & COMPONENT_HANDLED_BAKING)
 			if(signal_result & COMPONENT_BAKING_GOOD_RESULT && worst_cooked_food_state < SMOKE_STATE_GOOD)
@@ -417,7 +417,7 @@
 
 /obj/structure/reagent_forge/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(!used_tray && istype(attacking_item, /obj/item/plate/oven_tray))
-		add_tray_to_forge(attacking_item)
+		add_tray_to_forge(user, attacking_item)
 		return TRUE
 
 	if(in_use) // If the forge is currently in use by someone (or there is a tray in it) then we cannot use it
@@ -461,12 +461,18 @@
 	return ..()
 
 /// Take the given tray and place it inside the forge, updating everything relevant to that
-/obj/structure/reagent_forge/proc/add_tray_to_forge(obj/item/plate/oven_tray/tray)
+/obj/structure/reagent_forge/proc/add_tray_to_forge(mob/living/user, obj/item/plate/oven_tray/tray)
 	if(used_tray) // This shouldn't be able to happen but just to be safe
 		balloon_alert_to_viewers("already has tray")
 		return
 
-	tray.forceMove(src)
+	if(!user.transferItemToLoc(tray, src, silent = FALSE))
+		return
+		
+	// need to send the right signal for each item in the tray
+	for(var/obj/item/baked_item in tray.contents)
+		SEND_SIGNAL(baked_item, COMSIG_ITEM_OVEN_PLACED_IN, src, user)
+
 	balloon_alert_to_viewers("put [tray] in [src]")
 	used_tray = tray
 	in_use = TRUE // You can't use the forge if there's a tray sitting in it
