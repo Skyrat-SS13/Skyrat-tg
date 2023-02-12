@@ -29,7 +29,7 @@
 			MOD_ICON_OVERRIDE = 'modular_skyrat/modules/novaya_ert/icons/mod.dmi',
 			MOD_WORN_ICON_OVERRIDE = 'modular_skyrat/modules/novaya_ert/icons/wornmod.dmi',
 			HELMET_FLAGS = list(
-				UNSEALED_LAYER = NECK_LAYER,
+				UNSEALED_LAYER = HEAD_LAYER,
 				UNSEALED_CLOTHING = SNUG_FIT,
 				SEALED_CLOTHING = THICKMATERIAL|STOPSPRESSUREDAMAGE,
 				SEALED_INVISIBILITY =  HIDEFACIALHAIR|HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT,
@@ -115,7 +115,7 @@
 			MOD_ICON_OVERRIDE = 'modular_skyrat/modules/novaya_ert/icons/mod.dmi',
 			MOD_WORN_ICON_OVERRIDE = 'modular_skyrat/modules/novaya_ert/icons/wornmod.dmi',
 			HELMET_FLAGS = list(
-				UNSEALED_LAYER = NECK_LAYER,
+				UNSEALED_LAYER = HEAD_LAYER,
 				UNSEALED_CLOTHING = SNUG_FIT,
 				SEALED_CLOTHING = THICKMATERIAL|STOPSPRESSUREDAMAGE,
 				SEALED_INVISIBILITY =  HIDEFACIALHAIR|HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT,
@@ -157,8 +157,8 @@
 		/obj/item/mod/module/thermal_regulator,
 		/obj/item/mod/module/status_readout/generic,
 		/obj/item/mod/module/tether,
-		/obj/item/mod/module/magboot,
 		/obj/item/mod/module/flashlight,
+		/obj/item/mod/module/paper_dispenser,
 		/obj/item/mod/module/magnetic_harness
 	)
 	default_pins = list(
