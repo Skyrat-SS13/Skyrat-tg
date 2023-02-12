@@ -95,7 +95,7 @@
 	default_skin = "policing"
 	armor_type = /datum/armor/mod_theme_policing
 	complexity_max = DEFAULT_MAX_COMPLEXITY - 1
-	charge_drain = DEFAULT_CHARGE_DRAIN * 1.5
+	charge_drain = DEFAULT_CHARGE_DRAIN * 1.25
 	allowed_suit_storage = list(
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
@@ -157,8 +157,7 @@
 		/obj/item/mod/module/tether,
 		/obj/item/mod/module/magboot,
 		/obj/item/mod/module/flashlight,
-		/obj/item/mod/module/magnetic_harness,
-		/obj/item/mod/module/t_ray
+		/obj/item/mod/module/magnetic_harness
 	)
 	default_pins = list(
 		/obj/item/mod/module/tether,
