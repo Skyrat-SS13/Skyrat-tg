@@ -148,8 +148,6 @@
 	SHOULD_CALL_PARENT(TRUE)
 	. = ..()
 	update_use_power(IDLE_POWER_USE)
-<<<<<<< HEAD
-=======
 
 /obj/machinery/computer/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
@@ -301,4 +299,3 @@
 	return TRUE
 
 
->>>>>>> 3715cae41d0 (Records: Clerical expansion (#73022))
