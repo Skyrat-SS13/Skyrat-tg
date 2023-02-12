@@ -628,8 +628,6 @@
 	icon_screen = "medlaptop"
 	icon_keyboard = "laptop_key"
 	pass_flags = PASSTABLE
-<<<<<<< HEAD
-=======
 
 /obj/machinery/computer/med_data/attacked_by(obj/item/attacking_item, mob/living/user)
 	. = ..()
@@ -752,4 +750,3 @@
 	target.trim = "Unknown"
 
 	return TRUE
->>>>>>> 3715cae41d0 (Records: Clerical expansion (#73022))
