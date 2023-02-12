@@ -4,7 +4,7 @@
 #define METEOR_WAVE_MAX_NOTICE 9 * MINUTES_IN_TICKS
 #define METEOR_WAVE_DURATION 1.25 * MINUTES_IN_TICKS
 #define METEOR_TICKS_BETWEEN_WAVES 3
-#define METEOR_PER_WAVE 5
+#define METEORS_PER_WAVE 5
 
 /datum/round_event_control/meteor_wave
 	///Where will the meteors be coming from? -- Established in admin_setup, passed down to round_event
