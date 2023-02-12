@@ -25,8 +25,6 @@
 	var/overlay_ignore_lighting = FALSE
 	var/see_in_dark = 2
 	var/tint = 0
-<<<<<<< HEAD
-=======
 	/// How much innare flash protection these eyes have, usually paired with tint
 	var/flash_protect = FLASH_PROTECTION_NONE
 	/// What level of invisibility these eyes can see
@@ -36,7 +34,6 @@
 	/// How much alpha lighting has (basically, night vision)
 	var/lighting_alpha
 
->>>>>>> 2d246997a63 (Makes nightmares unable to be pepersprayed (#73097))
 	var/eye_color_left = "" //set to a hex code to override a mob's left eye color
 	var/eye_color_right = "" //set to a hex code to override a mob's right eye color
 	var/eye_icon_state = "eyes"

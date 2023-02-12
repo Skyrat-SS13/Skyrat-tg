@@ -40,10 +40,6 @@
 	if(check_glasses && glasses && (glasses.flags_cover & GLASSESCOVERSEYES))
 		return glasses
 
-<<<<<<< HEAD
-/mob/living/carbon/is_pepper_proof(check_head = TRUE, check_mask = TRUE)
-	if(check_head &&(head?.flags_cover & PEPPERPROOF))
-=======
 	return null
 
 /mob/living/carbon/is_pepper_proof(check_flags = ALL)
@@ -51,7 +47,6 @@
 	if(eyes && eyes.pepperspray_protect)
 		return eyes
 	if((check_flags & ITEM_SLOT_HEAD) && head && (head.flags_cover & PEPPERPROOF))
->>>>>>> 2d246997a63 (Makes nightmares unable to be pepersprayed (#73097))
 		return head
 	if(check_mask &&(wear_mask?.flags_cover & PEPPERPROOF))
 		return wear_mask
