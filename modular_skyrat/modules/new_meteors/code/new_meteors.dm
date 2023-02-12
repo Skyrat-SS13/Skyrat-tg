@@ -68,11 +68,11 @@
 
 /datum/round_event/meteor_wave/tick()
 	if(ISMULTIPLE(activeFor, METEOR_TICKS_BETWEEN_WAVES))
-		spawn_meteors(METEOR_PER_WAVE, wave_type, start_side) //meteor list types defined in gamemode/meteor/meteors.dm
+		spawn_meteors(METEORS_PER_WAVE, wave_type, start_side) //meteor list types defined in gamemode/meteor/meteors.dm
 
 #undef MINUTES_IN_TICKS
 #undef METEOR_WAVE_MIN_NOTICE
 #undef METEOR_WAVE_MAX_NOTICE
 #undef METEOR_WAVE_DURATION
 #undef METEOR_TICKS_BETWEEN_WAVES
-#undef METEOR_PER_WAVE
+#undef METEORS_PER_WAVE
