@@ -71,6 +71,19 @@ GLOBAL_LIST_EMPTY(all_loadout_datums)
 		LAZYADD(outfit.backpack_contents, item_path)
 
 /*
+ * Check if important_for_life outfit items exist and put loadout items into backpack if they would overwrite them
+ *
+ * equipper - If we're equipping out outfit onto a mob at the time, this is the mob it is equipped on. Can be null.
+ * outfit - The outfit we're equipping our items into.
+ * visual - If TRUE, then our outfit is only for visual use (for example, a preview).
+ *
+ * Returns TRUE if the imporant_for_life item cannot be overwritten by the loadout item, FALSE otherwise
+ */
+/datum/loadout_item/proc/pre_equip_item(datum/outfit/outfit, datum/outfit/outfit_important_for_life, visuals_only = FALSE)
+	if(!visuals_only)
+		LAZYADD(outfit.backpack_contents, item_path)
+
+/*
  * Called When the item is equipped on [equipper].
  */
 /datum/loadout_item/proc/on_equip_item(datum/preferences/preference_source, mob/living/carbon/human/equipper, visuals_only = FALSE)

@@ -8,6 +8,11 @@ GLOBAL_LIST_INIT(loadout_gloves, generate_loadout_items(/datum/loadout_item/glov
 /datum/loadout_item/gloves
 	category = LOADOUT_ITEM_GLOVES
 
+/datum/loadout_item/gloves/pre_equip_item(datum/outfit/outfit, datum/outfit/outfit_important_for_life, visuals_only = FALSE)
+	if(initial(outfit_important_for_life.gloves))
+		.. ()
+		return TRUE
+
 /datum/loadout_item/gloves/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
 	if(isplasmaman(equipper))
 		if(!visuals_only)
