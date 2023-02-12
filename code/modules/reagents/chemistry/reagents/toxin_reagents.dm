@@ -689,6 +689,11 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	addiction_types = list(/datum/addiction/opioids = 25)
 
+/datum/reagent/toxin/fentanyl/on_mob_metabolize(mob/living/carbon/affected_mob) //SKYRAT EDIT START - FENTANYL PROVIDES SURGICAL NUMBING
+	..()
+	ADD_TRAIT(affected_mob, TRAIT_NUMBED, REF(src))
+	affected_mob.throw_alert("numbed", /atom/movable/screen/alert/numbed) //SKYRAT EDIT END
+
 /datum/reagent/toxin/fentanyl/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
 	affected_mob.adjustOrganLoss(ORGAN_SLOT_BRAIN, 3 * REM * normalise_creation_purity() * delta_time, 150)
 	if(affected_mob.toxloss <= 60)
@@ -699,6 +704,11 @@
 		affected_mob.Sleeping(40 * REM * normalise_creation_purity() * delta_time)
 	..()
 	return TRUE
+
+/datum/reagent/toxin/fentanyl/on_mob_end_metabolize(mob/living/carbon/affected_mob) //SKYRAT EDIT START - CLEAR FENTANYL ANESTHETIC
+	REMOVE_TRAIT(affected_mob, TRAIT_NUMBED, REF(src))
+	affected_mob.clear_alert("numbed", /atom/movable/screen/alert/numbed)
+	..() //SKYRAT EDIT END
 
 /datum/reagent/toxin/cyanide
 	name = "Cyanide"

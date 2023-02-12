@@ -163,9 +163,13 @@
 /datum/reagent/drug/methamphetamine/on_mob_metabolize(mob/living/L)
 	..()
 	L.add_movespeed_modifier(/datum/movespeed_modifier/reagent/methamphetamine)
+	ADD_TRAIT(L, TRAIT_NUMBED, REF(src)) //SKYRAT EDIT START - METH SURGICAL NUMBING
+	L.throw_alert("numbed", /atom/movable/screen/alert/numbed) //SKYRAT EDIT END
 
 /datum/reagent/drug/methamphetamine/on_mob_end_metabolize(mob/living/L)
 	L.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/methamphetamine)
+	REMOVE_TRAIT(L, TRAIT_NUMBED, REF(src)) //SKYRAT EDIT START - CLEAR METH NUMBING
+	L.clear_alert("numbed", /atom/movable/screen/alert/numbed) //SKYRAT EDIT END
 	..()
 
 /datum/reagent/drug/methamphetamine/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)

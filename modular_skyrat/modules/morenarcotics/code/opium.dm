@@ -125,11 +125,15 @@
 /datum/reagent/drug/opium/on_mob_metabolize(mob/living/metabolizer)
 	. = ..()
 	metabolizer.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
+	ADD_TRAIT(metabolizer, TRAIT_NUMBED, REF(src))
+	metabolizer.throw_alert("numbed", /atom/movable/screen/alert/numbed)
 
 /datum/reagent/drug/opium/on_mob_end_metabolize(mob/living/metabolizer)
 	. = ..()
 	metabolizer.remove_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
+	REMOVE_TRAIT(metabolizer, TRAIT_NUMBED, REF(src))
 	metabolizer.clear_fullscreen("heroin_euphoria")
+	metabolizer.clear_alert("numbed", /atom/movable/screen/alert/numbed)
 
 /datum/reagent/drug/opium/heroin
 	name = "heroin"
@@ -141,6 +145,19 @@
 	taste_description = "flowers"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	inverse_chem = /datum/reagent/drug/opium/blacktar/liquid
+
+/datum/reagent/drug/opium/heroin/on_mob_metabolize(mob/living/metabolizer)
+	. = ..()
+	metabolizer.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
+	ADD_TRAIT(metabolizer, TRAIT_NUMBED, REF(src))
+	metabolizer.throw_alert("numbed", /atom/movable/screen/alert/numbed)
+
+/datum/reagent/drug/opium/heroin/on_mob_end_metabolize(mob/living/metabolizer)
+	. = ..()
+	metabolizer.remove_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
+	REMOVE_TRAIT(metabolizer, TRAIT_NUMBED, REF(src))
+	metabolizer.clear_fullscreen("heroin_euphoria")
+	metabolizer.clear_alert("numbed", /atom/movable/screen/alert/numbed)
 
 /datum/reagent/drug/opium/heroin/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	var/high_message = pick("You feel like nothing can stop you.", "You feel like God.")
@@ -159,6 +176,19 @@
 	ph = 8
 	taste_description = "flowers"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+
+/datum/reagent/drug/opium/blacktar/on_mob_metabolize(mob/living/metabolizer)
+	. = ..()
+	metabolizer.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
+	ADD_TRAIT(metabolizer, TRAIT_NUMBED, REF(src))
+	metabolizer.throw_alert("numbed", /atom/movable/screen/alert/numbed)
+
+/datum/reagent/drug/opium/blacktar/on_mob_end_metabolize(mob/living/metabolizer)
+	. = ..()
+	metabolizer.remove_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
+	REMOVE_TRAIT(metabolizer, TRAIT_NUMBED, REF(src))
+	metabolizer.clear_fullscreen("heroin_euphoria")
+	metabolizer.clear_alert("numbed", /atom/movable/screen/alert/numbed)
 
 /datum/reagent/drug/opium/blacktar/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	var/high_message = pick("You feel like tar.", "The blood in your veins feel like syrup.")

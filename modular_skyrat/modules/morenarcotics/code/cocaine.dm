@@ -36,10 +36,28 @@
 	..()
 	containing_mob.add_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
 	ADD_TRAIT(containing_mob, TRAIT_BATON_RESISTANCE, type)
+	ADD_TRAIT(containing_mob, TRAIT_NUMBED, REF(src))
+	containing_mob.throw_alert("numbed", /atom/movable/screen/alert/numbed)
 
 /datum/reagent/drug/cocaine/on_mob_end_metabolize(mob/living/containing_mob)
 	containing_mob.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
 	REMOVE_TRAIT(containing_mob, TRAIT_BATON_RESISTANCE, type)
+	REMOVE_TRAIT(containing_mob, TRAIT_NUMBED, REF(src))
+	containing_mob.clear_alert("numbed", /atom/movable/screen/alert/numbed)
+	..()
+
+/datum/reagent/drug/cocaine/freebase_cocaine/on_mob_metabolize(mob/living/containing_mob)
+	..()
+	containing_mob.add_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
+	ADD_TRAIT(containing_mob, TRAIT_BATON_RESISTANCE, type)
+	ADD_TRAIT(containing_mob, TRAIT_NUMBED, REF(src))
+	containing_mob.throw_alert("numbed", /atom/movable/screen/alert/numbed)
+
+/datum/reagent/drug/cocaine/freebase_cocaine/on_mob_end_metabolize(mob/living/containing_mob)
+	containing_mob.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
+	REMOVE_TRAIT(containing_mob, TRAIT_BATON_RESISTANCE, type)
+	REMOVE_TRAIT(containing_mob, TRAIT_NUMBED, REF(src))
+	containing_mob.clear_alert("numbed", /atom/movable/screen/alert/numbed)
 	..()
 
 /datum/reagent/drug/cocaine/on_mob_life(mob/living/carbon/M, delta_time, times_fired)

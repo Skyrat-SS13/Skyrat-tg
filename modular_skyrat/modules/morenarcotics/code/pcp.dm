@@ -40,6 +40,8 @@
 		pcp_tenacity = new()
 		C.gain_trauma(pcp_rage, TRAUMA_RESILIENCE_ABSOLUTE)
 		C.gain_trauma(pcp_tenacity, TRAUMA_RESILIENCE_ABSOLUTE)
+		ADD_TRAIT(C, TRAIT_NUMBED, REF(src))
+		C.throw_alert("numbed", /atom/movable/screen/alert/numbed)
 
 /datum/reagent/drug/pcp/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	var/high_message = pick("You feel like KILLING!", "Someone's about to fucking die!", "Rip and tear!")
@@ -74,6 +76,8 @@
 	L.visible_message(span_danger("[L] collapses onto the floor!")) //you pretty much pass out
 	L.Paralyze(pcp_lifetime,TRUE)
 	L.drop_all_held_items()
+	REMOVE_TRAIT(L, TRAIT_NUMBED, REF(src))
+	L.clear_alert("numbed", /atom/movable/screen/alert/numbed)
 	..()
 
 /datum/reagent/drug/pcp/overdose_process(mob/living/M, delta_time, times_fired)

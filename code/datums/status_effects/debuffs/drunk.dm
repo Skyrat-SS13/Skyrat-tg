@@ -122,6 +122,9 @@
 
 	if(owner.sound_environment_override == SOUND_ENVIRONMENT_PSYCHOTIC)
 		owner.sound_environment_override = SOUND_ENVIRONMENT_NONE
+	if(HAS_TRAIT(owner, TRAIT_NUMBED))
+		REMOVE_TRAIT(owner, TRAIT_NUMBED, "alcohol") //SKYRAT EDIT ADD: CLEAR DRUNK NUMBING
+		owner.clear_alert("numbed", /atom/movable/screen/alert/numbed) //SKYRAT EDIT END
 
 /datum/status_effect/inebriated/drunk/set_drunk_value(set_to)
 	. = ..()
@@ -161,6 +164,8 @@
 			owner.adjust_confusion(2 SECONDS)
 
 		owner.set_dizzy_if_lower(20 SECONDS)
+		ADD_TRAIT(owner, TRAIT_NUMBED, "alcohol") //SKYRAT EDIT ADD: DRUNK SURGICAL NUMBING
+		owner.throw_alert("numbed", /atom/movable/screen/alert/numbed) //SKYRAT EDIT END
 
 	// Over 51, we have a 3% chance to gain a lot of confusion and vomit, and we will always have 50 seconds of dizziness
 	if(drunk_value >= 51)

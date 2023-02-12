@@ -46,6 +46,12 @@
 	ph = 6
 	taste_description = "skunk"
 
+/datum/reagent/drug/thc/on_mob_metabolize(mob/living/carbon/M)
+	..()
+	if(iscarbon(M))
+		ADD_TRAIT(M, TRAIT_NUMBED, REF(src))
+		M.throw_alert("numbed", /atom/movable/screen/alert/numbed)
+
 /datum/reagent/drug/thc/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	var/high_message = pick("You feel relaxed.", "You feel fucked up.", "You feel totally wrecked...")
 	if(M.hud_used!=null)
@@ -67,6 +73,8 @@
 		var/atom/movable/plane_master_controller/game_plane_master_controller = M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
 		game_plane_master_controller.remove_filter("weed_blur")
 	M.clear_alert("stoned")
+	M.clear_alert("numbed", /atom/movable/screen/alert/numbed)
+	REMOVE_TRAIT(M, TRAIT_NUMBED, REF(src))
 	M.sound_environment_override = SOUND_ENVIRONMENT_NONE
 
 /datum/reagent/drug/thc/overdose_process(mob/living/M, delta_time, times_fired)
