@@ -75,6 +75,7 @@ GLOBAL_LIST_EMPTY(all_loadout_datums)
  *
  * equipper - If we're equipping out outfit onto a mob at the time, this is the mob it is equipped on. Can be null.
  * outfit - The outfit we're equipping our items into.
+ * outfit_important_for_life - The outfit we want to make sure we don't overwrite
  * visual - If TRUE, then our outfit is only for visual use (for example, a preview).
  *
  * Returns TRUE if the imporant_for_life item cannot be overwritten by the loadout item, FALSE otherwise
