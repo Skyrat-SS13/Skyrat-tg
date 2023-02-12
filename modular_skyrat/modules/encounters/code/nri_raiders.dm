@@ -342,5 +342,5 @@
 	<br> <span style=\"color:black;font-family:'Segoe Script';\"><p><b>Defense Collegia Shipmaster, Akulan Contractor, Shinrun Kantes.</b></p></span>"}
 
 /obj/machinery/suit_storage_unit/nri
-	mod_type = /obj/item/mod/control/pre_equipped/frontline/pirate
+	mod_type = /obj/item/mod/control/pre_equipped/policing
 	storage_type = /obj/item/tank/internals/oxygen/yellow
