@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 #define COMP_SECURITY_ARREST_AMOUNT_TO_FLAG 10
 #define PRINTOUT_MISSING "Missing"
 #define PRINTOUT_RAPSHEET "Rapsheet"
@@ -7,7 +5,6 @@
 /// Editing this will cause UI issues.
 #define MAX_CRIME_NAME_LEN 24
 
->>>>>>> 3715cae41d0 (Records: Clerical expansion (#73022))
 /obj/machinery/computer/secure_data//TODO:SANITY
 	name = "security records console"
 	desc = "Used to view and edit personnel's security records."
@@ -44,8 +41,6 @@
 #define COMP_STATE_NONE "None"
 #define COMP_SECURITY_ARREST_AMOUNT_TO_FLAG 10
 
-<<<<<<< HEAD
-=======
 	if(machine_stat & (BROKEN|NOPOWER) || . & EMP_PROTECT_SELF)
 		return
 
@@ -371,7 +366,6 @@
 /**
  * Security circuit component
  */
->>>>>>> 3715cae41d0 (Records: Clerical expansion (#73022))
 /obj/item/circuit_component/arrest_console_data
 	display_name = "Security Records Data"
 	desc = "Outputs the security records data, where it can then be filtered with a Select Query component"

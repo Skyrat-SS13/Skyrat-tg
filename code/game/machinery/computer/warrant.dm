@@ -88,11 +88,6 @@
 	else
 		dat += {"<a href='?src=[REF(src)];choice=Login'>------------</a><hr>"}
 
-<<<<<<< HEAD
-	var/datum/browser/popup = new(user, "warrant", "Security Warrant Console", 600, 400)
-	popup.set_content(dat.Join())
-	popup.open()
-=======
 		for(var/datum/crime/citation/warrant as anything in target.citations)
 			if(!warrant.valid)
 				continue
@@ -106,7 +101,6 @@
 				paid = warrant.paid,
 				time = warrant.time,
 			))
->>>>>>> 3715cae41d0 (Records: Clerical expansion (#73022))
 
 /obj/machinery/computer/warrant/Topic(href, href_list)
 	if(..())
