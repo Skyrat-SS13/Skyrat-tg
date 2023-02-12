@@ -26,12 +26,8 @@
 	min_players = 10
 	weight = 5
 	category = EVENT_CATEGORY_HEALTH
-<<<<<<< HEAD
-	description = "A 'classic' virus will infect some members of the crew." //These are the ones with PERSONALITY
-=======
 	description = "A 'classic' virus will infect some members of the crew."
 	admin_setup = /datum/event_admin_setup/disease_outbreak
->>>>>>> d28e26ddcd8 (Disease Outbreak: Advanced v3 (#73092))
 	///Disease recipient candidates
 	var/list/disease_candidates = list()
 	///Admin selected disease, to be passed down to the round_event
@@ -152,33 +148,9 @@
 	name = "Disease Outbreak: Advanced"
 	typepath = /datum/round_event/disease_outbreak/advanced
 	category = EVENT_CATEGORY_HEALTH
-<<<<<<< HEAD
-	description = "An 'advanced' disease will infect some members of the crew." //These are the ones that get viro lynched!
-	///Admin selected custom severity rating for the event
-	var/chosen_severity
-	///Admin selected custom value for the maximum symptoms this virus should have
-	var/chosen_max_symptoms
-
-/datum/round_event_control/disease_outbreak/advanced/admin_setup()
-	if(!check_rights(R_FUN))
-		return ADMIN_CANCEL_EVENT
-
-	generate_candidates()
-
-	if(!length(disease_candidates))
-		message_admins("No disease candidates found!")
-		return ADMIN_CANCEL_EVENT
-
-	message_admins("[length(disease_candidates)] candidates found!")
-
-	if(tgui_alert(usr,"Customize your virus?", "Glorified Debug Tool", list("Yes", "No")) == "Yes")
-		chosen_severity = tgui_input_number(usr, "Select a custom severity for your virus!", "Plague Incorporation!", 3, 8)
-		chosen_max_symptoms = tgui_input_number(usr, "How many symptoms do you want your virus to have?", "A pox upon ye!", 3, 15)
-=======
 	weight = 10
 	description = "An 'advanced' disease will infect some members of the crew."
 	admin_setup = /datum/event_admin_setup/disease_outbreak/advanced
->>>>>>> d28e26ddcd8 (Disease Outbreak: Advanced v3 (#73092))
 
 /datum/event_admin_setup/disease_outbreak/advanced
 	///Admin selected custom severity rating for the event
@@ -240,20 +212,6 @@
 	afflicted += disease_event.disease_candidates
 	disease_event.disease_candidates.Cut()
 
-<<<<<<< HEAD
-	if(disease_event.chosen_max_symptoms)
-		max_symptoms = disease_event.chosen_max_symptoms
-		disease_event.chosen_max_symptoms = null
-	else
-		max_symptoms = 3 + max(FLOOR((world.time - control.earliest_start)/6000, 1),0) //3 symptoms at 20 minutes, plus 1 per 10 minutes.
-		max_symptoms = clamp(max_symptoms, 3, 8) //Capping the virus symptoms prevents the event from becoming "smite one poor player with an -12 transmission hell virus" after a certain round length.
-
-	if(disease_event.chosen_severity)
-		max_severity = disease_event.chosen_severity
-		disease_event.chosen_severity = null
-	else
-		max_severity = 3 + max(FLOOR((world.time - control.earliest_start)/6000, 1),0) //Max severity doesn't need clamping
-=======
 	if(!max_symptoms)
 		max_symptoms = rand(ADV_MIN_SYMPTOMS, ADV_MAX_SYMPTOMS)
 
@@ -261,7 +219,6 @@
 		var/rng_severity = rand(1, 100)
 		if(rng_severity < ADV_RNG_LOW)
 			max_severity = ADV_DISEASE_MEDIUM
->>>>>>> d28e26ddcd8 (Disease Outbreak: Advanced v3 (#73092))
 
 		else if(rng_severity < ADV_RNG_MID)
 			max_severity = ADV_DISEASE_HARMFUL
@@ -282,8 +239,6 @@
 		announce_to_ghosts(victim)
 	else
 		log_game("An event attempted to trigger a random advanced virus outbreak on [key_name(victim)], but failed.")
-<<<<<<< HEAD
-=======
 
 /datum/disease/advance/random/event
 	name = "Experimental Disease"
@@ -437,4 +392,3 @@
 #undef ADV_RNG_MID
 #undef ADV_SPREAD_LOW
 #undef ADV_SPREAD_MID
->>>>>>> d28e26ddcd8 (Disease Outbreak: Advanced v3 (#73092))
