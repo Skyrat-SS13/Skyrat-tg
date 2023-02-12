@@ -96,6 +96,8 @@
 	armor_type = /datum/armor/mod_theme_policing
 	complexity_max = DEFAULT_MAX_COMPLEXITY - 1
 	charge_drain = DEFAULT_CHARGE_DRAIN * 1.25
+	slowdown_inactive = 1.5
+	slowdown_active = 0.5
 	allowed_suit_storage = list(
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
