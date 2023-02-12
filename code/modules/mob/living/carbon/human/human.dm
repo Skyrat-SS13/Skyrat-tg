@@ -245,19 +245,6 @@
 				to_chat(usr, span_warning("ERROR: Unable to locate data core entry for target."))
 				return
 			if(href_list["status"])
-<<<<<<< HEAD
-				var/setcriminal = input(usr, "Specify a new criminal status for this person.", "Security HUD", sec_record.fields["criminal"]) in list("None", "*Arrest*", "Incarcerated", "Suspected", "Paroled", "Discharged", "Cancel") //SKYRAT EDIT CHANGE - EXAMINE RECORDS
-				if(setcriminal != "Cancel")
-					if(!sec_record) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
-						return
-					if(!human_user.canUseHUD())
-						return
-					if(!HAS_TRAIT(human_user, TRAIT_SECURITY_HUD))
-						return
-					investigate_log("has been set from [sec_record.fields["criminal"]] to [setcriminal] by [key_name(human_user)].", INVESTIGATE_RECORDS) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
-					sec_record.fields["criminal"] = setcriminal //SKYRAT EDIT CHANGE - EXAMINE RECORDS
-					sec_hud_set_security_status()
-=======
 				var/new_status = tgui_input_list(human_user, "Specify a new criminal status for this person.", "Security HUD", WANTED_STATUSES(), target_record.wanted_status)
 				if(!new_status || !target_record || !human_user.canUseHUD() || !HAS_TRAIT(human_user, TRAIT_SECURITY_HUD))
 					return
@@ -270,7 +257,6 @@
 				investigate_log("has been set from [target_record.wanted_status] to [new_status] via HUD by [key_name(human_user)].", INVESTIGATE_RECORDS)
 				target_record.wanted_status = new_status
 				sec_hud_set_security_status()
->>>>>>> 3715cae41d0 (Records: Clerical expansion (#73022))
 				return
 
 			if(href_list["view"])
@@ -278,18 +264,6 @@
 					return
 				if(!HAS_TRAIT(human_user, TRAIT_SECURITY_HUD))
 					return
-<<<<<<< HEAD
-				to_chat(usr, "<b>Name:</b> [sec_record.fields["name"]] <b>Criminal Status:</b> [sec_record.fields["criminal"]]") //SKYRAT EDIT CHANGE - EXAMINE RECORDS
-				for(var/datum/data/crime/c in sec_record.fields["crim"]) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
-					to_chat(usr, "<b>Crime:</b> [c.crimeName]")
-					if (c.crimeDetails)
-						to_chat(human_user, "<b>Details:</b> [c.crimeDetails]")
-					else
-						to_chat(human_user, "<b>Details:</b> <A href='?src=[REF(src)];hud=s;add_details=1;cdataid=[c.dataId]'>\[Add details]</A>")
-					to_chat(human_user, "Added by [c.author] at [c.time]")
-					to_chat(human_user, "----------")
-				to_chat(human_user, "<b>Notes:</b> [sec_record.fields["notes"]]") //SKYRAT EDIT CHANGE - EXAMINE RECORDS
-=======
 				to_chat(human_user, "<b>Name:</b> [target_record.name]")
 				to_chat(human_user, "<b>Criminal Status:</b> [target_record.wanted_status]")
 				to_chat(human_user, "<b>Citations:</b> [length(target_record.citations)]")
@@ -306,7 +280,6 @@
 						to_chat(human_user, "Added by [crime.author] at [crime.time]")
 				to_chat(human_user, "----------")
 
->>>>>>> 3715cae41d0 (Records: Clerical expansion (#73022))
 				return
 
 			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
