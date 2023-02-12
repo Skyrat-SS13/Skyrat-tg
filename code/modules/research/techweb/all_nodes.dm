@@ -127,6 +127,7 @@
 		"turret_control",
 		"universal_scanner",
 		"voice_analyzer",
+		"vox_gas_filter", //SKYRAT EDIT ADDITION
 		"watering_can",
 	)
 

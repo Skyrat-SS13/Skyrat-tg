@@ -204,11 +204,12 @@
 		power_throw++
 	do_attack_animation(target, no_effect = 1) //SKYRAT EDIT ADDITION - AESTHETICS
 	playsound(loc, 'sound/weapons/punchmiss.ogg', 50, TRUE, -1) //SKYRAT EDIT ADDITION - AESTHETICS
-	visible_message("<span class='danger'>[src] throws [thrown_thing][power_throw ? " really hard!" : "."]</span>", \
-					"<span class='danger'>You throw [thrown_thing][power_throw ? " really hard!" : "."]</span>")
+	visible_message(span_danger("[src] throws [thrown_thing][power_throw ? " really hard!" : "."]"), \
+					span_danger("You throw [thrown_thing][power_throw ? " really hard!" : "."]"))
 	log_message("has thrown [thrown_thing] [power_throw ? "really hard" : ""]", LOG_ATTACK)
+	var/extra_throw_range = HAS_TRAIT(src, TRAIT_THROWINGARM) ? 2 : 0
 	newtonian_move(get_dir(target, src))
-	thrown_thing.safe_throw_at(target, thrown_thing.throw_range, thrown_thing.throw_speed + power_throw, src, null, null, null, move_force)
+	thrown_thing.safe_throw_at(target, thrown_thing.throw_range + extra_throw_range, thrown_thing.throw_speed + power_throw, src, null, null, null, move_force)
 
 /mob/living/carbon/proc/canBeHandcuffed()
 	return FALSE
