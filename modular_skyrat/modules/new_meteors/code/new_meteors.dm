@@ -63,7 +63,7 @@
 			kill()
 			return
 
-	priority_announce("Meteors have been detected on collision course with the station. The early warning system estimates first collision in approximately [start_when * 2] seconds, coming from the [start_side_text] side of the station. Ensure all sensitive areas and equipment are shielded.", "Meteor Alert", ANNOUNCER_METEORS)
+	priority_announce("Meteors have been detected on collision course with the station. Estimated collision in approximately [start_when * 2] seconds from the [start_side_text]-side of the station. Ensure all sensitive areas and equipment are shielded.", "Meteor Alert", ANNOUNCER_METEORS)
 
 
 /datum/round_event/meteor_wave/tick()
