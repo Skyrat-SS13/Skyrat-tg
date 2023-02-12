@@ -30,8 +30,6 @@
 	admin_setup = /datum/event_admin_setup/disease_outbreak
 	///Disease recipient candidates
 	var/list/disease_candidates = list()
-	///Admin selected disease, to be passed down to the round_event
-	var/chosen_disease
 
 /datum/round_event_control/disease_outbreak/can_spawn_event(players_amt)
 	. = ..()
@@ -40,21 +38,6 @@
 	generate_candidates()
 	if(length(disease_candidates))
 		return TRUE
-
-/datum/round_event_control/disease_outbreak/admin_setup()
-	if(!check_rights(R_FUN))
-		return ADMIN_CANCEL_EVENT
-
-	generate_candidates()
-
-	if(!length(disease_candidates))
-		message_admins("No disease candidates found!")
-		return ADMIN_CANCEL_EVENT
-
-	message_admins("[length(disease_candidates)] candidates found!")
-
-	if(tgui_alert(usr, "Select a specific disease?", "Sickening behavior", list("Yes", "No")) == "Yes")
-		chosen_disease = tgui_input_list(usr, "Warning: Some of these are EXTREMELY dangerous.","Bacteria Hysteria", subtypesof(/datum/disease))
 
 /**
  * Creates a list of people who are elligible to become disease carriers for the event
@@ -113,10 +96,6 @@
 	var/datum/round_event_control/disease_outbreak/disease_event = control
 	afflicted += disease_event.disease_candidates
 	disease_event.disease_candidates.Cut() //Clean the list after use
-	if(disease_event.chosen_disease)
-		virus_type = disease_event.chosen_disease
-		disease_event.chosen_disease = null
-
 	if(!virus_type)
 		var/list/virus_candidates = list()
 
