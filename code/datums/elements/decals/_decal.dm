@@ -112,7 +112,7 @@
 	var/temp_image = image(_icon, null, isnull(_smoothing) ? _icon_state : "[_icon_state]-[_smoothing]", _layer, _dir)
 	pic = new(temp_image)
 	var/atom/atom_source = source
-	SET_PLANE_EXPLICIT(pic, _plane, source)
+	SET_PLANE_EXPLICIT(pic, _plane, atom_source)
 	pic.color = _color
 	pic.alpha = _alpha
 	return TRUE
