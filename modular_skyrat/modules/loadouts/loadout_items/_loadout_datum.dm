@@ -79,7 +79,7 @@ GLOBAL_LIST_EMPTY(all_loadout_datums)
  *
  * Returns TRUE if the imporant_for_life item cannot be overwritten by the loadout item, FALSE otherwise
  */
-/datum/loadout_item/proc/pre_equip_item(datum/outfit/outfit, datum/outfit/outfit_important_for_life, visuals_only = FALSE)
+/datum/loadout_item/proc/pre_equip_item(datum/outfit/outfit, datum/outfit/outfit_important_for_life, mob/living/carbon/human/equipper, visuals_only = FALSE)
 	if(!visuals_only)
 		LAZYADD(outfit.backpack_contents, item_path)
 

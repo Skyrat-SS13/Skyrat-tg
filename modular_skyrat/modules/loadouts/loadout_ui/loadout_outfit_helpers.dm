@@ -57,8 +57,7 @@
 
 			// Make sure the item is not overriding an important for life outfit item
 			var/datum/outfit/outfit_important_for_life = dna.species.outfit_important_for_life
-			if(outfit_important_for_life && item.pre_equip_item(equipped_outfit, outfit_important_for_life, visuals_only))
-			else
+			if(!outfit_important_for_life || !item.pre_equip_item(equipped_outfit, outfit_important_for_life, src, visuals_only))
 				item.insert_path_into_outfit(equipped_outfit, src, visuals_only, override_preference)
 
 
