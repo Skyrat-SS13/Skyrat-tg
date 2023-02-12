@@ -59,7 +59,7 @@
 		if(WEST)
 			start_side_text = "port"
 		else
-			stack_trace("Sandstorm event given [start_side] as unrecognized direction. Cancelling event...")
+			stack_trace("Meteor event given [start_side] as unrecognized direction. Cancelling event...")
 			kill()
 			return
 
