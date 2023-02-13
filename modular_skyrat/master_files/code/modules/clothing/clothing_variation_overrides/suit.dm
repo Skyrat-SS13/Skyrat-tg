@@ -4,6 +4,9 @@
  * Clothing that do not require a new icon to function correctly, think, big jackets.
  */
 
+/obj/item/clothing/suit/bio_suit/plaguedoctorsuit
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
 /obj/item/clothing/suit/toggle/chef
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
@@ -74,14 +77,8 @@
 /obj/item/clothing/suit/armor/vest
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/armor/vest/marine/security
-	supports_variations_flags = NONE
-
-/obj/item/clothing/suit/armor/vest/marine/engineer
-	supports_variations_flags = NONE
-
-/obj/item/clothing/suit/armor/vest/leather //This item blows
-	supports_variations_flags = NONE
+/obj/item/clothing/suit/armor/reactive
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/changeling
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
@@ -121,6 +118,18 @@
  * Clothing that does not have a digitigrade version, and thus will squash legs to fit.
  */
 
+/obj/item/clothing/suit/armor/vest/ctf
+	supports_variations_flags = NONE
+
+/obj/item/clothing/suit/armor/vest/marine/security
+	supports_variations_flags = NONE
+
+/obj/item/clothing/suit/armor/vest/marine/engineer
+	supports_variations_flags = NONE
+
+/obj/item/clothing/suit/armor/vest/leather //This item blows
+	supports_variations_flags = NONE
+
 /obj/item/clothing/suit/space/hunter
 	supports_variations_flags = NONE
 
@@ -141,3 +150,16 @@
 
 /obj/item/clothing/suit/hooded/techpriest
 	supports_variations_flags = NONE
+
+/**
+ * SUBTYPE WITH NEW ICON
+ * Clothing that has a digitigrade version, but its parent was set to something else earlier in this file.
+ */
+/obj/item/clothing/suit/wizrobe/magusblue
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/wizrobe/magusred
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/wizrobe/santa
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
