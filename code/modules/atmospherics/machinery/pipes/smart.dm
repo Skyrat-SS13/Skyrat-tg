@@ -12,14 +12,31 @@ GLOBAL_LIST_INIT(atmos_components, typecacheof(list(/obj/machinery/atmospherics)
 	pipe_state = "manifold4w"
 	///Current active connections
 	var/connections = NONE
+	///Was this pipe created during map load
+	var/map_loaded_pipe = FALSE
+
+/obj/machinery/atmospherics/pipe/smart/Initialize(mapload)
+	map_loaded_pipe = mapload
+	return ..()
+
+///helper function to append all directions into an single bit flag
+/obj/machinery/atmospherics/pipe/smart/proc/append_directions(list/spanning_directions)
+	var/bit_flag = NONE
+	for(var/i in 1 to length(spanning_directions))
+		var/spanning_direction = spanning_directions[i]
+		if(!spanning_direction)
+			continue
+		bit_flag |= spanning_direction
+	return bit_flag
 
 /obj/machinery/atmospherics/pipe/smart/Initialize(mapload)
 	return ..()
 
 /obj/machinery/atmospherics/pipe/smart/update_pipe_icon()
 	icon = 'icons/obj/atmospherics/pipes/pipes_bitmask.dmi'
-	connections = NONE
 
+	//find all directions this pipe is connected with other nodes
+	connections = NONE
 	for(var/i in 1 to device_type)
 		if(!nodes[i])
 			continue
@@ -66,28 +83,6 @@ GLOBAL_LIST_INIT(atmos_components, typecacheof(list(/obj/machinery/atmospherics)
 		initialize_directions = init_dir
 	else
 		initialize_directions = ALL_CARDINALS
-
-/obj/machinery/atmospherics/pipe/smart/proc/check_binary_direction(direction)
-	switch(direction)
-		if(EAST|WEST)
-			return EAST
-		if(SOUTH|NORTH)
-			return SOUTH
-		else
-			return direction
-
-/obj/machinery/atmospherics/pipe/smart/proc/check_manifold_direction(direction)
-	switch(direction)
-		if(NORTH|SOUTH|EAST)
-			return WEST
-		if(NORTH|SOUTH|WEST)
-			return EAST
-		if(NORTH|WEST|EAST)
-			return SOUTH
-		if(SOUTH|WEST|EAST)
-			return NORTH
-		else
-			return null
 
 //mapping helpers
 /obj/machinery/atmospherics/pipe/smart/simple
