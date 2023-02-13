@@ -30,8 +30,9 @@
 		on_clear_callback = CALLBACK(src, PROC_REF(on_cult_rune_removed)), \
 		effects_we_clear = list(/obj/effect/rune, /obj/effect/heretic_rune))
 
-	AddElement(/datum/element/bane, /mob/living/simple_animal/revenant, 0, 25, FALSE)
-	if(!GLOB.holy_weapon_type && istype(src, /obj/item/nullrod))
+	AddElement(/datum/element/bane, target_type = /mob/living/simple_animal/revenant, damage_multiplier = 0, added_damage = 25, requires_combat_mode = FALSE)
+
+	if(!GLOB.holy_weapon_type && type == /obj/item/nullrod)
 		var/list/rods = list()
 		for(var/obj/item/nullrod/nullrod_type as anything in typesof(/obj/item/nullrod))
 			if(!initial(nullrod_type.chaplain_spawnable))
