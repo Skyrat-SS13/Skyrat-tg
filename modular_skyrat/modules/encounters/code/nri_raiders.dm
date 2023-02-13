@@ -144,6 +144,21 @@
 	var/last_name = pick(GLOB.last_names)
 	spawned_human.fully_replace_character_name(null, "[rank] [last_name]")
 	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
+	
+/obj/effect/mob_spawn/ghost_role/human/nri_raider/post_transfer_prefs(mob/living/carbon/human/spawned_human)
+	. = ..()
+	var/last_name = pick(GLOB.last_names)
+	spawned_human.fully_replace_character_name(null, "[rank] [last_name]")
+	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
+	
+	// make sure we update the ID's name too
+	var/obj/item/card/id/id_card = spawned_human.wear_id
+	if(istype(id_card))
+		id_card.registered_name = spawned_human.real_name
+		id_card.update_label()
+
+	outfit.handlebank(spawned_human)
+	return ..()
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/Destroy()
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
@@ -163,7 +178,11 @@
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/officer/special(mob/living/carbon/human/spawned_human)
 	. = ..()
 	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
-	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
+	spawned_human.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_MIND)
+
+/obj/effect/mob_spawn/ghost_role/human/nri_raider/officer/post_transfer_prefs(mob/living/carbon/human/spawned_human)
+	. = ..()
+	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
 	spawned_human.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_MIND)
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/marine
