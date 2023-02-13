@@ -84,7 +84,6 @@
 	color = "#ff80f4"
 	greyscale_colors = "#ff80f496"
 	alpha = 150
-	starlight_color = COLOR_STRONG_MAGENTA
 	init_flags = MATERIAL_INIT_MAPLOAD
 	integrity_modifier = 0.5
 	armor_modifiers = list(MELEE = 0.8, BULLET = 0.8, LASER = 1.2, ENERGY = 1.2, BOMB = 0.3, BIO = 1.2, FIRE = 2, ACID = 2)
@@ -104,7 +103,6 @@
 	color = "#cfbee0"
 	greyscale_colors = "#cfbee096"
 	alpha = 150
-	starlight_color = COLOR_COMMAND_BLUE
 	init_flags = MATERIAL_INIT_MAPLOAD
 	armor_modifiers = list(MELEE = 1.2, BULLET = 1.2, LASER = 0.8, ENERGY = 0.8, BOMB = 0.5, BIO = 1.2, FIRE = 0.8, ACID = 2)
 	sheet_type = /obj/item/stack/sheet/titaniumglass
@@ -122,7 +120,6 @@
 	desc = "A specialized silicate-plastitanium alloy."
 	color = "#5d3369"
 	greyscale_colors = "#5d336996"
-	starlight_color = COLOR_CENTCOM_BLUE
 	alpha = 150
 	init_flags = MATERIAL_INIT_MAPLOAD
 	integrity_modifier = 1.1
