@@ -56,7 +56,7 @@
 	overlay.vis_flags = VIS_INHERIT_ID | VIS_INHERIT_ICON
 	overlay.appearance_flags = TILE_BOUND
 	overlay.icon_state = icon_state
-	overlay.pixel_z = z_offset
+	//overlay.pixel_z = z_offset
 	vis_contents += overlay
 	return overlay
 

@@ -572,7 +572,7 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	layer = BELOW_OBJ_LAYER
 
 /obj/machinery/destination_sign/south
-	plane = WALL_PLANE_UPPER
+	//plane = WALL_PLANE_UPPER
 	layer = BELOW_OBJ_LAYER
 
 /obj/machinery/destination_sign/indicator
@@ -682,7 +682,7 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	base_state = "left"
 
 /obj/machinery/door/window/tram/left/directional/south
-	plane = WALL_PLANE_UPPER
+	//plane = WALL_PLANE_UPPER
 
 /obj/machinery/door/window/tram/right
 	icon_state = "right"
@@ -760,7 +760,7 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	req_access = null
 
 /obj/machinery/door/window/tram/right/directional/south
-	plane = WALL_PLANE_UPPER
+	//plane = WALL_PLANE_UPPER
 
 /obj/machinery/door/window/tram/proc/find_tram()
 	for(var/datum/lift_master/lift as anything in GLOB.active_lifts_by_type[TRAM_LIFT_ID])

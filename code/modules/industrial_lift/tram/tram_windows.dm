@@ -38,7 +38,7 @@
 
 /obj/structure/window/reinforced/tram/left/directional/south
 	icon_state = "tram_left"
-	plane = WALL_PLANE_UPPER
+	//plane = WALL_PLANE_UPPER
 
 /obj/structure/window/reinforced/tram/mid/directional/north
 	icon_state = "tram_mid"
@@ -46,7 +46,7 @@
 
 /obj/structure/window/reinforced/tram/mid/directional/south
 	icon_state = "tram_mid"
-	plane = WALL_PLANE_UPPER
+	//plane = WALL_PLANE_UPPER
 
 /obj/structure/window/reinforced/tram/right/directional/north
 	icon_state = "tram_right"
@@ -54,7 +54,7 @@
 
 /obj/structure/window/reinforced/tram/right/directional/south
 	icon_state = "tram_right"
-	plane = WALL_PLANE_UPPER
+	//plane = WALL_PLANE_UPPER
 
 /datum/armor/window_tram
 	melee = 80
