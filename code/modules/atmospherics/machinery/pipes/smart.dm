@@ -13,12 +13,9 @@ GLOBAL_LIST_INIT(atmos_components, typecacheof(list(/obj/machinery/atmospherics)
 	///Current active connections
 	var/connections = NONE
 
-<<<<<<< HEAD
-=======
 /obj/machinery/atmospherics/pipe/smart/Initialize(mapload)
 	return ..()
 
->>>>>>> 51d0ccada85 (Reverts Sprite changes done to smart pipes in #72957 & Fixes disappearing pipes. (#73215))
 /obj/machinery/atmospherics/pipe/smart/update_pipe_icon()
 	icon = 'icons/obj/atmospherics/pipes/pipes_bitmask.dmi'
 	connections = NONE
@@ -29,30 +26,6 @@ GLOBAL_LIST_INIT(atmos_components, typecacheof(list(/obj/machinery/atmospherics)
 		var/obj/machinery/atmospherics/node = nodes[i]
 		var/connected_dir = get_dir(src, node)
 		connections |= connected_dir
-<<<<<<< HEAD
-	var/bitfield = CARDINAL_TO_FULLPIPES(connections)
-	dir = check_binary_direction(connections)
-
-	// If we dont have enough bits to make a proper sprite, add some shortpipe bits
-
-	// Smart pipe icons differ from classic pipe icons in that we stop adding
-	// short pipe directions as soon as we find a valid sprite, rather than
-	// adding in all connectable directions.
-	// This prevents a lot of visual clutter, though it does make it harder to
-	// notice completely disconnected pipes.
-	if(ISSTUB(connections))
-		var/bits_to_add = NONE
-		if(connections != NONE)
-			bits_to_add |= REVERSE_DIR(connections) & initialize_directions
-		var/candidates = initialize_directions
-		var/shift = 0
-		// Note that candidates "should" never reach 0, as stub pipes are not allowed and break things
-		while (ISSTUB(connections | bits_to_add) && (candidates >> shift) != 0)
-			bits_to_add |= candidates & (1 << shift)
-			shift += 1
-		bitfield |= CARDINAL_TO_SHORTPIPES(bits_to_add)
-
-=======
 
 	//set the correct direction for this node in case of binary directions
 	switch(connections)
@@ -86,7 +59,6 @@ GLOBAL_LIST_INIT(atmos_components, typecacheof(list(/obj/machinery/atmospherics)
 				bits_to_add |= candidate
 			shift += 1
 		bitfield |= CARDINAL_TO_SHORTPIPES(bits_to_add)
->>>>>>> 51d0ccada85 (Reverts Sprite changes done to smart pipes in #72957 & Fixes disappearing pipes. (#73215))
 	icon_state = "[bitfield]_[piping_layer]"
 
 /obj/machinery/atmospherics/pipe/smart/set_init_directions(init_dir)
