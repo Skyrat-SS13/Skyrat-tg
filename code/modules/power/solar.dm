@@ -51,6 +51,11 @@
 	SET_PLANE(panel_edge, PLANE_TO_TRUE(panel_edge.plane), new_turf)
 	SET_PLANE(panel, PLANE_TO_TRUE(panel.plane), new_turf)
 
+/obj/effect/overlay/solar_panel
+	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_ICON
+	appearance_flags = TILE_BOUND
+	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
+
 /obj/machinery/power/solar/proc/add_panel_overlay(icon_state, z_offset)
 	var/obj/effect/overlay/solar_panel/overlay = new(src)
 	overlay.icon_state = icon_state
