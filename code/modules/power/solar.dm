@@ -59,7 +59,6 @@
 /obj/machinery/power/solar/proc/add_panel_overlay(icon_state, z_offset)
 	var/obj/effect/overlay/solar_panel/overlay = new()
 	overlay.icon_state = icon_state
-	SET_PLANE_EXPLICIT(overlay, ABOVE_GAME_PLANE, src)
 	overlay.pixel_z = z_offset
 	vis_contents += overlay
 	return overlay

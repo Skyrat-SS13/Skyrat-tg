@@ -53,7 +53,7 @@
 	var/obj/effect/overlay/overlay = new()
 	overlay.icon_state = icon_state
 	SET_PLANE_EXPLICIT(overlay, ABOVE_GAME_PLANE, src)
-	overlay.pixel_z = z_offset
+	overlay.pixel_y = z_offset
 	vis_contents += overlay
 	return overlay
 
