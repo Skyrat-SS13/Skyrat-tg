@@ -156,30 +156,10 @@
 	max_occurrences = 0
 	description = "The scrubbers release a tide of mostly harmless froth, but every scrubber is affected."
 
-<<<<<<< HEAD
-/datum/round_event_control/scrubber_overflow/custom/announce_deadchat(random)
-	deadchat_broadcast(" has just been[random ? " randomly" : ""] triggered!", "<b>Scrubber Overflow: [initial(custom_reagent.name)]</b>", message_type=DEADCHAT_ANNOUNCEMENT)
-
-/datum/round_event_control/scrubber_overflow/custom/admin_setup(mob/admin)
-	if(!check_rights(R_FUN))
-		return
-	custom_reagent = tgui_input_list(usr, "Choose a reagent to flood.", "Choose a reagent.", sort_list(subtypesof(/datum/reagent), /proc/cmp_typepaths_asc))
-	if (isnull(custom_reagent))
-		return ADMIN_CANCEL_EVENT
-
-/datum/round_event/scrubber_overflow/custom
-=======
 /datum/round_event/scrubber_overflow/every_vent
->>>>>>> c9106af90dc (Refactors "Custom" level scrubber overflow into a generic "All Vents" overflow, gives its (currently broken) functionality to all levels of scrubber overflow events. (#73223))
 	overflow_probability = 100
 	reagents_amount = 100
 
-<<<<<<< HEAD
-/datum/round_event/scrubber_overflow/custom/start()
-	var/datum/round_event_control/scrubber_overflow/custom/event_controller = control
-	forced_reagent = event_controller.custom_reagent
-	return ..()
-=======
 /datum/event_admin_setup/listed_options/scrubber_overflow
 	normal_run_option = "Random Reagents"
 	special_run_option = "Random Single Reagent"
@@ -191,4 +171,3 @@
 	if(chosen == special_run_option)
 		chosen = event.get_overflowing_reagent(dangerous = prob(event.danger_chance))
 	event.forced_reagent_type = chosen
->>>>>>> c9106af90dc (Refactors "Custom" level scrubber overflow into a generic "All Vents" overflow, gives its (currently broken) functionality to all levels of scrubber overflow events. (#73223))

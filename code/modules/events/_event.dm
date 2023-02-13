@@ -122,10 +122,6 @@ Runs the event
 	* * In the worst case scenario we can still recall a event which we cancelled by accident, which is much better then to have a unwanted event
 	*/
 	UnregisterSignal(SSdcs, COMSIG_GLOB_RANDOM_EVENT)
-<<<<<<< HEAD
-	var/datum/round_event/E = new typepath(TRUE, src)
-	E.current_players = get_active_player_count(alive_check = 1, afk_check = 1, human_check = 1)
-=======
 	var/datum/round_event/round_event = new typepath(TRUE, src)
 	if(admin_forced && admin_setup)
 		//not part of the signal because it's conditional and relies on usr heavily
@@ -133,7 +129,6 @@ Runs the event
 	SEND_SIGNAL(src, COMSIG_CREATED_ROUND_EVENT, round_event)
 	round_event.setup()
 	round_event.current_players = get_active_player_count(alive_check = 1, afk_check = 1, human_check = 1)
->>>>>>> c9106af90dc (Refactors "Custom" level scrubber overflow into a generic "All Vents" overflow, gives its (currently broken) functionality to all levels of scrubber overflow events. (#73223))
 	occurrences++
 
 	SSevents.previously_run += src //SKYRAT EDIT ADDITION
