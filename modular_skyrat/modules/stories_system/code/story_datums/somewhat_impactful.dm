@@ -159,5 +159,57 @@
 		if(2)
 			var/succeeded = add_actors(list(/datum/story_actor/ghost/spawn_in_maint/real_guard = 1))
 			if(!succeeded)
-				message_admins("STORY: Guardnapped! failed to spawn the real guard due to a lack of candidates.")
-				CRASH("STORY: Guardnapped! failed to spawn the real guard due to a lack of candidates.")
+				message_admins("STORY: Guardnapped! failed to spawn the real guard due to a lack of candidates. Restarting act timer to try again.")
+				current_act--
+				addtimer(CALLBACK(src, .proc/update_act), time_between_acts) // since it was at 2 the timer wasn't already running, so we'll try it again.
+				CRASH("STORY: Guardnapped! failed to spawn the real guard due to a lack of candidates. Restarting act timer to try again.")
+
+/*
+	Worldjumper
+	Written by Oscar Gilmour
+		Plot Summary:
+			A visitor from another universe must adjust to the insanity of Space Station 13.
+		Actors:
+			Ghost:
+				Worldjumper (1)
+				Second Jumper (1)
+			Crew:
+				Multiverse Researcher (1)
+*/
+
+/datum/story_type/somewhat_impactful/worldjumper
+	name = "Worldjumper"
+	desc = "A visitor from another universe must adjust to the insanity of Space Station 13.\n\
+	Written by Oscar Gilmour."
+	actor_datums_to_make = list(
+		/datum/story_actor/ghost/teleporting_spawn/worldjumper = 1,
+		/datum/story_actor/crew/multiverse_researcher = 1,
+	)
+	maximum_execute_times = 1
+	num_of_acts = 2
+	/// What's the name of the Worldjumper?
+	var/worldjumper_name = "Arnold Schwarzenegger"
+	/// What's the reference to the Worldjumper's mob?
+	var/mob/living/carbon/human/worldjumper_human
+
+/datum/story_type/somewhat_impactful/worldjumper/update_act()
+	. = ..()
+	switch(current_act)
+		if(2)
+			var/datum/story_actor/crew/multiverse_researcher/multiverse_researcher
+			var/succeeded = add_actors(list(/datum/story_actor/ghost/teleporting_spawn/second_jumper = 1))
+			if(!succeeded)
+				message_admins("STORY: Worldjumper failed to spawn the second jumper due to a lack of candidates. Restarting the act timer to try again.")
+				current_act--
+				addtimer(CALLBACK(src, .proc/update_act), time_between_acts) // since it was at 2 the timer wasn't already running, so we'll try it again.
+				CRASH("STORY: Worldjumper failed to spawn the second jumper due to a lack of candidates. Restarting the act timer to try again.")
+			for(var/datum/mind/actor_mind as anything in mind_actor_list)
+				var/datum/story_actor/actor_datum = mind_actor_list[actor_mind]
+				switch(actor_datum.type)
+					if(/datum/story_actor/crew/multiverse_researcher)
+						multiverse_researcher = actor_datum
+			multiverse_researcher.actor_info = "This new visitor has certainly made things more interesting… but there's now an issue to address.\n\n\
+			Your scanner has burst into life once more. Someone else has arrived. Yet that little itch in the back of your mind is telling you this visitor isn't here to contribute \
+			to your research. They might be here to bring [worldjumper_name] back to where they came from. You can't let that happen."
+			multiverse_researcher.actor_goal = "Ensure [worldjumper_name] stays in your world."
+			multiverse_researcher.ui_interact(multiverse_researcher.actor_ref.current)

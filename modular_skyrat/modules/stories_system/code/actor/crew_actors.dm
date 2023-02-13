@@ -176,3 +176,15 @@
 	Are you trapped in a simulation? An endless loop of life and death? Or have you been spending too much time near Misama clouds? Even so, you can't shake this sense of dread \
 	and doom. The station is cursed. Something bad is going to happen… and you're not sure you can stop it."
 	actor_goal = "Survive the shift. Try and stop bad things from happening."
+
+/datum/story_actor/crew/multiverse_researcher
+	name = "Multiverse Researcher"
+	actor_info = "Vindication! At long last!\n\n\
+	They called you crazy. Insane. Declared your ideas unfit for 'safe and sane scientific practice'. But soon you'll be the one laughing. After months of sleepless nights, \
+	you've finally completed your 'Multiversal Positioning Tracker'. And what luck, it has activated! There's a visitor from another world, somewhere aboard the station…\n\n\
+	The multiversal theory is about to be proven."
+	actor_goal = "Find the visitor from another world. Study them. Get their autograph."
+
+/datum/story_actor/crew/multiverse_researcher/handle_spawning(mob/living/carbon/human/picked_spawner, datum/story_type/current_story)
+	. = ..()
+	picked_spawner.put_in_hands(new /obj/item/toy/cards/deck/tarot, ignore_animation = TRUE)

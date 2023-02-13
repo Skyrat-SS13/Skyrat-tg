@@ -426,10 +426,16 @@
 	worn_id.registered_name = equipped_human.real_name
 	worn_id.update_label()
 
-
 /datum/outfit/real_guard
 	name = "Real Guard"
 
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/real_guard
 	uniform = /obj/item/clothing/under/shorts/red
+
+/datum/outfit/worldjumper
+	name = "Worldjumper" // they'll need your clothes, your boots, and your janicart
+	implants = list(/obj/item/implant/tracking)
+
+/datum/outfit/second_jumper
+	name = "Second Jumper" // We're going to hand them the return device manually while spawning in order to set the vars up on it correctly
