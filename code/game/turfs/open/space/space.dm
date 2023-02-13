@@ -277,8 +277,6 @@
 				return FALSE
 		return TRUE
 	return FALSE
-<<<<<<< HEAD
-=======
 
 /turf/open/space/openspace/enable_starlight()
 	var/turf/below = SSmapping.get_turf_below(src)
@@ -310,4 +308,3 @@
 	// Create plating under tiled floor we try to create directly onto space
 	PlaceOnTop(/turf/open/floor/plating, flags = flags)
 	PlaceOnTop(new_floor_path, flags = flags)
->>>>>>> 2ff892757fd (Correct instances of destroying baseturfs in ChangeTurf & Select dimensional anomaly theme (#73177))
