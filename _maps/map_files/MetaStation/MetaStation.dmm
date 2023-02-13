@@ -3522,7 +3522,7 @@
 /obj/effect/turf_decal/siding/purple{
 	dir = 4
 	},
-/obj/machinery/computer/med_data/laptop{
+/obj/machinery/computer/records/medical/laptop{
 	dir = 8;
 	pixel_y = 1
 	},
@@ -7114,7 +7114,7 @@
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/station/service/kitchen/coldroom)
 "cCS" = (
-/obj/machinery/computer/secure_data{
+/obj/machinery/computer/records/security{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/red/half/contrasted{
@@ -9932,7 +9932,7 @@
 /area/station/medical/medbay/central)
 "dIM" = (
 /obj/structure/cable,
-/obj/machinery/computer/secure_data{
+/obj/machinery/computer/records/security{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/red/half/contrasted{
@@ -12991,7 +12991,7 @@
 /turf/open/floor/iron/dark/telecomms,
 /area/station/tcommsat/server)
 "eNP" = (
-/obj/machinery/computer/med_data{
+/obj/machinery/computer/records/medical{
 	dir = 8
 	},
 /obj/machinery/newscaster/directional/east,
@@ -15917,6 +15917,26 @@
 	department = "Head of Security's Desk";
 	departmentType = 5;
 	name = "Head of Security Requests Console"
+	},
+/obj/machinery/button/door/directional/north{
+	id = "hosspace";
+	name = "Space Shutters Control";
+	pixel_x = -24
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/machinery/computer/records/security{
+	dir = 4
+	},
+/obj/machinery/keycard_auth/directional/west,
+/obj/machinery/requests_console/directional/north{
+	announcementConsole = 1;
+	department = "Head of Security's Desk";
+	name = "Head of Security Requests Console";
+	assistance_requestable = 1;
+	anon_tips_receiver = 1
 	},
 /obj/machinery/button/door/directional/north{
 	id = "hosspace";
@@ -20094,7 +20114,7 @@
 /turf/open/floor/iron/grimy,
 /area/station/service/chapel/office)
 "hrH" = (
-/obj/machinery/computer/secure_data{
+/obj/machinery/computer/records/security{
 	dir = 4
 	},
 /obj/structure/cable,
@@ -20711,7 +20731,7 @@
 "hCB" = (
 /obj/structure/noticeboard/directional/south,
 /obj/structure/table/wood,
-/obj/machinery/computer/med_data/laptop{
+/obj/machinery/computer/records/medical/laptop{
 	dir = 1;
 	pixel_y = 4
 	},
@@ -22476,7 +22496,7 @@
 /area/station/service/hydroponics/garden)
 "iky" = (
 /obj/structure/table/glass,
-/obj/machinery/computer/med_data/laptop,
+/obj/machinery/computer/records/medical/laptop,
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 8
 	},
@@ -29543,7 +29563,7 @@
 "kyJ" = (
 /obj/structure/table,
 /obj/machinery/airalarm/directional/north,
-/obj/machinery/computer/med_data/laptop,
+/obj/machinery/computer/records/medical/laptop,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
 	},
@@ -32219,7 +32239,7 @@
 /obj/machinery/light_switch/directional/west{
 	pixel_x = -20
 	},
-/obj/machinery/computer/med_data{
+/obj/machinery/computer/records/medical{
 	dir = 4
 	},
 /obj/machinery/light/directional/west,
@@ -39773,7 +39793,7 @@
 /turf/open/floor/iron/white,
 /area/station/medical/abandoned)
 "oen" = (
-/obj/machinery/computer/secure_data,
+/obj/machinery/computer/records/security,
 /obj/effect/turf_decal/tile/red/half/contrasted{
 	dir = 1
 	},
@@ -44567,7 +44587,7 @@
 	},
 /area/station/service/chapel)
 "pPt" = (
-/obj/machinery/computer/med_data,
+/obj/machinery/computer/records/medical,
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/green/half/contrasted{
 	dir = 1
@@ -46540,7 +46560,7 @@
 /turf/open/floor/wood,
 /area/station/service/library)
 "qzY" = (
-/obj/machinery/computer/med_data{
+/obj/machinery/computer/records/medical{
 	dir = 4
 	},
 /obj/machinery/light/directional/west,
@@ -50399,7 +50419,7 @@
 /area/station/service/chapel)
 "rQJ" = (
 /obj/structure/table/wood,
-/obj/machinery/computer/med_data/laptop{
+/obj/machinery/computer/records/medical/laptop{
 	dir = 1
 	},
 /obj/machinery/light/small/directional/west,
@@ -53927,7 +53947,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
 "taj" = (
-/obj/machinery/computer/secure_data,
+/obj/machinery/computer/records/security,
 /obj/machinery/newscaster/directional/north,
 /obj/effect/turf_decal/tile/red/half/contrasted{
 	dir = 1
@@ -58821,7 +58841,7 @@
 /area/station/maintenance/solars/starboard/aft)
 "uIl" = (
 /obj/machinery/airalarm/directional/east,
-/obj/machinery/computer/secure_data{
+/obj/machinery/computer/records/security{
 	dir = 8
 	},
 /turf/open/floor/carpet,
@@ -59238,7 +59258,7 @@
 /area/station/maintenance/port/fore)
 "uPq" = (
 /obj/structure/cable,
-/obj/machinery/computer/secure_data{
+/obj/machinery/computer/records/security{
 	dir = 8
 	},
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
@@ -59377,7 +59397,7 @@
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
 "uSI" = (
-/obj/machinery/computer/secure_data{
+/obj/machinery/computer/records/security{
 	dir = 8
 	},
 /obj/machinery/firealarm/directional/east,
@@ -65342,7 +65362,7 @@
 /turf/closed/wall,
 /area/station/hallway/secondary/service)
 "wYH" = (
-/obj/machinery/computer/secure_data,
+/obj/machinery/computer/records/security,
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/red/half/contrasted{
 	dir = 1
@@ -65912,7 +65932,7 @@
 /area/station/science/ordnance/freezerchamber)
 "xjx" = (
 /obj/item/radio/intercom/directional/west,
-/obj/machinery/computer/secure_data{
+/obj/machinery/computer/records/security{
 	dir = 4
 	},
 /obj/machinery/button/door/directional/west{
@@ -66856,7 +66876,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/aft)
 "xAe" = (
-/obj/machinery/computer/secure_data{
+/obj/machinery/computer/records/security{
 	dir = 1
 	},
 /turf/open/floor/wood,

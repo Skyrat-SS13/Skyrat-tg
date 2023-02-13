@@ -1711,7 +1711,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/department/crew_quarters/bar)
 "avk" = (
-/obj/machinery/computer/secure_data,
+/obj/machinery/computer/records/security,
 /obj/effect/turf_decal/tile/neutral/anticorner/contrasted{
 	dir = 4
 	},
@@ -2175,6 +2175,21 @@
 	department = "Security";
 	departmentType = 5;
 	name = "Security Requests Console"
+	},
+/obj/machinery/light/directional/south,
+/obj/effect/turf_decal/bot,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/machinery/computer/records/security{
+	dir = 1
+	},
+/obj/machinery/requests_console/directional/south{
+	department = "Security";
+	name = "Security Requests Console";
+	assistance_requestable = 1;
+	anon_tips_receiver = 1
 	},
 /obj/machinery/light/directional/south,
 /obj/effect/turf_decal/bot,
@@ -3370,7 +3385,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/aft)
 "aVm" = (
-/obj/machinery/computer/secure_data{
+/obj/machinery/computer/records/security{
 	dir = 4
 	},
 /obj/effect/turf_decal/bot,
@@ -9447,7 +9462,7 @@
 /area/station/medical/chemistry)
 "cTd" = (
 /obj/structure/table,
-/obj/machinery/computer/med_data/laptop,
+/obj/machinery/computer/records/medical/laptop,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
@@ -12058,7 +12073,7 @@
 /turf/open/floor/iron/showroomfloor,
 /area/station/commons/toilet/restrooms)
 "dDv" = (
-/obj/machinery/computer/secure_data{
+/obj/machinery/computer/records/security{
 	dir = 1
 	},
 /obj/structure/cable,
@@ -23174,7 +23189,7 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "gGG" = (
-/obj/machinery/computer/secure_data,
+/obj/machinery/computer/records/security,
 /obj/machinery/light_switch/directional/east{
 	pixel_y = -6
 	},
@@ -23593,7 +23608,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/fore)
 "gNj" = (
-/obj/machinery/computer/med_data{
+/obj/machinery/computer/records/medical{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/blue,
@@ -25942,7 +25957,7 @@
 /turf/closed/mineral/random/labormineral,
 /area/space/nearstation)
 "htl" = (
-/obj/machinery/computer/secure_data{
+/obj/machinery/computer/records/security{
 	dir = 8
 	},
 /obj/effect/turf_decal/bot,
@@ -35149,7 +35164,7 @@
 /area/station/medical/exam_room)
 "jTP" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/computer/secure_data{
+/obj/machinery/computer/records/security{
 	dir = 4
 	},
 /obj/effect/turf_decal/bot,
@@ -37774,7 +37789,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/machinery/computer/med_data/laptop,
+/obj/machinery/computer/records/medical/laptop,
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/maintenance/fore)
@@ -44335,7 +44350,7 @@
 /turf/closed/wall,
 /area/station/science/genetics)
 "mDm" = (
-/obj/machinery/computer/med_data{
+/obj/machinery/computer/records/medical{
 	dir = 4
 	},
 /obj/effect/turf_decal/bot,
@@ -44651,7 +44666,7 @@
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit/departure_lounge)
 "mHA" = (
-/obj/machinery/computer/med_data{
+/obj/machinery/computer/records/medical{
 	dir = 8
 	},
 /obj/effect/turf_decal/bot,
@@ -57983,7 +57998,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/bot,
-/obj/machinery/computer/secure_data{
+/obj/machinery/computer/records/security{
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
@@ -59497,7 +59512,7 @@
 /turf/closed/wall/r_wall/rust,
 /area/station/tcommsat/server)
 "qZy" = (
-/obj/machinery/computer/secure_data{
+/obj/machinery/computer/records/security{
 	dir = 1
 	},
 /obj/effect/turf_decal/bot,
@@ -66954,7 +66969,7 @@
 /area/station/hallway/primary/aft)
 "tdy" = (
 /obj/structure/table/glass,
-/obj/machinery/computer/med_data/laptop,
+/obj/machinery/computer/records/medical/laptop,
 /obj/machinery/vending/wallmed/directional/east,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -71848,7 +71863,7 @@
 /area/station/engineering/supermatter/room)
 "uvB" = (
 /obj/structure/table,
-/obj/machinery/computer/med_data/laptop,
+/obj/machinery/computer/records/medical/laptop,
 /obj/effect/turf_decal/tile/neutral/anticorner/contrasted{
 	dir = 8
 	},
@@ -72951,7 +72966,7 @@
 /area/station/security/brig)
 "uMV" = (
 /obj/structure/table/wood,
-/obj/machinery/computer/med_data/laptop,
+/obj/machinery/computer/records/medical/laptop,
 /turf/open/floor/carpet/red,
 /area/station/command/heads_quarters/hos)
 "uNi" = (
@@ -74014,7 +74029,7 @@
 /turf/open/floor/wood/parquet,
 /area/station/service/chapel)
 "vdE" = (
-/obj/machinery/computer/med_data,
+/obj/machinery/computer/records/medical,
 /obj/machinery/newscaster/directional/north,
 /turf/open/floor/wood,
 /area/station/security/detectives_office)
@@ -77510,7 +77525,7 @@
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "vXQ" = (
-/obj/machinery/computer/secure_data,
+/obj/machinery/computer/records/security,
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/effect/turf_decal/tile/neutral/half/contrasted,
@@ -78978,7 +78993,7 @@
 /area/station/maintenance/department/security)
 "wrd" = (
 /obj/structure/table/wood,
-/obj/machinery/computer/med_data/laptop{
+/obj/machinery/computer/records/medical/laptop{
 	dir = 1;
 	pixel_y = 4
 	},
@@ -80100,7 +80115,7 @@
 	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/light/directional/west,
-/obj/machinery/computer/secure_data{
+/obj/machinery/computer/records/security{
 	dir = 4
 	},
 /obj/machinery/status_display/evac/directional/west,
@@ -81119,7 +81134,7 @@
 /turf/open/floor/iron/dark,
 /area/station/science/research)
 "wWJ" = (
-/obj/machinery/computer/secure_data{
+/obj/machinery/computer/records/security{
 	dir = 8
 	},
 /obj/effect/turf_decal/bot,
@@ -83037,7 +83052,7 @@
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "xzv" = (
-/obj/machinery/computer/secure_data{
+/obj/machinery/computer/records/security{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/red{
@@ -84498,7 +84513,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral,
-/obj/machinery/computer/secure_data{
+/obj/machinery/computer/records/security{
 	dir = 4
 	},
 /obj/machinery/newscaster/directional/west,
