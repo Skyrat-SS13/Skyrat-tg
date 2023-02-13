@@ -160,7 +160,7 @@
 /obj/effect/mob_spawn/ghost_role/attack_ghost(mob/user)
 	if(!SSticker.HasRoundStarted() || !loc)
 		return
-<<<<<<< HEAD
+
 	// SKYRAT EDIT ADDITION
 	if(is_banned_from(user.ckey, BAN_GHOST_ROLE_SPAWNER)) // Ghost role bans
 		to_chat(user, "Error, you are banned from playing ghost roles!")
@@ -169,11 +169,8 @@
 		var/incorrect_species = tgui_alert(user, "Current species preference incompatible, proceed with random appearance?", "Incompatible Species", list("Yes", "No"))
 		if(incorrect_species != "Yes")
 			return
-
 	// SKYRAT EDIT END
-=======
 
->>>>>>> 8a1cc5ccca9 (Fixes ghost roles trying to spawn people when there /should/ be zero uses left (#73224))
 	if(prompt_ghost)
 		var/ghost_role = tgui_alert(usr, "Become [prompt_name]? (Warning, You can no longer be revived!)", buttons = list("Yes", "No"), timeout = 10 SECONDS)
 		if(ghost_role != "Yes" || !loc || QDELETED(user))
