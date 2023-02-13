@@ -2,6 +2,7 @@
 
 import os
 import sys
+# Librosa is used to read audio stuff cause it doesn't load the audio file into RAM. Very important for A: performance, B: not being jank as fuck.
 import librosa
 import shutil
 
@@ -130,7 +131,7 @@ def process_audio(voice, commands, extra_content: dict = None):
         track_index = 2
         filename = file[:-4]
         extra_effects = check_dict(filename, extra_content)
-        in_file = folder_path + "/" + filename
+        in_file = folder_path + filename
         os.makedirs(output_dir, exist_ok=True)
         do_command('SelectAll:')
         do_command('RemoveTracks:')

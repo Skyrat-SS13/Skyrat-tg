@@ -14,11 +14,10 @@ import sys
 print("This tool requires OpenTTS tag zh-2.1. Other versions may work, but it was made with this version in mind. Source and docs: https://github.com/synesthesiam/opentts Docker Image: https://hub.docker.com/r/synesthesiam/opentts")
 print("If on windows, docker desktop is an unstable piece of shite, and you might have to download snapshot builds for the fucking thing to work at all. Hope your github crawling skills are up to scratch.")
 
-voices = {
-    "larynx:cmu_bdl-glow_tts": "male",
-    "coqui-tts:en_vctk": "female",
-    "larynx:mary_ann-glow_tts": "female"
-}  # The voices as seen in the OpenTTS UI and documentation. Attach a gender as a fallback option.
+with open("voice_config.json", "r") as config_file:
+    config = json.loads(config_file.read())
+
+voices = config["voices_to_use"]  # The voices as seen in the OpenTTS UI and documentation. Attach a gender as a fallback option.
 
 file = open("lines", "r")
 line = file.readline()
@@ -53,17 +52,12 @@ while line:
     print("Saved " + line[0])
     line = file.readline()
 
-commands = open("voice_config.json", "r")
-commands_string = commands.read()  # Done like this to avoid holding a write lock when we really don't need it.
-commands.close()
-commands = json.loads(commands_string)
-
 for voice in voices:
-    if commands.__contains__(voice):
-        commands_to_use = commands[voice]
-    elif voices[voice] is not "male":
-        commands_to_use = commands["<default_" + voices[voice] + ">"]
-    else:
-        continue
+    commands_to_use = config["<default_" + voices[voice] + ">"]
+    if config.__contains__(voice):
+        # If there's a set of custom commands for a voice, set them. If you don't want a voice to use a default setting, set the values of each step to be empty arrays.
+        voice_specific_commands = config[voice]
+        for key in voice_specific_commands:
+            commands_to_use[key] = voice_specific_commands[key]
 
     audacity_pipeline.process_audio(voice.replace(":", "_"), commands_to_use, json_for_effects)

@@ -1,4 +1,9 @@
 {
+  "voices_to_use": {
+	"larynx:cmu_bdl-glow_tts": "male",
+	"coqui-tts:en_vctk": "female",
+	"larynx:mary_ann-glow_tts": "female"
+  },
   "<default_female>": {
 	"Tempo": [
 	  "ChangeTempo: Percentage=\"10\" SBSMS=\"0\""
@@ -22,6 +27,10 @@
 	],
 	"Reverb": [
 	  "Reverb: Delay=\"12\" DryGain=\"-1\" HfDamping=\"41\" Reverberance=\"70\" RoomSize=\"100\" StereoWidth=\"100\" ToneHigh=\"100\" ToneLow=\"60\" WetGain=\"-8\" WetOnly=\"0\""
+	]
+  },
+  "coqui-tts:en_vctk": {
+	"Tempo": [
 	]
   }
 }
