@@ -770,7 +770,7 @@
 	desc = "Contains a single Hivemind NIFSoft uploader disk."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(
-		/obj/item/disk/nifsoft_uploader/summoner,
+		/obj/item/disk/nifsoft_uploader/hivemind,
 	)
 
 /datum/supply_pack/goody/summoner_nifsoft
