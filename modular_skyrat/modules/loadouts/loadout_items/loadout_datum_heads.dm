@@ -64,6 +64,10 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Greyscale Beret"
 	item_path = /obj/item/clothing/head/beret
 
+/datum/loadout_item/head/greyscale_beret/badge
+	name = "Greyscale Beret with Badge"
+	item_path = /obj/item/clothing/head/beret/badge
+
 /*
 *	CAPS
 */
@@ -667,3 +671,8 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/donator/enclaveo
 	name = "Enclave Cap - Officer"
 	item_path = /obj/item/clothing/head/soft/enclaveo
+
+// Legacy unpaintable cowboy hat because it fits a character better
+/datum/loadout_item/head/cowboyhat_legacy
+	name = "Cowboy Hat (Legacy)"
+	item_path = /obj/item/clothing/head/costume/cowboyhat_old
