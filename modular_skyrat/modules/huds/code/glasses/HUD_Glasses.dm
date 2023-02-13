@@ -28,12 +28,11 @@
 	icon = 'modular_skyrat/modules/huds/icons/huds.dmi'
 	icon_state = "glasses_sciencehud"
 	worn_icon = 'modular_skyrat/modules/huds/icons/hudeyes.dmi'
-	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
 	flash_protect = FLASH_PROTECTION_NONE
 	glass_colour_type = /datum/client_colour/glass_colour/purple
 	resistance_flags = ACID_PROOF
 	armor_type = /datum/armor/prescription_science
-	clothing_traits = list(TRAIT_REAGENT_SCANNER, TRAIT_RESEARCH_SCANNER)
+	clothing_traits = list(TRAIT_REAGENT_SCANNER, TRAIT_RESEARCH_SCANNER, TRAIT_NEARSIGHTED_CORRECTED)
 
 /datum/armor/prescription_science
 	fire = 80
