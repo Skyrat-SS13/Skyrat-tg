@@ -59,9 +59,9 @@
 	var/obj/structure/spider/eggcluster/egg
 	/// The types of spiders that the spawner can produce
 	var/list/potentialspawns = list(
-		/mob/living/simple_animal/hostile/giant_spider,
-		/mob/living/simple_animal/hostile/giant_spider/hunter,
-		/mob/living/simple_animal/hostile/giant_spider/nurse,
+		/mob/living/basic/giant_spider,
+		/mob/living/basic/giant_spider/hunter,
+		/mob/living/basic/giant_spider/nurse,
 	)
 
 /obj/effect/mob_spawn/ghost_role/spider/Initialize(mapload)
@@ -102,12 +102,17 @@
 			to_chat(user, span_warning("\The [src] is not ready to hatch yet!"))
 		return FALSE
 
+<<<<<<< HEAD
 /obj/effect/mob_spawn/ghost_role/spider/equip(mob/living/simple_animal/hostile/giant_spider/spawned_spider)
 	if(spawned_spider)
 		spawned_spider.directive = directive
 
 /obj/effect/mob_spawn/ghost_role/spider/special(mob/user)
 	. = ..()
+=======
+/obj/effect/mob_spawn/ghost_role/spider/special(mob/living/basic/giant_spider/spawned_mob, mob/mob_possessor)
+	spawned_mob.directive = directive
+>>>>>>> cbbf7b36130 (Basic Mob Spiders III: Sgt. Araneus is no longer a bat (#73350))
 	egg.spawner = null
 	QDEL_NULL(egg)
 
@@ -117,9 +122,9 @@
 	you_are_text = "You are an enriched spider."
 	cluster_type = /obj/structure/spider/eggcluster/enriched
 	potentialspawns = list(
-		/mob/living/simple_animal/hostile/giant_spider/tarantula,
-		/mob/living/simple_animal/hostile/giant_spider/viper,
-		/mob/living/simple_animal/hostile/giant_spider/midwife,
+		/mob/living/basic/giant_spider/tarantula,
+		/mob/living/basic/giant_spider/viper,
+		/mob/living/basic/giant_spider/midwife,
 	)
 
 /obj/effect/mob_spawn/ghost_role/spider/bloody
@@ -130,7 +135,7 @@
 	directive = "You are the spawn of a vicious changeling. You have no ambitions except to wreak havoc and ensure your own survival. You are aggressive to all living beings outside of your species, including changelings."
 	cluster_type = /obj/structure/spider/eggcluster/bloody
 	potentialspawns = list(
-		/mob/living/simple_animal/hostile/giant_spider/hunter/flesh,
+		/mob/living/basic/giant_spider/hunter/flesh,
 	)
 
 /obj/effect/mob_spawn/ghost_role/spider/midwife
@@ -140,7 +145,7 @@
 	directive = "Ensure the survival of the spider species and overtake whatever structure you find yourself in."
 	cluster_type = /obj/structure/spider/eggcluster/midwife
 	potentialspawns = list(
-		/mob/living/simple_animal/hostile/giant_spider/midwife,
+		/mob/living/basic/giant_spider/midwife,
 	)
 
 /**
@@ -156,7 +161,7 @@
 	var/list/spider_list = list()
 	var/list/display_spiders = list()
 	for(var/choice in potentialspawns)
-		var/mob/living/simple_animal/hostile/giant_spider/spider = choice
+		var/mob/living/basic/giant_spider/spider = choice
 		spider_list[initial(spider.name)] = choice
 
 		var/datum/radial_menu_choice/option = new
