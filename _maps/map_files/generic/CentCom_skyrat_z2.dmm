@@ -3056,7 +3056,7 @@
 /area/centcom/holding/cafedorms)
 "aMI" = (
 /obj/machinery/vending/hydronutrients{
-	products = list(/obj/item/reagent_containers/cup/bottle/nutrient/ez = 50, /obj/item/reagent_containers/cup/bottle/nutrient/l4z = 20, /obj/item/reagent_containers/cup/bottle/nutrient/rh = 10, /obj/item/reagent_containers/spray/pestspray = 30, /obj/item/reagent_containers/syringe = 5, /obj/item/storage/bag/plants = 30, /obj/item/cultivator = 10, /obj/item/shovel/spade = 10, /obj/item/plant_analyzer = 10)
+	products = list(/obj/item/reagent_containers/cup/bottle/nutrient/ez=50,/obj/item/reagent_containers/cup/bottle/nutrient/l4z=20,/obj/item/reagent_containers/cup/bottle/nutrient/rh=10,/obj/item/reagent_containers/spray/pestspray=30,/obj/item/reagent_containers/syringe=5,/obj/item/storage/bag/plants=30,/obj/item/cultivator=10,/obj/item/shovel/spade=10,/obj/item/plant_analyzer=10)
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "darkfull"
@@ -3189,13 +3189,13 @@
 /obj/item/storage/box/ingredients/american,
 /obj/item/storage/box/ingredients/exotic,
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
@@ -6786,6 +6786,23 @@
 	},
 /turf/open/floor/iron/white,
 /area/centcom/holding/cafe)
+"gOA" = (
+/obj/structure/sign/directions/arrival{
+	dir = 1;
+	pixel_y = 10
+	},
+/obj/structure/sign/directions/evac{
+	pixel_y = 4
+	},
+/obj/structure/sign/directions/dorms{
+	pixel_y = -2
+	},
+/obj/structure/sign/directions/cryo{
+	pixel_y = -8;
+	dir = 8
+	},
+/turf/closed/indestructible/riveted,
+/area/centcom/interlink)
 "gPj" = (
 /obj/effect/turf_decal/siding{
 	color = "#2e2e2e"
@@ -6859,12 +6876,12 @@
 /obj/item/reagent_containers/condiment/soysauce,
 /obj/item/reagent_containers/condiment/sugar,
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
+	list_reagents = list(/datum/reagent/consumable/rice=90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
+	list_reagents = list(/datum/reagent/consumable/rice=90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
@@ -6958,13 +6975,18 @@
 /area/centcom/holding/cafepark)
 "hoS" = (
 /obj/structure/sign/directions/arrival{
-	dir = 1
-	},
-/obj/structure/sign/directions/dorms{
-	pixel_y = 8
+	dir = 1;
+	pixel_y = 10
 	},
 /obj/structure/sign/directions/evac{
-	pixel_y = -8
+	pixel_y = 4
+	},
+/obj/structure/sign/directions/dorms{
+	pixel_y = -2
+	},
+/obj/structure/sign/directions/cryo{
+	pixel_y = -8;
+	dir = 1
 	},
 /turf/closed/indestructible/riveted,
 /area/centcom/interlink)
@@ -7922,14 +7944,19 @@
 /area/centcom/interlink)
 "jHw" = (
 /obj/structure/sign/directions/arrival{
-	dir = 1
+	dir = 1;
+	pixel_y = 10
 	},
 /obj/structure/sign/directions/evac{
-	pixel_y = -8
+	pixel_y = 4
 	},
 /obj/structure/sign/directions/dorms{
-	pixel_y = 8;
+	pixel_y = -2;
 	dir = 4
+	},
+/obj/structure/sign/directions/cryo{
+	pixel_y = -8;
+	dir = 1
 	},
 /turf/closed/indestructible/riveted,
 /area/centcom/interlink)
@@ -8057,6 +8084,25 @@
 "jXO" = (
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark,
+/area/centcom/interlink)
+"jYd" = (
+/obj/structure/sign/directions/arrival{
+	dir = 8;
+	pixel_y = 10
+	},
+/obj/structure/sign/directions/evac{
+	pixel_y = 4;
+	dir = 8
+	},
+/obj/structure/sign/directions/dorms{
+	pixel_y = -2;
+	dir = 8
+	},
+/obj/structure/sign/directions/cryo{
+	pixel_y = -8;
+	dir = 8
+	},
+/turf/closed/indestructible/riveted,
 /area/centcom/interlink)
 "jZb" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -9686,24 +9732,24 @@
 /obj/item/storage/box/ingredients/american,
 /obj/item/storage/box/ingredients/exotic,
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
+	list_reagents = list(/datum/reagent/consumable/rice=90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
+	list_reagents = list(/datum/reagent/consumable/rice=90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
@@ -11257,17 +11303,11 @@
 /turf/open/floor/sepia,
 /area/centcom/holding/cafedorms)
 "rYy" = (
-/obj/structure/sign/directions/evac{
-	pixel_y = -8
-	},
-/obj/structure/sign/directions/arrival{
+/obj/effect/turf_decal/trimline/dark_green/filled/line{
 	dir = 1
 	},
-/obj/structure/sign/directions/dorms{
-	pixel_y = 8;
-	dir = 4
-	},
-/turf/closed/indestructible/riveted,
+/obj/structure/sign/poster/random/directional/north,
+/turf/open/floor/iron,
 /area/centcom/interlink)
 "rYR" = (
 /obj/effect/turf_decal/siding/dark{
@@ -11991,6 +12031,21 @@
 /obj/structure/fans/tiny/invisible,
 /turf/open/floor/iron/showroomfloor,
 /area/centcom/holding/cafe)
+"tVo" = (
+/obj/structure/sign/directions/arrival{
+	dir = 8;
+	pixel_y = 10
+	},
+/obj/structure/sign/directions/evac{
+	pixel_y = 4;
+	dir = 8
+	},
+/obj/structure/sign/directions/cryo{
+	pixel_y = -2;
+	dir = 8
+	},
+/turf/closed/indestructible/riveted,
+/area/centcom/interlink)
 "tVB" = (
 /obj/machinery/vending/boozeomat{
 	default_price = 0;
@@ -12795,6 +12850,25 @@
 /obj/effect/turf_decal/siding/white,
 /obj/structure/chair/sofa/bench,
 /turf/open/floor/iron/dark,
+/area/centcom/interlink)
+"vVK" = (
+/obj/structure/sign/directions/arrival{
+	dir = 4;
+	pixel_y = 10
+	},
+/obj/structure/sign/directions/evac{
+	pixel_y = 4;
+	dir = 4
+	},
+/obj/structure/sign/directions/dorms{
+	pixel_y = -2;
+	dir = 4
+	},
+/obj/structure/sign/directions/cryo{
+	pixel_y = -8;
+	dir = 1
+	},
+/turf/closed/indestructible/riveted,
 /area/centcom/interlink)
 "vWy" = (
 /obj/effect/turf_decal/siding/white{
@@ -22293,8 +22367,8 @@ tvw
 kQs
 tvw
 tvw
-tvw
-vzH
+vVK
+iMY
 ykt
 dCa
 hIH
@@ -24850,7 +24924,7 @@ tvw
 lPi
 hAL
 lPi
-tvw
+gOA
 tvw
 tvw
 pNJ
@@ -24866,7 +24940,7 @@ lPi
 jHw
 iMY
 nJp
-rYy
+jHw
 tvw
 tvw
 tvw
@@ -26148,7 +26222,7 @@ tvw
 lPi
 lPi
 tvw
-iMY
+rYy
 hvQ
 hvQ
 aBm
@@ -27950,7 +28024,7 @@ tvw
 jHw
 iMY
 nJp
-rYy
+jHw
 tvw
 dHP
 rGI
@@ -30763,7 +30837,7 @@ hTh
 alx
 aDg
 tvw
-tvw
+jYd
 ukp
 lrp
 eYX
@@ -34115,7 +34189,7 @@ tvw
 tvw
 tvw
 tvw
-tvw
+tVo
 ukp
 nJp
 tvw
