@@ -172,4 +172,3 @@
 	if(chosen == special_run_option)
 		chosen = event.get_overflowing_reagent(dangerous = prob(event.danger_chance))
 	event.forced_reagent_type = chosen
-  
