@@ -56,6 +56,7 @@
 //Organ defines for carbon mobs
 #define ORGAN_ORGANIC 1
 #define ORGAN_ROBOTIC 2
+#define ORGAN_MINERAL 3 // Used for the plasmaman liver
 
 #define DEFAULT_BODYPART_ICON_ORGANIC 'icons/mob/species/human/bodyparts_greyscale.dmi'
 #define DEFAULT_BODYPART_ICON_ROBOTIC 'icons/mob/augmentation/augments.dmi'
@@ -794,3 +795,6 @@
 /// Checking flags for [/mob/proc/can_read()]
 #define READING_CHECK_LITERACY (1<<0)
 #define READING_CHECK_LIGHT (1<<1)
+
+/// In dynamic human icon gen we don't replace the held item.
+#define NO_REPLACE 0

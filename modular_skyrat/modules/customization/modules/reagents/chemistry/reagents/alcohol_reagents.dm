@@ -3,6 +3,11 @@
 /datum/reagent/consumable/ethanol/whiskey
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC //let's not force the detective to change his alcohol brand
 
+
+/datum/reagent/consumable/ethanol/bloody_mary
+	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING
+
+
 // ROBOT ALCOHOL PAST THIS POINT
 // WOOO!
 
@@ -587,6 +592,50 @@
 		quality = DRINK_GOOD
 	return ..()
 
+
+/datum/reagent/consumable/ethanol/bloodshot
+	name = "Bloodshot"
+	description = "The history of the 'Bloodshot' is based in a mix of flavor-neutral chems devised to help deliver nutrients to a Hemophage's tumorous organs. Due to the expense of the real thing and the clinical nature of it, this liquor has been designed as a 'improvised' alternative; though, still tasting like a hangover cure. It smells like iron, giving a clue to the key ingredient."
+	color = "#a30000"
+	boozepwr = 20 // The only booze in it is Bloody Mary
+	taste_description = "blood filled to the brim with nutrients of all kinds"
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING
+
+
+/datum/glass_style/drinking_glass/bloodshot
+	required_drink_type = /datum/reagent/consumable/ethanol/bloodshot
+	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	icon_state = "bloodshot"
+	name = "glass of bloodshot"
+	desc = "The history of the 'Bloodshot' is based in a mix of flavor-neutral chems devised to help deliver nutrients to a Hemophage's tumorous organs. Due to the expense of the real thing and the clinical nature of it, this liquor has been designed as a 'improvised' alternative; though, still tasting like a hangover cure. It smells like iron, giving a clue to the key ingredient."
+
+
+#define BLOODSHOT_DISGUST 25
+
+/datum/reagent/consumable/ethanol/bloodshot/expose_mob(mob/living/exposed_mob, methods, reac_volume)
+	if(ishemophage(exposed_mob))
+		quality = RACE_DRINK
+
+	else if(exposed_mob.blood_volume < exposed_mob.blood_volume_normal)
+		quality = DRINK_GOOD
+
+	if(!quality) // Basically, you don't have a reason to want to have this in your system, it doesn't taste good to you!
+		exposed_mob.adjust_disgust(BLOODSHOT_DISGUST)
+
+	return ..()
+
+#undef BLOODSHOT_DISGUST
+
+/datum/reagent/consumable/ethanol/bloodshot/on_mob_life(mob/living/carbon/drinker, delta_time, times_fired)
+	if(drinker.blood_volume < drinker.blood_volume_normal)
+		drinker.blood_volume = max(drinker.blood_volume, min(drinker.blood_volume + (3 * REM * delta_time), BLOOD_VOLUME_NORMAL)) //Bloodshot quickly restores blood loss.
+
+	return ..()
+
+
+// RACIAL DRINKS END
+
 /datum/reagent/consumable/ethanol/appletini
 	name = "Appletini"
 	color = "#9bd1a9" //(155, 209, 169)
@@ -616,7 +665,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	icon_state = "cityofsin"
 	name = "glass of city of sin"
-	desc = "Looking at it makes you recall every mistake you’ve made."
+	desc = "Looking at it makes you recall every mistake you've made."
 
 /datum/reagent/consumable/ethanol/shakiri
 	name = "Shakiri"

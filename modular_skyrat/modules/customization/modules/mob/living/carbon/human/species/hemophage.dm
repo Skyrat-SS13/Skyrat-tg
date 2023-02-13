@@ -48,6 +48,13 @@
 /// Just a conversion factor that ensures there's no weird floating point errors when blood is draining.
 #define FLOATING_POINT_ERROR_AVOIDING_FACTOR 1000
 
+/// The minimum ratio of reagents that need to have the `REAGENT_BLOOD_REGENERATING` chemical_flags for the Hemophage not to violently vomit upon consumption.
+#define MINIMUM_BLOOD_REGENING_REAGENT_RATIO 0.75
+/// How much disgust we're at after eating/drinking something the tumor doesn't like.
+#define TUMOR_DISLIKED_FOOD_DISGUST DISGUST_LEVEL_GROSS + 15
+/// The ratio of reagents that get purged while a Hemophage vomits from trying to eat/drink something that their tumor doesn't like.
+#define HEMOPHAGE_VOMIT_PURGE_RATIO 0.95
+
 
 /datum/species/hemophage
 	name = "Hemophage"
@@ -79,6 +86,7 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	examine_limb_id = SPECIES_HUMAN
 	skinned_type = /obj/item/stack/sheet/animalhide/human
+	liked_food = BLOODY
 	/// Current multiplier for how fast their blood drains on spec_life(). Higher values mean it goes down faster.
 	var/bloodloss_speed_multiplier = 1
 	/// Current multiplier for how much blood they spend healing themselves for every point of damage healed.
@@ -397,12 +405,70 @@
 	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
 
 
-// This one will eventually have some mechanics tied to it, but for now it's just going to be black.
+/obj/item/organ/internal/liver/hemophage/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
+	. = ..()
+
+	RegisterSignal(reciever, COMSIG_GLASS_DRANK, PROC_REF(handle_drink))
+
+
+/obj/item/organ/internal/liver/hemophage/Remove(mob/living/carbon/organ_owner, special)
+	. = ..()
+
+	UnregisterSignal(organ_owner, COMSIG_GLASS_DRANK)
+
+
+/**
+ * Handles reacting to drinks based on their content, to see if the tumor likes what's in it or not.
+ */
+/obj/item/organ/internal/liver/hemophage/proc/handle_drink(mob/living/target_mob, obj/item/reagent_containers/cup/container, mob/living/user)
+	SIGNAL_HANDLER
+
+	if(HAS_TRAIT(owner, TRAIT_AGEUSIA)) // They don't taste anything, their body shouldn't react strongly to the taste of that stuff.
+		return
+
+	if(container.reagents.has_chemical_flag_skyrat(REAGENT_BLOOD_REGENERATING, container.reagents.total_volume * MINIMUM_BLOOD_REGENING_REAGENT_RATIO)) // At least 75% of the content of the cup needs to be something that's counting as blood-regenerating for the tumor not to freak out.
+		return
+
+	var/mob/living/carbon/body = owner
+	ASSERT(istype(body))
+
+	owner.set_disgust(max(owner.disgust, TUMOR_DISLIKED_FOOD_DISGUST))
+
+	to_chat(owner, span_warning("That tasted awful..."))
+
+	// We don't lose nutrition because we don't even use nutrition as Hemopahges. It WILL however purge nearly all of what's in their stomach.
+	body.vomit(lost_nutrition = 0, stun = FALSE, distance = 1, force = TRUE, purge_ratio = HEMOPHAGE_VOMIT_PURGE_RATIO)
+
+
 /obj/item/organ/internal/stomach/hemophage
 	name = "corrupted stomach"
 	desc = GENERIC_CORRUPTED_ORGAN_DESC
 	icon = 'modular_skyrat/modules/organs/icons/hemophage_organs.dmi'
 	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
+
+
+/obj/item/organ/internal/stomach/hemophage/after_eat(atom/edible)
+	if(!istype(edible, /obj/item/food))
+		return
+
+	var/obj/item/food/eaten = edible
+
+	if(BLOODY & eaten.foodtypes) // They're good if it's BLOODY food, they're less good if it isn't.
+		return
+
+	if(HAS_TRAIT(owner, TRAIT_AGEUSIA)) // They don't taste anything, their body shouldn't react strongly to the taste of that stuff.
+		return
+
+	var/mob/living/carbon/body = owner
+	ASSERT(istype(body))
+
+	owner.set_disgust(max(owner.disgust, TUMOR_DISLIKED_FOOD_DISGUST))
+
+	to_chat(owner, span_warning("That tasted awful..."))
+
+	// We don't lose nutrition because we don't even use nutrition as hemopahges. It WILL however purge nearly all of what's in their stomach.
+	body.vomit(lost_nutrition = 0, stun = FALSE, distance = 1, force = TRUE, purge_ratio = HEMOPHAGE_VOMIT_PURGE_RATIO)
+	return ..()
 
 
 /obj/item/organ/internal/tongue/hemophage
@@ -416,6 +482,13 @@
 /datum/action/cooldown/hemophage
 	cooldown_time = 3 SECONDS
 	button_icon_state = null
+
+
+/datum/action/cooldown/hemophage/New(Target)
+	. = ..()
+
+	if(target && isnull(button_icon_state))
+		AddComponent(/datum/component/action_item_overlay, target)
 
 
 /datum/action/cooldown/hemophage/drain_victim
@@ -688,3 +761,7 @@
 #undef ORGAN_TUMOR_CORRUPTED
 
 #undef FLOATING_POINT_ERROR_AVOIDING_FACTOR
+
+#undef HEMOPHAGE_VOMIT_PURGE_RATIO
+#undef TUMOR_DISLIKED_FOOD_DISGUST
+#undef MINIMUM_BLOOD_REGENING_REAGENT_RATIO

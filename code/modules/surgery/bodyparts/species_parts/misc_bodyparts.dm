@@ -1,30 +1,45 @@
 ///SNAIL
 /obj/item/bodypart/head/snail
+	biological_state = BIO_FLESH //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
 	limb_id = SPECIES_SNAIL
 	is_dimorphic = FALSE
 
 /obj/item/bodypart/chest/snail
+	biological_state = BIO_FLESH //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
 	limb_id = SPECIES_SNAIL
 	is_dimorphic = FALSE
 
 /obj/item/bodypart/arm/left/snail
+	biological_state = BIO_FLESH //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
 	limb_id = SPECIES_SNAIL
 	unarmed_attack_verb = "slap"
 	unarmed_attack_effect = ATTACK_EFFECT_DISARM
-	unarmed_damage_high = 0.5 //snails are soft and squishy
+	//unarmed_damage_high = 0.5
+	unarmed_damage_low = 1 //SKYRAT EDIT - Roundstart Snails - Lowest possible punch damage. if this is set to 0, punches will always miss.
+	unarmed_damage_high = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage. Original = unarmed_damage_high = 0.5
 
 /obj/item/bodypart/arm/right/snail
+	biological_state = BIO_FLESH //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
 	limb_id = SPECIES_SNAIL
 	unarmed_attack_verb = "slap"
 	unarmed_attack_effect = ATTACK_EFFECT_DISARM
-	unarmed_damage_high = 0.5
+	//unarmed_damage_high = 0.5
+	unarmed_damage_low = 1 //SKYRAT EDIT - Roundstart Snails - Lowest possible punch damage. if this is set to 0, punches will always miss.
+	unarmed_damage_high = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage. Original = unarmed_damage_high = 0.5
 
 /obj/item/bodypart/leg/left/snail
+	biological_state = BIO_FLESH //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
 	limb_id = SPECIES_SNAIL
-	unarmed_damage_high = 0.5
+	//unarmed_damage_high = 0.5
+	unarmed_damage_low = 1 //SKYRAT EDIT - Roundstart Snails - Lowest possible punch damage. if this is set to 0, punches will always miss.
+	unarmed_damage_high = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage. Original = unarmed_damage_high = 0.5
+
 /obj/item/bodypart/leg/right/snail
+	biological_state = BIO_FLESH //SKYRAT EDIT - Roundstart Snails - Now invertebrates!
 	limb_id = SPECIES_SNAIL
-	unarmed_damage_high = 0.5
+	//unarmed_damage_high = 0.5
+	unarmed_damage_low = 1 //SKYRAT EDIT - Roundstart Snails - Lowest possible punch damage. if this is set to 0, punches will always miss.
+	unarmed_damage_high = 5 //snails are soft and squishy //SKYRAT EDIT - Roundstart Snails - A Bit More Damage. Original = unarmed_damage_high = 0.5
 
 ///ABDUCTOR
 /obj/item/bodypart/head/abductor

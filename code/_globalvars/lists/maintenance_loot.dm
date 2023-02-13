@@ -251,6 +251,12 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/food/monkeycube = 1,
 		) = 8,
 
+	list(//computer disks
+		/obj/item/computer_disk/maintenance/scanner = 1,
+		/obj/item/computer_disk/maintenance/camera = 1,
+		/obj/item/computer_disk/maintenance/modsuit_control = 1,
+	) = 4,
+
 	list(//modsuits
 		/obj/effect/spawner/random/mod/maint = 3,
 		/obj/item/mod/construction/broken_core = 1,
@@ -338,6 +344,7 @@ GLOBAL_LIST_INIT(rarity_loot, list(//rare: really good items
 		/obj/item/disk/nuclear/fake = 1,
 		/obj/item/skillchip/brainwashing = 1,
 		/obj/item/tattoo_kit = 1,
+		/obj/item/folder/ancient_paperwork = 1,
 		) = 1,
 
 ))

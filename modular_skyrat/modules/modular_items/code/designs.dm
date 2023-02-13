@@ -9,7 +9,9 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/gold = 350)
 	build_path = /obj/item/clothing/glasses/hud/ar/aviator/health
-	category = list(RND_CATEGORY_EQUIPMENT)
+	category = list(
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_MEDICAL
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/security_hud_aviator
@@ -19,7 +21,9 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/gold = 350, /datum/material/silver = 200,)
 	build_path = /obj/item/clothing/glasses/hud/ar/aviator/security
-	category = list(RND_CATEGORY_EQUIPMENT)
+	category = list(
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_SECURITY
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/diagnostic_hud_aviator
@@ -29,7 +33,9 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/gold = 350)
 	build_path = /obj/item/clothing/glasses/hud/ar/aviator/diagnostic
-	category = list(RND_CATEGORY_EQUIPMENT)
+	category = list(
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_SCIENCE
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/meson_hud_aviator
@@ -39,7 +45,9 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/gold = 350)
 	build_path = /obj/item/clothing/glasses/hud/ar/aviator/meson
-	category = list(RND_CATEGORY_EQUIPMENT)
+	category = list(
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_ENGINEERING
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/science_hud_aviator
@@ -49,7 +57,9 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/gold = 350)
 	build_path = /obj/item/clothing/glasses/hud/ar/aviator/science
-	category = list(RND_CATEGORY_EQUIPMENT)
+	category = list(
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_SCIENCE
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/health_hud_projector
@@ -59,7 +69,9 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/silver = 350)
 	build_path = /obj/item/clothing/glasses/hud/ar/projector/health
-	category = list(RND_CATEGORY_EQUIPMENT)
+	category = list(
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_MEDICAL
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/security_hud_projector
@@ -69,7 +81,9 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/silver = 350, /datum/material/silver = 200,)
 	build_path = /obj/item/clothing/glasses/hud/ar/projector/security
-	category = list(RND_CATEGORY_EQUIPMENT)
+	category = list(
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_SECURITY
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/diagnostic_hud_projector
@@ -79,7 +93,9 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/silver = 350)
 	build_path = /obj/item/clothing/glasses/hud/ar/projector/diagnostic
-	category = list(RND_CATEGORY_EQUIPMENT)
+	category = list(
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_SCIENCE
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/meson_hud_projector
@@ -89,7 +105,9 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/silver = 350)
 	build_path = /obj/item/clothing/glasses/hud/ar/projector/meson
-	category = list(RND_CATEGORY_EQUIPMENT)
+	category = list(
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_ENGINEERING
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/science_hud_projector
@@ -99,5 +117,7 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/silver = 350)
 	build_path = /obj/item/clothing/glasses/hud/ar/projector/science
-	category = list(RND_CATEGORY_EQUIPMENT)
+	category = list(
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_SCIENCE
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE

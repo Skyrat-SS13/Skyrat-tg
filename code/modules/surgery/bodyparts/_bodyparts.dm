@@ -17,7 +17,7 @@
 	///The type of husk for building an iconstate
 	var/husk_type = "humanoid"
 	layer = BELOW_MOB_LAYER //so it isn't hidden behind objects when on the floor
-	grind_results = list(/datum/reagent/bone_dust = 10, /datum/reagent/liquidgibs = 5) // robotic bodyparts and chests/heads cannot be ground
+	grind_results = list(/datum/reagent/bone_dust = 10, /datum/reagent/consumable/liquidgibs = 5) // robotic bodyparts and chests/heads cannot be ground
 	/// The mob that "owns" this limb
 	/// DO NOT MODIFY DIRECTLY. Use set_owner()
 	var/mob/living/carbon/owner
@@ -125,9 +125,7 @@
 	var/heavy_burn_msg = "peeling away"
 
 	//Damage messages used by examine(). the desc that is most common accross all bodyparts gets shown
-
-	var/brute_damage_desc = DEFAULT_BRUTE_EXAMINE_TEXT
-	var/burn_damage_desc = DEFAULT_BURN_EXAMINE_TEXT
+	var/list/damage_examines = list(BRUTE = DEFAULT_BRUTE_EXAMINE_TEXT, BURN = DEFAULT_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
 
 	// Wounds related variables
 	/// The wounds currently afflicting this body part

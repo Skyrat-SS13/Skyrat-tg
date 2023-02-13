@@ -41,7 +41,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
 	icon_state = "glasses_thin"
 	inhand_icon_state = "glasses"
-	vision_correction = TRUE
+	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
 
 /obj/item/clothing/glasses/betterunshit
 	name = "modern glasses"
@@ -50,7 +50,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
 	icon_state = "glasses_alt"
 	inhand_icon_state = "glasses"
-	vision_correction = TRUE
+	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
 
 /obj/item/clothing/glasses/kim
 	name = "binoclard lenses"
@@ -59,7 +59,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
 	icon_state = "binoclard_lenses"
 	inhand_icon_state = "glasses"
-	vision_correction = TRUE
+	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
 
 /obj/item/clothing/glasses/trickblindfold/hamburg
 	name = "thief visor"
@@ -76,7 +76,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
 	icon_state = "biker"
 	inhand_icon_state = "welding-g"
-	vision_correction = TRUE
+	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED)
 
 // Like sunglasses, but without any protection
 /obj/item/clothing/glasses/fake_sunglasses

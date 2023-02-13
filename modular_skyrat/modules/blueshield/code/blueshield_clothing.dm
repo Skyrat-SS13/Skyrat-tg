@@ -43,7 +43,7 @@
 
 /datum/armor/helmet_plasmaman_blueshield
 	melee = 30
-	melee = 20
+	bullet = 20
 	laser = 20
 	energy = 20
 	bomb = 25
@@ -82,7 +82,7 @@
 
 /datum/armor/beret_blueshield
 	melee = 35
-	melee = 25
+	bullet = 25
 	laser = 25
 	energy = 15
 	bomb = 25
@@ -131,7 +131,7 @@
 
 /datum/armor/vest_blueshield
 	melee = 35
-	melee = 25
+	bullet = 25
 	laser = 25
 	energy = 25
 	bomb = 30
@@ -153,7 +153,7 @@
 
 /datum/armor/vest_blueshieldarmor
 	melee = 35
-	melee = 25
+	bullet = 25
 	laser = 25
 	energy = 25
 	bomb = 30
@@ -172,7 +172,7 @@
 
 /datum/armor/wintercoat_blueshield
 	melee = 35
-	melee = 25
+	bullet = 25
 	laser = 25
 	energy = 25
 	bomb = 30
@@ -192,7 +192,7 @@
 
 /datum/armor/winterhood_blueshield
 	melee = 35
-	melee = 25
+	bullet = 25
 	laser = 25
 	energy = 15
 	bomb = 25

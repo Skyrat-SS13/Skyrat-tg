@@ -16,7 +16,9 @@ export const Cargo = (props, context) => {
 };
 
 export const CargoContent = (props, context) => {
-  const { data } = useBackend(context);
+  /* SKYRAT EDIT BELOW - ADDS act */
+  const { act, data } = useBackend(context);
+  /* SKYRAT EDIT END */
   const [tab, setTab] = useSharedState(context, 'tab', 'catalog');
   const { cart = [], requests = [], requestonly } = data;
   const cart_length = cart.reduce((total, entry) => total + entry.amount, 0);
