@@ -24,6 +24,8 @@
 	else
 		equip(spawned_human)
 
+	post_transfer_prefs(spawned_human)
+
 	return spawned_human
 
 /// This edit would cause somewhat ugly diffs, so I'm just replacing it.
@@ -35,3 +37,6 @@
 	if(!is_pref_loaded)
 		equip(spawned_mob)
 	return spawned_mob
+
+// Anything that can potentially be overwritten by transferring prefs should go in this proc (e.g. granting languages)
+/obj/effect/mob_spawn/proc/post_transfer_prefs(mob/living/carbon/human/spawned_human)
