@@ -125,7 +125,9 @@
 		"turbine_part_rotor",
 		"turbine_part_stator",
 		"turret_control",
+		"universal_scanner",
 		"voice_analyzer",
+		"vox_gas_filter", //SKYRAT EDIT ADDITION
 		"watering_can",
 	)
 
@@ -315,6 +317,7 @@
 		"circuit_multitool",
 		"comp_access_checker",
 		"comp_arithmetic",
+		"comp_assoc_list_pick",
 		"comp_binary_convert",
 		"comp_clock",
 		"comp_comparison",
@@ -345,6 +348,7 @@
 		"comp_list_assoc_literal",
 		"comp_list_clear",
 		"comp_list_literal",
+		"comp_list_pick",
 		"comp_list_remove",
 		"comp_logic",
 		"comp_matscanner",
@@ -382,7 +386,7 @@
 		"component_printer",
 		"integrated_circuit",
 		"module_duplicator",
-		"usb_cable",
+		"usb_cable"
 	)
 
 /////////////////////////Biotech/////////////////////////
@@ -584,15 +588,18 @@
 		"adv_scanning",
 		"airalarm_electronics",
 		"airlock_board",
+		"anomaly_refinery",
 		"apc_control",
 		"atmos_control",
+		"atmos_thermal",
 		"atmosalerts",
 		"autolathe",
 		"cell_charger",
 		"crystallizer",
 		"electrolyzer",
-		"emergency_oxygen",
 		"emergency_oxygen_engi",
+		"emergency_oxygen",
+		"emitter",
 		"firealarm_electronics",
 		"firelock_board",
 		"grounding_rod",
@@ -614,14 +621,11 @@
 		"solarcontrol",
 		"stack_console",
 		"stack_machine",
+		"tank_compressor",
 		"tesla_coil",
 		"thermomachine",
 		"w-recycler",
-		"emitter",
 		"welding_goggles",
-		"anomaly_refinery",
-		"tank_compressor",
-		"atmos_thermal",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 12500)
 	discount_experiments = list(/datum/experiment/scanning/random/material/easy = 7500)
@@ -1158,6 +1162,7 @@
 		"mech_honker",
 		"mech_mousetrap_mortar",
 		"mech_punching_face",
+		"clown_firing_pin",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -1274,6 +1279,7 @@
 		"meson_hud_projector",
 		"science_hud_projector",
 		"permit_glasses",
+		"nifsoft_money_sense",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
@@ -1454,6 +1460,7 @@
 		"rangemod",
 		"superresonator",
 		"triggermod",
+		"mining_scanner",
 	)//e a r l y    g a  m e)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -1523,6 +1530,7 @@
 		"mechanicalpinches",
 		"rangedanalyzer",
 		"searingtool",
+		"adv_fire_extinguisher",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
 	discount_experiments = list(/datum/experiment/scanning/random/material/hard/one = 5000)
@@ -1539,6 +1547,7 @@
 		"seclite",
 		"zipties",
 		"inspector",
+		"nifsoft_remover", //SKYRAT EDIT ADDITION - NIFs
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 

@@ -89,3 +89,16 @@
 
 /datum/species/tajaran/get_species_lore()
 	return list(placeholder_lore)
+
+/datum/species/tajaran/prepare_human_for_preview(mob/living/carbon/human/cat)
+	var/main_color = "#AA9988"
+	var/second_color = "#AAAA99"
+
+	cat.dna.features["mcolor"] = main_color
+	cat.dna.features["mcolor2"] = second_color
+	cat.dna.features["mcolor3"] = second_color
+	cat.dna.species.mutant_bodyparts["snout"] = list(MUTANT_INDEX_NAME = "Mammal, Short", MUTANT_INDEX_COLOR_LIST = list(main_color, main_color, main_color))
+	cat.dna.species.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_COLOR_LIST = list(second_color, main_color, main_color))
+	cat.dna.species.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Cat, normal", MUTANT_INDEX_COLOR_LIST = list(main_color, second_color, second_color))
+	cat.update_mutant_bodyparts(TRUE)
+	cat.update_body(TRUE)
