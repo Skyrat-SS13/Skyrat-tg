@@ -20,6 +20,7 @@
 	restricted_species = list(/datum/species/human/felinid/primitive)
 	random_appearance = FALSE
 	uses = 9
+	deletes_on_zero_uses_left = FALSE
 
 /obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/Initialize(mapload)
 	. = ..()
