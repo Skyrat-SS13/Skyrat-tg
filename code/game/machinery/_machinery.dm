@@ -205,13 +205,10 @@
 		component_parts.Cut()
 		component_parts = null
 
-<<<<<<< HEAD
-=======
 	//delete any reference to cached stack parts created during display parts
 	QDEL_LIST_ASSOC_VAL(cached_stack_parts)
 	cached_stack_parts = null
 
->>>>>>> 19d918086c5 (RPD UI  ,bunch of pipe fixes & stack garbage collection (#72957))
 	QDEL_NULL(circuit)
 	unset_static_power()
 	return ..()
