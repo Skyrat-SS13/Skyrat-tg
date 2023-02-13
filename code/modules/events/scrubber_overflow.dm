@@ -6,6 +6,7 @@
 	min_players = 10
 	category = EVENT_CATEGORY_JANITORIAL
 	description = "The scrubbers release a tide of mostly harmless froth."
+	admin_setup = /datum/event_admin_setup/listed_options/scrubber_overflow
 
 /datum/round_event/scrubber_overflow
 	announce_when = 1
@@ -171,3 +172,4 @@
 	if(chosen == special_run_option)
 		chosen = event.get_overflowing_reagent(dangerous = prob(event.danger_chance))
 	event.forced_reagent_type = chosen
+  
