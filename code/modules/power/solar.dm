@@ -52,13 +52,7 @@
 	SET_PLANE(panel, PLANE_TO_TRUE(panel.plane), new_turf)
 
 /obj/machinery/power/solar/proc/add_panel_overlay(icon_state, z_offset)
-<<<<<<< HEAD
-	var/obj/effect/overlay/overlay = new()
-	overlay.vis_flags = VIS_INHERIT_ID | VIS_INHERIT_ICON
-	overlay.appearance_flags = TILE_BOUND
-=======
 	var/obj/effect/overlay/solar_panel/overlay = new(src)
->>>>>>> dba14c87f81 (Fixes solar tracker issues, and multiz emissives (#73288))
 	overlay.icon_state = icon_state
 	SET_PLANE_EXPLICIT(overlay, ABOVE_GAME_PLANE, src)
 	overlay.pixel_z = z_offset
