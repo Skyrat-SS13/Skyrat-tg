@@ -278,3 +278,7 @@
 	name = "Occupied Sleeper"
 	desc = "A closed, occupied sleeper, bloodied handprints are seen on the inside, along with an odd, redish blur. It seems sealed shut."
 	icon_state = "sleeper-o"
+
+/obj/structure/curtain/cloth/prison
+	name = "Prisoner Privacy Curtains"
+	color = "#ACD1E9"
