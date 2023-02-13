@@ -191,11 +191,12 @@
 
 	QDEL_LIST(the_eye.placed_images)
 
-	for(var/image/place_spots as anything in the_eye.placement_images)
+	for(var/V in the_eye.placement_images)
+		var/image/I = V
 		var/image/newI = image('icons/effects/alphacolors.dmi', the_eye.loc, "blue")
-		newI.loc = place_spots.loc //It is highly unlikely that any landing spot including a null tile will get this far, but better safe than sorry.
+		newI.loc = I.loc //It is highly unlikely that any landing spot including a null tile will get this far, but better safe than sorry.
 		newI.layer = NAVIGATION_EYE_LAYER
-		SET_PLANE_EXPLICIT(newI, ABOVE_GAME_PLANE, place_spots)
+		SET_PLANE_EXPLICIT(newI, ABOVE_GAME_PLANE, V)
 		newI.mouse_opacity = 0
 		the_eye.placed_images += newI
 

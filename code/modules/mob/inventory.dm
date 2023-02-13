@@ -240,10 +240,9 @@
 	if(del_on_fail)
 		qdel(I)
 		return FALSE
-	var/atom/location = drop_location()
-	I.forceMove(location)
+	I.forceMove(drop_location())
 	I.layer = initial(I.layer)
-	SET_PLANE_EXPLICIT(I, initial(I.plane), location)
+	SET_PLANE_EXPLICIT(I, initial(I.plane), drop_location())
 	I.dropped(src)
 	return FALSE
 
@@ -308,7 +307,7 @@
 //DO NOT CALL THIS PROC
 //use one of the above 3 helper procs
 //you may override it, but do not modify the args
-/mob/proc/doUnEquip(obj/item/I, force, atom/newloc, no_move, invdrop = TRUE, silent = FALSE) //Force overrides TRAIT_NODROP for things like wizarditis and admin undress.
+/mob/proc/doUnEquip(obj/item/I, force, newloc, no_move, invdrop = TRUE, silent = FALSE) //Force overrides TRAIT_NODROP for things like wizarditis and admin undress.
 													//Use no_move if the item is just gonna be immediately moved afterward
 													//Invdrop is used to prevent stuff in pockets dropping. only set to false if it's going to immediately be replaced
 	PROTECTED_PROC(TRUE)
@@ -329,7 +328,7 @@
 		if(client)
 			client.screen -= I
 		I.layer = initial(I.layer)
-		SET_PLANE_EXPLICIT(I, initial(I.plane), newloc)
+		SET_PLANE_EXPLICIT(I, initial(I.plane), drop_location())
 		I.appearance_flags &= ~NO_CLIENT_COLOR
 		if(!no_move && !(I.item_flags & DROPDEL)) //item may be moved/qdel'd immedietely, don't bother moving it
 			if (isnull(newloc))
