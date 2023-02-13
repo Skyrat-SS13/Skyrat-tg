@@ -612,7 +612,7 @@
 		set_invis_see(see_override)
 
 	if(SSmapping.level_trait(z, ZTRAIT_NOXRAY))
-		new_sight = NONE
+		new_sight = SEE_BLACKNESS
 
 	set_sight(new_sight)
 	return ..()
