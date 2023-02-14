@@ -1,6 +1,6 @@
 /datum/disease/cryptococcus
 	name = "Cryptococcal meningitis"
-	max_stages = 5
+	max_stages = 4
 	stage_prob = 1.75
 	spread_text = "Airborne"
 	spreading_modifier = 0.75
@@ -25,14 +25,14 @@
 			if(DT_PROB(5, delta_time))
 				to_chat(affected_mob, span_danger("Your head hurts. Were the ceiling tiles always moving like that? You should get closer to medbay..."))
 		if(2)
-			if(DT_PROB(2, delta_time))
+			if(DT_PROB(5, delta_time))
 				affected_mob.emote("twitch")
 				to_chat(affected_mob, span_danger("You twitch involuntarily. That's not right, you should get closer to medbay..."))
 			if(DT_PROB(2, delta_time))
 				to_chat(affected_mob, span_danger("You sniff, smelling green slime. Does green have a smell? You should get closer to medbay..."))
-			if(DT_PROB(5, delta_time))
+			if(DT_PROB(2, delta_time))
 				to_chat(affected_mob, span_danger("Your head hurts. Were the ceiling tiles always moving like that? You should get closer to medbay..."))
-		if(3,4)
+		if(3)
 			if(DT_PROB(2, delta_time))
 				to_chat(affected_mob, span_userdanger("You see four of everything!"))
 				affected_mob.set_dizzy_if_lower(10 SECONDS)
@@ -46,7 +46,7 @@
 				to_chat(affected_mob, span_userdanger("You feel air escape from your lungs painfully. You didn't intend to exhale, they seem to be seizing up on their own."))
 				affected_mob.adjustOxyLoss(25, FALSE)
 				affected_mob.emote("gasp")
-		if(5)
+		if(4)
 			if(DT_PROB(5, delta_time))
 				to_chat(affected_mob, span_userdanger("[pick("Your muscles seize!", "You collapse!")]"))
 				affected_mob.adjustStaminaLoss(50, FALSE)
