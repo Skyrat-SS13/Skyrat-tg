@@ -8,6 +8,7 @@
 	active_mode = TRUE
 	active_cost = 0.5
 	compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif/standard)
+	buying_category = NIFSOFT_CATEGORY_UTILITY
 
 /datum/nifsoft/money_sense/activate()
 	. = ..()
