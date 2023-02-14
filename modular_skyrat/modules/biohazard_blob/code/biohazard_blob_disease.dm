@@ -1,5 +1,4 @@
 /datum/disease/cryptococcus
-	form = "Disease"
 	name = "Cryptococcal meningitis"
 	max_stages = 5
 	stage_prob = 1.75
@@ -20,12 +19,17 @@
 		return
 
 	switch(stage)
+		if(1)
+			if(DT_PROB(2, delta_time))
+				to_chat(affected_mob, span_danger("Your brain feels fuzzy. That's not right, you should get closer to medbay..."))
+			if(DT_PROB(5, delta_time))
+				to_chat(affected_mob, span_danger("Your head hurts. Were the ceiling tiles always moving like that? You should get closer to medbay..."))
 		if(2)
 			if(DT_PROB(2, delta_time))
 				affected_mob.emote("twitch")
-				to_chat(affected_mob, span_userdanger("You twitch involuntarily. That's not right, you should get closer to medbay..."))
+				to_chat(affected_mob, span_danger("You twitch involuntarily. That's not right, you should get closer to medbay..."))
 			if(DT_PROB(2, delta_time))
-				to_chat(affected_mob, span_userdanger("You sniff, smelling green slime. Does green have a smell? You should get closer to medbay..."))
+				to_chat(affected_mob, span_danger("You sniff, smelling green slime. Does green have a smell? You should get closer to medbay..."))
 			if(DT_PROB(5, delta_time))
 				to_chat(affected_mob, span_danger("Your head hurts. Were the ceiling tiles always moving like that? You should get closer to medbay..."))
 		if(3,4)
