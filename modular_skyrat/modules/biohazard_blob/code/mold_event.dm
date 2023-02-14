@@ -48,7 +48,7 @@
 
 	for(var/i in 1 to molds2spawn)
 		var/picked_mold
-		if(get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) >= 75)
+		if(get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) >= MOLDIES_HIGHPOP_THRESHOLD)
 			picked_mold = pick(available_molds_t2)
 		else
 			picked_mold = pick(available_molds_t1)
@@ -58,8 +58,8 @@
 			if(locate(/obj/structure/biohazard_blob/structure/core) in range(20, picked_turf))
 				turfs -= picked_turf
 				continue
-			var/obj/structure/biohazard_blob/boob = new picked_mold(picked_turf)
-			announce_to_ghosts(boob)
+			var/obj/structure/biohazard_blob/blob = new picked_mold(picked_turf)
+			announce_to_ghosts(blob)
 			turfs -= picked_turf
 			i++
 		else
