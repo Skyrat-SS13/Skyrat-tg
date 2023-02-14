@@ -34,15 +34,15 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/aformal
 	name = "Assistant's formal winter coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/aformal
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat
 
 /datum/loadout_item/suit/runed
 	name = "Runed winter coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/narsie/fake
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat/narsie
 
 /datum/loadout_item/suit/brass
 	name = "Brass winter coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/ratvar/fake
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat/ratvar
 
 /datum/loadout_item/suit/korea
 	name = "Eastern winter coat"
@@ -260,13 +260,12 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/winter_coat/christmas
 	name = "Christmas Coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/christmas
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat/christmas
 	required_season = CHRISTMAS
 
 /datum/loadout_item/suit/winter_coat/christmas/green
 	name = "Green Christmas Coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/christmas/green
-
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat/christmas/green
 
 /*
 *	MISC
@@ -538,7 +537,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/coat_bar
 	name = "Bartender Winter Coat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/bartender
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/skyrat/bartender
 	restricted_roles = list(JOB_HEAD_OF_PERSONNEL, JOB_BARTENDER) //Reserved for Bartenders and their boss, the Head of Personnel
 
 /datum/loadout_item/suit/coat_cargo
