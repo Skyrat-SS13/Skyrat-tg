@@ -99,7 +99,7 @@
 				visible_message(span_warning("The [src] emitts a cloud!"))
 				var/datum/reagents/reagents = new/datum/reagents(300)
 				reagents.my_atom = src
-				reagents.add_reagent(/datum/reagent/cordycepsspores, 50)
+				reagents.add_reagent(/datum/reagent/cryptococcusspores, 50)
 				var/datum/effect_system/fluid_spread/smoke/chem/smoke_machine/puff = new
 				puff.set_up(5, location = my_turf, carry = reagents, efficiency = 24)
 				puff.attach(src)
@@ -294,7 +294,7 @@
 		if(BIO_BLOB_TYPE_FUNGUS)
 			var/datum/reagents/R = new/datum/reagents(300)
 			R.my_atom = src
-			R.add_reagent(/datum/reagent/cordycepsspores, 50)
+			R.add_reagent(/datum/reagent/cryptococcusspores, 50)
 			var/datum/effect_system/fluid_spread/smoke/chem/smoke_machine/puff = new
 			puff.set_up(4, location = T, carry = reagents, efficiency = 24)
 			puff.attach(src)

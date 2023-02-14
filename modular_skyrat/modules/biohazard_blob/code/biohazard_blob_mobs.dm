@@ -90,7 +90,7 @@
 		var/mob/living/carbon/C = target
 		if(src.can_inject(target))
 			to_chat(C, span_danger("[src] manages to penetrate your clothing with it's teeth!"))
-			C.ForceContractDisease(new /datum/disease/cordyceps(), FALSE, TRUE)
+			C.ForceContractDisease(new /datum/disease/cryptococcus(), FALSE, TRUE)
 
 /mob/living/simple_animal/hostile/biohazard_blob/electric_mosquito
 	name = "electric mosquito"

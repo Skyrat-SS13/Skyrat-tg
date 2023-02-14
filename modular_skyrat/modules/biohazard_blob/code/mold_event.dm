@@ -15,17 +15,15 @@
 	var/list/available_molds_t2 = list(
 		/obj/structure/biohazard_blob/structure/core/fire,
 		/obj/structure/biohazard_blob/structure/core/toxic,
-		/obj/structure/biohazard_blob/structure/core/radioactive,
+		/obj/structure/biohazard_blob/structure/core/fungus,
 		/obj/structure/biohazard_blob/structure/core/emp,
 	)
 
 /datum/round_event/mold/start()
 	var/list/turfs = list() //list of all the empty floor turfs in the hallway areas
-	var/molds2spawn
-	if(get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) >= 60)
+	var/molds2spawn = 1
+	if(get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) >= 75 || (prob((get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)) * 1.3)))
 		molds2spawn	= 2 //Guaranteedly worse
-	else
-		molds2spawn = rand(1,2)
 
 	var/obj/structure/biohazard_blob/resin/resintest = new()
 
@@ -47,7 +45,7 @@
 
 	for(var/i = 1, i <= molds2spawn)
 		var/picked_mold
-		if(get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) >= 60)
+		if(get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) >= 75)
 			picked_mold = pick(available_molds_t2)
 		else
 			picked_mold = pick(available_molds_t1)
