@@ -99,7 +99,7 @@
 				visible_message(span_warning("The [src] emitts a cloud!"))
 				var/datum/reagents/reagents = new/datum/reagents(300)
 				reagents.my_atom = src
-				reagents.add_reagent(/datum/reagent/cryptococcusspores, 50)
+				reagents.add_reagent(/datum/reagent/cryptococcus_spores, 50)
 				var/datum/effect_system/fluid_spread/smoke/chem/smoke_machine/puff = new
 				puff.set_up(5, location = my_turf, carry = reagents, efficiency = 24)
 				puff.attach(src)
