@@ -66,7 +66,7 @@
 			if(DT_PROB(5, delta_time))
 				affected_mob.vomit(20)
 
-/datum/reagent/cryptococcusspores
+/datum/reagent/cryptococcus_spores
 	name = "Cryptococcus gattii microbes"
 	description = "Active fungal spores."
 	color = "#92D17D"
