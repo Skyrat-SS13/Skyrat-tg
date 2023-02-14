@@ -43,7 +43,7 @@
 
 	qdel(resintest)
 
-	for(var/i = 1, i <= molds2spawn)
+	for(var/i in 1 to molds2spawn)
 		var/picked_mold
 		if(get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) >= 75)
 			picked_mold = pick(available_molds_t2)
