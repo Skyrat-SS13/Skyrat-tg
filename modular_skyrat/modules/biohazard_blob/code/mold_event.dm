@@ -1,16 +1,19 @@
+#define MOLDIES_HIGHPOP_THRESHOLD 75
+
 /datum/round_event_control/mold
 	name = "Moldies"
 	typepath = /datum/round_event/mold
 	weight = 5
 	max_occurrences = 1
 	earliest_start = 30 MINUTES
+	min_players = 10
 	category = EVENT_CATEGORY_ENTITIES
 
 /datum/round_event/mold
 	fakeable = FALSE
 	var/list/available_molds_t1 = list(
 		/obj/structure/biohazard_blob/structure/core/fire,
-		/obj/structure/biohazard_blob/structure/core/toxic
+		/obj/structure/biohazard_blob/structure/core/toxic,
 	)
 	var/list/available_molds_t2 = list(
 		/obj/structure/biohazard_blob/structure/core/fire,
@@ -22,7 +25,7 @@
 /datum/round_event/mold/start()
 	var/list/turfs = list() //list of all the empty floor turfs in the hallway areas
 	var/molds2spawn = 1
-	if(get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) >= 75 || (prob((get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)) * 1.3)))
+	if(get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) >= MOLDIES_HIGHPOP_THRESHOLD || (prob((get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)) * (100 / MOLDIES_HIGHPOP_THRESHOLD))))
 		molds2spawn	= 2 //Guaranteedly worse
 
 	var/obj/structure/biohazard_blob/resin/resintest = new()
@@ -62,3 +65,5 @@
 		else
 			message_admins("Mold failed to spawn.")
 			break
+
+#undef MOLDIES_HIGHPOP_THRESHOLD
