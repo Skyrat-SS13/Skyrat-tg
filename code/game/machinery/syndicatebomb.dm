@@ -30,6 +30,8 @@
 	var/delayedbig = FALSE //delay wire pulsed?
 	var/delayedlittle = FALSE //activation wire pulsed?
 	var/obj/effect/countdown/syndicatebomb/countdown
+	/// Whether the countdown is visible on examine
+	var/examinable_countdown = TRUE
 
 	var/next_beep
 	var/detonation_timer
@@ -104,7 +106,12 @@
 
 /obj/machinery/syndicatebomb/examine(mob/user)
 	. = ..()
-	// . += {"A digital display on it reads "[seconds_remaining()]"."} SKYRAT EDIT : - commented out to make people fear it more.
+	. += {"The patented external shell design is resistant to "probably all" forms of external explosive compression, protecting the electronically-trigged bomb core from accidental early detonation."}
+	. += "A small window reveals some information about the payload: [payload.desc]."
+	if(examinable_countdown)
+		// . += {"A digital display on it reads "[seconds_remaining()]"."} SKYRAT EDIT : - commented out to make people fear it more.
+	else
+		. +={"The digital display on it is inactive."}
 
 /obj/machinery/syndicatebomb/update_icon_state()
 	icon_state = "[initial(icon_state)][active ? "-active" : "-inactive"][open_panel ? "-wires" : ""]"
@@ -113,6 +120,7 @@
 /obj/machinery/syndicatebomb/proc/seconds_remaining()
 	if(active)
 		. = max(0, round((detonation_timer - world.time) / 10))
+
 	else
 		. = timer_set
 
