@@ -12,7 +12,7 @@
 	///This controls the maximum amount of items that can be added to the sorting list.
 	var/max_items = 5
 	/// This is used for the improved sorter, so that it can use the improved sorter type instead of the normal sorter type.
-	var/conveyor_type = /obj/effect/decal/cleanable/conveyor_sorter
+	var/conveyor_type = /obj/effect/decal/conveyor_sorter
 
 /obj/item/conveyor_sorter/Destroy()
 	for(var/deleting_sorters in spawned_sorters)
@@ -30,7 +30,7 @@
 	if(length(spawned_sorters) >= max_sorters)
 		to_chat(user, span_warning("You may only have [max_sorters] spawned conveyor sorters!"))
 		return
-	var/obj/effect/decal/cleanable/conveyor_sorter/new_cs = new conveyor_type(get_turf(src))
+	var/obj/effect/decal/conveyor_sorter/new_cs = new conveyor_type(get_turf(src))
 	new_cs.parent_item = src
 	new_cs.sorting_list = current_sort
 	spawned_sorters += new_cs
@@ -42,7 +42,7 @@
 		return ..()
 	if(!ismovable(target))
 		return ..()
-	if(istype(target, /obj/effect/decal/cleanable/conveyor_sorter))
+	if(istype(target, /obj/effect/decal/conveyor_sorter))
 		return
 	if(is_type_in_list(target, current_sort))
 		to_chat(user, span_warning("[target] is already in [src]'s sorting list!"))
@@ -58,7 +58,7 @@
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 	current_sort = list()
 
-/obj/effect/decal/cleanable/conveyor_sorter
+/obj/effect/decal/conveyor_sorter
 	name = "conveyor sorter"
 	desc = "A mark that will sort items out based on what they are."
 	icon = 'modular_skyrat/modules/conveyor_sorter/icons/conveyor_sorter.dmi'
@@ -78,20 +78,27 @@
 	light_range = 3
 	light_color = COLOR_RED_LIGHT
 
-/obj/effect/decal/cleanable/conveyor_sorter/Destroy()
+/obj/effect/decal/conveyor_sorter/Initialize(mapload)
+	. = ..()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
+/obj/effect/decal/conveyor_sorter/Destroy()
 	if(parent_item)
 		parent_item.spawned_sorters -= src
 		parent_item = null
 	return ..()
 
-/obj/effect/decal/cleanable/conveyor_sorter/examine(mob/user)
+/obj/effect/decal/conveyor_sorter/examine(mob/user)
 	. = ..()
 	. += span_notice("Attack with conveyor sorter lister to set the sorting list.")
 	. += span_notice("Slap with empty hands to change the sorting direction.")
 	. += span_notice("Alt-Click to reset the sorting list.")
 	. += span_notice("Ctrl-Click to remove.")
 
-/obj/effect/decal/cleanable/conveyor_sorter/attack_hand(mob/living/user, list/modifiers)
+/obj/effect/decal/conveyor_sorter/attack_hand(mob/living/user, list/modifiers)
 	var/user_choice = tgui_input_list(user, "Choose which direction to sort to!", "Direction choice", directions)
 	if(!user_choice)
 		return ..()
@@ -105,7 +112,7 @@
 	visible_message("[src] pings, updating its sorting direction!")
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 
-/obj/effect/decal/cleanable/conveyor_sorter/attackby(obj/item/used_item, mob/user, params)
+/obj/effect/decal/conveyor_sorter/attackby(obj/item/used_item, mob/user, params)
 	if(istype(used_item, /obj/item/conveyor_sorter) || istype(used_item, /obj/item/conveyor_sorter/improved))
 		var/obj/item/conveyor_sorter/cs_item = used_item
 		sorting_list = cs_item.current_sort
@@ -115,18 +122,18 @@
 	else
 		return ..()
 
-/obj/effect/decal/cleanable/conveyor_sorter/AltClick(mob/user)
+/obj/effect/decal/conveyor_sorter/AltClick(mob/user)
 	visible_message("[src] pings, resetting its sorting list!")
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 	sorting_list = list()
 
-/obj/effect/decal/cleanable/conveyor_sorter/CtrlClick(mob/user)
+/obj/effect/decal/conveyor_sorter/CtrlClick(mob/user)
 	visible_message("[src] begins to ping violently!")
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 	qdel(src)
 
-/obj/effect/decal/cleanable/conveyor_sorter/on_entered(datum/source, atom/movable/AM)
-	. = ..()
+/obj/effect/decal/conveyor_sorter/proc/on_entered(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
 	if(is_type_in_list(AM, sorting_list) && !AM.anchored && COOLDOWN_FINISHED(src, use_cooldown))
 		COOLDOWN_START(src, use_cooldown, 1 SECONDS)
 		AM.Move(get_step(src, dir))
@@ -159,9 +166,9 @@
 	icon_state = "lister_improved"
 	max_sorters = 8
 	max_items = 10
-	conveyor_type = /obj/effect/decal/cleanable/conveyor_sorter/improved
+	conveyor_type = /obj/effect/decal/conveyor_sorter/improved
 
-/obj/effect/decal/cleanable/conveyor_sorter/improved
+/obj/effect/decal/conveyor_sorter/improved
 	name = "improved conveyor sorter"
 	desc = "A mark that will sort items out based on what they are. This one can sort in multiple directions."
 	icon = 'modular_skyrat/modules/conveyor_sorter/icons/conveyor_sorter.dmi'
