@@ -3,7 +3,6 @@
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 	see_in_dark = 4
 	mob_biotypes = MOB_ORGANIC
-	gold_core_spawnable = NO_SPAWN
 	icon = 'modular_skyrat/modules/biohazard_blob/icons/blob_mobs.dmi'
 	vision_range = 5
 	aggro_vision_range = 8
@@ -66,6 +65,7 @@
 	icon_state = "diseased_rat"
 	icon_living = "diseased_rat"
 	icon_dead = "diseased_rat_dead"
+	gold_core_spawnable = NO_SPAWN
 	speak_emote = list("chitters")
 	emote_hear = list("chitters")
 	speak_chance = 5
