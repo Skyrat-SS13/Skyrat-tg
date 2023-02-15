@@ -157,16 +157,10 @@
 	if((T.y+height) - 1 > world.maxy)
 		return
 
-<<<<<<< HEAD
-	var/list/border = block(locate(max(T.x-1, 1), max(T.y-1, 1),  T.z),
-							locate(min(T.x+width+1, world.maxx), min(T.y+height+1, world.maxy), T.z))
-
-=======
 	// Cache for sonic speed
 	var/list/to_rebuild = SSair.adjacent_rebuild
->>>>>>> 74144f2bc9e (Fixes some runtime spam from lazyloading/map templates (#73037))
 	// iterate over turfs in the border and clear them from active atmos processing
-	for(var/turf/border_turf as anything in border)
+	for(var/turf/border_turf as anything in CORNER_BLOCK_OFFSET(T, width + 2, height + 2, -1, -1))
 		SSair.remove_from_active(border_turf)
 		to_rebuild -= border_turf
 		for(var/turf/sub_turf as anything in border_turf.atmos_adjacent_turfs)
