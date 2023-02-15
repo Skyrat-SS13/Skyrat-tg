@@ -111,11 +111,17 @@
 /datum/job/corporate_diplomat/proc/set_random_type()
 	SIGNAL_HANDLER
 
+	if(SSjob.corporate_diplomat_type)
+		var/datum/corporate_diplomat_role/picked_role = new SSjob.corporate_diplomat_type
+		set_diplomat_type(new picked_role)
+		UnregisterSignal(src, COMSIG_TICKER_ROUND_STARTING)
+		return
+
 	if(!current_positions)
 		var/datum/corporate_diplomat_role/picked_role = pick(subtypesof(/datum/corporate_diplomat_role))
 		set_diplomat_type(new picked_role)
-
-	UnregisterSignal(src, COMSIG_TICKER_ROUND_STARTING)
+		UnregisterSignal(src, COMSIG_TICKER_ROUND_STARTING)
+		return
 
 
 // make sure to fill ALL of these out on the subtype
