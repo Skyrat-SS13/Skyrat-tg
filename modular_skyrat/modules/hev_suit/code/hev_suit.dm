@@ -65,9 +65,11 @@
 /obj/item/clothing/suit/space/hev_suit
 	name = "hazardous environment suit"
 	desc = "The Mark IV HEV suit protects the user from a number of hazardous environments and has in build ballistic protection."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/spacesuit.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/spacesuit.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suits/spacesuit_digi.dmi'
 	icon_state = "hev"
+	inhand_icon_state = "syndicate-orange"
 	armor_type = /datum/armor/space_hev_suit
 	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/energy/sword, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
 	cell = /obj/item/stock_parts/cell/hyper
