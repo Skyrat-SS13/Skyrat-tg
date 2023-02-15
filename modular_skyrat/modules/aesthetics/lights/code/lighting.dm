@@ -14,19 +14,19 @@
 	turning_on = FALSE
 	if(!on)
 		return
-	var/BR = brightness
-	var/PO = bulb_power
-	var/CO = bulb_colour
+	var/new_brightness = brightness
+	var/new_power = bulb_power
+	var/new_color = bulb_colour
 	if(color)
-		CO = color
+		new_color = color
 	if (firealarm)
-		CO = bulb_emergency_colour
+		new_color = bulb_emergency_colour
 	else if (nightshift_enabled)
-		BR = nightshift_brightness
-		PO = nightshift_light_power
+		new_brightness = nightshift_brightness
+		new_power = nightshift_light_power
 		if(!color)
-			CO = nightshift_light_color
-	var/matching = light && BR == light.light_range && PO == light.light_power && CO == light.light_color
+			new_color = nightshift_light_color
+	var/matching = light && new_brightness == light.light_range && new_power == light.light_power && new_color == light.light_color
 	if(!matching)
 		switchcount++
 		if( prob( min(60, (switchcount**2)*0.01) ) )
@@ -34,7 +34,7 @@
 				burn_out()
 		else
 			use_power = ACTIVE_POWER_USE
-			set_light(BR, PO, CO)
+			set_light(new_brightness, new_power, new_color)
 			if(play_sound)
 				playsound(src.loc, 'modular_skyrat/modules/aesthetics/lights/sound/light_on.ogg', 65, 1)
 
