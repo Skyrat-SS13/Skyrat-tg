@@ -1,4 +1,3 @@
-
 /**
  * A lift indicator aka an elevator hall lantern w/ floor number
  */
@@ -70,7 +69,7 @@
 		else
 			dirtext = "stopped"
 
-	. += span_notice("The lift is on floor [current_lift_floor], [dirtext].")
+//	. += span_notice("The lift is on floor [current_lift_floor], [dirtext].") //SKYRAT EDIT CHANGE (override in master_files)
 
 /**
  * Update state, and only process if lift is moving.
