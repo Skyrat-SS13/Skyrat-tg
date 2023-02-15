@@ -25,7 +25,7 @@
 	departments_list = list(
 		/datum/job_department/command,
 	)
-	outfit = /datum/outfit/job/nanotrasen_consultant
+	outfit = /datum/outfit/job/nanotrasen_consultant/initial
 	plasmaman_outfit = /datum/outfit/plasmaman/nanotrasen_consultant
 	display_order = JOB_DISPLAY_ORDER_NANOTRASEN_CONSULTANT
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law)
@@ -48,8 +48,9 @@
 
 // We do this to ensure that the diplomat only spawns with their type's outfit, later.
 /datum/job/corporate_diplomat/pre_spawn(mob/living/spawning, client/player_client)
-	outfit = /datum/outfit
-	plasmaman_outfit = /datum/outfit/plasmaman
+	if(ispath(outfit, /datum/outfit/job/nanotrasen_consultant/initial))
+		outfit = /datum/outfit
+		plasmaman_outfit = /datum/outfit/plasmaman
 
 
 /datum/job/corporate_diplomat/after_roundstart_spawn(mob/living/spawning, client/player_client)
@@ -76,14 +77,10 @@
 	SSjob.name_occupations -= JOB_CORPORATE_DIPLOMAT
 	SSjob.name_occupations[picked_role.title] = src
 
-	for(var/obj/effect/corporate_diplomat/diplomat_spawner as anything in GLOB.corporate_diplomat_spawners)
-		diplomat_spawner.spawn_object()
+	SEND_SIGNAL(SSjob, COMSIG_CORPORATE_DIPLOMAT_ROLE_PICKED)
 
 	if(istype(spawning))
 		spawning.equipOutfit(new picked_role.outfit)
-
-	//if(player_client)
-	//	job_spawn_title = player_client.prefs.alt_job_titles[picked_role.title] //uhhhh might work?
 
 	// Carrying over data to the job from the datum
 	title = picked_role.title
@@ -115,7 +112,7 @@
 	SIGNAL_HANDLER
 
 	if(!current_positions)
-		var/datum/corporate_diplomat_role/picked_role = pick(subtypesof(/datum/corporate_diplomat_role) - /datum/corporate_diplomat_role/nanotrasen_consultant) // undo later
+		var/datum/corporate_diplomat_role/picked_role = pick(subtypesof(/datum/corporate_diplomat_role))
 		set_diplomat_type(new picked_role)
 
 	UnregisterSignal(src, COMSIG_TICKER_ROUND_STARTING)

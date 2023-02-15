@@ -17,7 +17,9 @@
 
 	family_heirlooms = list(
 		/obj/item/clothing/glasses/eyepatch,
-	) //find smth better later
+		/obj/item/clothing/head/beret/badge,
+		/obj/item/clothing/mask/cigarette/cigar,
+	)
 
 	mail_goodies = list(
 		/obj/item/clothing/mask/cigarette/cigar/havana = 20,

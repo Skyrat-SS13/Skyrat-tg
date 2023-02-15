@@ -13,7 +13,7 @@
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic = 1,
 		/obj/item/storage/box/gunset/nanotrasen_consultant = 1,
-		)
+	)
 
 	skillchips = list(/obj/item/skillchip/disk_verifier)
 
@@ -24,10 +24,16 @@
 	implants = list(/obj/item/implant/mindshield)
 	accessory = /obj/item/clothing/accessory/medal/gold/nanotrasen_consultant
 
-	chameleon_extras = list(/obj/item/gun/energy/e_gun, /obj/item/stamp/centcom)
+	chameleon_extras = list(
+		/obj/item/gun/energy/e_gun,
+		/obj/item/stamp/centcom,
+	)
 
 	id = /obj/item/card/id/advanced/centcom
 	id_trim = /datum/id_trim/job/nanotrasen_consultant
+
+
+/datum/outfit/job/nanotrasen_consultant/initial
 
 
 /obj/item/radio/headset/heads/nanotrasen_consultant

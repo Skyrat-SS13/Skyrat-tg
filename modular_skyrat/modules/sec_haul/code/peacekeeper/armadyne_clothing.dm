@@ -299,6 +299,7 @@
 	polldesc = "an Armadyne PMC."
 	teamsize = 3
 	ert_template = /datum/map_template/shuttle/ert/armadyne
+	opendoors = FALSE
 
 /datum/ert/armadyne/high_alert
 	roles = list(/datum/antagonist/ert/armadyne/high_alert)

@@ -73,3 +73,6 @@
 
 /// To chambered round on gun's `process_fire()`: (list/iff_factions)
 #define COMSIG_CHAMBERED_BULLET_FIRE "chambered_bullet_fire"
+
+/// Fires (target SSjob) when the corporate diplomat's role has been picked
+#define COMSIG_CORPORATE_DIPLOMAT_ROLE_PICKED "corporate_diplomat_role_picked"

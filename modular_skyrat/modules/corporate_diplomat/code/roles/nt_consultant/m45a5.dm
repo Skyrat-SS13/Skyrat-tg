@@ -1,5 +1,3 @@
-
-
 /obj/item/gun/ballistic/automatic/pistol/m45a5
 	name = "\improper M45A5 Elite"
 	desc = "A hand-assembled custom sporting handgun by Alpha Centauri Armories, chambered in .460 Rowland magnum. This model has a highly modular structure, to acommodate for ammo costs."

@@ -51,6 +51,7 @@
 		RADIO_CHANNEL_SOLFED = 1,
 	)
 	greyscale_colors = "#C39C00#f28a1b"
+	independent = TRUE
 
 
 /obj/item/encryptionkey/headset_solfed/liaison

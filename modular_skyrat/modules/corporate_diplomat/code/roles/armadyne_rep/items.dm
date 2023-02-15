@@ -5,6 +5,9 @@
 	inserted_disk = /obj/item/computer_disk/command
 	inserted_item = /obj/item/pen/fountain
 	greyscale_colors = "#D71E1E#0060b8"
+	starting_programs = list(
+		/datum/computer_file/program/armadyne_purchase,
+	)
 
 
 /obj/item/storage/secure/briefcase/armadyne_incentive
@@ -29,20 +32,21 @@
 /obj/item/paper/armadyne_incentive/Initialize(mapload)
 	default_raw_text = {"
 		## Incentives Guide
-		---
 
 		Greetings, representative.
 		This briefcase of "incentives" isn't here for your benefit.
 		If you feel there is valuable information or objects
 		to be gained for the Armadyne Corporation, you are
 		authorized to spend the contents as you see fit to further that goal.
+		If you require more funding, collecting via offering the catalog app's wares
+		to the crew is recommended.
 
 		To repeat, you are not to use the contents for your exclusive benefit,
 		it must be used for Corporation purposes. Misuse of these will lead to
 		internal investigation.
 		Go forth, representative, and make the Corporation proud.
 
-		Signed
+		Signed,
 		Corporate Outreach Director James Walker
 		"}
 

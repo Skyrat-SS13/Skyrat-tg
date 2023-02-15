@@ -38,6 +38,7 @@
 	rename_team = "SolFed Response Marshal"
 	polldesc = "a group of SolFed Response Marshals"
 	ert_template = /datum/map_template/shuttle/ert/solfed
+	opendoors = FALSE
 
 
 /datum/antagonist/ert/solfed_marshal

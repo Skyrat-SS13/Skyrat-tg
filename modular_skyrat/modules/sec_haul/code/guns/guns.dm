@@ -536,7 +536,7 @@
 
 /obj/item/gun/ballistic/revolver/zeta
 	name = "\improper Zeta-6 revolver"
-	desc = "A fairly common double-action six-shooter chambered for 10mm Auto, 'Spurchamber' is engraved on the cylinder."
+	desc = "A fairly common low-power double-action six-shooter chambered for 10mm Auto, 'Spurchamber' is engraved on the cylinder."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/zeta.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -545,7 +545,8 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/zeta
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/revolver_fire.ogg'
 	fire_delay = 3
-	company_flag = COMPANY_BOLT
+	company_flag = COMPANY_ARMADYNE
+	projectile_damage_multiplier = 0.75
 
 /obj/item/ammo_box/magazine/internal/cylinder/zeta
 	name = "\improper Zeta-6 cylinder"

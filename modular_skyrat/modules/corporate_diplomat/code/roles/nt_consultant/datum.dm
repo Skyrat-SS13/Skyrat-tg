@@ -23,12 +23,4 @@
 		/obj/item/reagent_containers/cup/glass/bottle/champagne = 10
 	)
 
-	/*alt_titles = list(
-		"Nanotrasen Consultant",
-		"Nanotrasen Diplomat",
-		"Central Command Consultant",
-		"Nanotrasen Representative",
-		"Central Command Representative"
-	)*/
-
 	used_access = ACCESS_CENT_GENERAL

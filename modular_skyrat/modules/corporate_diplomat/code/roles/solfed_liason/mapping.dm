@@ -1,9 +1,3 @@
-/obj/effect/landmark/start/solfed_liaison
-	name = "SolFed Liaison"
-	icon_state = "SolFed Liaison"
-	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
-
-
 /obj/structure/closet/secure_closet/solfed_liaison
 	name = "\proper solar federation liaison's locker"
 	req_access = list(ACCESS_SOLFED)
