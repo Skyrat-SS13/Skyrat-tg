@@ -32,7 +32,7 @@
 			new_color = nightshift_light_color
 		else if(color) // In case it's spraypainted.
 			new_color = color
-		else // Adjust light values to be warmer. I doubt caching would speed this up, as it's all bit operations.
+		else // Adjust light values to be warmer. I doubt caching would speed this up by any worthwhile amount, as it's all very fast number and string operations.
 			// Convert to numbers for easier manipulation.
 			var/red = GETREDPART(bulb_colour)
 			var/green = GETGREENPART(bulb_colour)
