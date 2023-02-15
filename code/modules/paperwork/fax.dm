@@ -60,10 +60,10 @@ GLOBAL_VAR_INIT(nt_fax_department, pick("NT HR Department", "NT Legal Department
 	*/
 	/// List with a fake-networks (not a fax actually), for request manager.
 	var/list/special_networks = list(
-		list(fax_name = "Central Command", fax_id = "central_command", color = "teal", emag_needed = FALSE, fax_key_needed = FAX_KEY_CENTCOM), // HEY GUESS WHAT FUCKO NONE OF THESE VAR-LOOKING THINGS
-		list(fax_name = "Sabotage Department", fax_id = "syndicate", color = "red", emag_needed = TRUE), // IN THESE LISTS ARE ACTUALLY _VARS_
-		list(fax_name = "Armadyne Corporate Relations", fax_id = "armadyne", color = "red", emag_needed = FALSE, fax_key_needed = FAX_KEY_ARMADYNE), // THEY JUST AUTO-CONVERT TO STRINGS, FUN, RIGHT?
-		list(fax_name = "SolFed Diplomatic Desk", fax_id = "solfed", color = "yellow", emag_needed = FALSE, fax_key_needed = FAX_KEY_SOLFED), // AND HALF OF THESE HAVE THE NAMES OF _ACTUAL_ VARS
+		list(fax_name = "Central Command", fax_id = "central_command", color = "teal", emag_needed = FALSE, fax_key_needed = FAX_KEY_CENTCOM),
+		list(fax_name = "Sabotage Department", fax_id = "syndicate", color = "red", emag_needed = TRUE),
+		list(fax_name = "Armadyne Corporate Relations", fax_id = "armadyne", color = "red", emag_needed = FALSE, fax_key_needed = FAX_KEY_ARMADYNE),
+		list(fax_name = "SolFed Diplomatic Desk", fax_id = "solfed", color = "yellow", emag_needed = FALSE, fax_key_needed = FAX_KEY_SOLFED),
 	)
 	// SKYRAT EDIT END
 
