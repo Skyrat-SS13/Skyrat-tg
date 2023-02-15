@@ -169,7 +169,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_BLUESHIELD = 231, // SKYRAT EDIT ADDITION
 		JOB_SOLFED_LIAISON = 232, // SKYRAT EDIT ADDITION
 		JOB_ARMADYNE_REP = 233, // SKYRAT EDIT ADDITION
-		JOB_CORPORATE_DIPLOMAT = 234 // SKYRAT EDIT ADDITION - for safety
+		JOB_CORPORATE_DIPLOMAT = 234, // SKYRAT EDIT ADDITION - for safety
 
 		// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before assistants
 		JOB_ASSISTANT = 999,
