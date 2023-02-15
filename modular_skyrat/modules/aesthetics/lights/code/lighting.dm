@@ -1,6 +1,7 @@
 /// Dynamically calculate nightshift brightness. How TG does it is painful to modify.
-#define NIGHTSHIFT_MODIFIER 1.25
-#define COLOR_BIT_SIZE 255
+#define NIGHTSHIFT_LIGHT_MODIFIER 0.15
+#define NIGHTSHIFT_COLOR_MODIFIER 0.25
+
 /obj/machinery/light
 	icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting.dmi'
 	overlay_icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting_overlay.dmi'
@@ -25,8 +26,8 @@
 	if (firealarm)
 		new_color = bulb_emergency_colour
 	else if (nightshift_enabled)
-		new_brightness /= NIGHTSHIFT_MODIFIER
-		new_power /= NIGHTSHIFT_MODIFIER
+		new_brightness -= new_brightness * NIGHTSHIFT_LIGHT_MODIFIER
+		new_power -= new_power * NIGHTSHIFT_LIGHT_MODIFIER
 		if(!color && nightshift_light_color)
 			new_color = nightshift_light_color
 		else if(color) // In case it's spraypainted.
@@ -37,8 +38,8 @@
 			var/green = GETGREENPART(bulb_colour)
 			var/blue = GETBLUEPART(bulb_colour)
 
-			green -= round((green / NIGHTSHIFT_MODIFIER) / 2) // Divide by two otherwise it'll go red rather than orange-white.
-			blue -= round(blue / NIGHTSHIFT_MODIFIER)
+			green -= round((green * NIGHTSHIFT_COLOR_MODIFIER) / 2) // Divide by two otherwise it'll go red rather than orange-white.
+			blue -= round(blue * NIGHTSHIFT_COLOR_MODIFIER)
 
 			new_color = "#[num2hex(red, 2)][num2hex(green, 2)][num2hex(blue, 2)]"  // Splice the numbers together and turn them back to hex.
 
@@ -120,3 +121,6 @@
 		balloon_alert(user, "ballast repaired!")
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 	return ..()
+
+#undef NIGHTSHIFT_LIGHT_MODIFIER
+#undef NIGHTSHIFT_COLOR_MODIFIER
