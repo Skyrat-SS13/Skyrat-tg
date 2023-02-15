@@ -1192,6 +1192,17 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/tdome/observation)
+"hv" = (
+/obj/structure/table/reinforced,
+/obj/machinery/microwave{
+	desc = "Cooks and boils stuff, somehow.";
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/barsign/all_access/directional/south,
+/turf/open/floor/iron/dark,
+/area/centcom/tdome/observation)
 "hx" = (
 /obj/machinery/photocopier,
 /turf/open/floor/iron/grimy,
@@ -3368,17 +3379,6 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/supply)
-"qp" = (
-/obj/structure/table/wood,
-/obj/item/flashlight/lamp,
-/obj/machinery/requests_console/directional/north{
-	announcementConsole = 1;
-	department = "Captain's Desk";
-	assistance_requestable = 1;
-	anon_tips_receiver = 1
-	},
-/turf/open/floor/iron/grimy,
-/area/centcom/central_command_areas/admin)
 "qq" = (
 /obj/structure/sign/warning/no_smoking,
 /turf/closed/indestructible/riveted,
@@ -5483,18 +5483,6 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/tdome/observation)
-"Ae" = (
-/obj/item/storage/box/matches{
-	pixel_x = -3;
-	pixel_y = 5
-	},
-/obj/structure/table/wood,
-/obj/structure/sign/barsign{
-	pixel_y = -32
-	},
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/turf/open/floor/iron/dark,
-/area/centcom/tdome/observation)
 "Af" = (
 /obj/structure/table/wood,
 /obj/item/storage/photo_album,
@@ -6515,15 +6503,6 @@
 /obj/effect/mapping_helpers/airlock/access/all/admin/captain,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/prison)
-"Hr" = (
-/obj/structure/chair,
-/obj/effect/landmark/thunderdome/observe,
-/obj/structure/sign/barsign{
-	pixel_y = 32
-	},
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/turf/open/floor/iron/dark,
-/area/centcom/tdome/observation)
 "Hv" = (
 /turf/closed/indestructible/riveted,
 /area/centcom/central_command_areas/courtroom)
@@ -7236,19 +7215,6 @@
 /obj/structure/speaking_tile,
 /turf/closed/mineral/ash_rock,
 /area/awaymission/errorroom)
-"Md" = (
-/obj/structure/table/reinforced,
-/obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
-	pixel_x = -3;
-	pixel_y = 5
-	},
-/obj/structure/sign/barsign{
-	pixel_y = -32
-	},
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/turf/open/floor/iron/dark,
-/area/centcom/tdome/observation)
 "Mh" = (
 /obj/machinery/door/poddoor{
 	id = "thunderdome";
@@ -7891,6 +7857,16 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/supplypod/loading/four)
+"Pn" = (
+/obj/item/storage/box/matches{
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/obj/structure/table/wood,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/barsign/all_access/directional/south,
+/turf/open/floor/iron/dark,
+/area/centcom/tdome/observation)
 "Pq" = (
 /turf/open/floor/iron/grimy,
 /area/centcom/central_command_areas/prison)
@@ -8063,6 +8039,16 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/control)
+"Qg" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp,
+/obj/machinery/requests_console/directional/north{
+	announcementConsole = 1;
+	department = "Captain's Desk";
+	departmentType = 5
+	},
+/turf/open/floor/iron/grimy,
+/area/centcom/central_command_areas/admin)
 "Qi" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -9268,6 +9254,13 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/control)
+"Wv" = (
+/obj/structure/chair,
+/obj/effect/landmark/thunderdome/observe,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/barsign/all_access/directional/north,
+/turf/open/floor/iron/dark,
+/area/centcom/tdome/observation)
 "Wy" = (
 /obj/structure/chair/office,
 /obj/effect/landmark/ert_spawn,
@@ -48195,7 +48188,7 @@ On
 vo
 fP
 On
-qp
+Qg
 XV
 hd
 To
@@ -50806,7 +50799,7 @@ bi
 eI
 bi
 eI
-Md
+hv
 QC
 IB
 IU
@@ -51831,7 +51824,7 @@ QC
 QC
 QC
 QC
-Hr
+Wv
 Kd
 yY
 SZ
@@ -54658,7 +54651,7 @@ XJ
 Xf
 XJ
 QC
-Hr
+Wv
 Kd
 yY
 SZ
@@ -55689,7 +55682,7 @@ AE
 cS
 cS
 cS
-Ae
+Pn
 QC
 IL
 IZ
