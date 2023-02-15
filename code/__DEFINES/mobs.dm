@@ -798,3 +798,16 @@
 
 /// In dynamic human icon gen we don't replace the held item.
 #define NO_REPLACE 0
+<<<<<<< HEAD
+=======
+
+/// Flags for whether you can heal yourself or not or only
+#define HEALING_TOUCH_ANYONE "healing_touch_anyone"
+#define HEALING_TOUCH_NOT_SELF "healing_touch_not_self"
+#define HEALING_TOUCH_SELF_ONLY "healing_touch_self_only"
+
+/// Default minimum body temperature mobs can exist in before taking damage
+#define NPC_DEFAULT_MIN_TEMP 250
+/// Default maximum body temperature mobs can exist in before taking damage
+#define NPC_DEFAULT_MAX_TEMP 350
+>>>>>>> a99c163d7b5 (Mice and Regal Rats won't spawn in the icebox solar panels (#73388))
