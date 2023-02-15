@@ -1,5 +1,5 @@
 /// Dynamically calculate nightshift brightness. How TG does it is painful to modify.
-#define NIGHTSHIFT_MODIFIER 1.5
+#define NIGHTSHIFT_MODIFIER 1.25
 #define COLOR_BIT_SIZE 255
 /obj/machinery/light
 	icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting.dmi'
@@ -32,20 +32,15 @@
 		else if(color) // In case it's spraypainted.
 			new_color = color
 		else // Adjust light values to be warmer. I doubt caching would speed this up, as it's all bit operations.
-			var/temp_color = hex2num(bulb_colour)
-			world.log << temp_color
 			// Convert to numbers for easier manipulation.
-			var/red = temp_color >> 16 & COLOR_BIT_SIZE // 16 is the red colour offset.
-			var/green = temp_color >> 8 & COLOR_BIT_SIZE // 8 is the green colour offset.
-			var/blue = temp_color & COLOR_BIT_SIZE // And blue is just read from the first 8 bits, so extra data is just lopped off.
+			var/red = GETREDPART(bulb_colour)
+			var/green = GETGREENPART(bulb_colour)
+			var/blue = GETBLUEPART(bulb_colour)
 
-			world.log << "[red] | [green] | [blue]"
-
-			green -= round(green / (NIGHTSHIFT_MODIFIER / 2)) // Divide by two otherwise it'll go red rather than orange-white.
+			green -= round((green / NIGHTSHIFT_MODIFIER) / 2) // Divide by two otherwise it'll go red rather than orange-white.
 			blue -= round(blue / NIGHTSHIFT_MODIFIER)
 
-			new_color = num2hex((red & 255) << 16 | (green & 255) << 8 | (blue & 255), 6) // Splice the numbers together and turn them back to hex.
-
+			new_color = "#[num2hex(red, 2)][num2hex(green, 2)][num2hex(blue, 2)]"  // Splice the numbers together and turn them back to hex.
 
 	var/matching = light && new_brightness == light.light_range && new_power == light.light_power && new_color == light.light_color
 	if(!matching)
