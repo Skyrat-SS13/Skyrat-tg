@@ -53,3 +53,5 @@
 
 	set_light(l_on = TRUE)
 	maptext = {"<div style="font:5pt 'Small Fonts';color:[LIGHT_COLOR_DARK_BLUE]">[get_current_level_as_sign(current_lift_floor)]</div>"}
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/lift_indicator, 35)

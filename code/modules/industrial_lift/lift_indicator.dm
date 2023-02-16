@@ -1,3 +1,4 @@
+
 /**
  * A lift indicator aka an elevator hall lantern w/ floor number
  */
@@ -72,6 +73,7 @@
 
 	. += span_notice("The lift is on floor [current_lift_floor], [dirtext].")
 */
+
 /**
  * Update state, and only process if lift is moving.
  */

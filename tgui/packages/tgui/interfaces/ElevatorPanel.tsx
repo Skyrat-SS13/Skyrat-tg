@@ -52,9 +52,9 @@ export const ElevatorPanel = (props, context) => {
    * you should reconsider your map's layout. It's not worth it.
    */
   const calculatedHeight = clamp(all_floor_data.length * 90, 400, 600);
-
+  // SKYRAT EDIT: line 57: theme ntos, original retro
   return (
-    <Window width={200} height={calculatedHeight} theme="retro">
+    <Window width={200} height={calculatedHeight} theme="ntos">
       <Window.Content>
         {!lift_exists && <NoLiftDimmer />}
         <Stack height="100%" vertical>

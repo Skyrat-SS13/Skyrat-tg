@@ -59,4 +59,4 @@
 	reverse_range(linked_elevator_destination)
 	update_static_data_for_all_viewers()
 
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/elevator_control_panel, 30)
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/elevator_control_panel, 32)
