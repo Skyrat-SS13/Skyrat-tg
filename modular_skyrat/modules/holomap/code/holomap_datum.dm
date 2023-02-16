@@ -73,7 +73,11 @@
 		if(overlay in disabled_overlays)
 			continue
 
-		for(var/image/map_layer in overlays_to_use[overlay]["markers"])
+		var/list/z_overlays = overlays_to_use[overlay]
+		if(!z_overlays)
+			continue
+
+		for(var/image/map_layer in z_overlays["markers"])
 			base_map.add_overlay(map_layer)
 
 	generate_legend(overlays_to_use)
