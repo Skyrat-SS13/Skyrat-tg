@@ -58,16 +58,14 @@
 
 	///This is used to determine if the mob failed a breath. If they did fail a brath, they will attempt to breathe each tick, otherwise just once per 4 ticks.
 	var/failed_last_breath = FALSE
-
+	/// Used in [carbon/proc/check_breath] and [lungs/proc/check_breath]]
 	var/co2overloadtime = null
+
 	var/obj/item/food/meat/slab/type_of_meat = /obj/item/food/meat/slab
 
 	var/gib_type = /obj/effect/decal/cleanable/blood/gibs
 
 	var/rotate_on_lying = 1
-
-	/// Total level of visualy impairing items
-	var/tinttotal = 0
 
 	/// Gets filled up in [/datum/species/proc/replace_body].
 	/// Will either contain a list of typepaths if nothing has been created yet,
