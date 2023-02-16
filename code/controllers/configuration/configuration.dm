@@ -226,8 +226,13 @@
 		if(!validated)
 			log_config("Failed to validate setting \"[value]\" for [entry]")
 		else
+<<<<<<< HEAD
 			if(E.modified && !E.dupes_allowed)
 				log_config("Duplicate setting for [entry] ([value], [E.resident_file]) detected! Using latest.")
+=======
+			if(E.modified && !E.dupes_allowed && E.resident_file == filename)
+				log_config_error("Duplicate setting for [entry] ([value], [E.resident_file]) detected! Using latest.")
+>>>>>>> faf96a9ad09 (Don't error on dupe configs in other files. (#73399))
 
 		E.resident_file = filename
 
