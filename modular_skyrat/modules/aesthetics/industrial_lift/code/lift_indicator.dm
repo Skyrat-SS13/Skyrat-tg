@@ -1,9 +1,10 @@
 /obj/machinery/lift_indicator
 	name = "elevator floor indicator"
 	desc = "Indicates what floor the elevator is on and which way it's going."
-	icon = 'icons/obj/machines/lift_indicator.dmi'
+	icon = 'modular_skyrat/modules/aesthetics/industrial_lift/icons/industrial_lift.dmi'
 	light_color = LIGHT_COLOR_DARK_BLUE
 	light_power = 1
+	maptext_x = 16
 
 	/// = (real lowest floor's z-level) - (what we want to display)
 	lowest_floor_offset = -1
@@ -15,8 +16,14 @@
 		if(4)
 			return "Lower Level"
 		if(5)
-			return "Platform Level"
+			return "Tram Level"
 
+/obj/machinery/lift_indicator/proc/get_current_level_as_sign(level)
+	switch(level)
+		if(4)
+			return "L"
+		if(5)
+			return "T"
 
 /obj/machinery/lift_indicator/examine(mob/user)
 	. = ..()
@@ -45,4 +52,4 @@
 		return
 
 	set_light(l_on = TRUE)
-	maptext = {"<div style="font:5pt 'Small Fonts';color:[LIGHT_COLOR_DARK_BLUE]">[current_lift_floor]</div>"}
+	maptext = {"<div style="font:5pt 'Small Fonts';color:[LIGHT_COLOR_DARK_BLUE]">[get_current_level_as_sign(current_lift_floor)]</div>"}

@@ -1,6 +1,11 @@
+/obj/machinery/elevator_control_panel
+	icon = 'modular_skyrat/modules/aesthetics/industrial_lift/icons/industrial_lift.dmi'
+	icon_state = "elevatorpanel0"
+	base_icon_state = "elevatorpanel"
+
 /obj/machinery/elevator_control_panel/Initialize(mapload)
 	. = ..()
-	preset_destination_names += list("4" = "Lower Level","5" = "Platform Level")
+	preset_destination_names += list("4" = "Lower Level","5" = "Tram Level")
 
 /obj/machinery/elevator_control_panel/ui_data(mob/user)
 	var/list/data = list()
@@ -14,7 +19,7 @@
 		data["lift_exists"] = TRUE
 		data["currently_moving"] = lift.controls_locked == LIFT_PLATFORM_LOCKED
 		data["currently_moving_to_floor"] = last_move_target
-		data["current_floor"] = lift.lift_platforms[1].z + 2
+		data["current_floor"] = (lift.lift_platforms[1].z + 2)
 
 	else
 		data["lift_exists"] = FALSE
@@ -53,3 +58,5 @@
 	// This way we have the top floors at the top, and the bottom floors the bottom.
 	reverse_range(linked_elevator_destination)
 	update_static_data_for_all_viewers()
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/elevator_control_panel, 30)
