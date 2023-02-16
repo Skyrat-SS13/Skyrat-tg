@@ -146,6 +146,9 @@
 /datum/round_event_control/anomaly/anomaly_grav/high
 	chaos_level = EVENT_CHAOS_LOW
 
+/datum/round_event_control/anomaly/anomaly_ectoplasm
+	chaos_level = EVENT_CHAOS_LOW
+
 /datum/round_event_control/morph
 	chaos_level = EVENT_CHAOS_LOW
 
