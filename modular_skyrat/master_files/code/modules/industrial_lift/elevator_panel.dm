@@ -1,5 +1,6 @@
-/obj/machinery/elevator_control_panel
-	preset_destination_names = list("4" = "Lower Level","5" = "Platform Level")
+/obj/machinery/elevator_control_panel/Initialize(mapload)
+	. = ..()
+	preset_destination_names += list("4" = "Lower Level","5" = "Platform Level")
 
 /obj/machinery/elevator_control_panel/ui_data(mob/user)
 	var/list/data = list()
