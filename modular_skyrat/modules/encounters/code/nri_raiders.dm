@@ -142,8 +142,9 @@
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/special(mob/living/carbon/human/spawned_human)
 	. = ..()
 	var/last_name = pick(GLOB.last_names)
-	spawned_human.fully_replace_character_name(null, "[rank] [last_name]")
+	spawned_human.fully_replace_character_name(spawned_human.real_name, "[rank] [last_name]")
 	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
+	spawned_human.mind.add_antag_datum(/datum/antagonist/raider)
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/Destroy()
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
@@ -344,3 +345,75 @@
 /obj/machinery/suit_storage_unit/nri
 	mod_type = /obj/item/mod/control/pre_equipped/frontline/pirate
 	storage_type = /obj/item/tank/internals/oxygen/yellow
+
+/datum/antagonist/raider
+	name = "\improper NRI Police Officer"
+	job_rank = ROLE_TRAITOR
+	roundend_category = "nri raiders"
+	antagpanel_category = ANTAG_GROUP_PIRATES
+	show_in_antagpanel = FALSE
+	show_to_ghosts = TRUE
+	suicide_cry = "God, save the Empress!!"
+	var/datum/team/raider/crew
+
+/datum/antagonist/raider/greet()
+	. = ..()
+	to_chat(owner, "<B>The station has overriden the response system for the reasons unkown, keep the ship intact, communicate with the station, perform an inspection to determine the legitimacy of the fine, and try to get the funds yourself, if it's legitimate.</B>")
+	owner.announce_objectives()
+
+/datum/antagonist/raider/get_team()
+	return crew
+
+/datum/antagonist/raider/create_team(datum/team/raider/new_team)
+	if(!new_team)
+		for(var/datum/antagonist/raider/R in GLOB.antagonists)
+			if(!R.owner)
+				stack_trace("Antagonist datum without owner in GLOB.antagonists: [R]")
+				continue
+			if(R.crew)
+				crew = R.crew
+				return
+		if(!new_team)
+			crew = new /datum/team/raider
+			crew.forge_objectives()
+			return
+	if(!istype(new_team))
+		stack_trace("Wrong team type passed to [type] initialization.")
+	crew = new_team
+
+/datum/antagonist/raider/on_gain()
+	if(crew)
+		objectives |= crew.objectives
+	. = ..()
+/datum/antagonist/raider/apply_innate_effects(mob/living/mob_override)
+	. = ..()
+	var/mob/living/owner_mob = mob_override || owner.current
+	var/datum/language_holder/holder = owner_mob.get_language_holder()
+	holder.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_PIRATE)
+	holder.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_PIRATE)
+	holder.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_PIRATE)
+	holder.selected_language = /datum/language/piratespeak
+
+/datum/antagonist/raider/remove_innate_effects(mob/living/mob_override)
+	var/mob/living/owner_mob = mob_override || owner.current
+	owner_mob.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_PIRATE)
+	owner_mob.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_PIRATE)
+	owner_mob.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_PIRATE)
+	return ..()
+
+/datum/team/raider
+	name = "\improper NRI police patrol"
+
+/datum/team/raider/proc/forge_objectives()
+	var/datum/objective/policing/spesscops = new()
+	spesscops.team = src
+	spesscops.update_explanation_text()
+	objectives += spesscops
+	for(var/datum/mind/M in members)
+		var/datum/antagonist/raider/R = M.has_antag_datum(/datum/antagonist/raider)
+		if(R)
+			R.objectives |= objectives
+
+/datum/objective/policing
+	explanation_text = "Contact the station to perform an inspection. Delegate responsibilities among the ship's crew. Minimise civilian casualties."
+	martyr_compatible = TRUE
