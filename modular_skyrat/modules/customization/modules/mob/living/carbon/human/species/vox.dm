@@ -61,9 +61,10 @@
 
 /datum/species/vox/pre_equip_species_outfit(datum/job/job, mob/living/carbon/human/equipping, visuals_only)
 	. = ..()
-	var/datum/outfit/vox/O = new /datum/outfit/vox
-	equipping.equipOutfit(O, visuals_only)
-	equipping.open_internals(equipping.get_item_for_held_index(2))
+	if(job?.vox_outfit)
+		equipping.equipOutfit(job.vox_outfit, visuals_only)
+	else
+		give_important_for_life(equipping)
 
 /datum/species/vox/random_name(gender,unique,lastname)
 	if(unique)

@@ -644,6 +644,11 @@
 	item_path = /obj/item/clothing/gloves/skyy
 	ckeywhitelist = list("lt3")
 
+/datum/loadout_item/toys/switchcomb
+	name = "Switchblade Comb"
+	item_path = /obj/item/hairbrush/switchblade
+	ckeywhitelist = list("stonetear")
+
 /datum/loadout_item/suit/colorblockhoodie
 	name = "Color-Block Hoodie"
 	item_path = /obj/item/clothing/suit/hooded/colorblockhoodie
