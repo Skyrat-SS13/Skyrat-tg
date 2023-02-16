@@ -155,6 +155,9 @@
 /datum/round_event_control/tram_malfunction
 	chaos_level = EVENT_CHAOS_LOW
 
+/datum/round_event_control/radiation_leak
+	chaos_level = EVENT_CHAOS_LOW
+
 // MODERATE CHAOS PRESETS
 
 /datum/round_event_control/cme/moderate
