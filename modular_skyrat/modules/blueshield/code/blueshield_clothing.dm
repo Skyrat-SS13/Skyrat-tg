@@ -43,7 +43,7 @@
 
 /datum/armor/helmet_plasmaman_blueshield
 	melee = 30
-	melee = 20
+	bullet = 20
 	laser = 20
 	energy = 20
 	bomb = 25
@@ -82,7 +82,7 @@
 
 /datum/armor/beret_blueshield
 	melee = 35
-	melee = 25
+	bullet = 25
 	laser = 25
 	energy = 15
 	bomb = 25
@@ -131,7 +131,7 @@
 
 /datum/armor/vest_blueshield
 	melee = 35
-	melee = 25
+	bullet = 25
 	laser = 25
 	energy = 25
 	bomb = 30
@@ -153,46 +153,42 @@
 
 /datum/armor/vest_blueshieldarmor
 	melee = 35
-	melee = 25
+	bullet = 25
 	laser = 25
 	energy = 25
 	bomb = 30
 	fire = 75
 	acid = 75
 
-/obj/item/clothing/suit/hooded/wintercoat/blueshield
+/obj/item/clothing/suit/hooded/wintercoat/skyrat/blueshield
 	name = "blueshield's winter coat"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "coatblueshield"
-	desc = "A comfy kevlar-lined coat with blue highlights, for the blueshield."
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/blueshield
+	desc = "A comfy kevlar-lined coat with blue highlights, fit to keep the blueshield armored and warm."
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/skyrat/blueshield
 	allowed = list(/obj/item/melee/baton/security/loaded)
 	armor_type = /datum/armor/wintercoat_blueshield
 
 /datum/armor/wintercoat_blueshield
 	melee = 35
-	melee = 25
+	bullet = 25
 	laser = 25
 	energy = 25
 	bomb = 30
 	fire = 75
 	acid = 75
 
-/obj/item/clothing/suit/hooded/wintercoat/blueshield/Initialize(mapload)
+/obj/item/clothing/suit/hooded/wintercoat/skyrat/blueshield/Initialize(mapload)
 	. = ..()
 	allowed += GLOB.security_vest_allowed
 
-/obj/item/clothing/head/hooded/winterhood/blueshield
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "winterhood_blueshield"
+/obj/item/clothing/head/hooded/winterhood/skyrat/blueshield
+	icon_state = "hood_blueshield"
 	desc = "A comfy kevlar-lined hood to go with the comfy kevlar-lined coat."
 	armor_type = /datum/armor/winterhood_blueshield
 
 /datum/armor/winterhood_blueshield
 	melee = 35
-	melee = 25
+	bullet = 25
 	laser = 25
 	energy = 15
 	bomb = 25

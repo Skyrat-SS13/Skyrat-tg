@@ -20,6 +20,10 @@
 	var/poster_type
 	var/obj/structure/sign/poster/poster_structure
 
+/obj/item/poster/examine(mob/user)
+	. = ..()
+	. += span_notice("You can booby-trap the poster by using a glass shard on it before you put it up.")
+
 /obj/item/poster/Initialize(mapload, obj/structure/sign/poster/new_poster_structure)
 	. = ..()
 
@@ -119,7 +123,6 @@
 
 /obj/structure/sign/poster/Initialize(mapload)
 	. = ..()
-	register_context()
 	if(random_basetype)
 		randomise(random_basetype)
 	if(!ruined)
@@ -131,7 +134,6 @@
 
 /// Adds contextual screentips
 /obj/structure/sign/poster/add_context(atom/source, list/context, obj/item/held_item, mob/user)
-	. = ..()
 	if (!held_item)
 		if (ruined)
 			return .
