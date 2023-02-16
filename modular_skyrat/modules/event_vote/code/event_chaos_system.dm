@@ -199,6 +199,9 @@
 /datum/round_event_control/revenant
 	chaos_level = EVENT_CHAOS_MED
 
+/datum/round_event_control/anomaly/anomaly_ectoplasm
+	chaos_level = EVENT_CHAOS_MED
+
 /*
 *	HIGH CHAOS EVENTS
 */
