@@ -7,6 +7,7 @@
 	light_color = LIGHT_COLOR_DARK_BLUE
 	light_power = 1
 	light_power = 0.5
+	light_mask = "button-light-mask"
 	luminosity = 1
 	device_type = /obj/item/assembly/control/elevator
 	req_access = list()
