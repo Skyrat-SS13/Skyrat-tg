@@ -152,6 +152,9 @@
 /datum/round_event_control/supermatter_surge
 	chaos_level = EVENT_CHAOS_LOW
 
+/datum/round_event_control/tram_malfunction
+	chaos_level = EVENT_CHAOS_LOW
+
 // MODERATE CHAOS PRESETS
 
 /datum/round_event_control/cme/moderate

@@ -504,3 +504,153 @@
       changed into tgui ones, minor soul removal, etc. /:cl:'
   vinylspiders:
   - bugfix: hotfixes vox spawning with their internals closed
+2023-02-14:
+  LT3:
+  - bugfix: 'Tramstation: Crossing signals updated to work on the new map'
+  - bugfix: 'Tramstation: Fixes missing wiring in West Wing'
+  - bugfix: 'Tramstation: Connects a few scrubbers to waste'
+  - bugfix: 'Tramstation: Add various decals that are missing'
+  - bugfix: 'Tramstation: Fixes part of medbay area being set as space'
+  - bugfix: 'Tramstation: Medbay''s elevator buttons are now accessible'
+  - bugfix: 'Tramstation: Elevator doors, buttons, and indicators are linked'
+  MMMiracles:
+  - rscadd: Tramstation has received a substantial overhaul! Please consult your local
+      tour guide and station maps for changes.
+  Melbert:
+  - bugfix: Fixes some situations where paradox clones go sicko mode
+  - bugfix: Changing species no longer drops all held items
+  - bugfix: Losing your right hand not un-cuffing you or dropping your gloves
+  - bugfix: Fixes player panel "make ai" button not fully working on observers
+  Rhials:
+  - rscadd: Ectoplasmic Outburst anomaly event
+  - rscadd: Reactive Ectoplasm Armor
+  SkyratBot:
+  - bugfix: fixes a potential bug that can cause the detective scanner to get stuck
+      in a scanning state indefinitely
+  - imageadd: when equipped with a bluespace trash bag the pimpin' ride janicart will
+      now display a bluespace trash bag instead of a normal trash bag
+  - bugfix: Solar trackers actually uh, look right again
+  - bugfix: Solar panels and trackers will now properly block space lighting on multiz
+      maps
+  - bugfix: RPD not highlight a single variant option in its UI
+  - bugfix: heat exchange manifolds not displaying the right sprites for its layer
+  - bugfix: stack components inside machines not getting garbage collected
+  - bugfix: taking an item out of the food processor and putting back in will not
+      dupe the results when you process them
+  - bugfix: Some misplaced decals on icebox have been removed.
+  - qol: Add emissive effects and balloon alerts to barsigns (neon lights now glow
+      in the dark). Barsigns are now considered machinery and will be affected by
+      power.
+  - refactor: Refactor barsign code to be more robust
+  - qol: Limits the amount of emotes being passed to chat by viruses.
+  - rscdel: Removes sprite changes done to smart pipes
+  - bugfix: pipes disappearing at weird angles
+  - bugfix: Ghost role spawners will now no longer try and spawn people when they
+      /should/ have been out of uses but due to a bug were not
+  - bugfix: Gravity generators have been re-centered.
+  - bugfix: Using a fire extinguisher with a chair now properly does...something with
+      how fast you move I think it makes you slower
+  - admin: Admins can now customize the crate type and landing zone of the stray drop
+      pod event.
+  - admin: Every tier of "Scrubber Overflow" can now choose a random single reagent
+      mode
+  - admin: '"Custom" overflow, which was kinda confusing and unintuitive, is now called
+      "Every Vent", much more self-explanatory in what it does.'
+  - bugfix: Mechs no longer have zero armor when built.
+  coiax:
+  - bugfix: Tiziran canned goods no longer decompose into mush.
+  itseasytosee:
+  - imagedel: Android abductors and skeletons have lost all modesty and have stopped
+      wearing underwear.
+2023-02-15:
+  A.C.M.O.:
+  - bugfix: Fixed Augments+ and Quirk points to interoperate as expected. You can
+      now use your points balance to select augments, and select augments to earn
+      points!
+  GoldenAlpharex:
+  - bugfix: Sitting on benches no longer gives you a weird offset that makes you look
+      like you're standing on them.
+  - bugfix: Returns benches to their original light brown color, rather than the middle
+      between brown and cyan that they were at for a bit.
+  GoldenAlpharexx:
+  - bugfix: Towels will now properly display on digitigrade characters.
+  - imageadd: Towels now have a digitigrade worn sprite too!
+  Higgin:
+  - bugfix: Operating tables now show a screen alert that they numb buckled patients
+      for surgery.
+  LT3:
+  - bugfix: The tram will malfunction randomly like it's supposed to
+  - bugfix: Tram damage calculation takes into account compound wounds
+  - code_imp: Tram crossing signals are now map specific
+  - admin: Combat log now generated when the tram collides with someone
+  Melbert:
+  - bugfix: Fixed a runtime from mime *kissing silicons and simplemobs.
+  - bugfix: Fixed a runtime from hovering over a meat spike / kitchen spike with an
+      empty hand
+  Motho:
+  - soundadd: added a new scream type for ethereals.
+  OrionTheFox:
+  - rscdel: Removed the "head of personnel's formal winter coat" and the "red and
+      green christmas coat"
+  - imageadd: in a continued organization effort, all modular Wintercoat suit sprites
+      have been moved to suits/wintercoat.dmi files. Please report any relevant issues
+      on the Github!
+  - imageadd: added new sprites for the Christmas Winter Coats
+  Shadow-Quill:
+  - qol: Reagent containers with only two possible settings (ie borg hyposprays) will
+      now just cycle through the options instead.
+  - qol: Reagent transfer setting lists are now in TGUI! Rejoice for clean UI!
+  - bugfix: Borg hyposprays are no longer fiddly when setting the injection amount.
+  - spellcheck: Reagent containers that can transfer one unit now properly pluralize
+      units.
+  SkyratBot:
+  - balance: Malf AI turret upgrades are now much stronger, fully healing, increasing
+      max health, and setting stun projectiles to taze.
+  - balance: Mech disabler now works as a shotgun, shooting 5 weak disabler beams
+      at one time.
+  - balance: Mech disabler now uses 100 energy instead of 30, and it's attack cooldown
+      increased to 1.5 seconds instead of 0.8
+  - bugfix: Equipping an fov item, disconnecting, waiting 6 minutes and reconnecting
+      will no longer break your game
+  coiax:
+  - bugfix: Drones no longer destroy toner cartridges when ejecting them from photocopiers.
+  vinylspiders:
+  - code_imp: fixed missing newline that was removed
+  - bugfix: fixes vox and plasmamen spawning into the ghost cafe without internals
+  - code_imp: important_for_life species outfits will no longer be overwritten by
+      loadouts
+  - bugfix: meson aviators and other modular glasses will no longer lose their qualities
+      when toggled off and then back on
+  - bugfix: hud aviators and projectors no longer can give you a permanent hud that
+      cannot be removed even when the glasses are taken off
+  - bugfix: meson aviators and retinal projectors no longer cause blindness while
+      welding with mask on
+2023-02-16:
+  Melbert:
+  - bugfix: False alarm radiation leaks should be less obvious
+  - bugfix: Fixes some traitor objectives from dropping in blacklisted areas, like
+      security.
+  - bugfix: Fixed a FIVE YEAR OLD issue causing Time Stop to be a 3x3 instead of a
+      5x5. Really.
+  - bugfix: The gravity generator correctly gives "forced gravity" to all adjacent
+      mobs
+  - bugfix: Fixed some runtimes with Time Stop, and other miscellaneous issues
+  - code_imp: Hostile Station Lockdown, from Malfunctioning AIs, will no longer halt
+      the server momentarily
+  SkyratBot:
+  - bugfix: You can no longer keep an AI trapped in their core by healing them with
+      a Rod of Asclepius
+  - bugfix: Bileworms which have been struck down but not butchered no longer return
+      in a more powerful form.
+  - bugfix: Reinforced plasma windows will now drop plasma glass instead of regular
+      glass when broken.
+  - bugfix: Tram windows drop the correct number of rods and a shard when broken instead
+      of a sheet.
+  - code_imp: Removed a ton of duplicate vars in tram window code and re-organize
+      the file slightly.
+  - refactor: spawnDebris has been un-hardcoded and all (but one) override of it has
+      been removed.
+  - code_imp: Added unit testing to force all ruins to spawn for CI build
+  - bugfix: eyesnatchers that say that they haven been used up can't be used again
+  - bugfix: Things dropped into a chasm should no longer occasionally become invisible
+      and intangible.
