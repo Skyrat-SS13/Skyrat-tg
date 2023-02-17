@@ -182,12 +182,12 @@
 	desc = "A wonderful item that can set markers and forcefully move stuff to a direction. With more capacity to sort more!"
 	id = "conveyor_sorter_improved"
 	build_path = /obj/item/conveyor_sorter/improved
-    materials = list(
-        /datum/material/iron = 500,
-        /datum/material/plastic = 500,
-        /datum/material/gold = 500,
-        /datum/material/bluespace = 500,
-    )
+	materials = list(
+		/datum/material/iron = 500,
+		/datum/material/plastic = 500,
+		/datum/material/gold = 500,
+		/datum/material/bluespace = 500,
+	)
 
 
 /datum/techweb_node/conveyor_sorter/improved
