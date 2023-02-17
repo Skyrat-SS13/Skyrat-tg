@@ -461,7 +461,7 @@
 
 /datum/objective/steal_n_of_type/contraband/New()
 	. = ..()
-	amount = pick(10,25)
+	amount = rand(10,25)
 	explanation_text = "Confiscate at least [amount] pieces of contraband. Drugs, illicit weaponry, armor or equipment of any sort."
 	update_explanation_text()
 	return
@@ -476,6 +476,6 @@
 
 /datum/objective/fortify/New()
 	. = ..()
-	explanation_text = "Establish an outpost orbiting the [station_name()]"
+	explanation_text = "Establish an outpost orbiting the [station_name()]."
 	update_explanation_text()
 	return
