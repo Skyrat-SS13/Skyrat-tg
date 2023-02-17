@@ -1,8 +1,7 @@
 /obj/machinery/destination_sign/indicator
 	icon = 'modular_skyrat/modules/aesthetics/industrial_lift/icons/industrial_lift.dmi'
-
 	light_range = 1
-	light_power = 0.5
+	light_power = 1
 	light_color = LIGHT_COLOR_DARK_BLUE
 	var/light_mask = "indicator_light_mask"
 	luminosity = 1
@@ -12,7 +11,6 @@
 
 	if(!tram || !tram.is_operational)
 		icon_state = "[base_icon_state][DESTINATION_NOT_IN_SERVICE]"
-		. += emissive_appearance(icon, "indicator_light_mask", offset_spokesman = src, alpha = src.alpha)
 		update_appearance()
 		return PROCESS_KILL
 
@@ -58,22 +56,21 @@
 
 /obj/machinery/destination_sign/indicator/update_appearance(updates)
 	. = ..()
+	if(!light_mask)
+		return
 
+	. += emissive_appearance(icon, light_mask, src, alpha = alpha)
+
+/obj/machinery/button/tram
+	icon_state = "tramctrl"
+	skin = "tramctrl"
+	light_color = LIGHT_COLOR_DARK_BLUE
+	light_mask = "tram-light-mask"
+
+/obj/machinery/button/tram/update_overlays()
+	. = ..()
 	if(!light_mask)
 		return
 
 	if(!(machine_stat & (NOPOWER|BROKEN)) && !panel_open)
 		. += emissive_appearance(icon, light_mask, src, alpha = alpha)
-
-/obj/machinery/button/tram
-	icon = 'modular_skyrat/modules/aesthetics/industrial_lift/icons/industrial_lift.dmi'
-	icon_state = "tramctrl"
-	skin = "tramctrl"
-
-	light_color = LIGHT_COLOR_DARK_BLUE
-	light_power = 1
-	light_power = 0.5
-	light_mask = "tram-light-mask"
-	luminosity = 1
-
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/button/tram, 22)

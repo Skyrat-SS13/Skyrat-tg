@@ -1,5 +1,5 @@
 /obj/machinery/elevator_control_panel
-	icon = 'modular_skyrat/modules/aesthetics/industrial_lift/icons/industrial_lift.dmi'
+	icon = 'modular_skyrat/modules/aesthetics/buttons/icons/buttons.dmi'
 	icon_state = "elevatorpanel0"
 	base_icon_state = "elevatorpanel"
 
