@@ -18,9 +18,9 @@
 	dir = 8
 	},
 /obj/structure/closet/secure_closet{
+	icon_state = "syndicate";
 	name = "MODsuit module locker";
-	req_access = list("syndicate_leader");
-	icon_state = "syndicate"
+	req_access = list("syndicate_leader")
 	},
 /obj/item/mod/module/stealth,
 /obj/item/mod/module/projectile_dampener{
@@ -71,8 +71,8 @@
 "aj" = (
 /obj/structure/frame/machine{
 	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
+	icon_state = "box_1";
+	state = 2
 	},
 /obj/item/circuitboard/machine/mech_recharger,
 /obj/effect/turf_decal/trimline/dark_red/filled/line,
@@ -101,8 +101,8 @@
 "ao" = (
 /obj/machinery/stasis,
 /obj/machinery/camera/xray/directional/south{
-	network = list("ds2");
-	c_tag = "DS-2 Medical"
+	c_tag = "DS-2 Medical";
+	network = list("ds2")
 	},
 /obj/effect/turf_decal/trimline/dark_blue/filled/line{
 	dir = 6
@@ -150,8 +150,8 @@
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/machinery/camera/xray/directional/north{
-	network = list("ds2");
-	c_tag = "DS-2 Isolation Cell"
+	c_tag = "DS-2 Isolation Cell";
+	network = list("ds2")
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
@@ -352,12 +352,12 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/button/door{
-	id = "ds2armory";
-	req_access = list("syndicate_leader");
-	name = "Armory Access";
 	desc = "To keep your valuable gear away from prying eyes.";
+	id = "ds2armory";
+	name = "Armory Access";
 	pixel_x = 32;
-	pixel_y = 24
+	pixel_y = 24;
+	req_access = list("syndicate_leader")
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -397,8 +397,8 @@
 	dir = 8
 	},
 /obj/item/clothing/accessory/armband{
-	name = "brig officer armband";
-	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to."
+	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to.";
+	name = "brig officer armband"
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -437,8 +437,8 @@
 	dir = 1
 	},
 /obj/item/bedsheet/syndie{
-	name = "station admiral's bedsheet";
-	dir = 1
+	dir = 1;
+	name = "station admiral's bedsheet"
 	},
 /turf/open/floor/carpet/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
@@ -472,8 +472,8 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "by" = (
 /obj/machinery/vending/security{
-	name = "\improper Stolen Armadyne Equipment Vendor";
-	desc = "An Armadyne peacekeeper equipment vendor. Makes you wonder why there's no Gorlex Equipment Vendor yet."
+	desc = "An Armadyne peacekeeper equipment vendor. Makes you wonder why there's no Gorlex Equipment Vendor yet.";
+	name = "\improper Stolen Armadyne Equipment Vendor"
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
@@ -571,8 +571,8 @@
 	},
 /obj/item/paper,
 /obj/item/pen{
-	pixel_y = 3;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 3
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
@@ -627,8 +627,8 @@
 	dir = 8
 	},
 /obj/machinery/camera/xray/directional/north{
-	network = list("ds2");
-	c_tag = "DS-2 Diner"
+	c_tag = "DS-2 Diner";
+	network = list("ds2")
 	},
 /obj/machinery/airalarm/syndicate{
 	dir = 1;
@@ -766,8 +766,8 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
 "cG" = (
 /obj/item/bedsheet/qm{
-	name = "corporate liaison's bedsheet";
-	desc = "It is decorated with the Donk Co. logo."
+	desc = "It is decorated with the Donk Co. logo.";
+	name = "corporate liaison's bedsheet"
 	},
 /obj/structure/bed,
 /turf/open/floor/carpet/donk,
@@ -836,8 +836,8 @@
 /obj/item/mining_scanner,
 /obj/structure/closet/secure_closet{
 	icon_state = "mining";
-	req_access = list("syndicate");
-	name = "mining gear locker"
+	name = "mining gear locker";
+	req_access = list("syndicate")
 	},
 /obj/item/storage/belt/mining/alt,
 /obj/item/clothing/under/syndicate/skyrat/overalls{
@@ -846,8 +846,8 @@
 /obj/item/storage/backpack/satchel/explorer,
 /obj/item/storage/backpack/explorer,
 /obj/item/clothing/accessory/armband/cargo{
-	name = "mining officer armband";
-	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to."
+	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to.";
+	name = "mining officer armband"
 	},
 /turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
@@ -909,8 +909,8 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/frame/machine{
 	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
+	icon_state = "box_1";
+	state = 2
 	},
 /obj/item/circuitboard/machine/ore_redemption,
 /obj/item/assembly/igniter,
@@ -928,8 +928,8 @@
 /obj/structure/curtain/cloth/fancy/mechanical{
 	color = "#555555";
 	icon_state = "bathroom-open";
-	id = "DS2cell2";
-	icon_type = "bathroom"
+	icon_type = "bathroom";
+	id = "DS2cell2"
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
@@ -1129,8 +1129,8 @@
 	},
 /obj/item/clothing/under/misc/syndicate_souvenir{
 	has_sensor = 0;
-	pixel_y = -7;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = -7
 	},
 /turf/open/floor/wood/tile,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms)
@@ -1160,9 +1160,9 @@
 	id = "DS2incineratorHatch";
 	name = "Incinerator Hatch Bolt";
 	normaldoorcontrol = 1;
+	pixel_x = 6;
 	req_access = list("syndicate_leader");
-	specialfunctions = 4;
-	pixel_x = 6
+	specialfunctions = 4
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
@@ -1238,8 +1238,8 @@
 "eO" = (
 /obj/machinery/hydroponics/constructable,
 /obj/machinery/camera/xray/directional/east{
-	network = list("ds2");
-	c_tag = "DS-2 Botany"
+	c_tag = "DS-2 Botany";
+	network = list("ds2")
 	},
 /obj/machinery/airalarm/syndicate{
 	dir = 4;
@@ -1306,8 +1306,8 @@
 	name = "Dorm Bolt Control";
 	normaldoorcontrol = 1;
 	pixel_x = 24;
-	specialfunctions = 4;
-	pixel_y = -24
+	pixel_y = -24;
+	specialfunctions = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -1352,10 +1352,10 @@
 "fd" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /mob/living/simple_animal/bot/medbot/stationary{
-	radio_channel = "Syndicate";
 	faction = list("Syndicate");
 	maints_access_required = list("syndicate");
-	name = "Insurgent Care"
+	name = "Insurgent Care";
+	radio_channel = "Syndicate"
 	},
 /turf/open/floor/iron/white/diagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
@@ -1464,11 +1464,11 @@
 	},
 /obj/structure/sign/flag/syndicate/directional/north,
 /obj/structure/showcase/cyborg{
+	desc = "A stand with the empty body of a Cybersun cyborg bolted to it.";
+	dir = 8;
 	icon = 'icons/mob/silicon/robots.dmi';
 	icon_state = "synd_sec";
 	name = "syndicate cyborg showcase";
-	desc = "A stand with the empty body of a Cybersun cyborg bolted to it.";
-	dir = 8;
 	pixel_x = 6
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
@@ -1579,8 +1579,8 @@
 "gw" = (
 /obj/structure/frame/machine{
 	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
+	icon_state = "box_1";
+	state = 2
 	},
 /obj/item/circuitboard/machine/component_printer,
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
@@ -1678,8 +1678,8 @@
 	dir = 4
 	},
 /obj/machinery/camera/xray/directional/north{
-	network = list("ds2");
-	c_tag = "DS-2 Hangar Airlock"
+	c_tag = "DS-2 Hangar Airlock";
+	network = list("ds2")
 	},
 /obj/structure/sign/flag/syndicate/directional/north,
 /turf/open/floor/iron/dark,
@@ -1694,8 +1694,8 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "gN" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/monitored/incinerator_input{
-	dir = 8;
-	chamber_id = "syndicatelava_incinerator"
+	chamber_id = "syndicatelava_incinerator";
+	dir = 8
 	},
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
@@ -1802,8 +1802,8 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "ho" = (
 /obj/machinery/computer/security{
-	network = list("ds2");
-	dir = 4
+	dir = 4;
+	network = list("ds2")
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
@@ -1961,7 +1961,15 @@
 /obj/structure/fans/tiny/forcefield{
 	dir = 4
 	},
-/turf/open/floor/engine/hull,
+/obj/effect/turf_decal/tile/dark_red/half{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/dark_red/half{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_half{
+	dir = 1
+	},
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "hP" = (
 /obj/machinery/light/cold/directional/east,
@@ -2046,8 +2054,8 @@
 /obj/item/circuitboard/machine/circuit_imprinter/offstation,
 /obj/structure/frame/machine{
 	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
+	icon_state = "box_1";
+	state = 2
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
@@ -2090,17 +2098,17 @@
 	pixel_x = 5
 	},
 /obj/item/food/desert_snails{
-	pixel_y = 1;
-	pixel_x = -3
+	pixel_x = -3;
+	pixel_y = 1
 	},
 /obj/item/food/canned/tomatoes,
 /obj/item/food/canned/tuna{
-	pixel_y = -5;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = -5
 	},
 /obj/item/food/canned/pine_nuts{
-	pixel_y = -9;
-	pixel_x = 10
+	pixel_x = 10;
+	pixel_y = -9
 	},
 /obj/item/reagent_containers/condiment/quality_oil{
 	pixel_x = 3;
@@ -2281,8 +2289,8 @@
 	},
 /obj/structure/cable,
 /obj/machinery/camera/xray/directional/west{
-	network = list("ds2");
-	c_tag = "DS-2 Brig Storage"
+	c_tag = "DS-2 Brig Storage";
+	network = list("ds2")
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
@@ -2317,10 +2325,10 @@
 "jp" = (
 /obj/machinery/light/warm/directional/north,
 /obj/machinery/computer{
-	name = "syndicate access change console";
+	desc = "A console meant to allow modifications to IDs. There's a chameleon ID stuck inside and no one has been able to pull it out...";
 	icon_keyboard = "syndie_key";
 	icon_screen = "explosive";
-	desc = "A console meant to allow modifications to IDs. There's a chameleon ID stuck inside and no one has been able to pull it out..."
+	name = "syndicate access change console"
 	},
 /obj/item/paper{
 	default_raw_text = "<h1>DS2 Corporate Report</h1><p>The Deep Space 2 Forward Operating Base has successfully relocated itself near active Nanotrasen installations. Reboot of shuttle engines in progress...</p><p>The Sothran Syndicate welcomes you onboard, Corporate Liaison. It is deeply suggested you help our crew via informing them of their corporate investors' goal and to help maintain cohesion. Don't hurt yourself now, and stay winning.</p>";
@@ -2330,8 +2338,8 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
 "jr" = (
 /obj/item/sign/flag/syndicate{
-	pixel_y = 6;
-	pixel_x = 3
+	pixel_x = 3;
+	pixel_y = 6
 	},
 /obj/item/flashlight/lamp/green{
 	pixel_x = -6;
@@ -2363,12 +2371,12 @@
 	color = "#596479"
 	},
 /obj/machinery/button/door{
-	id = "ds2admiral";
-	req_access = list("syndicate_leader");
-	name = "Shutters control";
 	desc = "Keep out the paperwork.";
+	id = "ds2admiral";
+	name = "Shutters control";
+	pixel_x = 32;
 	pixel_y = 24;
-	pixel_x = 32
+	req_access = list("syndicate_leader")
 	},
 /turf/open/floor/wood/large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
@@ -2394,16 +2402,16 @@
 	dir = 9
 	},
 /obj/item/toy/figure/syndie{
-	pixel_y = 20;
-	pixel_x = 10
+	pixel_x = 10;
+	pixel_y = 20
 	},
 /turf/open/floor/plating/elevatorshaft,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "jJ" = (
 /obj/structure/frame/machine{
 	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
+	icon_state = "box_1";
+	state = 2
 	},
 /obj/item/circuitboard/machine/mechfab,
 /obj/effect/turf_decal/trimline/dark_red/filled/line,
@@ -2465,7 +2473,6 @@
 	req_access = list("syndicate")
 	},
 /obj/item/clothing/suit/hooded/techpriest,
-/obj/item/clothing/suit/hooded/wintercoat/robotics,
 /obj/item/clothing/suit/toggle/labcoat/roboticist{
 	pixel_y = 3
 	},
@@ -2479,6 +2486,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/siding/dark,
+/obj/item/clothing/suit/hooded/wintercoat/science/robotics,
 /turf/open/floor/iron/dark/side{
 	dir = 4
 	},
@@ -2532,14 +2540,14 @@
 	dir = 10
 	},
 /obj/machinery/button/door/incinerator_vent_syndicatelava_aux{
-	pixel_y = -6;
+	name = "Combustion Chamber Blast Door Control";
 	pixel_x = -24;
-	name = "Combustion Chamber Blast Door Control"
+	pixel_y = -6
 	},
 /obj/machinery/button/door/incinerator_vent_syndicatelava_main{
+	name = "Turbine Exterior Vent Control";
 	pixel_x = -24;
-	pixel_y = 6;
-	name = "Turbine Exterior Vent Control"
+	pixel_y = 6
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/button/ignition/incinerator/syndicatelava{
@@ -2572,8 +2580,8 @@
 	name = "Dorm Bolt Control";
 	normaldoorcontrol = 1;
 	pixel_x = -24;
-	specialfunctions = 4;
-	pixel_y = 24
+	pixel_y = 24;
+	specialfunctions = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -2653,9 +2661,9 @@
 	heat_proof = 1
 	},
 /obj/machinery/door/poddoor/shutters{
-	name = "Corporate Liaison Shutters";
+	dir = 8;
 	id = "ds2corpliaison";
-	dir = 8
+	name = "Corporate Liaison Shutters"
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
@@ -2739,8 +2747,8 @@
 "li" = (
 /obj/structure/table/glass,
 /obj/item/storage/pill_bottle/mannitol{
-	pixel_y = 6;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 6
 	},
 /obj/effect/turf_decal/trimline/dark_blue/filled/line{
 	dir = 1
@@ -2832,8 +2840,8 @@
 /obj/effect/turf_decal/tile/dark_red/fourcorners,
 /obj/structure/table,
 /obj/item/mmi/posibrain{
-	pixel_y = 6;
-	pixel_x = 2
+	pixel_x = 2;
+	pixel_y = 6
 	},
 /obj/item/mmi/posibrain{
 	pixel_x = -4
@@ -2908,8 +2916,8 @@
 	},
 /obj/structure/frame/machine{
 	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
+	icon_state = "box_1";
+	state = 2
 	},
 /obj/item/circuitboard/machine/smes,
 /turf/open/floor/plating,
@@ -2932,8 +2940,8 @@
 	name = "Restroom Bolt Control";
 	normaldoorcontrol = 1;
 	pixel_x = -24;
-	specialfunctions = 4;
-	pixel_y = -24
+	pixel_y = -24;
+	specialfunctions = 4
 	},
 /obj/effect/turf_decal/siding/dark{
 	dir = 10
@@ -3022,16 +3030,16 @@
 "mC" = (
 /obj/structure/cable,
 /obj/machinery/power/smes/engineering{
-	input_level = 150000;
-	charge = 4.5e+006
+	charge = 4.5e+006;
+	input_level = 150000
 	},
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4;
 	pixel_x = 4
 	},
 /obj/item/aicard/aitater{
-	pixel_y = 11;
-	pixel_x = 3
+	pixel_x = 3;
+	pixel_y = 11
 	},
 /obj/effect/turf_decal/siding/dark{
 	dir = 5
@@ -3063,8 +3071,8 @@
 /obj/machinery/door/firedoor,
 /obj/structure/table/reinforced/plastitaniumglass,
 /obj/machinery/door/window/survival_pod{
-	req_access = list("syndicate_leader");
-	dir = 4
+	dir = 4;
+	req_access = list("syndicate_leader")
 	},
 /obj/effect/turf_decal/delivery/red,
 /obj/effect/turf_decal/stripes/red/line{
@@ -3075,12 +3083,12 @@
 	},
 /obj/item/folder/red,
 /obj/item/paper{
-	pixel_y = -4;
-	pixel_x = -3
+	pixel_x = -3;
+	pixel_y = -4
 	},
 /obj/item/paper{
-	pixel_y = -6;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = -6
 	},
 /obj/item/pen{
 	pixel_y = -4
@@ -3219,17 +3227,17 @@
 	dir = 6
 	},
 /obj/item/storage/box/stockparts/basic{
-	pixel_y = 11;
-	pixel_x = -3
+	pixel_x = -3;
+	pixel_y = 11
 	},
 /obj/item/storage/box/stockparts/basic{
-	pixel_y = 8;
-	pixel_x = 5
+	pixel_x = 5;
+	pixel_y = 8
 	},
 /obj/item/storage/box/stockparts/basic,
 /obj/item/storage/part_replacer{
-	pixel_y = -12;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = -12
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
@@ -3438,8 +3446,8 @@
 	dir = 1
 	},
 /obj/item/sign/flag/syndicate{
-	pixel_y = 6;
-	pixel_x = -3
+	pixel_x = -3;
+	pixel_y = 6
 	},
 /obj/structure/table/glass,
 /obj/item/reagent_containers/cup/glass/waterbottle{
@@ -3462,10 +3470,10 @@
 	dir = 8
 	},
 /obj/machinery/computer{
-	name = "syndicate communications console";
+	desc = "A console meant to communicate with Syndicate upper command. This one seems to be busy processing flight calculations since you last saw it...";
 	icon_keyboard = "tech_key";
 	icon_screen = "comm";
-	desc = "A console meant to communicate with Syndicate upper command. This one seems to be busy processing flight calculations since you last saw it..."
+	name = "syndicate communications console"
 	},
 /obj/item/paper{
 	default_raw_text = "<h1>DS2 Transfer Report</h1><p>The Deep Space 2 Forward Operating Base has successfully relocated itself near active Nanotrasen installations. Reboot of shuttle engines in progress...</p><p>Active syndicate operatives have been transferred over to the target NT workplace and are NOT to be interacted with under any circumstances, unless Syndicate Command allows it. Permission to monitor their activities is granted and heavily suggested.</p><p>Stay winning.</p>";
@@ -3575,8 +3583,8 @@
 "oZ" = (
 /obj/machinery/vending/games,
 /obj/machinery/camera/xray/directional/west{
-	network = list("ds2");
-	c_tag = "DS-2 Lounge"
+	c_tag = "DS-2 Lounge";
+	network = list("ds2")
 	},
 /obj/machinery/airalarm/syndicate{
 	dir = 8;
@@ -3650,8 +3658,8 @@
 "pk" = (
 /obj/structure/frame/machine{
 	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
+	icon_state = "box_1";
+	state = 2
 	},
 /obj/item/circuitboard/machine/module_duplicator,
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
@@ -3731,8 +3739,8 @@
 /obj/effect/turf_decal/tile/dark_red/half,
 /obj/effect/turf_decal/siding/wideplating_new/dark,
 /obj/machinery/camera/xray/directional/north{
-	network = list("ds2");
-	c_tag = "DS-2 Hangar North"
+	c_tag = "DS-2 Hangar North";
+	network = list("ds2")
 	},
 /turf/open/floor/iron/dark/textured_half{
 	dir = 4
@@ -3802,8 +3810,8 @@
 	dir = 1
 	},
 /obj/item/storage/box/firingpins/syndicate{
-	pixel_y = 6;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = 6
 	},
 /obj/item/storage/box/firingpins/syndicate{
 	pixel_x = 2
@@ -3845,8 +3853,8 @@
 /obj/structure/curtain/cloth/fancy/mechanical{
 	color = "#555555";
 	icon_state = "bathroom-open";
-	id = "DS2cell1";
-	icon_type = "bathroom"
+	icon_type = "bathroom";
+	id = "DS2cell1"
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
@@ -3901,8 +3909,8 @@
 	pixel_x = 6
 	},
 /obj/item/mod/module/chameleon{
-	pixel_y = -6;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = -6
 	},
 /obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 9
@@ -4315,8 +4323,8 @@
 	dir = 8
 	},
 /obj/effect/spawner/random/food_or_drink/condiment{
-	pixel_y = 6;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 6
 	},
 /obj/structure/cable,
 /turf/open/floor/iron/cafeteria,
@@ -4341,8 +4349,8 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
 "rU" = (
 /obj/machinery/dryer{
-	pixel_y = 20;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 20
 	},
 /obj/structure/sink/directional/east{
 	pixel_y = -6
@@ -4406,8 +4414,8 @@
 	},
 /obj/structure/table/reinforced/plastitaniumglass,
 /obj/machinery/camera/xray/directional/south{
-	network = list("ds2");
-	c_tag = "DS-2 Long-Term Brig Access"
+	c_tag = "DS-2 Long-Term Brig Access";
+	network = list("ds2")
 	},
 /obj/item/card/id/advanced/prisoner/ds2,
 /obj/item/card/id/advanced/prisoner/ds2{
@@ -4493,11 +4501,11 @@
 	dir = 8
 	},
 /obj/structure/showcase/cyborg{
+	desc = "A stand with the empty body of a Cybersun cyborg bolted to it.";
+	dir = 4;
 	icon = 'icons/mob/silicon/robots.dmi';
 	icon_state = "synd_sec";
 	name = "syndicate cyborg showcase";
-	desc = "A stand with the empty body of a Cybersun cyborg bolted to it.";
-	dir = 4;
 	pixel_x = -6
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -4525,8 +4533,8 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "sV" = (
 /obj/item/storage/box/beakers/bluespace{
-	pixel_y = 8;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = 8
 	},
 /obj/item/storage/box/beakers/bluespace{
 	pixel_x = 2
@@ -4642,8 +4650,8 @@
 	dir = 1
 	},
 /obj/machinery/camera/xray/directional/west{
-	network = list("ds2");
-	c_tag = "DS-2 Security Checkpoint"
+	c_tag = "DS-2 Security Checkpoint";
+	network = list("ds2")
 	},
 /obj/machinery/computer/crew/syndie{
 	dir = 1
@@ -4675,12 +4683,12 @@
 	pixel_x = 4
 	},
 /obj/item/storage/medkit/advanced{
-	pixel_y = 8;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = 8
 	},
 /obj/item/storage/medkit/regular{
-	pixel_y = 1;
-	pixel_x = 3
+	pixel_x = 3;
+	pixel_y = 1
 	},
 /obj/effect/turf_decal/tile/dark_blue/full,
 /obj/effect/turf_decal/siding/white{
@@ -4903,8 +4911,8 @@
 	name = "Chameleon Kit"
 	},
 /obj/item/reagent_containers/heroinbrick{
-	name = "Tiger Coop stimulant brick";
-	desc = "A brick of stimulants meant for use by Tiger Cooperative agents. It seems this one's just a brittle block of heroin."
+	desc = "A brick of stimulants meant for use by Tiger Cooperative agents. It seems this one's just a brittle block of heroin.";
+	name = "Tiger Coop stimulant brick"
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
@@ -4967,8 +4975,8 @@
 "vd" = (
 /obj/structure/frame/machine{
 	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
+	icon_state = "box_1";
+	state = 2
 	},
 /obj/item/circuitboard/machine/cyborgrecharger,
 /obj/effect/turf_decal/siding/dark{
@@ -5072,8 +5080,8 @@
 /obj/item/clothing/glasses/sunglasses,
 /obj/item/ammo_box/magazine/m9mm_aps,
 /obj/item/clothing/accessory/medal/gold{
-	name = "medal of admiralty";
-	desc = "A golden medal awarded exclusively to those promoted to the rank of captain. It signifies the codified responsibilities of an Admiral to the Sothran Syndicate, and their undisputable authority over their crew."
+	desc = "A golden medal awarded exclusively to those promoted to the rank of captain. It signifies the codified responsibilities of an Admiral to the Sothran Syndicate, and their undisputable authority over their crew.";
+	name = "medal of admiralty"
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
@@ -5302,8 +5310,8 @@
 "wz" = (
 /obj/machinery/light/warm/directional/west,
 /obj/machinery/computer/security{
-	network = list("ds2");
-	dir = 4
+	dir = 4;
+	network = list("ds2")
 	},
 /obj/structure/sign/flag/syndicate/directional/west,
 /turf/open/floor/mineral/plastitanium/red,
@@ -5375,8 +5383,8 @@
 	pixel_y = -3
 	},
 /obj/machinery/camera/xray/directional/south{
-	network = list("ds2");
-	c_tag = "DS-2 Hangar South"
+	c_tag = "DS-2 Hangar South";
+	network = list("ds2")
 	},
 /turf/open/floor/plating/elevatorshaft,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
@@ -5511,8 +5519,8 @@
 "yd" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /obj/machinery/door/poddoor/shutters{
-	name = "Master At Arms Shutters";
-	id = "smasteratarms"
+	id = "smasteratarms";
+	name = "Master At Arms Shutters"
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -5633,8 +5641,8 @@
 /obj/structure/chair,
 /obj/machinery/firealarm/directional/west,
 /obj/machinery/camera/directional/west{
-	network = list("ds2");
-	c_tag = "DS-2 Dormitories"
+	c_tag = "DS-2 Dormitories";
+	network = list("ds2")
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
@@ -5656,11 +5664,11 @@
 	dir = 4
 	},
 /obj/structure/showcase/cyborg{
+	desc = "A stand with the empty body of a Cybersun cyborg bolted to it.";
+	dir = 8;
 	icon = 'icons/mob/silicon/robots.dmi';
 	icon_state = "synd_sec";
 	name = "syndicate cyborg showcase";
-	desc = "A stand with the empty body of a Cybersun cyborg bolted to it.";
-	dir = 8;
 	pixel_x = 6
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -5738,8 +5746,8 @@
 	},
 /obj/structure/frame/machine{
 	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
+	icon_state = "box_1";
+	state = 2
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
@@ -5850,12 +5858,12 @@
 "zD" = (
 /obj/structure/table/wood,
 /obj/item/paper_bin/carbon{
-	pixel_y = 3;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 3
 	},
 /obj/item/pen{
-	pixel_y = 3;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 3
 	},
 /turf/open/floor/wood/large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
@@ -6106,19 +6114,19 @@
 	pixel_y = -5
 	},
 /obj/item/ammo_box/advanced/s12gauge/rubber{
-	pixel_y = -10;
-	pixel_x = -9
+	pixel_x = -9;
+	pixel_y = -10
 	},
 /obj/item/ammo_box/advanced/s12gauge/rubber{
-	pixel_y = -5;
-	pixel_x = -9
+	pixel_x = -9;
+	pixel_y = -5
 	},
 /obj/structure/closet/secure_closet{
+	anchored = 1;
+	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi';
 	icon_state = "riot";
 	name = "armory munitions locker";
-	req_access = list("syndicate_leader");
-	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi';
-	anchored = 1
+	req_access = list("syndicate_leader")
 	},
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
@@ -6213,8 +6221,8 @@
 /obj/item/circuitboard/machine/spaceship_navigation_beacon,
 /obj/structure/frame/machine{
 	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
+	icon_state = "box_1";
+	state = 2
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
@@ -6256,8 +6264,8 @@
 	dir = 8
 	},
 /obj/machinery/camera/xray/directional/north{
-	network = list("ds2");
-	c_tag = "DS-2 Transit Tube"
+	c_tag = "DS-2 Transit Tube";
+	network = list("ds2")
 	},
 /turf/template_noop,
 /area/template_noop)
@@ -6302,10 +6310,10 @@
 	dir = 4
 	},
 /obj/machinery/conveyor_switch{
-	id = "ds2fakelevator";
-	pixel_y = 12;
 	desc = "An elevator control switch. This one seems defunct.";
-	name = "elevator control"
+	id = "ds2fakelevator";
+	name = "elevator control";
+	pixel_y = 12
 	},
 /obj/structure/railing/corner{
 	pixel_y = 32
@@ -6436,8 +6444,8 @@
 	},
 /obj/effect/turf_decal/siding/wood,
 /obj/machinery/door/window/survival_pod{
-	req_access = list("syndicate");
-	name = "Diner"
+	name = "Diner";
+	req_access = list("syndicate")
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 6
@@ -6539,8 +6547,8 @@
 	dir = 1
 	},
 /obj/item/toy/figure/syndie{
-	pixel_y = 20;
-	pixel_x = 10
+	pixel_x = 10;
+	pixel_y = 20
 	},
 /obj/item/toy/figure/syndie{
 	pixel_y = 23
@@ -6689,8 +6697,8 @@
 	pixel_x = 5
 	},
 /obj/item/choice_beacon/music{
-	pixel_y = -4;
-	pixel_x = -3
+	pixel_x = -3;
+	pixel_y = -4
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -6723,8 +6731,8 @@
 	name = "Dorm Bolt Control";
 	normaldoorcontrol = 1;
 	pixel_x = -8;
-	specialfunctions = 4;
-	pixel_y = 24
+	pixel_y = 24;
+	specialfunctions = 4
 	},
 /obj/machinery/airalarm/syndicate{
 	dir = 4;
@@ -6855,9 +6863,9 @@
 	},
 /obj/machinery/button/door{
 	id = "ds2cargo";
+	name = "Cargo Blastdoor Control";
 	pixel_x = 24;
-	req_access = list("syndicate");
-	name = "Cargo Blastdoor Control"
+	req_access = list("syndicate")
 	},
 /obj/structure/railing,
 /obj/effect/turf_decal/siding/dark,
@@ -6870,8 +6878,8 @@
 	},
 /obj/structure/rack/shelf,
 /obj/item/tank/internals/emergency_oxygen/double{
-	pixel_y = 3;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = 3
 	},
 /obj/item/clothing/mask/gas/alt{
 	pixel_x = -2
@@ -6880,8 +6888,8 @@
 	pixel_x = 6
 	},
 /obj/item/clothing/mask/gas/alt{
-	pixel_y = -3;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = -3
 	},
 /turf/open/floor/iron/dark/textured_half,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo)
@@ -6933,12 +6941,12 @@
 	pixel_y = 10
 	},
 /obj/item/grenade/barrier{
-	pixel_y = 6;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 6
 	},
 /obj/item/grenade/barrier{
-	pixel_y = 6;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = 6
 	},
 /obj/item/grenade/barrier{
 	pixel_y = 2
@@ -6988,8 +6996,8 @@
 	pixel_y = -3
 	},
 /obj/item/trash/can/food/peaches{
-	pixel_y = -6;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = -6
 	},
 /turf/open/floor/iron/pool,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
@@ -7105,9 +7113,9 @@
 "Fk" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /obj/machinery/door/poddoor/shutters{
-	name = "Master At Arms Shutters";
+	dir = 4;
 	id = "smasteratarms";
-	dir = 4
+	name = "Master At Arms Shutters"
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -7156,8 +7164,8 @@
 "Fy" = (
 /obj/effect/turf_decal/delivery/red,
 /obj/machinery/door/poddoor/shutters{
-	name = "Armory Shutters";
-	id = "ds2armory"
+	id = "ds2armory";
+	name = "Armory Shutters"
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -7290,8 +7298,8 @@
 	dir = 6
 	},
 /obj/item/toy/figure/syndie{
-	pixel_y = -1;
-	pixel_x = -12
+	pixel_x = -12;
+	pixel_y = -1
 	},
 /turf/open/floor/plating/elevatorshaft,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
@@ -7353,8 +7361,8 @@
 	pixel_y = 11
 	},
 /obj/item/choice_beacon/ingredient{
-	pixel_y = 2;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 2
 	},
 /obj/structure/cable,
 /obj/item/clothing/accessory/armband/hydro{
@@ -7363,8 +7371,8 @@
 	pixel_x = 15
 	},
 /obj/item/reagent_containers/condiment/enzyme{
-	pixel_y = 8;
-	pixel_x = 17
+	pixel_x = 17;
+	pixel_y = 8
 	},
 /obj/item/storage/belt/military/snack,
 /turf/open/floor/iron/kitchen{
@@ -7446,12 +7454,12 @@
 /obj/item/canvas/twentythree_twentythree,
 /obj/item/canvas/twentythree_twentythree,
 /obj/item/toy/crayon/spraycan{
-	pixel_y = 9;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 9
 	},
 /obj/item/toy/crayon/spraycan{
-	pixel_y = 9;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 9
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
@@ -7515,13 +7523,13 @@
 	pixel_x = -10
 	},
 /obj/item/toy/figure/syndie{
-	pixel_y = -3;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = -3
 	},
 /obj/structure/shipping_container/donk_co{
+	desc = "A standard-measure shipping container for bulk transport of goods. This one is from Donk Co. and so could be carrying just about anything- although it seems this one is overflowing with little Syndicate Figurines, known for being sold at a Loss.";
 	pixel_x = -17;
-	pixel_y = 15;
-	desc = "A standard-measure shipping container for bulk transport of goods. This one is from Donk Co. and so could be carrying just about anything- although it seems this one is overflowing with little Syndicate Figurines, known for being sold at a Loss."
+	pixel_y = 15
 	},
 /turf/open/floor/plating/elevatorshaft,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
@@ -7537,8 +7545,8 @@
 "Ha" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/window/survival_pod{
-	req_access = list("syndicate_leader");
-	dir = 4
+	dir = 4;
+	req_access = list("syndicate_leader")
 	},
 /obj/structure/table/reinforced/plastitaniumglass,
 /turf/open/floor/iron/dark/smooth_large,
@@ -7866,8 +7874,8 @@
 /obj/item/circuitboard/machine/destructive_analyzer,
 /obj/structure/frame/machine{
 	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
+	icon_state = "box_1";
+	state = 2
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
@@ -7875,15 +7883,15 @@
 /obj/structure/closet/crate/medical,
 /obj/effect/turf_decal/bot,
 /obj/effect/spawner/random/medical/medkit{
-	pixel_y = 3;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 3
 	},
 /obj/effect/spawner/random/medical/supplies{
 	pixel_y = 3
 	},
 /obj/effect/spawner/random/medical/medkit{
-	pixel_y = -3;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = -3
 	},
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4;
@@ -7897,8 +7905,8 @@
 	dir = 8
 	},
 /obj/item/sign/flag/syndicate{
-	pixel_y = 6;
-	pixel_x = -3
+	pixel_x = -3;
+	pixel_y = 6
 	},
 /obj/item/reagent_containers/cup/maunamug{
 	pixel_x = 4
@@ -7912,8 +7920,8 @@
 /obj/item/circuitboard/machine/ammo_workbench,
 /obj/structure/frame/machine{
 	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
+	icon_state = "box_1";
+	state = 2
 	},
 /obj/item/disk/ammo_workbench/lethal,
 /obj/effect/turf_decal/siding/dark{
@@ -7937,8 +7945,8 @@
 	},
 /obj/machinery/suit_storage_unit{
 	mask_type = /obj/item/clothing/mask/gas/syndicate;
-	storage_type = /obj/item/tank/jetpack/oxygen/harness;
-	mod_type = /obj/item/mod/control/pre_equipped/traitor_elite
+	mod_type = /obj/item/mod/control/pre_equipped/traitor_elite;
+	storage_type = /obj/item/tank/jetpack/oxygen/harness
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
@@ -8065,8 +8073,8 @@
 /obj/item/clothing/mask/gas/sechailer/syndicate,
 /obj/item/watertank/pepperspray,
 /obj/item/clothing/accessory/medal/silver{
-	name = "military excellence medal";
-	desc = "The Sothran Syndicate's dictionary defines excellence as \"the ability to crush NT scum under one's boot\". This is awarded to those rare operatives who fit that definition."
+	desc = "The Sothran Syndicate's dictionary defines excellence as \"the ability to crush NT scum under one's boot\". This is awarded to those rare operatives who fit that definition.";
+	name = "military excellence medal"
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
@@ -8102,15 +8110,15 @@
 	dir = 8
 	},
 /obj/item/ai_module/reset/purge{
-	pixel_y = -7;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = -7
 	},
 /obj/item/ai_module/reset/purge{
 	pixel_y = -4
 	},
 /obj/item/ai_module/supplied/freeform{
-	pixel_y = 4;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = 4
 	},
 /obj/item/ai_module/supplied/freeform{
 	pixel_y = 7
@@ -8143,8 +8151,8 @@
 	desc = "To keep the void away.";
 	id = "ds2bridge";
 	name = "Bridge Blast Door Control";
-	req_access = list("syndicate_leader");
-	pixel_y = 32
+	pixel_y = 32;
+	req_access = list("syndicate_leader")
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
@@ -8420,10 +8428,10 @@
 	dir = 8
 	},
 /obj/structure/closet/secure_closet{
+	icon_door = "eng_weld";
 	icon_state = "eng";
 	name = "welding supplies locker";
-	req_access = list("syndicate");
-	icon_door = "eng_weld"
+	req_access = list("syndicate")
 	},
 /obj/item/weldingtool/largetank{
 	pixel_y = 4
@@ -8493,11 +8501,11 @@
 	pixel_y = -11
 	},
 /obj/structure/closet/secure_closet{
+	anchored = 1;
+	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi';
 	icon_state = "riot";
 	name = "armory gear locker";
-	req_access = list("syndicate_leader");
-	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi';
-	anchored = 1
+	req_access = list("syndicate_leader")
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -8507,8 +8515,8 @@
 "Lx" = (
 /obj/machinery/door/airlock/security/old{
 	hackProof = 1;
-	name = "Master At Arms' Office";
-	id_tag = "smasteratarms"
+	id_tag = "smasteratarms";
+	name = "Master At Arms' Office"
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/leader,
@@ -8586,13 +8594,13 @@
 	},
 /obj/machinery/firealarm/directional/south,
 /obj/item/poster/random_contraband{
-	pixel_y = 5;
-	pixel_x = 5
+	pixel_x = 5;
+	pixel_y = 5
 	},
 /obj/item/poster/random_contraband,
 /obj/item/poster/random_contraband{
-	pixel_y = 5;
-	pixel_x = 2
+	pixel_x = 2;
+	pixel_y = 5
 	},
 /turf/open/floor/wood/large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
@@ -8623,16 +8631,16 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/machinery/camera/xray/directional/south{
-	network = list("ds2");
-	c_tag = "DS-2 Armory"
+	c_tag = "DS-2 Armory";
+	network = list("ds2")
 	},
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/siding/dark{
 	dir = 5
 	},
 /obj/item/storage/box/pinpointer_pairs{
-	pixel_y = 6;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = 6
 	},
 /obj/item/storage/box/pinpointer_pairs,
 /turf/open/floor/mineral/plastitanium/red,
@@ -8679,8 +8687,8 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "MB" = (
 /obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown{
-	pixel_y = 4;
-	pixel_x = -3
+	pixel_x = -3;
+	pixel_y = 4
 	},
 /obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown{
 	pixel_x = -7
@@ -8709,9 +8717,9 @@
 "ME" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /obj/machinery/door/poddoor/shutters{
-	name = "Admiral Shutters";
+	dir = 4;
 	id = "ds2admiral";
-	dir = 4
+	name = "Admiral Shutters"
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
@@ -8737,8 +8745,8 @@
 /obj/machinery/recharger,
 /obj/machinery/firealarm/directional/north,
 /obj/machinery/camera/xray/directional/east{
-	network = list("ds2");
-	c_tag = "DS-2 EVA"
+	c_tag = "DS-2 EVA";
+	network = list("ds2")
 	},
 /turf/open/floor/iron/dark/small,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/eva)
@@ -8799,11 +8807,11 @@
 	},
 /obj/structure/sign/flag/syndicate/directional/north,
 /obj/structure/showcase/cyborg{
+	desc = "A stand with the empty body of a Cybersun cyborg bolted to it.";
+	dir = 4;
 	icon = 'icons/mob/silicon/robots.dmi';
 	icon_state = "synd_sec";
 	name = "syndicate cyborg showcase";
-	desc = "A stand with the empty body of a Cybersun cyborg bolted to it.";
-	dir = 4;
 	pixel_x = -6
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
@@ -8833,8 +8841,8 @@
 	},
 /obj/machinery/button/door/directional/south{
 	id = "dorms-view";
-	req_access = list("syndicate");
-	name = "Dorms Blast Door Control"
+	name = "Dorms Blast Door Control";
+	req_access = list("syndicate")
 	},
 /obj/structure/chair/sofa/corp/right{
 	color = "#DE3A3A";
@@ -8861,8 +8869,8 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Nk" = (
 /obj/machinery/door/airlock/command{
-	name = "Bridge";
-	hackProof = 1
+	hackProof = 1;
+	name = "Bridge"
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/cable,
@@ -8939,14 +8947,14 @@
 	dir = 8
 	},
 /obj/machinery/button/door/incinerator_vent_syndicatelava_aux{
-	pixel_y = 24;
+	name = "Combustion Chamber Blast Door Control";
 	pixel_x = -6;
-	name = "Combustion Chamber Blast Door Control"
+	pixel_y = 24
 	},
 /obj/machinery/button/door/incinerator_vent_syndicatelava_main{
+	name = "Turbine Exterior Vent Control";
 	pixel_x = -6;
-	pixel_y = -24;
-	name = "Turbine Exterior Vent Control"
+	pixel_y = -24
 	},
 /obj/machinery/door/window/survival_pod{
 	dir = 8;
@@ -9018,8 +9026,8 @@
 	dir = 8
 	},
 /obj/item/clothing/accessory/armband{
-	name = "brig officer armband";
-	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to."
+	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to.";
+	name = "brig officer armband"
 	},
 /obj/structure/closet/secure_closet{
 	icon_state = "sec";
@@ -9133,8 +9141,8 @@
 /obj/structure/table/wood,
 /obj/machinery/firealarm/directional/east,
 /obj/item/reagent_containers/cup/glass/shaker{
-	pixel_y = -7;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = -7
 	},
 /turf/open/floor/wood/tile,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
@@ -9176,16 +9184,16 @@
 	pixel_y = 17
 	},
 /obj/item/assembly/flash/handheld{
-	pixel_y = 10;
-	pixel_x = 3
+	pixel_x = 3;
+	pixel_y = 10
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
 /obj/item/crowbar/red,
 /obj/item/assembly/flash/handheld{
-	pixel_y = 7;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 7
 	},
 /obj/structure/reagent_dispensers/wall/peppertank/directional/west,
 /turf/open/floor/mineral/plastitanium/red,
@@ -9222,8 +9230,8 @@
 	dir = 10
 	},
 /obj/item/clothing/accessory/armband{
-	name = "brig officer armband";
-	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to."
+	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to.";
+	name = "brig officer armband"
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -9377,8 +9385,8 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/camera/xray/directional/west{
-	network = list("ds2");
-	c_tag = "DS-2 Engineering"
+	c_tag = "DS-2 Engineering";
+	network = list("ds2")
 	},
 /obj/machinery/airalarm/syndicate{
 	dir = 8;
@@ -9689,8 +9697,8 @@
 	desc = "To keep your food away from the carp.";
 	id = "diner-view";
 	name = "Diner Blast Door Control";
-	req_access = list("syndicate");
-	pixel_y = -24
+	pixel_y = -24;
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
@@ -10007,12 +10015,12 @@
 	dir = 4
 	},
 /obj/machinery/button/door{
-	id = "ds2corpliaison";
-	req_access = list("syndicate_leader");
-	name = "Shutters control";
 	desc = "Keep out the paperwork.";
+	id = "ds2corpliaison";
+	name = "Shutters control";
+	pixel_x = -32;
 	pixel_y = 24;
-	pixel_x = -32
+	req_access = list("syndicate_leader")
 	},
 /turf/open/floor/wood/large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
@@ -10035,8 +10043,8 @@
 /obj/item/folder/syndicate/red,
 /obj/machinery/firealarm/directional/north,
 /obj/machinery/camera/xray/directional/north{
-	network = list("ds2");
-	c_tag = "DS-2 Vault"
+	c_tag = "DS-2 Vault";
+	network = list("ds2")
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
@@ -10106,8 +10114,8 @@
 	dir = 8
 	},
 /obj/machinery/camera/xray/directional/south{
-	network = list("ds2");
-	c_tag = "DS-2 Bridge"
+	c_tag = "DS-2 Bridge";
+	network = list("ds2")
 	},
 /obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/iron/dark/textured_half,
@@ -10336,8 +10344,8 @@
 "Tm" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/computer/atmos_control/nocontrol/incinerator{
-	dir = 1;
-	atmos_chambers = list("syndieincinerator"="DS-2 Incinerator Chamber")
+	atmos_chambers = list("syndieincinerator"="DS-2 Incinerator Chamber");
+	dir = 1
 	},
 /obj/structure/window/reinforced/survival_pod,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -10483,12 +10491,12 @@
 	req_access = list("syndicate")
 	},
 /obj/item/clothing/accessory/armband/engine{
-	name = "engine technician armband";
-	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to."
+	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to.";
+	name = "engine technician armband"
 	},
 /obj/item/clothing/accessory/armband/engine{
-	name = "engine technician armband";
-	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to."
+	desc = "An armband, worn by the FOB's operatives to display which department they're assigned to.";
+	name = "engine technician armband"
 	},
 /obj/item/clothing/glasses/hud/ar/aviator/meson,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
@@ -10626,8 +10634,8 @@
 /obj/structure/table/wood,
 /obj/item/reagent_containers/cup/rag,
 /obj/item/storage/fancy/cigarettes/cigpack_syndicate{
-	pixel_y = 6;
-	pixel_x = 3
+	pixel_x = 3;
+	pixel_y = 6
 	},
 /turf/open/floor/wood/tile,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
@@ -10642,8 +10650,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/command{
-	name = "Bridge";
-	hackProof = 1
+	hackProof = 1;
+	name = "Bridge"
 	},
 /obj/effect/mapping_helpers/airlock/unres{
 	dir = 4
@@ -10798,8 +10806,8 @@
 "UX" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/window/survival_pod{
-	req_access = list("syndicate_leader");
-	dir = 1
+	dir = 1;
+	req_access = list("syndicate_leader")
 	},
 /obj/structure/table/reinforced/plastitaniumglass,
 /turf/open/floor/iron/dark/smooth_large,
@@ -10824,16 +10832,16 @@
 	id = "smasteratarms";
 	name = "Master at Arms' room bolt";
 	normaldoorcontrol = 1;
+	pixel_x = 6;
 	req_access = list("syndicate_leader");
-	specialfunctions = 4;
-	pixel_x = 6
+	specialfunctions = 4
 	},
 /obj/machinery/button/door/directional/south{
 	desc = "Keep out the Officers.";
 	id = "smasteratarms";
 	name = "Master at Arms' shutters control";
-	req_access = list("syndicate_leader");
-	pixel_x = -6
+	pixel_x = -6;
+	req_access = list("syndicate_leader")
 	},
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
@@ -10964,8 +10972,8 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/hydroponics)
 "VC" = (
 /obj/machinery/camera/directional/north{
-	network = list("ds2");
-	c_tag = "DS-2 Interrogation Room"
+	c_tag = "DS-2 Interrogation Room";
+	network = list("ds2")
 	},
 /obj/machinery/airalarm/syndicate{
 	dir = 1;
@@ -10992,8 +11000,8 @@
 /obj/item/circuitboard/machine/ore_silo,
 /obj/structure/frame/machine{
 	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
+	icon_state = "box_1";
+	state = 2
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
@@ -11070,9 +11078,9 @@
 "VX" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /obj/machinery/door/poddoor/shutters{
-	name = "Corporate Liaison Shutters";
+	dir = 8;
 	id = "ds2corpliaison";
-	dir = 8
+	name = "Corporate Liaison Shutters"
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
@@ -11111,8 +11119,8 @@
 	pixel_x = -5
 	},
 /obj/item/storage/box/stockparts/deluxe{
-	pixel_y = -4;
-	pixel_x = 3
+	pixel_x = 3;
+	pixel_y = -4
 	},
 /obj/structure/closet/crate/engineering,
 /obj/item/t_scanner,
@@ -11201,14 +11209,14 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/door/window/survival_pod{
-	req_access = list("syndicate_leader");
 	dir = 8;
-	name = "Isolation Cell"
+	name = "Isolation Cell";
+	req_access = list("syndicate_leader")
 	},
 /obj/machinery/door/window/survival_pod{
-	req_access = list("syndicate_leader");
 	dir = 4;
-	name = "Isolation Cell"
+	name = "Isolation Cell";
+	req_access = list("syndicate_leader")
 	},
 /obj/machinery/door/poddoor/preopen{
 	id = "gaybabyjail"
@@ -11323,8 +11331,8 @@
 	pixel_y = 5
 	},
 /obj/item/pen{
-	pixel_y = 5;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = 5
 	},
 /turf/open/floor/iron/dark/textured_half,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
@@ -11356,18 +11364,18 @@
 	dir = 8
 	},
 /obj/structure/closet/secure_closet{
+	icon_door = "eng_elec";
 	icon_state = "eng";
 	name = "electrical supplies locker";
-	req_access = list("syndicate");
-	icon_door = "eng_elec"
+	req_access = list("syndicate")
 	},
 /obj/item/electronics/airlock{
-	pixel_y = -7;
-	pixel_x = 5
+	pixel_x = 5;
+	pixel_y = -7
 	},
 /obj/item/electronics/airlock{
-	pixel_y = -7;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = -7
 	},
 /obj/item/storage/toolbox/electrical{
 	pixel_y = -7
@@ -11377,30 +11385,30 @@
 	pixel_y = 5
 	},
 /obj/item/electronics/firelock{
-	pixel_y = 5;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 5
 	},
 /obj/item/electronics/airalarm{
 	pixel_x = 2
 	},
 /obj/item/stock_parts/cell/high{
-	pixel_y = -8;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = -8
 	},
 /obj/item/stock_parts/cell/high{
-	pixel_y = -8;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = -8
 	},
 /obj/item/stock_parts/cell/high{
 	pixel_y = -8
 	},
 /obj/item/stock_parts/cell/high{
-	pixel_y = -8;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = -8
 	},
 /obj/item/stock_parts/cell/high{
-	pixel_y = -8;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = -8
 	},
 /obj/item/clothing/glasses/meson/engine,
 /turf/open/floor/iron/dark/side{
@@ -11435,8 +11443,8 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/hatch{
-	name = "Incinerator Hatch";
-	id_tag = "DS2incineratorHatch"
+	id_tag = "DS2incineratorHatch";
+	name = "Incinerator Hatch"
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/structure/holosign/barrier/atmos/sturdy,
@@ -11780,8 +11788,8 @@
 	dir = 4
 	},
 /obj/machinery/camera/xray/directional/west{
-	network = list("ds2");
-	c_tag = "DS-2 Research"
+	c_tag = "DS-2 Research";
+	network = list("ds2")
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
@@ -11919,8 +11927,8 @@
 	icon_state = "control_kill";
 	lethal = 1;
 	name = "DS2 turret controls";
-	req_access = list("syndicate");
-	pixel_x = -30
+	pixel_x = -30;
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
