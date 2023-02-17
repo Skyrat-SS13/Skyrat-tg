@@ -852,8 +852,6 @@
 	message_admins("[ADMIN_LOOKUPFLW(obsessed)] has been made Obsessed by the midround ruleset.")
 	log_game("[key_name(obsessed)] was made Obsessed by the midround ruleset.")
 	return TRUE
-<<<<<<< HEAD
-=======
 
 /// Space Changeling ruleset
 /datum/dynamic_ruleset/midround/from_ghosts/changeling_midround
@@ -943,4 +941,3 @@
 	if(possible_targets.len)
 		return pick(possible_targets)
 	return FALSE
->>>>>>> ef335f7d1f3 (It Came From Outer Spess: Adds midround changelings, delivered by an absolutely disgusting changeling meteor (#73018))
