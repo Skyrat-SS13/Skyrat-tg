@@ -30,15 +30,12 @@
 	/// Whether or not dynamic should hijack this event
 	var/dynamic_should_hijack = FALSE
 
-<<<<<<< HEAD
-=======
 	/// Datum that will handle admin options for forcing the event.
 	/// If there are no options, just leave it null.
 	var/datum/event_admin_setup/admin_setup = null
 	/// Flags dictating whether this event should be run on certain kinds of map
 	var/map_flags = NONE
 
->>>>>>> cfb2d9feb95 (Meteor events won't try and run on icebox (#73241))
 /datum/round_event_control/New()
 	if(config && !wizardevent) // Magic is unaffected by configs
 		earliest_start = CEILING(earliest_start * CONFIG_GET(number/events_min_time_mul), 1)
