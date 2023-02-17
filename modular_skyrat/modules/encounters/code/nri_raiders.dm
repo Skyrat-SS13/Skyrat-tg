@@ -161,17 +161,17 @@ GLOBAL_VAR(first_officer)
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/special(mob/living/carbon/human/spawned_human)
 	. = ..()
 	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
-	
+
 	var/callsign = pick(GLOB.callsigns_nri)
-	var/number = pick(GLOB.phonetic_alphabet.Copy(1, 9))
+	var/number = pick(GLOB.phonetic_alphabet_numbers)
 	spawned_human.fully_replace_character_name(null, "[callsign] [number]")
 	
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/post_transfer_prefs(mob/living/carbon/human/spawned_human)
 	. = ..()
 	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
-	
+
 	var/callsign = pick(GLOB.callsigns_nri)
-	var/number = pick(GLOB.phonetic_alphabet.Copy(1, 9))
+	var/number = pick(GLOB.phonetic_alphabet_numbers)
 	spawned_human.fully_replace_character_name(null, "[callsign] [number]")
 
 	return ..()
@@ -202,7 +202,7 @@ GLOBAL_VAR(first_officer)
 
 	var/callsign = pick(GLOB.callsigns_nri)
 	var/number = pick(GLOB.phonetic_alphabet.Copy(1, 9))
-	spawned_human.fully_replace_character_name(null, "[callsign] [number] [GLOB.first_officer == spawned_human ? "Actual" : ""]")
+	spawned_human.fully_replace_character_name(null, "[callsign] [number][GLOB.first_officer == spawned_human ? " Actual" : ""]")
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/officer/post_transfer_prefs(mob/living/carbon/human/spawned_human)
 	. = ..()
@@ -211,7 +211,7 @@ GLOBAL_VAR(first_officer)
 	
 	var/callsign = pick(GLOB.callsigns_nri)
 	var/number = pick(GLOB.phonetic_alphabet.Copy(1, 9))
-	spawned_human.fully_replace_character_name(null, "[callsign] [number] [GLOB.first_officer == spawned_human ? "Actual" : ""]")
+	spawned_human.fully_replace_character_name(null, "[callsign] [number][GLOB.first_officer == spawned_human ? " Actual" : ""]")
 	
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/marine
 	rank = "Marine"
