@@ -113,7 +113,7 @@
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 
 /obj/effect/decal/conveyor_sorter/attackby(obj/item/used_item, mob/user, params)
-	if(istype(used_item, /obj/item/conveyor_sorter) || istype(used_item, /obj/item/conveyor_sorter/improved))
+	if(istype(used_item, /obj/item/conveyor_sorter))
 		var/obj/item/conveyor_sorter/cs_item = used_item
 		sorting_list = cs_item.current_sort
 		visible_message("[src] pings, updating its sorting list!")
@@ -132,11 +132,11 @@
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 	qdel(src)
 
-/obj/effect/decal/conveyor_sorter/proc/on_entered(datum/source, atom/movable/AM)
+/obj/effect/decal/conveyor_sorter/proc/on_entered(datum/source, atom/movable/entering_atom)
 	SIGNAL_HANDLER
-	if(is_type_in_list(AM, sorting_list) && !AM.anchored && COOLDOWN_FINISHED(src, use_cooldown))
+	if(is_type_in_list(entering_atom, sorting_list) && !entering_atom.anchored && COOLDOWN_FINISHED(src, use_cooldown))
 		COOLDOWN_START(src, use_cooldown, 1 SECONDS)
-		AM.Move(get_step(src, dir))
+		entering_atom.Move(get_step(src, dir))
 
 /datum/design/conveyor_sorter
 	name = "Conveyor Sorter"
@@ -182,11 +182,11 @@
 	desc = "A wonderful item that can set markers and forcefully move stuff to a direction. With more capacity to sort more!"
 	id = "conveyor_sorter_improved"
 	build_path = /obj/item/conveyor_sorter/improved
-	materials = list(
-		/datum/material/iron = 500,
-	    /datum/material/plastic = 500,
-	    /datum/material/gold = 500,
-	    /datum/material/bluespace = 500,
+    materials = list(
+        /datum/material/iron = 500,
+        /datum/material/plastic = 500,
+        /datum/material/gold = 500,
+        /datum/material/bluespace = 500,
     )
 
 
