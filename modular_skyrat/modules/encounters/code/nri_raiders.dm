@@ -201,7 +201,7 @@ GLOBAL_VAR(first_officer)
 		GLOB.first_officer = spawned_human
 
 	var/callsign = pick(GLOB.callsigns_nri)
-	var/number = pick(GLOB.phonetic_alphabet.Copy(1, 9))
+	var/number = pick(GLOB.phonetic_alphabet_numbers)
 	spawned_human.fully_replace_character_name(null, "[callsign] [number][GLOB.first_officer == spawned_human ? " Actual" : ""]")
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/officer/post_transfer_prefs(mob/living/carbon/human/spawned_human)
@@ -210,7 +210,7 @@ GLOBAL_VAR(first_officer)
 	spawned_human.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_MIND)
 	
 	var/callsign = pick(GLOB.callsigns_nri)
-	var/number = pick(GLOB.phonetic_alphabet.Copy(1, 9))
+	var/number = pick(GLOB.phonetic_alphabet_numbers)
 	spawned_human.fully_replace_character_name(null, "[callsign] [number][GLOB.first_officer == spawned_human ? " Actual" : ""]")
 	
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/marine
