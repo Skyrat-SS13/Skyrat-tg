@@ -350,7 +350,7 @@
 	name = "\improper NRI Police Officer"
 	job_rank = ROLE_TRAITOR
 	roundend_category = "nri raiders"
-	antagpanel_category = ANTAG_GROUP_PIRATES
+	antagpanel_category = "NRI Police"
 	show_in_antagpanel = FALSE
 	show_to_ghosts = TRUE
 	suicide_cry = "God, save the Empress!!"
