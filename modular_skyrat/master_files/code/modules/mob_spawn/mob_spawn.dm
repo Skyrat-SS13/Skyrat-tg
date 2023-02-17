@@ -19,12 +19,12 @@
 	if(quirks_enabled)
 		SSquirks.AssignQuirks(spawned_human, spawned_human.client)
 
+	post_transfer_prefs(spawned_human)
+
 	if(loadout_enabled)
 		spawned_human.equip_outfit_and_loadout(outfit, spawned_human.client.prefs)
 	else
 		equip(spawned_human)
-
-	post_transfer_prefs(spawned_human)
 
 	return spawned_human
 

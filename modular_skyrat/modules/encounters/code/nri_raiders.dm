@@ -1,3 +1,6 @@
+/// To know whether or not we have an officer already
+GLOBAL_VAR(first_officer)
+
 ///NRI police patrol with a mission to find out if the fine reason is legitimate and then act from there.
 /datum/pirate_gang/nri_raiders
 	name = "NRI IAC Police Patrol"
@@ -79,6 +82,14 @@
 	. = ..()
 	equipped.faction -= "pirate"
 	equipped.faction |= "raider"
+	
+	// make sure we update the ID's name too
+	var/obj/item/card/id/id_card = equipped.wear_id
+	if(istype(id_card))
+		id_card.registered_name = equipped.real_name
+		id_card.update_label()
+
+	handlebank(equipped)
 
 /datum/id_trim/nri_raider/officer
 	assignment = "NRI Field Officer"
@@ -111,6 +122,14 @@
 	. = ..()
 	equipped.faction -= "pirate"
 	equipped.faction |= "raider"
+	
+	// make sure we update the ID's name too
+	var/obj/item/card/id/id_card = equipped.wear_id
+	if(istype(id_card))
+		id_card.registered_name = equipped.real_name
+		id_card.update_label()
+
+	handlebank(equipped)
 
 /datum/id_trim/nri_raider
 	assignment = "NRI Marine"
@@ -141,23 +160,20 @@
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/special(mob/living/carbon/human/spawned_human)
 	. = ..()
-	var/last_name = pick(GLOB.last_names)
-	spawned_human.fully_replace_character_name(null, "[rank] [last_name]")
 	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
+	
+	var/callsign = pick(GLOB.callsigns_nri)
+	var/number = pick(GLOB.phonetic_alphabet.Copy(1, 9))
+	spawned_human.fully_replace_character_name(null, "[callsign] [number]")
 	
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/post_transfer_prefs(mob/living/carbon/human/spawned_human)
 	. = ..()
-	var/last_name = pick(GLOB.last_names)
-	spawned_human.fully_replace_character_name(null, "[rank] [last_name]")
 	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
 	
-	// make sure we update the ID's name too
-	var/obj/item/card/id/id_card = spawned_human.wear_id
-	if(istype(id_card))
-		id_card.registered_name = spawned_human.real_name
-		id_card.update_label()
+	var/callsign = pick(GLOB.callsigns_nri)
+	var/number = pick(GLOB.phonetic_alphabet.Copy(1, 9))
+	spawned_human.fully_replace_character_name(null, "[callsign] [number]")
 
-	outfit.handlebank(spawned_human)
 	return ..()
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/Destroy()
@@ -179,12 +195,24 @@
 	. = ..()
 	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
 	spawned_human.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_MIND)
+		
+	// if this is the first officer, keep a reference to them
+	if(!GLOB.first_officer)
+		GLOB.first_officer = spawned_human
+
+	var/callsign = pick(GLOB.callsigns_nri)
+	var/number = pick(GLOB.phonetic_alphabet.Copy(1, 9))
+	spawned_human.fully_replace_character_name(null, "[callsign] [number] [GLOB.first_officer == spawned_human ? "Actual" : ""]")
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/officer/post_transfer_prefs(mob/living/carbon/human/spawned_human)
 	. = ..()
 	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
 	spawned_human.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_MIND)
-
+	
+	var/callsign = pick(GLOB.callsigns_nri)
+	var/number = pick(GLOB.phonetic_alphabet.Copy(1, 9))
+	spawned_human.fully_replace_character_name(null, "[callsign] [number] [GLOB.first_officer == spawned_human ? "Actual" : ""]")
+	
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/marine
 	rank = "Marine"
 
