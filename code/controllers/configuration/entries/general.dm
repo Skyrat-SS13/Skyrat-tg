@@ -524,8 +524,6 @@
 	return "" //default broadcast
 
 /datum/config_entry/string/chat_announce_new_game
-<<<<<<< HEAD
-=======
 	deprecated_by = /datum/config_entry/string/channel_announce_new_game
 
 /datum/config_entry/string/chat_announce_new_game/DeprecationUpdate(value)
@@ -535,7 +533,6 @@
 	default = null
 
 /datum/config_entry/string/channel_announce_end_game
->>>>>>> bb3947e68f7 (add a stack_trace to config validation checking (#73160))
 	default = null
 
 /datum/config_entry/string/chat_new_game_notifications
