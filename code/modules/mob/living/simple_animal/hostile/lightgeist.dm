@@ -47,6 +47,19 @@
 /mob/living/simple_animal/hostile/lightgeist/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/simple_flying)
+<<<<<<< HEAD
+=======
+	AddComponent(\
+		/datum/component/healing_touch,\
+		heal_brute = melee_damage_upper,\
+		heal_burn = melee_damage_upper,\
+		heal_time = 0,\
+		valid_targets_typecache = typecacheof(list(/mob/living)),\
+		action_text = "%SOURCE% begins mending the wounds of %TARGET%",\
+		complete_text = "%TARGET%'s wounds mend together.",\
+	)
+
+>>>>>>> 7867d14fd48 (Lightgeists won't try to heal toxin damage (#73467))
 	remove_verb(src, /mob/living/verb/pulled)
 	remove_verb(src, /mob/verb/me_verb)
 	var/datum/atom_hud/medsensor = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
