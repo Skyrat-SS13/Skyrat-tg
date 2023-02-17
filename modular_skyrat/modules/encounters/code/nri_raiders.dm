@@ -405,15 +405,77 @@
 	name = "\improper NRI police patrol"
 
 /datum/team/raider/proc/forge_objectives()
-	var/datum/objective/policing/spesscops = new()
-	spesscops.team = src
-	spesscops.update_explanation_text()
-	objectives += spesscops
+	add_objective(new /datum/objective/policing)
+	add_objective(new /datum/objective/inspect_area)
+	add_objective(new /datum/objective/question)
+	add_objective(new /datum/objective/steal_n_of_type/contraband)
+	add_objective(new /datum/objective/fortify)
+	add_objective(new /datum/objective/survive)
 	for(var/datum/mind/M in members)
 		var/datum/antagonist/raider/R = M.has_antag_datum(/datum/antagonist/raider)
 		if(R)
 			R.objectives |= objectives
 
 /datum/objective/policing
+	name = "policing"
 	explanation_text = "Contact the station to perform an inspection. Delegate responsibilities among the ship's crew. Minimise civilian casualties."
 	martyr_compatible = TRUE
+
+/datum/objective/inspect_area
+	name = "inspect area"
+	explanation_text = "Inspect certain department and make sure it's up to our specifications. Special scrutiny and pickyness is advised."
+	var/area
+	martyr_compatible = TRUE
+
+/datum/objective/inspect_area/New(text)
+	. = ..()
+	area = pick("Cargo","Engineering","Security","Command","Service","Medical","Science")
+
+/datum/objective/inspect_area/update_explanation_text()
+	..()
+	if(area)
+		explanation_text = "Inspect [area] department and make sure it's up to our specifications. Special scrutiny and pickyness is advised."
+	else
+		explanation_text = "Perform a general station inspection and make sure it's up to any loose specifications you can think of."
+
+/datum/objective/question
+	name = "question"
+	martyr_compatible = TRUE
+	admin_grantable = TRUE
+	var/target_role_type = FALSE
+
+/datum/objective/question/update_explanation_text()
+	..()
+	if(target?.current)
+		explanation_text = "Bring in [target.name], the [!target_role_type ? target.assigned_role.title : target.special_role] for questioning."
+	else
+		explanation_text = "Bring in whoever for questioning."
+
+/datum/objective/question/admin_edit(mob/admin)
+	admin_simple_target_pick(admin)
+
+/datum/objective/steal_n_of_type/contraband
+	name = "confiscate contraband"
+	explanation_text = "Confiscate at least cool number pieces of contraband. Drugs, illicit weaponry, armor or equipment of any sort."
+	amount = 5
+
+/datum/objective/steal_n_of_type/contraband/New()
+	. = ..()
+	amount = pick(10,25)
+	explanation_text = "Confiscate at least [amount] pieces of contraband. Drugs, illicit weaponry, armor or equipment of any sort."
+	update_explanation_text()
+	return
+
+/datum/objective/steal_n_of_type/contraband/check_completion()
+	return completed ///I am letting them roleplay this out.
+
+/datum/objective/fortify
+	name = "fortify"
+	explanation_text = "Establish an outpost orbiting the station."
+	martyr_compatible = TRUE
+
+/datum/objective/fortify/New()
+	. = ..()
+	explanation_text = "Establish an outpost orbiting the [station_name()]"
+	update_explanation_text()
+	return
