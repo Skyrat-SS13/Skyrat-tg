@@ -1,6 +1,6 @@
 /**************SKYRAT REWARDS**************/
 //SUITS
-/obj/item/clothing/suit/hooded/wintercoat/colourable
+/obj/item/clothing/suit/hooded/wintercoat/colourable //ORION TODO: Kill this (make it its own seperate gags (upstream?))
 	name = "custom winter coat"
 	icon_state = "winter_coat"
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/colourable
@@ -1472,6 +1472,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "colorblockhoodie"
 	hoodtype = /obj/item/clothing/head/hooded/colorblockhoodie
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/hooded/colorblockhoodie
 	name = "hood"
@@ -1480,4 +1481,3 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "colorblockhood"
 	flags_inv = HIDEHAIR
-	supports_variations_flags = NONE

@@ -380,6 +380,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	GLOB.joined_player_list -= stored_ckey
 
 	handle_objectives()
+	mob_occupant.ghostize()
 	QDEL_NULL(occupant)
 	open_machine()
 	name = initial(name)
@@ -388,12 +389,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 /obj/machinery/cryopod/proc/reset_religion()
 
  // set the altar references to the old religious_sect to null
-	for(var/obj/structure/altar_of_gods/altar in GLOB.chaplain_altars)     
+	for(var/obj/structure/altar_of_gods/altar in GLOB.chaplain_altars)
 		altar.GetComponent(/datum/component/religious_tool).easy_access_sect = null
 		altar.sect_to_altar = null
-		
+
 	QDEL_NULL(GLOB.religious_sect) // queue for removal but also set it to null, in case a new chaplain joins before it can be deleted
-	
+
 	// set the rest of the global vars to null for the new chaplain
 	GLOB.religion = null
 	GLOB.deity = null
