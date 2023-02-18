@@ -123,7 +123,7 @@
 		message_admins("[key_name_admin(usr)] cancelled event [name].")
 		log_admin_private("[key_name(usr)] cancelled event [name].")
 		SSblackbox.record_feedback("tally", "event_admin_cancelled", 1, typepath)
-	//SKYRAT EDIT ADDITION START
+	//SKYRAT EDIT ADDITION BEGIN
 	if(href_list["something_else"])
 		if(!triggering)
 			to_chat(usr, span_admin("You had your chance!"))
