@@ -288,10 +288,10 @@
 
 /obj/item/toy/plush/skyrat/blue_cat
 	name = "blue cat plushie"
-	desc = "A bright blue cat plush with neon pink hair, here to hand out kisses wherever kisses need be."
+	desc = "A bright blue cat plush with neon pink hair, here to hand out kisses wherever kisses need be. Usually found near its home habitat, the tram."
 	icon_state = "plushie_skyy"
-	attack_verb_continuous = list("kisses", "hugs", "purrs against")
-	attack_verb_simple = list("kisses", "hugs", "purrs against")
+	attack_verb_continuous = list("kisses", "nuzzles", "cuddles", "purrs against")
+	attack_verb_simple = list("kiss", "nuzzle", "cuddle", "purr against")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/nya.ogg' = 1)
 
 /obj/item/toy/plush/skyrat/igneous_synth
