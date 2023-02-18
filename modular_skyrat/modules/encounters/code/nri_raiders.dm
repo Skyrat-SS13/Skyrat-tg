@@ -148,7 +148,6 @@ GLOBAL_VAR(first_officer)
 	icon_state = "cryopod"
 	mob_species = /datum/species/human
 	faction = list("raider")
-	var/rank = "NRI Marine"
 	you_are_text = "You are a Novaya Rossiyskaya Imperiya task force."
 	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by demanding the funds. Force approach is usually recommended, but isn't the only method."
 	important_text = "Allowed races are humans, Akulas, IPCs. Follow your field officer's orders. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. Roleplay accordingly."
@@ -188,7 +187,6 @@ GLOBAL_VAR(first_officer)
 	name = "NRI Officer sleeper"
 	mob_name = "Novaya Rossiyskaya Imperiya raiding party's field officer"
 	outfit = /datum/outfit/pirate/nri_officer
-	rank = "Field Officer"
 	important_text = "Allowed races are humans, Akulas, IPCs. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. Roleplay accordingly. There is an important document in your pocket I'd advise you to read and keep safe."
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/officer/special(mob/living/carbon/human/spawned_human)
@@ -212,9 +210,6 @@ GLOBAL_VAR(first_officer)
 	var/callsign = pick(GLOB.callsigns_nri)
 	var/number = pick(GLOB.phonetic_alphabet_numbers)
 	spawned_human.fully_replace_character_name(null, "[callsign] [number][GLOB.first_officer == spawned_human ? " Actual" : ""]")
-	
-/obj/effect/mob_spawn/ghost_role/human/nri_raider/marine
-	rank = "Marine"
 
 /datum/map_template/shuttle/pirate/nri_raider
 	prefix = "_maps/shuttles/skyrat/"
