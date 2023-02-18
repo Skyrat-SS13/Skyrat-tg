@@ -385,6 +385,7 @@
 	if(crew)
 		objectives |= crew.objectives
 	. = ..()
+
 /datum/antagonist/raider/apply_innate_effects(mob/living/mob_override)
 	. = ..()
 	var/mob/living/owner_mob = mob_override || owner.current
@@ -392,7 +393,6 @@
 	holder.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_PIRATE)
 	holder.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_PIRATE)
 	holder.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_PIRATE)
-	holder.selected_language = /datum/language/piratespeak
 
 /datum/antagonist/raider/remove_innate_effects(mob/living/mob_override)
 	var/mob/living/owner_mob = mob_override || owner.current
@@ -407,7 +407,7 @@
 /datum/team/raider/proc/forge_objectives()
 	add_objective(new /datum/objective/policing)
 	add_objective(new /datum/objective/inspect_area)
-	add_objective(new /datum/objective/question)
+	add_objective(new /datum/objective/survey)
 	add_objective(new /datum/objective/steal_n_of_type/contraband)
 	add_objective(new /datum/objective/fortify)
 	add_objective(new /datum/objective/survive)
@@ -424,35 +424,36 @@
 /datum/objective/inspect_area
 	name = "inspect area"
 	explanation_text = "Inspect certain department and make sure it's up to our specifications. Special scrutiny and pickyness is advised."
-	var/area
+	var/inspection_area
 	martyr_compatible = TRUE
 
 /datum/objective/inspect_area/New(text)
 	. = ..()
-	area = pick("Cargo","Engineering","Security","Command","Service","Medical","Science")
+	inspection_area = pick("Cargo","Engineering","Security","Command","Service","Medical","Science")
 
 /datum/objective/inspect_area/update_explanation_text()
 	..()
-	if(area)
-		explanation_text = "Inspect [area] department and make sure it's up to our specifications. Special scrutiny and pickyness is advised."
+	if(inspection_area)
+		explanation_text = "Inspect [inspection_area] department and make sure it's up to our specifications. Special scrutiny and pickyness is advised."
 	else
 		explanation_text = "Perform a general station inspection and make sure it's up to any loose specifications you can think of."
 
-/datum/objective/question
-	name = "question"
+/datum/objective/survey
+	name = "survey"
 	martyr_compatible = TRUE
 	admin_grantable = TRUE
-	var/target_role_type = FALSE
+	var/survey_area
 
-/datum/objective/question/update_explanation_text()
+/datum/objective/survey/New(text)
+	. = ..()
+	survey_area = pick("Cargo","Engineering","Security","Command","Service","Medical","Science")
+
+/datum/objective/survey/update_explanation_text()
 	..()
-	if(target?.current)
-		explanation_text = "Bring in [target.name], the [!target_role_type ? target.assigned_role.title : target.special_role] for questioning."
+	if(survey_area)
+		explanation_text = "Execute continuous crime prevention and citizen surveying procedures over [survey_area] department. Prevent crime in a given department and perform a public survey to collect people's opinions on various matters."
 	else
-		explanation_text = "Bring in whoever for questioning."
-
-/datum/objective/question/admin_edit(mob/admin)
-	admin_simple_target_pick(admin)
+		explanation_text = "Execute continuous crime prevention and citizen surveying procedures around the station. Prevent crime around the area and perform a public survey to collect people's opinions on various matters."
 
 /datum/objective/steal_n_of_type/contraband
 	name = "confiscate contraband"
