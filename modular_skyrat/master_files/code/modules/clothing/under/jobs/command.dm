@@ -46,6 +46,7 @@
 	armor_type = /datum/armor/rank_blueshield
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
+	alt_covers_chest = TRUE
 
 /datum/armor/rank_blueshield
 	melee = 10
