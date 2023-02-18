@@ -41,14 +41,18 @@
 
 	triggering = TRUE
 
-	message_admins("<font color='[COLOR_ADMIN_PINK]'>Chaos Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [event_to_run.name]. (<a href='?src=[REF(src)];cancel_chaos=1'>CANCEL</a> | <a href='?src=[REF(src)];something_else_chaos=1'>SOMETHING ELSE</a>)</font>")
+	message_admins("<font color='[COLOR_ADMIN_PINK]'>Chaos Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [event_to_run.name]. (\
+		<a href='?src=[REF(src)];cancel_chaos=1'>CANCEL</a> | \
+		<a href='?src=[REF(src)];something_else_chaos=1'>SOMETHING ELSE</a>)</font>")
 	for(var/client/staff as anything in GLOB.admins)
 		if(staff?.prefs.read_preference(/datum/preference/toggle/comms_notification))
 			SEND_SOUND(staff, sound('sound/misc/server-ready.ogg'))
 	sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)
 
 	if(triggering)
-		message_admins("<font color='[COLOR_ADMIN_PINK]'>Chaos Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)]: [event_to_run.name]. (<a href='?src=[REF(event_to_run)];cancel_chaos=1'>CANCEL</a> | <a href='?src=[REF(event_to_run)];something_else_chaos=1'>SOMETHING ELSE</a>)</font>")
+		message_admins("<font color='[COLOR_ADMIN_PINK]'>Chaos Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)]: [event_to_run.name]. (\
+		<a href='?src=[REF(event_to_run)];differentchaos=1'>CANCEL</a> | \
+		<a href='?src=[REF(event_to_run)];differentchaos=1'>SOMETHING ELSE</a>)</font>")
 		sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)
 
 	if(!triggering)
@@ -60,14 +64,14 @@
 
 /datum/round_event_control/preset/Topic(href, href_list)
 	..()
-	if(href_list["cancel_chaos"])
+	if(href_list["cancelchaos"])
 		triggering = FALSE
 		message_admins("[key_name_admin(usr)] cancelled event [name].")
 		log_admin_private("[key_name(usr)] cancelled event [name].")
 		SSblackbox.record_feedback("tally", "event_admin_cancelled", 1, typepath)
 		return
 
-	if(href_list["something_else_chaos"])
+	if(href_list["differentchaos"])
 		triggering = FALSE
 		SSevents.spawnEvent(TRUE)
 		message_admins("[key_name_admin(usr)] requested a new event be spawned instead of [name].")
