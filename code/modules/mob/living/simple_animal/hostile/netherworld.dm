@@ -101,7 +101,17 @@
 	var/static/list/migo_sounds
 	death_message = "wails as its form turns into a pulpy mush."
 	death_sound = 'sound/voice/hiss6.ogg'
+<<<<<<< HEAD:code/modules/mob/living/simple_animal/hostile/netherworld.dm
 	phaser = FALSE
+=======
+	unsuitable_atmos_damage = 0
+	unsuitable_cold_damage = 0
+	unsuitable_heat_damage = 0
+	// Real blue, trying to go for the migo's look
+	lighting_cutoff_red = 15
+	lighting_cutoff_green = 15
+	lighting_cutoff_blue = 50
+>>>>>>> ab307032edc (Nightvision Rework (In the name of color) (#73094)):code/modules/mob/living/basic/space_fauna/netherworld/migo.dm
 
 /mob/living/simple_animal/hostile/netherworld/migo/Initialize(mapload)
 	. = ..()
