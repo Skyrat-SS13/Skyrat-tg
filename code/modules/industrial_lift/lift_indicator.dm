@@ -57,7 +57,8 @@
 /obj/machinery/lift_indicator/examine(mob/user)
 	. = ..()
 
-/** OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	//SKYRAT EDIT REMOVAL BEGIN - (moved to modular_skyrat/modules/aesthetics/industrial_lift/code/industrial_lift.dm)
+	/**
 	if(!is_operational)
 		. += span_notice("The display is dark.")
 		return
@@ -72,7 +73,8 @@
 			dirtext = "stopped"
 
 	. += span_notice("The lift is on floor [current_lift_floor], [dirtext].")
-*/
+	*/
+	//SKYRAT EDIT REMOVAL END
 
 /**
  * Update state, and only process if lift is moving.

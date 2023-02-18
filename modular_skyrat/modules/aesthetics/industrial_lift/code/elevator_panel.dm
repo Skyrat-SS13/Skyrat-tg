@@ -1,7 +1,12 @@
 /obj/machinery/elevator_control_panel
 	icon = 'modular_skyrat/modules/aesthetics/buttons/icons/buttons.dmi'
-	icon_state = "elevatorpanel0"
-	base_icon_state = "elevatorpanel"
+	icon_state = "elevpanel0"
+	base_icon_state = "elevpanel"
+	light_power = 0.5
+	light_range = 1.5
+	light_color = LIGHT_COLOR_DARK_BLUE
+	/// The light mask used in the icon file for emissive layer
+	var/light_mask = "tram-light-mask"
 
 /obj/machinery/elevator_control_panel/Initialize(mapload)
 	. = ..()
@@ -58,5 +63,13 @@
 	// This way we have the top floors at the top, and the bottom floors the bottom.
 	reverse_range(linked_elevator_destination)
 	update_static_data_for_all_viewers()
+
+/obj/machinery/elevator_control_panel/update_overlays()
+	. = ..()
+	if(!light_mask)
+		return
+
+	if(!(machine_stat & (NOPOWER|BROKEN)) && !panel_open)
+		. += emissive_appearance(icon, light_mask, src, alpha = alpha)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/elevator_control_panel, 32)
