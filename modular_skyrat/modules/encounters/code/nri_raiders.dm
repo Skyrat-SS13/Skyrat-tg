@@ -152,7 +152,6 @@ GLOBAL_VAR(first_officer)
 	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by demanding the funds. Force approach is usually recommended, but isn't the only method."
 	important_text = "Allowed races are humans, Akulas, IPCs. Follow your field officer's orders. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. Roleplay accordingly."
 	outfit = /datum/outfit/pirate/nri_marine
-	spawner_job_path = null
 	restricted_species = list(/datum/species/human, /datum/species/akula, /datum/species/synthetic)
 	random_appearance = FALSE
 	show_flavor = TRUE
