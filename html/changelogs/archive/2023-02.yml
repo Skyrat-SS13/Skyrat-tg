@@ -654,3 +654,49 @@
   - bugfix: eyesnatchers that say that they haven been used up can't be used again
   - bugfix: Things dropped into a chasm should no longer occasionally become invisible
       and intangible.
+2023-02-18:
+  Chubbygummibear & JohnFulpWillard:
+  - rscadd: A ton of new NtOS themes, which are accessible by the new Themify application
+      that comes with all PCs.
+  - rscadd: Emagging a PC now defaults it to the Syndicate option (and adds it to
+      go back to it if you wish)
+  - rscadd: There's a new maintenance app that gives you rarer themes
+  - qol: The NtOS Main menu was moved around, added "header" applications that are
+      shown where the Flashlight is, such as your Theme manager and PDA messenger.
+  - code_imp: Made defines for device_themes
+  - code_imp: Added support for special app-side checks to download files
+  - code_imp: Removes the 'run_emag' proc, since apps can directly refer to the computer
+      to check for emag status instead.
+  - bugfix: Programs no longer download twice.
+  - rscdel: Removes the Chemistry computer disk as it was empty due to chemistry app's
+      removal
+  LT3:
+  - code_imp: 'Disease Outbreak: Disease max severity replaced with requested severity'
+  - code_imp: 'Disease Outbreak: Generated disease now includes symptom based name'
+  - code_imp: 'Disease Outbreak: Disease name is now included in the station announcement'
+  - code_imp: 'Disease Outbreak: Now in snake case'
+  - balance: 'Disease Outbreak: Tier 1 cures removed from pool'
+  - bugfix: 'Disease Outbreak: Dangerous/Biohazard diseases are now visible'
+  - bugfix: 'Disease Outbreak: Event setup generates the correct severity'
+  - bugfix: 'Disease Outbreak: Various potential symptoms were in the wrong symptom
+      pool'
+  - bugfix: Fixed broken icon path in TCG set
+  RimiNosha:
+  - qol: Lights have been dimmed some more.
+  - qol: Doors are no longer the next brightest light after tube lights.
+  - qol: Night shift is darker, and is now dynamically applied to lights.
+  - bugfix: Fixed just about all randomly brighter night shift lights.
+  SkyratBot:
+  - admin: Lowered the chance of accidentally leaking asay
+  - server: Updated instructions on setting up a TGUI CDN, noting that TGUI via CDN
+      malfunctions in the event CORS headers are absent.
+  - spellcheck: A grammatical error in strip text has been removed.
+  - bugfix: swapping to a stored DNA no longer forces you to be human instead of the
+      species stored in the DNA
+  - bugfix: False walls will no longer tell you to wait until they've stopped moving
+      when you use an item on them.
+  - bugfix: Meteors can't be triggered automatically or manually on Icebox, where
+      they do nothing.
+  - bugfix: Hacking a comms console as a traitor won't try to summon meteors or pirates
+      to Icebox, where they do nothing.
+  - bugfix: fixed weak dwarfs being too weak as to be unable to throw books
