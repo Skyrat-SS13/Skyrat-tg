@@ -6,6 +6,7 @@
 	var/door_close_sound = 'modular_skyrat/modules/aesthetics/firedoor/sound/firedoor_open.ogg'
 
 /obj/machinery/door/firedoor/update_overlays()
+	. = ..()
 	if(density) // if the door is closed, add the bottom blinking overlay -- and only if it's closed
 		. += "firelock_alarm_type_bottom"
 
