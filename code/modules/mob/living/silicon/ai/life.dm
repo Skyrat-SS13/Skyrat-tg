@@ -5,8 +5,6 @@
 
 	update_gravity(has_gravity())
 
-	handle_traits(delta_time, times_fired)
-
 	if(malfhack?.aidisabled)
 		deltimer(malfhacking)
 		// This proc handles cleanup of screen notifications and
@@ -56,10 +54,17 @@
 /mob/living/silicon/ai/updatehealth()
 	if(status_flags & GODMODE)
 		return
+
+	var/old_health = health
 	set_health(maxHealth - getOxyLoss() - getToxLoss() - getBruteLoss() - getFireLoss())
+
+	var/old_stat = stat
 	update_stat()
+
 	diag_hud_set_health()
-	disconnect_shell()
+
+	if(old_health > health || old_stat != stat) // only disconnect if we lose health or change stat
+		disconnect_shell()
 	SEND_SIGNAL(src, COMSIG_LIVING_HEALTH_UPDATE)
 
 /mob/living/silicon/ai/update_stat()
@@ -155,14 +160,14 @@
 		else
 			to_chat(src, span_notice("Alert cancelled. Power has been restored without our assistance."))
 		setAiRestorePowerRoutine(POWER_RESTORATION_OFF)
-		set_blindness(0)
+		remove_status_effect(/datum/status_effect/temporary_blindness)
 		apc_override = null
 		update_sight()
 
 /mob/living/silicon/ai/proc/ai_lose_power()
 	disconnect_shell()
 	setAiRestorePowerRoutine(POWER_RESTORATION_START)
-	adjust_blindness(1)
+	adjust_temp_blindness(2 SECONDS)
 	update_sight()
 	to_chat(src, span_alert("You've lost power!"))
 	addtimer(CALLBACK(src, PROC_REF(start_RestorePowerRoutine)), 20)

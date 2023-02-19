@@ -79,6 +79,10 @@
 	toner = tonermax
 	diag_hud_set_borgcell()
 	logevent("System brought online.")
+
+	log_silicon("New cyborg [key_name(src)] created with [connected_ai ? "master AI: [key_name(connected_ai)]" : "no master AI"]")
+	log_current_laws()
+
 	alert_control = new(src, list(ALARM_ATMOS, ALARM_FIRE, ALARM_POWER, ALARM_CAMERA, ALARM_BURGLAR, ALARM_MOTION), list(z))
 	RegisterSignal(alert_control.listener, COMSIG_ALARM_LISTENER_TRIGGERED, PROC_REF(alarm_triggered))
 	RegisterSignal(alert_control.listener, COMSIG_ALARM_LISTENER_CLEARED, PROC_REF(alarm_cleared))
@@ -106,10 +110,10 @@
  */
 /mob/living/silicon/robot/proc/set_modularInterface_theme()
 	if(istype(model, /obj/item/robot_model/syndicate) || emagged)
-		modularInterface.device_theme = "syndicate"
+		modularInterface.device_theme = PDA_THEME_SYNDICATE
 		modularInterface.icon_state = "tablet-silicon-syndicate"
 	else
-		modularInterface.device_theme = "ntos"
+		modularInterface.device_theme = PDA_THEME_NTOS
 		modularInterface.icon_state = "tablet-silicon"
 		modularInterface.icon_state_powered = "tablet-silicon"
 		modularInterface.icon_state_unpowered = "tablet-silicon"
