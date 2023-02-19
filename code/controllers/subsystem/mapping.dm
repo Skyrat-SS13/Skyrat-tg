@@ -444,8 +444,16 @@ Used by the AI doomsday and the self-destruct nuke.
 		// And as the file is now removed set the next map to default.
 		next_map_config = load_default_map_config()
 
+/**
+ * Global list of AREA TYPES that are associated with the station.
+ *
+ * This tracks the types of all areas in existence that are a UNIQUE_AREA and are on the station Z.
+ *
+ * This does not track the area instances themselves - See [GLOB.areas] for that.
+ */
 GLOBAL_LIST_EMPTY(the_station_areas)
 
+/// Generates the global station area list, filling it with typepaths of unique areas found on the station Z.
 /datum/controller/subsystem/mapping/proc/generate_station_area_list()
 	for(var/area/station/station_area in GLOB.areas)
 		if (!(station_area.area_flags & UNIQUE_AREA))
@@ -886,3 +894,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	if(length(GLOB.default_lighting_underlays_by_z) < z_level)
 		GLOB.default_lighting_underlays_by_z.len = z_level
 	GLOB.default_lighting_underlays_by_z[z_level] = mutable_appearance(LIGHTING_ICON, "transparent", z_level * 0.01, null, LIGHTING_PLANE, 255, RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM, offset_const = GET_Z_PLANE_OFFSET(z_level))
+
+/// Returns true if the map we're playing on is on a planet
+/datum/controller/subsystem/mapping/proc/is_planetary()
+	return config.planetary
