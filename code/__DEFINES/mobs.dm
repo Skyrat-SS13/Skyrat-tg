@@ -635,15 +635,10 @@ GLOBAL_LIST_INIT(human_heights_to_offsets, list(
 
 // Mob Overlays Indexes
 /// Total number of layers for mob overlays
-<<<<<<< HEAD
-// SKYRAT EDIT CHANGE BEGIN - ORIGINAL: #define TOTAL_LAYERS 33
-#define TOTAL_LAYERS 39 //KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
-// SKYRAT EDIT CHANGE END
-=======
 /// KEEP THIS UP-TO-DATE OR SHIT WILL BREAK
 /// Also consider updating layers_to_offset
-#define TOTAL_LAYERS 33
->>>>>>> a55a30f820bf1 (Return to Tiny: Reworks heights to use filters, allows spacemen to have varying heights (#72344))
+#define TOTAL_LAYERS 39 // SKYRAT EDIT CHANGE BEGIN - ORIGINAL: #define TOTAL_LAYERS 33
+
 /// Mutations layer - Tk headglows, cold resistance glow, etc
 #define MUTATIONS_LAYER 39 // SKYRAT EDIT CHANGE - ORIGINAL: 33
 /// Mutantrace features (tail when looking south) that must appear behind the body parts
@@ -665,7 +660,6 @@ GLOBAL_LIST_INIT(human_heights_to_offsets, list(
 #define BODY_FRONT_UNDER_CLOTHES 31
 // SKYRAT EDIT ADDITION END
 /// Jumpsuit clothing layer
-<<<<<<< HEAD
 #define UNIFORM_LAYER 30 // SKYRAT EDIT CHANGE - ORIGINAL: 25
 // SKYRAT EDIT ADDITION BEGIN - cursed layers under clothing
 #define ANUS_LAYER 29
@@ -674,11 +668,6 @@ GLOBAL_LIST_INIT(human_heights_to_offsets, list(
 #define NIPPLES_LAYER 26
 #define BANDAGE_LAYER 25
 //SKYRAT EDIT ADDITION END
-/// ID card layer (might be deprecated)
-#define ID_LAYER 24
-=======
-#define UNIFORM_LAYER 25
->>>>>>> a55a30f820bf1 (Return to Tiny: Reworks heights to use filters, allows spacemen to have varying heights (#72344))
 /// ID card layer
 #define ID_LAYER 24
 /// ID card layer (might be deprecated)
