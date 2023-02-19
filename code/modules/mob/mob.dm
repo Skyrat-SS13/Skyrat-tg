@@ -1189,7 +1189,15 @@
  * this does NOT check if the mob is missing it's eyeballs. Also see_in_dark is a BYOND mob var (that defaults to 2)
 **/
 /mob/proc/has_nightvision()
+<<<<<<< HEAD
 	return see_in_dark >= NIGHTVISION_FOV_RANGE
+=======
+	// Somewhat conservative, basically is your lighting plane bright enough that you the user can see stuff
+	var/light_offset = lighting_cutoff
+	if(length(lighting_color_cutoffs) == 3)
+		light_offset += (lighting_color_cutoffs[1] + lighting_color_cutoffs[2] + lighting_color_cutoffs[3]) / 3
+	return light_offset >= LIGHTING_NIGHTVISION_THRESHOLD
+>>>>>>> dde34778304 (Fixes another case of broken huds on z level work (Also a runtime for ghosts) (#73520))
 
 /// This mob is abile to read books
 /mob/proc/is_literate()
