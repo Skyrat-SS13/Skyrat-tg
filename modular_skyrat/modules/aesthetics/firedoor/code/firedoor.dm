@@ -7,6 +7,8 @@
 
 /obj/machinery/door/firedoor/update_overlays()
 	. = ..()
+	if(istype(src, /obj/machinery/door/firedoor/border_only))
+		return
 	if(density) // if the door is closed, add the bottom blinking overlay -- and only if it's closed
 		. += "firelock_alarm_type_bottom"
 
