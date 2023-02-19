@@ -303,13 +303,13 @@
 
 /obj/machinery/rnd/rna_recombinator/RefreshParts()
 	. = ..()
-	for(var/obj/item/stock_parts/manipulator/M in component_parts)
-		if(recombination_step_time > 0 && (recombination_step_time - M.rating) >= 1)
-			recombination_step_time -= M.rating
-	for(var/obj/item/stock_parts/scanning_module/M in component_parts)
-		recombination_step_amount += M.rating*2
-	for(var/obj/item/stock_parts/micro_laser/M in component_parts)
-		recombination_step_amount += M.rating
+	for(var/datum/stock_part/manipulator/manipulator in component_parts)
+		if(recombination_step_time > 0 && (recombination_step_time - manipulator.tier) >= 1)
+			recombination_step_time -= manipulator.tier
+	for(var/datum/stock_part/scanning_module/scanning_module in component_parts)
+		recombination_step_amount += scanning_module.tier * 2
+	for(var/datum/stock_part/micro_laser/micro_laser in component_parts)
+		recombination_step_amount += micro_laser.tier
 
 /obj/machinery/rnd/rna_recombinator/update_overlays()
 	. = ..()
