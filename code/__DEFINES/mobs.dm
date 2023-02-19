@@ -637,7 +637,7 @@ GLOBAL_LIST_INIT(human_heights_to_offsets, list(
 /// Total number of layers for mob overlays
 /// KEEP THIS UP-TO-DATE OR SHIT WILL BREAK
 /// Also consider updating layers_to_offset
-#define TOTAL_LAYERS 39 // SKYRAT EDIT CHANGE BEGIN - ORIGINAL: #define TOTAL_LAYERS 33
+#define TOTAL_LAYERS 39 // SKYRAT EDIT CHANGE - ORIGINAL: #define TOTAL_LAYERS 33
 
 /// Mutations layer - Tk headglows, cold resistance glow, etc
 #define MUTATIONS_LAYER 39 // SKYRAT EDIT CHANGE - ORIGINAL: 33
