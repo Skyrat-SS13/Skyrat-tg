@@ -869,8 +869,7 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	light_power = 0.5
 	light_range = 1.5
 	light_color = LIGHT_COLOR_DARK_BLUE
-	/// The light mask used in the icon file for emissive layer
-	var/light_mask = "tram-light-mask"
+	light_mask = "tram-light-mask"
 	/// The specific lift id of the tram we're calling.
 	var/lift_id = MAIN_STATION_TRAM
 
