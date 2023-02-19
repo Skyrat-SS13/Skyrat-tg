@@ -1,4 +1,4 @@
-// Make sure that these get drawn on the over the snout layer if the mob has a snout
+// Make sure that these get drawn over the snout layer if the mob has a snout
 /obj/item/clothing/mask/visual_equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(slot & ITEM_SLOT_MASK)
