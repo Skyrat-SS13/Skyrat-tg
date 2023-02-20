@@ -75,7 +75,7 @@
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
 	)
-	inherent_biotypes = MOB_HUMANOID
+	inherent_biotypes = MOB_HUMANOID | MOB_ORGANIC
 	mutant_bodyparts = list("wings" = "None")
 	exotic_bloodtype = "U"
 	use_skintones = TRUE
