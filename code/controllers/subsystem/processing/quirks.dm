@@ -27,6 +27,7 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Bad Touch", "Friendly"),
 		list("Extrovert", "Introvert"),
 		list("Prosthetic Limb", "Quadruple Amputee", "Body Purist"),
+<<<<<<< HEAD
 		list("Quadruple Amputee", "Paraplegic", "Frail"),
 		//SKYRAT EDIT ADDITION BEGIN
 		list("Nerve Stapled", "Pacifist"),
@@ -35,6 +36,10 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Mute", "Social Anxiety"),
 		list("No Guns", "Pacifist")
 		//SKYRAT EDIT ADDITION END
+=======
+		list("Quadruple Amputee", "Paraplegic"),
+		list("Quadruple Amputee", "Frail"),
+>>>>>>> 581757ec25d (Paraplegics can be Frail, too. (#73511))
 	)
 
 /datum/controller/subsystem/processing/quirks/Initialize()
