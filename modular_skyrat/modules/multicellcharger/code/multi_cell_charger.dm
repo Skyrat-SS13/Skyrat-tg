@@ -114,11 +114,12 @@
 /obj/machinery/cell_charger_multi/RefreshParts()
 	. = ..()
 	charge_rate = 0 // No, you cant get free charging speed!
-	for(var/obj/item/stock_parts/capacitor/C in component_parts)
-		charge_rate += charge_rate_base * C.rating
+	for(var/datum/stock_part/capacitor/capacitor in component_parts)
+		charge_rate += charge_rate_base * capacitor.tier
 		if(charge_rate >= charge_rate_max) // We've hit the charge speed cap, stop iterating.
 			charge_rate = charge_rate_max
 			break
+
 	if(charge_rate < charge_rate_base) // This should never happen; but we need to pretend it can.
 		charge_rate = charge_rate_base
 
@@ -186,7 +187,7 @@
 	name = "Multi-Cell Charger (Machine Board)"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/cell_charger_multi
-	req_components = list(/obj/item/stock_parts/capacitor = 4)
+	req_components = list(/datum/stock_part/capacitor = 4)
 	needs_anchored = FALSE
 
 

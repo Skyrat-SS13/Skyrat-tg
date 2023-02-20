@@ -627,7 +627,7 @@
 
 /mob/living/proc/get_up(instant = FALSE)
 	set waitfor = FALSE
-	var/get_up_speed = GET_UP_FAST //SKYRAT EDIT CHANGE : if(!instant && !do_mob(src, src, 1 SECONDS, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, TYPE_PROC_REF(/mob/living, rest_checks_callback)), interaction_key = DOAFTER_SOURCE_GETTING_UP)
+	var/get_up_speed = GET_UP_FAST //SKYRAT EDIT CHANGE : if(!instant && !do_after(src, 1 SECONDS, src, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, TYPE_PROC_REF(/mob/living, rest_checks_callback)), interaction_key = DOAFTER_SOURCE_GETTING_UP))
 	var/stam = getStaminaLoss()
 	switch(FLOOR(stam,1))
 		if(STAMINA_THRESHOLD_MEDIUM_GET_UP to STAMINA_THRESHOLD_SLOW_GET_UP)
@@ -636,20 +636,20 @@
 			get_up_speed = GET_UP_SLOW
 	if(!instant)
 		if(get_up_speed == GET_UP_SLOW) //Slow getups are easily noticable
-			visible_message("<span class='notice'>[src] weakily attempts to stand up.</span>", "<span class='notice'>You weakily attempt to stand up.</span>")
-			if(!do_mob(src, src, get_up_speed SECONDS, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, /mob/living/proc/rest_checks_callback), interaction_key = DOAFTER_SOURCE_GETTING_UP))
+			visible_message(span_notice("[src] weakily attempts to stand up."), span_notice("You weakily attempt to stand up."))
+			if(!do_after(src, get_up_speed SECONDS, src, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, /mob/living/proc/rest_checks_callback), interaction_key = DOAFTER_SOURCE_GETTING_UP))
 				if(!body_position == STANDING_UP)
-					visible_message("<span class='warning'>[src] fails to stand up.</span>", "<span class='warning'>You fail to stand up.</span>")
+					visible_message(span_warning("[src] fails to stand up."), span_warning("You fail to stand up."))
 				return
 		else
-			if(!do_mob(src, src, get_up_speed SECONDS, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, /mob/living/proc/rest_checks_callback), interaction_key = DOAFTER_SOURCE_GETTING_UP))
+			if(!do_after(src, get_up_speed SECONDS, src, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, /mob/living/proc/rest_checks_callback), interaction_key = DOAFTER_SOURCE_GETTING_UP))
 				return
 	if(pulledby && pulledby.grab_state)
-		to_chat(src, "<span class='warning'>You fail to stand up, you're restrained!</span>") //SKYRAT EDIT ADDITION END
+		to_chat(src, span_warning("You fail to stand up, you're restrained!")) //SKYRAT EDIT ADDITION END
 		return
 	if(resting || body_position == STANDING_UP || HAS_TRAIT(src, TRAIT_FLOORED))
 		return
-	to_chat(src, "<span class='notice'>You stand up.</span>") //SKYRAT EDIT ADDITION
+	to_chat(src, span_notice("You stand up.")) //SKYRAT EDIT ADDITION
 	set_lying_angle(0)
 	set_body_position(STANDING_UP)
 
@@ -896,10 +896,7 @@
 
 	// These should be tracked by status effects
 	losebreath = 0
-	set_blindness(0)
 	set_disgust(0)
-	cure_nearsighted()
-	cure_blind()
 	cure_husk()
 
 	if(heal_flags & HEAL_TEMP)
@@ -1512,7 +1509,7 @@
 /// Global list that containes cached fire overlays for mobs
 GLOBAL_LIST_EMPTY(fire_appearances)
 
-/mob/living/proc/ignite_mob()
+/mob/living/proc/ignite_mob(silent)
 	if(fire_stacks <= 0)
 		return FALSE
 
@@ -1520,7 +1517,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	if(!fire_status || fire_status.on_fire)
 		return FALSE
 
-	return fire_status.ignite()
+	return fire_status.ignite(silent)
 
 /mob/living/proc/update_fire()
 	var/datum/status_effect/fire_handler/fire_handler = has_status_effect(/datum/status_effect/fire_handler)
@@ -2004,8 +2001,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		if(istransparentturf(front_hole))
 			ceiling = front_hole
 		else
-			var/list/checkturfs = block(locate(x-1,y-1,ceiling.z),locate(x+1,y+1,ceiling.z))-ceiling-front_hole //Try find hole near of us
-			for(var/turf/checkhole in checkturfs)
+			for(var/turf/checkhole in TURF_NEIGHBORS(ceiling))
 				if(istransparentturf(checkhole))
 					ceiling = checkhole
 					break
@@ -2053,8 +2049,8 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 			floor = front_hole
 			lower_level = get_step_multiz(front_hole, DOWN)
 		else
-			var/list/checkturfs = block(locate(x-1,y-1,z),locate(x+1,y+1,z))-floor //Try find hole near of us
-			for(var/turf/checkhole in checkturfs)
+			// Try to find a hole near us
+			for(var/turf/checkhole in TURF_NEIGHBORS(floor))
 				if(istransparentturf(checkhole))
 					floor = checkhole
 					lower_level = get_step_multiz(checkhole, DOWN)
@@ -2472,6 +2468,21 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 /mob/living/played_game()
 	. = ..()
 	add_mood_event("gaming", /datum/mood_event/gaming)
+
+/**
+ * Helper proc for basic and simple animals to return true if the passed sentience type matches theirs
+ * Living doesn't have a sentience type though so it always returns false if not a basic or simple mob
+ */
+/mob/living/proc/compare_sentience_type(compare_type)
+	return FALSE
+
+/// Proc called when targetted by a lazarus injector
+/mob/living/proc/lazarus_revive(mob/living/reviver, malfunctioning)
+	revive(HEAL_ALL)
+	befriend(reviver)
+	faction = (malfunctioning) ? list("[REF(reviver)]") : list(FACTION_NEUTRAL)
+	if (malfunctioning)
+		reviver.log_message("has revived mob [key_name(src)] with a malfunctioning lazarus injector.", LOG_GAME)
 
 /// Proc for giving a mob a new 'friend', generally used for AI control and targetting. Returns false if already friends.
 /mob/living/proc/befriend(mob/living/new_friend)
