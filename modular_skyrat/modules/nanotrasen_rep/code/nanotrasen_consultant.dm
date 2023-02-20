@@ -6,7 +6,6 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "Central Command"
-	selection_color = "#c6ffe0"
 	minimal_player_age = 14
 	exp_requirements = 600
 	exp_required_type = EXP_TYPE_CREW
@@ -102,7 +101,7 @@
 	name = "Nanotrasen Consultant Plasmaman"
 
 	uniform = /obj/item/clothing/under/plasmaman/centcom_official
-	gloves = /obj/item/clothing/gloves/color/captain //Too iconic to be replaced with a plasma version
+	gloves = /obj/item/clothing/gloves/captain //Too iconic to be replaced with a plasma version
 	head = /obj/item/clothing/head/helmet/space/plasmaman/centcom_official
 
 /obj/item/modular_computer/pda/nanotrasen_consultant

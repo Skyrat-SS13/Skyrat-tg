@@ -7,7 +7,8 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
-	icon_state = "candle"
+	icon_state = "candle_pink_off"
+	base_icon_state = "candle"
 	inhand_icon_state = "candle_pink_off"
 	w_class = WEIGHT_CLASS_TINY
 	light_color = LIGHT_COLOR_FIRE
@@ -58,8 +59,8 @@
 
 /obj/item/bdsm_candle/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]_[lit ? "lit" : "off"]"
-	inhand_icon_state = "[initial(icon_state)]_[current_color]_[lit ? "lit" : "off"]"
+	icon_state = "[base_icon_state]_[current_color]_[lit ? "lit" : "off"]"
+	inhand_icon_state = "[base_icon_state]_[current_color]_[lit ? "lit" : "off"]"
 
 /obj/item/bdsm_candle/attackby(obj/item/object, mob/user, params)
 	var/msg = object.ignition_effect(src, user)

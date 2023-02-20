@@ -1,7 +1,19 @@
 /datum/species/snail
 	name = "Snailperson"
 	id = SPECIES_SNAIL
-	species_traits = list(MUTCOLORS, EYECOLOR, HAS_FLESH, HAIR, FACEHAIR) //SKYRAT EDIT - Roundstart Snails - Customization
+	/*SKYRAT EDIT - ORIGINAL
+	species_traits = list(
+		MUTCOLORS,
+		NO_UNDERWEAR,
+	)
+	*/
+	//SKYRAT EDIT - Snails deserve hair, and get to wear underwear, and have eye colour
+	species_traits = list(
+		MUTCOLORS,
+		EYECOLOR,
+		HAIR,
+		FACEHAIR
+	)
 	inherent_traits = list(
 		TRAIT_NOSLIPALL,
 		TRAIT_WATER_BREATHING, //SKYRAT EDIT - Roundstart Snails
@@ -63,7 +75,7 @@
 	inhand_icon_state = null
 	lefthand_file = 'icons/mob/inhands/equipment/backpack_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/backpack_righthand.dmi'
-	armor = list(MELEE = 40, BULLET = 30, LASER = 30, ENERGY = 10, BOMB = 25, BIO = 0, FIRE = 0, ACID = 50)
+	armor_type = /datum/armor/backpack_snail
 	max_integrity = 200
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	//SKYRAT EDIT BEGIN - Roundstart Snails
@@ -76,9 +88,9 @@
 			RESKIN_WORN_ICON_STATE = "coneshell"
 		),
 		"Round Shell" = list(
-			RESKIN_ICON = 'icons/obj/storage/storage.dmi',
+			RESKIN_ICON = 'icons/obj/storage/backpack.dmi',
 			RESKIN_ICON_STATE = "snailshell",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON = 'icons/mob/clothing/back/backpack.dmi',
 			RESKIN_WORN_ICON_STATE = "snailshell"
 		),
 		"Cinnamon Shell" = list(
@@ -95,6 +107,14 @@
 		),
 	)
 	//SKYRAT EDIT END - Roundstart Snails
+
+/datum/armor/backpack_snail
+	melee = 40
+	bullet = 30
+	laser = 30
+	energy = 10
+	bomb = 25
+	acid = 50
 
 /obj/item/storage/backpack/snail/dropped(mob/user, silent)
 	. = ..()

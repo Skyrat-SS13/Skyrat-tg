@@ -190,7 +190,7 @@
 
 	target.flash_act()
 	target.adjust_confusion(10 SECONDS)
-	target.blur_eyes(5)
+	target.set_eye_blur_if_lower(10 SECONDS)
 	to_chat(target, span_warning("You feel strange..."))
 	addtimer(CALLBACK(src, PROC_REF(victim_stage_two), target), 6 SECONDS)
 
@@ -205,7 +205,7 @@
 	to_chat(target, span_warning("Your head pounds... It feels like it's going to burst out your skull!"))
 	target.flash_act()
 	target.adjust_confusion(20 SECONDS)
-	target.blur_eyes(3)
+	target.set_eye_blur_if_lower(6 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(victim_stage_four), target), 3 SECONDS)
 
 /// Continued victim handling
@@ -220,7 +220,7 @@
 	to_chat(target, span_hypnophrase(span_reallybig("A million voices echo in your head... <i>\"Your mind held many valuable secrets - \
 				we thank you for providing them. Your value is expended, and you will be ransomed back to your station. We always get paid, \
 				so it's only a matter of time before we ship you back...\"</i>")))
-	target.blur_eyes(10)
+	target.set_eye_blur_if_lower(20 SECONDS)
 	target.set_dizzy_if_lower(30 SECONDS)
 	target.adjust_confusion(20 SECONDS)
 
@@ -261,7 +261,7 @@
 		target.forceMove(return_pod)
 
 		target.flash_act()
-		target.blur_eyes(30)
+		target.set_eye_blur_if_lower(60 SECONDS)
 		target.set_dizzy_if_lower(70 SECONDS)
 		target.adjust_confusion(20 SECONDS)
 

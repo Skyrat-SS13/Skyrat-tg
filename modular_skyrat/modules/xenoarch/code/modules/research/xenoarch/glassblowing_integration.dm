@@ -14,4 +14,4 @@
 		/obj/item/stack/sheet/mineral/wood = 1,
 		/obj/item/glassblowing/glass_lens = 1,
 	)
-	category = CAT_PRIMAL
+	category = CAT_EQUIPMENT

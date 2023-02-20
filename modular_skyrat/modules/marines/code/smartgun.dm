@@ -20,7 +20,7 @@
 	spread = 18
 	mag_type = /obj/item/ammo_box/magazine/smartgun_drum
 	can_suppress = FALSE
-	fire_delay = 0.5
+	fire_delay = 0.15
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	tac_reloads = FALSE
@@ -29,6 +29,7 @@
 	mag_display_ammo = FALSE
 	mag_display = FALSE
 	company_flag = COMPANY_NANOTRASEN
+	fire_sound_volume = 30
 	/// If the gun's dustcover is open or not
 	var/cover_open = FALSE
 	/// Factions that the gun cannot shoot under any circumstances
@@ -140,9 +141,8 @@
 /obj/projectile/bullet/smart
 	ignore_direct_target = TRUE
 
-/obj/projectile/bullet/smart/a10x28
+/obj/projectile/bullet/smart/a10x28 // utter peashooter, but it has 6000rpm
 	name = "10x28mm bullet"
-	damage = 12
-	armour_penetration = 5
-	wound_bonus = 15
+	damage = 6
+	wound_bonus = -5
 	wound_falloff_tile = 1

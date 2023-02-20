@@ -288,10 +288,10 @@
 
 /obj/item/toy/plush/skyrat/blue_cat
 	name = "blue cat plushie"
-	desc = "A bright blue cat plush with neon pink hair, here to hand out kisses wherever kisses need be."
+	desc = "A bright blue cat plush with neon pink hair, here to hand out kisses wherever kisses need be. Usually found near its home habitat, the tram."
 	icon_state = "plushie_skyy"
-	attack_verb_continuous = list("kisses", "hugs", "purrs against")
-	attack_verb_simple = list("kisses", "hugs", "purrs against")
+	attack_verb_continuous = list("kisses", "nuzzles", "cuddles", "purrs against")
+	attack_verb_simple = list("kiss", "nuzzle", "cuddle", "purr against")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/nya.ogg' = 1)
 
 /obj/item/toy/plush/skyrat/igneous_synth
@@ -581,3 +581,32 @@
 	attack_verb_continuous = list("nibbles", "squeaks", "nose twitches", "thumps", "whops")
 	attack_verb_simple = list("nibble", "squeak", "nose twitch", "thump", "whop")
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
+
+// Donation reward for SomeRandomOwl
+/obj/item/toy/plush/skyrat/snow_owl
+	name = "snowy owl plush"
+	desc = "A very soft plush resembling a feathery and witch like owl who is known to frequent science and medical."
+	icon_state = "plushie_owl"
+	attack_verb_continuous = list("hoots", "screms", "hugs")
+	attack_verb_simple = list("hoots", "screms", "hugs")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/hoot.ogg' = 1)
+
+// Donation reward for Jolly66
+/obj/item/toy/plush/skyrat/derg_plushie
+	name = "wingless dragon plush"
+	desc = "A cute green-and-yellow wingless dragon plushie! For what its worth, it does have a comically large tail. \
+		Comes with an additional paramedic cap."
+	icon_state = "plushie_derg"
+	attack_verb_continuous = list("wehs", "wehs softly", "stutters")
+	attack_verb_simple = list("wehs", "wehs softly", "stutters")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
+
+// Donation reward for Gofawful5
+/obj/item/toy/plush/skyrat/tracy
+	name = "creature plushie"
+	desc = "An astonishingly well-endowed catfox plushie... It seems content."
+	icon_state = "plush_tracy"
+	attack_verb_continuous = list("expands")
+	attack_verb_simple = list("expand")
+	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/tracymrowr.ogg' = 1)
+	gender = FEMALE

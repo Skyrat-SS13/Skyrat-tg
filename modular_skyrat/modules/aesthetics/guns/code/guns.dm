@@ -201,6 +201,7 @@
 /obj/item/gun/ballistic/automatic/sniper_rifle/syndicate
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = "sniper2"
+	worn_icon_state = "sniper"
 	fire_delay = 5.5 SECONDS
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/modular
@@ -208,6 +209,7 @@
 	desc = "A devastating Aussec Armory heavy sniper rifle, fitted with a modern scope."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = "sniper"
+	worn_icon_state = "sniper"
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle.ogg'
 	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle_s.ogg'
 	w_class = WEIGHT_CLASS_BULKY

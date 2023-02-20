@@ -69,6 +69,7 @@
 
 /obj/item/geiger_counter/afterattack(atom/target, mob/living/user, params)
 	. = ..()
+	. |= AFTERATTACK_PROCESSED_ITEM
 
 	if (user.combat_mode)
 		return
@@ -87,7 +88,7 @@
 /obj/item/geiger_counter/dropped(mob/user, silent = FALSE)
 	. = ..()
 
-	UnregisterSignal(user, COMSIG_IN_RANGE_OF_IRRADIATION, PROC_REF(on_pre_potential_irradiation))
+	UnregisterSignal(user, COMSIG_IN_RANGE_OF_IRRADIATION)
 
 /obj/item/geiger_counter/proc/on_pre_potential_irradiation(datum/source, datum/radiation_pulse_information/pulse_information, insulation_to_target)
 	SIGNAL_HANDLER

@@ -3,7 +3,17 @@
 	icon_state = "secmed_labcoat" //Icon located in modular_skyrat/master_files/icons/(obj or mob)/clothing/suits/labcoat.dmi
 	blood_overlay_type = "armor"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50, WOUND = 10)
+	armor_type = /datum/armor/skyrat_security_medic
+
+/datum/armor/skyrat_security_medic
+	melee = 35
+	bullet = 30
+	laser = 30
+	energy = 40
+	bomb = 25
+	fire = 50
+	acid = 50
+	wound = 10
 
 /obj/item/clothing/suit/toggle/labcoat/skyrat/security_medic/Initialize(mapload)
 	. = ..()
@@ -26,7 +36,17 @@
 	worn_icon_state = "secmed_vest"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/flashlight, /obj/item/reagent_containers/cup/bottle, /obj/item/reagent_containers/cup/beaker, /obj/item/reagent_containers/pill, /obj/item/storage/pill_bottle, /obj/item/paper, /obj/item/melee/baton/telescopic, /obj/item/soap, /obj/item/tank/internals/emergency_oxygen, /obj/item/gun, /obj/item/storage/medkit)
-	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50, WOUND = 10)
+	armor_type = /datum/armor/hazardvest_security_medic
+
+/datum/armor/hazardvest_security_medic
+	melee = 35
+	bullet = 30
+	laser = 30
+	energy = 40
+	bomb = 25
+	fire = 50
+	acid = 50
+	wound = 10
 
 /obj/item/clothing/suit/hazardvest/security_medic/blue
 	icon_state = "secmed_vest_blue"

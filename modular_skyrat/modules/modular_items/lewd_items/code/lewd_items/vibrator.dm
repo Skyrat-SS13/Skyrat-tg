@@ -5,7 +5,8 @@
 /obj/item/clothing/sextoy/vibrator
 	name = "vibrator"
 	desc = "Woah. What an... Interesting item. I wonder what this red button does..."
-	icon_state = "vibrator"
+	icon_state = "vibrator_pink_off"
+	base_icon_state = "vibrator"
 	inhand_icon_state = "vibrator_pink"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
@@ -75,8 +76,8 @@
 
 /obj/item/clothing/sextoy/vibrator/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]_[vibration_mode]"
-	inhand_icon_state = "[initial(icon_state)]_[current_color]"
+	icon_state = "[base_icon_state]_[current_color]_[vibration_mode]"
+	inhand_icon_state = "[base_icon_state]_[current_color]"
 
 /obj/item/clothing/sextoy/vibrator/equipped(mob/user, slot)
 	. = ..()

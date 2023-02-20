@@ -181,7 +181,7 @@
 	AddComponent(/datum/component/traitor_objective_register, victim, fail_signals = list(COMSIG_PARENT_QDELETING))
 	var/list/possible_areas = GLOB.the_station_areas.Copy()
 	for(var/area/possible_area as anything in possible_areas)
-		if(istype(possible_area, /area/station/hallway) || istype(possible_area, /area/station/security) || initial(possible_area.outdoors))
+		if(ispath(possible_area, /area/station/hallway) || ispath(possible_area, /area/station/security) || initial(possible_area.outdoors))
 			possible_areas -= possible_area
 
 	dropoff_area = pick(possible_areas)
@@ -272,7 +272,7 @@
 	sent_mob.flash_act()
 	sent_mob.adjust_confusion(10 SECONDS)
 	sent_mob.adjust_dizzy(10 SECONDS)
-	sent_mob.blur_eyes(5 SECONDS)
+	sent_mob.set_eye_blur_if_lower(100 SECONDS)
 	to_chat(sent_mob, span_hypnophrase(span_reallybig("A million voices echo in your head... <i>\"Your mind held many valuable secrets - \
 		we thank you for providing them. Your value is expended, and you will be ransomed back to your station. We always get paid, \
 		so it's only a matter of time before we ship you back...\"</i>")))
@@ -318,6 +318,6 @@
 	sent_mob.flash_act()
 	sent_mob.adjust_confusion(10 SECONDS)
 	sent_mob.adjust_dizzy(10 SECONDS)
-	sent_mob.blur_eyes(5 SECONDS)
+	sent_mob.set_eye_blur_if_lower(100 SECONDS)
 
 	new /obj/effect/pod_landingzone(pick(possible_turfs), return_pod)

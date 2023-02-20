@@ -35,11 +35,6 @@
 	desired_atom = /obj/machinery/ammo_workbench
 	mode = AREA_SPAWN_MODE_HUG_WALL
 
-/datum/area_spawn/gun_vendor
-	target_areas = list(/area/station/security/lockers, /area/station/security/office)
-	desired_atom = /obj/machinery/gun_vendor
-	mode = AREA_SPAWN_MODE_HUG_WALL
-
 /datum/area_spawn/lustwish_public
 	target_areas = list(/area/station/commons/locker, /area/station/commons/dorms/laundry, /area/station/commons/dorms)
 	desired_atom = /obj/machinery/vending/dorms
@@ -59,6 +54,17 @@
 /datum/area_spawn/posialert_rd
 	target_areas = list(/area/station/command/heads_quarters/rd, /area/station/science/lab)
 	desired_atom = /obj/machinery/posialert
+	mode = AREA_SPAWN_MODE_MOUNT_WALL
+
+/datum/area_spawn/prison_cryo_console
+	// Keep to one area so it's in the same area as the pods, which is required.
+	target_areas = list(/area/station/security/prison)
+	desired_atom = /obj/machinery/computer/cryopod
+	mode = AREA_SPAWN_MODE_MOUNT_WALL
+
+/datum/area_spawn/prison_cryopod
+	target_areas = list(/area/station/security/prison)
+	desired_atom = /obj/machinery/cryopod/prison
 	mode = AREA_SPAWN_MODE_MOUNT_WALL
 
 // Job spawners
@@ -93,3 +99,8 @@
 /datum/area_spawn/customs_agent_landmark
 	desired_atom = /obj/effect/landmark/start/customs_agent
 	target_areas = list(/area/station/security/checkpoint/supply, /area/station/cargo/storage)
+
+/datum/area_spawn_over/prison_curtains
+	desired_atom = /obj/structure/curtain/cloth/prison
+	over_atoms = list(/obj/structure/window/reinforced/fulltile, /obj/machinery/door/airlock/security/glass, /obj/machinery/door/airlock/public/glass)
+	target_areas = list(/area/station/security/prison/safe)

@@ -3,20 +3,38 @@
 	description = "Uhh... Someone had fun."
 	taste_description = "astringent and sweetish"
 	color = "#ffffffb0"
-	glass_name = "glass of girlcum"
-	glass_desc = "A strange white liquid... Ew!"
 	reagent_state = LIQUID
-	shot_glass_icon_state = "shotglasswhite"
+
+/datum/glass_style/drinking_glass/femcum
+	required_drink_type = /datum/reagent/consumable/femcum
+	icon_state = "glass_white"
+	name = "glass of girlcum"
+	desc = "A strange white liquid... Ew!"
+
+/datum/glass_style/shot_glass/femcum
+	required_drink_type = /datum/reagent/consumable/femcum
+	icon_state ="shotglasscream"
+	name = "glass of girlcum"
+	desc = "A strange white liquid... Ew!"
 
 /datum/reagent/consumable/cum
 	name = "cum"
 	description = "A fluid secreted by the sexual organs of many species."
 	taste_description = "musky and salty"
 	color = "#ffffffff"
-	glass_name = "glass of cum"
-	glass_desc = "O-oh, my...~"
 	reagent_state = LIQUID
-	shot_glass_icon_state = "shotglasswhite"
+
+/datum/glass_style/drinking_glass/cum
+	required_drink_type = /datum/reagent/consumable/cum
+	icon_state = "glass_white"
+	name = "glass of cum"
+	desc = "O-oh, my...~"
+
+/datum/glass_style/shot_glass/cum
+	required_drink_type = /datum/reagent/consumable/cum
+	icon_state ="shotglasscream"
+	name = "glass of cum"
+	desc = "O-oh, my...~"
 
 /datum/chemical_reaction/cum
 	results = list(/datum/reagent/consumable/cum = 5)

@@ -11,9 +11,22 @@
 	var/autofire_shot_delay = 0.3 SECONDS // Time between individual shots.
 	var/mouse_status = AUTOFIRE_MOUSEUP // This seems hacky but there can be two MouseDown() without a MouseUp() in between if the user holds click and uses alt+tab, printscreen or similar.
 
+	///windup autofire vars
+	///Whether the delay between shots increases over time, simulating a spooling weapon
+	var/windup_autofire = FALSE
+	///the reduction to shot delay for windup
+	var/current_windup_reduction = 0
+	///the percentage of autfire_shot_delay that is added to current_windup_reduction
+	var/windup_autofire_reduction_multiplier = 0.3
+	///How high of a reduction that current_windup_reduction can reach
+	var/windup_autofire_cap = 0.3
+	///How long it takes for weapons that have spooled-up to reset back to the original firing speed
+	var/windup_spindown = 3 SECONDS
+	///Timer for tracking the spindown reset timings
+	var/timerid
 	COOLDOWN_DECLARE(next_shot_cd)
 
-/datum/component/automatic_fire/Initialize(_autofire_shot_delay)
+/datum/component/automatic_fire/Initialize(autofire_shot_delay, windup_autofire, windup_autofire_reduction_multiplier, windup_autofire_cap, windup_spindown)
 	. = ..()
 	if(!isgun(parent))
 		return COMPONENT_INCOMPATIBLE
@@ -22,8 +35,13 @@
 	RegisterSignal(parent, COMSIG_GUN_AUTOFIRE_SELECTED, PROC_REF(wake_up))
 	RegisterSignals(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED, COMSIG_GUN_AUTOFIRE_DESELECTED), PROC_REF(autofire_off))
 	RegisterSignal(parent, COMSIG_GUN_JAMMED, PROC_REF(stop_autofiring))
-	if(_autofire_shot_delay)
-		autofire_shot_delay = _autofire_shot_delay
+	if(autofire_shot_delay)
+		src.autofire_shot_delay = autofire_shot_delay
+	if(windup_autofire)
+		src.windup_autofire = windup_autofire
+		src.windup_autofire_reduction_multiplier = windup_autofire_reduction_multiplier
+		src.windup_autofire_cap = windup_autofire_cap
+		src.windup_spindown = windup_spindown
 	if(ismob(gun.loc))
 		var/mob/user = gun.loc
 		wake_up(src, user)
@@ -242,11 +260,24 @@
 		stop_autofiring() // Elvis has left the building.
 		return FALSE
 	shooter.face_atom(target)
-	COOLDOWN_START(src, next_shot_cd, autofire_shot_delay)
+	var/next_delay = autofire_shot_delay
+	if(windup_autofire)
+		next_delay = clamp(next_delay - current_windup_reduction, round(autofire_shot_delay * windup_autofire_cap), autofire_shot_delay)
+		current_windup_reduction = (current_windup_reduction + round(autofire_shot_delay * windup_autofire_reduction_multiplier))
+		timerid = addtimer(CALLBACK(src, PROC_REF(windup_reset), FALSE), windup_spindown, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE)
+	if(HAS_TRAIT(shooter, TRAIT_DOUBLE_TAP))
+		next_delay = round(next_delay * 0.5)
+	COOLDOWN_START(src, next_shot_cd, next_delay)
 	if(SEND_SIGNAL(parent, COMSIG_AUTOFIRE_SHOT, target, shooter, mouse_parameters) & COMPONENT_AUTOFIRE_SHOT_SUCCESS)
 		return TRUE
 	stop_autofiring()
 	return FALSE
+
+/// Reset for our windup, resetting everything back to initial values after a variable set amount of time (determined by var/windup_spindown).
+/datum/component/automatic_fire/proc/windup_reset(deltimer)
+	current_windup_reduction = initial(current_windup_reduction)
+	if(deltimer && timerid)
+		deltimer(timerid)
 
 // Gun procs.
 

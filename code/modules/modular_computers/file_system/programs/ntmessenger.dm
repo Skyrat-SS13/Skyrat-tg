@@ -7,6 +7,7 @@
 	extended_desc = "This program allows old-school communication with other modular devices."
 	size = 0
 	undeletable = TRUE // It comes by default in tablets, can't be downloaded, takes no space and should obviously not be able to be deleted.
+	header_program = TRUE
 	available_on_ntnet = FALSE
 	usage_flags = PROGRAM_TABLET
 	ui_header = "ntnrc_idle.gif"
@@ -283,6 +284,9 @@
 
 	if (prob(1))
 		message += " Sent from my PDA"
+	// SKYRAT EDIT BEGIN - PDA messages show a visible message; again!
+	user.visible_message(span_notice("[user]'s PDA rings out with the soft sound of keypresses."), vision_distance = COMBAT_MESSAGE_RANGE)
+	//SKYRAT EDIT END
 
 	var/datum/signal/subspace/messaging/tablet_msg/signal = new(computer, list(
 		"name" = fake_name || computer.saved_identification,

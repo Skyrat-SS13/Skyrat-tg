@@ -275,18 +275,14 @@
 	return TRUE
 
 /// Like add_reagent but you can enter a list. Format it like this: list(/datum/reagent/toxin = 10, "beer" = 15)
-/datum/reagents/proc/add_reagent_list(list/list_reagents, list/data=null, no_react = FALSE) //SKYRAT EDIT CHANGE
+/datum/reagents/proc/add_reagent_list(list/list_reagents, list/data=null)
 	for(var/r_id in list_reagents)
 		var/amt = list_reagents[r_id]
-	//SKYRAT EDIT CHANGE BEGIN
-		add_reagent(r_id, amt, data, no_react = TRUE)
-	if(!no_react)
-		handle_reactions()
-	//SKYRAT EDIT CHANGE END
+		add_reagent(r_id, amt, data)
 
 
 /// Remove a specific reagent
-/datum/reagents/proc/remove_reagent(reagent, amount, safety = TRUE, no_react = FALSE)//Added a safety check for the trans_id_to
+/datum/reagents/proc/remove_reagent(reagent, amount, safety = TRUE)//Added a safety check for the trans_id_to
 	if(isnull(amount))
 		stack_trace("null amount passed to reagent code")
 		return FALSE
@@ -303,7 +299,7 @@
 			amount = clamp(amount, 0, cached_reagent.volume)
 			cached_reagent.volume -= amount
 			update_total()
-			if(!safety || !no_react)//So it does not handle reactions when it need not to //SKYRAT EDIT CHANGE
+			if(!safety)//So it does not handle reactions when it need not to
 				handle_reactions()
 			SEND_SIGNAL(src, COMSIG_REAGENTS_REM_REAGENT, QDELING(cached_reagent) ? reagent : cached_reagent, amount)
 
@@ -532,7 +528,7 @@
 			var/transfer_amount = reagent.volume * part
 			if(methods)
 				reagent.on_transfer(target_atom, methods, transfer_amount * multiplier)
-			remove_reagent(reagent.type, transfer_amount, no_react) //SKYRAT EDIT CHANGE
+			remove_reagent(reagent.type, transfer_amount)
 			var/list/reagent_qualities = list(REAGENT_TRANSFER_AMOUNT = transfer_amount, REAGENT_PURITY = reagent.purity)
 			transfer_log[reagent.type] = reagent_qualities
 
@@ -559,7 +555,7 @@
 				else
 					R.expose_single(reagent, target_atom, methods, transfer_amount, show_message)
 				reagent.on_transfer(target_atom, methods, transfer_amount * multiplier)
-			remove_reagent(reagent.type, transfer_amount, no_react) //SKYRAT EDIT CHANGE
+			remove_reagent(reagent.type, transfer_amount)
 			var/list/reagent_qualities = list(REAGENT_TRANSFER_AMOUNT = transfer_amount, REAGENT_PURITY = reagent.purity)
 			transfer_log[reagent.type] = reagent_qualities
 
@@ -741,7 +737,6 @@
 
 	if(owner && need_mob_update) //some of the metabolized reagents had effects on the mob that requires some updates.
 		owner.updatehealth()
-		owner.update_stamina()
 	update_total()
 
 /*
@@ -860,7 +855,6 @@
 		need_mob_update += metabolize_reagent(owner, reagent, delta_time, times_fired, can_overdose = TRUE)
 	if(owner && need_mob_update) //some of the metabolized reagents had effects on the mob that requires some updates.
 		owner.updatehealth()
-		owner.update_stamina()
 	update_total()
 
 /**
@@ -1952,7 +1946,7 @@
 			ui_reaction_id = text2path(params["id"])
 			return TRUE
 		if("search_reagents")
-			var/input_reagent = (input("Enter the name of any reagent", "Input") as text|null)
+			var/input_reagent = tgui_input_list(usr, "Select reagent", "Reagent", GLOB.chemical_name_list)
 			input_reagent = get_reagent_type_from_product_string(input_reagent) //from string to type
 			var/datum/reagent/reagent = find_reagent_object_from_type(input_reagent)
 			if(!reagent)

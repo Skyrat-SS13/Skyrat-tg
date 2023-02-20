@@ -27,12 +27,17 @@
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate //MOVE ALL /SYNDICATES TO THE SYNDICATE.DM WHEN THE .dmi IS MADE (soon, after centcom.dmi)
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
+	armor_type = /datum/armor/redsec_syndicate
 	has_sensor = NO_SENSORS
 
 /*
 *	HEAD OF SECURITY
 */
+
+/datum/armor/redsec_syndicate
+	melee = 10
+	fire = 50
+	acid = 40
 
 /obj/item/clothing/under/rank/security/head_of_security/skyrat/imperial //Rank pins of the Grand General
 	desc = "A tar black naval suit and a rank badge denoting the Officer of The Internal Security Division. Be careful your underlings don't bump their head on a door."
