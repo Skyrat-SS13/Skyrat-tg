@@ -613,15 +613,15 @@
 	item_path = /obj/item/clothing/head/razurathhat
 	ckeywhitelist = list("razurath")
 
-/datum/loadout_item/suit/digicoat_glitched
-	name = "Hacked Digicoat"
-	item_path = /obj/item/clothing/suit/toggle/digicoat/glitched
+/datum/loadout_item/suit/razurathcoat
+	name = "Golden Nanotrasen Officer Coat"
+	item_path = /obj/item/clothing/suit/razurathcoat
 	ckeywhitelist = list("razurath")
 
 /datum/loadout_item/suit/digicoat_glitched
-	name = "Hacked Digicoat"
+	name = "Glitched Digicoat"
 	item_path = /obj/item/clothing/suit/short_coat
-	ckeywhitelist = list("thedragmeme")
+	ckeywhitelist = list("razurath")
 
 /datum/loadout_item/pocket_items/masvedishcigar
 	name = "Holocigar"
