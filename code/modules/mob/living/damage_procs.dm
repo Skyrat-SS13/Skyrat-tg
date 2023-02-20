@@ -186,7 +186,7 @@
 	SEND_SIGNAL(src, COMSIG_MOB_LOSS_OXY, amount) //SKYRAT EDIT ADDITION
 	if(!forced && (status_flags & GODMODE))
 		return
-	if(!(mob_biotypes & required_biotype))
+	if(!forced && !(mob_biotypes & required_biotype))
 		return
 	. = oxyloss
 	oxyloss = clamp((oxyloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
