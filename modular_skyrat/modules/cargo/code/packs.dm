@@ -437,7 +437,7 @@
 		/obj/item/food/canned/pine_nuts,
 		/obj/item/food/canned/pine_nuts,
 		/obj/item/food/canned/jellyfish,
-		/obj/item/food/canned/snails,
+		/obj/item/food/canned/desert_snails,
 		/obj/item/food/canned/larvae,
 		/obj/item/food/moonfish_eggs,
 	)
