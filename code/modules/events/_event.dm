@@ -126,7 +126,7 @@
 	//SKYRAT EDIT ADDITION BEGIN
 	if(href_list["something_else"])
 		if(!triggering)
-			to_chat(usr, span_admin("You had your chance!"))
+			to_chat(usr, span_admin("Too late! The event is running."))
 			return
 		triggering = FALSE
 		SSevents.spawnEvent(TRUE)
