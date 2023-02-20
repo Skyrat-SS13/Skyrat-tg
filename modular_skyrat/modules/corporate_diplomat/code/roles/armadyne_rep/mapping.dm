@@ -1,5 +1,5 @@
 /obj/structure/closet/secure_closet/armadyne_representative
-	name = "\proper armadyne representative's locker"
+	name = "\improper Armadyne representative's locker"
 	req_access = list(ACCESS_ARMADYNE)
 	icon_state = "armadyne"
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
