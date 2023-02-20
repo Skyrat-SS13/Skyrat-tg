@@ -639,6 +639,7 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 			"<span class='cult big bold'>DELICIOUS SOULS</span>")
 			playsound(src, 'sound/magic/demon_attack1.ogg', 75, TRUE)
 			narsie_act()
+			P.investigate_log("has been gibbed by [src].", INVESTIGATE_DEATHS)
 			P.gib()
 	for(var/mob/living/basic/pet/P in range(1, src))
 		if(P != src && !istype(P,/mob/living/basic/pet/dog/corgi/narsie))
