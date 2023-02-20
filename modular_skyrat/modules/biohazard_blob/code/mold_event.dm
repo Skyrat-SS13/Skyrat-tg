@@ -25,7 +25,8 @@
 /datum/round_event/mold/start()
 	var/list/turfs = list() //list of all the empty floor turfs in the hallway areas
 	var/molds2spawn = 1
-	if(get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) >= MOLDIES_HIGHPOP_THRESHOLD || (prob((get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)) * (100 / MOLDIES_HIGHPOP_THRESHOLD))))
+	if(get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = FALSE) >= MOLDIES_HIGHPOP_THRESHOLD && \
+		(prob(((get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = FALSE)) - MOLDIES_HIGHPOP_THRESHOLD) * 4)))
 		molds2spawn	= 2 //Guaranteedly worse
 
 	var/obj/structure/biohazard_blob/resin/resintest = new()
@@ -48,7 +49,7 @@
 
 	for(var/i in 1 to molds2spawn)
 		var/picked_mold
-		if(get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) >= MOLDIES_HIGHPOP_THRESHOLD)
+		if(get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = FALSE) >= MOLDIES_HIGHPOP_THRESHOLD)
 			picked_mold = pick(available_molds_t2)
 		else
 			picked_mold = pick(available_molds_t1)
@@ -63,7 +64,8 @@
 			turfs -= picked_turf
 			i++
 		else
-			message_admins("Mold failed to spawn.")
+			log_game("Event: Moldies failed to spawn.")
+			message_admins("Moldies failed to spawn.")
 			break
 
 #undef MOLDIES_HIGHPOP_THRESHOLD
