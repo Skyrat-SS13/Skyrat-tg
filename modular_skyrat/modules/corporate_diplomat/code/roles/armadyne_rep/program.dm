@@ -123,10 +123,11 @@
 	return data
 
 
+/// Creates a new supply pack from an order datum
 /datum/computer_file/program/armadyne_purchase/proc/order_object(datum/armadyne_order/order, mob/user)
 	var/datum/supply_pack/custom/object_pack = new(
-		purchaser = user, \
-		cost = 0, \
+		purchaser = user,
+		cost = 0,
 		contains = order.order_contents,
 	)
 	object_pack.name = "[user]'s Armadyne supply crate"

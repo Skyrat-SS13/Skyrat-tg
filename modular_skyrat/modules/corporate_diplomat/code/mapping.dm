@@ -3,11 +3,11 @@
 /obj/effect/corporate_diplomat
 	icon = 'modular_skyrat/modules/corporate_diplomat/icons/helpers.dmi'
 	/// What to spawn for an NT consultant
-	var/nt_con_path = /obj/effect/gibspawner/generic
+	var/nanotrasen_consultant_path = /obj/effect/gibspawner/generic
 	/// What to spawn for an Armadyne rep
-	var/arm_rep_path = /obj/effect/gibspawner/generic
+	var/armadyne_representative_path = /obj/effect/gibspawner/generic
 	/// What to spawn for a SolFed liaison
-	var/sol_lia_path = /obj/effect/gibspawner/generic
+	var/solfed_liaison_path = /obj/effect/gibspawner/generic
 
 
 /obj/effect/corporate_diplomat/Initialize(mapload)
@@ -26,13 +26,13 @@
 	switch(SSjob.corporate_diplomat_type)
 
 		if(/datum/corporate_diplomat_role/nanotrasen_consultant)
-			spawned_object = new nt_con_path(get_turf(src))
+			spawned_object = new nanotrasen_consultant_path(get_turf(src))
 
 		if(/datum/corporate_diplomat_role/armadyne_representative)
-			spawned_object = new arm_rep_path(get_turf(src))
+			spawned_object = new armadyne_representative_path(get_turf(src))
 
 		if(/datum/corporate_diplomat_role/solfed_liaison)
-			spawned_object = new sol_lia_path(get_turf(src))
+			spawned_object = new solfed_liaison_path(get_turf(src))
 
 	if (pixel_x != 0)
 		spawned_object.pixel_x = pixel_x
@@ -47,54 +47,54 @@
 /obj/effect/corporate_diplomat/locker
 	icon = 'icons/effects/random_spawners.dmi'
 	icon_state = "locker_clothing"
-	nt_con_path = /obj/structure/closet/secure_closet/nanotrasen_consultant/station
-	arm_rep_path = /obj/structure/closet/secure_closet/armadyne_representative
-	sol_lia_path = /obj/structure/closet/secure_closet/solfed_liaison
+	nanotrasen_consultant_path = /obj/structure/closet/secure_closet/nanotrasen_consultant/station
+	armadyne_representative_path = /obj/structure/closet/secure_closet/armadyne_representative
+	solfed_liaison_path = /obj/structure/closet/secure_closet/solfed_liaison
 
 
 /obj/effect/corporate_diplomat/stamp
 	icon = 'icons/effects/random_spawners.dmi'
 	icon_state = "stamp"
-	nt_con_path = /obj/item/stamp/centcom
-	arm_rep_path = /obj/item/stamp/armadyne
-	sol_lia_path = /obj/item/stamp/solfed
+	nanotrasen_consultant_path = /obj/item/stamp/centcom
+	armadyne_representative_path = /obj/item/stamp/armadyne
+	solfed_liaison_path = /obj/item/stamp/solfed
 
 
 /obj/effect/corporate_diplomat/filing_cabinet
 	icon_state = "filing_cabinet"
-	nt_con_path = /obj/structure/filingcabinet/employment
-	arm_rep_path = /obj/structure/filingcabinet // No high-value documents for off-station personnel
-	sol_lia_path = /obj/structure/filingcabinet
+	nanotrasen_consultant_path = /obj/structure/filingcabinet/employment
+	armadyne_representative_path = /obj/structure/filingcabinet // No high-value documents for off-station personnel
+	solfed_liaison_path = /obj/structure/filingcabinet
 
 
 /obj/effect/corporate_diplomat/fancy_table
 	icon_state = "fancy_table"
-	nt_con_path = /obj/structure/table/wood/fancy/green
-	arm_rep_path = /obj/structure/table/wood/fancy/red
-	sol_lia_path = /obj/structure/table/wood/fancy
+	nanotrasen_consultant_path = /obj/structure/table/wood/fancy/green
+	armadyne_representative_path = /obj/structure/table/wood/fancy/red
+	solfed_liaison_path = /obj/structure/table/wood/fancy
 
 
 /obj/effect/corporate_diplomat/fax
 	icon_state = "fax"
-	nt_con_path = /obj/machinery/fax/nanotrasen
-	arm_rep_path = /obj/machinery/fax/armadyne
-	sol_lia_path = /obj/machinery/fax/solfed
+	nanotrasen_consultant_path = /obj/machinery/fax/nanotrasen
+	armadyne_representative_path = /obj/machinery/fax/armadyne
+	solfed_liaison_path = /obj/machinery/fax/solfed
 
 
 /obj/effect/corporate_diplomat/fancychair
 	icon = 'icons/effects/random_spawners.dmi'
 	icon_state = "chair"
-	nt_con_path = /obj/structure/chair/comfy/green
-	arm_rep_path = /obj/structure/chair/comfy/red
-	sol_lia_path = /obj/structure/chair/comfy/brown
+	nanotrasen_consultant_path = /obj/structure/chair/comfy/green
+	armadyne_representative_path = /obj/structure/chair/comfy/red
+	solfed_liaison_path = /obj/structure/chair/comfy/brown
 
 
 /obj/effect/corporate_diplomat/bedsheet
 	icon = 'icons/effects/random_spawners.dmi'
 	icon_state = "bedsheet"
-	nt_con_path = /obj/item/bedsheet/centcom/double
-	arm_rep_path = /obj/item/bedsheet/red/double
-	sol_lia_path = /obj/item/bedsheet/yellow/double
+	nanotrasen_consultant_path = /obj/item/bedsheet/centcom/double
+	armadyne_representative_path = /obj/item/bedsheet/red/double
+	solfed_liaison_path = /obj/item/bedsheet/yellow/double
 
 
 /obj/effect/landmark/start/corporate_diplomat

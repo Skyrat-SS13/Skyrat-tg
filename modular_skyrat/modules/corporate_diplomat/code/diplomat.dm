@@ -60,18 +60,20 @@
 
 	switch(player_client.prefs.alt_job_titles[JOB_CORPORATE_DIPLOMAT])
 		if("Nanotrasen Consultant")
-			set_diplomat_type(new /datum/corporate_diplomat_role/nanotrasen_consultant, player_client, spawning)
+			set_diplomat_type(/datum/corporate_diplomat_role/nanotrasen_consultant, player_client, spawning)
 
 		if("Solar Federation Liaison")
-			set_diplomat_type(new /datum/corporate_diplomat_role/solfed_liaison, player_client, spawning)
+			set_diplomat_type(/datum/corporate_diplomat_role/solfed_liaison, player_client, spawning)
 
 		if("Armadyne Representative")
-			set_diplomat_type(new /datum/corporate_diplomat_role/armadyne_representative, player_client, spawning)
+			set_diplomat_type(/datum/corporate_diplomat_role/armadyne_representative, player_client, spawning)
 
 
 /// If someone joins roundstart, it'll set the diplomat type to be their choice.
 /// If nobody joins, then it'll be randomly chosen through `set_random_type()`
 /datum/job/corporate_diplomat/proc/set_diplomat_type(datum/corporate_diplomat_role/picked_role, client/player_client, mob/living/carbon/human/spawning)
+	picked_role = new picked_role
+
 	// SSjob handling
 	SSjob.corporate_diplomat_type = picked_role.type
 	SSjob.name_occupations -= JOB_CORPORATE_DIPLOMAT
@@ -113,13 +115,13 @@
 
 	if(SSjob.corporate_diplomat_type)
 		var/datum/corporate_diplomat_role/picked_role = new SSjob.corporate_diplomat_type
-		set_diplomat_type(new picked_role)
+		set_diplomat_type(picked_role)
 		UnregisterSignal(src, COMSIG_TICKER_ROUND_STARTING)
 		return
 
 	if(!current_positions)
 		var/datum/corporate_diplomat_role/picked_role = pick(subtypesof(/datum/corporate_diplomat_role))
-		set_diplomat_type(new picked_role)
+		set_diplomat_type(picked_role)
 		UnregisterSignal(src, COMSIG_TICKER_ROUND_STARTING)
 		return
 
@@ -129,19 +131,44 @@
 	/// The associated access level with the role
 	var/used_access
 
-	// Everything below is mirrored from /datum/job
+	// Everything below is mirrored from /datum/job, including comments
 
+	/// The name of the job , used for preferences, bans and more. Make sure you know what you're doing before changing this.
 	var/title
+
+	/// The description of the job, used for preferences menu.
+	/// Keep it short and useful. Avoid in-jokes, these are for new players.
 	var/description
+
+	/// Determines who can demote this position
 	var/list/department_head = list()
+
+	/// Supervisors, who this person answers to directly
 	var/supervisors
-	var/department_for_prefs
+
+	/// If specified, this department will be used for the preferences menu.
+	var/datum/job_department/department_for_prefs
+
+	/// Lazy list with the departments this job belongs to.
+	/// Required to be set for playable jobs.
+	/// The first department will be used in the preferences menu,
+	/// unless department_for_prefs is set.
 	/// For this var specifically, only add the unique dept type, /datum/job_department/command is added automatically
 	var/list/departments_list = list()
+
+	/// The job's outfit.
 	var/outfit
+
+	/// The job's outfit that will be assigned for plasmamen.
 	var/plasmaman_outfit
+
 	var/display_order
+
+	// List of family heirlooms this job can get with the family heirloom quirk. List of types.
 	var/list/family_heirlooms = list()
+
+	/// Goodies that can be received via the mail system.
+	/// this is a weighted list.
+	/// Keep the _job definition for this empty and use /obj/item/mail to define general gifts.
 	var/list/mail_goodies = list()
-	var/list/alt_titles = list()
 

@@ -16,8 +16,8 @@
 		"stamp-chap" = 'icons/stamp_icons/large_stamp-chap.png',
 		"stamp-mime" = 'icons/stamp_icons/large_stamp-mime.png',
 		"stamp-centcom" = 'icons/stamp_icons/large_stamp-centcom.png',
-		// SKYRAT EDIT START - CUSTOM STAMPS
 		"stamp-syndicate" = 'icons/stamp_icons/large_stamp-syndicate.png',
+		// SKYRAT EDIT START - CUSTOM STAMPS
 		"stamp-solfed" = 'modular_skyrat/modules/corporate_diplomat/icons/stamps/large_stamp-solfed.png',
 		"stamp-armadyne" = 'modular_skyrat/modules/corporate_diplomat/icons/stamps/large_stamp-armadyne.png',
 		// SKYRAT EDIT END
