@@ -323,11 +323,8 @@
 
 /datum/status_effect/cultghost/on_apply()
 	owner.set_invis_see(SEE_INVISIBLE_OBSERVER)
-<<<<<<< HEAD
 	owner.set_see_in_dark(2)
-=======
 	return TRUE
->>>>>>> 1ad297ba191 (Fixes cult ghosts not gaining the status effect they were intended to gain for 5 years (#73490))
 
 /datum/status_effect/cultghost/tick()
 	if(owner.reagents)
