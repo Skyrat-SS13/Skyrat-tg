@@ -182,12 +182,8 @@
 /mob/living/proc/getOxyLoss()
 	return oxyloss
 
-<<<<<<< HEAD
-/mob/living/proc/adjustOxyLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype = MOB_ORGANIC)
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_OXY, amount) //SKYRAT EDIT ADDITION
-=======
 /mob/living/proc/adjustOxyLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype, required_respiration_type = ALL)
->>>>>>> e41cc398889 (Fixes being able to breathe in space, fixes any lingering biotype related damage issues (#73147))
+	SEND_SIGNAL(src, COMSIG_MOB_LOSS_OXY, amount) //SKYRAT EDIT ADDITION
 	if(!forced && (status_flags & GODMODE))
 		return
 	if(iscarbon(src))
