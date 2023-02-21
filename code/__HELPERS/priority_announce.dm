@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-/* - SKYRAT EDIT REMOVAL - MOVED TO MODULAR PRIORITY_ANNOUNCE.DM
-/proc/priority_announce(text, title = "", sound, type , sender_override, has_important_message, players)
-=======
+/* - SKYRAT EDIT REMOVAL - MOVED TO MODULAR modular_skyrat\modules\alerts\code\priority_announce.dm
 /**
  * Make a big red text announcement to
  *
@@ -25,7 +22,6 @@
  * * encode_text - if TRUE, the text will be HTML encoded
  */
 /proc/priority_announce(text, title = "", sound, type, sender_override, has_important_message = FALSE, list/mob/players, encode_title = TRUE, encode_text = TRUE)
->>>>>>> 645054b4892 (Fixes encoding on syndicate declaration of war, Fixes a way to send unencoded text to newscasters (#73366))
 	if(!text)
 		return
 
