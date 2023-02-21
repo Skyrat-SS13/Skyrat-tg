@@ -218,6 +218,11 @@
 		<br>We relay copies of the space, floor and wall planes to it, so we can use them as masks. Then we just boost any existing alpha to 100% and we're done."
 	plane = EMISSIVE_MASK_PLANE
 	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
+<<<<<<< HEAD
+=======
+	// Fullwhite where there's anything, no color otherwise
+	color = list(255,255,255,255, 255,255,255,255, 255,255,255,255, 255,255,255,255, 0,0,0,0)
+>>>>>>> 7cc6934eff1 (Visual fixes (lighting, weird shit, old bugs from a parallax thing) (#73555))
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	render_target = EMISSIVE_MASK_RENDER_TARGET
 	render_relay_planes = list()
