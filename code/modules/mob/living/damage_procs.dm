@@ -182,53 +182,36 @@
 /mob/living/proc/getOxyLoss()
 	return oxyloss
 
-<<<<<<< HEAD
-/mob/living/proc/adjustOxyLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype = MOB_ORGANIC)
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_OXY, amount) //SKYRAT EDIT ADDITION
-	if(!forced && (status_flags & GODMODE))
-		return
-	if(!forced && !(mob_biotypes & required_biotype))
-		return
-=======
 /mob/living/proc/adjustOxyLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype, required_respiration_type = ALL)
 	if(!forced)
 		if(status_flags & GODMODE)
 			return
-			
+
 		var/obj/item/organ/internal/lungs/affected_lungs = getorganslot(ORGAN_SLOT_LUNGS)
 		if(isnull(affected_lungs))
 			if(!(mob_respiration_type & required_respiration_type))  // if the mob has no lungs, use mob_respiration_type
 				return
-		else 
+		else
 			if(!(affected_lungs.respiration_type & required_respiration_type)) // otherwise use the lungs' respiration_type
 				return
->>>>>>> 1ba7fa7fa8e ( [NO GBP] Hotfixes lungless oxyloss immunity, and lungless plasmamen being able to be healed by salbutanol etc. (#73291))
 	. = oxyloss
 	oxyloss = clamp((oxyloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
 	if(updating_health)
 		updatehealth()
 
 
-<<<<<<< HEAD
-/mob/living/proc/setOxyLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype)
-	if(!forced && (status_flags & GODMODE))
-		return
-	if(required_biotype && !(mob_biotypes & required_biotype))
-		return
-=======
 /mob/living/proc/setOxyLoss(amount, updating_health = TRUE, forced = FALSE, required_biotype, required_respiration_type = ALL)
 	if(!forced)
 		if(status_flags & GODMODE)
 			return
-		
+
 		var/obj/item/organ/internal/lungs/affected_lungs = getorganslot(ORGAN_SLOT_LUNGS)
 		if(isnull(affected_lungs))
 			if(!(mob_respiration_type & required_respiration_type))
 				return
-		else 
+		else
 			if(!(affected_lungs.respiration_type & required_respiration_type))
 				return
->>>>>>> 1ba7fa7fa8e ( [NO GBP] Hotfixes lungless oxyloss immunity, and lungless plasmamen being able to be healed by salbutanol etc. (#73291))
 	. = oxyloss
 	oxyloss = amount
 	if(updating_health)

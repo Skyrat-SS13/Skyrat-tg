@@ -499,18 +499,12 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/medicine/salbutamol/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
-<<<<<<< HEAD
-	affected_mob.adjustOxyLoss(-3 * REM * delta_time, FALSE, required_biotype = affected_biotype)
-	if(affected_mob.losebreath >= 4)
-		affected_mob.losebreath -= 2 * REM * delta_time
-=======
 	affected_mob.adjustOxyLoss(-3 * REM * delta_time, FALSE, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)
 	if(affected_mob.losebreath >= 4)
 		var/obj/item/organ/internal/lungs/affected_lungs = affected_mob.getorganslot(ORGAN_SLOT_LUNGS)
 		var/our_respiration_type = affected_lungs ? affected_lungs.respiration_type : affected_mob.mob_respiration_type // use lungs' respiration type or mob_respiration_type if no lungs
 		if(our_respiration_type & affected_respiration_type)
 			affected_mob.losebreath -= 2 * REM * delta_time
->>>>>>> 1ba7fa7fa8e ( [NO GBP] Hotfixes lungless oxyloss immunity, and lungless plasmamen being able to be healed by salbutanol etc. (#73291))
 	..()
 	. = TRUE
 
@@ -767,14 +761,10 @@
 		affected_mob.adjustFireLoss(-2 * REM * delta_time, FALSE, required_bodytype = affected_bodytype)
 		affected_mob.adjustOxyLoss(-5 * REM * delta_time, FALSE, required_biotype = affected_biotype)
 		. = TRUE
-<<<<<<< HEAD
-	affected_mob.losebreath = 0
-=======
 	var/obj/item/organ/internal/lungs/affected_lungs = affected_mob.getorganslot(ORGAN_SLOT_LUNGS)
 	var/our_respiration_type = affected_lungs ? affected_lungs.respiration_type : affected_mob.mob_respiration_type
 	if(our_respiration_type & affected_respiration_type)
 		affected_mob.losebreath = 0
->>>>>>> 1ba7fa7fa8e ( [NO GBP] Hotfixes lungless oxyloss immunity, and lungless plasmamen being able to be healed by salbutanol etc. (#73291))
 	if(DT_PROB(10, delta_time))
 		affected_mob.set_dizzy_if_lower(10 SECONDS)
 		affected_mob.set_jitter_if_lower(10 SECONDS)
@@ -818,18 +808,12 @@
 		affected_mob.adjustToxLoss(-0.5 * REM * delta_time, FALSE, required_biotype = affected_biotype)
 		affected_mob.adjustBruteLoss(-0.5 * REM * delta_time, FALSE, required_bodytype = affected_bodytype)
 		affected_mob.adjustFireLoss(-0.5 * REM * delta_time, FALSE, required_bodytype = affected_bodytype)
-<<<<<<< HEAD
-		affected_mob.adjustOxyLoss(-0.5 * REM * delta_time, FALSE, required_biotype = affected_biotype)
-	if(affected_mob.losebreath >= 4)
-		affected_mob.losebreath -= 2 * REM * delta_time
-=======
 		affected_mob.adjustOxyLoss(-0.5 * REM * delta_time, FALSE, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)
 	if(affected_mob.losebreath >= 4)
 		var/obj/item/organ/internal/lungs/affected_lungs = affected_mob.getorganslot(ORGAN_SLOT_LUNGS)
 		var/our_respiration_type = affected_lungs ? affected_lungs.respiration_type : affected_mob.mob_respiration_type
 		if(our_respiration_type & affected_respiration_type)
 			affected_mob.losebreath -= 2 * REM * delta_time
->>>>>>> 1ba7fa7fa8e ( [NO GBP] Hotfixes lungless oxyloss immunity, and lungless plasmamen being able to be healed by salbutanol etc. (#73291))
 	if(affected_mob.losebreath < 0)
 		affected_mob.losebreath = 0
 	affected_mob.adjustStaminaLoss(-0.5 * REM * delta_time, 0)
@@ -841,14 +825,10 @@
 	if(DT_PROB(18, REM * delta_time))
 		affected_mob.adjustStaminaLoss(2.5, 0)
 		affected_mob.adjustToxLoss(1, FALSE, required_biotype = affected_biotype)
-<<<<<<< HEAD
-		affected_mob.losebreath++
-=======
 		var/obj/item/organ/internal/lungs/affected_lungs = affected_mob.getorganslot(ORGAN_SLOT_LUNGS)
 		var/our_respiration_type = affected_lungs ? affected_lungs.respiration_type : affected_mob.mob_respiration_type
 		if(our_respiration_type & affected_respiration_type)
 			affected_mob.losebreath++
->>>>>>> 1ba7fa7fa8e ( [NO GBP] Hotfixes lungless oxyloss immunity, and lungless plasmamen being able to be healed by salbutanol etc. (#73291))
 		. = TRUE
 	..()
 
