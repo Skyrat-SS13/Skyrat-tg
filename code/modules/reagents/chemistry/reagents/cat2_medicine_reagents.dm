@@ -34,10 +34,10 @@
 	switch(affected_mob.stat)
 		if(CONSCIOUS) //bad
 			thou_shall_heal = death_is_coming/50
-			affected_mob.adjustOxyLoss(2 * REM * delta_time, TRUE, required_biotype = affected_biotype)
+			affected_mob.adjustOxyLoss(2 * REM * delta_time, TRUE, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)
 		if(SOFT_CRIT) //meh convert
 			thou_shall_heal = round(death_is_coming/47,0.1)
-			affected_mob.adjustOxyLoss(1 * REM * delta_time, TRUE, required_biotype = affected_biotype)
+			affected_mob.adjustOxyLoss(1 * REM * delta_time, TRUE, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)
 		else //no convert
 			thou_shall_heal = round(death_is_coming/45, 0.1)
 			good_kind_of_healing = TRUE
@@ -246,7 +246,7 @@
 	var/oxycalc = 2.5 * REM * current_cycle
 	if(!overdosed)
 		oxycalc = min(oxycalc, affected_mob.getOxyLoss() + 0.5) //if NOT overdosing, we lower our toxdamage to only the damage we actually healed with a minimum of 0.1*current_cycle. IE if we only heal 10 oxygen damage but we COULD have healed 20, we will only take toxdamage for the 10. We would take the toxdamage for the extra 10 if we were overdosing.
-	affected_mob.adjustOxyLoss(-oxycalc * delta_time * normalise_creation_purity(), FALSE, required_biotype = affected_biotype)
+	affected_mob.adjustOxyLoss(-oxycalc * delta_time * normalise_creation_purity(), FALSE, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)
 	affected_mob.adjustToxLoss(oxycalc * delta_time / CONVERMOL_RATIO, FALSE, required_biotype = affected_biotype)
 	if(DT_PROB(current_cycle / 2, delta_time) && affected_mob.losebreath)
 		affected_mob.losebreath--
@@ -273,7 +273,7 @@
 	COOLDOWN_DECLARE(drowsycd)
 
 /datum/reagent/medicine/c2/tirimol/on_mob_life(mob/living/carbon/human/affected_mob, delta_time, times_fired)
-	affected_mob.adjustOxyLoss(-3 * REM * delta_time * normalise_creation_purity(), required_biotype = affected_biotype)
+	affected_mob.adjustOxyLoss(-3 * REM * delta_time * normalise_creation_purity(), required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)
 	affected_mob.adjustStaminaLoss(2 * REM * delta_time, required_biotype = affected_biotype)
 	if(drowsycd && COOLDOWN_FINISHED(src, drowsycd))
 		affected_mob.adjust_drowsiness(20 SECONDS)
@@ -365,7 +365,9 @@
 
 // Antitoxin binds plants pretty well. So the tox goes significantly down
 /datum/reagent/medicine/c2/multiver/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)
-	. = ..()
+	if(!check_tray(chems, mytray))
+		return
+
 	mytray.adjust_toxic(-(round(chems.get_reagent_amount(type) * 2)*normalise_creation_purity())) //0-2.66, 2 by default (0.75 purity).
 
 #define issyrinormusc(A) (istype(A,/datum/reagent/medicine/c2/syriniver) || istype(A,/datum/reagent/medicine/c2/musiver)) //musc is metab of syrin so let's make sure we're not purging either
@@ -526,7 +528,7 @@
 		H.adjustToxLoss(-2 * REM * delta_time, FALSE, required_biotype = affected_biotype)
 		H.adjustBruteLoss(-2 * REM * delta_time, FALSE, required_bodytype = affected_bodytype)
 		H.adjustFireLoss(-2 * REM * delta_time, FALSE, required_bodytype = affected_bodytype)
-		H.adjustOxyLoss(-6 * REM * delta_time, FALSE, required_biotype = affected_biotype)
+		H.adjustOxyLoss(-6 * REM * delta_time, FALSE, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)
 
 		H.losebreath = 0
 
