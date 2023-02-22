@@ -48,7 +48,10 @@
 		loaded_projectile.def_zone = user.zone_selected
 	loaded_projectile.suppressed = quiet
 
-	if(isgun(fired_from))
+	//SKYRAT EDIT CHANGE BEGIN
+	//if(isgun(fired_from)) - SKYRAT EDIT - ORIGINAL
+	if(isgun(fired_from) && !loaded_projectile.ignore_projectile_damage_multiplier)
+	//SKYRAT EDIT CHANGE END
 		var/obj/item/gun/G = fired_from
 		loaded_projectile.damage *= G.projectile_damage_multiplier
 		loaded_projectile.stamina *= G.projectile_damage_multiplier
