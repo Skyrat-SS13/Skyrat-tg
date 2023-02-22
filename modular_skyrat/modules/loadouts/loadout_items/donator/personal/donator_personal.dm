@@ -620,7 +620,7 @@
 
 /datum/loadout_item/suit/digicoat_glitched
 	name = "Glitched Digicoat"
-	item_path = /obj/item/clothing/suit/short_coat
+	item_path = /obj/item/clothing/suit/toggle/digicoat/glitched
 	ckeywhitelist = list("razurath")
 
 /datum/loadout_item/pocket_items/masvedishcigar
