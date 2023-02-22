@@ -35,6 +35,11 @@
 	var/list/bullet_cost
 	///cost of the materials in the magazine/box itself
 	var/list/base_cost
+	
+	//SKYRAT EDIT ADDITION BEGIN
+	///allows loading other types of ammo via ammo_workbench
+	var/multitype = FALSE
+	//SKYRAT EDIT ADDITION ENDS
 
 /obj/item/ammo_box/Initialize(mapload)
 	. = ..()

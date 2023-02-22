@@ -111,9 +111,15 @@
 
 	data["available_rounds"] = list()
 	var/obj/item/ammo_casing/ammo_type = loaded_magazine.ammo_type
+	var/ammo_caliber = initial(ammo_type.caliber)
+	var/obj/item/ammo_casing/ammo_parent_type = type2parent(ammo_type)	
+	
+	if(ammo_caliber == initial(ammo_parent_type.caliber) && ammo_caliber != null && loaded_magazine.multitype)
+		ammo_type = ammo_parent_type
 
-	var/list/round_types = typesof(ammo_type)
-	for(var/casing as anything in round_types)
+	allowed_ammo_types = typesof(ammo_type)
+
+	for(var/casing as anything in allowed_ammo_types)
 		var/obj/item/ammo_casing/our_casing = casing
 		if(initial(our_casing.harmful) && !allowed_harmful)
 			continue
@@ -211,9 +217,7 @@
 		error_message = ""
 		error_type = ""
 
-	var/list/allowed_types = typecacheof(loaded_magazine.ammo_type)
-
-	if(!(casing_type in allowed_types))
+	if(!(casing_type in allowed_ammo_types))
 		error_message = "AMMUNITION MISSMATCH"
 		error_type = "bad"
 		return
@@ -266,7 +270,7 @@
 		qdel(new_casing)
 		return
 
-	if(istype(new_casing, loaded_magazine.ammo_type))
+	if(new_casing.type in allowed_ammo_types)
 		if(!loaded_magazine.give_round(new_casing))
 			error_message = "AMMUNITION MISSMATCH"
 			error_type = "bad"
