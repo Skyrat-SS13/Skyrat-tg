@@ -10,7 +10,7 @@
 	admin_setup = /datum/event_admin_setup/pirates
 
 /datum/round_event_control/pirates/preRunEvent()
-	if (!SSmapping.empty_space)
+	if (!SSmapping.is_planetary())
 		return EVENT_CANT_RUN
 	return ..()
 
