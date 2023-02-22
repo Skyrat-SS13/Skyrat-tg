@@ -15,6 +15,7 @@
 
 	spawned_human?.client?.prefs?.safe_transfer_prefs_to(spawned_human)
 	spawned_human.dna.update_dna_identity()
+	spawned_human.dna.species.give_important_for_life(spawned_human) // make sure they get plasmaman/vox internals etc before anything else
 
 	if(quirks_enabled)
 		SSquirks.AssignQuirks(spawned_human, spawned_human.client)

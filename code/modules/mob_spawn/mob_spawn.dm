@@ -36,6 +36,7 @@
 	if(faction)
 		faction = string_list(faction)
 
+/// Creates whatever mob the spawner makes. Return FALSE if we want to exit from here without doing that, returning NULL will be logged to admins.
 /obj/effect/mob_spawn/proc/create(mob/mob_possessor, newname)
 	var/mob/living/spawned_mob = new mob_type(get_turf(src)) //living mobs only
 	name_mob(spawned_mob, newname)
@@ -108,8 +109,10 @@
 	var/prompt_name = ""
 	///if false, you won't prompt for this role. best used for replacing the prompt system with something else like a radial, or something.
 	var/prompt_ghost = TRUE
-	///how many times this spawner can be used (it won't delete unless it's out of uses)
+	///how many times this spawner can be used (it won't delete unless it's out of uses and the var to delete itself is set)
 	var/uses = 1
+	/// Does the spawner delete itself when it runs out of uses?
+	var/deletes_on_zero_uses_left = TRUE
 
 	////descriptions
 
@@ -155,9 +158,10 @@
 	return ..()
 
 //ATTACK GHOST IGNORING PARENT RETURN VALUE
-/obj/effect/mob_spawn/ghost_role/attack_ghost(mob/user)
+/obj/effect/mob_spawn/ghost_role/attack_ghost(mob/dead/observer/user)
 	if(!SSticker.HasRoundStarted() || !loc)
 		return
+
 	// SKYRAT EDIT ADDITION
 	if(is_banned_from(user.ckey, BAN_GHOST_ROLE_SPAWNER)) // Ghost role bans
 		to_chat(user, "Error, you are banned from playing ghost roles!")
@@ -166,18 +170,23 @@
 		var/incorrect_species = tgui_alert(user, "Current species preference incompatible, proceed with random appearance?", "Incompatible Species", list("Yes", "No"))
 		if(incorrect_species != "Yes")
 			return
-
 	// SKYRAT EDIT END
+
 	if(prompt_ghost)
-		var/ghost_role = tgui_alert(usr, "Become [prompt_name]? (Warning, You can no longer be revived!)",, list("Yes", "No"))
+		var/prompt = "Become [prompt_name]?"
+		if(user.can_reenter_corpse && user.mind)
+			prompt += " (Warning, You can no longer be revived!)"
+		var/ghost_role = tgui_alert(usr, prompt, buttons = list("Yes", "No"), timeout = 10 SECONDS)
 		if(ghost_role != "Yes" || !loc || QDELETED(user))
 			return
+
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_SPAWNER) && !(flags_1 & ADMIN_SPAWNED_1))
 		to_chat(user, span_warning("An admin has temporarily disabled non-admin ghost roles!"))
 		return
-	if(!uses) //just in case
+	if(uses <= 0) //just in case
 		to_chat(user, span_warning("This spawner is out of charges!"))
 		return
+
 	if(is_banned_from(user.key, role_ban))
 		to_chat(user, span_warning("You are banned from this role!"))
 		return
@@ -185,8 +194,19 @@
 		return
 	if(QDELETED(src) || QDELETED(user))
 		return
+
 	user.log_message("became a [prompt_name].", LOG_GAME)
-	create(user)
+	uses -= 1 // Remove a use before trying to spawn to prevent strangeness like the spawner trying to spawn more mobs than it should be able to
+	user.mind = null // dissassociate mind, don't let it follow us to the next life
+
+	var/created = create(user)
+	if(!created)
+		if(isnull(created)) // If we explicitly return FALSE instead of just not returning a mob, we don't want to spam the admins
+			CRASH("An instance of [type] didn't return anything when creating a mob, this might be broken!")
+
+		uses += 1 // Refund use because we didn't actually spawn anything
+
+	check_uses() // Now we check if the spawner should delete itself or not
 
 /obj/effect/mob_spawn/ghost_role/special(mob/living/spawned_mob, mob/mob_possessor)
 	. = ..()
@@ -204,12 +224,9 @@
 		spawned_mob.mind.set_assigned_role(SSjob.GetJobType(spawner_job_path))
 		spawned_mind.name = spawned_mob.real_name
 
-//multiple use mob spawner functionality here- doesn't make sense on corpses
-/obj/effect/mob_spawn/ghost_role/create(mob/mob_possessor, newname)
-	. = ..()
-	if(uses > 0)
-		uses--
-	if(!uses)
+/// Checks if the spawner has zero uses left, if so, delete yourself... NOW!
+/obj/effect/mob_spawn/ghost_role/proc/check_uses()
+	if(!uses && deletes_on_zero_uses_left)
 		qdel(src)
 
 ///override this to add special spawn conditions to a ghost role
