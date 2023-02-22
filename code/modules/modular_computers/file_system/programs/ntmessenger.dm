@@ -404,15 +404,9 @@
 		var/inbound_message = signal.format_message()
 		inbound_message = emoji_parse(inbound_message)
 
-<<<<<<< HEAD
-		if(ringer_status && L.is_literate())
-			to_chat(L, "<span class='infoplain'>[icon2html(src)] <b>PDA message from [hrefstart][signal.data["name"]] ([signal.data["job"]])[hrefend], </b>[inbound_message] [reply]</span>")
-
-=======
 		if(L.is_literate())
 			var/photo_message = message_data["photo"] ? " (<a href='byond://?src=[REF(signal.logged)];photo=1'>Photo</a>)" : ""
 			to_chat(L, span_infoplain("[icon2html(computer)] <b>PDA message from [hrefstart][signal.data["name"]] ([signal.data["job"]])[hrefend], </b>[inbound_message][photo_message] [reply]"))
->>>>>>> ed70994d877 (Messenger fixes (#73503))
 
 	if (ringer_status)
 		computer.ring(ringtone)
