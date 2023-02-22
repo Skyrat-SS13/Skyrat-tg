@@ -73,7 +73,7 @@
 	uniform = /obj/item/clothing/under/plasmaman/blueshield
 
 /obj/item/storage/box/gunset/blueshield
-	name = "CMG-1 gunset"
+	name = "Blueshield's CMG-1 gunset"
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/box/gunset/blueshield/PopulateContents()
