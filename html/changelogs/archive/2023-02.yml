@@ -654,3 +654,200 @@
   - bugfix: eyesnatchers that say that they haven been used up can't be used again
   - bugfix: Things dropped into a chasm should no longer occasionally become invisible
       and intangible.
+2023-02-18:
+  Chubbygummibear & JohnFulpWillard:
+  - rscadd: A ton of new NtOS themes, which are accessible by the new Themify application
+      that comes with all PCs.
+  - rscadd: Emagging a PC now defaults it to the Syndicate option (and adds it to
+      go back to it if you wish)
+  - rscadd: There's a new maintenance app that gives you rarer themes
+  - qol: The NtOS Main menu was moved around, added "header" applications that are
+      shown where the Flashlight is, such as your Theme manager and PDA messenger.
+  - code_imp: Made defines for device_themes
+  - code_imp: Added support for special app-side checks to download files
+  - code_imp: Removes the 'run_emag' proc, since apps can directly refer to the computer
+      to check for emag status instead.
+  - bugfix: Programs no longer download twice.
+  - rscdel: Removes the Chemistry computer disk as it was empty due to chemistry app's
+      removal
+  LT3:
+  - code_imp: 'Disease Outbreak: Disease max severity replaced with requested severity'
+  - code_imp: 'Disease Outbreak: Generated disease now includes symptom based name'
+  - code_imp: 'Disease Outbreak: Disease name is now included in the station announcement'
+  - code_imp: 'Disease Outbreak: Now in snake case'
+  - balance: 'Disease Outbreak: Tier 1 cures removed from pool'
+  - bugfix: 'Disease Outbreak: Dangerous/Biohazard diseases are now visible'
+  - bugfix: 'Disease Outbreak: Event setup generates the correct severity'
+  - bugfix: 'Disease Outbreak: Various potential symptoms were in the wrong symptom
+      pool'
+  - bugfix: Fixed broken icon path in TCG set
+  RimiNosha:
+  - qol: Lights have been dimmed some more.
+  - qol: Doors are no longer the next brightest light after tube lights.
+  - qol: Night shift is darker, and is now dynamically applied to lights.
+  - bugfix: Fixed just about all randomly brighter night shift lights.
+  SkyratBot:
+  - admin: Lowered the chance of accidentally leaking asay
+  - server: Updated instructions on setting up a TGUI CDN, noting that TGUI via CDN
+      malfunctions in the event CORS headers are absent.
+  - spellcheck: A grammatical error in strip text has been removed.
+  - bugfix: swapping to a stored DNA no longer forces you to be human instead of the
+      species stored in the DNA
+  - bugfix: False walls will no longer tell you to wait until they've stopped moving
+      when you use an item on them.
+  - bugfix: Meteors can't be triggered automatically or manually on Icebox, where
+      they do nothing.
+  - bugfix: Hacking a comms console as a traitor won't try to summon meteors or pirates
+      to Icebox, where they do nothing.
+  - bugfix: fixed weak dwarfs being too weak as to be unable to throw books
+2023-02-19:
+  LT3:
+  - imageadd: Increased cuteness of the blue cat plushie
+  - code_imp: Blue cat plushie can now nuzzle and cuddle similar to the real one
+  Melbert:
+  - bugfix: Heartless zombies will now revive again
+  - bugfix: Zombies no longer take constant ticking damage from lacking a heart
+  - bugfix: Ethereal revival causing traumas again.
+  SkyratBot:
+  - spellcheck: Head of staff lockers and prison cell lockers have had their proper
+      noun status returned.
+  - bugfix: Fix icebox barsign spawning under windows for Icebox.
+  - bugfix: Fix kilo barsign to spawn directly on top of wall so people can see it
+      from both inside the bar and outside the main hallway.
+  - bugfix: Moth wings can now correctly be healed
+  - bugfix: emagged/delta pods properly fly to lavaland
+  - bugfix: Revelation once again wipes the stored files on the computer
+  - bugfix: Reinforced Plating baseturf helpers work and should now be bug free enough
+      to be used in maps.
+  - bugfix: Cramped escape pod walls no longer appear to merge with those of the station,
+      which will be a big relief to the single occupant.
+  - bugfix: You can no longer eat pizza floor tiles with your brain.
+  YakumoChen:
+  - bugfix: Tram armoury is connected to the power grid again
+  oranges:
+  - rscadd: Stunbatons now require a red alert to activate stun mode
+2023-02-20:
+  LT3:
+  - imageadd: Wall mounted tram sign now has improved emissives and casing
+  Melbert:
+  - bugfix: Fixed a runtime with examining empty bomb frames
+  SkyratBot:
+  - bugfix: You cannot print blank documents from a photocopier if you cannot afford
+      them anymore.
+  - bugfix: Mounting the photocopier will now eject paperwork as it does with photos
+      and paper.
+  - refactor: Lots of duplicate code and some unnecessary vars removed from photocopier
+      code.
+  - qol: Tweaked around some foods to make them easier to make
+  - balance: You can purchase weapons via the goodie system if you have a weapon permit.
+  - rscadd: You can purchase lasers and disablers as goodies. The latter comes with
+      a holster you can stick on your armor vest and store your extra disabler as
+      security.
+  - qol: You can store mini ebows in energy holsters. Oops.
+  - bugfix: NtOS program downloader now works again, and will now properly alert you
+      of downloading illegal ROMs if you change your theme to anything that isn't
+      Syndicate.
+  - bugfix: NtOS themes are now recognized by all windows.
+  - bugfix: Lobstrosities and Tarantulas will once more vibrate to let you know they're
+      about to charge at you.
+  - bugfix: The Savannah Ivanov will once more vibrate to let you know it's about
+      to jump into the air.
+  - bugfix: The DNA infuser will now vibrate to let people know that it's busy blending
+      someone with a dead animal.
+  - bugfix: Guillotines can be unanchored again
+  - bugfix: Fixes mending globule ability not having a cooldown
+  - bugfix: fixed throwing description to always say "it was thrown very hard" even
+      when its not
+  - bugfix: seiver no longer applies purity and delta time twice
+  - code_imp: made seiver code much less confusing
+  - bugfix: Clicking a spider egg and then closing the radial menu won't print a message
+      in admin channel informing admins that the egg didn't spawn anything.
+  - bugfix: Health analyzers will properly report missing stomachs and tongues
+  - bugfix: A accidently stacked roller bed on lavaland has been removed.
+  - bugfix: Valentines and other antags no longer break highlander
+  - bugfix: Mechs should now cancel out of drilling when they move.
+  coiax:
+  - bugfix: Eating fish and meat poke bowls no longer consumes the bowl, just the
+      food inside.
+2023-02-21:
+  Ebin-Halcyon:
+  - bugfix: Teshari winter hoods should no longer be awkwardly placed, along with
+      the sec winter coat working for them.
+  LT3:
+  - bugfix: 'Tramstation: Added missing produce order console'
+  - bugfix: 'Tramstation: Removed duplicate vending machine in east wing'
+  - bugfix: 'Tramstation: HoP office can now broadcast announcements'
+  - code_imp: 'Tramstation: Moved information plate for symmetry'
+  - bugfix: Admin notifications for random events works for all types
+  - admin: Admin time to intervene in random events increased
+  - admin: Second chance to intervene in random events
+  - admin: Audible alert for random events
+  - admin: Game log shows what subsystem triggered event
+  SkyratBot:
+  - bugfix: On metastation the gravity generator foyer airlock access has been made
+      consistent with the rest of the engine room airlocks.
+  - bugfix: Removes a runtime error caused by moving your PDA between slots.
+  - bugfix: Medieval Sim holograms no longer spawn holding unusable laser rifles which
+      also block using their old timey weaponry.
+  - spellcheck: Hallucinations where you see people put things away now tell you they
+      put the right thing away.
+  - bugfix: candles are made of a more appropriate material
+  - imageadd: new inhand sprites for the broken holy flask
+  - bugfix: fixes broken holy water flask looking like a broken beer bottle
+  - bugfix: unholy flasks now use a blackened holy flask inhand sprite instead of
+      the beaker one
+  - bugfix: fix error in neighbor define
+  - rscadd: Added a new cybernetic implant that increases punch damage of a human
+  vinylspiders:
+  - bugfix: fixes the hemophage dormant state slowdown applying when floating/using
+      a jetpack in space
+  - bugfix: fixed hemophages not being able to transform from imperfect mutation toxin,
+      and also allows them to be affected by other reagents that target organics,
+  - bugfix: fixes throwing wheel getting stuck in a perpetual 'in use' state
+2023-02-22:
+  Melbert:
+  - bugfix: Syndicate declarations of war no longer murder apostrophes and their friends
+  - bugfix: The alert box for the declaration of war no longer looks funky, and counts
+      forwards in time rather than backwards
+  - bugfix: Fixed being able to send unencoded HTML to newscasters
+  - bugfix: Cult Ghosts can see in the dark and invisible stuff, a mechanic intended
+      for over 5 years and never functional
+  Paxilmaniac:
+  - bugfix: SWAT helmets, bulletproof armor, and slim armor vests, will no longer
+      grant illegal tech
+  - bugfix: the balloon alert for tongs being full will now actually be sent to you
+  - bugfix: the balloon alert for completing a weapon head in a forging crafting bench
+      will now actually display correctly
+  Salex08:
+  - bugfix: fixes not properly working checks with hydroponic reagents
+  Shroopy:
+  - rscadd: Time and space has destabilized even further due to Nanotrasen bluespace
+      research, now, on occasion, clones from different timelines can appear on the
+      station and hunt you down to maintain timeline stability! Beware the Paradox
+      Clone!
+  SkyratBot:
+  - bugfix: Pet dogs will once again fetch items for you
+  - bugfix: hotfix for lungless oxyloss immunity
+  - bugfix: hotfix for mobs being able to circumvent reagent respiration_type requirements
+      by removing their lungs
+  - config: Added a warning build config setting, you can now lightly repremand but
+      not block clients with older builds but fine major versions
+  - bugfix: Mice will now retain their color when they die.
+  - bugfix: fixes oxyloss not being applied when there is a partial pressure of 0
+      (no more being able to breathe in space)
+  - code_imp: fixes any lingering damage-application issues related to non MOB_ORGANIC
+      biotypes
+  - refactor: refactored lungs to have a respiration_type flag which is then used
+      by adjustOxyloss/setOxyloss to determine whether to take 'oxygen' damage.
+  - bugfix: a vent pump that was installed backwards in the Kilostation Ordnance airlock
+      has been repaired.
+  - bugfix: Oculater works again.
+  - bugfix: Holopads will blink when being called rather than just glowing.
+  - bugfix: Holopads will not blink forever if you missed a call.
+  - bugfix: fixed goliath heart having missing icon
+  - refactor: Lizard related canned food now acts like canned food
+  coiax:
+  - bugfix: Paper planes when unfolded will put the paper in your active hand, rather
+      than a different hand, just like cardboard boxes.
+  tf-4:
+  - spellcheck: Corrected a number of plush simple attack verbs.

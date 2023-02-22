@@ -40,7 +40,7 @@
 		to_chat(user, span_notice("You gently release the bowstring, removing the arrow."))
 	else if (get_ammo())
 		var/obj/item/I = user.get_active_held_item()
-		if (do_mob(user,I,10))
+		if (do_after(user, 1 SECONDS, I))
 			to_chat(user, span_notice("You draw back the bowstring."))
 			playsound(src, 'modular_skyrat/modules/tribal_extended/sound/sound_weapons_bowdraw.ogg', 75, 0) //gets way too high pitched if the freq varies
 			chamber_round()
