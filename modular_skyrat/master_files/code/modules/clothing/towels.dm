@@ -13,6 +13,8 @@
 #define TOWEL_OBJ_ICON 'modular_skyrat/master_files/icons/obj/clothing/towel.dmi'
 /// Icon path to the worn icon of the towel.
 #define TOWEL_WORN_ICON 'modular_skyrat/master_files/icons/mob/clothing/towel.dmi'
+/// Icon path to the worn icon of the towel for digitigrades.
+#define TOWEL_WORN_ICON_DIGI 'modular_skyrat/master_files/icons/mob/clothing/towel_digi.dmi'
 
 /// How much cloth goes into a towel.
 #define TOWEL_CLOTH_AMOUNT 2
@@ -28,6 +30,7 @@
 	desc = "Everyone knows what a towel is. Use it to dry yourself, or wear it around your chest, your waist or even your head!"
 	icon = TOWEL_OBJ_ICON
 	worn_icon = TOWEL_WORN_ICON
+	worn_icon_digi = TOWEL_WORN_ICON_DIGI
 	icon_state = "towel"
 	base_icon_state = "towel"
 	force = 0
@@ -38,6 +41,7 @@
 	item_flags = NOBLUDGEON
 	resistance_flags = FLAMMABLE
 	flags_inv = SHOWSPRITEEARS // Only relevant when in head shape, but useful to keep around regardless.
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 	/// The shape we're currently in.
 	var/shape = TOWEL_FOLDED
 	/// How many units of liquid can this towel store?

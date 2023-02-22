@@ -90,7 +90,7 @@
 	name = "fox plushie"
 	desc = "An adorable stuffed toy of a Fox."
 	icon_state = "plushie_fox"
-	attack_verb_continuous = list("geckers", "boops","nuzzles")
+	attack_verb_continuous = list("geckers", "boops", "nuzzles")
 	attack_verb_simple = list("gecker", "boop", "nuzzle")
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
 
@@ -202,8 +202,8 @@
 	name = "sneed plushie"
 	desc = "A plushie of a particular, bundled up IPC. Underneath the cloak, you can see a plush recreation of the captain's sabre."
 	icon_state = "plushie_seadu"
-	attack_verb_continuous = list("beeps","sneeds","swords")
-	attack_verb_simple = list("beep","sneed","sword")
+	attack_verb_continuous = list("beeps", "sneeds", "swords")
+	attack_verb_simple = list("beep", "sneed", "sword")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/synth_yes.ogg' = 1,'modular_skyrat/modules/emotes/sound/emotes/synth_no.ogg' = 1)
 
 /obj/item/toy/plush/skyrat/lizzyplush
@@ -218,16 +218,16 @@
 	name = "mechanist fox plushie"
 	desc = "A fox with fabulous hair! It has a tendency to make synth plushies look good as new when placed next to them."
 	icon_state = "plushie_cali"
-	attack_verb_continuous = list("fixes","updates","hugs")
-	attack_verb_simple = list("fixes","updates","hugs")
+	attack_verb_continuous = list("fixes", "updates", "hugs")
+	attack_verb_simple = list("fix", "update", "hug")
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
 
 /obj/item/toy/plush/skyrat/tribal_salamander
 	name = "tribal salamander plushie"
 	desc = "A water-safe plushie that always seems to lose any clothes you try to put on it."
 	icon_state = "plushie_azu"
-	attack_verb_continuous = list("wurbles at","warbles at")
-	attack_verb_simple = list("wurbles at","warbles at")
+	attack_verb_continuous = list("wurbles at", "warbles at")
+	attack_verb_simple = list("wurbles at", "warbles at")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/wurble.ogg' = 1)
 
 /obj/item/toy/plush/skyrat/commanding_teshari
@@ -242,16 +242,16 @@
 	name = "breakdancing bird plushie"
 	desc = "This little robotic bird plushie loves to give you a little dance in celebration of your achievements, no matter how mundane."
 	icon_state = "plushie_cadicus"
-	attack_verb_continuous = list("boops","dances next to")
-	attack_verb_simple = list("boops","dances next to")
+	attack_verb_continuous = list("boops", "dances next to")
+	attack_verb_simple = list("boop", "dance next to")
 	squeak_override = list('sound/machines/ping.ogg' = 1)
 
 /obj/item/toy/plush/skyrat/skreking_vox
 	name = "skreking vox plushie"
 	desc = "A vox plushie that seems ready to pull a gun on you and demand your money! Rumor has it that if you poke it in a particular way, it will show you its skrektual technique."
 	icon_state = "plushie_toko"
-	attack_verb_continuous = list("rustles at","threatens","skreks at")
-	attack_verb_simple = list("rustles at","threatens","skreks at")
+	attack_verb_continuous = list("rustles at", "threatens", "skreks at")
+	attack_verb_simple = list("rustle at", "threaten", "skrek at")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/voxrustle.ogg' = 1)
 
 /obj/item/toy/plush/skyrat/blue_dog
@@ -259,15 +259,15 @@
 	desc = "A devious looking husky that seems to be begging for headpats. It smells faintly of blueberries."
 	icon_state = "plushie_cobalt"
 	attack_verb_continuous = list("barks at", "borks at", "woofs at")
-	attack_verb_simple = list("barks at", "borks at", "woofs at")
+	attack_verb_simple = list("bark at", "bork at", "woof at")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/bark1.ogg'=1, 'modular_skyrat/modules/emotes/sound/voice/bark2.ogg'=1)
 
 /obj/item/toy/plush/skyrat/engi_snek
 	name = "engineering snek plushie"
 	desc = "This plush looks like it knows the difference between pumps and pipes! The arm is detachable, so don't lose it!"
 	icon_state = "plushie_tyri"
-	attack_verb_continuous = list("fixes", "unbolts","welds")
-	attack_verb_simple = list("fixes", "unbolts","welds")
+	attack_verb_continuous = list("fixes", "unbolts", "welds")
+	attack_verb_simple = list("fix", "unbolt", "weld")
 	squeak_override = list('sound/items/screwdriver.ogg' = 1, 'sound/items/drill_use.ogg' = 1, 'sound/items/welder.ogg' = 1)
 
 /obj/item/toy/plush/skyrat/glitch_synth
@@ -275,7 +275,7 @@
 	desc = "A synthetic plush, the interface seems to glitch out every time you give it a hug or call it cute!"
 	icon_state = "plushie_rex"
 	attack_verb_continuous = list("beeps", "hugs", "health analyzes")
-	attack_verb_simple = list("beeps", "hugs", "health analyzes")
+	attack_verb_simple = list("beep", "hug", "health analyze")
 	squeak_override = list('sound/machines/twobeep_high.ogg' = 1)
 
 /obj/item/toy/plush/skyrat/boom_bird
@@ -283,15 +283,15 @@
 	desc = "This little bird plushie may look like a nerd, but you have the sneaking suspicion it might be valid! Why does your skin start to glow when you hug it?"
 	icon_state = "plushie_dima"
 	attack_verb_continuous = list("punches", "explodes on", "peeps")
-	attack_verb_simple = list("punches", "explodes on", "peeps")
+	attack_verb_simple = list("punch", "explode on", "peep")
 	squeak_override = list('sound/machines/sm/accent/delam/1.ogg' = 1)
 
 /obj/item/toy/plush/skyrat/blue_cat
 	name = "blue cat plushie"
-	desc = "A bright blue cat plush with neon pink hair, here to hand out kisses wherever kisses need be."
+	desc = "A bright blue cat plush with neon pink hair, here to hand out kisses wherever kisses need be. Usually found near its home habitat, the tram."
 	icon_state = "plushie_skyy"
-	attack_verb_continuous = list("kisses", "hugs", "purrs against")
-	attack_verb_simple = list("kisses", "hugs", "purrs against")
+	attack_verb_continuous = list("kisses", "nuzzles", "cuddles", "purrs against")
+	attack_verb_simple = list("kiss", "nuzzle", "cuddle", "purr against")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/nya.ogg' = 1)
 
 /obj/item/toy/plush/skyrat/igneous_synth
@@ -299,7 +299,7 @@
 	desc = "Not actually made of igneous rock, giving this plush a hug will let you feel like you're being squeezed by the jaws of life!"
 	icon_state = "plushie_granite"
 	attack_verb_continuous = list("bleps", "SQUEEZES", "pies")
-	attack_verb_simple = list("bleps", "SQUEEZES", "pies")
+	attack_verb_simple = list("blep", "SQUEEZE", "pie")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg' = 1)
 
 /obj/item/toy/plush/skyrat/edgy_bird
@@ -307,7 +307,7 @@
 	desc = "An edgy plush of an edgy bird. You could swear it's teleporting to a different spot every time you look away..."
 	icon_state = "plushie_koto"
 	attack_verb_continuous = list("pecks", "teleports behind", "caws at")
-	attack_verb_simple = list("pecks", "teleports behind", "caws at")
+	attack_verb_simple = list("peck", "teleport behind", "caw at")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/caw.ogg' = 1)
 
 /obj/item/toy/plush/skyrat/tree_ferret
@@ -315,7 +315,7 @@
 	desc = "This plush will always put on a smile to make your day as bright as the sun. Hugging him makes you feel warm and fuzzy. Comes with plush chemical vials to fix your non emotional traumas too!"
 	icon_state = "plushie_sels"
 	attack_verb_continuous = list("hugs", "cackles at", "health analyzes")
-	attack_verb_simple = list("hugs", "cackles at", "health analyzes")
+	attack_verb_simple = list("hug", "cackle at", "health analyze")
 	squeak_override = list('sound/effects/crunchybushwhack1.ogg' = 1)
 
 /obj/item/toy/plush/skyrat/fox/mia
@@ -335,8 +335,8 @@
 	name = "familiar looking harpy plushie"
 	desc = "A plushie depicting a bright-red and oddly familiar looking harpy! The tag on the back lists distributor information and a tagline telling you how it'll add a little 'skree' to your daily grind."
 	icon_state = "plushie_xixi"
-	attack_verb_continuous = list("caws","skrees","pecks")
-	attack_verb_simple = list("caw","skree","peck")
+	attack_verb_continuous = list("caws", "skrees", "pecks")
+	attack_verb_simple = list("caw", "skree", "peck")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/peep_once.ogg' = 1,'modular_skyrat/modules/emotes/sound/voice/caw.ogg' = 1,'modular_skyrat/modules/emotes/sound/voice/bawk.ogg' = 1,'modular_skyrat/modules/emotes/sound/emotes/voxscream.ogg' = 1)
 
 /obj/item/toy/plush/skyrat/zapp
@@ -347,7 +347,7 @@
 			This one is outfitted with a state-of-the-art skill reader; \
 			just squeeze him tight and Zapp will tell you if you're ready for the next big game!"
 	icon_state = "plushie_zapp"
-	attack_verb_continuous = list("boops","nuzzles")
+	attack_verb_continuous = list("boops", "nuzzles")
 	attack_verb_simple = list("boop", "nuzzle")
 	squeak_override = list('sound/effects/can_open1.ogg' = 1, 'sound/effects/can_open2.ogg' = 1, 'sound/effects/can_open3.ogg' = 1)
 	///the list that is chosen from depending on gaming skill
@@ -588,7 +588,7 @@
 	desc = "A very soft plush resembling a feathery and witch like owl who is known to frequent science and medical."
 	icon_state = "plushie_owl"
 	attack_verb_continuous = list("hoots", "screms", "hugs")
-	attack_verb_simple = list("hoots", "screms", "hugs")
+	attack_verb_simple = list("hoot", "screm", "hug")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/hoot.ogg' = 1)
 
 // Donation reward for Jolly66
@@ -598,7 +598,7 @@
 		Comes with an additional paramedic cap."
 	icon_state = "plushie_derg"
 	attack_verb_continuous = list("wehs", "wehs softly", "stutters")
-	attack_verb_simple = list("wehs", "wehs softly", "stutters")
+	attack_verb_simple = list("weh", "weh softly", "stutter")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
 
 // Donation reward for Gofawful5
