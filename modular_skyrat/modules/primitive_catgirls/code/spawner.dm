@@ -19,6 +19,7 @@
 	var/datum/team/primitive_catgirls/team
 	restricted_species = list(/datum/species/human/felinid/primitive)
 	random_appearance = FALSE
+	loadout_enabled = FALSE
 	uses = 9
 	deletes_on_zero_uses_left = FALSE
 
@@ -49,12 +50,16 @@
 		to_chat(user, span_warning("It'd be weird if there were multiple of you in that cave, wouldn't it?"))
 	return FALSE
 
-/obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/special(mob/living/carbon/human/spawned_human)
+// This stuff is put on equip because it turns out /special sometimes just don't get called because skyrat
+/obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/equip(mob/living/carbon/human/spawned_human)
 	. = ..()
 
 	spawned_human.mind.add_antag_datum(/datum/antagonist/primitive_catgirl, team)
 
-	spawned_human.remove_language(/datum/language/common)
+	// I just have to be REALLY sure they get those languages
+	spawned_human.language_holder = new /datum/language_holder/primitive_felinid
+	spawned_human.update_atom_languages()
+
 	team.players_spawned += (spawned_human.key)
 
 /datum/job/primitive_catgirl
