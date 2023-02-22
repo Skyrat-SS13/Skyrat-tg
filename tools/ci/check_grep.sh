@@ -70,6 +70,12 @@ if $grep '(new|newlist|icon|matrix|sound)\(.+\)' $map_files;	then
 	echo -e "${RED}ERROR: Using unsupported procs in variables in a map file! Please remove all instances of this.${NC}"
 	st=1
 fi;
+part "armor lists"
+if $grep '\tarmor = list' $map_files; then
+	echo
+	echo -e "${RED}ERROR: Outdated armor list in map file.${NC}"
+	st=1
+fi;
 part "common spelling mistakes"
 if $grep -i 'nanotransen' $map_files; then
 	echo
@@ -119,6 +125,13 @@ if $grep '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' $code_files; then
 	echo
     echo -e "${RED}ERROR: Changed files contains a proc argument starting with 'var'.${NC}"
     st=1
+fi;
+
+part "can_perform_action argument check"
+if $grep 'can_perform_action\(\s*\)' $code_files; then
+	echo
+	echo -e "${RED}ERROR: Found a can_perform_action() proc with improper arguments.${NC}"
+	st=1
 fi;
 
 part "balloon_alert sanity"
