@@ -69,6 +69,7 @@
 	earliest_start = 0 MINUTES
 	category = EVENT_CATEGORY_SPACE
 	description = "The station is pelted by an extreme amount of dust, from all sides, for several minutes. Very destructive and likely to cause lag. Use at own risk."
+	map_flags = EVENT_SPACE_ONLY
 
 /datum/round_event/sandstorm_classic
 	start_when = 1
