@@ -51,8 +51,8 @@
 
 	if(triggering)
 		message_admins("<font color='[COLOR_ADMIN_PINK]'>Chaos Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)]: [event_to_run.name]. (\
-		<a href='?src=[REF(event_to_run)];cancelchaos=1'>CANCEL</a> | \
-		<a href='?src=[REF(event_to_run)];differentchaos=1'>SOMETHING ELSE</a>)</font>")
+		<a href='?src=[REF(src)];cancelchaos=1'>CANCEL</a> | \
+		<a href='?src=[REF(src)];differentchaos=1'>SOMETHING ELSE</a>)</font>")
 		sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)
 
 	if(!triggering)
