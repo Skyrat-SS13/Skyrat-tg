@@ -518,3 +518,12 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'sound/effects/glassbash.ogg'
+
+/datum/emote/living/oink
+    key = "oink"
+    key_third_person = "oinks"
+    message = "oinks."
+    emote_type = EMOTE_AUDIBLE
+    vary = TRUE
+    sound = 'modular_skyrat/modules/emotes/sound/voice/oink.ogg'
+
