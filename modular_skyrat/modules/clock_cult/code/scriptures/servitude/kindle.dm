@@ -55,7 +55,8 @@
 
 		hit_mob.say("Fwebar uloft'gib mirlig yro'fara!")
 
-		to_chat(invoker, span_brass("You fail to stun [hit_mob]!"))
+		to_chat(user, span_warning("Some force greater than you intervenes! [target] is protected by Nar'sie!"))
+		to_chat(target, span_warning("You are protected by your faith to Nar'sie!"))
 
 		playsound(invoker, 'sound/magic/mm_hit.ogg', 50, TRUE)
 		return TRUE
