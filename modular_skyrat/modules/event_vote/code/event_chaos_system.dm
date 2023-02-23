@@ -42,8 +42,8 @@
 	triggering = TRUE
 
 	message_admins("<font color='[COLOR_ADMIN_PINK]'>Chaos Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [event_to_run.name]. (\
-		<a href='?src=[REF(src)];cancel_chaos=1'>CANCEL</a> | \
-		<a href='?src=[REF(src)];something_else_chaos=1'>SOMETHING ELSE</a>)</font>")
+		<a href='?src=[REF(src)];cancelchaos=1'>CANCEL</a> | \
+		<a href='?src=[REF(src)];differentchaos=1'>SOMETHING ELSE</a>)</font>")
 	for(var/client/staff as anything in GLOB.admins)
 		if(staff?.prefs.read_preference(/datum/preference/toggle/comms_notification))
 			SEND_SOUND(staff, sound('sound/misc/server-ready.ogg'))
@@ -51,7 +51,7 @@
 
 	if(triggering)
 		message_admins("<font color='[COLOR_ADMIN_PINK]'>Chaos Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)]: [event_to_run.name]. (\
-		<a href='?src=[REF(event_to_run)];differentchaos=1'>CANCEL</a> | \
+		<a href='?src=[REF(event_to_run)];cancelchaos=1'>CANCEL</a> | \
 		<a href='?src=[REF(event_to_run)];differentchaos=1'>SOMETHING ELSE</a>)</font>")
 		sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)
 
