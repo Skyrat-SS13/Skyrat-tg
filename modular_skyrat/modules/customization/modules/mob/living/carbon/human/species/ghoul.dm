@@ -167,7 +167,7 @@
 
 			// Pry it off...
 			user.visible_message("[user] grabs onto [p_their()] own [affecting.name] and pulls.", span_notice("You grab hold of your [affecting.name] and yank hard."))
-			if (!do_mob(user,target))
+			if (!do_after(user, 3 SECONDS, target))
 				return TRUE
 
 			user.visible_message("[user]'s [affecting.name] comes right off in their hand.", span_notice("Your [affecting.name] pops right off."))
@@ -205,7 +205,7 @@
 
 			// Leave Melee Chain (so deleting the meat doesn't throw an error) <--- aka, deleting the meat that called this very proc.
 			spawn(1)
-				if(do_mob(user,H))
+				if(do_after(user, 3 SECONDS, H))
 					// Attach the part!
 					var/obj/item/bodypart/newBP = H.newBodyPart(target_zone, FALSE)
 					H.visible_message("The meat sprouts digits and becomes [H]'s new [newBP.name]!", span_notice("The meat sprouts digits and becomes your new [newBP.name]!"))
