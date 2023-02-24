@@ -8,7 +8,7 @@
 	name = "ocular warden"
 	desc = "A wide, open eye that stares intently into your soul. It seems resistant to energy based weapons."
 	clockwork_desc = "A defensive device that will fight any nearby intruders."
-	break_message = "<span class='warning'>A black ooze leaks from the ocular warden as it slowly sinks to the ground.</span>"
+	break_message = span_warning("A black ooze leaks from the ocular warden as it slowly sinks to the ground.")
 	icon_state = "ocular_warden"
 	max_integrity = 60
 	armor_type = /datum/armor/clockwork_ocular_warden
