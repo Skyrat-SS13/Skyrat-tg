@@ -38,7 +38,7 @@
 
 	//Check hostiles in range
 	var/list/valid_targets = list()
-	for(var/mob/living/potential in hearers(FIRE_RANGE, src))
+	for(var/mob/living/potential_target in hearers(FIRE_RANGE, src))
 
 		if(IS_CLOCK(potential) || potential.stat)
 			continue
