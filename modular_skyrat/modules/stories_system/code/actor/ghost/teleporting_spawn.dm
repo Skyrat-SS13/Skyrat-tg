@@ -55,10 +55,12 @@
 /datum/story_actor/ghost/teleporting_spawn/second_jumper/send_them_in(mob/living/carbon/human/to_send_human)
 	. = ..()
 	var/datum/story_actor/ghost/teleporting_spawn/worldjumper/worldjumper
+	var/mob/living/carbon/human/worldjumper_human
 	for(var/datum/mind/actor_mind as anything in involved_story.mind_actor_list)
 		var/datum/story_actor/actor_datum = mind_actor_list[actor_mind]
 		switch(actor_datum.type)
 			if(/datum/story_actor/ghost/teleporting_spawn/worldjumper)
+				worldjumper_human = actor_mind.current
 				worldjumper = actor_datum
 	worldjumper.actor_info = "You've spent some time here now, growing just a little bit accustomed to this world. The air isn't as harsh, \
 	and you feel like you understand this strange station just a little bit better…\n\n\
@@ -66,3 +68,7 @@
 	But as your thoughts linger on that world, a question burns away all else. Was that place ever really your home? Are you sure you want to go back?"
 	worldjumper.actor_goal = "Either remain on the station or find a way home."
 	worldjumper.ui_interact(worldjumper.actor_ref.current)
+	var/obj/item/return_device/return_device = new(get_turf(to_send_human))
+	return_device.worldjumper = worldjumper_human
+	return_device.second_jumper = to_send_human
+	to_send_human.put_in_hands(return_device, ignore_animation = TRUE)

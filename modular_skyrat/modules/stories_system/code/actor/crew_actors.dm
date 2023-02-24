@@ -187,4 +187,4 @@
 
 /datum/story_actor/crew/multiverse_researcher/handle_spawning(mob/living/carbon/human/picked_spawner, datum/story_type/current_story)
 	. = ..()
-	picked_spawner.put_in_hands(new /obj/item/toy/cards/deck/tarot, ignore_animation = TRUE)
+	picked_spawner.put_in_hands(new /obj/item/locator, ignore_animation = TRUE)
