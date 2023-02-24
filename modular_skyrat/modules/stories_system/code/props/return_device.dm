@@ -19,9 +19,10 @@
 		return
 	user.balloon_alert_to_viewers("[src] begins charging...")
 	if(do_after(user, 10 SECONDS, target))
-		new /obj/effect/temp_visual/emp/pulse(get_turf(second_jumper))
+		var/turf/turf_to_explode = get_turf(second_jumper)
+		new /obj/effect/temp_visual/emp/pulse(turf_to_explode)
 		new /obj/effect/temp_visual/emp/pulse(get_turf(worldjumper))
 		second_jumper.gib(TRUE, FALSE, FALSE)
 		worldjumper.gib(TRUE, FALSE, FALSE)
-		explosion(spawn_location, 0, 0, 3, 0, 5) // per writer: (simulating returning to their home dimension… or maybe just showing the device was faulty and killing the pair of them in a hilarious moment of dark humour)
+		explosion(turf_to_explode, 0, 0, 3, 0, 5) // per writer: (simulating returning to their home dimension… or maybe just showing the device was faulty and killing the pair of them in a hilarious moment of dark humour)
 		qdel(src)
