@@ -138,11 +138,9 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/summon_ert,
 	/client/proc/toggle_nuke,
 	/client/proc/toggle_random_events,
-
 	/client/proc/admin_change_title_screen, 	/*SKYRAT EDIT ADDITION*/
 	/client/proc/change_title_screen_html, 		/*SKYRAT EDIT ADDITION*/
 	/client/proc/change_title_screen_notice, 	/*SKYRAT EDIT ADDITION*/
-	/client/proc/event_panel, 					/*SKYRAT EDIT ADDITION*/
 	/client/proc/fix_say, 						/*SKYRAT EDIT ADDITION*/
 	/client/proc/one_click_antag,				/*ONE CLICK ANTAG - SKYRAT EDIT ADDITION*/
 	/client/proc/request_more_opfor,			/*SKYRAT EDIT ADDITION*/
