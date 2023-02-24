@@ -7,7 +7,6 @@
 
 /datum/ai_behavior/find_potential_targets/perform(delta_time, datum/ai_controller/controller, target_key, targetting_datum_key, hiding_location_key)
 	. = ..()
-	var/list/potential_targets
 	var/mob/living/living_mob = controller.pawn
 	var/datum/targetting_datum/targetting_datum = controller.blackboard[targetting_datum_key]
 
