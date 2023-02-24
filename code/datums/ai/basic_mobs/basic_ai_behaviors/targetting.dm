@@ -14,9 +14,6 @@
 	if(!targetting_datum)
 		CRASH("No target datum was supplied in the blackboard for [controller.pawn]")
 
-<<<<<<< HEAD
-	potential_targets = hearers(vision_range, controller.pawn) - living_mob //Remove self, so we don't suicide
-=======
 	var/datum/weakref/weak_target = controller.blackboard[target_key]
 	var/atom/current_target = weak_target?.resolve()
 	if (targetting_datum.can_attack(living_mob, current_target))
@@ -25,7 +22,6 @@
 
 	controller.blackboard[target_key] = null
 	var/list/potential_targets = hearers(vision_range, controller.pawn) - living_mob //Remove self, so we don't suicide
->>>>>>> f1d93b694de (Basic Mobs can no longer melee attack you from an arbitrary range (#73294))
 
 	for(var/HM in typecache_filter_list(range(vision_range, living_mob), hostile_machines)) //Can we see any hostile machines?
 		if(can_see(living_mob, HM, vision_range))
