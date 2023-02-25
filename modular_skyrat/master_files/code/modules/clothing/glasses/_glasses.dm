@@ -5,6 +5,8 @@
 		return
 	if(slot & ITEM_SLOT_EYES)
 		if(!(flags_inv & HIDESNOUT) && (user.dna.species.bodytype & BODYTYPE_SNOUTED))
+			if(!isnull(alternate_worn_layer) && alternate_worn_layer < BODY_FRONT_LAYER) // if the alternate worn layer was already lower than snouts then leave it be
+				return
 			alternate_worn_layer = ABOVE_BODY_FRONT_GLASSES_LAYER
 			user.update_worn_glasses()
 
