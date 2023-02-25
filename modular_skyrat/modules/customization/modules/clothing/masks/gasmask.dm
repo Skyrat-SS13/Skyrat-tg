@@ -4,7 +4,6 @@
 	name = "glass gas mask"
 	desc = "A face-covering mask that can be connected to an air supply. This one doesn't obscure your face however."
 	icon_state = "gas_clear"
-	flags_inv = HIDEEYES
 
 /obj/item/clothing/mask/gas/alt
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
