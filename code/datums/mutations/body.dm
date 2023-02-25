@@ -135,6 +135,12 @@
 /datum/mutation/human/dwarfism/on_losing(mob/living/carbon/human/owner)
 	if(..())
 		return
+	// SKYRAT EDIT BEGIN
+	if(owner.dna.features["body_size"] < 1)
+		to_chat(owner, "You feel relief as the pressure building inside you subsides.")
+		return
+	// SKYRAT EDIT END
+		
 	REMOVE_TRAIT(owner, TRAIT_DWARF, GENETIC_MUTATION)
 	var/matrix/new_transform = matrix()
 	new_transform.Scale(1, 1.25)
@@ -407,6 +413,12 @@
 /datum/mutation/human/gigantism/on_losing(mob/living/carbon/human/owner)
 	if(..())
 		return
+	// SKYRAT EDIT BEGIN
+	if(owner.dna.features["body_size"] > 1)
+		to_chat(owner, "You feel relief as your bones cease their growth spurt.")
+		return
+	// SKYRAT EDIT END
+		
 	REMOVE_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 	owner.resize = 0.8
 	owner.update_transform()
