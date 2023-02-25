@@ -435,7 +435,7 @@
 	desc = "Red and white drink for the upper classes or undead."
 
 /datum/reagent/consumable/ethanol/velvet_kiss/expose_mob(mob/living/exposed_mob, methods, reac_volume)
-	if(iszombie(exposed_mob) || isvampire(exposed_mob) || isdullahan(exposed_mob) || ishemophage(exposed_mob)) //Rare races!
+	if(iszombie(exposed_mob) || isvampire(exposed_mob) || isdullahan(exposed_mob)) //Rare races!
 		quality = RACE_DRINK
 	else
 		quality = DRINK_GOOD
