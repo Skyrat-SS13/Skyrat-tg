@@ -5,7 +5,7 @@
 		return
 	if(slot & ITEM_SLOT_EYES)
 		if(!(flags_inv & HIDESNOUT) && (user.dna.species.bodytype & BODYTYPE_SNOUTED))
-			alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER
+			alternate_worn_layer = ABOVE_BODY_FRONT_GLASSES_LAYER
 			user.update_worn_glasses()
 
 /obj/item/clothing/glasses/dropped(mob/living/carbon/human/user)
