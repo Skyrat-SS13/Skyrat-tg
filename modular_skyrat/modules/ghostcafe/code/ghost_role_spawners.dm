@@ -39,6 +39,7 @@
 	name = "Cafe Sleeper"
 	prompt_name = "a ghost cafe human"
 	uses = -1
+	infinite_use = TRUE
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	mob_name = "a cafe visitor"

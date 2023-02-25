@@ -135,6 +135,8 @@
 
 
 	// SKYRAT EDIT ADDITION
+	/// Does this spawner have infinite uses?
+	var/infinite_use = FALSE
 	/// Do we use a random appearance for this ghost role?
 	var/random_appearance = TRUE
 	/// Can we use our loadout for this role?
@@ -183,7 +185,7 @@
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_SPAWNER) && !(flags_1 & ADMIN_SPAWNED_1))
 		to_chat(user, span_warning("An admin has temporarily disabled non-admin ghost roles!"))
 		return
-	if(uses <= 0) //just in case
+	if(uses <= 0 && !infinite_use) //just in case // SKYRAT EDIT - GHOST CAFE SPAWNER
 		to_chat(user, span_warning("This spawner is out of charges!"))
 		return
 
