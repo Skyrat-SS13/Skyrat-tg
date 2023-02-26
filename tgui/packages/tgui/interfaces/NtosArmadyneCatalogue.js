@@ -35,7 +35,7 @@ export const NtosArmadyneCatalogue = (props, context) => {
           <b>Money:</b> ${money} / ${money_max}
           <br />
           <br />
-          <div style="border: 1px red outset"></div>
+          <div style="border: 1px red outset" />
           <br />
           {orders.map((order) => {
             return (
