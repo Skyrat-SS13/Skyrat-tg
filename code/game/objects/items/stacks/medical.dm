@@ -170,7 +170,7 @@
 		return
 	*/
 	if(limb.current_gauze)
-		to_chat(user, "<span class='warning'>[user==M ? "Your" : "[M]'s"] [limb.name] is already bandaged!</span>")
+		balloon_alert(user, "already bandaged!")
 		return
 	//SKYRAT EDIT CHANGE END
 
