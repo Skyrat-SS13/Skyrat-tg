@@ -72,6 +72,8 @@
 /// If someone joins roundstart, it'll set the diplomat type to be their choice.
 /// If nobody joins, then it'll be randomly chosen through `set_random_type()`
 /datum/job/corporate_diplomat/proc/set_diplomat_type(datum/corporate_diplomat_role/picked_role, client/player_client, mob/living/carbon/human/spawning)
+	SSblackbox.record_feedback("tally", "diplomat_type", 1, "[picked_role]")
+
 	picked_role = new picked_role
 
 	// SSjob handling
