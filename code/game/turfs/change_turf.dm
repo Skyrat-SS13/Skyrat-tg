@@ -82,10 +82,6 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		lgroup.remove_from_group(src)
 	//SKYRAT EDIT END
 	var/old_rcd_memory = rcd_memory
-<<<<<<< HEAD
-	var/old_always_lit = always_lit
-=======
->>>>>>> f88edef0fb0 (Space/Changeturf fixes and optimizations (#73261))
 	var/old_explosion_throw_details = explosion_throw_details
 	var/old_opacity = opacity
 	// I'm so sorry brother
@@ -144,17 +140,6 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	lattice_underneath = old_lattice_underneath
 
-<<<<<<< HEAD
-	if(new_turf.always_lit)
-		// We are guarenteed to have these overlays because of how generation works
-		var/mutable_appearance/overlay = GLOB.fullbright_overlays[GET_TURF_PLANE_OFFSET(src) + 1]
-		new_turf.add_overlay(overlay)
-	else if (old_always_lit)
-		var/mutable_appearance/overlay = GLOB.fullbright_overlays[GET_TURF_PLANE_OFFSET(src) + 1]
-		new_turf.cut_overlay(overlay)
-
-=======
->>>>>>> f88edef0fb0 (Space/Changeturf fixes and optimizations (#73261))
 	if(SSlighting.initialized)
 		// Space tiles should never have lighting objects
 		if(!space_lit)
@@ -190,8 +175,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	// If we're not either, but were formerly a space turf, then we want light
 	else if(ispath(old_type, /turf/open/space) && CONFIG_GET(flag/starlight))
 		for(var/turf/open/space/space_tile in RANGE_TURFS(1, src))
-<<<<<<< HEAD
-			space_tile.update_starlight()
+			space_tile.enable_starlight()
 	//SKYRAT EDIT ADDITION
 	if(old_liquids)
 		if(new_turf.liquids)
@@ -217,14 +201,6 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 					qdel(old_liquids, TRUE)
 	//SKYRAT EDIT END
 
-	// We will only run this logic if the tile is not on the prime z layer, since we use area overlays to cover that
-	if(SSmapping.z_level_to_plane_offset[z])
-		var/area/thisarea = get_area(new_turf)
-		if(thisarea.lighting_effects)
-			new_turf.add_overlay(thisarea.lighting_effects[SSmapping.z_level_to_plane_offset[z] + 1])
-=======
-			space_tile.enable_starlight()
-
 	if(old_opacity != opacity && SSticker)
 		GLOB.cameranet.bareMajorChunkChange(src)
 
@@ -233,7 +209,6 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		var/area/our_area = new_turf.loc
 		if(our_area.lighting_effects)
 			new_turf.add_overlay(our_area.lighting_effects[SSmapping.z_level_to_plane_offset[z] + 1])
->>>>>>> f88edef0fb0 (Space/Changeturf fixes and optimizations (#73261))
 
 	// only queue for smoothing if SSatom initialized us, and we'd be changing smoothing state
 	if(flags_1 & INITIALIZED_1)
@@ -269,16 +244,12 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			if(stashed_group.should_display || SSair.display_all_groups)
 				stashed_group.display_turf(new_turf)
 	else
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION
 		if(pollution)
 			qdel(pollution)
 		//SKYRAT EDIT END
-		SSair.remove_from_active(src) //Clean up wall excitement, and refresh excited groups
-=======
 		if(excited || excited_group)
 			SSair.remove_from_active(src) //Clean up wall excitement, and refresh excited groups
->>>>>>> f88edef0fb0 (Space/Changeturf fixes and optimizations (#73261))
 		if(ispath(path,/turf/closed) || ispath(path,/turf/cordon))
 			flags |= CHANGETURF_RECALC_ADJACENT
 		return ..()

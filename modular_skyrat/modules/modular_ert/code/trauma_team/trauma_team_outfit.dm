@@ -133,3 +133,4 @@
 	icon_state = "ert_ntrauma"
 	resistance_flags = ACID_PROOF
 	supports_variations_flags = NONE	//Also good GOD I didnt want to re-sprite this helmet
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT

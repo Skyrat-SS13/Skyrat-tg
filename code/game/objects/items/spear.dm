@@ -13,7 +13,7 @@
 	demolition_mod = 0.75
 	embedding = list("impact_pain_mult" = 2, "remove_pain_mult" = 4, "jostle_chance" = 2.5)
 	armour_penetration = 10
-	custom_materials = list(/datum/material/iron=1150, /datum/material/glass=2075)
+	custom_materials = list(/datum/material/iron=1000, /datum/material/glass=2000)
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb_continuous = list("attacks", "pokes", "jabs", "tears", "lacerates", "gores")
 	attack_verb_simple = list("attack", "poke", "jab", "tear", "lacerate", "gore")
@@ -69,6 +69,7 @@
 		if(/obj/item/shard/plasma)
 			force = 11
 			throwforce = 21
+			custom_materials = list(/datum/material/iron=1000, /datum/material/alloy/plasmaglass=2000)
 			icon_prefix = "spearplasma"
 			force_unwielded = 11
 			force_wielded = 19
@@ -78,6 +79,7 @@
 			throwforce = 21
 			throw_range = 8
 			throw_speed = 5
+			custom_materials = list(/datum/material/iron=1000, /datum/material/alloy/titaniumglass=2000)
 			wound_bonus = -10
 			force_unwielded = 13
 			force_wielded = 18
@@ -88,6 +90,7 @@
 			throwforce = 22
 			throw_range = 9
 			throw_speed = 5
+			custom_materials = list(/datum/material/iron=1000, /datum/material/alloy/plastitaniumglass=2000)
 			wound_bonus = -10
 			bare_wound_bonus = 20
 			force_unwielded = 13
@@ -209,15 +212,14 @@
 	icon_prefix = "bone_spear"
 	name = "bone spear"
 	desc = "A haphazardly-constructed yet still deadly weapon. The pinnacle of modern technology."
-	force = 8 //SKYRAT EDIT
+
 	throwforce = 22
-	reach = 2 // SKYRAT EDIT
 	armour_penetration = 15 //Enhanced armor piercing
+	custom_materials = list(/datum/material/bone=7000)
+	force_unwielded = 8 // SKYRAT EDIT CHANGE - ORIGINAL: 12
+	force_wielded = 16 // SKYRAT EDIT CHANGE - ORIGINAL: 20
 
-
-/obj/item/spear/bonespear/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/two_handed, force_unwielded=8, force_wielded=16, icon_wielded="[icon_prefix]1") //SKYRAT EDIT
+	reach = 2 // SKYRAT EDIT ADD
 
 /*
  * Bamboo Spear
@@ -230,5 +232,6 @@
 	desc = "A haphazardly-constructed bamboo stick with a sharpened tip, ready to poke holes into unsuspecting people."
 
 	throwforce = 22	//Better to throw
+	custom_materials = list(/datum/material/bamboo=40000)
 	force_unwielded = 10
 	force_wielded = 18

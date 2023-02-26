@@ -20,8 +20,9 @@
 	run_later = TRUE
 	plane = PLANE_SPACE
 	layer = SPACE_LAYER
-	light_power = 0.25
-	always_lit = TRUE
+	light_power = 0.75
+	light_color = COLOR_STARLIGHT
+	space_lit = TRUE
 	bullet_bounce_sound = null
 	vis_flags = VIS_INHERIT_ID //when this be added to vis_contents of something it be associated with something on clicking, important for visualisation of turf in openspace and interraction with openspace that show you turf.
 
@@ -31,13 +32,6 @@
 	SHOULD_CALL_PARENT(FALSE)
 	//This is used to optimize the map loader
 	return
-
-//SKYRAT EDIT ADDITION
-/turf/open/space/mirage
-	blocks_air = TRUE
-	light_power = 0
-	always_lit = TRUE
-//SKYRAT EDIT END
 
 /**
  * Space Initialize
@@ -66,7 +60,7 @@
 		plane = PLANE_SPACE - (PLANE_RANGE * SSmapping.z_level_to_plane_offset[z])
 
 	var/area/our_area = loc
-	if(!our_area.area_has_base_lighting && always_lit) //Only provide your own lighting if the area doesn't for you
+	if(!our_area.area_has_base_lighting && space_lit) //Only provide your own lighting if the area doesn't for you
 		// Intentionally not add_overlay for performance reasons.
 		// add_overlay does a bunch of generic stuff, like creating a new list for overlays,
 		// queueing compile, cloning appearance, etc etc etc that is not necessary here.
@@ -111,16 +105,6 @@
 /// Updates starlight. Called when we're unsure of a turf's starlight state
 /// Returns TRUE if we succeed, FALSE otherwise
 /turf/open/space/proc/update_starlight()
-<<<<<<< HEAD
-	if(CONFIG_GET(flag/starlight))
-		for(var/t in RANGE_TURFS(1,src)) //RANGE_TURFS is in code\__HELPERS\game.dm
-			if(isspaceturf(t))
-				//let's NOT update this that much pls
-				continue
-			set_light(2, 1.25, COLOR_BLUE_WHITE)
-			return
-		set_light(0)
-=======
 	for(var/t in RANGE_TURFS(1,src)) //RANGE_TURFS is in code\__HELPERS\game.dm
 		// I've got a lot of cordons near spaceturfs, be good kids
 		if(isspaceturf(t) || istype(t, /turf/cordon))
@@ -135,7 +119,6 @@
 /turf/open/space/proc/enable_starlight()
 	if(!light_range)
 		set_light(2)
->>>>>>> f88edef0fb0 (Space/Changeturf fixes and optimizations (#73261))
 
 /turf/open/space/attack_paw(mob/user, list/modifiers)
 	return attack_hand(user, modifiers)
@@ -211,9 +194,7 @@
 	return FALSE
 
 /turf/open/space/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
-	underlay_appearance.icon = 'icons/turf/space.dmi'
-	underlay_appearance.icon_state = "space"
-	SET_PLANE(underlay_appearance, PLANE_SPACE, src)
+	generate_space_underlay(underlay_appearance, asking_turf)
 	return TRUE
 
 
@@ -258,6 +239,7 @@
 /turf/open/space/openspace/Initialize(mapload) // handle plane and layer here so that they don't cover other obs/turfs in Dream Maker
 	. = ..()
 	icon_state = "invisible"
+	update_starlight()
 	return INITIALIZE_HINT_LATELOAD
 
 /turf/open/space/openspace/LateInitialize()
@@ -297,8 +279,6 @@
 				return FALSE
 		return TRUE
 	return FALSE
-<<<<<<< HEAD
-=======
 
 /turf/open/space/openspace/enable_starlight()
 	var/turf/below = SSmapping.get_turf_below(src)
@@ -322,4 +302,3 @@
 		set_light(2)
 	else if(!isspaceturf(source) && ispath(path, /turf/open/space))
 		set_light(0)
->>>>>>> f88edef0fb0 (Space/Changeturf fixes and optimizations (#73261))
