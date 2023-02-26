@@ -116,7 +116,9 @@
 
 	// Beer is a chemical composition of alcohol and various other things. It's a garbage nutrient but hey, it's still one. Also alcohol is bad, mmmkay?
 /datum/reagent/consumable/ethanol/beer/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)
-	. = ..()
+	if(!check_tray(chems, mytray))
+		return
+
 	mytray.adjust_plant_health(-round(chems.get_reagent_amount(type) * 0.05))
 	mytray.adjust_waterlevel(round(chems.get_reagent_amount(type) * 0.7))
 
@@ -728,7 +730,7 @@
 		cubano.adjustBruteLoss(-1 * REM * delta_time, FALSE, required_bodytype = affected_bodytype)
 		cubano.adjustFireLoss(-1 * REM * delta_time, FALSE, required_bodytype = affected_bodytype)
 		cubano.adjustToxLoss(-1 * REM * delta_time, FALSE, required_biotype = affected_biotype)
-		cubano.adjustOxyLoss(-5 * REM * delta_time, FALSE, required_biotype = affected_biotype)
+		cubano.adjustOxyLoss(-5 * REM * delta_time, FALSE, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)
 		. = TRUE
 	return ..() || .
 
@@ -1891,7 +1893,7 @@
 		drinker.adjustBruteLoss(-3 * REM * delta_time, FALSE, required_bodytype = affected_bodytype)
 		drinker.adjustFireLoss(-3 * REM * delta_time, FALSE, required_bodytype = affected_bodytype)
 		drinker.adjustCloneLoss(-5 * REM * delta_time, 0)
-		drinker.adjustOxyLoss(-4 * REM * delta_time, FALSE, required_biotype = affected_biotype)
+		drinker.adjustOxyLoss(-4 * REM * delta_time, FALSE, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)
 		drinker.adjustToxLoss(-3 * REM * delta_time, FALSE, required_biotype = affected_biotype)
 		. = TRUE
 	return ..() || .
@@ -2288,7 +2290,7 @@
 		drinker.adjustBruteLoss(-1, required_bodytype = affected_bodytype)
 		drinker.adjustFireLoss(-1, required_bodytype = affected_bodytype)
 		drinker.adjustToxLoss(-1, required_biotype = affected_biotype)
-		drinker.adjustOxyLoss(-1, required_biotype = affected_biotype)
+		drinker.adjustOxyLoss(-1, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)
 		drinker.adjustStaminaLoss(-1, required_biotype = affected_biotype)
 	drinker.visible_message(span_warning("[drinker] shivers with renewed vigor!"), span_notice("One taste of [lowertext(name)] fills you with energy!"))
 	if(!drinker.stat && heal_points == 20) //brought us out of softcrit
@@ -2299,7 +2301,7 @@
 		drinker.adjustBruteLoss(-1 * REM * delta_time, required_bodytype = affected_bodytype)
 		drinker.adjustFireLoss(-1 * REM * delta_time, required_bodytype = affected_bodytype)
 		drinker.adjustToxLoss(-0.5 * REM * delta_time, required_biotype = affected_biotype)
-		drinker.adjustOxyLoss(-3 * REM * delta_time, required_biotype = affected_biotype)
+		drinker.adjustOxyLoss(-3 * REM * delta_time, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)
 		drinker.adjustStaminaLoss(-5 * REM * delta_time, required_biotype = affected_biotype)
 		. = TRUE
 	..()
@@ -2849,7 +2851,7 @@
 	//A healing drink similar to Quadruple Sec, Ling Stings, and Screwdrivers for the Wizznerds; the check is consistent with the changeling sting
 	if(drinker?.mind?.has_antag_datum(/datum/antagonist/wizard))
 		drinker.heal_bodypart_damage(1 * REM * delta_time, 1 * REM * delta_time)
-		drinker.adjustOxyLoss(-1 * REM * delta_time, FALSE, required_biotype = affected_biotype)
+		drinker.adjustOxyLoss(-1 * REM * delta_time, FALSE, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)
 		drinker.adjustToxLoss(-1 * REM * delta_time, FALSE, required_biotype = affected_biotype)
 		drinker.adjustStaminaLoss(-1  * REM * delta_time, required_biotype = affected_biotype)
 	return ..()
