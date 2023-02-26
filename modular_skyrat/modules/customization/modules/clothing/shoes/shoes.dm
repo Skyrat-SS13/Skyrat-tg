@@ -57,13 +57,6 @@
 	greyscale_config_worn_digi = /datum/greyscale_config/fancyheels/worn
 	flags_1 = IS_PLAYER_COLORABLE_1
 
-/obj/item/clothing/shoes/discoshoes
-	name = "green snakeskin shoes"
-	desc = "They may have lost some of their lustre over the years, but these green crocodile leather shoes fit you perfectly."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
-	icon_state = "lizardskin_shoes"
-
 /obj/item/clothing/shoes/jungleboots
 	name = "jungle boots"
 	desc = "Take me to your paradise, I want to see the Jungle. A brown pair of boots."
