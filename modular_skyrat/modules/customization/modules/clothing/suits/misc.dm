@@ -78,14 +78,6 @@
 	. = ..()
 	AddComponent(/datum/component/toggle_clothes, "cardigan_t")
 
-/obj/item/clothing/suit/discoblazer
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "disco ass blazer"
-	desc = "Looks like someone skinned this blazer off some long extinct disco-animal. It has an enigmatic white rectangle on the back and the right sleeve."
-	icon_state = "jamrock_blazer"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/suit/blackfurrich
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
