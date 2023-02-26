@@ -181,7 +181,7 @@
 		if(/datum/corporate_diplomat_role/solfed_liaison)
 			floor.ChangeTurf(/turf/open/floor/iron/smooth_large)
 
-	return INITIALIZE_HINT_QDEL
+	qdel(src)
 
 
 /obj/effect/mapping_helpers/corporate_diplomat/good_floor
@@ -203,7 +203,7 @@
 		if(/datum/corporate_diplomat_role/solfed_liaison)
 			floor.ChangeTurf(/turf/open/floor/carpet)
 
-	return INITIALIZE_HINT_QDEL
+	qdel(src)
 
 // Actual objects
 
