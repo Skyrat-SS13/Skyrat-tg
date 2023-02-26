@@ -191,7 +191,9 @@
 						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] ([span_boldannounce("Ghosted")])\n"
 						continue //Ghosted while alive
 
-
+	//SKYRAT EDIT ADDITION BEGIN - Roundstart Logging
+	log_admin_private(msg.Join())
+	//SKYRAT EDIT ADDITION END - Roundstart Logging
 	for (var/C in GLOB.admins)
 		to_chat(C, msg.Join())
 
