@@ -64,14 +64,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "lizardskin_shoes"
 
-/obj/item/clothing/shoes/kimshoes
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
-	name = "aerostatic boots"
-	desc = "A brown pair of boots, prim and proper, ready to set off and get a body out of a tree."
-	icon_state = "aerostatic_boots"
-
-
 /obj/item/clothing/shoes/jungleboots
 	name = "jungle boots"
 	desc = "Take me to your paradise, I want to see the Jungle. A brown pair of boots."

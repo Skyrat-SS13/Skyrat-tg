@@ -581,6 +581,11 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/british_officer
 	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_WARDEN, JOB_DETECTIVE)
 
+/datum/loadout_item/suit/kimjacket
+	name = "Aerostatic Bomber Jacket"
+	item_path = /obj/item/clothing/suit/jacket/det_suit/kim
+	restricted_roles = list(JOB_DETECTIVE)
+
 /datum/loadout_item/suit/offdep_jacket
 	name = "Off-Department Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/assistant
