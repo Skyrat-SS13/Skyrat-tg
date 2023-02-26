@@ -16,8 +16,8 @@ export const NtosArmadyneCatalogue = (props, context) => {
             of the Armadyne corporation.
             <br />
             <br />
-            Use of purchaser's funds recommended to assist in point collection
-            for order.
+            Use of purchaser&apos;s funds recommended to assist in point
+            collection for order.
           </i>
         </Section>
         <Section>
