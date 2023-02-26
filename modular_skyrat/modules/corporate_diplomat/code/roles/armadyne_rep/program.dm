@@ -75,7 +75,7 @@
 			point_count += round(money_can_take * POINTS_PER_DOLLAR)
 
 			computer.computer_id_slot.registered_account.adjust_money(-money_can_take, "Armadyne credit-to-point transfer")
-			computer.say("$[money_can_take] has been removed from the account of [computer.computer_id_slot.registered_account.account_holder] in exchange for [round(money * POINTS_PER_DOLLAR)] points.")
+			computer.say("$[money_can_take] has been removed from the account of [computer.computer_id_slot.registered_account.account_holder] in exchange for [round(money_can_take * POINTS_PER_DOLLAR)] points.")
 
 		if("purchase")
 			var/order_name = params["orderName"]

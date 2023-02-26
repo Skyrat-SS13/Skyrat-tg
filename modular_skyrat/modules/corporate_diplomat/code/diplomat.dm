@@ -114,8 +114,7 @@
 	SIGNAL_HANDLER
 
 	if(SSjob.corporate_diplomat_type)
-		var/datum/corporate_diplomat_role/picked_role = new SSjob.corporate_diplomat_type
-		set_diplomat_type(picked_role)
+		set_diplomat_type(SSjob.corporate_diplomat_type)
 		UnregisterSignal(src, COMSIG_TICKER_ROUND_STARTING)
 		return
 
