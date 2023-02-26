@@ -42,7 +42,6 @@
 	righthand_file ='modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_righthand.dmi'
 	icon_state = "mp5"
 	inhand_icon_state = "mp5"
-	selector_switch_icon = TRUE
 	mag_type = /obj/item/ammo_box/magazine/mp5
 	bolt_type = BOLT_TYPE_LOCKING
 	can_suppress = TRUE
