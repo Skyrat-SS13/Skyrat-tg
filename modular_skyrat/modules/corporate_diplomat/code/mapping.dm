@@ -148,6 +148,9 @@
 /obj/effect/mapping_helpers/corporate_diplomat/Initialize(mapload)
 	..()
 	if(!mapload)
+		if(!SSjob.corporate_diplomat_type)
+			return INITIALIZE_HINT_QDEL
+
 		change_tile()
 
 	else
