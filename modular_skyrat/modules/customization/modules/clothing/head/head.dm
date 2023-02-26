@@ -287,21 +287,10 @@
 	icon_state = "yankeenobrimsoft"
 	soft_type = "yankeenobrim"
 
-/obj/item/clothing/head/fedora/fedbrown
-	name = "brown fedora"
-	desc = "A noir-inspired fedora. Covers the eyes. Makes you look menacing, assuming you don't have a neckbeard."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "brfedora"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/head/fedora/fedblack
-	name = "black fedora"
-	desc = "A matte-black fedora. Looks solid enough. It'll only look good on you if you don't have a neckbeard."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "blfedora"
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+/obj/item/clothing/head/fedora/brown //version without the detective armor/flask/candycorn
+	icon_state = "detective"
+	inhand_icon_state = "det_hat"
+	dog_fashion = /datum/dog_fashion/head/detective
 
 /obj/item/clothing/head/costume/christmas
 	name = "red christmas hat"
@@ -345,7 +334,7 @@
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	greyscale_colors = "#972A2A#EFEFEF"
 	flags_1 = IS_PLAYER_COLORABLE_1
-  
+
 /obj/item/clothing/head/costume/cowboyhat_old
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
