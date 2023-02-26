@@ -40,10 +40,10 @@
 	var/list/valid_targets = list()
 	for(var/mob/living/potential_target in hearers(FIRE_RANGE, src))
 
-		if(IS_CLOCK(potential) || potential.stat)
+		if(IS_CLOCK(potential_target) || potential_target.stat)
 			continue
 
-		valid_targets += potential
+		valid_targets += potential_target
 
 	if(!length(valid_targets))
 		return

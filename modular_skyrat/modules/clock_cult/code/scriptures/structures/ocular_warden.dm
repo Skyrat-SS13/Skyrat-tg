@@ -20,7 +20,7 @@
 		user.balloon_alert(user, "tile has a structure!")
 		return FALSE
 
-	for(var/obj/structure/destructible/clockwork/ocular_warden/warden_buddy in range(OCULAR_WARDEN_PLACE_RANGE))
+	if(locate(/obj/structure/destructible/clockwork/ocular_warden) in range(OCULAR_WARDEN_PLACE_RANGE))
 		user.balloon_alert(user, "too close to another warden!")
 		return FALSE
 
