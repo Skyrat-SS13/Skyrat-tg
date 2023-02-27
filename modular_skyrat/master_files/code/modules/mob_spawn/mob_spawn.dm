@@ -40,3 +40,4 @@
 
 // Anything that can potentially be overwritten by transferring prefs should go in this proc (e.g. granting languages)
 /obj/effect/mob_spawn/ghost_role/proc/post_transfer_prefs(mob/living/new_spawn)
+	return
