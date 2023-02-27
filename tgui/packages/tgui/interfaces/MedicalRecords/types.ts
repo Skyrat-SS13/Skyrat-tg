@@ -22,7 +22,7 @@ export type MedicalRecord = {
   rank: string;
   species: string;
   // SKYRAT EDIT START - RP Records
-  past_medical_record: string;
+  past_medical_records: string;
   // SKYRAT EDIT END
 };
 
