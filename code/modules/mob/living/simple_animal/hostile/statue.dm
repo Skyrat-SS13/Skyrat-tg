@@ -55,10 +55,20 @@
 	var/cannot_be_seen = 1
 	var/mob/living/creator = null
 
+<<<<<<< HEAD:code/modules/mob/living/simple_animal/hostile/statue.dm
 // No movement while seen code.
 
 /mob/living/simple_animal/hostile/netherworld/statue/Initialize(mapload, mob/living/creator)
 	. = ..()
+=======
+/mob/living/basic/statue/Initialize(mapload, mob/living/creator)
+	. = ..()
+	if(LAZYLEN(loot))
+		AddElement(/datum/element/death_drops, loot)
+	AddComponent(/datum/component/unobserved_actor, unobserved_flags = NO_OBSERVED_MOVEMENT | NO_OBSERVED_ATTACKS)
+	ADD_TRAIT(src, TRAIT_UNOBSERVANT, INNATE_TRAIT)
+
+>>>>>>> 705f7a419c8 (Refactor Statue & Creature unobserved behaviour (#73630)):code/modules/mob/living/basic/space_fauna/statue/statue.dm
 	// Give spells
 
 	var/datum/action/cooldown/spell/aoe/flicker_lights/flicker = new(src)
@@ -81,6 +91,7 @@
 /mob/living/simple_animal/hostile/netherworld/statue/med_hud_set_status()
 	return //we're a statue we're invincible
 
+<<<<<<< HEAD:code/modules/mob/living/simple_animal/hostile/statue.dm
 /mob/living/simple_animal/hostile/netherworld/statue/Move(turf/NewLoc)
 	if(can_be_seen(NewLoc))
 		if(client)
@@ -116,6 +127,9 @@
 		..()
 
 /mob/living/simple_animal/hostile/netherworld/statue/can_speak(allow_mimes = FALSE)
+=======
+/mob/living/basic/statue/can_speak(allow_mimes = FALSE)
+>>>>>>> 705f7a419c8 (Refactor Statue & Creature unobserved behaviour (#73630)):code/modules/mob/living/basic/space_fauna/statue/statue.dm
 	return FALSE // We're a statue, of course we can't talk.
 
 // Cannot talk
@@ -128,6 +142,7 @@
 /mob/living/simple_animal/hostile/netherworld/statue/gib()
 	dust()
 
+<<<<<<< HEAD:code/modules/mob/living/simple_animal/hostile/statue.dm
 
 // Stop attacking clientless mobs
 
@@ -147,13 +162,16 @@
 /mob/living/simple_animal/hostile/netherworld/statue/sentience_act()
 	faction -= FACTION_NEUTRAL
 
+=======
+>>>>>>> 705f7a419c8 (Refactor Statue & Creature unobserved behaviour (#73630)):code/modules/mob/living/basic/space_fauna/statue/statue.dm
 // Statue powers
 
 // Flicker lights
 /datum/action/cooldown/spell/aoe/flicker_lights
 	name = "Flicker Lights"
 	desc = "You will trigger a large amount of lights around you to flicker."
-
+	button_icon = 'icons/mob/actions/actions_AI.dmi'
+	button_icon_state = "blackout"
 	cooldown_time = 30 SECONDS
 	spell_requirements = NONE
 	aoe_radius = 14
@@ -175,7 +193,7 @@
 /datum/action/cooldown/spell/aoe/blindness
 	name = "Blindness"
 	desc = "Your prey will be momentarily blind for you to advance on them."
-
+	button_icon_state = "blind"
 	cooldown_time = 1 MINUTES
 	spell_requirements = NONE
 	aoe_radius = 14
@@ -196,3 +214,25 @@
 
 /datum/action/cooldown/spell/aoe/blindness/cast_on_thing_in_aoe(mob/living/victim, atom/caster)
 	victim.adjust_temp_blindness(8 SECONDS)
+<<<<<<< HEAD:code/modules/mob/living/simple_animal/hostile/statue.dm
+=======
+
+/datum/ai_controller/basic_controller/statue
+	blackboard = list(
+		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic(),
+		BB_LOW_PRIORITY_HUNTING_TARGET = null, // lights
+	)
+
+	ai_movement = /datum/ai_movement/basic_avoidance
+	planning_subtrees = list(
+		/datum/ai_planning_subtree/simple_find_target,
+		/datum/ai_planning_subtree/basic_melee_attack_subtree/statue,
+		/datum/ai_planning_subtree/find_and_hunt_target/look_for_light_fixtures,
+	)
+
+/datum/ai_planning_subtree/basic_melee_attack_subtree/statue
+	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/statue
+
+/datum/ai_behavior/basic_melee_attack/statue
+	action_cooldown = 1 SECONDS
+>>>>>>> 705f7a419c8 (Refactor Statue & Creature unobserved behaviour (#73630)):code/modules/mob/living/basic/space_fauna/statue/statue.dm
