@@ -119,13 +119,17 @@
 	new_disease.carrier = TRUE
 	illness_type = new_disease.name
 
-	var/mob/living/carbon/human/victim = pick_n_take(afflicted)
-	if(victim.ForceContractDisease(new_disease, FALSE))
-		log_game("An event has given [key_name(victim)] the [new_disease]")
-		message_admins("An event has triggered a [new_disease.name] virus outbreak on [ADMIN_LOOKUPFLW(victim)]!")
-		announce_to_ghosts(victim)
-	else
-		log_game("An event attempted to trigger a [new_disease.name] virus outbreak on [key_name(victim)], but failed.")
+	var/mob/living/carbon/human/victim
+	while(length(afflicted))
+		victim = pick_n_take(afflicted)
+		if(victim.ForceContractDisease(new_disease, FALSE))
+			message_admins("Event triggered: Disease Outbreak - [new_disease.name] starting with patient zero [ADMIN_LOOKUPFLW(victim)]!")
+			log_game("Event triggered: Disease Outbreak - [new_disease.name] starting with patient zero [key_name(victim)].")
+			announce_to_ghosts(victim)
+			return
+		CHECK_TICK //don't lag the server to death
+	if(isnull(victim))
+		log_game("Event Disease Outbreak: Classic attempted to start, but failed.")
 
 /datum/round_event_control/disease_outbreak/advanced
 	name = "Disease Outbreak: Advanced"
