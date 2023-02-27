@@ -172,8 +172,6 @@ GLOBAL_VAR(first_officer)
 	var/number = pick(GLOB.phonetic_alphabet_numbers)
 	spawned_human.fully_replace_character_name(null, "[callsign] [number]")
 
-	return ..()
-
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/Destroy()
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
 	return ..()
