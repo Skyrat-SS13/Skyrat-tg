@@ -21,6 +21,9 @@ export type SecurityRecord = {
   rank: string;
   species: string;
   wanted_status: string;
+  // SKYRAT EDIT START - RP Records
+  past_security_records: string;
+  // SKYRAT EDIT END
 };
 
 export type Crime = {

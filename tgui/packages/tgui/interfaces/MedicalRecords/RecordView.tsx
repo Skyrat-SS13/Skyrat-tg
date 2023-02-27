@@ -1,13 +1,5 @@
 import { NoteKeeper } from './NoteKeeper';
-import {
-  Stack,
-  Section,
-  NoticeBox,
-  Box,
-  LabeledList,
-  Button,
-  RestrictedInput,
-} from 'tgui/components';
+import { Stack, Section, NoticeBox, Box, LabeledList, Button, RestrictedInput } from 'tgui/components';
 import { CharacterPreview } from '../common/CharacterPreview';
 import { getMedicalRecord, getQuirkStrings } from './helpers';
 import { useBackend } from '../../backend';
@@ -36,6 +28,9 @@ export const MedicalRecordView = (props, context) => {
     quirk_notes,
     rank,
     species,
+    // SKYRAT EDIT START - RP Records
+    past_medical_records,
+    // SKYRAT EDIT END
   } = foundRecord;
 
   const minor_disabilities_array = getQuirkStrings(minor_disabilities);
@@ -133,6 +128,11 @@ export const MedicalRecordView = (props, context) => {
                 <Box key={index}>&#8226; {quirk}</Box>
               ))}
             </LabeledList.Item>
+            {/* SKYRAT EDIT START - RP Records (Not pretty but it's there) */}
+            <LabeledList.Item label="Past Medical Records">
+              <Box wrap>{past_medical_records}</Box>
+            </LabeledList.Item>
+            {/* SKYRAT EDIT END */}
           </LabeledList>
         </Section>
       </Stack.Item>

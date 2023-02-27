@@ -1,14 +1,5 @@
 import { useBackend, useLocalState } from 'tgui/backend';
-import {
-  NoticeBox,
-  Stack,
-  Section,
-  Button,
-  LabeledList,
-  Box,
-  RestrictedInput,
-  Table,
-} from 'tgui/components';
+import { NoticeBox, Stack, Section, Button, LabeledList, Box, RestrictedInput, Table } from 'tgui/components';
 import { CharacterPreview } from '../common/CharacterPreview';
 import { EditableText } from '../common/EditableText';
 import { CRIMESTATUS2COLOR, CRIMESTATUS2DESC } from './constants';
@@ -64,6 +55,9 @@ const RecordInfo = (props, context) => {
     rank,
     species,
     wanted_status,
+    // SKYRAT EDIT START - RP Records
+    past_security_records,
+    // SKYRAT EDIT END
   } = foundRecord;
 
   return (
@@ -176,6 +170,13 @@ const RecordInfo = (props, context) => {
             <LabeledList.Item label="Note">
               <EditableText field="note" target_ref={crew_ref} text={note} />
             </LabeledList.Item>
+            {/* SKYRAT EDIT START - RP Records (Not pretty but it's there) */}
+            <LabeledList.Item label="Past Security Records">
+              <Box wrap maxWidth="100%">
+                {past_security_records}
+              </Box>
+            </LabeledList.Item>
+            {/* SKYRAT EDIT END */}
           </LabeledList>
         </Section>
       </Stack.Item>
