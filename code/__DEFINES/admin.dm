@@ -97,7 +97,7 @@
 #define AHELP_RESOLVED 3
 
 /// Amount of time after the round starts that the player disconnect report is issued.
-#define ROUNDSTART_LOGOUT_REPORT_TIME (10 MINUTES)
+#define ROUNDSTART_LOGOUT_REPORT_TIME (21 MINUTES) // SKYRAT EDIT CHANGE - ORIGINAL: 10 MINUTES
 
 /// Threshold in minutes for counting a player as AFK on the roundstart report.
 #define ROUNDSTART_LOGOUT_AFK_THRESHOLD (ROUNDSTART_LOGOUT_REPORT_TIME * 0.7)
