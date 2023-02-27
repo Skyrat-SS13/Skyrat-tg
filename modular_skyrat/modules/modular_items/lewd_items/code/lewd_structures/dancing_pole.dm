@@ -33,8 +33,12 @@
 								)
 
 
-//to change color of pole by using multitool
-//create radial menu
+/obj/structure/stripper_pole/examine(mob/user)
+	. = ..()
+	. += "The lights are currently <b>[lights_enabled ? "ON" : "OFF"]</b> and could be [lights_enabled ? "dis" : "en"]abled with <b>Alt-Click</b>."
+
+
+/// The list of possible designs generated for the radial reskinning menu
 /obj/structure/stripper_pole/proc/populate_pole_designs()
 	pole_designs = list(
 		"purple" = image(icon = src.icon, icon_state = "pole_purple_on"),
@@ -45,12 +49,10 @@
 	)
 
 
-//using multitool on pole
 /obj/structure/stripper_pole/multitool_act(mob/living/user, obj/item/used_item)
 	. = ..()
 	if(.)
 		return
-	//var/choice = show_radial_menu(user, src, pole_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user, used_item), radius = 50, require_near = TRUE)
 	var/choice = show_radial_menu(user, src, pole_designs, radius = 50, require_near = TRUE)
 	if(!choice)
 		return FALSE
@@ -61,17 +63,7 @@
 	return TRUE
 
 
-/obj/structure/stripper_pole/proc/check_menu(mob/living/user, obj/item/multitool)
-	if(!istype(user))
-		return FALSE
-	if(user.incapacitated())
-		return FALSE
-	if(!multitool || !user.is_holding(multitool))
-		return FALSE
-	return TRUE
-
-
-//to enable lights by aliclick
+// Alt-click to turn the lights on or off.
 /obj/structure/stripper_pole/AltClick(mob/user)
 	lights_enabled = !lights_enabled
 	balloon_alert(user, "lights [lights_enabled ? "on" : "off"]")
@@ -114,14 +106,14 @@
 	user.Stun(100)
 	user.forceMove(src.loc)
 	user.visible_message(pick(span_purple("[user] dances on [src]!"), span_purple("[user] flexes their hip-moving skills on [src]!")))
-	animatepole(user)
+	dance_animate(user)
 	obj_flags &= ~IN_USE
 	user.pixel_y = 0
 	user.pixel_z = pseudo_z_axis //incase we are off it when we jump on!
 	dancer = null
 
-
-/obj/structure/stripper_pole/proc/animatepole(mob/living/user)
+/// The proc used to make the user 'dance' on the pole. Basically just consists of pixel shifting them around a bunch and sleeping. Could probably be improved a lot.
+/obj/structure/stripper_pole/proc/dance_animate(mob/living/user)
 	if(user.loc != src.loc)
 		return
 	if(!QDELETED(src))
