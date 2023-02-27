@@ -46,6 +46,18 @@ export const JOB2ICON = {
   'Syndicate Operative': 'dragon',
   'Virologist': 'virus',
   'Warden': 'handcuffs',
+  // SKYRAT EDIT START - Skyrat-exclusive jobs have icons too
+  'Barber': 'scissors',
+  'Blueshield': 'shield-dog',
+  'Bouncer': 'shield-heart',
+  'Corrections Officer': 'hands-bound',
+  'Customs Agent': 'shield-heart',
+  'Engineering Guard': 'shield-heart',
+  'Nanotrasen Consultant': 'clipboard-check',
+  'Orderly': 'shield-heart',
+  'Science Guard': 'shield-heart',
+  'Security Medic': 'heart-pulse',
+  // SKYRAT EDIT END
 } as const;
 
 export type AvailableJob = keyof typeof JOB2ICON;

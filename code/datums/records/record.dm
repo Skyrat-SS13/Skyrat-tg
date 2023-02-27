@@ -96,6 +96,13 @@
 	minor_disabilities = "None",
 	minor_disabilities_desc = "No disabilities have been diagnosed at the moment.",
 	quirk_notes,
+	// SKYRAT EDIT START - RP Records
+	background_information = "",
+	exploitable_information = "",
+	past_general_records = "",
+	past_medical_records = "",
+	past_security_records = "",
+	// SKYRAT EDIT END
 )
 	. = ..()
 	src.lock_ref = lock_ref
@@ -104,6 +111,13 @@
 	src.minor_disabilities = minor_disabilities
 	src.minor_disabilities_desc = minor_disabilities_desc
 	src.quirk_notes = quirk_notes
+	// SKYRAT EDIT START - RP Records
+	src.background_information = background_information
+	src.exploitable_information = exploitable_information
+	src.past_general_records = past_general_records
+	src.past_medical_records = past_medical_records
+	src.past_security_records = past_security_records
+	// SKYRAT EDIT END
 
 	GLOB.manifest.general += src
 
@@ -207,7 +221,17 @@
 
 	final_paper_text += text("Species: []<br>Fingerprint: []<br>Wanted Status: []<br><br>", species, fingerprint, wanted_status)
 
+	//SKYRAT EDIT ADD - RP RECORDS
+	if(past_general_records != "")
+		final_paper_text += "\nGeneral Records:\n[past_general_records]\n"
+	//SKYRAT EDIT ADD END
+
 	final_paper_text += text("<center><B>Security Data</B></center><br><br>")
+
+	//SKYRAT EDIT ADDITION START - RP RECORDS
+	if(past_security_records != "")
+		final_paper_text += "<br>Security Records:<br>[past_security_records]<br>"
+	//SKYRAT EDIT END
 
 	final_paper_text += "Crimes:<br>"
 	final_paper_text += {"<table style="text-align:center;" border="1" cellspacing="0" width="100%">

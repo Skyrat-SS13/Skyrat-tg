@@ -107,24 +107,17 @@
 		if((text2num(href_list["examine_time"]) + 1 MINUTES) < world.time)
 			to_chat(human_user, "[span_notice("It's too late to use this now!")]")
 			return
-		//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
-		var/datum/data/record/general_record = find_record("name", perpname, GLOB.data_core.general)
-		var/datum/data/record/med_record = find_record("name", perpname, GLOB.data_core.medical)
-		var/datum/data/record/sec_record = find_record("name", perpname, GLOB.data_core.security)
-		//SKYRAT EDIT ADDITION END - EXAMINE RECORDS
 		var/datum/record/crew/target_record = find_record(perpname)
 		if(href_list["photo_front"] || href_list["photo_side"])
-			if(!general_record) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
-				return
 			if(!human_user.canUseHUD())
 				return
 			if(!HAS_TRAIT(human_user, TRAIT_SECURITY_HUD) && !HAS_TRAIT(human_user, TRAIT_MEDICAL_HUD))
 				return
 			var/obj/item/photo/photo_from_record = null
 			if(href_list["photo_front"])
-				photo_from_record = general_record.get_front_photo() // SKYRAT EDIT - Examine Records - ORIGINAL: photo_from_record = target_record.get_front_photo()
+				photo_from_record = target_record.get_front_photo()
 			else if(href_list["photo_side"])
-				photo_from_record = general_record.get_side_photo() // SKYRAT EDIT - Examine Records - ORIGINAL: photo_from_record = target_record.get_side_photo()
+				photo_from_record = target_record.get_side_photo()
 			if(photo_from_record)
 				photo_from_record.show(human_user)
 			return
@@ -189,9 +182,9 @@
 					to_chat(usr,  "<span class='notice ml-1'>No physiological traits found.</span>")
 			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
 			if(href_list["medrecords"])
-				to_chat(usr, "<b>Medical Record:</b> [med_record.fields["past_records"]]")
+				to_chat(usr, "<b>Medical Record:</b> [target_record.past_medical_records]")
 			if(href_list["genrecords"])
-				to_chat(usr, "<b>General Record:</b> [general_record.fields["past_records"]]")
+				to_chat(usr, "<b>General Record:</b> [target_record.past_general_records]")
 			//SKYRAT EDIT END
 			return //Medical HUD ends here.
 
@@ -218,11 +211,8 @@
 			if(!perpname)
 				to_chat(human_user, span_warning("ERROR: Can not identify target."))
 				return
-			/* ORIGINAL
 			target_record = find_record(perpname)
 			if(!target_record)
-			*/
-			if(!sec_record) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 				to_chat(usr, span_warning("ERROR: Unable to locate data core entry for target."))
 				return
 			if(href_list["status"])
@@ -258,14 +248,14 @@
 					return
 				if(!HAS_TRAIT(human_user, TRAIT_SECURITY_HUD))
 					return
-				to_chat(usr, "<b>General Record:</b> [general_record.fields["past_records"]]")
+				to_chat(human_user, "<b>General Record:</b> [target_record.past_general_records]")
 
 			if(href_list["secrecords"])
 				if(!human_user.canUseHUD())
 					return
 				if(!HAS_TRAIT(human_user, TRAIT_SECURITY_HUD))
 					return
-				to_chat(usr, "<b>Security Record:</b> [sec_record.fields["past_records"]]")
+				to_chat(human_user, "<b>Security Record:</b> [target_record.past_security_records]")
 			//SKYRAT EDIT END
 
 			if(href_list["add_citation"])
@@ -310,13 +300,13 @@
 	if(href_list["bgrecords"])
 		if(isobserver(usr) || usr.mind.can_see_exploitables || usr.mind.has_exploitables_override)
 			var/examined_name = get_face_name(get_id_name(""))
-			var/datum/data/record/target_general_records = find_record("name", examined_name, GLOB.data_core.general)
-			to_chat(usr, "<b>Background information:</b> [target_general_records.fields["background_records"]]")
+			var/datum/record/crew/target_record = find_record(examined_name)
+			to_chat(usr, "<b>Background information:</b> [target_record.background_information]")
 	if(href_list["exprecords"])
 		if(isobserver(usr) || usr.mind.can_see_exploitables || usr.mind.has_exploitables_override)
 			var/examined_name = get_face_name(get_id_name("")) //Named as such because this is the name we see when we examine
-			var/datum/data/record/target_general_records = find_record("name", examined_name, GLOB.data_core.general)
-			to_chat(usr, "<b>Exploitable information:</b> [target_general_records.fields["exploitable_records"]]")
+			var/datum/record/crew/target_record = find_record(examined_name)
+			to_chat(usr, "<b>Exploitable information:</b> [target_record.exploitable_information]")
 	//SKYRAT EDIT END
 
 	..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that.

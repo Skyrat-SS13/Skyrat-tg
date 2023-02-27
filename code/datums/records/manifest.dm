@@ -16,7 +16,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		if(readied_player.new_character)
 			log_manifest(readied_player.ckey,readied_player.new_character.mind,readied_player.new_character)
 		if(ishuman(readied_player.new_character))
-			inject(readied_player.new_character)
+			inject(readied_player.new_character, readied_player.client) // SKYRAT EDIT - RP Records - ORIGINAL: inject(readied_player.new_character)
 		CHECK_TICK
 
 /// Gets the current manifest.
@@ -94,7 +94,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 
 
 /// Injects a record into the manifest.
-/datum/manifest/proc/inject(mob/living/carbon/human/person)
+/datum/manifest/proc/inject(mob/living/carbon/human/person, client/person_client) // SKYRAT EDIT - RP Records - ORIGINAL: /datum/manifest/proc/inject(mob/living/carbon/human/person)
 	set waitfor = FALSE
 	if(!(person.mind?.assigned_role.job_flags & JOB_CREW_MANIFEST))
 		return
@@ -107,6 +107,11 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 	if(person.gender == "female")
 		person_gender = "Female"
 
+	// SKYRAT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
+	// The alt job title, if user picked one, or the default
+	var/chosen_assignment = person_client?.prefs.alt_job_titles[assignment] || assignment
+	// SKYRAT EDIT ADDITION END - ALTERNATIVE_JOB_TITLES
+
 	var/datum/record/locked/lockfile = new(
 		age = person.age,
 		blood_type = person.dna.blood_type,
@@ -116,7 +121,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		gender = person_gender,
 		initial_rank = assignment,
 		name = person.real_name,
-		rank = assignment,
+		rank = chosen_assignment, // SKYRAT EDIT - Alt job titles - ORIGINAL: rank = assignment,
 		species = person.dna.species.name,
 		trim = assignment,
 		// Locked specifics
@@ -133,7 +138,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		gender = person_gender,
 		initial_rank = assignment,
 		name = person.real_name,
-		rank = assignment,
+		rank = chosen_assignment, // SKYRAT EDIT - Alt job titles - ORIGINAL: rank = assignment,
 		species = person.dna.species.name,
 		trim = assignment,
 		// Crew specific
@@ -143,6 +148,13 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		minor_disabilities = person.get_quirk_string(FALSE, CAT_QUIRK_MINOR_DISABILITY),
 		minor_disabilities_desc = person.get_quirk_string(TRUE, CAT_QUIRK_MINOR_DISABILITY),
 		quirk_notes = person.get_quirk_string(TRUE, CAT_QUIRK_NOTES),
+		// SKYRAT EDIT START - RP Records
+		background_information = person_client?.prefs.read_preference(/datum/preference/text/background) || "",
+		exploitable_information = person_client?.prefs.read_preference(/datum/preference/text/exploitable) || "",
+		past_general_records = person_client?.prefs.read_preference(/datum/preference/text/general) || "",
+		past_medical_records = person_client?.prefs.read_preference(/datum/preference/text/medical) || "",
+		past_security_records = person_client?.prefs.read_preference(/datum/preference/text/security) || "",
+		// SKYRAT EDIT END
 	)
 
 	return

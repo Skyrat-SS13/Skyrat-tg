@@ -225,8 +225,8 @@
 
 	if(humanc) //These procs all expect humans
 		// BEGIN SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES
-		var/chosen_rank = humanc.client?.prefs.alt_job_titles[rank] || rank
-		GLOB.manifest.inject(humanc)
+		var/chosen_rank = client?.prefs.alt_job_titles[rank] || rank
+		GLOB.manifest.inject(humanc, client)
 		if(SSshuttle.arrivals)
 			SSshuttle.arrivals.QueueAnnounce(humanc, chosen_rank)
 		else
