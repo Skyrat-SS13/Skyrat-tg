@@ -338,11 +338,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	// Delete them from datacore and ghost records.
 	var/announce_rank = null
 
-	for(var/list/record as anything in GLOB.ghost_records)
+	for(var/list/record in GLOB.ghost_records)
 		if(record["name"] == stored_name)
 			announce_rank = record["rank"]
-			GLOB.ghost_records.Remove(record)
-			qdel(record)
+			GLOB.ghost_records.Remove(list(record))
 			break
 
 	if(!announce_rank) // No need to loop over all of those if we already found it beforehand.
