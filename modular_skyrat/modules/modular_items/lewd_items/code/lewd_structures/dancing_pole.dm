@@ -7,7 +7,7 @@
 	density = TRUE
 	anchored = TRUE
 	max_integrity = 75
-	layer = 3 //make it one layer lower than players.
+	layer = BELOW_MOB_LAYER
 	pseudo_z_axis = 9 //stepping onto the pole makes you raise upwards!
 	density = 0 //easy to step up on
 	light_system = STATIC_LIGHT
@@ -115,12 +115,10 @@
 	user.forceMove(src.loc)
 	user.visible_message(pick(span_purple("[user] dances on [src]!"), span_purple("[user] flexes their hip-moving skills on [src]!")))
 	animatepole(user)
-	//user.layer = layer //set them to the poles layer
 	obj_flags &= ~IN_USE
 	user.pixel_y = 0
 	user.pixel_z = pseudo_z_axis //incase we are off it when we jump on!
 	dancer = null
-	//icon_state = "[initial(icon_state)]_[current_pole_color]_[lights_enabled? "on" : "off"]"
 
 
 /obj/structure/stripper_pole/proc/animatepole(mob/living/user)
@@ -158,6 +156,7 @@
 	if(dancer)
 		dancer.SetStun(0)
 		dancer.pixel_y = 0
+		dancer.pixel_x = 0
 		dancer.pixel_z = pseudo_z_axis
 		dancer.layer = layer
 		dancer.forceMove(get_turf(src))
