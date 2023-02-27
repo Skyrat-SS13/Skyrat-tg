@@ -4,13 +4,9 @@
 	typepath = /datum/round_event/wizard/rpgtitles
 	max_occurrences = 1
 	earliest_start = 0 MINUTES
-<<<<<<< HEAD
-	description = "Everyone gains an RPG title hovering above them."
-=======
 	description = "Everyone gains an RPG title hovering below them."
 	min_wizard_trigger_potency = 4
 	max_wizard_trigger_potency = 7
->>>>>>> c3f6db09428 (Fix RPG Titles Runechat Offset (#73443))
 
 /datum/round_event/wizard/rpgtitles/start()
 	GLOB.rpgtitle_controller = new /datum/rpgtitle_controller
