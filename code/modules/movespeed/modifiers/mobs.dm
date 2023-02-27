@@ -131,3 +131,12 @@
 
 /datum/movespeed_modifier/auto_wash
 	multiplicative_slowdown = 3
+<<<<<<< HEAD
+=======
+
+/datum/movespeed_modifier/player_spider_modifier
+	variable = TRUE
+
+/datum/movespeed_modifier/health_scaling_speed_buff
+	variable = TRUE
+>>>>>>> f4352073762 (Replaces Netherworld mob health scaling component (#73629))
