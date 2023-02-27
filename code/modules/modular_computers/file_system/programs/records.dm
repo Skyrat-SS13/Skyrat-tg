@@ -55,12 +55,20 @@
 			for(var/datum/data/record/person in GLOB.data_core.medical)
 				var/list/current_record = list()
 
+<<<<<<< HEAD
 				current_record["name"] = person.fields["name"]
 				current_record["bloodtype"] = person.fields["blood_type"]
 				current_record["mi_dis"] = person.fields["mi_dis"]
 				current_record["ma_dis"] = person.fields["ma_dis"]
 				current_record["notes"] = person.fields["notes"]
 				current_record["cnotes"] = person.fields["notes_d"]
+=======
+				current_record["bloodtype"] = person.blood_type
+				current_record["ma_dis"] = person.major_disabilities_desc
+				current_record["mi_dis"] = person.minor_disabilities_desc
+				current_record["name"] = person.name
+				current_record["notes"] = person.medical_notes
+>>>>>>> 96715a57971 (Fixes ui_data on ntosrecords [NO GBP] (#73670))
 
 				all_records += list(current_record)
 
