@@ -543,12 +543,14 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cryopod/prison, 18)
 	/// For figuring out where the local cryopod computer is. Must be set for cryo computer announcements.
 	var/area/computer_area
 
-/obj/effect/mob_spawn/ghost_role/special(mob/living/spawned_mob, mob/mob_possessor)
-	. = ..()
+/obj/effect/mob_spawn/ghost_role/create(mob/mob_possessor, newname)
+	var/mob/living/spawned_mob = ..()
 	var/obj/machinery/computer/cryopod/control_computer = find_control_computer()
-	GLOB.ghost_records.Add(list(list("name" = spawned_mob.real_name, "rank" = spawned_mob.mind?.assigned_role?.title || name)))
+	GLOB.ghost_records.Add(list(list("name" = spawned_mob.real_name, "rank" = name)))
 	if(control_computer)
 		control_computer.announce("CRYO_JOIN", spawned_mob.real_name, name)
+
+	return spawned_mob
 
 /obj/effect/mob_spawn/ghost_role/proc/find_control_computer()
 	if(!computer_area)
