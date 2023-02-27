@@ -6,10 +6,11 @@
 	if(!ishuman(user))
 		return
 	if(slot & ITEM_SLOT_HEAD)
-		if(!(user.dna.species.bodytype & BODYTYPE_ALT_FACEWEAR_LAYER))
+		if(!user.dna.species.bodytype & BODYTYPE_ALT_FACEWEAR_LAYER)
 			return
 		if(!isnull(alternate_worn_layer) && alternate_worn_layer < BODY_FRONT_LAYER) // if the alternate worn layer was already lower than snouts then leave it be
 			return
+
 		alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER
 		user.update_worn_head()
 			
