@@ -338,18 +338,19 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	// Delete them from datacore and ghost records.
 	var/announce_rank = null
 
-	for(var/datum/record/crew/record as anything in GLOB.ghost_records)
-		if(record.name == stored_name && (stored_rank == "N/A" || record.trim == stored_rank)) // We check trim and not rank, just to account for alt titles.
-			announce_rank = record.rank
+	for(var/list/record as anything in GLOB.ghost_records)
+		if(record["name"] == stored_name)
+			announce_rank = record["rank"]
 			GLOB.ghost_records.Remove(record)
 			qdel(record)
 			break
 
-	for(var/datum/record/crew/possible_target_record as anything in GLOB.manifest.general)
-		if(possible_target_record.name == stored_name && (stored_rank == "N/A" || possible_target_record.trim == stored_rank))
-			announce_rank = possible_target_record.rank
-			qdel(possible_target_record)
-			break
+	if(!announce_rank) // No need to loop over all of those if we already found it beforehand.
+		for(var/datum/record/crew/possible_target_record as anything in GLOB.manifest.general)
+			if(possible_target_record.name == stored_name && (stored_rank == "N/A" || possible_target_record.trim == stored_rank))
+				announce_rank = possible_target_record.rank
+				qdel(possible_target_record)
+				break
 
 	var/obj/machinery/computer/cryopod/control_computer = control_computer_weakref?.resolve()
 	if(!control_computer)
@@ -545,8 +546,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cryopod/prison, 18)
 /obj/effect/mob_spawn/ghost_role/special(mob/living/spawned_mob, mob/mob_possessor)
 	. = ..()
 	var/obj/machinery/computer/cryopod/control_computer = find_control_computer()
-	var/datum/record/crew/record = new(name = spawned_mob.real_name, rank = src.name)
-	GLOB.ghost_records.Add(record)
+	GLOB.ghost_records.Add(list(list("name" = spawned_mob.real_name, "rank" = spawned_mob.mind?.assigned_role?.title || name)))
 	if(control_computer)
 		control_computer.announce("CRYO_JOIN", spawned_mob.real_name, name)
 
