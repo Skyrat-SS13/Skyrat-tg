@@ -53,7 +53,20 @@ GLOBAL_VAR(first_officer)
 	built_threat_content = replacetext(built_threat_content, "%STATION", station_designation)
 	return new /datum/comm_message(threat_title, built_threat_content, possible_answers)
 
-/datum/outfit/pirate/nri_officer
+/datum/outfit/pirate/nri/post_equip(mob/living/carbon/human/equipped)
+	. = ..()
+	equipped.faction -= "pirate"
+	equipped.faction |= "raider"
+	
+	// make sure we update the ID's name too
+	var/obj/item/card/id/id_card = equipped.wear_id
+	if(istype(id_card))
+		id_card.registered_name = equipped.real_name
+		id_card.update_label()
+
+	handlebank(equipped)
+
+/datum/outfit/pirate/nri/officer
 	name = "NRI Field Officer"
 
 	head = /obj/item/clothing/head/beret/sec/nri
@@ -78,23 +91,10 @@ GLOBAL_VAR(first_officer)
 	id = /obj/item/card/id/advanced
 	id_trim = /datum/id_trim/nri_raider/officer
 
-/datum/outfit/pirate/nri_officer/post_equip(mob/living/carbon/human/equipped)
-	. = ..()
-	equipped.faction -= "pirate"
-	equipped.faction |= "raider"
-	
-	// make sure we update the ID's name too
-	var/obj/item/card/id/id_card = equipped.wear_id
-	if(istype(id_card))
-		id_card.registered_name = equipped.real_name
-		id_card.update_label()
-
-	handlebank(equipped)
-
 /datum/id_trim/nri_raider/officer
 	assignment = "NRI Field Officer"
 
-/datum/outfit/pirate/nri_marine
+/datum/outfit/pirate/nri/marine
 	name = "NRI Marine"
 
 	head = null
@@ -118,19 +118,6 @@ GLOBAL_VAR(first_officer)
 	id = /obj/item/card/id/advanced
 	id_trim = /datum/id_trim/nri_raider
 
-/datum/outfit/pirate/nri_marine/post_equip(mob/living/carbon/human/equipped)
-	. = ..()
-	equipped.faction -= "pirate"
-	equipped.faction |= "raider"
-	
-	// make sure we update the ID's name too
-	var/obj/item/card/id/id_card = equipped.wear_id
-	if(istype(id_card))
-		id_card.registered_name = equipped.real_name
-		id_card.update_label()
-
-	handlebank(equipped)
-
 /datum/id_trim/nri_raider
 	assignment = "NRI Marine"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
@@ -151,7 +138,7 @@ GLOBAL_VAR(first_officer)
 	you_are_text = "You are a Novaya Rossiyskaya Imperiya task force."
 	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by demanding the funds. Force approach is usually recommended, but isn't the only method."
 	important_text = "Allowed races are humans, Akulas, IPCs. Follow your field officer's orders. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. Roleplay accordingly."
-	outfit = /datum/outfit/pirate/nri_marine
+	outfit = /datum/outfit/pirate/nri/marine
 	restricted_species = list(/datum/species/human, /datum/species/akula, /datum/species/synthetic)
 	random_appearance = FALSE
 	show_flavor = TRUE
@@ -183,7 +170,7 @@ GLOBAL_VAR(first_officer)
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/officer
 	name = "NRI Officer sleeper"
 	mob_name = "Novaya Rossiyskaya Imperiya raiding party's field officer"
-	outfit = /datum/outfit/pirate/nri_officer
+	outfit = /datum/outfit/pirate/nri/officer
 	important_text = "Allowed races are humans, Akulas, IPCs. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. Roleplay accordingly. There is an important document in your pocket I'd advise you to read and keep safe."
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/officer/special(mob/living/carbon/human/spawned_human)
