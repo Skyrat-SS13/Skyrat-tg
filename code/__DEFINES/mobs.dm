@@ -98,7 +98,7 @@
 #define BODYTYPE_TAUR (1<<9)
 ///The limb causes shoes to no longer be displayed, useful for taurs.
 #define BODYTYPE_HIDE_SHOES (1<<10)
-///The limb causes glasses and hats to be drawn on layers 5 and 6 respectively. For snouts with the (Top) suffix.
+///The limb causes glasses and hats to be drawn on layers 5 and 4 respectively. Currently used for snouts with the (Top) suffix, which are drawn on layer 6 and would normally cover facewear
 #define BODYTYPE_ALT_FACEWEAR_LAYER (1<<11)
 // SKYRAT EDIT END
 
