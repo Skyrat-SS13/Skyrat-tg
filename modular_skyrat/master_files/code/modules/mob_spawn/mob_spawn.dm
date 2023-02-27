@@ -38,6 +38,9 @@
 		equip(spawned_mob)
 	return spawned_mob
 
-// Anything that can potentially be overwritten by transferring prefs should go in this proc (e.g. granting languages)
+// Anything that can potentially be overwritten by transferring prefs must go in this proc
+// This is needed because safe_transfer_prefs_to() can override some things that get set in special() for certain roles, like names and granting languages
+// In those cases, please override this proc as well as special()
+// TODO: refactor create() and special() so that this is no longer necessary
 /obj/effect/mob_spawn/ghost_role/proc/post_transfer_prefs(mob/living/new_spawn)
 	return
