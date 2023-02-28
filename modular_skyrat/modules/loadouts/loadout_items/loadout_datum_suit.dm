@@ -667,3 +667,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Cowboy Vest"
 	item_path = /obj/item/clothing/suit/cowboyvest
 
+/datum/loadout_item/suit/donator/digicoat/nanotrasen
+	name = "nanotrasen digicoat"
+	item_path = /obj/item/clothing/suit/toggle/digicoat/nanotrasen
+
+/datum/loadout_item/suit/donator/digicoat/interdyne
+	name = "Interdyne Digicoat"
+	item_path = /obj/item/clothing/suit/toggle/digicoat/interdyne

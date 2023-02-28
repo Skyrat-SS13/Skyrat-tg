@@ -371,8 +371,8 @@
 	name = "glass of coldscales"
 	desc = "A soft green drink that looks inviting!"
 
-/datum/reagent/consumable/ethanol/coldscales/on_mob_life(mob/living/carbon/M)
-	if(islizard(M))
+/datum/reagent/consumable/ethanol/coldscales/expose_mob(mob/living/exposed_mob, methods, reac_volume)
+	if(islizard(exposed_mob))
 		quality = RACE_DRINK
 	else
 		quality = DRINK_GOOD
@@ -392,7 +392,7 @@
 	name = "drum of oil"
 	desc = "A gray can of booze and oil..."
 
-/datum/reagent/consumable/ethanol/oil_drum/on_mob_life(mob/living/carbon/M)
+/datum/reagent/consumable/ethanol/oil_drum/expose_mob(mob/living/exposed_mob, methods, reac_volume)
 	if(MOB_ROBOTIC)
 		quality = RACE_DRINK
 	else
@@ -413,8 +413,8 @@
 	name = "keg of nord king"
 	desc = "A dripping keg of red mead."
 
-/datum/reagent/consumable/ethanol/nord_king/on_mob_life(mob/living/carbon/M)
-	if(ishumanbasic(M) || isdwarf(M))
+/datum/reagent/consumable/ethanol/nord_king/expose_mob(mob/living/exposed_mob, methods, reac_volume)
+	if(ishumanbasic(exposed_mob) || isdwarf(exposed_mob))
 		quality = RACE_DRINK
 	else
 		quality = DRINK_GOOD
@@ -434,8 +434,8 @@
 	name = "glass of velvet kiss"
 	desc = "Red and white drink for the upper classes or undead."
 
-/datum/reagent/consumable/ethanol/velvet_kiss/on_mob_life(mob/living/carbon/M)
-	if(iszombie(M) || isvampire(M) || isdullahan(M) || ishemophage(M)) //Rare races!
+/datum/reagent/consumable/ethanol/velvet_kiss/expose_mob(mob/living/exposed_mob, methods, reac_volume)
+	if(iszombie(exposed_mob) || isvampire(exposed_mob) || isdullahan(exposed_mob)) //Rare races!
 		quality = RACE_DRINK
 	else
 		quality = DRINK_GOOD
@@ -455,8 +455,8 @@
 	name = "glass of abduction fruit"
 	desc = "Mixed fruits that were never meant to be mixed..."
 
-/datum/reagent/consumable/ethanol/abduction_fruit/on_mob_life(mob/living/carbon/M)
-	if(isabductor(M) || isxenohybrid(M))
+/datum/reagent/consumable/ethanol/abduction_fruit/expose_mob(mob/living/exposed_mob, methods, reac_volume)
+	if(isabductor(exposed_mob) || isxenohybrid(exposed_mob))
 		quality = RACE_DRINK
 	else
 		quality = DRINK_GOOD
@@ -476,8 +476,8 @@
 	name = "glass of bug zapper"
 	desc = "An odd mix of copper, lemon juice and power meant for non-human consumption."
 
-/datum/reagent/consumable/ethanol/bug_zapper/on_mob_life(mob/living/carbon/M)
-	if(isinsect(M) || isflyperson(M) || ismoth(M))
+/datum/reagent/consumable/ethanol/bug_zapper/expose_mob(mob/living/exposed_mob, methods, reac_volume)
+	if(isinsect(exposed_mob) || isflyperson(exposed_mob) || ismoth(exposed_mob))
 		quality = RACE_DRINK
 	else
 		quality = DRINK_GOOD
@@ -497,8 +497,8 @@
 	name = "glass of mush crush"
 	desc = "Popular among people that want to grow their own food rather than drink the soil."
 
-/datum/reagent/consumable/ethanol/mush_crush/on_mob_life(mob/living/carbon/M)
-	if(ispodperson(M) || issnail(M))
+/datum/reagent/consumable/ethanol/mush_crush/expose_mob(mob/living/exposed_mob, methods, reac_volume)
+	if(ispodperson(exposed_mob) || issnail(exposed_mob))
 		quality = RACE_DRINK
 	else
 		quality = DRINK_GOOD
@@ -518,8 +518,8 @@
 	name = "skull of hollow bone"
 	desc = "Mixing of milk and bone hurting juice for enjoyment for rather skinny people."
 
-/datum/reagent/consumable/ethanol/hollow_bone/on_mob_life(mob/living/carbon/M)
-	if(isplasmaman(M) || isskeleton(M))
+/datum/reagent/consumable/ethanol/hollow_bone/expose_mob(mob/living/exposed_mob, methods, reac_volume)
+	if(isplasmaman(exposed_mob) || isskeleton(exposed_mob))
 		quality = RACE_DRINK
 	else
 		quality = DRINK_GOOD
@@ -528,7 +528,7 @@
 /datum/reagent/consumable/ethanol/jell_wyrm
 	name = "Jell Wyrm"
 	color = "#FF6200" //(255, 98, 0)
-	description = "Horrible mix of Co2, toxins and heat. Meant for slime based life."
+	description = "Horrible mix of CO2, toxins, and heat. Meant for slime based life."
 	boozepwr = 40
 	taste_description = "tropical sea"
 
@@ -540,15 +540,20 @@
 	desc = "A bubbly drink that is rather inviting to those that don't know who it's meant for."
 
 /datum/reagent/consumable/ethanol/jell_wyrm/on_mob_life(mob/living/carbon/M)
-	if(isjellyperson(M) || isslimeperson(M) || isluminescent(M))
-		quality = RACE_DRINK
-		if(prob(20))
-			M.adjustToxLoss(-1, 0)
-	else
-		quality = DRINK_GOOD
-		if(prob(20))
-			M.adjustToxLoss(1, 0)
+	if(prob(20))
+		M.adjustToxLoss(1, 0)
 	return ..()
+
+#define JELLWYRM_DISGUST 25
+
+/datum/reagent/consumable/ethanol/jell_wyrm/expose_mob(mob/living/exposed_mob, methods, reac_volume)
+	if(isjellyperson(exposed_mob) || isslimeperson(exposed_mob) || isluminescent(exposed_mob))
+		quality = RACE_DRINK
+	else //if youre not a slime, jell wyrm should be GROSS
+		exposed_mob.adjust_disgust(JELLWYRM_DISGUST)
+	return ..()
+
+#undef JELLWYRM_DISGUST
 
 /datum/reagent/consumable/ethanol/laval_spit //Yes Laval
 	name = "Laval Spit"
@@ -564,8 +569,8 @@
 	name = "glass of laval spit"
 	desc = "Piping hot drink for those who can stomach the heat of lava."
 
-/datum/reagent/consumable/ethanol/laval_spit/on_mob_life(mob/living/carbon/M)
-	if(isgolem(M))
+/datum/reagent/consumable/ethanol/laval_spit/expose_mob(mob/living/exposed_mob, methods, reac_volume)
+	if(isgolem(exposed_mob))
 		quality = RACE_DRINK
 	else
 		quality = DRINK_GOOD
@@ -585,8 +590,8 @@
 	name = "cup of frisky kitty"
 	desc = "Warm milk and some catnip."
 
-/datum/reagent/consumable/ethanol/frisky_kitty/on_mob_life(mob/living/carbon/M)
-	if(isfeline(M))
+/datum/reagent/consumable/ethanol/frisky_kitty/expose_mob(mob/living/exposed_mob, methods, reac_volume)
+	if(isfeline(exposed_mob))
 		quality = RACE_DRINK
 	else
 		quality = DRINK_GOOD
