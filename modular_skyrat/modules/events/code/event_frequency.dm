@@ -32,6 +32,9 @@
 /datum/round_event_control/anomaly/anomaly_bluespace
 	weight = MED_EVENT_FREQ
 
+/datum/round_event_control/anomaly/anomaly_ectoplasm
+	weight = LOW_EVENT_FREQ
+
 /datum/round_event_control/anomaly/anomaly_grav
 	weight = HIGH_EVENT_FREQ
 
