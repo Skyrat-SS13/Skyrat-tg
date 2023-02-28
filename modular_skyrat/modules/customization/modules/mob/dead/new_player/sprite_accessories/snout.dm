@@ -335,7 +335,7 @@
 	name = "Sergal (Top)"
 	icon_state = "fsergal"
 
-/datum/sprite_accessory/snouts/mammal/top/top/fshark
+/datum/sprite_accessory/snouts/mammal/top/fshark
 	name = "Shark (Top)"
 	icon_state = "fshark"
 
