@@ -30,11 +30,20 @@
 	attack_sound = 'sound/hallucinations/growl1.ogg'
 	attack_vis_effect = ATTACK_EFFECT_CLAW
 
+<<<<<<< HEAD:code/modules/mob/living/simple_animal/hostile/statue.dm
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 
 	faction = list("statue")
 	move_to_delay = 0 // Very fast
+=======
+	faction = list(FACTION_STATUE)
+	speak_emote = list("screams")
+	death_message = "falls apart into a fine dust."
+	unsuitable_atmos_damage = 0
+	unsuitable_cold_damage = 0
+	unsuitable_heat_damage = 0
+>>>>>>> 50b37c8c7f6 (Faction defines (#73681)):code/modules/mob/living/basic/space_fauna/statue/statue.dm
 
 	animate_movement = NO_STEPS // Do not animate movement, you jump around as you're a scary statue.
 	hud_possible = list(ANTAG_HUD)

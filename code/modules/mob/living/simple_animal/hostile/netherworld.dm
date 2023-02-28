@@ -97,8 +97,16 @@
 	icon_dead = "mi-go-dead"
 	attack_verb_continuous = "lacerates"
 	attack_verb_simple = "lacerate"
+<<<<<<< HEAD:code/modules/mob/living/simple_animal/hostile/netherworld.dm
 	speed = -0.5
 	var/static/list/migo_sounds
+=======
+	gold_core_spawnable = HOSTILE_SPAWN
+	attack_sound = 'sound/weapons/bladeslice.ogg'
+	attack_vis_effect = ATTACK_EFFECT_SLASH
+	faction = list(FACTION_NETHER)
+	speak_emote = list("screams", "clicks", "chitters", "barks", "moans", "growls", "meows", "reverberates", "roars", "squeaks", "rattles", "exclaims", "yells", "remarks", "mumbles", "jabbers", "stutters", "seethes")
+>>>>>>> 50b37c8c7f6 (Faction defines (#73681)):code/modules/mob/living/basic/space_fauna/netherworld/migo.dm
 	death_message = "wails as its form turns into a pulpy mush."
 	death_sound = 'sound/voice/hiss6.ogg'
 	phaser = FALSE
