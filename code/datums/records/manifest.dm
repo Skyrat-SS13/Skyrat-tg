@@ -38,6 +38,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 			misc_list[++misc_list.len] = list(
 				"name" = name,
 				"rank" = rank,
+				"trim" = trim, // SKYRAT EDIT ADDITION - Alt Titles
 				)
 			continue
 		for(var/department_type as anything in job.departments_list)
@@ -48,6 +49,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 			var/list/entry = list(
 				"name" = name,
 				"rank" = rank,
+				"trim" = trim, // SKYRAT EDIT ADDITION - Alt Titles
 				)
 			var/list/department_list = manifest_out[department.department_name]
 			if(istype(job, department.department_head))
