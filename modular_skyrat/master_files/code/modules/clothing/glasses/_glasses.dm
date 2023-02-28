@@ -26,4 +26,4 @@
 
 	if(user.head && !user.wear_mask) // set the headwear back to its initial layer too if we can
 		var/obj/item/clothing/head/worn_headwear = user.head
-		worn_headwear.alternate_worn_layer = initial(alternate_worn_layer)
+		worn_headwear.alternate_worn_layer = initial(worn_headwear.alternate_worn_layer)
