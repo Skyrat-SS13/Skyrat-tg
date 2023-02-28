@@ -1,3 +1,6 @@
+/datum/language
+	var/ghost_roles_allowed = FALSE
+
 /datum/language/aphasia
 	secret = TRUE
 
@@ -15,3 +18,6 @@
 
 /datum/language/xenocommon
 	secret = TRUE
+	
+/datum/language/ashtongue
+	ghost_roles_allowed = TRUE
