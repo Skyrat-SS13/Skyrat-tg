@@ -145,44 +145,12 @@
 	. = ..()
 	var/datum/atom_hud/datahud = GLOB.huds[health_hud]
 	datahud.show_to(src)
-<<<<<<< HEAD
-
-/mob/living/simple_animal/hostile/giant_spider/nurse/AttackingTarget()
-	if(DOING_INTERACTION(src, DOAFTER_SOURCE_SPIDER))
-		return
-	if(!isspider(target))
-		return ..()
-	var/mob/living/simple_animal/hostile/giant_spider/hurt_spider = target
-	if(hurt_spider == src)
-		balloon_alert(src, "can't heal yourself!")
-		return
-	if(hurt_spider.health >= hurt_spider.maxHealth)
-		balloon_alert(src, "not hurt!")
-		return
-	if(hurt_spider.stat == DEAD)
-		balloon_alert(src, "they're dead!")
-		return
-	visible_message(
-		span_notice("[src] begins wrapping the wounds of [hurt_spider]."),
-		span_notice("You begin wrapping the wounds of [hurt_spider]."),
-	)
-
-	if(!do_after(src, 2 SECONDS, target = hurt_spider, interaction_key = DOAFTER_SOURCE_SPIDER))
-		return
-
-	hurt_spider.heal_overall_damage(20, 20)
-	new /obj/effect/temp_visual/heal(get_turf(hurt_spider), "#80F5FF")
-	visible_message(
-		span_notice("[src] wraps the wounds of [hurt_spider]."),
-		span_notice("You wrap the wounds of [hurt_spider]."),
-=======
 	AddComponent(\
 		/datum/component/healing_touch,\
 		interaction_key = DOAFTER_SOURCE_SPIDER,\
 		valid_targets_typecache = typecacheof(list(/mob/living/simple_animal/hostile/giant_spider)),\
 		action_text = "%SOURCE% begins wrapping the wounds of %TARGET%.",\
 		complete_text = "%SOURCE% wraps the wounds of %TARGET%.",\
->>>>>>> 3335b5e59fb (Basic Mob Spiders II: Elements (#73202))
 	)
 
 /**
@@ -429,32 +397,12 @@
 		complete_text = "%SOURCE%'s wounds mend together.",\
 	)
 
-<<<<<<< HEAD
-/mob/living/simple_animal/hostile/giant_spider/hunter/flesh/AttackingTarget()
-	if(DOING_INTERACTION(src, DOAFTER_SOURCE_SPIDER))
-		return
-	if(src == target)
-		if(on_fire)
-			to_chat(src, span_warning("Your self regeneration won't work when you're on fire!"))
-			return
-		if(health >= maxHealth)
-			to_chat(src, span_warning("You're not injured, there's no reason to heal."))
-			return
-		visible_message(span_notice("[src] begins mending themselves..."),span_notice("You begin mending your wounds..."))
-		if(do_after(src, 2 SECONDS, target = src, interaction_key = DOAFTER_SOURCE_SPIDER))
-			heal_overall_damage(maxHealth * 0.5, maxHealth * 0.5)
-			new /obj/effect/temp_visual/heal(get_turf(src), "#80F5FF")
-			visible_message(span_notice("[src]'s wounds mend together."),span_notice("You mend your wounds together."))
-		return
-	return ..()
-=======
 /// Prevent you from healing other flesh spiders, or healing when on fire
 /mob/living/simple_animal/hostile/giant_spider/hunter/flesh/proc/can_mend(mob/living/source, mob/living/target)
 	if (on_fire)
 		balloon_alert(src, "on fire!")
 		return FALSE
 	return TRUE
->>>>>>> 3335b5e59fb (Basic Mob Spiders II: Elements (#73202))
 
 /**
  * # Viper Spider (Wizard)
