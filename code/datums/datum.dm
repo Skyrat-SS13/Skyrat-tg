@@ -56,6 +56,10 @@
 	*/
 	var/list/cooldowns
 
+
+	/// List for handling persistent filters.
+	var/list/filter_data
+
 #ifdef REFERENCE_TRACKING
 	var/running_find_references
 	var/last_find_references = 0
@@ -101,12 +105,13 @@
 	datum_flags &= ~DF_USE_TAG //In case something tries to REF us
 	weak_reference = null //ensure prompt GCing of weakref.
 
-	var/list/timers = active_timers
-	active_timers = null
-	for(var/datum/timedevent/timer as anything in timers)
-		if (timer.spent && !(timer.flags & TIMER_DELETE_ME))
-			continue
-		qdel(timer)
+	if(active_timers)
+		var/list/timers = active_timers
+		active_timers = null
+		for(var/datum/timedevent/timer as anything in timers)
+			if (timer.spent && !(timer.flags & TIMER_DELETE_ME))
+				continue
+			qdel(timer)
 
 	#ifdef REFERENCE_TRACKING
 	#ifdef REFERENCE_TRACKING_DEBUG
@@ -278,8 +283,6 @@
 /datum/proc/GenerateTag()
 	datum_flags |= DF_USE_TAG
 
-<<<<<<< HEAD
-=======
 /** Add a filter to the datum.
  * This is on datum level, despite being most commonly / primarily used on atoms, so that filters can be applied to images / mutable appearances.
  * Can also be used to assert a filter's existence. I.E. update a filter regardless if it exists or not.
@@ -345,6 +348,7 @@
 	var/filter = get_filter(name)
 	if(!filter)
 		return
+
 	// This can get injected by the filter procs, we want to support them so bye byeeeee
 	new_params -= "type"
 	animate(filter, new_params, time = time, easing = easing, loop = loop)
@@ -387,4 +391,3 @@
 	var/atom/atom_cast = src // filters only work with images or atoms.
 	filter_data = null
 	atom_cast.filters = null
->>>>>>> ab307032edc (Nightvision Rework (In the name of color) (#73094))
