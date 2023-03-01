@@ -946,15 +946,7 @@
 			//Some externals have multiple layers for background, foreground and between
 			for(var/external_layer in overlay.all_layers)
 				if(overlay.layers & external_layer)
-					// SKYRAT EDIT START - EMISSIVES - ORIGINAL: . += overlay.get_overlay(external_layer, src)
-					var/mutable_appearance/overlay_appearance = overlay.get_overlay(external_layer, src)
-					. += overlay_appearance
-
-					if(!overlay.needs_emissive_at_layer(external_layer))
-						continue
-
-					. += overlay.get_emissive_overlay(overlay_appearance, owner, external_layer)
-					// SKYRAT EDIT END
+					. += overlay.get_overlay(external_layer, src)
 
 	// SKYRAT EDIT ADDITION BEGIN - MARKINGS CODE
 	var/override_color

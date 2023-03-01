@@ -80,7 +80,13 @@
 
 	if(bodypart_overlay.imprint_on_next_insertion) //We only want this set *once*
 
-		bodypart_overlay.set_appearance_from_name(reciever.dna.features[bodypart_overlay.feature_key])
+		// SKYRAT EDIT - Customization - ORIGINAL: bodypart_overlay.set_appearance_from_name(reciever.dna.features[bodypart_overlay.feature_key])
+		if(reciever.dna.features[bodypart_overlay.feature_key])
+			bodypart_overlay.set_appearance_from_name(reciever.dna.features[bodypart_overlay.feature_key])
+
+		else
+			bodypart_overlay.set_appearance_from_dna(reciever.dna)
+		// SKYRAT EDIT END
 		bodypart_overlay.imprint_on_next_insertion = FALSE
 
 	ownerlimb = limb
