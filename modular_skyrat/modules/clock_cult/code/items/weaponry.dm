@@ -287,6 +287,16 @@
 	multiple_sprites = AMMO_BOX_PER_BULLET
 
 
+/obj/item/storage/bag/ammo/clock
+
+/obj/item/storage/bag/ammo/clock/PopulateContents()
+	var/static/items_inside = list(
+		/obj/item/ammo_box/a762/lionhunter/clock = 3
+	)
+
+	generate_items_inside(items_inside, src)
+
+
 #undef HAMMER_FLING_DISTANCE
 #undef HAMMER_THROW_FLING_DISTANCE
 #undef BRASS_RIFLE_REDUCED_DELAY
