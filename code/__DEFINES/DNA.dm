@@ -162,6 +162,7 @@
 #define G_MALE 1
 #define G_FEMALE 2
 #define G_PLURAL 3
+#define G_NEUTER 4
 
 /// Defines how a mob's internal_organs_slot is ordered
 /// Exists so Life()'s organ process order is consistent
