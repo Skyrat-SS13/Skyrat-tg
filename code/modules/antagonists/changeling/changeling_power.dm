@@ -82,8 +82,13 @@ the same goes for Remove(). if you override Remove(), call parent or else your p
 	if(req_stat < user.stat)
 		to_chat(user, span_warning("We are incapacitated."))
 		return FALSE
+<<<<<<< HEAD
 	if((HAS_TRAIT(user, TRAIT_DEATHCOMA)) && (!ignores_fakedeath))
 		to_chat(user, span_warning("We are incapacitated."))
+=======
+	if(HAS_TRAIT(user, TRAIT_DEATHCOMA) && !ignores_fakedeath)
+		user.balloon_alert(user, "playing dead!")
+>>>>>>> e80879d22cd (Ensures some ling ability icon always update correctly, Fixes a potential input stall in Revival Stasis (#73616))
 		return FALSE
 	return TRUE
 
