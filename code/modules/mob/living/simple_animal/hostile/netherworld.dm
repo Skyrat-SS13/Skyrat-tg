@@ -18,7 +18,10 @@
 	gold_core_spawnable = HOSTILE_SPAWN
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	// Green and blue, bit dim cause yaknow morphlike
+	lighting_cutoff_red = 5
+	lighting_cutoff_green = 25
+	lighting_cutoff_blue = 15
 	var/phaser = TRUE
 	var/is_phased = FALSE
 

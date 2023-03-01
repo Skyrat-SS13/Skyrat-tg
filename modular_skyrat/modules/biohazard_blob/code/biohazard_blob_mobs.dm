@@ -1,6 +1,8 @@
 /mob/living/simple_animal/hostile/biohazard_blob
 	gold_core_spawnable = HOSTILE_SPAWN
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+	lighting_cutoff_red = 0
+	lighting_cutoff_green = 35
+	lighting_cutoff_blue = 20
 	see_in_dark = 4
 	mob_biotypes = MOB_ORGANIC
 	gold_core_spawnable = NO_SPAWN
