@@ -50,6 +50,9 @@
 		else if(wearer.wear_suit.flags_inv & HIDETAIL)
 			return FALSE
 
+/datum/bodypart_overlay/mutant/tail/cat/get_feature_key_for_overlay()
+	return feature_key + "_cat"
+
 /datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/wearer)
 	return icon_state
 
