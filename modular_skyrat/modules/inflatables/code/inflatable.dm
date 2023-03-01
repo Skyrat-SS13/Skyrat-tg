@@ -156,7 +156,7 @@
 		return
 	playsound(loc, 'sound/items/zip.ogg', 75, 1)
 	to_chat(user, span_notice("You inflate [src]."))
-	if(do_mob(user, src, 1 SECONDS))
+	if(do_after(user, 1 SECONDS, src))
 		new structure_type(get_turf(user))
 		qdel(src)
 
@@ -170,7 +170,7 @@
 	if(attacking_tape.use(TAPE_REQUIRED_TO_FIX, check = TRUE))
 		to_chat(user, span_danger("There is not enough of [attacking_tape]! You need at least [TAPE_REQUIRED_TO_FIX] pieces!"))
 		return
-	if(!do_mob(user, src, 2 SECONDS))
+	if(!do_after(user, 2 SECONDS, src))
 		return
 	playsound(user, 'modular_skyrat/modules/inflatables/sound/ducttape1.ogg', 50, 1)
 	to_chat(user, span_notice("You fix [src] using [attacking_tape]!"))

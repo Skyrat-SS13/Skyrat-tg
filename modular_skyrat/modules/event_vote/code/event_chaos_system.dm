@@ -1,3 +1,5 @@
+#define RANDOM_EVENT_ADMIN_INTERVENTION_TIME (180 SECONDS)
+
 /datum/round_event_control
 	/// Do we override the votable component? (For events that just end the round)
 	var/votable = TRUE
@@ -25,9 +27,7 @@
 	var/list/possible_events = list()
 
 /datum/round_event_control/preset/runEvent(random = FALSE, announce_chance_override = null, admin_forced = FALSE)
-	log_game("Preset Event Triggering: [name] ([typepath])")
-	if(random)
-		deadchat_broadcast(" has just been [random ? "randomly " : ""]triggered!", "<b>[name] preset</b>", message_type=DEADCHAT_ANNOUNCEMENT)
+	log_game("Chaos Event Triggering: [name] ([typepath])")
 	if(!LAZYLEN(possible_events)) // List hasn't been populated yet, let's do it now.
 		for(var/datum/round_event_control/iterating_event in SSevents.control)
 			if(!iterating_event.votable)
@@ -39,9 +39,44 @@
 
 	var/datum/round_event_control/event_to_run = pick(possible_events)
 
+	triggering = TRUE
+
+	message_admins("<font color='[COLOR_ADMIN_PINK]'>Chaos Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [event_to_run.name]. (\
+		<a href='?src=[REF(src)];cancel_chaos=1'>CANCEL</a> | \
+		<a href='?src=[REF(src)];something_else_chaos=1'>SOMETHING ELSE</a>)</font>")
+	for(var/client/staff as anything in GLOB.admins)
+		if(staff?.prefs.read_preference(/datum/preference/toggle/comms_notification))
+			SEND_SOUND(staff, sound('sound/misc/server-ready.ogg'))
+	sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)
+
+	if(triggering)
+		message_admins("<font color='[COLOR_ADMIN_PINK]'>Chaos Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)]: [event_to_run.name]. (\
+		<a href='?src=[REF(event_to_run)];differentchaos=1'>CANCEL</a> | \
+		<a href='?src=[REF(event_to_run)];differentchaos=1'>SOMETHING ELSE</a>)</font>")
+		sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME * 0.5)
+
+	if(!triggering)
+		return EVENT_CANCELLED
+
 	event_to_run.runEvent()
 
 	occurrences++
+
+/datum/round_event_control/preset/Topic(href, href_list)
+	..()
+	if(href_list["cancelchaos"])
+		triggering = FALSE
+		message_admins("[key_name_admin(usr)] cancelled event [name].")
+		log_admin_private("[key_name(usr)] cancelled event [name].")
+		SSblackbox.record_feedback("tally", "event_admin_cancelled", 1, typepath)
+		return
+
+	if(href_list["differentchaos"])
+		triggering = FALSE
+		SSevents.spawnEvent(TRUE)
+		message_admins("[key_name_admin(usr)] requested a new event be spawned instead of [name].")
+		log_admin_private("[key_name(usr)] requested a new event be spawned instead of [name].")
+		return
 
 /datum/round_event_control/preset/low
 	name = "Disruptive Random Event"
@@ -152,6 +187,9 @@
 /datum/round_event_control/supermatter_surge
 	chaos_level = EVENT_CHAOS_LOW
 
+/datum/round_event_control/tram_malfunction
+	chaos_level = EVENT_CHAOS_LOW
+
 // MODERATE CHAOS PRESETS
 
 /datum/round_event_control/cme/moderate
@@ -257,3 +295,5 @@
 
 /datum/round_event_control/pirates/rogues
 	chaos_level = EVENT_CHAOS_DISABLED
+
+#undef RANDOM_EVENT_ADMIN_INTERVENTION_TIME
