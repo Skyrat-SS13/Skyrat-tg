@@ -54,15 +54,15 @@
 	)
 
 /datum/armor/mod_theme_frontline
-	melee = 40
-	bullet = 50
-	laser = 30
-	energy = 40
-	bomb = 50
+	melee = 50
+	bullet = 60
+	laser = 40
+	energy = 50
+	bomb = 60
 	bio = 100
-	fire = 40
-	acid = 75
-	wound = 20
+	fire = 50
+	acid = 80
+	wound = 25
 
 /obj/item/mod/control/pre_equipped/frontline
 	theme = /datum/mod_theme/frontline
@@ -91,7 +91,10 @@
 /datum/mod_theme/policing
 	name = "policing"
 	desc = "A Novaya Rossiyskaya Imperiya Internal Affairs Collegia general purpose protective suit, designed for coreworld patrols."
-	extended_desc = "hold placer"
+	extended_desc = "An Apadyne Technologies outsourced, then modified for frontier use by the responding imperial police precinct, MODsuit model, \
+		designed for reassuring panicking civilians than participating in active combat. The suit's thin plastitanium armor plating is durable against environment and projectiles, \
+		and comes with a built-in miniature power redistribution system to protect against energy weaponry; albeit ineffectively. \
+		Thanks to the modifications of the local police, additional armoring has been added to its legs and arms, at the cost of an increased system load."
 	default_skin = "policing"
 	armor_type = /datum/armor/mod_theme_policing
 	complexity_max = DEFAULT_MAX_COMPLEXITY - 1
@@ -140,8 +143,8 @@
 	)
 
 /datum/armor/mod_theme_policing
-	melee = 30
-	bullet = 40
+	melee = 40
+	bullet = 50
 	laser = 30
 	energy = 30
 	bomb = 60
