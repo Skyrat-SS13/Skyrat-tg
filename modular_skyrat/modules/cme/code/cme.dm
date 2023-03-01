@@ -121,8 +121,6 @@
 	else
 		switch(cme_intensity)
 			if(CME_UNKNOWN)
-				if(SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_RED)
-					SSsecurity_level.set_level(SEC_LEVEL_ORANGE)
 				priority_announce("Coronal mass ejection detected! Expected intensity: UNKNOWN. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
@@ -135,8 +133,7 @@
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_EXTREME)
-				if(SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_RED)
-					SSsecurity_level.set_level(SEC_LEVEL_ORANGE)
+				SSsecurity_level.set_level(SEC_LEVEL_RED)
 				priority_announce("Critical Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
