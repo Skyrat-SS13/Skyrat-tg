@@ -38,6 +38,7 @@
 	jobtype = /datum/job/janitor
 
 	id_trim = /datum/id_trim/job/janitor
+	id = /obj/item/card/id/advanced/silver //SKYRAT EDIT: Maximum Custodial Power
 	uniform = /obj/item/clothing/under/rank/civilian/janitor
 	belt = /obj/item/modular_computer/pda/janitor
 	ears = /obj/item/radio/headset/headset_srv

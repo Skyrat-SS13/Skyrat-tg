@@ -120,3 +120,14 @@
 	minimal_access = list(ACCESS_THEATRE, ACCESS_MAINT_TUNNELS, ACCESS_BARBER, ACCESS_SERVICE)
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CHANGE_IDS)
 	job = /datum/job/barber
+
+
+/datum/id_trim/job/janitor
+	department_color = COLOR_VIOLET
+	subdepartment_color = COLOR_VIOLET
+
+/datum/id_trim/job/janitor/New()
+
+	. = ..()
+
+	minimal_access |= list(ACCESS_CARGO, ACCESS_CONSTRUCTION, ACCESS_HYDROPONICS, ACCESS_MECH_MEDICAL, ACCESS_MEDICAL, ACCESS_MINERAL_STOREROOM, ACCESS_MINING, ACCESS_MORGUE, ACCESS_SCIENCE)
