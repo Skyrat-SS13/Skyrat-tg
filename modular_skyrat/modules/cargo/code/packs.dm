@@ -436,9 +436,9 @@
 		/obj/item/food/canned/tomatoes,
 		/obj/item/food/canned/pine_nuts,
 		/obj/item/food/canned/pine_nuts,
-		/obj/item/food/canned_jellyfish,
-		/obj/item/food/desert_snails,
-		/obj/item/food/larvae,
+		/obj/item/food/canned/jellyfish,
+		/obj/item/food/canned/desert_snails,
+		/obj/item/food/canned/larvae,
 		/obj/item/food/moonfish_eggs,
 	)
 	crate_name = "fine cuisine assortment pack"
@@ -506,18 +506,18 @@
 	desc = "Having some devious tastes? One of your scalie friends wanting something that isn't fried mystery meat? Well you're just one order away from from the perfect pleaser. Containing Three (3) Cans of our finest-sourced canned jellyfish, snails and bee larvae, An addition of Three (3) packs of cruelty free Moonfish eggs might get their hearts."
 	cost = CARGO_CRATE_VALUE * 3.5
 	contains = list(
-		/obj/item/food/canned_jellyfish,
-		/obj/item/food/canned_jellyfish,
-		/obj/item/food/canned_jellyfish,
-		/obj/item/food/desert_snails,
-		/obj/item/food/desert_snails,
-		/obj/item/food/desert_snails,
+		/obj/item/food/canned/jellyfish,
+		/obj/item/food/canned/jellyfish,
+		/obj/item/food/canned/jellyfish,
+		/obj/item/food/canned/desert_snails,
+		/obj/item/food/canned/desert_snails,
+		/obj/item/food/canned/desert_snails,
 		/obj/item/food/moonfish_eggs,
 		/obj/item/food/moonfish_eggs,
 		/obj/item/food/moonfish_eggs,
-		/obj/item/food/larvae,
-		/obj/item/food/larvae,
-		/obj/item/food/larvae,
+		/obj/item/food/canned/larvae,
+		/obj/item/food/canned/larvae,
+		/obj/item/food/canned/larvae,
 	)
 	crate_name = "bulk lizard pack"
 	crate_type = /obj/structure/closet/crate/freezer
@@ -749,14 +749,35 @@
 		/obj/item/nif_repair_kit,
 	)
 
-/datum/supply_pack/service/money_nifsoft
-	name = "Money Sense NIFSofts"
-	desc = "Contains three Money Sense NIFSoft datadisks."
-	cost = CARGO_CRATE_VALUE * 5
-	access_view = ACCESS_CARGO
+/datum/supply_pack/goody/money_sense_nifsoft
+	name = "Automatic Appraisal NIFSoft"
+	desc = "Contains a single Automatic Appraisal NIFSoft uploader disk."
+	cost = CARGO_CRATE_VALUE * 2
 	contains = list(
 		/obj/item/disk/nifsoft_uploader/money_sense,
-		/obj/item/disk/nifsoft_uploader/money_sense,
-		/obj/item/disk/nifsoft_uploader/money_sense,
 	)
-	crate_name = "Money sense NIFSoft crate"
+
+/datum/supply_pack/goody/shapeshifter_nifsoft
+	name = "Polymorph NIFSoft"
+	desc = "Contains a single Polymorph NIFSoft uploader disk."
+	cost = CARGO_CRATE_VALUE * 2
+	contains = list(
+		/obj/item/disk/nifsoft_uploader/shapeshifter,
+	)
+
+/datum/supply_pack/goody/hivemind_nifsoft
+	name = "Hivemind NIFSoft"
+	desc = "Contains a single Hivemind NIFSoft uploader disk."
+	cost = CARGO_CRATE_VALUE * 2
+	contains = list(
+		/obj/item/disk/nifsoft_uploader/hivemind,
+	)
+
+/datum/supply_pack/goody/summoner_nifsoft
+	name = "Grimoire Caeruleam NIFSoft"
+	desc = "Contains a single Grimoire Caeruleam NIFSoft uploader disk."
+	cost = CARGO_CRATE_VALUE * 1
+	contains = list(
+		/obj/item/disk/nifsoft_uploader/summoner,
+	)
+
