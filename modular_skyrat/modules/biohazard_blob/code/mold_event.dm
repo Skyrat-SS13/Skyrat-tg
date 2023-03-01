@@ -1,4 +1,10 @@
-#define MOLDIES_HIGHPOP_THRESHOLD 75
+#define MOLDIES_SPAWN_LOWPOP_MIN 1
+#define MOLDIES_SPAWN_LOWPOP_MAX 1
+#define MOLDIES_SPAWN_HIGHPOP_MIN 1
+#define MOLDIES_SPAWN_HIGHPOP_MAX 2
+#define MOLDIES_LOWPOP_THRESHOLD 25
+#define MOLDIES_MIDPOP_THRESHOLD 75
+#define MOLDIES_HIGHPOP_THRESHOLD 115
 
 /datum/round_event_control/mold
 	name = "Moldies"
@@ -6,7 +12,7 @@
 	weight = 5
 	max_occurrences = 1
 	earliest_start = 30 MINUTES
-	min_players = 10
+	min_players = MOLDIES_LOWPOP_LOWER_THRESHOLD
 	category = EVENT_CATEGORY_ENTITIES
 
 /datum/round_event/mold
@@ -24,12 +30,19 @@
 
 /datum/round_event/mold/start()
 	var/list/turfs = list() //list of all the empty floor turfs in the hallway areas
-	var/molds2spawn = 1
-	if(get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = FALSE) >= MOLDIES_HIGHPOP_THRESHOLD && \
-		(prob(((get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = FALSE)) - MOLDIES_HIGHPOP_THRESHOLD) * 4)))
-		molds2spawn	= 2 //Guaranteedly worse
+	var/mold_spawns = MOLDIES_SPAWN_LOWPOP_MIN
+	var/active_players = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = FALSE)
 
-	var/obj/structure/biohazard_blob/resin/resintest = new()
+	if(active_players > MOLDIES_HIGHPOP_THRESHOLD)
+		mold_spawns = MOLDIES_SPAWN_HIGHPOP_MAX
+
+	else if(active_players >= MOLDIES_MIDPOP_THRESHOLD && prob((active_players - MOLDIES_MIDPOP_THRESHOLD) * (100 / (MOLDIES_HIGHPOP_THRESHOLD - MOLDIES_MIDPOP_THRESHOLD))))
+		mold_spawns = MOLDIES_SPAWN_HIGHPOP_MAX
+
+	else if(active_players < MOLDIES_MIDPOP_THRESHOLD && prob((active_players - MOLDIES_LOWPOP_THRESHOLD) * (100 / (MOLDIES_MIDPOP_THRESHOLD - MOLDIES_LOWPOP_THRESHOLD))))
+		mold_spawns = MOLDIES_SPAWN_LOWPOP_MAX
+
+	var/obj/structure/biohazard_blob/resin/resin_test = new()
 
 	var/list/possible_spawn_areas = typecacheof(typesof(/area/station/maintenance, /area/station/security/prison, /area/station/construction))
 
@@ -45,11 +58,11 @@
 				continue
 			turfs += floor
 
-	qdel(resintest)
+	qdel(resin_test)
 
-	for(var/i in 1 to molds2spawn)
+	for(var/i in 1 to mold_spawns)
 		var/picked_mold
-		if(get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = FALSE) >= MOLDIES_HIGHPOP_THRESHOLD)
+		if(active_players >= MOLDIES_MIDPOP_THRESHOLD)
 			picked_mold = pick(available_molds_t2)
 		else
 			picked_mold = pick(available_molds_t1)
@@ -68,4 +81,10 @@
 			message_admins("Moldies failed to spawn.")
 			break
 
+#undef MOLDIES_SPAWN_LOWPOP_MIN
+#undef MOLDIES_SPAWN_LOWPOP_MAX
+#undef MOLDIES_SPAWN_HIGHPOP_MIN
+#undef MOLDIES_SPAWN_HIGHPOP_MAX
+#undef MOLDIES_LOWPOP_THRESHOLD
+#undef MOLDIES_MIDPOP_THRESHOLD
 #undef MOLDIES_HIGHPOP_THRESHOLD
