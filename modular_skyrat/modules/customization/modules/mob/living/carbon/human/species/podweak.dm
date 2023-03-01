@@ -5,6 +5,10 @@
 		TRAIT_PLANT_SAFE,
 		TRAIT_LITERATE,
 	)
+	mutant_bodyparts = list()
+	default_mutant_bodyparts = list(
+		"pod_hair" = "Cabbage",
+	)
 	payday_modifier = 0.75
 
 /datum/species/pod/podweak
@@ -22,8 +26,6 @@
 		TRAIT_CAN_STRIP,
 		TRAIT_LITERATE,
 	)
-	mutant_bodyparts = list()
-	default_mutant_bodyparts = list()
 
 	always_customizable = FALSE
 
