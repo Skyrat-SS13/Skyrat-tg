@@ -30,10 +30,9 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	if(equipped_glasses.tint)
 		equipper.update_tint()
 	if(equipped_glasses.vision_flags \
-		|| equipped_glasses.darkness_view \
 		|| equipped_glasses.invis_override \
 		|| equipped_glasses.invis_view \
-		|| !isnull(equipped_glasses.lighting_alpha))
+		|| !isnull(equipped_glasses.lighting_cutoff_blue))
 		equipper.update_sight()
 /*
 *	PRESCRIPTION GLASSES

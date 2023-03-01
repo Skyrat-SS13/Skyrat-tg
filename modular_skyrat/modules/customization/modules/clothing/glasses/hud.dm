@@ -61,7 +61,7 @@
 	base_icon_state = "mesonpatch"
 	clothing_traits = list(TRAIT_MADNESS_IMMUNE)
 	vision_flags = SEE_TURFS
-	lighting_cutoff = LIGHTING_CUTOFF_HIGH
+	lighting_cutoff = LIGHTING_CUTOFF_MEDIUM
 	glass_colour_type = /datum/client_colour/glass_colour/lightgreen
 
 	unique_reskin = list(
