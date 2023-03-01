@@ -11,8 +11,6 @@
 	var/sight = NONE
 	/// see_invisible values
 	var/see_invis
-	/// see_in_dark values
-	var/see_dark
 	/// What the client is seeing "out of", client.eye
 	var/datum/weakref/client_eye
 	/// Weakref to the mob we're mirroring off
@@ -41,7 +39,6 @@
 	// Note: we explicitly do NOT use setters here, since it would break the behavior
 	paint_to.sight = sight
 	paint_to.see_invisible = see_invis
-	paint_to.see_in_dark = see_dark
 	if(paint_to.client)
 		var/atom/eye = client_eye?.resolve()
 		if(eye)

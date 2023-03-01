@@ -23,7 +23,6 @@
 	maxHealth = 750 //Very durable
 	health = 500
 	healable = FALSE
-	see_in_dark = 8
 	lighting_cutoff_red = 0
 	lighting_cutoff_green = 35
 	lighting_cutoff_blue = 20

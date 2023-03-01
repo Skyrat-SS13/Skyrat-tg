@@ -3,7 +3,6 @@
 	lighting_cutoff_red = 0
 	lighting_cutoff_green = 35
 	lighting_cutoff_blue = 20
-	see_in_dark = 4
 	mob_biotypes = MOB_ORGANIC
 	gold_core_spawnable = NO_SPAWN
 	icon = 'modular_skyrat/modules/biohazard_blob/icons/blob_mobs.dmi'
