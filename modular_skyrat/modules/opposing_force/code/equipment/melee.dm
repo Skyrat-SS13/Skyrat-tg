@@ -52,7 +52,7 @@
 /datum/opposing_force_equipment/melee/northstar
 	item_type = /obj/item/clothing/gloves/rapid
 	description = "By putting on these gloves, you will find you can punch things at vastly increased speed."
-	admin_note = "WARNING: Be very mindful if passing these out with sleeping-card, as the duo are extremely strong together."
+	admin_note = "WARNING: Be very mindful if passing these out with sleeping-carp, as the duo are extremely strong together."
 
 /datum/opposing_force_equipment/melee/meathook
 	name = "Butcher's Meat Hook"
