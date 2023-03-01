@@ -86,7 +86,7 @@
 	. = ..()
 	icon_state = "[base_icon_state]_[current_pole_color]_[lights_enabled? "on" : "off"]"
 
-
+/// Turns off/on the pole's ambient light source
 /obj/structure/stripper_pole/proc/update_brightness()
 	set_light_on(lights_enabled)
 	update_light()
@@ -103,8 +103,8 @@
 	obj_flags |= IN_USE
 	dancer = user
 	user.setDir(SOUTH)
-	user.Stun(100)
-	user.forceMove(src.loc)
+	user.Stun(10 SECONDS)
+	user.forceMove(loc)
 	user.visible_message(pick(span_purple("[user] dances on [src]!"), span_purple("[user] flexes their hip-moving skills on [src]!")))
 	dance_animate(user)
 	obj_flags &= ~IN_USE
