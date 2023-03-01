@@ -12,7 +12,7 @@
 	weight = 5
 	max_occurrences = 1
 	earliest_start = 30 MINUTES
-	min_players = MOLDIES_LOWPOP_LOWER_THRESHOLD
+	min_players = MOLDIES_LOWPOP_THRESHOLD
 	category = EVENT_CATEGORY_ENTITIES
 
 /datum/round_event/mold
@@ -52,7 +52,7 @@
 		if(!is_type_in_typecache(A, possible_spawn_areas))
 			continue
 		for(var/turf/open/floor in A.get_contained_turfs())
-			if(!floor.Enter(resintest))
+			if(!floor.Enter(resin_test))
 				continue
 			if(locate(/turf/closed) in range(2, floor))
 				continue
