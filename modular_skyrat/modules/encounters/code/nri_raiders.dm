@@ -180,7 +180,7 @@
 /area/shuttle/pirate/nri
 	name = "NRI Starship"
 	forced_ambience = TRUE
-	ambient_buzz = 'modular_skyrat/modules/encounters/sounds/env_ship_idle.ogg'
+	ambient_buzz = 'modular_skyrat/modules/encounters/sounds/amb_ship_01.ogg'
 	ambient_buzz_vol = 15
 	ambientsounds = list('modular_skyrat/modules/encounters/sounds/alarm_radio.ogg',
 						'modular_skyrat/modules/encounters/sounds/alarm_small_09.ogg',
