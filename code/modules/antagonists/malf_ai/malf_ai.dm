@@ -31,7 +31,6 @@
 	owner.special_role = job_rank
 	if(give_objectives)
 		forge_ai_objectives()
-<<<<<<< HEAD
 	// SKYRAT EDIT START - Moving voice changing to Malf only
 #ifdef AI_VOX
 	var/mob/living/silicon/ai/malf_ai = owner.current
@@ -40,10 +39,8 @@
 	// SKYRAT EDIT END
 
 	employer = pick(GLOB.ai_employers)
-=======
 	if(!employer)
 		employer = pick(GLOB.ai_employers)
->>>>>>> 69943b7733b (Adds traitor final objective to make the station AI malf (#73020))
 
 	malfunction_flavor = strings(MALFUNCTION_FLAVOR_FILE, employer)
 
