@@ -20,7 +20,7 @@
 
 
 
-/obj/item/organ/external/antennae/can_draw_on_bodypart(mob/living/carbon/human/wearer)
+/datum/bodypart_overlay/mutant/antennae/can_draw_on_bodypart(mob/living/carbon/human/wearer)
 	if(!wearer.head)
 		return FALSE
 //	Can hide if wearing hat

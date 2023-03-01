@@ -87,8 +87,12 @@
 			return FALSE
 
 
-/datum/bodypart_overlay/genital
-	
+/datum/bodypart_overlay/mutant/genital
+	layers = EXTERNAL_FRONT
+	color_source = ORGAN_COLOR_OVERRIDE
+
+/datum/bodypart_overlay/mutant/genital/override_color(rgb_value)
+	return rgb_value
 
 /obj/item/organ/external/genital/penis
 	name = "penis"
@@ -102,6 +106,16 @@
 	drop_when_organ_spilling = FALSE
 	var/girth = 9
 	var/sheath = SHEATH_NONE
+	bodypart_overlay = /datum/bodypart_overlay/mutant/genital/penis
+
+/datum/bodypart_overlay/mutant/genital/penis
+	feature_key = ORGAN_SLOT_PENIS
+	layers = EXTERNAL_FRONT | EXTERNAL_BEHIND
+
+/datum/bodypart_overlay/mutant/genital/penis/override_color(rgb_value)
+	. = ..()
+
+
 
 /obj/item/organ/external/genital/penis/get_description_string(datum/sprite_accessory/genital/gas)
 	var/returned_string = ""
@@ -185,7 +199,7 @@
 	if(DNA.features["penis_uses_skintones"])
 		uses_skintones = accessory.has_skintone_shading
 
-/obj/item/organ/external/genital/penis/get_global_feature_list()
+/datum/bodypart_overlay/mutant/genital/penis/penis/get_global_feature_list()
 	return GLOB.sprite_accessories[ORGAN_SLOT_PENIS]
 
 
@@ -201,6 +215,10 @@
 	aroused = AROUSAL_CANT
 	genital_location = GROIN
 	drop_when_organ_spilling = FALSE
+	bodypart_overlay = /datum/bodypart_overlay/mutant/genital/testicles
+
+/datum/bodypart_overlay/mutant/genital/testicles
+	layers = EXTERNAL_FRONT | EXTERNAL_BEHIND
 
 /obj/item/organ/external/genital/testicles/update_genital_icon_state()
 	var/measured_size = clamp(genital_size, 1, 3)
@@ -232,7 +250,7 @@
 		passed_string += "_s"
 	return passed_string
 
-/obj/item/organ/external/genital/testicles/get_global_feature_list()
+/datum/bodypart_overlay/mutant/genital/testicles/get_global_feature_list()
 	return GLOB.sprite_accessories[ORGAN_SLOT_TESTICLES]
 
 
@@ -261,6 +279,10 @@
 	slot = ORGAN_SLOT_VAGINA
 	genital_location = GROIN
 	drop_when_organ_spilling = FALSE
+	bodypart_overlay = /datum/bodypart_overlay/mutant/genital/vagina
+
+/datum/bodypart_overlay/mutant/genital/vagina
+	layers = EXTERNAL_FRONT
 
 /obj/item/organ/external/genital/vagina/get_description_string(datum/sprite_accessory/genital/gas)
 	var/returned_string = "You see a [lowertext(genital_name)] vagina."
@@ -289,7 +311,7 @@
 	if(DNA.features["vagina_uses_skintones"])
 		uses_skintones = accessory.has_skintone_shading
 
-/obj/item/organ/external/genital/vagina/get_global_feature_list()
+/datum/bodypart_overlay/mutant/genital/vagina/get_global_feature_list()
 	return GLOB.sprite_accessories[ORGAN_SLOT_VAGINA]
 
 
@@ -306,8 +328,12 @@
 	aroused = AROUSAL_CANT
 	genital_location = GROIN
 	drop_when_organ_spilling = FALSE
+	bodypart_overlay = /datum/bodypart_overlay/mutant/genital/womb
 
-/obj/item/organ/external/genital/womb/get_global_feature_list()
+/datum/bodypart_overlay/mutant/genital/womb
+	layers = NONE
+
+/datum/bodypart_overlay/mutant/genital/womb/get_global_feature_list()
 	return GLOB.sprite_accessories[ORGAN_SLOT_WOMB]
 
 
@@ -322,7 +348,10 @@
 	slot = ORGAN_SLOT_ANUS
 	genital_location = GROIN
 	drop_when_organ_spilling = FALSE
-	bodypart_overlay = /datum/bodypart_overlay/genital/anus
+	bodypart_overlay = /datum/bodypart_overlay/mutant/genital/anus
+
+/datum/bodypart_overlay/mutant/genital/anus
+	layers = NONE
 
 /obj/item/organ/external/genital/anus/get_description_string(datum/sprite_accessory/genital/gas)
 	var/returned_string = "You see an [lowertext(genital_name)]."
@@ -332,7 +361,7 @@
 		returned_string += " It looks very tight."
 	return returned_string
 
-/obj/item/organ/external/genital/anus/get_global_feature_list()
+/datum/bodypart_overlay/mutant/genital/anus/get_global_feature_list()
 	return GLOB.sprite_accessories[ORGAN_SLOT_ANUS]
 
 
@@ -349,6 +378,10 @@
 	genital_location = CHEST
 	drop_when_organ_spilling = FALSE
 	var/lactates = FALSE
+	bodypart_overlay = /datum/bodypart_overlay/mutant/genital/breasts
+
+/datum/bodypart_overlay/mutant/genital/breasts
+	layers = EXTERNAL_FRONT | EXTERNAL_BEHIND
 
 /obj/item/organ/external/genital/breasts/get_description_string(datum/sprite_accessory/genital/gas)
 	var/returned_string = "You see a [lowertext(genital_name)] of breasts."
@@ -405,7 +438,7 @@
 	if(DNA.features["breasts_uses_skintones"])
 		uses_skintones = accessory.has_skintone_shading
 
-/obj/item/organ/external/genital/breasts/get_global_feature_list()
+/datum/bodypart_overlay/mutant/genital/breasts/get_global_feature_list()
 	return GLOB.sprite_accessories[ORGAN_SLOT_BREASTS]
 
 /obj/item/organ/external/genital/breasts/proc/breasts_size_to_cup(number)

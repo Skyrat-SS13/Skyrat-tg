@@ -46,28 +46,33 @@
 	name = "taur body"
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_EXTERNAL_TAUR
-	layers = ALL_EXTERNAL_OVERLAYS
 	external_bodytypes = BODYTYPE_TAUR
-	color_source = ORGAN_COLOR_OVERRIDE
 	use_mob_sprite_as_obj_sprite = TRUE
 
-	feature_key = "taur"
 	preference = "feature_taur"
 	mutantpart_key = "taur"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
+	bodypart_overlay = /datum/bodypart_overlay/mutant/taur_body
+	/// The mob's old right leg. Used if the person switches to this organ and then back, so they don't just, have no legs anymore. Can be null.
+	var/obj/item/bodypart/leg/right/old_right_leg = null
+	/// The mob's old left leg. Used if the person switches to this organ and then back, so they don't just, have no legs anymore. Can be null.
+	var/obj/item/bodypart/leg/right/old_left_leg = null
 
 /obj/item/organ/external/taur_body/synth
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
 
-/obj/item/organ/external/taur_body/override_color(rgb_value)
-	if(mutantpart_key)
-		return mutantpart_info[MUTANT_INDEX_COLOR_LIST][1]
+/datum/bodypart_overlay/mutant/taur_body
+	feature_key = "taur"
+	layers = ALL_EXTERNAL_OVERLAYS
+	color_source = ORGAN_COLOR_OVERRIDE
 
-	return rgb_value
+
+/datum/bodypart_overlay/mutant/taur_body/override_color(rgb_value)
+	return draw_color
 
 
-/obj/item/organ/external/taur_body/get_global_feature_list()
+/datum/bodypart_overlay/mutant/taur_body/get_global_feature_list()
 	return GLOB.sprite_accessories["taur"]
 
 
@@ -75,8 +80,8 @@
 	if(sprite_accessory_flags & SPRITE_ACCESSORY_HIDE_SHOES)
 		external_bodytypes |= BODYTYPE_HIDE_SHOES
 
-	var/obj/item/bodypart/leg/right/old_right_leg = reciever.get_bodypart(BODY_ZONE_R_LEG)
-	var/obj/item/bodypart/leg/left/old_left_leg = reciever.get_bodypart(BODY_ZONE_L_LEG)
+	old_right_leg = reciever.get_bodypart(BODY_ZONE_R_LEG)
+	old_left_leg = reciever.get_bodypart(BODY_ZONE_L_LEG)
 	var/obj/item/bodypart/leg/left/taur/new_left_leg
 	var/obj/item/bodypart/leg/right/taur/new_right_leg
 	if(status & ORGAN_ORGANIC)
@@ -90,12 +95,12 @@
 	new_left_leg.bodytype |= external_bodytypes
 	new_left_leg.replace_limb(reciever, TRUE)
 	if(old_left_leg)
-		qdel(old_left_leg)
+		old_left_leg.forceMove(src)
 
 	new_right_leg.bodytype |= external_bodytypes
 	new_right_leg.replace_limb(reciever, TRUE)
 	if(old_right_leg)
-		qdel(old_right_leg)
+		old_right_leg.forceMove(src)
 
 	return ..()
 
@@ -116,9 +121,25 @@
 		if(right_leg)
 			qdel(right_leg)
 
+	if(old_left_leg)
+		old_left_leg.replace_limb(organ_owner, TRUE)
+		old_left_leg = null
+
+	if(old_right_leg)
+		old_right_leg.replace_limb(organ_owner, TRUE)
+		old_right_leg = null
+
 	// We don't call `synchronize_bodytypes()` here, because it's already going to get called in the parent because `external_bodytypes` has a value.
 
 	return ..()
+
+/obj/item/organ/external/taur_body/Destroy()
+	. = ..()
+	if(old_left_leg)
+		QDEL_NULL(old_left_leg)
+
+	if(old_right_leg)
+		QDEL_NULL(old_right_leg)
 
 /datum/sprite_accessory/taur/none
 	name = "None"

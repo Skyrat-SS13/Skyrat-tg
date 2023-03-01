@@ -17,6 +17,8 @@
 	mutantpart_key = "snout"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	external_bodytypes = NONE // We don't actually want this to have BODYTYPE_SNOUTED by default, since some of them don't apply that.
+
+/datum/bodypart_overlay/mutant/snout
 	color_source = ORGAN_COLOR_OVERRIDE
 
 /obj/item/organ/external/snout/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
@@ -25,11 +27,8 @@
 
 	return ..()
 
-/obj/item/organ/external/snout/override_color(rgb_value)
-	if(mutantpart_key)
-		return mutantpart_info[MUTANT_INDEX_COLOR_LIST][1]
-
-	return rgb_value
+/datum/bodypart_overlay/mutant/snout/override_color(rgb_value)
+	return draw_color
 
 /datum/sprite_accessory/snouts/none
 	name = "None"

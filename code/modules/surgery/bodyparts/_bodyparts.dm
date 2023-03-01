@@ -944,14 +944,17 @@
 			if(!dropped && !overlay.can_draw_on_bodypart(owner)) //if you want different checks for dropped bodyparts, you can insert it here
 				continue
 			//Some externals have multiple layers for background, foreground and between
-			/* SKYRAT EDIT START - Customization (better layer handling for external organs) - ORIGINAL:
 			for(var/external_layer in overlay.all_layers)
 				if(overlay.layers & external_layer)
-					. += overlay.get_overlay(external_layer, src)
-			*/ // ORIGINAL END - SKYRAT EDIT START
-			for(var/external_layer in overlay.all_layers)
-				. += overlay.get_overlay(external_layer, src)
-			// SKYRAT EDIT END
+					// SKYRAT EDIT START - EMISSIVES - ORIGINAL: . += overlay.get_overlay(external_layer, src)
+					var/mutable_appearance/overlay_appearance = overlay.get_overlay(external_layer, src)
+					. += overlay_appearance
+
+					if(!overlay.needs_emissive_at_layer(external_layer))
+						continue
+
+					. += overlay.get_emissive_overlay(overlay_appearance, owner, external_layer)
+					// SKYRAT EDIT END
 
 	// SKYRAT EDIT ADDITION BEGIN - MARKINGS CODE
 	var/override_color

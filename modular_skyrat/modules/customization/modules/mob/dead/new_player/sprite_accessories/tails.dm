@@ -28,34 +28,30 @@
 		else if(wearer.wear_suit.flags_inv & HIDETAIL)
 			return TRUE
 
-/obj/item/organ/external/tail/can_draw_on_bodypart(mob/living/carbon/human/wearer)
+/datum/bodypart_overlay/mutant/tail/can_draw_on_bodypart(mob/living/carbon/human/wearer)
 	var/list/used_in_turf = list("tail")
+	// Emote exception
 	if(wearer.owned_turf?.name in used_in_turf)
-		// Emote exception
 		return FALSE
 
 	if(!wearer.w_uniform && !wearer.wear_suit)
 		return ..()
-//	Can hide if wearing uniform
-	if(render_key in wearer.try_hide_mutant_parts)
+
+	// Can hide if wearing uniform
+	if(feature_key in wearer.try_hide_mutant_parts)
 		return FALSE
+
 	if(wearer.wear_suit)
-	//	Exception for MODs
+		// Exception for MODs
 		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
 			return FALSE
-	//	Hide accessory if flagged to do so
+
+		// Hide accessory if flagged to do so
 		else if(wearer.wear_suit.flags_inv & HIDETAIL)
 			return FALSE
 
 /datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/wearer)
 	return icon_state
-
-/datum/sprite_accessory/tails/get_special_render_key(mob/living/carbon/human/owner)
-	var/obj/item/organ/external/tail/tail = owner.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
-	if(tail)
-		return tail.render_key
-
-	return key
 
 /datum/sprite_accessory/tails/none
 	name = "None"
