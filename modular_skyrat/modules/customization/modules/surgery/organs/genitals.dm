@@ -112,10 +112,6 @@
 	feature_key = ORGAN_SLOT_PENIS
 	layers = EXTERNAL_FRONT | EXTERNAL_BEHIND
 
-/datum/bodypart_overlay/mutant/genital/penis/override_color(rgb_value)
-	. = ..()
-
-
 
 /obj/item/organ/external/genital/penis/get_description_string(datum/sprite_accessory/genital/gas)
 	var/returned_string = ""
@@ -199,7 +195,7 @@
 	if(DNA.features["penis_uses_skintones"])
 		uses_skintones = accessory.has_skintone_shading
 
-/datum/bodypart_overlay/mutant/genital/penis/penis/get_global_feature_list()
+/datum/bodypart_overlay/mutant/genital/penis/get_global_feature_list()
 	return GLOB.sprite_accessories[ORGAN_SLOT_PENIS]
 
 
