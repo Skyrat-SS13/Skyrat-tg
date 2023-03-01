@@ -27,6 +27,7 @@
 //This translates the float size into a sprite string
 /obj/item/organ/external/genital/proc/update_sprite_suffix()
 	sprite_suffix = "[get_sprite_size_string()]"
+	// sprite_
 
 /obj/item/organ/external/genital/proc/get_description_string(datum/sprite_accessory/genital/gas)
 	return "You see genitals"
@@ -93,6 +94,12 @@
 
 /datum/bodypart_overlay/mutant/genital/override_color(rgb_value)
 	return rgb_value
+
+/datum/bodypart_overlay/mutant/genital/get_feature_key_for_overlay()
+	var/datum/sprite_accessory/genital/our_sprite_datum = sprite_datum
+
+	return feature_key + our_sprite_datum.sprite_suffix
+
 
 /obj/item/organ/external/genital/penis
 	name = "penis"

@@ -27,8 +27,14 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/list/custom_worn_icons = list()
 	///Is this species restricted from changing their body_size in character creation?
 	var/body_size_restricted = FALSE
+	///What accessories can a species have aswell as their default accessory of such type e.g. "frills" = "Aquatic". Default accessory colors is dictated by the accessory properties and mutcolors of the specie
+	var/list/default_mutant_bodyparts = list()
+	/// A static list of all genital slot possibilities.
+	var/static/list/genitals_list = list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_WOMB, ORGAN_SLOT_TESTICLES, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS, ORGAN_SLOT_PENIS)
 
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/owner, forced_colour, force_update = FALSE)
+	return
+	/*
 	var/list/standing = list()
 
 	var/obj/item/bodypart/head/HD = owner.get_bodypart(BODY_ZONE_HEAD)
@@ -275,11 +281,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	owner.apply_overlay(BODY_FRONT_LAYER)
 	owner.apply_overlay(BODY_FRONT_UNDER_CLOTHES)
 	owner.apply_overlay(ABOVE_BODY_FRONT_HEAD_LAYER)
-
-/datum/species
-	///What accessories can a species have aswell as their default accessory of such type e.g. "frills" = "Aquatic". Default accessory colors is dictated by the accessory properties and mutcolors of the specie
-	var/list/default_mutant_bodyparts = list()
-	var/list/genitals_list = list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_WOMB, ORGAN_SLOT_TESTICLES, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS, ORGAN_SLOT_PENIS)
+	*/
 
 /datum/species/New()
 	. = ..()
