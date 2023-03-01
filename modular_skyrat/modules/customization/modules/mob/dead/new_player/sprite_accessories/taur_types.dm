@@ -204,3 +204,8 @@
 	name = "Feline"
 	icon_state = "feline"
 	taur_mode = STYLE_TAUR_PAW
+
+/datum/sprite_accessory/taur/goop
+	name = "Goop"
+	icon_state = "goop"
+	color_src = USE_ONE_COLOR
