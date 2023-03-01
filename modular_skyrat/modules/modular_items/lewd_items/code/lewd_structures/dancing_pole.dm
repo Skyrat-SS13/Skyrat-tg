@@ -84,7 +84,7 @@
 
 /obj/structure/stripper_pole/update_icon_state()
 	. = ..()
-	icon_state = "[base_icon_state]_[current_pole_color]_[lights_enabled? "on" : "off"]"
+	icon_state = "[base_icon_state]_[current_pole_color]_[lights_enabled ? "on" : "off"]"
 
 /// Turns off/on the pole's ambient light source
 /obj/structure/stripper_pole/proc/update_brightness()
