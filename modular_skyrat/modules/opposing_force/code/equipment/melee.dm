@@ -29,7 +29,7 @@
 /datum/opposing_force_equipment/melee/claymore
 	item_type = /obj/item/claymore
 	description = "An extremely sharp and robust sword perfect to cleave through any opposition. Also highly illegal."
-	admin_note = "WARNING: 30 force, 35 armor pen"
+	admin_note = "WARNING: 30 force, 35 armor pen."
 
 /datum/opposing_force_equipment/melee/katana
 	item_type = /obj/item/katana
