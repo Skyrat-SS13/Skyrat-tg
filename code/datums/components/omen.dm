@@ -78,7 +78,7 @@
 			return
 
 		for(var/obj/machinery/vending/darth_vendor in the_turf)
-			if(darth_vendor.tiltable)
+			if(darth_vendor.tiltable && prob(50)) // SKYRAT EDIT CURSED QUIRK NERF - OLD: 	if(darth_vendor.tiltable)
 				to_chat(living_guy, span_warning("A malevolent force tugs at the [darth_vendor]..."))
 				INVOKE_ASYNC(darth_vendor, TYPE_PROC_REF(/obj/machinery/vending, tilt), living_guy)
 				if(!permanent)
