@@ -39,19 +39,10 @@
 	animate_movement = NO_STEPS // Do not animate movement, you jump around as you're a scary statue.
 	hud_possible = list(ANTAG_HUD)
 
-<<<<<<< HEAD:code/modules/mob/living/simple_animal/hostile/statue.dm
-	see_in_dark = 13
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
-	vision_range = 12
-	aggro_vision_range = 12
-
-	search_objects = 1 // So that it can see through walls
-=======
 	// Dim purple, I want it to be possible to miss people in the dark but not easy to
 	lighting_cutoff_red = 15
 	lighting_cutoff_green = 10
 	lighting_cutoff_blue = 25
->>>>>>> ab307032edc (Nightvision Rework (In the name of color) (#73094)):code/modules/mob/living/basic/space_fauna/statue/statue.dm
 
 	sight = SEE_SELF|SEE_MOBS|SEE_OBJS|SEE_TURFS
 
