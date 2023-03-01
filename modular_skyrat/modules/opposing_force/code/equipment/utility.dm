@@ -90,7 +90,7 @@
 	description = "A radioactive microlaser disguised as a standard Nanotrasen health analyzer. When used, it emits a \
 			powerful burst of radiation, which, after a short delay, can incapacitate all but the most protected \
 			of humanoids."
-	admin_note = "WARNING: Is a knockout weapon with no warning, and 'infinite' use"
+	admin_note = "WARNING: Is a knockout weapon with no warning, and 'infinite' use."
 
 /datum/opposing_force_equipment/gear/stimpack
 	name = "Stimulant Medipen"
