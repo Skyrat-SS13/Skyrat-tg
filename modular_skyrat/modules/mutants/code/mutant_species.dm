@@ -67,7 +67,7 @@
 	mutanthands = /obj/item/mutant_hand
 	speedmod = 1
 	armor = 10
-	mutanteyes = /obj/item/organ/internal/eyes/night_vision/zombie
+	mutanteyes = /obj/item/organ/internal/eyes/zombie
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
 	/// The rate the mutants regenerate at
 	var/heal_rate = 1
