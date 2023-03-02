@@ -525,5 +525,5 @@
 	key_third_person = "makes a sad sound."
 	message = "makes a sad sound."
 	emote_type = EMOTE_AUDIBLE
-	vary = TRUE
+	vary = FALSE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/boowomp.ogg'
