@@ -533,13 +533,9 @@ SUBSYSTEM_DEF(job)
 
 	SEND_SIGNAL(equipping, COMSIG_JOB_RECEIVED, job)
 
-<<<<<<< HEAD
-	equipping.mind?.set_assigned_role(job)
+	equipping.mind?.set_assigned_role_with_greeting(job)
 	if(player_client)
 		to_chat(player_client, span_infoplain("You are the [chosen_title].")) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: to_chat(player_client, span_infoplain("You are the [job.title]."))
-=======
-	equipping.mind?.set_assigned_role_with_greeting(job)
->>>>>>> 10f6825ae30 (Updates policy to better warn players for any existing antagonist policy (#73408))
 
 	equipping.on_job_equipping(job, player_client?.prefs) //SKYRAT EDIT CHANGE
 
