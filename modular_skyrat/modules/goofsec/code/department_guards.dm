@@ -214,7 +214,6 @@
 	trim_state = "trim_calhoun"
 	department_color = COLOR_SCIENCE_PINK
 	subdepartment_color = COLOR_SCIENCE_PINK
-	orbit_icon = "shield-heart"
 	sechud_icon_state = SECHUD_SCIENCE_GUARD
 	extra_access = list(
 		ACCESS_AUX_BASE,
@@ -319,7 +318,6 @@
 	trim_state = "trim_orderly"
 	department_color = COLOR_MEDICAL_BLUE
 	subdepartment_color = COLOR_MEDICAL_BLUE
-	orbit_icon = "shield-heart"
 	sechud_icon_state = SECHUD_ORDERLY
 	extra_access = list(
 		ACCESS_BRIG_ENTRANCE,
@@ -417,7 +415,6 @@
 	trim_state = "trim_engiguard"
 	department_color = COLOR_ENGINEERING_ORANGE
 	subdepartment_color = COLOR_ENGINEERING_ORANGE
-	orbit_icon = "shield-heart"
 	sechud_icon_state = SECHUD_ENGINEERING_GUARD
 	extra_access = list(
 		ACCESS_ATMOSPHERICS,
@@ -521,7 +518,6 @@
 	trim_state = "trim_customs"
 	department_color = COLOR_CARGO_BROWN
 	subdepartment_color = COLOR_CARGO_BROWN
-	orbit_icon = "shield-heart"
 	sechud_icon_state = SECHUD_CUSTOMS_AGENT
 	extra_access = list(
 		ACCESS_BRIG_ENTRANCE,
@@ -617,7 +613,6 @@
 	assignment = "Bouncer"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_bouncer"
-	orbit_icon = "shield-heart"
 	department_color = COLOR_SERVICE_LIME
 	subdepartment_color = COLOR_SERVICE_LIME // Personally speaking I'd have one of these with sec colors but I'm being authentic
 	sechud_icon_state = SECHUD_BOUNCER

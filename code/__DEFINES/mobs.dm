@@ -98,6 +98,8 @@
 #define BODYTYPE_TAUR (1<<9)
 ///The limb causes shoes to no longer be displayed, useful for taurs.
 #define BODYTYPE_HIDE_SHOES (1<<10)
+///The limb causes glasses and hats to be drawn on layers 5 and 4 respectively. Currently used for snouts with the (Top) suffix, which are drawn on layer 6 and would normally cover facewear
+#define BODYTYPE_ALT_FACEWEAR_LAYER (1<<11)
 // SKYRAT EDIT END
 
 // Defines for Species IDs. Used to refer to the name of a species, for things like bodypart names or species preferences.
@@ -614,11 +616,36 @@
 #define GRADIENT_APPLIES_TO_HAIR (1<<0)
 #define GRADIENT_APPLIES_TO_FACIAL_HAIR (1<<1)
 
+// Height defines
+// - They are numbers so you can compare height values (x height < y height)
+// - They do not start at 0 for futureproofing
+// - They skip numbers for futureproofing as well
+// Otherwise they are completely arbitrary
+#define HUMAN_HEIGHT_DWARF 2
+#define HUMAN_HEIGHT_SHORTEST 4
+#define HUMAN_HEIGHT_SHORT 6
+#define HUMAN_HEIGHT_MEDIUM 8
+#define HUMAN_HEIGHT_TALL 10
+#define HUMAN_HEIGHT_TALLEST 12
+
+/// Assoc list of all heights, cast to strings, to """"tuples"""""
+/// The first """tuple""" index is the upper body offset
+/// The second """tuple""" index is the lower body offset
+GLOBAL_LIST_INIT(human_heights_to_offsets, list(
+	"[HUMAN_HEIGHT_DWARF]" = list(-5, -4),
+	"[HUMAN_HEIGHT_SHORTEST]" = list(-2, -1),
+	"[HUMAN_HEIGHT_SHORT]" = list(-1, -1),
+	"[HUMAN_HEIGHT_MEDIUM]" = list(0, 0),
+	"[HUMAN_HEIGHT_TALL]" = list(1, 1),
+	"[HUMAN_HEIGHT_TALLEST]" = list(2, 2),
+))
+
 // Mob Overlays Indexes
 /// Total number of layers for mob overlays
-// SKYRAT EDIT CHANGE BEGIN - ORIGINAL: #define TOTAL_LAYERS 33
-#define TOTAL_LAYERS 39 //KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
-// SKYRAT EDIT CHANGE END
+/// KEEP THIS UP-TO-DATE OR SHIT WILL BREAK
+/// Also consider updating layers_to_offset
+#define TOTAL_LAYERS 39 // SKYRAT EDIT CHANGE - ORIGINAL: #define TOTAL_LAYERS 33
+
 /// Mutations layer - Tk headglows, cold resistance glow, etc
 #define MUTATIONS_LAYER 39 // SKYRAT EDIT CHANGE - ORIGINAL: 33
 /// Mutantrace features (tail when looking south) that must appear behind the body parts
@@ -648,9 +675,9 @@
 #define NIPPLES_LAYER 26
 #define BANDAGE_LAYER 25
 //SKYRAT EDIT ADDITION END
-/// ID card layer (might be deprecated)
-#define ID_LAYER 24
 /// ID card layer
+#define ID_LAYER 24
+/// ID card layer (might be deprecated)
 #define ID_CARD_LAYER 23
 /// Layer for bodyparts that should appear above every other bodypart - Currently only used for hands
 #define BODYPARTS_HIGH_LAYER 22
@@ -696,6 +723,49 @@
 #define HALO_LAYER 2
 /// Fire layer when you're on fire
 #define FIRE_LAYER 1
+
+#define UPPER_BODY "upper body"
+#define LOWER_BODY "lower body"
+#define NO_MODIFY "do not modify"
+
+/// Used for human height overlay adjustments
+/// Certain standing overlay layers shouldn't have a filter applied and should instead just offset by a pixel y
+/// This list contains all the layers that must offset, with its value being whether it's a part of the upper half of the body (TRUE) or not (FALSE)
+GLOBAL_LIST_INIT(layers_to_offset, list(
+	// Weapons commonly cross the middle of the sprite so they get cut in half by the filter
+	"[HANDS_LAYER]" = LOWER_BODY,
+	// Very tall hats will get cut off by filter
+	"[HEAD_LAYER]" = UPPER_BODY,
+	// Hair will get cut off by filter
+	"[HAIR_LAYER]" = UPPER_BODY,
+	// Long belts (sabre sheathe) will get cut off by filter
+	"[BELT_LAYER]" = LOWER_BODY,
+	// Everything below looks fine with or without a filter, so we can skip it and just offset
+	// (In practice they'd be fine if they got a filter but we can optimize a bit by not.)
+	"[GLASSES_LAYER]" = UPPER_BODY,
+	"[ABOVE_BODY_FRONT_GLASSES_LAYER]" = UPPER_BODY, // currently unused
+	"[ABOVE_BODY_FRONT_HEAD_LAYER]" = UPPER_BODY, // only used for head stuff
+	"[GLOVES_LAYER]" = LOWER_BODY,
+	"[HALO_LAYER]" = UPPER_BODY, // above the head
+	"[HANDCUFF_LAYER]" = LOWER_BODY,
+	"[ID_CARD_LAYER]" = UPPER_BODY, // unused
+	"[ID_LAYER]" = UPPER_BODY,
+	"[FACEMASK_LAYER]" = UPPER_BODY,
+	// These two are cached, and have their appearance shared(?), so it's safer to just not touch it
+	"[MUTATIONS_LAYER]" = NO_MODIFY,
+	"[FRONT_MUTATIONS_LAYER]" = NO_MODIFY,
+	// These DO get a filter, I'm leaving them here as reference,
+	// to show how many filters are added at a glance
+	// BACK_LAYER (backpacks are big)
+	// BODYPARTS_HIGH_LAYER (arms)
+	// BODY_ADJ_LAYER (external organs like wings)
+	// BODY_BEHIND_LAYER (external organs like wings)
+	// BODY_FRONT_LAYER (external organs like wings)
+	// DAMAGE_LAYER (full body)
+	// FIRE_LAYER (full body)
+	// UNIFORM_LAYER (full body)
+	// WOUND_LAYER (full body)
+))
 
 //Bitflags for the layers an external organ can draw on (organs can be drawn on multiple layers)
 /// Draws organ on the BODY_FRONT_LAYER
@@ -762,33 +832,35 @@
 #define HEAL_STAM (1<<6)
 /// Restore all limbs to their initial state.
 #define HEAL_LIMBS (1<<7)
-/// Heals all organs from failing. If done as a part of an admin heal, will instead restore all organs to their initial state.
+/// Heals all organs from failing.
 #define HEAL_ORGANS (1<<8)
+/// A "super" heal organs, this refreshes all organs entirely, deleting old and replacing them with new.
+#define HEAL_REFRESH_ORGANS (1<<9)
 /// Removes all wounds.
-#define HEAL_WOUNDS (1<<9)
+#define HEAL_WOUNDS (1<<10)
 /// Removes all brain traumas, not including permanent ones.
-#define HEAL_TRAUMAS (1<<10)
+#define HEAL_TRAUMAS (1<<11)
 /// Removes all reagents present.
-#define HEAL_ALL_REAGENTS (1<<11)
+#define HEAL_ALL_REAGENTS (1<<12)
 /// Removes all non-positive diseases.
-#define HEAL_NEGATIVE_DISEASES (1<<12)
+#define HEAL_NEGATIVE_DISEASES (1<<13)
 /// Restores body temperature back to nominal.
-#define HEAL_TEMP (1<<13)
+#define HEAL_TEMP (1<<14)
 /// Restores blood levels to normal.
-#define HEAL_BLOOD (1<<14)
+#define HEAL_BLOOD (1<<15)
 /// Removes all non-positive mutations (neutral included).
-#define HEAL_NEGATIVE_MUTATIONS (1<<15)
+#define HEAL_NEGATIVE_MUTATIONS (1<<16)
 /// Removes status effects with this flag set that also have remove_on_fullheal = TRUE.
-#define HEAL_STATUS (1<<16)
+#define HEAL_STATUS (1<<17)
 /// Same as above, removes all CC related status effects with this flag set that also have remove_on_fullheal = TRUE.
-#define HEAL_CC_STATUS (1<<17)
+#define HEAL_CC_STATUS (1<<18)
 /// Deletes any restraints on the mob (handcuffs / legcuffs)
-#define HEAL_RESTRAINTS (1<<18)
+#define HEAL_RESTRAINTS (1<<19)
 
 /// Combination flag to only heal the main damage types.
 #define HEAL_DAMAGE (HEAL_BRUTE|HEAL_BURN|HEAL_TOX|HEAL_OXY|HEAL_CLONE|HEAL_STAM)
 /// Combination flag to only heal things messed up things about the mob's body itself.
-#define HEAL_BODY (HEAL_LIMBS|HEAL_ORGANS|HEAL_WOUNDS|HEAL_TRAUMAS|HEAL_BLOOD|HEAL_TEMP)
+#define HEAL_BODY (HEAL_LIMBS|HEAL_ORGANS|HEAL_REFRESH_ORGANS|HEAL_WOUNDS|HEAL_TRAUMAS|HEAL_BLOOD|HEAL_TEMP)
 /// Combination flag to heal negative things affecting the mob.
 #define HEAL_AFFLICTIONS (HEAL_NEGATIVE_DISEASES|HEAL_NEGATIVE_MUTATIONS|HEAL_ALL_REAGENTS|HEAL_STATUS|HEAL_CC_STATUS)
 
@@ -803,3 +875,8 @@
 
 /// In dynamic human icon gen we don't replace the held item.
 #define NO_REPLACE 0
+
+/// Flags for whether you can heal yourself or not or only
+#define HEALING_TOUCH_ANYONE "healing_touch_anyone"
+#define HEALING_TOUCH_NOT_SELF "healing_touch_not_self"
+#define HEALING_TOUCH_SELF_ONLY "healing_touch_self_only"
