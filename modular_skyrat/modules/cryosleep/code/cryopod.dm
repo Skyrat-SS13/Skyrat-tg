@@ -165,6 +165,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 
 	/// What was the ckey of the client that entered the cryopod?
 	var/stored_ckey = null
+	/// The name of the mob that entered the cryopod.
+	var/stored_name = null
+	/// The rank (job title) of the mob that entered the cryopod, if it was a human. "N/A" by default.
+	var/stored_rank = "N/A"
+
 
 /obj/machinery/cryopod/quiet
 	quiet = TRUE
@@ -210,6 +215,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 		if(mob_occupant && mob_occupant.stat != DEAD)
 			to_chat(occupant, span_notice("<b>You feel cool air surround you. You go numb as your senses turn inward.</b>"))
 			stored_ckey = mob_occupant.ckey
+			stored_name = mob_occupant.name
+
+			if(mob_occupant.mind)
+				stored_rank = mob_occupant.mind.assigned_role.title
 
 		COOLDOWN_START(src, despawn_world_time, time_till_despawn)
 
@@ -219,6 +228,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	name = initial(name)
 	tucked = FALSE
 	stored_ckey = null
+	stored_name = null
+	stored_rank = "N/A"
 
 /obj/machinery/cryopod/container_resist_act(mob/living/user)
 	visible_message(span_notice("[occupant] emerges from [src]!"),
@@ -305,55 +316,46 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 			return TRUE
 	return FALSE
 
-// This function can not be undone; do not call this unless you are sure
+/// This function can not be undone; do not call this unless you are sure.
+/// Handles despawning the player.
 /obj/machinery/cryopod/proc/despawn_occupant()
 	var/mob/living/mob_occupant = occupant
-	var/list/crew_member = list()
 
 	if(ishuman(occupant))
 		var/mob/living/carbon/human/human = occupant
 		human.save_individual_persistence()
 
-	crew_member["name"] = mob_occupant.real_name
+	SSjob.FreeRole(stored_rank)
 
 	if(mob_occupant.mind)
-		// Handle job slot/tater cleanup.
-		var/job = mob_occupant.mind.assigned_role.title
-		crew_member["job"] = job
-		SSjob.FreeRole(job)
+		// Handle tater cleanup.
 		if(LAZYLEN(mob_occupant.mind.objectives))
 			mob_occupant.mind.objectives.Cut()
 			mob_occupant.mind.special_role = null
 		if(mob_occupant.mind.holy_role == HOLY_ROLE_HIGHPRIEST)
 			reset_religion() // Reset religion to its default state so the new chaplain becomes high priest and can change the sect, armor, weapon type, etc
-	else
-		crew_member["job"] = "N/A"
 
 	// Delete them from datacore and ghost records.
 	var/announce_rank = null
 
-	for(var/datum/data/record/record as anything in GLOB.ghost_records)
-		if(record.fields["name"] == mob_occupant.real_name)
-			announce_rank = record.fields["rank"]
-			GLOB.ghost_records.Remove(record)
-			qdel(record)
+	for(var/list/record in GLOB.ghost_records)
+		if(record["name"] == stored_name)
+			announce_rank = record["rank"]
+			GLOB.ghost_records.Remove(list(record))
+			break
 
-	for(var/datum/data/record/medical_record as anything in GLOB.data_core.medical)
-		if(medical_record.fields["name"] == mob_occupant.real_name)
-			qdel(medical_record)
-	for(var/datum/data/record/security_record as anything in GLOB.data_core.security)
-		if(security_record.fields["name"] == mob_occupant.real_name)
-			qdel(security_record)
-	for(var/datum/data/record/general_record as anything in GLOB.data_core.general)
-		if(general_record.fields["name"] == mob_occupant.real_name)
-			announce_rank = general_record.fields["rank"]
-			qdel(general_record)
+	if(!announce_rank) // No need to loop over all of those if we already found it beforehand.
+		for(var/datum/record/crew/possible_target_record as anything in GLOB.manifest.general)
+			if(possible_target_record.name == stored_name && (stored_rank == "N/A" || possible_target_record.trim == stored_rank))
+				announce_rank = possible_target_record.rank
+				qdel(possible_target_record)
+				break
 
 	var/obj/machinery/computer/cryopod/control_computer = control_computer_weakref?.resolve()
 	if(!control_computer)
 		control_computer_weakref = null
 	else
-		control_computer.frozen_crew += list(crew_member)
+		control_computer.frozen_crew += list(list("name" = stored_name, "job" = stored_rank))
 
 	// Make an announcement and log the person entering storage. If set to quiet, does not make an announcement.
 	if(!quiet)
@@ -540,15 +542,14 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cryopod/prison, 18)
 	/// For figuring out where the local cryopod computer is. Must be set for cryo computer announcements.
 	var/area/computer_area
 
-/obj/effect/mob_spawn/ghost_role/special(mob/living/spawned_mob, mob/mob_possessor)
-	. = ..()
+/obj/effect/mob_spawn/ghost_role/create(mob/mob_possessor, newname)
+	var/mob/living/spawned_mob = ..()
 	var/obj/machinery/computer/cryopod/control_computer = find_control_computer()
-	var/datum/data/record/record = new
-	record.fields["name"] = spawned_mob.real_name
-	record.fields["rank"] = name
-	GLOB.ghost_records.Add(record)
+	GLOB.ghost_records.Add(list(list("name" = spawned_mob.real_name, "rank" = name)))
 	if(control_computer)
 		control_computer.announce("CRYO_JOIN", spawned_mob.real_name, name)
+
+	return spawned_mob
 
 /obj/effect/mob_spawn/ghost_role/proc/find_control_computer()
 	if(!computer_area)
