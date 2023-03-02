@@ -519,3 +519,11 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'sound/effects/glassbash.ogg'
+
+/datum/emote/living/boowomp
+	key = "boowomp"
+	key_third_person = "makes a sad sound."
+	message = "makes a sad sound."
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/boowomp.ogg'
