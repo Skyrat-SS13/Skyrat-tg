@@ -32,6 +32,7 @@
 #define ROLE_NINJA "Space Ninja"
 #define ROLE_OBSESSED "Obsessed"
 #define ROLE_OPERATIVE_MIDROUND "Operative (Midround)"
+#define ROLE_PARADOX_CLONE "Paradox Clone"
 #define ROLE_REV_HEAD "Head Revolutionary"
 #define ROLE_SENTIENT_DISEASE "Sentient Disease"
 #define ROLE_SLEEPER_AGENT "Syndicate Sleeper Agent"
@@ -63,6 +64,7 @@
 #define ROLE_HIVE "Hivemind Host" //Role removed, left here for safety.
 #define ROLE_SENTIENCE "Sentience Potion Spawn"
 #define ROLE_PYROCLASTIC_SLIME "Pyroclastic Anomaly Slime"
+#define ROLE_ANOMALY_GHOST "Ectoplasmic Anomaly Ghost"
 #define ROLE_MIND_TRANSFER "Mind Transfer Potion"
 #define ROLE_POSIBRAIN "Posibrain"
 #define ROLE_DRONE "Drone"
@@ -93,7 +95,6 @@
 #define ROLE_SPACE_SYNDICATE "Space Syndicate"
 #define ROLE_SYNDICATE_CYBERSUN "Cybersun Space Syndicate" //Ghost role syndi from Forgottenship ruin
 #define ROLE_SYNDICATE_CYBERSUN_CAPTAIN "Cybersun Space Syndicate Captain" //Forgottenship captain syndie
-#define ROLE_HEADSLUG_CHANGELING "Headslug Changeling"
 #define ROLE_SPACE_PIRATE "Space Pirate"
 #define ROLE_ANCIENT_CREW "Ancient Crew"
 #define ROLE_SPACE_DOCTOR "Space Doctor"
@@ -138,6 +139,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_NINJA = 0,
 	ROLE_OBSESSED = 0,
 	ROLE_OPERATIVE_MIDROUND = 14,
+	ROLE_PARADOX_CLONE = 0,
 	ROLE_REVENANT = 0,
 	ROLE_SENTIENT_DISEASE = 0,
 	ROLE_SLEEPER_AGENT = 0,

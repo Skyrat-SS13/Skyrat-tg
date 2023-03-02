@@ -126,13 +126,13 @@ GLOBAL_LIST_EMPTY(antagonists)
 
 //button for antags to review their descriptions/info
 /datum/action/antag_info
-	name = "Open Antag Information:"
+	name = "Open Special Role Information:"
 	button_icon_state = "round_end"
 	show_to_observers = FALSE
 
 /datum/action/antag_info/New(Target)
 	. = ..()
-	name += " [target]"
+	name = "Open [target] Information:"
 
 /datum/action/antag_info/Trigger(trigger_flags)
 	. = ..()
@@ -230,8 +230,13 @@ GLOBAL_LIST_EMPTY(antagonists)
 	if(!silent)
 		greet()
 		if(ui_name)
-			to_chat(owner.current, span_boldnotice("For more info, read the panel. you can always come back to it using the button in the top left."))
+			to_chat(owner.current, span_boldnotice("For more info, read the panel. \
+				You can always come back to it using the button in the top left."))
 			info_button.Trigger()
+		var/type_policy = get_policy("[type]") // path to text
+		if(type_policy)
+			to_chat(owner.current, type_policy)
+
 	apply_innate_effects()
 	give_antag_moodies()
 	RegisterSignal(owner, COMSIG_PRE_MINDSHIELD_IMPLANT, PROC_REF(pre_mindshield))
