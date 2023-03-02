@@ -438,7 +438,7 @@
 /datum/action/cooldown/borer/fear_human/proc/incite_fear(mob/living/carbon/human/singular_fear)
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	to_chat(singular_fear, span_warning("Something glares menacingly at you!"))
-	singular_fear.Paralyze(7 SECONDS)
+	singular_fear.Paralyze(8 SECONDS)
 	singular_fear.adjustStaminaLoss(50)
 	singular_fear.set_confusion_if_lower(9 SECONDS)
 	var/turf/human_turf = get_turf(singular_fear)
