@@ -8,8 +8,8 @@
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
 
-/datum/sprite_accessory/snouts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if((H.wear_mask && (H.wear_mask.flags_inv & HIDESNOUT)) || (H.head && (H.head.flags_inv & HIDESNOUT)) || !HD)
+/datum/sprite_accessory/snouts/is_hidden(mob/living/carbon/human/H)
+	if((H.wear_mask && (H.wear_mask.flags_inv & HIDESNOUT)) || (H.head && (H.head.flags_inv & HIDESNOUT)))
 		return TRUE
 	return FALSE
 

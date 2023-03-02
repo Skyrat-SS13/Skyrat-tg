@@ -6,8 +6,8 @@
 	default_color = "#555555"
 	genetic = TRUE
 
-/datum/sprite_accessory/horns/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/bodypart)
-	if(!wearer.head || !bodypart)
+/datum/sprite_accessory/horns/is_hidden(mob/living/carbon/human/wearer)
+	if(!wearer.head)
 		return FALSE
 //	Can hide if wearing hat
 	if(key in wearer.try_hide_mutant_parts)

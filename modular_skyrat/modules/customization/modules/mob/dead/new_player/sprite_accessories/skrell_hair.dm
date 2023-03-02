@@ -6,7 +6,7 @@
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
 
-/datum/sprite_accessory/skrell_hair/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
+/datum/sprite_accessory/skrell_hair/is_hidden(mob/living/carbon/human/H)
 	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)))
 		return TRUE
 	return FALSE

@@ -5,11 +5,10 @@
 	relevent_layers = list(BODY_ADJ_LAYER)
 	genetic = TRUE
 
-/datum/sprite_accessory/frills/is_hidden(mob/living/carbon/human/human, obj/item/bodypart/bodypart)
+/datum/sprite_accessory/frills/is_hidden(mob/living/carbon/human/human)
 	if(
 		(human.head && (human.head.flags_inv & HIDEEARS)) \
 		|| (key in human.try_hide_mutant_parts) \
-		|| !bodypart \
 	)
 		return TRUE
 	return FALSE

@@ -31,7 +31,7 @@
 	/// Must be a single specific tauric suit variation bitflag. Don't do FLAG_1|FLAG_2
 	var/alt_taur_mode = NONE
 
-/datum/sprite_accessory/taur/is_hidden(mob/living/carbon/human/target, obj/item/bodypart/limb)
+/datum/sprite_accessory/taur/is_hidden(mob/living/carbon/human/target)
 	var/obj/item/clothing/suit/worn_suit = target.wear_suit
 	if(istype(worn_suit) && (worn_suit.flags_inv & HIDEJUMPSUIT) && !worn_suit.gets_cropped_on_taurs)
 		return TRUE

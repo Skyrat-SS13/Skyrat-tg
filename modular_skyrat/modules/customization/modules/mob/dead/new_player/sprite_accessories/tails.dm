@@ -10,7 +10,7 @@
 	/// Can we use this tail for the fluffy tail turf emote?
 	var/fluffy = FALSE
 
-/datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/bodypart)
+/datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/wearer)
 	var/list/used_in_turf = list("tail")
 	if(wearer.owned_turf?.name in used_in_turf)
 	// Emote exception
@@ -21,10 +21,10 @@
 	if(key in wearer.try_hide_mutant_parts)
 		return TRUE
 	if(wearer.wear_suit)
-	//	Exception for MODs
+		// Exception for MODs
 		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
 			return FALSE
-	//	Hide accessory if flagged to do so
+		// Hide accessory if flagged to do so
 		else if(wearer.wear_suit.flags_inv & HIDETAIL)
 			return TRUE
 
@@ -50,8 +50,13 @@
 		else if(wearer.wear_suit.flags_inv & HIDETAIL)
 			return FALSE
 
+	return TRUE
+
 /datum/bodypart_overlay/mutant/tail/cat/get_feature_key_for_overlay()
 	return feature_key + "_cat"
+
+/datum/bodypart_overlay/mutant/tail/lizard/get_feature_key_for_overlay()
+	return feature_key + "_lizard"
 
 /datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/wearer)
 	return icon_state
@@ -70,6 +75,9 @@
 /datum/sprite_accessory/tails/human
 	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTH, SPECIES_FELINE, SPECIES_MAMMAL, SPECIES_GHOUL)
 	organ_type = /obj/item/organ/external/tail/cat
+
+/datum/sprite_accessory/tails/human/cat
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/tails/monkey/default
 	name = "Monkey"

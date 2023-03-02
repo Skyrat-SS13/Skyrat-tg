@@ -147,8 +147,8 @@
 	relevent_layers = list(BODY_ADJ_LAYER)
 	genetic = FALSE
 
-/datum/sprite_accessory/antenna/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/bodypart)
-	if(!wearer.head || !bodypart)
+/datum/sprite_accessory/antenna/is_hidden(mob/living/carbon/human/wearer)
+	if(!wearer.head)
 		return FALSE
 	if(key in wearer.try_hide_mutant_parts)
 		return TRUE

@@ -27,7 +27,11 @@
 //This translates the float size into a sprite string
 /obj/item/organ/external/genital/proc/update_sprite_suffix()
 	sprite_suffix = "[get_sprite_size_string()]"
-	// sprite_
+
+	var/datum/bodypart_overlay/mutant/genital/our_overlay = bodypart_overlay
+
+	our_overlay.sprite_suffix = sprite_suffix
+
 
 /obj/item/organ/external/genital/proc/get_description_string(datum/sprite_accessory/genital/gas)
 	return "You see genitals"
@@ -91,14 +95,39 @@
 /datum/bodypart_overlay/mutant/genital
 	layers = EXTERNAL_FRONT
 	color_source = ORGAN_COLOR_OVERRIDE
+	/// The suffix appended to the feature_key for the overlays.
+	var/sprite_suffix
 
 /datum/bodypart_overlay/mutant/genital/override_color(rgb_value)
-	return rgb_value
+	return draw_color
 
-/datum/bodypart_overlay/mutant/genital/get_feature_key_for_overlay()
-	var/datum/sprite_accessory/genital/our_sprite_datum = sprite_datum
+/datum/bodypart_overlay/mutant/genital/get_base_icon_state()
+	return sprite_suffix
 
-	return feature_key + our_sprite_datum.sprite_suffix
+
+/datum/bodypart_overlay/mutant/genital/get_color_layer_names(icon_state_to_lookup)
+	if(length(sprite_datum.color_layer_names))
+		return sprite_datum.color_layer_names
+
+	sprite_datum.color_layer_names = list()
+	if (!GLOB.cached_mutant_icon_files[sprite_datum.icon])
+		GLOB.cached_mutant_icon_files[sprite_datum.icon] = icon_states(new /icon(sprite_datum.icon))
+
+	var/list/cached_mutant_icon_states = GLOB.cached_mutant_icon_files[sprite_datum.icon]
+
+	for (var/layer in all_layers)
+		if(!(layer & layers))
+			continue
+
+		var/layertext = mutant_bodyparts_layertext(bitflag_to_layer(layer))
+		if ("m_[feature_key]_[get_base_icon_state()]_[layertext]_primary" in cached_mutant_icon_states)
+			sprite_datum.color_layer_names["1"] = "primary"
+		if ("m_[feature_key]_[get_base_icon_state()]_[layertext]_secondary" in cached_mutant_icon_states)
+			sprite_datum.color_layer_names["2"] = "secondary"
+		if ("m_[feature_key]_[get_base_icon_state()]_[layertext]_tertiary" in cached_mutant_icon_states)
+			sprite_datum.color_layer_names["3"] = "tertiary"
+
+	return sprite_datum.color_layer_names
 
 
 /obj/item/organ/external/genital/penis
@@ -221,6 +250,7 @@
 	bodypart_overlay = /datum/bodypart_overlay/mutant/genital/testicles
 
 /datum/bodypart_overlay/mutant/genital/testicles
+	feature_key = ORGAN_SLOT_TESTICLES
 	layers = EXTERNAL_FRONT | EXTERNAL_BEHIND
 
 /obj/item/organ/external/genital/testicles/update_genital_icon_state()
@@ -285,6 +315,7 @@
 	bodypart_overlay = /datum/bodypart_overlay/mutant/genital/vagina
 
 /datum/bodypart_overlay/mutant/genital/vagina
+	feature_key = ORGAN_SLOT_VAGINA
 	layers = EXTERNAL_FRONT
 
 /obj/item/organ/external/genital/vagina/get_description_string(datum/sprite_accessory/genital/gas)
@@ -334,6 +365,7 @@
 	bodypart_overlay = /datum/bodypart_overlay/mutant/genital/womb
 
 /datum/bodypart_overlay/mutant/genital/womb
+	feature_key = ORGAN_SLOT_WOMB
 	layers = NONE
 
 /datum/bodypart_overlay/mutant/genital/womb/get_global_feature_list()
@@ -354,6 +386,7 @@
 	bodypart_overlay = /datum/bodypart_overlay/mutant/genital/anus
 
 /datum/bodypart_overlay/mutant/genital/anus
+	feature_key = ORGAN_SLOT_ANUS
 	layers = NONE
 
 /obj/item/organ/external/genital/anus/get_description_string(datum/sprite_accessory/genital/gas)
@@ -384,6 +417,7 @@
 	bodypart_overlay = /datum/bodypart_overlay/mutant/genital/breasts
 
 /datum/bodypart_overlay/mutant/genital/breasts
+	feature_key = ORGAN_SLOT_BREASTS
 	layers = EXTERNAL_FRONT | EXTERNAL_BEHIND
 
 /obj/item/organ/external/genital/breasts/get_description_string(datum/sprite_accessory/genital/gas)
