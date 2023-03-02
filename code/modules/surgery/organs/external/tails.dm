@@ -93,7 +93,7 @@
 ///Cat tail bodypart overlay
 /datum/bodypart_overlay/mutant/tail/cat
 	feature_key = "tail" // SKYRAT EDIT - Customization - ORIGINAL: feature_key = "tail_cat"
-	color_source = ORGAN_COLOR_HAIR
+	// color_source = ORGAN_COLOR_HAIR // SKYRAT EDIT REMOVAL
 
 /datum/bodypart_overlay/mutant/tail/cat/get_global_feature_list()
 	return GLOB.sprite_accessories["tail"] // SKYRAT EDIT - Customization - ORIGINAL: return GLOB.tails_list_human
