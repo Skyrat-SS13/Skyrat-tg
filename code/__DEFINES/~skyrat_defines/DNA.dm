@@ -42,7 +42,14 @@
 #define HUSK_COLOR_LIST list(list(0.64, 0.64, 0.64, 0), list(0.64, 0.64, 0.64, 0), list(0.64, 0.64, 0.64, 0), list(0, 0, 0, 1))
 
 /// Organ slot external
+#define ORGAN_SLOT_EXTERNAL_CAP "cap"
+#define ORGAN_SLOT_EXTERNAL_FLUFF "fluff"
+#define ORGAN_SLOT_EXTERNAL_MOTH_MARKINGS "moth_markings"
+#define ORGAN_SLOT_EXTERNAL_SKRELL_HAIR "skrell_hair"
+#define ORGAN_SLOT_EXTERNAL_SYNTH_ANTENNA "synth_antenna"
 #define ORGAN_SLOT_EXTERNAL_TAUR "taur"
+#define ORGAN_SLOT_EXTERNAL_XENODORSAL "xenodorsal"
+#define ORGAN_SLOT_EXTERNAL_XENOHEAD "xenohead"
 
 //Defines for an accessory to be randomed
 #define ACC_RANDOM		"random"

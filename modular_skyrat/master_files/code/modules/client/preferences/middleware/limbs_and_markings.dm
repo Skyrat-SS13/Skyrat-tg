@@ -2,7 +2,7 @@
 #define LIMBS_DEFAULT_NAME "None"
 
 /datum/preference_middleware/limbs_and_markings/post_set_preference(mob/user, preference, value)
-	preferences.character_preview_view.update_body()
+	// preferences.character_preview_view.update_body()
 	. = ..()
 
 /datum/preference_middleware/limbs_and_markings

@@ -497,26 +497,46 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	T.wagging = FALSE
 	H.update_body()
 
-/datum/species/regenerate_organs(mob/living/carbon/C, datum/species/old_species, replace_current = TRUE, list/excluded_zones, visual_only = FALSE)
+/datum/species/regenerate_organs(mob/living/carbon/target, datum/species/old_species, replace_current = TRUE, list/excluded_zones, visual_only = FALSE)
 	. = ..()
-	var/robot_organs = (ROBOTIC_DNA_ORGANS in C.dna.species.species_traits)
-	for(var/key in C.dna.mutant_bodyparts)
-		if(!islist(C.dna.mutant_bodyparts[key]) || !(C.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME] in GLOB.sprite_accessories[key]))
+
+	var/robot_organs = (ROBOTIC_DNA_ORGANS in target.dna.species.species_traits)
+
+	for(var/key in target.dna.mutant_bodyparts)
+		if(!islist(target.dna.mutant_bodyparts[key]) || !(target.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME] in GLOB.sprite_accessories[key]))
 			continue
-		var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][C.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME]]
-		if(SA?.factual && SA.organ_type)
-			var/obj/item/organ/path = new SA.organ_type
-			path.sprite_accessory_flags = SA.flags_for_organ
-			path.relevant_layers = SA.relevent_layers
-			if(robot_organs)
-				path.status = ORGAN_ROBOTIC
-				path.organ_flags |= ORGAN_SYNTHETIC
-			var/obj/item/organ/oldorgan = C.getorganslot(path.slot)
-			if(oldorgan)
-				oldorgan.Remove(C,TRUE)
-				QDEL_NULL(oldorgan)
-			path.build_from_dna(C.dna, key)
-			path.Insert(C, 0, FALSE)
+
+		var/datum/sprite_accessory/mutant_accessory = GLOB.sprite_accessories[key][target.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME]]
+
+		if(mutant_accessory?.factual && mutant_accessory.organ_type)
+			var/obj/item/organ/current_organ = target.getorgan(mutant_accessory.organ_type)
+
+			if(!current_organ || replace_current)
+				var/obj/item/organ/replacement = SSwardrobe.provide_type(mutant_accessory.organ_type)
+				replacement.sprite_accessory_flags = mutant_accessory.flags_for_organ
+				replacement.relevant_layers = mutant_accessory.relevent_layers
+
+				if(robot_organs)
+					replacement.status = ORGAN_ROBOTIC
+					replacement.organ_flags |= ORGAN_SYNTHETIC
+
+				// If there's an existing mutant organ, we're technically replacing it.
+				// Let's abuse the snowflake proc that skillchips added. Basically retains
+				// feature parity with every other organ too.
+				if(current_organ)
+					current_organ.before_organ_replacement(replacement)
+
+				replacement.build_from_dna(target.dna, key)
+				// organ.Insert will qdel any current organs in that slot, so we don't need to.
+				replacement.Insert(target, special = TRUE, drop_if_replaced = FALSE)
+
+			// var/obj/item/organ/path = new SA.organ_type
+			// var/obj/item/organ/oldorgan = C.getorganslot(path.slot)
+			// if(oldorgan)
+			// 	oldorgan.Remove(C,TRUE)
+			// 	QDEL_NULL(oldorgan)
+			// path.build_from_dna(C.dna, key)
+			// path.Insert(C, 0, FALSE)
 
 
 /datum/species/proc/spec_revival(mob/living/carbon/human/H)

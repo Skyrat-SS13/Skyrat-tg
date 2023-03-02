@@ -8,27 +8,33 @@
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
 
-/datum/sprite_accessory/snouts/is_hidden(mob/living/carbon/human/H)
-	if((H.wear_mask && (H.wear_mask.flags_inv & HIDESNOUT)) || (H.head && (H.head.flags_inv & HIDESNOUT)))
+/datum/sprite_accessory/snouts/is_hidden(mob/living/carbon/human/human)
+	if((human.wear_mask?.flags_inv & HIDESNOUT) || (human.head?.flags_inv & HIDESNOUT))
 		return TRUE
+
 	return FALSE
 
 /obj/item/organ/external/snout
 	mutantpart_key = "snout"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	external_bodytypes = NONE // We don't actually want this to have BODYTYPE_SNOUTED by default, since some of them don't apply that.
+	preference = "feature_snout"
 
 /datum/bodypart_overlay/mutant/snout
 	color_source = ORGAN_COLOR_OVERRIDE
+
+/datum/bodypart_overlay/mutant/snout/override_color(rgb_value)
+	return draw_color
+
+/datum/bodypart_overlay/mutant/snout/can_draw_on_bodypart(mob/living/carbon/human/human)
+	return !sprite_datum.is_hidden(human)
+
 
 /obj/item/organ/external/snout/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
 	if(sprite_accessory_flags & SPRITE_ACCESSORY_USE_MUZZLED_SPRITE)
 		external_bodytypes |= BODYTYPE_SNOUTED
 
 	return ..()
-
-/datum/bodypart_overlay/mutant/snout/override_color(rgb_value)
-	return draw_color
 
 /datum/sprite_accessory/snouts/none
 	name = "None"

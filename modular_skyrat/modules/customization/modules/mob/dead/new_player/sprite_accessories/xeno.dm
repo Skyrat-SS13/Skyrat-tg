@@ -5,6 +5,7 @@
 	color_src = USE_ONE_COLOR
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
+	organ_type = /obj/item/organ/external/xenodorsal
 
 /datum/sprite_accessory/xenodorsal/none
 	name = "None"
@@ -47,6 +48,7 @@
 	key = "xenohead"
 	relevent_layers = list(BODY_ADJ_LAYER)
 	genetic = TRUE
+	organ_type = /obj/item/organ/external/xenohead
 
 /datum/sprite_accessory/xenohead/none
 	name = "None"

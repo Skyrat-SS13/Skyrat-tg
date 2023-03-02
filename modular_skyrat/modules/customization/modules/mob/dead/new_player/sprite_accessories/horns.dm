@@ -5,13 +5,16 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/horns.dmi'
 	default_color = "#555555"
 	genetic = TRUE
+	organ_type = /obj/item/organ/external/horns
 
 /datum/sprite_accessory/horns/is_hidden(mob/living/carbon/human/wearer)
-	if(!wearer.head)
-		return FALSE
-//	Can hide if wearing hat
+	if((wearer.head?.flags_inv & HIDEHAIR) || (wearer.wear_mask?.flags_inv & HIDEHAIR))
+		return TRUE
+	// Can hide if wearing hat
 	if(key in wearer.try_hide_mutant_parts)
 		return TRUE
+
+	return FALSE
 
 
 /datum/sprite_accessory/horns/angler

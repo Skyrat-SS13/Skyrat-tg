@@ -10,6 +10,36 @@
 /datum/bodypart_overlay/mutant/tail/override_color(rgb_value)
 	return draw_color
 
+/datum/bodypart_overlay/mutant/tail/can_draw_on_bodypart(mob/living/carbon/human/wearer)
+	var/list/used_in_turf = list("tail")
+	// Emote exception
+	if(wearer.owned_turf?.name in used_in_turf)
+		return FALSE
+
+	if(!wearer.w_uniform && !wearer.wear_suit)
+		return ..()
+
+	// Can hide if wearing uniform
+	if(feature_key in wearer.try_hide_mutant_parts)
+		return FALSE
+
+	if(wearer.wear_suit)
+		// Exception for MODs
+		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
+			return FALSE
+
+		// Hide accessory if flagged to do so
+		else if(wearer.wear_suit.flags_inv & HIDETAIL)
+			return FALSE
+
+	return TRUE
+
+/datum/bodypart_overlay/mutant/tail/cat/get_feature_key_for_overlay()
+	return feature_key + "_cat"
+
+/datum/bodypart_overlay/mutant/tail/lizard/get_feature_key_for_overlay()
+	return feature_key + "_lizard"
+
 /obj/item/organ/external/tail/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
 	if(sprite_accessory_flags & SPRITE_ACCESSORY_WAG_ABLE)
 		wag_flags |= WAG_ABLE
