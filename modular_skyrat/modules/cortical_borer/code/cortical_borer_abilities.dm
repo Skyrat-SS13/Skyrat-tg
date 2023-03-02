@@ -575,7 +575,7 @@
 	StartCooldown()
 
 /// Checks if the target's head is bio protected, returns true if this is the case
-/datum/action/cooldown/borer/choosing_host/proc/check_for_bio_protection(target)
+/datum/action/cooldown/borer/choosing_host/proc/check_for_bio_protection(mob/living/carbon/human/target)
 	if(isobj(target.head))
 		if(target.head.get_armor_rating(BIO) == 100)
 			return TRUE
