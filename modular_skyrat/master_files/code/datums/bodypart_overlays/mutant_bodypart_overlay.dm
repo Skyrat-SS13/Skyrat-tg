@@ -59,6 +59,10 @@
 	return feature_key
 
 
+/datum/bodypart_overlay/mutant/can_draw_on_bodypart(mob/living/carbon/human/human)
+	return !sprite_datum.is_hidden(human)
+
+
 /// Get the images we need to draw on the person. Called from get_overlay() which is called from _bodyparts.dm.
 /// `limb` can be null.
 /// This is different from the base procs as it allows for multiple overlays to
@@ -73,17 +77,25 @@
 
 	switch(sprite_datum.color_src)
 		if(USE_MATRIXED_COLORS)
-			var/static/list/color_layer_names = list("1" = "primary", "2" = "secondary", "3" = "tertiary")
+			var/list/color_layer_names = get_color_layer_names(build_icon_state(gender, image_layer))
 
 			for (var/color_index in color_layer_names)
 
-				returned_images += get_singular_image(build_icon_state(gender, image_layer, sprite_datum.color_layer_names[color_index]))
+				returned_images += get_singular_image(build_icon_state(gender, image_layer, color_layer_names[color_index]), image_layer)
 
 		else
 			returned_images = list(get_singular_image(build_icon_state(gender, image_layer), image_layer))
 
 
 	return returned_images
+
+
+/**
+ * Returns the color_layer_names of the sprite_datum associated with our datum.
+ * Mainly here so that it can be overriden elsewhere to have other effects.
+ */
+/datum/bodypart_overlay/mutant/proc/get_color_layer_names(icon_state_to_lookup)
+	return sprite_datum.color_layer_names
 
 
 /// Colors the given overlays list. Limb can be null.
@@ -107,11 +119,11 @@
 	for(var/image/overlay in overlays)
 		switch(sprite_datum.color_src)
 			if(USE_ONE_COLOR)
-				overlay.color = draw_color
+				overlay.color = islist(draw_color) ? draw_color[i] : draw_color
 				overlay.alpha = specific_alpha
 
 			if(USE_MATRIXED_COLORS)
-				overlay.color = islist(draw_color) ? draw_color[num2text(i)] : draw_color
+				overlay.color = islist(draw_color) ? draw_color[i] : draw_color
 				overlay.alpha = specific_alpha
 
 			else
