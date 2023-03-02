@@ -549,7 +549,7 @@
 /datum/action/cooldown/borer/choosing_host/proc/enter_host(mob/living/carbon/human/singular_host)
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
 	if(check_for_bio_protection(singular_host))
-		owner.balloon_alert(owner, "target head too protected")
+		owner.balloon_alert(owner, "target head too protected!")
 		return
 	if(singular_host.has_borer())
 		owner.balloon_alert(owner, "target already occupied")
