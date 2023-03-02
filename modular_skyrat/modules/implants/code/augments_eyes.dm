@@ -24,5 +24,6 @@
 	desc = "A pair of eyes with built-in nightvision optics, with the additional bonus of being rad as hell."
 	eye_color_left = "#0ffc03"
 	eye_color_right = "#ff2700"
+	color_cutoffs = list(10, 30, 10)
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
