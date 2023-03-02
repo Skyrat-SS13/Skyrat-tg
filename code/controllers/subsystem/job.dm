@@ -558,8 +558,9 @@ SUBSYSTEM_DEF(job)
 			to_chat(player_client, span_infoplain("<b>You are playing a job that is important for Game Progression. \
 				If you have to disconnect, please notify the admins via adminhelp.</b>"))
 		if(CONFIG_GET(number/minimal_access_threshold))
-<<<<<<< HEAD
-			to_chat(player_client, span_notice("<B>As this station was initially staffed with a [CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] have been added to your ID card.</B>"))
+			to_chat(player_client, span_boldnotice("As this station was initially staffed with a \
+				[CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] \
+				have been added to your ID card."))
 		//SKYRAT EDIT START - ALTERNATIVE_JOB_TITLES
 		if(chosen_title != default_title)
 			to_chat(player_client, span_infoplain(span_warning("Remember that alternate titles are purely for flavor and roleplay.")))
@@ -568,11 +569,9 @@ SUBSYSTEM_DEF(job)
 		var/related_policy = get_policy(job.title)
 		if(related_policy)
 			to_chat(player_client, related_policy)
-=======
 			to_chat(player_client, span_boldnotice("As this station was initially staffed with a \
 				[CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] \
 				have been added to your ID card."))
->>>>>>> 10f6825ae30 (Updates policy to better warn players for any existing antagonist policy (#73408))
 
 	if(ishuman(equipping))
 		var/mob/living/carbon/human/wageslave = equipping
