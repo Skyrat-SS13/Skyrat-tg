@@ -87,7 +87,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 			if ("m_[key]_[icon_state]_[layertext]_tertiary" in GLOB.cached_mutant_icon_files[icon])
 				color_layer_names["3"] = "tertiary"
 
-/datum/sprite_accessory/proc/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/BP)
+/datum/sprite_accessory/proc/is_hidden(mob/living/carbon/human/owner)
 	return FALSE
 
 /datum/sprite_accessory/proc/get_special_render_state(mob/living/carbon/human/H)
@@ -148,7 +148,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER)
 	genetic = TRUE
 
-/datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/bodypart)
+/datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/wearer)
 	var/obj/item/organ/external/tail/tail = wearer.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(!wearer.w_uniform && !wearer.wear_suit)
 		return FALSE
