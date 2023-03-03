@@ -37,14 +37,17 @@
 /datum/bodypart_overlay/mutant/wings/can_draw_on_bodypart(mob/living/carbon/human/wearer)
 	if(!wearer.w_uniform && !wearer.wear_suit)
 		return ..()
+
 	// Can hide if wearing uniform
 	if("wings" in wearer.try_hide_mutant_parts)
 		return FALSE
+
 	if(wearer.wear_suit)
-	// Exception for MODs
+		// Exception for MODs
 		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
-			return FALSE
-	// Hide accessory if flagged to do so, taking species exceptions in account
+			return TRUE
+
+		// Hide accessory if flagged to do so, taking species exceptions in account
 		else if((wearer.wear_suit.flags_inv & HIDEJUMPSUIT) \
 				&& (!wearer.wear_suit.species_exception \
 				|| !is_type_in_list(src, wearer.wear_suit.species_exception)) \

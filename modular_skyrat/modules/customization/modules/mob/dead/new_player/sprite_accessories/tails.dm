@@ -20,6 +20,7 @@
 		return FALSE
 	if(key in wearer.try_hide_mutant_parts)
 		return TRUE
+
 	if(wearer.wear_suit)
 		// Exception for MODs
 		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
