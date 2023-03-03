@@ -1,32 +1,43 @@
 /datum/sprite_accessory/ears
 	key = "ears"
 	generic = "Ears"
-	organ_type = /obj/item/organ/internal/ears/mutant
+	organ_type = /obj/item/organ/external/ears // SET BACK TO THIS AS SOON AS WE GET EARS AS EXTERNAL ORGANS: organ_type = /obj/item/organ/internal/ears/mutant
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	color_src = USE_MATRIXED_COLORS
 	genetic = TRUE
 
 /datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/wearer)
 	if(!wearer.head)
 		return FALSE
-//	Can hide if wearing hat
+
+	// Can hide if wearing hat
 	if(key in wearer.try_hide_mutant_parts)
 		return TRUE
-//	Exception for MODs
+
+	// Exception for MODs
 	if(istype(wearer.head, /obj/item/clothing/head/mod))
 		return FALSE
-//	Hide accessory if flagged to do so
+
+	// Hide accessory if flagged to do so
 	if((wearer.head?.flags_inv & HIDEHAIR || wearer.wear_mask?.flags_inv & HIDEHAIR) \
-	//	This line basically checks if we FORCE accessory-ears to show, for items with earholes like Balaclavas and Luchador masks
+		// This line basically checks if we FORCE accessory-ears to show, for items with earholes like Balaclavas and Luchador masks
 		&& ((wearer.head && !(wearer.head.flags_inv & SHOWSPRITEEARS)) || (wearer.wear_mask && !(wearer.wear_mask?.flags_inv & SHOWSPRITEEARS))))
 		return TRUE
+
+	return FALSE
 
 /datum/sprite_accessory/ears/cat
 	recommended_species = list(SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTH, SPECIES_FELINE, SPECIES_HUMANOID, SPECIES_GHOUL)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/ears/fox
+	color_src = USE_ONE_COLOR
+
 
 /datum/sprite_accessory/ears/mutant
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/ears.dmi'
-	organ_type = /obj/item/organ/internal/ears/mutant
+	organ_type = /obj/item/organ/external/ears // SET BACK TO THIS AS SOON AS WE GET EARS AS EXTERNAL ORGANS: organ_type = /obj/item/organ/internal/ears/mutant
 	color_src = USE_MATRIXED_COLORS
 	recommended_species = list(SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTH, SPECIES_FELINE, SPECIES_HUMANOID, SPECIES_GHOUL)
 	uses_emissives = TRUE
