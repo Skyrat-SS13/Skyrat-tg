@@ -69,7 +69,7 @@
 
 	var/datum/bodypart_overlay/mutant/genital/our_overlay = bodypart_overlay
 
-	our_overlay.color_source = uses_skin_color ? ORGAN_COLOR_INHERIT : USE_MATRIXED_COLORS
+	our_overlay.color_source = uses_skin_color ? ORGAN_COLOR_INHERIT : ORGAN_COLOR_OVERRIDE
 
 /// for specific build_from_dna behavior that also checks the genital accessory.
 /obj/item/organ/external/genital/proc/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
