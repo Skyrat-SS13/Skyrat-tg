@@ -53,7 +53,6 @@
 	event.start_side = start_side
 
 /datum/round_event/meteor_wave/announce(fake)
-	var/datum/round_event_control/meteor_wave/meteor_event = control
 	if(!start_side)
 		start_side = pick(GLOB.cardinals)
 	var/start_side_text = "an unknown"
