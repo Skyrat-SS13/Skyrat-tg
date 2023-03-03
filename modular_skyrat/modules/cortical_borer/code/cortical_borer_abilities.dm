@@ -583,7 +583,7 @@
 		if(target.wear_mask.get_armor_rating(BIO) == 100)
 			return TRUE
 	if(isobj(target.wear_neck))
-		if(target.wear_neck.get_armor_rating(BIO) == 100)
+		if(target.wear_neck.get_armor_rating(BIO) >= 100)
 			return TRUE
 	return FALSE
 
