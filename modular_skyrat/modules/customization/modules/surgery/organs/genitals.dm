@@ -60,12 +60,16 @@
 	update_genital_icon_state()
 
 /obj/item/organ/external/genital/build_from_dna(datum/dna/DNA, associated_key)
-	..()
+	. = ..()
 	var/datum/sprite_accessory/genital/accessory = GLOB.sprite_accessories[associated_key][DNA.mutant_bodyparts[associated_key][MUTANT_INDEX_NAME]]
 	genital_name = accessory.name
 	genital_type = accessory.icon_state
 	build_from_accessory(accessory, DNA)
 	update_sprite_suffix()
+
+	var/datum/bodypart_overlay/mutant/genital/our_overlay = bodypart_overlay
+
+	our_overlay.color_source = uses_skin_color ? ORGAN_COLOR_INHERIT : USE_MATRIXED_COLORS
 
 /// for specific build_from_dna behavior that also checks the genital accessory.
 /obj/item/organ/external/genital/proc/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
@@ -219,10 +223,11 @@
 	return passed_string
 
 /obj/item/organ/external/genital/penis/build_from_dna(datum/dna/DNA, associated_key)
-	..()
 	girth = DNA.features["penis_girth"]
 	uses_skin_color = DNA.features["penis_uses_skincolor"]
 	set_size(DNA.features["penis_size"])
+
+	return ..()
 
 /obj/item/organ/external/genital/penis/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
 	var/datum/sprite_accessory/genital/penis/snake = accessory
@@ -267,9 +272,10 @@
 		return "You see a pair of testicles, they look [lowertext(balls_size_to_description(genital_size))]."
 
 /obj/item/organ/external/genital/testicles/build_from_dna(datum/dna/DNA, associated_key)
-	..()
 	uses_skin_color = DNA.features["testicles_uses_skincolor"]
 	set_size(DNA.features["balls_size"])
+
+	return ..()
 
 /obj/item/organ/external/genital/testicles/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
 	if(DNA.features["testicles_uses_skintones"])
@@ -339,6 +345,7 @@
 
 /obj/item/organ/external/genital/vagina/build_from_dna(datum/dna/DNA, associated_key)
 	uses_skin_color = DNA.features["vagina_uses_skincolor"]
+
 	return ..() // will update the sprite suffix
 
 /obj/item/organ/external/genital/vagina/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
@@ -466,10 +473,11 @@
 	return passed_string
 
 /obj/item/organ/external/genital/breasts/build_from_dna(datum/dna/DNA, associated_key)
-	..()
 	lactates = DNA.features["breasts_lactation"]
 	uses_skin_color = DNA.features["breasts_uses_skincolor"]
 	set_size(DNA.features["breasts_size"])
+
+	return ..()
 
 /obj/item/organ/external/genital/breasts/build_from_accessory(datum/sprite_accessory/genital/accessory, datum/dna/DNA)
 	if(DNA.features["breasts_uses_skintones"])
