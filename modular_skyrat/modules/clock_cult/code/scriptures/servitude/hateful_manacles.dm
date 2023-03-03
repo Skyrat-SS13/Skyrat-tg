@@ -17,7 +17,7 @@
 		return FALSE
 
 	if(target_carbon.handcuffed)
-		to_chat(invoker, span_brass("[target_carbon] is already restrained!"))
+		target_carbon.balloon_alert(invoker, "already restrained!"))
 		return FALSE
 
 	playsound(target_carbon, 'sound/weapons/handcuffs.ogg', 30, TRUE, -2)
