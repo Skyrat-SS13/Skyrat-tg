@@ -20,11 +20,13 @@
 	var/list/available_molds_t1 = list(
 		/obj/structure/biohazard_blob/structure/core/fire,
 		/obj/structure/biohazard_blob/structure/core/toxic,
+		/obj/structure/biohazard_blob/structure/core/radioactive,
 	)
 	var/list/available_molds_t2 = list(
 		/obj/structure/biohazard_blob/structure/core/fire,
 		/obj/structure/biohazard_blob/structure/core/toxic,
 		/obj/structure/biohazard_blob/structure/core/fungus,
+		/obj/structure/biohazard_blob/structure/core/radioactive,
 		/obj/structure/biohazard_blob/structure/core/emp,
 	)
 
