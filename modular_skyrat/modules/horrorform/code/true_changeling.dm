@@ -232,7 +232,7 @@
 	horrorform.devouring = TRUE
 	horrorform.visible_message(span_warning("[horrorform] begins ripping apart and feasting on [lunch]!"), \
 					span_danger("We begin to feast upon [lunch]..."))
-	if(!do_mob(usr, lunch, 5 SECONDS))
+	if(!do_after(usr, 5 SECONDS, lunch))
 		horrorform.devouring = FALSE
 		return FALSE
 	horrorform.devouring = FALSE
