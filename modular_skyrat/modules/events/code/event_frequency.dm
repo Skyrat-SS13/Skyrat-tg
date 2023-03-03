@@ -68,11 +68,15 @@
 /datum/round_event_control/camera_failure
 	weight = VERY_HIGH_EVENT_FREQ
 
+/datum/round_event_control/carp_migration
+	weight = MED_EVENT_FREQ
+
 /datum/round_event_control/cortical_borer
 	weight = MED_EVENT_FREQ
 
-/datum/round_event_control/carp_migration
-	weight = MED_EVENT_FREQ
+// Disabled: Part of dynamic.
+/datum/round_event_control/changeling
+	max_occurrences = 0
 
 /datum/round_event_control/cme/minimal
 	weight = LOW_EVENT_FREQ
