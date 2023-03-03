@@ -355,6 +355,7 @@
 	name = "glass of zen star"
 	desc = "You'd think something so balanced would actually taste nice... you'd be dead wrong."
 
+
 // RACE SPECIFIC DRINKS
 
 /datum/reagent/consumable/ethanol/coldscales
@@ -638,6 +639,157 @@
 
 	return ..()
 
+
+/datum/reagent/consumable/ethanol/blizzard_brew
+	name = "Blizzard Brew"
+	description = "An ancient recipe. Served best chilled as much as dwarvenly possible."
+	color = rgb(180, 231, 216)
+	boozepwr = 25
+	metabolization_rate = 1.25 * REAGENTS_METABOLISM
+	taste_description = "ancient icicles"
+	overdose_threshold = 25
+	var/obj/structure/ice_stasis/cube
+	var/atom/movable/screen/alert/status_effect/freon/cryostylane_alert
+
+/datum/glass_style/drinking_glass/blizzard_brew
+	required_drink_type = /datum/reagent/consumable/ethanol/blizzard_brew
+	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	icon_state = "blizzard_brew"
+	name = "glass of Blizzard Brew"
+	desc = "An ancient recipe. Served best chilled as much as dwarvenly possible."
+
+/datum/reagent/consumable/ethanol/blizzard_brew/expose_mob(mob/living/exposed_mob, methods, reac_volume)
+	if(isdwarf(exposed_mob))
+		quality = RACE_DRINK
+	else
+		quality = DRINK_NICE
+	return ..()
+
+/datum/reagent/consumable/ethanol/blizzard_brew/overdose_start(mob/living/carbon/drinker)
+	cube = new /obj/structure/ice_stasis(get_turf(drinker))
+	cube.color = COLOR_CYAN
+	cube.set_anchored(TRUE)
+	drinker.forceMove(cube)
+	cryostylane_alert = drinker.throw_alert("cryostylane_alert", /atom/movable/screen/alert/status_effect/freon/cryostylane)
+	cryostylane_alert.attached_effect = src //so the alert can reference us, if it needs to
+	..()
+
+/datum/reagent/consumable/ethanol/blizzard_brew/on_mob_delete(mob/living/carbon/drinker, amount)
+	QDEL_NULL(cube)
+	drinker.clear_alert("cryostylane_alert")
+	..()
+
+/datum/reagent/consumable/ethanol/molten_mead
+	name = "Molten Mead"
+	description = "Famously known to set beards aflame. Ingest at your own risk!"
+	color = rgb(224, 78, 16)
+	boozepwr = 35
+	metabolization_rate = 1.25 * REAGENTS_METABOLISM
+	taste_description = "burning wasps"
+	overdose_threshold = 25
+
+/datum/glass_style/drinking_glass/molten_mead
+	required_drink_type = /datum/reagent/consumable/ethanol/molten_mead
+	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	icon_state = "molten_mead"
+	name = "glass of Molten Mead"
+	desc = "Famously known to set beards aflame. Ingest at your own risk!"
+
+/datum/reagent/consumable/ethanol/molten_mead/expose_mob(mob/living/exposed_mob, methods, reac_volume)
+	if(isdwarf(exposed_mob))
+		quality = RACE_DRINK
+	else
+		quality = DRINK_VERYGOOD
+	return ..()
+
+/datum/reagent/consumable/ethanol/molten_mead/overdose_start(mob/living/carbon/drinker)
+	drinker.adjust_fire_stacks(2)
+	drinker.ignite_mob()
+	..()
+
+/datum/reagent/consumable/ethanol/hippie_hooch
+	name = "Hippie Hooch"
+	description = "Peace and love! Under request of the HR department, this drink is sure to sober you up quickly."
+	color = rgb(77, 138, 34)
+	boozepwr = -20
+	taste_description = "eggy hemp"
+	var/static/list/status_effects_to_clear = list(
+		/datum/status_effect/confusion,
+		/datum/status_effect/dizziness,
+		/datum/status_effect/drowsiness,
+		/datum/status_effect/speech/slurring/drunk,
+	)
+
+/datum/glass_style/drinking_glass/hippie_hooch
+	required_drink_type = /datum/reagent/consumable/ethanol/hippie_hooch
+	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	icon_state = "hippie_hooch"
+	name = "glass of Hippie Hooch"
+	desc = "Peace and love! Under request of the HR department, this drink is sure to sober you up quickly."
+
+/datum/reagent/consumable/ethanol/hippie_hooch/expose_mob(mob/living/exposed_mob, methods, reac_volume)
+	if(isdwarf(exposed_mob))
+		quality = RACE_DRINK
+	else
+		quality = DRINK_FANTASTIC
+	return ..()
+
+/datum/reagent/consumable/ethanol/hippie_hooch/on_mob_life(mob/living/carbon/drinker, delta_time, times_fired)
+	for(var/effect in status_effects_to_clear)
+		drinker.remove_status_effect(effect)
+	drinker.reagents.remove_all_type(/datum/reagent/consumable/ethanol, 3 * REM * delta_time, FALSE, TRUE)
+	drinker.adjustToxLoss(-0.2 * REM * delta_time, FALSE, required_biotype = affected_biotype)
+	drinker.adjust_drunk_effect(-10 * REM * delta_time)
+	..()
+	. = TRUE
+
+/datum/reagent/consumable/ethanol/research_rum
+	name = "Research Rum"
+	description = "Cooked up by dwarven scientists, this glowing pink brew is sure to supercharge your thinking. How? Science!"
+	color = rgb(169, 69, 169)
+	boozepwr = 50
+	taste_description = "slippery grey matter"
+
+/datum/glass_style/drinking_glass/research_rum
+	required_drink_type = /datum/reagent/consumable/ethanol/research_rum
+	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	icon_state = "research_rum"
+	name = "glass of Research Rum"
+	desc = "Cooked up by dwarven scientists, this glowing pink brew is sure to supercharge your thinking. How? Science!"
+
+/datum/reagent/consumable/ethanol/research_rum/expose_mob(mob/living/exposed_mob, methods, reac_volume)
+	if(isdwarf(exposed_mob))
+		quality = RACE_DRINK
+	else
+		quality = DRINK_GOOD
+	return ..()
+
+/datum/reagent/consumable/ethanol/research_rum/on_mob_life(mob/living/carbon/drinker, delta_time, times_fired)
+	if(prob(5))
+		drinker.say(pick_list_replacements(VISTA_FILE, "ballmer_good_msg"), forced = "ballmer")
+	..()
+	. = TRUE
+
+/datum/reagent/consumable/ethanol/golden_grog
+	name = "Golden Grog"
+	description = "A drink concocted by a dwarven Quartermaster who had too much time and money on his hands. Commonly ordered by influencers looking to flaunt their wealth."
+	color = rgb(247, 230, 141)
+	boozepwr = 70
+	taste_description = "sweet credit holochips"
+
+/datum/glass_style/drinking_glass/golden_grog
+	required_drink_type = /datum/reagent/consumable/ethanol/golden_grog
+	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	icon_state = "golden_grog"
+	name = "glass of Golden Grog"
+	desc = "A drink concocted by a dwarven Quartermaster who had too much time and money on his hands. Commonly ordered by influencers looking to flaunt their wealth."
+
+/datum/reagent/consumable/ethanol/golden_grog/expose_mob(mob/living/exposed_mob, methods, reac_volume)
+	if(isdwarf(exposed_mob))
+		quality = RACE_DRINK
+	else
+		quality = DRINK_FANTASTIC
+	return ..()
 
 // RACIAL DRINKS END
 

@@ -1,0 +1,96 @@
+2023-03-01:
+  Melbert, That REALLY Good Soda Flavor, FatFat, AndreyGusev:
+  - rscadd: 'Spacemen can now have varying height. (Admin only for now) add: Dwarfs
+      are now slightly shorter, but look way better.'
+  Paxilmaniac:
+  - bugfix: Void raptor no longer has openspace under its rear engines, which was
+      causing problems.
+  Shadow-Quill:
+  - bugfix: Synthetic taur bodies now give robotic legs instead of organic ones.
+  SkyratBot:
+  - bugfix: removes an infinite powercell from tram maintenance
+  - bugfix: 17 year old crew member medical/security records will no longer show them
+      as 18
+  - code_imp: Medical and security records now use the minimum and maximum age defines
+      rather than hardcoded minimums and maximums
+  - refactor: Crew records have been refactored.
+  - refactor: Medical records -> TGUI
+  - refactor: Security records -> TGUI
+  - refactor: Warrants console -> TGUI
+  - qol: Players are now alerted when their fines are paid off.
+  - qol: Cleaned up sec hud examination text.
+  - qol: Adding and deleting crimes is easier.
+  - qol: Writing crimes in the console sets players to arrest.
+  - qol: You can now mark someone as a suspect through sec hud.
+  - bugfix: A disconnected vent on the syndicate lavaland base is now connected
+  vinylspiders:
+  - config: removed duplicate SERVERSQLNAME config line from skyrat_config.txt
+2023-03-02:
+  Ebin-Halcyon:
+  - imageadd: Teshari gloves, and select hats have been refitted to them. Along with
+      the labcoat
+  LT3:
+  - bugfix: Chemists and virologists can now print their eyewear from the medical
+      protolathe
+  Melbert:
+  - bugfix: Nightmare revival acts less funky - stops it from re-creating the Light
+      Eater.
+  - bugfix: Ninja security records hacking works
+  Motho:
+  - rscadd: Adds five new difficult dwarven-themed drinks with (some) special effects.
+  Remuluson2:
+  - bugfix: After pressure from Nanotrasen, Space Wizard Federation made glass and
+      bone knives non-conductive again.
+  SkyratBot:
+  - refactor: Spider healing abilities have been refactored to reuse the same code
+      rather than reimplement it across two different mobs, it should work the same
+      as it used to. This is also used by Lightgeists.
+  - bugfix: Mob biotype on `heal_overall_damage` should be applied more consistently.
+      This might mean that some things which were previously healing prosthetic limbs
+      have stopped doing that.
+  - bugfix: You can no longer trap yourself in north public mining maintenance if
+      you enter it without maint access.
+  - bugfix: The research directors monitor on tram has been correctly orientated
+  - bugfix: The CE on tram no longer has two engineering department monitors, one
+      has instead been swapped out for an engine monitor.
+  - bugfix: Tram's AI sat cameras have been re-configured to be on either the Minisat
+      or AI core networks, this means security cannot see the entire satellite from
+      a standard camera console.
+  - spellcheck: Some cameras on tram have been capitalized.
+  - bugfix: fixes taking items from inventories glitching out in hyperspace
+  - bugfix: Sec huds should properly label targets with the new record system
+  - bugfix: Opening a surprise egg with your mind will no longer teleport the contents
+  Stalkeros:
+  - soundadd: New NRI ship ambience.
+  - sounddel: Old NRI ship ambience
+  tf-4:
+  - qol: The dancer pole construction now has balloon alerts instead of chat messages
+      during construction.
+  - bugfix: The dancer pole can now be constructed with any tool that can be used
+      as a wrench (i.e. power tools), not just basic wrenches.
+  - bugfix: The dancer pole no longer turns invisible on use.
+  - bugfix: Using a multitool to change the dancer pole's colour will no longer smack
+      it.
+  - bugfix: Being on the dancer pole when it's destroyed will now properly reset your
+      pixel shifting.
+  theOOZ:
+  - qol: Allows custom emoting while in soft-crit
+  vinylspiders:
+  - bugfix: fixes a glasses layering issue with hats on snouted mobs
+2023-03-03:
+  Cheshify, Ferro:
+  - rscadd: A new ruin has been detected near the station, what secrets could it hold?
+  Melbert:
+  - config: 'Policy.json config got updated. The following values need to be updated:'
+  - config: '"Obsession" -> /datum/antagonist/obessed'
+  - config: '"Heretic" -> /datum/antagonist/heretic'
+  - config: '"Headslug Changeling" -> /datum/antagonist/changeling/headslug'
+  - config: '"Pyroclastic Anomaly Slime" -> /datum/antagonist/pyro_slime'
+  - config: ALL antags in the policy.json file will now get notified of any existing
+      policy set by the admin team, rather than only a handful.
+  Nerev4r:
+  - rscadd: Plasmaman limbs are now choosable in character setup.
+  SkyratBot:
+  - bugfix: metastation toxins no longer has a weird double light fixture.
+  - bugfix: Fix kilo barsign spawning under windows
+  - bugfix: Fix barsign updatePath being backwards
