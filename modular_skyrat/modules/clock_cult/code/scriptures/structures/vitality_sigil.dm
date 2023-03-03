@@ -50,9 +50,9 @@
 		playsound(loc, 'sound/magic/exit_blood.ogg', 60)
 		to_chat(affected_mob, span_clockred("The last of your life is drained away..."))
 		send_clock_message(null, "[affected_mob] has had their vitality drained by [src], rejoice!", "<span class='clockred'>")
-		GLOB.clock_vitality += (affected_mob.client ? 30 : 6) // 100 (for clients) total in the ideal situation, since it'll take 7 pulses to go from full to crit
+		GLOB.clock_vitality += (affected_mob.client ? 30 : 3) // 100 (for clients) total in the ideal situation, since it'll take 7 pulses to go from full to crit
 		return
 
 	if(affected_mob.client)
 		affected_mob.visible_message(span_clockred("[affected_mob] looks weak as the color fades from their body."), span_clockred("You feel your soul faltering..."))
-		GLOB.clock_vitality += (affected_mob.client ? 10 : 2) // Monkey or whatever? You get jackshit
+		GLOB.clock_vitality += (affected_mob.client ? 10 : 1) // Monkey or whatever? You get jackshit
