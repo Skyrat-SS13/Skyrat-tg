@@ -345,6 +345,7 @@
 	relevant_mutant_bodypart = "moth_markings"
 
 /datum/preference/toggle/mutant_toggle/moth_markings/is_accessible(datum/preferences/preferences)
+	. = ..() // Got to do this because of linters.
 	return FALSE
 
 /datum/preference/choiced/mutant_choice/moth_markings
@@ -354,6 +355,7 @@
 	default_accessory_type = /datum/sprite_accessory/moth_markings/none
 
 /datum/preference/choiced/mutant_choice/moth_markings/is_accessible(datum/preferences/preferences)
+	. = ..() // Got to do this because of linters.
 	return FALSE
 
 /datum/preference/choiced/mutant_choice/moth_markings/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
@@ -367,6 +369,7 @@
 	type_to_check = /datum/preference/toggle/mutant_toggle/moth_markings
 
 /datum/preference/tri_color/moth_markings/is_accessible(datum/preferences/preferences)
+	. = ..() // Got to do this because of linters.
 	return FALSE
 
 /datum/preference/tri_color/moth_markings/apply_to_human(mob/living/carbon/human/target, value)
@@ -380,6 +383,7 @@
 	type_to_check = /datum/preference/toggle/mutant_toggle/moth_markings
 
 /datum/preference/tri_bool/moth_markings/is_accessible(datum/preferences/preferences)
+	. = ..() // Got to do this because of linters.
 	return FALSE
 
 /datum/preference/tri_bool/moth_markings/apply_to_human(mob/living/carbon/human/target, value)
