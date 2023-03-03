@@ -45,7 +45,14 @@
 
 /obj/item/clockwork/replica_fabricator/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
-	if(!proximity_flag || !IS_CLOCK(user) || !selected_output || !isopenturf(target))
+	if(!proximity_flag || !IS_CLOCK(user))
+		return
+
+	if(istype(target, /obj/item/stack/sheet)) // If it's an item, handle it seperately
+		attempt_convert_materials(target)
+		return
+
+	if(!selected_output || !isopenturf(target)) // Now we handle objects
 		return
 
 	if(power < selected_output.cost)
@@ -78,26 +85,7 @@
 	if(!IS_CLOCK(user))
 		return
 
-	if(istype(attacking_item, /obj/item/stack/sheet/bronze))
-		var/obj/item/stack/bronze_stack = attacking_item
-
-		power += bronze_stack.amount * BRASS_POWER_COST
-
-		playsound(src, 'sound/machines/click.ogg', 50, 1)
-		to_chat(user, span_clockyellow("You convert [bronze_stack.amount] bronze into [bronze_stack.amount * BRASS_POWER_COST] watts of power."))
-
-		qdel(bronze_stack)
-
-	else if(istype(attacking_item, /obj/item/stack/sheet))
-		var/obj/item/stack/stack = attacking_item
-
-		var/power_to_generate = round(stack.amount * BRASS_POWER_COST / 2)
-		power += power_to_generate
-
-		playsound(src, 'sound/machines/click.ogg', 50, 1)
-		to_chat(user, span_clockyellow("You convert [stack.amount] [stack.name] into [power_to_generate] watts of power."))
-
-		qdel(attacking_item)
+	attempt_convert_materials(attacking_item)
 
 
 /obj/item/clockwork/replica_fabricator/attack_self_secondary(mob/user, modifiers)
@@ -140,6 +128,32 @@
 
 	return TRUE
 
+/// Attempt to convert the targeted item into power, if it's a sheet item
+/obj/item/clockwork/replica_fabricator/proc/attempt_convert_materials(atom/target)
+	if(istype(attacking_item, /obj/item/stack/sheet/bronze))
+		var/obj/item/stack/bronze_stack = attacking_item
+
+		power += bronze_stack.amount * BRASS_POWER_COST
+
+		playsound(src, 'sound/machines/click.ogg', 50, 1)
+		to_chat(user, span_clockyellow("You convert [bronze_stack.amount] bronze into [bronze_stack.amount * BRASS_POWER_COST] watts of power."))
+
+		qdel(bronze_stack)
+		return TRUE
+
+	else if(istype(attacking_item, /obj/item/stack/sheet))
+		var/obj/item/stack/stack = attacking_item
+
+		var/power_to_generate = round(stack.amount * BRASS_POWER_COST / 2)
+		power += power_to_generate
+
+		playsound(src, 'sound/machines/click.ogg', 50, 1)
+		to_chat(user, span_clockyellow("You convert [stack.amount] [stack.name] into [power_to_generate] watts of power."))
+
+		qdel(attacking_item)
+		return TRUE
+
+	return FALSE
 
 /// Creates the list of initialized fabricator datums, done once on init
 /obj/item/clockwork/replica_fabricator/proc/create_fabrication_list()
