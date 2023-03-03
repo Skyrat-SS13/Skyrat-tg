@@ -199,7 +199,10 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 
 	for(var/mob/living/M in compiled)
 		var/mob/living/mob_occupant = get_mob_or_brainmob(M)
-		if(mob_occupant.client && !mob_occupant.suiciding && !(HAS_TRAIT(mob_occupant, TRAIT_BADDNA)))
+		//SKYRAT EDIT CHANGE BEGIN - DNR quirk check for morgue
+		//if(mob_occupant.client && !mob_occupant.suiciding && !(HAS_TRAIT(mob_occupant, TRAIT_BADDNA))) - SKYRAT EDIT - ORIGINAL
+		if(mob_occupant.client && !mob_occupant.suiciding && !(HAS_TRAIT(mob_occupant, TRAIT_BADDNA)) && !(HAS_TRAIT(mob_occupant, TRAIT_DNR)))
+		//SKYRAT EDIT CHANGE END
 			icon_state = "morgue4" // Revivable
 			if(mob_occupant.stat == DEAD && beeper && COOLDOWN_FINISHED(src, next_beep))
 				playsound(src, 'sound/weapons/gun/general/empty_alarm.ogg', 50, FALSE) //Revive them you blind fucks
