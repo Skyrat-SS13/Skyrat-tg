@@ -134,7 +134,6 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 // UI things below
 
 /obj/item/clockwork/clockwork_slab/attack_self(mob/living/user)
-
 	if(!(IS_CLOCK(user)))
 		to_chat(user, span_warning("You cannot figure out what the device is used for!"))
 		return

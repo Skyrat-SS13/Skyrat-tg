@@ -181,7 +181,7 @@
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/update_icon_state()
 	. = ..()
 	icon_state = "[base_icon_state]_[!enabled]"
-	worn_icon_state = "[initial(icon_state)]_[!enabled]"
+	worn_icon_state = "[base_icon_state]_[!enabled]"
 
 
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/attack_self(mob/user, modifiers)

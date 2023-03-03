@@ -15,23 +15,22 @@
 	var/minimum_power = 0
 
 
-// UNCOMMENT TRANSMISSION SIGIL CODE WHEN IT IS ADDED
-
 /obj/structure/destructible/clockwork/gear_base/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	LAZYINITLIST(transmission_sigils)
-//	for(var/obj/structure/destructible/clockwork/sigil/transmission/trans_sigil in range(src, SIGIL_TRANSMISSION_RANGE))
-//		link_to_sigil(trans_sigil)
+	for(var/obj/structure/destructible/clockwork/sigil/transmission/trans_sigil in range(src, SIGIL_TRANSMISSION_RANGE))
+		link_to_sigil(trans_sigil)
+
 
 /obj/structure/destructible/clockwork/gear_base/Destroy()
-//	for(var/obj/structure/destructible/clockwork/sigil/transmission/trans_sigil as anything in transmission_sigils)
-//		trans_sigil.linked_structures -= src
+	for(var/obj/structure/destructible/clockwork/sigil/transmission/trans_sigil as anything in transmission_sigils)
+		trans_sigil.linked_structures -= src
 	return ..()
 
 
 /obj/structure/destructible/clockwork/gear_base/wrench_act(mob/living/user, obj/item/tool)
-	if(!(IS_CLOCK(user)))
+	if(!IS_CLOCK(user))
 		return
 
 	balloon_alert(user, "[anchored ? "unwrenching" : "wrenching"]...")
@@ -46,6 +45,7 @@
 
 	return TRUE
 
+
 /obj/structure/destructible/clockwork/gear_base/update_icon_state()
 	. = ..()
 	icon_state = initial(icon_state)
@@ -53,24 +53,25 @@
 	if(!anchored)
 		icon_state += unwrenched_suffix
 
-/* // UNCOMMENT TRANSMISSION SIGIL CODE WHEN IT IS ADDED
+
 /// Adds a sigil to the linked structure list
 /obj/structure/destructible/clockwork/gear_base/proc/link_to_sigil(obj/structure/destructible/clockwork/sigil/transmission/sigil)
 	LAZYOR(transmission_sigils, sigil)
 	sigil.linked_structures |= src
 
+
 /// Removes a sigil from the linked structure list
 /obj/structure/destructible/clockwork/gear_base/proc/unlink_to_sigil(obj/structure/destructible/clockwork/sigil/transmission/sigil)
 	if(!LAZYFIND(transmission_sigils, sigil))
 		return
+
 	LAZYREMOVE(transmission_sigils, sigil)
 	sigil.linked_structures -= src
-	if(!LAZYLEN(transmission_sigils))
-		depowered()
-		depowered = TRUE*/
+
+	check_power()
+
 
 //Power procs, for all your power needs
-
 
 /// Checks if there's enough power to power it, calls repower() if changed from depowered to powered, vice versa
 /obj/structure/destructible/clockwork/gear_base/proc/update_power()
@@ -82,6 +83,7 @@
 			return TRUE
 
 		return FALSE
+
 	else
 
 		if(GLOB.clock_power <= minimum_power || !LAZYLEN(transmission_sigils))
