@@ -338,17 +338,26 @@
 	relevant_mutant_bodypart = "moth_antennae"
 	type_to_check = /datum/preference/toggle/mutant_toggle/moth_antennae
 
-/// Moth Markings
+/// Moth Markings - They don't work, and we use regular markings for those anyway, so we're going to disable them.
 
 /datum/preference/toggle/mutant_toggle/moth_markings
 	savefile_key = "moth_markings_toggle"
 	relevant_mutant_bodypart = "moth_markings"
+
+/datum/preference/toggle/mutant_toggle/moth_markings/is_accessible(datum/preferences/preferences)
+	return FALSE
 
 /datum/preference/choiced/mutant_choice/moth_markings
 	savefile_key = "feature_moth_markings"
 	relevant_mutant_bodypart = "moth_markings"
 	type_to_check = /datum/preference/toggle/mutant_toggle/moth_markings
 	default_accessory_type = /datum/sprite_accessory/moth_markings/none
+
+/datum/preference/choiced/mutant_choice/moth_markings/is_accessible(datum/preferences/preferences)
+	return FALSE
+
+/datum/preference/choiced/mutant_choice/moth_markings/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	return FALSE
 
 /datum/preference/tri_color/moth_markings
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -357,12 +366,24 @@
 	relevant_mutant_bodypart = "moth_markings"
 	type_to_check = /datum/preference/toggle/mutant_toggle/moth_markings
 
+/datum/preference/tri_color/moth_markings/is_accessible(datum/preferences/preferences)
+	return FALSE
+
+/datum/preference/tri_color/moth_markings/apply_to_human(mob/living/carbon/human/target, value)
+	return FALSE
+
 /datum/preference/tri_bool/moth_markings
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "moth_markings_emissive"
 	relevant_mutant_bodypart = "moth_markings"
 	type_to_check = /datum/preference/toggle/mutant_toggle/moth_markings
+
+/datum/preference/tri_bool/moth_markings/is_accessible(datum/preferences/preferences)
+	return FALSE
+
+/datum/preference/tri_bool/moth_markings/apply_to_human(mob/living/carbon/human/target, value)
+	return FALSE
 
 /// Fluff
 
