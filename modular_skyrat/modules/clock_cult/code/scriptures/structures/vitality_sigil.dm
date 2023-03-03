@@ -20,7 +20,7 @@
 	if(HAS_TRAIT(affected_mob, TRAIT_NODEATH))
 		return FALSE
 
-	if(issilicon(affected_mob))
+	if(!ishuman(affected_mob))
 		return FALSE
 
 	return TRUE
