@@ -757,7 +757,6 @@
 	if(!owner)
 		owner = reagent.holder.my_atom
 
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
@@ -782,10 +781,7 @@
 			return
 	//SKYRAT EDIT ADDITION END
 
-	if(owner && reagent)
-=======
 	if(owner && reagent && (!dead || (reagent.chemical_flags & REAGENT_DEAD_PROCESS)))
->>>>>>> 3241872f24f (Makes dead metabolization work properly (#73665))
 		if(owner.reagent_check(reagent, delta_time, times_fired))
 			return
 		if(liverless && !reagent.self_consuming) //need to be metabolized
