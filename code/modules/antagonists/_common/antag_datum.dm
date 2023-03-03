@@ -302,7 +302,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 
 	qdel(src)
 	// SKYRAT EDIT START
-	owner.handle_exploitables() //Inefficient here, but on_removal() is called in multiple locations
+	owner?.handle_exploitables() //Inefficient here, but on_removal() is called in multiple locations
 	// SKYRAT EDIT END
 
 /**
