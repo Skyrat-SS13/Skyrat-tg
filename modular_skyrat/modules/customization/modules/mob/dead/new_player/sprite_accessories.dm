@@ -106,7 +106,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	return 0
 
 // A proc for accessories which have 'use_custom_mod_icon' set to TRUE
-/datum/sprite_accessory/proc/get_custom_mod_icon(mob/living/carbon/human/owner)
+/datum/sprite_accessory/proc/get_custom_mod_icon(mob/living/carbon/human/owner, mutable_appearance/appearance_to_use = null)
 	return null
 
 /datum/sprite_accessory/proc/get_default_color(list/features, datum/species/pref_species) //Needs features for the color information
@@ -133,7 +133,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/moth_markings
 	key = "moth_markings"
 	generic = "Moth markings"
-	organ_type = /obj/item/organ/external/moth_markings
+	// organ_type = /obj/item/organ/external/moth_markings // UNCOMMENT THIS IF THEY EVER FIX IT UPSTREAM, CAN'T BE BOTHERED TO FIX IT MYSELF
 
 /datum/sprite_accessory/moth_markings/is_hidden(mob/living/carbon/human/owner)
 	return FALSE
