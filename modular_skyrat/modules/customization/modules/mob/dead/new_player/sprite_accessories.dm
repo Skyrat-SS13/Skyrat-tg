@@ -133,6 +133,11 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/moth_markings
 	key = "moth_markings"
 	generic = "Moth markings"
+	organ_type = /obj/item/organ/external/moth_markings
+
+/datum/sprite_accessory/moth_markings/is_hidden(mob/living/carbon/human/owner)
+	return FALSE
+
 
 /datum/sprite_accessory/moth_antennae/none
 	name = "None"
@@ -147,6 +152,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	recommended_species = list(SPECIES_LIZARD, SPECIES_UNATHI, SPECIES_LIZARD_ASH, SPECIES_LIZARD_SILVER)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER)
 	genetic = TRUE
+	organ_type = /obj/item/organ/external/spines
 
 /datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/wearer)
 	var/obj/item/organ/external/tail/tail = wearer.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
@@ -176,6 +182,8 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/caps
 	key = "caps"
 	generic = "Caps"
+	color_src = USE_ONE_COLOR
+	organ_type = /obj/item/organ/external/cap
 
 /datum/sprite_accessory/body_markings
 	key = "body_markings"

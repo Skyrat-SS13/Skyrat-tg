@@ -19,20 +19,7 @@
 		&& !(wearer.head.flags_inv & SHOWSPRITEEARS || wearer.wear_mask.flags_inv & SHOWSPRITEEARS))
 		return TRUE
 
-
+/*
 /datum/bodypart_overlay/mutant/antennae/can_draw_on_bodypart(mob/living/carbon/human/wearer)
-	if(!wearer.head)
-		return FALSE
-	// Can hide if wearing hat
-	if(feature_key in wearer.try_hide_mutant_parts)
-		return FALSE
-	// Exception for MODs
-	if(istype(wearer.head, /obj/item/clothing/head/mod))
-		return TRUE
-	// Hide accessory if flagged to do so
-	if((wearer.head.flags_inv & HIDEHAIR || (wearer.wear_mask && (wearer.wear_mask.flags_inv & HIDEHAIR))) \
-		&& !(wearer.head.flags_inv & SHOWSPRITEEARS || wearer.wear_mask.flags_inv & SHOWSPRITEEARS))
-		return FALSE
-
-	return TRUE
-
+	return
+*/

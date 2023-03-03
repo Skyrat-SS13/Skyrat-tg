@@ -4,6 +4,7 @@
 	generic = "Head Accessory"
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
+	organ_type = /obj/item/organ/external/head_accessory
 
 /datum/sprite_accessory/head_accessory/none
 	name = "None"

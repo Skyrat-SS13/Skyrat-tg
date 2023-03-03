@@ -146,6 +146,7 @@
 	generic = "Antenna"
 	relevent_layers = list(BODY_ADJ_LAYER)
 	genetic = FALSE
+	organ_type = /obj/item/organ/external/synth_antenna
 
 /datum/sprite_accessory/antenna/is_hidden(mob/living/carbon/human/wearer)
 	if(!wearer.head)

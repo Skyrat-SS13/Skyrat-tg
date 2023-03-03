@@ -8,6 +8,7 @@
 
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_EXTERNAL_MOTH_MARKINGS
+	organ_flags = ORGAN_UNREMOVABLE
 
 	preference = "feature_moth_markings"
 
