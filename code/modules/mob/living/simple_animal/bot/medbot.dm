@@ -561,7 +561,7 @@
 			C.visible_message(span_danger("[src] is trying to tend the wounds of [patient]!"), \
 				span_userdanger("[src] is trying to tend your wounds!"))
 
-			if(do_mob(src, patient, 10 SECONDS)) //SKYRAT EDIT: Increased time as tradeoff for automated healing. ORIGINAL: if(do_mob(src, patient, 20))
+			if(do_after(src, 10 SECONDS, patient)) //SKYRAT EDIT: Increased time as tradeoff for automated healing. ORIGINAL: if(do_after(src, 2 SECONDS, patient))
 				if((get_dist(src, patient) <= 1) && (bot_mode_flags & BOT_MODE_ON) && assess_patient(patient))
 					var/healies = heal_amount
 					var/obj/item/storage/medkit/medkit = medkit_type
