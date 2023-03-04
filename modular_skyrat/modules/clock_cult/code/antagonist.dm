@@ -13,6 +13,13 @@
 	ui_name = "AntagInfoClock"
 	/// If this one has access to conversion scriptures
 	var/can_convert = TRUE // TODO: Implement this and the antag as a whole (beyond just checks) once the groundwork PR gets merged
+	/// Ref to the cultist's communication ability
+	var/datum/action/innate/clockcult/comm/communicate = new
+
+
+/datum/antagonist/clock_cultist/Destroy()
+	QDEL_NULL(communicate)
+	return ..()
 
 
 /datum/antagonist/clock_cultist/on_gain()
@@ -25,6 +32,7 @@
 	var/mob/living/current = owner.current
 	current.faction |= FACTION_CLOCK
 	current.grant_language(/datum/language/ratvar, TRUE, TRUE, LANGUAGE_CULTIST)
+	communicate.Grant(current)
 
 
 /datum/antagonist/clock_cultist/remove_innate_effects(mob/living/mob_override)
@@ -32,6 +40,7 @@
 	var/mob/living/current = owner.current
 	current.faction -= FACTION_CLOCK
 	current.remove_language(/datum/language/ratvar, TRUE, TRUE, LANGUAGE_CULTIST)
+	communicate.Remove(current)
 
 
 /datum/outfit/clock/preview
