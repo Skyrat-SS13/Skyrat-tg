@@ -1,4 +1,5 @@
 GLOBAL_LIST_EMPTY(clock_scriptures)
+GLOBAL_LIST_EMPTY(clock_scriptures_by_type)
 
 // Scriptures are the "spells" of clock cultists
 // They're usable through their clockwork slab, and cannot be invoked otherwise
@@ -33,8 +34,6 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 	var/obj/item/clockwork/clockwork_slab/invoking_slab
 	/// Timer object for the distance between invoking chants
 	var/invocation_chant_timer = null
-	/// If TRUE, then this will delete itself on completion
-	var/qdel_on_completion = FALSE
 	/// Sound to play on finish
 	var/sound/recital_sound = null
 
@@ -182,13 +181,9 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 		end_invoke()
 
 
-/// End the invoking, nulling things out, and qdeling itself if indicated
+/// End the invoking, nulling things out
 /datum/scripture/proc/end_invoke()
 	invoking_slab.invoking_scripture = null
-
-	if(qdel_on_completion)
-		qdel(src)
-
 
 
 // Base create structure scripture
@@ -232,11 +227,8 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 	var/uses = 1
 	/// Text displayed after use
 	var/after_use_text = ""
-
-
 	/// Internal spell for pointed/aimed spells
 	var/datum/action/cooldown/spell/pointed/slab/pointed_spell
-
 	/// How many times this can be used this particular invocation, can go down
 	var/uses_left = 0
 	/// How much time left to use this
@@ -350,4 +342,5 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 /proc/generate_clockcult_scriptures()
 	for(var/categorypath in subtypesof(/datum/scripture))
 		var/datum/scripture/clock_script = new categorypath
-		GLOB.clock_scriptures[clock_script.name] = clock_script
+		GLOB.clock_scriptures += clock_script
+		GLOB.clock_scriptures_by_type[clock_script.type] = clock_script

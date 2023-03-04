@@ -49,7 +49,7 @@
 		return
 
 	if(istype(target, /obj/item/stack/sheet)) // If it's an item, handle it seperately
-		attempt_convert_materials(target)
+		attempt_convert_materials(target, user)
 		return
 
 	if(!selected_output || !isopenturf(target)) // Now we handle objects
@@ -85,7 +85,7 @@
 	if(!IS_CLOCK(user))
 		return
 
-	attempt_convert_materials(attacking_item)
+	attempt_convert_materials(attacking_item, user)
 
 
 /obj/item/clockwork/replica_fabricator/attack_self_secondary(mob/user, modifiers)
@@ -129,7 +129,7 @@
 	return TRUE
 
 /// Attempt to convert the targeted item into power, if it's a sheet item
-/obj/item/clockwork/replica_fabricator/proc/attempt_convert_materials(atom/target)
+/obj/item/clockwork/replica_fabricator/proc/attempt_convert_materials(atom/attacking_item, mob/user)
 	if(istype(attacking_item, /obj/item/stack/sheet/bronze))
 		var/obj/item/stack/bronze_stack = attacking_item
 

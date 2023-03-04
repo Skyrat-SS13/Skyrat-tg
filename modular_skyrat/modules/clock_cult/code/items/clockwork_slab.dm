@@ -59,18 +59,18 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 
 /obj/item/clockwork/clockwork_slab/Initialize(mapload)
 	. = ..()
-	if(!length(GLOB.clock_scriptures))
+	if(!length(GLOB.clock_scriptures) || !length(GLOB.clock_scriptures_by_type))
 		generate_clockcult_scriptures()
 
 	var/pos = 1
 	cogs = GLOB.clock_installed_cogs
 	GLOB.clockwork_slabs += src
 	for(var/script in default_scriptures)
-		if(!script || !default_scriptures[script])
+		if(!script)
 			continue
 
 		purchased_scriptures += script
-		var/datum/scripture/default_script = new script
+		var/datum/scripture/default_script = GLOB.clock_scriptures_by_type[script]
 		bind_spell(null, default_script, pos++)
 
 
@@ -97,7 +97,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 
 /obj/item/clockwork/clockwork_slab/pickup(mob/user)
 	. = ..()
-	if(!(IS_CLOCK(user)))
+	if(!IS_CLOCK(user))
 		return
 
 	//Grant quickbound spells
@@ -134,7 +134,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 // UI things below
 
 /obj/item/clockwork/clockwork_slab/attack_self(mob/living/user)
-	if(!(IS_CLOCK(user)))
+	if(!IS_CLOCK(user))
 		to_chat(user, span_warning("You cannot figure out what the device is used for!"))
 		return
 
@@ -166,8 +166,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 	data["scriptures"] = list()
 
 	//2 scriptures accessible at the same time will cause issues
-	for(var/scripture_name in GLOB.clock_scriptures)
-		var/datum/scripture/scripture = GLOB.clock_scriptures[scripture_name]
+	for(var/datum/scripture/scripture as anything in GLOB.clock_scriptures)
 		var/list/scripture_data = list(
 			"name" = scripture.name,
 			"desc" = scripture.desc,
@@ -175,7 +174,8 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 			"tip" = scripture.tip,
 			"cost" = scripture.power_cost,
 			"purchased" = (scripture.type in purchased_scriptures),
-			"cog_cost" = scripture.cogs_required
+			"cog_cost" = scripture.cogs_required,
+			"typepath" = scripture.type,
 		)
 		//Add it to the correct list
 		data["scriptures"] += list(scripture_data)
@@ -194,7 +194,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 
 	switch(action)
 		if("invoke")
-			var/datum/scripture/scripture = GLOB.clock_scriptures[params["scriptureName"]]
+			var/datum/scripture/scripture = GLOB.clock_scriptures_by_type[text2path(params["scriptureType"])]
 			if(!scripture)
 				return FALSE
 
@@ -211,10 +211,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 					living_user.balloon_alert(living_user, "[scripture.vitality_cost] required!")
 					return FALSE
 
-				var/datum/scripture/new_scripture = new scripture.type()
-				//Create a new scripture temporarilly to process, when it's done it will be qdeleted.
-				new_scripture.qdel_on_completion = TRUE
-				new_scripture.begin_invoke(living_user, src)
+				scripture.begin_invoke(living_user, src)
 
 			else
 				if(cogs >= scripture.cogs_required)
@@ -230,7 +227,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 
 
 		if("quickbind")
-			var/datum/scripture/scripture = GLOB.clock_scriptures[params["scriptureName"]]
+			var/datum/scripture/scripture = GLOB.clock_scriptures_by_type[text2path(params["scriptureType"])]
 			if(!scripture)
 				return FALSE
 
@@ -247,8 +244,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 			if(!position)
 				return FALSE
 
-			//Create and assign the quickbind
-			var/datum/scripture/new_scripture = new scripture.type()
-			bind_spell(living_user, new_scripture, positions.Find(position))
+			// Assign the quickbind
+			bind_spell(living_user, scripture, positions.Find(position))
 
 #undef MAXIMUM_QUICKBIND_SLOTS

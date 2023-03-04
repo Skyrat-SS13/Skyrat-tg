@@ -161,7 +161,7 @@ const ClockworkSpellList = (props, context) => {
                   disabled={false}
                   onClick={() =>
                     act('invoke', {
-                      scriptureName: script.name,
+                      scriptureType: script.typepath,
                     })
                   }
                 />
@@ -176,7 +176,7 @@ const ClockworkSpellList = (props, context) => {
                   disabled={!script.purchased}
                   onClick={() =>
                     act('quickbind', {
-                      scriptureName: script.name,
+                      scriptureType: script.typepath,
                     })
                   }
                 />
