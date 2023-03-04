@@ -29,21 +29,28 @@
 
 /// A user can input a message to send to other clock cultists over the clock cult communication channel
 /datum/action/innate/clockcult/comm/proc/cultist_commune(mob/living/user, message)
-	var/my_message
 	if(!message)
 		return
 
 	user.whisper("Engine, V vaibxr gb-gur`r gb-pbzzhar gb-nyy.", language = /datum/language/common) //Ratvar, I invoke to-the`e to-commune to-all.
 	user.whisper(html_decode(message), filterproof = TRUE)
-	my_message = span_italics(span_brass("<b>Ratvarian Servant [findtextEx(user.name, user.real_name) ? user.name : "[user.real_name] (as [user.name])"]:</b> [message]"))
-	send_clock_message(user, my_message)
+	send_clock_message(user, message)
 
 /// Send `sent_message` to all other clock cultists and ghosts from the user
-/proc/send_clock_message(mob/living/user, sent_message)
+/proc/send_clock_message(mob/living/user, sent_message, span = "<span class='brass'>")
+	var/final_message = ""
+	if(user)
+		final_message = span + "<i><b>Clock[user.gender == FEMALE ? "sister" : "brother"] [findtextEx(user.name, user.real_name) ? user.name : "[user.real_name] (as [user.name])"].</b> transmits, \"" + sent_message + "\"</i></span>"
+	else
+		final_message = span + sent_message + "</span>"
+
 	for(var/mob/player_mob as anything in GLOB.player_list)
 
 		if(IS_CLOCK(player_mob))
 			to_chat(player_mob, sent_message)
 
 		else if(player_mob in GLOB.dead_mob_list)
-			to_chat(player_mob, span_brass("[FOLLOW_LINK(player_mob, user)] [sent_message]"))
+			if(user)
+				to_chat(player_mob, "[span_brass("[FOLLOW_LINK(player_mob, user)]")] [sent_message]")
+			else
+				to_chat(player_mob, final_message)
