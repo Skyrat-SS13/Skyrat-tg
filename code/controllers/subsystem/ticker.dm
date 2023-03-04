@@ -267,7 +267,7 @@ SUBSYSTEM_DEF(ticker)
 	collect_minds()
 	equip_characters()
 
-	GLOB.data_core.manifest()
+	GLOB.manifest.build()
 
 	transfer_characters() //transfer keys to the new mobs
 
@@ -325,7 +325,7 @@ SUBSYSTEM_DEF(ticker)
 
 		iter_human.increment_scar_slot()
 		iter_human.load_persistent_scars()
-		SSpersistence.load_modular_persistence(iter_human) // SKYRAT EDIT ADDITION - MODULAR_PERSISTENCE
+		SSpersistence.load_modular_persistence(iter_human.getorganslot(ORGAN_SLOT_BRAIN)) // SKYRAT EDIT ADDITION - MODULAR_PERSISTENCE
 
 		if(!iter_human.hardcore_survival_score)
 			continue

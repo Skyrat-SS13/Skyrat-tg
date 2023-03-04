@@ -317,7 +317,8 @@
 				mob_exit(ai,silent = TRUE, forced = TRUE) // so we dont ghost the AI
 			continue
 		mob_exit(occupant, forced = TRUE)
-		occupant.SetSleeping(destruction_sleep_duration)
+		if(!isbrain(occupant)) // who would win.. 1 brain vs 1 sleep proc..
+			occupant.SetSleeping(destruction_sleep_duration)
 
 	if(wreckage)
 		var/obj/structure/mecha_wreckage/WR = new wreckage(loc, unlucky_ai)
@@ -434,7 +435,7 @@
 	if(capacitor)
 		var/datum/armor/stock_armor = get_armor_by_type(armor_type)
 		var/initial_energy = stock_armor.get_rating(ENERGY)
-		set_armor_rating(initial_energy + (capacitor.rating * 5))
+		set_armor_rating(ENERGY, initial_energy + (capacitor.rating * 5))
 
 /obj/vehicle/sealed/mecha/examine(mob/user)
 	. = ..()
