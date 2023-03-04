@@ -118,6 +118,6 @@
 	materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/silver = 350)
 	build_path = /obj/item/clothing/glasses/hud/ar/projector/science
 	category = list(
-		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_SCIENCE
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_SCIENCE + RND_SUBCATEGORY_EQUIPMENT_MEDICAL
 	)
-	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_MEDICAL
