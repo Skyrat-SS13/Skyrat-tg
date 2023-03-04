@@ -130,7 +130,7 @@
 
 /// Attempt to convert the targeted item into power, if it's a sheet item
 /obj/item/clockwork/replica_fabricator/proc/attempt_convert_materials(atom/target)
-/*	if(istype(attacking_item, /obj/item/stack/sheet/bronze))
+	if(istype(attacking_item, /obj/item/stack/sheet/bronze))
 		var/obj/item/stack/bronze_stack = attacking_item
 
 		power += bronze_stack.amount * BRASS_POWER_COST
@@ -151,7 +151,7 @@
 		to_chat(user, span_clockyellow("You convert [stack.amount] [stack.name] into [power_to_generate] watts of power."))
 
 		qdel(attacking_item)
-		return TRUE*/
+		return TRUE
 
 	return FALSE
 
