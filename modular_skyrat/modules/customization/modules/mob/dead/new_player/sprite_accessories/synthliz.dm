@@ -161,6 +161,7 @@
 	taur_mode = STYLE_TAUR_PAW
 	recommended_species = list()
 	genetic = FALSE
+	organ_type = /obj/item/organ/external/taur_body/synth
 
 /datum/sprite_accessory/taur/synthliz/inv
 	name = "Cybernetic Lizard (Inverted)"

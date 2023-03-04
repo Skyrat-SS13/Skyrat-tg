@@ -22,6 +22,8 @@
 /obj/item/organ/external/snout/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
 	if(sprite_accessory_flags & SPRITE_ACCESSORY_USE_MUZZLED_SPRITE)
 		external_bodytypes |= BODYTYPE_SNOUTED
+	if(sprite_accessory_flags & SPRITE_ACCESSORY_USE_ALT_FACEWEAR_LAYER)
+		external_bodytypes |= BODYTYPE_ALT_FACEWEAR_LAYER
 
 	return ..()
 
@@ -228,15 +230,18 @@
 **************** Snouts *******************
 *************but higher up*****************/
 
-/datum/sprite_accessory/snouts/mammal/fbird
+/datum/sprite_accessory/snouts/mammal/top/
+	flags_for_organ = SPRITE_ACCESSORY_USE_MUZZLED_SPRITE | SPRITE_ACCESSORY_USE_ALT_FACEWEAR_LAYER
+
+/datum/sprite_accessory/snouts/mammal/top/fbird
 	name = "Beak (Top)"
 	icon_state = "fbird"
 
-/datum/sprite_accessory/snouts/mammal/fbigbeak
+/datum/sprite_accessory/snouts/mammal/top/fbigbeak
 	name = "Big Beak (Top)"
 	icon_state = "fbigbeak"
 
-/datum/sprite_accessory/snouts/mammal/fbug
+/datum/sprite_accessory/snouts/mammal/top/fbug
 	name = "Bug (Top)"
 	icon_state = "fbug"
 	flags_for_organ = NONE
@@ -244,111 +249,111 @@
 	extra2 = TRUE
 	extra2_color_src = MUTCOLORS3
 
-/datum/sprite_accessory/snouts/mammal/felephant
+/datum/sprite_accessory/snouts/mammal/top/felephant
 	name = "Elephant (Top)"
 	icon_state = "felephant"
 	extra = TRUE
 	extra_color_src = MUTCOLORS3
 
-/datum/sprite_accessory/snouts/mammal/frhino
+/datum/sprite_accessory/snouts/mammal/top/frhino
 	name = "Horn (Top)"
 	icon_state = "frhino"
 	extra = TRUE
 	extra_color_src = MUTCOLORS3
 
-/datum/sprite_accessory/snouts/mammal/fhusky
+/datum/sprite_accessory/snouts/mammal/top/fhusky
 	name = "Husky (Top)"
 	icon_state = "fhusky"
 
-/datum/sprite_accessory/snouts/mammal/vulpkanin/flcanid
+/datum/sprite_accessory/snouts/mammal/top/vulpkanin/flcanid
 	name = "Mammal, Long (Top)"
 	icon_state = "flcanid"
 
-/datum/sprite_accessory/snouts/mammal/flcanidalt
+/datum/sprite_accessory/snouts/mammal/top/flcanidalt
 	name = "Mammal, Long ALT (Top)"
 	icon_state = "flcanidalt"
 
-/datum/sprite_accessory/snouts/mammal/vulpkanin/flcanidstriped
+/datum/sprite_accessory/snouts/mammal/top/vulpkanin/flcanidstriped
 	name = "Mammal, Long, Striped (Top)"
 	icon_state = "flcanidstripe"
 
-/datum/sprite_accessory/snouts/mammal/flcanidstripedalt
+/datum/sprite_accessory/snouts/mammal/top/flcanidstripedalt
 	name = "Mammal, Long, Striped ALT (Top)"
 	icon_state = "flcanidstripealt"
 
-/datum/sprite_accessory/snouts/mammal/tajaran/fscanid
+/datum/sprite_accessory/snouts/mammal/top/tajaran/fscanid
 	name = "Mammal, Short (Top)"
 	icon_state = "fscanid"
 
-/datum/sprite_accessory/snouts/mammal/tajaran/fscanidalt
+/datum/sprite_accessory/snouts/mammal/top/tajaran/fscanidalt
 	name = "Mammal, Short ALT (Top)"
 	icon_state = "fscanidalt"
 
-/datum/sprite_accessory/snouts/mammal/tajaran/fscanidalt2
+/datum/sprite_accessory/snouts/mammal/top/tajaran/fscanidalt2
 	name = "Mammal, Short ALT 2 (Top)"
 	icon_state = "fscanidalt2"
 
-/datum/sprite_accessory/snouts/mammal/tajaran/fscanidalt3
+/datum/sprite_accessory/snouts/mammal/top/tajaran/fscanidalt3
 	name = "Mammal, Short ALT 3 (Top)"
 	icon_state = "fscanidalt3"
 
-/datum/sprite_accessory/snouts/mammal/fwolf
+/datum/sprite_accessory/snouts/mammal/top/fwolf
 	name = "Mammal, Thick (Top)"
 	icon_state = "fwolf"
 
-/datum/sprite_accessory/snouts/mammal/fwolfalt
+/datum/sprite_accessory/snouts/mammal/top/fwolfalt
 	name = "Mammal, Thick ALT (Top)"
 	icon_state = "fwolfalt"
 
-/datum/sprite_accessory/snouts/mammal/fotie
+/datum/sprite_accessory/snouts/mammal/top/fotie
 	name = "Otie (Top)"
 	icon_state = "fotie"
 
-/datum/sprite_accessory/snouts/mammal/fotiesmile
+/datum/sprite_accessory/snouts/mammal/top/fotiesmile
 	name = "Otie Smile (Top)"
 	icon_state = "fotiesmile"
 
-/datum/sprite_accessory/snouts/mammal/frodent
+/datum/sprite_accessory/snouts/mammal/top/frodent
 	name = "Rodent (Top)"
 	icon_state = "frodent"
 
-/*/datum/sprite_accessory/snouts/mammal/fround
+/*/datum/sprite_accessory/snouts/mammal/top/fround
 	name = "Mammal Round (Top)"
 	icon_state = "fround"
 	color_src = USE_ONE_COLOR
 
-/datum/sprite_accessory/snouts/mammal/froundlight
+/datum/sprite_accessory/snouts/mammal/top/froundlight
 	name = "Mammal Round + Light (Top)"
 	icon_state = "froundlight"
 	color_src = USE_ONE_COLOR*/
 
-/datum/sprite_accessory/snouts/mammal/fpede
+/datum/sprite_accessory/snouts/mammal/top/fpede
 	name = "Scolipede (Top)"
 	icon_state = "fpede"
 
-/datum/sprite_accessory/snouts/mammal/fsergal
+/datum/sprite_accessory/snouts/mammal/top/fsergal
 	name = "Sergal (Top)"
 	icon_state = "fsergal"
 
-/datum/sprite_accessory/snouts/mammal/fshark
+/datum/sprite_accessory/snouts/mammal/top/fshark
 	name = "Shark (Top)"
 	icon_state = "fshark"
 
-/*/datum/sprite_accessory/snouts/mammal/fsharp
+/*/datum/sprite_accessory/snouts/mammal/top/fsharp
 	name = "Mammal Sharp (Top)"
 	icon_state = "fsharp"
 	color_src = USE_ONE_COLOR
 
-/datum/sprite_accessory/snouts/mammal/fsharplight
+/datum/sprite_accessory/snouts/mammal/top/fsharplight
 	name = "Mammal Sharp + Light (Top)"
 	icon_state = "fsharplight"
 	color_src = USE_ONE_COLOR*/
 
-/datum/sprite_accessory/snouts/mammal/ftoucan
+/datum/sprite_accessory/snouts/mammal/top/ftoucan
 	name = "Toucan (Top)"
 	icon_state = "ftoucan"
 
-/datum/sprite_accessory/snouts/mammal/fredpanda
+/datum/sprite_accessory/snouts/mammal/top/fredpanda
 	name = "WahCoon (Top)"
 	icon_state = "fwah"
 
@@ -382,7 +387,7 @@
 	name = "Zebra"
 	icon_state = "hzebra"
 
-/datum/sprite_accessory/snouts/mammal/fcorvidbeak
+/datum/sprite_accessory/snouts/mammal/top/fcorvidbeak
 	name = "Corvid Beak (Top)"
 	icon_state = "fcorvidbeak"
 
