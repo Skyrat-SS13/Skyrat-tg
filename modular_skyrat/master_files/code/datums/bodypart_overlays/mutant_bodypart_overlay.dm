@@ -176,25 +176,6 @@
 				overlay.alpha = specific_alpha
 
 
-	// for(var/image/overlay in overlays)
-	// 	switch(sprite_datum.color_src)
-	// 		if(USE_ONE_COLOR)
-	// 			overlay.color = islist(draw_color) ? draw_color[i] : draw_color
-	// 			overlay.alpha = specific_alpha
-
-	// 		if(USE_MATRIXED_COLORS)
-	// 			overlay.color = islist(draw_color) ? draw_color[i] : draw_color
-	// 			overlay.alpha = specific_alpha
-
-	// 		else
-	// 			overlay.color = limb?.color
-	// 			overlay.alpha = specific_alpha
-
-	// 	i++
-	// 	if(i > MAX_MATRIXED_COLORS)
-	// 		break
-
-
 /**
  * Helper to generate the icon_state for the bodypart_overlay we're trying to draw.
  *
