@@ -30,6 +30,12 @@
 		/obj/structure/biohazard_blob/structure/core/emp,
 	)
 
+/datum/round_event/mold
+	announce_when = 120 // 4 minutes
+
+/datum/round_event/mold/announce(fake)
+	priority_announce("Confirmed outbreak of level 6 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", ANNOUNCER_OUTBREAK6)
+
 /datum/round_event/mold/start()
 	var/list/turfs = list() //list of all the empty floor turfs in the hallway areas
 	var/mold_spawns = MOLDIES_SPAWN_LOWPOP_MIN
