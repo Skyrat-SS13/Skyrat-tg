@@ -68,17 +68,33 @@
 /datum/preference/toggle/eye_emissives/proc/is_allowed(datum/preferences/preferences)
 	return preferences.read_preference(/datum/preference/toggle/allow_emissives)
 
-// Body Markings
+// Body Markings - This isn't used anymore and thus I'm making it not do anything.
 
 /datum/preference/toggle/mutant_toggle/body_markings
 	savefile_key = "body_markings_toggle"
 	relevant_mutant_bodypart = "body_markings"
+
+/datum/preference/toggle/mutant_toggle/body_markings/is_accessible(datum/preferences/preferences)
+	. = ..() // Got to do this because of linters.
+	return FALSE
+
+/datum/preference/toggle/mutant_toggle/body_markings/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	return FALSE
+
 
 /datum/preference/choiced/mutant_choice/body_markings
 	savefile_key = "feature_body_markings"
 	relevant_mutant_bodypart = "body_markings"
 	type_to_check = /datum/preference/toggle/mutant_toggle/body_markings
 	default_accessory_type = /datum/sprite_accessory/body_markings/none
+
+/datum/preference/choiced/mutant_choice/body_markings/is_accessible(datum/preferences/preferences)
+	. = ..() // Got to do this because of linters.
+	return FALSE
+
+/datum/preference/choiced/mutant_choice/body_markings/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	return FALSE
+
 
 /datum/preference/tri_color/body_markings
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -93,6 +109,14 @@
 	savefile_key = "body_markings_emissive"
 	relevant_mutant_bodypart = "body_markings"
 	type_to_check = /datum/preference/toggle/mutant_toggle/body_markings
+
+/datum/preference/tri_bool/body_markings/is_accessible(datum/preferences/preferences)
+	. = ..() // Got to do this because of linters.
+	return FALSE
+
+/datum/preference/tri_bool/body_markings/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	return FALSE
+
 
 /// Tails
 
