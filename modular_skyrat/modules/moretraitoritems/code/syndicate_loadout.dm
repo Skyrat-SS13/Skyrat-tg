@@ -185,7 +185,7 @@
 	new /obj/item/storage/box/donkpockets(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/loadout/downtownspecial/PopulateContents()
-	new /obj/item/gun/ballistic/automatic/tommygun/therealtommy(src)
+	new /obj/item/gun/ballistic/automatic/tommygun(src)
 	new /obj/item/ammo_box/magazine/tommygunm45(src)
 	new /obj/item/clothing/suit/jacket/det_suit/noir/mafioso(src)
 	new /obj/item/clothing/under/suit/blacktwopiece/armoured(src)
