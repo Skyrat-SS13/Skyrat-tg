@@ -98,6 +98,8 @@
 #define BODYTYPE_TAUR (1<<9)
 ///The limb causes shoes to no longer be displayed, useful for taurs.
 #define BODYTYPE_HIDE_SHOES (1<<10)
+///The limb causes glasses and hats to be drawn on layers 5 and 4 respectively. Currently used for snouts with the (Top) suffix, which are drawn on layer 6 and would normally cover facewear
+#define BODYTYPE_ALT_FACEWEAR_LAYER (1<<11)
 // SKYRAT EDIT END
 
 // Defines for Species IDs. Used to refer to the name of a species, for things like bodypart names or species preferences.
@@ -873,3 +875,8 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 
 /// In dynamic human icon gen we don't replace the held item.
 #define NO_REPLACE 0
+
+/// Flags for whether you can heal yourself or not or only
+#define HEALING_TOUCH_ANYONE "healing_touch_anyone"
+#define HEALING_TOUCH_NOT_SELF "healing_touch_not_self"
+#define HEALING_TOUCH_SELF_ONLY "healing_touch_self_only"
