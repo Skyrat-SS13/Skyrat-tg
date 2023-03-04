@@ -40,21 +40,3 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "doug_dimmadome"
 	supports_variations_flags = NONE
-
-/obj/item/clothing/under/rank/security/peacekeeper/trousers
-	name = "peacekeeper's trousers"
-	desc = "Some light blue combat trousers, however you get protected by these, I have no idea."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
-	icon_state = "workpants_blue"
-	body_parts_covered = GROIN
-	can_adjust = FALSE
-	supports_variations_flags = NONE
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-
-/obj/item/clothing/under/rank/security/peacekeeper/trousers/red
-	name = "security officer's trousers"
-	desc = "Some red combat trousers, however you get protected by these, I have no idea."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
-	icon_state = "workpants_red"
