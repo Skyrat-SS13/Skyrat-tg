@@ -533,9 +533,13 @@ SUBSYSTEM_DEF(job)
 
 	SEND_SIGNAL(equipping, COMSIG_JOB_RECEIVED, job)
 
+<<<<<<< HEAD
 	equipping.mind?.set_assigned_role_with_greeting(job)
 	if(player_client)
 		to_chat(player_client, span_infoplain("You are the [chosen_title].")) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: to_chat(player_client, span_infoplain("You are the [job.title]."))
+=======
+	equipping.mind?.set_assigned_role_with_greeting(job, player_client)
+>>>>>>> 55ee1b292d4 (Fixes an oopsie with the policy update (#73713))
 
 	equipping.on_job_equipping(job, player_client?.prefs) //SKYRAT EDIT CHANGE
 
