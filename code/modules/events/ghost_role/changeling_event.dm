@@ -42,7 +42,8 @@
  * * candidate - The mob (player) to be transformed into a changeling and meteored.
  */
 
-/proc/generate_changeling_meteor(mob/dead/selected)
+/proc/generate_changeling_meteor(mob/candidate)
+	var/mob/dead/selected = make_body(candidate) //Give the selected player a body, and grab their mind
 	var/datum/mind/player_mind = new(selected.key)
 	player_mind.active = TRUE
 
