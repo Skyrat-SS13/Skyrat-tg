@@ -11,6 +11,7 @@
 /datum/emote/living/custom
 	mob_type_blacklist_typecache = list(/mob/living/brain)
 	cooldown = 0
+	stat_allowed = SOFT_CRIT
 
 //me-verb emotes should not have a cooldown check
 /datum/emote/living/custom/check_cooldown(mob/user, intentional)
@@ -511,3 +512,10 @@
 	vary = TRUE
 	sound = 'sound/weapons/bite.ogg'
 
+/datum/emote/living/thump
+	key = "thump"
+	key_third_person = "thumps"
+	message = "thumps their foot!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'sound/effects/glassbash.ogg'

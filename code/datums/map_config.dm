@@ -1,7 +1,7 @@
-//used for holding information about unique properties of maps
-//feed it json files that match the datum layout
-//defaults to box
-//  -Cyberboss
+//This file is used to contain unique properties of every map, and how we wish to alter them on a per-map basis.
+//Use JSON files that match the datum layout and you should be set from there.
+//Right now, we default to MetaStation to ensure something does indeed load by default.
+//  -san7890 (with regards to Cyberboss)
 
 /datum/map_config
 	// Metadata
@@ -33,7 +33,7 @@
 	var/shuttles = list(
 		"cargo" = "cargo_skyrat",
 		"ferry" = "ferry_fancy",
-		"whiteship" = "whiteship_box",
+		"whiteship" = "whiteship_meta",
 		"emergency" = "emergency_skyrat") //SKYRAT EDIT CHANGE
 
 	/// Dictionary of job sub-typepath to template changes dictionary

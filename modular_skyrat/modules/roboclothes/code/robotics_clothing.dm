@@ -1,8 +1,3 @@
-/obj/item/clothing/suit/toggle/labcoat/roboticist
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "labcoat_robo_sr"
-
 /obj/item/storage/backpack/science/robo
 	name = "robotics backpack"
 	desc = "A sleek, industrial-strength backpack issued to robotics personnel. Smells faintly of oil."

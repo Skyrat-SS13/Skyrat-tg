@@ -7,7 +7,6 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = SUPERVISOR_HOS
-	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 150
 	exp_required_type = EXP_TYPE_CREW
@@ -54,7 +53,7 @@
 	duffelbag = /obj/item/storage/backpack/duffelbag/sec
 	head = /obj/item/clothing/head/corrections_officer
 	box = /obj/item/storage/box/survival/security
-	belt = /obj/item/modular_computer/tablet/pda/security
+	belt = /obj/item/modular_computer/pda/security
 
 	id_trim = /datum/id_trim/job/corrections_officer
 

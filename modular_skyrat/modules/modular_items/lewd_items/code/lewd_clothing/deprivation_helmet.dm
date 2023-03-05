@@ -3,8 +3,9 @@
 
 /obj/item/clothing/head/helmet/space/deprivation_helmet
 	name = "deprivation helmet"
-	desc = "Сompletely cuts off the wearer from the outside world."
-	icon_state = "dephelmet"
+	desc = "Completely cuts off the wearer from the outside world."
+	icon_state = "dephelmet_pink"
+	base_icon_state = "dephelmet"
 	inhand_icon_state = "dephelmet_pinkn"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_hats.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_hats.dmi'
@@ -13,14 +14,14 @@
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT|HIDEFACIALHAIR
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 25, FIRE = 20, ACID = 15)
+	armor_type = /datum/armor/space_deprivation_helmet
 	clothing_flags = SNUG_FIT
 	var/color_changed = FALSE
 	//these three vars needed to turn deprivation stuff on or off
 	var/muzzle = FALSE
 	var/earmuffs = FALSE
 	var/prevent_vision = FALSE
-	//
+	/// The current color of the helmet.
 	var/current_helmet_color = "pink"
 	var/static/list/helmet_designs
 	actions_types = list(
@@ -30,6 +31,12 @@
 	)
 
 //Declare action types
+
+/datum/armor/space_deprivation_helmet
+	bio = 25
+	fire = 20
+	acid = 15
+
 /datum/action/item_action/toggle_vision
 	name = "Vision switch"
 	desc = "Makes it impossible to see anything"
@@ -141,24 +148,24 @@
 			return FALSE
 		current_helmet_color = choice
 		update_icon()
-		update_action_buttons_icons()
+		update_mob_action_buttonss()
 		color_changed = TRUE
 	else
 		return
 
-/obj/item/clothing/head/helmet/space/deprivation_helmet/proc/update_action_buttons_icons()
+/obj/item/clothing/head/helmet/space/deprivation_helmet/proc/update_mob_action_buttonss()
 	var/datum/action/item_action/action_button
 
 	for(action_button in src.actions)
 		if(istype(action_button, /datum/action/item_action/toggle_vision))
 			action_button.button_icon_state = "[current_helmet_color]_blind"
-			action_button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
+			action_button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 		if(istype(action_button, /datum/action/item_action/toggle_hearing))
 			action_button.button_icon_state = "[current_helmet_color]_deaf"
-			action_button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
+			action_button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 		if(istype(action_button, /datum/action/item_action/toggle_speech))
 			action_button.button_icon_state = "[current_helmet_color]_mute"
-			action_button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
+			action_button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 	update_icon()
 
 // To check if we can change helmet's model
@@ -173,15 +180,15 @@
 	. = ..()
 	update_icon_state()
 	update_icon()
-	update_action_buttons_icons()
+	update_mob_action_buttonss()
 	if(!length(helmet_designs))
 		populate_helmet_designs()
 
 // Updating both and icon in hands and icon worn
 /obj/item/clothing/head/helmet/space/deprivation_helmet/update_icon_state()
 	.=..()
-	icon_state = "[initial(icon_state)]_[current_helmet_color]"
-	inhand_icon_state = "[initial(icon_state)]_[current_helmet_color]"
+	icon_state = "[base_icon_state]_[current_helmet_color]"
+	inhand_icon_state = "[base_icon_state]_[current_helmet_color]"
 
 // Here goes code that applies stuff on the wearer
 /obj/item/clothing/head/helmet/space/deprivation_helmet/equipped(mob/living/carbon/human/user, slot)

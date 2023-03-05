@@ -20,7 +20,6 @@
 	contraband = list(
 		/obj/item/clothing/glasses/sunglasses = 2,
 		/obj/item/storage/fancy/donut_box = 2,
-		/obj/item/armament_token/sidearm_blackmarket = 2,
 	)
 	premium = list(
 		/obj/item/storage/belt/security/webbing = 4,

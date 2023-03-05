@@ -361,7 +361,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 /obj/item/mod/control/pre_equipped/atmospheric/breach_control //Just a different kit as 811 wont be raiding Robotics; otherwise the same look (For now???)
 	theme = /datum/mod_theme/atmospheric/breach_control
 	applied_cell = /obj/item/stock_parts/cell/super
-	initial_modules = list(
+	applied_modules = list(
 		/obj/item/mod/module/storage/large_capacity,
 		/obj/item/mod/module/welding,
 		/obj/item/mod/module/rad_protection,
@@ -393,7 +393,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	head = /obj/item/clothing/head/soft/paramedic
 	id = /obj/item/card/id/advanced/solfed
 	suit =  /obj/item/clothing/suit/toggle/labcoat/paramedic
-	gloves = /obj/item/clothing/gloves/color/latex/nitrile
+	gloves = /obj/item/clothing/gloves/latex/nitrile
 	belt = /obj/item/storage/belt/medical/paramedic
 	suit_store = /obj/item/flashlight/pen/paramedic
 	backpack_contents = list(/obj/item/storage/box/survival = 1,

@@ -26,13 +26,28 @@
 	icon_state = "util_sec_old"
 	can_adjust = FALSE
 
-/obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate //MOVE ALL /SYNDICATES TO THE SYNDICATE.DM WHEN THE .dmi IS MADE (soon, after centcom.dmi)
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
+/obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate //ORION TODO: MOVE ALL /SYNDICATES TO SYNDICATE.DM
+	armor_type = /datum/armor/redsec_syndicate
 	has_sensor = NO_SENSORS
+
+/obj/item/clothing/under/rank/security/peacekeeper/trousers //ORION TODO: repath off of Peacekeeper
+	name = "security trousers"
+	desc = "Some Peacekeeper-blue combat trousers. Probably should pair it with a vest for safety."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
+	icon_state = "workpants_blue"
+	body_parts_covered = GROIN|LEGS
+	can_adjust = FALSE
+	female_sprite_flags = FEMALE_UNIFORM_NO_BREASTS
 
 /*
 *	HEAD OF SECURITY
 */
+
+/datum/armor/redsec_syndicate
+	melee = 10
+	fire = 50
+	acid = 40
 
 /obj/item/clothing/under/rank/security/head_of_security/skyrat/imperial //Rank pins of the Grand General
 	desc = "A tar black naval suit and a rank badge denoting the Officer of The Internal Security Division. Be careful your underlings don't bump their head on a door."

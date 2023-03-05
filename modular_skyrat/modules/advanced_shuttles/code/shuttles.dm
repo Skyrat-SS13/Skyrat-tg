@@ -56,12 +56,6 @@
 	suffix = "skyrat"
 	who_can_purchase = null
 
-/datum/map_template/shuttle/escape_pod/default
-	name = "escape pod (Default)"
-	prefix = "_maps/shuttles/skyrat/"
-	port_id = "escape_pod"
-	suffix = "default_skyrat"
-
 /datum/map_template/shuttle/emergency/default
 	prefix = "_maps/shuttles/skyrat/"
 	suffix = "skyrat"

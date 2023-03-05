@@ -83,31 +83,6 @@
 		else message_admins("[key_name_admin(usr)] FAILED to create '[href_list["makeAntag"]]' with a parameter of '[opt]'.")
 // SKYRAT EDIT END -- ONE CLICK ANTAG
 
-	else if(href_list["forceevent"])
-		if(!check_rights(R_FUN))
-			return
-		var/datum/round_event_control/E = locate(href_list["forceevent"]) in SSevents.control
-		if(E)
-			E.admin_setup(usr)
-			var/datum/round_event/event = E.runEvent()
-			if(event.cancel_event)
-				return
-			if(event.announce_when>0)
-				event.processing = FALSE
-				var/prompt = tgui_alert(usr, "Would you like to alert the crew?", "Alert", list("Yes", "No", "Cancel"))
-				switch(prompt)
-					if("Yes")
-						event.announce_chance = 100
-					if("Cancel")
-						event.kill()
-						return
-					if("No")
-						event.announce_chance = 0
-				event.processing = TRUE
-			message_admins("[key_name_admin(usr)] has triggered an event. ([E.name])")
-			log_admin("[key_name(usr)] has triggered an event. ([E.name])")
-		return
-
 	else if(href_list["editrightsbrowser"])
 		edit_admin_permissions(0)
 
@@ -738,7 +713,7 @@
 			to_chat(usr, "This can only be used on instances of type /mob/living.", confidential = TRUE)
 			return
 
-		L.revive(full_heal = TRUE, admin_revive = TRUE)
+		L.revive(ADMIN_HEAL_ALL)
 		message_admins(span_danger("Admin [key_name_admin(usr)] healed / revived [key_name_admin(L)]!"))
 		log_admin("[key_name(usr)] healed / Revived [key_name(L)].")
 
@@ -860,7 +835,8 @@
 				var/iterable = 0
 				for(var/datum/antagonist/role in subject.mind.antag_datums)
 					special_role_description += "[role.name]"
-					if(++iterable != length(subject.mind.antag_datums))
+					iterable++
+					if(iterable != length(subject.mind.antag_datums))
 						special_role_description += ", "
 				special_role_description += "</b></font>"
 			else
@@ -1211,7 +1187,7 @@
 	else if(href_list["dupe_marked_datum"])
 		if(!check_rights(R_SPAWN))
 			return
-		return DuplicateObject(marked_datum, perfectcopy=1, newloc=get_turf(usr))
+		return duplicate_object(marked_datum, spawning_location = get_turf(usr))
 
 	else if(href_list["object_list"]) //this is the laggiest thing ever
 		if(!check_rights(R_SPAWN))

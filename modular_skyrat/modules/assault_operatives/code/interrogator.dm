@@ -1,6 +1,6 @@
 #define STAGE_PROCESS_TIME_LOWER (30 SECONDS)
 #define STAGE_PROCESS_TIME_UPPER (1 MINUTES)
-#define ALERT_CREW_TIME (25 SECONDS)
+#define ALERT_CREW_TIME (1 MINUTES)
 
 /**
  * The interrorgator, a piece of machinery used in assault ops to extract GoldenEye keys from heads of staff.
@@ -141,7 +141,7 @@
 	to_chat(human_occupant, span_danger("As [src] whirrs to life you feel some cold metal restraints deploy around you, you can't move!"))
 	playsound(loc, 'sound/items/rped.ogg', 60)
 	say("Stage one complete!")
-	minor_announce("SECURITY BREACH DETECTED, NETWORK COMPROMISED! READING COORDINATES...", "GoldenEye Defence Network")
+	minor_announce("SECURITY BREACH DETECTED, NETWORK COMPROMISED! LOCATION UNTRACEABLE.", "GoldenEye Defence Network")
 	timer_id = addtimer(CALLBACK(src, PROC_REF(stage_two)), rand(STAGE_PROCESS_TIME_LOWER, STAGE_PROCESS_TIME_UPPER), TIMER_STOPPABLE|TIMER_UNIQUE)
 
 /obj/machinery/interrogator/proc/stage_two()
@@ -155,7 +155,6 @@
 	playsound(src, 'sound/effects/wounds/blood1.ogg', 100)
 	playsound(src, 'sound/items/drill_use.ogg', 100)
 	say("Stage two complete!")
-	minor_announce("SECURITY BREACH DETECTED, NETWORK COMPROMISED! INTERROGATION COORDINATES: [x], [y], [z]", "GoldenEye Defence Network")
 	timer_id = addtimer(CALLBACK(src, PROC_REF(stage_three)), rand(STAGE_PROCESS_TIME_LOWER, STAGE_PROCESS_TIME_UPPER), TIMER_STOPPABLE|TIMER_UNIQUE)
 
 /obj/machinery/interrogator/proc/stage_three()

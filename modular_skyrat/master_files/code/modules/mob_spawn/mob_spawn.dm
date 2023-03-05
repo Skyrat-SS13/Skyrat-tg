@@ -8,18 +8,31 @@
 			if(appearance_choice == "Yes")
 				load_prefs = TRUE
 
-	var/mob/living/carbon/human/spawned_human = ..()
+	var/mob/living/carbon/human/spawned_human = ..(mob_possessor, newname, load_prefs)
 
 	if(!load_prefs)
 		return spawned_human
 
 	spawned_human?.client?.prefs?.safe_transfer_prefs_to(spawned_human)
 	spawned_human.dna.update_dna_identity()
+	spawned_human.dna.species.give_important_for_life(spawned_human) // make sure they get plasmaman/vox internals etc before anything else
 
 	if(quirks_enabled)
 		SSquirks.AssignQuirks(spawned_human, spawned_human.client)
 
 	if(loadout_enabled)
 		spawned_human.equip_outfit_and_loadout(outfit, spawned_human.client.prefs)
+	else
+		equip(spawned_human)
 
 	return spawned_human
+
+/// This edit would cause somewhat ugly diffs, so I'm just replacing it.
+/// Original proc in code/modules/mob_spawn/mob_spawn.dm ~line 39.
+/obj/effect/mob_spawn/create(mob/mob_possessor, newname, is_pref_loaded)
+	var/mob/living/spawned_mob = new mob_type(get_turf(src)) //living mobs only
+	name_mob(spawned_mob, newname)
+	special(spawned_mob, mob_possessor)
+	if(!is_pref_loaded)
+		equip(spawned_mob)
+	return spawned_mob

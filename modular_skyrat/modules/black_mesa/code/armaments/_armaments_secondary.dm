@@ -18,7 +18,7 @@
 	mags_to_spawn = 3
 
 /datum/armament_entry/hecu/secondary/pistol/revolver
-	item_type = /obj/item/gun/ballistic/revolver/detective
+	item_type = /obj/item/gun/ballistic/revolver/c38/detective
 	max_purchase = 4
 	cost = 3
 	mags_to_spawn = 0

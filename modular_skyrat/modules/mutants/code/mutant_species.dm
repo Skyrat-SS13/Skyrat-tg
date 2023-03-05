@@ -3,19 +3,16 @@
 /datum/species/mutant
 	name = "High-Functioning mutant"
 	id = SPECIES_MUTANT
-	say_mod = "moans"
 	meat = /obj/item/food/meat/slab/human/mutant/zombie
 	eyes_icon = 'modular_skyrat/modules/mutants/icons/mutant_eyes.dmi'
 	species_traits = list(
-		NOBLOOD,
 		NOZOMBIE,
-		HAS_FLESH,
-		HAS_BONE,
 		NOEYESPRITES,
 		LIPS,
 		HAIR
 		)
 	inherent_traits = list(
+		TRAIT_NOBLOOD,
 		TRAIT_NODISMEMBER,
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_NOMETABOLISM,

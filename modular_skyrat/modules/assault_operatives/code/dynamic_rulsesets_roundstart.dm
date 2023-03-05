@@ -2,7 +2,7 @@
 *	ASSAULT OPERATIVES
 */
 
-#define ASSAULT_OPERATIVES_COUNT 6
+#define ASSAULT_OPERATIVES_COUNT 5
 
 /datum/dynamic_ruleset/roundstart/assault_operatives
 	name = "Assault Operatives"

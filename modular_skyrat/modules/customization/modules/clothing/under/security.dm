@@ -11,7 +11,7 @@
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/security/detective/cowboy/armorless //Donator variant, just uses the sprite.
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/none
 
 /obj/item/clothing/suit/cowboyvest
 	name = "blonde cowboy vest"
@@ -78,9 +78,17 @@
 /obj/item/clothing/under/rank/medical/scrubs/skyrat/red/sec
 	name = "security medic scrubs"
 	desc = "It's made of a special fiber that provides minor protection against biohazards and acid, along with some light padding. This one is in a deep red."
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 30, ACID = 30, WOUND = 10)
+	armor_type = /datum/armor/red_sec
 
 /// PRISONER
+
+/datum/armor/red_sec
+	melee = 10
+	bio = 10
+	fire = 30
+	acid = 30
+	wound = 10
+
 /obj/item/clothing/under/rank/prisoner/protcust
 	name = "protective custody prisoner jumpsuit"
 	desc = "A mustard coloured prison jumpsuit, often worn by former Security members, informants and former CentCom employees. Its suit sensors are stuck in the \"Fully On\" position."

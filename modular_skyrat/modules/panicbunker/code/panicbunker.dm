@@ -62,5 +62,5 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 	WRITE_FILE(json_file,json_encode(file_data))
 
 /datum/config_entry/number/max_bunker_days
-	config_entry_value = 7
+	default = 7
 	min_val = 1

@@ -403,7 +403,7 @@
 /datum/action/toggle_buffer
 	name = "Activate Auto-Wash"
 	desc = "Trade speed and water for a clean floor."
-	icon_icon = 'icons/mob/actions/actions_silicon.dmi'
+	button_icon = 'icons/mob/actions/actions_silicon.dmi'
 	button_icon_state = "activate_wash"
 	var/static/datum/callback/allow_buffer_activate
 	var/block_buffer_change	= FALSE
@@ -508,7 +508,7 @@
 	if(!wash_audio.is_active())
 		wash_audio.start()
 	clean()
-	UpdateButtons()
+	build_all_button_icons()
 
 /// Start the process of disabling the buffer. Plays some effects, waits a bit, then finishes
 /datum/action/toggle_buffer/proc/deactivate_wash()
@@ -529,7 +529,7 @@
 		animate(pixel_x = x_offset, pixel_y = y_offset, time = 1)
 	// Reset our animations
 	animate(pixel_x = base_x, pixel_y = base_y, time = 2)
-	addtimer(CALLBACK(wash_audio, /datum/looping_sound/proc/stop), time_left)
+	addtimer(CALLBACK(wash_audio, TYPE_PROC_REF(/datum/looping_sound, stop)), time_left)
 	addtimer(CALLBACK(src, PROC_REF(turn_off_wash)), finished_by)
 
 /// Called by [deactivate_wash] on a timer to allow noises and animation to play out.
@@ -538,7 +538,7 @@
 	var/mob/living/silicon/robot/robot_owner = owner
 	buffer_on = FALSE
 	robot_owner.remove_movespeed_modifier(/datum/movespeed_modifier/auto_wash)
-	UpdateButtons()
+	build_all_button_icons()
 
 /// Should we keep trying to activate our buffer, or did you fuck it up somehow
 /datum/action/toggle_buffer/proc/allow_buffer_activate()
@@ -575,14 +575,18 @@
 	// We use more water doing this then mopping
 	reagents.remove_any(2) //reaction() doesn't use up the reagents
 
-/datum/action/toggle_buffer/UpdateButtons(status_only = FALSE, force = FALSE)
+/datum/action/toggle_buffer/update_button_name(atom/movable/screen/movable/action_button/current_button, force)
 	if(buffer_on)
 		name = "De-Activate Auto-Wash"
-		button_icon_state = "deactivate_wash"
 	else
 		name = "Activate Auto-Wash"
-		button_icon_state = "activate_wash"
+	return ..()
 
+/datum/action/toggle_buffer/apply_button_icon(atom/movable/screen/movable/action_button/current_button, force)
+	if(buffer_on)
+		button_icon_state = "deactivate_wash"
+	else
+		button_icon_state = "activate_wash"
 	return ..()
 
 /obj/item/reagent_containers/spray/cyborg_drying
@@ -701,8 +705,8 @@
 
 /obj/item/robot_model/peacekeeper/do_transform_animation()
 	..()
-	to_chat(loc, "<span class='userdanger'>Under ASIMOV, you are an enforcer of the PEACE and preventer of HUMAN HARM. \
-	You are not a security member and you are expected to follow orders and prevent harm above all else. Space law means nothing to you.</span>")
+	to_chat(loc, "<span class='userdanger'>Under Safeguard, you are an enforcer of the PEACE and preventer of HARM. \
+	You are not a security member and you are expected to follow orders and prevent harm above all else. Space law means nothing to you.</span>") // SKYRAT EDIT Changes verbiage off ASIMOV/HUMAN Focus
 
 /obj/item/robot_model/security
 	name = "Security"
@@ -764,7 +768,9 @@
 		/obj/item/cooking/cyborg/power, //edit
 		/obj/item/borg/lollipop,
 		/obj/item/stack/pipe_cleaner_coil/cyborg,
-		/obj/item/borg/apparatus/beaker/service)
+		/obj/item/borg/apparatus/beaker/service,
+		/obj/item/chisel,
+	)
 	radio_channels = list(RADIO_CHANNEL_SERVICE)
 	emag_modules = list(/obj/item/reagent_containers/borghypo/borgshaker/hacked)
 	cyborg_base_icon = "service_m" // display as butlerborg for radial model selection
@@ -909,11 +915,15 @@
 	var/recharge_rate = 1000
 	var/energy
 
-/datum/robot_energy_storage/New(obj/item/robot_model/R = null)
+/datum/robot_energy_storage/New(obj/item/robot_model/model)
 	energy = max_energy
-	if(R)
-		R.storages |= src
-	return
+	if(model)
+		model.storages |= src
+		RegisterSignal(model.robot, COMSIG_MOB_GET_STATUS_TAB_ITEMS, PROC_REF(get_status_tab_item))
+
+/datum/robot_energy_storage/proc/get_status_tab_item(mob/living/silicon/robot/source, list/items)
+	SIGNAL_HANDLER
+	items += "[name]: [energy]/[max_energy]"
 
 /datum/robot_energy_storage/proc/use_charge(amount)
 	if (energy >= amount)

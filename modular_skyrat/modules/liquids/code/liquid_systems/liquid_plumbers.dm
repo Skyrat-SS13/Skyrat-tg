@@ -3,6 +3,7 @@
  */
 /obj/machinery/plumbing/floor_pump
 	icon = 'modular_skyrat/modules/liquids/icons/obj/structures/drains.dmi'
+	icon_state = "active_input"
 	anchored = FALSE
 	density = FALSE
 	idle_power_usage = 10
@@ -26,10 +27,13 @@
 	var/is_pumping = FALSE
 	/// Floor tile is placed down
 	var/tile_placed = FALSE
+	
+	///category for plumbing RCD
+	category = "Liquids"
 
 /obj/machinery/plumbing/floor_pump/Initialize(mapload, bolt, layer)
 	. = ..()
-	RegisterSignal(src, list(COMSIG_OBJ_HIDE), PROC_REF(on_hide))
+	RegisterSignal(src, COMSIG_OBJ_HIDE, PROC_REF(on_hide))
 
 /obj/machinery/plumbing/floor_pump/examine(mob/user)
 	. = ..()

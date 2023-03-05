@@ -43,8 +43,8 @@
 	report_message = "Ian has gone exploring somewhere in the station."
 
 /datum/station_trait/ian_adventure/on_round_start()
-	for(var/mob/living/simple_animal/pet/dog/corgi/dog in GLOB.mob_list)
-		if(!(istype(dog, /mob/living/simple_animal/pet/dog/corgi/ian) || istype(dog, /mob/living/simple_animal/pet/dog/corgi/puppy/ian)))
+	for(var/mob/living/basic/pet/dog/corgi/dog in GLOB.mob_list)
+		if(!(istype(dog, /mob/living/basic/pet/dog/corgi/ian) || istype(dog, /mob/living/basic/pet/dog/corgi/puppy/ian)))
 			continue
 
 		// Makes this station trait more interesting. Ian probably won't go anywhere without a little external help.
@@ -64,7 +64,7 @@
 		do_smoke(location=adventure_turf)
 
 /// Moves the new dog somewhere safe, equips it with the old one's inventory and makes it deadchat_playable.
-/datum/station_trait/ian_adventure/proc/do_corgi_respawn(mob/living/simple_animal/pet/dog/corgi/old_dog, mob/living/simple_animal/pet/dog/corgi/new_dog, gibbed, lives_left)
+/datum/station_trait/ian_adventure/proc/do_corgi_respawn(mob/living/basic/pet/dog/corgi/old_dog, mob/living/basic/pet/dog/corgi/new_dog, gibbed, lives_left)
 	SIGNAL_HANDLER
 
 	var/turf/current_turf = get_turf(new_dog)
@@ -97,7 +97,7 @@
 /datum/station_trait/glitched_pdas
 	name = "PDA glitch"
 	trait_type = STATION_TRAIT_NEUTRAL
-	weight = 8
+	weight = 15
 	show_in_report = TRUE
 	report_message = "Something seems to be wrong with the PDAs issued to you all this shift. Nothing too bad though."
 	trait_to_give = STATION_TRAIT_PDA_GLITCHED
@@ -105,7 +105,7 @@
 /datum/station_trait/announcement_intern
 	name = "Announcement Intern"
 	trait_type = STATION_TRAIT_NEUTRAL
-	weight = 1 //SKYRAT EDIT: - CHANGES INTERN WEIGHT
+	weight = 1
 	show_in_report = TRUE
 	report_message = "Please be nice to him."
 	blacklist = list(/datum/station_trait/announcement_medbot)

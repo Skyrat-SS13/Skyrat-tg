@@ -30,6 +30,7 @@
 	attack_sound = 'sound/effects/attackblob.ogg'
 	melee_damage_type = BURN
 	del_on_death = TRUE
+	death_message = "evaporates!"
 	light_system = MOVABLE_LIGHT
 	light_range = 2
 	light_power = 1
@@ -43,10 +44,6 @@
 /mob/living/simple_animal/hostile/biohazard_blob/oil_shambler/Initialize(mapload)
 	. = ..()
 	update_overlays()
-
-/mob/living/simple_animal/hostile/biohazard_blob/oil_shambler/Destroy()
-	visible_message(span_warning("The [src] evaporates!"))
-	return ..()
 
 /mob/living/simple_animal/hostile/biohazard_blob/oil_shambler/update_overlays()
 	. = ..()
@@ -166,7 +163,7 @@
 	var/datum/reagents/R = new/datum/reagents(300)
 	R.my_atom = src
 	R.add_reagent(/datum/reagent/toxin/mutagen, 20)
-	chem_splash(loc, 5, list(R))
+	chem_splash(loc, null, 5, list(R))
 	playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
 	return ..()
 

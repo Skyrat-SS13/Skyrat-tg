@@ -12,7 +12,8 @@
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_masks.dmi'
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/mask_muzzled.dmi'
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_masks.dmi'
-	icon_state = "mask"
+	icon_state = "mask_pink_off"
+	base_icon_state = "mask"
 	slot_flags = ITEM_SLOT_MASK
 	var/mask_on = FALSE
 	var/current_mask_color = "pink"
@@ -31,9 +32,6 @@
 	var/list/moans_alt = list("Mhgm...", "Hmmmp!...", "Gmmmhp!") // Power probability phrases to be said when talking.
 	var/moans_alt_probability = 5 // Probability for alternative sounds to play.
 	var/temp_check = TRUE //Used to check if user unconsious to prevent choking him until he wakes up
-
-// We can only moan with that thing on
-/obj/item/clothing/mask/gas/bdsm_mask
 	w_class = WEIGHT_CLASS_SMALL
 	modifies_speech = TRUE
 	flags_cover = MASKCOVERSMOUTH
@@ -42,16 +40,16 @@
 	. = ..()
 	create_storage(type = /datum/storage/pockets/small/bdsm_mask)
 
-/obj/item/clothing/mask/gas/bdsm_mask/proc/update_action_buttons_icons()
+/obj/item/clothing/mask/gas/bdsm_mask/proc/update_mob_action_buttonss()
 	var/datum/action/item_action/button
 
 	for(button in src.actions)
 		if(istype(button, /datum/action/item_action/toggle_breathcontrol))
 			button.button_icon_state = "[current_mask_color]_switch_[mask_on? "on" : "off"]"
-			button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
+			button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 		if(istype(button, /datum/action/item_action/mask_inhale))
 			button.button_icon_state = "[current_mask_color]_breath"
-			button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
+			button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 	update_icon()
 
 /obj/item/clothing/mask/gas/bdsm_mask/handle_speech(datum/source, list/speech_args)
@@ -78,7 +76,7 @@
 		current_mask_color = choice
 		update_icon_state()
 		update_icon()
-		update_action_buttons_icons()
+		update_mob_action_buttonss()
 		color_changed = TRUE
 		return
 	. = ..()
@@ -97,15 +95,15 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 	update_icon_state()
 	update_icon()
-	update_action_buttons_icons()
+	update_mob_action_buttonss()
 	if(!length(mask_designs))
 		populate_mask_designs()
 
 // To update icon state properly
 /obj/item/clothing/mask/gas/bdsm_mask/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_mask_color]_[mask_on? "on" : "off"]"
-	inhand_icon_state = "[initial(icon_state)]_[current_mask_color]_[mask_on? "on" : "off"]"
+	icon_state = "[base_icon_state]_[current_mask_color]_[mask_on? "on" : "off"]"
+	inhand_icon_state = "[base_icon_state]_[current_mask_color]_[mask_on? "on" : "off"]"
 
 // To make in unremovable without helping when mask is on
 /obj/item/clothing/mask/gas/bdsm_mask/attack_hand(mob/user)
@@ -220,7 +218,7 @@
 	to_chat(user, span_notice("You turn the air filter [mask_on ? "on. Use with caution!" : "off. Now it's safe to wear."]"))
 	playsound(user, mask_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE, ignore_walls = FALSE)
 	update_icon_state()
-	update_action_buttons_icons()
+	update_mob_action_buttonss()
 	update_icon()
 	var/mob/living/carbon/human/affected_human = usr
 	if(mask_on)

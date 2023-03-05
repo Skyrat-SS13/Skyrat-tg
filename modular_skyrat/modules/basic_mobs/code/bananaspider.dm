@@ -23,7 +23,8 @@
 /mob/living/basic/banana_spider/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/slippery, 40)
-	AddElement(/datum/element/death_drops, list(/obj/item/food/deadbanana_spider))
+	var/static/list/banana_drops = list(/obj/item/food/deadbanana_spider)
+	AddElement(/datum/element/death_drops, banana_drops)
 	AddElement(/datum/element/basic_body_temp_sensitive, 270, INFINITY)
 	AddComponent(/datum/component/squashable, squash_chance = 50, squash_damage = 1)
 
@@ -40,7 +41,7 @@
 	icon_state = "bananaspider_peel"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 2)
 	foodtypes = GORE | MEAT | RAW
-	grind_results = list(/datum/reagent/blood = 20, /datum/reagent/liquidgibs = 5)
+	grind_results = list(/datum/reagent/blood = 20, /datum/reagent/consumable/liquidgibs = 5)
 	juice_results = list(/datum/reagent/consumable/banana = 10)
 
 

@@ -62,58 +62,7 @@
 
 	if(href_list["late_join"])
 		play_lobby_button_sound()
-		if(!SSticker?.IsRoundInProgress())
-			to_chat(src, span_boldwarning("The round is either not ready, or has already finished..."))
-			return
-
-		//Determines Relevent Population Cap
-		var/relevant_cap
-		var/hard_popcap = CONFIG_GET(number/hard_popcap)
-		var/extreme_popcap = CONFIG_GET(number/extreme_popcap)
-		if(hard_popcap && extreme_popcap)
-			relevant_cap = min(hard_popcap, extreme_popcap)
-		else
-			relevant_cap = max(hard_popcap, extreme_popcap)
-
-		if(SSticker.queued_players.len || (relevant_cap && living_player_count() >= relevant_cap && !(ckey(key) in GLOB.admin_datums)))
-			to_chat(src, span_danger("[CONFIG_GET(string/hard_popcap_message)]"))
-
-			var/queue_position = SSticker.queued_players.Find(src)
-			if(queue_position == 1)
-				to_chat(src, span_notice("You are next in line to join the game. You will be notified when a slot opens up."))
-			else if(queue_position)
-				to_chat(src, span_notice("There are [queue_position-1] players in front of you in the queue to join the game."))
-			else
-				SSticker.queued_players += src
-				to_chat(src, span_notice("You have been added to the queue to join the game. Your position in queue is [SSticker.queued_players.len]."))
-			return
-
-		if(length_char(src.client.prefs.read_preference(/datum/preference/text/flavor_text)) < FLAVOR_TEXT_CHAR_REQUIREMENT)
-			to_chat(src, span_notice("You need at least [FLAVOR_TEXT_CHAR_REQUIREMENT] characters of flavor text to join the round. You have [length_char(src.client.prefs.read_preference(/datum/preference/text/flavor_text))] characters."))
-			return
-
-		LateChoices()
-		return
-
-	if(href_list["cancrand"])
-		src << browse(null, "window=randjob") //closes the random job window
-		LateChoices()
-		return
-
-	if(href_list["SelectedJob"])
-		select_job(href_list["SelectedJob"])
-		return
-
-	if(href_list["viewpoll"])
-		play_lobby_button_sound()
-		var/datum/poll_question/poll = locate(href_list["viewpoll"]) in GLOB.polls
-		poll_player(poll)
-		return
-
-	if(href_list["votepollref"])
-		var/datum/poll_question/poll = locate(href_list["votepollref"]) in GLOB.polls
-		vote_on_poll_handler(poll, href_list)
-		return
+		GLOB.latejoin_menu.ui_interact(usr)
 
 	if(href_list["title_is_ready"])
 		title_screen_is_ready = TRUE
@@ -163,52 +112,6 @@
 
 /mob/dead/new_player/proc/play_lobby_button_sound()
 	SEND_SOUND(src, sound('modular_skyrat/master_files/sound/effects/save.ogg'))
-
-/**
- * Selects a new job or gives random if unset.
- */
-/mob/dead/new_player/proc/select_job(job)
-	if(job == "Random")
-		var/list/dept_data = list()
-		for(var/datum/job_department/department as anything in SSjob.joinable_departments)
-			for(var/datum/job/job_datum as anything in department.department_jobs)
-				if(IsJobUnavailable(job_datum.title, TRUE) != JOB_AVAILABLE)
-					continue
-				dept_data += job_datum.title
-		if(dept_data.len <= 0) //Congratufuckinglations
-			tgui_alert(src, "There are literally no random jobs available for you on this server, ahelp for assistance.")
-			return
-		var/random = pick(dept_data)
-		var/randomjob = "<p><center><a href='byond://?src=[REF(src)];SelectedJob=[random]'>[random]</a></center><center><a href='byond://?src=[REF(src)];SelectedJob=Random'>Reroll</a></center><center><a href='byond://?src=[REF(src)];cancrand=[1]'>Cancel</a></center></p>"
-		var/datum/browser/popup = new(src, "randjob", "<div align='center'>Random Job</div>", 200, 150)
-		popup.set_window_options("can_close=0")
-		popup.set_content(randomjob)
-		popup.open(FALSE)
-		return
-
-	if(!SSticker?.IsRoundInProgress())
-		to_chat(usr, span_danger("The round is either not ready, or has already finished..."))
-		return
-
-	if(SSlag_switch.measures[DISABLE_NON_OBSJOBS])
-		to_chat(usr, span_notice("There is an administrative lock on entering the game!"))
-		return
-
-	//Determines Relevent Population Cap
-	var/relevant_cap
-	var/hard_popcap = CONFIG_GET(number/hard_popcap)
-	var/extreme_popcap = CONFIG_GET(number/extreme_popcap)
-	if(hard_popcap && extreme_popcap)
-		relevant_cap = min(hard_popcap, extreme_popcap)
-	else
-		relevant_cap = max(hard_popcap, extreme_popcap)
-
-	if(LAZYLEN(SSticker.queued_players) && !(ckey(key) in GLOB.admin_datums))
-		if((living_player_count() >= relevant_cap) || (src != SSticker.queued_players[1]))
-			to_chat(usr, span_warning("Server is full."))
-			return
-
-	AttemptLateSpawn(job)
 
 /**
  * Allows the player to select a server to join from any loaded servers.

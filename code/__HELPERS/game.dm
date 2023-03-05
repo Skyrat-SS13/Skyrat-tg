@@ -11,20 +11,14 @@
 		return null
 	return format_text ? format_text(checked_area.name) : checked_area.name
 
-//We used to use linear regression to approximate the answer, but Mloc realized this was actually faster.
-//And lo and behold, it is, and it's more accurate to boot.
-///Calculate the hypotenuse cheaply (this should be in maths.dm)
-/proc/cheap_hypotenuse(Ax, Ay, Bx, By)
-	return sqrt(abs(Ax - Bx) ** 2 + abs(Ay - By) ** 2) //A squared + B squared = C squared
-
-/** recursive_organ_check
+/** toggle_organ_decay
  * inputs: first_object (object to start with)
  * outputs:
  * description: A pseudo-recursive loop based off of the recursive mob check, this check looks for any organs held
  *  within 'first_object', toggling their frozen flag. This check excludes items held within other safe organ
  *  storage units, so that only the lowest level of container dictates whether we do or don't decompose
  */
-/proc/recursive_organ_check(atom/first_object)
+/proc/toggle_organ_decay(atom/first_object)
 
 	var/list/processing_list = list(first_object)
 	var/list/processed_list = list()
@@ -74,16 +68,30 @@
 			return player_mob
 	return null
 
-///Returns true if the mob that a player is controlling is alive
+/**
+ * Checks if the passed mind has a mob that is "alive"
+ *
+ * * player_mind - who to check for alive status
+ * * enforce_human - if TRUE, the checks fails if the mind's mob is a silicon, brain, or infectious zombie.
+ *
+ * Returns TRUE if they're alive, FALSE otherwise
+ */
 /proc/considered_alive(datum/mind/player_mind, enforce_human = TRUE)
 	if(player_mind?.current)
 		if(enforce_human)
-			var/mob/living/carbon/human/player_mob
-			if(ishuman(player_mind.current))
-				player_mob = player_mind.current
-			return player_mind.current.stat != DEAD && !issilicon(player_mind.current) && !isbrain(player_mind.current) && (!player_mob || player_mob.dna.species.id != SPECIES_ZOMBIE)
+			var/mob/living/carbon/human/player_mob = player_mind.current
+
+			if(player_mob.stat == DEAD)
+				return FALSE
+			if(issilicon(player_mob) || isbrain(player_mob))
+				return FALSE
+			if(istype(player_mob) && (player_mob.dna?.species?.id == SPECIES_ZOMBIE_INFECTIOUS))
+				return FALSE
+			return TRUE
+
 		else if(isliving(player_mind.current))
-			return player_mind.current.stat != DEAD
+			return (player_mind.current.stat != DEAD)
+
 	return FALSE
 
 /**
@@ -158,7 +166,7 @@
 	flick_overlay(image_to_show, viewing, duration)
 
 ///Get active players who are playing in the round
-/proc/get_active_player_count(alive_check = 0, afk_check = 0, human_check = 0)
+/proc/get_active_player_count(alive_check = FALSE, afk_check = FALSE, human_check = FALSE)
 	var/active_players = 0
 	for(var/i = 1; i <= GLOB.player_list.len; i++)
 		var/mob/player_mob = GLOB.player_list[i]
@@ -406,12 +414,8 @@
 
 	return pick(possible_loc)
 
-///Prevents power_failure message spam if a traitor purchases repeatedly.
-GLOBAL_VAR_INIT(power_failure_message_cooldown, 0)
-
 ///Disable power in the station APCs
 /proc/power_fail(duration_min, duration_max)
-	var/message_cooldown
 	for(var/obj/machinery/power/apc/current_apc as anything in GLOB.apcs_list)
 		if(!current_apc.cell || !SSmapping.level_trait(current_apc.z, ZTRAIT_STATION))
 			continue
@@ -420,9 +424,7 @@ GLOBAL_VAR_INIT(power_failure_message_cooldown, 0)
 			continue
 
 		var/duration = rand(duration_min,duration_max)
-		message_cooldown = max(duration, message_cooldown)
 		current_apc.energy_fail(duration)
-	GLOB.power_failure_message_cooldown = world.time + message_cooldown
 
 /**
  * Sends a round tip to a target. If selected_tip is null, a random tip will be sent instead (5% chance of it being silly).

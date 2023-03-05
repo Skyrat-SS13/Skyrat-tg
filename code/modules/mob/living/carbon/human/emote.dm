@@ -10,6 +10,7 @@
 	message = "cries."
 	message_mime = "sobs silently."
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+	stat_allowed = SOFT_CRIT
 
 /datum/emote/living/carbon/human/cry/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -91,7 +92,7 @@
 /datum/emote/living/carbon/human/scream/screech //If a human tries to screech it'll just scream.
 	key = "screech"
 	key_third_person = "screeches"
-	message = "screeches."
+	message = "screeches!"
 	message_mime = "screeches silently."
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 	vary = FALSE
@@ -216,7 +217,7 @@
 /datum/emote/living/carbon/human/monkey/screech/roar
 	key = "roar"
 	key_third_person = "roars"
-	message = "roars."
+	message = "roars!"
 	message_mime = "acts out a roar."
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 

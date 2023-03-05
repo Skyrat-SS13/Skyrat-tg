@@ -55,7 +55,7 @@
 		human_owner.set_jitter_if_lower(40 SECONDS)
 		lust_message = "You feel a static sensation all across your skin..."
 	if(stress >= 120)
-		human_owner.blur_eyes(10)
+		human_owner.set_eye_blur_if_lower(20 SECONDS)
 		lust_message = "You vision begins to blur, the heat beginning to rise..."
 	if(stress >= 180)
 		owner.adjust_hallucinations(60 SECONDS)
@@ -266,7 +266,7 @@
 		owner.clear_mood_event("sadistic")
 
 /datum/brain_trauma/very_special/sadism/proc/someone_suffering()
-	if(HAS_TRAIT(owner, TRAIT_BLIND))
+	if(owner.is_blind())
 		return FALSE
 	for(var/mob/living/carbon/human/iterated_mob in oview(owner, 4))
 		if(!isliving(iterated_mob)) //ghosts ain't people
@@ -345,4 +345,3 @@
 			. += arousal_message
 	else if(arousal > AROUSAL_MINIMUM_DETECTABLE)
 		. += span_purple("[p_they()] [p_are()] slightly blushed.") + "\n"
-

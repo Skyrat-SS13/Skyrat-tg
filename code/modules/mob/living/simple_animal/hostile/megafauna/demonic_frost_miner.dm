@@ -257,7 +257,7 @@ Difficulty: Extremely Hard
 	clone.updateappearance(mutcolor_update=1)
 	var/turf/T = find_safe_turf()
 	user.forceMove(T)
-	user.revive(full_heal = TRUE, admin_revive = TRUE)
+	user.revive(ADMIN_HEAL_ALL)
 	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob/living/carbon, set_species), /datum/species/shadow)
 	to_chat(user, span_notice("You blink and find yourself in [get_area_name(T)]... feeling a bit darker."))
 	clone.dust()
@@ -362,6 +362,11 @@ Difficulty: Extremely Hard
 /datum/status_effect/ice_block_talisman/proc/owner_moved()
 	SIGNAL_HANDLER
 	return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
+
+/datum/status_effect/ice_block_talisman/be_replaced()
+	owner.cut_overlay(cube)
+	UnregisterSignal(owner, COMSIG_MOVABLE_PRE_MOVE)
+	return ..()
 
 /datum/status_effect/ice_block_talisman/on_remove()
 	if(!owner.stat)

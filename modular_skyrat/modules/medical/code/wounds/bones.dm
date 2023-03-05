@@ -34,7 +34,7 @@
 */
 /datum/wound/blunt/wound_injury(datum/wound/old_wound = null, attack_direction)
 	// hook into gaining/losing gauze so crit bone wounds can re-enable/disable depending if they're slung or not
-	RegisterSignal(limb, list(COMSIG_BODYPART_SPLINTED, COMSIG_BODYPART_SPLINT_DESTROYED), PROC_REF(update_inefficiencies))
+	RegisterSignals(limb, list(COMSIG_BODYPART_SPLINTED, COMSIG_BODYPART_SPLINT_DESTROYED), PROC_REF(update_inefficiencies))
 
 	if(limb.body_zone == BODY_ZONE_HEAD && brain_trauma_group)
 		processes = TRUE
@@ -81,7 +81,8 @@
 			regen_ticks_current += 0.5
 
 	if(prob(severity * 3))
-		victim.take_bodypart_damage(rand(1, severity * 2), stamina=rand(2, severity * 2.5), wound_bonus=CANT_WOUND)
+		victim.take_bodypart_damage(rand(1, severity * 2), wound_bonus = CANT_WOUND)
+		victim.adjustStaminaLoss(rand(2, severity * 2.5))
 		if(prob(33))
 			to_chat(victim, span_danger("You feel a sharp pain in your body as your bones are reforming!"))
 
@@ -119,7 +120,7 @@
 		return
 	if(ishuman(victim))
 		var/mob/living/carbon/human/human_victim = victim
-		if(NOBLOOD in human_victim.dna?.species.species_traits)
+		if(HAS_TRAIT(human_victim, TRAIT_NOBLOOD))
 			return
 
 	if(limb.body_zone == BODY_ZONE_CHEST && victim.blood_volume && prob(internal_bleeding_chance + wounding_dmg))
@@ -394,7 +395,8 @@
 			return
 		victim.visible_message(span_notice("[victim] finishes applying [gel] to [victim.p_their()] [parse_zone(limb.body_zone)], grimacing from the pain!"), span_notice("You finish applying [gel] to your [parse_zone(limb.body_zone)], and your bones explode in pain!"))
 
-	limb.receive_damage(25, stamina=100, wound_bonus=CANT_WOUND)
+	limb.receive_damage(25, wound_bonus=CANT_WOUND)
+	victim.adjustStaminaLoss(100)
 	if(!gelled)
 		gelled = TRUE
 

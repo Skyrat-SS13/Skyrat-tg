@@ -8,7 +8,7 @@
 	icon = 'modular_skyrat/modules/mapping/icons/unique/dungeon.dmi'
 	icon_state = "wall"
 	base_icon_state = "wall"
-	explosion_block = INFINITY
+	explosive_resistance = INFINITY
 
 /turf/closed/indestructible/dungeon/corner
 	icon_state = "wall-corner"

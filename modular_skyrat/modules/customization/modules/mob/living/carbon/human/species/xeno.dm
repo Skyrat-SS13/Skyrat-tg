@@ -2,14 +2,11 @@
 	// A cloning mistake, crossing human and xenomorph DNA
 	name = "Xenomorph Hybrid"
 	id = SPECIES_XENO
-	say_mod = "hisses"
 	family_heirlooms = list(/obj/item/toy/plush/rouny, /obj/item/toy/toy_xeno,)
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
 		LIPS,
-		HAS_FLESH,
-		HAS_BONE,
 		HAIR,
 		FACEHAIR
 	)
@@ -20,6 +17,7 @@
 		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
+	mutanttongue = /obj/item/organ/internal/tongue/xeno
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
 		"tail" = "Xenomorph Tail",

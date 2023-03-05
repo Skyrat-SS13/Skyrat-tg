@@ -1,6 +1,6 @@
 /datum/body_marking/secondary/synthliz
 	icon = 'modular_skyrat/master_files/icons/mob/body_markings/synthliz_secondary.dmi'
-	recommended_species = list(SPECIES_SYNTHLIZ)
+	recommended_species = list()
 
 /datum/body_marking/secondary/synthliz/scutes
 	name = "Synth Scutes"
@@ -19,7 +19,7 @@
 
 /datum/body_marking/tertiary/synthliz
 	icon = 'modular_skyrat/master_files/icons/mob/body_markings/synthliz_tertiary.dmi'
-	recommended_species = list(SPECIES_SYNTHLIZ)
+	recommended_species = list()
 
 /datum/body_marking/tertiary/synthliz/plates
 	name = "Synth Plates"

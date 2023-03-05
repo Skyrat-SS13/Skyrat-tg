@@ -8,7 +8,7 @@
 	medical_record_text = "There are multiple heads and personalities affixed to one body."
 	icon = "horse-head"
 
-/datum/quirk/hydra/add()
+/datum/quirk/hydra/add(client/client_source)
 	var/mob/living/carbon/human/hydra = quirk_holder
 	var/datum/action/innate/hydra/spell = new
 	var/datum/action/innate/hydrareset/resetspell = new
@@ -22,13 +22,13 @@
 /datum/action/innate/hydra
 	name = "Switch head"
 	desc = "Switch between each of the heads on your body."
-	icon_icon = 'icons/mob/actions/actions_minor_antag.dmi'
+	button_icon = 'icons/mob/actions/actions_minor_antag.dmi'
 	button_icon_state = "art_summon"
 
 /datum/action/innate/hydrareset
 	name = "Reset Speech"
 	desc = "Go back to speaking as a whole."
-	icon_icon = 'icons/mob/actions/actions_minor_antag.dmi'
+	button_icon = 'icons/mob/actions/actions_minor_antag.dmi'
 	button_icon_state = "art_summon"
 
 /datum/action/innate/hydrareset/Activate()

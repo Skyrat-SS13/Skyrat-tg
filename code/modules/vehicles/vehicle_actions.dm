@@ -188,7 +188,7 @@
 
 /datum/action/vehicle
 	check_flags = AB_CHECK_HANDS_BLOCKED | AB_CHECK_IMMOBILE | AB_CHECK_CONSCIOUS
-	icon_icon = 'icons/mob/actions/actions_vehicle.dmi'
+	button_icon = 'icons/mob/actions/actions_vehicle.dmi'
 	button_icon_state = "vehicle_eject"
 	var/obj/vehicle/vehicle_target
 
@@ -310,7 +310,7 @@
 /datum/action/vehicle/ridden/wheelchair/bell
 	name = "Bell Ring"
 	desc = "Ring the bell."
-	icon_icon = 'icons/obj/bureaucracy.dmi'
+	button_icon = 'icons/obj/bureaucracy.dmi'
 	button_icon_state = "desk_bell"
 	check_flags = AB_CHECK_CONSCIOUS
 	var/bell_cooldown
@@ -402,7 +402,7 @@
 	animate(rider, pixel_y = -6, time = 0.4 SECONDS)
 	animate(board, pixel_y = -6, time = 0.3 SECONDS)
 	board.unbuckle_mob(rider)
-	addtimer(CALLBACK(board, /obj/vehicle/ridden/scooter/skateboard/proc/pick_up_board, rider), 1 SECONDS)  // so the board can still handle "picking it up"
+	addtimer(CALLBACK(board, TYPE_PROC_REF(/obj/vehicle/ridden/scooter/skateboard, pick_up_board), rider), 1 SECONDS)  // so the board can still handle "picking it up"
 
 
 
@@ -410,7 +410,7 @@
 
 /datum/action/vehicle/sealed/climb_out/vim
 	name = "Eject From Mech"
-	icon_icon = 'icons/mob/actions/actions_mecha.dmi'
+	button_icon = 'icons/mob/actions/actions_mecha.dmi'
 	button_icon_state = "mech_eject"
 
 /datum/action/vehicle/sealed/noise

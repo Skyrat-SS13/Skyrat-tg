@@ -56,7 +56,11 @@
 	inhand_icon_state = "holdingpack"
 	resistance_flags = FIRE_PROOF
 	item_flags = NO_MAT_REDEMPTION
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 60, ACID = 50)
+	armor_type = /datum/armor/backpack_holding
+
+/datum/armor/backpack_holding
+	fire = 60
+	acid = 50
 
 /obj/item/storage/backpack/holding/Initialize(mapload)
 	. = ..()
@@ -325,52 +329,18 @@
 	atom_storage.set_holdable(cant_hold_list = list(/obj/item/storage/backpack/satchel/flat)) //muh recursive backpacks)
 
 /obj/item/storage/backpack/satchel/flat/PopulateContents()
-	//SKYRAT EDIT CHANGE BEGIN
-	/*
-	/datum/supply_pack/costumes_toys/randomised/contraband/C = new
+	var/datum/supply_pack/costumes_toys/randomised/contraband/C = new
 	for(var/i in 1 to 2)
 		var/ctype = pick(C.contains)
 		new ctype(src)
 
 	qdel(C)
-	*/
-	var/contraband_list = list(
-		/obj/item/storage/bag/ammo = 4,
-		/obj/item/storage/belt/utility/syndicate = 1,
-		/obj/item/storage/toolbox/syndicate = 7,
-		/obj/item/card/id/advanced/chameleon = 6,
-		/obj/item/stack/spacecash/c5000 = 3,
-		/obj/item/stack/telecrystal = 2,
-		/obj/item/storage/belt/military = 12,
-		/obj/item/storage/pill_bottle/aranesp = 11,
-		/obj/item/storage/pill_bottle/happy = 12,
-		/obj/item/storage/pill_bottle/stimulant = 9,
-		/obj/item/storage/pill_bottle/lsd = 10,
-		/obj/item/storage/fancy/cigarettes/cigpack_syndicate = 8,
-		/obj/item/storage/fancy/cigarettes/cigpack_shadyjims = 10,
-		/obj/item/reagent_containers/cup/glass/bottle/absinthe = 12,
-		/obj/item/storage/box/fireworks/dangerous = 11,
-		/obj/item/food/grown/cannabis/white = 9,
-		/obj/item/food/grown/cannabis = 13,
-		/obj/item/food/grown/cannabis/rainbow = 8,
-		/obj/item/food/grown/mushroom/libertycap = 11,
-		/obj/item/clothing/mask/gas/syndicate = 10,
-		/obj/item/vending_refill/donksoft = 13,
-		/obj/item/ammo_box/foambox/riot = 11,
-		/obj/item/soap/syndie = 7,
-	)
-	for(var/i in 1 to 3)
-		var/contraband_type = pick_weight(contraband_list)
-		contraband_list -= contraband_type
-		new contraband_type(src)
-
-	//SKYRAT EDIT CHANGE END
 
 /obj/item/storage/backpack/satchel/flat/with_tools/PopulateContents()
 	new /obj/item/stack/tile/iron/base(src)
 	new /obj/item/crowbar(src)
 
-//	..() SKYRAT EDIT REMOVAL
+	..()
 
 /obj/item/storage/backpack/satchel/flat/empty/PopulateContents()
 	return
@@ -395,7 +365,6 @@
 	icon_state = "duffel-curse"
 	inhand_icon_state = "duffel-curse"
 	slowdown = 2
-	item_flags = DROPDEL
 	max_integrity = 100
 
 /obj/item/storage/backpack/duffelbag/cursed/Initialize(mapload)
@@ -465,7 +434,7 @@
 	new /obj/item/cautery(src)
 	new /obj/item/bonesetter(src)
 	new /obj/item/surgical_drapes(src)
-	new /obj/item/clothing/suit/toggle/labcoat/hospitalgown(src)	//SKYRAT EDIT ADDITION
+	new /obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown(src)	//SKYRAT EDIT ADDITION
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/razor(src)
 	new /obj/item/blood_filter(src)
@@ -489,7 +458,7 @@
 	new /obj/item/surgicaldrill(src)
 	new /obj/item/cautery(src)
 	new /obj/item/surgical_drapes(src)
-	new /obj/item/clothing/suit/toggle/labcoat/hospitalgown(src)	//SKYRAT EDIT ADDITION
+	new /obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown(src)	//SKYRAT EDIT ADDITION
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/blood_filter(src)
 
@@ -651,10 +620,10 @@
 	new /obj/item/clothing/glasses/thermal/syndi(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/med/medicalbundle
-	desc = "A large duffel bag containing a medical equipment, a Donksoft LMG, a big jumbo box of riot darts, and a knock-off pair of magboots."
+	desc = "A large duffel bag containing a medical equipment, a Donksoft LMG, a big jumbo box of riot darts, and a magboot MODsuit module."
 
 /obj/item/storage/backpack/duffelbag/syndie/med/medicalbundle/PopulateContents()
-	new /obj/item/clothing/shoes/magboots/syndie(src)
+	new /obj/item/mod/module/magboot(src)
 	new /obj/item/storage/medkit/tactical(src)
 	new /obj/item/gun/ballistic/automatic/l6_saw/toy(src)
 	new /obj/item/ammo_box/foambox/riot(src)
@@ -701,7 +670,7 @@
 	atom_storage.silent = TRUE
 
 /obj/item/storage/backpack/duffelbag/clown/syndie/PopulateContents()
-	new /obj/item/modular_computer/tablet/pda/clown(src)
+	new /obj/item/modular_computer/pda/clown(src)
 	new /obj/item/clothing/under/rank/civilian/clown(src)
 	new /obj/item/clothing/shoes/clown_shoes(src)
 	new /obj/item/clothing/mask/gas/clown_hat(src)
@@ -718,3 +687,21 @@
 	name = "police bag"
 	desc = "A large duffel bag for holding extra police gear."
 	slowdown = 0
+
+/obj/item/storage/backpack/duffelbag/mining_conscript
+	name = "mining conscription kit"
+	desc = "A kit containing everything a crewmember needs to support a shaft miner in the field."
+	icon_state = "duffel-explorer"
+	inhand_icon_state = "duffel-explorer"
+
+/obj/item/storage/backpack/duffelbag/mining_conscript/PopulateContents()
+	new /obj/item/clothing/glasses/meson(src)
+	new /obj/item/t_scanner/adv_mining_scanner/lesser(src)
+	new /obj/item/storage/bag/ore(src)
+	new /obj/item/clothing/suit/hooded/explorer(src)
+	new /obj/item/encryptionkey/headset_mining(src)
+	new /obj/item/clothing/mask/gas/explorer(src)
+	new /obj/item/card/id/advanced/mining(src)
+	new /obj/item/gun/energy/recharge/kinetic_accelerator(src)
+	new /obj/item/knife/combat/survival(src)
+	new /obj/item/flashlight/seclite(src)

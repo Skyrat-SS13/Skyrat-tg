@@ -5,8 +5,6 @@
 		MUTCOLORS,
 		EYECOLOR,
 		LIPS,
-		HAS_FLESH,
-		HAS_BONE,
 		NO_SLIP_WHEN_WALKING
 	)
 	inherent_traits = list(
@@ -16,7 +14,6 @@
 		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	say_mod = "warbles"
 	brutemod = 1.70
 	burnmod = 0.60
 	exotic_blood = /datum/reagent/copper
@@ -25,6 +22,7 @@
 	bodytemp_cold_damage_limit = (T20C - 10)
 	species_language_holder = /datum/language_holder/skrell
 	mutant_bodyparts = list()
+	mutanttongue = /obj/item/organ/internal/tongue/skrell
 	toxic_food = DAIRY | MEAT
 	disliked_food = RAW | CLOTH
 	liked_food = TOXIC | FRUIT | VEGETABLES
@@ -160,4 +158,4 @@
 	icon = 'modular_skyrat/modules/organs/icons/skrell_organ.dmi'
 	alcohol_tolerance = 5
 	toxTolerance = 10 //can shrug off up to 10u of toxins.
-	toxLethality = 0.8 * LIVER_DEFAULT_TOX_LETHALITY //20% less damage than a normal liver
+	liver_resistance = 1.2 * LIVER_DEFAULT_TOX_RESISTANCE // +20%

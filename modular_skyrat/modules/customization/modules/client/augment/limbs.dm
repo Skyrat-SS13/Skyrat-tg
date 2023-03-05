@@ -33,7 +33,7 @@
 	slot = AUGMENT_SLOT_HEAD
 
 /datum/augment_item/limb/head/cyborg
-	name = "Cyborg"
+	name = "Cyborg head"
 	path = /obj/item/bodypart/head/robot/weak
 
 //CHESTS
@@ -41,7 +41,7 @@
 	slot = AUGMENT_SLOT_CHEST
 
 /datum/augment_item/limb/chest/cyborg
-	name = "Cyborg"
+	name = "Cyborg chest"
 	path = /obj/item/bodypart/chest/robot/weak
 
 //LEFT ARMS
@@ -49,49 +49,69 @@
 	slot = AUGMENT_SLOT_L_ARM
 
 /datum/augment_item/limb/l_arm/prosthetic
-	name = "Prosthetic"
+	name = "Prosthetic left arm"
 	path = /obj/item/bodypart/arm/left/robot/surplus
 	cost = -1
 
 /datum/augment_item/limb/l_arm/cyborg
-	name = "Cyborg"
+	name = "Cyborg left arm"
 	path = /obj/item/bodypart/arm/left/robot/weak
+
+/datum/augment_item/limb/l_arm/plasmaman
+	name = "Plasmaman left arm"
+	path = /obj/item/bodypart/arm/left/plasmaman
+	uses_robotic_styles = FALSE
 
 //RIGHT ARMS
 /datum/augment_item/limb/r_arm
 	slot = AUGMENT_SLOT_R_ARM
 
 /datum/augment_item/limb/r_arm/prosthetic
-	name = "Prosthetic"
+	name = "Prosthetic right arm"
 	path = /obj/item/bodypart/arm/right/robot/surplus
 	cost = -1
 
 /datum/augment_item/limb/r_arm/cyborg
-	name = "Cyborg"
+	name = "Cyborg right arm"
 	path = /obj/item/bodypart/arm/right/robot/weak
+
+/datum/augment_item/limb/r_arm/plasmaman
+	name = "Plasmaman right arm"
+	path = /obj/item/bodypart/arm/right/plasmaman
+	uses_robotic_styles = FALSE
 
 //LEFT LEGS
 /datum/augment_item/limb/l_leg
 	slot = AUGMENT_SLOT_L_LEG
 
 /datum/augment_item/limb/l_leg/prosthetic
-	name = "Prosthetic"
+	name = "Prosthetic left leg"
 	path = /obj/item/bodypart/leg/left/robot/surplus
 	cost = -1
 
 /datum/augment_item/limb/l_leg/cyborg
-	name = "Cyborg"
+	name = "Cyborg left leg"
 	path = /obj/item/bodypart/leg/left/robot/weak
+
+/datum/augment_item/limb/l_leg/plasmaman
+	name = "Plasmaman left leg"
+	path = /obj/item/bodypart/leg/left/plasmaman
+	uses_robotic_styles = FALSE
 
 //RIGHT LEGS
 /datum/augment_item/limb/r_leg
 	slot = AUGMENT_SLOT_R_LEG
 
 /datum/augment_item/limb/r_leg/prosthetic
-	name = "Prosthetic"
+	name = "Prosthetic right leg"
 	path = /obj/item/bodypart/leg/right/robot/surplus
 	cost = -1
 
 /datum/augment_item/limb/r_leg/cyborg
-	name = "Cyborg"
+	name = "Cyborg right leg"
 	path = /obj/item/bodypart/leg/right/robot/weak
+
+/datum/augment_item/limb/r_leg/plasmaman
+	name = "Plasmaman right leg"
+	path = /obj/item/bodypart/leg/right/plasmaman
+	uses_robotic_styles = FALSE

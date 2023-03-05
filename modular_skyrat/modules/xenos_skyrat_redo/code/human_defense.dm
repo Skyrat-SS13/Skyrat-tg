@@ -13,7 +13,7 @@
 
 			if(check_shields(user, 0, "[user.name]"))
 				playsound(loc, 'sound/weapons/parry.ogg', 25, TRUE, -1) //Audio feedback to the fact you just got blocked
-				apply_damage(disarm_damage / 2, STAMINA, BODY_ZONE_CHEST)
+				apply_damage(disarm_damage / 2, STAMINA)
 				visible_message(span_danger("[user] attempts to touch [src]!"), \
 					span_danger("[user] attempts to touch you!"), span_hear("You hear a swoosh!"), null, user)
 				to_chat(user, span_warning("You attempt to touch [src]!"))
@@ -21,7 +21,7 @@
 
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, TRUE, -1) //The sounds of these are changed so the xenos can actually hear they are being non-lethal
 			Knockdown(3 SECONDS)
-			apply_damage(disarm_damage, STAMINA, BODY_ZONE_CHEST)
+			apply_damage(disarm_damage, STAMINA)
 			visible_message(span_danger("[user] knocks [src] down!"), \
 				span_userdanger("[user] knocks you down!"), span_hear("You hear aggressive shuffling follow by a loud thud!"), null, user)
 			to_chat(user, span_danger("You knock [src] down!"))
@@ -29,7 +29,7 @@
 
 		else
 			playsound(loc, 'sound/effects/hit_kick.ogg', 25, TRUE, -1)
-			apply_damage(disarm_damage, STAMINA, BODY_ZONE_CHEST)
+			apply_damage(disarm_damage, STAMINA)
 			log_combat(user, src, "tackled")
 			visible_message(span_danger("[user] tackles [src] down!"), \
 							span_userdanger("[user] tackles you down!"), span_hear("You hear aggressive shuffling!"), null, user)

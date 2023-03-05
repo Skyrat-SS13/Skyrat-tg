@@ -85,12 +85,15 @@
 	if(!ismovable(target))
 		return
 
+	. |= COMPONENT_AFTERATTACK_PROCESSED_ITEM
+
 	if(isobj(target))
 		var/obj/object_target = target
 		if(!(object_target.obj_flags & CAN_BE_HIT))
-			return
+			return .
 
 	INVOKE_ASYNC(src, PROC_REF(after_attack_effect), source, target, user)
+	return .
 
 /*
  * Effects done when we hit people with our plant, AFTER the attack is done.
@@ -264,7 +267,7 @@
 		return
 
 	our_chili = WEAKREF(our_plant)
-	RegisterSignal(our_plant, list(COMSIG_PARENT_QDELETING, COMSIG_ITEM_DROPPED), PROC_REF(stop_backfire_effect))
+	RegisterSignals(our_plant, list(COMSIG_PARENT_QDELETING, COMSIG_ITEM_DROPPED), PROC_REF(stop_backfire_effect))
 
 /*
  * Begin processing the trait on backfire.

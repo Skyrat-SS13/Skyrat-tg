@@ -1,7 +1,8 @@
 /obj/item/clothing/glasses/hypno
 	name = "hypnotic goggles"
 	desc = "Woaa-a-ah... This is lewd."
-	icon_state = "hypnogoggles"
+	icon_state = "hypnogoggles_pink"
+	base_icon_state = "hypnogoggles"
 	inhand_icon_state = "hypnogoggles_pink"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_eyes.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_eyes.dmi'
@@ -26,16 +27,16 @@
 	if(!(iscarbon(victim) && victim.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy)))
 		return
 	if(codephrase != "")
-		victim.gain_trauma(new /datum/brain_trauma/very_special/induced_hypnosis(codephrase), TRAUMA_RESILIENCE_BASIC)
+		victim.gain_trauma(new /datum/brain_trauma/very_special/induced_hypnosis(codephrase), TRAUMA_RESILIENCE_MAGIC)
 	else
 		codephrase = "Obey."
-		victim.gain_trauma(new /datum/brain_trauma/very_special/induced_hypnosis(codephrase), TRAUMA_RESILIENCE_BASIC)
+		victim.gain_trauma(new /datum/brain_trauma/very_special/induced_hypnosis(codephrase), TRAUMA_RESILIENCE_MAGIC)
 
 /obj/item/clothing/glasses/hypno/dropped(mob/user)//Removing hypnosis on unequip
 	. = ..()
 	if(!(victim.glasses == src))
 		return
-	victim.cure_trauma_type(/datum/brain_trauma/very_special/induced_hypnosis, TRAUMA_RESILIENCE_BASIC)
+	victim.cure_trauma_type(/datum/brain_trauma/very_special/induced_hypnosis, TRAUMA_RESILIENCE_MAGIC)
 	victim = null
 
 /obj/item/clothing/glasses/hypno/Destroy()
@@ -44,7 +45,7 @@
 		return
 	if(!(victim.glasses == src))
 		return
-	victim.cure_trauma_type(/datum/brain_trauma/very_special/induced_hypnosis, TRAUMA_RESILIENCE_BASIC)
+	victim.cure_trauma_type(/datum/brain_trauma/very_special/induced_hypnosis, TRAUMA_RESILIENCE_MAGIC)
 
 /obj/item/clothing/glasses/hypno/attack_self(mob/user)//Setting up hypnotising phrase
 	. = ..()
@@ -88,8 +89,8 @@
 
 /obj/item/clothing/glasses/hypno/update_icon_state()
 	. = ..()
-	icon_state = icon_state = "[initial(icon_state)]_[current_hypnogoggles_color]"
-	inhand_icon_state = "[initial(icon_state)]_[current_hypnogoggles_color]"
+	icon_state = "[base_icon_state]_[current_hypnogoggles_color]"
+	inhand_icon_state = "[base_icon_state]_[current_hypnogoggles_color]"
 
 /datum/brain_trauma/very_special/induced_hypnosis
 	name = "Hypnosis"
@@ -143,4 +144,7 @@
 			new /datum/hallucination/chat(owner, TRUE, FALSE, span_hypnophrase("[hypnotic_phrase]"))
 
 /datum/brain_trauma/very_special/induced_hypnosis/handle_hearing(datum/source, list/hearing_args)
+	if(!owner.can_hear() || owner == hearing_args[HEARING_SPEAKER])
+		return
+
 	hearing_args[HEARING_RAW_MESSAGE] = target_phrase.Replace(hearing_args[HEARING_RAW_MESSAGE], span_hypnophrase("$1"))

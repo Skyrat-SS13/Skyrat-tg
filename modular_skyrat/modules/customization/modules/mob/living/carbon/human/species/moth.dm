@@ -7,8 +7,6 @@
 	)
 	species_traits = list(
 		LIPS,
-		HAS_FLESH,
-		HAS_BONE,
 		HAS_MARKINGS,
 		TRAIT_ANTENNAE,
 		MUTCOLORS,

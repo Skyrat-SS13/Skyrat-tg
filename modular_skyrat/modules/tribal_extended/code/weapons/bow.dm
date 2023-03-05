@@ -6,7 +6,8 @@
 	righthand_file = 'modular_skyrat/modules/tribal_extended/icons/bows_righthand.dmi'
 	worn_icon = 'modular_skyrat/modules/tribal_extended/icons/back.dmi'
 	inhand_icon_state = "bow"
-	icon_state = "bow"
+	icon_state = "bow_unloaded"
+	base_icon_state = "bow"
 	worn_icon_state = "bow"
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_HEAVY //need both hands to fire
@@ -18,7 +19,9 @@
 	casing_ejector = FALSE
 	internal_magazine = TRUE
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL //so ashwalkers can use it
-	has_gun_safety = FALSE
+
+/obj/item/gun/ballistic/tribalbow/give_gun_safeties()
+	return
 
 /obj/item/gun/ballistic/tribalbow/shoot_with_empty_chamber()
 	return
@@ -39,7 +42,7 @@
 		to_chat(user, span_notice("You gently release the bowstring, removing the arrow."))
 	else if (get_ammo())
 		var/obj/item/I = user.get_active_held_item()
-		if (do_mob(user,I,10))
+		if (do_after(user, 1 SECONDS, I))
 			to_chat(user, span_notice("You draw back the bowstring."))
 			playsound(src, 'modular_skyrat/modules/tribal_extended/sound/sound_weapons_bowdraw.ogg', 75, 0) //gets way too high pitched if the freq varies
 			chamber_round()
@@ -52,7 +55,7 @@
 
 /obj/item/gun/ballistic/tribalbow/update_icon()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[get_ammo() ? (chambered ? "firing" : "loaded") : "unloaded"]"
+	icon_state = "[base_icon_state]_[get_ammo() ? (chambered ? "firing" : "loaded") : "unloaded"]"
 
 /obj/item/gun/ballistic/tribalbow/can_shoot()
 	return chambered
@@ -61,7 +64,8 @@
 	name = "bone bow"
 	desc = "Some sort of primitive projectile weapon made of bone and wrapped sinew, oddly robust."
 	icon = 'modular_skyrat/modules/tribal_extended/icons/projectile.dmi'
-	icon_state = "ashenbow"
+	icon_state = "ashenbow_unloaded"
+	base_icon_state = "ashenbow"
 	inhand_icon_state = "ashenbow"
 	worn_icon_state = "ashenbow"
 	force = 12
@@ -70,7 +74,8 @@
 	name = "pipe bow"
 	desc = "Portable and sleek, but you'd be better off hitting someone with a pool noodle."
 	icon = 'modular_skyrat/modules/tribal_extended/icons/projectile.dmi'
-	icon_state = "pipebow"
+	icon_state = "pipebow_unloaded"
+	base_icon_state = "pipebow"
 	inhand_icon_state = "pipebow"
 	worn_icon_state = "pipebow"
 	force = 3

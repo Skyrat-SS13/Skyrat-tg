@@ -8,7 +8,7 @@
 
 //movement intent defines for the m_intent var
 #define MOVE_INTENT_WALK "walk"
-#define MOVE_INTENT_RUN  "run"
+#define MOVE_INTENT_RUN "run"
 
 //Blood levels
 #define BLOOD_VOLUME_MAX_LETHAL 2150
@@ -35,8 +35,8 @@
 #define MOB_SIZE_HUGE 4 // Use this for things you don't want bluespace body-bagged
 
 //Ventcrawling defines
-#define VENTCRAWLER_NONE   0
-#define VENTCRAWLER_NUDE   1
+#define VENTCRAWLER_NONE 0
+#define VENTCRAWLER_NUDE 1
 #define VENTCRAWLER_ALWAYS 2
 
 //Mob bio-types flags
@@ -52,10 +52,16 @@
 #define MOB_SPIRIT (1 << 9)
 #define MOB_PLANT (1 << 10)
 
+//Lung respiration type flags
+#define RESPIRATION_OXYGEN (1 << 0)
+#define RESPIRATION_CO2 (1 << 1)
+#define RESPIRATION_N2 (1 << 2)
+#define RESPIRATION_PLASMA (1 << 3)
 
 //Organ defines for carbon mobs
 #define ORGAN_ORGANIC 1
 #define ORGAN_ROBOTIC 2
+#define ORGAN_MINERAL 3 // Used for the plasmaman liver
 
 #define DEFAULT_BODYPART_ICON_ORGANIC 'icons/mob/species/human/bodyparts_greyscale.dmi'
 #define DEFAULT_BODYPART_ICON_ROBOTIC 'icons/mob/augmentation/augments.dmi'
@@ -92,6 +98,8 @@
 #define BODYTYPE_TAUR (1<<9)
 ///The limb causes shoes to no longer be displayed, useful for taurs.
 #define BODYTYPE_HIDE_SHOES (1<<10)
+///The limb causes glasses and hats to be drawn on layers 5 and 4 respectively. Currently used for snouts with the (Top) suffix, which are drawn on layer 6 and would normally cover facewear
+#define BODYTYPE_ALT_FACEWEAR_LAYER (1<<11)
 // SKYRAT EDIT END
 
 // Defines for Species IDs. Used to refer to the name of a species, for things like bodypart names or species preferences.
@@ -128,6 +136,7 @@
 #define BODYPART_ID_ROBOTIC "robotic"
 #define BODYPART_ID_DIGITIGRADE "digitigrade"
 #define BODYPART_ID_LARVA "larva"
+#define BODYPART_ID_PSYKER "psyker"
 
 //See: datum/species/var/digitigrade_customization
 ///The species does not have digitigrade legs in generation.
@@ -182,12 +191,12 @@
 #define BRAIN_TRAUMA_SPECIAL /datum/brain_trauma/special
 #define BRAIN_TRAUMA_MAGIC /datum/brain_trauma/magic
 
-#define TRAUMA_RESILIENCE_BASIC 1      //Curable with chems
-#define TRAUMA_RESILIENCE_SURGERY 2    //Curable with brain surgery
-#define TRAUMA_RESILIENCE_LOBOTOMY 3   //Curable with lobotomy
-#define TRAUMA_RESILIENCE_WOUND 4    //Curable by healing the head wound
-#define TRAUMA_RESILIENCE_MAGIC 5      //Curable only with magic
-#define TRAUMA_RESILIENCE_ABSOLUTE 6   //This is here to stay
+#define TRAUMA_RESILIENCE_BASIC 1 //Curable with chems
+#define TRAUMA_RESILIENCE_SURGERY 2 //Curable with brain surgery
+#define TRAUMA_RESILIENCE_LOBOTOMY 3 //Curable with lobotomy
+#define TRAUMA_RESILIENCE_WOUND 4 //Curable by healing the head wound
+#define TRAUMA_RESILIENCE_MAGIC 5 //Curable only with magic
+#define TRAUMA_RESILIENCE_ABSOLUTE 6 //This is here to stay
 
 //Limit of traumas for each resilience tier
 #define TRAUMA_LIMIT_BASIC 3
@@ -347,9 +356,9 @@
 
 //determines if a mob can smash through it
 #define ENVIRONMENT_SMASH_NONE 0
-#define ENVIRONMENT_SMASH_STRUCTURES (1<<0) //crates, lockers, ect
-#define ENVIRONMENT_SMASH_WALLS (1<<1)  //walls
-#define ENVIRONMENT_SMASH_RWALLS (1<<2) //rwalls
+#define ENVIRONMENT_SMASH_STRUCTURES 1 //crates, lockers, ect
+#define ENVIRONMENT_SMASH_WALLS 2 //walls
+#define ENVIRONMENT_SMASH_RWALLS 3 //rwalls
 
 #define NO_SLIP_WHEN_WALKING (1<<0)
 #define SLIDE (1<<1)
@@ -419,12 +428,12 @@
 //#define AGE_MIN 17	//youngest a character can be //ORIGINAL
 #define AGE_MIN	18	//youngest a character can be //SKYRAT EDIT CHANGE - age
 #define AGE_MAX 85 //oldest a character can be
-#define AGE_MINOR 20  //legal age of space drinking and smoking
+#define AGE_MINOR 20 //legal age of space drinking and smoking
 #define WIZARD_AGE_MIN 30 //youngest a wizard can be
 #define APPRENTICE_AGE_MIN 29 //youngest an apprentice can be
 
 #define SHOES_SLOWDOWN 0 //How much shoes slow you down by default. Negative values speed you up
-#define SHOES_SPEED_SLIGHT  SHOES_SLOWDOWN - 1 // slightest speed boost to movement
+#define SHOES_SPEED_SLIGHT SHOES_SLOWDOWN - 1 // slightest speed boost to movement
 #define POCKET_STRIP_DELAY (4 SECONDS) //time taken to search somebody's pockets
 #define DOOR_CRUSH_DAMAGE 15 //the amount of damage that airlocks deal when they crush you
 
@@ -607,41 +616,71 @@
 #define GRADIENT_APPLIES_TO_HAIR (1<<0)
 #define GRADIENT_APPLIES_TO_FACIAL_HAIR (1<<1)
 
+// Height defines
+// - They are numbers so you can compare height values (x height < y height)
+// - They do not start at 0 for futureproofing
+// - They skip numbers for futureproofing as well
+// Otherwise they are completely arbitrary
+#define HUMAN_HEIGHT_DWARF 2
+#define HUMAN_HEIGHT_SHORTEST 4
+#define HUMAN_HEIGHT_SHORT 6
+#define HUMAN_HEIGHT_MEDIUM 8
+#define HUMAN_HEIGHT_TALL 10
+#define HUMAN_HEIGHT_TALLEST 12
+
+/// Assoc list of all heights, cast to strings, to """"tuples"""""
+/// The first """tuple""" index is the upper body offset
+/// The second """tuple""" index is the lower body offset
+GLOBAL_LIST_INIT(human_heights_to_offsets, list(
+	"[HUMAN_HEIGHT_DWARF]" = list(-5, -4),
+	"[HUMAN_HEIGHT_SHORTEST]" = list(-2, -1),
+	"[HUMAN_HEIGHT_SHORT]" = list(-1, -1),
+	"[HUMAN_HEIGHT_MEDIUM]" = list(0, 0),
+	"[HUMAN_HEIGHT_TALL]" = list(1, 1),
+	"[HUMAN_HEIGHT_TALLEST]" = list(2, 2),
+))
+
 // Mob Overlays Indexes
 /// Total number of layers for mob overlays
-#define TOTAL_LAYERS 39 //KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
+/// KEEP THIS UP-TO-DATE OR SHIT WILL BREAK
+/// Also consider updating layers_to_offset
+#define TOTAL_LAYERS 39 // SKYRAT EDIT CHANGE - ORIGINAL: #define TOTAL_LAYERS 33
+
 /// Mutations layer - Tk headglows, cold resistance glow, etc
-#define MUTATIONS_LAYER 38
+#define MUTATIONS_LAYER 39 // SKYRAT EDIT CHANGE - ORIGINAL: 33
 /// Mutantrace features (tail when looking south) that must appear behind the body parts
-#define BODY_BEHIND_LAYER 37
-/// Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
-#define BODYPARTS_LAYER 36
+#define BODY_BEHIND_LAYER 38 // SKYRAT EDIT CHANGE - ORIGINAL: 32
+/// Layer for bodyparts that should appear behind every other bodypart - Mostly, legs when facing WEST or EAST
+#define BODYPARTS_LOW_LAYER 37 // SKYRAT EDIT CHANGE - ORIGINAL: 31
+/// Layer for most bodyparts, appears above BODYPARTS_LOW_LAYER and below BODYPARTS_HIGH_LAYER
+#define BODYPARTS_LAYER 36 // SKYRAT EDIT CHANGE - ORIGINAL: 30
 /// Mutantrace features (snout, body markings) that must appear above the body parts
-#define BODY_ADJ_LAYER 35
+#define BODY_ADJ_LAYER 35 // SKYRAT EDIT CHANGE - ORIGINAL: 29
 /// Underwear, undershirts, socks, eyes, lips(makeup)
-#define BODY_LAYER 34
+#define BODY_LAYER 34 // SKYRAT EDIT CHANGE - ORIGINAL: 28
 /// Mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
-#define FRONT_MUTATIONS_LAYER 33
+#define FRONT_MUTATIONS_LAYER 33 // SKYRAT EDIT CHANGE - ORIGINAL: 27
 /// Damage indicators (cuts and burns)
-#define DAMAGE_LAYER 32
-//SKYRAT EDIT ADDITION BEGIN. This layer is used for things that shouldn't be over clothes, but should be over mutations - BUMPED UP ^
+#define DAMAGE_LAYER 32 // SKYRAT EDIT CHANGE - ORIGINAL: 26
+// SKYRAT EDIT ADDITION BEGIN.
+/// This layer is used for things that shouldn't be over clothes, but should be over mutations
 #define BODY_FRONT_UNDER_CLOTHES 31
-//SKYRAT EDIT ADDITION END
+// SKYRAT EDIT ADDITION END
 /// Jumpsuit clothing layer
-#define UNIFORM_LAYER 30
-//SKYRAT EDIT ADDITION BEGIN - BUMPED UP ^
+#define UNIFORM_LAYER 30 // SKYRAT EDIT CHANGE - ORIGINAL: 25
+// SKYRAT EDIT ADDITION BEGIN - cursed layers under clothing
 #define ANUS_LAYER 29
 #define VAGINA_LAYER 28
 #define PENIS_LAYER 27
 #define NIPPLES_LAYER 26
 #define BANDAGE_LAYER 25
 //SKYRAT EDIT ADDITION END
-/// ID card layer (might be deprecated)
-#define ID_LAYER 24
 /// ID card layer
+#define ID_LAYER 24
+/// ID card layer (might be deprecated)
 #define ID_CARD_LAYER 23
-/// Hands body part layer (or is this for the arm? not sure...)
-#define HANDS_PART_LAYER 22
+/// Layer for bodyparts that should appear above every other bodypart - Currently only used for hands
+#define BODYPARTS_HIGH_LAYER 22
 /// Gloves layer
 #define GLOVES_LAYER 21
 /// Shoes layer
@@ -685,6 +724,49 @@
 /// Fire layer when you're on fire
 #define FIRE_LAYER 1
 
+#define UPPER_BODY "upper body"
+#define LOWER_BODY "lower body"
+#define NO_MODIFY "do not modify"
+
+/// Used for human height overlay adjustments
+/// Certain standing overlay layers shouldn't have a filter applied and should instead just offset by a pixel y
+/// This list contains all the layers that must offset, with its value being whether it's a part of the upper half of the body (TRUE) or not (FALSE)
+GLOBAL_LIST_INIT(layers_to_offset, list(
+	// Weapons commonly cross the middle of the sprite so they get cut in half by the filter
+	"[HANDS_LAYER]" = LOWER_BODY,
+	// Very tall hats will get cut off by filter
+	"[HEAD_LAYER]" = UPPER_BODY,
+	// Hair will get cut off by filter
+	"[HAIR_LAYER]" = UPPER_BODY,
+	// Long belts (sabre sheathe) will get cut off by filter
+	"[BELT_LAYER]" = LOWER_BODY,
+	// Everything below looks fine with or without a filter, so we can skip it and just offset
+	// (In practice they'd be fine if they got a filter but we can optimize a bit by not.)
+	"[GLASSES_LAYER]" = UPPER_BODY,
+	"[ABOVE_BODY_FRONT_GLASSES_LAYER]" = UPPER_BODY, // currently unused
+	"[ABOVE_BODY_FRONT_HEAD_LAYER]" = UPPER_BODY, // only used for head stuff
+	"[GLOVES_LAYER]" = LOWER_BODY,
+	"[HALO_LAYER]" = UPPER_BODY, // above the head
+	"[HANDCUFF_LAYER]" = LOWER_BODY,
+	"[ID_CARD_LAYER]" = UPPER_BODY, // unused
+	"[ID_LAYER]" = UPPER_BODY,
+	"[FACEMASK_LAYER]" = UPPER_BODY,
+	// These two are cached, and have their appearance shared(?), so it's safer to just not touch it
+	"[MUTATIONS_LAYER]" = NO_MODIFY,
+	"[FRONT_MUTATIONS_LAYER]" = NO_MODIFY,
+	// These DO get a filter, I'm leaving them here as reference,
+	// to show how many filters are added at a glance
+	// BACK_LAYER (backpacks are big)
+	// BODYPARTS_HIGH_LAYER (arms)
+	// BODY_ADJ_LAYER (external organs like wings)
+	// BODY_BEHIND_LAYER (external organs like wings)
+	// BODY_FRONT_LAYER (external organs like wings)
+	// DAMAGE_LAYER (full body)
+	// FIRE_LAYER (full body)
+	// UNIFORM_LAYER (full body)
+	// WOUND_LAYER (full body)
+))
+
 //Bitflags for the layers an external organ can draw on (organs can be drawn on multiple layers)
 /// Draws organ on the BODY_FRONT_LAYER
 #define EXTERNAL_FRONT (1 << 1)
@@ -694,6 +776,14 @@
 #define EXTERNAL_BEHIND (1 << 3)
 /// Draws organ on all EXTERNAL layers
 #define ALL_EXTERNAL_OVERLAYS EXTERNAL_FRONT | EXTERNAL_ADJACENT | EXTERNAL_BEHIND
+
+// Bitflags for external organs restylability
+/// This organ allows restyle through plant restyling (like secateurs)
+#define EXTERNAL_RESTYLE_PLANT (1 << 1)
+/// This organ allows restyling with flesh restyling stuff (surgery or something idk)
+#define EXTERNAL_RESTYLE_FLESH (1 << 2)
+/// This organ allows restyling with enamel restyling (like a fucking file or something?). It's for horns and shit
+#define EXTERNAL_RESTYLE_ENAMEL (1 << 3)
 
 //Mob Overlay Index Shortcuts for alternate_worn_layer, layers
 //Because I *KNOW* somebody will think layer+1 means "above"
@@ -723,6 +813,70 @@
 /// Possible value of [/atom/movable/buckle_lying]. If set to a different (positive-or-zero) value than this, the buckling thing will force a lying angle on the buckled.
 #define NO_BUCKLE_LYING -1
 
+// Flags for fully_heal().
+
+/// Special flag that means this heal is an admin heal and goes above and beyond
+/// Note, this includes things like removing suicide status and handcuffs / legcuffs, use with slight caution.
+#define HEAL_ADMIN (1<<0)
+/// Heals all brute damage.
+#define HEAL_BRUTE (1<<1)
+/// Heals all burn damage.
+#define HEAL_BURN (1<<2)
+/// Heals all toxin damage, slime people included.
+#define HEAL_TOX (1<<3)
+/// Heals all oxyloss.
+#define HEAL_OXY (1<<4)
+/// Heals all cellular damage.
+#define HEAL_CLONE (1<<5)
+/// Heals all stamina damage.
+#define HEAL_STAM (1<<6)
+/// Restore all limbs to their initial state.
+#define HEAL_LIMBS (1<<7)
+/// Heals all organs from failing.
+#define HEAL_ORGANS (1<<8)
+/// A "super" heal organs, this refreshes all organs entirely, deleting old and replacing them with new.
+#define HEAL_REFRESH_ORGANS (1<<9)
+/// Removes all wounds.
+#define HEAL_WOUNDS (1<<10)
+/// Removes all brain traumas, not including permanent ones.
+#define HEAL_TRAUMAS (1<<11)
+/// Removes all reagents present.
+#define HEAL_ALL_REAGENTS (1<<12)
+/// Removes all non-positive diseases.
+#define HEAL_NEGATIVE_DISEASES (1<<13)
+/// Restores body temperature back to nominal.
+#define HEAL_TEMP (1<<14)
+/// Restores blood levels to normal.
+#define HEAL_BLOOD (1<<15)
+/// Removes all non-positive mutations (neutral included).
+#define HEAL_NEGATIVE_MUTATIONS (1<<16)
+/// Removes status effects with this flag set that also have remove_on_fullheal = TRUE.
+#define HEAL_STATUS (1<<17)
+/// Same as above, removes all CC related status effects with this flag set that also have remove_on_fullheal = TRUE.
+#define HEAL_CC_STATUS (1<<18)
+/// Deletes any restraints on the mob (handcuffs / legcuffs)
+#define HEAL_RESTRAINTS (1<<19)
+
+/// Combination flag to only heal the main damage types.
+#define HEAL_DAMAGE (HEAL_BRUTE|HEAL_BURN|HEAL_TOX|HEAL_OXY|HEAL_CLONE|HEAL_STAM)
+/// Combination flag to only heal things messed up things about the mob's body itself.
+#define HEAL_BODY (HEAL_LIMBS|HEAL_ORGANS|HEAL_REFRESH_ORGANS|HEAL_WOUNDS|HEAL_TRAUMAS|HEAL_BLOOD|HEAL_TEMP)
+/// Combination flag to heal negative things affecting the mob.
+#define HEAL_AFFLICTIONS (HEAL_NEGATIVE_DISEASES|HEAL_NEGATIVE_MUTATIONS|HEAL_ALL_REAGENTS|HEAL_STATUS|HEAL_CC_STATUS)
+
+/// Full heal that isn't admin forced
+#define HEAL_ALL ~(HEAL_ADMIN|HEAL_RESTRAINTS)
+/// Heals everything and is as strong as / is an admin heal
+#define ADMIN_HEAL_ALL ALL
+
 /// Checking flags for [/mob/proc/can_read()]
 #define READING_CHECK_LITERACY (1<<0)
 #define READING_CHECK_LIGHT (1<<1)
+
+/// In dynamic human icon gen we don't replace the held item.
+#define NO_REPLACE 0
+
+/// Flags for whether you can heal yourself or not or only
+#define HEALING_TOUCH_ANYONE "healing_touch_anyone"
+#define HEALING_TOUCH_NOT_SELF "healing_touch_not_self"
+#define HEALING_TOUCH_SELF_ONLY "healing_touch_self_only"

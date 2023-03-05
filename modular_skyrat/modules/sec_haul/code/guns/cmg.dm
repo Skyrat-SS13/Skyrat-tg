@@ -6,7 +6,7 @@
 
 /obj/item/gun/ballistic/automatic/cmg
 	name = "\improper NT CMG-2 PDW"
-	desc = "A bullpup, two-round burst PDW chambered in 9mm Peacekeeper, developed by Nanotrasen R&D and based on a licensed Scarborough Arms design. It features a folding stock and comes pre-attached with a dot sight."
+	desc = "A bullpup, two-round burst PDW chambered in 9x25mm, developed by Nanotrasen R&D and based on a licensed Scarborough Arms design. It features a folding stock and comes pre-attached with a dot sight."
 	icon_state = "cmg1"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	inhand_icon_state = "c20r"
@@ -20,6 +20,7 @@
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	empty_indicator = TRUE
+	projectile_damage_multiplier = 0.5
 
 /obj/item/gun/ballistic/automatic/cmg/add_seclight_point()
 	AddComponent(/datum/component/seclite_attachable, \
@@ -29,25 +30,25 @@
 		overlay_y = 10)
 
 /obj/item/ammo_box/magazine/multi_sprite/cmg
-	name = "9mm Peacekeeper PDW magazine"
+	name = "9x25mm PDW magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g11"
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-	caliber = CALIBER_9MMPEACE
+	ammo_type = /obj/item/ammo_casing/c9mm/rubber
+	caliber = CALIBER_9MM
 	max_ammo = 24
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/cmg/hp
-	ammo_type = /obj/item/ammo_casing/b9mm/hp
+	ammo_type = /obj/item/ammo_casing/c9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
 /obj/item/ammo_box/magazine/multi_sprite/cmg/ihdf
-	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
+	ammo_type = /obj/item/ammo_casing/c9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
 /obj/item/ammo_box/magazine/multi_sprite/cmg/lethal
-	ammo_type = /obj/item/ammo_casing/b9mm
+	ammo_type = /obj/item/ammo_casing/c9mm
 	round_type = AMMO_TYPE_LETHAL
 
 /obj/item/storage/box/gunset/cmg
