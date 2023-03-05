@@ -1,3 +1,6 @@
+#define MARAUDER_SHIELD_MAX 4
+#define WELDER_REPAIR_AMOUNT 15
+
 GLOBAL_LIST_EMPTY(clockwork_marauders)
 
 /mob/living/basic/clockwork_marauder
@@ -30,12 +33,15 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	ai_controller = /datum/ai_controller/basic_controller/clockwork_marauder
 
-
+	/// Items to be dropped on death
 	var/static/list/loot = list(
 		/obj/structure/fluff/clockwork/alloy_shards/large = 1,
 		/obj/structure/fluff/clockwork/alloy_shards/medium = 2,
 		/obj/structure/fluff/clockwork/alloy_shards/small = 3,
 	)
+
+	/// How many hits the shield can take before it breaks.
+	var/shield_health = MARAUDER_SHIELD_MAX
 
 
 /mob/living/basic/clockwork_marauder/Initialize(mapload)
@@ -49,6 +55,52 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 /mob/living/basic/clockwork_marauder/Destroy()
 	GLOB.clockwork_marauders -= src
 	return ..()
+
+
+/mob/living/basic/clockwork_marauder/attacked_by(obj/item/attacking_item, mob/living/user)
+	if(istype(attacking_item, /obj/item/nullrod))
+		apply_damage(15, BURN)
+
+		if(shield_health)
+			damage_shield()
+
+		playsound(src,'sound/hallucinations/veryfar_noise.ogg',40,1)
+
+	if(attacking_item == TOOL_WELDER)
+		welder_act(user, attacking_item)
+		return
+
+	return ..()
+
+
+/mob/living/basic/clockwork_marauder/bullet_act(obj/projectile/proj)
+	//Block Ranged Attacks
+	if(shield_health)
+		damage_shield()
+		to_chat(src, span_warning("Your shield blocks the attack."))
+		return BULLET_ACT_BLOCK
+	return ..()
+
+
+/// Damage the marauder's shield by one tick
+/mob/living/basic/clockwork_marauder/proc/damage_shield()
+	shield_health--
+	playsound(src, 'sound/magic/clockwork/anima_fragment_attack.ogg', 60, TRUE)
+	if(!shield_health)
+		to_chat(src, span_userdanger("Your shield breaks!"))
+		to_chat(src, span_brass("You require a <b>welding tool</b> to repair your damaged shield!"))
+
+
+/mob/living/basic/clockwork_marauder/welder_act(mob/living/user, obj/item/tool)
+	if(!do_after(user, 2.5 SECONDS, target = src))
+		return TRUE
+
+	health = min(health + WELDER_REPAIR_AMOUNT, maxHealth)
+	to_chat(user, span_notice("You repair some of [src]'s damage."))
+	if(shield_health < MARAUDER_SHIELD_MAX)
+		shield_health++
+		playsound(src, 'sound/magic/charge.ogg', 60, TRUE)
+	return TRUE
 
 
 /datum/language_holder/clockmob
@@ -78,3 +130,5 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 /datum/targetting_datum/basic/clockwork_marauder
 	stat_attack = HARD_CRIT
 
+#undef MARAUDER_SHIELD_MAX
+#undef WELDER_REPAIR_AMOUNT
