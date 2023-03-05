@@ -149,6 +149,27 @@ GLOBAL_VAR_INIT(force_eng_override, FALSE)
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FORCE_ENG_OVERRIDE, FALSE)
 		return
 
+/proc/eng_override_on(auto = FALSE)
+	GLOB.force_eng_override = TRUE
+	minor_announce("Engineering staff will have expanded access to areas of the station during the emergency.", "Engineering Emergency")
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FORCE_ENG_OVERRIDE, TRUE)
+	if(!auto)
+		SSblackbox.record_feedback("nested tally", "keycard_auths", 1, list("engineer override access", "enabled"))
+	return
+
+/proc/eng_override_off(auto = FALSE)
+	GLOB.force_eng_override = FALSE
+	minor_announce("Expanded engineering access has been revoked.", "Engineering Emergency")
+	var/level = SSsecurity_level.get_current_level_as_number()
+	if(!auto)
+		SSblackbox.record_feedback("nested tally", "keycard_auths", 1, list("engineer override access", "disabled"))
+	if(level == SEC_LEVEL_ORANGE)
+		return
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FORCE_ENG_OVERRIDE, FALSE)
+	return
+
+
+
 /obj/machinery/door/airlock/proc/force_eng_override(datum/source, status)
 	SIGNAL_HANDLER
 
