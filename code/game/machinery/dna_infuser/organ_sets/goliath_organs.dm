@@ -168,6 +168,7 @@
 /obj/item/organ/internal/heart/goliath/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/organ_set_bonus, /datum/status_effect/organ_set_bonus/goliath)
+	AddElement(/datum/element/update_icon_blocker)
 
 /obj/item/organ/internal/heart/goliath/Insert(mob/living/carbon/reciever, special = FALSE, drop_if_replaced = TRUE)
 	AddElement(/datum/element/noticable_organ, "skin [reciever.p_have()] visible hard plates growing from within.", BODY_ZONE_CHEST)
