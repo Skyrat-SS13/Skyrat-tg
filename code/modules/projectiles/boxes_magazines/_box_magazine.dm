@@ -177,11 +177,15 @@
 		if(AMMO_BOX_PER_BULLET)
 			icon_state = "[multiple_sprite_use_base ? base_icon_state : initial(icon_state)]-[shells_left]"
 		if(AMMO_BOX_FULL_EMPTY)
+<<<<<<< HEAD
 			icon_state = "[multiple_sprite_use_base ? base_icon_state : initial(icon_state)]-[shells_left ? "[max_ammo]" : "0"]"
 		//SKYRAT EDIT ADDITION BEGIN - SEC_HAUL
 		if(AMMO_BOX_FULL_EMPTY_BASIC)
 			icon_state = "[multiple_sprite_use_base ? base_icon_state : initial(icon_state)]-[shells_left ? "full" : "empty"]"
 		//SKYRAT EDIT END
+=======
+			icon_state = "[multiple_sprite_use_base ? base_icon_state : initial(icon_state)]-[shells_left ? "full" : "empty"]"
+>>>>>>> ebeec530ff1 (Changes AMMO_BOX_FULL_EMPTY to be either -full or -empty on a magazine, rather than the old behavior of using the max ammo of the magazine (#73736))
 	return ..()
 
 /// Updates the amount of material in this ammo box according to how many bullets are left in it.
