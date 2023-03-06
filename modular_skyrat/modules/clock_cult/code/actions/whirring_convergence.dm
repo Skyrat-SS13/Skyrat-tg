@@ -47,10 +47,10 @@
 	for(var/mob/player_mob as anything in GLOB.player_list)
 
 		if(IS_CLOCK(player_mob))
-			to_chat(player_mob, sent_message)
+			to_chat(player_mob, final_message)
 
 		else if(player_mob in GLOB.dead_mob_list)
 			if(user)
-				to_chat(player_mob, "[span_brass("[FOLLOW_LINK(player_mob, user)]")] [sent_message]")
+				to_chat(player_mob, "[span_brass("[FOLLOW_LINK(player_mob, user)]")] [final_message]")
 			else
 				to_chat(player_mob, final_message)
