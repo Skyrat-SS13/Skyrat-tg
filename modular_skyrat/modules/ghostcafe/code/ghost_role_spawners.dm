@@ -14,6 +14,7 @@
 	mob_name = "a cafe robot"
 	anchored = TRUE
 	density = FALSE
+	spawner_job_path = /datum/job/ghostcafe
 	you_are_text = "You are a Cafe Robot!"
 	flavour_text = "Who could have thought? This awesome local cafe accepts cyborgs too!"
 	mob_type = /mob/living/silicon/robot/model/roleplay
@@ -43,6 +44,7 @@
 	icon_state = "sleeper"
 	mob_name = "a cafe visitor"
 	density = FALSE
+	spawner_job_path = /datum/job/ghostcafe
 	outfit = /datum/outfit/ghostcafe
 	you_are_text = "You are a Cafe Visitor!"
 	flavour_text = "You are off-duty and have decided to visit your favourite cafe. Enjoy yourself."
