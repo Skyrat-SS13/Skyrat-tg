@@ -146,8 +146,8 @@
 	base_icon_state = "carpet"
 	floor_tile = /obj/item/stack/tile/carpet
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_CARPET)
-	canSmoothWith = list(SMOOTH_GROUP_CARPET)
+	smoothing_groups = SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_CARPET
+	canSmoothWith = SMOOTH_GROUP_CARPET
 	bullet_bounce_sound = null
 	tiled_dirt = FALSE
 
@@ -182,3 +182,17 @@
 /turf/open/floor/holofloor/dark
 	icon_state = "darkfull"
 	desc = "The surrounding enviroment is so dark you can hardly see yourself."
+
+/turf/open/floor/holofloor/stairs
+	name = "stairs"
+	icon_state = "stairs"
+	tiled_dirt = FALSE
+
+/turf/open/floor/holofloor/stairs/left
+	icon_state = "stairs-l"
+
+/turf/open/floor/holofloor/stairs/medium
+	icon_state = "stairs-m"
+
+/turf/open/floor/holofloor/stairs/right
+	icon_state = "stairs-r"

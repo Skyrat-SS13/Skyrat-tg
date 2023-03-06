@@ -335,6 +335,7 @@ LINEN BINS
 	name = "random bedsheet"
 	desc = "If you're reading this description ingame, something has gone wrong! Honk!"
 	bedsheet_type = BEDSHEET_ABSTRACT
+	item_flags = ABSTRACT
 	var/static/list/bedsheet_list
 	var/spawn_type = BEDSHEET_SINGLE
 
@@ -360,6 +361,7 @@ LINEN BINS
 	name = "random dorms bedsheet"
 	desc = "If you're reading this description ingame, something has gone wrong! Honk!"
 	bedsheet_type = BEDSHEET_DOUBLE
+	item_flags = ABSTRACT
 	slot_flags = null
 
 /obj/item/bedsheet/dorms/Initialize(mapload)
@@ -541,6 +543,7 @@ LINEN BINS
 
 /obj/item/bedsheet/dorms_double
 	icon_state = "random_bedsheet"
+	item_flags = ABSTRACT
 	bedsheet_type = BEDSHEET_ABSTRACT
 
 /obj/item/bedsheet/dorms_double/Initialize(mapload)

@@ -330,3 +330,7 @@
 	name = "Burning Avulsion"
 	examine_desc = "is ruptured, spraying blood wildly"
 	clot_rate = 0.01
+
+/datum/wound/slash/critical/cleave/update_descriptions()
+	if(no_bleeding)
+		occur_text = "is ruptured"

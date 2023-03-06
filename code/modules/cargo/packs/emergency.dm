@@ -25,7 +25,7 @@
 					/obj/item/clothing/suit/bio_suit = 2,
 					/obj/item/storage/bag/bio,
 					/obj/item/reagent_containers/syringe/antiviral = 2,
-					/obj/item/clothing/gloves/color/latex/nitrile = 2,
+					/obj/item/clothing/gloves/latex/nitrile = 2,
 				)
 	crate_name = "bio suit crate"
 
@@ -170,11 +170,12 @@
 
 /datum/supply_pack/emergency/weedcontrol
 	name = "Weed Control Crate"
-	desc = "Keep those invasive species OUT. Contains a scythe, gasmask, and two anti-weed chemical grenades. \
-		Warranty void if used on ambrosia. Requires Hydroponics access to open."
+	desc = "Keep those invasive species OUT. Contains a scythe, leather gloves, gasmask, and two anti-weed chemical grenades. \
+		Warranty void if used on ambrosia."
 	cost = CARGO_CRATE_VALUE * 2.5
 	access = ACCESS_HYDROPONICS
 	contains = list(/obj/item/scythe,
+					/obj/item/clothing/gloves/botanic_leather,
 					/obj/item/clothing/mask/gas,
 					/obj/item/grenade/chem_grenade/antiweed = 2,
 				)

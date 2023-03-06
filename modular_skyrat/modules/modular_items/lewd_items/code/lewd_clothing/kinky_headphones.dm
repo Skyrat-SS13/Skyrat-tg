@@ -1,7 +1,8 @@
 /obj/item/clothing/ears/kinky_headphones
 	name = "kinky headphones"
 	desc = "Protect your ears from loud noises. It has a switch on the right hand side."
-	icon_state = "kinkphones"
+	icon_state = "kinkphones_pink_off"
+	base_icon_state = "kinkphones"
 	inhand_icon_state = "kinkphones_pink_off"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_ears.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_ears.dmi'
@@ -79,8 +80,8 @@
 
 /obj/item/clothing/ears/kinky_headphones/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_kinkphones_color]_[kinky_headphones_on? "on" : "off"]"
-	inhand_icon_state = "[initial(icon_state)]_[current_kinkphones_color]_[kinky_headphones_on? "on" : "off"]"
+	icon_state = "[base_icon_state]_[current_kinkphones_color]_[kinky_headphones_on? "on" : "off"]"
+	inhand_icon_state = "[base_icon_state]_[current_kinkphones_color]_[kinky_headphones_on? "on" : "off"]"
 
 /obj/item/clothing/ears/kinky_headphones/proc/toggle(owner)
 	kinky_headphones_on = !kinky_headphones_on

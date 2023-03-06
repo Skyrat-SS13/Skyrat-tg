@@ -9,8 +9,6 @@
 		MUTCOLORS,
 		EYECOLOR,
 		LIPS,
-		HAS_FLESH,
-		HAS_BONE,
 		HAIR,
 		FACEHAIR,
 	)
@@ -52,7 +50,7 @@
 		LOADOUT_ITEM_MASK = VOX_PRIMALIS_MASK_ICON,
 		LOADOUT_ITEM_SUIT = VOX_PRIMALIS_SUIT_ICON,
 		LOADOUT_ITEM_UNIFORM = VOX_PRIMALIS_UNIFORM_ICON,
-		LOADOUT_ITEM_HANDS =  VOX_PRIMALIS_HANDS_ICON,
+		LOADOUT_ITEM_GLOVES =  VOX_PRIMALIS_GLOVES_ICON,
 		LOADOUT_ITEM_SHOES = VOX_PRIMALIS_FEET_ICON,
 		LOADOUT_ITEM_GLASSES = VOX_PRIMALIS_EYES_ICON,
 		LOADOUT_ITEM_BELT = VOX_PRIMALIS_BELT_ICON,
@@ -63,9 +61,10 @@
 
 /datum/species/vox_primalis/pre_equip_species_outfit(datum/job/job, mob/living/carbon/human/equipping, visuals_only)
 	. = ..()
-	var/datum/outfit/vox/vox_outfit = new /datum/outfit/vox
-	equipping.equipOutfit(vox_outfit, visuals_only)
-	equipping.open_internals(equipping.get_item_for_held_index(2))
+	if(job?.vox_outfit)
+		equipping.equipOutfit(job.vox_outfit, visuals_only)
+	else
+		give_important_for_life(equipping)
 
 /datum/species/vox_primalis/random_name(gender, unique, lastname)
 	if(unique)

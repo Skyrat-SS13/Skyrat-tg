@@ -350,7 +350,7 @@
 /obj/machinery/door/airlock/engineering/glass/critical{
 	heat_proof = 1;
 	name = "Supermatter Chamber";
-	req_one_access_txt = "10;24"
+	req_one_access = list("engineering","atmospherics")
 	},
 /turf/open/floor/engine,
 /area/awaymission/research/interior/engineering)
@@ -1948,7 +1948,7 @@
 "gn" = (
 /obj/machinery/door/airlock/research{
 	name = "Secure Storage";
-	req_access_txt = "9,63"
+	req_access = list("genetics","brig_entrance")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
@@ -4686,7 +4686,7 @@
 /obj/machinery/door/airlock/engineering/glass/critical{
 	heat_proof = 1;
 	name = "Supermatter Chamber";
-	req_one_access_txt = "10;24"
+	req_one_access = list("engineering","atmospherics")
 	},
 /turf/open/floor/engine,
 /area/awaymission/research/interior/engineering)

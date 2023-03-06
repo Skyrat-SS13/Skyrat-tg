@@ -7,7 +7,6 @@
 /datum/uplink_item/role_restricted
 	category = /datum/uplink_category/role_restricted
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
-	surplus = 0
 
 // No progression cost
 /datum/uplink_item/role_restricted/haunted_magic_eightball
@@ -18,6 +17,7 @@
 	cost = 2
 	restricted_roles = list(JOB_CURATOR)
 	limited_stock = 1 //please don't spam deadchat
+	surplus = 5
 
 /datum/uplink_item/role_restricted/bureaucratic_error_remote
 	name = "Organic Resources Disturbance Inducer"
@@ -26,6 +26,7 @@
 	limited_stock = 1
 	item = /obj/item/devices/bureaucratic_error_remote
 	restricted_roles = list(JOB_HEAD_OF_PERSONNEL, JOB_QUARTERMASTER)
+	surplus = 5
 
 /datum/uplink_item/role_restricted/clumsinessinjector //clown ops can buy this too, but it's in the pointless badassery section for them
 	name = "Clumsiness Injector"
@@ -34,6 +35,7 @@
 	cost = 1
 	restricted_roles = list(JOB_CLOWN)
 	illegal_tech = FALSE
+	surplus = 25
 
 /datum/uplink_item/role_restricted/ancient_jumpsuit
 	name = "Ancient Jumpsuit"
@@ -61,6 +63,7 @@
 	item = /obj/item/firing_pin/clown/ultra
 	restricted_roles = list(JOB_CLOWN)
 	illegal_tech = FALSE
+	surplus = 25
 
 /datum/uplink_item/role_restricted/clownsuperpin
 	name = "Super Ultra Hilarious Firing Pin"
@@ -70,6 +73,7 @@
 	item = /obj/item/firing_pin/clown/ultra/selfdestruct
 	restricted_roles = list(JOB_CLOWN)
 	illegal_tech = FALSE
+	surplus = 25
 
 /datum/uplink_item/role_restricted/syndimmi
 	name = "Syndicate Brand MMI"
@@ -87,7 +91,6 @@
 	progression_minimum = 10 MINUTES
 	item = /obj/item/hot_potato/syndicate
 	cost = 4
-	surplus = 0
 	restricted_roles = list(JOB_COOK, JOB_BOTANIST, JOB_CLOWN, JOB_MIME)
 
 /datum/uplink_item/role_restricted/combat_baking
@@ -171,6 +174,7 @@
 	item = /obj/item/disk/surgery/brainwashing
 	restricted_roles = list(JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_ROBOTICIST)
 	cost = 5
+	surplus = 50
 
 /datum/uplink_item/role_restricted/springlock_module
 	name = "Heavily Modified Springlock MODsuit Module"
@@ -183,6 +187,7 @@
 	item = /obj/item/mod/module/springlock/bite_of_87
 	restricted_roles = list(JOB_ROBOTICIST, JOB_RESEARCH_DIRECTOR)
 	cost = 2
+	surplus = 15
 
 /datum/uplink_item/role_restricted/reverse_revolver
 	name = "Reverse Revolver"
@@ -202,6 +207,7 @@
 	cost = 5 //you need two for full damage, so total of 10 for maximum damage
 	limited_stock = 2 //you can't use more than two!
 	restricted_roles = list("Shaft Miner")
+	surplus = 20
 
 /datum/uplink_item/role_restricted/mimery
 	name = "Guide to Advanced Mimery Series"
@@ -220,6 +226,7 @@
 	cost = 10
 	item = /obj/item/autosurgeon/syndicate/laser_arm
 	restricted_roles = list(JOB_ROBOTICIST, JOB_RESEARCH_DIRECTOR)
+	surplus = 20
 
 /datum/uplink_item/role_restricted/chemical_gun
 	name = "Reagent Dartgun"
@@ -236,7 +243,6 @@
 	cost = 10
 	item = /obj/item/pneumatic_cannon/pie/selfcharge
 	restricted_roles = list(JOB_CLOWN)
-	surplus = 0 //No fun unless you're the clown!
 
 /datum/uplink_item/role_restricted/clown_bomb
 	name = "Clown Bomb"
@@ -249,6 +255,7 @@
 	item = /obj/item/sbeacondrop/clownbomb
 	cost = 15
 	restricted_roles = list(JOB_CLOWN)
+	surplus = 10
 
 /datum/uplink_item/role_restricted/clown_bomb/New()
 	. = ..()
@@ -266,6 +273,7 @@
 	item = /obj/vehicle/sealed/car/clowncar
 	cost = 20
 	restricted_roles = list(JOB_CLOWN)
+	surplus = 10
 
 /datum/uplink_item/role_restricted/concealed_weapon_bay
 	name = "Concealed Weapon Bay"
@@ -277,6 +285,7 @@
 	item = /obj/item/mecha_parts/mecha_equipment/concealed_weapon_bay
 	cost = 3
 	restricted_roles = list(JOB_ROBOTICIST, JOB_RESEARCH_DIRECTOR)
+	surplus = 15
 
 /* //SKYRAT REMOVAL START
 /datum/uplink_item/role_restricted/his_grace
@@ -289,7 +298,7 @@
 	item = /obj/item/his_grace
 	cost = 20
 	restricted_roles = list(JOB_CHAPLAIN)
-	surplus = 5 //Very low chance to get it in a surplus crate even without being the chaplain
+	surplus = 5
 */ //SKYRAT REMOVAL END
 
 // High progression cost
@@ -306,6 +315,7 @@
 	item = /obj/item/reagent_containers/syringe/spider_extract
 	cost = 10
 	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST)
+	surplus = 10
 
 */
 // SKYRAT EDIT END
@@ -319,3 +329,4 @@
 	item = /obj/item/gun/blastcannon
 	cost = 14 //High cost because of the potential for extreme damage in the hands of a skilled scientist.
 	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST)
+	surplus = 5

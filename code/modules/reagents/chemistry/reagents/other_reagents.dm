@@ -7,6 +7,7 @@
 	taste_mult = 1.3
 	penetrates_skin = NONE
 	ph = 7.4
+	default_container = /obj/item/reagent_containers/blood
 
 /datum/glass_style/shot_glass/blood
 	required_drink_type = /datum/reagent/blood
@@ -21,7 +22,9 @@
 
 	// FEED ME
 /datum/reagent/blood/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray)
-	. = ..()
+	if(!check_tray(chems, mytray))
+		return
+
 	mytray.adjust_pestlevel(rand(2,3))
 
 /datum/reagent/blood/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume, show_message=TRUE, touch_protection=0)
@@ -114,17 +117,18 @@
 	if(data["blood_DNA"])
 		bloodsplatter.add_blood_DNA(list(data["blood_DNA"] = data["blood_type"]))
 
-/datum/reagent/liquidgibs
+/datum/reagent/consumable/liquidgibs
 	name = "Liquid Gibs"
 	color = "#CC4633"
 	description = "You don't even want to think about what's in here."
 	taste_description = "gross iron"
+	nutriment_factor = 2 * REAGENTS_METABOLISM
 	material = /datum/material/meat
 	ph = 7.45
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/glass_style/shot_glass/liquidgibs
-	required_drink_type = /datum/reagent/liquidgibs
+	required_drink_type = /datum/reagent/consumable/liquidgibs
 	icon_state = "shotglassred"
 
 /datum/reagent/bone_dust
@@ -175,7 +179,18 @@
 	taste_description = "water"
 	var/cooling_temperature = 2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_CLEANS
+	default_container = /obj/item/reagent_containers/cup/glass/waterbottle
 	evaporates = TRUE //SKYRAT EDIT ADDITION
+
+/datum/glass_style/shot_glass/water
+	required_drink_type = /datum/reagent/water
+	icon_state = "shotglassclear"
+
+/datum/glass_style/drinking_glass/water
+	required_drink_type = /datum/reagent/water
+	name = "glass of water"
+	desc = "The father of all refreshments."
+	icon_state = "glass_clear"
 
 /datum/glass_style/shot_glass/water
 	required_drink_type = /datum/reagent/water
@@ -234,19 +249,34 @@
 		new /obj/item/stack/sheet/wethide(get_turf(HH), HH.amount)
 		qdel(HH)
 
-/*
+
+/// How many wet stacks you get per units of water when it's applied by touch.
+#define WATER_TO_WET_STACKS_FACTOR_TOUCH 0.5
+/// How many wet stacks you get per unit of water when it's applied by vapor. Much less effective than by touch, of course.
+#define WATER_TO_WET_STACKS_FACTOR_VAPOR 0.1
+
+
+/**
  * Water reaction to a mob
  */
-
-/datum/reagent/water/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume)//Splashing people with water can help put them out!
+/datum/reagent/water/expose_mob(mob/living/exposed_mob, methods = TOUCH, reac_volume)//Splashing people with water can help put them out!
 	. = ..()
 	if(methods & TOUCH)
 		exposed_mob.extinguish_mob() // extinguish removes all fire stacks
+		exposed_mob.adjust_wet_stacks(reac_volume * WATER_TO_WET_STACKS_FACTOR_TOUCH) // Water makes you wet, at a 50% water-to-wet-stacks ratio. Which, in turn, gives you some mild protection from being set on fire!
+
 	if(methods & VAPOR)
-		if(!isfeline(exposed_mob)) // SKYRAT EDIT - Feline trait :)
+		exposed_mob.adjust_wet_stacks(reac_volume * WATER_TO_WET_STACKS_FACTOR_VAPOR) // Spraying someone with water with the hope to put them out is just simply too funny to me not to add it.
+
+		if(!isfeline(exposed_mob)) // SKYRAT EDIT - Feline trait :) - ORIGINAL: if(!isfelinid(exposed_mob))
 			return
+
 		exposed_mob.incapacitate(1) // startles the felinid, canceling any do_after
 		exposed_mob.add_mood_event("watersprayed", /datum/mood_event/watersprayed)
+
+
+#undef WATER_TO_WET_STACKS_FACTOR_TOUCH
+#undef WATER_TO_WET_STACKS_FACTOR_VAPOR
 
 
 /datum/reagent/water/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
@@ -256,12 +286,12 @@
 
 ///For weird backwards situations where water manages to get added to trays nutrients, as opposed to being snowflaked away like usual.
 /datum/reagent/water/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray)
-	. = ..()
-	// Chek if this is the exact same type
-	if(chems.has_reagent(src, 1))
-		mytray.adjust_waterlevel(round(chems.get_reagent_amount(type)))
-		//You don't belong in this world, monster!
-		chems.remove_reagent(/datum/reagent/water, chems.get_reagent_amount(type))
+	if(!check_tray(chems, mytray))
+		return
+
+	mytray.adjust_waterlevel(round(chems.get_reagent_amount(type)))
+	//You don't belong in this world, monster!
+	chems.remove_reagent(/datum/reagent/water, chems.get_reagent_amount(type))
 
 /datum/reagent/water/holywater
 	name = "Holy Water"
@@ -270,6 +300,7 @@
 	self_consuming = TRUE //divine intervention won't be limited by the lack of a liver
 	ph = 7.5 //God is alkaline
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_CLEANS
+	default_container = /obj/item/reagent_containers/cup/glass/bottle/holywater
 
 /datum/glass_style/drinking_glass/holywater
 	required_drink_type = /datum/reagent/water/holywater
@@ -279,11 +310,12 @@
 
 	// Holy water. Mostly the same as water, it also heals the plant a little with the power of the spirits. Also ALSO increases instability.
 /datum/reagent/water/holywater/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray)
-	. = ..()
+	if(!check_tray(chems, mytray))
+		return
+
 	mytray.adjust_waterlevel(round(chems.get_reagent_amount(type)))
 	mytray.adjust_plant_health(round(chems.get_reagent_amount(type) * 0.1))
-	if(myseed)
-		myseed.adjust_instability(round(chems.get_reagent_amount(type) * 0.15))
+	myseed?.adjust_instability(round(chems.get_reagent_amount(type) * 0.15))
 
 /datum/reagent/water/holywater/on_mob_metabolize(mob/living/affected_mob)
 	..()
@@ -340,7 +372,7 @@
 	. = ..()
 	if(!istype(exposed_turf))
 		return
-	if(reac_volume>=10)
+	if(reac_volume >= 10)
 		for(var/obj/effect/rune/R in exposed_turf)
 			qdel(R)
 	exposed_turf.Bless()
@@ -401,7 +433,7 @@
 
 /datum/reagent/fuel/unholywater/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
 	if(IS_CULTIST(affected_mob))
-		affected_mob.adjust_drowsyness(-5 * REM * delta_time)
+		affected_mob.adjust_drowsiness(-10 SECONDS * REM * delta_time)
 		affected_mob.AdjustAllImmobility(-40 * REM * delta_time)
 		affected_mob.adjustStaminaLoss(-10 * REM * delta_time, 0)
 		affected_mob.adjustToxLoss(-2 * REM * delta_time, 0)
@@ -510,7 +542,7 @@
 				var/len = length(string)
 				var/char = ""
 				var/ascii = 0
-				for(var/i=1, i<=len, i += length(char))
+				for(var/i=1, i <= len, i += length(char))
 					char = string[i]
 					ascii = text2ascii(char)
 					switch(ascii)
@@ -940,7 +972,9 @@
 
 // You're an idiot for thinking that one of the most corrosive and deadly gasses would be beneficial
 /datum/reagent/chlorine/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)
-	. = ..()
+	if(!check_tray(chems, mytray))
+		return
+
 	mytray.adjust_plant_health(-round(chems.get_reagent_amount(type)))
 	mytray.adjust_toxic(round(chems.get_reagent_amount(type) * 1.5))
 	mytray.adjust_waterlevel(-round(chems.get_reagent_amount(type) * 0.5))
@@ -964,7 +998,9 @@
 
 // You're an idiot for thinking that one of the most corrosive and deadly gasses would be beneficial
 /datum/reagent/fluorine/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)
-	. = ..()
+	if(!check_tray(chems, mytray))
+		return
+
 	mytray.adjust_plant_health(-round(chems.get_reagent_amount(type) * 2))
 	mytray.adjust_toxic(round(chems.get_reagent_amount(type) * 2.5))
 	mytray.adjust_waterlevel(-round(chems.get_reagent_amount(type) * 0.5))
@@ -995,7 +1031,9 @@
 
 // Phosphoric salts are beneficial though. And even if the plant suffers, in the long run the tray gets some nutrients. The benefit isn't worth that much.
 /datum/reagent/phosphorus/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)
-	. = ..()
+	if(!check_tray(chems, mytray))
+		return
+
 	mytray.adjust_plant_health(-round(chems.get_reagent_amount(type) * 0.75))
 	mytray.adjust_waterlevel(-round(chems.get_reagent_amount(type) * 0.5))
 	mytray.adjust_weedlevel(-rand(1,2))
@@ -1084,6 +1122,7 @@
 	ph = 4
 	material = /datum/material/uranium
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	default_container = /obj/effect/decal/cleanable/greenglow
 
 /datum/reagent/uranium/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
 	affected_mob.adjustToxLoss(tox_damage * delta_time * REM)
@@ -1102,12 +1141,13 @@
 
 //Mutagenic chem side-effects.
 /datum/reagent/uranium/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)
-	. = ..()
+	if(!check_tray(chems, mytray))
+		return
+
 	mytray.mutation_roll(user)
-	// Chek if this is the exact same type
-	if(chems.has_reagent(src, 1))
-		mytray.adjust_plant_health(-round(chems.get_reagent_amount(type)))
-		mytray.adjust_toxic(round(chems.get_reagent_amount(type) * 2))
+
+	mytray.adjust_plant_health(-round(chems.get_reagent_amount(type)))
+	mytray.adjust_toxic(round(chems.get_reagent_amount(type) * 2))
 
 /datum/reagent/uranium/radium
 	name = "Radium"
@@ -1121,7 +1161,11 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/uranium/radium/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)
-	. = ..()
+	if(!check_tray(chems, mytray))
+		return
+
+	mytray.mutation_roll(user)
+
 	mytray.adjust_plant_health(-round(chems.get_reagent_amount(type)))
 	mytray.adjust_toxic(round(chems.get_reagent_amount(type)))
 
@@ -1301,7 +1345,7 @@
 	if(DT_PROB(55, delta_time))
 		affected_mob.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2)
 	if(DT_PROB(30, delta_time))
-		affected_mob.adjust_drowsyness(3)
+		affected_mob.adjust_drowsiness(6 SECONDS)
 	if(DT_PROB(5, delta_time))
 		affected_mob.emote("drool")
 	..()
@@ -1392,7 +1436,8 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/ammonia/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)
-	. = ..()
+	if(!check_tray(chems, mytray))
+		return
 	// Ammonia is bad ass.
 	mytray.adjust_plant_health(round(chems.get_reagent_amount(type) * 0.12))
 	if(myseed && prob(10))
@@ -1409,7 +1454,9 @@
 
 // This is more bad ass, and pests get hurt by the corrosive nature of it, not the plant. The new trade off is it culls stability.
 /datum/reagent/diethylamine/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)
-	. = ..()
+	if(!check_tray(chems, mytray))
+		return
+
 	mytray.adjust_plant_health(round(chems.get_reagent_amount(type)))
 	mytray.adjust_pestlevel(-rand(1,2))
 	if(myseed)
@@ -1450,10 +1497,12 @@
 /datum/reagent/nitrous_oxide/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume)
 	. = ..()
 	if(methods & VAPOR)
-		exposed_mob.adjust_drowsyness(max(round(reac_volume, 1), 2))
+		// apply 2 seconds of drowsiness per unit applied, with a min duration of 4 seconds
+		var/drowsiness_to_apply = max(round(reac_volume, 1) * 2 SECONDS, 4 SECONDS)
+		exposed_mob.adjust_drowsiness(drowsiness_to_apply)
 
 /datum/reagent/nitrous_oxide/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
-	affected_mob.adjust_drowsyness(2 * REM * delta_time)
+	affected_mob.adjust_drowsiness(4 SECONDS * REM * delta_time)
 	if(ishuman(affected_mob))
 		var/mob/living/carbon/human/affected_human = affected_mob
 		affected_human.blood_volume = max(affected_human.blood_volume - (10 * REM * delta_time), 0)
@@ -1617,10 +1666,12 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/plantnutriment/eznutriment/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray)
-	. = ..()
-	myseed.adjust_instability(0.2)
-	myseed.adjust_potency(round(chems.get_reagent_amount(type) * 0.3))
-	myseed.adjust_yield(round(chems.get_reagent_amount(type) * 0.1))
+	if(!check_tray(chems, mytray))
+		return
+	if(myseed)
+		myseed.adjust_instability(0.2)
+		myseed.adjust_potency(round(chems.get_reagent_amount(type) * 0.3))
+		myseed.adjust_yield(round(chems.get_reagent_amount(type) * 0.1))
 
 /datum/reagent/plantnutriment/left4zednutriment
 	name = "Left 4 Zed"
@@ -1630,9 +1681,11 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/plantnutriment/left4zednutriment/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray)
-	. = ..()
+	if(!check_tray(chems, mytray))
+		return
+
 	mytray.adjust_plant_health(round(chems.get_reagent_amount(type) * 0.1))
-	myseed.adjust_instability(round(chems.get_reagent_amount(type) * 0.2))
+	myseed?.adjust_instability(round(chems.get_reagent_amount(type) * 0.2))
 
 /datum/reagent/plantnutriment/robustharvestnutriment
 	name = "Robust Harvest"
@@ -1642,10 +1695,13 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/plantnutriment/robustharvestnutriment/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray)
-	. = ..()
-	myseed.adjust_instability(-0.25)
-	myseed.adjust_potency(round(chems.get_reagent_amount(type) * 0.1))
-	myseed.adjust_yield(round(chems.get_reagent_amount(type) * 0.2))
+	if(!check_tray(chems, mytray))
+		return
+
+	if(myseed)
+		myseed.adjust_instability(-0.25)
+		myseed.adjust_potency(round(chems.get_reagent_amount(type) * 0.1))
+		myseed.adjust_yield(round(chems.get_reagent_amount(type) * 0.2))
 
 /datum/reagent/plantnutriment/endurogrow
 	name = "Enduro Grow"
@@ -1655,10 +1711,13 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/plantnutriment/endurogrow/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray)
-	. = ..()
-	myseed.adjust_potency(-round(chems.get_reagent_amount(type) * 0.1))
-	myseed.adjust_yield(-round(chems.get_reagent_amount(type) * 0.075))
-	myseed.adjust_endurance(round(chems.get_reagent_amount(type) * 0.35))
+	if(!check_tray(chems, mytray))
+		return
+
+	if(myseed)
+		myseed.adjust_potency(-round(chems.get_reagent_amount(type) * 0.1))
+		myseed.adjust_yield(-round(chems.get_reagent_amount(type) * 0.075))
+		myseed.adjust_endurance(round(chems.get_reagent_amount(type) * 0.35))
 
 /datum/reagent/plantnutriment/liquidearthquake
 	name = "Liquid Earthquake"
@@ -1668,10 +1727,13 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/plantnutriment/liquidearthquake/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray)
-	. = ..()
-	myseed.adjust_weed_rate(round(chems.get_reagent_amount(type) * 0.1))
-	myseed.adjust_weed_chance(round(chems.get_reagent_amount(type) * 0.3))
-	myseed.adjust_production(-round(chems.get_reagent_amount(type) * 0.075))
+	if(!check_tray(chems, mytray))
+		return
+
+	if(myseed)
+		myseed.adjust_weed_rate(round(chems.get_reagent_amount(type) * 0.1))
+		myseed.adjust_weed_chance(round(chems.get_reagent_amount(type) * 0.3))
+		myseed.adjust_production(-round(chems.get_reagent_amount(type) * 0.075))
 
 // GOON OTHERS
 
@@ -1687,6 +1749,7 @@
 	burning_volume = 0.05 //but has a lot of hydrocarbons
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	addiction_types = null
+	default_container = /obj/effect/decal/cleanable/oil
 
 /datum/reagent/stable_plasma
 	name = "Stable Plasma"
@@ -1989,10 +2052,13 @@
 	taste_description = "ash"
 	ph = 6.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	default_container = /obj/effect/decal/cleanable/ash
 
 // Ash is also used IRL in gardening, as a fertilizer enhancer and weed killer
 /datum/reagent/ash/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)
-	. = ..()
+	if(!check_tray(chems, mytray))
+		return
+
 	mytray.adjust_plant_health(round(chems.get_reagent_amount(type)))
 	mytray.adjust_weedlevel(-1)
 
@@ -2162,7 +2228,9 @@
 
 // Saltpetre is used for gardening IRL, to simplify highly, it speeds up growth and strengthens plants
 /datum/reagent/saltpetre/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)
-	. = ..()
+	if(!check_tray(chems, mytray))
+		return
+
 	var/salt = chems.get_reagent_amount(type)
 	mytray.adjust_plant_health(round(salt * 0.18))
 	if(myseed)
@@ -2681,7 +2749,7 @@
 
 /datum/reagent/eldritch/on_mob_life(mob/living/carbon/drinker, delta_time, times_fired)
 	if(IS_HERETIC(drinker))
-		drinker.adjust_drowsyness(-5 * REM * delta_time)
+		drinker.adjust_drowsiness(-10 * REM * delta_time)
 		drinker.AdjustAllImmobility(-40 * REM * delta_time)
 		drinker.adjustStaminaLoss(-10 * REM * delta_time, FALSE)
 		drinker.adjustToxLoss(-2 * REM * delta_time, FALSE, forced = TRUE)
@@ -2835,12 +2903,13 @@
 	affected_mob.adjustFireLoss((ispodperson(affected_mob) ? -1 : 1) * delta_time)
 
 /datum/reagent/brimdust/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)
-	. = ..()
+	if(!check_tray(chems, mytray))
+		return
+
 	mytray.adjust_weedlevel(-1)
 	mytray.adjust_pestlevel(-1)
 	mytray.adjust_plant_health(round(chems.get_reagent_amount(type)))
-	if(myseed)
-		myseed.adjust_potency(round(chems.get_reagent_amount(type) * 0.5))
+	myseed?.adjust_potency(round(chems.get_reagent_amount(type) * 0.5))
 
 // I made this food....with love.
 // Reagent added to food by chef's with a chef's kiss. Makes people happy.

@@ -175,7 +175,7 @@
 /obj/item/modular_computer/pda/proc/get_detomatix_difficulty()
 	var/detomatix_difficulty
 
-	for(var/datum/computer_file/program/downloaded_apps as anything in stored_files)
+	for(var/datum/computer_file/program/downloaded_apps in stored_files)
 		detomatix_difficulty += downloaded_apps.detomatix_resistance
 
 	return detomatix_difficulty
@@ -227,24 +227,26 @@
  * if it has one.
  *
  * Arguments:
- * * ringtone_client - The client whose prefs we'll use to set the ringtone of this PDA.
+ * * owner_client - The client whose prefs we'll use to set the ringtone of this PDA.
  */
-/obj/item/modular_computer/pda/proc/update_ringtone_pref(client/ringtone_client)
-	if(!ringtone_client)
+/obj/item/modular_computer/pda/proc/update_pda_prefs(client/owner_client)
+	if(!owner_client)
 		return
 
-	var/new_ringtone = ringtone_client?.prefs?.read_preference(/datum/preference/text/pda_ringtone)
+	var/new_ringtone = owner_client.prefs.read_preference(/datum/preference/text/pda_ringtone)
+	if(new_ringtone && (new_ringtone != MESSENGER_RINGTONE_DEFAULT))
+		update_ringtone(new_ringtone)
 
-	if(!new_ringtone || new_ringtone == MESSENGER_RINGTONE_DEFAULT)
-		return
-
-	update_ringtone(new_ringtone)
+	var/new_theme = owner_client.prefs.read_preference(/datum/preference/choiced/pda_theme)
+	if(new_theme)
+		device_theme = GLOB.pda_name_to_theme[new_theme]
 
 /// A simple proc to set the ringtone from a pda.
 /obj/item/modular_computer/pda/proc/update_ringtone(new_ringtone)
 	if(!istext(new_ringtone))
 		return
-	for(var/datum/computer_file/program/messenger/messenger_app in stored_files)
+	var/datum/computer_file/program/messenger/messenger_app = locate() in stored_files
+	if(messenger_app)
 		messenger_app.ringtone = new_ringtone
 
 /**
@@ -255,24 +257,22 @@
  */
 /obj/item/modular_computer/pda/nukeops
 	name = "nuclear pda"
-	device_theme = "syndicate"
-	has_pda_programs = FALSE
+	device_theme = PDA_THEME_SYNDICATE
 	comp_light_luminosity = 6.3 //matching a flashlight
 	light_color = COLOR_RED
 	greyscale_config = /datum/greyscale_config/tablet/stripe_thick
 	greyscale_colors = "#a80001#5C070F#000000"
-
+	long_ranged = TRUE
 	starting_programs = list(
-		/datum/computer_file/program/ntnetdownload/syndicate,
 		/datum/computer_file/program/radar/fission360,
 	)
 
-/obj/item/modular_computer/pda/nukeops/emag_act(mob/user)
-	if(!enabled)
-		to_chat(user, span_warning("You'd need to turn the [src] on first."))
-		return FALSE
-	to_chat(user, span_notice("You swipe \the [src]. It's screen briefly shows a message reading \"MEMORY CODE INJECTION DETECTED AND SUCCESSFULLY QUARANTINED\"."))
-	return FALSE
+/obj/item/modular_computer/pda/nukeops/Initialize(mapload)
+	. = ..()
+	emag_act(forced = TRUE)
+	var/datum/computer_file/program/messenger/msg = locate() in stored_files
+	if(msg)
+		msg.invisible = TRUE
 
 /**
  * Silicon PDA
@@ -303,7 +303,6 @@
 
 /obj/item/modular_computer/pda/silicon/cyborg
 	starting_programs = list(
-		/datum/computer_file/program/computerconfig,
 		/datum/computer_file/program/filemanager,
 		/datum/computer_file/program/robotact,
 		/datum/computer_file/program/crew_manifest, // SKYRAT EDIT ADDITION - Manifests for borgs
@@ -402,7 +401,7 @@
 
 /obj/item/modular_computer/pda/silicon/cyborg/syndicate
 	icon_state = "tablet-silicon-syndicate"
-	device_theme = "syndicate"
+	device_theme = PDA_THEME_SYNDICATE
 
 /obj/item/modular_computer/pda/silicon/cyborg/syndicate/Initialize(mapload)
 	. = ..()

@@ -2,7 +2,6 @@
 	name = "\improper NRI ID"
 	desc = "An ID straight from the NRI."
 	icon_state = "card_black"
-	worn_icon_state = "card_black"
 	assigned_icon_state = "assigned_centcom"
 
 /datum/id_trim/nri

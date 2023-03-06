@@ -1,7 +1,8 @@
 /obj/item/clothing/glasses/blindfold/kinky
 	name = "kinky blindfold"
 	desc = "Covers the eyes, preventing sight. But it looks so nice..."
-	icon_state = "kblindfold"
+	icon_state = "kblindfold_pink"
+	base_icon_state = "kblindfold"
 	inhand_icon_state = "kblindfold_pink"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_eyes.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_eyes.dmi'
@@ -53,8 +54,8 @@
 
 /obj/item/clothing/glasses/blindfold/kinky/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_kinkfold_color]"
-	inhand_icon_state = "[initial(icon_state)]_[current_kinkfold_color]"
+	icon_state = "[base_icon_state]_[current_kinkfold_color]"
+	inhand_icon_state = "[base_icon_state]_[current_kinkfold_color]"
 
 //message when equipping that thing
 /obj/item/clothing/glasses/blindfold/kinky/equipped(mob/living/carbon/user, slot)

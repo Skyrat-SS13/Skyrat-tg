@@ -71,7 +71,9 @@
 	inhand_icon_state = "riot_shotgun_syndie"
 	can_be_sawn_off = FALSE
 	can_suppress = FALSE
-	company_flag = COMPANY_SCARBOROUGH
+
+/obj/item/gun/ballistic/shotgun/riot/syndicate/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_SCARBOROUGH)
 
 /obj/item/gun/ballistic/shotgun/automatic/combat
 	name = "\improper Peacekeeper combat shotgun"
@@ -201,6 +203,7 @@
 /obj/item/gun/ballistic/automatic/sniper_rifle/syndicate
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = "sniper2"
+	worn_icon_state = "sniper"
 	fire_delay = 5.5 SECONDS
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/modular
@@ -208,6 +211,7 @@
 	desc = "A devastating Aussec Armory heavy sniper rifle, fitted with a modern scope."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = "sniper"
+	worn_icon_state = "sniper"
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle.ogg'
 	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle_s.ogg'
 	w_class = WEIGHT_CLASS_BULKY
@@ -225,7 +229,9 @@
 	can_suppress = TRUE
 	can_unsuppress = TRUE
 	weapon_weight = WEAPON_LIGHT
-	company_flag = COMPANY_SCARBOROUGH
+
+/obj/item/gun/ballistic/automatic/sniper_rifle/modular/syndicate/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_SCARBOROUGH)
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/modular/blackmarket  //Normal sniper but epic
 	name = "SA-107 anti-materiel rifle"
@@ -246,7 +252,6 @@
 	fire_delay = 55 //Slightly smaller than standard sniper
 	burst_size = 1
 	slot_flags = ITEM_SLOT_BACK
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC) //SKYRAT EDIT CHANGE
 	mag_display = TRUE
 
 /obj/item/gun/ballistic/automatic/ar/modular
@@ -274,7 +279,9 @@
 	<br><br>\
 	<i>BRAND NEW: Cannot be sawn off.</i>"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	company_flag = COMPANY_NANOTRASEN
+
+/obj/item/gun/ballistic/rifle/boltaction/brand_new/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_NANOTRASEN)
 
 /obj/item/gun/ballistic/rifle/boltaction/brand_new/quartermaster
 	name = "\improper FTU 'Archangel' precision rifle"
@@ -287,7 +294,9 @@
 	worn_icon_state = "bubba"
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	can_be_sawn_off = FALSE
-	company_flag = null //Cargonia's own
+
+/obj/item/gun/ballistic/rifle/boltaction/brand_new/quartermaster/give_manufacturer_examine()
+	return
 
 /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	name = "sportiv extended internal magazine"
@@ -311,7 +320,9 @@
 	fire_delay = 5
 	fire_sound_volume = 90
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
-	company_flag = COMPANY_NANOTRASEN
+
+/obj/item/gun/ballistic/automatic/ar/modular/model75/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_NANOTRASEN)
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
 	name = "\improper ARG-75 magazine"

@@ -139,14 +139,19 @@ GLOBAL_LIST_INIT(transit_tube_recipes, list(
 			dirs = list("[NORTH]" = "North", "[EAST]" = "East", "[SOUTH]" = "South", "[WEST]" = "West",
 						"[NORTHEAST]" = "North Flipped", "[SOUTHEAST]" = "East Flipped", "[SOUTHWEST]" = "South Flipped", "[NORTHWEST]" = "West Flipped")
 
-
 	var/list/rows = list()
 	var/list/row = list("previews" = list())
 	var/i = 0
 	for(var/dir in dirs)
 		var/numdir = text2num(dir)
 		var/flipped = ((dirtype == PIPE_TRIN_M) || (dirtype == PIPE_UNARY_FLIPPABLE)) && (ISDIAGONALDIR(numdir))
-		row["previews"] += list(list("selected" = (numdir == selected_dir), "dir" = dir2text(numdir), "dir_name" = dirs[dir], "icon_state" = icon_state, "flipped" = flipped))
+		row["previews"] += list(list(
+			"selected" = dirtype == PIPE_ONEDIR ? TRUE : (numdir == selected_dir),
+			"dir" = dir2text(numdir), 
+			"dir_name" = dirs[dir],
+			"icon_state" = icon_state,
+			"flipped" = flipped,
+		))
 		if(i++ || dirtype == PIPE_ONEDIR)
 			rows += list(row)
 			row = list("previews" = list())
@@ -220,7 +225,7 @@ GLOBAL_LIST_INIT(transit_tube_recipes, list(
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_BELT
 	custom_materials = list(/datum/material/iron=75000, /datum/material/glass=37500)
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 100, ACID = 50)
+	armor_type = /datum/armor/item_pipe_dispenser
 	resistance_flags = FIRE_PROOF
 	///Sparks system used when changing device in the UI
 	var/datum/effect_system/spark_spread/spark_system
@@ -260,6 +265,10 @@ GLOBAL_LIST_INIT(transit_tube_recipes, list(
 	var/mode = BUILD_MODE | DESTROY_MODE | WRENCH_MODE | REPROGRAM_MODE
 	/// Bitflags for upgrades
 	var/upgrade_flags
+
+/datum/armor/item_pipe_dispenser
+	fire = 100
+	acid = 50
 
 /obj/item/pipe_dispenser/Initialize(mapload)
 	. = ..()
@@ -313,7 +322,6 @@ GLOBAL_LIST_INIT(transit_tube_recipes, list(
 	if(istype(target, /obj/machinery/air_sensor))
 		if(!do_after(user, destroy_speed, target))
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-		
 		qdel(target)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
@@ -375,6 +383,7 @@ GLOBAL_LIST_INIT(transit_tube_recipes, list(
 		"ducting_layer" = ducting_layer,
 		"preview_rows" = recipe.get_preview(p_dir),
 		"categories" = list(),
+		"selected_recipe" = recipe.name,
 		"selected_color" = paint_color,
 		"mode" = mode,
 	)
@@ -397,10 +406,10 @@ GLOBAL_LIST_INIT(transit_tube_recipes, list(
 			if(info.type == /datum/pipe_info/sensor)
 				var/datum/pipe_info/sensor/sensor_info = info
 				var/obj/machinery/air_sensor/sensor = sensor_info.id
-				if(GLOB.objects_by_id_tag[initial(sensor.chamber_id) + "_sensor"] != null)
+				if(GLOB.objects_by_id_tag[CHAMBER_SENSOR_FROM_ID(initial(sensor.chamber_id))] != null)
 					continue
 
-			r += list(list("pipe_name" = info.name, "pipe_index" = i, "selected" = (info == recipe), "all_layers" = info.all_layers))
+			r += list(list("pipe_name" = info.name, "pipe_index" = i))
 			if(info == recipe)
 				data["selected_category"] = c
 		if(r.len == 0) //when all air sensors are installed this list will become empty

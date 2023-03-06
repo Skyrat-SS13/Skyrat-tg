@@ -40,4 +40,10 @@
 	removable = TRUE
 	complexity = 1
 	speed_added = 0.25
-	armor_values = list(MELEE = 20, BULLET = 25, LASER = 15, ENERGY = 20)
+	armor_mod = /datum/armor/retractive_plates
+
+/datum/armor/retractive_plates
+	melee = 20
+	bullet = 25
+	laser = 15
+	energy = 20

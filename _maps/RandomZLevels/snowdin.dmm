@@ -2219,6 +2219,10 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/mining_main)
+"gt" = (
+/mob/living/simple_animal/hostile/giant_spider/nurse/ice,
+/turf/open/misc/asteroid/snow/ice,
+/area/awaymission/snowdin/cave/cavern)
 "gu" = (
 /obj/structure/grille,
 /turf/open/floor/plating,
@@ -2841,16 +2845,6 @@
 /obj/effect/decal/cleanable/blood/old,
 /obj/structure/spawner/nether{
 	max_mobs = 5
-	},
-/turf/open/floor/engine/cult{
-	initial_gas_mix = "n2=82;plasma=24;TEMP=120";
-	temperature = 120
-	},
-/area/awaymission/snowdin/cave/cavern)
-"in" = (
-/mob/living/simple_animal/hostile/netherworld/blankbody{
-	desc = "It's Caleb Reed, but their flesh has an ashy texture, and their face is featureless save an eerie smile.";
-	name = "Caleb Reed"
 	},
 /turf/open/floor/engine/cult{
 	initial_gas_mix = "n2=82;plasma=24;TEMP=120";
@@ -3545,16 +3539,6 @@
 /obj/item/storage/toolbox/mechanical/old,
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/garage)
-"jO" = (
-/mob/living/simple_animal/hostile/netherworld/blankbody{
-	desc = "It's Jacob Ullman, but their flesh has an ashy texture, and their face is featureless save an eerie smile.";
-	name = "Jacob Ullman"
-	},
-/turf/open/floor/engine/cult{
-	initial_gas_mix = "n2=82;plasma=24;TEMP=120";
-	temperature = 120
-	},
-/area/awaymission/snowdin/cave/cavern)
 "jP" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
 	piping_layer = 4;
@@ -3977,6 +3961,16 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/garage)
+"la" = (
+/mob/living/simple_animal/hostile/netherworld/blankbody{
+	desc = "It's Jacob Ullman, but their flesh has an ashy texture, and their face is featureless save an eerie smile.";
+	name = "Jacob Ullman"
+	},
+/turf/open/floor/engine/cult{
+	initial_gas_mix = "n2=82;plasma=24;TEMP=120";
+	temperature = 120
+	},
+/area/awaymission/snowdin/cave/cavern)
 "lb" = (
 /obj/machinery/light/directional/west,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
@@ -5515,11 +5509,6 @@
 /obj/item/pen,
 /turf/open/floor/iron/grimy,
 /area/awaymission/snowdin/post/cavern2)
-"pc" = (
-/obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/giant_spider/hunter/ice,
-/turf/open/misc/asteroid/snow/ice,
-/area/awaymission/snowdin/cave/cavern)
 "pd" = (
 /obj/structure/bed,
 /turf/open/floor/iron/grimy,
@@ -6169,7 +6158,7 @@
 /area/awaymission/snowdin/post/engineering)
 "qX" = (
 /obj/machinery/computer/atmos_control/noreconnect{
-	atmos_chambers = list("snowdinmix" = "Mix Chamber");
+	atmos_chambers = list("snowdinmix"="Mix Chamber");
 	dir = 1
 	},
 /obj/effect/mapping_helpers/broken_floor,
@@ -6196,7 +6185,7 @@
 	dir = 8
 	},
 /obj/machinery/computer/atmos_control/noreconnect{
-	atmos_chambers = list("snowdino2" = "Oxygen Supply");
+	atmos_chambers = list("snowdino2"="Oxygen Supply");
 	dir = 1
 	},
 /turf/open/floor/iron,
@@ -6207,7 +6196,7 @@
 	dir = 8
 	},
 /obj/machinery/computer/atmos_control/noreconnect{
-	atmos_chambers = list("snowdinn2" = "Nitrogen Supply");
+	atmos_chambers = list("snowdinn2"="Nitrogen Supply");
 	dir = 1
 	},
 /turf/open/floor/iron,
@@ -6449,21 +6438,12 @@
 /obj/structure/lattice/catwalk,
 /turf/open/lava/plasma,
 /area/awaymission/snowdin/cave/cavern)
-"rW" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/window/reinforced/plasma/unanchored,
-/turf/open/lava/plasma,
-/area/awaymission/snowdin/cave/cavern)
 "rY" = (
 /obj/structure/table/wood,
 /obj/effect/spawner/random/exotic/snow_gear,
 /obj/effect/spawner/random/exotic/snow_gear,
 /turf/open/floor/wood,
 /area/awaymission/snowdin/igloo)
-"rZ" = (
-/mob/living/simple_animal/hostile/netherworld/migo,
-/turf/open/floor/engine/cult,
-/area/awaymission/snowdin/post/cavern2)
 "sa" = (
 /obj/machinery/holopad,
 /turf/open/floor/engine/cult,
@@ -6967,11 +6947,20 @@
 /obj/effect/spawner/structure/electrified_grille,
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/cavern1)
+"uR" = (
+/mob/living/simple_animal/hostile/netherworld/migo,
+/turf/open/floor/iron,
+/area/awaymission/snowdin/post/mining_dock)
 "uS" = (
 /mob/living/simple_animal/hostile/skeleton/plasmaminer,
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/cavern1)
+"uT" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/window/reinforced/plasma/spawner,
+/turf/open/lava/plasma,
+/area/awaymission/snowdin/cave/cavern)
 "uU" = (
 /obj/item/chair,
 /turf/open/floor/iron,
@@ -7484,16 +7473,6 @@
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/mining_dock)
-"xA" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/mob/living/simple_animal/hostile/netherworld/migo,
-/turf/open/floor/iron,
-/area/awaymission/snowdin/post/mining_dock)
 "xB" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -7990,12 +7969,6 @@
 	},
 /obj/structure/fence/corner,
 /turf/open/floor/plating/snowed/cavern,
-/area/awaymission/snowdin/cave/cavern)
-"zl" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/window/reinforced/plasma/spawner/north,
-/obj/structure/window/reinforced/plasma/unanchored,
-/turf/open/lava/plasma,
 /area/awaymission/snowdin/cave/cavern)
 "zm" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -8648,13 +8621,6 @@
 /obj/machinery/light/small/directional/east,
 /turf/open/misc/asteroid/snow,
 /area/awaymission/snowdin/cave)
-"BJ" = (
-/mob/living/simple_animal/hostile/netherworld/blankbody{
-	desc = "It's Caleb Reed, but their flesh has an ashy texture, and their face is featureless save an eerie smile.";
-	name = "Caleb Reed"
-	},
-/turf/open/misc/ice/smooth,
-/area/awaymission/snowdin/cave)
 "BK" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 8
@@ -8773,6 +8739,12 @@
 	},
 /turf/open/floor/plating/snowed,
 /area/awaymission/snowdin/cave)
+"Ch" = (
+/obj/effect/turf_decal/stripes/line,
+/mob/living/simple_animal/hostile/netherworld/migo,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/awaymission/snowdin/post/mining_main/mechbay)
 "Cj" = (
 /obj/structure/fence{
 	dir = 4
@@ -9056,8 +9028,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/awaymission/snowdin/cave)
 "DH" = (
-/obj/structure/window/reinforced/plasma/plastitanium,
-/obj/structure/grille,
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /turf/open/floor/plating,
 /area/awaymission/snowdin/cave)
 "DI" = (
@@ -9757,10 +9728,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/awaymission/snowdin/post/mining_dock)
-"Hb" = (
-/mob/living/simple_animal/hostile/netherworld/migo,
-/turf/open/floor/iron,
-/area/awaymission/snowdin/post/mining_dock)
 "Hc" = (
 /obj/structure/table,
 /obj/item/storage/toolbox/mechanical{
@@ -9954,12 +9921,6 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/decal/cleanable/oil,
 /turf/open/floor/iron,
-/area/awaymission/snowdin/post/mining_main/mechbay)
-"HQ" = (
-/obj/effect/turf_decal/stripes/line,
-/mob/living/simple_animal/hostile/netherworld/migo,
-/obj/effect/mapping_helpers/broken_floor,
-/turf/open/floor/plating,
 /area/awaymission/snowdin/post/mining_main/mechbay)
 "HR" = (
 /obj/effect/turf_decal/stripes/corner{
@@ -10394,6 +10355,11 @@
 /obj/machinery/space_heater,
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/mining_dock)
+"Jo" = (
+/obj/structure/spider/stickyweb,
+/mob/living/simple_animal/hostile/giant_spider/hunter/ice,
+/turf/open/misc/asteroid/snow/ice,
+/area/awaymission/snowdin/cave/cavern)
 "Jp" = (
 /obj/structure/closet/crate{
 	icon_state = "crateopen"
@@ -11042,6 +11008,10 @@
 	},
 /turf/open/floor/iron,
 /area/awaymission/snowdin/post/mining_dock)
+"Lc" = (
+/mob/living/simple_animal/hostile/netherworld/migo,
+/turf/open/floor/iron/white,
+/area/awaymission/snowdin/post/mining_main/robotics)
 "Lf" = (
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/structure/cable,
@@ -11417,6 +11387,16 @@
 	},
 /turf/open/floor/wood,
 /area/awaymission/snowdin/post/dorm)
+"Nj" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/mob/living/simple_animal/hostile/netherworld/migo,
+/turf/open/floor/iron,
+/area/awaymission/snowdin/post/mining_dock)
 "Nk" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/suit/hooded/wintercoat/security,
@@ -11641,6 +11621,13 @@
 	},
 /turf/open/floor/iron,
 /area/awaymission/snowdin/post/gateway)
+"Oy" = (
+/mob/living/simple_animal/hostile/netherworld/blankbody{
+	desc = "It's Caleb Reed, but their flesh has an ashy texture, and their face is featureless save an eerie smile.";
+	name = "Caleb Reed"
+	},
+/turf/open/misc/ice/smooth,
+/area/awaymission/snowdin/cave)
 "Oz" = (
 /obj/structure/closet/crate/wooden,
 /obj/effect/spawner/random/exotic/antag_gear_weak,
@@ -11700,6 +11687,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/showroomfloor,
 /area/awaymission/snowdin/post/dorm)
+"OU" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 5
+	},
+/obj/structure/spider/stickyweb,
+/mob/living/simple_animal/hostile/giant_spider/hunter/ice,
+/turf/open/floor/iron/freezer,
+/area/awaymission/snowdin/post/kitchen)
 "OV" = (
 /obj/structure/table/wood,
 /turf/open/misc/asteroid/snow{
@@ -11794,14 +11789,6 @@
 	},
 /turf/open/misc/asteroid/snow,
 /area/awaymission/snowdin/outside)
-"Pr" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
-	dir = 5
-	},
-/obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/giant_spider/hunter/ice,
-/turf/open/floor/iron/freezer,
-/area/awaymission/snowdin/post/kitchen)
 "Ps" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 1
@@ -11840,6 +11827,10 @@
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/iron/showroomfloor,
 /area/awaymission/snowdin/post/cavern2)
+"PK" = (
+/mob/living/simple_animal/hostile/giant_spider/hunter/ice,
+/turf/open/misc/asteroid/snow/ice,
+/area/awaymission/snowdin/cave/cavern)
 "PL" = (
 /obj/structure/chair,
 /obj/machinery/light/small/directional/west,
@@ -11980,6 +11971,10 @@
 /obj/machinery/space_heater,
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/cavern1)
+"Qu" = (
+/mob/living/simple_animal/hostile/giant_spider/ice,
+/turf/open/misc/asteroid/snow/ice,
+/area/awaymission/snowdin/cave/cavern)
 "Qv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/extinguisher_cabinet/directional/south,
@@ -12052,10 +12047,6 @@
 /obj/item/disk/holodisk/snowdin/weregettingpaidright,
 /turf/open/floor/iron/dark,
 /area/awaymission/snowdin/post/research)
-"QM" = (
-/mob/living/simple_animal/hostile/giant_spider/nurse/ice,
-/turf/open/misc/asteroid/snow/ice,
-/area/awaymission/snowdin/cave/cavern)
 "QN" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
 	piping_layer = 4;
@@ -12296,10 +12287,6 @@
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/iron/dark/snowdin,
 /area/awaymission/snowdin/cave)
-"Si" = (
-/mob/living/simple_animal/hostile/giant_spider/hunter/ice,
-/turf/open/misc/asteroid/snow/ice,
-/area/awaymission/snowdin/cave/cavern)
 "Sj" = (
 /obj/machinery/button/door/directional/south{
 	id = "snowdinturbineoutlet";
@@ -12311,7 +12298,7 @@
 	name = "Turbine Gas Release"
 	},
 /obj/machinery/computer/atmos_control/fixed{
-	atmos_chambers = list("snowdinincin" = "Incinerator Chamber");
+	atmos_chambers = list("snowdinincin"="Incinerator Chamber");
 	dir = 1
 	},
 /obj/effect/mapping_helpers/broken_floor,
@@ -12653,6 +12640,10 @@
 /mob/living/simple_animal/hostile/skeleton/plasmaminer,
 /turf/open/floor/plating/snowed/cavern,
 /area/awaymission/snowdin/cave/cavern)
+"TX" = (
+/mob/living/simple_animal/hostile/netherworld/migo,
+/turf/open/floor/engine/cult,
+/area/awaymission/snowdin/post/cavern2)
 "TY" = (
 /obj/machinery/power/port_gen/pacman,
 /obj/item/stack/sheet/mineral/plasma{
@@ -12839,10 +12830,6 @@
 /obj/effect/mob_spawn/corpse/human/syndicatesoldier,
 /turf/open/misc/asteroid/snow,
 /area/awaymission/snowdin/cave)
-"Vd" = (
-/mob/living/simple_animal/hostile/netherworld/migo,
-/turf/open/floor/iron/white,
-/area/awaymission/snowdin/post/mining_main/robotics)
 "Ve" = (
 /mob/living/simple_animal/hostile/skeleton/plasmaminer,
 /turf/open/misc/asteroid/snow/ice,
@@ -12879,10 +12866,6 @@
 	slowdown = 1
 	},
 /area/awaymission/snowdin/outside)
-"Vo" = (
-/mob/living/simple_animal/hostile/giant_spider/ice,
-/turf/open/misc/asteroid/snow/ice,
-/area/awaymission/snowdin/cave/cavern)
 "Vp" = (
 /obj/item/paper/crumpled/ruins/snowdin/misc1,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -13002,6 +12985,16 @@
 /obj/machinery/power/apc/auto_name/directional/east,
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/mining_dock)
+"Wc" = (
+/mob/living/simple_animal/hostile/netherworld/blankbody{
+	desc = "It's Caleb Reed, but their flesh has an ashy texture, and their face is featureless save an eerie smile.";
+	name = "Caleb Reed"
+	},
+/turf/open/floor/engine/cult{
+	initial_gas_mix = "n2=82;plasma=24;TEMP=120";
+	temperature = 120
+	},
+/area/awaymission/snowdin/cave/cavern)
 "We" = (
 /obj/structure/rack,
 /obj/machinery/light/small/directional/east,
@@ -13166,6 +13159,12 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/mining_main/mechbay)
+"WY" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/window/reinforced/plasma/spawner/north,
+/obj/structure/window/reinforced/plasma/spawner,
+/turf/open/lava/plasma,
+/area/awaymission/snowdin/cave/cavern)
 "Xb" = (
 /mob/living/simple_animal/hostile/skeleton/eskimo,
 /turf/open/floor/plating,
@@ -26284,7 +26283,7 @@ be
 bu
 bL
 Lg
-Pr
+OU
 dn
 dO
 et
@@ -46113,7 +46112,7 @@ ae
 ae
 aj
 QS
-BJ
+Oy
 QS
 QS
 QS
@@ -51283,7 +51282,7 @@ wN
 wN
 WN
 WN
-Vo
+Qu
 WN
 WN
 wN
@@ -51786,13 +51785,13 @@ eJ
 wN
 WN
 WN
-Vo
+Qu
 wN
 wN
 WN
 WN
 WN
-QM
+gt
 WN
 WN
 eJ
@@ -52058,7 +52057,7 @@ eJ
 eJ
 eJ
 WN
-QM
+gt
 WN
 wN
 WN
@@ -52508,7 +52507,7 @@ gc
 gV
 gc
 gc
-jO
+la
 gc
 gc
 gc
@@ -52553,7 +52552,7 @@ eJ
 eJ
 eJ
 WN
-QM
+gt
 eJ
 eJ
 eJ
@@ -53078,10 +53077,10 @@ eJ
 eJ
 eJ
 WN
-Si
+PK
 WN
 WN
-pc
+Jo
 eJ
 eJ
 eJ
@@ -53277,7 +53276,7 @@ eK
 ge
 gc
 gc
-in
+Wc
 gc
 gc
 ge
@@ -58625,7 +58624,7 @@ GA
 GX
 Hu
 HL
-Vd
+Lc
 IB
 Gx
 wM
@@ -60164,7 +60163,7 @@ Lx
 xy
 Gj
 xy
-Hb
+uR
 Hx
 xy
 Ie
@@ -60518,7 +60517,7 @@ eJ
 eJ
 UT
 WN
-Si
+PK
 eJ
 eJ
 eJ
@@ -62222,7 +62221,7 @@ Gl
 GJ
 Hf
 He
-HQ
+Ch
 Il
 GH
 WX
@@ -62401,7 +62400,7 @@ Bx
 BF
 rV
 rV
-rW
+uT
 fr
 sG
 rV
@@ -62546,7 +62545,7 @@ fr
 fr
 fr
 pA
-rW
+uT
 fr
 sG
 pA
@@ -62640,9 +62639,9 @@ fr
 fr
 pA
 rV
-rW
+uT
 fr
-zl
+WY
 fr
 sG
 rV
@@ -64434,7 +64433,7 @@ wD
 wT
 xe
 xs
-xA
+Nj
 xI
 xN
 wL
@@ -65048,7 +65047,7 @@ Cc
 rV
 rV
 rV
-rW
+uT
 fr
 sG
 rV
@@ -66333,7 +66332,7 @@ rV
 rV
 rV
 rV
-rW
+uT
 fr
 sG
 rV
@@ -66510,7 +66509,7 @@ fr
 fr
 rV
 rV
-rW
+uT
 fr
 sG
 rV
@@ -66658,7 +66657,7 @@ pD
 pE
 Po
 qH
-rZ
+TX
 ss
 ql
 ow
@@ -68035,7 +68034,7 @@ eJ
 eJ
 eJ
 pA
-rW
+uT
 fr
 sG
 rV

@@ -2,6 +2,7 @@
 /obj/item/mod/control/pre_equipped/contractor
 	worn_icon = 'modular_skyrat/modules/contractor/icons/worn_modsuit.dmi'
 	icon = 'modular_skyrat/modules/contractor/icons/modsuit.dmi'
+	icon_state = "contractor-control"
 	theme = /datum/mod_theme/contractor
 	applied_cell = /obj/item/stock_parts/cell/hyper
 	applied_modules = list(

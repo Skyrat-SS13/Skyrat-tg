@@ -23,7 +23,7 @@
 	icon = 'icons/mecha/mecha.dmi'
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	max_integrity = 300
-	armor = list(MELEE = 20, BULLET = 10, LASER = 0, ENERGY = 0, BOMB = 10, BIO = 0, FIRE = 100, ACID = 100)
+	armor_type = /datum/armor/sealed_mecha
 	force = 5
 	movedelay = 1 SECONDS
 	move_force = MOVE_FORCE_VERY_STRONG
@@ -201,6 +201,13 @@
 	/// ref to screen object that displays in the middle of the UI
 	var/atom/movable/screen/map_view/ui_view
 
+/datum/armor/sealed_mecha
+	melee = 20
+	bullet = 10
+	bomb = 10
+	fire = 100
+	acid = 100
+
 /obj/item/radio/mech //this has to go somewhere
 	subspace_transmission = TRUE
 
@@ -310,7 +317,8 @@
 				mob_exit(ai,silent = TRUE, forced = TRUE) // so we dont ghost the AI
 			continue
 		mob_exit(occupant, forced = TRUE)
-		occupant.SetSleeping(destruction_sleep_duration)
+		if(!isbrain(occupant)) // who would win.. 1 brain vs 1 sleep proc..
+			occupant.SetSleeping(destruction_sleep_duration)
 
 	if(wreckage)
 		var/obj/structure/mecha_wreckage/WR = new wreckage(loc, unlucky_ai)
@@ -423,10 +431,11 @@
 	else
 		normal_step_energy_drain = 500
 		step_energy_drain = normal_step_energy_drain
+
 	if(capacitor)
-		armor = armor.modifyRating(energy = (capacitor.rating * 5)) //Each level of capacitor protects the mech against emp by 5%
-	else //because we can still be hit without a cap, even if we can't move
-		armor = armor.setRating(energy = 0)
+		var/datum/armor/stock_armor = get_armor_by_type(armor_type)
+		var/initial_energy = stock_armor.get_rating(ENERGY)
+		set_armor_rating(ENERGY, initial_energy + (capacitor.rating * 5))
 
 /obj/vehicle/sealed/mecha/examine(mob/user)
 	. = ..()

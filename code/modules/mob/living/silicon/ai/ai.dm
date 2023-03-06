@@ -3,7 +3,7 @@
 //Not sure why this is necessary...
 /proc/AutoUpdateAI(obj/subject)
 	var/is_in_use = 0
-	if (subject!=null)
+	if (subject != null)
 		for(var/A in GLOB.ai_list)
 			var/mob/living/silicon/ai/M = A
 			if ((M.client && M.machine == subject))
@@ -140,6 +140,8 @@
 			to_chat(src, span_danger("You must obey your silicon laws above all else. Your objectives will consider you to be dead."))
 		if(!mind.has_ever_been_ai)
 			mind.has_ever_been_ai = TRUE
+	else if(target_ai.key)
+		key = target_ai.key
 
 	to_chat(src, "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>")
 	to_chat(src, "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>")
@@ -250,7 +252,7 @@
 			if(istype(A, initial(AM.power_type)))
 				qdel(A)
 
-/mob/living/silicon/ai/ignite_mob()
+/mob/living/silicon/ai/ignite_mob(silent)
 	return FALSE
 
 /mob/living/silicon/ai/proc/set_core_display_icon(input, client/C)
@@ -659,8 +661,8 @@
 				if("Station Member")
 					var/list/personnel_list = list()
 
-					for(var/datum/data/record/record_datum in GLOB.data_core.locked)//Look in data core locked.
-						personnel_list["[record_datum.fields["name"]]: [record_datum.fields["rank"]]"] = record_datum.fields["character_appearance"]//Pull names, rank, and image.
+					for(var/datum/record/crew/record in GLOB.manifest.locked)//Look in data core locked.
+						personnel_list["[record.name]: [record.rank]"] = record.character_appearance//Pull names, rank, and image.
 
 					if(!length(personnel_list))
 						tgui_alert(usr,"No suitable records found. Aborting.")
@@ -872,16 +874,17 @@
 	var/hrefpart = "<a href='?src=[REF(src)];track=[html_encode(namepart)]'>"
 	var/jobpart = "Unknown"
 
-	if (isliving(speaker))
-		var/mob/living/living_speaker = speaker
-		if(living_speaker.job)
-			jobpart = "[living_speaker.job]"
-	if (istype(speaker, /obj/effect/overlay/holo_pad_hologram))
-		var/obj/effect/overlay/holo_pad_hologram/holo = speaker
-		if(holo.Impersonation?.job)
-			jobpart = "[holo.Impersonation.job]"
-		else if(usr?.job) // not great, but AI holograms have no other usable ref
-			jobpart = "[usr.job]"
+	if(!HAS_TRAIT(speaker, TRAIT_UNKNOWN)) //don't fetch the speaker's job in case they have something that conseals their identity completely
+		if (isliving(speaker))
+			var/mob/living/living_speaker = speaker
+			if(living_speaker.job)
+				jobpart = "[living_speaker.job]"
+		if (istype(speaker, /obj/effect/overlay/holo_pad_hologram))
+			var/obj/effect/overlay/holo_pad_hologram/holo = speaker
+			if(holo.Impersonation?.job)
+				jobpart = "[holo.Impersonation.job]"
+			else if(usr?.job) // not great, but AI holograms have no other usable ref
+				jobpart = "[usr.job]"
 
 	var/rendered = "<i><span class='game say'>[start][span_name("[hrefpart][namepart] ([jobpart])</a> ")]<span class='message'>[treated_message]</span></span></i>"
 
@@ -1007,7 +1010,7 @@
 
 	for(var/borgie in GLOB.available_ai_shells)
 		var/mob/living/silicon/robot/R = borgie
-		if(R.shell && !R.deployed && (R.stat != DEAD) && (!R.connected_ai ||(R.connected_ai == src)))
+		if(R.shell && !R.deployed && (R.stat != DEAD) && (!R.connected_ai || (R.connected_ai == src)))
 			possible += R
 
 	if(!LAZYLEN(possible))
@@ -1018,7 +1021,7 @@
 
 	if(isnull(target))
 		return
-	if (target.stat == DEAD || target.deployed || !(!target.connected_ai ||(target.connected_ai == src)))
+	if (target.stat == DEAD || target.deployed || !(!target.connected_ai || (target.connected_ai == src)))
 		return
 
 	else if(mind)
@@ -1123,6 +1126,6 @@
 
 /mob/living/silicon/ai/GetVoice()
 	. = ..()
-	if(ai_voicechanger&&ai_voicechanger.changing_voice)
+	if(ai_voicechanger && ai_voicechanger.changing_voice)
 		return ai_voicechanger.say_name
 	return

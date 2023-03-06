@@ -2,7 +2,7 @@
 
 /obj/item/storage/box/donkpockets
 	name = "box of donk-pockets"
-	desc = "<B>Instructions:</B> <I>Heat in microwave. Product will stay perpetually warmed with cutting edge Donk Co. technology.</I>"
+	desc = "Instructions: Heat in microwave. Product will stay perpetually warmed with cutting edge Donk Co. technology."
 	icon_state = "donkpocketbox"
 	illustration = null
 	/// What type of donk pocket are we gonna cram into this box?
@@ -421,9 +421,9 @@
 /obj/item/storage/box/tiziran_cans/PopulateContents()
 	for(var/i in 1 to 8)
 		var/random_food = pick_weight(list(
-			/obj/item/food/canned_jellyfish = 5,
-			/obj/item/food/desert_snails = 5,
-			/obj/item/food/larvae = 5,
+			/obj/item/food/canned/jellyfish = 5,
+			/obj/item/food/canned/desert_snails = 5,
+			/obj/item/food/canned/larvae = 5,
 			))
 		new random_food(src)
 

@@ -73,7 +73,8 @@
 	var/has_ever_been_ai = FALSE
 	var/last_death = 0
 
-	/// Set by Into The Sunset command of the shuttle manipulator
+	/// Set by Into The Sunset command of the shuttle manipulator.
+	/// If TRUE, the mob will always be considered "escaped" if they are alive and not exiled.
 	var/force_escaped = FALSE
 
 	var/list/learned_recipes //List of learned recipe TYPES.
@@ -507,6 +508,19 @@
 	. = assigned_role
 	assigned_role = new_role
 
+/// Sets us to the passed job datum, then greets them to their new job.
+/// Use this one for when you're assigning this mind to a new job for the first time,
+/// or for when someone's recieving a job they'd really want to be greeted to.
+/datum/mind/proc/set_assigned_role_with_greeting(datum/job/new_role, client/incoming_client)
+	. = set_assigned_role(new_role)
+	if(assigned_role != new_role)
+		return
+
+	to_chat(incoming_client || src, span_infoplain("<b>You are the [new_role.title].</b>"))
+
+	var/related_policy = get_policy(new_role.title)
+	if(related_policy)
+		to_chat(incoming_client || src, related_policy)
 
 /mob/proc/sync_mind()
 	mind_initialize() //updates the mind (or creates and initializes one if one doesn't exist)

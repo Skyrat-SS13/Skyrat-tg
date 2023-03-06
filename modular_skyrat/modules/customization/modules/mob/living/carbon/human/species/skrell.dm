@@ -5,8 +5,6 @@
 		MUTCOLORS,
 		EYECOLOR,
 		LIPS,
-		HAS_FLESH,
-		HAS_BONE,
 		NO_SLIP_WHEN_WALKING
 	)
 	inherent_traits = list(

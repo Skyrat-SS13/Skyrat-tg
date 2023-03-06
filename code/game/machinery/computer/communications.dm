@@ -489,6 +489,19 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			call_911(EMERGENCY_RESPONSE_EMAG)
 			to_chat(usr, span_notice("Thank you for choosing Dogginos, [GLOB.pizza_order]!"))
 			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
+		if("toggleEngOverride")
+			if(emergency_access_cooldown(usr)) //if were in cooldown, dont allow the following code
+				return
+			if (!authenticated_as_silicon_or_captain(usr))
+				return
+			if (GLOB.force_eng_override)
+				toggle_eng_override()
+				usr.log_message("disabled airlock engineering override.", LOG_GAME)
+				deadchat_broadcast(" disabled airlock engineering override at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
+			else
+				toggle_eng_override()
+				usr.log_message("enabled airlock engineering override.", LOG_GAME)
+				deadchat_broadcast(" enabled airlock engineering override at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
 		// SKYRAT EDIT ADDITION END
 /obj/machinery/computer/communications/proc/emergency_access_cooldown(mob/user)
 	if(toggle_uses == toggle_max_uses) //you have used up free uses already, do it one more time and start a cooldown
@@ -571,6 +584,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				data["canSendToSectors"] = FALSE
 				data["canSetAlertLevel"] = FALSE
 				data["canToggleEmergencyAccess"] = FALSE
+				data["canToggleEngineeringOverride"] = FALSE //SKYRAT EDIT - Engineering Override
 				data["importantActionReady"] = COOLDOWN_FINISHED(src, important_action_cooldown)
 				data["shuttleCalled"] = FALSE
 				data["shuttleLastCalled"] = FALSE
@@ -602,7 +616,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				if (authenticated_as_silicon_or_captain(user))
 					data["canToggleEmergencyAccess"] = TRUE
 					data["emergencyAccess"] = GLOB.emergency_access
-
+					data["canToggleEngineeringOverride"] = TRUE //SKYRAT EDIT - Engineering Override Toggle
+					data["engineeringOverride"] = GLOB.force_eng_override //SKYRAT EDIT - Engineering Override Toggle
 					data["alertLevelTick"] = alert_level_tick
 					data["canMakeAnnouncement"] = TRUE
 					data["canSetAlertLevel"] = issilicon(user) ? "NO_SWIPE_NEEDED" : "SWIPE_NEEDED"
@@ -817,8 +832,12 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		if("message")
 			status_signal.data["top_text"] = data1
 			status_signal.data["bottom_text"] = data2
+			log_game("[key_name(usr)] has changed the station status display message to \"[data1] [data2]\" [loc_name(usr)]")
+
 		if("alert")
 			status_signal.data["picture_state"] = data1
+			log_game("[key_name(usr)] has changed the station status display message to \"[data1]\" [loc_name(usr)]")
+
 
 	frequency.post_signal(src, status_signal)
 
@@ -888,15 +907,20 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	// If we have a certain amount of ghosts, we'll add some more !!fun!! options to the list
 	var/num_ghosts = length(GLOB.current_observers_list) + length(GLOB.dead_player_list)
 
-	// Pirates require empty space for the ship, and ghosts for the pirates obviously
-	if(SSmapping.empty_space && (num_ghosts >= MIN_GHOSTS_FOR_PIRATES))
-		hack_options += HACK_PIRATE
-	// Fugitives require empty space for the hunter's ship, and ghosts for both fugitives and hunters (Please no waldo)
-	if(SSmapping.empty_space && (num_ghosts >= MIN_GHOSTS_FOR_FUGITIVES))
-		hack_options += HACK_FUGITIVES
-	// If less than a certain percent of the population is ghosts, consider sleeper agents
-	if(num_ghosts < (length(GLOB.clients) * MAX_PERCENT_GHOSTS_FOR_SLEEPER))
-		hack_options += HACK_SLEEPER
+	// Pirates / Fugitives have enough lead in time that there's no point summoning them if the shuttle is called
+	// Both of these events also summon space ships and so cannot run on planetary maps
+	if (EMERGENCY_IDLE_OR_RECALLED && !SSmapping.is_planetary())
+		// Pirates require ghosts for the pirates obviously
+		if(num_ghosts >= MIN_GHOSTS_FOR_PIRATES)
+			hack_options += HACK_PIRATE
+		// Fugitives require ghosts for both fugitives and hunters (Please no waldo)
+		if(num_ghosts >= MIN_GHOSTS_FOR_FUGITIVES)
+			hack_options += HACK_FUGITIVES
+
+	if (!EMERGENCY_PAST_POINT_OF_NO_RETURN)
+		// If less than a certain percent of the population is ghosts, consider sleeper agents
+		if(num_ghosts < (length(GLOB.clients) * MAX_PERCENT_GHOSTS_FOR_SLEEPER))
+			hack_options += HACK_SLEEPER
 
 	var/picked_option = pick(hack_options)
 	message_admins("[ADMIN_LOOKUPFLW(hacker)] hacked a [name] located at [ADMIN_VERBOSEJMP(src)], resulting in: [picked_option]!")

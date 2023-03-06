@@ -15,10 +15,10 @@ export NODE_VERSION=14
 export NODE_VERSION_PRECISE=14.16.1
 
 # SpacemanDMM git tag
-export SPACEMAN_DMM_VERSION=suite-1.7.2
+export SPACEMAN_DMM_VERSION=suite-1.7.3
 
 # Python version for mapmerge and other tools
-export PYTHON_VERSION=3.7.9
+export PYTHON_VERSION=3.9.0
 
 #auxlua repo
 export AUXLUA_REPO=tgstation/auxlua

@@ -5,6 +5,7 @@
 	desc = "A makeshift crowbar, flimsily constructed with miscellaneous parts. It's got a strong head that looks like it could be used for hammering."
 	icon = 'modular_skyrat/modules/modular_items/icons/tools.dmi'
 	icon_state = "makeshift_crowbar"
+	worn_icon_state = "crowbar"
 	force = 2
 	throwforce = 2
 	w_class = WEIGHT_CLASS_NORMAL

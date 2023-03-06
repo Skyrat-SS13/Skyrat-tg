@@ -9,7 +9,7 @@
 	becoming the sign of what little hospitality and assistance the military can provide. However many people who had an experience with this MOD describe it as \"Very uncomfortable.\", \
 	mainly due to its lack of proper environmental regulation systems. But because of its protective capabilities, extreme mass-production and cheap price, it easily became the main armor system of the NRI DC."
 	default_skin = "frontline"
-	armor = list(MELEE = 40, BULLET = 50, LASER = 30, ENERGY = 40, BOMB = 50, BIO = 100, FIRE = 40, ACID = 75, WOUND = 20)
+	armor_type = /datum/armor/mod_theme_frontline
 	complexity_max = DEFAULT_MAX_COMPLEXITY
 	charge_drain = DEFAULT_CHARGE_DRAIN * 1.5
 	allowed_suit_storage = list(
@@ -52,6 +52,17 @@
 			),
 		),
 	)
+
+/datum/armor/mod_theme_frontline
+	melee = 40
+	bullet = 50
+	laser = 30
+	energy = 40
+	bomb = 50
+	bio = 100
+	fire = 40
+	acid = 75
+	wound = 20
 
 /obj/item/mod/control/pre_equipped/frontline
 	theme = /datum/mod_theme/frontline
@@ -139,7 +150,7 @@
 	. = ..()
 	if(!.)
 		return
-	RegisterSignal(mod.wearer, COMSIG_CARBON_HEALTH_UPDATE, PROC_REF(on_use))
+	RegisterSignal(mod.wearer, COMSIG_LIVING_HEALTH_UPDATE, PROC_REF(on_use))
 	drain_power(use_power_cost)
 
 ///	Heals damage (in fact, injects chems) based on the damage received and certain other variables (a single one), i.e. having more than X amount of health, not having enough needed chemicals or so on.
@@ -219,7 +230,7 @@
 
 /obj/item/mod/module/auto_doc/on_deactivation(display_message = TRUE, deleting = FALSE)
 	. = ..()
-	UnregisterSignal(mod.wearer, COMSIG_CARBON_HEALTH_UPDATE)
+	UnregisterSignal(mod.wearer, COMSIG_LIVING_HEALTH_UPDATE)
 
 /obj/item/mod/module/auto_doc/on_install()
 	RegisterSignal(mod, COMSIG_PARENT_ATTACKBY, PROC_REF(on_attackby))

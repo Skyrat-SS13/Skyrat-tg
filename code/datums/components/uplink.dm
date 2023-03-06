@@ -230,8 +230,8 @@
 		))
 
 	var/list/remaining_stock = list()
-	for(var/datum/uplink_item/item as anything in stock_list)
-		remaining_stock[item.type] = stock_list[item]
+	for(var/item as anything in stock_list)
+		remaining_stock[item] = stock_list[item]
 	data["extra_purchasable"] = extra_purchasable
 	data["extra_purchasable_stock"] = extra_purchasable_stock
 	data["current_stock"] = remaining_stock
@@ -385,7 +385,7 @@
 	if(ismob(master.loc))
 		interact(null, master.loc)
 
-/datum/component/uplink/proc/new_message(datum/source, user, message, channel)
+/datum/component/uplink/proc/new_message(datum/source, mob/living/user, message, channel)
 	SIGNAL_HANDLER
 
 	if(channel != RADIO_CHANNEL_UPLINK)
@@ -393,7 +393,7 @@
 
 	if(!findtext(lowertext(message), lowertext(unlock_code)))
 		if(failsafe_code && findtext(lowertext(message), lowertext(failsafe_code)))
-			failsafe()  // no point returning cannot radio, youre probably ded
+			failsafe(user)  // no point returning cannot radio, youre probably ded
 		return
 	locked = FALSE
 	interact(null, user)

@@ -12,7 +12,7 @@
 	see_in_dark = 15
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 	obj_damage = 10
-	butcher_results = list(/obj/item/clothing/head/costume/crown = 1,)
+	butcher_results = list(/obj/item/food/meat/slab/mouse = 2, /obj/item/clothing/head/costume/crown = 1)
 	response_help_continuous = "glares at"
 	response_help_simple = "glare at"
 	response_disarm_continuous = "skoffs at"
@@ -118,7 +118,7 @@
 	if(stat == DEAD || !environment || !environment.gases[/datum/gas/miasma])
 		return
 	var/miasma_percentage = environment.gases[/datum/gas/miasma][MOLES] / environment.total_moles()
-	if(miasma_percentage>=0.25)
+	if(miasma_percentage >= 0.25)
 		heal_bodypart_damage(1)
 
 #define REGALRAT_INTERACTION "regalrat"
@@ -134,7 +134,7 @@
 
 	if (target.reagents && target.is_injectable(src, allowmobs = TRUE) && !istype(target, /obj/item/food/cheese))
 		src.visible_message(span_warning("[src] starts licking [target] passionately!"),span_notice("You start licking [target]..."))
-		if (do_mob(src, target, 2 SECONDS, interaction_key = REGALRAT_INTERACTION))
+		if (do_after(src, 2 SECONDS, target, interaction_key = REGALRAT_INTERACTION))
 			target.reagents.add_reagent(/datum/reagent/rat_spit,rand(1,3),no_react = TRUE)
 			to_chat(src, span_notice("You finish licking [target]."))
 			return
@@ -314,6 +314,7 @@
 /datum/action/cooldown/riot/proc/make_minion(mob/living/new_minion, minion_desc, list/command_list = mouse_commands)
 	if (isbasicmob(new_minion))
 		new_minion.AddComponent(/datum/component/obeys_commands, command_list)
+		qdel(new_minion.GetComponent(/datum/component/tameable)) // Rats don't share
 	new_minion.befriend(owner)
 	new_minion.faction = owner.faction.Copy()
 	// Give a hint in description too
@@ -395,7 +396,7 @@
 /datum/pet_command/point_targetting/attack/mouse
 	speech_commands = list("attack", "sic", "kill", "cheese em")
 	command_feedback = "squeak!" // Frogs and roaches can squeak too it's fine
-	pointed_reaction = "squeaks aggressively!"
+	pointed_reaction = "and squeaks aggressively"
 	refuse_reaction = "quivers"
 	attack_behaviour = /datum/ai_behavior/basic_melee_attack/rat
 
@@ -403,7 +404,7 @@
 /datum/pet_command/point_targetting/attack/glockroach
 	speech_commands = list("attack", "sic", "kill", "cheese em")
 	command_feedback = "squeak!"
-	pointed_reaction = "cocks gun"
+	pointed_reaction = "and cocks its gun"
 	refuse_reaction = "quivers"
 	attack_behaviour = /datum/ai_behavior/basic_ranged_attack/glockroach
 

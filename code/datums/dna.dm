@@ -157,6 +157,11 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	//SKYRAT EDIT ADDITION END
 	new_dna.species = new species.type
 	new_dna.species.species_traits = species.species_traits
+	//if the new DNA has a holder, transform them immediately, otherwise save it
+	if(new_dna.holder)
+		new_dna.holder.set_species(species.type, icon_update = 0)
+	else
+		new_dna.species = species
 	new_dna.real_name = real_name
 	// Mutations aren't gc managed, but they still aren't templates
 	// Let's do a proper copy
@@ -500,6 +505,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 /////////////////////////// DNA MOB-PROCS //////////////////////
 
 /mob/proc/set_species(datum/species/mrace, icon_update = 1)
+	SHOULD_NOT_SLEEP(TRUE)
 	return
 
 /mob/living/brain/set_species(datum/species/mrace, icon_update = 1)
@@ -524,7 +530,10 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		else
 			return
 		death_sound = new_race.death_sound
-		dna.species.on_species_loss(src, new_race, pref_load)
+
+		if (dna.species.properly_gained)
+			dna.species.on_species_loss(src, new_race, pref_load)
+
 		var/datum/species/old_species = dna.species
 		dna.species = new_race
 		dna.species.on_species_gain(src, old_species, pref_load)
@@ -536,14 +545,14 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		log_mob_tag("SPECIES: [key_name(src)] \[[mrace]\]")
 
 */
-//SKYRAT EDIT REMOVAL BEGIN
-/*
+//SKYRAT EDIT REMOVAL END
+
 /mob/living/carbon/human/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
 	..()
 	if(icon_update)
 		update_body(is_creating = TRUE)
 		update_mutations_overlay()// no lizard with human hulk overlay please.
-*/
+
 
 /mob/proc/has_dna()
 	return
@@ -552,7 +561,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	return dna
 
 
-/mob/living/carbon/human/proc/hardset_dna(ui, list/mutation_index, list/default_mutation_genes, newreal_name, newblood_type, datum/species/mrace, newfeatures, list/mutations, force_transfer_mutations)
+/// Sets the DNA of the mob to the given DNA.
+/mob/living/carbon/human/proc/hardset_dna(unique_identity, list/mutation_index, list/default_mutation_genes, newreal_name, newblood_type, datum/species/mrace, newfeatures, list/mutations, force_transfer_mutations)
 //Do not use force_transfer_mutations for stuff like cloners without some precautions, otherwise some conditional mutations could break (timers, drill hat etc)
 	if(newfeatures)
 		dna.features = newfeatures
@@ -570,9 +580,9 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(newblood_type)
 		dna.blood_type = newblood_type
 
-	if(ui)
-		dna.unique_identity = ui
-		updateappearance(icon_update=0)
+	if(unique_identity)
+		dna.unique_identity = unique_identity
+		updateappearance(icon_update = 0)
 
 	if(LAZYLEN(mutation_index))
 		dna.mutation_index = mutation_index.Copy()
@@ -582,7 +592,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			dna.default_mutation_genes = mutation_index.Copy()
 		domutcheck()
 
-	if(mrace || newfeatures || ui)
+	if(mrace || newfeatures || unique_identity)
 		update_body(is_creating = TRUE)
 		update_mutations_overlay()
 
@@ -808,7 +818,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(!M.has_dna())
 		CRASH("[M] does not have DNA")
 	if(se)
-		for(var/i=1, i<=DNA_MUTATION_BLOCKS, i++)
+		for(var/i=1, i <= DNA_MUTATION_BLOCKS, i++)
 			if(prob(probability))
 				M.dna.generate_dna_blocks()
 		M.domutcheck()
