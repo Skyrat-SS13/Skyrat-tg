@@ -545,7 +545,17 @@
 		// shift-click catcher may issue examinate() calls for out-of-sight turfs
 		return
 
+<<<<<<< HEAD
 	if(is_blind() && !blind_examine_check(examinify)) //blind people see things differently (through touch)
+=======
+	var/turf/examine_turf = get_turf(examinify)
+	if(is_blind()) //blind people see things differently (through touch)
+		if(!blind_examine_check(examinify))
+			return
+	else if(!(examine_turf.luminosity || examine_turf.dynamic_lumcount) && \
+		get_dist(src, examine_turf) > 1 && \
+		!has_nightvision()) // If you aren't blind, it's in darkness (that you can't see) and farther then next to you
+>>>>>>> db7534d6dab (Lowers nightvision threshold to work for mesons, fixes not being able to examine stuff lit by overlay lights (#73712))
 		return
 
 	face_atom(examinify)
