@@ -133,19 +133,19 @@
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_EXTREME)
-				addtimer(CALLBACK(src, PROC_REF(cme_security_minimum_level), SEC_LEVEL_ORANGE), (round((start_when * SSevents.wait) * 0.1, 0.1)) SECONDS)
+				addtimer(CALLBACK(src, PROC_REF(cme_minimum_security_level), SEC_LEVEL_ORANGE), (round((start_when * SSevents.wait) * 0.1, 0.1)) SECONDS)
 				priority_announce("Critical Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_ARMAGEDDON)
-				addtimer(CALLBACK(src, PROC_REF(cme_security_minimum_level), SEC_LEVEL_GAMMA), (round((start_when * SSevents.wait) * 0.1, 0.1)) SECONDS)
+				addtimer(CALLBACK(src, PROC_REF(cme_minimum_security_level), SEC_LEVEL_GAMMA), (round((start_when * SSevents.wait) * 0.1, 0.1)) SECONDS)
 				priority_announce("Neutron Mass Ejection Detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All personnel should proceed to their nearest warpgate for evacuation, the Solar Federation has issued this mandatory alert.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 
 /// Called by CME when extreme or armageddon level CMEs occur,
 /// checks if the station security level is at least minimum_level, and if not, sets it to that level.
 /// Also sends the engineering override signal to airlocks to enable additional access.
-/datum/round_event/cme/proc/cme_security_minimum_level(minimum_level)
+/datum/round_event/cme/proc/cme_minimum_security_level(minimum_level)
 	var/sec_level = SSsecurity_level.get_current_level_as_number()
 	if(sec_level < minimum_level)
 		SSsecurity_level.set_level(minimum_level)
