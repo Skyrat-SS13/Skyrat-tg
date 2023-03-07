@@ -196,7 +196,11 @@ const ChoicesPanel = (props, context) => {
                         name="vote-yea"
                       />
                     )}
-                  {choice.votes} Votes {/* SKYRAT EDIT*/}
+                  {
+                    user.isLowerAdmin
+                      ? `${choice.votes} Votes`
+                      : '' /* SKYRAT EDIT*/
+                  }
                 </LabeledList.Item>
                 <LabeledList.Divider />
               </Box>
