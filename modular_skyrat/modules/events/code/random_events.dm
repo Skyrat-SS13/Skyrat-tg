@@ -101,7 +101,7 @@
 
 /datum/round_event_control/disease_outbreak/advanced
 	weight = HIGH_EVENT_FREQ
-	max occurences = 2
+	max_occurrences = 2
 
 /datum/round_event_control/space_dust
 	weight = LOW_EVENT_FREQ
@@ -154,6 +154,7 @@
 /datum/round_event_control/meteor_wave/threatening
 	weight = LOW_EVENT_FREQ
 	max_occurrences = 1
+	min_players = 90
 
 /datum/round_event_control/meteor_wave/catastrophic
 	max_occurrences = 0
