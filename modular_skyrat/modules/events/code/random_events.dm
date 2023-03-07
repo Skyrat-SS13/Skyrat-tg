@@ -42,13 +42,14 @@
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/anomaly/anomaly_pyro
-	weight = HIGH_EVENT_FREQ
+	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/anomaly/anomaly_vortex
 	weight = MED_EVENT_FREQ
 
+// Disabled: Barely even works, waste of a valuable slot.
 /datum/round_event_control/aurora_caelus
-	weight = MIN_EVENT_FREQ
+	max_occurrences = 0
 
 // Disabled: Part of dynamic.
 /datum/round_event_control/blob
@@ -72,7 +73,7 @@
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/cortical_borer
-	weight = MED_EVENT_FREQ
+	weight = LOW_EVENT_FREQ
 
 // Disabled: Part of dynamic.
 /datum/round_event_control/changeling
@@ -185,7 +186,7 @@
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/processor_overload
-	weight = MED_EVENT_FREQ
+	weight = LOW_EVENT_FREQ
 
 // Disabled: Unintutivie design and incompatibility with this server.
 /datum/round_event_control/radiation_leak
@@ -206,16 +207,17 @@
 	max_occurrences = 0
 
 /datum/round_event_control/scrubber_clog/major
-	weight = MED_EVENT_FREQ
+	weight = LOW_EVENT_FREQ
 
 /datum/round_event_control/scrubber_clog/critical
-	weight = MED_EVENT_FREQ
+	weight = LOW_EVENT_FREQ
 
 /datum/round_event_control/scrubber_clog/strange
 	weight = LOW_EVENT_FREQ
 
+// Disabled: Other severities are enough.
 /datum/round_event_control/scrubber_overflow
-	weight = MIN_EVENT_FREQ
+	max_occurrences = 0
 
 /datum/round_event_control/scrubber_overflow/threatening
 	weight = MED_EVENT_FREQ
@@ -272,6 +274,7 @@
 /datum/round_event_control/supermatter_surge
 	weight = MED_EVENT_FREQ
 
+// Only runs on Tramstation, otherwise rolls a different event.
 /datum/round_event_control/tram_malfunction
 	weight = VERY_HIGH_EVENT_FREQ
 
