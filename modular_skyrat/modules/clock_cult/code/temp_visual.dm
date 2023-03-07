@@ -205,4 +205,17 @@
 	playsound(src, 'sound/machines/clockcult/steam_whoosh.ogg', 30)
 	return INITIALIZE_HINT_QDEL
 
+/obj/effect/temp_visual/ratvar/constructing_effect
+	icon_state = "replica_fabricator_create"
+	layer = ABOVE_ALL_MOB_LAYER
+	plane = ABOVE_GAME_PLANE
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	duration = 1 SECONDS
+
+/obj/effect/temp_visual/ratvar/constructing_effect/Initialize(mapload, create_delay)
+	duration = create_delay
+	return ..()
+
+
 #undef MENDING_MANTRA_SCALE
