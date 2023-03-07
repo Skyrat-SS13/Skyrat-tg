@@ -30,9 +30,15 @@
 
 	sleep(7 SECONDS)
 
+	if(!atom_turf)
+		atom_turf = get_safe_random_station_turf()
+
 	var/obj/effect/portal/permanent/one_way/reebe/clock_only/portal = new(atom_turf)
 
 	sleep(1 SECONDS)
+
+	if(!atom_area)
+		atom_area = get_area(atom_turf)
 
 	send_clock_message(null, "A portal has been opened at [atom_area] to our holy city, it is a glorious day in the name of Ratvar.", "<span class='bigbrass'>")
 
@@ -41,9 +47,18 @@
 
 /// Tells the station that there's a clockie portal, along with making it usable by all
 /proc/reebe_station_warning(area/atom_area, obj/effect/portal/permanent/one_way/reebe/clock_only/portal)
+	if(!portal)
+		return
+
 	send_clock_message(null, "The portal's stability is decreasing! Shortly, those not loyal to Ratvar will be able to enter.", "<span class='brass'>")
 
 	sleep(15 SECONDS)
+
+	if(!portal)
+		return
+
+	if(!atom_area)
+		atom_area = get_area(portal)
 
 	priority_announce("An anomalous reading has been picked up at [atom_area], please ensure the safety of the crew in the vicinity.")
 
