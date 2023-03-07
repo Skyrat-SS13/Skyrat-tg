@@ -13,7 +13,6 @@
 	rack_sound = 'sound/weapons/gun/l6/l6_rack.ogg'
 	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
 	fire_sound_volume = 70
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_FULLY_AUTOMATIC)
 	weapon_weight = WEAPON_HEAVY
 	slot_flags = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_HUGE
@@ -24,12 +23,17 @@
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	tac_reloads = FALSE
-	company_flag = COMPANY_OLDARMS
 	var/cover_open = FALSE
 
 /obj/item/gun/ballistic/automatic/mg34/Initialize(mapload)
 	. = ..()
+
+	AddComponent(/datum/component/automatic_fire, fire_delay)
+
 	AddElement(/datum/element/update_icon_updates_onmob)
+
+/obj/item/gun/ballistic/automatic/mg34/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_OLDARMS)
 
 /obj/item/gun/ballistic/automatic/mg34/examine(mob/user)
 	. = ..()
