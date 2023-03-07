@@ -154,7 +154,7 @@
 /datum/round_event_control/meteor_wave/threatening
 	weight = LOW_EVENT_FREQ
 	max_occurrences = 1
-	min_players = 90
+	min_players = 75
 
 /datum/round_event_control/meteor_wave/catastrophic
 	max_occurrences = 0
