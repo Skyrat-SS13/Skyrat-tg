@@ -142,6 +142,9 @@
 				priority_announce("Neutron Mass Ejection Detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All personnel should proceed to their nearest warpgate for evacuation, the Solar Federation has issued this mandatory alert.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 
+/// Called by CME when extreme or armageddon level CMEs occur,
+/// checks if the station security level is at least minimum_level, and if not, sets it to that level.
+/// Also sends the engineering override signal to airlocks to enable additional access.
 /datum/round_event/cme/proc/cme_security_minimum_level(minimum_level)
 	var/sec_level = SSsecurity_level.get_current_level_as_number()
 	if(sec_level < minimum_level)
