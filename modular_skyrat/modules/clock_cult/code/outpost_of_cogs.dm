@@ -8,7 +8,9 @@
 /proc/spawn_reebe(atom/target_atom)
 	set waitfor = FALSE
 
-	if(GLOB.reebe_began_spawning)
+	var/static/reebe_began_spawning = FALSE
+
+	if(reebe_began_spawning)
 		return
 
 	GLOB.reebe_began_spawning = TRUE
