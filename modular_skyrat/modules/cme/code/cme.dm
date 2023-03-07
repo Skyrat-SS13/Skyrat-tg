@@ -119,13 +119,8 @@
 		All synthetic and non-organic lifeforms should seek shelter immediately! \
 		Ensure all sensitive equipment is shielded.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 	else
-		var/sec_level = SSsecurity_level.get_current_level_as_number()
 		switch(cme_intensity)
 			if(CME_UNKNOWN)
-				if(sec_level < SEC_LEVEL_ORANGE)
-					SSsecurity_level.set_level(SEC_LEVEL_ORANGE)
-				else
-					eng_override_on(TRUE)
 				priority_announce("Coronal mass ejection detected! Expected intensity: UNKNOWN. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
@@ -138,18 +133,21 @@
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_EXTREME)
-				if(sec_level < SEC_LEVEL_ORANGE)
-					SSsecurity_level.set_level(SEC_LEVEL_ORANGE)
-				else
-					eng_override_on(TRUE)
+				addtimer(CALLBACK(src, PROC_REF(cme_security_minimum_level), SEC_LEVEL_ORANGE), (round((start_when * SSevents.wait) * 0.1, 0.1)) SECONDS)
 				priority_announce("Critical Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_ARMAGEDDON)
-				SSsecurity_level.set_level(SEC_LEVEL_GAMMA)
-				eng_override_on(TRUE)
+				addtimer(CALLBACK(src, PROC_REF(cme_security_minimum_level), SEC_LEVEL_GAMMA), (round((start_when * SSevents.wait) * 0.1, 0.1)) SECONDS)
 				priority_announce("Neutron Mass Ejection Detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All personnel should proceed to their nearest warpgate for evacuation, the Solar Federation has issued this mandatory alert.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
+
+/datum/round_event/cme/proc/cme_security_minimum_level(minimum_level)
+	var/sec_level = SSsecurity_level.get_current_level_as_number()
+	if(sec_level < minimum_level)
+		SSsecurity_level.set_level(minimum_level)
+	GLOB.force_eng_override = TRUE
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FORCE_ENG_OVERRIDE, TRUE)
 
 /datum/round_event/cme/tick()
 	if(ISMULTIPLE(activeFor, rand(cme_frequency_lower, cme_frequency_upper)))
