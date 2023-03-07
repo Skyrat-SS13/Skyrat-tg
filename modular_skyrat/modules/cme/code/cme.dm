@@ -83,7 +83,7 @@
 			cme_frequency_lower = CME_MODERATE_FREQUENCY_LOWER
 			cme_frequency_upper = CME_MODERATE_FREQUENCY_UPPER
 			start_when = rand(CME_MODERATE_START_LOWER, CME_MODERATE_START_UPPER)
-			end_when = start_when + rand(CME_MINIMAL_END, CME_EXTREME_END)
+			end_when = start_when + CME_MODERATE_END
 		if(CME_MINIMAL)
 			cme_frequency_lower = CME_MINIMAL_FREQUENCY_LOWER
 			cme_frequency_upper = CME_MINIMAL_FREQUENCY_UPPER
@@ -160,6 +160,9 @@
 /datum/round_event/cme/proc/spawn_cme(turf/spawnpoint, intensity)
 	if(intensity == CME_UNKNOWN)
 		intensity = pick(CME_MINIMAL, CME_MODERATE, CME_EXTREME)
+		if(intensity == CME_EXTREME)
+			cme_minimum_security_level(SEC_LEVEL_ORANGE)
+
 	var/area/loc_area_name = get_area(spawnpoint)
 	minor_announce("WARNING! [uppertext(intensity)] PULSE EXPECTED IN: [loc_area_name.name]", "Solar Flare Log:")
 	switch(intensity)
