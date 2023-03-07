@@ -61,8 +61,8 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 	if(istype(attacking_item, /obj/item/nullrod))
 		apply_damage(15, BURN)
 
-		if(shield_health)
-			damage_shield()
+	if(shield_health)
+		damage_shield()
 
 		playsound(src,'sound/hallucinations/veryfar_noise.ogg',40,1)
 
@@ -92,7 +92,7 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 
 
 /mob/living/basic/clockwork_marauder/welder_act(mob/living/user, obj/item/tool)
-	if(!do_after(user, 2.5 SECONDS, target = src))
+	if(!tool.use_tool(src, user, 2.5 SECONDS))
 		return TRUE
 
 	health = min(health + WELDER_REPAIR_AMOUNT, maxHealth)
@@ -121,14 +121,22 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 		/datum/ai_planning_subtree/basic_melee_attack_subtree/clockwork_marauder,
 	)
 
+
 /datum/ai_planning_subtree/basic_melee_attack_subtree/clockwork_marauder
 	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/clockwork_marauder
+
 
 /datum/ai_behavior/basic_melee_attack/clockwork_marauder
 	action_cooldown = 1.2 SECONDS
 
+
 /datum/targetting_datum/basic/clockwork_marauder
 	stat_attack = HARD_CRIT
+
+
+/obj/item/nullrod/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/bane, /mob/living/basic/clockwork_marauder, 1, 15, FALSE)
 
 #undef MARAUDER_SHIELD_MAX
 #undef WELDER_REPAIR_AMOUNT
