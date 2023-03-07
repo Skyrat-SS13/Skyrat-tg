@@ -213,7 +213,11 @@
 		//user.say("Heeeeeeeeeerrre's Johnny!")
 		user.visible_message(span_warning("[user] forces the airlock to open with [user.p_their()] [src]!"), span_warning("We force the [A] to open."), \
 		span_hear("You hear a metal screeching sound."))
+<<<<<<< HEAD
 		A.open(2)
+=======
+		opening.open(BYPASS_DOOR_CHECKS)
+>>>>>>> a3451b7fe4f (Makes "forced" opening and closing of doors way more sane (#73699))
 
 /obj/item/melee/arm_blade/dropped(mob/user)
 	..()
