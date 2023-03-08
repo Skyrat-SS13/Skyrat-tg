@@ -88,7 +88,7 @@
 		return FALSE
 
 	summoned_items += new_item
-	new_item.AddComponent(/datum/component/summoned_item, TRUE)
+	new_item.AddComponent(/datum/component/summoned_item, holographic_filter)
 
 /datum/nifsoft/summoner/Destroy()
 	QDEL_LIST(summoned_items)
@@ -101,7 +101,7 @@
 
 	return TRUE
 
-/datum/component/summoned_item/New(holographic_filter = TRUE)
+/datum/component/summoned_item/Initialize(holographic_filter = TRUE)
 	. = ..()
 	if(!isobj(parent))
 		return COMPONENT_INCOMPATIBLE
