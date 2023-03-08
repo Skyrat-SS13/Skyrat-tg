@@ -23,7 +23,7 @@
 	purchase_price = 250
 
 	///The list of items that can be summoned from the NIFSoft.
-	var/static/list/summonable_items = list(
+	var/list/summonable_items = list(
 		/obj/item/toy/katana/nanite,
 		/obj/item/cane/nanite,
 		/obj/item/storage/dice/nanite,
