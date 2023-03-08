@@ -46,7 +46,7 @@
 	if(!.)
 		return FALSE
 
-	if(tgui_alert(linked_mob, "Do you wish to summon a new item or dispel an already existing item?", "Grimoire Caeruleam", list("Summon", "Dispel")) == "Dispel")
+	if(tgui_alert(linked_mob, "Do you wish to summon a new item or dispel an already existing item?", program_name, list("Summon", "Dispel")) == "Dispel")
 		refund_activation_cost()
 		if(!length(summoned_items))
 			linked_mob.balloon_alert(linked_mob, "You have no summoned items!")

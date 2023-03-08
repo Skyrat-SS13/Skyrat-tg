@@ -1,3 +1,7 @@
+/obj/item/disk/nifsoft_uploader/dorms
+	name = "Grimoire Purpura"
+	loaded_nifsoft = /datum/nifsoft/summoner/dorms
+
 /datum/nifsoft/summoner/dorms
 	name = "Grimoire Purpura"
 	program_desc = "Grimoire Purapura, a fork of the Grimoire Caeruleam code, allows users to conveniently access an extensive database of various adult toys. "
