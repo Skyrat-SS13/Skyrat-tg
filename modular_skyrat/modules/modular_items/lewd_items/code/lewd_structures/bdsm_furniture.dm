@@ -4,6 +4,7 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	icon_state = "bdsm_bed"
 	max_integrity = 50
+	flags_1 = NODECONSTRUCT_1
 
 /obj/item/bdsm_bed_kit
 	name = "bdsm bed construction kit"
@@ -73,9 +74,11 @@
 	max_integrity = 75
 	///What state is the stand currently in? This is here for sprites.
 	var/stand_state = "open"
-	///What states can the stand be in?
+	///What overlay is the stand using when stand_state is set to closed?
 	var/static/mutable_appearance/xstand_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi', "xstand_overlay", LYING_MOB_LAYER)
+	///What human is currently buckled in?
 	var/mob/living/carbon/human/current_mob = null
+	item_chair = null
 
 //to make it have model when we constructing the thingy
 /obj/structure/chair/x_stand/Initialize(mapload)
@@ -265,35 +268,36 @@
 */
 
 /obj/item/x_stand_kit
-	name = "xstand construction kit"
+	name = "x-stand construction kit"
 	desc = "Construction requires a wrench."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	throwforce = 0
 	icon_state = "xstand_kit"
 	w_class = WEIGHT_CLASS_HUGE
+	flags_1 = NODECONSTRUCT_1
 
-/obj/item/x_stand_kit/attackby(obj/item/used_item, mob/user, params)
+/obj/item/x_stand_kit/wrench_act(mob/living/user, obj/item/tool)
 	add_fingerprint(user)
-	if(istype(used_item, /obj/item/wrench))
-		if (!(item_flags & IN_INVENTORY) && !(item_flags & IN_STORAGE))
-			to_chat(user, span_notice("You begin fastening the frame to the floor."))
-			if(used_item.use_tool(src, user, 8 SECONDS, volume = 50))
-				to_chat(user, span_notice("You assemble the x-stand."))
-				new /obj/structure/chair/x_stand(get_turf(user))
-				qdel(src)
-			return
-	else
-		return ..()
+	if((item_flags & IN_INVENTORY) || (item_flags & IN_STORAGE))
+		return FALSE
 
-/obj/structure/chair/x_stand/attackby(obj/item/used_item, mob/user, params)
+	to_chat(user, span_notice("You begin fastening the frame to the floor."))
+	if(!tool.use_tool(src, user, 8 SECONDS, volume = 50))
+		return FALSE
+
+	to_chat(user, span_notice("You assemble the x-stand."))
+	new /obj/structure/chair/x_stand(get_turf(user))
+	qdel(src)
+	return TRUE
+
+/obj/structure/chair/x_stand/wrench_act_secondary(mob/living/user, obj/item/tool)
 	add_fingerprint(user)
-	if(istype(used_item, /obj/item/wrench))
-		to_chat(user, span_notice("You begin unfastening the frame of x-stand..."))
-		if(used_item.use_tool(src, user, 8 SECONDS, volume = 50))
-			to_chat(user, span_notice("You disassemble the x-stand."))
-			new /obj/item/x_stand_kit(get_turf(user))
-			unbuckle_all_mobs()
-			qdel(src)
-		return
-	else
-		return ..()
+	to_chat(user, span_notice("You begin unfastening the frame of x-stand..."))
+	if(!tool.use_tool(src, user, 8 SECONDS, volume = 50))
+		return FALSE
+
+	to_chat(user, span_notice("You disassemble the x-stand."))
+	new /obj/item/x_stand_kit(get_turf(user))
+	unbuckle_all_mobs()
+	qdel(src)
+	return TRUE
