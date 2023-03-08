@@ -52,7 +52,7 @@
 			linked_mob.balloon_alert(linked_mob, "You have no summoned items!")
 			return FALSE
 
-		var/obj/item/choice = tgui_input_list(linked_mob, "Chose an object to desummon.", "Grimoire Caeruleam", summoned_items)
+		var/obj/item/choice = tgui_input_list(linked_mob, "Chose an object to desummon.", program_name, summoned_items)
 
 		if(!choice)
 			linked_mob.balloon_alert(linked_mob, "You did not chose an item!")
