@@ -234,15 +234,18 @@
 
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
-		switch(rand(1, 75))
-			if(1 to 34)
+		switch(rand(1, 100))
+			if(1 to 45)
 				carbon_target.gain_trauma_type(BRAIN_TRAUMA_MILD, TRAUMA_RESILIENCE_SURGERY)
-			if(35 to 55)
+
+			if(46 to 73)
 				carbon_target.gain_trauma_type(BRAIN_TRAUMA_MILD, TRAUMA_RESILIENCE_SURGERY)
 				carbon_target.gain_trauma_type(BRAIN_TRAUMA_MILD, TRAUMA_RESILIENCE_SURGERY)
-			if(56 to 71)
+
+			if(74 to 94)
 				carbon_target.gain_trauma_type(BRAIN_TRAUMA_SEVERE, TRAUMA_RESILIENCE_SURGERY)
-			if(72 to 75)
+
+			if(75 to 100)
 				carbon_target.gain_trauma_type(BRAIN_TRAUMA_SEVERE, TRAUMA_RESILIENCE_SURGERY)
 				carbon_target.gain_trauma_type(BRAIN_TRAUMA_SEVERE, TRAUMA_RESILIENCE_SURGERY)
 
