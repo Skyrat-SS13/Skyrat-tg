@@ -1,3 +1,6 @@
+#define X_STAND_OPEN_STATE "open"
+#define X_STAND_CLOSED_STATE "close"
+
 /obj/structure/bed/bdsm_bed
 	name = "bdsm bed"
 	desc = "A latex bed with D-rings on the sides. Looks comfortable."
@@ -27,7 +30,7 @@
 
 	to_chat(user, span_notice("You assemble [src]."))
 	var/obj/structure/bed/bdsm_bed/assembled_bed = new
-	assembled_bed.loc = loc
+	assembled_bed.forceMove(loc)
 	qdel(src)
 
 	return TRUE
@@ -44,14 +47,14 @@
 
 /obj/structure/bed/bdsm_bed/wrench_act_secondary(mob/living/user, obj/item/tool)
 	add_fingerprint(user)
-	to_chat(user, span_notice("You begin unfastening the frame of bdsm bed and deflating the latex pillows..."))
+	to_chat(user, span_notice("You begin unfastening the frame of [src] and deflating the latex pillows..."))
 	if(!tool.use_tool(src, user, 8 SECONDS, volume = 50))
 		to_chat(user, span_warning("You fail to disassemble [src]."))
 		return FALSE
 
 	to_chat(user, span_notice("You disassemble [src]."))
 	var/obj/item/bdsm_bed_kit/created_kit = new
-	created_kit.loc = loc
+	created_kit.forceMove(loc)
 	qdel(src)
 
 	return TRUE
@@ -125,7 +128,7 @@
 // Handler for attempting to unbuckle a mob from a X-Stand
 /obj/structure/chair/x_stand/user_unbuckle_mob(mob/living/buckled_mob, mob/living/user)
 	// Let's make sure that the X-Stand is in the correct state
-	if(stand_state == "open")
+	if(stand_state == X_STAND_OPEN_STATE)
 		toggle_mode(user)
 
 	if(!buckled_mob)
@@ -160,7 +163,7 @@
 
 // Handler for attempting to buckle a mob into a X-Stand
 /obj/structure/chair/x_stand/user_buckle_mob(mob/living/affected_mob, mob/user, check_loc = TRUE)
-	if(stand_state == "close")
+	if(stand_state == X_STAND_CLOSED_STATE)
 		toggle_mode(user)
 		//return  // Uncomment if it is necessary to "open" the X-Stand as a separate action before buckling
 
@@ -212,11 +215,11 @@
 
 // X-Stand state switch processing
 /obj/structure/chair/x_stand/proc/toggle_mode(mob/user)
-	if(stand_state == "close")
-		stand_state = "open"
+	if(stand_state == X_STAND_CLOSED_STATE)
+		stand_state = X_STAND_OPEN_STATE
 		cut_overlay(xstand_overlay)
 	else
-		stand_state = "close"
+		stand_state = X_STAND_CLOSED_STATE
 		add_overlay(xstand_overlay)
 
 	add_fingerprint(user)
@@ -285,19 +288,22 @@
 	if(!tool.use_tool(src, user, 8 SECONDS, volume = 50))
 		return FALSE
 
-	to_chat(user, span_notice("You assemble the x-stand."))
+	to_chat(user, span_notice("You assemble [src]."))
 	new /obj/structure/chair/x_stand(get_turf(user))
 	qdel(src)
 	return TRUE
 
 /obj/structure/chair/x_stand/wrench_act_secondary(mob/living/user, obj/item/tool)
 	add_fingerprint(user)
-	to_chat(user, span_notice("You begin unfastening the frame of x-stand..."))
+	to_chat(user, span_notice("You begin unfastening the frame of [src]..."))
 	if(!tool.use_tool(src, user, 8 SECONDS, volume = 50))
 		return FALSE
 
-	to_chat(user, span_notice("You disassemble the x-stand."))
+	to_chat(user, span_notice("You disassemble [src]."))
 	new /obj/item/x_stand_kit(get_turf(user))
 	unbuckle_all_mobs()
 	qdel(src)
 	return TRUE
+
+#undef X_STAND_CLOSED_STATE
+#undef X_STAND_OPEN_STATE
