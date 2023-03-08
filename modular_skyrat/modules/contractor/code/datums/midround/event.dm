@@ -4,7 +4,7 @@
 	weight = 8
 	max_occurrences = 1
 	category = EVENT_CATEGORY_INVASION
-	description = "A pre-equipped contractor floats towards the station to fufill contracts."
+	description = "A pre-equipped contractor floats towards the station to fulfill contracts."
 
 /datum/round_event/ghost_role/contractor
 	minimum_required = 1
