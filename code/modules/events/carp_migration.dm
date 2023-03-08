@@ -7,6 +7,12 @@
 	max_occurrences = 6
 	category = EVENT_CATEGORY_ENTITIES
 	description = "Summons a school of space carp."
+<<<<<<< HEAD
+=======
+	min_wizard_trigger_potency = 0
+	max_wizard_trigger_potency = 3
+	admin_setup = list(/datum/event_admin_setup/carp_migration)
+>>>>>>> 105dff50583 (Refactors admin event setup (again) (#73801))
 
 /datum/round_event_control/carp_migration/New()
 	. = ..()

@@ -7,7 +7,12 @@
 	dynamic_should_hijack = TRUE
 	category = EVENT_CATEGORY_INVASION
 	description = "The crew will either pay up, or face a pirate assault."
+<<<<<<< HEAD
 	admin_setup = /datum/event_admin_setup/pirates
+=======
+	admin_setup = list(/datum/event_admin_setup/listed_options/pirates)
+	map_flags = EVENT_SPACE_ONLY
+>>>>>>> 105dff50583 (Refactors admin event setup (again) (#73801))
 
 /datum/round_event_control/pirates/preRunEvent()
 	if (!SSmapping.is_planetary())
@@ -80,10 +85,11 @@
 
 	priority_announce("Unidentified armed ship detected near the station.")
 
-/datum/event_admin_setup/pirates
-	///admin chosen pirate team
-	var/datum/pirate_gang/chosen_gang
+/datum/event_admin_setup/listed_options/pirates
+	input_text = "Select Pirate Gang"
+	normal_run_option = "Random Pirate Gang"
 
+<<<<<<< HEAD
 /datum/event_admin_setup/pirates/prompt_admins()
 
 	var/list/gang_choices = list("Random")
@@ -310,3 +316,13 @@
 /datum/export/pirate/holochip/get_cost(atom/movable/AM)
 	var/obj/item/holochip/H = AM
 	return H.credits
+=======
+/datum/event_admin_setup/listed_options/pirates/get_list()
+	return subtypesof(/datum/pirate_gang)
+
+/datum/event_admin_setup/listed_options/pirates/apply_to_event(datum/round_event/pirates/event)
+	if(isnull(chosen))
+		event.chosen_gang = null
+	else
+		event.chosen_gang = new chosen
+>>>>>>> 105dff50583 (Refactors admin event setup (again) (#73801))

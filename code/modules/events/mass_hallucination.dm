@@ -6,7 +6,13 @@
 	max_occurrences = 2
 	min_players = 1
 	category = EVENT_CATEGORY_HEALTH
+<<<<<<< HEAD
 	admin_setup = /datum/event_admin_setup/mass_hallucination
+=======
+	min_wizard_trigger_potency = 0
+	max_wizard_trigger_potency = 2
+	admin_setup = list(/datum/event_admin_setup/mass_hallucination)
+>>>>>>> 105dff50583 (Refactors admin event setup (again) (#73801))
 
 /datum/round_event/mass_hallucination
 	fakeable = FALSE
