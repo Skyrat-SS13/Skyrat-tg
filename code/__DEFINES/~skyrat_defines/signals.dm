@@ -73,3 +73,6 @@
 
 /// To chambered round on gun's `process_fire()`: (list/iff_factions)
 #define COMSIG_CHAMBERED_BULLET_FIRE "chambered_bullet_fire"
+
+/// Engineering Override Access manual toggle
+#define COMSIG_GLOB_FORCE_ENG_OVERRIDE "force_engineering_override"

@@ -598,6 +598,7 @@
 /// Handles clothing imbuing, extremely similar to weapon imbuing but not in the same proc because of how uhh... goofy the way this has to be done is
 /obj/structure/reagent_forge/proc/handle_clothing_imbue(obj/attacking_item, mob/living/user)
 	in_use = TRUE
+	balloon_alert_to_viewers("imbuing...")
 
 	var/obj/item/attacking_clothing = attacking_item
 
@@ -624,14 +625,15 @@
 			attacking_clothing.reagents.remove_all_type(clothing_reagent.type)
 			continue
 
-			clothing_component.imbued_reagent += clothing_reagent.type
-			attacking_clothing.name = "[clothing_reagent.name] [attacking_clothing.name]"
+		clothing_component.imbued_reagent += clothing_reagent.type
+		attacking_clothing.name = "[clothing_reagent.name] [attacking_clothing.name]"
 
 	attacking_clothing.color = mix_color_from_reagents(attacking_clothing.reagents.reagent_list)
 	balloon_alert_to_viewers("imbued [attacking_clothing]")
 	user.mind.adjust_experience(/datum/skill/smithing, 60)
 	playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
 	in_use = FALSE
+	return TRUE
 
 /// Sets ceramic items from their unusable state into their finished form
 /obj/structure/reagent_forge/proc/handle_ceramics(obj/attacking_item, mob/living/user)

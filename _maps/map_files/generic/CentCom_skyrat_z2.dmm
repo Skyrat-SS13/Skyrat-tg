@@ -9,9 +9,9 @@
 /obj/item/clothing/suit/hooded/wintercoat,
 /obj/item/clothing/suit/hooded/wintercoat,
 /obj/item/clothing/suit/hooded/wintercoat,
-/obj/item/clothing/suit/hooded/wintercoat/aformal,
-/obj/item/clothing/suit/hooded/wintercoat/aformal,
-/obj/item/clothing/suit/hooded/wintercoat/aformal,
+/obj/item/clothing/suit/hooded/wintercoat/skyrat,
+/obj/item/clothing/suit/hooded/wintercoat/skyrat,
+/obj/item/clothing/suit/hooded/wintercoat/skyrat,
 /obj/item/clothing/suit/hooded/wintercoat/captain,
 /obj/item/clothing/suit/hooded/wintercoat/captain,
 /obj/item/clothing/suit/hooded/wintercoat/cargo,
@@ -122,10 +122,7 @@
 /obj/machinery/jukebox{
 	req_access = "0"
 	},
-/obj/structure/sign/barsign{
-	pixel_y = 32;
-	req_access = null
-	},
+/obj/machinery/barsign/all_access/directional/north,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "afr" = (
@@ -2790,11 +2787,11 @@
 /obj/item/reagent_containers/condiment/quality_oil,
 /obj/item/reagent_containers/condiment/quality_oil,
 /obj/item/reagent_containers/condiment/quality_oil,
-/obj/item/food/larvae,
-/obj/item/food/larvae,
-/obj/item/food/larvae,
-/obj/item/food/larvae,
-/obj/item/food/larvae,
+/obj/item/food/canned/larvae,
+/obj/item/food/canned/larvae,
+/obj/item/food/canned/larvae,
+/obj/item/food/canned/larvae,
+/obj/item/food/canned/larvae,
 /obj/item/food/canned/pine_nuts,
 /obj/item/food/canned/pine_nuts,
 /obj/item/food/canned/pine_nuts,
@@ -3056,7 +3053,7 @@
 /area/centcom/holding/cafedorms)
 "aMI" = (
 /obj/machinery/vending/hydronutrients{
-	products = list(/obj/item/reagent_containers/cup/bottle/nutrient/ez = 50, /obj/item/reagent_containers/cup/bottle/nutrient/l4z = 20, /obj/item/reagent_containers/cup/bottle/nutrient/rh = 10, /obj/item/reagent_containers/spray/pestspray = 30, /obj/item/reagent_containers/syringe = 5, /obj/item/storage/bag/plants = 30, /obj/item/cultivator = 10, /obj/item/shovel/spade = 10, /obj/item/plant_analyzer = 10)
+	products = list(/obj/item/reagent_containers/cup/bottle/nutrient/ez=50,/obj/item/reagent_containers/cup/bottle/nutrient/l4z=20,/obj/item/reagent_containers/cup/bottle/nutrient/rh=10,/obj/item/reagent_containers/spray/pestspray=30,/obj/item/reagent_containers/syringe=5,/obj/item/storage/bag/plants=30,/obj/item/cultivator=10,/obj/item/shovel/spade=10,/obj/item/plant_analyzer=10)
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "darkfull"
@@ -3189,13 +3186,13 @@
 /obj/item/storage/box/ingredients/american,
 /obj/item/storage/box/ingredients/exotic,
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
@@ -4621,10 +4618,7 @@
 /obj/structure/fence/end{
 	dir = 4
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "bkA" = (
@@ -4657,10 +4651,7 @@
 /area/centcom/interlink)
 "bnU" = (
 /obj/structure/flora/tree/stump,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "boa" = (
@@ -4966,10 +4957,7 @@
 /obj/effect/turf_decal/weather/dirt{
 	dir = 1
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/bush/flowers_br/style_random,
 /turf/open/floor/grass,
 /area/centcom/interlink)
@@ -5039,10 +5027,7 @@
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "che" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/effect/turf_decal/weather/dirt{
 	dir = 4
 	},
@@ -5087,10 +5072,7 @@
 /obj/effect/turf_decal/weather/dirt{
 	dir = 5
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "cqC" = (
@@ -5309,10 +5291,7 @@
 /area/cruiser_dock)
 "cNw" = (
 /obj/structure/flora/bush/fullgrass/style_random,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "cOV" = (
@@ -5328,14 +5307,8 @@
 "cQq" = (
 /obj/effect/turf_decal/weather/dirt,
 /obj/structure/hedge,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "cRs" = (
@@ -5467,10 +5440,7 @@
 /obj/effect/turf_decal/weather/dirt{
 	dir = 1
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "diY" = (
@@ -5489,10 +5459,7 @@
 /area/centcom/holding/cafe)
 "dky" = (
 /obj/structure/flora/tree/jungle/style_4,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "dkD" = (
@@ -5509,10 +5476,7 @@
 /turf/open/floor/iron/white,
 /area/centcom/interlink)
 "dkR" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/effect/turf_decal/weather/dirt{
 	dir = 8
 	},
@@ -5542,18 +5506,12 @@
 /area/centcom/interlink)
 "dsH" = (
 /obj/structure/flora/bush/flowers_yw/style_random,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "dsW" = (
 /obj/item/storage/basket,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/carpet/red,
 /area/centcom/interlink)
 "dtL" = (
@@ -5577,10 +5535,7 @@
 /obj/effect/turf_decal/weather/dirt{
 	dir = 1
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/floor/grass,
 /area/centcom/interlink)
@@ -5739,11 +5694,11 @@
 /obj/item/food/canned/tomatoes,
 /obj/item/food/canned/tomatoes,
 /obj/item/food/canned/tomatoes,
-/obj/item/food/canned_jellyfish,
-/obj/item/food/canned_jellyfish,
-/obj/item/food/canned_jellyfish,
-/obj/item/food/canned_jellyfish,
-/obj/item/food/canned_jellyfish,
+/obj/item/food/canned/jellyfish,
+/obj/item/food/canned/jellyfish,
+/obj/item/food/canned/jellyfish,
+/obj/item/food/canned/jellyfish,
+/obj/item/food/canned/jellyfish,
 /obj/item/food/fishmeat/moonfish,
 /obj/item/food/fishmeat/moonfish,
 /obj/item/food/fishmeat/moonfish,
@@ -5776,10 +5731,7 @@
 /area/centcom/holding/cafe)
 "dVb" = (
 /obj/effect/turf_decal/weather/dirt,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "dVh" = (
@@ -6123,10 +6075,7 @@
 /area/centcom/interlink)
 "eSk" = (
 /obj/structure/flora/bush/flowers_pp/style_random,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "eSC" = (
@@ -6358,10 +6307,7 @@
 /turf/open/floor/iron,
 /area/centcom/holding/cafe)
 "fFy" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/effect/turf_decal/weather/dirt{
 	dir = 5
 	},
@@ -6379,10 +6325,7 @@
 /obj/effect/turf_decal/weather/dirt{
 	dir = 1
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/bush/flowers_pp/style_random,
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/floor/grass,
@@ -6394,36 +6337,24 @@
 /area/centcom/interlink)
 "fHV" = (
 /obj/structure/flora/bush/flowers_br/style_random,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "fIS" = (
 /obj/structure/flora/bush/fullgrass/style_random,
 /obj/structure/flora/bush/flowers_pp/style_random,
 /obj/structure/flora/bush/flowers_br/style_random,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "fIY" = (
 /obj/effect/turf_decal/weather/dirt,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/bush/flowers_yw/style_random,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "fJQ" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/floor/grass,
 /area/centcom/interlink)
@@ -6452,10 +6383,7 @@
 /area/centcom/interlink)
 "fPn" = (
 /obj/structure/flora/bush/fullgrass/style_random,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/fence,
 /turf/open/floor/grass,
 /area/centcom/interlink)
@@ -6473,10 +6401,7 @@
 /obj/structure/chair/sofa/bench/right{
 	dir = 1
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/misc/dirt/planet,
 /area/centcom/interlink)
 "fTu" = (
@@ -6507,10 +6432,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/cruiser_dock)
 "fVr" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/effect/turf_decal/weather/dirt,
 /turf/open/floor/grass,
 /area/centcom/interlink)
@@ -6838,10 +6760,7 @@
 /area/centcom/holding/cafe)
 "gXw" = (
 /obj/effect/turf_decal/weather/dirt,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/bush/flowers_br/style_random,
 /obj/structure/statue/sandstone/venus{
 	name = "Order"
@@ -6859,12 +6778,12 @@
 /obj/item/reagent_containers/condiment/soysauce,
 /obj/item/reagent_containers/condiment/sugar,
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
+	list_reagents = list(/datum/reagent/consumable/rice=90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
+	list_reagents = list(/datum/reagent/consumable/rice=90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
@@ -6878,10 +6797,7 @@
 /obj/structure/fence/interlink{
 	dir = 4
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "hcR" = (
@@ -6902,10 +6818,7 @@
 /obj/effect/turf_decal/weather/dirt{
 	dir = 1
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/tree/jungle/small/style_5,
 /turf/open/floor/grass,
 /area/centcom/interlink)
@@ -7009,10 +6922,7 @@
 /area/centcom/holding/cafe)
 "hpR" = (
 /obj/effect/turf_decal/weather/dirt,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/floor/grass,
 /area/centcom/interlink)
@@ -7092,6 +7002,7 @@
 /obj/item/radio/headset/syndicate/alt,
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/light/cold/directional/north,
+/obj/item/clothing/suit/armor/vest,
 /turf/open/floor/iron/dark/textured_large,
 /area/cruiser_dock)
 "hAW" = (
@@ -7284,10 +7195,7 @@
 /turf/open/floor/wood/tile,
 /area/centcom/interlink)
 "iem" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/effect/turf_decal/weather/dirt{
 	dir = 8
 	},
@@ -7333,10 +7241,7 @@
 /area/centcom/interlink)
 "iov" = (
 /obj/structure/flora/tree/jungle/small/style_random,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "ioz" = (
@@ -7398,10 +7303,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/centcom/interlink)
 "iuK" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/carpet/red,
 /area/centcom/interlink)
 "iwF" = (
@@ -7526,10 +7428,7 @@
 /turf/open/floor/iron/smooth_large,
 /area/cruiser_dock)
 "iPs" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/misc/dirt/planet,
 /area/centcom/interlink)
 "iPU" = (
@@ -7555,10 +7454,7 @@
 "iRz" = (
 /obj/effect/turf_decal/weather/dirt,
 /obj/structure/hedge,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "iTf" = (
@@ -7612,10 +7508,7 @@
 /area/centcom/interlink)
 "iXq" = (
 /obj/structure/flora/tree/jungle,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "iXZ" = (
@@ -7702,10 +7595,7 @@
 /turf/open/floor/bamboo,
 /area/centcom/holding/cafedorms)
 "jgT" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/fence/corner,
 /turf/open/floor/grass,
 /area/centcom/interlink)
@@ -7826,10 +7716,7 @@
 /obj/effect/turf_decal/weather/dirt{
 	dir = 10
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "jtl" = (
@@ -7996,10 +7883,7 @@
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "jSW" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/effect/turf_decal/weather/dirt,
 /obj/structure/flora/bush/flowers_pp/style_random,
 /turf/open/floor/grass,
@@ -8033,10 +7917,6 @@
 	pixel_y = 3
 	},
 /obj/effect/turf_decal/tile/red/opposingcorners,
-/turf/open/floor/iron/dark,
-/area/centcom/interlink)
-"jUw" = (
-/obj/machinery/vending/cigarette,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "jUK" = (
@@ -8081,10 +7961,7 @@
 	},
 /area/centcom/holding/cafe)
 "kdw" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/effect/turf_decal/weather/dirt{
 	dir = 1
 	},
@@ -8224,10 +8101,7 @@
 "krJ" = (
 /obj/structure/flora/bush/fullgrass/style_random,
 /obj/structure/flora/bush/flowers_yw/style_random,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "kvj" = (
@@ -8316,10 +8190,7 @@
 /turf/open/floor/wood/tile,
 /area/centcom/interlink)
 "kLZ" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/effect/turf_decal/weather/dirt,
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/floor/grass,
@@ -8429,10 +8300,7 @@
 /area/centcom/interlink)
 "kZF" = (
 /obj/effect/turf_decal/weather/dirt,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/bush/flowers_yw/style_random,
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/floor/grass,
@@ -8773,10 +8641,7 @@
 /turf/open/floor/iron/smooth_large,
 /area/cruiser_dock)
 "lTP" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/tree/jungle/style_6,
 /turf/open/floor/grass,
 /area/centcom/interlink)
@@ -8905,10 +8770,7 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "mnS" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/bush/flowers_br/style_random,
 /obj/structure/flora/bush/flowers_pp/style_random,
 /turf/open/floor/grass,
@@ -9066,10 +8928,7 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "mDR" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/effect/turf_decal/weather/dirt,
 /obj/structure/flora/bush/flowers_br/style_random,
 /turf/open/floor/grass,
@@ -9100,10 +8959,7 @@
 /turf/open/misc/beach/sand,
 /area/centcom/holding/cafepark)
 "mLa" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/effect/turf_decal/weather/dirt{
 	dir = 1
 	},
@@ -9392,10 +9248,7 @@
 "nHK" = (
 /obj/structure/flora/bush/fullgrass/style_random,
 /obj/effect/turf_decal/weather/dirt,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "nJp" = (
@@ -9433,10 +9286,7 @@
 /obj/effect/turf_decal/weather/dirt{
 	dir = 8
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "nNe" = (
@@ -9502,10 +9352,7 @@
 /obj/effect/turf_decal/weather/dirt{
 	dir = 4
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/bush/flowers_pp/style_random,
 /turf/open/floor/grass,
 /area/centcom/interlink)
@@ -9686,24 +9533,24 @@
 /obj/item/storage/box/ingredients/american,
 /obj/item/storage/box/ingredients/exotic,
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
+	list_reagents = list(/datum/reagent/consumable/rice=90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
+	list_reagents = list(/datum/reagent/consumable/rice=90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
@@ -9736,10 +9583,7 @@
 	dir = 1
 	},
 /obj/structure/flora/bush/flowers_br/style_random,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "oyI" = (
@@ -9747,10 +9591,7 @@
 /obj/effect/turf_decal/weather/dirt{
 	dir = 4
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "oAn" = (
@@ -9773,10 +9614,7 @@
 /obj/effect/turf_decal/weather/dirt{
 	dir = 1
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/bush/flowers_br/style_random,
 /obj/structure/flora/bush/large/style_random,
 /turf/open/floor/grass,
@@ -9945,10 +9783,7 @@
 /obj/effect/turf_decal/weather/dirt{
 	dir = 8
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "pcH" = (
@@ -10021,10 +9856,7 @@
 "pmI" = (
 /obj/structure/flora/bush/fullgrass/style_random,
 /obj/structure/flora/bush/flowers_pp/style_random,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "pmJ" = (
@@ -10048,10 +9880,7 @@
 "pod" = (
 /obj/structure/flora/bush/flowers_br/style_random,
 /obj/structure/flora/bush/flowers_yw/style_random,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "ppR" = (
@@ -10203,10 +10032,7 @@
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "pFM" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/fence/interlink{
 	dir = 4
 	},
@@ -10364,10 +10190,7 @@
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "pPO" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/tree/jungle/small/style_random,
 /turf/open/floor/grass,
 /area/centcom/interlink)
@@ -10455,10 +10278,7 @@
 /obj/effect/turf_decal/weather/dirt{
 	dir = 6
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "pZh" = (
@@ -10570,10 +10390,7 @@
 /obj/effect/turf_decal/weather/dirt{
 	dir = 9
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "qoB" = (
@@ -10805,10 +10622,7 @@
 /area/centcom/holding/cafe)
 "qRX" = (
 /obj/effect/turf_decal/weather/dirt,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/statue/sandstone/venus{
 	dir = 1;
 	name = "Law"
@@ -10851,19 +10665,13 @@
 /turf/open/floor/wood,
 /area/centcom/holding/cafe)
 "qWZ" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/fluff/arc,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "rah" = (
 /obj/structure/flora/bush/flowers_br/style_random,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/fence/interlink{
 	dir = 4
 	},
@@ -10972,10 +10780,7 @@
 "rng" = (
 /obj/effect/turf_decal/weather/dirt,
 /obj/structure/flora/bush/flowers_yw/style_random,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "rpG" = (
@@ -11006,10 +10811,7 @@
 /turf/open/floor/wood,
 /area/centcom/interlink)
 "rDg" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/effect/turf_decal/weather/dirt{
 	dir = 1
 	},
@@ -11187,10 +10989,7 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "rSa" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/bush/flowers_yw/style_random,
 /turf/open/floor/grass,
 /area/centcom/interlink)
@@ -11233,6 +11032,7 @@
 	desc = "It's a personal storage unit for operative gear."
 	},
 /obj/effect/turf_decal/bot_white,
+/obj/item/clothing/suit/armor/vest,
 /turf/open/floor/iron/dark/textured_large,
 /area/cruiser_dock)
 "rVP" = (
@@ -11243,10 +11043,7 @@
 /turf/open/floor/plating,
 /area/centcom/interlink)
 "rVQ" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/bush/flowers_br/style_random,
 /turf/open/floor/grass,
 /area/centcom/interlink)
@@ -11311,10 +11108,7 @@
 /obj/effect/turf_decal/weather/dirt{
 	dir = 1
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/bush/flowers_yw/style_random,
 /turf/open/floor/grass,
 /area/centcom/interlink)
@@ -11456,10 +11250,7 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "syc" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/bush/large/style_random,
 /turf/open/floor/grass,
 /area/centcom/interlink)
@@ -11507,10 +11298,7 @@
 "sGU" = (
 /obj/structure/flora/bush/fullgrass/style_random,
 /obj/structure/flora/bush/flowers_br/style_random,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "sIb" = (
@@ -11666,10 +11454,7 @@
 /turf/open/floor/iron/freezer,
 /area/centcom/interlink)
 "sZl" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/tree/jungle/small,
 /turf/open/floor/grass,
 /area/centcom/interlink)
@@ -11714,10 +11499,7 @@
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "tdp" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/effect/turf_decal/weather/dirt{
 	dir = 8
 	},
@@ -11803,6 +11585,7 @@
 	},
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/light/cold/directional/south,
+/obj/item/clothing/suit/armor/vest,
 /turf/open/floor/iron/dark/textured_large,
 /area/cruiser_dock)
 "ttx" = (
@@ -11843,10 +11626,7 @@
 "twE" = (
 /obj/structure/flora/bush/flowers_yw/style_random,
 /obj/structure/flora/bush/flowers_br/style_random,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "twL" = (
@@ -11929,10 +11709,7 @@
 /turf/open/floor/wood,
 /area/centcom/holding/cafe)
 "tIN" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/bush/flowers_yw/style_random,
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/floor/grass,
@@ -11958,18 +11735,12 @@
 "tQP" = (
 /obj/structure/flora/bush/flowers_pp/style_random,
 /obj/structure/flora/bush/flowers_br/style_random,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "tUk" = (
 /obj/structure/fence/corner,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "tUz" = (
@@ -12063,10 +11834,7 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "uaM" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/effect/turf_decal/weather/dirt{
 	dir = 8
 	},
@@ -12239,10 +12007,7 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "usr" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/effect/turf_decal/weather/dirt{
 	dir = 1
 	},
@@ -12343,10 +12108,7 @@
 /obj/structure/chair/sofa/bench/left{
 	dir = 1
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/misc/dirt/planet,
 /area/centcom/interlink)
 "uGU" = (
@@ -12395,10 +12157,7 @@
 /area/cruiser_dock)
 "uKH" = (
 /obj/effect/turf_decal/weather/dirt,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/tree/jungle/small/style_6,
 /turf/open/floor/grass,
 /area/centcom/interlink)
@@ -12509,10 +12268,7 @@
 /turf/open/floor/wood,
 /area/centcom/holding/cafe)
 "vat" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "vaB" = (
@@ -12569,10 +12325,7 @@
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "vqy" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/effect/turf_decal/weather/dirt{
 	dir = 4
 	},
@@ -12644,6 +12397,7 @@
 	},
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/light/cold/directional/north,
+/obj/item/clothing/suit/armor/vest,
 /turf/open/floor/iron/dark/textured_large,
 /area/cruiser_dock)
 "vxh" = (
@@ -12904,10 +12658,7 @@
 /obj/effect/turf_decal/weather/dirt{
 	dir = 1
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "wji" = (
@@ -12934,10 +12685,7 @@
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "wpz" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/bush/flowers_pp/style_random,
 /turf/open/floor/grass,
 /area/centcom/interlink)
@@ -12949,10 +12697,7 @@
 /turf/open/misc/asteroid,
 /area/cruiser_dock)
 "wqL" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/effect/turf_decal/weather/dirt{
 	dir = 1
 	},
@@ -12995,10 +12740,7 @@
 /obj/effect/turf_decal/weather/dirt{
 	dir = 4
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "wyn" = (
@@ -13289,10 +13031,7 @@
 "xmn" = (
 /obj/structure/flora/bush/flowers_pp/style_random,
 /obj/structure/flora/bush/flowers_yw/style_random,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "xpl" = (
@@ -13306,10 +13045,7 @@
 /obj/structure/flora/bush/fullgrass/style_random,
 /obj/structure/flora/bush/flowers_yw/style_random,
 /obj/structure/flora/bush/flowers_br/style_random,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "xqq" = (
@@ -13348,10 +13084,7 @@
 /area/centcom/holding/cafepark)
 "xtQ" = (
 /obj/effect/turf_decal/weather/dirt,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/flora/bush/flowers_pp/style_random,
 /turf/open/floor/grass,
 /area/centcom/interlink)
@@ -13389,10 +13122,7 @@
 /obj/structure/chair/sofa/bench{
 	dir = 1
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/misc/dirt/planet,
 /area/centcom/interlink)
 "xCy" = (
@@ -13577,10 +13307,7 @@
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "xXc" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /obj/structure/fence,
 /turf/open/floor/grass,
 /area/centcom/interlink)
@@ -13639,10 +13366,7 @@
 /obj/effect/turf_decal/weather/dirt{
 	dir = 8
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
+/obj/effect/light_emitter/interlink,
 /turf/open/floor/grass,
 /area/centcom/interlink)
 "ycB" = (
@@ -27672,7 +27396,7 @@ aqG
 aqG
 aqG
 aDg
-jUw
+aXG
 jXO
 rDL
 hvQ

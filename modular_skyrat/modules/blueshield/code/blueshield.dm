@@ -106,4 +106,6 @@
 	icon_state = "hellfirepdw"
 	worn_icon_state = "hellfirepdw"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hellfire/bs)
-	company_flag = COMPANY_ALLSTAR
+
+/obj/item/gun/energy/laser/hellgun/blueshield/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_ALLSTAR)
