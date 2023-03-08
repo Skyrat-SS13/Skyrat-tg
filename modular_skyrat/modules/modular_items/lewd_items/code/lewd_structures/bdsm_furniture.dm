@@ -109,7 +109,7 @@
 		user_unbuckle_mob(buckled_mob, user)
 		return TRUE
 
-	var/mob/living/affected_mob = locate() in src.loc
+	var/mob/living/affected_mob = locate() in loc
 	if(!affected_mob)
 		toggle_mode(user)
 		return TRUE
