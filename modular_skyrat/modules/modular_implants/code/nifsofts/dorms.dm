@@ -6,7 +6,7 @@
 	name = "Grimoire Purpura"
 	program_desc = "Grimoire Purpura, a fork of the Grimoire Caeruleam code, allows users to conveniently access an extensive database of various adult toys. "
 	holographic_filter = FALSE //No RGB toys
-	name_tag = "purapura "
+	name_tag = "purpura "
 
 	//This uses a stripped down selection from the dorms vendor.
 	summonable_items  = list(
