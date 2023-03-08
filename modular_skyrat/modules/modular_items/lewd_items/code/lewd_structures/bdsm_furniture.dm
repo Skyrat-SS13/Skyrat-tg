@@ -11,22 +11,26 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	throwforce = 0
 	icon_state = "bdsm_bed_kit"
-	var/unwrapped = 0
 	w_class = WEIGHT_CLASS_HUGE
 
 /obj/item/bdsm_bed_kit/attackby(obj/item/used_item, mob/user, params) //constructing a bed here.
 	add_fingerprint(user)
-	if(istype(used_item, /obj/item/wrench))
-		if (!(item_flags & IN_INVENTORY) && !(item_flags & IN_STORAGE))
-			to_chat(user, span_notice("You fasten the frame to the floor and begin to inflate the latex pillows..."))
-			if(used_item.use_tool(src, user, 8 SECONDS, volume = 50))
-				to_chat(user, span_notice("You assemble the bdsm bed."))
-				var/obj/structure/bed/bdsm_bed/assembled_bed = new
-				assembled_bed.loc = loc
-				qdel(src)
-			return
-	else
+	if(!istype(used_item, /obj/item/wrench))
 		return ..()
+	if((item_flags & IN_INVENTORY) || (item_flags & IN_STORAGE))
+		return FALSE
+
+	to_chat(user, span_notice("You fasten the frame to the floor and begin to inflate the latex pillows..."))
+	if(!used_item.use_tool(src, user, 8 SECONDS, volume = 50))
+		to_chat(user, span_warning("You fail to assemble [src]."))
+		return FALSE
+
+	to_chat(user, span_notice("You assemble [src]."))
+	var/obj/structure/bed/bdsm_bed/assembled_bed = new
+	assembled_bed.loc = loc
+	qdel(src)
+
+	return TRUE
 
 /obj/structure/bed/bdsm_bed/post_buckle_mob(mob/living/affected_mob)
 	density = TRUE
@@ -40,21 +44,24 @@
 
 /obj/structure/bed/bdsm_bed/attackby(obj/item/used_item, mob/user, params) //deconstructing a bed. Aww(
 	add_fingerprint(user)
-	if(istype(used_item, /obj/item/wrench))
-		to_chat(user, span_notice("You begin unfastening the frame of bdsm bed and deflating the latex pillows..."))
-		if(used_item.use_tool(src, user, 8 SECONDS, volume = 50))
-			to_chat(user, span_notice("You disassemble the BDSM bed."))
-			var/obj/item/bdsm_bed_kit/created_kit = new
-			created_kit.loc = loc
-			unbuckle_all_mobs()
-			qdel(src)
-		return
-	else
+	if(!istype(used_item, /obj/item/wrench))
 		return ..()
 
+	to_chat(user, span_notice("You begin unfastening the frame of bdsm bed and deflating the latex pillows..."))
+	if(!used_item.use_tool(src, user, 8 SECONDS, volume = 50))
+		to_chat(user, span_warning("You fail to disassemble [src]."))
+		return FALSE
+
+	to_chat(user, span_notice("You disassemble [src]."))
+	var/obj/item/bdsm_bed_kit/created_kit = new
+	created_kit.loc = loc
+	qdel(src)
+
+	return TRUE
+
 /obj/structure/bed/bdsm_bed/Destroy()
-	. = ..()
 	unbuckle_all_mobs(TRUE)
+	return ..()
 
 /*
 *	X-STAND
