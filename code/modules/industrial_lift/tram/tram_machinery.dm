@@ -865,12 +865,6 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	device_type = /obj/item/assembly/control/tram
 	req_access = list()
 	id = 1
-<<<<<<< HEAD
-	light_power = 0.5
-	light_range = 1.5
-	light_color = LIGHT_COLOR_DARK_BLUE
-=======
->>>>>>> 10a4d0e3113 (Tramstation updates 02/20 (#73576))
 	light_mask = "tram-light-mask"
 	/// The specific lift id of the tram we're calling.
 	var/lift_id = MAIN_STATION_TRAM
