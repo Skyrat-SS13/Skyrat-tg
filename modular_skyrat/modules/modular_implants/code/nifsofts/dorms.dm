@@ -4,7 +4,7 @@
 
 /datum/nifsoft/summoner/dorms
 	name = "Grimoire Purpura"
-	program_desc = "Grimoire Purapura, a fork of the Grimoire Caeruleam code, allows users to conveniently access an extensive database of various adult toys. "
+	program_desc = "Grimoire Purpura, a fork of the Grimoire Caeruleam code, allows users to conveniently access an extensive database of various adult toys. "
 	holographic_filter = FALSE //No RGB toys
 	name_tag = "purapura "
 
