@@ -23,3 +23,6 @@
 
 /// Checks that floor tiles are properly mapped to broken/burnt
 /datum/unit_test/focus_only/valid_turf_states
+
+/// Checks that no light shares a tile/pixel offsets with another
+/datum/unit_test/focus_only/stacked_lights

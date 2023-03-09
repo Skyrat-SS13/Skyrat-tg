@@ -361,6 +361,8 @@
 	globule.def_zone = caller.zone_selected
 	globule.fire()
 
+	StartCooldown()
+
 	return TRUE
 
 // Needs to return TRUE otherwise PreActivate() will fail, see above
