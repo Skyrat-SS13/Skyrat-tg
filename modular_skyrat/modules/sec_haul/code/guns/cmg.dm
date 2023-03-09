@@ -61,5 +61,5 @@
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/cmg/nomag(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/cmg(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/cmg(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/cmg(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cmg/lethal(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cmg/lethal(src)

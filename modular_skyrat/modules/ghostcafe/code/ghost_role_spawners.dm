@@ -8,7 +8,8 @@
 /obj/effect/mob_spawn/ghost_role/robot/ghostcafe
 	name = "Cafe Robotic Storage"
 	prompt_name = "a ghost cafe robot"
-	uses = -1
+	infinite_use = TRUE
+	deletes_on_zero_uses_left = FALSE
 	icon = 'modular_skyrat/modules/ghostcafe/icons/robot_storage.dmi'
 	icon_state = "robostorage"
 	mob_name = "a cafe robot"
@@ -39,7 +40,8 @@
 /obj/effect/mob_spawn/ghost_role/human/ghostcafe
 	name = "Cafe Sleeper"
 	prompt_name = "a ghost cafe human"
-	uses = -1
+	infinite_use = TRUE
+	deletes_on_zero_uses_left = FALSE
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	mob_name = "a cafe visitor"
