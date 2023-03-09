@@ -31,7 +31,7 @@
 	)
 
 /datum/round_event/mold
-	announce_when = 120 // 4 minutes
+	announce_when = 210 // 7 minutes
 
 /datum/round_event/mold/announce(fake)
 	priority_announce("Confirmed outbreak of level 6 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", ANNOUNCER_OUTBREAK6)
