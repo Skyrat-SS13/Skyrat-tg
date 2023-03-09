@@ -16,24 +16,25 @@
 	category = EVENT_CATEGORY_ENTITIES
 
 /datum/round_event/mold
-	fakeable = FALSE
+	announce_chance = 0
+	announce_when = 120 // 4 minutes
 	var/list/available_molds_t1 = list(
-		/obj/structure/biohazard_blob/structure/core/fire,
-		/obj/structure/biohazard_blob/structure/core/toxic,
-		/obj/structure/biohazard_blob/structure/core/radioactive,
+		/obj/structure/biohazard_blob/structure/core/fungus,
 	)
 	var/list/available_molds_t2 = list(
 		/obj/structure/biohazard_blob/structure/core/fire,
-		/obj/structure/biohazard_blob/structure/core/toxic,
 		/obj/structure/biohazard_blob/structure/core/fungus,
 		/obj/structure/biohazard_blob/structure/core/radioactive,
 		/obj/structure/biohazard_blob/structure/core/emp,
 	)
 
-/datum/round_event/mold
-	announce_when = 120 // 4 minutes
+/datum/event_admin_setup/disease_outbreak/prompt_admins()
+
 
 /datum/round_event/mold/announce(fake)
+	if(!fake)
+		event_minimum_security_level(SEC_LEVEL_VIOLET, FALSE, FALSE)
+
 	priority_announce("Confirmed outbreak of level 6 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", ANNOUNCER_OUTBREAK6)
 
 /datum/round_event/mold/start()
@@ -52,7 +53,7 @@
 
 	var/obj/structure/biohazard_blob/resin/resin_test = new()
 
-	var/list/possible_spawn_areas = typecacheof(typesof(/area/station/maintenance, /area/station/security/prison, /area/station/construction))
+	var/list/possible_spawn_areas = typecacheof(typesof(/area/station/maintenance - /area/station/maintenance/tram, /area/station/security/prison, /area/station/construction))
 
 	for(var/area/A as anything in GLOB.areas)
 		if(!is_station_level(A.z))
@@ -71,7 +72,7 @@
 	for(var/i in 1 to mold_spawns)
 		var/picked_mold
 		if(active_players >= MOLDIES_MIDPOP_THRESHOLD)
-			picked_mold = pick(available_molds_t2)
+			picked_mold = pick_n_take(available_molds_t2)
 		else
 			picked_mold = pick(available_molds_t1)
 		shuffle(turfs)
@@ -80,10 +81,12 @@
 			if(locate(/obj/structure/biohazard_blob/structure/core) in range(20, picked_turf))
 				turfs -= picked_turf
 				continue
+
 			if(istype(picked_mold, /obj/structure/biohazard_blob/structure/core/fungus))
-				addtimer(CALLBACK(src, PROC_REF(event_minimum_security_level), SEC_LEVEL_VIOLET, FALSE), 4 MINUTES)
-			var/obj/structure/biohazard_blob/blob = new picked_mold(picked_turf)
-			announce_to_ghosts(blob)
+				announce_chance = 100
+
+			var/obj/structure/biohazard_blob/mold = new picked_mold(picked_turf)
+			announce_to_ghosts(mold)
 			turfs -= picked_turf
 			i++
 		else
