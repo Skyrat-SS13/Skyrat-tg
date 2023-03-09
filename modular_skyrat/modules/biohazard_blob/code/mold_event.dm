@@ -31,7 +31,7 @@
 	)
 
 /datum/round_event/mold
-	announce_when = 210 // 7 minutes
+	announce_when = 120 // 4 minutes
 
 /datum/round_event/mold/announce(fake)
 	priority_announce("Confirmed outbreak of level 6 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", ANNOUNCER_OUTBREAK6)
@@ -80,6 +80,8 @@
 			if(locate(/obj/structure/biohazard_blob/structure/core) in range(20, picked_turf))
 				turfs -= picked_turf
 				continue
+			if(istype(picked_mold, /obj/structure/biohazard_blob/structure/core/fungus))
+				addtimer(CALLBACK(src, PROC_REF(event_minimum_security_level), SEC_LEVEL_VIOLET, FALSE), 4 MINUTES)
 			var/obj/structure/biohazard_blob/blob = new picked_mold(picked_turf)
 			announce_to_ghosts(blob)
 			turfs -= picked_turf
