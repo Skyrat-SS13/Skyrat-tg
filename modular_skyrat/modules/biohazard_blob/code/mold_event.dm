@@ -19,12 +19,11 @@
 	fakeable = FALSE
 	var/list/available_molds_t1 = list(
 		/obj/structure/biohazard_blob/structure/core/fire,
-		/obj/structure/biohazard_blob/structure/core/toxic,
+		/obj/structure/biohazard_blob/structure/core/emp,
 		/obj/structure/biohazard_blob/structure/core/radioactive,
 	)
 	var/list/available_molds_t2 = list(
 		/obj/structure/biohazard_blob/structure/core/fire,
-		/obj/structure/biohazard_blob/structure/core/toxic,
 		/obj/structure/biohazard_blob/structure/core/fungus,
 		/obj/structure/biohazard_blob/structure/core/radioactive,
 		/obj/structure/biohazard_blob/structure/core/emp,
@@ -32,8 +31,11 @@
 
 /datum/round_event/mold
 	announce_when = 120 // 4 minutes
+	announce_chance = 0
 
 /datum/round_event/mold/announce(fake)
+	if(!fake)
+		event_minimum_security_level(SEC_LEVEL_VIOLET, FALSE, FALSE)
 	priority_announce("Confirmed outbreak of level 6 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", ANNOUNCER_OUTBREAK6)
 
 /datum/round_event/mold/start()
@@ -81,7 +83,7 @@
 				turfs -= picked_turf
 				continue
 			if(istype(picked_mold, /obj/structure/biohazard_blob/structure/core/fungus))
-				addtimer(CALLBACK(src, PROC_REF(event_minimum_security_level), SEC_LEVEL_VIOLET, FALSE), 4 MINUTES)
+				announce_chance = 100
 			var/obj/structure/biohazard_blob/blob = new picked_mold(picked_turf)
 			announce_to_ghosts(blob)
 			turfs -= picked_turf
