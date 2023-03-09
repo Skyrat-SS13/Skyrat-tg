@@ -10,7 +10,7 @@
 	admin_setup = /datum/event_admin_setup/pirates
 
 /datum/round_event_control/pirates/preRunEvent()
-	if (!SSmapping.empty_space)
+	if (!SSmapping.is_planetary())
 		return EVENT_CANT_RUN
 	return ..()
 
@@ -72,7 +72,7 @@
 		for(var/obj/effect/mob_spawn/ghost_role/human/pirate/spawner in A)
 			if(candidates.len > 0)
 				var/mob/our_candidate = candidates[1]
-				var/mob/spawned_mob = spawner.create(our_candidate)
+				var/mob/spawned_mob = spawner.create_from_ghost(our_candidate)
 				candidates -= our_candidate
 				notify_ghosts("The pirate ship has an object of interest: [spawned_mob]!", source = spawned_mob, action = NOTIFY_ORBIT, header="Pirates!")
 			else
