@@ -359,8 +359,6 @@
 	last_generate = world.time
 	reagents.add_reagent(generate_type, generate_amount)
 
-<<<<<<< HEAD
-=======
 /obj/item/reagent_containers/spray/chemsprayer/party
 	name = "party popper"
 	desc = "A small device used for celebrations and annoying the janitor."
@@ -384,9 +382,8 @@
 /obj/item/reagent_containers/spray/chemsprayer/party/spray(atom/A, mob/user)
 	. = ..()
 	icon_state = "[icon_state]_used"
-	
 
->>>>>>> 255ea90c1e2 ([NO GBP] Fixes some major (and minor) issues with the birthday station trait. (#73813))
+
 // Plant-B-Gone
 /obj/item/reagent_containers/spray/plantbgone // -- Skie
 	name = "Plant-B-Gone"
