@@ -734,6 +734,12 @@
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/vending_refill/lustwish)
 
+/datum/supply_pack/vending/barber
+	name = "Fab-O-Vend Supply Crate"
+	desc = "Contains a single restock for the Fab-O-Vend, great for those who are indecisive about their looks."
+	cost = CARGO_CRATE_VALUE * 3
+	contains = list(/obj/item/vending_refill/barbervend)
+
 //NIF CARGO ITEMS
 /datum/supply_pack/goody/standard_nif
 	name = "Standard Type NIF"
