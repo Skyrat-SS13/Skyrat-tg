@@ -135,16 +135,6 @@
 	if(!istype(new_organ, /obj/item/organ/internal/brain))
 		// Organ ISN'T brain, insert normally.
 		new_organ.Insert(target, special = TRUE, drop_if_replaced = FALSE)
-<<<<<<< HEAD
-	else
-		// Organ IS brain, insert via special logic:
-		var/obj/item/organ/internal/brain/old_brain = target.getorganslot(ORGAN_SLOT_BRAIN)
-		// Brains REALLY like ghosting people. we need special tricks to avoid that, namely removing the old brain with no_id_transfer
-		old_brain.Remove(target, special = TRUE, no_id_transfer = TRUE)
-		qdel(old_brain)
-		var/obj/item/organ/internal/brain/new_brain = new_organ
-		new_brain.Insert(target, special = TRUE, drop_if_replaced = FALSE, no_id_transfer = TRUE)
-=======
 		check_tier_progression(target)
 		return TRUE
 	// Organ IS brain, insert via special logic:
@@ -155,7 +145,6 @@
 	var/obj/item/organ/internal/brain/new_brain = new_organ
 	new_brain.Insert(target, special = TRUE, drop_if_replaced = FALSE, no_id_transfer = TRUE)
 	check_tier_progression(target)
->>>>>>> 8d6091214f9 (Adds Gondola Mutants + Progression to DNA Infuser + QoL (#73730))
 	return TRUE
 
 /// Picks a random mutated organ from the infuser entry which is also compatible with the target mob.
