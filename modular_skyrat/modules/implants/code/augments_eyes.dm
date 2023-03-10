@@ -26,3 +26,4 @@
 	eye_color_right = "#ff2700"
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
+	color_cutoffs = list(25, 8, 5)
