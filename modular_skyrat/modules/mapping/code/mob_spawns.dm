@@ -6,15 +6,6 @@
 		ADD_TRAIT(spawned_human, TRAIT_NOBREATH, ROUNDSTART_TRAIT)
 		ADD_TRAIT(spawned_human, TRAIT_RESISTCOLD, ROUNDSTART_TRAIT)
 
-/// If we use prefs, make sure we don't lose the language after transferring them
-/obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/post_transfer_prefs(mob/living/new_spawn)
-	. = ..()
-	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MIND)
-
-/obj/effect/mob_spawn/ghost_role/human/syndicatespace/post_transfer_prefs(mob/living/new_spawn)
-	. = ..()
-	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MIND)
-
 /obj/effect/mob_spawn/ghost_role/human/blackmarket
 	name = "cryogenics pod"
 	prompt_name = "a blackmarket dealer"
@@ -87,19 +78,11 @@
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/special(mob/living/new_spawn)
 	. = ..()
-	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MIND)
-
-/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/post_transfer_prefs(mob/living/new_spawn)
-	. = ..()
-	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MIND)
+	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_SPAWNER)
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate_command/special(mob/living/new_spawn)
 	. = ..()
-	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MIND)
-
-/obj/effect/mob_spawn/ghost_role/human/ds2/syndicate_command/post_transfer_prefs(mob/living/new_spawn)
-	. = ..()
-	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MIND)
+	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_SPAWNER)
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/service
 	outfit = /datum/outfit/ds2/syndicate/service

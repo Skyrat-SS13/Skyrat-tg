@@ -40,9 +40,7 @@
 
 /datum/preference_middleware/languages/apply_to_human(mob/living/carbon/human/target, datum/preferences/preferences) // SKYRAT EDIT CHANGE
 	var/datum/language_holder/language_holder = target.get_language_holder()
-	language_holder.remove_all_languages()
-	for(var/lang_path in preferences.languages)
-		language_holder.grant_language(lang_path)
+	language_holder.adjust_languages_to_prefs(preferences)
 
 /datum/preference_middleware/languages/get_ui_assets()
 	return list(
