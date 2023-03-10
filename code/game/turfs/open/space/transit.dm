@@ -12,10 +12,6 @@
 	update_appearance()
 	RegisterSignal(src, COMSIG_TURF_RESERVATION_RELEASED, PROC_REF(launch_contents))
 
-<<<<<<< HEAD
-	for(var/atom/movable/movable in src)
-		throw_atom(movable)
-
 /turf/open/space/transit/Destroy()
 	//Signals are NOT removed from turfs upon replacement, and we get replaced ALOT, so unregister our signal
 	UnregisterSignal(src, COMSIG_TURF_RESERVATION_RELEASED)
