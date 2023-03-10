@@ -55,7 +55,7 @@
 		. += span_notice("It seems like you could use an <b>empty hand</b> to remove the magazine.")
 
 /obj/item/gun/ballistic/automatic/smart_machine_gun/attack_hand_secondary(mob/user, list/modifiers)
-	if(!user.canUseTopic(src))
+	if(!user.can_perform_action(src))
 		return
 	cover_open = !cover_open
 	to_chat(user, span_notice("You [cover_open ? "open" : "close"] [src]'s cover."))

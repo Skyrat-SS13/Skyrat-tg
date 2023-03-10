@@ -163,7 +163,7 @@
 		SEND_SIGNAL(src, COMSIG_MODULE_DEACTIVATED)
 		return FALSE
 
-	if(!allowed_in_phaseout && istype(mod.wearer.loc, /obj/effect/dummy/phased_mob))
+	if(!(allow_flags & MODULE_ALLOW_PHASEOUT) && istype(mod.wearer.loc, /obj/effect/dummy/phased_mob))
 		to_chat(mod.wearer, span_warning("You cannot activate this right now."))
 		return FALSE
 
