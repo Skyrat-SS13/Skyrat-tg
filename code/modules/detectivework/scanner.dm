@@ -43,7 +43,7 @@
 	addtimer(CALLBACK(src, PROC_REF(safe_print_report)), 10 SECONDS)
 
 /**
- * safe_print_repot - a wrapper proc for print_report
+ * safe_print_report - a wrapper proc for print_report
  *
  * Calls print_report(), and should a runtime occur within we can still reset the 'busy' state
  */
@@ -55,7 +55,7 @@
 	// Create our paper
 	var/obj/item/paper/report_paper = new(get_turf(src))
 
-	//This could be a global count like sec and med record printouts. See GLOB.data_core.medicalPrintCount AKA datacore.dm
+	//This could be a global count like sec and med record printouts. See GLOB.manifest.generalPrintCount AKA datacore.dm
 	var/frNum = ++forensicPrintCount
 
 	report_paper.name = text("FR-[] 'Forensic Record'", frNum)

@@ -179,7 +179,7 @@
 			balloon_alert(user, "[amount_per_transfer_from_this] unit\s injected")
 			log_combat(user, injectee, "injected", src, "(CHEMICALS: [selected_reagent])")
 	else
-		balloon_alert(user, "[user.zone_selected] is blocked!")
+		balloon_alert(user, "[parse_zone(user.zone_selected)] is blocked!")
 
 /obj/item/reagent_containers/borghypo/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -232,9 +232,11 @@
 
 /obj/item/reagent_containers/borghypo/AltClick(mob/living/user)
 	. = ..()
-	if(user.stat == DEAD || user != loc)
+/* SKYRAT REMOVAL START - Changing transfer amounts is now handled by the parent proc in modular files.
+	if(user.stat == DEAD || user != loc) 
 		return //IF YOU CAN HEAR ME SET MY TRANSFER AMOUNT TO 1
-	change_transfer_amount(user)
+	change_transfer_amount(user)	
+*/ // SKYRAT REMOVAL END
 
 /// Default Medborg Hypospray
 /obj/item/reagent_containers/borghypo/medical
