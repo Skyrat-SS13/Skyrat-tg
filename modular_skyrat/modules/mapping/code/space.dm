@@ -53,12 +53,6 @@
 	name = "Abductor Replication Facility"
 	description = "A mad doctor's dreams were dashed when he finally disclosed to both his funders that each other existed, leaving behind his work for the looters."
 
-/datum/map_template/ruin/space/skyrat/dangerous_research
-	id = "dangerous_research"
-	suffix = "dangerous_research.dmm"
-	name = "Nanotrasen Research Facility"
-	description = "A small, recently abandoned research outpost, perhaps there's time to see what went wrong before Nanotrasen wipes it from their records?"
-
 /datum/map_template/ruin/space/skyrat/codealpha
 	id = "codealpha"
 	suffix = "codealpha.dmm"

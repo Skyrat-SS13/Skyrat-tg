@@ -686,11 +686,7 @@
 	..()
 	if(!can_interact(usr))
 		return TRUE
-<<<<<<< HEAD
-	if(!usr.canUseTopic(src))
-=======
 	if(!usr.can_perform_action(src, ALLOW_SILICON_REACH))
->>>>>>> 79d27417df2 (machinery/Topic() allows silicons to bypass distance checks (#73545))
 		return TRUE
 	add_fingerprint(usr)
 	update_last_used(usr)
@@ -1161,7 +1157,7 @@
 		. += display_parts(user, TRUE)
 
 //called on machinery construction (i.e from frame to machinery) but not on initialization
-/obj/machinery/proc/on_construction()
+/obj/machinery/proc/on_construction(mob/user)
 	return
 
 //called on deconstruction before the final deletion
