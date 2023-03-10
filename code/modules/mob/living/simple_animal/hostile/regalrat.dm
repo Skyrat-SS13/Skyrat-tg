@@ -190,7 +190,7 @@
 		playsound(src, 'sound/machines/airlock_alien_prying.ogg', 100, vary = TRUE)
 	if(do_after(src, time_to_open, prying_door))
 		opening_airlock = FALSE
-		if(prying_door.density && !prying_door.open(2))
+		if(prying_door.density && !prying_door.open(BYPASS_DOOR_CHECKS))
 			to_chat(src, span_warning("Despite your efforts, the airlock managed to resist your attempts to open it!"))
 			return FALSE
 		prying_door.open()
@@ -212,7 +212,7 @@
 /datum/action/cooldown/domain
 	name = "Rat King's Domain"
 	desc = "Corrupts this area to be more suitable for your rat army."
-	check_flags = AB_CHECK_CONSCIOUS
+	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_INCAPACITATED
 	cooldown_time = 6 SECONDS
 	melee_cooldown_time = 0 SECONDS
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
@@ -246,7 +246,7 @@
 /datum/action/cooldown/riot
 	name = "Raise Army"
 	desc = "Raise an army out of the hordes of mice and pests crawling around the maintenance shafts."
-	check_flags = AB_CHECK_CONSCIOUS
+	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_INCAPACITATED
 	button_icon = 'icons/mob/actions/actions_animal.dmi'
 	button_icon_state = "riot"
 	background_icon_state = "bg_clock"
@@ -400,7 +400,7 @@
 	command_feedback = "squeak!" // Frogs and roaches can squeak too it's fine
 	pointed_reaction = "and squeaks aggressively"
 	refuse_reaction = "quivers"
-	attack_behaviour = /datum/ai_behavior/basic_melee_attack/rat
+	attack_behaviour = /datum/ai_behavior/basic_melee_attack
 
 // Command you can give to a mouse to make it kill someone
 /datum/pet_command/point_targetting/attack/glockroach

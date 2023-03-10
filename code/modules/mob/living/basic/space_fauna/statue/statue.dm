@@ -28,7 +28,7 @@
 	attack_sound = 'sound/hallucinations/growl1.ogg'
 	attack_vis_effect = ATTACK_EFFECT_CLAW
 
-	faction = list("statue")
+	faction = list(FACTION_STATUE)
 	speak_emote = list("screams")
 	death_message = "falls apart into a fine dust."
 	unsuitable_atmos_damage = 0
@@ -37,6 +37,11 @@
 
 	animate_movement = NO_STEPS // Do not animate movement, you jump around as you're a scary statue.
 	hud_possible = list(ANTAG_HUD)
+
+	// Dim purple, I want it to be possible to miss people in the dark but not easy to
+	lighting_cutoff_red = 15
+	lighting_cutoff_green = 10
+	lighting_cutoff_blue = 25
 
 	sight = SEE_SELF|SEE_MOBS|SEE_OBJS|SEE_TURFS
 
