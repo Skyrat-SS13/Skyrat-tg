@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR GUN.DM
 #define DUALWIELD_PENALTY_EXTRA_MULTIPLIER 1.4
 #define FIRING_PIN_REMOVAL_DELAY 50
 
@@ -75,6 +74,8 @@
 		pin = new pin(src)
 
 	add_seclight_point()
+	give_gun_safeties() // SKYRAT EDIT ADDITION - GUN SAFETIES
+	give_manufacturer_examine() // SKYRAT EDIT ADDITON - MANUFACTURER EXAMINE
 
 /obj/item/gun/Destroy()
 	if(isobj(pin)) //Can still be the initial path, then we skip
@@ -577,4 +578,3 @@
 
 #undef FIRING_PIN_REMOVAL_DELAY
 #undef DUALWIELD_PENALTY_EXTRA_MULTIPLIER
-*/
