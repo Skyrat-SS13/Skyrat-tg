@@ -42,7 +42,7 @@
 	show_options(user)
 
 /obj/item/summon_beacon/proc/can_use_beacon(mob/living/user)
-	if(user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
+	if(user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return TRUE
 	else
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 40, TRUE)
