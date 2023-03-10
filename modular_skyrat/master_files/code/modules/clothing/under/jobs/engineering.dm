@@ -26,10 +26,10 @@
 	has_sensor = NO_SENSORS
 
 /obj/item/clothing/under/rank/engineering/engineer/skyrat/trouser
-	name = "engineer's trousers"
+	name = "engineering trousers"
 	desc = "An engineering-orange set of trousers. Their waistband proudly displays an 'anti-radiation' symbol, though the effectiveness of radiation-proof-pants-only is still up for debate."
 	icon_state = "workpants_orange"
-	body_parts_covered = GROIN
+	body_parts_covered = GROIN|LEGS
 	can_adjust = FALSE
 	female_sprite_flags = FEMALE_UNIFORM_NO_BREASTS
 
