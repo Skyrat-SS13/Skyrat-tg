@@ -10,7 +10,7 @@
 	var/current_cook_time = 0
 	///Do we use the large steam sprite?
 	var/use_large_steam_sprite = FALSE
-	/// REF() to the mob which placed us on the griddle
+	/// REF() to the mind which placed us on the griddle
 	var/who_placed_us
 
 	/// What type of pollutant we spread around as we are grilleed, can be none  // SKYRAT EDIT ADDITION
@@ -52,8 +52,8 @@
 /datum/component/grillable/proc/on_grill_start(datum/source, mob/griller)
 	SIGNAL_HANDLER
 
-	if(griller)
-		who_placed_us = REF(griller)
+	if(griller && griller.mind)
+		who_placed_us = REF(griller.mind)
 
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved))
 	RegisterSignal(parent, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(add_grilled_item_overlay))

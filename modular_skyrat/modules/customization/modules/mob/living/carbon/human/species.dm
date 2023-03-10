@@ -348,7 +348,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 /datum/species/proc/handle_body(mob/living/carbon/human/species_human)
 	species_human.remove_overlay(BODY_LAYER)
-
+	var/height_offset = species_human.get_top_offset() // From high changed by varying limb height
 	var/list/standing = list()
 
 	var/obj/item/bodypart/head/HD = species_human.get_bodypart(BODY_ZONE_HEAD)
@@ -361,6 +361,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			if(OFFSET_FACE in species_human.dna.species.offset_features)
 				lip_overlay.pixel_x += species_human.dna.species.offset_features[OFFSET_FACE][1]
 				lip_overlay.pixel_y += species_human.dna.species.offset_features[OFFSET_FACE][2]
+			lip_overlay.pixel_y += height_offset
 			standing += lip_overlay
 
 		// eyes
@@ -378,6 +379,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				add_pixel_x = species_human.dna.species.offset_features[OFFSET_FACE][1]
 				add_pixel_y = species_human.dna.species.offset_features[OFFSET_FACE][2]
 
+			add_pixel_y += height_offset
+
 			if(!eye_organ)
 				no_eyeslay = mutable_appearance('icons/mob/species/human/human_face.dmi', "eyes_missing", -BODY_LAYER)
 				no_eyeslay.pixel_x += add_pixel_x
@@ -387,7 +390,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				eye_organ.refresh(call_update = FALSE)
 
 			if(!no_eyeslay)
-				for(var/eye_overlay in eye_organ.generate_body_overlay(species_human))
+				for(var/mutable_appearance/eye_overlay in eye_organ.generate_body_overlay(species_human))
+					eye_overlay.pixel_y += height_offset
 					standing += eye_overlay
 					if(eye_organ.is_emissive)
 						var/mutable_appearance/eye_emissive = emissive_appearance_copy(eye_overlay, species_human)
