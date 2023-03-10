@@ -53,6 +53,12 @@
 
 /atom/movable/screen/escape_menu/home_button/respawn
 
+/datum/escape_menu/proc/respawn()
+	PRIVATE_PROC(TRUE)
+
+	var/mob/living/client_mob = client?.mob
+	client_mob?.abandon_mob()
+
 /atom/movable/screen/escape_menu/home_button/respawn/Initialize(
 	mapload,
 	datum/escape_menu/escape_menu,

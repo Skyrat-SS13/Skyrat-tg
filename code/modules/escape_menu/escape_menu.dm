@@ -116,12 +116,6 @@ GLOBAL_LIST_EMPTY(escape_menus)
 	plane_master_controller = plane_master_controllers[PLANE_MASTERS_NON_MASTER]
 	plane_master_controller.add_filter("escape_menu_blur", 1, list("type" = "blur", "size" = 2))
 
-/datum/escape_menu/proc/respawn()
-	PRIVATE_PROC(TRUE)
-
-	var/mob/living/client_mob = client?.mob
-	client_mob?.abandon_mob()
-
 /atom/movable/screen/escape_menu
 	plane = ESCAPE_MENU_PLANE
 	clear_with_screen = FALSE
