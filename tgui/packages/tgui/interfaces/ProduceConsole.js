@@ -24,11 +24,6 @@ const ShoppingTab = (props, context) => {
   const { credit_type, order_categories, order_datums, item_amts } = data;
   const [shopIndex, setShopIndex] = useLocalState(context, 'shop-index', 1);
   const [condensed, setCondensed] = useLocalState(context, 'condensed', false);
-<<<<<<< HEAD
-  const mapped_food = order_datums.filter(
-    (food) => food && food.cat === shopIndex
-  );
-=======
   const [searchItem, setSearchItem] = useLocalState(context, 'searchItem', '');
   const search = createSearch(searchItem, (order_datums) => order_datums.name);
   let goods =
@@ -36,7 +31,6 @@ const ShoppingTab = (props, context) => {
       ? data.order_datums.filter(search)
       : order_datums.filter((item) => item && item.cat === shopIndex);
 
->>>>>>> b97bc184022 (fixes order vendor loading screens (#73615))
   return (
     <Stack fill vertical>
       <Section mb={-0.9}>
