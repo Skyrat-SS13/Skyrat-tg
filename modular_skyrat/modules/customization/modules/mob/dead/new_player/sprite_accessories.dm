@@ -143,6 +143,12 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "None"
 	icon_state = "none"
 
+
+/datum/sprite_accessory/pod_hair
+	key = "pod_hair"
+	recommended_species = list(SPECIES_PODPERSON, SPECIES_PODPERSON_WEAK)
+
+
 /datum/sprite_accessory/spines
 	key = "spines"
 	generic = "Spines"

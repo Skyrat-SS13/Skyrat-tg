@@ -7,7 +7,7 @@
 	)
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
-		"pod_hair" = "Cabbage",
+		"pod_hair" = ACC_RANDOM,
 	)
 	payday_modifier = 0.75
 
@@ -18,7 +18,7 @@
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
-		HAIR,
+		HAIR, // Leaving this here so they can still use it if they want, even if it's kinda ugly compared to their special hair.
 		FACEHAIR
 	)
 	inherent_traits = list(
