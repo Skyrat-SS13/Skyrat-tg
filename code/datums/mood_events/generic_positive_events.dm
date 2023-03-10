@@ -353,3 +353,15 @@
 	description = "I saw someone pop the cork off a champagne bottle in quite a radical fashion."
 	mood_change = 1
 	timeout = 2 MINUTES
+
+/datum/mood_event/it_was_on_the_mouse
+	description = "Heh heh. \"It's on the mouse\". What a play on words."
+	mood_change = 1
+	timeout = 2 MINUTES
+
+/datum/mood_event/birthday
+	description = "Its my birthday!"
+	mood_change = 2
+	special_screen_obj = "birthday"
+	special_screen_replace = FALSE
+

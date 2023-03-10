@@ -468,7 +468,7 @@
 			monster_types = list(/mob/living/simple_animal/hostile/biohazard_blob/electric_mosquito)
 			spawn_cooldown = 500
 		if(BIO_BLOB_TYPE_TOXIC)
-			monster_types = list(/mob/living/simple_animal/hostile/giant_spider)
+			monster_types = list(/mob/living/basic/giant_spider)
 		if(BIO_BLOB_TYPE_RADIOACTIVE)
 			monster_types = list(/mob/living/simple_animal/hostile/biohazard_blob/centaur)
 	AddComponent(/datum/component/spawner, monster_types, spawn_cooldown, list(MOLD_FACTION), "emerges from", max_spawns)
