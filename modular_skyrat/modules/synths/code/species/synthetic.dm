@@ -5,6 +5,7 @@
 	inherent_biotypes = MOB_ROBOTIC | MOB_HUMANOID
 	inherent_traits = list(
 		TRAIT_CAN_STRIP,
+		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_RADIMMUNE,
 		TRAIT_VIRUSIMMUNE,
@@ -69,6 +70,7 @@
 	var/datum/action/innate/monitor_change/screen
 	/// This is the screen that is given to the user after they get revived. On death, their screen is temporarily set to BSOD before it turns off, hence the need for this var.
 	var/saved_screen = "Blank"
+	wing_types = list(/obj/item/organ/external/wings/functional/robotic)
 
 /datum/species/synthetic/spec_life(mob/living/carbon/human/human)
 	if(human.stat == SOFT_CRIT || human.stat == HARD_CRIT)
