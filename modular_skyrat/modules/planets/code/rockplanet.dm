@@ -12,7 +12,7 @@
 		/mob/living/simple_animal/hostile/asteroid/goliath = 20,
 		/mob/living/simple_animal/hostile/netherworld/mine_mob = 10,
 		/mob/living/simple_animal/hostile/ooze/grapes/mine_mob = 20,
-		/mob/living/simple_animal/hostile/asteroid/fugu = 30,
+		/mob/living/basic/wumborian_fugu = 30,
 		/mob/living/simple_animal/hostile/asteroid/basilisk = 40,
 		/mob/living/simple_animal/hostile/asteroid/hivelord = 20,
 		/mob/living/simple_animal/hostile/netherworld/migo/mine_mob = 10,
