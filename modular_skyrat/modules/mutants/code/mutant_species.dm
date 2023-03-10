@@ -66,7 +66,7 @@
 	id = SPECIES_MUTANT_INFECTIOUS
 	speedmod = 1
 	armor = 10
-	mutanteyes = /obj/item/organ/internal/eyes/night_vision/zombie
+	mutanteyes = /obj/item/organ/internal/eyes/zombie
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
 	var/hands_to_give = /obj/item/hnz_mutant_hand
 	/// The rate the mutants regenerate at

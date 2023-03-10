@@ -22,6 +22,10 @@
 	unsuitable_atmos_damage = 0
 	unsuitable_cold_damage = 0
 	unsuitable_heat_damage = 0
+	// Real blue, trying to go for the migo's look
+	lighting_cutoff_red = 15
+	lighting_cutoff_green = 15
+	lighting_cutoff_blue = 50
 
 	ai_controller = /datum/ai_controller/basic_controller/migo
 	var/static/list/migo_sounds
