@@ -7,19 +7,14 @@
 	var/spawn_text = "emerges from"
 	var/list/faction = list("mining")
 
-
-
-/datum/component/spawner/Initialize(_mob_types, _spawn_time, _faction, _spawn_text, _max_mobs)
-	if(_spawn_time)
-		spawn_time=_spawn_time
-	if(_mob_types)
-		mob_types=_mob_types
-	if(_faction)
-		faction=_faction
-	if(_spawn_text)
-		spawn_text=_spawn_text
-	if(_max_mobs)
-		max_mobs=_max_mobs
+/datum/component/spawner/Initialize(mob_types = list(), spawn_time = 30 SECONDS, max_mobs = 5, faction = list(FACTION_MINING), spawn_text = "emerges from")
+	if (!length(mob_types))
+		CRASH("No types of mob to spawn specified for spawner component!")
+	src.spawn_time = spawn_time
+	src.mob_types = mob_types
+	src.faction = faction
+	src.spawn_text = spawn_text
+	src.max_mobs = max_mobs
 
 	RegisterSignal(parent, COMSIG_PARENT_QDELETING, PROC_REF(stop_spawning))
 	START_PROCESSING(SSprocessing, src)
