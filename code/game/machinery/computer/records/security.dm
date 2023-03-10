@@ -2,8 +2,10 @@
 #define PRINTOUT_MISSING "Missing"
 #define PRINTOUT_RAPSHEET "Rapsheet"
 #define PRINTOUT_WANTED "Wanted"
+/// Editing this will cause UI issues.
+#define MAX_CRIME_NAME_LEN 24
 
-/obj/machinery/computer/secure_data//TODO:SANITY
+/obj/machinery/computer/records/security
 	name = "security records console"
 	desc = "Used to view and edit personnel's security records."
 	icon_screen = "security"
@@ -14,11 +16,11 @@
 	/// The current state of the printer
 	var/printing = FALSE
 
-/obj/machinery/computer/secure_data/syndie
+/obj/machinery/computer/records/security/syndie
 	icon_keyboard = "syndie_key"
 	req_one_access = list(ACCESS_SYNDICATE)
 
-/obj/machinery/computer/secure_data/laptop
+/obj/machinery/computer/records/security/laptop
 	name = "security laptop"
 	desc = "A cheap Nanotrasen security laptop, it functions as a security records console. It's bolted to the table."
 	icon_state = "laptop"
@@ -26,18 +28,18 @@
 	icon_keyboard = "laptop_key"
 	pass_flags = PASSTABLE
 
-/obj/machinery/computer/secure_data/laptop/syndie
+/obj/machinery/computer/records/security/laptop/syndie
 	desc = "A cheap, jailbroken security laptop. It functions as a security records console. It's bolted to the table."
 	req_one_access = list(ACCESS_SYNDICATE)
 
-/obj/machinery/computer/secure_data/Initialize(mapload, obj/item/circuitboard/C)
+/obj/machinery/computer/records/security/Initialize(mapload, obj/item/circuitboard/C)
 	. = ..()
 	AddComponent(/datum/component/usb_port, list(
 		/obj/item/circuit_component/arrest_console_data,
 		/obj/item/circuit_component/arrest_console_arrest,
 	))
 
-/obj/machinery/computer/secure_data/emp_act(severity)
+/obj/machinery/computer/records/security/emp_act(severity)
 	. = ..()
 
 	if(machine_stat & (BROKEN|NOPOWER) || . & EMP_PROTECT_SELF)
@@ -65,13 +67,13 @@
 			qdel(target)
 			continue
 
-/obj/machinery/computer/secure_data/attacked_by(obj/item/attacking_item, mob/living/user)
+/obj/machinery/computer/records/security/attacked_by(obj/item/attacking_item, mob/living/user)
 	. = ..()
 	if(!istype(attacking_item, /obj/item/photo))
 		return
 	insert_new_record(user, attacking_item)
 
-/obj/machinery/computer/secure_data/ui_interact(mob/user, datum/tgui/ui)
+/obj/machinery/computer/records/security/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -82,16 +84,12 @@
 		ui.set_autoupdate(FALSE)
 		ui.open()
 
-/obj/machinery/computer/secure_data/ui_data(mob/user)
-	var/list/data = list()
+/obj/machinery/computer/records/security/ui_data(mob/user)
+	var/list/data = ..()
 
-	var/has_access = authenticated && isliving(user)
-	data["authenticated"] = has_access
-	if(!has_access)
-		return data
-
-	data["assigned_view"] = "preview_[user.ckey]_[REF(src)]_records"
 	data["available_statuses"] = WANTED_STATUSES()
+	data["current_user"] = user.name
+	data["higher_access"] = has_armory_access(user)
 
 	var/list/records = list()
 	for(var/datum/record/crew/target in GLOB.manifest.general)
@@ -105,6 +103,7 @@
 				name = warrant.name,
 				paid = warrant.paid,
 				time = warrant.time,
+				valid = warrant.valid,
 			))
 
 		var/list/crimes = list()
@@ -115,6 +114,7 @@
 				details = crime.details,
 				name = crime.name,
 				time = crime.time,
+				valid = crime.valid,
 			))
 
 		records += list(list(
@@ -139,13 +139,13 @@
 
 	return data
 
-/obj/machinery/computer/secure_data/ui_static_data(mob/user)
+/obj/machinery/computer/records/security/ui_static_data(mob/user)
 	var/list/data = list()
 	data["min_age"] = AGE_MIN
 	data["max_age"] = AGE_MAX
 	return data
 
-/obj/machinery/computer/secure_data/ui_act(action, list/params, datum/tgui/ui)
+/obj/machinery/computer/records/security/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -161,8 +161,16 @@
 			add_crime(usr, target, params)
 			return TRUE
 
-		if("delete_crime")
-			delete_crime(target, params)
+		if("delete_record")
+			qdel(target)
+			return TRUE
+
+		if("edit_crime")
+			edit_crime(usr, target, params)
+			return TRUE
+
+		if("invalidate_crime")
+			invalidate_crime(usr, target, params)
 			return TRUE
 
 		if("print_record")
@@ -178,6 +186,8 @@
 			var/wanted_status = params["status"]
 			if(!wanted_status || !(wanted_status in WANTED_STATUSES()))
 				return FALSE
+			if(wanted_status == WANTED_ARREST && !length(target.crimes))
+				return FALSE
 
 			investigate_log("[target.name] has been set from [target.wanted_status] to [wanted_status] by [key_name(usr)].", INVESTIGATE_RECORDS)
 			target.wanted_status = wanted_status
@@ -187,17 +197,17 @@
 	return FALSE
 
 /// Handles adding a crime to a particular record.
-/obj/machinery/computer/secure_data/proc/add_crime(mob/user, datum/record/crew/target, list/params)
-	var/input_name = trim(params["name"], 24)
+/obj/machinery/computer/records/security/proc/add_crime(mob/user, datum/record/crew/target, list/params)
+	var/input_name = trim(params["name"], MAX_CRIME_NAME_LEN)
 	if(!input_name)
 		to_chat(usr, span_warning("You must enter a name for the crime."))
-		playsound(src, 'sound/machines/terminal_error.ogg', 100, TRUE)
+		playsound(src, 'sound/machines/terminal_error.ogg', 75, TRUE)
 		return FALSE
 
 	var/max = CONFIG_GET(number/maxfine)
 	if(params["fine"] > max)
 		to_chat(usr, span_warning("The maximum fine is [max] credits."))
-		playsound(src, 'sound/machines/terminal_error.ogg', 100, TRUE)
+		playsound(src, 'sound/machines/terminal_error.ogg', 75, TRUE)
 		return FALSE
 
 	var/input_details
@@ -220,40 +230,75 @@
 
 	return TRUE
 
-/// Deletes a crime or citation from the chosen record.
-/obj/machinery/computer/secure_data/proc/delete_crime(datum/record/crew/target, list/params)
-	var/datum/crime/incident = locate(params["crime_ref"]) in target.crimes
-	if(incident)
-		target.crimes -= incident
-		qdel(incident)
+/// Handles editing a crime on a particular record.
+/obj/machinery/computer/records/security/proc/edit_crime(mob/user, datum/record/crew/target, list/params)
+	var/datum/crime/editing_crime = locate(params["crime_ref"]) in target.crimes
+	if(!editing_crime?.valid)
+		return FALSE
+
+	if(user != editing_crime.author && !has_armory_access(user)) // only warden/hos/command can edit crimes they didn't author
+		return FALSE
+
+	if(params["name"] && length(params["name"]) > 2 && params["name"] != editing_crime.name)
+		editing_crime.name = trim(params["name"], MAX_CRIME_NAME_LEN)
 		return TRUE
 
-	var/datum/crime/citation/warrant = locate(params["crime_ref"]) in target.citations
-	if(warrant)
-		target.citations -= warrant
-		qdel(warrant)
+	if(params["details"] && length(params["description"]) > 2 && params["name"] != editing_crime.name)
+		editing_crime.details = trim(params["details"], MAX_MESSAGE_LEN)
 		return TRUE
 
 	return FALSE
 
 /// Deletes security information from a record.
-/obj/machinery/computer/secure_data/expunge_record_info(datum/record/crew/target)
-	target.age = 18
+/obj/machinery/computer/records/security/expunge_record_info(datum/record/crew/target)
 	target.citations.Cut()
 	target.crimes.Cut()
-	target.fingerprint = "Unknown"
-	target.gender = "Unknown"
-	target.name = "Unknown"
-	target.rank = "Unknown"
-	target.security_note = "None"
-	target.species = "Unknown"
-	target.trim = "Unknown"
+	target.security_note = null
 	target.wanted_status = WANTED_NONE
 
 	return TRUE
 
+/// Only qualified personnel can edit records.
+/obj/machinery/computer/records/security/proc/has_armory_access(mob/user)
+	if(!isliving(user))
+		return FALSE
+	var/mob/living/player = user
+
+	var/obj/item/card/id/auth = player.get_idcard(TRUE)
+	if(!auth)
+		return FALSE
+
+	if(!(ACCESS_ARMORY in auth.GetAccess()))
+		return FALSE
+
+	return TRUE
+
+/// Voids crimes, or sets someone to discharged if they have none left.
+/obj/machinery/computer/records/security/proc/invalidate_crime(mob/user, datum/record/crew/target, list/params)
+	if(!has_armory_access(user))
+		return FALSE
+	var/datum/crime/to_void = locate(params["crime_ref"]) in target.crimes
+	if(!to_void)
+		return FALSE
+
+	to_void.valid = FALSE
+	investigate_log("[key_name(user)] has invalidated [target.name]'s crime: [to_void.name]", INVESTIGATE_RECORDS)
+
+	var/acquitted = TRUE
+	for(var/datum/crime/incident in target.crimes)
+		if(!incident.valid)
+			continue
+		acquitted = FALSE
+		break
+
+	if(acquitted)
+		target.wanted_status = WANTED_DISCHARGED
+		investigate_log("[key_name(user)] has invalidated [target.name]'s last valid crime. Their status is now [WANTED_DISCHARGED].", INVESTIGATE_RECORDS)
+
+	return TRUE
+
 /// Finishes printing, resets the printer.
-/obj/machinery/computer/secure_data/proc/print_finish(obj/item/printable)
+/obj/machinery/computer/records/security/proc/print_finish(obj/item/printable)
 	printing = FALSE
 	playsound(src, 'sound/machines/terminal_eject.ogg', 100, TRUE)
 	printable.forceMove(loc)
@@ -261,7 +306,7 @@
 	return TRUE
 
 /// Handles printing records via UI. Takes the params from UI_act.
-/obj/machinery/computer/secure_data/proc/print_record(mob/user, datum/record/crew/target, list/params)
+/obj/machinery/computer/records/security/proc/print_record(mob/user, datum/record/crew/target, list/params)
 	if(printing)
 		balloon_alert(usr, "printer busy")
 		playsound(src, 'sound/machines/terminal_error.ogg', 100, TRUE)
@@ -291,6 +336,9 @@
 
 			input_description += "\n\n<b>WANTED FOR:</b>"
 			for(var/datum/crime/incident in crimes)
+				if(!incident.valid)
+					input_description += "<b>--REDACTED--</b>"
+					continue
 				input_description += "\n<bCrime:</b> [incident.name]\n"
 				input_description += "<b>Details:</b> [incident.details]\n"
 
@@ -327,7 +375,7 @@
 	/// Sends a signal on failure
 	var/datum/port/output/on_fail
 
-	var/obj/machinery/computer/secure_data/attached_console
+	var/obj/machinery/computer/records/security/attached_console
 
 /obj/item/circuit_component/arrest_console_data/populate_ports()
 	records = add_output_port("Security Records", PORT_TYPE_TABLE)
@@ -335,7 +383,7 @@
 
 /obj/item/circuit_component/arrest_console_data/register_usb_parent(atom/movable/shell)
 	. = ..()
-	if(istype(shell, /obj/machinery/computer/secure_data))
+	if(istype(shell, /obj/machinery/computer/records/security))
 		attached_console = shell
 
 /obj/item/circuit_component/arrest_console_data/unregister_usb_parent(atom/movable/shell)
@@ -396,11 +444,11 @@
 	/// Sends a signal on failure
 	var/datum/port/output/on_fail
 
-	var/obj/machinery/computer/secure_data/attached_console
+	var/obj/machinery/computer/records/security/attached_console
 
 /obj/item/circuit_component/arrest_console_arrest/register_usb_parent(atom/movable/shell)
 	. = ..()
-	if(istype(shell, /obj/machinery/computer/secure_data))
+	if(istype(shell, /obj/machinery/computer/records/security))
 		attached_console = shell
 
 /obj/item/circuit_component/arrest_console_arrest/unregister_usb_parent(atom/movable/shell)
