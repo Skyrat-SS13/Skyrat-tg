@@ -24,3 +24,11 @@
 	RETURN_TYPE(/list)
 	// We don't want more than one icon for all of the taur legs, because they're going to be invisible.
 	return list("taur")
+
+/obj/item/bodypart/leg/right/robot/synth/taur
+	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_TAUR
+	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
+
+/obj/item/bodypart/leg/left/robot/synth/taur
+	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_TAUR
+	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)

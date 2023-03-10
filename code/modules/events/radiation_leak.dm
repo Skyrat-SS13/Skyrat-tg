@@ -24,6 +24,9 @@
 	while(length(possible_locs))
 		var/turf/chosen_loc = get_turf(pick_n_take(possible_locs))
 		for(var/obj/machinery/sick_device in range(3, chosen_loc))
+			// Excludes machines that don't use power, as these are usually non-machine machinery
+			if(sick_device.use_power == NO_POWER_USE)
+				continue
 			// Look for dense machinery. Basically stops stuff like wall mounts and pipes, silly ones.
 			// But keep in vents and scrubbers. I think it's funny if they start spitting out radiation
 			if(!sick_device.density && !istype(sick_device, /obj/machinery/atmospherics/components/unary))
@@ -48,7 +51,7 @@
 	var/area/station/location_descriptor
 
 	if(fake)
-		location_descriptor = pick(GLOB.the_station_areas)
+		location_descriptor = GLOB.areas_by_type[pick(GLOB.the_station_areas)]
 
 	else if(the_source_of_our_problems)
 		location_descriptor = get_area(the_source_of_our_problems)
