@@ -16,6 +16,7 @@
 			languages.Remove(lang_path)
 			languages_edited = TRUE
 		qdel(species)
+		qdel(language)
 	return languages_edited
 
 /// Cleans any quirks that should be hidden, or just simply don't exist from quirk code.
