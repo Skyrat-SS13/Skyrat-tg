@@ -51,16 +51,6 @@
 
 /obj/effect/mob_spawn/ghost_role/human/golem/special(mob/living/new_spawn, mob/mob_possessor)
 	. = ..()
-<<<<<<< HEAD
-	var/datum/species/golem/X = mob_species
-	to_chat(new_spawn, "[initial(X.info_text)]")
-	if(!owner)
-		var/policy = get_policy(ROLE_FREE_GOLEM)
-		if (policy)
-			to_chat(new_spawn, policy)
-		to_chat(new_spawn, "Build golem shells in the autolathe, and feed refined mineral sheets to the shells to bring them to life! You are generally a peaceful group unless provoked.")
-		try_keep_home(new_spawn)
-=======
 	var/mob/living/real_owner = owner_ref?.resolve()
 	var/datum/species/golem/golem_species = mob_species
 	to_chat(new_spawn, "[initial(golem_species.info_text)]")
@@ -73,7 +63,6 @@
 	else if(new_spawn.mind)
 		new_spawn.mind.enslave_mind_to_creator(real_owner)
 
->>>>>>> e8d209c6f4f (Fixes runtime in golem body swap, Fixes some hard deletes assocaited with golems and mind masters (#73373))
 	else
 		stack_trace("[type] created a golem without a mind.")
 
@@ -81,20 +70,8 @@
 	log_admin("[key_name(new_spawn)] possessed a golem shell[real_owner ? " enslaved to [key_name(real_owner)]" : ""].")
 
 	if(ishuman(new_spawn))
-<<<<<<< HEAD
-		var/mob/living/carbon/human/H = new_spawn
-		if(has_owner)
-			var/datum/species/golem/G = H.dna.species
-			G.owner = owner
-		H.set_cloned_appearance()
-	if(has_owner && new_spawn.mind)
-		new_spawn.mind.set_assigned_role(SSjob.GetJobType(/datum/job/servant_golem))
-	else
-		new_spawn.mind.set_assigned_role(SSjob.GetJobType(/datum/job/free_golem))
-=======
 		var/mob/living/carbon/human/human_spawn = new_spawn
 		human_spawn.set_cloned_appearance()
->>>>>>> e8d209c6f4f (Fixes runtime in golem body swap, Fixes some hard deletes assocaited with golems and mind masters (#73373))
 
 /obj/effect/mob_spawn/ghost_role/human/golem/proc/try_keep_home(mob/new_spawn)
 	var/static/list/allowed_areas = typecacheof(list(/area/icemoon, /area/lavaland, /area/ruin)) + typecacheof(/area/misc/survivalpod)

@@ -1481,3 +1481,28 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "colorblockhood"
 	flags_inv = HIDEHAIR
+
+/obj/item/clothing/suit/toggle/digicoat
+	toggle_noun = "holo-dislpay"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+//Donation reward for Razurath
+/obj/item/clothing/suit/toggle/digicoat/glitched
+	name = "hacked digicoat"
+	desc = "Glitched images display across the back. Cool!"
+	base_icon_state = "digicoat_glitched"
+	icon_state = "digicoat_glitched"
+
+/obj/item/clothing/suit/toggle/digicoat/nanotrasen
+	name = "nanotrasen digicoat"
+	desc = "A company jacket of popular design."
+	base_icon_state = "digicoat_nt"
+	icon_state = "digicoat_nt"
+
+/obj/item/clothing/suit/toggle/digicoat/interdyne
+	name = "interdyne digicoat"
+	desc = "A sinister colored jacket from a familiar company."
+	base_icon_state = "digicoat_interdyne"
+	icon_state = "digicoat_interdyne"
