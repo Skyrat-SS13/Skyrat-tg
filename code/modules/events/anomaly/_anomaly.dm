@@ -39,21 +39,16 @@
 	if(anomaly_turf)
 		newAnomaly = new anomaly_path(anomaly_turf)
 	if (newAnomaly)
+		apply_anomaly_properties(newAnomaly)
 		announce_to_ghosts(newAnomaly)
 
-<<<<<<< HEAD
-/datum/event_admin_setup/anomaly
-	///The admin-chosen spawn location.
-	var/turf/spawn_location
-=======
 /// Make any further post-creation modifications to the anomaly
 /datum/round_event/anomaly/proc/apply_anomaly_properties(obj/effect/anomaly/new_anomaly)
 	return
 
 /datum/event_admin_setup/set_location/anomaly
 	input_text = "Spawn anomaly at your current location?"
->>>>>>> 105dff50583 (Refactors admin event setup (again) (#73801))
 
 /datum/event_admin_setup/set_location/anomaly/apply_to_event(datum/round_event/anomaly/event)
 	event.spawn_location = chosen_turf
-	
+

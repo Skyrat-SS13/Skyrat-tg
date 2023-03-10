@@ -6,17 +6,13 @@
 	min_players = 40 // To avoid shafting lowpop
 	category = EVENT_CATEGORY_HEALTH
 	description = "A random crewmember's heart gives out."
-<<<<<<< HEAD
-	admin_setup = /datum/event_admin_setup/heart_attack
-=======
 	min_wizard_trigger_potency = 6
 	max_wizard_trigger_potency = 7
 	admin_setup = list(/datum/event_admin_setup/minimum_candidate_requirement/heart_attack, /datum/event_admin_setup/input_number/heart_attack)
->>>>>>> 105dff50583 (Refactors admin event setup (again) (#73801))
 	///Candidates for recieving a healthy dose of heart disease
 	var/list/heart_attack_candidates = list()
 
-/datum/round_event_control/heart_attack/can_spawn_event(players_amt)
+/datum/round_event_control/heart_attack/can_spawn_event(players_amt, allow_magic = FALSE)
 	. = ..()
 	if(!.)
 		return .

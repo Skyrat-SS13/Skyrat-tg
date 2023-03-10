@@ -27,17 +27,13 @@
 	weight = 5
 	category = EVENT_CATEGORY_HEALTH
 	description = "A 'classic' virus will infect some members of the crew."
-<<<<<<< HEAD
-	admin_setup = /datum/event_admin_setup/disease_outbreak
-=======
 	min_wizard_trigger_potency = 2
 	max_wizard_trigger_potency = 6
 	admin_setup = list(/datum/event_admin_setup/minimum_candidate_requirement/disease_outbreak, /datum/event_admin_setup/listed_options/disease_outbreak)
->>>>>>> 105dff50583 (Refactors admin event setup (again) (#73801))
 	///Disease recipient candidates
 	var/list/disease_candidates = list()
 
-/datum/round_event_control/disease_outbreak/can_spawn_event(players_amt)
+/datum/round_event_control/disease_outbreak/can_spawn_event(players_amt, allow_magic = FALSE)
 	. = ..()
 	if(!.)
 		return .
@@ -86,7 +82,7 @@
 	var/datum/disease/virus
 	if(chosen == special_run_option)
 		virus = pick(get_list())
-	else 
+	else
 		virus = chosen
 	event.virus_type = virus
 
@@ -147,15 +143,6 @@
 	category = EVENT_CATEGORY_HEALTH
 	weight = 10
 	description = "An 'advanced' disease will infect some members of the crew."
-<<<<<<< HEAD
-	admin_setup = /datum/event_admin_setup/disease_outbreak/advanced
-
-/datum/event_admin_setup/disease_outbreak/advanced
-	///Admin selected custom severity rating for the event
-	var/chosen_severity
-	///Admin selected custom value for the maximum symptoms this virus should have
-	var/chosen_max_symptoms
-=======
 	min_wizard_trigger_potency = 2
 	max_wizard_trigger_potency = 6
 	admin_setup = list(
@@ -163,7 +150,6 @@
 		/datum/event_admin_setup/listed_options/disease_outbreak_advanced,
 		/datum/event_admin_setup/input_number/disease_outbreak_advanced
 	)
->>>>>>> 105dff50583 (Refactors admin event setup (again) (#73801))
 
 /**
  * Admin virus customization
@@ -204,7 +190,7 @@
 			chosen_value = null
 		else
 			return ADMIN_CANCEL_EVENT
-	
+
 
 /datum/event_admin_setup/input_number/disease_outbreak_advanced/apply_to_event(datum/round_event/disease_outbreak/advanced/event)
 	event.max_symptoms = chosen_value

@@ -10,13 +10,9 @@
 	max_occurrences = 2
 	weight = 4 //Rare because of it's wacky and silly nature
 	category = EVENT_CATEGORY_ANOMALIES
-<<<<<<< HEAD
-	admin_setup = /datum/event_admin_setup/anomaly/anomaly_ectoplasm
-=======
 	min_wizard_trigger_potency = 0
 	max_wizard_trigger_potency = 3
 	admin_setup = list(/datum/event_admin_setup/set_location/anomaly, /datum/event_admin_setup/anomaly_ectoplasm)
->>>>>>> 105dff50583 (Refactors admin event setup (again) (#73801))
 
 /datum/round_event/anomaly/anomaly_ectoplasm
 	anomaly_path = /obj/effect/anomaly/ectoplasm

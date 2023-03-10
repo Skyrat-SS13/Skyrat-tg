@@ -7,14 +7,10 @@
 	earliest_start = 20 MINUTES
 	category = EVENT_CATEGORY_SPACE
 	description = "Throw a random meteor somewhere near the station."
-<<<<<<< HEAD
-	admin_setup = /datum/event_admin_setup/listed_options/stray_meteor
-=======
 	min_wizard_trigger_potency = 3
 	max_wizard_trigger_potency = 7
 	admin_setup = list(/datum/event_admin_setup/listed_options/stray_meteor)
 	map_flags = EVENT_SPACE_ONLY
->>>>>>> 105dff50583 (Refactors admin event setup (again) (#73801))
 
 /datum/round_event/stray_meteor
 	announce_when = 1

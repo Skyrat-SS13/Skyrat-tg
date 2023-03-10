@@ -133,13 +133,9 @@
 	max_occurrences = 1
 	earliest_start = 30 MINUTES
 	description = "A pod containing syndicate gear lands on the station."
-<<<<<<< HEAD
-	admin_setup = /datum/event_admin_setup/stray_cargo/syndicate
-=======
 	min_wizard_trigger_potency = 3
 	max_wizard_trigger_potency = 6
 	admin_setup = list(/datum/event_admin_setup/set_location/stray_cargo, /datum/event_admin_setup/syndicate_cargo_pod)
->>>>>>> 105dff50583 (Refactors admin event setup (again) (#73801))
 
 /datum/event_admin_setup/syndicate_cargo_pod
 	///Admin setable override to spawn a specific cargo pack type
@@ -172,7 +168,7 @@
 	pack_type_override = syndicate_pack
 
 /datum/event_admin_setup/syndicate_cargo_pod/apply_to_event(datum/round_event/stray_cargo/syndicate/event)
-	event.admin_override_contents = pack_type_override	
+	event.admin_override_contents = pack_type_override
 	var/log_message = "[key_name_admin(usr)] has aimed a stray syndicate cargo pod at [event.admin_override_turf ? AREACOORD(event.admin_override_turf) : "a random location"]. The pod contents are [pack_type_override ? pack_type_override : "random"]."
 	message_admins(log_message)
 	log_admin(log_message)

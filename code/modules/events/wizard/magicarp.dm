@@ -5,12 +5,9 @@
 	max_occurrences = 1
 	earliest_start = 0 MINUTES
 	description = "Summons a school of carps with magic projectiles."
-<<<<<<< HEAD
-=======
 	min_wizard_trigger_potency = 4
 	max_wizard_trigger_potency = 6
 	admin_setup = list(/datum/event_admin_setup/carp_migration)
->>>>>>> 105dff50583 (Refactors admin event setup (again) (#73801))
 
 /datum/round_event/carp_migration/wizard
 	carp_type = /mob/living/basic/carp/magic
