@@ -21,10 +21,6 @@
 	unsuitable_atmos_damage = 0
 	unsuitable_cold_damage = 0
 	unsuitable_heat_damage = 0
-	// Green and blue, bit dim cause yaknow morphlike
-	lighting_cutoff_red = 5
-	lighting_cutoff_green = 25
-	lighting_cutoff_blue = 15
 
 	ai_controller = /datum/ai_controller/basic_controller/creature
 

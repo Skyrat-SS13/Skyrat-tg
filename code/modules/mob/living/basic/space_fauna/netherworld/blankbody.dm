@@ -20,10 +20,6 @@
 	unsuitable_atmos_damage = 0
 	unsuitable_cold_damage = 0
 	unsuitable_heat_damage = 0
-	// Pink, like their skin
-	lighting_cutoff_red = 30
-	lighting_cutoff_green = 15
-	lighting_cutoff_blue = 40
 
 	ai_controller = /datum/ai_controller/basic_controller/blankbody
 
