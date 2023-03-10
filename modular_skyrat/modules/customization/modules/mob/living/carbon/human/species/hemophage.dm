@@ -75,7 +75,7 @@
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
 	)
-	inherent_biotypes = MOB_HUMANOID
+	inherent_biotypes = MOB_HUMANOID | MOB_ORGANIC
 	mutant_bodyparts = list("wings" = "None")
 	exotic_bloodtype = "U"
 	use_skintones = TRUE
@@ -717,6 +717,7 @@
 /datum/movespeed_modifier/hemophage_dormant_state
 	id = "hemophage_dormant_state"
 	multiplicative_slowdown = 3 // Yeah, they'll be quite significantly slower when in their dormant state.
+	blacklisted_movetypes = FLOATING
 
 
 /atom/movable/screen/alert/status_effect/blood_thirst_satiated
