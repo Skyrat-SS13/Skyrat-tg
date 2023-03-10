@@ -194,3 +194,134 @@
   tf-4:
   - bugfix: Monkeys are no longer able to teleport out of the Interdyne xenobio slime
       pens.
+2023-03-06:
+  LT3:
+  - rscadd: Added new multi-vote system
+  - balance: Map votes are now calculated using multi-vote instead of the old single-vote
+      system
+  - admin: Admins can now use either multi-vote or single-vote for custom votes
+  - code_imp: Map choice filtering uses active player count, not all connected clients
+  Melbert:
+  - bugfix: Jobs get "You are the" and policy text again on spawn
+  SkyratBot:
+  - bugfix: Atmosians have finally convinced the thermomachines to not self-destruct
+      when built on blocked ports.
+  - bugfix: Failing to wrench down a thermomachine no longer hits it with the wrench.
+  - rscadd: Added a traitor final objective to infect the station AI with a virus,
+      that turns it malf and fully loyal to the traitor
+  - balance: the syndicate realized Chief Engineer is important enough to kidnap
+  - bugfix: kidnap objectives will now properly be unavailable for you for 15 minutes
+      after you take three, instead of after you take three assassinations.
+  - bugfix: Bartender's fountain pen was omitted during the swap over to tablets,
+      this has been amended.
+  - balance: Latejoin dynamic rulesets have been rebalanced to reduce the frequency
+      of midround revolution spawns.
+  Vishenka0704:
+  - admin: Added a ticket into mentrohelp convertation. Better than say "write it
+      to mentors".
+2023-03-07:
+  Iamgoofball:
+  - bugfix: You can no longer fortnite with glass sheets
+  LT3:
+  - bugfix: Admins can jump to/follow patient zero of a disease outbreak again
+  SkyratBot:
+  - bugfix: You can no longer have multiple copies of the same heirloom theft objective
+  - qol: made ORM easier to use
+  - rscadd: Updated the bus ruin
+  - spellcheck: fixed humanoid examine easter egg's pronoun usage
+  - qol: Regal Rats produce meat on butchering, reducing player confusion.
+  - bugfix: fixed butchering bread dog spawning error bread.
+  - balance: Cult can no longer draw runes in survival pods.
+  Zergspower:
+  - rscadd: 'Added missing job titles to SR specific ghost roles: BMD, DS2, Freighter,
+      Port Tarkon and Ghost Cafe!'
+  - qol: SR Specific ghost roles will now be itemized and tracked inside your hour
+      window
+  coiax:
+  - refactor: Refactored how eggs growing into chicks is implemented, and how the
+      number of chickens and chicks are tracked. It's now possible for admins to make
+      anything into an egg.
+  dessysalta, Cheshify:
+  - rscadd: Nanotrasen has added a martial artist gi to the AutoDrobe for those who
+      want to go even further byond.
+  - imageadd: Aforementioned gi sprites.
+  tf-4:
+  - bugfix: There's no longer a vendor that will sometimes block one of the doors
+      to the interlink shuttle
+2023-03-08:
+  Melbert:
+  - bugfix: Luminsecent slime actions correctly update their appearance when integrating
+      or ejecting slime cores
+  SkyratBot:
+  - bugfix: 20+ item's discounts are properly smaller, instead of being larger
+  - qol: Borgs are now acknowledged by the orm
+2023-03-09:
+  Cyprex:
+  - bugfix: Ghost Cafe Spawners work once again!
+  Farquaar and ArcaneDefence:
+  - rscadd: Plasmamen can scream now
+  Melbert:
+  - bugfix: Fixed a eswords, some tools, and some other misc. items from being invisible
+      while extended / active
+  - bugfix: Teleshields and other misc items not extending in hand when active
+  - bugfix: Switchblades click on extend again
+  - bugfix: Pendrivers click on extend
+  - bugfix: Fixes pirates and starfury assailants keeping minds of past lives
+  Paxilmaniac:
+  - balance: CMGs in the armory come in a gunset which includes both a non-lethal
+      and two lethal magazines right out the box, rather than making officers have
+      to print lethal magazines to use the weapon in a lethal role.
+  Rhials:
+  - spellcheck: Fixes the Russian/Bounty Hunter fugitive hunter spawn backstory messages.
+  SkyratBot:
+  - bugfix: slime processor no longer sucks in slimes that it can't reach (glass panes,
+      blocked by other machines etc)
+  - bugfix: The party alarm now works again!
+  - bugfix: Corgis show their ID on examine.
+2023-03-10:
+  LT3:
+  - imageadd: New tram and elevator sprites
+  - code_imp: Lighting capability for all buttons
+  - spellcheck: All elevator components are now 'elevator'
+  - code_imp: Reduced brightness on tram platform signs
+  - bugfix: Fixed odd wall in cargo department
+  - bugfix: Science elevator panel not laying on a table anymore
+  - bugfix: Science keycard auth can only be done from RD office
+  - code_imp: More Tramstation mapping helpers
+  - bugfix: Fixed Icebox pharmacy shutters lighting runtimes
+  RatFromTheJungle:
+  - bugfix: the CMG, which was previously full-auto, is once more full-auto
+  SkyratBot:
+  - bugfix: Something which is "forced" to embed will now always actually embed. Resultingly,
+      accidentally swallowing glass or encountering it behind a poster without adequate
+      protection will now always cause it to embed into your body.
+  - balance: Thin and fingerless gloves may no longer protect you from having glass
+      in your hand after pulling down a poster
+  - bugfix: Bullets containing shrapnel now use their correct chance to embed, which
+      may cause bullet wounds to contain shrapnel more frequently.
+  - rscadd: New Neutral Station Trait, "Employee Birthday", its someone on the crews
+      birthday, make sure to wish them a happy birthday and perhaps get them a gift.
+  - rscadd: Two new party themed items have been added to the arcade prize pool, the
+      party horn and a box of party poppers.
+  - bugfix: the double esword sales are now smaller than regular sales
+  - code_imp: Abstract types don't hold telecrystal rewards or progression rewards
+      anymore, this has been moved to the non-abstract types.
+  - balance: Rebalances rewards from repeatable traitor objectives to be more consistent
+      with each other.
+  - bugfix: 'Rapid lighting devices can now have their color set to #ffffff and the
+      resulting lights will now function.'
+  - bugfix: Rapid lighting devices will now default its set color to white when created
+      instead of trying to produce colorless lights.
+  - bugfix: The rapid lighting device can now be used in the dark when producing glow
+      sticks or floor lights.
+  - rscadd: Adds the rest of the lipsticks to the cosmetics.dm
+  Zonespace27:
+  - rscadd: Drifting Contractors start with an atropine pen to prevent your microbomb
+      exploding, if you want
+  - balance: Being kidnapped by a contractor now gives wounds and brain traumas.
+  - balance: Funds taken from the budget after a contract raised to 7.5k-15k
+  - bugfix: All contractors should get money from finishing a contract, now.
+  coiax:
+  - bugfix: Tiziran lung stirfry now correctly uses a bowl in its construction, and
+      is left over after eating. It also can only be constructed with organic lungs,
+      because cybernetic lungs don't fry as well.
