@@ -16,7 +16,9 @@
 	mag_display = TRUE
 	empty_indicator = TRUE
 	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
-	company_flag = COMPANY_IZHEVSK
+
+/obj/item/gun/ballistic/automatic/plastikov/nri/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_IZHEVSK)
 
 /obj/item/gun/ballistic/automatic/plastikov/nri_pirate
 	name = "\improper PP-105 SMG"
@@ -43,4 +45,6 @@
 	mag_type = /obj/item/ammo_box/magazine/m9mm_aps
 	burst_size = 3
 	fire_delay = 3
-	company_flag = COMPANY_IZHEVSK
+
+/obj/item/gun/ballistic/automatic/pistol/ladon/nri/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_IZHEVSK)

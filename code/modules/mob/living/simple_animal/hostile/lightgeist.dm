@@ -47,8 +47,6 @@
 /mob/living/simple_animal/hostile/lightgeist/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/simple_flying)
-<<<<<<< HEAD
-=======
 	AddComponent(\
 		/datum/component/healing_touch,\
 		heal_brute = melee_damage_upper,\
@@ -59,7 +57,6 @@
 		complete_text = "%TARGET%'s wounds mend together.",\
 	)
 
->>>>>>> 7867d14fd48 (Lightgeists won't try to heal toxin damage (#73467))
 	remove_verb(src, /mob/living/verb/pulled)
 	remove_verb(src, /mob/verb/me_verb)
 	var/datum/atom_hud/medsensor = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
@@ -76,11 +73,3 @@
 	if(istype(target, /obj/structure/ladder)) //special case where lightgeists can use ladders properly.
 		var/obj/structure/ladder/laddy = target
 		laddy.use(src)
-		return
-	if(!isliving(target) || target == src)
-		return
-	var/mob/living/living_target = target
-	if(living_target.stat != DEAD)
-		living_target.heal_overall_damage(melee_damage_upper, melee_damage_upper)
-		new /obj/effect/temp_visual/heal(get_turf(target), "#80F5FF")
-		visible_message(span_notice("[src] mends the wounds of [target]."),span_notice("You mend the wounds of [target]."))
