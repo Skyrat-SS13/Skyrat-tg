@@ -16,12 +16,10 @@
 	for(var/atom/movable/movable in src)
 		throw_atom(movable)
 
-/turf/open/space/transit/clear_signal_refs()
-=======
 /turf/open/space/transit/Destroy()
->>>>>>> 4c8acee1b16 (Fixes not being dumped in space after jumping off the shuttle (#73221))
 	//Signals are NOT removed from turfs upon replacement, and we get replaced ALOT, so unregister our signal
 	UnregisterSignal(src, COMSIG_TURF_RESERVATION_RELEASED)
+	return ..()
 
 /turf/open/space/transit/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
 	. = ..()
