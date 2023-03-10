@@ -63,6 +63,9 @@
 	///keeps the name of the object from being overridden if it's vareditted.
 	var/override_naming
 
+	///If we should init and immediately start processing
+	var/init_processing = FALSE
+
 	armor_type = /datum/armor/machinery_atmospherics
 
 /datum/armor/machinery_atmospherics
@@ -91,9 +94,8 @@
 	if(pipe_flags & PIPING_CARDINAL_AUTONORMALIZE)
 		normalize_cardinal_directions()
 	nodes = new(device_type)
+	init_processing = process
 	..()
-	if(process)
-		SSair.start_processing_machine(src)
 	set_init_directions(init_dir)
 
 /obj/machinery/atmospherics/Initialize(mapload)
@@ -105,6 +107,8 @@
 		turf_loc.add_blueprints_preround(src)
 	SSspatial_grid.add_grid_awareness(src, SPATIAL_GRID_CONTENTS_TYPE_ATMOS)
 	SSspatial_grid.add_grid_membership(src, turf_loc, SPATIAL_GRID_CONTENTS_TYPE_ATMOS)
+	if(init_processing)
+		SSair.start_processing_machine(src)
 	return ..()
 
 /obj/machinery/atmospherics/Destroy()
@@ -457,7 +461,7 @@
 		PIPING_FORWARD_SHIFT(pipe_overlay, piping_layer, 2)
 	return pipe_overlay
 
-/obj/machinery/atmospherics/on_construction(obj_color, set_layer = PIPING_LAYER_DEFAULT)
+/obj/machinery/atmospherics/on_construction(mob/user, obj_color, set_layer = PIPING_LAYER_DEFAULT)
 	if(can_unwrench)
 		add_atom_colour(obj_color, FIXED_COLOUR_PRIORITY)
 		set_pipe_color(obj_color)
