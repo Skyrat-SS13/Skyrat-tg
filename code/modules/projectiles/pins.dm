@@ -216,12 +216,12 @@
 	color = "#FFD700"
 	fail_message = ""
 	///list of account IDs which have accepted the license prompt. If this is the multi-payment pin, then this means they accepted the waiver that each shot will cost them money
-	var/list/gun_owners = list() 
+	var/list/gun_owners = list()
 	///how much gets paid out to license yourself to the gun
-	var/payment_amount 
+	var/payment_amount
 	var/datum/bank_account/pin_owner
 	///if true, user has to pay everytime they fire the gun
-	var/multi_payment = FALSE 
+	var/multi_payment = FALSE
 	var/owned = FALSE
 	///purchase prompt to prevent spamming it, set to the user who opens to prompt to prevent locking the gun up for other users.
 	var/active_prompt_user
@@ -293,23 +293,6 @@
 			to_chat(user, span_warning("ERROR: User balance insufficent for successful transaction!"))
 			return FALSE
 		return TRUE
-<<<<<<< HEAD
-	if(credit_card_details && !active_prompt)
-		var/license_request = tgui_alert(user, "Do you wish to pay [payment_amount] credit[( payment_amount > 1 ) ? "s" : ""] for [( multi_payment ) ? "each shot of [gun.name]" : "usage license of [gun.name]"]?", "Weapon Purchase", list("Yes", "No"))
-		active_prompt = TRUE
-		if(!user.can_perform_action(src))
-			active_prompt = FALSE
-			return FALSE
-		switch(license_request)
-			if("Yes")
-				if(credit_card_details.adjust_money(-payment_amount, "Firing Pin: Gun License"))
-					if(pin_owner)
-						pin_owner.registered_account.adjust_money(payment_amount, "Firing Pin: Gun License Bought")
-					gun_owners += user
-					to_chat(user, span_notice("Gun license purchased, have a secure day!"))
-					active_prompt = FALSE
-					return FALSE //we return false here so you don't click initially to fire, get the prompt, accept the prompt, and THEN the gun
-=======
 	if(!credit_card_details)
 		to_chat(user, span_warning("ERROR: User has no valid bank account to subtract neccesary funds from!"))
 		return FALSE
@@ -331,11 +314,10 @@
 					pin_owner.adjust_money(payment_amount, "Firing Pin: Gun License Bought")
 				gun_owners += credit_card_details
 				to_chat(user, span_notice("Gun license purchased, have a secure day!"))
-					
-			else 
->>>>>>> 8f1f56423e8 (Fixes a bunch of bugs with paywall firing pins. (Including making them work in the first place) (#73564))
+
+			else
 				to_chat(user, span_warning("ERROR: User balance insufficent for successful transaction!"))
- 
+
 		if("No", null)
 			to_chat(user, span_warning("ERROR: User has declined to purchase gun license!"))
 	active_prompt_user = null
