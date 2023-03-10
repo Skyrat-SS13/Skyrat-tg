@@ -100,17 +100,9 @@
 		if(changeling_datum.can_absorb_dna(owner))
 			changeling_datum.add_new_profile(owner)
 
-<<<<<<< HEAD
-		// SKYRAT EDIT START
-		var/datum/action/changeling/humanform/hf = new()
-		changeling_datum.purchased_powers += hf
-		hf.Grant(origin.current)
-=======
 		var/datum/action/changeling/lesserform/transform = new()
 		changeling_datum.purchased_powers[transform.type] = transform
->>>>>>> 2b76197397b (Makes Lesser Form into one ability & unit tests it (#73572))
 		changeling_datum.regain_powers()
-		// SKYRAT EDIT END
 
 	owner.investigate_log("has been gibbed by a changeling egg burst.", INVESTIGATE_DEATHS)
 	owner.gib()
