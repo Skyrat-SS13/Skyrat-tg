@@ -46,6 +46,7 @@
 	armor_type = /datum/armor/rank_blueshield
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
+	alt_covers_chest = TRUE
 
 /datum/armor/rank_blueshield
 	melee = 10
@@ -64,6 +65,7 @@
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	gets_cropped_on_taurs = FALSE
 
 /obj/item/clothing/under/rank/blueshield/turtleneck
 	name = "blueshield's turtleneck"
@@ -78,6 +80,7 @@
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	gets_cropped_on_taurs = FALSE
 
 /*
 *	NT CONSULTANT
@@ -102,6 +105,7 @@
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	gets_cropped_on_taurs = FALSE
 
 /*
 *	UNASSIGNED (Any head of staff)
