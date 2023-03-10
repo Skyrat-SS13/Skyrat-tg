@@ -56,6 +56,9 @@
 	mutantpart_key = "taur"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 
+/obj/item/organ/external/taur_body/synth
+	status = ORGAN_ROBOTIC
+	organ_flags = ORGAN_SYNTHETIC
 
 /obj/item/organ/external/taur_body/override_color(rgb_value)
 	if(mutantpart_key)
@@ -72,10 +75,17 @@
 	if(sprite_accessory_flags & SPRITE_ACCESSORY_HIDE_SHOES)
 		external_bodytypes |= BODYTYPE_HIDE_SHOES
 
-	var/obj/item/bodypart/leg/left/taur/new_left_leg = new /obj/item/bodypart/leg/left/taur()
-	var/obj/item/bodypart/leg/left/old_left_leg = reciever.get_bodypart(BODY_ZONE_L_LEG)
-	var/obj/item/bodypart/leg/right/taur/new_right_leg = new /obj/item/bodypart/leg/right/taur()
 	var/obj/item/bodypart/leg/right/old_right_leg = reciever.get_bodypart(BODY_ZONE_R_LEG)
+	var/obj/item/bodypart/leg/left/old_left_leg = reciever.get_bodypart(BODY_ZONE_L_LEG)
+	var/obj/item/bodypart/leg/left/taur/new_left_leg
+	var/obj/item/bodypart/leg/right/taur/new_right_leg
+	if(status & ORGAN_ORGANIC)
+		new_left_leg = new /obj/item/bodypart/leg/left/taur()
+		new_right_leg = new /obj/item/bodypart/leg/right/taur()
+	if(status & ORGAN_ROBOTIC)
+		new_left_leg = new /obj/item/bodypart/leg/left/robot/synth/taur()
+		new_right_leg = new /obj/item/bodypart/leg/right/robot/synth/taur()
+
 
 	new_left_leg.bodytype |= external_bodytypes
 	new_left_leg.replace_limb(reciever, TRUE)
