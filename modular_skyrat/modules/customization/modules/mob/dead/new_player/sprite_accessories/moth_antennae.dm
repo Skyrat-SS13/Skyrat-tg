@@ -21,8 +21,3 @@
 	if((wearer.head.flags_inv & HIDEHAIR || (wearer.wear_mask && (wearer.wear_mask.flags_inv & HIDEHAIR))) \
 		&& !(wearer.head.flags_inv & SHOWSPRITEEARS || wearer.wear_mask.flags_inv & SHOWSPRITEEARS))
 		return TRUE
-
-/*
-/datum/bodypart_overlay/mutant/antennae/can_draw_on_bodypart(mob/living/carbon/human/wearer)
-	return
-*/
