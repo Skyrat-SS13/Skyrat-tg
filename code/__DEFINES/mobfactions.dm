@@ -1,14 +1,11 @@
-/// If this seems rather...bare at the moment, its temporary.
-/// Later all mob factions will be moved here and their current factions replaced with faction defines.
+// Contains mob factions that are not handled by special role defines (for example, viscerators having ROLE_SYNDICATE)
 
-#define FACTION_CLOWN "Clowns"
-#define FACTION_RAT "Rats"
-// Maint creatures have mutual respect for eachother.
-#define FACTION_MAINT_CREATURES "Maint_Creatures"
+// Default factions
 
+/// Acts as a default faction for most violent creatures
+#define FACTION_HOSTILE "hostile"
+/// Acts as a default faction for most peaceful creatures
 #define FACTION_NEUTRAL "neutral"
-<<<<<<< HEAD
-=======
 
 // Creature factions
 
@@ -94,4 +91,3 @@
 
 /// Generates a mob faction for the passed owner, used by stabilized pink extracts
 #define FACTION_PINK_EXTRACT(owner) "pink_[owner]"
->>>>>>> 893c5880b28 (Stabilised Slime Extracts will work from inside MODsuits (#73683))
