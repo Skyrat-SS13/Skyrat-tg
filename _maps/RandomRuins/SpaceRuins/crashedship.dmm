@@ -167,6 +167,21 @@
 /obj/item/stack/ore/gold,
 /turf/open/misc/asteroid,
 /area/awaymission/bmpship/fore)
+"hy" = (
+/obj/machinery/porta_turret{
+	dir = 8;
+	installation = /obj/item/gun/energy/lasercannon
+	},
+/obj/effect/mapping_helpers/atom_injector/obj_flag{
+	inject_flags = 1;
+	target_type = /obj/machinery/porta_turret
+	},
+/obj/effect/turf_decal/trimline/brown/filled/warning{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/brown/line,
+/turf/open/floor/plating/airless,
+/area/awaymission/bmpship/aft)
 "hI" = (
 /obj/effect/turf_decal/trimline/blue/filled/warning,
 /obj/effect/turf_decal/trimline/blue/line{
@@ -379,21 +394,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/awaymission/bmpship/midship)
-"pP" = (
-/obj/machinery/porta_turret{
-	dir = 8;
-	installation = /obj/item/gun/energy/lasercannon
-	},
-/obj/effect/mapping_helpers/atom_injector/obj_flag{
-	inject_flags = 1;
-	target_type = /obj/machinery/porta_turret
-	},
-/obj/effect/turf_decal/trimline/brown/filled/warning{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/brown/line,
-/turf/open/floor/plating/airless,
-/area/awaymission/bmpship/aft)
 "pT" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -1748,7 +1748,7 @@ kc
 kc
 kc
 rm
-pP
+hy
 uF
 Hb
 Hb
@@ -1804,7 +1804,7 @@ kc
 kc
 kc
 rm
-pP
+hy
 uF
 ip
 fQ

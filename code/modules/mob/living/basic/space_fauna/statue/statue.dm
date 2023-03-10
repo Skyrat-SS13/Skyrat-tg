@@ -1,6 +1,6 @@
 // A mob which only moves when it isn't being watched by living beings.
 
-/mob/living/simple_animal/hostile/netherworld/statue
+/mob/living/basic/statue
 	name = "statue" // matches the name of the statue with the flesh-to-stone spell
 	desc = "An incredibly lifelike marble carving. Its eyes seem to follow you..." // same as an ordinary statue with the added "eye following you" description
 	icon = 'icons/obj/art/statue.dmi'
@@ -20,8 +20,6 @@
 	speed = -1
 	maxHealth = 50000
 	health = 50000
-	healable = 0
-	harm_intent_damage = 10
 	obj_damage = 100
 	melee_damage_lower = 68
 	melee_damage_upper = 83
@@ -30,21 +28,15 @@
 	attack_sound = 'sound/hallucinations/growl1.ogg'
 	attack_vis_effect = ATTACK_EFFECT_CLAW
 
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
-	minbodytemp = 0
-
 	faction = list("statue")
-	move_to_delay = 0 // Very fast
+	speak_emote = list("screams")
+	death_message = "falls apart into a fine dust."
+	unsuitable_atmos_damage = 0
+	unsuitable_cold_damage = 0
+	unsuitable_heat_damage = 0
 
 	animate_movement = NO_STEPS // Do not animate movement, you jump around as you're a scary statue.
 	hud_possible = list(ANTAG_HUD)
-
-	see_in_dark = 13
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
-	vision_range = 12
-	aggro_vision_range = 12
-
-	search_objects = 1 // So that it can see through walls
 
 	sight = SEE_SELF|SEE_MOBS|SEE_OBJS|SEE_TURFS
 
@@ -52,100 +44,47 @@
 	move_resist = MOVE_FORCE_EXTREMELY_STRONG
 	pull_force = MOVE_FORCE_EXTREMELY_STRONG
 
-	var/cannot_be_seen = 1
+	ai_controller = /datum/ai_controller/basic_controller/statue
+	/// Loot this mob drops on death.
+	var/loot
+	/// Stores the creator in here if it has one.
 	var/mob/living/creator = null
 
-// No movement while seen code.
-
-/mob/living/simple_animal/hostile/netherworld/statue/Initialize(mapload, mob/living/creator)
+/mob/living/basic/statue/Initialize(mapload, mob/living/creator)
 	. = ..()
-	// Give spells
+	if(LAZYLEN(loot))
+		AddElement(/datum/element/death_drops, loot)
+	AddComponent(/datum/component/unobserved_actor, unobserved_flags = NO_OBSERVED_MOVEMENT | NO_OBSERVED_ATTACKS)
+	ADD_TRAIT(src, TRAIT_UNOBSERVANT, INNATE_TRAIT)
 
+	// Give spells
 	var/datum/action/cooldown/spell/aoe/flicker_lights/flicker = new(src)
 	flicker.Grant(src)
 	var/datum/action/cooldown/spell/aoe/blindness/blind = new(src)
 	blind.Grant(src)
-	var/datum/action/cooldown/spell/night_vision/night_vision = new(src)
-	night_vision.Grant(src)
 
 	// Set creator
 	if(creator)
 		src.creator = creator
 
-/mob/living/simple_animal/hostile/netherworld/statue/add_cell_sample()
-	return
-
-/mob/living/simple_animal/hostile/netherworld/statue/med_hud_set_health()
+/mob/living/basic/statue/med_hud_set_health()
 	return //we're a statue we're invincible
 
-/mob/living/simple_animal/hostile/netherworld/statue/med_hud_set_status()
+/mob/living/basic/statue/med_hud_set_status()
 	return //we're a statue we're invincible
 
-/mob/living/simple_animal/hostile/netherworld/statue/Move(turf/NewLoc)
-	if(can_be_seen(NewLoc))
-		if(client)
-			to_chat(src, span_warning("You cannot move, there are eyes on you!"))
-		return
-	return ..()
-
-/mob/living/simple_animal/hostile/netherworld/statue/Life(delta_time = SSMOBS_DT, times_fired)
-	..()
-	if(!client && target) // If we have a target and we're AI controlled
-		var/mob/watching = can_be_seen()
-		// If they're not our target
-		if(watching && watching != target)
-			// This one is closer.
-			if(get_dist(watching, src) > get_dist(target, src))
-				LoseTarget()
-				GiveTarget(watching)
-
-/mob/living/simple_animal/hostile/netherworld/statue/AttackingTarget()
-	if(can_be_seen(get_turf(loc)))
-		if(client)
-			to_chat(src, span_warning("You cannot attack, there are eyes on you!"))
-		return FALSE
-	else
-		return ..()
-
-/mob/living/simple_animal/hostile/netherworld/statue/DestroyPathToTarget()
-	if(!can_be_seen(get_turf(loc)))
-		..()
-
-/mob/living/simple_animal/hostile/netherworld/statue/face_atom()
-	if(!can_be_seen(get_turf(loc)))
-		..()
-
-/mob/living/simple_animal/hostile/netherworld/statue/can_speak(allow_mimes = FALSE)
+/mob/living/basic/statue/can_speak(allow_mimes = FALSE)
 	return FALSE // We're a statue, of course we can't talk.
 
 // Cannot talk
 
-/mob/living/simple_animal/hostile/netherworld/statue/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null, filterproof = null, message_range = 7, datum/saymode/saymode = null)
+/mob/living/basic/statue/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null, filterproof = null, message_range = 7, datum/saymode/saymode = null)
 	return
 
 // Turn to dust when gibbed
 
-/mob/living/simple_animal/hostile/netherworld/statue/gib()
+/mob/living/basic/statue/gib()
 	dust()
-
-
-// Stop attacking clientless mobs
-
-/mob/living/simple_animal/hostile/netherworld/statue/CanAttack(atom/the_target)
-	if(isliving(the_target))
-		var/mob/living/L = the_target
-		if(!L.client && !L.ckey)
-			return FALSE
-	return ..()
-
-// Don't attack your creator if there is one
-
-/mob/living/simple_animal/hostile/netherworld/statue/ListTargets()
-	. = ..()
-	return . - creator
-
-/mob/living/simple_animal/hostile/netherworld/statue/sentience_act()
-	faction -= FACTION_NEUTRAL
 
 // Statue powers
 
@@ -153,7 +92,8 @@
 /datum/action/cooldown/spell/aoe/flicker_lights
 	name = "Flicker Lights"
 	desc = "You will trigger a large amount of lights around you to flicker."
-
+	button_icon = 'icons/mob/actions/actions_AI.dmi'
+	button_icon_state = "blackout"
 	cooldown_time = 30 SECONDS
 	spell_requirements = NONE
 	aoe_radius = 14
@@ -175,7 +115,7 @@
 /datum/action/cooldown/spell/aoe/blindness
 	name = "Blindness"
 	desc = "Your prey will be momentarily blind for you to advance on them."
-
+	button_icon_state = "blind"
 	cooldown_time = 1 MINUTES
 	spell_requirements = NONE
 	aoe_radius = 14
@@ -196,3 +136,22 @@
 
 /datum/action/cooldown/spell/aoe/blindness/cast_on_thing_in_aoe(mob/living/victim, atom/caster)
 	victim.adjust_temp_blindness(8 SECONDS)
+
+/datum/ai_controller/basic_controller/statue
+	blackboard = list(
+		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic(),
+		BB_LOW_PRIORITY_HUNTING_TARGET = null, // lights
+	)
+
+	ai_movement = /datum/ai_movement/basic_avoidance
+	planning_subtrees = list(
+		/datum/ai_planning_subtree/simple_find_target,
+		/datum/ai_planning_subtree/basic_melee_attack_subtree/statue,
+		/datum/ai_planning_subtree/find_and_hunt_target/look_for_light_fixtures,
+	)
+
+/datum/ai_planning_subtree/basic_melee_attack_subtree/statue
+	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/statue
+
+/datum/ai_behavior/basic_melee_attack/statue
+	action_cooldown = 1 SECONDS
