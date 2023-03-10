@@ -2203,7 +2203,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "comment",
 			SPECIES_PERK_NAME = "Native Speaker",
+			/* SKYRAT EDIT - Digitigrade customization - ORIGINAL:
 			SPECIES_PERK_DESC = "Alongside [initial(common_language.name)], [plural_form] gain the ability to speak [english_list(bonus_languages)].",
+			*/ // ORIGINAL END - SKYRAT EDIT START:
+			SPECIES_PERK_DESC = "Alongside [initial(common_language.name)], [plural_form] commonly speak [english_list(bonus_languages)].",
+			// SKYRAT EDIT END
 		))
 
 	qdel(temp_holder)
