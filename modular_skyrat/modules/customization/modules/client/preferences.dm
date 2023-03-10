@@ -15,6 +15,7 @@
 		if(!(language.type in subtypesof(/datum/language)) || (language.secret && !(language.type in species.language_prefs_whitelist)))
 			languages.Remove(lang_path)
 			languages_edited = TRUE
+		qdel(species)
 	return languages_edited
 
 /// Cleans any quirks that should be hidden, or just simply don't exist from quirk code.
