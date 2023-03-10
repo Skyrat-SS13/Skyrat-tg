@@ -16,21 +16,14 @@
 
 /datum/action/cooldown/spell/vow_of_silence/cast(mob/living/carbon/human/cast_on)
 	. = ..()
-<<<<<<< HEAD
-	cast_on.mind.miming = !cast_on.mind.miming
-	if(cast_on.mind.miming)
-=======
 	if(HAS_TRAIT_FROM(cast_on, TRAIT_MIMING, "[type]"))
 		to_chat(cast_on, span_notice("You break your vow of silence."))
 		cast_on.log_message("broke [cast_on.p_their()] vow of silence.", LOG_GAME)
 		cast_on.add_mood_event("vow", /datum/mood_event/broken_vow)
 		REMOVE_TRAIT(cast_on, TRAIT_MIMING, "[type]")
 	else
->>>>>>> c77e70056e7 (Fixes mime finger gun icon and adds logging to vow of silence (#73825))
 		to_chat(cast_on, span_notice("You make a vow of silence."))
 		cast_on.log_message("made a vow of silence.", LOG_GAME)
 		cast_on.clear_mood_event("vow")
-	else
-		to_chat(cast_on, span_notice("You break your vow of silence."))
-		cast_on.add_mood_event("vow", /datum/mood_event/broken_vow)
+		ADD_TRAIT(cast_on, TRAIT_MIMING, "[type]")
 	cast_on.update_mob_action_buttons()
