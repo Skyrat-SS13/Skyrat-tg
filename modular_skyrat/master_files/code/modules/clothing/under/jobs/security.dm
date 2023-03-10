@@ -26,11 +26,11 @@
 	icon_state = "util_sec_old"
 	can_adjust = FALSE
 
-/obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate //ORION TODO: MOVE ALL /SYNDICATES TO SYNDICATE.DM
+/obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate
 	armor_type = /datum/armor/redsec_syndicate
 	has_sensor = NO_SENSORS
 
-/obj/item/clothing/under/rank/security/peacekeeper/trousers //ORION TODO: repath off of Peacekeeper
+/obj/item/clothing/under/rank/security/peacekeeper/trousers
 	name = "security trousers"
 	desc = "Some Peacekeeper-blue combat trousers. Probably should pair it with a vest for safety."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
