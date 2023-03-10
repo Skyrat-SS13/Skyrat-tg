@@ -76,7 +76,7 @@
 			balloon_alert(mod.wearer, "not active!")
 		return
 	// SKYRAT EDIT START - DEPLOYABLE EVERYTHING OVER EVERYTHING
-	if((mod.wearer.wear_suit != mod.chestplate) && !allowed_inactive)
+	if((mod.wearer.wear_suit != mod.chestplate) && !(allow_flags & MODULE_ALLOW_INACTIVE))
 		balloon_alert(mod.wearer, "chestplate retracted!")
 		return
 	// SKYRAT EDIT END
@@ -94,12 +94,12 @@
 	if(!COOLDOWN_FINISHED(src, cooldown_timer))
 		balloon_alert(mod.wearer, "on cooldown!")
 		return FALSE
-	if(((!mod.active || mod.activating) && !allowed_inactive) || !mod.get_charge()) //SKYRAT ADDITION: INACTIVE USE
+	if(((!mod.active || mod.activating) && !(allow_flags & MODULE_ALLOW_INACTIVE)) || !mod.get_charge()) //SKYRAT ADDITION: INACTIVE USE
 		balloon_alert(mod.wearer, "unpowered!")
 		return FALSE
 
 	// SKYRAT EDIT START - No using modules when not all parts are deployed.
-	if(!allowed_inactive)
+	if(!(allow_flags & MODULE_ALLOW_INACTIVE))
 		for(var/obj/item/part as anything in mod.mod_parts)
 			if(part.loc == mod)
 				balloon_alert(mod.wearer, "deploy all parts first!")
