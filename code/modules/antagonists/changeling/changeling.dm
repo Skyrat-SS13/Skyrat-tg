@@ -561,8 +561,8 @@
 	new_profile.grad_style = LAZYLISTDUPLICATE(target.grad_style)
 	new_profile.grad_color = LAZYLISTDUPLICATE(target.grad_color)
 	new_profile.physique = target.physique
-	new_profile.scream_type = target.selected_scream?.type
-	new_profile.laugh_type = target.selected_laugh?.type
+	new_profile.scream_type = target.selected_scream?.type || /datum/scream_type/none
+	new_profile.laugh_type = target.selected_laugh?.type || /datum/laugh_type/none
 	new_profile.age = target.age
 	for(var/datum/quirk/target_quirk in target.quirks)
 		LAZYADD(new_profile.quirks, new target_quirk.type)
