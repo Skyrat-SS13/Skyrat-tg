@@ -46,8 +46,8 @@
 	. = ..()
 	allowed += list(
 		/obj/item/melee/baton/telescopic,
-		/obj/item/gun/energy/cell_loaded/medigun, //SKYRAT EDIT MEDIGUNS
-		/obj/item/storage/medkit //SKYRAT EDIT - ADDITION
+		/obj/item/gun/energy/cell_loaded/medigun, //SKYRAT EDIT ADDITION - MEDIGUNS
+		/obj/item/storage/medkit, //SKYRAT EDIT ADDITION
 	)
 
 /obj/item/clothing/suit/toggle/labcoat/paramedic
@@ -56,13 +56,13 @@
 	icon_state = "labcoat_paramedic"
 	inhand_icon_state = null
 
-//START SKYRAT EDIT - ADDITION
-/obj/item/clothing/suit/toggle/labcoat/paramedic/Initialize()
+//START SKYRAT EDIT ADDITION
+/obj/item/clothing/suit/toggle/labcoat/paramedic/Initialize(mapload)
 	. = ..()
 	allowed += list(
 		/obj/item/storage/medkit,
 	)
-//END SKYRAT EDIT- ADDITION
+//END SKYRAT EDIT
 
 /obj/item/clothing/suit/toggle/labcoat/mad
 	name = "\proper The Mad's labcoat"
@@ -111,4 +111,3 @@
 	name = "interdyne labcoat"
 	desc = "More like an eccentric coat than a labcoat. Helps pass off bloodstains as part of the aesthetic. Comes with red shoulder pads."
 	icon_state = "labcoat_robo"
-

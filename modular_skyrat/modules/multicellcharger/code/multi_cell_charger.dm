@@ -37,7 +37,7 @@
 	to_chat(user, span_notice("You press the quick release as all the cells pop out!"))
 	for(var/i in charging_batteries)
 		removecell()
-	return COMPONENT_CANCEL_ATTACK_CHAIN
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/cell_charger_multi/examine(mob/user)
 	. = ..()
