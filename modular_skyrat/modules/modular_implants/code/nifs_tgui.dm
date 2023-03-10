@@ -7,6 +7,10 @@
 		"malfunction",
 		"default",
 		"ntos",
+		"ntos_darkmode",
+		"ntOS95",
+		"ntos_synth",
+		"ntos_terminal",
 		"wizard",
 	)
 	///What theme is currently being used on the NIF?
