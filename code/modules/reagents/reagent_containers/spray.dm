@@ -382,7 +382,7 @@
 /obj/item/reagent_containers/spray/chemsprayer/party/spray(atom/A, mob/user)
 	. = ..()
 	icon_state = "[icon_state]_used"
-	
+
 
 // Plant-B-Gone
 /obj/item/reagent_containers/spray/plantbgone // -- Skie
