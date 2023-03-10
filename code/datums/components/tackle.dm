@@ -106,15 +106,9 @@
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(checkObstacle))
 	playsound(user, 'sound/weapons/thudswoosh.ogg', 40, TRUE, -1)
 
-<<<<<<< HEAD
 	var/leap_word = isfeline(user) ? "pounce" : "leap" //If cat, "pounce" instead of "leap". // SKYRAT EDIT - FELINE TRAITS. Was: isfelinid(user)
-	if(can_see(user, A, 7))
-		user.visible_message(span_warning("[user] [leap_word]s at [A]!"), span_danger("You [leap_word] at [A]!"))
-=======
-	var/leap_word = isfelinid(user) ? "pounce" : "leap" //If cat, "pounce" instead of "leap".
 	if(can_see(user, clicked_atom, 7))
 		user.visible_message(span_warning("[user] [leap_word]s at [clicked_atom]!"), span_danger("You [leap_word] at [clicked_atom]!"))
->>>>>>> 40fa6e43a00 (Fixes tackles rarely applying permanent slowdowns, improves min_distance tackle targeting (#73550))
 	else
 		user.visible_message(span_warning("[user] [leap_word]s!"), span_danger("You [leap_word]!"))
 
