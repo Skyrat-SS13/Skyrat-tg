@@ -378,7 +378,6 @@
 		/mob/living/simple_animal/hostile/evilborg/protect,
 		/mob/living/simple_animal/hostile/evilborg/roomba,
 		/mob/living/simple_animal/hostile/evilborg/sec,
-		/mob/living/basic/giant_spider/badnana_spider,
 		/mob/living/simple_animal/hostile/looter,
 		/mob/living/simple_animal/hostile/looter/big,
 		/mob/living/simple_animal/hostile/looter/crusher,
