@@ -73,7 +73,7 @@
 	uniform = /obj/item/clothing/under/plasmaman/blueshield
 
 /obj/item/storage/box/gunset/blueshield
-	name = "CMG-1 gunset"
+	name = "Blueshield's CMG-1 gunset"
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/box/gunset/blueshield/PopulateContents()
@@ -106,4 +106,6 @@
 	icon_state = "hellfirepdw"
 	worn_icon_state = "hellfirepdw"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hellfire/bs)
-	company_flag = COMPANY_ALLSTAR
+
+/obj/item/gun/energy/laser/hellgun/blueshield/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_ALLSTAR)

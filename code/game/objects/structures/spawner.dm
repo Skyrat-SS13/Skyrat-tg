@@ -91,9 +91,6 @@
 /obj/structure/spawner/mining/wumborian
 	name = "wumborian fugu den"
 	desc = "A den housing a nest of wumborian fugus, how do they all even fit in there?"
-<<<<<<< HEAD
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/fugu)
-=======
 	mob_types = list(/mob/living/basic/wumborian_fugu)
 
 /obj/structure/spawner/nether
@@ -140,4 +137,4 @@
 				newmob.desc = "It's [living_mob], but [living_mob.p_their()] flesh has an ashy texture, and [living_mob.p_their()] face is featureless save an eerie smile."
 				src.visible_message(span_warning("[living_mob] reemerges from the link!"))
 				qdel(living_mob)
->>>>>>> 7c30d9d7463 (Basic Wumborian Fugu & Fugu Gland (#73415))
+

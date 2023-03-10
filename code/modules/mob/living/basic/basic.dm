@@ -89,9 +89,9 @@
 	var/unsuitable_atmos_damage = 1
 
 	///Minimal body temperature without receiving damage
-	var/minimum_survivable_temperature = 250
+	var/minimum_survivable_temperature = NPC_DEFAULT_MIN_TEMP
 	///Maximal body temperature without receiving damage
-	var/maximum_survivable_temperature = 350
+	var/maximum_survivable_temperature = NPC_DEFAULT_MAX_TEMP
 	///This damage is taken when the body temp is too cold. Set both this and unsuitable_heat_damage to 0 to avoid adding the basic_body_temp_sensitive element.
 	var/unsuitable_cold_damage = 1
 	///This damage is taken when the body temp is too hot. Set both this and unsuitable_cold_damage to 0 to avoid adding the basic_body_temp_sensitive element.
@@ -165,6 +165,10 @@
 		transform = transform.Turn(180)
 	if(!(basic_mob_flags & REMAIN_DENSE_WHILE_DEAD))
 		set_density(initial(density))
+
+/mob/living/basic/update_sight()
+	lighting_color_cutoffs = list(lighting_cutoff_red, lighting_cutoff_green, lighting_cutoff_blue)
+	return ..()
 
 /mob/living/basic/proc/melee_attack(atom/target, list/modifiers)
 	face_atom(target)
