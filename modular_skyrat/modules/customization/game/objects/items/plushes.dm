@@ -618,6 +618,6 @@
 	icon_state = "plush_dan"
 	attack_verb_continuous = list("barks at", "borks at", "woofs at")
 	attack_verb_simple = list("bark at", "bork at", "woof at")
-	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/bark1.ogg'=1, 'modular_skyrat/modules/emotes/sound/voice/bark2.ogg'=1)
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/bark1.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/bark2.ogg' = 1)
 	gender = MALE
 
