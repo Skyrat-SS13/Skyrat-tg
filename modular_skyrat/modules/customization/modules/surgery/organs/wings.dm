@@ -71,6 +71,17 @@
 	return GLOB.sprite_accessories["wings_functional"]
 
 
+// We need to overwrite this because all of these wings are locked.
+/datum/bodypart_overlay/mutant/wings/functional/locked/get_random_appearance()
+	var/list/valid_restyles = list()
+	var/list/feature_list = get_global_feature_list()
+	for(var/accessory in feature_list)
+		var/datum/sprite_accessory/accessory_datum = feature_list[accessory]
+		valid_restyles += accessory_datum
+
+	return pick(valid_restyles)
+
+
 /datum/bodypart_overlay/mutant/wings/functional/locked/original_color
 	color_source = ORGAN_COLOR_OVERRIDE
 
