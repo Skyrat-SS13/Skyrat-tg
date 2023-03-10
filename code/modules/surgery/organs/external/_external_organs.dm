@@ -300,10 +300,9 @@
 /obj/item/organ/external/horns/can_draw_on_bodypart(mob/living/carbon/human/human)
 	return TRUE
 
-<<<<<<< HEAD
 /obj/item/organ/external/horns/get_global_feature_list()
 	return GLOB.sprite_accessories["horns"] // SKYRAT EDIT - Goof's port of species stuff from a missed upstream PR
-=======
+
 /datum/bodypart_overlay/mutant/horns
 	layers = EXTERNAL_ADJACENT
 	feature_key = "horns"
@@ -316,7 +315,6 @@
 
 /datum/bodypart_overlay/mutant/horns/get_global_feature_list()
 	return GLOB.horns_list
->>>>>>> 85d04418be3 (Fixes can_draw_on_bodypart on horns and podpeople hair (#73771))
 
 ///The frills of a lizard (like weird fin ears)
 /obj/item/organ/external/frills
@@ -470,9 +468,6 @@
 		return ..()
 
 	var/list/rgb_list = rgb2num(draw_color)
-<<<<<<< HEAD
-	return rgb(color_inverse_base - rgb_list[1], color_inverse_base - rgb_list[2], color_inverse_base - rgb_list[3])
-=======
 	overlay.color = rgb(color_inverse_base - rgb_list[1], color_inverse_base - rgb_list[2], color_inverse_base - rgb_list[3]) //inversa da color
 
 /datum/bodypart_overlay/mutant/pod_hair/can_draw_on_bodypart(mob/living/carbon/human/human)
@@ -480,4 +475,3 @@
 		return FALSE
 
 	return TRUE
->>>>>>> 85d04418be3 (Fixes can_draw_on_bodypart on horns and podpeople hair (#73771))
