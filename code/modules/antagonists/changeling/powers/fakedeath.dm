@@ -62,15 +62,10 @@
 	build_all_button_icons(UPDATE_BUTTON_NAME|UPDATE_BUTTON_ICON)
 
 /datum/action/changeling/fakedeath/can_sting(mob/living/user)
-<<<<<<< HEAD
-	if(HAS_TRAIT_FROM(user, TRAIT_DEATHCOMA, "changeling") && !revive_ready)
-		to_chat(user, span_warning("We are already reviving."))
-=======
 	if(revive_ready)
 		return ..()
 
 	if(!can_enter_stasis(user))
->>>>>>> e80879d22cd (Ensures some ling ability icon always update correctly, Fixes a potential input stall in Revival Stasis (#73616))
 		return
 	//Confirmation for living changelings if they want to fake their death
 	if(user.stat != DEAD)
