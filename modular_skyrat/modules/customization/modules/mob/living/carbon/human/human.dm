@@ -41,6 +41,15 @@
 /mob/living/carbon/human/species/mammal
 	race = /datum/species/mammal
 
+/mob/living/carbon/human/species/vulpkanin
+	race = /datum/species/vulpkanin
+
+/mob/living/carbon/human/species/tajaran
+	race = /datum/species/tajaran
+
+/mob/living/carbon/human/species/unathi
+	race = /datum/species/unathi
+
 /mob/living/carbon/human/species/podweak
 	race = /datum/species/pod/podweak
 
@@ -55,6 +64,12 @@
 
 /mob/living/carbon/human/species/teshari
 	race = /datum/species/teshari
+
+/mob/living/carbon/human/species/akula
+	race = /datum/species/akula
+
+/mob/living/carbon/human/species/skrell
+	race = /datum/species/skrell
 
 /mob/living/carbon/human/verb/toggle_undies()
 	set category = "IC"
