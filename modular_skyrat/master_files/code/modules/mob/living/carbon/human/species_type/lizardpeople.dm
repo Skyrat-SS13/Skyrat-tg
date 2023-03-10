@@ -14,7 +14,7 @@ Lizard subspecies: ASHWALKERS
 		SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 		SPECIES_PERK_ICON = "comment",
 		SPECIES_PERK_NAME = "Native Speaker",
-		SPECIES_PERK_DESC = "Ashwalkers can speak [initial(common_language.name)]. \
+		SPECIES_PERK_DESC = "Ashwalkers can only speak [initial(common_language.name)]. \
 			It is rare, but not impossible, for an Ashwalker to learn another language."
 	))
 
