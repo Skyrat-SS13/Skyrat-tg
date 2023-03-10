@@ -207,15 +207,6 @@
 		component_parts.Cut()
 		component_parts = null
 
-<<<<<<< HEAD
-	//delete any reference to cached stack parts created during display parts
-	QDEL_LIST_ASSOC_VAL(cached_stack_parts)
-	cached_stack_parts = null
-
-	LAZYCLEARLIST(cached_stack_parts)
-
-=======
->>>>>>> e52683d3872 (Infer icons of machine parts when displaying them via the RPED  (#73644))
 	QDEL_NULL(circuit)
 	unset_static_power()
 	return ..()
