@@ -1108,23 +1108,6 @@
 /obj/machinery/door/airlock/open(forced = DEFAULT_DOOR_CHECKS)
 	if( operating || welded || locked || seal )
 		return FALSE
-<<<<<<< HEAD
-	if(!forced)
-		if(!hasPower() || wires.is_cut(WIRE_OPEN))
-			return FALSE
-	if(forced < 2)
-		if(obj_flags & EMAGGED)
-			return FALSE
-		use_power(50)
-		playsound(src, doorOpen, 30, TRUE)
-	else
-		//playsound(src, 'sound/machines/airlockforced.ogg', 30, TRUE) - ORIGINAL
-		playsound(src, forcedOpen, 30, TRUE) //SKYRAT EDIT CHANGE - AESTHETICS
-
-	if(autoclose)
-		autoclose_in(normalspeed ? 8 SECONDS : 1.5 SECONDS)
-=======
->>>>>>> a3451b7fe4f (Makes "forced" opening and closing of doors way more sane (#73699))
 
 	if(!density)
 		return TRUE
@@ -1199,7 +1182,8 @@
 			return TRUE
 
 		if(BYPASS_DOOR_CHECKS) // No power usage, special sound, get it open.
-			playsound(src, 'sound/machines/airlockforced.ogg', 30, TRUE)
+			//playsound(src, 'sound/machines/airlockforced.ogg', 30, TRUE) - ORIGINAL
+			playsound(src, forcedOpen, 30, TRUE) //SKYRAT EDIT CHANGE - AESTHETICS
 			return TRUE
 
 		else
@@ -1224,14 +1208,8 @@
 				autoclose_in(DOOR_CLOSE_WAIT)
 				return FALSE
 
-<<<<<<< HEAD
-	else
-		//playsound(src, 'sound/machines/airlockforced.ogg', 30, TRUE) //ORIGINAL
-		playsound(src, forcedClosed, 30, TRUE) //SKYRAT EDIT ADDITION - AESTHETICS
-=======
 	if(!try_to_force_door_shut(forced))
 		return FALSE
->>>>>>> a3451b7fe4f (Makes "forced" opening and closing of doors way more sane (#73699))
 
 	var/obj/structure/window/killthis = (locate(/obj/structure/window) in get_turf(src))
 	if(killthis)
