@@ -170,6 +170,7 @@
 			if(USE_MATRIXED_COLORS)
 				overlay.color = islist(draw_color) ? draw_color[i] : draw_color
 				overlay.alpha = specific_alpha
+				i++
 
 			else
 				overlay.color = limb?.color
