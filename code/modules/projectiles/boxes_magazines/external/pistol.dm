@@ -41,14 +41,8 @@
 	multiple_sprite_use_base = TRUE
 
 /obj/item/ammo_box/magazine/m9mm
-<<<<<<< HEAD
-//	name = "pistol magazine (9mm)"			// SKYRAT EDIT: Original
-	name = "pistol magazine (9x25mm)"		// SKYRAT EDIT: Calibre rename
-	icon_state = "9x19p-8"
-=======
 	name = "pistol magazine (9mm)"
 	icon_state = "9x19p-full"
->>>>>>> ebeec530ff1 (Changes AMMO_BOX_FULL_EMPTY to be either -full or -empty on a magazine, rather than the old behavior of using the max ammo of the magazine (#73736))
 	base_icon_state = "9x19p"
 	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MM
