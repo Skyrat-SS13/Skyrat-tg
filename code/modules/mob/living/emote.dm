@@ -271,13 +271,14 @@
 
 /datum/emote/living/laugh/get_sound(mob/living/user)
 	. = ..()
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(H.dna.species.id == "human" && (!H.mind || !H.mind.miming))
-			if(user.gender == FEMALE)
-				return 'sound/voice/human/womanlaugh.ogg'
-			else
-				return pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg')
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/human_user = user
+	if(human_user.dna.species.id == SPECIES_HUMAN && !HAS_TRAIT(human_user, TRAIT_MIMING))
+		if(human_user.gender == FEMALE)
+			return 'sound/voice/human/womanlaugh.ogg'
+		else
+			return pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg')
 */ //SKYRAT EDIT END
 
 /datum/emote/living/look

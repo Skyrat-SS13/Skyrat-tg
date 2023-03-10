@@ -11,7 +11,7 @@
 	device = /obj/item/melee/baton/telescopic/contractor_baton
 	incompatible_modules = list(/obj/item/mod/module/baton_holster)
 	cooldown_time = 0.5 SECONDS
-	allowed_inactive = TRUE
+	allow_flags = MODULE_ALLOW_INACTIVE
 	/// Have they sacrificed a baton to actually be able to use this?
 	var/eaten_baton = FALSE
 
