@@ -197,16 +197,10 @@
 	ADD_STEAL_ITEM(src, /obj/item/clothing/accessory/medal/gold/captain)
 
 /datum/objective_item/steal/hypo
-<<<<<<< HEAD
 	//name = "the hypospray" // ORIGINAL
 	name = "the Chief Medical Officer's hypospray" // SKYRAT EDIT CHANGE
 	//targetitem = /obj/item/reagent_containers/hypospray/cmo // ORIGINAL
 	targetitem = /obj/item/hypospray/mkii/cmo // SKYRAT EDIT CHANGE
-	difficulty = 5
-=======
-	name = "the hypospray"
-	targetitem = /obj/item/reagent_containers/hypospray/cmo
->>>>>>> 4aef8a4cd53 (Limit theft/destroy secondary objectives to items which at least one person cares about (#73731))
 	excludefromjob = list(JOB_CHIEF_MEDICAL_OFFICER)
 	item_owner = list(JOB_CHIEF_MEDICAL_OFFICER)
 	exists_on_map = TRUE
