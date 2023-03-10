@@ -1,4 +1,4 @@
-/obj/item/clothing/suit/wornshirt //ORION TODO: kill or fix literally everything below this line
+/obj/item/clothing/suit/wornshirt
 	name = "worn shirt"
 	desc = "A worn out (or perhaps just baggy), curiously comfortable t-shirt."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -295,7 +295,6 @@
 	icon_state = "bltrenchcoat"
 	body_parts_covered = CHEST|ARMS
 
- //ORION TODO: stop killing below this line these are fine just sort 'em
 /obj/item/clothing/suit/apron/chef/colorable_apron
 	name = "apron"
 	desc = "A basic apron."
