@@ -34,7 +34,7 @@
 		))
 
 /obj/item/storage/belt/bowie_sheath/AltClick(mob/user)
-	if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE))
+	if(!user.can_perform_action(src, NEED_DEXTERITY))
 		return
 	if(length(contents))
 		var/obj/item/knife = contents[1]
