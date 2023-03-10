@@ -53,9 +53,6 @@
 
 	if(!should_show_text(examined))
 		return
-<<<<<<< HEAD
-	examine_list += span_notice("[body_zone ? examined.p_their(TRUE) : examined.p_they(TRUE)] [infused_desc]")
-=======
 	var/examine_text = replacetext(replacetext("[body_zone ? examined.p_their(TRUE) : examined.p_they(TRUE)] [infused_desc]", "%PRONOUN_ES", examined.p_es()), "%PRONOUN_S", examined.p_s())
 	if(add_span)
 		examine_text = span_notice(examine_text)
@@ -78,4 +75,3 @@
 
 /datum/element/noticable_organ/ai_control/on_removed(obj/item/organ/target, mob/living/carbon/loser)
 	Detach(target)
->>>>>>> 20a1e1e9139 (Fixes seeing monkey ai examine text if the monkey doesn't have eyes to look primal with. (#73166))
