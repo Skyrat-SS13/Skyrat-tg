@@ -98,6 +98,8 @@
 #define BODYTYPE_TAUR (1<<9)
 ///The limb causes shoes to no longer be displayed, useful for taurs.
 #define BODYTYPE_HIDE_SHOES (1<<10)
+///The limb causes glasses and hats to be drawn on layers 5 and 4 respectively. Currently used for snouts with the (Top) suffix, which are drawn on layer 6 and would normally cover facewear
+#define BODYTYPE_ALT_FACEWEAR_LAYER (1<<11)
 // SKYRAT EDIT END
 
 // Defines for Species IDs. Used to refer to the name of a species, for things like bodypart names or species preferences.
@@ -878,3 +880,8 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 #define HEALING_TOUCH_ANYONE "healing_touch_anyone"
 #define HEALING_TOUCH_NOT_SELF "healing_touch_not_self"
 #define HEALING_TOUCH_SELF_ONLY "healing_touch_self_only"
+
+/// Default minimum body temperature mobs can exist in before taking damage
+#define NPC_DEFAULT_MIN_TEMP 250
+/// Default maximum body temperature mobs can exist in before taking damage
+#define NPC_DEFAULT_MAX_TEMP 350

@@ -1,4 +1,3 @@
-
 /mob/living/simple_animal/hostile/regalrat
 	name = "feral regal rat"
 	desc = "An evolved rat, created through some strange science. They lead nearby rats with deadly efficiency to protect their kingdom. Not technically a king."
@@ -15,7 +14,7 @@
 	lighting_cutoff_green = 8
 	lighting_cutoff_blue = 5
 	obj_damage = 10
-	butcher_results = list(/obj/item/clothing/head/costume/crown = 1,)
+	butcher_results = list(/obj/item/food/meat/slab/mouse = 2, /obj/item/clothing/head/costume/crown = 1)
 	response_help_continuous = "glares at"
 	response_help_simple = "glare at"
 	response_disarm_continuous = "skoffs at"

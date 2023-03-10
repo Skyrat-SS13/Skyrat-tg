@@ -590,6 +590,7 @@
 		return
 	if(new_resting == resting)
 		return
+
 	. = resting
 	resting = new_resting
 	if(new_resting)
@@ -1404,7 +1405,7 @@
 				/mob/living/basic/carp,
 				/mob/living/simple_animal/hostile/bear,
 				/mob/living/simple_animal/hostile/mushroom,
-				/mob/living/simple_animal/hostile/netherworld/statue,
+				/mob/living/basic/statue,
 				/mob/living/simple_animal/hostile/retaliate/bat,
 				/mob/living/simple_animal/hostile/retaliate/goat,
 				/mob/living/simple_animal/hostile/killertomato,
