@@ -18,7 +18,7 @@
 		story_list = generate_stories()
 
 /datum/computer_file/program/news_archive/ui_data(mob/user)
-	var/list/data = get_header_data()
+	var/list/data = list()
 	return data
 
 /datum/computer_file/program/news_archive/ui_static_data(mob/user)
