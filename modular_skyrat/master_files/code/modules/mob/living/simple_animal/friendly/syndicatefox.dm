@@ -12,7 +12,6 @@
 	icon_living = "syndifox"
 	icon_dead = "syndifox_dead"
 	speak_emote = list("geckers", "barks")
-	see_in_dark = 6
 	can_be_held = FALSE
 	butcher_results = list(/obj/item/food/meat/slab = 3)
 	attack_verb_continuous = "bites"
