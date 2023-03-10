@@ -1,4 +1,3 @@
-
 /mob/living/simple_animal/hostile/regalrat
 	name = "feral regal rat"
 	desc = "An evolved rat, created through some strange science. They lead nearby rats with deadly efficiency to protect their kingdom. Not technically a king."
@@ -9,10 +8,13 @@
 	turns_per_move = 5
 	maxHealth = 70
 	health = 70
-	see_in_dark = 15
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+	// Slightly brown red, for the eyes
+	// Might be a bit too dim
+	lighting_cutoff_red = 22
+	lighting_cutoff_green = 8
+	lighting_cutoff_blue = 5
 	obj_damage = 10
-	butcher_results = list(/obj/item/clothing/head/costume/crown = 1,)
+	butcher_results = list(/obj/item/food/meat/slab/mouse = 2, /obj/item/clothing/head/costume/crown = 1)
 	response_help_continuous = "glares at"
 	response_help_simple = "glare at"
 	response_disarm_continuous = "skoffs at"
@@ -398,7 +400,7 @@
 	command_feedback = "squeak!" // Frogs and roaches can squeak too it's fine
 	pointed_reaction = "and squeaks aggressively"
 	refuse_reaction = "quivers"
-	attack_behaviour = /datum/ai_behavior/basic_melee_attack/rat
+	attack_behaviour = /datum/ai_behavior/basic_melee_attack
 
 // Command you can give to a mouse to make it kill someone
 /datum/pet_command/point_targetting/attack/glockroach
