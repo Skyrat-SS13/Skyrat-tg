@@ -15,12 +15,16 @@
 	gold_core_spawnable = HOSTILE_SPAWN
 	attack_sound = 'sound/weapons/bite.ogg'
 	attack_vis_effect = ATTACK_EFFECT_BITE
-	faction = list("nether")
+	faction = list(FACTION_NETHER)
 	speak_emote = list("screams")
 	death_message = "gets his head split open."
 	unsuitable_atmos_damage = 0
 	unsuitable_cold_damage = 0
 	unsuitable_heat_damage = 0
+	// Green and blue, bit dim cause yaknow morphlike
+	lighting_cutoff_red = 5
+	lighting_cutoff_green = 25
+	lighting_cutoff_blue = 15
 
 	ai_controller = /datum/ai_controller/basic_controller/creature
 

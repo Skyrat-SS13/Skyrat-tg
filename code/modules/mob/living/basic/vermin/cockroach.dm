@@ -23,7 +23,7 @@
 	speak_emote = list("chitters")
 
 	basic_mob_flags = DEL_ON_DEATH
-	faction = list("hostile", FACTION_MAINT_CREATURES)
+	faction = list(FACTION_HOSTILE, FACTION_MAINT_CREATURES)
 
 	unsuitable_atmos_damage = 0
 	minimum_survivable_temperature = 270
@@ -60,7 +60,7 @@
 	ai_movement = /datum/ai_movement/basic_avoidance
 	idle_behavior = /datum/idle_behavior/idle_random_walk
 	planning_subtrees = list(
-		/datum/ai_planning_subtree/random_speech/cockroach,
+		/datum/ai_planning_subtree/random_speech/insect,
 		/datum/ai_planning_subtree/find_and_hunt_target/roach,
 	)
 
@@ -82,7 +82,7 @@
 	melee_damage_upper = 10
 	obj_damage = 10
 	gold_core_spawnable = HOSTILE_SPAWN
-	faction = list("hostile", FACTION_MAINT_CREATURES)
+	faction = list(FACTION_HOSTILE, FACTION_MAINT_CREATURES)
 	ai_controller = /datum/ai_controller/basic_controller/cockroach/glockroach
 	cockroach_cell_line = CELL_LINE_TABLE_GLOCKROACH
 
@@ -93,7 +93,7 @@
 /datum/ai_controller/basic_controller/cockroach/glockroach
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/pet_planning,
-		/datum/ai_planning_subtree/random_speech/cockroach,
+		/datum/ai_planning_subtree/random_speech/insect,
 		/datum/ai_planning_subtree/simple_find_target,
 		/datum/ai_planning_subtree/basic_ranged_attack_subtree/glockroach, //If we are attacking someone, this will prevent us from hunting
 		/datum/ai_planning_subtree/find_and_hunt_target/roach,
@@ -117,7 +117,7 @@
 	gold_core_spawnable = HOSTILE_SPAWN
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attack_vis_effect = ATTACK_EFFECT_SLASH
-	faction = list("hostile", FACTION_MAINT_CREATURES)
+	faction = list(FACTION_HOSTILE, FACTION_MAINT_CREATURES)
 	sharpness = SHARP_POINTY
 	ai_controller = /datum/ai_controller/basic_controller/cockroach/hauberoach
 	cockroach_cell_line = CELL_LINE_TABLE_HAUBEROACH
@@ -139,7 +139,7 @@
 /datum/ai_controller/basic_controller/cockroach/hauberoach
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/pet_planning,
-		/datum/ai_planning_subtree/random_speech/cockroach,
+		/datum/ai_planning_subtree/random_speech/insect,
 		/datum/ai_planning_subtree/simple_find_target,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree/hauberoach,  //If we are attacking someone, this will prevent us from hunting
 		/datum/ai_planning_subtree/find_and_hunt_target/roach,
@@ -154,7 +154,7 @@
 /datum/ai_controller/basic_controller/cockroach/sewer
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/pet_planning,
-		/datum/ai_planning_subtree/random_speech/cockroach,
+		/datum/ai_planning_subtree/random_speech/insect,
 		/datum/ai_planning_subtree/simple_find_target,
 		/datum/ai_planning_subtree/basic_melee_attack_subtree/sewer,
 		/datum/ai_planning_subtree/find_and_hunt_target/roach,
@@ -175,7 +175,7 @@
 /datum/ai_controller/basic_controller/cockroach/mobroach
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/pet_planning,
-		/datum/ai_planning_subtree/random_speech/cockroach,
+		/datum/ai_planning_subtree/random_speech/insect,
 		/datum/ai_planning_subtree/simple_find_target,
 		/datum/ai_planning_subtree/basic_ranged_attack_subtree/mobroach, //If we are attacking someone, this will prevent us from hunting
 		/datum/ai_planning_subtree/find_and_hunt_target/roach,
