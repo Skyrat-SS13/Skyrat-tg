@@ -204,11 +204,11 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 					return FALSE
 
 				if(scripture.power_cost > GLOB.clock_power)
-					living_user.balloon_alert(living_user, "[scripture.power_cost] required!")
+					living_user.balloon_alert(living_user, "[scripture.power_cost]W required!")
 					return FALSE
 
 				if(scripture.vitality_cost > GLOB.clock_vitality)
-					living_user.balloon_alert(living_user, "[scripture.vitality_cost] required!")
+					living_user.balloon_alert(living_user, "[scripture.vitality_cost] vitality required!")
 					return FALSE
 
 				var/datum/scripture/new_scripture = new scripture.type()
