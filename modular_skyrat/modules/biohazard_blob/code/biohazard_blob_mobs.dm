@@ -1,7 +1,8 @@
 /mob/living/simple_animal/hostile/biohazard_blob
 	gold_core_spawnable = HOSTILE_SPAWN
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
-	see_in_dark = 4
+	lighting_cutoff_red = 0
+	lighting_cutoff_green = 35
+	lighting_cutoff_blue = 20
 	mob_biotypes = MOB_ORGANIC
 	gold_core_spawnable = NO_SPAWN
 	icon = 'modular_skyrat/modules/biohazard_blob/icons/blob_mobs.dmi'
@@ -30,6 +31,7 @@
 	attack_sound = 'sound/effects/attackblob.ogg'
 	melee_damage_type = BURN
 	del_on_death = TRUE
+	death_message = "evaporates!"
 	light_system = MOVABLE_LIGHT
 	light_range = 2
 	light_power = 1
@@ -43,10 +45,6 @@
 /mob/living/simple_animal/hostile/biohazard_blob/oil_shambler/Initialize(mapload)
 	. = ..()
 	update_overlays()
-
-/mob/living/simple_animal/hostile/biohazard_blob/oil_shambler/Destroy()
-	visible_message(span_warning("The [src] evaporates!"))
-	return ..()
 
 /mob/living/simple_animal/hostile/biohazard_blob/oil_shambler/update_overlays()
 	. = ..()

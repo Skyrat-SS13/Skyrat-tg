@@ -82,7 +82,7 @@ GLOBAL_VAR(first_officer)
 
 	shoes = /obj/item/clothing/shoes/combat
 
-	belt = /obj/item/storage/belt/military/nri/captain/pirate_officer
+	belt = /obj/item/storage/belt/security/nri
 	back = /obj/item/storage/backpack/satchel/leather
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack/raider = 1, /obj/item/ammo_box/magazine/m9mm_aps = 3, /obj/item/gun/ballistic/automatic/pistol/ladon/nri = 1, /obj/item/crucifix = 1, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/pda/security = 1)
 	l_pocket = /obj/item/paper/fluff/nri_document
@@ -109,7 +109,7 @@ GLOBAL_VAR(first_officer)
 
 	shoes = /obj/item/clothing/shoes/combat
 
-	belt = /obj/item/storage/belt/military/nri/pirate
+	belt = /obj/item/storage/belt/security/nri
 	back = /obj/item/storage/backpack/satchel/leather
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack/raider = 1, /obj/item/crucifix = 1, /obj/item/ammo_box/magazine/m9mm = 3, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/pda/security = 1)
 	l_pocket = /obj/item/gun/ballistic/automatic/pistol
@@ -203,7 +203,7 @@ GLOBAL_VAR(first_officer)
 /area/shuttle/pirate/nri
 	name = "NRI Starship"
 	forced_ambience = TRUE
-	ambient_buzz = 'modular_skyrat/modules/encounters/sounds/env_ship_idle.ogg'
+	ambient_buzz = 'modular_skyrat/modules/encounters/sounds/amb_ship_01.ogg'
 	ambient_buzz_vol = 15
 	ambientsounds = list('modular_skyrat/modules/encounters/sounds/alarm_radio.ogg',
 						'modular_skyrat/modules/encounters/sounds/alarm_small_09.ogg',
@@ -321,7 +321,7 @@ GLOBAL_VAR(first_officer)
 		/obj/item/grenade/flashbang = 1,
 	),src)
 
-/obj/item/storage/belt/military/nri/pirate/PopulateContents()
+/obj/item/storage/belt/security/nri/PopulateContents()
 	generate_items_inside(list(
 		/obj/item/knife/combat = 1,
 		/obj/item/grenade/smokebomb = 1,
@@ -365,5 +365,5 @@ GLOBAL_VAR(first_officer)
 	<br> <span style=\"color:black;font-family:'Segoe Script';\"><p><b>Defense Collegia Shipmaster, Akulan Contractor, Shinrun Kantes.</b></p></span>"}
 
 /obj/machinery/suit_storage_unit/nri
-	mod_type = /obj/item/mod/control/pre_equipped/frontline/pirate
+	mod_type = /obj/item/mod/control/pre_equipped/policing
 	storage_type = /obj/item/tank/internals/oxygen/yellow

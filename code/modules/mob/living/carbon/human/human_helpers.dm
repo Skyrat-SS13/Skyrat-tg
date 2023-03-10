@@ -128,6 +128,7 @@
 	if(HAS_TRAIT_NOT_FROM(src, TRAIT_CHUNKYFINGERS, RIGHT_ARM_TRAIT) && HAS_TRAIT_NOT_FROM(src, TRAIT_CHUNKYFINGERS, LEFT_ARM_TRAIT))
 		return TRUE
 	return (active_hand_index % 2) ? HAS_TRAIT_FROM(src, TRAIT_CHUNKYFINGERS, LEFT_ARM_TRAIT) : HAS_TRAIT_FROM(src, TRAIT_CHUNKYFINGERS, RIGHT_ARM_TRAIT)
+
 /mob/living/carbon/human/get_policy_keywords()
 	. = ..()
 	. += "[dna.species.type]"
@@ -257,3 +258,33 @@
 
 		if (preference.is_randomizable())
 			preference.apply_to_human(src, preference.create_random_value(preferences))
+
+/**
+ * Setter for mob height
+ *
+ * Exists so that the update is done immediately
+ *
+ * Returns TRUE if changed, FALSE otherwise
+ */
+/mob/living/carbon/human/proc/set_mob_height(new_height)
+	if(mob_height == new_height)
+		return FALSE
+	if(new_height == HUMAN_HEIGHT_DWARF)
+		CRASH("Don't set height to dwarf height directly, use dwarf trait")
+
+	mob_height = new_height
+	regenerate_icons()
+	return TRUE
+
+/**
+ * Getter for mob height
+ *
+ * Mainly so that dwarfism can adjust height without needing to override existing height
+ *
+ * Returns a mob height num
+ */
+/mob/living/carbon/human/proc/get_mob_height()
+	if(HAS_TRAIT(src, TRAIT_DWARF))
+		return HUMAN_HEIGHT_DWARF
+
+	return mob_height

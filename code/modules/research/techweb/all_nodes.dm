@@ -243,6 +243,7 @@
 		"plant_analyzer",
 		"plunger",
 		"pushbroom",
+		"rwd",
 		"razor",
 		"screwdriver",
 		"secateurs",

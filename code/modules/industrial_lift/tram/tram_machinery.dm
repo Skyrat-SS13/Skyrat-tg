@@ -256,18 +256,58 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	var/tram_id = MAIN_STATION_TRAM
 	/// Weakref to the tram piece we control
 	var/datum/weakref/tram_ref
-	/// Proximity threshold for amber warning (slow people may be in danger).
-	/// This is specific to Tramstation and may need to be adjusted if the map changes in the distance between tram stops.
-	var/amber_distance_threshold = 45
-	/** Proximity threshold for red warning (running people will likely not be able to cross) This is specific to Tramstation and may need to be adjusted if the map changes in the distance between tram stops.
-	* This checks the distance between the tram and the signal, and based on the current Tramstation map this is the optimal number to prevent the lights from turning red for no reason for a few moments.
-	* If the value is set too high, it will cause the lights to turn red when the tram arrives at another station. You want to optimize the amount of warning without turning it red unnessecarily.
+
+	/** Proximity thresholds for crossing signal states
+	*
+	* The proc that checks the distance between the tram and crossing signal uses these vars to determine the distance between tram and signal to change
+	* colors. The numbers are specifically set for Tramstation. If we get another map with crossing signals we'll have to probably subtype it or something.
+	* If the value is set too high, it will cause the lights to turn red when the tram arrives at another station. You want to optimize the amount of
+	* warning without turning it red unnessecarily.
+	*
+	* Red: decent chance of getting hit, but if you're quick it's a decent gamble.
+	* Amber: slow people may be in danger.
 	*/
-	var/red_distance_threshold = 33
+	var/amber_distance_threshold = XING_DISTANCE_AMBER
+	var/red_distance_threshold = XING_DISTANCE_RED
 	/// If the signal is facing east or west
 	var/signal_direction
-	/// Are we malfunctioning?
+	/// Is the signal malfunctioning?
 	var/malfunctioning = FALSE
+
+/** Crossing signal subtypes
+ *
+ *  Each map will have a different amount of tiles between stations, so adjust the signals here based on the map.
+ *  The distance is calculated from the bottom left corner of the tram,
+ *  so signals on the east side have their distance reduced by the tram length, in this case 10 for Tramstation.
+*/
+
+/obj/machinery/crossing_signal/tramstation/northeast
+	icon_state = "crossing-base-left"
+	signal_direction = XING_SIGNAL_DIRECTION_EAST
+	amber_distance_threshold = XING_DISTANCE_AMBER - 10
+	red_distance_threshold = XING_DISTANCE_RED - 10
+	pixel_x = -2
+	pixel_y = -1
+
+/obj/machinery/crossing_signal/tramstation/northwest
+	icon_state = "crossing-base-right"
+	signal_direction = XING_SIGNAL_DIRECTION_WEST
+	pixel_x = -32
+	pixel_y = -1
+
+/obj/machinery/crossing_signal/tramstation/southeast
+	icon_state = "crossing-base-left"
+	signal_direction = XING_SIGNAL_DIRECTION_EAST
+	amber_distance_threshold = XING_DISTANCE_AMBER - 10
+	red_distance_threshold = XING_DISTANCE_RED - 10
+	pixel_x = -2
+	pixel_y = 20
+
+/obj/machinery/crossing_signal/tramstation/southwest
+	icon_state = "crossing-base-right"
+	signal_direction = XING_SIGNAL_DIRECTION_WEST
+	pixel_x = -32
+	pixel_y = 20
 
 /obj/machinery/static_signal
 	name = "crossing signal"
@@ -479,6 +519,9 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	if(!is_operational)
 		return
 
+	if(!signal_direction) //Base type doesnt have directions set
+		return
+
 	var/lights_overlay = "[base_icon_state][signal_direction][signal_state]"
 
 	. += mutable_appearance(icon, lights_overlay)
@@ -567,6 +610,8 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	var/datum/weakref/tram_ref
 	/// The last destination we were at
 	var/previous_destination
+	/// The light mask overlay we use
+	var/light_mask
 
 /obj/machinery/destination_sign/north
 	layer = BELOW_OBJ_LAYER
@@ -576,8 +621,11 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	layer = BELOW_OBJ_LAYER
 
 /obj/machinery/destination_sign/indicator
-	icon_state = "indicator_central_idle"
+	icon_state = "indicator_off"
 	base_icon_state = "indicator_"
+	light_range = 1.5
+	light_color = LIGHT_COLOR_DARK_BLUE
+	light_mask = "indicator_off_e"
 
 /obj/machinery/destination_sign/Initialize(mapload)
 	. = ..()
@@ -625,6 +673,7 @@ GLOBAL_LIST_EMPTY(tram_doors)
 
 	if(!tram || !tram.is_operational)
 		icon_state = "[base_icon_state][DESTINATION_NOT_IN_SERVICE]"
+		light_mask = "[base_icon_state][DESTINATION_NOT_IN_SERVICE]_e"
 		update_appearance()
 		return PROCESS_KILL
 
@@ -633,39 +682,54 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	if(!tram.travelling)
 		if(istype(tram.from_where, /obj/effect/landmark/tram/left_part))
 			icon_state = "[base_icon_state][DESTINATION_WEST_IDLE]"
+			light_mask = "[base_icon_state][DESTINATION_WEST_IDLE]_e"
 			previous_destination = tram.from_where
 			update_appearance()
 			return PROCESS_KILL
 
 		if(istype(tram.from_where, /obj/effect/landmark/tram/middle_part))
 			icon_state = "[base_icon_state][DESTINATION_CENTRAL_IDLE]"
+			light_mask = "[base_icon_state][DESTINATION_CENTRAL_IDLE]_e"
 			previous_destination = tram.from_where
 			update_appearance()
 			return PROCESS_KILL
 
 		if(istype(tram.from_where, /obj/effect/landmark/tram/right_part))
 			icon_state = "[base_icon_state][DESTINATION_EAST_IDLE]"
+			light_mask = "[base_icon_state][DESTINATION_EAST_IDLE]_e"
 			previous_destination = tram.from_where
 			update_appearance()
 			return PROCESS_KILL
 
 	if(istype(tram.from_where, /obj/effect/landmark/tram/left_part))
 		icon_state = "[base_icon_state][DESTINATION_WEST_ACTIVE]"
+		light_mask = "[base_icon_state][DESTINATION_WEST_ACTIVE]_e"
 		update_appearance()
 		return PROCESS_KILL
 
 	if(istype(tram.from_where, /obj/effect/landmark/tram/middle_part))
 		if(istype(previous_destination, /obj/effect/landmark/tram/left_part))
 			icon_state = "[base_icon_state][DESTINATION_CENTRAL_EASTBOUND_ACTIVE]"
+			light_mask = "[base_icon_state][DESTINATION_CENTRAL_EASTBOUND_ACTIVE]_e"
 		if(istype(previous_destination, /obj/effect/landmark/tram/right_part))
 			icon_state = "[base_icon_state][DESTINATION_CENTRAL_WESTBOUND_ACTIVE]"
+			light_mask = "[base_icon_state][DESTINATION_CENTRAL_WESTBOUND_ACTIVE]_e"
 		update_appearance()
 		return PROCESS_KILL
 
 	if(istype(tram.from_where, /obj/effect/landmark/tram/right_part))
 		icon_state = "[base_icon_state][DESTINATION_EAST_ACTIVE]"
+		light_mask = "[base_icon_state][DESTINATION_EAST_ACTIVE]_e"
 		update_appearance()
 		return PROCESS_KILL
+
+/obj/machinery/destination_sign/update_overlays()
+	. = ..()
+	if(!light_mask)
+		return
+
+	if(!(machine_stat & (NOPOWER|BROKEN)) && !panel_open)
+		. += emissive_appearance(icon, light_mask, src, alpha = alpha)
 
 /obj/machinery/door/window/tram
 	name = "tram door"
@@ -796,6 +860,31 @@ GLOBAL_LIST_EMPTY(tram_doors)
 	if(tram_part.travelling) //making a daring exit midtravel? make sure the doors don't go in the wrong state on arrival.
 		return PROCESS_KILL
 
+/obj/machinery/button/tram
+	name = "tram request"
+	desc = "A button for calling the tram. It has a speakerbox in it with some internals."
+	icon_state = "tramctrl"
+	skin = "tramctrl"
+	device_type = /obj/item/assembly/control/tram
+	req_access = list()
+	id = 1
+	light_mask = "tram-light-mask"
+	/// The specific lift id of the tram we're calling.
+	var/lift_id = MAIN_STATION_TRAM
+
+/obj/machinery/button/tram/setup_device()
+	var/obj/item/assembly/control/tram/tram_device = device
+	tram_device.initial_id = id
+	tram_device.specific_lift_id = lift_id
+	return ..()
+
+/obj/machinery/button/tram/examine(mob/user)
+	. = ..()
+	. += span_notice("There's a small inscription on the button...")
+	. += span_notice("THIS CALLS THE TRAM! IT DOES NOT OPERATE IT! The console on the tram tells it where to go!")
+
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/door/window/tram/left, 0)
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/door/window/tram/right, 0)
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/tram_controls, 0)
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/destination_sign/indicator, 32)
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/button/tram, 32)
