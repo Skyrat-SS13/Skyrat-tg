@@ -17,7 +17,7 @@
 
 /obj/structure/spawner/Initialize(mapload)
 	. = ..()
-	AddComponent(spawner_type, mob_types, spawn_time, faction, spawn_text, max_mobs)
+	AddComponent(spawner_type, mob_types, spawn_time, max_mobs, faction, spawn_text)
 
 /obj/structure/spawner/attack_animal(mob/living/simple_animal/user, list/modifiers)
 	if(faction_check(faction, user.faction, FALSE) && !user.client)
@@ -65,13 +65,8 @@
 	max_mobs = 3
 	icon = 'icons/mob/simple/lavaland/nest.dmi'
 	spawn_text = "crawls out of"
-<<<<<<< HEAD
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/goldgrub, /mob/living/simple_animal/hostile/asteroid/goliath, /mob/living/simple_animal/hostile/asteroid/hivelord, /mob/living/simple_animal/hostile/asteroid/basilisk, /mob/living/simple_animal/hostile/asteroid/fugu)
-	faction = list("mining")
-=======
 	mob_types = list(/mob/living/simple_animal/hostile/asteroid/goldgrub, /mob/living/simple_animal/hostile/asteroid/goliath, /mob/living/simple_animal/hostile/asteroid/hivelord, /mob/living/simple_animal/hostile/asteroid/basilisk, /mob/living/basic/wumborian_fugu)
 	faction = list(FACTION_MINING)
->>>>>>> 50b37c8c7f6 (Faction defines (#73681))
 
 /obj/structure/spawner/mining/goldgrub
 	name = "goldgrub den"
@@ -96,9 +91,6 @@
 /obj/structure/spawner/mining/wumborian
 	name = "wumborian fugu den"
 	desc = "A den housing a nest of wumborian fugus, how do they all even fit in there?"
-<<<<<<< HEAD
-	mob_types = list(/mob/living/simple_animal/hostile/asteroid/fugu)
-=======
 	mob_types = list(/mob/living/basic/wumborian_fugu)
 
 /obj/structure/spawner/nether
@@ -145,4 +137,3 @@
 				newmob.desc = "It's [living_mob], but [living_mob.p_their()] flesh has an ashy texture, and [living_mob.p_their()] face is featureless save an eerie smile."
 				src.visible_message(span_warning("[living_mob] reemerges from the link!"))
 				qdel(living_mob)
->>>>>>> 50b37c8c7f6 (Faction defines (#73681))

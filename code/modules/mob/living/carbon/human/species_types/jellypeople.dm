@@ -547,7 +547,7 @@
 
 /datum/action/innate/integrate_extract/New(Target)
 	. = ..()
-	AddComponent(/datum/component/action_item_overlay, CALLBACK(src, PROC_REF(locate_extract)))
+	AddComponent(/datum/component/action_item_overlay, item_callback = CALLBACK(src, PROC_REF(locate_extract)))
 
 /// Callback for /datum/component/action_item_overlay to find the slime extract from within the species
 /datum/action/innate/integrate_extract/proc/locate_extract()
@@ -617,7 +617,7 @@
 
 /datum/action/innate/use_extract/New(Target)
 	. = ..()
-	AddComponent(/datum/component/action_item_overlay, CALLBACK(src, PROC_REF(locate_extract)))
+	AddComponent(/datum/component/action_item_overlay, item_callback = CALLBACK(src, PROC_REF(locate_extract)))
 
 /// Callback for /datum/component/action_item_overlay to find the slime extract from within the species
 /datum/action/innate/use_extract/proc/locate_extract()
