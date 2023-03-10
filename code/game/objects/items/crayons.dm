@@ -281,18 +281,11 @@
 		ui.open()
 
 /obj/item/toy/crayon/spraycan/AltClick(mob/user)
-<<<<<<< HEAD
-	if(has_cap && user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE, no_tk = FALSE, need_hands = TRUE))
-		is_capped = !is_capped
-		to_chat(user, span_notice("The cap on [src] is now [is_capped ? "on" : "off"]."))
-		update_appearance()
-=======
 	if(!has_cap || !user.can_perform_action(src, NEED_DEXTERITY|NEED_HANDS))
 		return
 	is_capped = !is_capped
 	balloon_alert(user, is_capped ? "capped" : "cap removed")
 	update_appearance()
->>>>>>> e5a576ed99b (Restores Slippery Spraycan (and Hellcan) (#73578))
 
 /obj/item/toy/crayon/proc/staticDrawables()
 	. = list()
