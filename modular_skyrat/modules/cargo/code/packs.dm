@@ -436,9 +436,9 @@
 		/obj/item/food/canned/tomatoes,
 		/obj/item/food/canned/pine_nuts,
 		/obj/item/food/canned/pine_nuts,
-		/obj/item/food/canned_jellyfish,
-		/obj/item/food/desert_snails,
-		/obj/item/food/larvae,
+		/obj/item/food/canned/jellyfish,
+		/obj/item/food/canned/desert_snails,
+		/obj/item/food/canned/larvae,
 		/obj/item/food/moonfish_eggs,
 	)
 	crate_name = "fine cuisine assortment pack"
@@ -506,18 +506,18 @@
 	desc = "Having some devious tastes? One of your scalie friends wanting something that isn't fried mystery meat? Well you're just one order away from from the perfect pleaser. Containing Three (3) Cans of our finest-sourced canned jellyfish, snails and bee larvae, An addition of Three (3) packs of cruelty free Moonfish eggs might get their hearts."
 	cost = CARGO_CRATE_VALUE * 3.5
 	contains = list(
-		/obj/item/food/canned_jellyfish,
-		/obj/item/food/canned_jellyfish,
-		/obj/item/food/canned_jellyfish,
-		/obj/item/food/desert_snails,
-		/obj/item/food/desert_snails,
-		/obj/item/food/desert_snails,
+		/obj/item/food/canned/jellyfish,
+		/obj/item/food/canned/jellyfish,
+		/obj/item/food/canned/jellyfish,
+		/obj/item/food/canned/desert_snails,
+		/obj/item/food/canned/desert_snails,
+		/obj/item/food/canned/desert_snails,
 		/obj/item/food/moonfish_eggs,
 		/obj/item/food/moonfish_eggs,
 		/obj/item/food/moonfish_eggs,
-		/obj/item/food/larvae,
-		/obj/item/food/larvae,
-		/obj/item/food/larvae,
+		/obj/item/food/canned/larvae,
+		/obj/item/food/canned/larvae,
+		/obj/item/food/canned/larvae,
 	)
 	crate_name = "bulk lizard pack"
 	crate_type = /obj/structure/closet/crate/freezer
@@ -723,6 +723,22 @@
 		/obj/item/clothing/shoes/combat,
 		/obj/item/clothing/mask/gas/hecu2,
 	)
+
+/*
+* VENDING RESTOCKS
+*/
+
+/datum/supply_pack/vending/dorms
+	name = "LustWish Supply Crate"
+	desc = "This crate contains a single refill for the LustWish vendor."
+	cost = CARGO_CRATE_VALUE * 2
+	contains = list(/obj/item/vending_refill/lustwish)
+
+/datum/supply_pack/vending/barber
+	name = "Fab-O-Vend Supply Crate"
+	desc = "Contains a single restock for the Fab-O-Vend, great for those who are indecisive about their looks."
+	cost = CARGO_CRATE_VALUE * 3
+	contains = list(/obj/item/vending_refill/barbervend)
 
 //NIF CARGO ITEMS
 /datum/supply_pack/goody/standard_nif

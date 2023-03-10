@@ -278,7 +278,7 @@
 			user.balloon_alert_to_viewers("climbing...")
 		else
 			dropped_mob.balloon_alert_to_viewers("being pulled up...")
-		if(do_mob(user, dropped_mob, 2 SECONDS))
+		if(do_after(user, 2 SECONDS, dropped_mob))
 			dropped_mob.forceMove(src)
 		return
 	if(turf_height - mob_turf.turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
@@ -287,6 +287,6 @@
 			user.balloon_alert_to_viewers("climbing down...")
 		else
 			dropped_mob.balloon_alert_to_viewers("being lowered...")
-		if(do_mob(user, dropped_mob, 2 SECONDS))
+		if(do_after(user, 2 SECONDS, dropped_mob))
 			dropped_mob.forceMove(src)
 		return

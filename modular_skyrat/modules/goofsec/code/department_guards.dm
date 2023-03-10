@@ -52,7 +52,7 @@
 */
 /obj/item/clothing/suit/armor/vest/blueshirt/skyrat
 	//Effectively the same as TG's blueshirt, including icon. The /skyrat path makes it easier for sorting.
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi' //ORION TODO: deptguard vests need to be moved to a plain vest/skyrat subtype when suits.dmi gets split on our side
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi' //(Above) sci guard will get just the original blueshirt vest when that happens
 	unique_reskin = null
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
@@ -86,7 +86,7 @@
 */
 /obj/item/clothing/head/helmet/blueshirt/skyrat
 	//Effectively the same as TG's blueshirt, including icon. The /skyrat path makes it easier for sorting.
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi' //ORION TODO: same as vests; needs to be moved to a plain helmet/skyrat when the hats.dmi is split
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi' //Sci guard will get the plain TG version of this item too
 	unique_reskin = null
 
@@ -214,7 +214,6 @@
 	trim_state = "trim_calhoun"
 	department_color = COLOR_SCIENCE_PINK
 	subdepartment_color = COLOR_SCIENCE_PINK
-	orbit_icon = "shield-heart"
 	sechud_icon_state = SECHUD_SCIENCE_GUARD
 	extra_access = list(
 		ACCESS_AUX_BASE,
@@ -319,7 +318,6 @@
 	trim_state = "trim_orderly"
 	department_color = COLOR_MEDICAL_BLUE
 	subdepartment_color = COLOR_MEDICAL_BLUE
-	orbit_icon = "shield-heart"
 	sechud_icon_state = SECHUD_ORDERLY
 	extra_access = list(
 		ACCESS_BRIG_ENTRANCE,
@@ -417,7 +415,6 @@
 	trim_state = "trim_engiguard"
 	department_color = COLOR_ENGINEERING_ORANGE
 	subdepartment_color = COLOR_ENGINEERING_ORANGE
-	orbit_icon = "shield-heart"
 	sechud_icon_state = SECHUD_ENGINEERING_GUARD
 	extra_access = list(
 		ACCESS_ATMOSPHERICS,
@@ -521,7 +518,6 @@
 	trim_state = "trim_customs"
 	department_color = COLOR_CARGO_BROWN
 	subdepartment_color = COLOR_CARGO_BROWN
-	orbit_icon = "shield-heart"
 	sechud_icon_state = SECHUD_CUSTOMS_AGENT
 	extra_access = list(
 		ACCESS_BRIG_ENTRANCE,
@@ -617,7 +613,6 @@
 	assignment = "Bouncer"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_bouncer"
-	orbit_icon = "shield-heart"
 	department_color = COLOR_SERVICE_LIME
 	subdepartment_color = COLOR_SERVICE_LIME // Personally speaking I'd have one of these with sec colors but I'm being authentic
 	sechud_icon_state = SECHUD_BOUNCER
