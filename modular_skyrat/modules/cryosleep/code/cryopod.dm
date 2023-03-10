@@ -22,6 +22,7 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi'
 	icon_state = "cellconsole_1"
 	icon_keyboard = null
+	icon_screen = null
 	use_power = FALSE
 	density = FALSE
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE
