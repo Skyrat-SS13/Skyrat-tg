@@ -5,7 +5,17 @@
 
 <!-- Describe The Pull Request. Please be sure every change is documented or this can delay review and even discourage maintainers from merging your PR! -->
 
+<<<<<<< HEAD
 ## How This Contributes To The Skyrat Roleplay Experience
+=======
+### Mapping March
+
+<!-- If your pull request is part of Mapping March and you want to earn an antagonist token for your FIRST mapping pull request submitted this month, please include your ckey. For more information, read about the event here: https://hackmd.io/@EOBGames/BkwuRlxkh -->
+
+Ckey to recieve rewards: N/A
+
+## Why It's Good For The Game
+>>>>>>> e12651714a3 (Adds the Mapping March Event to the Template (for the rest of March) (#73842))
 
 <!-- Please add a short description of why you think these changes would benefit the game and the roleplay atmosphere of the server. If you can't justify it in words, it might not be worth adding. -->
 

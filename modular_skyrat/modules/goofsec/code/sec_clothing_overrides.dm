@@ -473,7 +473,7 @@
 
 //Riot Armor
 /obj/item/clothing/suit/armor/riot
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi' //ORION TODO - actually have a unique icon_state overriding it instead of this cop-out it originally had (The original was actually done wrong anyways)
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 
 //Warden's Vest
 /obj/item/clothing/suit/armor/vest/warden
