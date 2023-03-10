@@ -27,7 +27,7 @@
 /obj/item/clothing/glasses/hud/ar/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob, ITEM_SLOT_EYES)
-	
+
 	// Set our initial values
 	mode = MODE_ON
 	glasses_type = type
@@ -43,12 +43,12 @@
 
 	if(mode == modes[mode])
 		return // If there is only really one mode to cycle through, early return
-		
+
 	if(mode == MODE_FREEZE_ANIMATION)
 		icon = initial(glasses_type.icon) /// Resets icon to initial value after MODE_FREEZE_ANIMATION, since MODE_FREEZE_ANIMATION replaces it with non-animated version of initial
 
 	mode = get_next_mode(mode)
-	
+
 	switch(mode)
 		if(MODE_ON)
 			balloon_alert(user, span_notice("[modes_msg[mode]]"))
@@ -66,7 +66,7 @@
 			icon_state = off_state
 			disable_vars(user)
 			remove_hud(user)
-		
+
 	playsound(src, modeswitch_sound, 50, TRUE) // play sound set in vars!
 	update_sight(user)
 	update_item_action_buttons()
@@ -80,22 +80,22 @@
 			else
 				return MODE_OFF
 		if(MODE_OFF)
-			return MODE_ON	
+			return MODE_ON
 		if(MODE_FREEZE_ANIMATION)
 			return MODE_OFF
 
 /obj/item/clothing/glasses/hud/ar/proc/add_hud(mob/user)
 	if(ishuman(user)) // Make sure they're a human wearing the glasses first
 		var/mob/living/carbon/human/human = user
-		if(human.glasses == src) 
+		if(human.glasses == src)
 			var/datum/atom_hud/our_hud = GLOB.huds[initial(glasses_type.hud_type)]
 			our_hud.show_to(human)
 			ADD_TRAIT(human, initial(glasses_type.hud_trait), GLASSES_TRAIT)
-			
+
 /obj/item/clothing/glasses/hud/ar/proc/remove_hud(mob/user)
 	if(ishuman(user)) // Make sure they're a human wearing the glasses first
 		var/mob/living/carbon/human/human = user
-		if(human.glasses == src) 
+		if(human.glasses == src)
 			var/datum/atom_hud/our_hud = GLOB.huds[initial(glasses_type.hud_type)]
 			our_hud.hide_from(human)
 			REMOVE_TRAIT(human, initial(glasses_type.hud_trait), GLASSES_TRAIT)
@@ -105,7 +105,7 @@
 	icon_state = initial(glasses_type.icon_state)
 	flash_protect = initial(glasses_type.flash_protect)
 	tint = initial(glasses_type.tint)
-	lighting_alpha = initial(glasses_type.lighting_alpha)
+	color_cutoffs = initial(glasses_type.color_cutoffs)
 	vision_flags = initial(glasses_type.vision_flags)
 	hud_type = initial(glasses_type.hud_type)
 	hud_trait = initial(glasses_type.hud_trait)
@@ -113,10 +113,10 @@
 	var/obj/item/clothing/glasses/hud/ar/glasses_object = new glasses_type // make a temporary glasses obj
 	clothing_traits = glasses_object.clothing_traits // pull the list from the created obj
 	qdel(glasses_object) // delete the object
-		
+
 /obj/item/clothing/glasses/hud/ar/proc/disable_vars(mob/user)
 	vision_flags = 0 /// Sets vision_flags to 0 to disable meson view mainly
-	lighting_alpha = user.default_lighting_alpha() // Resets lighting_alpha to user's default one
+	color_cutoffs = null // Resets lighting_alpha to user's default one
 	clothing_traits = null /// also disables the options for Science functionality
 	hud_type = null
 	hud_trait = null
@@ -146,7 +146,6 @@
 	icon_state = "aviator"
 	off_state = "aviator_off"
 	icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses.dmi'
-	darkness_view = 1
 	flash_protect = FLASH_PROTECTION_FLASH
 	modes = list(MODE_OFF, MODE_ON)
 	tint = 0
@@ -188,9 +187,8 @@
 	icon_state = "aviator_meson"
 	flash_protect = FLASH_PROTECTION_NONE
 	clothing_traits = list(TRAIT_MADNESS_IMMUNE)
-	darkness_view = 2
 	vision_flags = SEE_TURFS
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+	color_cutoffs = list(5, 15, 5)
 	glass_colour_type = /datum/client_colour/glass_colour/lightgreen
 
 // diagnostic Aviators
@@ -259,9 +257,8 @@
 /obj/item/clothing/glasses/hud/ar/projector/meson
 	name = "retinal projector meson HUD"
 	icon_state = "projector_meson"
-	lighting_alpha = 300
 	vision_flags = SEE_TURFS
-	darkness_view = 2
+	color_cutoffs = list(10, 30, 10)
 
 /obj/item/clothing/glasses/hud/ar/projector/health
 	name = "retinal projector health HUD"

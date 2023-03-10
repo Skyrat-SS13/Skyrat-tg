@@ -229,8 +229,7 @@
 	if(current_user)
 		var/obj/item/organ/internal/eyes/my_eyes = current_user.getorgan(/obj/item/organ/internal/eyes)
 		if(my_eyes)
-			my_eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-			my_eyes.see_in_dark = 8
+			my_eyes.color_cutoffs = list(10, 30, 10)
 			my_eyes.flash_protect = FLASH_PROTECTION_SENSITIVE
 		current_user.add_client_colour(/datum/client_colour/glass_colour/lightgreen)
 
@@ -238,8 +237,7 @@
 	if(current_user)
 		var/obj/item/organ/internal/eyes/my_eyes = current_user.getorgan(/obj/item/organ/internal/eyes)
 		if(my_eyes)
-			my_eyes.lighting_alpha = initial(my_eyes.lighting_alpha)
-			my_eyes.see_in_dark = initial(my_eyes.see_in_dark)
+			my_eyes.color_cutoffs = initial(my_eyes.color_cutoffs)
 			my_eyes.flash_protect = initial(my_eyes.flash_protect)
 		current_user.remove_client_colour(/datum/client_colour/glass_colour/lightgreen)
 		current_user.update_sight()
