@@ -34,11 +34,6 @@
 
 	return TRUE
 
-/datum/bodypart_overlay/mutant/tail/cat/get_feature_key_for_overlay()
-	return feature_key + "_cat"
-
-/datum/bodypart_overlay/mutant/tail/lizard/get_feature_key_for_overlay()
-	return feature_key + "_lizard"
 
 /obj/item/organ/external/tail/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
 	if(sprite_accessory_flags & SPRITE_ACCESSORY_WAG_ABLE)

@@ -40,6 +40,7 @@
 	factual = FALSE
 
 /datum/sprite_accessory/tails/lizard
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails.dmi'
 	recommended_species = list(SPECIES_LIZARD, SPECIES_LIZARD_ASH, SPECIES_MAMMAL, SPECIES_UNATHI, SPECIES_LIZARD_SILVER)
 	organ_type = /obj/item/organ/external/tail/lizard
 
@@ -48,6 +49,8 @@
 	organ_type = /obj/item/organ/external/tail/cat
 
 /datum/sprite_accessory/tails/human/cat
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails.dmi'
+	icon_state = "cat"
 	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/tails/monkey/default
