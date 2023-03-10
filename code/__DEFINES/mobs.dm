@@ -13,7 +13,7 @@
 //Blood levels
 #define BLOOD_VOLUME_MAX_LETHAL 2150
 #define BLOOD_VOLUME_EXCESS 2100
-#define BLOOD_VOLUME_MAXIMUM 2000
+#define BLOOD_VOLUME_MAXIMUM 1000 // SKYRAT EDIT - Blood volume balancing (mainly for Hemophages as nobody else really goes much above regular blood volume) - ORIGINAL VALUE: 2000
 #define BLOOD_VOLUME_SLIME_SPLIT 1120
 #define BLOOD_VOLUME_NORMAL 560
 #define BLOOD_VOLUME_SAFE 475
@@ -91,6 +91,16 @@
 #define BODYTYPE_LARVA_PLACEHOLDER (1<<6)
 ///The limb is from a xenomorph.
 #define BODYTYPE_ALIEN (1<<7)
+// SKYRAT EDIT ADDITION
+///The limb fits a modular custom shape
+#define BODYTYPE_CUSTOM (1<<8)
+///The limb fits a taur body
+#define BODYTYPE_TAUR (1<<9)
+///The limb causes shoes to no longer be displayed, useful for taurs.
+#define BODYTYPE_HIDE_SHOES (1<<10)
+///The limb causes glasses and hats to be drawn on layers 5 and 4 respectively. Currently used for snouts with the (Top) suffix, which are drawn on layer 6 and would normally cover facewear
+#define BODYTYPE_ALT_FACEWEAR_LAYER (1<<11)
+// SKYRAT EDIT END
 
 // Defines for Species IDs. Used to refer to the name of a species, for things like bodypart names or species preferences.
 #define SPECIES_ABDUCTOR "abductor"
@@ -109,8 +119,6 @@
 #define SPECIES_LIZARD_SILVER "silverscale"
 #define SPECIES_NIGHTMARE "nightmare"
 #define SPECIES_MONKEY "monkey"
-#define SPECIES_MONKEY_FREAK "monkey_freak"
-#define SPECIES_MONKEY_HUMAN_LEGGED "monkey_human_legged"
 #define SPECIES_MOTH "moth"
 #define SPECIES_MUSHROOM "mush"
 #define SPECIES_PLASMAMAN "plasmaman"
@@ -118,7 +126,6 @@
 #define SPECIES_SHADOW "shadow"
 #define SPECIES_SKELETON "skeleton"
 #define SPECIES_SNAIL "snail"
-#define SPECIES_TALLBOY "tallboy"
 #define SPECIES_VAMPIRE "vampire"
 #define SPECIES_ZOMBIE "zombie"
 #define SPECIES_ZOMBIE_INFECTIOUS "memezombie"
@@ -138,7 +145,6 @@
 #define DIGITIGRADE_OPTIONAL 1
 ///The species is forced to have digitigrade legs in generation.
 #define DIGITIGRADE_FORCED 2
-
 ///Digitigrade's prefs, used in features for legs if you're meant to be a Digitigrade.
 #define DIGITIGRADE_LEGS "Digitigrade Legs"
 
@@ -416,13 +422,16 @@
 #define OFFSET_BACK "back"
 #define OFFSET_SUIT "suit"
 #define OFFSET_NECK "neck"
+#define OFFSET_ACCESSORY "accessory" // Skyrat edit - addition
 
 //MINOR TWEAKS/MISC
-#define AGE_MIN 17 //youngest a character can be
+//#define AGE_MIN 17	//youngest a character can be //ORIGINAL
+#define AGE_MIN	18	//youngest a character can be //SKYRAT EDIT CHANGE - age
 #define AGE_MAX 85 //oldest a character can be
 #define AGE_MINOR 20 //legal age of space drinking and smoking
 #define WIZARD_AGE_MIN 30 //youngest a wizard can be
 #define APPRENTICE_AGE_MIN 29 //youngest an apprentice can be
+
 #define SHOES_SLOWDOWN 0 //How much shoes slow you down by default. Negative values speed you up
 #define SHOES_SPEED_SLIGHT SHOES_SLOWDOWN - 1 // slightest speed boost to movement
 #define POCKET_STRIP_DELAY (4 SECONDS) //time taken to search somebody's pockets
@@ -635,25 +644,37 @@ GLOBAL_LIST_INIT(human_heights_to_offsets, list(
 /// Total number of layers for mob overlays
 /// KEEP THIS UP-TO-DATE OR SHIT WILL BREAK
 /// Also consider updating layers_to_offset
-#define TOTAL_LAYERS 33
+#define TOTAL_LAYERS 39 // SKYRAT EDIT CHANGE - ORIGINAL: #define TOTAL_LAYERS 33
+
 /// Mutations layer - Tk headglows, cold resistance glow, etc
-#define MUTATIONS_LAYER 33
+#define MUTATIONS_LAYER 39 // SKYRAT EDIT CHANGE - ORIGINAL: 33
 /// Mutantrace features (tail when looking south) that must appear behind the body parts
-#define BODY_BEHIND_LAYER 32
+#define BODY_BEHIND_LAYER 38 // SKYRAT EDIT CHANGE - ORIGINAL: 32
 /// Layer for bodyparts that should appear behind every other bodypart - Mostly, legs when facing WEST or EAST
-#define BODYPARTS_LOW_LAYER 31
+#define BODYPARTS_LOW_LAYER 37 // SKYRAT EDIT CHANGE - ORIGINAL: 31
 /// Layer for most bodyparts, appears above BODYPARTS_LOW_LAYER and below BODYPARTS_HIGH_LAYER
-#define BODYPARTS_LAYER 30
+#define BODYPARTS_LAYER 36 // SKYRAT EDIT CHANGE - ORIGINAL: 30
 /// Mutantrace features (snout, body markings) that must appear above the body parts
-#define BODY_ADJ_LAYER 29
+#define BODY_ADJ_LAYER 35 // SKYRAT EDIT CHANGE - ORIGINAL: 29
 /// Underwear, undershirts, socks, eyes, lips(makeup)
-#define BODY_LAYER 28
+#define BODY_LAYER 34 // SKYRAT EDIT CHANGE - ORIGINAL: 28
 /// Mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
-#define FRONT_MUTATIONS_LAYER 27
+#define FRONT_MUTATIONS_LAYER 33 // SKYRAT EDIT CHANGE - ORIGINAL: 27
 /// Damage indicators (cuts and burns)
-#define DAMAGE_LAYER 26
+#define DAMAGE_LAYER 32 // SKYRAT EDIT CHANGE - ORIGINAL: 26
+// SKYRAT EDIT ADDITION BEGIN.
+/// This layer is used for things that shouldn't be over clothes, but should be over mutations
+#define BODY_FRONT_UNDER_CLOTHES 31
+// SKYRAT EDIT ADDITION END
 /// Jumpsuit clothing layer
-#define UNIFORM_LAYER 25
+#define UNIFORM_LAYER 30 // SKYRAT EDIT CHANGE - ORIGINAL: 25
+// SKYRAT EDIT ADDITION BEGIN - cursed layers under clothing
+#define ANUS_LAYER 29
+#define VAGINA_LAYER 28
+#define PENIS_LAYER 27
+#define NIPPLES_LAYER 26
+#define BANDAGE_LAYER 25
+//SKYRAT EDIT ADDITION END
 /// ID card layer
 #define ID_LAYER 24
 /// ID card layer (might be deprecated)
@@ -746,13 +767,13 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 	// WOUND_LAYER (full body)
 ))
 
-//Bitflags for the layers a bodypart overlay can draw on (can be drawn on multiple layers)
-/// Draws overlay on the BODY_FRONT_LAYER
-#define EXTERNAL_FRONT (1 << 0)
-/// Draws overlay on the BODY_ADJ_LAYER
-#define EXTERNAL_ADJACENT (1 << 1)
-/// Draws overlay on the BODY_BEHIND_LAYER
-#define EXTERNAL_BEHIND (1 << 2)
+//Bitflags for the layers an external organ can draw on (organs can be drawn on multiple layers)
+/// Draws organ on the BODY_FRONT_LAYER
+#define EXTERNAL_FRONT (1 << 1)
+/// Draws organ on the BODY_ADJ_LAYER
+#define EXTERNAL_ADJACENT (1 << 2)
+/// Draws organ on the BODY_BEHIND_LAYER
+#define EXTERNAL_BEHIND (1 << 3)
 /// Draws organ on all EXTERNAL layers
 #define ALL_EXTERNAL_OVERLAYS EXTERNAL_FRONT | EXTERNAL_ADJACENT | EXTERNAL_BEHIND
 
@@ -777,23 +798,6 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 #define ABOVE_SHOES_LAYER (SHOES_LAYER-1)
 /// The layer above mutant body parts
 #define ABOVE_BODY_FRONT_LAYER (BODY_FRONT_LAYER-1)
-
-/// If gravity must be present to perform action (can't use pens without gravity)
-#define NEED_GRAVITY (1<<0)
-/// If reading is required to perform action (can't read a book if you are illiterate)
-#define NEED_LITERACY (1<<1)
-/// If lighting must be present to perform action (can't heal someone in the dark)
-#define NEED_LIGHT (1<<2)
-/// If other mobs (monkeys, aliens, etc) can perform action (can't use computers if you are a monkey)
-#define NEED_DEXTERITY (1<<3)
-/// If hands are required to perform action (can't use objects that require hands if you are a cyborg)
-#define NEED_HANDS (1<<4)
-/// If telekinesis is forbidden to perform action from a distance (ex. canisters are blacklisted from telekinesis manipulation)
-#define FORBID_TELEKINESIS_REACH (1<<5)
-/// If silicons are allowed to perform action from a distance (silicons can operate airlocks from far away)
-#define ALLOW_SILICON_REACH (1<<6)
-/// If resting on the floor is allowed to perform action (pAIs can play music while resting)
-#define ALLOW_RESTING (1<<7)
 
 /// The default mob sprite size (used for shrinking or enlarging the mob sprite to regular size)
 #define RESIZE_DEFAULT_SIZE 1
@@ -881,11 +885,3 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 #define NPC_DEFAULT_MIN_TEMP 250
 /// Default maximum body temperature mobs can exist in before taking damage
 #define NPC_DEFAULT_MAX_TEMP 350
-
-// Flags for mobs which can't do certain things while someone is looking at them
-/// Flag which stops you from moving while observed
-#define NO_OBSERVED_MOVEMENT (1<<0)
-/// Flag which stops you from using actions while observed
-#define NO_OBSERVED_ACTIONS (1<<1)
-/// Flag which stops you from attacking while observed
-#define NO_OBSERVED_ATTACKS (1<<2)
