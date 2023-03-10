@@ -261,11 +261,6 @@
 /obj/structure/reagent_dispensers/servingdish,
 /turf/open/floor/iron/dark/diagonal,
 /area/shuttle/syndicate/cruiser/brig)
-"im" = (
-/obj/structure/table/optable,
-/obj/effect/turf_decal/bot,
-/turf/open/floor/iron/dark/textured_large,
-/area/shuttle/syndicate/cruiser/medical)
 "iU" = (
 /obj/effect/turf_decal/tile/neutral/diagonal_edge,
 /obj/effect/turf_decal/tile/neutral/diagonal_centre,
@@ -380,6 +375,11 @@
 /obj/effect/turf_decal/bot_white,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/hallway)
+"qG" = (
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
+/turf/open/floor/iron/dark/textured_large,
+/area/shuttle/syndicate/cruiser/bridge)
 "qU" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
@@ -415,6 +415,12 @@
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser)
+"rF" = (
+/obj/machinery/computer/records/security/syndie{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/shuttle/syndicate/cruiser/bridge)
 "sP" = (
 /obj/machinery/computer/crew/syndie{
 	dir = 8
@@ -460,6 +466,12 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/bot,
+/turf/open/floor/iron/dark/textured_large,
+/area/shuttle/syndicate/cruiser/medical)
+"wb" = (
+/obj/structure/table/optable,
+/obj/effect/turf_decal/bot,
+/obj/machinery/defibrillator_mount/directional/north,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/medical)
 "ws" = (
@@ -617,12 +629,6 @@
 "FO" = (
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/shuttle/syndicate/cruiser/hallway)
-"FR" = (
-/obj/machinery/computer/secure_data/syndie{
-	dir = 4
-	},
-/turf/open/floor/iron/dark/textured_large,
-/area/shuttle/syndicate/cruiser/bridge)
 "Gz" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "syndicatecruiserwindows"
@@ -660,12 +666,6 @@
 /obj/machinery/interrogator,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/brig)
-"Iz" = (
-/obj/structure/rack/shelf,
-/obj/item/storage/backpack/duffelbag/syndie/surgery,
-/obj/effect/turf_decal/bot_white,
-/turf/open/floor/iron/dark/textured_large,
-/area/shuttle/syndicate/cruiser/medical)
 "JA" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/external/glass,
@@ -753,12 +753,6 @@
 /obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/armory)
-"Pq" = (
-/obj/structure/table/reinforced,
-/obj/item/taperecorder,
-/obj/item/tape,
-/turf/open/floor/iron/dark/textured_large,
-/area/shuttle/syndicate/cruiser/bridge)
 "Py" = (
 /obj/structure/closet/secure_closet{
 	name = "Prisoner Locker";
@@ -948,6 +942,13 @@
 	},
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
 /area/shuttle/syndicate/cruiser)
+"ZC" = (
+/obj/structure/rack/shelf,
+/obj/effect/turf_decal/bot_white,
+/obj/item/defibrillator/loaded,
+/obj/item/storage/backpack/duffelbag/syndie/surgery,
+/turf/open/floor/iron/dark/textured_large,
+/area/shuttle/syndicate/cruiser/medical)
 
 (1,1,1) = {"
 zL
@@ -1013,7 +1014,7 @@ mP
 mP
 er
 fH
-FR
+rF
 FA
 er
 ru
@@ -1043,7 +1044,7 @@ dF
 CI
 ts
 Yk
-Pq
+qG
 er
 oH
 CH
@@ -1158,7 +1159,7 @@ zL
 zL
 wI
 dR
-Iz
+ZC
 FH
 vZ
 cw
@@ -1186,7 +1187,7 @@ zL
 zL
 zL
 xL
-im
+wb
 nZ
 nZ
 nZ

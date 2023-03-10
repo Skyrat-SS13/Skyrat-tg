@@ -5,6 +5,8 @@
 	//So it shows up in the map editor
 	icon = 'icons/effects/mapping_helpers.dmi'
 	icon_state = "mobspawner"
+	/// Can this spawner be used up?
+	var/infinite_use = FALSE
 	///A forced name of the mob, though can be overridden if a special name is passed as an argument
 	var/mob_name
 	///the type of the mob, you best inherit this
@@ -15,7 +17,7 @@
 	////Human specific stuff. Don't set these if you aren't using a human, the unit tests will put a stop to your sinful hand.
 
 	///sets the human as a species, use a typepath (example: /datum/species/skeleton)
-	var/mob_species
+	var/datum/species/mob_species
 	///equips the human with an outfit.
 	var/datum/outfit/outfit
 	///for mappers to override parts of the outfit. really only in here for secret away missions, please try to refrain from using this out of laziness
@@ -183,7 +185,7 @@
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_SPAWNER) && !(flags_1 & ADMIN_SPAWNED_1))
 		to_chat(user, span_warning("An admin has temporarily disabled non-admin ghost roles!"))
 		return
-	if(uses <= 0) //just in case
+	if(uses <= 0 && !infinite_use) //just in case
 		to_chat(user, span_warning("This spawner is out of charges!"))
 		return
 
@@ -195,6 +197,18 @@
 	if(QDELETED(src) || QDELETED(user))
 		return
 
+	create_from_ghost(user)
+
+/**
+ * Uses a use and creates a mob from a passed ghost
+ *
+ * Does NOT validate that the spawn is possible or valid - assumes this has been done already!
+ *
+ * If you are manually forcing a player into this mob spawn,
+ * you should be using this and not directly calling [proc/create].
+ */
+/obj/effect/mob_spawn/ghost_role/proc/create_from_ghost(mob/dead/user)
+	ASSERT(istype(user))
 	user.log_message("became a [prompt_name].", LOG_GAME)
 	uses -= 1 // Remove a use before trying to spawn to prevent strangeness like the spawner trying to spawn more mobs than it should be able to
 	user.mind = null // dissassociate mind, don't let it follow us to the next life
@@ -211,7 +225,15 @@
 /obj/effect/mob_spawn/ghost_role/special(mob/living/spawned_mob, mob/mob_possessor)
 	. = ..()
 	if(mob_possessor)
-		spawned_mob.ckey = mob_possessor.ckey
+		if(mob_possessor.mind)
+			mob_possessor.mind.transfer_to(spawned_mob, force_key_move = TRUE)
+		else
+			spawned_mob.key = mob_possessor.key
+	var/datum/mind/spawned_mind = spawned_mob.mind
+	if(spawned_mind)
+		spawned_mob.mind.set_assigned_role_with_greeting(SSjob.GetJobType(spawner_job_path))
+		spawned_mind.name = spawned_mob.real_name
+
 	if(show_flavor)
 		var/output_message = "<span class='infoplain'><span class='big bold'>[you_are_text]</span></span>"
 		if(flavour_text != "")
@@ -219,10 +241,6 @@
 		if(important_text != "")
 			output_message += "\n[span_userdanger("[important_text]")]"
 		to_chat(spawned_mob, output_message)
-	var/datum/mind/spawned_mind = spawned_mob.mind
-	if(spawned_mind)
-		spawned_mob.mind.set_assigned_role(SSjob.GetJobType(spawner_job_path))
-		spawned_mind.name = spawned_mob.real_name
 
 /// Checks if the spawner has zero uses left, if so, delete yourself... NOW!
 /obj/effect/mob_spawn/ghost_role/proc/check_uses()

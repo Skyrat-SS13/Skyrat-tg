@@ -27,7 +27,7 @@
 	var/is_pumping = FALSE
 	/// Floor tile is placed down
 	var/tile_placed = FALSE
-	
+
 	///category for plumbing RCD
 	category = "Liquids"
 
@@ -74,7 +74,7 @@
  * Change regulator level -- ie. what liquid depth we are OK with, like a thermostat.
  */
 /obj/machinery/plumbing/floor_pump/proc/set_regulator(mob/living/user)
-	if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE))
+	if(!user.can_perform_action(src, NEED_DEXTERITY))
 		return
 	var/new_height = tgui_input_number(user,
 		"At what water level should the pump stop pumping from 0 to [LIQUID_HEIGHT_CONSIDER_FULL_TILE]? 0 disables.",
