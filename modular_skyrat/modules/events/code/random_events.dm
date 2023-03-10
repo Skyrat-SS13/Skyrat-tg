@@ -86,10 +86,10 @@
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/cme/extreme
-	weight = MIN_EVENT_FREQ
+	weight = LOW_EVENT_FREQ
 
 /datum/round_event_control/cme/unknown
-	weight = LOW_EVENT_FREQ
+	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/communications_blackout
 	weight = LOW_EVENT_FREQ
@@ -104,8 +104,9 @@
 	weight = HIGH_EVENT_FREQ
 	max_occurrences = 2
 
+// Disabled: Other severities are enough.
 /datum/round_event_control/space_dust
-	weight = LOW_EVENT_FREQ
+	max_occurrences = 0
 
 /datum/round_event_control/space_dust/major_dust
 	weight = MED_EVENT_FREQ
@@ -210,7 +211,7 @@
 	weight = LOW_EVENT_FREQ
 
 /datum/round_event_control/scrubber_clog/critical
-	weight = LOW_EVENT_FREQ
+	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/scrubber_clog/strange
 	weight = LOW_EVENT_FREQ
@@ -236,7 +237,7 @@
 	weight = LOW_EVENT_FREQ
 
 /datum/round_event_control/shuttle_insurance
-	weight = MED_EVENT_FREQ
+	weight = LOW_EVENT_FREQ
 
 /datum/round_event_control/shuttle_loan
 	weight = MED_EVENT_FREQ
