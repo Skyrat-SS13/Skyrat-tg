@@ -70,16 +70,51 @@
 	default_color = "#FFFFFF"
 	locked = FALSE
 
+/datum/sprite_accessory/wings/fly
+	key = "wings_functional"
+
 /datum/sprite_accessory/wings/megamoth
 	color_src = USE_ONE_COLOR
 	default_color = "#FFFFFF"
+	key = "wings_functional"
+
+/datum/sprite_accessory/wings/mothra
+	key = "wings_functional"
 
 /datum/sprite_accessory/wings/robotic
 	locked = FALSE
 
+/datum/sprite_accessory/wings/skeleton
+	key = "wings_functional"
+
 /datum/sprite_accessory/wings/dragon
 	color_src = USE_ONE_COLOR
 	locked = FALSE
+
+
+/datum/sprite_accessory/wings_open
+	key = "wings_open"
+	color_src = USE_ONE_COLOR
+
+
+/datum/sprite_accessory/wings_open/is_hidden(mob/living/carbon/human/wearer)
+	if(!wearer.w_uniform && !wearer.wear_suit)
+		return FALSE
+	// Can hide if wearing uniform
+	if(key in wearer.try_hide_mutant_parts)
+		return TRUE
+	if(wearer.wear_suit)
+	// Exception for MODs
+		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
+			return FALSE
+	// Hide accessory if flagged to do so, taking species exceptions in account
+		else if((wearer.wear_suit.flags_inv & HIDEJUMPSUIT) \
+				&& (!wearer.wear_suit.species_exception \
+				|| !is_type_in_list(wearer.dna.species, wearer.wear_suit.species_exception)) \
+			)
+			return TRUE
+
+	return FALSE
 
 /*
 *	MAMMAL

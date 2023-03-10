@@ -149,6 +149,9 @@
 	else
 		return GLOB.wings_list
 	*/ // ORIGINAL END - SKYRAT EDIT START - CUSTOMIZATION - TODO: Add support for wings_open
+	if(wings_open)
+		return GLOB.sprite_accessories["wings_open"]
+
 	return GLOB.sprite_accessories["wings"]
 	// SKYRAT EDIT END
 

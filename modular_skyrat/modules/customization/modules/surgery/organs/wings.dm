@@ -50,3 +50,47 @@
 	name = "megamoth wings"
 	desc = "A pair of horrifyingly large, fuzzy wings. They look strong enough to lift you up in the air."
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Megamoth", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF"))
+
+
+/datum/bodypart_overlay/mutant/wings/functional
+	color_source = ORGAN_COLOR_INHERIT
+
+
+/datum/bodypart_overlay/mutant/wings/functional/original_color
+	color_source = ORGAN_COLOR_OVERRIDE
+
+
+/datum/bodypart_overlay/mutant/wings/functional/original_color/override_color(rgb_value)
+	return COLOR_WHITE // We want to keep those wings as their original color, because it looks better.
+
+
+/datum/bodypart_overlay/mutant/wings/functional/locked/get_global_feature_list()
+	if(wings_open)
+		return GLOB.sprite_accessories["wings_open"]
+
+	return GLOB.sprite_accessories["wings_functional"]
+
+
+/datum/bodypart_overlay/mutant/wings/functional/locked/original_color
+	color_source = ORGAN_COLOR_OVERRIDE
+
+
+/datum/bodypart_overlay/mutant/wings/functional/locked/original_color/override_color(rgb_value)
+	return COLOR_WHITE // We want to keep those wings as their original color, because it looks better.
+
+
+/obj/item/organ/external/wings/functional
+	bodypart_overlay = /datum/bodypart_overlay/mutant/wings/functional/locked
+
+/obj/item/organ/external/wings/functional/angel
+	bodypart_overlay = /datum/bodypart_overlay/mutant/wings/functional/original_color
+
+/obj/item/organ/external/wings/functional/dragon
+	bodypart_overlay = /datum/bodypart_overlay/mutant/wings/functional
+
+/obj/item/organ/external/wings/functional/moth
+	bodypart_overlay = /datum/bodypart_overlay/mutant/wings/functional/locked/original_color
+
+/obj/item/organ/external/wings/functional/robotic
+	bodypart_overlay = /datum/bodypart_overlay/mutant/wings/functional
+	sprite_accessory_override = /datum/sprite_accessory/wings/robotic
