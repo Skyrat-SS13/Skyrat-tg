@@ -22,7 +22,7 @@
 	item_type = /obj/item/clothing/suit/armor/swat
 	description = "A superheavy armor suit purpose-built to ensure all injuries are pushovers. WARNING: Not spaceproof."
 
-/datum/opposing_force_equipment/clothing/helmet/swat
+/datum/opposing_force_equipment/clothing/helmet
 	item_type = /obj/item/clothing/head/helmet/swat
 	description = "A red-striped SWAT helmet. More robust than the standard-issue Nanotrasen security issue helmet, and spaceproof to boot."
 
