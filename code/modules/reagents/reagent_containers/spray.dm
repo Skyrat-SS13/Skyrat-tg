@@ -24,6 +24,7 @@
 	amount_per_transfer_from_this = 5
 	volume = 250
 	possible_transfer_amounts = list(5,10)
+	var/spray_sound = 'sound/effects/spray2.ogg'
 
 /obj/item/reagent_containers/spray/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
@@ -51,7 +52,7 @@
 
 	spray(target, user)
 
-	playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE, -6)
+	playsound(src.loc, spray_sound, 50, TRUE, -6)
 	user.changeNext_move(CLICK_CD_RANGE*2)
 	user.newtonian_move(get_dir(target, user))
 	return
@@ -377,7 +378,6 @@
 	current_range = 2
 	spray_range = 2
 	spray_sound = 'sound/effects/snap.ogg'
-	possible_transfer_amounts = list(5)
 
 /obj/item/reagent_containers/spray/chemsprayer/party/spray(atom/A, mob/user)
 	. = ..()
