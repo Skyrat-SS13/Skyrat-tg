@@ -202,7 +202,7 @@
 	weight = LOW_EVENT_FREQ
 
 /**
- * Gravity Gen Blackout
+ * Gravity Generator Blackout
  */
 /datum/round_event_control/gravity_generator_blackout
 	weight = MED_EVENT_FREQ
@@ -244,7 +244,7 @@
 /**
  * Meteors / Space Dust
  *
- * Combined weight: 46
+ * Combined weight: 62
  */
 /datum/round_event_control/meteor_wave
 	weight = MED_EVENT_FREQ
@@ -270,6 +270,9 @@
 	max_occurrences = 0
 
 /datum/round_event_control/space_dust/major_dust
+	weight = VERY_LOW_EVENT_FREQ
+
+/datum/round_event_control/sandstorm
 	weight = MED_EVENT_FREQ
 
 /**
@@ -336,12 +339,6 @@
 	weight = LOW_EVENT_FREQ
 
 /**
- * Sandstorm
- */
-/datum/round_event_control/sandstorm
-	weight = MED_EVENT_FREQ
-
-/**
  * Scrubber Clogs
  *
  * Combined weight: 32
@@ -367,10 +364,10 @@
 	max_occurrences = 0
 
 /datum/round_event_control/scrubber_overflow/threatening
-	weight = MED_EVENT_FREQ
+	weight = VERY_LOW_EVENT_FREQ
 
 /datum/round_event_control/scrubber_overflow/catastrophic
-	weight = LOW_EVENT_FREQ
+	weight = VERY_LOW_EVENT_FREQ
 
 /**
  * Human-level Intelligence
