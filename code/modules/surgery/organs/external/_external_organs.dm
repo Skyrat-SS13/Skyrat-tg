@@ -445,12 +445,16 @@
 /obj/item/organ/external/pod_hair/get_global_feature_list()
 	return GLOB.pod_hair_list
 
+<<<<<<< HEAD
 /obj/item/organ/external/pod_hair/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(!(human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR))
 		return TRUE
 	return FALSE
 
 /obj/item/organ/external/pod_hair/get_overlay_color(draw_layer)
+=======
+/datum/bodypart_overlay/mutant/pod_hair/color_image(image/overlay, draw_layer, obj/item/bodypart/limb)
+>>>>>>> 387738fdc91 (Fixes the arguments of bodypart_overlay's color_image() and its lack of early returns in subtypes (#73710))
 	if(draw_layer != bitflag_to_layer(color_swapped_layer))
 		return ..()
 
