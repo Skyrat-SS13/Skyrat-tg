@@ -7,6 +7,7 @@
 	gender = PLURAL
 	living_flags = MOVES_ON_ITS_OWN
 	status_flags = CANPUSH
+	fire_stack_decay_rate = -5 // Reasonably fast as NPCs will not usually actively extinguish themselves
 
 	var/basic_mob_flags = NONE
 
@@ -124,9 +125,8 @@
 
 /mob/living/basic/Life(delta_time = SSMOBS_DT, times_fired)
 	. = ..()
-	///Automatic stamina re-gain
 	if(staminaloss > 0)
-		adjustStaminaLoss(-stamina_recovery * delta_time, FALSE, TRUE)
+		adjustStaminaLoss(-stamina_recovery * delta_time, forced = TRUE)
 
 /mob/living/basic/say_mod(input, list/message_mods = list())
 	if(length(speak_emote))
@@ -209,3 +209,22 @@
 
 /mob/living/basic/compare_sentience_type(compare_type)
 	return sentience_type == compare_type
+
+/// Updates movement speed based on stamina loss
+/mob/living/basic/update_stamina()
+	set_varspeed(initial(speed) + (staminaloss * 0.06))
+
+/mob/living/basic/on_fire_stack(delta_time, times_fired, datum/status_effect/fire_handler/fire_stacks/fire_handler)
+	adjust_bodytemperature((maximum_survivable_temperature + (fire_handler.stacks * 12)) * 0.5 * delta_time)
+
+/mob/living/basic/update_fire_overlay(stacks, on_fire, last_icon_state, suffix = "")
+	var/mutable_appearance/fire_overlay = mutable_appearance('icons/mob/effects/onfire.dmi', "generic_fire")
+	if(on_fire && isnull(last_icon_state))
+		add_overlay(fire_overlay)
+		return fire_overlay
+	else if(!on_fire && !isnull(last_icon_state))
+		cut_overlay(fire_overlay)
+		return null
+	else if(on_fire && !isnull(last_icon_state))
+		return last_icon_state
+	return null
