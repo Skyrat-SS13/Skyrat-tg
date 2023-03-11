@@ -3,7 +3,7 @@
  */
 /obj/structure/fleshmind
 	icon = 'modular_skyrat/modules/fleshmind/icons/fleshmind_structures.dmi'
-	icon_state = "infected_machine"
+	icon_state = "wires"
 	anchored = TRUE
 	/// Our faction
 	var/faction_types = list(FACTION_FLESHMIND)

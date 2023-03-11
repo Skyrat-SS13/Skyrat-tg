@@ -319,6 +319,18 @@
 
 		//MODULAR SKYRAT ENTRIES
 		//PLEASE REFACTOR THESE AS YOU CAN
+		   /mob/living/simple_animal/hostile/fleshmind/tyrant
+		/mob/living/simple_animal/hostile/fleshmind/slicer
+		/mob/living/simple_animal/hostile/fleshmind/floater
+		/mob/living/simple_animal/hostile/fleshmind/globber
+		/mob/living/simple_animal/hostile/fleshmind/stunner
+		/mob/living/simple_animal/hostile/fleshmind/hiborg
+		/mob/living/simple_animal/hostile/fleshmind/himan
+		/mob/living/simple_animal/hostile/fleshmind/treader
+		/mob/living/simple_animal/hostile/fleshmind/phaser
+		/mob/living/simple_animal/hostile/fleshmind/mechiver
+		/mob/living/simple_animal/hostile/fleshmind/mauler_monkey
+		/mob/living/simple_animal/hostile/fleshmind
 		/mob/living/simple_animal/chicken/teshari,
 		/mob/living/simple_animal/crab/shuffle,
 		/mob/living/simple_animal/hostile/abductor,
