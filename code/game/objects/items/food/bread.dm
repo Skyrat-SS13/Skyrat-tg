@@ -1,5 +1,8 @@
 
+/// Abstract parent object for bread items. Should not be made obtainable in game.
 /obj/item/food/bread
+	name = "bread?"
+	desc = "You shouldn't see this, call the coders."
 	icon = 'icons/obj/food/burgerbread.dmi'
 	max_volume = 80
 	tastes = list("bread" = 10)
@@ -20,7 +23,10 @@
 		AddElement(/datum/element/processable, TOOL_KNIFE, slice_type, yield, 3 SECONDS, table_required = TRUE, screentip_verb = "Slice")
 		AddElement(/datum/element/processable, TOOL_SAW, slice_type, yield, 4 SECONDS, table_required = TRUE, screentip_verb = "Slice")
 
+// Abstract parent object for sliced bread items. Should not be made obtainable in game.
 /obj/item/food/breadslice
+	name = "breadslice?"
+	desc = "You shouldn't see this, call the coders."
 	icon = 'icons/obj/food/burgerbread.dmi'
 	foodtypes = GRAIN
 	food_flags = FOOD_FINGER_FOOD
@@ -337,18 +343,18 @@
 
 /obj/item/food/baguette/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
-	if (user.mind?.miming && held_item == src)
+	if (HAS_TRAIT(user, TRAIT_MIMING) && held_item == src)
 		context[SCREENTIP_CONTEXT_LMB] = "Toggle Swordplay"
 		return CONTEXTUAL_SCREENTIP_SET
 
 /obj/item/food/baguette/examine(mob/user)
 	. = ..()
-	if(user.mind?.miming)
+	if(HAS_TRAIT(user, TRAIT_MIMING))
 		. += span_notice("You can wield this like a sword by using it in your hand.")
 
 /obj/item/food/baguette/attack_self(mob/user, modifiers)
 	. = ..()
-	if(!user.mind?.miming)
+	if(!HAS_TRAIT(user, TRAIT_MIMING))
 		return
 	if(fake_swordplay)
 		end_swordplay(user)

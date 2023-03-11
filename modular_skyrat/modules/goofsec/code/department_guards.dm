@@ -52,7 +52,7 @@
 */
 /obj/item/clothing/suit/armor/vest/blueshirt/skyrat
 	//Effectively the same as TG's blueshirt, including icon. The /skyrat path makes it easier for sorting.
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi' //ORION TODO: deptguard vests need to be moved to a plain vest/skyrat subtype when suits.dmi gets split on our side
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi' //(Above) sci guard will get just the original blueshirt vest when that happens
 	unique_reskin = null
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
@@ -86,7 +86,7 @@
 */
 /obj/item/clothing/head/helmet/blueshirt/skyrat
 	//Effectively the same as TG's blueshirt, including icon. The /skyrat path makes it easier for sorting.
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi' //ORION TODO: same as vests; needs to be moved to a plain helmet/skyrat when the hats.dmi is split
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi' //Sci guard will get the plain TG version of this item too
 	unique_reskin = null
 

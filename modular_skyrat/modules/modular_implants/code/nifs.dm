@@ -480,6 +480,7 @@
 	new /obj/item/disk/nifsoft_uploader/shapeshifter(src)
 	new /obj/item/disk/nifsoft_uploader/summoner(src)
 	new /obj/item/disk/nifsoft_uploader/money_sense(src)
+	new /obj/item/disk/nifsoft_uploader/dorms(src)
 
 #undef NIF_CALIBRATION_STAGE_1
 #undef NIF_CALIBRATION_STAGE_1_END
