@@ -2,8 +2,12 @@
 	name = "electrode"
 	icon_state = "spark"
 	color = "#FFFF00"
+<<<<<<< HEAD
 	nodamage = FALSE
 	stamina = 80 // SKYRAT EDIT CHANGE
+=======
+	paralyze = 10 SECONDS
+>>>>>>> d755b70d760 (Removes bad `nodamage` var from projectiles, fixes Juggernaut / Rust Walker projectiles doing zero damage (#73806))
 	stutter = 10 SECONDS
 	jitter = 40 SECONDS
 	hitsound = 'sound/weapons/taserhit.ogg'
