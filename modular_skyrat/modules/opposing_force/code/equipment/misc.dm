@@ -81,4 +81,4 @@
 	description = "A dusty SUPER-SIZED crate from the back of the Syndicate warehouse. Rumored to contain a valuable assortment of items, \
 			but you never know. Contents are sorted to always be worth 125 TC."
 	telecrystal_count = 125
-	admin_note = "WARNING: This should only be given out for events, absolutely no guarantee whatsoever of what will come out of this, from both nukie and traitor uplinks. Contents equal to 125 TC."
+	admin_note = "WARNING: This should only be given out for events, absolutely no guarantee whatsoever of what will come out of this. Contents equal to 125 TC."
