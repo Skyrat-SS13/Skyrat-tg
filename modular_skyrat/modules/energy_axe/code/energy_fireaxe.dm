@@ -4,6 +4,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/energy_axe.dmi'
 	icon_state = "energy_axe0"
 	base_icon_state = "energy_axe"
+	worn_icon_state = "energy_axe"
 	lefthand_file = 'modular_skyrat/master_files/icons/mob/energyaxe_lefthand.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/mob/energyaxe_righthand.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
@@ -21,8 +22,8 @@
 
 /obj/item/fireaxe/energy/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/energy_wield, override = TRUE)
-	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/energy_unwield, override = TRUE)
+	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, PROC_REF(energy_wield), override = TRUE)
+	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, PROC_REF(energy_unwield), override = TRUE)
 	AddComponent(/datum/component/two_handed, force_unwielded = 10, force_wielded = 33, icon_wielded = "[base_icon_state]1", wieldsound = 'sound/weapons/saberon.ogg', unwieldsound = 'sound/weapons/saberoff.ogg')
 
 /obj/item/fireaxe/energy/proc/energy_wield(obj/item/source, mob/living/carbon/user)

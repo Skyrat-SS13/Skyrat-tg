@@ -46,11 +46,11 @@
 
 /datum/station_trait/hangover/New()
 	. = ..()
-	RegisterSignal(SSdcs, COMSIG_GLOB_JOB_AFTER_LATEJOIN_SPAWN, .proc/on_job_after_spawn)
+	RegisterSignal(SSdcs, COMSIG_GLOB_JOB_AFTER_LATEJOIN_SPAWN, PROC_REF(on_job_after_spawn))
 
 /datum/station_trait/hangover/revert()
 	for (var/obj/effect/landmark/start/hangover/hangover_spot in GLOB.start_landmarks_list)
-		QDEL_LIST(hangover_spot.debris)
+		QDEL_LIST(hangover_spot.hangover_debris)
 
 	return ..()
 
@@ -60,12 +60,12 @@
 	if(!prob(35))
 		return
 	var/obj/item/hat = pick(
-		/obj/item/clothing/head/sombrero,
+		/obj/item/clothing/head/costume/sombrero/green,
 		/obj/item/clothing/head/fedora,
 		/obj/item/clothing/mask/balaclava,
-		/obj/item/clothing/head/ushanka,
-		/obj/item/clothing/head/cardborg,
-		/obj/item/clothing/head/pirate,
+		/obj/item/clothing/head/costume/ushanka,
+		/obj/item/clothing/head/costume/cardborg,
+		/obj/item/clothing/head/costume/pirate,
 		/obj/item/clothing/head/cone,
 		)
 	hat = new hat(spawned_mob)
@@ -75,7 +75,7 @@
 /datum/station_trait/blackout
 	name = "Blackout"
 	trait_type = STATION_TRAIT_NEGATIVE
-	weight = 5
+	weight = 3
 	show_in_report = TRUE
 	report_message = "Station lights seem to be damaged, be safe when starting your shift today."
 
@@ -106,7 +106,7 @@
 
 /datum/station_trait/overflow_job_bureaucracy/New()
 	. = ..()
-	RegisterSignal(SSjob, COMSIG_SUBSYSTEM_POST_INITIALIZE, .proc/set_overflow_job_override)
+	RegisterSignal(SSjob, COMSIG_SUBSYSTEM_POST_INITIALIZE, PROC_REF(set_overflow_job_override))
 
 /datum/station_trait/overflow_job_bureaucracy/get_report()
 	return "[name] - It seems for some reason we put out the wrong job-listing for the overflow role this shift...I hope you like [chosen_job_name]s."
@@ -137,23 +137,22 @@
 /datum/station_trait/bot_languages
 	name = "Bot Language Matrix Malfunction"
 	trait_type = STATION_TRAIT_NEGATIVE
-	weight = 3
+	weight = 4
 	show_in_report = TRUE
 	report_message = "Your station's friendly bots have had their language matrix fried due to an event, resulting in some strange and unfamiliar speech patterns."
+	trait_to_give = STATION_TRAIT_BOTS_GLITCHED
 
 /datum/station_trait/bot_languages/New()
 	. = ..()
-	/// What "caused" our robots to go haywire (fluff)
-	var/event_source = pick(list("an ion storm", "a syndicate hacking attempt", "a malfunction", "issues with your onboard AI", "an intern's mistakes", "budget cuts"))
+	// What "caused" our robots to go haywire (fluff)
+	var/event_source = pick("an ion storm", "a syndicate hacking attempt", "a malfunction", "issues with your onboard AI", "an intern's mistakes", "budget cuts")
 	report_message = "Your station's friendly bots have had their language matrix fried due to [event_source], resulting in some strange and unfamiliar speech patterns."
 
 /datum/station_trait/bot_languages/on_round_start()
 	. = ..()
-	//All bots that exist round start have their set language randomized.
-	for(var/mob/living/simple_animal/bot/found_bot in GLOB.alive_mob_list)
-		/// The bot's language holder - so we can randomize and change their language
-		var/datum/language_holder/bot_languages = found_bot.get_language_holder()
-		bot_languages.selected_language = bot_languages.get_random_spoken_language()
+	// All bots that exist round start on station Z OR on the escape shuttle have their set language randomized.
+	for(var/mob/living/simple_animal/bot/found_bot as anything in GLOB.bots_list)
+		found_bot.randomize_language_if_on_station()
 
 /datum/station_trait/revenge_of_pun_pun
 	name = "Revenge of Pun Pun"
@@ -182,7 +181,7 @@
 			/obj/item/gun/ballistic/automatic/pistol = 1,
 		)
 
-	RegisterSignal(SSatoms, COMSIG_SUBSYSTEM_POST_INITIALIZE, .proc/arm_monke)
+	RegisterSignal(SSatoms, COMSIG_SUBSYSTEM_POST_INITIALIZE, PROC_REF(arm_monke))
 
 /datum/station_trait/revenge_of_pun_pun/proc/arm_monke()
 	SIGNAL_HANDLER
@@ -283,7 +282,16 @@
 	report_message = "A radioactive stormfront is passing through your station's system. Expect an increased likelihood of radiation storms passing over your station, as well the potential for multiple radiation storms to occur during your shift."
 	trait_type = STATION_TRAIT_NEGATIVE
 	trait_flags = NONE
-	weight = 0
+	weight = 0 //SKYRAT EDIT CHANGE - ORIGINAL: weight = 0
 	event_control_path = /datum/round_event_control/radiation_storm
 	weight_multiplier = 1.5
-	max_occurrences_modifier = 0
+	max_occurrences_modifier = 0 //SKYRAT EDIT CHANGE - ORIGINAL: max_occurrences_modifier = 0
+
+/datum/station_trait/cramped_escape_pods
+	name = "Cramped Escape Pods"
+	trait_type = STATION_TRAIT_NEGATIVE
+	weight = 5
+	show_in_report = TRUE
+	report_message = "Due to budget cuts, we have downsized your escape pods."
+	trait_to_give = STATION_TRAIT_SMALLER_PODS
+	blacklist = list(/datum/station_trait/luxury_escape_pods)

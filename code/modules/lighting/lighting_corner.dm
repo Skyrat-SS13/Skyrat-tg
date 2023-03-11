@@ -7,6 +7,7 @@
 
 	var/x = 0
 	var/y = 0
+	var/z = 0
 
 	var/turf/master_NE
 	var/turf/master_SE
@@ -35,6 +36,7 @@
 
 	src.x = x + 0.5
 	src.y = y + 0.5
+	src.z = z
 
 	// Alright. We're gonna take a set of coords, and from them do a loop clockwise
 	// To build out the turfs adjacent to us. This is pretty fast
@@ -86,8 +88,14 @@
 
 // God that was a mess, now to do the rest of the corner code! Hooray!
 /datum/lighting_corner/proc/update_lumcount(delta_r, delta_g, delta_b)
+
+#ifdef VISUALIZE_LIGHT_UPDATES
+	if (!SSlighting.allow_duped_values && !(delta_r || delta_g || delta_b)) // 0 is falsey ok
+		return
+#else
 	if (!(delta_r || delta_g || delta_b)) // 0 is falsey ok
 		return
+#endif
 
 	lum_r += delta_r
 	lum_g += delta_g
@@ -107,6 +115,10 @@
 	if (largest_color_luminosity > 1)
 		. = 1 / largest_color_luminosity
 
+	var/old_r = cache_r
+	var/old_g = cache_g
+	var/old_b = cache_b
+
 	#if LIGHTING_SOFT_THRESHOLD != 0
 	else if (largest_color_luminosity < LIGHTING_SOFT_THRESHOLD)
 		. = 0 // 0 means soft lighting.
@@ -121,6 +133,13 @@
 	#endif
 
 	src.largest_color_luminosity = round(largest_color_luminosity, LIGHTING_ROUND_VALUE)
+#ifdef VISUALIZE_LIGHT_UPDATES
+	if(!SSlighting.allow_duped_corners && old_r == cache_r && old_g == cache_g && old_b == cache_b)
+		return
+#else
+	if(old_r == cache_r && old_g == cache_g && old_b == cache_b)
+		return
+#endif
 
 	var/datum/lighting_object/lighting_object = master_NE?.lighting_object
 	if (lighting_object && !lighting_object.needs_update)

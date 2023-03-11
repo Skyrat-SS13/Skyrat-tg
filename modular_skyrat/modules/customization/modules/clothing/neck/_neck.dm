@@ -72,3 +72,17 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	icon_state = "capmantle"
 
+/obj/item/clothing/neck/mantle/recolorable
+	name = "mantle"
+	desc = "A simple drape over the shoulders."
+	icon = 'modular_skyrat/modules/GAGS/icons/neck/neck.dmi'
+	worn_icon = 'modular_skyrat/modules/GAGS/icons/neck/neck.dmi'
+	worn_icon_teshari = 'modular_skyrat/modules/GAGS/icons/neck/neck_teshari.dmi'
+	icon_state = "mantle"
+	greyscale_colors = "#ffffff"
+	greyscale_config = /datum/greyscale_config/mantle
+	greyscale_config_worn = /datum/greyscale_config/mantle/worn
+	greyscale_config_worn_teshari = /datum/greyscale_config/mantle/worn/teshari
+	greyscale_config_worn_better_vox = /datum/greyscale_config/mantle/worn/newvox
+	greyscale_config_worn_vox = /datum/greyscale_config/mantle/worn/oldvox
+	flags_1 = IS_PLAYER_COLORABLE_1

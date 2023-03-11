@@ -3,43 +3,43 @@
 	icon = 'modular_skyrat/modules/shotgunrebalance/icons/shotbox.dmi'
 	icon_state = "slug"
 	ammo_type = /obj/item/ammo_casing/shotgun
-	max_ammo = 35
+	max_ammo = 15
 
 /obj/item/ammo_box/advanced/s12gauge/buckshot
 	name = "Buckshot ammo box"
 	icon_state = "buckshot"
 	ammo_type = /obj/item/ammo_casing/shotgun/buckshot
-	max_ammo = 35
+	max_ammo = 15
 
 /obj/item/ammo_box/advanced/s12gauge/rubber
 	name = "Rubbershot ammo box"
 	icon_state = "rubber"
 	ammo_type = /obj/item/ammo_casing/shotgun/rubbershot
-	max_ammo = 35
+	max_ammo = 15
 
 /obj/item/ammo_box/advanced/s12gauge/bean
 	name = "Beanbag Slug ammo box"
 	icon_state = "bean"
 	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
-	max_ammo = 35
+	max_ammo = 15
 
 /obj/item/ammo_box/advanced/s12gauge/magnum
 	name = "Magnum Buckshot ammo box"
 	icon_state = "magnum"
 	ammo_type = /obj/item/ammo_casing/shotgun/magnum
-	max_ammo = 35
+	max_ammo = 15
 
 /obj/item/ammo_box/advanced/s12gauge/express
 	name = "Express Buckshot ammo box"
 	icon_state = "express"
 	ammo_type = /obj/item/ammo_casing/shotgun/express
-	max_ammo = 35
+	max_ammo = 15
 
 /obj/item/ammo_box/advanced/s12gauge/hp
 	name = "Hollow Point Slug ammo box"
 	icon_state = "hollowpoint"
 	ammo_type = /obj/item/ammo_casing/shotgun/hp
-	max_ammo = 35
+	max_ammo = 15
 
 /obj/item/ammo_box/advanced/s12gauge/hunter
 	name = "Hunter Buckshot ammo box"
@@ -87,7 +87,7 @@
 	name = "Incendiary Slug ammo box"
 	icon_state = "incendiary"
 	ammo_type = /obj/item/ammo_casing/shotgun/incendiary
-	max_ammo = 35
+	max_ammo = 15
 
 /obj/item/ammo_box/advanced/s12gauge/honk
 	name = "Confetti ammo box"

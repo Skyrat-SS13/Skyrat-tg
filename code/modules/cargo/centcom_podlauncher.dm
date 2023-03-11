@@ -42,7 +42,7 @@
 	var/bayNumber //Quick reference to what bay we're in. Usually set to the loading_id variable for the related area type
 	var/customDropoff = FALSE
 	var/picking_dropoff_turf = FALSE
-	var/launchClone = FALSE //If true, then we don't actually launch the thing in the bay. Instead we call duplicateObject() and send the result
+	var/launchClone = FALSE //If true, then we don't actually launch the thing in the bay. Instead we call duplicate_object() and send the result
 	var/launchRandomItem = FALSE //If true, lauches a single random item instead of everything on a turf.
 	var/launchChoice = LAUNCH_RANDOM //Determines if we launch all at once (0) , in order (1), or at random(2)
 	var/explosionChoice = 0 //Determines if there is no explosion (0), custom explosion (1), or just do a maxcap (2)
@@ -66,7 +66,6 @@
 	// Stuff needed to render the map
 	var/map_name
 	var/atom/movable/screen/map_view/cam_screen
-	var/list/cam_plane_masters
 	var/atom/movable/screen/background/cam_background
 	var/tabIndex = 1
 	var/renderLighting = FALSE
@@ -82,9 +81,9 @@
 	else
 		var/mob/user_mob = user
 		holder = user_mob.client //if its a mob, assign the mob's client to holder
-	bay = locate(/area/centcom/central_command_areas/supplypod/loading/one) in GLOB.sortedAreas //Locate the default bay (one) from the centcom map
+	bay = locate(/area/centcom/central_command_areas/supplypod/loading/one) in GLOB.areas //Locate the default bay (one) from the centcom map
 	bayNumber = bay.loading_id //Used as quick reference to what bay we're taking items from
-	var/area/pod_storage_area = locate(/area/centcom/central_command_areas/supplypod/pod_storage) in GLOB.sortedAreas
+	var/area/pod_storage_area = locate(/area/centcom/central_command_areas/supplypod/pod_storage) in GLOB.areas
 	temp_pod = new(pick(get_area_turfs(pod_storage_area))) //Create a new temp_pod in the podStorage area on centcom (so users are free to look at it and change other variables if needed)
 	orderedArea = createOrderedArea(bay) //Order all the turfs in the selected bay (top left to bottom right) to a single list. Used for the "ordered" mode (launchChoice = 1)
 	selector = new(null, holder.mob)
@@ -101,28 +100,18 @@
 	map_name = "admin_supplypod_bay_[REF(src)]_map"
 	// Initialize map objects
 	cam_screen = new
-	cam_screen.name = "screen"
-	cam_screen.assigned_map = map_name
-	cam_screen.del_on_map_removal = TRUE
-	cam_screen.screen_loc = "[map_name]:1,1"
-	cam_plane_masters = list()
-	for(var/plane in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
-		var/atom/movable/screen/plane_master/instance = new plane()
-		if (!renderLighting && instance.plane == LIGHTING_PLANE)
-			instance.alpha = 100
-		if(instance.blend_mode_override)
-			instance.blend_mode = instance.blend_mode_override
-		instance.assigned_map = map_name
-		instance.del_on_map_removal = TRUE
-		instance.screen_loc = "[map_name]:CENTER"
-		cam_plane_masters += instance
+	cam_screen.generate_view(map_name)
+
+	var/datum/plane_master_group/planes = cam_screen.display_to(holder.mob)
+
+	if(!renderLighting)
+		for(var/atom/movable/screen/plane_master/instance as anything in holder.mob.hud_used.get_true_plane_masters(LIGHTING_PLANE, planes.key))
+			instance.set_alpha(100)
+
 	cam_background = new
 	cam_background.assigned_map = map_name
 	cam_background.del_on_map_removal = TRUE
 	refreshView()
-	holder.register_map_obj(cam_screen)
-	for(var/plane in cam_plane_masters)
-		holder.register_map_obj(plane)
 	holder.register_map_obj(cam_background)
 
 /datum/centcom_podlauncher/ui_state(mob/user)
@@ -360,7 +349,7 @@
 			if (temp_pod.effectShrapnel == TRUE) //If already doing custom damage, set back to default (no shrapnel)
 				temp_pod.effectShrapnel = FALSE
 				return
-			var/shrapnelInput = input("Please enter the type of pellet cloud you'd like to create on landing (Can be any projectile!)", "Projectile Typepath",  0) in sort_list(subtypesof(/obj/projectile), /proc/cmp_typepaths_asc)
+			var/shrapnelInput = input("Please enter the type of pellet cloud you'd like to create on landing (Can be any projectile!)", "Projectile Typepath",  0) in sort_list(subtypesof(/obj/projectile), GLOBAL_PROC_REF(cmp_typepaths_asc))
 			if (isnull(shrapnelInput))
 				return
 			var/shrapnelMagnitude = input("Enter the magnitude of the pellet cloud. This is usually a value around 1-5. Please note that Ryll-Ryll has asked me to tell you that if you go too crazy with the projectiles you might crash the server. So uh, be gentle!", "Shrapnel Magnitude", 0) as null|num
@@ -552,9 +541,7 @@
 
 /datum/centcom_podlauncher/ui_close(mob/user) //Uses the destroy() proc. When the user closes the UI, we clean up the temp_pod and supplypod_selector variables.
 	QDEL_NULL(temp_pod)
-	user.client?.clear_map(map_name)
 	QDEL_NULL(cam_screen)
-	QDEL_LIST(cam_plane_masters)
 	QDEL_NULL(cam_background)
 	qdel(src)
 
@@ -728,13 +715,13 @@
 				launchList |= typecache_filter_list_reverse(acceptable_turf.contents, ignored_atoms) //filter a random turf from the acceptableTurfs list and add it to the launchList
 				if (iswallturf(acceptable_turf))
 					launchList += acceptable_turf
-	updateSelector() //Call updateSelector(), which, if we are launching one at a time (launchChoice==2), will move to the next turf that will be launched
+	updateSelector() //Call updateSelector(), which, if we are launching one at a time (launchChoice == 2), will move to the next turf that will be launched
 	//UpdateSelector() is here (instead if the if(1) switch block) because it also moves the selector to nullspace (to hide it) if needed
 
 /datum/centcom_podlauncher/proc/launch(turf/target_turf) //Game time started
 	if (isnull(target_turf))
 		return
-	var/obj/structure/closet/supplypod/centcompod/toLaunch = DuplicateObject(temp_pod) //Duplicate the temp_pod (which we have been varediting or configuring with the UI) and store the result
+	var/obj/structure/closet/supplypod/centcompod/toLaunch = duplicate_object(temp_pod) //Duplicate the temp_pod (which we have been varediting or configuring with the UI) and store the result
 	toLaunch.update_appearance()//we update_appearance() here so that the door doesnt "flicker on" right after it lands
 	var/shippingLane = GLOB.areas_by_type[/area/centcom/central_command_areas/supplypod/supplypod_temp_holding]
 	toLaunch.forceMove(shippingLane)
@@ -747,7 +734,7 @@
 					toLaunch.turfs_in_cargo += atom_to_launch.type
 				else
 					var/atom/movable/movable_to_launch = launch_candidate
-					DuplicateObject(movable_to_launch).forceMove(toLaunch) //Duplicate a single atom/movable from launchList and forceMove it into the supplypod
+					duplicate_object(movable_to_launch).forceMove(toLaunch) //Duplicate a single atom/movable from launchList and forceMove it into the supplypod
 		else
 			for (var/launch_candidate in launchList)
 				if (isnull(launch_candidate))
@@ -757,7 +744,7 @@
 					toLaunch.turfs_in_cargo += turf_to_launch.type
 				else
 					var/atom/movable/movable_to_launch = launch_candidate
-					DuplicateObject(movable_to_launch).forceMove(toLaunch) //Duplicate each atom/movable in launchList and forceMove them into the supplypod
+					duplicate_object(movable_to_launch).forceMove(toLaunch) //Duplicate each atom/movable in launchList and forceMove them into the supplypod
 	else
 		if(launchRandomItem)
 			var/atom/random_item = pick_n_take(launchList)

@@ -32,7 +32,6 @@
 	name = "\proper the head of personnel's bowman headset"
 	desc = "The headset of the second. Protects ears from flashbangs."
 	icon_state = "com_headset_alt"
-	inhand_icon_state = "com_headset_alt"
 
 /obj/item/radio/headset/heads/hop/alt/Initialize(mapload)
 	. = ..()

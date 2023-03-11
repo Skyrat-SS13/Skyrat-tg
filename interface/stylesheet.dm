@@ -127,6 +127,8 @@ h1.alert, h2.alert		{color: #000000;}
 
 .interface				{color: #330033;}
 
+.blob					{color: #556B2F;	font-weight: bold;	font-size: 3;}
+
 .sans					{font-family: "Comic Sans MS", cursive, sans-serif;}
 .papyrus				{font-family: "Papyrus", cursive, sans-serif;}
 .robot					{font-family: "Courier New", cursive, sans-serif;}
@@ -169,6 +171,15 @@ h1.alert, h2.alert		{color: #000000;}
 		100% 	{color: #ff33cc;}
 }
 
+.glossy					{color: #9b6000; font-weight: bold; animation: glossy 5000ms infinite;}
+	@keyframes glossy {
+		0% 		{color: #9b6000}
+		30% 	{color: #c88800}
+		40% 	{color: #bdbd00}
+		50% 	{color: #c88800}
+		100% 	{color: #9b6000}
+}
+
 .doyourjobidiot {
   color: #c51e1e;
   text-shadow: 0 0 4px #e22525;
@@ -193,6 +204,12 @@ h1.alert, h2.alert		{color: #000000;}
     text-shadow: 0 0 4px #c51e1e;
   }
 }
+
+.brown					{color: #3d2009;}
+.orange 				{color: #b8761a;}
+.yellow					{color: #c7b72c;}
+.cyan					{color: #0ea1e6;}
+
 // SKYRAT ADDITION END
 
 .phobia			{color: #dd0000;	font-weight: bold;	animation: phobia 750ms infinite;}
@@ -214,10 +231,4 @@ h1.alert, h2.alert		{color: #000000;}
 .swarmer				{color: #2C75FF;}
 .resonate				{color: #298F85;}
 
-.monkeyhive				{color: #774704;}
-.monkeylead				{color: #774704;	font-size: 2;}
-.brown					{color: #3d2009;}
-.orange 				{color: #b8761a;}
-.yellow					{color: #c7b72c;}
-.cyan					{color: #0ea1e6;}
 </style>"}

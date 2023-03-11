@@ -33,8 +33,8 @@
 	if(istype(target, /obj/machinery/door))
 		user.changeNext_move(5 SECONDS)
 		if(!registered)
-			RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/remove_track, FALSE)
-			RegisterSignal(target, COMSIG_BREACHING, .proc/try_breaching, TRUE)
+			RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(remove_track), FALSE)
+			RegisterSignal(target, COMSIG_BREACHING, PROC_REF(try_breaching), TRUE)
 			to_chat(user, text = "You prepare to forcefully strike the door")
 			registered = TRUE
 		breacher = user
@@ -71,8 +71,8 @@
 		remove_track(user)
 		return FALSE
 	breaching = TRUE
-	INVOKE_ASYNC(src, /obj/item/melee/hammer.proc/breaching_loop , user, target)
-	INVOKE_ASYNC(second_hammer, /obj/item/melee/hammer.proc/breaching_loop , breacher, target)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/melee/hammer, breaching_loop ), user, target)
+	INVOKE_ASYNC(second_hammer, TYPE_PROC_REF(/obj/item/melee/hammer, breaching_loop ), breacher, target)
 	to_chat(breacher , text = "You begin forcefully smashing the [target]")
 	to_chat(user, text = "You begin forcefully smashing the [target]")
 

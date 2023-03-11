@@ -11,9 +11,12 @@
 /datum/action/changeling/panacea/sting_action(mob/user)
 	to_chat(user, span_notice("We cleanse impurities from our form."))
 	..()
+	// SKYRAT EDIT ADDITION: BORER EGG
 	var/list/bad_organs = list(
 		user.getorgan(/obj/item/organ/internal/body_egg),
-		user.getorgan(/obj/item/organ/internal/zombie_infection))
+		user.getorgan(/obj/item/organ/internal/zombie_infection),
+		user.getorgan(/obj/item/organ/internal/empowered_borer_egg))
+	// SKYRAT EDIT END
 
 	try_to_mutant_cure(user) //SKYRAT EDIT ADDITION
 
@@ -28,7 +31,7 @@
 			C.vomit(0)
 		O.forceMove(get_turf(user))
 	//Skyrat Edit Start: Cortical Borer
-	var/mob/living/simple_animal/cortical_borer/cb_inside = user.has_borer()
+	var/mob/living/basic/cortical_borer/cb_inside = user.has_borer()
 	if(cb_inside)
 		cb_inside.leave_host()
 	//Skyrat Edit Stop: Cortical Borer

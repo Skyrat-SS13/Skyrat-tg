@@ -1,21 +1,18 @@
-#define REGENERATION_DELAY 5 SECONDS  // After taking damage, how long it takes for automatic regeneration to begin
+#define REGENERATION_DELAY (5 SECONDS)  // After taking damage, how long it takes for automatic regeneration to begin
 
 /datum/species/mutant
 	name = "High-Functioning mutant"
 	id = SPECIES_MUTANT
-	say_mod = "moans"
 	meat = /obj/item/food/meat/slab/human/mutant/zombie
 	eyes_icon = 'modular_skyrat/modules/mutants/icons/mutant_eyes.dmi'
 	species_traits = list(
-		NOBLOOD,
 		NOZOMBIE,
-		HAS_FLESH,
-		HAS_BONE,
 		NOEYESPRITES,
 		LIPS,
 		HAIR
 		)
 	inherent_traits = list(
+		TRAIT_NOBLOOD,
 		TRAIT_NODISMEMBER,
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_NOMETABOLISM,
@@ -47,14 +44,14 @@
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant_zombie,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant_zombie,
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant_zombie,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant_zombie,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant_zombie,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant_zombie
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/mutant_zombie,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant_zombie,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant_zombie,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant_zombie
 	)
 
 /datum/species/mutant/check_roundstart_eligible()
-	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
+	if(check_holidays(HALLOWEEN))
 		return TRUE
 	return ..()
 
@@ -67,20 +64,24 @@
 /datum/species/mutant/infectious
 	name = "Mutated Abomination"
 	id = SPECIES_MUTANT_INFECTIOUS
-	mutanthands = /obj/item/mutant_hand
 	speedmod = 1
 	armor = 10
-	mutanteyes = /obj/item/organ/internal/eyes/night_vision/zombie
+	mutanteyes = /obj/item/organ/internal/eyes/zombie
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
+	var/hands_to_give = /obj/item/hnz_mutant_hand
 	/// The rate the mutants regenerate at
 	var/heal_rate = 1
 	/// The cooldown before the mutant can start regenerating
 	COOLDOWN_DECLARE(regen_cooldown)
 
+/datum/species/mutant/infectious/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	. = ..()
+	C.AddComponent(/datum/component/mutant_hands, mutant_hand_path = hands_to_give)
+
 /datum/species/mutant/infectious/fast
 	name = "Fast Mutated Abomination"
 	id = SPECIES_MUTANT_FAST
-	mutanthands = /obj/item/mutant_hand/fast
+	hands_to_give = /obj/item/hnz_mutant_hand/fast
 	armor = 0
 	/// The rate the mutants regenerate at
 	heal_rate = 0.5
@@ -134,7 +135,7 @@
 	else
 		. = ..()
 
-/obj/item/mutant_hand
+/obj/item/hnz_mutant_hand
 	name = "mutant claw"
 	desc = "A mutant's claw is its primary tool, capable of infecting \
 		humans, butchering all other living things to \
@@ -155,17 +156,17 @@
 	var/icon_left = "bloodhand_left"
 	var/icon_right = "bloodhand_right"
 
-/obj/item/mutant_hand/fast
+/obj/item/hnz_mutant_hand/fast
 	name = "weak mutant claw"
 	force = 21
 	sharpness = NONE
 	wound_bonus = -40
 
-/obj/item/mutant_hand/Initialize(mapload)
+/obj/item/hnz_mutant_hand/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
 
-/obj/item/mutant_hand/equipped(mob/user, slot)
+/obj/item/hnz_mutant_hand/equipped(mob/user, slot)
 	. = ..()
 	//these are intentionally inverted
 	var/i = user.get_held_index_of_item(src)
@@ -174,7 +175,7 @@
 	else
 		icon_state = icon_right
 
-/obj/item/mutant_hand/afterattack(atom/target, mob/user, proximity_flag)
+/obj/item/hnz_mutant_hand/afterattack(atom/target, mob/user, proximity_flag)
 	. = ..()
 	if(!proximity_flag)
 		return
@@ -220,9 +221,10 @@
 	if(infection)
 		qdel(infection)
 
-/obj/item/mutant_hand/proc/check_feast(mob/living/target, mob/living/user)
+/obj/item/hnz_mutant_hand/proc/check_feast(mob/living/target, mob/living/user)
 	if(target.stat == DEAD)
 		var/hp_gained = target.maxHealth
+		target.investigate_log("has been feasted upon by the mutant [user].", INVESTIGATE_DEATHS)
 		target.gib()
 		// zero as argument for no instant health update
 		user.adjustBruteLoss(-hp_gained, 0)

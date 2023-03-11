@@ -23,7 +23,7 @@
 		return
 
 	src.hallucinator = hallucinator
-	RegisterSignal(hallucinator, COMSIG_PARENT_QDELETING, .proc/target_deleting)
+	RegisterSignal(hallucinator, COMSIG_PARENT_QDELETING, PROC_REF(target_deleting))
 	GLOB.all_ongoing_hallucinations += src
 
 /// Signal proc for [COMSIG_PARENT_QDELETING], if the mob hallucinating us is deletes, we should delete too.
@@ -121,8 +121,8 @@
 
 	who_sees_us = list()
 	for(var/mob/seer as anything in mobs_which_see_us)
-		RegisterSignal(seer, COMSIG_MOB_LOGIN, .proc/show_image_to)
-		RegisterSignal(seer, COMSIG_PARENT_QDELETING, .proc/remove_seer)
+		RegisterSignal(seer, COMSIG_MOB_LOGIN, PROC_REF(show_image_to))
+		RegisterSignal(seer, COMSIG_PARENT_QDELETING, PROC_REF(remove_seer))
 		who_sees_us += seer
 		show_image_to(seer)
 
@@ -134,6 +134,12 @@
 
 	who_sees_us.Cut() // probably not needed but who knows
 	return ..()
+
+/obj/effect/client_image_holder/on_changed_z_level(turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
+	. = ..()
+	if(same_z_layer)
+		return
+	SET_PLANE(shown_image, PLANE_TO_TRUE(shown_image.plane), new_turf)
 
 /// Signal proc to clean up references if people who see us are deleted.
 /obj/effect/client_image_holder/proc/remove_seer(mob/source)
@@ -150,7 +156,7 @@
 /// Generates the image which we take on.
 /obj/effect/client_image_holder/proc/generate_image()
 	var/image/created = image(image_icon, src, image_state, image_layer, dir = src.dir)
-	created.plane = image_plane
+	SET_PLANE_EXPLICIT(created, image_plane, src)
 	created.pixel_x = image_pixel_x
 	created.pixel_y = image_pixel_y
 	if(image_color)
@@ -212,7 +218,7 @@
 		stack_trace("[type] was created without a parent hallucination.")
 		return INITIALIZE_HINT_QDEL
 
-	RegisterSignal(parent, COMSIG_PARENT_QDELETING, .proc/parent_deleting)
+	RegisterSignal(parent, COMSIG_PARENT_QDELETING, PROC_REF(parent_deleting))
 	src.parent = parent
 
 /obj/effect/client_image_holder/hallucination/Destroy(force)

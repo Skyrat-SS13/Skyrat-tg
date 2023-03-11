@@ -28,6 +28,11 @@
 	. = ..()
 	. += span_info("You could change its colours with a <b>spray can</b>!")
 
+// DS2
+/obj/item/card/id/advanced/prisoner/ds2
+	name = "syndicate prisoner card"
+	icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
+	icon_state = "card_ds2prisoner"
 
 // SOLFED
 /obj/item/card/id/advanced/solfed

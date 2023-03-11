@@ -147,6 +147,28 @@ export const OpposingForceTab = (props, context) => {
               />
             </Stack.Item>
           </Stack>
+          <Stack>
+            <Stack.Item>
+              <Button
+                icon="file-import"
+                color="blue"
+                tooltip="Import an application from a .json file."
+                disabled={status === 'Awaiting approval'}
+                content="Import JSON"
+                onClick={() => act('import_json')}
+              />
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                icon="file-export"
+                color="purple"
+                tooltip="Export an application as a .json file."
+                disabled={status === 'Awaiting approval'}
+                content="Export JSON"
+                onClick={() => act('export_json')}
+              />
+            </Stack.Item>
+          </Stack>
           <NoticeBox
             color={approved ? 'good' : denied ? 'bad' : 'orange'}
             mt={2}>

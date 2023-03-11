@@ -43,11 +43,9 @@
 
 /obj/item/grenade/xen_crystal
 	name = "xen crystal"
-	desc = "A crystal with anomalous properties, its powers could be used to weaken the link between worlds. A closer examination might yield some useful information..."
+	desc = "A crystal with anomalous properties."
 	icon = 'modular_skyrat/modules/black_mesa/icons/plants.dmi'
 	icon_state = "crystal_grenade"
-	/// Additional information on second examine. Obviously.
-	var/desc_extended = "Use on the Nihilanth to reduce the Resonance Cascade's chance of spawning by 15%, down to 0% if used four times."
 	/// What range do we effect mobs?
 	var/effect_range = 6
 	/// The faction we convert the mobs to
@@ -58,10 +56,6 @@
 		/mob/living/simple_animal/hostile/blackmesa/xen/nihilanth,
 	)
 
-/obj/item/grenade/xen_crystal/examine_more(mob/user)
-	. = ..()
-	. += "<i>[desc_extended]</i>"
-
 /obj/item/grenade/xen_crystal/detonate(mob/living/lanced_by)
 	for(var/mob/living/mob_to_neutralize in view(src, effect_range))
 		if(is_type_in_list(mob_to_neutralize, blacklisted_mobs))
@@ -70,3 +64,9 @@
 		mob_to_neutralize.visible_message(span_green("[mob_to_neutralize] is overcome by a wave of peace and tranquility!"))
 		new /obj/effect/particle_effect/sparks/quantum(get_turf(mob_to_neutralize))
 	qdel(src)
+
+/datum/export/xen_crystal
+	cost = CARGO_CRATE_VALUE * 6 //1200
+	unit_name = "anomalous crystal sample"
+	export_types = list(/obj/item/grenade/xen_crystal)
+	include_subtypes = FALSE

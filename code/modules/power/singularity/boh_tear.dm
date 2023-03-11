@@ -25,7 +25,7 @@
 /obj/boh_tear/Initialize(mapload)
 	. = ..()
 	QDEL_IN(src, 10 SECONDS) // vanishes after 10 seconds
-	addtimer(CALLBACK(src, .proc/add_singularity), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(add_singularity)), 5 SECONDS)
 
 /obj/boh_tear/proc/add_singularity()
 	// the grav_pull was BOH_TEAR_GRAV_PULL (25), but that is a whole lot
@@ -44,7 +44,7 @@
 	to_chat(jedi, span_userdanger("You don't feel like you are real anymore."))
 	jedi.dust_animation()
 	jedi.spawn_dust()
-	addtimer(CALLBACK(src, /atom/proc/attack_hand, jedi), 0.5 SECONDS)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, attack_hand), jedi), 0.5 SECONDS)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 #undef BOH_TEAR_CONSUME_RANGE

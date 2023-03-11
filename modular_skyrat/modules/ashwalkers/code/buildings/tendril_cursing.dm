@@ -40,8 +40,8 @@
 	human_target = parent
 	ADD_TRAIT(human_target, TRAIT_NO_TELEPORT, REF(src))
 	human_target.add_movespeed_modifier(/datum/movespeed_modifier/ash_cursed)
-	RegisterSignal(human_target, COMSIG_MOVABLE_MOVED, .proc/do_move)
-	RegisterSignal(human_target, COMSIG_LIVING_DEATH, .proc/remove_curse)
+	RegisterSignal(human_target, COMSIG_MOVABLE_MOVED, PROC_REF(do_move))
+	RegisterSignal(human_target, COMSIG_LIVING_DEATH, PROC_REF(remove_curse))
 
 /datum/component/ash_cursed/Destroy(force, silent)
 	. = ..()
@@ -74,7 +74,7 @@
 	if(spawned_goo)
 		return
 	spawned_goo = new(human_turf)
-	addtimer(CALLBACK(spawned_goo, /obj/effect/decal/cleanable/greenglow/ecto.proc/do_qdel), 5 MINUTES, TIMER_STOPPABLE|TIMER_DELETE_ME)
+	addtimer(CALLBACK(spawned_goo, TYPE_PROC_REF(/obj/effect/decal/cleanable/greenglow/ecto, do_qdel)), 5 MINUTES, TIMER_STOPPABLE|TIMER_DELETE_ME)
 
 /obj/effect/decal/cleanable/greenglow/ecto/proc/do_qdel()
 	qdel(src)

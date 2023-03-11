@@ -9,14 +9,40 @@
 //DO NOT ADD A /obj/item/clothing/under/rank/civilian/lawyer/skyrat. USE /obj/item/clothing/under/suit/skyrat FOR MODULAR SUITS
 
 /*
+*	RECOLORABLE
+*/
+/obj/item/clothing/under/suit/skyrat/recolorable
+	name = "recolorable suit"
+	desc = "A semi-formal suit, clean-cut with a matching vest and slacks."
+	icon_state = "recolorable_suit"
+	can_adjust = FALSE
+	greyscale_config = /datum/greyscale_config/recolorable_suit
+	greyscale_config_worn = /datum/greyscale_config/recolorable_suit/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/recolorable_suit/worn/digi
+	greyscale_colors = "#a99780#ffffff#6e2727#ffc500"
+	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/under/suit/skyrat/recolorable/skirt
+	name = "recolorable suitskirt"
+	desc = "A semi-formal suitskirt, clean-cut with a matching vest and skirt."
+	icon_state = "recolorable_suitskirt"
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	gets_cropped_on_taurs = FALSE
+	body_parts_covered = CHEST|GROIN|LEGS
+	greyscale_config = /datum/greyscale_config/recolorable_suitskirt
+	greyscale_config_worn = /datum/greyscale_config/recolorable_suitskirt/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/recolorable_suitskirt/worn/digi
+
+/*
 *	SUITS
 */
-
 /obj/item/clothing/under/suit/skyrat/pencil
 	name = "black pencilskirt"
 	desc = "A clean white shirt with a tight-fitting black pencilskirt."
 	icon_state = "black_pencil"
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	gets_cropped_on_taurs = FALSE
 
 /obj/item/clothing/under/suit/skyrat/pencil/black_really
 	name = "executive pencilskirt"
@@ -62,16 +88,15 @@
 	name = "wide-collared executive suit"
 	desc = "A formal black suit with the collar worn wide, intended for the station's finest."
 	icon_state = "really_black_suit_collar"
-	inhand_icon_state = "really_black_suit"
 
 /obj/item/clothing/under/suit/skyrat/black_really_collared/skirt
 	name = "wide-collared executive suitskirt"
 	desc = "A formal black suit with the collar worn wide, intended for the station's finest."
 	icon_state = "really_black_suit_skirt_collar"
-	inhand_icon_state = "really_black_suit_skirt"
 	body_parts_covered = CHEST|GROIN|ARMS
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY|FEMALE_UNIFORM_NO_BREASTS
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	gets_cropped_on_taurs = FALSE
 
 /obj/item/clothing/under/suit/skyrat/inferno
 	name = "inferno suit"

@@ -99,14 +99,12 @@
 	species = new species()
 	var/datum/language_holder/language_holder = new species.species_language_holder()
 
-	if(all_quirks.Find("Foreigner"))
-		language_holder.remove_language(/datum/language/common)
-		if(language_holder.spoken_languages.len == 0)
-			language_holder.grant_language(/datum/language/uncommon)
+	// Do language post procesing here. Used to house our foreigner functionality.
+	// I saw little reason to remove this proc, considering it makes code using this a little easier to read.
 
 	return language_holder
 
-// Whenever we switch a species, we'll try to get common if we can to not confuse anyone
+/// Tries to get the topmost language of the language holder. Should be the species' native language, and if it isn't, you should pester a coder.
 /datum/preferences/proc/try_get_common_language()
 	var/datum/language_holder/language_holder = get_adjusted_language_holder()
 	var/language = language_holder.spoken_languages[1]

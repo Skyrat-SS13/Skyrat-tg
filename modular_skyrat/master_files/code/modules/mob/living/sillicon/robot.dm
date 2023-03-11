@@ -3,7 +3,7 @@
 
 /datum/component/robot_smoke/RegisterWithParent()
 	add_verb(parent, /mob/living/silicon/robot/proc/toggle_smoke)
-	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, .proc/dir_change)
+	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, PROC_REF(dir_change))
 
 /datum/component/robot_smoke/UnregisterFromParent()
 	remove_verb(parent, /mob/living/silicon/robot/proc/toggle_smoke)
@@ -52,7 +52,7 @@
 
 /mob/living/silicon/robot/proc/dissipate()
 	particles.spawning = 0
-	addtimer(CALLBACK(src, .proc/particles_qdel), 1.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(particles_qdel)), 1.5 SECONDS)
 
 /mob/living/silicon/robot/proc/particles_qdel()
 	QDEL_NULL(particles)
@@ -93,27 +93,3 @@
 	color = "#ffffffc2"
 	pixel_y = -8
 	layer = ABOVE_MOB_LAYER
-
-// 	Modular solution for alternative tipping visuals
-/datum/component/tippable/set_tipped_status(mob/living/tipped_mob, new_status = FALSE)
-	var/mob/living/silicon/robot/robot = tipped_mob
-
-	is_tipped = new_status
-
-	if(is_tipped)
-		ADD_TRAIT(tipped_mob, TRAIT_IMMOBILIZED, TIPPED_OVER)
-		if(R_TRAIT_UNIQUETIP in robot.model.model_features)
-			robot.icon_state = "[robot.model.cyborg_base_icon]-tipped"
-			robot.cut_overlays() // Cut eye-lights
-			return
-
-		tipped_mob.transform = turn(tipped_mob.transform, 180)
-
-	else
-		REMOVE_TRAIT(tipped_mob, TRAIT_IMMOBILIZED, TIPPED_OVER)
-		if(R_TRAIT_UNIQUETIP in robot.model.model_features)
-			robot.icon_state = "[robot.model.cyborg_base_icon]"
-			robot.regenerate_icons() // Return eye-lights
-			return
-
-		tipped_mob.transform = turn(tipped_mob.transform, -180)

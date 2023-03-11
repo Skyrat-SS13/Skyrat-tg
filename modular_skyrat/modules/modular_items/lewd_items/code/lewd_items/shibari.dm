@@ -57,12 +57,12 @@
 /obj/item/stack/shibari_rope/update_overlays()
 	. = ..()
 	if(glow)
-		. += emissive_appearance(icon, icon_state, alpha = alpha)
+		. += emissive_appearance(icon, icon_state, src, alpha = alpha)
 
 /obj/item/stack/shibari_rope/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
 	if(glow)
-		. += emissive_appearance(standing.icon, standing.icon_state, alpha = standing.alpha)
+		. += emissive_appearance(standing.icon, standing.icon_state, src, alpha = standing.alpha)
 
 /obj/item/stack/shibari_rope/update_icon_state()
 	if(amount <= (max_amount * (1/3)))
@@ -89,7 +89,7 @@
 /obj/item/stack/shibari_rope/Initialize(mapload, new_amount, merge, list/mat_override, mat_amt)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-	RegisterSignal(src, COMSIG_ITEM_ATTACK, .proc/handle_roping)
+	RegisterSignal(src, COMSIG_ITEM_ATTACK, PROC_REF(handle_roping))
 	if(!greyscale_colors)
 		var/new_color = "#"
 		for(var/i in 1 to 3)
@@ -108,22 +108,22 @@
 		return
 	switch(user.zone_selected)
 		if(BODY_ZONE_L_LEG)
-			INVOKE_ASYNC(src, .proc/handle_leg_tying, attacked, user)
+			INVOKE_ASYNC(src, PROC_REF(handle_leg_tying), attacked, user)
 			return COMPONENT_CANCEL_ATTACK_CHAIN
 		if(BODY_ZONE_R_LEG)
-			INVOKE_ASYNC(src, .proc/handle_leg_tying, attacked, user)
+			INVOKE_ASYNC(src, PROC_REF(handle_leg_tying), attacked, user)
 			return COMPONENT_CANCEL_ATTACK_CHAIN
 		if(BODY_ZONE_PRECISE_GROIN)
-			INVOKE_ASYNC(src, .proc/handle_groin_tying, attacked, user)
+			INVOKE_ASYNC(src, PROC_REF(handle_groin_tying), attacked, user)
 			return COMPONENT_CANCEL_ATTACK_CHAIN
 		if(BODY_ZONE_CHEST)
-			INVOKE_ASYNC(src, .proc/handle_chest_tying, attacked, user)
+			INVOKE_ASYNC(src, PROC_REF(handle_chest_tying), attacked, user)
 			return COMPONENT_CANCEL_ATTACK_CHAIN
 		if(BODY_ZONE_L_ARM)
-			INVOKE_ASYNC(src, .proc/handle_arm_tying, attacked, user)
+			INVOKE_ASYNC(src, PROC_REF(handle_arm_tying), attacked, user)
 			return COMPONENT_CANCEL_ATTACK_CHAIN
 		if(BODY_ZONE_R_ARM)
-			INVOKE_ASYNC(src, .proc/handle_arm_tying, attacked, user)
+			INVOKE_ASYNC(src, PROC_REF(handle_arm_tying), attacked, user)
 			return COMPONENT_CANCEL_ATTACK_CHAIN
 
 
@@ -137,7 +137,7 @@
 	them.visible_message(span_warning("[user] starts tying [them]'s groin!"),\
 		span_userdanger("[user] starts tying your groin!"),\
 		span_hear("You hear ropes being tightened."))
-	if(!do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+	if(!do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60, them))
 		return
 	var/obj/item/stack/shibari_rope/split_rope = null
 	var/slow = 0
@@ -173,7 +173,7 @@
 	them.visible_message(span_warning("[user] starts tying [them]'s chest!"),\
 		span_userdanger("[user] starts tying your chest!"),\
 		span_hear("You hear ropes being tightened."))
-	if(!do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+	if(!do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60, them))
 		return
 	var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
 	if(split_rope)
@@ -197,7 +197,7 @@
 	them.visible_message(span_warning("[user] starts tying [them]'s hands!"),\
 		span_userdanger("[user] starts tying your hands!"),\
 		span_hear("You hear ropes being tightened."))
-	if(!do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+	if(!do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60, them))
 		return
 	var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
 	if(split_rope)
@@ -224,7 +224,7 @@
 	them.visible_message(span_warning("[user] starts tying [them]'s feet!"),\
 		span_userdanger("[user] starts tying your feet!"),\
 		span_hear("You hear ropes being tightened."))
-	if(!do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+	if(!do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60, them))
 		return
 	var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
 	if(split_rope)
@@ -247,7 +247,7 @@
 			them.visible_message(span_warning("[user] starts tying [them]'s chest!"),\
 				span_userdanger("[user] starts tying your chest!"),\
 				span_hear("You hear ropes being tightened."))
-			if(!do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+			if(!do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60, them))
 				return
 			var/slow = 0
 			if(them.dna.species.bodytype & BODYTYPE_TAUR)
@@ -279,7 +279,7 @@
 			them.visible_message(span_warning("[user] starts tying [them]'s groin!"),\
 				span_userdanger("[user] starts tying your groin!"),\
 				span_hear("You hear ropes being tightened."))
-			if(!do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
+			if(!do_after(user, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60, them))
 				return
 			var/obj/item/stack/shibari_rope/split_rope = null
 			var/slow = 0

@@ -1,9 +1,9 @@
 /mob/living/simple_animal/hostile/biohazard_blob
 	gold_core_spawnable = HOSTILE_SPAWN
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
-	see_in_dark = 4
+	lighting_cutoff_red = 0
+	lighting_cutoff_green = 35
+	lighting_cutoff_blue = 20
 	mob_biotypes = MOB_ORGANIC
-	gold_core_spawnable = NO_SPAWN
 	icon = 'modular_skyrat/modules/biohazard_blob/icons/blob_mobs.dmi'
 	vision_range = 5
 	aggro_vision_range = 8
@@ -30,6 +30,7 @@
 	attack_sound = 'sound/effects/attackblob.ogg'
 	melee_damage_type = BURN
 	del_on_death = TRUE
+	death_message = "evaporates!"
 	light_system = MOVABLE_LIGHT
 	light_range = 2
 	light_power = 1
@@ -43,10 +44,6 @@
 /mob/living/simple_animal/hostile/biohazard_blob/oil_shambler/Initialize(mapload)
 	. = ..()
 	update_overlays()
-
-/mob/living/simple_animal/hostile/biohazard_blob/oil_shambler/Destroy()
-	visible_message(span_warning("The [src] evaporates!"))
-	return ..()
 
 /mob/living/simple_animal/hostile/biohazard_blob/oil_shambler/update_overlays()
 	. = ..()
@@ -69,6 +66,7 @@
 	icon_state = "diseased_rat"
 	icon_living = "diseased_rat"
 	icon_dead = "diseased_rat_dead"
+	gold_core_spawnable = NO_SPAWN
 	speak_emote = list("chitters")
 	emote_hear = list("chitters")
 	speak_chance = 5
@@ -93,7 +91,7 @@
 		var/mob/living/carbon/C = target
 		if(src.can_inject(target))
 			to_chat(C, span_danger("[src] manages to penetrate your clothing with it's teeth!"))
-			C.ForceContractDisease(new /datum/disease/cordyceps(), FALSE, TRUE)
+			C.ForceContractDisease(new /datum/disease/cryptococcus(), FALSE, TRUE)
 
 /mob/living/simple_animal/hostile/biohazard_blob/electric_mosquito
 	name = "electric mosquito"
@@ -152,7 +150,7 @@
 	light_color = LIGHT_COLOR_GREEN
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, CLONE = 1, STAMINA = 0, OXY = 0)
 	gender = NEUTER
-	wound_bonus = 30
+	wound_bonus = 15
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = INFINITY
@@ -166,7 +164,7 @@
 	var/datum/reagents/R = new/datum/reagents(300)
 	R.my_atom = src
 	R.add_reagent(/datum/reagent/toxin/mutagen, 20)
-	chem_splash(loc, 5, list(R))
+	chem_splash(loc, null, 5, list(R))
 	playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
 	return ..()
 

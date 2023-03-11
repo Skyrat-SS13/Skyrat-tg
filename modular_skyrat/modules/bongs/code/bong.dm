@@ -192,7 +192,7 @@
 	moan_chance = 50
 
 #define MAX_FAKE_STEAM_STAGES 5
-#define STAGE_DOWN_TIME 10 SECONDS
+#define STAGE_DOWN_TIME (10 SECONDS)
 
 /// Fake steam effect
 /obj/effect/abstract/fake_steam

@@ -186,10 +186,11 @@
 /obj/item/circuitboard/machine/xenoarch_machine
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	req_components = list(
-		/obj/item/stock_parts/micro_laser = 1,
-		/obj/item/stock_parts/matter_bin = 1,
+		/datum/stock_part/micro_laser = 1,
+		/datum/stock_part/matter_bin = 1,
 		/obj/item/stack/cable_coil = 2,
-		/obj/item/stack/sheet/glass = 2)
+		/obj/item/stack/sheet/glass = 2,
+	)
 	needs_anchored = TRUE
 
 /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_researcher

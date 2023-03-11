@@ -82,7 +82,7 @@
 			return
 	. = ..()
 
-/obj/structure/trash_pile/proc/eject_mob(var/mob/living/hidden_mob)
+/obj/structure/trash_pile/proc/eject_mob(mob/living/hidden_mob)
 	hidden_mob.forceMove(src.loc)
 	playsound(hidden_mob.loc, 'sound/machines/chime.ogg', 50, FALSE, -5)
 	hidden_mob.do_alert_animation(hidden_mob)
@@ -102,7 +102,7 @@
 	if(HAS_TRAIT(user, TRAIT_RESTRAINED)) // hiding takes twice as long when restrained.
 		adjusted_dive_time *= 2
 
-	if(do_mob(user, user, adjusted_dive_time))
+	if(do_after(user, adjusted_dive_time, user))
 		if(src.loc) // Checking if structure has been destroyed
 			if(do_dive(user))
 				user.forceMove(src)
@@ -116,7 +116,7 @@
 	if(!user.combat_mode)
 		if(can_hide_item(hidden_item))
 			balloon_alert(user, "hiding item...")
-			if(do_mob(user, user, hide_item_time))
+			if(do_after(user, hide_item_time, user))
 				if(src.loc)
 					if(user.transferItemToLoc(hidden_item, src))
 						balloon_alert(user, "item hidden")

@@ -26,7 +26,7 @@
 			"passive_spawning" = list("desc" = "Passive spawning", "type" = "boolean", "value" = "No"),
 			"faction" = list("desc" = "Faction", "type" = "string", "value" = NEST_FACTION),
 			"nest_icon" = list("desc" = "Nest icon state", "type" = "string", "value" = "nest"),
-			"spawn" = list("desc" = "Spawn nest", "type" = "button", "callback" = CALLBACK(src, .proc/spawn_it), "value" = "Spawn"),
+			"spawn" = list("desc" = "Spawn nest", "type" = "button", "callback" = CALLBACK(src, PROC_REF(spawn_it)), "value" = "Spawn"),
 		)
 	)
 

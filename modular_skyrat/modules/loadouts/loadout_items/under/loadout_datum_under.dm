@@ -13,12 +13,13 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under
 	category = LOADOUT_ITEM_UNIFORM
 
+/datum/loadout_item/under/pre_equip_item(datum/outfit/outfit, datum/outfit/outfit_important_for_life, mob/living/carbon/human/equipper, visuals_only = FALSE)
+	if(initial(outfit_important_for_life.uniform))
+		.. ()
+		return TRUE
+
 /datum/loadout_item/under/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
-	if(isplasmaman(equipper))
-		if(!visuals_only)
-			to_chat(equipper, "Your loadout uniform was not equipped directly due to your envirosuit.")
-			LAZYADD(outfit.backpack_contents, item_path)
-	else if(override_items == LOADOUT_OVERRIDE_BACKPACK && !visuals_only)
+	if(override_items == LOADOUT_OVERRIDE_BACKPACK && !visuals_only)
 		if(outfit.uniform)
 			LAZYADD(outfit.backpack_contents, outfit.uniform)
 		outfit.uniform = item_path
@@ -114,14 +115,9 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/security/warden/peacekeeper/sol
 	restricted_roles = list(JOB_WARDEN)
 
-/datum/loadout_item/under/jumpsuit/peacetrouse
-	name = "Peacekeeper Trousers"
-	item_path = /obj/item/clothing/under/rank/security/peacekeeper/trousers
-	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_SECURITY_MEDIC)
-
 /datum/loadout_item/under/jumpsuit/security_trousers
 	name = "Security Trousers"
-	item_path = /obj/item/clothing/under/rank/security/peacekeeper/trousers/red
+	item_path = /obj/item/clothing/under/rank/security/peacekeeper/trousers
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_SECURITY_MEDIC)
 
 /datum/loadout_item/under/jumpsuit/solofficer
@@ -162,7 +158,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/jumpsuit/hlscientist
 	name = "Ridiculous Scientist Outfit"
 	item_path = /obj/item/clothing/under/rank/rnd/scientist/skyrat/hlscience
-	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_VANGUARD_OPERATIVE)
+	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR)
 
 /datum/loadout_item/under/jumpsuit/rd_jumpsuit
 	name = "Research Director's Jumpsuit"
@@ -176,7 +172,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/utility
 	name = "Utility Uniform"
-	item_path = /obj/item/clothing/under/utility
+	item_path = /obj/item/clothing/under/misc/skyrat/utility
 
 /datum/loadout_item/under/jumpsuit/utility_eng
 	name = "Engineering Utility Uniform"
@@ -191,7 +187,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/jumpsuit/utility_sci
 	name = "Science Utility Uniform"
 	item_path = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility
-	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_VANGUARD_OPERATIVE, JOB_SCIENCE_GUARD)
+	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_SCIENCE_GUARD)
 
 /datum/loadout_item/under/jumpsuit/utility_cargo
 	name = "Supply Utility Uniform"
@@ -238,6 +234,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/buttondown_shorts
 	name = "Recolorable Buttondown Shirt with Shorts"
 	item_path = /obj/item/clothing/under/costume/buttondown/shorts
+
+/datum/loadout_item/under/miscellaneous/vicvest
+	name = "Recolorable Buttondown Shirt with Double-Breasted Vest"
+	item_path = /obj/item/clothing/under/pants/skyrat/vicvest
 
 /datum/loadout_item/under/miscellaneous/slacks
 	name = "Recolorable Slacks"
@@ -298,6 +298,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/purple_short
 	name = "Purple Shorts"
 	item_path = /obj/item/clothing/under/shorts/purple
+
+/datum/loadout_item/under/miscellaneous/recolorable_kilt
+	name = "Recolorable Kilt"
+	item_path = /obj/item/clothing/under/pants/skyrat/kilt
 
 //TODO: split loadout's miscellaneous to have "Pants/Shorts" and "Dresses/Skirts" as options too. Misc is stupid.
 
@@ -429,9 +433,13 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Recolorable Cheongsam"
 	item_path = /obj/item/clothing/under/costume/skyrat/cheongsam
 
+/datum/loadout_item/under/miscellaneous/kimono
+	name = "Fancy Kimono"
+	item_path =  /obj/item/clothing/under/costume/skyrat/kimono
+
 /datum/loadout_item/under/miscellaneous/chaps
 	name = "Black Chaps"
-	item_path = /obj/item/clothing/under/pants/chaps
+	item_path = /obj/item/clothing/under/pants/skyrat/chaps
 
 /datum/loadout_item/under/miscellaneous/tracky
 	name = "Blue Tracksuit"
@@ -448,6 +456,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/dutch
 	name = "Dutch Suit"
 	item_path = /obj/item/clothing/under/costume/dutch
+
+/datum/loadout_item/under/miscellaneous/cavalry
+	name = "Cavalry Uniform"
+	item_path = /obj/item/clothing/under/costume/skyrat/cavalry
 
 /datum/loadout_item/under/miscellaneous/tacticool_turtleneck
 	name = "Tacticool Turtleneck"
@@ -488,7 +500,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/keyhole
 	name = "Keyhole Sweater"
-	item_path = /obj/item/clothing/under/keyhole_sweater
+	item_path = /obj/item/clothing/under/sweater/keyhole
 
 /datum/loadout_item/under/miscellaneous/blacknwhite
 	name = "Classic Prisoner Jumpsuit"
@@ -527,11 +539,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/gear_harness
 	name = "Gear Harness"
-	item_path = /obj/item/clothing/under/misc/gear_harness
+	item_path = /obj/item/clothing/under/misc/skyrat/gear_harness
 
 /datum/loadout_item/under/miscellaneous/taccas
 	name = "Tacticasual Uniform"
-	item_path = /obj/item/clothing/under/misc/taccas
+	item_path = /obj/item/clothing/under/misc/skyrat/taccas
 
 /datum/loadout_item/under/miscellaneous/cargo_casual
 	name = "Cargo Tech Casualwear"
@@ -565,11 +577,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/eve
 	name = "Collection of Leaves"
-	item_path = /obj/item/clothing/under/misc/gear_harness/eve
+	item_path = /obj/item/clothing/under/misc/skyrat/gear_harness/eve
 
 /datum/loadout_item/under/miscellaneous/adam
 	name = "Leaf"
-	item_path = /obj/item/clothing/under/misc/gear_harness/adam
+	item_path = /obj/item/clothing/under/misc/skyrat/gear_harness/adam
 
 /datum/loadout_item/under/miscellaneous/ethereal_tunic
 	name = "Ethereal Tunic"
@@ -589,6 +601,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/formaldressred
 	name = "Formal Red Dress"
 	item_path = /obj/item/clothing/under/dress/skyrat/redformal
+
+/datum/loadout_item/under/formal/countessdress
+	name = "Countess Dress"
+	item_path = /obj/item/clothing/under/dress/skyrat/countess
 
 /datum/loadout_item/under/formal/assistant
 	name = "Assistant Formal"
@@ -741,6 +757,14 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/fancy_suit
 	name = "Fancy Suit"
 	item_path = /obj/item/clothing/under/suit/fancy
+
+/datum/loadout_item/under/formal/recolorable_suit
+	name = "Recolorable Formal Suit"
+	item_path = /obj/item/clothing/under/suit/skyrat/recolorable
+
+/datum/loadout_item/under/formal/recolorable_suitskirt
+	name = "Recolorable Formal Suitskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/recolorable/skirt
 
 /datum/loadout_item/under/formal/trek_command
 	name = "Trekkie Command Uniform"

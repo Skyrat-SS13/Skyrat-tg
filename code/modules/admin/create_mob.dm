@@ -25,21 +25,20 @@
 	var/random_eye_color = random_eye_color()
 	human.eye_color_left = random_eye_color
 	human.eye_color_right = random_eye_color
-
-	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	human.dna.blood_type = random_blood_type()
+	human.dna.features["mcolor"] = "#[random_color()]"
+	human.dna.species.randomize_active_underwear_only(human)
+	/*SKYRAT EDIT OLD
+	for(var/datum/species/species_path as anything in subtypesof(/datum/species))
+		var/datum/species/new_species = new species_path
+		new_species.randomize_features(human)
+	SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION*/
+	human.dna.species.randomize_features(human)
 	human.dna.mutant_bodyparts = human.dna.species.get_random_mutant_bodyparts(human.dna.features)
 	human.dna.body_markings = human.dna.species.get_random_body_markings(human.dna.features)
 	human.dna.species.mutant_bodyparts = human.dna.mutant_bodyparts.Copy()
 	human.dna.species.body_markings = human.dna.body_markings.Copy()
 	//SKYRAT EDIT ADDITION END
-
-	human.dna.blood_type = random_blood_type()
-	human.dna.features["mcolor"] = "#[random_color()]"
-	human.dna.species.randomize_active_underwear(human)
-
-	for(var/datum/species/species_path as anything in subtypesof(/datum/species))
-		var/datum/species/new_species = new species_path
-		new_species.randomize_features(human)
 	human.dna.species.spec_updatehealth(human)
 	human.dna.update_dna_identity()
 	human.updateappearance()

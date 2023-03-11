@@ -11,9 +11,12 @@
 	can_suppress = TRUE
 	fire_sound_volume = 30
 	w_class = WEIGHT_CLASS_SMALL
-	has_gun_safety = FALSE
-	company_flag = COMPANY_CANTALAN
-	dirt_modifier = 0.2
+
+/obj/item/gun/ballistic/automatic/pistol/cfa_snub/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_CANTALAN)
+
+/obj/item/gun/ballistic/automatic/pistol/cfa_snub/give_gun_safeties()
+	return
 
 /obj/item/gun/ballistic/automatic/pistol/cfa_snub/empty
 	spawnwithmagazine = FALSE
@@ -27,9 +30,12 @@
 	can_suppress = FALSE
 	fire_sound_volume = 120
 	w_class = WEIGHT_CLASS_NORMAL
-	has_gun_safety = FALSE
-	company_flag = COMPANY_CANTALAN
-	dirt_modifier = 0.2
+
+/obj/item/gun/ballistic/automatic/pistol/cfa_ruby/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_CANTALAN)
+
+/obj/item/gun/ballistic/automatic/pistol/cfa_ruby/give_gun_safeties()
+	return
 
 /obj/item/gun/ballistic/automatic/pistol/cfa_ruby/empty
 	spawnwithmagazine = FALSE

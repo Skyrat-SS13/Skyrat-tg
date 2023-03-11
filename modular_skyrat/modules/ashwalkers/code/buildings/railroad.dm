@@ -64,6 +64,7 @@
 	desc = "A wonderful form of locomotion. It will only ride while on tracks. It does have storage"
 	icon = 'modular_skyrat/modules/ashwalkers/icons/railroad.dmi'
 	icon_state = "railcart"
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 	/// The mutable appearance used for the overlay over buckled mobs.
 	var/mutable_appearance/railoverlay
 	/// whether there is sand in the cart
@@ -77,9 +78,7 @@
 /obj/vehicle/ridden/rail_cart/Initialize(mapload)
 	. = ..()
 	attach_trailer()
-	railoverlay = mutable_appearance(icon, "railoverlay")
-	railoverlay.layer = ABOVE_MOB_LAYER
-	railoverlay.plane = GAME_PLANE_UPPER
+	railoverlay = mutable_appearance(icon, "railoverlay", ABOVE_MOB_LAYER, src, GAME_PLANE_UPPER)
 	AddElement(/datum/element/ridable, /datum/component/riding/vehicle/rail_cart)
 
 	create_storage(max_total_storage = 21, max_slots = 21)

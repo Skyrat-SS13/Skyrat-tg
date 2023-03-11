@@ -21,7 +21,7 @@
 
 /obj/item/mod/module/smartgun/on_activation()
 	. = ..()
-	RegisterSignal(device, COMSIG_GUN_FIRED, .proc/consume_energy)
+	RegisterSignal(device, COMSIG_GUN_FIRED, PROC_REF(consume_energy))
 
 /obj/item/mod/module/smartgun/proc/consume_energy(mob/user, atom/target, params, zone_override)
 	SIGNAL_HANDLER

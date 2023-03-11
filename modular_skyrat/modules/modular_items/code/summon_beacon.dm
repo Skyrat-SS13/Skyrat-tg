@@ -3,7 +3,7 @@
 	desc = "Summons a thing. Probably shouldn't use this one, though."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "gangtool-blue"
-	inhand_icon_state = "radio"
+	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_SMALL
 
 	/// How many uses the beacon has left
@@ -42,7 +42,7 @@
 	show_options(user)
 
 /obj/item/summon_beacon/proc/can_use_beacon(mob/living/user)
-	if(user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+	if(user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return TRUE
 	else
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 40, TRUE)
@@ -90,6 +90,12 @@
 	if(confirmed != "Yes")
 		return
 
+	if(!uses)
+		return
+
+	uses -= 1
+	balloon_alert(user, "[uses] use[uses == 1 ? "" : "s"] left!")
+
 	podspawn(list(
 		"target" = get_turf(target),
 		"path" = supply_pod_stay ? /obj/structure/closet/supplypod/podspawn/no_return : /obj/structure/closet/supplypod/podspawn,
@@ -105,11 +111,8 @@
 				[span_bold("Request received. Pod inbound, please stand back from the landing site.")] \
 				Message ends.\""))
 
-	uses--
 	if(!uses)
 		qdel(src)
-	else
-		balloon_alert(user, "[uses] use[uses > 1 ? "s" : ""] left!")
 
 // Misc stuff here
 
@@ -146,21 +149,3 @@
 
 	area_string = "atmospherics"
 	supply_pod_stay = TRUE
-
-/obj/item/summon_beacon/vanguard
-	name = "vanguard operatives supply beacon"
-	desc = "Used to request your job supplies, use in hand to do so!"
-
-	allowed_areas = list(
-		/area/awaymission,
-		/area/station/command/gateway,
-	)
-
-	selectable_atoms = list(
-		/obj/structure/closet/crate/secure/exp_corps/marksman,
-		/obj/structure/closet/crate/secure/exp_corps/pointman,
-		/obj/structure/closet/crate/secure/exp_corps/field_medic,
-		/obj/structure/closet/crate/secure/exp_corps/combat_tech,
-	)
-
-	area_string = "the gateway chamber"

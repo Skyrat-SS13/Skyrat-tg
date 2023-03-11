@@ -70,7 +70,7 @@
 	if(target_mob != user)
 		target_mob.visible_message(span_danger("[user] attempts to feed [target_mob] something from [src]."), \
 					span_userdanger("[user] attempts to feed you something from [src]."))
-		if(!do_mob(user, target_mob))
+		if(!do_after(user, 3 SECONDS, target_mob))
 			return
 		if(!reagents || !reagents.total_volume)
 			return // The drink might be empty after the delay, such as by spam-feeding
@@ -81,6 +81,7 @@
 		to_chat(user, span_notice("You swallow a gulp of [src]."))
 
 	SEND_SIGNAL(src, COMSIG_GLASS_DRANK, target_mob, user)
+	SEND_SIGNAL(target_mob, COMSIG_GLASS_DRANK, src, user) // SKYRAT EDIT ADDITION - Hemophages can't casually drink what's not going to regenerate their blood
 	var/fraction = min(gulp_size/reagents.total_volume, 1)
 	reagents.trans_to(target_mob, gulp_size, transfered_by = user, methods = INGEST)
 	checkLiked(fraction, target_mob)
@@ -98,9 +99,14 @@
 	if(LAZYLEN(diseases_to_add))
 		AddComponent(/datum/component/infective, diseases_to_add)
 
-/obj/item/reagent_containers/cup/afterattack(obj/target, mob/living/user, proximity)
+/obj/item/reagent_containers/cup/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
-	if((!proximity) || !check_allowed_items(target,target_self=1))
+	if(!proximity_flag)
+		return
+
+	. |= AFTERATTACK_PROCESSED_ITEM
+
+	if(!check_allowed_items(target, target_self = TRUE))
 		return
 
 	if(!spillable)
@@ -133,7 +139,7 @@
 	target.update_appearance()
 
 /obj/item/reagent_containers/cup/afterattack_secondary(atom/target, mob/user, proximity_flag, click_parameters)
-	if((!proximity_flag) || !check_allowed_items(target,target_self=1))
+	if((!proximity_flag) || !check_allowed_items(target, target_self = TRUE))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	if(!spillable)
@@ -204,6 +210,8 @@
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "beaker"
 	inhand_icon_state = "beaker"
+	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	worn_icon_state = "beaker"
 	custom_materials = list(/datum/material/glass=500)
 	volume = 60 //SKYRAT EDIT: Addition
@@ -276,6 +284,27 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,20,25,30,50,100,300)
 
+/obj/item/reagent_containers/cup/beaker/meta/omnizine
+	list_reagents = list(/datum/reagent/medicine/omnizine = 180)
+
+/obj/item/reagent_containers/cup/beaker/meta/sal_acid
+	list_reagents = list(/datum/reagent/medicine/sal_acid = 180)
+
+/obj/item/reagent_containers/cup/beaker/meta/oxandrolone
+	list_reagents = list(/datum/reagent/medicine/oxandrolone = 180)
+
+/obj/item/reagent_containers/cup/beaker/meta/pen_acid
+	list_reagents = list(/datum/reagent/medicine/pen_acid = 180)
+
+/obj/item/reagent_containers/cup/beaker/meta/atropine
+	list_reagents = list(/datum/reagent/medicine/atropine = 180)
+
+/obj/item/reagent_containers/cup/beaker/meta/salbutamol
+	list_reagents = list(/datum/reagent/medicine/salbutamol = 180)
+
+/obj/item/reagent_containers/cup/beaker/meta/rezadone
+	list_reagents = list(/datum/reagent/medicine/rezadone = 180)
+
 /obj/item/reagent_containers/cup/beaker/cryoxadone
 	list_reagents = list(/datum/reagent/medicine/cryoxadone = 30)
 
@@ -308,10 +337,16 @@
 	name = "bucket"
 	desc = "It's a bucket. You can squeeze a mop's contents into it by using right-click." //SKYRAT EDIT CHANGE
 	icon = 'icons/obj/janitor.dmi'
+	worn_icon = 'icons/mob/clothing/head/utility.dmi'
 	icon_state = "bucket"
 	inhand_icon_state = "bucket"
 	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/custodial_righthand.dmi'
+	greyscale_colors = "#0085e5" //matches 1:1 with the original sprite color before gag-ification.
+	greyscale_config = /datum/greyscale_config/buckets
+	greyscale_config_worn = /datum/greyscale_config/buckets_worn
+	greyscale_config_inhand_left = /datum/greyscale_config/buckets_inhands_left
+	greyscale_config_inhand_right = /datum/greyscale_config/buckets_inhands_right
 	custom_materials = list(/datum/material/iron=200)
 	w_class = WEIGHT_CLASS_NORMAL
 	amount_per_transfer_from_this = 20
@@ -320,7 +355,7 @@
 	flags_inv = HIDEHAIR
 	slot_flags = ITEM_SLOT_HEAD
 	resistance_flags = NONE
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 75, ACID = 50) //Weak melee protection, because you can wear it on your head
+	armor_type = /datum/armor/cup_bucket
 	slot_equipment_priority = list( \
 		ITEM_SLOT_BACK, ITEM_SLOT_ID,\
 		ITEM_SLOT_ICLOTHING, ITEM_SLOT_OCLOTHING,\
@@ -332,15 +367,32 @@
 		ITEM_SLOT_DEX_STORAGE
 	)
 
+/datum/armor/cup_bucket
+	melee = 10
+	fire = 75
+	acid = 50
+
+/obj/item/reagent_containers/cup/bucket/Initialize(mapload, vol)
+	if(greyscale_colors == initial(greyscale_colors))
+		set_greyscale(pick(list("#0085e5", COLOR_OFF_WHITE, COLOR_ORANGE_BROWN, COLOR_SERVICE_LIME, COLOR_MOSTLY_PURE_ORANGE, COLOR_FADED_PINK, COLOR_RED, COLOR_YELLOW, COLOR_VIOLET, COLOR_WEBSAFE_DARK_GRAY)))
+	return ..()
+
 /obj/item/reagent_containers/cup/bucket/wooden
 	name = "wooden bucket"
 	icon_state = "woodbucket"
 	inhand_icon_state = "woodbucket"
+	greyscale_colors = null
+	greyscale_config = null
+	greyscale_config_worn = null
+	greyscale_config_inhand_left = null
+	greyscale_config_inhand_right = null
 	custom_materials = list(/datum/material/wood = MINERAL_MATERIAL_AMOUNT * 2)
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 50)
+	armor_type = /datum/armor/bucket_wooden
 	resistance_flags = FLAMMABLE
 
-#define SQUEEZING_DISPERSAL_PERCENT 0.75 //SKYRAT EDIT ADDITION
+/datum/armor/bucket_wooden
+	melee = 10
+	acid = 50
 
 /obj/item/reagent_containers/cup/bucket/attackby(obj/O, mob/living/user, params) //SKYRAT EDIT CHANGE
 	if(istype(O, /obj/item/mop)) //SKYRAT EDIT CHANGE
@@ -352,7 +404,7 @@
 			if(reagents.total_volume == reagents.maximum_volume)
 				to_chat(user, "<span class='warning'>[src] is full!</span>")
 				return
-			O.reagents.remove_any(O.reagents.total_volume*SQUEEZING_DISPERSAL_PERCENT)
+			O.reagents.remove_any(O.reagents.total_volume * SQUEEZING_DISPERSAL_RATIO)
 			O.reagents.trans_to(src, O.reagents.total_volume, transfered_by = user)
 			to_chat(user, "<span class='notice'>You squeeze the liquids from [O] to [src].</span>")
 		else
@@ -365,11 +417,9 @@
 	else if(isprox(O)) //This works with wooden buckets for now. Somewhat unintended, but maybe someone will add sprites for it soon(TM)
 		to_chat(user, span_notice("You add [O] to [src]."))
 		qdel(O)
-		qdel(src)
-		user.put_in_hands(new /obj/item/bot_assembly/cleanbot)
+		var/obj/item/bot_assembly/cleanbot/new_cleanbot_ass = new(null, src)
+		user.put_in_hands(new_cleanbot_ass)
 		return
-
-#undef SQUEEZING_DISPERSAL_PERCENT  //SKYRAT EDIT ADDITION
 
 /obj/item/reagent_containers/cup/bucket/equipped(mob/user, slot)
 	. = ..()
@@ -403,7 +453,8 @@
 
 /obj/item/reagent_containers/cup/mortar
 	name = "mortar"
-	desc = "A specially formed bowl of ancient design. It is possible to crush or juice items placed in it using a pestle; however the process, unlike modern methods, is slow and physically exhausting. <b>Alt click to eject the item.</b>"
+	desc = "A specially formed bowl of ancient design. It is possible to crush or juice items placed in it using a pestle; however the process, unlike modern methods, is slow and physically exhausting."
+	desc_controls = "Alt click to eject the item."
 	icon_state = "mortar"
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5, 10, 15, 20, 25, 30, 50, 100)
@@ -482,11 +533,6 @@
 		return
 	to_chat(user, span_warning("You can't grind this!"))
 
-/obj/item/reagent_containers/cup/saline
-	name = "saline canister"
-	volume = 5000
-	list_reagents = list(/datum/reagent/medicine/salglu_solution = 5000)
-
 //Coffeepots: for reference, a standard cup is 30u, to allow 20u for sugar/sweetener/milk/creamer
 /obj/item/reagent_containers/cup/coffeepot
 	name = "coffeepot"
@@ -494,7 +540,7 @@
 	volume = 120
 	icon_state = "coffeepot"
 	fill_icon_state = "coffeepot"
-	fill_icon_thresholds = list(0, 1, 40, 80, 120)
+	fill_icon_thresholds = list(0, 1, 30, 60, 100)
 
 /obj/item/reagent_containers/cup/coffeepot/bluespace
 	name = "bluespace coffeepot"

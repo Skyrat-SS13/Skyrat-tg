@@ -2,7 +2,7 @@
 
 #define RAVAGER_OUTLINE_EFFECT "ravager_endure_outline"
 
-/mob/living/carbon/alien/humanoid/skyrat/ravager
+/mob/living/carbon/alien/adult/skyrat/ravager
 	name = "alien ravager"
 	desc = "An alien with angry red chitin, with equally intimidating looking blade-like claws in place of normal hands. That sharp tail looks like it'd probably hurt."
 	caste = "ravager"
@@ -18,7 +18,7 @@
 	melee_damage_lower = 30
 	melee_damage_upper = 35
 
-/mob/living/carbon/alien/humanoid/skyrat/ravager/Initialize(mapload)
+/mob/living/carbon/alien/adult/skyrat/ravager/Initialize(mapload)
 	. = ..()
 	tailsweep_slice = new /datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/slicing()
 	tailsweep_slice.Grant(src)
@@ -31,14 +31,14 @@
 
 	REMOVE_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
-/mob/living/carbon/alien/humanoid/skyrat/ravager/Destroy()
+/mob/living/carbon/alien/adult/skyrat/ravager/Destroy()
 	//QDEL_NULL(triple_charge)
 	QDEL_NULL(tailsweep_slice)
 	QDEL_NULL(you_cant_hurt_me_jack)
 	QDEL_NULL(triple_charge)
 	return ..()
 
-/mob/living/carbon/alien/humanoid/skyrat/ravager/create_internal_organs()
+/mob/living/carbon/alien/adult/skyrat/ravager/create_internal_organs()
 	internal_organs += new /obj/item/organ/internal/alien/plasmavessel
 	..()
 
@@ -51,7 +51,7 @@
 	charge_past = 3
 	destroy_objects = FALSE
 	charge_damage = 25
-	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
+	button_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	button_icon_state = "ravager_charge"
 	unset_after_click = TRUE
 
@@ -100,7 +100,7 @@
 	owner.balloon_alert(owner, "endure began")
 	playsound(owner, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_roar1.ogg', 100, TRUE, 8, 0.9)
 	to_chat(owner, span_danger("We numb our ability to feel pain, allowing us to fight until the very last for the next [endure_duration/10] seconds."))
-	addtimer(CALLBACK(src, .proc/endure_deactivate), endure_duration)
+	addtimer(CALLBACK(src, PROC_REF(endure_deactivate)), endure_duration)
 	owner.add_filter(RAVAGER_OUTLINE_EFFECT, 4, outline_filter(1, COLOR_RED_LIGHT))
 	ADD_TRAIT(owner, TRAIT_STUNIMMUNE, TRAIT_XENO_ABILITY_GIVEN)
 	ADD_TRAIT(owner, TRAIT_NOSOFTCRIT, TRAIT_XENO_ABILITY_GIVEN)

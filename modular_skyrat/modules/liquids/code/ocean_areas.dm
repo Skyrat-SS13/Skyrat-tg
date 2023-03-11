@@ -6,7 +6,6 @@
 	power_light = FALSE
 	power_equip = FALSE
 	power_environ = FALSE
-	area_flags = NO_ALERTS
 	outdoors = TRUE
 	ambience_index = AMBIENCE_SPACE
 	flags_1 = CAN_BE_DIRTY_1
@@ -16,7 +15,7 @@
 	map_generator = /datum/map_generator/ocean_generator
 
 /area/ocean/trench
-	area_flags = CAVES_ALLOWED | FLORA_ALLOWED | MOB_SPAWN_ALLOWED | NO_ALERTS
+	area_flags = CAVES_ALLOWED | FLORA_ALLOWED | MOB_SPAWN_ALLOWED
 	name = "The Trench"
 
 /area/ocean/trench/generated

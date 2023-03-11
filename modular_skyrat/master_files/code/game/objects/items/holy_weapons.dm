@@ -55,18 +55,37 @@
 	icon_state = "cultrobes"
 	inhand_icon_state = "cultrobes"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-	armor = list(MELEE = 50, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 80, ACID = 80, WOUND = 20) // Chaplain Riot armor
-	allowed = list(/obj/item/storage/book/bible, /obj/item/nullrod, /obj/item/reagent_containers/cup/glass/bottle/holywater, /obj/item/storage/fancy/candle_box, /obj/item/candle, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
+	armor_type = /datum/armor/hooded_cultlain_robe
+	allowed = list(/obj/item/storage/book/bible, /obj/item/nullrod, /obj/item/reagent_containers/cup/glass/bottle/holywater, /obj/item/storage/fancy/candle_box, /obj/item/flashlight/flare/candle, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
 	hoodtype = /obj/item/clothing/head/hooded/cultlain_hood
+
+/datum/armor/hooded_cultlain_robe
+	melee = 50
+	bullet = 10
+	laser = 10
+	energy = 10
+	fire = 80
+	acid = 80
+	wound = 20
 
 /obj/item/clothing/head/hooded/cultlain_hood
 	name = "ancient hood"
 	desc = "A torn, dust-caked hood."
 	icon_state = "culthood"
+	icon = 'icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'icons/mob/clothing/head/helmet.dmi'
 	body_parts_covered = HEAD
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEEARS
 	flags_cover = HEADCOVERSEYES
-	armor = list(MELEE = 50, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 80, ACID = 80) // Chaplain Riot Helmet
+	armor_type = /datum/armor/hooded_cultlain_hood
+
+/datum/armor/hooded_cultlain_hood
+	melee = 50
+	bullet = 10
+	laser = 10
+	energy = 10
+	fire = 80
+	acid = 80
 
 /obj/item/storage/box/holy/narsian
 	name = "ancient kit"
@@ -134,6 +153,7 @@
 	desc = "A set of prayer beads used by many of the more traditional religions in space"
 	icon = 'modular_skyrat/modules/chaplain/icons/holy_weapons.dmi'
 	icon_state = "rosary"
+	worn_icon_state = "nullrod"
 	force = 4
 	throwforce = 0
 	attack_verb_simple = list("whipped", "repented", "lashed", "flagellated")
@@ -194,3 +214,4 @@
 	desc = "Made of clear crystal, the blade refracts the light slightly. Purity, so close yet unattainable in this form."
 	icon_state = "void_blade"
 	inhand_icon_state = "void_blade"
+	worn_icon_state = "dark_blade"

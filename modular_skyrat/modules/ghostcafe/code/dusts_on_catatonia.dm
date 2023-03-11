@@ -1,26 +1,32 @@
 /datum/element/dusts_on_catatonia
-	element_flags = ELEMENT_DETACH
-	var/list/mob/attached_mobs = list()
+	element_flags = ELEMENT_DETACH_ON_HOST_DESTROY
 
-/datum/element/dusts_on_catatonia/Attach(datum/target,penalize = FALSE)
+	/// Set of all attached mobs.
+	var/list/attached_mobs = list()
+
+/datum/element/dusts_on_catatonia/Attach(datum/target)
 	. = ..()
-	if(!ismob(target))
+
+	if(!isliving(target))
 		return ELEMENT_INCOMPATIBLE
-	var/mob/M = target
-	if(!(M in attached_mobs))
-		attached_mobs += M
-	START_PROCESSING(SSprocessing,src)
 
-/datum/element/dusts_on_catatonia/Detach(mob/M)
+	attached_mobs[target] = TRUE
+
+	START_PROCESSING(SSprocessing, src)
+
+/datum/element/dusts_on_catatonia/Detach(datum/target)
 	. = ..()
-	if(M in attached_mobs)
-		attached_mobs -= M
+
+	attached_mobs -= target
+
 	if(!attached_mobs.len)
-		STOP_PROCESSING(SSprocessing,src)
+		STOP_PROCESSING(SSprocessing, src)
 
 /datum/element/dusts_on_catatonia/process()
-	for(var/m in attached_mobs)
-		var/mob/living/M = m
-		if(!M.key && !M.get_ghost())
-			M.dust(TRUE, force = TRUE)
-			Detach(M)
+	for(var/mob/living/attached as anything in attached_mobs)
+		if(attached.key || attached.get_ghost())
+			continue
+
+		attached.investigate_log("was dusted due to no longer being linked to a player or ghost.", INVESTIGATE_DEATHS)
+		attached.dust(TRUE, force = TRUE)
+		Detach(attached)

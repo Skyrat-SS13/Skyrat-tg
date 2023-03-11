@@ -1,6 +1,6 @@
 /turf/closed/wall
 	icon = 'modular_skyrat/modules/aesthetics/walls/icons/wall.dmi'
-	canSmoothWith = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_WINDOW_FULLTILE, SMOOTH_GROUP_AIRLOCK)
+	canSmoothWith = SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS
 
 /turf/closed/wall/r_wall
 	icon = 'modular_skyrat/modules/aesthetics/walls/icons/reinforced_wall.dmi'
@@ -24,3 +24,13 @@
 	. = ..()
 	var/mutable_appearance/rust = mutable_appearance(icon, "rust")
 	add_overlay(rust)
+
+/obj/structure/falsewall/material
+	icon = 'modular_skyrat/modules/aesthetics/walls/icons/material_wall.dmi'
+	icon_state = "wall-0"
+	base_icon_state = "wall"
+
+/turf/closed/wall/material
+	icon = 'modular_skyrat/modules/aesthetics/walls/icons/material_wall.dmi'
+	icon_state = "wall-0"
+	base_icon_state = "wall"

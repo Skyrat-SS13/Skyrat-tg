@@ -32,7 +32,7 @@
 	)
 
 /obj/item/storage/box/syndicate/contract_kit/PopulateContents()
-	new /obj/item/modular_computer/tablet/syndicate_contract_uplink/preset/uplink(src)
+	new /obj/item/modular_computer/pda/contractor(src)
 	new /obj/item/storage/box/syndicate/contractor_loadout(src)
 	new /obj/item/melee/baton/telescopic/contractor_baton(src)
 
@@ -106,8 +106,9 @@
 
 	// Paper guide
 	new /obj/item/paper/contractor_guide/midround(src)
+	new /obj/item/reagent_containers/hypospray/medipen/atropine(src)
+	new /obj/item/jammer(src)
 	new /obj/item/storage/fancy/cigarettes/cigpack_syndicate(src)
 	new /obj/item/lighter(src)
-	new /obj/item/jammer(src)
 
 #undef SMALL_ITEM_AMOUNT

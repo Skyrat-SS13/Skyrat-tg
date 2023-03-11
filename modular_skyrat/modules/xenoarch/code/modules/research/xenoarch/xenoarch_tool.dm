@@ -223,7 +223,7 @@
 		return
 	if(listeningTo)
 		UnregisterSignal(listeningTo, COMSIG_MOVABLE_MOVED)
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/pickup_rocks)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(pickup_rocks))
 	listeningTo = user
 
 /obj/item/storage/bag/xenoarch/dropped(mob/user)

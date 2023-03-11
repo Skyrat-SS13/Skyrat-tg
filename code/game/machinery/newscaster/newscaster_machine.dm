@@ -1,4 +1,4 @@
-#define ALERT_DELAY 50 SECONDS
+#define ALERT_DELAY (50 SECONDS)
 
 /obj/machinery/newscaster
 	name = "newscaster"
@@ -9,7 +9,7 @@
 	verb_say = "beeps"
 	verb_ask = "beeps"
 	verb_exclaim = "beeps"
-	armor = list(MELEE = 50, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 30)
+	armor_type = /datum/armor/machinery_newscaster
 	max_integrity = 200
 	integrity_failure = 0.25
 	interaction_flags_machine = INTERACT_MACHINE_ALLOW_SILICON|INTERACT_MACHINE_SET_MACHINE|INTERACT_MACHINE_REQUIRES_LITERACY
@@ -54,6 +54,11 @@
 	///Text of the currently written bounty
 	var/bounty_text = ""
 
+/datum/armor/machinery_newscaster
+	melee = 50
+	fire = 50
+	acid = 30
+
 /obj/machinery/newscaster/pai/ui_state(mob/user)
 	return GLOB.reverse_contained_state
 
@@ -85,14 +90,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 /obj/machinery/newscaster/update_overlays()
 	. = ..()
 
+
 	if(!(machine_stat & (NOPOWER|BROKEN)))
 		var/state = "[base_icon_state]_[GLOB.news_network.wanted_issue.active ? "wanted" : "normal"]"
 		. += mutable_appearance(icon, state)
-		. += emissive_appearance(icon, state, alpha = src.alpha)
+		. += emissive_appearance(icon, state, src, alpha = src.alpha)
 
 		if(GLOB.news_network.wanted_issue.active && alert)
 			. += mutable_appearance(icon, "[base_icon_state]_alert")
-			. += emissive_appearance(icon, "[base_icon_state]_alert", alpha = src.alpha)
+			. += emissive_appearance(icon, "[base_icon_state]_alert", src, alpha = src.alpha,)
 
 	var/hp_percent = atom_integrity * 100 / max_integrity
 	switch(hp_percent)
@@ -100,13 +106,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 			return
 		if(50 to 75)
 			. += "crack1"
-			. += emissive_blocker(icon, "crack1", alpha = src.alpha)
+			. += emissive_blocker(icon, "crack1", src, alpha = src.alpha)
 		if(25 to 50)
 			. += "crack2"
-			. += emissive_blocker(icon, "crack2", alpha = src.alpha)
+			. += emissive_blocker(icon, "crack2", src, alpha = src.alpha)
 		else
 			. += "crack3"
-			. += emissive_blocker(icon, "crack3", alpha = src.alpha)
+			. += emissive_blocker(icon, "crack3", src, alpha = src.alpha)
 
 /obj/machinery/newscaster/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
@@ -139,7 +145,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 			data["user"]["department"] = card.registered_account.account_job.paycheck_department
 		else
 			data["user"]["job"] = "No Job"
-			data["user"]["department"] = "No Department"
+			data["user"]["department"] = DEPARTMENT_UNASSIGNED
 	else if(issilicon(user))
 		var/mob/living/silicon/silicon_user = user
 		data["user"] = list()
@@ -388,7 +394,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 		if("toggleWanted")
 			alert = FALSE
 			viewing_wanted = TRUE
-			update_overlays()
+			update_appearance()
 			return TRUE
 
 		if("setCriminalName")
@@ -487,7 +493,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 		return
 	user.balloon_alert_to_viewers("started welding...", "started repairing...")
 	audible_message(span_hear("You hear welding."))
-	if(!tool.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, .proc/needs_repair)))
+	if(!tool.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, PROC_REF(needs_repair))))
 		user.balloon_alert_to_viewers("stopped welding!", "interrupted the repair!")
 		return
 	user.balloon_alert_to_viewers("repaired [src]")
@@ -610,7 +616,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
  */
 /obj/machinery/newscaster/proc/remove_alert()
 	alert = FALSE
-	update_overlays()
+	update_appearance()
 
 /**
  * When a new feed message is made that will alert all newscasters, this causes the newscasters to sent out a spoken message as well as create a sound.
@@ -622,7 +628,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 			playsound(loc, 'sound/machines/twobeep_high.ogg', 75, TRUE)
 		alert = TRUE
 		update_appearance()
-		addtimer(CALLBACK(src, .proc/remove_alert), ALERT_DELAY, TIMER_UNIQUE|TIMER_OVERRIDE)
+		addtimer(CALLBACK(src, PROC_REF(remove_alert)), ALERT_DELAY, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 	else if(!channel && update_alert)
 		say("Attention! Wanted issue distributed!")
@@ -791,7 +797,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 	if(!current_user.has_money(active_request.value) || (current_user.account_holder != active_request.owner))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
 		return TRUE
-	payment_target.transfer_money(current_user, active_request.value)
+	payment_target.transfer_money(current_user, active_request.value, "Bounty Request")
 	say("Paid out [active_request.value] credits.")
 	GLOB.request_list.Remove(active_request)
 	qdel(active_request)

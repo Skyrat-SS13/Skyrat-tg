@@ -107,17 +107,18 @@ GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 
 /obj/machinery/bsa/middle/proc/has_space()
 	var/cannon_dir = get_cannon_direction()
-	var/x_min
-	var/x_max
+	var/width = 10
+	var/offset
 	switch(cannon_dir)
 		if(EAST)
-			x_min = x - 4 //replace with defines later
-			x_max = x + 6
+			offset = -4
 		if(WEST)
-			x_min = x + 4
-			x_max = x - 6
+			offset = -6
+		else
+			return FALSE
 
-	for(var/turf/T in block(locate(x_min,y-1,z),locate(x_max,y+1,z)))
+	var/turf/base = get_turf(src)
+	for(var/turf/T as anything in CORNER_BLOCK_OFFSET(base, width, 3, offset, -1))
 		if(T.density || isspaceturf(T))
 			return FALSE
 	return TRUE
@@ -137,7 +138,7 @@ GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 	name = "Bluespace Artillery"
 	desc = "Long range bluespace artillery."
 	icon = 'icons/obj/lavaland/cannon.dmi'
-	icon_state = "orbital_cannon1"
+	icon_state = "cannon_west"
 	var/static/mutable_appearance/top_layer
 	var/ex_power = 3
 	var/power_used_per_shot = 2000000 //enough to kil standard apc - todo : make this use wires instead and scale explosion power with it
@@ -177,22 +178,34 @@ GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 
 /obj/machinery/bsa/full/Initialize(mapload, cannon_direction = WEST)
 	. = ..()
-	if(!top_layer)
-		top_layer = mutable_appearance(icon, layer = ABOVE_MOB_LAYER)
-		top_layer.plane = GAME_PLANE_UPPER
 	switch(cannon_direction)
 		if(WEST)
 			setDir(WEST)
-			top_layer.icon_state = "top_west"
 			icon_state = "cannon_west"
 		if(EAST)
 			setDir(EAST)
 			pixel_x = -128
 			bound_x = -128
-			top_layer.icon_state = "top_east"
 			icon_state = "cannon_east"
-	add_overlay(top_layer)
+	get_layer()
 	reload()
+
+/obj/machinery/bsa/full/proc/get_layer()
+	top_layer = mutable_appearance(icon, layer = ABOVE_MOB_LAYER)
+	SET_PLANE_EXPLICIT(top_layer, GAME_PLANE_UPPER, src)
+	switch(dir)
+		if(WEST)
+			top_layer.icon_state = "top_west"
+		if(EAST)
+			top_layer.icon_state = "top_east"
+	add_overlay(top_layer)
+
+/obj/machinery/bsa/full/on_changed_z_level(turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
+	if(same_z_layer)
+		return ..()
+	cut_overlay(top_layer)
+	get_layer()
+	return ..()
 
 /obj/machinery/bsa/full/proc/fire(mob/user, turf/bullseye)
 	reload()
@@ -251,7 +264,8 @@ GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 	circuit = /obj/item/circuitboard/computer/bsa_control
 	icon = 'icons/obj/machines/particle_accelerator.dmi'
 	icon_state = "control_boxp"
-	icon_keyboard = ""
+	icon_keyboard = null
+	icon_screen = null
 
 	var/datum/weakref/cannon_ref
 	var/notice

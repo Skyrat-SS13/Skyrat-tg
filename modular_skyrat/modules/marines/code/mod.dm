@@ -9,7 +9,7 @@
 		modules keep the wearer efficient during active combat situations. When response teams fail, \
 		you're the backup's backup - the desperate measures."
 	default_skin = "marine"
-	armor = list(MELEE = 50, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = 50, BIO = 100, FIRE = 100, ACID = 50, WOUND = 20) //honestly quite incredible
+	armor_type = /datum/armor/mod_theme_marines
 	atom_flags = PREVENT_CONTENTS_EXPLOSION_1
 	resistance_flags = FIRE_PROOF|ACID_PROOF
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
@@ -58,10 +58,21 @@
 		),
 	)
 
+/datum/armor/mod_theme_marines
+	melee = 50
+	bullet = 50
+	laser = 50
+	energy = 50
+	bomb = 50
+	bio = 100
+	fire = 100
+	acid = 50
+	wound = 20
+
 /obj/item/mod/control/pre_equipped/marine
 	theme = /datum/mod_theme/marines
 	applied_cell = /obj/item/stock_parts/cell/bluespace
-	initial_modules = list(
+	applied_modules = list(
 		/obj/item/mod/module/storage/large_capacity,
 		/obj/item/mod/module/emp_shield,
 		/obj/item/mod/module/magnetic_harness,
@@ -75,11 +86,16 @@
 		/obj/item/mod/module/dna_lock, //in lieu of req_access
 		/obj/item/mod/module/visor/sechud, //for identifying teammates also in suits
 	)
+	default_pins = list(
+		/obj/item/mod/module/holster,
+		/obj/item/mod/module/jetpack,
+		/obj/item/mod/module/power_kick,
+	)
 
 /obj/item/mod/control/pre_equipped/marine/engineer //smartgunner version of modsuit, with less versatile modules but the ALMIGHTY SMARTGUN
 	theme = /datum/mod_theme/marines
 	applied_cell = /obj/item/stock_parts/cell/bluespace
-	initial_modules = list(
+	applied_modules = list(
 		/obj/item/mod/module/storage/large_capacity,
 		/obj/item/mod/module/emp_shield/advanced,
 		/obj/item/mod/module/flashlight,
@@ -87,5 +103,9 @@
 		/obj/item/mod/module/noslip,
 		/obj/item/mod/module/dna_lock,
 		/obj/item/mod/module/visor/sechud,
+		/obj/item/mod/module/smartgun/marines,
+	)
+	default_pins = list(
+		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/smartgun/marines,
 	)

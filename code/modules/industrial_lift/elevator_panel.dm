@@ -15,9 +15,9 @@
 	desc = "<i>\"In case of emergency, please use the stairs.\"</i> Thus, always use the stairs."
 	density = FALSE
 
-	icon = 'icons/obj/airlock_machines.dmi'
-	icon_state = "airlock_control_standby"
-	base_icon_state = "airlock_control"
+	icon = 'icons/obj/stationobjs.dmi'
+	icon_state = "elevpanel0"
+	base_icon_state = "elevpanel"
 
 	power_channel = AREA_USAGE_ENVIRON
 	// Indestructible until someone wants to make these constructible, with all the chaos that implies
@@ -38,12 +38,18 @@
 	/// If you want to override what each floor is named as, you can do so with this list.
 	/// Make this an assoc list of "z level you want to rename" to "desired name".
 	/// So, if you want the z-level 2 destination to be named "Cargo", you would do list("2" = "Cargo").
+	/// (Reminder: Z1 gets loaded as Central Command, so your map's bottom Z will be Z2!)
 	var/list/preset_destination_names
 
 	/// What z-level did we move to last? Used for showing the user in the UI which direction we're moving.
 	var/last_move_target
 	/// TimerID to our door reset timer, made by emergency opening doors
 	var/door_reset_timerid
+	/// The light mask overlay we use
+	light_power = 0.5 // Minimums, we want the button to glow if it has a mask, not light an area
+	light_range = 1.5
+	light_color = LIGHT_COLOR_DARK_BLUE
+	var/light_mask = "elev-light-mask"
 
 /obj/machinery/elevator_control_panel/Initialize(mapload)
 	. = ..()
@@ -298,7 +304,7 @@
 			if(!lift || lift.controls_locked == LIFT_PLATFORM_LOCKED)
 				return TRUE // We shouldn't be moving anything, update UI
 
-			INVOKE_ASYNC(lift, /datum/lift_master.proc/move_to_zlevel, desired_z, CALLBACK(src, .proc/check_panel), usr)
+			INVOKE_ASYNC(lift, TYPE_PROC_REF(/datum/lift_master, move_to_zlevel), desired_z, CALLBACK(src, PROC_REF(check_panel)), usr)
 			last_move_target = desired_z
 			return TRUE // Succcessfully initiated a move. Regardless of whether it actually works, update the UI
 
@@ -314,7 +320,7 @@
 
 			// Open all lift doors, it's an emergency dang it!
 			lift.update_lift_doors(action = OPEN_DOORS)
-			door_reset_timerid = addtimer(CALLBACK(src, .proc/reset_doors), 3 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE)
+			door_reset_timerid = addtimer(CALLBACK(src, PROC_REF(reset_doors)), 3 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE)
 			return TRUE // We opened up all the doors, update the UI so the emergency button is replaced correctly
 
 		if("reset_doors")
@@ -358,4 +364,12 @@
 
 	door_reset_timerid = null
 
-MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/elevator_control_panel, 30)
+/obj/machinery/elevator_control_panel/update_overlays()
+	. = ..()
+	if(!light_mask)
+		return
+
+	if(!(machine_stat & (NOPOWER|BROKEN)) && !panel_open)
+		. += emissive_appearance(icon, light_mask, src, alpha = alpha)
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/elevator_control_panel, 31)

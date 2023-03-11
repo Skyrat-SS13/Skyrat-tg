@@ -2,12 +2,8 @@
 	name = "Steal Item"
 	objectives = list(
 		list(
-			list(
-				/datum/traitor_objective/steal_item/low_risk = 1,
-				/datum/traitor_objective/destroy_item/low_risk = 1,
-			) = 1,
-			/datum/traitor_objective/steal_item/low_risk_cap = 1,
-
+			/datum/traitor_objective/steal_item/low_risk = 1,
+			/datum/traitor_objective/destroy_item/low_risk = 1,
 		) = 1,
 		/datum/traitor_objective/steal_item/somewhat_risky = 1,
 		list(
@@ -29,7 +25,7 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 	objectives_by_path = list()
 	for(var/datum/objective_item/item as anything in subtypesof(/datum/objective_item))
 		objectives_by_path[initial(item.targetitem)] = list()
-	RegisterSignal(SSatoms, COMSIG_SUBSYSTEM_POST_INITIALIZE, .proc/save_items)
+	RegisterSignal(SSatoms, COMSIG_SUBSYSTEM_POST_INITIALIZE, PROC_REF(save_items))
 
 /datum/objective_item_handler/proc/save_items()
 	for(var/obj/item/typepath as anything in objectives_by_path)
@@ -38,7 +34,7 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 			if(!place || !is_station_level(place.z))
 				objectives_by_path[typepath] -= object
 				continue
-			RegisterSignal(object, COMSIG_PARENT_QDELETING, .proc/remove_item)
+			RegisterSignal(object, COMSIG_PARENT_QDELETING, PROC_REF(remove_item))
 	generated_items = TRUE
 
 /datum/objective_item_handler/proc/remove_item(atom/source)
@@ -51,8 +47,6 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 	description = "Use the button below to materialize the bug within your hand, where you'll then be able to place it on the item. Additionally, you can keep it near you for %TIME% minutes, and you will be rewarded with %PROGRESSION% reputation and %TC% telecrystals."
 
 	progression_minimum = 20 MINUTES
-	progression_reward = 5 MINUTES
-	telecrystal_reward = 0
 
 	var/list/possible_items = list()
 	/// The current target item that we are stealing.
@@ -76,17 +70,6 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 	var/extra_progression = 0
 
 	abstract_type = /datum/traitor_objective/steal_item
-
-/datum/traitor_objective/steal_item/low_risk_cap
-	progression_minimum = 5 MINUTES
-	progression_maximum = 20 MINUTES
-
-	progression_reward = list(5 MINUTES, 10 MINUTES)
-	telecrystal_reward = 0
-	minutes_per_telecrystal = 6
-	possible_items = list(
-		/datum/objective_item/steal/low_risk/aicard,
-	)
 
 /datum/traitor_objective/steal_item/low_risk
 	progression_minimum = 10 MINUTES
@@ -152,22 +135,14 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 	return ..()
 
 /datum/traitor_objective/steal_item/generate_objective(datum/mind/generating_for, list/possible_duplicates)
-	var/datum/job/role = generating_for.assigned_role
 	for(var/datum/traitor_objective/steal_item/objective as anything in possible_duplicates)
 		possible_items -= objective.target_item.type
 	while(length(possible_items))
 		var/datum/objective_item/steal/target = pick_n_take(possible_items)
 		target = new target()
-		if(!target.TargetExists())
+		if(!target.valid_objective_for(list(generating_for), require_owner = TRUE))
 			qdel(target)
 			continue
-		if(role.title in target.excludefromjob)
-			qdel(target)
-			continue
-		if(target.exists_on_map)
-			var/list/items = GLOB.steal_item_handler.objectives_by_path[target.targetitem]
-			if(!length(items))
-				continue
 		target_item = target
 		break
 	if(!target_item)
@@ -188,11 +163,6 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 	if(bug)
 		UnregisterSignal(bug, list(COMSIG_TRAITOR_BUG_PLANTED_OBJECT, COMSIG_TRAITOR_BUG_PRE_PLANTED_OBJECT))
 	bug = null
-
-/datum/traitor_objective/steal_item/is_duplicate(datum/traitor_objective/steal_item/objective_to_compare)
-	if(objective_to_compare.target_item.type == target_item.type)
-		return TRUE
-	return FALSE
 
 /datum/traitor_objective/steal_item/generate_ui_buttons(mob/user)
 	var/list/buttons = list()
@@ -216,10 +186,10 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 			bug.balloon_alert(user, "the bug materializes in your hand")
 			bug.target_object_type = target_item.targetitem
 			AddComponent(/datum/component/traitor_objective_register, bug, \
-				fail_signals = COMSIG_PARENT_QDELETING, \
+				fail_signals = list(COMSIG_PARENT_QDELETING), \
 				penalty = telecrystal_penalty)
-			RegisterSignal(bug, COMSIG_TRAITOR_BUG_PLANTED_OBJECT, .proc/on_bug_planted)
-			RegisterSignal(bug, COMSIG_TRAITOR_BUG_PRE_PLANTED_OBJECT, .proc/handle_special_case)
+			RegisterSignal(bug, COMSIG_TRAITOR_BUG_PLANTED_OBJECT, PROC_REF(on_bug_planted))
+			RegisterSignal(bug, COMSIG_TRAITOR_BUG_PRE_PLANTED_OBJECT, PROC_REF(handle_special_case))
 		if("summon_gear")
 			if(!special_equipment)
 				return

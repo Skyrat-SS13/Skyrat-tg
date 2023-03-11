@@ -1,8 +1,9 @@
 /obj/item/kinky_shocker
 	name = "kinky shocker"
 	desc = "A small toy that can weakly shock someone."
-	icon_state = "shocker"
-	inhand_icon_state = "shocker"
+	icon_state = "shocker_off"
+	base_icon_state = "shocker"
+	inhand_icon_state = "shocker_off"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
@@ -100,8 +101,8 @@
 
 /obj/item/kinky_shocker/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[shocker_on? "on" : "off"]"
-	inhand_icon_state = "[initial(icon_state)]_[shocker_on? "on" : "off"]"
+	icon_state = "[base_icon_state]_[shocker_on? "on" : "off"]"
+	inhand_icon_state = "[base_icon_state]_[shocker_on? "on" : "off"]"
 
 /obj/item/kinky_shocker/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
 	. = ..()
@@ -283,5 +284,5 @@
 		target.try_lewd_autoemote(pick("twitch", "twitch_s", "shiver", "scream"))
 	target.do_jitter_animation()
 	target.adjustStaminaLoss(3)
-	target.adjustPain(9)
+	target.adjust_pain(9)
 	target.adjust_stutter(30 SECONDS)

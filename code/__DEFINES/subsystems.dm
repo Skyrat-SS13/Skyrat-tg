@@ -20,7 +20,7 @@
  *
  * make sure you add an update to the schema_version stable in the db changelog
  */
-#define DB_MINOR_VERSION 24
+#define DB_MINOR_VERSION 25
 
 
 //! ## Timing subsystem
@@ -163,6 +163,7 @@
 #define INIT_ORDER_RESTAURANT 34
 #define INIT_ORDER_POLLUTION 32 //SKYRAT EDIT ADDITION - //Needs to be above atoms
 #define INIT_ORDER_ATOMS 30
+#define INIT_ORDER_ARMAMENTS 27 // SKYRAT EDIT ADDITION - Needs to be between atoms and default so it runs before gun companies
 #define INIT_ORDER_LANGUAGE 25
 #define INIT_ORDER_MACHINES 20
 #define INIT_ORDER_SKILLS 15
@@ -203,8 +204,10 @@
 #define FIRE_PRIORITY_FLUIDS 20
 #define FIRE_PRIORITY_AIR 20
 #define FIRE_PRIORITY_NPC 20
+#define FIRE_PRIORITY_HYPERSPACE_DRIFT 20
 #define FIRE_PRIORITY_NPC_MOVEMENT 21
 #define FIRE_PRIORITY_NPC_ACTIONS 22
+#define FIRE_PRIORITY_PATHFINDING 23
 #define FIRE_PRIORITY_PROCESS 25
 #define FIRE_PRIORITY_THROWING 25
 #define FIRE_PRIORITY_REAGENTS 26
@@ -281,6 +284,7 @@
 	* * callback the callback to call on timer finish
 	* * wait deciseconds to run the timer for
 	* * flags flags for this timer, see: code\__DEFINES\subsystems.dm
+	* * timer_subsystem the subsystem to insert this timer into
 */
 #define addtimer(args...) _addtimer(args, file = __FILE__, line = __LINE__)
 
@@ -294,7 +298,7 @@
 #define SSAIR_SUPERCONDUCTIVITY 7
 #define SSAIR_PROCESS_ATOMS 8
 
-//Pipeline rebuild helper defines, these suck but it'll do for now //Fools you actually merged it
+// Pipeline rebuild helper defines, these suck but it'll do for now //Fools you actually merged it
 #define SSAIR_REBUILD_PIPELINE 1
 #define SSAIR_REBUILD_QUEUE 2
 
@@ -307,18 +311,18 @@
 #define SSWARDROBE_STOCK 1
 #define SSWARDROBE_INSPECT 2
 
-//Wardrobe cache metadata indexes
+// Wardrobe cache metadata indexes
 #define WARDROBE_CACHE_COUNT 1
 #define WARDROBE_CACHE_LAST_INSPECT 2
 #define WARDROBE_CACHE_CALL_INSERT 3
 #define WARDROBE_CACHE_CALL_REMOVAL 4
 
-//Wardrobe preloaded stock indexes
+// Wardrobe preloaded stock indexes
 #define WARDROBE_STOCK_CONTENTS 1
 #define WARDROBE_STOCK_CALL_INSERT 2
 #define WARDROBE_STOCK_CALL_REMOVAL 3
 
-//Wardrobe callback master list indexes
+// Wardrobe callback master list indexes
 #define WARDROBE_CALLBACK_INSERT 1
 #define WARDROBE_CALLBACK_REMOVE 2
 
@@ -331,3 +335,9 @@
 
 /// The timer key used to know how long subsystem initialization takes
 #define SS_INIT_TIMER_KEY "ss_init"
+
+// Vote subsystem counting methods
+/// First past the post. One selection per person, and the selection with the most votes wins.
+#define VOTE_COUNT_METHOD_SINGLE 1
+/// Approval voting. Any number of selections per person, and the selection with the most votes wins.
+#define VOTE_COUNT_METHOD_MULTI 2

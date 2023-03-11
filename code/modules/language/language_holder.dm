@@ -53,20 +53,10 @@ Key procs
 	var/atom/owner
 
 /// Initializes, and copies in the languages from the current atom if available.
-///datum/language_holder/New(atom/_owner) //ORIGINAL
-/datum/language_holder/New(atom/_owner, datum/preferences/pref_load) //SKYRAT EDIT CHANGE - CUSTOMIZATION
+/datum/language_holder/New(atom/_owner)
 	if(_owner && QDELETED(_owner))
-		CRASH("Langauge holder added to a qdeleting thing, what the fuck \ref[_owner]")
-	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	if(pref_load)
-		//If we're loading a holder from prefs, override the languages
-		understood_languages.Cut()
-		spoken_languages.Cut()
-		for(var/lang_path in pref_load.languages)
-			understood_languages[lang_path] = list(LANGUAGE_ATOM)
-			if(pref_load.languages[lang_path] == LANGUAGE_SPOKEN)
-				spoken_languages[lang_path] = list(LANGUAGE_ATOM)
-	//SKYRAT EDIT ADDITION END
+		CRASH("Langauge holder added to a qdeleting thing, what the fuck [text_ref(_owner)]")
+
 	owner = _owner
 	if(istype(owner, /datum/mind))
 		var/datum/mind/M = owner
@@ -166,10 +156,8 @@ Key procs
 /// Checks if you can speak the language. Tongue limitations should be supplied as an argument.
 /datum/language_holder/proc/can_speak_language(language)
 	var/atom/movable/ouratom = get_atom()
-	var/tongue = ouratom.could_speak_language(language)
-	if((omnitongue || tongue) && has_language(language, TRUE))
-		return TRUE
-	return FALSE
+	var/can_speak_language_path = omnitongue || ouratom.could_speak_language(language)
+	return (can_speak_language_path && has_language(language, TRUE))
 
 /// Returns selected language if it can be spoken, or decides, sets and returns a new selected language if possible.
 /datum/language_holder/proc/get_selected_language()
@@ -193,6 +181,18 @@ Key procs
 /// Gets a random spoken language, useful for forced speech and such.
 /datum/language_holder/proc/get_random_spoken_language()
 	return pick(spoken_languages)
+
+/// Gets a random spoken language, trying to get a non-common language.
+/datum/language_holder/proc/get_random_spoken_uncommon_language()
+	var/list/languages_minus_common = assoc_to_keys(spoken_languages) - /datum/language/common
+
+	// They have a language other than common
+	if(length(languages_minus_common))
+		return pick(languages_minus_common)
+
+	// They can only speak common, oh well.
+	else
+		return /datum/language/common
 
 /// Opens a language menu reading from the language holder.
 /datum/language_holder/proc/open_language_menu(mob/user)
@@ -418,6 +418,20 @@ Key procs
 								/datum/language/monkey = list(LANGUAGE_ATOM))
 	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
 							/datum/language/monkey = list(LANGUAGE_ATOM))
+
+/datum/language_holder/syndicate
+	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+								/datum/language/codespeak = list(LANGUAGE_ATOM))
+	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+								/datum/language/codespeak = list(LANGUAGE_ATOM))
+
+/datum/language_holder/beachbum
+	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+								/datum/language/beachbum = list(LANGUAGE_ATOM))
+	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+							/datum/language/beachbum = list(LANGUAGE_ATOM))
+	selected_language = /datum/language/beachbum
+
 /datum/language_holder/empty
 	understood_languages = list()
 	spoken_languages = list()

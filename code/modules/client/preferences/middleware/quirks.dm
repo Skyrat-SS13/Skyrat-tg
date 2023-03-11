@@ -3,8 +3,8 @@
 	var/tainted = FALSE
 
 	action_delegations = list(
-		"give_quirk" = .proc/give_quirk,
-		"remove_quirk" = .proc/remove_quirk,
+		"give_quirk" = PROC_REF(give_quirk),
+		"remove_quirk" = PROC_REF(remove_quirk),
 	)
 
 /datum/preference_middleware/quirks/get_ui_static_data(mob/user)
@@ -61,7 +61,7 @@
 	//SKYRAT EDIT END
 
 	var/list/new_quirks = preferences.all_quirks | quirk_name
-	if (SSquirks.filter_invalid_quirks(new_quirks) != new_quirks)
+	if (SSquirks.filter_invalid_quirks(new_quirks, preferences.augments) != new_quirks)// SKYRAT EDIT - AUGMENTS+
 		// If the client is sending an invalid give_quirk, that means that
 		// something went wrong with the client prediction, so we should
 		// catch it back up to speed.
@@ -76,20 +76,8 @@
 /datum/preference_middleware/quirks/proc/remove_quirk(list/params, mob/user)
 	var/quirk_name = params["quirk"]
 
-	// SKYRAT EDIT ADDITION
-	var/list/quirks = SSquirks.get_quirks()
-	var/datum/quirk/quirk = quirks[quirk_name]
-	if(quirk == /datum/quirk/foreigner)
-		preferences.languages = new /list()
-		for(var/language in preferences.get_adjusted_language_holder())
-			preferences.languages[language] = LANGUAGE_SPOKEN
-	// SKYRAT EDIT END
-
 	var/list/new_quirks = preferences.all_quirks - quirk_name
-	if ( \
-		!(quirk_name in preferences.all_quirks) \
-		|| SSquirks.filter_invalid_quirks(new_quirks) != new_quirks \
-	)
+	if (!(quirk_name in preferences.all_quirks) || SSquirks.filter_invalid_quirks(new_quirks, preferences.augments) != new_quirks)// SKYRAT EDIT - AUGMENTS+
 		// If the client is sending an invalid remove_quirk, that means that
 		// something went wrong with the client prediction, so we should
 		// catch it back up to speed.

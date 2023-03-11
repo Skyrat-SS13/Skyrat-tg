@@ -167,7 +167,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 			cop.mind.add_antag_datum(ert_antag)
 			cop.mind.set_assigned_role(SSjob.GetJobType(ert_antag.ert_job_path))
 			SSjob.SendToLateJoin(cop)
-			cop.grant_language(/datum/language/common, TRUE, TRUE, LANGUAGE_MIND)
+			cop.grant_language(/datum/language/common, TRUE, TRUE, LANGUAGE_SPAWNER)
 
 			var/obj/item/gangster_cellphone/phone = new() // biggest gang in the city
 			phone.gang_id = cell_phone_number
@@ -316,7 +316,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	shoes = /obj/item/clothing/shoes/cowboy
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/headset_sec/alt
-	head = /obj/item/clothing/head/hunter
+	head = /obj/item/clothing/head/cowboy
 	belt = /obj/item/gun/energy/disabler
 	r_pocket = /obj/item/lighter
 	l_pocket = /obj/item/restraints/handcuffs
@@ -361,7 +361,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 /obj/item/mod/control/pre_equipped/atmospheric/breach_control //Just a different kit as 811 wont be raiding Robotics; otherwise the same look (For now???)
 	theme = /datum/mod_theme/atmospheric/breach_control
 	applied_cell = /obj/item/stock_parts/cell/super
-	initial_modules = list(
+	applied_modules = list(
 		/obj/item/mod/module/storage/large_capacity,
 		/obj/item/mod/module/welding,
 		/obj/item/mod/module/rad_protection,
@@ -393,7 +393,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	head = /obj/item/clothing/head/soft/paramedic
 	id = /obj/item/card/id/advanced/solfed
 	suit =  /obj/item/clothing/suit/toggle/labcoat/paramedic
-	gloves = /obj/item/clothing/gloves/color/latex/nitrile
+	gloves = /obj/item/clothing/gloves/latex/nitrile
 	belt = /obj/item/storage/belt/medical/paramedic
 	suit_store = /obj/item/flashlight/pen/paramedic
 	backpack_contents = list(/obj/item/storage/box/survival = 1,
@@ -433,7 +433,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	shoes = /obj/item/clothing/shoes/jackboots
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/headset_sec/alt
-	head = /obj/item/clothing/head/helmet/riot
+	head = /obj/item/clothing/head/helmet/toggleable/riot
 	belt = /obj/item/gun/energy/disabler
 	suit = /obj/item/clothing/suit/armor/riot
 	r_pocket = /obj/item/lighter
@@ -585,7 +585,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 					cop.mind.add_antag_datum(ert_antag)
 					cop.mind.set_assigned_role(SSjob.GetJobType(ert_antag.ert_job_path))
 					SSjob.SendToLateJoin(cop)
-					cop.grant_language(/datum/language/common, TRUE, TRUE, LANGUAGE_MIND)
+					cop.grant_language(/datum/language/common, TRUE, TRUE, LANGUAGE_SPAWNER)
 
 					var/obj/item/gangster_cellphone/phone = new() // biggest gang in the city
 					phone.gang_id = cell_phone_number

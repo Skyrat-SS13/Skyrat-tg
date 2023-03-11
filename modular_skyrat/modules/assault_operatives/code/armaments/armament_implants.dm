@@ -1,9 +1,6 @@
-#define ARMAMENT_CATEGORY_IMPLANTS "Implants"
-#define ARMAMENT_CATEGORY_IMPLANTS_LIMIT 4
-
 /datum/armament_entry/assault_operatives/implants
-	category = ARMAMENT_CATEGORY_IMPLANTS
-	category_item_limit = ARMAMENT_CATEGORY_IMPLANTS_LIMIT
+	category = "Cybernetic Implants"
+	category_item_limit = 3
 
 /datum/armament_entry/assault_operatives/implants/deathrattle
 	name = "Deathrattle Implant Kit"
@@ -17,14 +14,20 @@
 /datum/armament_entry/assault_operatives/implants/microbomb
 	name = "Microbomb Implant"
 	description = "A small bomb implanted into the body. It can be activated manually, or automatically activates on death. WARNING: Permenantly destroys your body and everything you might be carrying."
-	item_type = /obj/item/storage/box/syndie_kit/imp_microbomb
+	item_type = /obj/item/implanter/explosive
 	cost = 2
 
 /datum/armament_entry/assault_operatives/implants/storage
 	name = "Storage Implant"
 	description = "Implanted into the body and activated at will, this covert implant will open a small pocket of bluespace capable of holding two regular sized items within."
-	item_type = /obj/item/storage/box/syndie_kit/imp_storage
+	item_type = /obj/item/implanter/storage
 	cost = 2
+
+/datum/armament_entry/assault_operatives/implants/radio
+	name = "Radio Implant"
+	description = "Implanted into the body and activated at will, this covert implant will allow you to speak over the radio without the need of a headset."
+	item_type = /obj/item/implanter/radio/syndicate
+	cost = 1
 
 /datum/armament_entry/assault_operatives/implants/hacking
 	item_type = /obj/item/autosurgeon/syndicate/hackerman
@@ -38,12 +41,6 @@
 	item_type = /obj/item/storage/box/syndie_kit/imp_freedom
 	cost = 3
 
-/datum/armament_entry/assault_operatives/implants/emp
-	name = "EMP Implant"
-	item_type = /obj/item/implanter/emp
-	description = "An implanter that grants you the ability to create several EMP pulses, centered on you."
-	cost = 4
-
 /datum/armament_entry/assault_operatives/implants/thermal
 	name = "Thermal Vision Implant"
 	description = "These cybernetic eyes will give you thermal vision."
@@ -54,10 +51,4 @@
 	name = "Anti-Drop Implant"
 	description = "When activated forces your hand muscles to tightly grip the object you are holding, preventing you from dropping it involuntarily."
 	item_type = /obj/item/autosurgeon/syndicate/nodrop
-	cost = 6
-
-/datum/armament_entry/assault_operatives/implants/xray
-	name = "X-Ray Vision Implant"
-	description = "These cybernetic eyes will give you X-ray vision."
-	item_type = /obj/item/autosurgeon/syndicate/xray_eyes
-	cost = 7
+	cost = 5

@@ -1,6 +1,6 @@
 /// SKYRAT MODULE SKYRAT_XENO_REDO
 
-/mob/living/carbon/alien/humanoid/skyrat/queen
+/mob/living/carbon/alien/adult/skyrat/queen
 	name = "alien queen"
 	desc = "A hulking beast of an alien, for some reason this one seems more important than the others, you should probably quit staring at it and do something."
 	caste = "queen"
@@ -14,7 +14,7 @@
 	melee_damage_lower = 30
 	melee_damage_upper = 35
 
-/mob/living/carbon/alien/humanoid/skyrat/queen/Initialize(mapload)
+/mob/living/carbon/alien/adult/skyrat/queen/Initialize(mapload)
 	. = ..()
 	tail_sweep = new /datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/hard_throwing()
 	tail_sweep.Grant(src)
@@ -26,19 +26,19 @@
 
 	add_movespeed_modifier(/datum/movespeed_modifier/alien_big)
 
-/mob/living/carbon/alien/humanoid/skyrat/queen/Destroy()
+/mob/living/carbon/alien/adult/skyrat/queen/Destroy()
 	QDEL_NULL(tail_sweep)
 	QDEL_NULL(screech)
 	return ..()
 
-/mob/living/carbon/alien/humanoid/skyrat/queen/create_internal_organs()
+/mob/living/carbon/alien/adult/skyrat/queen/create_internal_organs()
 	internal_organs += new /obj/item/organ/internal/alien/plasmavessel/large/queen
 	internal_organs += new /obj/item/organ/internal/alien/resinspinner
 	internal_organs += new /obj/item/organ/internal/alien/neurotoxin/queen
 	internal_organs += new /obj/item/organ/internal/alien/eggsac
 	..()
 
-/mob/living/carbon/alien/humanoid/skyrat/queen/alien_talk(message, shown_name = name)
+/mob/living/carbon/alien/adult/skyrat/queen/alien_talk(message, shown_name = name)
 	..(message, shown_name, TRUE)
 
 /obj/item/organ/internal/alien/neurotoxin/queen
@@ -52,7 +52,7 @@
 		/datum/action/cooldown/alien/acid/corrosion,
 	)
 
-/mob/living/carbon/alien/humanoid/skyrat/queen/death(gibbed)
+/mob/living/carbon/alien/adult/skyrat/queen/death(gibbed)
 	if(stat == DEAD)
 		return
 
@@ -75,7 +75,7 @@
 
 /datum/action/cooldown/alien/skyrat/queen_screech/Activate()
 	. = ..()
-	var/mob/living/carbon/alien/humanoid/skyrat/queenie = owner
+	var/mob/living/carbon/alien/adult/skyrat/queenie = owner
 	playsound(queenie, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_queen_screech.ogg', 100, FALSE, 8, 0.9)
 	queenie.create_shriekwave()
 	shake_camera(owner, 2, 2)
@@ -87,11 +87,11 @@
 
 	return TRUE
 
-/mob/living/carbon/alien/humanoid/skyrat/proc/create_shriekwave()
+/mob/living/carbon/alien/adult/skyrat/proc/create_shriekwave()
 	remove_overlay(HALO_LAYER)
 	overlays_standing[HALO_LAYER] = image("icon" = 'modular_skyrat/modules/xenos_skyrat_redo/icons/big_xenos.dmi', "icon_state" = "shriek_waves") //Ehh, suit layer's not being used.
 	apply_overlay(HALO_LAYER)
-	addtimer(CALLBACK(src, .proc/remove_shriekwave), 3 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(remove_shriekwave)), 3 SECONDS)
 
-/mob/living/carbon/alien/humanoid/skyrat/proc/remove_shriekwave()
+/mob/living/carbon/alien/adult/skyrat/proc/remove_shriekwave()
 	remove_overlay(HALO_LAYER)

@@ -3,6 +3,7 @@
  */
 /obj/machinery/plumbing/floor_pump
 	icon = 'modular_skyrat/modules/liquids/icons/obj/structures/drains.dmi'
+	icon_state = "active_input"
 	anchored = FALSE
 	density = FALSE
 	idle_power_usage = 10
@@ -27,9 +28,12 @@
 	/// Floor tile is placed down
 	var/tile_placed = FALSE
 
+	///category for plumbing RCD
+	category = "Liquids"
+
 /obj/machinery/plumbing/floor_pump/Initialize(mapload, bolt, layer)
 	. = ..()
-	RegisterSignal(src, list(COMSIG_OBJ_HIDE), .proc/on_hide)
+	RegisterSignal(src, COMSIG_OBJ_HIDE, PROC_REF(on_hide))
 
 /obj/machinery/plumbing/floor_pump/examine(mob/user)
 	. = ..()
@@ -70,7 +74,7 @@
  * Change regulator level -- ie. what liquid depth we are OK with, like a thermostat.
  */
 /obj/machinery/plumbing/floor_pump/proc/set_regulator(mob/living/user)
-	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
+	if(!user.can_perform_action(src, NEED_DEXTERITY))
 		return
 	var/new_height = tgui_input_number(user,
 		"At what water level should the pump stop pumping from 0 to [LIQUID_HEIGHT_CONSIDER_FULL_TILE]? 0 disables.",

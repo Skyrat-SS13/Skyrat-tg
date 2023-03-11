@@ -1,3 +1,20 @@
+/**
+ * Get a human's taur mode in a standardized way.
+ *
+ * Returns STYLE_TAUR_* or NONE.
+ */
+/mob/living/carbon/human/proc/get_taur_mode()
+	var/taur_mutant_bodypart = dna.species.mutant_bodyparts["taur"]
+	if(!taur_mutant_bodypart)
+		return NONE
+
+	var/bodypart_name = taur_mutant_bodypart[MUTANT_INDEX_NAME]
+	var/datum/sprite_accessory/taur/taur = GLOB.sprite_accessories["taur"][bodypart_name]
+	if(!taur)
+		return NONE
+
+	return taur.taur_mode
+
 /datum/sprite_accessory/taur
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/taur.dmi'
 	key = "taur"
@@ -5,7 +22,7 @@
 	color_src = USE_MATRIXED_COLORS
 	dimension_x = 64
 	center = TRUE
-	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_UNDER_CLOTHES)
+	relevent_layers = list(BODY_FRONT_LAYER, BODY_ADJ_LAYER, BODY_FRONT_UNDER_CLOTHES, ABOVE_BODY_FRONT_HEAD_LAYER)
 	genetic = TRUE
 	organ_type = /obj/item/organ/external/taur_body
 	flags_for_organ = SPRITE_ACCESSORY_HIDE_SHOES
@@ -39,6 +56,9 @@
 	mutantpart_key = "taur"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 
+/obj/item/organ/external/taur_body/synth
+	status = ORGAN_ROBOTIC
+	organ_flags = ORGAN_SYNTHETIC
 
 /obj/item/organ/external/taur_body/override_color(rgb_value)
 	if(mutantpart_key)
@@ -55,10 +75,17 @@
 	if(sprite_accessory_flags & SPRITE_ACCESSORY_HIDE_SHOES)
 		external_bodytypes |= BODYTYPE_HIDE_SHOES
 
-	var/obj/item/bodypart/l_leg/taur/new_left_leg = new /obj/item/bodypart/l_leg/taur()
-	var/obj/item/bodypart/l_leg/old_left_leg = reciever.get_bodypart(BODY_ZONE_L_LEG)
-	var/obj/item/bodypart/r_leg/taur/new_right_leg = new /obj/item/bodypart/r_leg/taur()
-	var/obj/item/bodypart/r_leg/old_right_leg = reciever.get_bodypart(BODY_ZONE_R_LEG)
+	var/obj/item/bodypart/leg/right/old_right_leg = reciever.get_bodypart(BODY_ZONE_R_LEG)
+	var/obj/item/bodypart/leg/left/old_left_leg = reciever.get_bodypart(BODY_ZONE_L_LEG)
+	var/obj/item/bodypart/leg/left/taur/new_left_leg
+	var/obj/item/bodypart/leg/right/taur/new_right_leg
+	if(status & ORGAN_ORGANIC)
+		new_left_leg = new /obj/item/bodypart/leg/left/taur()
+		new_right_leg = new /obj/item/bodypart/leg/right/taur()
+	if(status & ORGAN_ROBOTIC)
+		new_left_leg = new /obj/item/bodypart/leg/left/robot/synth/taur()
+		new_right_leg = new /obj/item/bodypart/leg/right/robot/synth/taur()
+
 
 	new_left_leg.bodytype |= external_bodytypes
 	new_left_leg.replace_limb(reciever, TRUE)
@@ -74,8 +101,8 @@
 
 
 /obj/item/organ/external/taur_body/Remove(mob/living/carbon/organ_owner, special, moving)
-	var/obj/item/bodypart/l_leg/left_leg = organ_owner.get_bodypart(BODY_ZONE_L_LEG)
-	var/obj/item/bodypart/r_leg/right_leg = organ_owner.get_bodypart(BODY_ZONE_R_LEG)
+	var/obj/item/bodypart/leg/left/left_leg = organ_owner.get_bodypart(BODY_ZONE_L_LEG)
+	var/obj/item/bodypart/leg/right/right_leg = organ_owner.get_bodypart(BODY_ZONE_R_LEG)
 
 	if(left_leg)
 		left_leg.drop_limb()
@@ -118,38 +145,24 @@
 	icon_state = "deer"
 	taur_mode = STYLE_TAUR_HOOF
 	alt_taur_mode = STYLE_TAUR_PAW
-	color_src = USE_ONE_COLOR
-	extra = TRUE
-	extra_color_src = MUTCOLORS2
 
 /datum/sprite_accessory/taur/drake
 	name = "Drake"
 	icon_state = "drake"
 	taur_mode = STYLE_TAUR_PAW
-	color_src = USE_ONE_COLOR
-	extra = TRUE
-	extra_color_src = MUTCOLORS2
 
 /datum/sprite_accessory/taur/drake/old
 	name = "Drake (Old)"
 	icon_state = "drake_old"
-	color_src = USE_MATRIXED_COLORS
-	extra = FALSE
 
 /datum/sprite_accessory/taur/drider
 	name = "Drider"
 	icon_state = "drider"
-	color_src = USE_ONE_COLOR
-	extra = TRUE
-	extra_color_src = MUTCOLORS2
 
 /datum/sprite_accessory/taur/eevee
 	name = "Eevee"
 	icon_state = "eevee"
 	taur_mode = STYLE_TAUR_PAW
-	color_src = USE_ONE_COLOR
-	extra = TRUE
-	extra_color_src = MUTCOLORS2
 
 /datum/sprite_accessory/taur/horse
 	name = "Horse"
@@ -171,7 +184,6 @@
 	name = "Scolipede"
 	icon_state = "pede"
 	taur_mode = STYLE_TAUR_PAW
-	color_src = USE_ONE_COLOR
 	extra = TRUE
 	extra2 = TRUE
 	extra_color_src = MUTCOLORS2
@@ -187,14 +199,8 @@
 	name = "Canine"
 	icon_state = "canine"
 	taur_mode = STYLE_TAUR_PAW
-	color_src = USE_ONE_COLOR
-	extra = TRUE
-	extra_color_src = MUTCOLORS2
 
 /datum/sprite_accessory/taur/feline
 	name = "Feline"
 	icon_state = "feline"
 	taur_mode = STYLE_TAUR_PAW
-	color_src = USE_ONE_COLOR
-	extra = TRUE
-	extra_color_src = MUTCOLORS2

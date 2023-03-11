@@ -8,7 +8,7 @@
 	var/total_damage = 0
 
 /datum/status_effect/ashwalker_damage/proc/register_mob_damage(mob/living/target)
-	RegisterSignal(target, COMSIG_MOB_APPLY_DAMAGE, .proc/calculate_total)
+	RegisterSignal(target, COMSIG_MOB_APPLY_DAMAGE, PROC_REF(calculate_total))
 
 /datum/status_effect/ashwalker_damage/proc/calculate_total(datum/source, damage, damagetype, def_zone)
 	SIGNAL_HANDLER

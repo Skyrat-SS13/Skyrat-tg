@@ -1,6 +1,6 @@
 /obj/item/storage/belt
-	name = "belt"
-	desc = "Can hold various things."
+	name = "not actually a toolbelt"
+	desc = "Can hold various things. This is the base type of /belt, are you sure you should have this?"
 	icon = 'icons/obj/clothing/belts.dmi'
 	icon_state = "utility"
 	inhand_icon_state = "utility"
@@ -28,6 +28,7 @@
 
 /obj/item/storage/belt/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/attack_equip)
 	update_appearance()
 
 /obj/item/storage/belt/utility
@@ -52,6 +53,7 @@
 		/obj/item/clothing/gloves,
 		/obj/item/construction/rcd,
 		/obj/item/construction/rld,
+		/obj/item/construction/rtd,
 		/obj/item/crowbar,
 		/obj/item/extinguisher/mini,
 		/obj/item/flashlight,
@@ -221,7 +223,7 @@
 		/obj/item/clothing/mask/breath,
 		/obj/item/clothing/mask/muzzle,
 		/obj/item/clothing/mask/surgical,
-		/obj/item/clothing/suit/toggle/labcoat/hospitalgown,	//SKYRAT EDIT ADDITION - adds surgery gowns to belts
+		/obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown,	//SKYRAT EDIT ADDITION - adds surgery gowns to belts
 		/obj/item/construction/plumbing,
 		/obj/item/dnainjector,
 		/obj/item/extinguisher/mini,
@@ -404,12 +406,13 @@
 		/obj/item/extinguisher/mini,
 		/obj/item/flashlight,
 		/obj/item/gps,
+		/obj/item/mining_stabilizer,
 		/obj/item/key/lasso,
 		/obj/item/knife,
 		/obj/item/lighter,
 		/obj/item/mining_scanner,
 		/obj/item/multitool,
-		/obj/item/organ/internal/regenerative_core,
+		/obj/item/organ/internal/monster_core,
 		/obj/item/pickaxe,
 		/obj/item/radio,
 		/obj/item/reagent_containers/cup/glass,
@@ -438,13 +441,22 @@
 		))
 
 
-/obj/item/storage/belt/mining/vendor
-	contents = newlist(/obj/item/survivalcapsule)
+/obj/item/storage/belt/mining/vendor/PopulateContents()
+	new /obj/item/survivalcapsule(src)
 
 /obj/item/storage/belt/mining/alt
 	icon_state = "explorer2"
 	inhand_icon_state = "explorer2"
 	worn_icon_state = "explorer2"
+
+/obj/item/storage/belt/mining/healing/PopulateContents()
+	for(var/i in 1 to 2)
+		new /obj/item/reagent_containers/hypospray/medipen/survival/luxury(src)
+	for(var/i in 1 to 2)
+		new /obj/item/reagent_containers/hypospray/medipen/survival(src)
+	for(var/i in 1 to 2)
+		var/obj/item/organ/internal/monster_core/core = new /obj/item/organ/internal/monster_core/regenerative_core/legion(src)
+		core.preserve()
 
 /obj/item/storage/belt/mining/primitive
 	name = "hunter's belt"
@@ -493,13 +505,6 @@
 	atom_storage.set_holdable(list(
 		/obj/item/clothing/mask/luchador
 		))
-
-/obj/item/storage/belt/cummerbund
-	name = "cummerbund"
-	desc = "A pleated sash that pairs well with a suit jacket."
-	icon_state = "cummerbund"
-	inhand_icon_state = "cummerbund"
-	worn_icon_state = "cummerbund"
 
 /obj/item/storage/belt/military
 	name = "chest rig"
@@ -725,7 +730,7 @@
 	name = "fannypack"
 	desc = "A dorky fannypack for keeping small items in."
 	icon_state = "fannypack_leather"
-	inhand_icon_state = "fannypack_leather"
+	inhand_icon_state = null
 	worn_icon_state = "fannypack_leather"
 	dying_key = DYE_REGISTRY_FANNYPACK
 	custom_price = PAYCHECK_CREW * 2
@@ -738,62 +743,59 @@
 /obj/item/storage/belt/fannypack/black
 	name = "black fannypack"
 	icon_state = "fannypack_black"
-	inhand_icon_state = "fannypack_black"
 	worn_icon_state = "fannypack_black"
 
 /obj/item/storage/belt/fannypack/red
 	name = "red fannypack"
 	icon_state = "fannypack_red"
-	inhand_icon_state = "fannypack_red"
 	worn_icon_state = "fannypack_red"
 
 /obj/item/storage/belt/fannypack/purple
 	name = "purple fannypack"
 	icon_state = "fannypack_purple"
-	inhand_icon_state = "fannypack_purple"
 	worn_icon_state = "fannypack_purple"
 
 /obj/item/storage/belt/fannypack/blue
 	name = "blue fannypack"
 	icon_state = "fannypack_blue"
-	inhand_icon_state = "fannypack_blue"
 	worn_icon_state = "fannypack_blue"
 
 /obj/item/storage/belt/fannypack/orange
 	name = "orange fannypack"
 	icon_state = "fannypack_orange"
-	inhand_icon_state = "fannypack_orange"
 	worn_icon_state = "fannypack_orange"
 
 /obj/item/storage/belt/fannypack/white
 	name = "white fannypack"
 	icon_state = "fannypack_white"
-	inhand_icon_state = "fannypack_white"
 	worn_icon_state = "fannypack_white"
 
 /obj/item/storage/belt/fannypack/green
 	name = "green fannypack"
 	icon_state = "fannypack_green"
-	inhand_icon_state = "fannypack_green"
 	worn_icon_state = "fannypack_green"
 
 /obj/item/storage/belt/fannypack/pink
 	name = "pink fannypack"
 	icon_state = "fannypack_pink"
-	inhand_icon_state = "fannypack_pink"
 	worn_icon_state = "fannypack_pink"
 
 /obj/item/storage/belt/fannypack/cyan
 	name = "cyan fannypack"
 	icon_state = "fannypack_cyan"
-	inhand_icon_state = "fannypack_cyan"
 	worn_icon_state = "fannypack_cyan"
 
 /obj/item/storage/belt/fannypack/yellow
 	name = "yellow fannypack"
 	icon_state = "fannypack_yellow"
-	inhand_icon_state = "fannypack_yellow"
 	worn_icon_state = "fannypack_yellow"
+
+/obj/item/storage/belt/fannypack/cummerbund
+	name = "cummerbund"
+	desc = "A pleated sash that pairs well with a suit jacket."
+	icon_state = "cummerbund"
+	inhand_icon_state = null
+	worn_icon_state = "cummerbund"
 
 /obj/item/storage/belt/sabre
 	name = "sabre sheath"
@@ -822,7 +824,7 @@
 		. += span_notice("Alt-click it to quickly draw the blade.")
 
 /obj/item/storage/belt/sabre/AltClick(mob/user)
-	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
+	if(!user.can_perform_action(src, NEED_DEXTERITY|NEED_HANDS))
 		return
 	if(length(contents))
 		var/obj/item/I = contents[1]
@@ -850,7 +852,7 @@
 	name = "botanical belt"
 	desc = "A belt used to hold most hydroponics supplies. Suprisingly, not green."
 	icon_state = "plantbelt"
-	inhand_icon_state = "plantbelt"
+	inhand_icon_state = "championbelt"
 	worn_icon_state = "plantbelt"
 	content_overlays = TRUE
 

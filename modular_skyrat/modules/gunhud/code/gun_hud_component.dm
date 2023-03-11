@@ -5,7 +5,7 @@
 	. = ..()
 	if(!istype(parent, /obj/item/gun) && !istype(parent, /obj/item/weldingtool))
 		return COMPONENT_INCOMPATIBLE
-	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, .proc/wake_up)
+	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(wake_up))
 
 /datum/component/ammo_hud/Destroy()
 	turn_off()
@@ -14,7 +14,7 @@
 /datum/component/ammo_hud/proc/wake_up(datum/source, mob/user, slot)
 	SIGNAL_HANDLER
 
-	RegisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED), .proc/turn_off)
+	RegisterSignals(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED), PROC_REF(turn_off))
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -28,7 +28,7 @@
 /datum/component/ammo_hud/proc/turn_on()
 	SIGNAL_HANDLER
 
-	RegisterSignal(parent, COMSIG_UPDATE_AMMO_HUD, .proc/update_hud)
+	RegisterSignal(parent, COMSIG_UPDATE_AMMO_HUD, PROC_REF(update_hud))
 
 	hud.turn_on()
 	update_hud()
@@ -61,20 +61,6 @@
 		var/oth_o
 		var/oth_t
 		var/oth_h
-
-		switch(pew.fire_select)
-			if(SELECT_SEMI_AUTOMATIC)
-				indicator = "semi"
-			if(SELECT_BURST_SHOT)
-				indicator = "burst"
-			if(SELECT_FULLY_AUTOMATIC)
-				indicator = "auto"
-
-		if(pew.safety)
-			indicator = "safe"
-
-		if(pew.jammed)
-			indicator = "jam"
 
 		switch(length(rounds))
 			if(1)

@@ -197,7 +197,7 @@
 		if(!didthegamerwin)
 			return FALSE
 		player_client.give_award(/datum/award/score/hardcore_random, human_mob, round(human_mob.hardcore_survival_score * 2))
-	else if(human_mob.onCentCom())
+	else if(considered_escaped(human_mob))
 		player_client.give_award(/datum/award/score/hardcore_random, human_mob, round(human_mob.hardcore_survival_score))
 
 
@@ -228,12 +228,15 @@
 
 	CHECK_TICK
 
+	/* ///SKYRAT EDIT START
 	// Add AntagHUD to everyone, see who was really evil the whole time!
 	for(var/datum/atom_hud/alternate_appearance/basic/antagonist_hud/antagonist_hud in GLOB.active_alternate_appearances)
 		for(var/mob/player as anything in GLOB.player_list)
 			antagonist_hud.show_to(player)
 
 	CHECK_TICK
+	///Skyrat EDIT END
+	*/
 
 	//Set news report and mode result
 	mode.set_round_result()
@@ -285,7 +288,7 @@
 	//stop collecting feedback during grifftime
 	SSblackbox.Seal()
 
-	sleep(50)
+	sleep(5 SECONDS)
 	ready_for_reboot = TRUE
 	standard_reboot()
 
@@ -628,7 +631,7 @@
 	var/currrent_category
 	var/datum/antagonist/previous_category
 
-	sortTim(all_antagonists, /proc/cmp_antag_category)
+	sortTim(all_antagonists, GLOBAL_PROC_REF(cmp_antag_category))
 
 	for(var/datum/antagonist/antagonists in all_antagonists)
 		if(!antagonists.show_in_roundend)
@@ -665,13 +668,14 @@
 /datum/action/report
 	name = "Show roundend report"
 	button_icon_state = "round_end"
+	show_to_observers = FALSE
 
 /datum/action/report/Trigger(trigger_flags)
 	if(owner && GLOB.common_report && SSticker.current_state == GAME_STATE_FINISHED)
 		SSticker.show_roundend_report(owner.client)
 
-/datum/action/report/IsAvailable()
-	return 1
+/datum/action/report/IsAvailable(feedback = FALSE)
+	return TRUE
 
 /datum/action/report/Topic(href,href_list)
 	if(usr != owner)

@@ -2,7 +2,7 @@
 	name = "Horror Form"
 	desc = "We tear apart our human disguise, revealing our true form."
 	helptext = "We will become an unstoppable force of destruction. If we die in this form, we will reach equilibrium and explode into a shower of gore! We require the absorption of at least one other human, and 15 extracts of DNA."
-	icon_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
+	button_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
 	button_icon = 'modular_skyrat/modules/horrorform/icons/actions_changeling.dmi'
 	button_icon_state = "horror_form"
 	background_icon_state = "bg_changeling"

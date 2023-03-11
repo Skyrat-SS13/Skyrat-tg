@@ -15,7 +15,7 @@ is beneficial to ensure your PR is merged.
  * Minimum average time to complete: 60 minutes
    * Bare minimum, it should take a team of 4-6 60 minutes to complete.
  * Design around 4-6 players
-   * Skyrat's gateways use the Vanguard expedition team, which is usually 4 players, but it's best to account for up to 6.
+   * The optimal size of a gateway is 4-6, but know that more or less may participate.
  * Not purely PvE
    * Design your gateway with more than just regular simplemobs in mind. Add puzzles, story, PVP, boss fights, etc. to spice up the gameplay instead of a slog of simplemobs.
  * Loot should not be extreme

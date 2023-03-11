@@ -4,6 +4,12 @@
 	has_gravity = FALSE
 	area_flags = UNIQUE_AREA
 
+/area/ruin/space/unpowered
+	always_unpowered = TRUE
+	power_light = FALSE
+	power_equip = FALSE
+	power_environ = FALSE
+
 /area/ruin/space/has_grav
 	has_gravity = STANDARD_GRAVITY
 
@@ -12,7 +18,7 @@
 
 
 // Ruin solars define, /area/solars was moved to /area/station/solars, causing the solars specific areas to lose their properties
-/area/ruin/solars
+/area/ruin/space/solars
 	requires_power = FALSE
 	area_flags = UNIQUE_AREA | AREA_USES_STARLIGHT
 	flags_1 = NONE
@@ -86,12 +92,6 @@
 	name = "\improper Hotel Pool Room"
 	icon_state = "fitness"
 
-// SKYRAT ADDITION: Start
-/area/ruin/space/has_grav/hotel/sauna
-	name = "Hotel Sauna Room"
-	icon_state = "sauna"
-// SKYRAT ADDITION: End
-
 /area/ruin/space/has_grav/hotel/bar
 	name = "\improper Hotel Bar"
 
@@ -111,10 +111,6 @@
 /area/ruin/space/has_grav/hotel/workroom
 	name = "\improper Hotel Staff Room"
 
-// SKYRAT EDIT ADDITION START
-/area/ruin/space/has_grav/hotel/workroom/quarters
-	name = "Hotel Staff Quarters"
-// SKYRAT EDIT ADDITION END
 /area/ruin/space/has_grav/hotel/storeroom
 	name = "\improper Hotel Staff Storage"
 
@@ -196,6 +192,22 @@
 /area/ruin/space/has_grav/abandonedzoo
 	name = "\improper Abandoned Zoo"
 
+//Ruin of Dangerous Research
+
+/area/ruin/space/has_grav/dangerous_research
+	name = "\improper ASRC Lobby"
+
+/area/ruin/space/has_grav/dangerous_research/medical
+	name = "\improper ASRC Medical Facilities"
+
+/area/ruin/space/has_grav/dangerous_research/dorms
+	name = "\improper ASRC Dorms"
+
+/area/ruin/space/has_grav/dangerous_research/lab
+	name = "\improper ASRC Laboratory"
+
+/area/ruin/space/has_grav/dangerous_research/maint
+	name = "\improper ASRC Maintenance"
 
 //Ruin of ancient Space Station (OldStation)
 
@@ -273,7 +285,7 @@
 	name = "Charlie Station Dorms"
 	icon_state = "os_charlie_dorms"
 
-/area/ruin/solars/ancientstation/charlie/solars
+/area/ruin/space/solars/ancientstation/charlie/solars
 	name = "\improper Charlie Station Solar Array"
 	icon = 'icons/area/areas_ruins.dmi' // Solars inheriet areas_misc.dmi, not areas_ruin.dmi
 	icon_state = "os_charlie_solars"
@@ -485,11 +497,11 @@
 	name = "\improper Derelict Dorms"
 	icon_state = "ks13_dorms"
 
-/area/ruin/solars/ks13/sb_bow_solars
+/area/ruin/space/solars/ks13/sb_bow_solars
 	name = "\improper Derelict Starboard Bow Solars"
 	icon_state = "ks13_sb_bow_solars"
 
-/area/ruin/solars/ks13/aft_solars
+/area/ruin/space/solars/ks13/aft_solars
 	name = "\improper Derelict Aft Solars"
 	icon_state = "ks13_aft_solars"
 
@@ -519,7 +531,7 @@
 
 //OLD AI SAT
 
-/area/ruin/tcommsat_oldaisat // Since tcommsat was moved to /area/station/, this turf doesn't inhereit its properties anymore
+/area/ruin/space/tcommsat_oldaisat // Since tcommsat was moved to /area/station/, this turf doesn't inhereit its properties anymore
 	name = "\improper Abandoned Satellite"
 	ambientsounds = list('sound/ambience/ambisin2.ogg', 'sound/ambience/signal.ogg', 'sound/ambience/signal.ogg', 'sound/ambience/ambigen10.ogg', 'sound/ambience/ambitech.ogg',\
 											'sound/ambience/ambitech2.ogg', 'sound/ambience/ambitech3.ogg', 'sound/ambience/ambimystery.ogg')
@@ -553,3 +565,9 @@
 
 /area/ruin/space/has_grav/spinwardsmoothies
 	name = "Spinward Smoothies"
+
+
+// The planet of the clowns
+/area/ruin/space/has_grav/powered/clownplanet
+	name = "\improper Clown Planet"
+	ambientsounds = list('sound/ambience/clown.ogg')

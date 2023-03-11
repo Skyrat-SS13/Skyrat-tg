@@ -7,7 +7,7 @@
 	worn_icon_state = "moistnugget"
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction
 	bolt_wording = "bolt"
-	bolt_type = BOLT_TYPE_STANDARD
+	bolt_type = BOLT_TYPE_LOCKING
 	semi_auto = FALSE
 	internal_magazine = TRUE
 	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
@@ -18,7 +18,7 @@
 
 /obj/item/gun/ballistic/rifle/rack(mob/user = null)
 	if (bolt_locked == FALSE)
-		to_chat(user, span_notice("You open the bolt of \the [src]."))
+		balloon_alert(user, "bolt opened")
 		playsound(src, rack_sound, rack_sound_volume, rack_sound_vary)
 		process_chamber(FALSE, FALSE, FALSE)
 		bolt_locked = TRUE
@@ -33,7 +33,7 @@
 
 /obj/item/gun/ballistic/rifle/attackby(obj/item/A, mob/user, params)
 	if (!bolt_locked && !istype(A, /obj/item/stack/sheet/cloth))
-		to_chat(user, span_notice("The bolt is closed!"))
+		balloon_alert(user, "[bolt_wording] is closed!")
 		return
 	return ..()
 
@@ -59,7 +59,11 @@
 	knife_x_offset = 27
 	knife_y_offset = 13
 	can_be_sawn_off = TRUE
-	realistic = TRUE
+	var/jamming_chance = 20
+	var/unjam_chance = 10
+	var/jamming_increment = 5
+	var/jammed = FALSE
+	var/can_jam = TRUE
 
 /obj/item/gun/ballistic/rifle/boltaction/sawoff(mob/user)
 	. = ..()
@@ -68,7 +72,6 @@
 		can_bayonet = FALSE
 		update_appearance()
 
-/* - SKYRAT EDIT REMOVAL
 /obj/item/gun/ballistic/rifle/boltaction/attack_self(mob/user)
 	if(can_jam)
 		if(jammed)
@@ -77,7 +80,7 @@
 				unjam_chance = 10
 			else
 				unjam_chance += 10
-				to_chat(user, span_warning("[src] is jammed!"))
+				balloon_alert(user, "jammed!")
 				playsound(user,'sound/weapons/jammed.ogg', 75, TRUE)
 				return FALSE
 	..()
@@ -100,7 +103,6 @@
 					user.visible_message(span_notice("[user] finishes maintenance of [src]."))
 					jamming_chance = 10
 					qdel(item)
-*/ //SKYRAT EDIT END
 
 /obj/item/gun/ballistic/rifle/boltaction/blow_up(mob/user)
 	. = FALSE
@@ -117,11 +119,12 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/harpoon
 	fire_sound = 'sound/weapons/gun/sniper/shot.ogg'
 	can_be_sawn_off = FALSE
+	can_jam = FALSE
 
 /obj/item/gun/ballistic/rifle/boltaction/brand_new
 	desc = "A brand new Mosin Nagant issued by Nanotrasen for their interns. You would rather not to damage it."
 	can_be_sawn_off = FALSE
-	realistic = FALSE
+	can_jam = FALSE
 
 /obj/item/gun/ballistic/rifle/boltaction/brand_new/prime
 	name = "\improper Regal Nagant"
@@ -156,9 +159,7 @@
 	initial_fire_sound = 'sound/weapons/gun/sniper/shot.ogg'
 	alternative_fire_sound = 'sound/weapons/gun/shotgun/shot.ogg'
 	can_modify_ammo = TRUE
-	can_misfire = TRUE
-	misfire_probability = 0
-	misfire_percentage_increment = 5 //Slowly increases every shot
+	can_misfire = FALSE
 	can_bayonet = TRUE
 	knife_y_offset = 11
 	can_be_sawn_off = FALSE
@@ -175,9 +176,7 @@
 	inhand_icon_state = "musket_prime"
 	worn_icon_state = "musket_prime"
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/pipegun/prime
-	can_misfire = FALSE
-	misfire_probability = 0
-	misfire_percentage_increment = 0
+	can_jam = FALSE
 	projectile_damage_multiplier = 1
 
 /// MAGICAL BOLT ACTIONS + ARCANE BARRAGE? ///
@@ -188,7 +187,6 @@
 	var/guns_left = 30
 	mag_type = /obj/item/ammo_box/magazine/internal/enchanted
 	can_be_sawn_off = FALSE
-	realistic = FALSE
 
 /obj/item/gun/ballistic/rifle/enchanted/arcane_barrage
 	name = "arcane barrage"
@@ -203,7 +201,6 @@
 	flags_1 = NONE
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL
 	show_bolt_icon = FALSE //It's a magic hand, not a rifle
-	realistic = FALSE
 
 	mag_type = /obj/item/ammo_box/magazine/internal/arcane_barrage
 

@@ -42,6 +42,15 @@
 	max_occurrences = 0
 
 /**
+ * Spacevines
+ *
+ * Removed:
+ * Temporarily until balancing can be redone for them, as there's a rather serious issue.
+ */
+/datum/round_event_control/spacevine
+	max_occurrences = 0
+
+/**
  * Spider infestation
  *
  * Min players:
@@ -115,4 +124,13 @@
  * Xenomorphs should be controlled through dynamic spawns
  */
 /datum/round_event_control/alien_infestation
+	max_occurrences = 0
+
+/**
+ * Paperwork Error
+ *
+ * Removed:
+ * Paperwork Error is too intrusive and should be staff-only.
+ */
+/datum/round_event_control/bureaucratic_error
 	max_occurrences = 0

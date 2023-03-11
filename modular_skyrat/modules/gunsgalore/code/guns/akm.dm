@@ -21,8 +21,14 @@
 	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magin.ogg'
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magout.ogg'
 	alt_icons = TRUE
-	dirt_modifier = 0.75
-	company_flag = COMPANY_IZHEVSK
+
+/obj/item/gun/ballistic/automatic/akm/Initialize(mapload)
+	. = ..()
+
+	AddComponent(/datum/component/automatic_fire, fire_delay)
+
+/obj/item/gun/ballistic/automatic/akm/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_IZHEVSK)
 
 /obj/item/ammo_box/magazine/akm
 	name = "\improper Krinkov magazine"
@@ -89,14 +95,12 @@
 	desc = "A timeless human design of a carbine chambered in the NRI's 5.6mm ammo. The internal modifications made to the firearm in order to accommodate for non-military use made it incompatible with conventional munitions and gave it the inability to fire fully automatic. It's purpose-built to fire low-grade civilian ammo, anything stronger would obliterate the rifling and render the firearm useless."
 	icon_state = "akm_civ"
 	inhand_icon_state = "akm_civ"
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	mag_type = /obj/item/ammo_box/magazine/akm/civvie
 	burst_size = 1
 	fire_delay = 5
 	dual_wield_spread = 15
 	spread = 5
 	worn_icon_state = "akm_civ"
-	dirt_modifier = 1
 	recoil = 0.2
 
 /obj/item/gun/ballistic/automatic/akm/nri
@@ -105,5 +109,4 @@
 	icon_state = "akm_nri"
 	inhand_icon_state = "akm_nri"
 	worn_icon_state = "akm_nri"
-	dirt_modifier = 0.6
 	can_suppress = TRUE

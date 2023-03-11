@@ -1,9 +1,16 @@
+#define ARMAMENT_CATEGORY_EXPLOSIVES "Explosives"
+
 /datum/armament_entry/hecu/explosives
 	category = ARMAMENT_CATEGORY_EXPLOSIVES
 	category_item_limit = 8
 
 /datum/armament_entry/hecu/explosives/frag
 	item_type = /obj/item/grenade/frag
+	max_purchase = 8
+	cost = 3
+
+/datum/armament_entry/hecu/explosives/high_explosive
+	item_type = /obj/item/grenade/syndieminibomb/concussion
 	max_purchase = 8
 	cost = 3
 
@@ -26,3 +33,5 @@
 	item_type = /obj/item/grenade/c4
 	max_purchase = 3
 	cost = 3
+
+#undef ARMAMENT_CATEGORY_EXPLOSIVES

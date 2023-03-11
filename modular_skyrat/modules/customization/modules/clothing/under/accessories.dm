@@ -20,11 +20,11 @@
 	desc = "A faded badge, backed with leather. It bears the emblem of the Forensic division."
 	icon_state = "goldbadge"
 
-/obj/item/clothing/accessory/badge/proc/set_name(var/new_name)
+/obj/item/clothing/accessory/badge/proc/set_name(new_name)
 	stored_name = new_name
 	name = "[initial(name)] ([stored_name])"
 
-/obj/item/clothing/accessory/badge/proc/set_desc(var/mob/living/carbon/human/H)
+/obj/item/clothing/accessory/badge/proc/set_desc(mob/living/carbon/human/H)
 
 /obj/item/clothing/accessory/badge/attack_self(mob/user as mob)
 
@@ -43,7 +43,6 @@
 	if(isliving(user))
 		user.visible_message(span_danger("[user] invades [M]'s personal space, thrusting [src] into their face insistently."),span_danger("You invade [M]'s personal space, thrusting [src] into their face insistently."))
 		user.do_attack_animation(M)
-		cooldown = 30
 
 // Sheriff Badge (toy)
 /obj/item/clothing/accessory/badge/sheriff
@@ -61,7 +60,6 @@
 	if(isliving(user))
 		user.visible_message(span_danger("[user] invades [M]'s personal space, the sheriff badge into their face!."),span_danger("You invade [M]'s personal space, thrusting the sheriff badge into their face insistently."))
 		user.do_attack_animation(M)
-		cooldown = 30
 
 //.Holobadges.
 /obj/item/clothing/accessory/badge/holo
@@ -83,7 +81,7 @@
 		return
 	return ..()
 
-/obj/item/clothing/accessory/badge/holo/emag_act(var/remaining_charges, var/mob/user)
+/obj/item/clothing/accessory/badge/holo/emag_act(remaining_charges, mob/user)
 	if (emagged)
 		to_chat(user, span_danger("\The [src] is already cracked."))
 		return
@@ -92,7 +90,7 @@
 		to_chat(user, span_danger("You crack the holobadge security checks."))
 		return TRUE
 
-/obj/item/clothing/accessory/badge/holo/attackby(var/obj/item/object as obj, var/mob/user as mob)
+/obj/item/clothing/accessory/badge/holo/attackby(obj/item/object as obj, mob/user as mob)
 	if(istype(object, /obj/item/card/id))
 
 		var/obj/item/card/id/id_card = null
@@ -161,3 +159,18 @@
 	new /obj/item/clothing/accessory/badge/holo/hos(src)
 	new /obj/item/clothing/accessory/badge/holo/cord(src)
 	return
+
+// The newbie pin
+/obj/item/clothing/accessory/green_pin
+	name = "green pin"
+	desc = "A pin given to newly hired personnel on deck."
+	icon_state = "green"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/accessories.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/accessories.dmi'
+
+/obj/item/clothing/accessory/green_pin/examine(mob/user)
+	. = ..()
+	// How many hours of playtime left until the green pin expires
+	var/green_time_remaining = sanitize_integer((PLAYTIME_GREEN - user.client?.get_exp_living(pure_numeric = TRUE) / 60), 0, (PLAYTIME_GREEN / 60))
+	if(green_time_remaining > 0)
+		. += span_nicegreen("It reads '[green_time_remaining] hour[green_time_remaining >= 2 ? "s" : ""].'")

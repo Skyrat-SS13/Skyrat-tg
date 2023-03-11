@@ -1,5 +1,5 @@
 /// How often the sensor data is updated
-#define SENSORS_UPDATE_PERIOD 10 SECONDS //How often the sensor data updates.
+#define SENSORS_UPDATE_PERIOD (10 SECONDS) //How often the sensor data updates.
 /// The job sorting ID associated with otherwise unknown jobs
 #define UNKNOWN_JOB_ID 81
 
@@ -124,8 +124,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_SCIENTIST = 31,
 		JOB_ROBOTICIST = 32,
 		JOB_GENETICIST = 33,
-		JOB_VANGUARD_OPERATIVE = 34, // SKYRAT EDIT ADDITION
-		JOB_SCIENCE_GUARD = 35, // SKYRAT EDIT ADDITION
+		JOB_SCIENCE_GUARD = 34, // SKYRAT EDIT ADDITION
 		// 40-49: Engineering
 		JOB_CHIEF_ENGINEER = 40,
 		JOB_STATION_ENGINEER = 41,
@@ -258,7 +257,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 				entry["ijob"] = jobs[trim_assignment]
 
 		// SKYRAT EDIT BEGIN: Checking for robotic race
-		if (isrobotic(tracked_human))
+		if (issynthetic(tracked_human))
 			entry["is_robot"] = TRUE
 		// SKYRAT EDIT END
 

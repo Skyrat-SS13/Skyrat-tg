@@ -3,6 +3,7 @@
 	desc = "A cheap single use autoinjector that injects the user with DNA."
 	icon = 'icons/obj/medical/syringe.dmi'
 	icon_state = "dnainjector"
+	inhand_icon_state = "dnainjector"
 	worn_icon_state = "pen"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
@@ -17,6 +18,24 @@
 
 	var/used = FALSE
 
+/obj/item/dnainjector/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
+	if(used)
+		update_appearance()
+
+/obj/item/dnainjector/vv_edit_var(vname, vval)
+	. = ..()
+	if(vname == NAMEOF(src, used))
+		update_appearance()
+
+/obj/item/dnainjector/update_icon_state()
+	. = ..()
+	icon_state = inhand_icon_state = "[initial(icon_state)][used ? "0" : null]"
+
+/obj/item/dnainjector/update_desc(updates)
+	. = ..()
+	desc = "[initial(desc)][used ? "This one is used up." : null]"
 
 /obj/item/dnainjector/attack_paw(mob/user, list/modifiers)
 	return attack_hand(user, modifiers)
@@ -63,7 +82,7 @@
 	if(target != user)
 		target.visible_message(span_danger("[user] is trying to inject [target] with [src]!"), \
 			span_userdanger("[user] is trying to inject you with [src]!"))
-		if(!do_mob(user, target) || used)
+		if(!do_after(user, 3 SECONDS, target) || used)
 			return
 		target.visible_message(span_danger("[user] injects [target] with the syringe with [src]!"), \
 						span_userdanger("[user] injects you with the syringe with [src]!"))
@@ -77,8 +96,7 @@
 		to_chat(user, span_notice("It appears that [target] does not have compatible DNA."))
 
 	used = TRUE
-	icon_state = "dnainjector0"
-	desc += " This one is used up."
+	update_appearance()
 
 /obj/item/dnainjector/timed
 	var/duration = 600
@@ -166,7 +184,7 @@
 
 			for(var/datum/disease/advance/disease in target.diseases)
 				for(var/datum/symptom/symp in disease.symptoms)
-					if((symp.type == /datum/symptom/genetic_mutation)||(symp.type == /datum/symptom/viralevolution))
+					if((symp.type == /datum/symptom/genetic_mutation) || (symp.type == /datum/symptom/viralevolution))
 						crispr_charge = TRUE
 			log_combat(user, target, "[!doitanyway ? "failed to inject" : "injected"]", "[src] ([mutation])[crispr_charge ? " with CRISPR charge" : ""]")
 		return TRUE

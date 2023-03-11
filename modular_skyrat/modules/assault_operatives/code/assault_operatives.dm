@@ -1,5 +1,3 @@
-#define OBJECTIVE_COUNT 5
-
 /**
  * ASSAULT OPERATIVE ANTAG DATUM
  */
@@ -13,7 +11,11 @@
 	antag_moodlet = /datum/mood_event/focused
 	show_to_ghosts = TRUE
 	hijack_speed = 2
-	preview_outfit = /datum/outfit/syndicate
+
+	preview_outfit = /datum/outfit/assaultops_preview
+	/// In the preview icon, the operatives who are behind the leader
+	var/preview_outfit_behind = /datum/outfit/assaultops_preview/background
+
 	ui_name = "AntagInfoAssaultops"
 	/// The default outfit given BEFORE they choose their equipment.
 	var/assault_operative_default_outfit = /datum/outfit/assaultops
@@ -26,8 +28,7 @@
 	var/spawn_text = "Your mission is to assault NTSS13 and get all of the GoldenEye keys that you can from the heads of staff that reside there. \
 	Use your pinpointer to locate these after you have extracted the GoldenEye key from the head of staff. It will be sent in by droppod. \
 	You must then upload the key to the GoldenEye upload terminal on this GoldenEye station. After you have completed your mission, \
-	The GoldenEye defence network will fall, and we will gain access to Nanotrasen's military systems. Good luck agent. \
-	YOUR PRESENCE WILL BE ANNOUNCED IN APPROXEMATELY 15 MINUTES."
+	The GoldenEye defence network will fall, and we will gain access to Nanotrasen's military systems. Good luck agent."
 	/// A link to our internal pinpointer.
 	var/datum/status_effect/goldeneye_pinpointer/pinpointer
 
@@ -136,7 +137,7 @@
 	return goldeneye_keys
 
 
-/datum/antagonist/assault_operative/proc/forge_objectives()
+/datum/antagonist/assault_operative/forge_objectives()
 	if(assault_team)
 		objectives |= assault_team.objectives
 
@@ -179,7 +180,18 @@
 	if (!preview_outfit)
 		return null
 
-	var/icon/final_icon = icon('modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi', "goldeneye_key")
+	var/icon/final_icon = render_preview_outfit(preview_outfit)
+
+	if (!isnull(preview_outfit_behind))
+		var/icon/teammate = render_preview_outfit(preview_outfit_behind)
+		teammate.Blend(rgb(128, 128, 128, 128), ICON_MULTIPLY)
+
+		final_icon.Blend(teammate, ICON_UNDERLAY, -world.icon_size / 4, 0)
+		final_icon.Blend(teammate, ICON_UNDERLAY, world.icon_size / 4, 0)
+
+	var/icon/disky = icon('modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi', "goldeneye_key")
+	disky.Shift(SOUTH, 12)
+	final_icon.Blend(disky, ICON_OVERLAY)
 
 	return finish_preview_icon(final_icon)
 

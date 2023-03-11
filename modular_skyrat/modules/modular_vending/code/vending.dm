@@ -12,7 +12,9 @@
 
 /obj/machinery/vending/Initialize(mapload)
 	if(skyrat_products)
-		products += skyrat_products
+		// We need this, because duplicates screw up the spritesheet!
+		for(var/item_to_add in skyrat_products)
+			products[item_to_add] = skyrat_products[item_to_add]
 
 	if(skyrat_product_categories)
 		for(var/category in skyrat_product_categories)
@@ -27,10 +29,14 @@
 				product_categories += category
 
 	if(skyrat_premium)
-		premium += skyrat_premium
+		// We need this, because duplicates screw up the spritesheet!
+		for(var/item_to_add in skyrat_premium)
+			premium[item_to_add] = skyrat_premium[item_to_add]
 
 	if(skyrat_contraband)
-		contraband += skyrat_contraband
+		// We need this, because duplicates screw up the spritesheet!
+		for(var/item_to_add in skyrat_contraband)
+			contraband[item_to_add] = skyrat_contraband[item_to_add]
 
 	// Time to make clothes amounts consistent!
 	for (var/obj/item/clothing/item in products)

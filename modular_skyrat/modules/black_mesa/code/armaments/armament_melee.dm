@@ -10,6 +10,11 @@
 	max_purchase = 4
 	cost = 3
 
+/datum/armament_entry/hecu/melee/lethal/tomahawk
+	item_type = /obj/item/melee/tomahawk
+	max_purchase = 4
+	cost = 5
+
 /datum/armament_entry/hecu/melee/nonlethal
 	subcategory = ARMAMENT_SUBCATEGORY_MELEE_NONLETHAL
 

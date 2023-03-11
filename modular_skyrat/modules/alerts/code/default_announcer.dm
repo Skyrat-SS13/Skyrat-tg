@@ -10,6 +10,7 @@
 		ANNOUNCER_IONSTORM = 'modular_skyrat/modules/alerts/sound/alerts/ionstorm.ogg',
 		ANNOUNCER_METEORS = 'modular_skyrat/modules/alerts/sound/alerts/meteors.ogg',
 		ANNOUNCER_OUTBREAK5 = 'modular_skyrat/modules/alerts/sound/alerts/outbreak5.ogg',
+		ANNOUNCER_OUTBREAK6 = 'modular_skyrat/modules/alerts/sound/alerts/alert3.ogg',
 		ANNOUNCER_OUTBREAK7 = 'modular_skyrat/modules/alerts/sound/alerts/outbreak7.ogg',
 		ANNOUNCER_POWEROFF = 'modular_skyrat/modules/alerts/sound/alerts/poweroff.ogg',
 		ANNOUNCER_POWERON = 'modular_skyrat/modules/alerts/sound/alerts/poweron.ogg',
@@ -39,4 +40,5 @@
 		ANNOUNCER_MUTANTS = 'modular_skyrat/modules/alerts/sound/alerts/hazdet.ogg',
 		ANNOUNCER_KLAXON = 'modular_skyrat/modules/black_mesa/sound/siren1_long.ogg',
 		ANNOUNCER_ICARUS = 'modular_skyrat/modules/assault_operatives/sound/icarus_alarm.ogg',
+		ANNOUNCER_NRI_RAIDERS = 'modular_skyrat/modules/encounters/sounds/morse.ogg'
 		)

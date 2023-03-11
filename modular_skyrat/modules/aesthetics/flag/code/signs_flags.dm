@@ -18,7 +18,7 @@
 	if(over_object == usr && Adjacent(usr))
 		if(!item_flag || src.flags_1 & NODECONSTRUCT_1)
 			return
-		if(!usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
+		if(!usr.can_perform_action(src, NEED_DEXTERITY))
 			return
 		usr.visible_message(span_notice("[usr] grabs and folds \the [src.name]."), span_notice("You grab and fold \the [src.name]."))
 		var/obj/item/flag_item = new item_flag(loc)

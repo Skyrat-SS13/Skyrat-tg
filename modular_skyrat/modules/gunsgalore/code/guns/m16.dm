@@ -22,7 +22,6 @@
 	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magin.ogg'
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magout.ogg'
 	alt_icons = TRUE
-	realistic = TRUE
 
 /obj/item/ammo_box/magazine/m16
 	name = "\improper XM-2537 magazine"
@@ -53,6 +52,11 @@
 	spread = 0.5
 	burst_size = 3
 	fire_delay = 1.90
+
+/obj/item/gun/ballistic/automatic/m16/modern/Initialize(mapload)
+	. = ..()
+
+	AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/gun/ballistic/automatic/m16/modern/v2
 	name = "\improper XM-2537 'Amans Patriae' rifle"

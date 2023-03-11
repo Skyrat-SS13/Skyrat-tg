@@ -18,7 +18,7 @@
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "sweatdrop", ABOVE_MOB_LAYER)
 		overlay.pixel_x = 10
 		overlay.pixel_y = 10
-		flick_overlay_static(overlay, user, 50)
+		user.flick_overlay_static(overlay, 50)
 		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/sweatdrop.ogg', 25, TRUE)
 
 /datum/emote/living/exclaim
@@ -31,7 +31,7 @@
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "exclamation", ABOVE_MOB_LAYER)
 		overlay.pixel_x = 10
 		overlay.pixel_y = 28
-		flick_overlay_static(overlay, user, 50)
+		user.flick_overlay_static(overlay, 50)
 		playsound(get_turf(user), 'sound/machines/chime.ogg', 25, TRUE)
 
 /datum/emote/living/question
@@ -44,7 +44,7 @@
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "question", ABOVE_MOB_LAYER)
 		overlay.pixel_x = 10
 		overlay.pixel_y = 28
-		flick_overlay_static(overlay, user, 50)
+		user.flick_overlay_static(overlay, 50)
 		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/question.ogg', 25, TRUE)
 
 
@@ -60,7 +60,7 @@
 			overlay.pixel_y = 10
 		else
 			overlay.pixel_y = 15
-		flick_overlay_static(overlay, user, 50)
+		user.flick_overlay_static(overlay, 50)
 		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/realize.ogg', 25, TRUE)
 
 /datum/emote/living/annoyed
@@ -73,7 +73,7 @@
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "annoyed", ABOVE_MOB_LAYER)
 		overlay.pixel_x = 10
 		overlay.pixel_y = 10
-		flick_overlay_static(overlay, user, 50)
+		user.flick_overlay_static(overlay, 50)
 		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/annoyed.ogg', 25, TRUE)
 
 
@@ -89,7 +89,7 @@
 		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "glasses", ABOVE_MOB_LAYER)
 		if(isteshari(user))
 			overlay.pixel_y = -5
-		flick_overlay_static(overlay, user, 10)
+		user.flick_overlay_static(overlay, 10)
 	else
 		return FALSE
 
@@ -105,4 +105,4 @@
 		if(isteshari(user))
 			overlay.pixel_y = -4
 
-		flick_overlay_static(overlay, user, 50)
+		user.flick_overlay_static(overlay, 50)

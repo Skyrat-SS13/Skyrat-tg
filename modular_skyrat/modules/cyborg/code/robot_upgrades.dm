@@ -27,10 +27,10 @@
 		var/datum/effect_system/fluid_spread/smoke/smoke = new
 		smoke.set_up(1, location = get_turf(borg))
 		smoke.start()
-		sleep(2)
+		sleep(0.2 SECONDS)
 		for(var/i in 1 to 4)
 			playsound(borg, pick('sound/items/drill_use.ogg', 'sound/items/jaws_cut.ogg', 'sound/items/jaws_pry.ogg', 'sound/items/welder.ogg', 'sound/items/ratchet.ogg'), 80, TRUE, -1)
-			sleep(12)
+			sleep(1.2 SECONDS)
 		if(!prev_lockcharge)
 			borg.SetLockdown(0)
 		borg.set_anchored(FALSE)
@@ -125,23 +125,23 @@
 	icon_state = "cyborg_upgrade3"
 
 /obj/item/borg/upgrade/affectionmodule/action(mob/living/silicon/robot/borg)
-    . = ..()
-    if(!.)
-        return
-    if(borg.hasAffection)
-        to_chat(usr, span_warning("This unit already has a affection module installed!"))
-        return FALSE
-    if(!(R_TRAIT_WIDE in borg.model.model_features))
-        to_chat(usr, span_warning("This unit's chassis does not support this module."))
-        return FALSE
+	. = ..()
+	if(!.)
+		return
+	if(borg.hasAffection)
+		to_chat(usr, span_warning("This unit already has a affection module installed!"))
+		return FALSE
+	if(!(R_TRAIT_WIDE in borg.model.model_features))
+		to_chat(usr, span_warning("This unit's chassis does not support this module."))
+		return FALSE
 
-    var/obj/item/dogborg_tongue/dogtongue = new /obj/item/dogborg_tongue(borg.model)
-    borg.model.basic_modules += dogtongue
-    borg.model.add_module(dogtongue, FALSE, TRUE)
-    var/obj/item/dogborg_nose/dognose = new /obj/item/dogborg_nose(borg.model)
-    borg.model.basic_modules += dognose
-    borg.model.add_module(dognose, FALSE, TRUE)
-    borg.hasAffection = TRUE
+	var/obj/item/dogborg_tongue/dogtongue = new /obj/item/dogborg_tongue(borg.model)
+	borg.model.basic_modules += dogtongue
+	borg.model.add_module(dogtongue, FALSE, TRUE)
+	var/obj/item/dogborg_nose/dognose = new /obj/item/dogborg_nose(borg.model)
+	borg.model.basic_modules += dognose
+	borg.model.add_module(dognose, FALSE, TRUE)
+	borg.hasAffection = TRUE
 
 /obj/item/borg/upgrade/affectionmodule/deactivate(mob/living/silicon/robot/borg, user = usr)
 	. = ..()

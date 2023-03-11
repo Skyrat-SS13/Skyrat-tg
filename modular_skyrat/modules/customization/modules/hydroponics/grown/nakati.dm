@@ -19,8 +19,9 @@
 /obj/item/food/grown/nakati
 	seed = /obj/item/seeds/nakati
 	name = "nakati bark"
-	desc = "A segment of brown 'bark' from a nakati growth, grinds into a zesty spice used in teshari cooking."
+	desc = "A segment of fragrant brown 'bark' from a nakati growth, grinds into a zesty spice widely used in teshari cooking."
 	icon = 'modular_skyrat/master_files/icons/obj/hydroponics/harvest.dmi'
 	icon_state = "nakati"
 	foodtypes = VEGETABLES
 	grind_results = list(/datum/reagent/consumable/nakati_spice = 0)
+	tastes = list("overwhelming spicyness" = 1)

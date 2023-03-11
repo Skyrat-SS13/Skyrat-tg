@@ -11,7 +11,7 @@
 	var/saved_icon
 	var/saved_bubble_icon
 	var/saved_icon_override
-	var/saved_model_name
+	var/saved_name
 	var/saved_model_features
 	var/saved_special_light_key
 	var/saved_hat_offset
@@ -55,11 +55,11 @@
 	disrupt(user)
 
 /**
-  * check_menu: Checks if we are allowed to interact with a radial menu
-  *
-  * Arguments:
-  * * user The mob interacting with a menu
-  */
+ * check_menu: Checks if we are allowed to interact with a radial menu
+ *
+ * Arguments:
+ * * user The mob interacting with a menu
+ */
 /obj/item/borg_shapeshifter/proc/check_menu(mob/user)
 	if(!istype(user))
 		return FALSE
@@ -99,7 +99,7 @@
 			"Syndicate" = image(icon = 'icons/mob/silicon/robots.dmi', icon_state = "synd_sec"),
 			"Spider Clan" = image(icon = CYBORG_ICON_NINJA, icon_state = "ninja_engi")
 		))
-		var/model_selection = show_radial_menu(user, user, model_icons, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 42, require_near = TRUE)
+		var/model_selection = show_radial_menu(user, user, model_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 42, require_near = TRUE)
 		if(!model_selection)
 			return FALSE
 
@@ -175,10 +175,10 @@
 			if (R_TRAIT_WIDE in details[SKIN_FEATURES])
 				reskin.pixel_x -= 16
 		reskin_icons[skin] = reskin
-	var/borg_skin = show_radial_menu(cyborg, cyborg, reskin_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg), radius = 38, require_near = TRUE)
+	var/borg_skin = show_radial_menu(cyborg, cyborg, reskin_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), cyborg), radius = 38, require_near = TRUE)
 	if(!borg_skin)
 		return FALSE
-	disguise_model_name = borg_skin
+	disguise_model_name = disguise_model.name
 	var/list/details = disguise_model.borg_skins[borg_skin]
 	disguise = details[SKIN_ICON_STATE]
 	disguise_icon_override = details[SKIN_ICON]
@@ -199,7 +199,7 @@
 	saved_icon = user.model.cyborg_base_icon
 	saved_bubble_icon = user.bubble_icon
 	saved_icon_override = user.model.cyborg_icon_override
-	saved_model_name = user.model.name
+	saved_name = user.model.name
 	saved_model_features = user.model.model_features
 	saved_special_light_key = user.model.special_light_key
 	saved_hat_offset = user.model.hat_offset
@@ -218,7 +218,7 @@
 		return
 	if(listeningTo)
 		UnregisterSignal(listeningTo, signalCache)
-	RegisterSignal(user, signalCache, .proc/disrupt)
+	RegisterSignal(user, signalCache, PROC_REF(disrupt))
 	listeningTo = user
 
 /obj/item/borg_shapeshifter/proc/deactivate(mob/living/silicon/robot/user)
@@ -227,7 +227,7 @@
 		UnregisterSignal(listeningTo, signalCache)
 		listeningTo = null
 	do_sparks(5, FALSE, user)
-	user.model.name = saved_model_name
+	user.model.name = saved_name
 	user.model.cyborg_base_icon = saved_icon
 	user.model.cyborg_icon_override = saved_icon_override
 	user.icon = saved_icon_override
