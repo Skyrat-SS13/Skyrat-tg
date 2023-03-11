@@ -360,6 +360,7 @@
 		playsound(loc, 'sound/effects/attackblob.ogg', 100, TRUE)
 		do_attack_animation(thing, ATTACK_EFFECT_PUNCH)
 		return TRUE
+	return .
 
 /obj/structure/fleshmind/structure/core/proc/retaliate_effect()
 	whip_those_fuckers()
@@ -526,7 +527,7 @@
 	/// Lower time limit for our ability.
 	automatic_trigger_time_lower = 40 SECONDS
 	/// A list of quotes we choose from to send to the player.
-	var/list/join_quotes = list(
+	var/static/list/join_quotes = list(
 		"You seek survival. We offer immortality.",
 		"When was the last time you felt like you were part of something..?",
 		"We offer more than just limbs or tools... full-body augmentation.",
@@ -585,7 +586,7 @@
 
 	if(!triggered_mob)
 		return
-	triggered_mob.hallucination += 100
+	triggered_mob.adjust_hallucinations(10 SECONDS)
 	to_chat(triggered_mob, span_notice("You feel your brain tingle."))
 
 /**
@@ -608,7 +609,7 @@
 	/// The current amount of spawned mobs
 	var/spawned_mobs = 0
 	/// The allowed monster types
-	var/list/monster_types = list(
+	var/static/list/monster_types = list(
 		/mob/living/simple_animal/hostile/fleshmind/floater = 2,
 		/mob/living/simple_animal/hostile/fleshmind/globber = 4,
 		/mob/living/simple_animal/hostile/fleshmind/hiborg = 2,
@@ -732,7 +733,6 @@
 	icon_state = "goo_proj"
 	damage = 30
 	damage_type = BURN
-	nodamage = FALSE
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/neurotoxin
 	hitsound = 'modular_skyrat/modules/black_mesa/sound/mobs/bullsquid/splat1.ogg'
 	hitsound_wall = 'modular_skyrat/modules/black_mesa/sound/mobs/bullsquid/splat1.ogg'

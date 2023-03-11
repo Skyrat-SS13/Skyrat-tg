@@ -24,7 +24,7 @@
 
 	var/list/possible_spawn_areas = typecacheof(typesof(/area/station/maintenance, /area/station/security/prison, /area/station/construction))
 
-	for(var/area/iterating_area in world)
+	for(var/area/iterating_area in GLOB.sortedAreas)
 		if(!is_station_level(iterating_area.z))
 			continue
 		if(!is_type_in_typecache(iterating_area, possible_spawn_areas))

@@ -408,7 +408,7 @@
 /datum/action/innate/floater_explode
 	name = "explode"
 	desc = "Detonate our internals."
-	icon_icon = 'icons/obj/weapons/grenade.dmi'
+	button_icon = 'icons/obj/weapons/grenade.dmi'
 	button_icon_state = "frag"
 	check_flags = AB_CHECK_CONSCIOUS
 
@@ -523,7 +523,7 @@
 		attacked_human.Knockdown(30)
 		playsound(src, 'sound/weapons/egloves.ogg', 50, TRUE)
 		COOLDOWN_START(src, stun_cooldown, stun_cooldown_time)
-	. = ..()
+	return ..()
 
 /**
  * Flesh Borg
@@ -644,7 +644,7 @@
 /datum/action/cooldown/hiborg_slash
 	name = "Slash (AOE)"
 	desc = "Whip everyone in a range."
-	icon_icon = 'icons/obj/weapons/grenade.dmi'
+	button_icon = 'icons/obj/weapons/grenade.dmi'
 	button_icon_state = "slimebang_active"
 	cooldown_time = 20 SECONDS
 
@@ -833,7 +833,7 @@
 /datum/action/cooldown/himan_fake_death
 	name = "Fake Death"
 	desc = "Fakes our own death."
-	icon_icon = 'icons/obj/objects.dmi'
+	button_icon = 'icons/obj/objects.dmi'
 	button_icon_state = "bed"
 	cooldown_time = 20 SECONDS
 
@@ -907,7 +907,7 @@
 /datum/action/cooldown/treader_dispense_nanites
 	name = "Dispense Nanites"
 	desc = "Dispenses nanites healing all friendly mobs in a range."
-	icon_icon = 'icons/obj/meteor.dmi'
+	button_icon = 'icons/obj/meteor.dmi'
 	button_icon_state = "dust"
 	cooldown_time = 20 SECONDS
 
@@ -923,7 +923,6 @@
 	icon_state = "neurotoxin"
 	damage = 20
 	damage_type = BURN
-	nodamage = FALSE
 	knockdown = 20
 	armor_flag = BIO
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/neurotoxin
@@ -1076,7 +1075,7 @@
 		//there we make some kind of, you know, that creepy zig-zag moving
 		//we just take angle, distort it a bit and turn into dir
 		var/angle = get_angle(loc, target_turf)
-		angle += rand(5, 25)*pick(-1, 1)
+		angle += rand(5, 25) * pick(-1, 1)
 		if(angle < 0)
 			angle = 360 + angle
 		if(angle > 360)
@@ -1151,7 +1150,7 @@
 /datum/action/cooldown/phaser_phase_ability
 	name = "Create Clones"
 	desc = "Creates phase copies of ourselves to move towards a set target."
-	icon_icon = 'icons/obj/objects.dmi'
+	button_icon = 'icons/obj/objects.dmi'
 	button_icon_state = "bhole2"
 	cooldown_time = 40 SECONDS
 
@@ -1339,7 +1338,7 @@
 	var/consume_ability_cooldown_time = 1 MINUTES
 	COOLDOWN_DECLARE(consume_ability_cooldown)
 	/// A list of lines we will send to torment the passenger.
-	var/list/torment_lines = list(
+	var/static/list/torment_lines = list(
 		"An arm grabs your neck, hundreds of manipulators trying to work a set of implants under your skin!",
 		"The cockpit radio crackles, \" You came to the right place... \"",
 		"Mechanical signals flood your psyche, \" You'll finally be with people that care... \"",

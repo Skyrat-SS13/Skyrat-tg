@@ -86,20 +86,20 @@
 	var/rocket_pod_cooldown_time_lower = 10 SECONDS
 	COOLDOWN_DECLARE(rocket_pod_cooldown)
 	/// The projectile we fire when shooting our rocket pods.
-	var/rocket_projectile_type = /obj/projectile/bullet/a84mm/weak
+	var/rocket_projectile_type = /obj/projectile/bullet/rocket/weak
 	/// The sound we play when firing our rocket pods.
 	var/rocket_projectile_sound = 'sound/weapons/gun/general/rocket_launch.ogg'
 	/// The time it takes for us to charge up our rocket pods
 	var/rocket_pod_charge_up_time = 3 SECONDS
-	/// How many rockets in our barage
-	var/barage = 1
+	/// How many rockets in our barrage
+	var/barrage = 1
 	/// How much time between rocket shots
-	var/barage_interval = 2
+	var/barrage_interval = 2
 	/// How often we can play the rotate sound
 	var/rotate_sound_cooldown_time = 1 SECONDS
 	COOLDOWN_DECLARE(rotate_sound_cooldown)
 	/// A list of footstep sounds we make
-	var/list/footstep_sounds = list(
+	var/static/list/footstep_sounds = list(
 		'modular_skyrat/modules/fleshmind/sound/tyrant/footstep_1.ogg',
 		'modular_skyrat/modules/fleshmind/sound/tyrant/footstep_2.ogg',
 		'modular_skyrat/modules/fleshmind/sound/tyrant/footstep_3.ogg',
@@ -114,7 +114,7 @@
 	/// Our laser projectile type
 	var/laser_projectile_type = /obj/projectile/beam/emitter/hitscan
 	/// A list of sounds we can play when firing the laser
-	var/list/laser_projectile_sounds = list(
+	var/static/list/laser_projectile_sounds = list(
 		'modular_skyrat/modules/fleshmind/sound/tyrant/laser_1.ogg',
 		'modular_skyrat/modules/fleshmind/sound/tyrant/laser_2.ogg',
 		'modular_skyrat/modules/fleshmind/sound/tyrant/laser_3.ogg',
@@ -167,10 +167,10 @@
 /mob/living/simple_animal/hostile/fleshmind/tyrant/proc/fire_rocket_pods(atom/target_atom)
 	if(!target_atom || QDELETED(target_atom))
 		return
-	if(barage > 1)
+	if(barrage > 1)
 		var/datum/callback/callback = CALLBACK(src, .proc/fire_projectile, target_atom, rocket_projectile_type, rocket_projectile_sound)
-		for(var/i in 1 to barage)
-			addtimer(callback, (i - 1) * barage_interval)
+		for(var/i in 1 to barrage)
+			addtimer(callback, (i - 1) * barrage_interval)
 	else
 		fire_projectile(target_atom, rocket_projectile_type, rocket_projectile_sound)
 

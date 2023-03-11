@@ -145,12 +145,6 @@ have ways of interacting with a specific mob and control it.
 
 ///Reactive events to being hit
 /datum/ai_controller/monkey/proc/retaliate(mob/living/L)
-	// SKYRAT EDIT ADDITION
-	if(isliving(pawn)) // Sanity????
-		var/mob/living/our_living_pawn = pawn
-		if(faction_check(L.faction, our_living_pawn.faction))
-			return
-	// SKYRAT EDIT END
 	var/list/enemies = blackboard[BB_MONKEY_ENEMIES]
 	enemies[WEAKREF(L)] += MONKEY_HATRED_AMOUNT
 

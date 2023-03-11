@@ -56,11 +56,11 @@
 	/// Are we a vent burrow?
 	var/vent_burrow = FALSE
 	/// ZOnes we passively replace
-	var/list/replacement_zones = list(
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/robot,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/robot,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/robot,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_leg/robot,
+	var/static/list/replacement_zones = list(
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/robot,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/robot,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/robot,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/robot,
 	)
 
 /obj/structure/fleshmind/wireweed/Initialize(mapload, starting_alpha = 255, datum/fleshmind_controller/incoming_controller)
@@ -71,10 +71,6 @@
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
 	our_controller = incoming_controller
-
-/obj/structure/fleshmind/wireweed/examine(mob/user)
-	. = ..()
-
 
 /obj/structure/fleshmind/wireweed/wirecutter_act(mob/living/user, obj/item/tool)
 	. = ..()

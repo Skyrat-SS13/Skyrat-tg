@@ -60,7 +60,7 @@
 
 /datum/component/machine_corruption
 	/// A list of possible overlays that we can choose from when we are created.
-	var/list/possible_overlays = list(
+	var/static/list/possible_overlays = list(
 		"wires-1",
 		"wires-2",
 		"wires-3",

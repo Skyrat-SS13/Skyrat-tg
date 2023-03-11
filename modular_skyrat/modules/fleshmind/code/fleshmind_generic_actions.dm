@@ -1,7 +1,7 @@
 /datum/action/cooldown/fleshmind_create_structure
 	name = "Create Tech Structure"
 	desc = "Creates a tech structure of your choice at your location(must be on wireweed)."
-	icon_icon = 'icons/obj/weapons/items_and_weapons.dmi'
+	button_icon = 'icons/obj/weapons/items_and_weapons.dmi'
 	background_icon_state = "bg_fugu"
 	button_icon_state = "blueprints"
 	cooldown_time = 2 MINUTES
@@ -49,7 +49,7 @@
 /datum/action/cooldown/fleshmind_flesh_call
 	name = "Call Flesh Reinforcements"
 	desc = "Gets all fleshmind mobs to come to your location in a radius."
-	icon_icon = 'icons/obj/weapons/items_and_weapons.dmi'
+	button_icon = 'icons/obj/weapons/items_and_weapons.dmi'
 	background_icon_state = "bg_fugu"
 	button_icon_state = "latexballon_blow"
 	cooldown_time = 2 MINUTES
@@ -66,7 +66,7 @@
 /datum/action/innate/fleshmind_flesh_chat
 	name = "Flesh Chat"
 	desc = "Sends a message to all other sentient fleshmind beings."
-	icon_icon = 'icons/mob/actions/actions_changeling.dmi'
+	button_icon = 'icons/mob/actions/actions_changeling.dmi'
 	background_icon_state = "bg_fugu"
 	button_icon_state = "hivemind_link"
 
@@ -82,7 +82,7 @@
 /datum/action/cooldown/fleshmind_plant_weeds
 	name = "Create Wireweed"
 	desc = "Creates a single patch of wireweed at your location."
-	icon_icon = 'modular_skyrat/modules/fleshmind/icons/fleshmind_structures.dmi'
+	button_icon = 'modular_skyrat/modules/fleshmind/icons/fleshmind_structures.dmi'
 	background_icon_state = "bg_fugu"
 	button_icon_state = "wires-0"
 	cooldown_time = 10 SECONDS

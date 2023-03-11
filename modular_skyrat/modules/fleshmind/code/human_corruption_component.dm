@@ -10,15 +10,15 @@
 	)
 	var/list/granted_actions = list()
 	/// A list of limbs we replace
-	var/list/replacement_zones = list(
+	var/static/list/replacement_zones = list(
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/robot,
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/robot,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/robot,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/robot,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/robot,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/robot,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/robot,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/robot,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/robot,
 	)
 	/// These traits will be given and removed from the host.
-	var/list/traits_to_give = list(
+	var/static/list/traits_to_give = list(
 		TRAIT_NOGUNS,
 		TRAIT_NOBREATH,
 		TRAIT_RESISTCOLD,
