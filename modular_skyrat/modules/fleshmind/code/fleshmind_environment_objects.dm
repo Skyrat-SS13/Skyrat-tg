@@ -44,8 +44,8 @@
 	anchored = TRUE
 	layer = BELOW_OPEN_DOOR_LAYER
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_WIREWEED)
-	canSmoothWith = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_WIREWEED)
+	smoothing_groups = SMOOTH_GROUP_WIREWEED
+	canSmoothWith = SMOOTH_GROUP_WALLS + SMOOTH_GROUP_WIREWEED
 	max_integrity = 40
 	/// The chance we have to ensnare a mob
 	var/ensnare_chance = 15
