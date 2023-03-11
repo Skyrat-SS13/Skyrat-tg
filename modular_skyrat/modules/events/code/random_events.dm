@@ -139,13 +139,11 @@
 
 /datum/round_event_control/cme/extreme
 	weight = LOW_EVENT_FREQ
-	min_players = 75
 	earliest_start = 105 MINUTES
 	max_occurrences = 1
 
 /datum/round_event_control/cme/unknown
 	weight = MED_EVENT_FREQ
-	min_players = 75
 	max_occurrences = 1
 
 /**

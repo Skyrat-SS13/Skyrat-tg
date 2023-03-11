@@ -61,6 +61,7 @@
 	name = "Coronal Mass Ejection: Extreme"
 	typepath = /datum/round_event/cme/extreme
 	weight = 0
+	min_players = 75
 	max_occurrences = 0
 
 /datum/round_event/cme/extreme
