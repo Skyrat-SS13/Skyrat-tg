@@ -139,9 +139,12 @@
 
 /datum/round_event_control/cme/extreme
 	weight = LOW_EVENT_FREQ
+	min_players = 75
+	earliest_start = 105 MINUTES
 
 /datum/round_event_control/cme/unknown
 	weight = MED_EVENT_FREQ
+	min_players = 75
 
 /**
  * Communications
@@ -255,6 +258,7 @@
 	weight = LOW_EVENT_FREQ
 	max_occurrences = 1
 	min_players = 75
+	earliest_start = 105 MINUTES
 
 // Nope
 /datum/round_event_control/meteor_wave/catastrophic
