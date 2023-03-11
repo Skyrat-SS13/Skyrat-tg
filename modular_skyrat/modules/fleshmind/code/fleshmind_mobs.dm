@@ -866,7 +866,6 @@
 	maxHealth = 200
 	speed = 3
 	move_to_delay = 6
-	ranged_cooldown_time = 4 SECONDS
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	retreat_distance = 4
 	minimum_distance = 4
@@ -879,9 +878,7 @@
 	speak = list(
 		"You there! Cut off my head, I beg you!",
 		"I-..I'm so sorry! I c-..can't control myself anymore!",
-		"S-shoot the screen, please! God I hope it wont hurt!"
-	)
-	speak = list(
+		"S-shoot the screen, please! God I hope it wont hurt!",
 		"Hey, at least I got my head.",
 		"I cant... I cant feel my arms...",
 		"Oh god... my legs... where are my legs!",
