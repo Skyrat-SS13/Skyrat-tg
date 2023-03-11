@@ -133,8 +133,8 @@
 
 	spread_progress += spread_progress_per_second * delta_time
 	var/spread_times = 0
-	while(spread_progress >= SPREAD_PROGRESS_REQUIRED)
-		spread_progress -= SPREAD_PROGRESS_REQUIRED
+	while(spread_progress >= FLESHCORE_SPREAD_PROGRESS_REQUIRED)
+		spread_progress -= FLESHCORE_SPREAD_PROGRESS_REQUIRED
 		spread_times++
 
 	var/first_process_spread = FALSE
