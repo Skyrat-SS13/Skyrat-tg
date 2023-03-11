@@ -52,7 +52,7 @@
 	if(!portal)
 		return
 
-	send_clock_message(null, "The portal's stability is decreasing! Shortly, those not loyal to Ratvar will be able to enter.", "<span class='brass'>")
+	send_clock_message(null, "The portal's stability is decreasing! Shortly, those not loyal to Ratvar will be able to enter, and more rifts will open!", "<span class='brass'>")
 
 	sleep(15 SECONDS)
 
@@ -63,6 +63,11 @@
 		atom_area = get_area(portal)
 
 	priority_announce("An anomalous reading has been picked up at [atom_area], please ensure the safety of the crew in the vicinity.")
+
+	for(var/obj/effect/landmark/late_cog_portals/portal in GLOB.landmarks)
+		var/obj/effect/landmark/portal_exit/new_exit = new(get_turf(portal))
+		new_exit.id = "reebe_entry"
+		qdel(portal)
 
 	portal.visible_message("[portal] lets out a hiss of steam as it becomes a more blue color. You feel like it's safer to enter, now.")
 	new /obj/effect/temp_visual/steam_release(get_turf(portal))
@@ -110,3 +115,7 @@
 /obj/effect/mob_spawn/corpse/human/clock_cultist
 	name = "Clock Cultist"
 	outfit = /datum/outfit/clock
+
+
+/obj/effect/landmark/late_cog_portals
+	name = "late cog portal spawn"
