@@ -32,7 +32,7 @@
 		return
 	if(QDELETED(owner_controller)) // Input is not async
 		return
-	if(picked_stucture_type.required_controller_level > owner_controller.level)
+	if(initial(picked_stucture_type.required_controller_level) > owner_controller.level)
 		to_chat(owner, span_warning("Our processor core is not strong enough yet!"))
 		return
 	owner_controller.spawn_structure(get_turf(owner), picked_stucture_type)
