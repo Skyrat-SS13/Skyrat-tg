@@ -14,8 +14,4 @@
 	anomaly_path = /obj/effect/anomaly/bluespace
 
 /datum/round_event/anomaly/anomaly_bluespace/announce(fake)
-<<<<<<< HEAD
-	priority_announce("Unstable bluespace anomaly detected on long range scanners. Expected location: [impact_area.name].", "Anomaly Alert", ANNOUNCER_MASSIVEBSPACEANOMALIES)
-=======
-	priority_announce("Bluespace instability detected on [ANOMALY_ANNOUNCE_MEDIUM_TEXT] [impact_area.name].", "Anomaly Alert")
->>>>>>> 379bc658e9e (Define anomaly event parameters, adjust timers (#73708))
+	priority_announce("Bluespace instability detected on [ANOMALY_ANNOUNCE_MEDIUM_TEXT] [impact_area.name].", "Anomaly Alert", ANNOUNCER_MASSIVEBSPACEANOMALIES) //SKYRAT EDIT CHANGE

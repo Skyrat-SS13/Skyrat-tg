@@ -14,8 +14,4 @@
 	anomaly_path = /obj/effect/anomaly/pyro
 
 /datum/round_event/anomaly/anomaly_pyro/announce(fake)
-<<<<<<< HEAD
-	priority_announce("Pyroclastic anomaly detected on long range scanners. Expected location: [impact_area.name].", "Anomaly Alert", ANNOUNCER_PYROANOMALIES) //SKYRAT EDIT CHANGE
-=======
-	priority_announce("Pyroclastic anomaly detected on [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Anomaly Alert")
->>>>>>> 379bc658e9e (Define anomaly event parameters, adjust timers (#73708))
+	priority_announce("Pyroclastic anomaly detected on [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Anomaly Alert", ANNOUNCER_PYROANOMALIES) //SKYRAT EDIT CHANGE

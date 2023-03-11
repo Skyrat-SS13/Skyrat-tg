@@ -15,8 +15,4 @@
 	anomaly_path = /obj/effect/anomaly/flux
 
 /datum/round_event/anomaly/anomaly_flux/announce(fake)
-<<<<<<< HEAD
-	priority_announce("Localized hyper-energetic flux wave detected on long range scanners. Expected location: [impact_area.name].", "Anomaly Alert", ANNOUNCER_FLUXANOMALIES) //SKYRAT EDIT CHANGE
-=======
-	priority_announce("Hyper-energetic flux wave detected on [ANOMALY_ANNOUNCE_DANGEROUS_TEXT]. [impact_area.name].", "Anomaly Alert")
->>>>>>> 379bc658e9e (Define anomaly event parameters, adjust timers (#73708))
+	priority_announce("Hyper-energetic flux wave detected on [ANOMALY_ANNOUNCE_DANGEROUS_TEXT]. [impact_area.name].", "Anomaly Alert", ANNOUNCER_FLUXANOMALIES) //SKYRAT EDIT CHANGE

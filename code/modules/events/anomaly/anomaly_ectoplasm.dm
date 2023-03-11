@@ -39,7 +39,7 @@
 		announce_to_ghosts(newAnomaly)
 
 /datum/round_event/anomaly/anomaly_ectoplasm/announce(fake)
-	priority_announce("Paranormal ectoplasmic outburst detected on [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Anomaly Alert")
+	priority_announce("Paranormal ectoplasmic outburst detected on [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Anomaly Alert", ANNOUNCER_ANOMALIES) //SKYRAT EDIT CHANGE
 
 /datum/event_admin_setup/anomaly_ectoplasm
 	///The admin-selected intensity
