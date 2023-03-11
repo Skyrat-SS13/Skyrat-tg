@@ -1,4 +1,9 @@
 /**
+ * Balance Defines
+ */
+
+
+/**
  * The fleshmind controller
  *
  * This is the heart of the corruption, here is where we handle spreading and other stuff.
@@ -71,23 +76,23 @@
 	/// Progress to spawning the next structure.
 	var/structure_progression = 0
 	/// How many times do we need to spread to spawn an extra structure.
-	var/spreads_for_structure = 50
+	var/spreads_for_structure = SPREADS_FOR_STRUCTURE
 	/// How many spread in our initial expansion.
-	var/initial_expansion_spreads = 30
+	var/initial_expansion_spreads = INITIAL_EXPANSION_SPREADS
 	/// How many structures in our initial expansion.
-	var/initial_expansion_structures = 5
+	var/initial_expansion_structures = INITIAL_EXPANSION_STRUCTURES
 	/// How much progress to spreading we get per second.
-	var/spread_progress_per_second = 100
+	var/spread_progress_per_second = SPREAD_PROGRESS_PER_SUBSYSTEM_FIRE
 	/// Our base spread progress per second
-	var/base_spread_progress_per_second = 100
+	var/base_spread_progress_per_second = BASE_SPREAD_PROGRESS_PER_SUBSYSTEM_FIRE
 	/// Probably of wireweed attacking structures per process
-	var/attack_prob = 20
+	var/attack_prob = ATTACK_PROB
 	/// Probability of wireweed making a wall when able per process
-	var/wall_prob = 30
+	var/wall_prob = WALL_PROB
 	/// When we spawn, do we create an expansion zone?
 	var/do_initial_expansion = TRUE
 	/// The amount of time until we can activate nearby wireweed again.
-	var/next_core_damage_wireweed_activation_cooldown = 10 SECONDS
+	var/next_core_damage_wireweed_activation_cooldown = NEXT_CORE_DAMAGE_WIREWEED_ACTIVATION_COOLDOWN
 	/// A cooldown to determine when we can activate nearby wireweed after the core has been attacked.
 	COOLDOWN_DECLARE(next_core_damage_wireweed_activation)
 	/// DO we check distance when spreading through vents?
@@ -304,7 +309,7 @@
 
 /datum/fleshmind_controller/proc/fleshmind_end_final()
 	priority_announce("ERROR, SHUTTLE NAVIGATION SUBROUTINES SUBVERTED. %$%$£%$^^&^^ H%AD TO EVA%UA£ION, SPREAD THE FLESH!", "&^$^£&&*$&£", ANNOUNCER_ICARUS)
-	addtimer(CALLBACK(src, .proc/fleshmind_call_shuttle), 15 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(play_cinematic), /datum/cinematic/fleshmind, world, CALLBACK(src, PROC_REF(leshmind_call_shuttle))), 15 SECONDS, TIMER_CLIENT_TIME)
 
 /datum/fleshmind_controller/proc/fleshmind_call_shuttle()
 	SSshuttle.clearHostileEnvironment(src)

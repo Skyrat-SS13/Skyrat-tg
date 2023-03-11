@@ -24,7 +24,7 @@
 	var/list/built_radial_menu = list()
 	for(var/obj/iterating_type as anything in possible_structures)
 		built_radial_menu[iterating_type] = image(icon = initial(iterating_type.icon), icon_state = initial(iterating_type.icon_state))
-	var/picked_stucture_type = show_radial_menu(owner, owner, built_radial_menu, radius = 40)
+	var/obj/structure/fleshmind/structure/picked_stucture_type = show_radial_menu(owner, owner, built_radial_menu, radius = 40)
 	if(!picked_stucture_type)
 		return
 	var/obj/structure/fleshmind/wireweed/under_wireweed = locate() in get_turf(owner)
@@ -32,6 +32,9 @@
 		to_chat(owner, span_warning("There needs to be wireweed underneath you!"))
 		return
 	if(QDELETED(owner_controller)) // Input is not async
+		return
+	if(picked_stucture_type.required_controller_level > owner_controller.level)
+		to_chat(owner, span_warning("Our processor core is not strong enough yet!"))
 		return
 	owner_controller.spawn_structure(get_turf(owner), picked_stucture_type)
 	StartCooldownSelf()

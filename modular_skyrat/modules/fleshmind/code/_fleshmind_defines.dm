@@ -66,7 +66,16 @@
 #define CONTROLLER_LEVEL_5 5
 #define CONTROLLER_LEVEL_MAX 6
 
-#define SPREAD_PROGRESS_REQUIRED 100
+// Balance specific defines
+#define SPREAD_PROGRESS_REQUIRED 100 // How much progress is required to spread?
+#define SPREADS_FOR_STRUCTURE 50 // How many times do we need to spread until we can create a new structure?
+#define INITIAL_EXPANSION_SPREADS 30 // Upon creation, how many times do we spread instantly?
+#define INITIAL_EXPANSION_STRUCTURES 5 // Upon creation, how many structures do we spawn instantly?
+#define SPREAD_PROGRESS_PER_SUBSYSTEM_FIRE 100 // Every subsystem fire, how much progress do we gain?
+#define BASE_SPREAD_PROGRESS_PER_SUBSYSTEM_FIRE 100 // The baseline of the above.
+#define ATTACK_PROB 20 // How likely are we to attack every SS fire?
+#define WALL_PROB 30 // How likely are we to spawn a wall to seal a gap every SS fire?
+#define NEXT_CORE_DAMAGE_WIREWEED_ACTIVATION_COOLDOWN 10 SECONDS // The amount of time until we can activate nearby wireweed again.
 
 #define CONTROLLER_DEATH_DO_NOTHING 1
 #define CONTROLLER_DEATH_SLOW_DECAY 2
