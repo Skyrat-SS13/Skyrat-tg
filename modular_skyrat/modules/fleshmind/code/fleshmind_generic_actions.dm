@@ -11,7 +11,6 @@
 		/obj/structure/fleshmind/structure/modulator,
 		/obj/structure/fleshmind/structure/screamer,
 		/obj/structure/fleshmind/structure/turret,
-		/obj/structure/fleshmind/structure/assembler,
 	)
 
 /datum/action/cooldown/fleshmind_create_structure/Activate(atom/target)

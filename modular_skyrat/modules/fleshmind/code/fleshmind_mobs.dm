@@ -1329,13 +1329,13 @@
 	/// Is our hatch open? Used in icon processing.
 	var/hatch_open = FALSE
 	/// How much damage our mob will take, upper end, when they are tormented
-	var/internal_mob_damage_upper = 60
+	var/internal_mob_damage_upper = MECHIVER_INTERNAL_MOB_DAMAGE_UPPER
 	/// Ditto
-	var/internal_mob_damage_lower = 40
-	/// How long we keep our passenger before either releasing or converting them.
-	var/conversion_time = 20 SECONDS
+	var/internal_mob_damage_lower = MECHIVER_INTERNAL_MOB_DAMAGE_LOWER
+	/// How long we keep our passenger before converting them.
+	var/conversion_time = MECHIVER_CONVERSION_TIME
 	/// The comsume ability cooldown
-	var/consume_ability_cooldown_time = 1 MINUTES
+	var/consume_ability_cooldown_time = MECHIVER_CONSUME_COOLDOWN
 	COOLDOWN_DECLARE(consume_ability_cooldown)
 	/// A list of lines we will send to torment the passenger.
 	var/static/list/torment_lines = list(
