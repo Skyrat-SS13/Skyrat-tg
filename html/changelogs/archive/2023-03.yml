@@ -325,3 +325,313 @@
   - bugfix: Tiziran lung stirfry now correctly uses a bowl in its construction, and
       is left over after eating. It also can only be constructed with organic lungs,
       because cybernetic lungs don't fry as well.
+2023-03-11:
+  Floofies:
+  - rscadd: Added Monkey compatibility to medical scrubs, security uniform, police
+      uniform, jumpsuits, prison jumpsuits, and departmental utility uniforms.
+  - code_imp: Added Greyscale Auto-Generated Sprites (GAGS) compatibility to Monkey
+      clothing.
+  Gandalf2k15:
+  - rscadd: 'more designs for the rcd
+
+      refactor:` try_wallmount()` to return true only after successful mount fix:
+      `apc_tool_act/rcd_act()` incorrecly checking for simple circuits upgrade in
+      the wrong variable'
+  - bugfix: 'newly created APC''s not assigning themselves to their areas. fix: rcd
+      building structures [walls, airlocks etc] on turf''s that already have structures
+      on them'
+  - rscadd: Rapid wiring device
+  - imageadd: Sprite for RWD
+  HWSensum:
+  - qol: Security no longer have to abuse hacked autolathe to load other types of
+      ammo in their CMGs and other multi-sprite weapons.
+  - code_imp: Added support of "multitype" variable for ammo_workbench.
+  LT3:
+  - bugfix: Non-admins can't view the active vote counts
+  - balance: CME extreme and higher triggers orange alert, not red
+  - balance: All CME range reduced, frequency increased
+  - balance: CME extreme power reduced, explosion countdown timer increased
+  - bugfix: Map filter works properly in the pre-round lobby
+  - bugfix: Map vote doesn't log 'not enough players' if the vote starts in the pre-round
+      lobby
+  - code_imp: Moldies are back!
+  - balance: 'Moldies: Cordyceps replaced with Cryptococcus'
+  - balance: 'Moldies: Reduced stage speed'
+  - balance: 'Moldies: Reduced spread modifier'
+  - balance: 'Moldies: Adds better warnings to infected crew'
+  - balance: 'Moldies: Radioactive mold no longer has EMP'
+  - balance: 'Moldies: Radioactive foam reduced'
+  - balance: 'Moldies: 1 or 2 molds per event is now calculated based on alive crew
+      members'
+  - balance: 'Moldies: High population threshold increased'
+  - balance: 'Moldies: Minimum population threshold increased'
+  - balance: 'Moldies: Add 30 minute minimum start time'
+  LemonInTheDark, LT3:
+  - rscadd: The darkness that glasses and hud goggles that impact your nightvision
+      (think mesons, nightvision goggles, etc) lighten is now tinted to match the
+      glasses. S pretty IMO, and hopefully it helps with forgetting you're wearing
+      X.
+  - balance: Nightvision is darker. I think bright looks bad, and things like mesons
+      do way too much
+  - balance: Mesons (and mobs in general) no longer have a static distance you can
+      see stuff in the dark. If a tile is lit, you can now see it.
+  - bugfix: Nightvision no longer dims colored lights, instead simply thresholding
+      off bits of darkness that are dimmer then some level.
+  Melbert:
+  - qol: Examine block'd out silicon "show laws" text.
+  - bugfix: Re-added a missing alert icon state for AI "laws updated" screen alert
+  - admin: Adds a new verb. "Law panel". This panel lets you see AND EDIT all silicon
+      laws in existence.
+  - bugfix: Using Fleshmend while on fire gives the "on fire" fleshmend icon.
+  - bugfix: Using Revival stasis more accurately updates the icon where relevant
+  - bugfix: Fixes a potential input stall with revival stasis
+  - bugfix: Fixed a Space Dragon related hard delete.
+  - bugfix: Mindswapped space dragons will break less.
+  - bugfix: It should be way harder to lose your special hands as a zombie or shattered
+      risen ghoul.
+  - refactor: Refactored mutanthands for zombies and shattered risen.
+  - rscadd: Somewhere, in deep space, a relic to every fluked nuclear operative mission
+      drifts abandoned.
+  - bugfix: Mecha speech indicators actually go away
+  - qol: Food over-top Drying Racks / Smartfridges will no longer decompose into ants
+  - bugfix: Transferring golem shells no longer make you a free man and also results
+      in infinite golem shells
+  - bugfix: Servant golems are considerably less free
+  - bugfix: Fixes some hard deletes related to mob minds being enslaved to other mobs
+  Paxilmaniac:
+  - imagedel: The sprite override for holopads has been undone, reverting us to to
+      what tg has
+  PositiveEntropy:
+  - imageadd: Resprites the detective's wardrobe!
+  - imageadd: Tweaked, Overhauled and Resprited a variety of garments related to the
+      security department, particularly its alternate clothes! Check it when possible!
+  Ryll/Shaps:
+  - bugfix: Landing a monster tackle that applies an auto aggro-grab while stamcrit
+      will no longer try applying an aggro-grab that leads to a permanent slowdown
+      to the user, and will instead just knock the target down a bit harder.
+  - bugfix: Launching dolphin and rocket glove tackles on targets at ranges shorter
+      than their minimum distance will be more accurate at targeting where you clicked
+      at, rather than locking you into the nearest cardinal/diagonal direction.
+  - balance: You can now knock more things off a table full of stuff by tackling it
+      than you could before.
+  ShamanSliph:
+  - bugfix: Skub not spawning when picked in the Loadout.
+  SkyratBot:
+  - bugfix: Unregistered paywall firing pins wont vanish when you try to insert them
+      into a gun
+  - bugfix: Declining to pay for a paywall firing pin will no longer brick the firing
+      pin for everyone
+  - bugfix: paywall firing pins are linked to bank accounts instead of unique users,
+      so they can't be used for overly elaborate ling checks or letting people without
+      IDs fire them for free.
+  - bugfix: Attempting to fire an empty gun with a paywall firing pin will no longer
+      charge you.
+  - bugfix: Multi-shot paywall firing pins do not charge you for agreeing to the initial
+      prompt.
+  - spellcheck: Fixes a spelling mistake in paywall firing pin prompts
+  - code_imp: The owner of a paywall firing pin is now tracked via account rather
+      than ID, this stops the pin from holding a reference to a deleted ID if the
+      ID is ever destroyed.
+  - bugfix: Plating replaced by floor tiles from a dimensional anomaly or colossus
+      crystal will now still have plating underneath when crowbarred, instead of space
+      (or open space on z level maps).
+  - bugfix: Summoning a cult wall on plating as an Artificer will leave the plating
+      intact underneath when it is removed, rather than replacing it with a void.
+  - admin: Admins can pick the initial flavour of a manually triggered dimensional
+      anomaly.
+  - bugfix: Moving up and down z levels will break hud stuff slightly less often
+  - refactor: Monkey AI descriptions of "primal eyes" no longer show if the monkey
+      is missing eyes.
+  - bugfix: Fix durand shield overlay to appear above the mech when facing south.  Also
+      fixed a lighting runtime when shield would turn on/off.
+  - bugfix: rcd's not building plating underneath mobs & structures
+  - bugfix: wall girders not being completed by the rcd
+  - bugfix: unable to build windoors on the turf you are standing on
+  - bugfix: Fixes some cases where AI couldn't interact with some old non-tgui machines
+  - bugfix: Painting with the slippery spraycan will now once again correctly make
+      that tile slippery.
+  - bugfix: Spraying the ground with the hellcan will now once again correctly set
+      that tile, you, and other surrounding objects on fire.
+  - bugfix: Being in an application now properly uses the tablet's battery.
+  - bugfix: Messenger and Themify apps now close when minimized, so don't count towards
+      the running app limit.
+  - bugfix: Tablet UIs will now no longer spam open/close the UI when changing applications
+  - bugfix: Using the Eject ID button on tablets now ejects into your hand.
+  - bugfix: Computers now have an Eject ID button
+  - refactor: Cut down a lot of copy paste in tablet & program code, now it's mostly
+      done by the tablet.
+  - bugfix: You can use ninja adrenaline to cure unconsciousness as intended
+  - code_imp: Cleaned up some modsuit code
+  - bugfix: the order vendors will not constantly load when trying to buy multiple
+      items
+  - bugfix: Fixes activating two flashlights without moving only turning on one flashlight
+      (until you move)
+  - bugfix: Purely black things drawn on the floor (like carpets, those foam dispensers,
+      etc) will no longer cause things on top of them to be fully masked in darkness
+  - bugfix: falling off the shuttle wont trap you in a box anymore
+  - bugfix: changed gondola mutants to require gondola meat instead
+  - rscadd: Added the gondola mutant, a tier two zen-like observer
+  - rscadd: Entries are now locked behind tiers, activating a bonus in someone upgrades
+      the tier!
+  - qol: DNA Infuser will now print a failure reason when you... well, don't get what
+      you want.
+  - refactor: Migos, Creatures, and Blank Bodies use a new shared component to update
+      their stats which scales smoothly as they take damage rather than in stages.
+  - bugfix: Migos, Creatures and Blank Bodies will all update their stats when taking
+      or losing damage regardless of it was from an identifiable enemy.
+  - code_imp: AMMO_BOX_FULL_EMPTY now looks for -full and -empty for sprites, rather
+      than -[max ammo of that magazine] and -0
+  - rscadd: Added new damage buffs for netherworld mobs
+  - refactor: Refactors netherworld mobs into basic mobs
+  - bugfix: Examining in the dark is less wonk now, sorry bout that
+  - refactor: RPED to infer icons of parts to use in `icon2html()` when displaying
+      part information
+  - bugfix: fixed Telepathy messages not having a check for being in range.
+  - bugfix: Mob spawners will no longer break if instructed to spawn certain kinds
+      of basic mob, or monkeys.
+  - refactor: Spider code has been refactored and AI-controlled spiders may have slightly
+      different movement or reaction times.
+  - bugfix: Basic mobs can now be slowed when they take stamina damage, however currently
+      only spiders actually _can_ take stamina damage.
+  - bugfix: Spiders should now more reliably disable their AI when controlled by a
+      player.
+  - bugfix: Araneus is no longer considered to be a bat and so cannot fly.
+  - bugfix: Araneus is no longer considered to be a bat and so is no longer frightening
+      to people who are scared of the supernatural.
+  - bugfix: Many spell-like abilities which could be stunned, paralysed, or frozen
+      in time now cannot be.
+  - bugfix: undressing a hat/back item from a dog will correctly remove the item's
+      overlay
+  - bugfix: most armor vests will actually show on a dog when placed on its back
+  - bugfix: Mice and Regal Rats will no longer spawn in icebox's solar panels and
+      die of cold.
+  - bugfix: Mime finger gun icon is no longer an error
+  - admin: Logs when mimes break or make a vow of silence
+  - refactor: Admin event setup's have been refactored to use lists.
+  - bugfix: When admins customize the pirate event all options will be available rather
+      than just options that have not been randomly rolled.
+  - bugfix: The stray meteor event no longer runtimes when customized by admins.
+  - admin: Admins can now select the shuttle brought in by the shuttle catastrophe
+      event.
+  - admin: Admins can now randomize the disease outbreak classic event to roll any
+      disease type, including transformation diseases so have fun with that.
+  - balance: Abductors' midround spawn weight has been increased. Expect to see them
+      more often
+  - bugfix: fixed chat offsets with the RPG Titles event
+  - admin: AB_CHECK_INCAPACITATED on an action's check_flags can now be modified by
+      admins.
+  - bugfix: The birthday station trait now actually works.
+  - bugfix: 'Stabilized slime extracts will now once again work from inside modsuit
+      storage.
+
+      fix; Stabilized slime extracts will properly effect carp, spiders, bileworms,
+      and other "basic mobs".'
+  - bugfix: Most spells can once again be cast even after someone stuns you with a
+      baton.
+  - bugfix: Gifts you wrap will now display their greyscale colors as they're supposed
+      to.
+  - bugfix: Wrapping paper color selection has been rebound to Alt+click, to fix a
+      bug where both wrapping paper color selection, and extracting wrapping paper
+      from a roll were both bound to right click.
+  - bugfix: Lightgeists won't try to heal any damage which isn't burn or brute, because
+      they can't.
+  - bugfix: Lightgeists don't need to perform an action bar in order to heal someone,
+      which was added by mistake.
+  - bugfix: Midround Changelings are now ejected from their meteor when something
+      bad happens, ensuring they reach the station.
+  - bugfix: fixed missing emissives on the Engivend, Pwr-Game Soda, and generic Soda
+      vendors. Also fixed the seclaptop having no valid screen icon!
+  - bugfix: fixed a few items trying to apply emissives when they shouldn't.
+  - code_imp: added a stack_trace for emissives with missing icon states.
+  - bugfix: Honourbound can no longer be gained from neurowine or from heavy brain
+      damage, no longer causing the player to be granted a spell that does nothing
+      most of the time
+  - bugfix: The Fugu Gland can once more be used on Ian, Carp, Giant Spiders, or other
+      basic mobs.
+  - bugfix: Syndicate mobs will once again attack windows to try to reach you, and
+      space ruin spiders won't.
+  - bugfix: Netherworld-themed mobs will correctly adjust their speed as they take
+      damage.
+  - refactor: Made the Wumborian Fugu into a basic mob, which should act largely the
+      same way but may have slightly different speed and reaction times.
+  - balance: Traitor secondary objectives to steal or destroy an item are now associated
+      with a particular "owner" or "victim" and won't generate themselves if nobody
+      would actually be victimised by the crime.
+  - rscadd: Traitors can sometimes be tasked with stealing and destroying the roboticist's
+      big crowbar, if there is one
+  - refactor: The actions of Statues and Creatures which can't be used while seen
+      now share logic, and will not spam chat with feedback.
+  - bugfix: Fix runtimes for IV drips, food processors, and gibber
+  - refactor: Refactored, improve, and rename canUseTopic to be can_perform_action
+      that now uses bitflags to determine if a mob can perform an action.
+  - refactor: Changeling's Lesser Form is now one ability instead of two which keep
+      swapping, which should consistently turn you back and forth without deleting
+      itself from your action bar.
+  - bugfix: Hatching from an egg left by a Last Resort headcrab should correctly grant
+      you Lesser Form in addition to your other abilities.
+  - bugfix: Turning into a monkey while using the Changeling space suit won't leave
+      you as a monkey with a weird inflated head.
+  - qol: Using lesser form as a monkey with only one stored DNA profile will skip
+      asking which profile you want and will simply transform you immediately into
+      the only option.
+  Stalkeros for the initial sprite, OrionTheFox for the design-accurate resprite that is way better than it initially was.:
+  - rscadd: NRI Police MOD
+  - balance: NRI Military/now-ERT MOD buffed as it's no longer meant to be balanced
+      for station antagonists.
+  Zonespace27:
+  - bugfix: Summon beacons can no longer produce multiple of their output.
+  coiax:
+  - bugfix: Folding a "fancy box" like donut or candles will now put cardboard in
+      your hand, rather than on the floor.
+  - bugfix: You can always see how many pickles are in a jar of pickles, or rolling
+      papers there are in a pack of rolling papers, since it's not possible to close
+      them.
+  - bugfix: A chef who is beheaded, and the head stitched on another body will still
+      see their food as their own.
+  itseasytosee:
+  - bugfix: Monkeys ues the proper husk sprites.
+  - imageadd: The monkey has been moved back down to its lower, more submissive position.
+  - refactor: Your bodyparts are now dynamically rendered at a height relevant to
+      the length of your legs and torso, what does this mean for you? Not much to
+      be honest, but you might see a monkey pop up a bit if you cut its legs off.
+  - admin: The Tallboy is here
+  jlsnow301, NamelessFairy, GoldenAlpharex:
+  - bugfix: Security can set notes through consoles again
+  - bugfix: Observers are now properly logged out of record consoles
+  - bugfix: Deleting a sec record removes it from the manifest again
+  - qol: It's now easier to see security notes via HUD.
+  - qol: It's now easier to see why someone is set to arrest.
+  - qol: Crime authors and armory access can edit crimes.
+  - balance: Setting players to arrest requires a valid crime.
+  - balance: Armory access can invalidate priors.
+  - balance: Setting players to arrest via HUD creates a crime for the suspect.
+  - bugfix: You can now create wanted/missing posters using player created security
+      records. Due to a visual bug and usability issue photos above 1 by 1 meters
+      in size will no longer work for mugshots in records.
+  - bugfix: Fixes NTOS records program receiving bad medical disability data
+  softcerv:
+  - bugfix: the furniture added by the organic interface update can now be constructed
+      by any wrench tool.
+  - bugfix: unbuckling a mob from the X-Stand now only unbuckles after the do-after
+      has completed.
+  - code_imp: cleans up the code for the organic interface furniture.
+  - qol: Adds the PDA themes from https://github.com/Skyrat-SS13/Skyrat-tg/pull/19390
+      to NIFs
+  - qol: adds restocks for the dorms and barber vendors to cargo.
+  - rscadd: Adds in the Grimoire Purpura, a NIFSoft that lets the user summon items
+      for adult activities.
+  vinylspiders:
+  - bugfix: fixes syndicate ghost roles not spawning with codespeak language when
+      they use their character preferences
+  - bugfix: fixes NRI raiders spawning without the correct language and with the wrong
+      names on their ID cards
+  - bugfix: fixes ashwalkers sometimes spawning without a language
+  - bugfix: fixes common (Sol) being granted despite not having them in your prefs,
+      once again allowing you to not be able to speak common by preference.
+  - bugfix: some improvements to the language UI -- the native language perk tooltip
+      text has been updated to reflect that it is optional to pick the species' native
+      language. Also, ashtongue now shows up in the UI correctly for ashwalkers.
+  - code_imp: new codename generation for the NRI roles
+  - bugfix: modular prescription HUD glasses are now craftable in the DS-2 lathe
+  - bugfix: fixed glass lens description
+  - code_imp: code cleanup for the language fixes

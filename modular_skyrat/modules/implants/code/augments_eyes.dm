@@ -26,3 +26,6 @@
 	eye_color_right = "#ff2700"
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
+	low_light_cutoff = list(0, 15, 20)
+	medium_light_cutoff = list(0, 20, 35)
+	high_light_cutoff = list(0, 40, 50)
