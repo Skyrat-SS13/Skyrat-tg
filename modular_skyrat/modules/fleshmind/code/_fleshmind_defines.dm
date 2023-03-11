@@ -67,7 +67,7 @@
 #define CONTROLLER_LEVEL_MAX 6
 
 // Balance specific defines
-#define FLESHCORE_SPREAD_PROGRESS_REQUIRED 100 // How much progress is required to spread?
+#define FLESHCORE_SPREAD_PROGRESS_REQUIRED 200 // How much progress is required to spread?
 #define FLESHCORE_SPREADS_FOR_STRUCTURE 50 // How many times do we need to spread until we can create a new structure?
 #define FLESHCORE_INITIAL_EXPANSION_SPREADS 30 // Upon creation, how many times do we spread instantly?
 #define FLESHCORE_INITIAL_EXPANSION_STRUCTURES 5 // Upon creation, how many structures do we spawn instantly?
@@ -81,7 +81,7 @@
 #define CONTROLLER_DEATH_SLOW_DECAY 2
 #define CONTROLLER_DEATH_DELETE_ALL 3
 
-#define CONTROLLER_LEVEL_UP_CORE_INTEGRITY_AMOUNT 300
+#define CONTROLLER_LEVEL_UP_CORE_INTEGRITY_AMOUNT 300 // How much integrity the cores get when leveling up
 
 // WIREWEED RELATED DEFINES
 
