@@ -214,7 +214,7 @@
 		var/obj/projectile/energy/loaded_projectile = microfusion_lens.loaded_projectile
 		if(!loaded_projectile)
 			. = ""
-		else if(loaded_projectile.nodamage || !loaded_projectile.damage || loaded_projectile.damage_type == STAMINA)
+		else if(!loaded_projectile.damage || loaded_projectile.damage_type == STAMINA)
 			user.visible_message(span_danger("[user] tries to light [to_ignite.loc == user ? "[user.p_their()] [to_ignite.name]" : to_ignite] with [src], but it doesn't do anything. Dumbass."))
 			playsound(user, microfusion_lens.fire_sound, 50, TRUE)
 			playsound(user, loaded_projectile.hitsound, 50, TRUE)
