@@ -17,7 +17,7 @@
 	typepath = /datum/round_event/cme
 	weight = 0
 	max_occurrences = 0
-	earliest_start = 30 MINUTES
+	earliest_start = 45 MINUTES
 	category = EVENT_CATEGORY_SPACE
 
 /datum/round_event/cme
