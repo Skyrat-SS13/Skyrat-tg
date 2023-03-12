@@ -242,7 +242,7 @@
 	relevant_mutant_bodypart = ORGAN_SLOT_PENIS
 
 /datum/preference/toggle/penis_taur_mode/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	target.dna.features["penis_taur"] = value
+	target.dna.features["penis_taur_mode"] = value
 
 /datum/preference/toggle/penis_taur_mode/is_accessible(datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_erp_preferences))

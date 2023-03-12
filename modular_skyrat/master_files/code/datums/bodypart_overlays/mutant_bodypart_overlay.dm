@@ -94,7 +94,7 @@
 	cache_key_extra_information = list()
 
 	if(custom_mod_icon)
-		mod_overlay = get_singular_image(image_layer = image_layer, icon_override = custom_mod_icon)
+		mod_overlay = get_singular_image(image_layer = image_layer, owner = owner, icon_override = custom_mod_icon)
 
 	switch(sprite_datum.color_src)
 		if(USE_MATRIXED_COLORS)
@@ -102,7 +102,7 @@
 
 			for (var/color_index in color_layer_names)
 
-				var/mutable_appearance/color_layer_image = get_singular_image(build_icon_state(gender, image_layer, color_layer_names[color_index]), image_layer)
+				var/mutable_appearance/color_layer_image = get_singular_image(build_icon_state(gender, image_layer, color_layer_names[color_index]), image_layer, owner)
 				returned_images += color_layer_image
 
 				overlay_indexes_to_color += index
@@ -112,7 +112,7 @@
 					mod_overlay.add_overlay(sprite_datum.get_custom_mod_icon(owner, color_layer_image))
 
 		else
-			var/mutable_appearance/image_to_return = get_singular_image(build_icon_state(gender, image_layer), image_layer)
+			var/mutable_appearance/image_to_return = get_singular_image(build_icon_state(gender, image_layer), image_layer, owner)
 			returned_images = list(image_to_return)
 			overlay_indexes_to_color += index
 
@@ -120,7 +120,7 @@
 				mod_overlay.add_overlay(sprite_datum.get_custom_mod_icon(owner, image_to_return))
 
 	if(sprite_datum.hasinner)
-		returned_images += get_singular_image(build_icon_state(gender, image_layer, feature_key_suffix = "inner"), image_layer)
+		returned_images += get_singular_image(build_icon_state(gender, image_layer, feature_key_suffix = "inner"), image_layer, owner)
 
 	// Gets the icon_state of a single or matrix colored accessory and overlays it with a texture
 	if(mod_overlay)
@@ -209,16 +209,17 @@
  * Arguments:
  * * image_icon_state - The icon_state of the mutable_appearance we want to get.
  * * image_layer - The layer of the mutable_appearance we want to get.
+ * * owner - The owner of the limb this is drawn on. Can be null.
  * * icon_override - The icon to use for the mutable_appearance, rather than
  * `sprite_datum.icon`. Default is `null`, and its value will be used if it's
  * anything else.
  */
-/datum/bodypart_overlay/mutant/proc/get_singular_image(image_icon_state, image_layer, icon_override = null)
+/datum/bodypart_overlay/mutant/proc/get_singular_image(image_icon_state, image_layer, mob/living/carbon/human/owner, icon_override = null)
 	// We get from icon_override if it is filled, and from sprite_datum.icon if not.
-	var/mutable_appearance/appearance = mutable_appearance(icon_override || sprite_datum.icon, image_icon_state, layer = -image_layer)
+	var/mutable_appearance/appearance = mutable_appearance(icon_override || sprite_datum.get_special_icon(owner), image_icon_state, layer = -image_layer)
 
 	if(sprite_datum.center)
-		center_image(appearance, sprite_datum.dimension_x, sprite_datum.dimension_y)
+		center_image(appearance, sprite_datum.special_x_dimension ? sprite_datum.get_special_x_dimension(owner) : sprite_datum.dimension_x, sprite_datum.dimension_y)
 
 	return appearance
 

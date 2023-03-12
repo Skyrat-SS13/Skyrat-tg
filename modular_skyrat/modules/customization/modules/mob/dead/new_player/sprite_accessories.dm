@@ -97,7 +97,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	return null
 
 /datum/sprite_accessory/proc/get_special_icon(mob/living/carbon/human/H, passed_state)
-	return null
+	return icon
 
 /datum/sprite_accessory/proc/get_special_x_dimension(mob/living/carbon/human/H, passed_state)
 	return 0
