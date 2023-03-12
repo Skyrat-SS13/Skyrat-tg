@@ -8,6 +8,7 @@
 	key = MUTANT_SYNTH_SCREEN
 	generic = "Screen"
 	relevent_layers = list(BODY_FRONT_UNDER_CLOTHES)
+	organ_type = /obj/item/organ/external/synth_screen
 
 /datum/sprite_accessory/screen/none
 	name = "None"
@@ -146,9 +147,10 @@
 	generic = "Antenna"
 	relevent_layers = list(BODY_ADJ_LAYER)
 	genetic = FALSE
+	organ_type = /obj/item/organ/external/synth_antenna
 
-/datum/sprite_accessory/antenna/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/bodypart)
-	if(!wearer.head || !bodypart)
+/datum/sprite_accessory/antenna/is_hidden(mob/living/carbon/human/wearer)
+	if(!wearer.head)
 		return FALSE
 	if(key in wearer.try_hide_mutant_parts)
 		return TRUE
