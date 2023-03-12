@@ -133,6 +133,7 @@
 #define ANNOUNCER_SHUTTLELEFT "announcer_shuttleleft"
 #define ANNOUNCER_CARP "announcer_carp"
 #define ANNOUNCER_VORTEXANOMALIES "announcer_vortexanomalies"
+#define ANNOUNCER_ANOMALIES "announcer_anomalies"
 #define ANNOUNCER_CAPTAIN "announcer_captain"
 #define ANNOUNCER_MASSIVEBSPACEANOMALIES "announcer_massivebspaceanomalies"
 #define ANNOUNCER_PYROANOMALIES "announcer_pyroanomalies"

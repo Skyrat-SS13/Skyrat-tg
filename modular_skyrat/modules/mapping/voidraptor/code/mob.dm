@@ -9,7 +9,7 @@
 	emote_see = list("hisses.", "flicks its tongue.")
 	health = 20
 	maxHealth = 20
-	faction = list("Lizard")
+	faction = list(FACTION_LIZARD)
 	attack_verb_continuous = "bites"
 	attack_verb_simple = "bite"
 	attack_sound = 'sound/weapons/bite.ogg'
@@ -57,7 +57,7 @@
 /mob/living/basic/carp/mega/shorki
 	name = "Shorki"
 	desc = "A not so ferocious, fang bearing creature that resembles a shark. This one seems a little big for its tank."
-	faction = list("neutral")
+	faction = list(FACTION_NEUTRAL)
 	gender = MALE
 	gold_core_spawnable = NO_SPAWN
 	ai_controller = /datum/ai_controller/basic_controller/carp/pet
@@ -90,7 +90,7 @@
 	name = "Wojtek"
 	real_name = "Wojtek"
 	desc = "The bearer of Bluespace Artillery."
-	faction = list("neutral")
+	faction = list(FACTION_NEUTRAL)
 	gender = MALE
 
 /mob/living/simple_animal/chicken/teshari
