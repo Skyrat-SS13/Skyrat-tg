@@ -198,10 +198,11 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 		else
 			return
 		death_sound = new_race.death_sound
-		if (dna.species.properly_gained)
-			dna.species.on_species_loss(src, new_race, pref_load)
 		var/datum/species/old_species = dna.species
 		dna.species = new_race
+
+		if (old_species.properly_gained)
+			old_species.on_species_loss(src, new_race, pref_load)
 
 		//BODYPARTS AND FEATURES - We need to instantiate the list with compatible mutant parts so we don't break things
 
