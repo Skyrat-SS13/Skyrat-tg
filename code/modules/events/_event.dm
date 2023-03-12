@@ -1,4 +1,4 @@
-#define RANDOM_EVENT_ADMIN_INTERVENTION_TIME (10 SECONDS)
+#define RANDOM_EVENT_ADMIN_INTERVENTION_TIME (3 MINUTES) //SKYRAT EDIT CHANGE
 #define NEVER_TRIGGERED_BY_WIZARDS -1
 
 //this singleton datum is used by the events controller to dictate how it selects events
