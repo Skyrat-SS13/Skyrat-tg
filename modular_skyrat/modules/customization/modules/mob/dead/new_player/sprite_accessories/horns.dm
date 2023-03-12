@@ -21,7 +21,7 @@
 
 	// Hide accessory if flagged to do so
 	if((wearer.head?.flags_inv & HIDEHAIR || wearer.wear_mask?.flags_inv & HIDEHAIR) \
-		&& !((wearer.wear_mask && (wearer.head.flags_inv & SHOWSPRITEEARS || wearer.wear_mask.flags_inv & SHOWSPRITEEARS))))
+		&& !(wearer.wear_mask && wearer.wear_mask.flags_inv & SHOWSPRITEEARS))
 		return TRUE
 
 	return FALSE
