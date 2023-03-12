@@ -1,6 +1,3 @@
-//seems like it kinda SPACE helmet. So probably abusable, but not really.
-//If you want to make it less abusable and remove from helmet/space to just /helmet/ - please, add code that removes hair on use. Because we weren't able to do that.
-
 /obj/item/clothing/head/deprivation_helmet
 	name = "deprivation helmet"
 	desc = "Completely cuts off the wearer from the outside world."
