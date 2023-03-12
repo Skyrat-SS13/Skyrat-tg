@@ -24,12 +24,13 @@
 	wave_name = null
 
 /datum/round_event/meteor_wave/custom/determine_wave_type()
+	var/filter_threshold = get_active_player_count(alive_check = FALSE, afk_check = TRUE, human_check = FALSE)
+	if(filter_threshold < 75)
+		wave_name = "normal"
 	if(check_holidays(HALLOWEEN))
 		wave_name = "spooky"
-		wave_type = GLOB.meteorsSPOOKY
 		log_game("EVENT: Meteor Wave: Custom is spookier than usual!")
 		deadchat_broadcast("Something feels awfully spooky today!", message_type=DEADCHAT_ANNOUNCEMENT)
-		return
 	if(!wave_name)
 		wave_name = pick_weight(list(
 			"normal" = METEOR_WAVE_NORMAL_WEIGHT,
@@ -39,6 +40,8 @@
 			wave_type = GLOB.meteors_normal
 		if("threatening")
 			wave_type = GLOB.meteors_threatening
+		if("spooky")
+			wave_type = GLOB.meteorsSPOOKY
 		else
 			stack_trace("Wave name of [wave_name] not recognised or disallowed by config.")
 			kill()
