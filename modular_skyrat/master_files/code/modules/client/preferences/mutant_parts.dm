@@ -797,3 +797,27 @@
 	relevant_mutant_bodypart = "neck_acc"
 	type_to_check = /datum/preference/toggle/mutant_toggle/neck_acc
 
+/datum/preference/choiced/mutant_choice/pod_hair
+	greyscale_color = COLOR_GREEN
+
+/datum/preference/choiced/mutant_choice/pod_hair/is_part_enabled(datum/preferences/preferences)
+	return TRUE
+
+/datum/preference/choiced/mutant_choice/pod_hair/compile_constant_data()
+	var/list/data = ..()
+
+	data[SUPPLEMENTAL_FEATURE_KEY] = "pod_hair_color"
+
+	return data
+
+/datum/preference/color/mutant/pod_hair_color
+	category = PREFERENCE_CATEGORY_SUPPLEMENTAL_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "pod_hair_color"
+	relevant_mutant_bodypart = "pod_hair"
+
+/datum/preference/toggle/emissive/pod_hair_emissive
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "pod_hair_emissive"
+	relevant_mutant_bodypart = "pod_hair"

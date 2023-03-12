@@ -20,6 +20,7 @@ MUTANT_SYNTH_CHASSIS, \
 "taur", \
 "xenodorsal", \
 "xenohead", \
+"pod_hair", \
 "penis", \
 "testicles", \
 "womb", \
