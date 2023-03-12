@@ -38,6 +38,20 @@
 
 	return ..()
 
+/obj/item/organ/external/snout/top
+	bodypart_overlay = /datum/bodypart_overlay/mutant/snout/top
+
+/datum/bodypart_overlay/mutant/snout/top
+	layers = EXTERNAL_FRONT
+
+
+/obj/item/organ/external/snout/top_adj
+	bodypart_overlay = /datum/bodypart_overlay/mutant/snout/top_adj
+
+/datum/bodypart_overlay/mutant/snout/top_adj
+	layers = EXTERNAL_FRONT | EXTERNAL_ADJACENT
+
+
 /datum/sprite_accessory/snouts/none
 	name = "None"
 	icon_state = "none"
@@ -229,8 +243,10 @@
 **************** Snouts *******************
 *************but higher up*****************/
 
-/datum/sprite_accessory/snouts/mammal/top/
+/datum/sprite_accessory/snouts/mammal/top
 	flags_for_organ = SPRITE_ACCESSORY_USE_MUZZLED_SPRITE | SPRITE_ACCESSORY_USE_ALT_FACEWEAR_LAYER
+	organ_type = /obj/item/organ/external/snout/top
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/snouts/mammal/top/fbird
 	name = "Beak (Top)"
@@ -245,6 +261,8 @@
 	icon_state = "fbug"
 	flags_for_organ = NONE
 	color_src = USE_MATRIXED_COLORS
+	organ_type = /obj/item/organ/external/snout/top_adj
+	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/snouts/mammal/top/felephant
 	name = "Elephant (Top)"
