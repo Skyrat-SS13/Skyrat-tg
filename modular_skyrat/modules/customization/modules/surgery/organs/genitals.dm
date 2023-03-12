@@ -256,7 +256,7 @@
 
 /datum/bodypart_overlay/mutant/genital/testicles
 	feature_key = ORGAN_SLOT_TESTICLES
-	layers = EXTERNAL_FRONT | EXTERNAL_BEHIND
+	layers = EXTERNAL_ADJACENT | EXTERNAL_BEHIND
 
 /obj/item/organ/external/genital/testicles/update_genital_icon_state()
 	var/measured_size = clamp(genital_size, 1, 3)

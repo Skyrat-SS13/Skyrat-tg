@@ -113,7 +113,7 @@
 	if(!initial(species_type.use_skintones))
 		return FALSE
 
-	return ..()
+	return TRUE
 
 
 /datum/preference/tri_color/genital
@@ -175,6 +175,9 @@
 	genital_pref_type = /datum/preference/choiced/genital/penis
 
 /datum/preference/toggle/genital_skin_color/penis/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	if(!..()) // Don't apply it if it failed the check in the parent.
+		value = FALSE
+
 	target.dna.features["penis_uses_skincolor"] = value
 
 /datum/preference/numeric/penis_length
@@ -293,6 +296,9 @@
 	genital_pref_type = /datum/preference/choiced/genital/testicles
 
 /datum/preference/toggle/genital_skin_color/testicles/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	if(!..()) // Don't apply it if it failed the check in the parent.
+		value = FALSE
+
 	target.dna.features["testicles_uses_skincolor"] = value
 
 /datum/preference/tri_color/genital/testicles
@@ -349,6 +355,9 @@
 	genital_pref_type = /datum/preference/choiced/genital/vagina
 
 /datum/preference/toggle/genital_skin_color/vagina/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	if(!..()) // Don't apply it if it failed the check in the parent.
+		value = FALSE
+
 	target.dna.features["vagina_uses_skincolor"] = value
 
 /datum/preference/tri_color/genital/vagina
@@ -391,6 +400,9 @@
 	genital_pref_type = /datum/preference/choiced/genital/breasts
 
 /datum/preference/toggle/genital_skin_color/breasts/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	if(!..()) // Don't apply it if it failed the check in the parent.
+		value = FALSE
+
 	target.dna.features["breasts_uses_skincolor"] = value
 
 /datum/preference/tri_color/genital/breasts
