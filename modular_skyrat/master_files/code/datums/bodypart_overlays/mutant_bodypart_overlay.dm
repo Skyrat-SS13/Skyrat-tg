@@ -12,6 +12,9 @@
 	/// Additional information we might want to add to the cache_key, stored into a list.
 	/// Should only ever contain strings.
 	var/list/cache_key_extra_information
+	/// A simple cache of what the last icon_states built were.
+	/// It's really only there to help with debugging what's happening.
+	var/list/last_built_icon_states
 
 
 /**
@@ -92,6 +95,7 @@
 	var/icon/custom_mod_icon = sprite_datum.get_custom_mod_icon(owner)
 
 	cache_key_extra_information = list()
+	last_built_icon_states = list()
 
 	if(custom_mod_icon)
 		mod_overlay = get_singular_image(image_layer = image_layer, owner = owner, icon_override = custom_mod_icon)
@@ -199,7 +203,11 @@
 	if(color_layer)
 		icon_state_builder += color_layer
 
-	return icon_state_builder.Join("_")
+	var/built_icon_state = icon_state_builder.Join("_")
+
+	LAZYADD(last_built_icon_states, built_icon_state)
+
+	return built_icon_state
 
 
 /**
