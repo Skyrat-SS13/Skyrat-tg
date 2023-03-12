@@ -49,11 +49,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	var/use_custom_mod_icon
 	///Special case of applying a different color
 	var/special_colorize
-	///Whether it has any extras to render, and their appropriate color sources
-	var/extra = FALSE
-	var/extra_color_src
-	var/extra2 = FALSE
-	var/extra2_color_src
 	///If defined, the accessory will be only available to ckeys inside the list. ITS ASSOCIATIVE, ie. ("ckey" = TRUE). For speed
 	var/list/ckey_whitelist
 	///Whether this feature is genetic, and thus modifiable by DNA consoles

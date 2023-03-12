@@ -81,8 +81,7 @@
 /datum/sprite_accessory/ears/mutant/bigwolfinner
 	name = "Big Wolf (ALT)"
 	icon_state = "bigwolfinner"
-	extra = TRUE
-	extra_color_src = NONE
+	hasinner = TRUE
 
 /datum/sprite_accessory/ears/mutant/bigwolfdark //alphabetical sort ignored here for ease-of-use
 	name = "Dark Big Wolf"
@@ -91,8 +90,7 @@
 /datum/sprite_accessory/ears/mutant/bigwolfinnerdark
 	name = "Dark Big Wolf (ALT)"
 	icon_state = "bigwolfinnerdark"
-	extra = TRUE
-	extra_color_src = NONE
+	hasinner = TRUE
 
 /datum/sprite_accessory/ears/mutant/bunny
 	name = "Bunny"

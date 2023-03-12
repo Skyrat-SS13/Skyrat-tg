@@ -106,10 +106,6 @@
 	name = "Scolipede"
 	icon_state = "pede"
 	taur_mode = STYLE_TAUR_PAW
-	extra = TRUE
-	extra2 = TRUE
-	extra_color_src = MUTCOLORS2
-	extra2_color_src = MUTCOLORS3
 
 /datum/sprite_accessory/taur/tentacle
 	name = "Tentacle"

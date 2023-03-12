@@ -102,15 +102,11 @@
 	name = "Bug"
 	icon_state = "bug"
 	flags_for_organ = NONE
-	color_src = USE_ONE_COLOR
-	extra2 = TRUE
-	extra2_color_src = MUTCOLORS3
+	color_src = USE_MATRIXED_COLORS
 
 /datum/sprite_accessory/snouts/mammal/elephant
 	name = "Elephant"
 	icon_state = "elephant"
-	extra = TRUE
-	extra_color_src = MUTCOLORS3
 
 /datum/sprite_accessory/snouts/mammal/husky
 	name = "Husky"
@@ -119,8 +115,6 @@
 /datum/sprite_accessory/snouts/mammal/rhino
 	name = "Horn"
 	icon_state = "rhino"
-	extra = TRUE
-	extra_color_src = MUTCOLORS3
 
 /datum/sprite_accessory/snouts/mammal/rodent
 	name = "Rodent"
@@ -250,21 +244,15 @@
 	name = "Bug (Top)"
 	icon_state = "fbug"
 	flags_for_organ = NONE
-	color_src = USE_ONE_COLOR
-	extra2 = TRUE
-	extra2_color_src = MUTCOLORS3
+	color_src = USE_MATRIXED_COLORS
 
 /datum/sprite_accessory/snouts/mammal/top/felephant
 	name = "Elephant (Top)"
 	icon_state = "felephant"
-	extra = TRUE
-	extra_color_src = MUTCOLORS3
 
 /datum/sprite_accessory/snouts/mammal/top/frhino
 	name = "Horn (Top)"
 	icon_state = "frhino"
-	extra = TRUE
-	extra_color_src = MUTCOLORS3
 
 /datum/sprite_accessory/snouts/mammal/top/fhusky
 	name = "Husky (Top)"
@@ -365,8 +353,6 @@
 /datum/sprite_accessory/snouts/mammal/skulldog
 	name = "Skulldog"
 	icon_state = "skulldog"
-	extra = TRUE
-	//extra_color_src = MATRIXED
 
 /datum/sprite_accessory/snouts/mammal/hanubus
 	name = "Anubus"
