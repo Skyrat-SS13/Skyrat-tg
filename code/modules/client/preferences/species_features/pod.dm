@@ -32,9 +32,4 @@
 	return pick(assoc_to_keys_features(GLOB.pod_hair_list))
 
 /datum/preference/choiced/pod_hair/apply_to_human(mob/living/carbon/human/target, value)
-	// SKYRAT EDIT - Customization - ORIGINAL: target.dna.features["pod_hair"] = value
-	if(!target.dna.mutant_bodyparts["pod_hair"])
-		target.dna.mutant_bodyparts["pod_hair"] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
-
-	target.dna.mutant_bodyparts["pod_hair"][MUTANT_INDEX_NAME] = value
-	// SKYRAT EDIT END
+	target.dna.features["pod_hair"] = value

@@ -142,8 +142,11 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 
 
 /datum/sprite_accessory/pod_hair
+	name = "None"
+	icon_state = "None"
 	key = "pod_hair"
 	recommended_species = list(SPECIES_PODPERSON, SPECIES_PODPERSON_WEAK)
+	organ_type = /obj/item/organ/external/pod_hair
 
 
 /datum/sprite_accessory/spines
