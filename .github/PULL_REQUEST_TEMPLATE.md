@@ -5,7 +5,15 @@
 
 <!-- Describe The Pull Request. Please be sure every change is documented or this can delay review and even discourage maintainers from merging your PR! -->
 
+<<<<<<< HEAD
 ## How This Contributes To The Skyrat Roleplay Experience
+=======
+### Mapping March
+
+<!-- If your pull request is part of Mapping March and you want to earn an antagonist token for your FIRST mapping pull request submitted this month, please include your ckey. For more information, read about the event here: https://hackmd.io/@EOBGames/BkwuRlxkh -->
+
+Ckey to receive rewards: N/A
+>>>>>>> 0231e2a1c9a ([NO GBP] fixes typo in PR template (#73928))
 
 ## Why It's Good For The Game
 
