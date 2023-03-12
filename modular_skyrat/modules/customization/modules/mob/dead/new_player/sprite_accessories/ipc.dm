@@ -8,6 +8,7 @@
 	key = MUTANT_SYNTH_SCREEN
 	generic = "Screen"
 	relevent_layers = list(BODY_FRONT_UNDER_CLOTHES)
+	organ_type = /obj/item/organ/external/synth_screen
 
 /datum/sprite_accessory/screen/none
 	name = "None"

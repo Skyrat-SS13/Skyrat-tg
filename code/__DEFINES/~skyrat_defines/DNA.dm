@@ -50,6 +50,7 @@
 #define ORGAN_SLOT_EXTERNAL_NECK_ACCESSORY "neck_accessory"
 #define ORGAN_SLOT_EXTERNAL_SKRELL_HAIR "skrell_hair"
 #define ORGAN_SLOT_EXTERNAL_SYNTH_ANTENNA "synth_antenna"
+#define ORGAN_SLOT_EXTERNAL_SYNTH_SCREEN "synth_screen"
 #define ORGAN_SLOT_EXTERNAL_TAUR "taur"
 #define ORGAN_SLOT_EXTERNAL_XENODORSAL "xenodorsal"
 #define ORGAN_SLOT_EXTERNAL_XENOHEAD "xenohead"

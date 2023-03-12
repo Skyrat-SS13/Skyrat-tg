@@ -100,10 +100,21 @@
 		qdel(appendix)
 
 	var/screen_mutant_bodypart = transformer.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN]
+	var/obj/item/organ/internal/eyes/eyes = transformer.getorganslot(ORGAN_SLOT_EYES)
 
 	if(!screen && screen_mutant_bodypart && screen_mutant_bodypart[MUTANT_INDEX_NAME] && screen_mutant_bodypart[MUTANT_INDEX_NAME] != "None")
+
+		if(eyes)
+			eyes.eye_icon_state = "None"
+
 		screen = new
 		screen.Grant(transformer)
+
+		return
+
+	if(eyes)
+		eyes.eye_icon_state = initial(eyes.eye_icon_state)
+
 
 /datum/species/synthetic/replace_body(mob/living/carbon/target, datum/species/new_species)
 	. = ..()
@@ -140,6 +151,12 @@
 
 /datum/species/synthetic/on_species_loss(mob/living/carbon/human/human)
 	. = ..()
+
+	var/obj/item/organ/internal/eyes/eyes = human.getorganslot(ORGAN_SLOT_EYES)
+
+	if(eyes)
+		eyes.eye_icon_state = initial(eyes.eye_icon_state)
+
 	if(screen)
 		screen.Remove(human)
 
@@ -164,3 +181,9 @@
 
 /datum/species/synthetic/get_types_to_preload()
 	return ..() - typesof(/obj/item/organ/internal/cyberimp/arm/power_cord) // Don't cache things that lead to hard deletions.
+
+
+/datum/species/synthetic/prepare_human_for_preview(mob/living/carbon/human/beepboop)
+	beepboop.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN] = list(MUTANT_INDEX_NAME = "Console", MUTANT_INDEX_COLOR_LIST = list(COLOR_WHITE, COLOR_WHITE, COLOR_WHITE))
+	regenerate_organs(beepboop, src, visual_only = TRUE)
+	beepboop.update_body(TRUE)
