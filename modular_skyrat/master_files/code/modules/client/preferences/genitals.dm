@@ -109,8 +109,8 @@
 
 /datum/preference/toggle/genital_skin_color/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	// If they're not using skintones, let's not apply this yeah?
-	var/datum/species/species_type = preferences.read_preference(/datum/preference/choiced/species)
-	if(!initial(species_type.use_skintones))
+	var/datum/species/species_type = preferences?.read_preference(/datum/preference/choiced/species)
+	if(!species_type  || !initial(species_type.use_skintones))
 		return FALSE
 
 	return TRUE
