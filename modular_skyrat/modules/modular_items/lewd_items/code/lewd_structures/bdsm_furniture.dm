@@ -11,7 +11,6 @@
 
 /obj/item/bdsm_bed_kit
 	name = "bdsm bed construction kit"
-	desc = "Construction requires a wrench."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	throwforce = 0
 	icon_state = "bdsm_bed_kit"
@@ -287,7 +286,6 @@
 
 /obj/item/x_stand_kit
 	name = "x-stand construction kit"
-	desc = "Construction requires a wrench."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	throwforce = 0
 	icon_state = "xstand_kit"
