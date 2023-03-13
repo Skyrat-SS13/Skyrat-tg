@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR AUTOMATIC.DM
 /obj/item/gun/ballistic/automatic
 	w_class = WEIGHT_CLASS_NORMAL
 	can_suppress = TRUE
@@ -145,7 +144,8 @@
 
 /obj/item/gun/ballistic/automatic/m90
 	name = "\improper M-90gl Carbine"
-	desc = "A three-round burst 5.56 toploading carbine, designated 'M-90gl'. Has an attached underbarrel grenade launcher which can be fired using right click."
+	desc = "A three-round burst 5.56 toploading carbine, designated 'M-90gl'. Has an attached underbarrel grenade launcher."
+	desc_controls = "Right-click to use grenade launcher."
 	icon_state = "m90"
 	w_class = WEIGHT_CLASS_BULKY
 	inhand_icon_state = "m90"
@@ -165,6 +165,10 @@
 	. = ..()
 	underbarrel = new /obj/item/gun/ballistic/revolver/grenadelauncher(src)
 	update_appearance()
+
+/obj/item/gun/ballistic/automatic/m90/Destroy()
+	QDEL_NULL(underbarrel)
+	return ..()
 
 /obj/item/gun/ballistic/automatic/m90/unrestricted
 	pin = /obj/item/firing_pin
@@ -270,7 +274,7 @@
 
 
 /obj/item/gun/ballistic/automatic/l6_saw/AltClick(mob/user)
-	if(!user.canUseTopic(src))
+	if(!user.can_perform_action(src))
 		return
 	cover_open = !cover_open
 	balloon_alert(user, "cover [cover_open ? "opened" : "closed"]")
@@ -287,11 +291,13 @@
 
 
 /obj/item/gun/ballistic/automatic/l6_saw/afterattack(atom/target as mob|obj|turf, mob/living/user as mob|obj, flag, params)
+	. |= AFTERATTACK_PROCESSED_ITEM
+
 	if(cover_open)
 		balloon_alert(user, "close the cover!")
 		return
 	else
-		. = ..()
+		. |= ..()
 		update_appearance()
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
@@ -391,4 +397,3 @@
 	actions_types = list()
 	fire_sound = 'sound/weapons/laser.ogg'
 	casing_ejector = FALSE
-*/

@@ -24,13 +24,20 @@
 	anchored = FALSE
 	density = TRUE
 	max_integrity = 500
-	armor = list("melee" = 30, "bullet" = 20, "laser" = 20, "energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 90, "acid" = 80)
+	armor_type = /datum/armor/structure_particle_accelerator
 
 	var/obj/machinery/particle_accelerator/control_box/master = null
 	var/construction_state = PA_CONSTRUCTION_UNSECURED
 	var/reference = null
 	var/powered = 0
 	var/strength = null
+
+/datum/armor/structure_particle_accelerator
+	melee = 30
+	melee = 20
+	laser = 20
+	fire = 90
+	acid = 80
 
 /obj/structure/particle_accelerator/examine(mob/user)
 	. = ..()

@@ -109,7 +109,7 @@
 	var/obj/machinery/power/supermatter_crystal/S = attached_to
 	if(!istype(S))
 		return
-	return "<div align='center' valign='middle' style='position:relative; top:0px; left:0px'>[round(S.get_integrity_percent(), 1)]%</div>"
+	return "<div align='center' valign='middle' style='position:relative; top:0px; left:0px'>[round(S.get_integrity_percent())]%</div>"
 
 /obj/effect/countdown/transformer
 	name = "transformer countdown"
@@ -140,6 +140,8 @@
 	var/obj/effect/anomaly/A = attached_to
 	if(!istype(A))
 		return
+	else if(A.immortal) //we can't die, why are we still here? just to suffer?
+		stop()
 	else
 		var/time_left = max(0, (A.death_time - world.time) / 10)
 		return round(time_left)

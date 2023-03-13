@@ -97,7 +97,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 
 /obj/item/radio/headset/MouseDrop(mob/over, src_location, over_location)
 	var/mob/headset_user = usr
-	if((headset_user == over) && headset_user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
+	if((headset_user == over) && headset_user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return attack_self(headset_user)
 	return ..()
 
@@ -136,6 +136,20 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 /obj/item/radio/headset/syndicate/alt/leader
 	name = "team leader headset"
 	command = TRUE
+
+/obj/item/radio/headset/syndicate/alt/psyker
+	name = "psychic headset"
+	desc = "A headset designed to boost psychic waves. Protects ears from flashbangs."
+	icon_state = "psyker_headset"
+
+/obj/item/radio/headset/syndicate/alt/psyker/equipped(mob/living/user, slot)
+	. = ..()
+	if(slot_flags & slot)
+		ADD_CLOTHING_TRAIT(user, TRAIT_ECHOLOCATION_EXTRA_RANGE)
+
+/obj/item/radio/headset/syndicate/alt/psyker/dropped(mob/user, silent)
+	. = ..()
+	REMOVE_CLOTHING_TRAIT(user, TRAIT_ECHOLOCATION_EXTRA_RANGE)
 
 /obj/item/radio/headset/binary
 	keyslot = /obj/item/encryptionkey/binary
@@ -305,7 +319,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	name = "\improper CentCom bowman headset"
 	desc = "A headset especially for emergency response personnel. Protects ears from flashbangs."
 	icon_state = "cent_headset_alt"
-	keyslot = null
+	keyslot2 = null
 
 /obj/item/radio/headset/headset_cent/alt/Initialize(mapload)
 	. = ..()

@@ -1,7 +1,3 @@
-/obj/effect/turf_decal/tile/blue/darkblue
-	name = "dark blue corner"
-	color = "#486091"
-
 /obj/effect/turf_decal/stripes/blue
 	icon_state = "warningline_blue"
 	icon = 'modular_skyrat/modules/sec_haul/icons/misc/turf_decals.dmi'

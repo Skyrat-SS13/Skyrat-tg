@@ -11,6 +11,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/medical.dmi'
 	icon_state = "scrubswhite" // Because for some reason TG's scrubs dont have an icon on their basetype
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one seems to be the original Scrub."
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
 
 /obj/item/clothing/under/rank/medical/chemist/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/medical.dmi'
@@ -34,14 +35,16 @@
 	name = "medical utility uniform"
 	desc = "A utility uniform worn by Medical doctors."
 	icon_state = "util_med"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
 
 /obj/item/clothing/under/rank/medical/doctor/skyrat/utility/syndicate
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) // Same stats as the tactical turtleneck.
+	armor_type = /datum/armor/utility_syndicate
 	has_sensor = NO_SENSORS
 
 /*
 *	SCRUBS
 */
+
 /obj/item/clothing/under/rank/medical/scrubs/skyrat/red
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in a deep red."
 	icon_state = "scrubsred"

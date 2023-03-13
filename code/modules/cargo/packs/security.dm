@@ -104,7 +104,7 @@
 					/obj/item/clothing/head/beret/sec/navywarden,
 					/obj/item/clothing/under/rank/security/head_of_security/formal,
 					/obj/item/clothing/suit/jacket/hos/blue,
-					/obj/item/clothing/head/hos/beret/navyhos,
+					/obj/item/clothing/head/hats/hos/beret/navyhos,
 				)
 	crate_name = "security clothing crate"
 */
@@ -377,7 +377,7 @@
 	desc = "Contains a pair of holsters each with two experimental thermal pistols, \
 		using nanites as the basis for their ammo. Requires Armory access to open."
 	cost = CARGO_CRATE_VALUE * 7
-	contains = list(/obj/item/storage/belt/holster/thermal = 2)
+	contains = list(/obj/item/storage/belt/holster/energy/thermal = 2)
 	crate_name = "thermal pistol crate"
 
 /datum/supply_pack/security/armory/wt550

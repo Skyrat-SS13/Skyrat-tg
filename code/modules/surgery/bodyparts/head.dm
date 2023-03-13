@@ -235,7 +235,7 @@
 				else if(bodytype & BODYTYPE_LARVA_PLACEHOLDER)
 					debrain_overlay.icon = 'icons/mob/species/alien/bodyparts.dmi'
 					debrain_overlay.icon_state = "debrained_larva"
-				else if(!(NOBLOOD in species_flags_list))
+				else if(!(TRAIT_NOBLOOD in species_flags_list))
 					debrain_overlay.icon = 'icons/mob/species/human/human_face.dmi'
 					debrain_overlay.icon_state = "debrained"
 				. += debrain_overlay
@@ -319,6 +319,9 @@
 
 /obj/item/bodypart/head/monkey
 	icon = 'icons/mob/species/monkey/bodyparts.dmi'
+	icon_static = 'icons/mob/species/monkey/bodyparts.dmi'
+	icon_husk = 'icons/mob/species/monkey/bodyparts.dmi'
+	husk_type = "monkey"
 	icon_state = "default_monkey_head"
 	limb_id = SPECIES_MONKEY
 	bodytype = BODYTYPE_MONKEY | BODYTYPE_ORGANIC

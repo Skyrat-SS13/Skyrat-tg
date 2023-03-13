@@ -53,6 +53,7 @@
 		/obj/item/clothing/gloves,
 		/obj/item/construction/rcd,
 		/obj/item/construction/rld,
+		/obj/item/construction/rtd,
 		/obj/item/crowbar,
 		/obj/item/extinguisher/mini,
 		/obj/item/flashlight,
@@ -505,13 +506,6 @@
 		/obj/item/clothing/mask/luchador
 		))
 
-/obj/item/storage/belt/cummerbund
-	name = "cummerbund"
-	desc = "A pleated sash that pairs well with a suit jacket."
-	icon_state = "cummerbund"
-	inhand_icon_state = null
-	worn_icon_state = "cummerbund"
-
 /obj/item/storage/belt/military
 	name = "chest rig"
 	desc = "A set of tactical webbing worn by Syndicate boarding parties."
@@ -796,6 +790,13 @@
 	icon_state = "fannypack_yellow"
 	worn_icon_state = "fannypack_yellow"
 
+/obj/item/storage/belt/fannypack/cummerbund
+	name = "cummerbund"
+	desc = "A pleated sash that pairs well with a suit jacket."
+	icon_state = "cummerbund"
+	inhand_icon_state = null
+	worn_icon_state = "cummerbund"
+
 /obj/item/storage/belt/sabre
 	name = "sabre sheath"
 	desc = "An ornate sheath designed to hold an officer's blade."
@@ -823,7 +824,7 @@
 		. += span_notice("Alt-click it to quickly draw the blade.")
 
 /obj/item/storage/belt/sabre/AltClick(mob/user)
-	if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE, no_tk = FALSE, need_hands = TRUE))
+	if(!user.can_perform_action(src, NEED_DEXTERITY|NEED_HANDS))
 		return
 	if(length(contents))
 		var/obj/item/I = contents[1]

@@ -50,7 +50,7 @@
 
 /datum/station_trait/hangover/revert()
 	for (var/obj/effect/landmark/start/hangover/hangover_spot in GLOB.start_landmarks_list)
-		QDEL_LIST(hangover_spot.debris)
+		QDEL_LIST(hangover_spot.hangover_debris)
 
 	return ..()
 
@@ -75,7 +75,7 @@
 /datum/station_trait/blackout
 	name = "Blackout"
 	trait_type = STATION_TRAIT_NEGATIVE
-	weight = 5
+	weight = 3
 	show_in_report = TRUE
 	report_message = "Station lights seem to be damaged, be safe when starting your shift today."
 
@@ -282,7 +282,16 @@
 	report_message = "A radioactive stormfront is passing through your station's system. Expect an increased likelihood of radiation storms passing over your station, as well the potential for multiple radiation storms to occur during your shift."
 	trait_type = STATION_TRAIT_NEGATIVE
 	trait_flags = NONE
-	weight = 0
+	weight = 0 //SKYRAT EDIT CHANGE - ORIGINAL: weight = 0
 	event_control_path = /datum/round_event_control/radiation_storm
 	weight_multiplier = 1.5
-	max_occurrences_modifier = 0
+	max_occurrences_modifier = 0 //SKYRAT EDIT CHANGE - ORIGINAL: max_occurrences_modifier = 0
+
+/datum/station_trait/cramped_escape_pods
+	name = "Cramped Escape Pods"
+	trait_type = STATION_TRAIT_NEGATIVE
+	weight = 5
+	show_in_report = TRUE
+	report_message = "Due to budget cuts, we have downsized your escape pods."
+	trait_to_give = STATION_TRAIT_SMALLER_PODS
+	blacklist = list(/datum/station_trait/luxury_escape_pods)

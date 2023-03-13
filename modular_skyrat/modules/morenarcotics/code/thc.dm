@@ -73,7 +73,7 @@
 	var/cg420_message = pick("It's major...", "Oh my goodness...",)
 	if(DT_PROB(1.5, delta_time))
 		M.say("[cg420_message]")
-	M.adjust_drowsyness(0.1 * REM * normalise_creation_purity() * delta_time)
+	M.adjust_drowsiness(0.2 SECONDS * REM * normalise_creation_purity() * delta_time)
 	if(DT_PROB(3.5, delta_time))
 		playsound(M, pick('modular_skyrat/master_files/sound/effects/lungbust_cough1.ogg','modular_skyrat/master_files/sound/effects/lungbust_cough2.ogg'), 50, TRUE)
 		M.emote("cough")

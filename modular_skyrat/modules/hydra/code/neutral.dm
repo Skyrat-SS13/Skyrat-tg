@@ -8,7 +8,7 @@
 	medical_record_text = "There are multiple heads and personalities affixed to one body."
 	icon = "horse-head"
 
-/datum/quirk/hydra/add()
+/datum/quirk/hydra/add(client/client_source)
 	var/mob/living/carbon/human/hydra = quirk_holder
 	var/datum/action/innate/hydra/spell = new
 	var/datum/action/innate/hydrareset/resetspell = new

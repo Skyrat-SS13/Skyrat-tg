@@ -5,7 +5,8 @@ import { Window } from '../layouts';
 export const KeycardAuth = (props, context) => {
   const { act, data } = useBackend(context);
   return (
-    // SKYRAT EDIT: height 125 -> 150, addition of permit-locked firing pin
+    // SKYRAT EDIT: height 125 -> 175, addition of permit-locked firing pin and
+    // engineering override
     <Window width={375} height={150}>
       <Window.Content>
         <Section>
@@ -39,17 +40,26 @@ export const KeycardAuth = (props, context) => {
                       content="Red Alert"
                     />
                     <Button
-                      icon="wrench"
+                      icon="idcard-o"
                       fluid
                       onClick={() => act('emergency_maint')}
                       content="Emergency Maintenance Access"
                     />
+                    {/* SKYRAT EDIT ADDITION START - Engineering Override */}
+                    <Button
+                      icon="wrench"
+                      fluid
+                      onClick={() => act('eng_override')}
+                      content="Engineering Override Access"
+                    />
+                    {/* SKYRAT EDIT ADDITION END */}
                     <Button
                       icon="meteor"
                       fluid
                       onClick={() => act('bsa_unlock')}
                       content="Bluespace Artillery Unlock"
                     />
+                    {/* SKYRAT EDIT ADDITION START - Permit Pins */}
                     {!!data.permit_pins && (
                       <Button
                         icon="key"
@@ -58,6 +68,7 @@ export const KeycardAuth = (props, context) => {
                         content="Permit-Locked Firing Pin Unrestriction"
                       />
                     )}
+                    {/* SKYRAT EDIT ADDITION END */}
                   </>
                 )}
               </>

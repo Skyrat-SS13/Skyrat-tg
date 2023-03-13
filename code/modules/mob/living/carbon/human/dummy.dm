@@ -83,7 +83,6 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	return
 
 /proc/create_consistent_human_dna(mob/living/carbon/human/target)
-	target.create_dna()
 	target.dna.initialize_dna(skip_index = TRUE)
 	target.dna.features["body_markings"] = "None"
 	target.dna.features["ears"] = "None"
@@ -118,6 +117,9 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	..()
 	if(is_creating)
 		fully_replace_character_name(real_name, "John Doe")
+
+/mob/living/carbon/human/consistent/domutcheck()
+	return // We skipped adding any mutations so this runtimes
 
 //Inefficient pooling/caching way.
 GLOBAL_LIST_EMPTY(human_dummy_list)

@@ -5,7 +5,7 @@
 		/datum/reagent/consumable/muli_juice = 10,
 	)
 	result = /obj/item/food/piru_dough
-	subcategory = CAT_TESHARI
+	category = CAT_TESHARI
 
 /datum/crafting_recipe/food/spiced_jerky
 	name = "Spiced Jerky"
@@ -14,7 +14,7 @@
 		/datum/reagent/consumable/nakati_spice = 2,
 	)
 	result = /obj/item/food/spiced_jerky
-	subcategory = CAT_TESHARI
+	category = CAT_TESHARI
 
 /datum/crafting_recipe/food/sirisai_wrap
 	name = "Sirisai Wrap"
@@ -25,7 +25,7 @@
 		/datum/reagent/consumable/nakati_spice = 5,
 	)
 	result = /obj/item/food/sirisai_wrap
-	subcategory = CAT_TESHARI
+	category = CAT_TESHARI
 
 /datum/crafting_recipe/food/sweet_piru_noodles
 	name = "Sweet Piru Noodles"
@@ -37,7 +37,7 @@
 		/obj/item/food/grown/carrot = 1,
 	)
 	result = /obj/item/food/sweet_piru_noodles
-	subcategory = CAT_TESHARI
+	category = CAT_TESHARI
 
 /datum/crafting_recipe/food/kiri_curry
 	name = "Kiri Curry"
@@ -50,7 +50,7 @@
 		/datum/reagent/consumable/kiri_jelly = 5,
 	)
 	result = /obj/item/food/kiri_curry
-	subcategory = CAT_TESHARI
+	category = CAT_TESHARI
 
 /datum/crafting_recipe/food/sirisai_flatbread
 	name = "Sirisai Flatbread"
@@ -62,7 +62,7 @@
 		/datum/reagent/consumable/nakati_spice = 5,
 	)
 	result = /obj/item/food/sirisai_flatbread
-	subcategory = CAT_TESHARI
+	category = CAT_TESHARI
 
 /datum/crafting_recipe/food/bluefeather_crisp
 	name = "Bluefeather Crisp"
@@ -71,7 +71,7 @@
 		/datum/reagent/consumable/nakati_spice = 2,
 	)
 	result = /obj/item/food/bluefeather_crisp
-	subcategory = CAT_TESHARI
+	category = CAT_TESHARI
 
 /datum/crafting_recipe/food/stewed_muli
 	name = "Stewed Muli"
@@ -84,19 +84,19 @@
 		/datum/reagent/consumable/nakati_spice = 5,
 	)
 	result = /obj/item/food/stewed_muli
-	subcategory = CAT_TESHARI
+	category = CAT_TESHARI
 
 /datum/crafting_recipe/food/stuffed_muli_pod
 	name = "Stuffed Muli Pod"
 	reqs = list(
 		/obj/item/food/grown/muli = 1,
 		/obj/item/food/meat/cutlet = 1,
-		/obj/item/food/grown/kiri = 1,,
+		/obj/item/food/grown/kiri = 1,
 		/obj/item/food/grown/chili = 1,
 		/datum/reagent/consumable/nakati_spice = 2,
 	)
 	result = /obj/item/food/stuffed_muli_pod
-	subcategory = CAT_TESHARI
+	category = CAT_TESHARI
 
 /datum/crafting_recipe/food/caramel_jelly_toast
 	name = "Caramel-jelly Toast"
@@ -106,7 +106,7 @@
 		/datum/reagent/consumable/caramel = 5,
 	)
 	result = /obj/item/food/caramel_jelly_toast
-	subcategory = CAT_TESHARI
+	category = CAT_TESHARI
 
 /datum/crafting_recipe/food/kiri_jellypuff
 	name = "Kiri Jellypuff"
@@ -117,7 +117,7 @@
 		/datum/reagent/consumable/piru_flour = 5,
 	)
 	result = /obj/item/food/kiri_jellypuff
-	subcategory = CAT_TESHARI
+	category = CAT_TESHARI
 
 /datum/crafting_recipe/food/bluefeather_crisps_and_dip
 	name = "Bluefeather Crisps and Dip"
@@ -128,4 +128,4 @@
 		/datum/reagent/consumable/nakati_spice = 5,
 	)
 	result = /obj/item/food/bluefeather_crisps_and_dip
-	subcategory = CAT_TESHARI
+	category = CAT_TESHARI

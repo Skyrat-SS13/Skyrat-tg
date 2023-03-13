@@ -13,10 +13,7 @@
 	density = TRUE
 	max_integrity = 250
 	buckle_lying = 0
-	base_pixel_x = -8
-	base_pixel_y = -8
-	pixel_x = -8
-	pixel_y = -8
+	SET_BASE_PIXEL(-8, -8)
 	layer = ABOVE_MOB_LAYER
 	plane = GAME_PLANE_UPPER
 	/// The extra range that this turret gives regarding viewrange.

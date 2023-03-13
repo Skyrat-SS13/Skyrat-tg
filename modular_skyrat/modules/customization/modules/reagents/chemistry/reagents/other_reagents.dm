@@ -22,6 +22,19 @@
 /datum/reagent/carbondioxide
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
+/datum/reagent/iron
+	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING
+
+/datum/reagent/blood
+	chemical_flags_skyrat = REAGENT_BLOOD_REGENERATING // For Hemophages to be able to drink it without any issue.
+
+/datum/reagent/blood/on_new(list/data)
+	. = ..()
+
+	if(!src.data["blood_type"])
+		src.data["blood_type"] = random_blood_type() // This is so we don't get blood without a blood type spawned from something that doesn't explicitly set the blood type.
+
+
 /datum/reagent/stable_plasma/on_mob_life(mob/living/carbon/C)
 	if(C.mob_biotypes & MOB_ROBOTIC)
 		C.nutrition = min(C.nutrition + 5, NUTRITION_LEVEL_FULL-1)

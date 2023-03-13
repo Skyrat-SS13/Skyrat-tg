@@ -528,6 +528,21 @@
 
 //Keyhole uses the same configs!
 
+// OVERALLS
+
+/datum/greyscale_config/overalls
+	name = "Overalls"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/overalls/overalls.json'
+
+/datum/greyscale_config/overalls/worn
+	name = "Overalls (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/overalls/overalls_worn.json'
+
+/datum/greyscale_config/overalls/worn/digi
+	name = "Overalls (Worn) (Digi)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_digi.dmi'
+
 // URBAN COAT
 
 /datum/greyscale_config/urban_coat
@@ -650,6 +665,16 @@
 /datum/greyscale_config/jumpsuit_prison_worn/digi
 	name = "Worn Prison Jumpsuit - Digitigrade"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/color_digi.dmi'
+
+/datum/greyscale_config/jumpsuit_worn/monkey
+	name = "Worn Jumpsuit - Monkey"
+	icon_file = MONKEY_UNIFORM_FILE
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/jumpsuit/jumpsuit_worn_monkey.json'
+
+/datum/greyscale_config/jumpsuit_prison_worn/monkey
+	name = "Worn Prison Jumpsuit - Monkey"
+	icon_file = MONKEY_UNIFORM_FILE
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/jumpsuit/jumpsuit_prison_worn_monkey.json'
 
 /datum/greyscale_config/jumpsuit_worn/vox
 	name = "Worn Jumpsuit - Vox"

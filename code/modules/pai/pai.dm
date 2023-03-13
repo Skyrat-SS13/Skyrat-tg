@@ -146,9 +146,10 @@
 	return ..()
 
 // See software.dm for Topic()
-/mob/living/silicon/pai/canUseTopic(atom/movable/movable, be_close = FALSE, no_dexterity = FALSE, no_tk = FALSE, need_hands = FALSE, floor_okay = FALSE)
-	// Resting is just an aesthetic feature for them.
-	return ..(movable, be_close, no_dexterity, no_tk, need_hands, TRUE)
+/mob/living/silicon/pai/can_perform_action(atom/movable/target, action_bitflags)
+	action_bitflags |= ALLOW_RESTING // Resting is just an aesthetic feature for them
+	action_bitflags &= ~ALLOW_SILICON_REACH // They don't get long reach like the rest of silicons
+	return ..(target, action_bitflags)
 
 /mob/living/silicon/pai/Destroy()
 	QDEL_NULL(atmos_analyzer)
@@ -159,12 +160,7 @@
 	QDEL_NULL(internal_gps)
 	QDEL_NULL(newscaster)
 	QDEL_NULL(signaler)
-	if(!QDELETED(card) && loc != card)
-		card.forceMove(drop_location())
-		// these are otherwise handled by paicard/handle_atom_del()
-		card.pai = null
-		card.emotion_icon = initial(card.emotion_icon)
-		card.update_appearance()
+	card = null
 	GLOB.pai_list.Remove(src)
 	return ..()
 
@@ -251,6 +247,7 @@
 		return
 	set_health(maxHealth - getBruteLoss() - getFireLoss())
 	update_stat()
+	SEND_SIGNAL(src, COMSIG_LIVING_HEALTH_UPDATE)
 
 /**
  * Resolves the weakref of the pai's master.

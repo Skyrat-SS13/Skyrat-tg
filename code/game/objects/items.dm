@@ -131,6 +131,10 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/armour_penetration = 0
 	///Whether or not our object is easily hindered by the presence of armor
 	var/weak_against_armour = FALSE
+	/// The click cooldown given after attacking. Lower numbers means faster attacks
+	var/attack_speed = CLICK_CD_MELEE
+	/// The click cooldown on secondary attacks. Lower numbers mean faster attacks. Will use attack_speed if undefined.
+	var/secondary_attack_speed
 	///In deciseconds, how long an item takes to equip; counts only for normal clothing slots, not pockets etc.
 	var/equip_delay_self = 0
 	///In deciseconds, how long an item takes to put on another person
@@ -364,6 +368,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	// SKYRAT EDIT ADD START
 	if(greyscale_config_worn_digi)
 		worn_icon_digi = SSgreyscale.GetColoredIconByType(greyscale_config_worn_digi, greyscale_colors)
+	if(greyscale_config_worn_monkey)
+		worn_icon_monkey = SSgreyscale.GetColoredIconByType(greyscale_config_worn_monkey, greyscale_colors)
 	if(greyscale_config_worn_vox)
 		worn_icon_vox = SSgreyscale.GetColoredIconByType(greyscale_config_worn_vox, greyscale_colors)
 	if(greyscale_config_worn_better_vox)
@@ -565,7 +571,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(grav > STANDARD_GRAVITY)
 		var/grav_power = min(3,grav - STANDARD_GRAVITY)
 		to_chat(user,span_notice("You start picking up [src]..."))
-		if(!do_mob(user,src,30*grav_power))
+		if(!do_after(user, 30 * grav_power, src))
 			return
 
 
@@ -678,6 +684,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 /obj/item/proc/pickup(mob/user)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
+	SEND_SIGNAL(user, COMSIG_LIVING_PICKED_UP_ITEM, src)
 	item_flags |= IN_INVENTORY
 
 /// called when "found" in pockets and storage items. Returns 1 if the search should end.
@@ -899,18 +906,20 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	else
 		. = SFX_DESECRATION
 
+/// Creates an ignition hotspot if item is lit and located on turf, in mask, or in hand
 /obj/item/proc/open_flame(flame_heat=700)
 	var/turf/location = loc
 	if(ismob(location))
-		var/mob/M = location
+		var/mob/pyromanic = location
 		var/success = FALSE
-		if(src == M.get_item_by_slot(ITEM_SLOT_MASK))
+		if(src == pyromanic.get_item_by_slot(ITEM_SLOT_MASK) || (src in pyromanic.held_items))
 			success = TRUE
 		if(success)
-			location = get_turf(M)
+			location = get_turf(pyromanic)
 	if(isturf(location))
 		location.hotspot_expose(flame_heat, 5)
 
+/// If an object can successfully be used as a fire starter it will return a message
 /obj/item/proc/ignition_effect(atom/A, mob/user)
 	if(get_temperature())
 		. = span_notice("[user] lights [A] with [src].")
@@ -924,11 +933,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	return FALSE
 
 /obj/item/attack_animal(mob/living/simple_animal/user, list/modifiers)
-	if (obj_flags & CAN_BE_HIT)
-		return ..()
-	return 0
-
-/obj/item/attack_basic_mob(mob/living/basic/user, list/modifiers)
 	if (obj_flags & CAN_BE_HIT)
 		return ..()
 	return 0
@@ -1067,13 +1071,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		// Create a callback with checks that would be called every tick by do_after.
 		var/datum/callback/tool_check = CALLBACK(src, PROC_REF(tool_check_callback), user, amount, extra_checks)
 
-		if(ismob(target))
-			if(!do_mob(user, target, delay, extra_checks=tool_check))
-				return
-
-		else
-			if(!do_after(user, delay, target=target, extra_checks=tool_check))
-				return
+		if(!do_after(user, delay, target=target, extra_checks=tool_check))
+			return
 	else
 		// Invoke the extra checks once, just in case.
 		if(extra_checks && !extra_checks.Invoke())
@@ -1198,13 +1197,13 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
  * * target- Either a body part or a carbon. What are we hitting?
  * * forced- Do we want this to go through 100%?
  */
-/obj/item/proc/tryEmbed(atom/target, forced=FALSE, silent=FALSE)
+/obj/item/proc/tryEmbed(atom/target, forced=FALSE)
 	if(!isbodypart(target) && !iscarbon(target))
 		return NONE
 	if(!forced && !LAZYLEN(embedding))
 		return NONE
 
-	if(SEND_SIGNAL(src, COMSIG_EMBED_TRY_FORCE, target, forced, silent))
+	if(SEND_SIGNAL(src, COMSIG_EMBED_TRY_FORCE, target = target, forced = forced))
 		return COMPONENT_EMBED_SUCCESS
 	failedEmbed()
 
@@ -1264,7 +1263,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 		victim.apply_damage(max(15, force), BRUTE, BODY_ZONE_HEAD, wound_bonus = 10, sharpness = TRUE)
 		victim.losebreath += 2
-		if(tryEmbed(victim.get_bodypart(BODY_ZONE_CHEST), TRUE, TRUE)) //and if it embeds successfully in their chest, cause a lot of pain
+		if(tryEmbed(victim.get_bodypart(BODY_ZONE_CHEST), forced = TRUE)) //and if it embeds successfully in their chest, cause a lot of pain
 			victim.apply_damage(max(25, force*1.5), BRUTE, BODY_ZONE_CHEST, wound_bonus = 7, sharpness = TRUE)
 			victim.losebreath += 6
 			discover_after = FALSE
@@ -1388,7 +1387,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	/// if the item are glasses, this variable stores the item.
 	var/obj/item/clothing/glasses/reskinned_glasses
 
-	if(istype(src, /obj/item/clothing/glasses))
+	if(istype(src, /obj/item/clothing/glasses)) // TODO - Remove this mess about glasses, it shouldn't be necessary anymore.
 		reskinned_glasses = src
 		if(reskinned_glasses.can_switch_eye)
 			is_swappable = TRUE
@@ -1397,7 +1396,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 
 	for(var/reskin_option in unique_reskin)
-		var/image/item_image = image(icon = unique_reskin[reskin_option][RESKIN_ICON] ? unique_reskin[reskin_option][RESKIN_ICON] : icon, icon_state = "[unique_reskin[reskin_option][RESKIN_ICON_STATE]][is_swappable ? "_R" : ""]")
+		var/image/item_image = image(icon = unique_reskin[reskin_option][RESKIN_ICON] ? unique_reskin[reskin_option][RESKIN_ICON] : icon, icon_state = "[unique_reskin[reskin_option][RESKIN_ICON_STATE]]")
 		items += list("[reskin_option]" = item_image)
 	sort_list(items)
 
@@ -1413,8 +1412,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	if(unique_reskin[pick][RESKIN_ICON_STATE])
 		if(is_swappable)
-			reskinned_glasses.base_icon_state = unique_reskin[pick][RESKIN_ICON_STATE]
-			icon_state = reskinned_glasses.base_icon_state + "_R"
+			base_icon_state = unique_reskin[pick][RESKIN_ICON_STATE]
+			icon_state = base_icon_state
 		else
 			icon_state = unique_reskin[pick][RESKIN_ICON_STATE]
 
@@ -1422,11 +1421,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		worn_icon = unique_reskin[pick][RESKIN_WORN_ICON]
 
 	if(unique_reskin[pick][RESKIN_WORN_ICON_STATE])
-		if(is_swappable)
-			reskinned_glasses.current_worn_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
-			worn_icon_state = reskinned_glasses.current_worn_state + "_R"
-		else
-			worn_icon_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
+		worn_icon_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
 
 	if(unique_reskin[pick][RESKIN_INHAND_L])
 		lefthand_file = unique_reskin[pick][RESKIN_INHAND_L]
@@ -1640,3 +1635,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	user.log_message("is putting [equipping] on [key_name(target)]", LOG_ATTACK, color="red")
 	target.log_message("is having [equipping] put on them by [key_name(user)]", LOG_VICTIM, color="orange", log_globally=FALSE)
+
+/obj/item/update_atom_colour()
+	. = ..()
+	update_slot_icon()

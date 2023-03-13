@@ -64,7 +64,6 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 	unique_identity = generate_unique_identity()
 	if(!skip_index) //I hate this
 		generate_dna_blocks()
-	features = random_features()
 	mutant_bodyparts = species.get_random_mutant_bodyparts(features)
 	unique_features = generate_unique_features()
 
@@ -199,9 +198,11 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 		else
 			return
 		death_sound = new_race.death_sound
-		dna.species.on_species_loss(src, new_race, pref_load)
 		var/datum/species/old_species = dna.species
 		dna.species = new_race
+
+		if (old_species.properly_gained)
+			old_species.on_species_loss(src, new_race, pref_load)
 
 		//BODYPARTS AND FEATURES - We need to instantiate the list with compatible mutant parts so we don't break things
 

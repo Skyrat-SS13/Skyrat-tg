@@ -37,6 +37,7 @@
 	name = "emergency nitrogen tank"
 	desc = "Used for emergencies. Contains very little nitrogen, so try to conserve it until you actually need it."
 	icon_state = "nitrogen"
+	worn_icon_state = "nitrogen_extended"
 	volume = 3
 
 /obj/item/tank/internals/nitrogen/belt/emergency/populate_gas()
