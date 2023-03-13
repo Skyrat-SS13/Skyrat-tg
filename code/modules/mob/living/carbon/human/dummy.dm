@@ -93,7 +93,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	target.dna.features["mcolor"] = COLOR_VIBRANT_LIME
 	target.dna.features["moth_antennae"] = "Plain"
 	target.dna.features["moth_markings"] = "None"
-	target.dna.features["wings"] = "None" // SKYRAT EDIT CHANGE - Customization
+	target.dna.features["moth_wings"] = "Plain"
 	target.dna.features["snout"] = "Round"
 	target.dna.features["spines"] = "None"
 	target.dna.features["tail_cat"] = "None"
