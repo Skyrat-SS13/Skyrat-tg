@@ -37,26 +37,44 @@
 /**
  * Anomalies
  */
-/datum/round_event_control/anomaly/anomaly_flux
-	weight = MED_EVENT_FREQ
+/datum/round_event_control/anomaly/anomaly_bioscrambler
+	max_occurrences = 1
+	weight = LOW_EVENT_FREQ
 
 /datum/round_event_control/anomaly/anomaly_bluespace
+	max_occurrences = 1
+	weight = LOW_EVENT_FREQ
+
+/datum/round_event_control/anomaly/anomaly_dimensional
+	max_occurrences = 1
 	weight = LOW_EVENT_FREQ
 
 /datum/round_event_control/anomaly/anomaly_ectoplasm
+	max_occurrences = 1
 	weight = LOW_EVENT_FREQ
+
+/datum/round_event_control/anomaly/anomaly_flux
+	max_occurrences = 1
+	weight = LOW_EVENT_FREQ
+
+/datum/round_event_control/anomaly/anomaly_hallucination
+	max_occurrences = 1
+	weight = VERY_LOW_EVENT_FREQ
 
 // We have other intensities
 /datum/round_event_control/anomaly/anomaly_grav
 	max_occurrences = 0
 
 /datum/round_event_control/anomaly/anomaly_grav/high
+	max_occurrences = 1
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/anomaly/anomaly_pyro
+	max_occurrences = 1
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/anomaly/anomaly_vortex
+	max_occurrences = 1
 	weight = MED_EVENT_FREQ
 
 /**
