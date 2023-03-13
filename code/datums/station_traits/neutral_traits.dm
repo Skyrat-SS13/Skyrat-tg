@@ -16,6 +16,13 @@
 	// This station trait modifies the atmosphere, which is too far past the time admins are able to revert it
 	can_revert = FALSE
 
+/datum/station_trait/spider_infestation
+	name = "Spider Infestation"
+	trait_type = STATION_TRAIT_NEUTRAL
+	weight = 5
+	report_message = "We have introduced a natural countermeasure to reduce the number of rodents on board your station."
+	trait_to_give = STATION_TRAIT_SPIDER_INFESTATION
+
 /datum/station_trait/unique_ai
 	name = "Unique AI"
 	trait_type = STATION_TRAIT_NEUTRAL
