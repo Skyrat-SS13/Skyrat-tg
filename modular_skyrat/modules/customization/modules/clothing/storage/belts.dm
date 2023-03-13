@@ -17,7 +17,9 @@
 		type = /datum/storage/belt/crusader,
 		canhold = list(
 			/obj/item/storage/belt/storage_pouch,
-			/obj/item/forging/reagent_weapon/sword,
+			/obj/item/melee/forged/sword,
+			/obj/item/melee/forged/katana,
+			/obj/item/melee/forged/dagger,
 			/obj/item/melee/sabre,
 			/obj/item/claymore,
 			/obj/item/melee/cleric_mace,

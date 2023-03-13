@@ -59,8 +59,8 @@
 	var/forge_fuel_weak = 0
 	/// How many seconds of strong fuel (coal) does the forge have left
 	var/forge_fuel_strong = 0
-	/// If the forge is capable of reagent forging or not
-	var/reagent_forging = FALSE
+	/// Tracks if we should put the cool little gold trim on the forge :3
+	var/maximum_powah = FALSE
 	/// Cooldown time for processing on the forge
 	COOLDOWN_DECLARE(forging_cooldown)
 	/// Is the forge in use or not? If true, prevents most interactions with the forge

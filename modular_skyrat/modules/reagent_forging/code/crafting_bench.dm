@@ -27,7 +27,6 @@
 		/datum/crafting_bench_recipe/plate_vest,
 		/datum/crafting_bench_recipe/plate_gloves,
 		/datum/crafting_bench_recipe/plate_boots,
-		/datum/crafting_bench_recipe/horse_shoes,
 		/datum/crafting_bench_recipe/ring,
 		/datum/crafting_bench_recipe/collar,
 		/datum/crafting_bench_recipe/handcuffs,
@@ -37,7 +36,6 @@
 		/datum/crafting_bench_recipe/coil,
 		/datum/crafting_bench_recipe/seed_mesh,
 		/datum/crafting_bench_recipe/centrifuge,
-		/datum/crafting_bench_recipe/bokken,
 		/datum/crafting_bench_recipe/bow,
 	)
 	/// Radial options for recipes in the allowed_choices list, populated by populate_radial_choice_list
