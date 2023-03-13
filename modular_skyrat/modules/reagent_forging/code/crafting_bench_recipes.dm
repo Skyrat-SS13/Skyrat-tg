@@ -52,14 +52,6 @@
 	resulting_item = /obj/item/clothing/shoes/forging_plate_boots
 	required_good_hits = 8
 
-/datum/crafting_bench_recipe/horse_shoes
-	recipe_name = "horse shoes"
-	recipe_requirements = list(
-		/obj/item/forging/complete/chain = 4,
-	)
-	resulting_item = /obj/item/clothing/shoes/horseshoe
-	required_good_hits = 8
-
 /datum/crafting_bench_recipe/ring
 	recipe_name = "ring"
 	recipe_requirements = list(
@@ -132,14 +124,6 @@
 	)
 	resulting_item = /obj/item/reagent_containers/cup/primitive_centrifuge
 	required_good_hits = 4
-
-/datum/crafting_bench_recipe/bokken
-	recipe_name = "bokken"
-	recipe_requirements = list(
-		/obj/item/stack/sheet/mineral/wood = 4,
-	)
-	resulting_item = /obj/item/forging/reagent_weapon/bokken
-	required_good_hits = 8
 
 /datum/crafting_bench_recipe/bow
 	recipe_name = "bow"

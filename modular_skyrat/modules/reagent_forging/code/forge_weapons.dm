@@ -206,21 +206,15 @@
 	slot_flags = ITEM_SLOT_BACK
 	max_integrity = 300
 
-/obj/item/shield/buckler/reagent_weapon/pavise/Initialize(mapload)
+/obj/item/shield/buckler/forged/pavise/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/two_handed, require_twohands = TRUE, force_wielded = 15)
 
-/obj/item/pickaxe/reagent_weapon
-	name = "reagent pickaxe"
+/obj/item/pickaxe/forged
+	name = "pickaxe"
 
-/obj/item/pickaxe/reagent_weapon/Initialize(mapload)
-	. = ..()
-
-/obj/item/shovel/reagent_weapon
-	name = "reagent shovel"
-
-/obj/item/shovel/reagent_weapon/Initialize(mapload)
-	. = ..()
+/obj/item/shovel/forged
+	name = "shovel"
 
 /obj/item/ammo_casing/caseless/arrow/wood/forged
 	desc = "An arrow made of wood, typically fired from a bow. It can be reinforced with sinew."

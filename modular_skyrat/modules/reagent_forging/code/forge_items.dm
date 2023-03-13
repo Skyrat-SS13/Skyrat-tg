@@ -190,55 +190,55 @@
 	name = "sword blade"
 	desc = "A sword blade, ready to get some wood for completion."
 	icon_state = "blade"
-	spawning_item = /obj/item/forging/reagent_weapon/sword
+	spawning_item = /obj/item/melee/forged_weapon/sword
 
 /obj/item/forging/complete/katana
 	name = "katana blade"
 	desc = "A katana blade, ready to get some wood for completion."
 	icon_state = "katanablade"
-	spawning_item = /obj/item/forging/reagent_weapon/katana
+	spawning_item = /obj/item/melee/forged_weapon/katana
 
 /obj/item/forging/complete/dagger
 	name = "dagger blade"
 	desc = "A dagger blade, ready to get some wood for completion."
 	icon_state = "daggerblade"
-	spawning_item = /obj/item/forging/reagent_weapon/dagger
+	spawning_item = /obj/item/melee/forged_weapon/dagger
 
 /obj/item/forging/complete/staff
 	name = "staff head"
 	desc = "A staff head, ready to get some wood for completion."
 	icon_state = "staffhead"
-	spawning_item = /obj/item/forging/reagent_weapon/staff
+	spawning_item = /obj/item/melee/forged_weapon/staff
 
 /obj/item/forging/complete/spear
 	name = "spear head"
 	desc = "A spear head, ready to get some wood for completion."
 	icon_state = "spearhead"
-	spawning_item = /obj/item/forging/reagent_weapon/spear
+	spawning_item = /obj/item/melee/forged_weapon/spear
 
 /obj/item/forging/complete/axe
 	name = "axe head"
 	desc = "An axe head, ready to get some wood for completion."
 	icon_state = "axehead"
-	spawning_item = /obj/item/forging/reagent_weapon/axe
+	spawning_item = /obj/item/melee/forged_weapon/axe
 
 /obj/item/forging/complete/hammer
 	name = "hammer head"
 	desc = "A hammer head, ready to get some wood for completion."
 	icon_state = "hammerhead"
-	spawning_item = /obj/item/forging/reagent_weapon/hammer
+	spawning_item = /obj/item/melee/forged_weapon/hammer
 
 /obj/item/forging/complete/pickaxe
 	name = "pickaxe head"
 	desc = "A pickaxe head, ready to get some wood for completion."
 	icon_state = "pickaxehead"
-	spawning_item = /obj/item/pickaxe/reagent_weapon
+	spawning_item = /obj/item/pickaxe/forged
 
 /obj/item/forging/complete/shovel
 	name = "shovel head"
 	desc = "A shovel head, ready to get some wood for completion."
 	icon_state = "shovelhead"
-	spawning_item = /obj/item/shovel/reagent_weapon
+	spawning_item = /obj/item/shovel/forged
 
 /obj/item/forging/complete/arrowhead
 	name = "arrowhead"
