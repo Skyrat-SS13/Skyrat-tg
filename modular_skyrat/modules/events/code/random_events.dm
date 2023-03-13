@@ -24,6 +24,7 @@
  * Abductors
  */
 /datum/round_event_control/abductor
+	max_occurrences = 1
 	weight = VERY_LOW_EVENT_FREQ
 
 /**
@@ -57,10 +58,6 @@
 	max_occurrences = 1
 	weight = LOW_EVENT_FREQ
 
-/datum/round_event_control/anomaly/anomaly_hallucination
-	max_occurrences = 1
-	weight = VERY_LOW_EVENT_FREQ
-
 // We have other intensities
 /datum/round_event_control/anomaly/anomaly_grav
 	max_occurrences = 0
@@ -68,6 +65,10 @@
 /datum/round_event_control/anomaly/anomaly_grav/high
 	max_occurrences = 1
 	weight = MED_EVENT_FREQ
+
+/datum/round_event_control/anomaly/anomaly_hallucination
+	max_occurrences = 1
+	weight = VERY_LOW_EVENT_FREQ
 
 /datum/round_event_control/anomaly/anomaly_pyro
 	max_occurrences = 1
@@ -80,11 +81,11 @@
 /**
  * Aurora Caelus
  *
- * Disabled: Barely even works, waste of a valuable slot
  * TODO: Make it not consume an event slot
  */
 /datum/round_event_control/aurora_caelus
-	max_occurrences = 0
+	max_occurrences = 1
+	weight = VERY_LOW_EVENT_FREQ
 
 /**
  * Blob
@@ -95,7 +96,7 @@
 	max_occurrences = 0
 
 /**
- * Blob
+ * Brain Trauma
  *
  * Disabled: Interrupting scenes and preventing roleplay by interaction with medba
  */
@@ -106,10 +107,11 @@
  * Brand Intelligence
  */
 /datum/round_event_control/brand_intelligence
+	max_occurrences = 2
 	weight = MED_EVENT_FREQ
 
 /**
- * Blob
+ * Bureaucratic Error
  *
  * Disabled: Too intrusive and should be staff-onl
  */
@@ -122,18 +124,21 @@
  * TODO: Make it not consume an event slot
  */
 /datum/round_event_control/camera_failure
+	max_occurrences = 1
 	weight = VERY_LOW_EVENT_FREQ
 
 /**
  * Carp Migration
  */
 /datum/round_event_control/carp_migration
+	max_occurrences = 2
 	weight = MED_EVENT_FREQ
 
 /**
  * Cortical Borers
  */
 /datum/round_event_control/cortical_borer
+	max_occurrences = 1
 	weight = LOW_EVENT_FREQ
 
 /**
@@ -150,19 +155,21 @@
  * Combined weight: 56
  */
 /datum/round_event_control/cme/minimal
+	max_occurrences = 1
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/cme/moderate
+	max_occurrences = 1
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/cme/extreme
+	max_occurrences = 1
 	weight = LOW_EVENT_FREQ
 	earliest_start = 105 MINUTES
-	max_occurrences = 1
 
 /datum/round_event_control/cme/unknown
-	weight = MED_EVENT_FREQ
 	max_occurrences = 1
+	weight = MED_EVENT_FREQ
 
 /**
  * Communications
@@ -170,12 +177,18 @@
  * Combined weight: 16
  */
 /datum/round_event_control/communications_blackout
+	max_occurrences = 2
 	weight = LOW_EVENT_FREQ
 
 /datum/round_event_control/processor_overload
+	max_occurrences = 2
 	weight = LOW_EVENT_FREQ
 
+/**
+ * Obsessed
+ */
 /datum/round_event_control/obsessed
+	max_occurrences = 1
 	weight = VERY_LOW_EVENT_FREQ
 
 /**
@@ -184,6 +197,7 @@
  * Combined weight: 44
  */
 /datum/round_event_control/disease_outbreak
+	max_occurrences = 1
 	weight = VERY_LOW_EVENT_FREQ
 
 /datum/round_event_control/disease_outbreak/advanced
@@ -191,9 +205,11 @@
 	max_occurrences = 2
 
 /datum/round_event_control/fake_virus
+	max_occurrences = 1
 	weight = VERY_LOW_EVENT_FREQ
 
 /datum/round_event_control/heart_attack
+	max_occurrences = 1
 	weight = VERY_LOW_EVENT_FREQ
 
 /datum/round_event_control/sentient_disease
@@ -205,45 +221,53 @@
  * Combined weight: 32
  */
 /datum/round_event_control/electrical_storm
+	max_occurrences = 2
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/grid_check
+	max_occurrences = 1
 	weight = MED_EVENT_FREQ
 
 /**
  * False Alarm
  */
 /datum/round_event_control/falsealarm
+	max_occurrences = 4
 	weight = LOW_EVENT_FREQ
 
 /**
  * Fugitives
  */
 /datum/round_event_control/fugitives
+	max_occurrences = 1
 	weight = LOW_EVENT_FREQ
 
 /**
  * Gravity Generator Blackout
  */
 /datum/round_event_control/gravity_generator_blackout
+	max_occurrences = 2
 	weight = MED_EVENT_FREQ
 
 /**
  * Grey Tide
  */
 /datum/round_event_control/grey_tide
+	max_occurrences = 2
 	weight = MED_EVENT_FREQ
 
 /**
  * Ion Storm
  */
 /datum/round_event_control/ion_storm
+	max_occurrences = 1
 	weight = MED_EVENT_FREQ
 
 /**
  * Immovable Rod
  */
 /datum/round_event_control/immovable_rod
+	max_occurrences = 2
 	weight = MED_EVENT_FREQ
 
 /**
@@ -252,6 +276,7 @@
  * TODO: Make it not consume an event slot
  */
 /datum/round_event_control/market_crash
+	max_occurrences = 1
 	weight = MIN_EVENT_FREQ
 
 /**
@@ -260,6 +285,7 @@
  * TODO: Make it not consume an event slot
  */
 /datum/round_event_control/mass_hallucination
+	max_occurrences = 1
 	weight = LOW_EVENT_FREQ
 
 /**
@@ -283,42 +309,50 @@
 	max_occurrences = 0
 
 /datum/round_event_control/meteor_wave/meaty
+	max_occurrences = 1
 	weight = MIN_EVENT_FREQ
 
 /datum/round_event_control/stray_meteor
+	max_occurrences = 1
 	weight = VERY_LOW_EVENT_FREQ
 
 /datum/round_event_control/space_dust
 	max_occurrences = 0
 
 /datum/round_event_control/space_dust/major_dust
+	max_occurrences = 1
 	weight = VERY_LOW_EVENT_FREQ
 
 /datum/round_event_control/sandstorm
+	max_occurrences = 1
 	weight = MED_EVENT_FREQ
 
 /**
  * Mice Migration
  */
 /datum/round_event_control/mice_migration
+	max_occurrences = 1
 	weight = LOW_EVENT_FREQ
 
 /**
  * Moldies
  */
 /datum/round_event_control/mold
+	max_occurrences = 1
 	weight = MED_EVENT_FREQ
 
 /**
  * Morph
  */
 /datum/round_event_control/morph
+	max_occurrences = 1
 	weight = LOW_EVENT_FREQ
 
 /**
  * Nightmare
  */
 /datum/round_event_control/nightmare
+	max_occurrences = 1
 	weight = MED_EVENT_FREQ
 
 /**
@@ -341,6 +375,7 @@
  * Syndicate Portal Storm
  */
 /datum/round_event_control/portal_storm_syndicate
+	max_occurrences = 3
 	weight = MED_EVENT_FREQ
 
 /**
@@ -358,6 +393,7 @@
  * Revenant
  */
 /datum/round_event_control/revenant
+	max_occurrences = 1
 	weight = LOW_EVENT_FREQ
 
 /**
@@ -369,12 +405,15 @@
 	max_occurrences = 0
 
 /datum/round_event_control/scrubber_clog/major
+	max_occurrences = 1
 	weight = LOW_EVENT_FREQ
 
 /datum/round_event_control/scrubber_clog/critical
+	max_occurrences = 1
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/scrubber_clog/strange
+	max_occurrences = 1
 	weight = LOW_EVENT_FREQ
 
 /**
@@ -386,15 +425,18 @@
 	max_occurrences = 0
 
 /datum/round_event_control/scrubber_overflow/threatening
+	max_occurrences = 1
 	weight = VERY_LOW_EVENT_FREQ
 
 /datum/round_event_control/scrubber_overflow/catastrophic
+	max_occurrences = 1
 	weight = VERY_LOW_EVENT_FREQ
 
 /**
  * Human-level Intelligence
  */
 /datum/round_event_control/sentience
+	max_occurrences = 2
 	weight = LOW_EVENT_FREQ
 
 /**
@@ -403,12 +445,14 @@
  * Combined weight: 24
  */
 /datum/round_event_control/shuttle_catastrophe
+	max_occurrences = 1
 	weight = LOW_EVENT_FREQ
 
 /datum/round_event_control/shuttle_insurance
 	max_occurrences = 0
 
 /datum/round_event_control/shuttle_loan
+	max_occurrences = 2
 	weight = MED_EVENT_FREQ
 
 /**
@@ -454,15 +498,18 @@
  * Combined weight: 24
  */
 /datum/round_event_control/stray_cargo
+	max_occurrences = 3
 	weight = LOW_EVENT_FREQ
 
 /datum/round_event_control/stray_cargo/syndicate
+	max_occurrences = 3
 	weight = MED_EVENT_FREQ
 
 /**
  * Supermatter Surge
  */
 /datum/round_event_control/supermatter_surge
+	max_occurrences = 1
 	weight = MED_EVENT_FREQ
 
 /**
@@ -471,6 +518,7 @@
  * Only runs on Tramstation, otherwise rolls a different event.
  */
 /datum/round_event_control/tram_malfunction
+	max_occurrences = 2
 	weight = VERY_HIGH_EVENT_FREQ
 
 /**
@@ -479,12 +527,14 @@
  * TODO: Make it not consume an event slot
  */
 /datum/round_event_control/wisdomcow
+	max_occurrences = 1
 	weight = MIN_EVENT_FREQ
 
 /**
  * Wormholes
  */
 /datum/round_event_control/wormholes
+	max_occurrences = 2
 	weight = MED_EVENT_FREQ
 
 #undef VERY_HIGH_EVENT_FREQ
