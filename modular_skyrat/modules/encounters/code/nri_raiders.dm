@@ -12,8 +12,8 @@ GLOBAL_VAR(first_officer)
 	threat_content = "Greetings %STATION, this is the %SHIPNAME dispatch outpost. \
 	Due to recent Imperial regulatory violations, such as %RESULT and many other smaller issues, your station has been fined %PAYOFF credits. \
 	Inadequate imperial police activity is currently present in your sector, thus the failure to comply might instead result in a police patrol dispatch \
-	for second attempt negotiations and close inspection. Novaya Rossiyskaya Imperiya collegial secretary out."
-	arrival_announcement = "Regulation-identified vessel approaching. Vessel ID tag is [pick(GLOB.phonetic_alphabet)]-[pick(GLOB.phonetic_alphabet)]-[pick(GLOB.phonetic_alphabet)]. \
+	for second attempt negotiations, sector police presence reinforcement and close-up inspections. Novaya Rossiyskaya Imperiya collegial secretary out."
+	arrival_announcement = "Regulation-identified vessel approaching. Vessel ID tag is %NUMBER1-%NUMBER2-%NUMBER3. \
 	Vessel Model: Potato Beetle, Flight ETA: three minutes minimal. Vessel is authorised by the international regulations to perform its duties. \
 	We're clear for close orbit. Friendly reminder not to measure the distance between the vessel and the destination location, nor install any tracking devices anywhere on board of the vessel or in its close vicinity, \
 	unless given permission to; not to approach it, unless given permission to; not to perform any aggressive actions, nor any preparations to do so, to the vessel or the commissioned crew, \
@@ -23,6 +23,9 @@ GLOBAL_VAR(first_officer)
 	response_received = "Should be it, thank you for cooperation. Novaya Rossiyskaya Imperiya collegial secretary out."
 	response_too_late = "Your response was very delayed. We have been instructed to send in the patrol ship for second attempt negotiations, stand by."
 	response_not_enough = "Your bank balance does not hold enough money at the moment or the system has been overriden. We are sending a patrol ship for second attempt negotiations, stand by."
+
+/datum/pirate_gang/nri_raiders/New()
+	. = ..()
 
 /datum/pirate_gang/nri_raiders/generate_message(payoff)
 	var/number = rand(1,99)
@@ -56,6 +59,9 @@ GLOBAL_VAR(first_officer)
 	built_threat_content = replacetext(built_threat_content, "%PAYOFF", payoff)
 	built_threat_content = replacetext(built_threat_content, "%RESULT", final_result)
 	built_threat_content = replacetext(built_threat_content, "%STATION", station_designation)
+	arrival_announcement = replacetext(arrival_announcement, "%NUMBER1", pick(GLOB.phonetic_alphabet))
+	arrival_announcement = replacetext(arrival_announcement, "%NUMBER2", pick(GLOB.phonetic_alphabet))
+	arrival_announcement = replacetext(arrival_announcement, "%NUMBER3", pick(GLOB.phonetic_alphabet))
 	return new /datum/comm_message(threat_title, built_threat_content, possible_answers)
 
 /datum/outfit/pirate/nri/post_equip(mob/living/carbon/human/equipped)
