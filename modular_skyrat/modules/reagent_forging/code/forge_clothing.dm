@@ -10,19 +10,17 @@
 	icon_state = "plate_vest"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	resistance_flags = FIRE_PROOF
-	skyrat_obj_flags = ANVIL_REPAIR
-	armor_type = /datum/armor/armor_forging_plate_armor
+	armor_type = /datum/armor/forged_armor
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 
-/datum/armor/armor_forging_plate_armor
+/datum/armor/forged_armor
 	melee = 40
-	bullet = 40
+	bullet = 30
 	fire = 50
-	wound = 30
+	wound = 20
 
 /obj/item/clothing/suit/armor/forging_plate_armor/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/armor_plate, 4)
 
 	allowed += /obj/item/forging/reagent_weapon
 
@@ -37,19 +35,8 @@
 	worn_icon_teshari = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing_teshari.dmi'
 	icon_state = "plate_gloves"
 	resistance_flags = FIRE_PROOF
-	skyrat_obj_flags = ANVIL_REPAIR
-	armor_type = /datum/armor/gloves_forging_plate_gloves
+	armor_type = /datum/armor/forged_armor
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
-
-/datum/armor/gloves_forging_plate_gloves
-	melee = 40
-	bullet = 40
-	fire = 50
-	wound = 30
-
-/obj/item/clothing/gloves/forging_plate_gloves/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/armor_plate, 4)
 
 // Helmets
 /obj/item/clothing/head/helmet/forging_plate_helmet
@@ -64,19 +51,8 @@
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	resistance_flags = FIRE_PROOF
 	flags_inv = null
-	skyrat_obj_flags = ANVIL_REPAIR
-	armor_type = /datum/armor/helmet_forging_plate_helmet
+	armor_type = /datum/armor/forged_armor
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
-
-/datum/armor/helmet_forging_plate_helmet
-	melee = 40
-	bullet = 40
-	fire = 50
-	wound = 30
-
-/obj/item/clothing/head/helmet/forging_plate_helmet/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/armor_plate, 4)
 
 // Boots
 /obj/item/clothing/shoes/forging_plate_boots
@@ -90,40 +66,10 @@
 	worn_icon_teshari = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing_teshari.dmi'
 	icon_state = "plate_boots"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
-	armor_type = /datum/armor/shoes_forging_plate_boots
+	armor_type = /datum/armor/forged_armor
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 	resistance_flags = FIRE_PROOF
-	skyrat_obj_flags = ANVIL_REPAIR
 	can_be_tied = FALSE
-
-/datum/armor/shoes_forging_plate_boots
-	melee = 20
-	bullet = 20
-
-/obj/item/clothing/shoes/forging_plate_boots/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/armor_plate, 2)
-
-/obj/item/clothing/shoes/horseshoe
-	name = "reagent horseshoe"
-	desc = "A pair of horseshoes made out of chains."
-	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_clothing.dmi'
-	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing.dmi'
-	icon_state = "horseshoe"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	armor_type = /datum/armor/shoes_horseshoe
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
-	resistance_flags = FIRE_PROOF
-	skyrat_obj_flags = ANVIL_REPAIR
-	can_be_tied = FALSE
-
-/datum/armor/shoes_horseshoe
-	melee = 20
-	bullet = 20
-
-/obj/item/clothing/shoes/horseshoe/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/armor_plate, 2)
 
 // Misc
 /obj/item/clothing/gloves/ring/reagent_clothing
@@ -133,14 +79,10 @@
 	worn_icon_state = "sring"
 	inhand_icon_state = null
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
-	skyrat_obj_flags = ANVIL_REPAIR
-
-/obj/item/clothing/gloves/ring/reagent_clothing/Initialize(mapload)
-	. = ..()
 
 /obj/item/clothing/neck/collar/reagent_clothing
-	name = "reagent collar"
-	desc = "A collar that is ready to be worn for certain individuals."
+	name = "collar"
+	desc = "A collar, hand made, you weren't thinking of wearing this were you?"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "collar_cyan"
@@ -149,16 +91,8 @@
 	slot_flags = ITEM_SLOT_NECK
 	w_class = WEIGHT_CLASS_SMALL
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
-	skyrat_obj_flags = ANVIL_REPAIR
-
-/obj/item/clothing/neck/collar/reagent_clothing/Initialize(mapload)
-	. = ..()
 
 /obj/item/restraints/handcuffs/reagent_clothing
 	name = "reagent handcuffs"
-	desc = "A pair of handcuffs that are ready to keep someone captive."
+	desc = "A pair of handcuffs."
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
-	skyrat_obj_flags = ANVIL_REPAIR
-
-/obj/item/restraints/handcuffs/reagent_clothing/Initialize(mapload)
-	. = ..()

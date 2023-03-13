@@ -90,26 +90,6 @@
 	)
 	/// List of possible choices for the selection radial
 	var/list/radial_choice_list = list()
-	/// Blacklist that contains reagents that weapons and armor are unable to be imbued with.
-	var/static/list/disallowed_reagents = typecacheof(list(
-		/datum/reagent/inverse/,
-		/datum/reagent/consumable/entpoly,
-		/datum/reagent/pax,
-		/datum/reagent/consumable/liquidelectricity/enriched,
-		/datum/reagent/teslium,
-		/datum/reagent/eigenstate,
-		/datum/reagent/drug/pcp,
-		/datum/reagent/consumable/cum,
-		/datum/reagent/consumable/femcum,
-		/datum/reagent/consumable/breast_milk,
-		/datum/reagent/toxin/acid,
-		/datum/reagent/phlogiston,
-		/datum/reagent/napalm,
-		/datum/reagent/thermite,
-		/datum/reagent/medicine/earthsblood,
-		/datum/reagent/medicine/ephedrine,
-		/datum/reagent/medicine/epinephrine,
-	))
 
 /obj/structure/reagent_forge/examine(mob/user)
 	. = ..()
@@ -160,8 +140,8 @@
 
 	. += span_notice("<br>[src] is currently [forge_temperature] degrees hot, going towards [target_temperature] degrees.<br>")
 
-	if(reagent_forging)
-		. += span_warning("[src] has a fine gold trim, it is ready to imbue chemicals into reagent objects.")
+	if(maximum_powah)
+		. += span_warning("[src] has a fine gold trim, construction is of the highest quality.")
 
 	return .
 
@@ -195,7 +175,7 @@
 	. = ..()
 	cut_overlays()
 
-	if(reagent_forging) // If we can do reagent forging, give the forge the gold trim
+	if(maximum_powah) // If we can do reagent forging, give the forge the gold trim
 		var/image/gold_overlay = image(icon = icon, icon_state = "forge_masterwork_trim")
 		add_overlay(gold_overlay)
 
@@ -228,10 +208,10 @@
 	return FALSE
 
 /// Gives the forge the ability to imbue reagents into things
-/obj/structure/reagent_forge/proc/create_reagent_forge()
-	if(reagent_forging) // If the forge can already do reagent forging, then we can skip the rest of this
+/obj/structure/reagent_forge/proc/make_that_trim_gold()
+	if(maximum_powah) // If the forge can already do reagent forging, then we can skip the rest of this
 		return
-	reagent_forging = TRUE
+	maximum_powah = TRUE
 	update_appearance()
 
 /// Creates both a fail message balloon alert, and sets in_use to false
@@ -394,7 +374,7 @@
 		if(SKILL_LEVEL_EXPERT)
 			if(!forced)
 				to_chat(user, span_notice("With just the right heat treating technique, metal could be made to accept reagents..."))
-			create_reagent_forge()
+			make_that_trim_gold()
 			temperature_loss_reduction = 3
 			minimum_target_temperature = 25
 			forge_level = FORGE_LEVEL_EXPERT
@@ -788,8 +768,13 @@
 	new /obj/item/stack/sheet/iron/ten(get_turf(src))
 	return ..()
 
-/obj/structure/reagent_forge/ready
-	forge_level = FORGE_LEVEL_LEGENDARY
+/obj/structure/reagent_forge/already_expert
+	forge_level = FORGE_LEVEL_EXPERT
+
+/obj/structure/reagent_forge/already_expert/Initialize(mapload)
+	. = ..()
+
+	upgrade_forge(forced = TRUE)
 
 /particles/smoke/mild
 	spawning = 1
