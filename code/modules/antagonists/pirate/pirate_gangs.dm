@@ -124,3 +124,6 @@ GLOBAL_LIST_INIT(pirate_gangs, init_pirate_gangs())
 	response_received = "You guys aren't so bad for being dormants. Next gore-fest goes to you guys. Peace!"
 	response_too_late = "Oh, now you think we're worth the money. Pathetic dormants."
 	response_not_enough = "You really shouldn't have messed with us. You're in for a psychic nightmare."
+
+/datum/pirate_gang/psykers/can_roll()
+	return FALSE
