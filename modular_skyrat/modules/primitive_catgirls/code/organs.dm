@@ -58,7 +58,6 @@
 // Eyes
 
 /obj/item/organ/internal/eyes/low_light_adapted
-	see_in_dark = NIGHTVISION_FOV_RANGE
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+	color_cutoffs = list(20, 10, 10)
 
 #undef GAS_TOLERANCE
