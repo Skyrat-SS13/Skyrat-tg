@@ -1,10 +1,6 @@
 #define ORGANS_DEFAULT_NAME "Default"
 #define LIMBS_DEFAULT_NAME "None"
 
-/datum/preference_middleware/limbs_and_markings/post_set_preference(mob/user, preference, value)
-	// preferences.character_preview_view.update_body()
-	. = ..()
-
 /datum/preference_middleware/limbs_and_markings
 	action_delegations = list(
 		"set_limb_aug" = PROC_REF(set_limb_aug),
