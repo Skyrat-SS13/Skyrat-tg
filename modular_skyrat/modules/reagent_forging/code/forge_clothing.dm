@@ -22,7 +22,7 @@
 /obj/item/clothing/suit/armor/forging_plate_armor/Initialize(mapload)
 	. = ..()
 
-	allowed += /obj/item/melee/forged
+	allowed += /obj/item/melee/forged_weapon
 
 // Gloves
 /obj/item/clothing/gloves/forging_plate_gloves
