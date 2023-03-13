@@ -43,7 +43,7 @@
 					/obj/item/clothing/mask/ballgag/choking = 8,
 					/obj/item/clothing/mask/muzzle/ring = 4,
 					/obj/item/clothing/head/domina_cap = 5,
-					/obj/item/clothing/head/helmet/space/deprivation_helmet = 5,
+					/obj/item/clothing/head/deprivation_helmet = 5,
 					/obj/item/clothing/head/costume/maid = 5,
 					/obj/item/clothing/glasses/blindfold/kinky = 5,
 					/obj/item/clothing/ears/kinky_headphones = 5,

@@ -83,7 +83,7 @@
 			cme_frequency_lower = CME_MODERATE_FREQUENCY_LOWER
 			cme_frequency_upper = CME_MODERATE_FREQUENCY_UPPER
 			start_when = rand(CME_MODERATE_START_LOWER, CME_MODERATE_START_UPPER)
-			end_when = start_when + rand(CME_MINIMAL_END, CME_EXTREME_END)
+			end_when = start_when + CME_MODERATE_END
 		if(CME_MINIMAL)
 			cme_frequency_lower = CME_MINIMAL_FREQUENCY_LOWER
 			cme_frequency_upper = CME_MINIMAL_FREQUENCY_UPPER
@@ -133,12 +133,12 @@
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_EXTREME)
-				SSsecurity_level.set_level(SEC_LEVEL_RED)
+				addtimer(CALLBACK(src, PROC_REF(event_minimum_security_level), SEC_LEVEL_ORANGE, TRUE, FALSE), (round((start_when * SSevents.wait) * 0.1, 0.1)) SECONDS)
 				priority_announce("Critical Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_ARMAGEDDON)
-				SSsecurity_level.set_level(SEC_LEVEL_GAMMA)
+				addtimer(CALLBACK(src, PROC_REF(event_minimum_security_level), SEC_LEVEL_GAMMA, TRUE, TRUE), (round((start_when * SSevents.wait) * 0.1, 0.1)) SECONDS)
 				priority_announce("Neutron Mass Ejection Detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((start_when * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All personnel should proceed to their nearest warpgate for evacuation, the Solar Federation has issued this mandatory alert.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 
@@ -150,6 +150,9 @@
 /datum/round_event/cme/proc/spawn_cme(turf/spawnpoint, intensity)
 	if(intensity == CME_UNKNOWN)
 		intensity = pick(CME_MINIMAL, CME_MODERATE, CME_EXTREME)
+		if(intensity == CME_EXTREME)
+			event_minimum_security_level(SEC_LEVEL_ORANGE, TRUE, FALSE)
+
 	var/area/loc_area_name = get_area(spawnpoint)
 	minor_announce("WARNING! [uppertext(intensity)] PULSE EXPECTED IN: [loc_area_name.name]", "Solar Flare Log:")
 	switch(intensity)
