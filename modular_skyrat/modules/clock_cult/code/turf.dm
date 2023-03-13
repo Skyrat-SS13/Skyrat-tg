@@ -1,6 +1,6 @@
 /turf/open/indestructible/reebe_void
 	name = "void"
-	desc = "A white, emptyw void, quite unlike anything you've seen before."
+	desc = "A white, empty void, quite unlike anything you've seen before."
 	icon_state = "reebemap"
 	layer = SPACE_LAYER
 	baseturfs = /turf/open/indestructible/reebe_void
