@@ -167,24 +167,20 @@
 	if(!SSticker.HasRoundStarted() || !loc)
 		return
 
-<<<<<<< HEAD
-	// SKYRAT EDIT ADDITION
-	if(is_banned_from(user.ckey, BAN_GHOST_ROLE_SPAWNER)) // Ghost role bans
-		to_chat(user, "Error, you are banned from playing ghost roles!")
-		return
-	if(restricted_species && !(user.client?.prefs?.read_preference(/datum/preference/choiced/species) in restricted_species))
-		var/incorrect_species = tgui_alert(user, "Current species preference incompatible, proceed with random appearance?", "Incompatible Species", list("Yes", "No"))
-		if(incorrect_species != "Yes")
-			return
-	// SKYRAT EDIT END
-=======
 	// We don't open the prompt more than once at a time.
 	if(LAZYFIND(ckeys_trying_to_spawn, user.ckey))
 		return
 
 	var/user_ckey = user.ckey // Just in case shenanigans happen, we always want to remove it from the list.
 	LAZYADD(ckeys_trying_to_spawn, user_ckey)
->>>>>>> 1c9990eba42 (Fixes the issues with ghost role spawners being able to spawn userless bodies (#73636))
+
+	// SKYRAT EDIT ADDITION
+	if(restricted_species && !(user.client?.prefs?.read_preference(/datum/preference/choiced/species) in restricted_species))
+		var/incorrect_species = tgui_alert(user, "Current species preference incompatible, proceed with random appearance?", "Incompatible Species", list("Yes", "No"))
+		if(incorrect_species != "Yes")
+			LAZYREMOVE(ckeys_trying_to_spawn, user_ckey)
+			return
+	// SKYRAT EDIT END
 
 	if(prompt_ghost)
 		var/prompt = "Become [prompt_name]?"
@@ -208,6 +204,12 @@
 		to_chat(user, span_warning("You are banned from this role!"))
 		LAZYREMOVE(ckeys_trying_to_spawn, user_ckey)
 		return
+	// SKYRAT EDIT ADDITION
+	if(is_banned_from(user.ckey, BAN_GHOST_ROLE_SPAWNER)) // Ghost role bans
+		to_chat(user, span_warning("Error, you are banned from playing ghost roles!"))
+		LAZYREMOVE(ckeys_trying_to_spawn, user_ckey)
+		return
+	// SKYRAT EDIT END
 	if(!allow_spawn(user, silent = FALSE))
 		LAZYREMOVE(ckeys_trying_to_spawn, user_ckey)
 		return
