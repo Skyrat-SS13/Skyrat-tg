@@ -123,8 +123,7 @@
 	desc = "An axe especially balanced for throwing and embedding into fleshy targets. Nonetheless useful as a traditional melee tool."
 
 	force = 15
-	wound_bonus = 10
-	bare_wound_bonus = 25
+	bare_wound_bonus = 20
 	throwforce = 18
 	throw_speed = 4
 	embedding = list("impact_pain_mult" = 2, "remove_pain_mult" = 4, "jostle_chance" = 2.5)
