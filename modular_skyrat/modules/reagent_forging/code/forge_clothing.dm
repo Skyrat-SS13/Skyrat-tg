@@ -23,7 +23,6 @@
 /obj/item/clothing/suit/armor/forging_plate_armor/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 4)
-	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_OCLOTHING)
 
 	allowed += /obj/item/forging/reagent_weapon
 
@@ -51,7 +50,6 @@
 /obj/item/clothing/gloves/forging_plate_gloves/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 4)
-	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_GLOVES)
 
 // Helmets
 /obj/item/clothing/head/helmet/forging_plate_helmet
@@ -79,7 +77,6 @@
 /obj/item/clothing/head/helmet/forging_plate_helmet/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 4)
-	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_HEAD)
 
 // Boots
 /obj/item/clothing/shoes/forging_plate_boots
@@ -106,7 +103,6 @@
 /obj/item/clothing/shoes/forging_plate_boots/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 2)
-	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_FEET)
 
 /obj/item/clothing/shoes/horseshoe
 	name = "reagent horseshoe"
@@ -128,7 +124,6 @@
 /obj/item/clothing/shoes/horseshoe/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 2)
-	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_FEET)
 
 // Misc
 /obj/item/clothing/gloves/ring/reagent_clothing
@@ -142,7 +137,6 @@
 
 /obj/item/clothing/gloves/ring/reagent_clothing/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_GLOVES)
 
 /obj/item/clothing/neck/collar/reagent_clothing
 	name = "reagent collar"
@@ -159,7 +153,6 @@
 
 /obj/item/clothing/neck/collar/reagent_clothing/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_NECK)
 
 /obj/item/restraints/handcuffs/reagent_clothing
 	name = "reagent handcuffs"
@@ -169,4 +162,3 @@
 
 /obj/item/restraints/handcuffs/reagent_clothing/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_HANDCUFFED)

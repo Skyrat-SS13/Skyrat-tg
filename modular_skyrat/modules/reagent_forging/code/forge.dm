@@ -438,14 +438,6 @@
 		smelt_ore(attacking_item, user)
 		return TRUE
 
-	if(attacking_item.GetComponent(/datum/component/reagent_weapon))
-		handle_weapon_imbue(attacking_item, user)
-		return TRUE
-
-	if(attacking_item.GetComponent(/datum/component/reagent_clothing))
-		handle_clothing_imbue(attacking_item, user)
-		return TRUE
-
 	if(istype(attacking_item, /obj/item/ceramic))
 		handle_ceramics(attacking_item, user)
 		return TRUE
@@ -468,7 +460,7 @@
 
 	if(!user.transferItemToLoc(tray, src, silent = FALSE))
 		return
-		
+
 	// need to send the right signal for each item in the tray
 	for(var/obj/item/baked_item in tray.contents)
 		SEND_SIGNAL(baked_item, COMSIG_ITEM_OVEN_PLACED_IN, src, user)
@@ -554,86 +546,6 @@
 	in_use = FALSE
 	qdel(ore_item)
 	return
-
-/// Handles weapon reagent imbuing
-/obj/structure/reagent_forge/proc/handle_weapon_imbue(obj/attacking_item, mob/living/user)
-	in_use = TRUE
-	balloon_alert_to_viewers("imbuing...")
-
-	var/obj/item/attacking_weapon = attacking_item
-
-	var/datum/component/reagent_weapon/weapon_component = attacking_weapon.GetComponent(/datum/component/reagent_weapon)
-	if(!weapon_component)
-		fail_message(user, "cannot imbue")
-		return
-
-	if(length(weapon_component.imbued_reagent))
-		fail_message(user, "already imbued")
-		return
-
-	if(!do_after(user, 10 SECONDS, target = src))
-		fail_message(user, "stopped imbuing")
-		return
-
-	for(var/datum/reagent/weapon_reagent as anything in attacking_weapon.reagents.reagent_list)
-		if(weapon_reagent.volume < MINIMUM_IMBUING_REAGENT_AMOUNT)
-			attacking_weapon.reagents.remove_all_type(weapon_reagent.type)
-			continue
-
-		if(is_type_in_typecache(weapon_reagent, disallowed_reagents))
-			balloon_alert(user, "cannot imbue with [weapon_reagent.name]")
-			attacking_weapon.reagents.remove_all_type(weapon_reagent.type)
-			continue
-
-		weapon_component.imbued_reagent += weapon_reagent.type
-		attacking_weapon.name = "[weapon_reagent.name] [attacking_weapon.name]"
-
-	attacking_weapon.color = mix_color_from_reagents(attacking_weapon.reagents.reagent_list)
-	balloon_alert_to_viewers("imbued [attacking_weapon]")
-	user.mind.adjust_experience(/datum/skill/smithing, 60)
-	playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
-	in_use = FALSE
-	return TRUE
-
-/// Handles clothing imbuing, extremely similar to weapon imbuing but not in the same proc because of how uhh... goofy the way this has to be done is
-/obj/structure/reagent_forge/proc/handle_clothing_imbue(obj/attacking_item, mob/living/user)
-	in_use = TRUE
-	balloon_alert_to_viewers("imbuing...")
-
-	var/obj/item/attacking_clothing = attacking_item
-
-	var/datum/component/reagent_clothing/clothing_component = attacking_clothing.GetComponent(/datum/component/reagent_clothing)
-	if(!clothing_component)
-		fail_message(user, "cannot imbue")
-		return
-
-	if(length(clothing_component.imbued_reagent))
-		fail_message(user, "already imbued")
-		return
-
-	if(!do_after(user, 10 SECONDS, target = src))
-		fail_message(user, "stopped imbuing")
-		return
-
-	for(var/datum/reagent/clothing_reagent as anything in attacking_clothing.reagents.reagent_list)
-		if(clothing_reagent.volume < MINIMUM_IMBUING_REAGENT_AMOUNT)
-			attacking_clothing.reagents.remove_all_type(clothing_reagent.type)
-			continue
-
-		if(is_type_in_typecache(clothing_reagent, disallowed_reagents))
-			balloon_alert(user, "cannot imbue with [clothing_reagent.name]")
-			attacking_clothing.reagents.remove_all_type(clothing_reagent.type)
-			continue
-
-		clothing_component.imbued_reagent += clothing_reagent.type
-		attacking_clothing.name = "[clothing_reagent.name] [attacking_clothing.name]"
-
-	attacking_clothing.color = mix_color_from_reagents(attacking_clothing.reagents.reagent_list)
-	balloon_alert_to_viewers("imbued [attacking_clothing]")
-	user.mind.adjust_experience(/datum/skill/smithing, 60)
-	playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
-	in_use = FALSE
-	return TRUE
 
 /// Sets ceramic items from their unusable state into their finished form
 /obj/structure/reagent_forge/proc/handle_ceramics(obj/attacking_item, mob/living/user)
