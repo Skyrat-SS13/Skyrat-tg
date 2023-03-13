@@ -69,12 +69,13 @@
 // The spear and the staff will be hand in hand for melee functionality, able to be two handed for more damage, the difference is what type of wounds they deal
 /obj/item/melee/forged_weapon/staff
 	name = "staff"
-	desc = "A staff most notably capable of breaking someone's shins and being held with two hands."
+	desc = "A staff most notably capable of breaking someone's shins and being held with two hands. The long staff also happens to make a good platform for blocking with."
 
 	force = 10
 	sharpness = NONE
 	wound_bonus = 10
 	bare_wound_bonus = 15
+	block_chance = 25
 
 	icon_state = "staff"
 	inhand_icon_state = "staff"
