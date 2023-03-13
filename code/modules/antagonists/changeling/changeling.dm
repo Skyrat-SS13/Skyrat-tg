@@ -343,7 +343,7 @@
 	var/cap_to = isnum(override_cap) ? override_cap : total_chem_storage
 	chem_charges = clamp(chem_charges + amount, 0, cap_to)
 
-	lingchemdisplay.maptext = FORMAT_CHEM_CHARGES_TEXT(chem_charges)
+	lingchemdisplay?.maptext = FORMAT_CHEM_CHARGES_TEXT(chem_charges)
 
 /*
  * Remove changeling powers from the current Changeling's purchased_powers list.
@@ -414,16 +414,32 @@
 		to_chat(owner.current, span_warning("We lack the energy to evolve new abilities right now!"))
 		return FALSE
 
-	var/datum/action/changeling/new_action = new sting_path()
+	var/success = give_power(sting_path)
+	if(success)
+		genetic_points -= initial(sting_path.dna_cost)
+	return success
+
+/**
+ * Gives a passed changeling power datum to the player
+ *
+ * Is passed a path to a changeling power, and applies it to the user.
+ * If successful, we return TRUE, otherwise not.
+ *
+ * Arguments:
+ * * power_path - The path of the power we will be giving to our attached player.
+ */
+
+/datum/antagonist/changeling/proc/give_power(power_path)
+	var/datum/action/changeling/new_action = new power_path()
 
 	if(!new_action)
 		to_chat(owner.current, "This is awkward. Changeling power purchase failed, please report this bug to a coder!")
-		CRASH("Changeling purchase_power was unable to create a new changeling action for path [sting_path]!")
+		CRASH("Changeling give_power was unable to grant a new changeling action for path [power_path]!")
 
-	genetic_points -= new_action.dna_cost
-	purchased_powers[sting_path] = new_action
+	purchased_powers[power_path] = new_action
 	new_action.on_purchase(owner.current) // Grant() is ran in this proc, see changeling_powers.dm.
 	log_changeling_power("[key_name(owner)] adapted the [new_action] power")
+
 	return TRUE
 
 /*
@@ -545,8 +561,8 @@
 	new_profile.grad_style = LAZYLISTDUPLICATE(target.grad_style)
 	new_profile.grad_color = LAZYLISTDUPLICATE(target.grad_color)
 	new_profile.physique = target.physique
-	new_profile.scream_type = target.selected_scream.type
-	new_profile.laugh_type = target.selected_laugh.type
+	new_profile.scream_type = target.selected_scream?.type || /datum/scream_type/none
+	new_profile.laugh_type = target.selected_laugh?.type || /datum/laugh_type/none
 	new_profile.age = target.age
 	for(var/datum/quirk/target_quirk in target.quirks)
 		LAZYADD(new_profile.quirks, new target_quirk.type)
@@ -589,6 +605,7 @@
 
 		// SKYRAT EDIT START
 		new_profile.worn_icon_digi_list[slot] = clothing_item.worn_icon_digi
+		new_profile.worn_icon_monkey_list[slot] = clothing_item.worn_icon_monkey
 		new_profile.worn_icon_teshari_list[slot] = clothing_item.worn_icon_teshari
 		new_profile.worn_icon_vox_list[slot] = clothing_item.worn_icon_vox
 		new_profile.supports_variations_flags_list[slot] = clothing_item.supports_variations_flags
@@ -891,6 +908,7 @@
 
 		// SKYRAT EDIT START
 		new_flesh_item.worn_icon_digi = chosen_profile.worn_icon_digi_list[slot]
+		new_flesh_item.worn_icon_monkey = chosen_profile.worn_icon_monkey_list[slot]
 		new_flesh_item.worn_icon_teshari = chosen_profile.worn_icon_teshari_list[slot]
 		new_flesh_item.worn_icon_vox = chosen_profile.worn_icon_vox_list[slot]
 		new_flesh_item.supports_variations_flags = chosen_profile.supports_variations_flags_list[slot]
@@ -971,6 +989,7 @@
 	var/list/grad_color = list(null, null)
 	var/physique
 	var/list/worn_icon_digi_list = list()
+	var/list/worn_icon_monkey_list = list()
 	var/list/worn_icon_teshari_list = list()
 	var/list/worn_icon_vox_list = list()
 	var/list/supports_variations_flags_list = list()
@@ -1022,6 +1041,7 @@
 	new_profile.grad_color = LAZYLISTDUPLICATE(grad_color)
 	new_profile.physique = physique
 	new_profile.worn_icon_digi_list = worn_icon_digi_list.Copy()
+	new_profile.worn_icon_monkey_list = worn_icon_monkey_list.Copy()
 	new_profile.worn_icon_teshari_list = worn_icon_teshari_list.Copy()
 	new_profile.worn_icon_vox_list = worn_icon_vox_list.Copy()
 	new_profile.supports_variations_flags_list = supports_variations_flags_list.Copy()
@@ -1116,9 +1136,26 @@
 		You aren't as strong as a normal changeling, as you are newly born."))
 
 
+/datum/antagonist/changeling/space
+	name = "\improper Space Changeling"
+
+/datum/antagonist/changeling/space/get_preview_icon()
+	var/icon/final_icon = render_preview_outfit(/datum/outfit/changeling_space)
+	return finish_preview_icon(final_icon)
+
+/datum/antagonist/changeling/space/greet()
+	to_chat(src, span_changeling("Our mind stirs to life, from the depths of an endless slumber..."))
+
 /datum/outfit/changeling
 	name = "Changeling"
 
 	head = /obj/item/clothing/head/helmet/changeling
 	suit = /obj/item/clothing/suit/armor/changeling
+	l_hand = /obj/item/melee/arm_blade
+
+/datum/outfit/changeling_space
+	name = "Changeling (Space)"
+
+	head = /obj/item/clothing/head/helmet/space/changeling
+	suit = /obj/item/clothing/suit/space/changeling
 	l_hand = /obj/item/melee/arm_blade

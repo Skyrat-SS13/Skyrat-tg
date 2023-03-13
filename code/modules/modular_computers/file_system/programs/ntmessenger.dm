@@ -108,7 +108,6 @@
 	. = ..()
 	if(.)
 		return
-
 	switch(action)
 		if("PDA_ringSet")
 			var/new_ringtone = tgui_input_text(usr, "Enter a new ringtone", "Ringtone", ringtone, MESSENGER_RINGTONE_MAX_LENGTH)
@@ -220,7 +219,7 @@
 	return data
 
 /datum/computer_file/program/messenger/ui_data(mob/user)
-	var/list/data = get_header_data()
+	var/list/data = list()
 
 	data["messages"] = messages
 	data["messengers"] = ScrubMessengerList()
@@ -251,7 +250,7 @@
 
 	if (!input_message || !sending_and_receiving)
 		return
-	if(!user.canUseTopic(computer, be_close = TRUE))
+	if(!user.can_perform_action(computer))
 		return
 	return sanitize(input_message)
 
@@ -423,7 +422,7 @@
 	if(computer.active_program != src)
 		if(!computer.open_program(usr, src))
 			return
-	if(!href_list["close"] && usr.canUseTopic(computer, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
+	if(!href_list["close"] && usr.can_perform_action(computer, FORBID_TELEKINESIS_REACH))
 		switch(href_list["choice"])
 			if("Message")
 				send_message(usr, list(locate(href_list["target"])))

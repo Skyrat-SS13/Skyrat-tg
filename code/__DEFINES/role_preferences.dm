@@ -25,6 +25,7 @@
 #define ROLE_ALIEN "Xenomorph"
 #define ROLE_BLOB "Blob"
 #define ROLE_BLOB_INFECTION "Blob Infection"
+#define ROLE_CHANGELING_MIDROUND "Changeling (Midround)"
 #define ROLE_FUGITIVE "Fugitive"
 #define ROLE_LONE_OPERATIVE "Lone Operative"
 #define ROLE_MALF_MIDROUND "Malf AI (Midround)"
@@ -40,9 +41,9 @@
 #define ROLE_SPIDER "Spider"
 #define ROLE_WIZARD_MIDROUND "Wizard (Midround)"
 //SKYRAT EDIT START
-#define ROLE_LONE_INFILTRATOR "Lone Infiltrator"
 #define ROLE_BORER "Borer"
 #define ROLE_DRIFTING_CONTRACTOR "Drifting Contractor"
+#define ROLE_LONE_INFILTRATOR "Lone Infiltrator"
 #define ROLE_MUTANT "Mutated Abomination"
 // SKYRAT EDIT END
 
@@ -106,7 +107,13 @@
 #define ROLE_BATTLECRUISER_CREW "Battlecruiser Crew"
 #define ROLE_BATTLECRUISER_CAPTAIN "Battlecruiser Captain"
 #define ROLE_VENUSHUMANTRAP "Venus Human Trap"
-
+//SKYRAT EDIT START
+#define ROLE_BLACK_MARKET_DEALER "Black Market Dealer"
+#define ROLE_DS2 "DS2 Syndicate"
+#define ROLE_FREIGHTER_CREW "Freighter Crew"
+#define ROLE_GHOST_CAFE "Ghost Cafe Visitor"
+#define ROLE_PORT_TARKON "Port Tarkon Survivor"
+//SKYRAT EDIT END
 
 /// This defines the antagonists you can operate with in the settings.
 /// Keys are the antagonist, values are the number of days since the player's
@@ -132,6 +139,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_ALIEN = 0,
 	ROLE_BLOB = 0,
 	ROLE_BLOB_INFECTION = 0,
+	ROLE_CHANGELING_MIDROUND = 0,
 	ROLE_FUGITIVE = 0,
 	ROLE_LONE_OPERATIVE = 14,
 	ROLE_MALF_MIDROUND = 0,
