@@ -38,10 +38,10 @@
 		return
 
 	var/selection = tgui_input_list(user, "Select an item to create at the forge.", "Forging", craft_possibilities)
-	
+
 	if(!selection)
 		return
-		
+
 	var/datum/tinker_cache_item/chosen_item = craft_possibilities[selection]
 
 	if(!can_interact(user) || !anchored || depowered || !chosen_item)
@@ -51,7 +51,7 @@
 		to_chat(user, span_brass("This needs to be connected to a transmission sigil!"))
 		return
 
-	if(!check_power(initial(chosen_item.power_use)))
+	if(!use_power(initial(chosen_item.power_use)))
 		to_chat(user, span_brass("You need more power to forge this item."))
 		return
 
@@ -61,7 +61,7 @@
 	new crafting_item(get_turf(src))
 	playsound(src, 'sound/machines/clockcult/steam_whoosh.ogg', 50)
 
-	to_chat(user, span_brass("You craft a [crafting_item] to near perfection, [src] cooling down."))
+	to_chat(user, span_brass("You craft [initial(chosen_item.name)] to near perfection, [src] cooling down."))
 
 
 // Assemble a list of subtype tinker cache datums

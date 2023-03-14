@@ -10,6 +10,7 @@
 	fail_color = "#525a80"
 	looping = TRUE
 
+
 /obj/structure/destructible/clockwork/sigil/vitality/can_affect(mob/living/affected_mob)
 	if(affected_mob.stat == DEAD)
 		return FALSE
@@ -24,6 +25,7 @@
 		return FALSE
 
 	return TRUE
+
 
 /obj/structure/destructible/clockwork/sigil/vitality/apply_effects(mob/living/affected_mob)
 	. = ..()
@@ -49,10 +51,20 @@
 		affected_mob.death()
 		playsound(loc, 'sound/magic/exit_blood.ogg', 60)
 		to_chat(affected_mob, span_clockred("The last of your life is drained away..."))
-		send_clock_message(null, "[affected_mob] has had their vitality drained by [src], rejoice!", "<span class='clockred'>")
+		check_special_role(affected_mob)
 		GLOB.clock_vitality += (affected_mob.client ? 30 : 3) // 100 (for clients) total in the ideal situation, since it'll take 7 pulses to go from full to crit
 		return
 
 	if(affected_mob.client)
 		affected_mob.visible_message(span_clockred("[affected_mob] looks weak as the color fades from their body."), span_clockred("You feel your soul faltering..."))
 		GLOB.clock_vitality += (affected_mob.client ? 10 : 1) // Monkey or whatever? You get jackshit
+
+
+/// Checks the role of whoever was killed by the vitality sigil, and does any special code if needed.
+/obj/structure/destructible/clockwork/sigil/vitality/proc/check_special_role(mob/living/affected_mob)
+	if(IS_CULTIST(affected_mob))
+		send_clock_message(null, "The dog of Nar'sie, [affected_mob] has had their vitality drained, rejoice!", "<span class='clockred'>")
+		spawn_reebe(src)
+	else
+		send_clock_message(null, "[affected_mob] has had their vitality drained by [src], rejoice!", "<span class='clockred'>")
+
