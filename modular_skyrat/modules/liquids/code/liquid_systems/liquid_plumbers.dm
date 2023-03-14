@@ -315,7 +315,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/plumbing/floor_pump/output/on/supply,
 		/obj/machinery/plumbing/disposer = 10,
 		/obj/machinery/plumbing/floor_pump/input = 20,
 		/obj/machinery/plumbing/floor_pump/output = 20,
-		/obj/structure/drain,
+		/obj/structure/drain = 5,
 	)
 
 // Helpers for maps
