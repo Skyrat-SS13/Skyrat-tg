@@ -699,7 +699,13 @@
 
 /obj/item/clothing/shoes/chameleon/Initialize(mapload)
 	. = ..()
+<<<<<<< HEAD
 	create_storage(type = /datum/storage/pockets/shoes)
+=======
+
+	create_storage(storage_type = /datum/storage/pockets/shoes)
+
+>>>>>>> 33d9a0338f1 (Reworks trashbags slightly (#73761))
 	chameleon_action = new(src)
 	chameleon_action.chameleon_type = /obj/item/clothing/shoes
 	chameleon_action.chameleon_name = "Shoes"

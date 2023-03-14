@@ -64,7 +64,12 @@
 
 /obj/item/storage/backpack/holding/Initialize(mapload)
 	. = ..()
+<<<<<<< HEAD
 	create_storage(max_specific_storage = WEIGHT_CLASS_GIGANTIC, max_total_storage = 35, max_slots = 30, type = /datum/storage/bag_of_holding)
+=======
+
+	create_storage(max_specific_storage = WEIGHT_CLASS_GIGANTIC, max_total_storage = 35, max_slots = 30, storage_type = /datum/storage/bag_of_holding)
+>>>>>>> 33d9a0338f1 (Reworks trashbags slightly (#73761))
 	atom_storage.allow_big_nesting = TRUE
 
 /obj/item/storage/backpack/holding/suicide_act(mob/living/user)
