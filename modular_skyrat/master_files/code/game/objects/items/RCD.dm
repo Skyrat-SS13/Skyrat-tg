@@ -46,5 +46,6 @@
 		/obj/machinery/plumbing/grinder_chemical = 30,
 		/obj/machinery/plumbing/liquid_pump = 35,
 		/obj/machinery/plumbing/splitter = 5,
-		/obj/machinery/plumbing/sender = 20
+		/obj/machinery/plumbing/sender = 20,
+		/obj/structure/drain = 10,
 	)
