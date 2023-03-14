@@ -56,10 +56,10 @@
 		else
 			uplink_handler = uplink.uplink_handler
 		uplink_handler.primary_objectives = objectives
-		uplink_handler.has_progression = progression_enabled
+		uplink_handler.has_progression = TRUE
 		SStraitor.register_uplink_handler(uplink_handler)
 
-		uplink_handler.has_objectives = progression_enabled //SKYRAT EDIT
+		uplink_handler.has_objectives = TRUE
 		uplink_handler.generate_objectives()
 
 		if(uplink_handler.progression_points < SStraitor.current_global_progression)
@@ -75,7 +75,8 @@
 					uplink_items += item
 					continue
 		uplink_handler.extra_purchasable += create_uplink_sales(uplink_sale_count, /datum/uplink_category/discounts, 1, uplink_items)
-	if(give_objectives && progression_enabled) //SKYRAT EDIT - progression_enabled
+
+	if(give_objectives)
 		forge_traitor_objectives()
 		forge_ending_objective()
 
@@ -290,16 +291,11 @@
 	if(objectives.len) //If the traitor had no objectives, don't need to process this.
 		var/count = 1
 		for(var/datum/objective/objective in objectives)
-			// SKYRAT EDIT START - No greentext
-			/*
 			if(objective.check_completion())
 				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] [span_greentext("Success!")]"
 			else
 				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] [span_redtext("Fail.")]"
 				traitor_won = FALSE
-			*/
-			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text]"
-			// SKYRAT EDIT END - No greentext
 			count++
 		if(uplink_handler.final_objective)
 			objectives_text += "<br>[span_greentext("[traitor_won ? "Additionally" : "However"], the final objective \"[uplink_handler.final_objective]\" was completed!")]"
@@ -317,15 +313,8 @@
 	result += objectives_text
 
 	if(uplink_handler)
-		var/completed_objectives_text = "Completed Uplink Objectives: "
-		for(var/datum/traitor_objective/objective as anything in uplink_handler.completed_objectives)
-			if(objective.objective_state == OBJECTIVE_STATE_COMPLETED)
-				completed_objectives_text += "<br><B>[objective.name]</B> - ([objective.telecrystal_reward] TC, [DISPLAY_PROGRESSION(objective.progression_reward)] Reputation)"
-		result += completed_objectives_text
 		result += "<br>The traitor had a total of [DISPLAY_PROGRESSION(uplink_handler.progression_points)] Reputation and [uplink_handler.telecrystals] Unused Telecrystals."
 
-	// SKYRAT EDIT REMOVAL
-	/*
 	var/special_role_text = lowertext(name)
 
 	if(traitor_won)
@@ -333,7 +322,6 @@
 	else
 		result += span_redtext("The [special_role_text] has failed!")
 		SEND_SOUND(owner.current, 'sound/ambience/ambifailure.ogg')
-	*/
 
 	return result.Join("<br>")
 
