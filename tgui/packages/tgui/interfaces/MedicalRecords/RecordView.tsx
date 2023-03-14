@@ -13,11 +13,7 @@ export const MedicalRecordView = (props, context) => {
   if (!foundRecord) return <NoticeBox>No record selected.</NoticeBox>;
 
   const { act, data } = useBackend<MedicalRecordData>(context);
-<<<<<<< HEAD
-  const { assigned_view } = data;
-=======
   const { assigned_view, physical_statuses, mental_statuses, station_z } = data;
->>>>>>> 73172f88365 (Re-implements Physical and Mental statuses in crewmember Medical Records (#73882))
 
   const { min_age, max_age } = data;
 
@@ -34,10 +30,10 @@ export const MedicalRecordView = (props, context) => {
     name,
     quirk_notes,
     rank,
-    species,
     // SKYRAT EDIT START - RP Records
     past_medical_records,
     // SKYRAT EDIT END
+    species,
   } = foundRecord;
 
   const minor_disabilities_array = getQuirkStrings(minor_disabilities);
@@ -62,6 +58,7 @@ export const MedicalRecordView = (props, context) => {
             <Button.Confirm
               content="Delete"
               icon="trash"
+              disabled={!station_z}
               onClick={() => act('expunge_record', { crew_ref: crew_ref })}
               tooltip="Expunge record data."
             />
