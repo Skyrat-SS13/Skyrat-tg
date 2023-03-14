@@ -4,7 +4,7 @@ GLOBAL_LIST_INIT(pref_checked_clothes, list(
 	/obj/item/clothing/mask/ballgag/choking,
 	/obj/item/clothing/mask/gas/bdsm_mask,
 	/obj/item/clothing/suit/corset,
-	/obj/item/clothing/head/helmet/space/deprivation_helmet,
+	/obj/item/clothing/head/deprivation_helmet,
 	/obj/item/clothing/glasses/hypno,
 	/obj/item/clothing/neck/kink_collar,
 	/obj/item/clothing/neck/mind_collar,
