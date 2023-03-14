@@ -34,6 +34,7 @@
  */
 /datum/round_event_control/alien_infestation
 	max_occurrences = 0
+	intensity_restriction = TRUE
 
 /**
  * Anomalies
@@ -94,6 +95,7 @@
  */
 /datum/round_event_control/blob
 	max_occurrences = 0
+	intensity_restriction = TRUE
 
 /**
  * Brain Trauma
@@ -148,6 +150,7 @@
  */
 /datum/round_event_control/changeling
 	max_occurrences = 0
+	intensity_restriction = TRUE
 
 /**
  * CME (Coronal Mass Ejection)
@@ -159,17 +162,20 @@
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/cme/moderate
-	max_occurrences = 0
+	max_occurrences = 1
 	weight = MED_EVENT_FREQ
+	intensity_restriction = TRUE
 
 /datum/round_event_control/cme/extreme
 	max_occurrences = 1
 	weight = LOW_EVENT_FREQ
 	earliest_start = 105 MINUTES
+	intensity_restriction = TRUE
 
 /datum/round_event_control/cme/unknown
 	max_occurrences = 1
 	weight = MED_EVENT_FREQ
+	intensity_restriction = TRUE
 
 /**
  * Communications
@@ -199,10 +205,12 @@
 /datum/round_event_control/disease_outbreak
 	max_occurrences = 1
 	weight = VERY_LOW_EVENT_FREQ
+	intensity_restriction = TRUE
 
 /datum/round_event_control/disease_outbreak/advanced
 	max_occurrences = 2
 	weight = HIGH_EVENT_FREQ
+	intensity_restriction = TRUE
 
 /datum/round_event_control/fake_virus
 	max_occurrences = 1
@@ -214,6 +222,7 @@
 
 /datum/round_event_control/sentient_disease
 	max_occurrences = 0
+	intensity_restriction = TRUE
 
 /**
  * Electricity Events
@@ -269,6 +278,7 @@
 /datum/round_event_control/immovable_rod
 	max_occurrences = 2
 	weight = MED_EVENT_FREQ
+	intensity_restriction = TRUE
 
 /**
  * Market Crash
@@ -296,6 +306,7 @@
 /datum/round_event_control/meteor_wave
 	max_occurrences = 0
 	weight = MIN_EVENT_FREQ
+	intensity_restriction = TRUE
 
 /datum/round_event_control/meteor_wave/custom
 	max_occurrences = 1
@@ -317,6 +328,7 @@
 /datum/round_event_control/stray_meteor
 	max_occurrences = 0
 	weight = MIN_EVENT_FREQ
+	intensity_restriction = TRUE
 
 /datum/round_event_control/space_dust
 	max_occurrences = 0
@@ -325,10 +337,12 @@
 /datum/round_event_control/space_dust/major_dust
 	max_occurrences = 1
 	weight = VERY_LOW_EVENT_FREQ
+	intensity_restriction = TRUE
 
 /datum/round_event_control/sandstorm
 	max_occurrences = 1
 	weight = MED_EVENT_FREQ
+	intensity_restriction = TRUE
 
 /**
  * Mice Migration
@@ -343,6 +357,7 @@
 /datum/round_event_control/mold
 	max_occurrences = 1
 	weight = MED_EVENT_FREQ
+	intensity_restriction = TRUE
 
 /**
  * Morph
@@ -373,6 +388,7 @@
  */
 /datum/round_event_control/pirates
 	max_occurrences = 0
+	intensity_restriction = TRUE
 
 /**
  * Syndicate Portal Storm
@@ -391,6 +407,7 @@
 
 /datum/round_event_control/radiation_storm
 	max_occurrences = 0
+	intensity_restriction = TRUE
 
 /**
  * Revenant
@@ -487,6 +504,7 @@
  */
 /datum/round_event_control/spacevine
 	max_occurrences = 0
+	intensity_restriction = TRUE
 /**
  * Spiders
  *
@@ -494,6 +512,8 @@
  */
 /datum/round_event_control/spider_infestation
 	max_occurrences = 0
+	weight = MED_EVENT_FREQ
+	intensity_restriction = TRUE
 
 /**
  * Stray Cargo Pods
