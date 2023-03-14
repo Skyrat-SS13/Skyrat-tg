@@ -238,12 +238,9 @@
 	//Set news report and mode result
 	mode.set_round_result()
 
-<<<<<<< HEAD
-=======
 	to_chat(world, span_infoplain(span_big(span_bold("<BR><BR><BR>The round has ended."))))
 	log_game("The round has ended.")
 	send2chat("[GLOB.round_id ? "Round [GLOB.round_id]" : "The round has"] just ended.", CONFIG_GET(string/channel_announce_end_game))
->>>>>>> 6bee0c06208 (Roundend announcement is synced with adminchat (#73874))
 	send2adminchat("Server", "Round just ended.")
 
 	/* //SKYRAT EDIT - START (DISCORD Updates)
