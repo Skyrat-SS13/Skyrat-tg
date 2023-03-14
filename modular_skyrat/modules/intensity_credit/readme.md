@@ -6,7 +6,7 @@ MODULE ID: INTENSITY_CREDIT
 
 ### Description:
 
-Documentation: https://hackmd.io/@lessthanthree/Bk-WVHAyh
+Documentation: https://hackmd.io/@lessthanthree/HJKVFH0yn
 
 Based on the TG weighted random events system, a mostly modular system to run random events based on a system of weights and intensity.
 
@@ -16,7 +16,6 @@ Based on the TG weighted random events system, a mostly modular system to run ra
 
 ### Master file additions
 
-- N/A
 
 ### Included files that are not contained in this module:
 
