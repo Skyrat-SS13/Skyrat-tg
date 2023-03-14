@@ -61,3 +61,12 @@
 		/obj/item/storage/medkit/regular = 1,
 		/obj/item/clockwork/clockwork_slab = 1,
 	)
+
+
+/datum/outfit/clockwork_armaments
+	name = "Clockwork Cultist Base"
+
+	suit = /obj/item/clothing/suit/clockwork
+	shoes = /obj/item/clothing/shoes/clockwork
+	gloves = /obj/item/clothing/gloves/clockwork
+	head = /obj/item/clothing/head/helmet/clockwork

@@ -4,12 +4,13 @@
 	tip = "Handcuff a target at close range to subdue them for vitality extraction."
 	button_icon_state = "Hateful Manacles"
 	power_cost = 50
-	invokation_time = 2 SECONDS // 2 to invoke, 3 to cuff
-	invokation_text = list("Shackle the heretic...", "Break them in body and spirit!")
+	invocation_time = 2 SECONDS // 2 to invoke, 3 to cuff
+	invocation_text = list("Shackle the heretic...", "Break them in body and spirit!")
 	slab_overlay = "hateful_manacles"
 	use_time = 20 SECONDS
 	cogs_required = 1
 	category = SPELLTYPE_SERVITUDE
+
 
 /datum/scripture/slab/hateful_manacles/apply_effects(mob/living/carbon/target_carbon)
 	. = ..()
@@ -17,7 +18,7 @@
 		return FALSE
 
 	if(target_carbon.handcuffed)
-		target_carbon.balloon_alert(invoker, "already restrained!"))
+		target_carbon.balloon_alert(invoker, "already restrained!")
 		return FALSE
 
 	playsound(target_carbon, 'sound/weapons/handcuffs.ogg', 30, TRUE, -2)
@@ -35,6 +36,7 @@
 	log_combat(invoker, target_carbon, "handcuffed")
 
 	return TRUE
+
 
 /obj/item/restraints/handcuffs/clockwork
 	name = "replicant manacles"
