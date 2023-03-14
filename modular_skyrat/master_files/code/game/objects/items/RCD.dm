@@ -14,7 +14,7 @@
 /obj/item/construction/plumbing/set_plumbing_designs()
 	. = ..()
 	plumbing_design_types += list(
-		/obj/structure/drain = 5
+		/obj/structure/drain = 5,
 	)
 	
 ///find which category this design belongs to -- special case for the drain which is a structure
