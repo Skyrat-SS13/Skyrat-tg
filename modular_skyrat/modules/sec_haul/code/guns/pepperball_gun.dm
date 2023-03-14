@@ -41,7 +41,6 @@
 	icon_state = "pepperball"
 	damage = 0
 	stamina = 5
-	nodamage = TRUE
 	shrapnel_type = null
 	sharpness = NONE
 	embedding = null

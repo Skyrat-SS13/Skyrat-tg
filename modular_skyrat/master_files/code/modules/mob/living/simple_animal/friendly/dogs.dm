@@ -148,7 +148,7 @@
 		return
 
 	var/mob/living/carbon/human/target = proj.firer
-	if(!proj.nodamage && proj.damage >= 10)
+	if(proj.damage >= 10)
 		if(proj.damage_type != BRUTE && proj.damage_type != BURN)
 			return
 
