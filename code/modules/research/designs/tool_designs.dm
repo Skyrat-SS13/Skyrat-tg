@@ -393,3 +393,18 @@
 	category = list(
 		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_JANITORIAL
 	)
+<<<<<<< HEAD
+=======
+
+/datum/design/bolter_wrench
+	name = "Bolter Wrench"
+	desc = "A wrench that can unbolt airlocks regardless of power status."
+	id = "bolter_wrench"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 2000)
+	build_path = /obj/item/wrench/bolter
+	category = list(
+		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING_ADVANCED
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
+>>>>>>> 773b7117bf0 ([NO GBP]Bolter wrench's design is correctly at advanced engineering now. (#73958))
