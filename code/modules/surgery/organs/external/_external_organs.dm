@@ -129,6 +129,7 @@
 		add_to_limb(bodypart)
 
 /obj/item/organ/external/add_to_limb(obj/item/bodypart/bodypart)
+	bodypart.external_organs += src
 	ownerlimb = bodypart
 	ownerlimb.external_organs |= src
 	inherit_color()
@@ -136,6 +137,10 @@
 
 /obj/item/organ/external/remove_from_limb()
 	ownerlimb.external_organs -= src
+<<<<<<< HEAD
+=======
+	ownerlimb.remove_bodypart_overlay(bodypart_overlay)
+>>>>>>> 267b4a8d804 (Fixes limbs not storing their external organs like they should be (#73951))
 	if(ownerlimb.owner && external_bodytypes)
 		ownerlimb.synchronize_bodytypes(ownerlimb.owner)
 	ownerlimb = null

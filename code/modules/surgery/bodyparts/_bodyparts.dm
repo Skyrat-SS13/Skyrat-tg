@@ -216,6 +216,7 @@
 	if(length(wounds))
 		stack_trace("[type] qdeleted with [length(wounds)] uncleared wounds")
 		wounds.Cut()
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN - MEDICAL
 	if(current_gauze)
 		qdel(current_gauze)
@@ -224,6 +225,16 @@
 	//SKYRAT EDIT ADDITION END
 	for(var/external_organ in external_organs)
 		qdel(external_organ)
+=======
+
+	if(length(external_organs))
+		for(var/obj/item/organ/external/external_organ as anything in external_organs)
+			external_organs -= external_organ
+			qdel(external_organ) // It handles removing its references to this limb on its own.
+
+		external_organs = list()
+
+>>>>>>> 267b4a8d804 (Fixes limbs not storing their external organs like they should be (#73951))
 	return ..()
 
 /obj/item/bodypart/forceMove(atom/destination) //Please. Never forcemove a limb if its's actually in use. This is only for borgs.
