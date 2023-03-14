@@ -238,8 +238,8 @@
 	uses -= 1 // Remove a use before trying to spawn to prevent strangeness like the spawner trying to spawn more mobs than it should be able to
 	user.mind = null // dissassociate mind, don't let it follow us to the next life
 
-	var/created = create(user)
 	var/user_ckey = user.ckey // Just in case shenanigans happen, we always want to remove it from the list.
+	var/created = create(user)
 	LAZYREMOVE(ckeys_trying_to_spawn, user_ckey) // We do this AFTER the create() so that we're basically sure that the user won't be in their ghost body anymore, so they can't click on the spawner again.
 
 	if(!created)
