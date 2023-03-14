@@ -57,7 +57,7 @@ GLOBAL_VAR(first_officer)
 	. = ..()
 	equipped.faction -= "pirate"
 	equipped.faction |= "raider"
-	
+
 	// make sure we update the ID's name too
 	var/obj/item/card/id/id_card = equipped.wear_id
 	if(istype(id_card))
@@ -134,7 +134,7 @@ GLOBAL_VAR(first_officer)
 	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi'
 	icon_state = "cryopod"
 	mob_species = /datum/species/human
-	faction = list("raider")
+	faction = list(FACTION_RAIDER)
 	you_are_text = "You are a Novaya Rossiyskaya Imperiya task force."
 	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by demanding the funds. Force approach is usually recommended, but isn't the only method."
 	important_text = "Allowed races are humans, Akulas, IPCs. Follow your field officer's orders. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. Roleplay accordingly."
@@ -147,7 +147,7 @@ GLOBAL_VAR(first_officer)
 	var/callsign = pick(GLOB.callsigns_nri)
 	var/number = pick(GLOB.phonetic_alphabet_numbers)
 	spawned_human.fully_replace_character_name(null, "[callsign] [number]")
-	
+
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/special(mob/living/carbon/human/spawned_human)
 	. = ..()
 	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_SPAWNER)
@@ -180,7 +180,7 @@ GLOBAL_VAR(first_officer)
 	. = ..()
 	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_SPAWNER)
 	spawned_human.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_SPAWNER)
-		
+
 	// if this is the first officer, keep a reference to them
 	if(!GLOB.first_officer)
 		GLOB.first_officer = spawned_human
@@ -228,7 +228,7 @@ GLOBAL_VAR(first_officer)
 	desc = "An automatic defense turret designed for point-defense, it's probably not that wise to try approaching it."
 	scan_range = 9
 	shot_delay = 3
-	faction = list("raider")
+	faction = list(FACTION_RAIDER)
 	icon = 'modular_skyrat/modules/encounters/icons/turrets.dmi'
 	icon_state = "gun_turret"
 	base_icon_state = "gun_turret"

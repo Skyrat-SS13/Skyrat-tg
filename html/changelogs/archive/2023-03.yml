@@ -635,3 +635,108 @@
   - bugfix: modular prescription HUD glasses are now craftable in the DS-2 lathe
   - bugfix: fixed glass lens description
   - code_imp: code cleanup for the language fixes
+2023-03-12:
+  Jacquerel, sprite by J(Clearly Lying):
+  - balance: Traitor objectives which ask you to destroy lathes or the ORM provide
+      an optional bonus if you _booby trap_ the machine using a provided tool. This
+      causes the machine to explode the next time it is interacted with.
+  - balance: Performing the objective without rigging the machine to explode awards
+      no TC, using it awards more TC than it did previously.
+  LT3:
+  - code_imp: Anomaly event parameters consolidated to defines
+  - balance: Anomaly countdown timer reduced to 75 seconds
+  Melbert:
+  - bugfix: Fixes Juggernaut / Rust Walker projectiles doing zero damage
+  - bugfix: Fixes Juggernaut projectiles not doing bonus damage to nearby structures
+  - code_imp: Removed projectile nodamage var, replaces it with just checking for
+      damage
+  SkyratBot:
+  - bugfix: fixed missing disposal pipes (tramstation)
+  - bugfix: fixed missing zones (tramstation)
+  - bugfix: fixed wrongly placed zones (tramstation)
+  - bugfix: fixed wrongly placed tiles (tramstation)
+  - bugfix: Changed Quantum Hair Dye recipe from colourful reagent, space drugs and
+      radium to colourful reagent, space drugs and chlorine. So you can make it normally.
+  - bugfix: Fake nuclear authentication disks have been updated to include the holographic
+      security sticker found on the real disk, one again making them convincingly
+      real to the average person.
+  - code_imp: The keep_me_secured component will now only process if it has at least
+      one callback argument passed.
+  - bugfix: The cultist ritual site locator and Nar'Sie summon message will no longer
+      use area names modified by the CE's blueprints.
+  - bugfix: Firing pin swapping's 2 balloon alerts have been replaced with a single
+      more readable one.
+  - admin: Admins can now edit a pin_removable var on firing pins to render them unremovable
+      from the weapons they're installed in.
+  - bugfix: Spell Cards from the Wizard spell will now home in somewhat on the target
+      nearest to your cursor.
+  - bugfix: The Spell Cards spell now displays the correct icon instead of a big red
+      "error" text.
+  - bugfix: Pods on Tramstation can be properly launched early
+  Stalkeros, san7890 for the announcement texts:
+  - code_imp: Made pirate groups' arrival messages editable and more importantly unique
+      for each group.
+  Syrox25:
+  - rscadd: 'Adds new Taur variant: "Goop"'
+2023-03-13:
+  Baron:
+  - imageadd: Replaced Arachne borg sprite
+  MMMiracles (tramstation):
+  - rscadd: Tramstation's Science department has received a substantial remodel! Please
+      consult your local tour guide for more information.
+  - rscadd: The Vacant Commissary office has been moved to the top floor near Departures,
+      with a new Barber shop taking its place on the lower floor.
+  Zergspower:
+  - balance: Severely lowers the SEVA Suits temperature protection to 600 K down from
+      35000 K
+  nikothedude:
+  - bugfix: CUCKS now properly shows the name of waht it will deploy, + fixes a runtime
+      associated with it
+2023-03-14:
+  GoldenAlpharex:
+  - bugfix: You should only be able to spawn as one ghost role at a time. Close the
+      prompt if you want to spawn as another one. Begone soulless randomgen humans!
+  Jolly:
+  - bugfix: On IceBox, there shouldn't be wires looping under the walls near the vault
+      anymore.
+  LT3:
+  - bugfix: Tramstation lower floor elevator buttons work properly at roundstart
+  Mey-Ha-Zah & NamelessFairy:
+  - rscadd: Added pinata crates to cargo, they contain various candy items. Fun at
+      parties.
+  - rscadd: Clown operatives can now purchase a weapons grade pinata, this contains
+      both candy and explosives. Still fun at parties.
+  - admin: Admins can now turn players, mobs and objects into pinata's with the new
+      pinata component.
+  Nabski:
+  - imageadd: Renault has a dopey walk animation now, god bless.
+  Paxilmaniac:
+  - rscdel: The fancy CC dock won't load anymore because the shuttle doesn't actually
+      dock there anymore
+  PositiveEntropy:
+  - imageadd: Retouches all glass floors!
+  SkyratBot:
+  - imageadd: Resprites Donut Box, and all sprites for donuts in it.
+  - bugfix: When learning new cult spells their buttons will no longer stack on top
+      of one another.
+  - bugfix: Fixed playmins having access to admin functions within normal integrated
+      circuits.
+  - imageadd: Changed sprites for wooden chairs, comfy chairs, electric chairs, folding
+      chair and shuttle seats!
+  - bugfix: Ethereal discharge no longer alerts you twice that you did it.
+  - spellcheck: The birthday moodlet's description is now gramatically correct.
+  - rscadd: A station trait which sometimes populates maintenance with small spiders.
+      You can wear them as a hat if you wanted to have a spider on your head for some
+      reason.
+  - rscadd: Spider mobs will automatically start webbing up their environment.
+  coiax:
+  - bugfix: "In order to make l\xF6rtonknusksolt, fl\xF6fr\xF6lenknusksolt and k\xE6\
+      niatknusksolt, bowls are required, to match the bowls in their sprites and left\
+      \ behind after eating."
+  - bugfix: "Crafting fl\xF6fr\xF6lenknusksolt will no longer create a l\xF6rtonknusksolt\
+      \ instead."
+  softcerv:
+  - bugfix: the sensory helmet is no longer a space helmet with armor values and pepperspray
+      immunity.
+  theOOZ:
+  - bugfix: fixed the new arachne medical model

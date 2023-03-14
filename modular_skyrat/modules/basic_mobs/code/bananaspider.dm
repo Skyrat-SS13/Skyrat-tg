@@ -61,5 +61,5 @@
 	melee_damage_lower = 5
 	melee_damage_upper = 5
 	speed = -0.5
-	faction = list("spiders")
+	faction = list(FACTION_SPIDER)
 
