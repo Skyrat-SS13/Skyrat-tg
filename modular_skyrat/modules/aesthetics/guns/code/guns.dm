@@ -268,17 +268,18 @@
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 
 /obj/item/gun/ballistic/rifle/boltaction
-	name = "\improper Sportiv precision rifle"
-	desc = "A rather antique sporting rifle dating back to the 2400s chambered for .244 Acia. 'НРИ - Оборонная Коллегия' is etched on the bolt."
-	sawn_desc = "An extremely sawn-off Sportiv rifle, popularly known as an \"obrez\". There was probably a reason it wasn't manufactured this short to begin with."
+	name = "\improper Sypach hunting rifle"
+	desc = "An NRI-origin commercial hunting rifle chambered for .244 Acia featuring a straight-pull bolt, stabilizer and an integrated holographic sight. Modern and unremarkable."
+	sawn_desc = "A sawn-down Sypach, known locally as an \"obrez\". There was probably a reason it wasn't manufactured this short to begin with."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
 /obj/item/gun/ballistic/rifle/boltaction/brand_new
-	name = "\improper NT Sportsman rifle"
-	desc = "A freshly-produced Sportiv precision rifle variant issued by Nanotrasen for their interns.\
+	name = "\improper NT-Sypach parade rifle"
+	desc = "A modified Sypach rifle in use by Nanotrasen's interns, done with expert wood furnishing.\
 	<br><br>\
 	<i>BRAND NEW: Cannot be sawn off.</i>"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
+	icon_state = "centralrifle"
 
 /obj/item/gun/ballistic/rifle/boltaction/brand_new/give_manufacturer_examine()
 	AddComponent(/datum/component/manufacturer_examine, COMPANY_NANOTRASEN)
