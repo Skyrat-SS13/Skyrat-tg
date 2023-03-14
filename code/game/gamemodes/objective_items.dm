@@ -265,15 +265,8 @@
 	item_owner = list(JOB_CHIEF_MEDICAL_OFFICER)
 	exists_on_map = TRUE
 
-<<<<<<< HEAD
-///obj/item/reagent_containers/hypospray/cmo/add_stealing_item_objective() // ORIGINAL
 /obj/item/hypospray/mkii/cmo/add_stealing_item_objective() // SKYRAT EDIT CHANGE
-	//ADD_STEAL_ITEM(src, /obj/item/reagent_containers/hypospray/cmo) // ORIGINAL
-	ADD_STEAL_ITEM(src, /obj/item/hypospray/mkii/cmo) // SKYRAT EDIT CHANGE
-=======
-/obj/item/reagent_containers/hypospray/cmo/add_stealing_item_objective()
-	return add_item_to_steal(src, /obj/item/reagent_containers/hypospray/cmo)
->>>>>>> 67f57be22cd (Removes bug room objective, Reworks primary objective and steal objectives. (#73763))
+	return add_item_to_steal(src, /obj/item/hypospray/mkii/cmo) // SKYRAT EDIT CHANGE
 
 /datum/objective_item/steal/nukedisc
 	name = "the nuclear authentication disk"
