@@ -11,13 +11,14 @@
 	canRturf = TRUE
 	upgrade = RCD_UPGRADE_FRAMES | RCD_UPGRADE_SIMPLE_CIRCUITS | RCD_UPGRADE_FURNISHING
 
+/// add the drain design to the plumbing RCD designs list
 /obj/item/construction/plumbing/set_plumbing_designs()
 	. = ..()
 	plumbing_design_types += list(
 		/obj/structure/drain = 5,
 	)
 	
-///find which category this design belongs to -- special case for the drain which is a structure
+///overridden to account for special case for the drain which is a structure
 /obj/item/construction/plumbing/get_category(obj/recipe)
 	if(ispath(recipe, /obj/structure/drain))
 		return "Liquids"
