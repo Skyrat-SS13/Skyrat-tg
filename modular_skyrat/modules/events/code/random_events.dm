@@ -159,7 +159,7 @@
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/cme/moderate
-	max_occurrences = 1
+	max_occurrences = 0
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/cme/extreme
@@ -201,8 +201,8 @@
 	weight = VERY_LOW_EVENT_FREQ
 
 /datum/round_event_control/disease_outbreak/advanced
-	weight = HIGH_EVENT_FREQ
 	max_occurrences = 2
+	weight = HIGH_EVENT_FREQ
 
 /datum/round_event_control/fake_virus
 	max_occurrences = 1
@@ -291,33 +291,36 @@
 /**
  * Meteors / Space Dust
  *
- * Combined weight: 62
+ * Combined weight: 36
  */
 /datum/round_event_control/meteor_wave
+	max_occurrences = 0
+	weight = MIN_EVENT_FREQ
+
+/datum/round_event_control/meteor_wave/custom
+	max_occurrences = 1
 	weight = MED_EVENT_FREQ
-	max_occurrences = 1
 
-// Only highpop
+// No preset ones, we have our own custom preset above
 /datum/round_event_control/meteor_wave/threatening
-	weight = LOW_EVENT_FREQ
-	max_occurrences = 1
-	min_players = 75
-	earliest_start = 105 MINUTES
+	max_occurrences = 0
+	weight = MIN_EVENT_FREQ
 
-// Nope
 /datum/round_event_control/meteor_wave/catastrophic
 	max_occurrences = 0
+	weight = MIN_EVENT_FREQ
 
 /datum/round_event_control/meteor_wave/meaty
-	max_occurrences = 1
+	max_occurrences = 0
 	weight = MIN_EVENT_FREQ
 
 /datum/round_event_control/stray_meteor
-	max_occurrences = 1
-	weight = VERY_LOW_EVENT_FREQ
+	max_occurrences = 0
+	weight = MIN_EVENT_FREQ
 
 /datum/round_event_control/space_dust
 	max_occurrences = 0
+	weight = MIN_EVENT_FREQ
 
 /datum/round_event_control/space_dust/major_dust
 	max_occurrences = 1
