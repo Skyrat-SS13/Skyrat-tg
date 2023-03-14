@@ -254,7 +254,6 @@
 	log_dynamic("[key_name(M)] was selected by the [name] ruleset and has been made into a midround traitor.")
 	return TRUE
 
-<<<<<<< HEAD
 
 //////////////////////////////////////////////
 //                                          //
@@ -262,9 +261,6 @@
 //                                          //
 //////////////////////////////////////////////
 
-=======
-/// Midround Malf AI Ruleset (From Living)
->>>>>>> 96ae470f53b (Updates the dynamic config's midround options to add in new additions (#73784))
 /datum/dynamic_ruleset/midround/malf
 	name = "Malfunctioning AI"
 	midround_ruleset_style = MIDROUND_RULESET_STYLE_HEAVY
