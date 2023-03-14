@@ -10,7 +10,6 @@
 		var/obj/item/bodypart/new_limb = path
 		var/body_zone = initial(new_limb.body_zone)
 		var/obj/item/bodypart/old_limb = augmented.get_bodypart(body_zone)
-		// old_limb.organic_render = FALSE
 		if(uses_robotic_styles && prefs.augment_limb_styles[slot])
 			var/chosen_style = GLOB.robotic_styles_list[prefs.augment_limb_styles[slot]]
 			old_limb.limb_id = "robotic"
@@ -21,8 +20,6 @@
 			old_limb.limb_id = "robotic"
 			old_limb.base_limb_id = "robotic"
 			old_limb.set_icon_static(initial(new_limb.icon))
-//		old_limb.rendered_bp_icon = initial(new_limb.icon)
-//		old_limb.icon_state = initial(new_limb.icon_state)
 		old_limb.should_draw_greyscale = FALSE
 
 		return body_zone
@@ -33,7 +30,6 @@
 			var/chosen_style = GLOB.robotic_styles_list[prefs.augment_limb_styles[slot]]
 			new_limb.set_icon_static(chosen_style)
 			new_limb.current_style = prefs.augment_limb_styles[slot]
-		// new_limb.organic_render = FALSE
 		new_limb.replace_limb(augmented)
 		qdel(old_limb)
 

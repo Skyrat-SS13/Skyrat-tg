@@ -115,40 +115,6 @@
 	if(eyes)
 		eyes.eye_icon_state = initial(eyes.eye_icon_state)
 
-/*
-/datum/species/synthetic/replace_body(mob/living/carbon/target, datum/species/new_species)
-	. = ..()
-	var/list/chassis = target.dna.mutant_bodyparts[MUTANT_SYNTH_CHASSIS]
-	var/list/head = target.dna.mutant_bodyparts[MUTANT_SYNTH_HEAD]
-	if(!chassis && !head)
-		return
-
-	var/datum/sprite_accessory/synth_chassis/chassis_of_choice = GLOB.sprite_accessories[MUTANT_SYNTH_CHASSIS][chassis[MUTANT_INDEX_NAME]]
-	var/datum/sprite_accessory/synth_head/head_of_choice = GLOB.sprite_accessories[MUTANT_SYNTH_HEAD][head[MUTANT_INDEX_NAME]]
-	if(!chassis_of_choice && !head_of_choice)
-		return
-
-	examine_limb_id = chassis_of_choice.icon_state
-
-	if(chassis_of_choice.color_src || head_of_choice.color_src)
-		species_traits += MUTCOLORS
-
-	// We want to ensure that the IPC gets their chassis and their head correctly.
-	for(var/obj/item/bodypart/limb as anything in target.bodyparts)
-		if(initial(limb.limb_id) != SPECIES_SYNTH && initial(limb.base_limb_id) != SPECIES_SYNTH) // No messing with limbs that aren't actually synthetic.
-			continue
-
-		if(limb.body_zone == BODY_ZONE_HEAD)
-			if(head_of_choice.color_src && head[MUTANT_INDEX_COLOR_LIST] && length(head[MUTANT_INDEX_COLOR_LIST]))
-				limb.variable_color = head[MUTANT_INDEX_COLOR_LIST][1]
-			limb.change_appearance(head_of_choice.icon, head_of_choice.icon_state, !!head_of_choice.color_src, head_of_choice.dimorphic)
-			continue
-
-		if(chassis_of_choice.color_src && chassis[MUTANT_INDEX_COLOR_LIST] && length(chassis[MUTANT_INDEX_COLOR_LIST]))
-			limb.variable_color = chassis[MUTANT_INDEX_COLOR_LIST][1]
-		limb.change_appearance(chassis_of_choice.icon, chassis_of_choice.icon_state, !!chassis_of_choice.color_src, limb.body_part == CHEST && chassis_of_choice.dimorphic)
-		limb.name = "\improper[chassis_of_choice.name] [parse_zone(limb.body_zone)]"
-*/
 
 /datum/species/synthetic/apply_supplementary_body_changes(mob/living/carbon/human/target, datum/preferences/preferences, visuals_only = FALSE)
 	var/list/chassis = target.dna.mutant_bodyparts[MUTANT_SYNTH_CHASSIS]
