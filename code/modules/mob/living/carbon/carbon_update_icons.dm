@@ -561,13 +561,6 @@
 			continue
 		. += "-[jointext(overlay.generate_icon_cache(), "-")]"
 
-	// SKYRAT EDIT ADDITION - CACHING MARKINGS
-	for(var/key in markings)
-		. += limb_id == "digitigrade" ? ("digitigrade_1_" + body_zone) : body_zone
-		. += "-[key]"
-		. += "-[markings[key][1]]"
-	// SKYRAT EDIT END
-
 	return .
 
 ///Generates a cache key specifically for husks

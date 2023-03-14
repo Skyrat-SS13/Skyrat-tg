@@ -43,10 +43,12 @@
 			gent.aroused = prefs.arousal_preview
 			gent.update_sprite_suffix()
 
+	/*
 	if(prefs && length(prefs.augments))
 		for(var/key in prefs.augments)
 			var/datum/augment_item/aug = GLOB.augment_items[prefs.augments[key]]
 			aug.apply(target, prefs = prefs)
+	*/
 //SKYRAT EDIT END
 
 /datum/preference/choiced/species/compile_constant_data()

@@ -9,6 +9,8 @@
 	var/base_limb_id = SPECIES_MAMMAL
 
 /obj/item/bodypart/proc/check_mutant_compatability()
+	return
+	/*
 	if(ishuman(owner))
 		var/mob/living/carbon/human/human_owner = owner
 		var/uniform_compatible = FALSE
@@ -25,6 +27,7 @@
 			limb_id = "digitigrade"
 		else
 			limb_id = base_limb_id
+	*/
 
 /obj/item/bodypart/leg/right
 	/// This is used in digitigrade legs, when this leg is swapped out with the digitigrade version.

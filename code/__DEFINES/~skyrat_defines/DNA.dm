@@ -38,6 +38,10 @@
 #define MUTANT_INDEX_COLOR_LIST		"color"
 #define MUTANT_INDEX_EMISSIVE_LIST	"emissive"
 
+// Defines for markings indexes
+#define MARKING_INDEX_COLOR 1
+#define MARKING_INDEX_EMISSIVE 2
+
 //The color list that is passed to color matrixed things when a person is husked
 #define HUSK_COLOR_LIST list(list(0.64, 0.64, 0.64, 0), list(0.64, 0.64, 0.64, 0), list(0.64, 0.64, 0.64, 0), list(0, 0, 0, 1))
 
