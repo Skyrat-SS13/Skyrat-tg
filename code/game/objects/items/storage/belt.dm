@@ -525,9 +525,6 @@
 	. = ..()
 	var/sponsor = pick("Donk Co.", "Waffle Co.", "Roffle Co.", "Gorlax Marauders", "Tiger Cooperative")
 	desc = "A set of snack-tical webbing worn by athletes of the [sponsor] VR sports division."
-
-/obj/item/storage/belt/military/snack/Initialize(mapload)
-	. = ..()
 	atom_storage.max_slots = 6
 	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
 	atom_storage.set_holdable(list(
@@ -535,6 +532,10 @@
 		/obj/item/reagent_containers/cup/glass
 		))
 
+/obj/item/storage/belt/military/snack/full
+
+/obj/item/storage/belt/military/snack/full/Initialize(mapload)
+	. = ..()
 	var/amount = 5
 	var/rig_snacks
 	while(contents.len <= amount)
