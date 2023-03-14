@@ -284,26 +284,26 @@
 	AddComponent(/datum/component/manufacturer_examine, COMPANY_NANOTRASEN)
 
 /obj/item/gun/ballistic/rifle/boltaction/brand_new/quartermaster
-	name = "\improper FTU 'Archangel' precision rifle"
-	desc = "A very... Modernized Sportiv rifle, the frame even feels a little flimsy. This thing was probably built with a conversion kit from a shady NTnet site.\
+	name = "\improper Jihira-Silchester repeater"
+	desc = "A novelty lever-action rifle once used by the FTU's top dogs, now merely a functional showpiece for a lucky LO. Engraved on the receiver is 'JIHIRA-SILCHESTER, MODEL 2489', followed by 'FREE TRADE UNION'.\
 	<br><br>\
 	<i>BRAND NEW: Cannot be sawn off.</i>"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	icon_state = "bubba"
+	icon_state = "lever"
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
-	worn_icon_state = "bubba"
-	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba
+	worn_icon_state = "lever"
+	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/quartermaster
 	can_be_sawn_off = FALSE
 
 /obj/item/gun/ballistic/rifle/boltaction/brand_new/quartermaster/give_manufacturer_examine()
 	return
 
-/obj/item/ammo_box/magazine/internal/boltaction/bubba
-	name = "sportiv extended internal magazine"
+/obj/item/ammo_box/magazine/internal/boltaction/quartermaster
+	name = "repeater magazine tube"
 	desc = "How did you get it out?"
-	ammo_type = /obj/item/ammo_casing/a762
-	caliber = CALIBER_A762
-	max_ammo = 8
+	ammo_type = /obj/item/ammo_casing/a357
+	caliber = CALIBER_357
+	max_ammo = 12
 	multiload = TRUE
 
 /obj/item/gun/ballistic/automatic/surplus
