@@ -1,4 +1,10 @@
-/// Called by events to check/change security level.
+/**
+ * ICES - Intensity Credit Events System
+ *
+ * This is called by events to check/change security level.
+ */
+
+///
 /// Checks if the station security level is at least minimum_level, and if not, sets it to that level.
 /// If orange, also sends the engineering override signal to airlocks to enable additional access.
 /// Arguments: min_level: number, eng_access: boolean, maint_access: boolean

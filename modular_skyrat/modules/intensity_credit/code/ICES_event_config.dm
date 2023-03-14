@@ -6,8 +6,10 @@
 #define MIN_EVENT_FREQ 2
 
 /**
+ * ICES - Intensity Credit Events System
+ *
  * This file is used to denote weight and frequency
- * and any custom procs/modifications to events.
+ * for events to be spawned by the system.
  */
 
 /**
@@ -19,6 +21,10 @@
 /datum/controller/subsystem/events
 	frequency_lower = 7 MINUTES
 	frequency_upper = 14 MINUTES
+	/// Rate at which we add intensity credits
+	var/intensity_credit_rate = 27000
+	/// Last world time we added an intensity credit
+	var/intensity_credit_last_time = 27000
 
 /**
  * Abductors

@@ -2,15 +2,16 @@
 #define ADD_INTENSITY_CREDIT 2
 #define STATIC_INTENSITY_CREDIT 3
 
+/**
+ * ICES - Intensity Credit Events System
+ *
+ * This file is used for adjusting intensity credits.
+ * Can be called on its own, or part of a timer.
+ */
+
 /datum/round_event_control
 	/// Whether this event is intense enough to need special processing rules
 	var/intensity_restriction = FALSE
-
-/datum/controller/subsystem/events
-	/// Rate at which we add intensity credits
-	var/intensity_credit_rate = 27000
-	/// Last world time we added an intensity credit
-	var/intensity_credit_last_time = 27000
 
 /// Changes the round's intensity credit pool. Can be called as part of a timer or on its own.
 /// Arguments: credit_action: number, credit_amount: number, check_timer: boolean, reset_timer: boolean, notify_admins: boolean
