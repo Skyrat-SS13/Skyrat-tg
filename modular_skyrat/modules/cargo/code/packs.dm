@@ -700,7 +700,7 @@
 	contraband = TRUE
 	cost = CARGO_CRATE_VALUE * 15
 	contains = list(
-		/obj/item/crucifix = 53,
+		/obj/item/crucifix = 3,
 		/obj/item/storage/box/nri_rations = 3,
 		/obj/item/storage/toolbox/ammo = 1,
 		/obj/item/storage/toolbox/maint_kit = 1,
