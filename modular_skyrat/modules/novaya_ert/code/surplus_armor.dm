@@ -5,15 +5,7 @@
 #define NRI_MOUNTAIN_DESERT_COLORS "#aa6d4c"
 #define NRI_FOREST_COLORS "#6D6D51"
 #define NRI_MARINE_COLORS "#51517b"
-#define NRI_EVIL_COLORS "#34343a"
-
-GLOBAL_LIST_INIT(nri_random_camo_colors, list(
-	NRI_WINTER_COLORS,
-	NRI_MOUNTAIN_DESERT_COLORS,
-	NRI_FOREST_COLORS,
-	NRI_MARINE_COLORS,
-	NRI_EVIL_COLORS,
-))
+#define NRI_EVIL_COLORS "#5d5d66"
 
 // Hats
 
@@ -59,13 +51,19 @@ GLOBAL_LIST_INIT(nri_random_camo_colors, list(
 	greyscale_colors = NRI_MARINE_COLORS
 
 /obj/item/clothing/head/helmet/nri_surplus_helmet/random_color
+	/// The different colors this helmet can choose from when initializing
+	var/static/list/possible_spawning_colors = list(
+		NRI_WINTER_COLORS,
+		NRI_MOUNTAIN_DESERT_COLORS,
+		NRI_FOREST_COLORS,
+		NRI_MARINE_COLORS,
+		NRI_EVIL_COLORS,
+	)
 
 /obj/item/clothing/head/helmet/nri_surplus_helmet/random_color/Initialize(mapload)
+	greyscale_colors = pick(possible_spawning_colors)
+
 	. = ..()
-
-	greyscale_colors = pick(GLOB.nri_random_camo_colors)
-
-	update_appearance()
 
 // Undersuits
 
@@ -90,13 +88,18 @@ GLOBAL_LIST_INIT(nri_random_camo_colors, list(
 	greyscale_colors = "#51517b#51517b#34343a"
 
 /obj/item/clothing/under/syndicate/rus_army/nri_surplus/random_color
+	/// What colors the jumpsuit can spawn with (only does the arms and legs of it)
+	var/static/list/possible_limb_colors = list(
+		NRI_WINTER_COLORS,
+		NRI_MOUNTAIN_DESERT_COLORS,
+		NRI_FOREST_COLORS,
+		NRI_MARINE_COLORS,
+	)
 
 /obj/item/clothing/under/syndicate/rus_army/nri_surplus/random_color/Initialize(mapload)
+	greyscale_colors = "[pick(possible_limb_colors)][pick(possible_limb_colors)][NRI_EVIL_COLORS]"
+
 	. = ..()
-
-	greyscale_colors = "[pick(GLOB.nri_random_camo_colors)][pick(GLOB.nri_random_camo_colors)][NRI_EVIL_COLORS]"
-
-	update_appearance()
 
 // Vests
 
@@ -133,3 +136,4 @@ GLOBAL_LIST_INIT(nri_random_camo_colors, list(
 #undef NRI_MOUNTAIN_DESERT_COLORS
 #undef NRI_FOREST_COLORS
 #undef NRI_MARINE_COLORS
+#undef NRI_EVIL_COLORS
