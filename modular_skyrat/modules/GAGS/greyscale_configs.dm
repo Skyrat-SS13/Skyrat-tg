@@ -1130,7 +1130,7 @@ digi
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/hardsuit.json'
 
 /*
-*	NRI SURPLUS ARMOR
+*	CIN SURPLUS ARMOR
 */
 
 // Helmet
