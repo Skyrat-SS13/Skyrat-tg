@@ -17,7 +17,7 @@
 // CIN armor is decently tough against bullets and wounding, but flounders when lasers enter the play, because it wasn't designed to protect against those much
 
 /datum/armor/cin_surplus_armor
-	melee = 20
+	melee = 30
 	bullet = 40
 	laser = 10
 	energy = 10

@@ -1160,6 +1160,7 @@ digi
 /datum/greyscale_config/cin_surplus_backpack
 	name = "CIN Surplus Backpack"
 	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/nri_surplus_equipment/backpack.json'
 
 /datum/greyscale_config/cin_surplus_backpack/object
 	name = "CIN Surplus Backpack (OBJ)"
@@ -1174,7 +1175,6 @@ digi
 /datum/greyscale_config/cin_surplus_chestrig/object
 	name = "CIN Surplus Chestrig (OBJ)"
 	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_object.dmi'
-
 
 /*
 *	ITEMS
