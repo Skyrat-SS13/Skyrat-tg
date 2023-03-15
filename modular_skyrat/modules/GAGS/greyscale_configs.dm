@@ -1130,6 +1130,32 @@ digi
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/hardsuit.json'
 
 /*
+*	NRI SURPLUS ARMOR
+*/
+
+// Helmet
+/datum/greyscale_config/nri_surplus_helmet
+	name = "NRI Surplus Helmet"
+	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/nri_surplus_equipment/helmet.json'
+
+// Basic Vest
+/datum/greyscale_config/nri_surplus_vest
+	name = "NRI Surplus Armor Vest"
+	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/nri_surplus_equipment/vest_basic.json'
+
+// Undersuit
+/datum/greyscale_config/nri_surplus_undersuit
+	name = "NRI Surplus Undersuit"
+	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/nri_surplus_equipment/vest_basic.json'
+
+/datum/greyscale_config/nri_surplus_undersuit/digi
+	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_digi.dmi'
+
+
+/*
 *	ITEMS
 */
 
