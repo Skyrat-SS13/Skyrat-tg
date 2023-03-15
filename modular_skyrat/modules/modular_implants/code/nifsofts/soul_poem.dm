@@ -70,7 +70,7 @@
 	message_list.Insert(1, list(list(identifier = sender_identifier, sender_name = received_name, message = received_message, timestamp = station_time_timestamp())))
 	return TRUE
 
-///Removes a message from the message_list based on the message_to_remove
+/// Removes the message_to_remove from the message_list, If the message cannot be found the proc will return FALSE, otherwise it will delete the message_to_remove and return TRUE.
 /datum/nifsoft/soul_poem/proc/remove_message(message_to_remove)
 	var/removed_message = locate(message_to_remove) in message_list
 	if(!removed_message)
@@ -92,6 +92,7 @@
 
 	transmitted_name = persistence.soul_poem_nifsoft_name
 	transmitted_message = persistence.soul_poem_nifsoft_message
+	return TRUE
 
 /datum/nifsoft/soul_poem/save_persistence_data(datum/modular_persistence/persistence)
 	. = ..()
@@ -100,6 +101,7 @@
 
 	persistence.soul_poem_nifsoft_message = transmitted_message
 	persistence.soul_poem_nifsoft_name = transmitted_name
+	return TRUE
 
 ///The proximty_monitor datum used by the soul_poem NIFSoft
 /datum/proximity_monitor/advanced/soul_poem
