@@ -8,16 +8,10 @@
 	subcategory = "Clothing Supplies"
 
 /datum/armament_entry/company_import/nri_surplus/clothing/uniform
-	item_type = /obj/item/clothing/under/costume/nri
+	description = "A CIN designed combat uniform that can come in any number of camouflauge variations. These will ship in a station environment suitable camouflauge scheme."
+	item_type = /obj/item/clothing/under/syndicate/rus_army/cin_surplus
 	lower_cost = CARGO_CRATE_VALUE * 1.3
 	upper_cost = CARGO_CRATE_VALUE * 1.7
-	stock_mult = 2
-	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
-
-/datum/armament_entry/company_import/nri_surplus/clothing/boots
-	item_type = /obj/item/clothing/shoes/russian
-	lower_cost = CARGO_CRATE_VALUE * 0.3
-	upper_cost = CARGO_CRATE_VALUE * 1
 	stock_mult = 2
 	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
@@ -54,13 +48,15 @@
 	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/nri_surplus/clothing/helmet
-	item_type = /obj/item/clothing/head/helmet/rus_helmet/nri
+	description = "A service helmet primarily used by CIN military forces. These will ship in a station environment suitable camouflauge scheme."
+	item_type = /obj/item/clothing/head/helmet/cin_surplus_helmet
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 3
 	interest_required = COMPANY_HIGH_INTEREST
 
 /datum/armament_entry/company_import/nri_surplus/clothing/vest
-	item_type = /obj/item/clothing/suit/armor/vest/russian/nri
+	description = "An armor vest primarily used by CIN military forces. These will ship in a station environment suitable camouflauge scheme."
+	item_type = /obj/item/clothing/suit/armor/vest/cin_surplus_vest
 	lower_cost = CARGO_CRATE_VALUE * 2.5
 	upper_cost = CARGO_CRATE_VALUE * 3.5
 	interest_required = COMPANY_HIGH_INTEREST
