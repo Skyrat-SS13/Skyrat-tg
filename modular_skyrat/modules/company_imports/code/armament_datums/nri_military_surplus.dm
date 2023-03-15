@@ -22,21 +22,14 @@
 	stock_mult = 2
 	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
 
-/datum/armament_entry/company_import/nri_surplus/clothing/ushanka
-	item_type = /obj/item/clothing/head/costume/ushanka
-	lower_cost = CARGO_CRATE_VALUE * 0.5
-	upper_cost = CARGO_CRATE_VALUE
-	stock_mult = 2
-	interest_addition = COMPANY_INTEREST_GAIN_PITIFUL
-
 /datum/armament_entry/company_import/nri_surplus/clothing/belt
-	item_type = /obj/item/storage/belt/military/nri
+	item_type = /obj/item/storage/belt/military/cin_surplus
 	lower_cost = CARGO_CRATE_VALUE
 	upper_cost = CARGO_CRATE_VALUE * 1.5
 	interest_required = COMPANY_SOME_INTEREST
 
 /datum/armament_entry/company_import/nri_surplus/clothing/backpack
-	item_type = /obj/item/storage/backpack/nri
+	item_type = /obj/item/storage/backpack/industrial/cin_surplus
 	lower_cost = CARGO_CRATE_VALUE
 	upper_cost = CARGO_CRATE_VALUE * 1.5
 	interest_required = COMPANY_SOME_INTEREST
