@@ -1,10 +1,10 @@
 import { useBackend, useSharedState } from '../backend';
 import { NtosWindow } from '../layouts';
-import { BlockQuote, Button, Collapsible, Flex, Section, Tabs } from '../components';
+import { BlockQuote, Button, Collapsible, Flex, Section, Tabs, LabeledList } from '../components';
 
 export const NtosNifsoftCatalog = (props, context) => {
   const { act, data } = useBackend(context);
-  const { product_list = [] } = data;
+  const { product_list = [], rewards_points } = data;
   const [tab, setTab] = useSharedState(
     context,
     'product_category',
@@ -18,6 +18,16 @@ export const NtosNifsoftCatalog = (props, context) => {
   return (
     <NtosWindow width={500} height={700}>
       <NtosWindow.Content scrollable>
+        <Section>
+          <LabeledList>
+            <LabeledList.Item label={'Credits in account'}>
+              {rewards_points}
+            </LabeledList.Item>
+            <LabeledList.Item label="Reward Points">
+              <b>{rewards_points}</b>
+            </LabeledList.Item>
+          </LabeledList>
+        </Section>
         <Tabs fluid>
           {product_list.map((product_category) => (
             <Tabs.Tab

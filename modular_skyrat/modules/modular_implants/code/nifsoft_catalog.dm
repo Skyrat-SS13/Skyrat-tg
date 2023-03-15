@@ -40,11 +40,14 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 	var/list/product_list = list()
 
 	var/mob/living/carbon/human/nif_user = user
+	var/rewards_points = 0
 	if(nif_user)
 		var/obj/item/organ/internal/cyberimp/brain/nif/user_nif = nif_user.getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
 		target_nif = user_nif || null
+		rewards_points = user_nif.rewards_points || 0
 
 	data["target_nif"] = target_nif
+	data["rewards_points"] = rewards_points
 
 	for(var/datum/nifsoft/buyable_nifsoft as anything in GLOB.purchasable_nifsofts)
 		if(!buyable_nifsoft)
@@ -54,6 +57,8 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 			"name" = initial(buyable_nifsoft.name),
 			"desc" = initial(buyable_nifsoft.program_desc),
 			"price" = initial(buyable_nifsoft.purchase_price),
+			"rewards_points_rate" = initial(buyable_nifsoft.rewards_points_rate),
+			"points_purchasable" = initial(buyable_nifsoft.rewards_points_eligible),
 			"category" = initial(buyable_nifsoft.buying_category),
 			"reference" = buyable_nifsoft
 		)

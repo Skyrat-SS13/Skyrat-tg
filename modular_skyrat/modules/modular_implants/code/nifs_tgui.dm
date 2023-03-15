@@ -48,6 +48,7 @@
 	data["max_power"] = max_power_level
 	data["max_blood_level"] = linked_mob.blood_volume_normal
 	data["product_notes"] = manufacturer_notes
+	data["stored_points"] = rewards_points
 
 	return data
 
