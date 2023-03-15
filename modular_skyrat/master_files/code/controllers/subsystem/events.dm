@@ -5,6 +5,7 @@
 		scheduled = world.time + (rand(frequency_lower, max(frequency_lower,frequency_upper)) * EVENT_MIDPOP_TIMER_MULTIPLIER)
 		log_game("ICES: Event timer initialising for roundstart at [EVENT_MIDPOP_TIMER_MULTIPLIER]x")
 		message_admins("ICES: Event timer initialising for roundstart at [EVENT_MIDPOP_TIMER_MULTIPLIER]x")
+		return
 	else if(filter_threshold < EVENT_LOWPOP_THRESHOLD) // Lowpop gets events less often
 		scheduled = world.time + (rand(frequency_lower, max(frequency_lower,frequency_upper)) * EVENT_LOWPOP_TIMER_MULTIPLIER)
 		log_game("ICES: Event timer multiplier is [EVENT_LOWPOP_TIMER_MULTIPLIER]x (LOWPOP) for [filter_threshold] players. Next run in [DisplayTimeText(scheduled - world.time)]")
