@@ -10,8 +10,8 @@
 // Hats
 
 /obj/item/clothing/head/helmet/nri_surplus_helmet
-	name = "surplus nri helmet"
-	desc = "Wait a minute, there should be something here!."
+	name = "\improper GZ-03 combat helmet"
+	desc = "An outdated service helmet previously used by CIN military forces. The design dates back to the years leading up to CIN - SolFed border war, and was in service until the advent of VOSKHOD powered armor becoming standard issue."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
 	icon_state = "helmet_plain"
@@ -40,6 +40,20 @@
 
 	icon_state = "helmet_[chosen_accessories]"
 	update_appearance()
+
+/obj/item/clothing/head/helmet/nri_surplus_helmet/examine_more(mob/user)
+	. = ..()
+
+	. += "The GZ-03 series of coalition armor was a collaborative project between the NRI and TransOrbital \
+		to develop a frontline soldier's armor set that could withstand attacks from the Solar Federation's \
+		then relatively new and unknown pulse ballistics. The design itself is based upon a far older pattern \
+		of armor originally developed by SolFed themselves, which was the standard pattern of armor design \
+		granted to the first colony ships leaving Sol. Armor older than any of the CIN member states, \
+		upgraded with modern technology. This helmet in particular encloses the entire head save for \
+		the face, and should come with a glass visor and relatively comfortable internal padding. Should, \
+		anyways, surplus units such as this are infamous for arriving with several missing accessories."
+
+	return .
 
 /obj/item/clothing/head/helmet/nri_surplus_helmet/desert
 	greyscale_colors = NRI_MOUNTAIN_DESERT_COLORS
@@ -114,8 +128,8 @@
 // Vests
 
 /obj/item/clothing/suit/armor/vest/nri_surplus_vest
-	name = "surplus nri vest"
-	desc = "Wait a minute, there should be something here!."
+name = "\improper GZ-03 combat armor"
+	desc = "An outdated armor vest previously used by CIN military forces. The design dates back to the years leading up to CIN - SolFed border war, and was in service until the advent of VOSKHOD powered armor becoming standard issue."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
 	icon_state = "vest_basic"
@@ -141,6 +155,21 @@
 		icon_state = "vest_basic"
 
 	update_appearance()
+
+/obj/item/clothing/suit/armor/vest/nri_surplus_vest/examine_more(mob/user)
+	. = ..()
+
+	. += "The GZ-03 series of coalition armor was a collaborative project between the NRI and TransOrbital \
+		to develop a frontline soldier's armor set that could withstand attacks from the Solar Federation's \
+		then relatively new and unknown pulse ballistics. The design itself is based upon a far older pattern \
+		of armor originally developed by SolFed themselves, which was the standard pattern of armor design \
+		granted to the first colony ships leaving Sol. Armor older than any of the CIN member states, \
+		upgraded with modern technology. This vest in particular is made up of several large, dense plates \
+		front and back. While they were also produced with extra plating to protect the groin, many \
+		surplus vests are missing them due to the popularity of removing the plates and using them as seating \
+		during wartime."
+
+	return .
 
 #undef NRI_WINTER_COLORS
 #undef NRI_MOUNTAIN_DESERT_COLORS
