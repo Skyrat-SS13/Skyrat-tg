@@ -12,13 +12,13 @@
 		var/obj/item/bodypart/old_limb = augmented.get_bodypart(body_zone)
 		if(uses_robotic_styles && prefs.augment_limb_styles[slot])
 			var/chosen_style = GLOB.robotic_styles_list[prefs.augment_limb_styles[slot]]
-			old_limb.limb_id = "robotic"
-			old_limb.base_limb_id = "robotic"
+			old_limb.limb_id = initial(new_limb.limb_id)
+			old_limb.base_limb_id = initial(new_limb.limb_id)
 			old_limb.set_icon_static(chosen_style)
 			old_limb.current_style = prefs.augment_limb_styles[slot]
 		else
-			old_limb.limb_id = "robotic"
-			old_limb.base_limb_id = "robotic"
+			old_limb.limb_id = initial(new_limb.limb_id)
+			old_limb.base_limb_id = initial(new_limb.limb_id)
 			old_limb.set_icon_static(initial(new_limb.icon))
 		old_limb.should_draw_greyscale = FALSE
 
