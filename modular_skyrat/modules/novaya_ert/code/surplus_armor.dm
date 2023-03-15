@@ -105,9 +105,9 @@
 /// Decides if the armor vest should have its extra plates or not
 /obj/item/clothing/suit/armor/vest/nri_surplus_vest/proc/generate_random_accessories()
 	if(pick_weight(extra_plates_yeah_or_nah) == "has_da_plates")
-		icon_state = "basic_vest_extra"
+		icon_state = "vest_extra"
 	else
-		icon_state = "basic_vest"
+		icon_state = "basic"
 
 	update_appearance()
 
