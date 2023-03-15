@@ -721,10 +721,10 @@
 		/obj/item/clothing/mask/balaclavaadjust = 3,
 	)
 
-/datum/supply_pack/security/armory/russian/fill(obj/structure/closet/crate/C)
+/datum/supply_pack/security/armory/russian/fill(obj/structure/closet/crate/we_are_filling_this_crate)
 	for(var/i in 1 to 10)
 		var/item = pick_weight(contains)
-		new item(C)
+		new item(we_are_filling_this_crate)
 
 /*
 * VENDING RESTOCKS

@@ -13,6 +13,11 @@
 #define CIN_MARINE_COLORS_COMPLIMENT "#39394d"
 #define CIN_EVIL_COLORS_COMPLIMENT "#3d3d46"
 
+#define HELMET_NO_ACCESSORIES "plain"
+#define HELMET_CHINSTRAP "strap"
+#define HELMET_GLASS_VISOR "glass"
+#define HELMET_BOTH_OF_THE_ABOVE "both"
+
 // Shared Armor Datum
 // CIN armor is decently tough against bullets and wounding, but flounders when lasers enter the play, because it wasn't designed to protect against those much
 
@@ -42,10 +47,10 @@
 
 	/// Controls what helmet accessories will be present in a weighted format
 	var/static/list/accessories_weighted_list = list(
-		"plain" = 15,
-		"strap" = 10,
-		"glass" = 10,
-		"both" = 5,
+		HELMET_NO_ACCESSORIES = 15,
+		HELMET_CHINSTRAP = 10,
+		HELMET_GLASS_VISOR = 10,
+		HELMET_BOTH_OF_THE_ABOVE = 5,
 	)
 
 /obj/item/clothing/head/helmet/cin_surplus_helmet/Initialize(mapload)
@@ -59,7 +64,7 @@
 
 	icon_state = "helmet_[chosen_accessories]"
 
-	if(chosen_accessories == ("glass" || "both"))
+	if(chosen_accessories == (HELMET_GLASS_VISOR || HELMET_BOTH_OF_THE_ABOVE))
 		flags_cover = HEADCOVERSEYES
 	else
 		flags_cover = NONE
@@ -151,12 +156,6 @@
 	armor_type = /datum/armor/cin_surplus_armor
 	supports_variations_flags = CLOTHING_NO_VARIATION
 
-	/// Weighted list for determining if the vest will have its extra plates or not
-	var/static/list/extra_plates_yeah_or_nah = list(
-		"has_da_plates" = 1,
-		"do_not_the_cat" = 2,
-	)
-
 /obj/item/clothing/suit/armor/vest/cin_surplus_vest/Initialize(mapload)
 	. = ..()
 
@@ -164,7 +163,7 @@
 
 /// Decides if the armor vest should have its extra plates or not
 /obj/item/clothing/suit/armor/vest/cin_surplus_vest/proc/generate_random_accessories()
-	if(pick_weight(extra_plates_yeah_or_nah) == "has_da_plates")
+	if(prob(30))
 		icon_state = "vest_extra"
 		body_parts_covered = CHEST|GROIN // In reality this does like nothing at all but flavor you know
 	else
