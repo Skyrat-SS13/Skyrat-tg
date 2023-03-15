@@ -207,7 +207,8 @@ GLOBAL_LIST_EMPTY(clock_scriptures_by_type)
 
 
 /datum/scripture/create_structure/check_special_requirements(mob/user)
-	if(!..())
+	. = ..()
+	if(!.)
 		return FALSE
 
 	if(locate(/obj/structure/destructible/clockwork) in get_turf(invoker))
