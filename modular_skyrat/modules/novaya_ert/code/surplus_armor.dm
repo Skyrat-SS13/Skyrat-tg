@@ -85,9 +85,7 @@
 	desc = "Wait a minute, there should be something here!."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
-	icon_state = "basic_vest"
-	greyscale_config = /datum/greyscale_config/nri_surplus_vest
-	greyscale_config_worn = /datum/greyscale_config/nri_surplus_vest
+	icon_state = "vest_basic"
 	armor_type = /datum/armor/russian_nri
 	supports_variations_flags = CLOTHING_NO_VARIATION
 
@@ -107,7 +105,7 @@
 	if(pick_weight(extra_plates_yeah_or_nah) == "has_da_plates")
 		icon_state = "vest_extra"
 	else
-		icon_state = "basic"
+		icon_state = "vest_basic"
 
 	update_appearance()
 
