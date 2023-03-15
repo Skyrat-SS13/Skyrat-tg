@@ -93,8 +93,8 @@
 
 	/// Weighted list for determining if the vest will have its extra plates or not
 	var/static/list/extra_plates_yeah_or_nah = list(
-		TRUE = 1,
-		FALSE = 2,
+		"has_da_plates" = 1,
+		"do_not_the_cat" = 2,
 	)
 
 /obj/item/clothing/suit/armor/vest/nri_surplus_vest/Initialize(mapload)
@@ -104,9 +104,15 @@
 
 /// Decides if the armor vest should have its extra plates or not
 /obj/item/clothing/suit/armor/vest/nri_surplus_vest/proc/generate_random_accessories()
-	if(pick_weight(extra_plates_yeah_or_nah))
+	if(pick_weight(extra_plates_yeah_or_nah) == "has_da_plates")
 		icon_state = "basic_vest_extra"
 	else
 		icon_state = "basic_vest"
 
 	update_appearance()
+
+#undef NRI_WINTER_COLORS
+#undef NRI_MOUNTAIN_DESERT_COLORS
+#undef NRI_FOREST_COLORS
+#undef NRI_MARINE_COLORS
+#undef NRI_PEACEKEEPER_COLORS
