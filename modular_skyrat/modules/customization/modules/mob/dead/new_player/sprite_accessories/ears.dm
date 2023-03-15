@@ -173,7 +173,7 @@
 /datum/sprite_accessory/ears/mutant/jellyfish
 	name = "Jellyfish"
 	icon_state = "jellyfish"
-	color_src = HAIR
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/ears/mutant/kangaroo
 	name = "Kangaroo"
