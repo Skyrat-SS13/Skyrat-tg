@@ -8,7 +8,7 @@ export const NifSoulPoem = (props, context) => {
     name_to_send,
     text_to_send,
     messages = [],
-    recieving_data,
+    receiving_data,
     transmitting_data,
   } = data;
   return (
@@ -60,12 +60,12 @@ export const NifSoulPoem = (props, context) => {
                 {transmitting_data ? 'True' : 'False'}
               </Button>
             </LabeledList.Item>
-            <LabeledList.Item label="Toggle recieving">
+            <LabeledList.Item label="Toggle receiving">
               <Button
                 fluid
-                onClick={() => act('toggle_recieving', {})}
-                color={recieving_data ? 'green' : 'red'}>
-                {recieving_data ? 'True' : 'False'}
+                onClick={() => act('toggle_receiving', {})}
+                color={receiving_data ? 'green' : 'red'}>
+                {receiving_data ? 'True' : 'False'}
               </Button>
             </LabeledList.Item>
           </LabeledList>

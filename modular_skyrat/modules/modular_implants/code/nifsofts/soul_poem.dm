@@ -16,8 +16,8 @@
 
 	///Is the NIFSoft transmitting data?
 	var/transmitting_data = TRUE
-	///Is the NIFSoft recieving data?
-	var/recieving_data = TRUE
+	///Is the NIFSoft receiving data?
+	var/receiving_data = TRUE
 	///What username is being sent out?
 	var/transmitted_name = ""
 	///What message is being sent to other users?
@@ -51,9 +51,16 @@
 
 	return ..()
 
-///Adds a message to the message_list based off the received_name and received_message. sender_identifier is used to determine the user sending the message, this is to prevent messages from the same person filling the message_list.
+/**
+* Adds a message to the message_list of the parent NIFSoft based off the sender_identifier, received_name, and received_message.
+*
+* * sender_identifier - This variable is used to determine the identity of the sender. This is mostly just here so that the same person can't send multiple messages.
+* * received_name - What name is attached to the associated message?
+* * received_message - The contents of the added message.
+*/
+
 /datum/nifsoft/soul_poem/proc/add_message(sender_identifier, received_name, received_message)
-	if(!received_message)
+	if(!received_message || !receiving_data)
 		return FALSE
 
 	var/message_name = "Unkown User"
@@ -103,9 +110,19 @@
 	persistence.soul_poem_nifsoft_name = transmitted_name
 	return TRUE
 
-///The proximty_monitor datum used by the soul_poem NIFSoft
+/// Attempts to send a message to the target_nifsoft, if it exists. Returns FALSE if the message fails to send.
+/datum/nifsoft/soul_poem/proc/send_message(datum/nifsoft/soul_poem/target_nifsoft)
+	if(!transmitting_data || !target_nifsoft || !transmitted_message)
+		return FALSE
+
+	if(!target_nifsoft.add_message(transmitted_identifier, transmitted_name,  transmitted_message))
+		return FALSE
+
+	return TRUE
+
+/// The proximty_monitor datum used by the soul_poem NIFSoft
 /datum/proximity_monitor/advanced/soul_poem
-	///What NIFSoft is this currently attached to?
+	/// What NIFSoft is this currently attached to?
 	var/datum/weakref/parent_nifsoft
 
 /datum/proximity_monitor/advanced/soul_poem/on_entered(turf/source, atom/movable/entered)
@@ -113,22 +130,21 @@
 	if(host == entered)
 		return FALSE
 
-	var/datum/nifsoft/soul_poem/recieving_nifsoft = parent_nifsoft.resolve()
-	if(!recieving_nifsoft || (!recieving_nifsoft.transmitting_data && !recieving_nifsoft.recieving_data))
+	var/datum/nifsoft/soul_poem/receiving_nifsoft = parent_nifsoft.resolve()
+	if(!receiving_nifsoft || (!receiving_nifsoft.transmitting_data && !receiving_nifsoft.receiving_data))
 		return FALSE
 
 	var/mob/living/carbon/human/entered_human = entered
-	if(!entered)
+	if(!ishuman(entered_human))
 		return FALSE
 
 	var/datum/nifsoft/soul_poem/sending_nifsoft = entered_human.find_nifsoft(/datum/nifsoft/soul_poem)
 	if(!sending_nifsoft)
 		return FALSE
 
-	if(recieving_nifsoft.recieving_data && sending_nifsoft.transmitting_data)
-		recieving_nifsoft.add_message(sending_nifsoft.transmitted_identifier, sending_nifsoft.transmitted_name, sending_nifsoft.transmitted_message)
-	if(sending_nifsoft.recieving_data && recieving_nifsoft.transmitting_data)
-		sending_nifsoft.add_message(recieving_nifsoft.transmitted_identifier, recieving_nifsoft.transmitted_name, recieving_nifsoft.transmitted_message)
+	sending_nifsoft.send_message(receiving_nifsoft)
+	receiving_nifsoft.send_message(sending_nifsoft)
+
 	return TRUE
 
 //TGUI
@@ -146,7 +162,7 @@
 	for(var/message in message_list)
 		data["messages"] += list(message)
 
-	data["recieving_data"] = recieving_data
+	data["receiving_data"] = receiving_data
 	data["transmitting_data"] = transmitting_data
 
 	return data
@@ -192,6 +208,6 @@
 			transmitting_data = !transmitting_data
 			return TRUE
 
-		if("toggle_recieving")
-			recieving_data = !recieving_data
+		if("toggle_receiving")
+			receiving_data = !receiving_data
 			return TRUE
