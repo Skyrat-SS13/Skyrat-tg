@@ -33,12 +33,16 @@ GLOBAL_LIST_EMPTY_TYPED(polarizaton_controllers, /datum/component/polarization_c
 		LAZYADD(GLOB.polarization_controllers[id], src)
 
 	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(on_window_attackby))
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_window_examine))
 	RegisterSignal(parent, COMSIG_ATOM_TOOL_ACT(TOOL_MULTITOOL), PROC_REF(on_window_multitool_act))
 
 
 /datum/component/polarization_controller/Destroy(force, silent)
 	if(id)
 		LAZYREMOVE(GLOB.polarization_controllers[id], src)
+
+	if(used_capacitor)
+		QDEL_NULL(used_capacitor)
 
 	return ..()
 
@@ -108,8 +112,14 @@ GLOBAL_LIST_EMPTY_TYPED(polarizaton_controllers, /datum/component/polarization_c
 	SIGNAL_HANDLER
 
 	examine_strings += span_notice("It has a polarization controller installed.")
+	examine_strings += span_notice("Use a <b>window polarizing controller</b> on it to link it to that controller's current ID.")
+	examine_strings += span_notice("Use a <b>multitool</b> on it to remove the polarization controller.")
 
 
+/**
+ * Signal handler to handle the removal of this component when someone uses a
+ * multitool (or something that acts like one) on the parent window.
+ */
 /datum/component/polarization_controller/proc/on_window_multitool_act(datum/source, mob/user, obj/item/tool)
 	SIGNAL_HANDLER
 
@@ -121,11 +131,21 @@ GLOBAL_LIST_EMPTY_TYPED(polarizaton_controllers, /datum/component/polarization_c
 		managed_window.balloon_alert(user, "cancelled removal")
 		return TOOL_ACT_SIGNAL_BLOCKING
 
+	toggle(FALSE)
+
 	if(!used_capacitor)
 		used_capacitor = new
 
 	used_capacitor.forceMove(managed_window.drop_location())
+
+	used_capacitor = null
+
 	UnregisterSignal(parent, COMSIG_PARENT_ATTACKBY)
-	UnregisterSignal(parent, COMSIG_ATOM_TOOL_ACT(TOOL_MULTITOOL))
 	UnregisterSignal(parent, COMSIG_PARENT_EXAMINE)
+	UnregisterSignal(parent, COMSIG_ATOM_TOOL_ACT(TOOL_MULTITOOL))
+
 	managed_window.balloon_alert(user, "removed polarization controller")
+
+	qdel(src)
+
+	return TOOL_ACT_SIGNAL_BLOCKING
