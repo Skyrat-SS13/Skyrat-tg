@@ -81,10 +81,12 @@
 /obj/item/clothing/under/syndicate/rus_army/nri_surplus/Initialize(mapload)
 	. = ..()
 
+/*
 	var/camo_icon_to_use = icon('modular_skyrat/modules/novaya_ert/icons/surplus_armor/camo_overlay.dmi', "tiger_[rand(1, 3)]")
 
 	ADD_KEEP_TOGETHER(src, INNATE_TRAIT)
 	add_filter("camo_clothing_filter", priority = 1, params = layering_filter(icon = camo_icon_to_use, blend_mode = BLEND_INSET_OVERLAY))
+*/
 
 /obj/item/clothing/under/syndicate/rus_army/nri_surplus/desert
 	greyscale_colors = "#aa6d4c#aa6d4c#34343a"
