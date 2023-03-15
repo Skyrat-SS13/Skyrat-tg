@@ -58,6 +58,12 @@
 	var/chosen_accessories = pick_weight(accessories_weighted_list)
 
 	icon_state = "helmet_[chosen_accessories]"
+
+	if(chosen_accessories == ("glass" || "both"))
+		flags_cover = HEADCOVERSEYES
+	else
+		flags_cover = NONE
+
 	update_appearance()
 
 /obj/item/clothing/head/helmet/cin_surplus_helmet/examine_more(mob/user)
@@ -160,8 +166,10 @@
 /obj/item/clothing/suit/armor/vest/cin_surplus_vest/proc/generate_random_accessories()
 	if(pick_weight(extra_plates_yeah_or_nah) == "has_da_plates")
 		icon_state = "vest_extra"
+		body_parts_covered = CHEST|GROIN // In reality this does like nothing at all but flavor you know
 	else
 		icon_state = "vest_basic"
+		body_parts_covered = CHEST
 
 	update_appearance()
 
