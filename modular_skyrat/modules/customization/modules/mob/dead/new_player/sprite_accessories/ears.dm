@@ -160,7 +160,6 @@
 /datum/sprite_accessory/ears/mutant/akula/hammerhead
 	name = "Hammerhead"
 	icon_state = "hammerhead"
-	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/ears/mutant/husky
 	name = "Husky"
