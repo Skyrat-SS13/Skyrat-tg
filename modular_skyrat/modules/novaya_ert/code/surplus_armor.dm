@@ -7,6 +7,12 @@
 #define CIN_MARINE_COLORS "#51517b"
 #define CIN_EVIL_COLORS "#5d5d66"
 
+#define CIN_WINTER_COLORS_COMPLIMENT "#838392"
+#define CIN_MOUNTAIN_DESERT_COLORS_COMPLIMENT "#a37e45"
+#define CIN_FOREST_COLORS_COMPLIMENT "#474734"
+#define CIN_MARINE_COLORS_COMPLIMENT "#39394d"
+#define CIN_EVIL_COLORS_COMPLIMENT "#3d3d46"
+
 // Shared Armor Datum
 // CIN armor is decently tough against bullets and wounding, but flounders when lasers enter the play, because it wasn't designed to protect against those much
 
@@ -174,8 +180,85 @@
 
 	return .
 
+// Chest Rig
+
+/obj/item/storage/belt/military/cin_surplus
+	desc = "A tactical webbing often used by the CIN's military forces."
+	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
+	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
+	icon_state = "chestrig"
+	greyscale_config = /datum/greyscale_config/cin_surplus_chestrig
+	greyscale_config_worn = /datum/greyscale_config/cin_surplus_chestrig
+	greyscale_colors = CIN_WINTER_COLORS_COMPLIMENT
+
+/obj/item/storage/belt/military/cin_surplus/desert
+	greyscale_colors = CIN_MOUNTAIN_DESERT_COLORS_COMPLIMENT
+
+/obj/item/storage/belt/military/cin_surplus/forest
+	greyscale_colors = CIN_FOREST_COLORS_COMPLIMENT
+
+/obj/item/storage/belt/military/cin_surplus/marine
+	greyscale_colors = CIN_MARINE_COLORS_COMPLIMENT
+
+/obj/item/storage/belt/military/cin_surplus/random_color
+	/// The different colors this can choose from when initializing
+	var/static/list/possible_spawning_colors = list(
+		CIN_WINTER_COLORS_COMPLIMENT,
+		CIN_MOUNTAIN_DESERT_COLORS_COMPLIMENT,
+		CIN_FOREST_COLORS_COMPLIMENT,
+		CIN_MARINE_COLORS_COMPLIMENT,
+		CIN_EVIL_COLORS_COMPLIMENT,
+	)
+
+/obj/item/storage/belt/military/cin_surplus/random_color/Initialize(mapload)
+	greyscale_colors = pick(possible_spawning_colors)
+
+	. = ..()
+
+// Backpack
+
+/obj/item/storage/backpack/industrial/cin_surplus
+	name = "\improper CIN military backpack"
+	desc = "A rugged backpack often used by the CIN's military forces."
+	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
+	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
+	icon_state = "backpack"
+	greyscale_config = /datum/greyscale_config/cin_surplus_backpack
+	greyscale_config_worn = /datum/greyscale_config/cin_surplus_backpack
+	greyscale_colors = CIN_WINTER_COLORS_COMPLIMENT
+
+/obj/item/storage/backpack/industrial/cin_surplus/desert
+	greyscale_colors = CIN_MOUNTAIN_DESERT_COLORS_COMPLIMENT
+
+/obj/item/storage/backpack/industrial/cin_surplus/forest
+	greyscale_colors = CIN_FOREST_COLORS_COMPLIMENT
+
+/obj/item/storage/backpack/industrial/cin_surplus/marine
+	greyscale_colors = CIN_MARINE_COLORS_COMPLIMENT
+
+/obj/item/storage/backpack/industrial/cin_surplus/random_color
+	/// The different colors this can choose from when initializing
+	var/static/list/possible_spawning_colors = list(
+		CIN_WINTER_COLORS_COMPLIMENT,
+		CIN_MOUNTAIN_DESERT_COLORS_COMPLIMENT,
+		CIN_FOREST_COLORS_COMPLIMENT,
+		CIN_MARINE_COLORS_COMPLIMENT,
+		CIN_EVIL_COLORS_COMPLIMENT,
+	)
+
+/obj/item/storage/backpack/industrial/cin_surplus/random_color/Initialize(mapload)
+	greyscale_colors = pick(possible_spawning_colors)
+
+	. = ..()
+
 #undef CIN_WINTER_COLORS
 #undef CIN_MOUNTAIN_DESERT_COLORS
 #undef CIN_FOREST_COLORS
 #undef CIN_MARINE_COLORS
 #undef CIN_EVIL_COLORS
+
+#undef CIN_WINTER_COLORS_COMPLIMENT
+#undef CIN_MOUNTAIN_DESERT_COLORS_COMPLIMENT
+#undef CIN_FOREST_COLORS_COMPLIMENT
+#undef CIN_MARINE_COLORS_COMPLIMENT
+#undef CIN_EVIL_COLORS_COMPLIMENT
