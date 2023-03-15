@@ -73,6 +73,35 @@ GLOBAL_LIST_EMPTY(scream_types)
 	male_screamsounds = list('sound/voice/ethereal/ethereal_scream_1.ogg', 'sound/voice/ethereal/ethereal_scream_2.ogg', 'sound/voice/ethereal/ethereal_scream_3.ogg')
 	female_screamsounds = null
 
+/datum/scream_type/donkey
+	name = "Cow Scream"
+	male_screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/cow_scream.ogg')
+	female_screamsounds = null
+
+/datum/scream_type/donkey
+	name = "Donkey Scream"
+	male_screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/donkey_scream.ogg')
+	female_screamsounds = null
+
+/datum/scream_type/gator
+	name = "Gator Scream"
+	male_screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/gator_scream.ogg')
+	female_screamsounds = null
+
+/datum/scream_type/horse
+	name = "Horse Scream"
+	male_screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/horse_scream_1.ogg', 'modular_skyrat/modules/emotes/sound/emotes/horse_scream_2.ogg')
+	female_screamsounds = null
+
+/datum/scream_type/husky
+	name = "Husky Scream"
+	male_screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/husky_scream.ogg')
+	female_screamsounds = null
+
+/datum/scream_type/turkey
+	name = "Turkey Scream"
+	male_screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/turkey_scream.ogg')
+	female_screamsounds = null
 //DONATOR SCREAMS
 /datum/scream_type/zombie
 	name = "Zombie Scream"
