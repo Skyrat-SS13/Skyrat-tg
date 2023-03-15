@@ -1,0 +1,31 @@
+/obj/item/assembly/control/polarizer
+	name = "window polarizing controller"
+	desc = "A small electronic device able to control the polarization status of linked windows remotely."
+	/// Whether the connected windows are meant to be polarized or not.
+	var/polarizing = FALSE
+
+/obj/item/assembly/control/polarizer/multitool_act(mob/living/user)
+	var/change_id = tgui_input_number(user, "Set [src]'s ID", "Polarization ID", id, 1000)
+	if(!change_id || QDELETED(user) || QDELETED(src) || !usr.can_perform_action(src, FORBID_TELEKINESIS_REACH))
+		return
+
+	id = change_id
+	balloon_alert(user, "id changed")
+	to_chat(user, span_notice("You change the ID to [id]."))
+
+/obj/item/assembly/control/polarizer/activate()
+	if(cooldown)
+		return
+
+	cooldown = TRUE
+
+	if(!GLOB.polarization_controllers[id])
+		addtimer(VARSET_CALLBACK(src, cooldown, FALSE), 1 SECONDS) // Just so they can't spam the button.
+		return
+
+	polarizing = !polarizing
+
+	for(var/datum/component/polarization_controller/controller as anything in GLOB.polarization_controllers[id])
+		controller.toggle(polarizing)
+
+	addtimer(VARSET_CALLBACK(src, cooldown, FALSE), 1 SECONDS)
