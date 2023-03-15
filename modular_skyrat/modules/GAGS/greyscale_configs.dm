@@ -1134,18 +1134,18 @@ digi
 */
 
 // Helmet
-/datum/greyscale_config/nri_surplus_helmet
-	name = "NRI Surplus Helmet"
+/datum/greyscale_config/cin_surplus_helmet
+	name = "CIN Surplus Helmet"
 	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/nri_surplus_equipment/helmet.json'
 
 // Undersuit
-/datum/greyscale_config/nri_surplus_undersuit
-	name = "NRI Surplus Undersuit"
+/datum/greyscale_config/cin_surplus_undersuit
+	name = "CIN Surplus Undersuit"
 	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/nri_surplus_equipment/undersuit.json'
 
-/datum/greyscale_config/nri_surplus_undersuit/digi
+/datum/greyscale_config/cin_surplus_undersuit/digi
 	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_digi.dmi'
 
 
