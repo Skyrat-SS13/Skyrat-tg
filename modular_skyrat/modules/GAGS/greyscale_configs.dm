@@ -1149,7 +1149,7 @@ digi
 /datum/greyscale_config/nri_surplus_undersuit
 	name = "NRI Surplus Undersuit"
 	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/nri_surplus_equipment/vest_basic.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/nri_surplus_equipment/undersuit.json'
 
 /datum/greyscale_config/nri_surplus_undersuit/digi
 	icon_file = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor_digi.dmi'

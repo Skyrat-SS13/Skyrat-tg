@@ -14,7 +14,7 @@
 	desc = "Wait a minute, there should be something here!."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
-	icon_state = "helmet_underlay"
+	icon_state = "helmet_plain"
 	greyscale_config = /datum/greyscale_config/nri_surplus_helmet
 	greyscale_config_worn = /datum/greyscale_config/nri_surplus_helmet
 	greyscale_colors = NRI_WINTER_COLORS
