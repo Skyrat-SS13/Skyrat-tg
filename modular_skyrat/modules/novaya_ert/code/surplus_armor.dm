@@ -5,7 +5,15 @@
 #define NRI_MOUNTAIN_DESERT_COLORS "#aa6d4c"
 #define NRI_FOREST_COLORS "#6D6D51"
 #define NRI_MARINE_COLORS "#51517b"
-#define NRI_PEACEKEEPER_COLORS "#6699ff"
+#define NRI_EVIL_COLORS "#34343a"
+
+GLOBAL_LIST_INIT(nri_random_camo_colors, list(
+	NRI_WINTER_COLORS,
+	NRI_MOUNTAIN_DESERT_COLORS,
+	NRI_FOREST_COLORS,
+	NRI_MARINE_COLORS,
+	NRI_EVIL_COLORS,
+))
 
 // Hats
 
@@ -50,8 +58,14 @@
 /obj/item/clothing/head/helmet/nri_surplus_helmet/marine
 	greyscale_colors = NRI_MARINE_COLORS
 
-/obj/item/clothing/head/helmet/nri_surplus_helmet/peacekeeper
-	greyscale_colors = NRI_PEACEKEEPER_COLORS
+/obj/item/clothing/head/helmet/nri_surplus_helmet/random_color
+
+/obj/item/clothing/head/helmet/nri_surplus_helmet/random_color/Initialize(mapload)
+	. = ..()
+
+	greyscale_colors = pick(GLOB.nri_random_camo_colors)
+
+	update_appearance()
 
 // Undersuits
 
@@ -64,19 +78,25 @@
 	greyscale_config = /datum/greyscale_config/nri_surplus_undersuit
 	greyscale_config_worn = /datum/greyscale_config/nri_surplus_undersuit
 	greyscale_config_worn_digi = /datum/greyscale_config/nri_surplus_undersuit/digi
-	greyscale_colors = NRI_WINTER_COLORS
+	greyscale_colors = "#bbbbc9#bbbbc9#34343a"
 
 /obj/item/clothing/under/syndicate/rus_army/nri_surplus/desert
-	greyscale_colors = NRI_MOUNTAIN_DESERT_COLORS
+	greyscale_colors = "#aa6d4c#aa6d4c#34343a"
 
 /obj/item/clothing/under/syndicate/rus_army/nri_surplus/forest
-	greyscale_colors = NRI_FOREST_COLORS
+	greyscale_colors = "#6D6D51#6D6D51#34343a"
 
 /obj/item/clothing/under/syndicate/rus_army/nri_surplus/marine
-	greyscale_colors = NRI_MARINE_COLORS
+	greyscale_colors = "#51517b#51517b#34343a"
 
-/obj/item/clothing/under/syndicate/rus_army/nri_surplus/peacekeeper
-	greyscale_colors = NRI_PEACEKEEPER_COLORS
+/obj/item/clothing/under/syndicate/rus_army/nri_surplus/random_color
+
+/obj/item/clothing/under/syndicate/rus_army/nri_surplus/random_color/Initialize(mapload)
+	. = ..()
+
+	greyscale_colors = "[pick(GLOB.nri_random_camo_colors)][pick(GLOB.nri_random_camo_colors)][NRI_EVIL_COLORS]"
+
+	update_appearance()
 
 // Vests
 
@@ -113,4 +133,3 @@
 #undef NRI_MOUNTAIN_DESERT_COLORS
 #undef NRI_FOREST_COLORS
 #undef NRI_MARINE_COLORS
-#undef NRI_PEACEKEEPER_COLORS
