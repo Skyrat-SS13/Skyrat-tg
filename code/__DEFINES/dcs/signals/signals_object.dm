@@ -155,6 +155,8 @@
 	#define COMPONENT_OFFER_TAKE_INTERRUPT (1<<0)
 /// sent from obj/effect/attackby(): (/obj/effect/hit_effect, /mob/living/attacker, params)
 #define COMSIG_ITEM_ATTACK_EFFECT "item_effect_attacked"
+/// Called by /obj/item/proc/worn_overlays(list/overlays, mutable_appearance/standing, isinhands, icon_file)
+#define COMSIG_ITEM_GET_WORN_OVERLAYS "item_get_worn_overlays"
 
 ///from base of [/obj/item/proc/tool_check_callback]: (mob/living/user)
 #define COMSIG_TOOL_IN_USE "tool_in_use"
@@ -414,3 +416,6 @@
 
 /// from /obj/item/detective_scanner/scan(): (mob/user, list/extra_data)
 #define COMSIG_DETECTIVE_SCANNED "det_scanned"
+
+/// from /obj/machinery/mineral/ore_redemption/pickup_item when it successfully picks something up
+#define COMSIG_ORM_COLLECTED_ORE "orm_collected_ore"

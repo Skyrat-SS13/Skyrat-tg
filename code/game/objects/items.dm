@@ -131,6 +131,10 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/armour_penetration = 0
 	///Whether or not our object is easily hindered by the presence of armor
 	var/weak_against_armour = FALSE
+	/// The click cooldown given after attacking. Lower numbers means faster attacks
+	var/attack_speed = CLICK_CD_MELEE
+	/// The click cooldown on secondary attacks. Lower numbers mean faster attacks. Will use attack_speed if undefined.
+	var/secondary_attack_speed
 	///In deciseconds, how long an item takes to equip; counts only for normal clothing slots, not pockets etc.
 	var/equip_delay_self = 0
 	///In deciseconds, how long an item takes to put on another person
@@ -250,8 +254,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_NEW_ITEM, src)
 	if(LAZYLEN(embedding))
 		updateEmbedding()
-	if(mapload && !GLOB.steal_item_handler.generated_items)
-		add_stealing_item_objective()
 
 /obj/item/Destroy(force)
 	// This var exists as a weird proxy "owner" ref
@@ -309,7 +311,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	LAZYREMOVE(actions, action)
 	qdel(action)
 
-/// Called if this item is supposed to be a steal objective item objective. Only done at mapload
+/// Called if this item is supposed to be a steal objective item objective.
 /obj/item/proc/add_stealing_item_objective()
 	return
 
@@ -364,6 +366,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	// SKYRAT EDIT ADD START
 	if(greyscale_config_worn_digi)
 		worn_icon_digi = SSgreyscale.GetColoredIconByType(greyscale_config_worn_digi, greyscale_colors)
+	if(greyscale_config_worn_monkey)
+		worn_icon_monkey = SSgreyscale.GetColoredIconByType(greyscale_config_worn_monkey, greyscale_colors)
 	if(greyscale_config_worn_vox)
 		worn_icon_vox = SSgreyscale.GetColoredIconByType(greyscale_config_worn_vox, greyscale_colors)
 	if(greyscale_config_worn_better_vox)
@@ -565,7 +569,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(grav > STANDARD_GRAVITY)
 		var/grav_power = min(3,grav - STANDARD_GRAVITY)
 		to_chat(user,span_notice("You start picking up [src]..."))
-		if(!do_mob(user,src,30*grav_power))
+		if(!do_after(user, 30 * grav_power, src))
 			return
 
 
@@ -1065,13 +1069,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		// Create a callback with checks that would be called every tick by do_after.
 		var/datum/callback/tool_check = CALLBACK(src, PROC_REF(tool_check_callback), user, amount, extra_checks)
 
-		if(ismob(target))
-			if(!do_mob(user, target, delay, extra_checks=tool_check))
-				return
-
-		else
-			if(!do_after(user, delay, target=target, extra_checks=tool_check))
-				return
+		if(!do_after(user, delay, target=target, extra_checks=tool_check))
+			return
 	else
 		// Invoke the extra checks once, just in case.
 		if(extra_checks && !extra_checks.Invoke())
@@ -1196,13 +1195,13 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
  * * target- Either a body part or a carbon. What are we hitting?
  * * forced- Do we want this to go through 100%?
  */
-/obj/item/proc/tryEmbed(atom/target, forced=FALSE, silent=FALSE)
+/obj/item/proc/tryEmbed(atom/target, forced=FALSE)
 	if(!isbodypart(target) && !iscarbon(target))
 		return NONE
 	if(!forced && !LAZYLEN(embedding))
 		return NONE
 
-	if(SEND_SIGNAL(src, COMSIG_EMBED_TRY_FORCE, target, forced, silent))
+	if(SEND_SIGNAL(src, COMSIG_EMBED_TRY_FORCE, target = target, forced = forced))
 		return COMPONENT_EMBED_SUCCESS
 	failedEmbed()
 
@@ -1262,7 +1261,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 		victim.apply_damage(max(15, force), BRUTE, BODY_ZONE_HEAD, wound_bonus = 10, sharpness = TRUE)
 		victim.losebreath += 2
-		if(tryEmbed(victim.get_bodypart(BODY_ZONE_CHEST), TRUE, TRUE)) //and if it embeds successfully in their chest, cause a lot of pain
+		if(tryEmbed(victim.get_bodypart(BODY_ZONE_CHEST), forced = TRUE)) //and if it embeds successfully in their chest, cause a lot of pain
 			victim.apply_damage(max(25, force*1.5), BRUTE, BODY_ZONE_CHEST, wound_bonus = 7, sharpness = TRUE)
 			victim.losebreath += 6
 			discover_after = FALSE
@@ -1634,3 +1633,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	user.log_message("is putting [equipping] on [key_name(target)]", LOG_ATTACK, color="red")
 	target.log_message("is having [equipping] put on them by [key_name(user)]", LOG_VICTIM, color="orange", log_globally=FALSE)
+
+/obj/item/update_atom_colour()
+	. = ..()
+	update_slot_icon()

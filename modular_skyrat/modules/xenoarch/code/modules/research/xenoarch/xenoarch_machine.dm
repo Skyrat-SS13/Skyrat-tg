@@ -17,8 +17,8 @@
 /obj/machinery/xenoarch/RefreshParts()
 	. = ..()
 	efficiency = -1
-	for(var/obj/item/stock_parts/micro_laser/laser_part in component_parts)
-		efficiency += laser_part.rating
+	for(var/datum/stock_part/micro_laser/laser_part in component_parts)
+		efficiency += laser_part.tier
 	process_speed = initial(process_speed) - (6 SECONDS * efficiency)
 
 /obj/machinery/xenoarch/Initialize(mapload)
