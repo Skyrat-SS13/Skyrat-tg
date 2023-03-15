@@ -652,7 +652,7 @@
 		"rtd_loaded",
 		"sheetifier",
 		"weldingmask",
-
+		"bolter_wrench",
 		//SKYRAT EDIT START - RESEARCH DESIGNS
 		"engine_goggles_prescription",
 		"mesons_prescription",
