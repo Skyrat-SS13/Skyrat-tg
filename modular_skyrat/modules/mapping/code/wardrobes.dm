@@ -8,7 +8,7 @@
 	icon_state = "syndrobe"
 	product_ads = "Put a Donk on it!;Aim, Style, Shoot!;Brigged for wearing the best!"
 	vend_reply = "Thank you for using the SynDrobe!"
-
+	light_mask = ""
 	products = list(
 		/obj/item/clothing/under/syndicate/skyrat/tactical = 3,
 		/obj/item/clothing/under/syndicate/skyrat/tactical/skirt = 3,
@@ -21,7 +21,7 @@
 		/obj/item/clothing/shoes/combat = 3,
 		/obj/item/clothing/mask/gas/syndicate = 3,
 		/obj/item/clothing/mask/gas/sechailer/syndicate = 3,
-		/obj/item/clothing/suit/hooded/wintercoat/syndicate = 5,
+		/obj/item/clothing/suit/hooded/wintercoat/skyrat/syndicate = 5,
 		/obj/item/clothing/head/soft/sec/syndicate = 3,
 		/obj/item/clothing/head/beret/sec/syndicate = 3,
 	)

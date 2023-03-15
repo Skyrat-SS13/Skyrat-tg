@@ -80,8 +80,8 @@ GLOBAL_LIST_EMPTY(escape_menus)
 	switch (menu_page)
 		if (PAGE_HOME)
 			show_home_page()
-		if (PAGE_LEAVE_BODY)
-			show_leave_body_page()
+		//if (PAGE_LEAVE_BODY) //SKYRAT EDIT REMOVAL
+			//show_leave_body_page() //SKYRAT EDIT REMOVAL
 		else
 			CRASH("Unknown escape menu page: [menu_page]")
 

@@ -24,6 +24,8 @@ GLOBAL_LIST(veteran_players)
 		return TRUE
 	if(check_rights_for(user, R_ADMIN))
 		return TRUE
+	if(GLOB.deadmins[user.ckey])
+		return TRUE
 	return FALSE
 
 #undef VETERANPLAYERS

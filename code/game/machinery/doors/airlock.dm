@@ -167,7 +167,6 @@
 		SetBounds()
 	update_overlays()
 	//SKYRAT EDIT END
-	init_network_id(NETWORK_DOOR_AIRLOCKS)
 	wires = set_wires()
 	if(glass)
 		airlock_material = "glass"
@@ -187,7 +186,6 @@
 	diag_hud_set_electrified()
 
 	RegisterSignal(src, COMSIG_MACHINERY_BROKEN, PROC_REF(on_break))
-	RegisterSignal(src, COMSIG_COMPONENT_NTNET_RECEIVE, PROC_REF(ntnet_receive))
 
 	// Click on the floor to close airlocks
 	var/static/list/connections = list(
@@ -238,56 +236,6 @@
 			cyclelinkairlock()
 		if (NAMEOF(src, secondsElectrified))
 			set_electrified(vval < MACHINE_NOT_ELECTRIFIED ? MACHINE_ELECTRIFIED_PERMANENT : vval) //negative values are bad mkay (unless they're the intended negative value!)
-
-
-/obj/machinery/door/airlock/check_access_ntnet(datum/netdata/data)
-	return !requiresID() || ..()
-
-/obj/machinery/door/airlock/proc/ntnet_receive(datum/source, datum/netdata/data)
-	SIGNAL_HANDLER
-
-	// Check if the airlock is powered and can accept control packets.
-	if(!hasPower() || !canAIControl())
-		return
-
-	// Handle received packet.
-	var/command = data.data["data"]
-	var/command_value = data.data["data_secondary"]
-	switch(command)
-		if("open")
-			if(command_value == "on" && !density)
-				return
-
-			if(command_value == "off" && density)
-				return
-
-			if(density)
-				INVOKE_ASYNC(src, PROC_REF(open))
-			else
-				INVOKE_ASYNC(src, PROC_REF(close))
-
-		if("bolt")
-			if(command_value == "on" && locked)
-				return
-
-			if(command_value == "off" && !locked)
-				return
-
-			if(locked)
-				unbolt()
-			else
-				bolt()
-
-		if("emergency")
-			if(command_value == "on" && emergency)
-
-				return
-
-			if(command_value == "off" && !emergency)
-				return
-
-			emergency = !emergency
-			update_appearance()
 
 /obj/machinery/door/airlock/lock()
 	bolt()
@@ -679,7 +627,12 @@
 
 			context[SCREENTIP_CONTEXT_LMB] = "Repair"
 			return CONTEXTUAL_SCREENTIP_SET
+	if(istype(held_item, /obj/item/wrench/bolter))
+		if(locked)
+			context[SCREENTIP_CONTEXT_LMB] = "Raise bolts"
+			return CONTEXTUAL_SCREENTIP_SET
 
+		return CONTEXTUAL_SCREENTIP_SET
 	return .
 
 /obj/machinery/door/airlock/attack_ai(mob/user)
@@ -878,6 +831,24 @@
 		modify_max_integrity(max_integrity / AIRLOCK_INTEGRITY_MULTIPLIER)
 		damage_deflection = AIRLOCK_DAMAGE_DEFLECTION_N
 		update_appearance()
+	return TOOL_ACT_TOOLTYPE_SUCCESS
+
+/obj/machinery/door/airlock/wrench_act(mob/living/user, obj/item/tool)
+	if(!locked)
+		return
+	if(!panel_open)
+		balloon_alert(user, "panel is closed!")
+		return
+	if(security_level != AIRLOCK_SECURITY_NONE)
+		balloon_alert(user, "airlock is reinforced!")
+		return
+
+	if(istype(tool, /obj/item/wrench/bolter))
+		balloon_alert(user, "raising bolts...")
+		if(!do_after(user, 5 SECONDS, src))
+			return
+		unbolt()
+
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /obj/machinery/door/airlock/welder_act(mob/living/user, obj/item/tool)
@@ -1142,9 +1113,9 @@
 					if(check_electrified && shock(user,100))
 						prying_so_hard = FALSE
 						return
-					open(2)
+					open(BYPASS_DOOR_CHECKS)
 					take_damage(25, BRUTE, 0, 0) // Enough to sometimes spark
-					if(density && !open(2))
+					if(density && !open(BYPASS_DOOR_CHECKS))
 						to_chat(user, span_warning("Despite your attempts, [src] refuses to open."))
 				prying_so_hard = FALSE
 				return
@@ -1155,31 +1126,24 @@
 		if(istype(I, /obj/item/fireaxe) && !HAS_TRAIT(I, TRAIT_WIELDED)) //being fireaxe'd
 			to_chat(user, span_warning("You need to be wielding [I] to do that!"))
 			return
-		INVOKE_ASYNC(src, density ? PROC_REF(open) : PROC_REF(close), 2)
+		INVOKE_ASYNC(src, density ? PROC_REF(open) : PROC_REF(close), BYPASS_DOOR_CHECKS)
 
-/obj/machinery/door/airlock/open(forced=0)
+/obj/machinery/door/airlock/open(forced = DEFAULT_DOOR_CHECKS)
 	if( operating || welded || locked || seal )
 		return FALSE
-	if(!forced)
-		if(!hasPower() || wires.is_cut(WIRE_OPEN))
-			return FALSE
-	if(forced < 2)
-		if(obj_flags & EMAGGED)
-			return FALSE
-		use_power(50)
-		playsound(src, doorOpen, 30, TRUE)
-	else
-		//playsound(src, 'sound/machines/airlockforced.ogg', 30, TRUE) - ORIGINAL
-		playsound(src, forcedOpen, 30, TRUE) //SKYRAT EDIT CHANGE - AESTHETICS
-
-	if(autoclose)
-		autoclose_in(normalspeed ? 8 SECONDS : 1.5 SECONDS)
 
 	if(!density)
 		return TRUE
 
+	// Since we aren't physically held shut, do extra checks to see if we should open.
+	if(!try_to_force_door_open(forced))
+		return FALSE
+
+	if(autoclose)
+		autoclose_in(normalspeed ? 8 SECONDS : 1.5 SECONDS)
+
 	if(closeOther != null && istype(closeOther, /obj/machinery/door/airlock))
-		addtimer(CALLBACK(closeOther, PROC_REF(close)), 2)
+		addtimer(CALLBACK(closeOther, PROC_REF(close)), BYPASS_DOOR_CHECKS)
 
 	if(close_others)
 		for(var/obj/machinery/door/airlock/otherlock as anything in close_others)
@@ -1187,14 +1151,14 @@
 				if(otherlock.operating)
 					otherlock.delayed_close_requested = TRUE
 				else
-					addtimer(CALLBACK(otherlock, PROC_REF(close)), 2)
+					addtimer(CALLBACK(otherlock, PROC_REF(close)), BYPASS_DOOR_CHECKS)
 
 	if(cyclelinkedairlock)
 		if(!shuttledocked && !emergency && !cyclelinkedairlock.shuttledocked && !cyclelinkedairlock.emergency)
 			if(cyclelinkedairlock.operating)
 				cyclelinkedairlock.delayed_close_requested = TRUE
 			else
-				addtimer(CALLBACK(cyclelinkedairlock, PROC_REF(close)), 2)
+				addtimer(CALLBACK(cyclelinkedairlock, PROC_REF(close)), BYPASS_DOOR_CHECKS)
 
 	SEND_SIGNAL(src, COMSIG_AIRLOCK_OPEN, forced)
 	operating = TRUE
@@ -1220,34 +1184,55 @@
 	operating = FALSE
 	if(delayed_close_requested)
 		delayed_close_requested = FALSE
-		addtimer(CALLBACK(src, PROC_REF(close)), 1)
+		addtimer(CALLBACK(src, PROC_REF(close)), FORCING_DOOR_CHECKS)
 	return TRUE
 
+/// Additional checks depending on what we want to happen to door (should we try and open it normally, or do we want this open at all costs?)
+/obj/machinery/door/airlock/try_to_force_door_open(force_type = DEFAULT_DOOR_CHECKS)
+	switch(force_type)
+		if(DEFAULT_DOOR_CHECKS) // Regular behavior.
+			if(!hasPower() || wires.is_cut(WIRE_OPEN) || (obj_flags & EMAGGED))
+				return FALSE
+			use_power(50)
+			playsound(src, doorOpen, 30, TRUE)
+			return TRUE
 
-/obj/machinery/door/airlock/close(forced = FALSE, force_crush = FALSE)
+		if(FORCING_DOOR_CHECKS) // Only one check.
+			if(obj_flags & EMAGGED)
+				return FALSE
+			use_power(50)
+			playsound(src, doorOpen, 30, TRUE)
+			return TRUE
+
+		if(BYPASS_DOOR_CHECKS) // No power usage, special sound, get it open.
+			//playsound(src, 'sound/machines/airlockforced.ogg', 30, TRUE) - ORIGINAL
+			playsound(src, forcedOpen, 30, TRUE) //SKYRAT EDIT CHANGE - AESTHETICS
+			return TRUE
+
+		else
+			stack_trace("Invalid forced argument '[force_type]' passed to open() on this airlock.")
+
+	// If we got here, shit's fucked, hope parent can help us out here
+	return ..()
+
+/obj/machinery/door/airlock/close(forced = DEFAULT_DOOR_CHECKS, force_crush = FALSE)
 	if(operating || welded || locked || seal)
-		return
+		return FALSE
 	if(density)
 		return TRUE
-	if(!forced)
+	if(forced == DEFAULT_DOOR_CHECKS) // Do this up here and outside of try_to_force_door_shut because if we don't have power, we shouldn't be doing any dangerous_close stuff.
 		if(!hasPower() || wires.is_cut(WIRE_BOLTS))
-			return
+			return FALSE
 
 	var/dangerous_close = !safe || force_crush
 	if(!dangerous_close)
 		for(var/atom/movable/M in get_turf(src))
 			if(M.density && M != src) //something is blocking the door
 				autoclose_in(DOOR_CLOSE_WAIT)
-				return
-	if(forced < 2)
-		if(obj_flags & EMAGGED)
-			return
-		use_power(50)
-		playsound(src, doorClose, 30, TRUE)
+				return FALSE
 
-	else
-		//playsound(src, 'sound/machines/airlockforced.ogg', 30, TRUE) //ORIGINAL
-		playsound(src, forcedClosed, 30, TRUE) //SKYRAT EDIT ADDITION - AESTHETICS
+	if(!try_to_force_door_shut(forced))
+		return FALSE
 
 	var/obj/structure/window/killthis = (locate(/obj/structure/window) in get_turf(src))
 	if(killthis)
@@ -1287,6 +1272,25 @@
 	if(!dangerous_close)
 		CheckForMobs()
 	return TRUE
+
+/obj/machinery/door/airlock/try_to_force_door_shut(force_type = DEFAULT_DOOR_CHECKS)
+	switch(force_type)
+		if(DEFAULT_DOOR_CHECKS to FORCING_DOOR_CHECKS)
+			if(obj_flags & EMAGGED)
+				return FALSE
+			use_power(50)
+			playsound(src, doorClose, 30, TRUE)
+			return TRUE
+
+		if(BYPASS_DOOR_CHECKS)
+			playsound(src, 'sound/machines/airlockforced.ogg', 30, TRUE)
+			return TRUE
+
+		else
+			stack_trace("Invalid forced argument '[force_type]' passed to close() on this airlock.")
+
+	// shit's fucked, let's hope parent has something to handle it.
+	return ..()
 
 /obj/machinery/door/airlock/proc/prison_open()
 	if(obj_flags & EMAGGED)
@@ -1365,7 +1369,7 @@
 
 
 	if(do_after(user, time_to_open, src))
-		if(density && !open(2)) //The airlock is still closed, but something prevented it opening. (Another player noticed and bolted/welded the airlock in time!)
+		if(density && !open(BYPASS_DOOR_CHECKS)) //The airlock is still closed, but something prevented it opening. (Another player noticed and bolted/welded the airlock in time!)
 			to_chat(user, span_warning("Despite your efforts, [src] managed to resist your attempts to open it!"))
 
 /obj/machinery/door/airlock/hostile_lockdown(mob/origin)

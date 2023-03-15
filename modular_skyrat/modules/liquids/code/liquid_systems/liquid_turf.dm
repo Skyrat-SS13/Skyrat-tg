@@ -102,7 +102,7 @@
 	if(!no_react)
 		//We do react so, make a simulation
 		create_reagents(10000) //Reagents are on turf level, should they be on liquids instead?
-		reagents.add_reagent_list(liquids.reagent_list, no_react = TRUE)
+		reagents.add_noreact_reagent_list(liquids.reagent_list)
 		reagents.chem_temp = liquids.temp
 		if(reagents.handle_reactions())//Any reactions happened, so re-calculate our reagents
 			liquids.reagent_list = list()
@@ -146,7 +146,7 @@
 	if(!no_react)
 		//We do react so, make a simulation
 		create_reagents(10000)
-		reagents.add_reagent_list(liquids.reagent_list, no_react = TRUE)
+		reagents.add_noreact_reagent_list(liquids.reagent_list)
 		if(reagents.handle_reactions())//Any reactions happened, so re-calculate our reagents
 			liquids.reagent_list = list()
 			liquids.total_reagents = 0
@@ -278,7 +278,7 @@
 			user.balloon_alert_to_viewers("climbing...")
 		else
 			dropped_mob.balloon_alert_to_viewers("being pulled up...")
-		if(do_mob(user, dropped_mob, 2 SECONDS))
+		if(do_after(user, 2 SECONDS, dropped_mob))
 			dropped_mob.forceMove(src)
 		return
 	if(turf_height - mob_turf.turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
@@ -287,6 +287,6 @@
 			user.balloon_alert_to_viewers("climbing down...")
 		else
 			dropped_mob.balloon_alert_to_viewers("being lowered...")
-		if(do_mob(user, dropped_mob, 2 SECONDS))
+		if(do_after(user, 2 SECONDS, dropped_mob))
 			dropped_mob.forceMove(src)
 		return
