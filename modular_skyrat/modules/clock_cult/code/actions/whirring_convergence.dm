@@ -40,7 +40,7 @@
 /proc/send_clock_message(mob/living/user, sent_message, span = "<span class='brass'>")
 	var/final_message = ""
 	if(user)
-		final_message = span + "<i><b>Clock[user.gender == FEMALE ? "sister" : "brother"] [findtextEx(user.name, user.real_name) ? user.name : "[user.real_name] (as [user.name])"].</b> transmits, \"" + sent_message + "\"</i></span>"
+		final_message = span + "<i><b>Clock[user.gender == FEMALE ? "sister" : "brother"] [findtextEx(user.name, user.real_name) ? user.name : "[user.real_name] (as [user.name])"]</b> transmits, \"" + sent_message + "\"</i></span>"
 	else
 		final_message = span + sent_message + "</span>"
 

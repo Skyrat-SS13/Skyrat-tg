@@ -13,7 +13,8 @@
 	category = SPELLTYPE_STRUCTURES
 
 /datum/scripture/create_structure/ocular_warden/check_special_requirements(mob/user)
-	if(!..())
+	. = ..()
+	if(!.)
 		return FALSE
 
 	if(locate(/obj/structure/destructible/clockwork) in get_turf(invoker))

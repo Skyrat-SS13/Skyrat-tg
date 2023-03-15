@@ -64,10 +64,10 @@
 
 	priority_announce("An anomalous reading has been picked up at [atom_area], please ensure the safety of the crew in the vicinity.")
 
-	for(var/obj/effect/landmark/late_cog_portals/portal in GLOB.landmarks)
-		var/obj/effect/landmark/portal_exit/new_exit = new(get_turf(portal))
+	for(var/obj/effect/landmark/late_cog_portals/late_portal in GLOB.landmarks_list)
+		var/obj/effect/landmark/portal_exit/new_exit = new(get_turf(late_portal))
 		new_exit.id = "reebe_entry"
-		qdel(portal)
+		qdel(late_portal)
 
 	portal.visible_message("[portal] lets out a hiss of steam as it becomes a more blue color. You feel like it's safer to enter, now.")
 	new /obj/effect/temp_visual/steam_release(get_turf(portal))
