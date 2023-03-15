@@ -1,3 +1,4 @@
+#define POWER_PER_USE 50
 
 /obj/structure/destructible/clockwork/gear_base/powered/prosperity_prism
 	name = "prosperity prism"
@@ -7,7 +8,8 @@
 	anchored = TRUE
 	break_message = span_warning("The prism falls apart, smoke leaking out into the air.")
 	max_integrity = 150
-	minimum_power = 4
+	minimum_power = POWER_PER_USE
+	passive_consumption = POWER_PER_USE / 2
 
 
 /obj/structure/destructible/clockwork/gear_base/powered/prosperity_prism/update_icon_state()
@@ -28,7 +30,7 @@
 		if(possible_cultist.health >= possible_cultist.maxHealth)
 			continue
 
-		if(use_power(50))
+		if(use_power(POWER_PER_USE))
 			possible_cultist.adjustToxLoss(-2.5 * delta_time)
 			possible_cultist.adjustStaminaLoss(-7.5 * delta_time)
 			possible_cultist.adjustBruteLoss(-2.5 * delta_time)
@@ -41,4 +43,4 @@
 			for(var/datum/reagent/toxin/toxin_chem in possible_cultist.reagents.reagent_list)
 				possible_cultist.reagents.remove_reagent(toxin_chem.type, 2.5 * delta_time)
 
-
+#undef POWER_PER_USE
