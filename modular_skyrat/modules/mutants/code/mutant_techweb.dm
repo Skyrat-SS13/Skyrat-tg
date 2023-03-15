@@ -3,9 +3,10 @@
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/rnd/rna_recombinator
 	req_components = list(
-		/obj/item/stock_parts/scanning_module = 1,
-		/obj/item/stock_parts/manipulator = 2,
-		/obj/item/stock_parts/micro_laser = 2)
+		/datum/stock_part/scanning_module = 1,
+		/datum/stock_part/manipulator = 2,
+		/datum/stock_part/micro_laser = 2,
+	)
 
 /datum/techweb_node/mutanttech
 	id = "mutanttech"

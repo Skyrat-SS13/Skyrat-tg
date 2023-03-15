@@ -291,6 +291,7 @@
 /obj/item/modular_computer/pda/bar
 	name = "bartender PDA"
 	greyscale_colors = "#333333#C7C7C7"
+	inserted_item = /obj/item/pen/fountain
 
 /obj/item/modular_computer/pda/clown
 	name = "clown PDA"
@@ -348,10 +349,12 @@
 		/datum/computer_file/program/newscaster,
 	)
 
+/* // SKYRAT EDIT REMOVAL BEGIN - Mutes the Curator's ringer on spawn
 /obj/item/modular_computer/pda/curator/Initialize(mapload)
 	. = ..()
 	for(var/datum/computer_file/program/messenger/msg in stored_files)
 		msg.ringer_status = FALSE
+*/ // SKYRAT EDIT REMOVAL END
 
 /**
  * No Department
@@ -372,7 +375,7 @@
 	greyscale_colors = "#891417#80FF80"
 	saved_identification = "John Doe"
 	saved_job = "Citizen"
-	device_theme = "syndicate"
+	device_theme = PDA_THEME_SYNDICATE
 
 /obj/item/modular_computer/pda/syndicate/Initialize(mapload)
 	. = ..()
