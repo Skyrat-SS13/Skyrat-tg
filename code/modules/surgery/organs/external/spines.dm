@@ -27,7 +27,11 @@
 /obj/item/organ/external/spines/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
 	. = ..()
 	if(.)
+<<<<<<< HEAD
 		paired_tail = locate(/obj/item/organ/external/tail/lizard) in reciever.external_organs //We want specifically a lizard tail, so we don't use the slot.
+=======
+		paired_tail = locate(/obj/item/organ/external/tail/lizard) in receiver.organs //We want specifically a lizard tail, so we don't use the slot.
+>>>>>>> 9843c236572 (Replaces internal_organs with organs (#73918))
 
 /obj/item/organ/external/spines/Remove(mob/living/carbon/organ_owner, special, moving)
 	. = ..()

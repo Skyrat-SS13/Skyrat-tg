@@ -19,11 +19,15 @@
 	if(!.)
 		return
 
+<<<<<<< HEAD
 	owner.internal_organs |= src
 	owner.internal_organs_slot[slot] = src
 	// internal_organs_slot must ALWAYS be ordered in the same way as organ_process_order
+=======
+	// organs_slot must ALWAYS be ordered in the same way as organ_process_order
+>>>>>>> 9843c236572 (Replaces internal_organs with organs (#73918))
 	// Otherwise life processing breaks down
-	sortTim(owner.internal_organs_slot, GLOBAL_PROC_REF(cmp_organ_slot_asc))
+	sortTim(owner.organs_slot, GLOBAL_PROC_REF(cmp_organ_slot_asc))
 
 	STOP_PROCESSING(SSobj, src)
 

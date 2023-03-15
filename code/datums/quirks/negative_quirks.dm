@@ -1095,10 +1095,14 @@
 	for(var/obj/item/bodypart/limb as anything in owner.bodyparts)
 		if(!IS_ORGANIC_LIMB(limb))
 			cybernetics_level++
+<<<<<<< HEAD
 	for(var/obj/item/organ/internal/organ as anything in owner.internal_organs)
 		if(organ.organ_flags & ORGAN_SYNTHETIC)
 			cybernetics_level++
 	for(var/obj/item/organ/external/organ as anything in owner.external_organs)
+=======
+	for(var/obj/item/organ/organ as anything in owner.organs)
+>>>>>>> 9843c236572 (Replaces internal_organs with organs (#73918))
 		if(organ.organ_flags & ORGAN_SYNTHETIC)
 			cybernetics_level++
 	update_mood()

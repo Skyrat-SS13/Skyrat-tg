@@ -397,7 +397,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(current_organ)
 				current_organ.Remove(C)
 				QDEL_NULL(current_organ)
+<<<<<<< HEAD
 	for(var/external_organ in C.external_organs)
+=======
+	for(var/obj/item/organ/external/external_organ in C.organs)
+>>>>>>> 9843c236572 (Replaces internal_organs with organs (#73918))
 		// External organ checking. We need to check the external organs owned by the carbon itself,
 		// because we want to also remove ones not shared by its species.
 		// This should be done even if species was not changed.
@@ -524,7 +528,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		C.dna.blood_type = random_blood_type()
 	for(var/X in inherent_traits)
 		REMOVE_TRAIT(C, X, SPECIES_TRAIT)
+<<<<<<< HEAD
 	for(var/obj/item/organ/external/organ as anything in C.external_organs)
+=======
+	for(var/obj/item/organ/external/organ in C.organs)
+>>>>>>> 9843c236572 (Replaces internal_organs with organs (#73918))
 		organ.Remove(C)
 		qdel(organ)
 
