@@ -128,7 +128,7 @@
 // Vests
 
 /obj/item/clothing/suit/armor/vest/nri_surplus_vest
-name = "\improper GZ-03 combat armor"
+	name = "\improper GZ-03 combat armor"
 	desc = "An outdated armor vest previously used by CIN military forces. The design dates back to the years leading up to CIN - SolFed border war, and was in service until the advent of VOSKHOD powered armor becoming standard issue."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
