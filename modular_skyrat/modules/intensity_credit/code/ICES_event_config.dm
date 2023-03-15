@@ -24,7 +24,7 @@
 	/// Rate at which we add intensity credits
 	var/intensity_credit_rate = 27000
 	/// Last world time we added an intensity credit
-	var/intensity_credit_last_time = 27000
+	var/intensity_credit_last_time = 8400
 
 /**
  * Abductors
