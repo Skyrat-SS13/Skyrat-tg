@@ -82,8 +82,8 @@
 // Undersuits
 
 /obj/item/clothing/under/syndicate/rus_army/nri_surplus
-	name = "surplus nri uniform"
-	desc = "Wait a minute, there should be something here!."
+	name = "CIN combat uniform"
+	desc = "A CIN designed combat uniform that can come in any number of camouflauge variations. Despite this particular design being developed in the years leading up to the CIN-SolFed border war, the uniform is still in use by many member states to this day."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
 	icon_state = "undersuit_greyscale"
@@ -92,10 +92,10 @@
 	greyscale_config_worn_digi = /datum/greyscale_config/nri_surplus_undersuit/digi
 	greyscale_colors = "#bbbbc9#bbbbc9#34343a"
 
+/*
 /obj/item/clothing/under/syndicate/rus_army/nri_surplus/Initialize(mapload)
 	. = ..()
 
-/*
 	var/camo_icon_to_use = icon('modular_skyrat/modules/novaya_ert/icons/surplus_armor/camo_overlay.dmi', "tiger_[rand(1, 3)]")
 
 	ADD_KEEP_TOGETHER(src, INNATE_TRAIT)
@@ -128,7 +128,7 @@
 // Vests
 
 /obj/item/clothing/suit/armor/vest/nri_surplus_vest
-	name = "\improper GZ-03 combat armor"
+	name = "\improper GZ-03 armor vest"
 	desc = "An outdated armor vest previously used by CIN military forces. The design dates back to the years leading up to CIN - SolFed border war, and was in service until the advent of VOSKHOD powered armor becoming standard issue."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_armor/surplus_armor.dmi'
