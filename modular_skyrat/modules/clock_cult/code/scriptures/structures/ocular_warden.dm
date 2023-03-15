@@ -17,10 +17,6 @@
 	if(!.)
 		return FALSE
 
-	if(locate(/obj/structure/destructible/clockwork) in get_turf(invoker))
-		user.balloon_alert(user, "tile has a structure!")
-		return FALSE
-
 	if(locate(/obj/structure/destructible/clockwork/ocular_warden) in range(OCULAR_WARDEN_PLACE_RANGE))
 		user.balloon_alert(user, "too close to another warden!")
 		return FALSE
