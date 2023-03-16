@@ -799,3 +799,25 @@
 	relevant_mutant_bodypart = "neck_acc"
 	type_to_check = /datum/preference/toggle/mutant_toggle/neck_acc
 
+/datum/preference/color/pod_hair_color
+	category = PREFERENCE_CATEGORY_SUPPLEMENTAL_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "pod_hair_color"
+	relevant_mutant_bodypart = "pod_hair"
+
+/datum/preference/color/pod_hair_color/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	var/species_path = preferences?.read_preference(/datum/preference/choiced/species)
+	if(!ispath(species_path, /datum/species/pod)) // This is what we do so it doesn't show up on non-podpeople.
+		return
+
+	if(!target.dna.mutant_bodyparts["pod_hair"])
+		target.dna.mutant_bodyparts["pod_hair"] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
+
+	var/color_value = sanitize_hexcolor(value)
+	target.dna.mutant_bodyparts["pod_hair"][MUTANT_INDEX_COLOR_LIST] = list(color_value)
+
+/datum/preference/toggle/emissive/pod_hair_emissive
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "pod_hair_emissive"
+	relevant_mutant_bodypart = "pod_hair"

@@ -7,6 +7,13 @@
 		return
 
 	if(!target.dna.mutant_bodyparts["pod_hair"])
-		target.dna.mutant_bodyparts["pod_hair"] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
+		target.dna.mutant_bodyparts["pod_hair"] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
 
 	target.dna.mutant_bodyparts["pod_hair"][MUTANT_INDEX_NAME] = value
+
+/datum/preference/choiced/pod_hair/compile_constant_data()
+	var/list/data = ..()
+
+	data[SUPPLEMENTAL_FEATURE_KEY] = "pod_hair_color"
+
+	return data
