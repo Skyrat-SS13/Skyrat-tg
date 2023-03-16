@@ -32,7 +32,15 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 
 	paying_account = computer.computer_id_slot?.registered_account || null
 	data["paying_account"] = paying_account
+	data["current_balance"] = computer.computer_id_slot?.registered_account?.account_balance || null
 
+	var/rewards_points = 0
+	var/obj/item/organ/internal/cyberimp/brain/nif/buyer_nif = target_nif
+
+	if(buyer_nif)
+		rewards_points = buyer_nif.rewards_points
+
+	data["rewards_points"] = rewards_points
 	return data
 
 /datum/computer_file/program/nifsoft_downloader/ui_static_data(mob/user)
@@ -40,14 +48,11 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 	var/list/product_list = list()
 
 	var/mob/living/carbon/human/nif_user = user
-	var/rewards_points = 0
 	if(nif_user)
 		var/obj/item/organ/internal/cyberimp/brain/nif/user_nif = nif_user.getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
-		target_nif = user_nif || null
-		rewards_points = user_nif.rewards_points || 0
+		target_nif = user_nif
 
 	data["target_nif"] = target_nif
-	data["rewards_points"] = rewards_points
 
 	for(var/datum/nifsoft/buyable_nifsoft as anything in GLOB.purchasable_nifsofts)
 		if(!buyable_nifsoft)
@@ -85,12 +90,19 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 				return FALSE
 
 			var/amount_to_charge = (params["product_cost"])
+			var/rewards_purchase = (params["rewards_purchase"])
+			var/obj/item/organ/internal/cyberimp/brain/nif/buyer_nif = target_nif
 
-			if(!paying_account.has_money(amount_to_charge))
+			if(rewards_purchase)
+				if(buyer_nif.rewards_points < amount_to_charge)
+					buyer_nif.send_message("You don't have enough reward points to buy this.", alert = TRUE)
+					return FALSE
+
+			else if(!paying_account.has_money(amount_to_charge))
 				paying_account.bank_card_talk("You lack the money to make this purchase.")
 				return FALSE
 
-			if(!ispath(product_to_buy, /datum/nifsoft) || !target_nif)
+			if(!ispath(product_to_buy, /datum/nifsoft) || !buyer_nif)
 				paying_account.bank_card_talk("You are unable to buy this.")
 				return FALSE
 
@@ -99,7 +111,11 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 				paying_account.bank_card_talk("Install failed, your purchase has been refunded.")
 				return FALSE
 
-			paying_account.adjust_money(-amount_to_charge, "NIFSoft purchase")
-			paying_account.bank_card_talk("Transaction complete, you have been charged [amount_to_charge]cr.")
+			if(rewards_purchase)
+				buyer_nif.remove_rewards_points(amount_to_charge)
+				buyer_nif.send_message("Purchase completed, [amount_to_charge] reward points have been removed from your NIF")
+			else
+				paying_account.adjust_money(-amount_to_charge, "NIFSoft purchase")
+				paying_account.bank_card_talk("Transaction complete, you have been charged [amount_to_charge]cr.")
 
 			return TRUE
