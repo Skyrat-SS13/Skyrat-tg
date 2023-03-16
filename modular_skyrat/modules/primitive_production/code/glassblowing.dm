@@ -24,7 +24,7 @@
 
 /obj/item/glassblowing/glass_lens
 	name = "glass lens"
-	desc = "A glass bowl that is capable of carrying things."
+	desc = "A convex glass lens that would make an excellent magnifying glass if it were attached to a handle."
 	icon_state = "glass_lens"
 
 /obj/item/reagent_containers/cup/bowl/blowing_glass

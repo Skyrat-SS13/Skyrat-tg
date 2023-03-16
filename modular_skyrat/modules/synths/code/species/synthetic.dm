@@ -5,6 +5,7 @@
 	inherent_biotypes = MOB_ROBOTIC | MOB_HUMANOID
 	inherent_traits = list(
 		TRAIT_CAN_STRIP,
+		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_RADIMMUNE,
 		TRAIT_VIRUSIMMUNE,
@@ -69,6 +70,7 @@
 	var/datum/action/innate/monitor_change/screen
 	/// This is the screen that is given to the user after they get revived. On death, their screen is temporarily set to BSOD before it turns off, hence the need for this var.
 	var/saved_screen = "Blank"
+	wing_types = list(/obj/item/organ/external/wings/functional/robotic)
 
 /datum/species/synthetic/spec_life(mob/living/carbon/human/human)
 	if(human.stat == SOFT_CRIT || human.stat == HARD_CRIT)
@@ -98,13 +100,23 @@
 		qdel(appendix)
 
 	var/screen_mutant_bodypart = transformer.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN]
+	var/obj/item/organ/internal/eyes/eyes = transformer.getorganslot(ORGAN_SLOT_EYES)
 
 	if(!screen && screen_mutant_bodypart && screen_mutant_bodypart[MUTANT_INDEX_NAME] && screen_mutant_bodypart[MUTANT_INDEX_NAME] != "None")
+
+		if(eyes)
+			eyes.eye_icon_state = "None"
+
 		screen = new
 		screen.Grant(transformer)
 
-/datum/species/synthetic/replace_body(mob/living/carbon/target, datum/species/new_species)
-	. = ..()
+		return
+
+	if(eyes)
+		eyes.eye_icon_state = initial(eyes.eye_icon_state)
+
+
+/datum/species/synthetic/apply_supplementary_body_changes(mob/living/carbon/human/target, datum/preferences/preferences, visuals_only = FALSE)
 	var/list/chassis = target.dna.mutant_bodyparts[MUTANT_SYNTH_CHASSIS]
 	var/list/head = target.dna.mutant_bodyparts[MUTANT_SYNTH_HEAD]
 	if(!chassis && !head)
@@ -122,7 +134,7 @@
 
 	// We want to ensure that the IPC gets their chassis and their head correctly.
 	for(var/obj/item/bodypart/limb as anything in target.bodyparts)
-		if(initial(limb.limb_id) != SPECIES_SYNTH && initial(limb.base_limb_id) != SPECIES_SYNTH) // No messing with limbs that aren't actually synthetic.
+		if(limb.limb_id != SPECIES_SYNTH && initial(limb.base_limb_id) != SPECIES_SYNTH) // No messing with limbs that aren't actually synthetic.
 			continue
 
 		if(limb.body_zone == BODY_ZONE_HEAD)
@@ -136,8 +148,15 @@
 		limb.change_appearance(chassis_of_choice.icon, chassis_of_choice.icon_state, !!chassis_of_choice.color_src, limb.body_part == CHEST && chassis_of_choice.dimorphic)
 		limb.name = "\improper[chassis_of_choice.name] [parse_zone(limb.body_zone)]"
 
+
 /datum/species/synthetic/on_species_loss(mob/living/carbon/human/human)
 	. = ..()
+
+	var/obj/item/organ/internal/eyes/eyes = human.getorganslot(ORGAN_SLOT_EYES)
+
+	if(eyes)
+		eyes.eye_icon_state = initial(eyes.eye_icon_state)
+
 	if(screen)
 		screen.Remove(human)
 
@@ -162,3 +181,9 @@
 
 /datum/species/synthetic/get_types_to_preload()
 	return ..() - typesof(/obj/item/organ/internal/cyberimp/arm/power_cord) // Don't cache things that lead to hard deletions.
+
+
+/datum/species/synthetic/prepare_human_for_preview(mob/living/carbon/human/beepboop)
+	beepboop.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN] = list(MUTANT_INDEX_NAME = "Console", MUTANT_INDEX_COLOR_LIST = list(COLOR_WHITE, COLOR_WHITE, COLOR_WHITE))
+	regenerate_organs(beepboop, src, visual_only = TRUE)
+	beepboop.update_body(TRUE)

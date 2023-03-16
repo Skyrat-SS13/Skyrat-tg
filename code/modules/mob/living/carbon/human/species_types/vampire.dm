@@ -23,6 +23,7 @@
 	mutant_bodyparts = list("wings" = "None")
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
 	exotic_bloodtype = "U"
+	blood_deficiency_drain_rate = BLOOD_DEFICIENCY_MODIFIER // vampires already passively lose blood, so this just makes them lose it slightly more quickly when they have blood deficiency.
 	use_skintones = TRUE
 	mutantheart = /obj/item/organ/internal/heart/vampire
 	mutanttongue = /obj/item/organ/internal/tongue/vampire
@@ -48,7 +49,7 @@
 /datum/species/vampire/spec_life(mob/living/carbon/human/vampire, delta_time, times_fired)
 	. = ..()
 	if(istype(vampire.loc, /obj/structure/closet/crate/coffin))
-		vampire.heal_overall_damage(2 * delta_time, 2 * delta_time, BODYTYPE_ORGANIC)
+		vampire.heal_overall_damage(brute = 2 * delta_time, burn = 2 * delta_time, required_bodytype = BODYTYPE_ORGANIC)
 		vampire.adjustToxLoss(-2 * delta_time)
 		vampire.adjustOxyLoss(-2 * delta_time)
 		vampire.adjustCloneLoss(-2 * delta_time)
