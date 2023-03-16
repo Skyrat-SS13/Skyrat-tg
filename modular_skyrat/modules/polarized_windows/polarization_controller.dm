@@ -1,4 +1,4 @@
-GLOBAL_LIST_EMPTY_TYPED(polarizaton_controllers, /datum/component/polarization_controller)
+GLOBAL_LIST_EMPTY(polarization_controllers)
 
 /**
  * A component for windows to allow them to be dynamically rendered opaque /
@@ -22,15 +22,16 @@ GLOBAL_LIST_EMPTY_TYPED(polarizaton_controllers, /datum/component/polarization_c
 	if(!istype(parent, /obj/structure/window))
 		return COMPONENT_INCOMPATIBLE
 
-	var/obj/structure/window/managed_window = parent
+	var/obj/managed_window = parent
 
 	if(used_capacitor)
 		src.used_capacitor = used_capacitor
 		used_capacitor.forceMove(managed_window)
 
 	if(polarizer_id)
-		id = polarizer_id
-		LAZYADD(GLOB.polarization_controllers[id], src)
+		id = "[polarizer_id]"
+		// But why make it a string here? Otherwise it won't be an associative list and it kind of explodes. Shitty, I know.
+		LAZYREMOVEASSOC(GLOB.polarization_controllers, id, list(src))
 
 	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(on_window_attackby))
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_window_examine))
@@ -39,7 +40,7 @@ GLOBAL_LIST_EMPTY_TYPED(polarizaton_controllers, /datum/component/polarization_c
 
 /datum/component/polarization_controller/Destroy(force, silent)
 	if(id)
-		LAZYREMOVE(GLOB.polarization_controllers[id], src)
+		LAZYREMOVEASSOC(GLOB.polarization_controllers, id, list(src))
 
 	if(used_capacitor)
 		QDEL_NULL(used_capacitor)
@@ -54,7 +55,7 @@ GLOBAL_LIST_EMPTY_TYPED(polarizaton_controllers, /datum/component/polarization_c
  * * should_be_opaque - Boolean on whether or not the window should now be opaque.
  */
 /datum/component/polarization_controller/proc/toggle(should_be_opaque)
-	var/obj/structure/window/managed_window = parent
+	var/obj/managed_window = parent
 
 	// No need to do anything if we're already at the right opacity.
 	if(managed_window.opacity == !!should_be_opaque)
@@ -63,10 +64,10 @@ GLOBAL_LIST_EMPTY_TYPED(polarizaton_controllers, /datum/component/polarization_c
 	if(should_be_opaque)
 		non_polarized_color = managed_window.color
 		animate(managed_window, alpha = 255, color = polarized_color, time = polarization_process_duration)
-		addtimer(CALLBACK(managed_window, TYPE_PROC_REF(/atom, set_opacity), TRUE), polarization_process_duration / 2) // So that is changes opacity mid-way through the animation, hopefully.
+		addtimer(CALLBACK(managed_window, TYPE_PROC_REF(/atom, set_opacity), TRUE), polarization_process_duration) // So that is changes opacity mid-way through the animation, hopefully.
 	else
 		animate(managed_window, alpha = initial(managed_window.alpha), color = non_polarized_color, time = polarization_process_duration)
-		addtimer(CALLBACK(managed_window, TYPE_PROC_REF(/atom, set_opacity), FALSE), polarization_process_duration / 2) // So that is changes opacity mid-way through the animation, hopefully.
+		managed_window.set_opacity(FALSE) // So that is changes opacity mid-way through the animation, hopefully.
 
 
 
@@ -94,11 +95,11 @@ GLOBAL_LIST_EMPTY_TYPED(polarizaton_controllers, /datum/component/polarization_c
 		return COMPONENT_NO_AFTERATTACK
 
 	if(id)
-		LAZYREMOVE(GLOB.polarization_controllers[id], src)
+		LAZYREMOVEASSOC(GLOB.polarization_controllers, id, list(src))
 
-	id = polarizer.id
+	id = "[polarizer.id]"
 
-	LAZYADD(GLOB.polarization_controllers[id], src)
+	LAZYADDASSOC(GLOB.polarization_controllers, id, list(src))
 	parent_atom.balloon_alert(user, "linked polarizer!")
 
 	return COMPONENT_NO_AFTERATTACK
@@ -123,13 +124,26 @@ GLOBAL_LIST_EMPTY_TYPED(polarizaton_controllers, /datum/component/polarization_c
 /datum/component/polarization_controller/proc/on_window_multitool_act(datum/source, mob/user, obj/item/tool)
 	SIGNAL_HANDLER
 
-	var/obj/structure/window/managed_window = parent
+	remove_polarization_controller(source, user, tool)
+
+	return TOOL_ACT_SIGNAL_BLOCKING
+
+
+/**
+ * Proc that handles removing the polarization controller.
+ * Had to be made into a separate proc so that it wouldn't be waited for by the
+ * signal handler for the multitool tool act.
+ */
+/datum/component/polarization_controller/proc/remove_polarization_controller(datum/source, mob/user, obj/item/tool)
+	set waitfor = FALSE
+
+	var/obj/managed_window = parent
 
 	managed_window.balloon_alert(user, "removing polarization controller")
 
 	if(!do_after(user, 1 SECONDS, managed_window))
 		managed_window.balloon_alert(user, "cancelled removal")
-		return TOOL_ACT_SIGNAL_BLOCKING
+		return
 
 	toggle(FALSE)
 
@@ -147,5 +161,3 @@ GLOBAL_LIST_EMPTY_TYPED(polarizaton_controllers, /datum/component/polarization_c
 	managed_window.balloon_alert(user, "removed polarization controller")
 
 	qdel(src)
-
-	return TOOL_ACT_SIGNAL_BLOCKING

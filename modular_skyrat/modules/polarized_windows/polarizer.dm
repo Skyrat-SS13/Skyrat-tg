@@ -4,14 +4,20 @@
 	/// Whether the connected windows are meant to be polarized or not.
 	var/polarizing = FALSE
 
+
 /obj/item/assembly/control/polarizer/multitool_act(mob/living/user)
-	var/change_id = tgui_input_number(user, "Set [src]'s ID", "Polarization ID", id, 1000)
+	attack_self(user)
+
+
+/obj/item/assembly/control/polarizer/attack_self(mob/living/user)
+	var/change_id = tgui_input_number(user, "Set [src]'s ID", "Polarization ID", text2num(id), 1000)
 	if(!change_id || QDELETED(user) || QDELETED(src) || !usr.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
 
-	id = change_id
+	id = "[change_id]"
 	balloon_alert(user, "id changed")
 	to_chat(user, span_notice("You change the ID to [id]."))
+
 
 /obj/item/assembly/control/polarizer/activate()
 	if(cooldown)
@@ -29,3 +35,7 @@
 		controller.toggle(polarizing)
 
 	addtimer(VARSET_CALLBACK(src, cooldown, FALSE), 1 SECONDS)
+
+
+/obj/machinery/button/polarizer
+	device_type = /obj/item/assembly/control/polarizer
