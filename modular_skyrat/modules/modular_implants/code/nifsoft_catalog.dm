@@ -35,7 +35,7 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 	data["current_balance"] = computer.computer_id_slot?.registered_account?.account_balance || null
 
 	var/rewards_points = 0
-	var/obj/item/organ/internal/cyberimp/brain/nif/buyer_nif = target_nif
+	var/obj/item/organ/internal/cyberimp/brain/nif/buyer_nif = target_nif.resolve()
 
 	if(buyer_nif)
 		rewards_points = buyer_nif.rewards_points
