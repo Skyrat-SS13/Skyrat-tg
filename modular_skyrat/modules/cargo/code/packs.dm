@@ -695,34 +695,36 @@
 		new /obj/item/grown/log(.)
 
 /datum/supply_pack/security/armory/russian
-	name = "Imperial Surplus Crate"
-	desc = "Good time of the day Mister Comrade! We have the most modern imperial military equipment our shop can offer, for the right price of course. Sadly, all our equipment is military-grade and mostly armored so we would kindly ask you not to show it off too much."
+	name = "CIN Military Surplus Crate"
+	desc = "A collection of surplus equipment sourced from the Coalition of Independent Nations' military stockpiles. Likely to contain old and outdated equipment, as is the nature of surplus."
 	contraband = TRUE
 	cost = CARGO_CRATE_VALUE * 15
 	contains = list(
-		/obj/item/crucifix,
-		/obj/item/storage/box/nri_rations,
-		/obj/item/storage/box/nri_rations,
-		/obj/item/storage/toolbox/ammo,
-		/obj/item/storage/toolbox/maint_kit,
-		/obj/item/gun/ballistic/rifle/boltaction,
-		/obj/item/ammo_box/a762,
-		/obj/item/ammo_box/a762,
-		/obj/item/gun/ballistic/automatic/plastikov,
-		/obj/item/ammo_box/magazine/plastikov9mm,
-		/obj/item/ammo_box/magazine/plastikov9mm,
-		/obj/item/gun/ballistic/automatic/pistol/makarov,
-		/obj/item/ammo_box/magazine/multi_sprite/makarov,
-		/obj/item/ammo_box/magazine/multi_sprite/makarov,
-		/obj/item/clothing/suit/armor/vest/russian/nri,
-		/obj/item/clothing/head/helmet/rus_helmet/nri,
-		/obj/item/storage/backpack/nri,
-		/obj/item/storage/belt/military/nri,
-		/obj/item/clothing/gloves/tackler/combat,
-		/obj/item/clothing/under/costume/nri,
-		/obj/item/clothing/shoes/combat,
-		/obj/item/clothing/mask/gas/hecu2,
+		/obj/item/crucifix = 3,
+		/obj/item/storage/box/nri_rations = 3,
+		/obj/item/storage/toolbox/ammo = 1,
+		/obj/item/storage/toolbox/maint_kit = 1,
+		/obj/item/gun/ballistic/rifle/boltaction = 1,
+		/obj/item/ammo_box/a762 = 3,
+		/obj/item/gun/ballistic/automatic/plastikov = 1,
+		/obj/item/ammo_box/magazine/plastikov9mm = 3,
+		/obj/item/gun/ballistic/automatic/pistol/makarov = 1,
+		/obj/item/ammo_box/magazine/multi_sprite/makarov = 3,
+		/obj/item/clothing/suit/armor/vest/cin_surplus_vest = 3,
+		/obj/item/clothing/head/helmet/cin_surplus_helmet/random_color = 3,
+		/obj/item/storage/backpack/industrial/cin_surplus/random_color = 3,
+		/obj/item/storage/belt/military/cin_surplus/random_color = 3,
+		/obj/item/clothing/gloves/tackler/combat = 3,
+		/obj/item/clothing/under/syndicate/rus_army/cin_surplus/random_color = 3,
+		/obj/item/clothing/shoes/jackboots = 3,
+		/obj/item/clothing/mask/gas/hecu2 = 3,
+		/obj/item/clothing/mask/balaclavaadjust = 3,
 	)
+
+/datum/supply_pack/security/armory/russian/fill(obj/structure/closet/crate/we_are_filling_this_crate)
+	for(var/i in 1 to 10)
+		var/item = pick_weight(contains)
+		new item(we_are_filling_this_crate)
 
 /*
 * VENDING RESTOCKS
