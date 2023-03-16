@@ -45,7 +45,7 @@
 	proximity_datum = new(linked_mob, 1)
 	proximity_datum.parent_nifsoft = WEAKREF(src)
 
-/datum/nifsoft/soul_poem/New()
+/datum/nifsoft/soul_poem/Destroy()
 	qdel(proximity_datum)
 	proximity_datum = null
 
