@@ -183,8 +183,13 @@ export class Changelog extends Component {
           others who have contributed to the game.
         </p>
         <p>
+<<<<<<< HEAD
           {'Current project maintainers can be found '}
           <a href="https://github.com/skyrat-ss13?tab=members">here</a>
+=======
+          {'Current organization members can be found '}
+          <a href="https://github.com/orgs/tgstation/people">here</a>
+>>>>>>> ed0c6b9fa80 (Swap out the project maintainer link to a working one (#74030))
           {', recent GitHub contributors can be found '}
           <a href="https://github.com/Skyrat-SS13/Skyrat-tg/pulse/monthly">
             here
