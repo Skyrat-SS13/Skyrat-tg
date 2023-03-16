@@ -36,7 +36,11 @@ export const CrewManifest = (props, context) => {
             <Table>
               {Object.entries(crew).map(([crewIndex, crewMember]) => (
                 <Table.Row key={crewIndex}>
-                  <Table.Cell className={'CrewManifest__Cell'}>
+                  <Table.Cell
+                    className={'CrewManifest__Cell'}
+                    maxWidth="135px"
+                    overflow="hidden"
+                    width="50%">
                     {crewMember.name}
                   </Table.Cell>
                   <Table.Cell
@@ -44,8 +48,15 @@ export const CrewManifest = (props, context) => {
                       'CrewManifest__Cell',
                       'CrewManifest__Icons',
                     ])}
+<<<<<<< HEAD
                     collapsing>
                     {positions[dept].exceptions.includes(crewMember.trim) && (
+=======
+                    collapsing
+                    minWidth="40px"
+                    width="40px">
+                    {positions[dept].exceptions.includes(crewMember.rank) && (
+>>>>>>> 257d60889d1 (Uniformly aligns the crew jobs columns across dept headers in the View Crew Manifest window. (#73955))
                       <Tooltip content="No position limit" position="bottom">
                         <Icon className="CrewManifest__Icon" name="infinity" />
                       </Tooltip>
@@ -79,7 +90,10 @@ export const CrewManifest = (props, context) => {
                       'CrewManifest__Cell',
                       'CrewManifest__Cell--Rank',
                     ])}
-                    collapsing>
+                    collapsing
+                    maxWidth="135px"
+                    overflow="hidden"
+                    width="50%">
                     {crewMember.rank}
                   </Table.Cell>
                 </Table.Row>
