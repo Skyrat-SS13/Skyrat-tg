@@ -55,7 +55,6 @@
 	return TRUE
 
 /obj/item/clothing/gloves/attackby(obj/item/tool, mob/user, params)
-	. = ..()
 	if(tool.tool_behaviour != TOOL_WIRECUTTER && !tool.get_sharpness())
 		return
 	if (!can_cut_with(tool))
