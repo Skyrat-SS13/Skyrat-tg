@@ -37,6 +37,7 @@
 		COMSIG_ATOM_EXITED = PROC_REF(on_exited),
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
+	color = idle_color
 
 /obj/structure/destructible/clockwork/sigil/Destroy()
 	currently_affecting = null

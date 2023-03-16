@@ -21,7 +21,11 @@ const convertPower = (power_in) => {
 };
 
 export const ClockworkSlab = (props, context) => {
-  const [selectedTab] = useLocalState(context, 'selectedTab', 'Servitude');
+  const [selectedTab, setSelectedTab] = useLocalState(
+    context,
+    'selectedTab',
+    'Servitude'
+  );
   return (
     <Window theme="clockwork" width={860} height={700}>
       <Window.Content>
@@ -157,7 +161,7 @@ const ClockworkSpellList = (props, context) => {
                   disabled={false}
                   onClick={() =>
                     act('invoke', {
-                      scriptureName: script.name,
+                      scriptureType: script.typepath,
                     })
                   }
                 />
@@ -172,7 +176,7 @@ const ClockworkSpellList = (props, context) => {
                   disabled={!script.purchased}
                   onClick={() =>
                     act('quickbind', {
-                      scriptureName: script.name,
+                      scriptureType: script.typepath,
                     })
                   }
                 />
@@ -252,7 +256,11 @@ const ClockworkOverviewStat = (props, context) => {
 };
 
 const ClockworkButtonSelection = (props, context) => {
-  const [setSelectedTab] = useLocalState(context, 'selectedTab', {});
+  const [selectedTab, setSelectedTab] = useLocalState(
+    context,
+    'selectedTab',
+    {}
+  );
   const tabs = ['Servitude', 'Preservation', 'Structures'];
   return (
     <Table>

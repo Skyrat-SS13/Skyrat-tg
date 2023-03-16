@@ -1,4 +1,5 @@
 GLOBAL_LIST_EMPTY(clock_scriptures)
+GLOBAL_LIST_EMPTY(clock_scriptures_by_type)
 
 // Scriptures are the "spells" of clock cultists
 // They're usable through their clockwork slab, and cannot be invoked otherwise
@@ -33,10 +34,13 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 	var/obj/item/clockwork/clockwork_slab/invoking_slab
 	/// Timer object for the distance between invoking chants
 	var/invocation_chant_timer = null
-	/// If TRUE, then this will delete itself on completion
-	var/qdel_on_completion = FALSE
 	/// Sound to play on finish
 	var/sound/recital_sound = null
+
+/datum/scripture/New()
+	. = ..()
+	if(invokers_required > 1)
+		desc += " Requires [invokers_required] invokers, should you be in a group."
 
 /datum/scripture/Destroy(force, ...)
 	invoker = null
@@ -103,6 +107,11 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 			if(!invokers_left)
 				break
 
+			if(potential_invoker?.mind.has_antag_datum(/datum/antagonist/clock_cultist/solo)) // Solo cultists can use all scriptures alone, while group clock cult doesn't get so lucky
+				invokers_left = 0
+				clockwork_say(potential_invoker, text2ratvar(invocation_text[text_point]), TRUE)
+				break
+
 			if(potential_invoker.stat)
 				continue
 
@@ -136,6 +145,10 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 
 		if(IS_CLOCK(potential_invoker))
 			invokers++
+
+		if(potential_invoker?.mind.has_antag_datum(/datum/antagonist/clock_cultist/solo)) // They count for infinite so they can do all scriptures solo
+			invokers = INFINITY
+			break
 
 	if(invokers < invokers_required)
 		to_chat(invoker, span_brass("You need [invokers_required] servants to channel [name]!"))
@@ -182,13 +195,9 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 		end_invoke()
 
 
-/// End the invoking, nulling things out, and qdeling itself if indicated
+/// End the invoking, nulling things out
 /datum/scripture/proc/end_invoke()
 	invoking_slab.invoking_scripture = null
-
-	if(qdel_on_completion)
-		qdel(src)
-
 
 
 // Base create structure scripture
@@ -232,11 +241,8 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 	var/uses = 1
 	/// Text displayed after use
 	var/after_use_text = ""
-
-
 	/// Internal spell for pointed/aimed spells
 	var/datum/action/cooldown/spell/pointed/slab/pointed_spell
-
 	/// How many times this can be used this particular invocation, can go down
 	var/uses_left = 0
 	/// How much time left to use this
@@ -350,4 +356,5 @@ GLOBAL_LIST_EMPTY(clock_scriptures)
 /proc/generate_clockcult_scriptures()
 	for(var/categorypath in subtypesof(/datum/scripture))
 		var/datum/scripture/clock_script = new categorypath
-		GLOB.clock_scriptures[clock_script.name] = clock_script
+		GLOB.clock_scriptures += clock_script
+		GLOB.clock_scriptures_by_type[clock_script.type] = clock_script

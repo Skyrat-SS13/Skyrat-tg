@@ -29,7 +29,7 @@
 	if(!is_type_in_typecache(gotten_turf, effect_turf_typecache))
 		return
 
-	if(!QDELETED(target) && target.stat != DEAD && !(IS_CLOCK(target)) && !target.can_block_magic(MAGIC_RESISTANCE_HOLY))
+	if(!QDELETED(target) && target.stat != DEAD && !IS_CLOCK(target) && !target.can_block_magic(MAGIC_RESISTANCE_HOLY))
 		hit_effect(target, user)
 
 
@@ -43,7 +43,7 @@
 
 	var/mob/living/target = hit_atom
 
-	if(!target.can_block_magic(MAGIC_RESISTANCE_HOLY) && !(IS_CLOCK(target)))
+	if(!target.can_block_magic(MAGIC_RESISTANCE_HOLY) && !IS_CLOCK(target))
 		hit_effect(target, throwingdatum.thrower, TRUE)
 
 
@@ -291,6 +291,16 @@
 	ammo_type = /obj/item/ammo_casing/a762/lionhunter/clock
 	max_ammo = 3
 	multiple_sprites = AMMO_BOX_PER_BULLET
+
+
+/obj/item/storage/bag/ammo/clock
+
+/obj/item/storage/bag/ammo/clock/PopulateContents()
+	var/static/items_inside = list(
+		/obj/item/ammo_box/a762/lionhunter/clock = 3
+	)
+
+	generate_items_inside(items_inside, src)
 
 
 #undef HAMMER_FLING_DISTANCE
