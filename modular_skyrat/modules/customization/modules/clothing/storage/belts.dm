@@ -14,7 +14,7 @@
 	create_storage(
 		max_slots = 2,
 		max_specific_storage = WEIGHT_CLASS_BULKY,	//This makes sure swords and the pouches can fit in here - the whitelist keeps the bad stuff out
-		type = /datum/storage/belt/crusader,
+		storage_type = /datum/storage/belt/crusader,
 		canhold = list(
 			/obj/item/storage/belt/storage_pouch,
 			/obj/item/forging/reagent_weapon/sword,
