@@ -98,14 +98,3 @@
 	body_color = "black"
 	icon_state = "chinchilla_black"
 	held_state = "chinchilla_black"
-
-//silver case reference
-
-/mob/living/basic/pet/chinchilla/white/bigdick
-	name = "Big Dick"
-	desc = "Chinchilla? That's kind of a shitty nickname after all... This guy, he's got a face like he's a fuckin' private detective."
-
-	icon_state = "chinchilla_bigdick"
-	held_state = "chinchilla_bigdick"
-
-	unique_pet = TRUE
