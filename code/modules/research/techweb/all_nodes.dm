@@ -127,6 +127,7 @@
 		"turret_control",
 		"universal_scanner",
 		"voice_analyzer",
+		"vox_gas_filter", //SKYRAT EDIT ADDITION
 		"watering_can",
 	)
 
@@ -242,6 +243,7 @@
 		"plant_analyzer",
 		"plunger",
 		"pushbroom",
+		"rwd",
 		"razor",
 		"screwdriver",
 		"secateurs",
@@ -570,9 +572,6 @@
 	design_ids = list(
 		"bounty_pad",
 		"bounty_pad_control",
-		//SKYRAT EDIT ADDITION - START
-		"nifsoft_vendor"
-		//SKYRAT EDIT ADDITION - END
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -623,6 +622,7 @@
 		"solarcontrol",
 		"stack_console",
 		"stack_machine",
+		"suit_storage_unit",
 		"tank_compressor",
 		"tesla_coil",
 		"thermomachine",
@@ -653,7 +653,7 @@
 		"rtd_loaded",
 		"sheetifier",
 		"weldingmask",
-
+		"bolter_wrench",
 		//SKYRAT EDIT START - RESEARCH DESIGNS
 		"engine_goggles_prescription",
 		"mesons_prescription",

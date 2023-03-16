@@ -65,3 +65,4 @@
 	bio = 30
 	fire = 80
 	acid = 85
+	wound = 30

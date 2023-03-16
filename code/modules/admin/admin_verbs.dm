@@ -95,7 +95,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/toggle_AI_interact, /*toggle admin ability to interact with machines as an AI*/
 	/client/proc/toggle_combo_hud, /* toggle display of the combination pizza antag and taco sci/med/eng hud */
 	/client/proc/toggle_view_range, /*changes how far we can see*/
-
+	/client/proc/cmd_admin_law_panel,
 	/datum/admins/proc/toggleaooc,		/*Toggle Antag OOC - SKYRAT EDIT ADDITION*/
 	/datum/admins/proc/toggledchat, 	/*SKYRAT EDIT ADDITION*/
 	/datum/admins/proc/togglesooc,		/*Toggle Security OOC - SKYRAT EDIT ADDITION*/
@@ -979,7 +979,7 @@ GLOBAL_PROTECT(admin_verbs_poll)
 		// Finally, ensure the minds are tracked and in the manifest.
 		SSticker.minds += character.mind
 		if(ishuman(character))
-			GLOB.data_core.manifest_inject(character)
+			GLOB.manifest.inject(character)
 
 		number_made++
 		CHECK_TICK

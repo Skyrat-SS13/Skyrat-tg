@@ -17,7 +17,7 @@
 /obj/item/clothing/head/hats/flakhelm/Initialize(mapload)
 	. = ..()
 
-	create_storage(type = /datum/storage/pockets/tiny/spacenam)
+	create_storage(storage_type = /datum/storage/pockets/tiny/spacenam)
 
 /datum/storage/pockets/tiny/spacenam
 	attack_hand_interact = TRUE		//So you can actually see what you stuff in there
@@ -336,6 +336,15 @@
 	greyscale_config_worn_teshari = /datum/greyscale_config/standalone_hood/worn/teshari
 	greyscale_config_worn_better_vox = /datum/greyscale_config/standalone_hood/worn/newvox
 	greyscale_config_worn_vox = /datum/greyscale_config/standalone_hood/worn/oldvox
+
+/obj/item/clothing/head/beret/badge
+	name = "badged beret"
+	desc = "A beret. With a badge. What do you want, a dissertation? It's a hat."
+	icon_state = "beret_badge"
+	greyscale_config = /datum/greyscale_config/beret_badge
+	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_colors = "#972A2A#EFEFEF"
+	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/head/costume/cowboyhat_old
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'

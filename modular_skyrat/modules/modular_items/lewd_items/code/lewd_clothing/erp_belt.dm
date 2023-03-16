@@ -48,7 +48,7 @@
 						/obj/item/clothing/ears/kinky_headphones,
 						/obj/item/clothing/suit/straight_jacket/latex_straight_jacket,
 						/obj/item/clothing/mask/gas/bdsm_mask,
-						/obj/item/clothing/head/helmet/space/deprivation_helmet,
+						/obj/item/clothing/head/deprivation_helmet,
 						/obj/item/clothing/glasses/hypno,
 
 						//neck

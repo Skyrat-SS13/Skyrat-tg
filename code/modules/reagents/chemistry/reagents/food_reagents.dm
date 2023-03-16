@@ -64,7 +64,9 @@
 	var/burn_heal = 0
 
 /datum/reagent/consumable/nutriment/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)
-	. = ..()
+	if(!check_tray(chems, mytray))
+		return
+
 	mytray.adjust_plant_health(round(chems.get_reagent_amount(type) * 0.2))
 
 /datum/reagent/consumable/nutriment/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
@@ -235,7 +237,9 @@
 
 // Plants should not have sugar, they can't use it and it prevents them getting water/ nutients, it is good for mold though...
 /datum/reagent/consumable/sugar/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)
-	. = ..()
+	if(!check_tray(chems, mytray))
+		return
+
 	mytray.adjust_weedlevel(rand(1,2))
 	mytray.adjust_pestlevel(rand(1,2))
 
@@ -259,7 +263,9 @@
 
 	// Compost for EVERYTHING
 /datum/reagent/consumable/virus_food/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)
-	. = ..()
+	if(!check_tray(chems, mytray))
+		return
+
 	mytray.adjust_plant_health(-round(chems.get_reagent_amount(type) * 0.5))
 
 /datum/reagent/consumable/soysauce
@@ -278,7 +284,7 @@
 	color = "#731008" // rgb: 115, 16, 8
 	taste_description = "ketchup"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-	default_container = /obj/item/reagent_containers/condiment/pack/ketchup
+	default_container = /obj/item/reagent_containers/condiment/ketchup
 
 /datum/reagent/consumable/capsaicin
 	name = "Capsaicin Oil"
@@ -682,7 +688,9 @@
 
 	// On the other hand, honey has been known to carry pollen with it rarely. Can be used to take in a lot of plant qualities all at once, or harm the plant.
 /datum/reagent/consumable/honey/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)
-	. = ..()
+	if(!check_tray(chems, mytray))
+		return
+
 	if(myseed && prob(20))
 		mytray.pollinate(1)
 	else
@@ -1093,7 +1101,7 @@
 	nutriment_factor = 1.5 * REAGENTS_METABOLISM
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	default_container = /obj/item/reagent_containers/condiment/creamer
-	
+
 /datum/reagent/consumable/mintextract
 	name = "Mint Extract"
 	description = "Useful for dealing with undesirable customers."

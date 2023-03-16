@@ -7,3 +7,5 @@
 
 // ERT faction
 #define FACTION_ERT "ert"
+
+#define FACTION_RAIDER "raider"
