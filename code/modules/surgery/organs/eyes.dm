@@ -150,6 +150,12 @@
 			overlay.pixel_x += offset[OFFSET_X]
 			overlay.pixel_y += offset[OFFSET_Y]
 
+	// SKYRAT EDIT START - Customization (darn synths I swear)
+	if(eye_icon_state == "None")
+		eye_left.alpha = 0
+		eye_right.alpha = 0
+	// SKYRAT EDIT END
+
 	return overlays
 
 #undef OFFSET_X
