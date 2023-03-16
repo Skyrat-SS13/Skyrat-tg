@@ -39,7 +39,7 @@
 	///What NIF models can this software be installed on?
 	var/list/compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif)
 
-	/// How much of the NIFSoft's purchase price is payed out as reward points, if any?
+	/// How much of the NIFSoft's purchase price is paid out as reward points, if any?
 	var/rewards_points_rate = 0.5
 	/// Can this item be purchased with reward points?
 	var/rewards_points_eligible = TRUE
