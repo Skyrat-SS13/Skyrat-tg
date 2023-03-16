@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 
 			var/amount_to_charge = (params["product_cost"])
 			var/rewards_purchase = (params["rewards_purchase"])
-			var/obj/item/organ/internal/cyberimp/brain/nif/buyer_nif = target_nif
+			var/obj/item/organ/internal/cyberimp/brain/nif/buyer_nif = target_nif.resolve()
 
 			if(rewards_purchase)
 				if(buyer_nif.rewards_points < amount_to_charge)
