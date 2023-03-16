@@ -1,6 +1,6 @@
 /**************SKYRAT REWARDS**************/
 //SUITS
-/obj/item/clothing/suit/hooded/wintercoat/colourable //ORION TODO: Kill this (make it its own seperate gags (upstream?))
+/obj/item/clothing/suit/hooded/wintercoat/colourable
 	name = "custom winter coat"
 	icon_state = "winter_coat"
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/colourable
@@ -109,7 +109,7 @@
 		selects["Save"] = "Save"
 		selects["Delete"] = "Delete"
 		var/selection = input(user, "", "Color Menu", currentcolor) as null|anything in selects
-		if(QDELETED(src) || !user.canUseTopic(src, be_close = TRUE))
+		if(QDELETED(src) || !user.can_perform_action(src))
 			return
 		switch(selection)
 			if("Save")
@@ -126,7 +126,7 @@
 				currentcolor = colors[selection]
 	else if(istype(action, /datum/action/item_action/dtcleargrid))
 		var/yesnomaybe = tgui_alert("Are you sure you wanna clear the canvas?", "", list("Yes", "No", "Maybe"))
-		if(QDELETED(src) || !user.canUseTopic(src, be_close = TRUE))
+		if(QDELETED(src) || !user.can_perform_action(src))
 			return
 		switch(yesnomaybe)
 			if("Yes")
@@ -466,7 +466,7 @@
 
 /obj/item/clothing/neck/inferno_collar/Initialize(mapload)
 	. = ..()
-	create_storage(type = /datum/storage/pockets/small/collar)
+	create_storage(storage_type = /datum/storage/pockets/small/collar)
 	if(treat_path)
 		new treat_path(src)
 
@@ -1481,3 +1481,28 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "colorblockhood"
 	flags_inv = HIDEHAIR
+
+/obj/item/clothing/suit/toggle/digicoat
+	toggle_noun = "holo-dislpay"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+//Donation reward for Razurath
+/obj/item/clothing/suit/toggle/digicoat/glitched
+	name = "hacked digicoat"
+	desc = "Glitched images display across the back. Cool!"
+	base_icon_state = "digicoat_glitched"
+	icon_state = "digicoat_glitched"
+
+/obj/item/clothing/suit/toggle/digicoat/nanotrasen
+	name = "nanotrasen digicoat"
+	desc = "A company jacket of popular design."
+	base_icon_state = "digicoat_nt"
+	icon_state = "digicoat_nt"
+
+/obj/item/clothing/suit/toggle/digicoat/interdyne
+	name = "interdyne digicoat"
+	desc = "A sinister colored jacket from a familiar company."
+	base_icon_state = "digicoat_interdyne"
+	icon_state = "digicoat_interdyne"

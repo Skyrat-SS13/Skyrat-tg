@@ -113,6 +113,9 @@
 /obj/item/clothing/suit/space/officer
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
+/obj/item/clothing/suit/space/changeling
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
 /obj/item/clothing/suit/hooded/wintercoat
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
@@ -146,9 +149,6 @@
 	supports_variations_flags = NONE
 
 /obj/item/clothing/suit/hooded/cloak/godslayer
-	supports_variations_flags = NONE
-
-/obj/item/clothing/under/suit/henchmen
 	supports_variations_flags = NONE
 
 /obj/item/clothing/suit/hooded/techpriest

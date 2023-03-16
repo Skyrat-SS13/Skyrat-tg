@@ -1,4 +1,4 @@
-/obj/item/clothing/suit/wornshirt //ORION TODO: kill or fix literally everything below this line
+/obj/item/clothing/suit/wornshirt
 	name = "worn shirt"
 	desc = "A worn out (or perhaps just baggy), curiously comfortable t-shirt."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -295,7 +295,6 @@
 	icon_state = "bltrenchcoat"
 	body_parts_covered = CHEST|ARMS
 
- //ORION TODO: stop killing below this line these are fine just sort 'em
 /obj/item/clothing/suit/apron/chef/colorable_apron
 	name = "apron"
 	desc = "A basic apron."
@@ -330,6 +329,26 @@
 	greyscale_config_worn_digi = /datum/greyscale_config/overalls/worn/digi
 	greyscale_colors = "#594032"
 	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/suit/apron/overalls/greyscale/Initialize(mapload)
+	. = ..()
+	allowed += list(
+		/obj/item/flashlight,
+		/obj/item/lighter,
+		/obj/item/modular_computer/pda,
+		/obj/item/radio,
+		/obj/item/storage/bag/books,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tank/internals/emergency_oxygen,
+		/obj/item/tank/internals/plasmaman,
+		/obj/item/toy,
+		/obj/item/analyzer,
+		/obj/item/construction/rcd,
+		/obj/item/fireaxe/metal_h2_axe,
+		/obj/item/pipe_dispenser,
+		/obj/item/storage/bag/construction,
+		/obj/item/t_scanner,
+	)
 
 /obj/item/clothing/suit/apron/overalls/greyscale/examine(mob/user)
 	. = ..()

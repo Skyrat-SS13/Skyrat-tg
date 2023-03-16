@@ -129,10 +129,6 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Flask"
 	item_path = /obj/item/reagent_containers/cup/glass/flask
 
-/datum/loadout_item/pocket_items/skub
-	name = "Skub"
-	item_path = /obj/item/skub
-
 /datum/loadout_item/pocket_items/multipen
 	name = "Multicolored Pen"
 	item_path = /obj/item/pen/fourcolor
@@ -143,7 +139,7 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 
 /datum/loadout_item/pocket_items/modular_laptop
 	name = "Modular Laptop"
-	item_path = /obj/item/modular_computer/laptop/preset/civilian
+	item_path = /obj/item/modular_computer/laptop/preset/civilian/closed
 
 /datum/loadout_item/pocket_items/ringbox_gold
 	name = "Gold Ring Box"
