@@ -56,5 +56,5 @@
 	human.dna.features["mcolor"] = main_color
 	human.dna.features["mcolor2"] = secondary_color
 	human.dna.features["mcolor3"] = secondary_color
-	human.update_mutant_bodyparts(TRUE)
+	regenerate_organs(human, src, visual_only = TRUE)
 	human.update_body(TRUE)

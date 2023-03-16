@@ -90,6 +90,12 @@
 	if(confirmed != "Yes")
 		return
 
+	if(!uses)
+		return
+
+	uses -= 1
+	balloon_alert(user, "[uses] use[uses == 1 ? "" : "s"] left!")
+
 	podspawn(list(
 		"target" = get_turf(target),
 		"path" = supply_pod_stay ? /obj/structure/closet/supplypod/podspawn/no_return : /obj/structure/closet/supplypod/podspawn,
@@ -105,11 +111,8 @@
 				[span_bold("Request received. Pod inbound, please stand back from the landing site.")] \
 				Message ends.\""))
 
-	uses--
 	if(!uses)
 		qdel(src)
-	else
-		balloon_alert(user, "[uses] use[uses > 1 ? "s" : ""] left!")
 
 // Misc stuff here
 

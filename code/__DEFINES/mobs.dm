@@ -23,6 +23,8 @@
 
 /// How efficiently humans regenerate blood.
 #define BLOOD_REGEN_FACTOR 0.25
+/// Determines the rate at which humans lose blood when they have the blood deficiency quirk. The default is BLOOD_REGEN_FACTOR + BLOOD_DEFICIENCY_MODIFIER.
+#define BLOOD_DEFICIENCY_MODIFIER 0.025
 
 /// Temperature at which blood loss and regen stops. [/mob/living/carbon/human/proc/handle_blood]
 #define BLOOD_STOP_TEMP 225
@@ -119,6 +121,8 @@
 #define SPECIES_LIZARD_SILVER "silverscale"
 #define SPECIES_NIGHTMARE "nightmare"
 #define SPECIES_MONKEY "monkey"
+#define SPECIES_MONKEY_FREAK "monkey_freak"
+#define SPECIES_MONKEY_HUMAN_LEGGED "monkey_human_legged"
 #define SPECIES_MOTH "moth"
 #define SPECIES_MUSHROOM "mush"
 #define SPECIES_PLASMAMAN "plasmaman"
@@ -126,6 +130,7 @@
 #define SPECIES_SHADOW "shadow"
 #define SPECIES_SKELETON "skeleton"
 #define SPECIES_SNAIL "snail"
+#define SPECIES_TALLBOY "tallboy"
 #define SPECIES_VAMPIRE "vampire"
 #define SPECIES_ZOMBIE "zombie"
 #define SPECIES_ZOMBIE_INFECTIOUS "memezombie"
@@ -774,6 +779,12 @@ GLOBAL_LIST_INIT(layers_to_offset, list(
 #define EXTERNAL_ADJACENT (1 << 2)
 /// Draws organ on the BODY_BEHIND_LAYER
 #define EXTERNAL_BEHIND (1 << 3)
+// SKYRAT EDIT ADDITION - Customization
+/// Draws organ on the BODY_FRONT_UNDER_CLOTHES
+#define EXTERNAL_FRONT_UNDER_CLOTHES (1 << 4)
+/// Draws organ on the ABOVE_BODY_FRONT_HEAD_LAYER
+#define EXTERNAL_FRONT_OVER (1 << 5)
+// SKYRAT EDIT END (not touching what comes next because we don't actually have to (nor want to))
 /// Draws organ on all EXTERNAL layers
 #define ALL_EXTERNAL_OVERLAYS EXTERNAL_FRONT | EXTERNAL_ADJACENT | EXTERNAL_BEHIND
 

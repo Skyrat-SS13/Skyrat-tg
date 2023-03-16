@@ -123,8 +123,6 @@
 	///If the mob can be spawned with a gold slime core. HOSTILE_SPAWN are spawned with plasma, FRIENDLY_SPAWN are spawned with blood.
 	var/gold_core_spawnable = NO_SPAWN
 
-	var/datum/component/spawner/nest
-
 	///Sentience type, for slime potions.
 	var/sentience_type = SENTIENCE_ORGANIC
 
@@ -220,10 +218,6 @@
 	QDEL_NULL(access_card)
 	GLOB.simple_animals[AIStatus] -= src
 	SSnpcpool.currentrun -= src
-
-	if(nest)
-		nest.spawned_mobs -= src
-		nest = null
 
 	var/turf/T = get_turf(src)
 	if (T && AIStatus == AI_Z_OFF)
@@ -455,9 +449,6 @@
 			new i(loc)
 
 /mob/living/simple_animal/death(gibbed)
-	if(nest)
-		nest.spawned_mobs -= src
-		nest = null
 	drop_loot()
 	if(dextrous)
 		drop_all_held_items()

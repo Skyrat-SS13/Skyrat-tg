@@ -1,3 +1,6 @@
+/// To know whether or not we have an officer already
+GLOBAL_VAR(first_officer)
+
 ///NRI police patrol with a mission to find out if the fine reason is legitimate and then act from there.
 /datum/pirate_gang/nri_raiders
 	name = "NRI IAC Police Patrol"
@@ -50,7 +53,20 @@
 	built_threat_content = replacetext(built_threat_content, "%STATION", station_designation)
 	return new /datum/comm_message(threat_title, built_threat_content, possible_answers)
 
-/datum/outfit/pirate/nri_officer
+/datum/outfit/pirate/nri/post_equip(mob/living/carbon/human/equipped)
+	. = ..()
+	equipped.faction -= "pirate"
+	equipped.faction |= "raider"
+
+	// make sure we update the ID's name too
+	var/obj/item/card/id/id_card = equipped.wear_id
+	if(istype(id_card))
+		id_card.registered_name = equipped.real_name
+		id_card.update_label()
+
+	handlebank(equipped)
+
+/datum/outfit/pirate/nri/officer
 	name = "NRI Field Officer"
 
 	head = /obj/item/clothing/head/beret/sec/nri
@@ -66,7 +82,7 @@
 
 	shoes = /obj/item/clothing/shoes/combat
 
-	belt = /obj/item/storage/belt/military/nri/captain/pirate_officer
+	belt = /obj/item/storage/belt/security/nri
 	back = /obj/item/storage/backpack/satchel/leather
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack/raider = 1, /obj/item/ammo_box/magazine/m9mm_aps = 3, /obj/item/gun/ballistic/automatic/pistol/ladon/nri = 1, /obj/item/crucifix = 1, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/pda/security = 1)
 	l_pocket = /obj/item/paper/fluff/nri_document
@@ -75,15 +91,10 @@
 	id = /obj/item/card/id/advanced
 	id_trim = /datum/id_trim/nri_raider/officer
 
-/datum/outfit/pirate/nri_officer/post_equip(mob/living/carbon/human/equipped)
-	. = ..()
-	equipped.faction -= "pirate"
-	equipped.faction |= "raider"
-
 /datum/id_trim/nri_raider/officer
 	assignment = "NRI Field Officer"
 
-/datum/outfit/pirate/nri_marine
+/datum/outfit/pirate/nri/marine
 	name = "NRI Marine"
 
 	head = null
@@ -98,7 +109,7 @@
 
 	shoes = /obj/item/clothing/shoes/combat
 
-	belt = /obj/item/storage/belt/military/nri/pirate
+	belt = /obj/item/storage/belt/security/nri
 	back = /obj/item/storage/backpack/satchel/leather
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack/raider = 1, /obj/item/crucifix = 1, /obj/item/ammo_box/magazine/m9mm = 3, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/pda/security = 1)
 	l_pocket = /obj/item/gun/ballistic/automatic/pistol
@@ -106,11 +117,6 @@
 
 	id = /obj/item/card/id/advanced
 	id_trim = /datum/id_trim/nri_raider
-
-/datum/outfit/pirate/nri_marine/post_equip(mob/living/carbon/human/equipped)
-	. = ..()
-	equipped.faction -= "pirate"
-	equipped.faction |= "raider"
 
 /datum/id_trim/nri_raider
 	assignment = "NRI Marine"
@@ -128,22 +134,28 @@
 	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi'
 	icon_state = "cryopod"
 	mob_species = /datum/species/human
-	faction = list("raider")
-	var/rank = "NRI Marine"
+	faction = list(FACTION_RAIDER)
 	you_are_text = "You are a Novaya Rossiyskaya Imperiya task force."
 	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by demanding the funds. Force approach is usually recommended, but isn't the only method."
 	important_text = "Allowed races are humans, Akulas, IPCs. Follow your field officer's orders. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. Roleplay accordingly."
-	outfit = /datum/outfit/pirate/nri_marine
-	spawner_job_path = null
+	outfit = /datum/outfit/pirate/nri/marine
 	restricted_species = list(/datum/species/human, /datum/species/akula, /datum/species/synthetic)
 	random_appearance = FALSE
 	show_flavor = TRUE
 
+/obj/effect/mob_spawn/ghost_role/human/nri_raider/proc/apply_codename(mob/living/carbon/human/spawned_human)
+	var/callsign = pick(GLOB.callsigns_nri)
+	var/number = pick(GLOB.phonetic_alphabet_numbers)
+	spawned_human.fully_replace_character_name(null, "[callsign] [number]")
+
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/special(mob/living/carbon/human/spawned_human)
 	. = ..()
-	var/last_name = pick(GLOB.last_names)
-	spawned_human.fully_replace_character_name(null, "[rank] [last_name]")
-	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
+	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_SPAWNER)
+	apply_codename(spawned_human)
+
+/obj/effect/mob_spawn/ghost_role/human/nri_raider/post_transfer_prefs(mob/living/carbon/human/spawned_human)
+	. = ..()
+	apply_codename(spawned_human)
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/Destroy()
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
@@ -156,18 +168,29 @@
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/officer
 	name = "NRI Officer sleeper"
 	mob_name = "Novaya Rossiyskaya Imperiya raiding party's field officer"
-	outfit = /datum/outfit/pirate/nri_officer
-	rank = "Field Officer"
+	outfit = /datum/outfit/pirate/nri/officer
 	important_text = "Allowed races are humans, Akulas, IPCs. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. Roleplay accordingly. There is an important document in your pocket I'd advise you to read and keep safe."
+
+/obj/effect/mob_spawn/ghost_role/human/nri_raider/officer/apply_codename(mob/living/carbon/human/spawned_human)
+	var/callsign = pick(GLOB.callsigns_nri)
+	var/number = pick(GLOB.phonetic_alphabet_numbers)
+	spawned_human.fully_replace_character_name(null, "[callsign] [number][GLOB.first_officer == spawned_human ? " Actual" : ""]")
 
 /obj/effect/mob_spawn/ghost_role/human/nri_raider/officer/special(mob/living/carbon/human/spawned_human)
 	. = ..()
-	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
-	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
-	spawned_human.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_MIND)
+	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_SPAWNER)
+	spawned_human.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_SPAWNER)
 
-/obj/effect/mob_spawn/ghost_role/human/nri_raider/marine
-	rank = "Marine"
+	// if this is the first officer, keep a reference to them
+	if(!GLOB.first_officer)
+		GLOB.first_officer = spawned_human
+
+	apply_codename(spawned_human)
+
+
+/obj/effect/mob_spawn/ghost_role/human/nri_raider/officer/post_transfer_prefs(mob/living/carbon/human/spawned_human)
+	. = ..()
+	apply_codename(spawned_human)
 
 /datum/map_template/shuttle/pirate/nri_raider
 	prefix = "_maps/shuttles/skyrat/"
@@ -205,7 +228,7 @@
 	desc = "An automatic defense turret designed for point-defense, it's probably not that wise to try approaching it."
 	scan_range = 9
 	shot_delay = 3
-	faction = list("raider")
+	faction = list(FACTION_RAIDER)
 	icon = 'modular_skyrat/modules/encounters/icons/turrets.dmi'
 	icon_state = "gun_turret"
 	base_icon_state = "gun_turret"
@@ -298,7 +321,7 @@
 		/obj/item/grenade/flashbang = 1,
 	),src)
 
-/obj/item/storage/belt/military/nri/pirate/PopulateContents()
+/obj/item/storage/belt/security/nri/PopulateContents()
 	generate_items_inside(list(
 		/obj/item/knife/combat = 1,
 		/obj/item/grenade/smokebomb = 1,
@@ -342,5 +365,5 @@
 	<br> <span style=\"color:black;font-family:'Segoe Script';\"><p><b>Defense Collegia Shipmaster, Akulan Contractor, Shinrun Kantes.</b></p></span>"}
 
 /obj/machinery/suit_storage_unit/nri
-	mod_type = /obj/item/mod/control/pre_equipped/frontline/pirate
+	mod_type = /obj/item/mod/control/pre_equipped/policing
 	storage_type = /obj/item/tank/internals/oxygen/yellow

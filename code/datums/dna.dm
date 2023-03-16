@@ -531,11 +531,12 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			return
 		death_sound = new_race.death_sound
 
-		if (dna.species.properly_gained)
-			dna.species.on_species_loss(src, new_race, pref_load)
-
 		var/datum/species/old_species = dna.species
 		dna.species = new_race
+
+		if (old_species.properly_gained)
+			old_species.on_species_loss(src, new_race, pref_load)
+
 		dna.species.on_species_gain(src, old_species, pref_load)
 		if(ishuman(src))
 			qdel(language_holder)
@@ -674,7 +675,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(dna.features["pod_hair"])
 		dna.features["pod_hair"] = GLOB.pod_hair_list[deconstruct_block(get_uni_feature_block(features, DNA_POD_HAIR_BLOCK), GLOB.pod_hair_list.len)]
 
-	for(var/obj/item/organ/external/external_organ as anything in external_organs)
+	for(var/obj/item/organ/external/external_organ in internal_organs)
 		external_organ.mutate_feature(features, src)
 
 	if(icon_update)
