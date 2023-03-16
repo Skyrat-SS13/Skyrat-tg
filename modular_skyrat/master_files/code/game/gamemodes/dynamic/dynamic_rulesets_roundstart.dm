@@ -6,10 +6,36 @@
 	required_candidates = 0
 	weight = 0
 	cost = 0
-	requirements = list(0,0,0,0,0,0,0,0,0,0)
 	flags = LONE_RULESET
 
-/datum/dynamic_ruleset/roundstart/quiet/pre_execute()
+/datum/dynamic_ruleset/roundstart/quiet/pre_execute(population)
 	. = ..()
-	log_game("Starting a round without roundstart antagonists.")
+	var/num_candidates = get_antag_cap(population) * (scaled_times + 1)
+	for (var/i in 1 to num_candidates)
+		if(length(candidates) <= 0)
+			break
+		var/mob/candidate = pick_n_take(candidates)
+		assigned += candidate.mind
+		candidate.mind.special_role = ROLE_OPFOR_CANDIDATE
+		candidate.mind.restricted_roles = restricted_roles
+		GLOB.pre_setup_antags += candidate.mind
 	return TRUE
+
+/datum/dynamic_ruleset/roundstart/quiet/trim_candidates()
+	for(var/mob/dead/new_player/candidate_player in candidates)
+		var/client/candidate_client = GET_CLIENT(candidate_player)
+		if (!candidate_client || !candidate_player.mind) // Are they connected?
+			candidates.Remove(candidate_player)
+			continue
+
+		if(candidate_client.get_remaining_days(minimum_required_age) > 0)
+			candidates.Remove(candidate_player)
+			continue
+
+		if(candidate_player.mind.special_role) // We really don't want to give antag to an antag.
+			candidates.Remove(candidate_player)
+			continue
+
+		if (is_banned_from(candidate_player.ckey, BAN_OPFOR))
+			candidates.Remove(candidate_player)
+			continue
