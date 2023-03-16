@@ -85,6 +85,7 @@
 		"plastitanium",
 		"plastitaniumglass",
 		"plate",
+		"polarizer", // SKYRAT EDIT ADDITION - Polarized windows
 		"prox_sensor",
 		"radio_headset",
 		"rdconsole",

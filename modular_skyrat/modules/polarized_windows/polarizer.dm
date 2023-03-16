@@ -1,8 +1,14 @@
 /obj/item/assembly/control/polarizer
-	name = "window polarizing controller"
+	name = "window polarization remote controller"
 	desc = "A small electronic device able to control the polarization status of linked windows remotely."
 	/// Whether the connected windows are meant to be polarized or not.
 	var/polarizing = FALSE
+
+
+/obj/item/assembly/control/polarizer/examine(mob/user)
+	. = ..()
+
+	. += span_notice("Use it <b>in your hand</b> or with a <b>multitool</b> to change its channel ID.")
 
 
 /obj/item/assembly/control/polarizer/multitool_act(mob/living/user)
@@ -39,3 +45,16 @@
 
 /obj/machinery/button/polarizer
 	device_type = /obj/item/assembly/control/polarizer
+
+
+/datum/design/polarizer
+	name = "Window Polarization Remote Controller"
+	id = "polarizer"
+	build_type = PROTOLATHE | AWAY_LATHE | AUTOLATHE
+	materials = list(/datum/material/iron = 100, /datum/material/glass = 50)
+	build_path = /obj/item/assembly/control/polarizer
+	category = list(
+		RND_CATEGORY_INITIAL,
+		RND_CATEGORY_CONSTRUCTION + RND_SUBCATEGORY_CONSTRUCTION_ELECTRONICS,
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
