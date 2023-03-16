@@ -20,4 +20,4 @@
 		message_admins("ICES: Event timer multiplier is [EVENT_HIGHPOP_TIMER_MULTIPLIER]x (HIGHPOP) for [filter_threshold] players. Next run in [DisplayTimeText(scheduled - world.time)]")
 
 	log_game("ICES: Reschedule proc calling for timed intensity credit")
-	change_intensity_credits(2, 1, TRUE, TRUE, TRUE)
+	change_intensity_credits(2, 1, TRUE, TRUE, FALSE)
