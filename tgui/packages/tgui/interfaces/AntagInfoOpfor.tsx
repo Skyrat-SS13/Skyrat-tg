@@ -1,4 +1,4 @@
-import { Icon, Section, Stack, Button } from '../components';
+import { Section, Stack, Button } from '../components';
 import { Window } from '../layouts';
 import { useBackend } from '../backend';
 
