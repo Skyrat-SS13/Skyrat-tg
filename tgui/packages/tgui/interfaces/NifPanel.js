@@ -198,7 +198,14 @@ const NifSettings = (props, context) => {
           disabled={blood_level < minimum_blood_level}
         />
       </LabeledList.Item>
-      <LabeledList.Item label="Rewards Points">
+      <LabeledList.Item
+        label="Rewards Points"
+        buttons={
+          <Button
+            icon="info"
+            tooltip="Rewards points are an alternative currency gained by purchasing NIFSofts, rewards points carry between shifts."
+          />
+        }>
         {stored_points}
       </LabeledList.Item>
     </LabeledList>

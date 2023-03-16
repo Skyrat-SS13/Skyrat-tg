@@ -32,13 +32,14 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 
 	paying_account = computer.computer_id_slot?.registered_account || null
 	data["paying_account"] = paying_account
-	data["current_balance"] = computer.computer_id_slot?.registered_account?.account_balance || null
+	data["current_balance"] = computer.computer_id_slot?.registered_account?.account_balance
 
 	var/rewards_points = 0
-	var/obj/item/organ/internal/cyberimp/brain/nif/buyer_nif = target_nif.resolve()
 
-	if(buyer_nif)
-		rewards_points = buyer_nif.rewards_points
+	if(target_nif)
+		var/obj/item/organ/internal/cyberimp/brain/nif/buyer_nif = target_nif.resolve()
+		if(buyer_nif)
+			rewards_points = buyer_nif.rewards_points
 
 	data["rewards_points"] = rewards_points
 	return data
@@ -48,9 +49,16 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 	var/list/product_list = list()
 
 	var/mob/living/carbon/human/nif_user = user
-	if(nif_user)
+	if(!ishuman(nif_user))
+		target_nif = null
+
+	else
 		var/obj/item/organ/internal/cyberimp/brain/nif/user_nif = nif_user.getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
-		target_nif = weakref(user_nif)
+		if(!user_nif)
+			target_nif = null
+
+		if(!target_nif || user_nif != target_nif.resolve())
+			target_nif = WEAKREF(user_nif)
 
 	data["target_nif"] = target_nif
 
@@ -106,7 +114,7 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 				paying_account.bank_card_talk("You are unable to buy this.")
 				return FALSE
 
-			var/datum/nifsoft/installed_nifsoft = new product_to_buy(target_nif)
+			var/datum/nifsoft/installed_nifsoft = new product_to_buy(buyer_nif, no_rewards_points = rewards_purchase)
 			if(!installed_nifsoft.parent_nif)
 				paying_account.bank_card_talk("Install failed, your purchase has been refunded.")
 				return FALSE

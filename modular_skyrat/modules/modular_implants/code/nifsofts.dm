@@ -44,10 +44,10 @@
 	/// Can this item be purchased with reward points?
 	var/rewards_points_eligible = TRUE
 
-/datum/nifsoft/New(obj/item/organ/internal/cyberimp/brain/nif/recepient_nif, gotten_from_disk = FALSE)
+/datum/nifsoft/New(obj/item/organ/internal/cyberimp/brain/nif/recepient_nif, no_rewards_points = FALSE)
 	. = ..()
 
-	if(gotten_from_disk) //This is mostly so that credits can't be farmed through printed or stolen NIFSoft disks
+	if(no_rewards_points) //This is mostly so that credits can't be farmed through printed or stolen NIFSoft disks
 		rewards_points_rate = 0
 
 	compatible_nifs += /obj/item/organ/internal/cyberimp/brain/nif/debug
@@ -161,7 +161,7 @@
 	if(!ishuman(target) || !installed_nif)
 		return FALSE
 
-	var/datum/nifsoft/installed_nifsoft = new loaded_nifsoft(installed_nif, gotten_from_disk = TRUE)
+	var/datum/nifsoft/installed_nifsoft = new loaded_nifsoft(installed_nif, no_rewards_points = TRUE)
 
 	if(!installed_nifsoft.parent_nif)
 		balloon_alert(target, "installation failed")
