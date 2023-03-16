@@ -74,7 +74,9 @@
 		balloon_alert_to_viewers("slowly deflates!")
 		addtimer(CALLBACK(src, PROC_REF(slow_deflate_finish)), manual_deflation_time)
 		return
-	balloon_alert_to_viewers("rapidly deflates!")
+		
+	var/turf/inflatable_loc = get_turf(src)
+	inflatable_loc.balloon_alert_to_viewers("[src] rapidly deflates!") // just so we don't balloon alert from the qdeleted inflatable object
 	if(torn_type)
 		new torn_type(get_turf(src))
 	qdel(src)
