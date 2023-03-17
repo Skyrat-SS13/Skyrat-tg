@@ -1,9 +1,9 @@
 GLOBAL_LIST_EMPTY(hologram_impersonators)
 
-/obj/machinery/holopad/set_holo(mob/living/user, obj/effect/overlay/holo_pad_hologram/h)
-	if(h.Impersonation)
-		GLOB.hologram_impersonators[user] = h
-		h.become_hearing_sensitive() // Well, we need to show up on "get_hearers_in_view()"
+/obj/machinery/holopad/set_holo(mob/living/user, obj/effect/overlay/holo_pad_hologram/holo)
+	if(holo.Impersonation)
+		GLOB.hologram_impersonators[user] = holo
+		holo.become_hearing_sensitive() // Well, we need to show up on "get_hearers_in_view()"
 	. = ..()
 
 /obj/machinery/holopad/clear_holo(mob/living/user)
