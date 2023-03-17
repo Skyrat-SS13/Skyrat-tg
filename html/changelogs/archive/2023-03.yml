@@ -820,3 +820,72 @@
   - rscadd: Chefs can sometimes get ketchup bottles in the mail.
   - bugfix: Ketchup in the crafting menu is now represented as the bottle, rather
       than an empty condiment pack.
+2023-03-17:
+  GoldenAlpharex:
+  - rscdel: Removed the possibility to get slowly turned to ashes (and thus getting
+      hard round-removed) by being on fire after death.
+  - bugfix: Fixes synths getting turned to ashes incredibly fast due to being on fire
+      after death.
+  GoldenAlpharex, Time-Green and lizardqueenlexi:
+  - bugfix: 'The following are the /tg/ changelogs:'
+  - refactor: External organs have been near-completely refactored.
+  - admin: Admin-spawned external organs will load with a random icon and color
+  - bugfix: fixes angel wings not working for non-humans (it was so fucking broken)
+  - bugfix: fixes external organs being invisible if they werent initialized with
+      a human
+  - refactor: Removed mutant_bodyparts.dmi and distributed its sprites in a more sensible
+      and granular manner.
+  - code_imp: 'Now this is the part Golden worked on:'
+  - refactor: Completely refactored the way mutant_bodyparts were handled. To make
+      a long story short, they're all external organs now, some of them can be removed
+      when it makes sense, and they should render a lot better from now on.
+  - bugfix: There should already be a lot less overlays on your character at once,
+      with some more optimizations regarding that coming soon.
+  - bugfix: Functional wings obtained by the flight potion should now display properly
+      when opened and closed. Synths should also have access to their robotic wings
+      once again.
+  - qol: All of the contents of the "Body Markings" option in the Appearance tab were
+      moved to the Augments+ tab, in the Markings section, for more consistency.
+  - bugfix: Synth eyes no longer show on their sprite when they have the IPC screen
+      on.
+  - bugfix: At long last, podpeople hair works now, woo!
+  - bugfix: Fixed an issue where the shapeshifting action was accidentally messing
+      up the global sprite accessory list, making some options unavailable on accident.
+  - bugfix: 'If you notice any bugs related to the rendering of your characters, please
+      report them using the "Report Issue" button at the top-right corner of the screen,
+      mentioning #19635 in it for ease of reference.'
+  Jolly:
+  - bugfix: Light office chairs and Dark office chair colors are, now actually reflective
+      of the name.
+  - bugfix: Left/Right office chairs should be symmetrical and no longer be one pixel
+      off when flipped.
+  Melbert:
+  - admin: Logs when forced events trigger
+  Paxilmaniac:
+  - imageadd: The NRI surplus armor is getting a pretty big resprite and reflavoring,
+      ordering surplus armor in the surplus crates might give you a bunch of mismatched
+      colors you know!
+  - rscadd: Izlishek Company Military Supplier has stopped selling the old NRI armor
+      vests, in exchange for selling tactical floor tile grey variations of the new
+      CIN armor and uniform set
+  - balance: This does, technically, mean a balance change. For the bit of lore behind
+      the armor, and the actual armor values to line up, and for the vests to not
+      just be "sec vests but better in every way", they've lost a majority of their
+      (barely existent) energy and laser protection, in exchange for a little extra
+      bomb and wound armor.
+  SkyratBot:
+  - qol: medical cyborg's surgical processor now tells the user on examine that it
+      needs to be equipped in an active module to access downloaded surgeries
+  - qol: medical cyborg's surgical processor now lists downloaded surgeries on examine
+  - balance: The janitor's trashbag now fits on his belt. In exchange, taking something
+      out of it sends a visible message, and has a delay.
+  - rscadd: suit storage unit circuit boards to engineering & science department circuit
+      printers.
+  - rscadd: freezer cabinet as a craftable & destructible item.
+  - qol: flood light can now be deconstructed rather than destroyed/thrown away.
+  - spellcheck: fixed a box of party_poppers and camera tag "tech_storage"
+  softcerv:
+  - bugfix: cryo now saves modular persistence
+  vinylspiders:
+  - bugfix: fixes the sadism perk causing unreasonable amounts of arousal when around
+      corpses--now only live mobs that are in pain count towards it.
