@@ -2,8 +2,6 @@
 	weight = 0
 
 /datum/station_trait/overflow_job_bureaucracy/set_overflow_job_override(datum/source)
-	SIGNAL_HANDLER
-
 	var/datum/job/picked_job = pick(SSjob.joinable_occupations)
 	while(picked_job.veteran_only)
 		picked_job = pick(SSjob.joinable_occupations)
