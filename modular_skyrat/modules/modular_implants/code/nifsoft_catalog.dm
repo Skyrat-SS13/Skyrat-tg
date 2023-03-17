@@ -93,7 +93,7 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 
 	switch(action)
 		if("purchase_product")
-			var/product_to_buy = text2path(params["product_to_buy"])
+			var/datum/nifsoft/product_to_buy = text2path(params["product_to_buy"])
 			if(!product_to_buy || !paying_account)
 				return FALSE
 
@@ -114,7 +114,7 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 				paying_account.bank_card_talk("You are unable to buy this.")
 				return FALSE
 
-			var/datum/nifsoft/installed_nifsoft = new product_to_buy(buyer_nif, no_rewards_points = rewards_purchase)
+			var/datum/nifsoft/installed_nifsoft = new product_to_buy(buyer_nif, rewards_purchase)
 			if(!installed_nifsoft.parent_nif)
 				paying_account.bank_card_talk("Install failed, your purchase has been refunded.")
 				return FALSE

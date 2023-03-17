@@ -9,6 +9,7 @@
 #define NIF_MINIMUM_POWER_LEVEL 0
 
 #define NIF_SETUP_BLINDNESS "nif_setup"
+#define MAX_NIF_REWARDS_POINTS 2500
 
 // This is the original NIF that other NIFs are based on.
 /obj/item/organ/internal/cyberimp/brain/nif
@@ -321,6 +322,8 @@
 	loaded_nifsoft.linked_mob = linked_mob
 	rewards_points += (loaded_nifsoft.rewards_points_rate * loaded_nifsoft.purchase_price)
 
+	rewards_points = min(rewards_points, MAX_NIF_REWARDS_POINTS)
+
 	send_message("[loaded_nifsoft] has been added.")
 	update_static_data_for_all_viewers()
 	return TRUE
@@ -501,3 +504,4 @@
 #undef NIF_MINIMUM_DURABILITY
 #undef NIF_MINIMUM_POWER_LEVEL
 #undef NIF_SETUP_BLINDNESS
+#undef MAX_NIF_REWARDS_POINTS

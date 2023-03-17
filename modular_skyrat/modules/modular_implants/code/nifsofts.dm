@@ -161,7 +161,7 @@
 	if(!ishuman(target) || !installed_nif)
 		return FALSE
 
-	var/datum/nifsoft/installed_nifsoft = new loaded_nifsoft(installed_nif, no_rewards_points = TRUE)
+	var/datum/nifsoft/installed_nifsoft = new loaded_nifsoft(installed_nif, TRUE)
 
 	if(!installed_nifsoft.parent_nif)
 		balloon_alert(target, "installation failed")
