@@ -11,10 +11,10 @@
 		TRAIT_PLANT_SAFE,
 	)
 	external_organs = list(
-		/obj/item/organ/external/pod_hair = "None",
+		// /obj/item/organ/external/pod_hair = "None", // SKYRAT EDIT REMOVAL - Customization (it messes up unit tests.)
 	)
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID | MOB_PLANT
-	inherent_factions = list("plants", "vines")
+	inherent_factions = list(FACTION_PLANTS, FACTION_VINES)
 
 	burnmod = 1.25
 	heatmod = 1.5
