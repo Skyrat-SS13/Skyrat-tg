@@ -86,7 +86,7 @@
 /obj/item/clothing/shoes/jungleboots/Initialize(mapload)
 	. = ..()
 
-	create_storage(type = /datum/storage/pockets/shoes)
+	create_storage(storage_type = /datum/storage/pockets/shoes)
 
 /obj/item/clothing/shoes/jackboots/black
 	name = "dark jackboots"

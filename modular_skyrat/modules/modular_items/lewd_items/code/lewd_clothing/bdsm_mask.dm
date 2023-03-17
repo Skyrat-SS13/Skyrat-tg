@@ -38,7 +38,7 @@
 
 /obj/item/clothing/mask/gas/bdsm_mask/Initialize(mapload)
 	. = ..()
-	create_storage(type = /datum/storage/pockets/small/bdsm_mask)
+	create_storage(storage_type = /datum/storage/pockets/small/bdsm_mask)
 
 /obj/item/clothing/mask/gas/bdsm_mask/proc/update_mob_action_buttonss()
 	var/datum/action/item_action/button
