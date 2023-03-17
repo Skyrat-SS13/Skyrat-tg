@@ -58,6 +58,6 @@
 // Eyes
 
 /obj/item/organ/internal/eyes/low_light_adapted
-	color_cutoffs = list(20, 10, 10)
+	color_cutoffs = list(30, 15, 15)
 
 #undef GAS_TOLERANCE
