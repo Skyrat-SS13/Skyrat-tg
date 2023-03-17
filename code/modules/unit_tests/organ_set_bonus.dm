@@ -14,7 +14,6 @@
 			existing_ids += effect_id
 
 /datum/unit_test/organ_set_bonus_sanity/proc/check_status_type(mob/living/carbon/human/lab_rat, datum/status_effect/status_type)
-	var/datum/status_effect/organ_set_bonus/added_status
 	for(var/datum/status_effect/present_effect as anything in lab_rat.status_effects)
 		if(istype(present_effect, status_type))
 			return present_effect
@@ -29,6 +28,7 @@
 		var/output_organs = infuser_entry.output_organs
 		// Human which will reiceve organs.
 		var/mob/living/carbon/human/lab_rat = allocate(/mob/living/carbon/human/consistent)
+		lab_rat.dna.mutant_bodyparts["moth_antennae"] = list(MUTANT_INDEX_NAME = "Plain", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE)) // SKYRAT EDIT - Customization
 		var/list/obj/item/organ/inserted_organs = list()
 		for(var/obj/item/organ/organ as anything in output_organs)
 			organ = new organ()
