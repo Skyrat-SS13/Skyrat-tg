@@ -3,6 +3,12 @@
 	antag_flag = null
 	antag_datum = null
 	restricted_roles = list()
+	enemy_roles = list(
+		JOB_CAPTAIN,
+		JOB_DETECTIVE,
+		JOB_HEAD_OF_SECURITY,
+		JOB_SECURITY_OFFICER,
+	)
 	required_candidates = 0
 	weight = 0
 	cost = 0
