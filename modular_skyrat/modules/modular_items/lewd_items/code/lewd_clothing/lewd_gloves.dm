@@ -11,6 +11,8 @@
 //That part allows reinforcing this item with handcuffs
 /obj/item/clothing/gloves/ball_mittens/attackby(obj/item/attacking_item, mob/user, params)
 	. = ..()
+	if(.)
+		return
 	if(!istype(attacking_item, /obj/item/restraints/handcuffs))
 		return
 	var/obj/item/clothing/gloves/ball_mittens_reinforced/reinforced_muffs = new
@@ -19,6 +21,7 @@
 	to_chat(user, span_notice("You reinforced the belts on [src] with [attacking_item]."))
 	qdel(attacking_item)
 	qdel(src)
+	return TRUE
 
 //ball_mittens reinforced
 /obj/item/clothing/gloves/ball_mittens_reinforced //We getting this item by using handcuffs on normal ball mittens
