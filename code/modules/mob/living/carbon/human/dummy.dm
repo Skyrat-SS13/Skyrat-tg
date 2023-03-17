@@ -84,6 +84,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 
 /proc/create_consistent_human_dna(mob/living/carbon/human/target)
 	target.dna.initialize_dna(skip_index = TRUE)
+	/* SKYRAT EDIT START - Customization - ORIGINAL:
 	target.dna.features["body_markings"] = "None"
 	target.dna.features["ears"] = "None"
 	target.dna.features["ethcolor"] = COLOR_WHITE
@@ -92,12 +93,15 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	target.dna.features["mcolor"] = COLOR_VIBRANT_LIME
 	target.dna.features["moth_antennae"] = "Plain"
 	target.dna.features["moth_markings"] = "None"
-	target.dna.features["wings"] = "None" // SKYRAT EDIT CHANGE - Customization
+	target.dna.features["moth_wings"] = "Plain"
 	target.dna.features["snout"] = "Round"
 	target.dna.features["spines"] = "None"
-	target.dna.features["tail"] = "None" // SKYRAT EDIT ADDITION - Customization
 	target.dna.features["tail_cat"] = "None"
 	target.dna.features["tail_lizard"] = "Smooth"
+	target.dna.features["pod_hair"] = "Ivy"
+	*/ // ORIGINAL END - SKYRAT EDIT START
+	target.dna.features["ethcolor"] = COLOR_WHITE
+	target.dna.features["mcolor"] = COLOR_VIBRANT_LIME
 	target.dna.features["pod_hair"] = "Ivy"
 
 /// Provides a dummy that is consistently bald, white, naked, etc.

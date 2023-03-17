@@ -262,6 +262,13 @@
 				eye_left.color = eyes.eye_color_left
 			if(eyes.eye_color_right)
 				eye_right.color = eyes.eye_color_right
+
+			// SKYRAT EDIT START - Customization (darn synths I swear)
+			if(eyes.eye_icon_state == "None")
+				eye_left.alpha = 0
+				eye_right.alpha = 0
+			// SKYRAT EDIT END
+
 			. += eye_left
 			. += eye_right
 	else
