@@ -14,9 +14,9 @@
 
 // Bonfires but with a grill pre-attached
 
-/obj/structure/bonfire/oh_yeah_its_grilling_time
+/obj/structure/bonfire/grill_pre_attached
 
-/obj/structure/bonfire/oh_yeah_its_grilling_time/Initialize(mapload)
+/obj/structure/bonfire/grill_pre_attached/Initialize(mapload)
 	. = ..()
 
 	grill = TRUE

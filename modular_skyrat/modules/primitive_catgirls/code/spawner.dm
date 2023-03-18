@@ -16,7 +16,10 @@
 		neighbors. Keep your village and your Kin safe, but bringing death on their heads from \
 		being reckless with the outsiders will not have the Gods be so kind."
 	spawner_job_path = /datum/job/primitive_catgirl
+
+	/// The team the spawner will assign players to and use to keep track of people that have already used the spawner
 	var/datum/team/primitive_catgirls/team
+
 	restricted_species = list(/datum/species/human/felinid/primitive)
 	random_appearance = FALSE
 	loadout_enabled = FALSE
