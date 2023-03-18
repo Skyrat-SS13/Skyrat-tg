@@ -71,6 +71,7 @@
 
 /datum/round_event_control/anomaly/anomaly_grav/high
 	max_occurrences = 1
+	min_players = 45
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/anomaly/anomaly_hallucination
@@ -79,6 +80,7 @@
 
 /datum/round_event_control/anomaly/anomaly_pyro
 	max_occurrences = 1
+	min_players = 45
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/anomaly/anomaly_vortex
@@ -161,19 +163,21 @@
 /**
  * CME (Coronal Mass Ejection)
  *
- * Combined weight: 56
+ * Combined weight: 40
  */
 /datum/round_event_control/cme/minimal
-	max_occurrences = 1
+	max_occurrences = 0
 	weight = MED_EVENT_FREQ
 
 /datum/round_event_control/cme/moderate
 	max_occurrences = 1
+	min_players = 45
 	weight = MED_EVENT_FREQ
 	intensity_restriction = TRUE
 
 /datum/round_event_control/cme/extreme
 	max_occurrences = 1
+	min_players = 45
 	weight = LOW_EVENT_FREQ
 	earliest_start = 105 MINUTES
 	intensity_restriction = TRUE
@@ -206,15 +210,17 @@
 /**
  * Medical
  *
- * Combined weight: 44
+ * Combined weight: 40
  */
 /datum/round_event_control/disease_outbreak
-	max_occurrences = 1
+	max_occurrences = 0
+	min_players = 45
 	weight = VERY_LOW_EVENT_FREQ
 	intensity_restriction = TRUE
 
 /datum/round_event_control/disease_outbreak/advanced
 	max_occurrences = 2
+	min_players = 45
 	weight = HIGH_EVENT_FREQ
 	intensity_restriction = TRUE
 
@@ -283,7 +289,7 @@
  */
 /datum/round_event_control/immovable_rod
 	max_occurrences = 2
-	weight = MED_EVENT_FREQ
+	weight = HIGH_EVENT_FREQ
 	intensity_restriction = TRUE
 
 /**
@@ -347,6 +353,7 @@
 
 /datum/round_event_control/sandstorm
 	max_occurrences = 1
+	min_players = 45
 	weight = MED_EVENT_FREQ
 	intensity_restriction = TRUE
 
@@ -538,7 +545,7 @@
  * Supermatter Surge
  */
 /datum/round_event_control/supermatter_surge
-	max_occurrences = 1
+	max_occurrences = 2
 	weight = MED_EVENT_FREQ
 
 /**
