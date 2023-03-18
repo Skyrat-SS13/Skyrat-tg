@@ -16,16 +16,20 @@
 		Insert(loc)
 
 /obj/item/organ/internal/body_egg/Insert(mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE)
+<<<<<<< HEAD
 	..()
 	ADD_TRAIT(owner, TRAIT_XENO_HOST, ORGAN_TRAIT)
 	ADD_TRAIT(owner, TRAIT_XENO_IMMUNE, ORGAN_TRAIT)
+=======
+	. = ..()
+	owner.add_traits(list(TRAIT_XENO_HOST, TRAIT_XENO_IMMUNE), ORGAN_TRAIT)
+>>>>>>> bf6f81a9b56 (Implements AddTraits and RemoveTraits procs for adding/removing multiple traits + swag unit test (#74037))
 	owner.med_hud_set_status()
 	INVOKE_ASYNC(src, PROC_REF(AddInfectionImages), owner)
 
 /obj/item/organ/internal/body_egg/Remove(mob/living/carbon/M, special = FALSE)
 	if(owner)
-		REMOVE_TRAIT(owner, TRAIT_XENO_HOST, ORGAN_TRAIT)
-		REMOVE_TRAIT(owner, TRAIT_XENO_IMMUNE, ORGAN_TRAIT)
+		owner.remove_traits(list(TRAIT_XENO_HOST, TRAIT_XENO_IMMUNE), ORGAN_TRAIT)
 		owner.med_hud_set_status()
 		INVOKE_ASYNC(src, PROC_REF(RemoveInfectionImages), owner)
 	..()

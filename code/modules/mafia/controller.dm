@@ -570,10 +570,15 @@
 /datum/mafia_controller/proc/create_bodies()
 	for(var/datum/mafia_role/role in all_roles)
 		var/mob/living/carbon/human/H = new(get_turf(role.assigned_landmark))
+<<<<<<< HEAD
 		ADD_TRAIT(H, TRAIT_NOFIRE, MAFIA_TRAIT)
 		ADD_TRAIT(H, TRAIT_NOBREATH, MAFIA_TRAIT)
 		ADD_TRAIT(H, TRAIT_CANNOT_CRYSTALIZE, MAFIA_TRAIT)
 		H.equipOutfit(player_outfit)
+=======
+		H.add_traits(list(TRAIT_NOFIRE, TRAIT_NOBREATH, TRAIT_CANNOT_CRYSTALIZE), MAFIA_TRAIT)
+		H.equipOutfit(outfit_to_distribute)
+>>>>>>> bf6f81a9b56 (Implements AddTraits and RemoveTraits procs for adding/removing multiple traits + swag unit test (#74037))
 		H.status_flags |= GODMODE
 		RegisterSignal(H,COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(display_votes))
 		var/datum/action/innate/mafia_panel/mafia_panel = new(null,src)

@@ -57,8 +57,12 @@
 	. = ..()
 	if(!.)
 		return
+<<<<<<< HEAD
 	ADD_TRAIT(mod.wearer, TRAIT_NEGATES_GRAVITY, MOD_TRAIT)
 	ADD_TRAIT(mod.wearer, TRAIT_NOSLIPWATER, MOD_TRAIT)
+=======
+	mod.wearer.add_traits(active_traits, MOD_TRAIT)
+>>>>>>> bf6f81a9b56 (Implements AddTraits and RemoveTraits procs for adding/removing multiple traits + swag unit test (#74037))
 	mod.slowdown += slowdown_active
 	mod.wearer.update_gravity(mod.wearer.has_gravity())
 	mod.wearer.update_equipment_speed_mods()
@@ -67,8 +71,12 @@
 	. = ..()
 	if(!.)
 		return
+<<<<<<< HEAD
 	REMOVE_TRAIT(mod.wearer, TRAIT_NEGATES_GRAVITY, MOD_TRAIT)
 	REMOVE_TRAIT(mod.wearer, TRAIT_NOSLIPWATER, MOD_TRAIT)
+=======
+	mod.wearer.remove_traits(active_traits, MOD_TRAIT)
+>>>>>>> bf6f81a9b56 (Implements AddTraits and RemoveTraits procs for adding/removing multiple traits + swag unit test (#74037))
 	mod.slowdown -= slowdown_active
 	mod.wearer.update_gravity(mod.wearer.has_gravity())
 	mod.wearer.update_equipment_speed_mods()
