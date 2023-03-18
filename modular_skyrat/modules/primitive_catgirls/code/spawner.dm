@@ -11,10 +11,10 @@
 	density = FALSE
 	you_are_text = "You are an icemoon dweller."
 	flavour_text = "For as long as you can remember, the icemoon has been your home. \
-	It's been the home of your ancestors, and their ancestors, and the ones before them. \
-	Currently, you and your kin live in uneasy tension with your nearby human-and-otherwise \
-	neighbors. Keep your village and your Kin safe, but bringing death on their heads from \
-	being reckless with the outsiders will not have the Gods be so kind."
+		It's been the home of your ancestors, and their ancestors, and the ones before them. \
+		Currently, you and your kin live in uneasy tension with your nearby human-and-otherwise \
+		neighbors. Keep your village and your Kin safe, but bringing death on their heads from \
+		being reckless with the outsiders will not have the Gods be so kind."
 	spawner_job_path = /datum/job/primitive_catgirl
 	var/datum/team/primitive_catgirls/team
 	restricted_species = list(/datum/species/human/felinid/primitive)
