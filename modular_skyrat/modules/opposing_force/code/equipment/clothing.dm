@@ -18,8 +18,8 @@
 	item_type = /obj/item/clothing/suit/armor/laserproof
 	description = "A laserproof vest, for the aspiring bane of security."
 
-/datum/opposing_force_equipment/clothing/heavy
-	item_type = /obj/item/clothing/suit/armor/heavy
+/datum/opposing_force_equipment/clothing/swat
+	item_type = /obj/item/clothing/suit/armor/swat
 	description = "A superheavy armor suit purpose-built to ensure all injuries are pushovers. WARNING: Not spaceproof."
 
 /datum/opposing_force_equipment/clothing/helmet
@@ -63,12 +63,14 @@
 	item_type = /obj/item/clothing/head/helmet/nri_heavy/old
 	description = "A specialized ultra-heavy composite ballistic helmet stolen from space russians. Purpose-built for heavy duty combat, \
 				or murder with a frying pan."
+	admin_note = "WARNING: This helmet is very well armored, equal to an elite nukie suits helmets with the armor deployed."
 
 /datum/opposing_force_equipment/clothing/nrivest
 	item_type = /obj/item/clothing/suit/armor/vest/russian/nri
 
 /datum/opposing_force_equipment/clothing/redut
 	item_type = /obj/item/clothing/suit/armor/heavy/nri/old
+	admin_note = "WARNING: This is an extremely strong armor, with a decent slowdown, comparable to an elite nukie hardsuit with the armor deployed."
 
 /datum/opposing_force_equipment/clothing/nrijumpsuit
 	item_type = /obj/item/clothing/under/costume/nri
@@ -109,3 +111,4 @@
 	name = "Infiltrator MODsuit"
 	item_type = /obj/item/mod/control/pre_equipped/infiltrator
 	description = "A specialized infiltration suit, developed by the Roseus Galactic Actors Guild to strike fear and awe into the hearts of the public."
+	admin_note = "WARNING: This armor causes an AOE mood debuff for anyone without the traitor antag datum."
