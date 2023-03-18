@@ -110,13 +110,11 @@
 	if(istype(payload))
 		. += "A small window reveals some information about the payload: [payload.desc]."
 	if(examinable_countdown)
-<<<<<<< HEAD
-		// . += {"A digital display on it reads "[seconds_remaining()]"."} SKYRAT EDIT : - commented out to make people fear it more.
-=======
+		/* SKYRAT EDIT START : - commented out to make people fear it more.
 		. += span_notice("A digital display on it reads \"[seconds_remaining()]\".")
 		if(active)
 			balloon_alert(user, "[seconds_remaining()]")
->>>>>>> 349ad114f3f (Syndicate bomb countdowns are now span_notice, also active bombs have a balloon alert when inspected (#74011))
+		*/ //SKYRAT EDIT END
 	else
 		. += span_notice({"The digital display on it is inactive."})
 
