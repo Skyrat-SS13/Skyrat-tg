@@ -13,13 +13,13 @@ export const AntagInfoOpfor = (props, context) => {
               {'You are an OPFOR candidate!'}
             </Stack.Item>
             {
-              'You are encouraged to OPFOR to perform an antagonistic action in some form.<br>'
+              'You are encouraged to OPFOR to perform an antagonistic action in some form.'
             }
             {
-              'If you do not have any ideas, check #player-submitted-opfors on the Discord for inspiration.<br>'
+              'If you do not have any ideas, check #player-submitted-opfors on the Discord for inspiration.'
             }
             {
-              'And if you do not wish to OPFOR, simply press the button below to remove your status.<br>'
+              'And if you do not wish to OPFOR, simply press the button below to remove your status.'
             }
             <Stack.Item align="center">
               <Button
