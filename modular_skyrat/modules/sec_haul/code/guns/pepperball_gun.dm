@@ -26,7 +26,7 @@
 	ammo_type = /obj/item/ammo_casing/pepperball
 	caliber = CALIBER_PEPPERBALL
 	max_ammo = 8
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_casing/pepperball
 	name = "pepperball"
