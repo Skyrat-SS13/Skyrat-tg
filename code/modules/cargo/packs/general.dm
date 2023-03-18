@@ -75,7 +75,7 @@
 	contains = list(/obj/vehicle/ridden/bicycle)
 	crate_name = "bicycle crate"
 	crate_type = /obj/structure/closet/crate/large
-*/ SKYRAT REMOVAL END
+SKYRAT REMOVAL END */
 /datum/supply_pack/misc/bigband
 	name = "Big Band Instrument Collection"
 	desc = "Get your sad station movin' and groovin' with this fine collection! \
@@ -91,7 +91,7 @@
 					/obj/item/instrument/recorder,
 					/obj/item/instrument/harmonica,
 					/obj/structure/musician/piano/unanchored,
-				)
+			)
 	crate_type = /obj/structure/closet/crate/wooden
 
 /datum/supply_pack/misc/book_crate
