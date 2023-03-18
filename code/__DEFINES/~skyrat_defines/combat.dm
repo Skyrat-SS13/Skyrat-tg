@@ -116,14 +116,7 @@
 	. = FALSE
 	if(HAS_TRAIT(user, TRAIT_PACIFISM)) //They're mostly violent acts
 		return
-	if(!user.combat_mode && modifiers[LEFT_CLICK])
-		switch(user.zone_selected)
-			if(BODY_ZONE_HEAD)
-				//Head slam
-				if(target.body_position == LYING_DOWN)
-					. = TRUE
-					try_headslam(user, target, affecting)
-
+	// everything's on RMB goodbye LMB headslams we hardly knew ye
 	// RMB MODIFIERS: CHEST = SUPLEX, LIMBS = DISLOCATE, head just recycles the slam thing
 	// Chances are, no matter what you do on disarm you're gonna break your grip by accident because of shoving, let make a good use of disarm intent for maneuvers then
 	if(modifiers && modifiers[RIGHT_CLICK])
