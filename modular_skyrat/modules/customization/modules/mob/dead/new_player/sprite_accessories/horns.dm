@@ -93,6 +93,6 @@
 	name = "Upwards"
 	icon_state = "upwardshorns"
 
-/datum/sprite_accessory/horns/aura
-	name = "Au Ra"
-	icon_state = "aura"
+/datum/sprite_accessory/horns/sideswept
+	name = "Side swept back"
+	icon_state = "sideswept"

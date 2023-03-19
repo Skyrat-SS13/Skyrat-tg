@@ -412,7 +412,7 @@
 	name = "Zorgoia tail"
 	icon_state = "zorgoia"
 
-/datum/sprite_accessory/tails/mammal/aura
-	name = "Au Ra"
-	icon_state = "aura"
+/datum/sprite_accessory/tails/mammal/reptileslim
+	name = "Slim reptile"
+	icon_state = "reptileslim"
 	color_src = USE_ONE_COLOR
