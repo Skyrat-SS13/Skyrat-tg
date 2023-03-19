@@ -92,3 +92,7 @@
 /datum/sprite_accessory/horns/upwards
 	name = "Upwards"
 	icon_state = "upwardshorns"
+
+/datum/sprite_accessory/horns/aura
+	name = "Au Ra"
+	icon_state = "aura"
