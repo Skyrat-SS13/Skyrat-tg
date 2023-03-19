@@ -196,7 +196,7 @@
 		head_knock = TRUE
 
 	target.visible_message(span_danger("[user.name] violently slams [target.name]'s head into the floor!"), \
-		span_userdanger("[user.name] slams your head against the floor!"), ignored_mobs=user)
+		span_userdanger("[user.name] slams your head against the floor!"), ignored_mobs = user)
 	to_chat(user, span_danger("You slam [target.name] head against the floor!"))
 
 	// arbitrary wound bonus
