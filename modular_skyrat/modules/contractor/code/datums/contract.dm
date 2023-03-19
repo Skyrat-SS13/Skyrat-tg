@@ -122,6 +122,8 @@
 					continue //So all they're left with are shoes and uniform.
 				if(sent_mob_item == sent_mob_human.shoes)
 					continue
+				if(istype(sent_mob_item, /obj/item/organ))
+					continue
 
 
 			sent_mob.transferItemToLoc(sent_mob_item)
