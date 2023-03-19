@@ -221,6 +221,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 			if(mob_occupant.mind)
 				stored_rank = mob_occupant.mind.assigned_role.title
 
+		var/mob/living/carbon/human/human_occupant = occupant
+		if(human_occupant && human_occupant.mind)
+			human_occupant.save_individual_persistence()
+
 		COOLDOWN_START(src, despawn_world_time, time_till_despawn)
 
 /obj/machinery/cryopod/open_machine()
@@ -321,10 +325,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 /// Handles despawning the player.
 /obj/machinery/cryopod/proc/despawn_occupant()
 	var/mob/living/mob_occupant = occupant
-
-	if(ishuman(occupant))
-		var/mob/living/carbon/human/human = occupant
-		human.save_individual_persistence()
 
 	SSjob.FreeRole(stored_rank)
 
