@@ -199,7 +199,7 @@
 		span_userdanger("[user.name] slams your head against the floor!"), ignored_mobs = user)
 	to_chat(user, span_danger("You slam [target.name] head against the floor!"))
 
-	// arbitrary wound bonus
+	// wound bonus because if you're doing this you probably really don't like the other guy so you're looking forward to inconveniencing them (with a fracture)
 	var/fun_times_at_the_headbash_factory = (head_knock ? 8 : 3)
 	if(head_knock)
 		target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 15)
@@ -208,3 +208,4 @@
 	log_combat(user, target, "headsmashes", "against the floor")
 
 #undef HEADSMASH_BLOCK_ARMOR
+#undef SUPLEX_TIMER
