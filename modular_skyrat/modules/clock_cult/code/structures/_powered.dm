@@ -7,7 +7,7 @@
 	var/insufficient_power = FALSE
 	/// How much power this structure uses passively
 	var/passive_consumption = 0
-	/// Makes sure the depowered proc is only called when its depowered and not while its depowered
+	/// Makes sure the depowered proc is only called when it transitions from powered -> depowered, NOT every process() while already depowered
 	var/depowered = FALSE
 	/// Minimum power to work
 	var/minimum_power = 0
@@ -88,12 +88,14 @@
 	return TRUE
 
 
+/// Turn on the structure, letting it consume power and process again
 /obj/structure/destructible/clockwork/gear_base/powered/proc/turn_on()
 	repowered()
 	processing = TRUE
 	START_PROCESSING(SSobj, src)
 
 
+/// Turn off the structure, ceasing its processing
 /obj/structure/destructible/clockwork/gear_base/powered/proc/turn_off()
 	depowered()
 	processing = FALSE
