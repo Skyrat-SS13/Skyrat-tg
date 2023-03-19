@@ -112,6 +112,6 @@
 	power_use = 250
 
 /datum/tinker_cache_item/clockwork_rifle_ammo
-	name = "Clockwork Rifle"
+	name = "Clockwork Rifle Ammunition"
 	item_path = /obj/item/ammo_box/a762/lionhunter/clock
 	power_use = 100
