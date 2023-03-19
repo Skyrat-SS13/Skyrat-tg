@@ -1252,10 +1252,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 						span_danger("[owner] attempts to touch you!"), span_hear("You hear a swoosh!"), COMBAT_MESSAGE_RANGE, owner)
 		to_chat(owner, span_warning("You attempt to touch [target]!"))
 		return
-	//Check if we can do a grab maneuver and if combat mode's off; if so, attempt it - SKYRAT EDIT ADDITION
-	// rationale: if you're in combat mode you probably want the responsiveness of shoving, if you're not you've got the free time or the moment to put the hurt on
-	if(target.pulledby && target.pulledby == owner && owner.grab_state > GRAB_PASSIVE && !owner.combat_mode && try_grab_maneuver(owner, target, modifiers))
-		return //SKYRAT EDIT END
 
 	SEND_SIGNAL(owner, COMSIG_MOB_ATTACK_HAND, owner, target, attacker_style)
 
