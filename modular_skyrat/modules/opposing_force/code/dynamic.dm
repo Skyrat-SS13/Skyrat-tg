@@ -5,7 +5,7 @@
 	antag_flag = ROLE_OPFOR_CANDIDATE
 	antag_flag_override = BAN_OPFOR
 	required_candidates = 1
-	weight = 1 //undo later
+	weight = 0
 	cost = 5
 	repeatable = TRUE
 

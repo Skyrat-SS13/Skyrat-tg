@@ -9,14 +9,14 @@
 		JOB_HEAD_OF_SECURITY,
 		JOB_SECURITY_OFFICER,
 	)
-	required_candidates = 0
+	required_candidates = 1
 	weight = 0
 	cost = 0
 	flags = LONE_RULESET
 
 /datum/dynamic_ruleset/roundstart/quiet/pre_execute(population)
 	. = ..()
-	var/num_candidates = get_antag_cap(population) * (scaled_times + 1)
+	var/num_candidates = rand(1, 4) * (scaled_times + 1)
 	for (var/i in 1 to num_candidates)
 		if(length(candidates) <= 0)
 			break
