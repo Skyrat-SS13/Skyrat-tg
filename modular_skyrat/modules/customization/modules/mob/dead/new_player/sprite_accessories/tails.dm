@@ -411,3 +411,8 @@
 /datum/sprite_accessory/tails/mammal/wagging/zorgoia
 	name = "Zorgoia tail"
 	icon_state = "zorgoia"
+
+/datum/sprite_accessory/tails/mammal/aura
+	name = "Au'Ra"
+	icon_state = "aura"
+	color_src = USE_ONE_COLOR
