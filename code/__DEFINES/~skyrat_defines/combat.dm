@@ -124,7 +124,7 @@
 /datum/species/proc/try_grab_maneuver(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(!grab_maneuver_state_check(user, target))
 		return
-	var/obj/item/bodypart/affecting = target.get_bodypart(ran_zone(user.zone_selected))
+	var/obj/item/bodypart/affecting = target.get_bodypart(user.zone_selected)
 	if(!affecting)
 		return FALSE
 	. = FALSE
