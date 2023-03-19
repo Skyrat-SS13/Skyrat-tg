@@ -373,8 +373,3 @@
 /datum/sprite_accessory/ears/mutant/big/fourears3
 	name = "Four Ears 3"
 	icon_state = "four_ears_3"
-
-/datum/sprite_accessory/ears/mutant/aura
-	name = "Au'Ra horns"
-	icon_state = "aura"
-	color_src = USE_ONE_COLOR
