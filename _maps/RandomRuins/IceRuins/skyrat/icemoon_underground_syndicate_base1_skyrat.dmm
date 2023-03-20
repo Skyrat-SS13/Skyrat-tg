@@ -491,10 +491,6 @@
 "df" = (
 /turf/open/floor/engine/n2,
 /area/ruin/syndicate_lava_base/engineering)
-"di" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
-/turf/open/floor/iron/dark,
-/area/ruin/syndicate_lava_base/medbay)
 "dk" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 1
@@ -705,6 +701,15 @@
 /obj/structure/flora/bush/sparsegrass,
 /obj/structure/flora/bush/flowers_pp,
 /turf/open/floor/grass,
+/area/ruin/syndicate_lava_base/cargo)
+"eL" = (
+/obj/effect/turf_decal/tile/brown,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/turf_decal/box/white,
+/turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/cargo)
 "eN" = (
 /obj/effect/turf_decal/stripes/end{
@@ -1242,6 +1247,11 @@
 	dir = 4
 	},
 /area/ruin/syndicate_lava_base/bar)
+"jP" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible,
+/obj/machinery/portable_atmospherics/canister/anesthetic_mix,
+/turf/open/floor/iron/dark,
+/area/ruin/syndicate_lava_base/medbay)
 "jR" = (
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
@@ -1776,12 +1786,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/medbay)
-"oT" = (
-/obj/machinery/airalarm/directional/west{
-	req_access = list("syndicate")
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/syndicate_lava_base/medbay)
 "oV" = (
 /obj/machinery/oven,
 /obj/machinery/light/directional/north,
@@ -1908,6 +1912,12 @@
 /obj/machinery/airalarm/directional/south,
 /turf/open/misc/grass,
 /area/ruin/syndicate_lava_base/bar)
+"pY" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/engineering)
 "qa" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
@@ -2550,6 +2560,10 @@
 "wU" = (
 /obj/item/disk/surgery/forgottenship,
 /obj/structure/table/reinforced,
+/obj/item/reagent_containers/cup/beaker/cryoxadone{
+	pixel_x = -6;
+	pixel_y = 10
+	},
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
 "wX" = (
@@ -2815,6 +2829,10 @@
 "zF" = (
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/syndicate_lava_base/dormitories)
+"zG" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
+/turf/open/floor/iron/dark,
+/area/ruin/syndicate_lava_base/medbay)
 "zI" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -3070,6 +3088,12 @@
 	dir = 8
 	},
 /turf/open/floor/iron/white,
+/area/ruin/syndicate_lava_base/medbay)
+"CY" = (
+/obj/machinery/airalarm/directional/west{
+	req_access = list("syndicate")
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/medbay)
 "CZ" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
@@ -4725,11 +4749,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/cargo)
-"Us" = (
-/obj/machinery/atmospherics/components/unary/portables_connector/visible,
-/obj/machinery/portable_atmospherics/canister/anesthetic_mix,
-/turf/open/floor/iron/dark,
-/area/ruin/syndicate_lava_base/medbay)
 "Ut" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
@@ -6324,7 +6343,7 @@ dM
 Vv
 sB
 NV
-NV
+eL
 gj
 RV
 ab
@@ -7687,8 +7706,8 @@ ab
 ab
 dJ
 jg
-di
-oT
+zG
+CY
 Vk
 jR
 yQ
@@ -7746,7 +7765,7 @@ ab
 ab
 dJ
 gp
-di
+zG
 PW
 Vk
 jR
@@ -7804,8 +7823,8 @@ ab
 ab
 ab
 dJ
-Us
-di
+jP
+zG
 PW
 lr
 Vk
@@ -7886,7 +7905,7 @@ ap
 BL
 VK
 FH
-Gh
+pY
 WD
 Ie
 BZ

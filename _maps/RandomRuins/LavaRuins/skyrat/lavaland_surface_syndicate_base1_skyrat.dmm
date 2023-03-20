@@ -61,11 +61,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/catwalk_floor/iron,
 /area/ruin/syndicate_lava_base/bar)
-"aN" = (
-/obj/effect/turf_decal/siding/thinplating{
-	dir = 1
+"aP" = (
+/obj/effect/turf_decal/tile/brown,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
 	},
-/obj/item/modular_computer/laptop/preset/syndicate,
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/turf_decal/box/white,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/cargo)
 "aQ" = (
@@ -1027,12 +1029,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/cargo)
-"jD" = (
-/obj/machinery/airalarm/directional/west{
-	req_access = list("syndicate")
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/syndicate_lava_base/medbay)
 "jK" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -2191,10 +2187,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/cargo)
-"wF" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
-/turf/open/floor/iron/dark,
-/area/ruin/syndicate_lava_base/medbay)
 "wL" = (
 /obj/machinery/door/airlock{
 	name = "Library Backroom"
@@ -2281,14 +2273,9 @@
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/bar)
 "xL" = (
-/obj/effect/turf_decal/tile/brown,
-/obj/effect/turf_decal/tile/yellow{
-	dir = 4
-	},
-/obj/structure/reagent_dispensers/fueltank,
-/obj/effect/turf_decal/box/white,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/open/floor/iron/dark,
-/area/ruin/syndicate_lava_base/cargo)
+/area/ruin/syndicate_lava_base/medbay)
 "xM" = (
 /obj/structure/chair/office/light{
 	dir = 1
@@ -3578,6 +3565,12 @@
 /obj/structure/window/reinforced/survival_pod,
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/testlab)
+"Kl" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/engineering)
 "Ko" = (
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
@@ -3701,11 +3694,6 @@
 	},
 /turf/open/floor/engine,
 /area/ruin/syndicate_lava_base/testlab)
-"KZ" = (
-/obj/machinery/atmospherics/components/unary/portables_connector/visible,
-/obj/machinery/portable_atmospherics/canister/anesthetic_mix,
-/turf/open/floor/iron/dark,
-/area/ruin/syndicate_lava_base/medbay)
 "La" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -3825,6 +3813,11 @@
 	},
 /turf/open/floor/catwalk_floor/iron,
 /area/ruin/syndicate_lava_base/testlab)
+"Mb" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible,
+/obj/machinery/portable_atmospherics/canister/anesthetic_mix,
+/turf/open/floor/iron/dark,
+/area/ruin/syndicate_lava_base/medbay)
 "Ml" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4
@@ -4239,6 +4232,13 @@
 	dir = 8
 	},
 /area/ruin/syndicate_lava_base/medbay)
+"Qv" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 1
+	},
+/obj/item/modular_computer/laptop/preset/syndicate,
+/turf/open/floor/iron/dark,
+/area/ruin/syndicate_lava_base/cargo)
 "Qw" = (
 /obj/effect/turf_decal/siding/thinplating{
 	dir = 1
@@ -4515,12 +4515,6 @@
 	dir = 1
 	},
 /area/ruin/syndicate_lava_base/cargo)
-"SW" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/iron,
-/area/ruin/syndicate_lava_base/engineering)
 "Tb" = (
 /obj/machinery/firealarm/directional/south{
 	dir = 1
@@ -4554,9 +4548,19 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/bar)
+"Tr" = (
+/obj/machinery/airalarm/directional/west{
+	req_access = list("syndicate")
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/syndicate_lava_base/medbay)
 "Tt" = (
 /obj/item/disk/surgery/forgottenship,
 /obj/structure/table/reinforced,
+/obj/item/reagent_containers/cup/beaker/cryoxadone{
+	pixel_x = -6;
+	pixel_y = 10
+	},
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
 "Tw" = (
@@ -6317,7 +6321,7 @@ Ac
 gR
 hN
 iA
-xL
+aP
 lX
 Zz
 ab
@@ -6671,7 +6675,7 @@ Oz
 vZ
 wq
 HV
-aN
+Qv
 Sr
 JX
 Sr
@@ -7680,8 +7684,8 @@ ab
 ab
 kD
 Wr
-wF
-jD
+xL
+Tr
 NH
 Yp
 ZX
@@ -7739,7 +7743,7 @@ ab
 ab
 kD
 oe
-wF
+xL
 FO
 NH
 Yp
@@ -7797,8 +7801,8 @@ ab
 ab
 ab
 kD
-KZ
-wF
+Mb
+xL
 FO
 WU
 NH
@@ -7879,7 +7883,7 @@ Lq
 Ig
 oP
 DP
-SW
+Kl
 UO
 pK
 De
