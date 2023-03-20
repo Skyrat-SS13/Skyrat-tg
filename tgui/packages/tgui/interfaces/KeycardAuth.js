@@ -5,9 +5,13 @@ import { Window } from '../layouts';
 export const KeycardAuth = (props, context) => {
   const { act, data } = useBackend(context);
   return (
+<<<<<<< HEAD
     // SKYRAT EDIT: height 125 -> 175, addition of permit-locked firing pin and
     // engineering override
     <Window width={375} height={150}>
+=======
+    <Window width={375} height={145}>
+>>>>>>> 70ed01ed72b (Adds the Janitor access keyring (#73768))
       <Window.Content>
         <Section>
           <Box>
@@ -59,6 +63,7 @@ export const KeycardAuth = (props, context) => {
                       onClick={() => act('bsa_unlock')}
                       content="Bluespace Artillery Unlock"
                     />
+<<<<<<< HEAD
                     {/* SKYRAT EDIT ADDITION START - Permit Pins */}
                     {!!data.permit_pins && (
                       <Button
@@ -69,6 +74,14 @@ export const KeycardAuth = (props, context) => {
                       />
                     )}
                     {/* SKYRAT EDIT ADDITION END */}
+=======
+                    <Button
+                      icon="key"
+                      fluid
+                      onClick={() => act('give_janitor_access')}
+                      content="Grant Janitor Access"
+                    />
+>>>>>>> 70ed01ed72b (Adds the Janitor access keyring (#73768))
                   </>
                 )}
               </>
