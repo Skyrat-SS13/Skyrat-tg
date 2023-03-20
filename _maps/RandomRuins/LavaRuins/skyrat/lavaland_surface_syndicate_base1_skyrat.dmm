@@ -61,15 +61,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/catwalk_floor/iron,
 /area/ruin/syndicate_lava_base/bar)
-"aP" = (
-/obj/effect/turf_decal/tile/brown,
-/obj/effect/turf_decal/tile/yellow{
-	dir = 4
-	},
-/obj/structure/reagent_dispensers/fueltank,
-/obj/effect/turf_decal/box/white,
-/turf/open/floor/iron/dark,
-/area/ruin/syndicate_lava_base/cargo)
 "aQ" = (
 /obj/effect/turf_decal/tile/dark_red/half{
 	dir = 8
@@ -946,6 +937,15 @@
 /turf/open/floor/iron/smooth_half{
 	dir = 1
 	},
+/area/ruin/syndicate_lava_base/cargo)
+"iO" = (
+/obj/effect/turf_decal/tile/brown,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/turf_decal/box/white,
+/turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/cargo)
 "iU" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
@@ -3214,11 +3214,22 @@
 	},
 /turf/open/floor/stone,
 /area/ruin/syndicate_lava_base/bar)
+"Gl" = (
+/obj/machinery/airalarm/directional/west{
+	req_access = list("syndicate")
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/syndicate_lava_base/medbay)
 "Gp" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
 /turf/open/floor/iron/smooth_large,
 /area/ruin/syndicate_lava_base/cargo)
+"Gr" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible,
+/obj/machinery/portable_atmospherics/canister/anesthetic_mix,
+/turf/open/floor/iron/dark,
+/area/ruin/syndicate_lava_base/medbay)
 "Gs" = (
 /obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/stone,
@@ -3506,6 +3517,12 @@
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/bar)
+"JR" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/engineering)
 "JS" = (
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
@@ -3565,12 +3582,6 @@
 /obj/structure/window/reinforced/survival_pod,
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/testlab)
-"Kl" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/iron,
-/area/ruin/syndicate_lava_base/engineering)
 "Ko" = (
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
@@ -3813,11 +3824,6 @@
 	},
 /turf/open/floor/catwalk_floor/iron,
 /area/ruin/syndicate_lava_base/testlab)
-"Mb" = (
-/obj/machinery/atmospherics/components/unary/portables_connector/visible,
-/obj/machinery/portable_atmospherics/canister/anesthetic_mix,
-/turf/open/floor/iron/dark,
-/area/ruin/syndicate_lava_base/medbay)
 "Ml" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4
@@ -4232,13 +4238,6 @@
 	dir = 8
 	},
 /area/ruin/syndicate_lava_base/medbay)
-"Qv" = (
-/obj/effect/turf_decal/siding/thinplating{
-	dir = 1
-	},
-/obj/item/modular_computer/laptop/preset/syndicate,
-/turf/open/floor/iron/dark,
-/area/ruin/syndicate_lava_base/cargo)
 "Qw" = (
 /obj/effect/turf_decal/siding/thinplating{
 	dir = 1
@@ -4548,12 +4547,6 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/bar)
-"Tr" = (
-/obj/machinery/airalarm/directional/west{
-	req_access = list("syndicate")
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/syndicate_lava_base/medbay)
 "Tt" = (
 /obj/item/disk/surgery/forgottenship,
 /obj/structure/table/reinforced,
@@ -6321,7 +6314,7 @@ Ac
 gR
 hN
 iA
-aP
+iO
 lX
 Zz
 ab
@@ -6675,7 +6668,7 @@ Oz
 vZ
 wq
 HV
-Qv
+Qw
 Sr
 JX
 Sr
@@ -7685,7 +7678,7 @@ ab
 kD
 Wr
 xL
-Tr
+Gl
 NH
 Yp
 ZX
@@ -7801,7 +7794,7 @@ ab
 ab
 ab
 kD
-Mb
+Gr
 xL
 FO
 WU
@@ -7883,7 +7876,7 @@ Lq
 Ig
 oP
 DP
-Kl
+JR
 UO
 pK
 De
