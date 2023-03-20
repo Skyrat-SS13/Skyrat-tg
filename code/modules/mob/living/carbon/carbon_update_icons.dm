@@ -560,7 +560,9 @@
 		if(!overlay.can_draw_on_bodypart(owner))
 			continue
 		. += "-[jointext(overlay.generate_icon_cache(), "-")]"
-
+	if(ishuman(owner))
+		var/mob/living/carbon/human/human_owner = owner
+		. += "-[human_owner.get_mob_height()]"
 	return .
 
 ///Generates a cache key specifically for husks
@@ -570,6 +572,9 @@
 	. += "[husk_type]"
 	. += "-husk"
 	. += "-[body_zone]"
+	if(ishuman(owner))
+		var/mob/living/carbon/human/human_owner = owner
+		. += "-[human_owner.get_mob_height()]"
 	return .
 
 /obj/item/bodypart/head/generate_icon_key()

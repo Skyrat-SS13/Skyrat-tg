@@ -31,12 +31,12 @@
 	return TRUE
 // SKYRAT EDIT END
 
-/obj/item/organ/external/wings/functional/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
+/obj/item/organ/external/wings/functional/Insert(mob/living/carbon/receiver, special, drop_if_replaced)
 	. = ..()
 
 	if(isnull(fly))
 		fly = new
-		fly.Grant(reciever)
+		fly.Grant(receiver)
 
 /obj/item/organ/external/wings/functional/Remove(mob/living/carbon/organ_owner, special, moving)
 	. = ..()

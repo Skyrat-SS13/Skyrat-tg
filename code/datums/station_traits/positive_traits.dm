@@ -275,7 +275,7 @@
 	name = "Cybernetic Revolution"
 	trait_type = STATION_TRAIT_POSITIVE
 	show_in_report = TRUE
-	weight = 0 // SKYRAT EDIT - We can't run this - ORIGINAL: weight = 1
+	weight = 1
 	report_message = "The new trends in cybernetics have come to the station! Everyone has some form of cybernetic implant."
 	trait_to_give = STATION_TRAIT_CYBERNETIC_REVOLUTION
 	/// List of all job types with the cybernetics they should receive.
@@ -313,27 +313,11 @@
 		/datum/job/station_engineer = /obj/item/organ/internal/cyberimp/arm/toolset,
 		/datum/job/virologist = /obj/item/organ/internal/lungs/cybernetic/tier2,
 		/datum/job/warden = /obj/item/organ/internal/cyberimp/eyes/hud/security,
-
-		// SKYRAT EDIT ADDITION START - Skyrat Jobs
-		// Anything not on this list does not get an implant, because we can't be bothered to add them when we're explicitly removing this.
-		/datum/job/barber = null,
-		/datum/job/blueshield = null,
-		/datum/job/bouncer = null,
-		/datum/job/corrections_officer = null,
-		/datum/job/customs_agent = null,
-		/datum/job/engineering_guard = null,
-		/datum/job/nanotrasen_consultant = null,
-		/datum/job/orderly = null,
-		/datum/job/science_guard = null,
-		/datum/job/security_medic = null,
-		// SKYRAT EDIT END
 	)
 
 /datum/station_trait/cybernetic_revolution/New()
 	. = ..()
-	/* SKYRAT EDIT REMOVAL START - We can't run this with all of our customization stuff, and because it's not balanced around our gameplay loop. This is commented out so that it doesn't do anything even if bussed in.
 	RegisterSignal(SSdcs, COMSIG_GLOB_JOB_AFTER_SPAWN, PROC_REF(on_job_after_spawn))
-	*/ // SKYRAT REMOVAL END
 
 /datum/station_trait/cybernetic_revolution/proc/on_job_after_spawn(datum/source, datum/job/job, mob/living/spawned, client/player_client)
 	SIGNAL_HANDLER
