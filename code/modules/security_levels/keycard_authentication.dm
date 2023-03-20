@@ -91,7 +91,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/keycard_auth, 26)
 			if(!event_source)
 				sendEvent(KEYCARD_BSA_UNLOCK)
 				. = TRUE
-<<<<<<< HEAD
 		//SKYRAT EDIT START
 		if("pin_unrestrict")
 			if(!event_source)
@@ -102,7 +101,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/keycard_auth, 26)
 				sendEvent(KEYCARD_ENG_OVERRIDE)
 				. = TRUE
 		//SKYRAT EDIT END
-=======
 		if("give_janitor_access")
 			var/mob/living/living_user = usr
 			if(!living_user || !istype(living_user))
@@ -121,7 +119,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/keycard_auth, 26)
 				SEND_GLOBAL_SIGNAL(COMSIG_ON_DEPARTMENT_ACCESS, info["regions"])
 				balloon_alert(usr, "key access sent")
 				return
->>>>>>> 70ed01ed72b (Adds the Janitor access keyring (#73768))
 
 /obj/machinery/keycard_auth/update_appearance(updates)
 	. = ..()
