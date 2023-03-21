@@ -71,13 +71,6 @@
 	//Durability Variables.
 	data["durability"] = durability
 
-	var/datum/component/nif_examine/examine_component = linked_mob.GetComponent(/datum/component/nif_examine)
-	if(!examine_component)
-		data["examine_text"] = ""
-
-	else
-		data["examine_text"] = examine_component.nif_examine_text
-
 	return data
 
 /obj/item/organ/internal/cyberimp/brain/nif/ui_act(action, list/params)
@@ -100,7 +93,7 @@
 				return FALSE
 
 			if(!text_to_use || length(text_to_use) <= 6)
-				examine_datum.nif_examine_text = span_purple("<b>There's a certain spark to their eyes.<b>")
+				examine_datum.nif_examine_text = "There's a certain spark to their eyes."
 				return FALSE
 
 			examine_datum.nif_examine_text = text_to_use
