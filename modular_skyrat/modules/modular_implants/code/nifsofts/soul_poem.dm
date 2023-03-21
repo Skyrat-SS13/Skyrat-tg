@@ -79,13 +79,17 @@
 	return TRUE
 
 /// Removes the message_to_remove from the message_list, If the message cannot be found the proc will return FALSE, otherwise it will delete the message_to_remove and return TRUE.
-/datum/nifsoft/soul_poem/proc/remove_message(message_to_remove)
-	var/removed_message = locate(message_to_remove) in message_list
-	if(!removed_message)
+/datum/nifsoft/soul_poem/proc/remove_message(list/message_to_remove)
+	if(!message_to_remove)
 		return FALSE
 
-	message_list -= list(removed_message)
-	return TRUE
+	var/list/removed_message = message_to_remove[1]
+	for(var/list/message in message_list)
+		if(message["identifier"] == removed_message["identifier"])
+			message_list -= list(message)
+			return TRUE
+
+	return FALSE
 
 /datum/nifsoft/soul_poem/activate()
 	. = ..()
@@ -158,10 +162,7 @@
 
 /datum/nifsoft/soul_poem/ui_data(mob/user)
 	var/list/data = list()
-	data["messages"] = list()
-
-	for(var/message in message_list)
-		data["messages"] += list(message)
+	data["messages"] = message_list
 
 	data["receiving_data"] = receiving_data
 	data["transmitting_data"] = transmitting_data
