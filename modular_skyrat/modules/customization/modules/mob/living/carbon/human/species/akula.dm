@@ -81,7 +81,7 @@
 
 /obj/item/organ/internal/eyes/akula
 	// Eyes over hair as bandaid for the low amounts of head matching hair
-	eyes_layer = (HAIR_LAYER - 0.5)
+	eyes_layer = HAIR_LAYER-0.1
 
 /datum/species/akula/get_random_body_markings(list/passed_features)
 	var/datum/body_marking_set/BMS = GLOB.body_marking_sets["Akula"]
