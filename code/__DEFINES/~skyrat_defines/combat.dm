@@ -124,13 +124,15 @@
 /datum/species/proc/try_grab_maneuver(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(!grab_maneuver_state_check(user, target))
 		return
-	var/obj/item/bodypart/affecting = target.get_bodypart(user.zone_selected)
+	// psst, future coder - if you're adding more precise interactions, e.g. eye gouging/strangling, you're gonna need to make this less precise!
+	// just remove the deprecise_zone() call. account for the specifics after!
+	var/obj/item/bodypart/affecting = target.get_bodypart(deprecise_zone(user.zone_selected))
 	if(!affecting)
 		return FALSE
 	. = FALSE
 	if(HAS_TRAIT(user, TRAIT_PACIFISM)) //They're all violent acts. Even the suplex, which doesn't apply brute. (Yet. Maybe.)
 		return
-	switch(user.zone_selected)
+	switch(deprecise_zone(user.zone_selected))
 		if(BODY_ZONE_HEAD)
 			if(!(target.body_position == LYING_DOWN))
 				return
