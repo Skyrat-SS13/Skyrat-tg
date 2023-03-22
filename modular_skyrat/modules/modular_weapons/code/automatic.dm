@@ -11,7 +11,7 @@
 	ammo_type = /obj/item/ammo_casing/c34
 	caliber = "c34acp"
 	max_ammo = 30
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/ap
 	ammo_type = /obj/item/ammo_casing/c34/ap
@@ -103,7 +103,7 @@
 	ammo_type = /obj/item/ammo_casing/c42x30mm
 	caliber = CALIBER_42X30MM
 	max_ammo = 40
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/ap
 	ammo_type = /obj/item/ammo_casing/c42x30mm/ap

@@ -121,7 +121,7 @@
 	savefile_key = "erp_status_pref"
 
 /datum/preference/choiced/erp_status/init_possible_values()
-	return list("Yes - Switch", "Yes - Sub", "Yes - Dom", "Check OOC", "Ask", "No")
+	return list("Yes - Switch", "Yes - Sub", "Yes - Dom", "Check OOC", "Ask", "No", "Yes")
 
 /datum/preference/choiced/erp_status/create_default_value()
 	return "Ask"
@@ -151,7 +151,7 @@
 	savefile_key = "erp_status_pref_nc"
 
 /datum/preference/choiced/erp_status_nc/init_possible_values()
-	return list("Yes - Switch", "Yes - Sub", "Yes - Dom", "Check OOC", "Ask", "No")
+	return list("Yes - Switch", "Yes - Sub", "Yes - Dom", "Check OOC", "Ask", "No", "Yes")
 
 /datum/preference/choiced/erp_status_nc/create_default_value()
 	return "Ask"
@@ -181,7 +181,7 @@
 	savefile_key = "erp_status_pref_v"
 
 /datum/preference/choiced/erp_status_v/init_possible_values()
-	return list("Yes - Switch", "Yes - Prey", "Yes - Pred", "Check OOC", "Ask", "No")
+	return list("Yes - Switch", "Yes - Prey", "Yes - Pred", "Check OOC", "Ask", "No", "Yes")
 
 /datum/preference/choiced/erp_status_v/create_default_value()
 	return "Ask"

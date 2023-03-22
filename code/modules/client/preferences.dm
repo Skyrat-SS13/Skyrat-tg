@@ -459,15 +459,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 /// Updates the currently displayed body
 /atom/movable/screen/map_view/char_preview/proc/update_body()
-	// SKYRAT EDIT REMOVAL START - wipe_state() works poorly for our codebase.
-	/*
 	if (isnull(body))
 		create_body()
 	else
 		body.wipe_state()
-	*/
-	// SKYRAT EDIT REMOVAL END
-	create_body() // SKYRAT EDIT ADDITION - replacement of above
 	appearance = preferences.render_new_preview_appearance(body)
 
 /atom/movable/screen/map_view/char_preview/proc/create_body()
@@ -550,7 +545,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	apply_prefs_to(character, icon_updates)
 
 /// Applies the given preferences to a human mob.
-/datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE)
+/datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE, visuals_only = FALSE)  // SKYRAT EDIT - Customization - ORIGINAL: /datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE)
 	character.dna.features = MANDATORY_FEATURE_LIST //SKYRAT EDIT CHANGE - We need to instansiate the list with the basic features.
 
 	for (var/datum/preference/preference as anything in get_preferences_in_priority_order())
@@ -561,7 +556,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	// SKYRAT EDIT ADDITION START - middleware apply human prefs
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
-		preference_middleware.apply_to_human(character, src)
+		preference_middleware.apply_to_human(character, src, visuals_only = visuals_only)
 	// SKYRAT EDIT ADDITION END
 
 	character.dna.real_name = character.real_name
