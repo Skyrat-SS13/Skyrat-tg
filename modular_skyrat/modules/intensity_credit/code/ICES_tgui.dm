@@ -30,13 +30,18 @@
 
 /datum/intensity_credits_panel/ui_data(mob/user)
 	var/list/data = list()
-
-	var/is_fun = check_rights_for(user.client, R_FUN)
+	var/filter_threshold = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
 
 	data = list(
 		"current_credits" = GLOB.intense_event_credits,
-		"ckey" = user.client?.ckey,
-		"is_fun" = is_fun,
+		"next_run" = DisplayTimeText(SSevents.scheduled - world.time, 1),
+		"active_players" = filter_threshold,
+		"lowpop_players" = EVENT_LOWPOP_THRESHOLD,
+		"lowpop_multiplier" = EVENT_LOWPOP_TIMER_MULTIPLIER,
+		"midpop_players" = EVENT_MIDPOP_THRESHOLD,
+		"midpop_multiplier" = EVENT_MIDPOP_TIMER_MULTIPLIER,
+		"highpop_players" = EVENT_HIGHPOP_THRESHOLD,
+		"highpop_multiplier" = EVENT_HIGHPOP_TIMER_MULTIPLIER,
 	)
 
 	return data

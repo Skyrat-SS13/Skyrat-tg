@@ -25,6 +25,8 @@
 	var/intensity_credit_rate = 27000
 	/// Last world time we added an intensity credit
 	var/intensity_credit_last_time = 8400
+	/// ICES timer multiplier
+	var/intensity_multiplier = EVENT_MIDPOP_TIMER_MULTIPLIER
 
 /**
  * Abductors
