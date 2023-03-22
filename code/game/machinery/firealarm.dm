@@ -162,6 +162,16 @@
 						set_light(l_color = LIGHT_COLOR_FLARE)
 					if(SEC_LEVEL_DELTA)
 						set_light(l_color = LIGHT_COLOR_INTENSE_RED)
+					//SKYRAT EDIT ADDITION BEGIN - ADDITIONAL ALERT LEVELS
+					if(SEC_LEVEL_VIOLET)
+						set_light(l_color = COLOR_VIOLET)
+					if(SEC_LEVEL_ORANGE)
+						set_light(l_color = LIGHT_COLOR_ORANGE)
+					if(SEC_LEVEL_AMBER)
+						set_light(l_color = LIGHT_COLOR_DIM_YELLOW)
+					if(SEC_LEVEL_GAMMA)
+						set_light(l_color = COLOR_ASSEMBLY_PURPLE)
+					//SKYRAT EDIT ADDITION END
 			else
 				. += mutable_appearance(icon, "fire_offstation")
 				. += emissive_appearance(icon, "fire_level_e", src, alpha = src.alpha)
