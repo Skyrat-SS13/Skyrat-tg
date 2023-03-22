@@ -33,7 +33,7 @@
 
 	var/is_fun = check_rights_for(user.client, R_FUN)
 
-	data["ICESData"] = list(
+	data = list(
 		"current_credits" = GLOB.intense_event_credits,
 		"ckey" = user.client?.ckey,
 		"is_fun" = is_fun,

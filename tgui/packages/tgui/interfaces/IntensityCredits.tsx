@@ -1,6 +1,6 @@
 import { useBackend } from '../backend';
 import { BooleanLike } from 'common/react';
-import { Section } from '../components';
+import { Section, NoticeBox } from '../components';
 import { Window } from '../layouts';
 
 type ICESData = {
@@ -9,16 +9,24 @@ type ICESData = {
   is_fun: BooleanLike;
 };
 
-export const IntensityCredits = (props, context) => {
-  const { data } = useBackend<ICESData>(context);
+type Props = {
+  context: any;
+};
 
-  const { current_credits, ckey, is_fun } = data;
+export const IntensityCredits = (props, context) => {
+  const { act, data } = useBackend<ICESData>(context);
+
+  const { ckey, current_credits, is_fun } = data;
 
   return (
     <Window title="ICES Events Panel" width={480} height={320} theme="admin">
       <Window.Content>
         <Section title="Configuration">
-          You thought there would be something useful here? Ha! What a loser. :3
+          <NoticeBox>
+            You thought there would be something useful here?
+            <br />
+            Ha! What a loser. :3
+          </NoticeBox>
         </Section>
       </Window.Content>
     </Window>
