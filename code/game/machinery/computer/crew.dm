@@ -257,7 +257,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 			if (jobs[trim_assignment] != null)
 				entry["ijob"] = jobs[trim_assignment]
 
-		// SKYRAT EDIT BEGIN: Checking for robotic race and set DNR state if sensors are above living tracking
+		// SKYRAT EDIT BEGIN: Checking for robotic race and set DNR state if sensors are enabled
 		if (issynthetic(tracked_human))
 			entry["is_robot"] = TRUE
 
