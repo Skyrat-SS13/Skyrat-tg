@@ -153,10 +153,11 @@ const CrewTableEntry = (props, context) => {
           />
         ) : life_status ? (
           <Icon name="heart" color="#17d568" size={1} />
+        ) : is_dnr ? (
+          <Icon name="ban" color="#801308" size={1} />
         ) : (
           <Icon name="skull" color="#801308" size={1} />
         )}
-        {!life_status && is_dnr ? ' (DNR)' : ''}
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
         {oxydam !== undefined ? (
@@ -171,6 +172,8 @@ const CrewTableEntry = (props, context) => {
           </Box>
         ) : life_status ? (
           'Alive'
+        ) : is_dnr ? (
+          'Dead (DNR)'
         ) : (
           'Dead'
         )}
