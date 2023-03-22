@@ -352,7 +352,7 @@
 /obj/item/restraints/handcuffs/milker/Destroy()
 	unbuckle_parent()
 	parent_chair = null
-	..()
+	return ..()
 
 /obj/item/restraints/handcuffs/milker/proc/unbuckle_parent()
 	if(!parent_chair)
