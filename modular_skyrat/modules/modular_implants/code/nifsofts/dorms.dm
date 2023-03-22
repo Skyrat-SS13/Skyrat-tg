@@ -59,3 +59,51 @@
 					/obj/item/clothing/shoes/latex_heels,
 	)
 	purchase_price = 200
+
+/obj/item/disk/nifsoft_uploader/dorms/contract
+	name = "Purpura Contract"
+	loaded_nifsoft = /datum/nifsoft/hypno
+	///What laws will be assigned when using the NIFSoft on someone?
+	var/laws_to_assign = "Law 1: Be nice to others."
+	reusable = TRUE //This is set to true because of a quirk this uses with updating laws.
+
+/obj/item/disk/nifsoft_uploader/dorms/contract/attempt_software_install(mob/living/carbon/human/target)
+	var/datum/nifsoft/hypno/target_nifsoft = target.find_nifsoft(/datum/nifsoft/hypno)
+	if(target_nifsoft)
+		target_nifsoft.fake_laws = laws_to_assign
+		return TRUE
+
+	. = ..()
+	if(. == FALSE)
+		return FALSE
+
+	target_nifsoft = target.find_nifsoft(/datum/nifsoft/hypno)
+	if(!target_nifsoft)
+		return FALSE
+
+	target_nifsoft.fake_laws = laws_to_assign
+	var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = target_nifsoft.parent_nif.resolve()
+	target_nif.send_message("Your [target_nifsoft] laws have been updated.")
+
+/obj/item/disk/nifsoft_uploader/dorms/contract/attack_self(mob/user, list/modifiers)
+	var/new_law = tgui_input_text(user, "Input a new law to add", src, laws_to_assign)
+	if(!new_law)
+		return FALSE
+
+	laws_to_assign = new_law
+	return TRUE
+
+/datum/nifsoft/hypno
+	name = "Purpura Contract"
+	program_desc = "Compels the user to follow the laws written to the contract. \n OOC NOTE: This is strictly here for adult roleplay. None of the laws here actually need to be obeyed and you can uninstall this NIFSoft at any time." //Add an actual description to this eventually.
+	purchase_price = 0
+
+	/// What "laws" does the person with this NIFSoft installed have?
+	var/fake_laws = ""
+
+/datum/nifsoft/hypno/activate()
+	. = ..()
+	if(!.)
+		return FALSE
+
+	to_chat(linked_mob, span_abductor(fake_laws))
