@@ -25,6 +25,9 @@
 		ui = new(user, src, "IntensityCredits")
 		ui.open()
 
+/datum/intensity_credits_panel/ui_state(mob/user)
+	return GLOB.fun_state
+
 /datum/intensity_credits_panel/ui_data(mob/user)
 	var/list/data = list()
 
