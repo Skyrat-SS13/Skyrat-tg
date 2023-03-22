@@ -60,7 +60,11 @@
 		else
 			C.key = brainmob.key
 
+<<<<<<< HEAD
 		C.set_suicide(brainmob.suiciding)
+=======
+		brain_owner.set_suicide(HAS_TRAIT(brainmob, TRAIT_SUICIDED))
+>>>>>>> a6f49ed5425 (Refactors Suiciding Variable Into Trait (#74150))
 
 		QDEL_NULL(brainmob)
 
@@ -117,7 +121,10 @@
 	brainmob.name = L.real_name
 	brainmob.real_name = L.real_name
 	brainmob.timeofhostdeath = L.timeofdeath
-	brainmob.suiciding = suicided
+
+	if(suicided)
+		ADD_TRAIT(brainmob, TRAIT_SUICIDED, REF(src))
+
 	if(L.has_dna())
 		var/mob/living/carbon/C = L
 		if(!brainmob.stored_dna)
