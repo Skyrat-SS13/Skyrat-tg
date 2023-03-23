@@ -88,5 +88,5 @@
 	wound = 10
 
 /obj/item/clothing/gloves/combat/naval/nanotrasen_consultant
-	name = "CentCom gloves"
+	name = "\improper CentCom gloves"
 	desc = "A high quality pair of thick gloves covered in gold stitching."
