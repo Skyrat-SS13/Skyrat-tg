@@ -190,9 +190,37 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 		on_cooldown = TRUE
 		addtimer(CALLBACK(src, PROC_REF(remove_cooldown)), cooldown_timer)
 
+	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/attempt_unlock)
+
+/datum/component/off_duty_timer/Destroy(force, silent)
+	UnregisterSignal(parent, COMSIG_PARENT_ATTACKBY)
+	if(stored_trim)
+		qdel(stored_trim)
+		stored_trim = null
+
+	return ..()
+
 ///Sets the on_cooldown variable to false, making it so that the ID can clock back in.
 /datum/component/off_duty_timer/proc/remove_cooldown()
 	on_cooldown = FALSE
+
+///Attempts an unlock if attacked by another ID. If the ID has HoP access, it will unlock and return TRUE
+/datum/component/off_duty_timer/proc/attempt_unlock(datum/source, obj/item/attacking_item, mob/user, params)
+	SIGNAL_HANDLER
+	if(!hop_locked)
+		return FALSE
+
+	var/obj/item/card/id/advanced/hop_id = attacking_item
+	if(!hop_id)
+		return FALSE
+
+	if(!(ACCESS_HOP in hop_id.access))
+		to_chat(user, span_warning("You lack the access to unlock [parent]"))
+		return FALSE
+
+	hop_locked = FALSE
+	to_chat(user, span_notice("[parent] has been unlocked, the owner is now able to clock in."))
+	return TRUE
 
 /obj/item/wallframe/time_clock
 	name = "time clock frame"
