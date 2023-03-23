@@ -370,7 +370,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	name = "\improper SolFed advanced atmos encryption key"
 	icon_state = "cypherkey_medical"
 	independent = TRUE
-	channels = list(RADIO_CHANNEL_SOLFED, RADIO_CHANNEL_ENGINEERING = 1, RADIO_CHANNEL_COMMAND = 1)
+	channels = list(RADIO_CHANNEL_SOLFED = 1, RADIO_CHANNEL_ENGINEERING = 1, RADIO_CHANNEL_COMMAND = 1)
 	greyscale_config = /datum/greyscale_config/encryptionkey_medical
 	greyscale_colors = "#ebebeb#2b2793"
 
