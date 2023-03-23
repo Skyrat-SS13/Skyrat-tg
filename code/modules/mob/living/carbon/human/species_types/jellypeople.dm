@@ -2,6 +2,8 @@
 #define JELLY_REGEN_RATE 1.5
 ///The rate at which slimes regenerate their jelly when they completely run out of it and start taking damage, usually after having cannibalized all their limbs already
 #define JELLY_REGEN_RATE_EMPTY 2.5
+///The blood volume at which slimes begin to start losing nutrition -- so that IV drips can work for blood deficient slimes
+#define BLOOD_VOLUME_LOSE_NUTRITION 550
 
 /datum/species/jelly
 	// Entirely alien beings that seem to be made entirely out of gel. They have three eyes and a skeleton visible within them.
@@ -45,6 +47,7 @@
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/jelly,
 	)
 
+<<<<<<< HEAD
 /datum/species/jelly/on_species_loss(mob/living/carbon/old_jellyperson)
 	if(regenerate_limbs)
 		regenerate_limbs.Remove(old_jellyperson)
@@ -64,7 +67,25 @@
 		alter_form = new
 		alter_form.Grant(new_jellyperson)
 		//SKYRAT EDIT ADDITION END
+=======
+/datum/species/jelly/on_species_gain(mob/living/carbon/new_jellyperson, datum/species/old_species, pref_load)
+	. = ..()
+	if(ishuman(new_jellyperson))
+		regenerate_limbs = new
+		regenerate_limbs.Grant(new_jellyperson)
+		update_mail_goodies(new_jellyperson, list(/obj/item/reagent_containers/blood/toxin))
+>>>>>>> 8d7db532c0f (Reworks blood deficiency backend, & some adjustments to slime blood deficiency (#74143))
 	new_jellyperson.AddElement(/datum/element/soft_landing)
+
+/datum/species/jelly/on_species_loss(mob/living/carbon/former_jellyperson, datum/species/new_species, pref_load)
+	if(regenerate_limbs)
+		regenerate_limbs.Remove(former_jellyperson)
+	former_jellyperson.RemoveElement(/datum/element/soft_landing)
+	
+	if(ishuman(former_jellyperson))
+		update_mail_goodies(former_jellyperson)
+	
+	return ..()
 
 /datum/species/jelly/spec_life(mob/living/carbon/human/H, delta_time, times_fired)
 	if(H.stat == DEAD) //can't farm slime jelly from a dead slime/jelly person indefinitely
@@ -78,7 +99,14 @@
 	if(H.blood_volume < BLOOD_VOLUME_NORMAL)
 		if(H.nutrition >= NUTRITION_LEVEL_STARVING)
 			H.blood_volume += JELLY_REGEN_RATE * delta_time
-			H.adjust_nutrition(-1.25 * delta_time)
+			if(H.blood_volume <= BLOOD_VOLUME_LOSE_NUTRITION) // don't lose nutrition if we are above a certain threshold, otherwise slimes on IV drips will still lose nutrition
+				H.adjust_nutrition(-1.25 * delta_time)
+
+	// we call lose_blood() here rather than quirk/process() to make sure that the blood loss happens in sync with life()
+	if(HAS_TRAIT(H, TRAIT_BLOOD_DEFICIENCY))
+		var/datum/quirk/blooddeficiency/blooddeficiency = H.get_quirk(/datum/quirk/blooddeficiency)
+		if(!isnull(blooddeficiency))
+			blooddeficiency.lose_blood(delta_time)
 
 	if(H.blood_volume < BLOOD_VOLUME_OKAY)
 		if(DT_PROB(2.5, delta_time))
@@ -236,7 +264,8 @@
 
 	else if(H.nutrition >= NUTRITION_LEVEL_WELL_FED)
 		H.blood_volume += 1.5 * delta_time
-		H.adjust_nutrition(-1.25 * delta_time)
+		if(H.blood_volume <= BLOOD_VOLUME_LOSE_NUTRITION)
+			H.adjust_nutrition(-1.25 * delta_time)
 
 	..()
 
@@ -806,3 +835,4 @@
 	
 #undef JELLY_REGEN_RATE
 #undef JELLY_REGEN_RATE_EMPTY
+#undef BLOOD_VOLUME_LOSE_NUTRITION

@@ -30,11 +30,21 @@
 		if(satiety > 80)
 			nutrition_ratio *= 1.25
 		adjust_nutrition(-nutrition_ratio * HUNGER_FACTOR * delta_time)
+<<<<<<< HEAD
 		blood_volume = min(blood_volume + (BLOOD_REGEN_FACTOR * nutrition_ratio * delta_time), blood_volume_normal) //SKYRAT EDIT CHANGE
 
 	// SKYRAT EDIT ADDITION START - Oversized quirk
 	var/blood_volume_max = max(BLOOD_VOLUME_MAXIMUM, blood_volume_normal + 1)
 	// SKYRAT EDIT END
+=======
+		blood_volume = min(blood_volume + (BLOOD_REGEN_FACTOR * nutrition_ratio * delta_time), BLOOD_VOLUME_NORMAL)
+		
+	// we call lose_blood() here rather than quirk/process() to make sure that the blood loss happens in sync with life()
+	if(HAS_TRAIT(src, TRAIT_BLOOD_DEFICIENCY))
+		var/datum/quirk/blooddeficiency/blooddeficiency = get_quirk(/datum/quirk/blooddeficiency)
+		if(!isnull(blooddeficiency))
+			blooddeficiency.lose_blood(delta_time)
+>>>>>>> 8d7db532c0f (Reworks blood deficiency backend, & some adjustments to slime blood deficiency (#74143))
 
 	//Effects of bloodloss
 	var/word = pick("dizzy","woozy","faint")
