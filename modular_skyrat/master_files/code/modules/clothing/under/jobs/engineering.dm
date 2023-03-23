@@ -13,8 +13,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/engineering.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/engineering.dmi'
 
-// Add a /obj/item/clothing/under/rank/engineering/atmospheric_technician/skyrat if you add uniforms for it
-
 /*
 *	ENGINEER
 */
