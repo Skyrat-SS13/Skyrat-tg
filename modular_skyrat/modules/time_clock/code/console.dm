@@ -1,4 +1,4 @@
-#define CLOCK_IN_COOLDOWN 15 MINUTES
+#define CLOCK_IN_COOLDOWN 1 MINUTES
 
 /obj/machinery/time_clock
 	name = "time clock"
@@ -9,6 +9,8 @@
 
 	///What ID card is currently inside?
 	var/obj/item/card/id/inserted_id
+	///What trim is applied to inserted IDs?
+	var/target_trim = /datum/id_trim/job/assistant
 
 	//These variables are the same as the ones that the cryopods use to make annoucements
 	///The radio that is used to announce when someone clocks in and clocks out.
@@ -81,16 +83,22 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 	if(!inserted_id)
 		return FALSE
 
-	inserted_id.AddComponent(/datum/component/off_duty_timer, CLOCK_IN_COOLDOWN)
-	inserted_id.clear_access()
-	inserted_id.update_label()
+	var/datum/component/off_duty_timer/timer_component = inserted_id.AddComponent(/datum/component/off_duty_timer, CLOCK_IN_COOLDOWN)
+	if(command_job_check())
+		timer_component.hop_locked = TRUE
 
+	var/current_assignment = inserted_id.assignment
 	var/datum/id_trim/job/current_trim = inserted_id.trim
 	var/datum/job/clocked_out_job = current_trim.job
 	clocked_out_job.current_positions--
 
-	radio.talk_into(src, "[inserted_id.registered_name], [current_trim.assignment] has gone off-duty.", announcement_channel)
+	radio.talk_into(src, "[inserted_id.registered_name], [current_assignment] has gone off-duty.", announcement_channel)
 	update_static_data_for_all_viewers()
+
+	SSid_access.apply_trim_to_card(inserted_id, target_trim, FALSE)
+	inserted_id.assignment = "Off-Duty " + current_assignment
+	inserted_id.update_label()
+
 	return TRUE
 
 ///Clocks the currently inserted ID Card back in
@@ -103,18 +111,16 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 
 	var/datum/component/off_duty_timer/id_component = inserted_id.GetComponent(/datum/component/off_duty_timer)
 
-	var/datum/id_trim/job/current_trim = inserted_id.trim
-	var/datum/job/clocked_in_job = current_trim.job
+	var/datum/job/clocked_in_job = id_component.stored_trim.job
 	if(clocked_in_job.total_positions <= clocked_in_job.current_positions)
 		return FALSE
 
 	clocked_in_job.current_positions++
 
-	inserted_id.clear_access()
-	inserted_id.add_access(id_component.stored_access)
-	inserted_id.add_wildcards(id_component.stored_wildcard_access)
+	SSid_access.apply_trim_to_card(inserted_id, id_component.stored_trim.type, FALSE)
 	inserted_id.assignment = id_component.stored_assignment
-	radio.talk_into(src, "[inserted_id.registered_name], [inserted_id.assignment] has gone on duty.", announcement_channel)
+
+	radio.talk_into(src, "[inserted_id.registered_name], [inserted_id.assignment] has returned to duty.", announcement_channel)
 
 	qdel(id_component)
 	inserted_id.update_label()
@@ -140,7 +146,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 		return FALSE
 
 	var/datum/component/off_duty_timer/id_component = inserted_id.GetComponent(/datum/component/off_duty_timer)
-	if(command_job_check() && id_component)
+	if(id_component && id_component.hop_locked)
 		return TRUE
 
 	if(!id_component || !id_component.on_cooldown)
@@ -162,12 +168,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 /datum/component/off_duty_timer
 	///Is the ID that the component is attached to is able to clock back in?
 	var/on_cooldown = FALSE
-	///What access was given to the ID before going off duty?
-	var/list/stored_access = list()
-	///What wildcard access did the ID have on it before going off duty?
-	var/list/stored_wildcard_access = list()
-	///What is the name of the job the owner was working before going off duty?
-	var/stored_assignment
+	///The stored ID trim of the user of the id
+	var/datum/id_trim/job/stored_trim
+	///Is the owner of card locked out of clocking back in until their ID is unlocked by the HoP?
+	var/hop_locked = FALSE
+	///What was the name of the job the person was working when they clocked out?
+	var/stored_assignment = ""
 
 /datum/component/off_duty_timer/Initialize(cooldown_timer = 0)
 	. = ..()
@@ -176,11 +182,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 	if(!attached_id)
 		return COMPONENT_INCOMPATIBLE
 
-	stored_access = attached_id.access.Copy()
-	stored_wildcard_access = attached_id.wildcard_slots.Copy()
+	stored_trim = attached_id.trim
 	stored_assignment = attached_id.assignment
 
-	attached_id.assignment = "Off-Duty " + attached_id.assignment
 
 	if(cooldown_timer)
 		on_cooldown = TRUE

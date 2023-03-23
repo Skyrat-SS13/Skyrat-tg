@@ -50,21 +50,11 @@
 	name = "Time Clock Frame"
 	desc = "A frame for a time clock console, contains all of the parts needed to build a new time clock"
 	id = "time_clock_frame"
-	build_type = PROTOLATHE | AWAY_LATHE
+	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 4000, /datum/material/glass = 2000)
 	build_path = /obj/item/wallframe/time_clock
 	category = list(RND_CATEGORY_MACHINE)
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING | DEPARTMENT_BITFLAG_SERVICE
-
-/datum/design/nifosft_vendor
-	name = "NIFSoft Vendor Refill"
-	desc = "A refill canister for NIFSoft Vendors"
-	id = "nifsoft_vendor"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 10000, /datum/material/plastic = 5000, /datum/material/silver = 2000, /datum/material/gold = 2000)
-	build_path = /obj/item/vending_refill/nifsoft_shop
-	category = list(RND_CATEGORY_STOCK_PARTS + RND_SUBCATEGORY_STOCK_PARTS_MISC)
-	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/vox_gas_filter
 	name = "Vox Gas Filter"
