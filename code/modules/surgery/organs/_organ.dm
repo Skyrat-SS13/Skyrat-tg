@@ -93,6 +93,30 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 
 	return TRUE
 
+<<<<<<< HEAD
+=======
+/// Called after the organ is inserted into a mob.
+/// Adds Traits, Actions, and Status Effects on the mob in which the organ is impanted.
+/// Override this proc to create unique side-effects for inserting your organ. Must be called by overrides.
+/obj/item/organ/proc/on_insert(mob/living/carbon/organ_owner, special)
+	SHOULD_CALL_PARENT(TRUE)
+
+	moveToNullspace()
+
+	for(var/trait in organ_traits)
+		ADD_TRAIT(organ_owner, trait, REF(src))
+
+	for(var/datum/action/action as anything in actions)
+		action.Grant(organ_owner)
+
+	for(var/datum/status_effect/effect as anything in organ_effects)
+		organ_owner.apply_status_effect(effect, type)
+
+	RegisterSignal(owner, COMSIG_PARENT_EXAMINE, PROC_REF(on_owner_examine))
+	SEND_SIGNAL(src, COMSIG_ORGAN_IMPLANTED, organ_owner)
+	SEND_SIGNAL(organ_owner, COMSIG_CARBON_GAIN_ORGAN, src, special)
+
+>>>>>>> e000cb0b29f (Bioscrambler scrambles your organs again (#74177))
 /*
  * Remove the organ from the select mob.
  *
@@ -113,6 +137,16 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 	for(var/trait in organ_traits)
 		REMOVE_TRAIT(organ_owner, trait, REF(src))
 
+<<<<<<< HEAD
+=======
+	for(var/datum/action/action as anything in actions)
+		action.Remove(organ_owner)
+
+	for(var/datum/status_effect/effect as anything in organ_effects)
+		organ_owner.remove_status_effect(effect, type)
+
+	UnregisterSignal(organ_owner, COMSIG_PARENT_EXAMINE)
+>>>>>>> e000cb0b29f (Bioscrambler scrambles your organs again (#74177))
 	SEND_SIGNAL(src, COMSIG_ORGAN_REMOVED, organ_owner)
 	SEND_SIGNAL(organ_owner, COMSIG_CARBON_LOSE_ORGAN, src, special)
 
@@ -328,3 +362,7 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 		status = "<font color='#ffcc33'>Mildly Damaged</font>"
 
 	return status
+
+/// Tries to replace the existing organ on the passed mob with this one, with special handling for replacing a brain without ghosting target
+/obj/item/organ/proc/replace_into(mob/living/carbon/new_owner)
+	Insert(new_owner, special = TRUE, drop_if_replaced = FALSE)
