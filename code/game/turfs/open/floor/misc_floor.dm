@@ -103,24 +103,27 @@
 	icon_state = "podfloor_dark"
 	floor_tile = /obj/item/stack/tile/pod/dark
 
-
 /turf/open/floor/noslip
 	name = "high-traction floor"
 	icon_state = "noslip"
 	floor_tile = /obj/item/stack/tile/noslip
 	slowdown = -0.3
+	flags_1 = NO_SCREENTIPS_1 // SKYRAT EDIT - tram/noslip ignore ssDecay
 
 /turf/open/floor/noslip/tram_plate
 	name = "linear induction plate"
 	desc = "The linear induction plate that powers the tram."
 	icon_state = "tram_plate"
 	base_icon_state = "tram_plate"
+	flags_1 = null // SKYRAT EDIT - tram/noslip ignore ssDecay
+	slowdown = 0
 
 /turf/open/floor/noslip/tram_platform
 	name = "tram platform"
 	desc = "A sturdy looking tram platform."
 	icon_state = "tram_platform"
 	base_icon_state = "tram_platform"
+	slowdown = 0
 
 /turf/open/floor/noslip/broken_states()
 	return list("noslip-damaged1","noslip-damaged2","noslip-damaged3")
@@ -285,3 +288,13 @@
 
 /turf/open/floor/cult/airless
 	initial_gas_mix = AIRLESS_ATMOS
+
+/// TGMC EMBLEM ///
+
+/turf/open/floor/iron/tgmcemblem
+	name = "TGMC Emblem"
+	desc = "The symbol of the Terran Goverment."
+	icon_state = "tgmc_emblem"
+
+/turf/open/floor/iron/tgmcemblem/center
+	icon_state = "tgmc_center"

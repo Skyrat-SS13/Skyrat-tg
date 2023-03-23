@@ -61,6 +61,7 @@
 	if(!ownerCheck() || !mind_control_uses || active_mind_control)
 		return FALSE
 	mind_control_uses--
+	owner.balloon_alert(owner, "new compulsion")
 	to_chat(owner, span_userdanger("You suddenly feel an irresistible compulsion to follow an order..."))
 	to_chat(owner, span_mind_control("[command]"))
 	active_mind_control = TRUE
@@ -75,6 +76,7 @@
 /obj/item/organ/internal/heart/gland/proc/clear_mind_control()
 	if(!ownerCheck() || !active_mind_control)
 		return FALSE
+	owner.balloon_alert(owner, "compulsion forgotten")
 	to_chat(owner, span_userdanger("You feel the compulsion fade, and you <i>completely forget</i> about your previous orders."))
 	owner.clear_alert(ALERT_MIND_CONTROL)
 	active_mind_control = FALSE
@@ -87,10 +89,10 @@
 	var/datum/atom_hud/abductor/hud = GLOB.huds[DATA_HUD_ABDUCTOR]
 	hud.remove_atom_from_hud(owner)
 	clear_mind_control()
-	..()
+	return ..()
 
 /obj/item/organ/internal/heart/gland/Insert(mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE)
-	..()
+	. = ..()
 	if(special != 2 && uses) // Special 2 means abductor surgery
 		Start()
 	var/datum/atom_hud/abductor/hud = GLOB.huds[DATA_HUD_ABDUCTOR]

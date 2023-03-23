@@ -27,7 +27,7 @@
 
 /obj/machinery/rnd/server/Initialize(mapload)
 	. = ..()
-	if(CONFIG_GET(flag/no_default_techweb_link))
+	if(CONFIG_GET(flag/no_default_techweb_link) && !stored_research)
 		stored_research = new /datum/techweb
 	stored_research.techweb_servers |= src
 	name += " [num2hex(rand(1,65535), -1)]" //gives us a random four-digit hex number as part of the name. Y'know, for fluff.
@@ -119,7 +119,7 @@
 
 /obj/machinery/computer/rdservercontrol/Initialize(mapload, obj/item/circuitboard/C)
 	. = ..()
-	if(!CONFIG_GET(flag/no_default_techweb_link))
+	if(!CONFIG_GET(flag/no_default_techweb_link) && !stored_research)
 		stored_research = SSresearch.science_tech
 
 /obj/machinery/computer/rdservercontrol/Topic(href, href_list)
@@ -204,9 +204,7 @@
 	add_overlay("RD-server-objective-stripes")
 
 /obj/machinery/rnd/server/master/Destroy()
-	if (source_code_hdd && (deconstruction_state == HDD_OVERLOADED))
-		QDEL_NULL(source_code_hdd)
-
+	QDEL_NULL(source_code_hdd)
 	return ..()
 
 /obj/machinery/rnd/server/master/get_status_text()
@@ -308,6 +306,8 @@
 /obj/machinery/rnd/server/master/on_deconstruction()
 	// If the machine contains a source code HDD, destroying it will negatively impact research speed. Safest to log this.
 	if(source_code_hdd)
+		// Destroyed with a hard drive inside = harm income
+		stored_research.income_modifier *= 0.5
 		// If there's a usr, this was likely a direct deconstruction of some sort. Extra logging info!
 		if(usr)
 			var/mob/user = usr
@@ -325,6 +325,8 @@
 /obj/machinery/rnd/server/master/proc/overload_source_code_hdd()
 	if(source_code_hdd)
 		QDEL_NULL(source_code_hdd)
+		// Overloaded = harm income
+		stored_research.income_modifier *= 0.5
 
 	if(deconstruction_state == HDD_PANEL_CLOSED)
 		add_overlay("RD-server-hdd-panel-open")

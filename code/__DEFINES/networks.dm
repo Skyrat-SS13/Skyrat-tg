@@ -14,39 +14,20 @@
 #define NETWORK_NAME_COMBINE(L,R) ((L) + "." + (R))
 
 /// Station network names.  Used as the root networks for main parts of the station
-#define __STATION_NETWORK_ROOT "SS13"
-#define __CENTCOM_NETWORK_ROOT "CENTCOM"
-#define __SYNDICATE_NETWORK_ROOT "SYNDI"
-#define __LIMBO_NETWORK_ROOT "LIMBO" // Limbo is a dead network
+#define HOLODECK_NETWORK_ROOT "HOLODECK"
+#define STATION_NETWORK_ROOT "SS13"
+#define CENTCOM_NETWORK_ROOT "CENTCOM"
+#define SYNDICATE_NETWORK_ROOT "SYNDI"
+#define LIMBO_NETWORK_ROOT "LIMBO" // Limbo is a dead network
+
 
 /// various sub networks pieces
-#define __NETWORK_LIMBO "LIMBO"
-#define __NETWORK_TOOLS "TOOLS"
-#define __NETWORK_REMOTES "REMOTES"
-#define __NETWORK_AIRLOCKS "AIRLOCKS"
-#define __NETWORK_DOORS "DOORS"
-#define __NETWORK_CONTROL "CONTROL"
-#define __NETWORK_STORAGE "STORAGE"
 #define __NETWORK_CARGO "CARGO"
 #define __NETWORK_BOTS "BOTS"
-#define __NETWORK_COMPUTER "COMPUTER"
-#define __NETWORK_TABLETS "TABLETS"
 #define __NETWORK_CIRCUITS "CIRCUITS"
 
 /// Various combined subnetworks
-#define NETWORK_DOOR_REMOTES NETWORK_NAME_COMBINE(__NETWORK_DOORS, __NETWORK_REMOTES)
-#define NETWORK_DOOR_AIRLOCKS NETWORK_NAME_COMBINE(__NETWORK_DOORS, __NETWORK_AIRLOCKS)
-#define NETWORK_TABLETS NETWORK_NAME_COMBINE(__NETWORK_COMPUTER, __NETWORK_TABLETS)
 #define NETWORK_BOTS_CARGO NETWORK_NAME_COMBINE(__NETWORK_CARGO, __NETWORK_BOTS)
-
-
-// Finally turn eveything into strings
-#define STATION_NETWORK_ROOT __STATION_NETWORK_ROOT
-#define CENTCOM_NETWORK_ROOT __CENTCOM_NETWORK_ROOT
-#define SYNDICATE_NETWORK_ROOT __SYNDICATE_NETWORK_ROOT
-#define LIMBO_NETWORK_ROOT __LIMBO_NETWORK_ROOT
-
-
 
 /// Network name should be all caps and no punctuation except for _ and . between domains
 /// This does a quick an dirty fix to a network name to make sure it works

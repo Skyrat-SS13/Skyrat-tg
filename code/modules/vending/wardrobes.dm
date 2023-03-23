@@ -106,7 +106,7 @@
 		/obj/item/clothing/head/beret/engi = 3,
 		/obj/item/clothing/mask/bandana/striped/engineering = 3,
 		/obj/item/clothing/head/utility/hardhat = 3,
-		/obj/item/clothing/head/utility/hardhat/weldhat = 3,
+		/obj/item/clothing/head/utility/hardhat/welding = 3,
 		)
 	refill_canister = /obj/item/vending_refill/wardrobe/engi_wardrobe
 	payment_department = ACCOUNT_ENG
@@ -269,7 +269,8 @@
 		/obj/item/storage/backpack/satchel/explorer = 1,
 		/obj/item/clothing/glasses/regular = 2,
 		/obj/item/clothing/glasses/regular/jamjar = 1,
-		/obj/item/storage/bag/books = 1.
+		/obj/item/storage/bag/books = 1,
+		/obj/item/radio/headset/headset_srv = 2,
 		)
 	refill_canister = /obj/item/vending_refill/wardrobe/curator_wardrobe
 	payment_department = ACCOUNT_SRV
@@ -366,7 +367,8 @@
 		/obj/item/watertank/janitor = 1,
 		/obj/item/storage/belt/janitor = 2,
 		/obj/item/plunger = 2,
-	)
+		/obj/item/radio/headset/headset_srv = 2,
+		)
 	refill_canister = /obj/item/vending_refill/wardrobe/jani_wardrobe
 	default_price = PAYCHECK_CREW
 	extra_price = PAYCHECK_COMMAND * 0.8
@@ -405,6 +407,7 @@
 		/obj/item/clothing/under/rank/civilian/lawyer/black/skirt = 1,
 		/obj/item/clothing/shoes/laceup = 2,
 		/obj/item/clothing/accessory/lawyers_badge = 2,
+		/obj/item/radio/headset/headset_srv = 2,
 		)
 	refill_canister = /obj/item/vending_refill/wardrobe/law_wardrobe
 	payment_department = ACCOUNT_SRV
@@ -436,6 +439,7 @@
 		/obj/item/clothing/suit/chaplainsuit/monkrobeeast = 1,
 		/obj/item/clothing/head/rasta = 1,
 		/obj/item/clothing/suit/chaplainsuit/shrinehand = 1,
+		/obj/item/radio/headset/headset_srv = 2,
 		)
 	contraband = list(
 		/obj/item/toy/plush/ratplush = 1,
@@ -544,7 +548,7 @@
 		/obj/item/clothing/suit/jacket/det_suit/noir = 1,
 		/obj/item/clothing/head/fedora = 2,
 		/obj/item/clothing/gloves/color/black = 2,
-		/obj/item/clothing/gloves/color/latex = 2,
+		/obj/item/clothing/gloves/latex = 2,
 		/obj/item/clothing/under/rank/security/detective/disco = 1,
 		/obj/item/clothing/suit/jacket/det_suit/disco = 1,
 		/obj/item/clothing/shoes/discoshoes = 1,
