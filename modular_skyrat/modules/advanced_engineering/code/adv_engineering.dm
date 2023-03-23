@@ -1,5 +1,3 @@
-/obj/item/storage/belt/utility/full/powertools/ircd
-
 /obj/item/storage/belt/utility/full/powertools/ircd/PopulateContents()
 	new /obj/item/screwdriver/power(src)
 	new /obj/item/crowbar/power(src)
