@@ -47,9 +47,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 	inserted_id = used_item
 	icon_state = "timeclock_card"
 	update_static_data_for_all_viewers()
+	to_chat(user, span_boldwarning("Before clocking out, please return any piece of job gear that is important or limted to your workplace."))
 
 	if(command_job_check())
-		if(tgui_alert(user, "You are a member of command, make sure that you ahelp and return all job gear before clocking out. If you decide to clock back in later, you will need to go to the Head of Personnel. Do you wish to continue?", "[src]", list("Yes", "No")) != "Yes")
+		if(tgui_alert(user, "You are a member of command, make sure that you ahelp before clocking out. If you decide to clock back in later, you will need to go to the Head of Personnel. Do you wish to continue?", "[src]", list("Yes", "No")) != "Yes")
 			eject_inserted_id(user)
 
 	playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
@@ -86,6 +87,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 	var/datum/component/off_duty_timer/timer_component = inserted_id.AddComponent(/datum/component/off_duty_timer, CLOCK_IN_COOLDOWN)
 	if(command_job_check())
 		timer_component.hop_locked = TRUE
+		log_admin("[inserted_id.registered_name] clocked out as a head of staff")
 
 	var/current_assignment = inserted_id.assignment
 	var/datum/id_trim/job/current_trim = inserted_id.trim
@@ -220,6 +222,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 
 	hop_locked = FALSE
 	to_chat(user, span_notice("[parent] has been unlocked, the owner is now able to clock in."))
+	log_admin("[parent] has been unlocked by [user] and is now able to be clocked back in.")
+
 	return TRUE
 
 /obj/item/wallframe/time_clock
