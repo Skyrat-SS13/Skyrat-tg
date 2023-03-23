@@ -9,6 +9,10 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/engineering.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/engineering.dmi'
 
+/obj/item/clothing/under/rank/engineering/atmospheric_technician/skyrat
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/engineering.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/engineering.dmi'
+
 // Add a /obj/item/clothing/under/rank/engineering/atmospheric_technician/skyrat if you add uniforms for it
 
 /*
@@ -65,3 +69,24 @@
 	desc = "A gray naval suit with a lead-lined vest and a rank badge denoting the Officer of the Internal Engineering Division. Doesn't come with a death machine building guide."
 	name = "chief engineer's naval jumpsuit"
 	icon_state = "impce"
+
+/*
+*	ATMOS TECH
+*/
+/datum/armor/atmos_adv
+	melee = 30
+	bullet = 30
+	laser = 30
+	energy = 30
+	bomb = 30
+	fire = 70
+	acid = 70
+	wound = 20
+
+/obj/item/clothing/under/rank/engineering/atmospheric_technician/skyrat/utility/advanced
+	name = "advanced atmospherics uniform"
+	desc = "A jumpsuit worn by advanced atmospherics crews."
+	icon_state = "util_atmos"
+	armor_type = /datum/armor/atmos_adv
+	icon_state = "util_eng"
+	can_adjust = FALSE
