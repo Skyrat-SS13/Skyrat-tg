@@ -220,29 +220,6 @@ Possible to do for anyone motivated enough:
 	else if(in_range(user, src) || isobserver(user))
 		. += span_notice("The status display reads: Current projection range: <b>[holo_range]</b> units.")
 
-	//SKYRAT EDIT ADDITION BEGIN - AI QoL
-	var/obj/effect/overlay/holo_pad_hologram/holo
-	var/line
-	var/mob/living/silicon/ai/aiPlayer
-	for(var/mob/living/silicon/ai/master in masters)
-		if(masters[master])
-			holo = masters[master]
-	if(LAZYLEN(masters))
-		for(var/I in masters)
-			var/mob/living/master = I
-			var/mob/living/silicon/ai/AI = master
-			if(!istype(AI))
-				AI = null
-			else
-				aiPlayer = AI
-	if(LAZYLEN(masters))
-		if(holo.Impersonation)
-			. += holo.Impersonation.examine(user)
-		else
-			. += "<span class='info'>*---------*\nThis is <EM>[aiPlayer.name].</EM>\n*---------*</span>"
-			. += line
-	//SKYRAT EDIT ADDITION END - AI QoL
-
 /obj/machinery/holopad/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
 	default_unfasten_wrench(user, tool)
@@ -553,6 +530,7 @@ Possible to do for anyone motivated enough:
 		var/obj/effect/overlay/holo_pad_hologram/Hologram = new(loc)//Spawn a blank effect at the location.
 		if(AI)
 			Hologram.icon = AI.holo_icon
+			Hologram.Impersonation = AI //SKYRAT EDIT -- ADDITION -- Customization; puts the AI core as the impersonated mob so that the examine proc can be redirected
 			AI.eyeobj.setLoc(get_turf(src)) //ensure the AI camera moves to the holopad
 		else //make it like real life
 			Hologram.icon = user.icon
@@ -563,11 +541,12 @@ Possible to do for anyone motivated enough:
 			Hologram.add_atom_colour("#77abff", FIXED_COLOUR_PRIORITY)
 			Hologram.Impersonation = user
 
-		Hologram.mouse_opacity = MOUSE_OPACITY_TRANSPARENT//So you can't click on it.
+		//Hologram.mouse_opacity = MOUSE_OPACITY_TRANSPARENT//So you can't click on it. //SKYRAT EDIT -- Customization; Making holograms clickable/examinable
 		Hologram.layer = FLY_LAYER //Above all the other objects/mobs. Or the vast majority of them.
 		SET_PLANE_EXPLICIT(Hologram, ABOVE_GAME_PLANE, src)
 		Hologram.set_anchored(TRUE)//So space wind cannot drag it.
-		Hologram.name = "[user.name] (Hologram)"//If someone decides to right click.
+		// Hologram.name = "[user.name] (Hologram)"//If someone decides to right click. //SKYRAT EDIT -- ORIGINAL
+		Hologram.name = user.name //SKYRAT EDIT -- Make the name exact, so that the double-emotes are less jarring in the chat
 		Hologram.set_light(2) //hologram lighting
 		move_hologram()
 
@@ -630,15 +609,8 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		AI.current = src
 	SetLightsAndPower()
 	update_holoray(user, get_turf(loc))
-	RegisterSignal(user, COMSIG_MOB_EMOTE, PROC_REF(handle_hologram_emote)) // SKYRAT ADDITION - HOLOGRAM EMOTE MIRROR
 	return TRUE
 
-// SKYRAT ADDITION - HOLOGRAM EMOTE MIRROR
-/obj/machinery/holopad/proc/handle_hologram_emote(atom/movable/source, datum/emote/emote, action, type_override, message, intentional)
-	SIGNAL_HANDLER
-	for(var/mob/mob_viewer in viewers(world.view, src))
-		to_chat(mob_viewer, "<span class='emote'><b>[source]</b> [message]</span>")
-// SKYRAT ADDITION - END
 
 /obj/machinery/holopad/proc/clear_holo(mob/living/user)
 	qdel(masters[user]) // Get rid of user's hologram
@@ -670,7 +642,6 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	qdel(holorays[user])
 	LAZYREMOVE(holorays, user)
 	SetLightsAndPower()
-	UnregisterSignal(user, COMSIG_MOB_EMOTE) // SKYRAT ADDITION - HOLOGRAM EMOTE MIRROR
 	return TRUE
 
 //Try to transfer hologram to another pad that can project on T
