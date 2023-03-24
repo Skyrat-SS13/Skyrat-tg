@@ -192,6 +192,7 @@
 /datum/bodypart_overlay/mutant/horns/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if((human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR))
 		return FALSE
+
 	return TRUE
 
 /datum/bodypart_overlay/mutant/horns/get_global_feature_list()
@@ -372,6 +373,7 @@
 		overlay.color = null
 
 /datum/bodypart_overlay/mutant/pod_hair/can_draw_on_bodypart(mob/living/carbon/human/human)
-	if(!(human.head?.flags_inv & HIDEHAIR) && !(human.wear_mask?.flags_inv & HIDEHAIR))
-		return TRUE
-	return FALSE
+	if((human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR))
+		return FALSE
+
+	return TRUE
