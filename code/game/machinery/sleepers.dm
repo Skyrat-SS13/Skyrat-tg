@@ -94,7 +94,11 @@
 	if (!state_open)
 		container_resist_act(user)
 
+<<<<<<< HEAD
 /obj/machinery/sleeper/open_machine()
+=======
+/obj/machinery/sleeper/open_machine(drop = TRUE, density_to_set = FALSE)
+>>>>>>> fcdbb85fc97 (Fixes machines not releasing their contents when opened (such as mobs), when they otherwise should. (#74215))
 	if(!state_open && !panel_open)
 		flick("[initial(icon_state)]-anim", src)
 	return ..()

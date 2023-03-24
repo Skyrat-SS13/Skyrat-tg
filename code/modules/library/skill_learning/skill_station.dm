@@ -48,7 +48,11 @@
 /obj/machinery/skill_station/relaymove(mob/living/user, direction)
 	open_machine()
 
+<<<<<<< HEAD
 /obj/machinery/skill_station/open_machine()
+=======
+/obj/machinery/skill_station/open_machine(drop = TRUE, density_to_set = FALSE)
+>>>>>>> fcdbb85fc97 (Fixes machines not releasing their contents when opened (such as mobs), when they otherwise should. (#74215))
 	. = ..()
 	interrupt_operation()
 
