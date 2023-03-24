@@ -24,7 +24,7 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/obj/machinery/power/apc/target_apc = target
 	var/mob/living/carbon/human/ipc = user
-	var/obj/item/organ/internal/stomach/synth/cell = ipc.internal_organs_slot[ORGAN_SLOT_STOMACH]
+	var/obj/item/organ/internal/stomach/synth/cell = ipc.organs_slot[ORGAN_SLOT_STOMACH]
 
 	if(!cell)
 		to_chat(ipc, span_warning("You try to siphon energy from the [target_apc], but you have no stomach! How are you still standing?"))
