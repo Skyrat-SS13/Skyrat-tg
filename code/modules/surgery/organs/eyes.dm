@@ -90,7 +90,7 @@
 		owner.dna?.species?.handle_body(affected_human) //updates eye icon
 
 /obj/item/organ/internal/eyes/Remove(mob/living/carbon/eye_owner, special = FALSE)
-	..()
+	. = ..()
 	if(ishuman(eye_owner))
 		var/mob/living/carbon/human/human_owner = eye_owner
 		if(initial(eye_color_left))
@@ -149,6 +149,12 @@
 		for(var/mutable_appearance/overlay in overlays)
 			overlay.pixel_x += offset[OFFSET_X]
 			overlay.pixel_y += offset[OFFSET_Y]
+
+	// SKYRAT EDIT START - Customization (darn synths I swear)
+	if(eye_icon_state == "None")
+		eye_left.alpha = 0
+		eye_right.alpha = 0
+	// SKYRAT EDIT END
 
 	return overlays
 
@@ -339,7 +345,7 @@
 	return
 
 /obj/item/organ/internal/eyes/robotic/flashlight/Insert(mob/living/carbon/victim, special = FALSE, drop_if_replaced = FALSE)
-	..()
+	. = ..()
 	if(!eye)
 		eye = new /obj/item/flashlight/eyelight()
 	eye.on = TRUE
@@ -353,7 +359,7 @@
 	eye.update_brightness(victim)
 	eye.forceMove(src)
 	victim.cure_blind(FLASHLIGHT_EYES)
-	..()
+	return ..()
 
 // Welding shield implant
 /obj/item/organ/internal/eyes/robotic/shield

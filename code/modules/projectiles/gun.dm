@@ -118,7 +118,10 @@
 	if(!pinless)
 		if(pin)
 			. += "It has \a [pin] installed."
-			. += span_info("[pin] looks like it could be removed with some <b>tools</b>.")
+			if(pin.pin_removable)
+				. += span_info("[pin] looks like [pin.p_they()] could be removed with some <b>tools</b>.")
+			else
+				. += span_info("[pin] looks like [pin.p_theyre()] firmly locked in, [pin.p_they()] looks impossible to remove.")
 		else
 			. += "It doesn't have a <b>firing pin</b> installed, and won't fire."
 
@@ -452,7 +455,7 @@
 	if(bayonet && can_bayonet) //if it has a bayonet, and the bayonet can be removed
 		return remove_bayonet(user, I)
 
-	else if(pin && user.is_holding(src))
+	else if(pin?.pin_removable && user.is_holding(src))
 		user.visible_message(span_warning("[user] attempts to remove [pin] from [src] with [I]."),
 		span_notice("You attempt to remove [pin] from [src]. (It will take [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)"), null, 3)
 		if(I.use_tool(src, user, FIRING_PIN_REMOVAL_DELAY, volume = 50))
@@ -469,7 +472,7 @@
 		return
 	if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
-	if(pin && user.is_holding(src))
+	if(pin?.pin_removable && user.is_holding(src))
 		user.visible_message(span_warning("[user] attempts to remove [pin] from [src] with [I]."),
 		span_notice("You attempt to remove [pin] from [src]. (It will take [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)"), null, 3)
 		if(I.use_tool(src, user, FIRING_PIN_REMOVAL_DELAY, 5, volume = 50))
@@ -486,7 +489,7 @@
 		return
 	if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
-	if(pin && user.is_holding(src))
+	if(pin?.pin_removable && user.is_holding(src))
 		user.visible_message(span_warning("[user] attempts to remove [pin] from [src] with [I]."),
 		span_notice("You attempt to remove [pin] from [src]. (It will take [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)"), null, 3)
 		if(I.use_tool(src, user, FIRING_PIN_REMOVAL_DELAY, volume = 50))

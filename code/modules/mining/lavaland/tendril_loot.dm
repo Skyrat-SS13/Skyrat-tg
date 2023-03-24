@@ -561,8 +561,8 @@
 	var/list/radial_wings = list()
 	var/list/name2type = list()
 	for(var/obj/item/organ/external/wings/functional/possible_type as anything in wing_types)
-		//var/datum/sprite_accessory/accessory = GLOB.wings_list[possible_type.name]	//Gets the datum for every wing this species has, then prompts user with a radial menu //ORIGINAL
-		var/datum/sprite_accessory/accessory = GLOB.sprite_accessories["wings"][possible_type.name] //SKYRAT EDIT CHANGE
+		var/datum/sprite_accessory/accessory = initial(possible_type.sprite_accessory_override) //get the type
+		accessory = GLOB.sprite_accessories[initial(accessory.key)][initial(accessory.name)] //SKYRAT EDIT CHANGE - ORIGINAL: accessory = GLOB.wings_list[initial(accessory.name)] //get the singleton instance
 		var/image/img = image(icon = accessory.icon, icon_state = "m_wingsopen_[accessory.icon_state]_BEHIND") //Process the HUD elements
 		img.transform *= 0.5
 		img.pixel_x = -32

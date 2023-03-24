@@ -14,7 +14,7 @@
 
 /datum/opposing_force_equipment/pistol/aps
 	item_type = /obj/item/gun/ballistic/automatic/pistol/aps
-	admin_note = "WARNING: Roughly on-par with the .357."
+	admin_note = "WARNING: Roughly on-par with the .357, can use AP rounds."
 
 /datum/opposing_force_equipment/pistol/g357
 	item_type = /obj/item/gun/ballistic/revolver

@@ -66,13 +66,13 @@
 	var/shapeshift_text = "gains a look of concentration while standing perfectly still. Their body seems to shift and starts getting more goo-like."
 	///List containing all of the avalible parts
 	var/static/list/available_choices
-  
+
 /datum/action/innate/alter_form/New(Target)
 	. = ..()
 	if(length(available_choices))
 		return
 
-	available_choices = GLOB.sprite_accessories.Copy()
+	available_choices = deep_copy_list(GLOB.sprite_accessories)
 	for(var/parts_list in available_choices)
 		for(var/parts in available_choices[parts_list])
 			var/datum/sprite_accessory/part = available_choices[parts_list][parts]

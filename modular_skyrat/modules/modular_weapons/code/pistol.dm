@@ -53,7 +53,7 @@
 	ammo_type = /obj/item/ammo_casing/c42x30mm
 	caliber = CALIBER_42X30MM
 	max_ammo = 16
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_snub/ap
 	ammo_type = /obj/item/ammo_casing/c42x30mm/ap
@@ -79,7 +79,7 @@
 	ammo_type = /obj/item/ammo_casing/c12mm
 	caliber = CALIBER_12MM
 	max_ammo = 8
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/empty
 	start_empty = TRUE
