@@ -91,7 +91,7 @@
 	///What programs are currently loaded onto the NIF?
 	var/list/loaded_nifsofts = list()
 	///What programs come already installed on the NIF?
-	var/list/preinstalled_nifsofts = list()
+	var/list/preinstalled_nifsofts = list(/datum/nifsoft/soul_poem)
 	///This shows up in the NIF settings screen as a way to ICly display lore.
 	var/manufacturer_notes = "There is no data currently avalible for this product."
 
@@ -109,16 +109,9 @@
 	. = ..()
 
 	durability = max_durability
-	loaded_nifsofts = preinstalled_nifsofts
-
-	for(var/datum/nifsoft/preinstalled_nifsoft as anything in preinstalled_nifsofts)
-		install_nifsoft(preinstalled_nifsoft)
-
 	power_level = max_power_level
 
 /obj/item/organ/internal/cyberimp/brain/nif/Destroy()
-
-
 	if(linked_mob)
 		UnregisterSignal(linked_mob, COMSIG_LIVING_DEATH, PROC_REF(damage_on_death))
 
@@ -155,6 +148,10 @@
 	linked_mob.AddComponent(/datum/component/nif_examine)
 	RegisterSignal(linked_mob, COMSIG_LIVING_DEATH, PROC_REF(damage_on_death))
 
+	if(preinstalled_nifsofts)
+		send_message("Loading preinstalled NIFSofts, please wait...")
+		addtimer(CALLBACK(src, PROC_REF(install_preinstalled_nifsofts)), 3 SECONDS)
+
 /obj/item/organ/internal/cyberimp/brain/nif/Remove(mob/living/carbon/organ_owner, special = FALSE)
 	. = ..()
 
@@ -167,6 +164,16 @@
 
 	if(linked_mob)
 		UnregisterSignal(linked_mob, COMSIG_LIVING_DEATH, PROC_REF(damage_on_death))
+
+///Installs preinstalled NIFSofts
+/obj/item/organ/internal/cyberimp/brain/nif/proc/install_preinstalled_nifsofts()
+	if(!preinstalled_nifsofts)
+		return FALSE
+
+	for(var/datum/nifsoft/preinstalled_nifsoft as anything in preinstalled_nifsofts)
+		new preinstalled_nifsoft(src)
+
+	return TRUE
 
 /obj/item/organ/internal/cyberimp/brain/nif/process(delta_time)
 	. = ..()

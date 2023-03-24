@@ -43,8 +43,10 @@
 	var/rewards_points_rate = 0.5
 	/// Can this item be purchased with reward points?
 	var/rewards_points_eligible = TRUE
+	///Does the NIFSoft have anything that is saved cross-round?
+	var/persistence = FALSE
 
-/datum/nifsoft/New(obj/item/organ/internal/cyberimp/brain/nif/recepient_nif, no_rewards_points = FALSE)
+/datum/nifsoft/New(obj/item/organ/internal/cyberimp/brain/nif/recepient_nif)
 	. = ..()
 
 	if(no_rewards_points) //This is mostly so that credits can't be farmed through printed or stolen NIFSoft disks
@@ -56,6 +58,7 @@
 	if(!recepient_nif.install_nifsoft(src))
 		qdel(src)
 
+	load_persistence_data()
 
 /datum/nifsoft/Destroy()
 	if(active)
@@ -128,6 +131,9 @@
 
 	program_name = scrambled_name
 	addtimer(CALLBACK(src, .proc/restore_name), 60 SECONDS)
+
+/datum/nifsoft/ui_state(mob/user)
+	return GLOB.conscious_state
 
 /// A disk that can upload NIFSofts to a recpient with a NIFSoft installed.
 /obj/item/disk/nifsoft_uploader
