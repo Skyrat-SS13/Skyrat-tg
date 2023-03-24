@@ -17,7 +17,6 @@
 		/obj/item/mod/module/flashlight,
 		/obj/item/mod/module/t_ray,
 		/obj/item/mod/module/jetpack/advanced,
-		/obj/item/mod/module/magboot/advanced,
 		/obj/item/mod/module/visor/meson,
 	)
 	default_pins = list(
