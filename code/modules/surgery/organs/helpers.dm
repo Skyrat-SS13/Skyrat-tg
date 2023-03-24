@@ -27,19 +27,11 @@
 	return
 
 /mob/living/carbon/getorgan(typepath)
-<<<<<<< HEAD
-	return (locate(typepath) in internal_organs + external_organs)
-
-/mob/living/carbon/getorganszone(zone, include_children = FALSE)
-	var/valid_organs = list()
-	for(var/obj/item/organ/organ as anything in internal_organs + external_organs)
-=======
 	return (locate(typepath) in organs)
 
 /mob/living/carbon/getorganszone(zone, include_children = FALSE)
 	var/valid_organs = list()
 	for(var/obj/item/organ/organ as anything in organs)
->>>>>>> 9843c236572 (Replaces internal_organs with organs (#73918))
 		if(zone == organ.zone)
 			valid_organs += organ
 		else if(include_children && zone == deprecise_zone(organ.zone))
@@ -47,11 +39,5 @@
 	return valid_organs
 
 /mob/living/carbon/getorganslot(slot)
-<<<<<<< HEAD
-	. = internal_organs_slot[slot]
-	if(!.)
-		return external_organs_slot[slot]
-=======
 	. = organs_slot[slot]
->>>>>>> 9843c236572 (Replaces internal_organs with organs (#73918))
 

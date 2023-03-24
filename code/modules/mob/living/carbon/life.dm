@@ -492,11 +492,7 @@
 	if(stat == DEAD)
 		if(reagents.has_reagent(/datum/reagent/toxin/formaldehyde, 1) || reagents.has_reagent(/datum/reagent/cryostylane)) // No organ decay if the body contains formaldehyde.
 			return
-<<<<<<< HEAD
-		for(var/obj/item/organ/internal/organ as anything in internal_organs)
-=======
 		for(var/obj/item/organ/internal/organ in organs)
->>>>>>> 9843c236572 (Replaces internal_organs with organs (#73918))
 			// On-death is where organ decay is handled
 			organ?.on_death(delta_time, times_fired) // organ can be null due to reagent metabolization causing organ shuffling
 			// We need to re-check the stat every organ, as one of our others may have revived us
