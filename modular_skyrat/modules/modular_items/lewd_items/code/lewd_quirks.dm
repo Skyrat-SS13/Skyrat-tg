@@ -271,7 +271,11 @@
 	for(var/mob/living/carbon/human/iterated_mob in oview(owner, 4))
 		if(!isliving(iterated_mob)) //ghosts ain't people
 			continue
-		if(istype(iterated_mob) && iterated_mob.pain >= 10)
+		if(!istype(iterated_mob)) //only count mobs of type mob/living/human/...
+			continue
+		if(iterated_mob.stat == DEAD) //don't count dead targets either
+			continue
+		if(iterated_mob.pain >= 10)
 			return TRUE
 	return FALSE
 

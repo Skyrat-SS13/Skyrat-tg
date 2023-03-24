@@ -179,6 +179,9 @@
 
 /*	//SKYRAT EDIT - MOVED TO modular_skyrat/master_files/code/_onclick/cyborg.dm
 /atom/proc/attack_robot(mob/user)
+	if (SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_ROBOT, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
+		return
+
 	attack_ai(user)
 	return
 */	//SKYRAT EDIT END
@@ -191,4 +194,7 @@
  * * modifiers The list of the custom click modifiers
  */
 /atom/proc/attack_robot_secondary(mob/user, list/modifiers)
+	if (SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_ROBOT_SECONDARY, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
+		return
+
 	return attack_ai_secondary(user, modifiers)
