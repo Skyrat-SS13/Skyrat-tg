@@ -35,7 +35,7 @@
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings, GLOB.moth_markings_list)
 	*/ //SKYRAT EDIT REMOVAL END
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/wings/moth, GLOB.moth_wings_list) // SKYRAT EDIT ADDITION - Customization
-	init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair, GLOB.pod_hair_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair, GLOB.pod_hair_list, add_blank = TRUE) // SKYRAT EDIT - Customization - ORIGINAL: init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair, GLOB.pod_hair_list)
 
 	//SKYRAT EDIT ADDITION BEGIN
 	//Scream types
@@ -84,8 +84,8 @@
 	for(var/path in subtypesof(/datum/crafting_recipe))
 		if(ispath(path, /datum/crafting_recipe/stack))
 			continue
-		var/is_cooking = ispath(path, /datum/crafting_recipe/food/)
 		var/datum/crafting_recipe/recipe = new path()
+		var/is_cooking = (recipe.category in GLOB.crafting_category_food)
 		recipe.reqs = sort_list(recipe.reqs, GLOBAL_PROC_REF(cmp_crafting_req_priority))
 		if(recipe.name != "" && recipe.result)
 			if(is_cooking)

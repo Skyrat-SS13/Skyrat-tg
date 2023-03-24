@@ -233,5 +233,5 @@
 	return list(placeholder_lore)
 
 /datum/species/ghoul/prepare_human_for_preview(mob/living/carbon/human/human)
-	human.update_mutant_bodyparts(TRUE)
+	regenerate_organs(human, src, visual_only = TRUE)
 	human.update_body(TRUE)

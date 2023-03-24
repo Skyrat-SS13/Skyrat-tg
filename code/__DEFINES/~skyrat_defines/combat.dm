@@ -106,6 +106,7 @@
 		Paralyze((paralyze_amount ? paralyze_amount : stamina_damage))
 
 #define HEADSMASH_BLOCK_ARMOR 20
+#define SUPLEX_TIMER 3 SECONDS
 
 //TODO: Add a grab state check on the do_afters
 /datum/species/proc/try_grab_maneuver(mob/living/carbon/human/user, mob/living/carbon/human/target, modifiers)
@@ -115,53 +116,25 @@
 	. = FALSE
 	if(HAS_TRAIT(user, TRAIT_PACIFISM)) //They're mostly violent acts
 		return
-	if(user.combat_mode)
+	// everything's on RMB goodbye LMB headslams we hardly knew ye
+	// RMB MODIFIERS: CHEST = SUPLEX, LIMBS = DISLOCATE, HEAD = HEADSLAM
+	// Chances are, no matter what you do on disarm you're gonna break your grip by accident because of shoving, let make a good use of disarm intent for maneuvers then
+	if(modifiers && modifiers[RIGHT_CLICK])
 		switch(user.zone_selected)
 			if(BODY_ZONE_HEAD)
-				//Head slam
 				if(target.body_position == LYING_DOWN)
 					. = TRUE
-					var/time_doing = 4 SECONDS
-					if(target.stat != CONSCIOUS)
-						time_doing = 2 SECONDS
-						target.visible_message(span_danger("[user.name] holds [target.name]'s head tight and slams it down!"), ignored_mobs=user)
-						to_chat(user, span_danger("You grasp [target.name]'s head and slam it down!"))
-					else
-						target.visible_message(span_danger("[user.name] holds [target.name]'s head and tries to overpower [target.p_them()]!"), \
-							span_userdanger("You struggle as [user.name] holds your head and tries to overpower you!"), ignored_mobs=user)
-						to_chat(user, span_danger("You grasp [target.name]'s head and try to overpower [target.p_them()]..."))
-					user.changeNext_move(time_doing)
-					if(do_after(user, time_doing, target))
-						var/armor_block = target.run_armor_check(affecting, MELEE)
-						var/head_knock = FALSE
-						if(armor_block < HEADSMASH_BLOCK_ARMOR)
-							head_knock = TRUE
-
-						target.visible_message(span_danger("[user.name] violently slams [target.name]'s head into the floor!"), \
-							span_userdanger("[user.name] slams your head against the floor!"), ignored_mobs=user)
-						to_chat(user, span_danger("You slam [target.name] head against the floor!"))
-
-						//Check to see if our head is protected by at least 20 melee armor
-						if(head_knock)
-							target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 15)
-
-						target.apply_damage(15, BRUTE, affecting, armor_block)
-						playsound(target, 'sound/effects/hit_kick.ogg', 70)
-						log_combat(user, target, "headsmashes", "against the floor")
-
-	//Chances are, no matter what you do on disarm you're gonna break your grip by accident because of shoving, let make a good use of disarm intent for maneuvers then
-	if(modifiers && modifiers["right"])
-		switch(user.zone_selected)
+					try_headslam(user, target, affecting)
 			if(BODY_ZONE_CHEST)
 				if(istype(user.mind.martial_art, /datum/martial_art/cqc)) //If you know CQC, You can't suplex and instead have the ability to use the chokehold, Sorry.
 					return
 				//Suplex!
 				. = TRUE
-				user.changeNext_move(3 SECONDS)
 				target.visible_message(span_danger("[user.name] holds [target.name] tight and starts lifting [target.p_them()] up!"), \
 						span_userdanger("[user.name] holds you tight and lifts you up!"), ignored_mobs=user)
 				to_chat(user, span_danger("You hold [target.name] tight and lift [target.p_them()] up..."))
-				if(do_after(user, 3 SECONDS, target))
+				user.changeNext_move(SUPLEX_TIMER)
+				if(do_after(user, SUPLEX_TIMER, target))
 					var/move_dir = get_dir(target, user)
 					var/moved_turf = get_turf(target)
 					for(var/i in 1 to 2)
@@ -178,11 +151,12 @@
 					target.throw_at(moved_turf, 1, 1)
 					target.StaminaKnockdown(80)
 					target.Paralyze(2 SECONDS)
+					// feels like there should be some funny brute here but iunno
 					log_combat(user, target, "suplexes", "down on the ground (knocking down both)")
 			else
 				var/datum/wound/blunt/blute_wound = affecting.get_wound_type(/datum/wound/blunt)
 				if(blute_wound && blute_wound.severity >= WOUND_SEVERITY_MODERATE)
-					//At this point we'll be doing the medical action that's not a grab manevour
+					//At this point we'll be doing the medical action that's not a grab maneuver
 					return
 				//Dislocation
 				. = TRUE
@@ -201,4 +175,37 @@
 		user.changeNext_move(CLICK_CD_MELEE)
 	return
 
+/// Attempts to perform a headslam, with the user slamming target's head into the floor. (Does not account for the potential nonexistence of aforementioned floor, e.g. space.)
+/datum/species/proc/try_headslam(mob/living/carbon/human/user, mob/living/carbon/human/target, obj/item/bodypart/affecting)
+	var/time_doing = 4 SECONDS
+	if(target.stat != CONSCIOUS)
+		time_doing = 2 SECONDS
+		target.visible_message(span_danger("[user] holds [target]'s head tightly..."), ignored_mobs = user)
+		to_chat(user, span_danger("You grasp [target]'s head to prepare to slam it down..."))
+	else
+		target.visible_message(span_danger("[user] holds [target]'s head and tries to overpower [target.p_them()]!"), \
+			span_userdanger("You struggle as [user] holds your head and tries to overpower you!"), ignored_mobs = user)
+		to_chat(user, span_danger("You grasp [target]'s head and try to overpower [target.p_them()]..."))
+	user.changeNext_move(time_doing)
+	if(!do_after(user, time_doing, target))
+		return
+	var/armor_block = target.run_armor_check(affecting, MELEE)
+	var/head_knock = FALSE
+	// Check to see if our head is protected by at least HEADSMASH_BLOCK_ARMOR (20 melee armor)
+	if(armor_block < HEADSMASH_BLOCK_ARMOR)
+		head_knock = TRUE
+
+	target.visible_message(span_danger("[user.name] violently slams [target.name]'s head into the floor!"), \
+		span_userdanger("[user.name] slams your head against the floor!"), ignored_mobs = user)
+	to_chat(user, span_danger("You slam [target.name] head against the floor!"))
+
+	// wound bonus because if you're doing this you probably really don't like the other guy so you're looking forward to inconveniencing them (with a fracture)
+	var/fun_times_at_the_headbash_factory = (head_knock ? 8 : 3)
+	if(head_knock)
+		target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 15)
+	target.apply_damage(15, BRUTE, affecting, armor_block, wound_bonus = fun_times_at_the_headbash_factory, bare_wound_bonus = fun_times_at_the_headbash_factory)
+	playsound(target, 'sound/effects/hit_kick.ogg', 70)
+	log_combat(user, target, "headsmashes", "against the floor")
+
 #undef HEADSMASH_BLOCK_ARMOR
+#undef SUPLEX_TIMER

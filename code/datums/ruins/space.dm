@@ -20,7 +20,6 @@
 	name = "Asteroid 1"
 	description = "I-spy with my little eye, something beginning with R."
 
-
 /datum/map_template/ruin/space/asteroid2
 	id = "asteroid2"
 	suffix = "asteroid2.dmm"
@@ -314,15 +313,20 @@ suffix = "whiteshipruin_box.dmm"*/
 	suffix = "clericden.dmm"
 	name = "Cleric's Den"
 	description = "Once part of a larger monastery, this holy order of long dead clerics practiced far less non-violence than they preached. Appears to have been untouched by looters, however. Odd."
-//SKYRAT EDIT REMOVAL BEGIN - MAPPING
-/*
+
 /datum/map_template/ruin/space/forgottenship
 	id = "forgottenship"
 	suffix = "forgottenship.dmm"
 	name = "Syndicate Forgotten Ship"
 	description = "Seemingly abandoned ship went of course right into NT controlled space. It seems that malfunction caused most systems to turn off, except for sleepers."
-*/
-//SKYRAT EDIT REMOVAL END
+
+/datum/map_template/ruin/space/old_syndie_infiltrator
+	id = "old_infiltrator"
+	suffix = "old_infiltrator.dmm"
+	name = "Abandoned Infiltrator"
+	description = "Only one in five Gorlex Marauder strike forces return from their regular raids into Nanotrasen space. \
+		For the other four... well, their ship doesn't just disappear when their target evacuates."
+
 /datum/map_template/ruin/space/hellfactory
 	id = "hellfactory"
 	suffix = "hellfactory.dmm"
@@ -352,3 +356,15 @@ suffix = "whiteshipruin_box.dmm"*/
 	suffix = "dangerous_research.dmm"
 	name = "Alternate Sciences Research Center"
 	description = "When you're messing with the occult, who knows what you're going to get?"
+
+/datum/map_template/ruin/space/the_faceoff
+	id = "the_faceoff"
+	suffix = "the_faceoff.dmm"
+	name = "The Faceoff"
+	description = "What do you get when a meeting of the enemy corporations get crashed?"
+
+/datum/map_template/ruin/space/prey_pod
+	id = "prey"
+	suffix = "prey_pod.dmm"
+	name = "Crashed Mimic Escape Pod"
+	description = "A pod with a person who has died to a mimic."

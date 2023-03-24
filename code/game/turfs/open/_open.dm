@@ -38,6 +38,19 @@
 	. = ..()
 	update_visuals()
 
+/**
+ * Replace an open turf with another open turf while avoiding the pitfall of replacing plating with a floor tile, leaving a hole underneath.
+ * This replaces the current turf if it is plating and is passed plating, is tile and is passed tile.
+ * It places the new turf on top of itself if it is plating and is passed a tile.
+ * It also replaces the turf if it is tile and is passed plating, essentially destroying the over turf.
+ * Flags argument is passed directly to ChangeTurf or PlaceOnTop
+ */
+/turf/open/proc/replace_floor(turf/open/new_floor_path, flags)
+	if (!overfloor_placed && initial(new_floor_path.overfloor_placed))
+		PlaceOnTop(new_floor_path, flags = flags)
+		return
+	ChangeTurf(new_floor_path, flags = flags)
+
 /turf/open/indestructible
 	name = "floor"
 	desc = "The floor you walk on. It looks near-impervious to damage."
@@ -169,15 +182,7 @@
 	update_visuals()
 
 	current_cycle = time
-
 	init_immediate_calculate_adjacent_turfs()
-	for(var/turf/open/enemy_tile as anything in atmos_adjacent_turfs)
-		if(air.compare(enemy_tile.return_air()))
-			//testing("Active turf found. Return value of compare(): [is_active]")
-			excited = TRUE
-			SSair.active_turfs += src
-			// No sense continuing to iterate
-			return
 
 /turf/open/GetHeatCapacity()
 	. = air.heat_capacity()
@@ -191,7 +196,7 @@
 
 /turf/open/proc/freeze_turf()
 	for(var/obj/I in contents)
-		if(!HAS_TRAIT(I, TRAIT_FROZEN) && !(I.obj_flags & FREEZE_PROOF))
+		if(!HAS_TRAIT(I, TRAIT_FROZEN) && !(I.resistance_flags & FREEZE_PROOF))
 			I.AddElement(/datum/element/frozen)
 
 	for(var/mob/living/L in contents)

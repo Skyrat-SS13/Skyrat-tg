@@ -42,7 +42,7 @@
 		. += span_notice("It seems like you could use an <b>empty hand</b> to remove the magazine.")
 
 /obj/item/gun/ballistic/automatic/mg34/attack_hand_secondary(mob/user, list/modifiers)
-	if(!user.canUseTopic(src))
+	if(!user.can_perform_action(src))
 		return
 	cover_open = !cover_open
 	to_chat(user, span_notice("You [cover_open ? "open" : "close"] [src]'s cover."))
@@ -214,4 +214,4 @@
 	ammo_type = /obj/item/ammo_casing/realistic/a792x57
 	caliber = "a792x57"
 	max_ammo = 150 // It's a lot, but the gun overheats.
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY

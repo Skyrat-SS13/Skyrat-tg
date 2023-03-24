@@ -13,7 +13,7 @@
 
 		alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER
 		user.update_worn_head()
-			
+
 /obj/item/clothing/head/dropped(mob/living/carbon/human/user)
 	. = ..()
 	alternate_worn_layer = initial(alternate_worn_layer)
@@ -33,7 +33,7 @@
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
 
 //Re-adds HIDESNOUT to whatever needs it, and marks them CLOTHING_NO_VARIATION so they don't look for muzzled sprites
-//ORION TODO - this needs a better method, can we do this as a SQUISH thing like digitigrade?
+//TODO - this needs a better method, can we do this as a SQUISH thing like digitigrade?
 /obj/item/clothing/head/helmet/space/changeling
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	supports_variations_flags = CLOTHING_NO_VARIATION
