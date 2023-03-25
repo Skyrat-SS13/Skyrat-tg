@@ -90,7 +90,7 @@
 		owner.dna?.species?.handle_body(affected_human) //updates eye icon
 
 /obj/item/organ/internal/eyes/Remove(mob/living/carbon/eye_owner, special = FALSE)
-	..()
+	. = ..()
 	if(ishuman(eye_owner))
 		var/mob/living/carbon/human/human_owner = eye_owner
 		if(initial(eye_color_left))
@@ -138,17 +138,17 @@
 		eye_left.overlays += emissive_appearance(eye_left.icon, eye_left.icon_state, parent, alpha = eye_left.alpha)
 		eye_right.overlays += emissive_appearance(eye_right.icon, eye_right.icon_state, parent, alpha = eye_right.alpha)
 
-	// Cry emote overlay
-	if (HAS_TRAIT(parent, TRAIT_CRYING)) // Caused by the *cry emote
-		var/mutable_appearance/tears_overlay = mutable_appearance('icons/mob/species/human/human_face.dmi', "tears", -BODY_ADJ_LAYER)
-		tears_overlay.color = COLOR_DARK_CYAN
-		overlays += tears_overlay
-
 	if(OFFSET_FACE in parent.dna?.species.offset_features)
 		var/offset = parent.dna.species.offset_features[OFFSET_FACE]
 		for(var/mutable_appearance/overlay in overlays)
 			overlay.pixel_x += offset[OFFSET_X]
 			overlay.pixel_y += offset[OFFSET_Y]
+
+	// SKYRAT EDIT START - Customization (darn synths I swear)
+	if(eye_icon_state == "None")
+		eye_left.alpha = 0
+		eye_right.alpha = 0
+	// SKYRAT EDIT END
 
 	return overlays
 
@@ -339,7 +339,7 @@
 	return
 
 /obj/item/organ/internal/eyes/robotic/flashlight/Insert(mob/living/carbon/victim, special = FALSE, drop_if_replaced = FALSE)
-	..()
+	. = ..()
 	if(!eye)
 		eye = new /obj/item/flashlight/eyelight()
 	eye.on = TRUE
@@ -353,7 +353,7 @@
 	eye.update_brightness(victim)
 	eye.forceMove(src)
 	victim.cure_blind(FLASHLIGHT_EYES)
-	..()
+	return ..()
 
 // Welding shield implant
 /obj/item/organ/internal/eyes/robotic/shield
