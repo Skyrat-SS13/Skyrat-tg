@@ -110,10 +110,11 @@
 
 /// Skyrat change - alt-clicking a human as another human while grappling them tightly makes you try for grappling-based maneuvers.
 /mob/living/carbon/human/AltClick(mob/user)
-	if(ishuman(user))
-		var/mob/living/carbon/human/human_user = user
-		if(human_user != src && human_user.combat_mode && human_user.dna.species.try_grab_maneuver(user, src))
-			return
+	if(!ishuman(user))
+		return ..()
+	var/mob/living/carbon/human/human_user = user
+	if(human_user == src || !human_user.combat_mode || !human_user.dna.species.try_grab_maneuver(user, src))
+		return FALSE
 	. = ..()
 
 /// State check for grab maneuver - because you can't logically suplex a man if you've stopped grappling them.
@@ -123,7 +124,7 @@
 /// Tries a grab maneuver - suplex, limb dislocation, or headslam depending on targeted limb.
 /datum/species/proc/try_grab_maneuver(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(!grab_maneuver_state_check(user, target))
-		return
+		return FALSE
 	// psst, future coder - if you're adding more precise interactions, e.g. eye gouging/strangling, you're gonna need to make this less precise!
 	// just remove the deprecise_zone() call. account for the specifics after!
 	var/obj/item/bodypart/affecting = target.get_bodypart(deprecise_zone(user.zone_selected))
@@ -135,14 +136,15 @@
 	switch(deprecise_zone(user.zone_selected))
 		if(BODY_ZONE_HEAD)
 			if(!(target.body_position == LYING_DOWN))
-				return
+				target.balloon_alert(user, "not floored!")
+				return FALSE
 			. = TRUE
 			try_headslam(user, target, affecting)
 		if(BODY_ZONE_CHEST)
 			if(istype(user.mind.martial_art, /datum/martial_art/cqc))
 			// If you know CQC, You can't suplex and instead have the ability to use the chokehold, Sorry.
 			// Sleeping people on demand is stronger anyway.
-				return
+				return FALSE
 			// Suplex!
 			. = TRUE
 			try_suplex(user, target)
@@ -150,7 +152,7 @@
 			var/datum/wound/blunt/blute_wound = affecting.get_wound_type(/datum/wound/blunt)
 			if(blute_wound && blute_wound.severity >= WOUND_SEVERITY_MODERATE)
 				blute_wound.try_handling(user) // handle it like any other dislocation (if you're still in combat mode, you will attempt to make it worse)
-				return
+				return TRUE
 			// Dislocate!
 			. = TRUE
 			try_dislocate(user, target, affecting)
@@ -166,9 +168,9 @@
 	to_chat(user, span_danger("You hold [target.name] tight and lift [target.p_them()] up..."))
 	user.changeNext_move(SUPLEX_TIMER)
 	if(!do_after(user, SUPLEX_TIMER, target) || !grab_maneuver_state_check(user, target))
-		return
+		return FALSE
 	var/move_dir = get_dir(target, user)
-	var/moved_turf = get_turf(target)
+	var/turf/moved_turf = get_turf(target)
 	for(var/i in 1 to 2)
 		var/turf/next_turf = get_step(moved_turf, move_dir)
 		if(IS_OPAQUE_TURF(next_turf))
@@ -225,12 +227,13 @@
 			span_userdanger("[user.name] twists your [affecting.name] violently!"), ignored_mobs=user)
 	to_chat(user, span_danger("You start twisting [target.name]'s [affecting.name] violently!"))
 	if(!do_after(user, 4 SECONDS, target) || !grab_maneuver_state_check(user, target))
-		return
+		return FALSE
 	target.visible_message(span_danger("[user.name] dislocates [target.name]'s [affecting.name]!"), \
 		span_userdanger("[user.name] dislocates your [affecting.name]!"), ignored_mobs=user)
 	to_chat(user, span_danger("You dislocate [target.name]'s [affecting.name]!"))
 	affecting.force_wound_upwards(/datum/wound/blunt/moderate)
 	log_combat(user, target, "dislocates", "the [affecting.name]")
+	return TRUE
 
 #undef HEADSMASH_BLOCK_ARMOR
 #undef SUPLEX_TIMER
