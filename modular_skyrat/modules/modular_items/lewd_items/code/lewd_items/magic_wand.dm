@@ -14,7 +14,7 @@
 	/// What mode the vibrator is on
 	var/vibration_mode = "off"
 	/// Assoc list of modes, used to shift between them
-	var/list/modes = list("low" = "medium", "medium" = "hard", "hard" = "off", "off" = "low")
+	var/list/modes = list("low", "medium", "hard", "off")
 	/// Looping sound called on process()
 	var/datum/looping_sound/vibrator/low/soundloop1
 	/// Looping sound called on process()
@@ -159,23 +159,22 @@
 
 /// Toggle between toy modes in a specific order
 /obj/item/clothing/sextoy/magic_wand/proc/toggle_mode()
-	vibration_mode = modes[vibration_mode]
+	toy_on = TRUE
+	playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 	switch(vibration_mode)
-		if("low")
-			toy_on = TRUE
-			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+		if("off")
 			soundloop1.start()
-		if("medium")
-			toy_on = TRUE
-			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			vibration_mode = "low"
+		if("low")
 			soundloop1.stop()
 			soundloop2.start()
-		if("hard")
-			toy_on = TRUE
-			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			vibration_mode = "medium"
+		if("medium")
 			soundloop2.stop()
 			soundloop3.start()
-		if("off")
+			vibration_mode = "high"
+		if("high")
 			toy_on = FALSE
 			playsound(loc, 'sound/weapons/magout.ogg', 20, TRUE)
 			soundloop3.stop()
+			vibration_mode = "off"
