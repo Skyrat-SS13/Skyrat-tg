@@ -54,10 +54,18 @@
 	. = ..()
 	var/obj/item/storage/backpack/bag = C.get_item_by_slot(ITEM_SLOT_BACK)
 	if(!istype(bag, /obj/item/storage/backpack/snail))
+<<<<<<< HEAD
 		if(C.dropItemToGround(bag)) //returns TRUE even if its null
 			C.equip_to_slot_or_del(new /obj/item/storage/backpack/snail(C), ITEM_SLOT_BACK)
 	C.AddElement(/datum/element/snailcrawl)
 	C.update_icons() //SKYRAT EDIT: Roundstart Snails
+=======
+		if(new_snailperson.dropItemToGround(bag)) //returns TRUE even if its null
+			new_snailperson.equip_to_slot_or_del(new /obj/item/storage/backpack/snail(new_snailperson), ITEM_SLOT_BACK)
+	new_snailperson.AddElement(/datum/element/snailcrawl)
+	if(ishuman(new_snailperson))
+		update_mail_goodies(new_snailperson)
+>>>>>>> 1d164a5d6c0 ([NO GBP] Fixed blood deficiency quirk sending the wrong blood pack to roundstart species who have exotic blood (#74189))
 
 /datum/species/snail/on_species_loss(mob/living/carbon/C)
 	. = ..()
@@ -67,6 +75,18 @@
 		bag.emptyStorage()
 		C.temporarilyRemoveItemFromInventory(bag, TRUE)
 		qdel(bag)
+<<<<<<< HEAD
+=======
+	if(ishuman(former_snailperson))
+		new_species.update_mail_goodies(former_snailperson)
+
+/datum/species/snail/update_quirk_mail_goodies(mob/living/carbon/human/recipient, datum/quirk/quirk, list/mail_goodies = list())
+	if(istype(quirk, /datum/quirk/blooddeficiency))
+		mail_goodies += list(
+			/obj/item/reagent_containers/blood/snail
+		)
+	return ..()
+>>>>>>> 1d164a5d6c0 ([NO GBP] Fixed blood deficiency quirk sending the wrong blood pack to roundstart species who have exotic blood (#74189))
 
 /obj/item/storage/backpack/snail
 	name = "snail shell"

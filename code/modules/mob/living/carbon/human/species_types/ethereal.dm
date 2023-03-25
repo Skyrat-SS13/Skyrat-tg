@@ -82,7 +82,12 @@
 	RegisterSignal(ethereal, COMSIG_LIGHT_EATER_ACT, PROC_REF(on_light_eater))
 	ethereal_light = ethereal.mob_light()
 	spec_updatehealth(ethereal)
+<<<<<<< HEAD
 	C.set_safe_hunger_level()
+=======
+	new_ethereal.set_safe_hunger_level()
+	update_mail_goodies(ethereal)
+>>>>>>> 1d164a5d6c0 ([NO GBP] Fixed blood deficiency quirk sending the wrong blood pack to roundstart species who have exotic blood (#74189))
 
 	var/obj/item/organ/internal/heart/ethereal/ethereal_heart = C.getorganslot(ORGAN_SLOT_HEART)
 	ethereal_heart.ethereal_color = default_color
@@ -96,8 +101,19 @@
 	UnregisterSignal(C, COMSIG_ATOM_EMP_ACT)
 	UnregisterSignal(C, COMSIG_LIGHT_EATER_ACT)
 	QDEL_NULL(ethereal_light)
+<<<<<<< HEAD
+=======
+	if(ishuman(former_ethereal))
+		new_species.update_mail_goodies(former_ethereal)
+>>>>>>> 1d164a5d6c0 ([NO GBP] Fixed blood deficiency quirk sending the wrong blood pack to roundstart species who have exotic blood (#74189))
 	return ..()
 
+/datum/species/ethereal/update_quirk_mail_goodies(mob/living/carbon/human/recipient, datum/quirk/quirk, list/mail_goodies = list())
+	if(istype(quirk, /datum/quirk/blooddeficiency))
+		mail_goodies += list(
+			/obj/item/reagent_containers/blood/ethereal
+		)
+	return ..()
 
 /datum/species/ethereal/random_name(gender,unique,lastname)
 	if(unique)

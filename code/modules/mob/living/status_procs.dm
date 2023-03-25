@@ -517,6 +517,23 @@
 			return TRUE
 	return FALSE
 
+<<<<<<< HEAD
+=======
+/**
+ * Getter function for a mob's quirk
+ *
+ * Arguments:
+ * * quirktype - the type of the quirk to acquire e.g. /datum/quirk/some_quirk
+ *
+ * Returns the mob's quirk datum if the mob this is called on has the quirk, null on failure 
+ */
+/mob/living/proc/get_quirk(quirktype)
+	for(var/datum/quirk/quirk in quirks)
+		if(quirk.type == quirktype)
+			return quirk
+	return null
+
+>>>>>>> 1d164a5d6c0 ([NO GBP] Fixed blood deficiency quirk sending the wrong blood pack to roundstart species who have exotic blood (#74189))
 /mob/living/proc/cure_husk(source)
 	REMOVE_TRAIT(src, TRAIT_HUSK, source)
 	if(!HAS_TRAIT(src, TRAIT_HUSK))
