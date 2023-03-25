@@ -220,5 +220,5 @@
 
 /obj/structure/chair/shibari_stand/examine(mob/user)
 	. = ..()
-	. += span_purple("[src] can be disassembled by using Ctrl+Shift+Click")
-
+	. += span_purple("[src] can be disassembled by using <b>Ctrl+Shift+Click<b>")
+	. += span_purple("[src]'s color can be customized with <b>Ctrl+Click</b>.")

@@ -18,7 +18,7 @@
 
 /obj/item/construction_kit/examine(mob/user)
 	. = ..()
-	. += span_purple("[src] can be assembled by using Ctrl+Shift+Click while [src] is on the floor.")
+	. += span_purple("[src] can be assembled by using <b>Ctrl+Shift+Click</b> while [src] is on the floor.")
 
 /obj/item/construction_kit/CtrlShiftClick(mob/user)
 	. = ..()
@@ -101,7 +101,7 @@
 
 /obj/item/construction_kit/bdsm/shibari/examine(mob/user)
 	.=..()
-	. += span_purple("Looks like it can be customized with <b>Ctrl+Click</b>.")
+	. += span_purple("[src]'s color can be customized with <b>Ctrl+Click</b>.")
 
 //to change model
 /obj/item/construction_kit/bdsm/shibari/CtrlClick(mob/user)
