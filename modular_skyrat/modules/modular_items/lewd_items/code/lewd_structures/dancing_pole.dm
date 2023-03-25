@@ -158,7 +158,7 @@
 
 /obj/item/polepack
 	name = "stripper pole flatpack"
-	desc = "A flatpack containing a stripper pole. You could use a <b>wrench</b> to assemble it."
+	desc = "A flatpack containing a stripper pole."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/dancing_pole.dmi'
 	icon_state = "pole_base"
 	w_class = WEIGHT_CLASS_HUGE
@@ -198,3 +198,11 @@
 	new /obj/item/polepack(get_turf(user))
 	qdel(src)
 	return TRUE
+
+/obj/item/polepack/examine(mob/user)
+	. = ..()
+	. += span_purple("[src] can be assembled by using Ctrl+Shift+Click while [src] is on the floor.")
+
+/obj/structure/stripper_pole/examine(mob/user)
+	. = ..()
+	. += span_purple("[src] can be disassembled by using Ctrl+Shift+Click")

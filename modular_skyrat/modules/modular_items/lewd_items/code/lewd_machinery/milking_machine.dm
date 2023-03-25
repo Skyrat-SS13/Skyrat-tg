@@ -1050,3 +1050,12 @@
 	qdel(src)
 	to_chat(user, span_notice("You assemble [src]."))
 	return
+
+/obj/item/milking_machine/constructionkit/examine(mob/user)
+	. = ..()
+	. += span_purple("[src] can be assembled by using Ctrl+Shift+Click while [src] is on the floor.")
+
+/obj/structure/chair/milking_machine/examine(mob/user)
+	. = ..()
+	. += span_purple("[src] can be disassembled by using Ctrl+Shift+Click")
+
