@@ -253,6 +253,8 @@ GLOBAL_LIST_EMPTY(clock_scriptures_by_type)
 /datum/scripture/slab/New()
 	. = ..()
 	pointed_spell = new
+	pointed_spell.name = src.name
+	pointed_spell.deactive_msg = ""
 	pointed_spell.parent_scripture = src
 
 /datum/scripture/slab/Destroy()
@@ -274,6 +276,8 @@ GLOBAL_LIST_EMPTY(clock_scriptures_by_type)
 	invoking_slab.active_scripture = src
 	pointed_spell.set_click_ability(invoker)
 	count_down()
+	GLOB.clock_power -= power_cost
+	GLOB.clock_vitality -= vitality_cost
 	invoke_success()
 
 
@@ -309,11 +313,11 @@ GLOBAL_LIST_EMPTY(clock_scriptures_by_type)
 	if(after_use_text)
 		clockwork_say(invoker, text2ratvar(after_use_text), TRUE)
 
-	end_invocation()
+	end_invocation(TRUE)
 
 
 /// What occurs when the invocation ends
-/datum/scripture/slab/proc/end_invocation()
+/datum/scripture/slab/proc/end_invocation(silent = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 
 	//Remove the timer if there is one currently active
@@ -321,7 +325,8 @@ GLOBAL_LIST_EMPTY(clock_scriptures_by_type)
 		deltimer(loop_timer_id)
 		loop_timer_id = null
 
-	to_chat(invoker, span_brass("You are no longer invoking <b>[name]</b>"))
+	if(!silent)
+		to_chat(invoker, span_brass("You are no longer invoking <b>[name]</b>"))
 	qdel(progress)
 
 	pointed_spell.unset_click_ability(invoker)
