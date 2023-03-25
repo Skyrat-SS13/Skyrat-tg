@@ -9,11 +9,11 @@
 	log_game("ICES: [src.name] is our next event.")
 	if(intensity_restriction && GLOB.intense_event_credits)
 		GLOB.intense_event_credits--
-		log_game("ICES: [src.name] consumed an intensity credit. There are now [GLOB.intense_event_credits] credits")
-		message_admins("ICES: [src.name] consumed an intensity credit. There are now [GLOB.intense_event_credits] credits")
+		log_game("ICES: [src.name] consumed an intensity credit. Intensity credit count: [GLOB.intense_event_credits] credits")
+		message_admins("ICES: [src.name] consumed an intensity credit. Intensity credit count: [GLOB.intense_event_credits] credits")
 	else if(intensity_restriction)
-		log_game("ICES: [src.name] should consume an intensity credit, but didn't! Maybe it was admin forced. There are now [GLOB.intense_event_credits] credits")
-		message_admins("ICES: [src.name] consumed an intensity credit. There are now [GLOB.intense_event_credits] credits")
+		log_game("ICES: [src.name] should consume an intensity credit, but didn't! Maybe it was admin forced. Intensity credit count: [GLOB.intense_event_credits] credits")
+		message_admins("ICES: [src.name] consumed an intensity credit. Intensity credit count: [GLOB.intense_event_credits] credits")
 	else
-		log_game("ICES: [src.name] does not need an intensity credit. There are now [GLOB.intense_event_credits] credits")
-		message_admins("ICES: [src.name] does not need an intensity credit. There are now [GLOB.intense_event_credits] credits")
+		log_game("ICES: [src.name] does not need an intensity credit. Intensity credit count: [GLOB.intense_event_credits] credits")
+		message_admins("ICES: [src.name] does not need an intensity credit. Intensity credit count: [GLOB.intense_event_credits] credits")

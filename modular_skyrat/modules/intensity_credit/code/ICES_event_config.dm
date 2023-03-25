@@ -19,14 +19,18 @@
  * to accomodate for much longer rounds
  */
 /datum/controller/subsystem/events
-	frequency_lower = 7 MINUTES
-	frequency_upper = 14 MINUTES
 	/// Rate at which we add intensity credits
 	var/intensity_credit_rate = 27000
 	/// Last world time we added an intensity credit
 	var/intensity_credit_last_time = 8400
 	/// ICES timer multiplier
 	var/intensity_multiplier = EVENT_MIDPOP_TIMER_MULTIPLIER
+
+/datum/controller/subsystem/events/Initialize()
+	. = ..()
+	frequency_lower = CONFIG_GET(number/event_frequency_lower)
+	frequency_upper = CONFIG_GET(number/event_frequency_upper)
+	intensity_credit_rate = CONFIG_GET(number/intensity_credit_rate)
 
 /**
  * Abductors

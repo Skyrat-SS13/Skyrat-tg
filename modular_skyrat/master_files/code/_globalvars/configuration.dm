@@ -39,10 +39,13 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 /datum/config_entry/flag/allow_consecutive_catastropic_events
 
 /datum/config_entry/number/event_frequency_upper
-	default = 20 MINUTES
+	default = 14 MINUTES
 
 /datum/config_entry/number/event_frequency_lower
-	default = 15 MINUTES
+	default = 7 MINUTES
+
+/datum/config_entry/number/intensity_credit_rate
+	default = 45 MINUTES
 
 /datum/config_entry/flag/admin_event_uses_chaos
 

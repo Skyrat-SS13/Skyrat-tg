@@ -25,10 +25,6 @@ SUBSYSTEM_DEF(events)
 	// Instantiate our holidays list if it hasn't been already
 	if(isnull(GLOB.holidays))
 		fill_holidays()
-	// SKYRAT EDIT ADDITION
-	frequency_lower = CONFIG_GET(number/event_frequency_lower)
-	frequency_upper = CONFIG_GET(number/event_frequency_upper)
-	// SKYRAT EDIT END
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/events/fire(resumed = FALSE)
