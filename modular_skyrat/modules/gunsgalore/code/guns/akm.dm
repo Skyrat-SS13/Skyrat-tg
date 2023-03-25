@@ -11,7 +11,6 @@
 	weapon_weight = WEAPON_HEAVY
 	mag_type = /obj/item/ammo_box/magazine/akm
 	can_suppress = FALSE
-	burst_size = 3
 	fire_delay = 2
 	worn_icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_back.dmi'
 	worn_icon_state = "akm"
