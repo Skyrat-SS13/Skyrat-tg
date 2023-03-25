@@ -273,8 +273,8 @@
  * Gravity Generator Blackout
  */
 /datum/round_event_control/gravity_generator_blackout
-	max_occurrences = 2
-	weight = MED_EVENT_FREQ
+	max_occurrences = 1
+	weight = LOW_EVENT_FREQ
 
 /**
  * Grey Tide
@@ -314,7 +314,7 @@
  */
 /datum/round_event_control/mass_hallucination
 	max_occurrences = 1
-	weight = LOW_EVENT_FREQ
+	weight = VERY_LOW_EVENT_FREQ
 
 /**
  * Meteors / Space Dust
@@ -413,7 +413,7 @@
  * Syndicate Portal Storm
  */
 /datum/round_event_control/portal_storm_syndicate
-	max_occurrences = 3
+	max_occurrences = 2
 	weight = MED_EVENT_FREQ
 
 /**
@@ -475,7 +475,7 @@
  * Human-level Intelligence
  */
 /datum/round_event_control/sentience
-	max_occurrences = 2
+	max_occurrences = 1
 	weight = LOW_EVENT_FREQ
 
 /**
@@ -540,11 +540,11 @@
  * Combined weight: 24
  */
 /datum/round_event_control/stray_cargo
-	max_occurrences = 3
+	max_occurrences = 1
 	weight = LOW_EVENT_FREQ
 
 /datum/round_event_control/stray_cargo/syndicate
-	max_occurrences = 3
+	max_occurrences = 2
 	weight = MED_EVENT_FREQ
 
 /**
