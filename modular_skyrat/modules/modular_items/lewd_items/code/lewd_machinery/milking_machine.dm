@@ -213,8 +213,10 @@
 			current_mob.handcuffed.dropped(current_mob)
 			current_mob.set_handcuffed(null)
 			current_mob.update_handcuffed()
-		current_mob.set_handcuffed(new /obj/item/restraints/handcuffs/milker(victim))
-		current_mob.handcuffed.parented_struct = src
+
+		var/obj/item/restraints/handcuffs/milker/cuffs = new (victim)
+		current_mob.set_handcuffed(cuffs)
+		cuffs.parent_chair = WEAKREF(src)
 		current_mob.update_abstract_handcuffed()
 
 	update_overlays()
@@ -319,9 +321,6 @@
 	update_worn_handcuffs()
 	update_hud_handcuffed()
 
-/obj/item
-	var/obj/structure/parented_struct = null
-
 /obj/item/restraints/handcuffs/milker
 	name = "chair cuffs"
 	desc = "A thick metal cuff for restraining hands."
@@ -330,15 +329,24 @@
 	breakouttime = 45 SECONDS
 	flags_1 = NONE
 	item_flags = DROPDEL | ABSTRACT
+	///The chair that the handcuffs are parented to.
+	var/datum/weakref/parent_chair
 
 /obj/item/restraints/handcuffs/milker/Destroy()
-	. = ..()
 	unbuckle_parent()
-	parented_struct = null
+	parent_chair = null
+	return ..()
 
 /obj/item/restraints/handcuffs/milker/proc/unbuckle_parent()
-	if(parented_struct)
-		parented_struct.unbuckle_all_mobs()
+	if(!parent_chair)
+		return FALSE
+
+	var/obj/structure/chair = parent_chair.resolve()
+	if(!chair)
+		return FALSE
+
+	chair.unbuckle_all_mobs()
+	return TRUE
 
 /obj/structure/chair/milking_machine/user_unbuckle_mob(mob/living/carbon/human/affected_mob, mob/user)
 
