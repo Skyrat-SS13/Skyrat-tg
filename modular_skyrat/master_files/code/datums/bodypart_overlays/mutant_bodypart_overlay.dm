@@ -82,7 +82,7 @@
 /// be generated for one bodypart_overlay. Useful for matrixed color mutant bodyparts.
 /datum/bodypart_overlay/mutant/proc/get_images(image_layer, obj/item/bodypart/limb)
 	if(!sprite_datum)
-		return
+		CRASH("Trying to call get_images() on [type] while it didn't have a sprite_datum. This shouldn't happen, report it as soon as possible.")
 
 	var/returned_images = list()
 	var/gender = (limb?.limb_gender == FEMALE) ? "f" : "m"
@@ -224,7 +224,7 @@
  */
 /datum/bodypart_overlay/mutant/proc/get_singular_image(image_icon_state, image_layer, mob/living/carbon/human/owner, icon_override = null)
 	// We get from icon_override if it is filled, and from sprite_datum.icon if not.
-	var/mutable_appearance/appearance = mutable_appearance(icon_override || sprite_datum.get_special_icon(owner), image_icon_state, layer = -image_layer)
+	var/mutable_appearance/appearance = mutable_appearance(icon_override || sprite_datum.get_special_icon(owner), image_icon_state, layer = image_layer)
 
 	if(sprite_datum.center)
 		center_image(appearance, sprite_datum.special_x_dimension ? sprite_datum.get_special_x_dimension(owner) : sprite_datum.dimension_x, sprite_datum.dimension_y)
