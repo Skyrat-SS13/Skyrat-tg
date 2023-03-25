@@ -42,7 +42,9 @@
 	///Do we effect the appearance of our mob. Used to save time in preference code
 	var/visual = TRUE
 	/// Traits that are given to the holder of the organ. If you want an effect that changes this, don't add directly to this. Use the add_organ_trait() proc
-	var/list/organ_traits = list()
+	var/list/organ_traits
+	/// Status Effects that are given to the holder of the organ.
+	var/list/organ_effects
 
 // Players can look at prefs before atoms SS init, and without this
 // they would not be able to see external organs, such as moth wings.
@@ -93,8 +95,6 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 
 	return TRUE
 
-<<<<<<< HEAD
-=======
 /// Called after the organ is inserted into a mob.
 /// Adds Traits, Actions, and Status Effects on the mob in which the organ is impanted.
 /// Override this proc to create unique side-effects for inserting your organ. Must be called by overrides.
@@ -116,7 +116,6 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 	SEND_SIGNAL(src, COMSIG_ORGAN_IMPLANTED, organ_owner)
 	SEND_SIGNAL(organ_owner, COMSIG_CARBON_GAIN_ORGAN, src, special)
 
->>>>>>> e000cb0b29f (Bioscrambler scrambles your organs again (#74177))
 /*
  * Remove the organ from the select mob.
  *
@@ -137,8 +136,6 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 	for(var/trait in organ_traits)
 		REMOVE_TRAIT(organ_owner, trait, REF(src))
 
-<<<<<<< HEAD
-=======
 	for(var/datum/action/action as anything in actions)
 		action.Remove(organ_owner)
 
@@ -146,7 +143,6 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 		organ_owner.remove_status_effect(effect, type)
 
 	UnregisterSignal(organ_owner, COMSIG_PARENT_EXAMINE)
->>>>>>> e000cb0b29f (Bioscrambler scrambles your organs again (#74177))
 	SEND_SIGNAL(src, COMSIG_ORGAN_REMOVED, organ_owner)
 	SEND_SIGNAL(organ_owner, COMSIG_CARBON_LOSE_ORGAN, src, special)
 
