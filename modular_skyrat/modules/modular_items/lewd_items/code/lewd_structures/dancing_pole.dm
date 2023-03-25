@@ -49,10 +49,11 @@
 	)
 
 
-/obj/structure/stripper_pole/multitool_act(mob/living/user, obj/item/used_item)
+/obj/structure/stripper_pole/CtrlClick(mob/user)
 	. = ..()
-	if(.)
-		return
+	if(. == FALSE)
+		return FALSE
+
 	var/choice = show_radial_menu(user, src, pole_designs, radius = 50, require_near = TRUE)
 	if(!choice)
 		return FALSE
@@ -163,28 +164,36 @@
 	w_class = WEIGHT_CLASS_HUGE
 
 
-/obj/item/polepack/wrench_act(mob/living/user, obj/item/used_item, params) //erecting a pole here.
+/obj/item/polepack/CtrlShiftClick(mob/user)
 	. = ..()
+	if(. == FALSE)
+		return FALSE
+
 	add_fingerprint(user)
 	if(item_flags & IN_INVENTORY || item_flags & IN_STORAGE)
-		return
+		return FALSE
 	balloon_alert(user, "assembling...")
-	if(!used_item.use_tool(src, user, 8 SECONDS, volume = 50))
-		balloon_alert(user, "interrupted!")
-		return
+
+	if(!do_after(user, 8 SECONDS, src))
+		balloon_alert(user, "assembly interrupted!")
+		return FALSE
+
 	balloon_alert(user, "assembled")
 	new /obj/structure/stripper_pole(get_turf(user))
 	qdel(src)
 	return TRUE
 
-
-/obj/structure/stripper_pole/wrench_act(mob/living/user, obj/item/used_item, params) //un-erecting a pole.
+/obj/structure/stripper_pole/CtrlShiftClick(mob/user)
 	. = ..()
+	if(. == FALSE)
+		return FALSE
+
 	add_fingerprint(user)
 	balloon_alert(user, "disassembling...")
-	if(!used_item.use_tool(src, user, 8 SECONDS, volume = 50))
-		balloon_alert(user, "interrupted!")
+	if(!do_after(user, 8 SECONDS, src))
+		balloon_alert(user, "disassembly interrupted!")
 		return
+
 	balloon_alert(user, "disassembled")
 	new /obj/item/polepack(get_turf(user))
 	qdel(src)
