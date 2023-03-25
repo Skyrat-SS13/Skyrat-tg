@@ -1,4 +1,4 @@
-/obj/structure/destructible/clockwork/gear_base/tinkerers_cache
+/obj/structure/destructible/clockwork/gear_base/powered/tinkerers_cache
 	name = "tinkerer's cache"
 	desc = "A bronze store filled with parts and components."
 	icon_state = "tinkerers_cache"
@@ -10,13 +10,13 @@
 	var/static/list/craft_possibilities
 
 
-/obj/structure/destructible/clockwork/gear_base/tinkerers_cache/Initialize(mapload)
+/obj/structure/destructible/clockwork/gear_base/powered/tinkerers_cache/Initialize(mapload)
 	. = ..()
 	if(!length(craft_possibilities))
 		assemble_datum_list()
 
 
-/obj/structure/destructible/clockwork/gear_base/tinkerers_cache/attack_hand(mob/living/user)
+/obj/structure/destructible/clockwork/gear_base/powered/tinkerers_cache/attack_hand(mob/living/user)
 	. = ..()
 	if(.)
 		return
@@ -65,7 +65,7 @@
 
 
 // Assemble a list of subtype tinker cache datums
-/obj/structure/destructible/clockwork/gear_base/tinkerers_cache/proc/assemble_datum_list()
+/obj/structure/destructible/clockwork/gear_base/powered/tinkerers_cache/proc/assemble_datum_list()
 	craft_possibilities = list()
 	for(var/type in subtypesof(/datum/tinker_cache_item))
 		var/datum/tinker_cache_item/initial_item = type
@@ -105,3 +105,13 @@
 	name = "Replica Fabricator"
 	item_path = /obj/item/clockwork/replica_fabricator
 	power_use = 200
+
+/datum/tinker_cache_item/clockwork_rifle
+	name = "Clockwork Rifle"
+	item_path = /obj/item/gun/ballistic/rifle/lionhunter/clockwork
+	power_use = 250
+
+/datum/tinker_cache_item/clockwork_rifle_ammo
+	name = "Clockwork Rifle Ammunition"
+	item_path = /obj/item/ammo_box/a762/lionhunter/clock
+	power_use = 100

@@ -13,11 +13,8 @@
 	category = SPELLTYPE_STRUCTURES
 
 /datum/scripture/create_structure/ocular_warden/check_special_requirements(mob/user)
-	if(!..())
-		return FALSE
-
-	if(locate(/obj/structure/destructible/clockwork) in get_turf(invoker))
-		user.balloon_alert(user, "tile has a structure!")
+	. = ..()
+	if(!.)
 		return FALSE
 
 	if(locate(/obj/structure/destructible/clockwork/ocular_warden) in range(OCULAR_WARDEN_PLACE_RANGE))

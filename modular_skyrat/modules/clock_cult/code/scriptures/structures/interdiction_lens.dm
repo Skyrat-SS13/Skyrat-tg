@@ -6,6 +6,6 @@
 	power_cost = 500
 	invocation_time = 8 SECONDS
 	invocation_text = list("Oh great lord...", "may your divinity block the outsiders.")
-	summoned_structure = /obj/structure/destructible/clockwork/gear_base/interdiction_lens
+	summoned_structure = /obj/structure/destructible/clockwork/gear_base/powered/interdiction_lens
 	cogs_required = 4
 	category = SPELLTYPE_STRUCTURES
