@@ -358,7 +358,6 @@
 		parented_struct.unbuckle_all_mobs()
 
 /obj/structure/chair/milking_machine/user_unbuckle_mob(mob/living/carbon/human/affected_mob, mob/user)
-
 	if(affected_mob)
 		if(affected_mob == user)
 			// Have difficulty unbuckling if overly aroused
@@ -654,14 +653,18 @@
 		// The mob for some reason did not get buckled, we do nothing
 		return
 
-/obj/structure/chair/milking_machine/wrench_act(mob/living/user, obj/item/used_item)
-	if((flags_1 & NODECONSTRUCT_1) && used_item.tool_behaviour == TOOL_WRENCH)
-		to_chat(user, span_notice("You being to deconstruct [src]..."))
-		if(used_item.use_tool(src, user, 8 SECONDS, volume = 50))
-			used_item.play_tool_sound(src, 50)
-			deconstruct(TRUE)
-			to_chat(user, span_notice("You disassemble [src]."))
-		return TRUE
+/obj/structure/chair/milking_machine/CtrlShiftClick(mob/user)
+	. = ..()
+	if(. == FALSE)
+		return FALSE
+
+	to_chat(user, span_notice("You begin to disassemble [src]..."))
+	if(!do_after(user, 8 SECONDS, src))
+		to_chat(user, span_warning("You fail to disassemble [src]!"))
+		return FALSE
+
+	deconstruct(TRUE)
+	to_chat(user, span_notice("You disassemble [src]."))
 	return TRUE
 
 // Machine deconstruction process handler
@@ -1023,23 +1026,27 @@
 	return ..()
 
 // Processor of the process of assembling a kit into a machine
-/obj/item/milking_machine/constructionkit/attackby(obj/item/used_item, mob/living/carbon/user, params)
+/obj/item/milking_machine/constructionkit/CtrlShiftClick(mob/user)
+	. = ..()
+	if(. == FALSE)
+		return FALSE
+
 	if((item_flags & IN_INVENTORY) || (item_flags & IN_STORAGE))
-		return
-	if(used_item.tool_behaviour == TOOL_WRENCH)
-		if(user.get_held_items_for_side(LEFT_HANDS) == src || user.get_held_items_for_side(RIGHT_HANDS) == src)
-			return
-		if(get_turf(user) == get_turf(src))
-			return
-		else if(used_item.use_tool(src, user, 8 SECONDS, volume = 50))
-			var/obj/structure/chair/milking_machine/new_milker = new(get_turf(user))
-			if(istype(src, /obj/item/milking_machine/constructionkit))
-				if(current_color == "pink")
-					new_milker.machine_color = new_milker.machine_color_list[1]
-					new_milker.icon_state = "milking_pink_off"
-				if(current_color == "teal")
-					new_milker.machine_color = new_milker.machine_color_list[2]
-					new_milker.icon_state = "milking_teal_off"
-			qdel(src)
-			to_chat(user, span_notice("You assemble the milking machine."))
-			return
+		return FALSE
+
+	to_chat(user, span_notice("You begin to assemble [src]..."))
+	if(!do_after(user, 8 SECONDS, src))
+		to_chat(user, span_warning("You fail to assemble [src]!"))
+		return FALSE
+
+	var/obj/structure/chair/milking_machine/new_milker = new(get_turf(user))
+	if(istype(src, /obj/item/milking_machine/constructionkit))
+		if(current_color == "pink")
+			new_milker.machine_color = new_milker.machine_color_list[1]
+			new_milker.icon_state = "milking_pink_off"
+		if(current_color == "teal")
+			new_milker.machine_color = new_milker.machine_color_list[2]
+			new_milker.icon_state = "milking_teal_off"
+	qdel(src)
+	to_chat(user, span_notice("You assemble [src]."))
+	return
