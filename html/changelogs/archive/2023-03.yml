@@ -889,3 +889,294 @@
   vinylspiders:
   - bugfix: fixes the sadism perk causing unreasonable amounts of arousal when around
       corpses--now only live mobs that are in pain count towards it.
+2023-03-18:
+  Paxilmaniac:
+  - bugfix: The CIN armor vests from cargo will now rotate with the person wearing
+      them, rather than not at all
+2023-03-19:
+  ATHATH:
+  - balance: The inorganic biology symptom now adds both MOB_MINERAL and MOB_ROBOTIC
+      to a virus's list of infectable biotypes instead of only MOB_MINERAL. Currently,
+      androids are the only species this change affects.
+  GoldenAlpharex:
+  - bugfix: Fixed some issues with podpeople hair and horns not being drawn under
+      the right circumstances all the time.
+  Iajret:
+  - bugfix: re-added general records in security and medical consoles
+  Jolly:
+  - bugfix: All the newly resprited chairs Left and Right facing sprites should be
+      symmetrical now.
+  - rscadd: 'CTF has a "new" map: ctf_turbine! I hope you like 24/7 TDM where the
+      objective is secondary.'
+  LT3:
+  - code_imp: Sheetifier no longer accepts meat products
+  MMMiracles:
+  - bugfix: Xenobiology on Tramstation can now use their consoles to see the upper
+      floor.
+  Melbert:
+  - bugfix: Heretic sacrificing now checks both the last mind to inhabit the body
+      as well as the current mind when checking for high value targets
+  - bugfix: Lead batteries now start partially drained as intended.
+  Paxilmaniac:
+  - bugfix: A LARGE number of modular gun magazines should no longer be invisible
+  - code_imp: FULL_EMPTY_BASIC on magazines, which is now an exact duplicate of the
+      behavior of FULL_EMPTY, was removed
+  RatFromTheJungle:
+  - rscdel: Removed the two MG34/MG42's from opfor, for both being ww2 MG's, but also
+      for being ridiculously overpowered
+  - qol: added alot of warnings to various powerful items in opfor, making it more
+      clear how strong they are
+  - balance: swapped the 'heavy armor vest' (very vague) in the loadout for the more
+      evenly balanced swat armor
+  Rhials:
+  - rscadd: Mafia maps now come with their own thematic outfits!
+  - spellcheck: Changes the "Snowdin" mafia map description
+  SkyratBot:
+  - bugfix: fixes gloves not sending the COMSIG_PARENT_ATTACKBY signal
+  - bugfix: Fixed duplicate tile decals and made tile decal shapes more efficient
+  - bugfix: Stabilized gold extracts can now spawn basicmobs
+  - rscadd: Adds the Snatcherprod. Like a teleprod, but it steals stuff from peoples
+      hands instead. Made using a telecrystal, rather than a bluespace crystal.
+  - bugfix: Carp will once again be healed from being near carp rifts
+  - bugfix: Sepia slime cores and the rewind camera now work on Ian
+  - bugfix: Sapient ridden carp (or cows) can throw off their riders by shoving them,
+      or by performing the spin emote.
+  - bugfix: Giant Spider AI will be disabled by the timestop spell
+  - bugfix: Ian can eat envirochow
+  - bugfix: Mice, Frogs, and Cockroaches will no longer set off bear traps
+  - bugfix: You can put a macrobomb implant into Cayenne (or Ian)
+  - bugfix: Ian will now recognise that being squeezed by a cyborg is a nice hug
+  - bugfix: The player panel will tell admins if you're currently a corgi
+  - bugfix: The staff of storms deals massive damage to Bileworms and Giant Spiders
+  - bugfix: Ian will whimper if forced to scream
+  - bugfix: Slimes can consume space carp
+  - bugfix: Mice can be captured in xenoballs
+  - bugfix: You can use pacifying potions on Giant Spiders
+  - bugfix: Sgt Araneus can be fitted with a xenobiological radio implant
+  - bugfix: Sapient corgis no longer count as living players for the purpose of highlander
+      escape objectives
+  - bugfix: The random sentience event can now target corgis and sergeant araneus
+  - rscadd: The random sentience event can target a wider array of farm animals
+  - bugfix: Petsplosion wizard event can target corgis
+  - rscadd: Petsplosion wizard event will now target farm animals and mothroaches
+  - bugfix: The colossus possession crystal can now actually possess the cockroach
+      it spawns, does not kill you instantly upon ending possession
+  - bugfix: Player-controlled Regal Rats now lick or claw based on their combat mode.
+  - bugfix: NPC Regal rats now properly claw at enemies, moving on to new targets
+      after completing kills.
+  - soundadd: The chainsaw now has SFX for starting, stopping, and idling.
+  - bugfix: airlocks will no longer shock you when using the rust mansus grip to destroy
+      them
+  - bugfix: Removes duplicate decals and replaces them with new ones that are more
+      efficient
+  - balance: Syndicate briefcase full of cash is now worth of 3 tc instead of 5. Better
+      than nothing
+  - admin: Admins can now customize the wisdom cow event.
+  - bugfix: Borg synthesizers will no longer remain on the status panel if a borg
+      changes modules
+  - rscadd: Adds 2 new iron/dark/airless subtypes, textured and smooth_large
+  - rscadd: Adds the_faceoff.dmm Ruin
+  - bugfix: Explosive holoparasites no longer runtime if they plant bombs
+  - bugfix: Stabilized Orange extracts are no longer able to cool you from any temperature
+      instantly
+  - bugfix: fixed a few internal organs acting wonky on inserting/removing (some xenomorph
+      organs, abductor glands, flashlight eyes, demon/cursed hearts)
+  - bugfix: Your species will no longer get deleted if a changeling  who copied you
+      is deleted from existence
+  - bugfix: Corgi pinata's no longer have their own category on the cargo shuttle
+      console.
+  - bugfix: All CTF windows are now indestructible, fixes breaking into space during
+      CTF.
+  - bugfix: Pubbystation, if run, will now have a working monastery pod shuttle again.
+  - bugfix: Turrets will now shoot basicmobs such as carp
+  - rscadd: Surgical Processor upgrade for medical cyborgs can now be used to start
+      surgeries.
+  - balance: You no longer need to use two module slots for starting surgeries with
+      the surgical processor.
+  - qol: Abductors chat and Lings/Xenomorphs hivemind chat type has been moved from
+      unsorted to radio.
+  - bugfix: Material tile floors now make noise when walked on by bare/claw/heavy
+      feet
+  - bugfix: the 'target cyborgs' option for syndicate turrets is now functional again,
+      and enabled by default. Station borgs will still be shot at on sight unless
+      a syndicate crew member deliberately configures the turrets otherwise.
+  - qol: added tooltips for pneumatic cannon. Also changed powerfist's tooltips slightly.
+  - bugfix: fixed that you can't put wrench in pneumatic cannon.
+  - bugfix: fixed that you can manipulate with pie gun as if it's a normal pneumatic
+      cannon (adjust air tank, wrench it's output level's and etc.)
+  - balance: Bone gel now spawns in stacks of 4 in Paramedic and Medical ERT belts
+  - bugfix: You can no longer bypass recyclers indestructibility check by just putting
+      it into something
+  - bugfix: Recyclers can no longer recycle the insides of cyborgs
+  - balance: You can no longer EMP defibrillators to make them combat-usable
+  - admin: Admins can now customize the outfit necrostone victims are equiped with.
+  - admin: Admins can now customize the maximum number of thralls that can be created
+      by a necrostone
+  - qol: The necrostone's thrall counter is now a shown as a separate colored line
+      of text when examining the stone rather than part of its description.
+  - qol: Tramstation's kitchen has been completely refurbished!
+  Vile Beggar:
+  - rscadd: The Derelict Sulaco ruin was spruced up with a new look and some neat
+      little goodies (free rouny plush).
+  theOOZ:
+  - qol: Extra romantic preference flag, "Yes".
+  vinylspiders:
+  - bugfix: fixes plate gloves not being able to be upgraded with goliath/polar bear
+      hides
+  - bugfix: fixed a runtime with inflatable structures that would occur every time
+      they were (violently) deflated, e.g. from being attacked or blown up.
+2023-03-20:
+  GoldenAlpharex:
+  - bugfix: Ghost role spawners that are set to have infinite uses no longer run out
+      of uses.
+  Guillaume Prata:
+  - bugfix: Bolter wrench's protolathe design is correctly at the advanced engineering
+      tab now, instead of being under janitorial.
+  Hatterhat:
+  - bugfix: Grab interactions (slamming heads into floors, suplexes(??), dislocations)
+      are fixed and are all now on RMB when aggressive grabbing (or above) someone.
+  LT3:
+  - code_imp: Modularised roundstart station traits
+  - balance: Nanotrasen will now put more effort into announcing employee birthdays
+  Melbert:
+  - bugfix: Fixes rare human arm melting condition
+  SkyratBot:
+  - qol: When inspecting syndicate bombs the text that tells you how long is on the
+      timer stands out more.
+  - qol: Inspecting an active syndicate bomb will give you a balloon alert on the
+      bomb itself when inspected.
+  - admin: You can now optionally populate new lists created via vv. hit cancel to
+      stop filling them up
+  - bugfix: removed two decals from a space ruin.
+  - bugfix: Fix not being able to read in full bright areas
+2023-03-21:
+  JohnFulpWillard, sprites by BalkyGoat:
+  - rscadd: ' The Janitor Access key: Janitors can now be given departmental AA (one
+      at a time) using the Keycard authentication device in Command offices. Use it
+      if you need cleaning!'
+  - bugfix: HoP's trim is no longer set to edit Supply access.
+  LT3:
+  - code_imp: Tram crossing signal/platform logic improvements
+  - fix: Fixed emergency maint access icon on keycard auth
+  SkyratBot:
+  - balance: 9mm, 10mm, and other stuff can cause wounds.
+  - bugfix: Organ harvesters now open and abort harvesting when losing power
+  - bugfix: Plasmamen and golems (and androids, if you ever find one) can be implanted
+      again.
+  - qol: adds service radio to jani/curator/chaplain/lawyer vendor
+  coiax:
+  - bugfix: Coffee cups are now correctly immune to becoming frozen by low temperature
+      water vapour.
+  - bugfix: Holosigns, like the atmos holofan, can no longer be frozen by low temperature
+      water vapour.
+2023-03-22:
+  LT3:
+  - bugfix: Tramstation xenobio now has slimes because apparently you need them? idk
+      i'm not a science nerd
+  SkyratBot:
+  - bugfix: Implants and items which you cannot drop will no longer be forced out
+      of your character when you are kidnapped.
+  - bugfix: Objects you try to take back from the kidnapping location as souvenirs
+      will drop to the ground when you leave instead of being destroyed, except shirts
+      and shoes (make sure to pick up your monographed synidcate T-shirt).
+  - balance: Wirecarp now properly shuts off NtNet remotely.
+  - balance: Wirecarp now shows the source of a PDA that does an action.
+  - bugfix: Wirecarp can no longer be used to see if Nukies exist through their networks.
+  - rscdel: Removes Software downloading and communication Ntnet networks, as they
+      were pretty worthless.
+2023-03-23:
+  Astrogem2:
+  - rscadd: New space ruin that I have made, which adds some variety to space searching.
+  LT3:
+  - balance: Hypospray now fits in the medical bandolier
+  - imageadd: New fire alarm
+  - code_imp: Fire alarm/fire door volume reduced, lights synchronized
+  Lyro:
+  - imageadd: You can be a hammerhead shark
+  Melbert:
+  - bugfix: Fixed stray white pixel in illegal rolling pin inhands.
+  SkyratBot:
+  - bugfix: Stray Cargo Pod false alarms will once again play an announcement when
+      they occur.
+  - bugfix: NODISMEMBER mobs can now be attacked by the flesh worm.
+  - rscadd: Nanotrasen has given the crew access to a brand new emergency shuttle!
+      Watch out for it's destructive entrance!
+  - bugfix: heck suit no longer bugs out worn boots/gloves icons
+  - bugfix: Failing a kickflip no longer shows the chat messages to the wrong people.
+  - bugfix: Tramstation now has the right amount of security and medical record computers
+  coiax:
+  - bugfix: Fixed missing food types for the meat clown, it is now meat and fruit.
+  vinylspiders:
+  - bugfix: ashwalker darkvision is now functional again
+  - bugfix: fixed a bug where you could be revived by the ashwalker tendril only to
+      still remain in crit afterwards
+  - bugfix: plumbing RCDs are now able to construct drains again
+  - bugfix: fixed engineering plumbing RCD not displaying the correct icons for liquid
+      input pumps and liquid output pumps
+2023-03-24:
+  Gyran:
+  - rscadd: Added Cencom gloves to the Nanotrasen Rep locker and command vendor
+  SkyratBot:
+  - bugfix: fixes gondola meatslab not being able to be placed into the DNA infuser
+  softcerv:
+  - rscadd: Adds in the Poem of Communal Souls NIFSoft, see ((https://github.com/Skyrat-SS13/Skyrat-tg/pull/19884))
+      for more details
+2023-03-25:
+  GoldenAlpharex:
+  - bugfix: Fixes limbs not properly storing their external organs, resulting in issues
+      when calculating the bodytypes.
+  GoldenAlpharex, Time-Green:
+  - bugfix: Fixed some potential future runtimes relatively to the new bodypart overlay
+      system's coloring procs.
+  - qol: Hardcore random gets a sixpack
+  LT3:
+  - balance: Cargo can print the RPD again
+  - code_imp: Access key rings added to list on creation
+  - code_imp: Access keys unregister signal when destroyed
+  LordVollkorn / Gage Gaebler:
+  - rscadd: Added Traveler's Rest, a tiny space structure for space travellers to
+      relax and to prepare for the explorations ahead.
+  SkyratBot:
+  - bugfix: canvas getting finalized with untitled name when naming is cancelled
+  - refactor: refactored *blush and *cry emote visuals into bodypart_overlays
+  - rscdel: lack of eyes will no longer prevent the *cry emote overlay from displaying
+  - bugfix: pod person hair can be once again styled by secateaurs
+  - qol: Prosthesis organ manipulation now warns you if you are using the incorrect
+      engineering tool
+  - rscadd: Xenomorphs born in the room the roundstart delivery egg was spawned in
+      will be part of a special "captive xenomorph" team, tasked with escaping and
+      tracked in the roundend report.
+  - bugfix: Regular Xenomorphs no longer receive a blank objectives popup on spawn.
+  - bugfix: Androids now properly have robotic wings instead of moth wings.
+  - bugfix: fixes deadly harvesting just taking harmless extorgans
+  - code_imp: renames internal_organs to organs now that it can also contain external_organs
+  - qol: adds the weight class 'tiny' to paper slips
+  - qol: It is now obvious when examining volume pumps that you can multitool them
+      to overclock them to disable pressure limits and spill gas out. Overclocked
+      volume pumps flash lights
+  - code_imp: Lightbulb removal code is a little bit easier to read
+  - spellcheck: The lightbulb remover skillchip implant (which I know you guys LOVE
+      to use) has a slightly different message now.
+  - bugfix: the orm will no longer display weird decimals
+  - bugfix: all space ruins can now appear on Linux servers
+  - bugfix: added lights to the tramstation head of personnel's office
+  Useroth:
+  - refactor: Standarized flavourtext displaying for all silicons (AIs, borgs, pAI
+      holo forms)
+  - rscadd: AI eye can now see emotes (or to be specific, **non-spoken** messages
+      emitted from things)
+  - rscadd: It's now possible to examine holopad holograms during the call to actually
+      examine the character represented by the holo
+  - rscadd: It's now possible to properly send emotes, subtles and subtlers through
+      holopad holograms
+  - rscadd: It's now possible to properly see emotes, subtles and subtlers through
+      holopad holograms
+  - rscadd: 'BONUS because I hate snowflake code: the above should work with regular
+      character-made holocalls too'
+  - bugfix: SQL errors when using subtle or subtler without db connection
+  softcerv:
+  - rscdel: the milking machine no longer uses power cells.
+  - bugfix: the milking machine is now able to successfully extract reagents without
+      runtiming.
+  - code_imp: the parented_struct variable, now turned into a weakref, now only applies
+      to adult furniture.

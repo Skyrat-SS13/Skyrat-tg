@@ -31,6 +31,7 @@ export const MedicalRecordView = (props, context) => {
     quirk_notes,
     rank,
     // SKYRAT EDIT START - RP Records
+    past_general_records,
     past_medical_records,
     // SKYRAT EDIT END
     species,
@@ -189,8 +190,15 @@ export const MedicalRecordView = (props, context) => {
               ))}
             </LabeledList.Item>
             {/* SKYRAT EDIT START - RP Records (Not pretty but it's there) */}
+            <LabeledList.Item label="General Records">
+              <Box wrap maxWidth="100%">
+                {past_general_records || 'N/A'}
+              </Box>
+            </LabeledList.Item>
             <LabeledList.Item label="Past Medical Records">
-              <Box wrap>{past_medical_records}</Box>
+              <Box wrap maxWidth="100%">
+                {past_medical_records || 'N/A'}
+              </Box>
             </LabeledList.Item>
             {/* SKYRAT EDIT END */}
           </LabeledList>
