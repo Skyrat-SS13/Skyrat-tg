@@ -681,7 +681,7 @@
 		cell = null
 		update_all_visuals()
 
-	var/obj/item/milking_machine/constructionkit/construction_kit = new(src.loc)
+	var/obj/item/construction_kit/milker/construction_kit = new(src.loc)
 	construction_kit.current_color = machine_color
 	construction_kit.update_icon_state()
 	construction_kit.update_icon()
@@ -1006,56 +1006,6 @@
 		to_chat(usr, span_notice("You transfer [amount] of [current_vessel.reagents?.reagent_list[1].name] to [beaker.name]"))
 		return TRUE
 
-// Milking machine construction kit
-/obj/item/milking_machine/constructionkit
-	name = "milking machine construction parts"
-	desc = "Construction parts for a milking machine. Assembly requires a wrench."
-	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/milking_machine.dmi'
-	icon_state = "milkbuild_pink"
-	base_icon_state = "milkbuild"
-	var/current_color = "pink"
-
-// Default initialization
-/obj/item/milking_machine/constructionkit/Initialize(mapload)
-	. = ..()
-	update_icon_state()
-	update_icon()
-
-/obj/item/milking_machine/constructionkit/update_icon_state()
-	icon_state = "[initial(base_icon_state)]_[current_color]"
-	return ..()
-
-// Processor of the process of assembling a kit into a machine
-/obj/item/milking_machine/constructionkit/CtrlShiftClick(mob/user)
-	. = ..()
-	if(. == FALSE)
-		return FALSE
-
-	if((item_flags & IN_INVENTORY) || (item_flags & IN_STORAGE))
-		return FALSE
-
-	to_chat(user, span_notice("You begin to assemble [src]..."))
-	if(!do_after(user, 8 SECONDS, src))
-		to_chat(user, span_warning("You fail to assemble [src]!"))
-		return FALSE
-
-	var/obj/structure/chair/milking_machine/new_milker = new(get_turf(user))
-	if(istype(src, /obj/item/milking_machine/constructionkit))
-		if(current_color == "pink")
-			new_milker.machine_color = new_milker.machine_color_list[1]
-			new_milker.icon_state = "milking_pink_off"
-		if(current_color == "teal")
-			new_milker.machine_color = new_milker.machine_color_list[2]
-			new_milker.icon_state = "milking_teal_off"
-	qdel(src)
-	to_chat(user, span_notice("You assemble [src]."))
-	return
-
-/obj/item/milking_machine/constructionkit/examine(mob/user)
-	. = ..()
-	. += span_purple("[src] can be assembled by using Ctrl+Shift+Click while [src] is on the floor.")
-
 /obj/structure/chair/milking_machine/examine(mob/user)
 	. = ..()
 	. += span_purple("[src] can be disassembled by using Ctrl+Shift+Click")
-

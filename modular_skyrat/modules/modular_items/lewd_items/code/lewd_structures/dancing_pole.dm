@@ -155,34 +155,6 @@
 		dancer.forceMove(get_turf(src))
 		dancer = null
 
-
-/obj/item/polepack
-	name = "stripper pole flatpack"
-	desc = "A flatpack containing a stripper pole."
-	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/dancing_pole.dmi'
-	icon_state = "pole_base"
-	w_class = WEIGHT_CLASS_HUGE
-
-
-/obj/item/polepack/CtrlShiftClick(mob/user)
-	. = ..()
-	if(. == FALSE)
-		return FALSE
-
-	add_fingerprint(user)
-	if(item_flags & IN_INVENTORY || item_flags & IN_STORAGE)
-		return FALSE
-	balloon_alert(user, "assembling...")
-
-	if(!do_after(user, 8 SECONDS, src))
-		balloon_alert(user, "assembly interrupted!")
-		return FALSE
-
-	balloon_alert(user, "assembled")
-	new /obj/structure/stripper_pole(get_turf(user))
-	qdel(src)
-	return TRUE
-
 /obj/structure/stripper_pole/CtrlShiftClick(mob/user)
 	. = ..()
 	if(. == FALSE)
@@ -195,13 +167,9 @@
 		return
 
 	balloon_alert(user, "disassembled")
-	new /obj/item/polepack(get_turf(user))
+	new /obj/item/construction_kit/pole(get_turf(user))
 	qdel(src)
 	return TRUE
-
-/obj/item/polepack/examine(mob/user)
-	. = ..()
-	. += span_purple("[src] can be assembled by using Ctrl+Shift+Click while [src] is on the floor.")
 
 /obj/structure/stripper_pole/examine(mob/user)
 	. = ..()

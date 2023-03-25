@@ -63,7 +63,7 @@
 		return FALSE
 
 	to_chat(user, span_notice("You disassemble [src]."))
-	var/obj/item/bdsm_bed_kit/created_kit = new
+	var/obj/item/construction_kit/bdsm/bed/created_kit = new
 	created_kit.forceMove(loc)
 	qdel(src)
 
@@ -284,36 +284,6 @@
 *	X-STAND CONSTRUCTION KIT
 */
 
-/obj/item/x_stand_kit
-	name = "x-stand construction kit"
-	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
-	throwforce = 0
-	icon_state = "xstand_kit"
-	w_class = WEIGHT_CLASS_HUGE
-	flags_1 = NODECONSTRUCT_1
-
-/obj/item/x_stand_kit/examine(mob/user)
-	. = ..()
-	. += span_purple("[src] can be assembled by using Ctrl+Shift+Click while [src] is on the floor.")
-
-/obj/item/x_stand_kit/CtrlShiftClick(mob/user)
-	. = ..()
-	if(. == FALSE)
-		return FALSE
-
-	add_fingerprint(user)
-	if((item_flags & IN_INVENTORY) || (item_flags & IN_STORAGE))
-		return FALSE
-
-	to_chat(user, span_notice("You begin fastening the frame to the floor."))
-	if(!do_after(user, 8 SECONDS, src))
-		return FALSE
-
-	to_chat(user, span_notice("You assemble [src]."))
-	new /obj/structure/chair/x_stand(loc)
-	qdel(src)
-	return TRUE
-
 /obj/structure/chair/x_stand/CtrlShiftClick(mob/user)
 	. = ..()
 	if(. == FALSE)
@@ -325,7 +295,7 @@
 		return FALSE
 
 	to_chat(user, span_notice("You disassemble [src]."))
-	new /obj/item/x_stand_kit(loc)
+	new /obj/item/construction_kit/bdsm/x_stand(loc)
 	unbuckle_all_mobs()
 	qdel(src)
 	return TRUE
