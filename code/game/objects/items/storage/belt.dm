@@ -362,12 +362,8 @@
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/restraints/handcuffs,
 		/obj/item/restraints/legcuffs/bola,
-<<<<<<< HEAD
 		/obj/item/stock_parts/cell/microfusion, //SKYRAT EDIT ADDITION
 		))
-=======
-	))
->>>>>>> 94b482a999d (Adds wire brush to janivend and janiborg. Also adds ability to put it in janibelt. (#74139))
 
 /obj/item/storage/belt/security/full/PopulateContents()
 	new /obj/item/reagent_containers/spray/pepper(src)

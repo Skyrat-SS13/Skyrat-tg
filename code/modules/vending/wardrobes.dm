@@ -36,12 +36,8 @@
 		/obj/item/clothing/under/rank/security/officer/formal = 3,
 		/obj/item/clothing/suit/jacket/officer/blue = 3,
 		/obj/item/clothing/head/beret/sec/navyofficer = 3,
-<<<<<<< HEAD
 		)
 	*/
-=======
-	)
->>>>>>> 94b482a999d (Adds wire brush to janivend and janiborg. Also adds ability to put it in janibelt. (#74139))
 	refill_canister = /obj/item/vending_refill/wardrobe/sec_wardrobe
 	payment_department = ACCOUNT_SEC
 	light_color = COLOR_MOSTLY_PURE_RED
