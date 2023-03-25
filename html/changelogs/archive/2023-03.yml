@@ -1121,3 +1121,62 @@
   softcerv:
   - rscadd: Adds in the Poem of Communal Souls NIFSoft, see ((https://github.com/Skyrat-SS13/Skyrat-tg/pull/19884))
       for more details
+2023-03-25:
+  GoldenAlpharex:
+  - bugfix: Fixes limbs not properly storing their external organs, resulting in issues
+      when calculating the bodytypes.
+  GoldenAlpharex, Time-Green:
+  - bugfix: Fixed some potential future runtimes relatively to the new bodypart overlay
+      system's coloring procs.
+  - qol: Hardcore random gets a sixpack
+  LT3:
+  - balance: Cargo can print the RPD again
+  - code_imp: Access key rings added to list on creation
+  - code_imp: Access keys unregister signal when destroyed
+  LordVollkorn / Gage Gaebler:
+  - rscadd: Added Traveler's Rest, a tiny space structure for space travellers to
+      relax and to prepare for the explorations ahead.
+  SkyratBot:
+  - bugfix: canvas getting finalized with untitled name when naming is cancelled
+  - refactor: refactored *blush and *cry emote visuals into bodypart_overlays
+  - rscdel: lack of eyes will no longer prevent the *cry emote overlay from displaying
+  - bugfix: pod person hair can be once again styled by secateaurs
+  - qol: Prosthesis organ manipulation now warns you if you are using the incorrect
+      engineering tool
+  - rscadd: Xenomorphs born in the room the roundstart delivery egg was spawned in
+      will be part of a special "captive xenomorph" team, tasked with escaping and
+      tracked in the roundend report.
+  - bugfix: Regular Xenomorphs no longer receive a blank objectives popup on spawn.
+  - bugfix: Androids now properly have robotic wings instead of moth wings.
+  - bugfix: fixes deadly harvesting just taking harmless extorgans
+  - code_imp: renames internal_organs to organs now that it can also contain external_organs
+  - qol: adds the weight class 'tiny' to paper slips
+  - qol: It is now obvious when examining volume pumps that you can multitool them
+      to overclock them to disable pressure limits and spill gas out. Overclocked
+      volume pumps flash lights
+  - code_imp: Lightbulb removal code is a little bit easier to read
+  - spellcheck: The lightbulb remover skillchip implant (which I know you guys LOVE
+      to use) has a slightly different message now.
+  - bugfix: the orm will no longer display weird decimals
+  - bugfix: all space ruins can now appear on Linux servers
+  - bugfix: added lights to the tramstation head of personnel's office
+  Useroth:
+  - refactor: Standarized flavourtext displaying for all silicons (AIs, borgs, pAI
+      holo forms)
+  - rscadd: AI eye can now see emotes (or to be specific, **non-spoken** messages
+      emitted from things)
+  - rscadd: It's now possible to examine holopad holograms during the call to actually
+      examine the character represented by the holo
+  - rscadd: It's now possible to properly send emotes, subtles and subtlers through
+      holopad holograms
+  - rscadd: It's now possible to properly see emotes, subtles and subtlers through
+      holopad holograms
+  - rscadd: 'BONUS because I hate snowflake code: the above should work with regular
+      character-made holocalls too'
+  - bugfix: SQL errors when using subtle or subtler without db connection
+  softcerv:
+  - rscdel: the milking machine no longer uses power cells.
+  - bugfix: the milking machine is now able to successfully extract reagents without
+      runtiming.
+  - code_imp: the parented_struct variable, now turned into a weakref, now only applies
+      to adult furniture.
