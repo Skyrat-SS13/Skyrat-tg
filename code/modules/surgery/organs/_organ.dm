@@ -11,7 +11,7 @@
 	var/zone = BODY_ZONE_CHEST
 	///The organ slot this organ is supposed to inhabit. This should be unique by type. (Lungs, Appendix, Stomach, etc)
 	var/slot
-	// DO NOT add slots with matching names to different zones - it will break internal_organs_slot list!
+	// DO NOT add slots with matching names to different zones - it will break organs_slot list!
 	var/organ_flags = ORGAN_EDIBLE
 	var/maxHealth = STANDARD_ORGAN_THRESHOLD
 	/// Total damage this organ has sustained
@@ -42,7 +42,9 @@
 	///Do we effect the appearance of our mob. Used to save time in preference code
 	var/visual = TRUE
 	/// Traits that are given to the holder of the organ. If you want an effect that changes this, don't add directly to this. Use the add_organ_trait() proc
-	var/list/organ_traits = list()
+	var/list/organ_traits
+	/// Status Effects that are given to the holder of the organ.
+	var/list/organ_effects
 
 // Players can look at prefs before atoms SS init, and without this
 // they would not be able to see external organs, such as moth wings.
@@ -62,33 +64,57 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 /*
  * Insert the organ into the select mob.
  *
- * reciever - the mob who will get our organ
+ * receiver - the mob who will get our organ
  * special - "quick swapping" an organ out - when TRUE, the mob will be unaffected by not having that organ for the moment
  * drop_if_replaced - if there's an organ in the slot already, whether we drop it afterwards
  */
-/obj/item/organ/proc/Insert(mob/living/carbon/reciever, special = FALSE, drop_if_replaced = TRUE)
-	if(!iscarbon(reciever) || owner == reciever)
+/obj/item/organ/proc/Insert(mob/living/carbon/receiver, special = FALSE, drop_if_replaced = TRUE)
+	if(!iscarbon(receiver) || owner == receiver)
 		return FALSE
 
-	var/obj/item/organ/replaced = reciever.getorganslot(slot)
+	var/obj/item/organ/replaced = receiver.getorganslot(slot)
 	if(replaced)
-		replaced.Remove(reciever, special = TRUE)
+		replaced.Remove(receiver, special = TRUE)
 		if(drop_if_replaced)
-			replaced.forceMove(get_turf(reciever))
+			replaced.forceMove(get_turf(receiver))
 		else
 			qdel(replaced)
 
-	SEND_SIGNAL(src, COMSIG_ORGAN_IMPLANTED, reciever)
-	SEND_SIGNAL(reciever, COMSIG_CARBON_GAIN_ORGAN, src, special)
+	receiver.organs |= src
+	receiver.organs_slot[slot] = src
+	owner = receiver
 
-	owner = reciever
 	moveToNullspace()
 	RegisterSignal(owner, COMSIG_PARENT_EXAMINE, PROC_REF(on_owner_examine))
-	update_organ_traits(reciever)
+	update_organ_traits(receiver)
 	for(var/datum/action/action as anything in actions)
-		action.Grant(reciever)
+		action.Grant(receiver)
+
+	SEND_SIGNAL(src, COMSIG_ORGAN_IMPLANTED, receiver)
+	SEND_SIGNAL(receiver, COMSIG_CARBON_GAIN_ORGAN, src, special)
+
 	return TRUE
 
+/// Called after the organ is inserted into a mob.
+/// Adds Traits, Actions, and Status Effects on the mob in which the organ is impanted.
+/// Override this proc to create unique side-effects for inserting your organ. Must be called by overrides.
+/obj/item/organ/proc/on_insert(mob/living/carbon/organ_owner, special)
+	SHOULD_CALL_PARENT(TRUE)
+
+	moveToNullspace()
+
+	for(var/trait in organ_traits)
+		ADD_TRAIT(organ_owner, trait, REF(src))
+
+	for(var/datum/action/action as anything in actions)
+		action.Grant(organ_owner)
+
+	for(var/datum/status_effect/effect as anything in organ_effects)
+		organ_owner.apply_status_effect(effect, type)
+
+	RegisterSignal(owner, COMSIG_PARENT_EXAMINE, PROC_REF(on_owner_examine))
+	SEND_SIGNAL(src, COMSIG_ORGAN_IMPLANTED, organ_owner)
+	SEND_SIGNAL(organ_owner, COMSIG_CARBON_GAIN_ORGAN, src, special)
 
 /*
  * Remove the organ from the select mob.
@@ -98,7 +124,11 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
  */
 /obj/item/organ/proc/Remove(mob/living/carbon/organ_owner, special = FALSE)
 
-	UnregisterSignal(owner, COMSIG_PARENT_EXAMINE)
+	UnregisterSignal(organ_owner, COMSIG_PARENT_EXAMINE)
+
+	organ_owner.organs -= src
+	if(organ_owner.organs_slot[slot] == src)
+		organ_owner.organs_slot.Remove(slot)
 
 	owner = null
 	for(var/datum/action/action as anything in actions)
@@ -106,6 +136,13 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 	for(var/trait in organ_traits)
 		REMOVE_TRAIT(organ_owner, trait, REF(src))
 
+	for(var/datum/action/action as anything in actions)
+		action.Remove(organ_owner)
+
+	for(var/datum/status_effect/effect as anything in organ_effects)
+		organ_owner.remove_status_effect(effect, type)
+
+	UnregisterSignal(organ_owner, COMSIG_PARENT_EXAMINE)
 	SEND_SIGNAL(src, COMSIG_ORGAN_REMOVED, organ_owner)
 	SEND_SIGNAL(organ_owner, COMSIG_CARBON_LOSE_ORGAN, src, special)
 
@@ -233,7 +270,7 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 		dna.species.regenerate_organs(src, replace_current = regenerate_existing)
 
 		// Species regenerate organs doesn't ALWAYS handle healing the organs because it's dumb
-		for(var/obj/item/organ/organ as anything in internal_organs)
+		for(var/obj/item/organ/organ as anything in organs)
 			organ.setOrganDamage(0)
 		set_heartattack(FALSE)
 		return
@@ -321,3 +358,7 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 		status = "<font color='#ffcc33'>Mildly Damaged</font>"
 
 	return status
+
+/// Tries to replace the existing organ on the passed mob with this one, with special handling for replacing a brain without ghosting target
+/obj/item/organ/proc/replace_into(mob/living/carbon/new_owner)
+	Insert(new_owner, special = TRUE, drop_if_replaced = FALSE)
