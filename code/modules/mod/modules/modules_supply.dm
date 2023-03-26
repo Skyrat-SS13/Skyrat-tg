@@ -82,7 +82,7 @@
 	else
 		balloon_alert(mod.wearer, "invalid target!")
 
-/obj/item/mod/module/hydraulic/on_suit_deactivation(deleting = FALSE) //SKYRAT EDIT
+/obj/item/mod/module/clamp/on_suit_deactivation(deleting = FALSE) //SKYRAT EDIT
 	if(deleting)
 		return
 	for(var/atom/movable/crate as anything in stored_crates)
