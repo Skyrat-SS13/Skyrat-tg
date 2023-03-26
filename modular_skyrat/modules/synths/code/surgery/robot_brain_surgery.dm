@@ -19,7 +19,6 @@
 	implements = list(
 		TOOL_MULTITOOL = 100,
 		TOOL_HEMOSTAT = 35,
-		TOOL_SCREWDRIVER = 15,
 	)
 	repeatable = TRUE
 	time = 12 SECONDS //long and complicated
