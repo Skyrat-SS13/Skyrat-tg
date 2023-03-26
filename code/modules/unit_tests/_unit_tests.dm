@@ -157,7 +157,6 @@
 #include "mouse_bite_cable.dm"
 #include "mutant_hands_consistency.dm"
 #include "novaflower_burn.dm"
-#include "ntnetwork_tests.dm"
 #include "nuke_cinematic.dm"
 #include "objectives.dm"
 #include "orderable_items.dm"
