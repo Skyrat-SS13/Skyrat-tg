@@ -63,6 +63,7 @@
 		H.adjustToxLoss(3 * REAGENTS_EFFECT_MULTIPLIER * delta_time)
 		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * delta_time)
 		return TRUE
+<<<<<<< HEAD
 
 // SKYRAT EDIT ADDITION
 /datum/species/pod/get_species_description()
@@ -71,6 +72,9 @@
 /datum/species/pod/get_species_lore()
 	return list("You're a plant!")
 // SKYRAT EDIT END
+=======
+	return ..()
+>>>>>>> 26a172971fa (Fixes podpeople not being able to gain blood when injected with water (#74246))
 
 /datum/species/pod/randomize_features(mob/living/carbon/human_mob)
 	randomize_external_organs(human_mob)
