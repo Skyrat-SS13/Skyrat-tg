@@ -98,11 +98,6 @@
 	. = ..()
 
 /obj/machinery/atmospherics/components/unary/vent_pump/proc/assign_to_area(area/target_area = get_area(src))
-	if(!isnull(target_area))
-		target_area.air_vents += src
-		update_appearance(UPDATE_NAME)
-
-/obj/machinery/atmospherics/components/unary/vent_pump/proc/assign_to_area(area/target_area = get_area(src))
 	//this vent is already assigned to an area. Unassign it from here first before reassigning it to an new area
 	if(isnull(target_area) || !isnull(assigned_area))
 		return

@@ -68,11 +68,6 @@
 	. = ..()
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber/proc/assign_to_area(area/target_area = get_area(src))
-	if(!isnull(target_area))
-		target_area.air_scrubbers += src
-		update_appearance(UPDATE_NAME)
-
-/obj/machinery/atmospherics/components/unary/vent_scrubber/proc/assign_to_area(area/target_area = get_area(src))
 	//this scrubber is already assigned to an area. Unassign it from here first before reassigning it to an new area
 	if(isnull(target_area) || !isnull(assigned_area))
 		return
