@@ -66,6 +66,23 @@
 		//SKYRAT EDIT ADDITION END
 	new_jellyperson.AddElement(/datum/element/soft_landing)
 
+<<<<<<< HEAD
+=======
+/datum/species/jelly/on_species_loss(mob/living/carbon/former_jellyperson, datum/species/new_species, pref_load)
+	if(regenerate_limbs)
+		regenerate_limbs.Remove(former_jellyperson)
+	former_jellyperson.RemoveElement(/datum/element/soft_landing)
+
+	return ..()
+
+/datum/species/jelly/update_quirk_mail_goodies(mob/living/carbon/human/recipient, datum/quirk/quirk, list/mail_goodies = list())
+	if(istype(quirk, /datum/quirk/blooddeficiency))
+		mail_goodies += list(
+			/obj/item/reagent_containers/blood/toxin
+		)
+	return ..()
+
+>>>>>>> b6eeb5cbccc (Fixes lizards with blood deficiency not getting their special blood packs in the mail, removes an unnecessary extra proc call (#74229))
 /datum/species/jelly/spec_life(mob/living/carbon/human/H, delta_time, times_fired)
 	if(H.stat == DEAD) //can't farm slime jelly from a dead slime/jelly person indefinitely
 		return

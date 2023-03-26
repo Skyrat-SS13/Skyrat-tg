@@ -67,6 +67,16 @@
 		bag.emptyStorage()
 		C.temporarilyRemoveItemFromInventory(bag, TRUE)
 		qdel(bag)
+<<<<<<< HEAD
+=======
+
+/datum/species/snail/update_quirk_mail_goodies(mob/living/carbon/human/recipient, datum/quirk/quirk, list/mail_goodies = list())
+	if(istype(quirk, /datum/quirk/blooddeficiency))
+		mail_goodies += list(
+			/obj/item/reagent_containers/blood/snail
+		)
+	return ..()
+>>>>>>> b6eeb5cbccc (Fixes lizards with blood deficiency not getting their special blood packs in the mail, removes an unnecessary extra proc call (#74229))
 
 /obj/item/storage/backpack/snail
 	name = "snail shell"
