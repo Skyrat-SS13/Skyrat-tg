@@ -29,7 +29,7 @@
 
 /datum/opposing_force_equipment/submachine_gun/nri_smg
 	item_type = /obj/item/gun/ballistic/automatic/nri_smg
-	admin_note = "Capable of high rate of fire full auto of 20 damage bullets."
+	admin_note = "Capable of high rate of fire bursts of 20 damage bullets."
 
 /datum/opposing_force_equipment/submachine_gun/dozer
 	item_type = /obj/item/gun/ballistic/automatic/dozer
