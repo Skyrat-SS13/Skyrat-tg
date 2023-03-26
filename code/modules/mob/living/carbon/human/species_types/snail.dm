@@ -15,12 +15,8 @@
 		FACEHAIR
 	)
 	inherent_traits = list(
-<<<<<<< HEAD
 		TRAIT_NOSLIPALL,
 		TRAIT_WATER_BREATHING, //SKYRAT EDIT - Roundstart Snails
-=======
-		TRAIT_NO_SLIP_ALL,
->>>>>>> 48ff6a6e65d (Fixes Ice Slipping, Refactors noslip mechanics, Allows magboots to prevent slip slides (but not the slip itself) (#73948))
 	)
 
 	coldmod = 0.5 //snails only come out when its cold and wet
