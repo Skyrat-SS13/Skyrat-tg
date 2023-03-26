@@ -189,7 +189,11 @@
 		if(status_flags & GODMODE)
 			return
 
+<<<<<<< HEAD
 		var/obj/item/organ/internal/lungs/affected_lungs = getorganslot(ORGAN_SLOT_LUNGS)
+=======
+		var/obj/item/organ/internal/lungs/affected_lungs = get_organ_slot(ORGAN_SLOT_LUNGS)
+>>>>>>> ecbcef778df (Refactors Regenerate Organs, and a few organ helpers (#74219))
 		if(isnull(affected_lungs))
 			if(!(mob_respiration_type & required_respiration_type))  // if the mob has no lungs, use mob_respiration_type
 				return
@@ -208,7 +212,11 @@
 		if(status_flags & GODMODE)
 			return
 
+<<<<<<< HEAD
 		var/obj/item/organ/internal/lungs/affected_lungs = getorganslot(ORGAN_SLOT_LUNGS)
+=======
+		var/obj/item/organ/internal/lungs/affected_lungs = get_organ_slot(ORGAN_SLOT_LUNGS)
+>>>>>>> ecbcef778df (Refactors Regenerate Organs, and a few organ helpers (#74219))
 		if(isnull(affected_lungs))
 			if(!(mob_respiration_type & required_respiration_type))
 				return
@@ -293,7 +301,7 @@
 /mob/living/proc/setOrganLoss(slot, amount, maximum, required_organtype)
 	return
 
-/mob/living/proc/getOrganLoss(slot)
+/mob/living/proc/get_organ_loss(slot)
 	return
 
 /mob/living/proc/getStaminaLoss()

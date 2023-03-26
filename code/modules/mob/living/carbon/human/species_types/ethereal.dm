@@ -85,7 +85,11 @@
 	spec_updatehealth(ethereal)
 	C.set_safe_hunger_level()
 
+<<<<<<< HEAD
 	var/obj/item/organ/internal/heart/ethereal/ethereal_heart = C.getorganslot(ORGAN_SLOT_HEART)
+=======
+	var/obj/item/organ/internal/heart/ethereal/ethereal_heart = new_ethereal.get_organ_slot(ORGAN_SLOT_HEART)
+>>>>>>> ecbcef778df (Refactors Regenerate Organs, and a few organ helpers (#74219))
 	ethereal_heart.ethereal_color = default_color
 
 	for(var/obj/item/bodypart/limb as anything in C.bodyparts)

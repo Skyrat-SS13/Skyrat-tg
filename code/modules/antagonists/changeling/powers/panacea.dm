@@ -13,12 +13,17 @@
 	..()
 	// SKYRAT EDIT ADDITION: BORER EGG
 	var/list/bad_organs = list(
+<<<<<<< HEAD
 		user.getorgan(/obj/item/organ/internal/body_egg),
 		user.getorgan(/obj/item/organ/internal/zombie_infection),
 		user.getorgan(/obj/item/organ/internal/empowered_borer_egg))
 	// SKYRAT EDIT END
 
 	try_to_mutant_cure(user) //SKYRAT EDIT ADDITION
+=======
+		user.get_organ_by_type(/obj/item/organ/internal/body_egg),
+		user.get_organ_by_type(/obj/item/organ/internal/zombie_infection))
+>>>>>>> ecbcef778df (Refactors Regenerate Organs, and a few organ helpers (#74219))
 
 	for(var/o in bad_organs)
 		var/obj/item/organ/O = o

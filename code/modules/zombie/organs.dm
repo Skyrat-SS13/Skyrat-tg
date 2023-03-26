@@ -51,9 +51,13 @@
 		owner.adjustToxLoss(0.5 * delta_time)
 		if (DT_PROB(5, delta_time))
 			to_chat(owner, span_danger("You feel sick..."))
+<<<<<<< HEAD
 	if(timer_id)
 		return
 	if(owner.suiciding)
+=======
+	if(timer_id || HAS_TRAIT(owner, TRAIT_SUICIDED) || !owner.get_organ_by_type(/obj/item/organ/internal/brain))
+>>>>>>> ecbcef778df (Refactors Regenerate Organs, and a few organ helpers (#74219))
 		return
 	if(owner.stat != DEAD && !converts_living)
 		return
