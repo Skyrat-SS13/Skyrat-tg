@@ -63,9 +63,14 @@
 	disconnect_from_area(old_area)
 	assign_to_area(new_area)
 
-/obj/machinery/atmospherics/components/unary/vent_scrubber/proc/assign_to_area()
-	var/area/area = get_area(src)
-	area?.air_scrubbers += src
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on_enter_area(datum/source, area/area_to_register)
+	assign_to_area(area_to_register)
+	. = ..()
+
+/obj/machinery/atmospherics/components/unary/vent_scrubber/proc/assign_to_area(area/target_area = get_area(src))
+	if(!isnull(target_area))
+		target_area.air_scrubbers += src
+		update_appearance(UPDATE_NAME)
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber/proc/assign_to_area(area/target_area = get_area(src))
 	//this scrubber is already assigned to an area. Unassign it from here first before reassigning it to an new area
@@ -231,8 +236,7 @@
 	. = ..()
 	if(override_naming)
 		return
-	var/area/scrub_area = get_area(src)
-	name = "\proper [scrub_area.name] [name] [id_tag]"
+	name = "\proper [get_area_name(src)] [name] [id_tag]"
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber/should_atmos_process(datum/gas_mixture/air, exposed_temperature)
 	if(welded || !is_operational)

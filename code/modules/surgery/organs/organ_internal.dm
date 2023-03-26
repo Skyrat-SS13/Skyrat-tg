@@ -14,14 +14,14 @@
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/organ/internal/Insert(mob/living/carbon/reciever, special = FALSE, drop_if_replaced = TRUE)
+/obj/item/organ/internal/Insert(mob/living/carbon/receiver, special = FALSE, drop_if_replaced = TRUE)
 	. = ..()
-	if(!.)
+	if(!. || !owner)
 		return
 
-	// internal_organs_slot must ALWAYS be ordered in the same way as organ_process_order
+	// organs_slot must ALWAYS be ordered in the same way as organ_process_order
 	// Otherwise life processing breaks down
-	sortTim(owner.internal_organs_slot, GLOBAL_PROC_REF(cmp_organ_slot_asc))
+	sortTim(owner.organs_slot, GLOBAL_PROC_REF(cmp_organ_slot_asc))
 
 	STOP_PROCESSING(SSobj, src)
 

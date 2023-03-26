@@ -31,7 +31,7 @@
 	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MM
 	max_ammo = 17
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/multi_sprite/g17/hp
 	ammo_type = /obj/item/ammo_casing/c9mm/hp
@@ -78,7 +78,7 @@
 	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MM
 	max_ammo = 33
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/multi_sprite/g18/hp
 	ammo_type = /obj/item/ammo_casing/c9mm/hp
@@ -157,7 +157,7 @@
 	ammo_type = /obj/item/ammo_casing/b12mm
 	caliber = CALIBER_12MM
 	max_ammo = 8
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	possible_types = list(
 		AMMO_TYPE_LETHAL,
 		AMMO_TYPE_HOLLOWPOINT,
@@ -192,7 +192,7 @@
 	ammo_type = /obj/item/ammo_casing/a357
 	caliber = CALIBER_357
 	max_ammo = 14
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	possible_types = list(
 		AMMO_TYPE_LETHAL,
 	)
@@ -222,7 +222,7 @@
 	ammo_type = /obj/item/ammo_casing/c38
 	caliber = CALIBER_38
 	max_ammo = 10
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	possible_types = list(
 		AMMO_TYPE_LETHAL,
 	)
@@ -248,7 +248,7 @@
 	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MM
 	max_ammo = 16
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/hp
 	ammo_type = /obj/item/ammo_casing/c9mm/hp
@@ -298,7 +298,7 @@
 	ammo_type = /obj/item/ammo_casing/c10mm
 	caliber = CALIBER_10MM
 	max_ammo = 12
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/multi_sprite/ladon/hp
 	ammo_type = /obj/item/ammo_casing/c10mm/hp
@@ -340,7 +340,7 @@
 	ammo_type = /obj/item/ammo_casing/c10mm
 	caliber = CALIBER_10MM
 	max_ammo = 6
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/multi_sprite/makarov/hp
 	ammo_type = /obj/item/ammo_casing/c10mm/hp
@@ -383,7 +383,7 @@
 	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MM
 	max_ammo = 12
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/multi_sprite/mk58/hp
 	ammo_type = /obj/item/ammo_casing/c9mm/hp
@@ -430,7 +430,7 @@
 	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MM
 	max_ammo = 12
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/multi_sprite/firefly/hp
 	ammo_type = /obj/item/ammo_casing/c9mm/hp
@@ -479,7 +479,7 @@
 	ammo_type = /obj/item/ammo_casing/b6mm
 	caliber = CALIBER_6MM
 	max_ammo = 15
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
 
 /obj/item/ammo_box/magazine/multi_sprite/croon/rubber
@@ -525,7 +525,7 @@
 	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MM
 	max_ammo = 8
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_INCENDIARY, AMMO_TYPE_AP)
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer/hp
@@ -580,7 +580,7 @@
 	ammo_type = /obj/item/ammo_casing/b577
 	caliber = CALIBER_B577
 	max_ammo = 25
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /*
 *	ZETA
@@ -614,7 +614,7 @@
 	icon_state = "speedloader"
 	ammo_type = /obj/item/ammo_casing/c10mm
 	max_ammo = 6
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	caliber = CALIBER_10MM
 	start_empty = TRUE
 
@@ -654,7 +654,7 @@
 	icon_state = "speedloader"
 	ammo_type = /obj/item/ammo_casing/c9mm
 	max_ammo = 8
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	caliber = CALIBER_9MM
 	start_empty = TRUE
 
@@ -800,7 +800,7 @@
 	ammo_type = /obj/item/ammo_casing/caseless/b473
 	caliber = CALIBER_473MM
 	max_ammo = 50
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/multi_sprite/g11/hp
 	ammo_type = /obj/item/ammo_casing/caseless/b473/hp
@@ -911,7 +911,7 @@
 	ammo_type = /obj/item/ammo_casing/b12mm
 	caliber = CALIBER_12MM
 	max_ammo = 8
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER)
 
 /obj/item/ammo_box/magazine/multi_sprite/norwind/hp
@@ -969,7 +969,7 @@
 	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MM
 	max_ammo = 20
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/multi_sprite/vintorez/hp
 	ammo_type = /obj/item/ammo_casing/c9mm/hp
@@ -1028,7 +1028,7 @@
 	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MM
 	max_ammo = 32
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/multi_sprite/pcr/hp
 	ammo_type = /obj/item/ammo_casing/c9mm/hp
@@ -1084,7 +1084,7 @@
 	ammo_type = /obj/item/ammo_casing/c10mm
 	caliber = CALIBER_10MM
 	max_ammo = 24
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/multi_sprite/pitbull/hp
 	ammo_type = /obj/item/ammo_casing/c10mm/hp
@@ -1142,7 +1142,7 @@
 	ammo_type = /obj/item/ammo_casing/b6mm
 	caliber = CALIBER_6MM
 	max_ammo = 30
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind/rubber
