@@ -32,9 +32,9 @@
 	return ..()
 
 /mob/living/carbon/alien/adult/skyrat/praetorian/create_internal_organs()
-	internal_organs += new /obj/item/organ/internal/alien/plasmavessel/large
-	internal_organs += new /obj/item/organ/internal/alien/neurotoxin/spitter
-	internal_organs += new /obj/item/organ/internal/alien/resinspinner
+	organs += new /obj/item/organ/internal/alien/plasmavessel/large
+	organs += new /obj/item/organ/internal/alien/neurotoxin/spitter
+	organs += new /obj/item/organ/internal/alien/resinspinner
 	..()
 
 /datum/action/cooldown/alien/skyrat/heal_aura/juiced

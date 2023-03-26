@@ -172,9 +172,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	///What anim to use for gibbing
 	var/gib_anim = "gibbed-h"
 
-
-	//Do NOT remove by setting to null. use OR make an ASSOCIATED TRAIT.
-	//why does it work this way? because traits also disable the downsides of not having an organ, removing organs but not having the trait will make your species die
+	// Prefer anything other than setting these to null, such as TRAITS
+	// why?
+	// because traits also disable the downsides of not having an organ, removing organs but not having the trait or logic will make your species die
 
 	///Replaces default brain with a different organ
 	var/obj/item/organ/internal/brain/mutantbrain = /obj/item/organ/internal/brain
@@ -350,6 +350,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		var/obj/item/organ/oldorgan = C.getorganslot(slot) //used in removing
 		var/obj/item/organ/neworgan = slot_mutantorgans[slot] //used in adding
 		if(!neworgan) //these can be null, if so we shouldn't regenerate
+			if(oldorgan) // although we also need to remove the old organ if it exists
+				oldorgan.Remove(C, special=TRUE)
+				qdel(oldorgan)
 			continue
 
 		if(visual_only && !initial(neworgan.visual))
@@ -367,7 +370,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		 * - The replaced organ is not in an excluded zone
 		 * - The replaced organ is not unremovable or synthetic (an implant)
 		 */
-		if(oldorgan && (!should_have || replace_current) && !(oldorgan.zone in excluded_zones) && !(oldorgan.organ_flags & (ORGAN_UNREMOVABLE|ORGAN_SYNTHETIC)))
+		if(oldorgan && (!should_have || replace_current) && !(oldorgan.zone in excluded_zones) && (!(oldorgan.organ_flags & (ORGAN_UNREMOVABLE|ORGAN_SYNTHETIC)) || (oldorgan.organ_flags & ORGAN_SYNTHETIC_FROM_SPECIES))) // SKYRAT EDIT - Customization - ORIGINAL: if(oldorgan && (!should_have || replace_current) && !(oldorgan.zone in excluded_zones) && !(oldorgan.organ_flags & (ORGAN_UNREMOVABLE|ORGAN_SYNTHETIC)))
 			if(slot == ORGAN_SLOT_BRAIN)
 				var/obj/item/organ/internal/brain/brain = oldorgan
 				if(!brain.decoy_override)//"Just keep it if it's fake" - confucius, probably
@@ -399,16 +402,15 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(current_organ)
 				current_organ.Remove(C)
 				QDEL_NULL(current_organ)
-	for(var/external_organ in C.external_organs)
+
+	for(var/obj/item/organ/external/external_organ in C.organs)
 		// External organ checking. We need to check the external organs owned by the carbon itself,
 		// because we want to also remove ones not shared by its species.
 		// This should be done even if species was not changed.
 		if(external_organ in external_organs)
 			continue // Don't remove external organs this species is supposed to have.
-		var/obj/item/organ/current_organ = C.getorgan(external_organ)
-		if(current_organ)
-			current_organ.Remove(C)
-			QDEL_NULL(current_organ)
+		external_organ.Remove(C)
+		QDEL_NULL(external_organ)
 
 	var/list/species_organs = mutant_organs + external_organs
 
@@ -526,7 +528,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		C.dna.blood_type = random_blood_type()
 	for(var/X in inherent_traits)
 		REMOVE_TRAIT(C, X, SPECIES_TRAIT)
-	for(var/obj/item/organ/external/organ as anything in C.external_organs)
+	for(var/obj/item/organ/external/organ in C.organs)
 		organ.Remove(C)
 		qdel(organ)
 
@@ -838,9 +840,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	for(var/obj/item/organ/external/organ_path as anything in external_organs)
 		var/obj/item/organ/external/randomized_organ = human_mob.getorgan(organ_path)
 		if(randomized_organ)
-			var/new_look = pick(randomized_organ.get_global_feature_list())
-			human_mob.dna.features["[randomized_organ.feature_key]"] = new_look
-			mutant_bodyparts["[randomized_organ.feature_key]"] = new_look
+			var/datum/bodypart_overlay/mutant/overlay = randomized_organ.bodypart_overlay
+			var/new_look = pick(overlay.get_global_feature_list())
+			human_mob.dna.features["[overlay.feature_key]"] = new_look
+			mutant_bodyparts["[overlay.feature_key]"] = new_look
 
 ///Proc that randomizes all the appearance elements (external organs, markings, hair etc.) of a species' associated mob. Function set by child procs
 /datum/species/proc/randomize_features(mob/living/carbon/human/human_mob)
@@ -1254,7 +1257,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		to_chat(owner, span_warning("You attempt to touch [target]!"))
 		return
 	//Check if we can do a grab maneuver, if so, attempt it - SKYRAT EDIT ADDITION
-	if(owner.pulledby && owner.pulledby == target && target.grab_state && try_grab_maneuver(target, owner, modifiers))
+	if(target.pulledby && target.pulledby == owner && owner.grab_state > GRAB_PASSIVE && try_grab_maneuver(owner, target, modifiers))
 		return //SKYRAT EDIT END
 
 	SEND_SIGNAL(owner, COMSIG_MOB_ATTACK_HAND, owner, target, attacker_style)
