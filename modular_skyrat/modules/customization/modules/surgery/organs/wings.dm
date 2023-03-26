@@ -5,7 +5,6 @@
 	slot = ORGAN_SLOT_WINGS
 	mutantpart_key = "wings"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Bat", MUTANT_INDEX_COLOR_LIST = list("#335533"))
-	color_source = ORGAN_COLOR_OVERRIDE
 	///Whether the wings should grant flight on insertion.
 	var/unconditional_flight
 	///What species get flights thanks to those wings. Important for moth wings
@@ -17,16 +16,16 @@
 	///Whether the owner of wings has flight thanks to the wings
 	var/granted_flight
 
-/obj/item/organ/external/wings/get_global_feature_list()
+/datum/bodypart_overlay/mutant/wings
+	color_source = ORGAN_COLOR_OVERRIDE
+
+/datum/bodypart_overlay/mutant/wings/get_global_feature_list()
 	return GLOB.sprite_accessories["wings"]
 
 //TODO: Well you know what this flight stuff is a bit complicated and hardcoded, this is enough for now
 
-/obj/item/organ/external/wings/override_color(rgb_value)
-	if(mutantpart_key)
-		return mutantpart_info[MUTANT_INDEX_COLOR_LIST][1]
-
-	return rgb_value
+/datum/bodypart_overlay/mutant/wings/override_color(rgb_value)
+	return draw_color
 
 /obj/item/organ/external/wings/moth
 	name = "moth wings"
@@ -51,3 +50,57 @@
 	name = "megamoth wings"
 	desc = "A pair of horrifyingly large, fuzzy wings. They look strong enough to lift you up in the air."
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Megamoth", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF"))
+
+
+/datum/bodypart_overlay/mutant/wings/functional
+	color_source = ORGAN_COLOR_INHERIT
+
+
+/datum/bodypart_overlay/mutant/wings/functional/original_color
+	color_source = ORGAN_COLOR_OVERRIDE
+
+
+/datum/bodypart_overlay/mutant/wings/functional/original_color/override_color(rgb_value)
+	return COLOR_WHITE // We want to keep those wings as their original color, because it looks better.
+
+
+/datum/bodypart_overlay/mutant/wings/functional/locked/get_global_feature_list()
+	if(wings_open)
+		return GLOB.sprite_accessories["wings_open"]
+
+	return GLOB.sprite_accessories["wings_functional"]
+
+
+// We need to overwrite this because all of these wings are locked.
+/datum/bodypart_overlay/mutant/wings/functional/locked/get_random_appearance()
+	var/list/valid_restyles = list()
+	var/list/feature_list = get_global_feature_list()
+	for(var/accessory in feature_list)
+		var/datum/sprite_accessory/accessory_datum = feature_list[accessory]
+		valid_restyles += accessory_datum
+
+	return pick(valid_restyles)
+
+
+/datum/bodypart_overlay/mutant/wings/functional/locked/original_color
+	color_source = ORGAN_COLOR_OVERRIDE
+
+
+/datum/bodypart_overlay/mutant/wings/functional/locked/original_color/override_color(rgb_value)
+	return COLOR_WHITE // We want to keep those wings as their original color, because it looks better.
+
+
+/obj/item/organ/external/wings/functional
+	bodypart_overlay = /datum/bodypart_overlay/mutant/wings/functional/locked
+
+/obj/item/organ/external/wings/functional/angel
+	bodypart_overlay = /datum/bodypart_overlay/mutant/wings/functional/original_color
+
+/obj/item/organ/external/wings/functional/dragon
+	bodypart_overlay = /datum/bodypart_overlay/mutant/wings/functional
+
+/obj/item/organ/external/wings/functional/moth
+	bodypart_overlay = /datum/bodypart_overlay/mutant/wings/functional/locked/original_color
+
+/obj/item/organ/external/wings/functional/robotic
+	bodypart_overlay = /datum/bodypart_overlay/mutant/wings/functional

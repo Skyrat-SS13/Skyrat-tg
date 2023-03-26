@@ -33,7 +33,7 @@
 	return ..()
 
 /mob/living/carbon/alien/adult/skyrat/defender/create_internal_organs()
-	internal_organs += new /obj/item/organ/internal/alien/plasmavessel/small
+	organs += new /obj/item/organ/internal/alien/plasmavessel/small
 	..()
 
 /datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep
