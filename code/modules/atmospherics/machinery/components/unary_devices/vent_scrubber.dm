@@ -67,11 +67,6 @@
 	var/area/area = get_area(src)
 	area?.air_scrubbers += src
 
-<<<<<<< HEAD
-/obj/machinery/atmospherics/components/unary/vent_scrubber/proc/disconnect_from_area()
-	var/area/area = get_area(src)
-	area?.air_scrubbers -= src
-=======
 /obj/machinery/atmospherics/components/unary/vent_scrubber/proc/assign_to_area(area/target_area = get_area(src))
 	//this scrubber is already assigned to an area. Unassign it from here first before reassigning it to an new area
 	if(isnull(target_area) || !isnull(assigned_area))
@@ -90,7 +85,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on_exit_area(datum/source, area/area_to_unregister)
 	. = ..()
 	disconnect_from_area(area_to_unregister)
->>>>>>> 73ba10d704f ([NO GBP] Fixes vents & scrubbers getting assigned twice to an area when it's merged with another area via station blueprints. Code clean up. (#74046))
 
 ///adds a gas or list of gases to our filter_types. used so that the scrubber can check if its supposed to be processing after each change
 /obj/machinery/atmospherics/components/unary/vent_scrubber/proc/add_filters(filter_or_filters)
