@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-/mob/proc/set_suicide(suicide_state)
-	suiciding = suicide_state
-=======
 /// Verb to simply kill yourself (in a very visual way to all players) in game! How family-friendly. Can be governed by a series of multiple checks (i.e. confirmation, is it allowed in this area, etc.) which are
 /// handled and called by the proc this verb invokes. It's okay to block this, because we typically always give mobs in-game the ability to Ghost out of their current mob irregardless of context. This, in contrast,
 /// can have as many different checks as you desire to prevent people from doing the deed to themselves.
@@ -24,7 +20,6 @@
 /// suicide_state is a boolean, and we handle adding/removing the trait in question. Have the trait function reference this mob as the source if we want to do in-depth tracking of where a suicided trait comes from.
 /// For example, the /mob/dead/observer that will inevitably come from the suicidee will inherit the suicided trait upon creation, and keep this reference. Handy for doing checking should we need it.
 /mob/living/proc/set_suicide(suicide_state)
->>>>>>> a6f49ed5425 (Refactors Suiciding Variable Into Trait (#74150))
 	if(suicide_state)
 		ADD_TRAIT(src, TRAIT_SUICIDED, REF(src))
 		add_to_mob_suicide_list()
@@ -73,17 +68,11 @@
 				add_mood_event("shameful_suicide", /datum/mood_event/shameful_suicide)
 				return
 
-<<<<<<< HEAD
-			if(damagetype & MANUAL_SUICIDE_NONLETHAL) //Make sure to call the necessary procs if it does kill later
-				set_suicide(FALSE)
-				return
-=======
 /// Checks if we are in a valid state to suicide (not already suiciding, capable of actually killing ourselves, area checks, etc.) Returns TRUE if we can suicide, FALSE if we can not.
 /mob/living/proc/can_suicide()
 	if(HAS_TRAIT_FROM_ONLY(src, TRAIT_SUICIDED, REF(src)))
 		to_chat(src, span_warning("You are already commiting suicide!"))
 		return FALSE
->>>>>>> a6f49ed5425 (Refactors Suiciding Variable Into Trait (#74150))
 
 			suicide_log()
 

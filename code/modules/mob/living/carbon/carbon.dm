@@ -933,16 +933,11 @@
 	return ..()
 
 /mob/living/carbon/proc/can_defib()
-<<<<<<< HEAD
 //SKYRAT EDIT ADDITION - DNR TRAIT
 	if(HAS_TRAIT(src, TRAIT_DNR)) //This is also added when a ghost DNR's!
 		return DEFIB_FAIL_DNR
 //SKYRAT EDIT ADDITION END - DNR TRAIT
-
-	if (suiciding)
-=======
 	if (HAS_TRAIT(src, TRAIT_SUICIDED))
->>>>>>> a6f49ed5425 (Refactors Suiciding Variable Into Trait (#74150))
 		return DEFIB_FAIL_SUICIDE
 
 	if (HAS_TRAIT(src, TRAIT_HUSK))
