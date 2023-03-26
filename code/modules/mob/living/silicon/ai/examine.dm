@@ -26,6 +26,9 @@
 			. += "The wireless networking light is blinking."
 		else if (!shunted && !client)
 			. += "[src]Core.exe has stopped responding! NTOS is searching for a solution to the problem..."
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	. += get_silicon_flavortext()
+	//SKYRAT EDIT ADDITION END
 	. += "</span>"
 
 	. += ..()

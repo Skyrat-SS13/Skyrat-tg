@@ -11,17 +11,6 @@
 	var/static/list/milkingmachine_designs
 
 /*
-*	POWER MANAGEMENT
-*/
-
-	var/obj/item/stock_parts/cell/cell = null // Current cell in machine
-	var/charge_rate = 200 // Power charge per tick devided by delta_time (always about ~2)
-	var/power_draw_rate = 65 // Power draw per tick multiplied by delta_time (always about ~2)
-	// Additional power consumption multiplier for different operating modes. Fractional value to reduce consumption
-	var/power_draw_multiplier_list = list("off" = 0, "low" = 0.025, "medium" = 0.25, "hard" = 0.5)
-	var/panel_open = FALSE // Сurrent maintenace panel state
-
-/*
 *	OPERATING MODES
 */
 
@@ -105,8 +94,6 @@
 	var/mutable_appearance/vessel_overlay
 	var/mutable_appearance/indicator_overlay
 	var/mutable_appearance/locks_overlay
-	var/mutable_appearance/panel_overlay
-	var/mutable_appearance/cell_overlay
 	var/mutable_appearance/organ_overlay
 	var/organ_overlay_new_icon_state = "" // Organ overlay update optimization
 
@@ -153,10 +140,6 @@
 	indicator_overlay.name = "indicator_overlay"
 	locks_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/milking_machine.dmi', "locks_open", BELOW_MOB_LAYER)
 	locks_overlay.name = "locks_overlay"
-	panel_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/milking_machine.dmi', "milking_panel_closed", LYING_MOB_LAYER)
-	panel_overlay.name = "panel_overlay"
-	cell_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/milking_machine.dmi', "milking_cell_empty", ABOVE_MOB_LAYER)
-	cell_overlay.name = "cell_overlay"
 	organ_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/milking_machine.dmi', "none", ABOVE_MOB_LAYER)
 	organ_overlay.name = "organ_overlay"
 
@@ -230,8 +213,10 @@
 			current_mob.handcuffed.dropped(current_mob)
 			current_mob.set_handcuffed(null)
 			current_mob.update_handcuffed()
-		current_mob.set_handcuffed(new /obj/item/restraints/handcuffs/milker(victim))
-		current_mob.handcuffed.parented_struct = src
+
+		var/obj/item/restraints/handcuffs/milker/cuffs = new (victim)
+		current_mob.set_handcuffed(cuffs)
+		cuffs.parent_chair = WEAKREF(src)
 		current_mob.update_abstract_handcuffed()
 
 	update_overlays()
@@ -336,9 +321,6 @@
 	update_worn_handcuffs()
 	update_hud_handcuffed()
 
-/obj/item
-	var/obj/structure/parented_struct = null
-
 /obj/item/restraints/handcuffs/milker
 	name = "chair cuffs"
 	desc = "A thick metal cuff for restraining hands."
@@ -347,15 +329,24 @@
 	breakouttime = 45 SECONDS
 	flags_1 = NONE
 	item_flags = DROPDEL | ABSTRACT
+	///The chair that the handcuffs are parented to.
+	var/datum/weakref/parent_chair
 
 /obj/item/restraints/handcuffs/milker/Destroy()
-	. = ..()
 	unbuckle_parent()
-	parented_struct = null
+	parent_chair = null
+	return ..()
 
 /obj/item/restraints/handcuffs/milker/proc/unbuckle_parent()
-	if(parented_struct)
-		parented_struct.unbuckle_all_mobs()
+	if(!parent_chair)
+		return FALSE
+
+	var/obj/structure/chair = parent_chair.resolve()
+	if(!chair)
+		return FALSE
+
+	chair.unbuckle_all_mobs()
+	return TRUE
 
 /obj/structure/chair/milking_machine/user_unbuckle_mob(mob/living/carbon/human/affected_mob, mob/user)
 
@@ -389,14 +380,6 @@
 
 // Empty Hand Attack Handler
 /obj/structure/chair/milking_machine/attack_hand(mob/user)
-	// If the panel is open and the hand is empty, then we take out the battery, otherwise standard processing
-	if(panel_open && cell)
-		user.put_in_hands(cell)
-		cell.add_fingerprint(user)
-		user.visible_message(span_notice("[user] removes [cell] from [src]."), span_notice("You remove [cell] from [src]."))
-		removecell()
-		update_all_visuals()
-		return
 	// Block the ability to open the interface of the machine if we are attached to it
 	if(LAZYLEN(buckled_mobs))
 		if(user == buckled_mobs[1])
@@ -413,9 +396,6 @@
 	// Beaker attack check
 	if(istype(used_item, /obj/item/reagent_containers) && !(used_item.item_flags & ABSTRACT) && used_item.is_open_container())
 		. = TRUE // No afterattack
-		if(panel_open)
-			to_chat(user, span_warning("You can't use [src] while its panel is opened!"))
-			return
 		var/obj/item/reagent_containers/used_container = used_item
 		. = TRUE // No afterattack
 		if(!user.transferItemToLoc(used_container, src))
@@ -423,54 +403,10 @@
 		replace_beaker(user, used_container)
 		updateUsrDialog()
 		return
-	// Cell attack check
-	if(istype(used_item, /obj/item/stock_parts/cell))
-		if(panel_open)
-			if(!anchored)
-				to_chat(user, span_warning("[src] isn't attached to the ground!"))
-				return
-			if(cell)
-				to_chat(user, span_warning("There is already a cell in [src]!"))
-				return
-			else
-				var/area/current_area = loc.loc // Gets our locations location, like a dream within a dream
-				if(!isarea(current_area))
-					return
-				if(!user.transferItemToLoc(used_item, src))
-					cut_overlay(cell_overlay)
-					cell_overlay.icon_state = "milking_cell_empty"
-					update_all_visuals()
-					return
 
-				cell = used_item
-				cut_overlay(cell_overlay)
-				cell_overlay.icon_state = "milking_cell"
-				add_overlay(cell_overlay)
-				user.visible_message(span_notice("[user] inserts a cell into [src]."), span_notice("You insert a cell into [src]."))
-				update_all_visuals()
-				return
-		else
-			to_chat(user, span_warning("[src]'s maintenance panel isn't opened!"))
-			return
-	else
-		if(screwdriver_action(user, icon_state, icon_state, used_item))
-			return
-		if(crowbar_action(used_item))
-			return
-		if(!cell && wrench_act(user, used_item))
-			return
-		return ..()
-
-// Battery removal handler
-/obj/structure/chair/milking_machine/proc/removecell()
-	cell.update_icon()
-	cell = null
-	cut_overlay(cell_overlay)
-	cut_overlay(indicator_overlay)
-	cell_overlay.icon_state = "milking_cell_empty"
-	current_mode = mode_list[1]
-	pump_state = pump_state_list[1]
-	update_all_visuals()
+	if(wrench_act(user, used_item))
+		return
+	return ..()
 
 // Beaker change handler
 /obj/structure/chair/milking_machine/proc/replace_beaker(mob/living/user, obj/item/reagent_containers/new_beaker)
@@ -492,54 +428,8 @@
 	else
 		object.forceMove(drop_location())
 
-// Handler for opening the panel with a screwdriver for maintenance
-/obj/structure/chair/milking_machine/proc/screwdriver_action(mob/user, icon_state_open, icon_state_closed, obj/item/used_item)
-	if(used_item.tool_behaviour == TOOL_SCREWDRIVER)
-		used_item.play_tool_sound(src, 50)
-		if(!panel_open)
-			panel_open = TRUE
-			cut_overlay(indicator_overlay)
-			if(cell != null)
-				cut_overlay(cell_overlay)
-				cell_overlay.icon_state = "milking_cell"
-				add_overlay(cell_overlay)
-				update_all_visuals()
-			cut_overlay(panel_overlay)
-			panel_overlay.icon_state = "milking_panel"
-			add_overlay(panel_overlay)
-			to_chat(user, span_notice("You open the maintenance hatch of [src]."))
-		else
-			panel_open = FALSE
-			cut_overlay(panel_overlay)
-			panel_overlay.icon_state = "milking_panel_closed"
-			update_all_visuals()
-			add_overlay(indicator_overlay)
-			cut_overlay(cell_overlay)
-			cell_overlay.icon_state = "milking_cell_empty"
-
-			to_chat(user, span_notice("You close the maintenance hatch of [src]."))
-
-		return TRUE
-	return FALSE
-
-// Object disassembly handler by crowbar
-/obj/structure/chair/milking_machine/proc/crowbar_action(obj/item/used_item, ignore_panel = 0)
-
-	. = (panel_open || ignore_panel) && !(flags_1 & NODECONSTRUCT_1) && used_item.tool_behaviour == TOOL_CROWBAR
-	if(.)
-		used_item.play_tool_sound(src, 50)
-		deconstruct(TRUE)
-
 // Machine Workflow Processor
 /obj/structure/chair/milking_machine/process(delta_time)
-
-	// Battery self-charging process processing
-	if (cell == null)
-		current_mode = mode_list[1]
-		pump_state = pump_state_list[1]
-		update_all_visuals()
-		return
-
 	// Check if the machine should work
 	if(!current_mob)
 		update_all_visuals()
@@ -571,11 +461,10 @@
 		return
 	// The machine can work
 
-	if(cell != null && current_mode != mode_list[1])
+	if(current_mode != mode_list[1])
 		pump_state = pump_state_list[2]
 		retrive_liquids_from_selected_organ(delta_time)
 		increase_current_mob_arousal(delta_time)
-		draw_power_from_cell(delta_time)
 	else
 		current_mode = mode_list[1]
 		pump_state = pump_state_list[1]
@@ -591,17 +480,17 @@
 
 	if(istype(current_selected_organ, /obj/item/organ/external/genital/breasts))
 		if(current_selected_organ.reagents.total_volume > 0)
-			current_selected_organ.transfer_internal_fluid(milk_vessel, milk_retrive_amount[current_mode] * fluid_multiplier * delta_time)
+			current_selected_organ.transfer_internal_fluid(milk_vessel.reagents, milk_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 		else
 			return
 	else if (istype(current_selected_organ, /obj/item/organ/external/genital/vagina))
 		if(current_selected_organ.reagents.total_volume > 0)
-			current_selected_organ.transfer_internal_fluid(girlcum_vessel, girlcum_retrive_amount[current_mode] * fluid_multiplier * delta_time)
+			current_selected_organ.transfer_internal_fluid(girlcum_vessel.reagents, girlcum_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 		else
 			return
 	else if (istype(current_selected_organ, /obj/item/organ/external/genital/testicles))
 		if(current_selected_organ.reagents.total_volume > 0)
-			current_selected_organ.transfer_internal_fluid(semen_vessel, semen_retrive_amount[current_mode] * fluid_multiplier * delta_time)
+			current_selected_organ.transfer_internal_fluid(semen_vessel.reagents, semen_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 		else
 			return
 	else
@@ -613,23 +502,6 @@
 	current_mob.adjust_arousal(arousal_amounts[current_mode] * delta_time)
 	current_mob.adjust_pleasure(pleasure_amounts[current_mode] * delta_time)
 	current_mob.adjust_pain(pain_amounts[current_mode] * delta_time)
-
-// Energy consumption processor
-/obj/structure/chair/milking_machine/proc/draw_power_from_cell(delta_time)
-	if(cell == null)
-		current_mode = mode_list[1]
-		pump_state = pump_state_list[1]
-		return
-
-	var/amount_power_draw = power_draw_rate * delta_time * power_draw_multiplier_list[current_mode]
-	if (cell.charge > amount_power_draw) // There is enough charge
-		cell.use(amount_power_draw) // Power consumption
-		return
-	else
-		cell.charge = 0 // At this tick, the charge dropped to zero
-		current_mode = mode_list[1]	// Turn off the machine
-		pump_state = pump_state_list[1]
-		return
 
 // Drag and drop mob buckle handler into the machine
 /obj/structure/chair/milking_machine/MouseDrop(over_object, src_location, over_location)
@@ -672,12 +544,6 @@
 		beaker = null
 		update_all_visuals()
 
-	if(cell)
-		cell.forceMove(drop_location())
-		adjust_item_drop_location(cell)
-		cell = null
-		update_all_visuals()
-
 	var/obj/item/milking_machine/constructionkit/construction_kit = new(src.loc)
 	construction_kit.current_color = machine_color
 	construction_kit.update_icon_state()
@@ -690,10 +556,6 @@
 	if (AM == beaker)
 		AM.pixel_x = AM.base_pixel_x - 8
 		AM.pixel_y = AM.base_pixel_y + 8
-		return null
-	else if (AM == cell)
-		AM.pixel_x = AM.base_pixel_x - 8
-		AM.pixel_y = AM.base_pixel_y - 8
 		return null
 	else
 		var/md5 = md5(AM.name)
@@ -812,30 +674,6 @@
 			vessel_state = vessel_state_list[5]
 	add_overlay(vessel_overlay)
 
-	// Indicator state control
-	if(cell != null)
-		var/charge_percentage = round(cell.charge / cell.maxcharge, 0.01)*100
-		if(charge_percentage >= 0 && charge_percentage < 25)
-			if(indicator_overlay.icon_state != indicator_state_list[2])
-				cut_overlay(indicator_overlay)
-				indicator_overlay.icon_state = indicator_state_list[2]
-				if(!panel_open)
-					add_overlay(indicator_overlay)
-		if(charge_percentage >= 25 && charge_percentage < 75)
-			if(indicator_overlay.icon_state != indicator_state_list[3])
-				cut_overlay(indicator_overlay)
-				indicator_overlay.icon_state = indicator_state_list[3]
-				if(!panel_open)
-					add_overlay(indicator_overlay)
-		if(charge_percentage >= 75 && charge_percentage <= 100)
-			if(indicator_overlay.icon_state != indicator_state_list[4])
-				cut_overlay(indicator_overlay)
-				indicator_overlay.icon_state = indicator_state_list[4]
-				if(!panel_open)
-					add_overlay(indicator_overlay)
-	else
-		cut_overlay(indicator_overlay)
-
 	icon_state = "milking_[machine_color]_[current_mode]"
 
 	update_overlays()
@@ -871,9 +709,6 @@
 
 	data["mobName"] = current_mob ? current_mob.name : null
 	data["mobCanLactate"] = current_breasts ? current_breasts.lactates : null
-	data["cellName"] = cell ? cell.name : null
-	data["cellMaxCharge"] = cell ? cell.maxcharge : null
-	data["cellCurrentCharge"] = cell ? cell.charge : null
 	data["beaker"] = beaker ? beaker : null
 	data["BeakerName"] = beaker ? beaker.name : null
 	data["beakerMaxVolume"] = beaker ? beaker.volume : null
