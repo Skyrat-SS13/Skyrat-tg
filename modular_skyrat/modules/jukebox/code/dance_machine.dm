@@ -268,7 +268,7 @@
 				if(LIGHT_COLOR_BLUEGREEN)
 					if(glow.even_cycle)
 						glow.set_light_range(glow.base_light_range * DISCO_INFENO_RANGE)
-						glow.set_light_color(LIGHT_COLOR_BRIGHT_YELLOW
+						glow.set_light_color(LIGHT_COLOR_BRIGHT_YELLOW)
 						glow.set_light_on(TRUE)
 					else
 						glow.set_light_on(FALSE)
