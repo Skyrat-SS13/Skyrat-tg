@@ -134,15 +134,6 @@ GLOBAL_LIST_INIT(typecache_powerfailure_safe_areas, typecacheof(/area/station/en
 	else
 		newA = area_choice
 
-<<<<<<< HEAD
-	for(var/i in 1 to length(turfs))
-		var/turf/thing = turfs[i]
-		var/area/old_area = thing.loc
-		old_area.turfs_to_uncontain += thing
-		newA.contents += thing
-		newA.contained_turfs += thing
-		thing.transfer_area_lighting(old_area, newA)
-=======
 	//we haven't done anything. let's get outta here
 	if(newA == oldA)
 		creator.balloon_alert(creator, "no area change!")
@@ -173,7 +164,6 @@ GLOBAL_LIST_INIT(typecache_powerfailure_safe_areas, typecacheof(/area/station/en
 				area_apc.assign_to_area()
 			else
 				SEND_SIGNAL(stuff, COMSIG_ENTER_AREA, newA)
->>>>>>> 2bab78bcc6f (Fixes atmos machinery breaking when the area is edited/renamed via station blueprints & Deletes empty areas, ARCD upgrades (#73850))
 
 	newA.reg_in_areas_in_z()
 

@@ -217,8 +217,6 @@ GLOBAL_LIST_EMPTY(station_turfs)
 		return
 	user.Move_Pulled(src)
 
-<<<<<<< HEAD
-=======
 /// Call to move a turf from its current area to a new one
 /turf/proc/change_area(area/old_area, area/new_area)
 	//dont waste our time
@@ -237,7 +235,6 @@ GLOBAL_LIST_EMPTY(station_turfs)
 /turf/proc/on_change_area(area/old_area, area/new_area)
 	transfer_area_lighting(old_area, new_area)
 
->>>>>>> 2bab78bcc6f (Fixes atmos machinery breaking when the area is edited/renamed via station blueprints & Deletes empty areas, ARCD upgrades (#73850))
 /turf/proc/multiz_turf_del(turf/T, dir)
 	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_DEL, T, dir)
 
