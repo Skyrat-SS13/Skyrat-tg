@@ -172,9 +172,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	///What anim to use for gibbing
 	var/gib_anim = "gibbed-h"
 
-
-	//Do NOT remove by setting to null. use OR make an ASSOCIATED TRAIT.
-	//why does it work this way? because traits also disable the downsides of not having an organ, removing organs but not having the trait will make your species die
+	// Prefer anything other than setting these to null, such as TRAITS
+	// why?
+	// because traits also disable the downsides of not having an organ, removing organs but not having the trait or logic will make your species die
 
 	///Replaces default brain with a different organ
 	var/obj/item/organ/internal/brain/mutantbrain = /obj/item/organ/internal/brain
@@ -350,6 +350,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		var/obj/item/organ/oldorgan = C.getorganslot(slot) //used in removing
 		var/obj/item/organ/neworgan = slot_mutantorgans[slot] //used in adding
 		if(!neworgan) //these can be null, if so we shouldn't regenerate
+			if(oldorgan) // although we also need to remove the old organ if it exists
+				oldorgan.Remove(C, special=TRUE)
+				qdel(oldorgan)
 			continue
 
 		if(visual_only && !initial(neworgan.visual))
@@ -367,7 +370,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		 * - The replaced organ is not in an excluded zone
 		 * - The replaced organ is not unremovable or synthetic (an implant)
 		 */
-		if(oldorgan && (!should_have || replace_current) && !(oldorgan.zone in excluded_zones) && !(oldorgan.organ_flags & (ORGAN_UNREMOVABLE|ORGAN_SYNTHETIC)))
+		if(oldorgan && (!should_have || replace_current) && !(oldorgan.zone in excluded_zones) && (!(oldorgan.organ_flags & (ORGAN_UNREMOVABLE|ORGAN_SYNTHETIC)) || (oldorgan.organ_flags & ORGAN_SYNTHETIC_FROM_SPECIES))) // SKYRAT EDIT - Customization - ORIGINAL: if(oldorgan && (!should_have || replace_current) && !(oldorgan.zone in excluded_zones) && !(oldorgan.organ_flags & (ORGAN_UNREMOVABLE|ORGAN_SYNTHETIC)))
 			if(slot == ORGAN_SLOT_BRAIN)
 				var/obj/item/organ/internal/brain/brain = oldorgan
 				if(!brain.decoy_override)//"Just keep it if it's fake" - confucius, probably
@@ -399,7 +402,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(current_organ)
 				current_organ.Remove(C)
 				QDEL_NULL(current_organ)
-	for(var/obj/item/organ/external/external_organ in C.internal_organs)
+
+	for(var/obj/item/organ/external/external_organ in C.organs)
 		// External organ checking. We need to check the external organs owned by the carbon itself,
 		// because we want to also remove ones not shared by its species.
 		// This should be done even if species was not changed.
@@ -524,7 +528,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		C.dna.blood_type = random_blood_type()
 	for(var/X in inherent_traits)
 		REMOVE_TRAIT(C, X, SPECIES_TRAIT)
-	for(var/obj/item/organ/external/organ in C.internal_organs)
+	for(var/obj/item/organ/external/organ in C.organs)
 		organ.Remove(C)
 		qdel(organ)
 

@@ -150,8 +150,10 @@
 			current_mob.handcuffed.dropped(current_mob)
 			current_mob.set_handcuffed(null)
 			current_mob.update_handcuffed()
-		current_mob.set_handcuffed(new /obj/item/restraints/handcuffs/milker/shibari(current_mob))
-		current_mob.handcuffed.parented_struct = src
+
+		var/obj/item/restraints/handcuffs/milker/shibari/cuffs = new (current_mob)
+		current_mob.set_handcuffed(cuffs)
+		cuffs.parent_chair = WEAKREF(src)
 		if(HAS_TRAIT(current_mob, TRAIT_ROPEBUNNY))
 			current_mob.handcuffed.breakouttime = 4 MINUTES
 		current_mob.update_abstract_handcuffed()

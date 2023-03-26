@@ -411,3 +411,8 @@
 /datum/sprite_accessory/tails/mammal/wagging/zorgoia
 	name = "Zorgoia tail"
 	icon_state = "zorgoia"
+
+/datum/sprite_accessory/tails/mammal/reptileslim
+	name = "Slim reptile"
+	icon_state = "reptileslim"
+	color_src = USE_ONE_COLOR
