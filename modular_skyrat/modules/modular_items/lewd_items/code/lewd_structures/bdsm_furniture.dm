@@ -246,8 +246,9 @@
 		current_mob.set_handcuffed(null)
 		current_mob.update_handcuffed()
 
-	current_mob.set_handcuffed(new /obj/item/restraints/handcuffs/milker(current_mob))
-	current_mob.handcuffed.parented_struct = src
+	var/obj/item/restraints/handcuffs/milker/cuffs = new (current_mob)
+	current_mob.set_handcuffed(cuffs)
+	cuffs.parent_chair = WEAKREF(src)
 	current_mob.update_abstract_handcuffed()
 
 //Restore the position of the mob after unbuckling.
