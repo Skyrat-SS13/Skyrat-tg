@@ -19,13 +19,18 @@
 	var/antimagic_flags = NONE
 	///if true, immune atoms moving ends the timestop instead of duration.
 	var/channelled = FALSE
+	/// hides time icon effect and mutes sound
+	var/hidden = FALSE
 
-/obj/effect/timestop/Initialize(mapload, radius, time, list/immune_atoms, start = TRUE) //Immune atoms assoc list atom = TRUE
+/obj/effect/timestop/Initialize(mapload, radius, time, list/immune_atoms, start = TRUE, silent = FALSE) //Immune atoms assoc list atom = TRUE
 	. = ..()
 	if(!isnull(time))
 		duration = time
 	if(!isnull(radius))
 		freezerange = radius
+	if(silent)
+		hidden = TRUE
+		alpha = 0
 	for(var/A in immune_atoms)
 		immune[A] = TRUE
 	for(var/mob/living/to_check in GLOB.player_list)
@@ -39,12 +44,14 @@
 
 /obj/effect/timestop/Destroy()
 	QDEL_NULL(chronofield)
-	playsound(src, 'sound/magic/timeparadox2.ogg', 75, TRUE, frequency = -1) //reverse!
+	if(!hidden)
+		playsound(src, 'sound/magic/timeparadox2.ogg', 75, TRUE, frequency = -1) //reverse!
 	return ..()
 
 /obj/effect/timestop/proc/timestop()
 	target = get_turf(src)
-	playsound(src, 'sound/magic/timeparadox2.ogg', 75, TRUE, -1)
+	if(!hidden)
+		playsound(src, 'sound/magic/timeparadox2.ogg', 75, TRUE, -1)
 	chronofield = new (src, freezerange, TRUE, immune, antimagic_flags, channelled)
 	if(!channelled)
 		QDEL_IN(src, duration)
@@ -200,29 +207,6 @@
 /datum/proximity_monitor/advanced/timestop/proc/unfreeze_projectile(obj/projectile/P)
 	P.paused = FALSE
 
-<<<<<<< HEAD
-/datum/proximity_monitor/advanced/timestop/proc/freeze_mob(mob/living/L)
-	frozen_mobs += L
-	L.Stun(20, ignore_canstun = TRUE)
-	ADD_TRAIT(L, TRAIT_MUTE, TIMESTOP_TRAIT)
-	ADD_TRAIT(L, TRAIT_EMOTEMUTE, TIMESTOP_TRAIT)
-	SSmove_manager.stop_looping(L) //stops them mid pathing even if they're stunimmune //This is really dumb
-	if(isanimal(L))
-		var/mob/living/simple_animal/S = L
-		S.toggle_ai(AI_OFF)
-	if(ishostile(L))
-		var/mob/living/simple_animal/hostile/H = L
-		H.LoseTarget()
-
-/datum/proximity_monitor/advanced/timestop/proc/unfreeze_mob(mob/living/L)
-	L.AdjustStun(-20, ignore_canstun = TRUE)
-	REMOVE_TRAIT(L, TRAIT_MUTE, TIMESTOP_TRAIT)
-	REMOVE_TRAIT(L, TRAIT_EMOTEMUTE, TIMESTOP_TRAIT)
-	frozen_mobs -= L
-	if(isanimal(L))
-		var/mob/living/simple_animal/S = L
-		S.toggle_ai(initial(S.AIStatus))
-=======
 /datum/proximity_monitor/advanced/timestop/proc/freeze_mob(mob/living/victim)
 	frozen_mobs += victim
 	victim.Stun(20, ignore_canstun = TRUE)
@@ -248,7 +232,6 @@
 	else if(isbasicmob(victim))
 		var/mob/living/basic/basic_victim = victim
 		basic_victim.ai_controller?.reset_ai_status()
->>>>>>> bf6f81a9b56 (Implements AddTraits and RemoveTraits procs for adding/removing multiple traits + swag unit test (#74037))
 
 //you don't look quite right, is something the matter?
 /datum/proximity_monitor/advanced/timestop/proc/into_the_negative_zone(atom/A)

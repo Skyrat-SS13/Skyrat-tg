@@ -30,7 +30,7 @@
 	name = "Blacksmith's Tale"
 	desc = "Opens up the Path of Rust to you. \
 		Allows you to transmute a knife with any trash item into a Rusty Blade. \
-		You can only create five at a time." //SKYRAT EDIT two to five
+		You can only create two at a time."
 	gain_text = "\"Let me tell you a story\", said the Blacksmith, as he gazed deep into his rusty blade."
 	next_knowledge = list(/datum/heretic_knowledge/rust_fist)
 	required_atoms = list(
@@ -66,6 +66,12 @@
 
 /datum/heretic_knowledge/rust_fist/proc/on_secondary_mansus_grasp(mob/living/source, atom/target)
 	SIGNAL_HANDLER
+
+	// Rusting an airlock causes it to lose power, mostly to prevent the airlock from shocking you.
+	// This is a bit of a hack, but fixing this would require the enture wire cut/pulse system to be reworked.
+	if(istype(target, /obj/machinery/door/airlock))
+		var/obj/machinery/door/airlock/airlock = target
+		airlock.loseMainPower()
 
 	target.rust_heretic_act()
 	return COMPONENT_USE_HAND
@@ -213,19 +219,11 @@
 	var/area/ritual_location = /area/station/command/bridge
 	/// A static list of traits we give to the heretic when on rust.
 	var/static/list/conditional_immunities = list(
-<<<<<<< HEAD
-		TRAIT_STUNIMMUNE,
-		TRAIT_SLEEPIMMUNE,
-		TRAIT_PUSHIMMUNE,
-		TRAIT_SHOCKIMMUNE,
-		TRAIT_NOSLIPALL,
-=======
 		TRAIT_BOMBIMMUNE,
 		TRAIT_NO_SLIP_ALL,
 		TRAIT_NOBREATH,
 		TRAIT_PIERCEIMMUNE,
 		TRAIT_PUSHIMMUNE,
->>>>>>> bf6f81a9b56 (Implements AddTraits and RemoveTraits procs for adding/removing multiple traits + swag unit test (#74037))
 		TRAIT_RADIMMUNE,
 		TRAIT_RESISTCOLD,
 		TRAIT_RESISTHEAT,

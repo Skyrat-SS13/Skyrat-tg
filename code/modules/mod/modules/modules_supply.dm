@@ -82,7 +82,7 @@
 	else
 		balloon_alert(mod.wearer, "invalid target!")
 
-/obj/item/mod/module/clamp/on_suit_deactivation(deleting = FALSE)
+/obj/item/mod/module/hydraulic/on_suit_deactivation(deleting = FALSE) //SKYRAT EDIT
 	if(deleting)
 		return
 	for(var/atom/movable/crate as anything in stored_crates)
@@ -226,12 +226,6 @@
 	var/launch_time = 2 SECONDS
 	/// User overlay
 	var/mutable_appearance/lightning
-
-/obj/item/mod/module/hydraulic/on_suit_activation()
-	ADD_TRAIT(mod.wearer, TRAIT_TRASHMAN, MOD_TRAIT)
-
-/obj/item/mod/module/hydraulic/on_suit_deactivation(deleting = FALSE) //SKYRAT EDIT
-	REMOVE_TRAIT(mod.wearer, TRAIT_TRASHMAN, MOD_TRAIT)
 
 /obj/item/mod/module/hydraulic/on_select_use(atom/target)
 	. = ..()
@@ -506,14 +500,7 @@
 	mod.wearer.base_pixel_y -= 4
 	animate(mod.wearer, animate_time, pixel_y = mod.wearer.base_pixel_y, flags = ANIMATION_PARALLEL)
 	mod.wearer.SpinAnimation(1.5)
-<<<<<<< HEAD
-	ADD_TRAIT(mod.wearer, TRAIT_LAVA_IMMUNE, MOD_TRAIT)
-	ADD_TRAIT(mod.wearer, TRAIT_HANDS_BLOCKED, MOD_TRAIT)
-	ADD_TRAIT(mod.wearer, TRAIT_FORCED_STANDING, MOD_TRAIT)
-	ADD_TRAIT(mod.wearer, TRAIT_NOSLIPALL, MOD_TRAIT)
-=======
 	mod.wearer.add_traits(user_traits, MOD_TRAIT)
->>>>>>> bf6f81a9b56 (Implements AddTraits and RemoveTraits procs for adding/removing multiple traits + swag unit test (#74037))
 	mod.wearer.RemoveElement(/datum/element/footstep, FOOTSTEP_MOB_HUMAN, 1, -6)
 	mod.wearer.AddElement(/datum/element/footstep, FOOTSTEP_OBJ_ROBOT, 1, -6, sound_vary = TRUE)
 	mod.wearer.add_movespeed_modifier(/datum/movespeed_modifier/sphere)
@@ -525,17 +512,10 @@
 		return
 	if(!deleting)
 		playsound(src, 'sound/items/modsuit/ballin.ogg', 100, TRUE, frequency = -1)
-	mod.wearer.base_pixel_y = 0
+	mod.wearer.base_pixel_y += 4
 	animate(mod.wearer, animate_time, pixel_y = mod.wearer.base_pixel_y)
 	addtimer(CALLBACK(mod.wearer, TYPE_PROC_REF(/datum, remove_filter), list("mod_ball", "mod_blur", "mod_outline")), animate_time)
-<<<<<<< HEAD
-	REMOVE_TRAIT(mod.wearer, TRAIT_LAVA_IMMUNE, MOD_TRAIT)
-	REMOVE_TRAIT(mod.wearer, TRAIT_HANDS_BLOCKED, MOD_TRAIT)
-	REMOVE_TRAIT(mod.wearer, TRAIT_FORCED_STANDING, MOD_TRAIT)
-	REMOVE_TRAIT(mod.wearer, TRAIT_NOSLIPALL, MOD_TRAIT)
-=======
 	mod.wearer.remove_traits(user_traits, MOD_TRAIT)
->>>>>>> bf6f81a9b56 (Implements AddTraits and RemoveTraits procs for adding/removing multiple traits + swag unit test (#74037))
 	mod.wearer.remove_movespeed_mod_immunities(MOD_TRAIT, /datum/movespeed_modifier/damage_slowdown)
 	mod.wearer.RemoveElement(/datum/element/footstep, FOOTSTEP_OBJ_ROBOT, 1, -6, sound_vary = TRUE)
 	mod.wearer.AddElement(/datum/element/footstep, FOOTSTEP_MOB_HUMAN, 1, -6)

@@ -32,10 +32,6 @@
 		adjust_nutrition(-nutrition_ratio * HUNGER_FACTOR * delta_time)
 		blood_volume = min(blood_volume + (BLOOD_REGEN_FACTOR * nutrition_ratio * delta_time), blood_volume_normal) //SKYRAT EDIT CHANGE
 
-	// SKYRAT EDIT ADDITION START - Oversized quirk
-	var/blood_volume_max = max(BLOOD_VOLUME_MAXIMUM, blood_volume_normal + 1)
-	// SKYRAT EDIT END
-
 	//Effects of bloodloss
 	var/word = pick("dizzy","woozy","faint")
 	switch(blood_volume)
@@ -44,7 +40,7 @@
 				to_chat(src, span_userdanger("Blood starts to tear your skin apart. You're going to burst!"))
 				investigate_log("has been gibbed by having too much blood.", INVESTIGATE_DEATHS)
 				inflate_gib()
-		if(blood_volume_max to BLOOD_VOLUME_EXCESS) // SKYRAT EDIT - Oversized quirk - ORIGINAL: if(BLOOD_VOLUME_MAXIMUM to BLOOD_VOLUME_EXCESS)
+		if(BLOOD_VOLUME_MAXIMUM to BLOOD_VOLUME_EXCESS)
 			if(DT_PROB(5, delta_time))
 				to_chat(src, span_warning("You feel terribly bloated."))
 		if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)

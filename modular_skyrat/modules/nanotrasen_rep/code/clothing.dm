@@ -86,3 +86,7 @@
 	fire = 50
 	acid = 50
 	wound = 10
+
+/obj/item/clothing/gloves/combat/naval/nanotrasen_consultant
+	name = "\improper CentCom gloves"
+	desc = "A high quality pair of thick gloves covered in gold stitching."
