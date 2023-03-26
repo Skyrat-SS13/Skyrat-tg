@@ -60,7 +60,7 @@
 		else
 			C.key = brainmob.key
 
-		brain_owner.set_suicide(HAS_TRAIT(brainmob, TRAIT_SUICIDED))
+		C.set_suicide(HAS_TRAIT(brainmob, TRAIT_SUICIDED))
 
 		QDEL_NULL(brainmob)
 
