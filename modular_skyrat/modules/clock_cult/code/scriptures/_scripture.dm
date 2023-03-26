@@ -146,7 +146,7 @@ GLOBAL_LIST_EMPTY(clock_scriptures_by_type)
 		if(IS_CLOCK(potential_invoker))
 			invokers++
 
-		if(potential_invoker?.mind.has_antag_datum(/datum/antagonist/clock_cultist/solo)) // They count for infinite so they can do all scriptures solo
+		if(potential_invoker.mind?.has_antag_datum(/datum/antagonist/clock_cultist/solo)) // They count for infinite so they can do all scriptures solo
 			invokers = INFINITY
 			break
 
@@ -181,7 +181,7 @@ GLOBAL_LIST_EMPTY(clock_scriptures_by_type)
 	if(do_after(invoking_mob, invocation_time, target = invoking_mob, extra_checks = CALLBACK(src, PROC_REF(check_special_requirements), invoking_mob)))
 		invoke()
 
-		to_chat(invoking_mob, span_brass("You invoke [name]."))
+		to_chat(invoking_mob, span_brass("You invoke <b>[name]</b>."))
 
 		if(end_on_invocation)
 			end_invoke()
@@ -327,7 +327,7 @@ GLOBAL_LIST_EMPTY(clock_scriptures_by_type)
 		loop_timer_id = null
 
 	if(!silent)
-		to_chat(invoker, span_brass("You are no longer invoking <b>[name]</b>"))
+		to_chat(invoker, span_brass("You are no longer invoking <b>[name]</b>."))
 	qdel(progress)
 
 	pointed_spell.unset_click_ability(invoker)

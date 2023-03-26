@@ -6,6 +6,7 @@
 	desc = "A mesmerizing light that flashes to a rhythm that you just can't stop tapping to."
 	clockwork_desc = "A small device which will slow down nearby attackers and projectiles at a large power cost, both active and passive."
 	icon_state = "interdiction_lens"
+	base_icon_state = "interdiction_lens"
 	anchored = TRUE
 	break_message = span_warning("The interdiction lens breaks into multiple fragments, which gently float to the ground.")
 	max_integrity = 150
@@ -52,7 +53,6 @@
 
 /obj/structure/destructible/clockwork/gear_base/powered/interdiction_lens/repowered()
 	. = ..()
-	icon_state = "interdiction_lens_active"
 	flick("interdiction_lens_recharged", src)
 
 	if(istype(dampening_field))
@@ -63,7 +63,6 @@
 
 /obj/structure/destructible/clockwork/gear_base/powered/interdiction_lens/depowered()
 	. = ..()
-	icon_state = "interdiction_lens"
 	flick("interdiction_lens_discharged", src)
 	QDEL_NULL(dampening_field)
 

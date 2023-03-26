@@ -16,9 +16,6 @@
 /datum/outfit/clock/pre_equip(mob/living/carbon/human/equip_human, visualsOnly)
 	equip_human.faction |= FACTION_CLOCK
 
-	var/datum/action/innate/clockcult/comm/communicate = new
-	communicate.Grant(equip_human)
-
 
 /datum/outfit/clock/armor
 	name = "Armored Clock Cultist"

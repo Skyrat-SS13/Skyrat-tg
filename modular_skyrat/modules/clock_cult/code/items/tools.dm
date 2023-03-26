@@ -46,7 +46,7 @@
 
 /obj/item/storage/belt/utility/clock
 	name = "old toolbelt"
-	desc = "Holds tools. This one's seen better days, though. There's a cog roughly cut into the leather on one side."
+	desc = "Holds tools. This one's seen better days, though. There's the outline of a cog roughly cut into the leather on one side."
 
 /obj/item/storage/belt/utility/clock/PopulateContents()
 	new /obj/item/screwdriver/brass(src)

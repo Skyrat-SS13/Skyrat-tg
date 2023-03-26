@@ -248,7 +248,7 @@
 
 /datum/replica_fabricator_output/pinion_airlock/glass
 	name = "glass airlock"
-	to_create_path = /obj/machinery/door/airlock/bronze/seethru/clock
+	to_create_path = /obj/machinery/door/airlock/bronze/clock/glass
 
 
 #undef BRASS_POWER_COST

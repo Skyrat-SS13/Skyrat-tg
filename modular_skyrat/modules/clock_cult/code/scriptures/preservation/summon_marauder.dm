@@ -36,7 +36,7 @@
 
 		end_invoke()
 		return
-	..()
+	return ..()
 
 
 /datum/scripture/marauder/invoke_success()
@@ -47,7 +47,8 @@
 
 
 /datum/scripture/marauder/check_special_requirements(mob/user)
-	if(!..())
+	. = ..()
+	if(!.)
 		return FALSE
 
 	if(length(GLOB.clockwork_marauders) >= MAXIMUM_MARAUDERS)

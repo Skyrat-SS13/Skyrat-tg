@@ -11,7 +11,7 @@
 /obj/structure/destructible/clockwork/trap/flipper
 	name = "flipper"
 	desc = "A steam powered rotating floor panel. When input is received it will fling anyone on top of it."
-	icon_state = "pressure_sensor"
+	icon_state = "flipper"
 	component_datum = /datum/component/clockwork_trap/flipper
 	unwrench_path = /obj/item/clockwork/trap_placer/flipper
 	clockwork_desc = "A floor panel capable of flinging anyone back when triggered. However, it does have a cooldown between uses."
@@ -33,7 +33,7 @@
 	COOLDOWN_START(src, flip_cooldown, cooldown_flip)
 	addtimer(CALLBACK(src, PROC_REF(cooldown_done)), cooldown_flip)
 
-	flick("flipper", src)
+	flick("flipping", src)
 
 	for(var/atom/movable/movable_atom in get_turf(src))
 

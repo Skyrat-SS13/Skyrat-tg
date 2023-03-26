@@ -126,7 +126,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 	//Put the quickbound action onto the slab, the slab should grant when picked up
 	var/datum/action/innate/clockcult/quick_bind/quickbound = new
 	quickbound.scripture = spell
-	quickbound.activation_slab = src
+	quickbound.slab_weakref = WEAKREF(src)
 	quick_bound_scriptures[position] = quickbound
 	if(binder)
 		quickbound.Grant(binder)

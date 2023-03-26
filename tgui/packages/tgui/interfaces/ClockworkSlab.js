@@ -5,8 +5,8 @@ import { Window } from '../layouts';
 import { TableRow } from '../components/Table';
 
 const brassColor = '#DFC69C';
-const replicaFab = '#B5FD9D';
-const cogScarab = '#DED09F';
+const tinkerCache = '#B5FD9D';
+const replicaFab = '#DED09F';
 const clockMarauder = '#FF9D9D';
 
 const convertPower = (power_in) => {
@@ -40,21 +40,20 @@ export const ClockworkSlab = (props, context) => {
           <ClockworkButtonSelection />
         </Section>
         <div className="ClockSlab__left">
-          <Section height="100%" overflowY="scroll">
+          <Section height="100%" overflowY="auto">
             <ClockworkSpellList selectedTab={selectedTab} />
           </Section>
         </div>
         <div className="ClockSlab__right">
           <div className="ClockSlab__stats">
-            <Section height="100%" scrollable overflowY="scroll">
+            <Section height="100%">
               <ClockworkOverview />
             </Section>
           </div>
           <div className="ClockSlab__current">
             <Section
               height="100%"
-              scrollable
-              overflowY="scroll"
+              overflowY="auto"
               title="Servants of the Cog vol.1">
               <ClockworkHelp />
             </Section>
@@ -113,22 +112,66 @@ const ClockworkHelp = (props, context) => {
           </b>
           <br />
           <b>
-            <font color={replicaFab}>Replicant Fabricator:&nbsp;</font>
+            <font color={brassColor}>Structures:&nbsp;</font>
           </b>
-          A powerful tool that can rapidly construct Brass structures, or
-          convert most materials to Brass.
+          A variety of invaluable structures are available to you, allowing
+          effective defense of your sanctum. Use your Slab on a structure to
+          gain extra information.
           <br />
           <b>
-            <font color={cogScarab}>Cogscarab:&nbsp;</font>
+            <font color={brassColor}>Traps:&nbsp;</font>
           </b>
-          A small drone possessed by the spirits of the fallen soldiers which
-          will protect Reebe while you go out and spread the truth!
+          Traps are useful contraptions, able to be created at a{' '}
+          <font color={tinkerCache}>Tinkerer's Cache</font>. Use your Slab to
+          link traps and triggers together.
           <br />
           <b>
             <font color={clockMarauder}>Clockwork Marauder:&nbsp;</font>
           </b>
-          A powerful shell that can deflect ranged attacks and delivers a strong
-          blow in close quarter combat.
+          A powerful shell that can deflect attacks and delivers a strong blow
+          in close quarter combat.
+          <br />
+          <br />
+        </Section>
+      </Collapsible>
+      <Collapsible title="Tips" color="average">
+        <Section>
+          <b>
+            <font color={brassColor}>Vitality:&nbsp;</font>
+          </b>
+          You need vitality to create{' '}
+          <font color={clockMarauder}>Clockwork Marauders</font>, which is
+          gotten from sacrificing living beings to a{' '}
+          <font color={brassColor}>Vitality Sigil</font>.
+          <br />
+          <b>
+            <font color={brassColor}>Power:&nbsp;</font>
+          </b>
+          Watch your power upkeep! You're dependent on your cogged APCs to stay
+          powered, and a lot of structures can drain it quickly.
+          <br />
+          <b>
+            <font color={brassColor}>Your Base:&nbsp;</font>
+          </b>
+          Make sure to have a defensible base of operations! You're
+          significantly stronger while on brass tiles, so make your home
+          indefensible.
+          <br />
+          <b>
+            <font color={replicaFab}>Replica Fabricator:&nbsp;</font>
+          </b>
+          The Replica Fabricator is one of the strongest tools available to you,
+          via the <font color={tinkerCache}>Tinkerer's Cache</font>. It allows
+          the conversion of all materials into power, which can be used to
+          create floors, walls, and airlocks. The airlocks will shock all
+          non-cultists.
+          <br />
+          <b>
+            <font color={brassColor}>Nar'sie:&nbsp;</font>
+          </b>
+          Nar'sian cultists are your greatest foe! Some of your spells are less
+          effective on them, and vice-versa. What remains of Ratvar may reward a
+          vitality sacrifice of such heresy.
           <br />
           <br />
         </Section>
