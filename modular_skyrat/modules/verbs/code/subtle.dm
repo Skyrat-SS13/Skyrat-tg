@@ -49,7 +49,7 @@
 	if(hologram)
 		viewers |= get_hearers_in_view(SUBTLE_DEFAULT_DISTANCE, hologram)
 
-	for(var/obj/effect/overlay/holo_pad_hologram/hologram in viewers)
+	for(var/obj/effect/overlay/holo_pad_hologram/iterating_hologram in viewers)
 		if(hologram?.Impersonation?.client)
 			viewers |= hologram.Impersonation
 
