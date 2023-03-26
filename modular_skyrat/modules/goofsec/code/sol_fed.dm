@@ -6,7 +6,7 @@
 GLOBAL_VAR(caller_of_911)
 GLOBAL_VAR(call_911_msg)
 GLOBAL_VAR(pizza_order)
-GLOBAL_VAR_INIT(solfed_tech_charge, 15000)
+GLOBAL_VAR_INIT(solfed_tech_charge, -15000)
 GLOBAL_LIST_INIT(pizza_names, list(
 	"Dixon Buttes",
 	"I. C. Weiner",
@@ -79,7 +79,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		Stationwide atmospherics loss, wide-scale supermatter delamination related repairs, unending fires filling the hallways, or department-sized breaches with Engineering and Atmospherics unable to handle it, etc. \n\
 		You SHOULD NOT call Advanced Atmospherics for:\n\
 		A trashcan on fire in the library, a single breached room, heating issues, etc. - especially with capable Engineers/Atmos Techs.\n\
-		<b>There is a response fee of [GLOB.solfed_tech_charge] credits per emergency responder.</b>\n\
+		There is a response fee of [abs(GLOB.solfed_tech_charge)] credits per emergency responder.\n\
 		Are you sure you want to call Advanced Atmospherics?"
 ))
 
@@ -169,19 +169,23 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 			SSjob.SendToLateJoin(cop)
 			cop.grant_language(/datum/language/common, TRUE, TRUE, LANGUAGE_SPAWNER)
 
-			var/obj/item/gangster_cellphone/phone = new() // biggest gang in the city
-			phone.gang_id = cell_phone_number
-			phone.name = "[cell_phone_number] branded cell phone"
-			phone.w_class = WEIGHT_CLASS_SMALL	//They get that COMPACT phone hell yea
-			var/phone_equipped = phone.equip_to_best_slot(cop)
-			if(!phone_equipped)
-				to_chat(cop, "Your [phone.name] has been placed at your feet.")
-				phone.forceMove(get_turf(cop))
-			if(cops_to_send == /datum/antagonist/ert/request_911/atmos)
-				message_admins("Remove credits here.")
+			if(cops_to_send == /datum/antagonist/ert/request_911/atmos) // charge for atmos techs
+				var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_CAR)
+				station_balance?._adjust_money(GLOB.solfed_tech_charge)
+			else
+				var/obj/item/gangster_cellphone/phone = new() // biggest gang in the city
+				phone.gang_id = cell_phone_number
+				phone.name = "[cell_phone_number] branded cell phone"
+				phone.w_class = WEIGHT_CLASS_SMALL	//They get that COMPACT phone hell yea
+				var/phone_equipped = phone.equip_to_best_slot(cop)
+				if(!phone_equipped)
+					to_chat(cop, "Your [phone.name] has been placed at your feet.")
+					phone.forceMove(get_turf(cop))
 
 			//Logging and cleanup
 			log_game("[key_name(cop)] has been selected as an [ert_antag.name]")
+			if(cops_to_send == /datum/antagonist/ert/request_911/atmos)
+				log_game("[abs(GLOB.solfed_tech_charge)] has been charged from the station budget for [key_name(cop)]")
 			agents_number--
 	GLOB.cops_arrived = TRUE
 	return TRUE
