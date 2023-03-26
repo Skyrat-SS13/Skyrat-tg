@@ -2,6 +2,7 @@
 #define SOLFED_VOTES "votes"
 #define SOLFED_DECLARED "declared"
 #define SOLFED_FINE_AMOUNT -20000
+#define SOLFED_TECH_AMOUNT 15000
 
 GLOBAL_VAR(caller_of_911)
 GLOBAL_VAR(call_911_msg)
@@ -78,6 +79,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		Stationwide atmospherics loss, wide-scale supermatter delamination related repairs, unending fires filling the hallways, or department-sized breaches with Engineering and Atmospherics unable to handle it, etc. \n\
 		You SHOULD NOT call Advanced Atmospherics for:\n\
 		A trashcan on fire in the library, a single breached room, heating issues, etc. - especially with capable Engineers/Atmos Techs.\n\
+		<b>There is a response fee of 15,000 credits per emergency responder.</b>\n\
 		Are you sure you want to call Advanced Atmospherics?"
 ))
 
@@ -107,8 +109,6 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 			cops_to_send = /datum/antagonist/ert/request_911/atmos
 			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation's 811 dispatch. We've recieved a report of stationwide structural damage, atmospherics loss, fire, or otherwise, and we are \
 				sending an Advanced Atmospherics team to support your station.\n\n\
-				If the Advanced Atmospherics team requests that they need SWAT protection to do their job, or to report a faulty 811 call, we will send them in at additional cost to your station to the \
-				tune of $20,000.\n\n\
 				The transcript of the call is as follows:\n\
 				[GLOB.call_911_msg]"
 			announcer = "Sol Federation 811 Dispatch - Advanced Atmospherics"
@@ -177,6 +177,8 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 			if(!phone_equipped)
 				to_chat(cop, "Your [phone.name] has been placed at your feet.")
 				phone.forceMove(get_turf(cop))
+			if(cops_to_send == /datum/antagonist/ert/request_911/atmos)
+				message_admins("Remove credits here.")
 
 			//Logging and cleanup
 			log_game("[key_name(cop)] has been selected as an [ert_antag.name]")
