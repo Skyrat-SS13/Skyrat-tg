@@ -46,9 +46,6 @@
 
 /proc/collect_vv(obj/item/I)
 	//Temporary/Internal stuff, do not copy these.
-<<<<<<< HEAD
-	var/static/list/ignored_vars = list("vars","x","y","z","plane","layer","override","animate_movement","pixel_step_size","screen_loc","fingerprintslast","tip_timer")
-=======
 	var/static/list/ignored_vars = list(
 		NAMEOF(item, animate_movement),
 #ifndef EXPERIMENT_515_DONT_CACHE_REF
@@ -65,7 +62,6 @@
 		NAMEOF(item, y),
 		NAMEOF(item, z),
 	)
->>>>>>> 7d065395a62 (Experiment flag for not caching ref on 515 (#73903))
 
 	if(istype(I) && I.datum_flags & DF_VAR_EDITED)
 		var/list/vedits = list()
