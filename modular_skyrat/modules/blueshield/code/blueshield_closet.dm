@@ -6,8 +6,7 @@
 
 /obj/structure/closet/secure_closet/blueshield/New()
 	..()
-	new /obj/item/storage/briefcase(src)
-	new /obj/item/pinpointer/crew(src)
+	new /obj/item/storage/secure/briefcase(src)
 	new /obj/item/storage/belt/security/full(src)
 	new /obj/item/grenade/flashbang(src)
 	new /obj/item/assembly/flash/handheld(src)

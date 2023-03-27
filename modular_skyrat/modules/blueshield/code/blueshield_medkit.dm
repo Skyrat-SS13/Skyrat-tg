@@ -1,7 +1,7 @@
 /obj/item/storage/medkit/tactical/blueshield
 	name = "blueshield combat medical kit"
 	desc = "Blue boy to the rescue!"
-
+	color = "#AAAAFF"
 /obj/item/storage/medkit/tactical/blueshield/PopulateContents()
 	if(empty)
 		return
