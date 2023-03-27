@@ -42,6 +42,16 @@
 /obj/item/organ/internal/brain/Insert(mob/living/carbon/C, special = FALSE, drop_if_replaced = TRUE, no_id_transfer = FALSE)
 	. = ..()
 
+	// Transfer brainmob from the head if we're being transferred from a head to a new body.
+	// And example of this ocurring is reattaching an amputated/severed head via surgery.
+	if(istype(loc, /obj/item/bodypart/head))
+		var/obj/item/bodypart/head/brain_holder = loc
+		if(brain_holder.brainmob)
+			brainmob = brain_holder.brainmob
+			brain_holder.brainmob = null
+			brainmob.container = null
+			brainmob.forceMove(src)
+
 	name = initial(name)
 
 	if(C.mind && C.mind.has_antag_datum(/datum/antagonist/changeling) && !no_id_transfer) //congrats, you're trapped in a body you don't control
@@ -60,7 +70,7 @@
 		else
 			C.key = brainmob.key
 
-		C.set_suicide(brainmob.suiciding)
+		C.set_suicide(HAS_TRAIT(brainmob, TRAIT_SUICIDED))
 
 		QDEL_NULL(brainmob)
 
@@ -117,7 +127,10 @@
 	brainmob.name = L.real_name
 	brainmob.real_name = L.real_name
 	brainmob.timeofhostdeath = L.timeofdeath
-	brainmob.suiciding = suicided
+
+	if(suicided)
+		ADD_TRAIT(brainmob, TRAIT_SUICIDED, REF(src))
+
 	if(L.has_dna())
 		var/mob/living/carbon/C = L
 		if(!brainmob.stored_dna)
