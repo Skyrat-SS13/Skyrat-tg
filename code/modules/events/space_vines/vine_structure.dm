@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL
 // SPACE VINES (Note that this code is very similar to Biomass code)
 /obj/structure/spacevine
 	name = "space vine"
@@ -200,3 +201,4 @@
 	. = ..()
 	if(isvineimmune(mover))
 		return TRUE
+*/

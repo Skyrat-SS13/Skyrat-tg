@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL
 /datum/spacevine_controller
 	///Canonical list of all the vines we "own"
 	var/list/obj/structure/spacevine/vines
@@ -151,3 +152,4 @@
 		if((FACTION_VINES in victim.faction) || (FACTION_PLANTS in victim.faction))
 			return TRUE
 	return FALSE
+*/
