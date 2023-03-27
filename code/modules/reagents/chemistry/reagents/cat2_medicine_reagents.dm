@@ -511,14 +511,23 @@
 	inverse_chem = /datum/reagent/inverse/penthrite
 	inverse_chem_val = 0.25
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	/// List of traits to add/remove from our subject when we are in their system
+	var/static/list/subject_traits = list(
+		TRAIT_STABLEHEART,
+		TRAIT_NOHARDCRIT,
+		TRAIT_NOSOFTCRIT,
+		TRAIT_NOCRITDAMAGE,
+	)
+
+/atom/movable/screen/alert/penthrite
+	name = "Strong Heartbeat"
+	desc = "Your heart beats with great force!"
+	icon_state = "penthrite"
 
 /datum/reagent/medicine/c2/penthrite/on_mob_metabolize(mob/living/user)
 	. = ..()
-	user.balloon_alert(user, "your heart beats with a great force")
-	ADD_TRAIT(user, TRAIT_STABLEHEART, type)
-	ADD_TRAIT(user, TRAIT_NOHARDCRIT,type)
-	ADD_TRAIT(user, TRAIT_NOSOFTCRIT,type)
-	ADD_TRAIT(user, TRAIT_NOCRITDAMAGE,type)
+	user.throw_alert("penthrite", /atom/movable/screen/alert/penthrite)
+	user.add_traits(subject_traits, type)
 
 /datum/reagent/medicine/c2/penthrite/on_mob_life(mob/living/carbon/human/H, delta_time, times_fired)
 	H.adjustStaminaLoss(-25 * REM) //SKYRAT EDIT ADDITION - COMBAT - makes your heart beat faster, fills you with energy. For miners
@@ -549,11 +558,8 @@
 	. = ..()
 
 /datum/reagent/medicine/c2/penthrite/on_mob_end_metabolize(mob/living/user)
-	user.balloon_alert(user, "your heart relaxes")
-	REMOVE_TRAIT(user, TRAIT_STABLEHEART, type)
-	REMOVE_TRAIT(user, TRAIT_NOHARDCRIT,type)
-	REMOVE_TRAIT(user, TRAIT_NOSOFTCRIT,type)
-	REMOVE_TRAIT(user, TRAIT_NOCRITDAMAGE,type)
+	user.clear_alert("penthrite")
+	user.remove_traits(subject_traits, type)
 	. = ..()
 
 /datum/reagent/medicine/c2/penthrite/overdose_process(mob/living/carbon/human/H, delta_time, times_fired)
