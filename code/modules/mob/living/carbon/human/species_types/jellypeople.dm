@@ -53,10 +53,10 @@
 		regenerate_limbs = new
 		regenerate_limbs.Grant(new_jellyperson)
 		update_mail_goodies(new_jellyperson, list(/obj/item/reagent_containers/blood/toxin))
-	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	if(alter_form)
-		alter_form.Remove(old_jellyperson)
-	//SKYRAT EDIT ADDITION END
+		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+		alter_form = new
+		alter_form.Grant(new_jellyperson)
+		//SKYRAT EDIT ADDITION END
 	new_jellyperson.AddElement(/datum/element/soft_landing)
 
 /datum/species/jelly/on_species_loss(mob/living/carbon/former_jellyperson, datum/species/new_species, pref_load)

@@ -53,18 +53,12 @@
 	. = ..()
 	var/obj/item/storage/backpack/bag = new_snailperson.get_item_by_slot(ITEM_SLOT_BACK)
 	if(!istype(bag, /obj/item/storage/backpack/snail))
-<<<<<<< HEAD
-		if(C.dropItemToGround(bag)) //returns TRUE even if its null
-			C.equip_to_slot_or_del(new /obj/item/storage/backpack/snail(C), ITEM_SLOT_BACK)
-	C.AddElement(/datum/element/snailcrawl)
-	C.update_icons() //SKYRAT EDIT: Roundstart Snails
-=======
 		if(new_snailperson.dropItemToGround(bag)) //returns TRUE even if its null
 			new_snailperson.equip_to_slot_or_del(new /obj/item/storage/backpack/snail(new_snailperson), ITEM_SLOT_BACK)
 	new_snailperson.AddElement(/datum/element/snailcrawl)
+	new_snailperson.update_icons() //SKYRAT EDIT: Roundstart Snails
 	if(ishuman(new_snailperson))
 		update_mail_goodies(new_snailperson, list(/obj/item/reagent_containers/blood/snail))
->>>>>>> 8d7db532c0f (Reworks blood deficiency backend, & some adjustments to slime blood deficiency (#74143))
 
 /datum/species/snail/on_species_loss(mob/living/carbon/former_snailperson, datum/species/new_species, pref_load)
 	. = ..()
