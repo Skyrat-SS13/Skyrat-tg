@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL
 /// Determines brightness of the light emitted by kudzu with the light mutation
 #define LIGHT_MUTATION_BRIGHTNESS 4
 /// Kudzu light states
@@ -47,3 +48,4 @@
 
 /// Kudzu's maximum possible maximum mutation severity (assuming ideal potency), used to balance mutation appearance chance
 #define IDEAL_MAX_SEVERITY 20
+*/

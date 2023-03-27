@@ -28,4 +28,4 @@
 	if(length(turfs)) //Pick a turf to spawn at if we can
 		var/turf/floor = pick(turfs)
 		new /datum/spacevine_controller(floor, list(pick(subtypesof(/datum/spacevine_mutation))), rand(50,100), rand(1,4), src) //spawn a controller at turf with randomized stats and a single random mutation
-/*
+*/
