@@ -16,21 +16,25 @@
 	mag_type = /obj/item/ammo_box/magazine/cm68
 	fire_delay = 5
 	can_suppress = FALSE
-	burst_size = 0
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
+	burst_size = 1
+	actions_types = list()
 	mag_display = FALSE
 	mag_display_ammo = FALSE
 	empty_indicator = FALSE
 	recoil = 1
 	weapon_weight = WEAPON_HEAVY
 	pixel_x = -8
-	has_gun_safety = FALSE
 	w_class = WEIGHT_CLASS_BULKY
-	company_flag = COMPANY_CANTALAN
 
 /obj/item/gun/ballistic/automatic/cfa_rifle/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/scope, range_modifier = 1.5)
+
+/obj/item/gun/ballistic/automatic/cfa_rifle/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_CANTALAN)
+
+/obj/item/gun/ballistic/automatic/cfa_rifle/give_gun_safeties()
+	return
 
 /obj/item/gun/ballistic/automatic/cfa_rifle/empty
 	spawnwithmagazine = FALSE

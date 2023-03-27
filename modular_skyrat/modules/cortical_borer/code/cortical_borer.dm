@@ -356,7 +356,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 /mob/living/basic/cortical_borer/proc/leave_host()
 	if(!human_host)
 		return
-	var/obj/item/organ/internal/borer_body/borer_organ = locate() in human_host.internal_organs
+	var/obj/item/organ/internal/borer_body/borer_organ = locate() in human_host.organs
 	if(borer_organ)
 		borer_organ.Remove(human_host)
 	var/turf/human_turf = get_turf(human_host)
@@ -458,5 +458,5 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	chemical_storage = 250
 	chem_regen_per_level = 1.5
 	chem_storage_per_level = 25
-	
-#undef BODYTEMP_DIVISOR	
+
+#undef BODYTEMP_DIVISOR

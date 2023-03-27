@@ -513,18 +513,22 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	chemical_flags = REAGENT_DONOTSPLIT | REAGENT_DEAD_PROCESS
 	///If we brought someone back from the dead
 	var/back_from_the_dead = FALSE
+	/// List of trait buffs to give to the affected mob, and remove as needed.
+	var/static/list/trait_buffs = list(
+		TRAIT_NOCRITDAMAGE,
+		TRAIT_NOCRITOVERLAY,
+		TRAIT_NODEATH,
+		TRAIT_NOHARDCRIT,
+		TRAIT_NOSOFTCRIT,
+		TRAIT_STABLEHEART,
+	)
 
 /datum/reagent/inverse/penthrite/on_mob_dead(mob/living/carbon/affected_mob, delta_time)
 	var/obj/item/organ/internal/heart/heart = affected_mob.getorganslot(ORGAN_SLOT_HEART)
 	if(!heart || heart.organ_flags & ORGAN_FAILING)
 		return ..()
 	metabolization_rate = 0.2 * REM
-	ADD_TRAIT(affected_mob, TRAIT_STABLEHEART, type)
-	ADD_TRAIT(affected_mob, TRAIT_NOHARDCRIT, type)
-	ADD_TRAIT(affected_mob, TRAIT_NOSOFTCRIT, type)
-	ADD_TRAIT(affected_mob, TRAIT_NOCRITDAMAGE, type)
-	ADD_TRAIT(affected_mob, TRAIT_NODEATH, type)
-	ADD_TRAIT(affected_mob, TRAIT_NOCRITOVERLAY, type)
+	affected_mob.add_traits(trait_buffs, type)
 	affected_mob.set_stat(CONSCIOUS) //This doesn't touch knocked out
 	affected_mob.updatehealth()
 	affected_mob.update_sight()
@@ -581,12 +585,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	return..()
 
 /datum/reagent/inverse/penthrite/proc/remove_buffs(mob/living/carbon/affected_mob)
-	REMOVE_TRAIT(affected_mob, TRAIT_STABLEHEART, type)
-	REMOVE_TRAIT(affected_mob, TRAIT_NOHARDCRIT, type)
-	REMOVE_TRAIT(affected_mob, TRAIT_NOSOFTCRIT, type)
-	REMOVE_TRAIT(affected_mob, TRAIT_NOCRITDAMAGE, type)
-	REMOVE_TRAIT(affected_mob, TRAIT_NODEATH, type)
-	REMOVE_TRAIT(affected_mob, TRAIT_NOCRITOVERLAY, type)
+	affected_mob.remove_traits(trait_buffs, type)
 	affected_mob.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/nooartrium)
 	affected_mob.remove_actionspeed_modifier(/datum/actionspeed_modifier/nooartrium)
 	affected_mob.update_sight()
@@ -653,13 +652,12 @@ Basically, we fill the time between now and 2s from now with hands based off the
 	if(!(DT_PROB(creation_purity*10, delta_time)))
 		return
 	var/traumalist = subtypesof(/datum/brain_trauma)
-	var/list/forbiddentraumas = list(/datum/brain_trauma/severe/split_personality,  // Split personality uses a ghost, I don't want to use a ghost for a temp thing
+	var/list/forbiddentraumas = list(
+		/datum/brain_trauma/severe/split_personality,  // Split personality uses a ghost, I don't want to use a ghost for a temp thing
 		/datum/brain_trauma/special/obsessed, // Obsessed sets the owner as an antag - I presume this will lead to problems, so we'll remove it
-		/datum/brain_trauma/hypnosis // Hypnosis, same reason as obsessed, plus a bug makes it remain even after the neurowhine purges and then turn into "nothing" on the med reading upon a second application
-		)
-	// SKYRAT EDIT ADDITION START - No very special quirks gained by inverse neurine
-	forbiddentraumas += typesof(/datum/brain_trauma/very_special)
-	// SKYRAT EDIT END
+		/datum/brain_trauma/hypnosis, // Hypnosis, same reason as obsessed, plus a bug makes it remain even after the neurowhine purges and then turn into "nothing" on the med reading upon a second application
+		/datum/brain_trauma/special/honorbound, // Designed to be chaplain exclusive
+	)
 	traumalist -= forbiddentraumas
 	var/obj/item/organ/internal/brain/brain = affected_mob.getorganslot(ORGAN_SLOT_BRAIN)
 	traumalist = shuffle(traumalist)
