@@ -27,13 +27,12 @@
 					/obj/item/spanking_pad,
 					/obj/item/clothing/sextoy/vibrator,
 					/obj/item/restraints/handcuffs/lewd,
-					/obj/item/fancy_pillow,
 
 					// Head / Mask /Neck Items
 					/obj/item/clothing/mask/ballgag,
 					/obj/item/clothing/mask/ballgag/choking,
 					/obj/item/clothing/mask/muzzle/ring,
-					/obj/item/clothing/head/helmet/space/deprivation_helmet,
+					/obj/item/clothing/head/deprivation_helmet,
 					/obj/item/clothing/glasses/blindfold/kinky,
 					/obj/item/clothing/ears/kinky_headphones,
 					/obj/item/clothing/mask/gas/bdsm_mask,

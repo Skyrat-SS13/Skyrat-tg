@@ -25,9 +25,6 @@
 /datum/opposing_force_equipment/ammo/ppsh
 	item_type = /obj/item/ammo_box/magazine/ppsh
 
-/datum/opposing_force_equipment/ammo/stg
-	item_type = /obj/item/ammo_box/magazine/stg
-
 /datum/opposing_force_equipment/ammo/fg42
 	item_type = /obj/item/ammo_box/magazine/fg42
 	description = "A twenty round magazine for the FG-42. Uses 7.92x57mm ammunition."
@@ -36,11 +33,9 @@
 	item_type = /obj/item/ammo_box/magazine/uzim9mm
 	description = "A thirty-two round magazine for the mini uzi. Uses 9x19mm ammunition."
 
-/datum/opposing_force_equipment/ammo/mg34
-	item_type = /obj/item/ammo_box/magazine/mg34
-
-/datum/opposing_force_equipment/ammo/mg42
-	item_type = /obj/item/ammo_box/magazine/mg42
+/datum/opposing_force_equipment/ammo/lynx
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx
+	description = "A forty round magazine for CFA Lynx and QLP/04 submachine guns."
 
 /datum/opposing_force_equipment/ammo/cm68
 	item_type = /obj/item/ammo_box/magazine/cm68
@@ -236,6 +231,7 @@
 /datum/opposing_force_equipment/ammo/bulldogstun
 	name = "Bulldog Magazine (Stun)"
 	item_type = /obj/item/ammo_box/magazine/m12g/stun
+	admin_note = "WARNING: These are essentially the same shots the AI taser-turrets shoot."
 
 /datum/opposing_force_equipment/ammo/bulldogfire
 	name = "Bulldog Magazine (Incendiary)"
