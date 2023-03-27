@@ -15,9 +15,10 @@
 	} \
 	else { \
 		ASYNC { \
-			call(proc_owner, proc_path)(##proc_arguments); \
+			/* Written with `0 ||` to avoid the compiler seeing call("string"), and thinking it's a deprecated DLL */ \
+			call(0 || proc_owner, proc_path)(##proc_arguments); \
 		}; \
-	} 
+	}
 
 /// like CALLBACK but specifically for verb callbacks
 #define VERB_CALLBACK new /datum/callback/verb_callback
