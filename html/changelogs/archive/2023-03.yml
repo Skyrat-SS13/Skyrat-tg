@@ -1121,3 +1121,145 @@
   softcerv:
   - rscadd: Adds in the Poem of Communal Souls NIFSoft, see ((https://github.com/Skyrat-SS13/Skyrat-tg/pull/19884))
       for more details
+2023-03-25:
+  GoldenAlpharex:
+  - bugfix: Fixes limbs not properly storing their external organs, resulting in issues
+      when calculating the bodytypes.
+  GoldenAlpharex, Time-Green:
+  - bugfix: Fixed some potential future runtimes relatively to the new bodypart overlay
+      system's coloring procs.
+  - qol: Hardcore random gets a sixpack
+  LT3:
+  - balance: Cargo can print the RPD again
+  - code_imp: Access key rings added to list on creation
+  - code_imp: Access keys unregister signal when destroyed
+  LordVollkorn / Gage Gaebler:
+  - rscadd: Added Traveler's Rest, a tiny space structure for space travellers to
+      relax and to prepare for the explorations ahead.
+  SkyratBot:
+  - bugfix: canvas getting finalized with untitled name when naming is cancelled
+  - refactor: refactored *blush and *cry emote visuals into bodypart_overlays
+  - rscdel: lack of eyes will no longer prevent the *cry emote overlay from displaying
+  - bugfix: pod person hair can be once again styled by secateaurs
+  - qol: Prosthesis organ manipulation now warns you if you are using the incorrect
+      engineering tool
+  - rscadd: Xenomorphs born in the room the roundstart delivery egg was spawned in
+      will be part of a special "captive xenomorph" team, tasked with escaping and
+      tracked in the roundend report.
+  - bugfix: Regular Xenomorphs no longer receive a blank objectives popup on spawn.
+  - bugfix: Androids now properly have robotic wings instead of moth wings.
+  - bugfix: fixes deadly harvesting just taking harmless extorgans
+  - code_imp: renames internal_organs to organs now that it can also contain external_organs
+  - qol: adds the weight class 'tiny' to paper slips
+  - qol: It is now obvious when examining volume pumps that you can multitool them
+      to overclock them to disable pressure limits and spill gas out. Overclocked
+      volume pumps flash lights
+  - code_imp: Lightbulb removal code is a little bit easier to read
+  - spellcheck: The lightbulb remover skillchip implant (which I know you guys LOVE
+      to use) has a slightly different message now.
+  - bugfix: the orm will no longer display weird decimals
+  - bugfix: all space ruins can now appear on Linux servers
+  - bugfix: added lights to the tramstation head of personnel's office
+  Useroth:
+  - refactor: Standarized flavourtext displaying for all silicons (AIs, borgs, pAI
+      holo forms)
+  - rscadd: AI eye can now see emotes (or to be specific, **non-spoken** messages
+      emitted from things)
+  - rscadd: It's now possible to examine holopad holograms during the call to actually
+      examine the character represented by the holo
+  - rscadd: It's now possible to properly send emotes, subtles and subtlers through
+      holopad holograms
+  - rscadd: It's now possible to properly see emotes, subtles and subtlers through
+      holopad holograms
+  - rscadd: 'BONUS because I hate snowflake code: the above should work with regular
+      character-made holocalls too'
+  - bugfix: SQL errors when using subtle or subtler without db connection
+  softcerv:
+  - rscdel: the milking machine no longer uses power cells.
+  - bugfix: the milking machine is now able to successfully extract reagents without
+      runtiming.
+  - code_imp: the parented_struct variable, now turned into a weakref, now only applies
+      to adult furniture.
+2023-03-26:
+  123Neok321:
+  - rscadd: Side swept back horns tyle, reptile slim tail.
+  LT3:
+  - code_imp: Latejoin janitors now also get access keys, to a maximum of 3
+  PositiveEntropy:
+  - imageadd: Redoes The Safes!
+  SkyratBot:
+  - bugfix: The intern who was recording Etheral crewmembers' bloodtypes as random
+      human bloodtypes has been replaced with an intern who has seen the example made
+      of the previous one.
+  - bugfix: Removing a storage implant from someone will dump the items on the ground
+      rather than inside the mob.
+  - bugfix: Wizard Apprentices can no longer draw their own ritual circles.
+  - imageadd: prettified all RTD icons
+  - imageadd: prettified in hand RLD icons
+  - imageadd: subtly improved the RSF icons
+  - rscadd: Bioscrambler anomalies will once again swap your organs with other organs.
+  - balance: Bioscrambler anomalies no longer affect synthetic parts.
+  - rscadd: Wirebrush is now avalaible at janivend, for janiborg and you can put it
+      in the janibelt.
+  - bugfix: Circuit-based bluespace launchpads now work again!
+  - bugfix: You can no longer use Pocket Protectors to pull items out of nullspace
+  - bugfix: drawing from an empty tarot card deck no longer causes runtimes
+  - bugfix: broken sprites in RCD UI
+  - bugfix: Thrown reagent containers (beakers, molotovs) hitting mobs no longer fully
+      splash their target with their contents, as this was unintended behavior. The
+      intended behavior was 0-50% of the splashed reagents being ignored. Throwing
+      stuff at floors/walls is unaffected.
+  - rscadd: Added skirt variants of the galaxy suits
+2023-03-27:
+  HWSensum:
+  - bugfix: Energy gun holster now will contain termal pistols rather be empty.
+  Jolly:
+  - bugfix: The directional states for the toppled wooden chair sprites are now consistent.
+      You really can't tell visually, but its been fixed.
+  - imageadd: Using the new wooden chair sprites, there's now new toppled wooden chair
+      sprites. Go wild. Have a ballroom brawl or something.
+  LT3:
+  - imageadd: Solo benches are no longer invisible when facing east/west
+  - imageadd: Fire alarm sprites are directional again
+  Melbert:
+  - balance: Magboots will now protect you from sliding on ice. It will not stop the
+      slip, though.
+  - bugfix: '"Ice sliding" (from patches of permafrost ice) will now correctly slide
+      you until you reach a non-ice patch.'
+  - bugfix: Speed potioned magboots maintain their speed booster after toggling them
+  - refactor: Refactored magboots.
+  - refactor: Refactored noslip mechanics.
+  SkyratBot:
+  - bugfix: Plasmamen don't have hearts, again
+  - bugfix: aux construction console RCD works again
+  - balance: Putting a non-clothing item onto someone else creates a visible message
+      the same way a clothing item would.
+  - refactor: Stickers use a component and an element now to do their sticking
+  - rscadd: I made circuit floors brighter and more vivid.
+  - rscadd: Made air alarms, vending machines, newscasters, request consoles, status
+      displays and keycard machines slightly "brighter" (larger light range, tho I
+      did make air alarms a bit brighter too)
+  - rscadd: Tweaked desklamps. Lower range, and each type gets its own coloring instead
+      of just fullwhite.
+  - bugfix: AI displays are no longer always emissive, they'll stop doing it if they
+      aren't displaying anything. Hopefully this'll look nicer
+  - qol: guillotine description tips are now span_notices (blue text) instead of just
+      a bunch of grey text.
+  - bugfix: fixed a bug that if you try to behead body without a head with guillotine
+      it just stops working.
+  - balance: midwife spider eggs now spawn in separate locations. Divide and conquer!
+  - bugfix: midwife spider eggs can no longer generate in atmos-hazardous areas.
+  - bugfix: area machinery from breaking after creating & modifying areas via the
+      station blueprints.
+  - refactor: turfs are cannonized from areas during creation/editing operations &
+      empty areas are deleted
+  - refactor: removed duplicate Initialize() from light switch
+  - refactor: arcd has all upgrades installed
+  - bugfix: vents & scrubbers getting assigned twice to an area when it's merged with
+      another area via station blueprints
+  - refactor: merged` Initialize()` & `New()` of vents & scrubbers into just `Initialize()`
+  - bugfix: Fixes decals layering weird in some cases
+  - bugfix: the jobs columns in the View Crew Manifest window are now uniformly aligned
+      across department headers
+  - bugfix: extremely long crewmember names are now truncated in the default view
+      for the Crew Manifest window
