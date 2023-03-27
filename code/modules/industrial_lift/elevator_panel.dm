@@ -177,7 +177,7 @@
 		var/preset_name = preset_destination_names?[num2text(z_level - 1)] // SKYRAT EDIT CHANGE - Z Levels
 		// If we don't have a preset name, use Floor z-1 for the title.
 		// z - 1 is used because the station z-level is 2, and goes up.
-		linked_elevator_destination["[z_level]"] = preset_name || "Floor [z_level - 1]" // SKYRAT EDIT CHANGE - Z Levels
+		linked_elevator_destination["[z_level]"] = preset_name || "Floor [z_level - 2]" // SKYRAT EDIT CHANGE - Z Levels
 
 	// Reverse the destination list.
 	// By this point the list will go from bottom floor to top floor,
