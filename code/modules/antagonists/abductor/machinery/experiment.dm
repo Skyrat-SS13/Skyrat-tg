@@ -28,15 +28,11 @@
 		return
 	close_machine(target)
 
-<<<<<<< HEAD
-/obj/machinery/abductor/experiment/open_machine()
-=======
 /obj/machinery/abductor/experiment/open_machine(drop = TRUE, density_to_set = FALSE)
->>>>>>> fcdbb85fc97 (Fixes machines not releasing their contents when opened (such as mobs), when they otherwise should. (#74215))
 	if(!state_open && !panel_open)
 		..()
 
-/obj/machinery/abductor/experiment/close_machine(mob/target)
+/obj/machinery/abductor/experiment/close_machine(mob/target, density_to_set = TRUE)
 	for(var/A in loc)
 		if(isabductor(A))
 			return

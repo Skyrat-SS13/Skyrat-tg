@@ -48,11 +48,7 @@
 /obj/machinery/skill_station/relaymove(mob/living/user, direction)
 	open_machine()
 
-<<<<<<< HEAD
-/obj/machinery/skill_station/open_machine()
-=======
 /obj/machinery/skill_station/open_machine(drop = TRUE, density_to_set = FALSE)
->>>>>>> fcdbb85fc97 (Fixes machines not releasing their contents when opened (such as mobs), when they otherwise should. (#74215))
 	. = ..()
 	interrupt_operation()
 
@@ -67,7 +63,7 @@
 	if(working)
 		interrupt_operation()
 
-/obj/machinery/skill_station/close_machine(atom/movable/target)
+/obj/machinery/skill_station/close_machine(atom/movable/target, density_to_set = TRUE)
 	. = ..()
 	if(occupant)
 		ui_interact(occupant)
@@ -232,7 +228,7 @@
 		.["slots_max"] = null
 		return
 
-	var/obj/item/organ/internal/brain/occupant_brain = carbon_occupant.getorganslot(ORGAN_SLOT_BRAIN)
+	var/obj/item/organ/internal/brain/occupant_brain = carbon_occupant.get_organ_slot(ORGAN_SLOT_BRAIN)
 
 	// If there's no brain, we don't need to worry either.
 	if(QDELETED(occupant_brain))
@@ -275,7 +271,7 @@
 				return TRUE
 			var/chipref = params["ref"]
 			var/mob/living/carbon/carbon_occupant = occupant
-			var/obj/item/organ/internal/brain/occupant_brain = carbon_occupant.getorganslot(ORGAN_SLOT_BRAIN)
+			var/obj/item/organ/internal/brain/occupant_brain = carbon_occupant.get_organ_slot(ORGAN_SLOT_BRAIN)
 			if(QDELETED(carbon_occupant) || QDELETED(occupant_brain))
 				return TRUE
 			var/obj/item/skillchip/to_be_removed = locate(chipref) in occupant_brain.skillchips
@@ -300,7 +296,7 @@
 				stack_trace("[usr] tried to toggle skillchip activation when [src] was in an invalid state.")
 				return TRUE
 			var/mob/living/carbon/carbon_occupant = occupant
-			var/obj/item/organ/internal/brain/occupant_brain = carbon_occupant.getorganslot(ORGAN_SLOT_BRAIN)
+			var/obj/item/organ/internal/brain/occupant_brain = carbon_occupant.get_organ_slot(ORGAN_SLOT_BRAIN)
 			if(QDELETED(carbon_occupant) || QDELETED(occupant_brain))
 				return TRUE
 			var/obj/item/skillchip/to_be_removed = locate(chipref) in occupant_brain.skillchips
