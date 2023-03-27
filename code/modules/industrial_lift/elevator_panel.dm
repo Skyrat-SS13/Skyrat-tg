@@ -315,7 +315,7 @@
 
 			// The emergency door button is only available at red alert or higher.
 			// This is so people don't keep it in emergency mode 100% of the time.
-			if(SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_RED && !SSsecurity_level.get_current_level_as_number() == SEC_LEVEL_ORANGE )
+			if(SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_RED && !SSsecurity_level.get_current_level_as_number() == SEC_LEVEL_ORANGE) // SKYRAT EDIT CHANGE - Security Levels
 				return TRUE // The security level might have been lowered since last update, so update UI
 
 			// Open all lift doors, it's an emergency dang it!
