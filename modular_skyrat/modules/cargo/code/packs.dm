@@ -262,12 +262,12 @@
 *	MISC
 */
 
-/datum/supply_pack/misc/medibeam //Moved to Misc so Medical can't order them for free through department consoles and break the economy.
-	name = "Medical Beam Gun"
-	desc = "Nanotrasen offers you, for an exorbatant fee, the ability to lease one of their ERTs favorite gadgets, the Medical Beam Gun"
+/datum/supply_pack/misc/speedbike //If you see this bought in game, its time to nerf a cargo exploit.
+	name = "Speedbike"
+	desc = "Put your shades on, saddle up, and ride off directly into the sun on this turbo deluxe space-cruising speedbike."
 	cost = 1000000 //Special case, we don't want to make this in terms of crates because having bikes be a million credits is the whole meme.
-	contains = list(/obj/item/gun/medbeam)
-	crate_name = "medical beamgun crate"
+	contains = list(/obj/vehicle/ridden/speedbike)
+	crate_name = "speedbike crate"
 
 /datum/supply_pack/misc/painting
 	name = "Advanced Art Supplies"
