@@ -7,6 +7,7 @@
 	layer = 4
 	item_chair = null
 	buildstacktype = null
+	flags_1 = NODECONSTRUCT_1
 	///Overlays for ropes
 	var/static/mutable_appearance/shibari_rope_overlay
 	var/static/mutable_appearance/shibari_rope_overlay_behind
@@ -183,66 +184,32 @@
 	desc = "A shibari rope for restraining hands."
 	breakouttime = 2 MINUTES
 
-/obj/item/shibari_stand_kit
-	name = "shibari stand construction kit"
-	desc = "Construction requires a wrench."
-	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
-	icon_state = "shibari_kit"
-	w_class = WEIGHT_CLASS_HUGE
-
-	greyscale_config = /datum/greyscale_config/shibari_stand_item
-	greyscale_colors = "#bd8fcf"
-
-//Changing examine for this item
-/obj/item/shibari_stand_kit/examine(mob/user)
-	.=..()
-	. += span_notice("Looks like it can be customized with a <b>screwdriver</b>.")
-
-//to change model
-/obj/item/shibari_stand_kit/screwdriver_act(mob/living/user, obj/item/tool)
-	var/list/allowed_configs = list()
-	allowed_configs += "[greyscale_config]"
-	if(!tool.use_tool(src, user, 0, volume = 40))
-		return FALSE
-	var/datum/greyscale_modify_menu/menu = new(
-		src, usr, allowed_configs, null, \
-		starting_icon_state = icon_state, \
-		starting_config = greyscale_config, \
-		starting_colors = greyscale_colors
-	)
-	menu.ui_interact(usr)
-	to_chat(user, span_notice("You switch the frame's plastic fittings color."))
-	return TRUE
-
-//Assembling shibari stand
-/obj/item/shibari_stand_kit/wrench_act(mob/living/user, obj/item/tool)
-	to_chat(user, span_notice("You begin fastening the frame to the floor."))
-	if(!tool.use_tool(src, user, 8 SECONDS, volume = 50))
-		return FALSE
-	to_chat(user, span_notice("You assemble the frame."))
-	var/obj/structure/chair/shibari_stand/stand = new(get_turf(src))
-	stand.set_greyscale(greyscale_colors)
-	qdel(src)
-	return TRUE
-
 //Disassembling shibari stand
-/obj/structure/chair/shibari_stand/wrench_act(mob/living/user, obj/item/tool)
-	to_chat(user, span_notice("You begin unfastening the frame of \the [src]..."))
-	if(!tool.use_tool(src, user, 8 SECONDS, volume = 50))
+/obj/structure/chair/shibari_stand/CtrlShiftClick(mob/user)
+	. = ..()
+	if(. == FALSE)
 		return FALSE
+
+	to_chat(user, span_notice("You begin unfastening the frame of \the [src]..."))
+	if(!do_after(user, 8 SECONDS, src))
+		to_chat(user, span_warning("You fail to disassemble \the [src]."))
+		return FALSE
+
 	to_chat(user, span_notice("You disassemble \the [src]."))
-	var/obj/item/shibari_stand_kit/kit = new(get_turf(src))
+	var/obj/item/construction_kit/bdsm/shibari/kit = new(get_turf(src))
 	kit.set_greyscale(greyscale_colors)
 	unbuckle_all_mobs()
 	qdel(src)
 	return TRUE
 
 //Changing color of shibari stand
-/obj/structure/chair/shibari_stand/screwdriver_act(mob/living/user, obj/item/tool)
+/obj/structure/chair/shibari_stand/CtrlClick(mob/user)
+	. = ..()
+	if(. == FALSE)
+		return FALSE
+
 	var/list/allowed_configs = list()
 	allowed_configs += "[greyscale_config]"
-	if(!tool.use_tool(src, user, 0, volume = 40))
-		return FALSE
 	var/datum/greyscale_modify_menu/menu = new(
 		src, usr, allowed_configs, null, \
 		starting_icon_state = icon_state, \
@@ -252,3 +219,8 @@
 	menu.ui_interact(usr)
 	to_chat(user, span_notice("You switch the frame's plastic fittings color."))
 	return TRUE
+
+/obj/structure/chair/shibari_stand/examine(mob/user)
+	. = ..()
+	. += span_purple("[src] can be disassembled by using <b>Ctrl+Shift+Click<b>")
+	. += span_purple("[src]'s color can be customized with <b>Ctrl+Click</b>.")
