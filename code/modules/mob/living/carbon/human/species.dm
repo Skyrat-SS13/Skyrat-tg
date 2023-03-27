@@ -1253,7 +1253,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		return
 	//Check if we can do a grab maneuver, if so, attempt it - SKYRAT EDIT ADDITION
 	if(target.pulledby && target.pulledby == owner && owner.grab_state && try_grab_maneuver(target, owner, modifiers))
-		message_admins("gamer! We try grab maneuver")
 		return //SKYRAT EDIT END
 	SEND_SIGNAL(owner, COMSIG_MOB_ATTACK_HAND, owner, target, attacker_style)
 
