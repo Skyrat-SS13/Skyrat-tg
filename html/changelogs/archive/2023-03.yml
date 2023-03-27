@@ -1210,3 +1210,56 @@
       intended behavior was 0-50% of the splashed reagents being ignored. Throwing
       stuff at floors/walls is unaffected.
   - rscadd: Added skirt variants of the galaxy suits
+2023-03-27:
+  HWSensum:
+  - bugfix: Energy gun holster now will contain termal pistols rather be empty.
+  Jolly:
+  - bugfix: The directional states for the toppled wooden chair sprites are now consistent.
+      You really can't tell visually, but its been fixed.
+  - imageadd: Using the new wooden chair sprites, there's now new toppled wooden chair
+      sprites. Go wild. Have a ballroom brawl or something.
+  LT3:
+  - imageadd: Solo benches are no longer invisible when facing east/west
+  - imageadd: Fire alarm sprites are directional again
+  Melbert:
+  - balance: Magboots will now protect you from sliding on ice. It will not stop the
+      slip, though.
+  - bugfix: '"Ice sliding" (from patches of permafrost ice) will now correctly slide
+      you until you reach a non-ice patch.'
+  - bugfix: Speed potioned magboots maintain their speed booster after toggling them
+  - refactor: Refactored magboots.
+  - refactor: Refactored noslip mechanics.
+  SkyratBot:
+  - bugfix: Plasmamen don't have hearts, again
+  - bugfix: aux construction console RCD works again
+  - balance: Putting a non-clothing item onto someone else creates a visible message
+      the same way a clothing item would.
+  - refactor: Stickers use a component and an element now to do their sticking
+  - rscadd: I made circuit floors brighter and more vivid.
+  - rscadd: Made air alarms, vending machines, newscasters, request consoles, status
+      displays and keycard machines slightly "brighter" (larger light range, tho I
+      did make air alarms a bit brighter too)
+  - rscadd: Tweaked desklamps. Lower range, and each type gets its own coloring instead
+      of just fullwhite.
+  - bugfix: AI displays are no longer always emissive, they'll stop doing it if they
+      aren't displaying anything. Hopefully this'll look nicer
+  - qol: guillotine description tips are now span_notices (blue text) instead of just
+      a bunch of grey text.
+  - bugfix: fixed a bug that if you try to behead body without a head with guillotine
+      it just stops working.
+  - balance: midwife spider eggs now spawn in separate locations. Divide and conquer!
+  - bugfix: midwife spider eggs can no longer generate in atmos-hazardous areas.
+  - bugfix: area machinery from breaking after creating & modifying areas via the
+      station blueprints.
+  - refactor: turfs are cannonized from areas during creation/editing operations &
+      empty areas are deleted
+  - refactor: removed duplicate Initialize() from light switch
+  - refactor: arcd has all upgrades installed
+  - bugfix: vents & scrubbers getting assigned twice to an area when it's merged with
+      another area via station blueprints
+  - refactor: merged` Initialize()` & `New()` of vents & scrubbers into just `Initialize()`
+  - bugfix: Fixes decals layering weird in some cases
+  - bugfix: the jobs columns in the View Crew Manifest window are now uniformly aligned
+      across department headers
+  - bugfix: extremely long crewmember names are now truncated in the default view
+      for the Crew Manifest window
