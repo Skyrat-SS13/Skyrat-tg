@@ -72,14 +72,9 @@
 *	ATMOS TECH
 */
 /datum/armor/atmos_adv
-	melee = 30
-	bullet = 30
-	laser = 30
-	energy = 30
-	bomb = 30
+	bio = 40
 	fire = 70
 	acid = 70
-	wound = 20
 
 /obj/item/clothing/under/rank/engineering/atmospheric_technician/skyrat/utility/advanced
 	name = "advanced atmospherics uniform"
