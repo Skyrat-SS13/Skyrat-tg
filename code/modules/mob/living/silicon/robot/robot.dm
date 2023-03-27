@@ -101,6 +101,13 @@
 		modularInterface.saved_job = "Cyborg"
 	return ..()
 
+/mob/living/silicon/robot/set_suicide(suicide_state)
+	. = ..()
+	if(mmi)
+		if(mmi.brain)
+			mmi.brain.suicided = suicide_state
+		if(suicide_state && mmi.brainmob)
+			ADD_TRAIT(mmi.brainmob, TRAIT_SUICIDED, REF(src))
 
 /**
  * Sets the tablet theme and icon
@@ -163,12 +170,6 @@
 	//Show alerts window if user clicked on "Show alerts" in chat
 	if(href_list["showalerts"])
 		alert_control.ui_interact(src)
-	// SKYRAT EDIT ADDITION -- Customization
-	if(href_list["lookup_info"])
-		tgui.holder = src
-		tgui.ui_interact(usr) //datum has a tgui component, here we open the window
-	// SKYRAT EDIT END
-
 
 /mob/living/silicon/robot/get_cell()
 	return cell
