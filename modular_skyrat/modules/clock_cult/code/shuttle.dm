@@ -4,9 +4,6 @@
 	hidden = TRUE
 	dir = 8
 	port_direction = 4
-	height = 32
-	width = 21
-	dwidth = 10
 
 /obj/docking_port/mobile/cult_meteor
 	name = "The Bloody Revenge"
@@ -14,9 +11,6 @@
 	hidden = TRUE
 	dir = 4
 	port_direction = 8
-	height = 22
-	width = 11
-	dwidth = 9
 
 /area/shuttle/clock_ship
 	name = "T.G.E. Brass Hope"

@@ -207,11 +207,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 
 	return control_computer_weakref != null
 
-<<<<<<< HEAD
-/obj/machinery/cryopod/close_machine(atom/movable/target, density_to_set)
-=======
 /obj/machinery/cryopod/close_machine(atom/movable/target, density_to_set = TRUE)
->>>>>>> cd7b6bb74a226e265983b256bb42bae662ef17bb
 	if(!control_computer_weakref)
 		find_control_computer(TRUE)
 	if((isnull(target) || isliving(target)) && state_open && !panel_open)
@@ -231,11 +227,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 
 		COOLDOWN_START(src, despawn_world_time, time_till_despawn)
 
-<<<<<<< HEAD
-/obj/machinery/cryopod/open_machine(drop, density_to_set)
-=======
 /obj/machinery/cryopod/open_machine(drop = TRUE, density_to_set = FALSE)
->>>>>>> cd7b6bb74a226e265983b256bb42bae662ef17bb
 	..()
 	set_density(TRUE)
 	name = initial(name)
