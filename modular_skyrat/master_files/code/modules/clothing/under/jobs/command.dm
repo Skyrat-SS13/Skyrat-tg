@@ -46,6 +46,7 @@
 	armor_type = /datum/armor/rank_blueshield
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
+	alt_covers_chest = TRUE
 
 /datum/armor/rank_blueshield
 	melee = 10
@@ -64,6 +65,7 @@
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	gets_cropped_on_taurs = FALSE
 
 /obj/item/clothing/under/rank/blueshield/turtleneck
 	name = "blueshield's turtleneck"
@@ -78,6 +80,7 @@
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	gets_cropped_on_taurs = FALSE
 
 /*
 *	NT CONSULTANT
@@ -102,6 +105,7 @@
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	gets_cropped_on_taurs = FALSE
 
 /*
 *	UNASSIGNED (Any head of staff)
@@ -116,11 +120,6 @@
 /obj/item/clothing/under/rank/captain/skyrat/utility/syndicate
 	armor_type = /datum/armor/utility_syndicate
 	has_sensor = NO_SENSORS
-
-/datum/armor/utility_syndicate
-	melee = 10
-	fire = 50
-	acid = 40
 
 /obj/item/clothing/under/rank/captain/skyrat/imperial/generic
 	desc = "A grey naval suit with a rank badge denoting an Officer. Doesn't protect against blaster fire."

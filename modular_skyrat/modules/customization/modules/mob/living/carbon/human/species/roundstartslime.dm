@@ -2,7 +2,6 @@
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
-		NOBLOOD,
 		HAIR,
 		FACEHAIR,
 	)
@@ -63,6 +62,22 @@
 	var/slime_restricted = TRUE
 	///Is the person using this ability oversized?
 	var/oversized_user = FALSE
+	///What text is shown to others when the person uses the ability?
+	var/shapeshift_text = "gains a look of concentration while standing perfectly still. Their body seems to shift and starts getting more goo-like."
+	///List containing all of the avalible parts
+	var/static/list/available_choices
+
+/datum/action/innate/alter_form/New(Target)
+	. = ..()
+	if(length(available_choices))
+		return
+
+	available_choices = deep_copy_list(GLOB.sprite_accessories)
+	for(var/parts_list in available_choices)
+		for(var/parts in available_choices[parts_list])
+			var/datum/sprite_accessory/part = available_choices[parts_list][parts]
+			if(part.locked)
+				available_choices[parts_list] -= parts
 
 /datum/action/innate/alter_form/unrestricted
 	slime_restricted = FALSE
@@ -72,7 +87,7 @@
 	if(slime_restricted && !isjellyperson(alterer))
 		return
 	alterer.visible_message(
-		span_notice("[owner] gains a look of concentration while standing perfectly still. Their body seems to shift and starts getting more goo-like."),
+		span_notice("[owner] [shapeshift_text]"),
 		span_notice("You focus intently on altering your body while standing perfectly still...")
 	)
 	change_form(alterer)
@@ -322,7 +337,8 @@
 	)
 	if(!chosen_key)
 		return
-	var/choice_list = GLOB.sprite_accessories[chosen_key]
+
+	var/choice_list = available_choices[chosen_key]
 	var/chosen_name_key = tgui_input_list(
 		alterer,
 		"What do you want the part to become?",

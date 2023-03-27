@@ -55,13 +55,15 @@
 	else
 		M.visible_message(span_warning("[user] attempts to feed [M] from [src]."), \
 			span_warning("[user] attempts to feed you from [src]."))
-		if(!do_mob(user, M))
+		if(!do_after(user, 3 SECONDS, M))
 			return
 		if(!reagents || !reagents.total_volume)
 			return // The condiment might be empty after the delay.
 		M.visible_message(span_warning("[user] fed [M] from [src]."), \
 			span_warning("[user] fed you from [src]."))
 		log_combat(user, M, "fed", reagents.get_reagent_log_string())
+
+	SEND_SIGNAL(M, COMSIG_GLASS_DRANK, src, user) // SKYRAT EDIT ADDITION - Hemophages can't casually drink what's not going to regenerate their blood
 	reagents.trans_to(M, 10, transfered_by = user, methods = INGEST)
 	playsound(M.loc,'sound/items/drink.ogg', rand(10,50), TRUE)
 	return TRUE
@@ -306,6 +308,15 @@
 	desc = "A jar of sweet and viscous honey."
 	icon_state = "honey"
 	list_reagents = list(/datum/reagent/consumable/honey = 50)
+	fill_icon_thresholds = null
+
+/obj/item/reagent_containers/condiment/ketchup
+	name = "ketchup"
+	// At time of writing, "ketchup" mechanically, is just ground tomatoes,
+	// rather than // tomatoes plus vinegar plus sugar.
+	desc = "A tomato slurry in a tall plastic bottle. Somehow still vaguely American."
+	icon_state = "ketchup"
+	list_reagents = list(/datum/reagent/consumable/ketchup = 50)
 	fill_icon_thresholds = null
 
 //technically condiment packs but they are non transparent

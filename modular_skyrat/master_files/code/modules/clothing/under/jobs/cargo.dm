@@ -25,11 +25,6 @@
 	armor_type = /datum/armor/utility_syndicate
 	has_sensor = NO_SENSORS
 
-/datum/armor/utility_syndicate
-	melee = 10
-	fire = 50
-	acid = 40
-
 /obj/item/clothing/under/rank/cargo/tech/skyrat/long
 	name = "cargo technician's long jumpsuit"
 	desc = "For crate-pushers who'd rather protect their legs than show them off."

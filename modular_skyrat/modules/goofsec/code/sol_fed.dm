@@ -167,7 +167,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 			cop.mind.add_antag_datum(ert_antag)
 			cop.mind.set_assigned_role(SSjob.GetJobType(ert_antag.ert_job_path))
 			SSjob.SendToLateJoin(cop)
-			cop.grant_language(/datum/language/common, TRUE, TRUE, LANGUAGE_MIND)
+			cop.grant_language(/datum/language/common, TRUE, TRUE, LANGUAGE_SPAWNER)
 
 			var/obj/item/gangster_cellphone/phone = new() // biggest gang in the city
 			phone.gang_id = cell_phone_number
@@ -393,7 +393,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	head = /obj/item/clothing/head/soft/paramedic
 	id = /obj/item/card/id/advanced/solfed
 	suit =  /obj/item/clothing/suit/toggle/labcoat/paramedic
-	gloves = /obj/item/clothing/gloves/color/latex/nitrile
+	gloves = /obj/item/clothing/gloves/latex/nitrile
 	belt = /obj/item/storage/belt/medical/paramedic
 	suit_store = /obj/item/flashlight/pen/paramedic
 	backpack_contents = list(/obj/item/storage/box/survival = 1,
@@ -585,7 +585,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 					cop.mind.add_antag_datum(ert_antag)
 					cop.mind.set_assigned_role(SSjob.GetJobType(ert_antag.ert_job_path))
 					SSjob.SendToLateJoin(cop)
-					cop.grant_language(/datum/language/common, TRUE, TRUE, LANGUAGE_MIND)
+					cop.grant_language(/datum/language/common, TRUE, TRUE, LANGUAGE_SPAWNER)
 
 					var/obj/item/gangster_cellphone/phone = new() // biggest gang in the city
 					phone.gang_id = cell_phone_number

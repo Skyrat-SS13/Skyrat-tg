@@ -168,6 +168,7 @@ Lizard subspecies: SILVER SCALED
 		TRAIT_VIRUSIMMUNE,
 		TRAIT_WINE_TASTER,
 	)
+	mutantlungs = null
 	species_language_holder = /datum/language_holder/lizard //SKYRAT EDIT CHANGE - Enclave pirates - ORIGINAL: species_language_holder = /datum/language_holder/lizard/silver
 	mutanttongue = /obj/item/organ/internal/tongue/lizard //SKYRAT EDIT CHANGE - Enclave pirates - ORIGINAL: mutanttongue = /obj/item/organ/internal/tongue/lizard/silver
 	armor = 10 //very light silvery scales soften blows

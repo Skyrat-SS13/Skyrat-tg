@@ -36,13 +36,13 @@
 	icon_state = "circuit_map"
 	build_path = /obj/machinery/ammo_workbench
 	req_components = list(
-		/obj/item/stock_parts/manipulator = 2,
-		/obj/item/stock_parts/matter_bin = 2,
-		/obj/item/stock_parts/micro_laser = 2
-		)
+		/datum/stock_part/manipulator = 2,
+		/datum/stock_part/matter_bin = 2,
+		/datum/stock_part/micro_laser = 2
+	)
 
 /obj/machinery/ammo_workbench/Initialize(mapload)
-	AddComponent(/datum/component/material_container, SSmaterials.materials_by_category[MAT_CATEGORY_ITEM_MATERIAL], 0, MATCONTAINER_EXAMINE, allowed_items = /obj/item/stack, _after_insert = CALLBACK(src, PROC_REF(AfterMaterialInsert)))
+	AddComponent(/datum/component/material_container, SSmaterials.materials_by_category[MAT_CATEGORY_ITEM_MATERIAL], 200000, MATCONTAINER_EXAMINE, allowed_items = /obj/item/stack, _after_insert = CALLBACK(src, PROC_REF(AfterMaterialInsert)))
 	. = ..()
 	wires = new /datum/wires/ammo_workbench(src)
 
@@ -111,9 +111,17 @@
 
 	data["available_rounds"] = list()
 	var/obj/item/ammo_casing/ammo_type = loaded_magazine.ammo_type
+	var/ammo_caliber = initial(ammo_type.caliber)
+	var/obj/item/ammo_casing/ammo_parent_type = type2parent(ammo_type)	
+	
 
-	var/list/round_types = typesof(ammo_type)
-	for(var/casing as anything in round_types)
+	if("multitype" in loaded_magazine.vars)
+		if(loaded_magazine:multitype && ammo_caliber == initial(ammo_parent_type.caliber) && ammo_caliber != null)
+			ammo_type = ammo_parent_type
+
+	allowed_ammo_types = typesof(ammo_type)
+
+	for(var/casing as anything in allowed_ammo_types)
 		var/obj/item/ammo_casing/our_casing = casing
 		if(initial(our_casing.harmful) && !allowed_harmful)
 			continue
@@ -211,9 +219,7 @@
 		error_message = ""
 		error_type = ""
 
-	var/list/allowed_types = typecacheof(loaded_magazine.ammo_type)
-
-	if(!(casing_type in allowed_types))
+	if(!(casing_type in allowed_ammo_types))
 		error_message = "AMMUNITION MISSMATCH"
 		error_type = "bad"
 		return
@@ -266,7 +272,7 @@
 		qdel(new_casing)
 		return
 
-	if(istype(new_casing, loaded_magazine.ammo_type))
+	if(new_casing.type in allowed_ammo_types)
 		if(!loaded_magazine.give_round(new_casing))
 			error_message = "AMMUNITION MISSMATCH"
 			error_type = "bad"
@@ -343,19 +349,22 @@
 
 /obj/machinery/ammo_workbench/RefreshParts()
 	. = ..()
+
 	var/time_efficiency = 20
-	for(var/obj/item/stock_parts/micro_laser/new_laser in component_parts)
-		time_efficiency -= new_laser.rating * 2
+	for(var/datum/stock_part/micro_laser/new_laser in component_parts)
+		time_efficiency -= new_laser.tier * 2
 	time_per_round = clamp(time_efficiency, 1, 20)
 
 	var/efficiency = 1.8
-	for(var/obj/item/stock_parts/manipulator/new_manipulator in component_parts)
-		efficiency -= new_manipulator.rating * 0.2
-	creation_efficiency = max(1,efficiency) // creation_efficiency goes 1.6 -> 1.4 -> 1.2 -> 1 per level of manipulator efficiency
+	for(var/datum/stock_part/manipulator/new_manipulator in component_parts)
+		efficiency -= new_manipulator.tier * 0.2
+
+	creation_efficiency = max(1, efficiency) // creation_efficiency goes 1.6 -> 1.4 -> 1.2 -> 1 per level of manipulator efficiency
 
 	var/mat_capacity = 0
-	for(var/obj/item/stock_parts/matter_bin/new_matter_bin in component_parts)
-		mat_capacity += new_matter_bin.rating * 75000
+	for(var/datum/stock_part/matter_bin/new_matter_bin in component_parts)
+		mat_capacity += new_matter_bin.tier * 75000
+
 	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
 	materials.max_amount = mat_capacity
 

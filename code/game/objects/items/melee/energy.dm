@@ -12,6 +12,7 @@
 	bare_wound_bonus = 20
 	stealthy_audio = TRUE
 	w_class = WEIGHT_CLASS_SMALL
+	item_flags = NO_BLOOD_ON_ITEM
 
 	/// The color of this energy based sword, for use in editing the icon_state.
 	var/sword_color_icon
@@ -68,7 +69,9 @@
 		hitsound_on = active_hitsound, \
 		w_class_on = active_w_class, \
 		attack_verb_continuous_on = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts"), \
-		attack_verb_simple_on = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut"))
+		attack_verb_simple_on = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut"), \
+		inhand_icon_change = FALSE, \
+	)
 	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, PROC_REF(on_transform))
 
 /obj/item/melee/energy/suicide_act(mob/living/user)
@@ -76,9 +79,6 @@
 		attack_self(user)
 	user.visible_message(span_suicide("[user] is [pick("slitting [user.p_their()] stomach open with", "falling on")] [src]! It looks like [user.p_theyre()] trying to commit seppuku!"))
 	return (BRUTELOSS|FIRELOSS)
-
-/obj/item/melee/energy/add_blood_DNA(list/blood_dna)
-	return FALSE
 
 /obj/item/melee/energy/process(delta_time)
 	if(heat)
@@ -114,7 +114,7 @@
 	if(active)
 		if(sword_color_icon)
 			icon_state = "[icon_state]_[sword_color_icon]"
-			inhand_icon_state = "[inhand_icon_state]_[sword_color_icon]"
+			inhand_icon_state = "[inhand_icon_state]_on_[sword_color_icon]"
 			if(ismob(loc))
 				var/mob/loc_mob = loc
 				loc_mob.update_held_items()
@@ -160,10 +160,6 @@
 	active_throwforce = 30
 	active_w_class = WEIGHT_CLASS_HUGE
 
-/datum/armor/melee_energy
-	fire = 100
-	acid = 30
-
 /obj/item/melee/energy/axe/make_transformable()
 	AddComponent(/datum/component/transforming, \
 		force_on = active_force, \
@@ -194,10 +190,6 @@
 	block_chance = 50
 	embedding = list("embed_chance" = 75, "impact_pain_mult" = 10)
 
-/datum/armor/melee_energy
-	fire = 100
-	acid = 30
-
 /obj/item/melee/energy/sword/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(blade_active)
 		return ..()
@@ -208,10 +200,6 @@
 	sword_color_icon = "red"
 	/// The cell cost of hitting something.
 	var/hitcost = 50
-
-/datum/armor/melee_energy
-	fire = 100
-	acid = 30
 
 /obj/item/melee/energy/sword/cyborg/attack(mob/target, mob/living/silicon/robot/user)
 	if(!user.cell)
@@ -262,10 +250,6 @@
 	var/hacked = FALSE
 	var/hacked_color
 
-/datum/armor/melee_energy
-	fire = 100
-	acid = 30
-
 /obj/item/melee/energy/sword/saber/Initialize(mapload)
 	. = ..()
 	if(!sword_color_icon && LAZYLEN(possible_sword_colors))
@@ -300,10 +284,6 @@
 
 /obj/item/melee/energy/sword/saber/purple
 	sword_color_icon = "purple"
-
-/datum/armor/melee_energy
-	fire = 100
-	acid = 30
 
 /obj/item/melee/energy/sword/saber/multitool_act(mob/living/user, obj/item/tool)
 	if(hacked)
@@ -348,10 +328,6 @@
 	var/datum/effect_system/spark_spread/spark_system
 
 //Most of the other special functions are handled in their own files. aka special snowflake code so kewl
-/datum/armor/melee_energy
-	fire = 100
-	acid = 30
-
 /obj/item/melee/energy/blade/Initialize(mapload)
 	. = ..()
 	spark_system = new /datum/effect_system/spark_spread()

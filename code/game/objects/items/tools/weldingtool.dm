@@ -148,7 +148,7 @@
 				user.visible_message(span_notice("[user] starts to fix some of the dents on [attacked_humanoid]'s [affecting.name]."),
 					span_notice("You start fixing some of the dents on [attacked_humanoid == user ? "your" : "[attacked_humanoid]'s"] [affecting.name]."))
 				/* SKYRAT EDIT START - ORIGINAL:
-				if(!do_mob(user, attacked_humanoid, 50))
+				if(!do_after(user, 5 SECONDS, attacked_humanoid))
 					return
 				*/
 			// SKYRAT EDIT CHANGE START
@@ -324,7 +324,7 @@
 		var/obj/item/stack/rods/used_rods = tool
 		if (used_rods.use(1))
 			var/obj/item/flamethrower/flamethrower_frame = new /obj/item/flamethrower(user.loc)
-			if(!remove_item_from_storage(flamethrower_frame))
+			if(!remove_item_from_storage(flamethrower_frame, user))
 				user.transferItemToLoc(src, flamethrower_frame, TRUE)
 			flamethrower_frame.weldtool = src
 			add_fingerprint(user)
@@ -349,13 +349,9 @@
 	max_fuel = 40
 	custom_materials = list(/datum/material/glass=60)
 
-/datum/armor/item_weldingtool
-	fire = 100
-	acid = 30
-
 /obj/item/weldingtool/largetank/flamethrower_screwdriver()
 	return
-	
+
 /obj/item/weldingtool/largetank/empty
 	starting_fuel = FALSE
 
@@ -365,10 +361,6 @@
 	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
 	icon_state = "indwelder_cyborg"
 	toolspeed = 0.5
-
-/datum/armor/item_weldingtool
-	fire = 100
-	acid = 30
 
 /obj/item/weldingtool/largetank/cyborg/cyborg_unequip(mob/user)
 	if(!isOn())
@@ -384,10 +376,6 @@
 	w_class = WEIGHT_CLASS_TINY
 	custom_materials = list(/datum/material/iron=30, /datum/material/glass=10)
 	change_icons = FALSE
-
-/datum/armor/item_weldingtool
-	fire = 100
-	acid = 30
 
 /obj/item/weldingtool/mini/flamethrower_screwdriver()
 	return
@@ -405,10 +393,6 @@
 	light_system = NO_LIGHT_SUPPORT
 	light_range = 0
 	change_icons = FALSE
-
-/datum/armor/item_weldingtool
-	fire = 100
-	acid = 30
 
 /obj/item/weldingtool/abductor/process()
 	if(get_fuel() <= max_fuel)
@@ -437,10 +421,6 @@
 	toolspeed = 0.5
 	var/last_gen = 0
 	var/nextrefueltick = 0
-
-/datum/armor/item_weldingtool
-	fire = 100
-	acid = 30
 
 /obj/item/weldingtool/experimental/process()
 	..()

@@ -7,7 +7,7 @@
 // Takes care blood loss and regeneration
 /mob/living/carbon/human/handle_blood(delta_time, times_fired)
 
-	if(NOBLOOD in dna.species.species_traits || HAS_TRAIT(src, TRAIT_NOBLEED) || (HAS_TRAIT(src, TRAIT_FAKEDEATH)))
+	if(HAS_TRAIT(src, TRAIT_NOBLOOD) || (HAS_TRAIT(src, TRAIT_FAKEDEATH)))
 		return
 
 	if(bodytemperature < BLOOD_STOP_TEMP || (HAS_TRAIT(src, TRAIT_HUSK))) //cold or husked people do not pump the blood.
@@ -32,10 +32,6 @@
 		adjust_nutrition(-nutrition_ratio * HUNGER_FACTOR * delta_time)
 		blood_volume = min(blood_volume + (BLOOD_REGEN_FACTOR * nutrition_ratio * delta_time), blood_volume_normal) //SKYRAT EDIT CHANGE
 
-	// SKYRAT EDIT ADDITION START - Oversized quirk
-	var/blood_volume_max = max(BLOOD_VOLUME_MAXIMUM, blood_volume_normal + 1)
-	// SKYRAT EDIT END
-
 	//Effects of bloodloss
 	var/word = pick("dizzy","woozy","faint")
 	switch(blood_volume)
@@ -44,7 +40,7 @@
 				to_chat(src, span_userdanger("Blood starts to tear your skin apart. You're going to burst!"))
 				investigate_log("has been gibbed by having too much blood.", INVESTIGATE_DEATHS)
 				inflate_gib()
-		if(blood_volume_max to BLOOD_VOLUME_EXCESS) // SKYRAT EDIT - Oversized quirk - ORIGINAL: if(BLOOD_VOLUME_MAXIMUM to BLOOD_VOLUME_EXCESS)
+		if(BLOOD_VOLUME_MAXIMUM to BLOOD_VOLUME_EXCESS)
 			if(DT_PROB(5, delta_time))
 				to_chat(src, span_warning("You feel terribly bloated."))
 		if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
@@ -96,7 +92,7 @@
 
 /mob/living/carbon/human/bleed(amt)
 	amt *= physiology.bleed_mod
-	if(!(NOBLOOD in dna.species.species_traits))
+	if(!HAS_TRAIT(src, TRAIT_NOBLOOD))
 		..()
 
 /// A helper to see how much blood we're losing per tick
@@ -110,7 +106,7 @@
 	return bleed_amt
 
 /mob/living/carbon/human/get_bleed_rate()
-	if((NOBLOOD in dna.species.species_traits))
+	if(HAS_TRAIT(src, TRAIT_NOBLOOD))
 		return
 	. = ..()
 	. *= physiology.bleed_mod
@@ -175,7 +171,7 @@
 	COOLDOWN_START(src, bleeding_message_cd, next_cooldown)
 
 /mob/living/carbon/human/bleed_warn(bleed_amt = 0, forced = FALSE)
-	if(!(NOBLOOD in dna.species.species_traits))
+	if(!HAS_TRAIT(src, TRAIT_NOBLOOD))
 		return ..()
 
 /mob/living/proc/restore_blood()
@@ -259,7 +255,7 @@
 		else if(last_mind)
 			blood_data["ckey"] = ckey(last_mind.key)
 
-		if(!suiciding)
+		if(!HAS_TRAIT_FROM(src, TRAIT_SUICIDED, REF(src)))
 			blood_data["cloneable"] = 1
 		blood_data["blood_type"] = dna.blood_type
 		blood_data["gender"] = gender
@@ -287,7 +283,7 @@
 		return /datum/reagent/colorful_reagent
 	if(dna.species.exotic_blood)
 		return dna.species.exotic_blood
-	else if((NOBLOOD in dna.species.species_traits))
+	else if(HAS_TRAIT(src, TRAIT_NOBLOOD))
 		return
 	return /datum/reagent/blood
 
@@ -358,7 +354,7 @@
 		B.add_blood_DNA(temp_blood_DNA)
 
 /mob/living/carbon/human/add_splatter_floor(turf/T, small_drip)
-	if(!(NOBLOOD in dna.species.species_traits))
+	if(!HAS_TRAIT(src, TRAIT_NOBLOOD))
 		..()
 
 /mob/living/carbon/alien/add_splatter_floor(turf/T, small_drip)

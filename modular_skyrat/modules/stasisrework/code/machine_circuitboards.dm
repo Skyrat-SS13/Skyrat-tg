@@ -4,5 +4,6 @@
 	build_path = /obj/machinery/stasissleeper
 	req_components = list(
 		/obj/item/stack/cable_coil = 3,
-		/obj/item/stock_parts/manipulator = 1,
-		/obj/item/stock_parts/capacitor = 1)
+		/datum/stock_part/manipulator = 1,
+		/datum/stock_part/capacitor = 1,
+	)

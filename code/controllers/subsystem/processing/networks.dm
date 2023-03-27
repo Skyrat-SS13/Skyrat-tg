@@ -272,9 +272,11 @@ SUBSYSTEM_DEF(networks)
 		// Anything in Centcom is completely isolated
 		// Special case for holodecks.
 		if(istype(A,/area/station/holodeck))
-			A.network_root_id = "HOLODECK" // isolated from the station network
+			A.network_root_id = HOLODECK_NETWORK_ROOT // isolated from the station network
 		else if(SSmapping.level_trait(A.z, ZTRAIT_CENTCOM))
 			A.network_root_id = CENTCOM_NETWORK_ROOT
+		else if(SSmapping.level_trait(A.z, ZTRAIT_RESERVED))
+			A.network_root_id = SYNDICATE_NETWORK_ROOT
 		// Otherwise the default is the station
 		else
 			A.network_root_id = STATION_NETWORK_ROOT
@@ -310,7 +312,7 @@ SUBSYSTEM_DEF(networks)
 #ifdef DEBUG_NETWORKS
 	ASSERT(tree && tree.len > 0) // this should be obvious but JUST in case.
 	for(var/part in tree)
-		if(!verify_network_name(part) || findtext(name,".")!=0) // and no stray dots
+		if(!verify_network_name(part) || findtext(name,".") != 0) // and no stray dots
 			stack_trace("network_list_to_string: Cannot create network with ([part]) of ([tree.Join(".")])")
 			break
 #endif
@@ -379,7 +381,7 @@ SUBSYSTEM_DEF(networks)
 /datum/controller/subsystem/networks/proc/create_network_simple(network_id)
 
 	var/datum/ntnet/network = networks[network_id]
-	if(network!=null)
+	if(network != null)
 		return network // don't worry about it
 
 	/// Checks to make sure the network is valid.  We log BOTH to mapping and telecoms

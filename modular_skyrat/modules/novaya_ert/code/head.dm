@@ -119,17 +119,6 @@
 	visor_flags = STOPSPRESSUREDAMAGE
 	slowdown = 0
 
-/datum/armor/hev_suit_nri
-	melee = 25
-	bullet = 25
-	laser = 25
-	energy = 25
-	bomb = 25
-	bio = 20
-	fire = 20
-	acid = 20
-	wound = 10
-
 /obj/item/clothing/head/helmet/space/hev_suit/nri/captain
 	name = "\improper VOSKHOD-2 powered combat armor helmet"
 	desc = "A black composite polyurea coated graphene-plastitanium helmet with durathread inner padding, complete with a deployable airtight tinted plasmaglass visor and a kevlar-lined respirator system. 'НРИ - Оборонная Коллегия' is imprinted on the back."

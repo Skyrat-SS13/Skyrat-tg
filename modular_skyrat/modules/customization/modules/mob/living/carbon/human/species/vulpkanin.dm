@@ -70,6 +70,7 @@
 		markings = assemble_body_markings_from_set(BMS, passed_features, src)
 	return markings
 
+/*	Runtime in vulpkanin.dm,78: pick() from empty list
 /datum/species/vulpkanin/random_name(gender,unique,lastname)
 	var/randname
 	if(gender == MALE)
@@ -83,9 +84,23 @@
 		randname += " [pick(GLOB.last_names_vulp)]"
 
 	return randname
+*/
 
 /datum/species/vulpkanin/get_species_description()
 	return placeholder_description
 
 /datum/species/vulpkanin/get_species_lore()
 	return list(placeholder_lore)
+
+/datum/species/vulpkanin/prepare_human_for_preview(mob/living/carbon/human/vulp)
+	var/main_color = "#FF8800"
+	var/second_color = "#FFFFFF"
+
+	vulp.dna.features["mcolor"] = main_color
+	vulp.dna.features["mcolor2"] = second_color
+	vulp.dna.features["mcolor3"] = second_color
+	vulp.dna.mutant_bodyparts["snout"] = list(MUTANT_INDEX_NAME = "Mammal, Long", MUTANT_INDEX_COLOR_LIST = list(main_color, main_color, main_color))
+	vulp.dna.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Husky", MUTANT_INDEX_COLOR_LIST = list(second_color, main_color, main_color))
+	vulp.dna.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Wolf", MUTANT_INDEX_COLOR_LIST = list(main_color, second_color, second_color))
+	regenerate_organs(vulp, src, visual_only = TRUE)
+	vulp.update_body(TRUE)

@@ -43,6 +43,11 @@
 */
 //#define REAGENTS_TESTING
 
+// Displays static object lighting updates
+// Also enables some debug vars on sslighting that can be used to modify
+// How extensively we prune lighting corners to update
+#define VISUALIZE_LIGHT_UPDATES
+
 #define VISUALIZE_ACTIVE_TURFS //Highlights atmos active turfs in green
 #define TRACK_MAX_SHARE //Allows max share tracking, for use in the atmos debugging ui
 #endif //ifdef TESTING
@@ -125,10 +130,6 @@
 // TGS performs its own build of dm.exe, but includes a prepended TGS define.
 #define CBT
 #endif
-
-// A reasonable number of maximum overlays an object needs
-// If you think you need more, rethink it
-#define MAX_ATOM_OVERLAYS 100
 
 #if !defined(CBT) && !defined(SPACEMAN_DMM)
 #warn Building with Dream Maker is no longer supported and will result in errors.

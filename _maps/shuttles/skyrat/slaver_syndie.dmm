@@ -730,7 +730,7 @@
 /obj/effect/turf_decal/stripes/full,
 /obj/machinery/door/airlock/external/glass{
 	id_tag = "prisonshipwreckdoorright";
-	req_one_access_txt = "1,2,3,150"
+	req_one_access = list("security","brig","armory","syndicate")
 	},
 /obj/structure/fans/tiny,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
@@ -769,7 +769,7 @@
 	desc = "Kinda sleek. Doesn't offer much privacy.";
 	dir = 8;
 	name = "Prison Cell Door";
-	req_one_access_txt = "1,2,3,150"
+	req_one_access = list("security","brig","armory","syndicate")
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
 	dir = 4
@@ -1096,7 +1096,7 @@
 "SA" = (
 /obj/machinery/door/airlock/external/glass{
 	id_tag = "prisonshipwreckdock";
-	req_one_access_txt = "1,2,3,150"
+	req_one_access = list("security","brig","armory","syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/docking_port/mobile/pirate{
@@ -1221,7 +1221,7 @@
 "XM" = (
 /obj/machinery/door/airlock/external/glass{
 	id_tag = "prisonshipwreckdoorleft";
-	req_one_access_txt = "1,2,3,150"
+	req_one_access = list("security","brig","armory","syndicate")
 	},
 /obj/effect/turf_decal/stripes/full,
 /obj/structure/fans/tiny,

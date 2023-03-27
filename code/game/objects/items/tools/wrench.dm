@@ -59,10 +59,6 @@
 	///var to hold the name of the person who suicided
 	var/suicider
 
-/datum/armor/item_wrench
-	fire = 50
-	acid = 30
-
 /obj/item/wrench/medical/examine(mob/user)
 	. = ..()
 	if(suicider)
@@ -105,10 +101,6 @@
 	tool_behaviour = null
 	toolspeed = null
 
-/datum/armor/item_wrench
-	fire = 50
-	acid = 30
-
 /obj/item/wrench/combat/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/transforming, \
@@ -137,3 +129,10 @@
 	balloon_alert(user, "[name] [active ? "active, woe!":"restrained"]")
 	playsound(user ? user : src, active ? 'sound/weapons/saberon.ogg' : 'sound/weapons/saberoff.ogg', 5, TRUE)
 	return COMPONENT_NO_DEFAULT_MESSAGE
+
+/obj/item/wrench/bolter
+	name = "bolter wrench"
+	desc = "A wrench designed to grab into airlock's bolting system and raise it regardless of the airlock's power status."
+	icon_state = "bolter_wrench"
+	inhand_icon_state = "bolter_wrench"
+	w_class = WEIGHT_CLASS_NORMAL

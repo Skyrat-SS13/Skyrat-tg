@@ -81,7 +81,7 @@
 		/datum/computer_file/program/science,
 		/datum/computer_file/program/robocontrol,
 		/datum/computer_file/program/budgetorders,
-		/datum/computer_file/program/phys_scanner/all,
+		/datum/computer_file/program/maintenance/phys_scanner,
 		/datum/computer_file/program/records/medical,
 	)
 
@@ -96,7 +96,6 @@
 		/datum/computer_file/program/science,
 		/datum/computer_file/program/robocontrol,
 		/datum/computer_file/program/budgetorders,
-		/datum/computer_file/program/phys_scanner/chemistry,
 		/datum/computer_file/program/signal_commander,
 	)
 
@@ -136,7 +135,6 @@
 		/datum/computer_file/program/records/security,
 		/datum/computer_file/program/crew_manifest,
 		/datum/computer_file/program/robocontrol,
-		/datum/computer_file/program/phys_scanner/medical,
 	)
 
 /obj/item/modular_computer/pda/warden
@@ -196,7 +194,6 @@
 	greyscale_config = /datum/greyscale_config/tablet/stripe_split
 	greyscale_colors = "#FAFAFA#000099#0097CA"
 	starting_programs = list(
-		/datum/computer_file/program/phys_scanner/medical,
 		/datum/computer_file/program/records/medical,
 	)
 
@@ -209,7 +206,6 @@
 	greyscale_config = /datum/greyscale_config/tablet/stripe_thick
 	greyscale_colors = "#FAFAFA#000099#3F96CC"
 	starting_programs = list(
-		/datum/computer_file/program/phys_scanner/medical,
 		/datum/computer_file/program/records/medical,
 		/datum/computer_file/program/robocontrol,
 	)
@@ -217,7 +213,6 @@
 /obj/item/modular_computer/pda/medical/paramedic
 	name = "paramedic PDA"
 	starting_programs = list(
-		/datum/computer_file/program/phys_scanner/medical,
 		/datum/computer_file/program/records/medical,
 		/datum/computer_file/program/radar/lifeline,
 	)
@@ -227,7 +222,6 @@
 	greyscale_config = /datum/greyscale_config/tablet/stripe_split
 	greyscale_colors = "#FAFAFA#355FAC#57C451"
 	starting_programs = list(
-		/datum/computer_file/program/phys_scanner/medical,
 		/datum/computer_file/program/records/medical,
 		/datum/computer_file/program/robocontrol,
 	)
@@ -236,9 +230,6 @@
 	name = "chemist PDA"
 	greyscale_config = /datum/greyscale_config/tablet/stripe_thick
 	greyscale_colors = "#FAFAFA#355FAC#EA6400"
-	starting_programs = list(
-		/datum/computer_file/program/phys_scanner/chemistry,
-	)
 
 /**
  * Supply
@@ -300,6 +291,7 @@
 /obj/item/modular_computer/pda/bar
 	name = "bartender PDA"
 	greyscale_colors = "#333333#C7C7C7"
+	inserted_item = /obj/item/pen/fountain
 
 /obj/item/modular_computer/pda/clown
 	name = "clown PDA"
@@ -357,10 +349,12 @@
 		/datum/computer_file/program/newscaster,
 	)
 
+/* // SKYRAT EDIT REMOVAL BEGIN - Mutes the Curator's ringer on spawn
 /obj/item/modular_computer/pda/curator/Initialize(mapload)
 	. = ..()
 	for(var/datum/computer_file/program/messenger/msg in stored_files)
 		msg.ringer_status = FALSE
+*/ // SKYRAT EDIT REMOVAL END
 
 /**
  * No Department
@@ -381,7 +375,7 @@
 	greyscale_colors = "#891417#80FF80"
 	saved_identification = "John Doe"
 	saved_job = "Citizen"
-	device_theme = "syndicate"
+	device_theme = PDA_THEME_SYNDICATE
 
 /obj/item/modular_computer/pda/syndicate/Initialize(mapload)
 	. = ..()

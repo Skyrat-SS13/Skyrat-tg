@@ -42,6 +42,16 @@
 /obj/item/organ/internal/brain/Insert(mob/living/carbon/C, special = FALSE, drop_if_replaced = TRUE, no_id_transfer = FALSE)
 	. = ..()
 
+	// Transfer brainmob from the head if we're being transferred from a head to a new body.
+	// And example of this ocurring is reattaching an amputated/severed head via surgery.
+	if(istype(loc, /obj/item/bodypart/head))
+		var/obj/item/bodypart/head/brain_holder = loc
+		if(brain_holder.brainmob)
+			brainmob = brain_holder.brainmob
+			brain_holder.brainmob = null
+			brainmob.container = null
+			brainmob.forceMove(src)
+
 	name = initial(name)
 
 	if(C.mind && C.mind.has_antag_datum(/datum/antagonist/changeling) && !no_id_transfer) //congrats, you're trapped in a body you don't control
@@ -60,7 +70,7 @@
 		else
 			C.key = brainmob.key
 
-		C.set_suicide(brainmob.suiciding)
+		C.set_suicide(HAS_TRAIT(brainmob, TRAIT_SUICIDED))
 
 		QDEL_NULL(brainmob)
 
@@ -105,6 +115,7 @@
 	if((!gc_destroyed || (owner && !owner.gc_destroyed)) && !no_id_transfer)
 		transfer_identity(C)
 	C.update_body_parts()
+	C.clear_mood_event("brain_damage")
 
 /obj/item/organ/internal/brain/proc/transfer_identity(mob/living/L)
 	name = "[L.name]'s [initial(name)]"
@@ -116,7 +127,10 @@
 	brainmob.name = L.real_name
 	brainmob.real_name = L.real_name
 	brainmob.timeofhostdeath = L.timeofdeath
-	brainmob.suiciding = suicided
+
+	if(suicided)
+		ADD_TRAIT(brainmob, TRAIT_SUICIDED, REF(src))
+
 	if(L.has_dna())
 		var/mob/living/carbon/C = L
 		if(!brainmob.stored_dna)
@@ -477,6 +491,15 @@
 		amount_cured++
 	return amount_cured
 
+/obj/item/organ/internal/brain/applyOrganDamage(damage_amount, maximum, required_organtype)
+	. = ..()
+	if(!owner)
+		return
+	if(damage >= 60)
+		owner.add_mood_event("brain_damage", /datum/mood_event/brain_damage)
+	else
+		owner.clear_mood_event("brain_damage")
+
 /// This proc lets the mob's brain decide what bodypart to attack with in an unarmed strike.
 /obj/item/organ/internal/brain/proc/get_attacking_limb(mob/living/carbon/human/target)
 	var/obj/item/bodypart/arm/active_hand = owner.get_active_hand()
@@ -484,3 +507,10 @@
 		var/obj/item/bodypart/found_bodypart = owner.get_bodypart((active_hand.held_index % 2) ? BODY_ZONE_L_LEG : BODY_ZONE_R_LEG)
 		return found_bodypart || active_hand
 	return active_hand
+
+/// Brains REALLY like ghosting people. we need special tricks to avoid that, namely removing the old brain with no_id_transfer
+/obj/item/organ/internal/brain/replace_into(mob/living/carbon/new_owner)
+	var/obj/item/organ/internal/brain/old_brain = new_owner.getorganslot(ORGAN_SLOT_BRAIN)
+	old_brain.Remove(new_owner, special = TRUE, no_id_transfer = TRUE)
+	qdel(old_brain)
+	Insert(new_owner, special = TRUE, drop_if_replaced = FALSE, no_id_transfer = TRUE)

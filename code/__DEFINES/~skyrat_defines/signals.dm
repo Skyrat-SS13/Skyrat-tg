@@ -79,3 +79,6 @@
 
 /// Called when a clock cultist uses a clockwork slab: (obj/item/clockwork/clockwork_slab/slab)
 #define COMSIG_CLOCKWORK_SLAB_USED "clockwork_slab_used"
+
+/// Engineering Override Access manual toggle
+#define COMSIG_GLOB_FORCE_ENG_OVERRIDE "force_engineering_override"

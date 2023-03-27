@@ -17,7 +17,7 @@
 	/// The countdown itself
 	var/obj/effect/countdown/transformer/countdown
 	/// The master AI , assigned when placed down with the ability.
-	var/mob/living/silicon/ai/masterAI
+	var/mob/living/silicon/ai/master_ai
 
 /obj/machinery/transformer_rp/Initialize(mapload)
 	// On us
@@ -65,7 +65,7 @@
 		return FALSE
 	var/mob/living/silicon/robot/cyborg = new /mob/living/silicon/robot(loc)
 	cyborg.key = target_ghost.key
-	cyborg.set_connected_ai(masterAI)
+	cyborg.set_connected_ai(master_ai)
 	cyborg.lawsync()
 	cyborg.lawupdate = TRUE
 	stored_cyborgs--

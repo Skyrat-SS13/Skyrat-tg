@@ -67,6 +67,12 @@
 /datum/heretic_knowledge/rust_fist/proc/on_secondary_mansus_grasp(mob/living/source, atom/target)
 	SIGNAL_HANDLER
 
+	// Rusting an airlock causes it to lose power, mostly to prevent the airlock from shocking you.
+	// This is a bit of a hack, but fixing this would require the enture wire cut/pulse system to be reworked.
+	if(istype(target, /obj/machinery/door/airlock))
+		var/obj/machinery/door/airlock/airlock = target
+		airlock.loseMainPower()
+
 	target.rust_heretic_act()
 	return COMPONENT_USE_HAND
 
@@ -200,7 +206,7 @@
 /datum/heretic_knowledge/ultimate/rust_final
 	name = "Rustbringer's Oath"
 	desc = "The ascension ritual of the Path of Rust. \
-		Bring 3 corpses to a transumation rune on the bridge of the station to complete the ritual. \
+		Bring 3 corpses to a transmutation rune on the bridge of the station to complete the ritual. \
 		When completed, the ritual site will endlessly spread rust onto any surface, stopping for nothing. \
 		Additionally, you will become extremely resilient on rust, healing at triple the rate \
 		and becoming immune to many effects and dangers."
@@ -217,7 +223,7 @@
 		TRAIT_SLEEPIMMUNE,
 		TRAIT_PUSHIMMUNE,
 		TRAIT_SHOCKIMMUNE,
-		TRAIT_NOSLIPALL,
+		TRAIT_NO_SLIP_ALL,
 		TRAIT_RADIMMUNE,
 		TRAIT_RESISTHIGHPRESSURE,
 		TRAIT_RESISTLOWPRESSURE,

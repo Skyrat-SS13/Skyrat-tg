@@ -190,17 +190,6 @@
 	if (. & EMP_PROTECT_SELF)
 		return
 
-	if(combat) // Elite agents do not subscribe to your notion of "Safety"
-		visible_message(span_notice("[src] beeps: Safety protocols nonexistent!"))
-		playsound(src, 'sound/machines/defib_saftyOff.ogg', 50, FALSE)
-	else if(safety)
-		safety = FALSE
-		visible_message(span_notice("[src] beeps: Safety protocols disabled!"))
-		playsound(src, 'sound/machines/defib_saftyOff.ogg', 50, FALSE)
-	else
-		safety = TRUE
-		visible_message(span_notice("[src] beeps: Safety protocols enabled!"))
-		playsound(src, 'sound/machines/defib_saftyOn.ogg', 50, FALSE)
 	update_power()
 
 /obj/item/defibrillator/proc/toggle_paddles()
@@ -294,10 +283,6 @@
 	nocell_state = "defibcompact-nocell"
 	emagged_state = "defibcompact-emagged"
 
-/datum/armor/item_defibrillator
-	fire = 50
-	acid = 50
-
 /obj/item/defibrillator/compact/item_action_slot_check(slot, mob/user)
 	if(slot & user.getBeltSlot())
 		return TRUE
@@ -323,10 +308,6 @@
 
 /obj/item/defibrillator/compact/combat/loaded
 	cell_removable = FALSE // Don't let people just have an infinite power cell
-
-/datum/armor/item_defibrillator
-	fire = 50
-	acid = 50
 
 /obj/item/defibrillator/compact/combat/loaded/Initialize(mapload)
 	. = ..()
@@ -371,10 +352,6 @@
 	var/req_defib = TRUE // Whether or not the paddles require a defibrilator object
 	var/recharge_time = 6 SECONDS // Only applies to defibs that do not require a defibrilator. See: do_success()
 	var/combat = FALSE //If it penetrates armor and gives additional functionality
-
-/datum/armor/item_defibrillator
-	fire = 50
-	acid = 50
 
 /obj/item/shockpaddles/Initialize(mapload)
 	. = ..()
@@ -705,10 +682,6 @@
 	icon_state = "defibpaddles0"
 	inhand_icon_state = "defibpaddles0"
 	req_defib = FALSE
-
-/datum/armor/item_defibrillator
-	fire = 50
-	acid = 50
 
 /obj/item/shockpaddles/cyborg/attack(mob/M, mob/user)
 	if(iscyborg(user))

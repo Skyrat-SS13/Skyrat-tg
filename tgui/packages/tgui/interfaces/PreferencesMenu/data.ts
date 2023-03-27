@@ -23,6 +23,7 @@ export enum Food {
   Sugar = 'SUGAR',
   Toxic = 'TOXIC',
   Vegetables = 'VEGETABLES',
+  Bloody = 'BLOODY', // SKYRAT EDIT ADDITION - Hemophage Food
 }
 
 export enum JobPriority {
