@@ -51,6 +51,7 @@
 	mutantlungs = /obj/item/organ/internal/lungs/synth
 	mutantheart = /obj/item/organ/internal/heart/synth
 	mutantliver = /obj/item/organ/internal/liver/synth
+	mutantappendix = null
 	exotic_blood = /datum/reagent/fuel/oil
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/robot/synth,
@@ -94,10 +95,6 @@
 
 /datum/species/synthetic/on_species_gain(mob/living/carbon/human/transformer)
 	. = ..()
-	var/obj/item/organ/internal/appendix/appendix = transformer.getorganslot(ORGAN_SLOT_APPENDIX)
-	if(appendix)
-		appendix.Remove(transformer)
-		qdel(appendix)
 
 	var/screen_mutant_bodypart = transformer.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN]
 	var/obj/item/organ/internal/eyes/eyes = transformer.getorganslot(ORGAN_SLOT_EYES)
