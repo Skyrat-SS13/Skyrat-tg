@@ -23,8 +23,20 @@
 	var/intensity_credit_rate = 27000
 	/// Last world time we added an intensity credit
 	var/intensity_credit_last_time = 8400
-	/// ICES timer multiplier
-	var/intensity_multiplier = EVENT_MIDPOP_TIMER_MULTIPLIER
+	/// Current active ICES multiplier
+	var/active_intensity_multiplier = EVENT_MIDPOP_TIMER_MULTIPLIER
+	/// LOWPOP player threshold
+	var/intensity_low_players = EVENT_LOWPOP_THRESHOLD
+	/// LOWPOP multiplier (lower = more events)
+	var/intensity_low_multiplier = EVENT_LOWPOP_TIMER_MULTIPLIER
+	/// MIDPOP player threshold
+	var/intensity_mid_players = EVENT_MIDPOP_THRESHOLD
+	/// MIDPOP multiplier (lower = more events)
+	var/intensity_mid_multiplier = EVENT_MIDPOP_TIMER_MULTIPLIER
+	/// HIGHPOP player threshold
+	var/intensity_high_players = EVENT_HIGHPOP_THRESHOLD
+	/// HIGHPOP multiplier (lower = more events)
+	var/intensity_high_multiplier = EVENT_HIGHPOP_TIMER_MULTIPLIER
 
 /datum/controller/subsystem/events/Initialize()
 	. = ..()
