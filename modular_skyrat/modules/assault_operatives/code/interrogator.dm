@@ -75,7 +75,7 @@
 	if(!locked)
 		open_machine()
 
-/obj/machinery/interrogator/open_machine()
+/obj/machinery/interrogator/open_machine(drop, density_to_set)
 	. = ..()
 	human_occupant = null
 

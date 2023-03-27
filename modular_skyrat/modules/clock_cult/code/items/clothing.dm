@@ -155,7 +155,7 @@
 	invis_override = null
 	flash_protect = FLASH_PROTECTION_SENSITIVE
 	vision_flags = SEE_MOBS
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+	//lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 	glass_colour_type = /datum/client_colour/glass_colour/yellow
 	actions_types = list(/datum/action/item_action/toggle/clock)
 	clock_desc = "Applies passive eye damage that regenerates after unequipping, grants thermal vision, and lets you see all forms of invisibility."
@@ -197,7 +197,7 @@
 /// "enable" the spectacles, flipping them down and applying their effects, calling on_toggle_eyes() if someone is wearing them
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/proc/enable()
 	enabled = TRUE
-	lighting_alpha = initial(lighting_alpha)
+	//lighting_alpha = initial(lighting_alpha)
 	visor_toggling()
 
 	if(wearer)
@@ -209,7 +209,7 @@
 /// "disable" the spectacles, flipping them up and removing all applied effects
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/proc/disable()
 	enabled = FALSE
-	lighting_alpha = 0
+	//lighting_alpha = 0
 	visor_toggling() //this doesn't remove everything, check later
 
 	if(wearer)

@@ -24,7 +24,7 @@
 	. += span_notice("A light blinking on the side indicates that it is [occupant ? "occupied" : "vacant"].")
 	. += span_notice("It has a screen on the side displaying the vitals of the occupant. Interact to read it.")
 
-/obj/machinery/stasissleeper/open_machine()
+/obj/machinery/stasissleeper/open_machine(drop, density_to_set)
 	if(!state_open && !panel_open)
 		if(occupant)
 			thaw_them(occupant)
@@ -33,7 +33,7 @@
 		flick("[initial(icon_state)]-anim", src)
 		..()
 
-/obj/machinery/stasissleeper/close_machine(mob/user)
+/obj/machinery/stasissleeper/close_machine(mob/user, density_to_set)
 	if((isnull(user) || istype(user)) && state_open && !panel_open)
 		playsound(src, 'sound/machines/click.ogg', 60, TRUE)
 		flick("[initial(icon_state)]-anim", src)
