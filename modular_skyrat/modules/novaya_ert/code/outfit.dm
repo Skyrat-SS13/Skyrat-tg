@@ -92,7 +92,7 @@
 							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
 
 	l_hand = /obj/item/shield/riot/pointman/nri
-	r_hand = /obj/item/gun/ballistic/automatic/plastikov/nri
+	r_hand = /obj/item/gun/ballistic/automatic/nri_smg
 
 	id_trim = /datum/id_trim/nri/medic
 
@@ -114,7 +114,7 @@
 							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
 
 	l_hand = /obj/item/storage/belt/utility/full/powertools
-	r_hand = /obj/item/gun/ballistic/automatic/plastikov/nri
+	r_hand = /obj/item/gun/ballistic/automatic/nri_smg
 
 	id_trim = /datum/id_trim/nri/engineer
 

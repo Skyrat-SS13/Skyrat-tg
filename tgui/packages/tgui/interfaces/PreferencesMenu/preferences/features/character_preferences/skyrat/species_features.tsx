@@ -706,7 +706,7 @@ export const xenohead_color: Feature<string[]> = {
 };
 
 export const xenohead_emissive: Feature<boolean[]> = {
-  name: 'Xenohead Emissives',
+  name: 'Xeno Head Emissives',
   description:
     'Want to have a fancy species name? Put it here, or leave it blank.',
   component: FeatureTriBoolInput,
