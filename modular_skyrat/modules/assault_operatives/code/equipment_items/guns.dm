@@ -93,6 +93,7 @@
 	burst_size = 1
 	fire_delay = 0.8
 	projectile_damage_multiplier = 0.6
+	actions_types = list()
 	pin = /obj/item/firing_pin/implant/pindicate
 
 /obj/item/gun/ballistic/automatic/assault_ops_smg/Initialize(mapload)
@@ -148,6 +149,7 @@
 	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
 	burst_size = 1
 	fire_delay = 1.5
+	actions_types = list()
 	pin = /obj/item/firing_pin/implant/pindicate
 
 /obj/item/gun/ballistic/automatic/assault_ops_shotgun/give_manufacturer_examine()

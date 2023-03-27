@@ -15,6 +15,7 @@
 	can_suppress = FALSE
 	fire_delay = 1.5
 	burst_size = 1
+	actions_types = list()
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/stg_fire.ogg'
 	fire_sound_volume = 70
 	alt_icons = TRUE
