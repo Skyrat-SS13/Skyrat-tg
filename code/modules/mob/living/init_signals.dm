@@ -44,8 +44,6 @@
 	RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_SKITTISH), PROC_REF(on_skittish_trait_gain))
 	RegisterSignal(src, SIGNAL_REMOVETRAIT(TRAIT_SKITTISH), PROC_REF(on_skittish_trait_loss))
 
-<<<<<<< HEAD
-=======
 	RegisterSignals(src, list(SIGNAL_ADDTRAIT(TRAIT_NEGATES_GRAVITY), SIGNAL_REMOVETRAIT(TRAIT_NEGATES_GRAVITY)), PROC_REF(on_negate_gravity))
 	RegisterSignals(src, list(SIGNAL_ADDTRAIT(TRAIT_IGNORING_GRAVITY), SIGNAL_REMOVETRAIT(TRAIT_IGNORING_GRAVITY)), PROC_REF(on_ignore_gravity))
 	RegisterSignals(src, list(SIGNAL_ADDTRAIT(TRAIT_FORCED_GRAVITY), SIGNAL_REMOVETRAIT(TRAIT_FORCED_GRAVITY)), PROC_REF(on_force_gravity))
@@ -56,7 +54,6 @@
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
 
->>>>>>> 5aab9dd88aa (Saves roughly 20% off living/Life(), makes gravity event based (#74084))
 /// Called when [TRAIT_KNOCKEDOUT] is added to the mob.
 /mob/living/proc/on_knockedout_trait_gain(datum/source)
 	SIGNAL_HANDLER
@@ -226,8 +223,6 @@
 /mob/living/proc/on_skittish_trait_loss(datum/source)
 	SIGNAL_HANDLER
 	RemoveElement(/datum/element/skittish)
-<<<<<<< HEAD
-=======
 
 /// Called when [TRAIT_NEGATES_GRAVITY] is gained or lost
 /mob/living/proc/on_negate_gravity(datum/source)
@@ -252,4 +247,3 @@
 /mob/living/proc/on_loc_force_gravity(datum/source)
 	SIGNAL_HANDLER
 	refresh_gravity()
->>>>>>> 5aab9dd88aa (Saves roughly 20% off living/Life(), makes gravity event based (#74084))
