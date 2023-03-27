@@ -227,7 +227,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 
 		COOLDOWN_START(src, despawn_world_time, time_till_despawn)
 
-/obj/machinery/cryopod/open_machine()
+/obj/machinery/cryopod/open_machine(drop = TRUE, density_to_set = FALSE)
 	..()
 	set_density(TRUE)
 	name = initial(name)
