@@ -152,7 +152,7 @@
 		return
 
 	set_light(l_on = TRUE)
-	maptext = {"<div style="font:5pt 'Small Fonts';color:[LIGHT_COLOR_DARK_BLUE]">[current_lift_floor]</div>"}
+	maptext = {"<div style="font:5pt 'Small Fonts';color:[LIGHT_COLOR_DARK_BLUE]">[current_lift_floor - 1]</div>"} // SKYRAT EDIT - Z Levels
 
 /obj/machinery/lift_indicator/update_overlays()
 	. = ..()

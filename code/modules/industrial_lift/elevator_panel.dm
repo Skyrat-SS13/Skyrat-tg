@@ -174,10 +174,10 @@
 	linked_elevator_destination = list()
 	for(var/z_level in raw_destinations)
 		// Check if this z-level has a preset destination associated.
-		var/preset_name = preset_destination_names?[num2text(z_level)]
+		var/preset_name = preset_destination_names?[num2text(z_level - 1)] // SKYRAT EDIT CHANGE - Z Levels
 		// If we don't have a preset name, use Floor z-1 for the title.
 		// z - 1 is used because the station z-level is 2, and goes up.
-		linked_elevator_destination["[z_level]"] = preset_name || "Floor [z_level - 1]"
+		linked_elevator_destination["[z_level]"] = preset_name || "Floor [z_level - 1]" // SKYRAT EDIT CHANGE - Z Levels
 
 	// Reverse the destination list.
 	// By this point the list will go from bottom floor to top floor,
@@ -252,7 +252,7 @@
 	var/list/data = list()
 
 	data["emergency_level"] = capitalize(SSsecurity_level.get_current_level_as_text())
-	data["is_emergency"] = SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED
+	data["is_emergency"] = SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED || SSsecurity_level.get_current_level_as_number() == SEC_LEVEL_ORANGE // SKYRAT EDIT CHANGE - Security Levels
 	data["doors_open"] = !!door_reset_timerid
 
 	var/datum/lift_master/lift = lift_weakref?.resolve()
