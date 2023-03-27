@@ -47,44 +47,30 @@
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/jelly,
 	)
 
-<<<<<<< HEAD
-/datum/species/jelly/on_species_loss(mob/living/carbon/old_jellyperson)
-	if(regenerate_limbs)
-		regenerate_limbs.Remove(old_jellyperson)
-	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	if(alter_form)
-		alter_form.Remove(old_jellyperson)
-	//SKYRAT EDIT ADDITION END
-	old_jellyperson.RemoveElement(/datum/element/soft_landing)
-	..()
-
-/datum/species/jelly/on_species_gain(mob/living/carbon/new_jellyperson, datum/species/old_species)
-	..()
-	if(ishuman(new_jellyperson))
-		regenerate_limbs = new
-		regenerate_limbs.Grant(new_jellyperson)
-		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-		alter_form = new
-		alter_form.Grant(new_jellyperson)
-		//SKYRAT EDIT ADDITION END
-=======
 /datum/species/jelly/on_species_gain(mob/living/carbon/new_jellyperson, datum/species/old_species, pref_load)
 	. = ..()
 	if(ishuman(new_jellyperson))
 		regenerate_limbs = new
 		regenerate_limbs.Grant(new_jellyperson)
 		update_mail_goodies(new_jellyperson, list(/obj/item/reagent_containers/blood/toxin))
->>>>>>> 8d7db532c0f (Reworks blood deficiency backend, & some adjustments to slime blood deficiency (#74143))
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	if(alter_form)
+		alter_form.Remove(old_jellyperson)
+	//SKYRAT EDIT ADDITION END
 	new_jellyperson.AddElement(/datum/element/soft_landing)
 
 /datum/species/jelly/on_species_loss(mob/living/carbon/former_jellyperson, datum/species/new_species, pref_load)
 	if(regenerate_limbs)
 		regenerate_limbs.Remove(former_jellyperson)
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	if(alter_form)
+		alter_form.Remove(former_jellyperson)
+	//SKYRAT EDIT ADDITION END
 	former_jellyperson.RemoveElement(/datum/element/soft_landing)
-	
+
 	if(ishuman(former_jellyperson))
 		update_mail_goodies(former_jellyperson)
-	
+
 	return ..()
 
 /datum/species/jelly/spec_life(mob/living/carbon/human/H, delta_time, times_fired)
@@ -832,7 +818,7 @@
 		return FALSE
 
 	return TRUE
-	
+
 #undef JELLY_REGEN_RATE
 #undef JELLY_REGEN_RATE_EMPTY
 #undef BLOOD_VOLUME_LOSE_NUTRITION
