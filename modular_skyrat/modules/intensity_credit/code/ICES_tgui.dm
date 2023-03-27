@@ -36,12 +36,13 @@
 		"current_credits" = GLOB.intense_event_credits,
 		"next_run" = DisplayTimeText(SSevents.scheduled - world.time, 1),
 		"active_players" = filter_threshold,
-		"lowpop_players" = EVENT_LOWPOP_THRESHOLD,
-		"lowpop_multiplier" = EVENT_LOWPOP_TIMER_MULTIPLIER,
-		"midpop_players" = EVENT_MIDPOP_THRESHOLD,
-		"midpop_multiplier" = EVENT_MIDPOP_TIMER_MULTIPLIER,
-		"highpop_players" = EVENT_HIGHPOP_THRESHOLD,
-		"highpop_multiplier" = EVENT_HIGHPOP_TIMER_MULTIPLIER,
+		"active_multiplier" = SSevents.active_intensity_multiplier,
+		"lowpop_players" = SSevents.intensity_low_players,
+		"lowpop_multiplier" = SSevents.intensity_low_multiplier,
+		"midpop_players" = SSevents.intensity_mid_players,
+		"midpop_multiplier" = SSevents.intensity_mid_multiplier,
+		"highpop_players" = SSevents.intensity_high_players,
+		"highpop_multiplier" = SSevents.intensity_high_multiplier,
 	)
 
 	return data
