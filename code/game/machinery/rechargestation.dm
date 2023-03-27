@@ -101,11 +101,7 @@
 	. = ..()
 	update_use_power(IDLE_POWER_USE)
 
-<<<<<<< HEAD
-/obj/machinery/recharge_station/close_machine()
-=======
 /obj/machinery/recharge_station/close_machine(atom/movable/target, density_to_set = TRUE)
->>>>>>> 840dbcb3ffe (Fixes unopenable borg recharge stations. (#74214))
 	. = ..()
 	if(occupant)
 		update_use_power(ACTIVE_POWER_USE) //It always tries to charge, even if it can't.
