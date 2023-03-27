@@ -71,10 +71,6 @@
 	. = ..()
 	. += span_notice("ALT-Click to turn ON when closed.")
 
-/obj/machinery/self_actualization_device/open_machine(mob/user)
-	playsound(src, 'sound/machines/click.ogg', 50)
-	..()
-
 /obj/machinery/self_actualization_device/AltClick(mob/user)
 	. = ..()
 	if(!powered() || !occupant || state_open)

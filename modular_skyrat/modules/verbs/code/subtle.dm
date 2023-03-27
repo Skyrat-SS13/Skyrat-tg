@@ -49,9 +49,9 @@
 	if(hologram)
 		viewers |= get_hearers_in_view(SUBTLE_DEFAULT_DISTANCE, hologram)
 
-	for(var/obj/effect/overlay/holo_pad_hologram/hologram in viewers)
-		if(hologram?.Impersonation?.client)
-			viewers |= hologram.Impersonation
+	for(var/obj/effect/overlay/holo_pad_hologram/iterating_hologram in viewers)
+		if(iterating_hologram?.Impersonation?.client)
+			viewers |= iterating_hologram.Impersonation
 
 	for(var/mob/ghost as anything in GLOB.dead_mob_list)
 		if((ghost.client?.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(ghost in viewers))
