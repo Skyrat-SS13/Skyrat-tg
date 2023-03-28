@@ -11,8 +11,8 @@
 	weapon_weight = WEAPON_HEAVY
 	mag_type = /obj/item/ammo_box/magazine/akm
 	can_suppress = FALSE
-	burst_size = 3
 	fire_delay = 2
+	actions_types = list()
 	worn_icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_back.dmi'
 	worn_icon_state = "akm"
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/akm_fire.ogg'
@@ -96,7 +96,6 @@
 	icon_state = "akm_civ"
 	inhand_icon_state = "akm_civ"
 	mag_type = /obj/item/ammo_box/magazine/akm/civvie
-	burst_size = 1
 	fire_delay = 5
 	dual_wield_spread = 15
 	spread = 5

@@ -8,6 +8,7 @@
 	can_suppress = TRUE
 	burst_size = 1
 	fire_delay = 0
+	actions_types = list()
 	bolt_type = BOLT_TYPE_LOCKING
 	fire_sound = 'sound/weapons/gun/pistol/shot.ogg'
 	dry_fire_sound = 'sound/weapons/gun/pistol/dry_fire.ogg'
@@ -94,7 +95,7 @@
 	burst_size = 3
 	fire_delay = 3 //SKYRAT EDIT - Original: 1
 	spread = 10
-	//actions_types = list(/datum/action/item_action/toggle_firemode) SKYRAT EDIT REMOVAL
+	actions_types = list(/datum/action/item_action/toggle_firemode)
 	suppressor_x_offset = 6
 
 /obj/item/gun/ballistic/automatic/pistol/stickman
