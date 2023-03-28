@@ -263,9 +263,7 @@
 	desc = "High speed, low drag combat boots."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
-	icon_state = "peacekeeper_boots"
-	inhand_icon_state = "jackboots"
-	worn_icon_state = "peacekeeper"
+	icon_state = "peacekeeper"
 
 /obj/item/clothing/suit/armor/riot/peacekeeper
 	name = "peacekeeper riotsuit"
