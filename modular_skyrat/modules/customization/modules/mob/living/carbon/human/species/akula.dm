@@ -46,7 +46,7 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant/akula,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/akula,
 	)
-	///
+	/// This variable stores the timer datum which appears if the mob becomes wet
 	var/dry_up_timer = TIMER_ID_NULL
 
 /datum/species/akula/randomize_features(mob/living/carbon/human/human_mob)
@@ -112,6 +112,7 @@
 	// Also lets give 15 wet_stacks on initial
 	akula.set_wet_stacks(15, remove_fire_stacks = FALSE)
 
+/// This proc is called when a mob with TRAIT_SLICK_SKIN gains over 10 wet_stacks
 /datum/species/akula/proc/wetted(mob/living/carbon/akula)
 	SIGNAL_HANDLER
 	// Apply the slippery trait if its not there yet
@@ -122,6 +123,7 @@
 	// The timer which will initiate above 10 wet_stacks, and call dried() once the timer runs out
 	dry_up_timer = addtimer(CALLBACK(src, PROC_REF(dried), akula), DRY_UP_TIME, TIMER_UNIQUE | TIMER_STOPPABLE)
 
+/// This proc is called after a mob with the TRAIT_SLIPPERY has its related timer run out
 /datum/species/akula/proc/dried(mob/living/carbon/akula)
 	// A -1 moodlet which will not go away until the user gets wet
 	akula.add_mood_event("dry_skin", /datum/mood_event/dry_skin)

@@ -1,11 +1,13 @@
+/// A proc to be used in `equipped()` for all akula clothing which has the 'special tech' to keep their wearers slippery
 /obj/item/clothing/proc/apply_wetsuit_status_effect(mob/living/carbon/human/user)
 	if(!HAS_TRAIT(user, TRAIT_SLICK_SKIN))
-		return
+		return FALSE
 	user.apply_status_effect(/datum/status_effect/wetsuit)
 
+/// A proc to remove the wetsuit status effect, used with the `dropped()` proc
 /obj/item/clothing/proc/remove_wetsuit_status_effect(mob/living/carbon/human/user)
 	if(!HAS_TRAIT(user, TRAIT_SLICK_SKIN))
-		return
+		return FALSE
 	user.remove_status_effect(/datum/status_effect/wetsuit)
 
 /datum/status_effect/wetsuit
@@ -22,7 +24,7 @@
 	name = "wetworks envirosuit"
 	desc = ""
 	icon_state = "default"
-	inhand_icon_state = "default"
+	inhand_icon_state = null
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/akula.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi'
 	armor_type = /datum/armor/wetworks_under
@@ -54,29 +56,31 @@
 	. = ..()
 	remove_wetsuit_status_effect(user)
 
+/// This will check the wearer's bodytype and change the wetsuit worn sprite according to if its male/female
 /obj/item/clothing/under/akula_wetworks/proc/check_physique(mob/living/carbon/human/user)
 	icon_state = initial(icon_state)
 	if(user.physique == FEMALE)
 		icon_state = "[icon_state]_f"
-	else
-		return
+	return TRUE
 
+/// Checks if the wearer has a compatible tail for the `style_overlay` variable
 /obj/item/clothing/under/akula_wetworks/proc/check_style_overlay(mob/living/carbon/human/user)
-	if(istype(user.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL), /obj/item/organ/external/tail))
-		var/tail = user.dna.species.mutant_bodyparts["tail"][MUTANT_INDEX_NAME]
-		switch(tail)
-			if("Akula")
-				style_overlay = "overlay_akula"
-			if("Shark")
-				style_overlay = "overlay_shark"
-			if("Shark (No Fin)")
-				style_overlay = "overlay_shark_no_fin"
-			if("Fish")
-				style_overlay = "overlay_fish"
-			else
-				style_overlay = null
-	else
-		style_overlay = null
+	// No tail
+	if(!istype(user.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL), /obj/item/organ/external/tail))
+		return FALSE
+
+	var/tail = user.dna.species.mutant_bodyparts["tail"][MUTANT_INDEX_NAME]
+	switch(tail)
+		if("Akula")
+			style_overlay = "overlay_akula"
+		if("Shark")
+			style_overlay = "overlay_shark"
+		if("Shark (No Fin)")
+			style_overlay = "overlay_shark_no_fin"
+		if("Fish")
+			style_overlay = "overlay_fish"
+		else
+			style_overlay = null
 
 	/// Suit armor
 /datum/armor/wetworks_under
@@ -99,8 +103,8 @@
 /obj/item/clothing/under/akula_wetworks/science
 	name = "wetworks envirosuit"
 	desc = ""
-	icon_state = "science"
-	inhand_icon_state = "science"
+	icon_state = "sci"
+	inhand_icon_state = "sci"
 
 /obj/item/clothing/under/akula_wetworks/medical
 	name = "wetworks envirosuit"
@@ -111,8 +115,8 @@
 /obj/item/clothing/under/akula_wetworks/security
 	name = "wetworks envirosuit"
 	desc = ""
-	icon_state = "security"
-	inhand_icon_state = "security"
+	icon_state = "sec"
+	inhand_icon_state = "sec"
 
 /obj/item/clothing/under/akula_wetworks/command
 	name = "wetworks envirosuit"
@@ -132,6 +136,7 @@
 	strip_delay = 60
 	armor_type = /datum/armor/wetworks_helmet
 	resistance_flags = FIRE_PROOF
+	/// Variable for storing hats which are worn inside the bubble helmet
 	var/obj/item/clothing/head/attached_hat
 	flags_inv = null
 	flags_cover = HEADCOVERSMOUTH|HEADCOVERSEYES|PEPPERPROOF
@@ -164,28 +169,31 @@
 
 /obj/item/clothing/head/helmet/space/akula_wetworks/attackby(obj/item/hitting_item, mob/living/user)
 	. = ..()
-	if(istype(hitting_item, /obj/item/clothing/head))
-		var/obj/item/clothing/hitting_clothing = hitting_item
-		if(hitting_clothing.clothing_flags & PLASMAMAN_HELMET_EXEMPT)
-			to_chat(user, span_notice("You cannot place [hitting_clothing.name] in helmet!"))
-			return
-		if(attached_hat)
-			to_chat(user, span_notice("There's already something placed inside the helmet!"))
-			return
-		attached_hat = hitting_clothing
-		to_chat(user, span_notice("You placed [hitting_clothing.name] in the helmet!"))
-		hitting_clothing.forceMove(src)
-		icon_state = "empty"
-		update_appearance()
+	if(!istype(hitting_item, /obj/item/clothing/head))
+		return
+	var/obj/item/clothing/hitting_hat = hitting_item
+	if(hitting_hat.clothing_flags & PLASMAMAN_HELMET_EXEMPT)
+		to_chat(user, span_notice("You cannot place [hitting_hat.name] in helmet!"))
+		return
+	if(attached_hat)
+		to_chat(user, span_notice("There's already something placed inside the helmet!"))
+		return
+
+	attached_hat = hitting_hat
+	to_chat(user, span_notice("You placed [hitting_hat.name] in the helmet!"))
+	hitting_hat.forceMove(src)
+	icon_state = "empty"
+	update_appearance()
 
 /obj/item/clothing/head/helmet/space/akula_wetworks/worn_overlays(mutable_appearance/standing, isinhands)
 	. = ..()
-	if(!isinhands && attached_hat)
-		var/mutable_appearance/attached_hat_MA = mutable_appearance(attached_hat.worn_icon, attached_hat.icon_state, -(HEAD_LAYER-0.1))
-		attached_hat_MA.add_overlay(mutable_appearance(worn_icon, "helmet", -HEAD_LAYER))
-		. += attached_hat_MA
-	else
-		cut_overlays()
+	if(!attached_hat || isinhands)
+		return
+
+	var/mutable_appearance/attached_hat_MA = mutable_appearance(attached_hat.worn_icon, attached_hat.icon_state, -(HEAD_LAYER-0.1))
+	attached_hat_MA.add_overlay(mutable_appearance(worn_icon, "helmet", -HEAD_LAYER))
+	. += attached_hat_MA
+
 
 /obj/item/clothing/head/helmet/space/akula_wetworks/attack_hand_secondary(mob/user)
 	..()
