@@ -13,6 +13,10 @@
 #define ORGAN_SYNTHETIC_EMP (1<<5)
 // //Can't be removed using surgery
 #define ORGAN_UNREMOVABLE (1<<6)
+// SKYRAT EDIT START - Customization
+/// Synthetic organ granted by a species (for use for organ replacements between species)
+#define ORGAN_SYNTHETIC_FROM_SPECIES (1<<7)
+// SKYRAT EDIT END
 
 /// When the surgery step fails :(
 #define SURGERY_STEP_FAIL -1

@@ -6,6 +6,14 @@
 	icon_state = "gas_clear"
 	flags_inv = NONE
 
+/obj/item/clothing/mask/gas/atmos/glass
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
+	name = "advanced gas mask"
+	desc = "A face-covering mask that can be connected to an air supply. This one doesn't obscure your face however."
+	icon_state = "gas_clear"
+	flags_inv = NONE
+
 /obj/item/clothing/mask/gas/alt
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	icon_state = "gas_alt2"
@@ -129,7 +137,7 @@
 		update_item_action_buttons()
 		to_chat(user, span_notice("Your Clown Mask has now morphed into [choice], all praise the Honkmother!"))
 		return TRUE
-	
+
 /obj/item/clothing/mask/gas/mime/vox
 	desc = "The traditional mime's mask. It has an eerie facial posture. This one's got an easily accessible feeding port to be more suitable for the Vox crewmembers."
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
@@ -137,7 +145,7 @@
 	worn_icon_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	worn_icon_better_vox = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 	starting_filter_type = /obj/item/gas_filter/vox
-	
+
 /obj/item/clothing/mask/gas/mime/vox/Initialize(mapload)
 	.=..()
 	mimemask_designs = list(
@@ -174,7 +182,7 @@
 			worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/mask.dmi'
 			icon_state = options[choice]
 		icon_state = options[choice]
-		
+
 		user.update_worn_mask()
 		update_item_action_buttons()
 		to_chat(user, span_notice("Your Mime Mask has now morphed into [choice]!"))

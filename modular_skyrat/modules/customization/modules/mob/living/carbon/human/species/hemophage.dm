@@ -279,7 +279,7 @@
 	human.skin_tone = "albino"
 	human.hair_color = "#1d1d1d"
 	human.hairstyle = "Pompadour (Big)"
-	human.update_mutant_bodyparts(TRUE)
+	regenerate_organs(human, src, visual_only = TRUE)
 	human.update_body(TRUE)
 
 

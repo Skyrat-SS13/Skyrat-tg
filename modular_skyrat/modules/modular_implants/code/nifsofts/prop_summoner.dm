@@ -101,6 +101,10 @@
 
 	return TRUE
 
+/datum/component/summoned_item
+	///What items were contained, if any, inside of the summoned item? These are deleted when the item is desummoned.
+	var/list/sub_items = list()
+
 /datum/component/summoned_item/Initialize(holographic_filter = TRUE)
 	. = ..()
 	if(!isobj(parent))
@@ -117,6 +121,26 @@
 				stored_item.alpha = SUMMONED_ITEM_ALPHA
 				stored_item.set_light(SUMMONED_ITEM_LIGHT)
 				stored_item.add_atom_colour("#acccff",FIXED_COLOUR_PRIORITY)
+				sub_items += stored_item
+
+		if(istype(summoned_item, /obj/item/toy/cards/deck))
+			var/obj/item/toy/cards/deck/summoned_deck = summoned_item
+			var/list/cardlist = summoned_deck.fetch_card_atoms()
+			if(!cardlist)
+				return FALSE
+
+			for(var/obj/item/toy/single_card in cardlist)
+				single_card.alpha = SUMMONED_ITEM_ALPHA
+				single_card.set_light(SUMMONED_ITEM_LIGHT)
+				single_card.add_atom_colour("#acccff",FIXED_COLOUR_PRIORITY)
+				sub_items += single_card
+
+/datum/component/summoned_item/Destroy(force, silent)
+	for(var/obj/item in sub_items)
+		sub_items -= item
+		qdel(item)
+
+	return ..()
 
 //Summonable Items
 ///A somehow wekaer version of the toy katana

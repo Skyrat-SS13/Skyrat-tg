@@ -178,10 +178,6 @@
 			icon_state = "[multiple_sprite_use_base ? base_icon_state : initial(icon_state)]-[shells_left]"
 		if(AMMO_BOX_FULL_EMPTY)
 			icon_state = "[multiple_sprite_use_base ? base_icon_state : initial(icon_state)]-[shells_left ? "full" : "empty"]"
-		//SKYRAT EDIT ADDITION BEGIN - SEC_HAUL
-		if(AMMO_BOX_FULL_EMPTY_BASIC)
-			icon_state = "[multiple_sprite_use_base ? base_icon_state : initial(icon_state)]-[shells_left ? "full" : "empty"]"
-		//SKYRAT EDIT END
 	return ..()
 
 /// Updates the amount of material in this ammo box according to how many bullets are left in it.

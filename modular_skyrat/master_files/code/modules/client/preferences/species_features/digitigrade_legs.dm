@@ -35,5 +35,11 @@
 	if(!preferences || !is_usable(preferences))
 		return FALSE
 
+	var/old_value = target.dna.features["legs"]
+	if(value == old_value)
+		return FALSE
+
 	target.dna.features["legs"] = value
+
+	target.dna.species.replace_body(target, target.dna.species) // TODO: Replace this with something less stupidly expensive.
 	return TRUE
