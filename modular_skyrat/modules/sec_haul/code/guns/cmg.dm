@@ -14,6 +14,7 @@
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/cmg
 	fire_delay = 2 //Slightly buffed firespeed over the last cmg because the bullets are a bit weaker
 	burst_size = 1
+	actions_types = list()
 	can_bayonet = TRUE
 	knife_x_offset = 26
 	knife_y_offset = 10

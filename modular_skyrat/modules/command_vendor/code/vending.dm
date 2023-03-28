@@ -106,7 +106,6 @@
 	)
 	access_lists["[ACCESS_CE]"] = list(
 		/obj/item/clothing/head/beret/engi/ce = 1,
-		/obj/item/clothing/head/beret/engi/ce/alt = 1,
 		/obj/item/clothing/head/hats/imperial/ce = 1,
 		/obj/item/clothing/under/rank/engineering/chief_engineer = 1,
 		/obj/item/clothing/under/rank/engineering/chief_engineer/skirt = 1,
@@ -159,6 +158,7 @@
 		/obj/item/clothing/under/rank/nanotrasen_consultant/skirt = 1,
 		/obj/item/clothing/head/hats/centhat = 1,
 		/obj/item/clothing/suit/armor/centcom_formal/nt_consultant = 1,
+		/obj/item/clothing/gloves/combat/naval/nanotrasen_consultant = 1,
 	)
 
 	access_lists["[ACCESS_COMMAND]"] = list(

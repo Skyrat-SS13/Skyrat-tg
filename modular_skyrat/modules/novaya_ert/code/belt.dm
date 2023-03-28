@@ -52,7 +52,7 @@
 
 /obj/item/storage/belt/military/nri/medic/full/PopulateContents()
 	generate_items_inside(list(
-		/obj/item/ammo_box/magazine/plastikov9mm = 4,
+		/obj/item/ammo_box/magazine/multi_sprite/cfa_lynx = 4,
 		/obj/item/knife/combat = 1,
 		/obj/item/grenade/smokebomb = 1,
 		/obj/item/grenade/frag = 1,
@@ -60,7 +60,7 @@
 
 /obj/item/storage/belt/military/nri/engineer/full/PopulateContents()
 	generate_items_inside(list(
-		/obj/item/ammo_box/magazine/plastikov9mm = 4,
+		/obj/item/ammo_box/magazine/multi_sprite/cfa_lynx = 4,
 		/obj/item/knife/combat = 1,
 		/obj/item/grenade/smokebomb = 1,
 		/obj/item/grenade/frag = 1,
