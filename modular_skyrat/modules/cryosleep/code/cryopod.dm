@@ -220,7 +220,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 
 			if(mob_occupant.mind)
 				stored_rank = mob_occupant.mind.assigned_role.title
-				stored_ckey = mob_occupant.mind.key // if mob does not have a ckey and was placed in cryo by someone else, we can get the key this way
+				if(isnull(stored_ckey))
+					stored_ckey = mob_occupant.mind.key // if mob does not have a ckey and was placed in cryo by someone else, we can get the key this way
 
 		var/mob/living/carbon/human/human_occupant = occupant
 		if(human_occupant && human_occupant.mind)
