@@ -1,2 +1,4 @@
-// Whether or not there has been a previous high priest on the station
-GLOBAL_VAR(holy_successor)
+/// list of weakrefs to highpriest successor candidates. Every chaplain who joins after the initial chaplain is added to this list. The next high priest is chosen from them by seniority.
+GLOBAL_LIST(holy_successors)
+/// A weakref to the current high priest mob
+GLOBAL_VAR(current_highpriest)
