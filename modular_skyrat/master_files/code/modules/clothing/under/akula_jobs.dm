@@ -23,7 +23,7 @@
 	name = "wetworks envirosuit"
 	desc = ""
 	icon_state = "default"
-	inhand_icon_state = null
+	base_icon_state = "default"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/akula.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi'
 	armor_type = /datum/armor/wetworks_under
@@ -90,32 +90,37 @@
 	name = "wetworks envirosuit"
 	desc = ""
 	icon_state = "engi"
+	base_icon_state = "engi"
 
 /obj/item/clothing/under/akula_wetworks/cargo
 	name = "wetworks envirosuit"
 	desc = ""
 	icon_state = "cargo"
+	base_icon_state = "cargo"
 
 /obj/item/clothing/under/akula_wetworks/science
 	name = "wetworks envirosuit"
 	desc = ""
 	icon_state = "sci"
+	base_icon_state = "sci"
 
 /obj/item/clothing/under/akula_wetworks/medical
 	name = "wetworks envirosuit"
 	desc = ""
 	icon_state = "medical"
+	base_icon_state = "medical"
 
 /obj/item/clothing/under/akula_wetworks/security
 	name = "wetworks envirosuit"
 	desc = ""
 	icon_state = "sec"
+	base_icon_state = "sec"
 
 /obj/item/clothing/under/akula_wetworks/command
 	name = "wetworks envirosuit"
 	desc = ""
 	icon_state = "command"
-	inhand_icon_state = "command"
+	base_icon_state = "command"
 
 
 /obj/item/clothing/head/helmet/space/akula_wetworks
