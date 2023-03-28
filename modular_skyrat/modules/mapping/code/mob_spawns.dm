@@ -54,7 +54,7 @@
 	important_text = "You are still subject to standard prisoner policy and must Adminhelp before antagonizing DS2."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
-	computer_area = /area/ruin/space/has_grav/skyrat/interdynefob/security
+	computer_area = /area/ruin/space/has_grav/skyrat/interdynefob/security/prison
 	outfit = /datum/outfit/ds2/prisoner
 	spawner_job_path = /datum/job/ds2
 
