@@ -60,11 +60,11 @@
 	purchase_price = 200
 
 /obj/item/disk/nifsoft_uploader/dorms/contract
-	name = "Purpura Contract"
+	name = "\improper Purpura Contract"
 	loaded_nifsoft = /datum/nifsoft/hypno
+	reusable = TRUE //This is set to true because of how this handles updating laws
 	///What laws will be assigned when using the NIFSoft on someone?
 	var/laws_to_assign = "Law 1: Be nice to others."
-	reusable = TRUE //This is set to true because of how this handles updating laws
 
 /obj/item/disk/nifsoft_uploader/dorms/contract/attempt_software_install(mob/living/carbon/human/target)
 	var/datum/nifsoft/hypno/target_nifsoft = target.find_nifsoft(/datum/nifsoft/hypno)
