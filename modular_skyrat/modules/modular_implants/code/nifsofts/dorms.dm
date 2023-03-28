@@ -64,7 +64,7 @@
 	loaded_nifsoft = /datum/nifsoft/hypno
 	///What laws will be assigned when using the NIFSoft on someone?
 	var/laws_to_assign = "Law 1: Be nice to others."
-	reusable = TRUE //This is set to true because of a quirk this uses with updating laws.
+	reusable = TRUE //This is set to true because of how this handles updating laws
 
 /obj/item/disk/nifsoft_uploader/dorms/contract/attempt_software_install(mob/living/carbon/human/target)
 	var/datum/nifsoft/hypno/target_nifsoft = target.find_nifsoft(/datum/nifsoft/hypno)
@@ -92,7 +92,7 @@
 
 /datum/nifsoft/hypno
 	name = "Purpura Contract"
-	program_desc = "Compels the user to follow the laws written to the contract. \n OOC NOTE: This is strictly here for adult roleplay. None of the laws here actually need to be obeyed and you can uninstall this NIFSoft at any time." //Add an actual description to this eventually.
+	program_desc = "Once installed, the Purpura Contract compells the user to follow the rules stored in the data of the NIFSoft. \n OOC NOTE: This is strictly here for adult roleplay. None of the laws here actually need to be obeyed and you can uninstall this NIFSoft at any time."
 	purchase_price = 0
 
 	/// What "laws" does the person with this NIFSoft installed have?
