@@ -269,10 +269,6 @@ GLOBAL_VAR(first_officer)
 /obj/structure/plaque/static_plaque/golden/commission/ks13/nri_raider
 	desc = "NRI Terentiev-Yermolayev Orbital Shipworks, Providence High Orbit, Ship OSTs-02\n'Potato Beetle' Class Corvette\nCommissioned 10/11/2562 'Keeping Promises'"
 
-/obj/structure/plaque/static_plaque/golden/commission/ks13/nri_raider/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/gps, "NRI Starship")
-
 /obj/machinery/computer/centcom_announcement/nri_raider
 	name = "police announcement console"
 	desc = "A console used for making priority Internal Affairs Collegium dispatch reports."
@@ -397,9 +393,9 @@ GLOBAL_VAR(first_officer)
 	<br>10-92 = Humanoid - sighted;
 	<br>10-93 = Xenomorph - sighted;
 	<br>10-94 = Unknown lifeform - sighted;
-	<br>10-90 to 10-94, with a "d" modifier (i.e. 10-90d) = Creature - dead;
-	<br>10-90 to 10-94, with a "w" modifier (i.e. 10-92w) = Creature - wounded;
-	<br>10-90 to 10-94, with a "r" modifier (i.e. 10-93r) = Creature - resisting;
+	<br>10-90 to 10-94, with a "d" modifier (i.e. 10-90d) = Lifeform - dead;
+	<br>10-90 to 10-94, with a "w" modifier (i.e. 10-92w) = Lifeform - wounded;
+	<br>10-90 to 10-94, with a "r" modifier (i.e. 10-93r) = Lifeform - resisting;
 	<br>10-97 = Arrived at scene;
 	<br>10-99 = Last remaining officer;
 	<br>10-103 = Disturbance;
@@ -446,7 +442,10 @@ GLOBAL_VAR(first_officer)
 
 /obj/machinery/shuttle_scrambler/nri/toggle_on(mob/user)
 	SSshuttle.registerTradeBlockade(src)
+	AddComponent(/datum/component/gps, "NRI Starship")
 	active = TRUE
+	to_chat(user,span_notice("You toggle [src] [active ? "on":"off"]."))
+	to_chat(user,span_warning("The scrambling signal can be now tracked by GPS."))
 	START_PROCESSING(SSobj,src)
 
 /obj/machinery/shuttle_scrambler/nri/process()
@@ -467,17 +466,17 @@ GLOBAL_VAR(first_officer)
 		var/deactivation_response = tgui_alert(user,"Turn the crasher off?", "Crasher", list("Yes", "Cancel"))
 		if(deactivation_response != "Yes")
 			return
-		if(!active|| !user.canUseTopic(src, be_close = TRUE))
+		if(!active|| !user.can_perform_action(src))
 			return
 		toggle_off(user)
 		update_appearance()
 		send_notification()
 		to_chat(user,span_notice("You toggle [src] [active ? "on":"off"]."))
 		return
-	var/scramble_response = tgui_alert(user, "Turning the crasher on might alienate the population. Are you sure you want to do it?", "Crasher", list("Yes", "Cancel"))
+	var/scramble_response = tgui_alert(user, "Turning the crasher on might alienate the population and will make the shuttle trackable by GPS. Are you sure you want to do it?", "Crasher", list("Yes", "Cancel"))
 	if(scramble_response != "Yes")
 		return
-	if(active || !user.canUseTopic(src, be_close = TRUE))
+	if(active || !user.can_perform_action(src))
 		return
 	toggle_on(user)
 	update_appearance()
@@ -488,6 +487,6 @@ GLOBAL_VAR(first_officer)
 
 /obj/machinery/shuttle_scrambler/nri/send_notification()
 	if(active)
-		priority_announce("We've received a signal to start the supply route blockades until the issue's resolved.","NRI IAC HQ",type = "Priority")
+		priority_announce("We're intercepting all of the current and future supply deliveries until you're more cooperative with the dispatch. So, please do be.","NRI IAC HQ",ANNOUNCER_NRI_RAIDERS,"Priority")
 	else
-		priority_announce("We've received a signal to stop the blockade; you're once again free to do whatever you were doing before.","NRI IAC HQ",type = "Priority")
+		priority_announce("We've received a signal to stop the blockade; you're once again free to do whatever you were doing before.","NRI IAC HQ",ANNOUNCER_NRI_RAIDERS,"Priority")
