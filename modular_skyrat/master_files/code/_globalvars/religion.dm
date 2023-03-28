@@ -2,3 +2,7 @@
 GLOBAL_LIST(holy_successors)
 /// A weakref to the current high priest mob
 GLOBAL_VAR(current_highpriest)
+/// The previous sect's favor value
+GLOBAL_VAR(prev_favor)
+/// The previous sect's typepath
+GLOBAL_VAR(prev_sect_type)

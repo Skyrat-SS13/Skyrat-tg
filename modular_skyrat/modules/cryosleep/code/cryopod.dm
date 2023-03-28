@@ -406,6 +406,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
  */
 /obj/machinery/cryopod/proc/reset_religion()
 
+	// remember what the previous sect and favor values were so they can be restored if the same one gets chosen
+	GLOB.prev_favor = GLOB.religious_sect.favor
+	GLOB.prev_sect_type = GLOB.religious_sect.type
+
  // set the altar references to the old religious_sect to null
 	for(var/obj/structure/altar_of_gods/altar in GLOB.chaplain_altars)
 		altar.GetComponent(/datum/component/religious_tool).easy_access_sect = null
