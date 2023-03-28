@@ -12,12 +12,6 @@
 	var/obj/item/nipples = null
 	var/obj/item/penis = null
 
-	var/has_penis = FALSE
-	var/has_vagina = FALSE
-	var/has_breasts = FALSE
-	var/has_anus = FALSE
-
-
 // For tracking arousal and fluid regen.
 /mob/living/carbon/human/Initialize(mapload)
 	. = ..()

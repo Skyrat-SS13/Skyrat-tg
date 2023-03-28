@@ -207,7 +207,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 
 	return control_computer_weakref != null
 
-/obj/machinery/cryopod/close_machine(atom/movable/target)
+/obj/machinery/cryopod/close_machine(atom/movable/target, density_to_set = TRUE)
 	if(!control_computer_weakref)
 		find_control_computer(TRUE)
 	if((isnull(target) || isliving(target)) && state_open && !panel_open)
@@ -227,7 +227,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 
 		COOLDOWN_START(src, despawn_world_time, time_till_despawn)
 
-/obj/machinery/cryopod/open_machine()
+/obj/machinery/cryopod/open_machine(drop = TRUE, density_to_set = FALSE)
 	..()
 	set_density(TRUE)
 	name = initial(name)
@@ -532,7 +532,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cryopod/prison, 18)
 	// Simple way to make it always non-dense.
 	return ..(FALSE)
 
-/obj/machinery/cryopod/prison/close_machine(atom/movable/target)
+/obj/machinery/cryopod/prison/close_machine(atom/movable/target, density_to_set = TRUE)
 	. = ..()
 	// Flick the pod for a second when user enters
 	flick("prisonpod-open", src)

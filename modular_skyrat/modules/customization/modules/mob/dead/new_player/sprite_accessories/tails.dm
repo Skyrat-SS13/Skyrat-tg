@@ -10,7 +10,7 @@
 	/// Can we use this tail for the fluffy tail turf emote?
 	var/fluffy = FALSE
 
-/datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/bodypart)
+/datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/wearer)
 	var/list/used_in_turf = list("tail")
 	if(wearer.owned_turf?.name in used_in_turf)
 	// Emote exception
@@ -20,42 +20,17 @@
 		return FALSE
 	if(key in wearer.try_hide_mutant_parts)
 		return TRUE
+
 	if(wearer.wear_suit)
-	//	Exception for MODs
+		// Exception for MODs
 		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
 			return FALSE
-	//	Hide accessory if flagged to do so
+		// Hide accessory if flagged to do so
 		else if(wearer.wear_suit.flags_inv & HIDETAIL)
 			return TRUE
 
-/obj/item/organ/external/tail/can_draw_on_bodypart(mob/living/carbon/human/wearer)
-	var/list/used_in_turf = list("tail")
-	if(wearer.owned_turf?.name in used_in_turf)
-		// Emote exception
-		return FALSE
-
-	if(!wearer.w_uniform && !wearer.wear_suit)
-		return ..()
-//	Can hide if wearing uniform
-	if(render_key in wearer.try_hide_mutant_parts)
-		return FALSE
-	if(wearer.wear_suit)
-	//	Exception for MODs
-		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
-			return FALSE
-	//	Hide accessory if flagged to do so
-		else if(wearer.wear_suit.flags_inv & HIDETAIL)
-			return FALSE
-
 /datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/wearer)
 	return icon_state
-
-/datum/sprite_accessory/tails/get_special_render_key(mob/living/carbon/human/owner)
-	var/obj/item/organ/external/tail/tail = owner.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
-	if(tail)
-		return tail.render_key
-
-	return key
 
 /datum/sprite_accessory/tails/none
 	name = "None"
@@ -65,6 +40,7 @@
 	factual = FALSE
 
 /datum/sprite_accessory/tails/lizard
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails.dmi'
 	recommended_species = list(SPECIES_LIZARD, SPECIES_LIZARD_ASH, SPECIES_MAMMAL, SPECIES_UNATHI, SPECIES_LIZARD_SILVER)
 	organ_type = /obj/item/organ/external/tail/lizard
 
@@ -72,10 +48,15 @@
 	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTH, SPECIES_FELINE, SPECIES_MAMMAL, SPECIES_GHOUL)
 	organ_type = /obj/item/organ/external/tail/cat
 
+/datum/sprite_accessory/tails/human/cat
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails.dmi'
+	icon_state = "cat"
+	color_src = USE_ONE_COLOR
+
 /datum/sprite_accessory/tails/monkey/default
 	name = "Monkey"
 	icon_state = "monkey"
-	icon = 'icons/mob/species/mutant_bodyparts.dmi'
+	icon = 'icons/mob/species/monkey/monkey_tail.dmi'
 	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTH, SPECIES_FELINE, SPECIES_MAMMAL, SPECIES_MONKEY, SPECIES_GHOUL)
 	color_src = FALSE
 	organ_type = /obj/item/organ/external/tail/monkey
@@ -300,7 +281,6 @@
 /datum/sprite_accessory/tails/mammal/wagging/red_panda
 	name = "Red Panda"
 	icon_state = "wah"
-	extra = TRUE
 	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/wagging/pede
@@ -431,3 +411,8 @@
 /datum/sprite_accessory/tails/mammal/wagging/zorgoia
 	name = "Zorgoia tail"
 	icon_state = "zorgoia"
+
+/datum/sprite_accessory/tails/mammal/reptileslim
+	name = "Slim reptile"
+	icon_state = "reptileslim"
+	color_src = USE_ONE_COLOR

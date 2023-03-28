@@ -1,6 +1,6 @@
 //Trekkie Caps
 /obj/item/clothing/head/hats/caphat/parade/fedcap
-	name = "Federation officer's cap"
+	name = "Officer's cap"
 	desc = "An officer's cap that demands discipline from the one who wears it."
 	icon_state = "fedcapofficer"
 	armor_type = /datum/armor/none

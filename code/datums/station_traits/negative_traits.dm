@@ -100,7 +100,7 @@
 /datum/station_trait/overflow_job_bureaucracy
 	name = "Overflow bureaucracy mistake"
 	trait_type = STATION_TRAIT_NEGATIVE
-	weight = 0 //SKYRAT EDIT: - CHANGES WEIGHT FROM FIVE TO ZERO
+	weight = 5
 	show_in_report = TRUE
 	var/chosen_job_name
 
@@ -113,12 +113,7 @@
 
 /datum/station_trait/overflow_job_bureaucracy/proc/set_overflow_job_override(datum/source)
 	SIGNAL_HANDLER
-
 	var/datum/job/picked_job = pick(SSjob.joinable_occupations)
-	//SKYRAT EDIT START
-	while(picked_job.veteran_only)
-		picked_job = pick(SSjob.joinable_occupations)
-	//SKYRAT EDIT END
 	chosen_job_name = lowertext(picked_job.title) // like Chief Engineers vs like chief engineers
 	SSjob.set_overflow_role(picked_job.type)
 
@@ -282,10 +277,10 @@
 	report_message = "A radioactive stormfront is passing through your station's system. Expect an increased likelihood of radiation storms passing over your station, as well the potential for multiple radiation storms to occur during your shift."
 	trait_type = STATION_TRAIT_NEGATIVE
 	trait_flags = NONE
-	weight = 0 //SKYRAT EDIT CHANGE - ORIGINAL: weight = 0
+	weight = 2
 	event_control_path = /datum/round_event_control/radiation_storm
 	weight_multiplier = 1.5
-	max_occurrences_modifier = 0 //SKYRAT EDIT CHANGE - ORIGINAL: max_occurrences_modifier = 0
+	max_occurrences_modifier = 2
 
 /datum/station_trait/cramped_escape_pods
 	name = "Cramped Escape Pods"

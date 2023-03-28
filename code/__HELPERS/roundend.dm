@@ -57,7 +57,7 @@
 						mob_data["module"] = "pAI"
 					else if(iscyborg(L))
 						var/mob/living/silicon/robot/R = L
-						mob_data["module"] = R.model.name
+						mob_data["module"] = (R.model ? R.model.name : "Null Model")
 				else
 					category = "others"
 					mob_data["typepath"] = M.type
@@ -248,8 +248,8 @@
 	if(length(CONFIG_GET(keyed_list/cross_server)))
 		send_news_report()
 	*/
-	send2chat("The current round has ended. Please standby for your shift interlude Nanotrasen News Network's report!", CONFIG_GET(string/chat_announce_new_game))
-	send2chat(send_news_report(), CONFIG_GET(string/chat_announce_new_game))
+	send2chat("The current round has ended. Please standby for your shift interlude Nanotrasen News Network's report!", CONFIG_GET(string/channel_announce_end_game))
+	send2chat(send_news_report(), CONFIG_GET(string/channel_announce_end_game))
 	//SKYRAT EDIT - END
 
 	CHECK_TICK
