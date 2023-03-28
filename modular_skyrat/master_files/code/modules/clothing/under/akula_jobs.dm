@@ -40,7 +40,7 @@
 	. = ..()
 	if(!tail_overlay || isinhands)
 		return
-	. += mutable_appearance('modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi', style_overlay, ABOVE_MOB_LAYER)
+	. += mutable_appearance('modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi', tail_overlay, ABOVE_MOB_LAYER)
 
 
 /obj/item/clothing/under/akula_wetworks/equipped(mob/user, slot)
