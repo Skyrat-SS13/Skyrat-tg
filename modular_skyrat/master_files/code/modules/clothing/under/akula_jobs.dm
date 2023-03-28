@@ -36,23 +36,18 @@
 	. = ..()
 	update_appearance()
 
-/obj/item/clothing/under/akula_wetworks/worn_overlays(mutable_appearance/standing, isinhands)
-	. = ..()
-	if(!tail_overlay || isinhands)
-		return
-	. += mutable_appearance('modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi', tail_overlay, ABOVE_MOB_LAYER)
-
-
 /obj/item/clothing/under/akula_wetworks/equipped(mob/user, slot)
 	. = ..()
 	check_physique(user)
 	check_tail_overlay(user)
+	add_tail_overlay(user)
 	apply_wetsuit_status_effect(user)
 	update_appearance()
 
 /obj/item/clothing/under/akula_wetworks/dropped(mob/user)
 	. = ..()
 	remove_wetsuit_status_effect(user)
+	cut_overlays()
 
 /// This will check the wearer's bodytype and change the wetsuit worn sprite according to if its male/female
 /obj/item/clothing/under/akula_wetworks/proc/check_physique(mob/living/carbon/human/user)
@@ -63,22 +58,25 @@
 
 /// Checks if the wearer has a compatible tail for the `tail_overlay` variable
 /obj/item/clothing/under/akula_wetworks/proc/check_tail_overlay(mob/living/carbon/human/user)
-	// No tail
-	if(!istype(user.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL), /obj/item/organ/external/tail))
-		return FALSE
-
 	var/tail = user.dna.species.mutant_bodyparts["tail"][MUTANT_INDEX_NAME]
+	// to-do: write this better
 	switch(tail)
 		if("Akula")
-			tail_overlay = "overlay_akula"
+			tail_overlay = mutable_appearance('modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi', "overlay_akula", -BODY_FRONT_LAYER)
 		if("Shark")
-			tail_overlay = "overlay_shark"
+			tail_overlay = mutable_appearance('modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi', "overlay_shark", -BODY_FRONT_LAYER)
 		if("Shark (No Fin)")
-			tail_overlay = "overlay_shark_no_fin"
+			tail_overlay = mutable_appearance('modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi', "overlay_shark_no_fin", -BODY_FRONT_LAYER)
 		if("Fish")
-			tail_overlay = "overlay_fish"
+			tail_overlay = mutable_appearance('modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi', "overlay_fish", -BODY_FRONT_LAYER)
 		else
 			tail_overlay = null
+
+/// Render the actual overlay
+/obj/item/clothing/under/akula_wetworks/proc/add_tail_overlay(mob/user)
+	if(!tail_overlay)
+		return
+	user.add_overlay(tail_overlay)
 
 	/// Suit armor
 /datum/armor/wetworks_under

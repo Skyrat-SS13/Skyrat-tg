@@ -262,10 +262,6 @@
 	stack_modifier = -1
 
 /datum/status_effect/fire_handler/wet_stacks/tick(delta_time)
-	// SKYRAT EDIT - Akula species
-	if(HAS_TRAIT(owner, TRAIT_SLICK_SKIN) && stacks >= 10)
-		SEND_SIGNAL(owner, COMSIG_MOB_TRIGGER_WET_SKIN)
-	// SKYRAT EDIT END
 	adjust_stacks(-0.5 * delta_time)
 	if(stacks <= 0)
 		qdel(src)

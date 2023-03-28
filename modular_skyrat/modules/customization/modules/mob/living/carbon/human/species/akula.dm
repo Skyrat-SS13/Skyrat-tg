@@ -134,4 +134,10 @@
 	akula.add_mood_event("dry_skin", /datum/mood_event/dry_skin)
 	REMOVE_TRAIT(akula, TRAIT_SLIPPERY, SPECIES_TRAIT)
 
+/// A simple overwrite which calls parent to listen to wet_stacks
+/datum/status_effect/fire_handler/wet_stacks/tick(delta_time)
+	. = ..()
+	if(HAS_TRAIT(owner, TRAIT_SLICK_SKIN) && stacks >= 10)
+		SEND_SIGNAL(owner, COMSIG_MOB_TRIGGER_WET_SKIN)
+
 #undef DRY_UP_TIME
