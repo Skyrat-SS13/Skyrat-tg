@@ -38,6 +38,8 @@
 
 /obj/item/clothing/under/akula_wetworks/equipped(mob/user, slot)
 	. = ..()
+	if(slot != ITEM_SLOT_ICLOTHING)
+		return
 	check_physique(user)
 	check_tail_overlay(user)
 	add_tail_overlay(user)
@@ -46,8 +48,11 @@
 
 /obj/item/clothing/under/akula_wetworks/dropped(mob/user)
 	. = ..()
+	if(tail_overlay)
+		user.cut_overlay(tail_overlay)
+		tail_overlay = null
 	remove_wetsuit_status_effect(user)
-	cut_overlays()
+	update_appearance()
 
 /// This will check the wearer's bodytype and change the wetsuit worn sprite according to if its male/female
 /obj/item/clothing/under/akula_wetworks/proc/check_physique(mob/living/carbon/human/user)
@@ -62,13 +67,13 @@
 	// to-do: write this better
 	switch(tail)
 		if("Akula")
-			tail_overlay = mutable_appearance('modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi', "overlay_akula", -BODY_FRONT_LAYER)
+			tail_overlay = mutable_appearance('modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi', "overlay_akula", -(BODY_FRONT_LAYER-0.1))
 		if("Shark")
-			tail_overlay = mutable_appearance('modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi', "overlay_shark", -BODY_FRONT_LAYER)
+			tail_overlay = mutable_appearance('modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi', "overlay_shark", -(BODY_FRONT_LAYER-0.1))
 		if("Shark (No Fin)")
-			tail_overlay = mutable_appearance('modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi', "overlay_shark_no_fin", -BODY_FRONT_LAYER)
+			tail_overlay = mutable_appearance('modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi', "overlay_shark_no_fin", -(BODY_FRONT_LAYER-0.1))
 		if("Fish")
-			tail_overlay = mutable_appearance('modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi', "overlay_fish", -BODY_FRONT_LAYER)
+			tail_overlay = mutable_appearance('modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi', "overlay_fish", -(BODY_FRONT_LAYER-0.1))
 		else
 			tail_overlay = null
 

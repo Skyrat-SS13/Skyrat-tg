@@ -33,6 +33,7 @@
 		"tail" = ACC_RANDOM,
 		"legs" = "Normal Legs"
 	)
+	outfit_important_for_life = /datum/outfit/akula
 	payday_modifier = 0.75
 	liked_food = SEAFOOD | RAW
 	disliked_food = CLOTH | DAIRY
@@ -101,6 +102,12 @@
 
 /datum/species/akula/get_species_lore()
 	return list(placeholder_lore)
+
+/datum/species/akula/pre_equip_species_outfit(datum/job/job, mob/living/carbon/human/equipping, visuals_only = FALSE)
+	if(job?.akula_outfit)
+		equipping.equipOutfit(job.akula_outfit, visuals_only)
+	else
+		give_important_for_life(equipping)
 
 // Wet_stacks handling
 // more about grab_resists in `code\modules\mob\living\living.dm` at li 1119
