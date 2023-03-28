@@ -6,7 +6,7 @@
 	if(!spawned_chaplain.mind)
 		return
 		
-	//if the mob is not a high priest, add to successors list
+	// if the mob is not a high priest, add to successors list
 	if(spawned_chaplain.mind.holy_role != HOLY_ROLE_HIGHPRIEST)
 		if(isnull(GLOB.holy_successors)) 
 			GLOB.holy_successors = list()
