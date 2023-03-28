@@ -14,9 +14,9 @@
 
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate
 	name = "Interdyne Bioweapon Scientist"
+	you_are_text = "You are an Interdyne science technician, employed in a top secret research facility developing biological weapons."
 
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/ice
-	you_are_text = "You are an Interdyne science technician, employed in a top secret research facility developing biological weapons."
 	outfit = /datum/outfit/lavaland_syndicate/ice
 
 //OUTFITS//
