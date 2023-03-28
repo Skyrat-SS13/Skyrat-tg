@@ -33,6 +33,11 @@
 /// One can breath under water, you get me?
 #define TRAIT_WATER_BREATHING "water_breathing"
 
+/// The trait which Akulas inherent, for their species mechanic revolving around wet_stacks
+#define TRAIT_SLICK_SKIN "slick_skin"
+/// The trait which is applied when a `slick skin` trait haver actually gets wet_stacks
+#define TRAIT_SLIPPERY "slippery"
+
 /// Under the effect of a numbling agent, such as morphine, for surgery.
 #define TRAIT_NUMBED "numbed"
 

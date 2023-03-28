@@ -385,6 +385,10 @@
 	description = "<span class='warning'>Having my robotic parts messed with while I was conscious felt wrong... if only I had a sleep mode!</span>\n"
 	mood_change = -4
 	timeout = 10 MINUTES
+
+/datum/mood_event/dry_skin
+	description = "<span class='warning'>My skin feels awfully dry...</span>\n"
+	mood_change = -1
 //SKYRAT EDIT END
 
 /datum/mood_event/gamer_withdrawal

@@ -230,6 +230,13 @@
 			lube |= SLIDE
 		slide_distance = rand(5, 9)
 
+	// SKYRAT EDIT - Akula species
+	if(HAS_TRAIT(slipper, TRAIT_SLIPPERY))
+		if(!(lube & SLIDE_ICE))
+			lube |= SLIDE
+		slide_distance = rand(5, 9)
+	// SKYRAT EDIT END
+
 	var/obj/buckled_obj
 	if(slipper.buckled)
 		buckled_obj = slipper.buckled

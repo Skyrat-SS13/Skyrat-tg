@@ -1,3 +1,6 @@
+/// How long the akula will stay wet for, AKA how long their species buff will last without being sustained by h2o
+#define DRY_UP_TIME 10 MINUTES
+
 /datum/species/akula
 	name = "Akula"
 	id = SPECIES_AKULA
@@ -22,6 +25,7 @@
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
 		TRAIT_WATER_BREATHING,
+		TRAIT_SLICK_SKIN,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
@@ -42,6 +46,8 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant/akula,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant/akula,
 	)
+	///
+	var/dry_up_timer = TIMER_ID_NULL
 
 /datum/species/akula/randomize_features(mob/living/carbon/human/human_mob)
 	var/main_color
@@ -70,9 +76,9 @@
 	human_mob.dna.features["mcolor3"] = tertiary_color
 
 /datum/species/akula/prepare_human_for_preview(mob/living/carbon/human/akula)
-	var/main_color = "#296786"
-	var/secondary_color = "#8ce0bd"
-	var/tertiary_color = "#ccf6e2"
+	var/main_color = "#1CD3E5"
+	var/secondary_color = "#6AF1D6"
+	var/tertiary_color = "#CCF6E2"
 	akula.dna.features["mcolor"] = main_color
 	akula.dna.features["mcolor2"] = secondary_color
 	akula.dna.features["mcolor3"] = tertiary_color
@@ -95,3 +101,30 @@
 
 /datum/species/akula/get_species_lore()
 	return list(placeholder_lore)
+
+// Wet_stacks handling
+// more about grab_resists in `code\modules\mob\living\living.dm` at li 1119
+// more about slide_distance in `code\game\turfs\open\_open.dm` at li 233
+/datum/species/akula/on_species_gain(mob/living/carbon/akula, datum/species/old_species, pref_load)
+	. = ..()
+	// Lets register the signal which calls when we are above 10 wet_stacks
+	RegisterSignal(akula, COMSIG_MOB_TRIGGER_WET_SKIN, PROC_REF(wetted), akula)
+	// Also lets give 15 wet_stacks on initial
+	akula.set_wet_stacks(15, remove_fire_stacks = FALSE)
+
+/datum/species/akula/proc/wetted(mob/living/carbon/akula)
+	SIGNAL_HANDLER
+	// Apply the slippery trait if its not there yet
+	if(!HAS_TRAIT(akula, TRAIT_SLIPPERY))
+		ADD_TRAIT(akula, TRAIT_SLIPPERY, SPECIES_TRAIT)
+	// Relieve the negative moodlet
+	akula.clear_mood_event("dry_skin")
+	// The timer which will initiate above 10 wet_stacks, and call dried() once the timer runs out
+	dry_up_timer = addtimer(CALLBACK(src, PROC_REF(dried), akula), DRY_UP_TIME, TIMER_UNIQUE | TIMER_STOPPABLE)
+
+/datum/species/akula/proc/dried(mob/living/carbon/akula)
+	// A -1 moodlet which will not go away until the user gets wet
+	akula.add_mood_event("dry_skin", /datum/mood_event/dry_skin)
+	REMOVE_TRAIT(akula, TRAIT_SLIPPERY, SPECIES_TRAIT)
+
+#undef DRY_UP_TIME

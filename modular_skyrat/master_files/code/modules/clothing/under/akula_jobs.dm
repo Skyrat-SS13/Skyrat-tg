@@ -1,3 +1,23 @@
+/obj/item/clothing/proc/apply_wetsuit_status_effect(mob/living/carbon/human/user)
+	if(!HAS_TRAIT(user, TRAIT_SLICK_SKIN))
+		return
+	user.apply_status_effect(/datum/status_effect/wetsuit)
+
+/obj/item/clothing/proc/remove_wetsuit_status_effect(mob/living/carbon/human/user)
+	if(!HAS_TRAIT(user, TRAIT_SLICK_SKIN))
+		return
+	user.remove_status_effect(/datum/status_effect/wetsuit)
+
+/datum/status_effect/wetsuit
+	id = "wetsuit"
+	status_type = STATUS_EFFECT_UNIQUE
+	alert_type = null
+	tick_interval = 10 SECONDS
+
+/datum/status_effect/wetsuit/tick()
+	owner.set_wet_stacks(15)
+	..()
+
 /obj/item/clothing/under/akula_wetworks
 	name = "wetworks envirosuit"
 	desc = ""
@@ -27,7 +47,12 @@
 	. = ..()
 	check_physique(user)
 	check_style_overlay(user)
+	apply_wetsuit_status_effect(user)
 	update_appearance()
+
+/obj/item/clothing/under/akula_wetworks/dropped(mob/user)
+	. = ..()
+	remove_wetsuit_status_effect(user)
 
 /obj/item/clothing/under/akula_wetworks/proc/check_physique(mob/living/carbon/human/user)
 	icon_state = initial(icon_state)
@@ -121,7 +146,15 @@
 	. = ..()
 	update_appearance()
 
-	/// Wearing hats inside the wetworks helmet
+/obj/item/clothing/head/helmet/space/akula_wetworks/equipped(mob/user, slot)
+	. = ..()
+	apply_wetsuit_status_effect(user)
+
+/obj/item/clothing/head/helmet/space/akula_wetworks/dropped(mob/user)
+	. = ..()
+	remove_wetsuit_status_effect(user)
+
+// Wearing hats inside the wetworks helmet
 /obj/item/clothing/head/helmet/space/akula_wetworks/examine()
 	. = ..()
 	if(attached_hat)
