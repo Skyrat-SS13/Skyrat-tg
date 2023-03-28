@@ -330,7 +330,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 
 	SSjob.FreeRole(stored_rank)
 
-	// handle passing the torch of high priest to new chaplains
+	// Handle holy successor removal
 	var/list/holy_successors = list_holy_successors()
 	if(mob_occupant in holy_successors) // if this mob was a holy successor then remove them from the pool
 		GLOB.holy_successors -= WEAKREF(mob_occupant)
@@ -340,6 +340,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 		if(LAZYLEN(mob_occupant.mind.objectives))
 			mob_occupant.mind.objectives.Cut()
 			mob_occupant.mind.special_role = null
+		// Handle freeing the high priest role for the next chaplain in line
 		if(mob_occupant.mind.holy_role == HOLY_ROLE_HIGHPRIEST)
 			reset_religion()
 	else
