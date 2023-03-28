@@ -105,12 +105,17 @@
 // Wet_stacks handling
 // more about grab_resists in `code\modules\mob\living\living.dm` at li 1119
 // more about slide_distance in `code\game\turfs\open\_open.dm` at li 233
+/// Lets register the signal which calls when we are above 10 wet_stacks
 /datum/species/akula/on_species_gain(mob/living/carbon/akula, datum/species/old_species, pref_load)
 	. = ..()
-	// Lets register the signal which calls when we are above 10 wet_stacks
 	RegisterSignal(akula, COMSIG_MOB_TRIGGER_WET_SKIN, PROC_REF(wetted), akula)
-	// Also lets give 15 wet_stacks on initial
+	// lets give 15 wet_stacks on initial
 	akula.set_wet_stacks(15, remove_fire_stacks = FALSE)
+
+/// Remove the signal on species loss
+/datum/species/akula/on_species_loss(mob/living/carbon/akula, datum/species/new_species, pref_load)
+	. = ..()
+	UnregisterSignal(akula, COMSIG_MOB_TRIGGER_WET_SKIN)
 
 /// This proc is called when a mob with TRAIT_SLICK_SKIN gains over 10 wet_stacks
 /datum/species/akula/proc/wetted(mob/living/carbon/akula)
