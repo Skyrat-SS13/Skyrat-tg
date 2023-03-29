@@ -1,6 +1,6 @@
 /mob/living/basic/pet/chinchilla
 	name = "chinchilla"
-	desc = "They're a chinchilla."
+	desc = "They're like a mouse, but Australian."
 
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	held_lh = 'modular_skyrat/master_files/icons/mob/inhands/pets_held_lh.dmi'
@@ -39,6 +39,9 @@
 
 	ai_controller = /datum/ai_controller/basic_controller/chinchilla
 
+	/// The color (i.e. "black" or "white") of this chinchilla, to determine the `icon_state`s to use for
+	/// this specific instance. `null` by default, which makes it pick a valid value at random in
+	/// Initialize()`.
 	var/body_color
 
 /mob/living/basic/pet/chinchilla/Initialize(mapload)
@@ -47,15 +50,11 @@
 
 	if(isnull(body_color))
 		body_color = pick("black", "white")
-		held_state = "chinchilla_[body_color]" // not handled by variety element
-		AddElement(/datum/element/animal_variety, "chinchilla", body_color, FALSE)
+
+	held_state = "chinchilla_[body_color]" // not handled by variety element
+	AddElement(/datum/element/animal_variety, "chinchilla", body_color, FALSE)
 
 //ai behavior
-
-/mob/living/basic/pet/chinchilla/proc/take_dust_bath(obj/effect/decal/cleanable/dust)
-	visible_message(span_notice("[src] starts taking a dust bath in the [dust]."))
-	spin(10, 1)
-	qdel(dust)
 
 /datum/ai_controller/basic_controller/chinchilla
 	blackboard = list(
@@ -81,13 +80,21 @@
 /datum/ai_behavior/hunt_target/dust_roll
 	hunt_cooldown = 20 SECONDS
 
-/datum/ai_behavior/hunt_target/dust_roll/target_caught(mob/living/basic/pet/chinchilla/hunter, obj/effect/decal/cleanable/dust)
-	hunter.take_dust_bath(dust)
+/datum/ai_behavior/hunt_target/dust_roll/target_caught(mob/living/basic/pet/hunter, obj/effect/decal/cleanable/dust)
+	hunter.visible_message(span_notice("[hunter] starts taking a dust bath in the [dust]."))
+	hunter.spin(10, 1)
+	qdel(dust)
 
 /datum/ai_planning_subtree/random_speech/chinchilla
 	speech_chance = 5
-	emote_hear = list("squeaks.","chirps.")
-	emote_see = list("sniffs around.", "jumps around.")
+	emote_hear = list(
+		"squeaks.",
+		"chirps.",
+	)
+	emote_see = list(
+		"sniffs around.",
+		"jumps around.",
+	)
 
 //subtypes
 
@@ -96,5 +103,3 @@
 
 /mob/living/basic/pet/chinchilla/black
 	body_color = "black"
-	icon_state = "chinchilla_black"
-	held_state = "chinchilla_black"
