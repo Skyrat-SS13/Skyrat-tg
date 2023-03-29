@@ -180,6 +180,7 @@ GLOBAL_VAR(first_officer)
 	. = ..()
 	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_SPAWNER)
 	spawned_human.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_SPAWNER)
+	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_SPAWNER)
 
 	// if this is the first officer, keep a reference to them
 	if(!GLOB.first_officer)
