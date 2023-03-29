@@ -1,14 +1,8 @@
 // .50 BMG (Sniper)
 
-<<<<<<< HEAD
-/obj/projectile/bullet/p50    /////OVERRIDEN IN MODULAR > BULLETREBALANCE
-	name =".50 bullet"
-	speed = 0.2 //SKYRAT EDIT: Original value (0.4)
-=======
 /obj/projectile/bullet/p50
 	name =".50 BMG bullet"
 	speed = 0.4
->>>>>>> c27f9a6d9b9 (Minor Nukie Thing: Bolt-action Sniper Rifle, balance coding, and some ammo changes (#73781))
 	range = 400 // Enough to travel from one corner of the Z to the opposite corner and then some.
 	damage = 70
 	paralyze = 100
