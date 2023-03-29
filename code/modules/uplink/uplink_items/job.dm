@@ -288,27 +288,7 @@
 	restricted_roles = list(JOB_ROBOTICIST, JOB_RESEARCH_DIRECTOR)
 	surplus = 15
 
-<<<<<<< HEAD
 /* //SKYRAT REMOVAL START
-/datum/uplink_item/role_restricted/his_grace
-	name = "His Grace"
-	desc = "An incredibly dangerous weapon recovered from a station overcome by the grey tide. Once activated, He will thirst for blood and must be used to kill to sate that thirst. \
-	His Grace grants gradual regeneration and complete stun immunity to His wielder, but be wary: if He gets too hungry, He will become impossible to drop and eventually kill you if not fed. \
-	However, if left alone for long enough, He will fall back to slumber. \
-	To activate His Grace, simply unlatch Him."
-	progression_minimum = 30 MINUTES
-	item = /obj/item/his_grace
-	cost = 20
-	restricted_roles = list(JOB_CHAPLAIN)
-	surplus = 5
-*/ //SKYRAT REMOVAL END
-
-// High progression cost
-
-//SKYRAT EDIT REMOVAL BEGIN
-/*
-=======
->>>>>>> 55528681b1d (Reduces progression cost of a lot of traitor items. Groups assassinate/behead/eyesnatching objectives together so that they're treated the same under the traitor no-dupe rules. (#74270))
 /datum/uplink_item/role_restricted/spider_injector
 	name = "Australicus Slime Mutator"
 	desc = "Crikey mate, it's been a wild travel from the Australicus sector but we've managed to get \
