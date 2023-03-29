@@ -65,6 +65,9 @@
 	///used for debugging in testing (doesn't put people out of the game, some other shit i forgot, who knows just don't set this in live) honestly kinda deprecated
 	var/debug = FALSE
 
+	///was our game forced to start early?
+	var/early_start = FALSE
+
 /datum/mafia_controller/New()
 	. = ..()
 	GLOB.mafia_game = src
@@ -335,14 +338,16 @@
 	if(blocked_victory)
 		return FALSE
 	if(alive_mafia == 0)
-		for(var/datum/mafia_role/townie in total_town)
-			award_role(townie.winner_award, townie)
+		if(!early_start && !length(custom_setup))
+			for(var/datum/mafia_role/townie in total_town)
+				award_role(townie.winner_award, townie)
 		start_the_end("<span class='big green'>!! TOWN VICTORY !!</span>")
 		return TRUE
 	else if(alive_mafia >= anti_mafia_power && !town_can_kill)
 		start_the_end("<span class='big red'>!! MAFIA VICTORY !!</span>")
-		for(var/datum/mafia_role/changeling in total_mafia)
-			award_role(changeling.winner_award, changeling)
+		if(!early_start && !length(custom_setup))
+			for(var/datum/mafia_role/changeling in total_mafia)
+				award_role(changeling.winner_award, changeling)
 		return TRUE
 
 /**
@@ -353,8 +358,6 @@
  * * role: mafia_role datum to reward.
  */
 /datum/mafia_controller/proc/award_role(award, datum/mafia_role/rewarded)
-	if(custom_setup.len)
-		return
 	var/client/role_client = GLOB.directory[rewarded.player_key]
 	role_client?.give_award(award, rewarded.body)
 
@@ -398,6 +401,8 @@
 	QDEL_LIST(landmarks)
 	QDEL_NULL(town_center_landmark)
 	phase = MAFIA_PHASE_SETUP
+
+	early_start = initial(early_start)
 
 /**
  * After the voting and judgement phases, the game goes to night shutting the windows and beginning night with a proc.
@@ -904,6 +909,67 @@
 	else
 		req_players = assoc_value_sum(setup)
 
+<<<<<<< HEAD
+=======
+	var/list/filtered_keys = filter_players(req_players)
+
+	if(!setup.len) //don't actually have one yet, so generate a max player random setup. it's good to do this here instead of above so it doesn't generate one every time a game could possibly start.
+		setup = generate_standard_setup()
+	prepare_game(setup,filtered_keys)
+	start_game()
+
+/**
+ * Generates a forced role list and runs the game with the current number of signed-up players.
+ *
+ * Generates a randomized setup, and begins the game with everyone currently signed up.
+ */
+
+/datum/mafia_controller/proc/forced_setup()
+	check_signups() //Refresh the signup list, so our numbers are accurate and we only take active players into consideration.
+	var/list/filtered_keys = filter_players(length(GLOB.mafia_signup))
+	var/req_players = length(filtered_keys)
+
+	if(!req_players) //If we have nobody signed up, we give up on starting
+		log_admin("Attempted to force a mafia game to start with nobody signed up!")
+		return
+
+	var/list/setup = generate_forced_setup(req_players)
+
+	prepare_game(setup, filtered_keys)
+	early_start = TRUE
+	start_game()
+
+/**
+ * Checks if we have enough early start votes to begin the game early.
+ *
+ * Checks if we have the bare minimum of three signups, then checks if the number of early voters is at least half of the total
+ * number of active signups.
+ */
+
+/datum/mafia_controller/proc/check_start_votes()
+	check_signups() //Same as before. What a useful proc.
+
+	if(length(GLOB.mafia_early_votes) < MINIMUM_MAFIA_PLAYERS)
+		return FALSE //Bare minimum is 3, otherwise the game instantly ends. Also prevents people from randomly starting games for no reason.
+
+	if(length(GLOB.mafia_early_votes) < round(length(GLOB.mafia_signup) / 2))
+		return FALSE
+
+	return TRUE
+
+/**
+ * Handles the filtering of disconected signups when picking who gets to be in the round.
+ *
+ * Filters out the player list, from a given max_players count. If more players are found
+ * in the signup list than max_players, those players will be notified that they will not be put into the game.
+ *
+ * This should only be run as we are in the process of starting a game.
+ *
+ * max_players - The maximum number of keys to put in our return list before we start telling people they're not getting in.
+ * filtered_keys - A list of player ckeys, to be included in the game.
+ */
+/datum/mafia_controller/proc/filter_players(max_players)
+>>>>>>> 7c8e7865756 ([NO GBP] Mafia games only grant role win achievements when played with a full 12-player setup (#74314))
 	//final list for all the players who will be in this game
 	var/list/filtered_keys = list()
 	//cuts invalid players from signups (disconnected/not a ghost)
