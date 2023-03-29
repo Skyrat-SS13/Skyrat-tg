@@ -81,7 +81,7 @@
 	hunt_cooldown = 20 SECONDS
 
 /datum/ai_behavior/hunt_target/dust_roll/target_caught(mob/living/basic/pet/hunter, obj/effect/decal/cleanable/dust)
-	hunter.visible_message(span_notice("[hunter] starts taking a dust bath in the [dust]."))
+	hunter.visible_message(span_notice("[hunter] starts taking a dust bath in [dust]."))
 	hunter.spin(10, 1)
 	qdel(dust)
 
