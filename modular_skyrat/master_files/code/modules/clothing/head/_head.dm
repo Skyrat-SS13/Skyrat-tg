@@ -21,7 +21,17 @@
 	. = ..()
 	alternate_worn_layer = initial(alternate_worn_layer)
 	if(user.ears && (flags_inv & HIDEEARS))
-		user.update_inv_ears()
+		REGISTER_SIGNAL(src, COMSIG_CARBON_UNEQUIP_HAT, PROC_REF(update_on_removed_hat))
+
+/// After the hat has actually been removed from the mob, we can update what needs to be updated here
+/obj/item/clothing/head/update_on_removed_hat(mob/user, obj/item/hat)
+	SIGNAL_HANDLER
+	user.update_inv_ears()
+	UNREGISTER_SIGNAL(src, COMSIG_CARBON_UNEQUIP_HAT)
+
+/obj/item/clothing/head/Destroy(forced, silent)
+	UNREGISTER_SIGNAL(src, COMSIG_CARBON_UNEQUIP_HAT)
+	return ..()
 
 /obj/item/clothing/head/bio_hood
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/head/bio_muzzled.dmi'
