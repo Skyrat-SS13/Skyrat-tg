@@ -42,25 +42,22 @@
 /obj/item/organ/internal/brain/Insert(mob/living/carbon/C, special = FALSE, drop_if_replaced = TRUE, no_id_transfer = FALSE)
 	. = ..()
 
-	// Transfer brainmob from the head if we're being transferred from a head to a new body.
-	// And example of this ocurring is reattaching an amputated/severed head via surgery.
-	if(istype(loc, /obj/item/bodypart/head))
-		var/obj/item/bodypart/head/brain_holder = loc
-		if(brain_holder.brainmob)
-			brainmob = brain_holder.brainmob
-			brain_holder.brainmob = null
-			brainmob.container = null
-			brainmob.forceMove(src)
-
 	name = initial(name)
 
+<<<<<<< HEAD
 	if(C.mind && C.mind.has_antag_datum(/datum/antagonist/changeling) && !no_id_transfer) //congrats, you're trapped in a body you don't control
 		if(brainmob && !(C.stat == DEAD || (HAS_TRAIT(C, TRAIT_DEATHCOMA))))
+=======
+	// Special check for if you're trapped in a body you can't control because it's owned by a ling.
+	if(brain_owner?.mind?.has_antag_datum(/datum/antagonist/changeling) && !no_id_transfer)
+		if(brainmob && !(brain_owner.stat == DEAD || (HAS_TRAIT(brain_owner, TRAIT_DEATHCOMA))))
+>>>>>>> b47f4b1c547 (Re-fixes gem room brain shennanigans. (#74336))
 			to_chat(brainmob, span_danger("You can't feel your body! You're still just a brain!"))
 		forceMove(C)
 		C.update_body_parts()
 		return
 
+	// Not a ling? Now you get to assume direct control.
 	if(brainmob)
 		if(C.key)
 			C.ghostize()
@@ -73,7 +70,6 @@
 		C.set_suicide(HAS_TRAIT(brainmob, TRAIT_SUICIDED))
 
 		QDEL_NULL(brainmob)
-
 	else
 		C.set_suicide(suicided)
 
@@ -95,7 +91,25 @@
 	//Update the body's icon so it doesnt appear debrained anymore
 	C.update_body_parts()
 
+<<<<<<< HEAD
 /obj/item/organ/internal/brain/Remove(mob/living/carbon/C, special = 0, no_id_transfer = FALSE)
+=======
+/obj/item/organ/internal/brain/on_insert(mob/living/carbon/organ_owner, special)
+	// Are we inserting into a new mob from a head?
+	// If yes, we want to quickly steal the brainmob from the head before we do anything else.
+	// This is usually stuff like reattaching dismembered/amputated heads.
+	if(istype(loc, /obj/item/bodypart/head))
+		var/obj/item/bodypart/head/brain_holder = loc
+		if(brain_holder.brainmob)
+			brainmob = brain_holder.brainmob
+			brain_holder.brainmob = null
+			brainmob.container = null
+			brainmob.forceMove(src)
+
+	return ..()
+
+/obj/item/organ/internal/brain/Remove(mob/living/carbon/brain_owner, special = 0, no_id_transfer = FALSE)
+>>>>>>> b47f4b1c547 (Re-fixes gem room brain shennanigans. (#74336))
 	// Delete skillchips first as parent proc sets owner to null, and skillchips need to know the brain's owner.
 	if(!QDELETED(C) && length(skillchips))
 		if(!special)
