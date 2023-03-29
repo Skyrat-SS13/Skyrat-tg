@@ -21,16 +21,16 @@
 	. = ..()
 	alternate_worn_layer = initial(alternate_worn_layer)
 	if(user.ears && (flags_inv & HIDEEARS))
-		REGISTER_SIGNAL(src, COMSIG_CARBON_UNEQUIP_HAT, PROC_REF(update_on_removed_hat))
+		RegisterSignal(src, COMSIG_CARBON_UNEQUIP_HAT, PROC_REF(update_on_removed))
 
 /// After the hat has actually been removed from the mob, we can update what needs to be updated here
-/obj/item/clothing/head/update_on_removed_hat(mob/user, obj/item/hat)
+/obj/item/clothing/head/proc/update_on_removed(mob/user, obj/item/hat)
 	SIGNAL_HANDLER
 	user.update_inv_ears()
-	UNREGISTER_SIGNAL(src, COMSIG_CARBON_UNEQUIP_HAT)
+	UnregisterSignal(src, COMSIG_CARBON_UNEQUIP_HAT)
 
 /obj/item/clothing/head/Destroy(forced, silent)
-	UNREGISTER_SIGNAL(src, COMSIG_CARBON_UNEQUIP_HAT)
+	UnregisterSignal(src, COMSIG_CARBON_UNEQUIP_HAT)
 	return ..()
 
 /obj/item/clothing/head/bio_hood
