@@ -1,3 +1,11 @@
+#define MILKING_PUMP_MODE_OFF "off"
+#define MILKING_PUMP_MODE_LOW "low"
+#define MILKING_PUMP_MODE_MEDIUM "medium"
+#define MILKING_PUMP_MODE_HARD "hard"
+
+#define MILKING_PUMP_STATE_OFF "off"
+#define MILKING_PUMP_STATE_ON "on"
+
 /obj/structure/chair/milking_machine
 	name = "milking machine"
 	desc = "A stationary device for milking... things."
@@ -13,13 +21,10 @@
 /*
 *	OPERATING MODES
 */
-
-	var/pump_state_list = list("pump_off", "pump_on")
-	var/pump_state
-	var/mode_list = list("off", "low", "medium", "hard")
-	var/current_mode
-
-
+	///What state is the pump currently on? This is either `MLIKING_PUMP_STATE_OFF` or `MLIKING_PUMP_STATE_ON`
+	var/pump_state = MILKING_PUMP_STATE_OFF
+	///What mode is the pump currently on?
+	var/current_mode = MILKING_PUMP_MODE_OFF
 /*
 *	SENSATION PARAMETERS
 */
@@ -118,8 +123,6 @@
 	. = ..()
 	machine_color = machine_color_list[1]
 
-	pump_state = pump_state_list[1]
-	current_mode = mode_list[1]
 	indicator_state = indicator_state_list[1]
 	vessel_state = vessel_state_list[1]
 
@@ -238,8 +241,8 @@
 	locks_overlay.layer = BELOW_MOB_LAYER
 	add_overlay(locks_overlay)
 
-	current_mode = mode_list[1]
-	pump_state = pump_state_list[1]
+	current_mode = MILKING_PUMP_MODE_OFF
+	pump_state = MILKING_PUMP_STATE_OFF
 
 	current_mob.layer = initial(current_mob.layer)
 	update_all_visuals()
@@ -353,7 +356,7 @@
 		if(affected_mob == user)
 			// Have difficulty unbuckling if overly aroused
 			if(affected_mob.arousal >= 60)
-				if((current_mode != mode_list[1]) && (current_mode != mode_list[2]))
+				if((current_mode != MILKING_PUMP_MODE_OFF) && (current_mode != MILKING_PUMP_MODE_LOW))
 					to_chat(affected_mob, span_purple("You are too horny to try to get out!"))
 					return
 				else
@@ -433,40 +436,40 @@
 	if(!current_mob)
 		update_all_visuals()
 		return // Doesn't work without a mob
-	if(current_selected_organ == null || current_mode == mode_list[1])
+	if(current_selected_organ == null || current_mode == MILKING_PUMP_MODE_OFF)
 		update_all_visuals()
 		return // Does not work if an organ is not connected OR the machine is not switched to On
 	if(istype(current_selected_organ, /obj/item/organ/external/genital/breasts))
 		if(milk_vessel.reagents.total_volume == max_vessel_capacity)
-			current_mode = mode_list[1]
-			pump_state = pump_state_list[1]
+			current_mode = MILKING_PUMP_MODE_OFF
+			pump_state = MILKING_PUMP_STATE_OFF
 			update_all_visuals()
 			return
 	if(istype(current_selected_organ, /obj/item/organ/external/genital/vagina))
 		if(girlcum_vessel.reagents.total_volume == max_vessel_capacity)
-			current_mode = mode_list[1]
-			pump_state = pump_state_list[1]
+			current_mode = MILKING_PUMP_MODE_OFF
+			pump_state = MILKING_PUMP_STATE_OFF
 			update_all_visuals()
 			return
 	if(istype(current_selected_organ, /obj/item/organ/external/genital/testicles))
 		if(semen_vessel.reagents.total_volume == max_vessel_capacity)
-			current_mode = mode_list[1]
-			pump_state = pump_state_list[1]
+			current_mode = MILKING_PUMP_MODE_OFF
+			pump_state = MILKING_PUMP_STATE_OFF
 			update_all_visuals()
 			return
-	if(current_mode == mode_list[1])
-		pump_state = pump_state_list[1]
+	if(current_mode == MILKING_PUMP_MODE_OFF)
+		pump_state = MILKING_PUMP_STATE_OFF
 		update_all_visuals()
 		return
 	// The machine can work
 
-	if(current_mode != mode_list[1])
-		pump_state = pump_state_list[2]
+	if(current_mode != MILKING_PUMP_MODE_OFF)
+		pump_state = MILKING_PUMP_STATE_ON
 		retrive_liquids_from_selected_organ(delta_time)
 		increase_current_mob_arousal(delta_time)
 	else
-		current_mode = mode_list[1]
-		pump_state = pump_state_list[1]
+		current_mode = MILKING_PUMP_MODE_OFF
+		pump_state = MILKING_PUMP_STATE_OFF
 	update_all_visuals()
 
 // Liquid intake handler
@@ -609,13 +612,13 @@
 						current_selected_organ_size = "4"
 					else
 						current_selected_organ_size = "5"
-			if (current_mode == mode_list[1])
-				pump_state = pump_state_list[1]
+			if (current_mode == MILKING_PUMP_MODE_OFF)
+				pump_state = MILKING_PUMP_STATE_OFF
 				organ_overlay_new_icon_state = "[current_selected_organ_type]_[pump_state]_[current_selected_organ_size]"
 				if(organ_overlay.icon_state != organ_overlay_new_icon_state)
 					organ_overlay.icon_state = organ_overlay_new_icon_state
 			else
-				pump_state = pump_state_list[2]
+				pump_state = MILKING_PUMP_STATE_ON
 				organ_overlay_new_icon_state = "[current_selected_organ_type]_[pump_state]_[current_selected_organ_size]_[current_mode]"
 				if(organ_overlay.icon_state != organ_overlay_new_icon_state)
 					organ_overlay.icon_state = organ_overlay_new_icon_state
@@ -623,13 +626,13 @@
 		if(istype(current_selected_organ, /obj/item/organ/external/genital/testicles))
 			current_selected_organ_type = ORGAN_SLOT_PENIS
 			current_selected_organ_size = current_selected_organ.genital_size
-			if(current_mode == mode_list[1])
-				pump_state = pump_state_list[1]
+			if(current_mode == MILKING_PUMP_MODE_OFF)
+				pump_state = MILKING_PUMP_STATE_OFF
 				organ_overlay_new_icon_state = "[current_selected_organ_type]_[pump_state]"
 				if(organ_overlay.icon_state != organ_overlay_new_icon_state)
 					organ_overlay.icon_state = organ_overlay_new_icon_state
 			else
-				pump_state = pump_state_list[2]
+				pump_state = MILKING_PUMP_STATE_ON
 				organ_overlay_new_icon_state = "[current_selected_organ_type]_[pump_state]_[current_mode]"
 				if(organ_overlay.icon_state != organ_overlay_new_icon_state)
 					organ_overlay.icon_state = organ_overlay_new_icon_state
@@ -637,13 +640,13 @@
 		if(istype(current_selected_organ, /obj/item/organ/external/genital/vagina))
 			current_selected_organ_type = ORGAN_SLOT_VAGINA
 			current_selected_organ_size = current_selected_organ.genital_size
-			if(current_mode == mode_list[1])
-				pump_state = pump_state_list[1]
+			if(current_mode == MILKING_PUMP_MODE_OFF)
+				pump_state = MILKING_PUMP_STATE_OFF
 				organ_overlay_new_icon_state = "[current_selected_organ_type]_[pump_state]"
 				if(organ_overlay.icon_state != organ_overlay_new_icon_state)
 					organ_overlay.icon_state = organ_overlay_new_icon_state
 			else
-				pump_state = pump_state_list[2]
+				pump_state = MILKING_PUMP_STATE_ON
 				organ_overlay_new_icon_state = "[current_selected_organ_type]_[pump_state]_[current_mode]"
 				if(organ_overlay.icon_state != organ_overlay_new_icon_state)
 					organ_overlay.icon_state = organ_overlay_new_icon_state
@@ -761,37 +764,37 @@
 		return TRUE
 
 	if(action == "setOffMode")
-		current_mode = mode_list[1]
-		pump_state = pump_state_list[1]
+		current_mode = MILKING_PUMP_MODE_OFF
+		pump_state = MILKING_PUMP_STATE_OFF
 		update_all_visuals()
 		to_chat(usr, span_notice("You turn off [src]"))
 		return TRUE
 
 	if(action == "setLowMode")
-		current_mode = mode_list[2]
-		pump_state = pump_state_list[2]
+		current_mode = MILKING_PUMP_MODE_LOW
+		pump_state = MILKING_PUMP_STATE_ON
 		update_all_visuals()
 		to_chat(usr, span_notice("You switch [src] onto low mode"))
 		return TRUE
 
 	if(action == "setMediumMode")
-		current_mode = mode_list[3]
-		pump_state = pump_state_list[2]
+		current_mode = MILKING_PUMP_MODE_MEDIUM
+		pump_state = MILKING_PUMP_STATE_ON
 		update_all_visuals()
 		to_chat(usr, span_notice("You switch [src] onto medium mode"))
 		return TRUE
 
 	if(action == "setHardMode")
-		current_mode = mode_list[4]
-		pump_state = pump_state_list[2]
+		current_mode = MILKING_PUMP_MODE_HARD
+		pump_state = MILKING_PUMP_STATE_ON
 		update_all_visuals()
 		to_chat(usr, span_notice("You switch [src] onto hard mode"))
 		return TRUE
 
 	if(action == "unplug")
 		cut_overlay(organ_overlay)
-		current_mode = mode_list[1]
-		pump_state = pump_state_list[1]
+		current_mode = MILKING_PUMP_MODE_OFF
+		pump_state = MILKING_PUMP_STATE_OFF
 		current_selected_organ = null
 		update_all_visuals()
 		to_chat(usr, span_notice("You detach the liner."))
@@ -844,3 +847,11 @@
 /obj/structure/chair/milking_machine/examine(mob/user)
 	. = ..()
 	. += span_purple("[src] can be disassembled by using Ctrl+Shift+Click")
+
+#undef MILKING_PUMP_MODE_OFF
+#undef MILKING_PUMP_MODE_LOW
+#undef MILKING_PUMP_MODE_MEDIUM
+#undef MILKING_PUMP_MODE_HARD
+
+#undef MILKING_PUMP_STATE_OFF
+#undef MILKING_PUMP_STATE_ON
