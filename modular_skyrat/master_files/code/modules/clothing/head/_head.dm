@@ -1,11 +1,14 @@
 //Define worn_icon_muzzled below here for suits so we don't have to make whole new .dm files for each
 
-// For making sure that snouts with the (Top) suffix have their gear layered correctly
+/// For making sure that snouts with the (Top) suffix have their gear layered correctly
+/// Also handles hiding the ear slot properly after equipping a hat
 /obj/item/clothing/head/visual_equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(!ishuman(user))
 		return
 	if(slot & ITEM_SLOT_HEAD)
+		if(user.ears && (flags_inv & HIDEEARS))
+			user.update_inv_ears()
 		if(!(user.dna.species.bodytype & BODYTYPE_ALT_FACEWEAR_LAYER))
 			return
 		if(!isnull(alternate_worn_layer) && alternate_worn_layer < BODY_FRONT_LAYER) // if the alternate worn layer was already lower than snouts then leave it be
