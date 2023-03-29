@@ -4,4 +4,5 @@
 	organ_flags = ORGAN_SYNTHETIC | ORGAN_SYNTHETIC_FROM_SPECIES
 	status = ORGAN_ROBOTIC
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
-	icon_state = "heart-ipc"
+	icon_state = "heart-ipc-on"
+	base_icon_state = "heart-ipc"
