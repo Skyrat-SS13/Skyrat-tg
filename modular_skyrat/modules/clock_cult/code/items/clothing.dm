@@ -328,6 +328,8 @@
 	ADD_TRAIT(wearer, TRAIT_MADNESS_IMMUNE, CLOTHING_TRAIT)
 	ADD_TRAIT(wearer, TRAIT_KNOW_ENGI_WIRES, CLOTHING_TRAIT)
 	ADD_TRAIT(wearer, TRAIT_KNOW_CYBORG_WIRES, CLOTHING_TRAIT)
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	darkness_view = 8
 
 
 /// Removes the effects to the wearer, removing the flash protection and similar
@@ -345,6 +347,8 @@
 	REMOVE_TRAIT(wearer, TRAIT_MADNESS_IMMUNE, CLOTHING_TRAIT)
 	REMOVE_TRAIT(wearer, TRAIT_KNOW_ENGI_WIRES, CLOTHING_TRAIT)
 	REMOVE_TRAIT(wearer, TRAIT_KNOW_CYBORG_WIRES, CLOTHING_TRAIT)
+	lighting_alpha = initial(lighting_alpha)
+	darkness_view = initial(darkness_view)
 
 
 /obj/item/clothing/glasses/clockwork/judicial_visor/equipped(mob/living/user, slot)
