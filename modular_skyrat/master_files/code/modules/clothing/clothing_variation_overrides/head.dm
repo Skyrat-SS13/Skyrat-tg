@@ -215,4 +215,7 @@
 
 /obj/item/clothing/head/helmet/chaplain/adept
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/head/helmet/chaplain/cage
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 //End Chaplain
