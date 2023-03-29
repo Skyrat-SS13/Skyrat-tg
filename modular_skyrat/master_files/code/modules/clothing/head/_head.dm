@@ -20,6 +20,8 @@
 /obj/item/clothing/head/dropped(mob/living/carbon/human/user)
 	. = ..()
 	alternate_worn_layer = initial(alternate_worn_layer)
+	if(user.ears && (flags_inv & HIDEEARS))
+		user.update_inv_ears()
 
 /obj/item/clothing/head/bio_hood
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/head/bio_muzzled.dmi'
