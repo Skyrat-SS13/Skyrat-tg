@@ -1295,9 +1295,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 						span_danger("[owner] attempts to touch you!"), span_hear("You hear a swoosh!"), COMBAT_MESSAGE_RANGE, owner)
 		to_chat(owner, span_warning("You attempt to touch [target]!"))
 		return
-	//Check if we can do a grab maneuver, if so, attempt it - SKYRAT EDIT ADDITION
-	if(target.pulledby && target.pulledby == owner && owner.grab_state > GRAB_PASSIVE && try_grab_maneuver(owner, target, modifiers))
-		return //SKYRAT EDIT END
 
 	SEND_SIGNAL(owner, COMSIG_MOB_ATTACK_HAND, owner, target, attacker_style)
 
