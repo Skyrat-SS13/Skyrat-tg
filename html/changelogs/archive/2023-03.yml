@@ -1399,3 +1399,116 @@
   - qol: rearranged DS-2 botany and kitchen
   - bugfix: fixed access on a few of the APCs in DS-2
   - rscadd: ammo bench, cryotube, secdrobe, and some extra handcuffs added to Interdyne
+2023-03-30:
+  LT3:
+  - qol: Janitor access keys now show up on the Custodial Locator tablet app
+  - bugfix: Reduced lighting range for idle fire alarms
+  - rscadd: Tram signs will now malfunction when the tram is malfunctioning
+  - code_imp: Tram tiles adjusted for upstream change
+  Melbert:
+  - rscdel: Revert elevator panel UI theme change
+  OrionTheFox:
+  - rscdel: Removed the obsolete Microfusion Cell Containers that spawned in the armory.
+  Rhials:
+  - rscadd: You can now vote to start a Mafia game early. If over half of the current
+      signups vote (And you have three or more players) you will immediately start
+      a game with a slightly adjusted set of roles.
+  - admin: You can now force a mafia game to start in the admin options panel.
+  SkyratBot:
+  - balance: The pirate gangs have been split into two subcategories, one which can
+      spawn earlier in a shift and one that spawns later as they currently do. While
+      skeleton pirates will still be only seen later into the shift, expect to see
+      the other pirate gangs earlier on.
+  - bugfix: Prevented the pirate event from runtiming when no possible pirate gangs
+      were available.
+  - bugfix: Pirates can no longer be selected by Dynamic if there are no more pirates
+      gangs that can be used.
+  - qol: you can choose your default paint color for the "Tagger" quirk from prefs.
+  - bugfix: fixed disposals on the starfury
+  - bugfix: fixed flooring on the starfury
+  - bugfix: fixed missing air alarm on the starfury
+  - bugfix: fixed air turfs exposed to space on the starfury
+  - bugfix: ' Redesigns "the_arena" ( the bubblegum shuttle deathmatch area )'
+  - balance: You can no longer print Technology data disks. You can still print Tech
+      disks, which hold techweb information on it, just not the one that holds up
+      to 5 nodes.
+  - balance: ^ Because of this, there's no way to download nodes from an RD console
+      and upload them to an Autolathe to bypass departmental restrictions, you have
+      to go through a Techfab/Circuit imprinter for your needs.
+  - balance: Ones that are found cannot have anything uploaded/deleted off of them
+      either, you can only upload them to the Web.
+  - code_imp: Every individual Bepis disk no longer create an entire techweb
+  - imageadd: Resprites the Wirebrush
+  - imagedel: Removes the sprite for the Advanced Wirebrush
+  - rscadd: re-added normal doors to qm's office on tram.
+  - bugfix: fixed hos' shutters not being existant on tram.
+  - rscadd: The Nanotrasen Costuming Department has released specifications for how
+      to convert the Head of Security's cap into a shako.
+  - bugfix: 'The Syndicate have gotten their hands on the most dangerous weapon: A
+      photocopier that doesn''t require any money. God save us all.'
+  - rscadd: remakes the old escape pod shuttle
+  - bugfix: Kilo's arrivals port will no longer be space colored
+  - bugfix: admin respawn character verb works properly
+  - rscadd: Added a new emergency shuttle, the emergency_tranquility
+  - code_imp: adds IS_TRAITOR macro
+  - balance: Increased Bonus Reward for kidnapping alive targets
+  - balance: Changed Virologist and Scientist into Common objectives for kidnapping
+  - balance: Changed Paramedic into Uncommon objectives for kidnapping
+  - balance: Curators/HoP can now manage Newscaster D-Notices (previously was Warden/HoS).
+  - balance: Security Officers/Detectives can now issue Wanted notices on Newscasters.
+  - balance: Ntos Newscaster now requires Library access only to download, not to
+      run.
+  - bugfix: Fixes a bunch of minor gravity bugs, report em if you see more yeah?
+  - bugfix: Experimentors can connect to techwebs that have at least one RD server
+      on the level.
+  - server: The starlight config has been removed, as it is enabled by default
+  - bugfix: Pirates finally realized that they shouldn't risk life and limb attacking
+      stations if they had already paid them off.
+  - qol: Cult Roundend Report no longer lists post-summon cultists. No more 30 random
+      Harvesters clogging up the roundend report
+  - bugfix: the roboticist in the prey pod now has clothes as intended
+  - bugfix: mafia games only grant role win achievements when played with a full 12-player
+      setup.
+  - rscadd: Bacteria rich moldy food (like breadslices and pizzaslices) now spawn
+      in trashcarts, trashbags and randomly on the floor.
+  - rscadd: Damp rag now spawns in the trashcarts and etc.
+  - rscdel: removes being cremated from high burn damage and being on fire (yes this
+      was in the game but has been broken for probably a very long time)
+  - rscadd: the pod_crash.dmm ruin
+  - balance: Reduced the reputation cost of most non-murderbone orientated uplink
+      items like hypnotic flash and emag.
+  - balance: Reduced the amount of assassinate/kidnap/eyesnatch objectives that'll
+      appear at once.
+  Stalkeros, Lukaster42:
+  - bugfix: fixes lack of a proper arrival message for the NRI event.
+  - spellcheck: replaced a bunch of military mentions with police mentions for the
+      NRI event.
+  - rscadd: NRI police fully IC SOPs.
+  - rscadd: NRI police shuttle blocker.
+  Syrox25:
+  - rscadd: 'Adds new Taur variant: "Slime"'
+  Tattle:
+  - spellcheck: fixed a few typos, mostly around breathing
+  Wallem:
+  - balance: Fixes a glaring oversight with the entrenching tool's balancing.
+  dawsonkeyes:
+  - bugfix: prescription mesons and engineering scanner goggles now protect from supermatter-induced
+      madness as they should
+  vinylspiders:
+  - bugfix: synth heart sprite is no longer invisible
+  - bugfix: DS2/Interdyne ranks will now display properly during announcements and
+      in the ghost records.
+  - bugfix: sleepers on DS-2 will now properly announce when someone has woken from
+      cryo sleep.
+  - bugfix: Microfusion rifles will no longer ignore the weapon safety. MicroStar
+      Energy Weapon Coalition is not to be held responsible for any damage incurred
+      to property or person during this temporary firmware malfunction.
+  - bugfix: hats that are supposed to hide the ears slot will now actually hide the
+      ears slot when the hat is equipped, without having to take it off and put it
+      back on again.
+  - bugfix: fixes runtime with modular persistence when a mob enters cryosleep
+  - qol: chaplains who are already on the station may now be chosen as successor to
+      the high priest if the high priest enters cryosleep, and they will be given
+      full control to change the station religion.
+  - bugfix: the snouted version of knight helmets will no longer be mismatched when
+      facing east/west
