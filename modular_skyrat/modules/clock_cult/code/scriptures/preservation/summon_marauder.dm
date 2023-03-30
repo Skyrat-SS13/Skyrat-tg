@@ -41,6 +41,7 @@
 
 /datum/scripture/marauder/invoke_success()
 	var/mob/living/basic/clockwork_marauder/new_mob = new (get_turf(invoker))
+	new_mob.visible_message(span_notice("[new_mob] flashes into existance!"))
 	new_mob.key = selected.key
 	to_chat(new_mob, span_brass("You are a Clockwork Marauder! You have a [new_mob.shield_health]-hit shield that will protect you against any damage taken. Have a servant repair you with a welder, should you or your shield become too damaged."))
 	selected = null
