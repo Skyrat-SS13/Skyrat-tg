@@ -28,7 +28,7 @@
 	. = ..()
 	team = new /datum/team/primitive_catgirls()
 
-	important_text = "Read the full policy <a href=\"[CONFIG_GET(string/icecats_policy_link)]\"> here</a>."
+	important_text = "Read the full policy <a href=\"[CONFIG_GET(string/icecats_policy_link)]\">here</a>."
 
 /obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/Destroy()
 	team = null
