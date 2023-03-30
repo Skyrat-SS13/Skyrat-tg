@@ -3,6 +3,7 @@ SUBSYSTEM_DEF(time_track)
 	wait = 100
 	init_order = INIT_ORDER_TIMETRACK
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
+	priority = FIRE_PRIORITY_TIME_TRACK
 
 	var/time_dilation_current = 0
 
