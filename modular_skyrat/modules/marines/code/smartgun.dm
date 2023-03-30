@@ -24,6 +24,7 @@
 	show_bolt_icon = FALSE
 	tac_reloads = FALSE
 	burst_size = 1
+	actions_types = list()
 	pin = /obj/item/firing_pin/implant/mindshield
 	mag_display_ammo = FALSE
 	mag_display = FALSE

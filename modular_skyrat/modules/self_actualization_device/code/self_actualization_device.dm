@@ -55,7 +55,7 @@
 	. = ..()
 	update_appearance()
 
-/obj/machinery/self_actualization_device/close_machine(mob/user)
+/obj/machinery/self_actualization_device/close_machine(atom/movable/target, density_to_set = TRUE)
 	..()
 	playsound(src, 'sound/machines/click.ogg', 50)
 	if(!occupant)

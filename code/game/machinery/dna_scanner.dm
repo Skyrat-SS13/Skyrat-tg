@@ -104,7 +104,7 @@
 
 	return TRUE
 
-/obj/machinery/dna_scannernew/open_machine(density_to_set = FALSE)
+/obj/machinery/dna_scannernew/open_machine(drop = TRUE, density_to_set = FALSE)
 	if(state_open)
 		return FALSE
 
@@ -114,6 +114,7 @@
 		linked_console.on_scanner_open()
 
 	return TRUE
+
 
 /obj/machinery/dna_scannernew/relaymove(mob/living/user, direction)
 	if(user.stat || locked)

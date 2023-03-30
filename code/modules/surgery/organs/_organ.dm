@@ -133,8 +133,8 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 	owner = null
 	for(var/datum/action/action as anything in actions)
 		action.Remove(organ_owner)
-	for(var/trait in organ_traits)
-		REMOVE_TRAIT(organ_owner, trait, REF(src))
+	if(length(organ_traits))
+		organ_owner.remove_traits(organ_traits, REF(src))
 
 	for(var/datum/action/action as anything in actions)
 		action.Remove(organ_owner)
@@ -148,8 +148,8 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 
 /// Updates the traits of the organ on the specific organ it is called on. Should be called anytime an organ is given a trait while it is already in a body.
 /obj/item/organ/proc/update_organ_traits()
-	for(var/trait in organ_traits)
-		ADD_TRAIT(owner, trait, REF(src))
+	if(length(organ_traits))
+		owner.add_traits(organ_traits, REF(src))
 
 /// Add a trait to an organ that it will give its owner.
 /obj/item/organ/proc/add_organ_trait(trait)

@@ -14,6 +14,7 @@
 	mag_type = /obj/item/ammo_box/magazine/m16/vintage/oldarms
 	fire_delay = 3.5
 	burst_size = 1
+	actions_types = list()
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/m16_fire.ogg'
 	fire_sound_volume = 50
 	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_cock.ogg'
