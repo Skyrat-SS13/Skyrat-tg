@@ -54,7 +54,8 @@
 	ears = /obj/item/radio/headset/headset_bs/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	backpack_contents = list(
-		/obj/item/storage/box/gunset/blueshield = 1,)
+		/obj/item/storage/box/gunset/blueshield = 1,
+	)
 	implants = list(/obj/item/implant/mindshield)
 	backpack = /obj/item/storage/backpack/blueshield
 	satchel = /obj/item/storage/backpack/satchel/blueshield
