@@ -53,6 +53,21 @@
 	name = "\improper Cargo Hangar Catwalk"
 	icon_state = "cargo_bay"
 
+/area/station/science/habitation/observation
+	name = "\improper Science Observation Deck"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "science_breakroom"
+
+/area/station/science/habitation/quarters
+	name = "\improper Science Crew Quarters"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "science_breakroom"
+
+/area/station/science/habitation/shower
+	name = "\improper Science Shower Room"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "science_breakroom"
+
 //SOLARS//
 //SERVICE//
 /area/station/maintenance/solars/flotilla/service/port
@@ -69,6 +84,23 @@
 
 /area/station/solars/flotilla/service/starboard
 	name = "\improper Service Starboard Solar Array"
+	icon_state = "panelsS"
+
+//SCIENCE//
+/area/station/maintenance/solars/flotilla/science/port
+	name = "\improper Sci Port Solar Maintenance"
+	icon_state = "SolarcontrolP"
+
+/area/station/maintenance/solars/flotilla/science/starboard
+	name = "\improper Sci Starboard Solar Maintenance"
+	icon_state = "SolarcontrolS"
+
+/area/station/solars/flotilla/science/port
+	name = "\improper Sci Portside Solar Array"
+	icon_state = "panelsP"
+
+/area/station/solars/flotilla/science/starboard
+	name = "\improper Sci Starboard Solar Array"
 	icon_state = "panelsS"
 
 
@@ -194,5 +226,16 @@
 
 /area/station/maintenance/thruster_room/flotilla/cargo/lower
 	name = "\improper Cargo Subdeck Thrusters"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "thrust_room"
+
+//SCIENCE//
+/area/station/maintenance/thruster_room/flotilla/science/upper
+	name = "\improper Science Upper Thrusters"
+	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon_state = "thrust_room"
+
+/area/station/maintenance/thruster_room/flotilla/science/lower
+	name = "\improper Science Subdeck Thrusters"
 	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
 	icon_state = "thrust_room"
