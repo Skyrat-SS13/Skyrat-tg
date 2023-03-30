@@ -544,6 +544,10 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	return the_turf.is_blocked_turf(exclude_mobs = ignore_mobs, source_atom = null, ignore_atoms = ignored_content)
 
 /obj/item/construction/rcd/proc/rcd_create(atom/A, mob/user)
+	//a check if the user knows how to operate the RCD
+	if(!HAS_TRAIT(user, TRAIT_RCD_USAGE)))
+		to_chat(user, "<span class='warning'>It doesn't seem you know how to operate RCD...</span>")
+		return FALSE
 	//does this atom allow for rcd actions?
 	var/list/rcd_results = A.rcd_vals(user, src)
 	if(!rcd_results)

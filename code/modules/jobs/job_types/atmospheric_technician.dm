@@ -54,6 +54,7 @@
 	duffelbag = /obj/item/storage/backpack/duffelbag/engineering
 
 	box = /obj/item/storage/box/survival/engineer
+	skillchips = list(/obj/item/skillchip/job/engineer_rcd)
 	pda_slot = ITEM_SLOT_LPOCKET
 
 /datum/outfit/job/atmos/mod

@@ -6,6 +6,10 @@
 	item_type = /obj/item/skillchip/job/engineer
 	description = "A skillchip that, when installed, allows the user to recognise airlock and APC wire layouts and understand their functionality at a glance. Highly valuable and sought after."
 
+/datum/opposing_force_equipment/implant/engichip
+	item_type = /obj/item/skillchip/job/engineer
+	description = "A skillchip that, when installed, allows the user to comperhand RCD's complicated layout. Can't use one without it."
+
 /datum/opposing_force_equipment/implant/roboticist
 	item_type = /obj/item/skillchip/job/roboticist
 	description = "A skillchip that, when installed, allows the user to recognise cyborg wire layouts and understand their functionality at a glance."

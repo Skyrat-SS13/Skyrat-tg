@@ -309,3 +309,5 @@
 /obj/item/storage/box/skillchips/engineering/PopulateContents()
 	new/obj/item/skillchip/job/engineer(src)
 	new/obj/item/skillchip/job/engineer(src)
+	new/obj/item/skillchip/job/engineer_rcd(src)
+	new/obj/item/skillchip/job/engineer_rcd(src)

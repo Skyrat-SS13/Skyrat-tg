@@ -24,7 +24,7 @@
 
 /datum/borer_focus/head
 	name = "head focus"
-	traits = list(TRAIT_NOFLASH, TRAIT_TRUE_NIGHT_VISION, TRAIT_KNOW_ENGI_WIRES)
+	traits = list(TRAIT_NOFLASH, TRAIT_TRUE_NIGHT_VISION, TRAIT_KNOW_ENGI_WIRES, TRAIT_RCD_USAGE)
 
 /datum/borer_focus/head/on_add(mob/living/carbon/human/host, mob/living/basic/cortical_borer/borer)
 	to_chat(host, span_notice("Your eyes begin to feel strange..."))
