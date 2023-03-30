@@ -1,5 +1,3 @@
-#define ICECAT_POLICY_LINK "https://wiki.skyrat13.tk/w/index.php/Ghost_Role_policy#Icewalkers"
-
 /obj/effect/mob_spawn/ghost_role/human/primitive_catgirl
 	name = "hole in the ground"
 	desc = "A clearly hand dug hole in the ground that appears to lead into a small cave of some kind? It's pretty dark in there."
@@ -30,7 +28,7 @@
 	. = ..()
 	team = new /datum/team/primitive_catgirls()
 
-	important_text = "Read the full policy <a href=[ICECAT_POLICY_LINK]>here</a>."
+	important_text = "Read the full policy <a href=\"[CONFIG_GET(string/icecats_policy_link)]\"> here</a>."
 
 /obj/effect/mob_spawn/ghost_role/human/primitive_catgirl/Destroy()
 	team = null
@@ -117,5 +115,3 @@
 
 /datum/antagonist/primitive_catgirl/get_team()
 	return feline_team
-
-#undef ICECAT_POLICY_LINK
