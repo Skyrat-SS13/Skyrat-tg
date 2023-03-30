@@ -1,6 +1,6 @@
 /datum/language/canilunzt
 	name = "Canilunzt"
-	desc = "A language consisting of barks, growls, yapping and alot of body, ear and tail movements. Commonly spoken by Vulpkanins"
+	desc = "A language consisting of barks, growls, yapping and alot of body, ear and tail movements. Commonly spoken by the Vulpkanin."
 	key = "7"
 	flags = TONGUELESS_SPEECH
 	space_chance = 80
