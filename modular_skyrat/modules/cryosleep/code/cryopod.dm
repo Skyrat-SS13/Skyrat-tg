@@ -220,10 +220,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 
 			if(mob_occupant.mind)
 				stored_rank = mob_occupant.mind.assigned_role.title
+				if(isnull(stored_ckey))
+					stored_ckey = mob_occupant.mind.key // if mob does not have a ckey and was placed in cryo by someone else, we can get the key this way
 
 		var/mob/living/carbon/human/human_occupant = occupant
 		if(human_occupant && human_occupant.mind)
-			human_occupant.save_individual_persistence()
+			human_occupant.save_individual_persistence(stored_ckey)
 
 		COOLDOWN_START(src, despawn_world_time, time_till_despawn)
 
@@ -328,13 +330,24 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 
 	SSjob.FreeRole(stored_rank)
 
+	// Handle holy successor removal
+	var/list/holy_successors = list_holy_successors()
+	if(mob_occupant in holy_successors) // if this mob was a holy successor then remove them from the pool
+		GLOB.holy_successors -= WEAKREF(mob_occupant)
+
 	if(mob_occupant.mind)
 		// Handle tater cleanup.
 		if(LAZYLEN(mob_occupant.mind.objectives))
 			mob_occupant.mind.objectives.Cut()
 			mob_occupant.mind.special_role = null
+		// Handle freeing the high priest role for the next chaplain in line
 		if(mob_occupant.mind.holy_role == HOLY_ROLE_HIGHPRIEST)
-			reset_religion() // Reset religion to its default state so the new chaplain becomes high priest and can change the sect, armor, weapon type, etc
+			reset_religion()
+	else
+		// handle the case of the high priest no longer having a mind
+		var/datum/weakref/current_highpriest = GLOB.current_highpriest
+		if(current_highpriest?.resolve() == mob_occupant)
+			reset_religion()
 
 	// Delete them from datacore and ghost records.
 	var/announce_rank = null
@@ -388,8 +401,16 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	open_machine()
 	name = initial(name)
 
-// It's time to kill GLOB
+/// It's time to kill GLOB
+/**
+ * Reset religion to its default state so the new chaplain becomes high priest and can change the sect, armor, weapon type, etc
+ * Also handles the selection of a holy successor from existing crew if multiple chaplains are on station.
+ */
 /obj/machinery/cryopod/proc/reset_religion()
+
+	// remember what the previous sect and favor values were so they can be restored if the same one gets chosen
+	GLOB.prev_favor = GLOB.religious_sect.favor
+	GLOB.prev_sect_type = GLOB.religious_sect.type
 
  // set the altar references to the old religious_sect to null
 	for(var/obj/structure/altar_of_gods/altar in GLOB.chaplain_altars)
@@ -406,7 +427,54 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/cryopod, 32)
 	GLOB.bible_inhand_icon_state = null
 	GLOB.holy_armor_type = null
 	GLOB.holy_weapon_type = null
-	GLOB.holy_successor = TRUE // We need to do this so new priests can get a new null rod
+	
+	// now try to pick the successor from existing crew, or leave it empty if no valid candidates found
+	var/mob/living/carbon/human/chosen_successor = pick_holy_successor()
+	GLOB.current_highpriest = chosen_successor ? WEAKREF(chosen_successor) : null // if a successor is already on the station then pick the first in line
+
+/**
+ * Chooses a valid holy successor from GLOB.holy_successor weakref list and sets things up for them to be the new high priest
+ *
+ * Returns the chosen holy successor, or null if no valid successor
+ */
+/obj/machinery/cryopod/proc/pick_holy_successor()
+	for(var/datum/weakref/successor as anything in GLOB.holy_successors)
+		var/mob/living/carbon/human/actual_successor = successor.resolve()
+		if(!actual_successor)
+			GLOB.holy_successors -= successor
+			continue
+		if(!actual_successor.key || !actual_successor.mind)
+			continue
+
+		// we have a match! set the religious globals up properly and make the candidate high priest
+		GLOB.holy_successors -= successor
+		GLOB.religion = actual_successor.client?.prefs?.read_preference(/datum/preference/name/religion) || DEFAULT_RELIGION
+		GLOB.bible_name = actual_successor.client?.prefs?.read_preference(/datum/preference/name/deity) || DEFAULT_DEITY
+		GLOB.deity = actual_successor.client?.prefs?.read_preference(/datum/preference/name/bible) || DEFAULT_BIBLE
+
+		actual_successor.mind.holy_role = HOLY_ROLE_HIGHPRIEST
+
+		to_chat(actual_successor, span_warning("You have been chosen as the successor to the previous high priest. Visit a holy altar to declare the station's religion!"))
+
+		return actual_successor
+
+	return null
+
+/**
+ * Create a list of the holy successors mobs from GLOB.holy_successors weakref list
+ *
+ * Returns the list of valid holy successors
+ */
+/obj/machinery/cryopod/proc/list_holy_successors()
+	var/list/holy_successors = list()
+	for(var/datum/weakref/successor as anything in GLOB.holy_successors)
+		var/mob/living/carbon/human/actual_successor = successor.resolve()
+		if(!actual_successor)
+			GLOB.holy_successors -= successor
+			continue
+		holy_successors += actual_successor
+
+	return holy_successors
 
 /obj/machinery/cryopod/MouseDrop_T(mob/living/target, mob/user)
 	if(!istype(target) || !can_interact(user) || !target.Adjacent(user) || !ismob(target) || isanimal(target) || !istype(user.loc, /turf) || target.buckled)
@@ -546,6 +614,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/cryopod/prison, 18)
 /obj/effect/mob_spawn/ghost_role/create(mob/mob_possessor, newname)
 	var/mob/living/spawned_mob = ..()
 	var/obj/machinery/computer/cryopod/control_computer = find_control_computer()
+	// DS2 ranks can vary from spawner to spawner in spite of the spawner name being the same and should use outfit.name instead.
+	if(istype(src, /obj/effect/mob_spawn/ghost_role/human/ds2))
+		name = initial(outfit.name)
 	GLOB.ghost_records.Add(list(list("name" = spawned_mob.real_name, "rank" = name)))
 	if(control_computer)
 		control_computer.announce("CRYO_JOIN", spawned_mob.real_name, name)
