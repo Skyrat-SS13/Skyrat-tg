@@ -536,11 +536,11 @@
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/overalls/overalls.json'
 
 /datum/greyscale_config/overalls/worn
-	name = "Overalls (Worn)"
+	name = "Worn Overalls"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/overalls/overalls_worn.json'
 
 /datum/greyscale_config/overalls/worn/digi
-	name = "Overalls (Worn) (Digi)"
+	name = "Worn Overalls - Digitigrade"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_digi.dmi'
 
 // URBAN COAT

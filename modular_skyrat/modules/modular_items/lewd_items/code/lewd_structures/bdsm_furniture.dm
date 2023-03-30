@@ -11,20 +11,22 @@
 
 /obj/item/bdsm_bed_kit
 	name = "bdsm bed construction kit"
-	desc = "Construction requires a wrench."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	throwforce = 0
 	icon_state = "bdsm_bed_kit"
 	w_class = WEIGHT_CLASS_HUGE
 
-/obj/item/bdsm_bed_kit/wrench_act(mob/living/user, obj/item/tool)
+/obj/item/bdsm_bed_kit/CtrlShiftClick(mob/user)
 	. = ..()
+	if(. == FALSE)
+		return FALSE
+
 	add_fingerprint(user)
 	if((item_flags & IN_INVENTORY) || (item_flags & IN_STORAGE))
 		return FALSE
 
 	to_chat(user, span_notice("You fasten the frame to the floor and begin to inflate the latex pillows..."))
-	if(!tool.use_tool(src, user, 8 SECONDS, volume = 50))
+	if(!do_after(user, 8 SECONDS, src))
 		to_chat(user, span_warning("You fail to assemble [src]."))
 		return FALSE
 
@@ -34,6 +36,10 @@
 	qdel(src)
 
 	return TRUE
+
+/obj/item/bdsm_bed_kit/examine(mob/user)
+	. = ..()
+	. += span_purple("[src] can be assembled by using Ctrl+Shift+Click while [src] is on the floor.")
 
 /obj/structure/bed/bdsm_bed/post_buckle_mob(mob/living/affected_mob)
 	density = TRUE
@@ -45,15 +51,19 @@
 	//Set them back down to the normal lying position
 	affected_mob.pixel_y = affected_mob.base_pixel_y + affected_mob.body_position_pixel_y_offset
 
-/obj/structure/bed/bdsm_bed/wrench_act_secondary(mob/living/user, obj/item/tool)
+/obj/structure/bed/bdsm_bed/CtrlShiftClick(mob/user)
+	. = ..()
+	if(. == FALSE)
+		return FALSE
+
 	add_fingerprint(user)
 	to_chat(user, span_notice("You begin unfastening the frame of [src] and deflating the latex pillows..."))
-	if(!tool.use_tool(src, user, 8 SECONDS, volume = 50))
+	if(!do_after(user, 8 SECONDS, src))
 		to_chat(user, span_warning("You fail to disassemble [src]."))
 		return FALSE
 
 	to_chat(user, span_notice("You disassemble [src]."))
-	var/obj/item/bdsm_bed_kit/created_kit = new
+	var/obj/item/construction_kit/bdsm/bed/created_kit = new
 	created_kit.forceMove(loc)
 	qdel(src)
 
@@ -62,6 +72,10 @@
 /obj/structure/bed/bdsm_bed/Destroy()
 	unbuckle_all_mobs(TRUE)
 	return ..()
+
+/obj/structure/bed/bdsm_bed/examine(mob/user)
+	. = ..()
+	. += span_purple("[src] can be disassembled by using Ctrl+Shift+Click")
 
 /*
 *	X-STAND
@@ -271,40 +285,25 @@
 *	X-STAND CONSTRUCTION KIT
 */
 
-/obj/item/x_stand_kit
-	name = "x-stand construction kit"
-	desc = "Construction requires a wrench."
-	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
-	throwforce = 0
-	icon_state = "xstand_kit"
-	w_class = WEIGHT_CLASS_HUGE
-	flags_1 = NODECONSTRUCT_1
-
-/obj/item/x_stand_kit/wrench_act(mob/living/user, obj/item/tool)
-	add_fingerprint(user)
-	if((item_flags & IN_INVENTORY) || (item_flags & IN_STORAGE))
+/obj/structure/chair/x_stand/CtrlShiftClick(mob/user)
+	. = ..()
+	if(. == FALSE)
 		return FALSE
 
-	to_chat(user, span_notice("You begin fastening the frame to the floor."))
-	if(!tool.use_tool(src, user, 8 SECONDS, volume = 50))
-		return FALSE
-
-	to_chat(user, span_notice("You assemble [src]."))
-	new /obj/structure/chair/x_stand(get_turf(user))
-	qdel(src)
-	return TRUE
-
-/obj/structure/chair/x_stand/wrench_act_secondary(mob/living/user, obj/item/tool)
 	add_fingerprint(user)
 	to_chat(user, span_notice("You begin unfastening the frame of [src]..."))
-	if(!tool.use_tool(src, user, 8 SECONDS, volume = 50))
+	if(!do_after(user, 8 SECONDS, src))
 		return FALSE
 
 	to_chat(user, span_notice("You disassemble [src]."))
-	new /obj/item/x_stand_kit(get_turf(user))
+	new /obj/item/construction_kit/bdsm/x_stand(loc)
 	unbuckle_all_mobs()
 	qdel(src)
 	return TRUE
+
+/obj/structure/chair/x_stand/examine(mob/user)
+	. = ..()
+	. += span_purple("[src] can be disassembled by using Ctrl+Shift+Click")
 
 #undef X_STAND_CLOSED_STATE
 #undef X_STAND_OPEN_STATE

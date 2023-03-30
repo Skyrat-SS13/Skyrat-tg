@@ -295,7 +295,9 @@
 	)
 
 /datum/quirk/item_quirk/tagger/add_unique(client/client_source)
-	give_item_to_holder(/obj/item/toy/crayon/spraycan, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS))
+	var/obj/item/toy/crayon/spraycan/can = new
+	can.set_painting_tool_color(client_source?.prefs.read_preference(/datum/preference/color/paint_color))
+	give_item_to_holder(can, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS))
 
 /datum/quirk/throwingarm
 	name = "Throwing Arm"
@@ -306,7 +308,7 @@
 	gain_text = span_notice("Your arms are full of energy!")
 	lose_text = span_danger("Your arms ache a bit.")
 	medical_record_text = "Patient displays mastery over throwing balls."
-	mail_goodies = list(/obj/item/toy/beach_ball/baseball, /obj/item/toy/beach_ball/holoball, /obj/item/toy/beach_ball/holoball/dodgeball)
+	mail_goodies = list(/obj/item/toy/beach_ball/baseball, /obj/item/toy/basketball, /obj/item/toy/dodgeball)
 
 /datum/quirk/voracious
 	name = "Voracious"

@@ -937,8 +937,7 @@
 	if(HAS_TRAIT(src, TRAIT_DNR)) //This is also added when a ghost DNR's!
 		return DEFIB_FAIL_DNR
 //SKYRAT EDIT ADDITION END - DNR TRAIT
-
-	if (suiciding)
+	if (HAS_TRAIT(src, TRAIT_SUICIDED))
 		return DEFIB_FAIL_SUICIDE
 
 	if (HAS_TRAIT(src, TRAIT_HUSK))
@@ -968,7 +967,7 @@
 	if (current_brain.organ_flags & ORGAN_FAILING)
 		return DEFIB_FAIL_FAILING_BRAIN
 
-	if (current_brain.suicided || current_brain.brainmob?.suiciding)
+	if (current_brain.suicided || (current_brain.brainmob && HAS_TRAIT(current_brain.brainmob, TRAIT_SUICIDED)))
 		return DEFIB_FAIL_NO_INTELLIGENCE
 
 	if(key && key[1] == "@") // Adminghosts
@@ -1174,7 +1173,7 @@
 		return FALSE
 	if(has_status_effect(/datum/status_effect/hallucination))
 		return TRUE
-	if(IsSleeping())
+	if(IsSleeping() || IsUnconscious())
 		return TRUE
 	if(HAS_TRAIT(src, TRAIT_DUMB))
 		return TRUE
