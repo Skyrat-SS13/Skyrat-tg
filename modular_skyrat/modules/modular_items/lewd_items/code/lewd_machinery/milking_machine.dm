@@ -6,6 +6,8 @@
 #define MILKING_PUMP_STATE_OFF "off"
 #define MILKING_PUMP_STATE_ON "on"
 
+#define CLIMAX_RETRIVE_MULTIPLIER 2
+
 /obj/structure/chair/milking_machine
 	name = "milking machine"
 	desc = "A stationary device for milking... things."
@@ -25,24 +27,6 @@
 	var/pump_state = MILKING_PUMP_STATE_OFF
 	///What mode is the pump currently on?
 	var/current_mode = MILKING_PUMP_MODE_OFF
-/*
-*	SENSATION PARAMETERS
-*/
-
-	// Values are returned every tick, without additional modifiers
-	var/arousal_amounts = list("off" = 0, "low" = 1, "medium" = 2, "hard" = 3)
-	var/pleasure_amounts = list("off" = 0, "low" = 0.2, "medium" = 1, "hard" = 1.5)
-	var/pain_amounts = list("off" = 0, "low" = 0, "medium" = 0.2, "hard" = 0.5)
-
-/*
-*	FLUID MANAGEMENT
-*/
-
-	// Liquids are taken every tick, no additional modifiers
-	var/milk_retrive_amount = list("off" = 0, "low" = 1, "medium" = 2, "hard" = 3)
-	var/girlcum_retrive_amount = list("off" = 0, "low" = 1, "medium" = 2, "hard" = 3)
-	var/semen_retrive_amount = list("off" = 0, "low" = 1, "medium" = 2, "hard" = 3)
-	var/climax_retrive_multiplier = 2 // Climax intake volume multiplier
 
 /*
 *	VESSELS
@@ -476,23 +460,25 @@
 /obj/structure/chair/milking_machine/proc/retrive_liquids_from_selected_organ(delta_time)
 	// Climax check
 	var/fluid_multiplier = 1
+	var/static/list/fluid_retrive_amount = list("off" = 0, "low" = 1, "medium" = 2, "hard" = 3)
+
 	if(current_mob != null)
 		if(current_mob.has_status_effect(/datum/status_effect/climax))
-			fluid_multiplier = climax_retrive_multiplier
+			fluid_multiplier = CLIMAX_RETRIVE_MULTIPLIER
 
 	if(istype(current_selected_organ, /obj/item/organ/external/genital/breasts))
 		if(current_selected_organ.reagents.total_volume > 0)
-			current_selected_organ.transfer_internal_fluid(milk_vessel.reagents, milk_retrive_amount[current_mode] * fluid_multiplier * delta_time)
+			current_selected_organ.transfer_internal_fluid(milk_vessel.reagents, fluid_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 		else
 			return
 	else if (istype(current_selected_organ, /obj/item/organ/external/genital/vagina))
 		if(current_selected_organ.reagents.total_volume > 0)
-			current_selected_organ.transfer_internal_fluid(girlcum_vessel.reagents, girlcum_retrive_amount[current_mode] * fluid_multiplier * delta_time)
+			current_selected_organ.transfer_internal_fluid(girlcum_vessel.reagents, fluid_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 		else
 			return
 	else if (istype(current_selected_organ, /obj/item/organ/external/genital/testicles))
 		if(current_selected_organ.reagents.total_volume > 0)
-			current_selected_organ.transfer_internal_fluid(semen_vessel.reagents, semen_retrive_amount[current_mode] * fluid_multiplier * delta_time)
+			current_selected_organ.transfer_internal_fluid(semen_vessel.reagents, fluid_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 		else
 			return
 	else
@@ -501,6 +487,10 @@
 
 // Handling the process of the impact of the machine on the organs of the mob
 /obj/structure/chair/milking_machine/proc/increase_current_mob_arousal(delta_time)
+	var/static/list/arousal_amounts = list("off" = 0, "low" = 1, "medium" = 2, "hard" = 3)
+	var/static/list/pleasure_amounts = list("off" = 0, "low" = 0.2, "medium" = 1, "hard" = 1.5)
+	var/static/list/pain_amounts = list("off" = 0, "low" = 0, "medium" = 0.2, "hard" = 0.5)
+
 	current_mob.adjust_arousal(arousal_amounts[current_mode] * delta_time)
 	current_mob.adjust_pleasure(pleasure_amounts[current_mode] * delta_time)
 	current_mob.adjust_pain(pain_amounts[current_mode] * delta_time)
