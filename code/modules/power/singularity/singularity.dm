@@ -11,14 +11,10 @@
 	plane = ABOVE_LIGHTING_PLANE
 	light_range = 6
 	appearance_flags = LONG_GLIDE
-
-<<<<<<< HEAD
 	invisibility = INVISIBILITY_MAXIMUM //SKYRAT EDIT ADDITION
-=======
+
 	/// the prepended string to the icon state (singularity_s1, dark_matter_s1, etc)
 	var/singularity_icon_variant = "singularity"
->>>>>>> c0ef4ba907b (Adds the Dark Matt-eor when you emag a stupid amount of meteor shields + lots of meteor file sorting + qol + dark matter singularity + dark matt-eor summoning final traitor objective (#74330))
-
 	/// The singularity component itself.
 	/// A weak ref in case an admin removes the component to preserve the functionality.
 	var/datum/weakref/singularity_component
@@ -209,13 +205,8 @@
 	switch(temp_allowed_size)
 		if(STAGE_ONE)
 			current_size = STAGE_ONE
-<<<<<<< HEAD
 			icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s1.dmi' //SKYRAT EDIT CHANGE - ORIGINAL: icon = 'icons/obj/engine/singularity.dmi'
-			icon_state = "singularity_s1"
-=======
-			icon = 'icons/obj/engine/singularity.dmi'
 			icon_state = "[singularity_icon_variant]_s1"
->>>>>>> c0ef4ba907b (Adds the Dark Matt-eor when you emag a stupid amount of meteor shields + lots of meteor file sorting + qol + dark matter singularity + dark matt-eor summoning final traitor objective (#74330))
 			pixel_x = 0
 			pixel_y = 0
 			new_grav_pull = 4
@@ -226,13 +217,8 @@
 		if(STAGE_TWO)
 			if(check_cardinals_range(1, TRUE))
 				current_size = STAGE_TWO
-<<<<<<< HEAD
 				icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s3.dmi' //SKYRAT EDIT CHANGE
-				icon_state = "singularity_s3"
-=======
-				icon = 'icons/effects/96x96.dmi'
 				icon_state = "[singularity_icon_variant]_s3"
->>>>>>> c0ef4ba907b (Adds the Dark Matt-eor when you emag a stupid amount of meteor shields + lots of meteor file sorting + qol + dark matter singularity + dark matt-eor summoning final traitor objective (#74330))
 				pixel_x = -32
 				pixel_y = -32
 				new_grav_pull = 6
@@ -243,13 +229,8 @@
 		if(STAGE_THREE)
 			if(check_cardinals_range(2, TRUE))
 				current_size = STAGE_THREE
-<<<<<<< HEAD
 				icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s5.dmi' //SKYRAT EDIT CHANGE
-				icon_state = "singularity_s5"
-=======
-				icon = 'icons/effects/160x160.dmi'
 				icon_state = "[singularity_icon_variant]_s5"
->>>>>>> c0ef4ba907b (Adds the Dark Matt-eor when you emag a stupid amount of meteor shields + lots of meteor file sorting + qol + dark matter singularity + dark matt-eor summoning final traitor objective (#74330))
 				pixel_x = -64
 				pixel_y = -64
 				new_grav_pull = 8
@@ -260,13 +241,8 @@
 		if(STAGE_FOUR)
 			if(check_cardinals_range(3, TRUE))
 				current_size = STAGE_FOUR
-<<<<<<< HEAD
 				icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s7.dmi' //SKYRAT EDIT CHANGE
-				icon_state = "singularity_s7"
-=======
-				icon = 'icons/effects/224x224.dmi'
 				icon_state = "[singularity_icon_variant]_s7"
->>>>>>> c0ef4ba907b (Adds the Dark Matt-eor when you emag a stupid amount of meteor shields + lots of meteor file sorting + qol + dark matter singularity + dark matt-eor summoning final traitor objective (#74330))
 				pixel_x = -96
 				pixel_y = -96
 				new_grav_pull = 10
@@ -276,13 +252,8 @@
 				dissipate_strength = 10
 		if(STAGE_FIVE)//this one also lacks a check for gens because it eats everything
 			current_size = STAGE_FIVE
-<<<<<<< HEAD
-			icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s9.dmi' //SKYRAT EDIT CHANGE
-			icon_state = "singularity_s9"
-=======
-			icon = 'icons/effects/288x288.dmi'
+			icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s9.dmi' //SKYRAT EDIT CHANGE'
 			icon_state = "[singularity_icon_variant]_s9"
->>>>>>> c0ef4ba907b (Adds the Dark Matt-eor when you emag a stupid amount of meteor shields + lots of meteor file sorting + qol + dark matter singularity + dark matt-eor summoning final traitor objective (#74330))
 			pixel_x = -128
 			pixel_y = -128
 			new_grav_pull = 10
