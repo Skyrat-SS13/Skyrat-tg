@@ -89,3 +89,4 @@
 	name = "\improper Canilunzt translation key"
 	desc = "An encryption key that automatically encodes Canilunzt heard through the radio into common."
 	translated_language = /datum/language/canilunzt
+	
