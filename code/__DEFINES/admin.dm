@@ -6,10 +6,10 @@
 #define MUTE_PRAY (1<<2)
 #define MUTE_ADMINHELP (1<<3)
 #define MUTE_DEADCHAT (1<<4)
+#define MUTE_INTERNET_REQUEST (1<<5)
 // Skyrat Edit Addition - Mute LOOC
-#define MUTE_LOOC (1<<5)
+#define MUTE_LOOC (1<<6)
 // Skyrat Edit End
-#define MUTE_INTERNET_REQUEST (1<<6)
 #define MUTE_ALL (~0)
 
 
