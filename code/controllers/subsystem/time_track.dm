@@ -40,8 +40,18 @@ SUBSYSTEM_DEF(time_track)
 		"SendMaps: Per client: Map data: Look for movable changes: Loop through turfs in range" = "turfs_in_range",
 		"SendMaps: Per client: Map data: Look for movable changes: Movables examined" = "movables_examined",
 	)
+	var/list/subsystem_headers = list()
 
 /datum/controller/subsystem/time_track/Initialize()
+
+
+	for(var/datum/controller/subsystem/iterating_subsystem as anything in Master.subsystems)
+		if(iterating_subsystem.flags & SS_NO_FIRE)
+			continue
+		if(!iterating_subsystem.wait)
+			continue
+		subsystem_headers += "sys_[iterating_subsystem.name]"
+
 	GLOB.perf_log = "[GLOB.log_directory]/perf-[GLOB.round_id ? GLOB.round_id : "NULL"]-[SSmapping.config?.map_name].csv"
 	world.Profile(PROFILE_RESTART, type = "sendmaps")
 	//Need to do the sendmaps stuff in its own file, since it works different then everything else
@@ -59,23 +69,10 @@ SUBSYSTEM_DEF(time_track)
 			"tidi_slowavg",
 			"maptick",
 			"num_timers",
-			"air_turf_cost",
-			"air_eg_cost",
-			"air_highpressure_cost",
-			"air_hotspots_cost",
-			"air_superconductivity_cost",
-			"air_pipenets_cost",
-			"air_rebuilds_cost",
-			"air_turf_count",
-			"air_eg_count",
-			"air_hotspot_count",
-			"air_network_count",
-			"air_delta_count",
-			"air_superconductive_count",
 			"all_queries",
 			"queries_active",
 			"queries_standby"
-		) + sendmaps_headers
+		) + subsystem_headers
 	)
 	return SS_INIT_SUCCESS
 
@@ -124,6 +121,14 @@ SUBSYSTEM_DEF(time_track)
 		send_maps_values += packet["calls"]
 
 	SSblackbox.record_feedback("associative", "time_dilation_current", 1, list("[SQLtime()]" = list("current" = "[time_dilation_current]", "avg_fast" = "[time_dilation_avg_fast]", "avg" = "[time_dilation_avg]", "avg_slow" = "[time_dilation_avg_slow]")))
+
+	var/list/subsystem_entries = list()
+
+	for(var/datum/controller/subsystem/iterating_subsystem as anything in Master.subsystems)
+		if(!("sys_[iterating_subsystem.name]" in subsystem_headers))
+			continue
+		subsystem_entries += round(iterating_subsystem.tick_usage, 1)
+
 	log_perf(
 		list(
 			world.time,
@@ -134,23 +139,10 @@ SUBSYSTEM_DEF(time_track)
 			time_dilation_avg_slow,
 			MAPTICK_LAST_INTERNAL_TICK_USAGE,
 			length(SStimer.timer_id_dict),
-			SSair.cost_turfs,
-			SSair.cost_groups,
-			SSair.cost_highpressure,
-			SSair.cost_hotspots,
-			SSair.cost_superconductivity,
-			SSair.cost_pipenets,
-			SSair.cost_rebuilds,
-			length(SSair.active_turfs),
-			length(SSair.excited_groups),
-			length(SSair.hotspots),
-			length(SSair.networks),
-			length(SSair.high_pressure_delta),
-			length(SSair.active_super_conductivity),
 			SSdbcore.all_queries_num,
 			SSdbcore.queries_active_num,
 			SSdbcore.queries_standby_num
-		) + send_maps_values
+		) + subsystem_entries
 	)
 
 	SSdbcore.reset_tracking()
