@@ -84,13 +84,13 @@
 	casing_ejector = FALSE
 	empty_indicator = FALSE
 	bolt_type = BOLT_TYPE_OPEN
-	fire_delay = 3
+	fire_delay = 4
 	spread = 15
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_thrower/Initialize(mapload)
 	. = ..()
 
-	AddComponent(/datum/component/automatic_fire, fire_delay, TRUE, 0.25, 0.1)
+	AddComponent(/datum/component/automatic_fire, autofire_shot_delay = fire_delay, windup_autofire = TRUE, windup_autofire_reduction_multiplier = 0.25, windup_autofire_reduction_multiplier = 0)
 
 /obj/item/ammo_box/magazine/recharge/plasmasci
 	name = "plasma power pack"
