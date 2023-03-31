@@ -59,7 +59,7 @@
 	new_snailperson.AddElement(/datum/element/snailcrawl)
 	new_snailperson.update_icons() //SKYRAT EDIT: Roundstart Snails
 	//if(ishuman(new_snailperson)) //SKYRAT EDIT: Snails don't have exotic blood here!
-	//	update_mail_goodies(new_snailperson)
+	//	update_mail_goodies(new_snailperson) //SKYRAT EDIT END
 
 /datum/species/snail/on_species_loss(mob/living/carbon/former_snailperson, datum/species/new_species, pref_load)
 	. = ..()
@@ -75,7 +75,7 @@
 		mail_goodies += list(
 			/obj/item/reagent_containers/blood/snail
 		)
-	return ..()*/
+	return ..()*/ //SKYRAT EDIT END
 
 /obj/item/storage/backpack/snail
 	name = "snail shell"
