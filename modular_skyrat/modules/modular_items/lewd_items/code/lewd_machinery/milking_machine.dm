@@ -57,18 +57,12 @@
 *	STATE MANAGEMENT
 */
 
-	// Cell power capacity indicator
-	var/indicator_state_list = list("indicator_off", "indicator_low", "indicator_medium", "indicator_high")
-	var/indicator_state
 	// Vessel capacity indicator
 	var/vessel_state_list = list("liquid_empty", "liquid_low", "liquid_medium", "liquid_high", "liquid_full")
 	var/vessel_state
 	// Organ types and sizes
-	var/organ_types = list()
 	var/current_selected_organ_type = null
 	var/current_selected_organ_size = null
-
-	var/lock_state = "open"
 
 /*
 *	OVERLAYS
@@ -101,7 +95,6 @@
 	. = ..()
 	machine_color = machine_color_list[1]
 
-	indicator_state = indicator_state_list[1]
 	vessel_state = vessel_state_list[1]
 
 	milk_vessel = new()
