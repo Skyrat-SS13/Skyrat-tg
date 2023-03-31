@@ -88,7 +88,7 @@
 /obj/item/gun/ballistic/automatic/pistol/plasma_thrower/Initialize(mapload)
 	. = ..()
 
-	AddComponent(/datum/component/automatic_fire, fire_delay, TRUE, 0.25, 3)
+	AddComponent(/datum/component/automatic_fire, fire_delay, TRUE, 0.25, 0.1)
 
 /obj/item/ammo_box/magazine/recharge/plasmasci
 	name = "plasma power pack"
@@ -146,7 +146,7 @@
 	if(affected_mob != user)
 		affected_mob.visible_message(span_danger("[user] is trying to take a blood sample from [affected_mob]!"), \
 						span_userdanger("[user] is trying to take a blood sample from you!"))
-		if(!do_after(user, CHEM_INTERACT_DELAY(3 SECONDS, user), affected_mob, extra_checks = CALLBACK(affected_mob, TYPE_PROC_REF(/mob/living, try_inject), user, null, INJECT_TRY_SHOW_ERROR_MESSAGE|NONE)))
+		if(!do_after(user, CHEM_INTERACT_DELAY(3 SECONDS, user), affected_mob))
 			return FALSE
 	if(affected_mob.bleed(10))
 		user.visible_message(span_notice("[user] takes a blood sample from [affected_mob]."))
