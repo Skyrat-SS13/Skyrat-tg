@@ -49,12 +49,6 @@
 	var/obj/item/organ/external/genital/testicles/current_testicles = null // Buckled mob testicles
 	var/obj/item/organ/external/genital/vagina/current_vagina = null // Buckled mob vagina
 
-	// Variables for working with sizes and types of organs
-	var/breasts_size = null
-	var/breasts_count = null
-	var/vagina_size = null
-	var/testicles_size = null
-
 	// Machine colors
 	var/machine_color_list = list("pink", "teal")
 	var/machine_color
@@ -178,16 +172,8 @@
 	current_mob = affected_mob
 
 	current_breasts = affected_mob.getorganslot(ORGAN_SLOT_BREASTS)
-	if(current_breasts)
-		breasts_size = current_breasts.genital_size
-
 	current_testicles = affected_mob.getorganslot(ORGAN_SLOT_TESTICLES)
-	if(current_testicles)
-		testicles_size = current_testicles.genital_size
-
 	current_vagina = affected_mob.getorganslot(ORGAN_SLOT_VAGINA)
-	if(current_vagina)
-		vagina_size = current_vagina.genital_size
 
 	cut_overlay(locks_overlay)
 	locks_overlay.icon_state = "locks_closed"
@@ -242,10 +228,6 @@
 	current_testicles = null
 	current_vagina = null
 
-	breasts_size = null
-	breasts_count = null
-	vagina_size = null
-	testicles_size = null
 	return
 
 /obj/structure/chair/milking_machine/is_buckle_possible(mob/living/target, force, check_loc)
