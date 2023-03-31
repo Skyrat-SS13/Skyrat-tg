@@ -15,7 +15,7 @@
 		FACEHAIR
 	)
 	inherent_traits = list(
-		TRAIT_NO_SLIP_ALL, //SKYRAT EDIT - This Was Mistakenly Taken Out, I Think
+		TRAIT_NO_SLIP_ALL,
 		TRAIT_WATER_BREATHING, //SKYRAT EDIT - Roundstart Snails
 	)
 
