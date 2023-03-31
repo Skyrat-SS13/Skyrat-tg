@@ -25,6 +25,7 @@
 	desc = "Basically, a tube with a big heat sink attached to it. It fires lasers originally meant for cutting metals, but armor works too."
 	icon = 'modular_skyrat/modules/GUN_STATION_2023_BABY/icons/guns/guns.dmi'
 	icon_state = "cargovolver"
+	fire_sound = 'modular_skyrat/modules/microfusion/sound/laser_1.ogg'
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/recharge/engilaser
 	can_suppress = FALSE
@@ -38,7 +39,6 @@
 	name = "industrial power pack"
 	desc = "A rechargeable, detachable battery that serves as a magazine for laser cutters."
 	icon_state = "energizer"
-	fire_sound = 'modular_skyrat/modules/microfusion/sound/laser_1.ogg'
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	ammo_type = /obj/item/ammo_casing/caseless/laser/engicutter
 	caliber = CALIBER_LASER
@@ -93,6 +93,7 @@
 /obj/item/ammo_box/magazine/recharge/plasmasci
 	name = "plasma power pack"
 	desc = "A rechargeable, detachable battery that serves as a magazine for plasma projectors."
+	icon = 'modular_skyrat/modules/GUN_STATION_2023_BABY/icons/guns/magazines.dmi'
 	icon_state = "scibattery"
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	ammo_type = /obj/item/ammo_casing/caseless/laser/plasma_glob
