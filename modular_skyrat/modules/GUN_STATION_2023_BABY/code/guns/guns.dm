@@ -38,7 +38,7 @@
 /obj/item/ammo_box/magazine/recharge/engilaser
 	name = "industrial power pack"
 	desc = "A rechargeable, detachable battery that serves as a magazine for laser cutters."
-	icon = 'modular_skyrat/modules/GUN_STATION_2023_BABY/icons/guns/projectiles.dmi'
+	icon = 'modular_skyrat/modules/GUN_STATION_2023_BABY/icons/guns/magazines.dmi'
 	base_icon_state = "energizer"
 	icon_state = "energizer"
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
