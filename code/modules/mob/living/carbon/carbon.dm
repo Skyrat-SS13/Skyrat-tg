@@ -19,7 +19,7 @@
 	. = ..()
 
 	QDEL_LIST(hand_bodyparts)
-	QDEL_LIST(internal_organs)
+	QDEL_LIST(organs)
 	QDEL_LIST(bodyparts)
 	QDEL_LIST(implants)
 	for(var/wound in all_wounds) // these LAZYREMOVE themselves when deleted so no need to remove the list here
@@ -489,9 +489,9 @@
 
 /mob/living/carbon/proc/spew_organ(power = 5, amt = 1)
 	for(var/i in 1 to amt)
-		if(!internal_organs.len)
+		if(!organs.len)
 			break //Guess we're out of organs!
-		var/obj/item/organ/guts = pick(internal_organs)
+		var/obj/item/organ/guts = pick(organs)
 		var/turf/T = get_turf(src)
 		guts.Remove(src)
 		guts.forceMove(T)
@@ -864,7 +864,7 @@
 		if(dna && !HAS_TRAIT(src, TRAIT_NOBLOOD))
 			blood_volume += (excess_healing * 2) //1 excess = 10 blood
 
-		for(var/obj/item/organ/organ as anything in internal_organs)
+		for(var/obj/item/organ/organ as anything in organs)
 			if(organ.organ_flags & ORGAN_SYNTHETIC)
 				continue
 			organ.applyOrganDamage(excess_healing * -1) //1 excess = 5 organ damage healed
@@ -937,8 +937,7 @@
 	if(HAS_TRAIT(src, TRAIT_DNR)) //This is also added when a ghost DNR's!
 		return DEFIB_FAIL_DNR
 //SKYRAT EDIT ADDITION END - DNR TRAIT
-
-	if (suiciding)
+	if (HAS_TRAIT(src, TRAIT_SUICIDED))
 		return DEFIB_FAIL_SUICIDE
 
 	if (HAS_TRAIT(src, TRAIT_HUSK))
@@ -968,7 +967,7 @@
 	if (current_brain.organ_flags & ORGAN_FAILING)
 		return DEFIB_FAIL_FAILING_BRAIN
 
-	if (current_brain.suicided || current_brain.brainmob?.suiciding)
+	if (current_brain.suicided || (current_brain.brainmob && HAS_TRAIT(current_brain.brainmob, TRAIT_SUICIDED)))
 		return DEFIB_FAIL_NO_INTELLIGENCE
 
 	if(key && key[1] == "@") // Adminghosts
@@ -980,11 +979,11 @@
 	if(QDELETED(src))
 		return
 	var/organs_amt = 0
-	for(var/obj/item/organ/internal_organ as anything in internal_organs)
+	for(var/obj/item/organ/organ as anything in organs)
 		if(prob(50))
 			organs_amt++
-			internal_organ.Remove(src)
-			internal_organ.forceMove(drop_location())
+			organ.Remove(src)
+			organ.forceMove(drop_location())
 	if(organs_amt)
 		to_chat(user, span_notice("You retrieve some of [src]\'s internal organs!"))
 	remove_all_embedded_objects()
@@ -1046,7 +1045,7 @@
 
 
 /mob/living/carbon/proc/create_internal_organs()
-	for(var/obj/item/organ/internal/internal_organ in internal_organs)
+	for(var/obj/item/organ/internal/internal_organ in organs)
 		internal_organ.Insert(src)
 
 /proc/cmp_organ_slot_asc(slot_a, slot_b)
@@ -1174,7 +1173,7 @@
 		return FALSE
 	if(has_status_effect(/datum/status_effect/hallucination))
 		return TRUE
-	if(IsSleeping())
+	if(IsSleeping() || IsUnconscious())
 		return TRUE
 	if(HAS_TRAIT(src, TRAIT_DUMB))
 		return TRUE

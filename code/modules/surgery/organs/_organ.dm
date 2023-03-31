@@ -11,11 +11,11 @@
 	var/zone = BODY_ZONE_CHEST
 	///The organ slot this organ is supposed to inhabit. This should be unique by type. (Lungs, Appendix, Stomach, etc)
 	var/slot
-	// DO NOT add slots with matching names to different zones - it will break internal_organs_slot list!
+	// DO NOT add slots with matching names to different zones - it will break organs_slot list!
 	var/organ_flags = ORGAN_EDIBLE
 	var/maxHealth = STANDARD_ORGAN_THRESHOLD
 	/// Total damage this organ has sustained
-	/// Should only ever be modified by applyOrganDamage
+	/// Should only ever be modified by apply_organ_damage
 	var/damage = 0
 	///Healing factor and decay factor function on % of maxhealth, and do not work by applying a static number per tick
 	var/healing_factor = 0 //fraction of maxhealth healed per on_life(), set to 0 for generic organs
@@ -74,7 +74,7 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 	if(!iscarbon(receiver) || owner == receiver)
 		return FALSE
 
-	var/obj/item/organ/replaced = receiver.getorganslot(slot)
+	var/obj/item/organ/replaced = receiver.get_organ_slot(slot)
 	if(replaced)
 		replaced.Remove(receiver, special = TRUE)
 		if(drop_if_replaced)
@@ -82,8 +82,8 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 		else
 			qdel(replaced)
 
-	receiver.internal_organs |= src
-	receiver.internal_organs_slot[slot] = src
+	receiver.organs |= src
+	receiver.organs_slot[slot] = src
 	owner = receiver
 
 	// Apply unique side-effects. Return value does not matter.
@@ -104,7 +104,7 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 
 	for(var/datum/action/action as anything in actions)
 		action.Grant(organ_owner)
-	
+
 	for(var/datum/status_effect/effect as anything in organ_effects)
 		organ_owner.apply_status_effect(effect, type)
 
@@ -119,16 +119,11 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
  * * special - "quick swapping" an organ out - when TRUE, the mob will be unaffected by not having that organ for the moment
  */
 /obj/item/organ/proc/Remove(mob/living/carbon/organ_owner, special = FALSE)
-<<<<<<< HEAD
-
-	UnregisterSignal(owner, COMSIG_PARENT_EXAMINE)
-=======
 	SHOULD_CALL_PARENT(TRUE)
->>>>>>> f9fe79a307d (Organ Unit Tests & Bugfixes (#73026))
 
-	organ_owner.internal_organs -= src
-	if(organ_owner.internal_organs_slot[slot] == src)
-		organ_owner.internal_organs_slot.Remove(slot)
+	organ_owner.organs -= src
+	if(organ_owner.organs_slot[slot] == src)
+		organ_owner.organs_slot.Remove(slot)
 
 	owner = null
 
@@ -148,29 +143,15 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 
 	for(var/datum/action/action as anything in actions)
 		action.Remove(organ_owner)
-<<<<<<< HEAD
-	for(var/trait in organ_traits)
-		REMOVE_TRAIT(organ_owner, trait, REF(src))
-=======
-	
+
 	for(var/datum/status_effect/effect as anything in organ_effects)
 		organ_owner.remove_status_effect(effect, type)
->>>>>>> f9fe79a307d (Organ Unit Tests & Bugfixes (#73026))
 
 	UnregisterSignal(organ_owner, COMSIG_PARENT_EXAMINE)
 	SEND_SIGNAL(src, COMSIG_ORGAN_REMOVED, organ_owner)
 	SEND_SIGNAL(organ_owner, COMSIG_CARBON_LOSE_ORGAN, src, special)
 
-<<<<<<< HEAD
-/// Updates the traits of the organ on the specific organ it is called on. Should be called anytime an organ is given a trait while it is already in a body.
-/obj/item/organ/proc/update_organ_traits()
-	for(var/trait in organ_traits)
-		ADD_TRAIT(owner, trait, REF(src))
-
-/// Add a trait to an organ that it will give its owner.
-=======
 /// Add a Trait to an organ that it will give its owner.
->>>>>>> f9fe79a307d (Organ Unit Tests & Bugfixes (#73026))
 /obj/item/organ/proc/add_organ_trait(trait)
 	LAZYADD(organ_traits, trait)
 	if(isnull(owner))
@@ -244,7 +225,7 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 	return //so we don't grant the organ's action to mobs who pick up the organ.
 
 ///Adjusts an organ's damage by the amount "damage_amount", up to a maximum amount, which is by default max damage
-/obj/item/organ/proc/applyOrganDamage(damage_amount, maximum = maxHealth, required_organtype) //use for damaging effects
+/obj/item/organ/proc/apply_organ_damage(damage_amount, maximum = maxHealth, required_organtype) //use for damaging effects
 	if(!damage_amount) //Micro-optimization.
 		return
 	if(maximum < damage)
@@ -264,8 +245,8 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 		to_chat(owner, mess)
 
 ///SETS an organ's damage to the amount "damage_amount", and in doing so clears or sets the failing flag, good for when you have an effect that should fix an organ if broken
-/obj/item/organ/proc/setOrganDamage(damage_amount, required_organtype) //use mostly for admin heals
-	applyOrganDamage(damage_amount - damage, required_organtype = required_organtype)
+/obj/item/organ/proc/set_organ_damage(damage_amount, required_organtype) //use mostly for admin heals
+	apply_organ_damage(damage_amount - damage, required_organtype = required_organtype)
 
 /** check_damage_thresholds
  * input: mob/organ_owner (a mob, the owner of the organ we call the proc on)
@@ -307,44 +288,44 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 		dna.species.regenerate_organs(src, replace_current = regenerate_existing)
 
 		// Species regenerate organs doesn't ALWAYS handle healing the organs because it's dumb
-		for(var/obj/item/organ/organ as anything in internal_organs)
-			organ.setOrganDamage(0)
+		for(var/obj/item/organ/organ as anything in organs)
+			organ.set_organ_damage(0)
 		set_heartattack(FALSE)
 		return
 
 	// Default organ fixing handling
 	// May result in kinda cursed stuff for mobs which don't need these organs
-	var/obj/item/organ/internal/lungs/lungs = getorganslot(ORGAN_SLOT_LUNGS)
+	var/obj/item/organ/internal/lungs/lungs = get_organ_slot(ORGAN_SLOT_LUNGS)
 	if(!lungs)
 		lungs = new()
 		lungs.Insert(src)
-	lungs.setOrganDamage(0)
+	lungs.set_organ_damage(0)
 
-	var/obj/item/organ/internal/heart/heart = getorganslot(ORGAN_SLOT_HEART)
+	var/obj/item/organ/internal/heart/heart = get_organ_slot(ORGAN_SLOT_HEART)
 	if(heart)
 		set_heartattack(FALSE)
 	else
 		heart = new()
 		heart.Insert(src)
-	heart.setOrganDamage(0)
+	heart.set_organ_damage(0)
 
-	var/obj/item/organ/internal/tongue/tongue = getorganslot(ORGAN_SLOT_TONGUE)
+	var/obj/item/organ/internal/tongue/tongue = get_organ_slot(ORGAN_SLOT_TONGUE)
 	if(!tongue)
 		tongue = new()
 		tongue.Insert(src)
-	tongue.setOrganDamage(0)
+	tongue.set_organ_damage(0)
 
-	var/obj/item/organ/internal/eyes/eyes = getorganslot(ORGAN_SLOT_EYES)
+	var/obj/item/organ/internal/eyes/eyes = get_organ_slot(ORGAN_SLOT_EYES)
 	if(!eyes)
 		eyes = new()
 		eyes.Insert(src)
-	eyes.setOrganDamage(0)
+	eyes.set_organ_damage(0)
 
-	var/obj/item/organ/internal/ears/ears = getorganslot(ORGAN_SLOT_EARS)
+	var/obj/item/organ/internal/ears/ears = get_organ_slot(ORGAN_SLOT_EARS)
 	if(!ears)
 		ears = new()
 		ears.Insert(src)
-	ears.setOrganDamage(0)
+	ears.set_organ_damage(0)
 
 /obj/item/organ/proc/handle_failing_organs(delta_time)
 	return
@@ -380,7 +361,7 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 
 	// If we're being replace with an identical type we should take organ damage
 	if(replacement.type == type)
-		replacement.setOrganDamage(damage)
+		replacement.set_organ_damage(damage)
 
 /// Called by medical scanners to get a simple summary of how healthy the organ is. Returns an empty string if things are fine.
 /obj/item/organ/proc/get_status_text()
@@ -395,3 +376,7 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 		status = "<font color='#ffcc33'>Mildly Damaged</font>"
 
 	return status
+
+/// Tries to replace the existing organ on the passed mob with this one, with special handling for replacing a brain without ghosting target
+/obj/item/organ/proc/replace_into(mob/living/carbon/new_owner)
+	Insert(new_owner, special = TRUE, drop_if_replaced = FALSE)

@@ -122,12 +122,6 @@
 				continue
 			if(ghost.client.prefs.chat_toggles & CHAT_GHOSTSIGHT && !(ghost in viewers(user_turf, null)))
 				ghost.show_message("<span class='emote'>[FOLLOW_LINK(ghost, user)] [dchatmsg]</span>")
-	//SKYRAT EDIT ADDITION BEGIN - AI QoL
-	for(var/mob/living/silicon/ai/ai as anything in GLOB.ai_list)
-		var/ai_eye_turf = get_turf(ai.eyeobj)
-		if(ai.client && !(ai.stat == DEAD) && (get_dist(user_turf, ai_eye_turf)<8))
-			ai.show_message("<span class='emote'>[dchatmsg]</span>")
-	//SKYRAT EDIT ADDITION END - AI QoL
 	if(emote_type & (EMOTE_AUDIBLE | EMOTE_VISIBLE)) //emote is audible and visible
 		user.audible_message(msg, deaf_message = "<span class='emote'>You see how <b>[user]</b> [msg]</span>", audible_message_flags = EMOTE_MESSAGE)
 	else if(emote_type & EMOTE_VISIBLE)	//emote is only visible
@@ -137,6 +131,18 @@
 			if(viewer.is_blind() && !viewer.can_hear())
 				to_chat(viewer, msg)
 
+	// SKYRAT EDIT -- BEGIN -- ADDITION -- AI QOL - RELAY EMOTES OVER HOLOPADS
+	var/obj/effect/overlay/holo_pad_hologram/hologram = GLOB.hologram_impersonators[user]
+	if(hologram)
+		if(emote_type & (EMOTE_AUDIBLE | EMOTE_VISIBLE))
+			hologram.audible_message(msg, deaf_message = span_emote("You see how <b>[user]</b> [msg]"), audible_message_flags = EMOTE_MESSAGE)
+		else if(emote_type & EMOTE_VISIBLE)
+			hologram.visible_message(msg, visible_message_flags = EMOTE_MESSAGE)
+		if(emote_type & EMOTE_IMPORTANT)
+			for(var/mob/living/viewer in viewers(world.view, hologram))
+				if(viewer.is_blind() && !viewer.can_hear())
+					to_chat(viewer, msg)
+	// SKYRAT EDIT -- END
 	SEND_SIGNAL(user, COMSIG_MOB_EMOTED(key))
 
 /**

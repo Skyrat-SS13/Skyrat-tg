@@ -720,7 +720,7 @@
 	chameleon_action.emp_randomise()
 
 /obj/item/clothing/shoes/chameleon/noslip
-	clothing_flags = NOSLIP
+	clothing_traits = list(TRAIT_NO_SLIP_WATER)
 	can_be_bloody = FALSE
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE  // Skyrat edit
 	special_desc = "A pair of chameleon shoes with an anti-slip coating employed by the Syndicate in infiltration operations."  // Skyrat edit

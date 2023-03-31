@@ -172,9 +172,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	///What anim to use for gibbing
 	var/gib_anim = "gibbed-h"
 
-
-	//Do NOT remove by setting to null. use OR make an ASSOCIATED TRAIT.
-	//why does it work this way? because traits also disable the downsides of not having an organ, removing organs but not having the trait will make your species die
+	// Prefer anything other than setting these to null, such as TRAITS
+	// why?
+	// because traits also disable the downsides of not having an organ, removing organs but not having the trait or logic will make your species die
 
 	///Replaces default brain with a different organ
 	var/obj/item/organ/internal/brain/mutantbrain = /obj/item/organ/internal/brain
@@ -350,6 +350,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		var/obj/item/organ/oldorgan = C.getorganslot(slot) //used in removing
 		var/obj/item/organ/neworgan = slot_mutantorgans[slot] //used in adding
 		if(!neworgan) //these can be null, if so we shouldn't regenerate
+			if(oldorgan) // although we also need to remove the old organ if it exists
+				oldorgan.Remove(C, special=TRUE)
+				qdel(oldorgan)
 			continue
 
 		if(visual_only && !initial(neworgan.visual))
@@ -367,7 +370,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		 * - The replaced organ is not in an excluded zone
 		 * - The replaced organ is not unremovable or synthetic (an implant)
 		 */
-		if(oldorgan && (!should_have || replace_current) && !(oldorgan.zone in excluded_zones) && !(oldorgan.organ_flags & (ORGAN_UNREMOVABLE|ORGAN_SYNTHETIC)))
+		if(oldorgan && (!should_have || replace_current) && !(oldorgan.zone in excluded_zones) && (!(oldorgan.organ_flags & (ORGAN_UNREMOVABLE|ORGAN_SYNTHETIC)) || (oldorgan.organ_flags & ORGAN_SYNTHETIC_FROM_SPECIES))) // SKYRAT EDIT - Customization - ORIGINAL: if(oldorgan && (!should_have || replace_current) && !(oldorgan.zone in excluded_zones) && !(oldorgan.organ_flags & (ORGAN_UNREMOVABLE|ORGAN_SYNTHETIC)))
 			if(slot == ORGAN_SLOT_BRAIN)
 				var/obj/item/organ/internal/brain/brain = oldorgan
 				if(!brain.decoy_override)//"Just keep it if it's fake" - confucius, probably
@@ -399,7 +402,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(current_organ)
 				current_organ.Remove(C)
 				QDEL_NULL(current_organ)
-	for(var/obj/item/organ/external/external_organ in C.internal_organs)
+
+	for(var/obj/item/organ/external/external_organ in C.organs)
 		// External organ checking. We need to check the external organs owned by the carbon itself,
 		// because we want to also remove ones not shared by its species.
 		// This should be done even if species was not changed.
@@ -474,8 +478,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			var/obj/item/organ/external/new_organ = SSwardrobe.provide_type(organ_path)
 			new_organ.Insert(human, special=TRUE, drop_if_replaced=FALSE)
 
-	for(var/X in inherent_traits)
-		ADD_TRAIT(C, X, SPECIES_TRAIT)
+	if(length(inherent_traits))
+		C.add_traits(inherent_traits, SPECIES_TRAIT)
 
 	if(TRAIT_VIRUSIMMUNE in inherent_traits)
 		for(var/datum/disease/A in C.diseases)
@@ -524,7 +528,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		C.dna.blood_type = random_blood_type()
 	for(var/X in inherent_traits)
 		REMOVE_TRAIT(C, X, SPECIES_TRAIT)
-	for(var/obj/item/organ/external/organ in C.internal_organs)
+	for(var/obj/item/organ/external/organ in C.organs)
 		organ.Remove(C)
 		qdel(organ)
 
@@ -547,6 +551,44 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	C.remove_movespeed_modifier(/datum/movespeed_modifier/species)
 
 	SEND_SIGNAL(C, COMSIG_SPECIES_LOSS, src)
+
+/**
+ * Proc called when mail goodies need to be updated for this species.
+ *
+ * Updates the mail goodies if that is required. e.g. for the blood deficiency quirk, which sends bloodbags to quirk holders, update the sent bloodpack to match the species' exotic blood.
+ * This is currently only used for the blood deficiency quirk but more can be added as needed.
+ * Arguments:
+ * * mob/living/carbon/human/recipient - the mob receiving the mail goodies
+ */
+/datum/species/proc/update_mail_goodies(mob/living/carbon/human/recipient)
+	update_quirk_mail_goodies(recipient, recipient.get_quirk(/datum/quirk/blooddeficiency))
+
+/**
+ * Updates the mail goodies of a specific quirk.
+ *
+ * Updates the mail goodies belonging to a specific quirk.
+ * Add implementation as needed for each individual species. The base species proc should give the species the 'default' version of whatever mail goodies are required.
+ * Arguments:
+ * * mob/living/carbon/human/recipient - the mob receiving the mail goodies
+ * * datum/quirk/quirk - the quirk to update the mail goodies of. Use get_quirk(datum/quirk/some_quirk) to get the actual mob's quirk to pass.
+ * * list/mail_goodies - a list of mail goodies. Generally speaking you should not be using this argument on the initial function call. You should instead add to the species' implementation of this proc.
+ */
+/datum/species/proc/update_quirk_mail_goodies(mob/living/carbon/human/recipient, datum/quirk/quirk, list/mail_goodies)
+	if(isnull(quirk))
+		return
+	if(length(mail_goodies))
+		quirk.mail_goodies = mail_goodies
+		return
+	if(istype(quirk, /datum/quirk/blooddeficiency))
+		if(HAS_TRAIT(recipient, TRAIT_NOBLOOD) && isnull(recipient.dna.species.exotic_blood)) // no blood packs should be sent in this case (like if a mob transforms into a plasmaman)
+			quirk.mail_goodies = list()
+			return
+			
+	// The default case if no species implementation exists. Set quirk's mail_goodies to initial. 
+	var/datum/quirk/readable_quirk = new quirk.type
+	quirk.mail_goodies = readable_quirk.mail_goodies
+	qdel(readable_quirk) // We have to do it this way because initial will not work on lists in this version of DM
+	return
 
 /**
  * Handles the body of a human
@@ -1029,6 +1071,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
  * NOTE: If you return TRUE, that reagent will not be removed liike normal! You must handle it manually.
  */
 /datum/species/proc/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, delta_time, times_fired)
+	SHOULD_CALL_PARENT(TRUE)
 	if(chem.type == exotic_blood)
 		H.blood_volume = min(H.blood_volume + round(chem.volume, 0.1), BLOOD_VOLUME_MAXIMUM)
 		H.reagents.del_reagent(chem.type)
@@ -1252,9 +1295,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 						span_danger("[owner] attempts to touch you!"), span_hear("You hear a swoosh!"), COMBAT_MESSAGE_RANGE, owner)
 		to_chat(owner, span_warning("You attempt to touch [target]!"))
 		return
-	//Check if we can do a grab maneuver, if so, attempt it - SKYRAT EDIT ADDITION
-	if(owner.pulledby && owner.pulledby == target && target.grab_state && try_grab_maneuver(target, owner, modifiers))
-		return //SKYRAT EDIT END
 
 	SEND_SIGNAL(owner, COMSIG_MOB_ATTACK_HAND, owner, target, attacker_style)
 

@@ -137,6 +137,9 @@ LOG_TELECOMMS
 ## log prayers
 LOG_PRAYER
 
+## Log Music requests
+LOG_INTERNET_REQUEST
+
 ## log silicons
 LOG_SILICON
 
@@ -301,6 +304,14 @@ CHECK_RANDOMIZER
 ## or your package manager
 ## The default value assumes youtube-dl is in your system PATH
 # INVOKE_YOUTUBEDL youtube-dl
+
+## Comment this out to disable users ability to use the request internet sounds to be played.
+REQUEST_INTERNET_SOUND
+
+## Request Internet Sound Allowed URL'S comma separated, urls here are the only sites allowed through Request Internet Sound, Add more to allow more, or remove to disallow.
+## The Defaults here are all supported by youtube-dl
+## Ensure . and / are escaped with \
+REQUEST_INTERNET_ALLOWED youtube\.com\/watch?v=,youtu\.be\/,soundcloud\.com\/,bandcamp\.com\/track\/
 
 ## In-game features
 
@@ -500,10 +511,13 @@ MINUTE_CLICK_LIMIT 400
 ## Various messages to be sent to connected chat channels.
 ## Uncommenting these will enable them, by default they will be broadcast to Game chat channels on TGS3 or non-admin channels on TGS4.
 ## If using TGS4, the string option can be set as one of more chat channel tags (separated by ','s) to limit the message to channels with that tag name (case-sensitive). This will have no effect on TGS3.
-## i.e. CHAT_ANNOUNCE_NEW_GAME chat_channel_tag
+## i.e. CHANNEL_ANNOUNCE_NEW_GAME chat_channel_tag
 
-## Send a message with the station name starting a new game.
-#CHAT_ANNOUNCE_NEW_GAME
+## Which channel will have a message about a new game starting, message includes the station name.
+#CHANNEL_ANNOUNCE_NEW_GAME
+
+## Which channel will have a message about a new game starting, message includes the round ID of the game that has just ended.
+#CHANNEL_ANNOUNCE_END_GAME
 
 ## Ping users who use the `notify` command when a new game starts.
 #CHAT_NEW_GAME_NOTIFICATIONS

@@ -499,7 +499,7 @@
 		owner.balloon_alert(owner, "detached from host")
 		if(!(cortical_owner.upgrade_flags & BORER_STEALTH_MODE))
 			to_chat(cortical_owner.human_host, span_notice("Something carefully tickles your inner ear..."))
-		var/obj/item/organ/internal/borer_body/borer_organ = locate() in cortical_owner.human_host.internal_organs
+		var/obj/item/organ/internal/borer_body/borer_organ = locate() in cortical_owner.human_host.organs
 		//log the interaction
 		var/turf/human_turfone = get_turf(cortical_owner.human_host)
 		var/logging_text = "[key_name(cortical_owner)] left [key_name(cortical_owner.human_host)] at [loc_name(human_turfone)]"
@@ -714,7 +714,7 @@
 		cortical_owner.human_host.adjustOxyLoss(-(cortical_owner.human_host.getOxyLoss()*0.5))
 	if(cortical_owner.human_host.blood_volume < BLOOD_VOLUME_BAD)
 		cortical_owner.human_host.blood_volume = BLOOD_VOLUME_BAD
-	for(var/obj/item/organ/internal/internal_target in cortical_owner.human_host.internal_organs)
+	for(var/obj/item/organ/internal/internal_target in cortical_owner.human_host.organs)
 		internal_target.applyOrganDamage(-internal_target.damage * 0.5)
 	cortical_owner.human_host.revive()
 	to_chat(cortical_owner.human_host, span_boldwarning("Your heart jumpstarts!"))

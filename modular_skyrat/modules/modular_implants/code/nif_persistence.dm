@@ -44,6 +44,12 @@
 	var/datum/component/nif_examine/examine_component = GetComponent(/datum/component/nif_examine)
 
 	persistence.nif_examine_text = examine_component?.nif_examine_text
+	for(var/datum/nifsoft/nifsoft as anything in installed_nif.loaded_nifsofts)
+		if(!nifsoft.persistence)
+			continue
+
+		nifsoft.save_persistence_data(persistence)
+
 
 /// Loads the NIF data for an individual user.
 /mob/living/carbon/human/proc/load_nif_data(datum/modular_persistence/persistence)
@@ -63,5 +69,23 @@
 	var/datum/component/nif_examine/examine_component = GetComponent(/datum/component/nif_examine)
 	if(examine_component)
 		examine_component.nif_examine_text = persistence.nif_examine_text
+
+/// Loads the modular persistence data for a NIFSoft
+/datum/nifsoft/proc/load_persistence_data()
+	if(!linked_mob || !persistence)
+		return FALSE
+	var/obj/item/organ/internal/brain/linked_brain = linked_mob.getorganslot(ORGAN_SLOT_BRAIN)
+	if(!linked_brain || !linked_brain.modular_persistence)
+		return FALSE
+
+	return linked_brain.modular_persistence
+
+
+/// Saves the modular persistence data for a NIFSoft
+/datum/nifsoft/proc/save_persistence_data(datum/modular_persistence/persistence)
+	if(!persistence)
+		return FALSE
+
+	return TRUE
 
 #undef LOSS_WITH_NIF_UNINSTALLED

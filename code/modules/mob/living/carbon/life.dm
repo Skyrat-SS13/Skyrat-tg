@@ -42,8 +42,6 @@
 		if(bprv & BODYPART_LIFE_UPDATE_HEALTH)
 			updatehealth()
 
-	check_cremation(delta_time, times_fired)
-
 	if(. && mind) //. == not dead
 		for(var/key in mind.addiction_points)
 			var/datum/addiction/addiction = SSaddiction.all_addictions[key]
@@ -492,7 +490,7 @@
 	if(stat == DEAD)
 		if(reagents.has_reagent(/datum/reagent/toxin/formaldehyde, 1) || reagents.has_reagent(/datum/reagent/cryostylane)) // No organ decay if the body contains formaldehyde.
 			return
-		for(var/obj/item/organ/internal/organ in internal_organs)
+		for(var/obj/item/organ/internal/organ in organs)
 			// On-death is where organ decay is handled
 			organ?.on_death(delta_time, times_fired) // organ can be null due to reagent metabolization causing organ shuffling
 			// We need to re-check the stat every organ, as one of our others may have revived us
@@ -500,11 +498,11 @@
 				break
 		return
 
-	// NOTE: internal_organs_slot is sorted by GLOB.organ_process_order on insertion
-	for(var/slot in internal_organs_slot)
+	// NOTE: organs_slot is sorted by GLOB.organ_process_order on insertion
+	for(var/slot in organs_slot)
 		// We don't use getorganslot here because we know we have the organ we want, since we're iterating the list containing em already
 		// This code is hot enough that it's just not worth the time
-		var/obj/item/organ/internal/organ = internal_organs_slot[slot]
+		var/obj/item/organ/internal/organ = organs_slot[slot]
 		if(organ?.owner) // This exist mostly because reagent metabolization can cause organ reshuffling
 			organ.on_life(delta_time, times_fired)
 
@@ -564,7 +562,7 @@
 /**
  * Handles calling metabolization for dead people.
  * Due to how reagent metabolization code works this couldn't be done anywhere else.
- * 
+ *
  * Arguments:
  * - delta_time: The amount of time that has elapsed since the last tick.
  * - times_fired: The number of times SSmobs has ticked.
@@ -763,61 +761,6 @@
 	var/obj/item/organ/internal/liver/liver = getorganslot(ORGAN_SLOT_LIVER)
 	if(liver?.organ_flags & ORGAN_FAILING)
 		return TRUE
-
-/////////////
-//CREMATION//
-/////////////
-/mob/living/carbon/proc/check_cremation(delta_time, times_fired)
-	//Only cremate while actively on fire
-	if(!on_fire)
-		return
-
-	//Only starts when the chest has taken full damage
-	var/obj/item/bodypart/chest = get_bodypart(BODY_ZONE_CHEST)
-	if(!(chest.get_damage() >= chest.max_damage))
-		return
-
-	//Burn off limbs one by one
-	var/obj/item/bodypart/limb
-	var/list/limb_list = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
-	var/still_has_limbs = FALSE
-	for(var/zone in limb_list)
-		limb = get_bodypart(zone)
-		if(limb)
-			still_has_limbs = TRUE
-			if(limb.get_damage() >= limb.max_damage)
-				limb.cremation_progress += rand(1 * delta_time, 2.5 * delta_time)
-				if(limb.cremation_progress >= 100)
-					if(IS_ORGANIC_LIMB(limb)) //Non-organic limbs don't burn
-						limb.drop_limb()
-						limb.visible_message(span_warning("[src]'s [limb.plaintext_zone] crumbles into ash!"))
-						qdel(limb)
-					else
-						limb.drop_limb()
-						limb.visible_message(span_warning("[src]'s [limb.plaintext_zone] detaches from [p_their()] body!"))
-	if(still_has_limbs)
-		return
-
-	//Burn the head last
-	var/obj/item/bodypart/head = get_bodypart(BODY_ZONE_HEAD)
-	if(head)
-		if(head.get_damage() >= head.max_damage)
-			head.cremation_progress += rand(1 * delta_time, 2.5 * delta_time)
-			if(head.cremation_progress >= 100)
-				if(IS_ORGANIC_LIMB(head)) //Non-organic limbs don't burn
-					head.drop_limb()
-					head.visible_message(span_warning("[src]'s head crumbles into ash!"))
-					qdel(head)
-				else
-					head.drop_limb()
-					head.visible_message(span_warning("[src]'s head detaches from [p_their()] body!"))
-		return
-
-	//Nothing left: dust the body, drop the items (if they're flammable they'll burn on their own)
-	chest.cremation_progress += rand(1 * delta_time, 2.5 * delta_time)
-	if(chest.cremation_progress >= 100)
-		visible_message(span_warning("[src]'s body crumbles into a pile of ash!"))
-		dust(TRUE, TRUE)
 
 ////////////////
 //BRAIN DAMAGE//

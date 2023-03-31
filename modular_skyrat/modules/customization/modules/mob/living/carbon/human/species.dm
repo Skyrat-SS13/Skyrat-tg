@@ -153,12 +153,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 						eye_emissive.pixel_y += species_human.dna.species.offset_features[OFFSET_FACE][2]
 						standing += eye_emissive
 
-		// blush
-		if (HAS_TRAIT(species_human, TRAIT_BLUSHING)) // Caused by either the *blush emote or the "drunk" mood event
-			var/mutable_appearance/blush_overlay = mutable_appearance('icons/mob/species/human/human_face.dmi', "blush", -BODY_ADJ_LAYER) //should appear behind the eyes
-			blush_overlay.color = COLOR_BLUSH_PINK
-			standing += blush_overlay
-
 	//Underwear, Undershirts & Socks
 	if(!(NO_UNDERWEAR in species_traits))
 		if(species_human.underwear && !(species_human.underwear_visibility & UNDERWEAR_HIDE_UNDIES))

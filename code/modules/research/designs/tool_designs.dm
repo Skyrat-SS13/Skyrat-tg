@@ -393,6 +393,7 @@
 	category = list(
 		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_JANITORIAL
 	)
+
 /datum/design/bolter_wrench
 	name = "Bolter Wrench"
 	desc = "A wrench that can unbolt airlocks regardless of power status."
@@ -400,7 +401,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 2000)
 	build_path = /obj/item/wrench/bolter
-	category = list(
-		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_JANITORIAL
-	)
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
+	category = list(
+		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING_ADVANCED
+	)

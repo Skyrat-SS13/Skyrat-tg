@@ -166,6 +166,10 @@
 	name = "Fox"
 	icon_state = "fox"
 
+/datum/sprite_accessory/ears/mutant/akula/hammerhead
+	name = "Hammerhead"
+	icon_state = "hammerhead"
+
 /datum/sprite_accessory/ears/mutant/husky
 	name = "Husky"
 	icon_state = "wolf"

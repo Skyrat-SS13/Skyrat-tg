@@ -17,20 +17,6 @@
 
 /obj/item/organ/internal/body_egg/Insert(mob/living/carbon/egg_owner, special = FALSE, drop_if_replaced = TRUE)
 	. = ..()
-<<<<<<< HEAD
-	ADD_TRAIT(owner, TRAIT_XENO_HOST, ORGAN_TRAIT)
-	ADD_TRAIT(owner, TRAIT_XENO_IMMUNE, ORGAN_TRAIT)
-	owner.med_hud_set_status()
-	INVOKE_ASYNC(src, PROC_REF(AddInfectionImages), owner)
-
-/obj/item/organ/internal/body_egg/Remove(mob/living/carbon/M, special = FALSE)
-	if(owner)
-		REMOVE_TRAIT(owner, TRAIT_XENO_HOST, ORGAN_TRAIT)
-		REMOVE_TRAIT(owner, TRAIT_XENO_IMMUNE, ORGAN_TRAIT)
-		owner.med_hud_set_status()
-		INVOKE_ASYNC(src, PROC_REF(RemoveInfectionImages), owner)
-	return ..()
-=======
 	if(!.)
 		return
 	egg_owner.add_traits(list(TRAIT_XENO_HOST, TRAIT_XENO_IMMUNE), ORGAN_TRAIT)
@@ -42,7 +28,6 @@
 	egg_owner.remove_traits(list(TRAIT_XENO_HOST, TRAIT_XENO_IMMUNE), ORGAN_TRAIT)
 	egg_owner.med_hud_set_status()
 	INVOKE_ASYNC(src, PROC_REF(RemoveInfectionImages), egg_owner)
->>>>>>> f9fe79a307d (Organ Unit Tests & Bugfixes (#73026))
 
 /obj/item/organ/internal/body_egg/on_death(delta_time, times_fired)
 	. = ..()

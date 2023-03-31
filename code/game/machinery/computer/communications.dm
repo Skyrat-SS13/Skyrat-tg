@@ -130,7 +130,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 /obj/machinery/computer/communications/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(istype(emag_card, /obj/item/card/emag/battlecruiser))
-		if(!user.mind?.has_antag_datum(/datum/antagonist/traitor))
+		if(!IS_TRAITOR(user))
 			to_chat(user, span_danger("You get the feeling this is a bad idea."))
 			return
 		var/obj/item/card/emag/battlecruiser/caller_card = emag_card
@@ -468,10 +468,10 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			if(!pre_911_check(usr))
 				return
 			calling_911(usr, "Marshals", EMERGENCY_RESPONSE_POLICE)
-		if ("callBreachControl")
+		if ("callTheCatmos")
 			if(!pre_911_check(usr))
 				return
-			calling_911(usr, "Breach Control", EMERGENCY_RESPONSE_ATMOS)
+			calling_911(usr, "Advanced Atmospherics", EMERGENCY_RESPONSE_ATMOS)
 		if ("callTheParameds")
 			if(!pre_911_check(usr))
 				return

@@ -32,10 +32,10 @@
 	return ..()
 
 /mob/living/carbon/alien/adult/skyrat/queen/create_internal_organs()
-	internal_organs += new /obj/item/organ/internal/alien/plasmavessel/large/queen
-	internal_organs += new /obj/item/organ/internal/alien/resinspinner
-	internal_organs += new /obj/item/organ/internal/alien/neurotoxin/queen
-	internal_organs += new /obj/item/organ/internal/alien/eggsac
+	organs += new /obj/item/organ/internal/alien/plasmavessel/large/queen
+	organs += new /obj/item/organ/internal/alien/resinspinner
+	organs += new /obj/item/organ/internal/alien/neurotoxin/queen
+	organs += new /obj/item/organ/internal/alien/eggsac
 	..()
 
 /mob/living/carbon/alien/adult/skyrat/queen/alien_talk(message, shown_name = name)

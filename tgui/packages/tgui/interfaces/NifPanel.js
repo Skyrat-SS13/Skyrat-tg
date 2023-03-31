@@ -167,7 +167,7 @@ const NifSettings = (props, context) => {
       </LabeledList.Item>
       <LabeledList.Item label="NIF Flavor Text">
         <Input
-          onInput={(e, value) =>
+          onChange={(e, value) =>
             act('change_examine_text', { new_text: value })
           }
           width="100%"
