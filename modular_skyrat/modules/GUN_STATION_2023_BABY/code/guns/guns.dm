@@ -3,8 +3,8 @@
 // Cargovolver
 
 /obj/item/gun/ballistic/revolver/cargovolver
-	name = "\improper 12 GA revolver"
-	desc = "Not so classic anymore, this baby is plated in the finest fake gold and fires shotgun shells."
+	name = "\improper 'Crush' 12 GA revolver"
+	desc = "Not so classic anymore, this baby is plated in the finest fake gold there is and fires shotgun shells."
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev12ga
 	w_class = WEIGHT_CLASS_NORMAL
 	icon = 'modular_skyrat/modules/GUN_STATION_2023_BABY/icons/guns/guns.dmi'
@@ -21,7 +21,7 @@
 // Engineering Laser Cutter
 
 /obj/item/gun/ballistic/automatic/pistol/laser_cutter
-	name = "industrial cutting laser"
+	name = "\improper 'Serra' cutting laser"
 	desc = "Basically, a tube with a big heat sink attached to it. It fires lasers originally meant for cutting metals, but armor works too."
 	icon = 'modular_skyrat/modules/GUN_STATION_2023_BABY/icons/guns/guns.dmi'
 	icon_state = "cargovolver"
@@ -69,7 +69,7 @@
 // Science Plasma Gun
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_thrower
-	name = "plasma globule projector"
+	name = "\improper 'Solis' plasma projector"
 	desc = "Utilizing the power of really strong magnets, and a couple million volts of electricity, this 'gun' throws searing globs of plasma in the general direction of wherever you aim."
 	icon = 'modular_skyrat/modules/GUN_STATION_2023_BABY/icons/guns/guns.dmi'
 	icon_state = "plasmasci"
@@ -112,7 +112,7 @@
 // Medical Cruelty Squad Ass Weapon
 
 /obj/item/gun/ballistic/revolver/harmacist
-	name = "\improper Harmacist"
+	name = "\improper 'Harmacist' bone fragment launcher"
 	desc = "Through technology you REALLY do not want to know the inner workings of, this gun consumes single shot blood cartridges and fires a barrage of razor sharp bone fragments."
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/bloodvolver
 	w_class = WEIGHT_CLASS_NORMAL
