@@ -58,8 +58,8 @@
 			new_snailperson.equip_to_slot_or_del(new /obj/item/storage/backpack/snail(new_snailperson), ITEM_SLOT_BACK)
 	new_snailperson.AddElement(/datum/element/snailcrawl)
 	new_snailperson.update_icons() //SKYRAT EDIT: Roundstart Snails
-	if(ishuman(new_snailperson))
-		update_mail_goodies(new_snailperson)
+	//if(ishuman(new_snailperson)) //SKYRAT EDIT: Snails don't have exotic blood here!
+	//	update_mail_goodies(new_snailperson) //SKYRAT EDIT END
 
 /datum/species/snail/on_species_loss(mob/living/carbon/former_snailperson, datum/species/new_species, pref_load)
 	. = ..()
@@ -70,12 +70,12 @@
 		former_snailperson.temporarilyRemoveItemFromInventory(bag, TRUE)
 		qdel(bag)
 
-/datum/species/snail/update_quirk_mail_goodies(mob/living/carbon/human/recipient, datum/quirk/quirk, list/mail_goodies = list())
+/*/datum/species/snail/update_quirk_mail_goodies(mob/living/carbon/human/recipient, datum/quirk/quirk, list/mail_goodies = list()) //SKYRAT EDIT: Snails don't have exotic blood here!
 	if(istype(quirk, /datum/quirk/blooddeficiency))
 		mail_goodies += list(
 			/obj/item/reagent_containers/blood/snail
 		)
-	return ..()
+	return ..()*/ //SKYRAT EDIT END
 
 /obj/item/storage/backpack/snail
 	name = "snail shell"
