@@ -57,18 +57,6 @@
 	damage = 20
 	armour_penetration = 75
 
-	/// Reference to the beam following the projectile.
-	var/line
-
-/obj/projectile/beam/laser/engicutter/fire(setAngle)
-	if(firer)
-		line = firer.Beam(src, "engilaser_trail", 'modular_skyrat/modules/GUN_STATION_2023_BABY/icons/guns/projectiles.dmi', emissive = TRUE)
-	..()
-
-/obj/projectile/beam/laser/engicutter/Destroy()
-	QDEL_NULL(line)
-	return ..()
-
 // Science Plasma Gun
 
 /obj/item/gun/ballistic/automatic/pistol/plasma_thrower
