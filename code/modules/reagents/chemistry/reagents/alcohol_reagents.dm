@@ -1,6 +1,4 @@
 #define ALCOHOL_THRESHOLD_MODIFIER 1 //Greater numbers mean that less alcohol has greater intoxication potential
-//#define ALCOHOL_RATE 0.005 //The rate at which alcohol affects you //ORIGINAL
-#define ALCOHOL_RATE 0.001 //The rate at which alcohol affects you //SKYRAT EDIT CHANGE - booze
 #define ALCOHOL_EXPONENT 1.6 //The exponent applied to boozepwr to make higher volume alcohol at least a little bit damaging to the liver
 
 /datum/reagent/consumable/ethanol
@@ -3671,3 +3669,6 @@
 /datum/reagent/consumable/ethanol/gin_garden/on_mob_life(mob/living/carbon/doll, delta_time, times_fired)
 	doll.adjust_bodytemperature(-5 * REM * TEMPERATURE_DAMAGE_COEFFICIENT * delta_time, doll.get_body_temp_normal())
 	..()
+
+#undef ALCOHOL_EXPONENT
+#undef ALCOHOL_THRESHOLD_MODIFIER

@@ -267,3 +267,5 @@
 	if(prob(30))
 		target.emote("scream")
 //SKYRAT EDIT END
+
+#undef SURGERY_SLOWDOWN_CAP_MULTIPLIER

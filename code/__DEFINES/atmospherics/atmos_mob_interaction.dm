@@ -11,6 +11,8 @@
 /// Amount of air to take a from a tile
 #define BREATH_PERCENTAGE (BREATH_VOLUME/CELL_VOLUME)
 
+#define QUANTIZE(variable) (round((variable), (MOLAR_ACCURACY)))
+
 //Defines for N2O and Healium euphoria moodlets
 #define EUPHORIA_INACTIVE 0
 #define EUPHORIA_ACTIVE 1
