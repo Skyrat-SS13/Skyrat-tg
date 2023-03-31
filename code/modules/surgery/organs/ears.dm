@@ -68,13 +68,9 @@
 	visual = TRUE
 	damage_multiplier = 2
 
-<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
 /*
-/obj/item/organ/internal/ears/cat/Insert(mob/living/carbon/human/ear_owner, special = 0, drop_if_replaced = TRUE)
-=======
 /obj/item/organ/internal/ears/cat/on_insert(mob/living/carbon/human/ear_owner)
->>>>>>> f9fe79a307d (Organ Unit Tests & Bugfixes (#73026))
 	. = ..()
 	if(istype(ear_owner) && ear_owner.dna)
 		color = ear_owner.hair_color
