@@ -144,7 +144,7 @@
 
 /datum/preference/tri_bool/genital/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
-	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_emissives)
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
 	var/can_color = TRUE
 	/// Checks that the use skin color pref is both enabled and actually accessible. If so, then this is useless.
