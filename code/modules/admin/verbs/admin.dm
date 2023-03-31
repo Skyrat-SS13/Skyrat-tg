@@ -208,17 +208,14 @@
 		if(MUTE_DEADCHAT)
 			mute_string = "deadchat and DSAY"
 			feedback_string = "Deadchat"
-<<<<<<< HEAD
 		//Skyrat Addition Begin - LOOC muting again.
 		if(MUTE_LOOC)
 			mute_string = "LOOC"
 			feedback_string = "LOOC"
 		//Skyrat Addition End - LOOC muting again.
-=======
 		if(MUTE_INTERNET_REQUEST)
 			mute_string = "internet sound requests"
 			feedback_string = "Internet Sound Requests"
->>>>>>> b2f6058c922 (Music Widget Modifications + Request Music Verb (#74170))
 		if(MUTE_ALL)
 			mute_string = "everything"
 			feedback_string = "Everything"
