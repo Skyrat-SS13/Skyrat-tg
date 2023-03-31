@@ -163,7 +163,7 @@
 
 	user.visible_message(span_notice("[user] takes a blood sample from [affected_mob]."))
 
-	var/obj/item/bodypart/chosen_limb = affected_mob.get_bodypart(arm_zones[1]) || attached_mob.get_bodypart(arm_zones[2]) || attached_mob.get_bodypart(BODY_ZONE_CHEST)
+	var/obj/item/bodypart/chosen_limb = affected_mob.get_bodypart(BODY_ZONE_CHEST)
 	chosen_limb.receive_damage(5)
 	chosen_limb.force_wound_upwards(/datum/wound/pierce/moderate) // Stabbing yourself (or someone else) with a glass vial to get more shots for your epic revolver is bad for your health
 
