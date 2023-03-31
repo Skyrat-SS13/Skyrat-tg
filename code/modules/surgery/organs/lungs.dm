@@ -6,7 +6,7 @@
 	slot = ORGAN_SLOT_LUNGS
 	gender = PLURAL
 	w_class = WEIGHT_CLASS_SMALL
-
+	
 	var/respiration_type = NONE // The type(s) of gas this lung needs for respiration
 
 	healing_factor = STANDARD_ORGAN_HEALING
@@ -92,10 +92,10 @@
 // assign the respiration_type
 /obj/item/organ/internal/lungs/Initialize(mapload)
 	. = ..()
-
+	
 	if(safe_co2_min)
 		respiration_type |= RESPIRATION_CO2
-	if(safe_nitro_min)
+	if(safe_nitro_min) 
 		respiration_type |= RESPIRATION_N2
 	if(safe_oxygen_min)
 		respiration_type |= RESPIRATION_OXYGEN
@@ -772,7 +772,7 @@
 
 	var/datum/gas_mixture/immutable/planetary/mix = SSair.planetary[LAVALAND_DEFAULT_ATMOS]
 
-	if(!mix?.total_moles()) // this typically means we didn't load lavaland, like if we're using LOWMEMORYMODE
+	if(!mix?.total_moles()) // this typically means we didn't load lavaland, like if we're using #define LOWMEMORYMODE
 		return
 
 	// Take a "breath" of the air
