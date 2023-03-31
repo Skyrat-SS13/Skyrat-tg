@@ -50,15 +50,14 @@
 	var/obj/item/organ/external/genital/vagina/current_vagina = null // Buckled mob vagina
 
 	// Machine colors
-	var/machine_color_list = list("pink", "teal")
-	var/machine_color
+	var/machine_color = "pink"
 
 /*
 *	STATE MANAGEMENT
 */
 
 	// Vessel capacity indicator
-	var/vessel_state_list = list("liquid_empty", "liquid_low", "liquid_medium", "liquid_high", "liquid_full")
+	var/list/vessel_state_list = list("liquid_empty", "liquid_low", "liquid_medium", "liquid_high", "liquid_full")
 	var/vessel_state
 	// Organ types and sizes
 	var/current_selected_organ_type = null
@@ -77,24 +76,23 @@
 // Additional examine text
 /obj/structure/chair/milking_machine/examine(mob/user)
 	. = ..()
-	. +=span_notice("What are these metal mounts on the armrests for...?")
+	. += span_notice("What are these metal mounts on the armrests for...?")
 
 /obj/structure/chair/milking_machine/Destroy()
-	. = ..()
 	if(current_mob)
 		if(current_mob.handcuffed)
 			current_mob.handcuffed.dropped(current_mob)
 		current_mob.set_handcuffed(null)
 		current_mob.update_abstract_handcuffed()
 		current_mob.layer = initial(current_mob.layer)
+
 	STOP_PROCESSING(SSobj, src)
 	unbuckle_all_mobs()
+	return ..()
 
 // Object initialization
 /obj/structure/chair/milking_machine/Initialize(mapload)
 	. = ..()
-	machine_color = machine_color_list[1]
-
 	vessel_state = vessel_state_list[1]
 
 	milk_vessel = new()
