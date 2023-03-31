@@ -24,7 +24,7 @@
 	name = "\improper 'Serra' cutting laser"
 	desc = "Basically, a tube with a big heat sink attached to it. It fires lasers originally meant for cutting metals, but armor works too."
 	icon = 'modular_skyrat/modules/GUN_STATION_2023_BABY/icons/guns/guns.dmi'
-	icon_state = "cargovolver"
+	icon_state = "engilaser"
 	fire_sound = 'modular_skyrat/modules/microfusion/sound/laser_1.ogg'
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/recharge/engilaser
@@ -107,7 +107,7 @@
 	name = "plasma globule"
 	icon = 'modular_skyrat/modules/GUN_STATION_2023_BABY/icons/guns/projectiles.dmi'
 	icon_state = "plasmasci"
-	damage = 10
+	damage = 15
 	speed = 1.5
 	bare_wound_bonus = 75
 	wound_bonus = -50
@@ -135,8 +135,17 @@
 	icon = 'modular_skyrat/modules/GUN_STATION_2023_BABY/icons/guns/magazines.dmi'
 	icon_state = "vial"
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/rail.ogg'
+	caliber = CALIBER_BLOODVIAL
 
 /obj/item/ammo_casing/bloodvial/attack(mob/living/carbon/affected_mob, mob/user)
+	fill_that_stuff_up(affected_mob, user)
+
+/obj/item/ammo_casing/bloodvial/attack_self(mob/user)
+	if(user.can_perform_action(src, FORBID_TELEKINESIS_REACH|ALLOW_RESTING))
+		fill_that_stuff_up(user, user)
+
+/// Fills the vial using the user's own blood, causing a piercing wound to the user
+/obj/item/ammo_casing/bloodvial/proc/fill_that_stuff_up(mob/living/carbon/affected_mob, mob/user)
 	if(loaded_projectile)
 		balloon_alert(user, "already loaded")
 		return FALSE
@@ -148,11 +157,12 @@
 						span_userdanger("[user] is trying to take a blood sample from you!"))
 		if(!do_after(user, CHEM_INTERACT_DELAY(3 SECONDS, user), affected_mob))
 			return FALSE
-	if(affected_mob.bleed(10))
-		user.visible_message(span_notice("[user] takes a blood sample from [affected_mob]."))
-	else
-		to_chat(user, span_warning("You are unable to draw any blood from [affected_mob]!"))
-		return FALSE
+
+	user.visible_message(span_notice("[user] takes a blood sample from [affected_mob]."))
+
+	var/obj/item/bodypart/chosen_limb = affected_mob.get_bodypart(arm_zones[1]) || attached_mob.get_bodypart(arm_zones[2]) || attached_mob.get_bodypart(BODY_ZONE_CHEST)
+	chosen_limb.receive_damage(5)
+	chosen_limb.force_wound_upwards(/datum/wound/pierce/moderate) // Stabbing yourself (or someone else) with a glass vial to get more shots for your epic revolver is bad for your health
 
 	newshot()
 
