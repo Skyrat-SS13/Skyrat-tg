@@ -41,7 +41,7 @@
 	icon = 'modular_skyrat/modules/GUN_STATION_2023_BABY/icons/guns/magazines.dmi'
 	base_icon_state = "energizer"
 	icon_state = "energizer"
-	multiple_sprites = AMMO_BOX_ONE_SPRITE
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	ammo_type = /obj/item/ammo_casing/caseless/laser/engicutter
 	caliber = CALIBER_LASER
 	max_ammo = 10
@@ -86,7 +86,7 @@
 	icon = 'modular_skyrat/modules/GUN_STATION_2023_BABY/icons/guns/magazines.dmi'
 	base_icon_state = "scibattery"
 	icon_state = "scibattery"
-	multiple_sprites = AMMO_BOX_ONE_SPRITE
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	ammo_type = /obj/item/ammo_casing/caseless/laser/plasma_glob
 	caliber = CALIBER_LASER
 
