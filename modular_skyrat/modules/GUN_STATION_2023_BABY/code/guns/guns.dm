@@ -133,7 +133,7 @@
 	icon_state = "vial"
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/rail.ogg'
 
-/obj/item/reagent_containers/hypospray/attack(mob/living/affected_mob, mob/user)
+/obj/item/ammo_casing/bloodvial/attack(mob/living/affected_mob, mob/user)
 	if(loaded_projectile)
 		balloon_alert(user, "already loaded")
 		return FALSE
@@ -145,10 +145,10 @@
 						span_userdanger("[user] is trying to take a blood sample from you!"))
 		if(!do_after(user, CHEM_INTERACT_DELAY(3 SECONDS, user), affected_mob, extra_checks = CALLBACK(affected_mob, TYPE_PROC_REF(/mob/living, try_inject), user, null, INJECT_TRY_SHOW_ERROR_MESSAGE|inject_flags)))
 			return FALSE
-	if(living_target.bleed(10))
-		user.visible_message(span_notice("[user] takes a blood sample from [living_target]."))
+	if(affected_mob.bleed(10))
+		user.visible_message(span_notice("[user] takes a blood sample from [affected_mob]."))
 	else
-		to_chat(user, span_warning("You are unable to draw any blood from [living_target]!"))
+		to_chat(user, span_warning("You are unable to draw any blood from [affected_mob]!"))
 		return FALSE
 
 	newshot()
