@@ -213,6 +213,9 @@
 			mute_string = "LOOC"
 			feedback_string = "LOOC"
 		//Skyrat Addition End - LOOC muting again.
+		if(MUTE_INTERNET_REQUEST)
+			mute_string = "internet sound requests"
+			feedback_string = "Internet Sound Requests"
 		if(MUTE_ALL)
 			mute_string = "everything"
 			feedback_string = "Everything"
