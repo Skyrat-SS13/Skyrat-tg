@@ -9,7 +9,7 @@
 		"grst","crentz","cet","waz","et","du","kor","heizt","loch","jach","qet","anzhem","icht",
 		"unt","kech","gech","flei","deint","weim","kan","neiz","mende","lak","jen","gor","bor",
 		"kol","woef","blaf","hau","au","gheu","bau","arf","vau","amh","av","vogh","bow","guau",
-		"wff","hev","haf","vuf","auh","wan","waf,"bhao","wow","jau","waouh","oauhn","wouf","guf",
+		"wff","hev","haf","vuf","auh","wan","waf","bhao","wow","jau","waouh","oauhn","wouf","guf",
 		"grrr","vof","wreoff","wuff","yar","eek","wough","owff","ouff","waff","rueff","ghav","buh",
 		"rur","ya","cen","rawr","bar","kuk","tek","qat","uk","wu","vuh","tah","tch","schz",
 		"auch","ist","ein","entch","zwichs","tut","mir","wo","bis","es","vor","nic","gro","lll",
