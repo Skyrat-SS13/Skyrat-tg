@@ -6,7 +6,7 @@
 	slot = ORGAN_SLOT_LUNGS
 	gender = PLURAL
 	w_class = WEIGHT_CLASS_SMALL
-	
+
 	var/respiration_type = NONE // The type(s) of gas this lung needs for respiration
 
 	healing_factor = STANDARD_ORGAN_HEALING
@@ -105,16 +105,9 @@
 // assign the respiration_type
 /obj/item/organ/internal/lungs/Initialize(mapload)
 	. = ..()
-<<<<<<< HEAD
-	
-	if(safe_co2_min)
-		respiration_type |= RESPIRATION_CO2
-	if(safe_nitro_min) 
-=======
 	breath_out = new(BREATH_VOLUME)
 
 	if(safe_nitro_min)
->>>>>>> 2e5bfe5be66 (Refactors and optimizes breath code (Saves 12% of carbon/Life()) (#74230))
 		respiration_type |= RESPIRATION_N2
 	if(safe_oxygen_min)
 		respiration_type |= RESPIRATION_OXYGEN
@@ -158,12 +151,14 @@
 
 ///Simply exists so that you don't keep any alerts from your previous lack of lungs.
 /obj/item/organ/internal/lungs/Insert(mob/living/carbon/receiver, special = FALSE, drop_if_replaced = TRUE)
+	. = ..()
+	if(!.)
+		return .
 	receiver.clear_alert(ALERT_NOT_ENOUGH_OXYGEN)
 	receiver.clear_alert(ALERT_NOT_ENOUGH_CO2)
 	receiver.clear_alert(ALERT_NOT_ENOUGH_NITRO)
 	receiver.clear_alert(ALERT_NOT_ENOUGH_PLASMA)
 	receiver.clear_alert(ALERT_NOT_ENOUGH_N2O)
-	return ..()
 
 /obj/item/organ/internal/lungs/Remove(mob/living/carbon/organ_owner, special)
 	. = ..()
@@ -553,8 +548,6 @@
  * * breather: A carbon mob that is using the lungs to breathe.
  */
 /obj/item/organ/internal/lungs/proc/check_breath(datum/gas_mixture/breath, mob/living/carbon/human/breather)
-	. = TRUE
-
 	if(breather.status_flags & GODMODE)
 		breather.failed_last_breath = FALSE
 		breather.clear_alert(ALERT_NOT_ENOUGH_OXYGEN)
@@ -563,88 +556,23 @@
 	if(HAS_TRAIT(breather, TRAIT_NOBREATH))
 		return FALSE
 
-<<<<<<< HEAD
-	// Breath may be null, so use a fallback "empty breath" for convenience.
-	if(!breath)
-		/// Fallback "empty breath" for convenience.
-=======
 
 	// If the breath is falsy or "null", we can use the backup empty_breath.
 	if(!breath)
->>>>>>> 2e5bfe5be66 (Refactors and optimizes breath code (Saves 12% of carbon/Life()) (#74230))
 		var/static/datum/gas_mixture/immutable/empty_breath = new(BREATH_VOLUME)
 		breath = empty_breath
 
 	// Indicates if there are moles of gas in the breath.
 	var/has_moles = breath.total_moles() != 0
 
-<<<<<<< HEAD
-	// The list of gases in the breath.
-	var/list/breath_gases = breath.gases
-
-	// Indicates if lungs can breathe without gas.
-	var/can_breathe_vacuum = HAS_TRAIT(src, TRAIT_SPACEBREATHING)
-	// Re-usable var used to remove a limited volume of each gas from the given gas mixture.
-	var/gas_breathed = 0
-	// Vars for N2O/healium induced euphoria, stun, and sleep.
-	var/n2o_euphoria = EUPHORIA_LAST_FLAG
-	var/healium_euphoria = EUPHORIA_LAST_FLAG
-
-	// Partial pressures in the breath.
-	// Main Gases
-	var/pluoxium_pp = 0
-	var/o2_pp = 0
-	var/n2_pp = 0
-	var/co2_pp = 0
-	var/plasma_pp = 0
-	// Trace Gases, ordered alphabetically.
-	var/bz_pp = 0
-	var/freon_pp = 0
-	var/healium_pp = 0
-	var/helium_pp = 0
-	var/halon_pp = 0
-	var/hypernob_pp = 0
-	var/miasma_pp = 0
-	var/n2o_pp = 0
-	var/nitrium_pp = 0
-	var/trit_pp = 0
-	var/zauker_pp = 0
-
-=======
->>>>>>> 2e5bfe5be66 (Refactors and optimizes breath code (Saves 12% of carbon/Life()) (#74230))
 	// Check for moles of gas and handle partial pressures / special conditions.
 	if(has_moles)
 		// Breath has more than 0 moles of gas.
 		// Route gases through mask filter if breather is wearing one.
 		if(istype(breather.wear_mask) && (breather.wear_mask.clothing_flags & GAS_FILTERING) && breather.wear_mask.has_filter)
 			breath = breather.wear_mask.consume_filter(breath)
-<<<<<<< HEAD
-			breath_gases = breath.gases
-		// Partial pressures of "main" gases.
-		pluoxium_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/pluoxium][MOLES])
-		o2_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/oxygen][MOLES]) + (8 * pluoxium_pp)
-		n2_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/nitrogen][MOLES])
-		co2_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/carbon_dioxide][MOLES])
-		plasma_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/plasma][MOLES])
-		// Partial pressures of "trace" gases.
-		bz_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/bz][MOLES])
-		freon_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/freon][MOLES])
-		halon_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/halon][MOLES])
-		healium_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/healium][MOLES])
-		helium_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/helium][MOLES])
-		hypernob_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/hypernoblium][MOLES])
-		miasma_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/miasma][MOLES])
-		n2o_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/nitrous_oxide][MOLES])
-		nitrium_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/nitrium][MOLES])
-		trit_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/tritium][MOLES])
-		zauker_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/zauker][MOLES])
-
-	// Breath has 0 moles of gas.
-	else if(can_breathe_vacuum)
-=======
 	// Breath has 0 moles of gas, and we can breathe space
 	else if(HAS_TRAIT(src, TRAIT_SPACEBREATHING))
->>>>>>> 2e5bfe5be66 (Refactors and optimizes breath code (Saves 12% of carbon/Life()) (#74230))
 		// The lungs can breathe anyways. What are you? Some bottom-feeding, scum-sucking algae eater?
 		breather.failed_last_breath = FALSE
 		// Vacuum-adapted lungs regenerate oxyloss even when breathing nothing.
@@ -652,7 +580,6 @@
 			breather.adjustOxyLoss(-5)
 	else
 		// Can't breathe!
-		. = FALSE
 		breather.failed_last_breath = TRUE
 
 	// The list of gases in the breath.
@@ -662,54 +589,17 @@
 
 	var/old_euphoria = (n2o_euphoria == EUPHORIA_ACTIVE || healium_euphoria == EUPHORIA_ACTIVE)
 
-<<<<<<< HEAD
-	//-- PLUOXIUM --//
-	// Behaves like Oxygen with 8X efficacy, but metabolizes into a reagent.
-	if(pluoxium_pp)
-		// Inhale Pluoxium. Exhale nothing.
-		breathe_gas_volume(breath_gases, /datum/gas/pluoxium)
-		// Metabolize to reagent.
-		if(pluoxium_pp > gas_stimulation_min)
-			var/existing = breather.reagents.get_reagent_amount(/datum/reagent/pluoxium)
-			breather.reagents.add_reagent(/datum/reagent/pluoxium, max(0, 1 - existing))
-=======
 	// Cache for sonic speed
 	var/list/last_partial_pressures = src.last_partial_pressures
 	var/list/breathe_always = src.breathe_always
 	var/list/breath_present = src.breath_present
 	var/list/breath_lost = src.breath_lost
->>>>>>> 2e5bfe5be66 (Refactors and optimizes breath code (Saves 12% of carbon/Life()) (#74230))
 
 	// Build out our partial pressures, for use as we go
 	var/list/partial_pressures = list()
 	for(var/gas_id in breath_gases)
 		partial_pressures[gas_id] = breath.get_breath_partial_pressure(breath_gases[gas_id][MOLES])
 
-<<<<<<< HEAD
-	// Minimum Oxygen effects.
-	// If the lungs need Oxygen to breathe properly, O2 is exchanged with CO2.
-	if(safe_oxygen_min)
-		// Suffocation side-effects.
-		if(!can_breathe_vacuum && (o2_pp < safe_oxygen_min))
-			breather.throw_alert(ALERT_NOT_ENOUGH_OXYGEN, /atom/movable/screen/alert/not_enough_oxy)
-			// Inhale insufficient amount of O2, exhale CO2.
-			if(o2_pp)
-				gas_breathed = handle_suffocation(breather, o2_pp, safe_oxygen_min, breath_gases[/datum/gas/oxygen][MOLES])
-				breathe_gas_volume(breath_gases, /datum/gas/oxygen, /datum/gas/carbon_dioxide, volume = gas_breathed)
-			else
-				// No amount of O2, just suffocate
-				gas_breathed = handle_suffocation(breather, o2_pp, safe_oxygen_min, breath_gases[/datum/gas/oxygen][MOLES])
-		else
-			// Enough oxygen to breathe.
-			breather.failed_last_breath = FALSE
-			breather.clear_alert(ALERT_NOT_ENOUGH_OXYGEN)
-			// Inhale Oxygen, exhale equivalent amount of CO2.
-			if(o2_pp)
-				breathe_gas_volume(breath_gases, /datum/gas/oxygen, /datum/gas/carbon_dioxide)
-				// Heal mob if not in crit.
-				if(breather.health >= breather.crit_threshold)
-					breather.adjustOxyLoss(-5)
-=======
 	// First, we breathe the stuff that always wants to be processed
 	// This is typically things like o2, stuff the mob needs to live
 	for(var/breath_id in breathe_always)
@@ -719,7 +609,6 @@
 		ASSERT_GAS(breath_id, breath)
 		var/inhale = breathe_always[breath_id]
 		call(src, inhale)(breather, breath, partial_pressure, old_partial_pressure)
->>>>>>> 2e5bfe5be66 (Refactors and optimizes breath code (Saves 12% of carbon/Life()) (#74230))
 
 	// Now we'll handle the callbacks that want to be run conditionally off our current breath
 	for(var/breath_id in breath_gases)
@@ -727,37 +616,11 @@
 		if(!when_present)
 			continue
 
-<<<<<<< HEAD
-	// Minimum Nitrogen effects.
-	// If the lungs need Nitrogen to breathe properly, N2 is exchanged with CO2.
-	if(safe_nitro_min)
-		// Suffocation side-effects.
-		if(!can_breathe_vacuum && (n2_pp < safe_nitro_min))
-			breather.throw_alert(ALERT_NOT_ENOUGH_NITRO, /atom/movable/screen/alert/not_enough_nitro)
-			// Inhale insufficient amount of N2, exhale CO2.
-			if(n2_pp)
-				gas_breathed = handle_suffocation(breather, n2_pp, safe_nitro_min, breath_gases[/datum/gas/nitrogen][MOLES])
-				breathe_gas_volume(breath_gases, /datum/gas/nitrogen, /datum/gas/carbon_dioxide, volume = gas_breathed)
-			else
-				// no amount of N2, just suffocate
-				gas_breathed = handle_suffocation(breather, n2_pp, safe_nitro_min, breath_gases[/datum/gas/nitrogen][MOLES])
-		else
-			// Enough nitrogen to breathe.
-			breather.failed_last_breath = FALSE
-			breather.clear_alert(ALERT_NOT_ENOUGH_NITRO)
-			// Inhale N2, exhale equivalent amount of CO2. Look ma, sideways breathing!
-			if(n2_pp)
-				breathe_gas_volume(breath_gases, /datum/gas/nitrogen, /datum/gas/carbon_dioxide)
-				// Heal mob if not in crit.
-				if(breather.health >= breather.crit_threshold)
-					breather.adjustOxyLoss(-5)
-=======
 		var/reaction = call(src, when_present)(breather, breath, partial_pressures[breath_id], last_partial_pressures[breath_id])
 		if(reaction == BREATH_LOST)
 			var/on_lose = breath_lost[breath_id]
 			if(on_lose)
 				call(src, on_lose)(breather, breath, partial_pressures[breath_id], last_partial_pressures[breath_id])
->>>>>>> 2e5bfe5be66 (Refactors and optimizes breath code (Saves 12% of carbon/Life()) (#74230))
 
 	// Finally, we'll run the callbacks that aren't in breath_gases, but WERE in our last breath
 	for(var/gas_lost in last_partial_pressures)
@@ -768,291 +631,6 @@
 		if(!on_loss)
 			continue
 
-<<<<<<< HEAD
-	// Minimum CO2 effects.
-	// If the lungs need CO2 to breathe properly, CO2 is exchanged with O2.
-	if(safe_co2_min)
-		// Suffocation side-effects.
-		if(!can_breathe_vacuum && (co2_pp < safe_co2_min))
-			breather.throw_alert(ALERT_NOT_ENOUGH_CO2, /atom/movable/screen/alert/not_enough_co2)
-			// Inhale insufficient amount of CO2, exhale O2.
-			if(co2_pp)
-				gas_breathed = handle_suffocation(breather, co2_pp, safe_co2_min, breath_gases[/datum/gas/carbon_dioxide][MOLES])
-				breathe_gas_volume(breath_gases, /datum/gas/carbon_dioxide, /datum/gas/oxygen, volume = gas_breathed)
-			else
-				// No amount of CO2, just suffocate
-				gas_breathed = handle_suffocation(breather, co2_pp, safe_co2_min, breath_gases[/datum/gas/carbon_dioxide][MOLES])
-		else
-			// Enough CO2 to breathe.
-			breather.failed_last_breath = FALSE
-			breather.clear_alert(ALERT_NOT_ENOUGH_CO2)
-			// Inhale CO2, exhale equivalent amount of O2. Look ma, reverse breathing!
-			if(co2_pp)
-				breathe_gas_volume(breath_gases, /datum/gas/carbon_dioxide, /datum/gas/oxygen)
-				// Heal mob if not in crit.
-				if(breather.health >= breather.crit_threshold)
-					breather.adjustOxyLoss(-5)
-
-	//-- PLASMA --//
-	// Maximum Plasma effects. "Too much Plasma!"
-	if(safe_plasma_max)
-		if(plasma_pp && (plasma_pp > safe_plasma_max))
-			// Plasma side-effects.
-			var/ratio = (breath_gases[/datum/gas/plasma][MOLES] / safe_plasma_max) * 10
-			breather.apply_damage_type(clamp(ratio, plas_breath_dam_min, plas_breath_dam_max), plas_damage_type)
-			breather.throw_alert(ALERT_TOO_MUCH_PLASMA, /atom/movable/screen/alert/too_much_plas)
-		else
-			// Reset side-effects.
-			breather.clear_alert(ALERT_TOO_MUCH_PLASMA)
-
-	// Minimum Plasma effects.
-	// If the lungs need Plasma to breathe properly, Plasma is exchanged with CO2.
-	if(safe_plasma_min)
-		// Suffocation side-effects.
-		if(!can_breathe_vacuum && (plasma_pp < safe_plasma_min))
-			breather.throw_alert(ALERT_NOT_ENOUGH_PLASMA, /atom/movable/screen/alert/not_enough_plas)
-			// Breathe insufficient amount of Plasma, exhale CO2.
-			if(plasma_pp)
-				gas_breathed = handle_suffocation(breather, plasma_pp, safe_plasma_min, breath_gases[/datum/gas/plasma][MOLES])
-				breathe_gas_volume(breath_gases, /datum/gas/plasma, /datum/gas/carbon_dioxide, volume = gas_breathed)
-			else
-				// No amount of plasma, just suffocate
-				gas_breathed = handle_suffocation(breather, plasma_pp, safe_plasma_min, breath_gases[/datum/gas/plasma][MOLES])
-		else
-			// Enough Plasma to breathe.
-			breather.failed_last_breath = FALSE
-			breather.clear_alert(ALERT_NOT_ENOUGH_PLASMA)
-			// Inhale Plasma, exhale equivalent amount of CO2.
-			if(plasma_pp)
-				breathe_gas_volume(breath_gases, /datum/gas/plasma, /datum/gas/carbon_dioxide)
-				// Heal mob if not in crit.
-				if(breather.health >= breather.crit_threshold)
-					breather.adjustOxyLoss(-5)
-
-
-	//-- TRACES --//
-	// If there's some other shit in the air lets deal with it here.
-
-	//-- BZ --//
-	if(bz_pp)
-		if(bz_pp > BZ_trip_balls_min)
-			breather.adjust_hallucinations(20 SECONDS)
-			breather.reagents.add_reagent(/datum/reagent/bz_metabolites, 5)
-		if(bz_pp > BZ_brain_damage_min && prob(33))
-			breather.adjustOrganLoss(ORGAN_SLOT_BRAIN, 3, 150, ORGAN_ORGANIC)
-
-	//-- FREON --//
-	if(freon_pp)
-		// Inhale Freon. Exhale nothing.
-		breathe_gas_volume(breath_gases, /datum/gas/freon)
-		if (freon_pp > gas_stimulation_min)
-			breather.reagents.add_reagent(/datum/reagent/freon, 1)
-		if (prob(freon_pp))
-			to_chat(breather, span_alert("Your mouth feels like it's burning!"))
-		if (freon_pp > 40)
-			breather.emote("gasp")
-			breather.adjustFireLoss(15)
-			if (prob(freon_pp / 2))
-				to_chat(breather, span_alert("Your throat closes up!"))
-				breather.set_silence_if_lower(6 SECONDS)
-		else
-			breather.adjustFireLoss(freon_pp / 4)
-
-	//-- HALON --//
-	if(halon_pp)
-		// Inhale Halon. Exhale nothing.
-		breathe_gas_volume(breath_gases, /datum/gas/halon)
-		// Metabolize to reagent.
-		if(halon_pp > gas_stimulation_min)
-			breather.adjustOxyLoss(5)
-			breather.reagents.add_reagent(/datum/reagent/halon, max(0, 1 - breather.reagents.get_reagent_amount(/datum/reagent/halon)))
-
-	//-- HEALIUM --//
-	// Sleeping gas with healing properties.
-	if(!healium_pp)
-		// Reset side-effects.
-		healium_euphoria = EUPHORIA_INACTIVE
-	else
-		// Inhale Healium. Exhale nothing.
-		breathe_gas_volume(breath_gases, /datum/gas/healium)
-		// Euphoria side-effect.
-		if(healium_pp > gas_stimulation_min)
-			if(prob(15))
-				to_chat(breather, span_alert("Your head starts spinning and your lungs burn!"))
-				healium_euphoria = EUPHORIA_ACTIVE
-				breather.emote("gasp")
-		else
-			healium_euphoria = EUPHORIA_INACTIVE
-		// Stun/Sleep side-effects.
-		if(healium_pp > healium_para_min)
-			// Random chance to stun mob. Timing not in seconds to have a much higher variation
-			breather.Unconscious(rand(3 SECONDS, 5 SECONDS))
-		// Metabolize to reagent when concentration is high enough.
-		if(healium_pp > healium_sleep_min)
-			breather.reagents.add_reagent(/datum/reagent/healium, max(0, 1 - breather.reagents.get_reagent_amount(/datum/reagent/healium)))
-
-	//-- HELIUM --//
-	// Activates helium speech when partial pressure gets high enough
-	if(!helium_pp)
-		helium_speech = FALSE
-		UnregisterSignal(owner, COMSIG_MOB_SAY)
-	else
-		// Inhale Helium. Exhale nothing.
-		breathe_gas_volume(breath_gases, /datum/gas/helium)
-		// Helium side-effects.
-		if(helium_speech && (helium_pp <= helium_speech_min))
-			helium_speech = FALSE
-			UnregisterSignal(owner, COMSIG_MOB_SAY)
-		else if(!helium_speech && (helium_pp > helium_speech_min))
-			helium_speech = TRUE
-			RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(handle_helium_speech))
-
-	//-- HYPER-NOBILUM --//
-	if(hypernob_pp)
-		// Inhale Hyber-Nobilum. Exhale nothing.
-		breathe_gas_volume(breath_gases, /datum/gas/hypernoblium)
-		// Metabolize to reagent.
-		if (hypernob_pp > gas_stimulation_min)
-			var/existing = breather.reagents.get_reagent_amount(/datum/reagent/hypernoblium)
-			breather.reagents.add_reagent(/datum/reagent/hypernoblium,max(0, 1 - existing))
-
-	//-- MIASMA --//
-	if(!miasma_pp || !suffers_miasma)
-		// Clear out moods when immune to miasma, or if there's no miasma at all.
-		owner.clear_mood_event("smell")
-	else
-		// Inhale Miasma. Exhale nothing.
-		breathe_gas_volume(breath_gases, /datum/gas/miasma)
-		// Miasma sickness
-		if(prob(0.5 * miasma_pp))
-			var/datum/disease/advance/miasma_disease = new /datum/disease/advance/random(max_symptoms = min(round(max(miasma_pp / 2, 1), 1), 6), max_level = min(round(max(miasma_pp, 1), 1), 8))
-			// tl;dr the first argument chooses the smaller of miasma_pp/2 or 6(typical max virus symptoms), the second chooses the smaller of miasma_pp or 8(max virus symptom level)
-			// Each argument has a minimum of 1 and rounds to the nearest value. Feel free to change the pp scaling I couldn't decide on good numbers for it.
-			miasma_disease.name = "Unknown"
-			miasma_disease.try_infect(owner)
-		// Miasma side effects
-		switch(miasma_pp)
-			if(0.25 to 5)
-				// At lower pp, give out a little warning
-				owner.clear_mood_event("smell")
-				if(prob(5))
-					to_chat(owner, span_notice("There is an unpleasant smell in the air."))
-			if(5 to 15)
-				//At somewhat higher pp, warning becomes more obvious
-				if(prob(15))
-					to_chat(owner, span_warning("You smell something horribly decayed inside this room."))
-					owner.add_mood_event("smell", /datum/mood_event/disgust/bad_smell)
-			if(15 to 30)
-				//Small chance to vomit. By now, people have internals on anyway
-				if(prob(5))
-					to_chat(owner, span_warning("The stench of rotting carcasses is unbearable!"))
-					owner.add_mood_event("smell", /datum/mood_event/disgust/nauseating_stench)
-					owner.vomit()
-			if(30 to INFINITY)
-				//Higher chance to vomit. Let the horror start
-				if(prob(15))
-					to_chat(owner, span_warning("The stench of rotting carcasses is unbearable!"))
-					owner.add_mood_event("smell", /datum/mood_event/disgust/nauseating_stench)
-					owner.vomit()
-			else
-				owner.clear_mood_event("smell")
-		// In a full miasma atmosphere with 101.34 pKa, about 10 disgust per breath, is pretty low compared to threshholds
-		// Then again, this is a purely hypothetical scenario and hardly reachable
-		owner.adjust_disgust(0.1 * miasma_pp)
-
-	//-- N2O --//
-	// N2O side-effects. "Too much N2O!"
-	// Small amount of N2O, small side-effects. Causes random euphoria and giggling.
-	if (n2o_pp > n2o_para_min)
-		// More N2O, more severe side-effects. Causes stun/sleep.
-		n2o_euphoria = EUPHORIA_ACTIVE
-		breather.throw_alert(ALERT_TOO_MUCH_N2O, /atom/movable/screen/alert/too_much_n2o)
-		// 60 gives them one second to wake up and run away a bit!
-		breather.Unconscious(6 SECONDS)
-		// Enough to make the mob sleep.
-		if(n2o_pp > n2o_sleep_min)
-			breather.Sleeping(min(breather.AmountSleeping() + 100, 200))
-	else if(n2o_pp > 0.01)
-		// No alert for small amounts, but the mob randomly feels euphoric.
-		breather.clear_alert(ALERT_TOO_MUCH_N2O)
-		if(prob(20))
-			n2o_euphoria = EUPHORIA_ACTIVE
-			breather.emote(pick("giggle", "laugh"))
-		else
-			n2o_euphoria = EUPHORIA_INACTIVE
-	else
-		// Reset side-effects, for zero or extremely small amounts of N2O.
-		n2o_euphoria = EUPHORIA_INACTIVE
-		breather.clear_alert(ALERT_TOO_MUCH_N2O)
-
-	//-- NITRIUM --//
-	if (nitrium_pp)
-		// Inhale Nitrium. Exhale nothing.
-		breathe_gas_volume(breath_gases, /datum/gas/nitrium)
-		// Random chance to inflict side effects increases with pressure.
-		if((prob(nitrium_pp) && (nitrium_pp > 15)))
-			// Nitrium side-effect.
-			breather.adjustOrganLoss(ORGAN_SLOT_LUNGS, nitrium_pp * 0.1)
-			to_chat(breather, "<span class='notice'>You feel a burning sensation in your chest</span>")
-		// Metabolize to reagents.
-		if (nitrium_pp > 5)
-			var/existing = breather.reagents.get_reagent_amount(/datum/reagent/nitrium_low_metabolization)
-			breather.reagents.add_reagent(/datum/reagent/nitrium_low_metabolization, max(0, 2 - existing))
-		if (nitrium_pp > 10)
-			var/existing = breather.reagents.get_reagent_amount(/datum/reagent/nitrium_high_metabolization)
-			breather.reagents.add_reagent(/datum/reagent/nitrium_high_metabolization, max(0, 1 - existing))
-
-	//-- PROTO-NITRATE --//
-	// Inert
-
-	//-- TRITIUM --//
-	if (trit_pp)
-		// Inhale Tritium. Exhale nothing.
-		gas_breathed = breathe_gas_volume(breath_gases, /datum/gas/tritium)
-		// Tritium side-effects.
-		var/ratio = gas_breathed * 15
-		breather.adjustToxLoss(clamp(ratio, MIN_TOXIC_GAS_DAMAGE, MAX_TOXIC_GAS_DAMAGE))
-		// If you're breathing in half an atmosphere of radioactive gas, you fucked up.
-		if((trit_pp > tritium_irradiation_moles_min) && SSradiation.can_irradiate_basic(breather))
-			var/lerp_scale = min(tritium_irradiation_moles_max, trit_pp - tritium_irradiation_moles_min) / (tritium_irradiation_moles_max - tritium_irradiation_moles_min)
-			var/chance = LERP(tritium_irradiation_probability_min, tritium_irradiation_probability_max, lerp_scale)
-			if (prob(chance))
-				breather.AddComponent(/datum/component/irradiated)
-
-	//-- ZAUKER --//
-	if(zauker_pp)
-		// Inhale Zauker. Exhale nothing.
-		breathe_gas_volume(breath_gases, /datum/gas/zauker)
-		// Metabolize to reagent.
-		if(zauker_pp > gas_stimulation_min)
-			var/existing = breather.reagents.get_reagent_amount(/datum/reagent/zauker)
-			breather.reagents.add_reagent(/datum/reagent/zauker, max(0, 1 - existing))
-
-	// Handle chemical euphoria mood event, caused by gases such as N2O or healium.
-	if (n2o_euphoria == EUPHORIA_ACTIVE || healium_euphoria == EUPHORIA_ACTIVE)
-		owner.add_mood_event("chemical_euphoria", /datum/mood_event/chemical_euphoria)
-	else if (n2o_euphoria == EUPHORIA_INACTIVE && healium_euphoria == EUPHORIA_INACTIVE)
-		owner.clear_mood_event("chemical_euphoria")
-	// Activate mood on first flag, remove on second, do nothing on third.
-
-	if(has_moles)
-		handle_breath_temperature(breath, breather)
-
-	breath.garbage_collect()
-
-///override this for breath handling unique to lung subtypes, breath_gas is the list of gas in the breath while gas breathed is just what is being added or removed from that list, just as they are when this is called in check_breath()
-/obj/item/organ/internal/lungs/proc/handle_gas_override(mob/living/carbon/human/breather, list/breath_gas, gas_breathed)
-	return
-
-/// Remove a volume of gas from the breath. Used to simulate absorbtion and interchange of gas in the lungs.
-/// Removes all of the given gas type unless given a volume argument.
-/// Returns the amount of gas theoretically removed.
-/obj/item/organ/internal/lungs/proc/breathe_gas_volume(list/breath_gases, datum/gas/remove_gas, datum/gas/exchange_gas = null, volume = INFINITY)
-	volume = min(volume, breath_gases[remove_gas][MOLES])
-	breath_gases[remove_gas][MOLES] -= volume
-	if(exchange_gas)
-		breath_gases[exchange_gas][MOLES] += volume
-=======
 		call(src, on_loss)(breather, breath, last_partial_pressures[gas_lost])
 
 	src.last_partial_pressures = partial_pressures
@@ -1087,7 +665,6 @@
 	if(exchange_id)
 		ASSERT_GAS(exchange_id, breath_out)
 		breath_out.gases[exchange_id][MOLES] += volume
->>>>>>> 2e5bfe5be66 (Refactors and optimizes breath code (Saves 12% of carbon/Life()) (#74230))
 	return volume
 
 /// Applies suffocation side-effects to a given Human, scaling based on ratio of required pressure VS "true" pressure.
@@ -1188,7 +765,7 @@
 	. = ..()
 	if (breath?.gases[/datum/gas/plasma])
 		var/plasma_pp = breath.get_breath_partial_pressure(breath.gases[/datum/gas/plasma][MOLES])
-		owner.blood_volume += (0.2 * plasma_pp) // 10/s when breathing literally nothing but plasma, which will suffocate you.
+		breather_slime.blood_volume += (0.2 * plasma_pp) // 10/s when breathing literally nothing but plasma, which will suffocate you.
 
 /obj/item/organ/internal/lungs/cybernetic
 	name = "basic cybernetic lungs"

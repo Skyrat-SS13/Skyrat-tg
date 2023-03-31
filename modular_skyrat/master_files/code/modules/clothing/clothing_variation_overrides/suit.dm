@@ -156,7 +156,7 @@
 
 /**
  * SUBTYPE WITH NEW ICON
- * Clothing that has a digitigrade version, but its parent was set to something else earlier in this file.
+ * Clothing that has a digitigrade version, but its parent was set to something else earlier in this file or elsewhere entirely.
  */
 /obj/item/clothing/suit/wizrobe/magusblue
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
@@ -165,4 +165,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 /obj/item/clothing/suit/wizrobe/santa
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/apron/overalls
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION

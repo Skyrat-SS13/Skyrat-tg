@@ -231,6 +231,6 @@
 	new /obj/item/storage/toolbox/ammo/full/krinkov/fire(src)
 	new /obj/item/storage/toolbox/ammo/full/krinkov/ricochet(src)
 	new /obj/item/storage/toolbox/ammo/full/krinkov/ap(src)
-	new /obj/item/storage/toolbox/ammo/full/bison/ert(src)
-	new /obj/item/storage/toolbox/ammo/full/bison/ert(src)
+	new /obj/item/storage/toolbox/ammo/full/nri_smg(src)
+	new /obj/item/storage/toolbox/ammo/full/nri_smg(src)
 	new /obj/item/storage/toolbox/ammo/full/aps(src)

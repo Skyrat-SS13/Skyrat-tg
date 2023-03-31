@@ -64,6 +64,7 @@
 		H.adjustToxLoss(3 * REAGENTS_EFFECT_MULTIPLIER * delta_time)
 		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * delta_time)
 		return TRUE
+	return ..()
 
 /datum/species/mush/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour, force_update = FALSE) //SKYRAT EDIT - ORIGINAL: /datum/species/mush/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour) (one parameter added)
 	forced_colour = FALSE
