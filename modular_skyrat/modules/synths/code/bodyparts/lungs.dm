@@ -7,8 +7,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "lungs-ipc"
 	safe_nitro_min = 0
-	safe_nitro_max = 0
-	safe_co2_min = 0
 	safe_co2_max = 0
 	safe_plasma_min = 0
 	safe_plasma_max = 0
