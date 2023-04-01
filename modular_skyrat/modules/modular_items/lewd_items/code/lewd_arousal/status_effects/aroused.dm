@@ -35,8 +35,8 @@
 		temp_pleasure -= NEVERBONER_PLEASURE_OFFSET
 		temp_arousal -= NEVERBONER_PLEASURE_OFFSET
 
-	if(affected_mob.pain > affected_mob.pain_limit)
-		temp_arousal -= TOO_MUCH_PAIN_MODIFIER
+	//if(affected_mob.pain > affected_mob.pain_limit)
+		//temp_arousal -= TOO_MUCH_PAIN_MODIFIER
 	if(affected_mob.arousal >= AROUSAL_MEDIUM)
 		if(prob(AUTO_EMOTE_CHANCE))
 			affected_mob.try_lewd_autoemote(pick("moan", "blush"))

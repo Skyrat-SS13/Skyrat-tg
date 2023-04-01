@@ -131,9 +131,9 @@
 	. = ..()
 	if(. == PROCESS_KILL)
 		return PROCESS_KILL
-	var/mob/living/carbon/human/hooman = loc
-	if(tightness == SHIBARI_TIGHTNESS_HIGH && hooman.pain < 25)
-		hooman.adjust_pain(0.6 * delta_time)
+	//var/mob/living/carbon/human/hooman = loc
+	//if(tightness == SHIBARI_TIGHTNESS_HIGH && hooman.pain < 25)
+	//	hooman.adjust_pain(0.6 * delta_time)
 
 /obj/item/clothing/under/shibari/groin
 	name = "crotch rope shibari"
@@ -193,8 +193,8 @@
 		hooman.adjust_pleasure(0.6 * delta_time)
 	if(tightness == SHIBARI_TIGHTNESS_HIGH)
 		hooman.adjust_pleasure(0.6 * delta_time)
-		if(hooman.pain < 40)
-			hooman.adjust_pain(0.6 * delta_time)
+		//if(hooman.pain < 40)
+		//	hooman.adjust_pain(0.6 * delta_time)
 
 #undef SHIBARI_TIGHTNESS_LOW
 #undef SHIBARI_TIGHTNESS_MED

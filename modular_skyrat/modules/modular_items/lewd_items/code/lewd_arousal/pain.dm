@@ -1,5 +1,5 @@
 // I guess some people enjoy it.
-
+/*
 /// Adds or removes pain, this should be used instead of the modifying the var, due to quirk logic.
 /// Makes the human scream and shiver when pain hits the soft limit, provided autoemote is enabled.
 /mob/living/carbon/human/proc/adjust_pain(change_amount = 0)
@@ -23,3 +23,6 @@
 		adjust_pleasure(change_amount / 2)
 
 	pain = clamp(pain + change_amount, AROUSAL_MINIMUM, AROUSAL_LIMIT)
+*/
+/mob/living/carbon/human/proc/adjust_pain(change_amount = 0)
+	return

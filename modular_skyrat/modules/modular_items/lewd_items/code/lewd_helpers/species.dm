@@ -51,7 +51,7 @@
 		throw_arousal_alert(alert_state, arousal_alert, target_human)
 		alert_state = null
 
-	switch(target_human.pain)
+	/*switch(target_human.pain)
 		if(-INFINITY to AROUSAL_MINIMUM_DETECTABLE) //to prevent same thing with pain
 			arousal_alert?.cut_overlay(arousal_alert.pain_overlay)
 			if(target_human.pain < AROUSAL_MINIMUM)
@@ -63,7 +63,7 @@
 		if(AROUSAL_HIGH to AROUSAL_AUTO_CLIMAX_THRESHOLD)
 			alert_state = AROUSED_HIGH
 		if(AROUSAL_AUTO_CLIMAX_THRESHOLD to INFINITY)
-			alert_state = AROUSED_MAX
+			alert_state = AROUSED_MAX*/
 	if(alert_state)
 		overlay_pain(alert_state, arousal_alert)
 		alert_state = null

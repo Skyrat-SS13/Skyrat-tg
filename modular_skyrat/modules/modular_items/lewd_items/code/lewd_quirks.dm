@@ -275,8 +275,8 @@
 			continue
 		if(iterated_mob.stat == DEAD) //don't count dead targets either
 			continue
-		if(iterated_mob.pain >= 10)
-			return TRUE
+		//if(iterated_mob.pain >= 10)
+		//	return TRUE
 	return FALSE
 
 //Shibari update quirks: Rope bunny and rigger. One have additional mood bonus (0) and exist for same reason as ananas affinity, other one can faster tie ropes on character because why not.

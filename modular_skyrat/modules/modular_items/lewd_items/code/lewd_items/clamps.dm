@@ -74,8 +74,8 @@
 	if(!target || !target_breast)
 		return
 	target.adjust_arousal(1 * delta_time)
-	if(target.pain < 27.5) //To prevent maxing pain by just pair of clamps.
-		target.adjust_pain(1 * delta_time)
+	//if(target.pain < 27.5) //To prevent maxing pain by just pair of clamps.
+	//	target.adjust_pain(1 * delta_time)
 
 	if(target.arousal < 15)
 		target.adjust_arousal(1 * delta_time)
