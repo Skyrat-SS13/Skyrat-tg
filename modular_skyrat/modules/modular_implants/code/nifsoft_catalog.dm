@@ -53,7 +53,7 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 		target_nif = null
 
 	else
-		var/obj/item/organ/internal/cyberimp/brain/nif/user_nif = nif_user.getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
+		var/obj/item/organ/internal/cyberimp/brain/nif/user_nif = nif_user.get_organ_by_type(/obj/item/organ/internal/cyberimp/brain/nif)
 		if(!user_nif)
 			target_nif = null
 
