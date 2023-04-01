@@ -57,6 +57,7 @@ const RecordInfo = (props, context) => {
     species,
     wanted_status,
     // SKYRAT EDIT START - RP Records
+    past_general_records,
     past_security_records,
     // SKYRAT EDIT END
   } = foundRecord;
@@ -179,9 +180,14 @@ const RecordInfo = (props, context) => {
               />
             </LabeledList.Item>
             {/* SKYRAT EDIT START - RP Records (Not pretty but it's there) */}
+            <LabeledList.Item label="General Records">
+              <Box wrap maxWidth="100%">
+                {past_general_records || 'N/A'}
+              </Box>
+            </LabeledList.Item>
             <LabeledList.Item label="Past Security Records">
               <Box wrap maxWidth="100%">
-                {past_security_records}
+                {past_security_records || 'N/A'}
               </Box>
             </LabeledList.Item>
             {/* SKYRAT EDIT END */}

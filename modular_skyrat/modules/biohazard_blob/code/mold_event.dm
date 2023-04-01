@@ -35,7 +35,7 @@
 
 /datum/round_event/mold/announce(fake)
 	if(!fake)
-		event_minimum_security_level(SEC_LEVEL_VIOLET, FALSE, FALSE)
+		INVOKE_ASYNC(SSsecurity_level, TYPE_PROC_REF(/datum/controller/subsystem/security_level/, minimum_security_level), SEC_LEVEL_VIOLET, FALSE, FALSE)
 	priority_announce("Confirmed outbreak of level 6 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", ANNOUNCER_OUTBREAK6)
 
 /datum/round_event/mold/start()

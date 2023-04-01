@@ -17,8 +17,8 @@
 	add_movespeed_modifier(/datum/movespeed_modifier/alien_slow)
 
 /mob/living/carbon/alien/adult/skyrat/sentinel/create_internal_organs()
-	internal_organs += new /obj/item/organ/internal/alien/plasmavessel/small
-	internal_organs += new /obj/item/organ/internal/alien/neurotoxin/sentinel
+	organs += new /obj/item/organ/internal/alien/plasmavessel/small
+	organs += new /obj/item/organ/internal/alien/neurotoxin/sentinel
 	..()
 
 /datum/action/cooldown/alien/acid/skyrat

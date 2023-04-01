@@ -214,4 +214,4 @@
 	ammo_type = /obj/item/ammo_casing/realistic/a792x57
 	caliber = "a792x57"
 	max_ammo = 150 // It's a lot, but the gun overheats.
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY

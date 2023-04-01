@@ -110,9 +110,13 @@
 	if(istype(payload))
 		. += "A small window reveals some information about the payload: [payload.desc]."
 	if(examinable_countdown)
-		// . += {"A digital display on it reads "[seconds_remaining()]"."} SKYRAT EDIT : - commented out to make people fear it more.
+		/* SKYRAT EDIT START : - commented out to make people fear it more.
+		. += span_notice("A digital display on it reads \"[seconds_remaining()]\".")
+		if(active)
+			balloon_alert(user, "[seconds_remaining()]")
+		*/ //SKYRAT EDIT END
 	else
-		. +={"The digital display on it is inactive."}
+		. += span_notice({"The digital display on it is inactive."})
 
 /obj/machinery/syndicatebomb/update_icon_state()
 	icon_state = "[initial(icon_state)][active ? "-active" : "-inactive"][open_panel ? "-wires" : ""]"
