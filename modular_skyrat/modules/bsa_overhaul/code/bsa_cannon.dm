@@ -287,21 +287,19 @@
 	var/turf/point = get_front_turf()
 	var/turf/target = get_target_turf()
 	var/atom/movable/blocker
-	for(var/T in get_line(get_step(point, dir), target))
-		var/turf/tile = T
-		if(SEND_SIGNAL(tile, COMSIG_ATOM_BSA_BEAM) & COMSIG_ATOM_BLOCKS_BSA_BEAM)
-			blocker = tile
+	for(var/turf/iterating_turf in get_line(get_step(point, dir), target))
+		if(SEND_SIGNAL(iterating_turf, COMSIG_ATOM_BSA_BEAM) & COMSIG_ATOM_BLOCKS_BSA_BEAM)
+			blocker = iterating_turf
 		else
-			for(var/AM in tile)
-				var/atom/movable/stuff = AM
-				if(SEND_SIGNAL(stuff, COMSIG_ATOM_BSA_BEAM) & COMSIG_ATOM_BLOCKS_BSA_BEAM)
-					blocker = stuff
+			for(var/atom/movable/iterating_atom in iterating_turf)
+				if(SEND_SIGNAL(iterating_atom, COMSIG_ATOM_BSA_BEAM) & COMSIG_ATOM_BLOCKS_BSA_BEAM)
+					blocker = iterating_atom
 					break
 		if(blocker)
-			target = tile
+			target = iterating_turf
 			break
 		else
-			SSexplosions.highturf += tile //also fucks everything else on the turf
+			SSexplosions.highturf += iterating_turf //also fucks everything else on the turf
 	point.Beam(target, icon_state = "bsa_beam", time = 5 SECONDS, maxdistance = world.maxx) //ZZZAP
 	new /obj/effect/temp_visual/bsa_splash(point, dir)
 
