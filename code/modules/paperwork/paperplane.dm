@@ -62,11 +62,7 @@
 	user.visible_message(span_suicide("[user] jams [src] in [user.p_their()] nose. It looks like [user.p_theyre()] trying to commit suicide!"))
 	user.adjust_eye_blur(12 SECONDS)
 	if(eyes)
-<<<<<<< HEAD
-		eyes.applyOrganDamage(rand(impact_eye_damage_lower, impact_eye_damage_higher)) // SKYRAT EDIT START - Better paper planes
-=======
-		eyes.apply_organ_damage(rand(6,8))
->>>>>>> ecbcef778df (Refactors Regenerate Organs, and a few organ helpers (#74219))
+		eyes.apply_organ_damage(rand(impact_eye_damage_lower, impact_eye_damage_higher)) // SKYRAT EDIT START - Better paper planes
 	sleep(1 SECONDS)
 	return BRUTELOSS
 
@@ -131,14 +127,8 @@
 			return
 		visible_message(span_danger("\The [src] hits [H] in the eye[eyes ? "" : " socket"]!"))
 		H.adjust_eye_blur(12 SECONDS)
-<<<<<<< HEAD
-		// SKYRAT EDIT START - Better paper planes
-		eyes?.applyOrganDamage(rand(impact_eye_damage_lower, impact_eye_damage_higher))
-		H.Knockdown(knockdown_duration)
-=======
-		eyes?.apply_organ_damage(rand(6,8))
-		H.Paralyze(40)
->>>>>>> ecbcef778df (Refactors Regenerate Organs, and a few organ helpers (#74219))
+		eyes?.apply_organ_damage(rand(impact_eye_damage_lower, impact_eye_damage_higher))
+		H.Knockdown(40)
 		H.emote("scream")
 
 	if(delete_on_impact)

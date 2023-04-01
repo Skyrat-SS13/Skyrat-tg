@@ -540,11 +540,7 @@
 		if((methods & INGEST) && show_message)
 			to_chat(exposed_human, span_notice("<i>You feel nothing but a terrible aftertaste.</i>"))
 		return
-<<<<<<< HEAD
-	if(exposed_mob.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS)) //Skyrat Edit
-=======
 	if(exposed_human.get_organ_slot(ORGAN_SLOT_EXTERNAL_WINGS))
->>>>>>> ecbcef778df (Refactors Regenerate Organs, and a few organ helpers (#74219))
 		to_chat(exposed_human, span_userdanger("A terrible pain travels down your back as your wings change shape!"))
 	else
 		to_chat(exposed_human, span_userdanger("A terrible pain travels down your back as wings burst out!"))

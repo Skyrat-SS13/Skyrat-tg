@@ -134,12 +134,8 @@
 	human_for_preview.hair_color = "#ffcccc" // pink
 	human_for_preview.update_body_parts()
 
-<<<<<<< HEAD
 	/* SKYRAT EDIT - Making the species menu icons work better - ORIGINAL:
-	var/obj/item/organ/internal/ears/cat/cat_ears = human_for_preview.getorgan(/obj/item/organ/internal/ears/cat)
-=======
 	var/obj/item/organ/internal/ears/cat/cat_ears = human_for_preview.get_organ_by_type(/obj/item/organ/internal/ears/cat)
->>>>>>> ecbcef778df (Refactors Regenerate Organs, and a few organ helpers (#74219))
 	if (cat_ears)
 		cat_ears.color = human_for_preview.hair_color
 		human_for_preview.update_body()
