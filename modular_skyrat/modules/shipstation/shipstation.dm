@@ -126,7 +126,7 @@
 	name = "Shuttle Pilot"
 	jobtype = /datum/job/shuttle_pilot
 
-	id = /obj/item/card/id/advanced/silver
+	id = /obj/item/card/id/advanced/centcom
 	id_trim = /datum/id_trim/job/captain/shuttle_pilot
 	belt = /obj/item/modular_computer/pda/heads/captain
 	glasses = /obj/item/clothing/glasses/sunglasses
