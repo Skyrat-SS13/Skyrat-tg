@@ -151,15 +151,12 @@
 /obj/item/clothing/suit/hooded/cloak/godslayer
 	supports_variations_flags = NONE
 
-/obj/item/clothing/under/suit/henchmen
-	supports_variations_flags = NONE
-
 /obj/item/clothing/suit/hooded/techpriest
 	supports_variations_flags = NONE
 
 /**
  * SUBTYPE WITH NEW ICON
- * Clothing that has a digitigrade version, but its parent was set to something else earlier in this file.
+ * Clothing that has a digitigrade version, but its parent was set to something else earlier in this file or elsewhere entirely.
  */
 /obj/item/clothing/suit/wizrobe/magusblue
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
@@ -168,4 +165,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 /obj/item/clothing/suit/wizrobe/santa
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/apron/overalls
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION

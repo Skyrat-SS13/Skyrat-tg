@@ -35,7 +35,7 @@
 
 		else if(iscarbon(object_to_check))
 			var/mob/living/carbon/mob_to_check = object_to_check
-			for(var/organ in mob_to_check.internal_organs)
+			for(var/organ in mob_to_check.organs)
 				found_organ = organ
 				found_organ.organ_flags ^= ORGAN_FROZEN
 
@@ -127,7 +127,7 @@
 
 /// Like add_image_to_client, but will add the image from a list of clients
 /proc/add_image_to_clients(image/image_to_remove, list/show_to)
-	for(var/client/add_to as anything in show_to)
+	for(var/client/add_to in show_to)
 		add_to.images += image_to_remove
 
 /// Removes an image from a client's `.images`. Useful as a callback.
@@ -136,7 +136,7 @@
 
 /// Like remove_image_from_client, but will remove the image from a list of clients
 /proc/remove_image_from_clients(image/image_to_remove, list/hide_from)
-	for(var/client/remove_from as anything in hide_from)
+	for(var/client/remove_from in hide_from)
 		remove_from.images -= image_to_remove
 
 

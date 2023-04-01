@@ -33,7 +33,7 @@
 	icon = 'modular_skyrat/modules/marines/icons/m44a.dmi'
 	icon_state = "300compressed"
 	max_ammo = 99
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	ammo_type = /obj/item/ammo_casing/caseless/c300
 	caliber = "300comp"
 

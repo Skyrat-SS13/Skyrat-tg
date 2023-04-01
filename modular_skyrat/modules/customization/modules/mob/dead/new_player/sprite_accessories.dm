@@ -49,11 +49,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	var/use_custom_mod_icon
 	///Special case of applying a different color
 	var/special_colorize
-	///Whether it has any extras to render, and their appropriate color sources
-	var/extra = FALSE
-	var/extra_color_src
-	var/extra2 = FALSE
-	var/extra2_color_src
 	///If defined, the accessory will be only available to ckeys inside the list. ITS ASSOCIATIVE, ie. ("ckey" = TRUE). For speed
 	var/list/ckey_whitelist
 	///Whether this feature is genetic, and thus modifiable by DNA consoles
@@ -89,7 +84,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 			if ("m_[key]_[icon_state]_[layertext]_tertiary" in GLOB.cached_mutant_icon_files[icon])
 				color_layer_names["3"] = "tertiary"
 
-/datum/sprite_accessory/proc/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/BP)
+/datum/sprite_accessory/proc/is_hidden(mob/living/carbon/human/owner)
 	return FALSE
 
 /datum/sprite_accessory/proc/get_special_render_state(mob/living/carbon/human/H)
@@ -102,13 +97,13 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	return null
 
 /datum/sprite_accessory/proc/get_special_icon(mob/living/carbon/human/H, passed_state)
-	return null
+	return icon
 
 /datum/sprite_accessory/proc/get_special_x_dimension(mob/living/carbon/human/H, passed_state)
 	return 0
 
 // A proc for accessories which have 'use_custom_mod_icon' set to TRUE
-/datum/sprite_accessory/proc/get_custom_mod_icon(mob/living/carbon/human/owner)
+/datum/sprite_accessory/proc/get_custom_mod_icon(mob/living/carbon/human/owner, mutable_appearance/appearance_to_use = null)
 	return null
 
 /datum/sprite_accessory/proc/get_default_color(list/features, datum/species/pref_species) //Needs features for the color information
@@ -135,10 +130,24 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/moth_markings
 	key = "moth_markings"
 	generic = "Moth markings"
+	// organ_type = /obj/item/organ/external/moth_markings // UNCOMMENT THIS IF THEY EVER FIX IT UPSTREAM, CAN'T BE BOTHERED TO FIX IT MYSELF
+
+/datum/sprite_accessory/moth_markings/is_hidden(mob/living/carbon/human/owner)
+	return FALSE
+
 
 /datum/sprite_accessory/moth_antennae/none
 	name = "None"
 	icon_state = "none"
+
+
+/datum/sprite_accessory/pod_hair
+	name = "None"
+	icon_state = "None"
+	key = "pod_hair"
+	recommended_species = list(SPECIES_PODPERSON, SPECIES_PODPERSON_WEAK)
+	organ_type = /obj/item/organ/external/pod_hair
+
 
 /datum/sprite_accessory/spines
 	key = "spines"
@@ -149,9 +158,10 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	recommended_species = list(SPECIES_LIZARD, SPECIES_UNATHI, SPECIES_LIZARD_ASH, SPECIES_LIZARD_SILVER)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER)
 	genetic = TRUE
+	organ_type = /obj/item/organ/external/spines
 
-/datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/bodypart)
-	var/obj/item/organ/external/tail/tail = wearer.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+/datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/wearer)
+	var/obj/item/organ/external/tail/tail = wearer.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(!wearer.w_uniform && !wearer.wear_suit)
 		return FALSE
 	//	Can hide if wearing uniform
@@ -170,7 +180,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 		return TRUE
 
 /datum/sprite_accessory/spines/get_special_render_state(mob/living/carbon/human/H)
-	var/obj/item/organ/external/tail/tail = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+	var/obj/item/organ/external/tail/tail = H.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(tail && tail.wag_flags & WAG_WAGGING)
 		return "[icon_state]_wagging"
 	return icon_state
@@ -178,6 +188,8 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/caps
 	key = "caps"
 	generic = "Caps"
+	color_src = USE_ONE_COLOR
+	organ_type = /obj/item/organ/external/cap
 
 /datum/sprite_accessory/body_markings
 	key = "body_markings"

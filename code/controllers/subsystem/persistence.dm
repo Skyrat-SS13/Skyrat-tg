@@ -1,7 +1,6 @@
 #define FILE_RECENT_MAPS "data/RecentMaps.json"
 
 #define KEEP_ROUNDS_MAP 3
-#define ROUNDCOUNT_ENGINE_JUST_EXPLODED 0
 
 SUBSYSTEM_DEF(persistence)
 	name = "Persistence"
@@ -549,3 +548,5 @@ SUBSYSTEM_DEF(persistence)
 	rustg_file_write("[rounds_since_engine_exploded + 1]", DELAMINATION_COUNT_FILEPATH)
 
 #undef DELAMINATION_COUNT_FILEPATH
+#undef FILE_RECENT_MAPS
+#undef KEEP_ROUNDS_MAP

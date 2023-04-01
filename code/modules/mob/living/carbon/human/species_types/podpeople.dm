@@ -11,10 +11,10 @@
 		TRAIT_PLANT_SAFE,
 	)
 	external_organs = list(
-		/obj/item/organ/external/pod_hair = "None",
+		// /obj/item/organ/external/pod_hair = "None", // SKYRAT EDIT REMOVAL - Customization (it messes up unit tests.)
 	)
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID | MOB_PLANT
-	inherent_factions = list("plants", "vines")
+	inherent_factions = list(FACTION_PLANTS, FACTION_VINES)
 
 	burnmod = 1.25
 	heatmod = 1.5
@@ -36,6 +36,18 @@
 	)
 
 	ass_image = 'icons/ass/asspodperson.png'
+
+/datum/species/pod/on_species_gain(mob/living/carbon/new_podperson, datum/species/old_species, pref_load)
+	. = ..()
+	if(ishuman(new_podperson))
+		update_mail_goodies(new_podperson)
+
+/datum/species/pod/update_quirk_mail_goodies(mob/living/carbon/human/recipient, datum/quirk/quirk, list/mail_goodies = list())
+	if(istype(quirk, /datum/quirk/blooddeficiency))
+		mail_goodies += list(
+			/obj/item/reagent_containers/blood/podperson
+		)
+	return ..()
 
 /datum/species/pod/spec_life(mob/living/carbon/human/H, delta_time, times_fired)
 	if(H.stat == DEAD)
@@ -60,9 +72,10 @@
 
 /datum/species/pod/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, delta_time, times_fired)
 	if(chem.type == /datum/reagent/toxin/plantbgone)
-		H.adjustToxLoss(3 * REAGENTS_EFFECT_MULTIPLIER * delta_time)
+		H.adjustToxLoss(3 * REM * delta_time)
 		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * delta_time)
 		return TRUE
+	return ..()
 
 // SKYRAT EDIT ADDITION
 /datum/species/pod/get_species_description()

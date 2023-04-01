@@ -30,6 +30,9 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 		/obj/merge_conflict_marker,
 		//briefcase launchpads erroring
 		/obj/machinery/launchpad/briefcase,
+		//Both are abstract types meant to scream bloody murder if spawned in raw
+		/obj/item/organ/external,
+		/obj/item/organ/external/wings,
 	)
 	//Say it with me now, type template
 	ignore += typesof(/obj/effect/mapping_helpers)
@@ -102,6 +105,11 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 	ignore += typesof(/turf/open/openspace/ocean)
 	//Baseturf editors can only go up to ten, stop this.
 	ignore += typesof(/obj/effect/baseturf_helper)
+	// It's the abstract base type, it shouldn't be spawned.
+	ignore += /obj/item/organ/external/genital
+	// These two are locked to one type only, and shouldn't be widely available, hence why they runtime otherwise.
+	// Can't be bothered adding more to them.
+	ignore += list(/obj/item/organ/external/neck_accessory, /obj/item/organ/external/head_accessory)
 	//SKYRAT EDIT END
 	//Needs cards passed into the initilazation args
 	ignore += typesof(/obj/item/toy/cards/cardhand)

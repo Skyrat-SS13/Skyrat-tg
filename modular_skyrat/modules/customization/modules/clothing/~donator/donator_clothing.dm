@@ -1,6 +1,6 @@
 /**************SKYRAT REWARDS**************/
 //SUITS
-/obj/item/clothing/suit/hooded/wintercoat/colourable //ORION TODO: Kill this (make it its own seperate gags (upstream?))
+/obj/item/clothing/suit/hooded/wintercoat/colourable
 	name = "custom winter coat"
 	icon_state = "winter_coat"
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/colourable
@@ -109,7 +109,7 @@
 		selects["Save"] = "Save"
 		selects["Delete"] = "Delete"
 		var/selection = input(user, "", "Color Menu", currentcolor) as null|anything in selects
-		if(QDELETED(src) || !user.canUseTopic(src, be_close = TRUE))
+		if(QDELETED(src) || !user.can_perform_action(src))
 			return
 		switch(selection)
 			if("Save")
@@ -126,7 +126,7 @@
 				currentcolor = colors[selection]
 	else if(istype(action, /datum/action/item_action/dtcleargrid))
 		var/yesnomaybe = tgui_alert("Are you sure you wanna clear the canvas?", "", list("Yes", "No", "Maybe"))
-		if(QDELETED(src) || !user.canUseTopic(src, be_close = TRUE))
+		if(QDELETED(src) || !user.can_perform_action(src))
 			return
 		switch(yesnomaybe)
 			if("Yes")
@@ -466,7 +466,7 @@
 
 /obj/item/clothing/neck/inferno_collar/Initialize(mapload)
 	. = ..()
-	create_storage(type = /datum/storage/pockets/small/collar)
+	create_storage(storage_type = /datum/storage/pockets/small/collar)
 	if(treat_path)
 		new treat_path(src)
 

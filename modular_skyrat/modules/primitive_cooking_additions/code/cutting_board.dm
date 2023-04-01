@@ -77,7 +77,7 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
 
-	if(!can_interact(user) || !user.canUseTopic(src, be_close = TRUE))
+	if(!can_interact(user) || !user.can_perform_action(src))
 		return
 
 	set_anchored(!anchored)

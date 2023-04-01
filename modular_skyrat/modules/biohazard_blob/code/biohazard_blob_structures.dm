@@ -99,7 +99,7 @@
 				visible_message(span_warning("The [src] emitts a cloud!"))
 				var/datum/reagents/reagents = new/datum/reagents(300)
 				reagents.my_atom = src
-				reagents.add_reagent(/datum/reagent/cordycepsspores, 50)
+				reagents.add_reagent(/datum/reagent/cryptococcus_spores, 50)
 				var/datum/effect_system/fluid_spread/smoke/chem/smoke_machine/puff = new
 				puff.set_up(5, location = my_turf, carry = reagents, efficiency = 24)
 				puff.attach(src)
@@ -121,7 +121,7 @@
 					tesla_zap(src, 4, 10000, ZAP_MOB_DAMAGE | ZAP_OBJ_DAMAGE)
 			if(BIO_BLOB_TYPE_TOXIC)
 				visible_message(span_warning("The [src] spews out foam!"))
-				var/datum/reagents/R = new/datum/reagents(300)
+				var/datum/reagents/R = new/datum/reagents(210)
 				R.my_atom = src
 				R.add_reagent(/datum/reagent/toxin, 30)
 				var/datum/effect_system/fluid_spread/foam/foam = new
@@ -130,11 +130,11 @@
 			if(BIO_BLOB_TYPE_RADIOACTIVE)
 				visible_message(span_warning("The [src] emits a strong radiation pulse!"))
 				radiation_pulse(src, 1500, 10, FALSE, TRUE)
-				var/datum/reagents/R = new/datum/reagents(300)
+				var/datum/reagents/R = new/datum/reagents(210)
 				R.my_atom = src
-				R.add_reagent(/datum/reagent/toxin/mutagen, 50)
+				R.add_reagent(/datum/reagent/toxin/mutagen, 30)
 				var/datum/effect_system/fluid_spread/foam/foam = new
-				foam.set_up(5, location = my_turf, carry = R)
+				foam.set_up(4, location = my_turf, carry = R)
 				foam.start()
 	return ..()
 
@@ -294,7 +294,7 @@
 		if(BIO_BLOB_TYPE_FUNGUS)
 			var/datum/reagents/R = new/datum/reagents(300)
 			R.my_atom = src
-			R.add_reagent(/datum/reagent/cordycepsspores, 50)
+			R.add_reagent(/datum/reagent/cryptococcus_spores, 50)
 			var/datum/effect_system/fluid_spread/smoke/chem/smoke_machine/puff = new
 			puff.set_up(4, location = T, carry = reagents, efficiency = 24)
 			puff.attach(src)
@@ -321,10 +321,9 @@
 		if(BIO_BLOB_TYPE_RADIOACTIVE)
 			radiation_pulse(src, 1500, 15, FALSE, TRUE)
 			fire_nuclear_particle()
-			empulse(src, 5, 7)
 			var/datum/reagents/R = new/datum/reagents(300)
 			R.my_atom = src
-			R.add_reagent(/datum/reagent/toxin/mutagen, 50)
+			R.add_reagent(/datum/reagent/toxin/mutagen, 30)
 			var/datum/effect_system/fluid_spread/foam/foam = new
 			foam.set_up(MAX_MOLD_FOAM_RANGE, location = T, carry = R)
 			foam.start()
@@ -416,7 +415,7 @@
 	. = ..()
 	switch(blob_type)
 		if(BIO_BLOB_TYPE_FUNGUS)
-			happy_atmos = "miasma=50;TEMP=296"
+			happy_atmos = "TEMP=312"
 		if(BIO_BLOB_TYPE_FIRE)
 			happy_atmos = "co2=30;TEMP=1000"
 		if(BIO_BLOB_TYPE_EMP)
@@ -468,7 +467,7 @@
 			monster_types = list(/mob/living/simple_animal/hostile/biohazard_blob/electric_mosquito)
 			spawn_cooldown = 500
 		if(BIO_BLOB_TYPE_TOXIC)
-			monster_types = list(/mob/living/simple_animal/hostile/giant_spider)
+			monster_types = list(/mob/living/basic/giant_spider)
 		if(BIO_BLOB_TYPE_RADIOACTIVE)
 			monster_types = list(/mob/living/simple_animal/hostile/biohazard_blob/centaur)
 	AddComponent(/datum/component/spawner, monster_types, spawn_cooldown, list(MOLD_FACTION), "emerges from", max_spawns)

@@ -137,7 +137,7 @@
 
 /datum/action/item_action/chameleon/change
 	name = "Chameleon Change"
-	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_HANDS_BLOCKED
+	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_INCAPACITATED|AB_CHECK_HANDS_BLOCKED
 	var/list/chameleon_blacklist = list() //This is a typecache
 	var/list/chameleon_list = list()
 	var/chameleon_type = null
@@ -699,7 +699,9 @@
 
 /obj/item/clothing/shoes/chameleon/Initialize(mapload)
 	. = ..()
-	create_storage(type = /datum/storage/pockets/shoes)
+
+	create_storage(storage_type = /datum/storage/pockets/shoes)
+
 	chameleon_action = new(src)
 	chameleon_action.chameleon_type = /obj/item/clothing/shoes
 	chameleon_action.chameleon_name = "Shoes"
@@ -718,7 +720,7 @@
 	chameleon_action.emp_randomise()
 
 /obj/item/clothing/shoes/chameleon/noslip
-	clothing_flags = NOSLIP
+	clothing_traits = list(TRAIT_NO_SLIP_WATER)
 	can_be_bloody = FALSE
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE  // Skyrat edit
 	special_desc = "A pair of chameleon shoes with an anti-slip coating employed by the Syndicate in infiltration operations."  // Skyrat edit
@@ -1075,3 +1077,5 @@
 	var/obj/item/gun/new_gun = new guntype(src)
 	set_chameleon_gun(new_gun)
 	qdel(new_gun)
+
+#undef EMP_RANDOMISE_TIME

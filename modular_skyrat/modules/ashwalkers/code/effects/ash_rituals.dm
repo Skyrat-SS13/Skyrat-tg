@@ -344,7 +344,7 @@
 	if(find_animal.sentience_type != SENTIENCE_ORGANIC)
 		return
 
-	find_animal.faction = list("neutral")
+	find_animal.faction = list(FACTION_NEUTRAL)
 
 	if(ishostile(find_animal))
 		var/mob/living/simple_animal/hostile/hostile_animal = find_animal

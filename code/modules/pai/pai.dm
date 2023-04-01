@@ -146,9 +146,10 @@
 	return ..()
 
 // See software.dm for Topic()
-/mob/living/silicon/pai/canUseTopic(atom/movable/movable, be_close = FALSE, no_dexterity = FALSE, no_tk = FALSE, need_hands = FALSE, floor_okay = FALSE)
-	// Resting is just an aesthetic feature for them.
-	return ..(movable, be_close, no_dexterity, no_tk, need_hands, TRUE)
+/mob/living/silicon/pai/can_perform_action(atom/movable/target, action_bitflags)
+	action_bitflags |= ALLOW_RESTING // Resting is just an aesthetic feature for them
+	action_bitflags &= ~ALLOW_SILICON_REACH // They don't get long reach like the rest of silicons
+	return ..(target, action_bitflags)
 
 /mob/living/silicon/pai/Destroy()
 	QDEL_NULL(atmos_analyzer)
@@ -169,6 +170,9 @@
 /mob/living/silicon/pai/examine(mob/user)
 	. = ..()
 	. += "Its master ID string seems to be [(!master_name || emagged) ? "empty" : master_name]."
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	. += get_silicon_flavortext()
+	//SKYRAT EDIT ADDITION END
 
 /mob/living/silicon/pai/get_status_tab_items()
 	. += ..()
@@ -217,8 +221,7 @@
 	card = pai_card
 	addtimer(VARSET_CALLBACK(src, holochassis_ready, TRUE), HOLOCHASSIS_INIT_TIME)
 	if(!holoform)
-		ADD_TRAIT(src, TRAIT_IMMOBILIZED, PAI_FOLDED)
-		ADD_TRAIT(src, TRAIT_HANDS_BLOCKED, PAI_FOLDED)
+		add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED), PAI_FOLDED)
 	desc = "A pAI hard-light holographics emitter. This one appears in the form of a [chassis]."
 
 	RegisterSignal(src, COMSIG_LIVING_CULT_SACRIFICED, PROC_REF(on_cult_sacrificed))

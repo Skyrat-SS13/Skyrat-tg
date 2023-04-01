@@ -255,7 +255,7 @@
 				/obj/item/clothing/head/helmet/astrum = 10,
 				/obj/item/organ/internal/cyberimp/arm/armblade = 5,
 				/obj/effect/gibspawner/generic = 10,
-				/obj/item/organ/internal/eyes/night_vision/alien = 5
+				/obj/item/organ/internal/eyes/alien = 5
 				)
 
 /obj/item/gun/energy/alien/zeta

@@ -2,6 +2,7 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 	/datum/nifsoft/hivemind,
 	/datum/nifsoft/summoner,
 	/datum/nifsoft/shapeshifter,
+	/datum/nifsoft/summoner/dorms,
 ))
 
 /datum/computer_file/program/nifsoft_downloader
@@ -35,12 +36,12 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 	return data
 
 /datum/computer_file/program/nifsoft_downloader/ui_static_data(mob/user)
-	var/list/data = get_header_data()
+	var/list/data = list()
 	var/list/product_list = list()
 
 	var/mob/living/carbon/human/nif_user = user
 	if(nif_user)
-		var/obj/item/organ/internal/cyberimp/brain/nif/user_nif = nif_user.getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
+		var/obj/item/organ/internal/cyberimp/brain/nif/user_nif = nif_user.get_organ_by_type(/obj/item/organ/internal/cyberimp/brain/nif)
 		target_nif = user_nif || null
 
 	data["target_nif"] = target_nif

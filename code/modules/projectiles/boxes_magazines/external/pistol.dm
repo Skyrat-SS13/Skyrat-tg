@@ -1,7 +1,7 @@
 /obj/item/ammo_box/magazine/m10mm
 	name = "pistol magazine (10mm)"
 	desc = "A gun magazine."
-	icon_state = "9x19p-8"
+	icon_state = "9x19p"
 	base_icon_state = "9x19p"
 	ammo_type = /obj/item/ammo_casing/c10mm
 	caliber = CALIBER_10MM
@@ -11,23 +11,23 @@
 
 /obj/item/ammo_box/magazine/m10mm/fire
 	name = "pistol magazine (10mm incendiary)"
-	icon_state = "9x19pI-8"
+	icon_state = "9x19pI"
 	base_icon_state = "9x19pI"
-	desc = "A gun magazine. Loaded with rounds which ignite the target."
+	desc = "A 10mm pistol magazine. Loaded with rounds which ignite the target."
 	ammo_type = /obj/item/ammo_casing/c10mm/fire
 
 /obj/item/ammo_box/magazine/m10mm/hp
 	name = "pistol magazine (10mm HP)"
-	icon_state = "9x19pH-8"
+	icon_state = "9x19pH"
 	base_icon_state = "9x19pH"
-	desc= "A gun magazine. Loaded with hollow-point rounds, extremely effective against unarmored targets, but nearly useless against protective clothing."
+	desc= "A 10mm pistol magazine. Loaded with hollow-point rounds, extremely effective against unarmored targets, but nearly useless against protective clothing."
 	ammo_type = /obj/item/ammo_casing/c10mm/hp
 
 /obj/item/ammo_box/magazine/m10mm/ap
 	name = "pistol magazine (10mm AP)"
-	icon_state = "9x19pA-8"
+	icon_state = "9x19pA"
 	base_icon_state = "9x19pA"
-	desc= "A gun magazine. Loaded with rounds which penetrate armour, but are less effective against normal targets."
+	desc= "A 10mm pistol magazine. Loaded with rounds which penetrate armour, but are less effective against normal targets."
 	ammo_type = /obj/item/ammo_casing/c10mm/ap
 
 /obj/item/ammo_box/magazine/m45
@@ -41,9 +41,8 @@
 	multiple_sprite_use_base = TRUE
 
 /obj/item/ammo_box/magazine/m9mm
-//	name = "pistol magazine (9mm)"			// SKYRAT EDIT: Original
-	name = "pistol magazine (9x25mm)"		// SKYRAT EDIT: Calibre rename
-	icon_state = "9x19p-8"
+	name = "pistol magazine (9mm)"
+	icon_state = "9x19p"
 	base_icon_state = "9x19p"
 	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MM
@@ -52,25 +51,22 @@
 	multiple_sprite_use_base = TRUE
 
 /obj/item/ammo_box/magazine/m9mm/fire
-	//name = "pistol magazine (9mm incendiary)" // SKYRAT EDIT: Original
-	name = "pistol magazine (9x25mm incendiary)" // SKYRAT EDIT: Calibre rename
-	icon_state = "9x19pI-8"
+	name = "pistol magazine (9mm incendiary)"
+	icon_state = "9x19pI"
 	base_icon_state = "9x19pI"
 	desc = "A gun magazine. Loaded with rounds which ignite the target."
 	ammo_type = /obj/item/ammo_casing/c9mm/fire
 
 /obj/item/ammo_box/magazine/m9mm/hp
-	//name = "pistol magazine (9mm HP)" // SKYRAT EDIT: Original
-	name = "pistol magazine (9x25mm HP)" // SKYRAT EDIT: Calibre rename
-	icon_state = "9x19pH-8"
+	name = "pistol magazine (9mm HP)"
+	icon_state = "9x19pH"
 	base_icon_state = "9x19pH"
 	desc= "A gun magazine. Loaded with hollow-point rounds, extremely effective against unarmored targets, but nearly useless against protective clothing."
 	ammo_type = /obj/item/ammo_casing/c9mm/hp
 
 /obj/item/ammo_box/magazine/m9mm/ap
-	//name = "pistol magazine (9mm AP)" // SKYRAT EDIT: Original
-	name = "pistol magazine (9x25mm AP)" // SKYRAT EDIT: Calibre rename
-	icon_state = "9x19pA-8"
+	name = "pistol magazine (9mm AP)"
+	icon_state = "9x19pA"
 	base_icon_state = "9x19pA"
 	desc= "A gun magazine. Loaded with rounds which penetrate armour, but are less effective against normal targets."
 	ammo_type = /obj/item/ammo_casing/c9mm/ap

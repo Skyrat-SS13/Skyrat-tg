@@ -32,6 +32,7 @@
 		/obj/item/storage/box/lights/mixed = 20,
 		/obj/item/lightreplacer = 10,
 		/obj/item/holosign_creator/engineering = 8,
+		/obj/item/wrench/bolter = 8,
 		/obj/item/clothing/head/utility/hardhat/red/upgraded = 1
 	)
 	rpg_title = "Crystallomancer"
@@ -50,6 +51,7 @@
 	shoes = /obj/item/clothing/shoes/workboots
 	l_pocket = /obj/item/modular_computer/pda/engineering
 	r_pocket = /obj/item/t_scanner
+	r_hand = /obj/item/storage/box/gunset/roundstart_guns/engineering // SKYRAT EDIT ADD
 
 	backpack = /obj/item/storage/backpack/industrial
 	satchel = /obj/item/storage/backpack/satchel/eng

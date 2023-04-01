@@ -1,10 +1,6 @@
 #define ORGANS_DEFAULT_NAME "Default"
 #define LIMBS_DEFAULT_NAME "None"
 
-/datum/preference_middleware/limbs_and_markings/post_set_preference(mob/user, preference, value)
-	preferences.character_preview_view.update_body()
-	. = ..()
-
 /datum/preference_middleware/limbs_and_markings
 	action_delegations = list(
 		"set_limb_aug" = PROC_REF(set_limb_aug),
@@ -55,6 +51,37 @@
 		AUGMENT_CATEGORY_ORGANS = list(),
 	)
 	var/list/robotic_styles
+
+
+/datum/preference_middleware/limbs_and_markings/apply_to_human(mob/living/carbon/human/target, datum/preferences/preferences, visuals_only = FALSE)
+	target.dna.species.body_markings = LAZYCOPY(preferences.body_markings)
+
+	var/list/visited_body_zones = list()
+	for(var/key in preferences.augments)
+		var/datum/augment_item/aug = GLOB.augment_items[preferences.augments[key]]
+		var/visited_body_zone = aug.apply(target, visuals_only, prefs = preferences)
+
+		if(visited_body_zone) // Only limb augments should be returning those, and only in visuals_only mode.
+			visited_body_zones += visited_body_zone
+
+	var/obj/item/bodypart/first_bodypart = target.bodyparts[1]
+	first_bodypart.synchronize_bodytypes(target) // We call this here to ensure that by this point, bodytypes are synchronized, after all changes to the limbs.
+
+	// We don't need to go any further if this isn't visuals only, as we will have fully replaced each limb
+	// affected by a limb augmentation.
+	if(!visuals_only)
+		return
+
+	// If you ever add chest and head augments, please add the body zones to this list.
+	// Removing them for now for optimization purposes.
+	for(var/body_zone in list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG))
+		if(body_zone in visited_body_zones)
+			continue
+
+		var/obj/item/bodypart/target_bodypart = target.get_bodypart(body_zone)
+
+		target_bodypart?.reset_appearance()
+
 
 /datum/preference_middleware/limbs_and_markings/proc/set_limb_aug(list/params, mob/user)
 	var/limb_slot = params["limb_slot"]

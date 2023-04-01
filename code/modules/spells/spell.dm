@@ -48,7 +48,7 @@
 	button_icon_state = "spell_default"
 	overlay_icon_state = "bg_spell_border"
 	active_overlay_icon_state = "bg_spell_border_active_red"
-	check_flags = AB_CHECK_CONSCIOUS
+	check_flags = AB_CHECK_CONSCIOUS | AB_CHECK_INCAPACITATED
 	panel = "Spells"
 	melee_cooldown_time = 0 SECONDS
 
@@ -137,6 +137,8 @@
 
 // Where the cast chain starts
 /datum/action/cooldown/spell/PreActivate(atom/target)
+	if(SEND_SIGNAL(owner, COMSIG_MOB_ABILITY_STARTED, src) & COMPONENT_BLOCK_ABILITY_START)
+		return FALSE
 	if(!is_valid_target(target))
 		return FALSE
 
@@ -159,7 +161,7 @@
 		// No point in feedback here, as mindless mobs aren't players
 		return FALSE
 
-	if((spell_requirements & SPELL_REQUIRES_MIME_VOW) && !owner.mind?.miming)
+	if((spell_requirements & SPELL_REQUIRES_MIME_VOW) && !HAS_TRAIT(owner, TRAIT_MIMING))
 		// In the future this can be moved out of spell checks exactly
 		if(feedback)
 			to_chat(owner, span_warning("You must dedicate yourself to silence first!"))

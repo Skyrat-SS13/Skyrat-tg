@@ -10,20 +10,20 @@
 # More can be found in code\__DEFINES\maps.dm
 
 # CENTRAL COMMAND MAP TEMPLATES
-# CC Shuttle Dock - This is where we drop the players off after the round ends
-[templates.centcom_shuttle_dock]
-map_files = ["centcom_shuttle_dock.dmm"]
-directory = "_maps/skyrat/automapper/templates/centcom/"
-required_map = "builtin"
-coordinates = [186, 70, 1]
-trait_name = "CentCom"
-
 # CC Ferry Dock - Admin Shuttle
 [templates.centcom_ferry_dock]
 map_files = ["centcom_ferry_dock.dmm"]
 directory = "_maps/skyrat/automapper/templates/centcom/"
 required_map = "builtin"
 coordinates = [128, 79, 1]
+trait_name = "CentCom"
+
+# CC Evac Docking Port Removal
+[templates.centcom_shuttle_dock]
+map_files = ["centcom_shuttle_dock.dmm"]
+directory = "_maps/skyrat/automapper/templates/centcom/"
+required_map = "builtin"
+coordinates = [206, 85, 1]
 trait_name = "CentCom"
 
 # METASTATION MAP TEMPLATES
@@ -212,15 +212,7 @@ trait_name = "Station"
 map_files = ["tramstation_barber.dmm"]
 directory = "_maps/skyrat/automapper/templates/tramstation/"
 required_map = "tramstation.dmm"
-coordinates = [117, 151, 1]
-trait_name = "Station"
-
-# Tramstation Barber Cover
-[templates.tramstation_barber_cover]
-map_files = ["tramstation_barber_cover.dmm"]
-directory = "_maps/skyrat/automapper/templates/tramstation/"
-required_map = "tramstation.dmm"
-coordinates = [118, 164, 2]
+coordinates = [134, 133, 1]
 trait_name = "Station"
 
 # Tramstation Cryo

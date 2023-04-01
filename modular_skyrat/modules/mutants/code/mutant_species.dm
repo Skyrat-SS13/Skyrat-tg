@@ -64,20 +64,24 @@
 /datum/species/mutant/infectious
 	name = "Mutated Abomination"
 	id = SPECIES_MUTANT_INFECTIOUS
-	mutanthands = /obj/item/mutant_hand
 	speedmod = 1
 	armor = 10
-	mutanteyes = /obj/item/organ/internal/eyes/night_vision/zombie
+	mutanteyes = /obj/item/organ/internal/eyes/zombie
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
+	var/hands_to_give = /obj/item/hnz_mutant_hand
 	/// The rate the mutants regenerate at
 	var/heal_rate = 1
 	/// The cooldown before the mutant can start regenerating
 	COOLDOWN_DECLARE(regen_cooldown)
 
+/datum/species/mutant/infectious/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	. = ..()
+	C.AddComponent(/datum/component/mutant_hands, mutant_hand_path = hands_to_give)
+
 /datum/species/mutant/infectious/fast
 	name = "Fast Mutated Abomination"
 	id = SPECIES_MUTANT_FAST
-	mutanthands = /obj/item/mutant_hand/fast
+	hands_to_give = /obj/item/hnz_mutant_hand/fast
 	armor = 0
 	/// The rate the mutants regenerate at
 	heal_rate = 0.5
@@ -131,7 +135,7 @@
 	else
 		. = ..()
 
-/obj/item/mutant_hand
+/obj/item/hnz_mutant_hand
 	name = "mutant claw"
 	desc = "A mutant's claw is its primary tool, capable of infecting \
 		humans, butchering all other living things to \
@@ -152,17 +156,17 @@
 	var/icon_left = "bloodhand_left"
 	var/icon_right = "bloodhand_right"
 
-/obj/item/mutant_hand/fast
+/obj/item/hnz_mutant_hand/fast
 	name = "weak mutant claw"
 	force = 21
 	sharpness = NONE
 	wound_bonus = -40
 
-/obj/item/mutant_hand/Initialize(mapload)
+/obj/item/hnz_mutant_hand/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
 
-/obj/item/mutant_hand/equipped(mob/user, slot)
+/obj/item/hnz_mutant_hand/equipped(mob/user, slot)
 	. = ..()
 	//these are intentionally inverted
 	var/i = user.get_held_index_of_item(src)
@@ -171,7 +175,7 @@
 	else
 		icon_state = icon_right
 
-/obj/item/mutant_hand/afterattack(atom/target, mob/user, proximity_flag)
+/obj/item/hnz_mutant_hand/afterattack(atom/target, mob/user, proximity_flag)
 	. = ..()
 	if(!proximity_flag)
 		return
@@ -217,7 +221,7 @@
 	if(infection)
 		qdel(infection)
 
-/obj/item/mutant_hand/proc/check_feast(mob/living/target, mob/living/user)
+/obj/item/hnz_mutant_hand/proc/check_feast(mob/living/target, mob/living/user)
 	if(target.stat == DEAD)
 		var/hp_gained = target.maxHealth
 		target.investigate_log("has been feasted upon by the mutant [user].", INVESTIGATE_DEATHS)

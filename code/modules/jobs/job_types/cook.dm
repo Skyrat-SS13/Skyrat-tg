@@ -35,6 +35,7 @@
 		/obj/item/reagent_containers/cup/bottle/caramel = 20,
 		/obj/item/reagent_containers/condiment/flour = 20,
 		/obj/item/reagent_containers/condiment/rice = 20,
+		/obj/item/reagent_containers/condiment/ketchup = 20,
 		/obj/item/reagent_containers/condiment/enzyme = 15,
 		/obj/item/reagent_containers/condiment/soymilk = 15,
 		/obj/item/knife/kitchen = 4,
@@ -65,6 +66,7 @@
 	backpack_contents = list(
 		/obj/item/choice_beacon/ingredient = 1,
 		/obj/item/sharpener = 1,
+		/obj/item/storage/box/gunset/roundstart_guns/serv = 1, // SKYRAT EDIT ADD
 	)
 	belt = /obj/item/modular_computer/pda/cook
 	ears = /obj/item/radio/headset/headset_srv

@@ -41,10 +41,8 @@
 	var/used_signal
 	/// List of REF()s mobs we are pinned to, linked with their action buttons
 	var/list/pinned_to = list()
-	/// If we're allowed to use this module while phased out.
-	var/allowed_in_phaseout = FALSE
-	/// If we're allowed to use this module while the suit is disabled.
-	var/allowed_inactive = FALSE
+	/// flags that let the module ability be used in odd circumstances
+	var/allow_flags = NONE
 	/// Timer for the cooldown
 	COOLDOWN_DECLARE(cooldown_timer)
 
@@ -73,12 +71,12 @@
 
 /// Called when the module is selected from the TGUI, radial or the action button
 /obj/item/mod/module/proc/on_select()
-	if(((!mod.active || mod.activating) && !allowed_inactive) || module_type == MODULE_PASSIVE)
+	if(((!mod.active || mod.activating) && !(allow_flags & MODULE_ALLOW_INACTIVE)) || module_type == MODULE_PASSIVE)
 		if(mod.wearer)
 			balloon_alert(mod.wearer, "not active!")
 		return
 	// SKYRAT EDIT START - DEPLOYABLE EVERYTHING OVER EVERYTHING
-	if((mod.wearer.wear_suit != mod.chestplate) && !allowed_inactive)
+	if((mod.wearer.wear_suit != mod.chestplate) && !(allow_flags & MODULE_ALLOW_INACTIVE))
 		balloon_alert(mod.wearer, "chestplate retracted!")
 		return
 	// SKYRAT EDIT END
@@ -96,18 +94,18 @@
 	if(!COOLDOWN_FINISHED(src, cooldown_timer))
 		balloon_alert(mod.wearer, "on cooldown!")
 		return FALSE
-	if(((!mod.active || mod.activating) && !allowed_inactive) || !mod.get_charge()) //SKYRAT ADDITION: INACTIVE USE
+	if(((!mod.active || mod.activating) && !(allow_flags & MODULE_ALLOW_INACTIVE)) || !mod.get_charge()) //SKYRAT ADDITION: INACTIVE USE
 		balloon_alert(mod.wearer, "unpowered!")
 		return FALSE
+
 	// SKYRAT EDIT START - No using modules when not all parts are deployed.
-	if(!allowed_inactive)
+	if(!(allow_flags & MODULE_ALLOW_INACTIVE))
 		for(var/obj/item/part as anything in mod.mod_parts)
 			if(part.loc == mod)
 				balloon_alert(mod.wearer, "deploy all parts first!")
 				return FALSE
 	// SKYRAT EDIT END
-
-	if(!allowed_in_phaseout && istype(mod.wearer.loc, /obj/effect/dummy/phased_mob))
+	if(!(allow_flags & MODULE_ALLOW_PHASEOUT) && istype(mod.wearer.loc, /obj/effect/dummy/phased_mob))
 		//specifically a to_chat because the user is phased out.
 		to_chat(mod.wearer, span_warning("You cannot activate this right now."))
 		return FALSE
@@ -162,7 +160,7 @@
 	if(!check_power(use_power_cost))
 		balloon_alert(mod.wearer, "not enough charge!")
 		return FALSE
-	if(!allowed_in_phaseout && istype(mod.wearer.loc, /obj/effect/dummy/phased_mob))
+	if(!(allow_flags & MODULE_ALLOW_PHASEOUT) && istype(mod.wearer.loc, /obj/effect/dummy/phased_mob))
 		//specifically a to_chat because the user is phased out.
 		to_chat(mod.wearer, span_warning("You cannot activate this right now."))
 		return FALSE
@@ -176,7 +174,7 @@
 
 /// Called when an activated module without a device is used
 /obj/item/mod/module/proc/on_select_use(atom/target)
-	if(mod.wearer.incapacitated(IGNORE_GRAB))
+	if(!(allow_flags & MODULE_ALLOW_INCAPACITATED) && mod.wearer.incapacitated(IGNORE_GRAB))
 		return FALSE
 	mod.wearer.face_atom(target)
 	if(!on_use())

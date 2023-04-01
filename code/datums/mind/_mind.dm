@@ -54,8 +54,6 @@
 	/// Martial art on this mind
 	var/datum/martial_art/martial_art
 	var/static/default_martial_art = new/datum/martial_art
-	/// Mime's vow of silence
-	var/miming = FALSE
 	/// List of antag datums on this mind
 	var/list/antag_datums
 	/// this mind's ANTAG_HUD should have this icon_state
@@ -64,8 +62,9 @@
 	var/datum/atom_hud/alternate_appearance/basic/antagonist_hud/antag_hud = null
 	var/holy_role = NONE //is this person a chaplain or admin role allowed to use bibles, Any rank besides 'NONE' allows for this.
 
-	///If this mind's master is another mob (i.e. adamantine golems)
-	var/mob/living/enslaved_to
+	///If this mind's master is another mob (i.e. adamantine golems). Weakref of a /living.
+	var/datum/weakref/enslaved_to
+
 	var/datum/language_holder/language_holder
 	var/unconvertable = FALSE
 	var/late_joiner = FALSE
