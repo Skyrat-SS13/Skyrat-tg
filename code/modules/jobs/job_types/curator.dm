@@ -46,6 +46,7 @@
 		/obj/item/barcodescanner = 1,
 		/obj/item/choice_beacon/hero = 1,
 		/obj/item/glassblowing/magnifying_glass, //SKYRAT EDIT: Magnifying Glass
+		/obj/item/storage/box/gunset/roundstart_guns/serv = 1, // SKYRAT EDIT ADD
 	)
 	belt = /obj/item/modular_computer/pda/curator
 	ears = /obj/item/radio/headset/headset_srv

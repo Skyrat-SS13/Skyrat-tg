@@ -40,6 +40,7 @@
 	uniform = /obj/item/clothing/under/rank/civilian/janitor
 	belt = /obj/item/modular_computer/pda/janitor
 	ears = /obj/item/radio/headset/headset_srv
+	r_hand = /obj/item/storage/box/gunset/roundstart_guns/serv // SKYRAT EDIT ADD
 
 /datum/outfit/job/janitor/pre_equip(mob/living/carbon/human/human_equipper, visuals_only)
 	. = ..()

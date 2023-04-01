@@ -47,6 +47,7 @@
 		/obj/item/storage/pill_bottle/mannitol,
 		/obj/item/storage/pill_bottle/paxpsych,
 		/obj/item/storage/pill_bottle/psicodine,
+		/obj/item/storage/box/gunset/roundstart_guns/medical = 1, // SKYRAT EDIT ADD
 		)
 	belt = /obj/item/modular_computer/pda/medical
 	ears = /obj/item/radio/headset/headset_srvmed
