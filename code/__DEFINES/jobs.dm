@@ -40,6 +40,7 @@
 #define JOB_RESEARCH_DIRECTOR "Research Director"
 #define JOB_CHIEF_ENGINEER "Chief Engineer"
 #define JOB_CHIEF_MEDICAL_OFFICER "Chief Medical Officer"
+#define JOB_SHUTTLE_PILOT "Shuttle Pilot" // SKYRAT EDIT ADDITION
 //Silicon
 #define JOB_AI "AI"
 #define JOB_CYBORG "Cyborg"

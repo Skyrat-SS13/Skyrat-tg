@@ -132,6 +132,7 @@
 		/area/shuttle/pod_2,
 		/area/shuttle/pod_3,
 		/area/shuttle/pod_4,
+		/area/shuttle/shipstation,
 	))
 	// Typecache of areas on the centcom Z-level that we allow the disk to stay on
 	var/static/list/disallowed_centcom_areas = typecacheof(list(
