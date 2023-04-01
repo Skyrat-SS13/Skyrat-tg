@@ -17,6 +17,7 @@
 	fire_delay = 5
 	can_suppress = FALSE
 	burst_size = 1
+	actions_types = list()
 	mag_display = FALSE
 	mag_display_ammo = FALSE
 	empty_indicator = FALSE

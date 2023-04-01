@@ -448,7 +448,7 @@
 
 ///Checks to see if a human with a NIF has the nifsoft_to_find type of NIFSoft installed?
 /mob/living/carbon/human/proc/find_nifsoft(datum/nifsoft/nifsoft_to_find)
-	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
+	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = get_organ_by_type(/obj/item/organ/internal/cyberimp/brain/nif)
 	var/list/nifsoft_list = installed_nif?.loaded_nifsofts
 
 	if(!nifsoft_list)

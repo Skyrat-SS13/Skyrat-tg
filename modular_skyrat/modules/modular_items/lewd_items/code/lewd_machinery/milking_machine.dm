@@ -190,15 +190,15 @@
 /obj/structure/chair/milking_machine/post_buckle_mob(mob/living/affected_mob)
 	current_mob = affected_mob
 
-	current_breasts = affected_mob.getorganslot(ORGAN_SLOT_BREASTS)
+	current_breasts = affected_mob.get_organ_slot(ORGAN_SLOT_BREASTS)
 	if(current_breasts)
 		breasts_size = current_breasts.genital_size
 
-	current_testicles = affected_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+	current_testicles = affected_mob.get_organ_slot(ORGAN_SLOT_TESTICLES)
 	if(current_testicles)
 		testicles_size = current_testicles.genital_size
 
-	current_vagina = affected_mob.getorganslot(ORGAN_SLOT_VAGINA)
+	current_vagina = affected_mob.get_organ_slot(ORGAN_SLOT_VAGINA)
 	if(current_vagina)
 		vagina_size = current_vagina.genital_size
 
@@ -349,7 +349,6 @@
 	return TRUE
 
 /obj/structure/chair/milking_machine/user_unbuckle_mob(mob/living/carbon/human/affected_mob, mob/user)
-
 	if(affected_mob)
 		if(affected_mob == user)
 			// Have difficulty unbuckling if overly aroused
@@ -510,12 +509,12 @@
 		if(istype(src, /mob/living/) && istype(over_object, /obj/structure/chair/milking_machine))
 			var/mob/living/affected_mob = src
 			var/obj/structure/chair/milking_machine/milking_machine = over_object
-			if(affected_mob.getorganslot(ORGAN_SLOT_TESTICLES))
-				milking_machine.current_testicles = affected_mob.getorganslot(ORGAN_SLOT_TESTICLES)
-			if(affected_mob.getorganslot(ORGAN_SLOT_VAGINA))
-				milking_machine.current_vagina = affected_mob.getorganslot(ORGAN_SLOT_VAGINA)
-			if(affected_mob.getorganslot(ORGAN_SLOT_BREASTS))
-				milking_machine.current_breasts = affected_mob.getorganslot(ORGAN_SLOT_BREASTS)
+			if(affected_mob.get_organ_slot(ORGAN_SLOT_TESTICLES))
+				milking_machine.current_testicles = affected_mob.get_organ_slot(ORGAN_SLOT_TESTICLES)
+			if(affected_mob.get_organ_slot(ORGAN_SLOT_VAGINA))
+				milking_machine.current_vagina = affected_mob.get_organ_slot(ORGAN_SLOT_VAGINA)
+			if(affected_mob.get_organ_slot(ORGAN_SLOT_BREASTS))
+				milking_machine.current_breasts = affected_mob.get_organ_slot(ORGAN_SLOT_BREASTS)
 			else
 				// A place for the handler when the mob doesn't have the genitals it needs
 				return
@@ -526,14 +525,18 @@
 		// The mob for some reason did not get buckled, we do nothing
 		return
 
-/obj/structure/chair/milking_machine/wrench_act(mob/living/user, obj/item/used_item)
-	if((flags_1 & NODECONSTRUCT_1) && used_item.tool_behaviour == TOOL_WRENCH)
-		to_chat(user, span_notice("You being to deconstruct [src]..."))
-		if(used_item.use_tool(src, user, 8 SECONDS, volume = 50))
-			used_item.play_tool_sound(src, 50)
-			deconstruct(TRUE)
-			to_chat(user, span_notice("You disassemble [src]."))
-		return TRUE
+/obj/structure/chair/milking_machine/CtrlShiftClick(mob/user)
+	. = ..()
+	if(. == FALSE)
+		return FALSE
+
+	to_chat(user, span_notice("You begin to disassemble [src]..."))
+	if(!do_after(user, 8 SECONDS, src))
+		to_chat(user, span_warning("You fail to disassemble [src]!"))
+		return FALSE
+
+	deconstruct(TRUE)
+	to_chat(user, span_notice("You disassemble [src]."))
 	return TRUE
 
 // Machine deconstruction process handler
@@ -544,7 +547,7 @@
 		beaker = null
 		update_all_visuals()
 
-	var/obj/item/milking_machine/constructionkit/construction_kit = new(src.loc)
+	var/obj/item/construction_kit/milker/construction_kit = new(src.loc)
 	construction_kit.current_color = machine_color
 	construction_kit.update_icon_state()
 	construction_kit.update_icon()
@@ -838,43 +841,6 @@
 		to_chat(usr, span_notice("You transfer [amount] of [current_vessel.reagents?.reagent_list[1].name] to [beaker.name]"))
 		return TRUE
 
-// Milking machine construction kit
-/obj/item/milking_machine/constructionkit
-	name = "milking machine construction parts"
-	desc = "Construction parts for a milking machine. Assembly requires a wrench."
-	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/milking_machine.dmi'
-	icon_state = "milkbuild_pink"
-	base_icon_state = "milkbuild"
-	var/current_color = "pink"
-
-// Default initialization
-/obj/item/milking_machine/constructionkit/Initialize(mapload)
+/obj/structure/chair/milking_machine/examine(mob/user)
 	. = ..()
-	update_icon_state()
-	update_icon()
-
-/obj/item/milking_machine/constructionkit/update_icon_state()
-	icon_state = "[initial(base_icon_state)]_[current_color]"
-	return ..()
-
-// Processor of the process of assembling a kit into a machine
-/obj/item/milking_machine/constructionkit/attackby(obj/item/used_item, mob/living/carbon/user, params)
-	if((item_flags & IN_INVENTORY) || (item_flags & IN_STORAGE))
-		return
-	if(used_item.tool_behaviour == TOOL_WRENCH)
-		if(user.get_held_items_for_side(LEFT_HANDS) == src || user.get_held_items_for_side(RIGHT_HANDS) == src)
-			return
-		if(get_turf(user) == get_turf(src))
-			return
-		else if(used_item.use_tool(src, user, 8 SECONDS, volume = 50))
-			var/obj/structure/chair/milking_machine/new_milker = new(get_turf(user))
-			if(istype(src, /obj/item/milking_machine/constructionkit))
-				if(current_color == "pink")
-					new_milker.machine_color = new_milker.machine_color_list[1]
-					new_milker.icon_state = "milking_pink_off"
-				if(current_color == "teal")
-					new_milker.machine_color = new_milker.machine_color_list[2]
-					new_milker.icon_state = "milking_teal_off"
-			qdel(src)
-			to_chat(user, span_notice("You assemble the milking machine."))
-			return
+	. += span_purple("[src] can be disassembled by using Ctrl+Shift+Click")

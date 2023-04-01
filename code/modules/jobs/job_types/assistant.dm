@@ -42,6 +42,7 @@ Assistant
 	jobtype = /datum/job/assistant
 	id_trim = /datum/id_trim/job/assistant
 	uniform = /obj/item/clothing/under/color/random // SKYRAT EDIT ADD
+	r_hand = /obj/item/storage/box/gunset/roundstart_guns/assistant // SKYRAT EDIT ADD
 	belt = /obj/item/modular_computer/pda/assistant
 
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/target)
