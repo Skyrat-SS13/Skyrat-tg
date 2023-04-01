@@ -121,6 +121,7 @@
 	backpack_contents = list(
 		/obj/item/camera/spooky = 1,
 		/obj/item/stamp/chap = 1,
+		/obj/item/storage/box/gunset/roundstart_guns/cargo = 1, // SKYRAT EDIT ADD
 		)
 	belt = /obj/item/modular_computer/pda/chaplain
 	ears = /obj/item/radio/headset/headset_srv
