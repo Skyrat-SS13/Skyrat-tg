@@ -190,15 +190,15 @@
 /obj/structure/chair/milking_machine/post_buckle_mob(mob/living/affected_mob)
 	current_mob = affected_mob
 
-	current_breasts = affected_mob.getorganslot(ORGAN_SLOT_BREASTS)
+	current_breasts = affected_mob.get_organ_slot(ORGAN_SLOT_BREASTS)
 	if(current_breasts)
 		breasts_size = current_breasts.genital_size
 
-	current_testicles = affected_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+	current_testicles = affected_mob.get_organ_slot(ORGAN_SLOT_TESTICLES)
 	if(current_testicles)
 		testicles_size = current_testicles.genital_size
 
-	current_vagina = affected_mob.getorganslot(ORGAN_SLOT_VAGINA)
+	current_vagina = affected_mob.get_organ_slot(ORGAN_SLOT_VAGINA)
 	if(current_vagina)
 		vagina_size = current_vagina.genital_size
 
@@ -509,12 +509,12 @@
 		if(istype(src, /mob/living/) && istype(over_object, /obj/structure/chair/milking_machine))
 			var/mob/living/affected_mob = src
 			var/obj/structure/chair/milking_machine/milking_machine = over_object
-			if(affected_mob.getorganslot(ORGAN_SLOT_TESTICLES))
-				milking_machine.current_testicles = affected_mob.getorganslot(ORGAN_SLOT_TESTICLES)
-			if(affected_mob.getorganslot(ORGAN_SLOT_VAGINA))
-				milking_machine.current_vagina = affected_mob.getorganslot(ORGAN_SLOT_VAGINA)
-			if(affected_mob.getorganslot(ORGAN_SLOT_BREASTS))
-				milking_machine.current_breasts = affected_mob.getorganslot(ORGAN_SLOT_BREASTS)
+			if(affected_mob.get_organ_slot(ORGAN_SLOT_TESTICLES))
+				milking_machine.current_testicles = affected_mob.get_organ_slot(ORGAN_SLOT_TESTICLES)
+			if(affected_mob.get_organ_slot(ORGAN_SLOT_VAGINA))
+				milking_machine.current_vagina = affected_mob.get_organ_slot(ORGAN_SLOT_VAGINA)
+			if(affected_mob.get_organ_slot(ORGAN_SLOT_BREASTS))
+				milking_machine.current_breasts = affected_mob.get_organ_slot(ORGAN_SLOT_BREASTS)
 			else
 				// A place for the handler when the mob doesn't have the genitals it needs
 				return

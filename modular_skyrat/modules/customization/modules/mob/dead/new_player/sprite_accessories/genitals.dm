@@ -11,7 +11,7 @@
 	var/genital_location = GROIN
 
 /datum/sprite_accessory/genital/is_hidden(mob/living/carbon/human/target_mob)
-	var/obj/item/organ/external/genital/badonkers = target_mob.getorganslot(associated_organ_slot)
+	var/obj/item/organ/external/genital/badonkers = target_mob.get_organ_slot(associated_organ_slot)
 	if(!badonkers)
 		return TRUE
 	switch(badonkers.visibility_preference)
@@ -54,11 +54,11 @@
 			return TRUE
 
 /datum/sprite_accessory/genital/get_special_render_state(mob/living/carbon/human/human)
-	var/obj/item/organ/external/genital/genital = human.getorganslot(associated_organ_slot)
+	var/obj/item/organ/external/genital/genital = human.get_organ_slot(associated_organ_slot)
 	return "[genital?.sprite_suffix]"
 
 /datum/sprite_accessory/genital/get_special_render_colour(mob/living/carbon/human/human, render_state)
-	var/obj/item/organ/external/genital/genital = human.getorganslot(associated_organ_slot)
+	var/obj/item/organ/external/genital/genital = human.get_organ_slot(associated_organ_slot)
 	if(genital?.uses_skin_color && human.dna.species.use_skintones)
 		return skintone2hex(human.skin_tone)
 

@@ -155,7 +155,7 @@
 
 /// Attempts to install the NIFSoft on the disk to the target
 /obj/item/disk/nifsoft_uploader/proc/attempt_software_install(mob/living/carbon/human/target)
-	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = target.getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
+	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = target.get_organ_by_type(/obj/item/organ/internal/cyberimp/brain/nif)
 
 	if(!ishuman(target) || !installed_nif)
 		return FALSE

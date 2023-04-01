@@ -19,7 +19,7 @@
 						continue
 					if(G.is_hidden(src))
 						continue
-					var/obj/item/organ/external/genital/ORG = getorganslot(G.associated_organ_slot)
+					var/obj/item/organ/external/genital/ORG = get_organ_slot(G.associated_organ_slot)
 					if(!ORG)
 						continue
 					line += ORG.get_description_string(G)
@@ -139,7 +139,7 @@
 		LAZYOR(available_selection, "reveal all")
 	// Lets build our parts list
 	for(var/organ_slot in total_selection)
-		if(getorganslot(organ_slot))
+		if(get_organ_slot(organ_slot))
 			LAZYOR(available_selection, total_selection[organ_slot])
 
 	// If this proc is called with the 'quick_toggle' flag, we skip the rest
