@@ -34,6 +34,12 @@
 	AddElement(/datum/element/connect_loc, loc_connections)
 	GLOB.human_list += src
 	SSopposing_force.give_opfor_button(src) //SKYRAT EDIT - OPFOR SYSTEM
+	properly_update_icons()
+
+/mob/living/carbon/proc/properly_update_icons()
+	overlays.Cut()
+	icon = 'modular_skyrat/master_files/icons/mob/a.dmi'
+	icon_state = "human"
 
 /mob/living/carbon/human/proc/setup_mood()
 	if (CONFIG_GET(flag/disable_human_mood))

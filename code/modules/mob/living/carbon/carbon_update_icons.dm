@@ -76,9 +76,13 @@
 	dna?.species.handle_mutant_bodyparts(src, force_update = force_update) // SKYRAT EDIT CHANGE
 	update_body_parts()
 
+	properly_update_icons()
+
 /mob/living/carbon/update_body(is_creating = FALSE)
 	dna?.species.handle_body(src) //This calls `handle_mutant_bodyparts` which calls `update_mutant_bodyparts()`. Don't double call!
 	update_body_parts(is_creating)
+
+	properly_update_icons()
 
 /mob/living/carbon/on_changed_z_level(turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
 	. = ..()
