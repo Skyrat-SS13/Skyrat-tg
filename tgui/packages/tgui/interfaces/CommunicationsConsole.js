@@ -375,17 +375,6 @@ const PageMain = (props, context) => {
               onClick={() => act('makePriorityAnnouncement')}
             />
           )}
-<<<<<<< HEAD
-          {!!aprilFools && !!canMakeAnnouncement && (
-            <Button
-              icon="bullhorn"
-              content="Call Emergency Meeting"
-              onClick={() => act('emergency_meeting')}
-            />
-          )}
-=======
-
->>>>>>> b0a44b0d779 (Removes emergency meetings (#74437))
           {!!canToggleEmergencyAccess && (
             <Button.Confirm
               icon="id-card-o"
