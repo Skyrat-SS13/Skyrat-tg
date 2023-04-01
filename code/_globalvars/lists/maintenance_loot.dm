@@ -103,6 +103,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/storage/backpack = 1,
 		/obj/item/storage/belt/fannypack = 1,
 		/obj/item/storage/wallet/random = 1,
+		/obj/item/autosurgeon/organ/nif/disposable/nft = 1, //SKYRAT EDIT - NFTs
 		) = 1,
 
 	list(//construction and crafting

@@ -86,4 +86,3 @@
 /obj/item/autosurgeon/organ/nif/disposable/nft
 	name = "NFT Type Autosurgeon"
 	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif/roleplay_model/cheap/nft
-	uses = 1
