@@ -60,7 +60,6 @@
 	suit = /obj/item/clothing/suit/jacket/research_director
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic = 1,
-		/obj/item/storage/box/gunset/roundstart_guns/science = 1, // SKYRAT EDIT ADD
 		)
 	belt = /obj/item/modular_computer/pda/heads/rd
 	head = /obj/item/clothing/head/beret/science/rd

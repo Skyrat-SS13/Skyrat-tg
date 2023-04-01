@@ -51,7 +51,6 @@
 	ears = /obj/item/radio/headset/headset_med
 	mask = /obj/item/clothing/mask/surgical
 	shoes = /obj/item/clothing/shoes/sneakers/white
-	r_hand = /obj/item/storage/box/gunset/roundstart_guns/medical // SKYRAT EDIT ADD
 
 	backpack = /obj/item/storage/backpack/virology
 	satchel = /obj/item/storage/backpack/satchel/vir

@@ -66,7 +66,6 @@
 	backpack_contents = list(
 		/obj/item/choice_beacon/ingredient = 1,
 		/obj/item/sharpener = 1,
-		/obj/item/storage/box/gunset/roundstart_guns/serv = 1, // SKYRAT EDIT ADD
 	)
 	belt = /obj/item/modular_computer/pda/cook
 	ears = /obj/item/radio/headset/headset_srv

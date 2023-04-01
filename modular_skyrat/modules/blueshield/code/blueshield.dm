@@ -55,7 +55,7 @@
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	backpack_contents = list(
 		/obj/item/storage/box/gunset/blueshield = 1,
-		/obj/item/melee/baton/security/loaded = 1,)
+	)
 	implants = list(/obj/item/implant/mindshield)
 	backpack = /obj/item/storage/backpack/blueshield
 	satchel = /obj/item/storage/backpack/satchel/blueshield
@@ -71,41 +71,3 @@
 
 	head = /obj/item/clothing/head/helmet/space/plasmaman/blueshield
 	uniform = /obj/item/clothing/under/plasmaman/blueshield
-
-/obj/item/storage/box/gunset/blueshield
-	name = "Blueshield's CMG-1 gunset"
-	w_class = WEIGHT_CLASS_NORMAL
-
-/obj/item/storage/box/gunset/blueshield/PopulateContents()
-	. = ..()
-	new /obj/item/gun/ballistic/automatic/cmg/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/cmg(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/cmg(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/cmg/lethal(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/cmg/lethal(src)
-	new /obj/item/suppressor/nanotrasen(src)
-
-/obj/item/suppressor/nanotrasen
-	name = "NT-S suppressor"
-	desc = "A Nanotrasen brand small-arms suppressor, including a large NT logo stamped on the side."
-
-/obj/item/ammo_casing/energy/laser/hellfire/bs
-	projectile_type = /obj/projectile/beam/laser/hellfire
-	e_cost = 83 //Lets it squeeze out a few more shots
-	select_name = "maim"
-
-/obj/item/gun/energy/laser/hellgun/blueshield
-	name = "\improper Allstar SC-3 PDW 'Hellfire'"
-	desc = "A prototype energy carbine, despite NT's ban on hellfire weaponry due to negative press. \
-		Allstar continued to work on it, compacting it into a small form-factor for personal defense. \
-		As part of the Asset Retention Program created by Nanotrasen, Allstar's prototype began to be put into use."
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
-	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
-	icon_state = "hellfirepdw"
-	worn_icon_state = "hellfirepdw"
-	ammo_type = list(/obj/item/ammo_casing/energy/laser/hellfire/bs)
-
-/obj/item/gun/energy/laser/hellgun/blueshield/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_ALLSTAR)
