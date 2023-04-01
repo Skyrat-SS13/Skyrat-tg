@@ -3,8 +3,8 @@
 	loaded_nifsoft = /datum/nifsoft/investigation
 
 /datum/nifsoft/investigation
-	name = "Investigation Helper" //Temporary name
-	program_desc = "Allows the user to better investigate"
+	name = "Investigation Auxilium" //Temporary name
+	program_desc = "Grants the user of the NIFSoft a tool to properly investigate crimes like a true detective."
 	active_mode = TRUE
 	active_cost = 5
 	activation_cost = 50
@@ -26,8 +26,13 @@
 		return TRUE
 
 	investigation_item = new summon_path
+	investigation_item.alpha = 220
+	investigation_item.set_light(2)
+	investigation_item.add_atom_colour("#acccff",FIXED_COLOUR_PRIORITY)
+
 	linked_mob.put_in_hands(investigation_item)
 	return TRUE
 
 /obj/item/gun/ballistic/revolver/c38/investigation
 	name = "Investigation tool"
+	spawnwithmagazine = FALSE // we don't want this to be too overpowered :)
