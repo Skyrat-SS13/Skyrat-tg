@@ -22722,6 +22722,22 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating,
 /area/station/engineering/engine_smes)
+"gLm" = (
+/obj/structure/window/reinforced/spawner/north,
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 1
+	},
+/obj/structure/table,
+/obj/item/dest_tagger,
+/obj/item/dest_tagger,
+/obj/effect/turf_decal/siding/thinplating,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/item/papercutter{
+	pixel_x = 17
+	},
+/turf/open/floor/iron,
+/area/station/cargo/sorting)
 "gLC" = (
 /obj/machinery/firealarm/directional/west,
 /obj/machinery/camera/directional/west{
@@ -22861,6 +22877,20 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
+"gNK" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/brigdoor{
+	dir = 1;
+	name = "Armory Desk";
+	req_access = list("armory")
+	},
+/obj/machinery/door/window/left/directional/south{
+	name = "Reception Desk";
+	req_access = list("security")
+	},
+/obj/item/papercutter,
+/turf/open/floor/plating,
+/area/station/security/warden)
 "gNX" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
@@ -26130,17 +26160,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/security/checkpoint/science)
-"ieX" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 4
-	},
-/obj/structure/table/reinforced,
-/obj/item/papercutter,
-/turf/open/floor/iron/dark,
-/area/station/command/bridge)
 "ieY" = (
 /obj/structure/sign/directions/evac{
 	dir = 4;
@@ -36468,6 +36487,18 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/security/courtroom/holding)
+"lPd" = (
+/obj/structure/table/wood,
+/obj/item/storage/box/pdas{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/storage/box/pdas,
+/obj/item/papercutter{
+	pixel_x = -4
+	},
+/turf/open/floor/wood,
+/area/station/command/heads_quarters/hop)
 "lPl" = (
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/iron,
@@ -49890,6 +49921,17 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
+"qNz" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/obj/structure/table/reinforced,
+/obj/item/papercutter,
+/turf/open/floor/iron/dark,
+/area/station/command/bridge)
 "qNA" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 4
@@ -50153,20 +50195,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/station/science/xenobiology)
-"qTi" = (
-/obj/structure/table/reinforced,
-/obj/machinery/door/window/brigdoor{
-	dir = 1;
-	name = "Armory Desk";
-	req_access = list("armory")
-	},
-/obj/machinery/door/window/left/directional/south{
-	name = "Reception Desk";
-	req_access = list("security")
-	},
-/obj/item/papercutter,
-/turf/open/floor/plating,
-/area/station/security/warden)
 "qTp" = (
 /obj/machinery/door/airlock{
 	id_tag = "private_b";
@@ -59170,22 +59198,6 @@
 /obj/item/toy/basketball,
 /turf/open/misc/asteroid,
 /area/station/security/prison/workout)
-"ucb" = (
-/obj/structure/window/reinforced/spawner/north,
-/obj/effect/turf_decal/trimline/brown/filled/line{
-	dir = 1
-	},
-/obj/structure/table,
-/obj/item/dest_tagger,
-/obj/item/dest_tagger,
-/obj/effect/turf_decal/siding/thinplating,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/obj/item/papercutter{
-	pixel_x = 17
-	},
-/turf/open/floor/iron,
-/area/station/cargo/sorting)
 "uck" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
@@ -66392,18 +66404,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/service)
-"wEo" = (
-/obj/structure/table/wood,
-/obj/item/storage/box/pdas{
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/item/storage/box/pdas,
-/obj/item/papercutter{
-	pixel_x = -4
-	},
-/turf/open/floor/wood,
-/area/station/command/heads_quarters/hop)
 "wEp" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable,
@@ -151787,7 +151787,7 @@ aBV
 cCR
 aBV
 wHT
-wEo
+lPd
 aCO
 vBn
 eDZ
@@ -154095,7 +154095,7 @@ njq
 kVV
 eQE
 nbh
-ieX
+qNz
 pdE
 cNc
 mEK
@@ -154330,7 +154330,7 @@ etH
 bLT
 hvZ
 mGN
-qTi
+gNK
 rOh
 gAO
 odr
@@ -183392,7 +183392,7 @@ cDP
 asn
 pRM
 lmZ
-ucb
+gLm
 aBg
 jur
 aBD
