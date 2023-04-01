@@ -122,8 +122,8 @@
 	switch(user.zone_selected) //to let code know what part of body we gonna tickle
 		if(BODY_ZONE_PRECISE_GROIN)
 			targetedsomewhere = TRUE
-			var/obj/item/organ/external/genital/penis = target.getorganslot(ORGAN_SLOT_PENIS)
-			var/obj/item/organ/external/genital/vagina = target.getorganslot(ORGAN_SLOT_VAGINA)
+			var/obj/item/organ/external/genital/penis = target.get_organ_slot(ORGAN_SLOT_PENIS)
+			var/obj/item/organ/external/genital/vagina = target.get_organ_slot(ORGAN_SLOT_VAGINA)
 			if(vagina && penis)
 				if(target.is_bottomless() || (penis.visibility_preference == GENITAL_ALWAYS_SHOW && vagina.visibility_preference == GENITAL_ALWAYS_SHOW))
 					message = (user == target) ? pick("leans [src] against [target.p_their()] penis, letting it shock it. Ouch...",
@@ -182,7 +182,7 @@
 
 		if(BODY_ZONE_CHEST)
 			targetedsomewhere = TRUE
-			var/obj/item/organ/external/genital/breasts = target.getorganslot(ORGAN_SLOT_BREASTS)
+			var/obj/item/organ/external/genital/breasts = target.get_organ_slot(ORGAN_SLOT_BREASTS)
 			if(breasts)
 				if(breasts.visibility_preference == GENITAL_ALWAYS_SHOW || target.is_topless())
 					message = (user == target) ? pick("leans [src] against [target.p_their()] breasts, letting it shock it.",

@@ -4,7 +4,7 @@
 /// Also handles hiding the ear slot properly after equipping a hat
 /obj/item/clothing/head/visual_equipped(mob/living/carbon/human/user, slot)
 	. = ..()
-	if(!ishuman(user))
+	if(!istype(user))
 		return
 	if(slot & ITEM_SLOT_HEAD)
 		if(user.ears && (flags_inv & HIDEEARS))
@@ -20,13 +20,13 @@
 /obj/item/clothing/head/dropped(mob/living/carbon/human/user)
 	. = ..()
 	alternate_worn_layer = initial(alternate_worn_layer)
-	if(user.ears && (flags_inv & HIDEEARS))
+	if(istype(user) && user.ears && (flags_inv & HIDEEARS))
 		RegisterSignal(user, COMSIG_CARBON_UNEQUIP_HAT, PROC_REF(update_on_removed))
-	
+
 /// After the hat has actually been removed from the mob, we can update what needs to be updated here
 /obj/item/clothing/head/proc/update_on_removed(mob/living/carbon/user, obj/item/hat)
 	SIGNAL_HANDLER
-	if(ishuman(user) && user.ears)
+	if(istype(user) && user.ears)
 		user.update_inv_ears()
 	UnregisterSignal(user, COMSIG_CARBON_UNEQUIP_HAT)
 

@@ -8,6 +8,7 @@
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
 		"pod_hair" = ACC_RANDOM,
+		"legs" = "Normal Legs"
 	)
 	payday_modifier = 0.75
 
