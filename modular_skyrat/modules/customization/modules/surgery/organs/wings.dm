@@ -104,4 +104,3 @@
 
 /obj/item/organ/external/wings/functional/robotic
 	bodypart_overlay = /datum/bodypart_overlay/mutant/wings/functional
-	sprite_accessory_override = /datum/sprite_accessory/wings/robotic

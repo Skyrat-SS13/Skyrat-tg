@@ -27,10 +27,10 @@
 /// Simple helper proc to force an update of the external organs appearance
 /// if necessary.
 /obj/item/mod/control/proc/update_external_organs_modsuit_status(status)
-	if(!wearer?.internal_organs)
+	if(!wearer?.organs)
 		return
 
-	for(var/obj/item/organ/external/to_update in wearer.internal_organs)
+	for(var/obj/item/organ/external/to_update in wearer.organs)
 		to_update.bodypart_overlay.set_modsuit_status(status)
 
 

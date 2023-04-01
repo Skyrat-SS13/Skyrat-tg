@@ -32,13 +32,13 @@
 /obj/item/clothing/under/misc/latex_catsuit/equipped(mob/living/affected_mob, slot)
 	. = ..()
 	var/mob/living/carbon/human/affected_human = affected_mob
-	var/obj/item/organ/external/genital/breasts/affected_breasts = affected_human.getorganslot(ORGAN_SLOT_BREASTS)
+	var/obj/item/organ/external/genital/breasts/affected_breasts = affected_human.get_organ_slot(ORGAN_SLOT_BREASTS)
 	if(src == affected_human.w_uniform)
 		if(affected_mob.gender == FEMALE)
 			icon_state = "latex_catsuit_female"
 		else
 			icon_state = "latex_catsuit_male"
-			
+
 		affected_mob.update_worn_undersuit()
 
 	breasts_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform.dmi', "none")

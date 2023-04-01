@@ -125,7 +125,6 @@
 
 /datum/preference/tri_color/genital/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
-	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
 	var/can_color = TRUE
 	/// Checks that the use skin color pref is both enabled and actually accessible. If so, then this is useless.
@@ -133,7 +132,7 @@
 		var/datum/preference/toggle/genital_skin_color/skincolor = GLOB.preference_entries[skin_color_type]
 		if(skincolor.is_accessible(preferences))
 			can_color = FALSE
-	return erp_allowed && can_color && (passed_initial_check || allowed)
+	return erp_allowed && can_color && passed_initial_check
 
 /datum/preference/tri_bool/genital
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -144,7 +143,6 @@
 
 /datum/preference/tri_bool/genital/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
-	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
 	var/can_color = TRUE
 	/// Checks that the use skin color pref is both enabled and actually accessible. If so, then this is useless.
@@ -152,7 +150,7 @@
 		var/datum/preference/toggle/genital_skin_color/skincolor = GLOB.preference_entries[skin_color_type]
 		if(skincolor.is_accessible(preferences))
 			can_color = FALSE
-	return erp_allowed && can_color && (passed_initial_check || allowed)
+	return erp_allowed && can_color && passed_initial_check
 
 // PENIS
 
