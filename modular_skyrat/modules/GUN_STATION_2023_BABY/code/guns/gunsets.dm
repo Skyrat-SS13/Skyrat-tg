@@ -3,7 +3,8 @@
 */
 
 /obj/item/storage/box/gunset/roundstart_guns
-	icon_state = "guncase_s" //Currently only comes as a generic gray, though there's sprites for Armadyne branded ones in the icon file. There's also sprites for smaller ones!
+	icon_state = "guncase_s"
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/box/gunset/roundstart_guns/cargo
 
