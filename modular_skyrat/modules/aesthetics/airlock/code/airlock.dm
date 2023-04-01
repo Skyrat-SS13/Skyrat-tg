@@ -17,6 +17,11 @@
 #define AIRLOCK_DENY	5
 #define AIRLOCK_EMAG	6
 
+#define AIRLOCK_FRAME_CLOSED "closed"
+#define AIRLOCK_FRAME_CLOSING "closing"
+#define AIRLOCK_FRAME_OPEN "open"
+#define AIRLOCK_FRAME_OPENING "opening"
+
 /obj/machinery/door/airlock
 	doorOpen = 'modular_skyrat/modules/aesthetics/airlock/sound/open.ogg'
 	doorClose = 'modular_skyrat/modules/aesthetics/airlock/sound/close.ogg'
@@ -575,3 +580,8 @@
 #undef AIRLOCK_OPENING
 #undef AIRLOCK_DENY
 #undef AIRLOCK_EMAG
+
+#undef AIRLOCK_FRAME_CLOSED
+#undef AIRLOCK_FRAME_CLOSING
+#undef AIRLOCK_FRAME_OPEN
+#undef AIRLOCK_FRAME_OPENING
