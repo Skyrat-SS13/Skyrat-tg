@@ -2,7 +2,6 @@
 	name = "Non Fungible Trial-NIF"
 	desc = "The latest and greatest in NIF technology, NFTs (Non Fungible Trial-NIFs) aim to bring the enticing concept of scarcity back to the world of NIF implants. Comes with a free limited edition primate picture."
 	manufacturer_notes = "Based on NTNet 3.0, NFTs provide the user with all of the benefits of normal Trial-NIFs with the addition of a free limited edition primate picture speculatively at thousands of credits."
-	var/nft_quirk
 
 /obj/item/organ/internal/cyberimp/brain/nif/roleplay_model/cheap/nft/Insert(mob/living/carbon/human/insertee, special, drop_if_replaced)
 	. = ..()
