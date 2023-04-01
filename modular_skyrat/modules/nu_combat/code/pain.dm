@@ -51,9 +51,9 @@
 	pain = clamp(pain + damage, 0, pain_max)
 
 /mob/living/carbon/proc/harm_organs(damage_taken)
-	for(var/obj/item/organ/internal/internal_organ as anything in internal_organs)
+	for(var/obj/item/organ/internal/internal_organ as anything in organs)
 		if(prob(damage_taken * 2.5))
-			internal_organ.applyOrganDamage(damage_taken)
+			internal_organ.apply_organ_damage(damage_taken)
 
 /mob/living/carbon/proc/process_pain()
 	if(stat == DEAD)
@@ -70,7 +70,7 @@
 		for(var/datum/wound/ouchie as anything in wounded_part.wounds)
 			take_pain(2.5)
 
-	for(var/obj/item/organ/internal/internal_organ as anything in internal_organs)
+	for(var/obj/item/organ/internal/internal_organ as anything in organs)
 		if(internal_organ.damage > 75)
 			take_pain(10)
 		else if(internal_organ.damage > 50)
