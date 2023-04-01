@@ -41,7 +41,6 @@
 
 	backpack_contents = list(
 		/obj/item/boxcutter = 1,
-		/obj/item/storage/box/gunset/roundstart_guns/cargo = 1, // SKYRAT EDIT ADD
 	)
 	id_trim = /datum/id_trim/job/cargo_technician
 	uniform = /obj/item/clothing/under/rank/cargo/tech
