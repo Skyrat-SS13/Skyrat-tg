@@ -83,26 +83,26 @@
 	// Attempt to grow breasts!
 	grow_breasts(exposed_mob)
 
-// Turns you into a female if character is male. Also adds breasts and female genitalia. 
+// Turns you into a female if character is male. Also adds breasts and female genitalia.
 /datum/reagent/drug/aphrodisiac/succubus_milk/overdose_effects(mob/living/carbon/human/exposed_mob)
 
 	// Check if overdosing on succubus milk and incubus draft simultaneously, to prevent chat spam
 	var/suppress_chat = FALSE
-	var/datum/reagent/drug/aphrodisiac/incubus_draft/incubus_draft = locate(/datum/reagent/drug/aphrodisiac/incubus_draft) in exposed_mob.reagents.reagent_list 
+	var/datum/reagent/drug/aphrodisiac/incubus_draft/incubus_draft = locate(/datum/reagent/drug/aphrodisiac/incubus_draft) in exposed_mob.reagents.reagent_list
 	if(incubus_draft && incubus_draft.overdosed)
 		suppress_chat = TRUE
-			
+
 	// Begin breast growth if prefs allow it
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
 		create_genitals(exposed_mob, suppress_chat, list(GENITAL_BREASTS))
-	
+
 	// Separates gender change stuff from breast growth and shrinkage, as well as from new genitalia growth/removal
 	change_gender(exposed_mob, FEMALE, suppress_chat)
-	
+
 	// Womb and vagina creation
 	create_genitals(exposed_mob, suppress_chat, list(GENITAL_VAGINA, GENITAL_WOMB))
-		
-	// Cock & ball shrinkage 
+
+	// Cock & ball shrinkage
 	shrink_genitals(exposed_mob, suppress_chat, list(GENITAL_PENIS, GENITAL_TESTICLES))
 
 /**
@@ -112,12 +112,12 @@
 * genital - the genital that is causing the messages
 * suppress_chat - whether or not to display a message in chat
 * NOTE: this function doesn't get called often enough to warrant suppressing chat, hence the var's omission
-*/ 
-/datum/reagent/drug/aphrodisiac/succubus_milk/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.getorganslot(ORGAN_SLOT_BREASTS))
-	
+*/
+/datum/reagent/drug/aphrodisiac/succubus_milk/growth_to_chat(mob/living/carbon/human/exposed_mob, obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob?.get_organ_slot(ORGAN_SLOT_BREASTS))
+
 	if(!mob_breasts)
 		return
-	
+
 	// Checks for cup size.
 	var/translation = mob_breasts.breasts_size_to_cup(mob_breasts.genital_size)
 
