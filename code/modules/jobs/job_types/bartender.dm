@@ -6,7 +6,6 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = SUPERVISOR_HOP
-	selection_color = "#bbe291"
 	exp_granted_type = EXP_TYPE_CREW
 	config_tag = "BARTENDER"
 
@@ -53,6 +52,7 @@
 	suit = /obj/item/clothing/suit/armor/vest
 	backpack_contents = list(
 		/obj/item/storage/box/beanbag = 1,
+		/obj/item/storage/box/gunset/roundstart_guns/serv = 1, // SKYRAT EDIT ADD
 		)
 	belt = /obj/item/modular_computer/pda/bar
 	ears = /obj/item/radio/headset/headset_srv

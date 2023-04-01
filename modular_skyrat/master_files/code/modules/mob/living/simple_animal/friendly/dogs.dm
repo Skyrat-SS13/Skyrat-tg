@@ -23,7 +23,7 @@
 	speech.speak = markus_speak
 
 /datum/chemical_reaction/mark_reaction
-	results = list(/datum/reagent/liquidgibs = 15)
+	results = list(/datum/reagent/consumable/liquidgibs = 15)
 	required_reagents = list(/datum/reagent/blood = 20,
 	/datum/reagent/medicine/omnizine = 20,
 	/datum/reagent/medicine/c2/synthflesh = 20,
@@ -148,7 +148,7 @@
 		return
 
 	var/mob/living/carbon/human/target = proj.firer
-	if(!proj.nodamage && proj.damage >= 10)
+	if(proj.damage >= 10)
 		if(proj.damage_type != BRUTE && proj.damage_type != BURN)
 			return
 

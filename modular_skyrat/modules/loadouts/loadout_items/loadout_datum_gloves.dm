@@ -8,12 +8,13 @@ GLOBAL_LIST_INIT(loadout_gloves, generate_loadout_items(/datum/loadout_item/glov
 /datum/loadout_item/gloves
 	category = LOADOUT_ITEM_GLOVES
 
+/datum/loadout_item/gloves/pre_equip_item(datum/outfit/outfit, datum/outfit/outfit_important_for_life, mob/living/carbon/human/equipper, visuals_only = FALSE)
+	if(initial(outfit_important_for_life.gloves))
+		.. ()
+		return TRUE
+
 /datum/loadout_item/gloves/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
-	if(isplasmaman(equipper))
-		if(!visuals_only)
-			to_chat(equipper, "Your loadout gloves were not equipped directly due to your envirosuit gloves.")
-			LAZYADD(outfit.backpack_contents, item_path)
-	else if(override_items == LOADOUT_OVERRIDE_BACKPACK && !visuals_only)
+	if(override_items == LOADOUT_OVERRIDE_BACKPACK && !visuals_only)
 		if(outfit.gloves)
 			LAZYADD(outfit.backpack_contents, outfit.gloves)
 		outfit.gloves = item_path

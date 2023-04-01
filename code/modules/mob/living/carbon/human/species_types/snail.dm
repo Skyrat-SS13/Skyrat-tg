@@ -15,7 +15,7 @@
 		FACEHAIR
 	)
 	inherent_traits = list(
-		TRAIT_NOSLIPALL,
+		TRAIT_NO_SLIP_ALL,
 		TRAIT_WATER_BREATHING, //SKYRAT EDIT - Roundstart Snails
 	)
 
@@ -44,29 +44,39 @@
 	)
 
 /datum/species/snail/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, delta_time, times_fired)
+	. = ..()
 	if(istype(chem,/datum/reagent/consumable/salt))
-		H.adjustFireLoss(2 * REAGENTS_EFFECT_MULTIPLIER * delta_time)
+		H.adjustFireLoss(2 * REM * delta_time)
 		playsound(H, 'sound/weapons/sear.ogg', 30, TRUE)
 		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * delta_time)
 		return TRUE
 
-/datum/species/snail/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
+/datum/species/snail/on_species_gain(mob/living/carbon/new_snailperson, datum/species/old_species, pref_load)
 	. = ..()
-	var/obj/item/storage/backpack/bag = C.get_item_by_slot(ITEM_SLOT_BACK)
+	var/obj/item/storage/backpack/bag = new_snailperson.get_item_by_slot(ITEM_SLOT_BACK)
 	if(!istype(bag, /obj/item/storage/backpack/snail))
-		if(C.dropItemToGround(bag)) //returns TRUE even if its null
-			C.equip_to_slot_or_del(new /obj/item/storage/backpack/snail(C), ITEM_SLOT_BACK)
-	C.AddElement(/datum/element/snailcrawl)
-	C.update_icons() //SKYRAT EDIT: Roundstart Snails
+		if(new_snailperson.dropItemToGround(bag)) //returns TRUE even if its null
+			new_snailperson.equip_to_slot_or_del(new /obj/item/storage/backpack/snail(new_snailperson), ITEM_SLOT_BACK)
+	new_snailperson.AddElement(/datum/element/snailcrawl)
+	new_snailperson.update_icons() //SKYRAT EDIT: Roundstart Snails
+	//if(ishuman(new_snailperson)) //SKYRAT EDIT: Snails don't have exotic blood here!
+	//	update_mail_goodies(new_snailperson) //SKYRAT EDIT END
 
-/datum/species/snail/on_species_loss(mob/living/carbon/C)
+/datum/species/snail/on_species_loss(mob/living/carbon/former_snailperson, datum/species/new_species, pref_load)
 	. = ..()
-	C.RemoveElement(/datum/element/snailcrawl)
-	var/obj/item/storage/backpack/bag = C.get_item_by_slot(ITEM_SLOT_BACK)
+	former_snailperson.RemoveElement(/datum/element/snailcrawl)
+	var/obj/item/storage/backpack/bag = former_snailperson.get_item_by_slot(ITEM_SLOT_BACK)
 	if(istype(bag, /obj/item/storage/backpack/snail))
 		bag.emptyStorage()
-		C.temporarilyRemoveItemFromInventory(bag, TRUE)
+		former_snailperson.temporarilyRemoveItemFromInventory(bag, TRUE)
 		qdel(bag)
+
+/*/datum/species/snail/update_quirk_mail_goodies(mob/living/carbon/human/recipient, datum/quirk/quirk, list/mail_goodies = list()) //SKYRAT EDIT: Snails don't have exotic blood here!
+	if(istype(quirk, /datum/quirk/blooddeficiency))
+		mail_goodies += list(
+			/obj/item/reagent_containers/blood/snail
+		)
+	return ..()*/ //SKYRAT EDIT END
 
 /obj/item/storage/backpack/snail
 	name = "snail shell"
@@ -88,9 +98,9 @@
 			RESKIN_WORN_ICON_STATE = "coneshell"
 		),
 		"Round Shell" = list(
-			RESKIN_ICON = 'icons/obj/storage/storage.dmi',
+			RESKIN_ICON = 'icons/obj/storage/backpack.dmi',
 			RESKIN_ICON_STATE = "snailshell",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON = 'icons/mob/clothing/back/backpack.dmi',
 			RESKIN_WORN_ICON_STATE = "snailshell"
 		),
 		"Cinnamon Shell" = list(

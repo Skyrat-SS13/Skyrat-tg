@@ -9,7 +9,6 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = SUPERVISOR_CAPTAIN
-	selection_color = "#ffeeaa"
 	req_admin_notify = 1
 	minimal_player_age = 7
 	exp_requirements = 180
@@ -62,6 +61,7 @@
 	uniform = /obj/item/clothing/under/rank/engineering/chief_engineer
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic = 1,
+		/obj/item/storage/box/gunset/roundstart_guns/engineering = 1, // SKYRAT EDIT ADD
 		)
 	belt = /obj/item/storage/belt/utility/chief/full
 	ears = /obj/item/radio/headset/heads/ce

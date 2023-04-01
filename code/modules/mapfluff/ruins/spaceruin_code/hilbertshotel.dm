@@ -251,7 +251,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	icon_state = "hotelwall"
 	smoothing_groups = SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_HOTEL_WALLS
 	canSmoothWith = SMOOTH_GROUP_HOTEL_WALLS
-	explosion_block = INFINITY
+	explosive_resistance = INFINITY
 
 /turf/open/indestructible/hotelwood
 	desc = "Stylish dark wood with extra reinforcement. Secured firmly to the floor to prevent tampering."
@@ -271,7 +271,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	base_icon_state = "bluespace"
 	baseturfs = /turf/open/space/bluespace
 	flags_1 = NOJAUNT
-	explosion_block = INFINITY
+	explosive_resistance = INFINITY
 	var/obj/item/hilbertshotel/parentSphere
 
 /turf/open/space/bluespace/Initialize(mapload)
@@ -290,7 +290,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 /turf/closed/indestructible/hoteldoor
 	name = "Hotel Door"
 	icon_state = "hoteldoor"
-	explosion_block = INFINITY
+	explosive_resistance = INFINITY
 	var/obj/item/hilbertshotel/parentSphere
 
 /turf/closed/indestructible/hoteldoor/proc/promptExit(mob/living/user)
@@ -523,19 +523,22 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 /obj/effect/landmark/lift_id/hilbert
 	specific_lift_id = HILBERT_TRAM
 
-/obj/effect/landmark/tram/left_part/hilbert
+/obj/effect/landmark/tram/hilbert/left
+	name = "Port"
 	specific_lift_id = HILBERT_TRAM
-	destination_id = "left_part_hilbert"
+	platform_code = HILBERT_PORT
 	tgui_icons = list("Reception" = "briefcase", "Botany" = "leaf", "Chemistry" = "flask")
 
-/obj/effect/landmark/tram/middle_part/hilbert
+/obj/effect/landmark/tram/hilbert/middle
+	name = "Central"
 	specific_lift_id = HILBERT_TRAM
-	destination_id = "middle_part_hilbert"
+	platform_code = HILBERT_CENTRAL
 	tgui_icons = list("Processing" = "cogs", "Xenobiology" = "paw")
 
-/obj/effect/landmark/tram/right_part/hilbert
+/obj/effect/landmark/tram/hilbert/right
+	name = "Starboard"
 	specific_lift_id = HILBERT_TRAM
-	destination_id = "right_part_hilbert"
+	platform_code = HILBERT_STARBOARD
 	tgui_icons = list("Ordnance" = "bullseye", "Office" = "user", "Dormitories" = "bed")
 
 /obj/item/keycard/hilbert
@@ -678,4 +681,4 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	desc = "A ballistic machine gun auto-turret that fires bluespace bullets."
 	lethal_projectile = /obj/projectile/magic/teleport
 	stun_projectile = /obj/projectile/magic/teleport
-	faction = list("turret")
+	faction = list(FACTION_TURRET)

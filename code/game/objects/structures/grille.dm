@@ -95,6 +95,7 @@
 				CRASH("Invalid window path type in RCD: [the_rcd.window_type]")
 			var/obj/structure/window/window_path = the_rcd.window_type
 			if(!valid_window_location(T, user.dir, is_fulltile = initial(window_path.fulltile)))
+				to_chat(user, span_notice("Already a window in this direction!"))
 				return FALSE
 			to_chat(user, span_notice("You construct the window."))
 			var/obj/structure/window/WD = new the_rcd.window_type(T, user.dir)
@@ -356,3 +357,5 @@
 /obj/structure/grille/broken/Initialize(mapload)
 	. = ..()
 	take_damage(max_integrity * 0.6)
+
+#undef CLEAR_TILE_MOVE_LIMIT

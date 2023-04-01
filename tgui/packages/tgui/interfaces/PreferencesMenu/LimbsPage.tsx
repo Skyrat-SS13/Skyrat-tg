@@ -1,7 +1,7 @@
 import { Box, Stack, Section, Dropdown, Button, ColorBox } from '../../components';
 import { useBackend } from '../../backend';
 import { PreferencesMenuData } from './data';
-import { CharacterPreview } from './CharacterPreview';
+import { CharacterPreview } from '../common/CharacterPreview';
 
 export const RotateCharacterButtons = (props, context) => {
   const { act } = useBackend<PreferencesMenuData>(context);

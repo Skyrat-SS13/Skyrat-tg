@@ -13,9 +13,9 @@
 
 /datum/quirk/personalspace
 	name = "Personal Space"
-	desc = "You'd rather people keep their hands to themselves, and you won't let anyone touch your ass.."
-	gain_text = span_notice("You'd like it if people kept their hands off your ass.")
-	lose_text = span_notice("You're less concerned about people touching your ass.")
+	desc = "You'd rather people keep their hands off your rear end."
+	gain_text = span_notice("You'd like it if people kept their hands off your butt.")
+	lose_text = span_notice("You're less concerned about people touching your butt.")
 	medical_record_text = "Patient demonstrates negative reactions to their posterior being touched."
 	value = 0
 	mob_trait = TRAIT_PERSONALSPACE
@@ -184,7 +184,7 @@
 
 /datum/quirk/item_quirk/canine/add_unique(client/client_source)
 	var/mob/living/carbon/human/human_holder = quirk_holder
-	var/obj/item/organ/internal/tongue/old_tongue = human_holder.getorganslot(ORGAN_SLOT_TONGUE)
+	var/obj/item/organ/internal/tongue/old_tongue = human_holder.get_organ_slot(ORGAN_SLOT_TONGUE)
 	old_tongue.Remove(human_holder)
 	qdel(old_tongue)
 

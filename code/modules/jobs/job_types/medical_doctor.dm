@@ -7,7 +7,6 @@
 	total_positions = 5
 	spawn_positions = 3
 	supervisors = SUPERVISOR_CMO
-	selection_color = "#ffeef0"
 	exp_granted_type = EXP_TYPE_CREW
 	config_tag = "MEDICAL_DOCTOR"
 
@@ -53,6 +52,7 @@
 	head = /obj/item/clothing/head/utility/surgerycap
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	l_hand = /obj/item/storage/medkit/surgery
+	r_hand = /obj/item/storage/box/gunset/roundstart_guns/medical // SKYRAT EDIT ADD
 
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel/med

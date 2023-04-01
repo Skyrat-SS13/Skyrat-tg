@@ -67,7 +67,7 @@
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/storage/fish_case/tiziran = 2)
 	crate_name = "tiziran fish crate"
-
+/* SKYRAT REMOVAL
 /datum/supply_pack/misc/bicycle
 	name = "Bicycle"
 	desc = "Nanotrasen reminds all employees to never toy with powers outside their control."
@@ -75,7 +75,7 @@
 	contains = list(/obj/vehicle/ridden/bicycle)
 	crate_name = "bicycle crate"
 	crate_type = /obj/structure/closet/crate/large
-
+SKYRAT REMOVAL END */
 /datum/supply_pack/misc/bigband
 	name = "Big Band Instrument Collection"
 	desc = "Get your sad station movin' and groovin' with this fine collection! \
@@ -262,14 +262,15 @@
 	crate_type = /obj/structure/closet/crate
 	///Total TC worth of contained uplink items
 	var/crate_value = 30
-	var/uplink_flag = UPLINK_TRAITORS
+	///What uplink the contents are pulled from
+	var/contents_uplink_type = UPLINK_TRAITORS
 
 ///Generate assorted uplink items, taking into account the same surplus modifiers used for surplus crates
 /datum/supply_pack/misc/syndicate/fill(obj/structure/closet/crate/C)
 	var/list/uplink_items = list()
 	for(var/datum/uplink_item/item_path as anything in SStraitor.uplink_items_by_type)
 		var/datum/uplink_item/item = SStraitor.uplink_items_by_type[item_path]
-		if(item.purchasable_from & UPLINK_TRAITORS && item.item)
+		if(item.purchasable_from & contents_uplink_type && item.item)
 			uplink_items += item
 
 	while(crate_value)
@@ -283,6 +284,12 @@
 		crate_value -= uplink_item.cost
 		new uplink_item.item(C)
 
+///Syndicate supply crate that can have its contents value changed by admins, uses a seperate datum to avoid having admins touch the original one.
+/datum/supply_pack/misc/syndicate/custom_value
+
+/datum/supply_pack/misc/syndicate/custom_value/proc/setup_contents(value, uplink)
+	crate_value = value
+	contents_uplink_type = uplink
 
 /datum/supply_pack/misc/fishing_portal
 	name = "Fishing Portal Generator Crate"

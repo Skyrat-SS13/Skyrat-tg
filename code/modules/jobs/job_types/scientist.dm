@@ -6,7 +6,6 @@
 	total_positions = 5
 	spawn_positions = 3
 	supervisors = SUPERVISOR_RD
-	selection_color = "#ffeeff"
 	exp_requirements = 60
 	exp_required_type = EXP_TYPE_CREW
 	exp_granted_type = EXP_TYPE_CREW
@@ -30,7 +29,7 @@
 
 	mail_goodies = list(
 		/obj/item/raw_anomaly_core/random = 10,
-		/obj/item/disk/tech_disk/spaceloot = 2,
+		/obj/item/disk/design_disk/bepis = 2,
 		/obj/item/camera_bug = 1
 	)
 	rpg_title = "Thaumaturgist"
@@ -49,6 +48,7 @@
 	belt = /obj/item/modular_computer/pda/science
 	ears = /obj/item/radio/headset/headset_sci
 	shoes = /obj/item/clothing/shoes/sneakers/white
+	r_hand = /obj/item/storage/box/gunset/roundstart_guns/science // SKYRAT EDIT ADD
 
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/science

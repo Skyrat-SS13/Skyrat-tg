@@ -133,6 +133,7 @@
 #define ANNOUNCER_SHUTTLELEFT "announcer_shuttleleft"
 #define ANNOUNCER_CARP "announcer_carp"
 #define ANNOUNCER_VORTEXANOMALIES "announcer_vortexanomalies"
+#define ANNOUNCER_ANOMALIES "announcer_anomalies"
 #define ANNOUNCER_CAPTAIN "announcer_captain"
 #define ANNOUNCER_MASSIVEBSPACEANOMALIES "announcer_massivebspaceanomalies"
 #define ANNOUNCER_PYROANOMALIES "announcer_pyroanomalies"
@@ -152,6 +153,7 @@
 #define ANNOUNCER_KLAXON "announcer_klaxon"
 #define ANNOUNCER_ICARUS "announcer_icarus"
 #define ANNOUNCER_NRI_RAIDERS "announcer_nri_raiders"
+#define ANNOUNCER_OUTBREAK6 "announcer_outbreak6"
 //SKYRAT EDIT END
 
 
@@ -196,6 +198,7 @@ GLOBAL_LIST_INIT(announcer_keys, list(
 	ANNOUNCER_KLAXON,
 	ANNOUNCER_ICARUS,
 	ANNOUNCER_NRI_RAIDERS,
+	ANNOUNCER_OUTBREAK6,
 	//SKYRAT EDIT END
 ))
 

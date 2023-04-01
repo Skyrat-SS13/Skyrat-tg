@@ -6,7 +6,6 @@
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = SUPERVISOR_RD
-	selection_color = "#ffeeff"
 	exp_requirements = 60
 	exp_required_type = EXP_TYPE_CREW
 	exp_granted_type = EXP_TYPE_CREW
@@ -45,6 +44,7 @@
 	ears = /obj/item/radio/headset/headset_sci
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	l_pocket = /obj/item/sequence_scanner
+	r_hand = /obj/item/storage/box/gunset/roundstart_guns/science // SKYRAT EDIT ADD
 
 	backpack = /obj/item/storage/backpack/genetics
 	satchel = /obj/item/storage/backpack/satchel/gen

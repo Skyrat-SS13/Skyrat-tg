@@ -167,12 +167,6 @@
 
 	return finish_preview_icon(icon)
 
-/datum/antagonist/heretic/greet()
-	. = ..()
-	var/policy = get_policy(ROLE_HERETIC)
-	if(policy)
-		to_chat(owner, policy)
-
 /datum/antagonist/heretic/farewell()
 	if(!silent)
 		to_chat(owner.current, span_userdanger("Your mind begins to flare as the otherwordly knowledge escapes your grasp!"))
@@ -682,7 +676,7 @@
  * and returns HERETIC_HAS_LIVING_HEART if they have a living heart
  */
 /datum/antagonist/heretic/proc/has_living_heart()
-	var/obj/item/organ/our_living_heart = owner.current?.getorganslot(living_heart_organ_slot)
+	var/obj/item/organ/our_living_heart = owner.current?.get_organ_slot(living_heart_organ_slot)
 	if(!our_living_heart)
 		return HERETIC_NO_HEART_ORGAN
 
@@ -774,8 +768,3 @@
 
 	suit = /obj/item/clothing/suit/hooded/cultrobes/eldritch
 	r_hand = /obj/item/melee/touch_attack/mansus_fist
-
-/datum/outfit/heretic/post_equip(mob/living/carbon/human/equipper, visualsOnly)
-	var/obj/item/clothing/suit/hooded/hooded = locate() in equipper
-	hooded.MakeHood() // This is usually created on Initialize, but we run before atoms
-	hooded.ToggleHood()

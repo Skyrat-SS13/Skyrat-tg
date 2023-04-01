@@ -9,7 +9,6 @@
 	circuit = /obj/item/circuitboard/computer/order_console/mining/interdyne
 	forced_express = TRUE
 	express_cost_multiplier = 1
-	uses_ltsrbt = FALSE
 	order_categories = list(
 		CATEGORY_MINING,
 		CATEGORY_CONSUMABLES,
@@ -31,4 +30,4 @@
 
 /mob/living/simple_animal/hostile/mining_drone/interdyne
 	name = "\improper Interdyne minebot"
-	faction = list("neutral", "Syndicate")
+	faction = list(FACTION_NEUTRAL, ROLE_SYNDICATE)

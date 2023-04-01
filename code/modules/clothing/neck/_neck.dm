@@ -83,6 +83,8 @@
 
 /obj/item/clothing/neck/tie/update_icon()
 	. = ..()
+	if(clip_on)
+		return
 	// Normal strip & equip delay, along with 2 second self equip since you need to squeeze your head through the hole.
 	if(is_tied)
 		icon_state = "tie_greyscale_tied"
@@ -187,8 +189,8 @@
 	var/heart_strength = span_danger("no")
 	var/lung_strength = span_danger("no")
 
-	var/obj/item/organ/internal/heart/heart = carbon_patient.getorganslot(ORGAN_SLOT_HEART)
-	var/obj/item/organ/internal/lungs/lungs = carbon_patient.getorganslot(ORGAN_SLOT_LUNGS)
+	var/obj/item/organ/internal/heart/heart = carbon_patient.get_organ_slot(ORGAN_SLOT_HEART)
+	var/obj/item/organ/internal/lungs/lungs = carbon_patient.get_organ_slot(ORGAN_SLOT_LUNGS)
 
 	if(carbon_patient.stat != DEAD && !(HAS_TRAIT(carbon_patient, TRAIT_FAKEDEATH)))
 		if(istype(heart))
@@ -339,10 +341,6 @@
 	/// toggles between sell (TRUE) and get price post-fees (FALSE)
 	var/selling = FALSE
 
-/datum/armor/large_scarf_syndie
-	fire = 50
-	acid = 40
-
 /obj/item/clothing/neck/necklace/dope/merchant/attack_self(mob/user)
 	. = ..()
 	selling = !selling
@@ -376,10 +374,6 @@
 	color = "#ffffff"
 	custom_price = PAYCHECK_CREW * 0.2
 	custom_materials = (list(/datum/material/plastic = 500))
-
-/datum/armor/large_scarf_syndie
-	fire = 50
-	acid = 40
 
 /obj/item/clothing/neck/beads/Initialize(mapload)
 	. = ..()

@@ -6,7 +6,6 @@
 	total_positions = 3
 	spawn_positions = 2
 	supervisors = SUPERVISOR_CE
-	selection_color = "#fff5cc"
 	exp_requirements = 60
 	exp_required_type = EXP_TYPE_CREW
 	exp_granted_type = EXP_TYPE_CREW
@@ -56,6 +55,7 @@
 
 	box = /obj/item/storage/box/survival/engineer
 	pda_slot = ITEM_SLOT_LPOCKET
+	r_hand = /obj/item/storage/box/gunset/roundstart_guns/engineering // SKYRAT EDIT ADD
 
 /datum/outfit/job/atmos/mod
 	name = "Atmospheric Technician (MODsuit)"

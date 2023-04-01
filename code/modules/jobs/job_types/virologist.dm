@@ -7,7 +7,6 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = SUPERVISOR_CMO
-	selection_color = "#ffeef0"
 	exp_requirements = 60
 	exp_required_type = EXP_TYPE_CREW
 	exp_granted_type = EXP_TYPE_CREW
@@ -52,6 +51,7 @@
 	ears = /obj/item/radio/headset/headset_med
 	mask = /obj/item/clothing/mask/surgical
 	shoes = /obj/item/clothing/shoes/sneakers/white
+	r_hand = /obj/item/storage/box/gunset/roundstart_guns/medical // SKYRAT EDIT ADD
 
 	backpack = /obj/item/storage/backpack/virology
 	satchel = /obj/item/storage/backpack/satchel/vir

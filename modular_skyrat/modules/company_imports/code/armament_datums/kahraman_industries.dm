@@ -13,7 +13,7 @@
 	upper_cost = CARGO_CRATE_VALUE
 
 /datum/armament_entry/company_import/kahraman/ppe/weldhat
-	item_type = /obj/item/clothing/head/utility/hardhat/weldhat/orange
+	item_type = /obj/item/clothing/head/utility/hardhat/welding/orange
 	lower_cost = CARGO_CRATE_VALUE * 0.75
 	upper_cost = CARGO_CRATE_VALUE * 1.25
 

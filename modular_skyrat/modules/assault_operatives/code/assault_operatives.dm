@@ -11,7 +11,11 @@
 	antag_moodlet = /datum/mood_event/focused
 	show_to_ghosts = TRUE
 	hijack_speed = 2
-	preview_outfit = /datum/outfit/syndicate
+
+	preview_outfit = /datum/outfit/assaultops_preview
+	/// In the preview icon, the operatives who are behind the leader
+	var/preview_outfit_behind = /datum/outfit/assaultops_preview/background
+
 	ui_name = "AntagInfoAssaultops"
 	/// The default outfit given BEFORE they choose their equipment.
 	var/assault_operative_default_outfit = /datum/outfit/assaultops
@@ -133,7 +137,7 @@
 	return goldeneye_keys
 
 
-/datum/antagonist/assault_operative/proc/forge_objectives()
+/datum/antagonist/assault_operative/forge_objectives()
 	if(assault_team)
 		objectives |= assault_team.objectives
 
@@ -157,7 +161,7 @@
 	for(var/obj/item/item in human_target.get_equipped_items(TRUE))
 		qdel(item)
 
-	var/obj/item/organ/internal/brain/human_brain = human_target.getorganslot(BRAIN)
+	var/obj/item/organ/internal/brain/human_brain = human_target.get_organ_slot(BRAIN)
 	human_brain.destroy_all_skillchips() // get rid of skillchips to prevent runtimes
 	human_target.equipOutfit(assault_operative_default_outfit)
 	human_target.regenerate_icons()
@@ -176,7 +180,18 @@
 	if (!preview_outfit)
 		return null
 
-	var/icon/final_icon = icon('modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi', "goldeneye_key")
+	var/icon/final_icon = render_preview_outfit(preview_outfit)
+
+	if (!isnull(preview_outfit_behind))
+		var/icon/teammate = render_preview_outfit(preview_outfit_behind)
+		teammate.Blend(rgb(128, 128, 128, 128), ICON_MULTIPLY)
+
+		final_icon.Blend(teammate, ICON_UNDERLAY, -world.icon_size / 4, 0)
+		final_icon.Blend(teammate, ICON_UNDERLAY, world.icon_size / 4, 0)
+
+	var/icon/disky = icon('modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi', "goldeneye_key")
+	disky.Shift(SOUTH, 12)
+	final_icon.Blend(disky, ICON_OVERLAY)
 
 	return finish_preview_icon(final_icon)
 

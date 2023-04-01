@@ -18,9 +18,6 @@
 /obj/item/clothing/under/rank/centcom/intern
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/under/misc/bouncer
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
-
 /obj/item/clothing/under/rank/security/officer/spacepol
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
@@ -210,3 +207,33 @@
 
 /obj/item/clothing/under/changeling
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/**
+ * NONE(Squash)
+ * Clothing that does not have a digitigrade version, and thus will squash legs to fit.
+ */
+/obj/item/clothing/under/suit/henchmen
+	supports_variations_flags = NONE
+
+
+/**
+ * SUBTYPE WITH NEW ICON
+ * Clothing that has a digitigrade version, but its parent was set to something else earlier in this file.
+ */
+/obj/item/clothing/under/misc/bouncer
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/under/color
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
+
+/obj/item/clothing/under/suit/waiter
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
+
+/obj/item/clothing/under/rank/prisoner
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
+
+/obj/item/clothing/under/rank/security/officer
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION
+
+/obj/item/clothing/under/rank/medical/scrubs
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION | CLOTHING_MONKEY_VARIATION

@@ -36,7 +36,7 @@
 	response_help_simple = "pet"
 	response_disarm_continuous = "gently pushes aside"
 	response_disarm_simple = "gently push aside"
-	faction = list("carp")
+	faction = list(FACTION_CARP)
 	butcher_results = list(/obj/item/food/fishmeat/carp = 2, /obj/item/stack/sheet/animalhide/carp = 1)
 	greyscale_config = /datum/greyscale_config/carp
 	ai_controller = /datum/ai_controller/basic_controller/carp
@@ -86,8 +86,7 @@
 /mob/living/basic/carp/Initialize(mapload, mob/tamer)
 	. = ..()
 	apply_colour()
-	ADD_TRAIT(src, TRAIT_HEALS_FROM_CARP_RIFTS, INNATE_TRAIT)
-	ADD_TRAIT(src, TRAIT_SPACEWALK, INNATE_TRAIT)
+	add_traits(list(TRAIT_HEALS_FROM_CARP_RIFTS, TRAIT_SPACEWALK, TRAIT_FREE_HYPERSPACE_MOVEMENT), INNATE_TRAIT)
 
 	if (cell_line)
 		AddElement(/datum/element/swabable, cell_line, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
@@ -97,14 +96,14 @@
 
 	AddComponent(/datum/component/regenerator, outline_colour = regenerate_colour)
 	if (tamer)
+		on_tamed(tamer, feedback = FALSE)
 		befriend(tamer)
-		on_tamed(tamer, FALSE)
 	else
 		AddComponent(/datum/component/tameable, food_types = list(/obj/item/food/meat), tame_chance = 10, bonus_tame_chance = 5, after_tame = CALLBACK(src, PROC_REF(on_tamed)))
 
 	teleport = new(src)
 	teleport.Grant(src)
-	ai_controller.blackboard[BB_CARP_RIFT] = teleport
+	ai_controller.blackboard[BB_CARP_RIFT] = WEAKREF(teleport)
 
 /mob/living/basic/carp/Destroy()
 	QDEL_NULL(teleport)
@@ -178,7 +177,7 @@
 	name = "Lia"
 	real_name = "Lia"
 	desc = "A failed experiment of Nanotrasen to create weaponised carp technology. This less than intimidating carp now serves as the Head of Security's pet."
-	faction = list("neutral")
+	faction = list(FACTION_NEUTRAL)
 	maxHealth = 200
 	health = 200
 	icon_dead = "magicarp_dead"

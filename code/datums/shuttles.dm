@@ -60,11 +60,11 @@
 		var/turf/place = turfs[i]
 		if(isspaceturf(place)) // This assumes all shuttles are loaded in a single spot then moved to their real destination.
 			continue
-		if(length(place.baseturfs) < 2) // Some snowflake shuttle shit
+
+		if (place.count_baseturfs() < 2) // Some snowflake shuttle shit
 			continue
-		var/list/sanity = place.baseturfs.Copy()
-		sanity.Insert(3, /turf/baseturf_skipover/shuttle)
-		place.baseturfs = baseturfs_string_list(sanity, place)
+
+		place.insert_baseturf(3, /turf/baseturf_skipover/shuttle)
 
 		for(var/obj/docking_port/mobile/port in place)
 			port.calculate_docking_port_information(src)
@@ -177,6 +177,12 @@
 	description = "A respectable mid-sized shuttle that first saw service shuttling Nanotrasen crew to and from their asteroid belt embedded facilities."
 	credit_cost = CARGO_CRATE_VALUE * 6
 
+/datum/map_template/shuttle/emergency/venture
+	suffix = "venture"
+	name = "Venture Emergency Shuttle"
+	description = "A mid-sized shuttle for those who like a lot of space for their legs."
+	credit_cost = CARGO_CRATE_VALUE * 10
+
 /datum/map_template/shuttle/emergency/bar
 	suffix = "bar"
 	name = "The Emergency Escape Bar"
@@ -223,7 +229,8 @@
 	description = "A luxurious golden shuttle complete with an indoor swimming pool. Each crewmember wishing to board must bring 500 credits, payable in cash and mineral coin."
 	extra_desc = "This shuttle costs 500 credits to board."
 	admin_notes = "Due to the limited space for non paying crew, this shuttle may cause a riot."
-	credit_cost = CARGO_CRATE_VALUE * 20
+	emag_only = TRUE
+	credit_cost = EMAG_LOCKED_SHUTTLE_COST
 
 /datum/map_template/shuttle/emergency/medisim
 	suffix = "medisim"
@@ -460,6 +467,20 @@
 	description = "Trades such amenities as 'storage space' and 'sufficient seating' for an artifical environment ideal for fishing, plus ample supplies (also for fishing)."
 	admin_notes = "There's a chasm in it, it has railings but that won't stop determined players."
 	credit_cost = CARGO_CRATE_VALUE * 10
+
+/datum/map_template/shuttle/emergency/lance
+	suffix = "lance"
+	name = "The Lance Crew Evacuation System"
+	description = "A brand new shuttle by Nanotrasen's finest in shuttle-engineering, it's designed to tactically slam into a destroyed station, dispatching threats and saving crew at the same time! Be careful to stay out of it's path."
+	admin_notes = "WARNING: This shuttle is designed to crash into the station. It has turrets, similar to the raven."
+	credit_cost = CARGO_CRATE_VALUE * 70
+
+/datum/map_template/shuttle/emergency/tranquility
+	suffix = "tranquility"
+	name = "The Tranquility Relocation Shuttle"
+	description = "A large shuttle, covered in flora and comfortable resting areas. The perfect way to end a peaceful shift"
+	admin_notes = "it's pretty big, and comfy. Be careful when placing it down!"
+	credit_cost = CARGO_CRATE_VALUE * 25
 
 /datum/map_template/shuttle/ferry/base
 	suffix = "base"

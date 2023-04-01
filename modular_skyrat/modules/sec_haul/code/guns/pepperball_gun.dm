@@ -11,7 +11,9 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	fire_sound_volume = 50
-	company_flag = COMPANY_BOLT
+
+/obj/item/gun/ballistic/automatic/pistol/pepperball/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_BOLT)
 
 /obj/item/gun/ballistic/automatic/pistol/pepperball/add_seclight_point()
 	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
@@ -24,7 +26,7 @@
 	ammo_type = /obj/item/ammo_casing/pepperball
 	caliber = CALIBER_PEPPERBALL
 	max_ammo = 8
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_casing/pepperball
 	name = "pepperball"
@@ -39,7 +41,6 @@
 	icon_state = "pepperball"
 	damage = 0
 	stamina = 5
-	nodamage = TRUE
 	shrapnel_type = null
 	sharpness = NONE
 	embedding = null
@@ -67,7 +68,7 @@
 /obj/item/ammo_box/advanced/pepperballs
 	name = "pepperball ammo box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "box10x24-15"
+	icon_state = "box10x24-full"
 	ammo_type = /obj/item/ammo_casing/pepperball
 	custom_materials = list(/datum/material/iron = 5000)
 	max_ammo = 15

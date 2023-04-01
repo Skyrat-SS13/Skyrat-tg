@@ -291,13 +291,13 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 			deaf_type = MSG_AUDIBLE
 
 		// Create map text prior to modifying message for goonchat, sign lang edition
-		if (client?.prefs.read_preference(/datum/preference/toggle/enable_runechat) && !(stat == UNCONSCIOUS || stat == HARD_CRIT || is_blind(src)) && (client.prefs.read_preference(/datum/preference/toggle/enable_runechat_non_mobs) || ismob(speaker)))
+		if (client?.prefs.read_preference(/datum/preference/toggle/enable_runechat) && !(stat == UNCONSCIOUS || stat == HARD_CRIT || is_blind()) && (client.prefs.read_preference(/datum/preference/toggle/enable_runechat_non_mobs) || ismob(speaker)))
 			if (message_mods[MODE_CUSTOM_SAY_ERASE_INPUT])
 				create_chat_message(speaker, null, message_mods[MODE_CUSTOM_SAY_EMOTE], spans, EMOTE_MESSAGE)
 			else
 				create_chat_message(speaker, message_language, raw_message, spans)
 
-		if(is_blind(src))
+		if(is_blind())
 			return FALSE
 
 		message = deaf_message
@@ -394,7 +394,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 		return FALSE
 
 	if(!can_speak())
-		if(mind?.miming)
+		if(HAS_TRAIT(src, TRAIT_MIMING))
 			to_chat(src, span_green("Your vow of silence prevents you from speaking!"))
 		else
 			to_chat(src, span_warning("You find yourself unable to speak!"))
@@ -403,7 +403,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	return TRUE
 
 /mob/living/can_speak(allow_mimes = FALSE)
-	if(!allow_mimes && mind?.miming)
+	if(!allow_mimes && HAS_TRAIT(src, TRAIT_MIMING))
 		return FALSE
 
 	if(HAS_TRAIT(src, TRAIT_MUTE))
@@ -434,7 +434,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 
 /mob/living/proc/radio(message, list/message_mods = list(), list/spans, language)
 	//SKYRAT EDIT ADDITION BEGIN
-	if((message_mods[MODE_HEADSET] || message_mods[RADIO_EXTENSION]) && !(mobility_flags & MOBILITY_USE) && !isAI(src)) // If can't use items, you can't press the button
+	if((message_mods[MODE_HEADSET] || message_mods[RADIO_EXTENSION]) && !(mobility_flags & MOBILITY_USE) && !isAI(src) &&  !ispAI(src)) // If can't use items, you can't press the button
 		to_chat(src, span_warning("You can't use the radio right now as you can't reach the button!"))
 		return ITALICS | REDUCE_RANGE
 	//SKYRAT EDIT END

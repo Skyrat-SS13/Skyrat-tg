@@ -52,6 +52,7 @@
 	name = "\improper Peacekeeper Outfitting Station"
 	desc = "A vending machine stocked with Lopland's \"Peacekeeper\" security package, including standardized uniforms and general equipment."
 	icon = 'modular_skyrat/modules/sec_haul/icons/vending/vending.dmi'
+	light_mask = "sec-light-mask"
 	icon_state = "peace"
 	product_ads = "Beat perps in style!;The stains wash right out!;You have the right to be fashionable!;Now you can be the fashion police you always wanted to be!"
 	vend_reply = "Good luck, Peacekeeper!"

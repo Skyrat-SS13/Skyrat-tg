@@ -3,7 +3,7 @@
 	mannequin.dna.mutant_bodyparts = list()
 
 	// Set up the dummy for its photoshoot
-	apply_prefs_to(mannequin, TRUE)
+	apply_prefs_to(mannequin, TRUE, visuals_only = TRUE)
 
 	switch(preview_pref)
 		if(PREVIEW_PREF_JOB)
@@ -23,14 +23,14 @@
 		if(PREVIEW_PREF_NAKED)
 			mannequin.underwear_visibility = UNDERWEAR_HIDE_UNDIES | UNDERWEAR_HIDE_SHIRT | UNDERWEAR_HIDE_SOCKS
 			for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS))
-				var/obj/item/organ/external/genital/gent = mannequin.getorganslot(organ_key)
+				var/obj/item/organ/external/genital/gent = mannequin.get_organ_slot(organ_key)
 				if(gent)
 					gent.aroused = AROUSAL_NONE
 					gent.update_sprite_suffix()
 		if(PREVIEW_PREF_NAKED_AROUSED)
 			mannequin.underwear_visibility = UNDERWEAR_HIDE_UNDIES | UNDERWEAR_HIDE_SHIRT | UNDERWEAR_HIDE_SOCKS
 			for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS))
-				var/obj/item/organ/external/genital/gent = mannequin.getorganslot(organ_key)
+				var/obj/item/organ/external/genital/gent = mannequin.get_organ_slot(organ_key)
 				if(gent)
 					gent.aroused = AROUSAL_FULL
 					gent.update_sprite_suffix()

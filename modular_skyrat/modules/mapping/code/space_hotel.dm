@@ -100,6 +100,7 @@
 
 	if(!do_after(user, 5 SECONDS))
 		balloon_alert(user, "deployment failed!")
+		return
 
 	deploy(user)
 

@@ -2,12 +2,11 @@
 	title = JOB_CHEMIST
 	description = "Supply the doctors with chemicals, make medicine, as well as \
 		less likable substances in the comfort of a fully reinforced room."
-	department_head = list("Chief Medical Officer")
+	department_head = list(JOB_CHIEF_MEDICAL_OFFICER)
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = SUPERVISOR_CMO
-	selection_color = "#ffeef0"
 	exp_requirements = 60
 	exp_required_type = EXP_TYPE_CREW
 	exp_granted_type = EXP_TYPE_CREW
@@ -52,6 +51,7 @@
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	l_pocket = /obj/item/reagent_containers/cup/bottle/random_buffer
 	r_pocket = /obj/item/reagent_containers/dropper
+	r_hand = /obj/item/storage/box/gunset/roundstart_guns/medical // SKYRAT EDIT ADD
 
 	backpack = /obj/item/storage/backpack/chemistry
 	satchel = /obj/item/storage/backpack/satchel/chem

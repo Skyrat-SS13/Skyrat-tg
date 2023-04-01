@@ -6,7 +6,6 @@
 	total_positions = 3
 	spawn_positions = 2
 	supervisors = SUPERVISOR_HOP
-	selection_color = "#bbe291"
 	exp_granted_type = EXP_TYPE_CREW
 	config_tag = "BOTANIST"
 
@@ -51,6 +50,7 @@
 	belt = /obj/item/modular_computer/pda/botanist
 	ears = /obj/item/radio/headset/headset_srv
 	gloves = /obj/item/clothing/gloves/botanic_leather
+	r_hand = /obj/item/storage/box/gunset/roundstart_guns/serv // SKYRAT EDIT ADD
 
 	backpack = /obj/item/storage/backpack/botany
 	satchel = /obj/item/storage/backpack/satchel/hyd
