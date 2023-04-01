@@ -39,6 +39,9 @@
 	///What NIF models can this software be installed on?
 	var/list/compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif)
 
+	///Does the NIFSoft have anything that is saved cross-round?
+	var/persistence = FALSE
+
 /datum/nifsoft/New(obj/item/organ/internal/cyberimp/brain/nif/recepient_nif)
 	. = ..()
 
@@ -48,6 +51,7 @@
 	if(!recepient_nif.install_nifsoft(src))
 		qdel(src)
 
+	load_persistence_data()
 
 /datum/nifsoft/Destroy()
 	if(active)
@@ -121,6 +125,9 @@
 	program_name = scrambled_name
 	addtimer(CALLBACK(src, .proc/restore_name), 60 SECONDS)
 
+/datum/nifsoft/ui_state(mob/user)
+	return GLOB.conscious_state
+
 /// A disk that can upload NIFSofts to a recpient with a NIFSoft installed.
 /obj/item/disk/nifsoft_uploader
 	name = "Generic NIFSoft datadisk"
@@ -148,7 +155,7 @@
 
 /// Attempts to install the NIFSoft on the disk to the target
 /obj/item/disk/nifsoft_uploader/proc/attempt_software_install(mob/living/carbon/human/target)
-	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = target.getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
+	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = target.get_organ_by_type(/obj/item/organ/internal/cyberimp/brain/nif)
 
 	if(!ishuman(target) || !installed_nif)
 		return FALSE

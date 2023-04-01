@@ -171,7 +171,7 @@
 	name = "beehive"
 	desc = "Filled with little beings that exist only to make your life a living hell."
 	icon_state = "nest_bee"
-	light_color = LIGHT_COLOR_YELLOW
+	light_color = LIGHT_COLOR_BRIGHT_YELLOW
 	monster_types = list(/mob/living/simple_animal/hostile/bee)
 	max_mobs = 15
 	spawn_cooldown = 5 SECONDS
@@ -199,7 +199,7 @@
 	name = "disgusting eggs"
 	desc = "These pulsating eggs are oozing out a puss like substance..."
 	icon_state = "nest_eggs"
-	light_color = LIGHT_COLOR_YELLOW
+	light_color = LIGHT_COLOR_BRIGHT_YELLOW
 	monster_types = list(/mob/living/simple_animal/hostile/retaliate/snake)
 	max_mobs = 8
 	spawn_cooldown = 5 SECONDS

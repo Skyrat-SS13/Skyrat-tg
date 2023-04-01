@@ -108,3 +108,11 @@
 
 /datum/species/vox/get_species_lore()
 	return list(placeholder_lore)
+
+/datum/species/vox/prepare_human_for_preview(mob/living/carbon/human/vox)
+	vox.dna.features["mcolor"] = "#77DD88"
+	vox.dna.features["mcolor2"] = "#EEDD88"
+	vox.dna.features["mcolor3"] = "#222222"
+	vox.dna.mutant_bodyparts["snout"] = list(MUTANT_INDEX_NAME = "Vox Snout", MUTANT_INDEX_COLOR_LIST = list("#EEDD88"))
+	regenerate_organs(vox, src, visual_only = TRUE)
+	vox.update_body(TRUE)

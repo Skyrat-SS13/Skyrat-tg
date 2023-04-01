@@ -38,7 +38,7 @@
 		"remove_language" = PROC_REF(remove_language),
 	)
 
-/datum/preference_middleware/languages/apply_to_human(mob/living/carbon/human/target, datum/preferences/preferences)
+/datum/preference_middleware/languages/apply_to_human(mob/living/carbon/human/target, datum/preferences/preferences, visuals_only = FALSE)
 	var/datum/language_holder/language_holder = target.get_language_holder()
 	language_holder.adjust_languages_to_prefs(preferences)
 

@@ -217,10 +217,6 @@ GLOBAL_LIST_INIT(shove_disarming_types, typecacheof(list(
 #define AMMO_BOX_PER_BULLET 1
 /// Ammo box will have a different sprite for any ammo at all, and no ammo, <icon_state>-full <icon_state>-empty
 #define AMMO_BOX_FULL_EMPTY 2
-//SKYRAT EDIT ADDITON BEGIN - SEC_HAUL
-///ammo box will have a different state for full and empty; <icon_state>-full and <icon_state>-0
-#define AMMO_BOX_FULL_EMPTY_BASIC 3
-//SKYRAT EDIT END
 
 #define SUPPRESSED_NONE 0
 #define SUPPRESSED_QUIET 1 ///standard suppressed

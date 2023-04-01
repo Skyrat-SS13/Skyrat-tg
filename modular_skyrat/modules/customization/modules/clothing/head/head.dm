@@ -17,7 +17,7 @@
 /obj/item/clothing/head/hats/flakhelm/Initialize(mapload)
 	. = ..()
 
-	create_storage(type = /datum/storage/pockets/tiny/spacenam)
+	create_storage(storage_type = /datum/storage/pockets/tiny/spacenam)
 
 /datum/storage/pockets/tiny/spacenam
 	attack_hand_interact = TRUE		//So you can actually see what you stuff in there
@@ -345,7 +345,7 @@
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	greyscale_colors = "#972A2A#EFEFEF"
 	flags_1 = IS_PLAYER_COLORABLE_1
-  
+
 /obj/item/clothing/head/costume/cowboyhat_old
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'

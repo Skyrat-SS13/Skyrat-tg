@@ -125,6 +125,7 @@
 		"Default" = list(SKIN_ICON_STATE = "clown"),
 		"Bootyborg" = list(SKIN_ICON_STATE = "bootyclown", SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_clown.dmi'),
 		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootyclown", SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_clown.dmi'),
+		"Arachne" = list(SKIN_ICON_STATE = "arachne_clown", SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_clown.dmi'),
 		"Marina" = list(SKIN_ICON_STATE = "marina_mommy", SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_clown.dmi', SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK)),
 		"Garish" = list(SKIN_ICON_STATE = "garish", SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_clown.dmi'),
 		"Robot" = list(SKIN_ICON_STATE = "clownbot", SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/robots_clown.dmi'),

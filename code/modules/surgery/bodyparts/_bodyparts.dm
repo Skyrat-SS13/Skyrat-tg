@@ -42,7 +42,7 @@
 	///The ID of a species used to generate the icon. Needs to match the icon_state portion in the limbs file!
 	var/limb_id = SPECIES_HUMAN
 	//Defines what sprite the limb should use if it is also sexually dimorphic.
-	VAR_PROTECTED/limb_gender = "m"
+	var/limb_gender = "m"
 	///Is there a sprite difference between male and female?
 	var/is_dimorphic = FALSE
 	///The actual color a limb is drawn as, set by /proc/update_limb()
@@ -167,7 +167,10 @@
 	var/obj/item/hand_item/self_grasp/grasped_by
 
 	///A list of all the external organs we've got stored to draw horns, wings and stuff with (special because we are actually in the limbs unlike normal organs :/ )
+	///If someone ever comes around to making all organs exist in the bodyparts, you can just remove this and use a typed loop
 	var/list/obj/item/organ/external/external_organs = list()
+	///A list of all bodypart overlays to draw
+	var/list/bodypart_overlays = list()
 
 	/// Type of an attack from this limb does. Arms will do punches, Legs for kicks, and head for bites. (TO ADD: tactical chestbumps)
 	var/attack_type = BRUTE
@@ -222,8 +225,14 @@
 	if(current_splint)
 		qdel(current_splint)
 	//SKYRAT EDIT ADDITION END
-	for(var/external_organ in external_organs)
-		qdel(external_organ)
+
+	if(length(external_organs))
+		for(var/obj/item/organ/external/external_organ as anything in external_organs)
+			external_organs -= external_organ
+			qdel(external_organ) // It handles removing its references to this limb on its own.
+
+		external_organs = list()
+
 	return ..()
 
 /obj/item/bodypart/forceMove(atom/destination) //Please. Never forcemove a limb if its's actually in use. This is only for borgs.
@@ -408,7 +417,7 @@
 		return FALSE
 
 	var/list/bodypart_organs
-	for(var/obj/item/organ/organ_check as anything in owner.internal_organs) //internal organs inside the dismembered limb are dropped.
+	for(var/obj/item/organ/organ_check as anything in owner.organs) //internal organs inside the dismembered limb are dropped.
 		if(check_zone(organ_check.zone) == body_zone)
 			LAZYADD(bodypart_organs, organ_check) // this way if we don't have any, it'll just return null
 
@@ -674,6 +683,7 @@
 				SIGNAL_REMOVETRAIT(TRAIT_NOBLOOD),
 				SIGNAL_ADDTRAIT(TRAIT_NOBLOOD),
 				))
+		UnregisterSignal(old_owner, COMSIG_ATOM_RESTYLE)
 	if(owner)
 		if(initial(can_be_disabled))
 			if(HAS_TRAIT(owner, TRAIT_NOLIMBDISABLE))
@@ -688,13 +698,16 @@
 		if(needs_update_disabled)
 			update_disabled()
 
+		RegisterSignal(owner, COMSIG_ATOM_RESTYLE, PROC_REF(on_attempt_feature_restyle_mob))
 
 	refresh_bleed_rate()
 	return old_owner
 
 /obj/item/bodypart/proc/on_removal()
-	for(var/trait in bodypart_traits)
-		REMOVE_TRAIT(owner, trait, bodypart_trait_source)
+	if(!length(bodypart_traits))
+		return
+
+	owner.remove_traits(bodypart_traits, bodypart_trait_source)
 
 ///Proc to change the value of the `can_be_disabled` variable and react to the event of its change.
 /obj/item/bodypart/proc/set_can_be_disabled(new_can_be_disabled)
@@ -919,12 +932,12 @@
 		// to be able to mask it proper in case this limb is a leg.
 		if(blocks_emissive)
 			var/atom/location = loc || owner || src
-			var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, location, alpha = limb.alpha)
+			var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, location, layer = limb.layer, alpha = limb.alpha)
 			limb_em_block.dir = image_dir
 			. += limb_em_block
 
 			if(aux_zone)
-				var/mutable_appearance/aux_em_block = emissive_blocker(aux.icon, aux.icon_state, location, alpha = aux.alpha)
+				var/mutable_appearance/aux_em_block = emissive_blocker(aux.icon, aux.icon_state, location, layer = aux.layer, alpha = aux.alpha)
 				aux_em_block.dir = image_dir
 				. += aux_em_block
 		//EMISSIVE CODE END
@@ -938,31 +951,16 @@
 			//add two masked images based on the old one
 			. += leg_source.generate_masked_leg(limb_image, image_dir)
 
-	// And finally put external organs on if not husked
+	// And finally put bodypart_overlays on if not husked
 	if(!is_husked)
 		//Draw external organs like horns and frills
-		for(var/obj/item/organ/external/external_organ as anything in external_organs)
-			if(!dropped && !external_organ.can_draw_on_bodypart(owner))
+		for(var/datum/bodypart_overlay/overlay as anything in bodypart_overlays)
+			if(!dropped && !overlay.can_draw_on_bodypart(owner)) //if you want different checks for dropped bodyparts, you can insert it here
 				continue
 			//Some externals have multiple layers for background, foreground and between
-			/* SKYRAT EDIT START - Customization (better layer handling for external organs) - ORIGINAL:
-			for(var/external_layer in external_organ.all_layers)
-				if(external_organ.layers & external_layer)
-					external_organ.generate_and_retrieve_overlays(
-						.,
-						image_dir,
-						external_organ.bitflag_to_layer(external_layer),
-						limb_gender,
-					)
-			*/ // ORIGINAL END
-			for(var/external_layer in external_organ.relevant_layers)
-				external_organ.generate_and_retrieve_overlays(
-					.,
-					image_dir,
-					external_layer,
-					limb_gender,
-				)
-			// SKYRAT EDIT END
+			for(var/external_layer in overlay.all_layers)
+				if(overlay.layers & external_layer)
+					. += overlay.get_overlay(external_layer, src)
 
 	// SKYRAT EDIT ADDITION BEGIN - MARKINGS CODE
 	var/override_color
@@ -1022,6 +1020,16 @@
 	// SKYRAT EDIT END - MARKINGS CODE END
 
 	return .
+
+///Add a bodypart overlay and call the appropriate update procs
+/obj/item/bodypart/proc/add_bodypart_overlay(datum/bodypart_overlay/overlay)
+	bodypart_overlays += overlay
+	overlay.added_to_limb(src)
+
+///Remove a bodypart overlay and call the appropriate update procs
+/obj/item/bodypart/proc/remove_bodypart_overlay(datum/bodypart_overlay/overlay)
+	bodypart_overlays -= overlay
+	overlay.removed_from_limb(src)
 
 /obj/item/bodypart/deconstruct(disassembled = TRUE)
 	SHOULD_CALL_PARENT(TRUE)
@@ -1207,8 +1215,8 @@
 
 ///Loops through all of the bodypart's external organs and update's their color.
 /obj/item/bodypart/proc/recolor_external_organs()
-	for(var/obj/item/organ/external/ext_organ as anything in external_organs)
-		ext_organ.inherit_color(force = TRUE)
+	for(var/datum/bodypart_overlay/mutant/overlay in bodypart_overlays)
+		overlay.inherit_color(src, force = TRUE)
 
 ///A multi-purpose setter for all things immediately important to the icon and iconstate of the limb.
 /obj/item/bodypart/proc/change_appearance(icon, id, greyscale, dimorphic)

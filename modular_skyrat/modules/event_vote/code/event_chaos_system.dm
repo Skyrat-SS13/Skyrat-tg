@@ -235,6 +235,9 @@
 *	HIGH CHAOS EVENTS
 */
 
+/datum/round_event_control/changeling
+	chaos_level = EVENT_CHAOS_HIGH
+
 /datum/round_event_control/slaughter
 	chaos_level = EVENT_CHAOS_HIGH
 

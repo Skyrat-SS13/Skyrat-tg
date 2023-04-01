@@ -542,6 +542,22 @@
 	affected_bodyparts = HEAD
 	recommended_species = list(SPECIES_XENO)
 
+/datum/body_marking/tertiary/dtiger
+	name = "Dark Tiger Body"
+	icon_state = "dtiger"
+	affected_bodyparts = CHEST
+
+/datum/body_marking/tertiary/ltiger
+	name = "Light Tiger Body"
+	icon_state = "ltiger"
+	affected_bodyparts = CHEST
+
+/datum/body_marking/tertiary/lbelly
+	name = "Light Belly"
+	icon_state = "lbelly"
+	affected_bodyparts = CHEST
+
+
 /datum/body_marking/tattoo
 	icon = 'modular_skyrat/master_files/icons/mob/body_markings/tattoo_markings.dmi'
 	recommended_species = null

@@ -375,13 +375,6 @@ const PageMain = (props, context) => {
               onClick={() => act('makePriorityAnnouncement')}
             />
           )}
-          {!!aprilFools && !!canMakeAnnouncement && (
-            <Button
-              icon="bullhorn"
-              content="Call Emergency Meeting"
-              onClick={() => act('emergency_meeting')}
-            />
-          )}
           {!!canToggleEmergencyAccess && (
             <Button.Confirm
               icon="id-card-o"
@@ -471,8 +464,8 @@ const PageMain = (props, context) => {
           {!!canMakeAnnouncement && (
             <Button
               icon="bullhorn"
-              content="Call Sol Federation 811: Breach Control Response"
-              onClick={() => act('callBreachControl')}
+              content="Call Sol Federation 811: Advanced Atmospherics Response"
+              onClick={() => act('callTheCatmos')}
             />
           )}
           {!!canMakeAnnouncement && (

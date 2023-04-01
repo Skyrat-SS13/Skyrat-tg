@@ -21,13 +21,11 @@
 
 /obj/item/ammo_box/advanced/b6mm/rubber
 	name = "6.3mm dissuasive pellet box"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box10mm-rubber"
 	ammo_type = /obj/item/ammo_casing/b6mm/rubber
 
 /obj/item/ammo_box/advanced/b6mm/ihdf
 	name = "6.3mm fragmentation pellet box"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box10mm-hv"
 	ammo_type = /obj/item/ammo_casing/b6mm/ihdf
 
@@ -137,8 +135,6 @@
 		if(AMMO_BOX_PER_BULLET)
 			icon_state = "[initial(icon_state)]_[round_type]-[shells_left]"
 		if(AMMO_BOX_FULL_EMPTY)
-			icon_state = "[initial(icon_state)]_[round_type]-[shells_left ? "[max_ammo]" : "0"]"
-		if(AMMO_BOX_FULL_EMPTY_BASIC)
 			icon_state = "[initial(icon_state)]_[round_type]-[shells_left ? "full" : "empty"]"
 	desc = "[initial(desc)] There [(shells_left == 1) ? "is" : "are"] [shells_left] shell\s left!"
 	if(length(bullet_cost))
@@ -155,7 +151,7 @@
 	desc = "Designed to quickly reload revolvers."
 	icon_state = "speedloader"
 	max_ammo = 8
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	var/round_type = AMMO_TYPE_LETHAL
 	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
 	start_empty = TRUE //SOmething strange going on with refills.

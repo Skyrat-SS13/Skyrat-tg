@@ -260,6 +260,17 @@
 	var/list/hearers = get_hearers_in_view(vision_distance, src) //caches the hearers and then removes ignored mobs.
 	hearers -= ignored_mobs
 
+	//SKYRAT EDIT ADDITION BEGIN - AI QoL
+	for(var/mob/camera/ai_eye/ai_eye in hearers)
+		if(ai_eye.ai?.client && !(ai_eye.ai.stat == DEAD))
+			hearers -= ai_eye
+			hearers |= ai_eye.ai
+
+	for(var/obj/effect/overlay/holo_pad_hologram/holo in hearers)
+		if(holo.Impersonation?.client)
+			hearers |= holo.Impersonation
+	//SKYRAT EDIT ADDITION END - AI QoL
+
 	if(self_message)
 		hearers -= src
 
@@ -312,6 +323,18 @@
  */
 /atom/proc/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, audible_message_flags = NONE, separation = " ") // SKYRAT EDIT ADDITION - Better emotes
 	var/list/hearers = get_hearers_in_view(hearing_distance, src)
+
+	//SKYRAT EDIT ADDITION BEGIN - AI QoL
+	for(var/mob/camera/ai_eye/ai_eye in hearers)
+		if(ai_eye.ai?.client && !(ai_eye.ai.stat == DEAD))
+			hearers -= ai_eye
+			hearers |= ai_eye.ai
+
+	for(var/obj/effect/overlay/holo_pad_hologram/holo in hearers)
+		if(holo.Impersonation?.client)
+			hearers |= holo.Impersonation
+	//SKYRAT EDIT ADDITION END - AI QoL
+
 	if(self_message)
 		hearers -= src
 	var/raw_msg = message
@@ -1255,7 +1278,15 @@
 **/
 /mob/proc/has_light_nearby(light_amount = LIGHTING_TILE_IS_DARK)
 	var/turf/mob_location = get_turf(src)
-	return mob_location.get_lumcount() > light_amount
+	var/area/mob_area = get_area(src)
+
+	if(mob_location.get_lumcount() > light_amount)
+		return TRUE
+	else if(!mob_area.static_lighting)
+		return TRUE
+
+	return FALSE
+
 
 
 /// Can this mob read
@@ -1431,17 +1462,6 @@
 
 	if(. && slowdown_edit && isnum(diff))
 		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/admin_varedit, multiplicative_slowdown = diff)
-
-/mob/proc/set_active_storage(new_active_storage)
-	if(active_storage)
-		UnregisterSignal(active_storage, COMSIG_PARENT_QDELETING)
-	active_storage = new_active_storage
-	if(active_storage)
-		RegisterSignal(active_storage, COMSIG_PARENT_QDELETING, PROC_REF(active_storage_deleted))
-
-/mob/proc/active_storage_deleted(datum/source)
-	SIGNAL_HANDLER
-	set_active_storage(null)
 
 /// Cleanup proc that's called when a mob loses a client, either through client destroy or logout
 /// Logout happens post client del, so we can't just copypaste this there. This keeps things clean and consistent

@@ -14,6 +14,7 @@
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/cmg
 	fire_delay = 2 //Slightly buffed firespeed over the last cmg because the bullets are a bit weaker
 	burst_size = 1
+	actions_types = list()
 	can_bayonet = TRUE
 	knife_x_offset = 26
 	knife_y_offset = 10
@@ -21,7 +22,7 @@
 	mag_display_ammo = TRUE
 	empty_indicator = TRUE
 	projectile_damage_multiplier = 0.5
-	
+
 /obj/item/gun/ballistic/automatic/cmg/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/automatic_fire, 0.3 SECONDS)
@@ -40,7 +41,7 @@
 	ammo_type = /obj/item/ammo_casing/c9mm/rubber
 	caliber = CALIBER_9MM
 	max_ammo = 24
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/cmg/hp

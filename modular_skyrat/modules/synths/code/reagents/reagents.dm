@@ -13,6 +13,9 @@
 /datum/reagent/medicine/leporazine
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
+/datum/reagent/flightpotion
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
+
 // REAGENTS FOR SYNTHS
 
 /datum/reagent/medicine/system_cleaner

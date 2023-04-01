@@ -35,6 +35,9 @@
 
 	var/uplink_sale_count = 3
 
+	///the final objective the traitor has to accomplish, be it escaping, hijacking, or just martyrdom.
+	var/datum/objective/ending_objective
+
 /datum/antagonist/traitor/New(give_objectives = TRUE)
 	. = ..()
 	src.give_objectives = give_objectives
@@ -53,10 +56,10 @@
 		else
 			uplink_handler = uplink.uplink_handler
 		uplink_handler.primary_objectives = objectives
-		uplink_handler.has_progression = progression_enabled
+		uplink_handler.has_progression = TRUE
 		SStraitor.register_uplink_handler(uplink_handler)
 
-		uplink_handler.has_objectives = progression_enabled //SKYRAT EDIT
+		uplink_handler.has_objectives = TRUE
 		uplink_handler.generate_objectives()
 
 		if(uplink_handler.progression_points < SStraitor.current_global_progression)
@@ -72,8 +75,10 @@
 					uplink_items += item
 					continue
 		uplink_handler.extra_purchasable += create_uplink_sales(uplink_sale_count, /datum/uplink_category/discounts, 1, uplink_items)
-	if(give_objectives && progression_enabled) //SKYRAT EDIT - progression_enabled
+
+	if(give_objectives)
 		forge_traitor_objectives()
+		forge_ending_objective()
 
 	pick_employer()
 
@@ -144,6 +149,11 @@
 
 	possible_employers.Add(GLOB.syndicate_employers, GLOB.nanotrasen_employers)
 
+	if(istype(ending_objective, /datum/objective/hijack))
+		possible_employers -= GLOB.normal_employers
+	else //escape or martyrdom
+		possible_employers -= GLOB.hijack_employers
+
 	switch(faction)
 		if(FLAVOR_FACTION_SYNDICATE)
 			possible_employers -= GLOB.nanotrasen_employers
@@ -152,33 +162,74 @@
 	employer = pick(possible_employers)
 	traitor_flavor = strings(TRAITOR_FLAVOR_FILE, employer)
 
+/// Generates a complete set of traitor objectives up to the traitor objective limit, including non-generic objectives such as martyr and hijack.
 /datum/antagonist/traitor/proc/forge_traitor_objectives()
 	objectives.Cut()
+	var/objective_count = 0
 
-	var/list/kill_targets = list() //for blacklisting already-set targets
+	if((GLOB.joined_player_list.len >= HIJACK_MIN_PLAYERS) && prob(HIJACK_PROB))
+		is_hijacker = TRUE
+		objective_count++
+
 	var/objective_limit = CONFIG_GET(number/traitor_objectives_amount)
-	for(var/i in 1 to objective_limit)
-		var/list/ai_targets = active_ais(z = 2) //For multiZ stations, this proc will include AIs on all station levels if the provided arg is 2.
-		ai_targets -= kill_targets
-		if(ai_targets.len)
-			var/diceroll = rand(1, (living_player_count() - 1)) //AI kill and crew kill objectives are different, but I want a rough equal chance for AIs to be targets. Maybe I'll refractor this someday
-			if(diceroll <= ai_targets.len)
-				var/datum/objective/task = new /datum/objective/destroy()
-				task.owner = owner
-				task.find_target(blacklist = kill_targets)
-				kill_targets += task.target
-				objectives += task
-				continue
 
-		var/datum/objective/task = new /datum/objective/assassinate()
-		task.owner = owner
-		task.find_target(blacklist = kill_targets)
-		kill_targets += task.target
-		objectives += task
+	// for(in...to) loops iterate inclusively, so to reach objective_limit we need to loop to objective_limit - 1
+	// This does not give them 1 fewer objectives than intended.
+	for(var/i in objective_count to objective_limit - 1)
+		objectives += forge_single_generic_objective()
 
-	var/datum/objective/escape/bye = new /datum/objective/escape()
-	objectives += bye
-	bye.owner = owner
+/**
+ * ## forge_ending_objective
+ *
+ * Forges the endgame objective and adds it to this datum's objective list.
+ */
+/datum/antagonist/traitor/proc/forge_ending_objective()
+	if(is_hijacker)
+		ending_objective = new /datum/objective/hijack
+		ending_objective.owner = owner
+		return
+
+	var/martyr_compatibility = TRUE
+
+	for(var/datum/objective/traitor_objective in objectives)
+		if(!traitor_objective.martyr_compatible)
+			martyr_compatibility = FALSE
+			break
+
+	if(martyr_compatibility && prob(MARTYR_PROB))
+		ending_objective = new /datum/objective/martyr
+		ending_objective.owner = owner
+		objectives += ending_objective
+		return
+
+	ending_objective = new /datum/objective/escape
+	ending_objective.owner = owner
+	objectives += ending_objective
+
+/datum/antagonist/traitor/proc/forge_single_generic_objective()
+	if(prob(KILL_PROB))
+		var/list/active_ais = active_ais()
+		if(active_ais.len && prob(DESTROY_AI_PROB(GLOB.joined_player_list.len)))
+			var/datum/objective/destroy/destroy_objective = new()
+			destroy_objective.owner = owner
+			destroy_objective.find_target()
+			return destroy_objective
+
+		if(prob(MAROON_PROB))
+			var/datum/objective/maroon/maroon_objective = new()
+			maroon_objective.owner = owner
+			maroon_objective.find_target()
+			return maroon_objective
+
+		var/datum/objective/assassinate/kill_objective = new()
+		kill_objective.owner = owner
+		kill_objective.find_target()
+		return kill_objective
+
+	var/datum/objective/steal/steal_objective = new()
+	steal_objective.owner = owner
+	steal_objective.find_target()
+	return steal_objective
 
 /datum/antagonist/traitor/apply_innate_effects(mob/living/mob_override)
 	. = ..()
@@ -240,16 +291,11 @@
 	if(objectives.len) //If the traitor had no objectives, don't need to process this.
 		var/count = 1
 		for(var/datum/objective/objective in objectives)
-			// SKYRAT EDIT START - No greentext
-			/*
 			if(objective.check_completion())
 				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] [span_greentext("Success!")]"
 			else
 				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] [span_redtext("Fail.")]"
 				traitor_won = FALSE
-			*/
-			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text]"
-			// SKYRAT EDIT END - No greentext
 			count++
 		if(uplink_handler.final_objective)
 			objectives_text += "<br>[span_greentext("[traitor_won ? "Additionally" : "However"], the final objective \"[uplink_handler.final_objective]\" was completed!")]"
@@ -267,15 +313,8 @@
 	result += objectives_text
 
 	if(uplink_handler)
-		var/completed_objectives_text = "Completed Uplink Objectives: "
-		for(var/datum/traitor_objective/objective as anything in uplink_handler.completed_objectives)
-			if(objective.objective_state == OBJECTIVE_STATE_COMPLETED)
-				completed_objectives_text += "<br><B>[objective.name]</B> - ([objective.telecrystal_reward] TC, [DISPLAY_PROGRESSION(objective.progression_reward)] Reputation)"
-		result += completed_objectives_text
 		result += "<br>The traitor had a total of [DISPLAY_PROGRESSION(uplink_handler.progression_points)] Reputation and [uplink_handler.telecrystals] Unused Telecrystals."
 
-	// SKYRAT EDIT REMOVAL
-	/*
 	var/special_role_text = lowertext(name)
 
 	if(traitor_won)
@@ -283,7 +322,6 @@
 	else
 		result += span_redtext("The [special_role_text] has failed!")
 		SEND_SOUND(owner.current, 'sound/ambience/ambifailure.ogg')
-	*/
 
 	return result.Join("<br>")
 
