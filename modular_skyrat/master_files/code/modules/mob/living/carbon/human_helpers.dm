@@ -4,7 +4,7 @@
 	var/t_He = p_they(TRUE)
 	var/t_is = p_are()
 	//This checks to see if the body is revivable
-	if(key || !getorgan(/obj/item/organ/internal/brain) || ghost?.can_reenter_corpse)
+	if(key || !get_organ_by_type(/obj/item/organ/internal/brain) || ghost?.can_reenter_corpse)
 		return span_deadsay("[t_He] [t_is] limp and unresponsive; they're still twitching on occasion, perhaps [p_they(FALSE)] can still be saved..!")
 	else
 		return span_deadsay("[t_He] [t_is] limp and unresponsive; there are no signs of life and they've degraded beyond revival...")
