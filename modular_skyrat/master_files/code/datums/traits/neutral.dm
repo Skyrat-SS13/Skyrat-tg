@@ -184,7 +184,7 @@
 
 /datum/quirk/item_quirk/canine/add_unique(client/client_source)
 	var/mob/living/carbon/human/human_holder = quirk_holder
-	var/obj/item/organ/internal/tongue/old_tongue = human_holder.getorganslot(ORGAN_SLOT_TONGUE)
+	var/obj/item/organ/internal/tongue/old_tongue = human_holder.get_organ_slot(ORGAN_SLOT_TONGUE)
 	old_tongue.Remove(human_holder)
 	qdel(old_tongue)
 

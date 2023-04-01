@@ -61,7 +61,7 @@
 	var/mob/living/carbon/human/carbon_holder = quirk_holder
 	if (!istype(carbon_holder) || !lungs_typepath)
 		return
-	var/current_lungs = carbon_holder.getorganslot(ORGAN_SLOT_LUNGS)
+	var/current_lungs = carbon_holder.get_organ_slot(ORGAN_SLOT_LUNGS)
 	if (istype(current_lungs, lungs_typepath))
 		return
 	lungs_holding = current_lungs
@@ -74,7 +74,7 @@
 	var/mob/living/carbon/carbon_holder = quirk_holder
 	if (!istype(carbon_holder) || !lungs_holding)
 		return
-	var/obj/item/organ/internal/lungs/lungs = carbon_holder.getorganslot(ORGAN_SLOT_LUNGS)
+	var/obj/item/organ/internal/lungs/lungs = carbon_holder.get_organ_slot(ORGAN_SLOT_LUNGS)
 	if (lungs != lungs_added && lungs != lungs_holding)
 		qdel(lungs_holding)
 		return

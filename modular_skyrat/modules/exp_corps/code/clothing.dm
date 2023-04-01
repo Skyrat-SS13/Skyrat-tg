@@ -227,7 +227,7 @@
 
 /obj/item/clothing/head/helmet/expeditionary_corps/proc/enable_nv(mob/user)
 	if(current_user)
-		var/obj/item/organ/internal/eyes/my_eyes = current_user.getorgan(/obj/item/organ/internal/eyes)
+		var/obj/item/organ/internal/eyes/my_eyes = current_user.get_organ_by_type(/obj/item/organ/internal/eyes)
 		if(my_eyes)
 			my_eyes.color_cutoffs = list(10, 30, 10)
 			my_eyes.flash_protect = FLASH_PROTECTION_SENSITIVE
@@ -235,7 +235,7 @@
 
 /obj/item/clothing/head/helmet/expeditionary_corps/proc/disable_nv()
 	if(current_user)
-		var/obj/item/organ/internal/eyes/my_eyes = current_user.getorgan(/obj/item/organ/internal/eyes)
+		var/obj/item/organ/internal/eyes/my_eyes = current_user.get_organ_by_type(/obj/item/organ/internal/eyes)
 		if(my_eyes)
 			my_eyes.color_cutoffs = initial(my_eyes.color_cutoffs)
 			my_eyes.flash_protect = initial(my_eyes.flash_protect)
