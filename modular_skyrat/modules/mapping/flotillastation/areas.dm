@@ -55,18 +55,23 @@
 
 /area/station/science/habitation/observation
 	name = "\improper Science Observation Deck"
-	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon = 'icons/area/areas_station.dmi'
 	icon_state = "science_breakroom"
 
 /area/station/science/habitation/quarters
 	name = "\improper Science Crew Quarters"
-	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon = 'icons/area/areas_station.dmi'
 	icon_state = "science_breakroom"
 
 /area/station/science/habitation/shower
 	name = "\improper Science Shower Room"
-	icon = 'modular_skyrat/modules/mapping/icons/areas/areas_station.dmi'
+	icon = 'icons/area/areas_station.dmi'
 	icon_state = "science_breakroom"
+
+/area/station/engineering/atmos/burn_chamber
+	name = "\improper Atmos Burn Chamber"
+	icon = 'icons/area/areas_station.dmi'
+	icon_state = "atmos"
 
 //SOLARS//
 //SERVICE//
