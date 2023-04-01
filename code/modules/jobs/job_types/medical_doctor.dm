@@ -52,7 +52,6 @@
 	head = /obj/item/clothing/head/utility/surgerycap
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	l_hand = /obj/item/storage/medkit/surgery
-	r_hand = /obj/item/storage/box/gunset/roundstart_guns/medical // SKYRAT EDIT ADD
 
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel/med
