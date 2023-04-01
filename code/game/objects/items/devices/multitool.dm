@@ -142,3 +142,7 @@
 	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
 	icon_state = "multitool_cyborg"
 	toolspeed = 0.5
+
+#undef PROXIMITY_NEAR
+#undef PROXIMITY_NONE
+#undef PROXIMITY_ON_SCREEN
