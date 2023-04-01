@@ -232,6 +232,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			if (!message_index)
 				return
 			LAZYREMOVE(messages, LAZYACCESS(messages, message_index))
+<<<<<<< HEAD
 		/* SKYRAT EDIT REMOVAL START
 		if ("emergency_meeting")
 			if(!check_holidays(APRIL_FOOLS))
@@ -240,6 +241,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				return
 			emergency_meeting(usr)
 		*/ // SKYRAT EDIT REMOVAL END
+=======
+>>>>>>> b0a44b0d779 (Removes emergency meetings (#74437))
 		if ("makePriorityAnnouncement")
 			if (!authenticated_as_silicon_or_captain(usr) && !syndicate)
 				return
@@ -773,6 +776,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 	return length(CONFIG_GET(keyed_list/cross_server)) > 0
 
+<<<<<<< HEAD
 /**
  * Call an emergency meeting
  *
@@ -791,6 +795,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	deadchat_broadcast(" called an emergency meeting from [span_name("[get_area_name(usr, TRUE)]")].", span_name("[user.real_name]"), user, message_type=DEADCHAT_ANNOUNCEMENT)
 
 
+=======
+>>>>>>> b0a44b0d779 (Removes emergency meetings (#74437))
 /obj/machinery/computer/communications/proc/make_announcement(mob/living/user)
 	var/is_ai = issilicon(user)
 	if(!SScommunications.can_announce(user, is_ai))
