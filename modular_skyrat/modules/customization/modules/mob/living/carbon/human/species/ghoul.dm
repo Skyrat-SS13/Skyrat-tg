@@ -12,7 +12,8 @@
 	mutant_bodyparts = list("ghoulcolor" = "Tan Necrotic")
 	default_mutant_bodyparts = list(
 		"tail" = "None",
-		"ears" = "None"
+		"ears" = "None",
+		"legs" = "Normal Legs"
 	)
 	mutanttongue = /obj/item/organ/internal/tongue/ghoul
 	inherent_traits = list(
