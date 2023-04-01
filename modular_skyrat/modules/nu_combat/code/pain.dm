@@ -29,6 +29,14 @@
 	if(amount > 0)
 		take_pain(amount, BREATH_HARM)
 
+/datum/species/apply_damage(damage, damagetype, def_zone, blocked, mob/living/carbon/human/H, forced, spread_damage, wound_bonus, bare_wound_bonus, sharpness, attack_direction)
+	. = ..()
+	var/pain = damage
+	if(damagetype == OXY)
+		pain *= 0.5
+	if(damagetype == OXY || damagetype == BRUTE || damagetype == BURN)
+		H.take_pain(pain)
+
 /mob/living/carbon/Life(delta_time, times_fired)
 	. = ..()
 	process_pain()
@@ -56,7 +64,7 @@
 
 	COOLDOWN_START(src, time_till_pain_process, 6 SECONDS)
 
-	take_pain(-2)
+	take_pain(-1)
 
 	for(var/obj/item/bodypart/wounded_part as anything in get_wounded_bodyparts())
 		for(var/datum/wound/ouchie as anything in wounded_part.wounds)
