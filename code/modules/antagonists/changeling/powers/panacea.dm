@@ -12,7 +12,7 @@
 	to_chat(user, span_notice("We cleanse impurities from our form."))
 	..()
 	var/list/bad_organs = list(
-		user.get_organ(/obj/item/organ/internal/empowered_borer_egg), // SKYRAT EDIT ADDITION
+		user.get_organ_by_type(/obj/item/organ/internal/empowered_borer_egg), // SKYRAT EDIT ADDITION
 		user.get_organ_by_type(/obj/item/organ/internal/body_egg),
 		user.get_organ_by_type(/obj/item/organ/internal/zombie_infection))
 

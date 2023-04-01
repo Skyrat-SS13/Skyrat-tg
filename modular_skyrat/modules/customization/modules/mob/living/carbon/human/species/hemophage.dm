@@ -616,7 +616,7 @@
 // We need to override it here because we changed their vampire heart with an Hemophage heart
 /mob/living/carbon/get_status_tab_items()
 	. = ..()
-	var/obj/item/organ/internal/heart/hemophage/tumor_heart = getorgan(/obj/item/organ/internal/heart/hemophage)
+	var/obj/item/organ/internal/heart/hemophage/tumor_heart = get_organ_by_type(/obj/item/organ/internal/heart/hemophage)
 	if(tumor_heart)
 		. += "Current blood level: [blood_volume]/[BLOOD_VOLUME_MAXIMUM]"
 
@@ -689,7 +689,7 @@
 	if(!linked_alert)
 		return
 
-	var/obj/item/organ/internal/heart/hemophage/tumor_heart = owner.getorgan(/obj/item/organ/internal/heart/hemophage)
+	var/obj/item/organ/internal/heart/hemophage/tumor_heart = owner.get_organ_by_type(/obj/item/organ/internal/heart/hemophage)
 	if(tumor_heart)
 		var/old_layer = tumor_heart.layer
 		var/old_plane = tumor_heart.plane

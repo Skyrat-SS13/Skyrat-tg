@@ -259,7 +259,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		var/datum/sprite_accessory/mutant_accessory = GLOB.sprite_accessories[key][target.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 
 		if(mutant_accessory?.factual && mutant_accessory.organ_type)
-			var/obj/item/organ/current_organ = target.getorgan(mutant_accessory.organ_type)
+			var/obj/item/organ/current_organ = target.get_organ_by_type(mutant_accessory.organ_type)
 
 			if(!current_organ || replace_current)
 				var/obj/item/organ/replacement = SSwardrobe.provide_type(mutant_accessory.organ_type)
