@@ -60,6 +60,7 @@
 	icon_state = "engilaser"
 	damage = 20
 	armour_penetration = 75
+	speed = 0.8
 
 // Science Plasma Gun
 
