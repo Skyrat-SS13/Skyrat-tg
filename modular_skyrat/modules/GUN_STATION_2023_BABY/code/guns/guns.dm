@@ -131,6 +131,8 @@
 	multiload = FALSE
 
 /obj/item/ammo_casing/bloodvial
+	name = "\improper 'Harmacist' blood vial"
+	desc = "A vial of blood, which can be refilled using either your own, or someone else's blood when empty. Just jab them with the needle end of the cartridge."
 	projectile_type = /obj/projectile/bullet/pellet/bone_fragment/strong
 	icon = 'modular_skyrat/modules/GUN_STATION_2023_BABY/icons/guns/magazines.dmi'
 	icon_state = "vial"
