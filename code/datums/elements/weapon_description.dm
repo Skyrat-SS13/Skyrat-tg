@@ -39,11 +39,7 @@
 	SIGNAL_HANDLER
 
 	if(item.force >= 5 || item.throwforce >= 5 || item.override_notes || item.offensive_notes || attached_proc) /// Only show this tag for items that could feasibly be weapons, shields, or those that have special notes
-<<<<<<< HEAD
-		examine_texts += span_notice("OOC: It has an ever-updating bluespace <a href='?src=[REF(item)];examine=1'>warning label.</a>") //SKYRAT EDIT ORIGINAL: ("It appears to have an ever-updating bluespace <a href='?src=[REF(item)];examine=1'>warning label.</a>")
-=======
 		examine_texts += span_notice("<a href='?src=[REF(item)];examine=1'>See combat information.</a>")
->>>>>>> 21ef45fa6d4 (OOC-ifies the Bluespace Tag (#74203))
 
 /**
  *
