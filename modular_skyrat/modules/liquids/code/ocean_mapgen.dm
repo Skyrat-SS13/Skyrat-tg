@@ -1,3 +1,5 @@
+#define BIOME_RANDOM_SQUARE_DRIFT 2
+
 //Mostly a copypaste of the jungle generator
 /datum/map_generator/ocean_generator
 	///2D list of all biomes based on heat and humidity combos.
@@ -93,3 +95,5 @@
 
 	flora_spawn_chance = 4
 	flora_spawn_list = list(/obj/structure/flora/rock = 1, /obj/structure/flora/rock/pile = 1)
+
+#undef BIOME_RANDOM_SQUARE_DRIFT

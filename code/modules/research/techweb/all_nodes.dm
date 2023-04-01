@@ -38,7 +38,6 @@
 		"conveyor_belt",
 		"conveyor_switch",
 		"custom_vendor_refill",
-		"design_disk",
 		"destructive_analyzer",
 		"destructive_scanner",
 		"desttagger",
@@ -85,6 +84,7 @@
 		"plastitanium",
 		"plastitaniumglass",
 		"plate",
+		"polarizer", // SKYRAT EDIT ADDITION - Polarized windows
 		"prox_sensor",
 		"radio_headset",
 		"rdconsole",

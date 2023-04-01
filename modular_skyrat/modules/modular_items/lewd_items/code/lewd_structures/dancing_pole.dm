@@ -49,10 +49,11 @@
 	)
 
 
-/obj/structure/stripper_pole/multitool_act(mob/living/user, obj/item/used_item)
+/obj/structure/stripper_pole/CtrlClick(mob/user)
 	. = ..()
-	if(.)
-		return
+	if(. == FALSE)
+		return FALSE
+
 	var/choice = show_radial_menu(user, src, pole_designs, radius = 50, require_near = TRUE)
 	if(!choice)
 		return FALSE
@@ -154,38 +155,22 @@
 		dancer.forceMove(get_turf(src))
 		dancer = null
 
-
-/obj/item/polepack
-	name = "stripper pole flatpack"
-	desc = "A flatpack containing a stripper pole. You could use a <b>wrench</b> to assemble it."
-	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/dancing_pole.dmi'
-	icon_state = "pole_base"
-	w_class = WEIGHT_CLASS_HUGE
-
-
-/obj/item/polepack/wrench_act(mob/living/user, obj/item/used_item, params) //erecting a pole here.
+/obj/structure/stripper_pole/CtrlShiftClick(mob/user)
 	. = ..()
-	add_fingerprint(user)
-	if(item_flags & IN_INVENTORY || item_flags & IN_STORAGE)
-		return
-	balloon_alert(user, "assembling...")
-	if(!used_item.use_tool(src, user, 8 SECONDS, volume = 50))
-		balloon_alert(user, "interrupted!")
-		return
-	balloon_alert(user, "assembled")
-	new /obj/structure/stripper_pole(get_turf(user))
-	qdel(src)
-	return TRUE
+	if(. == FALSE)
+		return FALSE
 
-
-/obj/structure/stripper_pole/wrench_act(mob/living/user, obj/item/used_item, params) //un-erecting a pole.
-	. = ..()
 	add_fingerprint(user)
 	balloon_alert(user, "disassembling...")
-	if(!used_item.use_tool(src, user, 8 SECONDS, volume = 50))
-		balloon_alert(user, "interrupted!")
+	if(!do_after(user, 8 SECONDS, src))
+		balloon_alert(user, "disassembly interrupted!")
 		return
+
 	balloon_alert(user, "disassembled")
-	new /obj/item/polepack(get_turf(user))
+	new /obj/item/construction_kit/pole(get_turf(user))
 	qdel(src)
 	return TRUE
+
+/obj/structure/stripper_pole/examine(mob/user)
+	. = ..()
+	. += span_purple("[src] can be disassembled by using Ctrl+Shift+Click")
