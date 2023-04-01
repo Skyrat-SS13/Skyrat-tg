@@ -34,6 +34,10 @@
 		/area/station/cargo/warehouse,
 		// maintenence areas are not required to be connected
 		/area/station/maintenance,
+		// SKYRAT EDIT ADDITION BEGIN
+		// Void Raptor
+		/area/station/medical/coldroom,
+		// SKYRAT EDIT ADDITION END
 	)
 	for(var/ignored_type in ignored_areas)
 		station_areas_remaining -= typesof(ignored_type)
@@ -47,6 +51,10 @@
 		/area/station/medical/virology,
 		// ai satt
 		/area/station/ai_monitored/turret_protected/ai,
+		// SKYRAT EDIT ADDITION BEGIN
+		// Void Raptor
+		/area/station/service/chapel,
+		// SKYRAT EDIT ADDITION END
 	)
 	for(var/area/start_area as anything in start_areas)
 		var/area/area_instance = GLOB.areas_by_type[start_area]
