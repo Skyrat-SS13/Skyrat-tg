@@ -46,6 +46,15 @@
 	caliber = CALIBER_LASER
 	max_ammo = 10
 
+/obj/item/ammo_box/magazine/recharge/engilaser/update_icon_state() // FUCK YOU /OBJ/ITEM/AMMO_BOX/MAGAZINE/RECHARGE
+	var/shells_left = LAZYLEN(stored_ammo)
+	switch(multiple_sprites)
+		if(AMMO_BOX_PER_BULLET)
+			icon_state = "[multiple_sprite_use_base ? base_icon_state : initial(icon_state)]-[shells_left]"
+		if(AMMO_BOX_FULL_EMPTY)
+			icon_state = "[multiple_sprite_use_base ? base_icon_state : initial(icon_state)]-[shells_left ? "full" : "empty"]"
+	return ..()
+
 /obj/item/ammo_casing/caseless/laser/engicutter
 	projectile_type = /obj/projectile/beam/laser/engicutter
 	fire_sound = 'modular_skyrat/modules/microfusion/sound/laser_1.ogg'
@@ -89,6 +98,15 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	ammo_type = /obj/item/ammo_casing/caseless/laser/plasma_glob
 	caliber = CALIBER_LASER
+
+/obj/item/ammo_box/magazine/recharge/plasmasci/update_icon_state() // FUCK YOU /OBJ/ITEM/AMMO_BOX/MAGAZINE/RECHARGE
+	var/shells_left = LAZYLEN(stored_ammo)
+	switch(multiple_sprites)
+		if(AMMO_BOX_PER_BULLET)
+			icon_state = "[multiple_sprite_use_base ? base_icon_state : initial(icon_state)]-[shells_left]"
+		if(AMMO_BOX_FULL_EMPTY)
+			icon_state = "[multiple_sprite_use_base ? base_icon_state : initial(icon_state)]-[shells_left ? "full" : "empty"]"
+	return ..()
 
 /obj/item/ammo_casing/caseless/laser/plasma_glob
 	projectile_type = /obj/projectile/beam/laser/plasma_glob
