@@ -1,6 +1,5 @@
 #define IMPORTANT_ACTION_COOLDOWN (60 SECONDS)
 #define EMERGENCY_ACCESS_COOLDOWN (30 SECONDS)
-#define MAX_STATUS_LINE_LENGTH 40
 
 #define STATE_BUYING_SHUTTLE "buying_shuttle"
 #define STATE_CHANGING_STATUS "changing_status"
@@ -130,7 +129,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 /obj/machinery/computer/communications/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(istype(emag_card, /obj/item/card/emag/battlecruiser))
-		if(!user.mind?.has_antag_datum(/datum/antagonist/traitor))
+		if(!IS_TRAITOR(user))
 			to_chat(user, span_danger("You get the feeling this is a bad idea."))
 			return
 		var/obj/item/card/emag/battlecruiser/caller_card = emag_card
@@ -1014,3 +1013,10 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 #undef STATE_CHANGING_STATUS
 #undef STATE_MAIN
 #undef STATE_MESSAGES
+
+//SKYRAT EDIT ADDITION
+#undef EMERGENCY_RESPONSE_POLICE
+#undef EMERGENCY_RESPONSE_ATMOS
+#undef EMERGENCY_RESPONSE_EMT
+#undef EMERGENCY_RESPONSE_EMAG
+//SKYRAT EDIT END

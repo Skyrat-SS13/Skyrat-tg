@@ -120,7 +120,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 		// eyes
 		if(!(NOEYESPRITES in species_traits))
-			var/obj/item/organ/internal/eyes/eye_organ = species_human.getorganslot(ORGAN_SLOT_EYES)
+			var/obj/item/organ/internal/eyes/eye_organ = species_human.get_organ_slot(ORGAN_SLOT_EYES)
 			var/mutable_appearance/no_eyeslay
 
 			var/add_pixel_x = 0
@@ -214,7 +214,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/can_wag_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null
 		return FALSE
-	var/obj/item/organ/external/tail/T = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+	var/obj/item/organ/external/tail/T = H.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(!T)
 		return FALSE
 	if(T.can_wag)
@@ -224,7 +224,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/is_wagging_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null
 		return FALSE
-	var/obj/item/organ/external/tail/T = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+	var/obj/item/organ/external/tail/T = H.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(!T)
 		return FALSE
 	return T.wagging
@@ -232,7 +232,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/start_wagging_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null
 		return
-	var/obj/item/organ/external/tail/T = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+	var/obj/item/organ/external/tail/T = H.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(!T)
 		return FALSE
 	T.wagging = TRUE
@@ -241,7 +241,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/stop_wagging_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null
 		return
-	var/obj/item/organ/external/tail/T = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+	var/obj/item/organ/external/tail/T = H.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(!T)
 		return
 	T.wagging = FALSE
@@ -259,7 +259,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		var/datum/sprite_accessory/mutant_accessory = GLOB.sprite_accessories[key][target.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 
 		if(mutant_accessory?.factual && mutant_accessory.organ_type)
-			var/obj/item/organ/current_organ = target.getorgan(mutant_accessory.organ_type)
+			var/obj/item/organ/current_organ = target.get_organ_by_type(mutant_accessory.organ_type)
 
 			if(!current_organ || replace_current)
 				var/obj/item/organ/replacement = SSwardrobe.provide_type(mutant_accessory.organ_type)
@@ -281,7 +281,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				replacement.Insert(target, special = TRUE, drop_if_replaced = FALSE)
 
 			// var/obj/item/organ/path = new SA.organ_type
-			// var/obj/item/organ/oldorgan = C.getorganslot(path.slot)
+			// var/obj/item/organ/oldorgan = C.get_organ_slot(path.slot)
 			// if(oldorgan)
 			// 	oldorgan.Remove(C,TRUE)
 			// 	QDEL_NULL(oldorgan)

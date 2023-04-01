@@ -173,7 +173,7 @@
 	patient.setOrganLoss(ORGAN_SLOT_BRAIN, brain_damage)
 
 	//Re-Applies Trauma
-	var/obj/item/organ/internal/brain/patient_brain = patient.getorgan(/obj/item/organ/internal/brain)
+	var/obj/item/organ/internal/brain/patient_brain = patient.get_organ_by_type(/obj/item/organ/internal/brain)
 
 	if(length(trauma_list))
 		patient_brain.traumas = trauma_list
@@ -187,7 +187,7 @@
 
 /// Checks the damage on the inputed organ and stores it.
 /obj/machinery/self_actualization_device/proc/check_organ(mob/living/carbon/human/patient, obj/item/organ/organ_to_check)
-	var/obj/item/organ/organ_to_track = patient.getorgan(organ_to_check)
+	var/obj/item/organ/organ_to_track = patient.get_organ_by_type(organ_to_check)
 
 	// If the organ is missing, the organ damage is automatically set to 100.
 	if(!organ_to_track)

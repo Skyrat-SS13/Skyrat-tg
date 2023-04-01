@@ -42,8 +42,6 @@
 		if(bprv & BODYPART_LIFE_UPDATE_HEALTH)
 			updatehealth()
 
-	check_cremation(delta_time, times_fired)
-
 	if(. && mind) //. == not dead
 		for(var/key in mind.addiction_points)
 			var/datum/addiction/addiction = SSaddiction.all_addictions[key]
@@ -58,8 +56,8 @@
 // Start of a breath chain, calls [carbon/proc/breathe()]
 /mob/living/carbon/handle_breathing(delta_time, times_fired)
 	var/next_breath = 4
-	var/obj/item/organ/internal/lungs/L = getorganslot(ORGAN_SLOT_LUNGS)
-	var/obj/item/organ/internal/heart/H = getorganslot(ORGAN_SLOT_HEART)
+	var/obj/item/organ/internal/lungs/L = get_organ_slot(ORGAN_SLOT_LUNGS)
+	var/obj/item/organ/internal/heart/H = get_organ_slot(ORGAN_SLOT_HEART)
 	if(L)
 		if(L.damage > L.high_threshold)
 			next_breath--
@@ -80,7 +78,7 @@
 
 // Second link in a breath chain, calls [carbon/proc/check_breath()]
 /mob/living/carbon/proc/breathe(delta_time, times_fired)
-	var/obj/item/organ/internal/lungs = getorganslot(ORGAN_SLOT_LUNGS)
+	var/obj/item/organ/internal/lungs = get_organ_slot(ORGAN_SLOT_LUNGS)
 	if(SEND_SIGNAL(src, COMSIG_CARBON_ATTEMPT_BREATHE) & COMSIG_CARBON_BLOCK_BREATH)
 		return
 
@@ -92,7 +90,7 @@
 
 	var/datum/gas_mixture/breath
 
-	if(!getorganslot(ORGAN_SLOT_BREATHING_TUBE))
+	if(!get_organ_slot(ORGAN_SLOT_BREATHING_TUBE))
 		if(health <= HEALTH_THRESHOLD_FULLCRIT || (pulledby?.grab_state >= GRAB_KILL) || (lungs?.organ_flags & ORGAN_FAILING))
 			losebreath++  //You can't breath at all when in critical or when being choked, so you're going to miss a breath
 
@@ -202,7 +200,7 @@
 	/// Indicates if there are moles of gas in the breath.
 	var/has_moles = breath.total_moles() != 0
 
-	var/obj/item/organ/internal/lungs = getorganslot(ORGAN_SLOT_LUNGS)
+	var/obj/item/organ/internal/lungs = get_organ_slot(ORGAN_SLOT_LUNGS)
 	// Indicates if lungs can breathe without gas.
 	var/can_breathe_vacuum = FALSE
 	if(lungs)
@@ -393,7 +391,7 @@
 		// More N2O, more severe side-effects. Causes stun/sleep.
 		n2o_euphoria = EUPHORIA_ACTIVE
 		throw_alert(ALERT_TOO_MUCH_N2O, /atom/movable/screen/alert/too_much_n2o)
-		// 60 gives them one second to wake up and run away a bit!
+		// give them one second of grace to wake up and run away a bit!
 		Unconscious(6 SECONDS)
 		// Enough to make the mob sleep.
 		if(n2o_pp > n2o_sleep_min)
@@ -502,7 +500,7 @@
 
 	// NOTE: organs_slot is sorted by GLOB.organ_process_order on insertion
 	for(var/slot in organs_slot)
-		// We don't use getorganslot here because we know we have the organ we want, since we're iterating the list containing em already
+		// We don't use get_organ_slot here because we know we have the organ we want, since we're iterating the list containing em already
 		// This code is hot enough that it's just not worth the time
 		var/obj/item/organ/internal/organ = organs_slot[slot]
 		if(organ?.owner) // This exist mostly because reagent metabolization can cause organ reshuffling
@@ -713,7 +711,7 @@
 /mob/living/carbon/get_fullness()
 	var/fullness = nutrition
 
-	var/obj/item/organ/internal/stomach/belly = getorganslot(ORGAN_SLOT_STOMACH)
+	var/obj/item/organ/internal/stomach/belly = get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(!belly) //nothing to see here if we do not have a stomach
 		return fullness
 
@@ -731,7 +729,7 @@
 	. = ..()
 	if(.)
 		return
-	var/obj/item/organ/internal/stomach/belly = getorganslot(ORGAN_SLOT_STOMACH)
+	var/obj/item/organ/internal/stomach/belly = get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(!belly)
 		return FALSE
 	return belly.reagents.has_reagent(reagent, amount, needs_metabolizing)
@@ -746,7 +744,7 @@
 	if(!dna)
 		return
 
-	var/obj/item/organ/internal/liver/liver = getorganslot(ORGAN_SLOT_LIVER)
+	var/obj/item/organ/internal/liver/liver = get_organ_slot(ORGAN_SLOT_LIVER)
 	if(liver)
 		return
 
@@ -760,64 +758,9 @@
 	adjustOrganLoss(pick(ORGAN_SLOT_HEART, ORGAN_SLOT_LUNGS, ORGAN_SLOT_STOMACH, ORGAN_SLOT_EYES, ORGAN_SLOT_EARS), 0.5* delta_time)
 
 /mob/living/carbon/proc/undergoing_liver_failure()
-	var/obj/item/organ/internal/liver/liver = getorganslot(ORGAN_SLOT_LIVER)
+	var/obj/item/organ/internal/liver/liver = get_organ_slot(ORGAN_SLOT_LIVER)
 	if(liver?.organ_flags & ORGAN_FAILING)
 		return TRUE
-
-/////////////
-//CREMATION//
-/////////////
-/mob/living/carbon/proc/check_cremation(delta_time, times_fired)
-	//Only cremate while actively on fire
-	if(!on_fire)
-		return
-
-	//Only starts when the chest has taken full damage
-	var/obj/item/bodypart/chest = get_bodypart(BODY_ZONE_CHEST)
-	if(!(chest.get_damage() >= chest.max_damage))
-		return
-
-	//Burn off limbs one by one
-	var/obj/item/bodypart/limb
-	var/list/limb_list = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
-	var/still_has_limbs = FALSE
-	for(var/zone in limb_list)
-		limb = get_bodypart(zone)
-		if(limb)
-			still_has_limbs = TRUE
-			if(limb.get_damage() >= limb.max_damage)
-				limb.cremation_progress += rand(1 * delta_time, 2.5 * delta_time)
-				if(limb.cremation_progress >= 100)
-					if(IS_ORGANIC_LIMB(limb)) //Non-organic limbs don't burn
-						limb.drop_limb()
-						limb.visible_message(span_warning("[src]'s [limb.plaintext_zone] crumbles into ash!"))
-						qdel(limb)
-					else
-						limb.drop_limb()
-						limb.visible_message(span_warning("[src]'s [limb.plaintext_zone] detaches from [p_their()] body!"))
-	if(still_has_limbs)
-		return
-
-	//Burn the head last
-	var/obj/item/bodypart/head = get_bodypart(BODY_ZONE_HEAD)
-	if(head)
-		if(head.get_damage() >= head.max_damage)
-			head.cremation_progress += rand(1 * delta_time, 2.5 * delta_time)
-			if(head.cremation_progress >= 100)
-				if(IS_ORGANIC_LIMB(head)) //Non-organic limbs don't burn
-					head.drop_limb()
-					head.visible_message(span_warning("[src]'s head crumbles into ash!"))
-					qdel(head)
-				else
-					head.drop_limb()
-					head.visible_message(span_warning("[src]'s head detaches from [p_their()] body!"))
-		return
-
-	//Nothing left: dust the body, drop the items (if they're flammable they'll burn on their own)
-	chest.cremation_progress += rand(1 * delta_time, 2.5 * delta_time)
-	if(chest.cremation_progress >= 100)
-		visible_message(span_warning("[src]'s body crumbles into a pile of ash!"))
-		dust(TRUE, TRUE)
 
 ////////////////
 //BRAIN DAMAGE//
@@ -835,7 +778,7 @@
 /mob/living/carbon/proc/can_heartattack()
 	if(!needs_heart())
 		return FALSE
-	var/obj/item/organ/internal/heart/heart = getorganslot(ORGAN_SLOT_HEART)
+	var/obj/item/organ/internal/heart/heart = get_organ_slot(ORGAN_SLOT_HEART)
 	if(!heart || (heart.organ_flags & ORGAN_SYNTHETIC))
 		return FALSE
 	return TRUE
@@ -855,7 +798,7 @@
  * related situations (i.e not just cardiac arrest)
  */
 /mob/living/carbon/proc/undergoing_cardiac_arrest()
-	var/obj/item/organ/internal/heart/heart = getorganslot(ORGAN_SLOT_HEART)
+	var/obj/item/organ/internal/heart/heart = get_organ_slot(ORGAN_SLOT_HEART)
 	if(istype(heart) && heart.beating)
 		return FALSE
 	else if(!needs_heart())
@@ -866,7 +809,7 @@
 	if(!can_heartattack())
 		return FALSE
 
-	var/obj/item/organ/internal/heart/heart = getorganslot(ORGAN_SLOT_HEART)
+	var/obj/item/organ/internal/heart/heart = get_organ_slot(ORGAN_SLOT_HEART)
 	if(!istype(heart))
 		return
 

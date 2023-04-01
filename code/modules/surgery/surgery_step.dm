@@ -15,7 +15,7 @@
 
 /datum/surgery_step/proc/try_op(mob/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery, try_to_fail = FALSE)
 	var/success = FALSE
-	if(surgery.organ_to_manipulate && !target.getorganslot(surgery.organ_to_manipulate))
+	if(surgery.organ_to_manipulate && !target.get_organ_slot(surgery.organ_to_manipulate))
 		to_chat(user, span_warning("[target] seems to be missing the organ necessary to complete this surgery!"))
 		return FALSE
 
@@ -139,6 +139,8 @@
 
 	surgery.step_in_progress = FALSE
 	return advance
+
+#undef SURGERY_SPEEDUP_AREA // SKYRAT EDIT ADDITION
 
 /datum/surgery_step/proc/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(
@@ -267,3 +269,5 @@
 	if(prob(30))
 		target.emote("scream")
 //SKYRAT EDIT END
+
+#undef SURGERY_SLOWDOWN_CAP_MULTIPLIER

@@ -333,7 +333,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		return TRUE
 	return FALSE
 
-// Base mob environment handler for body temperature, overriden to take into consideration being inside a host
+/// Base mob environment handler for body temperature, overridden to take into consideration being inside a host
 /mob/living/basic/cortical_borer/handle_environment(datum/gas_mixture/environment, delta_time, times_fired)
 	var/loc_temp
 	if(human_host)
