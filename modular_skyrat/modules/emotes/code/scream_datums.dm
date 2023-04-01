@@ -21,7 +21,7 @@ GLOBAL_LIST_EMPTY(scream_types)
 	name = "Robotic Scream"
 	male_screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_silicon.ogg')
 	female_screamsounds = null
-	restricted_species_type = /datum/species/robotic
+	restricted_species_type = /datum/species/synthetic
 
 /datum/scream_type/lizard
 	name = "Lizard Scream"
@@ -66,6 +66,11 @@ GLOBAL_LIST_EMPTY(scream_types)
 /datum/scream_type/rodent //Ported from Polaris/Virgo.
 	name = "Rodent Scream"
 	male_screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/rodentscream.ogg')
+	female_screamsounds = null
+
+/datum/scream_type/ethereal
+	name = "Ethereal Scream"
+	male_screamsounds = list('sound/voice/ethereal/ethereal_scream_1.ogg', 'sound/voice/ethereal/ethereal_scream_2.ogg', 'sound/voice/ethereal/ethereal_scream_3.ogg')
 	female_screamsounds = null
 
 //DONATOR SCREAMS

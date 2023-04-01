@@ -4,14 +4,14 @@
 /obj/item/bodypart/chest/slime
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
 
-/obj/item/bodypart/l_arm/slime
+/obj/item/bodypart/arm/left/slime
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
 
-/obj/item/bodypart/r_arm/slime
+/obj/item/bodypart/arm/right/slime
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
 
-/obj/item/bodypart/l_leg/slime
+/obj/item/bodypart/leg/left/slime
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
 
-/obj/item/bodypart/r_leg/slime
+/obj/item/bodypart/leg/right/slime
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC

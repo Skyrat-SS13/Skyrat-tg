@@ -3,7 +3,7 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "recharger"
 	base_icon_state = "recharger"
-	desc = "A charging dock for energy based weaponry."
+	desc = "A charging dock for energy based weaponry, PDAs, and other devices."
 	circuit = /obj/item/circuitboard/machine/recharger
 	pass_flags = PASSTABLE
 	var/obj/item/charging = null
@@ -23,8 +23,8 @@
 
 /obj/machinery/recharger/RefreshParts()
 	. = ..()
-	for(var/obj/item/stock_parts/capacitor/C in component_parts)
-		recharge_coeff = C.rating
+	for(var/datum/stock_part/capacitor/capacitor in component_parts)
+		recharge_coeff = capacitor.tier
 
 /obj/machinery/recharger/examine(mob/user)
 	. = ..()

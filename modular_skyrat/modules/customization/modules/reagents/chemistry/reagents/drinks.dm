@@ -23,6 +23,7 @@
 
 /obj/item/trash/can/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/janitor.dmi'
+	icon_state = "lemonade"
 
 /*
 *	SKYRAT SODA CANS
@@ -51,7 +52,7 @@
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/bullet_act(obj/projectile/P)
 	. = ..()
-	if(!(P.nodamage) && P.damage_type == BRUTE && !QDELETED(src))
+	if(P.damage > 0 && P.damage_type == BRUTE && !QDELETED(src))
 		var/obj/item/trash/can/skyrat/crushed_can = new /obj/item/trash/can/skyrat(src.loc)
 		crushed_can.icon_state = icon_state
 		var/atom/throw_target = get_edge_target_turf(crushed_can, pick(GLOB.alldirs))

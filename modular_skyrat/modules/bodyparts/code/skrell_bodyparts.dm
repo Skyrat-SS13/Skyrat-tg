@@ -7,18 +7,18 @@
 	icon_greyscale = BODYPART_ICON_SKRELL
 	limb_id = SPECIES_SKRELL
 
-/obj/item/bodypart/l_arm/mutant/skrell
+/obj/item/bodypart/arm/left/mutant/skrell
 	icon_greyscale = BODYPART_ICON_SKRELL
 	limb_id = SPECIES_SKRELL
 
-/obj/item/bodypart/r_arm/mutant/skrell
+/obj/item/bodypart/arm/right/mutant/skrell
 	icon_greyscale = BODYPART_ICON_SKRELL
 	limb_id = SPECIES_SKRELL
 
-/obj/item/bodypart/l_leg/mutant/skrell
+/obj/item/bodypart/leg/left/mutant/skrell
 	icon_greyscale = BODYPART_ICON_SKRELL
 	limb_id = SPECIES_SKRELL
 
-/obj/item/bodypart/r_leg/mutant/skrell
+/obj/item/bodypart/leg/right/mutant/skrell
 	icon_greyscale = BODYPART_ICON_SKRELL
 	limb_id = SPECIES_SKRELL

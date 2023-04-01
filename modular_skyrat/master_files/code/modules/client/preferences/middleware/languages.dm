@@ -34,16 +34,13 @@
 	/// A associative list of language names to their typepath
 	var/static/list/name_to_language = list()
 	action_delegations = list(
-		"give_language" = .proc/give_language,
-		"remove_language" = .proc/remove_language,
+		"give_language" = PROC_REF(give_language),
+		"remove_language" = PROC_REF(remove_language),
 	)
 
-/datum/preference_middleware/languages/apply_to_human(mob/living/carbon/human/target, datum/preferences/preferences) // SKYRAT EDIT CHANGE
+/datum/preference_middleware/languages/apply_to_human(mob/living/carbon/human/target, datum/preferences/preferences, visuals_only = FALSE)
 	var/datum/language_holder/language_holder = target.get_language_holder()
-	language_holder.remove_all_languages()
-	language_holder.omnitongue = TRUE // a crappy hack but it works
-	for(var/lang_path in preferences.languages)
-		language_holder.grant_language(lang_path)
+	language_holder.adjust_languages_to_prefs(preferences)
 
 /datum/preference_middleware/languages/get_ui_assets()
 	return list(
@@ -91,13 +88,10 @@
 	for (var/language_name in GLOB.all_languages)
 		var/datum/language/language = GLOB.language_datum_instances[language_name]
 
-		if(language.secret)
+		if(language.secret && !(language.type in species.language_prefs_whitelist)) // For ghostrole species who are able to speak a secret language, e.g. ashwalkers, display it.
 			continue
 
 		if(species.always_customizable && !(language.type in lang_holder.spoken_languages)) // For the ghostrole species. We don't want ashwalkers speaking beachtongue now.
-			continue
-		if(language.type == /datum/language/common && preferences.all_quirks.Find("Foreigner")) // Stops foreigners from taking common. Bad foreigner.
-			preferences.languages.Remove(/datum/language/common) // Make sure common doesn't stay invisibly.
 			continue
 		if(preferences.languages[language.type])
 			selected_languages += list(list(
@@ -148,7 +142,7 @@
 	return TRUE
 
 /**
- * Proc that removes a language to a character.
+ * Proc that removes a language from a character.
  *
  * Arguments:
  * * params - List of parameters, given to us by the `act()` method from TGUI. Needs to

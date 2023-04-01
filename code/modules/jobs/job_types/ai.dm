@@ -6,7 +6,6 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "your laws"
-	selection_color = "#ccffcc"
 	spawn_type = /mob/living/silicon/ai
 	req_admin_notify = TRUE
 	minimal_player_age = 30
@@ -22,6 +21,7 @@
 	random_spawns_possible = FALSE
 	job_flags = JOB_NEW_PLAYER_JOINABLE | JOB_EQUIP_RANK | JOB_BOLD_SELECT_TEXT
 	var/do_special_check = TRUE
+	config_tag = "AI"
 
 
 /datum/job/ai/after_spawn(mob/living/spawned, client/player_client)
@@ -54,6 +54,7 @@
 		sync_target.visible_message(span_notice("[sync_target] gently chimes."), span_notice("LawSync protocol engaged."))
 		log_combat(ai_spawn, sync_target, "forcibly synced cyborg laws via spawning in")
 		sync_target.lawsync()
+		sync_target.lawupdate = TRUE
 		sync_target.show_laws()
 	// SKYRAT EDIT ADDITION END
 

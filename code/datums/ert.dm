@@ -18,6 +18,10 @@
 	var/leader_experience = TRUE
 	///SKYRAT EDIT: Do we want to notify the players of this ERT?
 	var/notify_players = TRUE
+	/// A custom map template to spawn the ERT at. If this is null or use_custom_shuttle is FALSE, the ERT will spawn at Centcom.
+	var/datum/map_template/ert_template
+	/// If we should actually _use_ the ert_template custom shuttle
+	var/use_custom_shuttle = TRUE
 
 /datum/ert/New()
 	if (!polldesc)
@@ -113,3 +117,4 @@
 	mission = "Assist the station in catching perps, dead or alive."
 	polldesc = "a Centcom-hired bounty hunting gang"
 	random_names = FALSE
+	ert_template = /datum/map_template/shuttle/ert/bounty

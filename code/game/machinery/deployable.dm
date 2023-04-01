@@ -122,8 +122,8 @@
 	pass_flags_self = LETPASSTHROW
 	bar_material = SAND
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_SANDBAGS)
-	canSmoothWith = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_SECURITY_BARRICADE, SMOOTH_GROUP_SANDBAGS)
+	smoothing_groups = SMOOTH_GROUP_SANDBAGS
+	canSmoothWith = SMOOTH_GROUP_SANDBAGS + SMOOTH_GROUP_SECURITY_BARRICADE + SMOOTH_GROUP_WALLS
 
 /obj/structure/barricade/sandbags/Initialize(mapload)
 	. = ..()
@@ -139,15 +139,23 @@
 	anchored = FALSE
 	max_integrity = 180
 	proj_pass_rate = 20
-	armor = list(MELEE = 10, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = 10, BIO = 0, FIRE = 10, ACID = 0)
+	armor_type = /datum/armor/barricade_security
 
 	var/deploy_time = 40
 	var/deploy_message = TRUE
 
 
+/datum/armor/barricade_security
+	melee = 10
+	bullet = 50
+	laser = 50
+	energy = 50
+	bomb = 10
+	fire = 10
+
 /obj/structure/barricade/security/Initialize(mapload)
 	. = ..()
-	addtimer(CALLBACK(src, .proc/deploy), deploy_time)
+	addtimer(CALLBACK(src, PROC_REF(deploy)), deploy_time)
 
 /obj/structure/barricade/security/proc/deploy()
 	icon_state = "barrier1"
@@ -171,7 +179,7 @@
 	. += span_notice("Alt-click to toggle modes.")
 
 /obj/item/grenade/barrier/AltClick(mob/living/carbon/user)
-	if(!istype(user) || !user.canUseTopic(src, be_close = TRUE))
+	if(!istype(user) || !user.can_perform_action(src))
 		return
 	toggle_mode(user)
 
@@ -219,6 +227,7 @@
 	desc = "A folded and unloaded heavy machine gun, ready to be deployed and used."
 	icon = 'icons/obj/weapons/turrets.dmi'
 	icon_state = "folded_hmg"
+	inhand_icon_state = "folded_hmg"
 	max_integrity = 250
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK

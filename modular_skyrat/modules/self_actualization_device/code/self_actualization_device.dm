@@ -10,7 +10,7 @@
 	name = "Self-Actualization Device (Machine Board)"
 	greyscale_colors = CIRCUIT_COLOR_MEDICAL
 	build_path = /obj/machinery/self_actualization_device
-	req_components = list(/obj/item/stock_parts/micro_laser = 1)
+	req_components = list(/datum/stock_part/micro_laser = 1)
 
 /obj/machinery/self_actualization_device
 	name = "Self-Actualization Device"
@@ -55,7 +55,7 @@
 	. = ..()
 	update_appearance()
 
-/obj/machinery/self_actualization_device/close_machine(mob/user)
+/obj/machinery/self_actualization_device/close_machine(atom/movable/target, density_to_set = TRUE)
 	..()
 	playsound(src, 'sound/machines/click.ogg', 50)
 	if(!occupant)
@@ -71,17 +71,13 @@
 	. = ..()
 	. += span_notice("ALT-Click to turn ON when closed.")
 
-/obj/machinery/self_actualization_device/open_machine(mob/user)
-	playsound(src, 'sound/machines/click.ogg', 50)
-	..()
-
 /obj/machinery/self_actualization_device/AltClick(mob/user)
 	. = ..()
 	if(!powered() || !occupant || state_open)
 		return FALSE
 
 	to_chat(user, "You power on [src].")
-	addtimer(CALLBACK(src, .proc/eject_new_you), processing_time, TIMER_OVERRIDE|TIMER_UNIQUE)
+	addtimer(CALLBACK(src, PROC_REF(eject_new_you)), processing_time, TIMER_OVERRIDE|TIMER_UNIQUE)
 	processing = TRUE
 	update_appearance()
 
@@ -120,7 +116,8 @@
 		open_machine()
 		return
 
-	if(--next_fact <= 0)
+	next_fact--
+	if(next_fact <= 0)
 		next_fact = rand(initial(next_fact), 2 * initial(next_fact))
 		say(pick(advertisements))
 		playsound(loc, 'sound/machines/chime.ogg', 30, FALSE)
@@ -166,31 +163,31 @@
 		This may be a false positive from changing from a humanized monkey into a character, so be careful.")
 
 	// Apply organ damage
-	patient.adjustOrganLoss(ORGAN_SLOT_HEART, heart_damage)
-	patient.adjustOrganLoss(ORGAN_SLOT_LIVER, liver_damage)
-	patient.adjustOrganLoss(ORGAN_SLOT_LUNGS, lung_damage)
-	patient.adjustOrganLoss(ORGAN_SLOT_STOMACH, stomach_damage)
+	patient.setOrganLoss(ORGAN_SLOT_HEART, heart_damage)
+	patient.setOrganLoss(ORGAN_SLOT_LIVER, liver_damage)
+	patient.setOrganLoss(ORGAN_SLOT_LUNGS, lung_damage)
+	patient.setOrganLoss(ORGAN_SLOT_STOMACH, stomach_damage)
 	// Head organ damage.
-	patient.adjustOrganLoss(ORGAN_SLOT_EYES, eye_damage)
-	patient.adjustOrganLoss(ORGAN_SLOT_EARS, ear_damage)
-	patient.adjustOrganLoss(ORGAN_SLOT_BRAIN, brain_damage)
+	patient.setOrganLoss(ORGAN_SLOT_EYES, eye_damage)
+	patient.setOrganLoss(ORGAN_SLOT_EARS, ear_damage)
+	patient.setOrganLoss(ORGAN_SLOT_BRAIN, brain_damage)
 
 	//Re-Applies Trauma
-	var/obj/item/organ/internal/brain/patient_brain = patient.getorgan(/obj/item/organ/internal/brain)
+	var/obj/item/organ/internal/brain/patient_brain = patient.get_organ_by_type(/obj/item/organ/internal/brain)
 
 	if(length(trauma_list))
 		patient_brain.traumas = trauma_list
 
 	//Re-Applies Damage
-	patient.adjustBruteLoss(brute_damage)
-	patient.adjustFireLoss(burn_damage)
+	patient.setBruteLoss(brute_damage)
+	patient.setFireLoss(burn_damage)
 
 	open_machine()
 	playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, FALSE)
 
 /// Checks the damage on the inputed organ and stores it.
 /obj/machinery/self_actualization_device/proc/check_organ(mob/living/carbon/human/patient, obj/item/organ/organ_to_check)
-	var/obj/item/organ/organ_to_track = patient.getorgan(organ_to_check)
+	var/obj/item/organ/organ_to_track = patient.get_organ_by_type(organ_to_check)
 
 	// If the organ is missing, the organ damage is automatically set to 100.
 	if(!organ_to_track)

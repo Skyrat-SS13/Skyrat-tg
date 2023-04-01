@@ -1,11 +1,12 @@
 /datum/quirk/equipping
 	abstract_parent_type = /datum/quirk/equipping
+	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_CHANGES_APPEARANCE
 	/// the items that will be equipped, formatted in the way of [item_path = list of slots it can be equipped to], will not equip over nodrop items
 	var/list/items = list()
 	/// the items that will be forcefully equipped, formatted in the way of [item_path = list of slots it can be equipped to], will equip over nodrop items
 	var/list/forced_items = list()
 
-/datum/quirk/equipping/add_unique()
+/datum/quirk/equipping/add_unique(client/client_source)
 	var/mob/living/carbon/carbon_holder = quirk_holder
 	if (!items || !carbon_holder)
 		return
@@ -56,11 +57,11 @@
 	items = list(/obj/item/clothing/accessory/breathing = list(ITEM_SLOT_BACKPACK))
 	var/breath_type = "oxygen"
 
-/datum/quirk/equipping/lungs/add()
+/datum/quirk/equipping/lungs/add(client/client_source)
 	var/mob/living/carbon/human/carbon_holder = quirk_holder
 	if (!istype(carbon_holder) || !lungs_typepath)
 		return
-	var/current_lungs = carbon_holder.getorganslot(ORGAN_SLOT_LUNGS)
+	var/current_lungs = carbon_holder.get_organ_slot(ORGAN_SLOT_LUNGS)
 	if (istype(current_lungs, lungs_typepath))
 		return
 	lungs_holding = current_lungs
@@ -73,7 +74,7 @@
 	var/mob/living/carbon/carbon_holder = quirk_holder
 	if (!istype(carbon_holder) || !lungs_holding)
 		return
-	var/obj/item/organ/internal/lungs/lungs = carbon_holder.getorganslot(ORGAN_SLOT_LUNGS)
+	var/obj/item/organ/internal/lungs/lungs = carbon_holder.get_organ_slot(ORGAN_SLOT_LUNGS)
 	if (lungs != lungs_added && lungs != lungs_holding)
 		qdel(lungs_holding)
 		return
@@ -104,7 +105,7 @@
 
 /obj/item/clothing/accessory/breathing/on_uniform_equip(obj/item/clothing/under/uniform, user)
 	. = ..()
-	RegisterSignal(uniform, COMSIG_PARENT_EXAMINE, .proc/on_examine)
+	RegisterSignal(uniform, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
 
 /obj/item/clothing/accessory/breathing/on_uniform_dropped(obj/item/clothing/under/uniform, user)
 	. = ..()

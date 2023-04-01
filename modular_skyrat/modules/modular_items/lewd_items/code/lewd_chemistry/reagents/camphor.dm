@@ -29,8 +29,8 @@
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change) && exposed_mob.gender != exposed_mob.client?.prefs?.read_preference(/datum/preference/choiced/gender))
 		exposed_mob.set_gender(exposed_mob.client?.prefs?.read_preference(/datum/preference/choiced/gender))
 
-	if(exposed_mob.getorganslot(ORGAN_SLOT_BREASTS))
-		var/obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
+	if(exposed_mob.get_organ_slot(ORGAN_SLOT_BREASTS))
+		var/obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob.get_organ_slot(ORGAN_SLOT_BREASTS)
 		var/original_breast_size = GLOB.breast_size_to_number[exposed_mob.client?.prefs.read_preference(/datum/preference/choiced/breasts_size)]
 		if(original_breast_size)
 			if(mob_breasts?.genital_size > original_breast_size)
@@ -42,8 +42,8 @@
 				mob_breasts.update_sprite_suffix()
 				modified_genitals = TRUE
 
-	if(exposed_mob.getorganslot(ORGAN_SLOT_PENIS))
-		var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
+	if(exposed_mob.get_organ_slot(ORGAN_SLOT_PENIS))
+		var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.get_organ_slot(ORGAN_SLOT_PENIS)
 		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/numeric/penis_length))
 			var/original_penis_length = exposed_mob.client?.prefs.read_preference(/datum/preference/numeric/penis_length)
 			var/original_penis_girth = exposed_mob.client?.prefs.read_preference(/datum/preference/numeric/penis_girth)
@@ -65,8 +65,8 @@
 				mob_penis.update_sprite_suffix()
 				modified_genitals = TRUE
 
-	if(exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES))
-		var/obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+	if(exposed_mob.get_organ_slot(ORGAN_SLOT_TESTICLES))
+		var/obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob.get_organ_slot(ORGAN_SLOT_TESTICLES)
 		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/numeric/balls_size))
 			var/original_ball_size = exposed_mob.client?.prefs.read_preference(/datum/preference/numeric/balls_size)
 			if(mob_testicles?.genital_size > original_ball_size)
@@ -82,7 +82,7 @@
 		exposed_mob.update_body()
 
 // Notify the user that they're overdosing. Doesn't affect their mood.
-/datum/reagent/drug/aphrodisiac/camphor/overdose_process(mob/living/carbon/human/exposed_mob)
+/datum/reagent/drug/aphrodisiac/camphor/overdose_start(mob/living/carbon/human/exposed_mob)
 	to_chat(exposed_mob, span_userdanger("You feel like you took too much [name]!"))
 	exposed_mob.add_mood_event("[type]_overdose", /datum/mood_event/minor_overdose, name)
 

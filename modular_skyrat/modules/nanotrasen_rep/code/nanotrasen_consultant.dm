@@ -6,12 +6,12 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "Central Command"
-	selection_color = "#c6ffe0"
 	minimal_player_age = 14
 	exp_requirements = 600
 	exp_required_type = EXP_TYPE_CREW
 	exp_required_type_department = EXP_TYPE_COMMAND
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "NANOTRASEN_CONSULTANT"
 
 	department_for_prefs = /datum/job_department/captain
 
@@ -44,7 +44,7 @@
 	name = "Nanotrasen Consultant"
 	jobtype = /datum/job/nanotrasen_consultant
 
-	belt = /obj/item/modular_computer/tablet/pda/nanotrasen_consultant
+	belt = /obj/item/modular_computer/pda/nanotrasen_consultant
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/heads/nanotrasen_consultant
 	gloves = /obj/item/clothing/gloves/combat
@@ -82,7 +82,6 @@
 	name = "\proper the nanotrasen consultant's bowman headset"
 	desc = "An official Central Command headset. Protects ears from flashbangs."
 	icon_state = "cent_headset_alt"
-	inhand_icon_state = "cent_headset_alt"
 
 /obj/item/radio/headset/heads/nanotrasen_consultant/alt/Initialize(mapload)
 	. = ..()
@@ -102,12 +101,12 @@
 	name = "Nanotrasen Consultant Plasmaman"
 
 	uniform = /obj/item/clothing/under/plasmaman/centcom_official
-	gloves = /obj/item/clothing/gloves/color/captain //Too iconic to be replaced with a plasma version
+	gloves = /obj/item/clothing/gloves/captain //Too iconic to be replaced with a plasma version
 	head = /obj/item/clothing/head/helmet/space/plasmaman/centcom_official
 
-/obj/item/modular_computer/tablet/pda/nanotrasen_consultant
+/obj/item/modular_computer/pda/nanotrasen_consultant
 	name = "nanotrasen consultant's PDA"
-	loaded_cartridge = /obj/item/computer_hardware/hard_drive/portable/command/captain
+	inserted_disk = /obj/item/computer_disk/command/captain
 	inserted_item = /obj/item/pen/fountain/captain
 	greyscale_colors = "#017941#0060b8"
 
@@ -141,11 +140,12 @@
 	new /obj/item/pet_carrier(src)
 	new /obj/item/clothing/shoes/sneakers/brown(src)
 	new /obj/item/clothing/suit/armor/vest(src)
-	new /obj/item/computer_hardware/hard_drive/portable/command/captain(src)
+	new /obj/item/computer_disk/command/captain(src)
 	new /obj/item/radio/headset/heads/nanotrasen_consultant/alt(src)
 	new /obj/item/radio/headset/heads/nanotrasen_consultant(src)
 	new /obj/item/clothing/glasses/sunglasses/gar/giga(src)
 	new /obj/item/clothing/gloves/combat(src)
+	new /obj/item/clothing/gloves/combat/naval/nanotrasen_consultant(src)
 	new /obj/item/storage/photo_album/personal(src)
 	new /obj/item/bedsheet/centcom(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/centcom/nt_consultant(src)

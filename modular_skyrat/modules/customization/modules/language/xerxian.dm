@@ -6,7 +6,7 @@
 	syllables = list(
 		"a", "ah", "ba", "lah", "tha", "shah", "sa", "cha", "zah", "in", "al", "an",
 		"i", "ih", "bi", "lih", "thih", "shih", "sih", "chi", "zih", "ji", "nn", "jo", "ja",
-        "o", "oh", "boh", "loh", "tho", "sho", "so", "cho", "zo", "ya", "yi", "yo"
+		"o", "oh", "boh", "loh", "tho", "sho", "so", "cho", "zo", "ya", "yi", "yo",
 	)
 	icon_state = "xerxian"
 	icon = 'modular_skyrat/master_files/icons/misc/language.dmi'

@@ -179,7 +179,7 @@
 			balloon_alert(user, "[amount_per_transfer_from_this] unit\s injected")
 			log_combat(user, injectee, "injected", src, "(CHEMICALS: [selected_reagent])")
 	else
-		balloon_alert(user, "[user.zone_selected] is blocked!")
+		balloon_alert(user, "[parse_zone(user.zone_selected)] is blocked!")
 
 /obj/item/reagent_containers/borghypo/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -232,9 +232,11 @@
 
 /obj/item/reagent_containers/borghypo/AltClick(mob/living/user)
 	. = ..()
-	if(user.stat == DEAD || user != loc)
+/* SKYRAT REMOVAL START - Changing transfer amounts is now handled by the parent proc in modular files.
+	if(user.stat == DEAD || user != loc) 
 		return //IF YOU CAN HEAR ME SET MY TRANSFER AMOUNT TO 1
-	change_transfer_amount(user)
+	change_transfer_amount(user)	
+*/ // SKYRAT REMOVAL END
 
 /// Default Medborg Hypospray
 /obj/item/reagent_containers/borghypo/medical
@@ -303,7 +305,7 @@
 /obj/item/reagent_containers/borghypo/borgshaker
 	name = "cyborg shaker"
 	desc = "An advanced drink synthesizer and mixer."
-	icon = 'icons/obj/drinks.dmi'
+	icon = 'icons/obj/drinks/bottles.dmi'
 	icon_state = "shaker"
 	possible_transfer_amounts = list(5,10,20)
 	// Lots of reagents all regenerating at once, so the charge cost is lower. They also regenerate faster.
@@ -349,17 +351,18 @@
 /obj/item/reagent_containers/borghypo/borgshaker/afterattack(obj/target, mob/user, proximity)
 	. = ..()
 	if(!proximity)
-		return
+		return .
 	if(!selected_reagent)
 		balloon_alert(user, "no reagent selected!")
-		return
+		return .
+	. |= AFTERATTACK_PROCESSED_ITEM
 	if(target.is_refillable())
 		if(!stored_reagents.has_reagent(selected_reagent.type, amount_per_transfer_from_this))
 			balloon_alert(user, "not enough [selected_reagent.name]!")
-			return
+			return .
 		if(target.reagents.total_volume >= target.reagents.maximum_volume)
 			balloon_alert(user, "[target] is full!")
-			return
+			return .
 
 		// This is the in-between where we're storing the reagent we're going to pour into the container
 		// because we cannot specify a singular reagent to transfer in trans_to
@@ -369,10 +372,12 @@
 
 		shaker.trans_to(target, amount_per_transfer_from_this, transfered_by = user)
 		balloon_alert(user, "[amount_per_transfer_from_this] unit\s poured")
+	return .
 
 /obj/item/reagent_containers/borghypo/borgshaker/hacked
 	name = "cyborg shaker"
 	desc = "Will mix drinks that knock them dead."
+	icon = 'icons/obj/drinks/mixed_drinks.dmi'
 	icon_state = "threemileislandglass"
 	tgui_theme = "syndicate"
 	dispensed_temperature = WATER_MATTERSTATE_CHANGE_TEMP

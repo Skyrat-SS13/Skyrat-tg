@@ -18,7 +18,7 @@
 	name = "\improper God's Weakest Snacks"
 	desc = "The leftovers of what was likely a great snack in a past time."
 	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_quick_foods.dmi'
-	icon_state = "foodpack_generic_empty"
+	icon_state = "foodpack_generic_trash"
 	custom_materials = list(/datum/material/plastic = 1000)
 
 /*
@@ -45,7 +45,7 @@
 	foodtypes = JUNKFOOD | GRAIN
 	custom_price = PAYCHECK_LOWER * 0.8
 
-/obj/item/food/vendor_snacks/rice_crackers/MakeLeaveTrash()
+/obj/item/food/vendor_snacks/rice_crackers/make_leave_trash()
 	AddElement(/datum/element/food_trash, trash_type, FOOD_TRASH_POPABLE)
 
 /obj/item/trash/vendor_trash/rice_crackers
@@ -86,7 +86,6 @@
 	desc = "A bottle of tea brought to you in a convenient plastic bottle."
 	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_quick_foods.dmi'
 	icon_state = "tea_bottle"
-	inhand_icon_state = "bottle"
 	list_reagents = list(/datum/reagent/consumable/tea = 40)
 	cap_icon_state = "bottle_cap_tea"
 	flip_chance = 5 //I fucking dare you
@@ -135,7 +134,7 @@
 	foodtypes = VEGETABLES | SUGAR
 	custom_price = PAYCHECK_LOWER
 
-/obj/item/food/vendor_snacks/mothmallow/MakeLeaveTrash()
+/obj/item/food/vendor_snacks/mothmallow/make_leave_trash()
 	AddElement(/datum/element/food_trash, trash_type, FOOD_TRASH_POPABLE)
 
 /obj/item/trash/vendor_trash/mothmallow
@@ -245,7 +244,7 @@
 	foodtypes = SUGAR | VEGETABLES
 	custom_price = PAYCHECK_LOWER * 1.4 //Tizirian imports are a bit more expensive overall
 
-/obj/item/food/vendor_snacks/lizard_bag/MakeLeaveTrash()
+/obj/item/food/vendor_snacks/lizard_bag/make_leave_trash()
 	AddElement(/datum/element/food_trash, trash_type, FOOD_TRASH_POPABLE)
 
 /obj/item/food/vendor_snacks/lizard_bag/moon_jerky

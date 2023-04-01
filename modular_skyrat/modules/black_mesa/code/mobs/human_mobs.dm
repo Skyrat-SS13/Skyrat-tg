@@ -65,7 +65,7 @@
 	rapid = 3
 	icon_state = "hecu_ranged_smg"
 	icon_living = "hecu_ranged_smg"
-	casingtype = /obj/item/ammo_casing/c32
+	casingtype = /obj/item/ammo_casing/c34
 	projectilesound = 'sound/weapons/gun/smg/shot.ogg'
 	loot = list(/obj/effect/gibspawner/human, /obj/effect/spawner/random/hecu_smg)
 
@@ -94,7 +94,7 @@
 	loot = list(/obj/effect/gibspawner/human, /obj/item/clothing/suit/armor/vest/blueshirt)
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 7.5
-	faction = list(FACTION_STATION, "neutral")
+	faction = list(FACTION_STATION, FACTION_NEUTRAL)
 	check_friendly_fire = 1
 	status_flags = CANPUSH
 	del_on_death = TRUE
@@ -160,7 +160,7 @@
 	minimum_distance = 5
 	icon_state = "security_guard_ranged"
 	icon_living = "security_guard_ranged"
-	casingtype = /obj/item/ammo_casing/b9mm
+	casingtype = /obj/item/ammo_casing/c9mm
 	projectilesound = 'sound/weapons/gun/pistol/shot.ogg'
 	loot = list(/obj/effect/gibspawner/human, /obj/item/clothing/suit/armor/vest/blueshirt, /obj/item/gun/ballistic/automatic/pistol/g17/mesa)
 	rapid_melee = 1

@@ -45,17 +45,16 @@ SUBSYSTEM_DEF(decay)
 		log_world("SSDecay will not interact with this round.")
 		return SS_INIT_NO_NEED
 
-	for(var/turf/iterating_turf in world)
-		if(!is_station_level(iterating_turf.z))
-			continue
-		if(!(iterating_turf.flags_1 & CAN_BE_DIRTY_1))
-			continue
-		possible_turfs += iterating_turf
-
-	for(var/area/iterating_area in world)
+	for(var/area/iterating_area as anything in GLOB.areas)
 		if(!is_station_level(iterating_area.z))
 			continue
 		possible_areas += iterating_area
+
+		// Now add the turfs
+		for(var/turf/iterating_turf as anything in iterating_area.get_contained_turfs())
+			if(!(iterating_turf.flags_1 & CAN_BE_DIRTY_1))
+				continue
+			possible_turfs += iterating_turf
 
 	if(!possible_turfs)
 		CRASH("SSDecay had no possible turfs to use!")

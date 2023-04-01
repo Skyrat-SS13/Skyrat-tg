@@ -4,6 +4,8 @@
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
 	special_desc = "A remote usable to fake an announcement from the captain, of your choice."
 	icon = 'icons/obj/device.dmi'
+	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	icon_state = "inspector"
 	worn_icon_state = "salestagger"
 	inhand_icon_state = "electronic"

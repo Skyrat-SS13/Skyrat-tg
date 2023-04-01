@@ -35,9 +35,9 @@
 	if(!iscarbon(user))
 		return
 	var/covered = ""
-	if(user.is_mouth_covered(head_only = 1))
+	if(user.is_mouth_covered(ITEM_SLOT_HEAD))
 		covered = "headgear"
-	else if(user.is_mouth_covered(mask_only = 1))
+	else if(user.is_mouth_covered(ITEM_SLOT_MASK))
 		covered = "mask"
 	if(covered)
 		to_chat(user, span_warning("You have to remove your [covered] first!"))
@@ -119,7 +119,7 @@
 /datum/reagent/drug/opium/overdose_process(mob/living/M, delta_time, times_fired)
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.5 * REM * delta_time)
 	M.adjustToxLoss(1 * REM * delta_time, 0)
-	M.adjust_drowsyness(0.5 * REM * normalise_creation_purity() * delta_time)
+	M.adjust_drowsiness(1 SECONDS * REM * normalise_creation_purity() * delta_time)
 	return TRUE
 
 /datum/reagent/drug/opium/on_mob_metabolize(mob/living/metabolizer)

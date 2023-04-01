@@ -6,8 +6,8 @@
 	total_positions = 2
 	spawn_positions = 1
 	supervisors = SUPERVISOR_HOP
-	selection_color = "#bbe291"
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "COOK"
 	var/cooks = 0 //Counts cooks amount
 
 	outfit = /datum/outfit/job/cook
@@ -27,7 +27,7 @@
 	family_heirlooms = list(
 		/obj/item/reagent_containers/condiment/saltshaker,
 		/obj/item/kitchen/rollingpin,
-		/obj/item/clothing/head/chefhat,
+		/obj/item/clothing/head/utility/chefhat,
 	)
 
 	mail_goodies = list(
@@ -35,6 +35,7 @@
 		/obj/item/reagent_containers/cup/bottle/caramel = 20,
 		/obj/item/reagent_containers/condiment/flour = 20,
 		/obj/item/reagent_containers/condiment/rice = 20,
+		/obj/item/reagent_containers/condiment/ketchup = 20,
 		/obj/item/reagent_containers/condiment/enzyme = 15,
 		/obj/item/reagent_containers/condiment/soymilk = 15,
 		/obj/item/knife/kitchen = 4,
@@ -65,10 +66,11 @@
 	backpack_contents = list(
 		/obj/item/choice_beacon/ingredient = 1,
 		/obj/item/sharpener = 1,
+		/obj/item/storage/box/gunset/roundstart_guns/serv = 1, // SKYRAT EDIT ADD
 	)
-	belt = /obj/item/modular_computer/tablet/pda/cook
+	belt = /obj/item/modular_computer/pda/cook
 	ears = /obj/item/radio/headset/headset_srv
-	head = /obj/item/clothing/head/chefhat
+	head = /obj/item/clothing/head/utility/chefhat
 	mask = /obj/item/clothing/mask/fakemoustache/italian
 
 	skillchips = list(/obj/item/skillchip/job/chef)

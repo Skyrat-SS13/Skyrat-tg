@@ -4,6 +4,7 @@
 /area/template_noop)
 "c" = (
 /obj/machinery/door/airlock/medical,
+/obj/effect/mapping_helpers/airlock/access/all,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
 "d" = (
@@ -48,14 +49,24 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
 "u" = (
-/obj/structure/table,
-/obj/item/seeds/cocoapod,
+/obj/machinery/door/airlock/mining{
+	name = "Backroom"
+	},
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/access/all,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
 "v" = (
 /obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
+"w" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/marker_beacon/burgundy,
+/turf/template_noop,
+/area/template_noop)
 "y" = (
 /obj/structure/table,
 /obj/effect/spawner/random/entertainment/money,
@@ -70,10 +81,9 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
 "B" = (
-/obj/structure/closet/secure_closet/hydroponics{
-	req_access = null
-	},
-/turf/open/floor/iron,
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/access/all,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
 "C" = (
 /obj/effect/turf_decal/stripes/asteroid/corner{
@@ -93,12 +103,10 @@
 /turf/open/floor/iron/grimy,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
 "I" = (
-/obj/machinery/door/airlock/mining{
-	name = "Backroom"
+/obj/structure/closet/secure_closet/hydroponics{
+	req_access = null
 	},
-/obj/effect/turf_decal/siding/thinplating/dark/corner{
-	dir = 1
-	},
+/obj/item/gun/energy/floragun,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
 "K" = (
@@ -144,8 +152,10 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
 "W" = (
-/obj/machinery/door/airlock/external,
-/turf/open/floor/plating,
+/obj/structure/table,
+/obj/item/seeds/cocoapod,
+/obj/item/circuitboard/machine/spaceship_navigation_beacon,
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
 "Y" = (
 /obj/machinery/computer/crew/syndie{
@@ -164,15 +174,15 @@
 a
 a
 a
-z
-z
-z
-z
 a
 z
 z
+a
+a
+a
 z
-z
+a
+a
 a
 a
 a
@@ -184,13 +194,13 @@ z
 z
 z
 z
+a
+a
 z
 z
 z
-z
-z
-z
-z
+a
+a
 a
 a
 "}
@@ -198,21 +208,55 @@ a
 a
 a
 z
-O
-O
-O
-O
-O
-O
-O
-O
-O
 z
 z
+z
+z
+a
+z
+z
+z
+z
+a
+a
 a
 "}
 (4,1,1) = {"
 a
+z
+z
+z
+z
+z
+z
+z
+z
+z
+z
+z
+z
+a
+a
+"}
+(5,1,1) = {"
+a
+z
+z
+O
+O
+O
+O
+O
+O
+O
+O
+O
+z
+z
+w
+"}
+(6,1,1) = {"
+z
 z
 z
 O
@@ -228,8 +272,8 @@ O
 O
 h
 "}
-(5,1,1) = {"
-a
+(7,1,1) = {"
+z
 z
 z
 O
@@ -240,12 +284,12 @@ O
 H
 m
 o
-W
+B
 K
-W
+B
 k
 "}
-(6,1,1) = {"
+(8,1,1) = {"
 z
 z
 z
@@ -253,7 +297,7 @@ O
 y
 Z
 U
-I
+u
 o
 o
 o
@@ -262,7 +306,7 @@ O
 O
 C
 "}
-(7,1,1) = {"
+(9,1,1) = {"
 z
 z
 z
@@ -277,16 +321,16 @@ O
 O
 z
 z
-F
+w
 "}
-(8,1,1) = {"
+(10,1,1) = {"
 z
 z
 z
 O
-B
+I
 o
-u
+W
 d
 o
 S
@@ -294,9 +338,9 @@ e
 O
 z
 z
-z
+F
 "}
-(9,1,1) = {"
+(11,1,1) = {"
 z
 z
 z
@@ -313,7 +357,7 @@ z
 z
 z
 "}
-(10,1,1) = {"
+(12,1,1) = {"
 z
 z
 z
@@ -330,41 +374,41 @@ z
 z
 z
 "}
-(11,1,1) = {"
-z
-z
-z
-O
-O
-O
-O
-O
-O
-O
-O
-O
-z
-z
-a
-"}
-(12,1,1) = {"
-a
-z
-z
-z
-z
-z
-z
-z
-z
-z
-z
-z
-z
-a
-a
-"}
 (13,1,1) = {"
+z
+z
+z
+O
+O
+O
+O
+O
+O
+O
+O
+O
+z
+z
+a
+"}
+(14,1,1) = {"
+a
+z
+z
+z
+z
+z
+z
+z
+z
+z
+z
+z
+z
+a
+a
+"}
+(15,1,1) = {"
 a
 a
 z
@@ -376,6 +420,23 @@ z
 z
 z
 z
+a
+a
+a
+a
+"}
+(16,1,1) = {"
+a
+a
+a
+z
+z
+z
+z
+z
+z
+z
+a
 a
 a
 a

@@ -6,6 +6,10 @@ like syndicate items having information in their description that
 would only be recognisable with someone that had the syndicate trait.
 */
 
+// Give the detective the ability to see this stuff.
+/datum/job/detective
+	mind_traits = list(TRAIT_DETECTIVE)
+
 /obj/item
 	//The special description that is triggered when special_desc_requirements are met. Make sure you set the correct EXAMINE_CHECK!
 	var/special_desc = ""
@@ -25,6 +29,11 @@ would only be recognisable with someone that had the syndicate trait.
 	//The FACTION requirement setting if EXAMINE_CHECK_FACTION is set. E.g. "Syndicate". As you can see, it's a list. So when setting it, ensure you do = list(shit1, shit2)
 	var/list/special_desc_factions
 
+
+/obj/item/examine(mob/user)
+	. = ..()
+	if(special_desc_requirement == EXAMINE_CHECK_NONE && special_desc)
+		. += span_notice("This item could be examined further...")
 
 /obj/item/examine_more(mob/user)
 	. = ..()

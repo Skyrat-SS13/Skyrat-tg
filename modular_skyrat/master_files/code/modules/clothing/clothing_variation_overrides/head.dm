@@ -3,16 +3,16 @@
  * Clothing that do not require a new icon to function correctly, think, big jackets.
  */
 
-/obj/item/clothing/head/festive
+/obj/item/clothing/head/costume/festive
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/helmet/gladiator
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/chefhat
+/obj/item/clothing/head/utility/chefhat
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/hos/beret
+/obj/item/clothing/head/hats/hos/beret
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/soft/paramedic
@@ -21,10 +21,7 @@
 /obj/item/clothing/head/hooded/explorer
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/helmet/sec
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/head/warden
+/obj/item/clothing/head/hats/warden
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/wizard/red
@@ -33,22 +30,19 @@
 /obj/item/clothing/head/wizard
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/hos
+/obj/item/clothing/head/hats/hos
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/beret/blueshield
+/obj/item/clothing/head/hats/caphat
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/caphat
+/obj/item/clothing/head/costume/crown
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/crown/fancy
+/obj/item/clothing/head/hats/hopcap
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/hopcap
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/head/hardhat
+/obj/item/clothing/head/utility/hardhat
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/beanie
@@ -69,13 +63,13 @@
 /obj/item/clothing/head/flatcap
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/pirate
+/obj/item/clothing/head/costume/pirate
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/rice_hat
+/obj/item/clothing/head/costume/rice_hat
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/ushanka
+/obj/item/clothing/head/costume/ushanka
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/collectable
@@ -84,58 +78,55 @@
 /obj/item/clothing/head/fedora
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/that
+/obj/item/clothing/head/hats/tophat
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/rabbitears
+/obj/item/clothing/head/costume/rabbitears
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/mailman
+/obj/item/clothing/head/costume/mailman
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/centhat
+/obj/item/clothing/head/hats/centhat
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/nursehat
+/obj/item/clothing/head/costume/nursehat
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/cueball
+/obj/item/clothing/head/costume/cueball
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/bandana
+/obj/item/clothing/head/costume/pirate/bandana
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/hunter
+/obj/item/clothing/head/cowboy
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/scarecrow_hat
+/obj/item/clothing/head/costume/scarecrow_hat
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/intern
+/obj/item/clothing/head/hats/intern
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/helmet/blueshirt
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/helmet/space/space_ninja
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/head/helmet/space/beret
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/head/warden/police
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/helmet/swat
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/spacepolice
+/obj/item/clothing/head/costume/spacepolice
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/sombrero
+/obj/item/clothing/head/costume/sombrero
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/santa
+/obj/item/clothing/head/costume/santa
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/head/helmet/space/santahat/beardless
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/helmet/durathread
@@ -147,7 +138,7 @@
 /obj/item/clothing/head/hooded/cloakhood/goliath
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/nun_hood
+/obj/item/clothing/head/chaplain/nun_hood
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/helmet/knight/greyscale
@@ -162,7 +153,7 @@
 /obj/item/clothing/head/hooded/cult_hoodie/eldritch
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/helmet/space/hardsuit/berserker
+/obj/item/clothing/head/hooded/berserker
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/hooded/cloakhood/godslayer
@@ -176,43 +167,34 @@
  * Clothing that does not have a digitigrade version, and thus will squash legs to fit.
  */
 
-/obj/item/clothing/head/irs
+/obj/item/clothing/head/costume/irs
 	supports_variations_flags = NONE
 
-/obj/item/clothing/head/pg
+/obj/item/clothing/head/costume/tmc
 	supports_variations_flags = NONE
 
-/obj/item/clothing/head/tmc
+/obj/item/clothing/head/costume/deckers
 	supports_variations_flags = NONE
 
-/obj/item/clothing/head/deckers
+/obj/item/clothing/head/costume/fancy
 	supports_variations_flags = NONE
 
-/obj/item/clothing/head/morningstar
+/obj/item/clothing/head/costume/allies
 	supports_variations_flags = NONE
 
-/obj/item/clothing/head/fancy
+/obj/item/clothing/head/costume/yuri
 	supports_variations_flags = NONE
 
-/obj/item/clothing/head/allies
-	supports_variations_flags = NONE
-
-/obj/item/clothing/head/yuri
-	supports_variations_flags = NONE
-
-/obj/item/clothing/head/football_helmet
+/obj/item/clothing/head/costume/football_helmet
 	supports_variations_flags = NONE
 
 /obj/item/clothing/head/helmet/alt
 	supports_variations_flags = NONE
 
-/obj/item/clothing/head/xenos
+/obj/item/clothing/head/costume/xenos
 	supports_variations_flags = NONE
 
 /obj/item/clothing/head/cone
-	supports_variations_flags = NONE
-
-/obj/item/clothing/head/helmet/space/chronos
 	supports_variations_flags = NONE
 
 /obj/item/clothing/head/hooded/techpriest

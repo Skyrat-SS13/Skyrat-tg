@@ -3,7 +3,6 @@
 	desc = "An experimental welding tool capable of welding functionality through the use of electricity. The flame seems almost cold."
 	icon = 'modular_skyrat/modules/aesthetics/tools/tools.dmi'
 	icon_state = "elwelder"
-	inhand_icon_state = "elwelder"
 	light_power = 1
 	light_color = LIGHT_COLOR_HALOGEN
 	tool_behaviour = NONE
@@ -17,7 +16,7 @@
 
 /obj/item/weldingtool/electric/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cell, cell_override, CALLBACK(src, .proc/switched_off))
+	AddComponent(/datum/component/cell, cell_override, CALLBACK(src, PROC_REF(switched_off)))
 
 /obj/item/weldingtool/electric/attack_self(mob/user, modifiers)
 	. = ..()

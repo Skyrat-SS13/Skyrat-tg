@@ -86,12 +86,12 @@
 	var/temp = T20C
 
 /obj/effect/spawner/liquids_spawner/Initialize(mapload)
-	..()
+	. = ..()
+
 	if(!isturf(loc))
-		return INITIALIZE_HINT_QDEL
+		return
 	var/turf/T = loc
 	T.add_liquid_list(reagent_list, FALSE, temp)
-	return INITIALIZE_HINT_QDEL
 
 /obj/effect/spawner/liquids_spawner/acid_puddle
 	reagent_list = list(/datum/reagent/toxin/acid = ONE_LIQUIDS_HEIGHT)
@@ -106,15 +106,15 @@
 	var/allowed_area_types = list(/area/ocean = TRUE, /area/ocean/generated = TRUE)
 
 /obj/effect/spawner/ocean_curio/Initialize(mapload)
-	..()
+	. = ..()
 
 	//Way to not spawn stuff inside ruins etc.
 	var/area/A = get_area(src)
 	if(!allowed_area_types[A.type])
-		return INITIALIZE_HINT_QDEL
+		return
 	var/turf/T = get_turf(src)
 	if(T.turf_flags & NO_RUINS)
-		return INITIALIZE_HINT_QDEL
+		return
 
 	var/to_spawn_path
 
@@ -130,7 +130,6 @@
 			else
 				to_spawn_path = default_2
 	new to_spawn_path(T)
-	return INITIALIZE_HINT_QDEL
 
 /obj/effect/spawner/ocean_curio/rock
 	default_1 = /obj/structure/flora/rock

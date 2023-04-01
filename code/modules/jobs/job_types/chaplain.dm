@@ -7,8 +7,8 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = SUPERVISOR_HOP
-	selection_color = "#bbe291"
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "CHAPLAIN"
 
 	outfit = /datum/outfit/job/chaplain
 	plasmaman_outfit = /datum/outfit/plasmaman/chaplain
@@ -31,9 +31,11 @@
 		/obj/item/toy/plush/ratplush = 1
 	)
 	rpg_title = "Paladin"
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN | JOB_CAN_BE_INTERN
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
 
 	voice_of_god_power = 2 //Chaplains are very good at speaking with the voice of god
+
+	job_tone = "holy"
 
 
 /datum/job/chaplain/after_spawn(mob/living/spawned, client/player_client)
@@ -119,8 +121,9 @@
 	backpack_contents = list(
 		/obj/item/camera/spooky = 1,
 		/obj/item/stamp/chap = 1,
+		/obj/item/storage/box/gunset/roundstart_guns/cargo = 1, // SKYRAT EDIT ADD
 		)
-	belt = /obj/item/modular_computer/tablet/pda/chaplain
+	belt = /obj/item/modular_computer/pda/chaplain
 	ears = /obj/item/radio/headset/headset_srv
 
 	backpack = /obj/item/storage/backpack/cultpack

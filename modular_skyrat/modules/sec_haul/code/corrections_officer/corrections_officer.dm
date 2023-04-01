@@ -7,11 +7,11 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = SUPERVISOR_HOS
-	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 150
 	exp_required_type = EXP_TYPE_CREW
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "CORRECTIONS_OFFICER"
 
 	paycheck = PAYCHECK_CREW
 	paycheck_department = ACCOUNT_SEC
@@ -19,7 +19,6 @@
 	outfit = /datum/outfit/job/corrections_officer
 	plasmaman_outfit = /datum/outfit/plasmaman/security
 	display_order = JOB_DISPLAY_ORDER_CORRECTIONS_OFFICER
-	mind_traits = list(TRAIT_DONUT_LOVER)
 	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
 	departments_list = list(
 		/datum/job_department/security,
@@ -54,7 +53,7 @@
 	duffelbag = /obj/item/storage/backpack/duffelbag/sec
 	head = /obj/item/clothing/head/corrections_officer
 	box = /obj/item/storage/box/survival/security
-	belt = /obj/item/modular_computer/tablet/pda/security
+	belt = /obj/item/modular_computer/pda/security
 
 	id_trim = /datum/id_trim/job/corrections_officer
 

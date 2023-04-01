@@ -24,7 +24,7 @@ Space Station 13 is a paranoia-laden round-based roleplaying game set against th
 
 ## Important note - TEST YOUR PULL REQUESTS
 
-You are responsible for the testing of your content. You should not mark a pull request ready for review until you have actually tested it. If you require a separate client for testing, you can use a guest account by logging out of BYOND and connecting to your test server. Test merges are not for bug finding, they are for stress tests where local testing simply doesn't allow for this.
+You are responsible for the testing of your content and providing proof of such in your pull request. You should not mark a pull request ready for review until you have actually tested it. If you require a separate client for testing, you can use a guest account by logging out of BYOND and connecting to your test server. Test merges are not for bug finding, they are for stress tests where local testing simply doesn't allow for this.
 
 ## DEVELOPMENT FLOWCHART
 ![image](https://i.imgur.com/aJnE4WT.png)
@@ -56,11 +56,6 @@ Find `BUILD.bat` here in the root folder of tgstation, and double click it to in
 [/tg/station HACKMD account](https://hackmd.io/@tgstation) - Design documentation here
 
 [Interested in some starting lore?](https://github.com/tgstation/common_core)
-
-## Current Skyrat Modules
-* **IC Spawning**: https://github.com/Skyrat-SS13/Skyrat-tg/pull/104
-* **Horrorform**: https://github.com/Skyrat-SS13/Skyrat-tg/pull/241
-* **Blueshield**: https://github.com/Skyrat-SS13/Skyrat-tg/pull/127
 
 ## LICENSE
 

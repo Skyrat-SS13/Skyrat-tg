@@ -5,6 +5,7 @@
 	name = "Fireball"
 	item_type = /obj/item/book/granter/action/spell/fireball
 	description = "This spell fires an explosive fireball at a target."
+	admin_note = "WARNING: This spell has a fairly short cooldown, and can KO/kill on it's own."
 
 /datum/opposing_force_equipment/spell/sacredflame
 	name = "Sacred Flame"
@@ -20,6 +21,7 @@
 	name = "Blind"
 	item_type = /obj/item/book/granter/action/spell/blind
 	description = "This spell temporarily blinds a single target."
+	admin_note = "WARNING: Notably strong in 1-v-1s."
 
 /datum/opposing_force_equipment/spell/mindswap
 	name = "Mindswap"
@@ -47,3 +49,4 @@
 	name = "Summon Item"
 	item_type = /obj/item/book/granter/action/spell/summonitem
 	description = "This spell can be used to recall a previously marked item to your hand from anywhere in the universe."
+	admin_note = "WARNING: This spell lets them summon anything they can hold, for as long as it exists, or they can still cast the spell."

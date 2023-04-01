@@ -4,14 +4,14 @@
 /obj/item/bodypart/chest/jelly
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
 
-/obj/item/bodypart/l_arm/jelly
+/obj/item/bodypart/arm/left/jelly
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
 
-/obj/item/bodypart/r_arm/jelly
+/obj/item/bodypart/arm/right/jelly
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
 
-/obj/item/bodypart/l_leg/jelly
+/obj/item/bodypart/leg/left/jelly
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
 
-/obj/item/bodypart/r_leg/jelly
+/obj/item/bodypart/leg/right/jelly
 	icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC

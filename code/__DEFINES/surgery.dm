@@ -13,6 +13,22 @@
 #define ORGAN_SYNTHETIC_EMP (1<<5)
 // //Can't be removed using surgery
 #define ORGAN_UNREMOVABLE (1<<6)
+// SKYRAT EDIT START - Customization
+/// Synthetic organ granted by a species (for use for organ replacements between species)
+#define ORGAN_SYNTHETIC_FROM_SPECIES (1<<7)
+// SKYRAT EDIT END
 
 /// When the surgery step fails :(
 #define SURGERY_STEP_FAIL -1
+
+// Flags for surgery_flags on surgery datums
+///Will allow the surgery to bypass clothes
+#define SURGERY_IGNORE_CLOTHES (1<<0)
+///Will allow the surgery to be performed by the user on themselves.
+#define SURGERY_SELF_OPERABLE (1<<1)
+///Will allow the surgery to work on mobs that aren't lying down.
+#define SURGERY_REQUIRE_RESTING (1<<2)
+///Will allow the surgery to work only if there's a limb.
+#define SURGERY_REQUIRE_LIMB (1<<3)
+///Will allow the surgery to work only if there's a real (eg. not pseudopart) limb.
+#define SURGERY_REQUIRES_REAL_LIMB (1<<4)

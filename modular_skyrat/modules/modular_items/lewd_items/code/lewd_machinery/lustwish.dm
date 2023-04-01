@@ -2,12 +2,12 @@
 	name = "LustWish"
 	desc = "A vending machine with various toys. Not for the faint of heart."
 	icon_state = "lustwish"
+	base_icon_state = "lustwish"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/lustwish.dmi'
 	light_mask = "lustwish-light-mask"
 	age_restrictions = TRUE
+	///Has the discount card been used on the vending machine?
 	var/card_used = FALSE
-	var/current_color = "pink"
-	var/static/list/vend_designs
 	product_ads = "Try me!;Kinky!;Lewd and fun!;Hey you, yeah you... wanna take a look at my collection?;Come on, take a look!;Remember, always adhere to Nanotrasen corporate policy!;Don't forget to use protection!"
 	vend_reply = "Enjoy!;We're glad to satisfy your desires!"
 
@@ -34,7 +34,7 @@
 					/obj/item/serviette_pack = 10,
 					/obj/item/restraints/handcuffs/lewd = 8,
 					/obj/item/key/collar = 48,
-					/obj/item/pillow = 32, //cmon, why there is always 0 pillows, where do you guys stuff it.
+					/obj/item/fancy_pillow = 32,
 					/obj/item/stack/shibari_rope/full = 10,
 					/obj/item/stack/shibari_rope/glow/full = 10,
 
@@ -43,15 +43,15 @@
 					/obj/item/clothing/mask/ballgag/choking = 8,
 					/obj/item/clothing/mask/muzzle/ring = 4,
 					/obj/item/clothing/head/domina_cap = 5,
-					/obj/item/clothing/head/helmet/space/deprivation_helmet = 5,
-					/obj/item/clothing/head/maid = 5,
+					/obj/item/clothing/head/deprivation_helmet = 5,
+					/obj/item/clothing/head/costume/maid = 5,
 					/obj/item/clothing/glasses/blindfold/kinky = 5,
 					/obj/item/clothing/ears/kinky_headphones = 5,
 					/obj/item/clothing/mask/gas/bdsm_mask = 5,
 					/obj/item/reagent_containers/cup/lewd_filter = 5,
 					/obj/item/clothing/glasses/hypno = 4,
-					/obj/item/clothing/head/kitty = 4,
-					/obj/item/clothing/head/rabbitears = 4,
+					/obj/item/clothing/head/costume/kitty = 4,
+					/obj/item/clothing/head/costume/rabbitears = 4,
 
 
 					//neck
@@ -71,10 +71,9 @@
 					/obj/item/clothing/under/costume/lewdmaid = 5,
 					/obj/item/clothing/suit/straight_jacket/shackles = 4,
 					/obj/item/clothing/under/stripper_outfit = 5,
-					/obj/item/clothing/under/misc/stripper/bunnysuit = 5,
-					/obj/item/clothing/under/misc/stripper/bunnysuit/white = 5,
-					/obj/item/clothing/under/misc/gear_harness = 4,
-					/obj/item/clothing/under/dress/corset = 4,
+					/obj/item/clothing/under/costume/bunnylewd = 5,
+					/obj/item/clothing/under/costume/bunnylewd/white = 5,
+					/obj/item/clothing/under/misc/skyrat/gear_harness = 4,
 
 					//hands
 					/obj/item/clothing/gloves/ball_mittens = 8,
@@ -86,7 +85,7 @@
 					/obj/item/clothing/shoes/latex_heels = 4,
 					/obj/item/clothing/shoes/latex_heels/domina_heels = 4,
 					/obj/item/clothing/shoes/jackboots/knee = 3,
-					/obj/item/clothing/under/pants/chaps = 4,
+					/obj/item/clothing/under/pants/skyrat/chaps = 4,
 
 					//belt
 					/obj/item/clothing/strapon = 6,
@@ -120,6 +119,7 @@
 					/obj/item/clothing/under/costume/jabroni = 4,
 					/obj/item/clothing/neck/human_petcollar/locked = 4,
 					/obj/item/clothing/suit/straight_jacket/kinky_sleepbag = 2, //my favorite thing, spent 1 month on it. Don't remove please.
+					/obj/item/disk/nifsoft_uploader/dorms/contract = 5,
 					/obj/item/reagent_containers/pill/hexacrocin = 10,
 					/obj/item/reagent_containers/pill/pentacamphor = 5,
 					/obj/item/reagent_containers/cup/bottle/hexacrocin = 4,
@@ -130,41 +130,24 @@
 	default_price = 30
 	extra_price = 250
 
-//Secret vending machine skin. Don't touch plz
-/obj/machinery/vending/dorms/proc/populate_vend_designs()
-    vend_designs = list(
-        "pink" = image (icon = src.icon, icon_state = "lustwish_pink"),
-        "teal" = image(icon = src.icon, icon_state = "lustwish_teal"))
-
-//Changing special secret var
+//Changes the settings on the vendor, if the user uses the discount card.
 /obj/machinery/vending/dorms/attackby(obj/item/used_item, mob/living/user, params)
-	if(istype(used_item, /obj/item/lustwish_discount))
-		user.visible_message(span_boldnotice("Something changes in [src] with a loud clunk."))
-		card_used = !card_used
-		switch(card_used)
-			if(TRUE)
-				default_price = 0
-				extra_price = 0
-			if(FALSE)
-				default_price = 30
-				extra_price = 250
-	else
+	if(!istype(used_item, /obj/item/lustwish_discount))
 		return ..()
 
-//using multitool on pole
-/obj/machinery/vending/dorms/multitool_act(mob/living/user, obj/item/used_item)
-	. = ..()
-	if(.)
-		return
-	if(card_used == TRUE)
-		var/choice = show_radial_menu(user, src, vend_designs, custom_check = CALLBACK(src, .proc/check_menu, user, used_item), radius = 50, require_near = TRUE)
-		if(!choice)
-			return FALSE
-		current_color = choice
-		update_icon()
-	else
+	user.visible_message(span_boldnotice("Something changes in [src] with a loud clunk."))
+	card_used = !card_used
+
+	if(card_used)
+		default_price = 0
+		extra_price = 0
+
 		return
 
+	default_price = initial(default_price)
+	extra_price = initial(extra_price)
+
+///Performs checks to see if the user can change the color on the vending machine.
 /obj/machinery/vending/dorms/proc/check_menu(mob/living/user, obj/item/multitool)
 	if(!istype(user))
 		return FALSE
@@ -172,22 +155,21 @@
 		return FALSE
 	if(!multitool || !user.is_holding(multitool))
 		return FALSE
+
 	return TRUE
 
 /obj/machinery/vending/dorms/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()
-	if(!length(vend_designs))
-		populate_vend_designs()
 
 /obj/machinery/vending/dorms/update_icon_state()
 	..()
 	if(machine_stat & BROKEN)
-		icon_state = "[initial(icon_state)]_[current_color]-broken"
-	else
-		icon_state = "[initial(icon_state)]_[current_color][powered() ? null : "-off"]"
+		icon_state = "[base_icon_state]-broken"
+		return
 
+	icon_state = "[base_icon_state][powered() ? null : "-off"]"
 
 //Refill item
 /obj/item/vending_refill/lustwish

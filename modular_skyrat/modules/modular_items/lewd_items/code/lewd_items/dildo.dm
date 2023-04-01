@@ -7,13 +7,14 @@
 /obj/item/clothing/sextoy/dildo
 	name = "dildo"
 	desc = "A large plastic penis, much like the one in your mother's bedside drawer."
-	icon_state = "dildo"
-	inhand_icon_state = "dildo"
+	icon_state = "dildo_human"
+	base_icon_state = "dildo"
+	inhand_icon_state = "dildo_human"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	/// Current design of the toy, affects sprite and can change
-	var/current_color = "human"
+	var/current_type = "human"
 	/// If the design has been changed before
 	var/color_changed = FALSE
 	/// Assoc list of designs, used in the radial menu for picking one
@@ -33,12 +34,12 @@
 /// Create an assoc list of designs for the radial color/design menu
 /obj/item/clothing/sextoy/dildo/proc/populate_dildo_designs()
 	dildo_designs = list(
-		"avian" = image (icon = src.icon, icon_state = "[initial(icon_state)]_avian"),
-		"canine" = image(icon = src.icon, icon_state = "[initial(icon_state)]_canine"),
-		"equine" = image(icon = src.icon, icon_state = "[initial(icon_state)]_equine"),
-		"dragon" = image(icon = src.icon, icon_state = "[initial(icon_state)]_dragon"),
-		"human" = image(icon = src.icon, icon_state = "[initial(icon_state)]_human"),
-		"tentacle" = image(icon = src.icon, icon_state = "[initial(icon_state)]_tentacle"))
+		"avian" = image(icon = src.icon, icon_state = "[base_icon_state]_avian"),
+		"canine" = image(icon = src.icon, icon_state = "[base_icon_state]_canine"),
+		"equine" = image(icon = src.icon, icon_state = "[base_icon_state]_equine"),
+		"dragon" = image(icon = src.icon, icon_state = "[base_icon_state]_dragon"),
+		"human" = image(icon = src.icon, icon_state = "[base_icon_state]_human"),
+		"tentacle" = image(icon = src.icon, icon_state = "[base_icon_state]_tentacle"))
 
 /obj/item/clothing/sextoy/dildo/AltClick(mob/user)
 	if(color_changed)
@@ -46,10 +47,10 @@
 	. = ..()
 	if(.)
 		return
-	var/choice = show_radial_menu(user, src, dildo_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
+	var/choice = show_radial_menu(user, src, dildo_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 	if(!choice)
 		return FALSE
-	current_color = choice
+	current_type = choice
 	update_icon()
 	color_changed = TRUE
 
@@ -62,8 +63,8 @@
 
 /obj/item/clothing/sextoy/dildo/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)][change_sprite ? "_[current_color]" : ""]"
-	inhand_icon_state = "[initial(icon_state)][change_sprite ? "_[current_color]" : ""]"
+	icon_state = "[base_icon_state][change_sprite ? "_[current_type]" : ""]"
+	inhand_icon_state = "[base_icon_state][change_sprite ? "_[current_type]" : ""]"
 
 /obj/item/clothing/sextoy/dildo/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
@@ -96,7 +97,7 @@
 		return
 
 	var/message = ""
-	var/obj/item/organ/external/genital/vagina = target.getorganslot(ORGAN_SLOT_VAGINA)
+	var/obj/item/organ/external/genital/vagina = target.get_organ_slot(ORGAN_SLOT_VAGINA)
 	if(!target.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		to_chat(user, span_danger("[target] doesn't want you to do that."))
 		return
@@ -159,7 +160,7 @@
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE, ignore_walls = FALSE)
 
 /*
-*	POLYCHROMIC // this doesn't even use polychromism I Want To Die
+*	COLOUR CHANGING
 */
 
 GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
@@ -179,14 +180,15 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 /obj/item/clothing/sextoy/dildo/custom_dildo
 	name = "custom dildo"
 	desc = "A dildo that can be customized to your specification."
-	icon_state = "polydildo"
-	inhand_icon_state = "polydildo"
+	icon_state = "polydildo_small"
+	base_icon_state = "polydildo"
+	inhand_icon_state = "polydildo_small"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	/// Static list of possible colors for the toy
 	var/static/list/poly_colors = list("#FFFFFF", "#FF8888", "#888888")
-	current_color = null
+	current_type = null
 
 	var/static/list/dildo_sizes = list()
 	w_class = WEIGHT_CLASS_TINY
@@ -194,13 +196,13 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 /obj/item/clothing/sextoy/dildo/custom_dildo/populate_dildo_designs()
 	dildo_sizes = list(
-		"small" = image (icon = src.icon, icon_state = "[initial(icon_state)]_small"),
-		"medium" = image(icon = src.icon, icon_state = "[initial(icon_state)]_medium"),
-		"big" = image(icon = src.icon, icon_state = "[initial(icon_state)]_big"))
+		"small" = image (icon = src.icon, icon_state = "[base_icon_state]_small"),
+		"medium" = image(icon = src.icon, icon_state = "[base_icon_state]_medium"),
+		"big" = image(icon = src.icon, icon_state = "[base_icon_state]_big"))
 
 /obj/item/clothing/sextoy/dildo/custom_dildo/AltClick(mob/living/user)
 	if(!size_changed)
-		var/choice = show_radial_menu(user, src, dildo_sizes, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, dildo_sizes, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		poly_size = choice
@@ -210,7 +212,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	else
 		if(color_changed)
 			return
-		if(!istype(user) || !user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
+		if(!istype(user) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 			return
 		customize(user)
 		color_changed = TRUE
@@ -238,8 +240,8 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 /obj/item/clothing/sextoy/dildo/custom_dildo/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[poly_size]"
-	inhand_icon_state = "[initial(icon_state)]_[poly_size]"
+	icon_state = "[base_icon_state]_[poly_size]"
+	inhand_icon_state = "[base_icon_state]_[poly_size]"
 
 /*
 *	DOUBLE DILDO
@@ -267,7 +269,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 /obj/item/clothing/sextoy/dildo/double_dildo/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-	update_action_buttons_icons()
+	update_mob_action_buttonss()
 
 /obj/item/clothing/sextoy/dildo/double_dildo/populate_dildo_designs()
 	return
@@ -276,17 +278,17 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	return
 
 /// Proc to update the actionbutton icon
-/obj/item/clothing/sextoy/dildo/double_dildo/proc/update_action_buttons_icons()
+/obj/item/clothing/sextoy/dildo/double_dildo/proc/update_mob_action_buttonss()
 	var/datum/action/item_action/action_button
 	if(istype(action_button, /datum/action/item_action/take_dildo))
 		action_button.button_icon_state = "dildo_side"
-		action_button.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
+		action_button.button_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 	update_icon()
 
 //button stuff
 /datum/action/item_action/take_dildo
-    name = "Take the other side of the double dildo in hand"
-    desc = "You can feel one side inside you, time to share this feeling with someone..."
+	name = "Take the other side of the double dildo in hand"
+	desc = "You can feel one side inside you, time to share this feeling with someone..."
 
 /datum/action/item_action/take_dildo/Trigger(trigger_flags)
 	var/obj/item/clothing/sextoy/dildo/double_dildo/dildo = target
@@ -341,10 +343,10 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	. = ..()
 	if(!istype(user))
 		return
-	var/obj/item/organ/external/genital/vagina/vagina = user.getorganslot(ORGAN_SLOT_VAGINA)
-	var/obj/item/organ/external/genital/womb/womb = user.getorganslot(ORGAN_SLOT_WOMB)
-	var/obj/item/organ/external/genital/penis/penis = user.getorganslot(ORGAN_SLOT_PENIS)
-	var/obj/item/organ/external/genital/testicles/testicles = user.getorganslot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/external/genital/vagina/vagina = user.get_organ_slot(ORGAN_SLOT_VAGINA)
+	var/obj/item/organ/external/genital/womb/womb = user.get_organ_slot(ORGAN_SLOT_WOMB)
+	var/obj/item/organ/external/genital/penis/penis = user.get_organ_slot(ORGAN_SLOT_PENIS)
+	var/obj/item/organ/external/genital/testicles/testicles = user.get_organ_slot(ORGAN_SLOT_TESTICLES)
 
 
 	if(src == user.vagina)
@@ -377,10 +379,10 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	. = ..()
 	if(!istype(user))
 		return
-	var/obj/item/organ/external/genital/vagina/vagina = user.getorganslot(ORGAN_SLOT_VAGINA)
-	var/obj/item/organ/external/genital/womb/womb = user.getorganslot(ORGAN_SLOT_WOMB)
-	var/obj/item/organ/external/genital/penis/penis = user.getorganslot(ORGAN_SLOT_PENIS)
-	var/obj/item/organ/external/genital/testicles/testicles = user.getorganslot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/external/genital/vagina/vagina = user.get_organ_slot(ORGAN_SLOT_VAGINA)
+	var/obj/item/organ/external/genital/womb/womb = user.get_organ_slot(ORGAN_SLOT_WOMB)
+	var/obj/item/organ/external/genital/penis/penis = user.get_organ_slot(ORGAN_SLOT_PENIS)
+	var/obj/item/organ/external/genital/testicles/testicles = user.get_organ_slot(ORGAN_SLOT_TESTICLES)
 
 	if(!(src == user.vagina))
 		return

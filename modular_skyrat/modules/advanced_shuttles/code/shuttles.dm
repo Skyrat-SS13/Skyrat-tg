@@ -1,9 +1,6 @@
 /obj/docking_port/mobile/arrivals_skyrat
 	name = "NTV Relay"
 	shuttle_id = "arrivals_shuttle"
-	dwidth = 1
-	width = 5
-	height = 13
 	dir = WEST
 	port_direction = SOUTH
 
@@ -58,12 +55,6 @@
 	port_id = "arrivals"
 	suffix = "skyrat"
 	who_can_purchase = null
-
-/datum/map_template/shuttle/escape_pod/default
-	name = "escape pod (Default)"
-	prefix = "_maps/shuttles/skyrat/"
-	port_id = "escape_pod"
-	suffix = "default_skyrat"
 
 /datum/map_template/shuttle/emergency/default
 	prefix = "_maps/shuttles/skyrat/"

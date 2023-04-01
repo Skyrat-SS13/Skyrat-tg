@@ -15,18 +15,37 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = TRUE
 	layer = ABOVE_MOB_LAYER
-	vis_flags = VIS_INHERIT_PLANE
+	plane = GAME_PLANE_UPPER
 
 /obj/effect/overlay/water/top
 	icon_state = "top"
 	layer = BELOW_MOB_LAYER
+	plane = GAME_PLANE
+
+/**
+ * Planetside water, indestructible.
+ *
+ * Use this for indoors.
+ */
+/turf/open/water/overlay
+	name = "shallow water"
+	desc = "A natural body of shallow water."
+	icon = 'modular_skyrat/modules/mapping/icons/unique/pool.dmi'
+	icon_state = "rocky"
+	baseturfs = /turf/open/water/overlay
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
+	planetary_atmos = FALSE
 
 /turf/open/water/overlay/Initialize(mapload)
-	.  = ..()
-	var/obj/effect/overlay/water/water_overlay = new()
-	var/obj/effect/overlay/water/top/water_top_overlay = new()
-	vis_contents += water_overlay
-	vis_contents += water_top_overlay
+	. = ..()
+
+	var/obj/effect/overlay/water/bottom = new()
+	SET_PLANE(bottom, PLANE_TO_TRUE(bottom.plane), src)
+	vis_contents += bottom
+
+	var/obj/effect/overlay/water/top/top = new()
+	SET_PLANE(top, PLANE_TO_TRUE(top.plane), src)
+	vis_contents += top
 
 /turf/open/water/overlay/Entered(atom/movable/arrived)
 	..()
@@ -50,25 +69,18 @@
 	mood_change = 4
 	timeout = 20 MINUTES
 
-// Planetside water, indestructible.
-/turf/open/water/overlay
-	name = "shallow water"
-	desc = "A natural body of shallow water."
-	icon = 'modular_skyrat/modules/mapping/icons/unique/pool.dmi'
-	icon_state = "rocky"
-	baseturfs = /turf/open/water/overlay
-	var/obj/effect/overlay/water/water_overlay
-	var/obj/effect/overlay/water/top/water_top_overlay
-	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
-	planetary_atmos = FALSE
-// Use this for indoors. It has a roof!
-
+/**
+ * Planetside water, indestructible.
+ *
+ * Use this for outdoors. It normalises to it's initial airmix over time!
+ */
 /turf/open/water/overlay/outdoors
 	baseturfs = /turf/open/water/overlay/outdoors
 	planetary_atmos = TRUE
-// Use this for outdoors. It normalises to it's initial airmix over time!
 
-// Hotpsrings! They give a positive mood event.
+/**
+ * Hotpsrings! They give a positive mood event.
+ */
 /turf/open/water/overlay/hotspring
 	name = "hotspring"
 	desc = "A warm, steamy swimming pool."

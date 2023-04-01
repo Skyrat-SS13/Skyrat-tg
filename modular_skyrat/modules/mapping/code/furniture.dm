@@ -63,3 +63,7 @@
 	desc = "It's kind of fun to go up or down these once in a while."
 	icon = 'modular_skyrat/modules/mapping/icons/unique/furniture.dmi'
 	icon_state = "ladder"
+
+// Toilet with a snap pop.
+/obj/structure/toilet/snappop
+	contents = newlist(/obj/item/toy/snappop/phoenix)

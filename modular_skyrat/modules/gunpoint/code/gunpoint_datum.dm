@@ -37,21 +37,21 @@
 		target.gp_effect = new
 		target.vis_contents += target.gp_effect
 
-	RegisterSignal(source, COMSIG_MOVABLE_MOVED, .proc/source_moved)
+	RegisterSignal(source, COMSIG_MOVABLE_MOVED, PROC_REF(source_moved))
 
-	RegisterSignal(source, COMSIG_LIVING_STATUS_STUN, .proc/source_cc)
-	RegisterSignal(source, COMSIG_LIVING_STATUS_KNOCKDOWN, .proc/source_cc)
-	RegisterSignal(source, COMSIG_LIVING_STATUS_PARALYZE, .proc/source_cc)
-	RegisterSignal(source, COMSIG_LIVING_UPDATED_RESTING, .proc/source_updated_resting)
+	RegisterSignal(source, COMSIG_LIVING_STATUS_STUN, PROC_REF(source_cc))
+	RegisterSignal(source, COMSIG_LIVING_STATUS_KNOCKDOWN, PROC_REF(source_cc))
+	RegisterSignal(source, COMSIG_LIVING_STATUS_PARALYZE, PROC_REF(source_cc))
+	RegisterSignal(source, COMSIG_LIVING_UPDATED_RESTING, PROC_REF(source_updated_resting))
 
-	RegisterSignal(aimed_gun, COMSIG_ITEM_EQUIPPED,.proc/click_destroy)
-	RegisterSignal(aimed_gun, COMSIG_ITEM_DROPPED,.proc/click_destroy)
+	RegisterSignal(aimed_gun, COMSIG_ITEM_EQUIPPED,PROC_REF(click_destroy))
+	RegisterSignal(aimed_gun, COMSIG_ITEM_DROPPED,PROC_REF(click_destroy))
 
-	RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/Destroy)
-	RegisterSignal(source, COMSIG_PARENT_QDELETING, .proc/Destroy)
+	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(Destroy))
+	RegisterSignal(source, COMSIG_PARENT_QDELETING, PROC_REF(Destroy))
 
 
-	addtimer(CALLBACK(src, .proc/lock_on), 7)
+	addtimer(CALLBACK(src, PROC_REF(lock_on)), 7)
 
 /datum/gunpoint/proc/lock_on()
 	if(src) //if we're not present then locking on failed and this datum is deleted

@@ -11,8 +11,8 @@
 
 	src.toggled_icon_state = toggled_icon_state
 
-	RegisterSignal(parent, COMSIG_CLICK_ALT, .proc/clothing_toggle)
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/handle_examine)
+	RegisterSignal(parent, COMSIG_CLICK_ALT, PROC_REF(clothing_toggle))
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(handle_examine))
 
 /datum/component/toggle_clothes/proc/handle_examine(datum/source, mob/user, list/examine_text)
 	SIGNAL_HANDLER

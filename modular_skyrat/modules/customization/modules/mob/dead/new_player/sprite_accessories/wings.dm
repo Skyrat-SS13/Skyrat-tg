@@ -6,19 +6,55 @@
 * Check some of the wings that make use of them for examples on how to make it look decent.
 */
 /datum/sprite_accessory/wings
-	icon = 'icons/mob/clothing/wings.dmi'
+	icon = 'icons/mob/species/wings.dmi'
 	generic = "Wings"
 	key = "wings"
 	color_src = USE_ONE_COLOR
-	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_LIZARD, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_SYNTHLIZ)
+	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTH, SPECIES_FELINE, SPECIES_LIZARD, SPECIES_MAMMAL)
 	organ_type = /obj/item/organ/external/wings
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER, BODY_ADJ_LAYER)
 	genetic = TRUE
 
-/datum/sprite_accessory/wings/is_hidden(mob/living/carbon/human/winged_mob, obj/item/bodypart/part_to_hide)
-	if(winged_mob.wear_suit && winged_mob.try_hide_mutant_parts)
+/datum/sprite_accessory/wings/is_hidden(mob/living/carbon/human/wearer)
+	if(!wearer.w_uniform && !wearer.wear_suit)
+		return FALSE
+	// Can hide if wearing uniform
+	if(key in wearer.try_hide_mutant_parts)
 		return TRUE
+	if(wearer.wear_suit)
+	// Exception for MODs
+		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
+			return FALSE
+	// Hide accessory if flagged to do so, taking species exceptions in account
+		else if((wearer.wear_suit.flags_inv & HIDEJUMPSUIT) \
+				&& (!wearer.wear_suit.species_exception \
+				|| !is_type_in_list(wearer.dna.species, wearer.wear_suit.species_exception)) \
+			)
+			return TRUE
+
 	return FALSE
+
+/datum/bodypart_overlay/mutant/wings/can_draw_on_bodypart(mob/living/carbon/human/wearer)
+	if(!wearer.w_uniform && !wearer.wear_suit)
+		return ..()
+
+	// Can hide if wearing uniform
+	if("wings" in wearer.try_hide_mutant_parts)
+		return FALSE
+
+	if(wearer.wear_suit)
+		// Exception for MODs
+		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
+			return TRUE
+
+		// Hide accessory if flagged to do so, taking species exceptions in account
+		else if((wearer.wear_suit.flags_inv & HIDEJUMPSUIT) \
+				&& (!wearer.wear_suit.species_exception \
+				|| !is_type_in_list(src, wearer.wear_suit.species_exception)) \
+			)
+			return FALSE
+
+	return TRUE
 
 /datum/sprite_accessory/wings/none
 	name = "None"
@@ -32,13 +68,53 @@
 /datum/sprite_accessory/wings/angel
 	color_src = USE_ONE_COLOR
 	default_color = "#FFFFFF"
+	locked = FALSE
+
+/datum/sprite_accessory/wings/fly
+	key = "wings_functional"
 
 /datum/sprite_accessory/wings/megamoth
 	color_src = USE_ONE_COLOR
 	default_color = "#FFFFFF"
+	key = "wings_functional"
+
+/datum/sprite_accessory/wings/mothra
+	key = "wings_functional"
+
+/datum/sprite_accessory/wings/robotic
+	locked = FALSE
+
+/datum/sprite_accessory/wings/skeleton
+	key = "wings_functional"
 
 /datum/sprite_accessory/wings/dragon
 	color_src = USE_ONE_COLOR
+	locked = FALSE
+
+
+/datum/sprite_accessory/wings_open
+	key = "wings_open"
+	color_src = USE_ONE_COLOR
+
+
+/datum/sprite_accessory/wings_open/is_hidden(mob/living/carbon/human/wearer)
+	if(!wearer.w_uniform && !wearer.wear_suit)
+		return FALSE
+	// Can hide if wearing uniform
+	if(key in wearer.try_hide_mutant_parts)
+		return TRUE
+	if(wearer.wear_suit)
+	// Exception for MODs
+		if(istype(wearer.wear_suit, /obj/item/clothing/suit/mod))
+			return FALSE
+	// Hide accessory if flagged to do so, taking species exceptions in account
+		else if((wearer.wear_suit.flags_inv & HIDEJUMPSUIT) \
+				&& (!wearer.wear_suit.species_exception \
+				|| !is_type_in_list(wearer.dna.species, wearer.wear_suit.species_exception)) \
+			)
+			return TRUE
+
+	return FALSE
 
 /*
 *	MAMMAL
@@ -47,16 +123,11 @@
 /datum/sprite_accessory/wings/mammal
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/wings.dmi'
 	default_color = DEFAULT_PRIMARY
-	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_LIZARD, SPECIES_INSECT, SPECIES_SYNTHLIZ)
+	recommended_species = list(SPECIES_MAMMAL, SPECIES_LIZARD, SPECIES_INSECT)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 	dimension_x = 46
 	dimension_y = 34
 	center = TRUE
-
-/datum/sprite_accessory/wings/mammal/top/is_hidden(mob/living/carbon/human/winged_mob, obj/item/bodypart/part_to_hide)
-	if((winged_mob.wear_suit && (winged_mob.try_hide_mutant_parts || (winged_mob.wear_suit.flags_inv & HIDEJUMPSUIT) && (!winged_mob.wear_suit.species_exception || !is_type_in_list(winged_mob.dna.species, winged_mob.wear_suit.species_exception)))))
-		return TRUE
-	return FALSE
 
 /datum/sprite_accessory/wings/mammal/bat //TODO: port my sprite from hyper for this one
 	name = "Bat"
@@ -212,14 +283,9 @@
 /datum/sprite_accessory/wings/moth
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/moth_wings.dmi' // Needs new icon to suit new naming convention
 	default_color = "#FFFFFF"
-	recommended_species = list(SPECIES_MOTH, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_INSECT) // Mammals too, I guess. They wont get flight though, see the wing organs for that logic
+	recommended_species = list(SPECIES_MOTH, SPECIES_MAMMAL, SPECIES_INSECT) // Mammals too, I guess. They wont get flight though, see the wing organs for that logic
 	organ_type = /obj/item/organ/external/wings/moth
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
-
-/datum/sprite_accessory/wings/moth/is_hidden(mob/living/carbon/human/winged_mob, obj/item/bodypart/part_to_hide)
-	if((winged_mob.wear_suit && (winged_mob.try_hide_mutant_parts || (winged_mob.wear_suit.flags_inv & HIDEJUMPSUIT) && (!winged_mob.wear_suit.species_exception || !is_type_in_list(winged_mob.dna.species, winged_mob.wear_suit.species_exception)))))
-		return TRUE
-	return FALSE
 
 /datum/sprite_accessory/wings/moth/none
 	name = "None"
@@ -317,3 +383,7 @@
 /datum/sprite_accessory/wings/moth/witchwing
 	name = "Moth (Witch Wing)"
 	icon_state = "witchwing"
+
+/datum/sprite_accessory/wings/moth/moffra
+	name = "Moth (Moffra)"
+	icon_state = "moffra"

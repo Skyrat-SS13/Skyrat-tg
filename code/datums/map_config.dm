@@ -1,7 +1,7 @@
-//used for holding information about unique properties of maps
-//feed it json files that match the datum layout
-//defaults to box
-//  -Cyberboss
+//This file is used to contain unique properties of every map, and how we wish to alter them on a per-map basis.
+//Use JSON files that match the datum layout and you should be set from there.
+//Right now, we default to MetaStation to ensure something does indeed load by default.
+//  -san7890 (with regards to Cyberboss)
 
 /datum/map_config
 	// Metadata
@@ -21,14 +21,19 @@
 	var/traits = null
 	var/space_ruin_levels = 7
 	var/space_empty_levels = 1
+	/// Boolean that tells us if this is a planetary station. (like IceBoxStation)
+	var/planetary = FALSE
 
+	///The type of mining Z-level that should be loaded.
 	var/minetype = "lavaland"
+	///If no minetype is set, this will be the blacklist file used
+	var/blacklist_file
 
 	var/allow_custom_shuttles = TRUE
 	var/shuttles = list(
 		"cargo" = "cargo_skyrat",
 		"ferry" = "ferry_fancy",
-		"whiteship" = "whiteship_box",
+		"whiteship" = "whiteship_meta",
 		"emergency" = "emergency_skyrat") //SKYRAT EDIT CHANGE
 
 	/// Dictionary of job sub-typepath to template changes dictionary
@@ -170,6 +175,12 @@
 
 	if ("minetype" in json)
 		minetype = json["minetype"]
+
+	if ("planetary" in json)
+		planetary = json["planetary"]
+
+	if ("blacklist_file" in json)
+		blacklist_file = json["blacklist_file"]
 
 	allow_custom_shuttles = json["allow_custom_shuttles"] != FALSE
 

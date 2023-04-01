@@ -25,6 +25,7 @@
 	icon = 'modular_skyrat/modules/exp_corps/icons/bonesaw.dmi'
 	lefthand_file = 'modular_skyrat/modules/exp_corps/icons/bonesaw_l.dmi'
 	righthand_file = 'modular_skyrat/modules/exp_corps/icons/bonesaw_r.dmi'
+	inhand_icon_state = "bonesaw"
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	toolspeed = 0.2
 	throw_range = 3
@@ -99,7 +100,7 @@
 
 /obj/item/storage/bag/ammo/marksman/Initialize(mapload)
 	. = ..()
-	create_storage(type = /datum/storage/marksman)
+	create_storage(storage_type = /datum/storage/marksman)
 
 /datum/storage/marksman
 	max_total_storage = 60

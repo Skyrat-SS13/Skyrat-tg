@@ -185,7 +185,7 @@
 /obj/machinery/deployable_turret/proc/volley(mob/user)
 	target_turf = get_turf(target)
 	for(var/i in 1 to number_of_shots)
-		addtimer(CALLBACK(src, /obj/machinery/deployable_turret/.proc/fire_helper, user), i*rate_of_fire)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/machinery/deployable_turret/, fire_helper), user), i*rate_of_fire)
 
 /obj/machinery/deployable_turret/proc/fire_helper(mob/user)
 	if(user.incapacitated() || !(user in buckled_mobs))
@@ -262,6 +262,7 @@
 
 /obj/item/gun_control/afterattack(atom/targeted_atom, mob/user, flag, params)
 	. = ..()
+	. |= AFTERATTACK_PROCESSED_ITEM
 	var/modifiers = params2list(params)
 	var/obj/machinery/deployable_turret/E = user.buckled
 	E.calculated_projectile_vars = calculate_projectile_angle_and_pixel_offsets(user, targeted_atom, modifiers)

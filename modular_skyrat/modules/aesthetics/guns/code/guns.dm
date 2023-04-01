@@ -64,6 +64,17 @@
 	vary_fire_sound = TRUE
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/shotgun_light.ogg'
 
+/obj/item/gun/ballistic/shotgun/riot/syndicate
+	name = "\improper Peacebreaker shotgun"
+	desc = "A Scarborough riot control shotgun fitted with a crimson furnishing and a wooden tactical stock. You swear you've seen this model elsewhere before..."
+	icon_state = "riotshotgun_syndie"
+	inhand_icon_state = "riot_shotgun_syndie"
+	can_be_sawn_off = FALSE
+	can_suppress = FALSE
+
+/obj/item/gun/ballistic/shotgun/riot/syndicate/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_SCARBOROUGH)
+
 /obj/item/gun/ballistic/shotgun/automatic/combat
 	name = "\improper Peacekeeper combat shotgun"
 	desc = "A semi-automatic Nanotrasen Peacekeeper shotgun with tactical furnishing and heavier internals meant for sustained fire. Lacks a threaded barrel."
@@ -86,15 +97,12 @@
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
 
-/obj/item/gun/ballistic/revolver/mateba
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-
 /obj/item/gun/ballistic/automatic/c20r
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
 /obj/item/gun/ballistic/automatic/m90
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-/obj/item/gun/ballistic/revolver/detective
+/obj/item/gun/ballistic/revolver/c38/detective
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
 /obj/item/gun/ballistic/automatic/pistol/aps
@@ -132,6 +140,7 @@
 
 /obj/item/ammo_casing/energy/laser/rainbow
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/nucgun.dmi'
+	icon_state = "laser"
 	select_name = "kill"
 	projectile_type = /obj/projectile/beam/laser/rainbow
 
@@ -141,6 +150,7 @@
 
 /obj/item/ammo_casing/energy/disabler/rainbow
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/nucgun.dmi'
+	icon_state = "laser"
 	select_name = "disable"
 	projectile_type = /obj/projectile/beam/disabler/rainbow
 
@@ -164,6 +174,11 @@
 /obj/item/gun/energy/e_gun/nuclear/rainbow/emag_act(mob/user, obj/item/card/emag/E)
 	return FALSE
 
+// We don't customize CTF
+/obj/item/gun/energy/laser/instakill/ctf
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
+
 //BEAM SOUNDS
 /obj/item/ammo_casing/energy
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/laser.ogg'
@@ -181,20 +196,58 @@
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/laser_cannon_fire.ogg'
 
 /obj/item/gun/ballistic/automatic/sniper_rifle
+	name = "sniper rifle"
+	desc = "A long ranged weapon that does significant damage. No, you can't quickscope."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = "sniper"
-	fire_delay = 60
+	w_class = WEIGHT_CLASS_BULKY
+	inhand_icon_state = "sniper"
+	worn_icon_state = null
+	fire_sound = 'sound/weapons/gun/sniper/shot.ogg'
+	fire_sound_volume = 90
+	load_sound = 'sound/weapons/gun/sniper/mag_insert.ogg'
+	rack_sound = 'sound/weapons/gun/sniper/rack.ogg'
+	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
+	recoil = 2
+	weapon_weight = WEAPON_HEAVY
+	mag_type = /obj/item/ammo_box/magazine/sniper_rounds
+	fire_delay = 6 SECONDS
+	burst_size = 1
+	w_class = WEIGHT_CLASS_NORMAL
+	slot_flags = ITEM_SLOT_BACK
+	actions_types = list()
+	mag_display = TRUE
+	suppressor_x_offset = 3
+	suppressor_y_offset = 3
+
+/obj/item/gun/ballistic/automatic/sniper_rifle/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/scope, range_modifier = 2)
+
+/obj/item/gun/ballistic/automatic/sniper_rifle/reset_semicd()
+	. = ..()
+	if(suppressed)
+		playsound(src, 'sound/machines/eject.ogg', 25, TRUE, ignore_walls = FALSE, extrarange = SILENCED_SOUND_EXTRARANGE, falloff_distance = 0)
+	else
+		playsound(src, 'sound/machines/eject.ogg', 50, TRUE)
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/syndicate
+	name = "syndicate sniper rifle"
+	desc = "An illegally modified .50 cal sniper rifle with suppression compatibility. Quickscoping still doesn't work."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = "sniper2"
-	fire_delay = 55
+	worn_icon_state = "sniper"
+	fire_delay = 5.5 SECONDS
+	can_suppress = TRUE
+	can_unsuppress = TRUE
+	pin = /obj/item/firing_pin/implant/pindicate
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/modular
 	name = "AUS-107 anti-materiel rifle"
 	desc = "A devastating Aussec Armory heavy sniper rifle, fitted with a modern scope."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = "sniper"
+	worn_icon_state = "sniper"
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle.ogg'
 	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle_s.ogg'
 	w_class = WEIGHT_CLASS_BULKY
@@ -206,13 +259,15 @@
 	icon_state = "sysniper"
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle.ogg'
 	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle_s.ogg'
-	fire_delay = 40 //Delay reduced thanks to recoil absorption
+	fire_delay = 4 SECONDS //Delay reduced thanks to recoil absorption
 	burst_size = 0.5
 	recoil = 1
 	can_suppress = TRUE
 	can_unsuppress = TRUE
 	weapon_weight = WEAPON_LIGHT
-	company_flag = COMPANY_SCARBOROUGH
+
+/obj/item/gun/ballistic/automatic/sniper_rifle/modular/syndicate/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_SCARBOROUGH)
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/modular/blackmarket  //Normal sniper but epic
 	name = "SA-107 anti-materiel rifle"
@@ -233,7 +288,6 @@
 	fire_delay = 55 //Slightly smaller than standard sniper
 	burst_size = 1
 	slot_flags = ITEM_SLOT_BACK
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC) //SKYRAT EDIT CHANGE
 	mag_display = TRUE
 
 /obj/item/gun/ballistic/automatic/ar/modular
@@ -261,7 +315,9 @@
 	<br><br>\
 	<i>BRAND NEW: Cannot be sawn off.</i>"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	company_flag = COMPANY_NANOTRASEN
+
+/obj/item/gun/ballistic/rifle/boltaction/brand_new/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_NANOTRASEN)
 
 /obj/item/gun/ballistic/rifle/boltaction/brand_new/quartermaster
 	name = "\improper FTU 'Archangel' precision rifle"
@@ -274,8 +330,9 @@
 	worn_icon_state = "bubba"
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	can_be_sawn_off = FALSE
-	realistic = TRUE
-	company_flag = null //Cargonia's own
+
+/obj/item/gun/ballistic/rifle/boltaction/brand_new/quartermaster/give_manufacturer_examine()
+	return
 
 /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	name = "sportiv extended internal magazine"
@@ -299,7 +356,9 @@
 	fire_delay = 5
 	fire_sound_volume = 90
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
-	company_flag = COMPANY_NANOTRASEN
+
+/obj/item/gun/ballistic/automatic/ar/modular/model75/give_manufacturer_examine()
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_NANOTRASEN)
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
 	name = "\improper ARG-75 magazine"

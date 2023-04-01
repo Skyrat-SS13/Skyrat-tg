@@ -5,6 +5,7 @@
 	base_icon_state = "water"
 	anchored = TRUE
 	plane = FLOOR_PLANE
+	layer = ABOVE_OPEN_TURF_LAYER
 	color = "#DDF"
 
 	//For being on fire
@@ -13,8 +14,8 @@
 	light_color = LIGHT_COLOR_FIRE
 
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_WATER)
-	canSmoothWith = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_WINDOW_FULLTILE, SMOOTH_GROUP_WATER)
+	smoothing_groups = SMOOTH_GROUP_WATER
+	canSmoothWith = SMOOTH_GROUP_WATER + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS
 
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/height = 1
@@ -89,7 +90,7 @@
 		if(LIQUID_FIRE_STATE_INFERNO)
 			set_light_range(LIGHT_RANGE_FIRE)
 	update_light()
-	update_liquid_vis()
+	update_icon(UPDATE_OVERLAYS)
 
 /obj/effect/abstract/liquid_turf/proc/get_burn_power(hotspotted = FALSE)
 	//We are not on fire and werent ignited by a hotspot exposure, no fire pls
@@ -194,6 +195,25 @@
 		. = ..()
 
 /**
+ * Add liquid effect overlay.
+ *
+ * Arguments:
+ * * overlay_state - the icon state of the new overlay
+ * * overlay_layer - the layer
+ * * overlay_plane - the plane
+ */
+/obj/effect/abstract/liquid_turf/proc/add_liquid_overlay(overlay_state, overlay_layer, overlay_plane)
+	PRIVATE_PROC(TRUE)
+
+	add_overlay(mutable_appearance(
+		'modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi',
+		overlay_state,
+		overlay_layer,
+		src,
+		overlay_plane,
+	))
+
+/**
  * Add over and underlays for different liquid states.
  *
  * Arguments:
@@ -201,30 +221,25 @@
  * * has_top - if this stage has a top.
  */
 /obj/effect/abstract/liquid_turf/proc/add_state_layer(state, has_top)
-	add_overlay(mutable_appearance(
-		'modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi',
-		"stage[state]_bottom",
-		offset_spokesman = src,
-		plane = GAME_PLANE,
-		layer = ABOVE_MOB_LAYER,
-	))
+	PRIVATE_PROC(TRUE)
+
+	add_liquid_overlay("stage[state]_bottom", ABOVE_MOB_LAYER, GAME_PLANE_UPPER)
 
 	if(!has_top)
 		return
 
-	add_overlay(mutable_appearance(
-		'modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi',
-		"stage[state]_top",
-		offset_spokesman = src,
-		plane = GAME_PLANE,
-		layer = GATEWAY_UNDERLAY_LAYER
-	))
+	add_liquid_overlay("stage[state]_top", GATEWAY_UNDERLAY_LAYER, GAME_PLANE)
 
 /obj/effect/abstract/liquid_turf/proc/set_new_liquid_state(new_state)
 	liquid_state = new_state
+	update_icon(UPDATE_OVERLAYS)
+
+/obj/effect/abstract/liquid_turf/update_overlays()
+	. = ..()
+
 	if(no_effects)
 		return
-	cut_overlays()
+
 	switch(liquid_state)
 		if(LIQUID_STATE_ANKLES)
 			add_state_layer(1, has_top = TRUE)
@@ -235,29 +250,36 @@
 		if(LIQUID_STATE_FULLTILE)
 			add_state_layer(4, has_top = FALSE)
 
-/obj/effect/abstract/liquid_turf/proc/update_liquid_vis()
-	if(no_effects)
-		return
-	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
-	SSvis_overlays.add_vis_overlay(src, icon, "shine", layer, plane, add_appearance_flags = RESET_COLOR|RESET_ALPHA)
+	var/mutable_appearance/shine = mutable_appearance(icon, "shine", offset_spokesman = src, alpha = 32, appearance_flags = RESET_COLOR|RESET_ALPHA)
+	shine.blend_mode = BLEND_ADD
+	. += shine
+
 	//Add a fire overlay too
+
+	if(fire_state == LIQUID_FIRE_STATE_NONE)
+		return
+
+	var/fire_icon_state
 	switch(fire_state)
 		if(LIQUID_FIRE_STATE_SMALL)
-			SSvis_overlays.add_vis_overlay(src, icon, "fire_small", BELOW_MOB_LAYER, GAME_PLANE, add_appearance_flags = RESET_COLOR|RESET_ALPHA)
+			fire_icon_state = "fire_small"
 		if(LIQUID_FIRE_STATE_MILD)
-			SSvis_overlays.add_vis_overlay(src, icon, "fire_small", BELOW_MOB_LAYER, GAME_PLANE, add_appearance_flags = RESET_COLOR|RESET_ALPHA)
+			fire_icon_state = "fire_small"
 		if(LIQUID_FIRE_STATE_MEDIUM)
-			SSvis_overlays.add_vis_overlay(src, icon, "fire_medium", BELOW_MOB_LAYER, GAME_PLANE, add_appearance_flags = RESET_COLOR|RESET_ALPHA)
+			fire_icon_state = "fire_medium"
 		if(LIQUID_FIRE_STATE_HUGE)
-			SSvis_overlays.add_vis_overlay(src, icon, "fire_big", BELOW_MOB_LAYER, GAME_PLANE, add_appearance_flags = RESET_COLOR|RESET_ALPHA)
+			fire_icon_state = "fire_big"
 		if(LIQUID_FIRE_STATE_INFERNO)
-			SSvis_overlays.add_vis_overlay(src, icon, "fire_big", BELOW_MOB_LAYER, GAME_PLANE, add_appearance_flags = RESET_COLOR|RESET_ALPHA)
+			fire_icon_state = "fire_big"
+
+	. += mutable_appearance(icon, fire_icon_state, BELOW_MOB_LAYER, src, GAME_PLANE, appearance_flags = RESET_COLOR|RESET_ALPHA)
+	. += emissive_appearance(icon, fire_icon_state, src, alpha = src.alpha)
 
 //Takes a flat of our reagents and returns it, possibly qdeling our liquids
 /obj/effect/abstract/liquid_turf/proc/take_reagents_flat(flat_amount)
 	var/datum/reagents/tempr = new(10000)
 	if(flat_amount >= total_reagents)
-		tempr.add_reagent_list(reagent_list, no_react = TRUE)
+		tempr.add_noreact_reagent_list(reagent_list)
 		qdel(src, TRUE)
 	else
 		var/fraction = flat_amount/total_reagents
@@ -267,7 +289,7 @@
 			reagent_list[reagent_type] -= amount
 			total_reagents -= amount
 			passed_list[reagent_type] = amount
-		tempr.add_reagent_list(passed_list, no_react = TRUE)
+		tempr.add_noreact_reagent_list(passed_list)
 		has_cached_share = FALSE
 	tempr.chem_temp = temp
 	return tempr
@@ -284,7 +306,7 @@
 		if(amount_threshold && amount < amount_threshold)
 			continue
 		passed_list[reagent_type] = amount
-	tempr.add_reagent_list(passed_list, no_react = TRUE)
+	tempr.add_noreact_reagent_list(passed_list)
 	tempr.chem_temp = temp
 	return tempr
 
@@ -292,14 +314,14 @@
 /obj/effect/abstract/liquid_turf/proc/simulate_reagents_flat(flat_amount)
 	var/datum/reagents/tempr = new(10000)
 	if(flat_amount >= total_reagents)
-		tempr.add_reagent_list(reagent_list, no_react = TRUE)
+		tempr.add_noreact_reagent_list(reagent_list)
 	else
 		var/fraction = flat_amount/total_reagents
 		var/passed_list = list()
 		for(var/reagent_type in reagent_list)
 			var/amount = fraction * reagent_list[reagent_type]
 			passed_list[reagent_type] = amount
-		tempr.add_reagent_list(passed_list, no_react = TRUE)
+		tempr.add_noreact_reagent_list(passed_list)
 	tempr.chem_temp = temp
 	return tempr
 
@@ -387,7 +409,7 @@
 					if(!AM.anchored && !AM.pulledby && !isobserver(AM) && (AM.move_resist < INFINITY))
 						if(iscarbon(AM))
 							var/mob/living/carbon/C = AM
-							if(!(C.shoes && C.shoes.clothing_flags & NOSLIP))
+							if(!(C.shoes && C.shoes.clothing_flags))
 								step(C, dir)
 								if(prob(60) && C.body_position != LYING_DOWN)
 									to_chat(C, span_userdanger("The current knocks you down!"))
@@ -442,7 +464,7 @@
 				qdel(tempr)
 				falling_carbon.adjustOxyLoss(5)
 				//C.emote("cough")
-				INVOKE_ASYNC(falling_carbon, /mob.proc/emote, "cough")
+				INVOKE_ASYNC(falling_carbon, TYPE_PROC_REF(/mob, emote), "cough")
 				to_chat(falling_carbon, span_userdanger("You fall in and swallow some water!"))
 		else
 			to_chat(M, span_userdanger("You fall in the water!"))
@@ -453,14 +475,14 @@
 		CRASH("Liquid Turf created with the liquids sybsystem not yet initialized!")
 	if(!immutable)
 		my_turf = loc
-		RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, .proc/movable_entered)
-		RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, .proc/mob_fall)
-		RegisterSignal(my_turf, COMSIG_PARENT_EXAMINE, .proc/examine_turf)
+		RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, PROC_REF(movable_entered))
+		RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, PROC_REF(mob_fall))
+		RegisterSignal(my_turf, COMSIG_PARENT_EXAMINE, PROC_REF(examine_turf))
 		SSliquids.add_active_turf(my_turf)
 
 		SEND_SIGNAL(my_turf, COMSIG_TURF_LIQUIDS_CREATION, src)
 
-	update_liquid_vis()
+	update_icon(UPDATE_OVERLAYS)
 	if(z)
 		QUEUE_SMOOTH(src)
 		QUEUE_SMOOTH_NEIGHBORS(src)
@@ -517,8 +539,8 @@
 	my_turf = NewT
 	NewT.liquids = src
 	loc = NewT
-	RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, .proc/movable_entered)
-	RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, .proc/mob_fall)
+	RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, PROC_REF(movable_entered))
+	RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, PROC_REF(mob_fall))
 
 /**
  * Handles COMSIG_PARENT_EXAMINE for the turf.
@@ -582,8 +604,8 @@
 	T.liquids = src
 	T.vis_contents += src
 	SSliquids.active_immutables[T] = TRUE
-	RegisterSignal(T, COMSIG_ATOM_ENTERED, .proc/movable_entered)
-	RegisterSignal(T, COMSIG_TURF_MOB_FALL, .proc/mob_fall)
+	RegisterSignal(T, COMSIG_ATOM_ENTERED, PROC_REF(movable_entered))
+	RegisterSignal(T, COMSIG_TURF_MOB_FALL, PROC_REF(mob_fall))
 
 /obj/effect/abstract/liquid_turf/proc/remove_turf(turf/T)
 	SSliquids.active_immutables -= T
@@ -595,7 +617,7 @@
 	smoothing_flags = NONE
 	icon_state = "ocean"
 	base_icon_state = "ocean"
-	plane = BLACKNESS_PLANE //Same as weather, etc.
+	plane = DEFAULT_PLANE //Same as weather, etc.
 	layer = ABOVE_MOB_LAYER
 	starting_temp = T20C-150
 	no_effects = TRUE

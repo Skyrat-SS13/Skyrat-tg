@@ -1,8 +1,9 @@
 /obj/item/clothing/sextoy/buttplug
 	name = "buttplug"
 	desc = "I'm meant to put that WHERE?!"
-	icon_state = "buttplug"
-	worn_icon_state = "buttplug"
+	icon_state = "buttplug_pink_small"
+	base_icon_state = "buttplug"
+	worn_icon_state = "buttplug_pink"
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi'
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
@@ -44,7 +45,7 @@
 		. = ..()
 		if(.)
 			return
-		var/choice = show_radial_menu(user, src, buttplug_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, buttplug_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		current_color = choice
@@ -58,7 +59,7 @@
 			. = ..()
 			if(.)
 				return
-			var/choice = show_radial_menu(user, src, buttplug_forms, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
+			var/choice = show_radial_menu(user, src, buttplug_forms, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 			if(!choice)
 				return FALSE
 			current_size = choice
@@ -79,8 +80,8 @@
 
 /obj/item/clothing/sextoy/buttplug/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]_[current_size]"
-	worn_icon_state = "[initial(icon_state)]_[current_color]"
+	icon_state = "[base_icon_state]_[current_color]_[current_size]"
+	worn_icon_state = "[base_icon_state]_[current_color]"
 
 /obj/item/clothing/sextoy/buttplug/equipped(mob/living/carbon/human/user, slot)
 	. = ..()

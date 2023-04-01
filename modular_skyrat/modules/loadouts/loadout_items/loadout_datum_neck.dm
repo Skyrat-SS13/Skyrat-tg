@@ -8,6 +8,11 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck
 	category = LOADOUT_ITEM_NECK
 
+/datum/loadout_item/neck/pre_equip_item(datum/outfit/outfit, datum/outfit/outfit_important_for_life, mob/living/carbon/human/equipper, visuals_only = FALSE)
+	if(initial(outfit_important_for_life.neck))
+		.. ()
+		return TRUE
+		
 /datum/loadout_item/neck/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
 	if(override_items == LOADOUT_OVERRIDE_BACKPACK)
 		if(outfit.neck)
@@ -186,6 +191,10 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/gags_boat
 	name = "Colourable Boatcloak"
 	item_path = /obj/item/clothing/neck/cloak/colourable/boat
+
+/datum/loadout_item/neck/gags_mantle
+	name = "Colourable Mantle"
+	item_path = /obj/item/clothing/neck/mantle/recolorable
 
 /*
 *	MANTLES

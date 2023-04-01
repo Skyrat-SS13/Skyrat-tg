@@ -8,10 +8,9 @@
 	desc = "The coders have obviously failed to realise this is broken."
 	icon = 'modular_skyrat/modules/microfusion/icons/microfusion_gun40x32.dmi'
 	icon_state = "mcr01"
-	bayonet_icon = 'modular_skyrat/modules/microfusion/icons/microfusion_gun40x32.dmi'
+	inhand_icon_state = "mcr01"
 	lefthand_file = 'modular_skyrat/modules/microfusion/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/microfusion/icons/guns_righthand.dmi'
-	has_gun_safety = TRUE
 	can_bayonet = FALSE
 	weapon_weight = WEAPON_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
@@ -109,11 +108,14 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 	update_appearance()
 	AddComponent(/datum/component/ammo_hud)
-	RegisterSignal(src, COMSIG_ITEM_RECHARGED, .proc/instant_recharge)
+	RegisterSignal(src, COMSIG_ITEM_RECHARGED, PROC_REF(instant_recharge))
 	base_fire_delay = fire_delay
 
+/obj/item/gun/microfusion/give_gun_safeties()
+	AddComponent(/datum/component/gun_safety)
+
 /obj/item/gun/microfusion/add_weapon_description()
-	AddElement(/datum/element/weapon_description, attached_proc = .proc/add_notes_energy)
+	AddElement(/datum/element/weapon_description, attached_proc = PROC_REF(add_notes_energy))
 
 /obj/item/gun/microfusion/add_seclight_point()
 	return
@@ -134,13 +136,13 @@
 	return ..()
 
 /obj/item/gun/microfusion/handle_atom_del(atom/to_handle)
-    if(to_handle == cell)
-        cell = null
-        update_appearance()
-    if(to_handle == phase_emitter)
-        phase_emitter = null
-        update_appearance()
-    return ..()
+	if(to_handle == cell)
+		cell = null
+		update_appearance()
+	if(to_handle == phase_emitter)
+		phase_emitter = null
+		update_appearance()
+	return ..()
 
 /obj/item/gun/microfusion/can_shoot()
 	return !QDELETED(cell) ? (cell.charge >= microfusion_lens.e_cost) : FALSE
@@ -212,7 +214,7 @@
 		var/obj/projectile/energy/loaded_projectile = microfusion_lens.loaded_projectile
 		if(!loaded_projectile)
 			. = ""
-		else if(loaded_projectile.nodamage || !loaded_projectile.damage || loaded_projectile.damage_type == STAMINA)
+		else if(!loaded_projectile.damage || loaded_projectile.damage_type == STAMINA)
 			user.visible_message(span_danger("[user] tries to light [to_ignite.loc == user ? "[user.p_their()] [to_ignite.name]" : to_ignite] with [src], but it doesn't do anything. Dumbass."))
 			playsound(user, microfusion_lens.fire_sound, 50, TRUE)
 			playsound(user, loaded_projectile.hitsound, 50, TRUE)
@@ -296,7 +298,7 @@
 /obj/item/gun/microfusion/suicide_act(mob/living/user)
 	if (istype(user) && can_shoot() && can_trigger_gun(user) && user.get_bodypart(BODY_ZONE_HEAD))
 		user.visible_message(span_suicide("[user] is putting the barrel of [src] in [user.p_their()] mouth. It looks like [user.p_theyre()] trying to commit suicide!"))
-		sleep(25)
+		sleep(2.5 SECONDS)
 		if(user.is_holding(src))
 			user.visible_message(span_suicide("[user] melts [user.p_their()] face off with [src]!"))
 			playsound(loc, fire_sound, 50, TRUE, -1)
@@ -313,65 +315,15 @@
 
 // To maintain modularity, I am moving this proc override here.
 /obj/item/gun/microfusion/fire_gun(atom/target, mob/living/user, flag, params)
-	if(QDELETED(target))
-		return
-	if(firing_burst)
-		return
-	if(flag) //It's adjacent, is the user, or is on the user's person
-		if(target in user.contents) //can't shoot stuff inside us.
-			return
-		if(!ismob(target) || user.combat_mode) //melee attack
-			return
-		if(target == user && user.zone_selected != BODY_ZONE_PRECISE_MOUTH) //so we can't shoot ourselves (unless mouth selected)
-			return
-		if(iscarbon(target))
-			var/mob/living/carbon/carbon = target
-			for(var/i in carbon.all_wounds)
-				var/datum/wound/W = i
-				if(W.try_treating(src, user))
-					return // another coward cured!
 
-	if(istype(user))//Check if the user can use the gun, if the user isn't alive(turrets) assume it can.
-		var/mob/living/living = user
-		if(!can_trigger_gun(living))
-			return
-	if(flag)
-		if(user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
-			handle_suicide(user, target, params)
-			return
-
-	if(!can_shoot()) //Just because you can pull the trigger doesn't mean it can shoot.
-		shoot_with_empty_chamber(user)
-		return
-
-	if(check_botched(user))
-		return
-
-	var/obj/item/bodypart/other_hand = user.has_hand_for_held_index(user.get_inactive_hand_index()) //returns non-disabled inactive hands
-	if(weapon_weight == WEAPON_HEAVY && (user.get_inactive_held_item() || !other_hand))
-		to_chat(user, span_warning("You need two hands to fire [src]!"))
-		return
-
+	// check to see if the emitter prevents us from firing before anything else
 	var/attempted_shot = process_emitter()
 	if(attempted_shot != SHOT_SUCCESS)
 		if(attempted_shot)
-			to_chat(user, span_danger(attempted_shot))
+			balloon_alert(user, attempted_shot)
 		return
 
-	//DUAL (or more!) WIELDING
-	var/bonus_spread = 0
-	var/loop_counter = 0
-	if(ishuman(user) && user.combat_mode)
-		var/mob/living/carbon/human/H = user
-		for(var/obj/item/gun/gun in H.held_items)
-			if(gun == src || gun.weapon_weight >= WEAPON_MEDIUM)
-				continue
-			else if(gun.can_trigger_gun(user))
-				bonus_spread += dual_wield_spread
-				loop_counter++
-				addtimer(CALLBACK(gun, /obj/item/gun.proc/process_fire, target, user, TRUE, params, null, bonus_spread), loop_counter)
-
-	return process_fire(target, user, TRUE, params, null, bonus_spread)
+	. = ..()
 
 // To maintain modularity, I am moving this proc override here.
 /obj/item/gun/microfusion/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
@@ -404,7 +356,7 @@
 		if(phase_emitter)
 			fire_delay_to_add = phase_emitter.fire_delay
 		for(var/i = 1 to burst_size)
-			addtimer(CALLBACK(src, .proc/process_burst, user, target, message, params, zone_override, calculated_spread, randomized_gun_spread, randomized_bonus_spread, random_spread, i), (fire_delay + fire_delay_to_add) * (i - 1))
+			addtimer(CALLBACK(src, PROC_REF(process_burst), user, target, message, params, zone_override, calculated_spread, randomized_gun_spread, randomized_bonus_spread, random_spread, i), (fire_delay + fire_delay_to_add) * (i - 1))
 	else
 		if(chambered)
 			if(HAS_TRAIT(user, TRAIT_PACIFISM)) // If the user has the pacifist trait, then they won't be able to fire [src] if the round chambered inside of [src] is lethal.
@@ -431,7 +383,7 @@
 		var/fire_delay_to_add = 0
 		if(phase_emitter)
 			fire_delay_to_add = phase_emitter.fire_delay
-		addtimer(CALLBACK(src, .proc/reset_semicd), fire_delay + fire_delay_to_add)
+		addtimer(CALLBACK(src, PROC_REF(reset_semicd)), fire_delay + fire_delay_to_add)
 
 	if(user)
 		user.update_held_items()
@@ -655,10 +607,6 @@
 	recharge_newshot()
 	update_appearance()
 	return TRUE
-
- /// Update reload timers
-// /obj/item/gun/microfusion/proc/reload_timer(mob/user, obj/item/stock_parts/cell/microfusion/inserting_cell)
-
 
 /// Ejecting a cell.
 /obj/item/gun/microfusion/proc/eject_cell(mob/user, display_message = TRUE, put_in_hands = TRUE)

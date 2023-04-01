@@ -23,7 +23,7 @@
 
 	var/obj/item/radio/headset/R = H.ears
 	R.set_frequency(FREQ_CENTCOM)
-	R.freqlock = TRUE
+	R.freqlock = RADIO_FREQENCY_LOCKED
 	if(additional_radio)
 		R.keyslot2 = new additional_radio()
 		R.recalculateChannels()
@@ -160,14 +160,14 @@
 	gloves = /obj/item/clothing/gloves/color/black
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	l_pocket = /obj/item/pen
-	r_pocket = /obj/item/modular_computer/tablet/pda/heads
+	r_pocket = /obj/item/modular_computer/pda/heads
 	l_hand = /obj/item/clipboard
 
 /datum/outfit/centcom/centcom_official/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(visualsOnly)
 		return
 
-	var/obj/item/modular_computer/tablet/pda/heads/pda = H.r_store
+	var/obj/item/modular_computer/pda/heads/pda = H.r_store
 	pda.saved_identification = H.real_name
 	pda.saved_job = "CentCom Official"
 
@@ -332,7 +332,7 @@
 	suit = /obj/item/clothing/suit/armor/vest
 	suit_store = /obj/item/gun/ballistic/rifle/boltaction/brand_new
 	belt = /obj/item/melee/baton/security/loaded
-	head = /obj/item/clothing/head/intern
+	head = /obj/item/clothing/head/hats/intern
 	l_hand = /obj/item/megaphone
 
 /datum/outfit/centcom/centcom_intern/leader/unarmed // i'll be nice and let the leader keep their baton and vest
@@ -369,7 +369,7 @@
 	suit_store = null
 	back = /obj/item/storage/backpack/ert/security
 	backpack_contents = list(
-		/obj/item/clothing/head/warden/police = 1,
+		/obj/item/clothing/head/hats/warden/police = 1,
 		/obj/item/storage/box/handcuffs = 1,
 	)
 	belt = /obj/item/melee/baton/telescopic
@@ -391,7 +391,7 @@
 		/obj/item/stack/sheet/iron/fifty = 1,
 		/obj/item/stack/sheet/plasteel/twenty = 1,
 	)
-	head = /obj/item/clothing/head/hardhat/weldhat
+	head = /obj/item/clothing/head/utility/hardhat/welding
 	mask = /obj/item/clothing/mask/gas/atmos
 	l_hand = /obj/item/areaeditor/blueprints
 
@@ -421,7 +421,7 @@
 		/obj/item/storage/box/fireworks = 3,
 	)
 	belt = /obj/item/storage/belt/sabre
-	head = /obj/item/clothing/head/coordinator
+	head = /obj/item/clothing/head/hats/coordinator
 	l_pocket = /obj/item/knife/kitchen
 	l_hand = /obj/item/toy/balloon
 
@@ -460,7 +460,7 @@
 
 	var/obj/item/radio/R = H.ears
 	R.set_frequency(FREQ_CENTCOM)
-	R.freqlock = TRUE
+	R.freqlock = RADIO_FREQENCY_LOCKED
 	var/obj/item/card/id/W = H.wear_id
 	W.registered_name = H.real_name
 	W.update_label()

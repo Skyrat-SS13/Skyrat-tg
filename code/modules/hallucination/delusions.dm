@@ -18,6 +18,8 @@
 	var/delusion_icon_file
 	/// The icon state of the delusion image
 	var/delusion_icon_state
+	/// Do we use a generated icon? If yes no icon file or state needed.
+	var/dynamic_icon = FALSE
 	/// The name of the delusion image
 	var/delusion_name
 
@@ -26,24 +28,30 @@
 
 /datum/hallucination/delusion/New(
 	mob/living/hallucinator,
-	duration = 30 SECONDS,
-	affects_us = TRUE,
-	affects_others = FALSE,
-	skip_nearby = TRUE,
-	play_wabbajack = FALSE,
+	duration,
+	affects_us,
+	affects_others,
+	skip_nearby,
+	play_wabbajack,
 )
 
-	src.duration = duration
-	src.affects_us = affects_us
-	src.affects_others = affects_others
-	src.skip_nearby = skip_nearby
-	src.play_wabbajack = play_wabbajack
+	if(isnum(duration))
+		src.duration = duration
+	if(!isnull(affects_us))
+		src.affects_us = affects_us
+	if(!isnull(affects_others))
+		src.affects_others = affects_others
+	if(!isnull(skip_nearby))
+		src.skip_nearby = skip_nearby
+	if(!isnull(play_wabbajack))
+		src.play_wabbajack = play_wabbajack
+
 	return ..()
 
 /datum/hallucination/delusion/Destroy()
-	if(!QDELETED(hallucinator))
-		for(var/image/to_remove as anything in delusions)
-			hallucinator.client?.images -= to_remove
+	if(!QDELETED(hallucinator) && LAZYLEN(delusions))
+		hallucinator.client?.images -= delusions
+		LAZYNULL(delusions)
 
 	return ..()
 
@@ -88,7 +96,7 @@
 	return TRUE
 
 /datum/hallucination/delusion/proc/make_delusion_image(mob/over_who)
-	var/image/funny_image = image(delusion_icon_file, over_who, delusion_icon_state)
+	var/image/funny_image = image(delusion_icon_file, over_who, dynamic_icon ? "" : delusion_icon_state)
 	funny_image.name = delusion_name
 	funny_image.override = TRUE
 	return funny_image
@@ -99,11 +107,11 @@
 
 /datum/hallucination/delusion/custom/New(
 	mob/living/hallucinator,
-	duration = 30 SECONDS,
-	affects_us = TRUE,
-	affects_others = FALSE,
-	skip_nearby = FALSE,
-	play_wabbajack = FALSE,
+	duration,
+	affects_us,
+	affects_others,
+	skip_nearby,
+	play_wabbajack,
 	custom_icon_file,
 	custom_icon_state,
 	custom_name,
@@ -167,11 +175,48 @@
 	delusion_name = "demon"
 
 /datum/hallucination/delusion/preset/cyborg
-	play_wabbajack = TRUE
 	delusion_icon_file = 'icons/mob/silicon/robots.dmi'
 	delusion_icon_state = "robot"
 	delusion_name = "cyborg"
+	play_wabbajack = TRUE
 
 /datum/hallucination/delusion/preset/cyborg/make_delusion_image(mob/over_who)
 	. = ..()
 	hallucinator.playsound_local(get_turf(over_who), 'sound/voice/liveagain.ogg', 75, TRUE)
+
+/datum/hallucination/delusion/preset/ghost
+	delusion_icon_file = 'icons/mob/simple/mob.dmi'
+	delusion_icon_state = "ghost"
+	delusion_name = "ghost"
+	affects_others = TRUE
+
+/datum/hallucination/delusion/preset/ghost/make_delusion_image(mob/over_who)
+	var/image/funny_image = ..()
+	funny_image.name = over_who.name
+	DO_FLOATING_ANIM(funny_image)
+	return funny_image
+
+/datum/hallucination/delusion/preset/syndies
+	random_hallucination_weight = 1
+	dynamic_icon = TRUE
+	delusion_name = "Syndicate"
+	affects_others = TRUE
+	affects_us = FALSE
+
+/datum/hallucination/delusion/preset/syndies/make_delusion_image(mob/over_who)
+	delusion_icon_file = getFlatIcon(get_dynamic_human_appearance(
+		mob_spawn_path = pick(
+			/obj/effect/mob_spawn/corpse/human/syndicatesoldier,
+			/obj/effect/mob_spawn/corpse/human/syndicatecommando,
+			/obj/effect/mob_spawn/corpse/human/syndicatestormtrooper,
+		),
+		r_hand = pick(
+			/obj/item/knife/combat/survival,
+			/obj/item/melee/energy/sword/saber,
+			/obj/item/gun/ballistic/automatic/pistol,
+			/obj/item/gun/ballistic/automatic/c20r,
+			/obj/item/gun/ballistic/shotgun/bulldog,
+		),
+	))
+
+	return ..()

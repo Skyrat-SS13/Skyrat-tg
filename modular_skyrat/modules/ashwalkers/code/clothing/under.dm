@@ -24,7 +24,7 @@
 	worn_icon = 'modular_skyrat/modules/ashwalkers/icons/uniform.dmi'
 	name = "decorated ash walker rags"
 	desc = "Rags from Lavaland, drenched with ash, it has fine jewel coated bones sewn around the neck. This one seems to be for the shaman of a tribe. Praise the Nercopolis."
-	icon_state = "chiefrags"
+	icon_state = "shamanrags"
 
 /obj/item/clothing/under/costume/gladiator/ash_walker/robe
 	icon = 'modular_skyrat/modules/ashwalkers/icons/uniforms.dmi'
