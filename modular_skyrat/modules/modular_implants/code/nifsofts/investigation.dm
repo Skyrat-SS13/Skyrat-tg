@@ -3,8 +3,8 @@
 	loaded_nifsoft = /datum/nifsoft/investigation
 
 /datum/nifsoft/investigation
-	name = "Investigation Auxilium" //Temporary name
-	program_desc = "Grants the user of the NIFSoft a tool to properly investigate crimes like a true detective."
+	name = "Investigation Auxilium"
+	program_desc = "Grants the user of the NIFSoft a tool to properly investigate crimes like a true detective. Ammo is not included."
 	active_mode = TRUE
 	active_cost = 5
 	activation_cost = 50
