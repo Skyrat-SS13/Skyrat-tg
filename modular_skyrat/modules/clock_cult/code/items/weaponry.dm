@@ -1,6 +1,6 @@
 #define HAMMER_FLING_DISTANCE 2
 #define HAMMER_THROW_FLING_DISTANCE 3
-#define BRASS_RIFLE_REDUCED_DELAY 0.2 SECONDS
+#define BRASS_RIFLE_REDUCED_DELAY 0.25 SECONDS
 
 /obj/item/clockwork/weapon
 	name = "clockwork weapon"
@@ -166,6 +166,7 @@
 	. = ..()
 	update_icon_state()
 	AddElement(/datum/element/clockwork_description, "Firing from brass tiles will halve the time that it takes to recharge a bolt.")
+	AddElement(/datum/element/clockwork_pickup)
 
 /obj/item/gun/ballistic/bow/clockwork/afterattack(atom/target, mob/living/user, flag, params, passthrough)
 	if(!drawn || !chambered)
@@ -253,7 +254,7 @@
 /obj/item/gun/ballistic/rifle/lionhunter/clockwork/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/clockwork_description, "The speed of which you aim at far targets while standing on brass will be massively increased.")
-
+	AddElement(/datum/element/clockwork_pickup)
 
 /obj/item/ammo_box/magazine/internal/boltaction/lionhunter/clockwork
 	name = "brass rifle internal magazine"

@@ -50,7 +50,7 @@
 	to_chat(equipper_living, span_warning("As you [slot == ITEM_SLOT_HANDS ? "touch" : "equip"] [source], you feel a jolt course through you!"))
 
 	equipper_living.dropItemToGround(source, TRUE)
-	equipper_living.electrocute_act(PICKUP_SHOCK_DAMAGE * power_multiplier, src, 1, SHOCK_NOGLOVES, SHOCK_SUPPRESS_MESSAGE)
+	equipper_living.electrocute_act(PICKUP_SHOCK_DAMAGE * power_multiplier, src, 1, SHOCK_NOGLOVES|SHOCK_SUPPRESS_MESSAGE)
 
 #undef REGULAR_PICKUP_MOD
 #undef CULTIST_PICKUP_MOD

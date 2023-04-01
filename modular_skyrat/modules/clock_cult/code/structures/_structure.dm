@@ -22,8 +22,6 @@
 	var/clockwork_desc = ""
 	///icon for when this structure is unanchored, doubles as the var for if it can be unanchored
 	var/unanchored_icon
-	///if a fabricator can repair it
-	var/can_be_repaired = TRUE
 
 
 /obj/structure/destructible/clockwork/Initialize(mapload)

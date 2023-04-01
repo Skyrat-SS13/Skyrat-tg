@@ -161,8 +161,6 @@
 	clock_desc = "Applies passive eye damage that regenerates after unequipping, grants thermal vision, and lets you see all forms of invisibility."
 	/// Who is currently wearing the goggles
 	var/mob/living/wearer
-	/// How much eye damage has been applied
-	var/applied_eye_damage
 	/// Are the glasses enabled (flipped down)
 	var/enabled = TRUE
 
@@ -223,18 +221,13 @@
 /// The start of application of the actual effects, including eye damage
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/proc/on_toggle_eyes()
 	wearer.update_sight()
-	applied_eye_damage = 0
-	START_PROCESSING(SSobj, src)
-	to_chat(wearer, span_clockgray("You suddenly see so much more, but your eyes begin to falter..."))
+	to_chat(wearer, span_clockgray("You suddenly see so much more."))
 
 
 /// The stopping of effect application, will remove the wearer's eye damage a minute after
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/proc/de_toggle_eyes()
 	wearer.update_sight()
-	to_chat(wearer, span_clockgray("You feel your eyes slowly recovering."))
-	addtimer(CALLBACK(wearer, TYPE_PROC_REF(/mob/living, adjustOrganLoss), ORGAN_SLOT_EYES, -applied_eye_damage), 60 SECONDS)
-	applied_eye_damage = 0
-	STOP_PROCESSING(SSobj, src)
+	to_chat(wearer, span_clockgray("You feel your eyes slowly readjusting."))
 
 
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/equipped(mob/living/user, slot)
@@ -245,17 +238,6 @@
 	if((slot == ITEM_SLOT_EYES) && enabled)
 		wearer = user
 		on_toggle_eyes()
-
-
-/obj/item/clothing/glasses/clockwork/wraith_spectacles/process(delta_time)
-	. = ..()
-	if(!wearer)
-		STOP_PROCESSING(SSobj, src)
-		return
-
-	//~1 damage every 2 seconds, maximum of 70 after 140 seconds
-	wearer.adjustOrganLoss(ORGAN_SLOT_EYES, 0.5 * delta_time, 70)
-	applied_eye_damage = min(applied_eye_damage + 0.5 * delta_time, 70)
 
 
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/dropped(mob/user)
@@ -346,6 +328,8 @@
 	ADD_TRAIT(wearer, TRAIT_MADNESS_IMMUNE, CLOTHING_TRAIT)
 	ADD_TRAIT(wearer, TRAIT_KNOW_ENGI_WIRES, CLOTHING_TRAIT)
 	ADD_TRAIT(wearer, TRAIT_KNOW_CYBORG_WIRES, CLOTHING_TRAIT)
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	darkness_view = 8
 
 
 /// Removes the effects to the wearer, removing the flash protection and similar
@@ -363,6 +347,8 @@
 	REMOVE_TRAIT(wearer, TRAIT_MADNESS_IMMUNE, CLOTHING_TRAIT)
 	REMOVE_TRAIT(wearer, TRAIT_KNOW_ENGI_WIRES, CLOTHING_TRAIT)
 	REMOVE_TRAIT(wearer, TRAIT_KNOW_CYBORG_WIRES, CLOTHING_TRAIT)
+	lighting_alpha = initial(lighting_alpha)
+	darkness_view = initial(darkness_view)
 
 
 /obj/item/clothing/glasses/clockwork/judicial_visor/equipped(mob/living/user, slot)

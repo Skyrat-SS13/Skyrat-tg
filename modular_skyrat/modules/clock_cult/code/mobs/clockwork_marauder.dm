@@ -1,4 +1,4 @@
-#define MARAUDER_SHIELD_MAX 4
+#define MARAUDER_SHIELD_MAX 5
 #define WELDER_REPAIR_AMOUNT 15
 
 GLOBAL_LIST_EMPTY(clockwork_marauders)
@@ -49,6 +49,9 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 	if(length(loot))
 		AddElement(/datum/element/death_drops, loot)
 
+	var/datum/action/innate/clockcult/comm/communicate = new
+	communicate.Grant(src)
+
 	GLOB.clockwork_marauders += src
 
 
@@ -58,9 +61,6 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 
 
 /mob/living/basic/clockwork_marauder/attacked_by(obj/item/attacking_item, mob/living/user)
-	if(istype(attacking_item, /obj/item/nullrod))
-		apply_damage(15, BURN)
-
 	if(shield_health)
 		damage_shield()
 

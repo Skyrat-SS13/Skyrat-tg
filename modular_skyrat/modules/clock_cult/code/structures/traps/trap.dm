@@ -13,7 +13,24 @@
 	if(!IS_CLOCK(user))
 		return
 
-	for(var/obj/structure/destructible/clockwork/trap/trap in get_turf(src)) // No 50-spear instakills please
+	if(user.loc != get_turf(src))
+		return
+
+	place_trap(get_turf(src), user)
+
+/obj/item/clockwork/trap_placer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	. = ..()
+	if(!IS_CLOCK(user))
+		return
+
+	if(!isturf(target))
+		return
+
+	place_trap(target, user)
+
+
+/obj/item/clockwork/trap_placer/proc/place_trap(atom/target, mob/user)
+	for(var/obj/structure/destructible/clockwork/trap/trap in target) // No 50-spear instakills please
 
 		if(!istype(trap, result_path))
 			continue
@@ -22,11 +39,10 @@
 		return
 
 	to_chat(user, span_brass("You place [src], use a <b>clockwork slab</b> to link it to other traps."))
-	var/obj/new_obj = new result_path(get_turf(src))
+	var/obj/new_obj = new result_path(target)
 	new_obj.setDir(user.dir)
 
 	qdel(src)
-
 
 //Thing you stick on the wall
 /obj/item/wallframe/clocktrap

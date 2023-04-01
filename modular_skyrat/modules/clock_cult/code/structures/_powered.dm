@@ -13,6 +13,12 @@
 	var/minimum_power = 0
 	/// Lazylist of nearby transmission signals
 	var/list/transmission_sigils
+	/// Has an "_inactive" icon state
+	var/has_off_icon = TRUE
+	/// Has an "_active" icon state
+	var/has_on_icon = TRUE
+	/// Has the ability to toggle power by using an empty hand on it
+	var/has_power_toggle = TRUE
 
 
 /obj/structure/destructible/clockwork/gear_base/powered/Initialize(mapload)
@@ -35,6 +41,9 @@
 
 	if(!anchored)
 		balloon_alert(user, "not fastened!")
+		return
+
+	if(!has_power_toggle)
 		return
 
 	if(!update_power() && !enabled)
@@ -66,6 +75,21 @@
 		processing = FALSE
 		STOP_PROCESSING(SSobj, src)
 
+
+/obj/structure/destructible/clockwork/gear_base/powered/update_icon_state()
+	. = ..()
+	icon_state = base_icon_state || initial(icon_state)
+
+	if(!anchored)
+		icon_state = base_icon_state + unwrenched_suffix
+		return
+
+	if(has_off_icon && (depowered || !enabled))
+		icon_state = base_icon_state + "_inactive"
+		return
+
+	if(has_on_icon && !depowered)
+		icon_state = base_icon_state + "_active"
 
 
 /obj/structure/destructible/clockwork/gear_base/powered/process(delta_time)
@@ -156,14 +180,14 @@
 /obj/structure/destructible/clockwork/gear_base/powered/proc/depowered()
 	SHOULD_CALL_PARENT(TRUE)
 	depowered = TRUE
-	return
+	update_icon_state()
 
 
 /// Triggers when the structure regains power to use
 /obj/structure/destructible/clockwork/gear_base/powered/proc/repowered()
 	SHOULD_CALL_PARENT(TRUE)
 	depowered = FALSE
-	return
+	update_icon_state()
 
 
 /// Adds a sigil to the linked structure list

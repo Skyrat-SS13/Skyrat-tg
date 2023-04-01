@@ -46,12 +46,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 	)
 
 	//The default scriptures that get auto-assigned.
-	var/list/default_scriptures = list(
-		// COMMENTED OUT UNTIL THESE SCRIPTURES ACTUALLY EXIST
-		//datum/scripture/abscond,
-		//datum/scripture/integration_cog,
-		//datum/scripture/clockwork_armaments
-	)
+	var/list/default_scriptures = list()
 
 	//For trap linkage
 	var/datum/component/clockwork_trap/buffer
@@ -126,7 +121,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 	//Put the quickbound action onto the slab, the slab should grant when picked up
 	var/datum/action/innate/clockcult/quick_bind/quickbound = new
 	quickbound.scripture = spell
-	quickbound.activation_slab = src
+	quickbound.slab_weakref = WEAKREF(src)
 	quick_bound_scriptures[position] = quickbound
 	if(binder)
 		quickbound.Grant(binder)
@@ -146,6 +141,8 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 		buffer = null
 		to_chat(user, span_brass("You clear the [src]'s buffer."))
 		return
+
+	SEND_SIGNAL(user, COMSIG_CLOCKWORK_SLAB_USED, src)
 
 	ui_interact(user)
 

@@ -9,14 +9,13 @@
 	name = "Quick Bind"
 	button_icon_state = "telerune"
 	desc = "A quick bound spell."
-	/// Ref to the relevant slab
-	var/obj/item/clockwork/clockwork_slab/activation_slab
+	/// Weakref to the relevant slab
+	var/datum/weakref/slab_weakref
 	/// Ref to the relevant scripture
 	var/datum/scripture/scripture
 
 
 /datum/action/innate/clockcult/quick_bind/Destroy()
-	activation_slab = null
 	scripture = null
 	return ..()
 
@@ -32,20 +31,23 @@
 	return ..(recieving_mob)
 
 /datum/action/innate/clockcult/quick_bind/Remove(mob/losing_mob)
+	var/obj/item/clockwork/clockwork_slab/activation_slab = slab_weakref.resolve()
 	if(activation_slab.invoking_scripture == scripture)
 		activation_slab.invoking_scripture = null
 
 	return ..(losing_mob)
 
 /datum/action/innate/clockcult/quick_bind/IsAvailable(feedback)
-	if(!(IS_CLOCK(owner)) || owner.incapacitated())
+	if(!IS_CLOCK(owner) || owner.incapacitated())
 		return FALSE
 
 	return ..()
 
 /datum/action/innate/clockcult/quick_bind/Activate()
-	if(!activation_slab)
+	if(!slab_weakref)
 		return
+
+	var/obj/item/clockwork/clockwork_slab/activation_slab = slab_weakref.resolve()
 
 	if(!activation_slab.invoking_scripture)
 		scripture.begin_invoke(owner, activation_slab)

@@ -70,6 +70,7 @@
 		qdel(late_portal)
 
 	portal.visible_message("[portal] lets out a hiss of steam as it becomes a more blue color. You feel like it's safer to enter, now.")
+	portal.desc += " It feels easier to enter, now."
 	new /obj/effect/temp_visual/steam_release(get_turf(portal))
 	animate(portal, 3 SECONDS, color = "#326de3")
 	portal.clock_only = FALSE

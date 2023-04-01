@@ -5,17 +5,12 @@
 	desc = "A prism that seems to somehow always have its gaze locked to you."
 	clockwork_desc = "A prism that will heal nearby servants of various damage types, along with purging poisons."
 	icon_state = "prolonging_prism"
+	base_icon_state = "prolonging_prism"
 	anchored = TRUE
 	break_message = span_warning("The prism falls apart, smoke leaking out into the air.")
 	max_integrity = 150
 	minimum_power = POWER_PER_USE
 	passive_consumption = POWER_PER_USE / 2
-
-
-/obj/structure/destructible/clockwork/gear_base/powered/prosperity_prism/update_icon_state()
-	. = ..()
-	if(depowered && anchored)
-		icon_state += "_inactive"
 
 
 /obj/structure/destructible/clockwork/gear_base/powered/prosperity_prism/process(delta_time)
