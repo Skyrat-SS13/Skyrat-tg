@@ -75,7 +75,9 @@
 
 	//Nicotine is used as a pesticide IRL.
 /datum/reagent/drug/nicotine/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)
-	. = ..()
+	if(!check_tray(chems, mytray))
+		return
+
 	mytray.adjust_toxic(round(chems.get_reagent_amount(type)))
 	mytray.adjust_pestlevel(-rand(1, 2))
 
@@ -95,7 +97,7 @@
 
 /datum/reagent/drug/nicotine/overdose_process(mob/living/affected_mob, delta_time, times_fired)
 	affected_mob.adjustToxLoss(0.1 * REM * delta_time, FALSE, required_biotype = affected_biotype)
-	affected_mob.adjustOxyLoss(1.1 * REM * delta_time, FALSE, required_biotype = affected_biotype)
+	affected_mob.adjustOxyLoss(1.1 * REM * delta_time, FALSE, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)
 	..()
 	. = TRUE
 
@@ -269,7 +271,7 @@
 	affected_mob.adjustToxLoss(0.5 * REM * delta_time, FALSE, required_biotype = affected_biotype)
 	if(DT_PROB(30, delta_time))
 		affected_mob.losebreath++
-		affected_mob.adjustOxyLoss(1, FALSE, required_biotype = affected_biotype)
+		affected_mob.adjustOxyLoss(1, FALSE, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)
 	..()
 	. = TRUE
 

@@ -191,16 +191,24 @@
 
 	return (savefile_key in species.get_features())
 
+/// Apply this preference onto the given human.
+/// May be overriden by subtypes.
+/// Called when the savefile_identifier == PREFERENCE_CHARACTER.
+///
+/// Returns whether the bodypart is actually visible.
 /datum/preference/choiced/mutant_choice/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	if(!preferences || !is_visible(target, preferences))
+	// body part is not the default/none value.
+	var/bodypart_is_visible = preferences && is_visible(target, preferences)
+
+	if(!bodypart_is_visible)
 		value = create_default_value()
 
 	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
 		target.dna.mutant_bodyparts[relevant_mutant_bodypart] = list(MUTANT_INDEX_NAME = value, MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
-		return TRUE
+		return bodypart_is_visible
 
 	target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_NAME] = value
-	return TRUE
+	return bodypart_is_visible
 
 /datum/preference/toggle/emissive
 	abstract_type = /datum/preference/toggle/emissive

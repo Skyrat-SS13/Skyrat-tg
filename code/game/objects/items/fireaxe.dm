@@ -75,10 +75,6 @@
 /*
  * Metal Hydrogen Axe
  */
-/datum/armor/item_fireaxe
-	fire = 100
-	acid = 30
-
 /obj/item/fireaxe/metal_h2_axe
 	icon_state = "metalh2_axe0"
 	base_icon_state = "metalh2_axe"
@@ -89,3 +85,4 @@
 	demolition_mod = 2
 	tool_behaviour = TOOL_CROWBAR
 	toolspeed = 1
+	usesound = 'sound/items/crowbar.ogg'

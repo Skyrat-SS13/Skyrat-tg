@@ -3,7 +3,7 @@
 	mannequin.dna.mutant_bodyparts = list()
 
 	// Set up the dummy for its photoshoot
-	apply_prefs_to(mannequin, TRUE)
+	apply_prefs_to(mannequin, TRUE, visuals_only = TRUE)
 
 	switch(preview_pref)
 		if(PREVIEW_PREF_JOB)

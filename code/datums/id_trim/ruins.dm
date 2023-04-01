@@ -61,7 +61,7 @@
 	trim_state = "trim_bartender"
 	department_color = COLOR_SERVICE_LIME
 	subdepartment_color = COLOR_SERVICE_LIME
-	access = list(ACCESS_BAR)
+	access = list(ACCESS_BAR, ACCESS_KITCHEN)
 
 /// Trim for various Centcom corpses.
 /datum/id_trim/centcom/corpse/bridge_officer
@@ -127,3 +127,12 @@
 
 /datum/id_trim/pirate/captain/psykers
 	assignment = "Psyker-gang Leader"
+
+//Trims for Dangerous Research, used in ``dangerous_research.dm``
+/datum/id_trim/away/dangerous_research
+	assignment = "Researcher"
+	access = list(ACCESS_AWAY_SCIENCE)
+
+/datum/id_trim/away/dangerous_research/head_occultist
+	assignment = "Head Occultist"
+	access = list(ACCESS_AWAY_SCIENCE, ACCESS_AWAY_COMMAND)

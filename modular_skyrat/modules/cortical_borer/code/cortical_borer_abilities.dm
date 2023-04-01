@@ -304,7 +304,8 @@
 	if(cortical_owner.blood_chems_learned == BLOOD_CHEM_OBJECTIVE)
 		GLOB.successful_blood_chem += 1
 	owner.balloon_alert(owner, "[initial(reagent_choice.name)] learned")
-	to_chat(cortical_owner.human_host, span_notice("You get a strange aftertaste of [initial(reagent_choice.taste_description)]!"))
+	if(!HAS_TRAIT(cortical_owner.human_host, TRAIT_AGEUSIA))
+		to_chat(cortical_owner.human_host, span_notice("You get a strange aftertaste of [initial(reagent_choice.taste_description)]!"))
 	StartCooldown()
 
 //become stronger by learning new chemicals
@@ -338,7 +339,8 @@
 	if(victim_brain)
 		cortical_owner.human_host.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5 * cortical_owner.host_harm_multiplier)
 	owner.balloon_alert(owner, "[initial(reagent_choice.name)] learned")
-	to_chat(cortical_owner.human_host, span_notice("You get a strange aftertaste of [initial(reagent_choice.taste_description)]!"))
+	if(!HAS_TRAIT(cortical_owner.human_host, TRAIT_AGEUSIA))
+		to_chat(cortical_owner.human_host, span_notice("You get a strange aftertaste of [initial(reagent_choice.taste_description)]!"))
 	StartCooldown()
 
 //become stronger by affecting the stats
@@ -546,6 +548,9 @@
 
 /datum/action/cooldown/borer/choosing_host/proc/enter_host(mob/living/carbon/human/singular_host)
 	var/mob/living/basic/cortical_borer/cortical_owner = owner
+	if(check_for_bio_protection(singular_host))
+		owner.balloon_alert(owner, "target head too protected!")
+		return
 	if(singular_host.has_borer())
 		owner.balloon_alert(owner, "target already occupied")
 		return
@@ -568,6 +573,19 @@
 	cortical_owner.log_message(logging_text, LOG_GAME)
 	cortical_owner.human_host.log_message(logging_text, LOG_GAME)
 	StartCooldown()
+
+/// Checks if the target's head is bio protected, returns true if this is the case
+/datum/action/cooldown/borer/choosing_host/proc/check_for_bio_protection(mob/living/carbon/human/target)
+	if(isobj(target.head))
+		if(target.head.get_armor_rating(BIO) >= 100)
+			return TRUE
+	if(isobj(target.wear_mask))
+		if(target.wear_mask.get_armor_rating(BIO) >= 100)
+			return TRUE
+	if(isobj(target.wear_neck))
+		if(target.wear_neck.get_armor_rating(BIO) >= 100)
+			return TRUE
+	return FALSE
 
 //you can force your host to speak... dont abuse this
 /datum/action/cooldown/borer/force_speak

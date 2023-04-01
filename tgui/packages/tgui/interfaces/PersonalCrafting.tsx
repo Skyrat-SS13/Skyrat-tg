@@ -10,6 +10,7 @@ import { Food } from './PreferencesMenu/data';
 const TYPE_ICONS = {
   'Can Make': 'utensils',
   [Food.Alcohol]: 'wine-glass',
+  [Food.Bloody]: 'tint', // SKYRAT EDIT ADDITION - Hemophage Food
   [Food.Breakfast]: 'sun',
   [Food.Bugs]: 'bug',
   [Food.Cloth]: 'tshirt',
@@ -62,6 +63,7 @@ const CATEGORY_ICONS_COOKING = {
   'Cakes': 'cake-candles',
   'Egg-Based Food': 'egg',
   'Frozen': 'ice-cream',
+  'Hemophage Food': 'tint', // SKYRAT EDIT ADDITION - Hemophage Food
   'Lizard Food': 'dragon',
   'Meats': 'bacon',
   'Mexican Food': 'pepper-hot',
@@ -75,6 +77,7 @@ const CATEGORY_ICONS_COOKING = {
   'Seafood': 'fish',
   'Soups': 'mug-hot',
   'Spaghettis': 'wheat-awn',
+  'Teshari Food': 'feather-pointed', // SKYRAT EDIT ADDITION - Teshari Food
 } as const;
 
 enum MODE {
@@ -115,6 +118,7 @@ type Recipe = {
   tool_behaviors: string[];
   tool_paths: string[];
   machinery: string[];
+  structures: string[];
   steps: string[];
   foodtypes: string[];
 };
@@ -650,6 +654,11 @@ const RecipeContentCompact = ({ item, craftable, busy, mode }, context) => {
                     item.machinery
                       .map((item) => data.atom_data[(item as any) - 1]?.name)
                       .join(', ')}
+                {item.structures &&
+                  ', ' +
+                    item.structures
+                      .map((item) => data.atom_data[(item as any) - 1]?.name)
+                      .join(', ')}
               </Box>
             </Stack.Item>
             <Stack.Item>
@@ -776,6 +785,14 @@ const RecipeContent = ({ item, craftable, busy, mode, diet }, context) => {
                   <Box>
                     <GroupTitle title="Machinery" />
                     {item.machinery.map((atom_id) => (
+                      <AtomContent key={atom_id} atom_id={atom_id} amount={1} />
+                    ))}
+                  </Box>
+                )}
+                {item.structures && (
+                  <Box>
+                    <GroupTitle title="Structures" />
+                    {item.structures.map((atom_id) => (
                       <AtomContent key={atom_id} atom_id={atom_id} amount={1} />
                     ))}
                   </Box>

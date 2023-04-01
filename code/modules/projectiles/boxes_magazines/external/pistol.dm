@@ -1,7 +1,7 @@
 /obj/item/ammo_box/magazine/m10mm
 	name = "pistol magazine (10mm)"
 	desc = "A gun magazine."
-	icon_state = "9x19p-8"
+	icon_state = "9x19p-full"
 	base_icon_state = "9x19p"
 	ammo_type = /obj/item/ammo_casing/c10mm
 	caliber = CALIBER_10MM
@@ -41,9 +41,8 @@
 	multiple_sprite_use_base = TRUE
 
 /obj/item/ammo_box/magazine/m9mm
-//	name = "pistol magazine (9mm)"			// SKYRAT EDIT: Original
-	name = "pistol magazine (9x25mm)"		// SKYRAT EDIT: Calibre rename
-	icon_state = "9x19p-8"
+	name = "pistol magazine (9mm)"
+	icon_state = "9x19p-full"
 	base_icon_state = "9x19p"
 	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = CALIBER_9MM

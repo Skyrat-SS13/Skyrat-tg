@@ -107,7 +107,7 @@
 
 #define HEADSMASH_BLOCK_ARMOR 20
 
-//TODO: Add a grab state check on the do_mobs
+//TODO: Add a grab state check on the do_afters
 /datum/species/proc/try_grab_maneuver(mob/living/carbon/human/user, mob/living/carbon/human/target, modifiers)
 	var/obj/item/bodypart/affecting = target.get_bodypart(ran_zone(user.zone_selected))
 	if(!affecting)
@@ -131,7 +131,7 @@
 							span_userdanger("You struggle as [user.name] holds your head and tries to overpower you!"), ignored_mobs=user)
 						to_chat(user, span_danger("You grasp [target.name]'s head and try to overpower [target.p_them()]..."))
 					user.changeNext_move(time_doing)
-					if(do_mob(user, target, time_doing))
+					if(do_after(user, time_doing, target))
 						var/armor_block = target.run_armor_check(affecting, MELEE)
 						var/head_knock = FALSE
 						if(armor_block < HEADSMASH_BLOCK_ARMOR)
@@ -161,7 +161,7 @@
 				target.visible_message(span_danger("[user.name] holds [target.name] tight and starts lifting [target.p_them()] up!"), \
 						span_userdanger("[user.name] holds you tight and lifts you up!"), ignored_mobs=user)
 				to_chat(user, span_danger("You hold [target.name] tight and lift [target.p_them()] up..."))
-				if(do_mob(user, target, 3 SECONDS))
+				if(do_after(user, 3 SECONDS, target))
 					var/move_dir = get_dir(target, user)
 					var/moved_turf = get_turf(target)
 					for(var/i in 1 to 2)
@@ -190,7 +190,7 @@
 				target.visible_message(span_danger("[user.name] twists [target.name]'s [affecting.name] violently!"), \
 						span_userdanger("[user.name] twists your [affecting.name] violently!"), ignored_mobs=user)
 				to_chat(user, span_danger("You start twisting [target.name]'s [affecting.name] violently!"))
-				if(do_mob(user, target, 4 SECONDS))
+				if(do_after(user, 4 SECONDS, target))
 					target.visible_message(span_danger("[user.name] dislocates [target.name]'s [affecting.name]!"), \
 						span_userdanger("[user.name] dislocates your [affecting.name]!"), ignored_mobs=user)
 					to_chat(user, span_danger("You dislocate [target.name]'s [affecting.name]!"))

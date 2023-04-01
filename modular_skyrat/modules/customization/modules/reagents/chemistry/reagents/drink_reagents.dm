@@ -64,14 +64,17 @@
 		to_chat(M, span_notice("[pick("I feel oddly calm.", "I feel relaxed.", "Mew?")]"))
 	..()
 
-/datum/reagent/consumable/beerbatter
+/datum/reagent/consumable/ethanol/beerbatter
 	name = "Beer Batter"
 	description = "Probably not the greatest idea to drink...sludge."
 	color = "#f5f4e9"
+	nutriment_factor = 2 * REAGENTS_METABOLISM
 	taste_description = "flour and cheap booze"
+	boozepwr = 8 // beer diluted at about a 1:3 ratio
+	ph = 6
 
 /datum/glass_style/drinking_glass/beerbatter
-	required_drink_type = /datum/reagent/consumable/beerbatter
+	required_drink_type = /datum/reagent/consumable/ethanol/beerbatter
 	icon = 'icons/obj/drinks/shakes.dmi'
 	icon_state = "chocolatepudding"
 	name = "glass of beer batter"

@@ -55,7 +55,7 @@
 		last_stasis_sound = _running
 
 /obj/machinery/stasissleeper/AltClick(mob/user)
-	if(!user.canUseTopic(src, !issilicon(user)))
+	if(!user.can_perform_action(src, ALLOW_SILICON_REACH))
 		return
 	if(!panel_open)
 		user.visible_message(span_notice("\The [src] [state_open ? "hisses as it seals shut." : "hisses as it swings open."]."), \

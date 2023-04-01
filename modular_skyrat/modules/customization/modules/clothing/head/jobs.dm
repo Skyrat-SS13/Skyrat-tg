@@ -86,7 +86,6 @@
 	greyscale_colors = "#FFDE15#00A5FF"
 	flags_1 = NONE
 
-
 // From this point forth will be berets that are made especially for Skyrat. Those are loosely based off of the ones that were ported initially, but they might not be 1:1
 
 /obj/item/clothing/head/beret/engi/ce

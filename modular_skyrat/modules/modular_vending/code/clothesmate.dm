@@ -4,6 +4,7 @@
 			"name" = "Head",
 			"icon" = "hat-cowboy",
 			"products" = list(
+				/obj/item/clothing/head/beret/badge = 5,
 				/obj/item/clothing/head/colourable_flatcap= 5,
 				/obj/item/clothing/head/cowboy/skyrat/cattleman = 5,
 				/obj/item/clothing/head/cowboy/skyrat/cattleman/wide = 5,

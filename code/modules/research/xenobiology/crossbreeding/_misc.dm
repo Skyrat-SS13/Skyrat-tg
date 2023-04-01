@@ -176,14 +176,6 @@ Slimecrossing Items
 	icon = 'icons/obj/xenobiology/slimecrossing.dmi'
 	icon_state = "capturedevice"
 
-/datum/armor/structure_ice_stasis
-	melee = 30
-	bullet = 50
-	laser = -50
-	energy = -50
-	fire = -80
-	acid = 30
-
 /obj/item/capturedevice/attack(mob/living/M, mob/user)
 	if(length(contents))
 		to_chat(user, span_warning("The device already has something inside."))
@@ -194,7 +186,7 @@ Slimecrossing Items
 	if(M.mind)
 		to_chat(user, span_notice("You offer the device to [M]."))
 		if(tgui_alert(M, "Would you like to enter [user]'s capture device?", "Gold Capture Device", list("Yes", "No")) == "Yes")
-			if(user.canUseTopic(src, be_close = TRUE) && user.canUseTopic(M, be_close = TRUE))
+			if(user.can_perform_action(src) && user.can_perform_action(M))
 				to_chat(user, span_notice("You store [M] in the capture device."))
 				to_chat(M, span_notice("The world warps around you, and you're suddenly in an endless void, with a window to the outside floating in front of you."))
 				store(M, user)

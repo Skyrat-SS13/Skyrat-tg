@@ -266,12 +266,16 @@
 		owner.clear_mood_event("sadistic")
 
 /datum/brain_trauma/very_special/sadism/proc/someone_suffering()
-	if(HAS_TRAIT(owner, TRAIT_BLIND))
+	if(owner.is_blind())
 		return FALSE
 	for(var/mob/living/carbon/human/iterated_mob in oview(owner, 4))
 		if(!isliving(iterated_mob)) //ghosts ain't people
 			continue
-		if(istype(iterated_mob) && iterated_mob.pain >= 10)
+		if(!istype(iterated_mob)) //only count mobs of type mob/living/human/...
+			continue
+		if(iterated_mob.stat == DEAD) //don't count dead targets either
+			continue
+		if(iterated_mob.pain >= 10)
 			return TRUE
 	return FALSE
 

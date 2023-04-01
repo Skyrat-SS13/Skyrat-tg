@@ -78,6 +78,9 @@
 			<p>The contractor hub, available at the top right of the uplink, will provide you unique items and abilities. These are bought using Contractor Rep,
 			with two Rep being provided each time you complete a contract.</p>
 
+			<p>You've also been provided with a medipen of atropine, to prevent your implanted microbomb going off if it would be more tactically sound for your
+			body to stay intact. If circumstances change, you are still able to detonate your microbomb post-mortem.</p>
+
 			<h3>Using the tablet</h3>
 			<ol>
 				<li>Open the Syndicate Contract Uplink program.</li>

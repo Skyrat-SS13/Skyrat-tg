@@ -212,7 +212,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	else
 		if(color_changed)
 			return
-		if(!istype(user) || !user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
+		if(!istype(user) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 			return
 		customize(user)
 		color_changed = TRUE

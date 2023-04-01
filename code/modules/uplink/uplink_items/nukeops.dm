@@ -497,6 +497,15 @@
 	surplus = 35
 	purchasable_from = UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS
 
+/datum/uplink_item/explosives/pinata
+	name = "Weapons Grade Pinata Kit"
+	desc = "A pinata filled with both candy and explosives as well as two belts to carry them on, crack it open and see what you get!"
+	item = /obj/item/storage/box/syndie_kit/pinata
+	purchasable_from = UPLINK_CLOWN_OPS
+	limited_stock = 1
+	cost = 12 //This is effectively the clown ops version of the grenadier belt where you should on average get 8 explosives if you use a weapon with exactly 10 force.
+	surplus = 0
+
 //Support and Mechs
 /datum/uplink_category/support
 	name = "Support and Exosuits"
@@ -581,6 +590,7 @@
 	item = /obj/item/storage/toolbox/emergency/turret/nukie
 	cost = 16
 
+/* //SKYRAT REMOVAL START
 /datum/uplink_item/stealthy_tools/combatbananashoes
 	name = "Combat Banana Shoes"
 	desc = "While making the wearer immune to most slipping attacks like regular combat clown shoes, these shoes \
@@ -590,6 +600,7 @@
 	cost = 6
 	surplus = 0
 	purchasable_from = UPLINK_CLOWN_OPS
+*/ //SKYRAT REMOVAL END
 
 /datum/uplink_item/stealthy_tools/syndigaloshes/nuke
 	item = /obj/item/clothing/shoes/chameleon/noslip
@@ -810,3 +821,4 @@
 	item = /obj/item/keycard/syndicate_fridge
 	cost = 5
 	purchasable_from = UPLINK_CLOWN_OPS | UPLINK_NUKE_OPS
+

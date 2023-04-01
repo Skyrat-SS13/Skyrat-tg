@@ -361,9 +361,10 @@
 	greyscale_colors = CIRCUIT_COLOR_COMMAND
 	build_path = /obj/machinery/bsa_powercore
 	req_components = list(
-		/obj/item/stock_parts/capacitor/quadratic = 5,
+		/datum/stock_part/capacitor/tier4 = 5,
 		/obj/item/stock_parts/cell/bluespace = 1,
-		/obj/item/stack/cable_coil = 2)
+		/obj/item/stack/cable_coil = 2,
+	)
 
 #undef SYSTEM_OFFLINE
 #undef SYSTEM_READY

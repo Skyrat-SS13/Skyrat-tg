@@ -1,6 +1,3 @@
-/obj/item/clothing/suit/toggle/labcoat
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suits/labcoat_digi.dmi'
-
 /obj/item/clothing/suit/toggle/labcoat/skyrat
 	name = "SR LABCOAT SUIT DEBUG"
 	desc = "REPORT THIS IF FOUND"

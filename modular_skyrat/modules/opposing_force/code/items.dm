@@ -94,7 +94,7 @@
 		return SHIELD_BLOCK
 	return NONE
 
-/obj/item/clothing/gloves/color/latex/nitrile/heister
+/obj/item/clothing/gloves/latex/nitrile/heister
 	desc = "Pricy sterile gloves that are thicker than latex. Perfect for hiding fingerprints."
 	clothing_traits = null
 	siemens_coefficient = 0
@@ -121,7 +121,7 @@
 		FIRE = 100,
 		ACID = 100,
 	)))
-	new /obj/item/clothing/gloves/color/latex/nitrile/heister(src)
+	new /obj/item/clothing/gloves/latex/nitrile/heister(src)
 	new /obj/item/clothing/under/suit/black(src)
 	new /obj/item/clothing/shoes/laceup(src)
 	new /obj/item/clothing/suit/toggle/lawyer/black/better/heister(src)

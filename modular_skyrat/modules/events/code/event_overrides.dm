@@ -33,6 +33,15 @@
 	max_occurrences = 0
 
 /**
+ * Changeling
+ *
+ * Removed for:
+ * Already being handled by dynamic, it shouldn't be spawning from two places at once.
+ */
+/datum/round_event_control/changeling
+	max_occurrences = 0
+
+/**
  * Radiation storm
  *
  * Removed for:

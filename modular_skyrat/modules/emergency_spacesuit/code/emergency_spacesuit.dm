@@ -74,9 +74,6 @@
 
 // Lil box to hold em in
 
-/datum/armor/space_emergency
-	bio = 20
-
 /obj/item/storage/box/emergency_spacesuit
 	name = "emergency space suit case"
 	desc =  "A small case containing an emergency space suit and helmet."

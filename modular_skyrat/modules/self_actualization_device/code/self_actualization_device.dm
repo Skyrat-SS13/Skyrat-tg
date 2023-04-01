@@ -10,7 +10,7 @@
 	name = "Self-Actualization Device (Machine Board)"
 	greyscale_colors = CIRCUIT_COLOR_MEDICAL
 	build_path = /obj/machinery/self_actualization_device
-	req_components = list(/obj/item/stock_parts/micro_laser = 1)
+	req_components = list(/datum/stock_part/micro_laser = 1)
 
 /obj/machinery/self_actualization_device
 	name = "Self-Actualization Device"

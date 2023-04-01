@@ -275,18 +275,14 @@
 	return TRUE
 
 /// Like add_reagent but you can enter a list. Format it like this: list(/datum/reagent/toxin = 10, "beer" = 15)
-/datum/reagents/proc/add_reagent_list(list/list_reagents, list/data=null, no_react = FALSE) //SKYRAT EDIT CHANGE
+/datum/reagents/proc/add_reagent_list(list/list_reagents, list/data=null)
 	for(var/r_id in list_reagents)
 		var/amt = list_reagents[r_id]
-	//SKYRAT EDIT CHANGE BEGIN
-		add_reagent(r_id, amt, data, no_react = TRUE)
-	if(!no_react)
-		handle_reactions()
-	//SKYRAT EDIT CHANGE END
+		add_reagent(r_id, amt, data)
 
 
 /// Remove a specific reagent
-/datum/reagents/proc/remove_reagent(reagent, amount, safety = TRUE, no_react = FALSE)//Added a safety check for the trans_id_to
+/datum/reagents/proc/remove_reagent(reagent, amount, safety = TRUE)//Added a safety check for the trans_id_to
 	if(isnull(amount))
 		stack_trace("null amount passed to reagent code")
 		return FALSE
@@ -303,7 +299,7 @@
 			amount = clamp(amount, 0, cached_reagent.volume)
 			cached_reagent.volume -= amount
 			update_total()
-			if(!safety || !no_react)//So it does not handle reactions when it need not to //SKYRAT EDIT CHANGE
+			if(!safety)//So it does not handle reactions when it need not to
 				handle_reactions()
 			SEND_SIGNAL(src, COMSIG_REAGENTS_REM_REAGENT, QDELING(cached_reagent) ? reagent : cached_reagent, amount)
 
@@ -532,7 +528,7 @@
 			var/transfer_amount = reagent.volume * part
 			if(methods)
 				reagent.on_transfer(target_atom, methods, transfer_amount * multiplier)
-			remove_reagent(reagent.type, transfer_amount, no_react) //SKYRAT EDIT CHANGE
+			remove_reagent(reagent.type, transfer_amount)
 			var/list/reagent_qualities = list(REAGENT_TRANSFER_AMOUNT = transfer_amount, REAGENT_PURITY = reagent.purity)
 			transfer_log[reagent.type] = reagent_qualities
 
@@ -559,7 +555,7 @@
 				else
 					R.expose_single(reagent, target_atom, methods, transfer_amount, show_message)
 				reagent.on_transfer(target_atom, methods, transfer_amount * multiplier)
-			remove_reagent(reagent.type, transfer_amount, no_react) //SKYRAT EDIT CHANGE
+			remove_reagent(reagent.type, transfer_amount)
 			var/list/reagent_qualities = list(REAGENT_TRANSFER_AMOUNT = transfer_amount, REAGENT_PURITY = reagent.purity)
 			transfer_log[reagent.type] = reagent_qualities
 
@@ -712,7 +708,7 @@
  * * can_overdose - Allows overdosing
  * * liverless - Stops reagents that aren't set as [/datum/reagent/var/self_consuming] from metabolizing
  */
-/datum/reagents/proc/metabolize(mob/living/carbon/owner, delta_time, times_fired, can_overdose = FALSE, liverless = FALSE)
+/datum/reagents/proc/metabolize(mob/living/carbon/owner, delta_time, times_fired, can_overdose = FALSE, liverless = FALSE, dead = FALSE)
 	var/list/cached_reagents = reagent_list
 	if(owner)
 		expose_temperature(owner.bodytemperature, 0.25)
@@ -727,7 +723,7 @@
 
 	for(var/datum/reagent/reagent as anything in cached_reagents)
 		// skip metabolizing effects for small units of toxins
-		if(istype(reagent, /datum/reagent/toxin) && liver)
+		if(istype(reagent, /datum/reagent/toxin) && liver && !dead)
 			var/datum/reagent/toxin/toxin = reagent
 			var/amount = round(toxin.volume, CHEMICAL_QUANTISATION_LEVEL)
 			if(belly)
@@ -737,11 +733,10 @@
 				owner.reagents.remove_reagent(toxin.type, toxin.metabolization_rate * owner.metabolism_efficiency * delta_time)
 				continue
 
-		need_mob_update += metabolize_reagent(owner, reagent, delta_time, times_fired, can_overdose, liverless)
+		need_mob_update += metabolize_reagent(owner, reagent, delta_time, times_fired, can_overdose, liverless, dead)
 
 	if(owner && need_mob_update) //some of the metabolized reagents had effects on the mob that requires some updates.
 		owner.updatehealth()
-		owner.update_stamina()
 	update_total()
 
 /*
@@ -754,7 +749,7 @@
  * * can_overdose - Allows overdosing
  * * liverless - Stops reagents that aren't set as [/datum/reagent/var/self_consuming] from metabolizing
  */
-/datum/reagents/proc/metabolize_reagent(mob/living/carbon/owner, datum/reagent/reagent, delta_time, times_fired, can_overdose = FALSE, liverless = FALSE)
+/datum/reagents/proc/metabolize_reagent(mob/living/carbon/owner, datum/reagent/reagent, delta_time, times_fired, can_overdose = FALSE, liverless = FALSE, dead = FALSE)
 	var/need_mob_update = FALSE
 	if(QDELETED(reagent.holder))
 		return FALSE
@@ -786,7 +781,7 @@
 			return
 	//SKYRAT EDIT ADDITION END
 
-	if(owner && reagent)
+	if(owner && reagent && (!dead || (reagent.chemical_flags & REAGENT_DEAD_PROCESS)))
 		if(owner.reagent_check(reagent, delta_time, times_fired))
 			return
 		if(liverless && !reagent.self_consuming) //need to be metabolized
@@ -805,8 +800,10 @@
 
 			if(reagent.overdosed)
 				need_mob_update += reagent.overdose_process(owner, delta_time, times_fired)
-
-		need_mob_update += reagent.on_mob_life(owner, delta_time, times_fired)
+		if(!dead)
+			need_mob_update += reagent.on_mob_life(owner, delta_time, times_fired)
+	if(dead)
+		need_mob_update += reagent.on_mob_dead(owner, delta_time)
 	return need_mob_update
 
 /// Signals that metabolization has stopped, triggering the end of trait-based effects
@@ -860,7 +857,6 @@
 		need_mob_update += metabolize_reagent(owner, reagent, delta_time, times_fired, can_overdose = TRUE)
 	if(owner && need_mob_update) //some of the metabolized reagents had effects on the mob that requires some updates.
 		owner.updatehealth()
-		owner.update_stamina()
 	update_total()
 
 /**

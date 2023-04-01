@@ -33,10 +33,13 @@
 	icon_state = "eyes"
 	greyscale_config = /datum/greyscale_config/mutant_organ
 	greyscale_colors = RAT_COLORS
+	low_light_cutoff = list(16, 11, 0)
+	medium_light_cutoff = list(30, 20, 5)
+	high_light_cutoff = list(45, 35, 10)
 
 /obj/item/organ/internal/eyes/night_vision/rat/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/noticable_organ, "has deep, shifty black pupils, surrounded by a sickening yellow sclera.", BODY_ZONE_PRECISE_EYES)
+	AddElement(/datum/element/noticable_organ, "eyes have deep, shifty black pupils, surrounded by a sickening yellow sclera.", BODY_ZONE_PRECISE_EYES)
 	AddElement(/datum/element/organ_set_bonus, /datum/status_effect/organ_set_bonus/rat)
 
 
@@ -54,8 +57,11 @@
 
 /obj/item/organ/internal/stomach/rat/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/noticable_organ, "salivates excessively.", BODY_ZONE_HEAD)
 	AddElement(/datum/element/organ_set_bonus, /datum/status_effect/organ_set_bonus/rat)
+
+/obj/item/organ/internal/stomach/rat/Insert(mob/living/carbon/reciever, special = FALSE, drop_if_replaced = TRUE)
+	AddElement(/datum/element/noticable_organ, "salivate[reciever.p_s()] excessively.", BODY_ZONE_HEAD)
+	return ..()
 
 /obj/item/organ/internal/stomach/rat/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
 	. = ..()
@@ -103,8 +109,11 @@
 
 /obj/item/organ/internal/heart/rat/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/noticable_organ, "hunches over unnaturally!")
 	AddElement(/datum/element/organ_set_bonus, /datum/status_effect/organ_set_bonus/rat)
+
+/obj/item/organ/internal/heart/rat/Insert(mob/living/carbon/reciever, special = FALSE, drop_if_replaced = TRUE)
+	AddElement(/datum/element/noticable_organ, "hunch[owner.p_es()] over unnaturally!")
+	return ..()
 
 /obj/item/organ/internal/heart/rat/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
 	. = ..()
@@ -139,7 +148,7 @@
 
 /obj/item/organ/internal/tongue/rat/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/noticable_organ, "has oddly shaped, yellowing teeth.", BODY_ZONE_HEAD)
+	AddElement(/datum/element/noticable_organ, "teeth are oddly shaped and yellowing", BODY_ZONE_HEAD)
 	AddElement(/datum/element/organ_set_bonus, /datum/status_effect/organ_set_bonus/rat)
 
 /obj/item/organ/internal/tongue/rat/modify_speech(datum/source, list/speech_args)

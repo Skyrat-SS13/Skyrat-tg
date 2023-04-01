@@ -9,10 +9,8 @@
 	icon = 'modular_skyrat/modules/microfusion/icons/microfusion_gun40x32.dmi'
 	icon_state = "mcr01"
 	inhand_icon_state = "mcr01"
-	bayonet_icon = 'modular_skyrat/modules/microfusion/icons/microfusion_gun40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/microfusion/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/microfusion/icons/guns_righthand.dmi'
-	has_gun_safety = TRUE
 	can_bayonet = FALSE
 	weapon_weight = WEAPON_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
@@ -112,6 +110,9 @@
 	AddComponent(/datum/component/ammo_hud)
 	RegisterSignal(src, COMSIG_ITEM_RECHARGED, PROC_REF(instant_recharge))
 	base_fire_delay = fire_delay
+
+/obj/item/gun/microfusion/give_gun_safeties()
+	AddComponent(/datum/component/gun_safety)
 
 /obj/item/gun/microfusion/add_weapon_description()
 	AddElement(/datum/element/weapon_description, attached_proc = PROC_REF(add_notes_energy))
@@ -213,7 +214,7 @@
 		var/obj/projectile/energy/loaded_projectile = microfusion_lens.loaded_projectile
 		if(!loaded_projectile)
 			. = ""
-		else if(loaded_projectile.nodamage || !loaded_projectile.damage || loaded_projectile.damage_type == STAMINA)
+		else if(!loaded_projectile.damage || loaded_projectile.damage_type == STAMINA)
 			user.visible_message(span_danger("[user] tries to light [to_ignite.loc == user ? "[user.p_their()] [to_ignite.name]" : to_ignite] with [src], but it doesn't do anything. Dumbass."))
 			playsound(user, microfusion_lens.fire_sound, 50, TRUE)
 			playsound(user, loaded_projectile.hitsound, 50, TRUE)

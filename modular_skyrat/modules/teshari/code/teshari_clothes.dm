@@ -83,6 +83,9 @@
 /obj/item/clothing/head/beret
 	greyscale_config_worn_teshari = /datum/greyscale_config/beret/worn/teshari
 
+/obj/item/clothing/head/beret/badge
+	greyscale_config_worn_teshari = /datum/greyscale_config/beret_badge/worn/teshari
+
 /obj/item/clothing/head/hats/hos/beret
 	greyscale_config_worn_teshari = /datum/greyscale_config/beret_badge/worn/teshari
 

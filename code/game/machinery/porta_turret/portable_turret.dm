@@ -90,7 +90,7 @@ DEFINE_BITFIELD(turret_flags, list(
 	/// Determines if our projectiles hit our faction
 	var/ignore_faction = FALSE
 	/// Same faction mobs will never be shot at, no matter the other settings
-	var/list/faction = list("turret")
+	var/list/faction = list(FACTION_TURRET)
 	/// The spark system, used for generating... sparks?
 	var/datum/effect_system/spark_spread/spark_system
 	/// The turret will try to shoot from a turf in that direction when in a wall
@@ -569,8 +569,8 @@ DEFINE_BITFIELD(turret_flags, list(
 
 	if(turret_flags & TURRET_FLAG_SHOOT_CRIMINALS) //if the turret can check the records, check if they are set to *Arrest* on records
 		var/perpname = perp.get_face_name(perp.get_id_name())
-		var/datum/data/record/R = find_record("name", perpname, GLOB.data_core.security)
-		if(!R || (R.fields["criminal"] == "*Arrest*"))
+		var/datum/record/crew/target = find_record(perpname)
+		if(!target || (target.wanted_status == WANTED_ARREST))
 			threatcount += 4
 
 	if((turret_flags & TURRET_FLAG_SHOOT_UNSHIELDED) && (!HAS_TRAIT(perp, TRAIT_MINDSHIELD)))
@@ -656,15 +656,6 @@ DEFINE_BITFIELD(turret_flags, list(
 	button_icon = 'icons/mob/actions/actions_mecha.dmi'
 	button_icon_state = "mech_cycle_equip_off"
 
-/datum/armor/machinery_porta_turret
-	melee = 50
-	bullet = 30
-	laser = 30
-	energy = 30
-	bomb = 30
-	fire = 90
-	acid = 90
-
 /datum/action/turret_toggle/Trigger(trigger_flags)
 	var/obj/machinery/porta_turret/P = target
 	if(!istype(P))
@@ -675,15 +666,6 @@ DEFINE_BITFIELD(turret_flags, list(
 	name = "Release Control"
 	button_icon = 'icons/mob/actions/actions_mecha.dmi'
 	button_icon_state = "mech_eject"
-
-/datum/armor/machinery_porta_turret
-	melee = 50
-	bullet = 30
-	laser = 30
-	energy = 30
-	bomb = 30
-	fire = 90
-	acid = 90
 
 /datum/action/turret_quit/Trigger(trigger_flags)
 	var/obj/machinery/porta_turret/P = target
@@ -751,15 +733,6 @@ DEFINE_BITFIELD(turret_flags, list(
 	faction = list(ROLE_SYNDICATE)
 	desc = "A ballistic machine gun auto-turret."
 
-/datum/armor/machinery_porta_turret
-	melee = 50
-	bullet = 30
-	laser = 30
-	energy = 30
-	bomb = 30
-	fire = 90
-	acid = 90
-
 /obj/machinery/porta_turret/syndicate/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/empprotection, EMP_PROTECT_SELF | EMP_PROTECT_WIRES)
@@ -778,6 +751,16 @@ DEFINE_BITFIELD(turret_flags, list(
 	lethal_projectile = /obj/projectile/beam/laser
 	lethal_projectile_sound = 'sound/weapons/laser.ogg'
 	desc = "An energy blaster auto-turret."
+	armor_type = /datum/armor/syndicate_turret
+
+/datum/armor/syndicate_turret
+	melee = 40
+	bullet = 40
+	laser = 60
+	energy = 60
+	bomb = 60
+	fire = 100
+	acid = 100
 
 /obj/machinery/porta_turret/syndicate/energy/heavy
 	icon_state = "standard_lethal"
@@ -791,7 +774,7 @@ DEFINE_BITFIELD(turret_flags, list(
 /obj/machinery/porta_turret/syndicate/energy/raven
 	stun_projectile = /obj/projectile/beam/laser
 	stun_projectile_sound = 'sound/weapons/laser.ogg'
-	faction = list(FACTION_NEUTRAL,"silicon","turret")
+	faction = list(FACTION_NEUTRAL,FACTION_SILICON,FACTION_TURRET)
 
 /obj/machinery/porta_turret/syndicate/pod
 	integrity_failure = 0.5
@@ -827,17 +810,8 @@ DEFINE_BITFIELD(turret_flags, list(
 		return TRUE
 
 /obj/machinery/porta_turret/ai
-	faction = list("silicon")
+	faction = list(FACTION_SILICON)
 	turret_flags = TURRET_FLAG_SHOOT_CRIMINALS | TURRET_FLAG_SHOOT_ANOMALOUS | TURRET_FLAG_SHOOT_HEADS
-
-/datum/armor/syndicate_shuttle
-	melee = 50
-	bullet = 30
-	laser = 30
-	energy = 30
-	bomb = 80
-	fire = 90
-	acid = 90
 
 /obj/machinery/porta_turret/ai/assess_perp(mob/living/carbon/human/perp)
 	return 10 //AI turrets shoot at everything not in their faction
@@ -846,19 +820,11 @@ DEFINE_BITFIELD(turret_flags, list(
 	name = "perimeter defense turret"
 	desc = "A plasma beam turret calibrated to defend outposts against non-humanoid fauna. It is more effective when exposed to the environment."
 	installation = null
+	uses_stored = FALSE
 	lethal_projectile = /obj/projectile/plasma/turret
 	lethal_projectile_sound = 'sound/weapons/plasma_cutter.ogg'
 	mode = TURRET_LETHAL //It would be useless in stun mode anyway
-	faction = list(FACTION_NEUTRAL,"silicon","turret") //Minebots, medibots, etc that should not be shot.
-
-/datum/armor/syndicate_shuttle
-	melee = 50
-	bullet = 30
-	laser = 30
-	energy = 30
-	bomb = 80
-	fire = 90
-	acid = 90
+	faction = list(FACTION_NEUTRAL,FACTION_SILICON,FACTION_TURRET) //Minebots, medibots, etc that should not be shot.
 
 /obj/machinery/porta_turret/aux_base/assess_perp(mob/living/carbon/human/perp)
 	return 0 //Never shoot humanoids. You are on your own if Ashwalkers or the like attack!
@@ -887,17 +853,8 @@ DEFINE_BITFIELD(turret_flags, list(
 	stun_projectile_sound = 'sound/weapons/plasma_cutter.ogg'
 	icon_state = "syndie_off"
 	base_icon_state = "syndie"
-	faction = list(FACTION_NEUTRAL,"silicon","turret")
+	faction = list(FACTION_NEUTRAL,FACTION_SILICON,FACTION_TURRET)
 	mode = TURRET_LETHAL
-
-/datum/armor/syndicate_shuttle
-	melee = 50
-	bullet = 30
-	laser = 30
-	energy = 30
-	bomb = 80
-	fire = 90
-	acid = 90
 
 /obj/machinery/porta_turret/centcom_shuttle/Initialize(mapload)
 	. = ..()
@@ -916,7 +873,7 @@ DEFINE_BITFIELD(turret_flags, list(
 	desc = "A turret built with substandard parts and run down further with age. Still capable of delivering lethal lasers to the odd space carp, but not much else."
 	stun_projectile = /obj/projectile/beam/weak/penetrator
 	lethal_projectile = /obj/projectile/beam/weak/penetrator
-	faction = list(FACTION_NEUTRAL,"silicon","turret")
+	faction = list(FACTION_NEUTRAL,FACTION_SILICON,FACTION_TURRET)
 
 ////////////////////////
 //Turret Control Panel//
@@ -945,15 +902,6 @@ DEFINE_BITFIELD(turret_flags, list(
 	var/shoot_cyborgs = FALSE
 	/// List of weakrefs to all turrets
 	var/list/turrets = list()
-
-/datum/armor/syndicate_shuttle
-	melee = 50
-	bullet = 30
-	laser = 30
-	energy = 30
-	bomb = 80
-	fire = 90
-	acid = 90
 
 /obj/machinery/turretid/Initialize(mapload, ndir = 0, built = 0)
 	. = ..()
@@ -1114,15 +1062,6 @@ DEFINE_BITFIELD(turret_flags, list(
 	custom_materials = list(/datum/material/iron=MINERAL_MATERIAL_AMOUNT)
 	pixel_shift = 29
 
-/datum/armor/syndicate_shuttle
-	melee = 50
-	bullet = 30
-	laser = 30
-	energy = 30
-	bomb = 80
-	fire = 90
-	acid = 90
-
 /obj/item/gun/proc/get_turret_properties()
 	. = list()
 	.["lethal_projectile"] = null
@@ -1183,15 +1122,6 @@ DEFINE_BITFIELD(turret_flags, list(
 	turret_flags = TURRET_FLAG_AUTH_WEAPONS
 	var/team_color
 
-/datum/armor/syndicate_shuttle
-	melee = 50
-	bullet = 30
-	laser = 30
-	energy = 30
-	bomb = 80
-	fire = 90
-	acid = 90
-
 /obj/machinery/porta_turret/lasertag/assess_perp(mob/living/carbon/human/perp)
 	. = 0
 	if(team_color == "blue") //Lasertag turrets target the opposing team, how great is that? -Sieve
@@ -1234,15 +1164,6 @@ DEFINE_BITFIELD(turret_flags, list(
 /obj/machinery/porta_turret/lasertag/blue
 	installation = /obj/item/gun/energy/laser/bluetag
 	team_color = "blue"
-
-/datum/armor/syndicate_shuttle
-	melee = 50
-	bullet = 30
-	laser = 30
-	energy = 30
-	bomb = 80
-	fire = 90
-	acid = 90
 
 /obj/machinery/porta_turret/lasertag/bullet_act(obj/projectile/P)
 	. = ..()

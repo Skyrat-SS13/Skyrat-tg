@@ -5,6 +5,10 @@
 		TRAIT_PLANT_SAFE,
 		TRAIT_LITERATE,
 	)
+	mutant_bodyparts = list()
+	default_mutant_bodyparts = list(
+		"pod_hair" = ACC_RANDOM,
+	)
 	payday_modifier = 0.75
 
 /datum/species/pod/podweak
@@ -14,7 +18,7 @@
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
-		HAIR,
+		HAIR, // Leaving this here so they can still use it if they want, even if it's kinda ugly compared to their special hair.
 		FACEHAIR
 	)
 	inherent_traits = list(
@@ -22,8 +26,6 @@
 		TRAIT_CAN_STRIP,
 		TRAIT_LITERATE,
 	)
-	mutant_bodyparts = list()
-	default_mutant_bodyparts = list()
 
 	always_customizable = FALSE
 
@@ -46,3 +48,10 @@
 
 	if(H.nutrition < NUTRITION_LEVEL_STARVING + 50)
 		H.take_overall_damage(1 * delta_time, 0)
+
+
+/datum/species/pod/prepare_human_for_preview(mob/living/carbon/human/human)
+	human.dna.mutant_bodyparts["pod_hair"] = list(MUTANT_INDEX_NAME = "Ivy", MUTANT_INDEX_COLOR_LIST = list(COLOR_VIBRANT_LIME, COLOR_VIBRANT_LIME, COLOR_VIBRANT_LIME))
+	regenerate_organs(human, src, visual_only = TRUE)
+	human.update_body(TRUE)
+

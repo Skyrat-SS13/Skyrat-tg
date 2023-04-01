@@ -49,9 +49,9 @@
 	icon_state = "beret_badge"
 
 /obj/item/clothing/head/beret/centcom_formal/nt_consultant
-	armor_type = /datum/armor/centcom_formal_nt_consultant
+	armor_type = /datum/armor/beret_centcom_formal_nt_consultant
 
-/datum/armor/centcom_formal_nt_consultant
+/datum/armor/beret_centcom_formal_nt_consultant
 	melee = 15
 	bullet = 5
 	laser = 15
@@ -62,9 +62,9 @@
 	wound = 4
 
 /obj/item/clothing/suit/armor/centcom_formal/nt_consultant
-	armor_type = /datum/armor/centcom_formal_nt_consultant
+	armor_type = /datum/armor/armor_centcom_formal_nt_consultant
 
-/datum/armor/centcom_formal_nt_consultant
+/datum/armor/armor_centcom_formal_nt_consultant
 	melee = 35
 	bullet = 30
 	laser = 30

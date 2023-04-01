@@ -110,12 +110,11 @@
 	damage = 30
 	paralyze = 0
 	damage_type = STAMINA
-	nodamage = FALSE
 	armor_flag = BIO
 
 /obj/projectile/neurotoxin/on_hit(atom/target, blocked = FALSE)
 	if(isalien(target))
-		nodamage = TRUE
+		damage = 0
 	return ..()
 
 /datum/action/cooldown/alien/acid/skyrat/lethal
