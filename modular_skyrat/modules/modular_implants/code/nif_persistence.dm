@@ -74,7 +74,7 @@
 /datum/nifsoft/proc/load_persistence_data()
 	if(!linked_mob || !persistence)
 		return FALSE
-	var/obj/item/organ/internal/brain/linked_brain = linked_mob.getorganslot(ORGAN_SLOT_BRAIN)
+	var/obj/item/organ/internal/brain/linked_brain = linked_mob.get_organ_slot(ORGAN_SLOT_BRAIN)
 	if(!linked_brain || !linked_brain.modular_persistence)
 		return FALSE
 

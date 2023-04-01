@@ -120,7 +120,7 @@
 	if(tumor_status == PULSATING_TUMOR_MISSING)
 		var/static/list/tumor_reliant_organ_slots = list(ORGAN_SLOT_LIVER, ORGAN_SLOT_STOMACH)
 		for(var/organ_slot in tumor_reliant_organ_slots)
-			var/obj/item/organ/affected_organ = hemophage.getorganslot(organ_slot)
+			var/obj/item/organ/affected_organ = hemophage.get_organ_slot(organ_slot)
 			if(!affected_organ || !(affected_organ.organ_flags & ORGAN_TUMOR_CORRUPTED))
 				continue
 

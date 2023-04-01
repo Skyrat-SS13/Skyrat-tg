@@ -349,7 +349,7 @@
 		if(!supress_message && !(iscarbon(AM) && HAS_TRAIT(src, TRAIT_STRONG_GRABBER)))
 			//SKYRAT EDIT START - Tail coiling
 			if(ishuman(M))
-				if(zone_selected == BODY_ZONE_PRECISE_GROIN && M.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL) && src.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL))
+				if(zone_selected == BODY_ZONE_PRECISE_GROIN && M.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL) && src.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL))
 					M.visible_message(span_warning("[src] coils their tail with [AM], wow is that okay in public?!"), "[src] has entwined their tail with yours!")
 					to_chat(src, "You entwine your tail with [AM]")
 				else

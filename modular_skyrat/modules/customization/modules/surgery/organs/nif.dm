@@ -56,7 +56,7 @@
 	return ..()
 
 /datum/surgery_step/repair_nif/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	if(target.getorganslot(ORGAN_SLOT_BRAIN))
+	if(target.get_organ_slot(ORGAN_SLOT_BRAIN))
 		display_results(user, target, span_warning("You screw up, causing [target] brain damage!"),
 			span_warning("[user] screws up, while trying to repair [target]'s NIF!"),
 			"[user] fails to complete the repair on [target]'s NIF.")
