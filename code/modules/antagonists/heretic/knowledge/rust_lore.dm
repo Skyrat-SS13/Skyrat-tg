@@ -30,7 +30,7 @@
 	name = "Blacksmith's Tale"
 	desc = "Opens up the Path of Rust to you. \
 		Allows you to transmute a knife with any trash item into a Rusty Blade. \
-		You can only create five at a time." //SKYRAT EDIT two to five
+		You can only create two at a time."
 	gain_text = "\"Let me tell you a story\", said the Blacksmith, as he gazed deep into his rusty blade."
 	next_knowledge = list(/datum/heretic_knowledge/rust_fist)
 	required_atoms = list(
@@ -219,20 +219,20 @@
 	var/area/ritual_location = /area/station/command/bridge
 	/// A static list of traits we give to the heretic when on rust.
 	var/static/list/conditional_immunities = list(
-		TRAIT_STUNIMMUNE,
-		TRAIT_SLEEPIMMUNE,
-		TRAIT_PUSHIMMUNE,
-		TRAIT_SHOCKIMMUNE,
+		TRAIT_BOMBIMMUNE,
 		TRAIT_NO_SLIP_ALL,
+		TRAIT_NOBREATH,
+		TRAIT_PIERCEIMMUNE,
+		TRAIT_PUSHIMMUNE,
 		TRAIT_RADIMMUNE,
-		TRAIT_RESISTHIGHPRESSURE,
-		TRAIT_RESISTLOWPRESSURE,
 		TRAIT_RESISTCOLD,
 		TRAIT_RESISTHEAT,
-		TRAIT_PIERCEIMMUNE,
-		TRAIT_BOMBIMMUNE,
-		TRAIT_NOBREATH,
-		)
+		TRAIT_RESISTHIGHPRESSURE,
+		TRAIT_RESISTLOWPRESSURE,
+		TRAIT_SHOCKIMMUNE,
+		TRAIT_SLEEPIMMUNE,
+		TRAIT_STUNIMMUNE,
+	)
 
 /datum/heretic_knowledge/ultimate/rust_final/on_research(mob/user, datum/antagonist/heretic/our_heretic)
 	. = ..()
@@ -270,15 +270,13 @@
 	var/turf/our_turf = get_turf(source)
 	if(HAS_TRAIT(our_turf, TRAIT_RUSTY))
 		if(!immunities_active)
-			for(var/trait in conditional_immunities)
-				ADD_TRAIT(source, trait, type)
+			source.add_traits(conditional_immunities, type)
 			immunities_active = TRUE
 
 	// If we're not on a rust turf, and we have given out our traits, nerf our guy
 	else
 		if(immunities_active)
-			for(var/trait in conditional_immunities)
-				REMOVE_TRAIT(source, trait, type)
+			source.remove_traits(conditional_immunities, type)
 			immunities_active = FALSE
 
 /**

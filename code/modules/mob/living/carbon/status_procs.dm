@@ -13,11 +13,8 @@
 	if(absorb_stun(0)) //continuous effect, so we don't want it to increment the stuns absorbed.
 		return
 	to_chat(src, span_notice("You're too exhausted to keep going..."))
-	ADD_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
-	ADD_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
-	ADD_TRAIT(src, TRAIT_FLOORED, STAMINA)
-	filters += FILTER_STAMINACRIT
-	if(getStaminaLoss() < 162) // Puts you a little further into the initial stamcrit, makes stamcrit harder to outright counter with chems. // SKYRAT EDIT: ORIGINAL if(getStaminaLoss() < 120 * 1.35)
+	add_traits(list(TRAIT_INCAPACITATED, TRAIT_IMMOBILIZED, TRAIT_FLOORED), STAMINA)
+	if(getStaminaLoss() < 162) // Puts you a little further into the initial stamcrit, makes stamcrit harder to outright counter with chems. //SKYRAT EDIT CHANGE
 		adjustStaminaLoss(30, FALSE)
 
 /mob/living/carbon/adjust_disgust(amount)

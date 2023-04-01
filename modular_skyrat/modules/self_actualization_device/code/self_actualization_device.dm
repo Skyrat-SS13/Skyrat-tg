@@ -55,7 +55,7 @@
 	. = ..()
 	update_appearance()
 
-/obj/machinery/self_actualization_device/close_machine(mob/user)
+/obj/machinery/self_actualization_device/close_machine(atom/movable/target, density_to_set = TRUE)
 	..()
 	playsound(src, 'sound/machines/click.ogg', 50)
 	if(!occupant)
@@ -70,10 +70,6 @@
 /obj/machinery/self_actualization_device/examine(mob/user)
 	. = ..()
 	. += span_notice("ALT-Click to turn ON when closed.")
-
-/obj/machinery/self_actualization_device/open_machine(mob/user)
-	playsound(src, 'sound/machines/click.ogg', 50)
-	..()
 
 /obj/machinery/self_actualization_device/AltClick(mob/user)
 	. = ..()

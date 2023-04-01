@@ -1,11 +1,14 @@
 //Define worn_icon_muzzled below here for suits so we don't have to make whole new .dm files for each
 
-// For making sure that snouts with the (Top) suffix have their gear layered correctly
+/// For making sure that snouts with the (Top) suffix have their gear layered correctly
+/// Also handles hiding the ear slot properly after equipping a hat
 /obj/item/clothing/head/visual_equipped(mob/living/carbon/human/user, slot)
 	. = ..()
-	if(!ishuman(user))
+	if(!istype(user))
 		return
 	if(slot & ITEM_SLOT_HEAD)
+		if(user.ears && (flags_inv & HIDEEARS))
+			user.update_inv_ears()
 		if(!(user.dna.species.bodytype & BODYTYPE_ALT_FACEWEAR_LAYER))
 			return
 		if(!isnull(alternate_worn_layer) && alternate_worn_layer < BODY_FRONT_LAYER) // if the alternate worn layer was already lower than snouts then leave it be
@@ -17,6 +20,15 @@
 /obj/item/clothing/head/dropped(mob/living/carbon/human/user)
 	. = ..()
 	alternate_worn_layer = initial(alternate_worn_layer)
+	if(istype(user) && user.ears && (flags_inv & HIDEEARS))
+		RegisterSignal(user, COMSIG_CARBON_UNEQUIP_HAT, PROC_REF(update_on_removed))
+
+/// After the hat has actually been removed from the mob, we can update what needs to be updated here
+/obj/item/clothing/head/proc/update_on_removed(mob/living/carbon/user, obj/item/hat)
+	SIGNAL_HANDLER
+	if(istype(user) && user.ears)
+		user.update_inv_ears()
+	UnregisterSignal(user, COMSIG_CARBON_UNEQUIP_HAT)
 
 /obj/item/clothing/head/bio_hood
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/head/bio_muzzled.dmi'

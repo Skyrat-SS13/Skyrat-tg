@@ -172,9 +172,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	///What anim to use for gibbing
 	var/gib_anim = "gibbed-h"
 
-
-	//Do NOT remove by setting to null. use OR make an ASSOCIATED TRAIT.
-	//why does it work this way? because traits also disable the downsides of not having an organ, removing organs but not having the trait will make your species die
+	// Prefer anything other than setting these to null, such as TRAITS
+	// why?
+	// because traits also disable the downsides of not having an organ, removing organs but not having the trait or logic will make your species die
 
 	///Replaces default brain with a different organ
 	var/obj/item/organ/internal/brain/mutantbrain = /obj/item/organ/internal/brain
@@ -375,16 +375,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		var/obj/item/organ/existing_organ = organ_holder.get_organ_slot(slot)
 		var/obj/item/organ/new_organ = get_mutant_organ_type_for_slot(slot)
 
-<<<<<<< HEAD
-		var/obj/item/organ/oldorgan = C.getorganslot(slot) //used in removing
-		var/obj/item/organ/neworgan = slot_mutantorgans[slot] //used in adding
-		if(!neworgan) //these can be null, if so we shouldn't regenerate
-=======
 		if(isnull(new_organ)) // if they aren't suppose to have an organ here, remove it
 			if(existing_organ)
 				existing_organ.Remove(organ_holder, special = TRUE)
 				qdel(existing_organ)
->>>>>>> ecbcef778df (Refactors Regenerate Organs, and a few organ helpers (#74219))
 			continue
 
 		if(!isnull(old_species) && !isnull(existing_organ))
@@ -436,11 +430,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				current_organ.Remove(organ_holder)
 				QDEL_NULL(current_organ)
 
-<<<<<<< HEAD
-	for(var/obj/item/organ/external/external_organ in C.organs)
-=======
 	for(var/obj/item/organ/external/external_organ in organ_holder.organs)
->>>>>>> ecbcef778df (Refactors Regenerate Organs, and a few organ helpers (#74219))
 		// External organ checking. We need to check the external organs owned by the carbon itself,
 		// because we want to also remove ones not shared by its species.
 		// This should be done even if species was not changed.
@@ -515,8 +505,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			var/obj/item/organ/external/new_organ = SSwardrobe.provide_type(organ_path)
 			new_organ.Insert(human, special=TRUE, drop_if_replaced=FALSE)
 
-	for(var/X in inherent_traits)
-		ADD_TRAIT(C, X, SPECIES_TRAIT)
+	if(length(inherent_traits))
+		C.add_traits(inherent_traits, SPECIES_TRAIT)
 
 	if(TRAIT_VIRUSIMMUNE in inherent_traits)
 		for(var/datum/disease/A in C.diseases)
@@ -590,8 +580,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	SEND_SIGNAL(C, COMSIG_SPECIES_LOSS, src)
 
 /**
-<<<<<<< HEAD
-=======
  * Proc called when mail goodies need to be updated for this species.
  *
  * Updates the mail goodies if that is required. e.g. for the blood deficiency quirk, which sends bloodbags to quirk holders, update the sent bloodpack to match the species' exotic blood.
@@ -623,15 +611,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			quirk.mail_goodies = list()
 			return
 
-
-	// The default case if no species implementation exists. Set quirk's mail_goodies to initial.
-	var/datum/quirk/readable_quirk = new quirk.type
-	quirk.mail_goodies = readable_quirk.mail_goodies
-	qdel(readable_quirk) // We have to do it this way because initial will not work on lists in this version of DM
-	return
-
 /**
->>>>>>> ecbcef778df (Refactors Regenerate Organs, and a few organ helpers (#74219))
  * Handles the body of a human
  *
  * Handles lipstick, having no eyes, eye color, undergarnments like underwear, undershirts, and socks, and body layers.
@@ -1112,6 +1092,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
  * NOTE: If you return TRUE, that reagent will not be removed liike normal! You must handle it manually.
  */
 /datum/species/proc/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, delta_time, times_fired)
+	SHOULD_CALL_PARENT(TRUE)
 	if(chem.type == exotic_blood)
 		H.blood_volume = min(H.blood_volume + round(chem.volume, 0.1), BLOOD_VOLUME_MAXIMUM)
 		H.reagents.del_reagent(chem.type)
@@ -1335,9 +1316,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 						span_danger("[owner] attempts to touch you!"), span_hear("You hear a swoosh!"), COMBAT_MESSAGE_RANGE, owner)
 		to_chat(owner, span_warning("You attempt to touch [target]!"))
 		return
-	//Check if we can do a grab maneuver, if so, attempt it - SKYRAT EDIT ADDITION
-	if(target.pulledby && target.pulledby == owner && owner.grab_state > GRAB_PASSIVE && try_grab_maneuver(owner, target, modifiers))
-		return //SKYRAT EDIT END
 
 	SEND_SIGNAL(owner, COMSIG_MOB_ATTACK_HAND, owner, target, attacker_style)
 

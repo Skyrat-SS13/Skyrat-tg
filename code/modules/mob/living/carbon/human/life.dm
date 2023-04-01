@@ -75,12 +75,7 @@
 		return ..()
 
 /mob/living/carbon/human/check_breath(datum/gas_mixture/breath)
-<<<<<<< HEAD
-
-	var/L = getorganslot(ORGAN_SLOT_LUNGS)
-=======
 	var/L = get_organ_slot(ORGAN_SLOT_LUNGS)
->>>>>>> ecbcef778df (Refactors Regenerate Organs, and a few organ helpers (#74219))
 
 	if(!L)
 		if(health >= crit_threshold)

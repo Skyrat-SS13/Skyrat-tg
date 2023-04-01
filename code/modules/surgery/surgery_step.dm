@@ -140,6 +140,8 @@
 	surgery.step_in_progress = FALSE
 	return advance
 
+#undef SURGERY_SPEEDUP_AREA // SKYRAT EDIT ADDITION
+
 /datum/surgery_step/proc/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(
 		user,
