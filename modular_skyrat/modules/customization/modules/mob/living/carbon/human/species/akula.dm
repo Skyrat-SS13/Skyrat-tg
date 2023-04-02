@@ -127,6 +127,8 @@
 /// This proc is called when a mob with TRAIT_SLICK_SKIN gains over 10 wet_stacks
 /datum/species/akula/proc/wetted(mob/living/carbon/akula)
 	SIGNAL_HANDLER
+	if(!akula)
+		return
 	// Apply the slippery trait if its not there yet
 	if(!HAS_TRAIT(akula, TRAIT_SLIPPERY))
 		ADD_TRAIT(akula, TRAIT_SLIPPERY, SPECIES_TRAIT)
@@ -137,6 +139,8 @@
 
 /// This proc is called after a mob with the TRAIT_SLIPPERY has its related timer run out
 /datum/species/akula/proc/dried(mob/living/carbon/akula)
+	if(!akula)
+		return
 	// A -1 moodlet which will not go away until the user gets wet
 	akula.add_mood_event("dry_skin", /datum/mood_event/dry_skin)
 	REMOVE_TRAIT(akula, TRAIT_SLIPPERY, SPECIES_TRAIT)
@@ -144,6 +148,8 @@
 /// A simple overwrite which calls parent to listen to wet_stacks
 /datum/status_effect/fire_handler/wet_stacks/tick(delta_time)
 	. = ..()
+	if(!owner)
+		return
 	if(HAS_TRAIT(owner, TRAIT_SLICK_SKIN) && stacks >= 10)
 		SEND_SIGNAL(owner, COMSIG_MOB_TRIGGER_WET_SKIN)
 
