@@ -170,7 +170,6 @@
 
 /// REPLACES HAMMER ACT BC IDK I DONT LIKE HAMMER ACT
 /obj/structure/reagent_crafting_bench/proc/handle_tool_usage(mob/living/user, obj/item/tool)
-	playsound(src, 'modular_skyrat/modules/reagent_forging/sound/forge.ogg', 50, TRUE)
 	if(length(contents))
 		if(!istype(contents[1], /obj/item/forging/complete))
 			balloon_alert(user, "invalid item")
@@ -292,8 +291,10 @@
 	if(completing_a_weapon)
 		recipe_to_follow = new /datum/crafting_bench_recipe/weapon_completion_recipe
 
+	var/list/swipe_materials_from = recipe_to_follow.contributes_materials
+
 	var/materials_to_transfer = list()
-	var/list/temporary_materials_list = use_or_delete_recipe_requirements(things_to_use, recipe_to_follow)
+	var/list/temporary_materials_list = use_or_delete_recipe_requirements(things_to_use, recipe_to_follow, swipe_materials_from)
 	for(var/material as anything in temporary_materials_list)
 		materials_to_transfer[material] += temporary_materials_list[material]
 
@@ -324,8 +325,9 @@
 	return newly_created_thing
 
 /// Takes the given list, things_to_use, compares it to recipe_to_follow's requirements, then either uses items from a stack, or deletes them otherwise. Returns custom material of forge items in the end.
-/obj/structure/reagent_crafting_bench/proc/use_or_delete_recipe_requirements(list/things_to_use, datum/crafting_bench_recipe/recipe_to_follow)
+/obj/structure/reagent_crafting_bench/proc/use_or_delete_recipe_requirements(list/things_to_use, datum/crafting_bench_recipe/recipe_to_follow, swipe_materials_from)
 	var/list/materials_to_transfer = list()
+	var/list/things_we_take_materials_from = typecacheof(swipe_materials_from)
 
 	for(var/obj/requirement_item as anything in things_to_use)
 		if(isstack(requirement_item))
@@ -345,7 +347,7 @@
 
 			requirement_stack.use(recipe_to_follow.recipe_requirements[stack_type])
 
-		else if(istype(requirement_item, /obj/item/forging/complete))
+		else if((istype(requirement_item, /obj/item/forging/complete)) || (is_type_in_typecache(requirement_item, things_we_take_materials_from)))
 			if(!requirement_item.custom_materials || !recipe_to_follow.transfers_materials)
 				qdel(requirement_item)
 				continue
