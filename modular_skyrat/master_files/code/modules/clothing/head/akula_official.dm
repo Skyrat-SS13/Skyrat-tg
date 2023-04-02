@@ -1,4 +1,3 @@
-
 /obj/item/clothing/head/hats/caphat/azulean
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/akula_official.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/akula_official.dmi'
