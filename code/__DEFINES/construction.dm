@@ -125,7 +125,7 @@ GLOBAL_LIST_INIT(crafting_category_food, list(
 	CAT_ICE,
 	CAT_DRINK,
 ))
-
+/*
 //crafting defines
 //When adding new defines, please make sure to also add them to the encompassing list
 #define CAT_WEAPON_RANGED "Weapons Ranged"
@@ -165,6 +165,16 @@ GLOBAL_LIST_INIT(crafting_category, list(
 	CAT_CONTAINERS,
 	CAT_ENTERTAINMENT,
 	CAT_TOOLS,
+	CAT_CULT,
+))
+*/
+
+#define CAT_GLASSMAKING "Glassmaking"
+
+#define CAT_CULT "Blood Cult" // I think the game breaks if I remove this one
+
+GLOBAL_LIST_INIT(crafting_category, list(
+	CAT_GLASSMAKING,
 	CAT_CULT,
 ))
 

@@ -25,6 +25,12 @@
 
 	AddComponent(/datum/component/bakeable, /obj/item/stack/dwarf_certified/glass/green, rand(30 SECONDS, 45 SECONDS), TRUE, TRUE)
 
+/obj/item/stack/dwarf_certified/powder/sand/examine(mob/user)
+	. = ..()
+
+	. += span_notice("You could probably <b>bake</b> this into glass.")
+	. += span_notice("With some <b>potash</b> you could even <b>craft</b> a mix to make clear glass.")
+
 // Yellow snad
 
 /datum/material/dwarf_certified/powder/sand/yellow
