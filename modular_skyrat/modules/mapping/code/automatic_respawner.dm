@@ -78,7 +78,7 @@
 	target_component = /datum/component/respawner
 
 /obj/item/respawn_implant //Not actually an implanter
-	name = "Respawn Implant"
+	name = "Respawn Implanter"
 	desc = "Life doesn't end after death."
 	icon = 'modular_skyrat/modules/aesthetics/items_and_weapons/items_and_weapons.dmi'
 	icon_state = "implanter0"
