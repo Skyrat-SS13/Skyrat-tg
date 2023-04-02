@@ -9,9 +9,10 @@
 
 /datum/component/loomable/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ITEM_ATTACK_OBJ, PROC_REF(try_and_loom_me))
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
 
 /datum/component/loomable/UnregisterFromParent()
-	UnregisterSignal(parent, COMSIG_ITEM_ATTACK_OBJ)
+	UnregisterSignal(parent, list(COMSIG_ITEM_ATTACK_OBJ, COMSIG_PARENT_EXAMINE))
 
 /datum/component/loomable/proc/try_and_loom_me(datum/source, atom/target, mob/living/user)
 	SIGNAL_HANDLER
@@ -33,3 +34,8 @@
 		stack_we_use.use(1)
 	else
 		qdel(parent)
+
+/datum/component/loomable/proc/on_examine(mob/living/source, mob/examiner, list/examine_list)
+	SIGNAL_HANDLER
+
+	examine_list += span_notice("You could probably process [parent] at a <b>loom</b>.")
