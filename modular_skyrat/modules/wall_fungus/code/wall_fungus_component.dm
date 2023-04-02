@@ -2,7 +2,8 @@
 
 #define FUNGUS_STAGE_ONE 1
 #define FUNGUS_STAGE_TWO 2
-#define FUNGUS_STAGE_MAX 3
+#define FUNGUS_STAGE_THREE 3
+#define FUNGUS_STAGE_MAX 4
 
 /**
  * A wall eating mushroom.
@@ -13,7 +14,7 @@
 	/// How far has the fungus progressed on the affected wall? Percentage.
 	var/progression_percent = 0
 	/// How many percent do we increase each subsystem fire?
-	var/progression_step_amount = 1
+	var/progression_step_amount = 0.5
 	/// What stage are we at?
 	var/progression_stage = FUNGUS_STAGE_ONE
 	/// Our overlay icon file
@@ -106,8 +107,11 @@
 			examine_list += span_green("[parent_wall] is infected with some kind of fungus!")
 		if(FUNGUS_STAGE_TWO)
 			examine_list += span_green("[parent_wall] is infected with some kind of fungus, its structure weakened!")
-		if(FUNGUS_STAGE_MAX)
+		if(FUNGUS_STAGE_THREE)
 			examine_list += span_green("[parent_wall] is infected with some kind of fungus, its structure seriously weakened!")
+		if(FUNGUS_STAGE_THREE)
+			examine_list += span_green("[parent_wall] is infected with some kind of fungus, its falling apart!")
+	examine_list += "Perhaps you could <b>burn</b> it off?"
 
 /datum/component/wall_fungus/proc/apply_fungus_overlay(atom/parent_atom, list/overlays)
 	SIGNAL_HANDLER
@@ -122,12 +126,12 @@
 /datum/component/wall_fungus/proc/handle_tool_use(atom/source, mob/user, obj/item/item)
 	switch(item.tool_behaviour)
 		if(TOOL_WELDER)
-			if(!item.tool_start_check(user, amount=5))
+			if(!item.tool_start_check(user, 1))
 				return
 
 			user.balloon_alert(user, "burning off fungus...")
 
-			if(!item.use_tool(source, user, 5 SECONDS))
+			if(!item.use_tool(source, user, 2 SECONDS, 1))
 				return
 
 			user.balloon_alert(user, "burned off fungus")
