@@ -57,8 +57,7 @@
 */
 
 	// Vessel capacity indicator
-	var/list/vessel_state_list = list("liquid_empty", "liquid_low", "liquid_medium", "liquid_high", "liquid_full")
-	var/vessel_state
+	var/vessel_state = "liquid_empty"
 	// Organ types and sizes
 	var/current_selected_organ_type = null
 	var/current_selected_organ_size = null
@@ -93,8 +92,6 @@
 // Object initialization
 /obj/structure/chair/milking_machine/Initialize(mapload)
 	. = ..()
-	vessel_state = vessel_state_list[1]
-
 	milk_vessel = new()
 	milk_vessel.name = "MilkContainer"
 	milk_vessel.reagents.maximum_volume = max_vessel_capacity
@@ -541,26 +538,23 @@
 	// Processing changes in the capacity overlay
 	cut_overlay(vessel_overlay)
 	var/total_reagents_volume = (milk_vessel.reagents.total_volume + girlcum_vessel.reagents.total_volume + semen_vessel.reagents.total_volume)
-	if(total_reagents_volume == 0 && total_reagents_volume < 1)
-		if(vessel_state != vessel_state_list[1])
-			vessel_overlay.icon_state = vessel_state_list[1]
-			vessel_state = vessel_state_list[1]
-	if((total_reagents_volume >= 1) && (total_reagents_volume < (max_vessel_capacity / 3)))
-		if(vessel_state != vessel_state_list[2])
-			vessel_overlay.icon_state = vessel_state_list[2]
-			vessel_state = vessel_state_list[2]
-	if((total_reagents_volume >= (max_vessel_capacity / 3)) && (total_reagents_volume < (2 * max_vessel_capacity / 3)))
-		if(vessel_state != vessel_state_list[3])
-			vessel_overlay.icon_state = vessel_state_list[3]
-			vessel_state = vessel_state_list[3]
-	if((total_reagents_volume >= (2 * max_vessel_capacity / 3)) && (total_reagents_volume < max_vessel_capacity))
-		if(vessel_state != vessel_state_list[4])
-			vessel_overlay.icon_state = vessel_state_list[4]
-			vessel_state = vessel_state_list[4]
-	if(total_reagents_volume == max_vessel_capacity)
-		if(vessel_state != vessel_state_list[5])
-			vessel_overlay.icon_state = vessel_state_list[5]
-			vessel_state = vessel_state_list[5]
+	var/static/list/vessel_state_list = list("liquid_empty", "liquid_low", "liquid_medium", "liquid_high", "liquid_full")
+
+	var/state_to_use = 1
+	switch(total_reagents_volume)
+		if(max_vessel_capacity)
+			state_to_use = 5
+		if((max_vessel_capacity / 1.5) to max_vessel_capacity)
+			state_to_use = 4
+		if((max_vessel_capacity / 3) to (max_vessel_capacity / 1.5))
+			state_to_use = 3
+		if(1 to (max_vessel_capacity / 3))
+			state_to_use = 2
+		if(0 to 1)
+			state_to_use = 1
+
+	vessel_overlay.icon_state = vessel_state_list[state_to_use]
+	vessel_state = vessel_state_list[state_to_use]
 	add_overlay(vessel_overlay)
 
 	icon_state = "milking_[machine_color]_[current_mode]"
