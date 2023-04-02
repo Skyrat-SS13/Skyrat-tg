@@ -20,7 +20,7 @@
 	/// Is this bench able to complete forging items? Exists to allow non-forging workbenches to exist
 	var/finishes_forging_weapons = TRUE
 	/// What type of tool you need to work with this bench
-	var/required_tool = /obj/item/forging/hammer
+	var/obj/required_tool = /obj/item/forging/hammer
 	/// What sound the above mentioned tool makes when interacting with the bench
 	var/working_sound = 'modular_skyrat/modules/reagent_forging/sound/forge.ogg'
 	/// The cooldown from the last hit before we allow another 'good hit' to happen
@@ -168,7 +168,8 @@
 	deconstruct(disassembled = TRUE)
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
-/obj/structure/reagent_crafting_bench/handle_tool_usage(mob/living/user, obj/item/tool)
+/// REPLACES HAMMER ACT BC IDK I DONT LIKE HAMMER ACT
+/obj/structure/reagent_crafting_bench/proc/handle_tool_usage(mob/living/user, obj/item/tool)
 	playsound(src, 'modular_skyrat/modules/reagent_forging/sound/forge.ogg', 50, TRUE)
 	if(length(contents))
 		if(!istype(contents[1], /obj/item/forging/complete))

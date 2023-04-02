@@ -7,7 +7,7 @@
 	finishes_forging_weapons = FALSE
 	required_tool = /obj/item/scissors
 	working_sound = 'modular_skyrat/modules/salon/sound/haircut.ogg'
-	var/list/allowed_choices = list(
+	allowed_choices = list(
 		/datum/crafting_bench_recipe/pantsed_uniform,
 		/datum/crafting_bench_recipe/high_pantsed_uniform,
 		/datum/crafting_bench_recipe/skirt_uniform,
