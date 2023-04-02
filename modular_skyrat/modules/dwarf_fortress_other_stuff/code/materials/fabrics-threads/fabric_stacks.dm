@@ -70,7 +70,7 @@
 	name = "spool of cotton thread"
 	singular_name = "cotton thread"
 
-	desc = "Thread made of cloth."
+	desc = "Thread made of cotton."
 
 	merge_type = /obj/item/stack/dwarf_certified/thread/cotton
 
@@ -83,7 +83,7 @@
 	name = "bolt of cotton fabric"
 	singular_name = "cotton fabric"
 
-	desc = "Fabric made of cloth."
+	desc = "Fabric made of cotton."
 
 	merge_type = /obj/item/stack/dwarf_certified/fabric/cotton
 

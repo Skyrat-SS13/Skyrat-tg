@@ -11,20 +11,19 @@
 	src.loom_result = loom_result
 
 /datum/component/loomable/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_MOB_ITEM_AFTERATTACK, PROC_REF(try_and_loom_me))
+	RegisterSignal(parent, COMSIG_ITEM_ATTACK, PROC_REF(try_and_loom_me))
 
 /datum/component/loomable/UnregisterFromParent()
-	UnregisterSignal(parent, COMSIG_MOB_ITEM_AFTERATTACK)
+	UnregisterSignal(parent, COMSIG_ITEM_ATTACK)
 
-/datum/component/loomable/proc/try_and_loom_me(mob/living/user, obj/structure/loom/target, obj/item/loomee, proximity_flag, click_parameters)
+/datum/component/loomable/proc/try_and_loom_me(datum/source, obj/structure/loom/target, mob/living/user)
 	SIGNAL_HANDLER
 
-	if(!proximity_flag)
-		return
 	if(!istype(target))
 		return
 
 	INVOKE_ASYNC(src, PROC_REF(loom_me), user, target)
+	. = COMPONENT_CANCEL_ATTACK_CHAIN
 
 /datum/component/loomable/proc/loom_me(mob/living/user, obj/structure/loom/target)
 	if(!do_after(user, 2 SECONDS, target))

@@ -6,7 +6,7 @@
 	greyscale_colors = "#ffffff"
 	alpha = 255
 
-	categories = list(MAT_CATEGORY_ITEM_MATERIAL = TRUE, MAT_CATEGORY_RIGID = FALSE, MAT_CATEGORY_BASE_RECIPES = FALSE,)
+	categories = list(MAT_CATEGORY_ITEM_MATERIAL = TRUE,)
 
 	sheet_type = /obj/item/stack/dwarf_certified
 
