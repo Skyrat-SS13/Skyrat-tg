@@ -88,6 +88,9 @@
 /datum/component/wall_fungus/proc/spread_to_nearby_wall()
 	var/list/walls_to_pick_from = list()
 	for(var/turf/closed/wall/iterating_wall in RANGE_TURFS(3, parent_wall))
+		if(iterating_wall.GetComponent(/datum/component/wall_fungus))
+			continue
+
 		walls_to_pick_from += iterating_wall
 
 	if(!length(walls_to_pick_from))

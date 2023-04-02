@@ -34,6 +34,9 @@
 	if(!iswallturf(attacked_atom))
 		return ..()
 	var/turf/closed/wall/target_wall = attacked_atom
+	if(target_wall.GetComponent(/datum/component/wall_fungus))
+		target_wall.balloon_alert(user, "already infested!")
+		return ..()
 	target_wall.balloon_alert(user, "planting...")
 	if(do_after(user, 5 SECONDS, target_wall))
 		target_wall.AddComponent(/datum/component/wall_fungus)
