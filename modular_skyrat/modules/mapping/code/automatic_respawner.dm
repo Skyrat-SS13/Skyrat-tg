@@ -22,7 +22,7 @@
 	if(.)
 		return FALSE
 
-	if(target_component && !user.GetComponent(target_component))
+	if(target_component && !user?.mind.GetComponent(target_component))
 		to_chat(user, span_warning("You are not able to use [src]!"))
 		return FALSE
 
@@ -66,4 +66,37 @@
 
 /obj/machinery/automatic_respawner/test
 	cooldown_time = 1.5 MINUTES
+	target_component = /datum/component/respawner
+
+/obj/item/respawn_implant //Not actually an implanter
+	name = "Respawn Implant"
+	desc = "Life doesn't end after death."
+	icon = 'modular_skyrat/modules/aesthetics/items_and_weapons/items_and_weapons.dmi'
+	icon_state = "implanter0"
+	inhand_icon_state = "syringe_0"
+	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
+	/// What is the path of the component added when someone uses the implant?
+	var/datum/component/given_component = /datum/component/respawner
+
+/// Adds the component from the `given_component` variable to the `target` mob's mind. returns FALSE if the `given_component` cannot be added to the target's mind.
+/obj/item/respawn_implant/proc/add_given_component(mob/living/target)
+	if(!target?.mind || !given_component || target.mind.GetComponent(given_component))
+		return FALSE
+
+	target.mind.AddComponent(given_component)
+	return TRUE
+
+/obj/item/respawn_implant/attack_self(mob/user, modifiers)
+	. = ..()
+	add_given_component(user)
+
+/obj/item/respawn_implant/attack(mob/living/target_mob, mob/living/user, params)
+	. = ..()
+	add_given_component(target_mob)
+
+/datum/component/respawner/Initialize(...)
+	. = ..()
+	if(!istype(parent, /datum/mind))
+		return COMPONENT_INCOMPATIBLE
 
