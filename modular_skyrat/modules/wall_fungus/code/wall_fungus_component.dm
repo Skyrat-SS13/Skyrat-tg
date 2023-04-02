@@ -27,7 +27,17 @@
 	/// How likely are we to drop a shroom upon destruction?
 	var/drop_chance = 30
 
-/datum/component/wall_fungus/Initialize()
+/datum/component/wall_fungus/Initialize(override_progression_step_amount, override_spread_chance, override_spread_distance, override_drop_chance)
+	// This stuff enables badminery.
+	if(override_progression_step_amount)
+		progression_step_amount = override_progression_step_amount
+	if(override_spread_chance)
+		spread_chance = override_progression_step_amount
+	if(override_spread_distance)
+		spread_distance = override_spread_distance
+	if(override_drop_chance)
+		drop_chance = override_drop_chance
+
 	if(!iswallturf(parent))
 		return COMPONENT_INCOMPATIBLE
 
@@ -40,12 +50,16 @@
 	START_PROCESSING(SSobj, src)
 
 /datum/component/wall_fungus/Destroy(force, silent)
+	STOP_PROCESSING(SSobj, src)
 	parent_wall?.update_icon(UPDATE_OVERLAYS)
 	return ..()
 
 /datum/component/wall_fungus/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ATOM_SECONDARY_TOOL_ACT(TOOL_WELDER), PROC_REF(secondary_tool_act))
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(examine))
+
+/datum/component/wall_fungus/UnregisterFromParent()
+	UnregisterSignal(parent, COMSIG_ATOM_SECONDARY_TOOL_ACT(TOOL_WELDER), COMSIG_PARENT_EXAMINE, COMSIG_ATOM_UPDATE_OVERLAYS)
 
 /datum/component/wall_fungus/process(delta_time)
 	if(prob(spread_chance * delta_time))
@@ -58,7 +72,9 @@
 	progression_percent += progression_step_amount * delta_time
 
 	if(progression_percent >= 100)
+		progression_percent = 0
 		progression_stage++
+		spread_to_nearby_wall()
 		parent_wall.update_icon(UPDATE_OVERLAYS)
 
 /// We kill the wall once we have progressed far enough.
@@ -74,9 +90,12 @@
 	for(var/turf/closed/wall/iterating_wall in RANGE_TURFS(3, parent_wall))
 		walls_to_pick_from += iterating_wall
 
+	if(!length(walls_to_pick_from))
+		return // sad times
+
 	var/turf/closed/wall/picked_wall = pick(walls_to_pick_from)
 
-	picked_wall.AddComponent(/datum/component/wall_fungus)
+	picked_wall.AddComponent(/datum/component/wall_fungus, progression_step_amount, spread_chance, spread_distance, drop_chance)
 
 /// Gives people an idea of how badly the wall is infected.
 /datum/component/wall_fungus/proc/examine(datum/source, mob/user, list/examine_list)
