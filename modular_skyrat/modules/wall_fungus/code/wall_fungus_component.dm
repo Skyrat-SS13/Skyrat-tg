@@ -96,6 +96,6 @@
 			qdel(src)
 
 
-#undef FUNGUS_STAGE_ONE 1
-#undef FUNGUS_STAGE_TWO 2
-#undef FUNGUS_STAGE_MAX 3
+#undef FUNGUS_STAGE_ONE
+#undef FUNGUS_STAGE_TWO
+#undef FUNGUS_STAGE_MAX
