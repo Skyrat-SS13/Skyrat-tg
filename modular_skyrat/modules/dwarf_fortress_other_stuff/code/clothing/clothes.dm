@@ -8,7 +8,9 @@
 	worn_icon_teshari = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
 	can_adjust = FALSE
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-	greyscale_colors = "#cec8bf#cec8bf"
+	greyscale_colors = "#cec8bf"
+	armor_type = /datum/armor/df_armor_default // let me cook
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
 //Pants with a shirt
 
@@ -23,12 +25,6 @@
 	greyscale_config_worn_teshari = /datum/greyscale_config/workpants/worn/teshari
 	greyscale_config_worn_digi = /datum/greyscale_config/workpants/worn/digi
 
-/obj/item/clothing/under/costume/buttondown/event_clothing/workpants/Initialize(mapload)
-	. = ..()
-	if(prob(50))
-		icon_state = "pants_longshirt"
-	set_greyscale("[pick(GLOB.fabric_clothing_colors)][pick(GLOB.leather_clothing_colors)]")
-
 //High waist pants with a shirt
 
 /obj/item/clothing/under/costume/buttondown/event_clothing/longpants
@@ -42,12 +38,6 @@
 	greyscale_config_worn_teshari = /datum/greyscale_config/longpants/worn/teshari
 	greyscale_config_worn_digi = /datum/greyscale_config/longpants/worn/digi
 
-/obj/item/clothing/under/costume/buttondown/event_clothing/longpants/Initialize(mapload)
-	. = ..()
-	if(prob(50))
-		icon_state = "longpants_longshirt"
-	set_greyscale("[pick(GLOB.fabric_clothing_colors)][pick(GLOB.leather_clothing_colors)]")
-
 /obj/item/clothing/under/costume/buttondown/event_clothing/skirt
 	name = "long skirt"
 	desc = "A plain skirt (or kilt if you feel like it) with a fairly comfortable shirt on top."
@@ -59,20 +49,12 @@
 	greyscale_config_worn_vox = /datum/greyscale_config/skirt/worn/oldvox
 	greyscale_config_worn_teshari = /datum/greyscale_config/skirt/worn/teshari
 
-/obj/item/clothing/under/costume/buttondown/event_clothing/skirt/Initialize(mapload)
-	. = ..()
-	if(prob(50))
-		icon_state = "skirt_longshirt"
-	set_greyscale("[pick(GLOB.fabric_clothing_colors)][pick(GLOB.fabric_clothing_colors)]")
-
 //Robes
 /obj/item/clothing/under/costume/skyrat/bathrobe/event
 	name = "robes"
 	desc = "Comfortable, definitely posh looking robes fit for a king, or just a huge nerd who has no other job."
-
-/obj/item/clothing/under/costume/skyrat/bathrobe/event/Initialize(mapload)
-	. = ..()
-	set_greyscale("[pick(GLOB.science_robe_colors)]")
+	armor_type = /datum/armor/df_armor_default
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
 /*
 * Suit Slot Stuff
@@ -81,20 +63,16 @@
 /obj/item/clothing/suit/toggle/jacket/sweater/cloth_colors
 	greyscale_colors = "#cec8bf"
 	flags_1 = NONE
-
-/obj/item/clothing/suit/toggle/jacket/sweater/cloth_colors/Initialize(mapload)
-	. = ..()
-	set_greyscale("[pick(GLOB.fabric_clothing_colors)]")
+	armor_type = /datum/armor/df_armor_default
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
 /obj/item/clothing/suit/toggle/jacket/sweater/leather_colors
 	name = "leather travel jacket"
 	desc = "Say that name ten times fast."
 	greyscale_colors = "#cec8bf"
 	flags_1 = NONE
-
-/obj/item/clothing/suit/toggle/jacket/sweater/leather_colors/Initialize(mapload)
-	. = ..()
-	set_greyscale("[pick(GLOB.leather_clothing_colors)]")
+	armor_type = /datum/armor/df_armor_default
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
 /obj/item/storage/backpack/explorer/event
 	icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
@@ -129,3 +107,5 @@
 	greyscale_config_worn_teshari = /datum/greyscale_config/armwraps/worn/teshari
 	greyscale_colors = "#cec8bf"
 	flags_1 = IS_PLAYER_COLORABLE_1
+	armor_type = /datum/armor/df_armor_default
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
