@@ -70,6 +70,14 @@
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/nri, 32)
 
+/obj/structure/sign/flag/azulea
+	name = "flag of the Azulean Nation"
+	desc = ""
+	icon_state = "flag_azulea"
+	item_flag = /obj/item/sign/flag/azulea
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/azulea, 32)
+
 /// Please, for the love of God, use this in Black Mesa ONLY. NOWHERE ELSE. It's the only reason it was allowed in the game.
 /obj/structure/sign/flag/usa
 	name = "flag of the United States of America"
@@ -147,6 +155,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/syndicate, 32)
 	desc = "The folded flag of the Novaya Rossiyskaya Imperiya."
 	icon_state = "folded_nri"
 	sign_path = /obj/structure/sign/flag/nri
+
+/obj/item/sign/flag/azulea
+	name = "folded flag of Azulea"
+	desc = "The folded flag of the Akulan nation Azulea."
+	icon_state = "folded_azulea"
+	sign_path = /obj/structure/sign/flag/azulea
 
 /// Please, for the love of God, use this in Black Mesa ONLY. NOWHERE ELSE. It's the only reason it was allowed in the game.
 /obj/item/sign/flag/usa
