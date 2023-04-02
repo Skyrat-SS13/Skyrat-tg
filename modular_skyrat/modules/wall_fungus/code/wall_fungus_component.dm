@@ -48,16 +48,17 @@
 
 	START_PROCESSING(SSobj, src)
 
+/datum/component/wall_fungus/RegisterWithParent()
+	RegisterSignal(parent, COMSIG_ATOM_SECONDARY_TOOL_ACT(TOOL_WELDER), PROC_REF(secondary_tool_act))
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(examine))
+	RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND, PROC_REF(on_attack_hand))
+
 /datum/component/wall_fungus/Destroy(force, silent)
 	var/turf/closed/wall/parent_wall = parent
 	STOP_PROCESSING(SSobj, src)
 	UnregisterSignal(parent, list(COMSIG_ATOM_SECONDARY_TOOL_ACT(TOOL_WELDER), COMSIG_PARENT_EXAMINE, COMSIG_ATOM_UPDATE_OVERLAYS))
 	parent_wall.update_icon(UPDATE_OVERLAYS)
 	return ..()
-
-/datum/component/wall_fungus/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_ATOM_SECONDARY_TOOL_ACT(TOOL_WELDER), PROC_REF(secondary_tool_act))
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(examine))
 
 /datum/component/wall_fungus/process(delta_time)
 	var/turf/closed/wall/parent_wall = parent
@@ -76,13 +77,23 @@
 		spread_to_nearby_wall()
 		parent_wall.update_icon(UPDATE_OVERLAYS)
 
+/datum/component/wall_fungus/proc/on_attack_hand(datum/source, mob/living/user)
+	SIGNAL_HANDLER
+
+	if(progression_stage < FUNGUS_STAGE_THREE)
+		return
+
+	to_chat(user, span_warning("The wall crumbles as you touch it!"))
+
+	collapse_parent_structure()
+
+
 /// We kill the wall once we have progressed far enough.
 /datum/component/wall_fungus/proc/collapse_parent_structure()
 	var/turf/closed/wall/parent_wall = parent
 	STOP_PROCESSING(SSobj, src)
+	parent_wall.balloon_alert_to_viewers("collapses!")
 	parent_wall.dismantle_wall()
-	// When we're deleted, we null this, so that we don't try to interact with a deleted wall.
-	parent_wall = null
 	qdel(src)
 
 /datum/component/wall_fungus/proc/spread_to_nearby_wall()
