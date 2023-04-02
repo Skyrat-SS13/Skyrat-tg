@@ -12,10 +12,11 @@
 	icon_state = "control_boxp"
 	/// A weakref to our cannon
 	var/datum/weakref/connected_cannon
-	/// The current notice
+	/// The current system status of the gun
 	var/notice
 	/// Our target... WHY NOT WEEKREFF
 	var/target
+	/// Are we allowing the gun to target areas?
 	var/area_aim = FALSE //should also show areas for targeting
 
 	connectable = FALSE //connecting_computer change: since icon_state is not a typical console, it cannot be connectable.
@@ -34,6 +35,7 @@
 /obj/machinery/computer/bsa_control/ui_data()
 	var/list/data = list()
 	var/obj/machinery/bsa/full/cannon = connected_cannon?.resolve()
+
 	data["connected"] = cannon
 	data["notice"] = notice
 	data["unlocked"] = GLOB.bsa_unlock
@@ -68,12 +70,18 @@
 			change_capacitor_target(params["capacitor_target"])
 	update_appearance()
 
+/**
+ * Changes the target charge for the internal capacitors
+ */
 /obj/machinery/computer/bsa_control/proc/change_capacitor_target(new_target)
 	var/obj/machinery/bsa/full/cannon = connected_cannon?.resolve()
 	if(!cannon)
 		return
 	cannon.target_power = new_target
 
+/**
+ * Takes power from the powernet and inserts it into the gun.
+ */
 /obj/machinery/computer/bsa_control/proc/charge()
 	var/obj/machinery/bsa/full/cannon = connected_cannon?.resolve()
 	if(!cannon)
@@ -82,6 +90,9 @@
 		return
 	cannon.system_state = BSA_SYSTEM_CHARGE_CAPACITORS
 
+/**
+ * Sets a target for the gun to use.
+ */
 /obj/machinery/computer/bsa_control/proc/calibrate(mob/user)
 	if(!GLOB.bsa_unlock)
 		return
@@ -100,6 +111,9 @@
 		return
 	target = options[victim]
 
+/**
+ * Returns the targets name, simple.
+ */
 /obj/machinery/computer/bsa_control/proc/get_target_name()
 	if(istype(target, /area))
 		return get_area_name(target, TRUE)
@@ -107,6 +121,9 @@
 		var/datum/component/gps/gps = target
 		return gps.gpstag
 
+/**
+ * Locates the impact turf based off of if it's an area or a GPS.
+ */
 /obj/machinery/computer/bsa_control/proc/get_impact_turf()
 	if(istype(target, /area))
 		return pick(get_area_turfs(target))
@@ -114,6 +131,9 @@
 		var/datum/component/gps/gps = target
 		return get_turf(gps.parent)
 
+/**
+ * Initiates the cannon fire protocol
+ */
 /obj/machinery/computer/bsa_control/proc/fire(mob/user)
 	var/obj/machinery/bsa/full/cannon = connected_cannon?.resolve()
 	if(!cannon)

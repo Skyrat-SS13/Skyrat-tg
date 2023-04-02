@@ -174,6 +174,10 @@
 	reload()
 	START_PROCESSING(SSobj, src)
 
+/obj/machinery/bsa/full/Destroy()
+	control_computer = null
+	return ..()
+
 /obj/machinery/bsa/full/wrench_act(mob/living/user, obj/item/I)
 	return FALSE
 
@@ -274,19 +278,25 @@
 	alert_sound_to_playing('modular_skyrat/modules/bsa_overhaul/sound/superlaser_prefire.ogg', override_volume = TRUE)
 	message_admins("[user] has started the fire cycle of [src]! Firing at: [ADMIN_VERBOSEJMP(bullseye)]")
 	set_light(5, 5, COLOR_BLUE_LIGHT)
-	addtimer(CALLBACK(src, .proc/fire, user, bullseye), 20 SECONDS, TIMER_CLIENT_TIME)
+	addtimer(CALLBACK(src, PROC_REF(fire), user, bullseye), 20 SECONDS, TIMER_CLIENT_TIME)
 
-
+/// Initiates the fire sequence of the gun providing it has the required power.
 /obj/machinery/bsa/full/proc/fire(mob/user, turf/bullseye)
+	// Check if the system is already firing or if the machine is broken
 	if(system_state != BSA_SYSTEM_PREFIRE || machine_stat)
 		minor_announce("BLUESPACE ARTILLERY FIRE FAILURE!", "BLUESPACE ARTILLERY", TRUE)
 		system_state = BSA_SYSTEM_READY
 		return
 	system_state = BSA_SYSTEM_FIRING
+	// We need to reload the chamber so it's ready to fire another one
 	reload()
+	// The turf directly in front of the gun.
 	var/turf/point = get_front_turf()
+	// the target turf
 	var/turf/target = get_target_turf()
+	// Anything that blocks the BSA beam, if it's blocked, it hits that thing
 	var/atom/movable/blocker
+	// Now we absolutely destroy everything in the beams path.
 	for(var/turf/iterating_turf in get_line(get_step(point, dir), target))
 		if(SEND_SIGNAL(iterating_turf, COMSIG_ATOM_BSA_BEAM) & COMSIG_ATOM_BLOCKS_BSA_BEAM)
 			blocker = iterating_turf
@@ -315,6 +325,7 @@
 		log_game("[key_name(user)] has launched an artillery strike targeting [AREACOORD(bullseye)] but it was blocked by [blocker] at [AREACOORD(target)].")
 		minor_announce("BLUESPACE ARTILLERY MALFUNCTION!", "BLUESPACE ARTILLERY", TRUE)
 
+/// Reloads the BSA.
 /obj/machinery/bsa/full/proc/reload()
 	system_state = BSA_SYSTEM_RELOADING
 	set_light(0)
