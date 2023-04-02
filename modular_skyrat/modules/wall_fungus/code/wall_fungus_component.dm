@@ -83,8 +83,6 @@
 	if(progression_stage < FUNGUS_STAGE_THREE)
 		return
 
-	to_chat(user, span_warning("The wall crumbles as you touch it!"))
-
 	collapse_parent_structure()
 
 
