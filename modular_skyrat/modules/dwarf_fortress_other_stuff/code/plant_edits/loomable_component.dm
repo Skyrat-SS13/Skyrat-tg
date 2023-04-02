@@ -5,8 +5,6 @@
 
 /datum/component/loomable/Initialize(loom_result)
 	. = ..()
-	if(!isitem(parent))
-		return COMPONENT_INCOMPATIBLE
 
 	src.loom_result = loom_result
 
@@ -16,10 +14,11 @@
 /datum/component/loomable/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_ITEM_ATTACK)
 
-/datum/component/loomable/proc/try_and_loom_me(datum/source, obj/structure/loom/target, mob/living/user)
+/datum/component/loomable/proc/try_and_loom_me(datum/source, atom/target, mob/living/user)
 	SIGNAL_HANDLER
 
-	if(!istype(target))
+	if(!istype(target, /obj/structure/loom))
+		message_admins("[parent] DIDNT LOOM BECAUSE WE APPARENTLY DIDNT HIT A LOOM, WE HIT A [target]")
 		return
 
 	INVOKE_ASYNC(src, PROC_REF(loom_me), user, target)
@@ -27,6 +26,7 @@
 
 /datum/component/loomable/proc/loom_me(mob/living/user, obj/structure/loom/target)
 	if(!do_after(user, 2 SECONDS, target))
+		message_admins("[parent] DIDNT LOOM BECAUSE THE DO AFTER STOPPED")
 		return
 
 	var/new_thing = new loom_result(target.drop_location())
