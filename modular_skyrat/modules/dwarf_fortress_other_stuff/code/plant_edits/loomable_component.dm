@@ -17,7 +17,6 @@
 	SIGNAL_HANDLER
 
 	if(!istype(target, /obj/structure/loom))
-		message_admins("[parent] DIDNT LOOM BECAUSE WE APPARENTLY DIDNT HIT A LOOM, WE HIT A [target]")
 		return
 
 	INVOKE_ASYNC(src, PROC_REF(loom_me), user, target)
@@ -25,12 +24,11 @@
 
 /datum/component/loomable/proc/loom_me(mob/living/user, obj/structure/loom/target)
 	if(!do_after(user, 2 SECONDS, target))
-		message_admins("[parent] DIDNT LOOM BECAUSE THE DO AFTER STOPPED")
 		return
 
 	var/new_thing = new loom_result(target.drop_location())
 	user.balloon_alert_to_viewers("spun [new_thing]")
-	if(!isstack(parent))
+	if(isstack(parent))
 		var/obj/item/stack/stack_we_use = parent
 		stack_we_use.use(1)
 	else
