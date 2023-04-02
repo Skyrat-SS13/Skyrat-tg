@@ -1,4 +1,4 @@
-/client/proc/unlock_bsa
+/client/proc/unlock_bsa()
 	set category = "Admin.Fun"
 	set name = "Toggle BSA Control"
 	set desc = "Toggles the BSA control lock on and off."
