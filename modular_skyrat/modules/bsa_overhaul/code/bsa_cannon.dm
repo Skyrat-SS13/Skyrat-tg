@@ -274,7 +274,7 @@
 	if(system_state != BSA_SYSTEM_READY)
 		return
 	system_state = BSA_SYSTEM_PREFIRE
-	priority_announce("BLUESPACE TARGETING PARAMETERS SET, PREIGNITION STARTING... FIRING IN T-20 SECONDS!", "BLUESPACE ARTILLERY", ANNOUNCER_BLUESPACEARTY)
+	priority_announce("BLUESPACE TARGETING PARAMETERS SET, PREIGNITION STARTING... CAPACITOR CHARGE AT [round(capacitor_power / 1000000, 0.1)] MW, FIRING IN T-20 SECONDS!", "BLUESPACE ARTILLERY", ANNOUNCER_BLUESPACEARTY)
 	alert_sound_to_playing('modular_skyrat/modules/bsa_overhaul/sound/superlaser_prefire.ogg', override_volume = TRUE)
 	message_admins("[user] has started the fire cycle of [src]! Firing at: [ADMIN_VERBOSEJMP(bullseye)]")
 	set_light(5, 5, COLOR_BLUE_LIGHT)
