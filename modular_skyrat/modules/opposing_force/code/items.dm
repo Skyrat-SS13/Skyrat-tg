@@ -203,12 +203,12 @@
 /obj/item/antag_granter/attack_self(mob/user, modifiers)
 	. = ..()
 	if(!isliving(user) || !user.mind)
-		return
+		return FALSE
 
 	to_chat(user, span_notice(user_message))
 	user.mind.add_antag_datum(antag_datum)
 	qdel(src)
-
+	return TRUE
 
 /obj/item/antag_granter/changeling
 	name = "viral injector"
@@ -224,3 +224,19 @@
 	icon_state = "heretic_granter"
 	antag_datum = /datum/antagonist/heretic
 	user_message = "As you open the book, you see a great flash as <span class='hypnophrase'>the world becomes all the clearer for you</span>."
+
+/obj/item/antag_granter/clock_cultist
+	name = "brass contraption"
+	desc = "A cogwheel-shaped device of brass, with a glass lens floating, suspended in the center."
+	icon = 'modular_skyrat/modules/clock_cult/icons/clockwork_objects.dmi'
+	icon_state = "vanguard_cogwheel"
+	antag_datum = /datum/antagonist/clock_cultist/solo
+	user_message = "A whirring fills your ears as <span class='brass'>knowledge of His Eminence fills your mind</span>."
+
+/obj/item/antag_granter/clock_cultist/attack_self(mob/user, modifiers)
+	. = ..()
+	if(!.)
+		return FALSE
+
+	var/obj/item/clockwork/clockwork_slab/slab = new
+	user.put_in_hands(slab, FALSE)
