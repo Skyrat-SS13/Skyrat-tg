@@ -33,3 +33,38 @@
 	material_type = /datum/material/dwarf_certified/rock
 
 	max_amount = 1
+
+	// What this boulder cuts into when a chisel or pickaxe is used on it
+	var/cut_type = /obj/item/stack/dwarf_certified/brick
+
+/obj/item/stack/dwarf_certified/rock/examine()
+	. = ..()
+	. += span_notice("With a <b>chisel</b> or even a <b>pickaxe</b> of some kind, you could cut this into <b>blocks</b>.")
+
+/obj/item/stack/dwarf_certified/rock/attackby(obj/item/attacking_item, mob/user, params)
+	if((attacking_item.tool_behaviour != TOOL_MINING) || !(istype(attacking_item, /obj/item/chisel)))
+		return ..()
+	playsound(src, 'sound/effects/picaxe1.ogg', 50, TRUE)
+	balloon_alert_to_viewers("cutting...")
+	if(!do_after(user, 2 SECONDS, target = src))
+		balloon_alert_to_viewers("stopped cutting")
+		return FALSE
+	new cut_type(get_turf(src), amount)
+	qdel(src)
+
+/obj/item/stack/dwarf_certified/brick
+	name = "generic brick"
+	singular_name = "generic brick"
+
+	desc = "Strange... Maybe you shouldn't be seeing this."
+
+	icon_state = "block"
+
+	inhand_icon_state = "barlike"
+
+	merge_type = /obj/item/stack/dwarf_certified/brick
+
+	mats_per_unit = list(/datum/material/dwarf_certified/rock = MINERAL_MATERIAL_AMOUNT)
+	material_type = /datum/material/dwarf_certified/rock
+
+	max_amount = 6 // Blocks are so much easier to store and move around, don't you know?

@@ -23,23 +23,6 @@
 	mats_per_unit = list(/datum/material/dwarf_certified/rock/crystal = MINERAL_MATERIAL_AMOUNT)
 	material_type = /datum/material/dwarf_certified/rock/crystal
 
-/obj/item/stack/dwarf_certified/cut_gem
-	name = "generic gemstone"
-	singular_name = "generic gemstone"
-
-	desc = "Strange... Maybe you shouldn't be seeing this."
-
-	icon_state = "crystal"
-
-	inhand_icon_state = "gemlike"
-
-	merge_type = /obj/item/stack/dwarf_certified/cut_gem
-
-	mats_per_unit = list(/datum/material/dwarf_certified/rock/crystal = MINERAL_MATERIAL_AMOUNT)
-	material_type = /datum/material/dwarf_certified/rock/crystal
-
-	max_amount = 3
-
 // Rock crystal, you know for making glass out of
 
 /datum/material/dwarf_certified/rock/crystal/rock_crystal
@@ -65,8 +48,6 @@
 	mats_per_unit = list(/datum/material/dwarf_certified/rock/crystal/rock_crystal = MINERAL_MATERIAL_AMOUNT)
 	material_type = /datum/material/dwarf_certified/rock/crystal/rock_crystal
 
-	cut_type = /obj/item/stack/dwarf_certified/cut_gem/rock_crystal
-
 /obj/item/stack/dwarf_certified/rock/crystal/rock_crystal/Initialize(mapload)
 	. = ..()
 
@@ -76,14 +57,3 @@
 	. = ..()
 
 	. += span_notice("You could probably <b>bake</b> this into glass.")
-
-/obj/item/stack/dwarf_certified/cut_gem/rock_crystal
-	name = "cut rock crystal"
-	singular_name = "cut rock crystal"
-
-	desc = "Despite everything, its still just quartz."
-
-	merge_type = /obj/item/stack/dwarf_certified/cut_gem/rock_crystal
-
-	mats_per_unit = list(/datum/material/dwarf_certified/rock/crystal/rock_crystal = MINERAL_MATERIAL_AMOUNT)
-	material_type = /datum/material/dwarf_certified/rock/crystal/rock_crystal
