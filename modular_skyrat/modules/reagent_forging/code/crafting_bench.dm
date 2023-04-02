@@ -325,7 +325,6 @@
 /// Takes the given list, things_to_use, compares it to recipe_to_follow's requirements, then either uses items from a stack, or deletes them otherwise. Returns custom material of forge items in the end.
 /obj/structure/reagent_crafting_bench/proc/use_or_delete_recipe_requirements(list/things_to_use, datum/crafting_bench_recipe/recipe_to_follow)
 	var/list/materials_to_transfer = list()
-	var/list/things_we_take_materials_from = typecacheof(swipe_materials_from)
 
 	for(var/obj/requirement_item as anything in things_to_use)
 		if(isstack(requirement_item))
