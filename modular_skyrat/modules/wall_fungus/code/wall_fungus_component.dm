@@ -123,7 +123,7 @@
 			examine_list += span_green("[parent_wall] is infected with some kind of fungus, its structure seriously weakened!")
 		if(FUNGUS_STAGE_THREE)
 			examine_list += span_green("[parent_wall] is infected with some kind of fungus, its falling apart!")
-	examine_list += span_notice("Perhaps you could <b>burn</b> it off?")
+	examine_list += span_green("Perhaps you could <b>burn</b> it off?")
 
 /datum/component/wall_fungus/proc/apply_fungus_overlay(atom/parent_atom, list/overlays)
 	SIGNAL_HANDLER
