@@ -152,7 +152,7 @@
 	icon = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_weapons.dmi'
 	lefthand_file = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/clock_cult/icons/weapons/clockwork_righthand.dmi'
-	icon_state = "bow_clockwork_0_0"
+	icon_state = "bow_clockwork_unchambered_undrawn"
 	inhand_icon_state = "clockwork_bow"
 	base_icon_state = "bow_clockwork"
 	force = 10
@@ -249,6 +249,7 @@
 	worn_icon_state = "clockwork_rifle"
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/lionhunter/clockwork
 	fire_sound = 'sound/weapons/gun/sniper/shot.ogg'
+	show_bolt_icon = FALSE
 
 
 /obj/item/gun/ballistic/rifle/lionhunter/clockwork/Initialize(mapload)

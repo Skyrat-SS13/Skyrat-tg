@@ -34,6 +34,7 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	icon = 'modular_skyrat/modules/clock_cult/icons/tools.dmi'
 	icon_state = "crowbar_brass"
+	worn_icon_state = "crowbar"
 	toolspeed = BRASS_TOOLSPEED_MOD
 
 /obj/item/wrench/brass
