@@ -135,7 +135,7 @@
 
 			user.balloon_alert(user, "burning off fungus...")
 
-			if(!item.use_tool(source, user, 2 SECONDS, 1))
+			if(!item.use_tool(source, user, (1 * progression_stage) SECONDS, 1, volume = 100))
 				return
 
 			user.balloon_alert(user, "burned off fungus")
