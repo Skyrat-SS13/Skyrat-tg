@@ -340,8 +340,13 @@
 			if(requirement_stack.amount < recipe_to_follow.recipe_requirements[stack_type])
 				recipe_to_follow.recipe_requirements[stack_type] -= requirement_stack.amount
 				requirement_stack.use(requirement_stack.amount)
+				for(var/short_stack_material as anything in requirement_item.custom_materials)
+					materials_to_transfer += short_stack_material
 				continue
 
+			for(var/short_stack_material as anything in requirement_item.custom_materials)
+				materials_to_transfer += short_stack_material // The math about to follow this sucks so much
+				materials_to_transfer[short_stack_material] = (recipe_to_follow.recipe_requirements[stack_type] * (materials_to_transfer[short_stack_material] / requirement_stack.amount))
 			requirement_stack.use(recipe_to_follow.recipe_requirements[stack_type])
 
 		else
