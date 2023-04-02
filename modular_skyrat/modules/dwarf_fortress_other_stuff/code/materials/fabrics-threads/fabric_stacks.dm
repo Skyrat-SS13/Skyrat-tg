@@ -66,26 +66,26 @@
 
 // CLOTH
 
-/obj/item/stack/dwarf_certified/thread/cloth
-	name = "spool of cloth thread"
-	singular_name = "cloth thread"
+/obj/item/stack/dwarf_certified/thread/cotton
+	name = "spool of cotton thread"
+	singular_name = "cotton thread"
 
 	desc = "Thread made of cloth."
 
-	merge_type = /obj/item/stack/dwarf_certified/thread/cloth
+	merge_type = /obj/item/stack/dwarf_certified/thread/cotton
 
-	mats_per_unit = list(/datum/material/dwarf_certified/fabric/cloth = MINERAL_MATERIAL_AMOUNT / 2)
-	material_type = /datum/material/dwarf_certified/fabric/cloth
+	mats_per_unit = list(/datum/material/dwarf_certified/fabric/cotton = MINERAL_MATERIAL_AMOUNT / 2)
+	material_type = /datum/material/dwarf_certified/fabric/cotton
 
-	fabric_we_weave = /obj/item/stack/dwarf_certified/fabric/cloth
+	fabric_we_weave = /obj/item/stack/dwarf_certified/fabric/cotton
 
-/obj/item/stack/dwarf_certified/fabric/cloth
-	name = "bolt of cloth fabric"
-	singular_name = "cloth fabric"
+/obj/item/stack/dwarf_certified/fabric/cotton
+	name = "bolt of cotton fabric"
+	singular_name = "cotton fabric"
 
 	desc = "Fabric made of cloth."
 
-	merge_type = /obj/item/stack/dwarf_certified/fabric/cloth
+	merge_type = /obj/item/stack/dwarf_certified/fabric/cotton
 
-	mats_per_unit = list(/datum/material/dwarf_certified/fabric/cloth = MINERAL_MATERIAL_AMOUNT)
-	material_type = /datum/material/dwarf_certified/fabric/cloth
+	mats_per_unit = list(/datum/material/dwarf_certified/fabric/cotton = MINERAL_MATERIAL_AMOUNT)
+	material_type = /datum/material/dwarf_certified/fabric/cotton

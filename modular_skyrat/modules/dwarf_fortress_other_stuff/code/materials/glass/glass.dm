@@ -139,7 +139,7 @@ GLOBAL_LIST_INIT(dwarf_glass_recipes, list(
 // THE WINDOW STRUCTURE ITSELF
 
 /obj/structure/window/material
-	icon = 'modular_skyrat/modules/dwarf_fortress_other_stuff/icons/material_wall.dmi'
+	icon = 'modular_skyrat/modules/aesthetics/walls/icons/material_wall.dmi'
 	icon_state = "wall"
 	glass_type = null
 

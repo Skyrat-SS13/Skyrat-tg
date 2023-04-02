@@ -16,7 +16,7 @@
 /datum/component/loomable/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_MOB_ITEM_AFTERATTACK)
 
-/datum/component/loomable/proc/try_and_loom_me(mob/living/user, /obj/structure/loom/target, obj/item/loomee, proximity_flag, click_parameters)
+/datum/component/loomable/proc/try_and_loom_me(mob/living/user, obj/structure/loom/target, obj/item/loomee, proximity_flag, click_parameters)
 	SIGNAL_HANDLER
 
 	if(!proximity_flag)
@@ -26,7 +26,7 @@
 
 	INVOKE_ASYNC(src, PROC_REF(loom_me), user, target)
 
-/datum/component/loomable/proc/loom_me(mob/living/user, /obj/structure/loom/target)
+/datum/component/loomable/proc/loom_me(mob/living/user, obj/structure/loom/target)
 	if(!do_after(user, 2 SECONDS, target))
 		return
 
