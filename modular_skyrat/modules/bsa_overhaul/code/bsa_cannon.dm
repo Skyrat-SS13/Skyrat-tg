@@ -146,7 +146,7 @@
 	/// The total collected power, this is calculated in the "power up" phase of the superweapon.
 	var/capacitor_power = 0
 	/// The cap on how much power we can suck from the powernet per cycle
-	var/power_suck_cap = 500000 // 500 KILOWATTS
+	var/power_suck_cap = 1000000 // 1 MEGAWATT
 	/// The set target power
 	var/target_power = 1000000
 	/// How much charge our capacitors can hold
@@ -342,7 +342,7 @@
 /obj/machinery/bsa/full/proc/create_calculated_explosion(atom/target)
 	var/calculated_explosion_power = capacitor_power / 10000000 // Maximum explosion range of 10, 20, 40
 
-	explosion(target, calculated_explosion_power, calculated_explosion_power * 2, calculated_explosion_power * 4)
+	explosion(target, calculated_explosion_power, calculated_explosion_power * 2, calculated_explosion_power * 4, ignorecap = TRUE) // This should ignore cap so we can achieve our maximum potential
 
 /obj/structure/filler
 	name = "big machinery part"
