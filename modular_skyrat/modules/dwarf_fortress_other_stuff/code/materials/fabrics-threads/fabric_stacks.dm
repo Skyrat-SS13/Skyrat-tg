@@ -18,7 +18,7 @@
 	max_amount = 6
 
 	/// Tells us what type of fabric we craft into
-	var/fabric_we_weave = /obj/item/stack/dwarf_certified/fabric
+	var/fabric_we_weave = /obj/item/stack/dwarf_certified/leather_or_cloth/fabric
 
 /obj/item/stack/dwarf_certified/thread/get_main_recipes()
 	. = ..()
