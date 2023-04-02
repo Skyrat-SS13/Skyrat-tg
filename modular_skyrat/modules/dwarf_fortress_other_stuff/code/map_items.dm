@@ -21,14 +21,3 @@
 
 	grill = TRUE
 	add_overlay("bonfire_grill")
-
-// Dirt but icebox
-
-/turf/open/misc/dirt/icemoon
-	baseturfs = /turf/open/openspace/icemoon
-	initial_gas_mix = "ICEMOON_ATMOS"
-
-// The area
-
-/area/ruin/unpowered/primitive_catgirl_den
-	name = "\improper Icewalker Camp"

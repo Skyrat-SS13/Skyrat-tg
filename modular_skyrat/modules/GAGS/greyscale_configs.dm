@@ -1198,29 +1198,6 @@ digi
 * Underclothes for the event
 */
 
-//Overalls
-
-/datum/greyscale_config/overalls
-	name = "Overalls + Shirt"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/overalls/overalls.json'
-
-/datum/greyscale_config/overalls/worn
-	name = "Overalls + Shirt (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/overalls/overalls_worn.json'
-
-/datum/greyscale_config/overalls/worn/newvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_new_vox.dmi'
-
-/datum/greyscale_config/overalls/worn/oldvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
-
-/datum/greyscale_config/overalls/worn/teshari
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
-
-/datum/greyscale_config/overalls/worn/digi
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_furry.dmi'
-
 //Normal ass pants
 
 /datum/greyscale_config/workpants
@@ -1287,295 +1264,82 @@ digi
 /datum/greyscale_config/skirt/worn/teshari
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
 
-//Robes
+// Arm Wrapz
 
-/datum/greyscale_config/royal_robes
-	name = "Robes"
+/datum/greyscale_config/armwraps
+	name = "Armwraps"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/robes/robes.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/armwraps.json'
 
-/datum/greyscale_config/royal_robes/worn
-	name = "Robes (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/robes/robes_worn.json'
+/datum/greyscale_config/armwraps/worn
+	name = "Armwraps (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/armwraps_worn.json'
 
-/datum/greyscale_config/royal_robes/worn/newvox
+/datum/greyscale_config/armwraps/worn/newvox
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_new_vox.dmi'
 
-/datum/greyscale_config/royal_robes/worn/oldvox
+/datum/greyscale_config/armwraps/worn/oldvox
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
 
-/datum/greyscale_config/royal_robes/worn/teshari
+/datum/greyscale_config/armwraps/worn/teshari
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
 
-/*
-* Headgear for el evento
-*/
+// Gauntlets
 
-//Helmet hardhat thing
-
-/datum/greyscale_config/hardhat
-	name = "Hardhat"
+/datum/greyscale_config/gauntlets
+	name = "Gauntlets"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/hardhat/hardhat.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gauntlets.json'
 
-/datum/greyscale_config/hardhat/worn
-	name = "Hardhat (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/hardhat/hardhat_worn.json'
+/datum/greyscale_config/gauntlets/worn
+	name = "Gauntlets (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gauntlets_worn.json'
 
-/datum/greyscale_config/hardhat/worn/newvox
+/datum/greyscale_config/gauntlets/worn/newvox
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_new_vox.dmi'
 
-/datum/greyscale_config/hardhat/worn/oldvox
+/datum/greyscale_config/gauntlets/worn/oldvox
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
 
-/datum/greyscale_config/hardhat/worn/teshari
+/datum/greyscale_config/gauntlets/worn/teshari
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
 
-//Hood
+// Helmet
 
-/datum/greyscale_config/lonehood
-	name = "Standalone Hood"
+/datum/greyscale_config/plate_helmet
+	name = "Plate Helmet"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/lonehood/lonehood.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/helmet/helmet.json'
 
-/datum/greyscale_config/lonehood/worn
-	name = "Standalone Hood (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/lonehood/lonehood_worn.json'
+/datum/greyscale_config/plate_helmet/worn
+	name = "Plate Helmet (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/helmet/helmet_worn.json'
 
-/datum/greyscale_config/lonehood/worn/newvox
+/datum/greyscale_config/plate_helmet/worn/newvox
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_new_vox.dmi'
 
-/datum/greyscale_config/lonehood/worn/oldvox
+/datum/greyscale_config/plate_helmet/worn/oldvox
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
 
-/datum/greyscale_config/lonehood/worn/teshari
+/datum/greyscale_config/plate_helmet/worn/teshari
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
 
-/*
-* Misc stuff for the event
-*/
+// Armor
 
-//Armored boots
-
-/datum/greyscale_config/armorboots
-	name = "Armored Leather Boots"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/armorboots/armorboots.json'
-
-/datum/greyscale_config/armorboots/worn
-	name = "Armored Leather Boots (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/armorboots/armorboots_worn.json'
-
-/datum/greyscale_config/armorboots/worn/newvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_new_vox.dmi'
-
-/datum/greyscale_config/armorboots/worn/oldvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
-
-/datum/greyscale_config/armorboots/worn/teshari
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
-
-/datum/greyscale_config/armorboots/worn/digi
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_furry.dmi'
-
-//Civilian shoes
-
-/datum/greyscale_config/civboots
-	name = "Leather Boots"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/civboots/civboots.json'
-
-/datum/greyscale_config/civboots/worn
-	name = "Leather Boots (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/civboots/civboots_worn.json'
-
-/datum/greyscale_config/civboots/worn/newvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_new_vox.dmi'
-
-/datum/greyscale_config/civboots/worn/oldvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
-
-/datum/greyscale_config/civboots/worn/teshari
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
-
-/datum/greyscale_config/civboots/worn/digi
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_furry.dmi'
-
-//Sandals
-
-/datum/greyscale_config/sandals
-	name = "Sandals"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/sandals/sandals.json'
-
-/datum/greyscale_config/sandals/worn
-	name = "Sandals (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/sandals/sandals_worn.json'
-
-/datum/greyscale_config/sandals/worn/newvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_new_vox.dmi'
-
-/datum/greyscale_config/sandals/worn/oldvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
-
-/datum/greyscale_config/sandals/worn/teshari
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
-
-/datum/greyscale_config/sandals/worn/digi
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_furry.dmi'
-
-//Gloves
-
-/datum/greyscale_config/holegloves
-	name = "Leather Gloves"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/holegloves/holegloves.json'
-
-/datum/greyscale_config/holegloves/worn
-	name = "Leather Gloves (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/holegloves/holegloves_worn.json'
-
-/datum/greyscale_config/holegloves/worn/newvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_new_vox.dmi'
-
-/datum/greyscale_config/holegloves/worn/oldvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
-
-/datum/greyscale_config/holegloves/worn/teshari
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
-
-//Gloves missing the fingers dlc
-
-/datum/greyscale_config/fingieless
-	name = "Fingerless Leather Gloves"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/fingieless/fingieless.json'
-
-/datum/greyscale_config/fingieless/worn
-	name = "Fingerless Leather Gloves (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/fingieless/fingieless_worn.json'
-
-/datum/greyscale_config/fingieless/worn/newvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_new_vox.dmi'
-
-/datum/greyscale_config/fingieless/worn/oldvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
-
-/datum/greyscale_config/fingieless/worn/teshari
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
-
-//Cloak
-
-/datum/greyscale_config/event_cloak
-	name = "Cloak"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/cloak/cloak.json'
-
-/datum/greyscale_config/event_cloak/worn
-	name = "Cloak (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/cloak/cloak_worn.json'
-
-/datum/greyscale_config/event_cloak/worn/newvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_new_vox.dmi'
-
-/datum/greyscale_config/event_cloak/worn/oldvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
-
-/datum/greyscale_config/event_cloak/worn/teshari
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
-
-//Apron
-
-/datum/greyscale_config/apron
-	name = "Apron"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/apron/apron.json'
-
-/datum/greyscale_config/apron/worn
-	name = "Apron (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/apron/apron_worn.json'
-
-/datum/greyscale_config/apron/worn/newvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_new_vox.dmi'
-
-/datum/greyscale_config/apron/worn/oldvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
-
-/datum/greyscale_config/apron/worn/teshari
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
-
-//Armor vest
-
-/datum/greyscale_config/armor_plate
-	name = "Armor Plate"
+/datum/greyscale_config/plate_vest
+	name = "Plate Vest"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/armor/armor.json'
 
-/datum/greyscale_config/armor_plate/worn
-	name = "Armor Plate (Worn)"
+/datum/greyscale_config/plate_vest/worn
+	name = "Plate Vest (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/armor/armor_worn.json'
 
-/datum/greyscale_config/armor_plate/worn/newvox
+/datum/greyscale_config/plate_vest/worn/newvox
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_new_vox.dmi'
 
-/datum/greyscale_config/armor_plate/worn/oldvox
+/datum/greyscale_config/plate_vest/worn/oldvox
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
 
-/datum/greyscale_config/armor_plate/worn/teshari
+/datum/greyscale_config/plate_vest/worn/teshari
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
-
-// Evil primitive catgirl clothing
-
-/datum/greyscale_config/primitive_catgirl_wraps
-	name = "Primitive Body Wraps"
-	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/body_wraps.json'
-
-/datum/greyscale_config/primitive_catgirl_wraps/worn
-	name = "Primitive Body Wraps (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/body_wraps_worn.json'
-
-/datum/greyscale_config/primitive_catgirl_armwraps
-	name = "Arm Wraps"
-	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/armwraps.json'
-
-/datum/greyscale_config/primitive_catgirl_armwraps/worn
-	name = "Arm Wraps (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/armwraps_worn.json'
-
-/datum/greyscale_config/primitive_catgirl_coat
-	name = "Primitive Fur Coat"
-	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/coat.json'
-
-/datum/greyscale_config/primitive_catgirl_coat/worn
-	name = "Primitive Fur Coat (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/coat_worn.json'
-
-/datum/greyscale_config/primitive_catgirl_boots
-	name = "Primitive Winter Boots"
-	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/boots.json'
-
-/datum/greyscale_config/primitive_catgirl_boots/worn
-	name = "Primitive Winter Boots (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/boots_worn.json'
-
-/datum/greyscale_config/primitive_catgirl_gaiter
-	name = "Neck Gaiter"
-	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gaiter.json'
-
-/datum/greyscale_config/primitive_catgirl_gaiter/worn
-	name = "Neck Gaiter (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gaiter_worn.json'
-
-/datum/greyscale_config/primitive_catgirl_gauntlets
-	name = "Gauntlets"
-	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gauntlets.json'
-
-/datum/greyscale_config/primitive_catgirl_gauntlets/worn
-	name = "Gauntlets (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gauntlets_worn.json'

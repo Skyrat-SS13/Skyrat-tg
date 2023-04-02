@@ -1,8 +1,3 @@
-GLOBAL_LIST_INIT(metal_clothing_colors, list("#c74900","#857994","#bec7d3",))
-GLOBAL_LIST_INIT(leather_clothing_colors, list("#553f3f","#4e331e","#363441","#645041","#6e423c","#533737",))
-GLOBAL_LIST_INIT(fabric_clothing_colors, list("#F1F1F1","#b9b9b9","#d4c7a3","#dac381","#e0d0af","#e9e2d6"))
-GLOBAL_LIST_INIT(science_robe_colors, list("#46313f","#382744","#443653",))
-
 /*
 * Underclothes
 */
@@ -13,26 +8,7 @@ GLOBAL_LIST_INIT(science_robe_colors, list("#46313f","#382744","#443653",))
 	worn_icon_teshari = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
 	can_adjust = FALSE
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-	greyscale_colors = "#F1F1F1#F1F1F1"
-
-// Overalls
-
-/obj/item/clothing/under/costume/buttondown/event_clothing/overalls
-	name = "leather overalls"
-	desc = "Leather overalls with a pretty normal looking shirt under it, you have no idea what any of this is actually made from."
-	icon_state = "overalls_buttondown"
-	greyscale_config = /datum/greyscale_config/overalls
-	greyscale_config_worn = /datum/greyscale_config/overalls/worn
-	greyscale_config_worn_better_vox = /datum/greyscale_config/overalls/worn/newvox
-	greyscale_config_worn_vox = /datum/greyscale_config/overalls/worn/oldvox
-	greyscale_config_worn_teshari = /datum/greyscale_config/overalls/worn/teshari
-	greyscale_config_worn_digi = /datum/greyscale_config/overalls/worn/digi
-
-/obj/item/clothing/under/costume/buttondown/event_clothing/overalls/Initialize(mapload)
-	. = ..()
-	if(prob(50))
-		icon_state = "overalls_longshirt"
-	set_greyscale("[pick(GLOB.fabric_clothing_colors)][pick(GLOB.leather_clothing_colors)]")
+	greyscale_colors = "#cec8bf#cec8bf"
 
 //Pants with a shirt
 
@@ -103,7 +79,7 @@ GLOBAL_LIST_INIT(science_robe_colors, list("#46313f","#382744","#443653",))
 */
 
 /obj/item/clothing/suit/toggle/jacket/sweater/cloth_colors
-	greyscale_colors = "#F1F1F1"
+	greyscale_colors = "#cec8bf"
 	flags_1 = NONE
 
 /obj/item/clothing/suit/toggle/jacket/sweater/cloth_colors/Initialize(mapload)
@@ -113,7 +89,7 @@ GLOBAL_LIST_INIT(science_robe_colors, list("#46313f","#382744","#443653",))
 /obj/item/clothing/suit/toggle/jacket/sweater/leather_colors
 	name = "leather travel jacket"
 	desc = "Say that name ten times fast."
-	greyscale_colors = "#F1F1F1"
+	greyscale_colors = "#cec8bf"
 	flags_1 = NONE
 
 /obj/item/clothing/suit/toggle/jacket/sweater/leather_colors/Initialize(mapload)
@@ -138,14 +114,18 @@ GLOBAL_LIST_INIT(science_robe_colors, list("#46313f","#382744","#443653",))
 	worn_icon_vox = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
 	worn_icon_teshari = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
 
-/obj/item/storage/belt/sabre/cargo/security_actually
-	name = "leather sheath"
-	desc = "A fairly standard looking guard's sabre sheath, its a bit dusty from the trip here."
+// Armwraps
 
-/obj/item/storage/belt/sabre/cargo/security_actually/PopulateContents()
-	new /obj/item/melee/sabre/cargo/security_actually(src)
-	update_appearance()
-
-/obj/item/melee/sabre/cargo/security_actually
-	name = "guard's sabre"
-	desc = "An expertly crafted sabre issued to caravan guards, the fact you're still here means it must've worked!"
+/obj/item/clothing/gloves/fingerless/df_armwraps
+	name = "arm wraps"
+	desc = "Simple cloth to wrap around one's arms."
+	icon_state = "armwraps"
+	icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
+	worn_icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
+	greyscale_config = /datum/greyscale_config/armwraps
+	greyscale_config_worn = /datum/greyscale_config/armwraps/worn
+	greyscale_config_worn_better_vox = /datum/greyscale_config/armwraps/worn/newvox
+	greyscale_config_worn_vox = /datum/greyscale_config/armwraps/worn/oldvox
+	greyscale_config_worn_teshari = /datum/greyscale_config/armwraps/worn/teshari
+	greyscale_colors = "#cec8bf"
+	flags_1 = IS_PLAYER_COLORABLE_1
