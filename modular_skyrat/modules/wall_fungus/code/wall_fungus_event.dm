@@ -7,7 +7,7 @@
 	earliest_start = 20 MINUTES
 
 /datum/round_event/wall_fungus/announce(fake)
-	priority_announce("Harmful fungi has been detected on the station, deal with it before it becomes a problem!", "Harmful Fungi", ANNOUNCER_OUTBREAK6)
+	priority_announce("Harmful fungi has been detected on the station, deal with it before it becomes a problem!", "Harmful Fungi", ANNOUNCER_FUNGI)
 
 /datum/round_event/wall_fungus
 	announce_when = 60 // 2 minutes
