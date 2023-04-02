@@ -30,10 +30,10 @@
 	throw_range = 3
 	attack_verb_continuous = list("pomfs")
 	attack_verb_simple = list("pomf")
-	var/cotton_type = /obj/item/stack/sheet/cotton
-	var/cotton_name = "raw cotton"
+	//var/cotton_type = /obj/item/stack/sheet/cotton /// DWARF FORTRESS EDIT ALL THE COMMENTED OUT BITS HERE
+	//var/cotton_name = "raw cotton"
 
-/obj/item/grown/cotton/attack_self(mob/user)
+/* /obj/item/grown/cotton/attack_self(mob/user)
 	user.show_message(span_notice("You pull some [cotton_name] out of the [name]!"), MSG_VISUAL)
 	var/seed_modifier = 0
 	if(seed)
@@ -53,7 +53,7 @@
 
 	if(cotton.amount > old_cotton_amount)
 		to_chat(user, span_notice("You add the newly-formed [cotton_name] to the stack. It now contains [cotton.amount] [cotton_name]."))
-	qdel(src)
+	qdel(src) */
 
 //reinforced mutated variant
 /obj/item/seeds/cotton/durathread
@@ -87,5 +87,5 @@
 	throw_range = 3
 	attack_verb_continuous = list("bashes", "batters", "bludgeons", "whacks")
 	attack_verb_simple = list("bash", "batter", "bludgeon", "whack")
-	cotton_type = /obj/item/stack/sheet/cotton/durathread
-	cotton_name = "raw durathread"
+	//cotton_type = /obj/item/stack/sheet/cotton/durathread
+	//cotton_name = "raw durathread"

@@ -21,17 +21,17 @@
 
 	AddElement(/datum/element/contextual_screentip_item_typechecks, hovering_item_typechecks)
 
-/obj/structure/loom/attackby(obj/item/I, mob/user)
+/* /obj/structure/loom/attackby(obj/item/I, mob/user)
 	if(weave(I, user))
 		return
-	return ..()
+	return ..() */
 
 /obj/structure/loom/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
 	default_unfasten_wrench(user, tool, time = 0.5 SECONDS)
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
-///Handles the weaving.
+/* ///Handles the weaving.
 /obj/structure/loom/proc/weave(obj/item/stack/sheet/cotton/W, mob/user)
 	if(!istype(W))
 		return FALSE
@@ -45,6 +45,6 @@
 	while(W.use_tool(src, user, W.pull_effort) && W.use(FABRIC_PER_SHEET))
 		new W.loom_result(drop_location())
 		user.show_message(span_notice("You weave \the [W.name] into a workable fabric."), MSG_VISUAL)
-	return TRUE
+	return TRUE */
 
 #undef FABRIC_PER_SHEET

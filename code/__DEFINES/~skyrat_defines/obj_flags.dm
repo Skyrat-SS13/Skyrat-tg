@@ -8,3 +8,6 @@
 
 /// Whether something is repairable by the anvil
 #define ANVIL_REPAIR (1<<0)
+
+/// IF THE THING CAN BE USED IN A LOOM (FOR DWARF FORTRESS)
+#define LOOMABLE (1<<1)

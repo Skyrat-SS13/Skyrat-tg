@@ -34,6 +34,8 @@
 		transform *= TRANSFORM_USING_VARIABLE(seed.potency, 100) + 0.5
 		add_juice()
 
+	set_up_looming() // DWARF FORTRESS ADDITION
+
 /obj/item/grown/Destroy()
 	if(isatom(seed))
 		QDEL_NULL(seed)
