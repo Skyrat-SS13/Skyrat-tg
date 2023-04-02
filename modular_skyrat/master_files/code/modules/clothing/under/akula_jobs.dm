@@ -70,6 +70,10 @@
 
 /// Checks if the wearer has a compatible tail for the `tail_overlay` variable
 /obj/item/clothing/under/akula_wetsuit/proc/check_tail_overlay(mob/living/carbon/human/user)
+	if(!user.dna.species.mutant_bodyparts["tail"])
+		tail_overlay = null
+		return
+
 	var/tail = user.dna.species.mutant_bodyparts["tail"][MUTANT_INDEX_NAME]
 	// to-do: write this better
 	switch(tail)
