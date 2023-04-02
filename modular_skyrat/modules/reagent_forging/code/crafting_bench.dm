@@ -347,16 +347,13 @@
 
 			requirement_stack.use(recipe_to_follow.recipe_requirements[stack_type])
 
-		else if((istype(requirement_item, /obj/item/forging/complete)) || (is_type_in_typecache(requirement_item, things_we_take_materials_from)))
+		empulse
 			if(!requirement_item.custom_materials || !recipe_to_follow.transfers_materials)
 				qdel(requirement_item)
 				continue
 
 			for(var/custom_material as anything in requirement_item.custom_materials)
 				materials_to_transfer += custom_material
-			qdel(requirement_item)
-
-		else
 			qdel(requirement_item)
 
 	return materials_to_transfer
