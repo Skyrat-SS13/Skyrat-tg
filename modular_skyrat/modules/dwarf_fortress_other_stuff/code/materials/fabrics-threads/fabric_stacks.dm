@@ -84,31 +84,31 @@
 	mats_per_unit = list(/datum/material/dwarf_certified/fabric/cotton = MINERAL_MATERIAL_AMOUNT)
 	material_type = /datum/material/dwarf_certified/fabric/cotton
 
-// HEMP
+// FLAX
 
-/obj/item/stack/dwarf_certified/thread/hemp
-	name = "spool of hemp thread"
-	singular_name = "hemp thread"
+/obj/item/stack/dwarf_certified/thread/flax
+	name = "spool of flax thread"
+	singular_name = "flax thread"
 
-	desc = "Thread made of hemp."
+	desc = "Thread made of flax."
 
-	merge_type = /obj/item/stack/dwarf_certified/thread/hemp
+	merge_type = /obj/item/stack/dwarf_certified/thread/flax
 
-	mats_per_unit = list(/datum/material/dwarf_certified/fabric/hemp = MINERAL_MATERIAL_AMOUNT / 2)
-	material_type = /datum/material/dwarf_certified/fabric/hemp
+	mats_per_unit = list(/datum/material/dwarf_certified/fabric/flax = MINERAL_MATERIAL_AMOUNT / 2)
+	material_type = /datum/material/dwarf_certified/fabric/flax
 
-	fabric_we_weave = /obj/item/stack/dwarf_certified/leather_or_cloth/fabric/hemp
+	fabric_we_weave = /obj/item/stack/dwarf_certified/leather_or_cloth/fabric/flax
 
-/obj/item/stack/dwarf_certified/leather_or_cloth/fabric/hemp
-	name = "bolt of hemp fabric"
-	singular_name = "hemp fabric"
+/obj/item/stack/dwarf_certified/leather_or_cloth/fabric/flax
+	name = "bolt of flax fabric"
+	singular_name = "flax fabric"
 
-	desc = "Fabric made of hemp."
+	desc = "Fabric made of flax."
 
-	merge_type = /obj/item/stack/dwarf_certified/leather_or_cloth/fabric/hemp
+	merge_type = /obj/item/stack/dwarf_certified/leather_or_cloth/fabric/flax
 
-	mats_per_unit = list(/datum/material/dwarf_certified/fabric/hemp = MINERAL_MATERIAL_AMOUNT)
-	material_type = /datum/material/dwarf_certified/fabric/hemp
+	mats_per_unit = list(/datum/material/dwarf_certified/fabric/flax = MINERAL_MATERIAL_AMOUNT)
+	material_type = /datum/material/dwarf_certified/fabric/flax
 
 // REED FIBER
 

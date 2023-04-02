@@ -34,9 +34,9 @@
 	// wood is 0.1, diamond is 0.3, iron is 0, glass is 0.05
 	beauty_modifier = 0.1
 
-/datum/material/dwarf_certified/fabric/hemp
-	name = "hemp"
-	desc = "Woven from hemp, because what else would you do with that plant, right?"
+/datum/material/dwarf_certified/fabric/flax
+	name = "flax"
+	desc = "Woven from flax, don't bother eating the seeds they don't do anything for you anyways."
 
 	color = "#d4ebd5"
 	greyscale_colors = "#d4ebd5"
