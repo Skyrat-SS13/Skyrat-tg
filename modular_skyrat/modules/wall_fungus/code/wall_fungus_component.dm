@@ -28,6 +28,9 @@
 	var/drop_chance = 30
 
 /datum/component/wall_fungus/Initialize(override_progression_step_amount, override_spread_chance, override_spread_distance, override_drop_chance)
+	if(!iswallturf(parent))
+		return COMPONENT_INCOMPATIBLE
+
 	// This stuff enables badminery.
 	if(override_progression_step_amount)
 		progression_step_amount = override_progression_step_amount
@@ -37,9 +40,6 @@
 		spread_distance = override_spread_distance
 	if(override_drop_chance)
 		drop_chance = override_drop_chance
-
-	if(!iswallturf(parent))
-		return COMPONENT_INCOMPATIBLE
 
 	parent_wall = parent
 
