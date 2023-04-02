@@ -38,7 +38,7 @@
 	target.dna.update_body_size()
 
 	for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS))
-		var/obj/item/organ/external/genital/gent = target.getorganslot(organ_key)
+		var/obj/item/organ/external/genital/gent = target.get_organ_slot(organ_key)
 		if(gent)
 			gent.aroused = prefs.arousal_preview
 			gent.update_sprite_suffix()
