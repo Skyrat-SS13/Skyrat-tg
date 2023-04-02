@@ -222,48 +222,9 @@
 	return
 
 /obj/structure/chair/milking_machine/is_buckle_possible(mob/living/target, force, check_loc)
-	// Make sure target is mob/living
-	if(!istype(target))
-		return FALSE
+	. = ..()
 
-	// No bucking you to yourself.
-	if(target == src)
-		return FALSE
-
-	// Check if the target to buckle isn't INSIDE OF A WALL
-	if(!isopenturf(loc) || !isopenturf(target.loc))
-		return FALSE
-
-	// Check if this atom can have things buckled to it.
-	if(!can_buckle && !force)
-		return FALSE
-
-	// If we're checking the loc, make sure the target is on the thing we're bucking them to.
-	if(check_loc && !target.Adjacent(src))
-		return FALSE
-
-	// Make sure the target isn't already buckled to something.
-	if(target.buckled)
-		return FALSE
-
-	// Make sure this atom can still have more things buckled to it.
-	if(LAZYLEN(buckled_mobs) >= max_buckled_mobs)
-		return FALSE
-
-	// Stacking buckling leads to lots of jank and issues, better to just nix it entirely
-	if(target.has_buckled_mobs())
-		return FALSE
-
-	// If the buckle requires restraints, make sure the target is actually restrained.
-	if(buckle_requires_restraints && !HAS_TRAIT(target, TRAIT_RESTRAINED))
-		return FALSE
-
-	//If buckling is forbidden for the target, cancel
-	if(!target.can_buckle_to && !force)
-		return FALSE
-
-	//If buckling is not human, cancel. fuck you
-	if(!ishuman(target))
+	if(!. || !ishuman(target))
 		return FALSE
 
 	return TRUE
@@ -309,29 +270,18 @@
 	return TRUE
 
 /obj/structure/chair/milking_machine/user_unbuckle_mob(mob/living/carbon/human/affected_mob, mob/user)
-	if(affected_mob)
-		if(affected_mob == user)
-			// Have difficulty unbuckling if overly aroused
-			if(affected_mob.arousal >= 60)
-				if((current_mode != MILKING_PUMP_MODE_OFF) && (current_mode != MILKING_PUMP_MODE_LOW))
-					to_chat(affected_mob, span_purple("You are too horny to try to get out!"))
-					return
-				else
-					affected_mob.visible_message(span_notice("[affected_mob] unbuckles [affected_mob.p_them()]self from [src]."),\
-						span_notice("You unbuckle yourself from [src]."),\
-						span_hear("You hear metal clanking."))
-					unbuckle_mob(affected_mob)
-					return
-			else
-				affected_mob.visible_message(span_notice("[affected_mob] unbuckles [affected_mob.p_them()]self from [src]."),\
-					span_notice("You unbuckle yourself from [src]."),\
-					span_hear("You hear metal clanking."))
-				unbuckle_mob(affected_mob)
-				return
-	else
-		. = ..()
-		return
+	if(!affected_mob || affected_mob != user)
+		return ..()
 
+	if(affected_mob.arousal >= 60 && (current_mode != MILKING_PUMP_MODE_OFF) && (current_mode != MILKING_PUMP_MODE_LOW))
+		to_chat(affected_mob, span_purple("You are too horny to try to get out!"))
+		return FALSE
+
+	affected_mob.visible_message(span_notice("[affected_mob] unbuckles [affected_mob.p_them()]self from [src]."),\
+		span_notice("You unbuckle yourself from [src]."),\
+		span_hear("You hear metal clanking."))
+	unbuckle_mob(affected_mob)
+	return TRUE
 
 /*
 *	MAIN LOGIC
@@ -339,124 +289,100 @@
 
 // Empty Hand Attack Handler
 /obj/structure/chair/milking_machine/attack_hand(mob/user)
-	// Block the ability to open the interface of the machine if we are attached to it
-	if(LAZYLEN(buckled_mobs))
-		if(user == buckled_mobs[1])
-			user_unbuckle_mob(user, user)
-			return
-	// Standard processing, open the machine interface
-	. = ..()
-	if(.)
-		return
-	return
+	if(!LAZYLEN(buckled_mobs) || !(user in buckled_mobs))
+		return ..()
+
+	user_unbuckle_mob(user, user)
+	return FALSE
 
 // Attack handler for various item
 /obj/structure/chair/milking_machine/attackby(obj/item/used_item, mob/user)
-	// Beaker attack check
-	if(istype(used_item, /obj/item/reagent_containers) && !(used_item.item_flags & ABSTRACT) && used_item.is_open_container())
-		. = TRUE // No afterattack
-		var/obj/item/reagent_containers/used_container = used_item
-		. = TRUE // No afterattack
-		if(!user.transferItemToLoc(used_container, src))
-			return
-		replace_beaker(user, used_container)
-		updateUsrDialog()
-		return
+	if(!istype(used_item, /obj/item/reagent_containers) || (used_item.item_flags & ABSTRACT) || !used_item.is_open_container())
+		return ..()
 
-	if(wrench_act(user, used_item))
-		return
-	return ..()
+	var/obj/item/reagent_containers/used_container = used_item
+	if(!user.transferItemToLoc(used_container, src))
+		return FALSE
+
+	replace_beaker(user, used_container)
+	updateUsrDialog()
+	return TRUE
 
 // Beaker change handler
 /obj/structure/chair/milking_machine/proc/replace_beaker(mob/living/user, obj/item/reagent_containers/new_beaker)
-	if(!user)
+	if(!user || (!beaker && !new_beaker))
 		return FALSE
+
 	if(beaker)
 		try_put_in_hand(beaker, user)
 		beaker = null
 		to_chat(user, span_notice("You take the beaker out of [src]"))
+
 	if(new_beaker)
 		beaker = new_beaker
 		to_chat(user, span_notice("You put the beaker in [src]"))
+
 	return TRUE
 
 // We will try to take the item in our hand, if it doesn’t work, then drop it into the car tile
 /obj/structure/chair/milking_machine/proc/try_put_in_hand(obj/object, mob/living/user)
-	if(!issilicon(user) && in_range(src, user))
-		user.put_in_hands(object)
-	else
+	if(issilicon(user) || !in_range(src, user))
 		object.forceMove(drop_location())
+		return FALSE
+
+	user.put_in_hands(object)
+	return TRUE
 
 // Machine Workflow Processor
 /obj/structure/chair/milking_machine/process(delta_time)
-	// Check if the machine should work
-	if(!current_mob)
-		update_all_visuals()
-		return // Doesn't work without a mob
-	if(current_selected_organ == null || current_mode == MILKING_PUMP_MODE_OFF)
-		update_all_visuals()
-		return // Does not work if an organ is not connected OR the machine is not switched to On
-	if(istype(current_selected_organ, /obj/item/organ/external/genital/breasts))
-		if(milk_vessel.reagents.total_volume == max_vessel_capacity)
-			current_mode = MILKING_PUMP_MODE_OFF
-			pump_state = MILKING_PUMP_STATE_OFF
-			update_all_visuals()
-			return
-	if(istype(current_selected_organ, /obj/item/organ/external/genital/vagina))
-		if(girlcum_vessel.reagents.total_volume == max_vessel_capacity)
-			current_mode = MILKING_PUMP_MODE_OFF
-			pump_state = MILKING_PUMP_STATE_OFF
-			update_all_visuals()
-			return
-	if(istype(current_selected_organ, /obj/item/organ/external/genital/testicles))
-		if(semen_vessel.reagents.total_volume == max_vessel_capacity)
-			current_mode = MILKING_PUMP_MODE_OFF
-			pump_state = MILKING_PUMP_STATE_OFF
-			update_all_visuals()
-			return
-	if(current_mode == MILKING_PUMP_MODE_OFF)
-		pump_state = MILKING_PUMP_STATE_OFF
-		update_all_visuals()
-		return
-	// The machine can work
+	if(!current_mob || !current_selected_organ || current_mode == MILKING_PUMP_MODE_OFF)
+		if(pump_state != MILKING_PUMP_STATE_OFF)
+			pump_state == MILKING_PUMP_STATE_OFF
 
-	if(current_mode != MILKING_PUMP_MODE_OFF)
+		update_all_visuals()
+		return FALSE
+
+	if((istype(current_selected_organ, /obj/item/organ/external/genital/testicles) && (semen_vessel.reagents.total_volume == max_vessel_capacity)) || (istype(current_selected_organ, /obj/item/organ/external/genital/vagina) && (girlcum_vessel.reagents.total_volume == max_vessel_capacity)) || (istype(current_selected_organ, /obj/item/organ/external/genital/breasts) && (milk_vessel.reagents.total_volume == max_vessel_capacity)))
+			current_mode = MILKING_PUMP_MODE_OFF
+			pump_state = MILKING_PUMP_STATE_OFF
+			update_all_visuals()
+			return FALSE
+
+	if(pump_state != MILKING_PUMP_STATE_ON)
 		pump_state = MILKING_PUMP_STATE_ON
-		retrive_liquids_from_selected_organ(delta_time)
-		increase_current_mob_arousal(delta_time)
-	else
-		current_mode = MILKING_PUMP_MODE_OFF
-		pump_state = MILKING_PUMP_STATE_OFF
+
+	retrive_liquids_from_selected_organ(delta_time)
+	increase_current_mob_arousal(delta_time)
 	update_all_visuals()
+	return TRUE
 
 // Liquid intake handler
 /obj/structure/chair/milking_machine/proc/retrive_liquids_from_selected_organ(delta_time)
-	// Climax check
+	if(!current_mob || current_selected_organ)
+		return FALSE
+
 	var/fluid_multiplier = 1
 	var/static/list/fluid_retrive_amount = list("off" = 0, "low" = 1, "medium" = 2, "hard" = 3)
 
-	if(current_mob != null)
-		if(current_mob.has_status_effect(/datum/status_effect/climax))
-			fluid_multiplier = CLIMAX_RETRIVE_MULTIPLIER
+	if(current_mob.has_status_effect(/datum/status_effect/climax))
+		fluid_multiplier = CLIMAX_RETRIVE_MULTIPLIER
 
-	if(istype(current_selected_organ, /obj/item/organ/external/genital/breasts))
-		if(current_selected_organ.reagents.total_volume > 0)
-			current_selected_organ.transfer_internal_fluid(milk_vessel.reagents, fluid_retrive_amount[current_mode] * fluid_multiplier * delta_time)
-		else
-			return
-	else if (istype(current_selected_organ, /obj/item/organ/external/genital/vagina))
-		if(current_selected_organ.reagents.total_volume > 0)
-			current_selected_organ.transfer_internal_fluid(girlcum_vessel.reagents, fluid_retrive_amount[current_mode] * fluid_multiplier * delta_time)
-		else
-			return
-	else if (istype(current_selected_organ, /obj/item/organ/external/genital/testicles))
-		if(current_selected_organ.reagents.total_volume > 0)
-			current_selected_organ.transfer_internal_fluid(semen_vessel.reagents, fluid_retrive_amount[current_mode] * fluid_multiplier * delta_time)
-		else
-			return
-	else
-		// A place for a handler for missing genitals
-		return
+	var/obj/item/reagent_containers/target_container
+
+	switch(current_selected_organ.type)
+		if(/obj/item/organ/external/genital/breasts)
+			target_container = milk_vessel
+		if(/obj/item/organ/external/genital/vagina)
+			target_container = girlcum_vessel
+		if(/obj/item/organ/external/genital/testicles)
+			target_container = semen_vessel
+
+	if(!target_container || current_selected_organ.reagents.total_volume <= 0)
+		return FALSE
+
+	current_selected_organ.transfer_internal_fluid(target_container.reagents, fluid_retrive_amount[current_mode] * fluid_multiplier * delta_time)
+	return TRUE
+
 
 // Handling the process of the impact of the machine on the organs of the mob
 /obj/structure/chair/milking_machine/proc/increase_current_mob_arousal(delta_time)
@@ -469,27 +395,22 @@
 	current_mob.adjust_pain(pain_amounts[current_mode] * delta_time)
 
 // Drag and drop mob buckle handler into the machine
+/* Handle this later.
 /obj/structure/chair/milking_machine/MouseDrop(over_object, src_location, over_location)
 	. = ..()
-	if(.)
-		if(istype(src, /mob/living/) && istype(over_object, /obj/structure/chair/milking_machine))
-			var/mob/living/affected_mob = src
-			var/obj/structure/chair/milking_machine/milking_machine = over_object
-			if(affected_mob.getorganslot(ORGAN_SLOT_TESTICLES))
-				milking_machine.current_testicles = affected_mob.getorganslot(ORGAN_SLOT_TESTICLES)
-			if(affected_mob.getorganslot(ORGAN_SLOT_VAGINA))
-				milking_machine.current_vagina = affected_mob.getorganslot(ORGAN_SLOT_VAGINA)
-			if(affected_mob.getorganslot(ORGAN_SLOT_BREASTS))
-				milking_machine.current_breasts = affected_mob.getorganslot(ORGAN_SLOT_BREASTS)
-			else
-				// A place for the handler when the mob doesn't have the genitals it needs
-				return
-		else
-			// A place to handle the case when a non-living mob was dragged
-			return
-	else
-		// The mob for some reason did not get buckled, we do nothing
-		return
+	if(!istype(src, /mob/living/))
+		return FALSE
+
+	var/mob/living/affected_mob = src
+	var/obj/structure/chair/milking_machine/milking_machine = over_object
+	if(affected_mob.getorganslot(ORGAN_SLOT_TESTICLES))
+		milking_machine.current_testicles = affected_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+	if(affected_mob.getorganslot(ORGAN_SLOT_VAGINA))
+		milking_machine.current_vagina = affected_mob.getorganslot(ORGAN_SLOT_VAGINA)
+	if(affected_mob.getorganslot(ORGAN_SLOT_BREASTS))
+		milking_machine.current_breasts = affected_mob.getorganslot(ORGAN_SLOT_BREASTS)
+
+*/
 
 /obj/structure/chair/milking_machine/CtrlShiftClick(mob/user)
 	. = ..()
@@ -536,7 +457,6 @@
 
 // General handler for calling redrawing of the current state of the machine
 /obj/structure/chair/milking_machine/proc/update_all_visuals()
-
 	if(current_selected_organ != null)
 		cut_overlay(organ_overlay)
 		organ_overlay_new_icon_state = null
