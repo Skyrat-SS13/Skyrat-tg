@@ -132,7 +132,7 @@
 	name = "Bluespace Artillery"
 	desc = "Long range bluespace artillery."
 	icon = 'icons/obj/lavaland/cannon.dmi'
-	icon_state = "orbital_cannon1"
+	icon_state = "cannon_west"
 	use_power = NO_POWER_USE // We use power when we're fired.
 	pixel_y = -32
 	pixel_x = -192
