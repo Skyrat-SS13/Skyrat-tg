@@ -29,4 +29,4 @@
 
 	picked_wall.AddComponent(/datum/component/wall_fungus)
 
-	announce_to_ghosts(picked_wall)
+	notify_ghosts("[picked_wall] has been infested with wall eating mushrooms!!", source = picked_wall, action = NOTIFY_JUMP, header = "Fungus Amongus!")
