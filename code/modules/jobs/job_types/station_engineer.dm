@@ -51,7 +51,6 @@
 	shoes = /obj/item/clothing/shoes/workboots
 	l_pocket = /obj/item/modular_computer/pda/engineering
 	r_pocket = /obj/item/t_scanner
-	r_hand = /obj/item/storage/box/gunset/roundstart_guns/engineering // SKYRAT EDIT ADD
 
 	backpack = /obj/item/storage/backpack/industrial
 	satchel = /obj/item/storage/backpack/satchel/eng

@@ -365,6 +365,18 @@ suffix = "whiteshipruin_box.dmm"*/
 	name = "Alternate Sciences Research Center"
 	description = "When you're messing with the occult, who knows what you're going to get?"
 
+/datum/map_template/ruin/space/anomaly_research
+	id = "anomaly_research"
+	suffix = "anomaly_research.dmm"
+	name = "Anomaly Research"
+	description = "A secret research lab embedded in arctic rock, belonging to a Dr Anna Molly. What could she have been researching?"
+
+/datum/map_template/ruin/space/meateor
+	id = "meateor"
+	suffix = "meateor.dmm"
+	name = "Meateor"
+	description = "A big chunk of meat floating in space. How did it get there?"
+
 /datum/map_template/ruin/space/the_faceoff
 	id = "the_faceoff"
 	suffix = "the_faceoff.dmm"

@@ -44,7 +44,6 @@
 	l_pocket = /obj/item/laser_pointer/red
 	r_pocket = /obj/item/clothing/accessory/lawyers_badge
 	l_hand = /obj/item/storage/briefcase/lawyer
-	r_hand = /obj/item/storage/box/gunset/roundstart_guns/sec // SKYRAT EDIT ADD
 
 	chameleon_extras = /obj/item/stamp/law
 

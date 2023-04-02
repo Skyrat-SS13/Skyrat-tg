@@ -76,7 +76,9 @@
 		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_HUMANOID | MOB_ORGANIC
-	mutant_bodyparts = list("wings" = "None")
+	default_mutant_bodyparts = list(
+		"legs" = "Normal Legs"
+	)
 	exotic_bloodtype = "U"
 	use_skintones = TRUE
 	mutantheart = /obj/item/organ/internal/heart/hemophage
