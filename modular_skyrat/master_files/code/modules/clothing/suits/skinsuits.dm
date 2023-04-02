@@ -10,8 +10,6 @@
 	armor_type = /datum/armor/wetsuit_under
 	cold_protection = CHEST | GROIN | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT_OFF
-	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
-	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
 	resistance_flags = NONE
 
 /obj/item/clothing/under/skinsuit/equipped(mob/user, slot)
@@ -54,12 +52,12 @@
 	. = ..()
 	if(slot != ITEM_SLOT_ICLOTHING)
 		return
-	check_tail()
+	check_tail(user)
 	update_appearance()
 
 /obj/item/clothing/suit/armor/riot/skinsuit_armor/dropped(mob/user)
 	. = ..()
-	check_tail()
+	check_tail(user)
 	update_appearance()
 
 // Pick an icon_state that matches nicer with tails if one is found on the wearer
