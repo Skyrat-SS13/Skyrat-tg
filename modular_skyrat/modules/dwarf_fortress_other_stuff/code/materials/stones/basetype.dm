@@ -1,7 +1,7 @@
 GLOBAL_LIST_INIT(dwarf_brick_recipes, list(
 	new /datum/stack_recipe( \
 	"brick wall", \
-	/obj/structure/window/fulltile/material, \
+	/turf/closed/wall/mineral/stone/material, \
 	req_amount = 1, \
 	res_amount = 1, \
 	time = 3 SECONDS, \
