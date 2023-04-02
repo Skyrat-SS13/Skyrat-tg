@@ -337,16 +337,16 @@
 /obj/structure/chair/milking_machine/process(delta_time)
 	if(!current_mob || !current_selected_organ || current_mode == MILKING_PUMP_MODE_OFF)
 		if(pump_state != MILKING_PUMP_STATE_OFF)
-			pump_state == MILKING_PUMP_STATE_OFF
+			pump_state = MILKING_PUMP_STATE_OFF
 
 		update_all_visuals()
 		return FALSE
 
 	if((istype(current_selected_organ, /obj/item/organ/external/genital/testicles) && (semen_vessel.reagents.total_volume == max_vessel_capacity)) || (istype(current_selected_organ, /obj/item/organ/external/genital/vagina) && (girlcum_vessel.reagents.total_volume == max_vessel_capacity)) || (istype(current_selected_organ, /obj/item/organ/external/genital/breasts) && (milk_vessel.reagents.total_volume == max_vessel_capacity)))
-			current_mode = MILKING_PUMP_MODE_OFF
-			pump_state = MILKING_PUMP_STATE_OFF
-			update_all_visuals()
-			return FALSE
+		current_mode = MILKING_PUMP_MODE_OFF
+		pump_state = MILKING_PUMP_STATE_OFF
+		update_all_visuals()
+		return FALSE
 
 	if(pump_state != MILKING_PUMP_STATE_ON)
 		pump_state = MILKING_PUMP_STATE_ON
