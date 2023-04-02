@@ -51,15 +51,13 @@
 
 /datum/component/wall_fungus/Destroy(force, silent)
 	STOP_PROCESSING(SSobj, src)
+	UnregisterSignal(parent, COMSIG_ATOM_SECONDARY_TOOL_ACT(TOOL_WELDER), COMSIG_PARENT_EXAMINE, COMSIG_ATOM_UPDATE_OVERLAYS)
 	parent_wall?.update_icon(UPDATE_OVERLAYS)
 	return ..()
 
 /datum/component/wall_fungus/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ATOM_SECONDARY_TOOL_ACT(TOOL_WELDER), PROC_REF(secondary_tool_act))
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(examine))
-
-/datum/component/wall_fungus/UnregisterFromParent()
-	UnregisterSignal(parent, COMSIG_ATOM_SECONDARY_TOOL_ACT(TOOL_WELDER), COMSIG_PARENT_EXAMINE, COMSIG_ATOM_UPDATE_OVERLAYS)
 
 /datum/component/wall_fungus/process(delta_time)
 	if(prob(spread_chance * delta_time))
@@ -131,6 +129,7 @@
 
 			if(!item.use_tool(source, user, 5 SECONDS))
 				return
+
 			user.balloon_alert(user, "burned off fungus")
 			if(prob(drop_chance))
 				new /obj/item/food/grown/mushroom/wall(parent_wall)

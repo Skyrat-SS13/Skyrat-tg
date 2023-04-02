@@ -30,10 +30,12 @@
 	icon_state = "wallmushroom"
 	wine_power = 60
 
-/obj/item/food/grown/mushroom/wall/attack_atom(atom/attacked_atom, mob/living/user, params)
-	if(!iswallturf(attacked_atom))
+
+
+/obj/item/food/grown/mushroom/wall/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	if(!iswallturf(target))
 		return ..()
-	var/turf/closed/wall/target_wall = attacked_atom
+	var/turf/closed/wall/target_wall = target
 	if(target_wall.GetComponent(/datum/component/wall_fungus))
 		target_wall.balloon_alert(user, "already infested!")
 		return ..()
