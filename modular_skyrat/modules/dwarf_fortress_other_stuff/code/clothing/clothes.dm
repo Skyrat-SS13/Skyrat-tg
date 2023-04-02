@@ -17,7 +17,7 @@
 /obj/item/clothing/under/costume/buttondown/event_clothing/workpants
 	name = "pants with shirt"
 	desc = "Worn looking leather pants with a pretty comfortable shirt on top, where the leather for these pants came from is as of now unknown."
-	icon_state = "pants_buttondown"
+	icon_state = "pants_worn"
 	greyscale_config = /datum/greyscale_config/workpants
 	greyscale_config_worn = /datum/greyscale_config/workpants/worn
 	greyscale_config_worn_better_vox = /datum/greyscale_config/workpants/worn/newvox
@@ -25,12 +25,17 @@
 	greyscale_config_worn_teshari = /datum/greyscale_config/workpants/worn/teshari
 	greyscale_config_worn_digi = /datum/greyscale_config/workpants/worn/digi
 
+/obj/item/clothing/under/costume/buttondown/event_clothing/workpants/Initialize(mapload)
+	. = ..()
+
+	icon_state = pick("pants_buttondown", "pants_longshirt")
+
 //High waist pants with a shirt
 
 /obj/item/clothing/under/costume/buttondown/event_clothing/longpants
 	name = "high waist pants with shirt"
 	desc = "Leather pants with an exceptionally high waist for working around water, or for geeks, you choose."
-	icon_state = "longpants_buttondown"
+	icon_state = "longpants_worn"
 	greyscale_config = /datum/greyscale_config/longpants
 	greyscale_config_worn = /datum/greyscale_config/longpants/worn
 	greyscale_config_worn_better_vox = /datum/greyscale_config/longpants/worn/newvox
@@ -38,16 +43,26 @@
 	greyscale_config_worn_teshari = /datum/greyscale_config/longpants/worn/teshari
 	greyscale_config_worn_digi = /datum/greyscale_config/longpants/worn/digi
 
+/obj/item/clothing/under/costume/buttondown/event_clothing/longpants/Initialize(mapload)
+	. = ..()
+
+	icon_state = pick("longpants_buttondown", "longpants_longshirt")
+
 /obj/item/clothing/under/costume/buttondown/event_clothing/skirt
 	name = "skirt with shirt"
 	desc = "A plain skirt (or kilt if you feel like it) with a fairly comfortable shirt on top."
-	icon_state = "skirt_buttondown"
+	icon_state = "skirt_worn"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	greyscale_config = /datum/greyscale_config/skirt
 	greyscale_config_worn = /datum/greyscale_config/skirt/worn
 	greyscale_config_worn_better_vox = /datum/greyscale_config/skirt/worn/newvox
 	greyscale_config_worn_vox = /datum/greyscale_config/skirt/worn/oldvox
 	greyscale_config_worn_teshari = /datum/greyscale_config/skirt/worn/teshari
+
+/obj/item/clothing/under/costume/buttondown/event_clothing/skirt/Initialize(mapload)
+	. = ..()
+
+	icon_state = pick("skirt_buttondown", "skirt_longshirt")
 
 //Robes
 /obj/item/clothing/under/costume/skyrat/bathrobe/event
