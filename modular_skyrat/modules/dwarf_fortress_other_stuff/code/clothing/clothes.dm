@@ -15,7 +15,7 @@
 //Pants with a shirt
 
 /obj/item/clothing/under/costume/buttondown/event_clothing/workpants
-	name = "leather pants"
+	name = "pants with shirt"
 	desc = "Worn looking leather pants with a pretty comfortable shirt on top, where the leather for these pants came from is as of now unknown."
 	icon_state = "pants_buttondown"
 	greyscale_config = /datum/greyscale_config/workpants
@@ -28,7 +28,7 @@
 //High waist pants with a shirt
 
 /obj/item/clothing/under/costume/buttondown/event_clothing/longpants
-	name = "high waist leather pants"
+	name = "high waist pants with shirt"
 	desc = "Leather pants with an exceptionally high waist for working around water, or for geeks, you choose."
 	icon_state = "longpants_buttondown"
 	greyscale_config = /datum/greyscale_config/longpants
@@ -39,7 +39,7 @@
 	greyscale_config_worn_digi = /datum/greyscale_config/longpants/worn/digi
 
 /obj/item/clothing/under/costume/buttondown/event_clothing/skirt
-	name = "long skirt"
+	name = "skirt with shirt"
 	desc = "A plain skirt (or kilt if you feel like it) with a fairly comfortable shirt on top."
 	icon_state = "skirt_buttondown"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON

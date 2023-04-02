@@ -1,8 +1,8 @@
 // BASE TYPES
 
 /obj/item/stack/dwarf_certified/thread
-	name = "generic special event threads"
-	singular_name = "generic special event thread"
+	name = "generic threads"
+	singular_name = "generic thread"
 
 	desc = "Strange... Maybe you shouldn't be seeing this."
 
@@ -42,8 +42,8 @@
 	. += span_notice("If you had <b>2</b> of [src], you could turn it into fabric.")
 
 /obj/item/stack/dwarf_certified/fabric
-	name = "generic special event bolt of fabric"
-	singular_name = "generic special event fabric"
+	name = "generic bolt of fabric"
+	singular_name = "generic fabric"
 
 	desc = "Strange... Maybe you shouldn't be seeing this."
 

@@ -19,6 +19,10 @@
 	var/current_hits_to_completion = 0
 	/// Is this bench able to complete forging items? Exists to allow non-forging workbenches to exist
 	var/finishes_forging_weapons = TRUE
+	/// What type of tool you need to work with this bench
+	var/required_tool = /obj/item/forging/hammer
+	/// What sound the above mentioned tool makes when interacting with the bench
+	var/working_sound = 'modular_skyrat/modules/reagent_forging/sound/forge.ogg'
 	/// The cooldown from the last hit before we allow another 'good hit' to happen
 	COOLDOWN_DECLARE(hit_cooldown)
 	/// What recipes are we allowed to choose from?
@@ -67,6 +71,8 @@
 /obj/structure/reagent_crafting_bench/examine(mob/user)
 	. = ..()
 
+	. += span_notice("To do any work with [src], you'll need to find yourself a <b>[initial(required_tool.name)]</b>.")
+
 	if(length(contents))
 		if(istype(contents[1], /obj/item/forging/complete))
 			var/obj/item/forging/complete/contained_forge_item = contents[1]
@@ -81,7 +87,7 @@
 
 	var/obj/resulting_item = selected_recipe.resulting_item
 	. += span_notice("The selected recipe's resulting item is: <b>[initial(resulting_item.name)]</b> <br>")
-	. += span_notice("Gather the required materials, listed below, <b>near the bench</b>, then start <b>hammering</b> to complete it! <br>")
+	. += span_notice("Gather the required materials, listed below, <b>near the bench</b>, then use a <b>[initial(required_tool.name)]</b> to complete it! <br>")
 
 	if(!length(selected_recipe.recipe_requirements))
 		. += span_boldwarning("Somehow, this recipe has no requirements, report this as this shouldn't happen.")
@@ -151,6 +157,10 @@
 		update_appearance()
 		return TRUE
 
+	if(istype(attacking_item, required_tool))
+		handle_tool_usage(user, attacking_item)
+		return TRUE
+
 	return ..()
 
 /obj/structure/reagent_crafting_bench/wrench_act(mob/living/user, obj/item/tool)
@@ -158,7 +168,7 @@
 	deconstruct(disassembled = TRUE)
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
-/obj/structure/reagent_crafting_bench/hammer_act(mob/living/user, obj/item/tool)
+/obj/structure/reagent_crafting_bench/handle_tool_usage(mob/living/user, obj/item/tool)
 	playsound(src, 'modular_skyrat/modules/reagent_forging/sound/forge.ogg', 50, TRUE)
 	if(length(contents))
 		if(!istype(contents[1], /obj/item/forging/complete))
@@ -200,6 +210,8 @@
 
 	var/skill_modifier = user.mind.get_skill_modifier(selected_recipe.relevant_skill, SKILL_SPEED_MODIFIER) * 1 SECONDS
 
+	playsound(src, working_sound, 50, TRUE, ignore_walls = FALSE)
+
 	if(!COOLDOWN_FINISHED(src, hit_cooldown)) // If you hit it before the cooldown is done, you get a bad hit, setting you back three good hits
 		current_hits_to_completion -= BAD_HIT_PENALTY
 
@@ -208,7 +220,7 @@
 			clear_recipe()
 			return TOOL_ACT_TOOLTYPE_SUCCESS
 
-		balloon_alert(user, "bad hit")
+		balloon_alert(user, "too fast")
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
 	COOLDOWN_START(src, hit_cooldown, skill_modifier)
@@ -220,7 +232,7 @@
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
 	current_hits_to_completion++
-	balloon_alert(user, "good hit")
+	balloon_alert(user, "good timing")
 	user.mind.adjust_experience(selected_recipe.relevant_skill, selected_recipe.relevant_skill_reward / 15) // Good hits towards the current item grants experience in that skill
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
