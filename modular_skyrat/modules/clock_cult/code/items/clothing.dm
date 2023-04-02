@@ -155,7 +155,7 @@
 	invis_override = null
 	flash_protect = FLASH_PROTECTION_SENSITIVE
 	vision_flags = SEE_MOBS
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+	color_cutoffs = list(5, 15, 5)
 	glass_colour_type = /datum/client_colour/glass_colour/yellow
 	actions_types = list(/datum/action/item_action/toggle/clock)
 	clock_desc = "Applies passive eye damage that regenerates after unequipping, grants thermal vision, and lets you see all forms of invisibility."
@@ -197,25 +197,27 @@
 /// "enable" the spectacles, flipping them down and applying their effects, calling on_toggle_eyes() if someone is wearing them
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/proc/enable()
 	enabled = TRUE
-	lighting_alpha = initial(lighting_alpha)
+	color_cutoffs = list(15, 12, 0)
 	visor_toggling()
 
 	if(wearer)
 		on_toggle_eyes()
 
 	update_icon_state()
+	wearer.update_sight()
 
 
 /// "disable" the spectacles, flipping them up and removing all applied effects
 /obj/item/clothing/glasses/clockwork/wraith_spectacles/proc/disable()
 	enabled = FALSE
-	lighting_alpha = 0
+	color_cutoffs = null
 	visor_toggling() //this doesn't remove everything, check later
 
 	if(wearer)
 		de_toggle_eyes()
 
 	update_icon_state()
+	wearer.update_sight()
 
 
 /// The start of application of the actual effects, including eye damage
@@ -328,9 +330,8 @@
 	ADD_TRAIT(wearer, TRAIT_MADNESS_IMMUNE, CLOTHING_TRAIT)
 	ADD_TRAIT(wearer, TRAIT_KNOW_ENGI_WIRES, CLOTHING_TRAIT)
 	ADD_TRAIT(wearer, TRAIT_KNOW_CYBORG_WIRES, CLOTHING_TRAIT)
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-	darkness_view = 8
-
+	color_cutoffs = list(50, 10, 30)
+	wearer.update_sight()
 
 /// Removes the effects to the wearer, removing the flash protection and similar
 /obj/item/clothing/glasses/clockwork/judicial_visor/proc/unapply_to_wearer()
@@ -347,8 +348,8 @@
 	REMOVE_TRAIT(wearer, TRAIT_MADNESS_IMMUNE, CLOTHING_TRAIT)
 	REMOVE_TRAIT(wearer, TRAIT_KNOW_ENGI_WIRES, CLOTHING_TRAIT)
 	REMOVE_TRAIT(wearer, TRAIT_KNOW_CYBORG_WIRES, CLOTHING_TRAIT)
-	lighting_alpha = initial(lighting_alpha)
-	darkness_view = initial(darkness_view)
+	color_cutoffs = null
+	wearer.update_sight()
 
 
 /obj/item/clothing/glasses/clockwork/judicial_visor/equipped(mob/living/user, slot)
