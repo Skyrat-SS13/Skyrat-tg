@@ -149,6 +149,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/spawn_pollution,				/*SKYRAT EDIT ADDITION*/
 	/client/proc/spawn_sunbeam,					/*SKYRAT EDIT ADDITION*/
 	/client/proc/intensity_credits_panel,		/*SKYRAT EDIT ADDITION*/
+	/client/proc/toggle_bsa,					/*SKYRAT EDIT ADDITION*/
 	))
 GLOBAL_PROTECT(admin_verbs_fun)
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(/datum/admins/proc/spawn_atom, /datum/admins/proc/podspawn_atom, /datum/admins/proc/spawn_cargo, /datum/admins/proc/spawn_objasmob, /client/proc/respawn_character, /datum/admins/proc/beaker_panel))

@@ -41,7 +41,7 @@ GLOBAL_LIST_INIT(purchasable_nifsofts, list(
 
 	var/mob/living/carbon/human/nif_user = user
 	if(nif_user)
-		var/obj/item/organ/internal/cyberimp/brain/nif/user_nif = nif_user.getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
+		var/obj/item/organ/internal/cyberimp/brain/nif/user_nif = nif_user.get_organ_by_type(/obj/item/organ/internal/cyberimp/brain/nif)
 		target_nif = user_nif || null
 
 	data["target_nif"] = target_nif

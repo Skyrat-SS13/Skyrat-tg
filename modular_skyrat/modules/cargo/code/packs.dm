@@ -28,6 +28,20 @@
 	for(var/i in 1 to 5)
 		new /mob/living/basic/mouse(.)
 
+/datum/supply_pack/critter/chinchilla
+	name = "Chinchilla Crate"
+	desc = "Contains four chinchillas. Dust not included."
+	cost = CARGO_CRATE_VALUE * 7
+	contains = list(
+		/mob/living/basic/pet/chinchilla,
+	)
+	crate_name = "chinchilla crate"
+
+/datum/supply_pack/critter/chinchilla/generate()
+	. = ..()
+	for(var/i in 1 to 3)
+		new /mob/living/basic/pet/chinchilla(.)
+
 /*
 *	MEDICAL
 */

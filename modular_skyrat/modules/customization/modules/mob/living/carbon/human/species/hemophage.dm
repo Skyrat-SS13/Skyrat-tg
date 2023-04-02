@@ -76,7 +76,9 @@
 		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_HUMANOID | MOB_ORGANIC
-	mutant_bodyparts = list("wings" = "None")
+	default_mutant_bodyparts = list(
+		"legs" = "Normal Legs"
+	)
 	exotic_bloodtype = "U"
 	use_skintones = TRUE
 	mutantheart = /obj/item/organ/internal/heart/hemophage
@@ -120,7 +122,7 @@
 	if(tumor_status == PULSATING_TUMOR_MISSING)
 		var/static/list/tumor_reliant_organ_slots = list(ORGAN_SLOT_LIVER, ORGAN_SLOT_STOMACH)
 		for(var/organ_slot in tumor_reliant_organ_slots)
-			var/obj/item/organ/affected_organ = hemophage.getorganslot(organ_slot)
+			var/obj/item/organ/affected_organ = hemophage.get_organ_slot(organ_slot)
 			if(!affected_organ || !(affected_organ.organ_flags & ORGAN_TUMOR_CORRUPTED))
 				continue
 
@@ -616,7 +618,7 @@
 // We need to override it here because we changed their vampire heart with an Hemophage heart
 /mob/living/carbon/get_status_tab_items()
 	. = ..()
-	var/obj/item/organ/internal/heart/hemophage/tumor_heart = getorgan(/obj/item/organ/internal/heart/hemophage)
+	var/obj/item/organ/internal/heart/hemophage/tumor_heart = get_organ_by_type(/obj/item/organ/internal/heart/hemophage)
 	if(tumor_heart)
 		. += "Current blood level: [blood_volume]/[BLOOD_VOLUME_MAXIMUM]"
 
@@ -689,7 +691,7 @@
 	if(!linked_alert)
 		return
 
-	var/obj/item/organ/internal/heart/hemophage/tumor_heart = owner.getorgan(/obj/item/organ/internal/heart/hemophage)
+	var/obj/item/organ/internal/heart/hemophage/tumor_heart = owner.get_organ_by_type(/obj/item/organ/internal/heart/hemophage)
 	if(tumor_heart)
 		var/old_layer = tumor_heart.layer
 		var/old_plane = tumor_heart.plane
