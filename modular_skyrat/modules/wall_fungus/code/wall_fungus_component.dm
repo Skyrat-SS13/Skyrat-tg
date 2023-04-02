@@ -23,8 +23,6 @@
 	var/spread_chance = 1
 	/// How far can we spread?
 	var/spread_distance = 3 // Tiles
-	/// A reference to our parent wall.
-	var/turf/closed/wall/parent_wall
 	/// How likely are we to drop a shroom upon destruction?
 	var/drop_chance = 30
 
@@ -42,7 +40,7 @@
 	if(override_drop_chance)
 		drop_chance = override_drop_chance
 
-	parent_wall = parent
+	var/turf/closed/wall/parent_wall = parent
 
 	RegisterSignal(parent, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(apply_fungus_overlay)) // We need to do this here so that the wall shows the infection immediately.
 
@@ -51,9 +49,10 @@
 	START_PROCESSING(SSobj, src)
 
 /datum/component/wall_fungus/Destroy(force, silent)
+	var/turf/closed/wall/parent_wall = parent
 	STOP_PROCESSING(SSobj, src)
-	UnregisterSignal(parent, COMSIG_ATOM_SECONDARY_TOOL_ACT(TOOL_WELDER), COMSIG_PARENT_EXAMINE, COMSIG_ATOM_UPDATE_OVERLAYS)
-	parent_wall?.update_icon(UPDATE_OVERLAYS)
+	UnregisterSignal(parent, list(COMSIG_ATOM_SECONDARY_TOOL_ACT(TOOL_WELDER), COMSIG_PARENT_EXAMINE, COMSIG_ATOM_UPDATE_OVERLAYS))
+	parent_wall.update_icon(UPDATE_OVERLAYS)
 	return ..()
 
 /datum/component/wall_fungus/RegisterWithParent()
@@ -61,6 +60,7 @@
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(examine))
 
 /datum/component/wall_fungus/process(delta_time)
+	var/turf/closed/wall/parent_wall = parent
 	if(prob(spread_chance * delta_time))
 		spread_to_nearby_wall()
 
@@ -78,6 +78,7 @@
 
 /// We kill the wall once we have progressed far enough.
 /datum/component/wall_fungus/proc/collapse_parent_structure()
+	var/turf/closed/wall/parent_wall = parent
 	STOP_PROCESSING(SSobj, src)
 	parent_wall.dismantle_wall()
 	// When we're deleted, we null this, so that we don't try to interact with a deleted wall.
@@ -85,6 +86,7 @@
 	qdel(src)
 
 /datum/component/wall_fungus/proc/spread_to_nearby_wall()
+	var/turf/closed/wall/parent_wall = parent
 	var/list/walls_to_pick_from = list()
 	for(var/turf/closed/wall/iterating_wall in RANGE_TURFS(3, parent_wall))
 		if(iterating_wall.GetComponent(/datum/component/wall_fungus))
@@ -102,6 +104,7 @@
 /// Gives people an idea of how badly the wall is infected.
 /datum/component/wall_fungus/proc/examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
+	var/turf/closed/wall/parent_wall = parent
 	switch(progression_stage)
 		if(FUNGUS_STAGE_ONE)
 			examine_list += span_green("[parent_wall] is infected with some kind of fungus!")
@@ -111,11 +114,11 @@
 			examine_list += span_green("[parent_wall] is infected with some kind of fungus, its structure seriously weakened!")
 		if(FUNGUS_STAGE_THREE)
 			examine_list += span_green("[parent_wall] is infected with some kind of fungus, its falling apart!")
-	examine_list += "Perhaps you could <b>burn</b> it off?"
+	examine_list += span_notice("Perhaps you could <b>burn</b> it off?")
 
 /datum/component/wall_fungus/proc/apply_fungus_overlay(atom/parent_atom, list/overlays)
 	SIGNAL_HANDLER
-	overlays += image(overlay_icon_file, "fungus_stage_[progression_stage]")
+	overlays +=  mutable_appearance(overlay_icon_file, "fungus_stage_[progression_stage]")
 
 /datum/component/wall_fungus/proc/secondary_tool_act(atom/source, mob/user, obj/item/item)
 	SIGNAL_HANDLER
@@ -124,6 +127,7 @@
 
 /// Handles removal of the fungus from a wall.
 /datum/component/wall_fungus/proc/handle_tool_use(atom/source, mob/user, obj/item/item)
+	var/turf/closed/wall/parent_wall = parent
 	switch(item.tool_behaviour)
 		if(TOOL_WELDER)
 			if(!item.tool_start_check(user, 1))
