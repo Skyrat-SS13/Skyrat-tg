@@ -38,10 +38,11 @@
 			var/green = GETGREENPART(bulb_colour)
 			var/blue = GETBLUEPART(bulb_colour)
 
-			red -= round((red * NIGHTSHIFT_COLOR_MODIFIER) / 2)
-			green -= round(green * NIGHTSHIFT_COLOR_MODIFIER)
+			red += round(red * NIGHTSHIFT_COLOR_MODIFIER)
+			green -= round(green * NIGHTSHIFT_COLOR_MODIFIER * 0.3)
 			red = clamp(red, 0, 255) // clamp to be safe, or you can end up with an invalid hex value
 			green = clamp(green, 0, 255)
+			blue = clamp(blue, 0, 255)
 			new_color = "#[num2hex(red, 2)][num2hex(green, 2)][num2hex(blue, 2)]"  // Splice the numbers together and turn them back to hex.
 
 	var/matching = light && new_brightness == light.light_range && new_power == light.light_power && new_color == light.light_color
