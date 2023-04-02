@@ -864,21 +864,25 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Oldblood commander's suit"
 	item_path = /obj/item/clothing/under/rank/azulean/old_blood
 	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
+	restricted_species = list("Akula")
 
 /datum/loadout_item/under/formal/azulea_oldblood/skirt
 	name = "Oldblood commander's skirt"
 	item_path = /obj/item/clothing/under/rank/azulean/old_blood/skirt
 	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
+	restricted_species = list("Akula")
 
 /datum/loadout_item/under/formal/azulea_upstart
 	name = "Upstart commander's suit"
 	item_path = /obj/item/clothing/under/rank/azulean/upstart
 	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
+	restricted_species = list("Akula")
 
 /datum/loadout_item/under/formal/azulea_upstart/skirt
 	name = "Upstart commander's skirt"
 	item_path = /obj/item/clothing/under/rank/azulean/upstart/skirt
 	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
+	restricted_species = list("Akula")
 
 /// DONATOR
 /datum/loadout_item/under/donator

@@ -549,11 +549,13 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Oldblood Cap"
 	item_path = /obj/item/clothing/head/hats/caphat/azulean/old_blood
 	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
+	restricted_species = list("Akula")
 
 /datum/loadout_item/head/azulea_upstart
 	name = "Upstart Cap"
 	item_path = /obj/item/clothing/head/hats/caphat/azulean/upstart
 	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
+	restricted_species = list("Akula")
 
 /*
 *	JOB BERETS
