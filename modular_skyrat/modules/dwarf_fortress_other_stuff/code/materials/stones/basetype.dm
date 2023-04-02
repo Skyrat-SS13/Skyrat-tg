@@ -42,7 +42,7 @@
 	. += span_notice("With a <b>chisel</b> or even a <b>pickaxe</b> of some kind, you could cut this into <b>blocks</b>.")
 
 /obj/item/stack/dwarf_certified/rock/attackby(obj/item/attacking_item, mob/user, params)
-	if((attacking_item.tool_behaviour != TOOL_MINING) || !(istype(attacking_item, /obj/item/chisel)))
+	if((attacking_item.tool_behaviour != TOOL_MINING) && !(istype(attacking_item, /obj/item/chisel)))
 		return ..()
 	playsound(src, 'sound/effects/picaxe1.ogg', 50, TRUE)
 	balloon_alert_to_viewers("cutting...")
