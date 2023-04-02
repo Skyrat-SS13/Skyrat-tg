@@ -297,7 +297,7 @@
 	// Anything that blocks the BSA beam, if it's blocked, it hits that thing
 	var/atom/movable/blocker
 	// Now we absolutely destroy everything in the beams path.
-	for(var/turf/iterating_turf in get_line(get_step(point, dir), target))
+	for(var/turf/iterating_turf as anything in get_line(get_step(point, dir), target))
 		if(SEND_SIGNAL(iterating_turf, COMSIG_ATOM_BSA_BEAM) & COMSIG_ATOM_BLOCKS_BSA_BEAM)
 			blocker = iterating_turf
 		else

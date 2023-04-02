@@ -15,7 +15,7 @@
 	/// The current system status of the gun
 	var/notice
 	/// Our target... WHY NOT WEEKREFF
-	var/target
+	var/atom/target
 	/// Are we allowing the gun to target areas?
 	var/area_aim = FALSE //should also show areas for targeting
 
