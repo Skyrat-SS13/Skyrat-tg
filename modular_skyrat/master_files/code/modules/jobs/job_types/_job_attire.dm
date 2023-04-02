@@ -95,6 +95,7 @@
 /datum/job/warden
 	akula_outfit = /datum/outfit/akula/security_officer
 
+// Im not certain if having these matter
 /datum/job/syndicate_cybersun_captain
 	akula_outfit = /datum/outfit/akula
 
