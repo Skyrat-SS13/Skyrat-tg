@@ -1,6 +1,5 @@
 /// COMPONENT THAT MAKES THINGS HAPPEN  WHEN YOU CLICK ON A LOOM WITH THE PARENT
 /datum/component/loomable
-	/// The blacklist of areas that the parent will be penalized for entering
 	var/loom_result = /obj/item
 
 /datum/component/loomable/Initialize(loom_result)
@@ -9,10 +8,10 @@
 	src.loom_result = loom_result
 
 /datum/component/loomable/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_ITEM_ATTACK, PROC_REF(try_and_loom_me))
+	RegisterSignal(parent, COMSIG_ITEM_ATTACK_OBJ, PROC_REF(try_and_loom_me))
 
 /datum/component/loomable/UnregisterFromParent()
-	UnregisterSignal(parent, COMSIG_ITEM_ATTACK)
+	UnregisterSignal(parent, COMSIG_ITEM_ATTACK_OBJ)
 
 /datum/component/loomable/proc/try_and_loom_me(datum/source, atom/target, mob/living/user)
 	SIGNAL_HANDLER
