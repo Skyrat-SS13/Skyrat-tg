@@ -1,5 +1,8 @@
-// Kneecapping lights.
 /obj/machinery/light
-	bulb_colour = "#ffe6cd"
-	bulb_power = 0.5
+	brightness = 5.5
+	bulb_colour = LIGHT_COLOR_FAINT_BLUE
+	bulb_power = 1.12
 	nightshift_light_color = null // Let the dynamic night shift color code handle this.
+
+/atom
+	light_power = 1.25

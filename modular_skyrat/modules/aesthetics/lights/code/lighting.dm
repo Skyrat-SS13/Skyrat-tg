@@ -1,6 +1,6 @@
 /// Dynamically calculate nightshift brightness. How TG does it is painful to modify.
 #define NIGHTSHIFT_LIGHT_MODIFIER 0.15
-#define NIGHTSHIFT_COLOR_MODIFIER 0.25
+#define NIGHTSHIFT_COLOR_MODIFIER 0.10
 
 /obj/machinery/light
 	icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting.dmi'
@@ -38,9 +38,8 @@
 			var/green = GETGREENPART(bulb_colour)
 			var/blue = GETBLUEPART(bulb_colour)
 
-			green -= round((green * NIGHTSHIFT_COLOR_MODIFIER) / 2) // Divide by two otherwise it'll go red rather than orange-white.
-			blue -= round(blue * NIGHTSHIFT_COLOR_MODIFIER)
-
+			red -= round((red * NIGHTSHIFT_COLOR_MODIFIER) / 2)
+			green -= round(green * NIGHTSHIFT_COLOR_MODIFIER)
 			new_color = "#[num2hex(red, 2)][num2hex(green, 2)][num2hex(blue, 2)]"  // Splice the numbers together and turn them back to hex.
 
 	var/matching = light && new_brightness == light.light_range && new_power == light.light_power && new_color == light.light_color

@@ -14,7 +14,7 @@
 /// frequency, in 1/10ths of a second, of the lighting process
 #define LIGHTING_INTERVAL 5
 
-#define MINIMUM_USEFUL_LIGHT_RANGE 1.4
+#define MINIMUM_USEFUL_LIGHT_RANGE 1.5 // SKYRAT EDIT CHANGE - Original value 1.4
 
 /// type of falloff to use for lighting; 1 for circular, 2 for square
 #define LIGHTING_FALLOFF 1
