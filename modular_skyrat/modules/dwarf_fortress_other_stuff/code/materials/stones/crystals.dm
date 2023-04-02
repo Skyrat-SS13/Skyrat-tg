@@ -48,3 +48,13 @@
 
 	mats_per_unit = list(/datum/material/dwarf_certified/rock/crystal/rock_crystal = MINERAL_MATERIAL_AMOUNT)
 	material_type = /datum/material/dwarf_certified/rock/crystal/rock_crystal
+
+/obj/item/stack/dwarf_certified/rock/crystal/rock_crystal/Initialize(mapload)
+	. = ..()
+
+	AddComponent(/datum/component/bakeable, /obj/item/stack/dwarf_certified/glass/crystal, rand(30 SECONDS, 45 SECONDS), TRUE, TRUE)
+
+/obj/item/stack/dwarf_certified/rock/crystal/rock_crystal/examine(mob/user)
+	. = ..()
+
+	. += span_notice("You could probably <b>bake</b> this into glass.")
