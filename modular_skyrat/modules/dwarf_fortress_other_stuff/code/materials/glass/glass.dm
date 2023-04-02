@@ -56,6 +56,8 @@ GLOBAL_LIST_INIT(dwarf_glass_recipes, list(
 
 	max_amount = 3 // im evil, a little fuvked up even
 
+	resistance_flags = FIRE_PROOF | ACID_PROOF | UNACIDABLE // We don't want this to burn when cooking finishes
+
 /obj/item/stack/dwarf_certified/glass/get_main_recipes()
 	. = ..()
 	. += GLOB.dwarf_glass_recipes
@@ -143,6 +145,7 @@ GLOBAL_LIST_INIT(dwarf_glass_recipes, list(
 	base_icon_state = "wall"
 	icon_state = "wall-0"
 	glass_type = null
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
 /obj/structure/window/fulltile/material/set_custom_materials()
 	. = ..()
