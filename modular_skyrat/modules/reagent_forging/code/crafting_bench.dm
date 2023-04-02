@@ -291,10 +291,8 @@
 	if(completing_a_weapon)
 		recipe_to_follow = new /datum/crafting_bench_recipe/weapon_completion_recipe
 
-	var/list/swipe_materials_from = recipe_to_follow.contributes_materials
-
 	var/materials_to_transfer = list()
-	var/list/temporary_materials_list = use_or_delete_recipe_requirements(things_to_use, recipe_to_follow, swipe_materials_from)
+	var/list/temporary_materials_list = use_or_delete_recipe_requirements(things_to_use, recipe_to_follow)
 	for(var/material as anything in temporary_materials_list)
 		materials_to_transfer[material] += temporary_materials_list[material]
 
@@ -325,7 +323,7 @@
 	return newly_created_thing
 
 /// Takes the given list, things_to_use, compares it to recipe_to_follow's requirements, then either uses items from a stack, or deletes them otherwise. Returns custom material of forge items in the end.
-/obj/structure/reagent_crafting_bench/proc/use_or_delete_recipe_requirements(list/things_to_use, datum/crafting_bench_recipe/recipe_to_follow, swipe_materials_from)
+/obj/structure/reagent_crafting_bench/proc/use_or_delete_recipe_requirements(list/things_to_use, datum/crafting_bench_recipe/recipe_to_follow)
 	var/list/materials_to_transfer = list()
 	var/list/things_we_take_materials_from = typecacheof(swipe_materials_from)
 
@@ -347,7 +345,7 @@
 
 			requirement_stack.use(recipe_to_follow.recipe_requirements[stack_type])
 
-		empulse
+		else
 			if(!requirement_item.custom_materials || !recipe_to_follow.transfers_materials)
 				qdel(requirement_item)
 				continue

@@ -3,8 +3,6 @@
 	var/recipe_name = "generic debug recipe"
 	/// The items required to create the resulting item
 	var/list/recipe_requirements
-	/// What items from the above list contribute their materials to the final product?
-	var/list/contributes_materials
 	/// What the end result of this recipe should be
 	var/resulting_item = /obj/item/forging
 	/// If we use the materials from the component parts

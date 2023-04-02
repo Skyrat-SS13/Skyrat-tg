@@ -21,9 +21,6 @@
 	transfers_materials = TRUE
 	required_good_hits = 4
 	relevant_skill = /datum/skill/production
-	contributes_materials = list(
-		/obj/item/stack/dwarf_certified/leather_or_cloth,
-	)
 
 /datum/crafting_bench_recipe/clothing/pantsed_uniform
 	recipe_name = "pants with shirt"
