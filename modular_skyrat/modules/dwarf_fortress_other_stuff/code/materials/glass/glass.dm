@@ -32,7 +32,6 @@ GLOBAL_LIST_INIT(dwarf_glass_recipes, list(
 	// wood is 0.1, diamond is 0.3, iron is 0
 	beauty_modifier = 0
 
-	item_sound_override = 'sound/effects/glasshit.ogg'
 	turf_sound_override = FOOTSTEP_PLATING
 
 /datum/material/dwarf_certified/glass/on_accidental_mat_consumption(mob/living/carbon/victim, obj/item/source_item)

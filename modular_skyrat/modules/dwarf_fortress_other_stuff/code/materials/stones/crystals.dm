@@ -10,7 +10,6 @@
 	// wood is 0.1, diamond is 0.3, iron is 0
 	beauty_modifier = 0.15
 
-	item_sound_override = null
 	turf_sound_override = FOOTSTEP_FLOOR
 
 /obj/item/stack/dwarf_certified/rock/crystal
