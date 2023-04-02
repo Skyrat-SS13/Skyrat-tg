@@ -151,3 +151,6 @@ GLOBAL_LIST_INIT(dwarf_glass_recipes, list(
 
 	if(length(custom_materials))
 		glass_type = custom_materials[1].sheet_type
+
+/obj/structure/window/fulltile/material/spawn_debris(location)
+	return
