@@ -1,3 +1,16 @@
+GLOBAL_LIST_INIT(dwarf_brick_recipes, list(
+	new /datum/stack_recipe( \
+	"brick wall", \
+	/obj/structure/window/fulltile/material, \
+	req_amount = 1, \
+	res_amount = 1, \
+	time = 3 SECONDS, \
+	one_per_turf = TRUE, \
+	on_solid_ground = FALSE, \
+	applies_mats = TRUE \
+	), \
+))
+
 /datum/material/dwarf_certified/rock
 	name = "generic rock"
 	desc = "Hey... you shouldn't see this!"
@@ -68,3 +81,15 @@
 	material_type = /datum/material/dwarf_certified/rock
 
 	max_amount = 6 // Blocks are so much easier to store and move around, don't you know?
+
+/obj/item/stack/dwarf_certified/brick/get_main_recipes()
+	. = ..()
+	. += GLOB.dwarf_brick_recipes
+
+/turf/closed/wall/mineral/stone/material
+	name = "brick wall"
+	desc = "A wall made of solid bricks."
+	sheet_type = null
+	custom_materials = null
+	baseturfs = /turf/baseturf_bottom
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS

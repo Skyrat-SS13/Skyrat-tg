@@ -21,8 +21,8 @@
 	turf_sound_override = null
 
 /datum/material/dwarf_certified/on_accidental_mat_consumption(mob/living/carbon/victim, obj/item/source_item)
-	victim.gib() // I hope she explodes
-	return TRUE
+	//victim.gib() // I hope she explodes
+	return TRUE // Im gonna forget that later and its gonna bit eme in the ass
 
 /obj/item/stack/dwarf_certified
 	name = "generic special event sheets"
