@@ -591,6 +591,8 @@
 	max_occurrences = 2
 	weight = MED_EVENT_FREQ
 
+
+
 #undef VERY_HIGH_EVENT_FREQ
 #undef HIGH_EVENT_FREQ
 #undef MED_EVENT_FREQ
