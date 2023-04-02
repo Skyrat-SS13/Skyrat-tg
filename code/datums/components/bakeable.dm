@@ -71,8 +71,8 @@
 	if(who_baked_us)
 		ADD_TRAIT(baked_result, TRAIT_FOOD_CHEF_MADE, who_baked_us)
 
-	if(original_object.custom_materials)
-		baked_result.set_custom_materials(original_object.custom_materials, 1)
+	//if(original_object.custom_materials)
+		//baked_result.set_custom_materials(original_object.custom_materials, 1)
 
 	baked_result.pixel_x = original_object.pixel_x
 	baked_result.pixel_y = original_object.pixel_y
