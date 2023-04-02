@@ -397,3 +397,7 @@ Difficulty: Hard
 
 /obj/effect/temp_visual/bubblegum_hands/leftsmack
 	icon_state = "leftsmack"
+
+#undef BUBBLEGUM_CAN_ENRAGE
+#undef BUBBLEGUM_IS_ENRAGED
+#undef BUBBLEGUM_SMASH

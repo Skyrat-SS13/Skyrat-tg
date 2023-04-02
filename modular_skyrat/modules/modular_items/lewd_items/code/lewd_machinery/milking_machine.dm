@@ -159,10 +159,10 @@
 /obj/structure/chair/milking_machine/post_buckle_mob(mob/living/affected_mob)
 	current_mob = affected_mob
 
-	current_breasts = affected_mob.getorganslot(ORGAN_SLOT_BREASTS)
-	current_testicles = affected_mob.getorganslot(ORGAN_SLOT_TESTICLES)
-	current_vagina = affected_mob.getorganslot(ORGAN_SLOT_VAGINA)
-
+	current_breasts = affected_mob.get_organ_slot(ORGAN_SLOT_BREASTS)
+	current_testicles = affected_mob.get_organ_slot(ORGAN_SLOT_TESTICLES)
+	current_vagina = affected_mob.get_organ_slot(ORGAN_SLOT_VAGINA)
+  
 	cut_overlay(locks_overlay)
 	locks_overlay.icon_state = "locks_closed"
 	locks_overlay.layer = ABOVE_MOB_LAYER
@@ -395,17 +395,18 @@
 /* Handle this later.
 /obj/structure/chair/milking_machine/MouseDrop(over_object, src_location, over_location)
 	. = ..()
+  
 	if(!istype(src, /mob/living/))
 		return FALSE
 
 	var/mob/living/affected_mob = src
 	var/obj/structure/chair/milking_machine/milking_machine = over_object
 	if(affected_mob.getorganslot(ORGAN_SLOT_TESTICLES))
-		milking_machine.current_testicles = affected_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+		milking_machine.current_testicles = affected_mob.get_organ_slot(ORGAN_SLOT_TESTICLES)
 	if(affected_mob.getorganslot(ORGAN_SLOT_VAGINA))
-		milking_machine.current_vagina = affected_mob.getorganslot(ORGAN_SLOT_VAGINA)
+		milking_machine.current_vagina = affected_mob.get_organ_slot(ORGAN_SLOT_VAGINA)
 	if(affected_mob.getorganslot(ORGAN_SLOT_BREASTS))
-		milking_machine.current_breasts = affected_mob.getorganslot(ORGAN_SLOT_BREASTS)
+		milking_machine.current_breasts = affected_mob.get_organ_slot(ORGAN_SLOT_BREASTS)
 
 */
 

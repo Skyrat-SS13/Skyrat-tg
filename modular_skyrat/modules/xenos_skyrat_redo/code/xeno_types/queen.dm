@@ -60,7 +60,7 @@
 		if(carbon_mob == src)
 			continue
 
-		var/obj/item/organ/internal/alien/hivenode/node = carbon_mob.getorgan(/obj/item/organ/internal/alien/hivenode)
+		var/obj/item/organ/internal/alien/hivenode/node = carbon_mob.get_organ_by_type(/obj/item/organ/internal/alien/hivenode)
 
 		if(istype(node))
 			node.queen_death()
