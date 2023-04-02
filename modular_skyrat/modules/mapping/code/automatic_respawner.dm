@@ -22,9 +22,18 @@
 	if(.)
 		return FALSE
 
-	if(target_component && !user?.mind.GetComponent(target_component))
-		to_chat(user, span_warning("You are not able to use [src]!"))
-		return FALSE
+	if(target_component)
+		if(!user.mind)
+			return FALSE
+
+		var/datum/component/respawner/mind_component = user.mind.GetComponent(target_component)
+		if(!mind_component)
+			to_chat(user, span_warning("You are not able to use [src]!"))
+			return FALSE
+
+		if(mind_component.time_before_respawn && !COOLDOWN_FINISHED(mind_component, respawn_timer))
+			to_chat(user, span_warning("You have [COOLDOWN_TIMELEFT(mind_component, respawn_timer) / 10] seconds left before you can use [src]."))
+			return FALSE
 
 	if(!COOLDOWN_FINISHED(src, respawn_cooldown))
 		to_chat(user, span_warning("[src] has [COOLDOWN_TIMELEFT(src, respawn_cooldown) / 10] seconds left before it can be used again. Please try again later."))
@@ -95,8 +104,24 @@
 	. = ..()
 	add_given_component(target_mob)
 
+/datum/component/respawner
+	/// How much time has to pass before the parent mob can respawn after dying? If FALSE, then the parent mob can respawn without waiting.
+	var/time_before_respawn = 30 SECONDS
+	COOLDOWN_DECLARE(respawn_timer)
+
 /datum/component/respawner/Initialize(...)
 	. = ..()
 	if(!istype(parent, /datum/mind))
 		return COMPONENT_INCOMPATIBLE
 
+	var/datum/mind/parent_mind = parent
+	RegisterSignal(parent_mind.current, COMSIG_LIVING_DEATH, .proc/start_timer)
+
+/datum/component/respawner/Destroy(force, silent)
+	var/datum/mind/parent_mind = parent
+	UnregisterSignal(parent_mind.current, COMSIG_LIVING_DEATH)
+	return ..()
+
+/datum/component/respawner/proc/start_timer()
+	SIGNAL_HANDLER
+	COOLDOWN_START(src, respawn_timer, time_before_respawn)
