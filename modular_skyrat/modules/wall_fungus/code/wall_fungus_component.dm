@@ -1,7 +1,14 @@
+
+
 #define FUNGUS_STAGE_ONE 1
 #define FUNGUS_STAGE_TWO 2
 #define FUNGUS_STAGE_MAX 3
 
+/**
+ * A wall eating mushroom.
+ *
+ * This mushroom spreads to walls and eats em up! It can be removed with a welder. If left unchecked it will eat the whole wall.
+ */
 /datum/component/wall_fungus
 	/// How far has the fungus progressed on the affected wall? Percentage.
 	var/progression_percent = 0
@@ -17,6 +24,8 @@
 	var/spread_distance = 3 // Tiles
 	/// A reference to our parent wall.
 	var/turf/closed/wall/parent_wall
+	/// How likely are we to drop a shroom upon destruction?
+	var/drop_chance = 30
 
 /datum/component/wall_fungus/Initialize()
 	if(!iswallturf(parent))
@@ -89,6 +98,7 @@
 	INVOKE_ASYNC(src, PROC_REF(handle_tool_use), source, user, item)
 	return COMPONENT_BLOCK_TOOL_ATTACK
 
+/// Handles removal of the fungus from a wall.
 /datum/component/wall_fungus/proc/handle_tool_use(atom/source, mob/user, obj/item/item)
 	switch(item.tool_behaviour)
 		if(TOOL_WELDER)
@@ -100,6 +110,8 @@
 			if(!item.use_tool(source, user, 5 SECONDS))
 				return
 			user.balloon_alert(user, "burned off fungus")
+			if(prob(drop_chance))
+				new /obj/item/food/grown/mushroom/wall(parent_wall)
 			qdel(src)
 
 

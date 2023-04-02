@@ -13,7 +13,6 @@
 	announce_when = 60 // 2 minutes
 	announce_chance = 100
 
-
 /datum/round_event/wall_fungus/start()
 	var/list/possible_spawn_areas = typecacheof(typesof(/area/station/maintenance))
 	var/list/possible_start_walls = list()
