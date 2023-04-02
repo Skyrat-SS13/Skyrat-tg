@@ -1,6 +1,6 @@
 /// A space-worthy skinsuit to be combined with the skinsuit armor
 /obj/item/clothing/under/skinsuit
-	name = ""
+	name = "skinsuit"
 	desc = ""
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/akula.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi'
@@ -23,7 +23,7 @@
 	remove_wetsuit_status_effect(user)
 
 /obj/item/clothing/head/helmet/space/skinsuit_helmet
-	name = ""
+	name = "skinsuit helmet"
 	desc = ""
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/akula.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/akula.dmi'
@@ -40,7 +40,7 @@
 	remove_wetsuit_status_effect(user)
 
 /obj/item/clothing/suit/armor/riot/skinsuit_armor
-	name = ""
+	name = "skinsuit armor"
 	desc = ""
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/akula.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/akula.dmi'
