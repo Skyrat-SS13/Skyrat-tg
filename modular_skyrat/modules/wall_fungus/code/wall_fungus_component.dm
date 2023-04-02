@@ -12,7 +12,7 @@
 	/// Our overlay icon file
 	var/overlay_icon_file = 'modular_skyrat/modules/wall_fungus/icons/wall_fungus_overlay.dmi'
 	/// How likely are we to spread to another wall?
-	var/spread_chance = 5
+	var/spread_chance = 1
 	/// How far can we spread?
 	var/spread_distance = 3 // Tiles
 	/// A reference to our parent wall.
@@ -24,16 +24,17 @@
 
 	parent_wall = parent
 
-	parent_wall.update_overlays()
+	RegisterSignal(parent, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(apply_fungus_overlay)) // We need to do this here so that the wall shows the infection immediately.
+
+	parent_wall.update_icon(UPDATE_OVERLAYS)
 
 	START_PROCESSING(SSobj, src)
 
 /datum/component/wall_fungus/Destroy(force, silent)
-	parent_wall?.update_overlays()
+	parent_wall?.update_icon(UPDATE_OVERLAYS)
 	return ..()
 
 /datum/component/wall_fungus/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(apply_fungus_overlay))
 	RegisterSignal(parent, COMSIG_ATOM_SECONDARY_TOOL_ACT(TOOL_WELDER), PROC_REF(secondary_tool_act))
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(examine))
 
@@ -49,7 +50,7 @@
 
 	if(progression_percent >= 100)
 		progression_stage++
-		parent_wall.update_overlays()
+		parent_wall.update_icon(UPDATE_OVERLAYS)
 
 /// We kill the wall once we have progressed far enough.
 /datum/component/wall_fungus/proc/collapse_parent_structure()
@@ -71,7 +72,13 @@
 /// Gives people an idea of how badly the wall is infected.
 /datum/component/wall_fungus/proc/examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	examine_list += span_green("[parent_wall] is infected with some kind of fungus!")
+	switch(progression_stage)
+		if(FUNGUS_STAGE_ONE)
+			examine_list += span_green("[parent_wall] is infected with some kind of fungus!")
+		if(FUNGUS_STAGE_TWO)
+			examine_list += span_green("[parent_wall] is infected with some kind of fungus, its structure weakened!")
+		if(FUNGUS_STAGE_MAX)
+			examine_list += span_green("[parent_wall] is infected with some kind of fungus, its structure seriously weakened!")
 
 /datum/component/wall_fungus/proc/apply_fungus_overlay(atom/parent_atom, list/overlays)
 	SIGNAL_HANDLER
