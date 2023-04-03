@@ -16,6 +16,8 @@
 	armor_type = /datum/armor/clockwork_ocular_warden
 	passive_consumption = 10
 	minimum_power = SHOOT_POWER_USE
+	can_unwrench = FALSE
+	anchored = TRUE
 	/// Cooldown between firing
 	COOLDOWN_DECLARE(fire_cooldown)
 
