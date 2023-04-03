@@ -3,7 +3,8 @@
 #define FUNGUS_STAGE_ONE 1
 #define FUNGUS_STAGE_TWO 2
 #define FUNGUS_STAGE_THREE 3
-#define FUNGUS_STAGE_MAX 4
+#define FUNGUS_STAGE_THREE 4
+#define FUNGUS_STAGE_MAX 5
 
 /**
  * A wall eating mushroom.
@@ -14,7 +15,7 @@
 	/// How far has the fungus progressed on the affected wall? Percentage.
 	var/progression_percent = 0
 	/// How many percent do we increase each subsystem fire?
-	var/progression_step_amount = 0.5
+	var/progression_step_amount = 0.7
 	/// What stage are we at?
 	var/progression_stage = FUNGUS_STAGE_ONE
 	/// Our overlay icon file
