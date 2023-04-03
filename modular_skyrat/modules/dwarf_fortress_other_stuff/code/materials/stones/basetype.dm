@@ -6,7 +6,7 @@ GLOBAL_LIST_INIT(dwarf_boulder_recipes, list(
 	time = 3 SECONDS, \
 	one_per_turf = TRUE, \
 	on_solid_ground = TRUE, \
-	applies_mats = TRUE \
+	applies_mats = TRUE, \
 	category = CAT_STRUCTURE \
 	), \
 ))
@@ -19,7 +19,7 @@ GLOBAL_LIST_INIT(dwarf_brick_recipes, list(
 	time = 3 SECONDS, \
 	one_per_turf = TRUE, \
 	on_solid_ground = TRUE, \
-	applies_mats = TRUE \
+	applies_mats = TRUE, \
 	category = CAT_STRUCTURE \
 	), \
 	new /datum/stack_recipe( \
