@@ -13,6 +13,8 @@
 	var/nif_theme
 	/// Whether the NIF is calibrated for use or not. Can be null.
 	var/nif_is_calibrated
+	/// How many rewards points does the NIF have stored on it?
+	var/stored_rewards_points
 
 /// Saves the NIF data for a individual user.
 /mob/living/carbon/human/proc/save_nif_data(datum/modular_persistence/persistence)
@@ -40,6 +42,7 @@
 	persistence.nif_durability = installed_nif.durability
 	persistence.nif_theme = installed_nif.current_theme
 	persistence.nif_is_calibrated = installed_nif.is_calibrated
+	persistence.stored_rewards_points = installed_nif.rewards_points
 
 	var/datum/component/nif_examine/examine_component = GetComponent(/datum/component/nif_examine)
 
@@ -64,6 +67,7 @@
 	new_nif.durability = persistence.nif_durability
 	new_nif.current_theme = persistence.nif_theme
 	new_nif.is_calibrated = persistence.nif_is_calibrated
+	new_nif.rewards_points = persistence.stored_rewards_points
 	new_nif.Insert(src)
 
 	var/datum/component/nif_examine/examine_component = GetComponent(/datum/component/nif_examine)
