@@ -26,14 +26,19 @@
 	/// the thing spawned by the spawner
 	var/turf/closed/wall/material/dwarf_fortress/thing_spawned = /turf/closed/wall/material/dwarf_fortress
 
-/obj/effect/spawner/df_wall_spawner/Initialize(mapload)
+/obj/effect/spawner/df_wall_spawner/set_custom_materials(list/materials, multiplier) // Walls really did not want to cooperate with me on this one
 	. = ..()
 
 	var/turf/turf_we_spawn_stuff = get_turf(src)
 	var/turf/new_wall = turf_we_spawn_stuff.PlaceOnTop(thing_spawned)
 	message_admins("[src] JUST PLACED A [new_wall].")
 	new_wall.set_custom_materials(custom_materials)
-	message_admins("[src] HAD A CUSTOM MATERIALS LIST OF [custom_materials] WHEN IT DID THAT.")
+	if(length(custom_materials))
+		message_admins("[src] HAS A CUSTOM MATERIALS LIST LENGTH OF [length(custom_materials)]")
+		for(var/material as anything in custom_materials)
+			message_admins("- [custom_materials[material]]")
+	else
+		message_admins("[src] HAS NO FUCKING CUSTOM MATERIALS")
 
 	qdel(src)
 
