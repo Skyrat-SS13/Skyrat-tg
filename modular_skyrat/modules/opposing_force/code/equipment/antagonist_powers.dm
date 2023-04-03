@@ -49,7 +49,6 @@
 	description = "A cogwheel-shaped device of brass, with a glass lens floating, suspended in the center. Capable of making one become a \"Clock Cultist\"."
 	admin_note = "Clockwork Cultist (solo) antag granter."
 
-/obj/item/antag_granter/clock_cultist
 // Contractor
 /datum/opposing_force_equipment/antagonist_powers/contractor
 	name = "Contractor Bundle"
