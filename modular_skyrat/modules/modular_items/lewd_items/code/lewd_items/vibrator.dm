@@ -125,8 +125,8 @@
 	switch(user.zone_selected) //to let code know what part of body we gonna vibe
 		if(BODY_ZONE_PRECISE_GROIN)
 			targetedsomewhere = TRUE
-			var/obj/item/organ/external/genital/penis = target.getorganslot(ORGAN_SLOT_PENIS)
-			var/obj/item/organ/external/genital/vagina = target.getorganslot(ORGAN_SLOT_VAGINA)
+			var/obj/item/organ/external/genital/penis = target.get_organ_slot(ORGAN_SLOT_PENIS)
+			var/obj/item/organ/external/genital/vagina = target.get_organ_slot(ORGAN_SLOT_VAGINA)
 			if((vagina && penis) && (vagina.visibility_preference == GENITAL_ALWAYS_SHOW && penis.visibility_preference == GENITAL_ALWAYS_SHOW || target.is_bottomless()))
 				message = (user == target) ? pick("massages their vagina with the [src]", "[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their pussy with [src]", "massages their penis with the [src]", "[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their penis with [src]") : pick("[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] massages [target]'s vagina with [src]", "uses [src] to [vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] massage [target]'s crotch", "leans the massager against [target]'s pussy", "[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] massages [target]'s penis with [src]", "uses [src] to [vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] massage [target]'s penis", "leans the massager against [target]'s penis")
 				target.adjust_arousal(DEFAULT_AROUSAL_INCREASE)
@@ -151,7 +151,7 @@
 
 		if(BODY_ZONE_CHEST)
 			targetedsomewhere = TRUE
-			var/obj/item/organ/external/genital/breasts = target.getorganslot(ORGAN_SLOT_BREASTS)
+			var/obj/item/organ/external/genital/breasts = target.get_organ_slot(ORGAN_SLOT_BREASTS)
 			if(target.is_topless() || breasts.visibility_preference == GENITAL_ALWAYS_SHOW)
 				var/breasts_or_nipples = breasts ? ORGAN_SLOT_BREASTS : ORGAN_SLOT_NIPPLES
 				message = (user == target) ? pick("massages their [breasts_or_nipples] with the [src]", "[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their tits with [src]") : pick("[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] teases [target]'s [breasts_or_nipples] with [src]", "uses [src] to[vibration_mode == "low" ? " slowly" : ""] massage [target]'s [breasts ? "tits" : ORGAN_SLOT_NIPPLES]", "uses [src] to tease [target]'s [breasts ? "boobs" : ORGAN_SLOT_NIPPLES]", "rubs [target]'s [breasts ? "tits" : ORGAN_SLOT_NIPPLES] with [src]")
