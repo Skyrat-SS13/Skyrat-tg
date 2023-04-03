@@ -50,10 +50,17 @@
 /datum/crafting_bench_recipe/clothing/robes
 	recipe_name = "robes"
 	recipe_requirements = list(
-		/obj/item/stack/dwarf_certified/leather_or_cloth = 2,
+		/obj/item/stack/dwarf_certified/leather_or_cloth/fabric = 2,
 		/obj/item/stack/dwarf_certified/thread = 1,
 	)
 	resulting_item = /obj/item/clothing/under/costume/skyrat/bathrobe/event
+
+/datum/crafting_bench_recipe/clothing/jacket
+	recipe_name = "jacket"
+	recipe_requirements = list(
+		/obj/item/stack/dwarf_certified/leather_or_cloth/fabric = 2,
+	)
+	resulting_item = /obj/item/clothing/suit/toggle/jacket/sweater/df_event
 
 /datum/crafting_bench_recipe/clothing/armwraps
 	recipe_name = "arm wraps"
@@ -61,3 +68,59 @@
 		/obj/item/stack/dwarf_certified/leather_or_cloth = 1,
 	)
 	resulting_item = /obj/item/clothing/gloves/fingerless/df_armwraps
+
+/datum/crafting_bench_recipe/clothing/gloves
+	recipe_name = "gloves"
+	recipe_requirements = list(
+		/obj/item/stack/dwarf_certified/leather_or_cloth = 1,
+	)
+	resulting_item = /obj/item/clothing/gloves/color/black/dwarf_gloves
+
+/datum/crafting_bench_recipe/clothing/sandals
+	recipe_name = "sandals"
+	recipe_requirements = list(
+		/obj/item/stack/dwarf_certified/leather_or_cloth/leather = 1,
+	)
+	resulting_item = /obj/item/clothing/shoes/colorable_sandals/df_event
+
+/datum/crafting_bench_recipe/clothing/shoes
+	recipe_name = "shoes"
+	recipe_requirements = list(
+		/obj/item/stack/dwarf_certified/leather_or_cloth/leather = 1,
+	)
+	resulting_item = /obj/item/clothing/shoes/colorable_laceups/df_event
+
+/datum/crafting_bench_recipe/clothing/boots
+	recipe_name = "boots"
+	recipe_requirements = list(
+		/obj/item/stack/dwarf_certified/leather_or_cloth/leather = 1,
+	)
+	resulting_item = /obj/item/clothing/shoes/jackboots/recolorable/df_event
+
+/datum/crafting_bench_recipe/clothing/backpack
+	recipe_name = "backpack"
+	recipe_requirements = list(
+		/obj/item/stack/dwarf_certified/leather_or_cloth = 2,
+	)
+	resulting_item = /obj/item/storage/backpack/industrial/event
+
+/datum/crafting_bench_recipe/clothing/satchel
+	recipe_name = "satchel"
+	recipe_requirements = list(
+		/obj/item/stack/dwarf_certified/leather_or_cloth = 2,
+	)
+	resulting_item = /obj/item/storage/backpack/satchel/eng/event
+
+/datum/crafting_bench_recipe/clothing/leather_armor
+	recipe_name = "leather armor"
+	recipe_requirements = list(
+		/obj/item/stack/dwarf_certified/leather_or_cloth/leather = 2,
+	)
+	resulting_item = /obj/item/clothing/suit/armor/df_plate_armor
+
+/datum/crafting_bench_recipe/clothing/leather_helmet
+	recipe_name = "leather helmet"
+	recipe_requirements = list(
+		/obj/item/stack/dwarf_certified/leather_or_cloth/leather = 2,
+	)
+	resulting_item = /obj/item/clothing/head/helmet/df_plate_helmet

@@ -75,15 +75,8 @@
 * Suit Slot Stuff
 */
 
-/obj/item/clothing/suit/toggle/jacket/sweater/cloth_colors
-	greyscale_colors = "#cec8bf"
-	flags_1 = NONE
-	armor_type = /datum/armor/df_armor_default
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
-
-/obj/item/clothing/suit/toggle/jacket/sweater/leather_colors
+/obj/item/clothing/suit/toggle/jacket/sweater/df_event
 	name = "jacket"
-	desc = "Say that name ten times fast."
 	greyscale_colors = "#cec8bf"
 	flags_1 = NONE
 	armor_type = /datum/armor/df_armor_default
@@ -91,7 +84,7 @@
 
 // Backpacks and satchels
 
-/obj/item/storage/backpack/explorer/event
+/obj/item/storage/backpack/industrial/event
 	icon_state = "backpack"
 	icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
 	worn_icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
@@ -106,7 +99,7 @@
 	armor_type = /datum/armor/df_armor_default // I know this doesn't matter on a backpack but lets just be safe yeah?
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
-/obj/item/storage/backpack/satchel/explorer/event
+/obj/item/storage/backpack/satchel/eng/event
 	icon_state = "satchel"
 	icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
 	worn_icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
@@ -169,12 +162,12 @@
 	armor_type = /datum/armor/df_armor_default
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
-/obj/item/clothing/shoes/colorable_sandals
+/obj/item/clothing/shoes/colorable_sandals/df_event
 	greyscale_colors = "#cec8bf"
 	armor_type = /datum/armor/df_armor_default
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
-/obj/item/clothing/shoes/jackboots/recolorable
+/obj/item/clothing/shoes/jackboots/recolorable/df_event
 	name = "boots"
 	greyscale_colors = "#cec8bf"
 	armor_type = /datum/armor/df_armor_default

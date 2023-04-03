@@ -9,8 +9,8 @@
 // Plate vest
 
 /obj/item/clothing/suit/armor/df_plate_armor
-	name = "plate vest"
-	desc = "An armor vest made of large, hand-hammered plates."
+	name = "armor vest"
+	desc = "An armor vest made of uh, something, look you're the one wearing it not me."
 	icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
 	worn_icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
 	worn_icon_teshari = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
@@ -25,11 +25,31 @@
 	armor_type = /datum/armor/df_armor_default
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
+// Helmet
+
+/obj/item/clothing/head/helmet/df_plate_helmet
+	name = "helmet"
+	desc = "A helmet made out of uh, something, look you're the one wearing it not me."
+	icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
+	worn_icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
+	worn_icon_teshari = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
+	icon_state = "vest"
+	greyscale_config = /datum/greyscale_config/plate_helmet
+	greyscale_config_worn = /datum/greyscale_config/plate_helmet/worn
+	greyscale_config_worn_better_vox = /datum/greyscale_config/plate_helmet/worn/newvox
+	greyscale_config_worn_vox = /datum/greyscale_config/plate_helmet/worn/oldvox
+	greyscale_config_worn_teshari = /datum/greyscale_config/plate_helmet/worn/teshari
+	greyscale_colors = "#cec8bf"
+	armor_type = /datum/armor/df_armor_default
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	flags_inv = null
+
 // Gauntlets
 
 /obj/item/clothing/gloves/fingerless/df_gauntlets
 	name = "gauntlets"
-	desc = "Simple cloth arm wraps with overlying metal protection."
+	desc = "Simple cloth arm wraps with overlying protection."
 	icon_state = "gauntlets"
 	icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
 	worn_icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
