@@ -3,6 +3,22 @@
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 	merge_type = /obj/item/stack/tile/material/dwarf_fortress
 
+/obj/item/stack/tile/material/dwarf_fortress/stone
+	icon_state = "tile_white"
+	turf_type = /turf/open/floor/material/dwarf_fortress/stone
+	merge_type = /obj/item/stack/tile/material/dwarf_fortress/stone
+
+/obj/item/stack/tile/material/dwarf_fortress/wood
+	icon_state = "tile_white_herringbone"
+	turf_type = /turf/open/floor/material/dwarf_fortress/wood
+	merge_type = /obj/item/stack/tile/material/dwarf_fortress/wood
+
+/obj/item/stack/tile/material/dwarf_fortress/metal
+	icon_state = "tile_white_small"
+	turf_type = /turf/open/floor/material/dwarf_fortress/metal
+	merge_type = /obj/item/stack/tile/material/dwarf_fortress/metal
+
+
 /turf/open/floor/material/dwarf_fortress
 	icon = 'modular_skyrat/modules/dwarf_fortress_other_stuff/icons/floors.dmi'
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS

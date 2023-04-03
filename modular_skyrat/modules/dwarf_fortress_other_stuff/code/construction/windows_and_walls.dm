@@ -18,6 +18,21 @@
 
 // WALLS
 
+/obj/effect/spawner/df_wall_spawner
+	icon = 'icons/effects/random_spawners.dmi'
+	icon_state = "loot"
+	layer = OBJ_LAYER
+	anchored = TRUE
+	/// the thing spawned by the spawner
+	var/turf/closed/wall/material/dwarf_fortress/thing_spawned = /turf/closed/wall/material/dwarf_fortress
+
+/obj/effect/spawner/df_wall_spawner/Initialize(mapload)
+	. = ..()
+
+	var/turf/turf_we_spawn_stuff = get_turf(src)
+	var/turf/new_wall = turf_we_spawn_stuff.PlaceOnTop(thing_spawned)
+	new_wall.set_custom_materials(custom_materials)
+
 /turf/closed/wall/material/dwarf_fortress
 	icon_state = "wall-0"
 	base_icon_state = "wall"
@@ -44,8 +59,17 @@
 /turf/closed/wall/material/dwarf_fortress/smooth
 	icon = 'modular_skyrat/modules/dwarf_fortress_other_stuff/icons/walls/smooth_wall.dmi'
 
+/obj/effect/spawner/df_wall_spawner/smooth
+	thing_spawned = /turf/closed/wall/material/dwarf_fortress/smooth
+
 /turf/closed/wall/material/dwarf_fortress/brick
 	icon = 'modular_skyrat/modules/dwarf_fortress_other_stuff/icons/walls/brick_wall.dmi'
 
+/obj/effect/spawner/df_wall_spawner/brick
+	thing_spawned = /turf/closed/wall/material/dwarf_fortress/brick
+
 /turf/closed/wall/material/dwarf_fortress/wood
 	icon = 'modular_skyrat/modules/dwarf_fortress_other_stuff/icons/walls/wood_wall.dmi'
+
+/obj/effect/spawner/df_wall_spawner/wood
+	thing_spawned = /turf/closed/wall/material/dwarf_fortress/wood
