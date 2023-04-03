@@ -3,10 +3,9 @@ GLOBAL_LIST_INIT(dwarf_boulder_recipes, list(
 	"rough rock wall", \
 	/turf/closed/wall/material/dwarf_fortress/smooth, \
 	req_amount = 1, \
-	res_amount = 1, \
 	time = 3 SECONDS, \
 	one_per_turf = TRUE, \
-	on_solid_ground = FALSE, \
+	on_solid_ground = TRUE, \
 	applies_mats = TRUE \
 	), \
 ))
@@ -16,10 +15,9 @@ GLOBAL_LIST_INIT(dwarf_brick_recipes, list(
 	"brick wall", \
 	/turf/closed/wall/material/dwarf_fortress/brick, \
 	req_amount = 1, \
-	res_amount = 1, \
 	time = 3 SECONDS, \
 	one_per_turf = TRUE, \
-	on_solid_ground = FALSE, \
+	on_solid_ground = TRUE, \
 	applies_mats = TRUE \
 	), \
 	new /datum/stack_recipe( \
@@ -29,7 +27,7 @@ GLOBAL_LIST_INIT(dwarf_brick_recipes, list(
 	res_amount = 1, \
 	time = 1 SECONDS, \
 	one_per_turf = FALSE, \
-	on_solid_ground = FALSE, \
+	on_solid_ground = TRUE, \
 	applies_mats = TRUE \
 	), \
 ))
@@ -112,6 +110,6 @@ GLOBAL_LIST_INIT(dwarf_brick_recipes, list(
 
 	max_amount = 6 // Blocks are so much easier to store and move around, don't you know?
 
-/obj/item/stack/dwarf_certified/rock/get_main_recipes()
+/obj/item/stack/dwarf_certified/brick/get_main_recipes()
 	. = ..()
 	. += GLOB.dwarf_brick_recipes
