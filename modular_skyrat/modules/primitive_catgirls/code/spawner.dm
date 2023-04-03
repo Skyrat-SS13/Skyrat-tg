@@ -82,7 +82,7 @@
 	count_against_dynamic_roll_chance = FALSE
 	show_in_roundend = FALSE
 
-	// Tracks the antag datum's 'team' for showing in the ghost orbit menu
+	/// Tracks the antag datum's 'team' for showing in the ghost orbit menu
 	var/datum/team/primitive_catgirls/feline_team
 
 	antag_recipes = list(
