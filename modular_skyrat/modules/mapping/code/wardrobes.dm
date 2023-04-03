@@ -36,7 +36,7 @@
 		/obj/item/clothing/gloves/combat = 3,
 		/obj/item/clothing/under/syndicate/skyrat/maid = 5,
 		/obj/item/clothing/gloves/combat/maid = 5,
-		/obj/item/clothing/head/maidheadband/syndicate = 5,
+		/obj/item/clothing/head/costume/maidheadband/syndicate = 5,
 		/obj/item/storage/box/nif_ghost_box = 10,
 	)
 
