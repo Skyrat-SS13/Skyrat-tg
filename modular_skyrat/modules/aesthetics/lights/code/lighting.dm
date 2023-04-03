@@ -15,6 +15,7 @@
 	bulb_low_power_colour = LIGHT_COLOR_DARK_BLUE
 	bulb_low_power_brightness_mul = 0.4
 	bulb_low_power_pow_min = 0.4
+	bulb_major_emergency_brightness_mul = 1 // don't dim in an emergency, why is that a thing
 	var/maploaded = FALSE //So we don't have a lot of stress on startup.
 	var/turning_on = FALSE //More stress stuff.
 	var/constant_flickering = FALSE // Are we always flickering?
