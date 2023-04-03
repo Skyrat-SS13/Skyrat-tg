@@ -48,7 +48,7 @@
 	throw_speed = 1
 	throw_range = 3
 
-	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR
+	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
 	mats_per_unit = list(/datum/material/dwarf_certified = MINERAL_MATERIAL_AMOUNT)
 	material_type = /datum/material/dwarf_certified
 
