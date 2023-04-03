@@ -120,11 +120,11 @@
 		the materials used to construct this wetsuit have rendered it extremely hardy against corrosive liquids and gasses."
 	icon_state = "engi"
 	base_icon_state = "engi"
-	armor_type = /datum/armor/utility_radiation
+	armor_type = /datum/armor/wetsuit_under/engineering
 
-/obj/item/clothing/under/akula_wetsuit/job/engineering/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/radiation_protected_clothing)
+/datum/armor/wetsuit_under/engineering
+	fire = 95
+	acid = 95
 
 /obj/item/clothing/under/akula_wetsuit/job/cargo
 	name = "Cargo Shoredress wetsuit"
@@ -135,6 +135,10 @@
 		and the temperature-control pumps are some of the best available to those that aren't royalty."
 	icon_state = "cargo"
 	base_icon_state = "cargo"
+	armor_type = /datum/armor/wetsuit_under/cargo
+
+/datum/armor/wetsuit_under/cargo
+	fire = 40
 
 /obj/item/clothing/under/akula_wetsuit/job/science
 	name = "Science Shoredress wetsuit"
@@ -143,6 +147,11 @@
 		such as abandoned naval or land-based mines, and features an inbuilt external sterilization field to protect against biohazards typically found in strange places."
 	icon_state = "sci"
 	base_icon_state = "sci"
+	armor_type = /datum/armor/wetsuit_under/science
+
+/datum/armor/wetsuit_under/science
+	bomb = 40
+	acid = 95
 
 /obj/item/clothing/under/akula_wetsuit/job/medical
 	name = "Medical Shoredress wetsuit"
@@ -152,6 +161,11 @@
 		This has made it convenient for the Company's medical division, let alone the plush interior to allow for greater comfortable standing hours."
 	icon_state = "medical"
 	base_icon_state = "medical"
+	armor_type = /datum/armor/wetsuit_under/medical
+
+/datum/armor/wetsuit_under/medical
+	acid = 95
+	bio = 95
 
 /obj/item/clothing/under/akula_wetsuit/job/security
 	name = "Security Shoredress wetsuit"
@@ -197,7 +211,7 @@
 	/// Helmet armor
 /datum/armor/wetsuit_helmet
 	bio = 100
-	fire = 50
+	fire = 100
 
 /obj/item/clothing/head/helmet/space/akula_wetsuit/Initialize(mapload)
 	. = ..()
