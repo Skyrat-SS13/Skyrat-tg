@@ -201,11 +201,6 @@
 	icon_state = (icon_state == base_icon_state) ? "[base_icon_state]_flipped" : base_icon_state
 	user.update_worn_glasses()
 
-<<<<<<< HEAD
-/datum/armor/glasses_science
-	fire = 80
-	acid = 100
-=======
 /obj/item/clothing/glasses/eyepatch/medical
 	name = "medical eyepatch"
 	desc = "Used by space weeaboos to pretend their eye isn't there, and crewmembers who actually lost their eye to pretend their eye is there."
@@ -234,7 +229,6 @@
 			"This eyepatch is a symbol of my sacrifice for the sake of love. It hides the scar that I received from saving my beloved from a fatal attack.",
 		)
 	desc = pick(chuuni_backstories)
->>>>>>> c3b78761d29 (Adds Chuunibyou Spell + Granter (#74404))
 
 /obj/item/clothing/glasses/monocle
 	name = "monocle"
