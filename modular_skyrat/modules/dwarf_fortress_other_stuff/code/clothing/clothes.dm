@@ -10,7 +10,7 @@
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	greyscale_colors = "#cec8bf"
 	armor_type = /datum/armor/df_armor_default // let me cook
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
 
 //Pants with a shirt
 
@@ -69,7 +69,7 @@
 	name = "robes"
 	desc = "Comfortable, definitely posh looking robes fit for a king, or just a huge nerd who has no other job."
 	armor_type = /datum/armor/df_armor_default
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
 
 /*
 * Suit Slot Stuff
@@ -80,11 +80,12 @@
 	greyscale_colors = "#cec8bf"
 	flags_1 = NONE
 	armor_type = /datum/armor/df_armor_default
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
 
 // Backpacks and satchels
 
 /obj/item/storage/backpack/industrial/event
+	name = "backpack"
 	icon_state = "backpack"
 	icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
 	worn_icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
@@ -97,9 +98,10 @@
 	greyscale_colors = "#cec8bf"
 	flags_1 = IS_PLAYER_COLORABLE_1
 	armor_type = /datum/armor/df_armor_default // I know this doesn't matter on a backpack but lets just be safe yeah?
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
 
 /obj/item/storage/backpack/satchel/eng/event
+	name = "satchel"
 	icon_state = "satchel"
 	icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
 	worn_icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
@@ -112,7 +114,7 @@
 	greyscale_colors = "#cec8bf"
 	flags_1 = IS_PLAYER_COLORABLE_1
 	armor_type = /datum/armor/df_armor_default
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
 
 // Armwraps
 
@@ -131,7 +133,7 @@
 	greyscale_colors = "#cec8bf"
 	flags_1 = IS_PLAYER_COLORABLE_1
 	armor_type = /datum/armor/df_armor_default
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
 
 // Gloves
 
@@ -151,7 +153,7 @@
 	uses_advanced_reskins = FALSE
 	flags_1 = IS_PLAYER_COLORABLE_1
 	armor_type = /datum/armor/df_armor_default
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
 
 // Footwear assorted
 
@@ -160,15 +162,15 @@
 	desc = "They're just normal shoes, what else were you expecting?."
 	greyscale_colors = "#cec8bf"
 	armor_type = /datum/armor/df_armor_default
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
 
 /obj/item/clothing/shoes/colorable_sandals/df_event
 	greyscale_colors = "#cec8bf"
 	armor_type = /datum/armor/df_armor_default
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
 
 /obj/item/clothing/shoes/jackboots/recolorable/df_event
 	name = "boots"
 	greyscale_colors = "#cec8bf"
 	armor_type = /datum/armor/df_armor_default
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
