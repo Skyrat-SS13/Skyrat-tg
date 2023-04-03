@@ -10,7 +10,7 @@
 	priority_announce("Harmful fungi has been detected on the station, deal with it before it becomes a problem!", "Harmful Fungi", ANNOUNCER_FUNGI)
 
 /datum/round_event/wall_fungus
-	announce_when = 60 // 2 minutes
+	announce_when = 180 // 6 minutes
 	announce_chance = 100
 
 /datum/round_event/wall_fungus/start()

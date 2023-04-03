@@ -65,7 +65,7 @@
 	if(prob(spread_chance * delta_time))
 		spread_to_nearby_wall()
 
-	if(progression_stage >= FUNGUS_STAGE_MAX)
+	if(progression_stage > FUNGUS_STAGE_MAX)
 		collapse_parent_structure()
 		return
 
