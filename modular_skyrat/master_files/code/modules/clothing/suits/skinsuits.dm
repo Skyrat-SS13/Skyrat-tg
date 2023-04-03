@@ -2,11 +2,11 @@
 /obj/item/clothing/under/skinsuit
 	name = "Voidcrosser stardress"
 	desc = "The 'Voidcrosser'-pattern Stardress is a long-standing template upon which most Azulean spacesuits are made. \n\
-			This EVA suit is a single skintight garment, designed for flexibility and maneuverability while using jetpacks or any sort of thruster; \
-			Azuleans preferring to use more familiar swimming motions than most EVA workers. The 'Voidcrosser' applies similar technologies to traditional Shoredresses, \
-			utilizing high-tech fabrics and water pumps to exert pressure over the Azulean's body. An attached Shoredress helm is often used in conjunction with \
-			a third-party oxygen supply to allow one to breathe, and open pores in the suit allow the body to be cooled by the perspiration of internal water. \
-			These suits are reputable among orbital workers for having very little interference with movement, and easy storage by simply folding them inside of any bubble-shaped helmet."
+		This EVA suit is a single skintight garment, designed for flexibility and maneuverability while using jetpacks or any sort of thruster; \
+		Azuleans preferring to use more familiar swimming motions than most EVA workers. The 'Voidcrosser' applies similar technologies to traditional Shoredresses, \
+		utilizing high-tech fabrics and water pumps to exert pressure over the Azulean's body. An attached Shoredress helm is often used in conjunction with \
+		a third-party oxygen supply to allow one to breathe, and open pores in the suit allow the body to be cooled by the perspiration of internal water. \
+		These suits are reputable among orbital workers for having very little interference with movement, and easy storage by simply folding them inside of any bubble-shaped helmet."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/akula.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi'
 	icon_state = "skinsuit"

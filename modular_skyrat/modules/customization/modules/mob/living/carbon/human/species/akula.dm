@@ -50,6 +50,9 @@
 	/// This variable stores the timer datum which appears if the mob becomes wet
 	var/dry_up_timer = TIMER_ID_NULL
 
+/datum/species/akula/get_species_lore()
+	return list("The Azuleans are a culture of opportunistic explorers, driven always to push forward; to keep moving, or suffocate and stagnate. but Agurkrral as a kingdom is one divided by time and space; the old principalities slowly finding themselves crushed under their own weight and 'rust' so to say, while the new principalities grow far too rapidly; nobles easily outrunning whatever checks are put in place to restrain them. generations are typically divided not by age cohort, but by distance from the home-world. they are a culture of opportunist environmentalists, masters of genetic modification and terraforming, wardens of the land and keepers of the sea, but for their own gain.")
+
 /datum/species/akula/randomize_features(mob/living/carbon/human/human_mob)
 	var/main_color
 	var/secondary_color
