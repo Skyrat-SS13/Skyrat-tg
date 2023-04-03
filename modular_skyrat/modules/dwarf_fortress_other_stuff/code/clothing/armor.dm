@@ -33,7 +33,7 @@
 	icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
 	worn_icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
 	worn_icon_teshari = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
-	icon_state = "vest"
+	icon_state = "helmet"
 	greyscale_config = /datum/greyscale_config/plate_helmet
 	greyscale_config_worn = /datum/greyscale_config/plate_helmet/worn
 	greyscale_config_worn_better_vox = /datum/greyscale_config/plate_helmet/worn/newvox
