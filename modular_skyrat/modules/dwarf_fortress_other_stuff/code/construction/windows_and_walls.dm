@@ -31,7 +31,11 @@
 
 	var/turf/turf_we_spawn_stuff = get_turf(src)
 	var/turf/new_wall = turf_we_spawn_stuff.PlaceOnTop(thing_spawned)
+	message_admins("[src] JUST PLACED A [new_wall].")
 	new_wall.set_custom_materials(custom_materials)
+	message_admins("[src] HAD A CUSTOM MATERIALS LIST OF [custom_materials] WHEN IT DID THAT.")
+
+	qdel(src)
 
 /turf/closed/wall/material/dwarf_fortress
 	icon_state = "wall-0"
@@ -40,7 +44,7 @@
 
 /turf/closed/wall/material/dwarf_fortress/examine()
 	. = ..()
-	. += span_notice("With a <b>chisel</b> or even a <b>pickaxe</b> of some kind, you could cut this into <b>blocks</b>.")
+	. += span_notice("You could break this down using a <b>pickaxe</b>.")
 
 /turf/closed/wall/material/dwarf_fortress/try_decon(obj/item/item_used, mob/user)
 	if(item_used.tool_behaviour != TOOL_MINING)
