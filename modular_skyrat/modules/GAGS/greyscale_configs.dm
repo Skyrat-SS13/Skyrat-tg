@@ -462,7 +462,6 @@
 	name = "Worn Formal Suit - Digitigrade"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/suits_digi.dmi'
 
-
 /datum/greyscale_config/recolorable_suitskirt
 	name = "Formal Suitskirt"
 	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/suits.dmi'
@@ -1056,6 +1055,7 @@ digi
 
 /datum/greyscale_config/heels/worn/digi
 	name = "High Heels (Worn Digi)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/heels/heels_worn_digi.json'
 
 /datum/greyscale_config/fancyheels
 	name = "Fancy Heels"
@@ -1065,6 +1065,10 @@ digi
 /datum/greyscale_config/fancyheels/worn
 	name = "Fancy Heels (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/fancyheels/fancyheels_worn.json'
+	
+/datum/greyscale_config/fancyheels/worn/digi
+	name = "Fancy Heels (Worn Digi)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/fancyheels/fancyheels_worn_digi.json'
 
 // TESHARI FALLBACKS.
 
