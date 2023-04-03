@@ -69,7 +69,7 @@ GLOBAL_LIST_INIT(dwarf_brick_recipes, list(
 	max_amount = 1
 
 	// What this boulder cuts into when a chisel or pickaxe is used on it
-	var/cut_type = /obj/item/stack/dwarf_certified/brick
+	var/obj/item/stack/cut_type = /obj/item/stack/dwarf_certified/brick
 	// How many of cut_type do we spawn
 	var/cut_amount = 3
 
@@ -90,7 +90,7 @@ GLOBAL_LIST_INIT(dwarf_brick_recipes, list(
 		balloon_alert_to_viewers("stopped cutting")
 		return FALSE
 	for()
-	new cut_type(get_turf(src), cut_amount)
+	new cut_type(drop_location(), cut_amount)
 	qdel(src)
 
 /obj/item/stack/dwarf_certified/brick
