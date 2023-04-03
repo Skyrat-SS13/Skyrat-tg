@@ -29,12 +29,11 @@
 
 /obj/item/clothing/head/helmet/space/skinsuit_helmet
 	name = "Stardress helm"
-	desc = "A reinforced type of 'Glass' used by Azulean boarding teams, this offshoot of the ones seen in Shoredresses is built to last. \
-		These make use of laminated glass rather than the typical 'flexiglass' of civilian models, allowing them not only durability, \
-		but to hold together when a shatter does occur; and for what remains to stay in the frame. These are typically made of up to four layers of the stuff, \
-		working unintentionally to ensure the faces of their wearers are difficult to identify. In addition, the interlayer gives the helms sound insulation properties, \
-		and the ability to block UV radiation. These helmets are known for being distinctly uncomfortable in comparison to their civilian counterparts; \
-		cramped and with only the most barebones climate control tech."
+	desc = "A reinforced type of 'Glass' often used particularly by Azulean boarding teams, this offshoot of the ones seen in Shoredresses is built to last. \
+		These make use of laminated glass rather than the typical 'flexiglass' of civilian models, allowing them not only durability, but to hold together when a shatter does occur; \
+		and for what remains to stay in the frame. These are typically made of up to four layers of the stuff, working unintentionally to ensure the faces of their wearers are difficult to identify. \
+		In addition, the interlayer gives the helms sound insulation properties, and the ability to block UV radiation. \
+		These helmets are known for being distinctly uncomfortable in comparison to their civilian counterparts; cramped and with only the most barebones climate control tech."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/akula.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/akula.dmi'
 	icon_state = "skinsuithelmet"

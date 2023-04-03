@@ -127,6 +127,11 @@
 		the materials used to construct this wetsuit have rendered it extremely hardy against corrosive liquids and gasses."
 	icon_state = "engi"
 	base_icon_state = "engi"
+	armor_type = /datum/armor/utility_radiation
+
+/obj/item/clothing/under/akula_wetsuit/job/engineering/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/radiation_protected_clothing)
 
 /obj/item/clothing/under/akula_wetsuit/job/cargo
 	name = "Cargo Shoredress wetsuit"
@@ -163,6 +168,7 @@
 		reinforced to their logical endpoint, though their temperatures -- much like the attitude of their wearers, tends to run a bit hot due to a possible manufacturing defect."
 	icon_state = "sec"
 	base_icon_state = "sec"
+	armor_type = /datum/armor/rank_security
 
 /obj/item/clothing/under/akula_wetsuit/job/command
 	name = "Command Shoredress wetsuit"
