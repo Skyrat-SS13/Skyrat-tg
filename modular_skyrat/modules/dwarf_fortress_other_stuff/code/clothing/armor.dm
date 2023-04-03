@@ -13,6 +13,7 @@
 	desc = "An armor vest made of large, hand-hammered plates."
 	icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
 	worn_icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
+	worn_icon_teshari = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
 	icon_state = "vest"
 	greyscale_config = /datum/greyscale_config/plate_vest
 	greyscale_config_worn = /datum/greyscale_config/plate_vest/worn
@@ -32,6 +33,7 @@
 	icon_state = "gauntlets"
 	icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
 	worn_icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
+	worn_icon_teshari = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
 	greyscale_config = /datum/greyscale_config/gauntlets
 	greyscale_config_worn = /datum/greyscale_config/gauntlets/worn
 	greyscale_config_worn_better_vox = /datum/greyscale_config/gauntlets/worn/newvox
@@ -43,17 +45,3 @@
 	flags_1 = IS_PLAYER_COLORABLE_1
 	armor_type = /datum/armor/df_armor_default
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
-
-// Security's sabre
-
-/obj/item/storage/belt/sabre/cargo/security_actually
-	name = "leather sheath"
-	desc = "A fairly standard looking guard's sabre sheath, its a bit dusty from the trip here."
-
-/obj/item/storage/belt/sabre/cargo/security_actually/PopulateContents()
-	new /obj/item/melee/sabre/cargo/security_actually(src)
-	update_appearance()
-
-/obj/item/melee/sabre/cargo/security_actually
-	name = "guard's sabre"
-	desc = "An expertly crafted sabre issued to caravan guards, the fact you're still here means it must've worked!"

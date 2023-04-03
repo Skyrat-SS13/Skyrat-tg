@@ -82,30 +82,44 @@
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
 /obj/item/clothing/suit/toggle/jacket/sweater/leather_colors
-	name = "leather travel jacket"
+	name = "jacket"
 	desc = "Say that name ten times fast."
 	greyscale_colors = "#cec8bf"
 	flags_1 = NONE
 	armor_type = /datum/armor/df_armor_default
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
+// Backpacks and satchels
+
 /obj/item/storage/backpack/explorer/event
+	icon_state = "backpack"
 	icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
 	worn_icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
-	icon_state = "backpack"
-	worn_icon_state = "backpack_worn"
-	worn_icon_better_vox =	'modular_skyrat/modules/GAGS/icons/event_clothes_new_vox.dmi'
-	worn_icon_vox = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
 	worn_icon_teshari = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
+	greyscale_config = /datum/greyscale_config/dwarf_backpack
+	greyscale_config_worn = /datum/greyscale_config/dwarf_backpack/worn
+	greyscale_config_worn_better_vox = /datum/greyscale_config/dwarf_backpack/worn/newvox
+	greyscale_config_worn_vox = /datum/greyscale_config/dwarf_backpack/worn/oldvox
+	greyscale_config_worn_teshari = /datum/greyscale_config/dwarf_backpack/worn/teshari
+	greyscale_colors = "#cec8bf"
+	flags_1 = IS_PLAYER_COLORABLE_1
+	armor_type = /datum/armor/df_armor_default // I know this doesn't matter on a backpack but lets just be safe yeah?
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
 /obj/item/storage/backpack/satchel/explorer/event
+	icon_state = "satchel"
 	icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
 	worn_icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
-	icon_state = "satchel"
-	worn_icon_state = "satchel_worn"
-	worn_icon_better_vox =	'modular_skyrat/modules/GAGS/icons/event_clothes_new_vox.dmi'
-	worn_icon_vox = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
 	worn_icon_teshari = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
+	greyscale_config = /datum/greyscale_config/dwarf_satchel
+	greyscale_config_worn = /datum/greyscale_config/dwarf_satchel/worn
+	greyscale_config_worn_better_vox = /datum/greyscale_config/dwarf_satchel/worn/newvox
+	greyscale_config_worn_vox = /datum/greyscale_config/dwarf_satchel/worn/oldvox
+	greyscale_config_worn_teshari = /datum/greyscale_config/dwarf_satchel/worn/teshari
+	greyscale_colors = "#cec8bf"
+	flags_1 = IS_PLAYER_COLORABLE_1
+	armor_type = /datum/armor/df_armor_default
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
 // Armwraps
 
@@ -115,6 +129,7 @@
 	icon_state = "armwraps"
 	icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
 	worn_icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
+	worn_icon_teshari = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
 	greyscale_config = /datum/greyscale_config/armwraps
 	greyscale_config_worn = /datum/greyscale_config/armwraps/worn
 	greyscale_config_worn_better_vox = /datum/greyscale_config/armwraps/worn/newvox
@@ -122,5 +137,45 @@
 	greyscale_config_worn_teshari = /datum/greyscale_config/armwraps/worn/teshari
 	greyscale_colors = "#cec8bf"
 	flags_1 = IS_PLAYER_COLORABLE_1
+	armor_type = /datum/armor/df_armor_default
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
+
+// Gloves
+
+/obj/item/clothing/gloves/color/black/dwarf_gloves
+	name = "gloves"
+	icon_state = "gloves"
+	icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
+	worn_icon = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
+	worn_icon_teshari = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
+	greyscale_config = /datum/greyscale_config/dwarf_gloves
+	greyscale_config_worn = /datum/greyscale_config/dwarf_gloves/worn
+	greyscale_config_worn_better_vox = /datum/greyscale_config/dwarf_gloves/worn/newvox
+	greyscale_config_worn_vox = /datum/greyscale_config/dwarf_gloves/worn/oldvox
+	greyscale_config_worn_teshari = /datum/greyscale_config/dwarf_gloves/worn/teshari
+	greyscale_colors = "#cec8bf"
+	cut_type = null
+	uses_advanced_reskins = FALSE
+	flags_1 = IS_PLAYER_COLORABLE_1
+	armor_type = /datum/armor/df_armor_default
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
+
+// Footwear assorted
+
+/obj/item/clothing/shoes/colorable_laceups/df_event
+	name = "shoes"
+	desc = "They're just normal shoes, what else were you expecting?."
+	greyscale_colors = "#cec8bf"
+	armor_type = /datum/armor/df_armor_default
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
+
+/obj/item/clothing/shoes/colorable_sandals
+	greyscale_colors = "#cec8bf"
+	armor_type = /datum/armor/df_armor_default
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
+
+/obj/item/clothing/shoes/jackboots/recolorable
+	name = "boots"
+	greyscale_colors = "#cec8bf"
 	armor_type = /datum/armor/df_armor_default
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS

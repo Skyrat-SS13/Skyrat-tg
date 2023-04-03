@@ -1065,7 +1065,7 @@ digi
 /datum/greyscale_config/fancyheels/worn
 	name = "Fancy Heels (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/fancyheels/fancyheels_worn.json'
-	
+
 /datum/greyscale_config/fancyheels/worn/digi
 	name = "Fancy Heels (Worn Digi)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/fancyheels/fancyheels_worn_digi.json'
@@ -1346,4 +1346,64 @@ digi
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
 
 /datum/greyscale_config/plate_vest/worn/teshari
+	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
+
+// Backpack
+
+/datum/greyscale_config/dwarf_backpack
+	name = "Backpack"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/backpack/backpack.json'
+
+/datum/greyscale_config/dwarf_backpack/worn
+	name = "Backpack (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/backpack/backpack_worn.json'
+
+/datum/greyscale_config/dwarf_backpack/worn/newvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_new_vox.dmi'
+
+/datum/greyscale_config/dwarf_backpack/worn/oldvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
+
+/datum/greyscale_config/dwarf_backpack/worn/teshari
+	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
+
+// Satchel
+
+/datum/greyscale_config/dwarf_satchel
+	name = "Satchel"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/satchel/satchel.json'
+
+/datum/greyscale_config/dwarf_satchel/worn
+	name = "Satchel (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/satchel/satchel_worn.json'
+backpack
+/datum/greyscale_config/dwarf_satchel/worn/newvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_new_vox.dmi'
+
+/datum/greyscale_config/dwarf_satchel/worn/oldvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
+
+/datum/greyscale_config/dwarf_satchel/worn/teshari
+	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
+
+// gloves
+
+/datum/greyscale_config/dwarf_gloves
+	name = "gloves"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/gloves/gloves.json'
+
+/datum/greyscale_config/dwarf_gloves/worn
+	name = "gloves (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/event_clothing/gloves/gloves_worn.json'
+
+/datum/greyscale_config/dwarf_gloves/worn/newvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_new_vox.dmi'
+
+/datum/greyscale_config/dwarf_gloves/worn/oldvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
+
+/datum/greyscale_config/dwarf_gloves/worn/teshari
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
