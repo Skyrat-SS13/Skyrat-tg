@@ -42,6 +42,14 @@
 	description = "A purple book with an eldritch eye on it, capable of making one into a \"Heretic\", one with the Forgotten Gods."
 	admin_note = "Heretic antag granter."
 
+// Clock Cultist
+/datum/opposing_force_equipment/antagonist_powers/clock_cult
+	item_type = /obj/item/antag_granter/clock_cult
+	name = "Clockwork Contraption"
+	description = "A cogwheel-shaped device of brass, with a glass lens floating, suspended in the center. Capable of making one become a \"Clock Cultist\"."
+	admin_note = "Clockwork Cultist (solo) antag granter."
+
+/obj/item/antag_granter/clock_cultist
 // Contractor
 /datum/opposing_force_equipment/antagonist_powers/contractor
 	name = "Contractor Bundle"
