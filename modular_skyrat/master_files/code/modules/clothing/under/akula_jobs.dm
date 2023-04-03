@@ -48,7 +48,6 @@
 	if(slot != ITEM_SLOT_ICLOTHING)
 		return
 	check_physique(user)
-	check_tail_overlay(user)
 	add_tail_overlay(user)
 	apply_wetsuit_status_effect(user)
 	update_appearance()
@@ -68,14 +67,11 @@
 		icon_state = "[icon_state]_f"
 	return TRUE
 
-/// Checks if the wearer has a compatible tail for the `tail_overlay` variable
-/obj/item/clothing/under/akula_wetsuit/proc/check_tail_overlay(mob/living/carbon/human/user)
+/// If the wearer has a compatible tail for the `tail_overlay` variable, render it
+/obj/item/clothing/under/akula_wetsuit/proc/add_tail_overlay(mob/living/carbon/human/user)
 	if(!user.dna.species.mutant_bodyparts["tail"])
-		tail_overlay = null
 		return
-
 	var/tail = user.dna.species.mutant_bodyparts["tail"][MUTANT_INDEX_NAME]
-	// to-do: write this better
 	switch(tail)
 		if("Akula")
 			tail_overlay = mutable_appearance('modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi', "overlay_akula", -(BODY_FRONT_LAYER-0.1))
@@ -87,12 +83,8 @@
 			tail_overlay = mutable_appearance('modular_skyrat/master_files/icons/mob/clothing/under/akula.dmi', "overlay_fish", -(BODY_FRONT_LAYER-0.1))
 		else
 			tail_overlay = null
-
-/// Render the actual overlay
-/obj/item/clothing/under/akula_wetsuit/proc/add_tail_overlay(mob/user)
-	if(!tail_overlay)
-		return
-	user.add_overlay(tail_overlay)
+	if(tail_overlay)
+		user.add_overlay(tail_overlay)
 
 	/// Suit armor
 /datum/armor/wetsuit_under
