@@ -7,6 +7,7 @@
 #define MILKING_PUMP_STATE_ON "on"
 
 #define CLIMAX_RETRIVE_MULTIPLIER 2
+#define MILKING_PUMP_MAX_CAPACITY 100
 
 /obj/structure/chair/milking_machine
 	name = "milking machine"
@@ -32,7 +33,6 @@
 *	VESSELS
 */
 
-	var/max_vessel_capacity = 100 // Limits a max capacity of any internal vessel in machine
 	var/obj/item/reagent_containers/milk_vessel
 	var/obj/item/reagent_containers/girlcum_vessel
 	var/obj/item/reagent_containers/semen_vessel
@@ -94,13 +94,13 @@
 	. = ..()
 	milk_vessel = new()
 	milk_vessel.name = "MilkContainer"
-	milk_vessel.reagents.maximum_volume = max_vessel_capacity
+	milk_vessel.reagents.maximum_volume = MILKING_PUMP_MAX_CAPACITY
 	girlcum_vessel = new()
 	girlcum_vessel.name = "GirlcumContainer"
-	girlcum_vessel.reagents.maximum_volume = max_vessel_capacity
+	girlcum_vessel.reagents.maximum_volume = MILKING_PUMP_MAX_CAPACITY
 	semen_vessel = new()
 	semen_vessel.name = "SemenContainer"
-	semen_vessel.reagents.maximum_volume = max_vessel_capacity
+	semen_vessel.reagents.maximum_volume = MILKING_PUMP_MAX_CAPACITY
 	current_vessel = milk_vessel
 
 	vessel_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/milking_machine.dmi', "liquid_empty", LYING_MOB_LAYER)
@@ -162,7 +162,7 @@
 	current_breasts = affected_mob.get_organ_slot(ORGAN_SLOT_BREASTS)
 	current_testicles = affected_mob.get_organ_slot(ORGAN_SLOT_TESTICLES)
 	current_vagina = affected_mob.get_organ_slot(ORGAN_SLOT_VAGINA)
-  
+
 	cut_overlay(locks_overlay)
 	locks_overlay.icon_state = "locks_closed"
 	locks_overlay.layer = ABOVE_MOB_LAYER
@@ -339,7 +339,7 @@
 		update_all_visuals()
 		return FALSE
 
-	if((istype(current_selected_organ, /obj/item/organ/external/genital/testicles) && (semen_vessel.reagents.total_volume == max_vessel_capacity)) || (istype(current_selected_organ, /obj/item/organ/external/genital/vagina) && (girlcum_vessel.reagents.total_volume == max_vessel_capacity)) || (istype(current_selected_organ, /obj/item/organ/external/genital/breasts) && (milk_vessel.reagents.total_volume == max_vessel_capacity)))
+	if((istype(current_selected_organ, /obj/item/organ/external/genital/testicles) && (semen_vessel.reagents.total_volume == MILKING_PUMP_MAX_CAPACITY)) || (istype(current_selected_organ, /obj/item/organ/external/genital/vagina) && (girlcum_vessel.reagents.total_volume == MILKING_PUMP_MAX_CAPACITY)) || (istype(current_selected_organ, /obj/item/organ/external/genital/breasts) && (milk_vessel.reagents.total_volume == MILKING_PUMP_MAX_CAPACITY)))
 		current_mode = MILKING_PUMP_MODE_OFF
 		pump_state = MILKING_PUMP_STATE_OFF
 		update_all_visuals()
@@ -395,7 +395,7 @@
 /* Handle this later.
 /obj/structure/chair/milking_machine/MouseDrop(over_object, src_location, over_location)
 	. = ..()
-  
+
 	if(!istype(src, /mob/living/))
 		return FALSE
 
@@ -441,17 +441,17 @@
 
 // Handler of the process of dispensing a glass from a machine to a tile
 /obj/structure/chair/milking_machine/proc/adjust_item_drop_location(atom/movable/AM)
-	if (AM == beaker)
+	if(AM == beaker)
 		AM.pixel_x = AM.base_pixel_x - 8
 		AM.pixel_y = AM.base_pixel_y + 8
 		return null
-	else
-		var/md5 = md5(AM.name)
-		for (var/i in 1 to 32)
-			. += hex2num(md5[i])
-		. = . % 9
-		AM.pixel_x = AM.base_pixel_x + ((.%3)*6)
-		AM.pixel_y = AM.base_pixel_y - 8 + (round( . / 3)*8)
+
+	var/md5 = md5(AM.name)
+	for (var/i in 1 to 32)
+		. += hex2num(md5[i])
+	. = . % 9
+	AM.pixel_x = AM.base_pixel_x + ((.%3)*6)
+	AM.pixel_y = AM.base_pixel_y - 8 + (round( . / 3)*8)
 
 // General handler for calling redrawing of the current state of the machine
 /obj/structure/chair/milking_machine/proc/update_all_visuals()
@@ -542,14 +542,15 @@
 	var/static/list/vessel_state_list = list("liquid_empty", "liquid_low", "liquid_medium", "liquid_high", "liquid_full")
 
 	var/state_to_use = 1
+	MILKING_PUMP_MAX_CAPACITY
 	switch(total_reagents_volume)
-		if(max_vessel_capacity)
+		if(MILKING_PUMP_MAX_CAPACITY)
 			state_to_use = 5
-		if((max_vessel_capacity / 1.5) to max_vessel_capacity)
+		if((MILKING_PUMP_MAX_CAPACITY / 1.5) to MILKING_PUMP_MAX_CAPACITY)
 			state_to_use = 4
-		if((max_vessel_capacity / 3) to (max_vessel_capacity / 1.5))
+		if((MILKING_PUMP_MAX_CAPACITY / 3) to (MILKING_PUMP_MAX_CAPACITY / 1.5))
 			state_to_use = 3
-		if(1 to (max_vessel_capacity / 3))
+		if(1 to (MILKING_PUMP_MAX_CAPACITY / 3))
 			state_to_use = 2
 		if(0 to 1)
 			state_to_use = 1
@@ -598,11 +599,11 @@
 	data["beakerMaxVolume"] = beaker ? beaker.volume : null
 	data["beakerCurrentVolume"] = beaker ? beaker.reagents.total_volume : null
 	data["mode"] = current_mode
-	data["milkTankMaxVolume"] = max_vessel_capacity
+	data["milkTankMaxVolume"] = MILKING_PUMP_MAX_CAPACITY
 	data["milkTankCurrentVolume"] = milk_vessel ? milk_vessel.reagents.total_volume : null
-	data["girlcumTankMaxVolume"] = max_vessel_capacity
+	data["girlcumTankMaxVolume"] = MILKING_PUMP_MAX_CAPACITY
 	data["girlcumTankCurrentVolume"] = girlcum_vessel ? girlcum_vessel.reagents.total_volume : null
-	data["semenTankMaxVolume"] = max_vessel_capacity
+	data["semenTankMaxVolume"] = MILKING_PUMP_MAX_CAPACITY
 	data["semenTankCurrentVolume"] = semen_vessel ? semen_vessel.reagents.total_volume : null
 	data["current_vessel"] = current_vessel ? current_vessel : null
 	data["current_selected_organ"] = current_selected_organ ? current_selected_organ : null
