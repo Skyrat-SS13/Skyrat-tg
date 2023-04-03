@@ -36,7 +36,7 @@
 /obj/item/clockwork/replica_fabricator/examine(mob/user)
 	. = ..()
 	if(IS_CLOCK(user))
-		. += "[span_brass("Current power: ")][span_clockyellow("[power]")] W[span_brass(".")]"
+		. += "[span_brass("Current power: ")][span_clockyellow("[power]")] [span_brass("W.")]"
 		. += span_brass("Use on brass to convert it into power.")
 		. += span_brass("Use on other materials to convert them into power, but less efficiently.")
 		. += span_brass("<b>Use</b> in-hand to select what to fabricate.")
@@ -55,11 +55,15 @@
 	if(!selected_output || !isopenturf(target)) // Now we handle objects
 		return
 
+	var/turf/creation_turf = get_turf(target)
+
+	if(locate(selected_output.to_create_path) in creation_turf)
+		to_chat(user, span_clockyellow("There is already one of these on this tile!"))
+		return
+
 	if(power < selected_output.cost)
 		to_chat(user, span_clockyellow("[src] needs at least [selected_output.cost]W of power to create this."))
 		return
-
-	var/turf/creation_turf = get_turf(target)
 
 	var/obj/effect/temp_visual/ratvar/constructing_effect/effect = new(creation_turf, selected_output.creation_delay)
 

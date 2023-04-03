@@ -7,6 +7,8 @@
 	break_message = span_warning("Oh, that broke.")
 	/// What's appeneded to the structure when unanchored
 	var/unwrenched_suffix = "_unwrenched"
+	/// If this can be moved at all by unwrenching it
+	var/can_unwrench = TRUE
 
 
 /obj/structure/destructible/clockwork/gear_base/Initialize(mapload)
@@ -16,6 +18,10 @@
 
 /obj/structure/destructible/clockwork/gear_base/wrench_act(mob/living/user, obj/item/tool)
 	if(!IS_CLOCK(user))
+		return
+
+	if(!can_unwrench)
+		balloon_alert(user, "cannot be unwrenched!")
 		return
 
 	balloon_alert(user, "[anchored ? "unwrenching" : "wrenching"]...")
