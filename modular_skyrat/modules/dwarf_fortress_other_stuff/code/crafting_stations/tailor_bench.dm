@@ -13,6 +13,14 @@
 		/datum/crafting_bench_recipe/clothing/skirt_uniform,
 		/datum/crafting_bench_recipe/clothing/robes,
 		/datum/crafting_bench_recipe/clothing/armwraps,
+		/datum/crafting_bench_recipe/clothing/gloves,
+		/datum/crafting_bench_recipe/clothing/sandals,
+		/datum/crafting_bench_recipe/clothing/shoes,
+		/datum/crafting_bench_recipe/clothing/boots,
+		/datum/crafting_bench_recipe/clothing/backpack,
+		/datum/crafting_bench_recipe/clothing/satchel,
+		/datum/crafting_bench_recipe/clothing/leather_armor,
+		/datum/crafting_bench_recipe/clothing/leather_helmet,
 	)
 
 // DA RECIPEZE

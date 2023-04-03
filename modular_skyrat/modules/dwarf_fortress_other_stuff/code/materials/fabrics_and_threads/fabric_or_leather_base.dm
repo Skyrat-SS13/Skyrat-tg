@@ -1,4 +1,4 @@
-/obj/item/stack/dwarf_certified/leather_or_cloth/fabric
+/obj/item/stack/dwarf_certified/leather_or_cloth
 	name = "generic fabric or leather"
 	singular_name = "generic fabric or leather"
 
