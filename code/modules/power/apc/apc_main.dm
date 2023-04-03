@@ -585,6 +585,18 @@
 			charging = APC_NOT_CHARGING
 			chargecount = 0
 
+		// SKYRAT ADDITION START - CLOCK CULT
+		if(integration_cog)
+			var/power_delta = clamp(cell.charge - 50, 0, 50)
+			GLOB.clock_power = min(round(GLOB.clock_power + (power_delta / 2.5)) , GLOB.max_clock_power) // Will continue to siphon even if full just so the APCs aren't completely silent about having an issue (since power will regularly be full)
+			cell.charge -= power_delta
+			add_load(power_delta)
+			charging = APC_NOT_CHARGING
+			chargecount = 0
+			if(cell.charge <= 50)
+				cell.charge = 0
+		// SKYRAT ADDITION END
+
 	else // no cell, switch everything off
 
 		charging = APC_NOT_CHARGING

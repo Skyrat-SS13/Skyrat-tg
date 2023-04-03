@@ -89,6 +89,7 @@
 	max_integrity = 200
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	//SKYRAT EDIT BEGIN - Roundstart Snails
+	alternate_worn_layer = ABOVE_BODY_FRONT_LAYER //This makes them layer over tails like the cult backpack; some tails really shouldn't appear over them!
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Conical Shell" = list(
@@ -114,6 +115,48 @@
 			RESKIN_ICON_STATE = "caramelshell",
 			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
 			RESKIN_WORN_ICON_STATE = "caramelshell"
+		),
+		"Metal Shell" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
+			RESKIN_ICON_STATE = "mechashell",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON_STATE = "mechashell"
+		),
+		"Pyramid Shell" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
+			RESKIN_ICON_STATE = "pyramidshell",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON_STATE = "pyramidshell"
+		),
+		"Ivory Pyramid Shell" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
+			RESKIN_ICON_STATE = "pyramidshellwhite",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON_STATE = "pyramidshellwhite"
+		),
+		"Spiral Shell" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
+			RESKIN_ICON_STATE = "spiralshell",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON_STATE = "spiralshell"
+		),
+		"Ivory Spiral Shell" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
+			RESKIN_ICON_STATE = "spiralshellwhite",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON_STATE = "spiralshellwhite"
+		),
+		"Rocky Shell" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
+			RESKIN_ICON_STATE = "rockshell",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON_STATE = "rockshell"
+		),
+		"Ivory Rocky Shell" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi',
+			RESKIN_ICON_STATE = "rockshellwhite",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON_STATE = "rockshellwhite"
 		),
 	)
 	//SKYRAT EDIT END - Roundstart Snails
