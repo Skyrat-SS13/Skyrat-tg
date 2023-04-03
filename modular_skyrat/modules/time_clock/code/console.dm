@@ -119,7 +119,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 
 	clocked_in_job.current_positions++
 
-	SSid_access.apply_trim_to_card(inserted_id, id_component.stored_trim.type, FALSE)
+	SSid_access.apply_trim_to_card(inserted_id, id_component.stored_trim.type, TRUE)
 	inserted_id.assignment = id_component.stored_assignment
 
 	radio.talk_into(src, "[inserted_id.registered_name], [inserted_id.assignment] has returned to duty.", announcement_channel)
