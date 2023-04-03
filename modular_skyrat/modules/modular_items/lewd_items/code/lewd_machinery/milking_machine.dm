@@ -542,7 +542,6 @@
 	var/static/list/vessel_state_list = list("liquid_empty", "liquid_low", "liquid_medium", "liquid_high", "liquid_full")
 
 	var/state_to_use = 1
-	MILKING_PUMP_MAX_CAPACITY
 	switch(total_reagents_volume)
 		if(MILKING_PUMP_MAX_CAPACITY)
 			state_to_use = 5
