@@ -83,6 +83,7 @@
 	akula.dna.features["mcolor"] = main_color
 	akula.dna.features["mcolor2"] = secondary_color
 	akula.dna.features["mcolor3"] = tertiary_color
+	akula.dna.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Akula", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, tertiary_color))
 	akula.update_mutant_bodyparts(TRUE)
 	akula.update_body(TRUE)
 

@@ -104,10 +104,11 @@
 	/// Our large examine text
 	var/extended_desc = "The 'Wetworks'-pattern Shoredress is a long-standing template upon which most Azulean 'wetsuits' are made. \
 		This atmospheric exploration suit is a single form-fitting garment, designed to keep wearers comfortable in the harsh environment of dry land; \
-		even sometimes worn underneath orbital suits such as MODs. Shoredresses apply active thermal channels and motion-powered micropumps \
-		to allow for water of the wearer's temperature choice to circulate; ensuring ample flow over not only the gills, but the rest of the wearer's skin, \
-		at the cost of occasional movement being needed when the wearer is still. These suits are known to come with luminescent panels that take on a bright glow when underwater, \
-		meant for signalling as well as higher visibility in deep waters. The system is meant to only be able to process water, fresh or otherwise; but unofficially, \
+		even sometimes worn underneath orbital suits such as MODs. \n\
+		Shoredresses apply active thermal channels and motion-powered micropumps to allow for water of the wearer's temperature choice to circulate; \
+		ensuring ample flow over not only the gills, but the rest of the wearer's skin, at the cost of occasional movement being needed when the wearer is still. \
+		These suits are known to come with luminescent panels that take on a bright glow when underwater, meant for signalling as well as higher visibility in deep waters. \
+		The system is meant to only be able to process water, fresh or otherwise; but unofficially, \
 		a great many chemicals or even drinks have been loaded in by adventurous or careless explorers of the New Principalities-- at fantastic personal risk to their gills."
 
 /obj/item/clothing/under/akula_wetsuit/job/examine(mob/user)
@@ -159,7 +160,7 @@
 	desc = "The 'Security'-Type Shoredress is a model commissioned by Lopland; but the origins of this wetsuit lie in designs belonging to \
 		rank-and-file warriors and fighters in the New Principalities. Designed to be protective over comfortable, these suits are no true \
 		replacement for true armor, but make an excellent undersuit for even civilian plate carriers. The systems inside have been \
-		reinforced to their logical endpoint, though their temperatures -- much like the attitude of their wearers, tend to run a bit hot due to manufacturing defect."
+		reinforced to their logical endpoint, though their temperatures -- much like the attitude of their wearers, tends to run a bit hot due to a possible manufacturing defect."
 	icon_state = "sec"
 	base_icon_state = "sec"
 
@@ -174,8 +175,13 @@
 
 
 /obj/item/clothing/head/helmet/space/akula_wetsuit
-	name = "Shoredress-Glass helmet"
-	desc = "A glass dome that encompasses the wearer with H2O or just the O."
+	name = "Shoredress helm"
+	desc = "Known simply as a 'Glass' throughout Azulean society as a whole, these spheroidal helmets are often the main source of comfort for workers on land; domestic and abroad. \
+		More advanced than humans would ever give them credit for, a Shoredress's Glass is a piece of technology unto itself. \
+		These helmets employ a near-invisible system of cameras and sensors to prevent refraction from the water kept inside. \
+		The 'flexiglass' glass comprising the unit is chemically strengthened to be thin, light, and damage-resistant, but capable of bending even in half without shattering; \
+		all to allow you to touch your face. Some have taken to putting electronic displays around the face to help express emotion, or to signal nonverbally. \
+		These helms are normally attached to Shoredresses or Stardresses, but comes with a fitted neoprene collar to allow wear on essentially anything."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/akula.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/akula.dmi'
 	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL | SNUG_FIT | PLASMAMAN_HELMET_EXEMPT

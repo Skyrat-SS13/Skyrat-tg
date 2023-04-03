@@ -96,5 +96,5 @@ GLOBAL_LIST_INIT(loadout_inhand_items, generate_loadout_items(/datum/loadout_ite
 	item_path = /obj/item/sign/flag/nri
 
 /datum/loadout_item/inhand/flag_azulea
-	name = "Folded Azulea Flag."
+	name = "Folded Azulea Flag"
 	item_path = /obj/item/sign/flag/azulea
