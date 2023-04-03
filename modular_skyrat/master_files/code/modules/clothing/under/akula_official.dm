@@ -2,6 +2,8 @@
 	icon_state = ""
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/centcom.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/centcom.dmi'
+	female_sprite_flags = NO_FEMALE_UNIFORM
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/rank/azulean/old_blood
 	name = "\improper Oldblood's royal regalia"
@@ -16,6 +18,7 @@
 /obj/item/clothing/under/rank/azulean/old_blood/skirt
 	name = "\improper Oldblood's royal regalia"
 	icon_state = "oldblood_skirt"
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/azulean/upstart
 	name = "\improper Upstart's noble getup"
@@ -29,3 +32,4 @@
 /obj/item/clothing/under/rank/azulean/upstart/skirt
 	name = "\improper Upstart's noble getup"
 	icon_state = "upstart_skirt"
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
