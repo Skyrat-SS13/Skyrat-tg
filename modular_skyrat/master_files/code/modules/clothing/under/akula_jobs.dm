@@ -92,7 +92,6 @@
 	wound = 5
 
 /obj/item/clothing/under/akula_wetsuit/job
-	name = "Shoredress wetsuit"
 	/// Our large examine text
 	var/extended_desc = "The 'Wetworks'-pattern Shoredress is a long-standing template upon which most Azulean 'wetsuits' are made. \
 		This atmospheric exploration suit is a single form-fitting garment, designed to keep wearers comfortable in the harsh environment of dry land; \

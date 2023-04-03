@@ -50,6 +50,9 @@
 	/// This variable stores the timer datum which appears if the mob becomes wet
 	var/dry_up_timer = TIMER_ID_NULL
 
+/datum/species/akula/get_species_description()
+	return placeholder_description
+
 /datum/species/akula/get_species_lore()
 	return list("The Azuleans, known as 'Akulas' or 'Akulans' to humans, are a strong-willed and monarchist culture. A vast nation, the Kingdom of Agurkrral has achieved its status largely by sheer tenacity; Azuleans forcing themselves upwards from the depths of their home seas all the way to a monarchy that even dwarfs the Sol Federation. They are known to be an expansionist culture, collectivist opportunists that are driven by history and culture to push further, and to push onward. To keep moving, or to suffocate and stagnate. \n\
 	Beginning their prehistory with total defeat of another intelligent species set to keep them in their waters forever, the Azuleans have forged themselves into a pioneering people willing to exploit even the most hostile lands; and turn foreign places, flora and fauna, and even people to their advantage. New colonies are being terraformed into 'Agurkrral-A-Likes' every day, strange bioengineered creatures released into the wilds and massive treatment machines being ran in the waters to accomodate the new biosphere. Even some foreign citizens have been forcibly turned into Azuleans through genemodding, before having their genes locked and unable to be altered by anyone else. \n\
@@ -106,12 +109,6 @@
 	if(BMS)
 		markings = assemble_body_markings_from_set(BMS, passed_features, src)
 	return markings
-
-/datum/species/akula/get_species_description()
-	return placeholder_description
-
-/datum/species/akula/get_species_lore()
-	return list(placeholder_lore)
 
 /datum/species/akula/pre_equip_species_outfit(datum/job/job, mob/living/carbon/human/equipping, visuals_only = FALSE)
 	if(job?.akula_outfit)
