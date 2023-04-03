@@ -2,9 +2,17 @@
 #define NIGHTSHIFT_LIGHT_MODIFIER 0.15
 #define NIGHTSHIFT_COLOR_MODIFIER 0.10
 
+/atom
+	light_power = 1.25
+
 /obj/machinery/light
 	icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting.dmi'
 	overlay_icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting_overlay.dmi'
+	brightness = 5.5
+	bulb_colour = LIGHT_COLOR_FAINT_BLUE
+	bulb_power = 1.12
+	nightshift_light_color = null // Let the dynamic night shift color code handle this.
+	bulb_low_power_colour = "#f3fffa"
 	var/maploaded = FALSE //So we don't have a lot of stress on startup.
 	var/turning_on = FALSE //More stress stuff.
 	var/constant_flickering = FALSE // Are we always flickering?
