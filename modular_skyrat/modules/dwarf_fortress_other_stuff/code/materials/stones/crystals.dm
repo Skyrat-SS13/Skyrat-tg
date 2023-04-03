@@ -23,6 +23,8 @@
 	mats_per_unit = list(/datum/material/dwarf_certified/rock/crystal = MINERAL_MATERIAL_AMOUNT)
 	material_type = /datum/material/dwarf_certified/rock/crystal
 
+	cut_amount = 1
+
 /obj/item/stack/dwarf_certified/cut_gem
 	name = "generic gemstone"
 	singular_name = "generic gemstone"

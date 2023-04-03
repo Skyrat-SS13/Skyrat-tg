@@ -1,3 +1,39 @@
+GLOBAL_LIST_INIT(dwarf_boulder_recipes, list(
+	new /datum/stack_recipe( \
+	"rough rock wall", \
+	/turf/closed/wall/material/dwarf_fortress/smooth, \
+	req_amount = 1, \
+	res_amount = 1, \
+	time = 3 SECONDS, \
+	one_per_turf = TRUE, \
+	on_solid_ground = FALSE, \
+	applies_mats = TRUE \
+	), \
+))
+
+GLOBAL_LIST_INIT(dwarf_brick_recipes, list(
+	new /datum/stack_recipe( \
+	"brick wall", \
+	/turf/closed/wall/material/dwarf_fortress/brick, \
+	req_amount = 1, \
+	res_amount = 1, \
+	time = 3 SECONDS, \
+	one_per_turf = TRUE, \
+	on_solid_ground = FALSE, \
+	applies_mats = TRUE \
+	), \
+	new /datum/stack_recipe( \
+	"brick floor tile", \
+	/turf/open/floor/material/dwarf_fortress/stone, \
+	req_amount = 1, \
+	res_amount = 1, \
+	time = 1 SECONDS, \
+	one_per_turf = FALSE, \
+	on_solid_ground = FALSE, \
+	applies_mats = TRUE \
+	), \
+))
+
 /datum/material/dwarf_certified/rock
 	name = "generic rock"
 	desc = "Hey... you shouldn't see this!"
@@ -36,10 +72,16 @@
 
 	// What this boulder cuts into when a chisel or pickaxe is used on it
 	var/cut_type = /obj/item/stack/dwarf_certified/brick
+	// How many of cut_type do we spawn
+	var/cut_amount = 3
 
 /obj/item/stack/dwarf_certified/rock/examine()
 	. = ..()
 	. += span_notice("With a <b>chisel</b> or even a <b>pickaxe</b> of some kind, you could cut this into <b>blocks</b>.")
+
+/obj/item/stack/dwarf_certified/rock/get_main_recipes()
+	. = ..()
+	. += GLOB.dwarf_boulder_recipes
 
 /obj/item/stack/dwarf_certified/rock/attackby(obj/item/attacking_item, mob/user, params)
 	if((attacking_item.tool_behaviour != TOOL_MINING) && !(istype(attacking_item, /obj/item/chisel)))
@@ -49,7 +91,8 @@
 	if(!do_after(user, 2 SECONDS, target = src))
 		balloon_alert_to_viewers("stopped cutting")
 		return FALSE
-	new cut_type(get_turf(src), amount)
+	for()
+	new cut_type(get_turf(src), cut_amount)
 	qdel(src)
 
 /obj/item/stack/dwarf_certified/brick
@@ -69,10 +112,6 @@
 
 	max_amount = 6 // Blocks are so much easier to store and move around, don't you know?
 
-/turf/closed/wall/mineral/stone/material
-	name = "brick wall"
-	desc = "A wall made of solid bricks."
-	sheet_type = null
-	custom_materials = null
-	baseturfs = /turf/baseturf_bottom
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
+/obj/item/stack/dwarf_certified/rock/get_main_recipes()
+	. = ..()
+	. += GLOB.dwarf_brick_recipes

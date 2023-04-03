@@ -136,21 +136,3 @@ GLOBAL_LIST_INIT(dwarf_glass_recipes, list(
 
 	mats_per_unit = list(/datum/material/dwarf_certified/glass/crystal = MINERAL_MATERIAL_AMOUNT)
 	material_type = /datum/material/dwarf_certified/glass/crystal
-
-// THE WINDOW STRUCTURE ITSELF
-
-/obj/structure/window/fulltile/material
-	icon = 'modular_skyrat/modules/aesthetics/walls/icons/material_wall.dmi'
-	base_icon_state = "wall"
-	icon_state = "wall-0"
-	glass_type = null
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
-
-/obj/structure/window/fulltile/material/set_custom_materials()
-	. = ..()
-
-	if(length(custom_materials))
-		glass_type = custom_materials[1].sheet_type
-
-/obj/structure/window/fulltile/material/spawn_debris(location)
-	return
