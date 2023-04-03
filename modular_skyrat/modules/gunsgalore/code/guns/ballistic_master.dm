@@ -66,7 +66,6 @@
 				if(istype(A, /obj/item/ammo_box) && box_reload_penalty)
 					box_load = TRUE
 					user.changeNext_move(box_reload_delay) // cooldown to simulate having to fumble for another round
-					to_chat(user, "funny debug: homeboy used an ammo box to reload, laugh. cooldown inflicted: [box_reload_delay]")
 					balloon_alert(user, "reload encumbered!")
 				to_chat(user, span_notice("You load [num_loaded] [cartridge_wording]\s into [src][box_load ?  ", but it takes some extra effort" : ""]."))
 				playsound(src, load_sound, load_sound_volume, load_sound_vary)
