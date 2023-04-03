@@ -87,8 +87,8 @@
 	akula.dna.features["mcolor2"] = secondary_color
 	akula.dna.features["mcolor3"] = tertiary_color
 	akula.dna.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Akula", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, tertiary_color))
-	akula.update_mutant_bodyparts(TRUE)
-	akula.update_body(TRUE)
+	akula.dna.features["legs"] = "Normal Legs"
+	regenerate_organs(akula, src, visual_only = TRUE)
 
 /obj/item/organ/internal/eyes/akula
 	// Eyes over hair as bandaid for the low amounts of head matching hair
