@@ -2,11 +2,12 @@ GLOBAL_LIST_INIT(dwarf_boulder_recipes, list(
 	new /datum/stack_recipe( \
 	"rough rock wall", \
 	/turf/closed/wall/material/dwarf_fortress/smooth, \
-	req_amount = 1, \
+	1, \
 	time = 3 SECONDS, \
 	one_per_turf = TRUE, \
 	on_solid_ground = TRUE, \
 	applies_mats = TRUE \
+	category = CAT_STRUCTURE \
 	), \
 ))
 
@@ -19,6 +20,7 @@ GLOBAL_LIST_INIT(dwarf_brick_recipes, list(
 	one_per_turf = TRUE, \
 	on_solid_ground = TRUE, \
 	applies_mats = TRUE \
+	category = CAT_STRUCTURE \
 	), \
 	new /datum/stack_recipe( \
 	"brick floor tile", \
@@ -89,7 +91,6 @@ GLOBAL_LIST_INIT(dwarf_brick_recipes, list(
 	if(!do_after(user, 2 SECONDS, target = src))
 		balloon_alert_to_viewers("stopped cutting")
 		return FALSE
-	for()
 	new cut_type(drop_location(), cut_amount)
 	qdel(src)
 
