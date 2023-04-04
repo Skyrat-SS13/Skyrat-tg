@@ -21,20 +21,3 @@
 		target_console.frozen_item += found_item
 
 	return TRUE
-
-/obj/item/test_item
-	name = "test item"
-
-/obj/item/test_item/attack(mob/living/target_mob, mob/living/user, params)
-	. = ..()
-	var/mob/living/carbon/human/human_target = target_mob
-	if(!human_target)
-		return FALSE
-
-	var/list/items_to_return = list(
-		/obj/item/pen,
-		/obj/item/oxygen_candle
-	)
-
-	human_target.return_items_to_console(items_to_return)
-	return TRUE
