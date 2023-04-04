@@ -1,10 +1,21 @@
 /// Dynamically calculate nightshift brightness. How TG does it is painful to modify.
 #define NIGHTSHIFT_LIGHT_MODIFIER 0.15
-#define NIGHTSHIFT_COLOR_MODIFIER 0.25
+#define NIGHTSHIFT_COLOR_MODIFIER 0.10
+
+/atom
+	light_power = 1.25
 
 /obj/machinery/light
 	icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting.dmi'
 	overlay_icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting_overlay.dmi'
+	brightness = 5.5
+	bulb_colour = LIGHT_COLOR_FAINT_BLUE
+	bulb_power = 1.15
+	nightshift_light_color = null // Let the dynamic night shift color code handle this.
+	bulb_low_power_colour = LIGHT_COLOR_DARK_BLUE
+	bulb_low_power_brightness_mul = 0.45
+	bulb_low_power_pow_min = 0.4
+	bulb_major_emergency_brightness_mul = 1 // don't dim in an emergency, why is that a thing
 	var/maploaded = FALSE //So we don't have a lot of stress on startup.
 	var/turning_on = FALSE //More stress stuff.
 	var/constant_flickering = FALSE // Are we always flickering?
@@ -38,9 +49,11 @@
 			var/green = GETGREENPART(bulb_colour)
 			var/blue = GETBLUEPART(bulb_colour)
 
-			green -= round((green * NIGHTSHIFT_COLOR_MODIFIER) / 2) // Divide by two otherwise it'll go red rather than orange-white.
-			blue -= round(blue * NIGHTSHIFT_COLOR_MODIFIER)
-
+			red += round(red * NIGHTSHIFT_COLOR_MODIFIER)
+			green -= round(green * NIGHTSHIFT_COLOR_MODIFIER * 0.3)
+			red = clamp(red, 0, 255) // clamp to be safe, or you can end up with an invalid hex value
+			green = clamp(green, 0, 255)
+			blue = clamp(blue, 0, 255)
 			new_color = "#[num2hex(red, 2)][num2hex(green, 2)][num2hex(blue, 2)]"  // Splice the numbers together and turn them back to hex.
 
 	var/matching = light && new_brightness == light.light_range && new_power == light.light_power && new_color == light.light_color
