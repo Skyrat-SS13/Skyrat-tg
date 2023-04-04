@@ -50,6 +50,13 @@
 	. = ..()
 	remove_wetsuit_status_effect(user)
 
+/obj/item/clothing/head/helmet/space/skinsuit_helmet/Destroy()
+	. = ..()
+	var/mob/user = loc
+	if(!istype(user))
+		return
+	remove_wetsuit_status_effect(user)
+
 /obj/item/clothing/suit/armor/riot/skinsuit_armor
 	name = "Shorebreaker plating"
 	desc = "'Shorebreaker'-pattern Stardress plating was developed for Azulean boarding teams in service of the New Principalities. \
@@ -74,6 +81,13 @@
 	. = ..()
 	check_tail(user)
 	update_appearance()
+
+/obj/item/clothing/suit/armor/riot/skinsuit_armor/Destroy()
+	. = ..()
+	var/mob/user = loc
+	if(!istype(user))
+		return
+	remove_wetsuit_status_effect(user)
 
 // Pick an icon_state that matches nicer with tails if one is found on the wearer
 /obj/item/clothing/suit/armor/riot/skinsuit_armor/proc/check_tail(mob/living/carbon/human/user)

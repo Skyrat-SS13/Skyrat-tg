@@ -1,5 +1,7 @@
 /// How long the akula will stay wet for, AKA how long their species buff will last without being sustained by h2o
 #define DRY_UP_TIME 10 MINUTES
+/// How many wetstacks an Akula will get upon creation
+#define INITIAL_WETSTACKS 15
 
 /datum/species/akula
 	name = "Akula"
@@ -104,10 +106,10 @@
 	eyes_layer = HAIR_LAYER-0.1
 
 /datum/species/akula/get_random_body_markings(list/passed_features)
-	var/datum/body_marking_set/BMS = GLOB.body_marking_sets["Akula"]
+	var/datum/body_marking_set/body_marking_set = GLOB.body_marking_sets["Akula"]
 	var/list/markings = list()
-	if(BMS)
-		markings = assemble_body_markings_from_set(BMS, passed_features, src)
+	if(body_marking_set)
+		markings = assemble_body_markings_from_set(body_marking_set, passed_features, src)
 	return markings
 
 /datum/species/akula/pre_equip_species_outfit(datum/job/job, mob/living/carbon/human/equipping, visuals_only = FALSE)
@@ -124,7 +126,7 @@
 	. = ..()
 	RegisterSignal(akula, COMSIG_MOB_TRIGGER_WET_SKIN, PROC_REF(wetted), akula)
 	// lets give 15 wet_stacks on initial
-	akula.set_wet_stacks(15, remove_fire_stacks = FALSE)
+	akula.set_wet_stacks(INITIAL_WETSTACKS, remove_fire_stacks = FALSE)
 
 /// Remove the signal on species loss
 /datum/species/akula/on_species_loss(mob/living/carbon/akula, datum/species/new_species, pref_load)
@@ -161,3 +163,4 @@
 		SEND_SIGNAL(owner, COMSIG_MOB_TRIGGER_WET_SKIN)
 
 #undef DRY_UP_TIME
+#undef INITIAL_WETSTACKS

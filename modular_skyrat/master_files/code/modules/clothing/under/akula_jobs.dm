@@ -1,3 +1,6 @@
+/// How many wetstacks does the clothing's status effect apply to its wearer
+#define STATUS_EFFECT_STACKS 15
+
 /// A proc to be used in `equipped()` for all akula clothing which has the 'special tech' to keep their wearers slippery
 /obj/item/clothing/proc/apply_wetsuit_status_effect(mob/living/carbon/human/user)
 	if(!HAS_TRAIT(user, TRAIT_SLICK_SKIN))
@@ -10,6 +13,7 @@
 		return FALSE
 	user.remove_status_effect(/datum/status_effect/wetsuit)
 
+/// The status effect which `apply_wetsuit_status_effect` gives
 /datum/status_effect/wetsuit
 	id = "wetsuit"
 	status_type = STATUS_EFFECT_UNIQUE
@@ -17,7 +21,7 @@
 	tick_interval = 10 SECONDS
 
 /datum/status_effect/wetsuit/tick()
-	owner.set_wet_stacks(15)
+	owner.set_wet_stacks(STATUS_EFFECT_STACKS)
 
 /obj/item/clothing/under/akula_wetsuit
 	name = "Shoredress wetsuit"
@@ -44,6 +48,16 @@
 /obj/item/clothing/under/akula_wetsuit/Initialize(mapload)
 	. = ..()
 	update_appearance()
+
+/obj/item/clothing/under/akula_wetsuit/Destroy()
+	. = ..()
+	var/mob/user = loc
+	if(!istype(user))
+		return
+	if(tail_overlay)
+		user.cut_overlay(tail_overlay)
+		tail_overlay = null
+	remove_wetsuit_status_effect(user)
 
 /obj/item/clothing/under/akula_wetsuit/equipped(mob/user, slot)
 	. = ..()
@@ -219,8 +233,12 @@
 
 /obj/item/clothing/head/helmet/space/akula_wetsuit/Destroy()
 	. = ..()
+	var/mob/user = loc
 	if(attached_hat)
 		attached_hat.forceMove(drop_location())
+	if(!istype(user))
+		return
+	remove_wetsuit_status_effect(user)
 
 /obj/item/clothing/head/helmet/space/akula_wetsuit/equipped(mob/user, slot)
 	. = ..()
@@ -245,14 +263,14 @@
 		return
 	var/obj/item/clothing/hitting_hat = hitting_item
 	if(hitting_hat.clothing_flags & PLASMAMAN_HELMET_EXEMPT)
-		to_chat(user, span_notice("You cannot place [hitting_hat] in helmet!"))
+		balloon_alert(user, "doesn't fit!")
 		return
 	if(attached_hat)
-		to_chat(user, span_notice("There's already something placed inside the helmet!"))
+		balloon_alert(user, "already something inside!")
 		return
 
 	attached_hat = hitting_hat
-	to_chat(user, span_notice("You placed [hitting_hat] in the helmet!"))
+	balloon_alert(user, "[hitting_hat] put inside")
 	hitting_hat.forceMove(src)
 	icon_state = "empty"
 	update_appearance()
@@ -272,8 +290,10 @@
 	if(!attached_hat)
 		return
 	user.put_in_active_hand(attached_hat)
-	to_chat(user, span_notice("You removed [attached_hat] from helmet!"))
+	balloon_alert(user, "[attached_hat] removed")
 	attached_hat = null
 	icon_state = "helmet"
 	update_appearance()
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+#undef STATUS_EFFECT_STACKS
