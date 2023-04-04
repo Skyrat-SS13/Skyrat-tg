@@ -136,8 +136,12 @@
 	switch(status) // set icon_states
 		if(LIGHT_OK)
 			//var/area/local_area = get_area(src) SKYRAT EDIT REMOVAL
-			if(low_power_mode || major_emergency) // SKYRAT EDIT CHANGE
+			// SKYRAT EDIT ADDITION BEGIN
+			if(low_power_mode)
+				icon_state = "[base_state]_lpower"
+			else if(major_emergency)
 				icon_state = "[base_state]_emergency"
+			// SKYRAT EDIT ADDITION END
 			else
 				icon_state = "[base_state]"
 		if(LIGHT_EMPTY)
@@ -167,7 +171,7 @@
 
 
 //SKYRAT EDIT ADDITION BEGIN - AESTHETICS
-#define LIGHT_ON_DELAY_UPPER (3 SECONDS)
+#define LIGHT_ON_DELAY_UPPER (4 SECONDS)
 #define LIGHT_ON_DELAY_LOWER (1 SECONDS)
 //SKYRAT EDIT END
 
