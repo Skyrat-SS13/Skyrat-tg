@@ -17,6 +17,8 @@
 	var/obj/item/radio/headset/radio = /obj/item/radio/headset/silicon/pai
 	///The channel that the radio broadcasts on.
 	var/announcement_channel = null
+	/// What alert level do we need to start preforming job checks at?
+	var/job_check_alert_level = SEC_LEVEL_RED
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 
@@ -49,11 +51,18 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 	update_static_data_for_all_viewers()
 	to_chat(user, span_boldwarning("Before clocking out, please return any piece of job gear that is important or limted to your workplace."))
 
-	if(command_job_check())
-		if(tgui_alert(user, "You are a member of command, make sure that you ahelp before clocking out. If you decide to clock back in later, you will need to go to the Head of Personnel. Do you wish to continue?", "[src]", list("Yes", "No")) != "Yes")
+	if(important_job_check())
+		if(SSsecurity_level.get_current_level_as_number() >= job_check_alert_level)
+			to_chat(user, span_boldwarning("You are unable to clock out at the current alert level."))
 			eject_inserted_id(user)
+			return FALSE
+
+		if(tgui_alert(user, "You are a member of security and/or command, make sure that you ahelp before clocking out. If you decide to clock back in later, you will need to go to the Head of Personnel. Do you wish to continue?", "[src]", list("Yes", "No")) != "Yes")
+			eject_inserted_id(user)
+			return FALSE
 
 	playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
+	return TRUE
 
 /obj/machinery/time_clock/AltClick(mob/user)
 	. = ..()
@@ -85,9 +94,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 		return FALSE
 
 	var/datum/component/off_duty_timer/timer_component = inserted_id.AddComponent(/datum/component/off_duty_timer, CLOCK_IN_COOLDOWN)
-	if(command_job_check())
+	if(important_job_check())
 		timer_component.hop_locked = TRUE
-		log_admin("[inserted_id.registered_name] clocked out as a head of staff")
+		log_admin("[inserted_id.registered_name] clocked out as a head of staff and/or command")
 
 	var/current_assignment = inserted_id.assignment
 	var/datum/id_trim/job/current_trim = inserted_id.trim
@@ -130,14 +139,14 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 
 	return TRUE
 
-///Is the job being worked a command job?
-/obj/machinery/time_clock/proc/command_job_check()
+///Is the job of the inserted ID being worked by a job that in an important department? If so, this proc will return TRUE.
+/obj/machinery/time_clock/proc/important_job_check()
 	if(!inserted_id)
 		return FALSE
 
 	var/datum/id_trim/job/current_trim = inserted_id.trim
 	var/datum/job/clocked_in_job = current_trim.job
-	if(/datum/job_department/command in clocked_in_job.departments_list)
+	if((/datum/job_department/command in clocked_in_job.departments_list) || (/datum/job_department/security in clocked_in_job.departments_list))
 		return TRUE
 
 	return FALSE
