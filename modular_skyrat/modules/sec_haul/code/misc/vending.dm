@@ -73,7 +73,7 @@
 					/obj/item/clothing/head/security_garrison = 10,
 					/obj/item/clothing/head/security_cap = 10,
 					/obj/item/clothing/head/beret/sec/peacekeeper = 5,
-					/obj/item/clothing/head/costume/ushanka/sec/blue = 10,
+					/obj/item/clothing/head/costume/ushanka/sec = 10,
 					/obj/item/clothing/head/hats/sec/peacekeeper/sol = 5,
 					/obj/item/clothing/head/hats/sec/peacekeeper/sol/traffic = 5,
 					/obj/item/clothing/gloves/color/black/security = 10,
