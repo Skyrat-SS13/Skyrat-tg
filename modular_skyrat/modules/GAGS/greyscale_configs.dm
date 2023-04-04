@@ -1268,46 +1268,6 @@ digi
 /datum/greyscale_config/skirt/worn/teshari
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
 
-// Arm Wrapz
-
-/datum/greyscale_config/armwraps
-	name = "Armwraps"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/armwraps.json'
-
-/datum/greyscale_config/armwraps/worn
-	name = "Armwraps (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/armwraps_worn.json'
-
-/datum/greyscale_config/armwraps/worn/newvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_new_vox.dmi'
-
-/datum/greyscale_config/armwraps/worn/oldvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
-
-/datum/greyscale_config/armwraps/worn/teshari
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
-
-// Gauntlets
-
-/datum/greyscale_config/gauntlets
-	name = "Gauntlets"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gauntlets.json'
-
-/datum/greyscale_config/gauntlets/worn
-	name = "Gauntlets (Worn)"
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gauntlets_worn.json'
-
-/datum/greyscale_config/gauntlets/worn/newvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_new_vox.dmi'
-
-/datum/greyscale_config/gauntlets/worn/oldvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
-
-/datum/greyscale_config/gauntlets/worn/teshari
-	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
-
 // Helmet
 
 /datum/greyscale_config/plate_helmet
@@ -1407,3 +1367,59 @@ backpack
 
 /datum/greyscale_config/dwarf_gloves/worn/teshari
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
+
+// Evil primitive catgirl clothing
+
+/datum/greyscale_config/primitive_catgirl_wraps
+	name = "Primitive Body Wraps"
+	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/body_wraps.json'
+
+/datum/greyscale_config/primitive_catgirl_wraps/worn
+	name = "Primitive Body Wraps (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/body_wraps_worn.json'
+
+/datum/greyscale_config/primitive_catgirl_armwraps
+	name = "Arm Wraps"
+	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/armwraps.json'
+
+/datum/greyscale_config/primitive_catgirl_armwraps/worn
+	name = "Arm Wraps (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/armwraps_worn.json'
+
+/datum/greyscale_config/primitive_catgirl_coat
+	name = "Primitive Fur Coat"
+	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/coat.json'
+
+/datum/greyscale_config/primitive_catgirl_coat/worn
+	name = "Primitive Fur Coat (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/coat_worn.json'
+
+/datum/greyscale_config/primitive_catgirl_boots
+	name = "Primitive Winter Boots"
+	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/boots.json'
+
+/datum/greyscale_config/primitive_catgirl_boots/worn
+	name = "Primitive Winter Boots (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/boots_worn.json'
+
+/datum/greyscale_config/primitive_catgirl_gaiter
+	name = "Neck Gaiter"
+	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gaiter.json'
+
+/datum/greyscale_config/primitive_catgirl_gaiter/worn
+	name = "Neck Gaiter (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gaiter_worn.json'
+
+/datum/greyscale_config/primitive_catgirl_gauntlets
+	name = "Gauntlets"
+	icon_file = 'modular_skyrat/modules/primitive_catgirls/icons/clothing_greyscale.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gauntlets.json'
+
+/datum/greyscale_config/primitive_catgirl_gauntlets/worn
+	name = "Gauntlets (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gauntlets_worn.json'

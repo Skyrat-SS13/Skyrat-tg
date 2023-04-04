@@ -17,6 +17,9 @@
 /datum/emote/living/custom/check_cooldown(mob/user, intentional)
 	return TRUE
 
+/datum/emote/living/blush
+	sound = 'modular_skyrat/modules/emotes/sound/emotes/blush.ogg'
+
 /datum/emote/living/quill
 	key = "quill"
 	key_third_person = "quills"
