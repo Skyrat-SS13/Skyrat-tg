@@ -39,11 +39,18 @@
 	///What NIF models can this software be installed on?
 	var/list/compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif)
 
+	/// How much of the NIFSoft's purchase price is paid out as reward points, if any?
+	var/rewards_points_rate = 0.5
+	/// Can this item be purchased with reward points?
+	var/rewards_points_eligible = TRUE
 	///Does the NIFSoft have anything that is saved cross-round?
 	var/persistence = FALSE
 
-/datum/nifsoft/New(obj/item/organ/internal/cyberimp/brain/nif/recepient_nif)
+/datum/nifsoft/New(obj/item/organ/internal/cyberimp/brain/nif/recepient_nif, no_rewards_points = FALSE)
 	. = ..()
+
+	if(no_rewards_points) //This is mostly so that credits can't be farmed through printed or stolen NIFSoft disks
+		rewards_points_rate = 0
 
 	compatible_nifs += /obj/item/organ/internal/cyberimp/brain/nif/debug
 	program_name = name
@@ -155,12 +162,12 @@
 
 /// Attempts to install the NIFSoft on the disk to the target
 /obj/item/disk/nifsoft_uploader/proc/attempt_software_install(mob/living/carbon/human/target)
-	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = target.getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
+	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = target.get_organ_by_type(/obj/item/organ/internal/cyberimp/brain/nif)
 
 	if(!ishuman(target) || !installed_nif)
 		return FALSE
 
-	var/datum/nifsoft/installed_nifsoft = new loaded_nifsoft(installed_nif)
+	var/datum/nifsoft/installed_nifsoft = new loaded_nifsoft(installed_nif, TRUE)
 
 	if(!installed_nifsoft.parent_nif)
 		balloon_alert(target, "installation failed")

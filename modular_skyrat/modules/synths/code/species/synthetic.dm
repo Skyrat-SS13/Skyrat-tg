@@ -97,7 +97,7 @@
 	. = ..()
 
 	var/screen_mutant_bodypart = transformer.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN]
-	var/obj/item/organ/internal/eyes/eyes = transformer.getorganslot(ORGAN_SLOT_EYES)
+	var/obj/item/organ/internal/eyes/eyes = transformer.get_organ_slot(ORGAN_SLOT_EYES)
 
 	if(!screen && screen_mutant_bodypart && screen_mutant_bodypart[MUTANT_INDEX_NAME] && screen_mutant_bodypart[MUTANT_INDEX_NAME] != "None")
 
@@ -149,7 +149,7 @@
 /datum/species/synthetic/on_species_loss(mob/living/carbon/human/human)
 	. = ..()
 
-	var/obj/item/organ/internal/eyes/eyes = human.getorganslot(ORGAN_SLOT_EYES)
+	var/obj/item/organ/internal/eyes/eyes = human.get_organ_slot(ORGAN_SLOT_EYES)
 
 	if(eyes)
 		eyes.eye_icon_state = initial(eyes.eye_icon_state)

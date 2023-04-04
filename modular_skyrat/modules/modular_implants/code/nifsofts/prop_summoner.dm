@@ -20,7 +20,7 @@
 	var/holographic_filter = TRUE
 	/// Is there any special tag added at the begining of the resulting object name?
 	var/name_tag = "cerulean "
-	purchase_price = 250
+	purchase_price = 175
 
 	///The list of items that can be summoned from the NIFSoft.
 	var/list/summonable_items = list(

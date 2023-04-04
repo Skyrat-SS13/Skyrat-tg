@@ -74,5 +74,11 @@
 /// To chambered round on gun's `process_fire()`: (list/iff_factions)
 #define COMSIG_CHAMBERED_BULLET_FIRE "chambered_bullet_fire"
 
+/// /datum/component/clockwork_trap signals: ()
+#define COMSIG_CLOCKWORK_SIGNAL_RECEIVED "clock_received"
+
+/// Called when a clock cultist uses a clockwork slab: (obj/item/clockwork/clockwork_slab/slab)
+#define COMSIG_CLOCKWORK_SLAB_USED "clockwork_slab_used"
+
 /// Engineering Override Access manual toggle
 #define COMSIG_GLOB_FORCE_ENG_OVERRIDE "force_engineering_override"

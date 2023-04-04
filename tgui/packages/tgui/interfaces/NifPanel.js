@@ -154,6 +154,7 @@ const NifSettings = (props, context) => {
     blood_drain,
     minimum_blood_level,
     blood_level,
+    stored_points,
   } = data;
   return (
     <LabeledList>
@@ -196,6 +197,16 @@ const NifSettings = (props, context) => {
           onClick={() => act('toggle_blood_drain')}
           disabled={blood_level < minimum_blood_level}
         />
+      </LabeledList.Item>
+      <LabeledList.Item
+        label="Rewards Points"
+        buttons={
+          <Button
+            icon="info"
+            tooltip="Rewards points are an alternative currency gained by purchasing NIFSofts, rewards points carry between shifts."
+          />
+        }>
+        {stored_points}
       </LabeledList.Item>
     </LabeledList>
   );
