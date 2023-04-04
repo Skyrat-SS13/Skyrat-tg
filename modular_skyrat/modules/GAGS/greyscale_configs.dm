@@ -1368,6 +1368,50 @@ backpack
 /datum/greyscale_config/dwarf_gloves/worn/teshari
 	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
 
+// I know the catgirls got this but im not changing my shi
+
+// Arm Wrapz
+
+/datum/greyscale_config/armwraps
+	name = "Armwraps"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/armwraps.json'
+
+/datum/greyscale_config/armwraps/worn
+	name = "Armwraps (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/armwraps_worn.json'
+
+/datum/greyscale_config/armwraps/worn/newvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_new_vox.dmi'
+
+/datum/greyscale_config/armwraps/worn/oldvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
+
+/datum/greyscale_config/armwraps/worn/teshari
+	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
+
+// Gauntlets
+
+/datum/greyscale_config/gauntlets
+	name = "Gauntlets"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_human.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gauntlets.json'
+
+/datum/greyscale_config/gauntlets/worn
+	name = "Gauntlets (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/primitive_catgirl_clothing/gauntlets_worn.json'
+
+/datum/greyscale_config/gauntlets/worn/newvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_new_vox.dmi'
+
+/datum/greyscale_config/gauntlets/worn/oldvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_old_vox.dmi'
+
+/datum/greyscale_config/gauntlets/worn/teshari
+	icon_file = 'modular_skyrat/modules/GAGS/icons/event_clothes_teshari.dmi'
+
+
+
 // Evil primitive catgirl clothing
 
 /datum/greyscale_config/primitive_catgirl_wraps
