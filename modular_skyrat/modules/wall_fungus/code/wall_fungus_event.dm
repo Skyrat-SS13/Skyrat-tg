@@ -1,7 +1,6 @@
 /datum/round_event_control/wall_fungus
 	name = "Wall Fungus Outbreak"
 	typepath = /datum/round_event/wall_fungus
-	weight = MED_EVENT_FREQ
 	category = EVENT_CATEGORY_ENGINEERING
 	max_occurrences = 2
 	earliest_start = 20 MINUTES
