@@ -27,11 +27,12 @@
 	name = "Shoredress wetsuit"
 	desc = "The 'Wetworks'-pattern Shoredress is a long-standing template upon which most Azulean 'wetsuits' are made. \
 		This atmospheric exploration suit is a single form-fitting garment, designed to keep wearers comfortable in the harsh environment of dry land; \
-		even sometimes worn underneath orbital suits such as MODs. Shoredresses apply active thermal channels and motion-powered micropumps \
-		to allow for water of the wearer's temperature choice to circulate; ensuring ample flow over not only the gills, but the rest of the wearer's skin, \
-		at the cost of occasional movement being needed when the wearer is still. These suits are known to come with luminescent panels that take on a bright glow when underwater, \
-		meant for signalling as well as higher visibility in deep waters. The system is meant to only be able to process water, fresh or otherwise; but unofficially, \
-		a great many chemicals or even drinks have been loaded in by adventurous or careless explorers of the New Principalities-- at fantastic personal risk to their gills."
+		even sometimes worn underneath orbital suits such as MODs. \n\n\
+		Shoredresses apply active thermal channels and motion-powered micropumps to allow for water of the wearer's temperature choice to circulate; \
+		ensuring ample flow over not only the gills, but the rest of the wearer's skin, at the cost of occasional movement being needed when the wearer is still. \n\
+		These suits are known to come with luminescent panels that take on a bright glow when underwater, meant for signalling as well as higher visibility in deep waters. \
+		The system is meant to only be able to process water, fresh or otherwise; but unofficially, \
+		a great many chemicals or even drinks have been loaded in by adventurous or careless explorers of the New Principalities-- at fantastic personal risk to their gills. \n\n\ "
 	icon_state = "default"
 	base_icon_state = "default"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/akula.dmi'
@@ -111,12 +112,12 @@
 	/// Our large examine text
 	var/extended_desc = "The 'Wetworks'-pattern Shoredress is a long-standing template upon which most Azulean 'wetsuits' are made. \
 		This atmospheric exploration suit is a single form-fitting garment, designed to keep wearers comfortable in the harsh environment of dry land; \
-		even sometimes worn underneath orbital suits such as MODs. \n\
+		even sometimes worn underneath orbital suits such as MODs. \n\n\
 		Shoredresses apply active thermal channels and motion-powered micropumps to allow for water of the wearer's temperature choice to circulate; \
-		ensuring ample flow over not only the gills, but the rest of the wearer's skin, at the cost of occasional movement being needed when the wearer is still. \
+		ensuring ample flow over not only the gills, but the rest of the wearer's skin, at the cost of occasional movement being needed when the wearer is still. \n\
 		These suits are known to come with luminescent panels that take on a bright glow when underwater, meant for signalling as well as higher visibility in deep waters. \
 		The system is meant to only be able to process water, fresh or otherwise; but unofficially, \
-		a great many chemicals or even drinks have been loaded in by adventurous or careless explorers of the New Principalities-- at fantastic personal risk to their gills."
+		a great many chemicals or even drinks have been loaded in by adventurous or careless explorers of the New Principalities-- at fantastic personal risk to their gills.\n\n\ "
 
 /obj/item/clothing/under/akula_wetsuit/job/examine(mob/user)
 	. = ..()
@@ -128,10 +129,10 @@
 
 /obj/item/clothing/under/akula_wetsuit/job/engineering
 	name = "Engineer Shoredress wetsuit"
-	desc = "The 'Engineering'-Type Shoredress is a ubiquitous model used by a wide variety of companies, only hardly changed from its' original Azulean design. \
+	desc = "The 'Engineering'-Type Shoredress is a ubiquitous model used by a wide variety of companies, only hardly changed from its' original Azulean design. \n\
 		The luminescent panels on the arms have been given higher flow of power for greater visibility, and the entire suit has been focused \
-		first and foremost on the incorporation of heat-resistant alloys and skintight heatsinks to protect against fires. Additionally, \
-		the materials used to construct this wetsuit have rendered it extremely hardy against corrosive liquids and gasses."
+		first and foremost on the incorporation of heat-resistant alloys and skintight heatsinks to protect against fires. \n\
+		Additionally, the materials used to construct this wetsuit have rendered it extremely hardy against corrosive liquids and gasses.\n\n\ "
 	icon_state = "engi"
 	base_icon_state = "engi"
 	armor_type = /datum/armor/wetsuit_under/engineering
@@ -143,10 +144,11 @@
 /obj/item/clothing/under/akula_wetsuit/job/cargo
 	name = "Cargo Shoredress wetsuit"
 	desc = "The 'Cargo'-Type Shoredress was made as a partnership between the Free Trade Union and the New Principalities of Agurkrral, predominantly \
-		designed for comfort. Warehouse workers on land and sea are treated to low-powered actuators meant to help distribute heavy loads when lifting, \
-		and the plush interior of 'Medical'-Type Shoredresses has been expanded on three times over to ensure maximum cushioning for the wearer's body. \
+		designed for comfort. \n\
+		Warehouse workers on land and sea are treated to low-powered actuators meant to help distribute heavy loads when lifting, \
+		and the plush interior of 'Medical'-Type Shoredresses has been expanded on three times over to ensure maximum cushioning for the wearer's body. \n\n\
 		Systems around the neck are capable of slightly flavoring any Shoredress Glasses with over five hundred different choices, \
-		and the temperature-control pumps are some of the best available to those that aren't royalty."
+		and the temperature-control pumps are some of the best available to those that aren't royalty.\n\n\ "
 	icon_state = "cargo"
 	base_icon_state = "cargo"
 	armor_type = /datum/armor/wetsuit_under/cargo
@@ -157,8 +159,9 @@
 /obj/item/clothing/under/akula_wetsuit/job/science
 	name = "Science Shoredress wetsuit"
 	desc = "The 'Science'-Type Shoredress is yet another model commissioned by NanoTrasen. This suit has been adapted from 'Ordnance'-Type Shoredresses \
-		used in the New Principalities predominantly by mining teams. It is made of a special polymer that provides some minor protection against explosives \
-		such as abandoned naval or land-based mines, and features an inbuilt external sterilization field to protect against biohazards typically found in strange places."
+		used in the New Principalities predominantly by mining teams. \n\
+		It is made of a special polymer that provides some minor protection against explosives \
+		such as abandoned naval or land-based mines, and features an inbuilt external sterilization field to protect against biohazards typically found in strange places.\n\n\ "
 	icon_state = "sci"
 	base_icon_state = "sci"
 	armor_type = /datum/armor/wetsuit_under/science
@@ -171,8 +174,8 @@
 	name = "Medical Shoredress wetsuit"
 	desc = "The 'Medical'-Type Shoredress is yet another model commissioned by NanoTrasen. This suit has been adapted from exploration \
 		Shoredresses meant for use in murky or even outright toxic environments, being predominantly composed of self-sterilizing polymers with \
-		a system able to filter out all sorts of hazardous particles in the air or water including fumes, smoke, allergens, or ocean-bound toxins. \
-		This has made it convenient for the Company's medical division, let alone the plush interior to allow for greater comfortable standing hours."
+		a system able to filter out all sorts of hazardous particles in the air or water including fumes, smoke, allergens, or ocean-bound toxins. \n\
+		This has made it convenient for the Company's medical division, let alone the plush interior to allow for greater comfortable standing hours.\n\n\ "
 	icon_state = "medical"
 	base_icon_state = "medical"
 	armor_type = /datum/armor/wetsuit_under/medical
@@ -185,8 +188,8 @@
 	name = "Security Shoredress wetsuit"
 	desc = "The 'Security'-Type Shoredress is a model commissioned by Lopland; but the origins of this wetsuit lie in designs belonging to \
 		rank-and-file warriors and fighters in the New Principalities. Designed to be protective over comfortable, these suits are no true \
-		replacement for true armor, but make an excellent undersuit for even civilian plate carriers. The systems inside have been \
-		reinforced to their logical endpoint, though their temperatures -- much like the attitude of their wearers, tends to run a bit hot due to a possible manufacturing defect."
+		replacement for true armor, but make an excellent undersuit for even civilian plate carriers. \n\
+		The systems inside have been reinforced to their logical endpoint, though their temperatures -- much like the attitude of their wearers, tends to run a bit hot due to a possible manufacturing defect.\n\n\ "
 	icon_state = "sec"
 	base_icon_state = "sec"
 	armor_type = /datum/armor/rank_security
@@ -194,9 +197,9 @@
 /obj/item/clothing/under/akula_wetsuit/job/command
 	name = "Command Shoredress wetsuit"
 	desc = "The 'Command'-Type Shoredress is yet another model commissioned by NanoTrasen; but the origins of this wetsuit lie in designs belonging to, \
-			typically, high-ranking officials and managers in the Old Principalities. The bright luminescent panels on the arms have been further set \
-			apart by similar paneling on the chest, meant to ensure the wearer looks distinct both in the water, on land, and even on camera. \
-			The temperature systems have been upgraded, as well as the choice to use more comfortable fabrics in the construction."
+			typically, high-ranking officials and managers in the Old Principalities. \n\
+			The bright luminescent panels on the arms have been further set apart by similar paneling on the chest, meant to ensure the wearer looks distinct both in the water, on land, and even on camera. \n\
+			The temperature systems have been upgraded, as well as the choice to use more comfortable fabrics in the construction.\n\n\ "
 	icon_state = "command"
 	base_icon_state = "command"
 
@@ -204,11 +207,11 @@
 /obj/item/clothing/head/helmet/space/akula_wetsuit
 	name = "Shoredress helm"
 	desc = "Known simply as a 'Glass' throughout Azulean society as a whole, these spheroidal helmets are often the main source of comfort for workers on land; domestic and abroad. \
-		More advanced than humans would ever give them credit for, a Shoredress's Glass is a piece of technology unto itself. \
+		More advanced than humans would ever give them credit for, a Shoredress's Glass is a piece of technology unto itself. \n\n\
 		These helmets employ a near-invisible system of cameras and sensors to prevent refraction from the water kept inside. \
-		The 'flexiglass' glass comprising the unit is chemically strengthened to be thin, light, and damage-resistant, but capable of bending even in half without shattering; \
-		all to allow you to touch your face. Some have taken to putting electronic displays around the face to help express emotion, or to signal nonverbally. \
-		These helms are normally attached to Shoredresses or Stardresses, but comes with a fitted neoprene collar to allow wear on essentially anything."
+		The 'flexiglass' glass comprising the unit is chemically strengthened to be thin, light, and damage-resistant, but capable of bending even in half without shattering; all to allow you to touch your face. \n\
+		Some have taken to putting electronic displays around the face to help express emotion, or to signal nonverbally. \
+		These helms are normally attached to Shoredresses or Stardresses, but comes with a fitted neoprene collar to allow wear on essentially anything.\n\n\ "
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/akula.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/akula.dmi'
 	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL | SNUG_FIT | PLASMAMAN_HELMET_EXEMPT
