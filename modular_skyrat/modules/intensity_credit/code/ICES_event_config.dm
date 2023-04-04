@@ -579,7 +579,7 @@
  * Wall Fungus
  */
 /datum/round_event_control/wall_fungus
-	weight = HIGH_EVENT_FREQ
+	weight = MED_EVENT_FREQ
 
 /**
  * Wisdom Cow

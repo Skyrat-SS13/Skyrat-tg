@@ -1,10 +1,10 @@
 /datum/round_event_control/wall_fungus
 	name = "Wall Fungus Outbreak"
 	typepath = /datum/round_event/wall_fungus
-	weight = 20
+	weight = MED_EVENT_FREQ
 	category = EVENT_CATEGORY_ENGINEERING
-	max_occurrences = 4
-	earliest_start = 15 MINUTES
+	max_occurrences = 2
+	earliest_start = 20 MINUTES
 
 /datum/round_event/wall_fungus/announce(fake)
 	priority_announce("Harmful fungi has been detected on the station, deal with it before it becomes a problem!", "Harmful Fungi", ANNOUNCER_FUNGI)
