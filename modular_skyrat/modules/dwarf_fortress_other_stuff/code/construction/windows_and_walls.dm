@@ -18,30 +18,6 @@
 
 // WALLS
 
-/obj/effect/spawner/df_wall_spawner
-	icon = 'icons/effects/random_spawners.dmi'
-	icon_state = "loot"
-	layer = OBJ_LAYER
-	anchored = TRUE
-	/// the thing spawned by the spawner
-	var/turf/closed/wall/material/dwarf_fortress/thing_spawned = /turf/closed/wall/material/dwarf_fortress
-
-/obj/effect/spawner/df_wall_spawner/set_custom_materials(list/materials, multiplier) // Walls really did not want to cooperate with me on this one
-	. = ..()
-
-	var/turf/turf_we_spawn_stuff = get_turf(src)
-	var/turf/new_wall = turf_we_spawn_stuff.PlaceOnTop(thing_spawned)
-	message_admins("[src] JUST PLACED A [new_wall].")
-	new_wall.set_custom_materials(custom_materials)
-	if(length(custom_materials))
-		message_admins("[src] HAS A CUSTOM MATERIALS LIST LENGTH OF [length(custom_materials)]")
-		for(var/material as anything in custom_materials)
-			message_admins("- [custom_materials[material]]")
-	else
-		message_admins("[src] HAS NO FUCKING CUSTOM MATERIALS")
-
-	qdel(src)
-
 /turf/closed/wall/material/dwarf_fortress
 	icon_state = "wall-0"
 	base_icon_state = "wall"
@@ -68,17 +44,8 @@
 /turf/closed/wall/material/dwarf_fortress/smooth
 	icon = 'modular_skyrat/modules/dwarf_fortress_other_stuff/icons/walls/smooth_wall.dmi'
 
-/obj/effect/spawner/df_wall_spawner/smooth
-	thing_spawned = /turf/closed/wall/material/dwarf_fortress/smooth
-
 /turf/closed/wall/material/dwarf_fortress/brick
 	icon = 'modular_skyrat/modules/dwarf_fortress_other_stuff/icons/walls/brick_wall.dmi'
 
-/obj/effect/spawner/df_wall_spawner/brick
-	thing_spawned = /turf/closed/wall/material/dwarf_fortress/brick
-
 /turf/closed/wall/material/dwarf_fortress/wood
 	icon = 'modular_skyrat/modules/dwarf_fortress_other_stuff/icons/walls/wood_wall.dmi'
-
-/obj/effect/spawner/df_wall_spawner/wood
-	thing_spawned = /turf/closed/wall/material/dwarf_fortress/wood

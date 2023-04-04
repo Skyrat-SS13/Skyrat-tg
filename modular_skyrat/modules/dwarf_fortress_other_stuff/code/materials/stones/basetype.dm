@@ -1,7 +1,7 @@
 GLOBAL_LIST_INIT(dwarf_boulder_recipes, list(
 	new /datum/stack_recipe( \
 	"rough rock wall", \
-	/obj/effect/spawner/df_wall_spawner/smooth, \
+	/turf/closed/wall/material/dwarf_fortress/smooth, \
 	1, \
 	time = 3 SECONDS, \
 	one_per_turf = TRUE, \
@@ -14,7 +14,7 @@ GLOBAL_LIST_INIT(dwarf_boulder_recipes, list(
 GLOBAL_LIST_INIT(dwarf_brick_recipes, list(
 	new /datum/stack_recipe( \
 	"brick wall", \
-	/obj/effect/spawner/df_wall_spawner/brick, \
+	/turf/closed/wall/material/dwarf_fortress/brick, \
 	req_amount = 1, \
 	time = 3 SECONDS, \
 	one_per_turf = TRUE, \
