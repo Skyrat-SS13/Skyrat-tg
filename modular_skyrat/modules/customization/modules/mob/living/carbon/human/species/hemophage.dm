@@ -15,7 +15,7 @@
 #define HEMOPHAGE_SPAWN_TEXT "You are an [span_danger("Hemophage")]. You will slowly but constantly lose blood if outside of a closet-like object. If inside a closet-like object, or in pure darkness, you will slowly heal, at the cost of blood. You may gain more blood by grabbing a live victim and using your drain ability."
 
 /// How much brute damage their body regenerates per second (calculated every two seconds) while under the proper conditions.
-#define BLOOD_REGEN_BRUTE_AMOUNT 0.75
+#define BLOOD_REGEN_BRUTE_AMOUNT 1
 /// How much burn damage their body regenerates per second (calculated every two seconds) while under the proper conditions.
 #define BLOOD_REGEN_BURN_AMOUNT 0.75
 /// How much toxin damage their body regenerates per second (calculated every two seconds) while under the proper conditions.
@@ -555,7 +555,7 @@
 	var/drained_blood = min(victim.blood_volume, HEMOPHAGE_DRAIN_AMOUNT, blood_volume_difference)
 
 	victim.blood_volume = clamp(victim.blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
-	hemophage.blood_volume = clamp(hemophage.blood_volume + drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
+	hemophage.blood_volume = clamp(hemophage.blood_volume + (drained_blood * (is_target_human_with_client ? 2 : 1)), 0, BLOOD_VOLUME_MAXIMUM)
 
 	log_combat(hemophage, victim, "drained [drained_blood]u of blood from", addition = " (NEW BLOOD VOLUME: [victim.blood_volume] cL)")
 	victim.show_message(span_danger("[hemophage] drains some of your blood!"))
@@ -627,7 +627,7 @@
 
 /datum/status_effect/blood_thirst_satiated
 	id = "blood_thirst_satiated"
-	duration = 20 MINUTES
+	duration = 30 MINUTES
 	status_type = STATUS_EFFECT_REFRESH
 	alert_type = /atom/movable/screen/alert/status_effect/blood_thirst_satiated
 	/// What will the bloodloss_speed_multiplier of the Hemophage be changed by upon receiving this status effect?
