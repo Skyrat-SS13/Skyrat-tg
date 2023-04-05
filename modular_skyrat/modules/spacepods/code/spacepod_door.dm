@@ -1,6 +1,6 @@
 /obj/structure/spacepoddoor
 	name = "phase door"
-	desc = "Opens and closes."
+	desc = "Only allows spacepods through."
 	icon = 'icons/effects/beam.dmi'
 	icon_state = "n_beam"
 	density = TRUE

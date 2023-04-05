@@ -20,6 +20,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF // it floats above lava or something, I dunno
 	base_pixel_x = -16
 	base_pixel_y = -16
+	pixel_x = -16
+	pixel_y = -16
 	max_integrity = 50
 	integrity_failure = 0.1
 	light_system = MOVABLE_LIGHT
@@ -136,7 +138,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	cabin_air = new
 	cabin_air.temperature = T20C
 	cabin_air.volume = 200
-	RegisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED, .proc/process_integrity)
+	RegisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED, PROC_REF(process_integrity))
 
 /obj/spacepod/Destroy()
 	GLOB.spacepods_list -= src
@@ -315,7 +317,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 /obj/spacepod/proc/try_fire_weapon(atom/object, atom/location, control, params)
 	SIGNAL_HANDLER
 	if(weapon && !weapon_safety && !istype(object, /atom/movable/screen)) // Need to make sure the clicked object isn't a hud element
-		INVOKE_ASYNC(src, .proc/async_fire_weapons_at, object)
+		INVOKE_ASYNC(src, PROC_REF(async_fire_weapons_at), object)
 
 /obj/spacepod/proc/async_fire_weapons_at(object)
 	if(weapon)
@@ -592,7 +594,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
  * TODO: Convert this alarm sound to a looping sound
  */
 /obj/spacepod/proc/process_integrity(old_value, new_value)
-	if(new_value <= max_integrity / 4)
+	if(new_value <= max_integrity / 4) // Less than a quarter health.
 		if(!alarm_played)
 			playsound(src, 'modular_skyrat/modules/spacepods/sound/alarm.ogg', 40)
 			alarm_played = TRUE
@@ -635,15 +637,19 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		to_chat(user, span_danger("You can't fit in [src], it's full!"))
 	return FALSE
 
-
+/**
+ * Add Rider
+ *
+ * Adds a rider to the spacepod and sets up conrols if they are a pilot.
+ */
 /obj/spacepod/proc/add_rider(mob/living/living_mob, allow_pilot = TRUE)
 	if(living_mob == pilot || (living_mob in passengers))
 		return FALSE
 	if(!pilot && allow_pilot)
 		LAZYSET(occupants, living_mob, NONE)
 		pilot = living_mob
-		RegisterSignal(living_mob, COMSIG_MOB_CLIENT_MOUSE_MOVE, .proc/on_mouse_moved)
-		RegisterSignal(living_mob, COMSIG_MOB_CLIENT_MOUSE_DOWN, .proc/try_fire_weapon)
+		RegisterSignal(living_mob, COMSIG_MOB_CLIENT_MOUSE_MOVE, PROC_REF(on_mouse_moved))
+		RegisterSignal(living_mob, COMSIG_MOB_CLIENT_MOUSE_DOWN, PROC_REF(try_fire_weapon))
 		grant_pilot_actions(living_mob)
 		ADD_TRAIT(living_mob, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT)
 		if(living_mob.client)

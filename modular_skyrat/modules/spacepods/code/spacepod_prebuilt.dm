@@ -2,7 +2,7 @@
 	icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
 	icon_state = "pod_civ"
 	/// The internal cell type that is used by the spacepod.
-	var/cell_type = /obj/item/stock_parts/cell/high
+	var/cell_type = /obj/item/stock_parts/cell/super
 	/// THe armor type we will preload into the spacepod.
 	var/spacepod_armor_type = /obj/item/pod_parts/armor
 	/// The tank that we will preload into the spacepod.
@@ -12,16 +12,15 @@
 	construction_state = SPACEPOD_ARMOR_WELDED // Make sure it spawns fully setup.
 
 /obj/spacepod/prebuilt/Initialize()
-	..()
+	. = ..()
 	add_armor(new spacepod_armor_type(src))
 	if(cell_type)
 		cell = new cell_type(src)
 	if(internal_tank_type)
 		internal_tank = new internal_tank_type(src)
-	for(var/equip in equipment_types)
-		var/obj/item/spacepod_equipment/SE = new equip(src)
-		SE.on_install(src)
-	return INITIALIZE_HINT_NORMAL // ???
+	for(var/iterating_equipment_type in equipment_types)
+		var/obj/item/spacepod_equipment/spacepod_equipment = new iterating_equipment_type(src)
+		spacepod_equipment.on_install(src)
 
 /obj/spacepod/prebuilt/sec
 	name = "security space pod"
