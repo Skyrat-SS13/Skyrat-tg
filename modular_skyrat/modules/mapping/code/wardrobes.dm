@@ -82,7 +82,6 @@
 /// Just take out and replace the holy beacon with our 'unholy' beacon
 /obj/machinery/vending/wardrobe/chap_wardrobe/unholy/Initialize(mapload)
 	. = ..()
-	products.Remove()
 	for(var/datum/data/vending_product/record in product_records)
 		if(record.product_path == /obj/item/choice_beacon/holy)
 			record.product_path = /obj/item/choice_beacon/unholy
