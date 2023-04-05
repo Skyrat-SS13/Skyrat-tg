@@ -565,7 +565,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		var/mob/living/living_mob = dropped_atom
 		if(living_mob != user && !locked)
 			if(passengers.len >= max_passengers && !pilot)
-				to_chat(user, span_danger("<b>[A.p_they()] can't fly the pod!</b>"))
+				to_chat(user, span_danger("<b>[living_mob.p_they()] can't fly the pod!</b>"))
 				return
 			if(passengers.len < max_passengers)
 				visible_message(span_danger("[user] starts loading [living_mob] into [src]!"))
@@ -753,10 +753,10 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			data["occupants"] += iterating_mob.name
 		data["has_occupants"] = TRUE
 
-	data["integrity"] = round(get_integrity(),0.1)
+	data["integrity"] = round(get_integrity(), 0.1)
 	data["max_integrity"] = max_integrity
 
-	data["velocity"] = round(sqrt(velocity_x*velocity_x+velocity_y*velocity_y), 0.1)
+	data["velocity"] = round(sqrt(velocity_x * velocity_x + velocity_y * velocity_y), 0.1)
 
 	data["locked"] = locked
 	data["brakes"] = brakes

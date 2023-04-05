@@ -2,7 +2,7 @@
 	icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
 	icon_state = "pod_civ"
 	/// The internal cell type that is used by the spacepod.
-	var/cell_type = /obj/item/stock_parts/cell/high/plus
+	var/cell_type = /obj/item/stock_parts/cell/high
 	/// THe armor type we will preload into the spacepod.
 	var/spacepod_armor_type = /obj/item/pod_parts/armor
 	/// The tank that we will preload into the spacepod.

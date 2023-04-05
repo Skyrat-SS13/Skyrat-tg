@@ -210,7 +210,7 @@
 	icon_state = "weapon_burst_taser"
 	projectile_type = /obj/projectile/beam/disabler
 	shot_cost = 1200
-	shots_per = 3
+	burst_fire = 3
 	fire_sound = 'sound/weapons/taser2.ogg'
 	fire_delay = 30
 	overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
