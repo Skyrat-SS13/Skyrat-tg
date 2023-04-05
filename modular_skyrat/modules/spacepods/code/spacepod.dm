@@ -62,6 +62,10 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/obj/item/pod_parts/armor/pod_armor = null
 	/// The cell that powers the ship.
 	var/obj/item/stock_parts/cell/cell = null
+	/// Do we got them headlights my man? They on? y--- OH SHIT A DEER
+	var/obj/item/spacepod_equipment/lights/our_lights
+	/// Are the lights on or off?
+	var/light_toggle = FALSE
 	/// The air inside the cabin, no AC included.
 	var/datum/gas_mixture/cabin_air
 	/// The air inside the cabin.
@@ -110,18 +114,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/backward_maxthrust = 3
 	/// Max side thrust, in tiles per second
 	var/side_maxthrust = 1
-	/// Do we got them headlights my man? They on? y--- OH SHIT A DEER
-	var/lights = FALSE
-	/// Color of the light
-	var/static/list/icon_light_color = list(
-		"pod_civ" = COLOR_WHITE,
-		"pod_mil" = "#BBF093",
-		"pod_sec" = "#f093af",
-		"pod_synd" = COLOR_RED,
-		"pod_gold" = COLOR_WHITE,
-		"pod_black" = "#3B8FE5",
-		"pod_industrial" = "#CCCC00"
-		)
+
 	/// Bounce factor, how much we bounce off walls
 	var/bump_impulse = 0.6
 	/// how much of our velocity to keep on collision
@@ -404,8 +397,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 	if(weapon && weapon.overlay_icon_state)
 		add_overlay(image(icon = weapon.overlay_icon,icon_state = weapon.overlay_icon_state))
-
-	light_color = icon_light_color[icon_state] || COLOR_WHITE
 
 	if(pod_armor)
 		icon = pod_armor.pod_icon
@@ -827,7 +818,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 	data["locked"] = locked
 	data["brakes"] = brakes
-	data["lights"] = lights
+	data["lights"] = light_toggle
 
 	data["has_cell"] = FALSE
 	if(cell)
@@ -920,16 +911,18 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		to_chat(user, span_notice("You climb out of [src]."))
 
 /obj/spacepod/proc/toggle_lights(mob/user)
-	if()
-	light_color = icon_light_color[icon_state] || COLOR_WHITE
-	lights = !lights
-	if(lights)
+	if(!our_lights)
+		to_chat(user, span_warning("No lights installed!"))
+		return
+	light_color = our_lights.color_to_set
+	light_toggle = !light_toggle
+	if(light_toggle)
 		set_light_on(TRUE)
 	else
 		set_light_on(FALSE)
-	to_chat(user, "Lights toggled [lights ? "on" : "off"].")
+	to_chat(user, "Lights toggled [light_toggle ? "on" : "off"].")
 	for(var/mob/mob in passengers)
-		to_chat(mob, "Lights toggled [lights ? "on" : "off"].")
+		to_chat(mob, "Lights toggled [light_toggle ? "on" : "off"].")
 
 /obj/spacepod/proc/toggle_brakes(mob/user)
 	brakes = !brakes

@@ -8,7 +8,7 @@
 	/// The tank that we will preload into the spacepod.
 	var/internal_tank_type = /obj/machinery/portable_atmospherics/canister/air
 	/// Equipment that will be preloaded into the spacepod.
-	var/equipment_types = list()
+	var/equipment_types = list(/obj/item/spacepod_equipment/thruster)
 	construction_state = SPACEPOD_ARMOR_WELDED // Make sure it spawns fully setup.
 
 /obj/spacepod/prebuilt/Initialize()
@@ -27,10 +27,13 @@
 	icon_state = "pod_sec"
 	locked = TRUE
 	spacepod_armor_type = /obj/item/pod_parts/armor/security
-	equipment_types = list(/obj/item/spacepod_equipment/weaponry/disabler,
+	equipment_types = list(
+		/obj/item/spacepod_equipment/weaponry/disabler,
 		/obj/item/spacepod_equipment/lock/keyed/sec,
 		/obj/item/spacepod_equipment/tracker,
-		/obj/item/spacepod_equipment/cargo/chair)
+		/obj/item/spacepod_equipment/cargo/chair,
+		/obj/item/spacepod_equipment/lights/security,
+		)
 
 // adminbus spacepod for jousting events
 /obj/spacepod/prebuilt/jousting
@@ -38,9 +41,12 @@
 	icon_state = "pod_mil"
 	spacepod_armor_type = /obj/item/pod_parts/armor/security
 	cell_type = /obj/item/stock_parts/cell/infinite
-	equipment_types = list(/obj/item/spacepod_equipment/weaponry/laser,
+	equipment_types = list(
+		/obj/item/spacepod_equipment/weaponry/laser,
 		/obj/item/spacepod_equipment/cargo/chair,
-		/obj/item/spacepod_equipment/cargo/chair)
+		/obj/item/spacepod_equipment/cargo/chair,
+		/obj/item/spacepod_equipment/lights/military,
+		)
 
 /obj/spacepod/prebuilt/jousting/red
 	icon_state = "pod_synd"
@@ -72,8 +78,11 @@
 	icon_state = "pod_mil"
 	spacepod_armor_type = /obj/item/pod_parts/armor/security
 	cell_type = /obj/item/stock_parts/cell/high
-	equipment_types = list(/obj/item/spacepod_equipment/weaponry/burst_disabler,
+	equipment_types = list(
+		/obj/item/spacepod_equipment/weaponry/burst_disabler,
 		/obj/item/spacepod_equipment/cargo,
 		/obj/item/spacepod_equipment/lock/keyed/military,
 		/obj/item/spacepod_equipment/cargo/chair,
-		/obj/item/spacepod_equipment/teleport)
+		/obj/item/spacepod_equipment/teleport,
+		/obj/item/spacepod_equipment/lights/military,
+		)

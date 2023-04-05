@@ -286,6 +286,8 @@
 /obj/item/spacepod_equipment/thruster
 	name = "pod thruster system"
 	desc = "The engine system for a spacepod, makes the pod go."
+	icon_state = "thrusters"
+	slot = SPACEPOD_SLOT_THRUSTER
 	/// The max speed that the pod can move forwards. In tiles per second.
 	var/max_forward_speed = 3
 	/// The max speed that the pod can move backwards. In tiles per second.
@@ -311,27 +313,46 @@
  * Dictates what kind of lights the pod will have.
  */
 
-/obj/item/spacepod_equipment/thruster
-	name = "pod thruster system"
-	desc = "The engine system for a spacepod, makes the pod go."
-	/// The max speed that the pod can move forwards. In tiles per second.
-	var/max_forward_speed = 3
-	/// The max speed that the pod can move backwards. In tiles per second.
-	var/max_backwards_speed = 2
-	/// The max speed that the pod can move sidways. In tiles per second.
-	var/max_sideways_speed = 1
+/obj/item/spacepod_equipment/lights
+	name = "pod light system"
+	desc = "Lights for a spacepod, they allow you to see where you are going. In theory."
+	icon_state = "lights"
+	slot = SPACEPOD_SLOT_LIGHT
+	/// The color of the light
+	var/color_to_set = COLOR_WHITE
 
-/obj/item/spacepod_equipment/thruster/on_install(obj/spacepod/attaching_spacepod)
+/obj/item/spacepod_equipment/lights/on_install(obj/spacepod/attaching_spacepod)
 	. = ..()
-	attaching_spacepod.forward_maxthrust = max_forward_speed
-	attaching_spacepod.backward_maxthrust = max_backwards_speed
-	attaching_spacepod.side_maxthrust = max_sideways_speed
+	attaching_spacepod.our_lights = src
 
 /obj/item/spacepod_equipment/thruster/on_uninstall(obj/spacepod/detatching_spacepod)
 	. = ..()
-	detatching_spacepod.forward_maxthrust = 0
-	detatching_spacepod.backward_maxthrust = 0
-	detatching_spacepod.side_maxthrust = 0
+	detatching_spacepod.our_lights = null
+	detatching_spacepod.set_light_on(FALSE)
+
+/obj/item/spacepod_equipment/lights/military
+	name = "military pod light system"
+	color_to_set = "#BBF093"
+
+/obj/item/spacepod_equipment/lights/security
+	name = "security pod light system"
+	color_to_set = COLOR_BLUE
+
+/obj/item/spacepod_equipment/lights/syndicate
+	name = "syndicate pod light system"
+	color_to_set = COLOR_RED
+
+/obj/item/spacepod_equipment/lights/custom
+	name = "custom pod light system"
+	desc = "Lights for a spacepod, you can use a screwdriver on this to change the color of the lights."
+
+/obj/item/spacepod_equipment/lights/custom/screwdriver_act(mob/living/user, obj/item/tool)
+	var/new_color = input(user, "Please select your new projectile color", "Laser color", color_to_set) as null|color
+	if(!new_color)
+		return
+	color_to_set = new_color
+	tool.play_tool_sound(src, 100)
+
 
 /**
  * Misc Systems
