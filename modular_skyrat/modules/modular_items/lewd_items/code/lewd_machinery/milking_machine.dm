@@ -451,13 +451,13 @@
 /obj/structure/chair/milking_machine/proc/update_all_visuals()
 	if(current_selected_organ != null)
 		var/current_selected_organ_type = null
-		var/current_selected_organ_size = null
+		organ_overlay_new_icon_state = "[current_selected_organ_type]_[pump_state]"
 
 		cut_overlay(organ_overlay)
 		organ_overlay_new_icon_state = null
-		current_selected_organ_size = current_selected_organ.genital_size
 
 		if(istype(current_selected_organ, /obj/item/organ/external/genital/breasts))
+			var/current_selected_organ_size = current_selected_organ.genital_size
 			switch(current_selected_organ.genital_type)
 				if("pair")
 					current_selected_organ_type = "double_breast"
@@ -481,6 +481,8 @@
 					else
 						current_selected_organ_size = "5"
 
+			organ_overlay_new_icon_state += "_[current_selected_organ_size]"
+
 		if(istype(current_selected_organ, /obj/item/organ/external/genital/testicles))
 			current_selected_organ_type = ORGAN_SLOT_PENIS
 
@@ -489,10 +491,9 @@
 
 		if(current_mode == MILKING_PUMP_MODE_OFF)
 			pump_state = MILKING_PUMP_STATE_OFF
-			organ_overlay_new_icon_state = "[current_selected_organ_type]_[pump_state]"
 		else
 			pump_state = MILKING_PUMP_STATE_ON
-			organ_overlay_new_icon_state = "[current_selected_organ_type]_[pump_state]_[current_mode]"
+			organ_overlay_new_icon_state += "_[current_mode]"
 
 		if(organ_overlay.icon_state != organ_overlay_new_icon_state)
 			organ_overlay.icon_state = organ_overlay_new_icon_state
