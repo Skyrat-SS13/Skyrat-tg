@@ -110,6 +110,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 	inserted_id.assignment = "Off-Duty " + current_assignment
 	inserted_id.update_label()
 
+	GLOB.manifest.modify(inserted_id.registered_name, inserted_id.assignment, inserted_id.get_trim_assignment())
 	return TRUE
 
 ///Clocks the currently inserted ID Card back in
@@ -132,6 +133,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 	inserted_id.assignment = id_component.stored_assignment
 
 	radio.talk_into(src, "[inserted_id.registered_name], [inserted_id.assignment] has returned to duty.", announcement_channel)
+	GLOB.manifest.modify(inserted_id.registered_name, inserted_id.assignment, inserted_id.get_trim_assignment())
 
 	qdel(id_component)
 	inserted_id.update_label()
