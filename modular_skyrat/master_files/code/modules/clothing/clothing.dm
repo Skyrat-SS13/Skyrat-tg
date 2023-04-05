@@ -1,6 +1,6 @@
 GLOBAL_LIST_EMPTY(taur_clothing_icons)
 
-/obj/item/clothing/
+/obj/item/clothing
 	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
 
 /obj/item/clothing/take_damage(damage_amount, damage_type = BRUTE, damage_flag = "", sound_effect = TRUE, attack_dir, armour_penetration = 0)
