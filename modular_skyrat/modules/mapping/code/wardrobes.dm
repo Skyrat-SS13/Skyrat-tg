@@ -89,6 +89,8 @@
 			record.amount = 3
 
 			products.Remove(/obj/item/choice_beacon/holy)
-			skyrat_products[/obj/item/choice_beacon/unholy] = 3
+			products.Add(list(
+				/obj/item/choice_beacon/unholy = 3,)
+			)
 
 			return
