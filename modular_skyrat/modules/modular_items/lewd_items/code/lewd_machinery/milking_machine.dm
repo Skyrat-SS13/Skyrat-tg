@@ -41,23 +41,21 @@
 *	WORKED OBJECT
 */
 
-	var/obj/item/organ/external/genital/current_selected_organ = null // Organ selected in UI
-	var/obj/item/reagent_containers/cup/beaker = null // Beaker inserted in machine
-	var/mob/living/carbon/human/current_mob = null // Mob buckled to the machine
-	var/obj/item/organ/external/genital/breasts/current_breasts = null // Buckled mob breasts
-	var/obj/item/organ/external/genital/testicles/current_testicles = null // Buckled mob testicles
-	var/obj/item/organ/external/genital/vagina/current_vagina = null // Buckled mob vagina
+	/// What organ is fluid being extracted from?
+	var/obj/item/organ/external/genital/current_selected_organ = null
+	/// What beaker is liquid being outputted to?
+	var/obj/item/reagent_containers/cup/beaker = null
+	/// What human mob is currently buckled to the machine?
+	var/mob/living/carbon/human/current_mob = null
+	/// What is the current breast organ of the buckled mob?
+	var/obj/item/organ/external/genital/breasts/current_breasts = null
+	/// What is the current testicles organ of the buckled mob?
+	var/obj/item/organ/external/genital/testicles/current_testicles = null
+	/// What is the current vagina organ of the buckled mob?
+	var/obj/item/organ/external/genital/vagina/current_vagina = null
 
-	// Machine colors
+	/// What color is the machine currently set to?
 	var/machine_color = "pink"
-
-/*
-*	STATE MANAGEMENT
-*/
-
-	// Organ types and sizes
-	var/current_selected_organ_type = null
-	var/current_selected_organ_size = null
 
 /*
 *	OVERLAYS
@@ -452,6 +450,9 @@
 // General handler for calling redrawing of the current state of the machine
 /obj/structure/chair/milking_machine/proc/update_all_visuals()
 	if(current_selected_organ != null)
+		var/current_selected_organ_type = null
+		var/current_selected_organ_size = null
+
 		cut_overlay(organ_overlay)
 		organ_overlay_new_icon_state = null
 		current_selected_organ_size = current_selected_organ.genital_size
