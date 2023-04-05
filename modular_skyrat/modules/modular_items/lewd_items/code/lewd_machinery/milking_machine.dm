@@ -229,6 +229,7 @@
 		add_mood_event("handcuffed", /datum/mood_event/handcuffed)
 	else
 		clear_mood_event("handcuffed")
+
 	update_mob_action_buttons() //some of our action buttons might be unusable when we're handcuffed.
 	update_worn_handcuffs()
 	update_hud_handcuffed()
@@ -349,7 +350,7 @@
 
 // Liquid intake handler
 /obj/structure/chair/milking_machine/proc/retrive_liquids_from_selected_organ(delta_time)
-	if(!current_mob || current_selected_organ)
+	if(!current_mob || !current_selected_organ)
 		return FALSE
 
 	var/fluid_multiplier = 1
@@ -451,13 +452,10 @@
 /obj/structure/chair/milking_machine/proc/update_all_visuals()
 	if(current_selected_organ != null)
 		var/current_selected_organ_type = null
-		organ_overlay_new_icon_state = "[current_selected_organ_type]_[pump_state]"
-
+		var/current_selected_organ_size = current_selected_organ.genital_size
 		cut_overlay(organ_overlay)
-		organ_overlay_new_icon_state = null
 
 		if(istype(current_selected_organ, /obj/item/organ/external/genital/breasts))
-			var/current_selected_organ_size = current_selected_organ.genital_size
 			switch(current_selected_organ.genital_type)
 				if("pair")
 					current_selected_organ_type = "double_breast"
@@ -481,13 +479,15 @@
 					else
 						current_selected_organ_size = "5"
 
-			organ_overlay_new_icon_state += "_[current_selected_organ_size]"
-
 		if(istype(current_selected_organ, /obj/item/organ/external/genital/testicles))
 			current_selected_organ_type = ORGAN_SLOT_PENIS
 
 		if(istype(current_selected_organ, /obj/item/organ/external/genital/vagina))
 			current_selected_organ_type = ORGAN_SLOT_VAGINA
+
+		organ_overlay_new_icon_state = "[current_selected_organ_type]_pump_[pump_state]"
+		if(istype(current_selected_organ, /obj/item/organ/external/genital/breasts))
+			organ_overlay_new_icon_state += "_[current_selected_organ_size]"
 
 		if(current_mode == MILKING_PUMP_MODE_OFF)
 			pump_state = MILKING_PUMP_STATE_OFF
