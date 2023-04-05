@@ -1,7 +1,11 @@
 /obj/item/extinguisher
 	name = "fire extinguisher"
 	desc = "A traditional red fire extinguisher."
+<<<<<<< HEAD
 	icon = 'icons/obj/weapons/items_and_weapons.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+=======
+	icon = 'icons/obj/weapons/extinguisher.dmi'
+>>>>>>> 4397d63a55d (Split weapons_and_items.dmi icons into their own categories (#74363))
 	icon_state = "fire_extinguisher0"
 	worn_icon_state = "fire_extinguisher"
 	inhand_icon_state = "fire_extinguisher"

@@ -2,7 +2,11 @@
 	gender = PLURAL
 	name = "red lipstick"
 	desc = "A generic brand of lipstick."
+<<<<<<< HEAD
 	icon =  'modular_skyrat/modules/salon/icons/items.dmi' //SKYRAT EDIT CHANGE - ORIGINAL: icon = 'icons/obj/weapons/items_and_weapons.dmi'
+=======
+	icon = 'icons/obj/cosmetic.dmi'
+>>>>>>> 4397d63a55d (Split weapons_and_items.dmi icons into their own categories (#74363))
 	icon_state = "lipstick"
 	inhand_icon_state = "lipstick"
 	w_class = WEIGHT_CLASS_TINY
@@ -26,7 +30,6 @@
 	inhand_icon_state = "lipstick[open ? "open" : null]"
 	return ..()
 
-
 /obj/item/lipstick/update_overlays()
 	. = ..()
 	if(!open)
@@ -34,7 +37,6 @@
 	var/mutable_appearance/colored_overlay = mutable_appearance(icon, "lipstick_uncap_color")
 	colored_overlay.color = colour
 	. += colored_overlay
-
 
 /obj/item/lipstick/purple
 	name = "purple lipstick"
@@ -44,7 +46,7 @@
 	//It's still called Jade, but theres no HTML color for jade, so we use lime.
 	name = "jade lipstick"
 	colour = "lime"
-	
+
 /obj/item/lipstick/blue
 	name = "blue lipstick"
 	colour = "blue"
@@ -135,7 +137,7 @@
 /obj/item/razor
 	name = "electric razor"
 	desc = "The latest and greatest power razor born from the science of shaving."
-	icon = 'icons/obj/weapons/items_and_weapons.dmi'
+	icon = 'icons/obj/cosmetic.dmi'
 	icon_state = "razor"
 	inhand_icon_state = "razor"
 	flags_1 = CONDUCT_1
@@ -155,7 +157,6 @@
 
 	H.update_body_parts()
 	playsound(loc, 'sound/items/welder2.ogg', 20, TRUE)
-
 
 /obj/item/razor/attack(mob/M, mob/living/user)
 	if(ishuman(M))
