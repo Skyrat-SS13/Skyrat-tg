@@ -5,16 +5,14 @@
 	icon_state = "n_beam"
 	density = TRUE
 	anchored = TRUE
-	var/id = 1.0
 	can_atmos_pass = ATMOS_PASS_NO
 
 /obj/structure/spacepoddoor/Initialize()
 	..()
-	air_update_turf(1)
-	isakula()
+	air_update_turf(TRUE)
 
 /obj/structure/spacepoddoor/Destroy()
-	air_update_turf(1)
+	air_update_turf(TRUE)
 	return ..()
 
 /obj/structure/spacepoddoor/CanPass(atom/movable/movable_atom, turf/our_turf)
