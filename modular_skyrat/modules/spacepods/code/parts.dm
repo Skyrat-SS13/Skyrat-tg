@@ -11,10 +11,12 @@
 	name = "space pod frame"
 	density = FALSE
 	anchored = FALSE
+	/// What we are able to link to.
 	var/link_to = null
 	var/link_angle = 0
 
-/obj/item/pod_parts/pod_frame/ComponentInitialize()
+/obj/item/pod_parts/pod_frame/Initialize(mapload)
+	. = ..()
 	AddComponent(/datum/component/simple_rotation)
 
 /obj/item/pod_parts/pod_frame/proc/find_square()
@@ -27,16 +29,16 @@
 	it also checks that each part is unique, and that all the parts are there for the spacepod itself
 	*/
 	var/neededparts = list(/obj/item/pod_parts/pod_frame/aft_port, /obj/item/pod_parts/pod_frame/aft_starboard, /obj/item/pod_parts/pod_frame/fore_port, /obj/item/pod_parts/pod_frame/fore_starboard)
-	var/turf/T
+	var/turf/our_turf
 	var/obj/item/pod_parts/pod_frame/linked
 	var/obj/item/pod_parts/pod_frame/pointer
 	var/list/connectedparts =  list()
 	neededparts -= src
 	linked = src
 	for(var/i = 1; i <= 4; i++)
-		T = get_turf(get_step(linked, turn(linked.dir, -linked.link_angle))) //get the next place that we want to look at
-		if(locate(linked.link_to) in T)
-			pointer = locate(linked.link_to) in T
+		our_turf = get_turf(get_step(linked, turn(linked.dir, -linked.link_angle))) //get the next place that we want to look at
+		if(locate(linked.link_to) in our_turf)
+			pointer = locate(linked.link_to) in our_turf
 		if(istype(pointer, linked.link_to) && pointer.dir == linked.dir && pointer.anchored)
 			if(!(pointer in connectedparts))
 				connectedparts += pointer
@@ -52,14 +54,14 @@
 			return FALSE
 	return connectedparts
 
-/obj/item/pod_parts/pod_frame/attackby(var/obj/item/O, mob/user)
-	if(istype(O, /obj/item/stack/rods))
-		var/obj/item/stack/rods/R = O
+/obj/item/pod_parts/pod_frame/attackby(obj/item/attacking_item, mob/user)
+	if(istype(attacking_item, /obj/item/stack/rods))
+		var/obj/item/stack/rods/rod_stack = attacking_item
 		var/list/linkedparts = find_square()
 		if(!linkedparts)
 			to_chat(user, span_warning("You cannot assemble a pod frame because you do not have the necessary assembly."))
 			return TRUE
-		if(!R.use(10))
+		if(!rod_stack.use(10))
 			to_chat(user, span_warning("You need 10 rods for this."))
 			return TRUE
 		var/obj/spacepod/pod = new
@@ -80,11 +82,11 @@
 				pod.forceMove(F.loc)
 			qdel(F)
 		return TRUE
-	if(O.tool_behaviour == TOOL_WRENCH)
+	if(attacking_item.tool_behaviour == TOOL_WRENCH)
 		to_chat(user, span_notice("You [!anchored ? "secure [src] in place."  : "remove the securing bolts."]"))
 		anchored = !anchored
 		density = anchored
-		O.play_tool_sound(src)
+		attacking_item.play_tool_sound(src)
 		return TRUE
 
 /obj/item/pod_parts/pod_frame/fore_port
@@ -119,9 +121,13 @@
 	name = "civilian pod armor"
 	icon_state = "pod_armor_civ"
 	desc = "Spacepod armor. This is the civilian version. It looks rather flimsy."
+	/// The finished pod icon, this is what determines what the pod will look like.
 	var/pod_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
+	/// The icon state of the pod icon that will be applied on completion.
 	var/pod_icon_state = "pod_civ"
+	/// The description that will be applied to the pod upon completion.
 	var/pod_desc = "A sleek civilian space pod."
+	/// The integrity that will be given to the pod upon completion.
 	var/pod_integrity = 250
 
 /obj/item/pod_parts/armor/syndicate

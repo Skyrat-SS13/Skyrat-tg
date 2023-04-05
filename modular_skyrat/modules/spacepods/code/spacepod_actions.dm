@@ -1,3 +1,8 @@
+/**
+ * Spacepod actions
+ *
+ * These are basic action types that the spacepod will give to it's controller.
+ */
 /obj/spacepod/proc/generate_action_type(actiontype)
 	var/datum/action/spacepod/action = new actiontype
 	if(!istype(action))
@@ -53,14 +58,22 @@
 	occupant_actions -= M
 	return TRUE
 
-// ACTION TYPES
+/**
+ * ACTION TYPES
+ */
 
 /datum/action/spacepod
 	check_flags = AB_CHECK_CONSCIOUS
-	icon_icon = 'icons/mob/actions/actions_mecha.dmi'
+	button_icon = 'icons/mob/actions/actions_mecha.dmi'
 	button_icon_state = "mech_eject"
+	/// The spacepod we are linked to.
 	var/obj/spacepod/spacepod_target
 
+/**
+ * Exit
+ *
+ * Simply tries to make the user exit the pod.
+ */
 /datum/action/spacepod/exit
 	name = "Exit pod"
 
@@ -71,6 +84,9 @@
 		return
 	spacepod_target.exit_pod(owner)
 
+/**
+ * Opens the control system of the pod.
+ */
 /datum/action/spacepod/controls
 	name = "Spacepod controls"
 	button_icon_state = "mech_view_stats"

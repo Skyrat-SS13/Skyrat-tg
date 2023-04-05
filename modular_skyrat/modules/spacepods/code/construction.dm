@@ -38,165 +38,167 @@
 				else
 					. += span_notice("The maintenance hatch is <b>closed</b>.")
 
-/obj/spacepod/proc/handle_spacepod_construction(obj/item/W, mob/living/user)
+/obj/spacepod/proc/handle_spacepod_construction(obj/item/tool, mob/living/user)
 	// time for a construction/deconstruction process to rival r-walls
-	var/obj/item/stack/ST = W
+
 	switch(construction_state)
 		if(SPACEPOD_EMPTY)
-			if(W.tool_behaviour == TOOL_WIRECUTTER)
+			if(tool.tool_behaviour == TOOL_WIRECUTTER)
 				. = TRUE
 				user.visible_message("[user] deconstructs [src].", "You deconstruct [src].")
-				W.play_tool_sound(src)
+				tool.play_tool_sound(src)
 				deconstruct(TRUE)
-			else if(istype(W, /obj/item/stack/cable_coil))
+			else if(istype(tool, /obj/item/stack/cable_coil))
 				. = TRUE
-				if(ST.use(10))
+				var/obj/item/stack/cable_coil = tool
+				if(cable_coil.use(10))
 					user.visible_message("[user] wires [src].", "You wire [src].")
 					construction_state++
 				else
 					to_chat(user, span_warning("You need 10 wires for this!"))
 		if(SPACEPOD_WIRES_LOOSE)
-			if(W.tool_behaviour == TOOL_WIRECUTTER)
+			if(tool.tool_behaviour == TOOL_WIRECUTTER)
 				. = TRUE
-				var/obj/item/stack/cable_coil/CC = new
-				CC.amount = 10
-				CC.forceMove(loc)
-				W.play_tool_sound(src)
+				var/obj/item/stack/cable_coil/cable_coil = new
+				cable_coil.amount = 10
+				cable_coil.forceMove(loc)
+				tool.play_tool_sound(src)
 				construction_state--
 				user.visible_message("[user] cuts [src]'s wiring.", "You remove [src]'s wiring.")
-			else if(W.tool_behaviour == TOOL_SCREWDRIVER)
+			else if(tool.tool_behaviour == TOOL_SCREWDRIVER)
 				. = TRUE
-				W.play_tool_sound(src)
+				tool.play_tool_sound(src)
 				construction_state++
 				user.visible_message("[user] screws on [src]'s wiring harnesses.", "You screw on [src]'s wiring harnesses.")
 		if(SPACEPOD_WIRES_SECURED)
-			if(W.tool_behaviour == TOOL_SCREWDRIVER)
+			if(tool.tool_behaviour == TOOL_SCREWDRIVER)
 				. = TRUE
-				W.play_tool_sound(src)
+				tool.play_tool_sound(src)
 				construction_state--
 				user.visible_message("[user] unclips [src]'s wiring harnesses.", "You unclip [src]'s wiring harnesses.")
-			else if(istype(W, /obj/item/circuitboard/mecha/pod))
+			else if(istype(tool, /obj/item/circuitboard/mecha/pod))
 				. = TRUE
-				if(user.temporarilyRemoveItemFromInventory(W))
-					qdel(W)
+				if(user.temporarilyRemoveItemFromInventory(tool))
+					qdel(tool)
 					construction_state++
 					user.visible_message("[user] inserts the mainboard into [src].", "You insert the mainboard into [src].")
 				else
-					to_chat(user, span_warning("[W] is stuck to your hand!"))
+					to_chat(user, span_warning("[tool] is stuck to your hand!"))
 		if(SPACEPOD_CIRCUIT_LOOSE)
-			if(W.tool_behaviour == TOOL_CROWBAR)
+			if(tool.tool_behaviour == TOOL_CROWBAR)
 				. = TRUE
-				W.play_tool_sound(src)
+				tool.play_tool_sound(src)
 				construction_state--
-				var/obj/item/circuitboard/mecha/pod/B = new
-				B.forceMove(loc)
+				var/obj/item/circuitboard/mecha/pod/pod_circuitboard = new
+				pod_circuitboard.forceMove(loc)
 				user.visible_message("[user] pries out the mainboard from [src].", "You pry out the mainboard from [src].")
-			else if(W.tool_behaviour == TOOL_SCREWDRIVER)
+			else if(tool.tool_behaviour == TOOL_SCREWDRIVER)
 				. = TRUE
-				W.play_tool_sound(src)
+				tool.play_tool_sound(src)
 				construction_state++
 				user.visible_message("[user] secures the mainboard to [src].", "You secure the mainboard to [src].")
 		if(SPACEPOD_CIRCUIT_SECURED)
-			if(W.tool_behaviour == TOOL_SCREWDRIVER)
+			if(tool.tool_behaviour == TOOL_SCREWDRIVER)
 				. = TRUE
-				W.play_tool_sound(src)
+				tool.play_tool_sound(src)
 				construction_state--
 				user.visible_message("[user] unsecures the mainboard.", "You unscrew the mainboard from [src].")
-			else if(istype(W, /obj/item/pod_parts/core))
+			else if(istype(tool, /obj/item/pod_parts/core))
 				. = TRUE
-				if(user.temporarilyRemoveItemFromInventory(W))
-					qdel(W)
+				if(user.temporarilyRemoveItemFromInventory(tool))
+					qdel(tool)
 					construction_state++
 					user.visible_message("[user] inserts the core into [src].", "You carefully insert the core into [src].")
 				else
-					to_chat(user, span_warning("[W] is stuck to your hand!"))
+					to_chat(user, span_warning("[tool] is stuck to your hand!"))
 		if(SPACEPOD_CORE_LOOSE)
-			if(W.tool_behaviour == TOOL_CROWBAR)
+			if(tool.tool_behaviour == TOOL_CROWBAR)
 				. = TRUE
-				W.play_tool_sound(src)
-				var/obj/item/pod_parts/core/C = new
-				C.forceMove(loc)
+				tool.play_tool_sound(src)
+				var/obj/item/pod_parts/core/spacepod_core = new
+				spacepod_core.forceMove(loc)
 				construction_state--
 				user.visible_message("[user] delicately removes the core from [src].", "You delicately remove the core from [src].")
-			else if(W.tool_behaviour == TOOL_WRENCH)
+			else if(tool.tool_behaviour == TOOL_WRENCH)
 				. = TRUE
-				W.play_tool_sound(src)
+				tool.play_tool_sound(src)
 				construction_state++
 				user.visible_message("[user] secures [src]'s core bolts.", "You secure [src]'s core bolts.")
 		if(SPACEPOD_CORE_SECURED)
-			if(W.tool_behaviour == TOOL_WRENCH)
+			if(tool.tool_behaviour == TOOL_WRENCH)
 				. = TRUE
-				W.play_tool_sound(src)
+				tool.play_tool_sound(src)
 				construction_state--
 				user.visible_message("[user] unsecures [src]'s core.", "You unsecure [src]'s core.")
-			else if(istype(W, /obj/item/stack/sheet/iron))
+			else if(istype(tool, /obj/item/stack/sheet/iron))
 				. = TRUE
-				if(ST.use(5))
+				var/obj/item/stack/sheet/iron/iron_sheets = tool
+				if(iron_sheets.use(5))
 					user.visible_message("[user] fabricates a pressure bulkhead for [src].", "You frabricate a pressure bulkhead for [src].")
 					construction_state++
 				else
 					to_chat(user, span_warning("You need 5 metal for this!"))
 		if(SPACEPOD_BULKHEAD_LOOSE)
-			if(W.tool_behaviour == TOOL_CROWBAR)
+			if(tool.tool_behaviour == TOOL_CROWBAR)
 				. = TRUE
-				W.play_tool_sound(src)
+				tool.play_tool_sound(src)
 				construction_state--
-				var/obj/item/stack/sheet/iron/five/M = new
-				M.forceMove(loc)
+				var/obj/item/stack/sheet/iron/five/iron_sheets = new
+				iron_sheets.forceMove(loc)
 				user.visible_message("[user] pops [src]'s bulkhead panelling loose.", "You pop [src]'s bulkhead panelling loose.")
-			else if(W.tool_behaviour == TOOL_WRENCH)
+			else if(tool.tool_behaviour == TOOL_WRENCH)
 				. = TRUE
-				W.play_tool_sound(src)
+				tool.play_tool_sound(src)
 				construction_state++
 				user.visible_message("[user] secures [src]'s bulkhead panelling.", "You secure [src]'s bulkhead panelling.")
 		if(SPACEPOD_BULKHEAD_SECURED)
-			if(W.tool_behaviour == TOOL_WRENCH)
+			if(tool.tool_behaviour == TOOL_WRENCH)
 				. = TRUE
-				W.play_tool_sound(src)
+				tool.play_tool_sound(src)
 				construction_state--
 				user.visible_message("[user] unbolts [src]'s bulkhead panelling.", "You unbolt [src]'s bulkhead panelling.")
-			else if(W.tool_behaviour == TOOL_WELDER)
+			else if(tool.tool_behaviour == TOOL_WELDER)
 				. = TRUE
-				if(W.use_tool(src, user, 20, amount=3, volume = 50))
+				if(tool.use_tool(src, user, 20, amount = 3, volume = 50))
 					construction_state = SPACEPOD_BULKHEAD_WELDED
 					user.visible_message("[user] seals [src]'s bulkhead panelling.", "You seal [src]'s bulkhead panelling.")
 		if(SPACEPOD_BULKHEAD_WELDED)
-			if(W.tool_behaviour == TOOL_WELDER)
+			if(tool.tool_behaviour == TOOL_WELDER)
 				. = TRUE
-				if(W.use_tool(src, user, 20, amount=3, volume = 50))
+				if(tool.use_tool(src, user, 20, amount = 3, volume = 50))
 					construction_state = SPACEPOD_BULKHEAD_SECURED
 					user.visible_message("[user] cuts [src]'s bulkhead panelling loose.", "You cut [src]'s bulkhead panelling loose.")
-			if(istype(W, /obj/item/pod_parts/armor))
+			if(istype(tool, /obj/item/pod_parts/armor))
 				. = TRUE
-				if(user.transferItemToLoc(W, src))
-					add_armor(W)
+				if(user.transferItemToLoc(tool, src))
+					add_armor(tool)
 					construction_state++
 					user.visible_message("[user] installs [src]'s armor plating.", "You install [src]'s armor plating.")
 				else
-					to_chat(user, "[W] is stuck to your hand!")
+					to_chat(user, "[tool] is stuck to your hand!")
 		if(SPACEPOD_ARMOR_LOOSE)
-			if(W.tool_behaviour == TOOL_CROWBAR)
+			if(tool.tool_behaviour == TOOL_CROWBAR)
 				. = TRUE
 				if(pod_armor)
 					pod_armor.forceMove(loc)
 					remove_armor()
-				W.play_tool_sound(src)
+				tool.play_tool_sound(src)
 				construction_state--
 				user.visible_message("[user] pries off [src]'s armor.", "You pry off [src]'s armor.")
-			if(W.tool_behaviour == TOOL_WRENCH)
+			if(tool.tool_behaviour == TOOL_WRENCH)
 				. = TRUE
-				W.play_tool_sound(src)
+				tool.play_tool_sound(src)
 				construction_state++
 				user.visible_message("[user] bolts down [src]'s armor.", "You bolt down [src]'s armor.")
 		if(SPACEPOD_ARMOR_SECURED)
-			if(W.tool_behaviour == TOOL_WRENCH)
+			if(tool.tool_behaviour == TOOL_WRENCH)
 				. = TRUE
-				W.play_tool_sound(src)
+				tool.play_tool_sound(src)
 				construction_state--
 				user.visible_message("[user] unsecures [src]'s armor.", "You unsecure [src]'s armor.")
-			else if(W.tool_behaviour == TOOL_WELDER)
+			else if(tool.tool_behaviour == TOOL_WELDER)
 				. = TRUE
-				if(W.use_tool(src, user, 50, amount=3, volume = 50))
+				if(tool.use_tool(src, user, 50, amount = 3, volume = 50))
 					construction_state = SPACEPOD_ARMOR_WELDED
 					user.visible_message("[user] welds [src]'s armor.", "You weld [src]'s armor.")
 					// finally this took too fucking long

@@ -1,7 +1,16 @@
+/**
+ * Basic Spacepod Equipment
+ *
+ * These things are basically upgrades for spacepods. You can have interesting and unique hardware on a spacepod.
+ */
 /obj/item/spacepod_equipment
-	var/obj/spacepod/spacepod
+	name = "error"
 	icon = 'modular_skyrat/modules/spacepods/icons/parts.dmi'
+	/// The spacepod we are attached to.
+	var/obj/spacepod/spacepod
+	/// The slot in which we take
 	var/slot = SPACEPOD_SLOT_MISC
+	/// How much space this equipment takes up
 	var/slot_space = 1
 
 /obj/item/spacepod_equipment/proc/on_install(obj/spacepod/attaching_spacepod)
@@ -12,59 +21,35 @@
 /obj/item/spacepod_equipment/proc/on_uninstall()
 	spacepod.equipment -= src
 
+/**
+ * can_install
+ *
+ * Basic install handler, performs checks before returning TRUE or FALSE
+ */
 /obj/item/spacepod_equipment/proc/can_install(obj/spacepod/attaching_spacepod, mob/user)
+	// Get the amount of room we have, if we have none, then set it to 0.
 	var/room = attaching_spacepod.equipment_slot_limits[slot] || 0
-	for(var/obj/item/spacepod_equipment/EQ in attaching_spacepod.equipment)
-		if(EQ.slot == slot)
-			room -= EQ.slot_space
+	// Calculate the amount of room we have left after taking into account all the existing equipment.
+	for(var/obj/item/spacepod_equipment/iterating_equipment in attaching_spacepod.equipment)
+		if(iterating_equipment.slot == slot)
+			room -= iterating_equipment.slot_space
 	if(room < slot_space)
 		to_chat(user, span_warning("There's no room for another [slot] system!"))
 		return FALSE
 	return TRUE
 
+/**
+ * can_uninstall
+ *
+ * Basic uninstall handler, place any unique behaviour here, return true or false.
+ */
 /obj/item/spacepod_equipment/proc/can_uninstall(mob/user)
 	return TRUE
 
-/obj/item/spacepod_equipment/weaponry
-	slot = SPACEPOD_SLOT_WEAPON
-	var/projectile_type
-	var/shot_cost = 0
-	var/shots_per = 1
-	var/fire_sound
-	var/fire_delay = 15
-	var/overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
-	var/overlay_icon_state = "pod_weapon_laser"
-/obj/item/spacepod_equipment/weaponry/on_install(obj/spacepod/attaching_spacepod)
-	. = ..()
-	attaching_spacepod.weapon = src
-	attaching_spacepod.update_icon()
 
-/obj/item/spacepod_equipment/weaponry/on_uninstall()
-	. = ..()
-	if(spacepod.weapon == src)
-		spacepod.weapon = null
-
-/obj/item/spacepod_equipment/weaponry/proc/fire_weapons(target)
-	if(spacepod.next_firetime > world.time)
-		to_chat(usr, span_warning("Your weapons are recharging."))
-		playsound(src, 'sound/weapons/gun/general/dry_fire.ogg', 30, TRUE)
-		return
-	if(!spacepod.cell || !spacepod.cell.use(shot_cost))
-		to_chat(usr, span_warning("Insufficient charge to fire the weapons"))
-		playsound(src, 'sound/weapons/gun/general/dry_fire.ogg', 30, TRUE)
-		return
-	spacepod.next_firetime = world.time + fire_delay
-	for(var/I in 1 to shots_per)
-		spacepod.fire_projectiles(projectile_type, target)
-		playsound(src, fire_sound, 50, TRUE)
-		sleep(2) // Projectile code be fucky.0
-
-/*
-///////////////////////////////////////
-/////////Cargo System//////////////////
-///////////////////////////////////////
-*/
-
+/**
+ * Cargo Systems
+ */
 /obj/item/spacepod_equipment/cargo
 	name = "pod cargo"
 	desc = "You shouldn't be seeing this"
@@ -99,22 +84,22 @@
 		storage.forceMove(get_turf(src))
 		storage = null
 
-/obj/item/spacepod_equipment/cargo/large/proc/spacepod_mousedrop(obj/spacepod/attaching_spacepod, obj/A, mob/user)
+/obj/item/spacepod_equipment/cargo/large/proc/spacepod_mousedrop(obj/spacepod/attaching_spacepod, obj/inserting_item, mob/user)
 	SIGNAL_HANDLER
-	INVOKE_ASYNC(src, .proc/spacepod_mousedrop_async, attaching_spacepod, A, user)
+	INVOKE_ASYNC(src, .proc/spacepod_mousedrop_async, attaching_spacepod, inserting_item, user)
 
-/obj/item/spacepod_equipment/cargo/large/proc/spacepod_mousedrop_async(obj/spacepod/attaching_spacepod, obj/A, mob/user)
+/obj/item/spacepod_equipment/cargo/large/proc/spacepod_mousedrop_async(obj/spacepod/attaching_spacepod, obj/inserting_item, mob/user)
 	if(user == attaching_spacepod.pilot || (user in attaching_spacepod.passengers))
 		return FALSE
-	if(istype(A, storage_type) && attaching_spacepod.Adjacent(A)) // For loading ore boxes
+	if(istype(inserting_item, storage_type) && attaching_spacepod.Adjacent(inserting_item)) // For loading ore boxes
 		if(!storage)
-			to_chat(user, span_notice("You begin loading [A] into [attaching_spacepod]'s [src]"))
-			if(do_after_mob(user, list(A, attaching_spacepod), 40))
-				storage = A
-				A.forceMove(src)
-				to_chat(user, span_notice("You load [A] into [attaching_spacepod]'s [src]!"))
+			to_chat(user, span_notice("You begin loading [inserting_item] into [attaching_spacepod]'s [src]"))
+			if(do_after(user, 4 SECONDS, inserting_item))
+				storage = inserting_item
+				inserting_item.forceMove(src)
+				to_chat(user, span_notice("You load [inserting_item] into [attaching_spacepod]'s [src]!"))
 			else
-				to_chat(user, span_warning("You fail to load [A] into [attaching_spacepod]'s [src]"))
+				to_chat(user, span_warning("You fail to load [inserting_item] into [attaching_spacepod]'s [src]"))
 		else
 			to_chat(user, span_warning("[attaching_spacepod] already has \an [storage]"))
 		return TRUE
@@ -161,11 +146,53 @@
 		return FALSE
 	return ..()
 
-/*
-///////////////////////////////////////
-/////////Weapon System///////////////////
-///////////////////////////////////////
-*/
+/**
+ * Weapon Systems
+ */
+
+
+/obj/item/spacepod_equipment/weaponry
+	name = "broken weapon"
+	slot = SPACEPOD_SLOT_WEAPON
+	/// The projectile type that we fire
+	var/projectile_type
+	/// How much energy each shot costs the battery.
+	var/shot_cost = 0
+	/// How many shots we fire in one button click.
+	var/burst_fire = 1
+	/// The sound we make when firing.
+	var/fire_sound
+	/// The delay between firing.
+	var/fire_delay = 15
+	/// The icon that we will overlay onto the pod.
+	var/overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
+	/// The icon state of the overlayed weapon.
+	var/overlay_icon_state = "pod_weapon_laser"
+
+/obj/item/spacepod_equipment/weaponry/on_install(obj/spacepod/attaching_spacepod)
+	. = ..()
+	attaching_spacepod.weapon = src
+	attaching_spacepod.update_icon()
+
+/obj/item/spacepod_equipment/weaponry/on_uninstall()
+	. = ..()
+	if(spacepod.weapon == src)
+		spacepod.weapon = null
+
+/obj/item/spacepod_equipment/weaponry/proc/fire_weapons(target)
+	if(spacepod.next_firetime > world.time)
+		to_chat(usr, span_warning("Your weapons are recharging."))
+		playsound(src, 'sound/weapons/gun/general/dry_fire.ogg', 30, TRUE)
+		return
+	if(!spacepod.cell || !spacepod.cell.use(shot_cost))
+		to_chat(usr, span_warning("Insufficient charge to fire the weapons"))
+		playsound(src, 'sound/weapons/gun/general/dry_fire.ogg', 30, TRUE)
+		return
+	spacepod.next_firetime = world.time + fire_delay
+	for(var/I in 1 to burst_fire)
+		spacepod.fire_projectiles(projectile_type, target)
+		playsound(src, fire_sound, 50, TRUE)
+		sleep(2) // Projectile code be fucky
 
 /obj/item/spacepod_equipment/weaponry/disabler
 	name = "disabler system"
@@ -247,11 +274,9 @@
 	shot_cost = 200
 	fire_delay = 8
 
-/*
-///////////////////////////////////////
-/////////Misc. System///////////////////
-///////////////////////////////////////
-*/
+/**
+ * Misc Systems
+ */
 
 /obj/item/spacepod_equipment/tracker
 	name = "spacepod tracking system"
@@ -259,12 +284,15 @@
 	icon = 'modular_skyrat/modules/spacepods/icons/parts.dmi'
 	icon_state = "pod_locator"
 
-/*
-///////////////////////////////////////
-/////////Lock System///////////////////
-///////////////////////////////////////
-*/
+/obj/item/spacepod_equipment/teleport
+	name = "teleporter"
+	desc = "Instantly returns the ship to the lighthouse."
+	icon_state = "cargo_blank"
+	slot = SPACEPOD_SLOT_MISC
 
+/**
+ * Lock Systems
+ */
 /obj/item/spacepod_equipment/lock
 	name = "pod lock"
 	desc = "You shouldn't be seeing this"
@@ -292,19 +320,20 @@
 	name = "spacepod tumbler lock"
 	desc = "A locking system to stop podjacking. This version uses a standalone key."
 	icon_state = "lock_tumbler"
+	/// Our unique ID identifier, to prevent duplicate locks.
 	var/static/id_source = 0
-	var/id = null
+	/// The required key.id to unlock the shuttle.
+	var/key_id = null
 
 /obj/item/spacepod_equipment/lock/keyed/Initialize()
 	. = ..()
-	if(id == null)
-		id = ++id_source
-
+	if(key_id == null)
+		key_id = ++id_source
 
 /obj/item/spacepod_equipment/lock/keyed/spacepod_attackby(obj/spacepod/attaching_spacepod, obj/item/I, mob/user)
 	if(istype(I, /obj/item/spacepod_key))
 		var/obj/item/spacepod_key/key = I
-		if(key.id == id)
+		if(key.id == key_id)
 			attaching_spacepod.toggle_locked(user)
 			return
 		else
@@ -312,11 +341,11 @@
 		return TRUE
 	return FALSE
 
-/obj/item/spacepod_equipment/lock/keyed/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/spacepod_key))
-		var/obj/item/spacepod_key/key = I
+/obj/item/spacepod_equipment/lock/keyed/attackby(obj/item/attacking_item, mob/user)
+	if(istype(attacking_item, /obj/item/spacepod_key))
+		var/obj/item/spacepod_key/key = attacking_item
 		if(key.id == null)
-			key.id = id
+			key.id = key_id
 			to_chat(user, span_notice("You grind the blank key to fit the lock."))
 		else
 			to_chat(user, span_warning("This key is already ground!"))
@@ -324,10 +353,10 @@
 		..()
 
 /obj/item/spacepod_equipment/lock/keyed/sec
-	id = "security spacepod"
+	key_id = "security spacepod"
 
 /obj/item/spacepod_equipment/lock/keyed/military
-	id = "military spacepod"
+	key_id = "military spacepod"
 
 // The key
 /obj/item/spacepod_key
@@ -336,6 +365,7 @@
 	icon = 'modular_skyrat/modules/spacepods/icons/parts.dmi'
 	icon_state = "podkey"
 	w_class = WEIGHT_CLASS_TINY
+	/// Our unique key ID, this is what the spacepod lock system checks to unlock/lock.
 	var/id = null
 
 /obj/item/spacepod_key/sec
@@ -363,10 +393,5 @@
 		icon_state = "lock_buster_off"
 	to_chat(user, span_notice("You turn the [src] [on ? "on" : "off"]."))
 
-// Teleportation
-/obj/item/spacepod_equipment/teleport
-	name = "teleporter"
-	desc = "Instantly returns the ship to the lighthouse."
-	icon_state = "cargo_blank"
-	slot = SPACEPOD_SLOT_MISC
+
 

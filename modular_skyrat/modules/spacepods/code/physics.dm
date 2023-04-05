@@ -37,20 +37,20 @@
 	var/velocity_mag = sqrt(velocity_x*velocity_x+velocity_y*velocity_y) // magnitude
 	if(velocity_mag || angular_velocity)
 		var/drag = 0
-		for(var/turf/T in locs)
-			if(isspaceturf(T))
+		for(var/turf/iterating_turf in locs)
+			if(isspaceturf(iterating_turf))
 				continue
 			drag += 0.001
 			var/floating = FALSE
-			if(T.has_gravity() && !brakes && velocity_mag > 0.1 && cell && cell.use((is_mining_level(z) ? 3 : 15) * time))
+			if(iterating_turf.has_gravity() && !brakes && velocity_mag > 0.1 && cell && cell.use((is_mining_level(z) ? 3 : 15) * time))
 				floating = TRUE // want to fly this shit on the station? Have fun draining your battery.
-			if((!floating && T.has_gravity()) || brakes) // brakes are a kind of magboots okay?
+			if((!floating && iterating_turf.has_gravity()) || brakes) // brakes are a kind of magboots okay?
 				drag += is_mining_level(z) ? 0.1 : 0.5 // some serious drag. Damn. Except lavaland, it has less gravity or something
-				if(velocity_mag > 5 && prob(velocity_mag * 4) && istype(T, /turf/open/floor))
-					var/turf/open/floor/TF = T
-					TF.make_plating() // pull up some floor tiles. Stop going so fast, ree.
+				if(velocity_mag > 5 && prob(velocity_mag * 4) && istype(iterating_turf, /turf/open/floor))
+					var/turf/open/floor/floor = iterating_turf
+					floor.make_plating() // pull up some floor tiles. Stop going so fast, ree.
 					take_damage(3, BRUTE, "melee", FALSE)
-			var/datum/gas_mixture/env = T.return_air()
+			var/datum/gas_mixture/env = iterating_turf.return_air()
 			if(env)
 				var/pressure = env.return_pressure()
 				drag += velocity_mag * pressure * 0.0001 // 1 atmosphere should shave off 1% of velocity per tile
@@ -104,7 +104,7 @@
 			thrust_y -= sy * side_maxthrust
 			last_thrust_right = -side_maxthrust
 
-	if(cell && cell.use(10 * sqrt((thrust_x*thrust_x)+(thrust_y*thrust_y)) * time))
+	if(cell && cell.use(10 * sqrt((thrust_x * thrust_x) + (thrust_y * thrust_y)) * time))
 		velocity_x += thrust_x * time
 		velocity_y += thrust_y * time
 	else
@@ -205,62 +205,62 @@
 	transform = mat_from
 	pixel_x = base_pixel_x + last_offset_x*32
 	pixel_y = base_pixel_y + last_offset_y*32
-	animate(src, transform=mat_to, pixel_x = base_pixel_x + offset_x*32, pixel_y = base_pixel_y + offset_y*32, time = time*10, flags=ANIMATION_END_NOW)
+	animate(src, transform = mat_to, pixel_x = base_pixel_x + offset_x * 32, pixel_y = base_pixel_y + offset_y * 32, time = time * 10, flags = ANIMATION_END_NOW)
 	var/list/possible_smooth_viewers = contents | src | get_all_orbiters()
-	for(var/mob/M in possible_smooth_viewers)
-		var/client/C = M.client
-		if(!C)
+	for(var/mob/iterating_mob in possible_smooth_viewers)
+		var/client/mob_client = iterating_mob.client
+		if(!mob_client)
 			continue
-		C.pixel_x = last_offset_x*32
-		C.pixel_y = last_offset_y*32
-		animate(C, pixel_x = offset_x*32, pixel_y = offset_y*32, time = time*10, flags=ANIMATION_END_NOW)
+		mob_client.pixel_x = last_offset_x * 32
+		mob_client.pixel_y = last_offset_y * 32
+		animate(mob_client, pixel_x = offset_x * 32, pixel_y = offset_y * 32, time = time * 10, flags = ANIMATION_END_NOW)
 	user_thrust_dir = 0
 	update_icon()
 
-/obj/spacepod/Bumped(atom/movable/A)
-	if(A.dir & NORTH)
+/obj/spacepod/Bumped(atom/movable/bumped_atom)
+	if(bumped_atom.dir & NORTH)
 		velocity_y += bump_impulse
-	if(A.dir & SOUTH)
+	if(bumped_atom.dir & SOUTH)
 		velocity_y -= bump_impulse
-	if(A.dir & EAST)
+	if(bumped_atom.dir & EAST)
 		velocity_x += bump_impulse
-	if(A.dir & WEST)
+	if(bumped_atom.dir & WEST)
 		velocity_x -= bump_impulse
 	return ..()
 
-/obj/spacepod/Bump(atom/A)
+/obj/spacepod/Bump(atom/bumped_atom)
 	var/bump_velocity = 0
 	if(dir & (NORTH|SOUTH))
 		bump_velocity = abs(velocity_y) + (abs(velocity_x) / 15)
 	else
 		bump_velocity = abs(velocity_x) + (abs(velocity_y) / 15)
-	if(istype(A, /obj/machinery/door/airlock)) // try to open doors
-		var/obj/machinery/door/D = A
-		if(!D.operating)
-			if(D.allowed(D.requiresID() ? pilot : null))
+	if(istype(bumped_atom, /obj/machinery/door/airlock)) // try to open doors
+		var/obj/machinery/door/bumped_door = bumped_atom
+		if(!bumped_door.operating)
+			if(bumped_door.allowed(bumped_door.requiresID() ? pilot : null))
 				spawn(0)
-					D.open()
+					bumped_door.open()
 			else
-				D.do_animate("deny")
-	var/atom/movable/AM = A
-	if(istype(AM) && !AM.anchored && bump_velocity > 1)
-		step(AM, dir)
+				bumped_door.do_animate("deny")
+	var/atom/movable/bumped_movable_atom = bumped_atom
+	if(istype(bumped_movable_atom) && !bumped_movable_atom.anchored && bump_velocity > 1)
+		step(bumped_movable_atom, dir)
 
 	if(bump_velocity > 5)
 		playsound(src, pick(list('modular_skyrat/modules/spacepods/sound/hit_hull_1.ogg', 'modular_skyrat/modules/spacepods/sound/hit_hull_2.ogg', 'modular_skyrat/modules/spacepods/sound/hit_hull_3.ogg')), 70)
 	// if a bump is that fast then it's not a bump. It's a collision.
-	if(bump_velocity > 10 && !ismob(A))
+	if(bump_velocity > 10 && !ismob(bumped_atom))
 		var/strength = bump_velocity / 10
 		strength = strength * strength
 		strength = min(strength, 5) // don't want the explosions *too* big
 		// wew lad, might wanna slow down there
-		explosion(A, -1, round((strength - 1) / 2), round(strength))
-		message_admins("[key_name_admin(pilot)] has impacted a spacepod into [A] with velocity [bump_velocity]")
+		explosion(bumped_atom, -1, round((strength - 1) / 2), round(strength))
+		message_admins("[key_name_admin(pilot)] has impacted a spacepod into [bumped_atom] with velocity [bump_velocity]")
 		take_damage(strength*10, BRUTE, "melee", TRUE)
-		log_game("[key_name(pilot)] has impacted a spacepod into [A] with velocity [bump_velocity]")
+		log_game("[key_name(pilot)] has impacted a spacepod into [bumped_atom] with velocity [bump_velocity]")
 		visible_message(span_danger("The force of the impact causes a shockwave"))
-	else if(isliving(A) && bump_velocity > 5)
-		var/mob/living/M = A
+	else if(isliving(bumped_atom) && bump_velocity > 5)
+		var/mob/living/M = bumped_atom
 		M.apply_damage(bump_velocity * 2)
 		take_damage(bump_velocity, BRUTE, "melee", FALSE)
 		playsound(M.loc, "swing_hit", 100, 1, -1)
@@ -280,23 +280,23 @@
 	for(var/list/origin in origins)
 		var/this_x = origin[1]
 		var/this_y = origin[2]
-		var/turf/T = get_turf(src)
+		var/turf/iterating_turf = get_turf(src)
 		while(this_x > 16)
-			T = get_step(T, EAST)
+			iterating_turf = get_step(iterating_turf, EAST)
 			this_x -= 32
 		while(this_x < -16)
-			T = get_step(T, WEST)
+			iterating_turf = get_step(iterating_turf, WEST)
 			this_x += 32
 		while(this_y > 16)
-			T = get_step(T, NORTH)
+			iterating_turf = get_step(iterating_turf, NORTH)
 			this_y -= 32
 		while(this_y < -16)
-			T = get_step(T, SOUTH)
+			iterating_turf = get_step(iterating_turf, SOUTH)
 			this_y += 32
-		if(!T)
+		if(!iterating_turf)
 			continue
-		var/obj/projectile/proj = new proj_type(T)
-		proj.starting = T
+		var/obj/projectile/proj = new proj_type(iterating_turf)
+		proj.starting = iterating_turf
 		proj.firer = usr
 		proj.def_zone = "chest"
 		proj.original = target
