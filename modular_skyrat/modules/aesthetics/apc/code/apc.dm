@@ -7,7 +7,7 @@
 /obj/machinery/power/apc/update_appearance(updates=check_updates())
 	icon_update_needed = FALSE
 	if(!updates)
-		return
+		return FALSE
 
 	. = ..()
 	// And now, separately for cleanness, the lighting changing
@@ -20,11 +20,11 @@
 			if(APC_FULLY_CHARGED)
 				set_light_color(LIGHT_COLOR_ELECTRIC_CYAN)
 		set_light(light_on_range)
-		return
+		return TRUE
 
 	if(update_state & UPSTATE_BLUESCREEN)
 		set_light_color(LIGHT_COLOR_BLUE)
 		set_light(light_on_range)
-		return
+		return TRUE
 
 	set_light(0)
