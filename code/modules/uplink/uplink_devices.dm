@@ -109,21 +109,13 @@
 	. += span_notice("You can destroy this device with a screwdriver.")
 
 // Multitool uplink
-<<<<<<< HEAD
-///obj/item/multitool/uplink/Initialize(mapload, owner, tc_amount = 20) //ORIGINAL
-/obj/item/multitool/uplink/Initialize(mapload, owner, tc_amount = 35) //SKYRAT EDIT CHANGE
-=======
-/obj/item/multitool/uplink/Initialize(mapload, owner, tc_amount = 20, datum/uplink_handler/uplink_handler_override = null)
->>>>>>> 11cbbba018e (Replaceable Traitor Uplinks (#74315))
+////obj/item/multitool/uplink/Initialize(mapload, owner, tc_amount = 20, datum/uplink_handler/uplink_handler_override = null) //ORIGINAL
+/obj/item/multitool/uplink/Initialize(mapload, owner, tc_amount = 35, datum/uplink_handler/uplink_handler_override = null) //SKYRAT EDIT CHANGE
 	. = ..()
 	AddComponent(/datum/component/uplink, owner, FALSE, TRUE, UPLINK_TRAITORS, tc_amount)
 
 // Pen uplink
-<<<<<<< HEAD
-///obj/item/pen/uplink/Initialize(mapload, owner, tc_amount = 20) //ORIGINAL
-/obj/item/pen/uplink/Initialize(mapload, owner, tc_amount = 35) //SKYRAT EDIT CHANGE
-=======
-/obj/item/pen/uplink/Initialize(mapload, owner, tc_amount = 20, datum/uplink_handler/uplink_handler_override = null)
->>>>>>> 11cbbba018e (Replaceable Traitor Uplinks (#74315))
+///obj/item/pen/uplink/Initialize(mapload, owner, tc_amount = 20, datum/uplink_handler/uplink_handler_override = null) //ORIGINAL
+/obj/item/pen/uplink/Initialize(mapload, owner, tc_amount = 35, datum/uplink_handler/uplink_handler_override = null) //SKYRAT EDIT CHANGE
 	. = ..()
 	AddComponent(/datum/component/uplink, owner, TRUE, FALSE, UPLINK_TRAITORS, tc_amount)
