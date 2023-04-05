@@ -18,7 +18,6 @@
 	item_chair = null
 	flags_1 = NODECONSTRUCT_1
 	max_integrity = 75
-	var/color_changed = FALSE // Variable to track the color change of the machine by the user. So that you can change it once.
 	var/static/list/milkingmachine_designs
 
 /*
@@ -56,8 +55,6 @@
 *	STATE MANAGEMENT
 */
 
-	// Vessel capacity indicator
-	var/vessel_state = "liquid_empty"
 	// Organ types and sizes
 	var/current_selected_organ_type = null
 	var/current_selected_organ_size = null
@@ -139,7 +136,6 @@
 		return TRUE
 	machine_color = choice
 	update_icon()
-	color_changed = TRUE
 	to_chat(user, span_notice("You change the color of the milking machine."))
 	return TRUE
 
@@ -458,13 +454,18 @@
 	if(current_selected_organ != null)
 		cut_overlay(organ_overlay)
 		organ_overlay_new_icon_state = null
+		current_selected_organ_size = current_selected_organ.genital_size
+
 		if(istype(current_selected_organ, /obj/item/organ/external/genital/breasts))
-			if(current_selected_organ.genital_type == "pair")
-				current_selected_organ_type = "double_breast"
-				current_selected_organ_size = current_selected_organ.genital_size
-			if(current_selected_organ.genital_type == "quad")
-				current_selected_organ_type = "quad_breast"
-				// Optimization needed
+			switch(current_selected_organ.genital_type)
+				if("pair")
+					current_selected_organ_type = "double_breast"
+				if("quad")
+					current_selected_organ_type = "quad_breast"
+				if("sextuple")
+					current_selected_organ_type = "six_breast"
+
+			if((current_selected_organ.genital_type == "sextuple") || (current_selected_organ.genital_type == "quad"))
 				switch(current_selected_organ.genital_size)
 					if(0 to 2)
 						current_selected_organ_size = "0"
@@ -478,59 +479,23 @@
 						current_selected_organ_size = "4"
 					else
 						current_selected_organ_size = "5"
-			if(current_selected_organ.genital_type == "sextuple")
-				current_selected_organ_type = "six_breast"
-				switch(current_selected_organ.genital_size)
-					if(0 to 2)
-						current_selected_organ_size = "0"
-					if(3 to 4)
-						current_selected_organ_size = "1"
-					if(5 to 7)
-						current_selected_organ_size = "2"
-					if(8 to 10)
-						current_selected_organ_size = "3"
-					if(11 to 13)
-						current_selected_organ_size = "4"
-					else
-						current_selected_organ_size = "5"
-			if (current_mode == MILKING_PUMP_MODE_OFF)
-				pump_state = MILKING_PUMP_STATE_OFF
-				organ_overlay_new_icon_state = "[current_selected_organ_type]_[pump_state]_[current_selected_organ_size]"
-				if(organ_overlay.icon_state != organ_overlay_new_icon_state)
-					organ_overlay.icon_state = organ_overlay_new_icon_state
-			else
-				pump_state = MILKING_PUMP_STATE_ON
-				organ_overlay_new_icon_state = "[current_selected_organ_type]_[pump_state]_[current_selected_organ_size]_[current_mode]"
-				if(organ_overlay.icon_state != organ_overlay_new_icon_state)
-					organ_overlay.icon_state = organ_overlay_new_icon_state
 
 		if(istype(current_selected_organ, /obj/item/organ/external/genital/testicles))
 			current_selected_organ_type = ORGAN_SLOT_PENIS
-			current_selected_organ_size = current_selected_organ.genital_size
-			if(current_mode == MILKING_PUMP_MODE_OFF)
-				pump_state = MILKING_PUMP_STATE_OFF
-				organ_overlay_new_icon_state = "[current_selected_organ_type]_[pump_state]"
-				if(organ_overlay.icon_state != organ_overlay_new_icon_state)
-					organ_overlay.icon_state = organ_overlay_new_icon_state
-			else
-				pump_state = MILKING_PUMP_STATE_ON
-				organ_overlay_new_icon_state = "[current_selected_organ_type]_[pump_state]_[current_mode]"
-				if(organ_overlay.icon_state != organ_overlay_new_icon_state)
-					organ_overlay.icon_state = organ_overlay_new_icon_state
 
 		if(istype(current_selected_organ, /obj/item/organ/external/genital/vagina))
 			current_selected_organ_type = ORGAN_SLOT_VAGINA
-			current_selected_organ_size = current_selected_organ.genital_size
-			if(current_mode == MILKING_PUMP_MODE_OFF)
-				pump_state = MILKING_PUMP_STATE_OFF
-				organ_overlay_new_icon_state = "[current_selected_organ_type]_[pump_state]"
-				if(organ_overlay.icon_state != organ_overlay_new_icon_state)
-					organ_overlay.icon_state = organ_overlay_new_icon_state
-			else
-				pump_state = MILKING_PUMP_STATE_ON
-				organ_overlay_new_icon_state = "[current_selected_organ_type]_[pump_state]_[current_mode]"
-				if(organ_overlay.icon_state != organ_overlay_new_icon_state)
-					organ_overlay.icon_state = organ_overlay_new_icon_state
+
+		if(current_mode == MILKING_PUMP_MODE_OFF)
+			pump_state = MILKING_PUMP_STATE_OFF
+			organ_overlay_new_icon_state = "[current_selected_organ_type]_[pump_state]"
+		else
+			pump_state = MILKING_PUMP_STATE_ON
+			organ_overlay_new_icon_state = "[current_selected_organ_type]_[pump_state]_[current_mode]"
+
+		if(organ_overlay.icon_state != organ_overlay_new_icon_state)
+			organ_overlay.icon_state = organ_overlay_new_icon_state
+
 		add_overlay(organ_overlay)
 	else
 		cut_overlay(organ_overlay)
@@ -555,7 +520,6 @@
 			state_to_use = 1
 
 	vessel_overlay.icon_state = vessel_state_list[state_to_use]
-	vessel_state = vessel_state_list[state_to_use]
 	add_overlay(vessel_overlay)
 
 	icon_state = "milking_[machine_color]_[current_mode]"
