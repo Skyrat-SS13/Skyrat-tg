@@ -107,7 +107,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
 
-	if(!istype(target, /obj/machinery/griddle))
+	if(!istype(target, /obj/machinery/griddle, /obj/structure/table))
 		return SECONDARY_ATTACK_CALL_NORMAL
 
 	var/atom/broken_egg = new /obj/item/food/rawegg(target.loc)
