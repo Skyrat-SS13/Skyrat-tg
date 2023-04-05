@@ -420,6 +420,12 @@ suffix = "whiteshipruin_box.dmm"*/
 	name = "Pod Crash"
 	description = "A tragic display of what happens to drivers who pda and pod."
 
+/datum/map_template/ruin/space/interdyne
+	id = "interdyne"
+	suffix = "interdyne.dmm"
+	name = "Interdyne Spinward Research Base"
+	description = "An Interdyne facility abandoned due to the accidental discovery of Romerol"
+
 /datum/map_template/ruin/space/waystation
 	id = "waystation"
 	suffix = "waystation.dmm"
