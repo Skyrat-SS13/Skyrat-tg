@@ -1,3 +1,4 @@
+// Build Stages
 #define SPACEPOD_EMPTY 1
 #define SPACEPOD_WIRES_LOOSE 2
 #define SPACEPOD_WIRES_SECURED 3
@@ -12,10 +13,13 @@
 #define SPACEPOD_ARMOR_SECURED 12
 #define SPACEPOD_ARMOR_WELDED 13
 
+// Slots
 #define SPACEPOD_SLOT_CARGO "cargo"
 #define SPACEPOD_SLOT_MISC "misc"
 #define SPACEPOD_SLOT_WEAPON "weapon"
 #define SPACEPOD_SLOT_LOCK "lock"
+#define SPACEPOD_SLOT_LIGHT "light"
+#define SPACEPOD_SLOT_THRUSTER "thruster"
 
 #define SPACEPOD_LAYER 3.9
 

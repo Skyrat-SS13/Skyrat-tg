@@ -38,7 +38,10 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		SPACEPOD_SLOT_MISC = 1,
 		SPACEPOD_SLOT_CARGO = 2,
 		SPACEPOD_SLOT_WEAPON = 1,
-		SPACEPOD_SLOT_LOCK = 1)
+		SPACEPOD_SLOT_LOCK = 1,
+		SPACEPOD_SLOT_LIGHT = 1,
+		SPACEPOD_SLOT_THRUSTER = 1,
+		)
 	/// The lock on the ship
 	var/obj/item/spacepod_equipment/lock/lock
 	/// The weapon on the ship, thing that goes pew pew
@@ -266,62 +269,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		item_map[avoid_assoc_duplicate_keys(iterating_item.name, used_key_list)] = iterating_item
 	var/selection = input(user, "Remove which equipment?", null, null) as null|anything in item_map
 	var/obj/equipment_to_remove = item_map[selection]
-	if(equipment_to_remove && istype(equipment_to_remove) && (equipment_to_remove in contents))
-		// alrightey now to figure out what it is
-		if(equipment_to_remove == cell)
-			cell = null
-		else if(equipment_to_remove == internal_tank)
-			internal_tank = null
-		else if(equipment_to_remove in equipment)
-			var/obj/item/spacepod_equipment/spacepod_equipment = equipment_to_remove
-			if(!spacepod_equipment.can_uninstall(user))
-				return
-			spacepod_equipment.on_uninstall()
-		else
-			return
-		equipment_to_remove.forceMove(loc)
-		if(isitem(equipment_to_remove))
-			user.put_in_hands(equipment_to_remove)
 
-/obj/spacepod/proc/add_armor(obj/item/pod_parts/armor/armor)
-	desc = armor.pod_desc
-	max_integrity = armor.pod_integrity
-	update_integrity(max_integrity - integrity_failure + get_integrity())
-	pod_armor = armor
-	update_icon()
-
-/obj/spacepod/proc/remove_armor()
-	if(!pod_armor)
-		update_integrity(min(integrity_failure, get_integrity()))
-		max_integrity = integrity_failure
-		desc = initial(desc)
-		pod_armor = null
-		update_icon()
-
-/obj/spacepod/proc/on_mouse_moved(mob/user, object, location, control, params)
-	SIGNAL_HANDLER
-	var/list/modifiers = params2list(params)
-	if(object == src ||  (object && (object in user.get_all_contents())) || user != pilot)
-		return
-	var/list/sl_list = splittext(modifiers["screen-loc"],",")
-	var/list/sl_x_list = splittext(sl_list[1], ":")
-	var/list/sl_y_list = splittext(sl_list[2], ":")
-	var/list/view_list = isnum(pilot.client.view) ? list("[pilot.client.view*2+1]","[pilot.client.view*2+1]") : splittext(pilot.client.view, "x")
-	var/dx = text2num(sl_x_list[1]) + (text2num(sl_x_list[2]) / world.icon_size) - 1 - text2num(view_list[1]) / 2
-	var/dy = text2num(sl_y_list[1]) + (text2num(sl_y_list[2]) / world.icon_size) - 1 - text2num(view_list[2]) / 2
-	if(sqrt(dx*dx+dy*dy) > 1)
-		desired_angle = 90 - ATAN2(dx, dy)
-	else
-		desired_angle = null
-
-/obj/spacepod/proc/try_fire_weapon(atom/object, atom/location, control, params)
-	SIGNAL_HANDLER
-	if(weapon && !weapon_safety && !istype(object, /atom/movable/screen)) // Need to make sure the clicked object isn't a hud element
-		INVOKE_ASYNC(src, PROC_REF(async_fire_weapons_at), object)
-
-/obj/spacepod/proc/async_fire_weapons_at(object)
-	if(weapon)
-		weapon.fire_weapons(object)
+	uninstall_equipment(equipment_to_remove, user)
 
 /obj/spacepod/take_damage(damage_amount, damage_type = BRUTE, damage_flag = "", sound_effect = TRUE, attack_dir, armour_penetration = 0)
 	..()
@@ -333,45 +282,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 /obj/spacepod/remove_air(amount)
 	return cabin_air.remove(amount)
 
-/obj/spacepod/proc/slowprocess()
-	if(cabin_air && cabin_air.return_volume() > 0)
-		var/delta = cabin_air.return_temperature() - T20C
-		cabin_air.temperature = cabin_air.return_temperature() - max(-10, min(10, round(delta/4,0.1)))
-	if(internal_tank && cabin_air)
-		var/datum/gas_mixture/tank_air = internal_tank.return_air()
-
-		var/release_pressure = ONE_ATMOSPHERE
-		var/cabin_pressure = cabin_air.return_pressure()
-		var/pressure_delta = min(release_pressure - cabin_pressure, (tank_air.return_pressure() - cabin_pressure)/2)
-		var/transfer_moles = 0
-		if(pressure_delta > 0) //cabin pressure lower than release pressure
-			if(tank_air.return_temperature() > 0)
-				transfer_moles = pressure_delta*cabin_air.return_volume()/(cabin_air.return_temperature() * R_IDEAL_GAS_EQUATION)
-				var/datum/gas_mixture/removed = tank_air.remove(transfer_moles)
-				cabin_air.merge(removed)
-		else if(pressure_delta < 0) //cabin pressure higher than release pressure
-			var/turf/T = get_turf(src)
-			var/datum/gas_mixture/t_air = T.return_air()
-			pressure_delta = cabin_pressure - release_pressure
-			if(t_air)
-				pressure_delta = min(cabin_pressure - t_air.return_pressure(), pressure_delta)
-			if(pressure_delta > 0) //if location pressure is lower than cabin pressure
-				transfer_moles = pressure_delta*cabin_air.return_volume()/(cabin_air.return_temperature() * R_IDEAL_GAS_EQUATION)
-				var/datum/gas_mixture/removed = cabin_air.remove(transfer_moles)
-				if(T)
-					T.assume_air(removed)
-				else //just delete the cabin gas, we're in space or some shit
-					qdel(removed)
-
-/mob/get_status_tab_items()
-	. = ..()
-	if(isspacepod(loc))
-		var/obj/spacepod/S = loc
-		. += ""
-		. += "Spacepod Charge: [S.cell ? "[round(S.cell.charge,0.1)]/[S.cell.maxcharge] KJ" : "NONE"]"
-		. += "Spacepod Integrity: [round(S.get_integrity(),0.1)]/[S.max_integrity]"
-		. += "Spacepod Velocity: [round(sqrt(S.velocity_x*S.velocity_x+S.velocity_y*S.velocity_y), 0.1)] m/s"
-		. += ""
 
 /obj/spacepod/ex_act(severity)
 	switch(severity)
@@ -543,6 +453,12 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	if(front_thrust)
 		add_overlay(image(icon = overlay_file, icon_state = "front_thrust"))
 
+
+/obj/spacepod/relaymove(mob/user, direction)
+	if(user != pilot || pilot.incapacitated())
+		return
+	user_thrust_dir = direction
+
 /obj/spacepod/MouseDrop_T(atom/movable/dropped_atom, mob/living/user)
 	if(user == pilot || (user in passengers) || construction_state != SPACEPOD_ARMOR_WELDED)
 		return
@@ -585,6 +501,139 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		return
 	brakes = !brakes
 	to_chat(usr, span_notice("You toggle the brakes [brakes ? "on" : "off"]."))
+
+/obj/spacepod/proc/uninstall_equipment(obj/equipment_to_remove, mob/user)
+	if(!equipment_to_remove)
+		return
+	if(!istype(equipment_to_remove))
+		return
+	if(!(equipment_to_remove in contents))
+		return
+
+	// alrightey now to figure out what it is
+	if(equipment_to_remove == cell)
+		cell = null
+	else if(equipment_to_remove == internal_tank)
+		internal_tank = null
+	else if(equipment_to_remove in equipment)
+		var/obj/item/spacepod_equipment/spacepod_equipment = equipment_to_remove
+		if(!spacepod_equipment.can_uninstall(user))
+			return
+		spacepod_equipment.on_uninstall(src)
+	else
+		return
+	equipment_to_remove.forceMove(loc)
+	if(isitem(equipment_to_remove))
+		user.put_in_hands(equipment_to_remove)
+
+/**
+ * Slowprocess
+ *
+ * This is the slower, more intensive version of process. It's slower.
+ */
+/obj/spacepod/proc/slowprocess()
+	if(cabin_air && cabin_air.return_volume() > 0)
+		var/delta = cabin_air.return_temperature() - T20C
+		cabin_air.temperature = cabin_air.return_temperature() - max(-10, min(10, round(delta/4,0.1)))
+	if(internal_tank && cabin_air)
+		var/datum/gas_mixture/tank_air = internal_tank.return_air()
+
+		var/release_pressure = ONE_ATMOSPHERE
+		var/cabin_pressure = cabin_air.return_pressure()
+		var/pressure_delta = min(release_pressure - cabin_pressure, (tank_air.return_pressure() - cabin_pressure)/2)
+		var/transfer_moles = 0
+		if(pressure_delta > 0) //cabin pressure lower than release pressure
+			if(tank_air.return_temperature() > 0)
+				transfer_moles = pressure_delta*cabin_air.return_volume()/(cabin_air.return_temperature() * R_IDEAL_GAS_EQUATION)
+				var/datum/gas_mixture/removed = tank_air.remove(transfer_moles)
+				cabin_air.merge(removed)
+		else if(pressure_delta < 0) //cabin pressure higher than release pressure
+			var/turf/our_turf = get_turf(src)
+			var/datum/gas_mixture/turf_air = our_turf.return_air()
+			pressure_delta = cabin_pressure - release_pressure
+			if(turf_air)
+				pressure_delta = min(cabin_pressure - turf_air.return_pressure(), pressure_delta)
+			if(pressure_delta > 0) //if location pressure is lower than cabin pressure
+				transfer_moles = pressure_delta*cabin_air.return_volume()/(cabin_air.return_temperature() * R_IDEAL_GAS_EQUATION)
+				var/datum/gas_mixture/removed = cabin_air.remove(transfer_moles)
+				if(our_turf)
+					our_turf.assume_air(removed)
+				else //just delete the cabin gas, we're in space or some shit
+					qdel(removed)
+
+/**
+ * Add Armor
+ *
+ * Adds armor to the spacepod and updates it accordingly.
+ */
+/obj/spacepod/proc/add_armor(obj/item/pod_parts/armor/armor)
+	desc = armor.pod_desc
+	max_integrity = armor.pod_integrity
+	update_integrity(max_integrity - integrity_failure + get_integrity())
+	pod_armor = armor
+	update_icon()
+
+/**
+ * Remove Armor
+ *
+ * Removes armor from the spacepod...
+ */
+/obj/spacepod/proc/remove_armor()
+	if(!pod_armor)
+		update_integrity(min(integrity_failure, get_integrity()))
+		max_integrity = integrity_failure
+		desc = initial(desc)
+		pod_armor = null
+		update_icon()
+
+/**
+ * On Mouse Moved
+ *
+ * Handles the vector movement of the shuttle when the pilot moves their mouse.
+ */
+/obj/spacepod/proc/on_mouse_moved(mob/user, object, location, control, params)
+	SIGNAL_HANDLER
+	var/list/modifiers = params2list(params)
+	if(object == src ||  (object && (object in user.get_all_contents())) || user != pilot)
+		return
+	var/list/sl_list = splittext(modifiers["screen-loc"],",")
+	var/list/sl_x_list = splittext(sl_list[1], ":")
+	var/list/sl_y_list = splittext(sl_list[2], ":")
+	var/list/view_list = isnum(pilot.client.view) ? list("[pilot.client.view*2+1]","[pilot.client.view*2+1]") : splittext(pilot.client.view, "x")
+	var/dx = text2num(sl_x_list[1]) + (text2num(sl_x_list[2]) / world.icon_size) - 1 - text2num(view_list[1]) / 2
+	var/dy = text2num(sl_y_list[1]) + (text2num(sl_y_list[2]) / world.icon_size) - 1 - text2num(view_list[2]) / 2
+	if(sqrt(dx * dx + dy * dy) > 1)
+		desired_angle = 90 - ATAN2(dx, dy)
+	else
+		desired_angle = null
+
+/**
+ * Returns the relevant status tab items for the pilot
+ */
+/obj/spacepod/proc/get_status_tab_items(mob/living/source, list/items)
+	SIGNAL_HANDLER
+	items += ""
+	items += "Spacepod Charge: [cell ? "[round(cell.charge,0.1)]/[cell.maxcharge] KJ" : "NONE"]"
+	items += "Spacepod Integrity: [round(get_integrity(), 0.1)]/[max_integrity]"
+	items += "Spacepod Velocity: [round(sqrt(velocity_x * velocity_x + velocity_y * velocity_y), 0.1)] m/s"
+	items += ""
+
+/**
+ * Try Fire Weapon
+ *
+ * It's a signal handler to then invoke async the actual firing of the weapons. Triggered by mouseclick.
+ */
+/obj/spacepod/proc/try_fire_weapon(atom/object, atom/location, control, params)
+	SIGNAL_HANDLER
+	if(weapon && !weapon_safety && !istype(object, /atom/movable/screen)) // Need to make sure the clicked object isn't a hud element
+		INVOKE_ASYNC(src, PROC_REF(async_fire_weapons_at), object)
+
+/**
+ * Async fires weapons.
+ */
+/obj/spacepod/proc/async_fire_weapons_at(object)
+	if(weapon)
+		weapon.fire_weapons(object)
 
 /**
  * Process Integrity
@@ -650,6 +699,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		pilot = living_mob
 		RegisterSignal(living_mob, COMSIG_MOB_CLIENT_MOUSE_MOVE, PROC_REF(on_mouse_moved))
 		RegisterSignal(living_mob, COMSIG_MOB_CLIENT_MOUSE_DOWN, PROC_REF(try_fire_weapon))
+		RegisterSignal(living_mob, COMSIG_MOB_GET_STATUS_TAB_ITEMS, PROC_REF(get_status_tab_items))
 		grant_pilot_actions(living_mob)
 		ADD_TRAIT(living_mob, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT)
 		if(living_mob.client)
@@ -666,16 +716,11 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	playsound(src, 'sound/machines/windowdoor.ogg', 50, 1)
 	return TRUE
 
-/obj/spacepod/proc/clear_pilot()
-	if(pilot)
-		remove_pilot_actions(pilot)
-		REMOVE_TRAIT(pilot, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT)
-		if(pilot.client)
-			pilot.client.view_size.resetToDefault()
-		UnregisterSignal(pilot, COMSIG_MOB_CLIENT_MOUSE_MOVE)
-		UnregisterSignal(pilot, COMSIG_MOB_CLIENT_MOUSE_DOWN)
-		pilot = null
-
+/**
+ * Remove Rider
+ *
+ * Checks and removes a rider and clears everything up.
+ */
 /obj/spacepod/proc/remove_rider(mob/living/living_mob)
 	if(!living_mob)
 		return
@@ -698,19 +743,35 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		living_mob.client.pixel_y = 0
 	return TRUE
 
+/**
+ * Clear Pilot
+ *
+ * Removes any references and signals that the pilot once had.
+ */
+/obj/spacepod/proc/clear_pilot()
+	if(pilot)
+		remove_pilot_actions(pilot)
+		REMOVE_TRAIT(pilot, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT)
+		if(pilot.client)
+			pilot.client.view_size.resetToDefault()
+		UnregisterSignal(pilot, COMSIG_MOB_CLIENT_MOUSE_MOVE)
+		UnregisterSignal(pilot, COMSIG_MOB_CLIENT_MOUSE_DOWN)
+		UnregisterSignal(pilot, COMSIG_MOB_GET_STATUS_TAB_ITEMS, PROC_REF(get_status_tab_items))
+		pilot = null
+
+
+/**
+ * Is Occupant
+ *
+ * Checks if a mob is an occupant within the pod.
+ */
 /obj/spacepod/proc/is_occupant(mob/mob_to_check)
 	return !isnull(LAZYACCESS(occupants, mob_to_check))
-
-/obj/spacepod/relaymove(mob/user, direction)
-	if(user != pilot || pilot.incapacitated())
-		return
-	user_thrust_dir = direction
 
 /**
  * UI CONTROL FUNCTIONS
  *
  * These functions are called by the client to control the UI.
- * The control menu is opened by a verb for now.
  */
 
 /obj/spacepod/verb/open_menu()
@@ -839,12 +900,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			cargo.unload_cargo()
 		if("remove_equipment")
 			var/obj/item/spacepod_equipment/equipment_to_remove = locate(params["equipment_ref"]) in src
-			if(!equipment_to_remove)
-				return
-			if(!equipment_to_remove.can_uninstall(usr))
-				return
-			equipment_to_remove.on_uninstall()
-			equipment_to_remove.forceMove(get_turf(src))
+			uninstall_equipment(equipment_to_remove, usr)
 
 /obj/spacepod/proc/toggle_weapon_lock(mob/user)
 	if(!weapon)
@@ -864,6 +920,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		to_chat(user, span_notice("You climb out of [src]."))
 
 /obj/spacepod/proc/toggle_lights(mob/user)
+	if()
 	light_color = icon_light_color[icon_state] || COLOR_WHITE
 	lights = !lights
 	if(lights)

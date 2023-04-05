@@ -13,13 +13,18 @@
 	/// How much space this equipment takes up
 	var/slot_space = 1
 
+/obj/item/spacepod_equipment/Destroy(force)
+	spacepod = null
+	return ..()
+
 /obj/item/spacepod_equipment/proc/on_install(obj/spacepod/attaching_spacepod)
 	spacepod = attaching_spacepod
 	attaching_spacepod.equipment |= src
 	forceMove(attaching_spacepod)
 
-/obj/item/spacepod_equipment/proc/on_uninstall()
+/obj/item/spacepod_equipment/proc/on_uninstall(obj/spacepod/detatching_spacepod)
 	spacepod.equipment -= src
+	spacepod = null
 
 /**
  * can_install
@@ -64,14 +69,14 @@
 	var/storage_type = /obj/structure/closet/crate
 
 /obj/item/spacepod_equipment/cargo/large/on_install(obj/spacepod/attaching_spacepod)
-	..()
+	. = ..()
 	RegisterSignal(attaching_spacepod, COMSIG_MOUSEDROPPED_ONTO, .proc/spacepod_mousedrop)
 	attaching_spacepod.cargo_bays += src
 
-/obj/item/spacepod_equipment/cargo/large/on_uninstall()
-	UnregisterSignal(spacepod, COMSIG_MOUSEDROPPED_ONTO)
-	..()
-	spacepod.cargo_bays -= src
+/obj/item/spacepod_equipment/cargo/large/on_uninstall(obj/spacepod/detatching_spacepod)
+	. = ..()
+	UnregisterSignal(detatching_spacepod, COMSIG_MOUSEDROPPED_ONTO)
+	detatching_spacepod.cargo_bays -= src
 
 /obj/item/spacepod_equipment/cargo/large/can_uninstall(mob/user)
 	if(storage)
@@ -115,15 +120,16 @@
 	..()
 	RegisterSignal(attaching_spacepod, COMSIG_MOVABLE_MOVED, .proc/spacepod_moved)
 
-/obj/item/spacepod_equipment/cargo/large/ore/on_uninstall()
-	UnregisterSignal(spacepod, COMSIG_MOVABLE_MOVED)
-	..()
+/obj/item/spacepod_equipment/cargo/large/ore/on_uninstall(obj/spacepod/detatching_spacepod)
+	. = ..()
+	UnregisterSignal(detatching_spacepod, COMSIG_MOVABLE_MOVED)
+
 
 /obj/item/spacepod_equipment/cargo/large/ore/proc/spacepod_moved(obj/spacepod/attaching_spacepod)
 	SIGNAL_HANDLER
 	if(storage)
-		for(var/turf/T in attaching_spacepod.locs)
-			for(var/obj/item/stack/ore in T)
+		for(var/turf/iterating_turf in attaching_spacepod.locs)
+			for(var/obj/item/stack/ore in iterating_turf)
 				ore.forceMove(storage)
 
 /obj/item/spacepod_equipment/cargo/chair
@@ -133,12 +139,12 @@
 	var/occupant_mod = 1
 
 /obj/item/spacepod_equipment/cargo/chair/on_install(obj/spacepod/attaching_spacepod)
-	..()
+	. = ..()
 	attaching_spacepod.max_passengers += occupant_mod
 
-/obj/item/spacepod_equipment/cargo/chair/on_uninstall()
-	spacepod.max_passengers -= occupant_mod
-	..()
+/obj/item/spacepod_equipment/cargo/chair/on_uninstall(obj/spacepod/detatching_spacepod)
+	. = ..()
+	detatching_spacepod.max_passengers -= occupant_mod
 
 /obj/item/spacepod_equipment/cargo/chair/can_uninstall(mob/user)
 	if(spacepod.passengers.len > (spacepod.max_passengers - occupant_mod))
@@ -174,10 +180,10 @@
 	attaching_spacepod.weapon = src
 	attaching_spacepod.update_icon()
 
-/obj/item/spacepod_equipment/weaponry/on_uninstall()
+/obj/item/spacepod_equipment/weaponry/on_uninstall(obj/spacepod/detatching_spacepod)
 	. = ..()
-	if(spacepod.weapon == src)
-		spacepod.weapon = null
+	if(detatching_spacepod.weapon == src)
+		detatching_spacepod.weapon = null
 
 /obj/item/spacepod_equipment/weaponry/proc/fire_weapons(target)
 	if(spacepod.next_firetime > world.time)
@@ -230,7 +236,6 @@
 /obj/item/spacepod_equipment/weaponry/basic_pod_ka
 	name = "weak kinetic accelerator"
 	desc = "A weak kinetic accelerator for space pods, fires bursts of energy that cut through rock."
-	icon = 'modular_skyrat/modules/spacepods/icons/parts.dmi'
 	icon_state = "pod_taser"
 	projectile_type = /obj/projectile/kinetic/pod
 	shot_cost = 300
@@ -240,7 +245,6 @@
 /obj/item/spacepod_equipment/weaponry/pod_ka
 	name = "kinetic accelerator system"
 	desc = "A kinetic accelerator system for space pods, fires bursts of energy that cut through rock."
-	icon = 'modular_skyrat/modules/spacepods/icons/parts.dmi'
 	icon_state = "pod_m_laser"
 	projectile_type = /obj/projectile/kinetic/pod/regular
 	shot_cost = 250
@@ -257,7 +261,6 @@
 /obj/item/spacepod_equipment/weaponry/plasma_cutter
 	name = "plasma cutter system"
 	desc = "A plasma cutter system for space pods. It is capable of expelling concentrated plasma bursts to mine or cut off xeno limbs!"
-	icon = 'modular_skyrat/modules/spacepods/icons/parts.dmi'
 	icon_state = "pod_p_cutter"
 	projectile_type = /obj/projectile/plasma
 	shot_cost = 250
@@ -275,13 +278,68 @@
 	fire_delay = 8
 
 /**
+ * Thruster Types
+ *
+ * A pods thrusters dictate how fast it can go. Really that simple.
+ */
+
+/obj/item/spacepod_equipment/thruster
+	name = "pod thruster system"
+	desc = "The engine system for a spacepod, makes the pod go."
+	/// The max speed that the pod can move forwards. In tiles per second.
+	var/max_forward_speed = 3
+	/// The max speed that the pod can move backwards. In tiles per second.
+	var/max_backwards_speed = 2
+	/// The max speed that the pod can move sidways. In tiles per second.
+	var/max_sideways_speed = 1
+
+/obj/item/spacepod_equipment/thruster/on_install(obj/spacepod/attaching_spacepod)
+	. = ..()
+	attaching_spacepod.forward_maxthrust = max_forward_speed
+	attaching_spacepod.backward_maxthrust = max_backwards_speed
+	attaching_spacepod.side_maxthrust = max_sideways_speed
+
+/obj/item/spacepod_equipment/thruster/on_uninstall(obj/spacepod/detatching_spacepod)
+	. = ..()
+	detatching_spacepod.forward_maxthrust = 0
+	detatching_spacepod.backward_maxthrust = 0
+	detatching_spacepod.side_maxthrust = 0
+
+/**
+ * Lights
+ *
+ * Dictates what kind of lights the pod will have.
+ */
+
+/obj/item/spacepod_equipment/thruster
+	name = "pod thruster system"
+	desc = "The engine system for a spacepod, makes the pod go."
+	/// The max speed that the pod can move forwards. In tiles per second.
+	var/max_forward_speed = 3
+	/// The max speed that the pod can move backwards. In tiles per second.
+	var/max_backwards_speed = 2
+	/// The max speed that the pod can move sidways. In tiles per second.
+	var/max_sideways_speed = 1
+
+/obj/item/spacepod_equipment/thruster/on_install(obj/spacepod/attaching_spacepod)
+	. = ..()
+	attaching_spacepod.forward_maxthrust = max_forward_speed
+	attaching_spacepod.backward_maxthrust = max_backwards_speed
+	attaching_spacepod.side_maxthrust = max_sideways_speed
+
+/obj/item/spacepod_equipment/thruster/on_uninstall(obj/spacepod/detatching_spacepod)
+	. = ..()
+	detatching_spacepod.forward_maxthrust = 0
+	detatching_spacepod.backward_maxthrust = 0
+	detatching_spacepod.side_maxthrust = 0
+
+/**
  * Misc Systems
  */
 
 /obj/item/spacepod_equipment/tracker
 	name = "spacepod tracking system"
 	desc = "A tracking device for spacepods."
-	icon = 'modular_skyrat/modules/spacepods/icons/parts.dmi'
 	icon_state = "pod_locator"
 
 /obj/item/spacepod_equipment/teleport
@@ -304,12 +362,13 @@
 	RegisterSignal(attaching_spacepod, COMSIG_PARENT_ATTACKBY, .proc/spacepod_attackby)
 	attaching_spacepod.lock = src
 
-/obj/item/spacepod_equipment/lock/on_uninstall()
-	UnregisterSignal(spacepod, COMSIG_PARENT_ATTACKBY)
-	if(spacepod.lock == src)
-		spacepod.lock = null
-	spacepod.locked = FALSE
-	..()
+/obj/item/spacepod_equipment/lock/on_uninstall(obj/spacepod/detatching_spacepod)
+	. = ..()
+	UnregisterSignal(detatching_spacepod, COMSIG_PARENT_ATTACKBY)
+	if(detatching_spacepod.lock == src)
+		detatching_spacepod.lock = null
+	detatching_spacepod.locked = FALSE
+
 
 /obj/item/spacepod_equipment/lock/proc/spacepod_attackby(obj/spacepod/attaching_spacepod, I, mob/user)
 	SIGNAL_HANDLER
