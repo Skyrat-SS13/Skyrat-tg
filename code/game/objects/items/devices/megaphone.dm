@@ -4,18 +4,12 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "megaphone"
 	inhand_icon_state = "megaphone"
-	lefthand_file = 'icons/mob/inhands/misc/megaphone_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/misc/megaphone_righthand.dmi'
+	lefthand_file = 'icons/mob/inhands/items/megaphone_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/megaphone_righthand.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	siemens_coefficient = 1
 	var/spamcheck = 0
 	var/list/voicespan = list(SPAN_COMMAND)
-
-//SKYRAT EDIT ADDITION BEGIN
-/obj/item/megaphone/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/cell)
-//SKYRAT EDIT ADDITION END
 
 /obj/item/megaphone/suicide_act(mob/living/carbon/user)
 	user.visible_message(span_suicide("[user] is uttering [user.p_their()] last words into \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
@@ -25,8 +19,8 @@
 
 /obj/item/megaphone/equipped(mob/M, slot)
 	. = ..()
-	if (slot == ITEM_SLOT_HANDS && !HAS_TRAIT(M, TRAIT_SIGN_LANG))
-		RegisterSignal(M, COMSIG_MOB_SAY, .proc/handle_speech)
+	if ((slot & ITEM_SLOT_HANDS) && !HAS_TRAIT(M, TRAIT_SIGN_LANG))
+		RegisterSignal(M, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	else
 		UnregisterSignal(M, COMSIG_MOB_SAY)
 
@@ -40,10 +34,6 @@
 		if(spamcheck > world.time)
 			to_chat(user, span_warning("\The [src] needs to recharge!"))
 		else
-			//SKYRAT EDIT ADDITION
-			if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
-				return
-			//SKYRAT EDIT END
 			playsound(loc, 'sound/items/megaphone.ogg', 100, FALSE, TRUE)
 			spamcheck = world.time + 50
 			speech_args[SPEECH_SPANS] |= voicespan

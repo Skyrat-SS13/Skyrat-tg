@@ -3,15 +3,11 @@
 
 /datum/loadout_item/under/jumpsuit/donator/enclavesergeant
 	name = "Enclave - Sergeant"
-	item_path = /obj/item/clothing/under/enclave
+	item_path = /obj/item/clothing/under/syndicate/skyrat/enclave
 
 /datum/loadout_item/under/jumpsuit/donator/enclaveofficer
 	name = "Enclave - Officer"
-	item_path = /obj/item/clothing/under/enclaveo
-
-/datum/loadout_item/under/jumpsuit/donator/fashionableskirt
-	name = "Fashionable Skirt"
-	item_path = /obj/item/clothing/under/rank/civilian/skirt
+	item_path = /obj/item/clothing/under/syndicate/skyrat/enclaveo
 
 /datum/loadout_item/under/jumpsuit/donator/blondie
 	name = "Blonde Cowboy Uniform"

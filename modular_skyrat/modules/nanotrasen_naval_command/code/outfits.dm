@@ -1,6 +1,6 @@
 /datum/outfit/centcom/naval
 	name = "Nanotrasen Naval Command - Default"
-	uniform = /obj/item/clothing/under/rank/centcom/naval/ensign
+	uniform = /obj/item/clothing/under/rank/centcom/skyrat/naval
 	id = /obj/item/card/id/advanced/centcom
 	l_pocket = /obj/item/melee/baton/telescopic
 	shoes = /obj/item/clothing/shoes/combat/swat
@@ -23,9 +23,9 @@
 
 	id_trim = /datum/id_trim/centcom/naval
 
-	head = /obj/item/clothing/head/caphat/naval/beret
+	head = /obj/item/clothing/head/hats/caphat/naval/beret
 
-	uniform = /obj/item/clothing/under/rank/centcom/naval/ensign
+	uniform = /obj/item/clothing/under/rank/centcom/skyrat/naval
 
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 
@@ -36,11 +36,11 @@
 
 	id_trim = /datum/id_trim/centcom/naval/lieutenant
 
-	head = /obj/item/clothing/head/centcom_cap
+	head = /obj/item/clothing/head/hats/centcom_cap
 
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/naval
 
-	uniform = /obj/item/clothing/under/rank/centcom/naval/commander
+	uniform = /obj/item/clothing/under/rank/centcom/skyrat/naval/commander
 
 	gloves = /obj/item/clothing/gloves/combat/naval
 
@@ -51,13 +51,13 @@
 
 	id_trim = /datum/id_trim/centcom/naval/ltcr
 
-	head = /obj/item/clothing/head/centcom_cap
+	head = /obj/item/clothing/head/hats/centcom_cap
 
 	neck = /obj/item/clothing/neck/pauldron
 
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/naval
 
-	uniform = /obj/item/clothing/under/rank/centcom/naval/commander
+	uniform = /obj/item/clothing/under/rank/centcom/skyrat/naval/commander
 
 	gloves = /obj/item/clothing/gloves/combat/naval
 
@@ -68,13 +68,13 @@
 
 	id_trim = /datum/id_trim/centcom/naval/commander
 
-	head = /obj/item/clothing/head/centcom_cap
+	head = /obj/item/clothing/head/hats/centcom_cap
 
 	neck = /obj/item/clothing/neck/pauldron/commander
 
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/naval
 
-	uniform = /obj/item/clothing/under/rank/centcom/naval/commander
+	uniform = /obj/item/clothing/under/rank/centcom/skyrat/naval/commander
 
 	gloves = /obj/item/clothing/gloves/combat/naval
 
@@ -85,13 +85,13 @@
 
 	id_trim = /datum/id_trim/centcom/naval/captain
 
-	head = /obj/item/clothing/head/centcom_cap
+	head = /obj/item/clothing/head/hats/centcom_cap
 
 	neck = /obj/item/clothing/neck/pauldron/captain
 
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/naval
 
-	uniform = /obj/item/clothing/under/rank/centcom/naval/commander
+	uniform = /obj/item/clothing/under/rank/centcom/skyrat/naval/commander
 
 	gloves = /obj/item/clothing/gloves/combat/naval
 
@@ -102,9 +102,9 @@
 
 	id_trim = /datum/id_trim/centcom/naval/rear_admiral
 
-	head = /obj/item/clothing/head/caphat/naval
+	head = /obj/item/clothing/head/hats/caphat/naval
 
-	uniform = /obj/item/clothing/under/rank/centcom/naval/admiral
+	uniform = /obj/item/clothing/under/rank/centcom/skyrat/naval/admiral
 
 	gloves = /obj/item/clothing/gloves/combat/naval
 
@@ -115,11 +115,11 @@
 
 	id_trim = /datum/id_trim/centcom/naval/admiral
 
-	head = /obj/item/clothing/head/caphat/naval
+	head = /obj/item/clothing/head/hats/caphat/naval
 
 	neck = /obj/item/clothing/neck/cloak/admiral
 
-	uniform = /obj/item/clothing/under/rank/centcom/naval/admiral
+	uniform = /obj/item/clothing/under/rank/centcom/skyrat/naval/admiral
 
 	gloves = /obj/item/clothing/gloves/combat/naval
 
@@ -130,11 +130,11 @@
 
 	id_trim = /datum/id_trim/centcom/naval/fleet_admiral
 
-	head = /obj/item/clothing/head/caphat/naval/fleet_admiral
+	head = /obj/item/clothing/head/hats/caphat/naval/fleet_admiral
 
 	neck = /obj/item/clothing/neck/cloak/fleet_admiral
 
-	uniform = /obj/item/clothing/under/rank/centcom/naval/fleet_admiral
+	uniform = /obj/item/clothing/under/rank/centcom/skyrat/naval/fleet_admiral
 
 	gloves = /obj/item/clothing/gloves/combat/naval/fleet_admiral
 

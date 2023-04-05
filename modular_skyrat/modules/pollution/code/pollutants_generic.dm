@@ -6,7 +6,7 @@
 	descriptor = SCENT_DESC_SMELL
 	scent = "smoke"
 
-/datum/pollutant/smoke/BreatheAct(mob/living/carbon/victim, amount)
+/datum/pollutant/smoke/breathe_act(mob/living/carbon/victim, amount)
 	if(amount <= 50)
 		return
 	if(prob(20))
@@ -30,7 +30,7 @@
 	thickness = 2
 	color = "#ffed9c"
 
-/datum/pollutant/dust/BreatheAct(mob/living/carbon/victim, amount)
+/datum/pollutant/dust/breathe_act(mob/living/carbon/victim, amount)
 	if(amount <= 10)
 		return
 	if(prob(40))
@@ -82,7 +82,7 @@
 	name = "Carbon Air Pollution"
 	pollutant_flags = POLLUTANT_BREATHE_ACT
 
-/datum/pollutant/carbon_air_pollution/BreatheAct(mob/living/carbon/victim, amount)
+/datum/pollutant/carbon_air_pollution/breathe_act(mob/living/carbon/victim, amount)
 	if(victim.body_position == LYING_DOWN)
 		amount *= 0.35 //The victim is inhaling roughly a third when laying down
 	if(amount <= 10)

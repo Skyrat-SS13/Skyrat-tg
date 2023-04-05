@@ -4,6 +4,12 @@
 /datum/opposing_force_equipment/loadout/gunman
 	item_type = /obj/item/storage/box/syndie_kit/gunman_outfit
 
+/datum/opposing_force_equipment/loadout/heister
+	name = "Heister bundle"
+	item_type = /obj/item/storage/backpack/duffelbag/heister
+	description = "Rob a bank, the vault, or the captain with this stylish bundle! Comes with a self-regenerating armored suit and a unqiue mask. Weaponry and tools not included."
+	max_amount = 4
+
 /datum/opposing_force_equipment/loadout/grenadier
 	item_type = /obj/item/storage/belt/grenade/full
 	name = "Grenadier Kit"
@@ -48,4 +54,4 @@
 	name = "Contractor bundle"
 	item_type = /obj/item/storage/box/syndicate/contract_kit
 	description = "A box containing everything you need to take contracts from the Syndicate. Kidnap people and drop them off at specified locations for rewards in the form of Telecrystals (Usable in the provided uplink) and Contractor Points."
-	admin_note = "WARNING: This bundle is a pretty large change-up of how a person plays a round, giving them access to a swathe of new gear, in addition to a contractor tablet. This contractor tablet lets them take on objectives to non-lethally kidnap people in exhange for telecrystals, usable in the provided uplink."
+	admin_note = "WARNING: This bundle is a pretty large change-up of how a person plays a round, giving them access to a swathe of new gear, in addition to a contractor PDA. This contractor PDA lets them take on objectives to non-lethally kidnap people in exhange for telecrystals, usable in the provided uplink."

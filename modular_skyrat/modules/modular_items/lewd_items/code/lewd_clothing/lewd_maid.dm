@@ -17,8 +17,9 @@
 /obj/item/clothing/accessory/lewdapron
 	name = "shiny maid apron"
 	desc = "The best part of a maid costume. Now with different colors!"
-	icon_state = "lewdapron"
-	inhand_icon_state = "lewdapron"
+	icon_state = "lewdapron_pink"
+	base_icon_state = "lewdapron"
+	inhand_icon_state = "lewdapron_pink"
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi'
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
@@ -32,7 +33,7 @@
 	/// List of all apron designs, used in selecting one in the radial menu
 	var/static/list/apron_designs
 
-/obj/item/clothing/under/costume/lewdmaid/Initialize()
+/obj/item/clothing/under/costume/lewdmaid/Initialize(mapload)
 	. = ..()
 	var/obj/item/clothing/accessory/lewdapron/apron_accessory = new(src)
 	attach_accessory(apron_accessory)
@@ -46,19 +47,14 @@
 		"teal" = image(icon = src.icon, icon_state = "lewdapron_teal"),
 		"yellow" = image (icon = src.icon, icon_state = "lewdapron_yellow"))
 
-//to update model lol
-/obj/item/clothing/accessory/lewdapron/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 //to change model
-/obj/item/clothing/accessory/lewdapron/AltClick(mob/user, obj/item/I)
+/obj/item/clothing/accessory/lewdapron/AltClick(mob/user)
 	if(color_changed)
 		return
 	. = ..()
 	if(.)
 		return
-	var/choice = show_radial_menu(user,src, apron_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+	var/choice = show_radial_menu(user, src, apron_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 	if(!choice)
 		return FALSE
 	current_color = choice
@@ -73,7 +69,8 @@
 		return FALSE
 	return TRUE
 
-/obj/item/clothing/accessory/lewdapron/Initialize()
+/obj/item/clothing/accessory/lewdapron/Initialize(mapload)
+	AddElement(/datum/element/update_icon_updates_onmob)
 	if(!length(apron_designs))
 		populate_apron_designs()
 	update_icon_state()
@@ -82,8 +79,8 @@
 
 /obj/item/clothing/accessory/lewdapron/update_icon_state()
 	. = ..()
-	icon_state = icon_state = "[initial(icon_state)]_[current_color]"
-	inhand_icon_state = "[initial(icon_state)]_[current_color]"
+	icon_state = icon_state = "[initial(base_icon_state)]_[current_color]"
+	inhand_icon_state = "[initial(base_icon_state)]_[current_color]"
 
 /obj/item/clothing/under/costume/lewdmaid/attach_accessory(obj/item/attack_item)
 	. = ..()
@@ -94,7 +91,24 @@
 	if(!ishuman(loc))
 		return TRUE
 	var/mob/living/carbon/human/wearer = loc
-	wearer.update_inv_w_uniform()
-	wearer.update_inv_wear_suit()
+	wearer.update_worn_undersuit()
+	wearer.update_worn_oversuit()
 	wearer.fan_hud_set_fandom()
 	return TRUE
+
+//Not a maid, yeah. I dont care, it's going with the other lewd stuff, and there WONT be a whole new file just for it.
+/obj/item/clothing/under/costume/bunnylewd
+	name = "bunny suit"
+	desc = "Makes the wearer more attractive, even men."
+	icon_state = "bunnysuit"
+	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_uniform.dmi'
+	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform.dmi'
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	body_parts_covered = CHEST|GROIN
+	can_adjust = TRUE
+	alt_covers_chest = FALSE
+
+/obj/item/clothing/under/costume/bunnylewd/white
+	name = "white bunny suit"
+	icon_state = "whitebunnysuit"
+	can_adjust = FALSE

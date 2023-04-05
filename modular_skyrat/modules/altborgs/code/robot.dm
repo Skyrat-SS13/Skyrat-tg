@@ -1,4 +1,4 @@
-/mob/living/silicon/robot/Moved(atom/OldLoc, Dir, Forced = FALSE)
+/mob/living/silicon/robot/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
 	if(robot_resting)
 		robot_resting = FALSE

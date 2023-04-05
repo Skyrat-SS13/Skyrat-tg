@@ -14,9 +14,7 @@
 /obj/structure/toilet{
 	pixel_y = 13
 	},
-/obj/machinery/shower{
-	dir = 1
-	},
+/obj/machinery/shower/directional/north,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
 	dir = 4
 	},
@@ -24,7 +22,7 @@
 	desc = "Kinda sleek. Doesn't offer much privacy.";
 	dir = 4;
 	name = "Prison Cell Door";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -34,9 +32,7 @@
 	},
 /area/shuttle/syndicate/slaver)
 "ba" = (
-/obj/machinery/shower{
-	dir = 1
-	},
+/obj/machinery/shower/directional/north,
 /obj/structure/curtain,
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
@@ -44,9 +40,6 @@
 /turf/open/floor/iron/showroomfloor,
 /area/shuttle/syndicate/slaver)
 "bC" = (
-/obj/effect/turf_decal/trimline/darkblue/warning{
-	dir = 1
-	},
 /obj/structure/table/glass,
 /obj/machinery/computer/operating{
 	icon_keyboard = "laptop_key";
@@ -54,14 +47,14 @@
 	icon_state = "laptop";
 	pixel_y = 3
 	},
-/turf/open/floor/iron/dark/blue/side,
+/obj/effect/turf_decal/trimline/dark_blue/filled/line,
+/obj/effect/turf_decal/trimline/dark_blue/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "cJ" = (
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = -12;
-	pixel_y = 6
-	},
+/obj/structure/sink/directional/east,
 /obj/structure/bed/maint,
 /obj/structure/mirror{
 	desc = "Mirror mirror on the wall, who's the most robust of them all? Not you, because you're in a prison cell.";
@@ -109,7 +102,7 @@
 /obj/machinery/door/airlock/command{
 	id_tag = "syndieprisoncaptainquarterdoor";
 	name = "Captain's Quarters";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
@@ -178,7 +171,7 @@
 "gR" = (
 /obj/machinery/door/airlock/security/old{
 	name = "Airlock";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
 	dir = 4
@@ -196,12 +189,13 @@
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 10
 	},
-/turf/open/floor/iron/dark/brown/corner{
+/obj/effect/turf_decal/trimline/brown/filled/corner{
 	dir = 4
 	},
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "hp" = (
-/obj/structure/shuttle/engine/propulsion/burst{
+/obj/machinery/power/shuttle_engine/propulsion/burst{
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -211,7 +205,7 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/slaver)
 "hv" = (
-/obj/structure/shuttle/engine/propulsion/burst{
+/obj/machinery/power/shuttle_engine/propulsion/burst{
 	dir = 8
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -242,19 +236,21 @@
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 5
 	},
-/turf/open/floor/iron/dark/brown/corner{
+/obj/effect/turf_decal/trimline/brown/filled/corner{
 	dir = 8
 	},
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "jL" = (
 /obj/machinery/suit_storage_unit/mining/eva,
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 1
 	},
-/turf/open/floor/iron/dark/brown/side,
+/obj/effect/turf_decal/trimline/brown/filled/line,
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "kn" = (
-/obj/structure/shuttle/engine/propulsion/burst{
+/obj/machinery/power/shuttle_engine/propulsion/burst{
 	dir = 4
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -273,7 +269,7 @@
 /obj/structure/closet/secure_closet{
 	icon_state = "hos";
 	name = "Captain's Locker";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/item/grenade/c4/x4,
 /obj/item/storage/backpack/satchel/flat/empty,
@@ -306,9 +302,8 @@
 /turf/open/floor/mineral/titanium/tiled/yellow,
 /area/shuttle/syndicate/slaver)
 "mf" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/plasma/plastitanium,
 /obj/structure/cable,
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /turf/open/floor/plating,
 /area/shuttle/syndicate/slaver)
 "mx" = (
@@ -337,11 +332,7 @@
 /turf/open/floor/plating,
 /area/shuttle/syndicate/slaver)
 "nE" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = 12;
-	pixel_y = 6
-	},
+/obj/structure/sink/directional/west,
 /obj/structure/mirror{
 	desc = "Mirror mirror on the wall, who's the most robust of them all? Not you, because you're in a prison cell.";
 	pixel_x = 23;
@@ -358,7 +349,7 @@
 /area/shuttle/syndicate/slaver)
 "pu" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/drinks/mug/coco{
+/obj/item/reagent_containers/cup/glass/mug/coco{
 	desc = "Still hot!";
 	pixel_x = -4;
 	pixel_y = 4
@@ -399,18 +390,20 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
-/turf/open/floor/iron/dark/brown/side{
+/obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 4
 	},
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "qz" = (
 /obj/effect/turf_decal/trimline/yellow/warning,
-/turf/open/floor/iron/dark/brown/side{
+/obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 1
 	},
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "rI" = (
-/obj/structure/shuttle/engine/heater,
+/obj/machinery/power/shuttle_engine/heater,
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/syndicate/slaver)
 "tk" = (
@@ -422,9 +415,7 @@
 /obj/structure/toilet{
 	pixel_y = 13
 	},
-/obj/machinery/shower{
-	dir = 1
-	},
+/obj/machinery/shower/directional/north,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
 	dir = 4
 	},
@@ -432,7 +423,7 @@
 	desc = "Kinda sleek. Doesn't offer much privacy.";
 	dir = 8;
 	name = "Prison Cell Door";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -442,7 +433,7 @@
 	},
 /area/shuttle/syndicate/slaver)
 "vb" = (
-/obj/structure/shuttle/engine/heater{
+/obj/machinery/power/shuttle_engine/heater{
 	dir = 8
 	},
 /obj/structure/window/reinforced{
@@ -455,7 +446,7 @@
 /obj/machinery/door/airlock/command{
 	id_tag = "syndieprisoncrewquarterdoor";
 	name = "Crew Quarters";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
@@ -469,12 +460,11 @@
 	},
 /area/shuttle/syndicate/slaver)
 "wj" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/plasma/plastitanium,
 /obj/structure/cable,
 /obj/machinery/door/poddoor/preopen{
 	id = "privateerslaverbridgeshutters"
 	},
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /turf/open/floor/plating,
 /area/shuttle/syndicate/slaver)
 "wo" = (
@@ -482,9 +472,10 @@
 	dir = 4
 	},
 /obj/machinery/light/directional/east,
-/turf/open/floor/iron/dark/brown/side{
+/obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 8
 	},
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "xz" = (
 /obj/effect/turf_decal/trimline/yellow/warning{
@@ -494,16 +485,18 @@
 	dir = 1
 	},
 /obj/structure/cable,
-/turf/open/floor/iron/dark/brown/side,
+/obj/effect/turf_decal/trimline/brown/filled/line,
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "yf" = (
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 8
 	},
 /obj/machinery/light/directional/west,
-/turf/open/floor/iron/dark/brown/side{
+/obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 4
 	},
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "yg" = (
 /obj/structure/table/reinforced,
@@ -533,19 +526,21 @@
 	},
 /area/shuttle/syndicate/slaver)
 "zh" = (
-/obj/effect/turf_decal/trimline/darkblue/warning,
 /obj/machinery/chem_master,
-/turf/open/floor/iron/dark/blue/side{
+/obj/effect/turf_decal/trimline/dark_blue/filled/line{
 	dir = 1
 	},
+/obj/effect/turf_decal/trimline/dark_blue/warning,
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "zt" = (
 /obj/effect/turf_decal/trimline/yellow/warning,
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /obj/structure/cable,
-/turf/open/floor/iron/dark/brown/side{
+/obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 1
 	},
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "Aq" = (
 /obj/effect/turf_decal/bot,
@@ -561,7 +556,7 @@
 /obj/structure/closet/secure_closet{
 	icon_state = "hos";
 	name = "Crew Locker";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/item/grenade/smokebomb,
 /obj/item/grenade/smokebomb,
@@ -575,7 +570,7 @@
 /obj/structure/closet/secure_closet{
 	icon_state = "eng";
 	name = "Equipment Locker";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/item/storage/belt,
 /obj/item/holosign_creator/atmos,
@@ -590,16 +585,13 @@
 /obj/item/storage/box,
 /obj/item/crowbar/power,
 /obj/item/screwdriver/power,
-/turf/open/floor/iron/dark/brown/side{
+/obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 1
 	},
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "AK" = (
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = -12;
-	pixel_y = 6
-	},
+/obj/structure/sink/directional/east,
 /obj/structure/bed/maint,
 /obj/structure/mirror{
 	desc = "Mirror mirror on the wall, who's the most robust of them all? Not you, because you're in a prison cell.";
@@ -622,7 +614,7 @@
 /turf/open/floor/plating,
 /area/shuttle/syndicate/slaver)
 "Bf" = (
-/obj/structure/shuttle/engine/heater{
+/obj/machinery/power/shuttle_engine/heater{
 	dir = 1
 	},
 /obj/structure/window/reinforced,
@@ -636,9 +628,10 @@
 /obj/machinery/atmospherics/components/unary/portables_connector{
 	dir = 8
 	},
-/turf/open/floor/iron/dark/brown/side{
+/obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 1
 	},
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "Bx" = (
 /obj/effect/turf_decal/stripes/corner{
@@ -659,7 +652,7 @@
 /turf/open/floor/wood,
 /area/shuttle/syndicate/slaver)
 "CR" = (
-/obj/structure/shuttle/engine/heater{
+/obj/machinery/power/shuttle_engine/heater{
 	dir = 4
 	},
 /obj/structure/window/reinforced{
@@ -670,7 +663,7 @@
 "Dk" = (
 /obj/machinery/door/airlock/security/old{
 	name = "Airlock";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
 	dir = 4
@@ -737,7 +730,7 @@
 /obj/effect/turf_decal/stripes/full,
 /obj/machinery/door/airlock/external/glass{
 	id_tag = "prisonshipwreckdoorright";
-	req_one_access_txt = "1,2,3,150"
+	req_one_access = list("security","brig","armory","syndicate")
 	},
 /obj/structure/fans/tiny,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
@@ -749,7 +742,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/machinery/door/airlock/mining{
 	name = "Engineering";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/machinery/door/poddoor/shutters/window/preopen{
 	id = "privateerslavercellarealockdown";
@@ -771,14 +764,12 @@
 /obj/structure/toilet{
 	pixel_y = 13
 	},
-/obj/machinery/shower{
-	dir = 1
-	},
+/obj/machinery/shower/directional/north,
 /obj/machinery/door/window/survival_pod{
 	desc = "Kinda sleek. Doesn't offer much privacy.";
 	dir = 8;
-	name = "prison cell door";
-	req_one_access_txt = "1,2,3,150"
+	name = "Prison Cell Door";
+	req_one_access = list("security","brig","armory","syndicate")
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
 	dir = 4
@@ -791,11 +782,7 @@
 	},
 /area/shuttle/syndicate/slaver)
 "HQ" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = 12;
-	pixel_y = 6
-	},
+/obj/structure/sink/directional/west,
 /obj/structure/mirror{
 	desc = "Mirror mirror on the wall, who's the most robust of them all? Not you, because you're in a prison cell.";
 	pixel_x = 23;
@@ -838,7 +825,7 @@
 /turf/template_noop,
 /area/shuttle/syndicate/slaver)
 "Kw" = (
-/obj/structure/shuttle/engine/propulsion/burst{
+/obj/machinery/power/shuttle_engine/propulsion/burst{
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -847,11 +834,12 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/slaver)
 "KE" = (
-/obj/effect/turf_decal/trimline/darkblue/warning,
 /obj/machinery/chem_heater/withbuffer,
-/turf/open/floor/iron/dark/blue/side{
+/obj/effect/turf_decal/trimline/dark_blue/filled/line{
 	dir = 1
 	},
+/obj/effect/turf_decal/trimline/dark_blue/warning,
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "KH" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
@@ -866,12 +854,13 @@
 	},
 /area/shuttle/syndicate/slaver)
 "Lf" = (
-/obj/effect/turf_decal/trimline/darkblue/warning{
-	dir = 1
-	},
 /obj/structure/table/optable,
 /obj/machinery/defibrillator_mount/directional/north,
-/turf/open/floor/iron/dark/blue/side,
+/obj/effect/turf_decal/trimline/dark_blue/filled/line,
+/obj/effect/turf_decal/trimline/dark_blue/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "LU" = (
 /obj/effect/turf_decal/bot,
@@ -883,7 +872,7 @@
 /obj/machinery/button/door/directional/west{
 	id = "privateerslaverbridgeshutters";
 	name = "Bridge Blast Doors";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/syndicate/slaver)
@@ -894,35 +883,38 @@
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 8
 	},
-/turf/open/floor/iron/dark/brown/side{
+/obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 4
 	},
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "Mk" = (
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 6
 	},
-/turf/open/floor/iron/dark/brown/corner{
+/obj/effect/turf_decal/trimline/brown/filled/corner{
 	dir = 1
 	},
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "MU" = (
-/obj/effect/turf_decal/trimline/darkblue/warning{
-	dir = 1
-	},
 /obj/structure/table/glass,
 /obj/item/healthanalyzer,
-/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/cup/beaker/large,
 /obj/item/reagent_containers/spray,
 /obj/item/reagent_containers/spray{
 	icon_state = "cleaner";
 	volume = 100
 	},
 /obj/item/storage/medkit/regular,
-/turf/open/floor/iron/dark/blue/side,
+/obj/effect/turf_decal/trimline/dark_blue/filled/line,
+/obj/effect/turf_decal/trimline/dark_blue/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "NV" = (
-/obj/structure/shuttle/engine/heater,
+/obj/machinery/power/shuttle_engine/heater,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -945,7 +937,7 @@
 /turf/open/floor/carpet/red,
 /area/shuttle/syndicate/slaver)
 "Po" = (
-/obj/structure/shuttle/engine/heater,
+/obj/machinery/power/shuttle_engine/heater,
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/syndicate/slaver)
 "PA" = (
@@ -982,7 +974,7 @@
 /obj/structure/closet/secure_closet{
 	icon_state = "hos";
 	name = "Crew Locker";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/item/grenade/smokebomb,
 /obj/item/grenade/smokebomb,
@@ -1032,9 +1024,10 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
-/turf/open/floor/iron/dark/brown/side{
+/obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 8
 	},
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "QX" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
@@ -1057,9 +1050,10 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
-/turf/open/floor/iron/dark/brown/side{
+/obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 8
 	},
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "RZ" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
@@ -1084,7 +1078,7 @@
 /turf/open/floor/plating,
 /area/shuttle/syndicate/slaver)
 "Sh" = (
-/obj/structure/shuttle/engine/propulsion/burst,
+/obj/machinery/power/shuttle_engine/propulsion/burst,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/slaver)
@@ -1094,25 +1088,23 @@
 /obj/machinery/atmospherics/components/unary/portables_connector{
 	dir = 4
 	},
-/turf/open/floor/iron/dark/brown/side{
+/obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 1
 	},
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "SA" = (
 /obj/machinery/door/airlock/external/glass{
 	id_tag = "prisonshipwreckdock";
-	req_one_access_txt = "1,2,3,150"
+	req_one_access = list("security","brig","armory","syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/docking_port/mobile/pirate{
 	dir = 8;
-	dwidth = 5;
-	height = 17;
 	launch_status = 0;
-	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0);
+	movement_force = list("KNOCKDOWN"=0,"THROW"=0);
 	name = "Slaver Ship";
-	port_direction = 8;
-	width = 19
+	port_direction = 8
 	},
 /obj/structure/fans/tiny,
 /turf/open/floor/pod/dark{
@@ -1135,7 +1127,7 @@
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/syndicate/slaver)
 "Ve" = (
-/obj/structure/shuttle/engine/heater{
+/obj/machinery/power/shuttle_engine/heater{
 	dir = 1
 	},
 /obj/structure/window/reinforced,
@@ -1156,7 +1148,8 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/turf/open/floor/iron/dark/brown/side,
+/obj/effect/turf_decal/trimline/brown/filled/line,
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "VL" = (
 /turf/template_noop,
@@ -1177,7 +1170,8 @@
 	pixel_x = -22;
 	specialfunctions = 4
 	},
-/turf/open/floor/iron/dark/brown/side,
+/obj/effect/turf_decal/trimline/brown/filled/line,
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "Wp" = (
 /obj/machinery/suit_storage_unit/mining/eva,
@@ -1185,7 +1179,8 @@
 	dir = 1
 	},
 /obj/machinery/light/directional/north,
-/turf/open/floor/iron/dark/brown/side,
+/obj/effect/turf_decal/trimline/brown/filled/line,
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "WI" = (
 /obj/structure/bed,
@@ -1193,15 +1188,16 @@
 /turf/open/floor/carpet/black,
 /area/shuttle/syndicate/slaver)
 "Xc" = (
-/obj/effect/turf_decal/trimline/darkblue/warning,
 /obj/machinery/chem_dispenser,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
 /obj/machinery/light/directional/south,
-/turf/open/floor/iron/dark/blue/side{
+/obj/effect/turf_decal/trimline/dark_blue/filled/line{
 	dir = 1
 	},
+/obj/effect/turf_decal/trimline/dark_blue/warning,
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "Xh" = (
 /obj/effect/turf_decal/stripes/line,
@@ -1219,12 +1215,13 @@
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 9
 	},
-/turf/open/floor/iron/dark/brown/corner,
+/obj/effect/turf_decal/trimline/brown/filled/corner,
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "XM" = (
 /obj/machinery/door/airlock/external/glass{
 	id_tag = "prisonshipwreckdoorleft";
-	req_one_access_txt = "1,2,3,150"
+	req_one_access = list("security","brig","armory","syndicate")
 	},
 /obj/effect/turf_decal/stripes/full,
 /obj/structure/fans/tiny,
@@ -1261,7 +1258,7 @@
 "YI" = (
 /obj/machinery/door/airlock/security/old{
 	name = "Airlock";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
 /obj/structure/cable,
@@ -1282,11 +1279,7 @@
 /turf/open/floor/carpet/red,
 /area/shuttle/syndicate/slaver)
 "ZD" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = 12;
-	pixel_y = 6
-	},
+/obj/structure/sink/directional/west,
 /obj/structure/mirror{
 	desc = "Mirror mirror on the wall, who's the most robust of them all? Not you, because you're in a prison cell.";
 	pixel_x = 23;

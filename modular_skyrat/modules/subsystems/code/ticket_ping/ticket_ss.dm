@@ -1,9 +1,17 @@
-/// Pings admins every 3 minutes for all open tickets/OPFOR applications
+/// Pings admins every (time chosen in config) for all open tickets/OPFOR applications
 SUBSYSTEM_DEF(ticket_ping)
 	name = "Ticket Ping"
-	flags = SS_BACKGROUND | SS_NO_INIT
+	flags = SS_BACKGROUND
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	wait = 3 MINUTES
+
+/datum/controller/subsystem/ticket_ping/Initialize()
+	if(CONFIG_GET(number/ticket_ping_frequency) < 1)
+		flags |= SS_NO_FIRE
+		return SS_INIT_NO_NEED
+
+	wait = CONFIG_GET(number/ticket_ping_frequency)
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ticket_ping/fire(resumed)
 	var/valid_ahelps

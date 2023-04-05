@@ -1,17 +1,25 @@
-//Mutant variants needs to be a property of all items, because all items can be equipped, despite the mob code only expecting clothing items (ugh)
+// Mutant variants needs to be a property of all items, because all items can be equipped, despite the mob code only expecting clothing items (ugh)
 /obj/item
-	///Icon file for mob worn overlays, if the user is digi.
+	/// Icon file for mob worn overlays, if the user is digi.
 	var/icon/worn_icon_digi
-	///The config type to use for greyscaled worn sprites for digitigrade characters. Both this and greyscale_colors must be assigned to work.
+	/// The config type to use for greyscaled worn sprites for digitigrade characters. Both this and greyscale_colors must be assigned to work.
 	var/greyscale_config_worn_digi
+	/// Icon file for mob worn overlays, if the user is a monkey.
+	var/icon/worn_icon_monkey
+	/// The config type to use for greyscale worn sprites for monkeys. Both this and greyscale_colors must be assigned to work.
+	var/greyscale_config_worn_monkey
 	/// Icon file for mob worn overlays, if the user is a vox.
 	var/icon/worn_icon_vox
+	/// Icon file for mob worn overlays, if the user is a better vox.
+	var/icon/worn_icon_better_vox
 	/// Icon file for mob worn overlays, if the user is a teshari.
 	var/icon/worn_icon_teshari
 	/// The config type to use for greyscaled worn sprites for Teshari characters. Both this and greyscale_colors must be assigned to work.
 	var/greyscale_config_worn_teshari
 	/// The config type to use for greyscaled worn sprites for vox characters. Both this and greyscale_colors must be assigned to work.
 	var/greyscale_config_worn_vox
+	/// The config type to use for greyscaled worn sprites for vox primalis characters. Both this and greyscale_colors must be assigned to work.
+	var/greyscale_config_worn_better_vox
 
 	var/worn_icon_taur_snake
 	var/worn_icon_taur_paw

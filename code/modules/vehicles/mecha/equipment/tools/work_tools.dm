@@ -24,13 +24,6 @@
 	///Audio for using the hydraulic clamp
 	var/clampsound = 'sound/mecha/hydraulic.ogg'
 
-/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/can_attach(obj/vehicle/sealed/mecha/M, attach_right = FALSE)
-	. = ..()
-	if(!.)
-		return
-	if(!istype(M, /obj/vehicle/sealed/mecha/working/ripley))
-		return FALSE
-
 /obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/attach(obj/vehicle/sealed/mecha/M)
 	. = ..()
 	cargo_holder = M
@@ -147,13 +140,11 @@
 	desc = "They won't know what clamped them! This time for real!"
 	killer_clamp = TRUE
 
-
 /obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/kill/fake//harmless fake for pranks
 	desc = "They won't know what clamped them!"
 	energy_drain = 0
 	clamp_damage = 0
 	killer_clamp = FALSE
-
 
 /obj/item/mecha_parts/mecha_equipment/extinguisher
 	name = "exosuit extinguisher"
@@ -227,15 +218,6 @@
 		if("refill")
 			attempt_refill(usr)
 			return TRUE
-
-
-/obj/item/mecha_parts/mecha_equipment/extinguisher/can_attach(obj/vehicle/sealed/mecha/M, attach_right = FALSE)
-	. = ..()
-	if(!.)
-		return
-	if(!istype(M, /obj/vehicle/sealed/mecha/working))
-		return FALSE
-
 
 #define MODE_DECONSTRUCT 0
 #define MODE_WALL 1
@@ -359,21 +341,21 @@
 	icon_state = "ripleyupgrade"
 	mech_flags = EXOSUIT_MODULE_RIPLEY
 
-/obj/item/mecha_parts/mecha_equipment/ripleyupgrade/can_attach(obj/vehicle/sealed/mecha/working/ripley/M, attach_right = FALSE)
+/obj/item/mecha_parts/mecha_equipment/ripleyupgrade/can_attach(obj/vehicle/sealed/mecha/working/ripley/M, attach_right = FALSE, mob/user)
 	if(M.type != /obj/vehicle/sealed/mecha/working/ripley)
-		to_chat(loc, span_warning("This conversion kit can only be applied to APLU MK-I models."))
+		to_chat(user, span_warning("This conversion kit can only be applied to APLU MK-I models."))
 		return FALSE
 	if(LAZYLEN(M.cargo))
-		to_chat(loc, span_warning("[M]'s cargo hold must be empty before this conversion kit can be applied."))
+		to_chat(user, span_warning("[M]'s cargo hold must be empty before this conversion kit can be applied."))
 		return FALSE
 	if(!(M.mecha_flags & ADDING_MAINT_ACCESS_POSSIBLE)) //non-removable upgrade, so lets make sure the pilot or owner has their say.
-		to_chat(loc, span_warning("[M] must have maintenance protocols active in order to allow this conversion kit."))
+		to_chat(user, span_warning("[M] must have maintenance protocols active in order to allow this conversion kit."))
 		return FALSE
 	if(LAZYLEN(M.occupants)) //We're actualy making a new mech and swapping things over, it might get weird if players are involved
-		to_chat(loc, span_warning("[M] must be unoccupied before this conversion kit can be applied."))
+		to_chat(user, span_warning("[M] must be unoccupied before this conversion kit can be applied."))
 		return FALSE
 	if(!M.cell) //Turns out things break if the cell is missing
-		to_chat(loc, span_warning("The conversion process requires a cell installed."))
+		to_chat(user, span_warning("The conversion process requires a cell installed."))
 		return FALSE
 	return TRUE
 

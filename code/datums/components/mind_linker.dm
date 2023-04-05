@@ -69,8 +69,16 @@
 	else
 		stack_trace("[type] was created without a valid linker_action_path. No one will be able to link to it.")
 
+	/* ORIGINAL CODE
 	master_speech = new(src)
 	master_speech.Grant(owner)
+	*/ //ORIGINAL CODE END
+
+	//SKYRAT EDIT - NIFs
+	if(speech_action)
+		master_speech = new(src)
+		master_speech.Grant(owner)
+	//SKYRAT EDIT END
 
 	to_chat(owner, span_boldnotice("You establish a [network_name], allowing you to link minds to communicate telepathically."))
 
@@ -85,7 +93,7 @@
 
 /datum/component/mind_linker/RegisterWithParent()
 	if(signals_which_destroy_us)
-		RegisterSignal(parent, signals_which_destroy_us, .proc/destroy_link)
+		RegisterSignals(parent, signals_which_destroy_us, PROC_REF(destroy_link))
 
 /datum/component/mind_linker/UnregisterFromParent()
 	if(signals_which_destroy_us)
@@ -99,10 +107,19 @@
 /datum/component/mind_linker/proc/link_mob(mob/living/to_link)
 	if(QDELETED(to_link) || to_link.stat == DEAD)
 		return FALSE
+
+	/* ORIGINAL CODE
 	if(HAS_TRAIT(to_link, TRAIT_MINDSHIELD)) // Mindshield implant - no dice
 		return FALSE
 	if(to_link.can_block_magic(MAGIC_RESISTANCE_MIND, charge_cost = 0))
 		return FALSE
+	*/ //ORIGINAL CODE END
+	//SKYRAT EDIT START
+	if(HAS_TRAIT(to_link, TRAIT_MINDSHIELD) && linking_protection) // Mindshield implant - no dice
+		return FALSE
+	if(to_link.can_block_magic(MAGIC_RESISTANCE_MIND, charge_cost = 0) && linking_protection)
+		return FALSE
+	//SKYRAT EDIT END
 	if(linked_mobs[to_link])
 		return FALSE
 
@@ -120,7 +137,7 @@
 	new_link.Grant(to_link)
 
 	linked_mobs[to_link] = new_link
-	RegisterSignal(to_link, list(COMSIG_LIVING_DEATH, COMSIG_PARENT_QDELETING, COMSIG_MINDSHIELD_IMPLANTED), .proc/unlink_mob)
+	RegisterSignals(to_link, list(COMSIG_LIVING_DEATH, COMSIG_PARENT_QDELETING, COMSIG_MINDSHIELD_IMPLANTED), PROC_REF(unlink_mob))
 
 	return TRUE
 
@@ -168,8 +185,9 @@
 	name = "Mind Link Speech"
 	desc = "Send a psychic message to everyone connected to your Link."
 	button_icon_state = "link_speech"
-	icon_icon = 'icons/mob/actions/actions_slime.dmi'
+	button_icon = 'icons/mob/actions/actions_slime.dmi'
 	background_icon_state = "bg_alien"
+	overlay_icon_state = "bg_alien_border"
 
 /datum/action/innate/linked_speech/New(Target)
 	. = ..()
@@ -181,11 +199,11 @@
 	var/datum/component/mind_linker/linker = Target
 	name = "[linker.network_name] Speech"
 	desc = "Send a psychic message to everyone connected to your [linker.network_name]."
-	icon_icon = linker.speech_action_icon
+	button_icon = linker.speech_action_icon
 	button_icon_state = linker.speech_action_icon_state
 	background_icon_state = linker.speech_action_background_icon_state
 
-/datum/action/innate/linked_speech/IsAvailable()
+/datum/action/innate/linked_speech/IsAvailable(feedback = FALSE)
 	return ..() && (owner.stat != DEAD)
 
 /datum/action/innate/linked_speech/Activate()

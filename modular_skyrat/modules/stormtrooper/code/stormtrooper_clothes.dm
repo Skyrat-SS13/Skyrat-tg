@@ -20,11 +20,10 @@
 	icon = 'modular_skyrat/modules/stormtrooper/icons/items.dmi'
 	worn_icon = 'modular_skyrat/modules/stormtrooper/icons/feet.dmi'
 	icon_state = "stormtrooper_boots"
-	armor = null
+	armor_type = /datum/armor/none
 	strip_delay = 30
 	equip_delay_other = 50
 	resistance_flags = NONE
-	permeability_coefficient = 0.05 //Thick soles, and covers the ankle
 	can_be_tied = FALSE
 	supports_variations_flags = NONE
 
@@ -35,4 +34,3 @@
 	worn_icon = 'modular_skyrat/modules/stormtrooper/icons/hands.dmi'
 	icon_state = "stormtrooper_gloves"
 	worn_icon_state = "stormtrooper_gloves"
-

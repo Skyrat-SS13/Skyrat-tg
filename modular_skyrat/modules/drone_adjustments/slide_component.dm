@@ -3,7 +3,7 @@
 	var/atom/atom_parent
 	///The list of allowed mobs to slide under
 	var/static/list/allowed_mobs = list(
-		/mob/living/simple_animal/cortical_borer,
+		/mob/living/basic/cortical_borer,
 		/mob/living/simple_animal/drone,
 	)
 
@@ -16,9 +16,9 @@
 	if(allowed_mobs_override)
 		allowed_mobs = allowed_mobs_override
 	//either bumping or ctrl click
-	RegisterSignal(atom_parent, COMSIG_CLICK_CTRL, .proc/check_conditions)
+	RegisterSignal(atom_parent, COMSIG_CLICK_CTRL, PROC_REF(check_conditions))
 	//so that we can know how to do that (sliding under)
-	RegisterSignal(atom_parent, COMSIG_PARENT_EXAMINE, .proc/ExamineMessage)
+	RegisterSignal(atom_parent, COMSIG_PARENT_EXAMINE, PROC_REF(ExamineMessage))
 
 /datum/component/sliding_under/Destroy(force, silent)
 	UnregisterSignal(atom_parent, list(COMSIG_CLICK_CTRL, COMSIG_PARENT_EXAMINE))
@@ -27,6 +27,9 @@
 /datum/component/sliding_under/proc/check_conditions(datum/source, mob/user)
 	//the parent needs to be dense in order to slide through
 	if(!atom_parent.density)
+		return
+	// need to be in range
+	if(!in_range(atom_parent, user))
 		return
 	//you have to be in the list
 	if(!is_type_in_list(user, allowed_mobs))

@@ -19,7 +19,6 @@
 /obj/machinery/computer/shuttle/caravan/blackmarket_chevvy
 	name = "Chevvy Shuttle Console"
 	desc = "Used to control the affectionately named 'Chevvy'."
-	req_access = list(208)
 	circuit = /obj/item/circuitboard/computer/blackmarket_chevvy
 	shuttleId = "blackmarket_chevvy"
 	possible_destinations = "blackmarket_chevvy_custom;blackmarket_chevvy_home;whiteship_home"
@@ -100,10 +99,13 @@
 	outfit = /datum/outfit/guild/slaver/captain
 
 /obj/item/radio/headset/guild
-	keyslot = new /obj/item/encryptionkey/headset_guild
+	keyslot = new /obj/item/encryptionkey/headset_syndicate/guild
 
 /obj/item/radio/headset/guild/command
 	command = TRUE
+
+/datum/outfit/guild
+	name = "Guild Default Outfit"
 
 /datum/outfit/guild/slaver
 	name = "Privateer Slaver"
@@ -165,8 +167,8 @@
 
 /*----- Tarkon Shuttle Datum + related code -----*/
 /datum/map_template/shuttle/ruin/tarkon_driver
-	prefix = "_maps/skyrat/shuttles/"
-	suffix = "tarkon_driver"
+	prefix = "_maps/shuttles/skyrat/"
+	suffix = "tarkon_driverdc54"
 	name = "Tarkon Drill Driver"
 
 /obj/machinery/computer/shuttle/tarkon_driver
@@ -186,6 +188,12 @@
 	view_range = 0
 
 /obj/item/circuitboard/computer/tarkon_driver
-	name = "Chevvy Control Console (Computer Board)"
+	name = "Tarkon Driver Control Console (Computer Board)"
 	build_path = /obj/machinery/computer/shuttle/tarkon_driver
+
+/datum/map_template/shuttle/ruin/tarkon_driver/defcon3
+	suffix = "tarkon_driverdc3"
+
+/datum/map_template/shuttle/ruin/tarkon_driver/defcon2
+	suffix = "tarkon_driverdc2"
 /*----- End of Tarkon Shuttle Code -----*/

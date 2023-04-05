@@ -1,31 +1,47 @@
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////// Emergency Race Stuff ////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
+/*
+*	EMERGENCY RACIAL EQUIPMENT
+*/
 
 /datum/supply_pack/goody/airsuppliesnitrogen
 	name = "Emergency Air Supplies (Nitrogen)"
 	desc = "A vox breathing mask and nitrogen tank."
 	cost = PAYCHECK_CREW
-	contains = list(/obj/item/tank/internals/nitrogen/belt,
-                    /obj/item/clothing/mask/breath/vox)
+	contains = list(
+		/obj/item/tank/internals/nitrogen/belt,
+		/obj/item/clothing/mask/breath/vox,
+	)
 
 /datum/supply_pack/goody/airsuppliesoxygen
 	name = "Emergency Air Supplies (Oxygen)"
 	desc = "A breathing mask and emergency oxygen tank."
 	cost = PAYCHECK_CREW
-	contains = list(/obj/item/tank/internals/emergency_oxygen,
-                    /obj/item/clothing/mask/breath)
+	contains = list(
+		/obj/item/tank/internals/emergency_oxygen,
+		/obj/item/clothing/mask/breath,
+	)
 
 /datum/supply_pack/goody/airsuppliesplasma
 	name = "Emergency Air Supplies (Plasma)"
 	desc = "A breathing mask and plasmaman plasma tank."
 	cost = PAYCHECK_CREW
-	contains = list(/obj/item/tank/internals/plasmaman/belt,
-                    /obj/item/clothing/mask/breath)
+	contains = list(
+		/obj/item/tank/internals/plasmaman/belt,
+		/obj/item/clothing/mask/breath,
+	)
 
-//////////////////////////////////////////////////////////////////////////////
-///////////////////////////// Misc Stuff /////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
+/*
+*	ENGINEERING STUFF
+*/
+
+/datum/supply_pack/goody/improvedrcd
+	name = "Improved RCD"
+	desc = "An upgraded RCD featuring superior material storage. Comes with complimentary frames and circuitry upgrades to boot!"
+	cost = PAYCHECK_CREW * 38
+	contains = list(/obj/item/construction/rcd/improved)
+
+/*
+*	MISC
+*/
 
 /datum/supply_pack/goody/crayons
 	name = "Box of Crayons"
@@ -46,20 +62,9 @@
 	cost = PAYCHECK_CREW * 4
 	contains = list(/obj/item/paper_bin)
 
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////// Weapons or Ammo /////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-
-/datum/supply_pack/goody/gunmaint
-	name = "Gun Maintenance Kits"
-	desc = "Keep your pa's rifle in best condition, with two sets of cleaning supplies. Or your standard issue pistol if you're an itchy trigger, we're not here to judge."
-	cost = PAYCHECK_CREW * 3
-	contains = list(/obj/item/gun_maintenance_supplies,
-					/obj/item/gun_maintenance_supplies)
-
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////// Carpet Packs ////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
+/*
+*	CARPET PACKS
+*/
 
 /datum/supply_pack/goody/carpet
 	name = "Classic Carpet Single-Pack"
@@ -104,4 +109,3 @@
 /datum/supply_pack/goody/carpet/premium/blue
 	name = "Blue Carpet Single-Pack"
 	contains = list(/obj/item/stack/tile/carpet/blue/fifty)
-

@@ -1,27 +1,45 @@
 /datum/sprite_accessory/ears
 	key = "ears"
 	generic = "Ears"
-	organ_type = /obj/item/organ/ears/mutant
+	organ_type = /obj/item/organ/external/ears // SET BACK TO THIS AS SOON AS WE GET EARS AS EXTERNAL ORGANS: organ_type = /obj/item/organ/internal/ears/mutant
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	color_src = USE_MATRIXED_COLORS
 	genetic = TRUE
 
-/datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD)
-		//This line basically checks if we FORCE accessory-ears to show, for items with earholes like Balaclavas and Luchador masks
-		if(!(H.head && (H.head.flags_inv & SHOWSPRITEEARS) || (H.wear_mask && (H.wear_mask.flags_inv & SHOWSPRITEEARS)) || !HD))
-			return TRUE
+/datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/wearer)
+	if(!wearer.head)
+		return FALSE
+
+	// Can hide if wearing hat
+	if(key in wearer.try_hide_mutant_parts)
+		return TRUE
+
+	// Exception for MODs
+	if(istype(wearer.head, /obj/item/clothing/head/mod))
+		return FALSE
+
+	// Hide accessory if flagged to do so
+	if((wearer.head?.flags_inv & HIDEHAIR || wearer.wear_mask?.flags_inv & HIDEHAIR) \
+		// This line basically checks if we FORCE accessory-ears to show, for items with earholes like Balaclavas and Luchador masks
+		&& ((wearer.head && !(wearer.head.flags_inv & SHOWSPRITEEARS)) || (wearer.wear_mask && !(wearer.wear_mask?.flags_inv & SHOWSPRITEEARS))))
+		return TRUE
+
 	return FALSE
 
-
 /datum/sprite_accessory/ears/cat
-	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_HUMANOID, SPECIES_GHOUL)
+	recommended_species = list(SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTH, SPECIES_FELINE, SPECIES_HUMANOID, SPECIES_GHOUL)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/ears/fox
+	color_src = USE_ONE_COLOR
+
 
 /datum/sprite_accessory/ears/mutant
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/ears.dmi'
-	organ_type = /obj/item/organ/ears/mutant
+	organ_type = /obj/item/organ/external/ears // SET BACK TO THIS AS SOON AS WE GET EARS AS EXTERNAL ORGANS: organ_type = /obj/item/organ/internal/ears/mutant
 	color_src = USE_MATRIXED_COLORS
-	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_HUMANOID, SPECIES_GHOUL)
+	recommended_species = list(SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTH, SPECIES_FELINE, SPECIES_HUMANOID, SPECIES_GHOUL)
 	uses_emissives = TRUE
 
 /datum/sprite_accessory/ears/mutant/none
@@ -34,13 +52,13 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/ears_big.dmi'
 
 /datum/sprite_accessory/ears/mutant/vulpkanin
-	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_VULP, SPECIES_HUMANOID, SPECIES_GHOUL)
+	recommended_species = list(SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTH, SPECIES_FELINE, SPECIES_VULP, SPECIES_HUMANOID, SPECIES_GHOUL)
 
 /datum/sprite_accessory/ears/mutant/tajaran
-	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_TAJARAN, SPECIES_HUMANOID, SPECIES_GHOUL)
+	recommended_species = list(SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTH, SPECIES_FELINE, SPECIES_TAJARAN, SPECIES_HUMANOID, SPECIES_GHOUL)
 
 /datum/sprite_accessory/ears/mutant/akula
-	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_AQUATIC, SPECIES_AKULA, SPECIES_HUMANOID, SPECIES_GHOUL)
+	recommended_species = list(SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTH, SPECIES_FELINE, SPECIES_AQUATIC, SPECIES_AKULA, SPECIES_HUMANOID, SPECIES_GHOUL)
 
 /datum/sprite_accessory/ears/mutant/axolotl
 	name = "Axolotl"
@@ -63,8 +81,7 @@
 /datum/sprite_accessory/ears/mutant/bigwolfinner
 	name = "Big Wolf (ALT)"
 	icon_state = "bigwolfinner"
-	extra = TRUE
-	extra_color_src = NONE
+	hasinner = TRUE
 
 /datum/sprite_accessory/ears/mutant/bigwolfdark //alphabetical sort ignored here for ease-of-use
 	name = "Dark Big Wolf"
@@ -73,8 +90,7 @@
 /datum/sprite_accessory/ears/mutant/bigwolfinnerdark
 	name = "Dark Big Wolf (ALT)"
 	icon_state = "bigwolfinnerdark"
-	extra = TRUE
-	extra_color_src = NONE
+	hasinner = TRUE
 
 /datum/sprite_accessory/ears/mutant/bunny
 	name = "Bunny"
@@ -120,6 +136,18 @@
 	color_src = USE_ONE_COLOR
 	default_color = DEFAULT_SKIN_OR_PRIMARY
 
+/datum/sprite_accessory/ears/mutant/elf/wide
+	name = "Wide Elf"
+	icon_state = "elfwide"
+
+/datum/sprite_accessory/ears/mutant/elf/broad
+	name = "Broad Elf"
+	icon_state = "elfbroad"
+
+/datum/sprite_accessory/ears/mutant/elf/longer
+	name = "Longer Elf"
+	icon_state = "elflonger"
+
 /datum/sprite_accessory/ears/mutant/elephant
 	name = "Elephant"
 	icon_state = "elephant"
@@ -138,6 +166,10 @@
 	name = "Fox"
 	icon_state = "fox"
 
+/datum/sprite_accessory/ears/mutant/akula/hammerhead
+	name = "Hammerhead"
+	icon_state = "hammerhead"
+
 /datum/sprite_accessory/ears/mutant/husky
 	name = "Husky"
 	icon_state = "wolf"
@@ -145,7 +177,7 @@
 /datum/sprite_accessory/ears/mutant/jellyfish
 	name = "Jellyfish"
 	icon_state = "jellyfish"
-	color_src = HAIR
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/ears/mutant/kangaroo
 	name = "Kangaroo"
@@ -179,6 +211,10 @@
 /datum/sprite_accessory/ears/mutant/big/bunny_large
 	name = "Curved Rabbit Ears (Large)"
 	icon_state = "rabbit_large"
+
+/datum/sprite_accessory/ears/mutant/big/sandfox_large
+	name = "Sandfox (Large)"
+	icon_state = "sandfox_large"
 
 /datum/sprite_accessory/ears/mutant/pede
 	name = "Scolipede"
@@ -321,3 +357,23 @@
 	name = "Deer 2"
 	icon_state = "deer2"
 	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/ears/mutant/mouse
+	name = "Mouse"
+	icon_state = "mouse"
+
+/datum/sprite_accessory/ears/mutant/mouse_two
+	name = "Mouse II"
+	icon_state = "mouse_two"
+
+/datum/sprite_accessory/ears/mutant/big/fourears1
+	name = "Four Ears 1"
+	icon_state = "four_ears_1"
+
+/datum/sprite_accessory/ears/mutant/fourears2
+	name = "Four Ears 2"
+	icon_state = "four_ears_2"
+
+/datum/sprite_accessory/ears/mutant/big/fourears3
+	name = "Four Ears 3"
+	icon_state = "four_ears_3"

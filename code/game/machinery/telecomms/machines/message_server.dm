@@ -11,8 +11,15 @@
 	icon_state = "blackbox"
 	name = "Blackbox Recorder"
 	density = TRUE
-	armor = list(MELEE = 25, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 70)
+	armor_type = /datum/armor/machinery_blackbox_recorder
 	var/obj/item/stored
+
+/datum/armor/machinery_blackbox_recorder
+	melee = 25
+	bullet = 10
+	laser = 10
+	fire = 50
+	acid = 70
 
 /obj/machinery/blackbox_recorder/Initialize(mapload)
 	. = ..()
@@ -60,6 +67,7 @@
 	desc = "A strange relic, capable of recording data on extradimensional vertices. It lives inside the blackbox recorder for safe keeping."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "blackcube"
+	inhand_icon_state = "blackcube"
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	w_class = WEIGHT_CLASS_BULKY
@@ -77,7 +85,6 @@
 	circuit = /obj/item/circuitboard/machine/telecomms/message_server
 
 	var/list/datum/data_tablet_msg/pda_msgs = list()
-	var/list/datum/data_tablet_msg/modular_msgs = list()
 	var/list/datum/data_rc_msg/rc_msgs = list()
 	var/decryptkey = "password"
 	var/calibrating = 15 MINUTES //Init reads this and adds world.time, then becomes 0 when that time has passed and the machine works
@@ -181,9 +188,10 @@
 	if (!logged)  // Can only go through if a message server logs it
 		return
 	for (var/obj/item/modular_computer/comp in data["targets"])
-		var/obj/item/computer_hardware/hard_drive/drive = comp.all_components[MC_HDD]
-		for(var/datum/computer_file/program/messenger/app in drive.stored_files)
-			app.receive_message(src)
+		if(!QDELETED(comp))
+			for(var/datum/computer_file/program/messenger/app in comp.stored_files)
+				if(!QDELETED(app))
+					app.receive_message(src)
 
 // Request Console signal datum
 /datum/signal/subspace/messaging/rc/broadcast()

@@ -26,15 +26,15 @@
 	///is this barriade wired?
 	var/is_wired = FALSE
 
-/obj/structure/deployable_barricade/Initialize()
+/obj/structure/deployable_barricade/Initialize(mapload)
 	. = ..()
 	update_icon()
 	var/static/list/connections = list(
-		COMSIG_ATOM_EXIT = .proc/on_try_exit
+		COMSIG_ATOM_EXIT = PROC_REF(on_try_exit)
 	)
 	AddElement(/datum/element/connect_loc, connections)
 	AddElement(/datum/element/climbable)
-	RegisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED, .proc/run_integrity)
+	RegisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED, PROC_REF(run_integrity))
 
 /obj/structure/deployable_barricade/proc/run_integrity()
 	SIGNAL_HANDLER
@@ -46,6 +46,8 @@
 
 /obj/structure/deployable_barricade/examine(mob/user)
 	. = ..()
+	if(!is_wired && can_wire)
+		. += span_info("Barbed wire could be added with some <b>cable</b>.")
 	if(is_wired)
 		. += span_info("It has barbed wire along the top.")
 
@@ -95,7 +97,7 @@
 /obj/structure/deployable_barricade/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/stack/cable_coil) && can_wire)
 		var/obj/item/stack/S = I
-		if(S.use(15))
+		if(S.use(5))
 			wire()
 		else
 			return
@@ -257,17 +259,26 @@
 	desc = "A small barricade made from metal posting, designed to stop you from going places you aren't supposed to."
 	icon_state = "railing_0"
 	max_integrity = 150
-	armor = list(MELEE = 0, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = 15, BIO = 100, FIRE = 100, ACID = 10)
+	armor_type = /datum/armor/deployable_barricade_guardrail
 	stack_type = /obj/item/stack/rods
 	destroyed_stack_amount = 2
 	barricade_type = "railing"
 	allow_thrown_objs = FALSE
 	can_wire = FALSE
 
+/datum/armor/deployable_barricade_guardrail
+	bullet = 50
+	laser = 50
+	energy = 50
+	bomb = 15
+	bio = 100
+	fire = 100
+	acid = 10
+
 /obj/structure/deployable_barricade/guardrail/update_icon()
 	. = ..()
 	if(dir == NORTH)
-		pixel_y = 12
+		pixel_y = 11
 
 /*----------------------*/
 // WOOD
@@ -329,7 +340,7 @@
 	desc = "A durable and easily mounted barricade made from metal plates, often used for rapid fortification. Repairing it requires a welder."
 	icon_state = "metal_0"
 	max_integrity = 200
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 100, FIRE = 80, ACID = 40)
+	armor_type = /datum/armor/deployable_barricade_metal
 	stack_type = /obj/item/stack/sheet/iron
 	stack_amount = 2
 	destroyed_stack_amount = 1
@@ -345,6 +356,11 @@
 	var/repair_amount = 2
 	/// Can we be upgraded?
 	var/can_upgrade = TRUE
+
+/datum/armor/deployable_barricade_metal
+	bio = 100
+	fire = 80
+	acid = 40
 
 /obj/structure/deployable_barricade/metal/AltClick(mob/user)
 	if(portable_type)
@@ -450,11 +466,11 @@
 
 	switch(choice)
 		if(BARRICADE_TYPE_BOMB)
-			armor = armor.modifyRating(bomb = 50)
+			set_armor_rating(BOMB, min(get_armor_rating(BOMB) + 50, 100))
 		if(BARRICADE_TYPE_MELEE)
-			armor = armor.modifyRating(melee = 30, bullet = 30)
+			set_armor(get_armor().generate_new_with_modifiers(list(MELEE = 30, BULLET = 30)))
 		if(BARRICADE_TYPE_ACID)
-			armor = armor.modifyRating(bio = 0, acid = 20)
+			set_armor(get_armor().generate_new_with_modifiers(list(ACID = 20)))
 
 	barricade_upgrade_type = choice
 
@@ -611,17 +627,16 @@
 
 			switch(barricade_upgrade_type)
 				if(BARRICADE_TYPE_BOMB)
-					armor = armor.modifyRating(bomb = -50)
+					set_armor_rating(BOMB, max(get_armor_rating(BOMB) - 50, 0))
 				if(BARRICADE_TYPE_MELEE)
-					armor = armor.modifyRating(melee = -30, bullet = -30)
+					set_armor(get_armor().generate_new_with_modifiers(list(MELEE = -30, BULLET = -30)))
 				if(BARRICADE_TYPE_ACID)
-					armor = armor.modifyRating(bio = 0, acid = -20)
+					set_armor(get_armor().generate_new_with_modifiers(list(ACID = -20)))
 
 			new /obj/item/stack/sheet/iron(loc, BARRICADE_UPGRADE_REQUIRED_SHEETS)
 			barricade_upgrade_type = null
 			update_icon()
 			return TRUE
-
 
 /obj/structure/deployable_barricade/metal/ex_act(severity)
 	switch(severity)
@@ -655,8 +670,10 @@
 	closed = TRUE
 	can_upgrade = FALSE
 	portable_type = /obj/item/quickdeploy/barricade/plasteel
-	///ehther we react with other cades next to us ie when opening or so
+	///Either we react with other cades next to us ie when opening or so
 	var/linked = FALSE
+	///Open/close delay, for customisation. And because I was asked to - won't customise anything myself.
+	var/toggle_delay = 2 SECONDS
 
 /obj/structure/deployable_barricade/metal/plasteel/crowbar_act(mob/living/user, obj/item/I)
 	switch(build_state)
@@ -688,7 +705,7 @@
 	if(.)
 		return
 
-	if(do_after(user, 50, src))
+	if(do_after(user, toggle_delay, src))
 		toggle_open(null, user)
 
 /obj/structure/deployable_barricade/metal/plasteel/proc/toggle_open(state, mob/living/user)
@@ -745,7 +762,7 @@
 
 /obj/item/quickdeploy/examine(mob/user)
 	. = ..()
-	. += "This [src.name] is set up deploy [thing_to_deploy.name]."
+	. += "This [src.name] is set up deploy [initial(thing_to_deploy.name)]." // initial() since thing_to_deploy is a typepath
 
 /obj/item/quickdeploy/attack_self(mob/user)
 	to_chat(user, span_notice("You start deploying [src] in front of you."))
@@ -808,10 +825,9 @@
 	icon_state = "box_metal"
 	w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/barricade/ComponentInitialize()
+/obj/item/storage/barricade/Initialize(mapload)
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_combined_w_class = 21
+	atom_storage.max_total_storage = 21
 
 /obj/item/storage/barricade/PopulateContents()
 	for(var/i = 0, i < 3, i++)

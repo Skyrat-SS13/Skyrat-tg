@@ -14,14 +14,13 @@
 /datum/asset/spritesheet/species/create_spritesheets()
 	var/list/to_insert = list()
 
-	for (var/species_id in get_selectable_species())
+	for (var/species_id in get_selectable_species() | get_customizable_races()) // SKYRAT EDIT CHANGE - ORIGINAL: for (var/species_id in get_selectable_species())
 		var/datum/species/species_type = GLOB.species_list[species_id]
 
 		var/mob/living/carbon/human/dummy/consistent/dummy = new
 		dummy.set_species(species_type)
 		dummy.equipOutfit(/datum/outfit/job/assistant/consistent, visualsOnly = TRUE)
 		dummy.dna.species.prepare_human_for_preview(dummy)
-		COMPILE_OVERLAYS(dummy)
 
 		var/icon/dummy_icon = getFlatIcon(dummy)
 		dummy_icon.Scale(64, 64)

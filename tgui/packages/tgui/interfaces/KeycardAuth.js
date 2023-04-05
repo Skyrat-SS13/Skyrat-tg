@@ -5,10 +5,8 @@ import { Window } from '../layouts';
 export const KeycardAuth = (props, context) => {
   const { act, data } = useBackend(context);
   return (
-    // SKYRAT EDIT: height 125 -> 150, addition of permit-locked firing pin
-    <Window
-      width={375}
-      height={150}>
+    // SKYRAT EDIT: height 125 -> 190, eng override/firing pin
+    <Window width={375} height={190}>
       <Window.Content>
         <Section>
           <Box>
@@ -27,7 +25,8 @@ export const KeycardAuth = (props, context) => {
                     lineHeight="60px"
                     fluid
                     onClick={() => act('auth_swipe')}
-                    content="Authorize" />
+                    content="Authorize"
+                  />
                 )}
                 {data.auth_required === 0 && (
                   <>
@@ -37,24 +36,44 @@ export const KeycardAuth = (props, context) => {
                       onClick={() => {
                         return act('red_alert');
                       }}
-                      content="Red Alert" />
+                      content="Red Alert"
+                    />
+                    <Button
+                      icon="id-card-o"
+                      fluid
+                      onClick={() => act('emergency_maint')}
+                      content="Emergency Maintenance Access"
+                    />
+                    {/* SKYRAT EDIT ADDITION START - Engineering Override */}
                     <Button
                       icon="wrench"
                       fluid
-                      onClick={() => act('emergency_maint')}
-                      content="Emergency Maintenance Access" />
+                      onClick={() => act('eng_override')}
+                      content="Engineering Override Access"
+                    />
+                    {/* SKYRAT EDIT ADDITION END */}
                     <Button
                       icon="meteor"
                       fluid
                       onClick={() => act('bsa_unlock')}
-                      content="Bluespace Artillery Unlock" />
+                      content="Bluespace Artillery Unlock"
+                    />
+                    {/* SKYRAT EDIT ADDITION START - Permit Pins */}
                     {!!data.permit_pins && (
                       <Button
                         icon="key"
                         fluid
                         onClick={() => act('pin_unrestrict')}
-                        content="Permit-Locked Firing Pin Unrestriction" />
+                        content="Permit-Locked Firing Pin Unrestriction"
+                      />
                     )}
+                    {/* SKYRAT EDIT ADDITION END */}
+                    <Button
+                      icon="key"
+                      fluid
+                      onClick={() => act('give_janitor_access')}
+                      content="Grant Janitor Access"
+                    />
                   </>
                 )}
               </>

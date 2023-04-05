@@ -13,11 +13,10 @@
 	spread = 2
 	force = 8 //There's heavier guns that dealt less damage on melee than this so we're reducing it from the original 12
 	recoil = 0
-	realistic = TRUE
-	dirt_modifier = 0.1
-	can_flashlight = TRUE
-	emp_damageable = FALSE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/dp_fire.ogg'
+
+/obj/item/gun/ballistic/automatic/pistol/m45a5/add_seclight_point()
+	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
 
 /obj/item/ammo_box/magazine/m45a5
 	name = "ACA modular magazine"
@@ -27,10 +26,10 @@
 	ammo_type = /obj/item/ammo_casing/b460
 	caliber = CALIBER_460
 	max_ammo = 8 //Previously 15, then previously 10. Locked to 8, as you can now restock .460 Magnum which was unintended due to its strong nature.
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_casing/b460
-	name = ".460 Rowland magnum bullet casing"
+	name = ".460 Rowland Magnum bullet casing"
 	desc = "A .460 Rowland magnum casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"

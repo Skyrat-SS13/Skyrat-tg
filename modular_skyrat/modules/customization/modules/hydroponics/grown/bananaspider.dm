@@ -17,7 +17,7 @@
 	desc = "You do not know what it is, but you can bet the clown would love it."
 	icon = 'modular_skyrat/master_files/icons/obj/hydroponics/harvest.dmi'
 	icon_state = "spibanana"
-	foodtypes = GROSS | MEAT | RAW | FRUIT
+	foodtypes = GORE | MEAT | RAW | FRUIT
 	var/awakening = FALSE
 
 /obj/item/food/grown/banana/banana_spider_spawnable/attack_self(mob/user)
@@ -25,11 +25,11 @@
 		return
 	to_chat(user, span_notice("You decide to wake up the banana spider..."))
 	awakening = TRUE
-	addtimer(CALLBACK(src, .proc/spawnspider), 8 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(spawnspider)), 8 SECONDS)
 
 /obj/item/food/grown/banana/banana_spider_spawnable/proc/spawnspider()
 	if(!QDELETED(src))
-		var/mob/living/simple_animal/banana_spider/banana_spider = new /mob/living/simple_animal/banana_spider(get_turf(loc))
+		var/mob/living/basic/banana_spider/banana_spider = new(get_turf(loc))
 		banana_spider.visible_message(span_notice("The banana spider chitters as it stretches its legs"))
 		qdel(src)
 

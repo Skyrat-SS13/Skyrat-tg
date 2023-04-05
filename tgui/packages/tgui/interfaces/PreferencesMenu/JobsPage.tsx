@@ -1,28 +1,26 @@
-import { sortBy } from "common/collections";
-import { classes } from "common/react";
-import { InfernoNode, SFC } from "inferno";
-import { useBackend } from "../../backend";
-import { Box, Button, Dropdown, Stack, Tooltip } from "../../components";
-import { logger } from "../../logging";
-import { createSetPreference, Job, JoblessRole, JobPriority, PreferencesMenuData } from "./data";
-import { ServerPreferencesFetcher } from "./ServerPreferencesFetcher";
+import { sortBy } from 'common/collections';
+import { classes } from 'common/react';
+import { InfernoNode, SFC } from 'inferno';
+import { useBackend } from '../../backend';
+import { Box, Button, Dropdown, Stack, Tooltip } from '../../components';
+import { logger } from '../../logging';
+import { createSetPreference, Job, JoblessRole, JobPriority, PreferencesMenuData } from './data';
+import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
 
-const sortJobs = (
-  entries: [string, Job][],
-  head?: string,
-) => sortBy<[string, Job]>(
-  ([key, _]) => key === head ? -1 : 1,
-  ([key, _]) => key,
-)(entries);
+const sortJobs = (entries: [string, Job][], head?: string) =>
+  sortBy<[string, Job]>(
+    ([key, _]) => (key === head ? -1 : 1),
+    ([key, _]) => key
+  )(entries);
 
-const PRIORITY_BUTTON_SIZE = "18px";
+const PRIORITY_BUTTON_SIZE = '18px';
 
 const PriorityButton = (props: {
-  name: string,
-  color: string,
-  modifier?: string,
-  enabled: boolean,
-  onClick: () => void,
+  name: string;
+  color: string;
+  modifier?: string;
+  enabled: boolean;
+  onClick: () => void;
 }) => {
   const className = `PreferencesMenu__Jobs__departments__priority`;
 
@@ -33,7 +31,7 @@ const PriorityButton = (props: {
         className,
         props.modifier && `${className}--${props.modifier}`,
       ])}
-      color={props.enabled ? props.color : "white"}
+      color={props.enabled ? props.color : 'white'}
       circular
       onClick={props.onClick}
       tooltip={props.name}
@@ -49,140 +47,135 @@ type CreateSetPriority = (priority: JobPriority | null) => () => void;
 
 const createSetPriorityCache: Record<string, CreateSetPriority> = {};
 
-const createCreateSetPriorityFromName
-  = (context, jobName: string): CreateSetPriority => {
-    if (createSetPriorityCache[jobName] !== undefined) {
-      return createSetPriorityCache[jobName];
+const createCreateSetPriorityFromName = (
+  context,
+  jobName: string
+): CreateSetPriority => {
+  if (createSetPriorityCache[jobName] !== undefined) {
+    return createSetPriorityCache[jobName];
+  }
+
+  const perPriorityCache: Map<JobPriority | null, () => void> = new Map();
+
+  const createSetPriority = (priority: JobPriority | null) => {
+    const existingCallback = perPriorityCache.get(priority);
+    if (existingCallback !== undefined) {
+      return existingCallback;
     }
 
-    const perPriorityCache: Map<JobPriority | null, () => void> = new Map();
+    const setPriority = () => {
+      const { act } = useBackend<PreferencesMenuData>(context);
 
-    const createSetPriority = (priority: JobPriority | null) => {
-      const existingCallback = perPriorityCache.get(priority);
-      if (existingCallback !== undefined) {
-        return existingCallback;
-      }
-
-      const setPriority = () => {
-        const { act } = useBackend<PreferencesMenuData>(context);
-
-        act("set_job_preference", {
-          job: jobName,
-          level: priority,
-        });
-      };
-
-      perPriorityCache.set(priority, setPriority);
-      return setPriority;
+      act('set_job_preference', {
+        job: jobName,
+        level: priority,
+      });
     };
 
-    createSetPriorityCache[jobName] = createSetPriority;
-
-    return createSetPriority;
+    perPriorityCache.set(priority, setPriority);
+    return setPriority;
   };
 
+  createSetPriorityCache[jobName] = createSetPriority;
+
+  return createSetPriority;
+};
+
 const PriorityHeaders = () => {
-  const className = "PreferencesMenu__Jobs__PriorityHeader";
+  const className = 'PreferencesMenu__Jobs__PriorityHeader';
 
   return (
     <Stack>
       <Stack.Item grow />
 
-      <Stack.Item className={className}>
-        Off
-      </Stack.Item>
+      <Stack.Item className={className}>Off</Stack.Item>
 
-      <Stack.Item className={className}>
-        Low
-      </Stack.Item>
+      <Stack.Item className={className}>Low</Stack.Item>
 
-      <Stack.Item className={className}>
-        Medium
-      </Stack.Item>
+      <Stack.Item className={className}>Medium</Stack.Item>
 
-      <Stack.Item className={className}>
-        High
-      </Stack.Item>
+      <Stack.Item className={className}>High</Stack.Item>
     </Stack>
   );
 };
 
 const PriorityButtons = (props: {
-  createSetPriority: CreateSetPriority,
-  isOverflow: boolean,
-  priority: JobPriority,
+  createSetPriority: CreateSetPriority;
+  isOverflow: boolean;
+  priority: JobPriority;
 }) => {
   const { createSetPriority, isOverflow, priority } = props;
 
   return (
-    <Box inline // SKYRAT EDIT
+    <Box
+      inline // SKYRAT EDIT
       style={{
-        "align-items": "center",
-        "height": "100%",
-        "textAlign": "end", // SKYRAT EDIT
-        "padding": "0.3em", // SKYRAT EDIT
-      }}
-    >
-      {isOverflow
-        ? (
-          <>
-            <PriorityButton
-              name="Off"
-              modifier="off"
-              color="light-grey"
-              enabled={!priority}
-              onClick={createSetPriority(null)}
-            />
+        'align-items': 'center',
+        'height': '100%',
+        'textAlign': 'end', // SKYRAT EDIT
+        'padding': '0.3em', // SKYRAT EDIT
+      }}>
+      {isOverflow ? (
+        <>
+          <PriorityButton
+            name="Off"
+            modifier="off"
+            color="light-grey"
+            enabled={!priority}
+            onClick={createSetPriority(null)}
+          />
 
-            <PriorityButton
-              name="On"
-              color="green"
-              enabled={!!priority}
-              onClick={createSetPriority(JobPriority.High)}
-            />
-          </>
-        )
-        : (
-          <>
-            <PriorityButton
-              name="Off"
-              modifier="off"
-              color="light-grey"
-              enabled={!priority}
-              onClick={createSetPriority(null)}
-            />
+          <PriorityButton
+            name="On"
+            color="green"
+            enabled={!!priority}
+            onClick={createSetPriority(JobPriority.High)}
+          />
+        </>
+      ) : (
+        <>
+          <PriorityButton
+            name="Off"
+            modifier="off"
+            color="light-grey"
+            enabled={!priority}
+            onClick={createSetPriority(null)}
+          />
 
-            <PriorityButton
-              name="Low"
-              color="red"
-              enabled={priority === JobPriority.Low}
-              onClick={createSetPriority(JobPriority.Low)}
-            />
+          <PriorityButton
+            name="Low"
+            color="red"
+            enabled={priority === JobPriority.Low}
+            onClick={createSetPriority(JobPriority.Low)}
+          />
 
-            <PriorityButton
-              name="Medium"
-              color="yellow"
-              enabled={priority === JobPriority.Medium}
-              onClick={createSetPriority(JobPriority.Medium)}
-            />
+          <PriorityButton
+            name="Medium"
+            color="yellow"
+            enabled={priority === JobPriority.Medium}
+            onClick={createSetPriority(JobPriority.Medium)}
+          />
 
-            <PriorityButton
-              name="High"
-              color="green"
-              enabled={priority === JobPriority.High}
-              onClick={createSetPriority(JobPriority.High)}
-            />
-          </>
-        )}
+          <PriorityButton
+            name="High"
+            color="green"
+            enabled={priority === JobPriority.High}
+            onClick={createSetPriority(JobPriority.High)}
+          />
+        </>
+      )}
     </Box> // SKYRAT EDIT
   );
 };
 
-const JobRow = (props: {
-  className?: string,
-  job: Job,
-  name: string,
-}, context) => {
+const JobRow = (
+  props: {
+    className?: string;
+    job: Job;
+    name: string;
+  },
+  context
+) => {
   const { data } = useBackend<PreferencesMenuData>(context);
   const { className, job, name } = props;
 
@@ -194,13 +187,14 @@ const JobRow = (props: {
   const { act } = useBackend<PreferencesMenuData>(context);
   // SKYRAT EDIT END
 
-  const experienceNeeded = data.job_required_experience
-    && data.job_required_experience[name];
+  const experienceNeeded =
+    data.job_required_experience && data.job_required_experience[name];
   const daysLeft = data.job_days_left ? data.job_days_left[name] : 0;
 
   // SKYRAT EDIT
   const alt_title_selected = data.job_alt_titles[name]
-    ? data.job_alt_titles[name] : name;
+    ? data.job_alt_titles[name]
+    : name;
   // SKYRAT EDIT END
 
   let rightSide: InfernoNode;
@@ -220,7 +214,7 @@ const JobRow = (props: {
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
         <Stack.Item grow textAlign="right">
-          <b>{daysLeft}</b> day{daysLeft === 1 ? "" : "s"} left
+          <b>{daysLeft}</b> day{daysLeft === 1 ? '' : 's'} left
         </Stack.Item>
       </Stack>
     );
@@ -232,7 +226,7 @@ const JobRow = (props: {
         </Stack.Item>
       </Stack>
     );
-  // SKYRAT EDIT START
+    // SKYRAT EDIT START
   } else if (job.veteran && !data.is_veteran) {
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
@@ -241,8 +235,10 @@ const JobRow = (props: {
         </Stack.Item>
       </Stack>
     );
-  } else if (data.species_restricted_jobs
-            && data.species_restricted_jobs.indexOf(name) !== -1) {
+  } else if (
+    data.species_restricted_jobs &&
+    data.species_restricted_jobs.indexOf(name) !== -1
+  ) {
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
         <Stack.Item grow textAlign="right">
@@ -250,33 +246,50 @@ const JobRow = (props: {
         </Stack.Item>
       </Stack>
     );
-  // SKYRAT EDIT END
+    // SKYRAT EDIT END
   } else {
-    rightSide = (<PriorityButtons
-      createSetPriority={createSetPriority}
-      isOverflow={isOverflow}
-      priority={priority}
-    />);
+    rightSide = (
+      <PriorityButtons
+        createSetPriority={createSetPriority}
+        isOverflow={isOverflow}
+        priority={priority}
+      />
+    );
   }
   return (
-    <Box className={className} style={{ // SKYRAT EDIT
-      "margin-top": 0,
-    }}>
+    <Box
+      className={className}
+      style={{
+        // SKYRAT EDIT
+        'margin-top': 0,
+      }}>
       <Stack align="center" /* SKYRAT EDIT */>
         <Tooltip
           content={job.description}
-          position="right"// SKYRAT EDIT bottom-start->right
+          position="right" // SKYRAT EDIT bottom-start->right
         >
-          <Stack.Item className="job-name" width="50%" style={{
-            "padding-left": "0.3em",
-          }}> { // SKYRAT EDIT
-              (!job.alt_titles ? name : <Dropdown
-                width="100%"
-                options={job.alt_titles}
-                displayText={alt_title_selected}
-                onSelected={(value) => act("set_job_title", { job: name, new_title: value })}
-              />)
-            // SKYRAT EDIT END
+          <Stack.Item
+            className="job-name"
+            width="50%"
+            style={{
+              'padding-left': '0.3em',
+            }}>
+            {' '}
+            {
+              // SKYRAT EDIT
+              !job.alt_titles ? (
+                name
+              ) : (
+                <Dropdown
+                  width="100%"
+                  options={job.alt_titles}
+                  displayText={alt_title_selected}
+                  onSelected={(value) =>
+                    act('set_job_title', { job: name, new_title: value })
+                  }
+                />
+              )
+              // SKYRAT EDIT END
             }
           </Stack.Item>
         </Tooltip>
@@ -289,10 +302,10 @@ const JobRow = (props: {
   );
 };
 
-const Department: SFC<{ department: string}> = (props) => {
+const Department: SFC<{ department: string }> = (props) => {
   const { children, department: name } = props;
   const className = `PreferencesMenu__Jobs__departments--${name}`;
-  logger.log(name + ": " + className);
+  logger.log(name + ': ' + className);
 
   return (
     <ServerPreferencesFetcher
@@ -313,24 +326,29 @@ const Department: SFC<{ department: string}> = (props) => {
         }
 
         const jobsForDepartment = sortJobs(
-          Object.entries(jobs).filter(
-            ([_, job]) => job.department === name
-          ),
+          Object.entries(jobs).filter(([_, job]) => job.department === name),
           department.head
         );
 
         logger.log(className);
         return (
           <Box>
-            {jobsForDepartment.map(([name, job]) => {
-              logger.log(name);
-              return (<JobRow /* SKYRAT EDIT START - Fixing alt titles */
-                className={classes([className, name === department.head && "head"])}
-                key={name}
-                job={job}
-                name={name}
-              />);
-            })/* SKYRAT EDIT END */}
+            {
+              jobsForDepartment.map(([name, job]) => {
+                logger.log(name);
+                return (
+                  <JobRow /* SKYRAT EDIT START - Fixing alt titles */
+                    className={classes([
+                      className,
+                      name === department.head && 'head',
+                    ])}
+                    key={name}
+                    job={job}
+                    name={name}
+                  />
+                );
+              }) /* SKYRAT EDIT END */
+            }
 
             {children}
           </Box>
@@ -344,9 +362,7 @@ const Department: SFC<{ department: string}> = (props) => {
 // All I want is for a gap to pretend to be an empty space.
 // But in order for everything to align, I also need to add the 0.2em padding.
 // But also, we can't be aligned with names that break into multiple lines!
-const Gap = (props: {
-  amount: number,
-}) => {
+const Gap = (props: { amount: number }) => {
   // 0.2em comes from the padding-bottom in the department listing
   return <Box height={`calc(${props.amount}px + 0.2em)`} />;
 };
@@ -371,19 +387,15 @@ const JoblessRoleDropdown = (props, context) => {
   ];
 
   return (
-    <Box
-      position="absolute"
-      right={0}
-      width="30%"
-    >
+    <Box position="absolute" right={0} width="30%">
       <Dropdown
         width="100%"
         selected={selected}
-        onSelected={createSetPreference(act, "joblessrole")}
+        onSelected={createSetPreference(act, 'joblessrole')}
         options={options}
         displayText={
           <Box pr={1}>
-            {options.find(option => option.value === selected)!.displayText}
+            {options.find((option) => option.value === selected)!.displayText}
           </Box>
         }
       />
@@ -418,9 +430,7 @@ export const JobsPage = () => {
                 <Gap amount={12} />
               </Department>
 
-              <Department
-                department="Assistant"
-              />
+              <Department department="Assistant" />
             </Stack.Item>
 
             <Stack.Item mr={1}>
@@ -446,9 +456,7 @@ export const JobsPage = () => {
                 <Gap amount={6} />
               </Department>
 
-              <Department
-                department="Medical"
-              />
+              <Department department="Medical" />
             </Stack.Item>
           </Stack>
         </Stack.Item>

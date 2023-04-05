@@ -45,7 +45,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return
 	//SKYRAT EDIT ADDITION
 	var/turf/my_turf = get_turf(src)
-	my_turf.PolluteTurf(/datum/pollutant/sulphur, 5)
+	my_turf.pollute_turf(/datum/pollutant/sulphur, 5)
 	//SKYRAT EDIT END
 	playsound(src, 'sound/items/match_strike.ogg', 15, TRUE)
 	lit = TRUE
@@ -88,9 +88,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(!isliving(M))
 		return
 
-	if(lit && M.IgniteMob())
+	if(lit && M.ignite_mob())
 		message_admins("[ADMIN_LOOKUPFLW(user)] set [key_name_admin(M)] on fire with [src] at [AREACOORD(user)]")
-		log_game("[key_name(user)] set [key_name(M)] on fire with [src] at [AREACOORD(user)]")
+		user.log_message("set [key_name(M)] on fire with [src]", LOG_ATTACK)
 
 	var/obj/item/clothing/mask/cigarette/cig = help_light_cig(M)
 	if(!lit || !cig || user.combat_mode)
@@ -131,6 +131,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "cigarette"
 	desc = "A roll of tobacco and nicotine."
 	icon_state = "cigoff"
+	inhand_icon_state = "cigon" //gets overriden during intialize(), just have it for unit test sanity.
 	throw_speed = 0.5
 	w_class = WEIGHT_CLASS_TINY
 	body_parts_covered = null
@@ -165,6 +166,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/smoke_all = FALSE
 	/// How much damage this deals to the lungs per drag.
 	var/lung_harm = 1
+	/// If, when glorf'd, we will choke on this cig forever
+	var/choke_forever = FALSE
+	/// When choking, what is the maximum amount of time we COULD choke for
+	var/choke_time_max = 30 SECONDS // I am mean
 
 	var/pollution_type = /datum/pollutant/smoke //SKYRAT EDIT ADDITION /// What type of pollution does this produce on smoking, changed to weed pollution sometimes
 
@@ -176,8 +181,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		reagents.add_reagent_list(list_reagents)
 	if(starts_lit)
 		light()
-	AddComponent(/datum/component/knockoff, 90, list(BODY_ZONE_PRECISE_MOUTH), list(ITEM_SLOT_MASK)) //90% to knock off when wearing a mask
-	AddElement(/datum/element/update_icon_updates_onmob)
+	AddComponent(/datum/component/knockoff, 90, list(BODY_ZONE_PRECISE_MOUTH), slot_flags) //90% to knock off when wearing a mask
+	AddElement(/datum/element/update_icon_updates_onmob, ITEM_SLOT_MASK|ITEM_SLOT_HANDS)
 	icon_state = icon_off
 	inhand_icon_state = inhand_icon_off
 
@@ -185,7 +190,22 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/clothing/mask/cigarette/suicide_act(mob/user)
+/obj/item/clothing/mask/cigarette/equipped(mob/equipee, slot)
+	. = ..()
+	if(!(slot & ITEM_SLOT_MASK))
+		UnregisterSignal(equipee, COMSIG_HUMAN_FORCESAY)
+		return
+	RegisterSignal(equipee, COMSIG_HUMAN_FORCESAY, PROC_REF(on_forcesay))
+
+/obj/item/clothing/mask/cigarette/dropped(mob/dropee)
+	. = ..()
+	UnregisterSignal(dropee, COMSIG_HUMAN_FORCESAY)
+
+/obj/item/clothing/mask/cigarette/proc/on_forcesay(mob/living/source)
+	SIGNAL_HANDLER
+	source.apply_status_effect(/datum/status_effect/choke, src, lit, choke_forever ? -1 : rand(25 SECONDS, choke_time_max))
+
+/obj/item/clothing/mask/cigarette/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] is huffing [src] as quickly as [user.p_they()] can! It looks like [user.p_theyre()] trying to give [user.p_them()]self cancer."))
 	return (TOXLOSS|OXYLOSS)
 
@@ -208,7 +228,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else
 		to_chat(user, span_warning("There is nothing to smoke!"))
 
-/obj/item/clothing/mask/cigarette/afterattack(obj/item/reagent_containers/glass/glass, mob/user, proximity)
+/obj/item/clothing/mask/cigarette/afterattack(obj/item/reagent_containers/cup/glass, mob/user, proximity)
 	. = ..()
 	if(!proximity || lit) //can't dip if cigarette is lit (it will heat the reagents in the glass instead)
 		return
@@ -222,6 +242,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		to_chat(user, span_warning("[glass] is empty!"))
 	else
 		to_chat(user, span_warning("[src] is full!"))
+
+	return AFTERATTACK_PROCESSED_ITEM
 
 /obj/item/clothing/mask/cigarette/update_icon_state()
 	. = ..()
@@ -278,8 +300,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	//can't think of any other way to update the overlays :<
 	if(ismob(loc))
 		var/mob/M = loc
-		M.update_inv_wear_mask()
-		M.update_inv_hands()
+		M.update_worn_mask()
+		M.update_held_items()
 
 /obj/item/clothing/mask/cigarette/extinguish()
 	if(!lit)
@@ -297,8 +319,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(ismob(loc))
 		var/mob/living/M = loc
 		to_chat(M, span_notice("Your [name] goes out."))
-		M.update_inv_wear_mask()
-		M.update_inv_hands()
+		M.update_worn_mask()
+		M.update_held_items()
 
 /// Handles processing the reagents in the cigarette.
 /obj/item/clothing/mask/cigarette/proc/handle_reagents()
@@ -314,7 +336,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return
 
 	reagents.expose(smoker, INGEST, min(to_smoke / reagents.total_volume, 1))
-	var/obj/item/organ/lungs/lungs = smoker.getorganslot(ORGAN_SLOT_LUNGS)
+	var/obj/item/organ/internal/lungs/lungs = smoker.get_organ_slot(ORGAN_SLOT_LUNGS)
 	if(lungs && !(lungs.organ_flags & ORGAN_SYNTHETIC))
 		var/smoker_resistance = HAS_TRAIT(smoker, TRAIT_SMOKER) ? 0.5 : 1
 		smoker.adjustOrganLoss(ORGAN_SLOT_LUNGS, lung_harm*smoker_resistance)
@@ -323,7 +345,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/cigarette/process(delta_time)
 	var/mob/living/user = isliving(loc) ? loc : null
-	user?.IgniteMob()
+	user?.ignite_mob()
 	if(!reagents.has_reagent(/datum/reagent/oxygen)) //cigarettes need oxygen
 		var/datum/gas_mixture/air = return_air()
 		if(!air || !air.has_gas(/datum/gas/oxygen, 1)) //or oxygen on a tile to burn
@@ -332,7 +354,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	// SKYRAT EDIT ADDITION START - Pollution
 	var/turf/location = get_turf(src)
-	location.PolluteTurf(pollution_type, 5, POLLUTION_PASSIVE_EMITTER_CAP)
+	location.pollute_turf(pollution_type, 5, POLLUTION_PASSIVE_EMITTER_CAP)
 	// SKYRAT EDIT END
 
 	smoketime -= delta_time * (1 SECONDS)
@@ -446,6 +468,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	smoketime = 4 MINUTES
 	chem_volume = 50
 	list_reagents = null
+	choke_time_max = 40 SECONDS
 
 /obj/item/clothing/mask/cigarette/rollie/Initialize(mapload)
 	name = pick(list(
@@ -518,6 +541,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	heat = 473.15 // Lowered so that the sugar can be carmalized, but not burnt.
 	lung_harm = 0.5
 	list_reagents = list(/datum/reagent/consumable/sugar = 20)
+	choke_time_max = 70 SECONDS // This shit really is deadly
 
 /obj/item/clothing/mask/cigarette/candy/nicotine
 	desc = "For all ages*! Doesn't contain any* amount of nicotine. Health and safety risks can be read on the tip of the cigarette."
@@ -545,6 +569,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cigaroff"
 	icon_on = "cigaron"
 	icon_off = "cigaroff" //make sure to add positional sprites in icons/obj/cigarettes.dmi if you add more.
+	inhand_icon_state = "cigaron" //gets overriden during intialize(), just have it for unit test sanity.
 	inhand_icon_on = "cigaron"
 	inhand_icon_off = "cigaroff"
 	type_butt = /obj/item/cigbutt/cigarbutt
@@ -552,6 +577,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	smoketime = 11 MINUTES
 	chem_volume = 40
 	list_reagents = list(/datum/reagent/drug/nicotine = 25)
+	choke_time_max = 40 SECONDS
 
 /obj/item/clothing/mask/cigarette/cigar/cohiba
 	name = "\improper Cohiba Robusto cigar"
@@ -596,11 +622,14 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "pipeoff"
 	icon_on = "pipeon"  //Note - these are in masks.dmi
 	icon_off = "pipeoff"
+	inhand_icon_state = null
 	inhand_icon_on = null
 	inhand_icon_off = null
 	smoketime = 0
 	chem_volume = 200 // So we can fit densified chemicals plants
 	list_reagents = null
+	w_class = WEIGHT_CLASS_SMALL
+	choke_forever = TRUE
 	///name of the stuff packed inside this pipe
 	var/packeditem
 
@@ -624,7 +653,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	update_icon()
 
 	inhand_icon_state = icon_off
-	user?.update_inv_wear_mask()
+	user?.update_worn_mask()
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/clothing/mask/cigarette/pipe/attackby(obj/item/thing, mob/user, params)
@@ -814,11 +843,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		span_warning("After a few attempts, [user] manages to light [src] - however, [user.p_they()] burn [user.p_their()] finger in the process."),
 		span_warning("You burn yourself while lighting the lighter!")
 	)
-	SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "burnt_thumb", /datum/mood_event/burnt_thumb)
+	user.add_mood_event("burnt_thumb", /datum/mood_event/burnt_thumb)
 
 
 /obj/item/lighter/attack(mob/living/carbon/M, mob/living/carbon/user)
-	if(lit && M.IgniteMob())
+	if(lit && M.ignite_mob())
 		message_admins("[ADMIN_LOOKUPFLW(user)] set [key_name_admin(M)] on fire with [src] at [AREACOORD(user)]")
 		log_game("[key_name(user)] set [key_name(M)] on fire with [src] at [AREACOORD(user)]")
 	var/obj/item/clothing/mask/cigarette/cig = help_light_cig(M)
@@ -904,6 +933,58 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	overlay_state = "slime"
 	grind_results = list(/datum/reagent/iron = 1, /datum/reagent/fuel = 5, /datum/reagent/medicine/pyroxadone = 5)
 
+/obj/item/lighter/skull
+	name = "badass zippo"
+	desc = "An absolutely badass zippo lighter. Just look at that skull!"
+	overlay_state = "skull"
+
+/obj/item/lighter/mime
+	name = "pale zippo"
+	desc = "In lieu of fuel, performative spirit can be used to light cigarettes."
+	icon_state = "mlighter" //These ones don't show a flame.
+	light_color = LIGHT_COLOR_HALOGEN
+	heat = 0 //I swear it's a real lighter dude you just can't see the flame dude I promise
+	overlay_state = "mime"
+	grind_results = list(/datum/reagent/iron = 1, /datum/reagent/toxin/mutetoxin = 5, /datum/reagent/consumable/nothing = 10)
+	light_range = 0
+	light_power = 0
+	fancy = FALSE
+
+/obj/item/lighter/mime/ignition_effect(atom/A, mob/user)
+	. = span_infoplain("[user] lifts the [name] to the [A], which miraculously lights!")
+
+/obj/item/lighter/bright
+	name = "illuminative zippo"
+	desc = "Sustains an incredibly bright chemical reaction when you spark it. Avoid looking directly at the igniter when lit."
+	icon_state = "slighter"
+	light_color = LIGHT_COLOR_ELECTRIC_CYAN
+	overlay_state = "bright"
+	grind_results = list(/datum/reagent/iron = 1, /datum/reagent/flash_powder = 10)
+	light_range = 8
+	light_power = 3 //Irritatingly bright and large enough to cover a small room.
+	fancy = FALSE
+
+/obj/item/lighter/bright/examine(mob/user)
+	. = ..()
+
+	if(lit && isliving(user))
+		var/mob/living/current_viewer = user
+		current_viewer.flash_act(4)
+
+/obj/item/lighter/bright/ignition_effect(atom/A, mob/user)
+	if(get_temperature())
+		. = span_infoplain(span_rose("[user] lifts the [src] to the [A], igniting it with a brilliant flash of light!"))
+		var/mob/living/current_viewer = user
+		current_viewer.flash_act(4)
+
+/obj/effect/spawner/random/special_lighter
+	name = "special lighter spawner"
+	icon_state = "lighter"
+	loot = list(
+		/obj/item/lighter/skull,
+		/obj/item/lighter/mime,
+		/obj/item/lighter/bright,
+	)
 
 ///////////
 //ROLLING//
@@ -928,9 +1009,15 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A classy and highly sophisticated electronic cigarette, for classy and dignified gentlemen. A warning label reads \"Warning: Do not fill with flammable materials.\""//<<< i'd vape to that.
 	icon = 'icons/obj/clothing/masks.dmi'
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi' //SKYRAT EDIT: ADDITION
-	icon_state = "red_vape"
+	icon_state = "vape"
+	worn_icon_state = "vape_worn"
+	greyscale_config = /datum/greyscale_config/vape
+	greyscale_config_worn = /datum/greyscale_config/vape/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/vape/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale (Digi? On a vape? What? How did we do this)
+	greyscale_colors = "#2e2e2e"
 	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_TINY
+	flags_1 = IS_PLAYER_COLORABLE_1
 
 	/// The capacity of the vape.
 	var/chem_volume = 100
@@ -943,16 +1030,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	/// Whether the vape has been overloaded to spread smoke.
 	var/super = FALSE
 
-/obj/item/clothing/mask/vape/Initialize(mapload, param_color)
+/obj/item/clothing/mask/vape/Initialize(mapload)
 	. = ..()
 	create_reagents(chem_volume, NO_REACT)
 	reagents.add_reagent(/datum/reagent/drug/nicotine, 50)
-	if(!param_color)
-		param_color = pick("red","blue","black","white","green","purple","yellow","orange")
-	icon_state = "[param_color]_vape"
-	inhand_icon_state = "[param_color]_vape"
 
-/obj/item/clothing/mask/vape/suicide_act(mob/user)
+/obj/item/clothing/mask/vape/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] is puffin hard on dat vape, [user.p_they()] trying to join the vape life on a whole notha plane!"))//it doesn't give you cancer, it is cancer
 	return (TOXLOSS|OXYLOSS)
 
@@ -962,30 +1045,34 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		to_chat(user, span_notice("You open the cap on [src]."))
 		reagents.flags |= OPENCONTAINER
 		if(obj_flags & EMAGGED)
-			add_overlay("vapeopen_high")
+			icon_state = "vape_open_high"
+			set_greyscale(new_config = /datum/greyscale_config/vape/open_high)
 		else if(super)
-			add_overlay("vapeopen_med")
+			icon_state = "vape_open_med"
+			set_greyscale(new_config = /datum/greyscale_config/vape/open_med)
 		else
-			add_overlay("vapeopen_low")
+			icon_state = "vape_open_low"
+			set_greyscale(new_config = /datum/greyscale_config/vape/open_low)
 	else
 		screw = FALSE
 		to_chat(user, span_notice("You close the cap on [src]."))
 		reagents.flags &= ~(OPENCONTAINER)
-		cut_overlays()
+		icon_state = initial(icon_state)
+		set_greyscale(new_config = initial(greyscale_config))
 
 /obj/item/clothing/mask/vape/multitool_act(mob/living/user, obj/item/tool)
 	. = TRUE
 	if(screw && !(obj_flags & EMAGGED))//also kinky
 		if(!super)
-			cut_overlays()
 			super = TRUE
 			to_chat(user, span_notice("You increase the voltage of [src]."))
-			add_overlay("vapeopen_med")
+			icon_state = "vape_open_med"
+			set_greyscale(new_config = /datum/greyscale_config/vape/open_med)
 		else
-			cut_overlays()
 			super = FALSE
 			to_chat(user, span_notice("You decrease the voltage of [src]."))
-			add_overlay("vapeopen_low")
+			icon_state = "vape_open_low"
+			set_greyscale(new_config = /datum/greyscale_config/vape/open_low)
 
 	if(screw && (obj_flags & EMAGGED))
 		to_chat(user, span_warning("[src] can't be modified!"))
@@ -993,11 +1080,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/vape/emag_act(mob/user)// I WON'T REGRET WRITTING THIS, SURLY.
 	if(screw)
 		if(!(obj_flags & EMAGGED))
-			cut_overlays()
 			obj_flags |= EMAGGED
 			super = FALSE
 			to_chat(user, span_warning("You maximize the voltage of [src]."))
-			add_overlay("vapeopen_high")
+			icon_state = "vape_open_high"
+			set_greyscale(new_config = /datum/greyscale_config/vape/open_high)
 			var/datum/effect_system/spark_spread/sp = new /datum/effect_system/spark_spread //for effect
 			sp.set_up(5, 1, src)
 			sp.start()
@@ -1013,7 +1100,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/vape/equipped(mob/user, slot)
 	. = ..()
-	if(slot != ITEM_SLOT_MASK)
+	if(!(slot & ITEM_SLOT_MASK))
 		return
 
 	if(screw)
@@ -1042,7 +1129,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(reagents.get_reagent_amount(/datum/reagent/fuel))
 		//HOT STUFF
 		vaper.adjust_fire_stacks(2)
-		vaper.IgniteMob()
+		vaper.ignite_mob()
 
 	if(reagents.get_reagent_amount(/datum/reagent/toxin/plasma)) // the plasma explodes when exposed to fire
 		var/datum/effect_system/reagents_explosion/e = new()
@@ -1057,7 +1144,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/mob/living/M = loc
 
 	if(isliving(loc))
-		M.IgniteMob()
+		M.ignite_mob()
 
 	if(!reagents.total_volume)
 		if(ismob(loc))
@@ -1075,13 +1162,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	//SKYRAT EDIT ADDITION
 	//open flame removed because vapes are a closed system, they won't light anything on fire
 	var/turf/my_turf = get_turf(src)
-	my_turf.PolluteTurf(/datum/pollutant/smoke/vape, 5, POLLUTION_PASSIVE_EMITTER_CAP)
+	my_turf.pollute_turf(/datum/pollutant/smoke/vape, 5, POLLUTION_PASSIVE_EMITTER_CAP)
 	//SKYRAT EDIT END
 
 	if(obj_flags & EMAGGED)
-		var/datum/effect_system/smoke_spread/chem/smoke_machine/s = new
-		s.set_up(reagents, 4, 24, loc)
-		s.start()
+		var/datum/effect_system/fluid_spread/smoke/chem/smoke_machine/puff = new
+		puff.set_up(4, holder = src, location = loc, carry = reagents, efficiency = 24)
+		puff.start()
 		if(prob(5)) //small chance for the vape to break and deal damage if it's emagged
 			playsound(get_turf(src), 'sound/effects/pop_expl.ogg', 50, FALSE)
 			M.apply_damage(20, BURN, BODY_ZONE_HEAD)
@@ -1093,8 +1180,40 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			qdel(src)
 			return
 	else if(super)
-		var/datum/effect_system/smoke_spread/chem/smoke_machine/s = new
-		s.set_up(reagents, 1, 24, loc)
-		s.start()
+		var/datum/effect_system/fluid_spread/smoke/chem/smoke_machine/puff = new
+		puff.set_up(1, holder = src, location = loc, carry = reagents, efficiency = 24)
+		puff.start()
 
 	handle_reagents()
+
+/obj/item/clothing/mask/vape/red
+	greyscale_colors = "#A02525"
+	flags_1 = NONE
+
+/obj/item/clothing/mask/vape/blue
+	greyscale_colors = "#294A98"
+	flags_1 = NONE
+
+/obj/item/clothing/mask/vape/purple
+	greyscale_colors = "#9900CC"
+	flags_1 = NONE
+
+/obj/item/clothing/mask/vape/green
+	greyscale_colors = "#3D9829"
+	flags_1 = NONE
+
+/obj/item/clothing/mask/vape/yellow
+	greyscale_colors = "#DAC20E"
+	flags_1 = NONE
+
+/obj/item/clothing/mask/vape/orange
+	greyscale_colors = "#da930e"
+	flags_1 = NONE
+
+/obj/item/clothing/mask/vape/black
+	greyscale_colors = "#2e2e2e"
+	flags_1 = NONE
+
+/obj/item/clothing/mask/vape/white
+	greyscale_colors = "#DCDCDC"
+	flags_1 = NONE

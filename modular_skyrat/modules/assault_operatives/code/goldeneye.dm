@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(goldeneye_pinpointers)
 
-#define ICARUS_IGNITION_TIME 20 SECONDS
-#define PINPOINTER_PING_TIME 4 SECONDS
+#define ICARUS_IGNITION_TIME (20 SECONDS)
+#define PINPOINTER_PING_TIME (4 SECONDS)
 
 /**
  * GoldenEye defence network
@@ -11,8 +11,7 @@ GLOBAL_LIST_EMPTY(goldeneye_pinpointers)
 
 SUBSYSTEM_DEF(goldeneye)
 	name = "GoldenEye"
-	init_order = INIT_ORDER_DEFAULT
-	flags = SS_NO_FIRE
+	flags = SS_NO_FIRE | SS_NO_INIT
 	/// A tracked list of all our keys.
 	var/list/goldeneye_keys = list()
 	/// A list of minds that have been extracted and thus cannot be extracted again.
@@ -55,7 +54,7 @@ SUBSYSTEM_DEF(goldeneye)
 	priority_announce(message, "GoldenEye Defence Network", ANNOUNCER_ICARUS)
 	goldeneye_activated = TRUE
 
-	addtimer(CALLBACK(src, .proc/fire_icarus), ignition_time)
+	addtimer(CALLBACK(src, PROC_REF(fire_icarus)), ignition_time)
 
 
 /datum/controller/subsystem/goldeneye/proc/fire_icarus()
@@ -74,8 +73,8 @@ SUBSYSTEM_DEF(goldeneye)
 
 // Goldeneye key
 /obj/item/goldeneye_key
-	name = "\improper GoldenEye Authentication Keycard"
-	desc = "A high profile authentication keycard to Nanotrasen's GoldenEye defence network. It seems indestructable."
+	name = "\improper GoldenEye authentication keycard"
+	desc = "A high profile authentication keycard to Nanotrasen's GoldenEye defence network. It seems indestructible."
 	icon = 'modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi'
 	icon_state = "goldeneye_key"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
@@ -89,8 +88,9 @@ SUBSYSTEM_DEF(goldeneye)
 	. = ..()
 	SSgoldeneye.goldeneye_keys += src
 	goldeneye_tag = "G[rand(10000, 99999)]"
-	name = "\improper GoldenEye Authentication Keycard: [goldeneye_tag]"
+	name = "\improper GoldenEye authentication keycard: [goldeneye_tag]"
 	AddComponent(/datum/component/gps, goldeneye_tag)
+	SSpoints_of_interest.make_point_of_interest(src)
 
 /obj/item/goldeneye_key/examine(mob/user)
 	. = ..()
@@ -141,7 +141,7 @@ SUBSYSTEM_DEF(goldeneye)
 
 // Pinpointer
 /obj/item/pinpointer/nuke/goldeneye
-	name = "\improper GoldenEye Keycard Pinpointer"
+	name = "\improper GoldenEye keycard pinpointer"
 	desc = "A handheld tracking device that locks onto certain signals. This one is configured to locate any GoldenEye keycards."
 	icon_state = "pinpointer_syndicate"
 	worn_icon_state = "pinpointer_black"
@@ -168,7 +168,7 @@ SUBSYSTEM_DEF(goldeneye)
 /datum/objective/goldeneye
 	name = "subvert goldeneye"
 	objective_name = "Subvert GoldenEye"
-	explanation_text = "Extract all of the required GoldenEye Authentication Keys from the heads of staff and activate GoldenEye."
+	explanation_text = "Extract all of the required GoldenEye authentication keys from the heads of staff and activate GoldenEye."
 	martyr_compatible = TRUE
 
 /datum/objective/goldeneye/check_completion()

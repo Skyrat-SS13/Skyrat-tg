@@ -1,5 +1,5 @@
-import { Antagonist, Category } from "../base";
-import { multiline } from "common/string";
+import { Antagonist, Category } from '../base';
+import { multiline } from 'common/string';
 
 export const OPERATIVE_MECHANICAL_DESCRIPTION = multiline`
   Attain all possible GoldenEye authentication keys and use them to activate
@@ -8,8 +8,8 @@ export const OPERATIVE_MECHANICAL_DESCRIPTION = multiline`
 `;
 
 const AssaultOperative: Antagonist = {
-  key: "assaultoperative",
-  name: "Assault Operative",
+  key: 'assaultoperative',
+  name: 'Assault Operative',
   description: [
     multiline`
       Good afternoon 0013, you have been selected to join an elite strike team

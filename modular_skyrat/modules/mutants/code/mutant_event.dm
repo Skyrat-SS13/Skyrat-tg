@@ -5,8 +5,8 @@
 	dynamic_should_hijack = TRUE
 
 /datum/round_event/mutant_infestation
-	announceWhen = 300
-	announceChance = 100
+	announce_when = 300
+	announce_chance = 100
 	fakeable = TRUE
 	var/infected = 1
 
@@ -17,15 +17,15 @@
 /datum/round_event/mutant_infestation/start()
 	. = ..()
 	var/infectees = 0
-	for(var/mob/living/carbon/human/H in shuffle(GLOB.player_list))
-		if(!is_station_level(H.z))
+	for(var/mob/living/carbon/human/iterating_human in shuffle(GLOB.player_list))
+		if(!is_station_level(iterating_human.z))
 			continue
 		if(infectees >= infected)
 			break
-		if(try_to_mutant_infect(H, TRUE))
+		if(try_to_mutant_infect(iterating_human, TRUE))
 			infectees++
-			notify_ghosts("[H] has been infected by the HNZ-1 pathogen!", source = H)
+			notify_ghosts("[iterating_human] has been infected by the HNZ-1 pathogen!", source = iterating_human)
 
 /datum/round_event/mutant_infestation/announce(fake)
-	alert_sound_to_playing(sound('modular_skyrat/modules/alerts/sound/alert1.ogg'), override_volume = TRUE)
+	alert_sound_to_playing(sound('modular_skyrat/modules/alerts/sound/alerts/alert2.ogg'), override_volume = TRUE)
 	priority_announce("Automated air filtration screeing systems have flagged an unknown pathogen in the ventilation systems, quarantine is in effect.", "Level-1 Viral Biohazard Alert", ANNOUNCER_MUTANTS)

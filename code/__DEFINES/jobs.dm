@@ -6,7 +6,10 @@
 #define JOB_UNAVAILABLE_SLOTFULL 5
 /// Job unavailable due to incompatibility with an antag role.
 #define JOB_UNAVAILABLE_ANTAG_INCOMPAT 6
-#define JOB_UNAVAILABLE_FLAVOUR 7 // SKYRAT EDIT ADDITION
+
+/// Used when the `get_job_unavailable_error_message` proc can't make sense of a given code.
+#define GENERIC_JOB_UNAVAILABLE_ERROR "Error: Unknown job availability."
+
 #define DEFAULT_RELIGION "Christianity"
 #define DEFAULT_DEITY "Space Jesus"
 #define DEFAULT_BIBLE "Default Bible Name"
@@ -65,7 +68,6 @@
 #define JOB_SCIENTIST "Scientist"
 #define JOB_ROBOTICIST "Roboticist"
 #define JOB_GENETICIST "Geneticist"
-#define JOB_VANGUARD_OPERATIVE "Vanguard Operative" // SKYRAT EDIT ADDITION
 #define JOB_SCIENCE_GUARD "Science Guard"
 //Supply
 #define JOB_QUARTERMASTER "Quartermaster"
@@ -84,7 +86,7 @@
 #define JOB_CHAPLAIN "Chaplain"
 #define JOB_PSYCHOLOGIST "Psychologist"
 #define JOB_BARBER "Barber" // SKYRAT EDIT ADDITION
-#define JOB_BOUNCER "Bouncer" // SKYRAT EDIT ADDITION
+#define JOB_BOUNCER "Service Guard" // SKYRAT EDIT ADDITION
 //ERTs
 #define JOB_ERT_DEATHSQUAD "Death Commando"
 #define JOB_ERT_COMMANDER "Emergency Response Team Commander"
@@ -163,7 +165,7 @@
 #define JOB_DISPLAY_ORDER_SECURITY_OFFICER 35
 #define JOB_DISPLAY_ORDER_SECURITY_MEDIC 36 //SKYRAT EDIT ADDITON
 #define JOB_DISPLAY_ORDER_PRISONER 37
-#define JOB_DISPLAY_ORDER_BRIGOFF 38 //SKYRAT EDIT ADDITON
+#define JOB_DISPLAY_ORDER_CORRECTIONS_OFFICER 38 //SKYRAT EDIT ADDITON
 #define JOB_DISPLAY_ORDER_NANOTRASEN_CONSULTANT 39 //SKYRAT EDIT ADDITON
 #define JOB_DISPLAY_ORDER_BLUESHIELD 40 //SKYRAT EDIT ADDITON
 #define JOB_DISPLAY_ORDER_ORDERLY 41 //SKYRAT EDIT ADDITION
@@ -172,7 +174,7 @@
 #define JOB_DISPLAY_ORDER_ENGINEER_GUARD 44 //SKYRAT EDIT ADDITION
 #define JOB_DISPLAY_ORDER_CUSTOMS_AGENT 45 //SKYRAT EDIT ADDITION
 
-#define DEPARTMENT_UNASSIGNED "No department assigned"
+#define DEPARTMENT_UNASSIGNED "No Department"
 
 #define DEPARTMENT_BITFLAG_SECURITY (1<<0)
 #define DEPARTMENT_SECURITY "Security"
@@ -217,6 +219,14 @@
 /// Whether this job can be an intern.
 #define JOB_CAN_BE_INTERN (1<<8)
 
-
 #define FACTION_NONE "None"
 #define FACTION_STATION "Station"
+
+// Variable macros used to declare who is the supervisor for a given job, announced to the player when they join as any given job.
+#define SUPERVISOR_CAPTAIN "the Captain"
+#define SUPERVISOR_CE "the Chief Engineer"
+#define SUPERVISOR_CMO "the Chief Medical Officer"
+#define SUPERVISOR_HOP "the Head of Personnel"
+#define SUPERVISOR_HOS "the Head of Security"
+#define SUPERVISOR_QM "the Quartermaster"
+#define SUPERVISOR_RD "the Research Director"

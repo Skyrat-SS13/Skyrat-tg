@@ -28,14 +28,14 @@
 
 /obj/machinery/bluespace_miner/RefreshParts()
 	. = ..()
-	gas_temp = 100
-	//starts at 100, should go down to 60
-	for(var/obj/item/stock_parts/micro_laser/laser_part in component_parts)
-		gas_temp -= (laser_part.rating * 5)
-	processing_speed = 6 SECONDS
-	//starts at 6 seconds, should go down to 2 seconds
-	for(var/obj/item/stock_parts/manipulator/manipulator_part in component_parts)
-		processing_speed -= (manipulator_part.rating * (0.5 SECONDS))
+
+	gas_temp = 100 //starts at 100, should go down to 80 at most.
+	for(var/datum/stock_part/micro_laser/laser_part in component_parts)
+		gas_temp -= (laser_part.tier * 5)
+
+	processing_speed = 6 SECONDS //starts at 6 seconds, should go down to 4 seconds at most.
+	for(var/datum/stock_part/manipulator/manipulator_part in component_parts)
+		processing_speed -= (manipulator_part.tier * (0.5 SECONDS))
 
 /obj/machinery/bluespace_miner/update_overlays()
 	. = ..()
@@ -141,9 +141,10 @@
 	req_components = list(
 		/obj/item/stack/sheet/glass = 1,
 		/obj/item/stack/ore/bluespace_crystal/refined = 1,
-		/obj/item/stock_parts/matter_bin = 2,
-		/obj/item/stock_parts/micro_laser = 2,
-		/obj/item/stock_parts/manipulator = 2)
+		/datum/stock_part/matter_bin = 2,
+		/datum/stock_part/micro_laser = 2,
+		/datum/stock_part/manipulator = 2,
+	)
 	needs_anchored = TRUE
 
 /datum/supply_pack/misc/bluespace_miner
@@ -160,8 +161,8 @@
 	desc = "Allows for the construction of circuit boards used to build a bluespace miner."
 	id = "bluespace_miner"
 	build_path = /obj/item/circuitboard/machine/bluespace_miner
-	category = list("Misc. Machinery")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO | DEPARTMENTAL_FLAG_ENGINEERING
+	category = list(RND_CATEGORY_MISC_MACHINERY)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/experiment/scanning/points/bluespace_miner
 	name = "Bluespace Miner"

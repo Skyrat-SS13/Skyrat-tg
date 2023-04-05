@@ -2,7 +2,7 @@
 	var/list/screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_m1.ogg', 'modular_skyrat/modules/emotes/sound/voice/scream_m2.ogg')
 	var/list/femalescreamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_f1.ogg', 'modular_skyrat/modules/emotes/sound/voice/scream_f2.ogg')
 
-/datum/species/robotic
+/datum/species/synthetic
 	screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_silicon.ogg')
 	femalescreamsounds = null
 
@@ -32,7 +32,7 @@
 	femalescreamsounds = null
 
 /datum/species/ethereal
-	screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_skeleton.ogg')
+	screamsounds = list('sound/voice/ethereal/ethereal_scream_1.ogg', 'sound/voice/ethereal/ethereal_scream_2.ogg', 'sound/voice/ethereal/ethereal_scream_3.ogg')
 	femalescreamsounds = null
 
 /datum/species/jelly
@@ -43,11 +43,11 @@
 	screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_skeleton.ogg')
 	femalescreamsounds = null
 
-/datum/species/robotic/synthliz
-	screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_silicon.ogg')
+/datum/species/vox
+	screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/voxscream.ogg')
 	femalescreamsounds = null
 
-/datum/species/vox
+/datum/species/vox_primalis
 	screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/voxscream.ogg')
 	femalescreamsounds = null
 

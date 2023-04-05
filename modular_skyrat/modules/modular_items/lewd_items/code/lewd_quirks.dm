@@ -1,16 +1,12 @@
-//////////////////////////
-///CODE FOR LEWD QUIRKS///
-//////////////////////////
-
-/////////////////
-///BIMBO TRAIT///
-/////////////////
+/*
+*	BIMBO
+*/
 
 /datum/brain_trauma
 	///Whether the trauma will be displayed on a scanner or kiosk
 	var/display_scanner = TRUE
 
-/datum/brain_trauma/special/bimbo
+/datum/brain_trauma/very_special/bimbo
 	name = "Permanent hormonal disruption"
 	desc = "The patient has completely lost the ability to form speech and seems extremely aroused."
 	scan_desc = "permanent hormonal disruption"
@@ -45,7 +41,7 @@
 /**
  * If we are not satisfied, this will be ran through
  */
-/datum/brain_trauma/special/bimbo/proc/try_unsatisfied()
+/datum/brain_trauma/very_special/bimbo/proc/try_unsatisfied()
 	var/mob/living/carbon/human/human_owner = owner
 	//we definitely need an owner; but if you are satisfied, just return
 	if(satisfaction || !human_owner)
@@ -56,13 +52,13 @@
 	//we are using if statements so that it slowly becomes more and more to the person
 	human_owner.manual_emote(pick(lust_emotes))
 	if(stress >= 60)
-		human_owner.Jitter(20)
+		human_owner.set_jitter_if_lower(40 SECONDS)
 		lust_message = "You feel a static sensation all across your skin..."
 	if(stress >= 120)
-		human_owner.blur_eyes(10)
+		human_owner.set_eye_blur_if_lower(20 SECONDS)
 		lust_message = "You vision begins to blur, the heat beginning to rise..."
 	if(stress >= 180)
-		owner.hallucination += 30
+		owner.adjust_hallucinations(60 SECONDS)
 		lust_message = "You begin to fantasize of what you could do to someone..."
 	if(stress >= 240)
 		human_owner.adjustStaminaLoss(30)
@@ -76,14 +72,14 @@
 /**
  * If we have climaxed, return true
  */
-/datum/brain_trauma/special/bimbo/proc/check_climaxed()
+/datum/brain_trauma/very_special/bimbo/proc/check_climaxed()
 	if(owner.has_status_effect(/datum/status_effect/climax))
 		stress = 0
 		satisfaction = 300
 		return TRUE
 	return FALSE
 
-/datum/brain_trauma/special/bimbo/on_life()
+/datum/brain_trauma/very_special/bimbo/on_life()
 	var/mob/living/carbon/human/human_owner = owner
 
 	//Check if we climaxed, if so, just stop for now
@@ -97,9 +93,9 @@
 	else
 		stress = clamp(stress + 1, 0, 300)
 
-	human_owner.adjustArousal(10)
+	human_owner.adjust_arousal(10)
 	if(human_owner.pleasure < 80)
-		human_owner.adjustPleasure(5)
+		human_owner.adjust_pleasure(5)
 
 	//Anything beyond this obeys a cooldown system because we don't want to spam it
 	if(!COOLDOWN_FINISHED(src, desire_cooldown))
@@ -132,14 +128,14 @@
 /**
  * If we have another human in view, return true
  */
-/datum/brain_trauma/special/bimbo/proc/in_company()
+/datum/brain_trauma/very_special/bimbo/proc/in_company()
 	for(var/mob/living/carbon/human/human_check in oview(owner, 4))
 		if(!istype(human_check))
 			continue
 		return TRUE
 	return FALSE
 
-/datum/brain_trauma/special/bimbo/handle_speech(datum/source, list/speech_args)
+/datum/brain_trauma/very_special/bimbo/handle_speech(datum/source, list/speech_args)
 	if(!HAS_TRAIT(owner, TRAIT_BIMBO)) //You have the trauma but not the trait, go ahead and fail here
 		return ..()
 	var/message = speech_args[SPEECH_MESSAGE]
@@ -154,18 +150,18 @@
 	message = jointext(split_message, " ")
 	speech_args[SPEECH_MESSAGE] = message
 
-/datum/brain_trauma/special/bimbo/on_gain()
-	SEND_SIGNAL(owner, COMSIG_ADD_MOOD_EVENT, "bimbo", /datum/mood_event/bimbo)
+/datum/brain_trauma/very_special/bimbo/on_gain()
+	owner.add_mood_event("bimbo", /datum/mood_event/bimbo)
 	if(!HAS_TRAIT_FROM(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT))
 		ADD_TRAIT(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT)
-	RegisterSignal(owner, COMSIG_MOB_SAY, .proc/handle_speech)
+	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	if(!HAS_TRAIT_FROM(owner, TRAIT_MASOCHISM, APHRO_TRAIT))
 		ADD_TRAIT(owner, TRAIT_MASOCHISM, APHRO_TRAIT)
 
-/datum/brain_trauma/special/bimbo/on_lose()
-	SEND_SIGNAL(owner, COMSIG_CLEAR_MOOD_EVENT, "bimbo", /datum/mood_event/bimbo)
+/datum/brain_trauma/very_special/bimbo/on_lose()
+	owner.clear_mood_event("bimbo")
 	if(HAS_TRAIT_FROM(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT))
-		REMOVE_TRAIT(owner,TRAIT_BIMBO, LEWDCHEM_TRAIT)
+		REMOVE_TRAIT(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT)
 	UnregisterSignal(owner, COMSIG_MOB_SAY)
 	if(HAS_TRAIT_FROM(owner, TRAIT_MASOCHISM, APHRO_TRAIT))
 		REMOVE_TRAIT(owner, TRAIT_MASOCHISM, APHRO_TRAIT)
@@ -174,9 +170,13 @@
 /datum/mood_event/bimbo
 	description = span_purple("So-o... Help..less... Lo-ve it!\n")
 
-///////////////
-///MASOCHISM///
-///////////////
+/*
+*	MASOCHISM
+*/
+
+/datum/quirk
+	/// Is this a quirk disabled by disabling the ERP config?
+	var/erp_quirk = FALSE
 
 /datum/quirk/masochism
 	name = "Masochism"
@@ -187,6 +187,7 @@
 	lose_text = span_notice("Ouch! Pain is... Painful again! Ou-ou-ouch!")
 	medical_record_text = "Subject has masochism."
 	icon = "heart-broken"
+	erp_quirk = TRUE
 
 /datum/quirk/masochism/post_add()
 	. = ..()
@@ -200,11 +201,11 @@
 	REMOVE_TRAIT(affected_human, TRAIT_MASOCHISM, LEWDQUIRK_TRAIT)
 	affected_human.pain_limit = 0
 
-////////////////
-///NEVERBONER///
-////////////////
+/*
+*	NEVERBONER
+*/
 
-/datum/brain_trauma/special/neverboner
+/datum/brain_trauma/very_special/neverboner
 	name = "Loss of libido"
 	desc = "The patient has completely lost sexual interest."
 	scan_desc = "lack of libido"
@@ -213,17 +214,17 @@
 	random_gain = FALSE
 	resilience = TRAUMA_RESILIENCE_ABSOLUTE
 
-/datum/brain_trauma/special/neverboner/on_gain()
+/datum/brain_trauma/very_special/neverboner/on_gain()
 	var/mob/living/carbon/human/affected_human = owner
 	ADD_TRAIT(affected_human, TRAIT_NEVERBONER, APHRO_TRAIT)
 
-/datum/brain_trauma/special/neverboner/on_lose()
+/datum/brain_trauma/very_special/neverboner/on_lose()
 	var/mob/living/carbon/human/affected_human = owner
 	REMOVE_TRAIT(affected_human, TRAIT_NEVERBONER, APHRO_TRAIT)
 
-////////////
-///SADISM///
-////////////
+/*
+*	SADISM
+*/
 
 /datum/quirk/sadism
 	name = "Sadism"
@@ -234,18 +235,19 @@
 	lose_text = span_notice("Others' pain doesn't satisfy you anymore.")
 	medical_record_text = "Subject has sadism."
 	icon = "hammer"
+	erp_quirk = TRUE
 
 /datum/quirk/sadism/post_add()
 	. = ..()
 	var/mob/living/carbon/human/affected_human = quirk_holder
-	affected_human.gain_trauma(/datum/brain_trauma/special/sadism, TRAUMA_RESILIENCE_ABSOLUTE)
+	affected_human.gain_trauma(/datum/brain_trauma/very_special/sadism, TRAUMA_RESILIENCE_ABSOLUTE)
 
 /datum/quirk/sadism/remove()
 	. = ..()
 	var/mob/living/carbon/human/affected_human = quirk_holder
-	affected_human?.cure_trauma_type(/datum/brain_trauma/special/sadism, TRAUMA_RESILIENCE_ABSOLUTE)
+	affected_human?.cure_trauma_type(/datum/brain_trauma/very_special/sadism, TRAUMA_RESILIENCE_ABSOLUTE)
 
-/datum/brain_trauma/special/sadism
+/datum/brain_trauma/very_special/sadism
 	name = "Sadism"
 	desc = "The subject's cerebral pleasure centers are more active when someone is suffering."
 	scan_desc = "sadistic tendencies"
@@ -255,21 +257,25 @@
 	random_gain = FALSE
 	resilience = TRAUMA_RESILIENCE_ABSOLUTE
 
-/datum/brain_trauma/special/sadism/on_life(delta_time, times_fired)
-	var/mob/living/carbon/human/H = owner
-	if(someone_suffering() && H.client?.prefs?.read_preference(/datum/preference/toggle/erp))
-		H.adjustArousal(2)
-		SEND_SIGNAL(owner, COMSIG_ADD_MOOD_EVENT, "sadistic", /datum/mood_event/sadistic)
+/datum/brain_trauma/very_special/sadism/on_life(delta_time, times_fired)
+	var/mob/living/carbon/human/affected_mob = owner
+	if(someone_suffering() && affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp))
+		affected_mob.adjust_arousal(2)
+		owner.add_mood_event("sadistic", /datum/mood_event/sadistic)
 	else
-		SEND_SIGNAL(owner, COMSIG_CLEAR_MOOD_EVENT, "sadistic", /datum/mood_event/sadistic)
+		owner.clear_mood_event("sadistic")
 
-/datum/brain_trauma/special/sadism/proc/someone_suffering()
-	if(HAS_TRAIT(owner, TRAIT_BLIND))
+/datum/brain_trauma/very_special/sadism/proc/someone_suffering()
+	if(owner.is_blind())
 		return FALSE
-	for(var/mob/living/carbon/human/M in oview(owner, 4))
-		if(!isliving(M)) //ghosts ain't people
+	for(var/mob/living/carbon/human/iterated_mob in oview(owner, 4))
+		if(!isliving(iterated_mob)) //ghosts ain't people
 			continue
-		if(istype(M) && M.pain >= 10)
+		if(!istype(iterated_mob)) //only count mobs of type mob/living/human/...
+			continue
+		if(iterated_mob.stat == DEAD) //don't count dead targets either
+			continue
+		if(iterated_mob.pain >= 10)
 			return TRUE
 	return FALSE
 
@@ -283,16 +289,17 @@
 	gain_text = span_danger("You really want to be restrained for some reason.")
 	lose_text = span_notice("Being restrained doesn't arouse you anymore.")
 	icon = "link"
+	erp_quirk = TRUE
 
 /datum/quirk/ropebunny/post_add()
 	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	ADD_TRAIT(H,TRAIT_ROPEBUNNY, LEWDQUIRK_TRAIT)
+	var/mob/living/carbon/human/affected_mob = quirk_holder
+	ADD_TRAIT(affected_mob, TRAIT_ROPEBUNNY, LEWDQUIRK_TRAIT)
 
 /datum/quirk/ropebunny/remove()
 	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	REMOVE_TRAIT(H,TRAIT_ROPEBUNNY, LEWDQUIRK_TRAIT)
+	var/mob/living/carbon/human/affected_mob = quirk_holder
+	REMOVE_TRAIT(affected_mob, TRAIT_ROPEBUNNY, LEWDQUIRK_TRAIT)
 
 //Rigger code
 /datum/quirk/rigger
@@ -303,39 +310,42 @@
 	gain_text = span_danger("Suddenly you understand rope weaving much better than before.")
 	lose_text = span_notice("Rope knots looks complicated again.")
 	icon = "chain-broken"
+	erp_quirk = TRUE
 
 /datum/quirk/rigger/post_add()
 	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	ADD_TRAIT(H,TRAIT_RIGGER, LEWDQUIRK_TRAIT)
+	var/mob/living/carbon/human/affected_mob = quirk_holder
+	ADD_TRAIT(affected_mob, TRAIT_RIGGER, LEWDQUIRK_TRAIT)
 
 /datum/quirk/rigger/remove()
 	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	REMOVE_TRAIT(H,TRAIT_RIGGER, LEWDQUIRK_TRAIT)
+	var/mob/living/carbon/human/affected_mob = quirk_holder
+	REMOVE_TRAIT(affected_mob, TRAIT_RIGGER, LEWDQUIRK_TRAIT)
 /datum/mood_event/sadistic
 	description = span_purple("Others' suffering makes me happier\n")
 
-//////////////////
-///EMPATH BOUNS///
-//////////////////
-/mob/living/carbon/human/examine(mob/user)
-	.=..()
-	var/mob/living/U = user
+/*
+*	EMPATH BONUS
+*/
 
-	if(stat != DEAD && !HAS_TRAIT(src, TRAIT_FAKEDEATH) && src != U)
-		if(src != user)
-			if(HAS_TRAIT(U, TRAIT_EMPATH))
-				switch(arousal)
-					if(11 to 21)
-						. += span_purple("[p_they()] [p_are()] excited.") + "\n"
-					if(21.01 to 41)
-						. += span_purple("[p_they()] [p_are()] slightly blushed.") + "\n"
-					if(41.01 to 51)
-						. += span_purple("[p_they()] [p_are()] quite aroused and seems to be stirring up lewd thoughts in [p_their()] head.") + "\n"
-					if(51.01 to 61)
-						. += span_purple("[p_they()] [p_are()] very aroused and [p_their()] movements are seducing.") + "\n"
-					if(61.01 to 91)
-						. += span_purple("[p_they()] [p_are()] aroused as hell.") + "\n"
-					if(91.01 to INFINITY)
-						. += span_purple("[p_they()] [p_are()] extremely excited, exhausting from entolerable desire.") + "\n"
+/mob/living/carbon/human/examine(mob/user)
+	. = ..()
+	var/mob/living/examiner = user
+	if(stat >= DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH) || src == examiner || !HAS_TRAIT(examiner, TRAIT_EMPATH))
+		return
+
+	if(examiner.client?.prefs?.read_preference(/datum/preference/toggle/erp))
+		var/arousal_message
+		switch(arousal)
+			if(AROUSAL_MINIMUM_DETECTABLE to AROUSAL_LOW)
+				arousal_message = span_purple("[p_they()] [p_are()] slightly blushed.") + "\n"
+			if(AROUSAL_LOW to AROUSAL_MEDIUM)
+				arousal_message = span_purple("[p_they()] [p_are()] quite aroused and seems to be stirring up lewd thoughts in [p_their()] head.") + "\n"
+			if(AROUSAL_HIGH to AROUSAL_AUTO_CLIMAX_THRESHOLD)
+				arousal_message = span_purple("[p_they()] [p_are()] aroused as hell.") + "\n"
+			if(AROUSAL_AUTO_CLIMAX_THRESHOLD to INFINITY)
+				arousal_message = span_purple("[p_they()] [p_are()] extremely excited, exhausting from entolerable desire.") + "\n"
+		if(arousal_message)
+			. += arousal_message
+	else if(arousal > AROUSAL_MINIMUM_DETECTABLE)
+		. += span_purple("[p_they()] [p_are()] slightly blushed.") + "\n"

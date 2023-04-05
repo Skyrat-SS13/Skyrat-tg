@@ -4,7 +4,7 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "shockcollar"
-	inhand_icon_state = "shockcollar"
+	inhand_icon_state = null
 	body_parts_covered = NECK
 	slot_flags = ITEM_SLOT_NECK
 	w_class = WEIGHT_CLASS_SMALL
@@ -21,7 +21,7 @@
 	build_type = AUTOLATHE
 	build_path = /obj/item/electropack/shockcollar
 	materials = list(/datum/material/iron = 5000, /datum/material/glass =2000)
-	category = list("hacked", "Misc")
+	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_MISC)
 
 /obj/item/electropack/shockcollar/attack_hand(mob/user)
 	if(loc == user && user.get_item_by_slot(ITEM_SLOT_NECK))
@@ -34,23 +34,23 @@
 		return
 
 	if(isliving(loc) && on) //the "on" arg is currently useless
-		var/mob/living/carbon/human/L = loc
-		if(!L.get_item_by_slot(ITEM_SLOT_NECK)) //**properly** stops pocket shockers
+		var/mob/living/carbon/human/affected_mob = loc
+		if(!affected_mob.get_item_by_slot(ITEM_SLOT_NECK)) //**properly** stops pocket shockers
 			return
 		if(shock_cooldown == TRUE)
 			return
 		shock_cooldown = TRUE
 		addtimer(VARSET_CALLBACK(src, shock_cooldown, FALSE), 100)
-		step(L, pick(GLOB.cardinals))
+		step(affected_mob, pick(GLOB.cardinals))
 
-		to_chat(L, span_danger("You feel a sharp shock from the collar!"))
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(3, 1, L)
-		s.start()
+		to_chat(affected_mob, span_danger("You feel a sharp shock from the collar!"))
+		var/datum/effect_system/spark_spread/created_sparks = new /datum/effect_system/spark_spread
+		created_sparks.set_up(3, 1, affected_mob)
+		created_sparks.start()
 
-		L.Paralyze(30)
-		L.adjustPain(10)
-		L.adjust_timed_status_effect(30 SECONDS, /datum/status_effect/speech/stutter)
+		affected_mob.Paralyze(30)
+		affected_mob.adjust_pain(10)
+		affected_mob.adjust_stutter(30 SECONDS)
 
 	if(master)
 		if(isassembly(master))
@@ -59,23 +59,23 @@
 		master.receive_signal()
 	return
 
-/obj/item/electropack/shockcollar/attackby(obj/item/W, mob/user, params) //moves it here because on_click is being bad
-	if(istype(W, /obj/item/pen))
-		var/t = stripped_input(user, "Would you like to change the name on the tag?", "Name your new pet", tagname ? tagname : "Spot", MAX_NAME_LEN)
-		if(t)
-			tagname = t
-			name = "[initial(name)] - [t]"
+/obj/item/electropack/shockcollar/attackby(obj/item/used_item, mob/user, params) // Moves it here because on_click is being bad
+	if(istype(used_item, /obj/item/pen))
+		var/tag_input = stripped_input(user, "Would you like to change the name on the tag?", "Name your new pet", tagname ? tagname : "Spot", MAX_NAME_LEN)
+		if(tag_input)
+			tagname = tag_input
+			name = "[initial(name)] - [tag_input]"
 		return
-	if(istype(W, /obj/item/clothing/head/helmet))
+	if(istype(used_item, /obj/item/clothing/head/helmet))
 		return
 	else
 		return ..()
 
-/obj/item/electropack/shockcollar/Initialize()
+/obj/item/electropack/shockcollar/Initialize(mapload)
 	if(random)
-		code = rand(1,100)
+		code = rand(1, 100)
 		frequency = rand(MIN_FREE_FREQ, MAX_FREE_FREQ)
-		if(ISMULTIPLE(frequency, 2))//signaller frequencies are always uneven!
+		if(ISMULTIPLE(frequency, 2)) // Signaller frequencies are always uneven!
 			frequency++
 	if(freq_in_name)
 		name = initial(name) + " - freq: [frequency/10] code: [code]"
@@ -87,7 +87,7 @@
 
 /obj/item/electropack/shockcollar/pacify/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
-	if(slot == ITEM_SLOT_NECK)
+	if(slot & ITEM_SLOT_NECK)
 		ADD_TRAIT(user, TRAIT_PACIFISM, "pacifying-collar")
 
 /obj/item/electropack/shockcollar/pacify/dropped(mob/living/carbon/human/user)

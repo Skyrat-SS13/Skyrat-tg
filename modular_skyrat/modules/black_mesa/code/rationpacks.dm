@@ -84,10 +84,9 @@
 	icon_state = "mre_package"
 	illustration = null
 
-/obj/item/storage/box/hecu_rations/ComponentInitialize()
+/obj/item/storage/box/hecu_rations/Initialize(mapload)
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 5
+	atom_storage.max_slots = 5
 
 /obj/item/storage/box/hecu_rations/PopulateContents()
 	var/main_course = pick(/obj/item/food/mre_course/main/beans, /obj/item/food/mre_course/main/macaroni, /obj/item/food/mre_course/main/rice)

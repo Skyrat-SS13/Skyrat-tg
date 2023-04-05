@@ -1,9 +1,6 @@
 /datum/config_entry/string/blackoutpolicy
 	config_entry_value = "You remember nothing after you've blacked out and you do not remember who or what events killed you, however, you can have faint recollection of what led up to it."
 
-/datum/config_entry/string/wikiurlskyrat
-	config_entry_value = "https://skyrat13.tk/wiki/index.php"
-
 /datum/config_entry/flag/russian_text_formation
 
 // Overflow server HARD pop cap
@@ -24,11 +21,11 @@
 // Name of our server, ooc.
 /datum/config_entry/string/cross_server_name
 
-//DISCORD GAME ALERT CONFIGS
-//Role id to ping
+// DISCORD GAME ALERT CONFIGS
+// Role id to ping
 /datum/config_entry/string/game_alert_role_id
 
-//Reaction roles channel
+// Reaction roles channel
 /datum/config_entry/string/role_assign_channel_id
 
 // To turn off SSDecay based on a config. You're welcome.
@@ -39,3 +36,6 @@
 
 // Turn on/off guncargo permit-locked firing pins
 /datum/config_entry/flag/permit_pins
+
+// Disables the ability to commit suicide
+/datum/config_entry/flag/disable_suicide

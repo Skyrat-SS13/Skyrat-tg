@@ -1,7 +1,7 @@
 #define SUNBEAM_OBLITERATION_RANGE_FIRE 2
 #define SUNBEAM_OBLITERATION_RANGE_FLATTEN 1
-#define SUNBEAM_OBLITERATION_COOLDOWN 0.2 SECONDS
-#define SUNBEAM_MOVEMENT_COOLDOWN 0.3 SECONDS
+#define SUNBEAM_OBLITERATION_COOLDOWN (0.2 SECONDS)
+#define SUNBEAM_MOVEMENT_COOLDOWN (0.3 SECONDS)
 #define SUNBEAM_DEFAULT_SCALE_X 2
 #define SUNBEAM_DEFAULT_SCALE_Y 2
 #define SUNBEAM_OVERLAYS 16
@@ -17,7 +17,6 @@
 	pull_force = INFINITY
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
 	movement_type = PHASING | FLYING
-	plane = MASSIVE_OBJ_PLANE
 	plane = ABOVE_LIGHTING_PLANE
 	light_range = 6
 	light_color = "#ffbf10"
@@ -148,9 +147,11 @@
 	name = "ICARUS Weapons System Ignition"
 	typepath = /datum/round_event/icarus_sunbeam
 	max_occurrences = 0
+	weight = 0
+	category = EVENT_CATEGORY_SPACE
 
 /datum/round_event/icarus_sunbeam
-	announceWhen = 1 // Instant announcement
+	announce_when = 1 // Instant announcement
 
 /datum/round_event/icarus_sunbeam/announce(fake)
 	priority_announce("/// ICARUS SUNBEAM WEAPONS SYSTEM ACTIVATED, USE EXTREME CAUTION! ///", "GoldenEye Defence Network", ANNOUNCER_KLAXON)

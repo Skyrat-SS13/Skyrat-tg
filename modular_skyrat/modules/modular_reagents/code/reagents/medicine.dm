@@ -7,17 +7,17 @@
 	overdose_threshold = 20
 	ph = 6.09
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-	addiction_types = list(/datum/addiction/opiods = 20)
+	addiction_types = list(/datum/addiction/opioids = 20)
 	inverse_chem_val = 0.55
 	inverse_chem = /datum/reagent/inverse/lidocaine
 
 /datum/reagent/medicine/lidocaine/on_mob_metabolize(mob/living/L)
 	..()
-	ADD_TRAIT(L, TRAIT_NUMBED, src)
+	ADD_TRAIT(L, TRAIT_NUMBED, REF(src))
 	L.throw_alert("numbed", /atom/movable/screen/alert/numbed)
 
 /datum/reagent/medicine/lidocaine/on_mob_end_metabolize(mob/living/L)
-	REMOVE_TRAIT(L, TRAIT_NUMBED, src)
+	REMOVE_TRAIT(L, TRAIT_NUMBED, REF(src))
 	L.clear_alert("numbed")
 	..()
 
@@ -42,7 +42,7 @@
 	owner.adjustOrganLoss(ORGAN_SLOT_HEART,3 * REM * delta_time, 85)
 	owner.adjustStaminaLoss(5 * REM * delta_time, 0)
 	if(prob(30))
-		INVOKE_ASYNC(owner, /mob.proc/emote, "scream")
+		INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob, emote), "scream")
 
 //Medigun Clotting Medicine
 /datum/reagent/medicine/coagulant/fabricated
@@ -55,15 +55,15 @@
 
 /datum/reagent/consumable/ethanol/drunken_espatier/on_mob_metabolize(mob/living/L)
 	..()
-	ADD_TRAIT(L, TRAIT_NUMBED, src) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
-	L.throw_alert("numbed", /atom/movable/screen/alert/numbed) // SKYRAT EDIT ADD END -- i should probably have worked these both into a status effect, maybe
+	ADD_TRAIT(L, TRAIT_NUMBED, REF(src))
+	L.throw_alert("numbed", /atom/movable/screen/alert/numbed)
 
 /datum/reagent/consumable/ethanol/drunken_espatier/on_mob_end_metabolize(mob/living/L)
-	REMOVE_TRAIT(L, TRAIT_NUMBED, src) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
-	L.clear_alert("numbed") // SKYRAT EDIT ADD END
+	REMOVE_TRAIT(L, TRAIT_NUMBED, REF(src))
+	L.clear_alert("numbed")
 	..()
 
 /datum/reagent/medicine/mine_salve/on_mob_metabolize(mob/living/L)
-	ADD_TRAIT(L, TRAIT_NUMBED, src) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
-	L.throw_alert("numbed", /atom/movable/screen/alert/numbed) // SKYRAT EDIT ADD END
+	ADD_TRAIT(L, TRAIT_NUMBED, REF(src))
+	L.throw_alert("numbed", /atom/movable/screen/alert/numbed)
 	..()

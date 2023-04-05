@@ -35,9 +35,9 @@
 	if(!iscarbon(user))
 		return
 	var/covered = ""
-	if(user.is_mouth_covered(head_only = 1))
+	if(user.is_mouth_covered(ITEM_SLOT_HEAD))
 		covered = "headgear"
-	else if(user.is_mouth_covered(mask_only = 1))
+	else if(user.is_mouth_covered(ITEM_SLOT_MASK))
 		covered = "mask"
 	if(covered)
 		to_chat(user, span_warning("You have to remove your [covered] first!"))
@@ -93,57 +93,46 @@
 	time = 20
 	category = CAT_CHEMISTRY
 
-/datum/chemical_reaction/blacktar
-	required_reagents = list(/datum/reagent/drug/opium/blacktar = 5)
-	required_temp = 480
-	reaction_flags = REACTION_INSTANT
-	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_CHEMICAL
-
-/datum/chemical_reaction/blacktar/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
-	var/location = get_turf(holder.my_atom)
-	for(var/i in 1 to created_volume)
-		new /obj/item/reagent_containers/blacktar(location)
-
 /atom/movable/screen/fullscreen/color_vision/heroin_color
 	color = "#444444"
 
 /datum/reagent/drug/opium
-	name = "Opium"
+	name = "opium"
 	description = "A extract from opium poppies. Puts the user in a slightly euphoric state."
 	reagent_state = LIQUID
 	color = "#ffe669"
 	overdose_threshold = 30
 	ph = 8
 	taste_description = "flowers"
-	addiction_types = list(/datum/addiction/opiods = 18)
+	addiction_types = list(/datum/addiction/opioids = 18)
 
 /datum/reagent/drug/opium/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	var/high_message = pick("You feel euphoric.", "You feel on top of the world.")
 	if(DT_PROB(2.5, delta_time))
 		to_chat(M, span_notice("[high_message]"))
-	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "smacked out", /datum/mood_event/narcotic_heavy, name)
+	M.add_mood_event("smacked out", /datum/mood_event/narcotic_heavy, name)
 	M.adjustBruteLoss(-0.1 * REM * delta_time, 0) //can be used as a (shitty) painkiller
 	M.adjustFireLoss(-0.1 * REM * delta_time, 0)
-	M.hal_screwyhud = SCREWYHUD_HEALTHY
 	M.overlay_fullscreen("heroin_euphoria", /atom/movable/screen/fullscreen/color_vision/heroin_color)
-	..()
+	return ..()
 
 /datum/reagent/drug/opium/overdose_process(mob/living/M, delta_time, times_fired)
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.5 * REM * delta_time)
 	M.adjustToxLoss(1 * REM * delta_time, 0)
-	M.adjust_drowsyness(0.5 * REM * normalise_creation_purity() * delta_time)
-	..()
-	. = TRUE
+	M.adjust_drowsiness(1 SECONDS * REM * normalise_creation_purity() * delta_time)
+	return TRUE
 
-/datum/reagent/drug/opium/on_mob_end_metabolize(mob/living/M)
-	if(iscarbon(M))
-		var/mob/living/carbon/N = M
-		N.hal_screwyhud = SCREWYHUD_NONE
-		N.clear_fullscreen("heroin_euphoria")
-	..()
+/datum/reagent/drug/opium/on_mob_metabolize(mob/living/metabolizer)
+	. = ..()
+	metabolizer.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
+
+/datum/reagent/drug/opium/on_mob_end_metabolize(mob/living/metabolizer)
+	. = ..()
+	metabolizer.remove_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
+	metabolizer.clear_fullscreen("heroin_euphoria")
 
 /datum/reagent/drug/opium/heroin
-	name = "Heroin"
+	name = "heroin"
 	description = "She's like heroin to me, she's like heroin to me! She cannot... miss a vein!"
 	reagent_state = LIQUID
 	color = "#ffe669"
@@ -151,7 +140,7 @@
 	ph = 6
 	taste_description = "flowers"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-	failed_chem = /datum/reagent/drug/opium/blacktar
+	inverse_chem = /datum/reagent/drug/opium/blacktar/liquid
 
 /datum/reagent/drug/opium/heroin/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	var/high_message = pick("You feel like nothing can stop you.", "You feel like God.")
@@ -162,7 +151,7 @@
 	..()
 
 /datum/reagent/drug/opium/blacktar
-	name = "Black Tar Heroin"
+	name = "black tar heroin"
 	description = "An impure, freebase form of heroin. Probably not a good idea to take this..."
 	reagent_state = LIQUID
 	color = "#242423"
@@ -170,15 +159,29 @@
 	ph = 8
 	taste_description = "flowers"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-	failed_chem = null
 
 /datum/reagent/drug/opium/blacktar/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	var/high_message = pick("You feel like tar.", "The blood in your veins feel like syrup.")
 	if(DT_PROB(2.5, delta_time))
 		to_chat(M, span_notice("[high_message]"))
-	M.set_timed_status_effect(20 SECONDS * REM * delta_time, /datum/status_effect/drugginess)
+
+	M.set_drugginess(20 SECONDS * REM * delta_time)
 	M.adjustToxLoss(0.5 * REM * delta_time, 0) //toxin damage
-	..()
+	return ..()
+
+/datum/reagent/drug/opium/blacktar/liquid //prevents self-duplication by going one step down when mixed
+	name = "liquid black tar heroin"
+
+/datum/chemical_reaction/blacktar
+	required_reagents = list(/datum/reagent/drug/opium/blacktar/liquid = 5)
+	required_temp = 480
+	reaction_flags = REACTION_INSTANT
+	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_CHEMICAL
+
+/datum/chemical_reaction/blacktar/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i in 1 to created_volume)
+		new /obj/item/reagent_containers/blacktar(location)
 
 //Exports
 /datum/export/heroin

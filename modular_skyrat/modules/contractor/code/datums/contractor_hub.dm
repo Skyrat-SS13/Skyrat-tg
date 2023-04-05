@@ -8,7 +8,7 @@
 	/// List of what the contractor's purchased
 	var/list/purchased_items = list()
 	/// Static of contractor_item subtypes
-	var/static/list/contractor_items = subtypesof(/datum/contractor_item)
+	var/static/list/contractor_items = typecacheof(/datum/contractor_item, ignore_root_path = TRUE)
 	/// Reference to the current contract datum
 	var/datum/syndicate_contract/current_contract
 	/// List of all contract datums the contractor has available
@@ -45,8 +45,8 @@
 	)
 
 	//What the fuck
-	if(length(to_generate) > length(GLOB.data_core.locked))
-		to_generate.Cut(1, length(GLOB.data_core.locked))
+	if(length(to_generate) > length(GLOB.manifest.locked))
+		to_generate.Cut(1, length(GLOB.manifest.locked))
 
 	var/total = 0
 	var/lowest_paying_sum = 0
@@ -77,7 +77,7 @@
 		start_index++
 
 	// If the threshold for TC payouts isn't reached, boost the lowest paying contract
-	if (total < LOWEST_TC)
+	if ((total < LOWEST_TC) && lowest_paying_contract)
 		lowest_paying_contract.contract.payout_bonus += (LOWEST_TC - total)
 
 #undef LOWEST_TC

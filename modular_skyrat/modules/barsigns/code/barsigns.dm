@@ -10,10 +10,6 @@
 	name = "Club Bee"
 	icon = "clubee"
 
-// datum/barsign/cybersylph
-//	name = "Cyber Sylph's"
-//	icon = "cybersylph"
-
 /datum/barsign/thesun
 	name = "The Sun"
 	icon = "thesun"

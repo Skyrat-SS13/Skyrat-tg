@@ -27,12 +27,12 @@
 
 /obj/docking_port/mobile/tradership
 	name = "trade shuttle"
-	id = "tradership"
+	shuttle_id = "tradership"
 	rechargeTime = 2 MINUTES
 
 /obj/docking_port/stationary/picked/tradership
 	name = "Deep Space"
-	id = "tradership_away"
+	shuttle_id = "tradership_away"
 	dheight = 0
 	dir = 2
 	dwidth = 11
@@ -52,7 +52,7 @@
 			for(var/i in 1 to 10)
 				new /obj/item/food/canned/beans(src)
 			for(var/i in 1 to 10)
-				new /obj/item/reagent_containers/food/drinks/waterbottle(src)
+				new /obj/item/reagent_containers/cup/glass/waterbottle(src)
 		if(2)
 			new /obj/item/stack/sheet/iron/fifty(src)
 			new /obj/item/stack/rods/fifty(src)
@@ -112,14 +112,14 @@
 			for(var/i in 1 to 3)
 				new /obj/item/reagent_containers/blood/random(src)
 		if(2)
-			new /obj/item/bodypart/l_arm/robot(src)
-			new /obj/item/bodypart/l_arm/robot(src)
-			new /obj/item/bodypart/r_arm/robot(src)
-			new /obj/item/bodypart/r_arm/robot(src)
-			new /obj/item/bodypart/l_leg/robot(src)
-			new /obj/item/bodypart/l_leg/robot(src)
-			new /obj/item/bodypart/r_leg/robot(src)
-			new /obj/item/bodypart/r_leg/robot(src)
+			new /obj/item/bodypart/arm/left/robot(src)
+			new /obj/item/bodypart/arm/left/robot(src)
+			new /obj/item/bodypart/arm/right/robot(src)
+			new /obj/item/bodypart/arm/right/robot(src)
+			new /obj/item/bodypart/leg/left/robot(src)
+			new /obj/item/bodypart/leg/left/robot(src)
+			new /obj/item/bodypart/leg/right/robot(src)
+			new /obj/item/bodypart/leg/right/robot(src)
 		if(3)
 			for(var/i in 1 to 6)
 				new /obj/item/storage/box/ingredients/wildcard(src)
@@ -157,9 +157,9 @@
 		if(2) //Energy weapons + energy knives
 			new /obj/item/gun/energy/e_gun(src)
 			new /obj/item/gun/energy/e_gun(src)
+			new /obj/item/gun/energy/e_gun(src)
 			new /obj/item/gun/energy/e_gun/mini(src)
 			new /obj/item/gun/energy/recharge/ebow(src)
-			new /obj/item/gun/energy/e_gun/nuclear(src)
 			new /obj/item/melee/energy/sword(src)
 			new /obj/item/melee/energy/sword(src)
 		if(3) //Ballistics + knives
@@ -191,11 +191,11 @@
 			new /obj/item/mod/control/pre_equipped/elite(src)
 		if(5) //Implants
 			new /obj/item/storage/box/cyber_implants(src)
-			new /obj/item/organ/cyberimp/arm/combat(src)
-			new /obj/item/organ/cyberimp/arm/surgery(src)
-			new /obj/item/organ/cyberimp/arm/baton(src)
-			new /obj/item/organ/cyberimp/arm/toolset(src)
-			new /obj/item/organ/cyberimp/arm/gun/taser(src)
+			new /obj/item/organ/internal/cyberimp/arm/combat(src)
+			new /obj/item/organ/internal/cyberimp/arm/surgery(src)
+			new /obj/item/organ/internal/cyberimp/arm/baton(src)
+			new /obj/item/organ/internal/cyberimp/arm/toolset(src)
+			new /obj/item/organ/internal/cyberimp/arm/gun/taser(src)
 
 /obj/structure/closet/crate/secure/tradership_cargo_very_valuable
 	req_access = ACCESS_FACTION_COMMAND

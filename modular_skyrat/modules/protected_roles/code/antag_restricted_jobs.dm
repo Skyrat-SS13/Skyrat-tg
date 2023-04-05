@@ -30,7 +30,7 @@
 /datum/job/security_medic
 	antagonist_restricted = TRUE
 
-/datum/job/brigoff
+/datum/job/corrections_officer
 	antagonist_restricted = TRUE
 
 /datum/job/orderly

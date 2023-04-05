@@ -5,9 +5,9 @@
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the head of personnel"
-	selection_color = "#bbe291"
+	supervisors = SUPERVISOR_HOP
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "BARBER"
 
 	outfit = /datum/outfit/job/barber
 	plasmaman_outfit = /datum/outfit/plasmaman
@@ -29,7 +29,7 @@
 	jobtype = /datum/job/barber
 
 	glasses = /obj/item/clothing/glasses/sunglasses
-	belt = /obj/item/modular_computer/tablet/pda
+	belt = /obj/item/modular_computer/pda
 	ears = /obj/item/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/barber
 	shoes = /obj/item/clothing/shoes/laceup
@@ -58,7 +58,7 @@
 	new /obj/item/reagent_containers/spray/quantum_hair_dye(src)
 	new /obj/item/reagent_containers/spray/barbers_aid(src)
 	new /obj/item/reagent_containers/spray/cleaner(src)
-	new /obj/item/reagent_containers/glass/rag(src)
+	new /obj/item/reagent_containers/cup/rag(src)
 	new /obj/item/storage/medkit(src)
 
 /obj/effect/landmark/start/barber

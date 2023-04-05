@@ -2,7 +2,7 @@
 	name = "scythe"
 	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
 	icon = 'modular_skyrat/modules/apocolypse_of_scythes/icons/items_and_weapons.dmi'
-	icon_state = "scythe"
+	icon_state = "scythe_t1"
 	worn_icon = 'modular_skyrat/modules/apocolypse_of_scythes/icons/back.dmi'
 	lefthand_file = 'modular_skyrat/modules/apocolypse_of_scythes/icons/polearms_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/apocolypse_of_scythes/icons/polearms_righthand.dmi'
@@ -63,8 +63,8 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 500, /datum/material/glass = 500)
 	build_path = /obj/item/scythe/tier1
-	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
+	category = list(RND_CATEGORY_EQUIPMENT)
+	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
 /datum/design/scythe_t2
 	name = "Scythe (Tier 2)"
@@ -73,8 +73,8 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 500, /datum/material/glass = 500)
 	build_path = /obj/item/scythe/tier2
-	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
+	category = list(RND_CATEGORY_EQUIPMENT)
+	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
 /datum/techweb_node/scythe_t1
 	id = "t1scythe"

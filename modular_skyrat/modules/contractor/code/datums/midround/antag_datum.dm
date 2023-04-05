@@ -6,6 +6,7 @@
 	job_rank = ROLE_DRIFTING_CONTRACTOR
 	hud_icon = 'modular_skyrat/modules/contractor/icons/hud_icon.dmi'
 	antag_hud_name = "contractor"
+	antagpanel_category = ANTAG_GROUP_SYNDICATE
 	antag_moodlet = /datum/mood_event/focused
 	show_to_ghosts = TRUE
 	suicide_cry = "FOR THE CONTRACTS!!"
@@ -24,8 +25,10 @@
 	. = ..()
 	equip_guy()
 
-/datum/antagonist/contractor/proc/forge_objectives()
-	objectives += new/datum/objective/contractor_total
+/datum/antagonist/contractor/forge_objectives()
+	var/datum/objective/contractor_total/contract_objectives = new
+	contract_objectives.owner = owner
+	objectives += contract_objectives
 
 /datum/antagonist/contractor/roundend_report()
 	var/list/report = list()
@@ -38,7 +41,7 @@
 	var/objectives_complete = TRUE
 	if(length(objectives))
 		report += printobjectives(objectives)
-		for(var/datum/objective/objective in objectives)
+		for(var/datum/objective/objective as anything in objectives)
 			if(!objective.check_completion())
 				objectives_complete = FALSE
 				break

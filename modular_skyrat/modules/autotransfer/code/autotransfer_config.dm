@@ -15,3 +15,10 @@
 /datum/config_entry/number/vote_autotransfer_maximum
 	config_entry_value = 4
 	min_val = -1
+
+/// Determines if the autotransfer system runs or not.
+/datum/config_entry/flag/autotransfer
+
+
+/// Determines if the transfer vote can be started by anyone or not.
+/datum/config_entry/flag/allow_vote_transfer

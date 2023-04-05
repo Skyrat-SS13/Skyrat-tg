@@ -53,7 +53,7 @@
 	var/gag_size = "small"
 
 // To update the sprite
-/obj/item/clothing/mask/ballgag/ComponentInitialize()
+/obj/item/clothing/mask/ballgag/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 
@@ -130,5 +130,5 @@
 		if("large")
 			wearer.adjustOxyLoss(rand(1, 4))
 	if(prob(10))
-		wearer.emote(pick("gasp","choke","moan"))
+		wearer.try_lewd_autoemote(pick("gasp", "choke", "moan"))
 	choke_timer = 0

@@ -1,4 +1,4 @@
-//Most of these are just additions to allow certain cargo packs to exist. More will be on the way on additional PR's
+// Most of these are just additions to allow certain cargo packs to exist. More will be on the way on additional PR's
 
 /obj/item/storage/box/techshell
 	name = "box of unloaded techshell"

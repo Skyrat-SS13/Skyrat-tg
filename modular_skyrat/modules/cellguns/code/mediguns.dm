@@ -26,7 +26,7 @@
 	desc = "This is the upgraded version of the standard CWM-497 medigun, the battery inside is upgraded to better work with chargers along with having more capacity."
 	cell_type = /obj/item/stock_parts/cell/medigun/upgraded
 
-/obj/item/gun/energy/cell_loaded/medigun/upgraded/Initialize()
+/obj/item/gun/energy/cell_loaded/medigun/upgraded/Initialize(mapload)
 	. = ..()
 	var/mutable_appearance/fastcharge_medigun = mutable_appearance('modular_skyrat/modules/cellguns/icons/obj/guns/mediguns/projectile.dmi', "medigun_fastcharge")
 	add_overlay(fastcharge_medigun)
@@ -40,7 +40,7 @@
 	selfcharge = 1
 	can_charge = FALSE
 
-/obj/item/gun/energy/cell_loaded/medigun/cmo/Initialize()
+/obj/item/gun/energy/cell_loaded/medigun/cmo/Initialize(mapload)
 	. = ..()
 	var/mutable_appearance/cmo_medigun = mutable_appearance('modular_skyrat/modules/cellguns/icons/obj/guns/mediguns/projectile.dmi', "medigun_cmo")
 	add_overlay(cmo_medigun)
@@ -77,7 +77,6 @@
 	starting_author = "VeyMedical"
 	starting_title = "Medigun Operating Manual"
 	page_link = "Guide_to_Mediguns"
-	skyrat_wiki = TRUE
 
 // Medigun Gunsets
 /obj/item/storage/briefcase/medicalgunset/
@@ -274,13 +273,13 @@
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/body_teleporter
 
 /obj/item/weaponcell/medical/utility/relocation
-	name = "Oppressive Force Relocation Medicell"
+	name = "Oppressive Force relocation medicell"
 	desc = "A medicell that safely relocates personnel"
 	icon_state =  "body"
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/relocation/standard
 
 /obj/item/weaponcell/medical/utility/relocation/upgraded
-	name = "Upgraded Oppressive Force Relocation Medicell"
+	name = "upgraded Oppressive Force relocation medicell"
 	desc = "An upgraded version of the Relocation Medicell. It has the access and area requirements removed, along with having the standard grace period disabled."
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/relocation
 
@@ -293,7 +292,7 @@
 	from_obj = /obj/item/food/grown/aloe
 	to_obj = /obj/item/weaponcell/medical/utility/salve
 
-/obj/item/device/custom_kit/empty_cell/Initialize()
+/obj/item/device/custom_kit/empty_cell/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/item_scaling, 0.5, 1)
 

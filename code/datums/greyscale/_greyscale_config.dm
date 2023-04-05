@@ -57,6 +57,14 @@
 	if(!json_config)
 		stack_trace("Greyscale config object [DebugName()] is missing a json configuration, make sure `json_config` has been assigned a value.")
 	string_json_config = "[json_config]"
+	/* SKYRAT EDIT - Added recognition for the Skyrat GAGS folder - ORIGINAL:
+	if(findtext(string_json_config, "code/datums/greyscale/json_configs/") != 1)
+		stack_trace("All greyscale json configuration files should be located within 'code/datums/greyscale/json_configs/'")
+	*/ // ORIGINAL END - SKYART EDIT BEGIN:
+	var/static/regex/skyrat_gags_regex = regex("(modular_skyrat/modules/GAGS/.*json_configs/)")
+	if(findtext(string_json_config, "code/datums/greyscale/json_configs/") != 1 && skyrat_gags_regex.Find(string_json_config) != 1)
+		stack_trace("All greyscale json configuration files should be located within 'code/datums/greyscale/json_configs/' or 'modular_skyrat/modules/GAGS/json_configs/'.")
+	// SKYRAT EDIT END
 	if(!icon_file)
 		stack_trace("Greyscale config object [DebugName()] is missing an icon file, make sure `icon_file` has been assigned a value.")
 	string_icon_file = "[icon_file]"
@@ -174,7 +182,7 @@
 	if(!islist(data[1]))
 		var/layer_type = SSgreyscale.layer_types[data["type"]]
 		if(!layer_type)
-			CRASH("An unknown layer type was specified in the json of greyscale configuration [DebugName()]: [data["layer_type"]]")
+			CRASH("An unknown layer type was specified in the json of greyscale configuration [DebugName()]: [data["type"]]")
 		return new layer_type(icon_file, data.Copy()) // We don't want anything in there touching our version of the data
 	var/list/output = list()
 	for(var/list/group as anything in data)

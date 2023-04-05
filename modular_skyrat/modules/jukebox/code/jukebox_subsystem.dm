@@ -19,7 +19,7 @@ SUBSYSTEM_DEF(jukeboxes)
 	song_beat = beat
 	song_associated_id = assocID
 
-/datum/controller/subsystem/jukeboxes/proc/addjukebox(var/obj/machinery/jukebox/jukebox, datum/track/T, jukefalloff = 1)
+/datum/controller/subsystem/jukeboxes/proc/addjukebox(obj/machinery/jukebox/jukebox, datum/track/T, jukefalloff = 1)
 	if(!istype(T))
 		CRASH("[src] tried to play a song with a nonexistant track")
 	var/channeltoreserve = pick(freejukeboxchannels)
@@ -37,10 +37,10 @@ SUBSYSTEM_DEF(jukeboxes)
 	for(var/mob/M in GLOB.player_list)
 		if(!M.client)
 			continue
-		if(!(M.client.prefs.toggles & SOUND_INSTRUMENTS))
+		if(!(M.client.prefs.read_preference(/datum/preference/toggle/sound_instruments)))
 			continue
 
-		M.playsound_local(M, null, jukebox.volume, channel = youvegotafreejukebox[2], S = song_to_init)
+		M.playsound_local(M, null, jukebox.volume, channel = youvegotafreejukebox[2], sound_to_use = song_to_init)
 	return activejukeboxes.len
 
 /datum/controller/subsystem/jukeboxes/proc/removejukebox(IDtoremove)
@@ -78,7 +78,7 @@ SUBSYSTEM_DEF(jukeboxes)
 		songs |= T
 	for(var/i in CHANNEL_JUKEBOX_START to CHANNEL_JUKEBOX)
 		freejukeboxchannels |= i
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/jukeboxes/fire()
 	if(!activejukeboxes.len)
@@ -103,7 +103,7 @@ SUBSYSTEM_DEF(jukeboxes)
 		for(var/mob/M in GLOB.player_list)
 			if(!M.client)
 				continue
-			if(!(M.client.prefs.toggles & SOUND_INSTRUMENTS) || !M.can_hear())
+			if(!(M.client.prefs.read_preference(/datum/preference/toggle/sound_instruments)) || !M.can_hear())
 				M.stop_sound_channel(jukeinfo[2])
 				continue
 
@@ -112,6 +112,6 @@ SUBSYSTEM_DEF(jukeboxes)
 			else
 				song_played.status = SOUND_MUTE | SOUND_UPDATE	//Setting volume = 0 doesn't let the sound properties update at all, which is lame.
 
-			M.playsound_local(currentturf, null, jukebox.volume, channel = jukeinfo[2], S = song_played)
+			M.playsound_local(currentturf, null, jukebox.volume, channel = jukeinfo[2], sound_to_use = song_played)
 			CHECK_TICK
 	return

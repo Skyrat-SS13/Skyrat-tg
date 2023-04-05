@@ -42,7 +42,7 @@
 	mid_sounds = list('modular_skyrat/master_files/sound/effects/heart_beat_loop3.ogg'=1)
 	volume = 20
 
-#define CORE_RETALIATION_COOLDOWN 5 SECONDS
+#define CORE_RETALIATION_COOLDOWN (5 SECONDS)
 
 /obj/structure/biohazard_blob/structure/core
 	name = "glowing core"
@@ -71,7 +71,7 @@
 /obj/structure/biohazard_blob/structure/core/radioactive
 	blob_type = BIO_BLOB_TYPE_RADIOACTIVE
 
-/obj/structure/biohazard_blob/structure/core/Initialize()
+/obj/structure/biohazard_blob/structure/core/Initialize(mapload)
 	if(!blob_type)
 		blob_type = pick(ALL_BIO_BLOB_TYPES)
 	. = ..()
@@ -97,13 +97,13 @@
 		switch(blob_type)
 			if(BIO_BLOB_TYPE_FUNGUS)
 				visible_message(span_warning("The [src] emitts a cloud!"))
-				var/datum/reagents/R = new/datum/reagents(300)
-				R.my_atom = src
-				R.add_reagent(/datum/reagent/cordycepsspores, 50)
-				var/datum/effect_system/smoke_spread/chem/smoke = new()
-				smoke.set_up(R, 5)
-				smoke.attach(src)
-				smoke.start()
+				var/datum/reagents/reagents = new/datum/reagents(300)
+				reagents.my_atom = src
+				reagents.add_reagent(/datum/reagent/cryptococcus_spores, 50)
+				var/datum/effect_system/fluid_spread/smoke/chem/smoke_machine/puff = new
+				puff.set_up(5, location = my_turf, carry = reagents, efficiency = 24)
+				puff.attach(src)
+				puff.start()
 			if(BIO_BLOB_TYPE_FIRE)
 				visible_message(span_warning("The [src] puffs a cloud of flames!"))
 				my_turf.atmos_spawn_air("o2=20;plasma=20;TEMP=600")
@@ -121,20 +121,20 @@
 					tesla_zap(src, 4, 10000, ZAP_MOB_DAMAGE | ZAP_OBJ_DAMAGE)
 			if(BIO_BLOB_TYPE_TOXIC)
 				visible_message(span_warning("The [src] spews out foam!"))
-				var/datum/reagents/R = new/datum/reagents(300)
+				var/datum/reagents/R = new/datum/reagents(210)
 				R.my_atom = src
 				R.add_reagent(/datum/reagent/toxin, 30)
-				var/datum/effect_system/foam_spread/foam = new
-				foam.set_up(40, my_turf, R)
+				var/datum/effect_system/fluid_spread/foam/foam = new
+				foam.set_up(4, location = my_turf, carry = R)
 				foam.start()
 			if(BIO_BLOB_TYPE_RADIOACTIVE)
 				visible_message(span_warning("The [src] emits a strong radiation pulse!"))
 				radiation_pulse(src, 1500, 10, FALSE, TRUE)
-				var/datum/reagents/R = new/datum/reagents(300)
+				var/datum/reagents/R = new/datum/reagents(210)
 				R.my_atom = src
-				R.add_reagent(/datum/reagent/toxin/mutagen, 50)
-				var/datum/effect_system/foam_spread/foam = new
-				foam.set_up(50, my_turf, R)
+				R.add_reagent(/datum/reagent/toxin/mutagen, 30)
+				var/datum/effect_system/fluid_spread/foam/foam = new
+				foam.set_up(4, location = my_turf, carry = R)
 				foam.start()
 	return ..()
 
@@ -257,12 +257,12 @@
 	var/list/registered_turfs = list()
 	max_integrity = 100
 
-/obj/structure/biohazard_blob/structure/bulb/Initialize()
+/obj/structure/biohazard_blob/structure/bulb/Initialize(mapload)
 	. = ..()
 	make_full()
 	for(var/t in get_adjacent_open_turfs(src))
 		registered_turfs += t
-		RegisterSignal(t, COMSIG_ATOM_ENTERED, .proc/proximity_trigger)
+		RegisterSignal(t, COMSIG_ATOM_ENTERED, PROC_REF(proximity_trigger))
 
 /obj/structure/biohazard_blob/structure/bulb/proc/proximity_trigger(datum/source, atom/movable/AM)
 	SIGNAL_HANDLER
@@ -270,7 +270,7 @@
 		return
 	var/mob/living/L = AM
 	if(!(MOLD_FACTION in L.faction))
-		INVOKE_ASYNC(src, .proc/discharge)
+		INVOKE_ASYNC(src, PROC_REF(discharge))
 
 /obj/structure/biohazard_blob/structure/bulb/proc/make_full()
 	//Called by a timer, check if we exist
@@ -283,6 +283,8 @@
 	density = TRUE
 	update_overlays()
 
+#define MAX_MOLD_FOAM_RANGE 7
+
 /obj/structure/biohazard_blob/structure/bulb/proc/discharge()
 	if(!is_full)
 		return
@@ -292,11 +294,11 @@
 		if(BIO_BLOB_TYPE_FUNGUS)
 			var/datum/reagents/R = new/datum/reagents(300)
 			R.my_atom = src
-			R.add_reagent(/datum/reagent/cordycepsspores, 50)
-			var/datum/effect_system/smoke_spread/chem/smoke = new()
-			smoke.set_up(R, 5)
-			smoke.attach(src)
-			smoke.start()
+			R.add_reagent(/datum/reagent/cryptococcus_spores, 50)
+			var/datum/effect_system/fluid_spread/smoke/chem/smoke_machine/puff = new
+			puff.set_up(4, location = T, carry = reagents, efficiency = 24)
+			puff.attach(src)
+			puff.start()
 		if(BIO_BLOB_TYPE_FIRE)
 			T.atmos_spawn_air("o2=20;plasma=20;TEMP=600")
 		if(BIO_BLOB_TYPE_EMP)
@@ -313,18 +315,17 @@
 			var/datum/reagents/R = new/datum/reagents(300)
 			R.my_atom = src
 			R.add_reagent(/datum/reagent/toxin, 30)
-			var/datum/effect_system/foam_spread/foam = new
-			foam.set_up(40, T, R)
+			var/datum/effect_system/fluid_spread/foam/foam = new
+			foam.set_up(MAX_MOLD_FOAM_RANGE, location = T, carry = R)
 			foam.start()
 		if(BIO_BLOB_TYPE_RADIOACTIVE)
 			radiation_pulse(src, 1500, 15, FALSE, TRUE)
 			fire_nuclear_particle()
-			empulse(src, 5, 7)
 			var/datum/reagents/R = new/datum/reagents(300)
 			R.my_atom = src
-			R.add_reagent(/datum/reagent/toxin/mutagen, 50)
-			var/datum/effect_system/foam_spread/foam = new
-			foam.set_up(50, T, R)
+			R.add_reagent(/datum/reagent/toxin/mutagen, 30)
+			var/datum/effect_system/fluid_spread/foam/foam = new
+			foam.set_up(MAX_MOLD_FOAM_RANGE, location = T, carry = R)
 			foam.start()
 	is_full = FALSE
 	name = "empty bulb"
@@ -333,7 +334,9 @@
 	set_light(0)
 	update_overlays()
 	density = FALSE
-	addtimer(CALLBACK(src, .proc/make_full), 1 MINUTES, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+	addtimer(CALLBACK(src, PROC_REF(make_full)), 1 MINUTES, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+
+#undef MAX_MOLD_FOAM_RANGE
 
 /obj/structure/biohazard_blob/structure/bulb/attack_generic(mob/user, damage_amount, damage_type, damage_flag, sound_effect, armor_penetration)
 	if(MOLD_FACTION in user.faction)
@@ -377,8 +380,8 @@
 	base_icon_state = "resin_wall"
 	opacity = TRUE
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_ALIEN_RESIN)
-	canSmoothWith = list(SMOOTH_GROUP_ALIEN_RESIN)
+	smoothing_groups = SMOOTH_GROUP_ALIEN_RESIN
+	canSmoothWith = SMOOTH_GROUP_ALIEN_RESIN
 	max_integrity = 200
 	can_atmos_pass = ATMOS_PASS_DENSITY
 
@@ -408,11 +411,11 @@
 		our_controller.other_structures -= src
 	return ..()
 
-/obj/structure/biohazard_blob/structure/conditioner/Initialize()
+/obj/structure/biohazard_blob/structure/conditioner/Initialize(mapload)
 	. = ..()
 	switch(blob_type)
 		if(BIO_BLOB_TYPE_FUNGUS)
-			happy_atmos = "miasma=50;TEMP=296"
+			happy_atmos = "TEMP=312"
 		if(BIO_BLOB_TYPE_FIRE)
 			happy_atmos = "co2=30;TEMP=1000"
 		if(BIO_BLOB_TYPE_EMP)
@@ -452,7 +455,7 @@
 		our_controller.other_structures -= src
 	return ..()
 
-/obj/structure/biohazard_blob/structure/spawner/Initialize()
+/obj/structure/biohazard_blob/structure/spawner/Initialize(mapload)
 	. = ..()
 	switch(blob_type)
 		if(BIO_BLOB_TYPE_FUNGUS)
@@ -464,7 +467,7 @@
 			monster_types = list(/mob/living/simple_animal/hostile/biohazard_blob/electric_mosquito)
 			spawn_cooldown = 500
 		if(BIO_BLOB_TYPE_TOXIC)
-			monster_types = list(/mob/living/simple_animal/hostile/giant_spider)
+			monster_types = list(/mob/living/basic/giant_spider)
 		if(BIO_BLOB_TYPE_RADIOACTIVE)
 			monster_types = list(/mob/living/simple_animal/hostile/biohazard_blob/centaur)
 	AddComponent(/datum/component/spawner, monster_types, spawn_cooldown, list(MOLD_FACTION), "emerges from", max_spawns)

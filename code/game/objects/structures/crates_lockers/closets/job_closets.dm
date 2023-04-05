@@ -8,14 +8,14 @@
 /obj/structure/closet/gmcloset/PopulateContents()
 	..()
 	var/static/items_inside = list(
-		/obj/item/clothing/head/that = 2,
+		/obj/item/clothing/head/hats/tophat = 2,
 		/obj/item/radio/headset/headset_srv = 2,
 		/obj/item/clothing/under/suit/sl = 2,
 		/obj/item/clothing/under/rank/civilian/bartender = 2,
 		/obj/item/clothing/accessory/waistcoat = 2,
 		/obj/item/clothing/head/soft/black = 2,
 		/obj/item/clothing/shoes/sneakers/black = 2,
-		/obj/item/reagent_containers/glass/rag = 2,
+		/obj/item/reagent_containers/cup/rag = 2,
 		/obj/item/storage/box/beanbag = 1,
 		/obj/item/clothing/suit/armor/vest/alt = 1,
 		/obj/item/circuitboard/machine/dish_drive = 1,
@@ -41,8 +41,8 @@
 		/obj/item/circuitboard/machine/dish_drive = 1,
 		/obj/item/clothing/suit/toggle/chef = 1,
 		/obj/item/clothing/under/rank/civilian/chef = 1,
-		/obj/item/clothing/head/chefhat = 1,
-		/obj/item/reagent_containers/glass/rag = 1)
+		/obj/item/clothing/head/utility/chefhat = 1,
+		/obj/item/reagent_containers/cup/rag = 1)
 	generate_items_inside(items_inside,src)
 
 /obj/structure/closet/jcloset
@@ -85,10 +85,12 @@
 	new /obj/item/clothing/under/rank/civilian/lawyer/black(src)
 	new /obj/item/clothing/under/rank/civilian/lawyer/red(src)
 	new /obj/item/clothing/under/rank/civilian/lawyer/bluesuit(src)
+	new /obj/item/clothing/neck/tie/blue(src)
 	new /obj/item/clothing/suit/toggle/lawyer(src)
 	new /obj/item/clothing/under/rank/civilian/lawyer/purpsuit(src)
 	new /obj/item/clothing/suit/toggle/lawyer/purple(src)
 	new /obj/item/clothing/under/suit/black(src)
+	new /obj/item/clothing/neck/tie/black(src)
 	new /obj/item/clothing/suit/toggle/lawyer/black(src)
 	new /obj/item/clothing/shoes/laceup(src)
 	new /obj/item/clothing/shoes/laceup(src)
@@ -106,7 +108,7 @@
 	new /obj/item/clothing/under/rank/civilian/chaplain(src)
 	new /obj/item/clothing/shoes/sneakers/black(src)
 	new /obj/item/clothing/suit/chaplainsuit/nun(src)
-	new /obj/item/clothing/head/nun_hood(src)
+	new /obj/item/clothing/head/chaplain/nun_hood(src)
 	new /obj/item/clothing/suit/hooded/chaplainsuit/monkhabit(src)
 	new /obj/item/clothing/suit/chaplainsuit/holidaypriest(src)
 	new /obj/item/storage/backpack/cultpack(src)
@@ -129,7 +131,7 @@
 		/obj/item/clothing/shoes/jackboots = 3,
 		/obj/item/clothing/head/beret/sec = 3,
 		/obj/item/clothing/head/soft/sec = 3,
-		/obj/item/clothing/mask/bandana/color/red = 2)
+		/obj/item/clothing/mask/bandana/red = 2)
 	generate_items_inside(items_inside,src)
 	return
 
@@ -177,7 +179,7 @@
 		/obj/item/clothing/under/rank/engineering/engineer = 3,
 		/obj/item/clothing/suit/hazardvest = 3,
 		/obj/item/clothing/shoes/workboots = 3,
-		/obj/item/clothing/head/hardhat = 3)
+		/obj/item/clothing/head/utility/hardhat = 3)
 	generate_items_inside(items_inside,src)
 	return
 
@@ -191,7 +193,7 @@
 		/obj/item/storage/backpack/medic = 1,
 		/obj/item/storage/backpack/satchel/med = 1,
 		/obj/item/clothing/suit/hooded/wintercoat/medical = 1,
-		/obj/item/clothing/head/nursehat = 1,
+		/obj/item/clothing/head/costume/nursehat = 1,
 		/obj/item/clothing/under/rank/medical/scrubs/blue = 1,
 		/obj/item/clothing/under/rank/medical/scrubs/green = 1,
 		/obj/item/clothing/under/rank/medical/scrubs/purple = 1,
@@ -216,9 +218,9 @@
 		/obj/item/clothing/head/soft/black = 2)
 	generate_items_inside(items_inside,src)
 	if(prob(40))
-		new /obj/item/clothing/mask/bandana/color/skull/black(src)
+		new /obj/item/clothing/mask/bandana/skull/black(src)
 	if(prob(40))
-		new /obj/item/clothing/mask/bandana/color/skull/black(src)
+		new /obj/item/clothing/mask/bandana/skull/black(src)
 	return
 
 
@@ -303,7 +305,7 @@
 		/obj/item/clothing/suit/apron = 2,
 		/obj/item/clothing/suit/apron/overalls = 2,
 		/obj/item/clothing/under/rank/civilian/hydroponics = 3,
-		/obj/item/clothing/mask/bandana/color/striped/botany = 3)
+		/obj/item/clothing/mask/bandana/striped/botany = 3)
 	generate_items_inside(items_inside,src)
 
 /obj/structure/closet/wardrobe/curator
@@ -312,7 +314,7 @@
 
 /obj/structure/closet/wardrobe/curator/PopulateContents()
 	new /obj/item/clothing/head/fedora/curator(src)
-	new /obj/item/clothing/suit/curator(src)
+	new /obj/item/clothing/suit/jacket/curator(src)
 	new /obj/item/clothing/under/rank/civilian/curator/treasure_hunter(src)
 	new /obj/item/clothing/shoes/workboots/mining(src)
 	new /obj/item/storage/backpack/satchel/explorer(src)

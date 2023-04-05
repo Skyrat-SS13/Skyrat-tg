@@ -1,18 +1,17 @@
-/datum/preference_middleware/limbs_and_markings/post_set_preference(mob/user, preference, value)
-	preferences.character_preview_view.update_body()
-	. = ..()
+#define ORGANS_DEFAULT_NAME "Default"
+#define LIMBS_DEFAULT_NAME "None"
 
 /datum/preference_middleware/limbs_and_markings
 	action_delegations = list(
-		"set_limb_aug" = .proc/set_limb_aug,
-		"set_limb_aug_style" = .proc/set_limb_aug_style,
-		"add_marking" = .proc/add_marking,
-		"change_marking" = .proc/change_marking,
-		"color_marking" = .proc/color_marking,
-		"remove_marking" = .proc/remove_marking,
-		"set_organ_aug" = .proc/set_organ_aug,
-		"set_preset" = .proc/set_preset,
-		"change_emissive" = .proc/change_emissive_marking,
+		"set_limb_aug" = PROC_REF(set_limb_aug),
+		"set_limb_aug_style" = PROC_REF(set_limb_aug_style),
+		"add_marking" = PROC_REF(add_marking),
+		"change_marking" = PROC_REF(change_marking),
+		"color_marking" = PROC_REF(color_marking),
+		"remove_marking" = PROC_REF(remove_marking),
+		"set_organ_aug" = PROC_REF(set_organ_aug),
+		"set_preset" = PROC_REF(set_preset),
+		"change_emissive" = PROC_REF(change_emissive_marking),
 	)
 	var/list/limbs_to_process = list(
 		"l_arm" = "Left Arm",
@@ -53,20 +52,56 @@
 	)
 	var/list/robotic_styles
 
+
+/datum/preference_middleware/limbs_and_markings/apply_to_human(mob/living/carbon/human/target, datum/preferences/preferences, visuals_only = FALSE)
+	target.dna.species.body_markings = LAZYCOPY(preferences.body_markings)
+
+	var/list/visited_body_zones = list()
+	for(var/key in preferences.augments)
+		var/datum/augment_item/aug = GLOB.augment_items[preferences.augments[key]]
+		var/visited_body_zone = aug.apply(target, visuals_only, prefs = preferences)
+
+		if(visited_body_zone) // Only limb augments should be returning those, and only in visuals_only mode.
+			visited_body_zones += visited_body_zone
+
+	var/obj/item/bodypart/first_bodypart = target.bodyparts[1]
+	first_bodypart.synchronize_bodytypes(target) // We call this here to ensure that by this point, bodytypes are synchronized, after all changes to the limbs.
+
+	// We don't need to go any further if this isn't visuals only, as we will have fully replaced each limb
+	// affected by a limb augmentation.
+	if(!visuals_only)
+		return
+
+	// If you ever add chest and head augments, please add the body zones to this list.
+	// Removing them for now for optimization purposes.
+	for(var/body_zone in list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG))
+		if(body_zone in visited_body_zones)
+			continue
+
+		var/obj/item/bodypart/target_bodypart = target.get_bodypart(body_zone)
+
+		target_bodypart?.reset_appearance()
+
+
 /datum/preference_middleware/limbs_and_markings/proc/set_limb_aug(list/params, mob/user)
 	var/limb_slot = params["limb_slot"]
 	var/augment_name = params["augment_name"]
-	if(augment_name == "None")
+	if(augment_name == LIMBS_DEFAULT_NAME)
 		preferences.augments -= limbs_to_process[limb_slot]
 	else
 		preferences.augments[limbs_to_process[limb_slot]] = augment_to_path[augment_name]
+	// Remove some positive quirks if the point balance becomes too low.
+	var/list/filtered_quirks = SSquirks.filter_invalid_quirks(preferences.all_quirks, preferences.augments)
+	if(filtered_quirks != preferences.all_quirks)
+		preferences.all_quirks = filtered_quirks
+		preferences.update_static_data(user)
 	preferences.character_preview_view.update_body()
 	return TRUE
 
 /datum/preference_middleware/limbs_and_markings/proc/set_limb_aug_style(list/params, mob/user)
 	var/limb_slot = params["limb_slot"]
 	var/style_name = params["style_name"]
-	if(style_name == "None")
+	if(style_name == LIMBS_DEFAULT_NAME)
 		preferences.augment_limb_styles -= limbs_to_process[limb_slot]
 	else
 		preferences.augment_limb_styles[limbs_to_process[limb_slot]] = style_name
@@ -176,10 +211,15 @@
 /datum/preference_middleware/limbs_and_markings/proc/set_organ_aug(list/params, mob/user)
 	var/organ_slot = params["organ_slot"]
 	var/augment_name = params["augment_name"]
-	if(augment_name == "Organic")
+	if(augment_name == ORGANS_DEFAULT_NAME)
 		preferences.augments -= organs_to_process[organ_slot]
 	else
 		preferences.augments[organs_to_process[organ_slot]] = augment_to_path[augment_name]
+	// Remove some positive quirks if the point balance becomes too low.
+	var/list/filtered_quirks = SSquirks.filter_invalid_quirks(preferences.all_quirks, preferences.augments)
+	if(filtered_quirks != preferences.all_quirks)
+		preferences.all_quirks = filtered_quirks
+		preferences.update_static_data(user)
 	preferences.character_preview_view.update_body()
 	return TRUE
 
@@ -193,6 +233,8 @@
 
 /datum/preference_middleware/limbs_and_markings/get_ui_data(mob/user)
 	var/list/data = list()
+	var/datum/species/species_type = preferences.read_preference(/datum/preference/choiced/species)
+	var/allow_mismatched_parts = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
 	if(!robotic_styles)
 		robotic_styles = list()
 		for(var/style_name in GLOB.robotic_styles_list)
@@ -202,33 +244,41 @@
 	for(var/limb in limbs_to_process)
 		if(!nice_aug_names[limb])
 			nice_aug_names[limb] = list()
-			for(var/augments in GLOB.augment_slot_to_items[limbs_to_process[limb]])
-				var/obj/item/aug = augments
+			for(var/augment in GLOB.augment_slot_to_items[limbs_to_process[limb]])
+				var/obj/item/aug = augment
+				var/datum/augment_item/expensive_augment = GLOB.augment_items[augment]
 				var/cost = 0
-				if(GLOB.augment_items[augments])
-					var/datum/augment_item/expensive_augment = GLOB.augment_items[augments]
+				var/name = initial(aug.name)
+				if (expensive_augment)
 					cost = expensive_augment.cost
+					name = expensive_augment.name
 				// To display the cost of the limb, if it's anything aside from 0.
-				var/aug_name = cost != 0 ? initial(aug.name) + " ([cost])" : initial(aug.name)
+				var/aug_name = cost != 0 ? name + " ([cost])" : name
 				costs[AUGMENT_CATEGORY_LIMBS][aug_name] = cost
-				nice_aug_names[limb][augments] = aug_name
-				augment_to_path[aug_name] = augments
-			nice_aug_names[limb]["none"] = "None"
+				nice_aug_names[limb][augment] = aug_name
+				augment_to_path[aug_name] = augment
+			nice_aug_names[limb]["none"] = LIMBS_DEFAULT_NAME
 		var/chosen_augment
 		if(preferences.augments[limbs_to_process[limb]] && !isnull(nice_aug_names[limb][preferences.augments[limbs_to_process[limb]]]))
 			chosen_augment = nice_aug_names[limb][preferences.augments[limbs_to_process[limb]]]
 		else
-			chosen_augment = "None"
+			chosen_augment = LIMBS_DEFAULT_NAME
+		var/list/choices = GLOB.body_markings_per_limb[limb].Copy()
+		if (!allow_mismatched_parts)
+			for (var/name in choices)
+				var/datum/body_marking/marking = GLOB.body_markings[name]
+				if (marking.recommended_species && !(initial(species_type.id) in marking.recommended_species))
+					choices -= name
 		limbs_data += list(list(
 			"slot" = limb,
 			"name" = limbs_to_process[limb],
 			"can_augment" = aug_support[limb],
 			"chosen_aug" = chosen_augment,
-			"chosen_style" = preferences.augment_limb_styles[limbs_to_process[limb]] ? preferences.augment_limb_styles[limbs_to_process[limb]] : "None",
+			"chosen_style" = preferences.augment_limb_styles[limbs_to_process[limb]] ? preferences.augment_limb_styles[limbs_to_process[limb]] : LIMBS_DEFAULT_NAME,
 			"aug_choices" = nice_aug_names[limb],
 			"costs" = costs[AUGMENT_CATEGORY_LIMBS],
 			"markings" = list(
-				"marking_choices" = GLOB.body_markings_per_limb[limb],
+				"marking_choices" = choices,
 				"markings_list" = fix_colors_on_markings_to_tgui(preferences.body_markings[limb], limb)
 			),
 		))
@@ -239,23 +289,25 @@
 	for(var/organ in organs_to_process)
 		if(!nice_aug_names[organ])
 			nice_aug_names[organ] = list()
-			for(var/augments in GLOB.augment_slot_to_items[organs_to_process[organ]])
-				var/obj/item/aug = augments
+			for(var/augment in GLOB.augment_slot_to_items[organs_to_process[organ]])
+				var/obj/item/aug = augment
+				var/datum/augment_item/expensive_augment = GLOB.augment_items[augment]
 				var/cost = 0
-				if(GLOB.augment_items[augments])
-					var/datum/augment_item/expensive_augment = GLOB.augment_items[augments]
+				var/name = initial(aug.name)
+				if (expensive_augment)
 					cost = expensive_augment.cost
+					name = expensive_augment.name
 				// To display the cost of the limb, if it's anything aside from 0.
-				var/aug_name = cost != 0 ? initial(aug.name) + " ([cost])" : initial(aug.name)
+				var/aug_name = cost != 0 ? name + " ([cost])" : name
 				costs[AUGMENT_CATEGORY_ORGANS][aug_name] = cost
-				nice_aug_names[organ][augments] = aug_name
-				augment_to_path[aug_name] = augments
-			nice_aug_names[organ]["organic"] = "Organic"
+				nice_aug_names[organ][augment] = aug_name
+				augment_to_path[aug_name] = augment
+			nice_aug_names[organ]["organic"] = ORGANS_DEFAULT_NAME
 		var/chosen_organ
 		if(preferences.augments[organs_to_process[organ]] && !isnull(nice_aug_names[organ][preferences.augments[organs_to_process[organ]]]))
 			chosen_organ = nice_aug_names[organ][preferences.augments[organs_to_process[organ]]]
 		else
-			chosen_organ = "Organic"
+			chosen_organ = ORGANS_DEFAULT_NAME
 		organs_data += list(list(
 			"slot" = organ,
 			"name" = organs_to_process[organ],
@@ -267,13 +319,15 @@
 	data["organs_data"] = organs_data
 
 	var/list/presets = GLOB.body_marking_sets.Copy()
-	if (!preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts))
+	if (!allow_mismatched_parts)
 		for (var/name in presets)
 			var/datum/body_marking_set/BMS = presets[name]
-			var/datum/species/species_type = preferences.read_preference(/datum/preference/choiced/species)
 			if (BMS.recommended_species && !(initial(species_type.id) in BMS.recommended_species))
 				presets -= name
 
 	data["marking_presets"] = presets
 
 	return data
+
+#undef LIMBS_DEFAULT_NAME
+#undef ORGANS_DEFAULT_NAME

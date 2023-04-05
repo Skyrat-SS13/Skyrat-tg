@@ -7,8 +7,8 @@
 	var/total_amount = 0
 	/// Height of the pollution, used to create a sandpiling effect
 	var/height = 0
-	/// The overlay we are managing
-	var/mutable_appearance/managed_overlay
+	/// The vis content we are managing
+	var/obj/effect/abstract/pollution/managed_overlay
 
 /datum/pollution/New(turf/open/passed_turf)
 	. = ..()
@@ -16,7 +16,7 @@
 	my_turf.pollution = src
 	REGISTER_POLLUTION(src)
 
-/datum/pollution/proc/TouchAct(mob/living/carbon/victim)
+/datum/pollution/proc/touch_act(mob/living/carbon/victim)
 	if(!victim.can_inject())
 		return
 	var/list/singleton_cache = SSpollution.singletons
@@ -25,19 +25,19 @@
 		if(!(pollutant.pollutant_flags & POLLUTANT_TOUCH_ACT))
 			continue
 		var/amount = pollutants[type]
-		pollutant.TouchAct(victim, amount)
+		pollutant.touch_act(victim, amount)
 
-/datum/pollution/proc/BreatheAct(mob/living/carbon/victim)
+/datum/pollution/proc/breathe_act(mob/living/carbon/victim)
 	var/list/singleton_cache = SSpollution.singletons
 	for(var/type in pollutants)
 		var/datum/pollutant/pollutant = singleton_cache[type]
 		if(!(pollutant.pollutant_flags & POLLUTANT_BREATHE_ACT))
 			continue
 		var/amount = pollutants[type]
-		pollutant.BreatheAct(victim, amount)
+		pollutant.breathe_act(victim, amount)
 
 /// When a user smells this pollution
-/datum/pollution/proc/SmellAct(mob/living/sniffer)
+/datum/pollution/proc/smell_act(mob/living/sniffer)
 	var/list/singleton_cache = SSpollution.singletons
 	var/datum/pollutant/dominant_pollutant
 	var/dominiant_smell_power
@@ -77,7 +77,7 @@
 	else
 		to_chat(sniffer, span_notice(smell_string))
 
-/datum/pollution/proc/ScrubAmount(amount_to_scrub, update_active = TRUE, planetary_multiplier = FALSE)
+/datum/pollution/proc/scrub_amount(amount_to_scrub, update_active = TRUE, planetary_multiplier = FALSE)
 	if(amount_to_scrub >= total_amount)
 		qdel(src)
 		return
@@ -86,41 +86,42 @@
 	for(var/type in pollutants)
 		pollutants[type] -= amount_to_scrub * pollutants[type] / total_amount
 	total_amount -= amount_to_scrub
-	UpdateHeight()
-	HandleOverlay()
+	update_height()
+	handle_overlay()
 	if(update_active)
-		my_turf.UpdateAdjacentPollutants()
+		my_turf.update_adjacent_pollutants()
 
-/datum/pollution/proc/AddPollutant(polutant_type, amount)
+/datum/pollution/proc/add_pollutant(polutant_type, amount)
 	if(!pollutants[polutant_type])
 		pollutants[polutant_type] = 0
 	pollutants[polutant_type] += amount
 	total_amount += amount
-	UpdateHeight()
-	HandleOverlay()
+	update_height()
+	handle_overlay()
 	SET_ACTIVE_POLLUTION(src)
 
-/datum/pollution/proc/AddPollutantList(list/passed_pollutants)
+/datum/pollution/proc/add_pollutant_list(list/passed_pollutants)
 	for(var/polutant_type in passed_pollutants)
 		if(!pollutants[polutant_type])
 			pollutants[polutant_type] = 0
 		pollutants[polutant_type] += passed_pollutants[polutant_type]
 		total_amount += passed_pollutants[polutant_type]
-	UpdateHeight()
-	HandleOverlay()
+	update_height()
+	handle_overlay()
 	SET_ACTIVE_POLLUTION(src)
 
-/datum/pollution/proc/UpdateHeight()
-	height = CalculateHeight(total_amount)
+/datum/pollution/proc/update_height()
+	height = calculate_height(total_amount)
 
-/datum/pollution/proc/CalculateHeight(passed_amount)
+/datum/pollution/proc/calculate_height(passed_amount)
 	return CEILING(passed_amount / POLLUTION_HEIGHT_DIVISOR, 1)
 
 /datum/pollution/Destroy()
 	if(managed_overlay)
 		if(my_turf)
-			my_turf.underlays -= managed_overlay
-		qdel(managed_overlay)
+			my_turf.vis_contents -= managed_overlay
+		if(LAZYLEN(managed_overlay.vis_locs) == 0)
+			qdel(managed_overlay)
 		managed_overlay = null
 	REMOVE_POLLUTION_CURRENTRUN(src)
 	SET_UNACTIVE_POLLUTION(src)
@@ -129,7 +130,7 @@
 		my_turf.pollution = null
 	return ..()
 
-/datum/pollution/proc/ProcessCell()
+/datum/pollution/proc/process_cell()
 	if(height <= 1)
 		SET_UNACTIVE_POLLUTION(src)
 		return
@@ -138,7 +139,7 @@
 	var/list/potential_activers = list()
 	for(var/turf/open/open_turf as anything in my_turf.atmos_adjacent_turfs)
 		if(!already_processed_cache[open_turf])
-			if(CanShareWith(open_turf))
+			if(can_share_with(open_turf))
 				sharing_turfs[open_turf] = TRUE
 			else
 				potential_activers[open_turf] = TRUE
@@ -162,44 +163,52 @@
 	for(var/type in total_share_pollutants)
 		total_share_pollutants[type] /= sharing_turfs.len
 	total_share_amount /= sharing_turfs.len
-	var/new_heights = CalculateHeight(total_share_amount)
-	var/mutable_appearance/new_overlay = GetOverlay(total_share_pollutants, total_share_amount)
+	var/new_heights = calculate_height(total_share_amount)
+	var/obj/effect/abstract/pollution/new_overlay = get_overlay(total_share_pollutants, total_share_amount)
 	for(var/turf/open/open_turf as anything in sharing_turfs)
-		AssertPollution(open_turf)
+		if(istype(open_turf, /turf/open/space)) // Space should be voiding pollution, basically.
+			continue
+
+		assert_pollution(open_turf)
 		var/datum/pollution/cached_pollution = open_turf.pollution
 		if(cached_pollution.managed_overlay)
-			cached_pollution.my_turf.underlays -= cached_pollution.managed_overlay
+			cached_pollution.my_turf.vis_contents -= cached_pollution.managed_overlay
+
 		cached_pollution.managed_overlay = new_overlay
 		if(new_overlay)
-			cached_pollution.my_turf.underlays += new_overlay
+			cached_pollution.my_turf.vis_contents += new_overlay
+
 		cached_pollution.pollutants = total_share_pollutants.Copy()
 		cached_pollution.total_amount = total_share_amount
 		cached_pollution.height = new_heights
 		SET_ACTIVE_POLLUTION(cached_pollution)
+
 	for(var/turf/open/open_turf as anything in potential_activers)
-		if(open_turf.pollution && open_turf.pollution.CanShareWith(my_turf))
+		if(open_turf.pollution && open_turf.pollution.can_share_with(my_turf))
 			SET_ACTIVE_POLLUTION(open_turf.pollution)
 
-/datum/pollution/proc/CanShareWith(turf/open/shareto)
+/datum/pollution/proc/can_share_with(turf/open/shareto)
 	if(!shareto.pollution)
 		return TRUE
 	if(shareto.pollution.height + 1 < height)
 		return TRUE
 	return FALSE
 
-/datum/pollution/proc/AssertPollution(turf/open/to_assert)
+/datum/pollution/proc/assert_pollution(turf/open/to_assert)
 	if(!to_assert.pollution)
 		new /datum/pollution(to_assert)
 
-/datum/pollution/proc/HandleOverlay()
+/datum/pollution/proc/handle_overlay()
 	if(managed_overlay)
-		my_turf.underlays -= managed_overlay
-	managed_overlay = GetOverlay(pollutants, total_amount)
+		my_turf.vis_contents -= managed_overlay
+		if(LAZYLEN(managed_overlay.vis_locs) == 0)
+			qdel(managed_overlay)
+	managed_overlay = get_overlay(pollutants, total_amount)
 	if(managed_overlay)
-		my_turf.underlays += managed_overlay
+		my_turf.vis_contents += managed_overlay
 
 ///Probably the most costly thing happening here
-/datum/pollution/proc/GetOverlay(list/pollutant_list, total_amount)
+/datum/pollution/proc/get_overlay(list/pollutant_list, total_amount)
 	var/datum/pollutant/pollutant
 	var/total_thickness
 	if(pollutant_list.len == 1)
@@ -223,15 +232,13 @@
 	if(!total_thickness || total_thickness < POLLUTANT_APPEARANCE_THICKNESS_THRESHOLD)
 		return
 
-	var/mutable_appearance/overlay = mutable_appearance('icons/effects/96x96.dmi', "smoke", FLY_LAYER, MOUSE_TRANSPARENT_PLANE, appearance_flags = KEEP_APART|RESET_TRANSFORM|RESET_COLOR)
-	overlay.pixel_x = -32
-	overlay.pixel_y = -32
+	var/obj/effect/abstract/pollution/overlay = new()
 	overlay.alpha = FLOOR(pollutant.alpha * total_thickness * THICKNESS_ALPHA_COEFFICIENT, 1)
 	overlay.color = pollutant.color
 	return overlay
 
 ///Atmos adjacency has been updated on this turf, see if it affects any of our pollutants
-/turf/proc/UpdateAdjacentPollutants()
+/turf/proc/update_adjacent_pollutants()
 	for(var/turf/open/open_turf as anything in atmos_adjacent_turfs)
 		if(open_turf.pollution)
 			SET_ACTIVE_POLLUTION(open_turf.pollution)

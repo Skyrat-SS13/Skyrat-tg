@@ -53,10 +53,10 @@
 		game_plane_master_controller.add_filter("weed_blur", 10, angular_blur_filter(0, 0, 0.45))
 	if(DT_PROB(2.5, delta_time))
 		to_chat(M, span_notice("[high_message]"))
-	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "stoned", /datum/mood_event/stoned, name)
+	M.add_mood_event("stoned", /datum/mood_event/stoned, name)
 	M.throw_alert("stoned", /atom/movable/screen/alert/stoned)
 	M.sound_environment_override = SOUND_ENVIRONMENT_DRUGGED
-	M.Dizzy(5 * REM * delta_time)
+	M.set_dizzy_if_lower(5 * REM * delta_time * 2 SECONDS)
 	M.adjust_nutrition(-1 * REM * delta_time) //munchies
 	if(DT_PROB(3.5, delta_time))
 		M.emote(pick("laugh","giggle"))
@@ -73,7 +73,7 @@
 	var/cg420_message = pick("It's major...", "Oh my goodness...",)
 	if(DT_PROB(1.5, delta_time))
 		M.say("[cg420_message]")
-	M.adjust_drowsyness(0.1 * REM * normalise_creation_purity() * delta_time)
+	M.adjust_drowsiness(0.2 SECONDS * REM * normalise_creation_purity() * delta_time)
 	if(DT_PROB(3.5, delta_time))
 		playsound(M, pick('modular_skyrat/master_files/sound/effects/lungbust_cough1.ogg','modular_skyrat/master_files/sound/effects/lungbust_cough2.ogg'), 50, TRUE)
 		M.emote("cough")

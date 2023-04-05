@@ -7,10 +7,9 @@
 	..()
 
 	new /obj/item/storage/bag/garment/engineering_chief (src)
-	new /obj/item/computer_hardware/hard_drive/role/ce(src)
+	new /obj/item/computer_disk/command/ce(src)
 	new /obj/item/radio/headset/heads/ce(src)
 	new /obj/item/megaphone/command(src)
-	new /obj/item/areaeditor/blueprints(src)
 	new /obj/item/holosign_creator/atmos(src)
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/door_remote/chief_engineer(src)
@@ -19,8 +18,15 @@
 	new /obj/item/extinguisher/advanced(src)
 	new /obj/item/storage/photo_album/ce(src)
 	new /obj/item/storage/box/skillchips/engineering(src)
+	new /obj/item/storage/box/gas_miner_beacons(src) // SKYRAT EDIT ADDITION
 	new /obj/item/construction/plumbing/engineering(src) //SKYRAT EDIT ADDITION
 	new /obj/item/circuitboard/machine/rodstopper(src) //SKYRAT EDIT ADDITION
+
+/obj/structure/closet/secure_closet/engineering_chief/populate_contents_immediate()
+	. = ..()
+
+	// Traitor steal objective
+	new /obj/item/areaeditor/blueprints(src)
 
 /obj/structure/closet/secure_closet/engineering_electrical
 	name = "electrical supplies locker"
@@ -47,7 +53,7 @@
 /obj/structure/closet/secure_closet/engineering_welding/PopulateContents()
 	..()
 	for(var/i in 1 to 3)
-		new /obj/item/clothing/head/welding(src)
+		new /obj/item/clothing/head/utility/welding(src)
 	for(var/i in 1 to 3)
 		new /obj/item/weldingtool(src)
 
@@ -82,8 +88,9 @@
 	new /obj/item/tank/internals/emergency_oxygen/engi(src)
 	new /obj/item/holosign_creator/atmos(src)
 	new /obj/item/watertank/atmos(src)
-	new /obj/item/clothing/suit/fire/atmos(src)
+	new /obj/item/clothing/suit/utility/fire/atmos(src)
+	new /obj/item/clothing/gloves/atmos(src)
 	new /obj/item/clothing/mask/gas/atmos(src)
-	new /obj/item/clothing/head/hardhat/atmos(src)
+	new /obj/item/clothing/head/utility/hardhat/welding/atmos(src)
 	new /obj/item/clothing/glasses/meson/engine/tray(src)
 	new /obj/item/extinguisher/advanced(src)

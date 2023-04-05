@@ -159,6 +159,9 @@
 	///Var used in the meltdown phase
 	var/final_countdown = FALSE
 
+	///Flags used in the alert proc to select what messages to show when the HFR is delaminating (HYPERTORUS_FLAG_HIGH_POWER_DAMAGE | HYPERTORUS_FLAG_HIGH_FUEL_MIX_MOLE | HYPERTORUS_FLAG_IRON_CONTENT_DAMAGE | HYPERTORUS_FLAG_IRON_CONTENT_INCREASE | HYPERTORUS_FLAG_EMPED)
+	var/warning_damage_flags = NONE
+
 /obj/machinery/atmospherics/components/unary/hypertorus/core/Initialize(mapload)
 	. = ..()
 	internal_fusion = new
@@ -172,14 +175,8 @@
 	radio.recalculateChannels()
 	investigate_log("has been created.", INVESTIGATE_HYPERTORUS)
 
-	RegisterSignal(src.loc, COMSIG_ATOM_ENTERED, .proc/on_entered)
-
-	for(var/atom/movable/movable_object in src.loc)
-		SEND_SIGNAL(movable_object, COMSIG_MOVABLE_SECLUDED_LOCATION)
-
-/obj/machinery/atmospherics/components/unary/hypertorus/core/proc/on_entered(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
-	SIGNAL_HANDLER
-	SEND_SIGNAL(arrived, COMSIG_MOVABLE_SECLUDED_LOCATION) // to prevent stationloving items (eg. nuke disk) being teleported onto core
+	// Our center is unreachable, so prevent stuff from getting stuck in there
+	AddElement(/datum/element/trait_loc, TRAIT_SECLUDED_LOCATION)
 
 /obj/machinery/atmospherics/components/unary/hypertorus/core/Destroy()
 	unregister_signals(TRUE)

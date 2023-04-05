@@ -1,6 +1,6 @@
-//////////////////////
-//		Walls		//
-//////////////////////
+/*
+*	WALLS
+*/
 
 /turf/closed/indestructible/dungeon
 	name = "stone wall"
@@ -8,15 +8,15 @@
 	icon = 'modular_skyrat/modules/mapping/icons/unique/dungeon.dmi'
 	icon_state = "wall"
 	base_icon_state = "wall"
-	explosion_block = INFINITY
+	explosive_resistance = INFINITY
 
 /turf/closed/indestructible/dungeon/corner
 	icon_state = "wall-corner"
 	base_icon_state = "wall-corner"
 
-//////////////////////
-//       Turfs       //
-//////////////////////
+/*
+*	TURFS
+*/
 
 /turf/open/floor/plating/cobblestone
 	gender = PLURAL
@@ -45,9 +45,9 @@
 	baseturfs = /turf/open/floor/plating/cobblestone/sparse/planet
 	planetary_atmos = TRUE
 
-//////////////////////
-//    Fake Walls    //
-//////////////////////
+/*
+*	FAKE WALLS
+*/
 
 /obj/structure/dungeon
 	name = "stone wall with a hole in it!"
@@ -69,7 +69,7 @@
 	density = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
-/obj/structure/railing/stone/Initialize()
+/obj/structure/railing/stone/Initialize(mapload)
 	.=..()
 	if(dir == 2)
 		layer = ABOVE_MOB_LAYER
@@ -115,6 +115,7 @@
 	desc = "A brick that's stuck out of the wall. Huh."
 	icon = 'modular_skyrat/modules/mapping/icons/unique/dungeon.dmi'
 	icon_state = "doorctrl"
+	light_mask = null
 	power_channel = AREA_USAGE_ENVIRON
 	use_power = NO_POWER_USE
 	idle_power_usage = 0

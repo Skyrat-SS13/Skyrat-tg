@@ -12,12 +12,12 @@
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/pet_carrier(src)
 	new /obj/item/storage/bag/garment/captain(src)
-	new /obj/item/computer_hardware/hard_drive/role/captain(src)
+	new /obj/item/computer_disk/command/captain(src)
 	new /obj/item/storage/box/silver_ids(src)
 	new /obj/item/radio/headset/heads/captain/alt(src)
 	new /obj/item/radio/headset/heads/captain(src)
 	new /obj/item/storage/belt/sabre(src)
-	new /obj/item/storage/box/gunset/pdh_captain(src) // SKYRAT EDIT ADDITION
+	new /obj/item/storage/box/gunset/pdh(src) // SKYRAT EDIT CHANGE - ORIGINAL: new /obj/item/gun/energy/e_gun(src)
 	new /obj/item/door_remote/captain(src)
 	new /obj/item/storage/photo_album/captain(src)
 
@@ -29,15 +29,16 @@
 
 /obj/structure/closet/secure_closet/hop/PopulateContents()
 	..()
+	new /obj/item/dog_bone(src)
 	new /obj/item/storage/bag/garment/hop(src)
 	new /obj/item/storage/lockbox/medal/service(src)
-	new /obj/item/computer_hardware/hard_drive/role/hop(src)
+	new /obj/item/computer_disk/command/hop(src)
 	new /obj/item/radio/headset/heads/hop(src)
 	new /obj/item/storage/box/ids(src)
 	new /obj/item/storage/box/ids(src)
 	new /obj/item/megaphone/command(src)
 	new /obj/item/assembly/flash/handheld(src)
-	new /obj/item/storage/box/gunset/pdh(src) // SKYRAT EDIT ADDITION
+	new /obj/item/gun/energy/e_gun(src)
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/pet_carrier(src)
 	new /obj/item/door_remote/civilian(src)
@@ -53,7 +54,7 @@
 /obj/structure/closet/secure_closet/hos/PopulateContents()
 	..()
 
-	new /obj/item/computer_hardware/hard_drive/role/hos(src)
+	new /obj/item/computer_disk/command/hos(src)
 	new /obj/item/radio/headset/heads/hos(src)
 	new /obj/item/storage/bag/garment/hos(src)
 	new /obj/item/storage/lockbox/medal/sec(src)
@@ -63,26 +64,32 @@
 	new /obj/item/storage/box/flashbangs(src)
 	new /obj/item/shield/riot/tele(src)
 	new /obj/item/storage/belt/security/full(src)
-	new /obj/item/gun/energy/e_gun/hos(src)
-	new /obj/item/pinpointer/nuke(src)
 	new /obj/item/circuitboard/machine/techfab/department/security(src)
 	new /obj/item/storage/photo_album/hos(src)
 
+/obj/structure/closet/secure_closet/hos/populate_contents_immediate()
+	. = ..()
+
+	// Traitor steal objectives
+	new /obj/item/gun/energy/e_gun/hos(src)
+	new /obj/item/pinpointer/nuke(src)
+
 /obj/structure/closet/secure_closet/warden
-	name = "\proper warden's locker"
+	name = "warden's locker"
 	req_access = list(ACCESS_ARMORY)
 	icon_state = "warden"
 
 /obj/structure/closet/secure_closet/warden/PopulateContents()
 	..()
+	new /obj/item/dog_bone(src)
 	new /obj/item/radio/headset/headset_sec(src)
 	new /obj/item/clothing/suit/armor/vest/warden(src)
-	//new /obj/item/clothing/head/warden(src) SKYRAT EDIT REMOVAL
-	//new /obj/item/clothing/head/warden/drill(src) SKYRAT EDIT REMOVAL
+	//new /obj/item/clothing/head/hats/warden(src) SKYRAT EDIT REMOVAL
+	//new /obj/item/clothing/head/hats/warden/drill(src) SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/head/beret/sec/navywarden(src)
 	//new /obj/item/clothing/suit/armor/vest/warden/alt(src) //SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/under/rank/security/warden/formal(src)
-	new /obj/item/clothing/suit/security/warden(src) //SKYRAT ADDITION - FORMAL COAT
+	new /obj/item/clothing/suit/jacket/warden/blue(src) //SKYRAT ADDITION - FORMAL COAT
 	//new /obj/item/clothing/under/rank/security/warden/skirt(src) SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
 	new /obj/item/holosign_creator/security(src)
@@ -97,14 +104,15 @@
 
 /obj/structure/closet/secure_closet/security
 	name = "security officer's locker"
-	req_access = list(ACCESS_SECURITY)
+	req_access = list(ACCESS_BRIG)
 	icon_state = "sec"
 
 /obj/structure/closet/secure_closet/security/PopulateContents()
 	..()
-	new /obj/item/clothing/suit/armor/vest/security(src) //SKYRAT EDIT CHANGE
-	new /obj/item/clothing/head/security_cap(src) //SKYRAT EDIT CHANGE
-	new /obj/item/clothing/head/helmet/sec(src) //SKYRAT EDIT ADDITION
+//	new /obj/item/clothing/suit/armor/vest(src) //SKYRAT EDIT REMOVAL
+	new /obj/item/clothing/suit/armor/vest/alt/sec(src)
+	new /obj/item/clothing/head/security_cap(src) //SKYRAT EDIT ADDITION
+	new /obj/item/clothing/head/helmet/sec(src)
 	new /obj/item/radio/headset/headset_sec(src)
 	new /obj/item/radio/headset/headset_sec/alt(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
@@ -121,83 +129,50 @@
 	name = "\proper customs agent's locker"
 	req_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_CARGO)
 	icon_state = "qm"
-	icon = 'icons/obj/closet.dmi'
+	icon = 'icons/obj/storage/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/cargo/PopulateContents()
-	new /obj/item/radio/headset/headset_cargo(src)
-	new /obj/item/clothing/shoes/sneakers/black(src)
-	new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/customs_agent(src)
-	new /obj/item/clothing/head/helmet/blueshirt/skyrat/guard(src)
-	new /obj/item/clothing/head/beret/sec/cargo(src)
-	new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent(src)
+	new /obj/item/storage/bag/garment/customs_agent(src)
 	new /obj/item/restraints/handcuffs/cable/orange(src)
 	new /obj/item/assembly/flash/handheld(src)
-	new /obj/item/melee/baton/security/loaded/departmental/cargo(src)
-	new /obj/item/clothing/glasses/hud/security(src)
-	new /obj/item/clothing/glasses/hud/gun_permit(src)
-	new /obj/item/storage/box/gunset/pepperball(src)
 
 /obj/structure/closet/secure_closet/security/engine
 	name = "\proper engineering guard's locker"
-	req_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ENGINE_EQUIP)
+	req_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ENGINEERING)
 	icon_state = "eng_secure"
-	icon = 'icons/obj/closet.dmi'
+	icon = 'icons/obj/storage/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/engine/PopulateContents()
-	new /obj/item/radio/headset/headset_eng(src)
-	new /obj/item/clothing/shoes/workboots(src)
-	new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard(src)
-	new /obj/item/clothing/head/helmet/blueshirt/skyrat/guard(src)
-	new /obj/item/clothing/head/beret/sec/engineering(src)
-	new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard(src)
 	new /obj/item/restraints/handcuffs/cable/yellow(src)
+	new /obj/item/storage/bag/garment/engineering_guard(src)
 	new /obj/item/assembly/flash/handheld(src)
-	new /obj/item/melee/baton/security/loaded/departmental/engineering(src)
-	new /obj/item/clothing/glasses/hud/security(src)
-	new /obj/item/storage/box/gunset/pepperball(src)
 
 /obj/structure/closet/secure_closet/security/science
 	name = "\proper science guard's locker"
 	req_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_RESEARCH)
 	icon_state = "science"
-	icon = 'icons/obj/closet.dmi'
+	icon = 'icons/obj/storage/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/science/PopulateContents()
-	new /obj/item/radio/headset/headset_sci(src)
-	new /obj/item/clothing/shoes/sneakers/black(src)
-	new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat(src)
-	new /obj/item/clothing/head/helmet/blueshirt/skyrat(src)
-	new /obj/item/clothing/head/beret/sec/science(src)
-	new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat(src)
 	new /obj/item/restraints/handcuffs/cable/pink(src)
+	new /obj/item/storage/bag/garment/science_guard(src)
 	new /obj/item/assembly/flash/handheld(src)
-	new /obj/item/melee/baton/security/loaded/departmental/science(src)
-	new /obj/item/clothing/glasses/hud/security(src)
-	new /obj/item/storage/box/gunset/pepperball(src)
 
 /obj/structure/closet/secure_closet/security/med
 	name = "\proper orderly's locker"
 	req_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MEDICAL)
 	icon_state = "med_secure"
-	icon = 'icons/obj/closet.dmi'
+	icon = 'icons/obj/storage/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/med/PopulateContents()
-	new /obj/item/radio/headset/headset_med(src)
-	new /obj/item/clothing/shoes/sneakers/white(src)
-	new /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/orderly(src)
-	new /obj/item/clothing/head/helmet/blueshirt/skyrat/guard(src)
-	new /obj/item/clothing/head/beret/sec/medical(src)
-	new /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/orderly(src)
 	new /obj/item/restraints/handcuffs/cable/blue(src)
+	new /obj/item/storage/bag/garment/orderly(src)
 	new /obj/item/assembly/flash/handheld(src)
-	new /obj/item/melee/baton/security/loaded/departmental/medical(src)
-	new /obj/item/clothing/glasses/hud/security(src)
-	new /obj/item/storage/box/gunset/pepperball(src)
 // SKYRAT EDIT CHANGE END -- GOOFSEC DEP GUARDS
 
 /obj/structure/closet/secure_closet/detective
 	name = "\improper detective's cabinet"
-	req_access = list(ACCESS_FORENSICS)
+	req_access = list(ACCESS_DETECTIVE)
 	icon_state = "cabinet"
 	resistance_flags = FLAMMABLE
 	max_integrity = 70
@@ -230,7 +205,7 @@
 
 /obj/structure/closet/secure_closet/brig
 	name = "brig locker"
-	req_access = list(ACCESS_BRIG)
+	req_one_access = list(ACCESS_BRIG)
 	anchored = TRUE
 	var/id = null
 
@@ -282,8 +257,7 @@
 /obj/structure/closet/secure_closet/evidence
 	anchored = TRUE
 	name = "Secure Evidence Closet"
-	req_access_txt = "0"
-	req_one_access_txt = list(ACCESS_ARMORY, ACCESS_FORENSICS)
+	req_one_access = list("armory","detective")
 
 /obj/structure/closet/secure_closet/brig/PopulateContents()
 	..()
@@ -301,8 +275,8 @@
 	for(var/i in 1 to 3)
 		new /obj/item/paper/fluff/jobs/security/court_judgement (src)
 	new /obj/item/pen (src)
-	new /obj/item/clothing/suit/judgerobe (src)
-	new /obj/item/clothing/head/powdered_wig (src)
+	new /obj/item/clothing/suit/costume/judgerobe (src)
+	new /obj/item/clothing/head/costume/powdered_wig (src)
 	new /obj/item/storage/briefcase(src)
 
 /obj/structure/closet/secure_closet/contraband/armory
@@ -313,7 +287,7 @@
 /obj/structure/closet/secure_closet/contraband/heads
 	anchored = TRUE
 	name = "Contraband Locker"
-	req_access = list(ACCESS_HEADS)
+	req_access = list(ACCESS_COMMAND)
 
 /obj/structure/closet/secure_closet/armory1
 	name = "armory armor locker"
@@ -322,13 +296,18 @@
 
 /obj/structure/closet/secure_closet/armory1/PopulateContents()
 	..()
-	new /obj/item/clothing/suit/hooded/ablative(src)
 	for(var/i in 1 to 3)
 		new /obj/item/clothing/suit/armor/riot(src)
 	for(var/i in 1 to 3)
-		new /obj/item/clothing/head/helmet/riot(src)
+		new /obj/item/clothing/head/helmet/toggleable/riot(src)
 	for(var/i in 1 to 3)
 		new /obj/item/shield/riot(src)
+
+/obj/structure/closet/secure_closet/armory1/populate_contents_immediate()
+	. = ..()
+
+	// Traitor steal objective
+	new /obj/item/clothing/suit/hooded/ablative(src)
 
 /obj/structure/closet/secure_closet/armory2
 	name = "armory ballistics locker"

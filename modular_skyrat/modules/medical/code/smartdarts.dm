@@ -46,12 +46,15 @@
 	w_class = WEIGHT_CLASS_NORMAL //I might need to look into changing this later depending on feedback
 	icon = 'modular_skyrat/modules/medical/icons/obj/dartguns.dmi'
 	icon_state = "smartdartgun"
-	has_gun_safety = TRUE
+	worn_icon_state = "medicalsyringegun"
 	item_flags = null
 
-/obj/item/gun/syringe/smartdart/Initialize()
+/obj/item/gun/syringe/smartdart/Initialize(mapload)
 	. = ..()
 	chambered = new /obj/item/ammo_casing/syringegun/dart(src)
+
+/obj/item/gun/syringe/smartdart/give_gun_safeties()
+	return
 
 /obj/item/gun/syringe/smartdart/attackby(obj/item/container, mob/user, params, show_msg = TRUE)
 	if(istype(container, /obj/item/reagent_containers/syringe/smartdart))
@@ -59,6 +62,12 @@
 	else
 		to_chat(user, span_notice("The [container] is unable to fit inside of the [src]! Try using a <b>SmartDart</b> instead."))
 		return FALSE
+
+/obj/item/gun/syringe/smartdart/examine(mob/user)
+	. = ..()
+
+	for(var/obj/item/reagent_containers/syringe/dart as anything in syringes)
+		. += "There is a [dart] loaded."
 
 //Smartdart projectiles
 /obj/item/ammo_casing/syringegun/dart
@@ -76,6 +85,11 @@
 	var/list/allowed_medicine = list(
 		/datum/reagent/medicine,
 		/datum/reagent/vaccine
+	)
+	///Blacklist that contains medicines that SmartDarts are unable to inject.
+	var/list/disallowed_medicine = list(
+		/datum/reagent/inverse/,
+		/datum/reagent/medicine/morphine,
 	)
 
 /obj/projectile/bullet/dart/syringe/dart/on_hit(atom/target, blocked = FALSE)
@@ -127,6 +141,8 @@
 				continue
 
 		if(!is_type_in_list(meds, allowed_medicine))
+			continue
+		if(is_type_in_list(meds, disallowed_medicine))
 			continue
 		if(is_type_in_list(meds, allergy_list))
 			prevention_used = TRUE

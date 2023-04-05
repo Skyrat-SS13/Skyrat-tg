@@ -21,7 +21,7 @@
 	/// The access needed to use the vendor
 	var/list/required_access = list()
 
-/obj/machinery/armament_station/ComponentInitialize()
+/obj/machinery/armament_station/Initialize(mapload)
 	. = ..()
 	if(!armament_type)
 		return
@@ -38,6 +38,7 @@
 	desc = "A points card that can be used at an Armaments Station or Armaments Dealer."
 	icon = 'modular_skyrat/modules/armaments/icons/armaments.dmi'
 	icon_state = "armament_card"
+	w_class = WEIGHT_CLASS_TINY
 	/// How many points does this card have to use at the vendor?
 	var/points = 10
 

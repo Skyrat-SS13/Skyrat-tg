@@ -1,5 +1,5 @@
 
-#define EMOTE_DELAY 5 SECONDS //To prevent spam emotes.
+#define EMOTE_DELAY (5 SECONDS) //To prevent spam emotes.
 
 /mob
 	var/nextsoundemote = 1 //Time at which the next emote can be played
@@ -11,10 +11,14 @@
 /datum/emote/living/custom
 	mob_type_blacklist_typecache = list(/mob/living/brain)
 	cooldown = 0
+	stat_allowed = SOFT_CRIT
 
 //me-verb emotes should not have a cooldown check
 /datum/emote/living/custom/check_cooldown(mob/user, intentional)
 	return TRUE
+
+/datum/emote/living/blush
+	sound = 'modular_skyrat/modules/emotes/sound/emotes/blush.ogg'
 
 /datum/emote/living/quill
 	key = "quill"
@@ -52,6 +56,12 @@
 		return 'modular_skyrat/modules/emotes/sound/emotes/female/female_sneeze.ogg'
 	return
 
+/datum/emote/flip/can_run_emote(mob/user, status_check, intentional)
+	if(intentional && !HAS_TRAIT(user, TRAIT_FREERUNNING) && !isobserver(user))
+		user.balloon_alert(user, "not nimble enough!")
+		return FALSE
+	return ..()
+
 /datum/emote/living/peep
 	key = "peep"
 	key_third_person = "peeps"
@@ -68,20 +78,11 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/peep.ogg'
 
-/datum/emote/living/snap
-	key = "snap"
-	key_third_person = "snaps"
-	message = "snaps their fingers."
-	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = TRUE
-	hands_use_check = TRUE
-	vary = TRUE
-	sound = 'modular_skyrat/modules/emotes/sound/voice/snap.ogg'
-
 /datum/emote/living/snap2
 	key = "snap2"
 	key_third_person = "snaps twice"
 	message = "snaps twice."
+	message_param = "snaps twice at %t."
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
 	hands_use_check = TRUE
@@ -92,6 +93,7 @@
 	key = "snap3"
 	key_third_person = "snaps thrice"
 	message = "snaps thrice."
+	message_param = "snaps thrice at %t."
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
 	hands_use_check = TRUE
@@ -504,3 +506,19 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/goose_honk.ogg'
+
+/datum/emote/living/gnash
+	key = "gnash"
+	key_third_person = "gnashes"
+	message = "gnashes."
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'sound/weapons/bite.ogg'
+
+/datum/emote/living/thump
+	key = "thump"
+	key_third_person = "thumps"
+	message = "thumps their foot!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'sound/effects/glassbash.ogg'

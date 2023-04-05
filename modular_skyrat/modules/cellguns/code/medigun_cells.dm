@@ -27,7 +27,10 @@
 
 	target.adjustOxyLoss(-amount_healed)
 
-//PROCS//
+/*
+*	PROCS
+*/
+
 /// Applies digust by damage thresholds.
 /obj/projectile/energy/medical/proc/DamageDisgust(mob/living/target, type_damage)
 	if(type_damage >= 100)
@@ -121,8 +124,15 @@
 
 	target.adjustToxLoss(-(amount_healed * healing_multiplier))
 
-//T1 Healing Projectiles//
-//The Basic Brute Heal Projectile//
+/*
+*	HEALING PROJECTILES
+*/
+
+/*
+*	TIER ONE
+*/
+
+//The Basic Brute Heal Projectile
 /obj/item/ammo_casing/energy/medical/brute1
 	projectile_type = /obj/projectile/energy/medical/brute
 	select_name = "brute"
@@ -198,8 +208,11 @@
 	. = ..()
 	safeBurn(target, amount_healed, base_disgust)
 
-//T2 Healing Projectiles//
-//Tier II Brute Projectile//
+/*
+*	TIER TWO
+*/
+
+//Tier II Brute Projectile
 /obj/item/ammo_casing/energy/medical/brute2
 	projectile_type = /obj/projectile/energy/medical/brute/better
 	select_name = "brute II"
@@ -212,7 +225,7 @@
 	max_clone = 1/3
 	base_disgust = 2
 
-//Tier II Burn Projectile//
+//Tier II Burn Projectile
 /obj/item/ammo_casing/energy/medical/burn2
 	projectile_type = /obj/projectile/energy/medical/burn/better
 	select_name = "burn II"
@@ -225,7 +238,7 @@
 	max_clone = 1/3
 	base_disgust = 2
 
-//Tier II Oxy Projectile//
+//Tier II Oxy Projectile
 /obj/item/ammo_casing/energy/medical/oxy2
 	projectile_type = /obj/projectile/energy/medical/oxygen/better
 	select_name = "oxygen II"
@@ -236,7 +249,7 @@
 	pass_flags =  UPGRADED_MEDICELL_PASSFLAGS
 	amount_healed = 20
 
-//Tier II Toxin Projectile//
+//Tier II Toxin Projectile
 /obj/item/ammo_casing/energy/medical/toxin2
 	projectile_type = /obj/projectile/energy/medical/toxin/better
 	select_name = "toxin II"
@@ -266,8 +279,12 @@
 	amount_healed = 11.25
 	base_disgust = 2
 
-//T3 Healing Projectiles//
-//Tier III Brute Projectile//
+
+/*
+*	TIER THREE
+*/
+
+//Tier III Brute Projectile
 /obj/item/ammo_casing/energy/medical/brute3
 	projectile_type = /obj/projectile/energy/medical/brute/better/best
 	select_name = "brute III"
@@ -279,7 +296,7 @@
 	max_clone = 1/9
 	base_disgust = 1
 
-//Tier III Burn Projectile//
+//Tier III Burn Projectile
 /obj/item/ammo_casing/energy/medical/burn3
 	projectile_type = /obj/projectile/energy/medical/burn/better/best
 	select_name = "burn III"
@@ -291,7 +308,7 @@
 	max_clone = 1/9
 	base_disgust = 1
 
-//Tier III Oxy Projectile//
+//Tier III Oxy Projectile
 /obj/item/ammo_casing/energy/medical/oxy3
 	projectile_type = /obj/projectile/energy/medical/oxygen/better/best
 	select_name = "oxygen III"
@@ -301,7 +318,7 @@
 	name = "powerful oxygen heal shot"
 	amount_healed = 30
 
-//Tier III Toxin Projectile//
+//Tier III Toxin Projectile
 /obj/item/ammo_casing/energy/medical/toxin3
 	projectile_type = /obj/projectile/energy/medical/toxin/better/best
 	select_name = "toxin III"
@@ -332,15 +349,16 @@
 	amount_healed = 15
 	base_disgust = 1
 
-//End of Basic Tiers of cells.
+/*
+*	UTILITY CELLS
+*/
 
-//Utility Cells
 //Utility basis
 /obj/projectile/energy/medical/utility
 	name = "utility medical shot"
 	pass_flags =  UPGRADED_MEDICELL_PASSFLAGS
 
-//CLotting
+//Clotting
 /obj/item/ammo_casing/energy/medical/utility/clotting
 	projectile_type = /obj/projectile/energy/medical/utility/clotting
 	select_name = "clotting"
@@ -395,7 +413,7 @@
 		return
 
 	var/mob/living/carbon/wearer = target
-	var/obj/item/clothing/gown = new /obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
+	var/obj/item/clothing/gown = new /obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown/hardlight
 
 	if(wearer.equip_to_slot_if_possible(gown, ITEM_SLOT_OCLOTHING, 1, 1, 1))
 		wearer.visible_message(span_notice("The [gown] covers [wearer] body"), span_notice("The [gown] wraps around your body, covering you"))
@@ -415,7 +433,6 @@
 	icon_state = "glob_projectile"
 	shrapnel_type = /obj/item/mending_globule/hardlight
 	embedding = list("embed_chance" = 100, ignore_throwspeed_threshold = TRUE, "pain_mult" = 0, "jostle_pain_mult" = 0, "fall_chance" = 0)
-	nodamage = TRUE
 	damage = 0
 
 /obj/projectile/energy/medical/utility/salve/on_hit(mob/living/target)
@@ -473,18 +490,18 @@
 
 	body.visible_message(span_notice("[body]'s body teleports to [firer]!"))
 
-/obj/projectile/energy/medical/utility/body_teleporter/proc/teleport_effect(var/location)
+/obj/projectile/energy/medical/utility/body_teleporter/proc/teleport_effect(location)
 	var/datum/effect_system/spark_spread/quantum/sparks = new /datum/effect_system/spark_spread/quantum //uses the teleport effect from quantum pads
 	sparks.set_up(5, 1, get_turf(location))
 	sparks.start()
 
 //Objects Used by medicells.
-/obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
+/obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown/hardlight
 	name = "hardlight hospital gown"
-	desc = "A hospital Gown made out of hardlight, you can barely feel it on your body"
+	desc = "A hospital gown made out of hardlight - you can barely feel it on your body, especially with all the anesthetics."
 	icon_state = "lgown"
 
-/obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight/dropped(mob/user)
+/obj/item/clothing/suit/toggle/labcoat/skyrat/hospitalgown/hardlight/dropped(mob/user)
 	. = ..()
 	var/mob/living/carbon/wearer = user
 
@@ -531,9 +548,9 @@
 	buildstacktype = FALSE //It would not be good if people could use this to farm materials.
 	var/deploytime = 20 SECONDS //How long the roller beds lasts for without someone buckled to it.
 
-/obj/structure/bed/roller/medigun/Initialize()
+/obj/structure/bed/roller/medigun/Initialize(mapload)
 	. = ..()
-	addtimer(CALLBACK(src, .proc/check_bed), deploytime)
+	addtimer(CALLBACK(src, PROC_REF(check_bed)), deploytime)
 
 /obj/structure/bed/roller/medigun/proc/check_bed() //Checks to see if anyone is buckled to the bed, if not the bed will qdel itself.
 	if(!has_buckled_mobs())
@@ -548,7 +565,7 @@
 
 /obj/structure/bed/roller/medigun/MouseDrop(over_object, src_location, over_location)
 	if(over_object == usr && Adjacent(usr))
-		if(!ishuman(usr) || !usr.canUseTopic(src, BE_CLOSE))
+		if(!ishuman(usr) || !usr.can_perform_action(src))
 			return FALSE
 
 		if(has_buckled_mobs())
@@ -575,7 +592,7 @@
 	/// A list of areas that the effect works in, if area_locked is set to true
 	var/list/teleport_areas
 	/// Where the target will be teleported to.
-	var/destination_area = /area/medical/medbay/lobby
+	var/destination_area = /area/station/medical/medbay/lobby
 
 	/// Is there a grace period before someone is teleported
 	var/grace_period = FALSE
@@ -589,7 +606,7 @@
 
 /obj/projectile/energy/medical/utility/relocation/standard
 	area_locked = TRUE
-	teleport_areas = list(/area/medical/surgery, /area/medical/treatment_center, /area/medical/storage, /area/medical/patients_rooms)
+	teleport_areas = list(/area/station/medical/surgery, /area/station/medical/treatment_center, /area/station/medical/storage, /area/station/medical/patients_rooms)
 	grace_period = TRUE
 	access_teleporting = TRUE
 
@@ -608,6 +625,12 @@
 		var/target_access = teleportee.wear_id.GetAccess() //Stores the access of the target within a variable
 		if(required_access in target_access)
 			return FALSE
+
+	if(teleportee.GetComponent(/datum/component/medigun_relocation))
+		return FALSE
+
+	if(target.buckled)
+		return FALSE
 
 	if(grace_period)
 		to_chat(teleportee, span_warning("You have [(time_allowance / 10)] seconds to leave, if you do not leave in this time, you will be forcibly teleported outside."))
@@ -647,7 +670,7 @@
 	area_locked = locked
 	destination_area = destination
 
-	addtimer(CALLBACK(src, .proc/dispense_treat), (time_allowance * 0.95))
+	addtimer(CALLBACK(src, PROC_REF(dispense_treat)), (time_allowance * 0.95))
 	QDEL_IN(src, time_allowance)
 
 /datum/component/medigun_relocation/Destroy()

@@ -7,8 +7,6 @@
 #define COMSIG_LIVING_UPDATED_RESTING "living_updated_resting" //from base of (/mob/living/proc/update_resting): (resting)
 ///Horror form bombastic flag
 #define COMSIG_HORRORFORM_EXPLODE "horrorform_explode"
-///Overlay for whitestuff
-#define COMSIG_MOB_CUMFACED "mob_cumfaced" //from /datum/component/cumfaced/Initialize(), when you get covered in cum
 ///Fired in combat_indicator.dm, used for syncing CI between mech and pilot
 #define COMSIG_MOB_CI_TOGGLED "mob_ci_toggled"
 /// When a hostile simple mob loses it's target.
@@ -74,3 +72,19 @@
 
 /// From mob/living/*/set_combat_mode(): (new_state)
 #define COMSIG_LIVING_COMBAT_MODE_TOGGLE "living_combat_mode_toggle"
+
+
+/// when someone attempts to evolve through the rune
+#define COMSIG_RUNE_EVOLUTION "rune_evolution"
+
+/// To chambered round on gun's `process_fire()`: (list/iff_factions)
+#define COMSIG_CHAMBERED_BULLET_FIRE "chambered_bullet_fire"
+
+/// /datum/component/clockwork_trap signals: ()
+#define COMSIG_CLOCKWORK_SIGNAL_RECEIVED "clock_received"
+
+/// Called when a clock cultist uses a clockwork slab: (obj/item/clockwork/clockwork_slab/slab)
+#define COMSIG_CLOCKWORK_SLAB_USED "clockwork_slab_used"
+
+/// Engineering Override Access manual toggle
+#define COMSIG_GLOB_FORCE_ENG_OVERRIDE "force_engineering_override"

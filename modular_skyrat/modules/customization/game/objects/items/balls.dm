@@ -18,7 +18,7 @@
 	inhand_icon_state = "tennis_rainbow"
 	actions_types = list(/datum/action/item_action/squeeze)		//Giving the masses easy access to unilimted honks would be annoying
 
-/obj/item/toy/tennis/rainbow/Initialize()
+/obj/item/toy/tennis/rainbow/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/squeak)
 
@@ -47,7 +47,6 @@
 	desc = "A green tennis ball. It seems to have an impermeable coating."
 	icon_state = "tennis_green"
 	inhand_icon_state = "tennis_green"
-	permeability_coefficient = 0.9
 
 /obj/item/toy/tennis/cyan	//electric
 	name = "cyan tennis ball"

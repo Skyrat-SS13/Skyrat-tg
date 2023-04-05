@@ -20,7 +20,6 @@
 	contraband = list(
 		/obj/item/clothing/glasses/sunglasses = 2,
 		/obj/item/storage/fancy/donut_box = 2,
-		/obj/item/armament_token/sidearm_blackmarket = 2,
 	)
 	premium = list(
 		/obj/item/storage/belt/security/webbing = 4,
@@ -53,12 +52,13 @@
 	name = "\improper Peacekeeper Outfitting Station"
 	desc = "A vending machine stocked with Lopland's \"Peacekeeper\" security package, including standardized uniforms and general equipment."
 	icon = 'modular_skyrat/modules/sec_haul/icons/vending/vending.dmi'
+	light_mask = "sec-light-mask"
 	icon_state = "peace"
 	product_ads = "Beat perps in style!;The stains wash right out!;You have the right to be fashionable!;Now you can be the fashion police you always wanted to be!"
 	vend_reply = "Good luck, Peacekeeper!"
 	products = list(/obj/item/clothing/suit/hooded/wintercoat/security = 5,
 					/obj/item/clothing/suit/toggle/jacket/sec = 5,
-					/obj/item/clothing/suit/toggle/brit/sec = 5,
+					/obj/item/clothing/suit/armor/vest/peacekeeper/brit = 5,
 					/obj/item/clothing/neck/security_cape = 5,
 					/obj/item/clothing/neck/security_cape/armplate = 5,
 					/obj/item/storage/backpack/security = 5,
@@ -67,19 +67,19 @@
 					/obj/item/clothing/under/rank/security/officer = 10,
 					/obj/item/clothing/under/rank/security/peacekeeper/tactical = 4,
 					/obj/item/clothing/under/rank/security/peacekeeper/sol/cadet = 3,
-					/obj/item/clothing/under/rank/security/peacekeeper/sol/traffic = 3,
 					/obj/item/clothing/under/rank/security/peacekeeper/sol = 3,
-					/obj/item/clothing/shoes/jackboots/security = 10,
+					/obj/item/clothing/under/rank/security/skyrat/utility = 3,
+					/obj/item/clothing/shoes/jackboots/sec = 10,
 					/obj/item/clothing/head/security_garrison = 10,
 					/obj/item/clothing/head/security_cap = 10,
 					/obj/item/clothing/head/beret/sec/peacekeeper = 5,
-					/obj/item/clothing/head/ushanka/sec/blue = 10,
-					/obj/item/clothing/head/sec/peacekeeper/sol = 5,
-					/obj/item/clothing/head/sec/peacekeeper/sol/traffic = 5,
+					/obj/item/clothing/head/costume/ushanka/sec = 10,
+					/obj/item/clothing/head/hats/sec/peacekeeper/sol = 5,
+					/obj/item/clothing/head/hats/sec/peacekeeper/sol/traffic = 5,
 					/obj/item/clothing/gloves/color/black/security = 10,
 					)
 	premium = list( /obj/item/clothing/under/rank/security/officer/formal = 3,
-					/obj/item/clothing/suit/security/officer = 3,
+					/obj/item/clothing/suit/jacket/officer/blue = 3,
 					/obj/item/clothing/head/beret/sec/navyofficer = 3)
 	refill_canister = /obj/item/vending_refill/wardrobe/peacekeeper_wardrobe
 	payment_department = ACCOUNT_SEC
@@ -104,12 +104,12 @@
 					/obj/item/clothing/shoes/jackboots = 3,
 					/obj/item/clothing/head/beret/sec = 3,
 					/obj/item/clothing/head/soft/sec = 3,
-					/obj/item/clothing/mask/bandana/color/red = 3,
+					/obj/item/clothing/mask/bandana/red = 3,
 					/obj/item/clothing/gloves/color/black = 3,
 					/obj/item/clothing/under/rank/security/officer/skirt = 3,
-					/obj/item/clothing/under/utility/sec/old = 3,
+					/obj/item/clothing/under/rank/security/skyrat/utility/redsec = 3,
 					/obj/item/clothing/suit/toggle/jacket/sec/old = 3,
 					)
 	premium = list( /obj/item/clothing/under/rank/security/officer/formal = 5,
-					/obj/item/clothing/suit/security/officer = 5,
+					/obj/item/clothing/suit/jacket/officer/tan = 5,
 					/obj/item/clothing/head/beret/sec/navyofficer = 5)

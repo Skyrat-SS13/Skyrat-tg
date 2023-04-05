@@ -59,7 +59,8 @@
 			spawned_player.ckey = user.key
 
 		if(give_return != "No")
-			spawned_player.mind.AddSpell(new /obj/effect/proc_holder/spell/self/return_back, FALSE)
+			var/datum/action/cooldown/spell/return_back/return_spell = new(spawned_player)
+			return_spell.Grant(spawned_player)
 
 		if(dresscode != "Naked")
 			spawned_player.equipOutfit(dresscode)

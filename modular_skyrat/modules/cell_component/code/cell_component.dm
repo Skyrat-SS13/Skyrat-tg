@@ -75,10 +75,10 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 
 /datum/component/cell/RegisterWithParent()
 	//Component to Parent signal registries
-	RegisterSignal(parent, COMSIG_ITEM_POWER_USE, .proc/simple_power_use)
-	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/insert_cell)
-	RegisterSignal(parent, COMSIG_CLICK_CTRL_SHIFT , .proc/remove_cell)
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/examine_cell)
+	RegisterSignal(parent, COMSIG_ITEM_POWER_USE, PROC_REF(simple_power_use))
+	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(insert_cell))
+	RegisterSignal(parent, COMSIG_CLICK_CTRL_SHIFT , PROC_REF(remove_cell))
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(examine_cell))
 
 /datum/component/cell/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_ITEM_POWER_USE)
@@ -95,8 +95,15 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 		inserted_cell = null
 	return ..()
 
-/// This proc is the basic way of processing the cell, with included feedback. It will return a bitflag if it failed to use the power, or COMPONENT_POWER_SUCCESS if it succeeds.
-/// The user is sent the feedback, use_amount is an override, check_only will only return if it can use the cell and feedback relating to that.
+/**
+ * The basic way of processing the cell, with included feedback.
+ *
+ * This proc is the basic way of processing the cell, with included feedback.
+ * It will return a bitflag if it failed to use the power, or COMPONENT_POWER_SUCCESS if it succeeds.
+ * Arguments:
+ * * use_amount - an override
+ * * check_only - will only return if it can use the cell and feedback relating to that including any relevant detail
+ */
 /datum/component/cell/proc/simple_power_use(datum/source, use_amount, mob/user, check_only)
 	SIGNAL_HANDLER
 
@@ -156,7 +163,7 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 		to_chat(user, span_notice("You remove [inserted_cell] from [equipment]!"))
 		playsound(equipment, 'sound/weapons/magout.ogg', 40, TRUE)
 		inserted_cell.forceMove(get_turf(equipment))
-		INVOKE_ASYNC(user, /mob/living.proc/put_in_hands, inserted_cell)
+		INVOKE_ASYNC(user, TYPE_PROC_REF(/mob/living, put_in_hands), inserted_cell)
 		inserted_cell = null
 		if(on_cell_removed)
 			on_cell_removed.Invoke()

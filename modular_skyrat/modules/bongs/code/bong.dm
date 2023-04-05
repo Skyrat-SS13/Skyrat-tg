@@ -32,7 +32,7 @@
 	///How far does the smoke reach per use?
 	var/smoke_range = 2
 
-/obj/item/bong/Initialize()
+/obj/item/bong/Initialize(mapload)
 	. = ..()
 	create_reagents(chem_volume, INJECTABLE | NO_REACT)
 
@@ -192,7 +192,7 @@
 	moan_chance = 50
 
 #define MAX_FAKE_STEAM_STAGES 5
-#define STAGE_DOWN_TIME 10 SECONDS
+#define STAGE_DOWN_TIME (10 SECONDS)
 
 /// Fake steam effect
 /obj/effect/abstract/fake_steam

@@ -1,13 +1,10 @@
 /datum/species/mammal
 	name = "Anthromorph" //Called so because the species is so much more universal than just mammals
 	id = SPECIES_MAMMAL
-	default_color = "#4B4B4B"
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
 		LIPS,
-		HAS_FLESH,
-		HAS_BONE,
 		HAIR,
 		FACEHAIR
 	)
@@ -15,6 +12,7 @@
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
+		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
@@ -30,27 +28,21 @@
 		"head_acc" = "None",
 		"neck_acc" = "None"
 	)
-	attack_verb = "slash"
-	attack_effect = ATTACK_EFFECT_CLAW
-	attack_sound = 'sound/weapons/slash.ogg'
-	miss_sound = 'sound/weapons/slashmiss.ogg'
 	liked_food = GRAIN | MEAT
-	disliked_food = CLOTH | GROSS
+	disliked_food = CLOTH | GROSS | GORE
 	toxic_food = TOXIC
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	digitigrade_customization = DIGITIGRADE_OPTIONAL
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant,
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/mutant,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/mutant,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/mutant,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/mutant,
 	)
 
-/datum/species/mammal/get_random_features()
-	var/list/returned = MANDATORY_FEATURE_LIST
+/datum/species/mammal/randomize_features(mob/living/carbon/human/human_mob)
 	var/main_color
 	var/second_color
 	var/third_color
@@ -84,10 +76,9 @@
 			main_color = "#[random_color()]"
 			second_color = "#[random_color()]"
 			third_color = "#[random_color()]"
-	returned["mcolor"] = main_color
-	returned["mcolor2"] = second_color
-	returned["mcolor3"] = third_color
-	return returned
+	human_mob.dna.features["mcolor"] = main_color
+	human_mob.dna.features["mcolor2"] = second_color
+	human_mob.dna.features["mcolor3"] = third_color
 
 /datum/species/mammal/get_random_body_markings(list/passed_features)
 	var/name = "None"
@@ -110,3 +101,15 @@
 
 /datum/species/mammal/get_species_lore()
 	return list("Make sure you fill out your own custom species lore!")
+
+/datum/species/mammal/prepare_human_for_preview(mob/living/carbon/human/human)
+	var/main_color = "#333333"
+	var/secondary_color = "#b8b8b8"
+	human.dna.features["mcolor"] = main_color
+	human.dna.features["mcolor2"] = secondary_color
+	human.dna.features["mcolor3"] = secondary_color
+	human.dna.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Husky", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, "#464646"))
+	human.dna.mutant_bodyparts["snout"] = list(MUTANT_INDEX_NAME = "Husky", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, secondary_color))
+	human.dna.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Husky", MUTANT_INDEX_COLOR_LIST = list(main_color, "#4D4D4D", secondary_color))
+	regenerate_organs(human, src, visual_only = TRUE)
+	human.update_body(TRUE)

@@ -7,19 +7,18 @@
 	worn_icon_state = "moistnugget"
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction
 	bolt_wording = "bolt"
-	bolt_type = BOLT_TYPE_STANDARD
+	bolt_type = BOLT_TYPE_LOCKING
 	semi_auto = FALSE
 	internal_magazine = TRUE
 	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
 	fire_sound_volume = 90
-	vary_fire_sound = FALSE
 	rack_sound = 'sound/weapons/gun/rifle/bolt_out.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/rifle/bolt_in.ogg'
 	tac_reloads = FALSE
 
 /obj/item/gun/ballistic/rifle/rack(mob/user = null)
 	if (bolt_locked == FALSE)
-		to_chat(user, span_notice("You open the bolt of \the [src]."))
+		balloon_alert(user, "bolt opened")
 		playsound(src, rack_sound, rack_sound_volume, rack_sound_vary)
 		process_chamber(FALSE, FALSE, FALSE)
 		bolt_locked = TRUE
@@ -34,7 +33,7 @@
 
 /obj/item/gun/ballistic/rifle/attackby(obj/item/A, mob/user, params)
 	if (!bolt_locked && !istype(A, /obj/item/stack/sheet/cloth))
-		to_chat(user, span_notice("The bolt is closed!"))
+		balloon_alert(user, "[bolt_wording] is closed!")
 		return
 	return ..()
 
@@ -60,7 +59,11 @@
 	knife_x_offset = 27
 	knife_y_offset = 13
 	can_be_sawn_off = TRUE
-	realistic = TRUE
+	var/jamming_chance = 20
+	var/unjam_chance = 10
+	var/jamming_increment = 5
+	var/jammed = FALSE
+	var/can_jam = TRUE
 
 /obj/item/gun/ballistic/rifle/boltaction/sawoff(mob/user)
 	. = ..()
@@ -69,7 +72,6 @@
 		can_bayonet = FALSE
 		update_appearance()
 
-/* - SKYRAT EDIT REMOVAL
 /obj/item/gun/ballistic/rifle/boltaction/attack_self(mob/user)
 	if(can_jam)
 		if(jammed)
@@ -78,7 +80,7 @@
 				unjam_chance = 10
 			else
 				unjam_chance += 10
-				to_chat(user, span_warning("[src] is jammed!"))
+				balloon_alert(user, "jammed!")
 				playsound(user,'sound/weapons/jammed.ogg', 75, TRUE)
 				return FALSE
 	..()
@@ -101,7 +103,6 @@
 					user.visible_message(span_notice("[user] finishes maintenance of [src]."))
 					jamming_chance = 10
 					qdel(item)
-*/ //SKYRAT EDIT END
 
 /obj/item/gun/ballistic/rifle/boltaction/blow_up(mob/user)
 	. = FALSE
@@ -118,11 +119,12 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/harpoon
 	fire_sound = 'sound/weapons/gun/sniper/shot.ogg'
 	can_be_sawn_off = FALSE
+	can_jam = FALSE
 
 /obj/item/gun/ballistic/rifle/boltaction/brand_new
 	desc = "A brand new Mosin Nagant issued by Nanotrasen for their interns. You would rather not to damage it."
 	can_be_sawn_off = FALSE
-	realistic = FALSE
+	can_jam = FALSE
 
 /obj/item/gun/ballistic/rifle/boltaction/brand_new/prime
 	name = "\improper Regal Nagant"
@@ -157,9 +159,7 @@
 	initial_fire_sound = 'sound/weapons/gun/sniper/shot.ogg'
 	alternative_fire_sound = 'sound/weapons/gun/shotgun/shot.ogg'
 	can_modify_ammo = TRUE
-	can_misfire = TRUE
-	misfire_probability = 0
-	misfire_percentage_increment = 5 //Slowly increases every shot
+	can_misfire = FALSE
 	can_bayonet = TRUE
 	knife_y_offset = 11
 	can_be_sawn_off = FALSE
@@ -176,9 +176,7 @@
 	inhand_icon_state = "musket_prime"
 	worn_icon_state = "musket_prime"
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/pipegun/prime
-	can_misfire = FALSE
-	misfire_probability = 0
-	misfire_percentage_increment = 0
+	can_jam = FALSE
 	projectile_damage_multiplier = 1
 
 /// MAGICAL BOLT ACTIONS + ARCANE BARRAGE? ///
@@ -189,7 +187,6 @@
 	var/guns_left = 30
 	mag_type = /obj/item/ammo_box/magazine/internal/enchanted
 	can_be_sawn_off = FALSE
-	realistic = FALSE
 
 /obj/item/gun/ballistic/rifle/enchanted/arcane_barrage
 	name = "arcane barrage"
@@ -204,7 +201,6 @@
 	flags_1 = NONE
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL
 	show_bolt_icon = FALSE //It's a magic hand, not a rifle
-	realistic = FALSE
 
 	mag_type = /obj/item/ammo_box/magazine/internal/arcane_barrage
 
@@ -235,3 +231,54 @@
 		user.put_in_hands(gun)
 	else
 		user.dropItemToGround(src, TRUE)
+
+// SNIPER //
+
+/obj/item/gun/ballistic/rifle/sniper_rifle
+	name = "anti-materiel sniper rifle"
+	desc = "A boltaction anti-materiel rifle, utilizing .50 BMG cartridges. While technically outdated in modern arms markets, it still works exceptionally well as \
+		an anti-personnel rifle. In particular, the employment of modern armored MODsuits utilizing advanced armor plating has given this weapon a new home on the battlefield. \
+		It is also able to be suppressed....somehow."
+	icon_state = "sniper"
+	weapon_weight = WEAPON_HEAVY
+	inhand_icon_state = "sniper"
+	worn_icon_state = null
+	fire_sound = 'sound/weapons/gun/sniper/shot.ogg'
+	fire_sound_volume = 90
+	load_sound = 'sound/weapons/gun/sniper/mag_insert.ogg'
+	rack_sound = 'sound/weapons/gun/sniper/rack.ogg'
+	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
+	recoil = 2
+	mag_type = /obj/item/ammo_box/magazine/sniper_rounds
+	internal_magazine = FALSE
+	w_class = WEIGHT_CLASS_NORMAL
+	slot_flags = ITEM_SLOT_BACK
+	mag_display = TRUE
+	tac_reloads = TRUE
+	rack_delay = 1 SECONDS
+	can_suppress = TRUE
+	can_unsuppress = TRUE
+	suppressor_x_offset = 3
+	suppressor_y_offset = 3
+
+/obj/item/gun/ballistic/rifle/sniper_rifle/examine(mob/user)
+	. = ..()
+	. += span_warning("<b>It seems to have a warning label:</b> Do NOT, under any circumstances, attempt to 'quickscope' with this rifle.")
+
+/obj/item/gun/ballistic/rifle/sniper_rifle/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/scope, range_modifier = 7) //enough range to at least make extremely good use of the penetrator rounds
+
+/obj/item/gun/ballistic/rifle/sniper_rifle/reset_semicd()
+	. = ..()
+	if(suppressed)
+		playsound(src, 'sound/machines/eject.ogg', 25, TRUE, ignore_walls = FALSE, extrarange = SILENCED_SOUND_EXTRARANGE, falloff_distance = 0)
+	else
+		playsound(src, 'sound/machines/eject.ogg', 50, TRUE)
+
+/obj/item/gun/ballistic/rifle/sniper_rifle/syndicate
+	desc = "A boltaction anti-materiel rifle, utilizing .50 BMG cartridges. While technically outdated in modern arms markets, it still works exceptionally well as \
+		an anti-personnel rifle. In particular, the employment of modern armored MODsuits utilizing advanced armor plating has given this weapon a new home on the battlefield. \
+		It is also able to be suppressed....somehow. This one seems to have a little picture of someone in a blood-red MODsuit stenciled on it, pointing at a green floppy disk. \
+		Who knows what that might mean."
+	pin = /obj/item/firing_pin/implant/pindicate

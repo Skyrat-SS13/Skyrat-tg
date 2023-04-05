@@ -5,7 +5,7 @@
  * card - The pAI card we're slotting in the MODsuit.
  */
 
-/obj/item/mod/control/proc/insert_pai(mob/user, obj/item/paicard/card)
+/obj/item/mod/control/proc/insert_pai(mob/user, obj/item/pai_card/card)
 	if(mod_pai)
 		balloon_alert(user, "pAI already installed!")
 		return
@@ -24,7 +24,7 @@
 	balloon_alert(mod_pai, "transferred to a suit")
 	mod_pai.can_transmit = TRUE
 	mod_pai.can_receive = TRUE
-	mod_pai.canholo = FALSE
+	mod_pai.can_holo = FALSE
 	mod_pai.remote_control = src
 	for(var/datum/action/action as anything in actions)
 		action.Grant(mod_pai)
@@ -76,34 +76,34 @@
 	if(feedback)
 		balloon_alert(mod_pai, "removed from a suit")
 	mod_pai.remote_control = null
-	mod_pai.canholo = TRUE
+	mod_pai.can_holo = TRUE
 	mod_pai = null
 
 
 #define MOVE_DELAY 2
 #define WEARER_DELAY 1
 #define LONE_DELAY 5
-#define CELL_PER_STEP DEFAULT_CHARGE_DRAIN * 2.5
-#define PAI_FALL_TIME 1 SECONDS
+#define CELL_PER_STEP (DEFAULT_CHARGE_DRAIN * 2.5)
+#define PAI_FALL_TIME (1 SECONDS)
 
 /obj/item/mod/control/relaymove(mob/user, direction)
 	if((!active && wearer) || (active && !can_pai_move_suit) || !core.charge_source() || core.charge_amount() < CELL_PER_STEP  || user != mod_pai || !COOLDOWN_FINISHED(src, cooldown_mod_move))
 		return FALSE
 	if(wearer && (wearer.pulledby?.grab_state || wearer.incapacitated() || wearer.stat))
 		return FALSE
-	var/timemodifier = MOVE_DELAY * (ISDIAGONALDIR(direction) ? SQRT_2 : 1) * (wearer ? WEARER_DELAY : LONE_DELAY)
+	var/timemodifier = MOVE_DELAY * (ISDIAGONALDIR(direction) ? sqrt(2) : 1) * (wearer ? WEARER_DELAY : LONE_DELAY)
 	COOLDOWN_START(src, cooldown_mod_move, movedelay * timemodifier + slowdown)
 	playsound(src, 'sound/mecha/mechmove01.ogg', 25, TRUE)
 	core.subtract_charge(CELL_PER_STEP)
 	if(wearer)
 		ADD_TRAIT(wearer, TRAIT_FORCED_STANDING, MOD_TRAIT)
-		addtimer(CALLBACK(src, .proc/pai_fall), PAI_FALL_TIME, TIMER_UNIQUE | TIMER_OVERRIDE)
+		addtimer(CALLBACK(src, PROC_REF(pai_fall)), PAI_FALL_TIME, TIMER_UNIQUE | TIMER_OVERRIDE)
 	if(ismovable(wearer?.loc))
 		return wearer.loc.relaymove(wearer, direction)
 	if(wearer && !wearer.Process_Spacemove(direction))
 		return FALSE
 	var/atom/movable/mover = wearer || src
-	return step(mover, direction)
+	return mover.try_step_multiz(direction)
 
 #undef MOVE_DELAY
 #undef WEARER_DELAY

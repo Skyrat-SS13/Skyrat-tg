@@ -26,7 +26,7 @@
 
 	var/obj/item/radio/headset/R = H.ears
 	R.set_frequency(FREQ_CENTCOM)
-	R.freqlock = TRUE
+	R.freqlock = RADIO_FREQENCY_LOCKED
 	..()
 
 /datum/outfit/space
@@ -59,12 +59,13 @@
 	name = "tournament gangster"
 
 	uniform = /obj/item/clothing/under/rank/security/detective
-	suit = /obj/item/clothing/suit/det_suit
+	suit = /obj/item/clothing/suit/jacket/det_suit
 	glasses = /obj/item/clothing/glasses/thermal/monocle
 	head = /obj/item/clothing/head/fedora/det_hat
 	l_hand = /obj/item/gun/ballistic
 	l_hand = null
-	r_pocket = /obj/item/ammo_box/c10mm
+	//r_pocket = /obj/item/ammo_box/c10mm
+	r_hand = /obj/item/ammo_box/c10mm // SKYRAT EDIT CHANGE
 
 /datum/outfit/tournament/janitor
 	name = "tournament janitor"
@@ -79,13 +80,13 @@
 	r_pocket = /obj/item/grenade/chem_grenade/cleaner
 	l_pocket = /obj/item/grenade/chem_grenade/cleaner
 	r_hand = /obj/item/mop
-	l_hand = /obj/item/reagent_containers/glass/bucket
+	l_hand = /obj/item/reagent_containers/cup/bucket
 
 /datum/outfit/tournament/janitor/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(visualsOnly)
 		return
 
-	var/obj/item/reagent_containers/glass/bucket/bucket = H.get_item_for_held_index(1)
+	var/obj/item/reagent_containers/cup/bucket/bucket = H.get_item_for_held_index(1)
 	bucket.reagents.add_reagent(/datum/reagent/water,70)
 
 /datum/outfit/laser_tag
@@ -103,6 +104,29 @@
 	head = /obj/item/clothing/head/helmet/redtaghelm
 	shoes = /obj/item/clothing/shoes/sneakers/red
 
+/datum/outfit/traitor_cutout
+	name = "Traitor Cutout"
+
+	uniform = /obj/item/clothing/under/color/grey
+	suit = /obj/item/clothing/suit/armor/vest
+	gloves = /obj/item/clothing/gloves/chief_engineer
+	mask = /obj/item/clothing/mask/gas
+	belt = /obj/item/storage/belt
+	l_hand = /obj/item/melee/energy/sword/saber/red
+	r_hand = /obj/item/gun/energy/recharge/ebow
+	shoes = /obj/item/clothing/shoes/magboots/advance
+
+/datum/outfit/rev_cutout
+	name = "Revolutionary Cutout"
+
+	uniform = /obj/item/clothing/under/color/grey
+	back = /obj/item/storage/backpack
+	gloves = /obj/item/clothing/gloves/color/yellow
+	mask = /obj/item/clothing/mask/gas
+	belt = /obj/item/storage/belt
+	l_hand = /obj/item/melee/baton/security/cattleprod
+	shoes = /obj/item/clothing/shoes/sneakers/black
+
 /datum/outfit/laser_tag/blue
 	name = "Laser Tag Blue"
 
@@ -119,10 +143,10 @@
 	id = /obj/item/card/id/advanced
 	id_trim = /datum/id_trim/pirate
 	uniform = /obj/item/clothing/under/costume/pirate
-	suit = /obj/item/clothing/suit/pirate/armored
+	suit = /obj/item/clothing/suit/costume/pirate/armored
 	ears = /obj/item/radio/headset/syndicate
 	glasses = /obj/item/clothing/glasses/eyepatch
-	head = /obj/item/clothing/head/bandana/armored
+	head = /obj/item/clothing/head/costume/pirate/bandana/armored
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 
 	back = /obj/item/storage/backpack/satchel/leather //SKYRAT EDIT ADDITION
@@ -134,7 +158,7 @@
 	var/obj/item/radio/outfit_radio = equipped.ears
 	if(outfit_radio)
 		outfit_radio.set_frequency(FREQ_SYNDICATE)
-		outfit_radio.freqlock = TRUE
+		outfit_radio.freqlock = RADIO_FREQENCY_LOCKED
 
 	var/obj/item/card/id/outfit_id = equipped.wear_id
 	if(outfit_id)
@@ -142,11 +166,17 @@
 		outfit_id.update_label()
 		outfit_id.update_icon()
 
+	var/obj/item/clothing/under/pirate_uniform = equipped.w_uniform
+	if(pirate_uniform)
+		pirate_uniform.has_sensor = NO_SENSORS
+		pirate_uniform.sensor_mode = SENSOR_OFF
+		equipped.update_suit_sensors()
+
 /datum/outfit/pirate/captain
 	name = "Space Pirate Captain"
 
 	id_trim = /datum/id_trim/pirate/captain
-	head = /obj/item/clothing/head/pirate/armored
+	head = /obj/item/clothing/head/costume/pirate/armored
 
 /datum/outfit/pirate/space
 	name = "Space Pirate (EVA)"
@@ -183,7 +213,7 @@
 	name = "Silver Scale Captain"
 
 	id_trim = /datum/id_trim/pirate/captain/silverscale
-	head = /obj/item/clothing/head/crown
+	head = /obj/item/clothing/head/costume/crown
 	mask = /obj/item/clothing/mask/cigarette/cigar/havana
 	l_pocket = /obj/item/lighter
 
@@ -220,8 +250,8 @@
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	ears = /obj/item/radio/headset
 	glasses = /obj/item/clothing/glasses/thermal/monocle
-	gloves = /obj/item/clothing/gloves/color/latex
-	head = /obj/item/clothing/head/welding
+	gloves = /obj/item/clothing/gloves/latex
+	head = /obj/item/clothing/head/utility/welding
 	mask = /obj/item/clothing/mask/surgical
 	l_pocket = /obj/item/knife/kitchen
 	r_pocket = /obj/item/scalpel
@@ -240,7 +270,8 @@
 	id = /obj/item/card/id/advanced/chameleon/black
 	id_trim = /datum/id_trim/reaper_assassin
 	uniform = /obj/item/clothing/under/suit/black
-	belt = /obj/item/modular_computer/tablet/pda/heads
+	neck = /obj/item/clothing/neck/tie/red/hitman/tied
+	belt = /obj/item/modular_computer/pda/heads
 	ears = /obj/item/radio/headset
 	gloves = /obj/item/clothing/gloves/color/black
 	glasses = /obj/item/clothing/glasses/sunglasses
@@ -260,13 +291,13 @@
 	for(var/obj/item/briefcase_item in sec_briefcase)
 		qdel(briefcase_item)
 	for(var/i = 3 to 0 step -1)
-		SEND_SIGNAL(sec_briefcase, COMSIG_TRY_STORAGE_INSERT, new /obj/item/stack/spacecash/c1000, null, TRUE, TRUE)
-	SEND_SIGNAL(sec_briefcase, COMSIG_TRY_STORAGE_INSERT, new /obj/item/gun/energy/recharge/ebow, null, TRUE, TRUE)
-	SEND_SIGNAL(sec_briefcase, COMSIG_TRY_STORAGE_INSERT, new /obj/item/gun/ballistic/revolver/mateba, null, TRUE, TRUE)
-	SEND_SIGNAL(sec_briefcase, COMSIG_TRY_STORAGE_INSERT, new /obj/item/ammo_box/a357, null, TRUE, TRUE)
-	SEND_SIGNAL(sec_briefcase, COMSIG_TRY_STORAGE_INSERT, new /obj/item/grenade/c4/x4, null, TRUE, TRUE)
+		sec_briefcase.contents += new /obj/item/stack/spacecash/c1000
+	sec_briefcase.contents += new /obj/item/gun/energy/recharge/ebow
+	sec_briefcase.contents += new /obj/item/gun/ballistic/revolver/mateba
+	sec_briefcase.contents += new /obj/item/ammo_box/a357
+	sec_briefcase.contents += new /obj/item/grenade/c4/x4
 
-	var/obj/item/modular_computer/tablet/pda/heads/pda = H.belt
+	var/obj/item/modular_computer/pda/heads/pda = H.belt
 	pda.saved_identification = H.real_name
 	pda.saved_job = "Reaper"
 
@@ -287,7 +318,7 @@
 	ears = /obj/item/radio/headset/headset_cent/commander
 	glasses = /obj/item/clothing/glasses/sunglasses
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
-	head = /obj/item/clothing/head/centhat
+	head = /obj/item/clothing/head/hats/centhat
 	mask = /obj/item/clothing/mask/cigarette/cigar/cohiba
 	shoes = /obj/item/clothing/shoes/combat/swat
 	l_pocket = /obj/item/ammo_box/a357
@@ -321,6 +352,15 @@
 	shoes = /obj/item/clothing/shoes/cult/alt/ghost
 	l_hand = /obj/item/melee/cultblade/ghost
 
+/datum/outfit/cult_cutout
+	name = "Cultist Cutout"
+
+	uniform = /obj/item/clothing/under/rank/civilian/chaplain
+	suit = /obj/item/clothing/suit/hooded/cultrobes/hardened
+	shoes = /obj/item/clothing/shoes/cult/alt
+	back = /obj/item/storage/backpack/cultpack
+	r_hand = /obj/item/melee/cultblade/dagger
+
 /datum/outfit/wizard
 	name = "Blue Wizard"
 
@@ -328,22 +368,29 @@
 	suit = /obj/item/clothing/suit/wizrobe
 	back = /obj/item/storage/backpack
 	backpack_contents = list(
-		/obj/item/storage/box/survival = 1,
 		/obj/item/spellbook = 1,
-)
+	)
+	box = /obj/item/storage/box/survival
 	ears = /obj/item/radio/headset
 	head = /obj/item/clothing/head/wizard
 	shoes = /obj/item/clothing/shoes/sandal/magic
 	r_pocket = /obj/item/teleportation_scroll
 	l_hand = /obj/item/staff
 
-/datum/outfit/wizard/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/wizard/post_equip(mob/living/carbon/human/wizard, visualsOnly = FALSE)
 	if(visualsOnly)
 		return
 
-	var/obj/item/spellbook/S = locate() in H.back
-	if(S)
-		S.owner = H
+	var/obj/item/spellbook/new_spellbook = locate() in wizard.back
+	if(new_spellbook)
+		new_spellbook.owner = wizard.mind
+
+/datum/outfit/wizard/bookless
+	name = "Wizard - Bookless"
+	backpack_contents = list()
+
+/datum/outfit/wizard/bookless/post_equip(mob/living/carbon/human/wizard, visualsOnly)
+	return
 
 /datum/outfit/wizard/apprentice
 	name = "Wizard Apprentice"
@@ -351,7 +398,7 @@
 	r_pocket = /obj/item/teleportation_scroll/apprentice
 	r_hand = null
 	l_hand = null
-	backpack_contents = list(/obj/item/storage/box/survival = 1)
+	backpack_contents = list()
 
 /datum/outfit/wizard/red
 	name = "Red Wizard"
@@ -366,19 +413,27 @@
 	head = /obj/item/clothing/head/wizard/marisa
 	shoes = /obj/item/clothing/shoes/sneakers/marisa
 
+/datum/outfit/wizard/academy
+	name = "Academy Wizard"
+	r_pocket = null
+	r_hand = null
+	suit = /obj/item/clothing/suit/wizrobe/red
+	head = /obj/item/clothing/head/wizard/red
+	backpack_contents = list()
+
 /datum/outfit/centcom/soviet
 	name = "Soviet Admiral"
 
 	id = /obj/item/card/id/advanced/centcom
 	id_trim = /datum/id_trim/centcom/admiral
 	uniform = /obj/item/clothing/under/costume/soviet
-	suit = /obj/item/clothing/suit/pirate/captain
+	suit = /obj/item/clothing/suit/costume/pirate/captain
 	back = /obj/item/storage/backpack/satchel/leather
 	belt = /obj/item/gun/ballistic/revolver/mateba
 	ears = /obj/item/radio/headset/headset_cent
 	glasses = /obj/item/clothing/glasses/thermal/eyepatch
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
-	head = /obj/item/clothing/head/pirate/captain
+	head = /obj/item/clothing/head/costume/pirate/captain
 	shoes = /obj/item/clothing/shoes/combat
 
 /datum/outfit/centcom/soviet/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
@@ -398,6 +453,7 @@
 	id = /obj/item/card/id/advanced
 	id_trim = /datum/id_trim/mobster
 	uniform = /obj/item/clothing/under/suit/black_really
+	neck = /obj/item/clothing/neck/tie/red/tied
 	ears = /obj/item/radio/headset
 	glasses = /obj/item/clothing/glasses/sunglasses
 	gloves = /obj/item/clothing/gloves/color/black
@@ -420,12 +476,14 @@
 	uniform = /obj/item/clothing/under/color/white
 	suit_store = /obj/item/tank/internals/oxygen
 	mask = /obj/item/clothing/mask/breath
-	back = /obj/item/mod/control/pre_equipped/timeline
+	back = /obj/item/mod/control/pre_equipped/chrono
 
 /datum/outfit/chrono_agent/post_equip(mob/living/carbon/human/agent, visualsOnly)
 	. = ..()
-	var/obj/item/mod/control/pre_equipped/timeline = agent.back
-	var/obj/item/mod/module/eradication_lock/lock = locate(/obj/item/mod/module/eradication_lock) in timeline.modules
+	var/obj/item/mod/control/mod = agent.back
+	if(!istype(mod))
+		return
+	var/obj/item/mod/module/eradication_lock/lock = locate(/obj/item/mod/module/eradication_lock) in mod.modules
 	lock.true_owner_ckey = agent.ckey
 
 /datum/outfit/debug //Debug objs plus MODsuit

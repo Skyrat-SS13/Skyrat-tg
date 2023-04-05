@@ -18,7 +18,7 @@
 	)
 	required_atoms = list(
 		/obj/item/clothing/suit = 1,
-		/obj/item/clothing/gloves/color/latex = 1,
+		/obj/item/clothing/gloves/latex = 1,
 	)
 	limit = 1
 	cost = 1
@@ -30,12 +30,21 @@
 		return FALSE
 
 	for(var/mob/living/carbon/human/body in atoms)
-		if(body.stat != DEAD || !IS_VALID_GHOUL_MOB(body) || HAS_TRAIT(body, TRAIT_HUSK))
+		if(body.stat != DEAD)
+			continue
+		if(!IS_VALID_GHOUL_MOB(body) || HAS_TRAIT(body, TRAIT_HUSK))
+			to_chat(user, span_hierophant_warning("[body] is not in a valid state to be made into a ghoul."))
+			continue
+		if(!body.mind)
+			to_chat(user, span_hierophant_warning("[body] is mindless and cannot be made into a ghoul."))
+			continue
+		if(!body.client && !body.mind.get_ghost(ghosts_with_clients = TRUE))
+			to_chat(user, span_hierophant_warning("[body] is soulless and cannot be made into a ghoul."))
 			continue
 
-		if(body.mind?.get_ghost(ghosts_with_clients = TRUE))
-			selected_atoms += body
-			return TRUE
+		// We will only accept valid bodies with a mind, or with a ghost connected that used to control the body
+		selected_atoms += body
+		return TRUE
 
 	loc.balloon_alert(user, "ritual failed, no valid body!")
 	return FALSE
@@ -55,59 +64,51 @@
 
 	selected_atoms -= soon_to_be_ghoul
 	make_risen(user, soon_to_be_ghoul)
+	return TRUE
 
 /// Make [victim] into a shattered risen ghoul.
 /datum/heretic_knowledge/limited_amount/risen_corpse/proc/make_risen(mob/living/user, mob/living/carbon/human/victim)
-	log_game("[key_name(user)] created a shattered risen out of [key_name(victim)].")
-	message_admins("[ADMIN_LOOKUPFLW(user)] shattered risen out of [ADMIN_LOOKUPFLW(victim)].")
+	user.log_message("created a shattered risen out of [key_name(victim)].", LOG_GAME)
+	victim.log_message("became a shattered risen of [key_name(user)]'s.", LOG_VICTIM, log_globally = FALSE)
+	message_admins("[ADMIN_LOOKUPFLW(user)] created a shattered risen, [ADMIN_LOOKUPFLW(victim)].")
 
 	victim.apply_status_effect(
 		/datum/status_effect/ghoul,
 		RISEN_MAX_HEALTH,
 		user.mind,
-		CALLBACK(src, .proc/apply_to_risen),
-		CALLBACK(src, .proc/remove_from_risen),
+		CALLBACK(src, PROC_REF(apply_to_risen)),
+		CALLBACK(src, PROC_REF(remove_from_risen)),
 	)
 
 /// Callback for the ghoul status effect - what effects are applied to the ghoul.
 /datum/heretic_knowledge/limited_amount/risen_corpse/proc/apply_to_risen(mob/living/risen)
 	LAZYADD(created_items, WEAKREF(risen))
-
-	for(var/obj/item/held as anything in risen.held_items)
-		if(istype(held))
-			risen.dropItemToGround(held)
-
-		risen.put_in_hands(new /obj/item/risen_hand(), del_on_fail = TRUE)
+	risen.AddComponent(/datum/component/mutant_hands, mutant_hand_path = /obj/item/mutant_hand/shattered_risen)
 
 /// Callback for the ghoul status effect - cleaning up effects after the ghoul status is removed.
 /datum/heretic_knowledge/limited_amount/risen_corpse/proc/remove_from_risen(mob/living/risen)
 	LAZYREMOVE(created_items, WEAKREF(risen))
-
-	for(var/obj/item/risen_hand/hand in risen.held_items)
-		qdel(hand)
+	qdel(risen.GetComponent(/datum/component/mutant_hands))
 
 #undef RISEN_MAX_HEALTH
 
 /// The "hand" "weapon" used by shattered risen
-/obj/item/risen_hand
+/obj/item/mutant_hand/shattered_risen
 	name = "bone-shards"
 	desc = "What once appeared to be a normal human fist, now holds a maulled nest of sharp bone-shards."
-	icon = 'icons/effects/blood.dmi'
-	base_icon_state = "bloodhand"
 	color = "#001aff"
-	item_flags = ABSTRACT | DROPDEL | HAND_ITEM
-	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	hitsound = SFX_SHATTER
 	force = 16
-	sharpness = SHARP_EDGED
 	wound_bonus = -30
 	bare_wound_bonus = 15
+	demolition_mod = 1.5
+	sharpness = SHARP_EDGED
 
-/obj/item/risen_hand/Initialize(mapload)
+/obj/item/mutant_hand/shattered_risen/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
 
-/obj/item/risen_hand/visual_equipped(mob/user, slot)
+/obj/item/mutant_hand/shattered_risen/visual_equipped(mob/user, slot)
 	. = ..()
 
 	// Even hand indexes are right hands,
@@ -118,19 +119,6 @@
 		icon_state = "[base_icon_state]_right"
 	else
 		icon_state = "[base_icon_state]_left"
-
-/obj/item/risen_hand/pre_attack(atom/hit, mob/living/user, params)
-	. = ..()
-	if(.)
-		return
-
-	// If it's a structure or machine, we get a damage bonus (allowing us to break down doors)
-	if(isstructure(hit) || ismachinery(hit))
-		force = initial(force) * 1.5
-
-	// If it's another other item make sure we're at normal force
-	else
-		force = initial(force)
 
 /datum/heretic_knowledge/rune_carver
 	name = "Carving Knife"
@@ -167,7 +155,7 @@
 		/obj/item/stack/sheet/mineral/titanium = 5,
 		/obj/item/clothing/suit/armor = 1,
 		/obj/item/assembly/flash = 1,
-		/obj/item/organ/lungs = 1,
+		/obj/item/organ/internal/lungs = 1,
 	)
 	cost = 1
 	route = PATH_SIDE

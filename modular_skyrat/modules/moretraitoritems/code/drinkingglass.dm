@@ -1,4 +1,4 @@
-/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass/syndicate
+/obj/item/reagent_containers/cup/glass/drinkingglass/shotglass/syndicate
 	name = "shot glass"
 	desc = "A shot glass - the universal symbol for terrible decisions."
 	icon_state = "shotglass"
@@ -16,4 +16,4 @@
 
 /obj/item/storage/box/syndieshotglasses/PopulateContents()
 	for(var/i in 1 to 7)
-		new /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass/syndicate(src)
+		new /obj/item/reagent_containers/cup/glass/drinkingglass/shotglass/syndicate(src)

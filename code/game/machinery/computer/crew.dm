@@ -1,5 +1,5 @@
 /// How often the sensor data is updated
-#define SENSORS_UPDATE_PERIOD 10 SECONDS //How often the sensor data updates.
+#define SENSORS_UPDATE_PERIOD (10 SECONDS) //How often the sensor data updates.
 /// The job sorting ID associated with otherwise unknown jobs
 #define UNKNOWN_JOB_ID 81
 
@@ -124,20 +124,19 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_SCIENTIST = 31,
 		JOB_ROBOTICIST = 32,
 		JOB_GENETICIST = 33,
-		JOB_VANGUARD_OPERATIVE = 34, // SKYRAT EDIT ADDITION
-		JOB_SCIENCE_GUARD = 35, // SKYRAT EDIT ADDITION
+		JOB_SCIENCE_GUARD = 34, // SKYRAT EDIT ADDITION
 		// 40-49: Engineering
 		JOB_CHIEF_ENGINEER = 40,
 		JOB_STATION_ENGINEER = 41,
 		JOB_ATMOSPHERIC_TECHNICIAN = 42,
 		JOB_ENGINEERING_GUARD = 43, // SKYRAT EDIT ADDITION
 		// 50-59: Cargo
-		JOB_QUARTERMASTER = 50,  // SKYRAT EDIT - ORIGINAL: JOB_QUARTERMASTER = 51,
-		JOB_SHAFT_MINER = 52,
-		JOB_CARGO_TECHNICIAN = 53,
-		JOB_CUSTOMS_AGENT = 54, // SKYRAT EDIT ADDITION
+		JOB_QUARTERMASTER = 50,
+		JOB_SHAFT_MINER = 51,
+		JOB_CARGO_TECHNICIAN = 52,
+		JOB_CUSTOMS_AGENT = 53, // SKYRAT EDIT ADDITION
 		// 60+: Civilian/other
-		JOB_HEAD_OF_PERSONNEL = 60, // SKYRAT EDIT - ORIGINAL: JOB_HEAD_OF_PERSONNEL = 50,
+		JOB_HEAD_OF_PERSONNEL = 60,
 		JOB_BARTENDER = 61,
 		JOB_COOK = 62,
 		JOB_BOTANIST = 63,
@@ -176,7 +175,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 /datum/crewmonitor/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "CrewConsole")
+		ui = new(user, src, "CrewConsoleSkyrat")
 		ui.open()
 
 /datum/crewmonitor/proc/show(mob/M, source)
@@ -258,7 +257,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 				entry["ijob"] = jobs[trim_assignment]
 
 		// SKYRAT EDIT BEGIN: Checking for robotic race
-		if (isrobotic(tracked_human))
+		if (issynthetic(tracked_human))
 			entry["is_robot"] = TRUE
 		// SKYRAT EDIT END
 

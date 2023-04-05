@@ -5,39 +5,22 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 500, /datum/material/gold = 1000)
 	build_path = /obj/item/clothing/head/helmet/monkey_sentience
-	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
-
-/datum/design/plumbing_chem
-	name = "Plumbing Constructor (Chemistry)"
-	desc = "A type of plumbing constructor designed to manipulate fluid."
-	id = "plumbing_chem"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 75000, /datum/material/glass = 10000, /datum/material/gold = 1000)
-	build_path = /obj/item/construction/plumbing
-	category = list("Tools")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
-
+	category = list(
+		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_EQUIPMENT_SCIENCE
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/plumbing_eng
-	name = "Plumbing Constructor (Engineering)"
+	name = "Engineering Plumbing Constructor"
 	desc = "A type of plumbing constructor designed to manipulate fluid."
 	id = "plumbing_eng"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 75000, /datum/material/glass = 10000, /datum/material/gold = 1000)
 	build_path = /obj/item/construction/plumbing/engineering
-	category = list("Tools")
-	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
-
-/datum/design/plumbing_sci
-	name = "Plumbing Constructor (Science)"
-	desc = "A type of plumbing constructor designed to manipulate fluid."
-	id = "plumbing_sci"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 75000, /datum/material/glass = 10000, /datum/material/gold = 1000)
-	build_path = /obj/item/construction/plumbing/research
-	category = list("Tools")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+	category = list(
+		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/smartdartgun
 	name = "Medical SmartDart Gun"
@@ -46,5 +29,30 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 2000, /datum/material/glass = 10000, /datum/material/silver = 4000)
 	build_path = /obj/item/gun/syringe/smartdart
-	category = list("Weapons")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+	category = list(
+		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_EQUIPMENT_MEDICAL
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+
+/datum/design/anesthetic_machine
+	name = "anesthetic machine parts kit"
+	desc = "All-in-one kit containing the parts to create a portable anesthetic stand, tank not included."
+	id = "anesthetic_machine"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 10000, /datum/material/plastic = 10000, /datum/material/silver = 4000)
+	build_path = /obj/item/anesthetic_machine_kit
+	category = list(
+		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_EQUIPMENT_MEDICAL
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+	
+/datum/design/vox_gas_filter
+	name = "Vox Gas Filter"
+	id = "vox_gas_filter"
+	build_type = PROTOLATHE | AUTOLATHE
+	materials = list(/datum/material/iron = 100)
+	build_path = /obj/item/gas_filter/vox
+	category = list(
+		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_GAS_TANKS
+	)
+	departmental_flags = ALL

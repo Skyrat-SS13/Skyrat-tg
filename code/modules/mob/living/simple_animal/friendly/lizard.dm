@@ -7,7 +7,7 @@
 	speak_emote = list("hisses")
 	health = 5
 	maxHealth = 5
-	faction = list("Lizard")
+	faction = list(FACTION_LIZARD)
 	attack_verb_continuous = "bites"
 	attack_verb_simple = "bite"
 	melee_damage_lower = 1
@@ -61,3 +61,7 @@
 /mob/living/simple_animal/hostile/lizard/wags_his_tail
 	name = "Wags-His-Tail"
 	desc = "The janitorial department's trusty pet lizard."
+
+/mob/living/simple_animal/hostile/lizard/eats_the_roaches
+	name = "Eats-The-Roaches"
+	desc = "The janitorial department's less trusty pet lizard."

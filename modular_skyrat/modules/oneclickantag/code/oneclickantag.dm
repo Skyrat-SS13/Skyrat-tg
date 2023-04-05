@@ -29,8 +29,6 @@
 				return FALSE
 			var/datum/team/brother_team/team = opt
 			src.add_antag_datum(/datum/antagonist/brother, team)
-		if(ROLE_FAMILIES)
-			src.add_antag_datum(/datum/antagonist/gang)
 		if(ROLE_HERETIC)
 			src.add_antag_datum(/datum/antagonist/heretic)
 		else
@@ -111,11 +109,6 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 			p_p += MAKEANTAG_PL_DEFAULT_SECURITY
 			p_p += MAKEANTAG_PL_DEFAULT_HEADS
 			p_r += MAKEANTAG_PL_DEFAULT_SILICON
-		if(ROLE_FAMILIES)
-			p_r += MAKEANTAG_PL_DEFAULT_SECURITY
-			p_p += MAKEANTAG_PL_DEFAULT_HEADS
-			p_r += MAKEANTAG_PL_DEFAULT_SILICON
-			p_r += list(JOB_HEAD_OF_PERSONNEL)
 		if(ROLE_REV)
 			p_r += MAKEANTAG_PL_DEFAULT_SECURITY
 			p_r += MAKEANTAG_PL_DEFAULT_HEADS

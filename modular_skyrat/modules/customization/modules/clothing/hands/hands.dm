@@ -23,7 +23,6 @@
 	desc = "Tactical gloves made for military personnel, they are thin to allow easy operation of most firearms."
 	icon_state = "military_gloves"
 	siemens_coefficient = 0.4
-	permeability_coefficient = 0.4
 	strip_delay = 60
 	equip_delay_other = 60
 	cold_protection = HANDS
@@ -31,3 +30,6 @@
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = NONE
+
+/obj/item/clothing/gloves
+	worn_icon_teshari = TESHARI_HANDS_ICON

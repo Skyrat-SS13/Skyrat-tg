@@ -11,20 +11,21 @@
 #define ROLE_BROTHER "Blood Brother"
 #define ROLE_CHANGELING "Changeling"
 #define ROLE_CULTIST "Cultist"
-#define ROLE_FAMILIES "Gangster"
 #define ROLE_HERETIC "Heretic"
 #define ROLE_MALF "Malf AI"
 #define ROLE_OPERATIVE "Operative"
-#define ROLE_THIEF "Thief"
 #define ROLE_TRAITOR "Traitor"
 #define ROLE_WIZARD "Wizard"
+// SKYRAT EDIT START
+#define ROLE_ASSAULT_OPERATIVE "Assault Operative"
+// SKYRAT EDIT END
 
 // Midround roles
 #define ROLE_ABDUCTOR "Abductor"
 #define ROLE_ALIEN "Xenomorph"
 #define ROLE_BLOB "Blob"
 #define ROLE_BLOB_INFECTION "Blob Infection"
-#define ROLE_FAMILY_HEAD_ASPIRANT "Family Head Aspirant"
+#define ROLE_CHANGELING_MIDROUND "Changeling (Midround)"
 #define ROLE_FUGITIVE "Fugitive"
 #define ROLE_LONE_OPERATIVE "Lone Operative"
 #define ROLE_MALF_MIDROUND "Malf AI (Midround)"
@@ -32,7 +33,7 @@
 #define ROLE_NINJA "Space Ninja"
 #define ROLE_OBSESSED "Obsessed"
 #define ROLE_OPERATIVE_MIDROUND "Operative (Midround)"
-#define ROLE_OPPORTUNIST "Opportunist"
+#define ROLE_PARADOX_CLONE "Paradox Clone"
 #define ROLE_REV_HEAD "Head Revolutionary"
 #define ROLE_SENTIENT_DISEASE "Sentient Disease"
 #define ROLE_SLEEPER_AGENT "Syndicate Sleeper Agent"
@@ -42,7 +43,9 @@
 //SKYRAT EDIT START
 #define ROLE_BORER "Borer"
 #define ROLE_DRIFTING_CONTRACTOR "Drifting Contractor"
-#define ROLE_ASSAULT_OPERATIVE "Assault Operative"
+#define ROLE_LONE_INFILTRATOR "Lone Infiltrator"
+#define ROLE_MUTANT "Mutated Abomination"
+#define ROLE_CLOCK_CULTIST "Clock Cultist"
 // SKYRAT EDIT END
 
 // Latejoin roles
@@ -63,6 +66,7 @@
 #define ROLE_HIVE "Hivemind Host" //Role removed, left here for safety.
 #define ROLE_SENTIENCE "Sentience Potion Spawn"
 #define ROLE_PYROCLASTIC_SLIME "Pyroclastic Anomaly Slime"
+#define ROLE_ANOMALY_GHOST "Ectoplasmic Anomaly Ghost"
 #define ROLE_MIND_TRANSFER "Mind Transfer Potion"
 #define ROLE_POSIBRAIN "Posibrain"
 #define ROLE_DRONE "Drone"
@@ -93,7 +97,6 @@
 #define ROLE_SPACE_SYNDICATE "Space Syndicate"
 #define ROLE_SYNDICATE_CYBERSUN "Cybersun Space Syndicate" //Ghost role syndi from Forgottenship ruin
 #define ROLE_SYNDICATE_CYBERSUN_CAPTAIN "Cybersun Space Syndicate Captain" //Forgottenship captain syndie
-#define ROLE_HEADSLUG_CHANGELING "Headslug Changeling"
 #define ROLE_SPACE_PIRATE "Space Pirate"
 #define ROLE_ANCIENT_CREW "Ancient Crew"
 #define ROLE_SPACE_DOCTOR "Space Doctor"
@@ -104,7 +107,14 @@
 #define ROLE_MAINTENANCE_DRONE "Maintenance Drone"
 #define ROLE_BATTLECRUISER_CREW "Battlecruiser Crew"
 #define ROLE_BATTLECRUISER_CAPTAIN "Battlecruiser Captain"
-
+#define ROLE_VENUSHUMANTRAP "Venus Human Trap"
+//SKYRAT EDIT START
+#define ROLE_BLACK_MARKET_DEALER "Black Market Dealer"
+#define ROLE_DS2 "DS2 Syndicate"
+#define ROLE_FREIGHTER_CREW "Freighter Crew"
+#define ROLE_GHOST_CAFE "Ghost Cafe Visitor"
+#define ROLE_PORT_TARKON "Port Tarkon Survivor"
+//SKYRAT EDIT END
 
 /// This defines the antagonists you can operate with in the settings.
 /// Keys are the antagonist, values are the number of days since the player's
@@ -115,12 +125,10 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_CHANGELING = 0,
 	ROLE_CLOWN_OPERATIVE = 14,
 	ROLE_CULTIST = 14,
-	ROLE_FAMILIES = 0,
 	ROLE_HERETIC = 0,
 	ROLE_MALF = 0,
 	ROLE_OPERATIVE = 14,
 	ROLE_REV_HEAD = 14,
-	ROLE_THIEF = 0,
 	ROLE_TRAITOR = 0,
 	ROLE_WIZARD = 14,
 	// SKYRAT EDIT ADDITION
@@ -132,7 +140,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_ALIEN = 0,
 	ROLE_BLOB = 0,
 	ROLE_BLOB_INFECTION = 0,
-	ROLE_FAMILY_HEAD_ASPIRANT = 0,
+	ROLE_CHANGELING_MIDROUND = 0,
 	ROLE_FUGITIVE = 0,
 	ROLE_LONE_OPERATIVE = 14,
 	ROLE_MALF_MIDROUND = 0,
@@ -140,7 +148,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_NINJA = 0,
 	ROLE_OBSESSED = 0,
 	ROLE_OPERATIVE_MIDROUND = 14,
-	ROLE_OPPORTUNIST = 0,
+	ROLE_PARADOX_CLONE = 0,
 	ROLE_REVENANT = 0,
 	ROLE_SENTIENT_DISEASE = 0,
 	ROLE_SLEEPER_AGENT = 0,
@@ -148,8 +156,10 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_SPIDER = 0,
 	ROLE_WIZARD_MIDROUND = 14,
 	//SKYRAT EDIT START
+	ROLE_LONE_INFILTRATOR = 0,
 	ROLE_BORER = 0,
 	ROLE_DRIFTING_CONTRACTOR = 14,
+	ROLE_MUTANT = 0,
 	//SKYRAT EDIT END
 
 	// Latejoin

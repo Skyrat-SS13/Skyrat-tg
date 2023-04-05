@@ -1,9 +1,15 @@
 /datum/species/pod
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP
+		TRAIT_CAN_STRIP,
+		TRAIT_PLANT_SAFE,
+		TRAIT_LITERATE,
 	)
-	learnable_languages = list(/datum/language/common, /datum/language/sylvan) //I guess plants are smart and they can speak common
+	mutant_bodyparts = list()
+	default_mutant_bodyparts = list(
+		"pod_hair" = ACC_RANDOM,
+		"legs" = "Normal Legs"
+	)
 	payday_modifier = 0.75
 
 /datum/species/pod/podweak
@@ -13,15 +19,15 @@
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
-		HAS_FLESH,
-		HAS_BONE,
-		HAIR,
+		HAIR, // Leaving this here so they can still use it if they want, even if it's kinda ugly compared to their special hair.
 		FACEHAIR
 	)
-	mutant_bodyparts = list()
-	default_mutant_bodyparts = list()
+	inherent_traits = list(
+		TRAIT_ADVANCEDTOOLUSER,
+		TRAIT_CAN_STRIP,
+		TRAIT_LITERATE,
+	)
 
-	learnable_languages = list(/datum/language/common, /datum/language/sylvan)
 	always_customizable = FALSE
 
 /datum/species/pod/podweak/spec_life(mob/living/carbon/human/H, delta_time, times_fired)
@@ -37,8 +43,16 @@
 			H.set_nutrition(NUTRITION_LEVEL_ALMOST_FULL)
 		if(light_amount > 0.2) //if there's enough light, heal
 			H.heal_overall_damage(0.2 * delta_time, 0.2 * delta_time, 0)
+			H.adjustStaminaLoss(-0.2 * delta_time)
 			H.adjustToxLoss(-0.2 * delta_time)
 			H.adjustOxyLoss(-0.2 * delta_time)
 
 	if(H.nutrition < NUTRITION_LEVEL_STARVING + 50)
 		H.take_overall_damage(1 * delta_time, 0)
+
+
+/datum/species/pod/prepare_human_for_preview(mob/living/carbon/human/human)
+	human.dna.mutant_bodyparts["pod_hair"] = list(MUTANT_INDEX_NAME = "Ivy", MUTANT_INDEX_COLOR_LIST = list(COLOR_VIBRANT_LIME, COLOR_VIBRANT_LIME, COLOR_VIBRANT_LIME))
+	regenerate_organs(human, src, visual_only = TRUE)
+	human.update_body(TRUE)
+

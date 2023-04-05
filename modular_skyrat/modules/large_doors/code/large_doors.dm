@@ -91,7 +91,7 @@
 	dir = EAST
 	var/width = 1
 
-/obj/structure/door_assembly/multi_tile/Initialize()
+/obj/structure/door_assembly/multi_tile/Initialize(mapload)
 	. = ..()
 	update_dir()
 

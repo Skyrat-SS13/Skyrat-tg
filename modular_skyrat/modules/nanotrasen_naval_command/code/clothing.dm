@@ -1,26 +1,22 @@
 
 // UNDER
-/obj/item/clothing/under/rank/centcom/naval
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	can_adjust = TRUE
-
-/obj/item/clothing/under/rank/centcom/naval/ensign
+/obj/item/clothing/under/rank/centcom/skyrat/naval
 	name = "ensign uniform"
 	desc = "A uniform worn by those with the rank Ensign in the Nanotrasen Navy."
 	icon_state = "naval_ensign"
+	can_adjust = TRUE
 
-/obj/item/clothing/under/rank/centcom/naval/commander
+/obj/item/clothing/under/rank/centcom/skyrat/naval/commander
 	name = "command uniform"
 	desc = "A uniform worn by those with a command rank in the Nanotrasen Navy."
 	icon_state = "naval_command"
 
-/obj/item/clothing/under/rank/centcom/naval/admiral
+/obj/item/clothing/under/rank/centcom/skyrat/naval/admiral
 	name = "admiral's uniform"
 	desc = "A uniform worn by those with the rank Admiral in the Nanotrasen Navy."
 	icon_state = "naval_admiral"
 
-/obj/item/clothing/under/rank/centcom/naval/fleet_admiral
+/obj/item/clothing/under/rank/centcom/skyrat/naval/fleet_admiral
 	name = "fleet admiral's uniform"
 	desc = "A uniform worn by those with the rank Fleet Admiral in the Nanotrasen Navy."
 	icon_state = "naval_fleet_admiral"
@@ -39,7 +35,7 @@
 
 
 // HATS
-/obj/item/clothing/head/caphat/naval
+/obj/item/clothing/head/hats/caphat/naval
 	name = "naval cap"
 	desc = "A cap worn by those in the Nanotrasen Navy."
 	icon_state = "naval_command"
@@ -47,13 +43,13 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/caphat/naval/beret
+/obj/item/clothing/head/hats/caphat/naval/beret
 	name = "naval beret"
 	desc = "A beret worn by those in the Nanotrasen Navy."
 	icon_state = "naval_beret"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/caphat/naval/fleet_admiral
+/obj/item/clothing/head/hats/caphat/naval/fleet_admiral
 	name = "fleet admiral's cap"
 	desc = "A cap worn by the Nanotrasen Fleet Admiral."
 	icon_state = "naval_fleet_admiral"
@@ -95,8 +91,8 @@
 /obj/item/clothing/suit/armor/vest/capcarapace/naval
 	name = "naval carapace"
 	desc = "A carapace worn by Naval Command members."
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	icon_state = "naval_carapace"
 
 // GLASSES

@@ -3,7 +3,7 @@
 	name = "staff of the ashlands"
 	desc = "A gnarly and twisted branch that is imbued with some ancient power."
 
-	icon = 'icons/obj/guns/magic.dmi'
+	icon = 'icons/obj/weapons/guns/magic.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/staves_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/staves_righthand.dmi'
 	icon_state = "staffofanimation"
@@ -11,12 +11,6 @@
 
 	///If the world.time is above this, it wont work. Charging requires whacking the necropolis nest
 	var/staff_time = 0
-
-/datum/crafting_recipe/ash_staff
-	name = "Staff of the Ashlands"
-	result = /obj/item/ash_staff
-	reqs = list(/obj/item/stack/sheet/mineral/wood = 25)
-	category = CAT_PRIMAL
 
 /obj/item/ash_staff/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!proximity_flag)
@@ -61,4 +55,4 @@
 		/obj/item/stack/sheet/sinew = 1,
 	)
 	time = 4 SECONDS
-	category = CAT_PRIMAL
+	category = CAT_TOOLS

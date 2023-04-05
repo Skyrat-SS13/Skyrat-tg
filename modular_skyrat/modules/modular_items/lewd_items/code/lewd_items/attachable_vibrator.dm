@@ -1,17 +1,18 @@
-//////////////////////////
-///Normal vibrating egg///
-//////////////////////////
+/*
+*	VIBRATING EGG
+*/
 
 /obj/item/clothing/sextoy/eggvib
 	name = "vibrating egg"
 	desc = "A simple, vibrating sex toy."
-	icon_state = "eggvib"
-	inhand_icon_state = "eggvib"
+	icon_state = "eggvib_pink_off"
+	base_icon_state = "eggvib"
+	inhand_icon_state = "eggvib_pink"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
-	slot_flags = ITEM_SLOT_PENIS | ITEM_SLOT_VAGINA | ITEM_SLOT_NIPPLES | ITEM_SLOT_ANUS
-	moth_edible = FALSE
+	lewd_slot_flags = LEWD_SLOT_PENIS | LEWD_SLOT_VAGINA | LEWD_SLOT_NIPPLES | LEWD_SLOT_ANUS
+	clothing_flags = INEDIBLE_CLOTHING
 	/// Is the toy currently on
 	var/toy_on = FALSE
 	/// The current color of the toy, affects sprite
@@ -38,12 +39,12 @@
 		"pink" = image(icon = src.icon, icon_state = "[initial(icon_state)]_pink_low[(istype(src, /obj/item/clothing/sextoy/eggvib/signalvib)) ? "_on" : ""]"),
 		"teal" = image(icon = src.icon, icon_state = "[initial(icon_state)]_teal_low[(istype(src, /obj/item/clothing/sextoy/eggvib/signalvib)) ? "_on" : ""]"))
 
-/obj/item/clothing/sextoy/eggvib/AltClick(mob/user, obj/item/object)
+/obj/item/clothing/sextoy/eggvib/AltClick(mob/user)
 	if(!color_changed)
 		. = ..()
 		if(.)
 			return
-		var/choice = show_radial_menu(user,src, vib_designs, custom_check = CALLBACK(src, .proc/check_menu, user, object), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, vib_designs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		current_color = choice
@@ -63,7 +64,7 @@
 		update_icon()
 		update_icon_state()
 
-/obj/item/clothing/sextoy/eggvib/Initialize()
+/obj/item/clothing/sextoy/eggvib/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()
@@ -83,8 +84,8 @@
 
 /obj/item/clothing/sextoy/eggvib/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]_[vibration_mode][(istype(src, /obj/item/clothing/sextoy/eggvib/signalvib)) ? (toy_on ? "_on" : "_off") : ""]"
-	inhand_icon_state = "[initial(icon_state)]_[current_color]"
+	icon_state = "[base_icon_state]_[current_color]_[vibration_mode]"
+	inhand_icon_state = "[base_icon_state]_[current_color]"
 
 /// Toggles between vibration modes seuentially
 /obj/item/clothing/sextoy/eggvib/proc/toggle_mode()
@@ -113,7 +114,7 @@
 	. = ..()
 	if(!istype(user))
 		return
-	if(is_in_genital(user))
+	if(is_inside_lewd_slot(user))
 		START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/sextoy/eggvib/dropped(mob/user, silent)
@@ -127,23 +128,25 @@
 	if(!istype(target))
 		return
 	if(vibration_mode == "low")
-		target.adjustArousal(0.5 * delta_time)
-		target.adjustPleasure(0.5 * delta_time)
+		target.adjust_arousal(0.5 * delta_time)
+		target.adjust_pleasure(0.5 * delta_time)
 	if(vibration_mode == "medium")
-		target.adjustArousal(0.6 * delta_time)
-		target.adjustPleasure(0.6 * delta_time)
+		target.adjust_arousal(0.6 * delta_time)
+		target.adjust_pleasure(0.6 * delta_time)
 	if(vibration_mode == "high")
-		target.adjustArousal(0.7 * delta_time)
-		target.adjustPleasure(0.7 * delta_time)
+		target.adjust_arousal(0.7 * delta_time)
+		target.adjust_pleasure(0.7 * delta_time)
 
-//////////////////////////
-///Signal vibrating egg///
-//////////////////////////
+/*
+*	SIGNALLER CONTROLLED EGG
+*/
+
 /obj/item/clothing/sextoy/eggvib/signalvib
 	name = "signal vibrating egg"
 	desc = "A vibrating sex toy with remote control capability. Use a signaller to turn it on."
-	icon_state = "signalvib"
-	inhand_icon_state = "signalvib"
+	icon_state = "signalvib_pink_low_off"
+	base_icon_state = "signalvib"
+	inhand_icon_state = "signalvib_pink"
 	modes = list("low" = "medium", "medium" = "high", "high" = "low")
 	vibration_mode = "low"
 	/// If TRUE, the code and frequency will be random on initialize()
@@ -155,9 +158,9 @@
 	/// The default frequency of the toy
 	var/frequency = FREQ_ELECTROPACK
 
-/obj/item/clothing/sextoy/eggvib/signalvib/Initialize()
+/obj/item/clothing/sextoy/eggvib/signalvib/Initialize(mapload)
 	if(random)
-		code = rand(1,100)
+		code = rand(1, 100)
 		frequency = rand(MIN_FREE_FREQ, MAX_FREE_FREQ)
 		if(ISMULTIPLE(frequency, 2))//signaller frequencies are always uneven!
 			frequency++
@@ -170,12 +173,12 @@
 	SSradio.remove_object(src, frequency)
 	. = ..()
 
-//A moment for the `attackby()` proc that used to lie here, letting you turn a vibrator into an electric chair.
+// A moment for the `attackby()` proc that used to lie here, letting you turn a vibrator into an electric chair.
 
 /obj/item/clothing/sextoy/eggvib/signalvib/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]_[vibration_mode == "off" ? "low_off" : (toy_on ? "[vibration_mode]_on" : "[vibration_mode]_off")]"
-	inhand_icon_state = "[initial(icon_state)]_[current_color]"
+	icon_state = "[base_icon_state]_[current_color]_[vibration_mode == "off" ? "low_off" : (toy_on ? "[vibration_mode]_on" : "[vibration_mode]_off")]"
+	inhand_icon_state = "[base_icon_state]_[current_color]"
 
 /obj/item/clothing/sextoy/eggvib/signalvib/proc/set_frequency(new_frequency)
 	SSradio.remove_object(src, frequency)
@@ -187,9 +190,9 @@
 
 //arousal stuff
 
-/obj/item/clothing/sextoy/eggvib/signalvib/AltClick(mob/user, obj/item/I)
+/obj/item/clothing/sextoy/eggvib/signalvib/AltClick(mob/user)
 	if(!color_changed)
-		var/choice = show_radial_menu(user,src, vib_designs, custom_check = CALLBACK(src, /obj/item/clothing/sextoy/proc/check_menu, user, I), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, vib_designs, custom_check = CALLBACK(src, /obj/item/clothing/sextoy/proc/check_menu, user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		current_color = choice
@@ -248,7 +251,7 @@
 			to_chat(vibrated, span_purple("You feel pleasant vibrations deep below..."))
 		else if(src == vibrated.nipples)
 			to_chat(vibrated, span_purple("You feel pleasant stimulation in your nipples."))
-	else if(!toy_on && is_in_genital(vibrated))
+	else if(!toy_on && is_inside_lewd_slot(vibrated))
 		to_chat(vibrated, span_purple("The vibrating toy no longer drives you mad."))
 
 	if(!master)

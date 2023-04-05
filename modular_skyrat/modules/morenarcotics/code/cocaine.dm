@@ -23,7 +23,7 @@
 		new /obj/item/reagent_containers/crack(location)
 
 /datum/reagent/drug/cocaine
-	name = "Cocaine"
+	name = "cocaine"
 	description = "A powerful stimulant extracted from coca leaves. Reduces stun times, but causes drowsiness and severe brain damage if overdosed."
 	reagent_state = LIQUID
 	color = "#ffffff"
@@ -35,18 +35,18 @@
 /datum/reagent/drug/cocaine/on_mob_metabolize(mob/living/containing_mob)
 	..()
 	containing_mob.add_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
-	ADD_TRAIT(containing_mob, TRAIT_STUNRESISTANCE, type)
+	ADD_TRAIT(containing_mob, TRAIT_BATON_RESISTANCE, type)
 
 /datum/reagent/drug/cocaine/on_mob_end_metabolize(mob/living/containing_mob)
 	containing_mob.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
-	REMOVE_TRAIT(containing_mob, TRAIT_STUNRESISTANCE, type)
+	REMOVE_TRAIT(containing_mob, TRAIT_BATON_RESISTANCE, type)
 	..()
 
 /datum/reagent/drug/cocaine/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	if(DT_PROB(2.5, delta_time))
 		var/high_message = pick("You feel jittery.", "You feel like you gotta go fast.", "You feel like you need to step it up.")
 		to_chat(M, span_notice("[high_message]"))
-	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "zoinked", /datum/mood_event/stimulant_heavy, name)
+	M.add_mood_event("zoinked", /datum/mood_event/stimulant_heavy, name)
 	M.AdjustStun(-15 * REM * delta_time)
 	M.AdjustKnockdown(-15 * REM * delta_time)
 	M.AdjustUnconscious(-15 * REM * delta_time)
@@ -64,7 +64,7 @@
 /datum/reagent/drug/cocaine/overdose_process(mob/living/M, delta_time, times_fired)
 	M.adjustToxLoss(1 * REM * delta_time, 0)
 	M.adjustOrganLoss(ORGAN_SLOT_HEART, (rand(10, 20) / 10) * REM * delta_time)
-	M.Jitter(2 * REM * delta_time)
+	M.set_jitter_if_lower(5 SECONDS)
 	if(DT_PROB(2.5, delta_time))
 		M.emote(pick("twitch","drool"))
 	if(!HAS_TRAIT(M, TRAIT_FLOORED))

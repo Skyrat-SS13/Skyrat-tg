@@ -10,7 +10,7 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 
 	GLOB.bunker_passthrough |= ckey(ckeytobypass)
 	GLOB.bunker_passthrough[ckey(ckeytobypass)] = world.realtime
-	SSpersistence.SavePanicBunker() //we can do this every time, it's okay
+	SSpersistence.save_panic_bunker() //we can do this every time, it's okay
 	log_admin("[key_name(usr)] has added [ckeytobypass] to the current round's bunker bypass list.")
 	message_admins("[key_name_admin(usr)] has added [ckeytobypass] to the current round's bunker bypass list.")
 
@@ -24,7 +24,7 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 		return
 
 	GLOB.bunker_passthrough -= ckey(ckeytobypass)
-	SSpersistence.SavePanicBunker()
+	SSpersistence.save_panic_bunker()
 	log_admin("[key_name(usr)] has removed [ckeytobypass] from the current round's bunker bypass list.")
 	message_admins("[key_name_admin(usr)] has removed [ckeytobypass] from the current round's bunker bypass list.")
 
@@ -40,12 +40,12 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 	GLOB.bunker_passthrough |= ckey(params)
 
 	GLOB.bunker_passthrough[ckey(params)] = world.realtime
-	SSpersistence.SavePanicBunker() //we can do this every time, it's okay
+	SSpersistence.save_panic_bunker() //we can do this every time, it's okay
 	log_admin("[sender.friendly_name] has added [params] to the current round's bunker bypass list.")
 	message_admins("[sender.friendly_name] has added [params] to the current round's bunker bypass list.")
 	return "[params] has been added to the current round's bunker bypass list."
 
-/datum/controller/subsystem/persistence/proc/LoadPanicBunker()
+/datum/controller/subsystem/persistence/proc/load_panic_bunker()
 	var/bunker_path = file("data/bunker_passthrough.json")
 	if(fexists(bunker_path))
 		var/list/json = json_decode(file2text(bunker_path))
@@ -54,7 +54,7 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 			if(daysSince(GLOB.bunker_passthrough[ckey]) >= CONFIG_GET(number/max_bunker_days))
 				GLOB.bunker_passthrough -= ckey
 
-/datum/controller/subsystem/persistence/proc/SavePanicBunker()
+/datum/controller/subsystem/persistence/proc/save_panic_bunker()
 	var/json_file = file("data/bunker_passthrough.json")
 	var/list/file_data = list()
 	file_data["data"] = GLOB.bunker_passthrough
@@ -62,5 +62,5 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 	WRITE_FILE(json_file,json_encode(file_data))
 
 /datum/config_entry/number/max_bunker_days
-	config_entry_value = 7
+	default = 7
 	min_val = 1

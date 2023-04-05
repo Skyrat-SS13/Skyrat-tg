@@ -1,12 +1,13 @@
-/////////
-// Overwrites all the security icons with our own bluesec versions; this means little to no mapping/spawning conflicts!
-// (Also includes 'old' versions at the bottom of the file, for the purpose of crates/vendors/admin shenanigans. Can't remove them ENTIRELY after all!)
-/////////
+/*
+*	Overwrites all the security icons with our own bluesec versions; this means little to no mapping/spawning conflicts!
+*	(Also includes 'old' versions at the bottom of the file, for the purpose of crates/vendors/admin shenanigans. Can't remove them ENTIRELY after all!)
+*/
 
-//////////////////////////
-//----- PLASMAMEN ------//
-//////////////////////////
-//This goes first due to simultaneously being easy to do, and complex to organize
+/*
+*	PLASMAMEN
+*	This goes first due to simultaneously being easy to do, and complex to organize
+*/
+
 /obj/item/clothing/under/plasmaman/security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/plasmaman.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/plasmaman.dmi'
@@ -29,10 +30,20 @@
 /obj/item/clothing/head/helmet/space/plasmaman/security/head_of_security
 	icon_state = "hos_envirohelm_new"
 
+/*
+* ACCESSORIES
+*/
+/obj/item/clothing/accessory/armband/deputy
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/accessories.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/accessories.dmi'
+	icon_state = "armband_lopland"
 
-//////////////////////////
-//----- BACKPACKS ------//
-//////////////////////////
+/obj/item/clothing/accessory/armband/deputy/lopland
+	desc = "A Peacekeeper-blue armband, showing the wearer to be certified by Lopland as a top-of-their-class Security Officer."
+
+/*
+* BACKPACKS
+*/
 /obj/item/storage/backpack/security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
@@ -70,9 +81,9 @@
 		),
 	)
 
-//////////////////////
-//----- BELTS ------//
-//////////////////////
+/*
+* BELTS
+*/
 /obj/item/storage/belt/security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
@@ -92,49 +103,51 @@
 			RESKIN_ICON_STATE = "belt_white",
 			RESKIN_WORN_ICON_STATE = "belt_white"
 		),
+		"Slim Variant" = list(
+			RESKIN_ICON_STATE = "belt_slim",
+			RESKIN_WORN_ICON_STATE = "belt_slim"
+		),
 	)
-	component_type = /datum/component/storage/concrete/security
 
+/obj/item/storage/belt/security/webbing
+	uses_advanced_reskins = FALSE
+	unique_reskin = NONE
+	current_skin = "securitywebbing" //Prevents reskinning
+
+/obj/item/storage/belt/security/webbing/peacekeeper //did I mention this codebase is fucking awful
+	current_skin = "peacekeeper_webbing"
+
+/obj/item/storage/belt/security/webbing/peacekeeper/armadyne
+	current_skin = "armadyne_webbing"
 
 ///Enables you to quickdraw weapons from security holsters
-/datum/component/storage/concrete/security/open_storage(mob/user)
-	if(!isliving(user) || !user.CanReach(parent) || user.incapacitated())
-		return FALSE
-	if(locked)
-		to_chat(user, span_warning("[parent] seems to be locked!"))
+/datum/storage/security/open_storage(datum/source, mob/user)
+	var/atom/resolve_parent = parent?.resolve()
+	if(!resolve_parent)
+		return
+	if(isobserver(user))
+		show_contents(user)
 		return
 
-	var/atom/A = parent
+	if(!user.CanReach(resolve_parent))
+		resolve_parent.balloon_alert(user, "can't reach!")
+		return FALSE
 
-	var/obj/item/gun/gun_to_draw = locate() in real_location()
+	if(!isliving(user) || user.incapacitated())
+		return FALSE
+
+	var/obj/item/gun/gun_to_draw = locate() in real_location?.resolve()
 	if(!gun_to_draw)
 		return ..()
-	A.add_fingerprint(user)
-	remove_from_storage(gun_to_draw, get_turf(user))
-	playsound(parent, 'modular_skyrat/modules/sec_haul/sound/holsterout.ogg', 50, TRUE, -5)
-	INVOKE_ASYNC(user, /mob/.proc/put_in_hands, gun_to_draw)
-	user.visible_message(span_warning("[user] draws [gun_to_draw] from [parent]!"), span_notice("You draw [gun_to_draw] from [parent]."))
+	resolve_parent.add_fingerprint(user)
+	attempt_remove(gun_to_draw, get_turf(user))
+	playsound(resolve_parent, 'modular_skyrat/modules/sec_haul/sound/holsterout.ogg', 50, TRUE, -5)
+	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob, put_in_hands), gun_to_draw)
+	user.visible_message(span_warning("[user] draws [gun_to_draw] from [resolve_parent]!"), span_notice("You draw [gun_to_draw] from [resolve_parent]."))
 
-/datum/component/storage/concrete/security/mob_item_insertion_feedback(mob/user, mob/M, obj/item/I, override = FALSE)
-	if(silent && !override)
-		return
-	if(rustle_sound)
-		if(istype(I, /obj/item/gun))
-			playsound(parent, 'modular_skyrat/modules/sec_haul/sound/holsterin.ogg', 50, TRUE, -5)
-		else
-			playsound(parent, SFX_RUSTLE, 50, TRUE, -5)
-
-	for(var/mob/viewing in viewers(user, null))
-		if(M == viewing)
-			to_chat(usr, span_notice("You put [I] [insert_preposition]to [parent]."))
-		else if(in_range(M, viewing)) //If someone is standing close enough, they can tell what it is...
-			viewing.show_message(span_notice("[M] puts [I] [insert_preposition]to [parent]."), MSG_VISUAL)
-		else if(I && I.w_class >= 3) //Otherwise they can only see large or normal items from a distance...
-			viewing.show_message(span_notice("[M] puts [I] [insert_preposition]to [parent]."), MSG_VISUAL)
-
-////////////////////////
-//----- GLASSES ------//
-////////////////////////
+/*
+* GLASSES
+*/
 /obj/item/clothing/glasses/hud/security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
@@ -158,63 +171,60 @@
 
 /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch
 	icon_state = "security_eyepatch"
+	base_icon_state = "security_eyepatch"
 
 /obj/item/clothing/glasses/hud/security/night
 	icon_state = "security_hud_nv"
 	glass_colour_type = /datum/client_colour/glass_colour/green
 
-/////////////////////
-//----- HEAD ------//
-/////////////////////
+/*
+* HEAD
+*/
+
+//Overrides the bulletproof helm with the older non red visor version.
+/obj/item/clothing/head/helmet/alt
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+
 //Standard helmet (w/ visor)
 /obj/item/clothing/head/helmet/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "security_helmet"
-	toggle_message = "You pull the visor down on"
-	alt_toggle_message = "You push the visor up on"
+	base_icon_state = "security_helmet"
 	actions_types = list(/datum/action/item_action/toggle)
-	can_toggle = TRUE
-	toggle_cooldown = 0
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
-	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
-	visor_flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
+	flags_cover = HEADCOVERSEYES | PEPPERPROOF
+	visor_flags_cover = HEADCOVERSEYES | PEPPERPROOF
+	dog_fashion = null
 
-//Need to do some fuckery to make sure the mounted light preserves the current visor instead of throwing a fit sprite-wise
+	///chat message when the visor is toggled down.
+	var/toggle_message = "You pull the visor down on"
+	///chat message when the visor is toggled up.
+	var/alt_toggle_message = "You push the visor up on"
+	///Can toggle?
+	var/can_toggle = TRUE
+
+/// Duplication of toggleable logic - only way to make it toggleable without worse hacks due to being in base maps.
 /obj/item/clothing/head/helmet/sec/attack_self(mob/user)
-	if(can_toggle && !user.incapacitated())
-		if(world.time > cooldown + toggle_cooldown)
-			cooldown = world.time
-			up = !up
-			flags_1 ^= visor_flags
-			flags_inv ^= visor_flags_inv
-			flags_cover ^= visor_flags_cover
-			icon_state = "[initial(icon_state)][up ? "up" : ""]"
-			//Functionally our only change; checks if the attached light is on or off
-			if(attached_light)
-				if(attached_light.on)
-					icon_state += "-flight-on" //"security_helmet-flight-on" // "security_helmetup-flight-on"
-				else
-					icon_state += "-flight" //etc.
-			//End of our only change
-			to_chat(user, span_notice("[up ? alt_toggle_message : toggle_message] \the [src]."))
-
-			user.update_inv_head()
-			if(iscarbon(user))
-				var/mob/living/carbon/C = user
-				C.head_update(src, forced = 1)
-
-/obj/item/clothing/head/helmet/sec/update_icon_state()
 	. = ..()
-	if(attached_light)
-		//This compresses it down nicely. End result is Initial(is the visor toggled)-(is the flashlight on)
-		icon_state = "[initial(icon_state)][up ? "up" : ""][attached_light.on ? "-flight-on" : "-flight"]"
+	if(.)
+		return
+	if(user.incapacitated() || !can_toggle)
+		return
+	up = !up
+	flags_1 ^= visor_flags
+	flags_inv ^= visor_flags_inv
+	flags_cover ^= visor_flags_cover
+	// This part is changed to work with the seclight.
+	base_icon_state = "[initial(icon_state)][up ? "up" : ""]"
+	update_icon_state()
+	to_chat(user, span_notice("[up ? alt_toggle_message : toggle_message] \the [src]."))
 
-//Bulletproof Helmet
-/obj/item/clothing/head/helmet/alt
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "bulletproof_helmet"
+	user.update_worn_head()
+	if(iscarbon(user))
+		var/mob/living/carbon/carbon_user = user
+		carbon_user.head_update(src, forced = TRUE)
 
 //Beret replacement
 /obj/item/clothing/head/security_garrison
@@ -224,7 +234,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "garrison_black"
 	uses_advanced_reskins = TRUE
-	armor = list(MELEE = 30, BULLET = 25, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50)
+	armor_type = /datum/armor/head_security_garrison
 	strip_delay = 60
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	unique_reskin = list(
@@ -239,6 +249,16 @@
 	)
 
 //Normal Cap
+
+/datum/armor/head_security_garrison
+	melee = 30
+	bullet = 25
+	laser = 25
+	energy = 35
+	bomb = 25
+	fire = 20
+	acid = 50
+
 /obj/item/clothing/head/security_cap
 	name = "security cap"
 	desc = "A robust cap with the security insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
@@ -246,7 +266,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "security_cap_black"
 	uses_advanced_reskins = TRUE
-	armor = list(MELEE = 30, BULLET = 25, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50)
+	armor_type = /datum/armor/head_security_cap
 	strip_delay = 60
 	dog_fashion = null
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
@@ -265,7 +285,16 @@
 		),
 	)
 
-/obj/item/clothing/head/hos
+/datum/armor/head_security_cap
+	melee = 30
+	bullet = 25
+	laser = 25
+	energy = 35
+	bomb = 25
+	fire = 20
+	acid = 50
+
+/obj/item/clothing/head/hats/hos
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "hoscap_blue"
@@ -290,15 +319,15 @@
 	)
 
 //Need to quickly redefine this so the icon doesnt break
-/obj/item/clothing/head/hos/syndicate
-	icon = 'icons/obj/clothing/hats.dmi'
-	worn_icon = 'icons/mob/clothing/head.dmi'
+/obj/item/clothing/head/hats/hos/syndicate
+	icon = 'icons/obj/clothing/head/hats.dmi'
+	worn_icon = 'icons/mob/clothing/head/hats.dmi'
 	icon_state = "hoscap"
 	current_skin = "hoscap" //Prevents reskinning
 
-/////////////////////
-//----- NECK ------//
-/////////////////////
+/*
+* NECK
+*/
 /obj/item/clothing/neck/cloak/hos
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
@@ -363,11 +392,11 @@
 	else
 		worn_icon_state = "[icon_state]_left"
 
-	usr.update_inv_neck()
+	usr.update_worn_neck()
 
-///////////////////////
-//----- GLOVES ------//
-///////////////////////
+/*
+* GLOVES
+*/
 /obj/item/clothing/gloves/color/black/security
 	name = "security gloves"
 	desc = "A pair of security gloves."
@@ -400,16 +429,16 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
 	icon_state = "fightgloves_blue"
 
-//////////////////////
-//----- SUITS ------//
-//////////////////////
-//Not technically an override but oh well; it cant be, else everyone can randomly get the uniquely designed vest
-/obj/item/clothing/suit/armor/vest/security
+/*
+* SUITS
+*/
+/obj/item/clothing/suit/armor/vest/alt/sec
 	name = "armored security vest"
-	desc = "An armored vest designed for use in combat, used by security personnel."
+	desc = "A Type-II-AD-P armored vest that provides decent protection against most types of damage."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "vest_white"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
@@ -430,55 +459,51 @@
 		)
 	)
 
-/obj/item/clothing/suit/armor/hos/trenchcoat/black
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "hos_black"
+/obj/item/clothing/suit/armor/hos
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 //Standard Bulletproof Vest
 /obj/item/clothing/suit/armor/bulletproof
+	desc = "A Type-III-AD-P heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "vest_bulletproof"
 	body_parts_covered = CHEST|GROIN|ARMS // Our sprite has groin and arm protections, so we get it too.
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+//Riot Armor
+/obj/item/clothing/suit/armor/riot
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 
 //Warden's Vest
 /obj/item/clothing/suit/armor/vest/warden
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "vest_warden"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 //Security Wintercoat (and hood)
 /obj/item/clothing/head/hooded/winterhood/security
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "security_wintercoat_hood"
-
-/obj/item/clothing/head/hooded/winterhood/security/hos	//Need to quickly re-define this bc it should still use the winterhood file
-	icon = 'icons/obj/clothing/head/winterhood.dmi'
-	worn_icon = 'icons/mob/clothing/head/winterhood.dmi'
+	desc = "A blue, armour-padded winter hood. Definitely not bulletproof, especially not the part where your face goes." //God dammit TG stop putting color in the desc of items like this
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/winterhood.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/winterhood.dmi'
+	icon_state = "winterhood_security"
 
 /obj/item/clothing/suit/hooded/wintercoat/security
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "security_wintercoat"
-
-/obj/item/clothing/suit/hooded/wintercoat/security/hos
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	desc = "A black, armour-padded winter coat with blue and gold stripes on the arms, lovingly woven with a Kevlar interleave and reinforced with semi-ablative polymers and a silver azide fill material. The zipper tab looks like a tiny replica of Beepsky."
-	icon_state = "hos_wintercoat"
-	inhand_icon_state = "coathos"
-//Dont actually need to redo the hood for this, its all grey anyways
+	name = "security winter coat" //TG has this as a Jacket now, so unless we update ours, this needs to be re-named as Coat
+	desc = "A blue, armour-padded winter coat. It glitters with a mild ablative coating and a robust air of authority.  The zipper tab is a small <b>\"Lopland\"</b> logo."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/wintercoat.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/wintercoat.dmi'
+	icon_state = "coatsecurity_winter"
 
 /obj/item/clothing/suit/armor/hos/hos_formal
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "hosformal_blue"
 
-//////////////////////
-//----- UNDER ------//
-//////////////////////
+/*
+* UNDER
+*/
 //Officer
 /obj/item/clothing/under/rank/security/officer
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
@@ -524,21 +549,20 @@
 /obj/item/clothing/under/rank/security/head_of_security/alt/skirt
 	icon_state = "hosalt_skirt_blue"
 
-/////////////////////
-//----- FEET ------//
-/////////////////////
-//Not technically an override but oh well; it cant be, security gets their special footstep noise from it
-/obj/item/clothing/shoes/jackboots/security
+/*
+* FEET
+*/
+//Adds reskins and special footstep noises
+/obj/item/clothing/shoes/jackboots/sec
 	name = "security jackboots"
 	desc = "Lopland's Peacekeeper-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
 	icon_state = "security_boots"
-	inhand_icon_state = "security_boots"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	clothing_traits = list(TRAIT_SILENT_FOOTSTEPS) // We have other footsteps.
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
-		"Blue Variant" = list(
+		"Blue-Trimmed Variant" = list(
 			RESKIN_ICON_STATE = "security_boots",
 			RESKIN_WORN_ICON_STATE = "security_boots"
 		),
@@ -552,49 +576,52 @@
 		),
 	)
 
-/obj/item/clothing/shoes/jackboots/security/Initialize(mapload)
+/obj/item/clothing/shoes/jackboots/sec/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/squeak, list('modular_skyrat/master_files/sound/effects/footstep1.ogg'=1,'modular_skyrat/master_files/sound/effects/footstep2.ogg'=1, 'modular_skyrat/master_files/sound/effects/footstep3.ogg'=1), 100)
-
 
 //
 // This code overrides security's jumpskirt preference, as we're not going to be giving them jumpskirts
 //
-/datum/outfit/job/security/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/security/pre_equip(mob/living/carbon/human/affected_mob)
+	if(affected_mob.jumpsuit_style == PREF_SKIRT)
+		to_chat(affected_mob, span_alertwarning("Lopland Peacekeeper uniforms don't include a skirt variant! You've been equipped with a jumpsuit instead."))
+		affected_mob.jumpsuit_style = PREF_SUIT
 	. = ..()
-	if(H.jumpsuit_style == PREF_SKIRT)
-		to_chat(H, span_alertwarning("Lopland Peacekeeper uniforms don't include a Skirt variant! You've been equipped with a jumpsuit instead."))
-		uniform = /obj/item/clothing/under/rank/security/officer
 
-/datum/outfit/job/hos/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/hos/pre_equip(mob/living/carbon/human/affected_mob)
+	if(affected_mob.jumpsuit_style == PREF_SKIRT)
+		to_chat(affected_mob, span_alertwarning("Lopland Peacekeeper uniforms don't include a skirt variant! You've been equipped with a jumpsuit instead."))
+		affected_mob.jumpsuit_style = PREF_SUIT
 	. = ..()
-	if(H.jumpsuit_style == PREF_SKIRT)
-		to_chat(H, span_alertwarning("Lopland Peacekeeper uniforms don't include a Skirt variant! You've been equipped with a jumpsuit instead."))
-		uniform = /obj/item/clothing/under/rank/security/head_of_security
 
-/datum/outfit/job/warden/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/warden/pre_equip(mob/living/carbon/human/affected_mob)
+	if(affected_mob.jumpsuit_style == PREF_SKIRT)
+		to_chat(affected_mob, span_alertwarning("Lopland Peacekeeper uniforms don't include a skirt variant! You've been equipped with a jumpsuit instead."))
+		affected_mob.jumpsuit_style = PREF_SUIT
 	. = ..()
-	if(H.jumpsuit_style == PREF_SKIRT)
-		to_chat(H, span_alertwarning("Lopland Peacekeeper uniforms don't include a Skirt variant! You've been equipped with a jumpsuit instead."))
-		uniform = /obj/item/clothing/under/rank/security/warden
 
 //PDA Greyscale Overrides
-/obj/item/modular_computer/tablet/pda/security
+/obj/item/modular_computer/pda/security
 	greyscale_colors = "#2B356D#1E1E1E"
 
-/obj/item/modular_computer/tablet/pda/detective
+/obj/item/modular_computer/pda/detective
 	greyscale_colors = "#90714F#1E1E1E"
 
-/obj/item/modular_computer/tablet/pda/warden
+/obj/item/modular_computer/pda/warden
 	greyscale_colors = "#2F416E#1E1E1E#ACACAC"
 
-/obj/item/modular_computer/tablet/pda/heads/hos
+/obj/item/modular_computer/pda/heads/hos
 	greyscale_colors = "#2B356D#1E1E1E"
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//A bunch of Re-overrides so that admins can keep using some redsec stuff; not all of them have this though!
+/*
+*	A bunch of re-overrides so that admins can keep using some redsec stuff; not all of them have this though!
+*/
 
-//Eyes//
+/*
+*	EYES
+*/
+
 /obj/item/clothing/glasses/hud/security/redsec
 	icon = 'icons/obj/clothing/glasses.dmi'
 	worn_icon = 'icons/mob/clothing/eyes.dmi'
@@ -612,37 +639,47 @@
 	icon = 'icons/obj/clothing/glasses.dmi'
 	worn_icon = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "hudpatch"
+	base_icon_state = "hudpatch"
 
 /obj/item/clothing/glasses/hud/security/night/redsec
 	icon = 'icons/obj/clothing/glasses.dmi'
 	worn_icon = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "securityhudnight"
 
-//Neck//
+/*
+*	NECK
+*/
+
 /obj/item/clothing/neck/cloak/hos/redsec
 	icon = 'icons/obj/clothing/cloaks.dmi'
 	worn_icon = 'icons/mob/clothing/neck.dmi'
 	icon_state = "hoscloak"
 
-//Back//
+/*
+*	BACK
+*/
+
 /obj/item/storage/backpack/security/redsec
-	icon = 'icons/obj/storage.dmi'
-	worn_icon = 'icons/mob/clothing/back.dmi'
-	icon_state = "securitypack"
-	current_skin = "securitypack"	//prevents reskinning
+	icon = 'icons/obj/storage/backpack.dmi'
+	worn_icon = 'icons/mob/clothing/back/backpack.dmi'
+	icon_state = "backpack-security"
+	current_skin = "backpack-security" //prevents reskinning
 
 /obj/item/storage/backpack/satchel/sec/redsec
-	icon = 'icons/obj/storage.dmi'
-	worn_icon = 'icons/mob/clothing/back.dmi'
-	icon_state = "satchel-sec"
+	icon = 'icons/obj/storage/backpack.dmi'
+	worn_icon = 'icons/mob/clothing/back/backpack.dmi'
+	icon_state = "satchel-security"
 
 /obj/item/storage/backpack/duffelbag/sec/redsec
-	icon = 'icons/obj/storage.dmi'
-	worn_icon = 'icons/mob/clothing/back.dmi'
-	icon_state = "duffel-sec"
-	current_skin = "duffel-sec"	//prevents reskinning
+	icon = 'icons/obj/storage/backpack.dmi'
+	worn_icon = 'icons/mob/clothing/back/backpack.dmi'
+	icon_state = "duffel-security"
+	current_skin = "duffel-security" //prevents reskinning
 
-//Belt//
+/*
+*	BELT
+*/
+
 /obj/item/storage/belt/security/redsec
 	icon = 'icons/obj/clothing/belts.dmi'
 	worn_icon = 'icons/mob/clothing/belt.dmi'
@@ -651,18 +688,25 @@
 	worn_icon_state = "security"
 	current_skin = "security"	//prevents reskinning
 
-//Head//
+/*
+*	HEAD
+*/
+
 /obj/item/clothing/head/helmet/sec/redsec
-	icon = 'icons/obj/clothing/hats.dmi'
-	worn_icon = 'icons/mob/clothing/head.dmi'
+	icon = 'icons/obj/clothing/head/helmet.dmi'
+	worn_icon = 'icons/mob/clothing/head/helmet.dmi'
 	icon_state = "helmet"
+	base_icon_state = "helmet"
 	actions_types = null
 	can_toggle = FALSE
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	flags_cover = HEADCOVERSEYES
 	flags_inv = HIDEHAIR
 
-//Uniform//
+/*
+*	UNIFORM
+*/
+
 /obj/item/clothing/under/rank/security/officer/redsec
 	icon = 'icons/obj/clothing/under/security.dmi'
 	worn_icon = 'icons/mob/clothing/under/security.dmi'
@@ -689,15 +733,41 @@
 	worn_icon = 'icons/mob/clothing/under/security.dmi'
 	icon_state = "hos_parade_fem"
 
-//Winter Coat
+/*
+*	WINTER COAT
+*/
+
 /obj/item/clothing/head/hooded/winterhood/security/redsec
+	desc = "A red, armour-padded winter hood. Definitely not bulletproof, especially not the part where your face goes."
 	icon = 'icons/obj/clothing/head/winterhood.dmi'
 	worn_icon = 'icons/mob/clothing/head/winterhood.dmi'
 	icon_state = "hood_security"
 
 /obj/item/clothing/suit/hooded/wintercoat/security/redsec
+	name = "security winter jacket"
+	desc = "A red, armour-padded winter coat. It glitters with a mild ablative coating and a robust air of authority.  The zipper tab is a pair of jingly little handcuffs that get annoying after the first ten seconds."
 	icon = 'icons/obj/clothing/suits/wintercoat.dmi'
 	worn_icon = 'icons/mob/clothing/suits/wintercoat.dmi'
 	icon_state = "coatsecurity"
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/security/redsec
 
+/*
+*	ARMOR
+*/
+
+/obj/item/clothing/suit/armor/vest/alt/sec/redsec
+	desc = "A Type I armored vest that provides decent protection against most types of damage."
+	icon = 'icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
+	icon_state = "armor_sec"
+
+/*
+*	FEET
+*/
+/obj/item/clothing/shoes/jackboots/sec/redsec
+	name = "jackboots"
+	desc = "Nanotrasen-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
+	icon_state = "jackboots_sec"
+	icon = 'icons/obj/clothing/shoes.dmi'
+	worn_icon = 'icons/mob/clothing/feet.dmi'
+	current_skin = "jackboots_sec"	//prevents reskinning
