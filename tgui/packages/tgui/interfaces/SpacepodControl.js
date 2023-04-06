@@ -3,45 +3,27 @@ import { toFixed } from 'common/math';
 import { NoticeBox, Section, Stack, Button, LabeledList, ProgressBar, Tabs } from '../components';
 import { Window } from '../layouts';
 
-
 export const SpacepodControl = (props, context) => {
   const [tab, setTab] = useSharedState(context, 'tab', 1);
   const { act, data } = useBackend(context);
-  const {
-    pod_name,
-  } = data;
+  const { pod_name } = data;
   return (
-    <Window
-      title={'Pod Control: ' + pod_name}
-      width={500}
-      height={700}>
+    <Window title={'Pod Control: ' + pod_name} width={500} height={700}>
       <Window.Content scrollable>
         <Tabs>
-          <Tabs.Tab
-            selected={tab === 1}
-            onClick={() => setTab(1)}>
+          <Tabs.Tab selected={tab === 1} onClick={() => setTab(1)}>
             Pod Summary
           </Tabs.Tab>
-          <Tabs.Tab
-            selected={tab === 2}
-            onClick={() => setTab(2)}>
+          <Tabs.Tab selected={tab === 2} onClick={() => setTab(2)}>
             Pod Equipment
           </Tabs.Tab>
-          <Tabs.Tab
-            selected={tab === 3}
-            onClick={() => setTab(3)}>
+          <Tabs.Tab selected={tab === 3} onClick={() => setTab(3)}>
             Cargo Hold
           </Tabs.Tab>
         </Tabs>
-        {tab === 1 && (
-          <SummaryTab />
-        )}
-        {tab === 2 && (
-          <EquipmentTab />
-        )}
-        {tab === 3 && (
-          <CargoTab />
-        )}
+        {tab === 1 && <SummaryTab />}
+        {tab === 2 && <EquipmentTab />}
+        {tab === 3 && <CargoTab />}
       </Window.Content>
     </Window>
   );
@@ -57,6 +39,7 @@ export const SummaryTab = (props, context) => {
     occupants,
     locked,
     lights,
+    alarm_muted,
     brakes,
     has_cell,
     has_weapon,
@@ -66,7 +49,6 @@ export const SummaryTab = (props, context) => {
     velocity,
     integrity,
     max_integrity,
-
   } = data;
   return (
     <Stack vertical grow>
@@ -83,47 +65,57 @@ export const SummaryTab = (props, context) => {
                 value={integrity}
                 maxValue={max_integrity}
                 ranges={{
-                  "good": [integrity * 0.85, max_integrity],
-                  "average": [integrity * 0.25, max_integrity * 0.85],
-                  "bad": [0, max_integrity * 0.25],
+                  'good': [integrity * 0.85, max_integrity],
+                  'average': [integrity * 0.25, max_integrity * 0.85],
+                  'bad': [0, max_integrity * 0.25],
                 }}>
-                {toFixed(integrity / max_integrity * 100)}%
+                {toFixed((integrity / max_integrity) * 100)}%
               </ProgressBar>
             </LabeledList.Item>
             <LabeledList.Item label="Vector Thrust Braking">
               <Button
-                icon={"space-shuttle"}
+                icon={'space-shuttle'}
                 content={brakes ? 'Engaged' : 'Disengaged'}
                 color={brakes ? 'good' : 'bad'}
-                onClick={() => act('toggle_brakes')} />
+                onClick={() => act('toggle_brakes')}
+              />
             </LabeledList.Item>
-            <LabeledList.Item label="Pilot Name">
-              {pod_pilot}
-            </LabeledList.Item>
+            <LabeledList.Item label="Pilot Name">{pod_pilot}</LabeledList.Item>
           </LabeledList>
         </Section>
         <Section
           title={'Spacepod Control'}
-          buttons={(
+          buttons={
             <Button
               icon="sign-out-alt"
               content="Exit Pod"
-              onClick={() => act('exit_pod')} />
-          )}>
+              onClick={() => act('exit_pod')}
+            />
+          }>
           <LabeledList>
             <LabeledList.Item label="Lock status">
               <Button
                 icon={locked ? 'unlock' : 'lock'}
                 content={locked ? 'Locked' : 'Unlocked'}
                 color={locked ? 'good' : 'bad'}
-                onClick={() => act('toggle_locked')} />
+                onClick={() => act('toggle_locked')}
+              />
             </LabeledList.Item>
             <LabeledList.Item label="Lights status">
               <Button
-                icon={"lightbulb"}
+                icon={'lightbulb'}
                 content={lights ? 'Online' : 'Offline'}
                 color={lights ? 'good' : 'bad'}
-                onClick={() => act('toggle_lights')} />
+                onClick={() => act('toggle_lights')}
+              />
+            </LabeledList.Item>
+            <LabeledList.Item label="Alarm">
+              <Button
+                icon={'volume'}
+                content={alarm_muted ? 'Muted' : 'Enabled'}
+                color={alarm_muted ? 'good' : 'bad'}
+                onClick={() => act('mute_alarm')}
+              />
             </LabeledList.Item>
           </LabeledList>
         </Section>
@@ -141,9 +133,12 @@ export const SummaryTab = (props, context) => {
                   minValue={0}
                   maxValue={cell_data.max_charge}
                   ranges={{
-                    "good": [cell_data.max_charge * 0.85, cell_data.max_charge],
-                    "average": [cell_data.max_charge * 0.25, cell_data.max_charge * 0.85],
-                    "bad": [0, cell_data.max_charge * 0.25],
+                    'good': [cell_data.max_charge * 0.85, cell_data.max_charge],
+                    'average': [
+                      cell_data.max_charge * 0.25,
+                      cell_data.max_charge * 0.85,
+                    ],
+                    'bad': [0, cell_data.max_charge * 0.25],
                   }}>
                   {cell_data.charge + '/' + cell_data.max_charge + 'MF'}
                 </ProgressBar>
@@ -154,17 +149,13 @@ export const SummaryTab = (props, context) => {
               {!!cell_data.charge <= 0 && (
                 <LabeledList.Item>
                   <Section>
-                    <NoticeBox color="bad">
-                      Charge depleted!
-                    </NoticeBox>
+                    <NoticeBox color="bad">Charge depleted!</NoticeBox>
                   </Section>
                 </LabeledList.Item>
               )}
             </LabeledList>
           ) : (
-            <NoticeBox color="bad">
-              No cell installed!
-            </NoticeBox>
+            <NoticeBox color="bad">No cell installed!</NoticeBox>
           )}
         </Section>
       </Stack.Item>
@@ -180,16 +171,15 @@ export const SummaryTab = (props, context) => {
               </LabeledList.Item>
               <LabeledList.Item label="Weapons Lock">
                 <Button
-                  icon={"fighter-jet"}
+                  icon={'fighter-jet'}
                   content={weapon_lock ? 'Safe' : 'Ready to fire'}
                   color={weapon_lock ? 'good' : 'bad'}
-                  onClick={() => act('toggle_weapon_lock')} />
+                  onClick={() => act('toggle_weapon_lock')}
+                />
               </LabeledList.Item>
             </LabeledList>
           ) : (
-            <NoticeBox color="blue">
-              No weapon installed!
-            </NoticeBox>
+            <NoticeBox color="blue">No weapon installed!</NoticeBox>
           )}
         </Section>
       </Stack.Item>
@@ -198,15 +188,11 @@ export const SummaryTab = (props, context) => {
           {has_occupants ? (
             occupants.map((occpuant, index) => (
               <LabeledList key={index}>
-                <LabeledList.Item label="Name">
-                  {occpuant}
-                </LabeledList.Item>
+                <LabeledList.Item label="Name">{occpuant}</LabeledList.Item>
               </LabeledList>
             ))
           ) : (
-            <NoticeBox color="blue">
-              No occupants detected!
-            </NoticeBox>
+            <NoticeBox color="blue">No occupants detected!</NoticeBox>
           )}
         </Section>
       </Stack.Item>
@@ -216,25 +202,25 @@ export const SummaryTab = (props, context) => {
 
 export const EquipmentTab = (props, context) => {
   const { act, data } = useBackend(context);
-  const {
-    has_equipment,
-    equipment = [],
-  } = data;
+  const { has_equipment, equipment = [] } = data;
   return (
-    <Section title={"Equipment"}>
+    <Section title={'Equipment'}>
       {has_equipment ? (
         equipment.map((equipment_thing, index) => (
           <Section
             key={index}
             title={equipment_thing.name}
-            buttons={(
+            buttons={
               <Button
                 icon="eject"
                 content="Eject Equipment"
-                onClick={() => act('remove_equipment', {
-                  equipment_ref: equipment_thing.ref,
-                })} />
-            )}>
+                onClick={() =>
+                  act('remove_equipment', {
+                    equipment_ref: equipment_thing.ref,
+                  })
+                }
+              />
+            }>
             <LabeledList>
               <LabeledList.Item label="Description">
                 {equipment_thing.desc}
@@ -246,9 +232,7 @@ export const EquipmentTab = (props, context) => {
           </Section>
         ))
       ) : (
-        <NoticeBox color="blue">
-          No equipment installed!
-        </NoticeBox>
+        <NoticeBox color="blue">No equipment installed!</NoticeBox>
       )}
     </Section>
   );
@@ -256,26 +240,26 @@ export const EquipmentTab = (props, context) => {
 
 export const CargoTab = (props, context) => {
   const { act, data } = useBackend(context);
-  const {
-    has_bays,
-    cargo_bays = [],
-  } = data;
+  const { has_bays, cargo_bays = [] } = data;
   return (
-    <Section title={"Cargo Hold"}>
+    <Section title={'Cargo Hold'}>
       {has_bays ? (
         cargo_bays.map((bay, index) => (
           <Section
             key={index}
             title={bay.name}
-            buttons={(
+            buttons={
               <Button
                 icon="eject"
-                disabled={bay.cargo === "none"}
+                disabled={bay.cargo === 'none'}
                 content="Eject Cargo"
-                onClick={() => act('unload_cargo', {
-                  cargo_bay_ref: bay.ref,
-                })} />
-            )}>
+                onClick={() =>
+                  act('unload_cargo', {
+                    cargo_bay_ref: bay.ref,
+                  })
+                }
+              />
+            }>
             <LabeledList>
               <LabeledList.Item label="Contents">
                 {bay.storage}
@@ -284,9 +268,7 @@ export const CargoTab = (props, context) => {
           </Section>
         ))
       ) : (
-        <NoticeBox color="blue">
-          No cargo bay installed!
-        </NoticeBox>
+        <NoticeBox color="blue">No cargo bay installed!</NoticeBox>
       )}
     </Section>
   );

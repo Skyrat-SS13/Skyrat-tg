@@ -83,9 +83,16 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	/// How many friends we can have!
 	var/max_passengers = 0
 	/// List of action types for passengers
-	var/list/passenger_actions = list(/datum/action/spacepod/exit)
+	var/list/passenger_actions = list(
+		/datum/action/spacepod/exit,
+		)
 	/// List of action types for the pilot
-	var/list/pilot_actions = list(/datum/action/spacepod/controls, /datum/action/spacepod/exit)
+	var/list/pilot_actions = list(
+		/datum/action/spacepod/controls,
+		/datum/action/spacepod/exit,
+		/datum/action/spacepod/thrust_up,
+		/datum/action/spacepod/thrust_down,
+		)
 
 	/// List of occupants with actions attached.
 	var/list/mob/occupant_actions = list()
@@ -123,8 +130,10 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/lateral_bounce_factor = 0.95
 	/// Our icon direction number.
 	var/icon_dir_num = 1
-
+	/// Our looping alarm sound for something bad happening.
 	var/datum/looping_sound/spacepod_alarm/alarm_sound
+	/// Have we muted the alarm?
+	var/alarm_muted = FALSE
 
 
 /obj/spacepod/Initialize()
@@ -633,6 +642,15 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	if(weapon)
 		weapon.fire_weapons(object)
 
+/obj/spacepod/proc/play_alarm(toggle)
+	if(alarm_muted)
+		alarm_sound.stop()
+		return
+	if(toggle)
+		alarm_sound.start()
+	else
+		alarm_sound.stop()
+
 /**
  * Process Integrity
  *
@@ -642,9 +660,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
  */
 /obj/spacepod/proc/process_integrity(obj/source, old_value, new_value)
 	if(new_value < (max_integrity / 4)) // Less than a quarter health.
-		alarm_sound.start()
+		play_alarm(TRUE)
 	else
-		alarm_sound.stop()
+		play_alarm(FALSE)
 
 /**
  * Enter Pod
@@ -824,6 +842,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	data["locked"] = locked
 	data["brakes"] = brakes
 	data["lights"] = light_toggle
+	data["alarm_muted"] = alarm_muted
 
 	data["has_cell"] = FALSE
 	if(cell)
@@ -897,6 +916,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		if("remove_equipment")
 			var/obj/item/spacepod_equipment/equipment_to_remove = locate(params["equipment_ref"]) in src
 			uninstall_equipment(equipment_to_remove, usr)
+		if("mute_alarm")
+			mute_alarm(usr)
 
 /obj/spacepod/proc/toggle_weapon_lock(mob/user)
 	if(!weapon)
@@ -955,6 +976,10 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		return
 
 	to_chat(user, span_warning("You are not close to any pod doors."))
+
+/obj/spacepod/proc/mute_alarm(mob/user)
+	alarm_muted = !alarm_muted
+	to_chat(user, span_notice("System alarm [alarm_muted ? "muted" : "enabled"]."))
 
 // LEGACY CONTROL - Important that this works at all times as we don't want to brick people.
 /obj/spacepod/proc/verb_check(require_pilot = TRUE, mob/user = null)
