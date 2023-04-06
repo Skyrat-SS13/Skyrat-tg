@@ -59,12 +59,14 @@
 
 /obj/spacepod/random/Initialize()
 	. = ..()
-	var/spacepod_armor_type = pick(/obj/item/pod_parts/armor,
+	var/spacepod_armor_type = pick(
+		/obj/item/pod_parts/armor,
 		/obj/item/pod_parts/armor/syndicate,
 		/obj/item/pod_parts/armor/black,
 		/obj/item/pod_parts/armor/gold,
 		/obj/item/pod_parts/armor/industrial,
-		/obj/item/pod_parts/armor/security)
+		/obj/item/pod_parts/armor/security,
+		)
 	add_armor(new spacepod_armor_type(src))
 	cell = new /obj/item/stock_parts/cell/high/empty(src)
 	internal_tank = new /obj/machinery/portable_atmospherics/canister/air(src)
@@ -77,7 +79,7 @@
 	name = "military pod"
 	icon_state = "pod_mil"
 	spacepod_armor_type = /obj/item/pod_parts/armor/security
-	cell_type = /obj/item/stock_parts/cell/high
+	cell_type = /obj/item/stock_parts/cell/hyper
 	equipment_types = list(
 		/obj/item/spacepod_equipment/weaponry/burst_disabler,
 		/obj/item/spacepod_equipment/cargo,

@@ -117,8 +117,6 @@
 		last_thrust_right = 0
 		if(!brakes && user_thrust_dir && !thrust_lockout)
 			to_chat(pilot, span_warning("You are out of power!"))
-		if(thrust_lockout)
-			to_chat(pilot, span_warning("Unable to comply due to thrust lockout!"))
 
 	offset_x += velocity_x * time
 	offset_y += velocity_y * time
@@ -272,7 +270,7 @@
 		take_damage(bump_velocity, BRUTE, "melee", FALSE)
 		playsound(M.loc, "swing_hit", 100, 1, -1)
 		M.Knockdown(bump_velocity * 2)
-		M.visible_message(span_warning("The force of the impact knocks [M] down!") ,span_userdanger("The force of the impact knocks you down!"))
+		M.visible_message(span_warning("The force of the impact knocks [M] down!"), span_userdanger("The force of the impact knocks you down!"))
 		log_combat(pilot, M, "impacted", src, "with velocity of [bump_velocity]")
 	return ..()
 
@@ -283,7 +281,7 @@
 	var/sy = -fx
 	var/ox = (offset_x * 32)
 	var/oy = (offset_y * 32)
-	var/list/origins = list(list(ox + fx*16 - sx*16, oy + fy*16 - sy*16), list(ox + fx*16 + sx*16, oy + fy*16 + sy*16))
+	var/list/origins = list(list(ox + fx * 16 - sx * 16, oy + fy * 16 - sy * 16), list(ox + fx * 16 + sx * 16, oy + fy * 16 + sy * 16))
 	for(var/list/origin in origins)
 		var/this_x = origin[1]
 		var/this_y = origin[2]
@@ -309,5 +307,4 @@
 		proj.original = target
 		proj.pixel_x = round(this_x)
 		proj.pixel_y = round(this_y)
-
 		proj.fire(angle)

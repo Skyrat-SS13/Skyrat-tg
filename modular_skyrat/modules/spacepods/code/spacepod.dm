@@ -112,6 +112,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/last_rotate = 0
 	// End of physics stuff
 
+	/// Are our engines turned on or off?
+	var/engines = TRUE
+
 	/// Our RCS breaking system, if it's on, the ship will try to keep itself stable.
 	var/brakes = TRUE
 	/// A system for preventing any thrust from being applied.
@@ -137,11 +140,15 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/datum/looping_sound/spacepod_alarm/alarm_sound
 	/// Have we muted the alarm?
 	var/alarm_muted = FALSE
+	/// Our looping thrust sound.
+	var/datum/looping_sound/spacepod_thrust/thrust_sound
 
 	/// Our teleporter warp effect
 	var/atom/movable/warp_effect/warp
 	/// How long it takes us to warp
 	var/warp_time = 5 SECONDS
+	/// Our follow trail
+	var/datum/effect_system/trail_follow/ion/grav_allowed/trail
 
 
 /obj/spacepod/Initialize()
@@ -153,6 +160,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	cabin_air.volume = 200
 	RegisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED, PROC_REF(process_integrity))
 	alarm_sound = new(src)
+	thrust_sound = new(src)
+	trail = new(src)
+	trail.set_up(src)
 
 /obj/spacepod/Destroy()
 	GLOB.spacepods_list -= src
@@ -171,6 +181,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	QDEL_NULL(lock)
 	QDEL_NULL(selected_weapon)
 	QDEL_NULL(alarm_sound)
+	QDEL_NULL(thrust_sound)
+	QDEL_NULL(trail)
 	UnregisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED)
 	return ..()
 
@@ -316,12 +328,13 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 				take_damage(40, BRUTE, "bomb", 0)
 
 /**
- * We handle our own atom breaking.area
+ * We handle our own atom breaking.
  * This is because we have unique damage overlays and destruction phases.
  */
 /obj/spacepod/atom_break(damage_flag)
 	if(get_integrity() <= 0)
 		return ..()
+	play_alarm(FALSE)
 	if(construction_state < SPACEPOD_ARMOR_LOOSE)
 		return
 	if(pod_armor)
@@ -470,6 +483,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		add_overlay(new_image)
 	if(front_thrust)
 		add_overlay(image(icon = overlay_file, icon_state = "front_thrust"))
+		thrust_sound.start() // TODO: Refactor this into effects system
+	else
+		thrust_sound.stop()
 
 
 /obj/spacepod/relaymove(mob/user, direction)
