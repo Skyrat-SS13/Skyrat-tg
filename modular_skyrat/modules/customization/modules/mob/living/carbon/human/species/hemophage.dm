@@ -54,7 +54,8 @@
 #define TUMOR_DISLIKED_FOOD_DISGUST DISGUST_LEVEL_GROSS + 15
 /// The ratio of reagents that get purged while a Hemophage vomits from trying to eat/drink something that their tumor doesn't like.
 #define HEMOPHAGE_VOMIT_PURGE_RATIO 0.95
-
+/// The rate at which blood metabolizes in a Hemophage's stomach subtype.
+#define BLOOD_METABOLIZATION_RATE 0.1 * REAGENTS_METABOLISM
 
 /datum/species/hemophage
 	name = "Hemophage"
@@ -447,7 +448,6 @@
 	desc = GENERIC_CORRUPTED_ORGAN_DESC
 	icon = 'modular_skyrat/modules/organs/icons/hemophage_organs.dmi'
 	organ_flags = ORGAN_EDIBLE | ORGAN_TUMOR_CORRUPTED
-	metabolism_efficiency = 0.1
 
 
 /obj/item/organ/internal/stomach/hemophage/after_eat(atom/edible)
@@ -473,6 +473,14 @@
 	body.vomit(lost_nutrition = 0, stun = FALSE, distance = 1, force = TRUE, purge_ratio = HEMOPHAGE_VOMIT_PURGE_RATIO)
 	return ..()
 
+/obj/item/organ/internal/stomach/hemophage/on_life(delta_time, times_fired)
+	var/datum/reagent/blood/blood = reagents.get_reagent(/datum/reagent/blood)
+	if(blood)
+		var/amount_max = blood.volume
+		var/amount = min((round(metabolism_efficiency * amount_max, 0.05) + BLOOD_METABOLIZATION_RATE) * delta_time, amount_max)
+
+		reagents.trans_id_to(owner, blood.type, amount=amount)
+	else ..()
 
 /obj/item/organ/internal/tongue/hemophage
 	name = "corrupted tongue"
@@ -769,3 +777,5 @@
 #undef HEMOPHAGE_VOMIT_PURGE_RATIO
 #undef TUMOR_DISLIKED_FOOD_DISGUST
 #undef MINIMUM_BLOOD_REGENING_REAGENT_RATIO
+
+#undef BLOOD_METABOLIZATION_RATE
