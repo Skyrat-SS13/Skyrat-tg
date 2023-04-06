@@ -92,6 +92,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		/datum/action/spacepod/exit,
 		/datum/action/spacepod/thrust_up,
 		/datum/action/spacepod/thrust_down,
+		/datum/action/spacepod/quantum_entangloporter,
 		)
 
 	/// List of occupants with actions attached.
@@ -113,6 +114,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 	/// Our RCS breaking system, if it's on, the ship will try to keep itself stable.
 	var/brakes = TRUE
+	/// A system for preventing any thrust from being applied.
+	var/thrust_lockout = FALSE
 	/// Users thrust direction
 	var/user_thrust_dir = 0
 	/// Max forward thrust, in tiles per second
@@ -135,6 +138,11 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	/// Have we muted the alarm?
 	var/alarm_muted = FALSE
 
+	/// Our teleporter warp effect
+	var/atom/movable/warp_effect/warp
+	/// How long it takes us to warp
+	var/warp_time = 5 SECONDS
+
 
 /obj/spacepod/Initialize()
 	. = ..()
@@ -150,6 +158,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	GLOB.spacepods_list -= src
 	if(pilot)
 		clear_pilot()
+	if(warp)
+		vis_contents -= warp
+		QDEL_NULL(warp)
 	QDEL_LIST(passengers)
 	QDEL_LIST(occupants)
 	QDEL_LIST(equipment)
@@ -783,6 +794,43 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	return !isnull(LAZYACCESS(occupants, mob_to_check))
 
 /**
+ * Handles teleportation
+ *
+ * Shuttles have cool teleport effects.
+ */
+/obj/spacepod/proc/warp_to(turf/turf_to_warp_to, mob/user)
+	warp = new(src)
+	vis_contents += warp
+
+	to_chat(user, span_notice("Initiating quantum entangloporter warp systems..."))
+
+	thrust_lockout = TRUE
+
+	addtimer(CALLBACK(src, PROC_REF(actually_warp_to), turf_to_warp_to, user), warp_time)
+
+/**
+ * Actually handles teleportation
+ */
+/obj/spacepod/proc/actually_warp_to(turf/turf_to_warp_to, mob/user)
+	if(!cell || !(cell.charge < 5000)) // Final energy check
+		vis_contents -= warp
+		QDEL_NULL(warp)
+		to_chat(usr, span_warning("Not enough energy!"))
+		thrust_lockout = FALSE
+		return
+	var/turf/our_turf = get_turf(src)
+	playsound(our_turf, 'sound/magic/Repulse.ogg', 100, TRUE)
+	var/datum/effect_system/spark_spread/quantum/sparks = new
+	sparks.set_up(10, 1, our_turf)
+	sparks.attach(our_turf)
+	sparks.start()
+	forceMove(src, turf_to_warp_to)
+	to_chat(pilot, span_notice("TELEPORTING!"))
+	vis_contents -= warp
+	QDEL_NULL(warp)
+	thrust_lockout = FALSE
+
+/**
  * UI CONTROL FUNCTIONS
  *
  * These functions are called by the client to control the UI.
@@ -989,31 +1037,3 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		to_chat(user, span_notice("You can't reach the controls from your chair"))
 		return FALSE
 	return !user.incapacitated() && isliving(user)
-
-
-/obj/spacepod/verb/wayback_me()
-	set name = "Back to lighthouse"
-	set category = "Spacepod"
-	set src = usr.loc
-
-	if(!(locate(/obj/item/spacepod_equipment/teleport) in equipment))
-		to_chat(usr, span_warning("No teleportation device!"))
-		return
-
-	if(!verb_check())
-		return
-
-	if(do_after(usr, 5 SECONDS, src, timed_action_flags = IGNORE_INCAPACITATED))
-		if(!cell || !cell.use(5000))
-			to_chat(usr, span_warning("Not enough energy!"))
-			return
-
-		for(var/atom/iterating_atom in GLOB.spacepod_beacons)
-			var/turf/iterating_turf = get_turf(iterating_atom)
-			if(locate(/obj/spacepod) in iterating_turf.contents)
-				continue
-			else
-				forceMove(iterating_turf)
-				return
-
-		to_chat(usr, span_notice("TELEPORTING!"))

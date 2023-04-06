@@ -23,4 +23,5 @@
 
 #define SPACEPOD_LAYER 3.9
 
+/// A list of lighthouses that enable the spacepods to teleport to.
 GLOBAL_LIST_EMPTY(spacepod_beacons)

@@ -154,9 +154,36 @@
 		to_chat(owner, span_warning("There's nowhere to go in that direction!"))
 		return
 
-	if(!spacepod_target.cell || !spacepod_target.cell.use(10))
+	if(!spacepod_target.cell || !(spacepod_target.cell.charge < 10))
 		to_chat(owner, span_warning("Not enough energy!"))
 		return
 
 	if(spacepod_target.zMove(DOWN, z_move_flags = ZMOVE_ALLOW_ANCHORED|ZMOVE_FEEDBACK))
+		spacepod_target.cell.use(10)
 		to_chat(src, span_notice("You move downwards."))
+
+/**
+ * Wayback Teleportation
+ */
+/datum/action/spacepod/quantum_entangloporter
+	name = "Engage quantum entangloporter"
+	button_icon_state = "teleport"
+
+/datum/action/spacepod/quantum_entangloporter/Trigger(trigger_flags)
+	if(!owner || !spacepod_target || !(owner in spacepod_target.occupants) || owner.incapacitated())
+		return
+
+	if(!(locate(/obj/item/spacepod_equipment/teleport) in spacepod_target.equipment))
+		to_chat(owner, span_warning("No teleportation device!"))
+		return
+
+	var/obj/machinery/spacepod_lighthouse/selected_lighthouse = tgui_input_list(owner, "Select a lighthouse to travel to:", "Teleportation", GLOB.spacepod_beacons)
+
+	if(!selected_lighthouse)
+		return
+
+	var/turf/lighthouse_turf = get_turf(selected_lighthouse)
+
+	spacepod_target.warp_to(lighthouse_turf, owner)
+
+

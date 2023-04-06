@@ -12,6 +12,8 @@
 	var/slot = SPACEPOD_SLOT_MISC
 	/// How much space this equipment takes up
 	var/slot_space = 1
+	/// What actions should we give the user?
+	var/list/actions_to_give = list()
 
 /obj/item/spacepod_equipment/Destroy(force)
 	spacepod = null
@@ -371,8 +373,8 @@
 	icon_state = "pod_locator"
 
 /obj/item/spacepod_equipment/teleport
-	name = "teleporter"
-	desc = "Instantly returns the ship to the lighthouse."
+	name = "quantum entangloporter"
+	desc = "Enables faster than light travel using a quantum entangloporter."
 	icon_state = "cargo_blank"
 	slot = SPACEPOD_SLOT_MISC
 
