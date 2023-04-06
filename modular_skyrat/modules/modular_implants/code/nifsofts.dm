@@ -146,7 +146,7 @@
 	///Is the datadisk reusable?
 	var/reusable = FALSE
 
-/obj/item/disk/nifsoft_uploader/Initialize()
+/obj/item/disk/nifsoft_uploader/Initialize(mapload)
 	. = ..()
 
 	name = "[initial(loaded_nifsoft.name)] datadisk"
