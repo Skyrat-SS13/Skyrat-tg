@@ -21,7 +21,7 @@
 /obj/item/mod/control/pre_equipped/contractor/upgraded
 	applied_cell = /obj/item/stock_parts/cell/bluespace
 	applied_modules = list(
-		/obj/item/mod/module/baton_holster,
+		/obj/item/mod/module/baton_holster/preloaded,
 		/obj/item/mod/module/dna_lock,
 		/obj/item/mod/module/emp_shield,
 		/obj/item/mod/module/jetpack,
