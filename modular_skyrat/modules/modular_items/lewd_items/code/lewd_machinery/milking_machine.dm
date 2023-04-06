@@ -80,6 +80,16 @@
 		current_mob.update_abstract_handcuffed()
 		current_mob.layer = initial(current_mob.layer)
 
+	if(beaker)
+		qdel(beaker)
+		beaker = null
+
+	current_selected_organ = null
+	current_mob = null
+	current_breasts = null
+	current_testicles = null
+	current_vagina = null
+
 	STOP_PROCESSING(SSobj, src)
 	unbuckle_all_mobs()
 	return ..()
@@ -248,16 +258,6 @@
 /obj/item/restraints/handcuffs/milker/Destroy()
 	unbuckle_parent()
 	parent_chair = null
-	if(beaker)
-		qdel(beaker)
-		beaker = null
-
-	current_selected_organ = null
-	current_mob = null
-	current_breasts = null
-	current_testicles = null
-	current_vagina = null
-
 	return ..()
 
 /obj/item/restraints/handcuffs/milker/proc/unbuckle_parent()
