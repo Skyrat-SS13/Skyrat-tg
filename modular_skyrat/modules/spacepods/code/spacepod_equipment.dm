@@ -23,8 +23,8 @@
 	forceMove(attaching_spacepod)
 
 /obj/item/spacepod_equipment/proc/on_uninstall(obj/spacepod/detatching_spacepod)
-	spacepod.equipment -= src
-	spacepod = null
+	detatching_spacepod.equipment -= src
+	detatching_spacepod = null
 
 /**
  * can_install
@@ -291,9 +291,9 @@
 	/// The max speed that the pod can move forwards. In tiles per second.
 	var/max_forward_speed = 3
 	/// The max speed that the pod can move backwards. In tiles per second.
-	var/max_backwards_speed = 2
+	var/max_backwards_speed = 1.5
 	/// The max speed that the pod can move sidways. In tiles per second.
-	var/max_sideways_speed = 1
+	var/max_sideways_speed = 0.5
 
 /obj/item/spacepod_equipment/thruster/on_install(obj/spacepod/attaching_spacepod)
 	. = ..()
@@ -306,6 +306,13 @@
 	detatching_spacepod.forward_maxthrust = 0
 	detatching_spacepod.backward_maxthrust = 0
 	detatching_spacepod.side_maxthrust = 0
+
+/obj/item/spacepod_equipment/thruster/upgraded
+	name = "upgraded pod thruster system"
+	desc = "The engine system for a spacepod, makes the pod go. This one has been modified to make it go FASTER."
+	max_forward_speed = 4
+	max_backwards_speed = 2
+	max_sideways_speed = 1
 
 /**
  * Lights

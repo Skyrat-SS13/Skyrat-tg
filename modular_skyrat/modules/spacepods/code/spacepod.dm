@@ -123,8 +123,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/lateral_bounce_factor = 0.95
 	/// Our icon direction number.
 	var/icon_dir_num = 1
-	/// So we don't spam alarm!s
-	var/alarm_played = FALSE
+
+	var/datum/looping_sound/spacepod_alarm/alarm_sound
 
 
 /obj/spacepod/Initialize()
@@ -135,6 +135,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	cabin_air.temperature = T20C
 	cabin_air.volume = 200
 	RegisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED, PROC_REF(process_integrity))
+	alarm_sound = new(src)
 
 /obj/spacepod/Destroy()
 	GLOB.spacepods_list -= src
@@ -149,8 +150,14 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	QDEL_NULL(pod_armor)
 	QDEL_NULL(lock)
 	QDEL_NULL(weapon)
+	QDEL_NULL(alarm_sound)
 	UnregisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED)
 	return ..()
+
+
+// We want the pods to have gravity all the time to prevent them being touched by spacedrift.
+/obj/spacepod/has_gravity(turf/gravity_turf)
+	return TRUE
 
 /obj/spacepod/attackby(obj/item/attacking_item, mob/living/user)
 	if(user.combat_mode)
@@ -633,13 +640,11 @@ GLOBAL_LIST_INIT(spacepods_list, list())
  *
  * TODO: Convert this alarm sound to a looping sound
  */
-/obj/spacepod/proc/process_integrity(old_value, new_value)
-	if(new_value <= max_integrity / 4) // Less than a quarter health.
-		if(!alarm_played)
-			playsound(src, 'modular_skyrat/modules/spacepods/sound/alarm.ogg', 40)
-			alarm_played = TRUE
+/obj/spacepod/proc/process_integrity(obj/source, old_value, new_value)
+	if(new_value < (max_integrity / 4)) // Less than a quarter health.
+		alarm_sound.start()
 	else
-		alarm_played = FALSE
+		alarm_sound.stop()
 
 /**
  * Enter Pod

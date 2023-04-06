@@ -5,25 +5,31 @@
 		last_slowprocess = world.time
 		slowprocess()
 
+	// Initialization of variables for position and angle calculations
 	var/last_offset_x = offset_x
 	var/last_offset_y = offset_y
 	var/last_angle = angle
 	var/desired_angular_velocity = 0
 
+	// Calculate desired angular velocity based on desired angle
 	if(isnum(desired_angle))
-		// do some finagling to make sure that our angles end up rotating the short way
+		// Ensure angles rotate the short way
 		while(angle > desired_angle + 180)
 			angle -= 360
 			last_angle -= 360
 		while(angle < desired_angle - 180)
 			angle += 360
 			last_angle += 360
+
+		// Calculate desired angular velocity based on the desired angle and time
 		if(abs(desired_angle - angle) < (max_angular_acceleration * time))
 			desired_angular_velocity = (desired_angle - angle) / time
 		else if(desired_angle > angle)
 			desired_angular_velocity = 2 * sqrt((desired_angle - angle) * max_angular_acceleration * 0.25)
 		else
 			desired_angular_velocity = -2 * sqrt((angle - desired_angle) * max_angular_acceleration * 0.25)
+
+	// Adjust angular velocity based on desired angular velocity and the battery usage
 	var/angular_velocity_adjustment = clamp(desired_angular_velocity - angular_velocity, -max_angular_acceleration*time, max_angular_acceleration*time)
 	if(angular_velocity_adjustment && cell && cell.use(abs(angular_velocity_adjustment) * 0.05))
 		last_rotate = angular_velocity_adjustment / time
@@ -32,9 +38,8 @@
 		last_rotate = 0
 	angle += angular_velocity * time
 
-	// calculate drag and shit
-
-	var/velocity_mag = sqrt(velocity_x*velocity_x+velocity_y*velocity_y) // magnitude
+	// Calculate drag based on the environment and spacepod's velocity
+	var/velocity_mag = sqrt(velocity_x * velocity_x + velocity_y * velocity_y) // magnitude
 	if(velocity_mag || angular_velocity)
 		var/drag = 0
 		for(var/turf/iterating_turf in locs)
@@ -302,5 +307,5 @@
 		proj.original = target
 		proj.pixel_x = round(this_x)
 		proj.pixel_y = round(this_y)
-		spawn()
-			proj.fire(angle)
+
+		proj.fire(angle)

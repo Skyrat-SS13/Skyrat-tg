@@ -10,6 +10,10 @@
 	action.spacepod_target = src
 	return action
 
+/**
+ * Grants an action to a mob and adds it to the system.
+ */
+
 /obj/spacepod/proc/grant_action_type_to_mob(actiontype, mob/grant_to)
 	if(isnull(LAZYACCESS(occupants, grant_to)) || !actiontype)
 		return FALSE
@@ -97,9 +101,62 @@
 	if(!spacepod_target || !(owner in spacepod_target.occupants))
 		return
 	if(!spacepod_target.pilot)
-		to_chat(usr, span_warning("You are not in a pod."))
-	else if(owner.incapacitated())
-		to_chat(usr, span_warning("You are incapacitated."))
-	else
-		spacepod_target.ui_interact(owner)
+		to_chat(owner, span_warning("You are not in a pod."))
+		return
+	if(owner.incapacitated())
+		to_chat(owner, span_warning("You are incapacitated."))
+		return
+	spacepod_target.ui_interact(owner)
 
+
+/**
+ * Moves the craft up a z-level if it can.
+ */
+
+/datum/action/spacepod/thrust_up
+	name = "Thrust upwards"
+	button_icon_state = "move_up"
+
+/datum/action/spacepod/thrust_up/Trigger(trigger_flags)
+	if(!owner || !spacepod_target || !(owner in spacepod_target.occupants) || owner.incapacitated())
+		return
+
+	var/turf/current_turf = get_turf(src)
+	var/turf/above_turf = SSmapping.get_turf_above(current_turf)
+
+	if(!above_turf)
+		to_chat(owner, span_warning("There's nowhere to go in that direction!"))
+		return
+
+	if(!spacepod_target.cell || !spacepod_target.cell.use(10))
+		to_chat(owner, span_warning("Not enough energy!"))
+		return
+
+	if(spacepod_target.zMove(UP, z_move_flags = ZMOVE_ALLOW_ANCHORED|ZMOVE_FEEDBACK))
+		to_chat(src, span_notice("You move upwards."))
+
+/**
+ * Moves the craft up a z-level if it can.
+ */
+
+/datum/action/spacepod/thrust_down
+	name = "Thrust downwards"
+	button_icon_state = "move_down"
+
+/datum/action/spacepod/thrust_down/Trigger(trigger_flags)
+	if(!owner || !spacepod_target || !(owner in spacepod_target.occupants) || owner.incapacitated())
+		return
+
+	var/turf/current_turf = get_turf(src)
+	var/turf/below_turf = SSmapping.get_turf_below(current_turf)
+
+	if(!below_turf)
+		to_chat(owner, span_warning("There's nowhere to go in that direction!"))
+		return
+
+	if(!spacepod_target.cell || !spacepod_target.cell.use(10))
+		to_chat(owner, span_warning("Not enough energy!"))
+		return
+
+	if(spacepod_target.zMove(DOWN, z_move_flags = ZMOVE_ALLOW_ANCHORED|ZMOVE_FEEDBACK))
+		to_chat(src, span_notice("You move downwards."))
