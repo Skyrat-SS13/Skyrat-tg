@@ -179,13 +179,13 @@
 
 /obj/item/spacepod_equipment/weaponry/on_install(obj/spacepod/attaching_spacepod)
 	. = ..()
-	attaching_spacepod.weapon = src
+	attaching_spacepod.selected_weapon = src
 	attaching_spacepod.update_icon()
 
 /obj/item/spacepod_equipment/weaponry/on_uninstall(obj/spacepod/detatching_spacepod)
 	. = ..()
-	if(detatching_spacepod.weapon == src)
-		detatching_spacepod.weapon = null
+	if(detatching_spacepod.selected_weapon == src)
+		detatching_spacepod.selected_weapon = null
 
 /obj/item/spacepod_equipment/weaponry/proc/fire_weapons(target)
 	if(spacepod.next_firetime > world.time)

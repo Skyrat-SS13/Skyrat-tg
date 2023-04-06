@@ -45,7 +45,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	/// The lock on the ship
 	var/obj/item/spacepod_equipment/lock/lock
 	/// The weapon on the ship, thing that goes pew pew
-	var/obj/item/spacepod_equipment/weaponry/weapon
+	var/obj/item/spacepod_equipment/weaponry/selected_weapon
 	/// Is the weapon able to be fired?
 	var/weapon_safety = FALSE
 	/// A list of installed cargo bays
@@ -169,7 +169,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	QDEL_NULL(cell)
 	QDEL_NULL(pod_armor)
 	QDEL_NULL(lock)
-	QDEL_NULL(weapon)
+	QDEL_NULL(selected_weapon)
 	QDEL_NULL(alarm_sound)
 	UnregisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED)
 	return ..()
@@ -422,8 +422,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		if(obj_integrity <= max_integrity / 4)
 			add_overlay(image(icon = initial(icon), icon_state = "pod_fire"))
 
-	if(weapon && weapon.overlay_icon_state)
-		add_overlay(image(icon = weapon.overlay_icon,icon_state = weapon.overlay_icon_state))
+	if(selected_weapon && selected_weapon.overlay_icon_state)
+		add_overlay(image(icon = selected_weapon.overlay_icon,icon_state = selected_weapon.overlay_icon_state))
 
 	if(pod_armor)
 		icon = pod_armor.pod_icon
@@ -641,17 +641,24 @@ GLOBAL_LIST_INIT(spacepods_list, list())
  *
  * It's a signal handler to then invoke async the actual firing of the weapons. Triggered by mouseclick.
  */
-/obj/spacepod/proc/try_fire_weapon(atom/object, atom/location, control, params)
+/obj/spacepod/proc/try_fire_weapon(client/source, atom/_target, turf/location, control, params)
 	SIGNAL_HANDLER
-	if(weapon && !weapon_safety && !istype(object, /atom/movable/screen)) // Need to make sure the clicked object isn't a hud element
-		INVOKE_ASYNC(src, PROC_REF(async_fire_weapons_at), object)
+	if(istype(_target, /atom/movable/screen))
+		return
+	if(!selected_weapon)
+		return
+	if(weapon_safety)
+		return
+	if(pilot != source.mob)
+		return
+	INVOKE_ASYNC(src, PROC_REF(async_fire_weapons_at), _target)
 
 /**
  * Async fires weapons.
  */
-/obj/spacepod/proc/async_fire_weapons_at(object)
-	if(weapon)
-		weapon.fire_weapons(object)
+/obj/spacepod/proc/async_fire_weapons_at(atom/target)
+	if(selected_weapon)
+		selected_weapon.fire_weapons(target)
 
 /obj/spacepod/proc/play_alarm(toggle)
 	if(alarm_muted)
@@ -723,7 +730,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		LAZYSET(occupants, living_mob, NONE)
 		pilot = living_mob
 		RegisterSignal(living_mob, COMSIG_MOB_CLIENT_MOUSE_MOVE, PROC_REF(on_mouse_moved))
-		RegisterSignal(living_mob, COMSIG_MOB_CLIENT_MOUSE_DOWN, PROC_REF(try_fire_weapon))
+		RegisterSignal(living_mob, COMSIG_CLIENT_MOUSEDOWN, PROC_REF(try_fire_weapon))
 		RegisterSignal(living_mob, COMSIG_MOB_GET_STATUS_TAB_ITEMS, PROC_REF(get_status_tab_items))
 		grant_pilot_actions(living_mob)
 		ADD_TRAIT(living_mob, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT)
@@ -780,7 +787,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		if(pilot.client)
 			pilot.client.view_size.resetToDefault()
 		UnregisterSignal(pilot, COMSIG_MOB_CLIENT_MOUSE_MOVE)
-		UnregisterSignal(pilot, COMSIG_MOB_CLIENT_MOUSE_DOWN)
+		UnregisterSignal(pilot, COMSIG_CLIENT_MOUSEDOWN)
 		UnregisterSignal(pilot, COMSIG_MOB_GET_STATUS_TAB_ITEMS, PROC_REF(get_status_tab_items))
 		pilot = null
 
@@ -812,7 +819,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
  * Actually handles teleportation
  */
 /obj/spacepod/proc/actually_warp_to(turf/turf_to_warp_to, mob/user)
-	if(!cell || !(cell.charge < 5000)) // Final energy check
+	if(!cell || cell.charge < 5000) // Final energy check
 		vis_contents -= warp
 		QDEL_NULL(warp)
 		to_chat(usr, span_warning("Not enough energy!"))
@@ -902,11 +909,11 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		)
 
 	data["has_weapon"] = FALSE
-	if(weapon)
+	if(selected_weapon)
 		data["has_weapon"] = TRUE
 		data["weapon_data"] = list(
-			"type" = capitalize(weapon.name),
-			"desc" = weapon.desc,
+			"type" = capitalize(selected_weapon.name),
+			"desc" = selected_weapon.desc,
 		)
 
 	if(LAZYLEN(equipment))
@@ -968,7 +975,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			mute_alarm(usr)
 
 /obj/spacepod/proc/toggle_weapon_lock(mob/user)
-	if(!weapon)
+	if(!selected_weapon)
 		return
 	weapon_safety = !weapon_safety
 	to_chat(user, span_notice("Weapon lock is now [weapon_safety ? "on" : "off"]."))

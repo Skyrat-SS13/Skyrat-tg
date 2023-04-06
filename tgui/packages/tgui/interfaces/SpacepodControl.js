@@ -113,7 +113,7 @@ export const SummaryTab = (props, context) => {
               <Button
                 icon={'volume'}
                 content={alarm_muted ? 'Muted' : 'Enabled'}
-                color={alarm_muted ? 'good' : 'bad'}
+                color={alarm_muted ? 'bad' : 'good'}
                 onClick={() => act('mute_alarm')}
               />
             </LabeledList.Item>
