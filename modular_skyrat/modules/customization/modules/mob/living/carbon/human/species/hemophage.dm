@@ -476,6 +476,7 @@
 /obj/item/organ/internal/stomach/hemophage/on_life(delta_time, times_fired)
 	var/datum/reagent/blood/blood = reagents.get_reagent(/datum/reagent/blood)
 	if(blood)
+		. = ...() // yes this is cursed, but we don't want to call /obj/item/organ/internal/stomach 's on_life here
 		var/amount_max = blood.volume
 		var/amount = min((round(metabolism_efficiency * amount_max, 0.05) + BLOOD_METABOLIZATION_RATE) * delta_time, amount_max)
 
