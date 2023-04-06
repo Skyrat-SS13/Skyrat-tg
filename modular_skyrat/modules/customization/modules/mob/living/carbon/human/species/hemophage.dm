@@ -56,7 +56,8 @@
 #define HEMOPHAGE_VOMIT_PURGE_RATIO 0.95
 /// The rate at which blood metabolizes in a Hemophage's stomach subtype.
 #define BLOOD_METABOLIZATION_RATE 0.1 * REAGENTS_METABOLISM
-
+/// The multiplier for Hemophages getting increased blood out of people with ckeys.
+#define BLOOD_DRAIN_MULTIPLIER 2
 /datum/species/hemophage
 	name = "Hemophage"
 	id = SPECIES_HEMOPHAGE
@@ -476,7 +477,6 @@
 /obj/item/organ/internal/stomach/hemophage/on_life(delta_time, times_fired)
 	var/datum/reagent/blood/blood = reagents.get_reagent(/datum/reagent/blood)
 	if(blood)
-		. = ...() // yes this is cursed, but we don't want to call /obj/item/organ/internal/stomach 's on_life here
 		var/amount_max = blood.volume
 		var/amount = min((round(metabolism_efficiency * amount_max, 0.05) + BLOOD_METABOLIZATION_RATE) * delta_time, amount_max)
 
@@ -565,7 +565,7 @@
 	var/drained_blood = min(victim.blood_volume, HEMOPHAGE_DRAIN_AMOUNT, blood_volume_difference)
 
 	victim.blood_volume = clamp(victim.blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
-	hemophage.blood_volume = clamp(hemophage.blood_volume + (drained_blood * (is_target_human_with_client ? 2 : 1)), 0, BLOOD_VOLUME_MAXIMUM)
+	hemophage.blood_volume = clamp(hemophage.blood_volume + (drained_blood * (is_target_human_with_client ? BLOOD_DRAIN_MULTIPLIER : 1)), 0, BLOOD_VOLUME_MAXIMUM)
 
 	log_combat(hemophage, victim, "drained [drained_blood]u of blood from", addition = " (NEW BLOOD VOLUME: [victim.blood_volume] cL)")
 	victim.show_message(span_danger("[hemophage] drains some of your blood!"))
@@ -780,3 +780,5 @@
 #undef MINIMUM_BLOOD_REGENING_REAGENT_RATIO
 
 #undef BLOOD_METABOLIZATION_RATE
+
+#undef BLOOD_DRAIN_MULTIPLIER
