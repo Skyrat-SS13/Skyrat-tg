@@ -151,6 +151,9 @@
 /obj/item/disk/nifsoft_uploader/Initialize(mapload)
 	. = ..()
 
+	if(CONFIG_GET(flag/disable_lewd_items) && initial(loaded_nifsoft.lewd_nifsoft))
+		return INITIALIZE_HINT_QDEL
+
 	name = "[initial(loaded_nifsoft.name)] datadisk"
 
 /obj/item/disk/nifsoft_uploader/examine(mob/user)
