@@ -11,7 +11,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	activation_cost = 10
 	active_mode = TRUE
 	active_cost = 0.2
-	purchase_price = 500
+	purchase_price = 350
 	buying_category = NIFSOFT_CATEGORY_UTILITY
 	///The network that the user is currently hosting
 	var/datum/component/mind_linker/nif/user_network

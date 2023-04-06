@@ -14,7 +14,7 @@
 /// frequency, in 1/10ths of a second, of the lighting process
 #define LIGHTING_INTERVAL 5
 
-#define MINIMUM_USEFUL_LIGHT_RANGE 1.4
+#define MINIMUM_USEFUL_LIGHT_RANGE 1.5 // SKYRAT EDIT CHANGE - Original value 1.4
 
 /// type of falloff to use for lighting; 1 for circular, 2 for square
 #define LIGHTING_FALLOFF 1
@@ -61,9 +61,11 @@
 
 // Emissive blocking.
 /// Uses vis_overlays to leverage caching so that very few new items need to be made for the overlay. For anything that doesn't change outline or opaque area much or at all.
-#define EMISSIVE_BLOCK_GENERIC 1
+#define EMISSIVE_BLOCK_GENERIC 0
 /// Uses a dedicated render_target object to copy the entire appearance in real time to the blocking layer. For things that can change in appearance a lot from the base state, like humans.
-#define EMISSIVE_BLOCK_UNIQUE 2
+#define EMISSIVE_BLOCK_UNIQUE 1
+/// Don't block any emissives. Useful for things like, pieces of paper?
+#define EMISSIVE_BLOCK_NONE 2
 
 /// The color matrix applied to all emissive overlays. Should be solely dependent on alpha and not have RGB overlap with [EM_BLOCK_COLOR].
 #define EMISSIVE_COLOR list(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,1, 1,1,1,0)

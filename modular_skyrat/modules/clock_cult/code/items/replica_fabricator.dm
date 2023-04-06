@@ -58,11 +58,15 @@
 	if(!selected_output || !isopenturf(target)) // Now we handle objects
 		return
 
+	var/turf/creation_turf = get_turf(target)
+
+	if(locate(selected_output.to_create_path) in creation_turf)
+		to_chat(user, span_clockyellow("There is already one of these on this tile!"))
+		return
+
 	if(power < selected_output.cost)
 		to_chat(user, span_clockyellow("[src] needs at least [selected_output.cost]W of power to create this."))
 		return
-
-	var/turf/creation_turf = get_turf(target)
 
 	var/obj/effect/temp_visual/ratvar/constructing_effect/effect = new(creation_turf, selected_output.creation_delay)
 
