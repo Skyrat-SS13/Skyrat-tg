@@ -68,7 +68,7 @@
 
 /datum/action/spacepod
 	check_flags = AB_CHECK_CONSCIOUS
-	button_icon = 'icons/mob/actions/actions_mecha.dmi'
+	button_icon = 'modular_skyrat/modules/spacepods/icons/actions_spacepod.dmi'
 	button_icon_state = "mech_eject"
 	/// The spacepod we are linked to.
 	var/obj/spacepod/spacepod_target
