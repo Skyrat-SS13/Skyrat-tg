@@ -39,7 +39,7 @@
 /obj/item/clockwork/replica_fabricator/examine(mob/user)
 	. = ..()
 	if(IS_CLOCK(user))
-		. += "[span_brass("Current power: ")][span_clockyellow("[power]")] [span_brass("W / .")] [span_clockyellow("[max_power]")][span_brass("W.")]"
+		. += "[span_brass("Current power: ")][span_clockyellow("[power]")] [span_brass("W / ")][span_clockyellow("[max_power]")] [span_brass("W.")]"
 		. += span_brass("Use on brass to convert it into power.")
 		. += span_brass("Use on other materials to convert them into power, but less efficiently.")
 		. += span_brass("<b>Use</b> in-hand to select what to fabricate.")
@@ -142,7 +142,12 @@
 		var/obj/item/stack/bronze_stack = attacking_item
 
 		if((power + bronze_stack.amount * BRASS_POWER_COST) > max_power)
-			var/amount_to_take = clamp(round((max_power - power) / BRASS_POWER_COST), 1, bronze_stack.amount)
+			var/amount_to_take = clamp(round((max_power - power) / BRASS_POWER_COST), 0, bronze_stack.amount)
+
+			if(!amount_to_take)
+				to_chat(user, span_clockyellow("[src] can't be powered further using this!"))
+				return
+
 			bronze_stack.use(amount_to_take)
 			power += amount_to_take * BRASS_POWER_COST
 
@@ -159,7 +164,12 @@
 		var/obj/item/stack/stack = attacking_item
 
 		if((power + stack.amount * REGULAR_POWER_COST) > max_power)
-			var/amount_to_take = clamp(round((max_power - power) / REGULAR_POWER_COST), 1, stack.amount)
+			var/amount_to_take = clamp(round((max_power - power) / REGULAR_POWER_COST), 0, stack.amount)
+
+			if(!amount_to_take)
+				to_chat(user, span_clockyellow("[src] can't be powered further using this!"))
+				return
+
 			stack.use(amount_to_take)
 			power += amount_to_take * REGULAR_POWER_COST
 
