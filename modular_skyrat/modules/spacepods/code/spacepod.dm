@@ -481,11 +481,12 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		var/image/new_image = image(icon = overlay_file, icon_state = "thrust")
 		new_image.transform = matrix(1, 0, 0, 0, 1, -32)
 		add_overlay(new_image)
-	if(front_thrust)
-		add_overlay(image(icon = overlay_file, icon_state = "front_thrust"))
-		thrust_sound.start() // TODO: Refactor this into effects system
+		thrust_sound.start() // TODO: Refactor this into
 	else
 		thrust_sound.stop()
+	if(front_thrust)
+		add_overlay(image(icon = overlay_file, icon_state = "front_thrust"))
+
 
 
 /obj/spacepod/relaymove(mob/user, direction)
