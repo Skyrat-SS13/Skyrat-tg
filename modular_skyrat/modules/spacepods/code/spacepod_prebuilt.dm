@@ -58,7 +58,7 @@
 	construction_state = SPACEPOD_ARMOR_WELDED
 
 /obj/spacepod/random/Initialize()
-	..()
+	. = ..()
 	var/spacepod_armor_type = pick(/obj/item/pod_parts/armor,
 		/obj/item/pod_parts/armor/syndicate,
 		/obj/item/pod_parts/armor/black,
