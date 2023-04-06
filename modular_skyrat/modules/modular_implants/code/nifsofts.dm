@@ -45,6 +45,8 @@
 	var/rewards_points_eligible = TRUE
 	///Does the NIFSoft have anything that is saved cross-round?
 	var/persistence = FALSE
+	///Is it a lewd item?
+	var/lewd_nifsoft = FALSE
 
 /datum/nifsoft/New(obj/item/organ/internal/cyberimp/brain/nif/recepient_nif, no_rewards_points = FALSE)
 	. = ..()
