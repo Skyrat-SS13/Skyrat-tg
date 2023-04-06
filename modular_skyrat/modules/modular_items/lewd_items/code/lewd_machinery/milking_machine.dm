@@ -248,6 +248,16 @@
 /obj/item/restraints/handcuffs/milker/Destroy()
 	unbuckle_parent()
 	parent_chair = null
+	if(beaker)
+		qdel(beaker)
+		beaker = null
+
+	current_selected_organ = null
+	current_mob = null
+	current_breasts = null
+	current_testicles = null
+	current_vagina = null
+
 	return ..()
 
 /obj/item/restraints/handcuffs/milker/proc/unbuckle_parent()
@@ -385,25 +395,6 @@
 	current_mob.adjust_arousal(arousal_amounts[current_mode] * delta_time)
 	current_mob.adjust_pleasure(pleasure_amounts[current_mode] * delta_time)
 	current_mob.adjust_pain(pain_amounts[current_mode] * delta_time)
-
-// Drag and drop mob buckle handler into the machine
-/* Handle this later.
-/obj/structure/chair/milking_machine/MouseDrop(over_object, src_location, over_location)
-	. = ..()
-
-	if(!istype(src, /mob/living/))
-		return FALSE
-
-	var/mob/living/affected_mob = src
-	var/obj/structure/chair/milking_machine/milking_machine = over_object
-	if(affected_mob.getorganslot(ORGAN_SLOT_TESTICLES))
-		milking_machine.current_testicles = affected_mob.get_organ_slot(ORGAN_SLOT_TESTICLES)
-	if(affected_mob.getorganslot(ORGAN_SLOT_VAGINA))
-		milking_machine.current_vagina = affected_mob.get_organ_slot(ORGAN_SLOT_VAGINA)
-	if(affected_mob.getorganslot(ORGAN_SLOT_BREASTS))
-		milking_machine.current_breasts = affected_mob.get_organ_slot(ORGAN_SLOT_BREASTS)
-
-*/
 
 /obj/structure/chair/milking_machine/CtrlShiftClick(mob/user)
 	. = ..()
