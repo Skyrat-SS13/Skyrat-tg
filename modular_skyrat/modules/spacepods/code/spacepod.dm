@@ -730,7 +730,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		LAZYSET(occupants, living_mob, NONE)
 		pilot = living_mob
 		RegisterSignal(living_mob, COMSIG_MOB_CLIENT_MOUSE_MOVE, PROC_REF(on_mouse_moved))
-		RegisterSignal(living_mob, COMSIG_CLIENT_MOUSEDOWN, PROC_REF(try_fire_weapon))
+		RegisterSignal(living_mob.client, COMSIG_CLIENT_MOUSEDOWN, PROC_REF(try_fire_weapon))
 		RegisterSignal(living_mob, COMSIG_MOB_GET_STATUS_TAB_ITEMS, PROC_REF(get_status_tab_items))
 		grant_pilot_actions(living_mob)
 		ADD_TRAIT(living_mob, TRAIT_HANDS_BLOCKED, VEHICLE_TRAIT)
@@ -787,7 +787,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		if(pilot.client)
 			pilot.client.view_size.resetToDefault()
 		UnregisterSignal(pilot, COMSIG_MOB_CLIENT_MOUSE_MOVE)
-		UnregisterSignal(pilot, COMSIG_CLIENT_MOUSEDOWN)
+		UnregisterSignal(pilot.client, COMSIG_CLIENT_MOUSEDOWN)
 		UnregisterSignal(pilot, COMSIG_MOB_GET_STATUS_TAB_ITEMS, PROC_REF(get_status_tab_items))
 		pilot = null
 
@@ -907,6 +907,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			"charge" = cell.charge,
 			"max_charge" = cell.maxcharge,
 		)
+
+	data["weapon_lock"] = weapon_safety
 
 	data["has_weapon"] = FALSE
 	if(selected_weapon)
