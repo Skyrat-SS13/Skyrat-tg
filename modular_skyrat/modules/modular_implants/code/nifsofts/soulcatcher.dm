@@ -15,7 +15,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	/// What soulcatcher datum is associated with this item?
-	var/datum/soulcatcher/linked_soulcatcher
+	var/datum/component/soulcatcher/linked_soulcatcher
 
 /obj/item/soulcatcher_item/New(loc, ...)
 	. = ..()
@@ -23,11 +23,11 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	linked_soulcatcher.parent_datum = WEAKREF(src)
 	linked_soulcatcher.name = name
 
-/datum/soulcatcher
+/datum/component/soulcatcher
 	/// What is the name of the soulcatcher?
 	var/name = "soulcatcher"
 	/// What is the room we are sending messages to?
-	var/datum/soulcatcher_room/current_room
+	var/datum/component/soulcatcher_room/current_room
 	/// What rooms are linked to this soulcatcher
 	var/list/soulcatcher_rooms = list()
 	/// Are ghosts currently able to join this soulcatcher?
@@ -35,13 +35,13 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	/// What datum is the parent linked to?
 	var/datum/weakref/parent_datum
 
-/datum/soulcatcher/New()
+/datum/component/soulcatcher/New()
 	. = ..()
 	create_room()
 	current_room = soulcatcher_rooms[1]
 	GLOB.soulcatchers += src
 
-/datum/soulcatcher/Destroy(force, ...)
+/datum/component/soulcatcher/Destroy(force, ...)
 	GLOB.soulcatchers -= src
 	current_room = null
 	for(var/datum/soulcatcher_room in soulcatcher_rooms)
@@ -58,7 +58,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
  * * target_name - The name that we want to assign to the created room.
  * * target_desc - The description that we want to assign to the created room.
  */
-/datum/soulcatcher/proc/create_room(target_name = "default room", target_desc = "it's a room")
+/datum/component/soulcatcher/proc/create_room(target_name = "default room", target_desc = "it's a room")
 	var/datum/soulcatcher_room/created_room = new(src)
 	created_room.name = target_name
 	created_room.room_description = target_desc
@@ -96,7 +96,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!mind_to_add)
 		return FALSE
 
-	var/datum/soulcatcher/parent_soulcatcher = master_soulcatcher.resolve()
+	var/datum/component/soulcatcher/parent_soulcatcher = master_soulcatcher.resolve()
 	var/datum/parent_object = parent_soulcatcher.parent_datum.resolve()
 	if(!parent_object)
 		return FALSE
@@ -178,7 +178,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	set category = "Ghost"
 
 	var/list/joinable_soulcatchers = GLOB.soulcatchers.Copy()
-	for(var/datum/soulcatcher/soulcatcher in joinable_soulcatchers)
+	for(var/datum/component/soulcatcher/soulcatcher in joinable_soulcatchers)
 		if(soulcatcher.ghost_joinable)
 			continue
 		joinable_soulcatchers -= (soulcatcher)
@@ -187,7 +187,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		to_chat(src, span_warning("No soulcatchers are joinable."))
 		return FALSE
 
-	var/datum/soulcatcher/soulcatcher_to_join = tgui_input_list(src, "Chose a soulcatcher to join", "Enter a soulcatcher", joinable_soulcatchers)
+	var/datum/component/soulcatcher/soulcatcher_to_join = tgui_input_list(src, "Chose a soulcatcher to join", "Enter a soulcatcher", joinable_soulcatchers)
 	if(!soulcatcher_to_join || !(soulcatcher_to_join in joinable_soulcatchers))
 		return FALSE
 
