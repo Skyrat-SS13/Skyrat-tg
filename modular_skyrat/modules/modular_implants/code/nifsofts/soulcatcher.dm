@@ -19,7 +19,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 /obj/item/soulcatcher_item/New(loc, ...)
 	. = ..()
-	linked_soulcatcher = new (src)
+	linked_soulcatcher = new(src)
+	linked_soulcatcher.parent_datum = WEAKREF(src)
 
 /datum/soulcatcher
 	/// What is the room we are sending messages to?
@@ -28,6 +29,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/list/soulcatcher_rooms = list()
 	/// Are ghosts currently able to join this soulcatcher?
 	var/ghost_joinable = TRUE
+	/// What datum is the parent linked to?
+	var/datum/weakref/parent_datum
 
 /datum/soulcatcher/New()
 	. = ..()
@@ -53,7 +56,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
  * * target_desc - The description that we want to assign to the created room.
  */
 /datum/soulcatcher/proc/create_room(target_name = "default room", target_desc = "it's a room")
-	var/datum/soulcatcher_room/created_room = new (src)
+	var/datum/soulcatcher_room/created_room = new(src)
 	created_room.name = target_name
 	created_room.room_description = target_desc
 	soulcatcher_rooms += created_room
@@ -90,7 +93,12 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!mind_to_add)
 		return FALSE
 
-	var/mob/living/soulcatcher_soul/new_soul = new (src)
+	var/datum/soulcatcher/parent_soulcatcher = master_soulcatcher.resolve()
+	var/datum/parent_object = parent_soulcatcher.parent_datum.resolve()
+	if(!parent_object)
+		return FALSE
+
+	var/mob/living/soulcatcher_soul/new_soul = new(parent_object)
 	if(mind_to_add.current)
 		new_soul.previous_body = WEAKREF(mind_to_add.current)
 
