@@ -480,10 +480,6 @@
 				var/obj/structure/window/window_structure = object
 				if(!window_structure.fulltile)
 					continue
-			// SKYRAT EDIT START
-			if(istype(object, /obj/structure/deployable_barricade))
-				continue
-			// SKYRAT EDIT END
 			if(object.density || NO_BUILD & object.obj_flags)
 				builder.balloon_alert(builder, "something is in the way!")
 				return FALSE
