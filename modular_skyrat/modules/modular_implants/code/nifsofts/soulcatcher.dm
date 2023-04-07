@@ -19,24 +19,23 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 /obj/item/soulcatcher_item/New(loc, ...)
 	. = ..()
-	linked_soulcatcher = new(src)
-	linked_soulcatcher.parent_datum = WEAKREF(src)
-	linked_soulcatcher.name = name
+	linked_soulcatcher = AddComponent(/datum/component/soulcatcher)
 
 /datum/component/soulcatcher
 	/// What is the name of the soulcatcher?
 	var/name = "soulcatcher"
 	/// What is the room we are sending messages to?
-	var/datum/component/soulcatcher_room/current_room
+	var/datum/soulcatcher_room/current_room
 	/// What rooms are linked to this soulcatcher
 	var/list/soulcatcher_rooms = list()
 	/// Are ghosts currently able to join this soulcatcher?
 	var/ghost_joinable = TRUE
-	/// What datum is the parent linked to?
-	var/datum/weakref/parent_datum
 
 /datum/component/soulcatcher/New()
 	. = ..()
+	if(!parent)
+		return COMPONENT_INCOMPATIBLE
+
 	create_room()
 	current_room = soulcatcher_rooms[1]
 	GLOB.soulcatchers += src
@@ -97,7 +96,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return FALSE
 
 	var/datum/component/soulcatcher/parent_soulcatcher = master_soulcatcher.resolve()
-	var/datum/parent_object = parent_soulcatcher.parent_datum.resolve()
+	var/datum/parent_object = parent_soulcatcher.parent
 	if(!parent_object)
 		return FALSE
 
