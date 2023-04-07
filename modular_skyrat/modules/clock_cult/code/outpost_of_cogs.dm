@@ -42,7 +42,7 @@
 	if(!atom_area)
 		atom_area = get_area(atom_turf)
 
-	send_clock_message(null, "A portal has been opened at [atom_area] to our holy city, it is a glorious day in the name of Ratvar.", "<span class='bigbrass'>", other_source = portal)
+	send_clock_message(null, "A portal has been opened at [atom_area] to our holy city, it is a glorious day in the name of Ratvar.", "<span class='bigbrass'>")
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(reebe_station_warning), atom_area, portal), 5 MINUTES)
 
@@ -52,7 +52,7 @@
 	if(!portal)
 		return
 
-	send_clock_message(null, "The portal's stability is decreasing! Shortly, those not loyal to Ratvar will be able to enter, and more rifts will open!", "<span class='brass'>", other_source = portal)
+	send_clock_message(null, "The portal's stability is decreasing! Shortly, those not loyal to Ratvar will be able to enter, and more rifts will open!", "<span class='brass'>")
 
 	sleep(15 SECONDS)
 

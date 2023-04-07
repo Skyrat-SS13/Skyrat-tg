@@ -37,7 +37,7 @@
 	send_clock_message(user, message)
 
 /// Send `sent_message` to all other clock cultists and ghosts from the user
-/proc/send_clock_message(mob/living/user, sent_message, span = "<span class='brass'>", atom/other_source)
+/proc/send_clock_message(mob/living/user, sent_message, span = "<span class='brass'>")
 	var/final_message = ""
 	if(user)
 		final_message = span + "<i><b>Clock[user.gender == FEMALE ? "sister" : "brother"] [findtextEx(user.name, user.real_name) ? user.name : "[user.real_name] (as [user.name])"]</b> transmits, \"" + sent_message + "\"</i></span>"
@@ -52,7 +52,5 @@
 		else if(player_mob in GLOB.dead_mob_list)
 			if(user)
 				to_chat(player_mob, "[FOLLOW_LINK(player_mob, user)] [final_message]")
-			else if(other_source)
-				to_chat(player_mob, "[FOLLOW_LINK(player_mob, other_source)] [final_message]")
 			else
 				to_chat(player_mob, final_message)

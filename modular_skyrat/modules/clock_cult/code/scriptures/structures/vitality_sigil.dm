@@ -65,8 +65,8 @@
 /// Checks the role of whoever was killed by the vitality sigil, and does any special code if needed.
 /obj/structure/destructible/clockwork/sigil/vitality/proc/check_special_role(mob/living/affected_mob)
 	if(IS_CULTIST(affected_mob))
-		send_clock_message(null, "The dog of Nar'sie, [affected_mob] has had their vitality drained, rejoice!", "<span class='clockred'>", other_source = src)
+		send_clock_message(null, "The dog of Nar'sie, [affected_mob] has had their vitality drained, rejoice!", "<span class='clockred'>")
 		spawn_reebe(src)
 	else
-		send_clock_message(null, "[affected_mob] has had their vitality drained by [src], rejoice!", "<span class='clockred'>", other_source = src)
+		send_clock_message(null, "[affected_mob] has had their vitality drained by [src], rejoice!", "<span class='clockred'>")
 
