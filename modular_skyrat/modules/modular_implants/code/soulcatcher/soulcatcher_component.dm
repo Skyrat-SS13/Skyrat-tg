@@ -65,6 +65,15 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	created_room.master_soulcatcher = WEAKREF(src)
 
+///Recieves a message from a soulcatcher room.
+/datum/componnet/soulcatcher/proc/recieve_message(message_to_recieve)
+	if(!message_to_recieve)
+		return FALSE
+
+	if(istype(parent, /obj/item))
+		var/obj/item/parent_item = parent
+		parent_item.visible_message(span_notice(message_to_recieve))
+
 /datum/soulcatcher_room
 	/// What is the name of the room?
 	var/name = "Test Room"
@@ -140,6 +149,43 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	to_chat(new_soul, span_warning(name))
 	to_chat(new_soul, span_notice(room_description))
 
+	return TRUE
+
+/**
+ * Sends a message or emote to all of the souls currently located inside of the soulcatcher room.
+ *
+ * Arguments
+ * * message_to_send - The message we want to send to the occupants of the room
+ * * message_sender - The person that is sending the message. This is not required.
+ * * emote - Is the message sent an emote or not?
+ */
+
+/datum/soulcatcher_room/proc/send_message(message_to_send, message_sender, emote = FALSE)
+	if(!message_to_send) //Why say nothing?
+		return FALSE
+
+	var/message = ""
+
+	if(message_sender)
+		message += "[message_sender] "
+	if(!emote)
+		message += "says, "
+
+	message += message_to_send
+
+	for(var/mob/living/soulcatcher_soul/soul in current_souls)
+		to_chat(soul, span_blue(message))
+
+
+	return TRUE
+
+/// Relays a message sent from the send_message proc to the parent soulcatcher datum
+/datum/soulcatcher_room/proc/relay_message_to_soulcatcher(message)
+	if(!message)
+		return FALSE
+
+	var/datum/component/soulcatcher/recepient_soulcatcher = master_soulcatcher.resolve()
+	recepient_soulcatcher.recieve_message(message)
 	return TRUE
 
 /datum/soulcatcher_room/Destroy(force, ...)

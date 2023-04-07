@@ -1,0 +1,2 @@
+
+/datum/component/soulcatcher
