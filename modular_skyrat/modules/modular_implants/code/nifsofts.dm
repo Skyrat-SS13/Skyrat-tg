@@ -45,6 +45,8 @@
 	var/rewards_points_eligible = TRUE
 	///Does the NIFSoft have anything that is saved cross-round?
 	var/persistence = FALSE
+	///Is it a lewd item?
+	var/lewd_nifsoft = FALSE
 
 /datum/nifsoft/New(obj/item/organ/internal/cyberimp/brain/nif/recepient_nif, no_rewards_points = FALSE)
 	. = ..()
@@ -146,8 +148,11 @@
 	///Is the datadisk reusable?
 	var/reusable = FALSE
 
-/obj/item/disk/nifsoft_uploader/Initialize()
+/obj/item/disk/nifsoft_uploader/Initialize(mapload)
 	. = ..()
+
+	if(CONFIG_GET(flag/disable_lewd_items) && initial(loaded_nifsoft.lewd_nifsoft))
+		return INITIALIZE_HINT_QDEL
 
 	name = "[initial(loaded_nifsoft.name)] datadisk"
 

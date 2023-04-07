@@ -142,13 +142,7 @@
 	if(. && ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/open = FALSE
-<<<<<<< HEAD
-//			if(H.dna.features["wings"] != "None") // This was our check before, leaving it here in case it's needed when someone gets around to fixing this.
-//				if(H.dna.species.mutant_bodyparts["wingsopen"])
 		var/obj/item/organ/external/wings/functional/wings = H.get_organ_slot(ORGAN_SLOT_EXTERNAL_WINGS)
-=======
-		var/obj/item/organ/external/wings/functional/wings = H.get_organ_slot(ORGAN_SLOT_EXTERNAL_WINGS)
->>>>>>> ecbcef778df (Refactors Regenerate Organs, and a few organ helpers (#74219))
 		if(istype(wings))
 			if(wings.wings_open)
 				open = TRUE
