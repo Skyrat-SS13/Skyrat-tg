@@ -227,5 +227,39 @@
 
 	current_index = (current_index % LAZYLEN(spacepod_target.weapon_slots)) + 1
 
-	spacepod_target.set_active_weapon_slot(spacepod_target.weapon_slots[current_index])
+	spacepod_target.set_active_weapon_slot(spacepod_target.weapon_slots[current_index], owner)
 
+/**
+ * Cycles through the weapons
+ */
+/datum/action/spacepod/toggle_safety
+	name = "Toggle safety"
+	button_icon_state = "safety_off"
+
+
+/datum/action/spacepod/toggle_safety/Trigger(trigger_flags)
+	if(!owner || !spacepod_target || !(owner in spacepod_target.occupants) || owner.incapacitated())
+		return
+
+	spacepod_target.toggle_weapon_lock(owner)
+
+	button_icon_state = "safety_[spacepod_target.weapon_safety ? "on" : "off"]"
+	build_all_button_icons()
+
+
+/**
+ * Cycles through the weapons
+ */
+/datum/action/spacepod/toggle_lights
+	name = "Toggle lights"
+	button_icon_state = "lights_off"
+
+
+/datum/action/spacepod/toggle_lights/Trigger(trigger_flags)
+	if(!owner || !spacepod_target || !(owner in spacepod_target.occupants) || owner.incapacitated())
+		return
+
+	spacepod_target.toggle_lights(owner)
+
+	button_icon_state = "lights_[spacepod_target.light_toggle ? "on" : "off"]"
+	build_all_button_icons()

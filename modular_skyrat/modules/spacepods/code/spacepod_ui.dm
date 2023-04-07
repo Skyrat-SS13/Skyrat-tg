@@ -155,3 +155,11 @@
 		if("switch_weapon_slot")
 			set_active_weapon_slot(params["selected_slot"], usr)
 
+// LEGACY CONTROL - Important that this works at all times as we don't want to brick people.
+/obj/spacepod/proc/verb_check(require_pilot = TRUE, mob/user = null)
+	if(!user)
+		user = usr
+	if(require_pilot && user != pilot)
+		to_chat(user, span_notice("You can't reach the controls from your chair"))
+		return FALSE
+	return !user.incapacitated() && isliving(user)

@@ -91,11 +91,13 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/list/pilot_actions = list(
 		/datum/action/spacepod/controls,
 		/datum/action/spacepod/exit,
+		/datum/action/spacepod/toggle_lights,
 		/datum/action/spacepod/toggle_brakes,
 		/datum/action/spacepod/thrust_up,
 		/datum/action/spacepod/thrust_down,
 		/datum/action/spacepod/quantum_entangloporter,
 		/datum/action/spacepod/cycle_weapons,
+		/datum/action/spacepod/toggle_safety,
 		)
 
 	/// List of occupants with actions attached.
@@ -980,6 +982,21 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		UnregisterSignal(pilot, COMSIG_MOB_GET_STATUS_TAB_ITEMS, PROC_REF(get_status_tab_items))
 		pilot = null
 
+/**
+ * exit pod
+ *
+ * Makes the user exit the pod.
+ */
+/obj/spacepod/proc/exit_pod(mob/user)
+	if(HAS_TRAIT(user, TRAIT_RESTRAINED))
+		to_chat(user, span_notice("You attempt to stumble out of [src]. This will take two minutes."))
+		if(pilot)
+			to_chat(pilot, span_warning("[user] is trying to escape [src]."))
+		if(!do_after(user, 1200, target = src))
+			return
+
+	if(remove_rider(user))
+		to_chat(user, span_notice("You climb out of [src]."))
 
 /**
  * Is Occupant
@@ -1042,21 +1059,23 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	QDEL_NULL(warp)
 	thrust_lockout = FALSE
 
+// TOGGLES
+
+/**
+ * Togggle weapon lock
+ *
+ * Toggles the weapon lock systems of the pod.
+ */
 /obj/spacepod/proc/toggle_weapon_lock(mob/user)
 	weapon_safety = !weapon_safety
 	to_chat(user, span_notice("Weapon lock is now [weapon_safety ? "on" : "off"]."))
 
-/obj/spacepod/proc/exit_pod(mob/user)
-	if(HAS_TRAIT(user, TRAIT_RESTRAINED))
-		to_chat(user, span_notice("You attempt to stumble out of [src]. This will take two minutes."))
-		if(pilot)
-			to_chat(pilot, span_warning("[user] is trying to escape [src]."))
-		if(!do_after(user, 1200, target = src))
-			return
 
-	if(remove_rider(user))
-		to_chat(user, span_notice("You climb out of [src]."))
-
+/**
+ * toggle lights
+ *
+ * Toggles the spacepod lights and sets them accordingly, if a light system is present.
+ */
 /obj/spacepod/proc/toggle_lights(mob/user)
 	if(!LAZYLEN(equipment[SPACEPOD_SLOT_LIGHT]))
 		to_chat(user, span_warning("No lights installed!"))
@@ -1071,10 +1090,20 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		set_light_on(FALSE)
 	to_chat(user, "Lights toggled [light_toggle ? "on" : "off"].")
 
+/**
+ * Toggle breaks
+ *
+ * Toggles vector braking systems.
+ */
 /obj/spacepod/proc/toggle_brakes(mob/user)
 	brakes = !brakes
 	to_chat(user, span_notice("You toggle the brakes [brakes ? "on" : "off"]."))
 
+/**
+ * toggle lock
+ *
+ * Toggles the lock provoding there is a lock.
+ */
 /obj/spacepod/proc/toggle_locked(mob/user)
 	if(!LAZYLEN(equipment[SPACEPOD_SLOT_LOCK]))
 		to_chat(user, span_warning("[src] has no locking mechanism."))
@@ -1083,6 +1112,11 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		locked = !locked
 		to_chat(user, span_warning("You [locked ? "lock" : "unlock"] the doors."))
 
+/**
+ * toggle doors
+ *
+ * Toggles near by doors and checks items.
+ */
 /obj/spacepod/proc/toggle_doors(mob/user)
 	for(var/obj/machinery/door/poddoor/multi_tile/P in orange(3,src))
 		for(var/mob/living/carbon/human/O in contents)
@@ -1098,15 +1132,12 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 	to_chat(user, span_warning("You are not close to any pod doors."))
 
+/**
+ * mute alarm
+ *
+ * Mutes the alarm and prevents it from starting. Provides feedback.
+ */
 /obj/spacepod/proc/mute_alarm(mob/user)
 	alarm_muted = !alarm_muted
 	to_chat(user, span_notice("System alarm [alarm_muted ? "muted" : "enabled"]."))
 
-// LEGACY CONTROL - Important that this works at all times as we don't want to brick people.
-/obj/spacepod/proc/verb_check(require_pilot = TRUE, mob/user = null)
-	if(!user)
-		user = usr
-	if(require_pilot && user != pilot)
-		to_chat(user, span_notice("You can't reach the controls from your chair"))
-		return FALSE
-	return !user.incapacitated() && isliving(user)
