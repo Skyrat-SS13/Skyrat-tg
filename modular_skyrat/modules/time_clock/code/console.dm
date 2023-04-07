@@ -36,7 +36,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/time_clock, 28)
 
 /obj/machinery/time_clock/attackby(obj/item/used_item, mob/user)
 	if(!istype(used_item, /obj/item/card/id))
-		. = ..()
+		return ..()
 
 	if(inserted_id)
 		to_chat(user, span_warning("There is already an ID card present!"))
