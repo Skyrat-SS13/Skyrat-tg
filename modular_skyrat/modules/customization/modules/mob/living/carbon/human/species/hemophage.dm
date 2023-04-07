@@ -54,7 +54,7 @@
 #define TUMOR_DISLIKED_FOOD_DISGUST DISGUST_LEVEL_GROSS + 15
 /// The ratio of reagents that get purged while a Hemophage vomits from trying to eat/drink something that their tumor doesn't like.
 #define HEMOPHAGE_VOMIT_PURGE_RATIO 0.95
-/// The multiplier for Hemophages getting increased blood out of people with ckeys.
+/// The multiplier for blood received by Hemophages out of humans with ckeys.
 #define BLOOD_DRAIN_MULTIPLIER 2
 
 /datum/species/hemophage
@@ -553,9 +553,11 @@
 		return
 
 	var/drained_blood = min(victim.blood_volume, HEMOPHAGE_DRAIN_AMOUNT, blood_volume_difference)
+	// if you drained from a human w/ a client, congrats
+	var/drained_multiplier = (is_target_human_with_client ? BLOOD_DRAIN_MULTIPLIER : 1)
 
 	victim.blood_volume = clamp(victim.blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
-	hemophage.blood_volume = clamp(hemophage.blood_volume + (drained_blood * (is_target_human_with_client ? BLOOD_DRAIN_MULTIPLIER : 1)), 0, BLOOD_VOLUME_MAXIMUM)
+	hemophage.blood_volume = clamp(hemophage.blood_volume + (drained_blood * drained_multiplier), 0, BLOOD_VOLUME_MAXIMUM)
 
 	log_combat(hemophage, victim, "drained [drained_blood]u of blood from", addition = " (NEW BLOOD VOLUME: [victim.blood_volume] cL)")
 	victim.show_message(span_danger("[hemophage] drains some of your blood!"))
