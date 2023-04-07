@@ -21,8 +21,11 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	. = ..()
 	linked_soulcatcher = new(src)
 	linked_soulcatcher.parent_datum = WEAKREF(src)
+	linked_soulcatcher.name = name
 
 /datum/soulcatcher
+	/// What is the name of the soulcatcher?
+	var/name = "soulcatcher"
 	/// What is the room we are sending messages to?
 	var/datum/soulcatcher_room/current_room
 	/// What rooms are linked to this soulcatcher
@@ -100,9 +103,11 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	var/mob/living/soulcatcher_soul/new_soul = new(parent_object)
 	if(mind_to_add.current)
+		var/datum/component/previous_body/body_component = mind_to_add.current.AddComponent(/datum/component/previous_body)
+		body_component.soulcatcher_soul = WEAKREF(new_soul)
 		new_soul.previous_body = WEAKREF(mind_to_add.current)
 
-	mind_to_add.transfer_to(new_soul)
+	mind_to_add.transfer_to(new_soul, TRUE)
 	current_souls += new_soul
 
 	to_chat(new_soul, span_warning(name))
@@ -140,7 +145,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 			qdel(body_component)
 
 		if(target_body.stat != DEAD)
-			target_body.grab_ghost()
+			target_body.grab_ghost(TRUE)
 
 	return ..()
 
