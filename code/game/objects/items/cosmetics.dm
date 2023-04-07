@@ -2,11 +2,7 @@
 	gender = PLURAL
 	name = "red lipstick"
 	desc = "A generic brand of lipstick."
-<<<<<<< HEAD
-	icon =  'modular_skyrat/modules/salon/icons/items.dmi' //SKYRAT EDIT CHANGE - ORIGINAL: icon = 'icons/obj/weapons/items_and_weapons.dmi'
-=======
-	icon = 'icons/obj/cosmetic.dmi'
->>>>>>> 4397d63a55d (Split weapons_and_items.dmi icons into their own categories (#74363))
+	icon =  'modular_skyrat/modules/salon/icons/items.dmi' //SKYRAT EDIT CHANGE - ORIGINAL: icon = 'icons/obj/cosmetic.dmi'
 	icon_state = "lipstick"
 	inhand_icon_state = "lipstick"
 	w_class = WEIGHT_CLASS_TINY
