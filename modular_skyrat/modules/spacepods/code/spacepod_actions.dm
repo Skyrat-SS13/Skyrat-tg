@@ -173,8 +173,12 @@
 	if(!owner || !spacepod_target || !(owner in spacepod_target.occupants) || owner.incapacitated())
 		return
 
-	if(!(locate(/obj/item/spacepod_equipment/teleport) in spacepod_target.equipment))
+	if(!spacepod_target.check_has_equipment(/obj/item/spacepod_equipment/teleport))
 		to_chat(owner, span_warning("No teleportation device!"))
+		return
+
+	if(!LAZYLEN(GLOB.spacepod_beacons))
+		to_chat(owner, span_warning("No lighthouses detected!"))
 		return
 
 	var/obj/machinery/spacepod_lighthouse/selected_lighthouse = tgui_input_list(owner, "Select a lighthouse to travel to:", "Teleportation", GLOB.spacepod_beacons)
@@ -185,5 +189,34 @@
 	var/turf/lighthouse_turf = get_turf(selected_lighthouse)
 
 	spacepod_target.warp_to(lighthouse_turf, owner)
+
+/**
+ * Toggles vector braking
+ */
+/datum/action/spacepod/toggle_brakes
+	name = "Toggle vector brakes"
+	button_icon_state = "brakes_on"
+
+
+/datum/action/spacepod/toggle_brakes/Trigger(trigger_flags)
+	if(!owner || !spacepod_target || !(owner in spacepod_target.occupants) || owner.incapacitated())
+		return
+
+	spacepod_target.toggle_brakes(owner)
+
+	button_icon_state = "brakes_[spacepod_target.brakes ? "on" : "off"]"
+	build_all_button_icons()
+
+/**
+ * Cycles through the weapons
+ */
+/datum/action/spacepod/cycle_weapons
+	name = "Cycle weapons"
+	button_icon_state = "cycle_weapons"
+
+
+/datum/action/spacepod/cycle_weapons/Trigger(trigger_flags)
+	if(!owner || !spacepod_target || !(owner in spacepod_target.occupants) || owner.incapacitated())
+		return
 
 

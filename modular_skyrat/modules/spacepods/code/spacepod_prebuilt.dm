@@ -20,7 +20,7 @@
 		internal_tank = new internal_tank_type(src)
 	for(var/iterating_equipment_type in equipment_types)
 		var/obj/item/spacepod_equipment/spacepod_equipment = new iterating_equipment_type(src)
-		spacepod_equipment.on_install(src)
+		attach_equipment(spacepod_equipment)
 
 /obj/spacepod/prebuilt/sec
 	name = "security space pod"

@@ -14,6 +14,10 @@
 	var/slot_space = 1
 	/// What actions should we give the user?
 	var/list/actions_to_give = list()
+	/// The icon that we will overlay onto the pod.
+	var/overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
+	/// The icon state of the overlayed weapon.
+	var/overlay_icon_state
 
 /obj/item/spacepod_equipment/Destroy(force)
 	spacepod = null
@@ -156,26 +160,20 @@
 	var/shot_cost = 0
 	/// How many shots we fire in one button click.
 	var/burst_fire = 1
+	/// The delay between burstfire shots
+	var/burst_fire_delay = 0.2 SECONDS
 	/// The sound we make when firing.
 	var/fire_sound
 	/// The delay between firing.
-	var/fire_delay = 15
-	/// The icon that we will overlay onto the pod.
-	var/overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
-	/// The icon state of the overlayed weapon.
-	var/overlay_icon_state = "pod_weapon_laser"
+	var/fire_delay = 1.5 SECONDS
+	overlay_icon_state = "pod_weapon_laser"
 
 /obj/item/spacepod_equipment/weaponry/on_install(obj/spacepod/attaching_spacepod)
 	. = ..()
-	attaching_spacepod.selected_weapon = src
 	attaching_spacepod.update_icon()
 
-/obj/item/spacepod_equipment/weaponry/on_uninstall(obj/spacepod/detatching_spacepod)
-	. = ..()
-	if(detatching_spacepod.selected_weapon == src)
-		detatching_spacepod.selected_weapon = null
 
-/obj/item/spacepod_equipment/weaponry/proc/fire_weapons(target)
+/obj/item/spacepod_equipment/weaponry/proc/fire_weapon(target)
 	if(spacepod.next_firetime > world.time)
 		to_chat(usr, span_warning("Your weapons are recharging."))
 		playsound(src, 'sound/weapons/gun/general/dry_fire.ogg', 30, TRUE)
@@ -186,9 +184,16 @@
 		return
 	spacepod.next_firetime = world.time + fire_delay
 	for(var/I in 1 to burst_fire)
-		spacepod.fire_projectiles(projectile_type, target)
-		playsound(src, fire_sound, 50, TRUE)
-		sleep(2) // Projectile code be fucky
+		addtimer(CALLBACK(src, PROC_REF(actually_fire_weapons), target), burst_fire_delay * I)
+
+/**
+ * actually fire weapons
+ *
+ * This exists so that we can use timers instead of sleep() (cringe)
+ */
+/obj/item/spacepod_equipment/weaponry/proc/actually_fire_weapons(target)
+	spacepod.fire_projectile(projectile_type, target)
+	playsound(src, fire_sound, 50, TRUE)
 
 /obj/item/spacepod_equipment/weaponry/disabler
 	name = "disabler system"

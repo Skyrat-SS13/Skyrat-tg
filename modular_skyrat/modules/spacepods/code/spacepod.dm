@@ -37,15 +37,20 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/list/equipment_slot_limits = list(
 		SPACEPOD_SLOT_MISC = 1,
 		SPACEPOD_SLOT_CARGO = 2,
-		SPACEPOD_SLOT_WEAPON = 1,
+		SPACEPOD_SLOT_WEAPON = 2,
 		SPACEPOD_SLOT_LOCK = 1,
 		SPACEPOD_SLOT_LIGHT = 1,
 		SPACEPOD_SLOT_THRUSTER = 1,
 		)
-	/// The weapon on the ship, thing that goes pew pew
-	var/obj/item/spacepod_equipment/weaponry/selected_weapon
+	/// What is our active weapon slot?
+	var/active_weapon_slot
 	/// Is the weapon able to be fired?
 	var/weapon_safety = FALSE
+	/// A list of our weapon slots, the association is the offset for pixel shooting.
+	var/list/weapon_slots = list(
+		SPACEPOD_WEAPON_SLOT_LEFT = list(-16, 0),
+		SPACEPOD_WEAPON_SLOT_RIGHT = list(16, 0),
+	)
 	/// A list of installed cargo bays
 	var/list/cargo_bays = list()
 	/// Next fire delay
@@ -86,9 +91,11 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/list/pilot_actions = list(
 		/datum/action/spacepod/controls,
 		/datum/action/spacepod/exit,
+		/datum/action/spacepod/toggle_brakes,
 		/datum/action/spacepod/thrust_up,
 		/datum/action/spacepod/thrust_down,
 		/datum/action/spacepod/quantum_entangloporter,
+		/datum/action/spacepod/cycle_weapons,
 		)
 
 	/// List of occupants with actions attached.
@@ -146,13 +153,10 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	/// Our follow trail
 	var/datum/effect_system/trail_follow/ion/grav_allowed/trail
 
-	var/list/weapon_slots = list(
-		SPACEPOD_WEAPON_SLOT_LEFT = list(-16, 0),
-		SPACEPOD_WEAPON_SLOT_RIGHT = list(16, 0),
-	)
 
 /obj/spacepod/Initialize()
 	. = ..()
+	active_weapon_slot = pick(weapon_slots)
 	GLOB.spacepods_list += src
 	START_PROCESSING(SSfastprocess, src)
 	cabin_air = new
@@ -179,7 +183,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	QDEL_NULL(internal_tank)
 	QDEL_NULL(cell)
 	QDEL_NULL(pod_armor)
-	QDEL_NULL(selected_weapon)
 	QDEL_NULL(alarm_sound)
 	QDEL_NULL(thrust_sound)
 	QDEL_NULL(trail)
@@ -252,73 +255,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			return TRUE
 	return ..()
 
-/**
- * Basic proc to attach a piece of equipment to the shuttle.
- */
-/obj/spacepod/proc/attach_equipment(obj/item/spacepod_equipment/equipment_to_attach, mob/user)
-	if(!(equipment_to_attach.slot in equipment_slot_limits)) // Slot not present on ship
-		to_chat(user, span_warning("[equipment_to_attach] is not compatable with [src]!"))
-		return FALSE
-
-	if(LAZYLEN(equipment[equipment_to_attach.slot] >= equipment_slot_limits[equipment_to_attach.slot])) // Equipment slot full
-		to_chat(user, span_warning("[src] cannot fit [equipment_to_attach], slot full!"))
-		return FALSE
-
-
-	if(!equipment_to_attach.can_install(src, user)) // Slot checks
-		return FALSE
-
-	if(user && !user.temporarilyRemoveItemFromInventory(equipment_to_attach))
-		return FALSE
-
-	if(!islist(equipment[equipment_to_attach.slot]))
-		equipment[equipment_to_attach.slot] = list()
-
-	equipment[equipment_to_attach.slot] += equipment_to_attach
-	equipment_to_attach.forceMove(src)
-	equipment_to_attach.on_install(src)
-
-	return TRUE
-
-/**
- * Basic proc to detatch a piece of equipment from the shuttle.
- *
- * Also performs checks to see if its equipment or not.
- */
-/obj/spacepod/proc/detach_equipment(obj/equipment_to_detach, mob/user)
-	if(isspacepodequipment(equipment_to_detach)) // If it is equipment, handle it
-		var/obj/item/spacepod_equipment/spacepod_equipment = equipment_to_detach
-		if(!spacepod_equipment.can_uninstall(src, user))
-			return FALSE
-
-		equipment[spacepod_equipment.slot] -= spacepod_equipment
-
-
-
-	equipment_to_detach.forceMove(get_turf(src))
-
-	if(user && isitem(equipment_to_detach))
-		user.put_in_hands(equipment_to_detach)
-
-	return TRUE
-
-/obj/spacepod/proc/try_to_break_lock(mob/user)
-	if(!LAZYLEN(equipment[SPACEPOD_SLOT_LOCK]))
-		to_chat(user, span_warning("[src] does not have a lock!"))
-		return FALSE
-
-	var/obj/item/spacepod_equipment/lock/spacepod_lock = equipment[SPACEPOD_SLOT_LOCK][1]
-
-	user.visible_message(user, span_warning("[user] is drilling through [src]'s lock!"), span_notice("You start drilling through [src]'s lock!"))
-
-	if(do_after(user, 10 SECONDS, src))
-		detach_equipment(spacepod_lock)
-		qdel(spacepod_lock)
-		user.visible_message(user, span_warning("[user] has destroyed [src]'s lock!"), span_notice("You destroy [src]'s lock!"))
-	else
-		user.visible_message(user, span_warning("[user] fails to break through [src]'s lock!"), span_notice("You were unable to break through [src]'s lock!"))
-
-
 /obj/spacepod/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(!locked)
@@ -344,28 +280,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	if(!hatch_open)
 		return ..()
 	show_detachable_equipment(user)
-
-/**
- * Show detachable equipment
- *
- * shows a basic list of things that can be detached, then detaches whatever the user wants to detach.
- */
-/obj/spacepod/proc/show_detachable_equipment(mob/user)
-	var/list/detachable_equipment = list()
-
-	for(var/slot in equipment)
-		for(var/obj/thing in equipment[slot])
-			detachable_equipment += thing
-
-	if(!LAZYLEN(detachable_equipment))
-		return
-
-	var/obj/thing_to_remove = tgui_input_list(user, "Please select an item to remove:", "Equipment Removal", detachable_equipment)
-
-	if(!thing_to_remove) // User cancelled out
-		return
-
-	detach_equipment(thing_to_remove, user)
 
 /obj/spacepod/take_damage(damage_amount, damage_type = BRUTE, damage_flag = "", sound_effect = TRUE, attack_dir, armour_penetration = 0)
 	..()
@@ -437,18 +351,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			object.forceMove(loc)
 			object.deconstruct()
 
-/**
- * Checks if an item is part of our equipment.
- *
- * Returns FALSE if no or the item if yes.
- */
-/obj/spacepod/proc/check_equipment(obj/item_to_check)
-	for(var/slot in equipment)
-		for(var/obj/item/spacepod_equipment/iterating_equipment in equipment[slot])
-			if(item_to_check == iterating_equipment)
-				return iterating_equipment
-	return FALSE
-
 /obj/spacepod/deconstruct(disassembled = FALSE)
 	if(!get_turf(src))
 		qdel(src)
@@ -492,6 +394,19 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		// there here's your frame pieces back, happy?
 	qdel(src)
 
+/obj/spacepod/update_overlays()
+	. = ..()
+	// Weapon overlays
+	if(LAZYLEN(equipment[SPACEPOD_SLOT_WEAPON]))
+		for(var/obj/item/spacepod_equipment/weaponry/iterating_weaponry in equipment[SPACEPOD_SLOT_WEAPON])
+			var/mutable_appearance/weapon_overlay = mutable_appearance(iterating_weaponry.overlay_icon, iterating_weaponry.overlay_icon_state) // Default state should fill in the left gunpod.
+			if(equipment[SPACEPOD_SLOT_WEAPON][iterating_weaponry])
+				var/offset_x = weapon_slots[equipment[SPACEPOD_SLOT_WEAPON][iterating_weaponry]][1]
+				if(offset_x) // Positive value means it's supposed to be overlayed on the right side of the pod, thus, flip le image so it fits.
+					var/matrix/flip_matrix = matrix(-1, 0, 0, 0, 1, 0)
+					weapon_overlay.transform = flip_matrix
+
+			. += weapon_overlay
 
 /obj/spacepod/update_icon()
 	. = ..()
@@ -514,9 +429,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		add_overlay(image(icon = initial(icon), icon_state = "pod_damage"))
 		if(obj_integrity <= max_integrity / 4)
 			add_overlay(image(icon = initial(icon), icon_state = "pod_fire"))
-
-	if(selected_weapon && selected_weapon.overlay_icon_state)
-		add_overlay(image(icon = selected_weapon.overlay_icon,icon_state = selected_weapon.overlay_icon_state))
 
 	if(pod_armor)
 		icon = pod_armor.pod_icon
@@ -617,6 +529,136 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	brakes = !brakes
 	to_chat(usr, span_notice("You toggle the brakes [brakes ? "on" : "off"]."))
 
+// EQUIPMENT PROCS
+
+/**
+ * Get all equipment
+ *
+ * returns all current spacepod equipment in the spacepod.
+ */
+/obj/spacepod/proc/get_all_equipment()
+	var/list/equipment_list = list()
+	for(var/slot in equipment)
+		for(var/obj/item/spacepod_equipment/iterating_equipment in equipment[slot])
+			equipment_list += iterating_equipment
+	return equipment_list
+
+/**
+ * Checks if an item is part of our equipment.
+ *
+ * Returns FALSE if no or the item if yes.
+ */
+/obj/spacepod/proc/check_equipment(obj/item_to_check)
+	for(var/slot in equipment)
+		for(var/obj/item/spacepod_equipment/iterating_equipment in equipment[slot])
+			if(item_to_check == iterating_equipment)
+				return iterating_equipment
+	return FALSE
+
+/**
+ * Show detachable equipment
+ *
+ * shows a basic list of things that can be detached, then detaches whatever the user wants to detach.
+ */
+/obj/spacepod/proc/show_detachable_equipment(mob/user)
+	var/list/detachable_equipment = list()
+
+	for(var/slot in equipment)
+		for(var/obj/thing in equipment[slot])
+			detachable_equipment += thing
+
+	if(!LAZYLEN(detachable_equipment))
+		return
+
+	var/obj/thing_to_remove = tgui_input_list(user, "Please select an item to remove:", "Equipment Removal", detachable_equipment)
+
+	if(!thing_to_remove) // User cancelled out
+		return
+
+	detach_equipment(thing_to_remove, user)
+
+/**
+ * Basic proc to attach a piece of equipment to the shuttle.
+ */
+/obj/spacepod/proc/attach_equipment(obj/item/spacepod_equipment/equipment_to_attach, mob/user)
+	if(!(equipment_to_attach.slot in equipment_slot_limits)) // Slot not present on ship
+		to_chat(user, span_warning("[equipment_to_attach] is not compatable with [src]!"))
+		return FALSE
+
+	if(LAZYLEN(equipment[equipment_to_attach.slot]) >= equipment_slot_limits[equipment_to_attach.slot]) // Equipment slot full
+		to_chat(user, span_warning("[src] cannot fit [equipment_to_attach], slot full!"))
+		return FALSE
+
+	if(!equipment_to_attach.can_install(src, user)) // Slot checks
+		return FALSE
+
+	if(user && !user.temporarilyRemoveItemFromInventory(equipment_to_attach))
+		return FALSE
+
+	if(!islist(equipment[equipment_to_attach.slot]))
+		equipment[equipment_to_attach.slot] = list()
+
+	equipment[equipment_to_attach.slot] += equipment_to_attach
+	equipment_to_attach.forceMove(src)
+	equipment_to_attach.on_install(src)
+
+	// Weapon handling
+	if(istype(equipment_to_attach, /obj/item/spacepod_equipment/weaponry))
+		if(user)
+			INVOKE_ASYNC(src, PROC_REF(async_weapon_slot_selection), equipment_to_attach, user)
+		else
+			var/list/available_slots = get_free_weapon_slots()
+			equipment[SPACEPOD_SLOT_WEAPON][equipment_to_attach] = pick(available_slots)
+
+	return TRUE
+
+/**
+ * async weapon slot selection
+ *
+ * Asynchronously asks the user what weapon slot they want to put the weapon in.
+ */
+/obj/spacepod/proc/async_weapon_slot_selection(equipment_to_attach, mob/user)
+	var/list/available_slots = get_free_weapon_slots()
+	var/weapon_slot_to_apply
+	weapon_slot_to_apply = tgui_input_list(user, "Please select a weapon slot to put the weapon into:", "Weapon Slot", available_slots)
+	if(!weapon_slot_to_apply)
+		detach_equipment(equipment_to_attach)
+		return
+	equipment[SPACEPOD_SLOT_WEAPON][equipment_to_attach] = weapon_slot_to_apply
+
+/**
+ * Basic proc to detatch a piece of equipment from the shuttle.
+ *
+ * Also performs checks to see if its equipment or not.
+ */
+/obj/spacepod/proc/detach_equipment(obj/equipment_to_detach, mob/user)
+	if(isspacepodequipment(equipment_to_detach)) // If it is equipment, handle it
+		var/obj/item/spacepod_equipment/spacepod_equipment = equipment_to_detach
+		if(!spacepod_equipment.can_uninstall(src, user))
+			return FALSE
+
+		equipment[spacepod_equipment.slot] -= spacepod_equipment
+
+		spacepod_equipment.on_uninstall(src)
+
+	equipment_to_detach.forceMove(get_turf(src))
+
+	if(user && isitem(equipment_to_detach))
+		user.put_in_hands(equipment_to_detach)
+
+	return TRUE
+
+/obj/spacepod/proc/check_has_equipment(type_to_check)
+	var/list/equipment_list = get_all_equipment()
+
+	for(var/thing as anything in equipment_list)
+		if(istype(thing, type_to_check))
+			return TRUE
+
+	return FALSE
+
+// MISC PROCS
+
 /**
  * Slowprocess
  *
@@ -653,6 +695,81 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 					qdel(removed)
 
 /**
+ * try to break lock
+ *
+ * Attempts to break a spacepod lock.
+ */
+
+/obj/spacepod/proc/try_to_break_lock(mob/user)
+	if(!LAZYLEN(equipment[SPACEPOD_SLOT_LOCK]))
+		to_chat(user, span_warning("[src] does not have a lock!"))
+		return FALSE
+
+	var/obj/item/spacepod_equipment/lock/spacepod_lock = equipment[SPACEPOD_SLOT_LOCK][1]
+
+	user.visible_message(user, span_warning("[user] is drilling through [src]'s lock!"), span_notice("You start drilling through [src]'s lock!"))
+
+	if(do_after(user, 10 SECONDS, src))
+		detach_equipment(spacepod_lock)
+		qdel(spacepod_lock)
+		user.visible_message(user, span_warning("[user] has destroyed [src]'s lock!"), span_notice("You destroy [src]'s lock!"))
+	else
+		user.visible_message(user, span_warning("[user] fails to break through [src]'s lock!"), span_notice("You were unable to break through [src]'s lock!"))
+
+/**
+ * On Mouse Moved
+ *
+ * Handles the vector movement of the shuttle when the pilot moves their mouse.
+ */
+/obj/spacepod/proc/on_mouse_moved(mob/user, object, location, control, params)
+	SIGNAL_HANDLER
+	var/list/modifiers = params2list(params)
+	if(object == src ||  (object && (object in user.get_all_contents())) || user != pilot)
+		return
+	var/list/sl_list = splittext(modifiers["screen-loc"],",")
+	var/list/sl_x_list = splittext(sl_list[1], ":")
+	var/list/sl_y_list = splittext(sl_list[2], ":")
+	var/list/view_list = isnum(pilot.client.view) ? list("[pilot.client.view*2+1]","[pilot.client.view*2+1]") : splittext(pilot.client.view, "x")
+	var/dx = text2num(sl_x_list[1]) + (text2num(sl_x_list[2]) / world.icon_size) - 1 - text2num(view_list[1]) / 2
+	var/dy = text2num(sl_y_list[1]) + (text2num(sl_y_list[2]) / world.icon_size) - 1 - text2num(view_list[2]) / 2
+	if(sqrt(dx * dx + dy * dy) > 1)
+		desired_angle = 90 - ATAN2(dx, dy)
+	else
+		desired_angle = null
+
+/**
+ * Play alarm
+ *
+ * Checks if the alarm can play or not, then does so.
+ */
+
+/obj/spacepod/proc/play_alarm(toggle)
+	if(alarm_muted)
+		alarm_sound.stop()
+		return
+	if(toggle)
+		alarm_sound.start()
+	else
+		alarm_sound.stop()
+
+
+/**
+ * Process Integrity
+ *
+ * This is used for any unique behaviour as the pod is damaged, so far it is used for alarms.
+ *
+ * TODO: Convert this alarm sound to a looping sound
+ */
+/obj/spacepod/proc/process_integrity(obj/source, old_value, new_value)
+	if(new_value < (max_integrity / 4)) // Less than a quarter health.
+		play_alarm(TRUE)
+	else
+		play_alarm(FALSE)
+
+
+// ARMOR PROCS
+
+/**
  * Add Armor
  *
  * Adds armor to the spacepod and updates it accordingly.
@@ -677,37 +794,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		pod_armor = null
 		update_icon()
 
-/**
- * On Mouse Moved
- *
- * Handles the vector movement of the shuttle when the pilot moves their mouse.
- */
-/obj/spacepod/proc/on_mouse_moved(mob/user, object, location, control, params)
-	SIGNAL_HANDLER
-	var/list/modifiers = params2list(params)
-	if(object == src ||  (object && (object in user.get_all_contents())) || user != pilot)
-		return
-	var/list/sl_list = splittext(modifiers["screen-loc"],",")
-	var/list/sl_x_list = splittext(sl_list[1], ":")
-	var/list/sl_y_list = splittext(sl_list[2], ":")
-	var/list/view_list = isnum(pilot.client.view) ? list("[pilot.client.view*2+1]","[pilot.client.view*2+1]") : splittext(pilot.client.view, "x")
-	var/dx = text2num(sl_x_list[1]) + (text2num(sl_x_list[2]) / world.icon_size) - 1 - text2num(view_list[1]) / 2
-	var/dy = text2num(sl_y_list[1]) + (text2num(sl_y_list[2]) / world.icon_size) - 1 - text2num(view_list[2]) / 2
-	if(sqrt(dx * dx + dy * dy) > 1)
-		desired_angle = 90 - ATAN2(dx, dy)
-	else
-		desired_angle = null
-
-/**
- * Returns the relevant status tab items for the pilot
- */
-/obj/spacepod/proc/get_status_tab_items(mob/living/source, list/items)
-	SIGNAL_HANDLER
-	items += ""
-	items += "Spacepod Charge: [cell ? "[round(cell.charge,0.1)]/[cell.maxcharge] KJ" : "NONE"]"
-	items += "Spacepod Integrity: [round(get_integrity(), 0.1)]/[max_integrity]"
-	items += "Spacepod Velocity: [round(sqrt(velocity_x * velocity_x + velocity_y * velocity_y), 0.1)] m/s"
-	items += ""
+// WEAPON PROCS
 
 /**
  * Try Fire Weapon
@@ -718,42 +805,65 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	SIGNAL_HANDLER
 	if(istype(_target, /atom/movable/screen))
 		return
-	if(!selected_weapon)
-		return
 	if(weapon_safety)
 		return
 	if(pilot != source.mob)
 		return
-	INVOKE_ASYNC(src, PROC_REF(async_fire_weapons_at), _target)
+	var/obj/item/spacepod_equipment/weaponry/active_weaponry = get_active_weapon()
+	if(!active_weaponry)
+		to_chat(source, span_warning("No active weapons!"))
+		return
+	INVOKE_ASYNC(src, PROC_REF(async_fire_weapons_at), active_weaponry, _target)
 
 /**
  * Async fires weapons.
  */
-/obj/spacepod/proc/async_fire_weapons_at(atom/target)
-	if(selected_weapon)
-		selected_weapon.fire_weapons(target)
-
-/obj/spacepod/proc/play_alarm(toggle)
-	if(alarm_muted)
-		alarm_sound.stop()
-		return
-	if(toggle)
-		alarm_sound.start()
-	else
-		alarm_sound.stop()
+/obj/spacepod/proc/async_fire_weapons_at(obj/item/spacepod_equipment/weaponry/weapon_to_fire, atom/target)
+	weapon_to_fire.fire_weapon(target)
 
 /**
- * Process Integrity
+ * set active weaponslot
  *
- * This is used for any unique behaviour as the pod is damaged, so far it is used for alarms.
- *
- * TODO: Convert this alarm sound to a looping sound
+ * Sets the pods active weapon slot.
  */
-/obj/spacepod/proc/process_integrity(obj/source, old_value, new_value)
-	if(new_value < (max_integrity / 4)) // Less than a quarter health.
-		play_alarm(TRUE)
-	else
-		play_alarm(FALSE)
+/obj/spacepod/proc/set_active_weapon_slot(new_slot)
+	active_weapon_slot = new_slot
+
+/**
+ * get free weapon slots
+ *
+ * Returns any available weapon slots.
+ */
+/obj/spacepod/proc/get_free_weapon_slots()
+	var/list/free_slots = LAZYCOPY(weapon_slots)
+	for(var/iterating_weaponry in equipment[SPACEPOD_SLOT_WEAPON])
+		if(equipment[SPACEPOD_SLOT_WEAPON][iterating_weaponry] in free_slots)
+			free_slots -= equipment[SPACEPOD_SLOT_WEAPON][iterating_weaponry]
+	return free_slots
+
+/**
+ * get active weapon
+ *
+ * returns the active weapon in the currently selected slot or false if nothing is selected
+ */
+/obj/spacepod/proc/get_active_weapon()
+	for(var/weaponry in equipment[SPACEPOD_SLOT_WEAPON])
+		if(equipment[SPACEPOD_SLOT_WEAPON][weaponry] == active_weapon_slot)
+			return weaponry
+	return FALSE
+
+/**
+ * get weapon in slot
+ *
+ * Returns the weapon that is currently using up the aforementioned slot, if none, returns false.
+ */
+/obj/spacepod/proc/get_weapon_in_slot(weapon_slot)
+	for(var/iterating_weaponry in equipment[SPACEPOD_SLOT_WEAPON])
+		if(equipment[SPACEPOD_SLOT_WEAPON][iterating_weaponry] == weapon_slot)
+			return iterating_weaponry
+	return FALSE
+
+// RIDER PROCS
 
 /**
  * Enter Pod
@@ -821,6 +931,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	playsound(src, 'sound/machines/windowdoor.ogg', 50, 1)
 	return TRUE
 
+
+
 /**
  * Remove Rider
  *
@@ -874,6 +986,19 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	return !isnull(LAZYACCESS(occupants, mob_to_check))
 
 /**
+ * Returns the relevant status tab items for the pilot
+ */
+/obj/spacepod/proc/get_status_tab_items(mob/living/source, list/items)
+	SIGNAL_HANDLER
+	items += ""
+	items += "Spacepod Charge: [cell ? "[round(cell.charge,0.1)]/[cell.maxcharge] KJ" : "NONE"]"
+	items += "Spacepod Integrity: [round(get_integrity(), 0.1)]/[max_integrity]"
+	items += "Spacepod Velocity: [round(sqrt(velocity_x * velocity_x + velocity_y * velocity_y), 0.1)] m/s"
+	items += ""
+
+// TELEPORTATION
+
+/**
  * Handles teleportation
  *
  * Shuttles have cool teleport effects.
@@ -910,148 +1035,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	QDEL_NULL(warp)
 	thrust_lockout = FALSE
 
-/**
- * UI CONTROL FUNCTIONS
- *
- * These functions are called by the client to control the UI.
- */
-
-/obj/spacepod/verb/open_menu()
-	set name = "Open Menu"
-	set category = "Spacepod"
-	set src = usr.loc
-
-	if(!verb_check())
-		return
-
-	if(!pilot)
-		to_chat(usr, span_warning("You are not in a pod."))
-	else if(pilot.incapacitated())
-		to_chat(usr, span_warning("You are incapacitated."))
-	else
-		ui_interact(pilot)
-
-/obj/spacepod/proc/check_interact(mob/living/user, require_pilot = TRUE)
-	if(require_pilot && user != pilot)
-		to_chat(user, span_notice("You can't reach the controls from your chair"))
-		return FALSE
-	return !user.incapacitated() && isliving(user) && user.loc == src
-
-
-/obj/spacepod/ui_interact(mob/user, datum/tgui/ui)
-	if(user != pilot)
-		return
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "SpacepodControl")
-		ui.open()
-
-/obj/spacepod/ui_state(mob/user)
-	return GLOB.conscious_state
-
-/obj/spacepod/ui_data(mob/user)
-	. = ..()
-	var/list/data = list()
-
-	data["pod_pilot"] = pilot ? pilot.name : "none"
-
-	data["has_occupants"] = FALSE
-	if(LAZYLEN(passengers))
-		data["occupants"] = list()
-		for(var/mob/iterating_mob as anything in passengers)
-			data["occupants"] += iterating_mob.name
-		data["has_occupants"] = TRUE
-
-	data["integrity"] = round(get_integrity(), 0.1)
-	data["max_integrity"] = max_integrity
-
-	data["velocity"] = round(sqrt(velocity_x * velocity_x + velocity_y * velocity_y), 0.1)
-
-	data["locked"] = locked
-	data["brakes"] = brakes
-	data["lights"] = light_toggle
-	data["alarm_muted"] = alarm_muted
-
-	data["has_cell"] = FALSE
-	if(cell)
-		data["has_cell"] = TRUE
-		data["cell_data"] = list(
-			"type" = capitalize(cell.name),
-			"charge" = cell.charge,
-			"max_charge" = cell.maxcharge,
-		)
-
-	data["weapon_lock"] = weapon_safety
-
-	data["has_weapon"] = FALSE
-	if(selected_weapon)
-		data["has_weapon"] = TRUE
-		data["weapon_data"] = list(
-			"type" = capitalize(selected_weapon.name),
-			"desc" = selected_weapon.desc,
-		)
-
-	if(LAZYLEN(equipment))
-		data["has_equipment"] = TRUE
-		data["equipment"] = list()
-		for(var/obj/item/spacepod_equipment/spacepod_equipment as anything in equipment)
-			data["equipment"] += list(list(
-				"name" = uppertext(spacepod_equipment.name),
-				"desc" = spacepod_equipment.desc,
-				"slot" = capitalize(spacepod_equipment.slot) + " Slot",
-				"can_uninstall" = spacepod_equipment.can_uninstall(),
-				"ref" = REF(spacepod_equipment),
-			))
-	else
-		data["has_attachments"] = FALSE
-
-	if(LAZYLEN(cargo_bays))
-		data["has_bays"] = TRUE
-		data["cargo_bays"] = list()
-		for(var/obj/item/spacepod_equipment/cargo/large/cargo_bay as anything in cargo_bays)
-			data["cargo_bays"] += list(list(
-				"name" = uppertext(cargo_bay.name),
-				"ref" = REF(cargo_bay),
-				"storage" = cargo_bay.storage ? cargo_bay.storage.name : "none",
-			))
-	else
-		data["has_bays"] = FALSE
-
-	return data
-
-/obj/spacepod/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-	if(.)
-		return
-	if(!check_interact(usr))
-		return
-	switch(action)
-		if("exit_pod")
-			exit_pod(usr)
-		if("toggle_lights")
-			toggle_lights(usr)
-		if("toggle_brakes")
-			toggle_brakes(usr)
-		if("toggle_locked")
-			toggle_locked(usr)
-		if("toggle_doors")
-			toggle_doors(usr)
-		if("toggle_weapon_lock")
-			toggle_weapon_lock(usr)
-		if("unload_cargo")
-			var/obj/item/spacepod_equipment/cargo/large/cargo = locate(params["cargo_bay_ref"]) in src
-			if(!cargo)
-				return
-			cargo.unload_cargo()
-		if("remove_equipment")
-			var/obj/item/spacepod_equipment/equipment_to_remove = locate(params["equipment_ref"]) in src
-			detach_equipment(equipment_to_remove, usr)
-		if("mute_alarm")
-			mute_alarm(usr)
-
 /obj/spacepod/proc/toggle_weapon_lock(mob/user)
-	if(!selected_weapon)
-		return
 	weapon_safety = !weapon_safety
 	to_chat(user, span_notice("Weapon lock is now [weapon_safety ? "on" : "off"]."))
 

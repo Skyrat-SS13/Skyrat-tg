@@ -274,34 +274,61 @@
 		log_combat(pilot, M, "impacted", src, "with velocity of [bump_velocity]")
 	return ..()
 
-/obj/spacepod/proc/fire_projectiles(proj_type, target, custom_offset_x = 0, custom_offset_y = 0)
+/**
+ * Fire Projectile
+ *
+ * Fires a projectile from the spacepod.
+ */
+/obj/spacepod/proc/fire_projectile(proj_type, target, custom_offset_x = 0, custom_offset_y = 0)
+	// Calculate cos and sin results based on the spacepod's angle
 	var/cos_result = cos(90 - angle)
 	var/sin_result = sin(90 - angle)
+
+	// Calculate the offset of the projectile's origin in pixels, including custom offsets if provided
 	var/offset_x_pixels = (offset_x * 32) + custom_offset_x
 	var/offset_y_pixels = (offset_y * 32) + custom_offset_y
+
+	// Calculate the projectile's origin point using the cos and sin results
 	var/projectile_origin = list(offset_x_pixels + cos_result * 16, offset_y_pixels + sin_result * 16)
+
+	// Set the current x and y coordinates of the projectile
 	var/current_x = projectile_origin[1]
 	var/current_y = projectile_origin[2]
-	var/turf/our_turf = get_turf(src)
+
+	// Get the turf of the spacepod
+	var/turf/iterating_turf = get_turf(src)
+
+	// Adjust the iterating_turf and current_x values based on the projectile's x-coordinate
 	while(current_x > 16)
-		our_turf = get_step(our_turf, EAST)
+		iterating_turf = get_step(iterating_turf, EAST)
 		current_x -= 32
 	while(current_x < -16)
-		our_turf = get_step(our_turf, WEST)
+		iterating_turf = get_step(iterating_turf, WEST)
 		current_x += 32
+
+	// Adjust the iterating_turf and current_y values based on the projectile's y-coordinate
 	while(current_y > 16)
-		our_turf = get_step(our_turf, NORTH)
+		iterating_turf = get_step(iterating_turf, NORTH)
 		current_y -= 32
 	while(current_y < -16)
-		our_turf = get_step(our_turf, SOUTH)
+		iterating_turf = get_step(iterating_turf, SOUTH)
 		current_y += 32
-	if(!our_turf)
+
+	// Check if the iterating_turf exists, return if it doesn't
+	if(!iterating_turf)
 		return
-	var/obj/projectile/projectile_instance = new proj_type(our_turf)
-	projectile_instance.starting = our_turf
-	projectile_instance.firer = usr
+
+	// Create a new projectile instance at the iterating_turf
+	var/obj/projectile/projectile_instance = new proj_type(iterating_turf)
+
+	// Set the projectile's properties
+	projectile_instance.starting = iterating_turf
+	projectile_instance.firer = src
+	projectile_instance.ignore_source_check = TRUE
 	projectile_instance.def_zone = "chest"
 	projectile_instance.original = target
 	projectile_instance.pixel_x = round(current_x)
 	projectile_instance.pixel_y = round(current_y)
+
+	// Fire the projectile at the target angle
 	projectile_instance.fire(angle)

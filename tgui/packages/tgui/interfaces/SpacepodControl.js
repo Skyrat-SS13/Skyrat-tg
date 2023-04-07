@@ -32,7 +32,6 @@ export const SpacepodControl = (props, context) => {
 export const SummaryTab = (props, context) => {
   const { act, data } = useBackend(context);
   const { cell_data } = data;
-  const { weapon_data } = data;
   const {
     pod_pilot,
     has_occupants,
@@ -42,10 +41,10 @@ export const SummaryTab = (props, context) => {
     alarm_muted,
     brakes,
     has_cell,
-    has_weapon,
-    weapon_name,
-    weapon_desc,
+    has_weapons,
     weapon_lock,
+    weapons = [],
+    selected_weapon_slot,
     velocity,
     integrity,
     max_integrity,
@@ -161,25 +160,44 @@ export const SummaryTab = (props, context) => {
       </Stack.Item>
       <Stack.Item>
         <Section title="Weapons Control">
-          {has_weapon ? (
-            <LabeledList>
-              <LabeledList.Item label="Name">
-                {weapon_data.name}
-              </LabeledList.Item>
-              <LabeledList.Item label="Description">
-                {weapon_data.desc}
-              </LabeledList.Item>
-              <LabeledList.Item label="Weapons Lock">
-                <Button
-                  icon={'fighter-jet'}
-                  content={weapon_lock ? 'Safe' : 'Ready to fire'}
-                  color={weapon_lock ? 'good' : 'bad'}
-                  onClick={() => act('toggle_weapon_lock')}
-                />
-              </LabeledList.Item>
-            </LabeledList>
+          <Button
+            icon={'fighter-jet'}
+            content={weapon_lock ? 'Safe' : 'Ready to fire'}
+            color={weapon_lock ? 'good' : 'bad'}
+            onClick={() => act('toggle_weapon_lock')}
+          />
+          {has_weapons ? (
+            weapons.map((weapon, index) => (
+              <LabeledList
+                key={index}
+                buttons={
+                  <Button
+                    icon="eject"
+                    content={
+                      selected_weapon_slot === weapon.slot
+                        ? 'Selected'
+                        : 'Select'
+                    }
+                    disabled={selected_weapon_slot === weapon.slot}
+                    color={
+                      selected_weapon_slot === weapon.slot ? 'green' : 'blue'
+                    }
+                    onClick={() =>
+                      act('switch_weapon_slot', {
+                        selected_slot: weapon.slot,
+                      })
+                    }
+                  />
+                }>
+                <LabeledList.Item label="Name">{weapon.name}</LabeledList.Item>
+                <LabeledList.Item label="Description">
+                  {weapon.desc}
+                </LabeledList.Item>
+                <LabeledList.Item label="Slot">{weapon.slot}</LabeledList.Item>
+              </LabeledList>
+            ))
           ) : (
-            <NoticeBox color="blue">No weapon installed!</NoticeBox>
+            <NoticeBox color="blue">No weapons!</NoticeBox>
           )}
         </Section>
       </Stack.Item>

@@ -23,8 +23,8 @@
 
 #define SPACEPOD_LAYER 3.9
 
-#define SPACEPOD_WEAPON_SLOT_LEFT "weapon_slot_left"
-#define SPACEPOD_WEAPON_SLOT_RIGHT "weapon_slot_right"
+#define SPACEPOD_WEAPON_SLOT_LEFT "Left Weapon Slot"
+#define SPACEPOD_WEAPON_SLOT_RIGHT "Right Weapon Slot"
 
 /// A list of lighthouses that enable the spacepods to teleport to.
 GLOBAL_LIST_EMPTY(spacepod_beacons)
