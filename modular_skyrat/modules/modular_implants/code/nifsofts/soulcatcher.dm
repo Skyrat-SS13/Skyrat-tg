@@ -108,6 +108,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	mind_to_add.transfer_to(new_soul, TRUE)
 	current_souls += new_soul
+	new_soul.current_room = WEAKREF(src)
 
 	to_chat(new_soul, span_warning(name))
 	to_chat(new_soul, span_notice(room_description))
@@ -120,6 +121,26 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return FALSE
 
 	qdel(soul_to_remove)
+	return TRUE
+
+/// Transfers a soul from a soulcatcher room to another soulcatcher room.
+/datum/soulcatcher_room/proc/transfer_soul(mob/living/soulcatcher_soul/target_soul, datum/soulcatcher_room/target_room)
+	if(!(target_soul in current_souls) || !target_room)
+		return FALSE
+
+	var/datum/component/soulcatcher/target_master_soulcatcher = target_room.master_soulcatcher.resolve()
+	if(target_master_soulcatcher != master_soulcatcher.resolve())
+		target_soul.forceMove(target_master_soulcatcher.parent)
+
+	target_soul.current_room = WEAKREF(target_room)
+	current_souls -= target_soul
+	target_room.current_souls += target_soul
+
+	to_chat(target_soul, span_notice("you've been transfered to [target_room]!"))
+	to_chat(new_soul, span_warning(name))
+	to_chat(new_soul, span_notice(room_description))
+
+	return TRUE
 
 /datum/soulcatcher_room/Destroy(force, ...)
 	for(var/mob/living/soulcatcher_soul in current_souls)
@@ -133,6 +154,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/true_name
 	/// Assuming we died inside of the round? What is our previous body?
 	var/datum/weakref/previous_body
+	/// What is the weakref of the soulcatcher room are we currently in?
+	var/datum/weakref/current_room
 
 /mob/living/soulcatcher_soul/Destroy()
 	if(previous_body && mind)
@@ -158,7 +181,6 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	. = ..()
 	if(!ismob(parent))
 		return COMPONENT_INCOMPATIBLE
-
 
 // Attemps to transfer the mind of the soul back to the original body.
 /datum/component/previous_body/Destroy(force, silent)
