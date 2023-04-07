@@ -274,37 +274,34 @@
 		log_combat(pilot, M, "impacted", src, "with velocity of [bump_velocity]")
 	return ..()
 
-/obj/spacepod/proc/fire_projectiles(proj_type, target) // if spacepods of other sizes are added override this or something
-	var/fx = cos(90 - angle)
-	var/fy = sin(90 - angle)
-	var/sx = fy
-	var/sy = -fx
-	var/ox = (offset_x * 32)
-	var/oy = (offset_y * 32)
-	var/list/origins = list(list(ox + fx * 16 - sx * 16, oy + fy * 16 - sy * 16), list(ox + fx * 16 + sx * 16, oy + fy * 16 + sy * 16))
-	for(var/list/origin in origins)
-		var/this_x = origin[1]
-		var/this_y = origin[2]
-		var/turf/iterating_turf = get_turf(src)
-		while(this_x > 16)
-			iterating_turf = get_step(iterating_turf, EAST)
-			this_x -= 32
-		while(this_x < -16)
-			iterating_turf = get_step(iterating_turf, WEST)
-			this_x += 32
-		while(this_y > 16)
-			iterating_turf = get_step(iterating_turf, NORTH)
-			this_y -= 32
-		while(this_y < -16)
-			iterating_turf = get_step(iterating_turf, SOUTH)
-			this_y += 32
-		if(!iterating_turf)
-			continue
-		var/obj/projectile/proj = new proj_type(iterating_turf)
-		proj.starting = iterating_turf
-		proj.firer = usr
-		proj.def_zone = "chest"
-		proj.original = target
-		proj.pixel_x = round(this_x)
-		proj.pixel_y = round(this_y)
-		proj.fire(angle)
+/obj/spacepod/proc/fire_projectiles(proj_type, target, custom_offset_x = 0, custom_offset_y = 0)
+	var/cos_result = cos(90 - angle)
+	var/sin_result = sin(90 - angle)
+	var/offset_x_pixels = (offset_x * 32) + custom_offset_x
+	var/offset_y_pixels = (offset_y * 32) + custom_offset_y
+	var/projectile_origin = list(offset_x_pixels + cos_result * 16, offset_y_pixels + sin_result * 16)
+	var/current_x = projectile_origin[1]
+	var/current_y = projectile_origin[2]
+	var/turf/our_turf = get_turf(src)
+	while(current_x > 16)
+		our_turf = get_step(our_turf, EAST)
+		current_x -= 32
+	while(current_x < -16)
+		our_turf = get_step(our_turf, WEST)
+		current_x += 32
+	while(current_y > 16)
+		our_turf = get_step(our_turf, NORTH)
+		current_y -= 32
+	while(current_y < -16)
+		our_turf = get_step(our_turf, SOUTH)
+		current_y += 32
+	if(!our_turf)
+		return
+	var/obj/projectile/projectile_instance = new proj_type(our_turf)
+	projectile_instance.starting = our_turf
+	projectile_instance.firer = usr
+	projectile_instance.def_zone = "chest"
+	projectile_instance.original = target
+	projectile_instance.pixel_x = round(current_x)
+	projectile_instance.pixel_y = round(current_y)
+	projectile_instance.fire(angle)

@@ -21,12 +21,9 @@
 
 /obj/item/spacepod_equipment/proc/on_install(obj/spacepod/attaching_spacepod)
 	spacepod = attaching_spacepod
-	attaching_spacepod.equipment |= src
-	forceMove(attaching_spacepod)
 
 /obj/item/spacepod_equipment/proc/on_uninstall(obj/spacepod/detatching_spacepod)
-	detatching_spacepod.equipment -= src
-	detatching_spacepod = null
+	spacepod = null
 
 /**
  * can_install
@@ -34,15 +31,6 @@
  * Basic install handler, performs checks before returning TRUE or FALSE
  */
 /obj/item/spacepod_equipment/proc/can_install(obj/spacepod/attaching_spacepod, mob/user)
-	// Get the amount of room we have, if we have none, then set it to 0.
-	var/room = attaching_spacepod.equipment_slot_limits[slot] || 0
-	// Calculate the amount of room we have left after taking into account all the existing equipment.
-	for(var/obj/item/spacepod_equipment/iterating_equipment in attaching_spacepod.equipment)
-		if(iterating_equipment.slot == slot)
-			room -= iterating_equipment.slot_space
-	if(room < slot_space)
-		to_chat(user, span_warning("There's no room for another [slot] system!"))
-		return FALSE
 	return TRUE
 
 /**
@@ -50,7 +38,7 @@
  *
  * Basic uninstall handler, place any unique behaviour here, return true or false.
  */
-/obj/item/spacepod_equipment/proc/can_uninstall(mob/user)
+/obj/item/spacepod_equipment/proc/can_uninstall(obj/spacepod/detatching_spacepod, mob/user)
 	return TRUE
 
 
@@ -330,13 +318,8 @@
 	/// The color of the light
 	var/color_to_set = COLOR_WHITE
 
-/obj/item/spacepod_equipment/lights/on_install(obj/spacepod/attaching_spacepod)
-	. = ..()
-	attaching_spacepod.our_lights = src
-
 /obj/item/spacepod_equipment/thruster/on_uninstall(obj/spacepod/detatching_spacepod)
 	. = ..()
-	detatching_spacepod.our_lights = null
 	detatching_spacepod.set_light_on(FALSE)
 
 /obj/item/spacepod_equipment/lights/military
@@ -389,13 +372,10 @@
 /obj/item/spacepod_equipment/lock/on_install(obj/spacepod/attaching_spacepod)
 	..()
 	RegisterSignal(attaching_spacepod, COMSIG_PARENT_ATTACKBY, .proc/spacepod_attackby)
-	attaching_spacepod.lock = src
 
 /obj/item/spacepod_equipment/lock/on_uninstall(obj/spacepod/detatching_spacepod)
 	. = ..()
 	UnregisterSignal(detatching_spacepod, COMSIG_PARENT_ATTACKBY)
-	if(detatching_spacepod.lock == src)
-		detatching_spacepod.lock = null
 	detatching_spacepod.locked = FALSE
 
 
@@ -470,16 +450,8 @@
 	name = "pod lock buster"
 	desc = "Destroys a podlock in mere seconds once applied. Waranty void if used."
 	icon = 'modular_skyrat/modules/spacepods/icons/parts.dmi'
-	icon_state = "lock_buster_off"
-	var/on = FALSE
+	icon_state = "lock_buster_on"
 
-/obj/item/device/lock_buster/attack_self(mob/user)
-	on = !on
-	if(on)
-		icon_state = "lock_buster_on"
-	else
-		icon_state = "lock_buster_off"
-	to_chat(user, span_notice("You turn the [src] [on ? "on" : "off"]."))
 
 
 

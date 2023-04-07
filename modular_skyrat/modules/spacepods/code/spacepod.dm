@@ -42,8 +42,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		SPACEPOD_SLOT_LIGHT = 1,
 		SPACEPOD_SLOT_THRUSTER = 1,
 		)
-	/// The lock on the ship
-	var/obj/item/spacepod_equipment/lock/lock
 	/// The weapon on the ship, thing that goes pew pew
 	var/obj/item/spacepod_equipment/weaponry/selected_weapon
 	/// Is the weapon able to be fired?
@@ -62,8 +60,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/obj/item/pod_parts/armor/pod_armor = null
 	/// The cell that powers the ship.
 	var/obj/item/stock_parts/cell/cell = null
-	/// Do we got them headlights my man? They on? y--- OH SHIT A DEER
-	var/obj/item/spacepod_equipment/lights/our_lights
 	/// Are the lights on or off?
 	var/light_toggle = FALSE
 	/// The air inside the cabin, no AC included.
@@ -150,6 +146,10 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	/// Our follow trail
 	var/datum/effect_system/trail_follow/ion/grav_allowed/trail
 
+	var/list/weapon_slots = list(
+		SPACEPOD_WEAPON_SLOT_LEFT = list(-16, 0),
+		SPACEPOD_WEAPON_SLOT_RIGHT = list(16, 0),
+	)
 
 /obj/spacepod/Initialize()
 	. = ..()
@@ -163,6 +163,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	thrust_sound = new(src)
 	trail = new(src)
 	trail.set_up(src)
+	trail.start()
 
 /obj/spacepod/Destroy()
 	GLOB.spacepods_list -= src
@@ -178,7 +179,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	QDEL_NULL(internal_tank)
 	QDEL_NULL(cell)
 	QDEL_NULL(pod_armor)
-	QDEL_NULL(lock)
 	QDEL_NULL(selected_weapon)
 	QDEL_NULL(alarm_sound)
 	QDEL_NULL(thrust_sound)
@@ -225,27 +225,10 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			if(!hatch_open)
 				to_chat(user, span_warning("The maintenance hatch is closed!"))
 				return TRUE
-			var/obj/item/spacepod_equipment/new_equipment = attacking_item
-			if(new_equipment.can_install(src, user) && user.temporarilyRemoveItemFromInventory(new_equipment))
-				new_equipment.forceMove(src)
-				new_equipment.on_install(src)
+			attach_equipment(attacking_item, user)
 			return TRUE
-		if(lock && istype(attacking_item, /obj/item/device/lock_buster))
-			var/obj/item/device/lock_buster/lock_buster = attacking_item
-			if(lock_buster.on)
-				user.visible_message(user, span_warning("[user] is drilling through [src]'s lock!") ,
-					span_notice("You start drilling through [src]'s lock!"))
-				if(do_after(user, 100 * attacking_item.toolspeed, target = src))
-					if(lock)
-						lock.on_uninstall()
-						QDEL_NULL(lock)
-						user.visible_message(user, span_warning("[user] has destroyed [src]'s lock!") ,
-							span_notice("You destroy [src]'s lock!"))
-				else
-					user.visible_message(user, span_warning("[user] fails to break through [src]'s lock!") ,
-					span_notice("You were unable to break through [src]'s lock!"))
-				return TRUE
-			to_chat(user, span_notice("Turn the [lock_buster] on first."))
+		if(istype(attacking_item, /obj/item/device/lock_buster))
+			try_to_break_lock(attacking_item, user)
 			return TRUE
 		if(attacking_item.tool_behaviour == TOOL_WELDER)
 			var/obj_integrity = get_integrity()
@@ -268,6 +251,73 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 					update_icon()
 			return TRUE
 	return ..()
+
+/**
+ * Basic proc to attach a piece of equipment to the shuttle.
+ */
+/obj/spacepod/proc/attach_equipment(obj/item/spacepod_equipment/equipment_to_attach, mob/user)
+	if(!(equipment_to_attach.slot in equipment_slot_limits)) // Slot not present on ship
+		to_chat(user, span_warning("[equipment_to_attach] is not compatable with [src]!"))
+		return FALSE
+
+	if(LAZYLEN(equipment[equipment_to_attach.slot] >= equipment_slot_limits[equipment_to_attach.slot])) // Equipment slot full
+		to_chat(user, span_warning("[src] cannot fit [equipment_to_attach], slot full!"))
+		return FALSE
+
+
+	if(!equipment_to_attach.can_install(src, user)) // Slot checks
+		return FALSE
+
+	if(user && !user.temporarilyRemoveItemFromInventory(equipment_to_attach))
+		return FALSE
+
+	if(!islist(equipment[equipment_to_attach.slot]))
+		equipment[equipment_to_attach.slot] = list()
+
+	equipment[equipment_to_attach.slot] += equipment_to_attach
+	equipment_to_attach.forceMove(src)
+	equipment_to_attach.on_install(src)
+
+	return TRUE
+
+/**
+ * Basic proc to detatch a piece of equipment from the shuttle.
+ *
+ * Also performs checks to see if its equipment or not.
+ */
+/obj/spacepod/proc/detach_equipment(obj/equipment_to_detach, mob/user)
+	if(isspacepodequipment(equipment_to_detach)) // If it is equipment, handle it
+		var/obj/item/spacepod_equipment/spacepod_equipment = equipment_to_detach
+		if(!spacepod_equipment.can_uninstall(src, user))
+			return FALSE
+
+		equipment[spacepod_equipment.slot] -= spacepod_equipment
+
+
+
+	equipment_to_detach.forceMove(get_turf(src))
+
+	if(user && isitem(equipment_to_detach))
+		user.put_in_hands(equipment_to_detach)
+
+	return TRUE
+
+/obj/spacepod/proc/try_to_break_lock(mob/user)
+	if(!LAZYLEN(equipment[SPACEPOD_SLOT_LOCK]))
+		to_chat(user, span_warning("[src] does not have a lock!"))
+		return FALSE
+
+	var/obj/item/spacepod_equipment/lock/spacepod_lock = equipment[SPACEPOD_SLOT_LOCK][1]
+
+	user.visible_message(user, span_warning("[user] is drilling through [src]'s lock!"), span_notice("You start drilling through [src]'s lock!"))
+
+	if(do_after(user, 10 SECONDS, src))
+		detach_equipment(spacepod_lock)
+		qdel(spacepod_lock)
+		user.visible_message(user, span_warning("[user] has destroyed [src]'s lock!"), span_notice("You destroy [src]'s lock!"))
+	else
+		user.visible_message(user, span_warning("[user] fails to break through [src]'s lock!"), span_notice("You were unable to break through [src]'s lock!"))
+
 
 /obj/spacepod/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
@@ -293,16 +343,29 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 /obj/spacepod/attack_hand(mob/user)
 	if(!hatch_open)
 		return ..()
-	var/list/items = list(cell, internal_tank)
-	items += equipment
-	var/list/item_map = list()
-	var/list/used_key_list = list()
-	for(var/obj/iterating_item in items)
-		item_map[avoid_assoc_duplicate_keys(iterating_item.name, used_key_list)] = iterating_item
-	var/selection = input(user, "Remove which equipment?", null, null) as null|anything in item_map
-	var/obj/equipment_to_remove = item_map[selection]
+	show_detachable_equipment(user)
 
-	uninstall_equipment(equipment_to_remove, user)
+/**
+ * Show detachable equipment
+ *
+ * shows a basic list of things that can be detached, then detaches whatever the user wants to detach.
+ */
+/obj/spacepod/proc/show_detachable_equipment(mob/user)
+	var/list/detachable_equipment = list()
+
+	for(var/slot in equipment)
+		for(var/obj/thing in equipment[slot])
+			detachable_equipment += thing
+
+	if(!LAZYLEN(detachable_equipment))
+		return
+
+	var/obj/thing_to_remove = tgui_input_list(user, "Please select an item to remove:", "Equipment Removal", detachable_equipment)
+
+	if(!thing_to_remove) // User cancelled out
+		return
+
+	detach_equipment(thing_to_remove, user)
 
 /obj/spacepod/take_damage(damage_amount, damage_type = BRUTE, damage_flag = "", sound_effect = TRUE, attack_dir, armour_penetration = 0)
 	..()
@@ -352,15 +415,20 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			our_turf.assume_air(gas_mixture)
 	cell = null
 	internal_tank = null
+	// Remove everything inside us.
 	for(var/atom/movable/iterating_movable_atom in contents)
 		if(iterating_movable_atom in equipment)
-			var/obj/item/spacepod_equipment/spacepod_equipment = iterating_movable_atom
-			if(istype(spacepod_equipment))
-				spacepod_equipment.on_uninstall(src)
+			var/obj/item/spacepod_equipment/spacepod_equipment = check_equipment(iterating_movable_atom)
+			if(spacepod_equipment)
+				detach_equipment(spacepod_equipment)
+				continue
+
 		if(ismob(iterating_movable_atom))
 			forceMove(iterating_movable_atom, loc)
 			remove_rider(iterating_movable_atom)
-		else if(prob(60))
+			continue
+
+		if(prob(60))
 			iterating_movable_atom.forceMove(loc)
 		else if(isitem(iterating_movable_atom) || !isobj(iterating_movable_atom))
 			qdel(iterating_movable_atom)
@@ -368,6 +436,18 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			var/obj/object = iterating_movable_atom
 			object.forceMove(loc)
 			object.deconstruct()
+
+/**
+ * Checks if an item is part of our equipment.
+ *
+ * Returns FALSE if no or the item if yes.
+ */
+/obj/spacepod/proc/check_equipment(obj/item_to_check)
+	for(var/slot in equipment)
+		for(var/obj/item/spacepod_equipment/iterating_equipment in equipment[slot])
+			if(item_to_check == iterating_equipment)
+				return iterating_equipment
+	return FALSE
 
 /obj/spacepod/deconstruct(disassembled = FALSE)
 	if(!get_turf(src))
@@ -536,30 +616,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		return
 	brakes = !brakes
 	to_chat(usr, span_notice("You toggle the brakes [brakes ? "on" : "off"]."))
-
-/obj/spacepod/proc/uninstall_equipment(obj/equipment_to_remove, mob/user)
-	if(!equipment_to_remove)
-		return
-	if(!istype(equipment_to_remove))
-		return
-	if(!(equipment_to_remove in contents))
-		return
-
-	// alrightey now to figure out what it is
-	if(equipment_to_remove == cell)
-		cell = null
-	else if(equipment_to_remove == internal_tank)
-		internal_tank = null
-	else if(equipment_to_remove in equipment)
-		var/obj/item/spacepod_equipment/spacepod_equipment = equipment_to_remove
-		if(!spacepod_equipment.can_uninstall(user))
-			return
-		spacepod_equipment.on_uninstall(src)
-	else
-		return
-	equipment_to_remove.forceMove(loc)
-	if(isitem(equipment_to_remove))
-		user.put_in_hands(equipment_to_remove)
 
 /**
  * Slowprocess
@@ -989,7 +1045,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			cargo.unload_cargo()
 		if("remove_equipment")
 			var/obj/item/spacepod_equipment/equipment_to_remove = locate(params["equipment_ref"]) in src
-			uninstall_equipment(equipment_to_remove, usr)
+			detach_equipment(equipment_to_remove, usr)
 		if("mute_alarm")
 			mute_alarm(usr)
 
@@ -1011,25 +1067,25 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		to_chat(user, span_notice("You climb out of [src]."))
 
 /obj/spacepod/proc/toggle_lights(mob/user)
-	if(!our_lights)
+	if(!LAZYLEN(equipment[SPACEPOD_SLOT_LIGHT]))
 		to_chat(user, span_warning("No lights installed!"))
 		return
-	light_color = our_lights.color_to_set
+
+	var/obj/item/spacepod_equipment/lights/light_equipment = equipment[SPACEPOD_SLOT_LIGHT][1]
+	light_color = light_equipment.color_to_set
 	light_toggle = !light_toggle
 	if(light_toggle)
 		set_light_on(TRUE)
 	else
 		set_light_on(FALSE)
 	to_chat(user, "Lights toggled [light_toggle ? "on" : "off"].")
-	for(var/mob/mob in passengers)
-		to_chat(mob, "Lights toggled [light_toggle ? "on" : "off"].")
 
 /obj/spacepod/proc/toggle_brakes(mob/user)
 	brakes = !brakes
 	to_chat(user, span_notice("You toggle the brakes [brakes ? "on" : "off"]."))
 
 /obj/spacepod/proc/toggle_locked(mob/user)
-	if(!lock)
+	if(!LAZYLEN(equipment[SPACEPOD_SLOT_LOCK]))
 		to_chat(user, span_warning("[src] has no locking mechanism."))
 		locked = FALSE //Should never be false without a lock, but if it somehow happens, that will force an unlock.
 	else
