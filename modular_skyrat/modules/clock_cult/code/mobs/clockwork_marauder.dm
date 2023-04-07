@@ -31,6 +31,7 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 	faction = list(FACTION_CLOCK)
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	ai_controller = /datum/ai_controller/basic_controller/clockwork_marauder
+	initial_language_holder = /datum/language_holder/clockmob
 
 	/// Items to be dropped on death
 	var/static/list/loot = list(
