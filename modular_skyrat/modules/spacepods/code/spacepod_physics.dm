@@ -220,7 +220,7 @@
 		mob_client.pixel_y = last_offset_y * 32
 		animate(mob_client, pixel_x = offset_x * 32, pixel_y = offset_y * 32, time = time * 10, flags = ANIMATION_END_NOW)
 	user_thrust_dir = 0
-	update_icon()
+	update_overlays()
 
 /obj/spacepod/Bumped(atom/movable/bumped_atom)
 	if(bumped_atom.dir & NORTH)

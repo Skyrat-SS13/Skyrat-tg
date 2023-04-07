@@ -180,7 +180,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		QDEL_NULL(warp)
 	QDEL_LIST(passengers)
 	QDEL_LIST(occupants)
-	QDEL_LIST_ASSOC(equipment)
+	QDEL_LIST_ASSOC_VAL(equipment)
 	QDEL_NULL(cabin_air)
 	QDEL_NULL(internal_tank)
 	QDEL_NULL(cell)
@@ -248,12 +248,12 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			if(attacking_item.use_tool(src, user, 50, amount = 3, volume = 50))
 				if(repairing)
 					update_integrity(min(max_integrity, obj_integrity + 10))
-					update_icon()
+					update_overlays()
 					to_chat(user, span_notice("You mend some [pick("dents","bumps","damage")] with [attacking_item]"))
 				else if(!cell && !internal_tank && !equipment.len && !pilot && !passengers.len && construction_state == SPACEPOD_ARMOR_WELDED)
 					user.visible_message("[user] slices off [src]'s armor.", span_notice("You slice off [src]'s armor."))
 					construction_state = SPACEPOD_ARMOR_SECURED
-					update_icon()
+					update_overlays()
 			return TRUE
 	return ..()
 
@@ -284,8 +284,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	show_detachable_equipment(user)
 
 /obj/spacepod/take_damage(damage_amount, damage_type = BRUTE, damage_flag = "", sound_effect = TRUE, attack_dir, armour_penetration = 0)
-	..()
-	update_icon()
+	. = ..()
+	update_overlays()
 
 /obj/spacepod/return_air()
 	return cabin_air
@@ -398,48 +398,38 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 /obj/spacepod/update_overlays()
 	. = ..()
-	// Weapon overlays
-	if(LAZYLEN(equipment[SPACEPOD_SLOT_WEAPON]))
-		for(var/obj/item/spacepod_equipment/weaponry/iterating_weaponry in equipment[SPACEPOD_SLOT_WEAPON])
-			var/mutable_appearance/weapon_overlay = mutable_appearance(iterating_weaponry.overlay_icon, iterating_weaponry.overlay_icon_state) // Default state should fill in the left gunpod.
-			if(equipment[SPACEPOD_SLOT_WEAPON][iterating_weaponry])
-				var/offset_x = weapon_slots[equipment[SPACEPOD_SLOT_WEAPON][iterating_weaponry]][1]
-				if(offset_x) // Positive value means it's supposed to be overlayed on the right side of the pod, thus, flip le image so it fits.
-					var/matrix/flip_matrix = matrix(-1, 0, 0, 0, 1, 0)
-					weapon_overlay.transform = flip_matrix
-
-			. += weapon_overlay
-
-/obj/spacepod/update_icon()
-	. = ..()
-	cut_overlays()
+	// Initial check, make sure it's not in construction
 	if(construction_state != SPACEPOD_ARMOR_WELDED)
-		icon = 'modular_skyrat/modules/spacepods/icons/construction2x2.dmi'
-		icon_state = "pod_[construction_state]"
 		if(pod_armor && construction_state >= SPACEPOD_ARMOR_LOOSE)
 			var/mutable_appearance/masked_armor = mutable_appearance(icon = 'modular_skyrat/modules/spacepods/icons/construction2x2.dmi', icon_state = "armor_mask")
 			var/mutable_appearance/armor = mutable_appearance(pod_armor.pod_icon, pod_armor.pod_icon_state)
 			armor.blend_mode = BLEND_MULTIPLY
 			masked_armor.overlays = list(armor)
 			masked_armor.appearance_flags = KEEP_TOGETHER
-			add_overlay(masked_armor)
-		return
+			. += masked_armor
+		return .
 
+	// Weapon overlays
+	if(LAZYLEN(equipment[SPACEPOD_SLOT_WEAPON]))
+		for(var/obj/item/spacepod_equipment/weaponry/iterating_weaponry in equipment[SPACEPOD_SLOT_WEAPON])
+			var/mutable_appearance/weapon_overlay = mutable_appearance(iterating_weaponry.overlay_icon, iterating_weaponry.overlay_icon_state) // Default state should fill in the left gunpod.
+			if(equipment[SPACEPOD_SLOT_WEAPON][iterating_weaponry])
+				var/offset_x = weapon_slots[equipment[SPACEPOD_SLOT_WEAPON][iterating_weaponry]][1]
+				if(offset_x > 0) // Positive value means it's supposed to be overlayed on the right side of the pod, thus, flip le image so it fits.
+					var/matrix/flip_matrix = matrix(-1, 0, 0, 0, 1, 0)
+					weapon_overlay.transform = flip_matrix
+
+			. += weapon_overlay
+
+	// Damage overlays
 	var/obj_integrity = get_integrity()
-
 	if(obj_integrity <= max_integrity / 2)
-		add_overlay(image(icon = initial(icon), icon_state = "pod_damage"))
+		. += "pod_damage"
 		if(obj_integrity <= max_integrity / 4)
-			add_overlay(image(icon = initial(icon), icon_state = "pod_fire"))
+			. += "pod_fire"
 
-	if(pod_armor)
-		icon = pod_armor.pod_icon
-		icon_state = pod_armor.pod_icon_state
-	else
-		icon = initial(icon)
-		icon_state = initial(icon_state)
+	// Thrust overlays
 
-	// Thrust!
 	var/list/left_thrusts = list()
 	left_thrusts.len = 8
 	var/list/right_thrusts = list()
@@ -468,20 +458,34 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		var/left_thrust = left_thrusts[cardinal_direction]
 		var/right_thrust = right_thrusts[cardinal_direction]
 		if(left_thrust)
-			add_overlay(image(icon = overlay_file, icon_state = "rcs_left", dir = cardinal_direction))
+			var/image/left_thrust_overlay = image(icon = overlay_file, icon_state = "rcs_left", dir = cardinal_direction)
+			. += left_thrust_overlay
 		if(right_thrust)
-			add_overlay(image(icon = overlay_file, icon_state = "rcs_right", dir = cardinal_direction))
+			var/image/right_thrust_overlay = image(icon = overlay_file, icon_state = "rcs_left", dir = cardinal_direction)
+			. += right_thrust_overlay
 	if(back_thrust)
 		var/image/new_image = image(icon = overlay_file, icon_state = "thrust")
 		new_image.transform = matrix(1, 0, 0, 0, 1, -32)
-		add_overlay(new_image)
+		. += new_image
 		thrust_sound.start() // TODO: Refactor this into
 	else
 		thrust_sound.stop()
 	if(front_thrust)
-		add_overlay(image(icon = overlay_file, icon_state = "front_thrust"))
+		. += "front_thrust"
 
+/obj/spacepod/update_icon()
+	. = ..()
+	if(construction_state != SPACEPOD_ARMOR_WELDED)
+		icon = 'modular_skyrat/modules/spacepods/icons/construction2x2.dmi'
+		icon_state = "pod_[construction_state]"
+		return
 
+	if(pod_armor)
+		icon = pod_armor.pod_icon
+		icon_state = pod_armor.pod_icon_state
+	else
+		icon = initial(icon)
+		icon_state = initial(icon_state)
 
 /obj/spacepod/relaymove(mob/user, direction)
 	if(user != pilot || pilot.incapacitated())
@@ -781,7 +785,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	max_integrity = armor.pod_integrity
 	update_integrity(max_integrity - integrity_failure + get_integrity())
 	pod_armor = armor
-	update_icon()
+	update_appearance()
 
 /**
  * Remove Armor
@@ -794,7 +798,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		max_integrity = integrity_failure
 		desc = initial(desc)
 		pod_armor = null
-		update_icon()
+		update_appearance()
 
 // WEAPON PROCS
 
@@ -822,7 +826,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
  * Async fires weapons.
  */
 /obj/spacepod/proc/async_fire_weapons_at(obj/item/spacepod_equipment/weaponry/weapon_to_fire, atom/target)
-	weapon_to_fire.fire_weapon(target)
+	var/x_offset = weapon_slots[active_weapon_slot][1]
+	var/y_offset = weapon_slots[active_weapon_slot][2]
+	weapon_to_fire.fire_weapon(target, x_offset, y_offset)
 
 /**
  * set active weaponslot
@@ -1139,5 +1145,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
  */
 /obj/spacepod/proc/mute_alarm(mob/user)
 	alarm_muted = !alarm_muted
+	play_alarm(FALSE)
 	to_chat(user, span_notice("System alarm [alarm_muted ? "muted" : "enabled"]."))
 

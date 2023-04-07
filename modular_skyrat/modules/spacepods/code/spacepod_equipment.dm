@@ -164,6 +164,8 @@
 	var/burst_fire_delay = 0.2 SECONDS
 	/// The sound we make when firing.
 	var/fire_sound
+	/// How loud is the fire sound.
+	var/fire_volume = 50
 	/// The delay between firing.
 	var/fire_delay = 1.5 SECONDS
 	overlay_icon_state = "pod_weapon_laser"
@@ -173,7 +175,7 @@
 	attaching_spacepod.update_icon()
 
 
-/obj/item/spacepod_equipment/weaponry/proc/fire_weapon(target)
+/obj/item/spacepod_equipment/weaponry/proc/fire_weapon(target, x_offset, y_offset)
 	if(spacepod.next_firetime > world.time)
 		to_chat(usr, span_warning("Your weapons are recharging."))
 		playsound(src, 'sound/weapons/gun/general/dry_fire.ogg', 30, TRUE)
@@ -184,15 +186,15 @@
 		return
 	spacepod.next_firetime = world.time + fire_delay
 	for(var/I in 1 to burst_fire)
-		addtimer(CALLBACK(src, PROC_REF(actually_fire_weapons), target), burst_fire_delay * I)
+		addtimer(CALLBACK(src, PROC_REF(actually_fire_weapons), target, x_offset, y_offset), burst_fire_delay * I)
 
 /**
  * actually fire weapons
  *
  * This exists so that we can use timers instead of sleep() (cringe)
  */
-/obj/item/spacepod_equipment/weaponry/proc/actually_fire_weapons(target)
-	spacepod.fire_projectile(projectile_type, target)
+/obj/item/spacepod_equipment/weaponry/proc/actually_fire_weapons(target, x_offset, y_offset)
+	spacepod.fire_projectile(projectile_type, target, x_offset, y_offset)
 	playsound(src, fire_sound, 50, TRUE)
 
 /obj/item/spacepod_equipment/weaponry/disabler
