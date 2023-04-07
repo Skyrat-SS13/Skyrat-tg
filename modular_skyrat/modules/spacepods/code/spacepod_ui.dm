@@ -153,5 +153,5 @@
 		if("mute_alarm")
 			mute_alarm(usr)
 		if("switch_weapon_slot")
-			set_active_weapon_slot(params["selected_slot"])
-			to_chat(usr, span_notice("Weapon slot switched to: <b>[params["selected_slot"]]</b>"))
+			set_active_weapon_slot(params["selected_slot"], usr)
+

@@ -219,4 +219,13 @@
 	if(!owner || !spacepod_target || !(owner in spacepod_target.occupants) || owner.incapacitated())
 		return
 
+	var/current_index
+	for(var/i = 1, i <= LAZYLEN(spacepod_target.weapon_slots), i++)
+		if(spacepod_target.weapon_slots[i] == spacepod_target.active_weapon_slot)
+			current_index = i
+			break
+
+	current_index = (current_index % LAZYLEN(spacepod_target.weapon_slots)) + 1
+
+	spacepod_target.set_active_weapon_slot(spacepod_target.weapon_slots[current_index])
 

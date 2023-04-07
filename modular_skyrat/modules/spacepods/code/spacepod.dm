@@ -806,6 +806,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	if(istype(_target, /atom/movable/screen))
 		return
 	if(weapon_safety)
+		to_chat(source, span_warning("Safety is on!"))
 		return
 	if(pilot != source.mob)
 		return
@@ -826,8 +827,11 @@ GLOBAL_LIST_INIT(spacepods_list, list())
  *
  * Sets the pods active weapon slot.
  */
-/obj/spacepod/proc/set_active_weapon_slot(new_slot)
+/obj/spacepod/proc/set_active_weapon_slot(new_slot, mob/user)
 	active_weapon_slot = new_slot
+	if(user)
+		var/obj/item/spacepod_equipment/weaponry/selected_weapon = get_weapon_in_slot(new_slot)
+		to_chat(user, span_notice("Weapon slot switched to: <b>[new_slot] ([selected_weapon ? selected_weapon : "Empty"])</b>"))
 
 /**
  * get free weapon slots
@@ -994,7 +998,10 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	items += "Spacepod Charge: [cell ? "[round(cell.charge,0.1)]/[cell.maxcharge] KJ" : "NONE"]"
 	items += "Spacepod Integrity: [round(get_integrity(), 0.1)]/[max_integrity]"
 	items += "Spacepod Velocity: [round(sqrt(velocity_x * velocity_x + velocity_y * velocity_y), 0.1)] m/s"
+	var/obj/item/spacepod_equipment/weaponry/selected_weapon = get_weapon_in_slot(active_weapon_slot)
+	items += "Spacepod Weapon: [active_weapon_slot] ([selected_weapon ? selected_weapon.name : "Empty"])"
 	items += ""
+
 
 // TELEPORTATION
 

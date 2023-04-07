@@ -324,7 +324,6 @@
 	// Set the projectile's properties
 	projectile_instance.starting = iterating_turf
 	projectile_instance.firer = src
-	projectile_instance.ignore_source_check = TRUE
 	projectile_instance.def_zone = "chest"
 	projectile_instance.original = target
 	projectile_instance.pixel_x = round(current_x)

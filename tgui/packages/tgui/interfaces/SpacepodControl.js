@@ -8,22 +8,26 @@ export const SpacepodControl = (props, context) => {
   const { act, data } = useBackend(context);
   const { pod_name } = data;
   return (
-    <Window title={'Pod Control: ' + pod_name} width={500} height={700}>
+    <Window title={'Pod Control: ' + pod_name} width={500} height={900}>
       <Window.Content scrollable>
         <Tabs>
           <Tabs.Tab selected={tab === 1} onClick={() => setTab(1)}>
             Pod Summary
           </Tabs.Tab>
           <Tabs.Tab selected={tab === 2} onClick={() => setTab(2)}>
-            Pod Equipment
+            Weapons
           </Tabs.Tab>
           <Tabs.Tab selected={tab === 3} onClick={() => setTab(3)}>
+            Pod Equipment
+          </Tabs.Tab>
+          <Tabs.Tab selected={tab === 4} onClick={() => setTab(4)}>
             Cargo Hold
           </Tabs.Tab>
         </Tabs>
         {tab === 1 && <SummaryTab />}
-        {tab === 2 && <EquipmentTab />}
-        {tab === 3 && <CargoTab />}
+        {tab === 2 && <WeaponTab />}
+        {tab === 3 && <EquipmentTab />}
+        {tab === 4 && <CargoTab />}
       </Window.Content>
     </Window>
   );
@@ -41,10 +45,6 @@ export const SummaryTab = (props, context) => {
     alarm_muted,
     brakes,
     has_cell,
-    has_weapons,
-    weapon_lock,
-    weapons = [],
-    selected_weapon_slot,
     velocity,
     integrity,
     max_integrity,
@@ -110,7 +110,7 @@ export const SummaryTab = (props, context) => {
             </LabeledList.Item>
             <LabeledList.Item label="Alarm">
               <Button
-                icon={'volume'}
+                icon={alarm_muted ? 'volume-xmark' : 'volume-high'}
                 content={alarm_muted ? 'Muted' : 'Enabled'}
                 color={alarm_muted ? 'bad' : 'good'}
                 onClick={() => act('mute_alarm')}
@@ -159,49 +159,6 @@ export const SummaryTab = (props, context) => {
         </Section>
       </Stack.Item>
       <Stack.Item>
-        <Section title="Weapons Control">
-          <Button
-            icon={'fighter-jet'}
-            content={weapon_lock ? 'Safe' : 'Ready to fire'}
-            color={weapon_lock ? 'good' : 'bad'}
-            onClick={() => act('toggle_weapon_lock')}
-          />
-          {has_weapons ? (
-            weapons.map((weapon, index) => (
-              <LabeledList
-                key={index}
-                buttons={
-                  <Button
-                    icon="eject"
-                    content={
-                      selected_weapon_slot === weapon.slot
-                        ? 'Selected'
-                        : 'Select'
-                    }
-                    disabled={selected_weapon_slot === weapon.slot}
-                    color={
-                      selected_weapon_slot === weapon.slot ? 'green' : 'blue'
-                    }
-                    onClick={() =>
-                      act('switch_weapon_slot', {
-                        selected_slot: weapon.slot,
-                      })
-                    }
-                  />
-                }>
-                <LabeledList.Item label="Name">{weapon.name}</LabeledList.Item>
-                <LabeledList.Item label="Description">
-                  {weapon.desc}
-                </LabeledList.Item>
-                <LabeledList.Item label="Slot">{weapon.slot}</LabeledList.Item>
-              </LabeledList>
-            ))
-          ) : (
-            <NoticeBox color="blue">No weapons!</NoticeBox>
-          )}
-        </Section>
-      </Stack.Item>
-      <Stack.Item>
         <Section title="Occupants">
           {has_occupants ? (
             occupants.map((occpuant, index) => (
@@ -215,6 +172,59 @@ export const SummaryTab = (props, context) => {
         </Section>
       </Stack.Item>
     </Stack>
+  );
+};
+
+export const WeaponTab = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { has_weapons, weapon_lock, weapons = [], selected_weapon_slot } = data;
+  return (
+    <Section
+      title="Weapons Control"
+      buttons={
+        <Button
+          icon={'fighter-jet'}
+          content={weapon_lock ? 'Safe' : 'Ready to fire'}
+          color={weapon_lock ? 'good' : 'bad'}
+          onClick={() => act('toggle_weapon_lock')}
+        />
+      }>
+      {has_weapons ? (
+        weapons.map((weapon, index) => (
+          <Section
+            key={index}
+            title={weapon.type}
+            buttons={
+              <Button
+                icon={
+                  selected_weapon_slot === weapon.slot
+                    ? 'square-check'
+                    : 'square'
+                }
+                content={
+                  selected_weapon_slot === weapon.slot ? 'Selected' : 'Select'
+                }
+                disabled={selected_weapon_slot === weapon.slot}
+                color={selected_weapon_slot === weapon.slot ? 'green' : 'blue'}
+                onClick={() =>
+                  act('switch_weapon_slot', {
+                    selected_slot: weapon.slot,
+                  })
+                }
+              />
+            }>
+            <LabeledList>
+              <LabeledList.Item label="Description">
+                {weapon.desc}
+              </LabeledList.Item>
+              <LabeledList.Item label="Slot">{weapon.slot}</LabeledList.Item>
+            </LabeledList>
+          </Section>
+        ))
+      ) : (
+        <NoticeBox color="blue">No equipment installed!</NoticeBox>
+      )}
+    </Section>
   );
 };
 
