@@ -398,6 +398,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 /obj/spacepod/update_overlays()
 	. = ..()
+	cut_overlays()
 	// Initial check, make sure it's not in construction
 	if(construction_state != SPACEPOD_ARMOR_WELDED)
 		if(pod_armor && construction_state >= SPACEPOD_ARMOR_LOOSE)
@@ -459,14 +460,14 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		var/right_thrust = right_thrusts[cardinal_direction]
 		if(left_thrust)
 			var/image/left_thrust_overlay = image(icon = overlay_file, icon_state = "rcs_left", dir = cardinal_direction)
-			. += left_thrust_overlay
+			add_overlay(left_thrust_overlay)
 		if(right_thrust)
-			var/image/right_thrust_overlay = image(icon = overlay_file, icon_state = "rcs_left", dir = cardinal_direction)
-			. += right_thrust_overlay
+			var/image/right_thrust_overlay = image(icon = overlay_file, icon_state = "rcs_right", dir = cardinal_direction)
+			add_overlay(right_thrust_overlay)
 	if(back_thrust)
 		var/image/new_image = image(icon = overlay_file, icon_state = "thrust")
 		new_image.transform = matrix(1, 0, 0, 0, 1, -32)
-		. += new_image
+		add_overlay(new_image)
 		thrust_sound.start() // TODO: Refactor this into
 	else
 		thrust_sound.stop()
