@@ -190,8 +190,6 @@
 	default_unfasten_wrench(user, tool, time = 2 SECONDS)
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
-<<<<<<< HEAD
-=======
 /obj/machinery/oven/range
 	name = "range"
 	desc = "And Oven AND a Stove? I guess that's why it's got range!"
@@ -208,7 +206,6 @@
 		mapload_container = new(loc)
 
 	AddComponent(/datum/component/stove, container_x = -6, container_y = 14, spawn_container = mapload_container)
->>>>>>> 6085e3b5eed (Reagent soup / Soup rework / Stoves - A kitchen expansion (#74205))
 
 /obj/item/plate/oven_tray
 	name = "oven tray"
