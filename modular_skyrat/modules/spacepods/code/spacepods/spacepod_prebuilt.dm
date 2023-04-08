@@ -35,6 +35,14 @@
 		/obj/item/spacepod_equipment/lights/security,
 		)
 
+/obj/spacepod/prebuilt/sec/without_weapon
+	equipment_types = list(
+		/obj/item/spacepod_equipment/lock/keyed/sec,
+		/obj/item/spacepod_equipment/tracker,
+		/obj/item/spacepod_equipment/cargo/chair,
+		/obj/item/spacepod_equipment/lights/security,
+		)
+
 // adminbus spacepod for jousting events
 /obj/spacepod/prebuilt/jousting
 	name = "jousting space pod"
