@@ -636,8 +636,6 @@
 	icon_state = "ruins"
 	requires_power = FALSE
 	ambientsounds = list('sound/ambience/ambigen13.ogg','sound/ambience/ambigen14.ogg','sound/ambience/ambinice.ogg')
-<<<<<<< HEAD
-=======
 
 // the outlet
 /area/ruin/space/has_grav/the_outlet/storefront
@@ -655,4 +653,3 @@
 //SYN-C Brutus, derelict frigate
 /area/ruin/space/has_grav/infested_frigate
 	name = "SYN-C Brutus"
->>>>>>> 2c5efe0b979 (The SYN-C Brutus, a Derelict Syndicate Corvette (#74238))

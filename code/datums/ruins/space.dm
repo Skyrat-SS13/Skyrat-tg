@@ -443,8 +443,6 @@ suffix = "whiteshipruin_box.dmm"*/
 	suffix = "transit_booth.dmm"
 	name = "Transit Booth"
 	description = "Make sure to check out the duty-free store!"
-<<<<<<< HEAD
-=======
 
 /datum/map_template/ruin/space/the_outlet
 	id = "the_outlet"
@@ -457,4 +455,3 @@ suffix = "whiteshipruin_box.dmm"*/
 	suffix = "infested_frigate.dmm"
 	name = "SYN-C Brutus"
 	description = "This wasn't an outbreak, this was a repelled attack."
->>>>>>> 2c5efe0b979 (The SYN-C Brutus, a Derelict Syndicate Corvette (#74238))
