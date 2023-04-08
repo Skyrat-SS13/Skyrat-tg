@@ -73,6 +73,7 @@
 
 /obj/item/storage/box/gunset/ladon
 	name = "p-3 ladon supply box"
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/gun/ballistic/automatic/pistol/ladon/nomag
 	spawnwithmagazine = FALSE

@@ -47,5 +47,5 @@
 
 /obj/effect/landmark/start/spacepod_pilot
 	name = "Spacepod Pilot"
-	icon_state = "Security Officer"
+	icon_state = "Spacepod Pilot"
 	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
