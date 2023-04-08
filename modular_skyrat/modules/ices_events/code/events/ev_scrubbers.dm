@@ -41,6 +41,7 @@
 		/datum/reagent/consumable/tinlux,
 		/datum/reagent/consumable/yoghurt,
 		/datum/reagent/cryptobiolin,
+		/datum/reagent/eigenstate,
 		/datum/reagent/glitter/blue,
 		/datum/reagent/glitter/pink,
 		/datum/reagent/glitter/white,
