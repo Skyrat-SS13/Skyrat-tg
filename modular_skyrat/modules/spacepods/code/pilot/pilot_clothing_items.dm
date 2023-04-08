@@ -28,6 +28,7 @@
 	name = "tan gloves"
 	desc = "These gloves are fire-resistant."
 	icon_state = "black"
+	greyscale_colors = "#2f2e31"
 	cold_protection = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
 	heat_protection = HANDS
