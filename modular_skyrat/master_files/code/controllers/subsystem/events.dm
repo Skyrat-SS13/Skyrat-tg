@@ -7,11 +7,11 @@
 				message_admins("ICES: Event cancelled, pending autotransfer vote.")
 				reschedule()
 				return
-			if(world.time - SSticker.round_start_time > CONFIG_GET(number/shuttle_refuel_delay) && SSshuttle.canEvac() != TRUE)
-				log_game("ICES: Event cancelled, station is evacuating.")
-				message_admins("ICES: Event cancelled, station is evacuating.")
-				reschedule()
-				return
+		if(world.time - SSticker.round_start_time > CONFIG_GET(number/shuttle_refuel_delay) && SSshuttle.canEvac() != TRUE)
+			log_game("ICES: Event cancelled, station is evacuating.")
+			message_admins("ICES: Event cancelled, station is evacuating.")
+			reschedule()
+			return
 		spawnEvent()
 		reschedule()
 
