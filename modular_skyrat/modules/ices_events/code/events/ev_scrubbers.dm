@@ -58,11 +58,14 @@
 /datum/round_event/scrubber_overflow/ices/setup()
 	for(var/obj/machinery/atmospherics/components/unary/vent_scrubber/temp_vent in GLOB.machines)
 		var/turf/scrubber_turf = get_turf(temp_vent)
+		var/area/scrubber_area = get_area(temp_vent)
 		if(!scrubber_turf)
 			continue
 		if(!is_station_level(scrubber_turf.z))
 			continue
 		if(temp_vent.welded)
+			continue
+		if(is_type_in_list(scrubber_area, list(/area/station/engineering/supermatter/room, /area/station/engineering/supermatter,)))
 			continue
 		if(!prob(overflow_probability))
 			continue
