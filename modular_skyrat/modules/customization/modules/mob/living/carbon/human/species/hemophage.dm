@@ -56,7 +56,7 @@
 #define HEMOPHAGE_VOMIT_PURGE_RATIO 0.95
 
 /// The rate at which blood metabolizes in a Hemophage's stomach subtype.
-#define BLOOD_METABOLIZATION_RATE 0.1 * REAGENTS_METABOLISM
+#define BLOOD_METABOLIZATION_RATE (0.1 * REAGENTS_METABOLISM)
 
 /datum/species/hemophage
 	name = "Hemophage"
