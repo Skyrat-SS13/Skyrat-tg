@@ -277,5 +277,5 @@
 
 	spacepod_target.toggle_gyroscope(owner)
 
-	button_icon_state = "gyroscope_[spacepod_target.toggle_gyroscope ? "on" : "off"]"
+	button_icon_state = "gyroscope_[spacepod_target.gyroscope_enabled ? "on" : "off"]"
 	build_all_button_icons()
