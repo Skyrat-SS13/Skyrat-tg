@@ -36,8 +36,14 @@
 		/obj/item/clothing/mask/whistle = 5,
 		/obj/item/melee/baton/security/boomerang/loaded = 1
 	)
+	alt_titles = list(
+		"Pilot",
+		"Shuttle Pilot",
+		"Fighter Pilot",
+	)
 	rpg_title = "Pilot"
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
+
 
 /obj/effect/landmark/start/spacepod_pilot
 	name = "Spacepod Pilot"
