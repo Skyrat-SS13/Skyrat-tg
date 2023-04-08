@@ -14,7 +14,7 @@
 	overflow_probability = 70
 
 	/// Whitelist of reagents we want scrubbers to dispense
-	var/list/reagent_whitelist = list(/datum/reagent/blood,
+	var/static/list/reagent_whitelist = list(/datum/reagent/blood,
 		/datum/reagent/bluespace,
 		/datum/reagent/carbon,
 		/datum/reagent/carpet/neon/simple_cyan,
