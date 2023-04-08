@@ -17,6 +17,10 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	/// What soulcatcher datum is associated with this item?
 	var/datum/component/soulcatcher/linked_soulcatcher
 
+/obj/item/soulcatcher_item/attack_self(mob/user, modifiers)
+	. = ..()
+	linked_soulcatcher.ui_interact(user)
+
 /obj/item/soulcatcher_item/New(loc, ...)
 	. = ..()
 	linked_soulcatcher = AddComponent(/datum/component/soulcatcher)
@@ -66,7 +70,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	created_room.master_soulcatcher = WEAKREF(src)
 
 ///Recieves a message from a soulcatcher room.
-/datum/componnet/soulcatcher/proc/recieve_message(message_to_recieve)
+/datum/component/soulcatcher/proc/recieve_message(message_to_recieve)
 	if(!message_to_recieve)
 		return FALSE
 
@@ -146,8 +150,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	target_room.current_souls += target_soul
 
 	to_chat(target_soul, span_notice("you've been transfered to [target_room]!"))
-	to_chat(new_soul, span_warning(name))
-	to_chat(new_soul, span_notice(room_description))
+	to_chat(target_soul, span_warning(name))
+	to_chat(target_soul, span_notice(room_description))
 
 	return TRUE
 
@@ -196,8 +200,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	return ..()
 
 /mob/living/soulcatcher_soul
-	/// What is the true name of our soul? This is mostly here incase we have someone that has died in a round that we need to obfuscate the name for.
-	var/true_name
+	/// What does our soul look like?
+	var/soul_desc
 	/// Assuming we died inside of the round? What is our previous body?
 	var/datum/weakref/previous_body
 	/// What is the weakref of the soulcatcher room are we currently in?
