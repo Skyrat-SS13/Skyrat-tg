@@ -336,3 +336,37 @@
   - bugfix: access vending machines will spawn unlocked when off-station by default
   - bugfix: fixed an issue where the spawner menu would intermittently become blank
       during rounds
+2023-04-08:
+  Gyran:
+  - qol: made drifting contractors come with their baton holster module already set
+      up
+  LT3:
+  - bugfix: Tram doors open as expected while in motion
+  - soundadd: New tram door open/close sounds
+  - qol: Tram doors open faster when unpowered
+  Melbert:
+  - bugfix: Head revs can no longer convert with the AOE flash mode
+  SkyratBot:
+  - bugfix: The fountain ruin will now properly spawn on lavaland
+  - bugfix: Fix basketball and mafia minigame UI not removing inactive clients
+  - rscadd: Add two new basketball teams and stadiums - Ass Blast USA and Soviet Bears
+  - bugfix: Syndicate teleporter is no longer secretly nerfed due to internal code
+      mishaps. (-1 range)
+  - bugfix: Syndicate teleporter now gibs you where it should correctly; resulting
+      in it being much more dangerous to use
+  - bugfix: fixed missing Goliath tentacles icons
+  - bugfix: Fixed the drawings on normal sized paintings not appearing on the ground
+  - bugfix: fixes medkits (and wallets, candle boxes) being able to store normal sized
+      items
+  - bugfix: Anomaly releaser no longer creates a "Stable "
+  - bugfix: the atrocinator modsuit mod will now make you fall up again when activated.
+  - bugfix: Turfs made through stack crafting (so none currently) will have materials
+      applied if the var is set
+  larentoun:
+  - code_imp: Define for ERP organs list
+  - bugfix: Removes ERP organs in slime's alter form when config restricts
+  - bugfix: Fixes default value for erp_status when ERP is disabled via config
+  - bugfix: Removes lewd nifsoft if config is set to remove lewd
+  theOOZ:
+  - code_imp: Adds a flag to send_clock_message, so the real notify_ghosts proc can
+      be used instead
