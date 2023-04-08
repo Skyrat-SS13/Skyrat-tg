@@ -6,9 +6,9 @@
 #define METEOR_TICKS_BETWEEN_WAVES 3
 #define METEORS_PER_WAVE 5
 
-/datum/round_event_control/meteor_wave/custom
-	name = "Meteor Wave: Custom"
-	typepath = /datum/round_event/meteor_wave/custom
+/datum/round_event_control/meteor_wave/ices
+	name = "Meteor Wave: ICES"
+	typepath = /datum/round_event/meteor_wave/ices
 	weight = 16
 	min_players = 40
 	max_occurrences = 1
@@ -20,16 +20,16 @@
 /datum/round_event/meteor_wave
 	announce_when = 1
 
-/datum/round_event/meteor_wave/custom
+/datum/round_event/meteor_wave/ices
 	wave_name = null
 
-/datum/round_event/meteor_wave/custom/determine_wave_type()
+/datum/round_event/meteor_wave/ices/determine_wave_type()
 	var/filter_threshold = get_active_player_count(alive_check = FALSE, afk_check = TRUE, human_check = FALSE)
 	if(filter_threshold < 75)
 		wave_name = "normal"
 	if(check_holidays(HALLOWEEN))
 		wave_name = "spooky"
-		log_game("EVENT: Meteor Wave: Custom is spookier than usual!")
+		log_game("EVENT: Meteor Wave: ICES is spookier than usual!")
 		deadchat_broadcast("Something feels awfully spooky today!", message_type=DEADCHAT_ANNOUNCEMENT)
 	if(!wave_name)
 		wave_name = pick_weight(list(
@@ -46,7 +46,7 @@
 			stack_trace("Wave name of [wave_name] not recognised or disallowed by config.")
 			kill()
 
-	log_game("EVENT: Meteor Wave: Custom requested intensity is [wave_name]")
+	log_game("EVENT: Meteor Wave: ICES requested intensity is [wave_name]")
 
 /datum/round_event/meteor_wave/New()
 	. = ..()
