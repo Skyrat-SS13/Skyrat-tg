@@ -8,12 +8,12 @@
 /obj/machinery/light
 	icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting.dmi'
 	overlay_icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting_overlay.dmi'
-	brightness = 5.5
+	brightness = 6.5
 	bulb_colour = LIGHT_COLOR_FAINT_BLUE
 	bulb_power = 1.15
 	nightshift_light_color = null // Let the dynamic night shift color code handle this.
 	bulb_low_power_colour = LIGHT_COLOR_DARK_BLUE
-	bulb_low_power_brightness_mul = 0.45
+	bulb_low_power_brightness_mul = 0.4
 	bulb_low_power_pow_min = 0.4
 	bulb_major_emergency_brightness_mul = 1 // don't dim in an emergency, why is that a thing
 	var/maploaded = FALSE //So we don't have a lot of stress on startup.
