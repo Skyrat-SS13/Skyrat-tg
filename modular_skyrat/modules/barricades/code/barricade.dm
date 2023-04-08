@@ -6,7 +6,7 @@
 	density = TRUE
 	layer = BELOW_OBJ_LAYER
 	flags_1 = ON_BORDER_1
-	obj_flags = CAN_BE_HIT | NO_BUILD_ON_DIRECTION
+	obj_flags = CAN_BE_HIT | BLOCKS_CONSTRUCTION_DIR
 	max_integrity = 100
 	///The type of stack the barricade dropped when disassembled if any.
 	var/stack_type
