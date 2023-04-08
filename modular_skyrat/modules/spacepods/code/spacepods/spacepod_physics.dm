@@ -244,6 +244,7 @@
 		var/obj/machinery/door/bumped_door = bumped_atom
 		if(!bumped_door.operating)
 			if(bumped_door.allowed(bumped_door.requiresID() ? pilot : null))
+				spawn(0)
 				bumped_door.open()
 			else
 				bumped_door.do_animate("deny")
