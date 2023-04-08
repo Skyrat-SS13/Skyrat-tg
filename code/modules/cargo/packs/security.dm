@@ -327,6 +327,7 @@
 	contains = list(/obj/item/shield/riot = 3)
 	crate_name = "riot shields crate"
 
+<<<<<<< HEAD
 /datum/supply_pack/security/armory/russian
 	name = "Russian Surplus Crate"
 	desc = "Hello Comrade, we have the most modern russian military equipment the \
@@ -356,6 +357,8 @@
 		var/item = pick(contains)
 		new item(C)
 
+=======
+>>>>>>> 997dac96167 (Imports and Contraband: Different! Cargo crates without locks! MEAT! (#74490))
 /datum/supply_pack/security/armory/swat
 	name = "SWAT Crate"
 	desc = "Contains two fullbody sets of tough, fireproof suits designed in a joint \
@@ -379,6 +382,7 @@
 	cost = CARGO_CRATE_VALUE * 7
 	contains = list(/obj/item/storage/belt/holster/energy/thermal = 2)
 	crate_name = "thermal pistol crate"
+<<<<<<< HEAD
 
 /datum/supply_pack/security/armory/wt550
 	name = "Recalled Weapon Pack"
@@ -403,3 +407,5 @@
 	crate_name = "Ammo box"
 */
 // SKYRAT EDIT REMOVAL END
+=======
+>>>>>>> 997dac96167 (Imports and Contraband: Different! Cargo crates without locks! MEAT! (#74490))
