@@ -262,3 +262,20 @@
 
 	button_icon_state = "lights_[spacepod_target.light_toggle ? "on" : "off"]"
 	build_all_button_icons()
+
+/**
+ * Stops angular movement
+ */
+/datum/action/spacepod/toggle_gyroscope
+	name = "Toggle gyroscope"
+	button_icon_state = "gyroscope_on"
+
+
+/datum/action/spacepod/toggle_gyroscope/Trigger(trigger_flags)
+	if(!owner || !spacepod_target || !(owner in spacepod_target.occupants) || owner.incapacitated())
+		return
+
+	spacepod_target.toggle_gyroscope(owner)
+
+	button_icon_state = "gyroscope_[spacepod_target.toggle_gyroscope ? "on" : "off"]"
+	build_all_button_icons()

@@ -93,6 +93,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		/datum/action/spacepod/exit,
 		/datum/action/spacepod/toggle_lights,
 		/datum/action/spacepod/toggle_brakes,
+		/datum/action/spacepod/toggle_gyroscope,
 		/datum/action/spacepod/thrust_up,
 		/datum/action/spacepod/thrust_down,
 		/datum/action/spacepod/quantum_entangloporter,
@@ -122,6 +123,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 	/// Our RCS breaking system, if it's on, the ship will try to keep itself stable.
 	var/brakes = TRUE
+	/// Is the angular vectoring system enabled?
+	var/gyroscope_enabled = TRUE
 	/// A system for preventing any thrust from being applied.
 	var/thrust_lockout = FALSE
 	/// Users thrust direction
@@ -1108,6 +1111,14 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	brakes = !brakes
 	to_chat(user, span_notice("You toggle the brakes [brakes ? "on" : "off"]."))
 
+/**
+ * Toggle gyroscope
+ *
+ * Toggles gyroscope.
+ */
+/obj/spacepod/proc/toggle_gyroscope(mob/user)
+	gyroscope_enabled = !gyroscope_enabled
+	to_chat(user, span_notice("You toggle the gyroscope [gyroscope_enabled ? "on" : "off"]."))
 /**
  * toggle lock
  *

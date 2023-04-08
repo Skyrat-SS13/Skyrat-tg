@@ -31,7 +31,7 @@
 
 	// Adjust angular velocity based on desired angular velocity and the battery usage
 	var/angular_velocity_adjustment = clamp(desired_angular_velocity - angular_velocity, -max_angular_acceleration * time, max_angular_acceleration * time)
-	if(angular_velocity_adjustment && cell && cell.use(abs(angular_velocity_adjustment) * 0.05) && check_equipment(/obj/item/spacepod_equipment/thruster))
+	if(angular_velocity_adjustment && cell && cell.use(abs(angular_velocity_adjustment) * 0.05) && check_has_equipment(/obj/item/spacepod_equipment/thruster) && gyroscope_enabled)
 		last_rotate = angular_velocity_adjustment / time
 		angular_velocity += angular_velocity_adjustment
 	else
@@ -109,14 +109,14 @@
 			thrust_y -= sy * side_maxthrust
 			last_thrust_right = -side_maxthrust
 
-	if(cell && cell.use(10 * sqrt((thrust_x * thrust_x) + (thrust_y * thrust_y)) * time) && !thrust_lockout && check_equipment(/obj/item/spacepod_equipment/thruster))
+	if(cell && cell.use(10 * sqrt((thrust_x * thrust_x) + (thrust_y * thrust_y)) * time) && !thrust_lockout && check_has_equipment(/obj/item/spacepod_equipment/thruster))
 		velocity_x += thrust_x * time
 		velocity_y += thrust_y * time
 	else
 		last_thrust_forward = 0
 		last_thrust_right = 0
 		if(!brakes && user_thrust_dir)
-			if(!check_equipment(/obj/item/spacepod_equipment/thruster))
+			if(!check_has_equipment(/obj/item/spacepod_equipment/thruster))
 				to_chat(pilot, span_warning("No thrusters installed!"))
 			else if(thrust_lockout)
 				to_chat(pilot, span_warning("Thrust lockout active!"))
