@@ -8,7 +8,7 @@
 	spawn_positions = 1
 	supervisors = "the Head of Security"
 	minimal_player_age = 7
-	exp_requirements = 300
+	exp_requirements = 400
 	exp_required_type = EXP_TYPE_CREW
 	exp_granted_type = EXP_TYPE_CREW
 	config_tag = "SPACEPOD_PILOT"
@@ -27,7 +27,7 @@
 		/datum/job_department/security,
 		)
 
-	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec/peacekeeper) //SKYRAT EDIT ADD - /peacekeeper
+	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec/peacekeeper)
 
 	mail_goodies = list(
 		/obj/item/food/donut/caramel = 10,
@@ -38,3 +38,8 @@
 	)
 	rpg_title = "Pilot"
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
+
+/obj/effect/landmark/start/spacepod_pilot
+	name = "Spacepod Pilot"
+	icon_state = "Security Officer"
+	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'

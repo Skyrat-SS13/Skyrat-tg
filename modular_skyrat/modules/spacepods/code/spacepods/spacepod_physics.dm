@@ -296,8 +296,8 @@
     var/offset_pixel_y = (offset_y * 32)
 
     // Calculate the projectile's starting position based on the spacepod's position
-    var/calculated_x = offset_pixel_x + factor_x * override_offset_x - shift_x * override_offset_x
-    var/calcualted_y = offset_pixel_y + factor_y * override_offset_y - shift_y * override_offset_y
+    var/calculated_x = offset_pixel_x + factor_x * override_offset_x + shift_x * override_offset_x
+    var/calculated_y = offset_pixel_y + factor_y * override_offset_y + shift_y * override_offset_y
 
     // Get the turf where the spacepod is currently located
     var/turf/iterating_turf = get_turf(src)
@@ -310,13 +310,13 @@
         iterating_turf = get_step(iterating_turf, WEST)
         calculated_x += 32
 
-    // Adjust the iterating_turf in the NORTH/SOUTH direction based on this_y
-    while(calcualted_y > 16)
+    // Adjust the iterating_turf in the NORTH/SOUTH direction based on calculated_y
+    while(calculated_y > 16)
         iterating_turf = get_step(iterating_turf, NORTH)
-        calcualted_y -= 32
-    while(calcualted_y < -16)
+        calculated_y -= 32
+    while(calculated_y < -16)
         iterating_turf = get_step(iterating_turf, SOUTH)
-        calcualted_y += 32
+        calculated_y += 32
 
     // If iterating_turf is valid, create and fire the projectile
     if(iterating_turf)
@@ -329,7 +329,7 @@
         projectile.def_zone = "chest"
         projectile.original = target
         projectile.pixel_x = round(calculated_x)
-        projectile.pixel_y = round(calcualted_y)
+        projectile.pixel_y = round(calculated_y)
 
         // Fire the projectile at the given angle
         projectile.fire(angle)
