@@ -2,10 +2,13 @@
 	id = "spacepod_basic"
 	display_name = "Spacepod Construction"
 	description = "Basic stuff to construct Spacepods. Don't crash your first spacepod into the station, especially while going more than 10 m/s."
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 	prereq_ids = list("base")
-	design_ids = list("podcore", "podarmor_civ", "podarmor_dark", "spacepod_main")
+	design_ids = list("podcore", "podarmor_civ", "podarmor_dark", "spacepod_main", "podthruster")
 
+/**
+ * Lock stuffs
+ */
 /datum/techweb_node/spacepod_lock
 	id = "spacepod_lock"
 	display_name = "Spacepod Security"
@@ -14,6 +17,19 @@
 	prereq_ids = list("spacepod_basic", "engineering")
 	design_ids = list("podlock_keyed", "podkey", "podmisc_tracker")
 
+
+/datum/techweb_node/spacepod_lockbuster
+	id = "spacepod_lockbuster"
+	display_name = "Spacepod Lock Buster"
+	description = "For when someone's being really naughty with a spacepod"
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 8500)
+	prereq_ids = list("spacepod_lasers", "high_efficiency", "adv_mining")
+	design_ids = list("pod_lockbuster")
+
+
+/**
+ * Weapon Designs
+ */
 /datum/techweb_node/spacepod_disabler
 	id = "spacepod_disabler"
 	display_name = "Spacepod Weaponry"
@@ -30,8 +46,8 @@
 	prereq_ids = list("spacepod_disabler", "electronic_weapons")
 	design_ids = list("podgun_laser", "podgun_bdisabler")
 
-/datum/techweb_node/spacepod_ka
-	id = "spacepod_ka"
+/datum/techweb_node/spacepod_mining
+	id = "spacepod_mining"
 	display_name = "Spacepod Mining Tech"
 	description = "Cutting up asteroids using your spacepods"
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3500)
@@ -39,7 +55,7 @@
 	design_ids = list("pod_ka_basic")
 
 /datum/techweb_node/spacepod_advmining
-	id = "spacepod_aka"
+	id = "spacepod_advmining"
 	display_name = "Advanced Spacepod Mining Tech"
 	description = "Cutting up asteroids using your spacepods.... faster!"
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3500)
@@ -47,13 +63,17 @@
 	design_ids = list("pod_ka", "pod_plasma_cutter")
 
 /datum/techweb_node/spacepod_advplasmacutter
-	id = "spacepod_apc"
+	id = "spacepod_advplasmacutter"
 	display_name = "Advanced Spacepod Plasma Cutter"
 	description = "Cutting up asteroids using your spacepods........... FASTERRRRRR!!!!!! Oh shit, that was gibtonite."
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4500)
 	prereq_ids = list("spacepod_aka", "adv_plasma")
 	design_ids = list("pod_adv_plasma_cutter")
 
+/**
+ * Cargo designs
+ *
+*/
 /datum/techweb_node/spacepod_pseat
 	id = "spacepod_pseat"
 	display_name = "Spacepod Passenger Seat"
@@ -70,14 +90,9 @@
 	prereq_ids = list("spacepod_pseat", "high_efficiency")
 	design_ids = list("podcargo_crate", "podcargo_ore")
 
-/datum/techweb_node/spacepod_lockbuster
-	id = "spacepod_lockbuster"
-	display_name = "Spacepod Lock Buster"
-	description = "For when someone's being really naughty with a spacepod"
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 8500)
-	prereq_ids = list("spacepod_lasers", "high_efficiency", "adv_mining")
-	design_ids = list("pod_lockbuster")
-
+/**
+ * Armor stuffs
+ */
 /datum/techweb_node/spacepod_iarmor
 	id = "spacepod_iarmor"
 	display_name = "Advanced Spacepod Armor"
@@ -85,3 +100,41 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2750)
 	prereq_ids = list("spacepod_storage", "high_efficiency")
 	design_ids = list("podarmor_industiral", "podarmor_sec", "podarmor_gold")
+
+/**
+ * Thrusters
+ */
+/datum/techweb_node/spacepod_advthrusters
+	id = "spacepod_advthrusters"
+	display_name = "Advanced Spacepod Thrusters"
+	description = "More speed is better, right? Right? RIGHT?!"
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4500)
+	prereq_ids = list("spacepod_basic", "high_efficiency", "adv_power")
+	design_ids = list("podthruster_upgraded")
+
+/datum/techweb_node/spacepod_bluespacethrusters
+	id = "spacepod_bluespacethrusters"
+	display_name = "Bluespace Spacepod Thrusters"
+	description = "More speed is better, right? Right? RIGHT?! MAKE ME GO FASTER DAMN IT!!!!"
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
+	prereq_ids = list("spacepod_advthrusters", "bluespace_travel")
+	design_ids = list("podthruster_bluespace")
+
+/datum/techweb_node/spacepod_teleporter
+	id = "spacepod_teleporter"
+	display_name = "Spacepod Teleporter"
+	description = "For when speed isn't enough, you reduce the distance by breaking the laws of physics."
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
+	prereq_ids = list("spacepod_bluespacethrusters", "bluespace_travel", "micro_bluespace")
+	design_ids = list("pod_teleporter")
+
+/**
+ * Misc stuffs
+ */
+/datum/techweb_node/spacepod_lights
+	id = "spacepod_lights"
+	display_name = "Spacepod Lights"
+	description = "Helps you see in the dark."
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
+	prereq_ids = list("spacepod_basic", "engineering")
+	design_ids = list("podlights", "podlights_custom")

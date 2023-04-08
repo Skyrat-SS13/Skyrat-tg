@@ -6,6 +6,8 @@
 /obj/item/spacepod_equipment
 	name = "error"
 	icon = 'modular_skyrat/modules/spacepods/icons/parts.dmi'
+	w_class = WEIGHT_CLASS_GIGANTIC
+	flags_1 = CONDUCT_1
 	/// The spacepod we are attached to.
 	var/obj/spacepod/spacepod
 	/// The slot in which we take
@@ -200,7 +202,7 @@
 	playsound(src, fire_sound, 50, TRUE)
 
 /obj/item/spacepod_equipment/weaponry/disabler
-	name = "disabler system"
+	name = "\improper Armadyne S1 Disabler"
 	desc = "A weak disabler system for space pods, fires disabler beams."
 	icon_state = "weapon_taser"
 	projectile_type = /obj/projectile/beam/disabler
@@ -210,7 +212,7 @@
 	overlay_icon_state = "pod_weapon_disabler"
 
 /obj/item/spacepod_equipment/weaponry/burst_disabler
-	name = "burst disabler system"
+	name = "\improper Armadyne S3 BURST Disabler"
 	desc = "A weak disabler system for space pods, this one fires 3 at a time."
 	icon_state = "weapon_burst_taser"
 	projectile_type = /obj/projectile/beam/disabler
@@ -222,7 +224,7 @@
 	overlay_icon_state = "pod_weapon_disabler"
 
 /obj/item/spacepod_equipment/weaponry/laser
-	name = "laser system"
+	name = "\improper Armadyne MK1 'Photon Cannon' Laser System"
 	desc = "A weak laser system for space pods, fires concentrated bursts of energy."
 	icon_state = "weapon_laser"
 	projectile_type = /obj/projectile/beam/laser
@@ -231,9 +233,21 @@
 	overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
 	overlay_icon_state = "pod_weapon_laser"
 
+/obj/item/spacepod_equipment/weaponry/burst_laser
+	name = "\improper Armadyne MK1 'Photon Cannon' Burst Laser System"
+	desc = "A weak laser system for space pods, fires concentrated bursts of energy. This one fires 3 at once."
+	icon_state = "weapon_laser"
+	projectile_type = /obj/projectile/beam/laser
+	shot_cost = 1800
+	burst_fire = 3
+	fire_sound = 'sound/weapons/Laser.ogg'
+	overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
+	overlay_icon_state = "pod_weapon_laser"
+
+
 /obj/item/spacepod_equipment/weaponry/pulse
-	name = "pulse system"
-	desc = "An incredibly powerful pulse weapons system for pods, fires concentrated impulse rounds."
+	name = "\improper NT-9 'Pulse' Disruptor"
+	desc = "An incredibly powerful pulse weapon system for pods, fires concentrated impulse rounds."
 	icon_state = "weapon_pulse"
 	projectile_type = /obj/projectile/beam/pulse
 	shot_cost = 1000
@@ -243,7 +257,7 @@
 
 // MINING LASERS
 /obj/item/spacepod_equipment/weaponry/basic_pod_ka
-	name = "weak kinetic accelerator"
+	name = "\improper MINEALOT 'Basic' Kinetic Accelerator"
 	desc = "A weak kinetic accelerator for space pods, fires bursts of energy that cut through rock."
 	icon_state = "pod_taser"
 	projectile_type = /obj/projectile/kinetic/pod
@@ -252,7 +266,7 @@
 	fire_sound = 'sound/weapons/Kenetic_accel.ogg'
 
 /obj/item/spacepod_equipment/weaponry/pod_ka
-	name = "kinetic accelerator system"
+	name = "\improper MINEALOT 'Better' Kinetic Accelerator"
 	desc = "A kinetic accelerator system for space pods, fires bursts of energy that cut through rock."
 	icon_state = "pod_m_laser"
 	projectile_type = /obj/projectile/kinetic/pod/regular
@@ -268,7 +282,7 @@
 	pressure_decrease = 0.5
 
 /obj/item/spacepod_equipment/weaponry/plasma_cutter
-	name = "plasma cutter system"
+	name = "\improper SEEGSON MK1 Plasma Cutter"
 	desc = "A plasma cutter system for space pods. It is capable of expelling concentrated plasma bursts to mine or cut off xeno limbs!"
 	icon_state = "pod_p_cutter"
 	projectile_type = /obj/projectile/plasma
@@ -279,12 +293,12 @@
 	overlay_icon_state = "pod_weapon_plasma"
 
 /obj/item/spacepod_equipment/weaponry/plasma_cutter/adv
-	name = "enhanced plasma cutter system"
+	name = "\improper SEEGSON MK2 Plasma Cutter"
 	desc = "An enhanced plasma cutter system for space pods. It is capable of expelling concentrated plasma bursts to mine or cut off xeno faces!"
 	icon_state = "pod_ap_cutter"
 	projectile_type = /obj/projectile/plasma/adv
 	shot_cost = 200
-	fire_delay = 8
+	fire_delay = 5
 
 /**
  * Thruster Types
@@ -293,16 +307,16 @@
  */
 
 /obj/item/spacepod_equipment/thruster
-	name = "pod thruster system"
-	desc = "The engine system for a spacepod, makes the pod go."
+	name = "\improper Rolls-Royce RS-200 Sublight Thrusters"
+	desc = "The R-200 series of sublight thrusters are as basic as you can get, they aren't very fast."
 	icon_state = "thrusters"
 	slot = SPACEPOD_SLOT_THRUSTER
 	/// The max speed that the pod can move forwards. In tiles per second.
-	var/max_forward_speed = 3
+	var/max_forward_speed = 2
 	/// The max speed that the pod can move backwards. In tiles per second.
-	var/max_backwards_speed = 1.5
+	var/max_backwards_speed = 1
 	/// The max speed that the pod can move sidways. In tiles per second.
-	var/max_sideways_speed = 0.5
+	var/max_sideways_speed = 0.1
 
 /obj/item/spacepod_equipment/thruster/on_install(obj/spacepod/attaching_spacepod)
 	. = ..()
@@ -317,11 +331,18 @@
 	detatching_spacepod.side_maxthrust = 0
 
 /obj/item/spacepod_equipment/thruster/upgraded
-	name = "upgraded pod thruster system"
-	desc = "The engine system for a spacepod, makes the pod go. This one has been modified to make it go FASTER."
+	name = "\improper Rolls-Royce RS-400 Sublight Thrusters"
+	desc = "The R-400 series of sublight thrusters provide a slightly better power output of the smaller R-200 series."
 	max_forward_speed = 4
 	max_backwards_speed = 2
 	max_sideways_speed = 1
+
+/obj/item/spacepod_equipment/thruster/mk9
+	name = "\improper SAB-R Mark 9 Superlight Impulse Thrust System"
+	desc = "These bad boys make your shuttle go really really fast."
+	max_forward_speed = 6
+	max_backwards_speed = 3
+	max_sideways_speed = 2
 
 /**
  * Lights
@@ -330,7 +351,7 @@
  */
 
 /obj/item/spacepod_equipment/lights
-	name = "pod light system"
+	name = "\improper SEETECH Light System"
 	desc = "Lights for a spacepod, they allow you to see where you are going. In theory."
 	icon_state = "lights"
 	slot = SPACEPOD_SLOT_LIGHT
@@ -354,7 +375,7 @@
 	color_to_set = COLOR_RED
 
 /obj/item/spacepod_equipment/lights/custom
-	name = "custom pod light system"
+	name = "\improper SEETECH Custom Light System"
 	desc = "Lights for a spacepod, you can use a screwdriver on this to change the color of the lights."
 
 /obj/item/spacepod_equipment/lights/custom/screwdriver_act(mob/living/user, obj/item/tool)
@@ -375,7 +396,7 @@
 	icon_state = "pod_locator"
 
 /obj/item/spacepod_equipment/teleport
-	name = "quantum entangloporter"
+	name = "\improper SEEGSON Quantum Entangloporter"
 	desc = "Enables faster than light travel using a quantum entangloporter."
 	icon_state = "cargo_blank"
 	slot = SPACEPOD_SLOT_MISC
@@ -404,7 +425,7 @@
 
 // Key and Tumbler System
 /obj/item/spacepod_equipment/lock/keyed
-	name = "spacepod tumbler lock"
+	name = "\improper Sasterlock Tumbler Locking System"
 	desc = "A locking system to stop podjacking. This version uses a standalone key."
 	icon_state = "lock_tumbler"
 	/// Our unique ID identifier, to prevent duplicate locks.
