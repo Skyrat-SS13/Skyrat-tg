@@ -475,10 +475,10 @@
 	return ..()
 
 /obj/item/organ/internal/stomach/hemophage/on_life(delta_time, times_fired)
-    var/datum/reagent/blood/blood = reagents.get_reagent(/datum/reagent/blood)
-    if(blood)
-        blood.metabolization_rate = BLOOD_METABOLIZATION_RATE
-    ..()
+	var/datum/reagent/blood/blood = reagents.get_reagent(/datum/reagent/blood)
+	if(blood)
+		blood.metabolization_rate = BLOOD_METABOLIZATION_RATE
+	..()
 
 
 /obj/item/organ/internal/tongue/hemophage
