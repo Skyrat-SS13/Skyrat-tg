@@ -443,3 +443,9 @@ suffix = "whiteshipruin_box.dmm"*/
 	suffix = "transit_booth.dmm"
 	name = "Transit Booth"
 	description = "Make sure to check out the duty-free store!"
+
+/datum/map_template/ruin/space/the_outlet
+	id = "the_outlet"
+	suffix = "the_outlet.dmm"
+	name = "calebs krazy clothing outlet"
+	description = "A decrepit clothing store built into an asteroid. It appears long since abandoned and has fallen into disrepair."
