@@ -475,13 +475,10 @@
 	return ..()
 
 /obj/item/organ/internal/stomach/hemophage/on_life(delta_time, times_fired)
-	var/datum/reagent/blood/blood = reagents.get_reagent(/datum/reagent/blood)
-	if(blood)
-		var/amount_max = blood.volume
-		var/amount = min((round(metabolism_efficiency * amount_max, 0.05) + BLOOD_METABOLIZATION_RATE) * delta_time, amount_max)
-
-		reagents.trans_id_to(owner, blood.type, amount=amount)
-	else ..()
+    var/datum/reagent/blood/blood = reagents.get_reagent(/datum/reagent/blood)
+    if(blood)
+        blood.metabolization_rate = BLOOD_METABOLIZATION_RATE
+    ..()
 
 
 /obj/item/organ/internal/tongue/hemophage
