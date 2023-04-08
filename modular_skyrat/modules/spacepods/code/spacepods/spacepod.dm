@@ -48,8 +48,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/weapon_safety = FALSE
 	/// A list of our weapon slots, the association is the offset for pixel shooting.
 	var/list/weapon_slots = list(
-		SPACEPOD_WEAPON_SLOT_LEFT = list(-16, 0),
-		SPACEPOD_WEAPON_SLOT_RIGHT = list(16, 0),
+		SPACEPOD_WEAPON_SLOT_LEFT = list(-16, -16),
+		SPACEPOD_WEAPON_SLOT_RIGHT = list(16, 16),
 	)
 	/// A list of installed cargo bays
 	var/list/cargo_bays = list()
@@ -237,7 +237,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			return TRUE
 		if(attacking_item.tool_behaviour == TOOL_WELDER)
 			var/obj_integrity = get_integrity()
-			var/repairing = cell || internal_tank || equipment.len || (obj_integrity < max_integrity) || pilot || passengers.len
+			var/repairing = cell || internal_tank || equipment.len || (obj_integrity < max_integrity) || pilot || LAZYLEN(passengers)
 			if(!hatch_open)
 				to_chat(user, span_warning("You must open the maintenance hatch before [repairing ? "attempting repairs" : "unwelding the armor"]."))
 				return TRUE
@@ -248,12 +248,12 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			if(attacking_item.use_tool(src, user, 50, amount = 3, volume = 50))
 				if(repairing)
 					update_integrity(min(max_integrity, obj_integrity + 10))
-					update_overlays()
+					update_icon()
 					to_chat(user, span_notice("You mend some [pick("dents","bumps","damage")] with [attacking_item]"))
-				else if(!cell && !internal_tank && !equipment.len && !pilot && !passengers.len && construction_state == SPACEPOD_ARMOR_WELDED)
+				else if(!cell && !internal_tank && !equipment.len && !pilot && !LAZYLEN(passengers) && construction_state == SPACEPOD_ARMOR_WELDED)
 					user.visible_message("[user] slices off [src]'s armor.", span_notice("You slice off [src]'s armor."))
 					construction_state = SPACEPOD_ARMOR_SECURED
-					update_overlays()
+					update_icon()
 			return TRUE
 	return ..()
 
@@ -263,7 +263,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		var/mob/living/target
 		if(pilot)
 			target = pilot
-		else if(passengers.len > 0)
+		else if(LAZYLEN(passengers) > 0)
 			target = passengers[1]
 
 		if(target && istype(target))
@@ -285,7 +285,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 /obj/spacepod/take_damage(damage_amount, damage_type = BRUTE, damage_flag = "", sound_effect = TRUE, attack_dir, armour_penetration = 0)
 	. = ..()
-	update_overlays()
+	update_icon()
 
 /obj/spacepod/return_air()
 	return cabin_air
@@ -358,7 +358,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		qdel(src)
 		return
 	remove_rider(pilot)
-	while(passengers.len)
+	while(LAZYLEN(passengers))
 		remove_rider(passengers[1])
 	passengers.Cut()
 	if(disassembled)
@@ -396,19 +396,29 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		// there here's your frame pieces back, happy?
 	qdel(src)
 
-/obj/spacepod/update_overlays()
+
+/obj/spacepod/update_icon()
 	. = ..()
 	cut_overlays()
-	// Initial check, make sure it's not in construction
 	if(construction_state != SPACEPOD_ARMOR_WELDED)
+		icon = 'modular_skyrat/modules/spacepods/icons/construction2x2.dmi'
+		icon_state = "pod_[construction_state]"
+		thrust_sound.stop()
 		if(pod_armor && construction_state >= SPACEPOD_ARMOR_LOOSE)
 			var/mutable_appearance/masked_armor = mutable_appearance(icon = 'modular_skyrat/modules/spacepods/icons/construction2x2.dmi', icon_state = "armor_mask")
 			var/mutable_appearance/armor = mutable_appearance(pod_armor.pod_icon, pod_armor.pod_icon_state)
 			armor.blend_mode = BLEND_MULTIPLY
 			masked_armor.overlays = list(armor)
 			masked_armor.appearance_flags = KEEP_TOGETHER
-			. += masked_armor
-		return .
+			add_overlay(masked_armor)
+		return
+
+	if(pod_armor)
+		icon = pod_armor.pod_icon
+		icon_state = pod_armor.pod_icon_state
+	else
+		icon = initial(icon)
+		icon_state = initial(icon_state)
 
 	// Weapon overlays
 	if(LAZYLEN(equipment[SPACEPOD_SLOT_WEAPON]))
@@ -420,17 +430,19 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 					var/matrix/flip_matrix = matrix(-1, 0, 0, 0, 1, 0)
 					weapon_overlay.transform = flip_matrix
 
-			. += weapon_overlay
+			add_overlay(weapon_overlay)
 
 	// Damage overlays
 	var/obj_integrity = get_integrity()
 	if(obj_integrity <= max_integrity / 2)
-		. += "pod_damage"
+		add_overlay(image(icon = initial(icon), icon_state = "pod_damage"))
 		if(obj_integrity <= max_integrity / 4)
-			. += "pod_fire"
+			add_overlay(image(icon = initial(icon), icon_state = "pod_fire"))
 
 	// Thrust overlays
+	update_thruster_overlays()
 
+/obj/spacepod/proc/update_thruster_overlays()
 	var/list/left_thrusts = list()
 	left_thrusts.len = 8
 	var/list/right_thrusts = list()
@@ -465,28 +477,14 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			var/image/right_thrust_overlay = image(icon = overlay_file, icon_state = "rcs_right", dir = cardinal_direction)
 			add_overlay(right_thrust_overlay)
 	if(back_thrust)
-		var/image/new_image = image(icon = overlay_file, icon_state = "thrust")
-		new_image.transform = matrix(1, 0, 0, 0, 1, -32)
-		add_overlay(new_image)
+		var/image/back_thrust_overlay = image(icon = overlay_file, icon_state = "thrust")
+		back_thrust_overlay.transform = matrix(1, 0, 0, 0, 1, -32)
+		add_overlay(back_thrust_overlay)
 		thrust_sound.start() // TODO: Refactor this into
 	else
 		thrust_sound.stop()
 	if(front_thrust)
-		. += "front_thrust"
-
-/obj/spacepod/update_icon()
-	. = ..()
-	if(construction_state != SPACEPOD_ARMOR_WELDED)
-		icon = 'modular_skyrat/modules/spacepods/icons/construction2x2.dmi'
-		icon_state = "pod_[construction_state]"
-		return
-
-	if(pod_armor)
-		icon = pod_armor.pod_icon
-		icon_state = pod_armor.pod_icon_state
-	else
-		icon = initial(icon)
-		icon_state = initial(icon_state)
+		add_overlay(image(icon = overlay_file, icon_state = "front_thrust"))
 
 /obj/spacepod/relaymove(mob/user, direction)
 	if(user != pilot || pilot.incapacitated())
@@ -516,10 +514,10 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	if(isliving(dropped_atom))
 		var/mob/living/living_mob = dropped_atom
 		if(living_mob != user && !locked)
-			if(passengers.len >= max_passengers && !pilot)
+			if(LAZYLEN(passengers) >= max_passengers && !pilot)
 				to_chat(user, span_danger("<b>[living_mob.p_they()] can't fly the pod!</b>"))
 				return
-			if(passengers.len < max_passengers)
+			if(LAZYLEN(passengers) < max_passengers)
 				visible_message(span_danger("[user] starts loading [living_mob] into [src]!"))
 				if(do_after(user, 5 SECONDS, src) && construction_state == SPACEPOD_ARMOR_WELDED)
 					add_rider(living_mob, FALSE)
@@ -602,21 +600,18 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	if(user && !user.temporarilyRemoveItemFromInventory(equipment_to_attach))
 		return FALSE
 
+	// Weapon handling
+	if(istype(equipment_to_attach, /obj/item/spacepod_equipment/weaponry))
+		if(user)
+			INVOKE_ASYNC(src, PROC_REF(async_weapon_slot_selection), equipment_to_attach, user)
+			return
+
 	if(!islist(equipment[equipment_to_attach.slot]))
 		equipment[equipment_to_attach.slot] = list()
 
 	equipment[equipment_to_attach.slot] += equipment_to_attach
 	equipment_to_attach.forceMove(src)
 	equipment_to_attach.on_install(src)
-
-	// Weapon handling
-	if(istype(equipment_to_attach, /obj/item/spacepod_equipment/weaponry))
-		if(user)
-			INVOKE_ASYNC(src, PROC_REF(async_weapon_slot_selection), equipment_to_attach, user)
-		else
-			var/list/available_slots = get_free_weapon_slots()
-			equipment[SPACEPOD_SLOT_WEAPON][equipment_to_attach] = pick(available_slots)
-
 	return TRUE
 
 /**
@@ -624,13 +619,20 @@ GLOBAL_LIST_INIT(spacepods_list, list())
  *
  * Asynchronously asks the user what weapon slot they want to put the weapon in.
  */
-/obj/spacepod/proc/async_weapon_slot_selection(equipment_to_attach, mob/user)
+/obj/spacepod/proc/async_weapon_slot_selection(obj/item/spacepod_equipment/equipment_to_attach, mob/user)
 	var/list/available_slots = get_free_weapon_slots()
 	var/weapon_slot_to_apply
 	weapon_slot_to_apply = tgui_input_list(user, "Please select a weapon slot to put the weapon into:", "Weapon Slot", available_slots)
+
 	if(!weapon_slot_to_apply)
-		detach_equipment(equipment_to_attach)
 		return
+
+	if(!islist(equipment[equipment_to_attach.slot]))
+		equipment[equipment_to_attach.slot] = list()
+
+	equipment[equipment_to_attach.slot] += equipment_to_attach
+	equipment_to_attach.forceMove(src)
+	equipment_to_attach.on_install(src)
 	equipment[SPACEPOD_SLOT_WEAPON][equipment_to_attach] = weapon_slot_to_apply
 
 /**
@@ -786,7 +788,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	max_integrity = armor.pod_integrity
 	update_integrity(max_integrity - integrity_failure + get_integrity())
 	pod_armor = armor
-	update_appearance()
+	update_icon()
 
 /**
  * Remove Armor
@@ -799,7 +801,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		max_integrity = integrity_failure
 		desc = initial(desc)
 		pod_armor = null
-		update_appearance()
+		update_icon()
 
 // WEAPON PROCS
 
@@ -901,7 +903,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	if(!ishuman(user))
 		return FALSE
 
-	if(passengers.len <= max_passengers || !pilot)
+	if(LAZYLEN(passengers) <= max_passengers || !pilot)
 		visible_message(span_notice("[user] starts to climb into [src]."))
 		if(do_after(user, 40, target = src) && construction_state == SPACEPOD_ARMOR_WELDED)
 			var/success = add_rider(user)
@@ -933,7 +935,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		if(living_mob.client)
 			living_mob.client.view_size.setTo(2)
 			living_mob.movement_type = GROUND
-	else if(passengers.len < max_passengers)
+	else if(LAZYLEN(passengers) < max_passengers)
 		LAZYSET(occupants, living_mob, NONE)
 		grant_passenger_actions(living_mob)
 		passengers += living_mob

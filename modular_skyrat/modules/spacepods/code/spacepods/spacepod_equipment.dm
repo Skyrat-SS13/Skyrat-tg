@@ -172,6 +172,8 @@
 
 /obj/item/spacepod_equipment/weaponry/on_install(obj/spacepod/attaching_spacepod)
 	. = ..()
+	var/list/available_slots = attaching_spacepod.get_free_weapon_slots()
+	attaching_spacepod.equipment[SPACEPOD_SLOT_WEAPON][src] = pick(available_slots)
 	attaching_spacepod.update_icon()
 
 
@@ -181,12 +183,12 @@
 		playsound(src, 'sound/weapons/gun/general/dry_fire.ogg', 30, TRUE)
 		return
 	if(!spacepod.cell || !spacepod.cell.use(shot_cost))
-		to_chat(usr, span_warning("Insufficient charge to fire the weapons"))
+		to_chat(usr, span_warning("Insufficient charge to fire the weapons!"))
 		playsound(src, 'sound/weapons/gun/general/dry_fire.ogg', 30, TRUE)
 		return
 	spacepod.next_firetime = world.time + fire_delay
-	for(var/I in 1 to burst_fire)
-		addtimer(CALLBACK(src, PROC_REF(actually_fire_weapons), target, x_offset, y_offset), burst_fire_delay * I)
+	for(var/i in 1 to burst_fire)
+		addtimer(CALLBACK(src, PROC_REF(actually_fire_weapons), target, x_offset, y_offset), burst_fire_delay * i)
 
 /**
  * actually fire weapons
@@ -228,6 +230,16 @@
 	fire_sound = 'sound/weapons/Laser.ogg'
 	overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
 	overlay_icon_state = "pod_weapon_laser"
+
+/obj/item/spacepod_equipment/weaponry/pulse
+	name = "pulse system"
+	desc = "An incredibly powerful pulse weapons system for pods, fires concentrated impulse rounds."
+	icon_state = "weapon_pulse"
+	projectile_type = /obj/projectile/beam/pulse
+	shot_cost = 1000
+	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/pulse.ogg'
+	overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
+	overlay_icon_state = "pod_weapon_pulse"
 
 // MINING LASERS
 /obj/item/spacepod_equipment/weaponry/basic_pod_ka

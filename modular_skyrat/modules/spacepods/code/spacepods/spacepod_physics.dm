@@ -51,7 +51,7 @@
 				floating = TRUE // want to fly this shit on the station? Have fun draining your battery.
 			if((!floating && iterating_turf.has_gravity()) || brakes) // brakes are a kind of magboots okay?
 				drag += is_mining_level(z) ? 0.1 : 0.5 // some serious drag. Damn. Except lavaland, it has less gravity or something
-				if(velocity_mag > 5 && prob(velocity_mag * 4) && istype(iterating_turf, /turf/open/floor))
+				if(velocity_mag > 5 && prob(velocity_mag * 4) && isfloorturf(iterating_turf))
 					var/turf/open/floor/floor = iterating_turf
 					floor.make_plating() // pull up some floor tiles. Stop going so fast, ree.
 					take_damage(3, BRUTE, "melee", FALSE)
@@ -220,7 +220,7 @@
 		mob_client.pixel_y = last_offset_y * 32
 		animate(mob_client, pixel_x = offset_x * 32, pixel_y = offset_y * 32, time = time * 10, flags = ANIMATION_END_NOW)
 	user_thrust_dir = 0
-	update_overlays()
+	update_icon()
 
 /obj/spacepod/Bumped(atom/movable/bumped_atom)
 	if(bumped_atom.dir & NORTH)
@@ -239,15 +239,17 @@
 		bump_velocity = abs(velocity_y) + (abs(velocity_x) / 15)
 	else
 		bump_velocity = abs(velocity_x) + (abs(velocity_y) / 15)
+
 	if(istype(bumped_atom, /obj/machinery/door/airlock)) // try to open doors
 		var/obj/machinery/door/bumped_door = bumped_atom
 		if(!bumped_door.operating)
 			if(bumped_door.allowed(bumped_door.requiresID() ? pilot : null))
-				spawn(0)
-					bumped_door.open()
+				bumped_door.open()
 			else
 				bumped_door.do_animate("deny")
+
 	var/atom/movable/bumped_movable_atom = bumped_atom
+
 	if(istype(bumped_movable_atom) && !bumped_movable_atom.anchored && bump_velocity > 1)
 		step(bumped_movable_atom, dir)
 
@@ -279,55 +281,54 @@
  *
  * Fires a projectile from the spacepod.
  */
-/obj/spacepod/proc/fire_projectile(proj_type, target, custom_offset_x = 0, custom_offset_y = 0)
-	// Calculate cos and sin results based on the spacepod's angle
-	var/cos_result = cos(90 - angle)
-	var/sin_result = sin(90 - angle)
+/obj/spacepod/proc/fire_projectile(projectile_type, target, override_offset_x, override_offset_y)
+    // Calculate the direction factors using the angle of the spacepod
+    var/factor_x = cos(90 - angle)
+    var/factor_y = sin(90 - angle)
 
-	// Calculate the offset of the projectile's origin in pixels, including custom offsets if provided
-	var/offset_x_pixels = (offset_x * 32) + custom_offset_x
-	var/offset_y_pixels = (offset_y * 32) + custom_offset_y
+    // Calculate the shift factors for projectile's starting position
+    var/shift_x = factor_y
+    var/shift_y = -factor_x
 
-	// Calculate the projectile's origin point using the cos and sin results
-	var/projectile_origin = list(offset_x_pixels + cos_result * 16, offset_y_pixels + sin_result * 16)
+    // Calculate the pixel offset for the projectile's starting position
+    var/offset_pixel_x = (offset_x * 32)
+    var/offset_pixel_y = (offset_y * 32)
 
-	// Set the current x and y coordinates of the projectile
-	var/current_x = projectile_origin[1]
-	var/current_y = projectile_origin[2]
+    // Calculate the projectile's starting position based on the spacepod's position
+    var/calculated_x = offset_pixel_x + factor_x * override_offset_x - shift_x * override_offset_x
+    var/calcualted_y = offset_pixel_y + factor_y * override_offset_y - shift_y * override_offset_y
 
-	// Get the turf of the spacepod
-	var/turf/iterating_turf = get_turf(src)
+    // Get the turf where the spacepod is currently located
+    var/turf/iterating_turf = get_turf(src)
 
-	// Adjust the iterating_turf and current_x values based on the projectile's x-coordinate
-	while(current_x > 16)
-		iterating_turf = get_step(iterating_turf, EAST)
-		current_x -= 32
-	while(current_x < -16)
-		iterating_turf = get_step(iterating_turf, WEST)
-		current_x += 32
+    // Adjust the iterating_turf in the EAST/WEST direction based on calculated_x
+    while(calculated_x > 16)
+        iterating_turf = get_step(iterating_turf, EAST)
+        calculated_x -= 32
+    while(calculated_x < -16)
+        iterating_turf = get_step(iterating_turf, WEST)
+        calculated_x += 32
 
-	// Adjust the iterating_turf and current_y values based on the projectile's y-coordinate
-	while(current_y > 16)
-		iterating_turf = get_step(iterating_turf, NORTH)
-		current_y -= 32
-	while(current_y < -16)
-		iterating_turf = get_step(iterating_turf, SOUTH)
-		current_y += 32
+    // Adjust the iterating_turf in the NORTH/SOUTH direction based on this_y
+    while(calcualted_y > 16)
+        iterating_turf = get_step(iterating_turf, NORTH)
+        calcualted_y -= 32
+    while(calcualted_y < -16)
+        iterating_turf = get_step(iterating_turf, SOUTH)
+        calcualted_y += 32
 
-	// Check if the iterating_turf exists, return if it doesn't
-	if(!iterating_turf)
-		return
+    // If iterating_turf is valid, create and fire the projectile
+    if(iterating_turf)
+        // Create the projectile object
+        var/obj/projectile/projectile = new projectile_type(iterating_turf)
 
-	// Create a new projectile instance at the iterating_turf
-	var/obj/projectile/projectile_instance = new proj_type(iterating_turf)
+        // Set the projectile's properties
+        projectile.starting = iterating_turf
+        projectile.firer = src
+        projectile.def_zone = "chest"
+        projectile.original = target
+        projectile.pixel_x = round(calculated_x)
+        projectile.pixel_y = round(calcualted_y)
 
-	// Set the projectile's properties
-	projectile_instance.starting = iterating_turf
-	projectile_instance.firer = src
-	projectile_instance.def_zone = "chest"
-	projectile_instance.original = target
-	projectile_instance.pixel_x = round(current_x)
-	projectile_instance.pixel_y = round(current_y)
-
-	// Fire the projectile at the target angle
-	projectile_instance.fire(angle)
+        // Fire the projectile at the given angle
+        projectile.fire(angle)

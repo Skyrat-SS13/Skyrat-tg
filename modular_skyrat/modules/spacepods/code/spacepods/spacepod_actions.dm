@@ -246,7 +246,6 @@
 	button_icon_state = "safety_[spacepod_target.weapon_safety ? "on" : "off"]"
 	build_all_button_icons()
 
-
 /**
  * Cycles through the weapons
  */

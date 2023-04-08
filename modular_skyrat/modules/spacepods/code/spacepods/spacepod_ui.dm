@@ -49,8 +49,12 @@
 	if(LAZYLEN(passengers))
 		data["occupants"] = list()
 		for(var/mob/iterating_mob as anything in passengers)
-			data["occupants"] += iterating_mob.name
+			data["occupants"] += list(list(
+				"name" = uppertext(iterating_mob.name),
+				"ref" = REF(iterating_mob),
+			))
 		data["has_occupants"] = TRUE
+
 
 	data["integrity"] = round(get_integrity(), 0.1)
 	data["max_integrity"] = max_integrity
@@ -95,6 +99,7 @@
 				"slot" = slot,
 			))
 
+	data["has_equipment"] = FALSE
 	if(LAZYLEN(equipment))
 		data["has_equipment"] = TRUE
 		data["equipment"] = list()
@@ -106,9 +111,8 @@
 				"can_uninstall" = spacepod_equipment.can_uninstall(),
 				"ref" = REF(spacepod_equipment),
 			))
-	else
-		data["has_attachments"] = FALSE
 
+	data["has_bays"] = FALSE
 	if(LAZYLEN(cargo_bays))
 		data["has_bays"] = TRUE
 		data["cargo_bays"] = list()
@@ -118,8 +122,6 @@
 				"ref" = REF(cargo_bay),
 				"storage" = cargo_bay.storage ? cargo_bay.storage.name : "none",
 			))
-	else
-		data["has_bays"] = FALSE
 
 	return data
 
@@ -154,6 +156,11 @@
 			mute_alarm(usr)
 		if("switch_weapon_slot")
 			set_active_weapon_slot(params["selected_slot"], usr)
+		if("eject_passenger")
+			var/mob/living/passenger_to_eject = locate(params["passenger_ref"]) in src
+			remove_rider(passenger_to_eject)
+			passenger_to_eject.forceMove(get_turf(src))
+			to_chat(usr, span_notice("Passenger ejected!"))
 
 // LEGACY CONTROL - Important that this works at all times as we don't want to brick people.
 /obj/spacepod/proc/verb_check(require_pilot = TRUE, mob/user = null)

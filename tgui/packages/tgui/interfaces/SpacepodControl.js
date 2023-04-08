@@ -39,7 +39,7 @@ export const SummaryTab = (props, context) => {
   const {
     pod_pilot,
     has_occupants,
-    occupants,
+    occupants = [],
     locked,
     lights,
     alarm_muted,
@@ -162,8 +162,22 @@ export const SummaryTab = (props, context) => {
         <Section title="Occupants">
           {has_occupants ? (
             occupants.map((occpuant, index) => (
-              <LabeledList key={index}>
-                <LabeledList.Item label="Name">{occpuant}</LabeledList.Item>
+              <LabeledList
+                key={index}
+                buttons={
+                  <Button
+                    icon="person-walking-arrow-right"
+                    content="Eject Passenger"
+                    onClick={() =>
+                      act('eject_passenger', {
+                        passenger_ref: occpuant.ref,
+                      })
+                    }
+                  />
+                }>
+                <LabeledList.Item label="Name">
+                  {occpuant.name}
+                </LabeledList.Item>
               </LabeledList>
             ))
           ) : (
