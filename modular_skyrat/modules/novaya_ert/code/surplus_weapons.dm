@@ -22,6 +22,10 @@
 
 	AddComponent(/datum/component/automatic_fire, autofire_shot_delay = fire_delay)
 
+/obj/item/gun/ballistic/automatic/pistol/plasma_thrower/give_manufacturer_examine()
+
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_TKACH)
+
 /obj/item/gun/ballistic/automatic/pistol/plasma_thrower/examine_more(mob/user)
 	. = ..()
 
@@ -81,6 +85,10 @@
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_guns/guns_32.dmi'
 	icon_state = "shawty_revolver"
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/revolver_fire.ogg'
+
+/obj/item/gun/ballistic/revolver/cin_shotgun_revolver/give_manufacturer_examine()
+
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_TKACH)
 
 /obj/item/gun/ballistic/revolver/cin_shotgun_revolver/examine_more(mob/user)
 	. = ..()
@@ -142,6 +150,10 @@
 	. = ..()
 
 	AddComponent(/datum/component/two_handed, require_twohands = TRUE)
+
+/obj/item/gun/ballistic/automatic/cin_amr/give_manufacturer_examine()
+
+	AddComponent(/datum/component/manufacturer_examine, COMPANY_TKACH)
 
 /obj/item/gun/ballistic/automatic/cin_amr/examine_more(mob/user)
 	. = ..()
