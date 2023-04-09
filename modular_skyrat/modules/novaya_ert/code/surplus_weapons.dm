@@ -146,11 +146,6 @@
 
 	force = 15 // I mean if you're gonna beat someone with the thing you might as well get damage appropriate for how big the fukken thing is
 
-/obj/item/gun/ballistic/automatic/cin_amr/Initialize(mapload)
-	. = ..()
-
-	AddComponent(/datum/component/two_handed, require_twohands = TRUE)
-
 /obj/item/gun/ballistic/automatic/cin_amr/give_manufacturer_examine()
 
 	AddComponent(/datum/component/manufacturer_examine, COMPANY_TKACH)
