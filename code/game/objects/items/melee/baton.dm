@@ -26,7 +26,13 @@
 	/// The length of the knockdown applied to the user on clumsy_check()
 	var/clumsy_knockdown_time = 18 SECONDS
 	/// How much stamina damage we deal on a successful hit against a living, non-cyborg mob.
+<<<<<<< HEAD
 	var/stamina_damage = 35 // SKYRAT EDIT - Less Stamina Damage (Original: 55)
+=======
+	var/stamina_damage = 55
+	/// Chance of causing force_say() when stunning a human mob
+	var/force_say_chance = 33
+>>>>>>> c7ac4f6c0b3 (Electrocution will cause you to blurt out whatever you were typing (#74560))
 	/// Can we stun cyborgs?
 	var/affect_cyborg = FALSE
 	/// The path of the default sound to play when we stun something.
@@ -197,6 +203,10 @@
 		target.Paralyze((isnull(stun_override) ? stun_time_cyborg : stun_override) * (trait_check ? 0.1 : 1))
 		additional_effects_cyborg(target, user)
 	else
+		if(ishuman(target))
+			var/mob/living/carbon/human/human_target = target
+			if(prob(force_say_chance))
+				human_target.force_say()
 		target.apply_damage(stamina_damage, STAMINA)
 		if(!trait_check)
 			target.Knockdown((isnull(stun_override) ? knockdown_time : stun_override))
@@ -264,6 +274,10 @@
 		else
 			playsound(get_turf(src), 'sound/effects/bang.ogg', 10, TRUE)
 	else
+		//straight up always force say for clumsy humans
+		if(ishuman(user))
+			var/mob/living/carbon/human/human_user = user
+			human_user.force_say()
 		user.Knockdown(clumsy_knockdown_time)
 		user.apply_damage(stamina_damage, STAMINA)
 		additional_effects_non_cyborg(user, user) // user is the target here
@@ -367,7 +381,12 @@
 	item_flags = NONE
 	force = 5
 	cooldown = 2.5 SECONDS
+<<<<<<< HEAD
 	stamina_damage = 115 // SKYRAT EDIT: Original 85
+=======
+	force_say_chance = 80 //very high force say chance because it's funny
+	stamina_damage = 85
+>>>>>>> c7ac4f6c0b3 (Electrocution will cause you to blurt out whatever you were typing (#74560))
 	clumsy_knockdown_time = 24 SECONDS
 	affect_cyborg = TRUE
 	on_stun_sound = 'sound/effects/contractorbatonhit.ogg'
@@ -399,7 +418,12 @@
 	armor_type = /datum/armor/baton_security
 
 	throwforce = 7
+<<<<<<< HEAD
 	stamina_damage = 35 // SKYRAT EDIT - 4 baton crit now (Original: 45)
+=======
+	force_say_chance = 50
+	stamina_damage = 60
+>>>>>>> c7ac4f6c0b3 (Electrocution will cause you to blurt out whatever you were typing (#74560))
 	knockdown_time = 5 SECONDS
 	clumsy_knockdown_time = 15 SECONDS
 	cooldown = 2.5 SECONDS
