@@ -399,7 +399,11 @@
 	name = "\improper SEEGSON Quantum Entangloporter"
 	desc = "Enables faster than light travel using a quantum entangloporter."
 	icon_state = "cargo_blank"
-	slot = SPACEPOD_SLOT_MISC
+
+/obj/item/spacepod_equipment/rcs_upgrade
+	name = "\improper RCS Vector Thrust Modulator"
+	desc = "Enables better control of the spacepod by allowing constant RCS course corrections."
+	icon_state = "cargo_blank"
 
 /**
  * Lock Systems

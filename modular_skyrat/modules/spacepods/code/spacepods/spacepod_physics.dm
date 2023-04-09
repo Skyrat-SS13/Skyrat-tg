@@ -79,8 +79,9 @@
 	var/sy = -fx
 	last_thrust_forward = 0
 	last_thrust_right = 0
-	if(brakes)
-		if(user_thrust_dir)
+
+	if(brakes || check_has_equipment(/obj/item/spacepod_equipment/rcs_upgrade))
+		if(user_thrust_dir && !check_has_equipment(/obj/item/spacepod_equipment/rcs_upgrade))
 			to_chat(pilot, span_warning("Vector thrust locked!"))
 		// basically calculates how much we can brake using the thrust
 		var/forward_thrust = -((fx * velocity_x) + (fy * velocity_y)) / time
@@ -91,7 +92,7 @@
 		thrust_y += forward_thrust * fy + right_thrust * sy;
 		last_thrust_forward = forward_thrust
 		last_thrust_right = right_thrust
-	else // want some sort of help piloting the ship? Haha no fuck you do it yourself
+	if(!brakes) // want some sort of help piloting the ship? Haha no fuck you do it yourself or make rcs vector upgrade
 		if(user_thrust_dir & NORTH)
 			thrust_x += fx * forward_maxthrust
 			thrust_y += fy * forward_maxthrust

@@ -59,7 +59,7 @@
 	display_name = "Advanced Spacepod Mining Tech"
 	description = "Cutting up asteroids using your spacepods.... faster!"
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3500)
-	prereq_ids = list("spacepod_ka", "adv_mining")
+	prereq_ids = list("spacepod_mining", "adv_mining")
 	design_ids = list("pod_ka", "pod_plasma_cutter")
 
 /datum/techweb_node/spacepod_advplasmacutter
@@ -67,7 +67,7 @@
 	display_name = "Advanced Spacepod Plasma Cutter"
 	description = "Cutting up asteroids using your spacepods........... FASTERRRRRR!!!!!! Oh shit, that was gibtonite."
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4500)
-	prereq_ids = list("spacepod_aka", "adv_plasma")
+	prereq_ids = list("spacepod_advmining", "adv_plasma")
 	design_ids = list("pod_adv_plasma_cutter")
 
 /**
