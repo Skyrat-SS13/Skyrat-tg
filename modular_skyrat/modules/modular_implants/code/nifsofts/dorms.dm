@@ -7,6 +7,7 @@
 	program_desc = "Grimoire Purpura, a fork of the Grimoire Caeruleam code, allows users to conveniently access an extensive database of various adult toys. "
 	holographic_filter = FALSE //No RGB toys
 	name_tag = "purpura "
+	lewd_nifsoft = TRUE
 
 	//This uses a stripped down selection from the dorms vendor.
 	summonable_items  = list(
@@ -94,6 +95,7 @@
 	name = "Purpura Contract"
 	program_desc = "Once installed, the Purpura Contract compells the user to follow the rules stored in the data of the NIFSoft. \n OOC NOTE: This is strictly here for adult roleplay. None of the laws here actually need to be obeyed and you can uninstall this NIFSoft at any time."
 	purchase_price = 0
+	lewd_nifsoft = TRUE
 
 	/// What "laws" does the person with this NIFSoft installed have?
 	var/fake_laws = ""

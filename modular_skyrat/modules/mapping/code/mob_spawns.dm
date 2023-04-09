@@ -38,6 +38,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/ds2
 	name = "DS2 personnel"
+	use_outfit_name = TRUE
 	prompt_name = "DS2 personnel"
 	you_are_text = "You are a syndicate operative, employed in a top secret research facility developing biological weapons."
 	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue operating as best you can, and try to keep a low profile."

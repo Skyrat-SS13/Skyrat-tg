@@ -11,6 +11,13 @@
 	item_type = /obj/item/card/emag/doorjack
 	description = "Identifies commonly as a \"doorjack\", this illegally modified ID card can disrupt airlock electronics. Has a self recharging cell."
 
+/datum/opposing_force_equipment/gear/tram_remote
+	name = "Tram Remote Control"
+	item_type = /obj/item/tram_remote
+	description = "When linked to a tram's on board computer systems, this device allows the user to manipulate the controls remotely. \
+		Includes direction toggle and a rapid mode to bypass door safety checks and crossing signals. \
+		Perfect for running someone over in the name of a tram malfunction!"
+
 /datum/opposing_force_equipment/gear/stoolbox
 	item_type = /obj/item/storage/toolbox/syndicate
 	description = "A fully-kitted toolbox scavenged from maintenance by our highly-paid monkeys. The toolbox \
