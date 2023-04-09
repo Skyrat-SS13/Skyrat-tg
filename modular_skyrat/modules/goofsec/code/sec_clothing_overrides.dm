@@ -63,7 +63,7 @@
 /obj/item/storage/backpack/satchel/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
-	icon_state = "satchel_security"
+	icon_state = "satchel_security_black"
 
 /obj/item/storage/backpack/duffelbag/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
