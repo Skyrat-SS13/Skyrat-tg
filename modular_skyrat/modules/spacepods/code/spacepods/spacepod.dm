@@ -649,7 +649,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 	if(!weapon_slot_to_apply)
 		weapon_slot_to_apply = pick(available_slots)
-		return
 
 	if(!islist(equipment[weaponry_to_attach.slot]))
 		equipment[weaponry_to_attach.slot] = list()
