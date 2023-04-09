@@ -102,9 +102,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			TRAIT_HANDS_BLOCKED = VEHICLE_TRAIT,
 		)
 	)
-	/// How many friends we can have!
-	var/max_passengers = 0
-
 	/// How long it takes to enter the pod.
 	var/pod_enter_time = 4 SECONDS
 
@@ -512,12 +509,12 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		add_overlay(image(icon = overlay_file, icon_state = "front_thrust"))
 
 /obj/spacepod/relaymove(mob/user, direction)
-	if(user != pilot || pilot.incapacitated())
+	if(check_occupant(user) != SPACEPOD_RIDER_TYPE_PILOT || user.incapacitated())
 		return
 	user_thrust_dir = direction
 
 /obj/spacepod/MouseDrop_T(atom/movable/dropped_atom, mob/living/user)
-	if(user == pilot || (user in passengers) || construction_state != SPACEPOD_ARMOR_WELDED)
+	if(check_occupant(user) || construction_state != SPACEPOD_ARMOR_WELDED)
 		return
 
 	if(istype(dropped_atom, /obj/machinery/portable_atmospherics/canister))
@@ -539,13 +536,12 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	if(isliving(dropped_atom))
 		var/mob/living/living_mob = dropped_atom
 		if(living_mob != user && !locked)
-			if(LAZYLEN(passengers) >= max_passengers && !pilot)
-				to_chat(user, span_danger("<b>[living_mob.p_they()] can't fly the pod!</b>"))
-				return
-			if(LAZYLEN(passengers) < max_passengers)
+			if(check_rider_slot(living_mob, SPACEPOD_RIDER_TYPE_PASSENGER))
 				visible_message(span_danger("[user] starts loading [living_mob] into [src]!"))
 				if(do_after(user, 5 SECONDS, src) && construction_state == SPACEPOD_ARMOR_WELDED)
-					add_rider(living_mob, FALSE)
+					add_rider(living_mob, SPACEPOD_RIDER_TYPE_PASSENGER)
+			else
+				to_chat(user, span_warning("[src] is full!"))
 			return
 		if(living_mob == user)
 			enter_pod(user)
