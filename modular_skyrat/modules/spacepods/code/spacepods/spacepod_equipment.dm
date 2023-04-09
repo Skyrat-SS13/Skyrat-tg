@@ -172,10 +172,11 @@
 	var/fire_delay = 1.5 SECONDS
 	overlay_icon_state = "pod_weapon_laser"
 
-/obj/item/spacepod_equipment/weaponry/on_install(obj/spacepod/attaching_spacepod)
+/obj/item/spacepod_equipment/weaponry/on_install(obj/spacepod/attaching_spacepod, override_slot)
 	. = ..()
-	var/list/available_slots = attaching_spacepod.get_free_weapon_slots()
-	attaching_spacepod.equipment[SPACEPOD_SLOT_WEAPON][src] = pick(available_slots)
+	if(!override_slot)
+		override_slot = pick(attaching_spacepod.get_free_weapon_slots())
+	attaching_spacepod.equipment[SPACEPOD_SLOT_WEAPON][src] = override_slot
 	attaching_spacepod.update_icon()
 
 

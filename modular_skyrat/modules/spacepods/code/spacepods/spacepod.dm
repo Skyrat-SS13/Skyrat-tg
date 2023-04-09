@@ -642,21 +642,21 @@ GLOBAL_LIST_INIT(spacepods_list, list())
  *
  * Asynchronously asks the user what weapon slot they want to put the weapon in.
  */
-/obj/spacepod/proc/async_weapon_slot_selection(obj/item/spacepod_equipment/equipment_to_attach, mob/user)
+/obj/spacepod/proc/async_weapon_slot_selection(obj/item/spacepod_equipment/weaponry/weaponry_to_attach, mob/user)
 	var/list/available_slots = get_free_weapon_slots()
 	var/weapon_slot_to_apply
 	weapon_slot_to_apply = tgui_input_list(user, "Please select a weapon slot to put the weapon into:", "Weapon Slot", available_slots)
 
 	if(!weapon_slot_to_apply)
+		weapon_slot_to_apply = pick(available_slots)
 		return
 
-	if(!islist(equipment[equipment_to_attach.slot]))
-		equipment[equipment_to_attach.slot] = list()
+	if(!islist(equipment[weaponry_to_attach.slot]))
+		equipment[weaponry_to_attach.slot] = list()
 
-	equipment[equipment_to_attach.slot] += equipment_to_attach
-	equipment_to_attach.forceMove(src)
-	equipment_to_attach.on_install(src)
-	equipment[SPACEPOD_SLOT_WEAPON][equipment_to_attach] = weapon_slot_to_apply
+	equipment[weaponry_to_attach.slot] += weaponry_to_attach
+	weaponry_to_attach.forceMove(src)
+	weaponry_to_attach.on_install(src, weapon_slot_to_apply)
 
 /**
  * Basic proc to detatch a piece of equipment from the shuttle.
