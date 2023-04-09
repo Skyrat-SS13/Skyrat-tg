@@ -101,8 +101,14 @@
 /obj/structure/table/rolling
 	can_flip = FALSE
 
+/obj/structure/table/wood/shuttle_bar
+	can_flip = FALSE
+
 /obj/structure/table/reinforced //It's bolted to the ground mate
 	can_flip = FALSE
 
 /obj/structure/table/optable
+	can_flip = FALSE
+
+/obj/structure/table/survival_pod
 	can_flip = FALSE
