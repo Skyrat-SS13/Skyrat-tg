@@ -159,7 +159,7 @@
 	. = ..()
 	if(forced)
 		detatching_spacepod.remove_all_riders(forced = forced)
-	attaching_spacepod.occupant_slots[occupant_slot] -= occupant_mod
+	detatching_spacepod.occupant_slots[occupant_slot] -= occupant_mod
 
 /obj/item/spacepod_equipment/cargo/chair/can_uninstall(obj/spacepod/detatching_spacepod, mob/user, forced)
 	. = ..()
