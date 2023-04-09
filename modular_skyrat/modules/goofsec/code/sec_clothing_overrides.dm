@@ -68,16 +68,16 @@
 /obj/item/storage/backpack/duffelbag/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
-	icon_state = "duffle_security_black"
+	icon_state = "duffel_security_black"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Black Variant" = list(
-			RESKIN_ICON_STATE = "duffle_security_black",
-			RESKIN_WORN_ICON_STATE = "duffle_security_black"
+			RESKIN_ICON_STATE = "duffel_security_black",
+			RESKIN_WORN_ICON_STATE = "duffel_security_black"
 		),
 		"White Variant" = list(
-			RESKIN_ICON_STATE = "duffle_security_white",
-			RESKIN_WORN_ICON_STATE = "duffle_security_white"
+			RESKIN_ICON_STATE = "duffel_security_white",
+			RESKIN_WORN_ICON_STATE = "duffel_security_white"
 		),
 	)
 
