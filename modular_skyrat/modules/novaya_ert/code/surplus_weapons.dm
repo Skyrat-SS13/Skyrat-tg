@@ -196,4 +196,5 @@
 	speed = 0.4
 	damage = 50
 	armour_penetration = 75
+	projectile_piercing = PASSMOB
 	projectile_phasing =  PASSTABLE | PASSGLASS | PASSGRILLE | PASSMACHINE | PASSSTRUCTURE | PASSDOORS // Goes through everything except walls
