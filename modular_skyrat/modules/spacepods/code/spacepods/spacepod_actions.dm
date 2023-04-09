@@ -6,7 +6,7 @@
 /obj/spacepod/proc/generate_action_type(action_type)
 	var/new_action = new action_type
 	if(istype(new_action, /datum/action/spacepod))
-		var/datum/action/spacepod/spacepod_action = new new_action
+		var/datum/action/spacepod/spacepod_action = new_action
 		spacepod_action.spacepod_target = src
 	return new_action
 
