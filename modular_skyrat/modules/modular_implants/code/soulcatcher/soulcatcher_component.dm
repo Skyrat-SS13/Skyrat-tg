@@ -87,6 +87,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/list/current_souls = list()
 	/// Weakref for the master soulcatcher datum
 	var/datum/weakref/master_soulcatcher
+	/// What is the name of the person sending the messages?
+	var/outside_voice = "Host"
 
 /// Attemps to add a ghost to the soulcatcher room.
 /datum/soulcatcher_room/proc/add_soul_from_ghost(mob/dead/observer/ghost)
@@ -178,8 +180,10 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	message += message_to_send
 
 	for(var/mob/living/soulcatcher_soul/soul in current_souls)
-		to_chat(soul, span_blue(message))
+		if((emote && !soul.internal_sight) || (!emote && !soul.internal_hearing))
+			continue
 
+		to_chat(soul, span_blue(message))
 
 	return TRUE
 
@@ -206,6 +210,44 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/datum/weakref/previous_body
 	/// What is the weakref of the soulcatcher room are we currently in?
 	var/datum/weakref/current_room
+
+	/// Is the soul able to see things in the outside world?
+	var/outside_sight = TRUE
+	/// Is the soul able to hear things from the outside world?
+	var/outside_hearing = TRUE
+	/// Is the soul able to "see" things from inside of the soulcatcher?
+	var/internal_sight = TRUE
+	/// Is the soul able to "hear" things from inside of the soulcatcher?
+	var/internal_hearing = TRUE
+
+
+/mob/living/soulcatcher_soul/Initialize(mapload)
+	. = ..()
+	if(!outside_sight)
+		become_blind(NO_EYES)
+
+	if(!outside_hearing)
+		ADD_TRAIT(src, TRAIT_DEAF, INNATE_TRAIT)
+
+/// Toggles whether or not the soul inside the soulcatcher can see the outside world. returns the state of the `outside_sight` variable.
+/mob/living/soulcatcher_soul/proc/toggle_sight()
+	outside_sight = !outside_sight
+	if(outside_sight)
+		cure_blind(NO_EYES)
+	else
+		become_blind(NO_EYES)
+
+	return outside_sight
+
+/// Toggles whether or not the soul inside the soulcatcher can see the outside world. returns the state of the `outside_sight` variable.
+/mob/living/soulcatcher_soul/proc/toggle_hearing()
+	outside_hearing = !outside_hearing
+	if(outside_hearing)
+		REMOVE_TRAIT(src, TRAIT_DEAF, INNATE_TRAIT)
+	else
+		ADD_TRAIT(src, TRAIT_DEAF, INNATE_TRAIT)
+
+	return outside_sight
 
 /mob/living/soulcatcher_soul/Destroy()
 	if(previous_body && mind)

@@ -13,12 +13,7 @@
 /datum/component/soulcatcher/ui_data(mob/user)
 	var/list/data = list()
 
-	return data
-
-/datum/component/soulcatcher/ui_static_data(mob/user)
-	var/list/data = list()
-
-	data["current_vessel"] = parent
+	data["ghost_joinable"] = ghost_joinable
 	data["current_rooms"] = list()
 	for(var/datum/soulcatcher_room/room in soulcatcher_rooms)
 		var/list/room_data = list(
@@ -40,15 +35,34 @@
 
 	return data
 
+/datum/component/soulcatcher/ui_static_data(mob/user)
+	var/list/data = list()
+
+	data["current_vessel"] = parent
+
+	return data
+
 /datum/component/soulcatcher/ui_act(action, list/params)
 	. = ..()
 	if(.)
 		return
 
+
+	var/datum/soulcatcher_room/target_room
+	if(params["room_ref"])
+		target_room = locate(params["room_ref"]) in soulcatcher_rooms
+		if(!target_room)
+			return FALSE
+
+	var/mob/living/soulcatcher_soul/target_soul
+	if(params["target_soul"])
+		target_soul = locate(params["target_soul"]) in target_room.current_souls
+		if(!target_soul)
+			return FALSE
+
 	switch(action)
 		if("delete_room")
-			var/datum/soulcatcher_room/target_room = locate(params["room_ref"]) in soulcatcher_rooms
-			if(!target_room)
+			if(length(soulcatcher_rooms) <= 1)
 				return FALSE
 
 			soulcatcher_rooms -= target_room
@@ -60,40 +74,34 @@
 			return TRUE
 
 		if("rename_room")
-			var/datum/soulcatcher_room/target_room = locate(params["room_ref"]) in soulcatcher_rooms
-			if(!target_room || !params["new_room_name"])
+			var/new_room_name = tgui_input_text(usr,"Chose a new name for the room.", name, target_room.name)
+			if(!new_room_name)
 				return FALSE
 
-			target_room.name = params["new_room_name"]
+			target_room.name = new_room_name
 			return TRUE
 
 		if("redescribe_room")
-			var/datum/soulcatcher_room/target_room = locate(params["room_ref"]) in soulcatcher_rooms
-			if(!target_room || !params["new_room_name"])
+			var/new_room_desc = tgui_input_text(usr,"Chose a new name for the room.", name, target_room.room_description, multiline = TRUE)
+			if(!new_room_desc)
 				return FALSE
 
-			target_room.room_description = params["new_room_desc"]
+			target_room.room_description = new_room_desc
+			return TRUE
+
+		if("modify_name")
+			var/new_name = tgui_input_text(usr,"Chose a new name for the room.", name, target_room.room_description, multiline = TRUE)
+			if(!new_name)
+				return FALSE
+
+			target_room.outside_voice = new_name
 			return TRUE
 
 		if("remove_soul")
-			var/datum/soulcatcher_room/target_room = locate(params["room_ref"]) in soulcatcher_rooms
-			if(!target_room || !params["new_room_name"])
-				return FALSE
-			var/mob/living/soulcatcher_soul/soul = locate(params["soul_to_remove"]) in target_room.current_souls
-			if(!soul)
-				return FALSE
-
-			target_room.remove_soul(soul)
+			target_room.remove_soul(target_soul)
 			return TRUE
 
 		if("transfer_soul")
-			var/datum/soulcatcher_room/target_room = locate(params["room_ref"]) in soulcatcher_rooms
-			if(!target_room || !params["new_room_name"])
-				return FALSE
-			var/mob/living/soulcatcher_soul/soul = locate(params["soul_to_transfer"]) in target_room.current_souls
-			if(!soul)
-				return FALSE
-
 			var/list/available_rooms = soulcatcher_rooms.Copy()
 			soulcatcher_rooms -= target_room
 
@@ -101,6 +109,38 @@
 			if(!(transfer_room in soulcatcher_rooms))
 				return FALSE
 
-			target_room.transfer_soul(soul, transfer_room)
+			target_room.transfer_soul(target_soul, transfer_room)
 
 			return TRUE
+
+		if("toggle_soul_outside_sense")
+			if(params["sense_to_change"] == "hearing")
+				target_soul.toggle_hearing()
+			else
+				target_soul.toggle_hearing()
+
+			return TRUE
+
+		if("toggle_soul_sense")
+			if(params["sense_to_change"] == "hearing")
+				target_soul.internal_hearing = !target_soul.internal_hearing
+			else
+				target_soul.internal_sight = !target_soul.internal_sight
+
+			return TRUE
+
+		if("send_message")
+			var/message_to_send = ""
+			var/emote = params["emote"]
+			var/message_sender = target_room.outside_voice
+			if(params["narration"])
+				message_sender = FALSE
+
+			message_to_send = tgui_input_text(usr, "Input the message you want to send", name, multiline = TRUE)
+
+			if(!message_to_send)
+				return FALSE
+
+			target_room.send_message(message_to_send, message_sender, emote)
+			return TRUE
+
