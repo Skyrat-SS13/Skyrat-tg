@@ -104,8 +104,8 @@
 		attach_equipment(spacepod_equipment)
 	cell = new /obj/item/stock_parts/cell/high/empty(src)
 	internal_tank = new /obj/machinery/portable_atmospherics/canister/air(src)
-	velocity_x = rand(-15, 15)
-	velocity_y = rand(-15, 15)
+	component_velocity_x = rand(-15, 15)
+	component_velocity_y = rand(-15, 15)
 	dirt_overlay = pick(list("pod_dirt_1", "pod_dirt_2", "pod_dirt_3"))
 	update_integrity(rand(100, max_integrity))
 	brakes = FALSE

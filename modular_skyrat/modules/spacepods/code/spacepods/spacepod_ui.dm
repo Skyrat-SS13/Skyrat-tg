@@ -73,7 +73,7 @@
 	data["integrity"] = round(get_integrity(), 0.1)
 	data["max_integrity"] = max_integrity
 
-	data["velocity"] = round(sqrt(velocity_x * velocity_x + velocity_y * velocity_y), 0.1)
+	data["velocity"] = round(sqrt(component_velocity_x * component_velocity_x + component_velocity_y * component_velocity_y), 0.1)
 
 	data["locked"] = locked
 	data["brakes"] = brakes

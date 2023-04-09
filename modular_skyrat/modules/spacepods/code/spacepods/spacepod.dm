@@ -15,7 +15,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	opacity = FALSE
 	dir = NORTH // always points north because why not
 	layer = SPACEPOD_LAYER
-	animate_movement = NO_STEPS // we do our own gliding here
 	anchored = TRUE
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF // it floats above lava or something, I dunno
 	base_pixel_x = -16
@@ -64,10 +63,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/datum/gas_mixture/cabin_air
 	/// The air inside the cabin.
 	var/obj/machinery/portable_atmospherics/canister/internal_tank
-	/// Control timer for slow process, please don't fuck with it.
-	var/last_slowprocess = 0
 
-	/// People inside the pod, an associative list
+	/// People inside the pod, an associative list, the list structure is as follows [occupant mob][list data type][list data type entry]
 	var/list/occupants = list()
 
 	/// A list of our slots, and how many people can fit in said slot.
@@ -105,23 +102,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	/// How long it takes to enter the pod.
 	var/pod_enter_time = 4 SECONDS
 
-	// Physics stuff, we calculate our own velocity and acceleration, in tiles per second.
-	var/velocity_x = 0
-	var/velocity_y = 0
-	var/offset_x = 0 // like pixel_x/y but in tiles
-	var/offset_y = 0
-	var/angle = 0 // degrees, clockwise
-	var/desired_angle = null // set by pilot moving his mouse
-	var/angular_velocity = 0 // degrees per second
-	var/max_angular_acceleration = 360 // in degrees per second per second
-	var/last_thrust_forward = 0
-	var/last_thrust_right = 0
-	var/last_rotate = 0
-	// End of physics stuff
-
-	/// Are our engines turned on or off?
-	var/engines = TRUE
-
 	/// Our RCS breaking system, if it's on, the ship will try to keep itself stable.
 	var/brakes = TRUE
 	/// Is the angular vectoring system enabled?
@@ -129,22 +109,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	/// A system for preventing any thrust from being applied.
 	var/thrust_lockout = FALSE
 	/// Users thrust direction
-	var/user_thrust_dir = 0
-	/// Max forward thrust, in tiles per second
-	var/forward_maxthrust = 6
-	/// Max reverse thrust, in tiles per second
-	var/backward_maxthrust = 3
-	/// Max side thrust, in tiles per second
-	var/side_maxthrust = 1
 
-	/// Bounce factor, how much we bounce off walls
-	var/bump_impulse = 0.6
-	/// how much of our velocity to keep on collision
-	var/bounce_factor = 0.2
-	/// mostly there to slow you down when you drive (pilot?) down a 2x2 corridor
-	var/lateral_bounce_factor = 0.95
-	/// Our icon direction number.
-	var/icon_dir_num = 1
+
+
 	/// Our looping alarm sound for something bad happening.
 	var/datum/looping_sound/spacepod_alarm/alarm_sound
 	/// Have we muted the alarm?
@@ -164,12 +131,25 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	/// What dirt overlay do we add?
 	var/dirt_overlay = "pod_dirt_1"
 
+	/// Component physics values
+	var/component_angle = 0
+	var/component_velocity_x = 0
+	var/component_velocity_y = 0
+	var/component_offset_x = 0
+	var/component_offset_y = 0
+	var/component_last_rotate = 0
+	var/component_last_thrust_right = 0
+	var/component_last_thrust_forward = 0
+
 
 /obj/spacepod/Initialize()
 	. = ..()
+	var/datum/component/physics/physics_component = AddComponent(/datum/component/physics)
+	RegisterSignal(physics_component, COMSIG_PHYSICS_UPDATE_MOVEMENT, PROC_REF(physics_component_update_movement))
+	RegisterSignal(physics_component, COMSIG_PHYSICS_PROCESSED_BUMP, PROC_REF(process_physics_bump))
 	active_weapon_slot = pick(weapon_slots)
 	GLOB.spacepods_list += src
-	START_PROCESSING(SSfastprocess, src)
+	START_PROCESSING(SSobj, src)
 	cabin_air = new
 	cabin_air.temperature = T20C
 	cabin_air.volume = 200
@@ -198,6 +178,23 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	UnregisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED)
 	return ..()
 
+/**
+ * physics_component_update_movement
+ *
+ * Updates the corresponding component values for each time the physics component is processed.
+ */
+/obj/spacepod/proc/physics_component_update_movement(datum/source, updated_angle, updated_velocity_x, updated_velocity_y, updated_offset_x, updated_offset_y, updated_last_rotate, updated_last_thrust_forward, updated_last_thrust_right)
+	SIGNAL_HANDLER
+	component_angle = updated_angle
+	component_velocity_x = updated_velocity_x
+	component_velocity_y = updated_velocity_y
+	component_offset_x = updated_offset_x
+	component_offset_y = updated_offset_y
+	component_last_rotate = updated_last_rotate
+	component_last_thrust_forward = updated_last_thrust_forward
+	component_last_thrust_right = updated_last_thrust_right
+
+	update_icon()
 
 // We want the pods to have gravity all the time to prevent them being touched by spacedrift.
 /obj/spacepod/has_gravity(turf/gravity_turf)
@@ -376,7 +373,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	if(disassembled)
 		// AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 		// alright fine fine you can have the frame pieces back
-		var/clamped_angle = (round(angle, 90) % 360 + 360) % 360
+		var/clamped_angle = (round(component_angle, 90) % 360 + 360) % 360
 		var/target_dir = NORTH
 		switch(clamped_angle)
 			if(0)
@@ -440,8 +437,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		for(var/obj/item/spacepod_equipment/weaponry/iterating_weaponry in equipment[SPACEPOD_SLOT_WEAPON])
 			var/mutable_appearance/weapon_overlay = mutable_appearance(iterating_weaponry.overlay_icon, iterating_weaponry.overlay_icon_state) // Default state should fill in the left gunpod.
 			if(equipment[SPACEPOD_SLOT_WEAPON][iterating_weaponry])
-				var/offset_x = weapon_slots[equipment[SPACEPOD_SLOT_WEAPON][iterating_weaponry]][1]
-				if(offset_x > 0) // Positive value means it's supposed to be overlayed on the right side of the pod, thus, flip le image so it fits.
+				var/component_offset_x = weapon_slots[equipment[SPACEPOD_SLOT_WEAPON][iterating_weaponry]][1]
+				if(component_offset_x > 0) // Positive value means it's supposed to be overlayed on the right side of the pod, thus, flip le image so it fits.
 					var/matrix/flip_matrix = matrix(-1, 0, 0, 0, 1, 0)
 					weapon_overlay.transform = flip_matrix
 
@@ -457,7 +454,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	// Thrust overlays
 	update_thruster_overlays()
 
+
 /obj/spacepod/proc/update_thruster_overlays()
+	var/datum/component/physics/physics_component = GetComponent(/datum/component/physics)
 	// Initialize left and right thrust lists with zeros
 	var/list/left_thrusts = list(0, 0, 0, 0, 0, 0, 0, 0)
 	var/list/right_thrusts = list(0, 0, 0, 0, 0, 0, 0, 0)
@@ -465,23 +464,23 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/front_thrust = 0
 
 	// Calculate left and right thrusts based on last_thrust_right
-	if(last_thrust_right != 0)
-		var/tdir = last_thrust_right > 0 ? WEST : EAST
-		var/thrust_val = abs(last_thrust_right) / side_maxthrust
+	if(component_last_thrust_right != 0)
+		var/tdir = component_last_thrust_right > 0 ? WEST : EAST
+		var/thrust_val = abs(component_last_thrust_right) / physics_component.side_maxthrust
 		left_thrusts[tdir] = thrust_val
 		right_thrusts[tdir] = thrust_val
 
 	// Calculate front and back thrusts based on last_thrust_forward
-	if(last_thrust_forward > 0)
-		back_thrust = last_thrust_forward / forward_maxthrust
+	if(component_last_thrust_forward > 0)
+		back_thrust = component_last_thrust_forward / physics_component.forward_maxthrust
 	else
-		front_thrust = -last_thrust_forward / backward_maxthrust
+		front_thrust = -component_last_thrust_forward / physics_component.backward_maxthrust
 
 	// Calculate left and right thrusts based on last_rotate
-	if(last_rotate != 0)
-		var/fraction = abs(last_rotate) / max_angular_acceleration
+	if(component_last_rotate != 0)
+		var/fraction = abs(component_last_rotate) / physics_component.max_angular_acceleration
 		for(var/cardinal_direction in GLOB.cardinals)
-			if(last_rotate > 0)
+			if(component_last_rotate > 0)
 				right_thrusts[cardinal_direction] += fraction
 			else
 				left_thrusts[cardinal_direction] += fraction
@@ -508,10 +507,12 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	if(front_thrust)
 		add_overlay(image(icon = overlay_file, icon_state = "front_thrust"))
 
+
 /obj/spacepod/relaymove(mob/user, direction)
 	if(check_occupant(user) != SPACEPOD_RIDER_TYPE_PILOT || user.incapacitated())
 		return
-	user_thrust_dir = direction
+
+	SEND_SIGNAL(src, COMSIG_PHYSICS_SET_THRUST_DIR, direction)
 
 /obj/spacepod/MouseDrop_T(atom/movable/dropped_atom, mob/living/user)
 	if(check_occupant(user) || construction_state != SPACEPOD_ARMOR_WELDED)
@@ -699,11 +700,11 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 // MISC PROCS
 
 /**
- * Slowprocess
+ * process_air
  *
- * This is the slower, more intensive version of process. It's slower.
+ * Processes the atmospherics of the pod.
  */
-/obj/spacepod/proc/slowprocess()
+/obj/spacepod/process(delta_time)
 	if(cabin_air && cabin_air.return_volume() > 0)
 		var/delta = cabin_air.return_temperature() - T20C
 		cabin_air.temperature = cabin_air.return_temperature() - max(-10, min(10, round(delta/4,0.1)))
@@ -772,9 +773,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/dx = text2num(sl_x_list[1]) + (text2num(sl_x_list[2]) / world.icon_size) - 1 - text2num(view_list[1]) / 2
 	var/dy = text2num(sl_y_list[1]) + (text2num(sl_y_list[2]) / world.icon_size) - 1 - text2num(view_list[2]) / 2
 	if(sqrt(dx * dx + dy * dy) > 1)
-		desired_angle = 90 - ATAN2(dx, dy)
+		SEND_SIGNAL(src, COMSIG_PHYSICS_SET_DESIRED_ANGLE, 90 - ATAN2(dx, dy))
 	else
-		desired_angle = null
+		SEND_SIGNAL(src, COMSIG_PHYSICS_SET_DESIRED_ANGLE, null)
 
 /**
  * Play alarm
@@ -1103,9 +1104,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
  * Removes the traits from the mob, depending on the rider_type
  */
 /obj/spacepod/proc/remove_all_traits(mob/living/mob_to_remove_from)
-	if(occupants[mob_to_remove_from] && occupants[mob_to_remove_from][SPACEPOD_RIDER_TRAITS])
-		for(var/iterating_trait as anything in occupants[mob_to_remove_from][SPACEPOD_RIDER_TRAITS])
-			remove_trait_from_occupant(mob_to_remove_from, iterating_trait)
+	for(var/iterating_trait as anything in occupants[mob_to_remove_from][SPACEPOD_RIDER_TRAITS])
+		remove_trait_from_occupant(mob_to_remove_from, iterating_trait)
 
 /**
  * remove_trait_from_occupant
@@ -1237,7 +1237,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	items += ""
 	items += "Spacepod Charge: [cell ? "[round(cell.charge,0.1)]/[cell.maxcharge] KJ" : "NONE"]"
 	items += "Spacepod Integrity: [round(get_integrity(), 0.1)]/[max_integrity]"
-	items += "Spacepod Velocity: [round(sqrt(velocity_x * velocity_x + velocity_y * velocity_y), 0.1)] m/s"
+	items += "Spacepod Velocity: [round(sqrt(component_velocity_x * component_velocity_x + component_velocity_y * component_velocity_y), 0.1)] m/s"
 	var/obj/item/spacepod_equipment/weaponry/selected_weapon = get_weapon_in_slot(active_weapon_slot)
 	items += "Spacepod Weapon: [active_weapon_slot] ([selected_weapon ? selected_weapon.name : "Empty"])"
 	items += ""

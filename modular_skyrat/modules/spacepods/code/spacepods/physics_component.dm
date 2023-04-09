@@ -1,0 +1,380 @@
+/**
+ * Physics Component
+ *
+ * This component will give whatever it is attached to 2D physics.
+ */
+/datum/component/physics
+	/// A reference to our parent, in movable atom form.
+	var/atom/movable/parent_atom
+	/// Bounce factor, how much we bounce off walls
+	var/bump_impulse = 0.6
+	/// how much of our velocity to keep on collision
+	var/bounce_factor = 0.2
+	/// mostly there to slow you down when you drive (pilot?) down a 2x2 corridor
+	var/lateral_bounce_factor = 0.95
+	/// X-axis velocity of the atom (in tiles per second)
+	var/velocity_x = 0
+	/// Y-axis velocity of the atom (in tiles per second)
+	var/velocity_y = 0
+	/// X-axis tile offset (similar to pixel_x/y, but in tiles)
+	var/offset_x = 0
+	/// Y-axis tile offset (similar to pixel_x/y, but in tiles)
+	var/offset_y = 0
+	/// atom's angle in degrees (clockwise)
+	var/angle = 0
+	/// Angular velocity of the atom (in degrees per second)
+	var/angular_velocity = 0
+	/// Our icon direction number.
+	var/icon_dir_num = 1
+	/// Do we try to stabalise ourselves?
+	var/auto_stabalisation = FALSE
+	/// Physics control vars
+	var/desired_thrust_dir = 0
+	/// Max forward thrust, in tiles per second
+	var/forward_maxthrust = 6
+	/// Max reverse thrust, in tiles per second
+	var/backward_maxthrust = 3
+	/// Max side thrust, in tiles per second
+	var/side_maxthrust = 1
+	/// Desired angle for the spacepod, set by pilot moving their mouse
+	var/desired_angle = null
+	/// Maximum angular acceleration of the spacepod (in degrees per second per second)
+	var/max_angular_acceleration = 360
+	/// Last forward thrust value for the spacepod
+	var/last_thrust_forward = 0
+	/// Last right thrust value for the spacepod
+	var/last_thrust_right = 0
+	/// Last rotation value for the spacepod
+	var/last_rotate = 0
+	/// Our maximum velocity_x in tiles per second
+	var/max_velocity_x = 100
+	/// Our maximum velocity_y in tiles per second
+	var/max_velocity_y = 100
+
+
+
+/datum/component/physics/Initialize(_forward_maxthrust, _backward_maxthrust, _side_maxthrust, _max_angular_acceleration, _max_velocity_x, _max_velocity_y)
+	// We can only control movable atoms.
+	if(!ismovable(parent))
+		return COMPONENT_INCOMPATIBLE
+
+	if(_forward_maxthrust)
+		forward_maxthrust = _forward_maxthrust
+	if(_backward_maxthrust)
+		backward_maxthrust = _backward_maxthrust
+	if(_side_maxthrust)
+		side_maxthrust = _side_maxthrust
+	if(_max_angular_acceleration)
+		max_angular_acceleration = _max_angular_acceleration
+	if(_max_velocity_x)
+		max_velocity_x = max_velocity_x
+	if(_max_velocity_y)
+		max_velocity_y = _max_velocity_y
+
+	parent_atom = parent
+
+	// We animate our own movement
+	parent_atom.animate_movement = NO_STEPS
+
+	START_PROCESSING(SSphysics, src)
+
+/datum/component/physics/RegisterWithParent()
+	. = ..()
+	RegisterSignal(parent, COMSIG_PHYSICS_SET_THRUST_DIR, PROC_REF(set_thrust_dir))
+	RegisterSignal(parent, COMSIG_PHYSICS_SET_DESIRED_ANGLE, PROC_REF(set_desired_angle))
+	RegisterSignal(parent, COMSIG_PHYSICS_SET_ANGLE, PROC_REF(set_angle))
+	RegisterSignal(parent, COMSIG_PHYSICS_SET_VELOCITY, PROC_REF(set_velocity))
+	RegisterSignal(parent, COMSIG_ATOM_BUMPED, PROC_REF(process_bumped))
+	RegisterSignal(parent, COMSIG_MOVABLE_BUMP, PROC_REF(process_bump))
+
+/datum/component/physics/UnregisterFromParent()
+	. = ..()
+	UnregisterSignal(parent, list(
+		COMSIG_PHYSICS_SET_THRUST_DIR,
+		COMSIG_PHYSICS_SET_DESIRED_ANGLE,
+		COMSIG_PHYSICS_SET_ANGLE,
+		COMSIG_PHYSICS_SET_VELOCITY,
+		COMSIG_ATOM_BUMPED,
+		COMSIG_MOVABLE_BUMP,
+		))
+
+/datum/component/physics/Destroy(force, silent)
+	parent_atom.animate_movement = initial(parent_atom.animate_movement)
+	parent_atom = null
+	return ..()
+
+
+
+/datum/component/physics/process(delta_time)
+
+	// Initialization of variables for position and angle calculations
+	var/last_offset_x = offset_x
+	var/last_offset_y = offset_y
+
+	var/last_angle = angular_calculations(delta_time)
+
+	drag_calculations(delta_time)
+
+	thrust_calculations(delta_time)
+
+	offset_x += velocity_x * delta_time
+	offset_y += velocity_y * delta_time
+	// alright so now we reconcile the offsets with the in-world position.
+	while((offset_x > 0 && velocity_x > 0) || (offset_y > 0 && velocity_y > 0) || (offset_x < 0 && velocity_x < 0) || (offset_y < 0 && velocity_y < 0))
+		var/failed_x = FALSE
+		var/failed_y = FALSE
+		if(offset_x > 0 && velocity_x > 0)
+			parent_atom.dir = EAST
+			if(!parent_atom.Move(get_step(parent_atom, EAST)))
+				offset_x = 0
+				failed_x = TRUE
+				velocity_x *= -bounce_factor
+				velocity_y *= lateral_bounce_factor
+			else
+				offset_x--
+				last_offset_x--
+		else if(offset_x < 0 && velocity_x < 0)
+			parent_atom.dir = WEST
+			if(!parent_atom.Move(get_step(parent_atom, WEST)))
+				offset_x = 0
+				failed_x = TRUE
+				velocity_x *= -bounce_factor
+				velocity_y *= lateral_bounce_factor
+			else
+				offset_x++
+				last_offset_x++
+		else
+			failed_x = TRUE
+		if(offset_y > 0 && velocity_y > 0)
+			parent_atom.dir = NORTH
+			if(!parent_atom.Move(get_step(parent_atom, NORTH)))
+				offset_y = 0
+				failed_y = TRUE
+				velocity_y *= -bounce_factor
+				velocity_x *= lateral_bounce_factor
+			else
+				offset_y--
+				last_offset_y--
+		else if(offset_y < 0 && velocity_y < 0)
+			parent_atom.dir = SOUTH
+			if(!parent_atom.Move(get_step(parent_atom, SOUTH)))
+				offset_y = 0
+				failed_y = TRUE
+				velocity_y *= -bounce_factor
+				velocity_x *= lateral_bounce_factor
+			else
+				offset_y++
+				last_offset_y++
+		else
+			failed_y = TRUE
+		if(failed_x && failed_y)
+			break
+	// prevents situations where you go "wtf I'm clearly right next to it" as you enter a stationary spacepod
+	if(velocity_x == 0)
+		if(offset_x > 0.5)
+			if(parent_atom.Move(get_step(parent_atom, EAST)))
+				offset_x--
+				last_offset_x--
+			else
+				offset_x = 0
+		if(offset_x < -0.5)
+			if(parent_atom.Move(get_step(parent_atom, WEST)))
+				offset_x++
+				last_offset_x++
+			else
+				offset_x = 0
+	if(velocity_y == 0)
+		if(offset_y > 0.5)
+			if(parent_atom.Move(get_step(parent_atom, NORTH)))
+				offset_y--
+				last_offset_y--
+			else
+				offset_y = 0
+		if(offset_y < -0.5)
+			if(parent_atom.Move(get_step(parent_atom, SOUTH)))
+				offset_y++
+				last_offset_y++
+			else
+				offset_y = 0
+	parent_atom.dir = NORTH
+
+	var/matrix/mat_from = new()
+	var/matrix/mat_to = new()
+	if(icon_dir_num == 1)
+		mat_from.Turn(last_angle)
+		mat_to.Turn(angle)
+	else
+		parent_atom.dir = angle2dir(angle)
+
+	SEND_SIGNAL(parent_atom, COMSIG_PHYSICS_UPDATE_MOVEMENT, angle, velocity_x, velocity_y, offset_x, offset_y, last_angle, last_thrust_forward, last_thrust_right)
+
+	parent_atom.transform = mat_from
+	parent_atom.pixel_x = parent_atom.base_pixel_x + last_offset_x * 32
+	parent_atom.pixel_y = parent_atom.base_pixel_y + last_offset_y * 32
+	animate(parent_atom, transform = mat_to, pixel_x = parent_atom.base_pixel_x + offset_x * 32, pixel_y = parent_atom.base_pixel_y + offset_y * 32, time = delta_time * 10, flags = ANIMATION_END_NOW)
+	var/list/possible_smooth_viewers = parent_atom.contents | parent_atom | parent_atom.get_all_orbiters()
+	for(var/mob/iterating_mob in possible_smooth_viewers)
+		var/client/mob_client = iterating_mob.client
+		if(!mob_client)
+			continue
+		mob_client.pixel_x = last_offset_x * 32
+		mob_client.pixel_y = last_offset_y * 32
+		animate(mob_client, pixel_x = offset_x * 32, pixel_y = offset_y * 32, time = delta_time * 10, flags = ANIMATION_END_NOW)
+
+	desired_thrust_dir = 0
+
+// PHYSICS CALCULATION PROCS
+
+/datum/component/physics/proc/angular_calculations(delta_time)
+	var/last_angle = angle
+	var/desired_angular_velocity = 0
+	// Calculate desired angular velocity based on desired angle
+	if(isnum(desired_angle))
+		// Ensure angles rotate the short way
+		while(angle > desired_angle + 180)
+			angle -= 360
+			last_angle -= 360
+		while(angle < desired_angle - 180)
+			angle += 360
+			last_angle += 360
+
+		// Calculate desired angular velocity based on the desired angle and delta_time
+		if(abs(desired_angle - angle) < (max_angular_acceleration * delta_time))
+			desired_angular_velocity = (desired_angle - angle) / delta_time
+		else if(desired_angle > angle)
+			desired_angular_velocity = 2 * sqrt((desired_angle - angle) * max_angular_acceleration * 0.25)
+		else
+			desired_angular_velocity = -2 * sqrt((angle - desired_angle) * max_angular_acceleration * 0.25)
+
+	// Adjust angular velocity based on desired angular velocity and the battery usage
+	var/angular_velocity_adjustment = clamp(desired_angular_velocity - angular_velocity, -max_angular_acceleration * delta_time, max_angular_acceleration * delta_time)
+	if(angular_velocity_adjustment)
+		last_rotate = angular_velocity_adjustment / delta_time
+		angular_velocity += angular_velocity_adjustment
+	else
+		last_rotate = 0
+	angle += angular_velocity * delta_time
+
+	return last_angle
+
+/datum/component/physics/proc/drag_calculations(delta_time)
+	// Calculate drag based on the environment and spacepod's velocity
+	var/velocity_mag = sqrt(velocity_x * velocity_x + velocity_y * velocity_y) // magnitude
+	if(velocity_mag || angular_velocity)
+		var/drag = 0
+		for(var/turf/iterating_turf in parent_atom.locs)
+			if(isspaceturf(iterating_turf))
+				continue
+			drag += 0.001
+			var/floating = FALSE
+			if(iterating_turf.has_gravity() && !auto_stabalisation && velocity_mag > 0.1)
+				floating = TRUE // want to fly this shit on the station? Have fun draining your battery.
+			if((!floating && iterating_turf.has_gravity()) || auto_stabalisation) // brakes are a kind of magboots okay?
+				drag += is_mining_level(parent_atom.z) ? 0.1 : 0.5 // some serious drag. Damn. Except lavaland, it has less gravity or something
+				if(velocity_mag > 5 && prob(velocity_mag * 4) && isfloorturf(iterating_turf))
+					var/turf/open/floor/floor = iterating_turf
+					floor.make_plating() // pull up some floor tiles. Stop going so fast, ree.
+					parent_atom.take_damage(3, BRUTE, "melee", FALSE)
+			var/datum/gas_mixture/env = iterating_turf.return_air()
+			if(env)
+				var/pressure = env.return_pressure()
+				drag += velocity_mag * pressure * 0.0001 // 1 atmosphere should shave off 1% of velocity per tile
+		if(velocity_mag > 20)
+			drag = max(drag, (velocity_mag - 20) / delta_time)
+		if(drag)
+			if(velocity_mag)
+				var/drag_factor = 1 - clamp(drag * delta_time / velocity_mag, 0, 1)
+				velocity_x *= drag_factor
+				velocity_y *= drag_factor
+			if(angular_velocity != 0)
+				var/drag_factor_spin = 1 - clamp(drag * 30 * delta_time / abs(angular_velocity), 0, 1)
+				angular_velocity *= drag_factor_spin
+
+/datum/component/physics/proc/thrust_calculations(delta_time)
+	// Alright now calculate the THRUST
+	var/thrust_x
+	var/thrust_y
+	var/fx = cos(90 - angle)
+	var/fy = sin(90 - angle)
+	var/sx = fy
+	var/sy = -fx
+	last_thrust_forward = 0
+	last_thrust_right = 0
+
+	// Automatic stabalisation of the atom.
+	if(auto_stabalisation)
+		// basically calculates how much we can brake using the thrust
+		var/forward_thrust = -((fx * velocity_x) + (fy * velocity_y)) / delta_time
+		var/right_thrust = -((sx * velocity_x) + (sy * velocity_y)) / delta_time
+		forward_thrust = clamp(forward_thrust, -backward_maxthrust, forward_maxthrust)
+		right_thrust = clamp(right_thrust, -side_maxthrust, side_maxthrust)
+		thrust_x += forward_thrust * fx + right_thrust * sx;
+		thrust_y += forward_thrust * fy + right_thrust * sy;
+		last_thrust_forward = forward_thrust
+		last_thrust_right = right_thrust
+
+	// Thrust application.
+	if(desired_thrust_dir & NORTH)
+		thrust_x += fx * forward_maxthrust
+		thrust_y += fy * forward_maxthrust
+		last_thrust_forward = forward_maxthrust
+	if(desired_thrust_dir & SOUTH)
+		thrust_x -= fx * backward_maxthrust
+		thrust_y -= fy * backward_maxthrust
+		last_thrust_forward = -backward_maxthrust
+	if(desired_thrust_dir & EAST)
+		thrust_x += sx * side_maxthrust
+		thrust_y += sy * side_maxthrust
+		last_thrust_right = side_maxthrust
+	if(desired_thrust_dir & WEST)
+		thrust_x -= sx * side_maxthrust
+		thrust_y -= sy * side_maxthrust
+		last_thrust_right = -side_maxthrust
+
+	velocity_x += thrust_x * delta_time
+	velocity_y += thrust_y * delta_time
+
+// SET PROCS
+
+/datum/component/physics/proc/set_desired_angle(datum/source, new_angle)
+	SIGNAL_HANDLER
+	desired_angle = new_angle
+
+/datum/component/physics/proc/set_angle(datum/source, new_angle)
+	SIGNAL_HANDLER
+	angle = new_angle
+
+/datum/component/physics/proc/set_thrust_dir(datum/source, new_thrust_dir)
+	SIGNAL_HANDLER
+	desired_thrust_dir = new_thrust_dir
+
+/datum/component/physics/proc/set_velocity(datum/source, new_velocity_x, new_velocity_y)
+	SIGNAL_HANDLER
+	velocity_x = new_velocity_x
+	velocity_y = new_velocity_y
+
+/datum/component/physics/proc/process_bumped(datum/source, atom/movable/hit_object)
+	SIGNAL_HANDLER
+	if(hit_object.dir & NORTH)
+		velocity_y += bump_impulse
+	if(hit_object.dir & SOUTH)
+		velocity_y -= bump_impulse
+	if(hit_object.dir & EAST)
+		velocity_x += bump_impulse
+	if(hit_object.dir & WEST)
+		velocity_x -= bump_impulse
+
+/datum/component/physics/proc/process_bump(datum/source, atom/bumped_atom)
+	SIGNAL_HANDLER
+	var/bump_velocity = 0
+	if(parent_atom.dir & (NORTH|SOUTH))
+		bump_velocity = abs(velocity_y) + (abs(velocity_x) / 15)
+	else
+		bump_velocity = abs(velocity_x) + (abs(velocity_y) / 15)
+
+	var/atom/movable/bumped_movable_atom = bumped_atom
+
+	if(istype(bumped_movable_atom) && !bumped_movable_atom.anchored && bump_velocity > 1)
+		step(bumped_movable_atom, parent_atom.dir)
+
+	SEND_SIGNAL(src, COMSIG_PHYSICS_PROCESSED_BUMP, bump_velocity, bumped_atom)

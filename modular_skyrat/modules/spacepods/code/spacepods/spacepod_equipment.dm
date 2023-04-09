@@ -343,15 +343,17 @@
 
 /obj/item/spacepod_equipment/thruster/on_install(obj/spacepod/attaching_spacepod)
 	. = ..()
-	attaching_spacepod.forward_maxthrust = max_forward_speed
-	attaching_spacepod.backward_maxthrust = max_backwards_speed
-	attaching_spacepod.side_maxthrust = max_sideways_speed
+	var/datum/component/physics/physics_component = attaching_spacepod.GetComponent(/datum/component/physics)
+	physics_component.forward_maxthrust = max_forward_speed
+	physics_component.backward_maxthrust = max_backwards_speed
+	physics_component.side_maxthrust = max_sideways_speed
 
 /obj/item/spacepod_equipment/thruster/on_uninstall(obj/spacepod/detatching_spacepod, forced)
 	. = ..()
-	detatching_spacepod.forward_maxthrust = 0
-	detatching_spacepod.backward_maxthrust = 0
-	detatching_spacepod.side_maxthrust = 0
+	var/datum/component/physics/physics_component = detatching_spacepod.GetComponent(/datum/component/physics)
+	physics_component.forward_maxthrust = 0
+	physics_component.backward_maxthrust = 0
+	physics_component.side_maxthrust = 0
 
 /obj/item/spacepod_equipment/thruster/upgraded
 	name = "\improper Rolls-Royce RS-400 Sublight Thrusters"

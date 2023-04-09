@@ -68,13 +68,13 @@
 		pod.forceMove(loc)
 		switch(dir)
 			if(NORTH)
-				pod.angle = 0
+				pod.set_angle(0)
 			if(SOUTH)
-				pod.angle = 180
+				pod.set_angle(180)
 			if(WEST)
-				pod.angle = 270
+				pod.set_angle(270)
 			if(EAST)
-				pod.angle = 90
+				pod.set_angle(90)
 		pod.process(2)
 		to_chat(user, span_notice("You strut the pod frame together."))
 		for(var/obj/item/pod_parts/pod_frame/F in linkedparts)
