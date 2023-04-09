@@ -127,6 +127,8 @@
 	inhand_y_dimension = 64
 	worn_icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_guns/onmob.dmi'
 	icon_state = "amr"
+	inhand_icon_state = "amr"
+	worn_icon_state = "amr"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
 
