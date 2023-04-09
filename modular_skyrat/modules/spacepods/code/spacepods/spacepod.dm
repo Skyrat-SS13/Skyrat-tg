@@ -1141,6 +1141,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		mob_to_remove.forceMove(get_turf(src))
 
 	if(mob_to_remove.client)
+		pilot.client.view_size.resetToDefault()
 		mob_to_remove.client.pixel_x = 0
 		mob_to_remove.client.pixel_y = 0
 
