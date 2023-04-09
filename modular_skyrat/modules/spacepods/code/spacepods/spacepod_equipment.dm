@@ -145,23 +145,27 @@
 	name = "passenger seat"
 	desc = "A passenger seat for a spacepod."
 	icon_state = "sec_cargo_chair"
+	// How many occupant slots this chair adds.
 	var/occupant_mod = 1
+	// What slot we add to
+	var/occupant_slot = SPACEPOD_RIDER_TYPE_PASSENGER
+
 
 /obj/item/spacepod_equipment/cargo/chair/on_install(obj/spacepod/attaching_spacepod)
 	. = ..()
-	attaching_spacepod.max_passengers += occupant_mod
+	attaching_spacepod.occupant_slots[occupant_slot] += occupant_mod
 
 /obj/item/spacepod_equipment/cargo/chair/on_uninstall(obj/spacepod/detatching_spacepod, forced)
 	. = ..()
 	if(forced)
-		detatching_spacepod.remove_all_riders(FALSE)
-	detatching_spacepod.max_passengers -= occupant_mod
+		detatching_spacepod.remove_all_riders(forced = forced)
+	attaching_spacepod.occupant_slots[occupant_slot] -= occupant_mod
 
 /obj/item/spacepod_equipment/cargo/chair/can_uninstall(obj/spacepod/detatching_spacepod, mob/user, forced)
 	. = ..()
 	if(forced)
 		return TRUE
-	if(LAZYLEN(detatching_spacepod.get_all_occupants_by_type(SPACEPOD_RIDER_TYPE_PASSENGER)) > (detatching_spacepod.max_passengers - occupant_mod))
+	if(LAZYLEN(detatching_spacepod.get_all_occupants_by_type(SPACEPOD_RIDER_TYPE_PASSENGER)) > (LAZYLEN(detatching_spacepod[occupant_slot]) - occupant_mod))
 		to_chat(user, span_warning("You can't remove an occupied seat! Remove the occupant first."))
 		return FALSE
 	return ..()
