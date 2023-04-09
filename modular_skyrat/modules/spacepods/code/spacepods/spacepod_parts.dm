@@ -135,6 +135,15 @@
 	var/pod_desc = "A sleek civilian space pod."
 	/// The integrity that will be given to the pod upon completion.
 	var/pod_integrity = 250
+	/// How many slots does this armor type provide?
+	var/list/equipment_slot_limits = list(
+		SPACEPOD_SLOT_MISC = 1,
+		SPACEPOD_SLOT_CARGO = 2,
+		SPACEPOD_SLOT_WEAPON = 0,
+		SPACEPOD_SLOT_LOCK = 1,
+		SPACEPOD_SLOT_LIGHT = 1,
+		SPACEPOD_SLOT_THRUSTER = 1,
+		)
 
 /obj/item/pod_parts/armor/syndicate
 	name = "syndicate pod armor"

@@ -28,7 +28,14 @@
 /obj/item/spacepod_equipment/proc/on_install(obj/spacepod/attaching_spacepod)
 	spacepod = attaching_spacepod
 
-/obj/item/spacepod_equipment/proc/on_uninstall(obj/spacepod/detatching_spacepod)
+/**
+ * on uninstall
+ *
+ * Called when some piece of equipment is uninstalled.
+ *
+ * Forced: This should FORCE the uninstall and clear anything required.
+ */
+/obj/item/spacepod_equipment/proc/on_uninstall(obj/spacepod/detatching_spacepod, forced)
 	spacepod = null
 
 /**
@@ -43,8 +50,10 @@
  * can_uninstall
  *
  * Basic uninstall handler, place any unique behaviour here, return true or false.
+ *
+ * forced: This will FORCE the item to uninstall
  */
-/obj/item/spacepod_equipment/proc/can_uninstall(obj/spacepod/detatching_spacepod, mob/user)
+/obj/item/spacepod_equipment/proc/can_uninstall(obj/spacepod/detatching_spacepod, mob/user, forced)
 	return TRUE
 
 
@@ -69,12 +78,16 @@
 	RegisterSignal(attaching_spacepod, COMSIG_MOUSEDROPPED_ONTO, .proc/spacepod_mousedrop)
 	attaching_spacepod.cargo_bays += src
 
-/obj/item/spacepod_equipment/cargo/large/on_uninstall(obj/spacepod/detatching_spacepod)
+/obj/item/spacepod_equipment/cargo/large/on_uninstall(obj/spacepod/detatching_spacepod, forced)
 	. = ..()
+	if(forced)
+		unload_cargo()
 	UnregisterSignal(detatching_spacepod, COMSIG_MOUSEDROPPED_ONTO)
 	detatching_spacepod.cargo_bays -= src
 
-/obj/item/spacepod_equipment/cargo/large/can_uninstall(mob/user)
+/obj/item/spacepod_equipment/cargo/large/can_uninstall(obj/spacepod/detatching_spacepod, mob/user, forced)
+	if(forced)
+		return TRUE
 	if(storage)
 		to_chat(user, span_warning("Unload the cargo first!"))
 		return FALSE
@@ -90,7 +103,7 @@
 	INVOKE_ASYNC(src, .proc/spacepod_mousedrop_async, attaching_spacepod, inserting_item, user)
 
 /obj/item/spacepod_equipment/cargo/large/proc/spacepod_mousedrop_async(obj/spacepod/attaching_spacepod, obj/inserting_item, mob/user)
-	if(user == attaching_spacepod.pilot || (user in attaching_spacepod.passengers))
+	if(attaching_spacepod.check_occupant(user))
 		return FALSE
 	if(istype(inserting_item, storage_type) && attaching_spacepod.Adjacent(inserting_item)) // For loading ore boxes
 		if(!storage)
@@ -116,7 +129,7 @@
 	..()
 	RegisterSignal(attaching_spacepod, COMSIG_MOVABLE_MOVED, .proc/spacepod_moved)
 
-/obj/item/spacepod_equipment/cargo/large/ore/on_uninstall(obj/spacepod/detatching_spacepod)
+/obj/item/spacepod_equipment/cargo/large/ore/on_uninstall(obj/spacepod/detatching_spacepod, forced)
 	. = ..()
 	UnregisterSignal(detatching_spacepod, COMSIG_MOVABLE_MOVED)
 
@@ -138,12 +151,17 @@
 	. = ..()
 	attaching_spacepod.max_passengers += occupant_mod
 
-/obj/item/spacepod_equipment/cargo/chair/on_uninstall(obj/spacepod/detatching_spacepod)
+/obj/item/spacepod_equipment/cargo/chair/on_uninstall(obj/spacepod/detatching_spacepod, forced)
 	. = ..()
+	if(forced)
+		detatching_spacepod.remove_all_riders(FALSE)
 	detatching_spacepod.max_passengers -= occupant_mod
 
-/obj/item/spacepod_equipment/cargo/chair/can_uninstall(mob/user)
-	if(spacepod.passengers.len > (spacepod.max_passengers - occupant_mod))
+/obj/item/spacepod_equipment/cargo/chair/can_uninstall(obj/spacepod/detatching_spacepod, mob/user, forced)
+	. = ..()
+	if(forced)
+		return TRUE
+	if(LAZYLEN(detatching_spacepod.get_all_occupants_by_type(SPACEPOD_RIDER_TYPE_PASSENGER)) > (detatching_spacepod.max_passengers - occupant_mod))
 		to_chat(user, span_warning("You can't remove an occupied seat! Remove the occupant first."))
 		return FALSE
 	return ..()
@@ -207,7 +225,7 @@
 	desc = "A weak disabler system for space pods, fires disabler beams."
 	icon_state = "weapon_taser"
 	projectile_type = /obj/projectile/beam/disabler
-	shot_cost = 400
+	shot_cost = 100
 	fire_sound = 'sound/weapons/taser2.ogg'
 	overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
 	overlay_icon_state = "pod_weapon_disabler"
@@ -217,7 +235,7 @@
 	desc = "A weak disabler system for space pods, this one fires 3 at a time."
 	icon_state = "weapon_burst_taser"
 	projectile_type = /obj/projectile/beam/disabler
-	shot_cost = 1200
+	shot_cost = 300
 	burst_fire = 3
 	fire_sound = 'sound/weapons/taser2.ogg'
 	fire_delay = 30
@@ -229,7 +247,7 @@
 	desc = "A weak laser system for space pods, fires concentrated bursts of energy."
 	icon_state = "weapon_laser"
 	projectile_type = /obj/projectile/beam/laser
-	shot_cost = 600
+	shot_cost = 200
 	fire_sound = 'sound/weapons/Laser.ogg'
 	overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
 	overlay_icon_state = "pod_weapon_laser"
@@ -239,7 +257,7 @@
 	desc = "A weak laser system for space pods, fires concentrated bursts of energy. This one fires 3 at once."
 	icon_state = "weapon_laser"
 	projectile_type = /obj/projectile/beam/laser
-	shot_cost = 1800
+	shot_cost = 600
 	burst_fire = 3
 	fire_sound = 'sound/weapons/Laser.ogg'
 	overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
@@ -262,7 +280,7 @@
 	desc = "A weak kinetic accelerator for space pods, fires bursts of energy that cut through rock."
 	icon_state = "pod_taser"
 	projectile_type = /obj/projectile/kinetic/pod
-	shot_cost = 300
+	shot_cost = 50
 	fire_delay = 14
 	fire_sound = 'sound/weapons/Kenetic_accel.ogg'
 
@@ -271,7 +289,7 @@
 	desc = "A kinetic accelerator system for space pods, fires bursts of energy that cut through rock."
 	icon_state = "pod_m_laser"
 	projectile_type = /obj/projectile/kinetic/pod/regular
-	shot_cost = 250
+	shot_cost = 50
 	fire_delay = 10
 	fire_sound = 'sound/weapons/Kenetic_accel.ogg'
 
@@ -287,7 +305,7 @@
 	desc = "A plasma cutter system for space pods. It is capable of expelling concentrated plasma bursts to mine or cut off xeno limbs!"
 	icon_state = "pod_p_cutter"
 	projectile_type = /obj/projectile/plasma
-	shot_cost = 250
+	shot_cost = 150
 	fire_delay = 10
 	fire_sound = 'sound/weapons/plasma_cutter.ogg'
 	overlay_icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
@@ -298,7 +316,7 @@
 	desc = "An enhanced plasma cutter system for space pods. It is capable of expelling concentrated plasma bursts to mine or cut off xeno faces!"
 	icon_state = "pod_ap_cutter"
 	projectile_type = /obj/projectile/plasma/adv
-	shot_cost = 200
+	shot_cost = 50
 	fire_delay = 5
 
 /**
@@ -317,7 +335,7 @@
 	/// The max speed that the pod can move backwards. In tiles per second.
 	var/max_backwards_speed = 1
 	/// The max speed that the pod can move sidways. In tiles per second.
-	var/max_sideways_speed = 0.1
+	var/max_sideways_speed = 0.5
 
 /obj/item/spacepod_equipment/thruster/on_install(obj/spacepod/attaching_spacepod)
 	. = ..()
@@ -325,7 +343,7 @@
 	attaching_spacepod.backward_maxthrust = max_backwards_speed
 	attaching_spacepod.side_maxthrust = max_sideways_speed
 
-/obj/item/spacepod_equipment/thruster/on_uninstall(obj/spacepod/detatching_spacepod)
+/obj/item/spacepod_equipment/thruster/on_uninstall(obj/spacepod/detatching_spacepod, forced)
 	. = ..()
 	detatching_spacepod.forward_maxthrust = 0
 	detatching_spacepod.backward_maxthrust = 0
@@ -359,7 +377,7 @@
 	/// The color of the light
 	var/color_to_set = COLOR_WHITE
 
-/obj/item/spacepod_equipment/thruster/on_uninstall(obj/spacepod/detatching_spacepod)
+/obj/item/spacepod_equipment/thruster/on_uninstall(obj/spacepod/detatching_spacepod, forced)
 	. = ..()
 	detatching_spacepod.set_light_on(FALSE)
 
@@ -418,7 +436,7 @@
 	..()
 	RegisterSignal(attaching_spacepod, COMSIG_PARENT_ATTACKBY, .proc/spacepod_attackby)
 
-/obj/item/spacepod_equipment/lock/on_uninstall(obj/spacepod/detatching_spacepod)
+/obj/item/spacepod_equipment/lock/on_uninstall(obj/spacepod/detatching_spacepod, forced)
 	. = ..()
 	UnregisterSignal(detatching_spacepod, COMSIG_PARENT_ATTACKBY)
 	detatching_spacepod.locked = FALSE

@@ -61,6 +61,22 @@
 	icon_state = "pod_synd"
 	spacepod_armor_type = /obj/item/pod_parts/armor/security/red
 
+
+/obj/spacepod/prebuilt/military
+	name = "military pod"
+	icon_state = "pod_mil"
+	spacepod_armor_type = /obj/item/pod_parts/armor/security
+	cell_type = /obj/item/stock_parts/cell/hyper
+	equipment_types = list(
+		/obj/item/spacepod_equipment/thruster/upgraded,
+		/obj/item/spacepod_equipment/weaponry/burst_disabler,
+		/obj/item/spacepod_equipment/cargo,
+		/obj/item/spacepod_equipment/lock/keyed/military,
+		/obj/item/spacepod_equipment/cargo/chair,
+		/obj/item/spacepod_equipment/teleport,
+		/obj/item/spacepod_equipment/lights/military,
+		)
+
 /obj/spacepod/random
 	icon = 'modular_skyrat/modules/spacepods/icons/pod2x2.dmi'
 	icon_state = "pod_civ"
@@ -94,17 +110,3 @@
 	update_integrity(rand(100, max_integrity))
 	brakes = FALSE
 
-
-/obj/spacepod/prebuilt/military
-	name = "military pod"
-	icon_state = "pod_mil"
-	spacepod_armor_type = /obj/item/pod_parts/armor/security
-	cell_type = /obj/item/stock_parts/cell/hyper
-	equipment_types = list(
-		/obj/item/spacepod_equipment/weaponry/burst_disabler,
-		/obj/item/spacepod_equipment/cargo,
-		/obj/item/spacepod_equipment/lock/keyed/military,
-		/obj/item/spacepod_equipment/cargo/chair,
-		/obj/item/spacepod_equipment/teleport,
-		/obj/item/spacepod_equipment/lights/military,
-		)

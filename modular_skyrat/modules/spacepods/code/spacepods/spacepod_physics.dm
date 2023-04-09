@@ -82,7 +82,7 @@
 
 	if(brakes || check_has_equipment(/obj/item/spacepod_equipment/rcs_upgrade))
 		if(user_thrust_dir && !check_has_equipment(/obj/item/spacepod_equipment/rcs_upgrade))
-			to_chat(pilot, span_warning("Vector thrust locked!"))
+			to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("Vector thrust locked!"))
 		// basically calculates how much we can brake using the thrust
 		var/forward_thrust = -((fx * velocity_x) + (fy * velocity_y)) / time
 		var/right_thrust = -((sx * velocity_x) + (sy * velocity_y)) / time
@@ -118,11 +118,11 @@
 		last_thrust_right = 0
 		if(!brakes && user_thrust_dir)
 			if(!check_has_equipment(/obj/item/spacepod_equipment/thruster))
-				to_chat(pilot, span_warning("No thrusters installed!"))
+				to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("No thrusters installed!"))
 			else if(thrust_lockout)
-				to_chat(pilot, span_warning("Thrust lockout active!"))
+				to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("Thrust lockout active!"))
 			else
-				to_chat(pilot, span_warning("You are out of power!"))
+				to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("Out of power!"))
 
 
 	offset_x += velocity_x * time
@@ -250,10 +250,14 @@
 	if(istype(bumped_atom, /obj/machinery/door/airlock)) // try to open doors
 		var/obj/machinery/door/bumped_door = bumped_atom
 		if(!bumped_door.operating)
-			if(bumped_door.allowed(bumped_door.requiresID() ? pilot : null))
-				spawn(0)
-				bumped_door.open()
-			else
+			var/door_opened = FALSE
+			for(var/mob/living/iterating_pilot as anything in get_all_occupants_by_type(SPACEPOD_RIDER_TYPE_PILOT))
+				if(bumped_door.allowed(bumped_door.requiresID() ? iterating_pilot : null))
+					spawn(0)
+					bumped_door.open()
+					door_opened = TRUE
+					break
+			if(!door_opened)
 				bumped_door.do_animate("deny")
 
 	var/atom/movable/bumped_movable_atom = bumped_atom
@@ -270,18 +274,18 @@
 		strength = min(strength, 5) // don't want the explosions *too* big
 		// wew lad, might wanna slow down there
 		explosion(bumped_atom, -1, round((strength - 1) / 2), round(strength))
-		message_admins("[key_name_admin(pilot)] has impacted a spacepod into [bumped_atom] with velocity [bump_velocity]")
+		message_admins("[key_name_admin(pick(get_all_occupants_by_type(SPACEPOD_RIDER_TYPE_PILOT)))] has impacted a spacepod into [bumped_atom] with velocity [bump_velocity]")
 		take_damage(strength*10, BRUTE, "melee", TRUE)
-		log_game("[key_name(pilot)] has impacted a spacepod into [bumped_atom] with velocity [bump_velocity]")
+		log_game("[key_name(pick(get_all_occupants_by_type(SPACEPOD_RIDER_TYPE_PILOT)))] has impacted a spacepod into [bumped_atom] with velocity [bump_velocity]")
 		visible_message(span_danger("The force of the impact causes a shockwave"))
 	else if(isliving(bumped_atom) && bump_velocity > 5)
-		var/mob/living/M = bumped_atom
-		M.apply_damage(bump_velocity * 2)
+		var/mob/living/smashed_mob = bumped_atom
+		smashed_mob.apply_damage(bump_velocity * 2)
 		take_damage(bump_velocity, BRUTE, "melee", FALSE)
-		playsound(M.loc, "swing_hit", 100, 1, -1)
-		M.Knockdown(bump_velocity * 2)
-		M.visible_message(span_warning("The force of the impact knocks [M] down!"), span_userdanger("The force of the impact knocks you down!"))
-		log_combat(pilot, M, "impacted", src, "with velocity of [bump_velocity]")
+		playsound(smashed_mob.loc, "swing_hit", 100, 1, -1)
+		smashed_mob.Knockdown(bump_velocity * 2)
+		smashed_mob.visible_message(span_warning("The force of the impact knocks [smashed_mob] down!"), span_userdanger("The force of the impact knocks you down!"))
+		log_combat(pick(get_all_occupants_by_type(SPACEPOD_RIDER_TYPE_PILOT)), smashed_mob, "impacted", src, "with velocity of [bump_velocity]")
 	return ..()
 
 /**

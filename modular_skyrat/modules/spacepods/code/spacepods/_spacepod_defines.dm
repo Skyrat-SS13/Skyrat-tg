@@ -26,5 +26,15 @@
 #define SPACEPOD_WEAPON_SLOT_LEFT "Left Weapon Slot"
 #define SPACEPOD_WEAPON_SLOT_RIGHT "Right Weapon Slot"
 
+#define SPACEPOD_DEFAULT_EQUIPMENT_LIMITS_LIST list(SPACEPOD_SLOT_MISC = 1, SPACEPOD_SLOT_CARGO = 2, SPACEPOD_SLOT_WEAPON = 0, SPACEPOD_SLOT_LOCK = 1, SPACEPOD_SLOT_LIGHT = 1, SPACEPOD_SLOT_THRUSTER = 1)
+
+// Rider stuff
+#define SPACEPOD_RIDER_TYPE_PILOT "pilot"
+#define SPACEPOD_RIDER_TYPE_PASSENGER "passenger"
+
+#define SPACEPOD_RIDER_TYPE "type"
+#define SPACEPOD_RIDER_TRAITS "traits"
+#define SPACEPOD_RIDER_ACTIONS "actions"
+
 /// A list of lighthouses that enable the spacepods to teleport to.
 GLOBAL_LIST_EMPTY(spacepod_beacons)
