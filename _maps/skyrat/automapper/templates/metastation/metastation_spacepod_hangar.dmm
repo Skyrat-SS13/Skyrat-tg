@@ -49,19 +49,10 @@
 /turf/open/floor/iron,
 /area/station/security/spacepod_hangar)
 "l" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
 /obj/effect/landmark/start/spacepod_pilot,
 /turf/open/floor/iron,
 /area/station/security/spacepod_hangar)
 "m" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 1
-	},
 /obj/structure/table,
 /obj/item/storage/toolbox/mechanical,
 /obj/machinery/light/directional/east,
@@ -69,12 +60,6 @@
 /turf/open/floor/iron,
 /area/station/security/spacepod_hangar)
 "o" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 1
-	},
 /obj/structure/closet/secure_closet/security/sec,
 /obj/item/clothing/ears/earmuffs,
 /obj/item/clothing/glasses/sunglasses/big,
@@ -83,8 +68,22 @@
 /obj/item/clothing/under/rank/spacepod_pilot,
 /turf/open/floor/iron,
 /area/station/security/spacepod_hangar)
+"p" = (
+/obj/spacepod/prebuilt/sec/roundstart,
+/turf/open/floor/engine,
+/area/station/security/spacepod_hangar)
 "r" = (
 /turf/closed/wall/r_wall,
+/area/station/security/spacepod_hangar)
+"s" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/table,
+/turf/open/floor/iron,
 /area/station/security/spacepod_hangar)
 "u" = (
 /obj/structure/cable,
@@ -115,9 +114,6 @@
 /turf/open/floor/iron,
 /area/station/security/spacepod_hangar)
 "C" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron,
 /area/station/security/spacepod_hangar)
@@ -125,8 +121,7 @@
 /turf/open/floor/engine,
 /area/station/security/spacepod_hangar)
 "H" = (
-/obj/spacepod/prebuilt/sec,
-/turf/open/floor/engine,
+/turf/open/floor/iron,
 /area/station/security/spacepod_hangar)
 "I" = (
 /turf/closed/wall,
@@ -142,6 +137,7 @@
 /obj/structure/table,
 /obj/item/spacepod_equipment/weaponry/disabler,
 /obj/item/spacepod_equipment/thruster,
+/obj/item/spacepod_equipment/lights/security,
 /turf/open/floor/iron,
 /area/station/security/spacepod_hangar)
 "N" = (
@@ -165,11 +161,15 @@
 /turf/open/floor/plating,
 /area/station/security/spacepod_hangar)
 "Z" = (
-/obj/structure/railing{
-	dir = 8
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
 	},
-/turf/open/space/basic,
-/area/space)
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/suit_storage_unit/security,
+/turf/open/floor/iron,
+/area/station/security/spacepod_hangar)
 
 (1,1,1) = {"
 R
@@ -186,7 +186,7 @@ I
 (2,1,1) = {"
 N
 N
-Z
+r
 r
 r
 h
@@ -198,11 +198,11 @@ I
 (3,1,1) = {"
 x
 S
-S
 r
 c
 D
 D
+Z
 o
 u
 r
@@ -210,11 +210,11 @@ r
 (4,1,1) = {"
 N
 N
-N
 g
 D
 D
 D
+O
 C
 a
 r
@@ -222,11 +222,11 @@ r
 (5,1,1) = {"
 N
 N
-N
 X
 D
-H
+p
 D
+O
 l
 y
 r
@@ -234,23 +234,23 @@ r
 (6,1,1) = {"
 N
 N
-N
 X
 D
 D
 D
 O
+H
 k
 r
 "}
 (7,1,1) = {"
 x
 S
-S
 r
 d
 D
 D
+s
 m
 M
 r
@@ -258,7 +258,7 @@ r
 (8,1,1) = {"
 N
 N
-N
+r
 r
 r
 r

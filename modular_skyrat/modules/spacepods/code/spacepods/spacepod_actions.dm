@@ -279,3 +279,17 @@
 
 	button_icon_state = "gyroscope_[spacepod_target.gyroscope_enabled ? "on" : "off"]"
 	build_all_button_icons()
+
+/**
+ * Opens any nearby pod doors
+ */
+/datum/action/spacepod/open_poddoors
+	name = "Open Nearby Poddoors"
+	button_icon_state = "open_doors"
+
+
+/datum/action/spacepod/open_poddoors/Trigger(trigger_flags)
+	if(!owner || !spacepod_target || !(owner in spacepod_target.occupants) || owner.incapacitated())
+		return
+
+	spacepod_target.toggle_doors(owner)

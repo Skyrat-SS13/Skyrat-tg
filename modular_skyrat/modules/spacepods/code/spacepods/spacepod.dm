@@ -97,6 +97,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		/datum/action/spacepod/thrust_up,
 		/datum/action/spacepod/thrust_down,
 		/datum/action/spacepod/quantum_entangloporter,
+		/datum/action/spacepod/open_poddoors,
 		/datum/action/spacepod/cycle_weapons,
 		/datum/action/spacepod/toggle_safety,
 		)
@@ -157,6 +158,11 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/warp_time = 5 SECONDS
 	/// Our follow trail
 	var/datum/effect_system/trail_follow/ion/grav_allowed/trail
+
+	/// Are we dirty?
+	var/dirty = FALSE
+	/// What dirt overlay do we add?
+	var/dirt_overlay = "pod_dirt_1"
 
 
 /obj/spacepod/Initialize()
@@ -237,6 +243,17 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			return TRUE
 		if(istype(attacking_item, /obj/item/device/lock_buster))
 			try_to_break_lock(attacking_item, user)
+			return TRUE
+		if(istype(attacking_item, /obj/item/soap))
+			var/obj/item/soap/soap = attacking_item
+			if(!dirty)
+				to_chat(user, span_notice("The pod is not dirty!"))
+				return TRUE
+			to_chat(user, span_notice("You start cleaning the pod..."))
+			if(do_after(soap.cleanspeed))
+				dirty = FALSE
+				update_icon()
+				to_chat(user, span_notice("You clean the pod."))
 			return TRUE
 		if(attacking_item.tool_behaviour == TOOL_WELDER)
 			var/obj_integrity = get_integrity()
@@ -422,6 +439,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	else
 		icon = initial(icon)
 		icon_state = initial(icon_state)
+
+	if(dirty)
+		add_overlay(image(icon = initial(icon), icon_state = dirt_overlay))
 
 	// Weapon overlays
 	if(LAZYLEN(equipment[SPACEPOD_SLOT_WEAPON]))

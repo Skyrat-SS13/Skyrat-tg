@@ -132,7 +132,7 @@
 /datum/design/pod_gun_burst_laser
 	name = "Spacepod Weapon (Burst Laser)"
 	desc = "Allows for the construction of a spacepod mounted burst laser."
-	id = "podgun_laser"
+	id = "podgun_burst_laser"
 	build_type = PROTOLATHE
 	build_path = /obj/item/spacepod_equipment/weaponry/laser
 	materials = list(/datum/material/iron=10000,/datum/material/glass=10000,/datum/material/gold=5000,/datum/material/silver=8000,/datum/material/diamond=10000)
