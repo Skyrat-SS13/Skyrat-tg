@@ -118,6 +118,7 @@
 	caliber = CALIBER_10MM
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_PER_BULLET
+	multiple_sprite_use_base = TRUE // skyrat edit but also hey just an early mirror of tgstation/tgstation#74615, delete this comment once it gets merged
 
 /obj/item/ammo_box/magazine/r10mm/empty
 	icon_state = "r10mm-0"
