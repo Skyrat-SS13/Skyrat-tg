@@ -358,6 +358,8 @@
 		last_thrust_right = -side_maxthrust
 
 	if(!(SEND_SIGNAL(src, COMSIG_PHYSICS_THRUST_CHECK, total_thrust_x, total_thrust_y, desired_thrust_dir, delta_time) & COMPONENT_PHYSICS_THRUST))
+		last_thrust_right = 0
+		last_thrust_forward = 0
 		return
 
 	// Update velocity based on the calculated thrust and delta_time

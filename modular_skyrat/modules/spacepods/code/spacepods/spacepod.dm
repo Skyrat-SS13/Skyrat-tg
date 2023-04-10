@@ -40,7 +40,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/weapon_safety = FALSE
 	/// A list of our weapon slots, the association is the offset for pixel shooting.
 	var/list/weapon_slots = list(
-		SPACEPOD_WEAPON_SLOT_LEFT = list(-16, 16),
+		SPACEPOD_WEAPON_SLOT_LEFT = list(-16, -16),
 		SPACEPOD_WEAPON_SLOT_RIGHT = list(16, 16),
 	)
 	/// A list of installed cargo bays

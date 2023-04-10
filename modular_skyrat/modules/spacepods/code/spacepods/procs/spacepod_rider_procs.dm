@@ -117,8 +117,8 @@
 /obj/spacepod/proc/give_trait_to_occupant(mob/living/mob_to_give_to, trait_to_give, trait_source)
 	ADD_TRAIT(mob_to_give_to, trait_to_give, trait_source)
 	LAZYINITLIST(occupants[mob_to_give_to][SPACEPOD_RIDER_TRAITS])
-	occupants[mob_to_give_to][SPACEPOD_RIDER_ACTIONS] += trait_to_give
-	occupants[mob_to_give_to][SPACEPOD_RIDER_ACTIONS][trait_to_give] = trait_source
+	occupants[mob_to_give_to][SPACEPOD_RIDER_TRAITS] += trait_to_give
+	occupants[mob_to_give_to][SPACEPOD_RIDER_TRAITS][trait_to_give] = trait_source
 
 /**
  * Add Rider

@@ -27,6 +27,7 @@
 
 /obj/item/spacepod_equipment/proc/on_install(obj/spacepod/attaching_spacepod)
 	spacepod = attaching_spacepod
+	attaching_spacepod.update_overlays()
 
 /**
  * on uninstall
@@ -37,6 +38,7 @@
  */
 /obj/item/spacepod_equipment/proc/on_uninstall(obj/spacepod/detatching_spacepod, forced)
 	spacepod = null
+	detatching_spacepod.update_overlays()
 
 /**
  * can_install
