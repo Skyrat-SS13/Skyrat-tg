@@ -312,48 +312,56 @@
                 angular_velocity *= drag_factor_spin
 
 /datum/component/physics/proc/thrust_calculations(delta_time)
-	// Alright now calculate the THRUST
-	var/thrust_x
-	var/thrust_y
-	var/fx = cos(90 - angle)
-	var/fy = sin(90 - angle)
-	var/sx = fy
-	var/sy = -fx
-	last_thrust_forward = 0
-	last_thrust_right = 0
+    // Calculate thrust components based on angle
+    var/total_thrust_x
+    var/total_thrust_y
+    var/forward_x = cos(90 - angle)
+    var/forward_y = sin(90 - angle)
+    var/side_x = forward_y
+    var/side_y = -forward_x
+    last_thrust_forward = 0
+    last_thrust_right = 0
 
-	// Automatic stabalisation of the atom.
-	if(auto_stabalisation)
-		// basically calculates how much we can brake using the thrust
-		var/forward_thrust = -((fx * velocity_x) + (fy * velocity_y)) / delta_time
-		var/right_thrust = -((sx * velocity_x) + (sy * velocity_y)) / delta_time
-		forward_thrust = clamp(forward_thrust, -backward_maxthrust, forward_maxthrust)
-		right_thrust = clamp(right_thrust, -side_maxthrust, side_maxthrust)
-		thrust_x += forward_thrust * fx + right_thrust * sx;
-		thrust_y += forward_thrust * fy + right_thrust * sy;
-		last_thrust_forward = forward_thrust
-		last_thrust_right = right_thrust
+    // Automatic stabilization of the atom
+    if(auto_stabalisation)
+        // Calculate braking thrust based on current velocity and delta_time
+        var/braking_thrust_forward = -((forward_x * velocity_x) + (forward_y * velocity_y)) / delta_time
+        var/braking_thrust_right = -((side_x * velocity_x) + (side_y * velocity_y)) / delta_time
 
-	// Thrust application.
-	if(desired_thrust_dir & NORTH)
-		thrust_x += fx * forward_maxthrust
-		thrust_y += fy * forward_maxthrust
-		last_thrust_forward = forward_maxthrust
-	if(desired_thrust_dir & SOUTH)
-		thrust_x -= fx * backward_maxthrust
-		thrust_y -= fy * backward_maxthrust
-		last_thrust_forward = -backward_maxthrust
-	if(desired_thrust_dir & EAST)
-		thrust_x += sx * side_maxthrust
-		thrust_y += sy * side_maxthrust
-		last_thrust_right = side_maxthrust
-	if(desired_thrust_dir & WEST)
-		thrust_x -= sx * side_maxthrust
-		thrust_y -= sy * side_maxthrust
-		last_thrust_right = -side_maxthrust
+        // Clamp braking thrust within acceptable limits
+        braking_thrust_forward = clamp(braking_thrust_forward, -backward_maxthrust, forward_maxthrust)
+        braking_thrust_right = clamp(braking_thrust_right, -side_maxthrust, side_maxthrust)
 
-	velocity_x += thrust_x * delta_time
-	velocity_y += thrust_y * delta_time
+        // Calculate total thrust by adding braking thrust to current thrust
+        total_thrust_x += braking_thrust_forward * forward_x + braking_thrust_right * side_x
+        total_thrust_y += braking_thrust_forward * forward_y + braking_thrust_right * side_y
+
+        // Store the last braking thrust values
+        last_thrust_forward = braking_thrust_forward
+        last_thrust_right = braking_thrust_right
+
+    // Apply thrust based on the desired thrust direction
+    if(desired_thrust_dir & NORTH)
+        total_thrust_x += forward_x * forward_maxthrust
+        total_thrust_y += forward_y * forward_maxthrust
+        last_thrust_forward = forward_maxthrust
+    if(desired_thrust_dir & SOUTH)
+        total_thrust_x -= forward_x * backward_maxthrust
+        total_thrust_y -= forward_y * backward_maxthrust
+        last_thrust_forward = -backward_maxthrust
+    if(desired_thrust_dir & EAST)
+        total_thrust_x += side_x * side_maxthrust
+        total_thrust_y += side_y * side_maxthrust
+        last_thrust_right = side_maxthrust
+    if(desired_thrust_dir & WEST)
+        total_thrust_x -= side_x * side_maxthrust
+        total_thrust_y -= side_y * side_maxthrust
+        last_thrust_right = -side_maxthrust
+
+    // Update velocity based on the calculated thrust and delta_time
+    velocity_x += total_thrust_x * delta_time
+    velocity_y += total_thrust_y * delta_time
+
 
 // SET PROCS
 
