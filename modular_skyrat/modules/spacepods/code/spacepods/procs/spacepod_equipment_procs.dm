@@ -152,7 +152,7 @@
 	max_integrity = armor.pod_integrity
 	update_integrity(max_integrity - integrity_failure + get_integrity())
 	pod_armor = armor
-	update_icon()
+	update_appearance()
 
 /**
  * Remove Armor
@@ -166,7 +166,7 @@
 		max_integrity = integrity_failure
 		desc = initial(desc)
 		pod_armor = null
-		update_icon()
+		update_appearance()
 
 // WEAPON PROCS
 

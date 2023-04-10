@@ -141,6 +141,17 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/component_last_thrust_right = 0
 	var/component_last_thrust_forward = 0
 
+	// Overlay stuff
+	/// Our image overlay for the back thrusters.
+	var/image/back_thrust_overlay
+	/// Our image overlay for the front thrusters.
+	var/image/front_thrust_overlay
+	/// Our image overlay for the
+
+	var/image/left_thrust_overlay
+
+	var/image/right_thrust_overlay
+
 
 /obj/spacepod/Initialize()
 	. = ..()
@@ -275,7 +286,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			to_chat(user, span_notice("You start cleaning the pod..."))
 			if(do_after(soap.cleanspeed))
 				dirty = FALSE
-				update_icon()
+				update_overlays()
 				to_chat(user, span_notice("You clean the pod."))
 			return TRUE
 		if(attacking_item.tool_behaviour == TOOL_WELDER)
@@ -291,7 +302,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			if(attacking_item.use_tool(src, user, 50, amount = 3, volume = 50))
 				if(repairing)
 					update_integrity(min(max_integrity, obj_integrity + 10))
-					update_icon()
+					update_overlays()
 					to_chat(user, span_notice("You mend some [pick("dents","bumps","damage")] with [attacking_item]"))
 				else if(!cell && !internal_tank && !equipment.len && !LAZYLEN(occupants) && construction_state == SPACEPOD_ARMOR_WELDED)
 					user.visible_message("[user] slices off [src]'s armor.", span_notice("You slice off [src]'s armor."))
@@ -330,7 +341,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 /obj/spacepod/take_damage(damage_amount, damage_type = BRUTE, damage_flag = "", sound_effect = TRUE, attack_dir, armour_penetration = 0)
 	. = ..()
-	update_icon()
+	update_overlays()
 
 /obj/spacepod/return_air()
 	return cabin_air
@@ -433,32 +444,21 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		// there here's your frame pieces back, happy?
 	qdel(src)
 
-
-/obj/spacepod/update_icon()
+/obj/spacepod/update_overlays()
 	. = ..()
-	cut_overlays()
-	if(construction_state != SPACEPOD_ARMOR_WELDED)
-		icon = 'modular_skyrat/modules/spacepods/icons/construction2x2.dmi'
-		icon_state = "pod_[construction_state]"
-		thrust_sound.stop()
-		if(pod_armor && construction_state >= SPACEPOD_ARMOR_LOOSE)
-			var/mutable_appearance/masked_armor = mutable_appearance(icon = 'modular_skyrat/modules/spacepods/icons/construction2x2.dmi', icon_state = "armor_mask")
-			var/mutable_appearance/armor = mutable_appearance(pod_armor.pod_icon, pod_armor.pod_icon_state)
-			armor.blend_mode = BLEND_MULTIPLY
-			masked_armor.overlays = list(armor)
-			masked_armor.appearance_flags = KEEP_TOGETHER
-			add_overlay(masked_armor)
-		return
 
-	if(pod_armor)
-		icon = pod_armor.pod_icon
-		icon_state = pod_armor.pod_icon_state
-	else
-		icon = initial(icon)
-		icon_state = initial(icon_state)
+	if(construction_state != SPACEPOD_ARMOR_WELDED && pod_armor && construction_state >= SPACEPOD_ARMOR_LOOSE)
+		var/mutable_appearance/masked_armor = mutable_appearance(icon = 'modular_skyrat/modules/spacepods/icons/construction2x2.dmi', icon_state = "armor_mask")
+		var/mutable_appearance/armor = mutable_appearance(pod_armor.pod_icon, pod_armor.pod_icon_state)
+		armor.blend_mode = BLEND_MULTIPLY
+		masked_armor.overlays = list(armor)
+		masked_armor.appearance_flags = KEEP_TOGETHER
+		. += masked_armor
+		return .
 
+	// Dirt overlays
 	if(dirty)
-		add_overlay(image(icon = initial(icon), icon_state = dirt_overlay))
+		. += dirt_overlay
 
 	// Weapon overlays
 	if(LAZYLEN(equipment[SPACEPOD_SLOT_WEAPON]))
@@ -470,16 +470,34 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 					var/matrix/flip_matrix = matrix(-1, 0, 0, 0, 1, 0)
 					weapon_overlay.transform = flip_matrix
 
-			add_overlay(weapon_overlay)
+			. += weapon_overlay
 
 	// Damage overlays
 	var/obj_integrity = get_integrity()
 	if(obj_integrity <= max_integrity / 2)
-		add_overlay(image(icon = initial(icon), icon_state = "pod_damage"))
+		. += "pod_damage"
 		if(obj_integrity <= max_integrity / 4)
-			add_overlay(image(icon = initial(icon), icon_state = "pod_fire"))
+			. += "pod_fire"
+
+
+/obj/spacepod/update_icon()
+	. = ..()
+	if(construction_state != SPACEPOD_ARMOR_WELDED)
+		icon = 'modular_skyrat/modules/spacepods/icons/construction2x2.dmi'
+		icon_state = "pod_[construction_state]"
+		thrust_sound.stop()
+		return
+
+	if(pod_armor)
+		icon = pod_armor.pod_icon
+		icon_state = pod_armor.pod_icon_state
+	else
+		icon = initial(icon)
+		icon_state = initial(icon_state)
+
 
 /obj/spacepod/proc/handle_thruster_effects()
+	cut_overlay(list(back_thrust_overlay, front_thrust_overlay, left_thrust_overlay, right_thrust_overlay))
 	var/datum/component/physics/physics_component = GetComponent(/datum/component/physics)
 	// Initialize left and right thrust lists with zeros
 	var/list/left_thrusts = list(0, 0, 0, 0, 0, 0, 0, 0)
@@ -500,28 +518,26 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	else
 		front_thrust = -component_last_thrust_forward / physics_component.backward_maxthrust
 
-	// Calculate left and right thrusts based on last_rotate
-	if(component_last_rotate != 0)
-		var/fraction = abs(component_last_rotate) / physics_component.max_angular_acceleration
-		for(var/cardinal_direction in GLOB.cardinals)
-			if(component_last_rotate > 0)
-				right_thrusts[cardinal_direction] += fraction
-			else
-				left_thrusts[cardinal_direction] += fraction
-
 	// Update left and right thrust overlays based on calculated values
 	for(var/cardinal_direction in GLOB.cardinals)
 		var/left_thrust = left_thrusts[cardinal_direction]
 		var/right_thrust = right_thrusts[cardinal_direction]
 		if(left_thrust)
-			add_overlay(image(icon = overlay_file, icon_state = "rcs_left", dir = cardinal_direction))
+			if(!left_thrust_overlay)
+				left_thrust_overlay = image(icon = overlay_file, icon_state = "rcs_left", dir = cardinal_direction)
+			left_thrust_overlay.dir = cardinal_direction
+			add_overlay(left_thrust_overlay)
 		if(right_thrust)
-			add_overlay(image(icon = overlay_file, icon_state = "rcs_right", dir = cardinal_direction))
+			if(!right_thrust_overlay)
+				right_thrust_overlay = image(icon = overlay_file, icon_state = "rcs_right", dir = cardinal_direction)
+			right_thrust_overlay.dir = cardinal_direction
+			add_overlay(right_thrust_overlay)
 
 	// Update back thrust overlay and play thrust sound if back_thrust is not 0
 	if(back_thrust)
-		var/image/back_thrust_overlay = image(icon = overlay_file, icon_state = "thrust")
-		back_thrust_overlay.transform = matrix(1, 0, 0, 0, 1, -32)
+		if(!back_thrust_overlay)
+			back_thrust_overlay = image(icon = overlay_file, icon_state = "thrust")
+			back_thrust_overlay.transform = matrix(1, 0, 0, 0, 1, -32)
 		add_overlay(back_thrust_overlay)
 		thrust_sound.start()
 	else
@@ -529,7 +545,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 	// Update front thrust overlay if front_thrust is not 0
 	if(front_thrust)
-		add_overlay(image(icon = overlay_file, icon_state = "front_thrust"))
+		if(!front_thrust_overlay)
+			front_thrust_overlay = image(icon = overlay_file, icon_state = "front_thrust")
+		add_overlay(front_thrust_overlay)
 
 
 /obj/spacepod/relaymove(mob/user, direction)
@@ -597,10 +615,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	component_last_thrust_forward = updated_last_thrust_forward
 	component_last_thrust_right = updated_last_thrust_right
 
-	update_icon()
 	handle_thruster_effects()
-
-
 
 // MISC PROCS
 
@@ -690,6 +705,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		play_alarm(TRUE)
 	else
 		play_alarm(FALSE)
+	update_overlays()
 
 
 
@@ -761,6 +777,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		if(desired_thrust_dir)
 			to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("Insufficient power!"))
 		return FALSE
+	handle_thruster_effects()
 	return COMPONENT_PHYSICS_THRUST
 
 /**

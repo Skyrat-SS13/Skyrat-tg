@@ -199,7 +199,7 @@
 	if(!override_slot)
 		override_slot = pick(attaching_spacepod.get_free_weapon_slots())
 	attaching_spacepod.equipment[SPACEPOD_SLOT_WEAPON][src] = override_slot
-	attaching_spacepod.update_icon()
+	attaching_spacepod.update_overlays()
 
 
 /obj/item/spacepod_equipment/weaponry/proc/fire_weapon(target, x_offset, y_offset)
