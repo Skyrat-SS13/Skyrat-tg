@@ -228,35 +228,36 @@
 // PHYSICS CALCULATION PROCS
 
 /datum/component/physics/proc/angular_calculations(delta_time)
-    var/last_angle = angle
-    var/desired_angular_velocity = 0
+	var/last_angle = angle
+	var/desired_angular_velocity = 0
+	// Calculate desired angular velocity based on desired angle
+	if(isnum(desired_angle))
+		// Ensure angles rotate the short way
+		while(angle > desired_angle + 180)
+			angle -= 360
+			last_angle -= 360
+		while(angle < desired_angle - 180)
+			angle += 360
+			last_angle += 360
 
-    if(isnum(desired_angle))
-        // Ensure angles rotate the shortest way
-        angle_diff = (desired_angle - angle) % 360
-        if angle_diff > 180:
-            angle_diff -= 360
-        angle += angle_diff
-        last_angle += angle_diff
+		// Calculate desired angular velocity based on the desired angle and delta_time
+		if(abs(desired_angle - angle) < (max_angular_acceleration * delta_time))
+			desired_angular_velocity = (desired_angle - angle) / delta_time
+		else if(desired_angle > angle)
+			desired_angular_velocity = 2 * sqrt((desired_angle - angle) * max_angular_acceleration * 0.25)
+		else
+			desired_angular_velocity = -2 * sqrt((angle - desired_angle) * max_angular_acceleration * 0.25)
 
-        // Calculate desired angular velocity based on the desired angle and delta_time
-        if(abs(angle_diff) < (max_angular_acceleration * delta_time))
-            desired_angular_velocity = angle_diff / delta_time
-        else
-            desired_angular_velocity = copysign(2 * sqrt(abs(angle_diff) * max_angular_acceleration * 0.25), angle_diff)
+	// Adjust angular velocity
+	var/angular_velocity_adjustment = clamp(desired_angular_velocity - angular_velocity, -max_angular_acceleration * delta_time, max_angular_acceleration * delta_time)
+	if(angular_velocity_adjustment)
+		last_rotate = angular_velocity_adjustment / delta_time
+		angular_velocity += angular_velocity_adjustment
+	else
+		last_rotate = 0
+	angle += angular_velocity * delta_time
 
-    // Adjust angular velocity based on desired angular velocity and the battery usage
-    angular_velocity_adjustment = clamp(desired_angular_velocity - angular_velocity, -max_angular_acceleration * delta_time, max_angular_acceleration * delta_time)
-
-    if(angular_velocity_adjustment)
-        last_rotate = angular_velocity_adjustment / delta_time
-        angular_velocity += angular_velocity_adjustment
-    else
-        last_rotate = 0
-
-    angle += angular_velocity * delta_time
-
-    return last_angle
+	return last_angle
 
 /datum/component/physics/proc/drag_calculations(delta_time)
 	// Calculate drag based on the environment and spacepod's velocity

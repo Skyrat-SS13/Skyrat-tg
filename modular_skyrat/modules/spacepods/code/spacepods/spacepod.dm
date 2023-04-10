@@ -1234,7 +1234,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
  * returns the remaining slots for a rider type
  */
 /obj/spacepod/proc/get_remaining_slots(rider_type)
-	return occupant_slots[rider_type] - get_all_occupants_by_type(rider_type)
+	return occupant_slots[rider_type] - LAZYLEN(get_all_occupants_by_type(rider_type))
 
 /**
  * Returns the relevant status tab items for the pilot
