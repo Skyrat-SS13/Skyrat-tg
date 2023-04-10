@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL - WAITING FOR UPSTREAM PR MERGED
 /**
  * This test checks that all expected areas are connected to a starting area
  */
@@ -131,12 +130,6 @@
 				continue
 			pipelines |= parent
 
-<<<<<<< HEAD
-	for(var/datum/pipeline/to_explore as anything in pipelines)
-		for(var/obj/machinery/atmospherics/components/other_component as anything in to_explore.other_atmos_machines)
-			crawl_area(get_area(other_component))
-*/
-=======
 	for(var/datum/pipeline/pipeline as anything in pipelines)
 		crawl_pipeline(pipeline)
 
@@ -149,4 +142,3 @@
 		remaining_areas -= other_area
 		ASYNC
 			crawl_area(other_area)
->>>>>>> f024f54baad (Convert Atmos Sanity to use Landmarks (#74454))
