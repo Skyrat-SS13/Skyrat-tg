@@ -55,7 +55,7 @@
 	update_transform()
 
 /mob/living/basic/carp/mega/shorki
-	name = "Shorki"
+	name = "Mudraptor"
 	desc = "A not so ferocious, fang bearing creature that resembles a shark. This one seems a little big for its tank."
 	faction = list(FACTION_NEUTRAL)
 	gender = MALE
