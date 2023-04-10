@@ -6,7 +6,10 @@
 	desc = "An outdated sidearm rarely seen in use by some members of the CIN. Spews an inaccurate stream of searing plasma out the magnetic barrel so long as it has power and the trigger is pulled."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_guns/guns_32.dmi'
 	icon_state = "plasmathrower"
+
 	fire_sound = 'modular_skyrat/modules/microfusion/sound/incinerate.ogg'
+	fire_sound_volume = 40 // This thing is comically loud otherwise
+
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/recharge/plasma_battery
 	can_suppress = FALSE
@@ -73,6 +76,7 @@
 	bare_wound_bonus = 75 // Lasers already get wild wound bonus this is just a bit higher than that
 	wound_bonus = -50
 	pass_flags = PASSTABLE | PASSGRILLE // His ass does NOT pass through glass!
+	weak_against_armour = TRUE
 
 // A revolver, but it can hold shotgun shells
 // Woe, buckshot be upon ye
@@ -198,5 +202,6 @@
 	speed = 0.4
 	damage = 50
 	armour_penetration = 75
-	projectile_piercing = PASSMOB
-	projectile_phasing =  PASSTABLE | PASSGLASS | PASSGRILLE | PASSMACHINE | PASSSTRUCTURE | PASSDOORS // Goes through everything except walls
+	wound_bonus = 40
+	bare_wound_bonus = 90 // No armor? Yeah bye buddy
+	projectile_piercing = PASSMOB | PASSGLASS | PASSMACHINE | PASSSTRUCTURE | PASSDOORS | PASSGRILLE // Wallbang (except it cant penetrate walls) baby
