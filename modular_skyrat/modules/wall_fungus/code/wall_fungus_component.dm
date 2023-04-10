@@ -96,9 +96,10 @@
 /datum/component/wall_fungus/proc/spread_to_nearby_wall()
 	var/turf/closed/wall/parent_wall = parent
 	var/list/walls_to_pick_from = list()
-	for(var/turf/closed/wall/iterating_wall in RANGE_TURFS(3, parent_wall))
+	for(var/turf/closed/wall/iterating_wall in RANGE_TURFS(1, parent_wall))
 		if(iterating_wall.GetComponent(/datum/component/wall_fungus))
 			continue
+		// todo: accessibility check (alt title: "man i love being able to burn fungus w/out having to rcd down a wall")
 
 		walls_to_pick_from += iterating_wall
 
@@ -121,7 +122,7 @@
 		if(FUNGUS_STAGE_THREE)
 			examine_list += span_green("[parent_wall] is infected with some kind of fungus, its structure seriously weakened!")
 		if(FUNGUS_STAGE_THREE)
-			examine_list += span_green("[parent_wall] is infected with some kind of fungus, its falling apart!")
+			examine_list += span_green("[parent_wall] is infected with some kind of fungus, it's falling apart!")
 	examine_list += span_green("Perhaps you could <b>burn</b> it off?")
 
 /datum/component/wall_fungus/proc/apply_fungus_overlay(atom/parent_atom, list/overlays)
