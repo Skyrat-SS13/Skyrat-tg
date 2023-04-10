@@ -47,9 +47,9 @@
 	/// Last rotation value for the spacepod
 	var/last_rotate = 0
 	/// Our maximum velocity_x in tiles per second
-	var/max_velocity_x = 100
+	var/max_velocity_x = INFINITY
 	/// Our maximum velocity_y in tiles per second
-	var/max_velocity_y = 100
+	var/max_velocity_y = INFINITY
 
 
 
@@ -103,8 +103,6 @@
 	parent_atom = null
 	return ..()
 
-
-
 /datum/component/physics/process(delta_time)
 
 	// Initialization of variables for position and angle calculations
@@ -116,6 +114,10 @@
 	drag_calculations(delta_time)
 
 	thrust_calculations(delta_time)
+
+	// velocity limiters
+	velocity_x = clamp(velocity_x, -max_velocity_x, max_velocity_x)
+	velocity_y = clamp(velocity_y, -max_velocity_y, max_velocity_y)
 
 	offset_x += velocity_x * delta_time
 	offset_y += velocity_y * delta_time
@@ -206,7 +208,7 @@
 	else
 		parent_atom.dir = angle2dir(angle)
 
-	SEND_SIGNAL(parent_atom, COMSIG_PHYSICS_UPDATE_MOVEMENT, angle, velocity_x, velocity_y, offset_x, offset_y, last_angle, last_thrust_forward, last_thrust_right)
+	SEND_SIGNAL(src, COMSIG_PHYSICS_UPDATE_MOVEMENT, angle, velocity_x, velocity_y, offset_x, offset_y, last_rotate, last_thrust_forward, last_thrust_right)
 
 	parent_atom.transform = mat_from
 	parent_atom.pixel_x = parent_atom.base_pixel_x + last_offset_x * 32
@@ -226,36 +228,35 @@
 // PHYSICS CALCULATION PROCS
 
 /datum/component/physics/proc/angular_calculations(delta_time)
-	var/last_angle = angle
-	var/desired_angular_velocity = 0
-	// Calculate desired angular velocity based on desired angle
-	if(isnum(desired_angle))
-		// Ensure angles rotate the short way
-		while(angle > desired_angle + 180)
-			angle -= 360
-			last_angle -= 360
-		while(angle < desired_angle - 180)
-			angle += 360
-			last_angle += 360
+    var/last_angle = angle
+    var/desired_angular_velocity = 0
 
-		// Calculate desired angular velocity based on the desired angle and delta_time
-		if(abs(desired_angle - angle) < (max_angular_acceleration * delta_time))
-			desired_angular_velocity = (desired_angle - angle) / delta_time
-		else if(desired_angle > angle)
-			desired_angular_velocity = 2 * sqrt((desired_angle - angle) * max_angular_acceleration * 0.25)
-		else
-			desired_angular_velocity = -2 * sqrt((angle - desired_angle) * max_angular_acceleration * 0.25)
+    if(isnum(desired_angle))
+        // Ensure angles rotate the shortest way
+        angle_diff = (desired_angle - angle) % 360
+        if angle_diff > 180:
+            angle_diff -= 360
+        angle += angle_diff
+        last_angle += angle_diff
 
-	// Adjust angular velocity based on desired angular velocity and the battery usage
-	var/angular_velocity_adjustment = clamp(desired_angular_velocity - angular_velocity, -max_angular_acceleration * delta_time, max_angular_acceleration * delta_time)
-	if(angular_velocity_adjustment)
-		last_rotate = angular_velocity_adjustment / delta_time
-		angular_velocity += angular_velocity_adjustment
-	else
-		last_rotate = 0
-	angle += angular_velocity * delta_time
+        // Calculate desired angular velocity based on the desired angle and delta_time
+        if(abs(angle_diff) < (max_angular_acceleration * delta_time))
+            desired_angular_velocity = angle_diff / delta_time
+        else
+            desired_angular_velocity = copysign(2 * sqrt(abs(angle_diff) * max_angular_acceleration * 0.25), angle_diff)
 
-	return last_angle
+    // Adjust angular velocity based on desired angular velocity and the battery usage
+    angular_velocity_adjustment = clamp(desired_angular_velocity - angular_velocity, -max_angular_acceleration * delta_time, max_angular_acceleration * delta_time)
+
+    if(angular_velocity_adjustment)
+        last_rotate = angular_velocity_adjustment / delta_time
+        angular_velocity += angular_velocity_adjustment
+    else
+        last_rotate = 0
+
+    angle += angular_velocity * delta_time
+
+    return last_angle
 
 /datum/component/physics/proc/drag_calculations(delta_time)
 	// Calculate drag based on the environment and spacepod's velocity

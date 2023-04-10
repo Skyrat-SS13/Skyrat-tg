@@ -1216,10 +1216,17 @@ GLOBAL_LIST_INIT(spacepods_list, list())
  * returns a list of all the occupants depending on rider type
  */
 /obj/spacepod/proc/get_all_occupants_by_type(rider_types)
+	var/list/vaid_occupants = list()
 	if(islist(rider_types))
 		for(var/type in rider_types)
-			return occupants[type]
-	return occupants[rider_types]
+			for(var/mob/living/iterating_mob as anything in occupants)
+				if(occupants[iterating_mob][SPACEPOD_RIDER_TYPE] == type)
+					vaid_occupants += iterating_mob
+	else
+		for(var/mob/living/iterating_mob as anything in occupants)
+			if(occupants[iterating_mob][SPACEPOD_RIDER_TYPE] == rider_types)
+				vaid_occupants += iterating_mob
+	return vaid_occupants
 
 /**
  * get_remaining_slots

@@ -36,5 +36,9 @@
 #define SPACEPOD_RIDER_TRAITS "traits"
 #define SPACEPOD_RIDER_ACTIONS "actions"
 
+// Impact stuff
+#define SPACEPOD_IMPACT_HEAVY 10
+#define SPACEPOD_IMPACT_LIGHT 5
+
 /// A list of lighthouses that enable the spacepods to teleport to.
 GLOBAL_LIST_EMPTY(spacepod_beacons)

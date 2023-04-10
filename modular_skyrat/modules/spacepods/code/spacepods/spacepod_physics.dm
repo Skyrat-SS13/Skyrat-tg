@@ -6,32 +6,44 @@
 /obj/spacepod/proc/process_physics_bump(datum/source, bump_velocity, atom/bumped_atom)
 	SIGNAL_HANDLER
 
-	if(istype(bumped_atom, /obj/machinery/door/airlock)) // try to open doors
+	// Try to open airlock doors
+	if(istype(bumped_atom, /obj/machinery/door/airlock))
 		INVOKE_ASYNC(src, PROC_REF(async_door_bump), bumped_atom)
 
+	// Play collision sound if bump_velocity is greater than 5
 	if(bump_velocity > 5)
 		playsound(src, pick(list('modular_skyrat/modules/spacepods/sound/hit_hull_1.ogg', 'modular_skyrat/modules/spacepods/sound/hit_hull_2.ogg', 'modular_skyrat/modules/spacepods/sound/hit_hull_3.ogg')), 70)
 
-	// if a bump is that fast then it's not a bump. It's a collision.
-	if(bump_velocity > 10 && !ismob(bumped_atom))
-		var/strength = bump_velocity / 10
-		strength = strength * strength
-		strength = min(strength, 5) // don't want the explosions *too* big
-		// wew lad, might wanna slow down there
+	// Handle fast collisions
+	if(bump_velocity > SPACEPOD_IMPACT_HEAVY && !ismob(bumped_atom))
+		var/strength = min((bump_velocity / 10) ** 2, 5) // Calculate and limit the strength of the collision
 		explosion(bumped_atom, -1, round((strength - 1) / 2), round(strength))
-		message_admins("[key_name_admin(pick(get_all_occupants_by_type(SPACEPOD_RIDER_TYPE_PILOT)))] has impacted a spacepod into [bumped_atom] with velocity [bump_velocity]")
-		take_damage(strength*10, BRUTE, "melee", TRUE)
-		log_game("[key_name(pick(get_all_occupants_by_type(SPACEPOD_RIDER_TYPE_PILOT)))] has impacted a spacepod into [bumped_atom] with velocity [bump_velocity]")
+
+		// Log and notify admins of the collision
+		var/rider = key_name_admin(pick(get_all_occupants_by_type(SPACEPOD_RIDER_TYPE_PILOT)))
+		message_admins("[rider] has impacted a spacepod into [bumped_atom] with velocity [bump_velocity]")
+		take_damage(strength * 10, BRUTE, "melee", TRUE)
+		log_game("[rider] has impacted a spacepod into [bumped_atom] with velocity [bump_velocity]")
 		visible_message(span_danger("The force of the impact causes a shockwave"))
-	else if(isliving(bumped_atom) && bump_velocity > 5)
+
+	// Handle collisions with living entities if bump_velocity is greater than 5
+	else if(isliving(bumped_atom) && bump_velocity > SPACEPOD_IMPACT_LIGHT)
 		var/mob/living/smashed_mob = bumped_atom
 		smashed_mob.apply_damage(bump_velocity * 2)
 		take_damage(bump_velocity, BRUTE, "melee", FALSE)
 		playsound(smashed_mob.loc, "swing_hit", 100, 1, -1)
 		smashed_mob.Knockdown(bump_velocity * 2)
 		smashed_mob.visible_message(span_warning("The force of the impact knocks [smashed_mob] down!"), span_userdanger("The force of the impact knocks you down!"))
-		log_combat(pick(get_all_occupants_by_type(SPACEPOD_RIDER_TYPE_PILOT)), smashed_mob, "impacted", src, "with velocity of [bump_velocity]")
 
+		// Log the collision with the living entity
+		var/pilot = pick(get_all_occupants_by_type(SPACEPOD_RIDER_TYPE_PILOT))
+		log_combat(pilot, smashed_mob, "impacted", src, "with velocity of [bump_velocity]")
+
+/**
+ * async_door_bump
+ *
+ * Async opens doors and checks ID of the pilot(s)
+ */
 /obj/spacepod/proc/async_door_bump(obj/machinery/door/bumped_door)
 	if(!bumped_door.operating)
 		var/door_opened = FALSE
