@@ -159,7 +159,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	RegisterSignal(physics_component, COMSIG_PHYSICS_UPDATE_MOVEMENT, PROC_REF(physics_component_update_movement))
 	RegisterSignal(physics_component, COMSIG_PHYSICS_PROCESSED_BUMP, PROC_REF(process_physics_bump))
 	RegisterSignal(physics_component, COMSIG_PHYSICS_THRUST_CHECK, PROC_REF(check_thrust))
-	RegisterSignal(physics_component, COMSIG_PHYSICS_AUTOSTABALISE_CHECK, PROC_REF(check_autostabalisation))
+	RegisterSignal(physics_component, COMSIG_PHYSICS_AUTOSTABALISE_CHECK, PROC_REF(check_autostabilisation))
 	active_weapon_slot = pick(weapon_slots)
 	GLOB.spacepods_list += src
 	START_PROCESSING(SSobj, src)
@@ -769,9 +769,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		if(desired_thrust_dir)
 			to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("Unable to comply due to thruster lockout."))
 		return FALSE
-	if(brakes && !check_has_equipment(/obj/item/spacepod_equipment/rcs_upgrade))
-		if(desired_thrust_dir)
-			to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("Brakes are enabled!"))
+	if(desired_thrust_dir && brakes && !check_has_equipment(/obj/item/spacepod_equipment/rcs_upgrade))
+		to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("Brakes are enabled!"))
 		return FALSE
 	if(!cell.use(10 * sqrt((total_x * total_x) + (total_y * total_y)) * delta_time))
 		if(desired_thrust_dir)
@@ -781,12 +780,12 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	return COMPONENT_PHYSICS_THRUST
 
 /**
- * check_autostabalisation
+ * check_autostabilisation
  *
- * checks if autostabalisation is enabled.
+ * checks if autostabilisation is enabled.
  */
-/obj/spacepod/proc/check_autostabalisation(datum/component/physics/source_component)
+/obj/spacepod/proc/check_autostabilisation(datum/component/physics/source_component)
 	SIGNAL_HANDLER
 	if(brakes)
-		return COMPONENT_PHYSICS_AUTO_STABALISATION
+		return COMPONENT_PHYSICS_AUTO_STABILISATION
 	return FALSE

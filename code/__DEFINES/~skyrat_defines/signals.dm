@@ -113,5 +113,5 @@
 
 /// Sent to check if the physics component can autostabalise. (source)
 #define COMSIG_PHYSICS_AUTOSTABALISE_CHECK "physics_autostabalise_check"
-	/// Return bitflag for enabled stabalisation.
-	#define COMPONENT_PHYSICS_AUTO_STABALISATION (1<<0)
+	/// Return bitflag for enabled stabilisation.
+	#define COMPONENT_PHYSICS_AUTO_STABILISATION (1<<0)

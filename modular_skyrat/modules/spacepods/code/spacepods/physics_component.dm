@@ -275,11 +275,11 @@
 			drag += 0.001
 
 			// Check if the atom is floating (not auto-stabilized) and has a significant velocity
-			if(!floating && iterating_turf.has_gravity() && !(SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABALISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABALISATION) && velocity_mag > 0.1)
+			if(!floating && iterating_turf.has_gravity() && !(SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABALISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABILISATION) && velocity_mag > 0.1)
 				floating = TRUE // Flying on the station drains the battery
 
 			// Apply drag based on gravity and auto-stabilization
-			if((!floating && iterating_turf.has_gravity()) || SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABALISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABALISATION)
+			if((!floating && iterating_turf.has_gravity()) || SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABALISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABILISATION)
 				// Adjust drag based on the mining level (less gravity on lavaland)
 				drag += is_mining_level(parent_atom.z) ? 0.1 : 0.5
 
@@ -322,7 +322,7 @@
 
 
 	// Automatic stabilization of the atom
-	if(SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABALISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABALISATION)
+	if(SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABALISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABILISATION)
 		// Calculate braking thrust based on current velocity and delta_time
 		var/braking_thrust_forward = -((forward_x * velocity_x) + (forward_y * velocity_y)) / delta_time
 		var/braking_thrust_right = -((side_x * velocity_x) + (side_y * velocity_y)) / delta_time
@@ -360,12 +360,10 @@
 	if(!(SEND_SIGNAL(src, COMSIG_PHYSICS_THRUST_CHECK, total_thrust_x, total_thrust_y, desired_thrust_dir, delta_time) & COMPONENT_PHYSICS_THRUST))
 		last_thrust_right = 0
 		last_thrust_forward = 0
-		return
-
-	// Update velocity based on the calculated thrust and delta_time
-	velocity_x += total_thrust_x * delta_time
-	velocity_y += total_thrust_y * delta_time
-
+	else
+		// Update velocity based on the calculated thrust and delta_time
+		velocity_x += total_thrust_x * delta_time
+		velocity_y += total_thrust_y * delta_time
 
 // SET PROCS
 
