@@ -275,11 +275,11 @@
 			drag += 0.001
 
 			// Check if the atom is floating (not auto-stabilized) and has a significant velocity
-			if(!floating && iterating_turf.has_gravity() && !auto_stabalisation && velocity_mag > 0.1)
+			if(!floating && iterating_turf.has_gravity() && !(SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABALISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABALISATION) && velocity_mag > 0.1)
 				floating = TRUE // Flying on the station drains the battery
 
 			// Apply drag based on gravity and auto-stabilization
-			if((!floating && iterating_turf.has_gravity()) || auto_stabalisation)
+			if((!floating && iterating_turf.has_gravity()) || SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABALISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABALISATION)
 				// Adjust drag based on the mining level (less gravity on lavaland)
 				drag += is_mining_level(parent_atom.z) ? 0.1 : 0.5
 
@@ -322,7 +322,7 @@
 
 
 	// Automatic stabilization of the atom
-   if(SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABALISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABALISATION)
+	if(SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABALISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABALISATION)
 		// Calculate braking thrust based on current velocity and delta_time
 		var/braking_thrust_forward = -((forward_x * velocity_x) + (forward_y * velocity_y)) / delta_time
 		var/braking_thrust_right = -((side_x * velocity_x) + (side_y * velocity_y)) / delta_time

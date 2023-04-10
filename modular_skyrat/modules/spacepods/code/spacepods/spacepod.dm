@@ -180,7 +180,49 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	UnregisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED)
 	return ..()
 
+/**
+ * process
+ *
+ * Processes the atmospherics of the pod.
+ */
+/obj/spacepod/process(delta_time)
+	// Cool the cabin air to T20C if it's not empty
+	if(cabin_air && cabin_air.return_volume() > 0)
+		var/temperature_delta = cabin_air.return_temperature() - T20C
+		cabin_air.temperature -= max(-10, min(10, round(temperature_delta / 4, 0.1)))
 
+	// Process internal air tank and cabin air interactions
+	if(internal_tank && cabin_air)
+		var/datum/gas_mixture/tank_air = internal_tank.return_air()
+		var/release_pressure = ONE_ATMOSPHERE
+		var/cabin_pressure = cabin_air.return_pressure()
+		var/pressure_delta = min(release_pressure - cabin_pressure, (tank_air.return_pressure() - cabin_pressure) / 2)
+		var/transfer_moles = 0
+
+		// Cabin pressure lower than release pressure
+		if(pressure_delta > 0 && tank_air.return_temperature() > 0)
+			transfer_moles = pressure_delta * cabin_air.return_volume() / (cabin_air.return_temperature() * R_IDEAL_GAS_EQUATION)
+			var/datum/gas_mixture/removed = tank_air.remove(transfer_moles)
+			cabin_air.merge(removed)
+
+		// Cabin pressure higher than release pressure
+		else if(pressure_delta < 0)
+			var/turf/our_turf = get_turf(src)
+			var/datum/gas_mixture/turf_air = our_turf.return_air()
+			pressure_delta = cabin_pressure - release_pressure
+
+			if(turf_air)
+				pressure_delta = min(cabin_pressure - turf_air.return_pressure(), pressure_delta)
+
+			// If location pressure is lower than cabin pressure
+			if(pressure_delta > 0)
+				transfer_moles = pressure_delta * cabin_air.return_volume() / (cabin_air.return_temperature() * R_IDEAL_GAS_EQUATION)
+				var/datum/gas_mixture/removed = cabin_air.remove(transfer_moles)
+
+				if(our_turf)
+					our_turf.assume_air(removed)
+				else // Delete the cabin gas if we're in space or a similar environment
+					qdel(removed)
 
 // We want the pods to have gravity all the time to prevent them being touched by spacedrift.
 /obj/spacepod/has_gravity(turf/gravity_turf)
@@ -500,46 +542,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 	SEND_SIGNAL(src, COMSIG_PHYSICS_SET_THRUST_DIR, direction)
 
-/**
- * check_thrust
- *
- * checks if the thrusters can be fired.
- */
-/obj/spacepod/proc/check_thrust(datum/component/physics/source_component, total_x, total_y, desired_thrust_dir, delta_time)
-	SIGNAL_HANDLER
-	if(!cell)
-		if(desired_thrust_dir)
-			to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("No powercell installed!"))
-		return FALSE
-	if(!check_has_equipment(/obj/item/spacepod_equipment/thruster))
-		if(desired_thrust_dir)
-			to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("No thrusters installed!"))
-		return FALSE
-	if(thrust_lockout)
-		if(desired_thrust_dir)
-			to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("Unable to comply due to thruster lockout."))
-		return FALSE
-	if(brakes && !check_has_equipment(/obj/item/spacepod_equipment/rcs_upgrade))
-		if(desired_thrust_dir)
-			to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("Brakes are enabled!"))
-		return FALSE
-	if(!cell.use(10 * sqrt((total_x * total_x) + (total_y * total_y)) * time))
-		if(desired_thrust_dir)
-			to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("Insufficient power!"))
-		return FALSE
-	return COMPONENT_PHYSICS_THRUST
-
-/**
- * check_autostabalisation
- *
- * checks if autostabalisation is enabled.
- */
-/obj/spacepod/proc/check_autostabalisation(datum/component/physics/source_component)
-	SIGNAL_HANDLER
-	if(brakes)
-		return COMPONENT_PHYSICS_AUTO_STABALISATION
-	return FALSE
-
 /obj/spacepod/MouseDrop_T(atom/movable/dropped_atom, mob/living/user)
 	if(check_occupant(user) || construction_state != SPACEPOD_ARMOR_WELDED)
 		return
@@ -601,183 +603,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 	update_icon()
 
-// EQUIPMENT PROCS
 
-/**
- * Get all equipment
- *
- * returns all current spacepod equipment in the spacepod.
- */
-/obj/spacepod/proc/get_all_equipment()
-	var/list/equipment_list = list()
-	for(var/slot in equipment)
-		for(var/obj/item/spacepod_equipment/iterating_equipment in equipment[slot])
-			equipment_list += iterating_equipment
-	return equipment_list
-
-/**
- * Checks if an item is part of our equipment.
- *
- * Returns FALSE if no or the item if yes.
- */
-/obj/spacepod/proc/check_equipment(obj/item_to_check)
-	for(var/slot in equipment)
-		for(var/obj/item/spacepod_equipment/iterating_equipment in equipment[slot])
-			if(item_to_check == iterating_equipment)
-				return iterating_equipment
-	return FALSE
-
-/**
- * Show detachable equipment
- *
- * shows a basic list of things that can be detached, then detaches whatever the user wants to detach.
- */
-/obj/spacepod/proc/show_detachable_equipment(mob/user)
-	var/list/detachable_equipment = list()
-
-	for(var/slot in equipment)
-		for(var/thing as anything in equipment[slot])
-			detachable_equipment += thing
-
-	if(!LAZYLEN(detachable_equipment))
-		return
-
-	var/obj/thing_to_remove = tgui_input_list(user, "Please select an item to remove:", "Equipment Removal", detachable_equipment)
-
-	if(!thing_to_remove) // User cancelled out
-		return
-
-	detach_equipment(thing_to_remove, user)
-
-/**
- * remove all equipment
- *
- * Removes all spacepod equipment
- */
-/obj/spacepod/proc/detach_all_equipment()
-	for(var/slot in equipment)
-		for(var/obj/item/spacepod_equipment/iterating_equipment as anything in equipment[slot])
-			detach_equipment(iterating_equipment, forced = TRUE)
-
-/**
- * Basic proc to attach a piece of equipment to the shuttle.
- */
-/obj/spacepod/proc/attach_equipment(obj/item/spacepod_equipment/equipment_to_attach, mob/user)
-	if(!(equipment_to_attach.slot in equipment_slot_limits)) // Slot not present on ship
-		to_chat(user, span_warning("[equipment_to_attach] is not compatable with [src]!"))
-		return FALSE
-
-	if(LAZYLEN(equipment[equipment_to_attach.slot]) >= equipment_slot_limits[equipment_to_attach.slot]) // Equipment slot full
-		to_chat(user, span_warning("[src] cannot fit [equipment_to_attach], slot full!"))
-		return FALSE
-
-	if(!equipment_to_attach.can_install(src, user)) // Slot checks
-		return FALSE
-
-	if(user && !user.temporarilyRemoveItemFromInventory(equipment_to_attach))
-		return FALSE
-
-	// Weapon handling
-	if(istype(equipment_to_attach, /obj/item/spacepod_equipment/weaponry))
-		if(user)
-			INVOKE_ASYNC(src, PROC_REF(async_weapon_slot_selection), equipment_to_attach, user)
-			return
-
-	if(!islist(equipment[equipment_to_attach.slot]))
-		equipment[equipment_to_attach.slot] = list()
-
-	equipment[equipment_to_attach.slot] += equipment_to_attach
-	equipment_to_attach.forceMove(src)
-	equipment_to_attach.on_install(src)
-	return TRUE
-
-/**
- * async weapon slot selection
- *
- * Asynchronously asks the user what weapon slot they want to put the weapon in.
- */
-/obj/spacepod/proc/async_weapon_slot_selection(obj/item/spacepod_equipment/weaponry/weaponry_to_attach, mob/user)
-	var/list/available_slots = get_free_weapon_slots()
-	var/weapon_slot_to_apply
-	weapon_slot_to_apply = tgui_input_list(user, "Please select a weapon slot to put the weapon into:", "Weapon Slot", available_slots)
-
-	if(!weapon_slot_to_apply)
-		weapon_slot_to_apply = pick(available_slots)
-
-	if(!islist(equipment[weaponry_to_attach.slot]))
-		equipment[weaponry_to_attach.slot] = list()
-
-	equipment[weaponry_to_attach.slot] += weaponry_to_attach
-	weaponry_to_attach.forceMove(src)
-	weaponry_to_attach.on_install(src, weapon_slot_to_apply)
-
-/**
- * Basic proc to detatch a piece of equipment from the shuttle.
- *
- * Also performs checks to see if its equipment or not.
- */
-/obj/spacepod/proc/detach_equipment(obj/equipment_to_detach, mob/user, forced)
-	if(isspacepodequipment(equipment_to_detach)) // If it is equipment, handle it
-		var/obj/item/spacepod_equipment/spacepod_equipment = equipment_to_detach
-		if(!spacepod_equipment.can_uninstall(src, user, forced))
-			return FALSE
-
-		equipment[spacepod_equipment.slot] -= spacepod_equipment
-
-		spacepod_equipment.on_uninstall(src, forced)
-
-	equipment_to_detach.forceMove(get_turf(src))
-
-	if(user && isitem(equipment_to_detach))
-		user.put_in_hands(equipment_to_detach)
-
-	return TRUE
-
-/obj/spacepod/proc/check_has_equipment(type_to_check)
-	var/list/equipment_list = get_all_equipment()
-
-	for(var/thing as anything in equipment_list)
-		if(istype(thing, type_to_check))
-			return TRUE
-
-	return FALSE
 
 // MISC PROCS
-
-/**
- * process_air
- *
- * Processes the atmospherics of the pod.
- */
-/obj/spacepod/process(delta_time)
-	if(cabin_air && cabin_air.return_volume() > 0)
-		var/delta = cabin_air.return_temperature() - T20C
-		cabin_air.temperature = cabin_air.return_temperature() - max(-10, min(10, round(delta/4,0.1)))
-	if(internal_tank && cabin_air)
-		var/datum/gas_mixture/tank_air = internal_tank.return_air()
-
-		var/release_pressure = ONE_ATMOSPHERE
-		var/cabin_pressure = cabin_air.return_pressure()
-		var/pressure_delta = min(release_pressure - cabin_pressure, (tank_air.return_pressure() - cabin_pressure)/2)
-		var/transfer_moles = 0
-		if(pressure_delta > 0) //cabin pressure lower than release pressure
-			if(tank_air.return_temperature() > 0)
-				transfer_moles = pressure_delta*cabin_air.return_volume()/(cabin_air.return_temperature() * R_IDEAL_GAS_EQUATION)
-				var/datum/gas_mixture/removed = tank_air.remove(transfer_moles)
-				cabin_air.merge(removed)
-		else if(pressure_delta < 0) //cabin pressure higher than release pressure
-			var/turf/our_turf = get_turf(src)
-			var/datum/gas_mixture/turf_air = our_turf.return_air()
-			pressure_delta = cabin_pressure - release_pressure
-			if(turf_air)
-				pressure_delta = min(cabin_pressure - turf_air.return_pressure(), pressure_delta)
-			if(pressure_delta > 0) //if location pressure is lower than cabin pressure
-				transfer_moles = pressure_delta*cabin_air.return_volume()/(cabin_air.return_temperature() * R_IDEAL_GAS_EQUATION)
-				var/datum/gas_mixture/removed = cabin_air.remove(transfer_moles)
-				if(our_turf)
-					our_turf.assume_air(removed)
-				else //just delete the cabin gas, we're in space or some shit
-					qdel(removed)
 
 /**
  * try to break lock
@@ -808,17 +636,32 @@ GLOBAL_LIST_INIT(spacepods_list, list())
  */
 /obj/spacepod/proc/on_mouse_moved(mob/user, object, location, control, params)
 	SIGNAL_HANDLER
+
+	// Parse the input parameters
 	var/list/modifiers = params2list(params)
-	if(object == src ||  (object && (object in user.get_all_contents())) || check_occupant(user) != SPACEPOD_RIDER_TYPE_PILOT)
+
+	// Return if the object is the spacepod itself, the object is in the user's contents, or the user is not the pilot
+	if(object == src || (object && (object in user.get_all_contents())) || check_occupant(user) != SPACEPOD_RIDER_TYPE_PILOT)
 		return
-	var/list/sl_list = splittext(modifiers["screen-loc"],",")
-	var/list/sl_x_list = splittext(sl_list[1], ":")
-	var/list/sl_y_list = splittext(sl_list[2], ":")
-	var/list/view_list = isnum(user.client.view) ? list("[user.client.view * 2 + 1]","[user.client.view * 2 + 1]") : splittext(user.client.view, "x")
-	var/dx = text2num(sl_x_list[1]) + (text2num(sl_x_list[2]) / world.icon_size) - 1 - text2num(view_list[1]) / 2
-	var/dy = text2num(sl_y_list[1]) + (text2num(sl_y_list[2]) / world.icon_size) - 1 - text2num(view_list[2]) / 2
-	if(sqrt(dx * dx + dy * dy) > 1)
-		SEND_SIGNAL(src, COMSIG_PHYSICS_SET_DESIRED_ANGLE, 90 - ATAN2(dx, dy))
+
+	// Split the "screen-loc" parameter into its X and Y components
+	var/list/screen_loc_list = splittext(modifiers["screen-loc"], ",")
+	var/list/screen_loc_x_list = splittext(screen_loc_list[1], ":")
+	var/list/screen_loc_y_list = splittext(screen_loc_list[2], ":")
+
+	// Get the view dimensions of the user's client
+	var/list/view_dimensions_list = isnum(user.client.view) ? list("[user.client.view * 2 + 1]", "[user.client.view * 2 + 1]") : splittext(user.client.view, "x")
+
+	// Calculate the difference between the mouse position and the center of the screen
+	var/delta_x = text2num(screen_loc_x_list[1]) + (text2num(screen_loc_x_list[2]) / world.icon_size) - 1 - text2num(view_dimensions_list[1]) / 2
+	var/delta_y = text2num(screen_loc_y_list[1]) + (text2num(screen_loc_y_list[2]) / world.icon_size) - 1 - text2num(view_dimensions_list[2]) / 2
+
+	// Calculate the distance between the mouse position and the center of the screen
+	var/distance = sqrt(delta_x * delta_x + delta_y * delta_y)
+
+	// Set the desired angle of the spacepod based on the mouse position
+	if(distance > 1)
+		SEND_SIGNAL(src, COMSIG_PHYSICS_SET_DESIRED_ANGLE, 90 - ATAN2(delta_x, delta_y))
 	else
 		SEND_SIGNAL(src, COMSIG_PHYSICS_SET_DESIRED_ANGLE, null)
 
@@ -852,447 +695,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		play_alarm(FALSE)
 
 
-// ARMOR PROCS
 
-/**
- * Add Armor
- *
- * Adds armor to the spacepod and updates it accordingly.
- */
-/obj/spacepod/proc/add_armor(obj/item/pod_parts/armor/armor)
-	desc = armor.pod_desc
-	equipment_slot_limits = armor.equipment_slot_limits
-	max_integrity = armor.pod_integrity
-	update_integrity(max_integrity - integrity_failure + get_integrity())
-	pod_armor = armor
-	update_icon()
-
-/**
- * Remove Armor
- *
- * Removes armor from the spacepod...
- */
-/obj/spacepod/proc/remove_armor()
-	if(!pod_armor)
-		equipment_slot_limits = SPACEPOD_DEFAULT_EQUIPMENT_LIMITS_LIST
-		update_integrity(min(integrity_failure, get_integrity()))
-		max_integrity = integrity_failure
-		desc = initial(desc)
-		pod_armor = null
-		update_icon()
-
-// WEAPON PROCS
-
-/**
- * Try Fire Weapon
- *
- * It's a signal handler to then invoke async the actual firing of the weapons. Triggered by mouseclick.
- */
-/obj/spacepod/proc/try_fire_weapon(client/source, atom/_target, turf/location, control, params)
-	SIGNAL_HANDLER
-	if(istype(_target, /atom/movable/screen))
-		return
-	if(weapon_safety)
-		to_chat(source, span_warning("Safety is on!"))
-		return
-	if(check_occupant(source.mob) != SPACEPOD_RIDER_TYPE_PILOT)
-		return
-	var/obj/item/spacepod_equipment/weaponry/active_weaponry = get_active_weapon()
-	if(!active_weaponry)
-		to_chat(source, span_warning("No active weapons!"))
-		return
-	INVOKE_ASYNC(src, PROC_REF(async_fire_weapons_at), active_weaponry, _target)
-
-/**
- * Async fires weapons.
- */
-/obj/spacepod/proc/async_fire_weapons_at(obj/item/spacepod_equipment/weaponry/weapon_to_fire, atom/target)
-	var/x_offset = weapon_slots[active_weapon_slot][1]
-	var/y_offset = weapon_slots[active_weapon_slot][2]
-	weapon_to_fire.fire_weapon(target, x_offset, y_offset)
-
-/**
- * set active weaponslot
- *
- * Sets the pods active weapon slot.
- */
-/obj/spacepod/proc/set_active_weapon_slot(new_slot, mob/user)
-	active_weapon_slot = new_slot
-	if(user)
-		var/obj/item/spacepod_equipment/weaponry/selected_weapon = get_weapon_in_slot(new_slot)
-		to_chat(user, span_notice("Weapon slot switched to: <b>[new_slot] ([selected_weapon ? selected_weapon : "Empty"])</b>"))
-
-/**
- * get free weapon slots
- *
- * Returns any available weapon slots.
- */
-/obj/spacepod/proc/get_free_weapon_slots()
-	var/list/free_slots = LAZYCOPY(weapon_slots)
-	for(var/iterating_weaponry in equipment[SPACEPOD_SLOT_WEAPON])
-		if(equipment[SPACEPOD_SLOT_WEAPON][iterating_weaponry] in free_slots)
-			free_slots -= equipment[SPACEPOD_SLOT_WEAPON][iterating_weaponry]
-	return free_slots
-
-/**
- * get active weapon
- *
- * returns the active weapon in the currently selected slot or false if nothing is selected
- */
-/obj/spacepod/proc/get_active_weapon()
-	for(var/weaponry in equipment[SPACEPOD_SLOT_WEAPON])
-		if(equipment[SPACEPOD_SLOT_WEAPON][weaponry] == active_weapon_slot)
-			return weaponry
-	return FALSE
-
-/**
- * get weapon in slot
- *
- * Returns the weapon that is currently using up the aforementioned slot, if none, returns false.
- */
-/obj/spacepod/proc/get_weapon_in_slot(weapon_slot)
-	for(var/iterating_weaponry in equipment[SPACEPOD_SLOT_WEAPON])
-		if(equipment[SPACEPOD_SLOT_WEAPON][iterating_weaponry] == weapon_slot)
-			return iterating_weaponry
-	return FALSE
-
-// RIDER CONTROL PROCS
-
-/**
- * Enter Pod
- *
- * Basic control for entering the pod, it has all the required checks.area
- *
- * returns TRUE OR FALSE.
- */
-/obj/spacepod/proc/enter_pod(mob/living/user)
-	if(user.stat != CONSCIOUS)
-		return FALSE
-
-	if(locked)
-		to_chat(user, span_warning("[src]'s doors are locked!"))
-		return FALSE
-
-	if(!istype(user))
-		return FALSE
-
-	if(user.incapacitated())
-		return FALSE
-
-	if(!ishuman(user))
-		return FALSE
-
-	// We will decide the type we enter as depending on what slots are free.
-	var/type_to_enter_as = null
-
-	if(get_remaining_slots(SPACEPOD_RIDER_TYPE_PILOT) > 0)
-		type_to_enter_as = SPACEPOD_RIDER_TYPE_PILOT
-	else if(get_remaining_slots(SPACEPOD_RIDER_TYPE_PASSENGER) > 0)
-		type_to_enter_as = SPACEPOD_RIDER_TYPE_PASSENGER
-	else
-		to_chat(user, span_danger("You can't fit in [src], it's full!"))
-		return FALSE
-
-	visible_message(span_notice("[user] starts to climb into [src]'s [type_to_enter_as]'s seat."))
-
-	if(do_after(user, pod_enter_time, target = src) && construction_state == SPACEPOD_ARMOR_WELDED)
-		var/success = add_rider(user, type_to_enter_as)
-		if(!success)
-			to_chat(user, span_notice("You were too slow. Try better next time, loser."))
-		return success
-	else
-		to_chat(user, span_notice("You stop entering [src]."))
-
-/**
- * Check rider slot
- *
- * Checks if we can actually put a rider into said slot, and if we can, also return how many slots there are, if none, return false.
- */
-/obj/spacepod/proc/check_rider_slot(mob/living/mob_to_check, slot_to_check)
-	// If we are already in here, don't allow us to add ourselves again.
-	if(mob_to_check in occupants)
-		return FALSE
-	var/slots_taken = 0
-	for(var/mob/living/iterating_mob as anything in occupants[slot_to_check])
-		slots_taken++
-
-	if(slots_taken >= occupant_slots[slot_to_check])
-		return FALSE
-
-	return TRUE
-
-/**
- * grant actions
- *
- * Grants actions to a given player depending on their rider_type
- */
-/obj/spacepod/proc/grant_actions(mob/living/mob_to_grant_to, rider_type)
-	for(var/datum/action/iterating_action_type as anything in action_types_to_grant[rider_type])
-		grant_action_type_to_occupant(mob_to_grant_to, iterating_action_type)
-
-/**
- * Grants an action to a occupant and adds it to the system.
- */
-
-/obj/spacepod/proc/grant_action_type_to_occupant(mob/living/mob_to_grant_to, action_type_to_grant)
-	// Generate and deploy the action
-	var/datum/action/created_action = generate_action_type(action_type_to_grant)
-	created_action.Grant(mob_to_grant_to)
-
-	// Add the action to the occupant
-	LAZYINITLIST(occupants[mob_to_grant_to][SPACEPOD_RIDER_ACTIONS])
-	occupants[mob_to_grant_to][SPACEPOD_RIDER_ACTIONS] += created_action
-
-	// Edge case hard del prevention. ROBUST.
-	RegisterSignal(created_action, COMSIG_PARENT_QDELETING, PROC_REF(action_deleting))
-
-/**
- * Handles the deletion of an action.
- *
- * This should really never happen, but let's keep our code ROBUST.
- */
-/obj/spacepod/proc/action_deleting(datum/source)
-	SIGNAL_HANDLER
-	for(var/occupant as anything in occupants)
-		if(source in occupants[occupant][SPACEPOD_RIDER_ACTIONS])
-			occupants[occupant][SPACEPOD_RIDER_ACTIONS] -= source
-
-/**
- * give traits
- *
- * Gives the mob all the required traits depening on the rider_type
- */
-/obj/spacepod/proc/give_traits(mob/living/mob_to_give_to, rider_type)
-	for(var/iterating_trait as anything in traits_to_grant[rider_type])
-		give_trait_to_occupant(mob_to_give_to, iterating_trait, traits_to_grant[rider_type][iterating_trait])
-
-/**
- * give trait to occupant
- *
- * Gives a trait to an occupant and adds it to the assoc list for later use.
- */
-/obj/spacepod/proc/give_trait_to_occupant(mob/living/mob_to_give_to, trait_to_give, trait_source)
-	ADD_TRAIT(mob_to_give_to, trait_to_give, trait_source)
-	LAZYINITLIST(occupants[mob_to_give_to][SPACEPOD_RIDER_TRAITS])
-	occupants[mob_to_give_to][SPACEPOD_RIDER_ACTIONS] += trait_to_give
-	occupants[mob_to_give_to][SPACEPOD_RIDER_ACTIONS][trait_to_give] = trait_source
-
-/**
- * Add Rider
- *
- * Adds a rider to the spacepod and sets up controls if they are a pilot.
- */
-/obj/spacepod/proc/add_rider(mob/living/living_mob, rider_type)
-	// Check if we can actually add them.
-	if(!check_rider_slot(living_mob, rider_type))
-		return FALSE
-
-	LAZYINITLIST(occupants[living_mob])
-
-	// Set the rider type data
-	occupants[living_mob][SPACEPOD_RIDER_TYPE] = rider_type
-
-	// Give em the actions
-	grant_actions(living_mob, rider_type)
-
-	// Give em the traits
-	give_traits(living_mob, rider_type)
-
-	if(rider_type == SPACEPOD_RIDER_TYPE_PILOT)
-		// Set up the signals here
-		RegisterSignal(living_mob, COMSIG_MOB_CLIENT_MOUSE_MOVE, PROC_REF(on_mouse_moved))
-		RegisterSignal(living_mob.client, COMSIG_CLIENT_MOUSEDOWN, PROC_REF(try_fire_weapon))
-		RegisterSignal(living_mob, COMSIG_MOB_GET_STATUS_TAB_ITEMS, PROC_REF(get_status_tab_items))
-
-		if(living_mob.client)
-			living_mob.client.view_size.setTo(2)
-			living_mob.movement_type = GROUND
-
-	living_mob.stop_pulling()
-	living_mob.forceMove(src)
-
-	playsound(src, 'sound/machines/windowdoor.ogg', 50, 1)
-	return TRUE
-
-/**
- * Remove actions
- *
- * Removes actions from a given player depending on their rider_type
- */
-/obj/spacepod/proc/remove_all_actions(mob/living/mob_to_remove_from)
-	for(var/datum/action/iterating_action_instance as anything in occupants[mob_to_remove_from][SPACEPOD_RIDER_ACTIONS])
-		remove_action_from_occupant(mob_to_remove_from, iterating_action_instance)
-
-/**
- * Removes an action type or instance from an occupant. Can be a type or instance.
- */
-/obj/spacepod/proc/remove_action_from_occupant(mob/living/mob_to_remove_from, action_type_or_instance_to_remove)
-	// Remove the action type
-	for(var/datum/action/iterating_action_instance in occupants[mob_to_remove_from][SPACEPOD_RIDER_ACTIONS])
-		if(ispath(action_type_or_instance_to_remove) && istype(iterating_action_instance, action_type_or_instance_to_remove))
-			iterating_action_instance.Remove(mob_to_remove_from)
-			occupants[mob_to_remove_from][SPACEPOD_RIDER_ACTIONS] -= iterating_action_instance
-			UnregisterSignal(iterating_action_instance, COMSIG_PARENT_QDELETING)
-			qdel(iterating_action_instance)
-			continue
-		if(iterating_action_instance == action_type_or_instance_to_remove)
-			iterating_action_instance.Remove(mob_to_remove_from)
-			occupants[mob_to_remove_from][SPACEPOD_RIDER_ACTIONS] -= iterating_action_instance
-			UnregisterSignal(iterating_action_instance, COMSIG_PARENT_QDELETING)
-			qdel(iterating_action_instance)
-
-
-
-/**
- * remove_traits
- *
- * Removes the traits from the mob, depending on the rider_type
- */
-/obj/spacepod/proc/remove_all_traits(mob/living/mob_to_remove_from)
-	for(var/iterating_trait as anything in occupants[mob_to_remove_from][SPACEPOD_RIDER_TRAITS])
-		remove_trait_from_occupant(mob_to_remove_from, iterating_trait)
-
-/**
- * remove_trait_from_occupant
- *
- * Removes a trait from an occupant and cleans up the assoc list.
- */
-/obj/spacepod/proc/remove_trait_from_occupant(mob/living/mob_to_remove_from, trait_to_remove)
-	REMOVE_TRAIT(mob_to_remove_from, trait_to_remove, occupants[mob_to_remove_from][SPACEPOD_RIDER_TRAITS][trait_to_remove])
-	occupants[mob_to_remove_from][SPACEPOD_RIDER_TRAITS] -= trait_to_remove
-
-/**
- * remove_rider
- *
- * Checks and removes a rider and clears everything up.
- */
-/obj/spacepod/proc/remove_rider(mob/living/mob_to_remove, forced)
-	if(locked && !forced)
-		to_chat(mob_to_remove, span_warning("[src]'s doors are locked!"))
-		return FALSE
-
-	remove_all_actions(mob_to_remove)
-
-	remove_all_traits(mob_to_remove)
-
-	if(occupants[mob_to_remove][SPACEPOD_RIDER_TYPE] == SPACEPOD_RIDER_TYPE_PILOT)
-		UnregisterSignal(mob_to_remove, COMSIG_MOB_CLIENT_MOUSE_MOVE)
-		UnregisterSignal(mob_to_remove.client, COMSIG_CLIENT_MOUSEDOWN)
-		UnregisterSignal(mob_to_remove, COMSIG_MOB_GET_STATUS_TAB_ITEMS)
-
-	occupants -= mob_to_remove
-
-	if(mob_to_remove.loc == src)
-		mob_to_remove.forceMove(get_turf(src))
-
-	if(mob_to_remove.client)
-		mob_to_remove.client.view_size.resetToDefault()
-		mob_to_remove.client.pixel_x = 0
-		mob_to_remove.client.pixel_y = 0
-
-	return TRUE
-
-/**
- * remove all riders
- *
- * Removes all current riders
- */
-/obj/spacepod/proc/remove_all_riders(rider_type_to_remove, forced)
-	for(var/occupant as anything in occupants)
-		if(rider_type_to_remove)
-			if(occupants[occupant][SPACEPOD_RIDER_TYPE] != rider_type_to_remove)
-				continue
-		remove_rider(occupant, forced)
-
-/**
- * exit pod
- *
- * Makes the user exit the pod.
- */
-/obj/spacepod/proc/exit_pod(mob/user)
-	if(HAS_TRAIT(user, TRAIT_RESTRAINED))
-		to_chat(user, span_notice("You attempt to stumble out of [src]. This will take two minutes."))
-		to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("[user] is trying to escape [src]."))
-		if(!do_after(user, 1200, target = src))
-			return
-
-	if(remove_rider(user))
-		to_chat(user, span_notice("You climb out of [src]."))
-
-/**
- * to_chat_to_riders
- *
- * Sends a message to a list of rider types, or just a rider type.
- *
- * rider_types can be a list or a singleton
- */
-/obj/spacepod/proc/to_chat_to_riders(rider_types, message)
-	if(islist(rider_types))
-		for(var/rider_type as anything in rider_types)
-			for(var/occupant as anything in occupants[rider_type])
-				to_chat(occupant, message)
-		return
-	for(var/occupant as anything in occupants[rider_types])
-		to_chat(occupant, message)
-
-/**
- * check_occupant
- *
- * Checks if a mob is an occupant within the pod.
- *
- * Returns false if they are not, or returns the rider type if they are.
- */
-/obj/spacepod/proc/check_occupant(mob/mob_to_check)
-	if(mob_to_check in occupants)
-		return occupants[mob_to_check][SPACEPOD_RIDER_TYPE]
-	return FALSE
-
-/**
- * get_all_occupants
- *
- * returns a list of all the occupants
- */
-/obj/spacepod/proc/get_all_occupants()
-	return occupants
-
-/**
- * get_all_occupants_by_type
- *
- * returns a list of all the occupants depending on rider type
- */
-/obj/spacepod/proc/get_all_occupants_by_type(rider_types)
-	var/list/vaid_occupants = list()
-	if(islist(rider_types))
-		for(var/type in rider_types)
-			for(var/mob/living/iterating_mob as anything in occupants)
-				if(occupants[iterating_mob][SPACEPOD_RIDER_TYPE] == type)
-					vaid_occupants += iterating_mob
-	else
-		for(var/mob/living/iterating_mob as anything in occupants)
-			if(occupants[iterating_mob][SPACEPOD_RIDER_TYPE] == rider_types)
-				vaid_occupants += iterating_mob
-	return vaid_occupants
-
-/**
- * get_remaining_slots
- *
- * returns the remaining slots for a rider type
- */
-/obj/spacepod/proc/get_remaining_slots(rider_type)
-	return occupant_slots[rider_type] - LAZYLEN(get_all_occupants_by_type(rider_type))
-
-/**
- * Returns the relevant status tab items for the pilot
- */
-/obj/spacepod/proc/get_status_tab_items(mob/living/source, list/items)
-	SIGNAL_HANDLER
-	items += ""
-	items += "Spacepod Charge: [cell ? "[round(cell.charge,0.1)]/[cell.maxcharge] KJ" : "NONE"]"
-	items += "Spacepod Integrity: [round(get_integrity(), 0.1)]/[max_integrity]"
-	items += "Spacepod Velocity: [round(sqrt(component_velocity_x * component_velocity_x + component_velocity_y * component_velocity_y), 0.1)] m/s"
-	var/obj/item/spacepod_equipment/weaponry/selected_weapon = get_weapon_in_slot(active_weapon_slot)
-	items += "Spacepod Weapon: [active_weapon_slot] ([selected_weapon ? selected_weapon.name : "Empty"])"
-	items += ""
 
 
 
@@ -1335,93 +738,44 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	QDEL_NULL(warp)
 	thrust_lockout = FALSE
 
-// TOGGLES
+// MOVEMENT PROCS
 
 /**
- * Togggle weapon lock
+ * check_thrust
  *
- * Toggles the weapon lock systems of the pod.
+ * checks if the thrusters can be fired.
  */
-/obj/spacepod/proc/toggle_weapon_lock(mob/user)
-	weapon_safety = !weapon_safety
-	to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_notice("Weapon lock is now [weapon_safety ? "on" : "off"]."))
+/obj/spacepod/proc/check_thrust(datum/component/physics/source_component, total_x, total_y, desired_thrust_dir, delta_time)
+	SIGNAL_HANDLER
+	if(!cell)
+		if(desired_thrust_dir)
+			to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("No powercell installed!"))
+		return FALSE
+	if(!check_has_equipment(/obj/item/spacepod_equipment/thruster))
+		if(desired_thrust_dir)
+			to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("No thrusters installed!"))
+		return FALSE
+	if(thrust_lockout)
+		if(desired_thrust_dir)
+			to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("Unable to comply due to thruster lockout."))
+		return FALSE
+	if(brakes && !check_has_equipment(/obj/item/spacepod_equipment/rcs_upgrade))
+		if(desired_thrust_dir)
+			to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("Brakes are enabled!"))
+		return FALSE
+	if(!cell.use(10 * sqrt((total_x * total_x) + (total_y * total_y)) * delta_time))
+		if(desired_thrust_dir)
+			to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("Insufficient power!"))
+		return FALSE
+	return COMPONENT_PHYSICS_THRUST
 
 /**
- * toggle lights
+ * check_autostabalisation
  *
- * Toggles the spacepod lights and sets them accordingly, if a light system is present.
+ * checks if autostabalisation is enabled.
  */
-/obj/spacepod/proc/toggle_lights(mob/user)
-	if(!LAZYLEN(equipment[SPACEPOD_SLOT_LIGHT]))
-		to_chat(user, span_warning("No lights installed!"))
-		return
-
-	var/obj/item/spacepod_equipment/lights/light_equipment = equipment[SPACEPOD_SLOT_LIGHT][1]
-	light_color = light_equipment.color_to_set
-	light_toggle = !light_toggle
-	if(light_toggle)
-		set_light_on(TRUE)
-	else
-		set_light_on(FALSE)
-	to_chat(user, "Lights toggled [light_toggle ? "on" : "off"].")
-
-/**
- * Toggle breaks
- *
- * Toggles vector braking systems.
- */
-/obj/spacepod/proc/toggle_brakes(mob/user)
-	brakes = !brakes
-	to_chat(user, span_notice("You toggle the brakes [brakes ? "on" : "off"]."))
-
-/**
- * Toggle gyroscope
- *
- * Toggles gyroscope.
- */
-/obj/spacepod/proc/toggle_gyroscope(mob/user)
-	gyroscope_enabled = !gyroscope_enabled
-	to_chat(user, span_notice("You toggle the gyroscope [gyroscope_enabled ? "on" : "off"]."))
-/**
- * toggle lock
- *
- * Toggles the lock provoding there is a lock.
- */
-/obj/spacepod/proc/toggle_locked(mob/user)
-	if(!LAZYLEN(equipment[SPACEPOD_SLOT_LOCK]))
-		to_chat(user, span_warning("[src] has no locking mechanism."))
-		locked = FALSE //Should never be false without a lock, but if it somehow happens, that will force an unlock.
-	else
-		locked = !locked
-		to_chat(user, span_warning("You [locked ? "lock" : "unlock"] the doors."))
-
-/**
- * toggle doors
- *
- * Toggles near by doors and checks items.
- */
-/obj/spacepod/proc/toggle_doors(mob/user)
-	for(var/obj/machinery/door/poddoor/multi_tile/P in orange(3,src))
-		for(var/mob/living/carbon/human/O in contents)
-			if(P.check_access(O.get_active_held_item()) || P.check_access(O.wear_id))
-				if(P.density)
-					P.open()
-					return TRUE
-				else
-					P.close()
-					return TRUE
-		to_chat(user, span_warning("Access denied."))
-		return
-
-	to_chat(user, span_warning("You are not close to any pod doors."))
-
-/**
- * mute alarm
- *
- * Mutes the alarm and prevents it from starting. Provides feedback.
- */
-/obj/spacepod/proc/mute_alarm(mob/user)
-	alarm_muted = !alarm_muted
-	play_alarm(FALSE)
-	to_chat(user, span_notice("System alarm [alarm_muted ? "muted" : "enabled"]."))
-
+/obj/spacepod/proc/check_autostabalisation(datum/component/physics/source_component)
+	SIGNAL_HANDLER
+	if(brakes)
+		return COMPONENT_PHYSICS_AUTO_STABALISATION
+	return FALSE
