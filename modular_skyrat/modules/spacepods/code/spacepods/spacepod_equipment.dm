@@ -167,7 +167,7 @@
 	. = ..()
 	if(forced)
 		return TRUE
-	if(LAZYLEN(detatching_spacepod.get_all_occupants_by_type(SPACEPOD_RIDER_TYPE_PASSENGER)) > (LAZYLEN(detatching_spacepod[occupant_slot]) - occupant_mod))
+	if(LAZYLEN(detatching_spacepod.get_all_occupants_by_type(SPACEPOD_RIDER_TYPE_PASSENGER)) > (LAZYLEN(detatching_spacepod.occupant_slots[occupant_slot]) - occupant_mod))
 		to_chat(user, span_warning("You can't remove an occupied seat! Remove the occupant first."))
 		return FALSE
 	return ..()

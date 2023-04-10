@@ -272,10 +272,10 @@
 /obj/spacepod/proc/to_chat_to_riders(rider_types, message)
 	if(islist(rider_types))
 		for(var/rider_type as anything in rider_types)
-			for(var/occupant as anything in occupants[rider_type])
+			for(var/occupant as anything in get_all_occupants_by_type(rider_type))
 				to_chat(occupant, message)
 		return
-	for(var/occupant as anything in occupants[rider_types])
+	for(var/occupant as anything in get_all_occupants_by_type(rider_types))
 		to_chat(occupant, message)
 
 /**
