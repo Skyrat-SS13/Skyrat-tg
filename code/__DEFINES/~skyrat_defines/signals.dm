@@ -105,3 +105,13 @@
 
 /// Sent when a physics component processes a physics based bump. (bump_velocity, bumped_atom)
 #define COMSIG_PHYSICS_PROCESSED_BUMP "physics_processed_bump"
+
+/// Sent to check if the physics component can apply thrust to the atom. (source, total_x, total_y, desired_thrust_dir, delta_time)
+#define COMSIG_PHYSICS_THRUST_CHECK "physics_thrust_check"
+	/// Return bitflag for enabled thrust.
+	#define COMPONENT_PHYSICS_THRUST (1<<0)
+
+/// Sent to check if the physics component can autostabalise. (source)
+#define COMSIG_PHYSICS_AUTOSTABALISE_CHECK "physics_autostabalise_check"
+	/// Return bitflag for enabled stabalisation.
+	#define COMPONENT_PHYSICS_AUTO_STABALISATION (1<<0)

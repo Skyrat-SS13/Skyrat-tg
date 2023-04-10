@@ -147,6 +147,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/datum/component/physics/physics_component = AddComponent(/datum/component/physics)
 	RegisterSignal(physics_component, COMSIG_PHYSICS_UPDATE_MOVEMENT, PROC_REF(physics_component_update_movement))
 	RegisterSignal(physics_component, COMSIG_PHYSICS_PROCESSED_BUMP, PROC_REF(process_physics_bump))
+	RegisterSignal(physics_component, COMSIG_PHYSICS_THRUST_CHECK, PROC_REF(check_thrust))
+	RegisterSignal(physics_component, COMSIG_PHYSICS_AUTOSTABALISE_CHECK, PROC_REF(check_autostabalisation))
 	active_weapon_slot = pick(weapon_slots)
 	GLOB.spacepods_list += src
 	START_PROCESSING(SSobj, src)
@@ -178,23 +180,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	UnregisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED)
 	return ..()
 
-/**
- * physics_component_update_movement
- *
- * Updates the corresponding component values for each time the physics component is processed.
- */
-/obj/spacepod/proc/physics_component_update_movement(datum/source, updated_angle, updated_velocity_x, updated_velocity_y, updated_offset_x, updated_offset_y, updated_last_rotate, updated_last_thrust_forward, updated_last_thrust_right)
-	SIGNAL_HANDLER
-	component_angle = updated_angle
-	component_velocity_x = updated_velocity_x
-	component_velocity_y = updated_velocity_y
-	component_offset_x = updated_offset_x
-	component_offset_y = updated_offset_y
-	component_last_rotate = updated_last_rotate
-	component_last_thrust_forward = updated_last_thrust_forward
-	component_last_thrust_right = updated_last_thrust_right
 
-	update_icon()
 
 // We want the pods to have gravity all the time to prevent them being touched by spacedrift.
 /obj/spacepod/has_gravity(turf/gravity_turf)
@@ -514,6 +500,46 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 	SEND_SIGNAL(src, COMSIG_PHYSICS_SET_THRUST_DIR, direction)
 
+/**
+ * check_thrust
+ *
+ * checks if the thrusters can be fired.
+ */
+/obj/spacepod/proc/check_thrust(datum/component/physics/source_component, total_x, total_y, desired_thrust_dir, delta_time)
+	SIGNAL_HANDLER
+	if(!cell)
+		if(desired_thrust_dir)
+			to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("No powercell installed!"))
+		return FALSE
+	if(!check_has_equipment(/obj/item/spacepod_equipment/thruster))
+		if(desired_thrust_dir)
+			to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("No thrusters installed!"))
+		return FALSE
+	if(thrust_lockout)
+		if(desired_thrust_dir)
+			to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("Unable to comply due to thruster lockout."))
+		return FALSE
+	if(brakes && !check_has_equipment(/obj/item/spacepod_equipment/rcs_upgrade))
+		if(desired_thrust_dir)
+			to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("Brakes are enabled!"))
+		return FALSE
+	if(!cell.use(10 * sqrt((total_x * total_x) + (total_y * total_y)) * time))
+		if(desired_thrust_dir)
+			to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("Insufficient power!"))
+		return FALSE
+	return COMPONENT_PHYSICS_THRUST
+
+/**
+ * check_autostabalisation
+ *
+ * checks if autostabalisation is enabled.
+ */
+/obj/spacepod/proc/check_autostabalisation(datum/component/physics/source_component)
+	SIGNAL_HANDLER
+	if(brakes)
+		return COMPONENT_PHYSICS_AUTO_STABALISATION
+	return FALSE
+
 /obj/spacepod/MouseDrop_T(atom/movable/dropped_atom, mob/living/user)
 	if(check_occupant(user) || construction_state != SPACEPOD_ARMOR_WELDED)
 		return
@@ -555,6 +581,25 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		return
 	brakes = !brakes
 	to_chat(usr, span_notice("You toggle the brakes [brakes ? "on" : "off"]."))
+
+// PHYSICS PROCS
+/**
+ * physics_component_update_movement
+ *
+ * Updates the corresponding component values for each time the physics component is processed.
+ */
+/obj/spacepod/proc/physics_component_update_movement(datum/source, updated_angle, updated_velocity_x, updated_velocity_y, updated_offset_x, updated_offset_y, updated_last_rotate, updated_last_thrust_forward, updated_last_thrust_right)
+	SIGNAL_HANDLER
+	component_angle = updated_angle
+	component_velocity_x = updated_velocity_x
+	component_velocity_y = updated_velocity_y
+	component_offset_x = updated_offset_x
+	component_offset_y = updated_offset_y
+	component_last_rotate = updated_last_rotate
+	component_last_thrust_forward = updated_last_thrust_forward
+	component_last_thrust_right = updated_last_thrust_right
+
+	update_icon()
 
 // EQUIPMENT PROCS
 

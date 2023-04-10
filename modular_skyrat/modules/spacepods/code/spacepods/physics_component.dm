@@ -1,4 +1,4 @@
-/**
+/**atom
  * Physics Component
  *
  * This component will give whatever it is attached to 2D physics.
@@ -26,8 +26,6 @@
 	var/angular_velocity = 0
 	/// Our icon direction number.
 	var/icon_dir_num = 1
-	/// Do we try to stabalise ourselves?
-	var/auto_stabalisation = FALSE
 	/// Physics control vars
 	var/desired_thrust_dir = 0
 	/// Max forward thrust, in tiles per second
@@ -260,107 +258,111 @@
 	return last_angle
 
 /datum/component/physics/proc/drag_calculations(delta_time)
-    // Calculate the magnitude of the atom's velocity
-    var/velocity_mag = sqrt(velocity_x * velocity_x + velocity_y * velocity_y)
+	// Calculate the magnitude of the atom's velocity
+	var/velocity_mag = sqrt(velocity_x * velocity_x + velocity_y * velocity_y)
 
-    if(velocity_mag || angular_velocity)
-        var/drag = 0
-        var/floating = FALSE
+	if(velocity_mag || angular_velocity)
+		var/drag = 0
+		var/floating = FALSE
 
-        // Iterate through the turfs the atom is currently in
-        for(var/turf/iterating_turf in parent_atom.locs)
-            // Ignore space turfs (no drag in space)
-            if(isspaceturf(iterating_turf))
-                continue
+		// Iterate through the turfs the atom is currently in
+		for(var/turf/iterating_turf in parent_atom.locs)
+			// Ignore space turfs (no drag in space)
+			if(isspaceturf(iterating_turf))
+				continue
 
-            // Add a small amount of drag for each turf
-            drag += 0.001
+			// Add a small amount of drag for each turf
+			drag += 0.001
 
-            // Check if the atom is floating (not auto-stabilized) and has a significant velocity
-            if(!floating && iterating_turf.has_gravity() && !auto_stabalisation && velocity_mag > 0.1)
-                floating = TRUE // Flying on the station drains the battery
+			// Check if the atom is floating (not auto-stabilized) and has a significant velocity
+			if(!floating && iterating_turf.has_gravity() && !auto_stabalisation && velocity_mag > 0.1)
+				floating = TRUE // Flying on the station drains the battery
 
-            // Apply drag based on gravity and auto-stabilization
-            if((!floating && iterating_turf.has_gravity()) || auto_stabalisation)
-                // Adjust drag based on the mining level (less gravity on lavaland)
-                drag += is_mining_level(parent_atom.z) ? 0.1 : 0.5
+			// Apply drag based on gravity and auto-stabilization
+			if((!floating && iterating_turf.has_gravity()) || auto_stabalisation)
+				// Adjust drag based on the mining level (less gravity on lavaland)
+				drag += is_mining_level(parent_atom.z) ? 0.1 : 0.5
 
-                // If atom is going too fast, make it lose floor tiles and take damage
-                if(velocity_mag > 5 && prob(velocity_mag * 4) && isfloorturf(iterating_turf))
-                    var/turf/open/floor/floor = iterating_turf
-                    floor.make_plating()
-                    parent_atom.take_damage(3, BRUTE, "melee", FALSE)
+				// If atom is going too fast, make it lose floor tiles and take damage
+				if(velocity_mag > 5 && prob(velocity_mag * 4) && isfloorturf(iterating_turf))
+					var/turf/open/floor/floor = iterating_turf
+					floor.make_plating()
+					parent_atom.take_damage(3, BRUTE, "melee", FALSE)
 
-            // Calculate the drag based on the pressure in the environment
-            var/datum/gas_mixture/env = iterating_turf.return_air()
-            if(env)
-                var/pressure = env.return_pressure()
-                drag += velocity_mag * pressure * 0.0001 // 1 atmosphere should shave off 1% of velocity per tile
+			// Calculate the drag based on the pressure in the environment
+			var/datum/gas_mixture/env = iterating_turf.return_air()
+			if(env)
+				var/pressure = env.return_pressure()
+				drag += velocity_mag * pressure * 0.0001 // 1 atmosphere should shave off 1% of velocity per tile
 
-        // Limit the drag at high velocities
-        if(velocity_mag > 20)
-            drag = max(drag, (velocity_mag - 20) / delta_time)
+		// Limit the drag at high velocities
+		if(velocity_mag > 20)
+			drag = max(drag, (velocity_mag - 20) / delta_time)
 
-        // Apply the calculated drag to the atom's velocity and angular velocity
-        if(drag)
-            if(velocity_mag)
-                var/drag_factor = 1 - clamp(drag * delta_time / velocity_mag, 0, 1)
-                velocity_x *= drag_factor
-                velocity_y *= drag_factor
-            if(angular_velocity != 0)
-                var/drag_factor_spin = 1 - clamp(drag * 30 * delta_time / abs(angular_velocity), 0, 1)
-                angular_velocity *= drag_factor_spin
+		// Apply the calculated drag to the atom's velocity and angular velocity
+		if(drag)
+			if(velocity_mag)
+				var/drag_factor = 1 - clamp(drag * delta_time / velocity_mag, 0, 1)
+				velocity_x *= drag_factor
+				velocity_y *= drag_factor
+			if(angular_velocity != 0)
+				var/drag_factor_spin = 1 - clamp(drag * 30 * delta_time / abs(angular_velocity), 0, 1)
+				angular_velocity *= drag_factor_spin
 
 /datum/component/physics/proc/thrust_calculations(delta_time)
-    // Calculate thrust components based on angle
-    var/total_thrust_x
-    var/total_thrust_y
-    var/forward_x = cos(90 - angle)
-    var/forward_y = sin(90 - angle)
-    var/side_x = forward_y
-    var/side_y = -forward_x
-    last_thrust_forward = 0
-    last_thrust_right = 0
+	// Calculate thrust components based on angle
+	var/total_thrust_x
+	var/total_thrust_y
+	var/forward_x = cos(90 - angle)
+	var/forward_y = sin(90 - angle)
+	var/side_x = forward_y
+	var/side_y = -forward_x
+	last_thrust_forward = 0
+	last_thrust_right = 0
 
-    // Automatic stabilization of the atom
-    if(auto_stabalisation)
-        // Calculate braking thrust based on current velocity and delta_time
-        var/braking_thrust_forward = -((forward_x * velocity_x) + (forward_y * velocity_y)) / delta_time
-        var/braking_thrust_right = -((side_x * velocity_x) + (side_y * velocity_y)) / delta_time
 
-        // Clamp braking thrust within acceptable limits
-        braking_thrust_forward = clamp(braking_thrust_forward, -backward_maxthrust, forward_maxthrust)
-        braking_thrust_right = clamp(braking_thrust_right, -side_maxthrust, side_maxthrust)
+	// Automatic stabilization of the atom
+   if(SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABALISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABALISATION)
+		// Calculate braking thrust based on current velocity and delta_time
+		var/braking_thrust_forward = -((forward_x * velocity_x) + (forward_y * velocity_y)) / delta_time
+		var/braking_thrust_right = -((side_x * velocity_x) + (side_y * velocity_y)) / delta_time
 
-        // Calculate total thrust by adding braking thrust to current thrust
-        total_thrust_x += braking_thrust_forward * forward_x + braking_thrust_right * side_x
-        total_thrust_y += braking_thrust_forward * forward_y + braking_thrust_right * side_y
+		// Clamp braking thrust within acceptable limits
+		braking_thrust_forward = clamp(braking_thrust_forward, -backward_maxthrust, forward_maxthrust)
+		braking_thrust_right = clamp(braking_thrust_right, -side_maxthrust, side_maxthrust)
 
-        // Store the last braking thrust values
-        last_thrust_forward = braking_thrust_forward
-        last_thrust_right = braking_thrust_right
+		// Calculate total thrust by adding braking thrust to current thrust
+		total_thrust_x += braking_thrust_forward * forward_x + braking_thrust_right * side_x
+		total_thrust_y += braking_thrust_forward * forward_y + braking_thrust_right * side_y
 
-    // Apply thrust based on the desired thrust direction
-    if(desired_thrust_dir & NORTH)
-        total_thrust_x += forward_x * forward_maxthrust
-        total_thrust_y += forward_y * forward_maxthrust
-        last_thrust_forward = forward_maxthrust
-    if(desired_thrust_dir & SOUTH)
-        total_thrust_x -= forward_x * backward_maxthrust
-        total_thrust_y -= forward_y * backward_maxthrust
-        last_thrust_forward = -backward_maxthrust
-    if(desired_thrust_dir & EAST)
-        total_thrust_x += side_x * side_maxthrust
-        total_thrust_y += side_y * side_maxthrust
-        last_thrust_right = side_maxthrust
-    if(desired_thrust_dir & WEST)
-        total_thrust_x -= side_x * side_maxthrust
-        total_thrust_y -= side_y * side_maxthrust
-        last_thrust_right = -side_maxthrust
+		// Store the last braking thrust values
+		last_thrust_forward = braking_thrust_forward
+		last_thrust_right = braking_thrust_right
 
-    // Update velocity based on the calculated thrust and delta_time
-    velocity_x += total_thrust_x * delta_time
-    velocity_y += total_thrust_y * delta_time
+	// Apply thrust based on the desired thrust direction
+	if(desired_thrust_dir & NORTH)
+		total_thrust_x += forward_x * forward_maxthrust
+		total_thrust_y += forward_y * forward_maxthrust
+		last_thrust_forward = forward_maxthrust
+	if(desired_thrust_dir & SOUTH)
+		total_thrust_x -= forward_x * backward_maxthrust
+		total_thrust_y -= forward_y * backward_maxthrust
+		last_thrust_forward = -backward_maxthrust
+	if(desired_thrust_dir & EAST)
+		total_thrust_x += side_x * side_maxthrust
+		total_thrust_y += side_y * side_maxthrust
+		last_thrust_right = side_maxthrust
+	if(desired_thrust_dir & WEST)
+		total_thrust_x -= side_x * side_maxthrust
+		total_thrust_y -= side_y * side_maxthrust
+		last_thrust_right = -side_maxthrust
+
+	if(!(SEND_SIGNAL(src, COMSIG_PHYSICS_THRUST_CHECK, total_thrust_x, total_thrust_y, desired_thrust_dir, delta_time) & COMPONENT_PHYSICS_THRUST))
+		return
+
+	// Update velocity based on the calculated thrust and delta_time
+	velocity_x += total_thrust_x * delta_time
+	velocity_y += total_thrust_y * delta_time
 
 
 // SET PROCS
