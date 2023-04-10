@@ -36,15 +36,15 @@
 	var/backward_maxthrust = 3
 	/// Max side thrust, in tiles per second
 	var/side_maxthrust = 1
-	/// Desired angle for the spacepod, set by pilot moving their mouse
+	/// Desired angle for the atom, set by pilot moving their mouse
 	var/desired_angle = null
-	/// Maximum angular acceleration of the spacepod (in degrees per second per second)
+	/// Maximum angular acceleration of the atom (in degrees per second per second)
 	var/max_angular_acceleration = 360
-	/// Last forward thrust value for the spacepod
+	/// Last forward thrust value for the atom
 	var/last_thrust_forward = 0
-	/// Last right thrust value for the spacepod
+	/// Last right thrust value for the atom
 	var/last_thrust_right = 0
-	/// Last rotation value for the spacepod
+	/// Last rotation value for the atom
 	var/last_rotate = 0
 	/// Our maximum velocity_x in tiles per second
 	var/max_velocity_x = INFINITY
@@ -171,7 +171,7 @@
 			failed_y = TRUE
 		if(failed_x && failed_y)
 			break
-	// prevents situations where you go "wtf I'm clearly right next to it" as you enter a stationary spacepod
+	// prevents situations where you go "wtf I'm clearly right next to it" as you enter a stationary atom
 	if(velocity_x == 0)
 		if(offset_x > 0.5)
 			if(parent_atom.Move(get_step(parent_atom, EAST)))
@@ -260,37 +260,56 @@
 	return last_angle
 
 /datum/component/physics/proc/drag_calculations(delta_time)
-	// Calculate drag based on the environment and spacepod's velocity
-	var/velocity_mag = sqrt(velocity_x * velocity_x + velocity_y * velocity_y) // magnitude
-	if(velocity_mag || angular_velocity)
-		var/drag = 0
-		for(var/turf/iterating_turf in parent_atom.locs)
-			if(isspaceturf(iterating_turf))
-				continue
-			drag += 0.001
-			var/floating = FALSE
-			if(iterating_turf.has_gravity() && !auto_stabalisation && velocity_mag > 0.1)
-				floating = TRUE // want to fly this shit on the station? Have fun draining your battery.
-			if((!floating && iterating_turf.has_gravity()) || auto_stabalisation) // brakes are a kind of magboots okay?
-				drag += is_mining_level(parent_atom.z) ? 0.1 : 0.5 // some serious drag. Damn. Except lavaland, it has less gravity or something
-				if(velocity_mag > 5 && prob(velocity_mag * 4) && isfloorturf(iterating_turf))
-					var/turf/open/floor/floor = iterating_turf
-					floor.make_plating() // pull up some floor tiles. Stop going so fast, ree.
-					parent_atom.take_damage(3, BRUTE, "melee", FALSE)
-			var/datum/gas_mixture/env = iterating_turf.return_air()
-			if(env)
-				var/pressure = env.return_pressure()
-				drag += velocity_mag * pressure * 0.0001 // 1 atmosphere should shave off 1% of velocity per tile
-		if(velocity_mag > 20)
-			drag = max(drag, (velocity_mag - 20) / delta_time)
-		if(drag)
-			if(velocity_mag)
-				var/drag_factor = 1 - clamp(drag * delta_time / velocity_mag, 0, 1)
-				velocity_x *= drag_factor
-				velocity_y *= drag_factor
-			if(angular_velocity != 0)
-				var/drag_factor_spin = 1 - clamp(drag * 30 * delta_time / abs(angular_velocity), 0, 1)
-				angular_velocity *= drag_factor_spin
+    // Calculate the magnitude of the atom's velocity
+    var/velocity_mag = sqrt(velocity_x * velocity_x + velocity_y * velocity_y)
+
+    if(velocity_mag || angular_velocity)
+        var/drag = 0
+        var/floating = FALSE
+
+        // Iterate through the turfs the atom is currently in
+        for(var/turf/iterating_turf in parent_atom.locs)
+            // Ignore space turfs (no drag in space)
+            if(isspaceturf(iterating_turf))
+                continue
+
+            // Add a small amount of drag for each turf
+            drag += 0.001
+
+            // Check if the atom is floating (not auto-stabilized) and has a significant velocity
+            if(!floating && iterating_turf.has_gravity() && !auto_stabalisation && velocity_mag > 0.1)
+                floating = TRUE // Flying on the station drains the battery
+
+            // Apply drag based on gravity and auto-stabilization
+            if((!floating && iterating_turf.has_gravity()) || auto_stabalisation)
+                // Adjust drag based on the mining level (less gravity on lavaland)
+                drag += is_mining_level(parent_atom.z) ? 0.1 : 0.5
+
+                // If atom is going too fast, make it lose floor tiles and take damage
+                if(velocity_mag > 5 && prob(velocity_mag * 4) && isfloorturf(iterating_turf))
+                    var/turf/open/floor/floor = iterating_turf
+                    floor.make_plating()
+                    parent_atom.take_damage(3, BRUTE, "melee", FALSE)
+
+            // Calculate the drag based on the pressure in the environment
+            var/datum/gas_mixture/env = iterating_turf.return_air()
+            if(env)
+                var/pressure = env.return_pressure()
+                drag += velocity_mag * pressure * 0.0001 // 1 atmosphere should shave off 1% of velocity per tile
+
+        // Limit the drag at high velocities
+        if(velocity_mag > 20)
+            drag = max(drag, (velocity_mag - 20) / delta_time)
+
+        // Apply the calculated drag to the atom's velocity and angular velocity
+        if(drag)
+            if(velocity_mag)
+                var/drag_factor = 1 - clamp(drag * delta_time / velocity_mag, 0, 1)
+                velocity_x *= drag_factor
+                velocity_y *= drag_factor
+            if(angular_velocity != 0)
+                var/drag_factor_spin = 1 - clamp(drag * 30 * delta_time / abs(angular_velocity), 0, 1)
+                angular_velocity *= drag_factor_spin
 
 /datum/component/physics/proc/thrust_calculations(delta_time)
 	// Alright now calculate the THRUST
