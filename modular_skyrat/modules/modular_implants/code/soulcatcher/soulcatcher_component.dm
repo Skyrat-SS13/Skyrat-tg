@@ -28,8 +28,6 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 /datum/component/soulcatcher
 	/// What is the name of the soulcatcher?
 	var/name = "soulcatcher"
-	/// What is the room we are sending messages to?
-	var/datum/soulcatcher_room/current_room
 	/// What rooms are linked to this soulcatcher
 	var/list/soulcatcher_rooms = list()
 	/// Are ghosts currently able to join this soulcatcher?
@@ -41,12 +39,10 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 		return COMPONENT_INCOMPATIBLE
 
 	create_room()
-	current_room = soulcatcher_rooms[1]
 	GLOB.soulcatchers += src
 
 /datum/component/soulcatcher/Destroy(force, ...)
 	GLOB.soulcatchers -= src
-	current_room = null
 	for(var/datum/soulcatcher_room in soulcatcher_rooms)
 		soulcatcher_rooms -= soulcatcher_room
 		qdel(soulcatcher_room)
@@ -89,6 +85,8 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	var/datum/weakref/master_soulcatcher
 	/// What is the name of the person sending the messages?
 	var/outside_voice = "Host"
+	/// Can the room be joined at all?
+	var/joinable = TRUE
 
 /// Attemps to add a ghost to the soulcatcher room.
 /datum/soulcatcher_room/proc/add_soul_from_ghost(mob/dead/observer/ghost)
@@ -185,6 +183,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 		to_chat(soul, span_blue(message))
 
+	relay_message_to_soulcatcher(message)
 	return TRUE
 
 /// Relays a message sent from the send_message proc to the parent soulcatcher datum
@@ -205,7 +204,7 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 /mob/living/soulcatcher_soul
 	/// What does our soul look like?
-	var/soul_desc
+	var/soul_desc = "It's a soul"
 	/// Assuming we died inside of the round? What is our previous body?
 	var/datum/weakref/previous_body
 	/// What is the weakref of the soulcatcher room are we currently in?
@@ -304,7 +303,26 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 	if(!soulcatcher_to_join || !(soulcatcher_to_join in joinable_soulcatchers))
 		return FALSE
 
-	soulcatcher_to_join.current_room.add_soul_from_ghost(src)
+	var/list/rooms_to_join = soulcatcher_to_join.soulcatcher_rooms.Copy()
+	for(var/datum/soulcatcher_room/room in rooms_to_join)
+		if(room.joinable)
+			continue
+		rooms_to_join -= room
+
+	var/datum/soulcatcher_room/room_to_join
+	if(length(rooms_to_join) < 1)
+		return FALSE
+
+	if(length(rooms_to_join) == 1)
+		room_to_join = rooms_to_join[1]
+
+	else
+		room_to_join = tgui_input_list(src, "Chose a room to enter", "Enter a room", rooms_to_join)
+
+	if(!room_to_join)
+		return FALSE
+
+	room_to_join.add_soul_from_ghost(src)
 
 /mob/grab_ghost(force)
 	var/datum/component/previous_body/old_body = GetComponent(/datum/component/previous_body) //Is the soul currently within a soulcatcher?

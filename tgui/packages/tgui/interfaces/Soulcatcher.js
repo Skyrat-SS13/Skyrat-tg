@@ -4,7 +4,7 @@ import { BlockQuote, Button, Divider, Section, Box, Flex, Collapsible, LabeledLi
 
 export const Soulcatcher = (props, context) => {
   const { act, data } = useBackend(context);
-  const { current_vessel, current_rooms = [] } = data;
+  const { current_vessel, current_rooms = [], ghost_joinable } = data;
 
   return (
     <Window width={520} height={400} resizable>
@@ -37,22 +37,13 @@ export const Soulcatcher = (props, context) => {
             <BlockQuote> {room.description}</BlockQuote>
             <Box>
               <Button
-                icon="book"
-                tooltip="Changes the description of the room"
-                onClick={() =>
-                  act('redescribe_room', { room_ref: room.reference })
-                }>
-                Redecorate
-              </Button>
-
-              <Button
                 icon="bullhorn"
                 tooltip="Sends a message to everyone in the room, without sending a name."
                 onClick={() =>
                   act('send_message', {
                     room_ref: room.reference,
                     emote: false,
-                    narrate: true,
+                    narration: true,
                   })
                 }>
                 Announce
@@ -65,7 +56,7 @@ export const Soulcatcher = (props, context) => {
                   act('send_message', {
                     room_ref: room.reference,
                     emote: true,
-                    narrate: true,
+                    narration: true,
                   })
                 }>
                 Narrate
@@ -96,7 +87,7 @@ export const Soulcatcher = (props, context) => {
               </Button>
 
               <Button
-                icon="pencil"
+                icon="user-gear"
                 tooltip="Edits the name that is sent when emoting and saying."
                 onClick={() =>
                   act('modify_name', {
@@ -104,6 +95,22 @@ export const Soulcatcher = (props, context) => {
                   })
                 }>
                 Edit Name
+              </Button>
+              <Button
+                icon="book"
+                tooltip="Changes the description of the room"
+                onClick={() =>
+                  act('redescribe_room', { room_ref: room.reference })
+                }>
+                Redecorate
+              </Button>
+              <Button
+                color={room.joinable ? 'green' : 'red'}
+                icon={room.joinable ? 'door-open' : 'door-closed'}
+                onClick={() =>
+                  act('toggle_joinable_room', { room_ref: room.reference })
+                }>
+                {room.joinable ? 'Room joinable' : 'Room unjoinable'}
               </Button>
             </Box>
             {room.souls ? (
@@ -120,12 +127,12 @@ export const Soulcatcher = (props, context) => {
                         title={soul.name}
                         buttons={
                           <Button
-                            icon="door-open"
+                            icon="paper-plane"
                             tooltip="Transfer a soul to another room"
                             onClick={() =>
                               act('transfer_soul', {
                                 room_ref: room.reference,
-                                target_soul: soul.ref,
+                                target_soul: soul.reference,
                               })
                             }
                           />
@@ -135,34 +142,62 @@ export const Soulcatcher = (props, context) => {
                         <LabeledList>
                           <LabeledList.Item label="Outside Hearing">
                             <Button
-                              color="green"
+                              color={soul.outside_hearing ? 'green' : 'red'}
                               fluid
-                              tooltip="Is the soul able to hear the outside world?">
-                              Enabled
+                              tooltip="Is the soul able to hear the outside world?"
+                              onClick={() =>
+                                act('toggle_soul_outside_sense', {
+                                  target_soul: soul.reference,
+                                  sense_to_change: 'hearing',
+                                  room_ref: room.reference,
+                                })
+                              }>
+                              {soul.outside_hearing ? 'Enabled' : 'Disabled'}
                             </Button>
                           </LabeledList.Item>
                           <LabeledList.Item label="Outside Sight">
                             <Button
-                              color="green"
+                              color={soul.outside_sight ? 'green' : 'red'}
                               fluid
-                              tooltip="Is the soul able to see the outside world?">
-                              Enabled
+                              tooltip="Is the soul able to see the outside world?"
+                              onClick={() =>
+                                act('toggle_soul_outside_sense', {
+                                  target_soul: soul.reference,
+                                  sense_to_change: 'sight',
+                                  room_ref: room.reference,
+                                })
+                              }>
+                              {soul.outside_sight ? 'Enabled' : 'Disabled'}
                             </Button>
                           </LabeledList.Item>
                           <LabeledList.Item label="Hearing">
                             <Button
-                              color="green"
+                              color={soul.internal_hearing ? 'green' : 'red'}
                               fluid
-                              tooltip="Is the soul able to hear inside the room?">
-                              Enabled
+                              tooltip="Is the soul able to hear inside the room?"
+                              onClick={() =>
+                                act('toggle_soul_sense', {
+                                  target_soul: soul.reference,
+                                  sense_to_change: 'hearing',
+                                  room_ref: room.reference,
+                                })
+                              }>
+                              {soul.internal_hearing ? 'Enabled' : 'Disabled'}
                             </Button>
                           </LabeledList.Item>
                           <LabeledList.Item label="Sight">
                             <Button
-                              color="green"
+                              color={soul.internal_sight ? 'green' : 'red'}
                               fluid
-                              tooltip="Is the soul able to see inside the room?">
-                              Enabled
+                              tooltip="Is the soul able to see inside the room?"
+                              onClick={() =>
+                                act('toggle_soul_sense', {
+                                  target_soul: soul.reference,
+                                  sense_to_change: 'sight',
+                                  room_ref: room.reference,
+                                })
+                              }>
+                              {soul.internal_sight ? 'Enabled' : 'Disabled'}
                             </Button>
                           </LabeledList.Item>
                         </LabeledList>
@@ -186,6 +221,13 @@ export const Soulcatcher = (props, context) => {
           icon="plus"
           onClick={() => act('create_room', {})}>
           Create new room
+        </Button>
+        <Button
+          fluid
+          color={ghost_joinable ? 'green' : 'red'}
+          icon={ghost_joinable ? 'door-open' : 'door-closed'}
+          onClick={() => act('toggle_joinable', {})}>
+          {ghost_joinable ? 'Ghost joinable' : 'Ghost unjoinable'}
         </Button>
       </Window.Content>
     </Window>

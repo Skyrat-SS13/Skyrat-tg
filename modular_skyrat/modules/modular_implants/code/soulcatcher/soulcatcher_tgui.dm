@@ -20,13 +20,18 @@
 		"name" = room.name,
 		"description" = room.room_description,
 		"reference" = REF(room),
+		"joinable" = room.joinable,
 		)
 
 		for(var/mob/living/soulcatcher_soul/soul in room.current_souls)
 			var/list/soul_list = list(
 				"name" = soul.name,
 				"description" = soul.soul_desc,
-				"ref" = REF(soul),
+				"reference" = REF(soul),
+				"internal_hearing" = soul.internal_hearing,
+				"internal_sight" = soul.internal_sight,
+				"outside_hearing" = soul.outside_hearing,
+				"outside_sight" = soul.outside_sight,
 			)
 			room_data["souls"] += list(soul_list)
 
@@ -46,7 +51,6 @@
 	. = ..()
 	if(.)
 		return
-
 
 	var/datum/soulcatcher_room/target_room
 	if(params["room_ref"])
@@ -89,6 +93,14 @@
 			target_room.room_description = new_room_desc
 			return TRUE
 
+		if("toggle_joinable_room")
+			target_room.joinable = !target_room.joinable
+			return TRUE
+
+		if("toggle_joinable")
+			ghost_joinable = !ghost_joinable
+			return TRUE
+
 		if("modify_name")
 			var/new_name = tgui_input_text(usr,"Chose a new name for the room.", name, target_room.room_description, multiline = TRUE)
 			if(!new_name)
@@ -103,7 +115,7 @@
 
 		if("transfer_soul")
 			var/list/available_rooms = soulcatcher_rooms.Copy()
-			soulcatcher_rooms -= target_room
+			available_rooms -= target_room
 
 			var/datum/soulcatcher_room/transfer_room = tgui_input_list(usr, "Chose a room to transfer to", name, available_rooms)
 			if(!(transfer_room in soulcatcher_rooms))
@@ -117,7 +129,7 @@
 			if(params["sense_to_change"] == "hearing")
 				target_soul.toggle_hearing()
 			else
-				target_soul.toggle_hearing()
+				target_soul.toggle_sight()
 
 			return TRUE
 
