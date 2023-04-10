@@ -55,6 +55,7 @@
 		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootysd", SKIN_ICON = CYBORG_ICON_STANDARD),
 		"Protectron" = list(SKIN_ICON_STATE = "protectron_standard", SKIN_ICON = CYBORG_ICON_STANDARD),
 		"Miss M" = list(SKIN_ICON_STATE = "missm_sd", SKIN_ICON = CYBORG_ICON_STANDARD),
+		"Bronco" = list(SKIN_ICON_STATE = "bronco_sd", SKIN_ICON = CYBORG_ICON_STANDARD),
 		"Partyhound" = list(SKIN_ICON_STATE = "k69", SKIN_ICON = CYBORG_ICON_SERVICE_WIDE, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE))
 	)
 
@@ -78,6 +79,7 @@
 		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootyservice", SKIN_ICON = CYBORG_ICON_SERVICE),
 		"Protectron" = list(SKIN_ICON_STATE = "protectron_service", SKIN_ICON = CYBORG_ICON_SERVICE),
 		"Miss M" = list(SKIN_ICON_STATE = "missm_service", SKIN_ICON = CYBORG_ICON_SERVICE),
+		"Bronco" = list(SKIN_ICON_STATE = "bronco_serv", SKIN_ICON = CYBORG_ICON_SERVICE),
 		"Zoomba" = list(SKIN_ICON_STATE = "zoomba_green", SKIN_ICON = CYBORG_ICON_SERVICE, SKIN_FEATURES = list(model_features = R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL), SKIN_HAT_OFFSET = -13),
 		"Mech" = list(SKIN_ICON_STATE = "lloyd", SKIN_ICON = CYBORG_ICON_SERVICE),
 		"Handy" = list(SKIN_ICON_STATE = "handy-service", SKIN_ICON = CYBORG_ICON_SERVICE),
@@ -108,6 +110,7 @@
 		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootyminer", SKIN_ICON = CYBORG_ICON_MINING),
 		"Protectron" = list(SKIN_ICON_STATE = "protectron_miner", SKIN_ICON = CYBORG_ICON_MINING),
 		"Miss M" = list(SKIN_ICON_STATE = "missm_miner", SKIN_ICON = CYBORG_ICON_MINING),
+		"Bronco" = list(SKIN_ICON_STATE = "bronco_mine", SKIN_ICON = CYBORG_ICON_MINING),
 		"Mech" = list(SKIN_ICON_STATE = "ishimura", SKIN_ICON = CYBORG_ICON_MINING),
 		"Drone" = list(SKIN_ICON_STATE = "miningdrone", SKIN_ICON = CYBORG_ICON_MINING, SKIN_FEATURES = list(R_TRAIT_SMALL)),
 		"Zoomba" = list(SKIN_ICON_STATE = "zoomba_miner", SKIN_ICON = CYBORG_ICON_MINING, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL), SKIN_HAT_OFFSET = -13),
@@ -152,6 +155,7 @@
 		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootyeng", SKIN_ICON = CYBORG_ICON_ENG),
 		"Protectron" = list(SKIN_ICON_STATE = "protectron_eng", SKIN_ICON = CYBORG_ICON_ENG),
 		"Miss M" = list(SKIN_ICON_STATE = "missm_eng", SKIN_ICON = CYBORG_ICON_ENG),
+		"Bronco" = list(SKIN_ICON_STATE = "bronco_eng", SKIN_ICON = CYBORG_ICON_ENG),
 		"Mech" = list(SKIN_ICON_STATE = "conagher", SKIN_ICON = CYBORG_ICON_ENG),
 		"Wide" = list(SKIN_ICON_STATE = "wide-engi", SKIN_ICON = CYBORG_ICON_ENG),
 		"Eyebot" = list(SKIN_ICON_STATE = "eyeboteng", SKIN_ICON = CYBORG_ICON_ENG, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)),
@@ -180,6 +184,7 @@
 		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootyjanitor", SKIN_ICON = CYBORG_ICON_JANI),
 		"Protectron" = list(SKIN_ICON_STATE = "protectron_janitor", SKIN_ICON = CYBORG_ICON_JANI),
 		"Miss M" = list(SKIN_ICON_STATE = "missm_janitor", SKIN_ICON = CYBORG_ICON_JANI),
+		"Bronco" = list(SKIN_ICON_STATE = "bronco_jani", SKIN_ICON = CYBORG_ICON_JANI),
 		"Mech" = list(SKIN_ICON_STATE = "flynn", SKIN_ICON = CYBORG_ICON_JANI),
 		"Eyebot" = list(SKIN_ICON_STATE = "eyebotjani", SKIN_ICON = CYBORG_ICON_JANI, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)),
 		"Insekt" = list(SKIN_ICON_STATE = "insekt-Sci", SKIN_ICON = CYBORG_ICON_JANI),
@@ -210,6 +215,8 @@
 		// PLEASE ASSUME THE POSITION
 		"Protectron" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "protectron_medical"),
 		"Miss M" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "missm_med"),
+		"Bronco" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "bronco_med",),
+		"Nanny" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "nanny_med"),
 		"Arachne" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "arachne_med"),
 		"Insekt" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "insekt-Med"),
 		"Mech" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "gibbs"),
@@ -233,6 +240,7 @@
 		"Bootyborg" = list(SKIN_ICON_STATE = "bootypeace", SKIN_ICON = CYBORG_ICON_PEACEKEEPER),
 		"Birdborg" = list(SKIN_ICON_STATE = "bird_pk", SKIN_ICON = CYBORG_ICON_PEACEKEEPER),
 		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootypeace", SKIN_ICON = CYBORG_ICON_PEACEKEEPER),
+		"Bronco" = list(SKIN_ICON_STATE = "bronco_pk", SKIN_ICON = CYBORG_ICON_PEACEKEEPER),
 		"Protectron" = list(SKIN_ICON_STATE = "protectron_peacekeeper", SKIN_ICON = CYBORG_ICON_PEACEKEEPER),
 		"Insekt" = list(SKIN_ICON_STATE = "insekt-Default", SKIN_ICON = CYBORG_ICON_PEACEKEEPER),
 		"Omni" = list(SKIN_ICON_STATE = "omoikane", SKIN_ICON = CYBORG_ICON_PEACEKEEPER, SKIN_FEATURES = list(R_TRAIT_SMALL)),
@@ -314,6 +322,7 @@
 		"Meka" = list(SKIN_ICON_STATE = "mekasyndi", SKIN_ICON = CYBORG_ICON_SYNDIE_TALL, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_UNIQUETIP, R_TRAIT_TALL), SKIN_HAT_OFFSET = 15),
 		"Heavy" = list(SKIN_ICON_STATE = "syndieheavy", SKIN_ICON = CYBORG_ICON_SYNDIE),
 		"Miss M" = list(SKIN_ICON_STATE = "missm_syndie", SKIN_ICON = CYBORG_ICON_SYNDIE),
+		"Bronco" = list(SKIN_ICON_STATE = "bronco_synd", SKIN_ICON = CYBORG_ICON_SYNDIE),
 		"Spider" = list(SKIN_ICON_STATE = "spidersyndi", SKIN_ICON = CYBORG_ICON_SYNDIE),
 		"Booty Striker" = list(SKIN_ICON_STATE = "bootynukie", SKIN_ICON = CYBORG_ICON_SYNDIE),
 		"Booty Syndicate" = list(SKIN_ICON_STATE = "bootysyndie", SKIN_ICON = CYBORG_ICON_SYNDIE),
@@ -358,6 +367,7 @@
 		"Heavy" = list(SKIN_ICON_STATE = "ninjaheavy", SKIN_ICON = CYBORG_ICON_NINJA),
 		"Meka" = list(SKIN_ICON_STATE = "mekaninja", SKIN_ICON = CYBORG_ICON_NINJA_TALL, SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_UNIQUETIP, R_TRAIT_TALL), SKIN_HAT_OFFSET = 15),
 		"Miss M" = list(SKIN_ICON_STATE = "missm_ninja", SKIN_ICON = CYBORG_ICON_NINJA),
+		"Bronco" = list(SKIN_ICON_STATE = "bronco_ninja", SKIN_ICON = CYBORG_ICON_NINJA),
 		"Spider" = list(SKIN_ICON_STATE = "ninjaspider", SKIN_ICON = CYBORG_ICON_NINJA),
 		"BootyBorg" = list(SKIN_ICON_STATE = "bootyninja", SKIN_ICON = CYBORG_ICON_NINJA),
 		"Male Bootyborg" = list(SKIN_ICON_STATE = "male_bootyninja", SKIN_ICON = CYBORG_ICON_NINJA)
