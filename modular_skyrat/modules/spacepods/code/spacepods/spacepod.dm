@@ -479,11 +479,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		if(obj_integrity <= max_integrity / 4)
 			add_overlay(image(icon = initial(icon), icon_state = "pod_fire"))
 
-	// Thrust overlays
-	update_thruster_overlays()
-
-
-/obj/spacepod/proc/update_thruster_overlays()
+/obj/spacepod/proc/handle_thruster_effects()
 	var/datum/component/physics/physics_component = GetComponent(/datum/component/physics)
 	// Initialize left and right thrust lists with zeros
 	var/list/left_thrusts = list(0, 0, 0, 0, 0, 0, 0, 0)
@@ -602,6 +598,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	component_last_thrust_right = updated_last_thrust_right
 
 	update_icon()
+	handle_thruster_effects()
 
 
 
@@ -693,9 +690,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		play_alarm(TRUE)
 	else
 		play_alarm(FALSE)
-
-
-
 
 
 
