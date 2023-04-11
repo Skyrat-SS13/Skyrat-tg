@@ -41,7 +41,7 @@
 /obj/item/ammo_casing/energy/laser/plasma_glob
 	projectile_type = /obj/projectile/beam/laser/plasma_glob
 	fire_sound = 'modular_skyrat/modules/microfusion/sound/incinerate.ogg'
-	e_cost = 20
+	e_cost = 50
 
 /obj/projectile/beam/laser/plasma_glob
 	name = "plasma globule"
