@@ -5,12 +5,8 @@
 /obj/item/latexballoon
 	name = "latex glove"
 	desc = "Sterile and airtight."
-<<<<<<< HEAD
-	icon_state = "latexballon"
-=======
 	icon_state = "latexballoon"
 	icon = 'icons/obj/weapons/hand.dmi'
->>>>>>> bd4392ab746 (New inhand icons for light tubes, makes latex balloons craftable, and various other fixes/improvements (#74576))
 	inhand_icon_state = "greyscale_gloves"
 	lefthand_file = 'icons/mob/inhands/clothing/gloves_righthand.dmi'
 	righthand_file = 'icons/mob/inhands/clothing/gloves_lefthand.dmi'
