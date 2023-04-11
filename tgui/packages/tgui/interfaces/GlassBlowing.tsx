@@ -107,64 +107,78 @@ export const GlassBlowing = (props, context) => {
                 </Stack.Item>
                 <Table>
                   <Stack.Item>
-                    <Table.Cell>
-                      <Button
-                        content="Blow"
-                        icon="fire"
-                        color="orange"
-                        disabled={!glass || inUse || !glass.timeLeft}
-                        tooltipPosition="bottom"
-                        tooltip={
-                          glass.timeLeft === 0 ? 'Needs to be glowing hot.' : ''
-                        }
-                        onClick={() => act('Blow')}
-                      />
-                      x{glass.stepsRemaining.blow}
-                    </Table.Cell>
-                    <Table.Cell>
-                      <Button
-                        content="Spin"
-                        icon="fire"
-                        color="orange"
-                        disabled={!glass || inUse || !glass.timeLeft}
-                        tooltipPosition="bottom"
-                        tooltip={
-                          glass.timeLeft === 0 ? 'Needs to be glowing hot.' : ''
-                        }
-                        onClick={() => act('Spin')}
-                      />
-                      x{glass.stepsRemaining.spin}
-                    </Table.Cell>
-                    <Table.Cell>
-                      <Button
-                        content="Paddle"
-                        disabled={inUse}
-                        tooltipPosition="bottom"
-                        tooltip={'You need to use a paddle.'}
-                        onClick={() => act('Paddle')}
-                      />
-                      x{glass.stepsRemaining.paddle}
-                    </Table.Cell>
-                    <Table.Cell>
-                      <Button
-                        content="Shears"
-                        disabled={inUse}
-                        tooltipPosition="bottom"
-                        tooltip={'You need to use shears.'}
-                        onClick={() => act('Shear')}
-                      />
-                      x{glass.stepsRemaining.shear}
-                    </Table.Cell>
-                    <Table.Cell>
-                      <Button
-                        content="Jacks"
-                        disabled={inUse}
-                        tooltipPosition="bottom"
-                        tooltip={'You need to use jacks.'}
-                        onClick={() => act('Jacks')}
-                      />
-                      x{glass.stepsRemaining.jacks}
-                    </Table.Cell>
+                    {glass.stepsRemaining.blow !== 0 && (
+                      <Table.Cell>
+                        <Button
+                          content="Blow"
+                          icon="fire"
+                          color="orange"
+                          disabled={!glass || inUse || !glass.timeLeft}
+                          tooltipPosition="bottom"
+                          tooltip={
+                            glass.timeLeft === 0
+                              ? 'Needs to be glowing hot.'
+                              : ''
+                          }
+                          onClick={() => act('Blow')}
+                        />
+                        &nbsp;x{glass.stepsRemaining.blow}
+                      </Table.Cell>
+                    )}
+                    {glass.stepsRemaining.spin !== 0 && (
+                      <Table.Cell>
+                        <Button
+                          content="Spin"
+                          icon="fire"
+                          color="orange"
+                          disabled={!glass || inUse || !glass.timeLeft}
+                          tooltipPosition="bottom"
+                          tooltip={
+                            glass.timeLeft === 0
+                              ? 'Needs to be glowing hot.'
+                              : ''
+                          }
+                          onClick={() => act('Spin')}
+                        />
+                        &nbsp;x{glass.stepsRemaining.spin}
+                      </Table.Cell>
+                    )}
+                    {glass.stepsRemaining.paddle !== 0 && (
+                      <Table.Cell>
+                        <Button
+                          content="Paddle"
+                          disabled={inUse}
+                          tooltipPosition="bottom"
+                          tooltip={'You need to use a paddle.'}
+                          onClick={() => act('Paddle')}
+                        />
+                        &nbsp;x{glass.stepsRemaining.paddle}
+                      </Table.Cell>
+                    )}
+                    {glass.stepsRemaining.shear !== 0 && (
+                      <Table.Cell>
+                        <Button
+                          content="Shears"
+                          disabled={inUse}
+                          tooltipPosition="bottom"
+                          tooltip={'You need to use shears.'}
+                          onClick={() => act('Shear')}
+                        />
+                        &nbsp;x{glass.stepsRemaining.shear}
+                      </Table.Cell>
+                    )}
+                    {glass.stepsRemaining.jacks !== 0 && (
+                      <Table.Cell>
+                        <Button
+                          content="Jacks"
+                          disabled={inUse}
+                          tooltipPosition="bottom"
+                          tooltip={'You need to use jacks.'}
+                          onClick={() => act('Jacks')}
+                        />
+                        &nbsp;x{glass.stepsRemaining.jacks}
+                      </Table.Cell>
+                    )}
                   </Stack.Item>
                 </Table>
               </Stack>
