@@ -95,94 +95,94 @@ export const GlassBlowing = (props, context) => {
           </Section>
         )}
         {glass && glass.chosenItem && (
-          <Section title="Steps Remaining:">
-            <Stack fill vertical>
-              <Stack.Item>
-                <Box>
-                  You are crafting a {glass.chosenItem.name}.
-                  <br />
-                  <br />
-                </Box>
-              </Stack.Item>
-              <Table>
+          <>
+            <Section title="Steps Remaining:">
+              <Stack fill vertical>
                 <Stack.Item>
-                  <Table.Cell>
-                    <Button
-                      content="Blow"
-                      icon="fire"
-                      color="orange"
-                      disabled={!glass || inUse || !glass.timeLeft}
-                      tooltipPosition="bottom"
-                      tooltip={
-                        glass.timeLeft === 0 ? 'Needs to be glowing hot.' : ''
-                      }
-                      onClick={() => act('Blow')}
-                    />
-                    x{glass.stepsRemaining.blow}
-                  </Table.Cell>
-                  <Table.Cell>
-                    <Button
-                      content="Spin"
-                      icon="fire"
-                      color="orange"
-                      disabled={!glass || inUse || !glass.timeLeft}
-                      tooltipPosition="bottom"
-                      tooltip={
-                        glass.timeLeft === 0 ? 'Needs to be glowing hot.' : ''
-                      }
-                      onClick={() => act('Spin')}
-                    />
-                    x{glass.stepsRemaining.spin}
-                  </Table.Cell>
-                  <Table.Cell>
-                    <Button
-                      content="Paddle"
-                      disabled={inUse}
-                      tooltipPosition="bottom"
-                      tooltip={'You need to use a paddle.'}
-                      onClick={() => act('Paddle')}
-                    />
-                    x{glass.stepsRemaining.paddle}
-                  </Table.Cell>
-                  <Table.Cell>
-                    <Button
-                      content="Shears"
-                      disabled={inUse}
-                      tooltipPosition="bottom"
-                      tooltip={'You need to use shears.'}
-                      onClick={() => act('Shear')}
-                    />
-                    x{glass.stepsRemaining.shear}
-                  </Table.Cell>
-                  <Table.Cell>
-                    <Button
-                      content="Jacks"
-                      disabled={inUse}
-                      tooltipPosition="bottom"
-                      tooltip={'You need to use jacks.'}
-                      onClick={() => act('Jacks')}
-                    />
-                    x{glass.stepsRemaining.jacks}
-                  </Table.Cell>
+                  <Box>
+                    You are crafting a {glass.chosenItem.name}.
+                    <br />
+                    <br />
+                  </Box>
                 </Stack.Item>
-              </Table>
-            </Stack>
-          </Section>
-        )}
-        {glass && glass.chosenItem && (
-          <Section title>
-            <Flex direction="row-reverse">
-              <Flex.Item>
-                <Button
-                  icon="times"
-                  color="orange"
-                  content="Cancel craft"
-                  disabled={!glass || inUse}
-                  onClick={() => act('Cancel')}
-                />
-              </Flex.Item>
-            </Flex>
-          </Section>
+                <Table>
+                  <Stack.Item>
+                    <Table.Cell>
+                      <Button
+                        content="Blow"
+                        icon="fire"
+                        color="orange"
+                        disabled={!glass || inUse || !glass.timeLeft}
+                        tooltipPosition="bottom"
+                        tooltip={
+                          glass.timeLeft === 0 ? 'Needs to be glowing hot.' : ''
+                        }
+                        onClick={() => act('Blow')}
+                      />
+                      x{glass.stepsRemaining.blow}
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Button
+                        content="Spin"
+                        icon="fire"
+                        color="orange"
+                        disabled={!glass || inUse || !glass.timeLeft}
+                        tooltipPosition="bottom"
+                        tooltip={
+                          glass.timeLeft === 0 ? 'Needs to be glowing hot.' : ''
+                        }
+                        onClick={() => act('Spin')}
+                      />
+                      x{glass.stepsRemaining.spin}
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Button
+                        content="Paddle"
+                        disabled={inUse}
+                        tooltipPosition="bottom"
+                        tooltip={'You need to use a paddle.'}
+                        onClick={() => act('Paddle')}
+                      />
+                      x{glass.stepsRemaining.paddle}
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Button
+                        content="Shears"
+                        disabled={inUse}
+                        tooltipPosition="bottom"
+                        tooltip={'You need to use shears.'}
+                        onClick={() => act('Shear')}
+                      />
+                      x{glass.stepsRemaining.shear}
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Button
+                        content="Jacks"
+                        disabled={inUse}
+                        tooltipPosition="bottom"
+                        tooltip={'You need to use jacks.'}
+                        onClick={() => act('Jacks')}
+                      />
+                      x{glass.stepsRemaining.jacks}
+                    </Table.Cell>
+                  </Stack.Item>
+                </Table>
+              </Stack>
+            </Section>
+            <Section title>
+              <Flex direction="row-reverse">
+                <Flex.Item>
+                  <Button
+                    icon="times"
+                    color="orange"
+                    content="Cancel craft"
+                    disabled={!glass || inUse}
+                    onClick={() => act('Cancel')}
+                  />
+                </Flex.Item>
+              </Flex>
+            </Section>
+          </>
         )}
         {glass && glass.timeLeft !== 0 && (
           <Section title="Heat level">
