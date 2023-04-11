@@ -81,9 +81,30 @@
 	desc = "A Deagle brand Deagle for operators operating operationally. Uses .50 AE ammo."
 	icon_state = "deaglecamo"
 	inhand_icon_state = "deagleg"
+<<<<<<< HEAD
 	// SKYRAT EDIT - We don't actually have the right icons for this. When you add the icons you can remove this line!
 	show_bolt_icon = FALSE
 	// SKYRAT EDIT END
+=======
+
+/obj/item/gun/ballistic/automatic/pistol/deagle/regal
+	name = "\improper Regal Condor"
+	desc = "Unlike the Desert Eagle, this weapon seems to utilize some kind of advance internal stabilization system to significantly \
+		reduce felt recoil and substantially increases overall accuracy, though at the cost of using a smaller caliber. This modification does \
+		allow it to fire in a 2-round burst. Uses 10mm ammo."
+	icon_state = "reagle"
+	inhand_icon_state = "deagleg"
+	burst_size = 2
+	fire_delay = 1
+	spread = 10
+	projectile_damage_multiplier = 1.25
+	mag_type = /obj/item/ammo_box/magazine/r10mm
+	actions_types = list(/datum/action/item_action/toggle_firemode)
+	obj_flags = UNIQUE_RENAME // if you did the sidequest, you get the customization
+
+/obj/item/gun/ballistic/automatic/pistol/deagle/regal/no_mag
+	spawnwithmagazine = FALSE
+>>>>>>> 60b4807a848 (Makes the Regal Condor renamable via pen (#74629))
 
 /obj/item/gun/ballistic/automatic/pistol/aps
 	name = "\improper Stechkin APS machine pistol"
