@@ -139,7 +139,8 @@
 		if(glass)
 			to_chat(user, span_warning("[src] already has some glass on it!"))
 			return
-		attacking_glass.forceMove(src)
+		if(!user.transferItemToLoc(attacking_glass, src))
+			return
 		glass_ref = WEAKREF(attacking_glass)
 		to_chat(user, span_notice("[src] picks up [target]."))
 		icon_state = "blow_pipe_full"
@@ -154,7 +155,7 @@
 		if(glass)
 			to_chat(user, span_warning("[src] already has some glass on it still!"))
 			return
-		if(!user.transferItemToLoc(attacking_item, src, silent = FALSE))
+		if(!user.transferItemToLoc(attacking_item, src))
 			return
 		glass_ref = WEAKREF(attacking_item)
 		to_chat(user, span_notice("[src] picks up [attacking_item]."))
@@ -195,9 +196,6 @@
 
 		var/obj/item_path = glass.chosen_item
 		data["glass"]["chosenItem"] = item_path ? list(name = initial(item_path.name), type = item_path) : null
-		data["canPaddle"] = item_path ? check_valid_tool(usr, STEP_PADDLE) : FALSE
-		data["canShears"] = item_path ? check_valid_tool(usr, STEP_SHEAR) : FALSE
-		data["canJacks"] = item_path ? check_valid_tool(usr, STEP_JACKS) : FALSE
 	else
 		data["glass"] = null
 
@@ -266,6 +264,7 @@
 			if("Cancel")
 				glass.chosen_item = null
 				glass.steps_remaining = null
+				glass.is_finished = FALSE
 				to_chat(usr, span_notice("You start over with the [src]."))
 
 
@@ -362,7 +361,8 @@
 		// We do not want to have negative values here
 		if(glass.steps_remaining[step_id] > 0)
 			glass.steps_remaining[step_id]--
-			check_finished(glass)
+			if(check_finished(glass))
+				glass.is_finished = TRUE
 
 	in_use = FALSE
 

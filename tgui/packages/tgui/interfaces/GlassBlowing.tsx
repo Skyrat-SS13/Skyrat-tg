@@ -7,9 +7,6 @@ type GlassData = {
   hasGlass: BooleanLike;
   inUse: BooleanLike;
   glass: Glass;
-  canPaddle: BooleanLike;
-  canShears: BooleanLike;
-  canJacks: BooleanLike;
 };
 
 type Glass = {
@@ -35,7 +32,7 @@ type RemainingSteps = {
 
 export const GlassBlowing = (props, context) => {
   const { act, data } = useBackend<GlassData>(context);
-  const { glass, inUse, canPaddle, canShears, canJacks } = data;
+  const { glass, inUse } = data;
 
   return (
     <Window width={335} height={325}>
@@ -114,7 +111,9 @@ export const GlassBlowing = (props, context) => {
                       content="Blow"
                       disabled={!glass || inUse || !glass.timeLeft}
                       tooltipPosition="bottom"
-                      tooltip={`Needs to be glowing hot.`}
+                      tooltip={
+                        glass.timeLeft === 0 ? 'Needs to be glowing hot.' : ''
+                      }
                       onClick={() => act('Blow')}
                     />
                     x{glass.stepsRemaining.blow}
@@ -124,7 +123,9 @@ export const GlassBlowing = (props, context) => {
                       content="Spin"
                       disabled={!glass || inUse || !glass.timeLeft}
                       tooltipPosition="bottom"
-                      tooltip={`Needs to be glowing hot.`}
+                      tooltip={
+                        glass.timeLeft === 0 ? 'Needs to be glowing hot.' : ''
+                      }
                       onClick={() => act('Spin')}
                     />
                     x{glass.stepsRemaining.spin}
@@ -132,9 +133,11 @@ export const GlassBlowing = (props, context) => {
                   <Table.Cell>
                     <Button
                       content="Paddle"
-                      disabled={!glass || !canPaddle || inUse}
+                      disabled={1}
                       tooltipPosition="bottom"
-                      tooltip={`You need to use a paddle.`}
+                      tooltip={
+                        glass.timeLeft === 0 ? 'Needs to be glowing hot.' : ''
+                      }
                       onClick={() => act('Paddle')}
                     />
                     x{glass.stepsRemaining.paddle}
@@ -142,7 +145,7 @@ export const GlassBlowing = (props, context) => {
                   <Table.Cell>
                     <Button
                       content="Shears"
-                      disabled={!glass || !canShears || inUse}
+                      disabled={1}
                       tooltipPosition="bottom"
                       tooltip={`You need to use shears.`}
                       onClick={() => act('Shear')}
@@ -152,7 +155,7 @@ export const GlassBlowing = (props, context) => {
                   <Table.Cell>
                     <Button
                       content="Jacks"
-                      disabled={!glass || !canJacks || inUse}
+                      disabled={1}
                       tooltipPosition="bottom"
                       tooltip={`You need to use jacks.`}
                       onClick={() => act('Jacks')}
