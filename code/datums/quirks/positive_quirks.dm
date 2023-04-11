@@ -53,13 +53,8 @@
 /datum/quirk/empath
 	name = "Empath"
 	desc = "Whether it's a sixth sense or careful study of body language, it only takes you a quick glance at someone to understand how they feel."
-<<<<<<< HEAD
-	value = 6 /// SKYRAT EDIT - Quirk Rebalance - Original: value = 8
-	icon = "smile-beam"
-=======
 	icon = FA_ICON_SMILE_BEAM
-	value = 8
->>>>>>> 3902973978a (Unit Test Font Awesome icons and Quirk icons (#74573))
+	value = 6 /// SKYRAT EDIT - Quirk Rebalance - Original: value = 8
 	mob_trait = TRAIT_EMPATH
 	gain_text = span_notice("You feel in tune with those around you.")
 	lose_text = span_danger("You feel isolated from others.")
@@ -265,13 +260,8 @@
 /datum/quirk/item_quirk/spiritual
 	name = "Spiritual"
 	desc = "You hold a spiritual belief, whether in God, nature or the arcane rules of the universe. You gain comfort from the presence of holy people, and believe that your prayers are more special than others. Being in the chapel makes you happy."
-<<<<<<< HEAD
-	value = 2 /// SKYRAT EDIT - Quirk Rebalance - Original: value = 4
-	icon = "bible"
-=======
 	icon = FA_ICON_BIBLE
-	value = 4
->>>>>>> 3902973978a (Unit Test Font Awesome icons and Quirk icons (#74573))
+	value = 2 /// SKYRAT EDIT - Quirk Rebalance - Original: value = 4
 	mob_trait = TRAIT_SPIRITUAL
 	gain_text = span_notice("You have faith in a higher power.")
 	lose_text = span_danger("You lose faith!")
