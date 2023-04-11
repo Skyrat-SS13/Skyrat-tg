@@ -192,7 +192,13 @@
 	data["inUse"] = in_use
 
 	if(glass)
-		data["glass"] = list(timeLeft = COOLDOWN_TIMELEFT(glass, remaining_heat), totalTime = glass.total_time, chosenItem = null, stepsRemaining = glass.steps_remaining, isFinished = glass.is_finished)
+		data["glass"] = list(
+			timeLeft = COOLDOWN_TIMELEFT(glass, remaining_heat),
+			totalTime = glass.total_time,
+			chosenItem = null,
+			stepsRemaining = glass.steps_remaining,
+			isFinished = glass.is_finished
+		)
 
 		var/obj/item_path = glass.chosen_item
 		data["glass"]["chosenItem"] = item_path ? list(name = initial(item_path.name), type = item_path) : null
