@@ -54,6 +54,11 @@
 	pass_flags = PASSTABLE | PASSGRILLE // His ass does NOT pass through glass!
 	weak_against_armour = TRUE
 
+/obj/projectile/beam/laser/plasma_glob/on_hit(atom/target, blocked)
+	if(istype(target, /obj/structure/blob) || istype(target, /mob/living/simple_animal/hostile/blob))
+		damage = damage / 2
+	return ..()
+
 // A revolver, but it can hold shotgun shells
 // Woe, buckshot be upon ye
 
