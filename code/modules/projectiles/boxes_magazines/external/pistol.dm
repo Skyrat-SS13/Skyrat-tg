@@ -109,3 +109,20 @@
 	caliber = CALIBER_50
 	max_ammo = 7
 	multiple_sprites = AMMO_BOX_PER_BULLET
+<<<<<<< HEAD
+=======
+
+/obj/item/ammo_box/magazine/r10mm
+	name = "regal condor magazine (10mm)"
+	icon_state = "r10mm-8"
+	base_icon_state = "r10mm"
+	ammo_type = /obj/item/ammo_casing/c10mm
+	caliber = CALIBER_10MM
+	max_ammo = 8
+	multiple_sprites = AMMO_BOX_PER_BULLET
+	multiple_sprite_use_base = TRUE
+
+/obj/item/ammo_box/magazine/r10mm/empty
+	icon_state = "r10mm-0"
+	start_empty = TRUE
+>>>>>>> 68b1e6c2e07 (Fixes the Regal Condor's magazines being invisible (#74615))
