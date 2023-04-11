@@ -177,7 +177,7 @@
 // AMR magazine
 
 /obj/item/ammo_box/magazine/cin_amr
-	name = "anti-materiel rounds (.60 Strela)"
+	name = "anti-materiel magazine (.60 Strela)"
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_guns/ammo.dmi'
 	icon_state = "amr_mag"
 	base_icon_state = "amr_mag"
