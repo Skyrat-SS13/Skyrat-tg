@@ -140,7 +140,7 @@
 	can_suppress = FALSE
 	can_bayonet = FALSE
 
-	fire_sound = 'modular_skyrat/modules/sec_haul/sound/chaingun_fire.ogg'
+	fire_sound = 'modular_skyrat/modules/novaya_ert/sound/amr_fire.ogg'
 	fire_sound_volume = 100 // BOOM BABY
 
 	recoil = 4
