@@ -122,7 +122,7 @@
 				"name" = uppertext(spacepod_equipment.name),
 				"desc" = spacepod_equipment.desc,
 				"slot" = capitalize(spacepod_equipment.slot) + " Slot",
-				"can_uninstall" = spacepod_equipment.can_uninstall(src, user),
+				"can_uninstall" = spacepod_equipment.can_uninstall(src),
 				"ref" = REF(spacepod_equipment),
 			))
 

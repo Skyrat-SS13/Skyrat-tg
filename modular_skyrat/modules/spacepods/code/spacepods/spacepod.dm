@@ -40,7 +40,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/weapon_safety = FALSE
 	/// A list of our weapon slots, the association is the offset for pixel shooting.
 	var/list/weapon_slots = list(
-		SPACEPOD_WEAPON_SLOT_LEFT = list(-16, -16),
+		SPACEPOD_WEAPON_SLOT_LEFT = list(-16, 16),
 		SPACEPOD_WEAPON_SLOT_RIGHT = list(16, 16),
 	)
 	/// A list of installed cargo bays
@@ -108,9 +108,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/gyroscope_enabled = TRUE
 	/// A system for preventing any thrust from being applied.
 	var/thrust_lockout = FALSE
-	/// Users thrust direction
-
-
 
 	/// Our looping alarm sound for something bad happening.
 	var/datum/looping_sound/spacepod_alarm/alarm_sound
@@ -235,10 +232,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 				else // Delete the cabin gas if we're in space or a similar environment
 					qdel(removed)
 
-// We want the pods to have gravity all the time to prevent them being touched by spacedrift.
-/obj/spacepod/has_gravity(turf/gravity_turf)
-	return TRUE
-
 /obj/spacepod/attackby(obj/item/attacking_item, mob/living/user)
 	if(user.combat_mode)
 		return ..()
@@ -354,13 +347,13 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	switch(severity)
 		if(1)
 			for(var/mob/living/living_mob in contents)
-				living_mob.ex_act(severity+1)
+				living_mob.ex_act(severity + 1)
 			deconstruct()
 		if(2)
-			take_damage(100, BRUTE, "bomb", 0)
+			take_damage(100, BRUTE, BOMB)
 		if(3)
 			if(prob(40))
-				take_damage(40, BRUTE, "bomb", 0)
+				take_damage(40, BRUTE, BOMB)
 
 /**
  * We handle our own atom breaking.
@@ -389,12 +382,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	internal_tank = null
 	// Remove everything inside us.
 	detach_all_equipment()
+	remove_all_riders()
 	for(var/atom/movable/iterating_movable_atom in contents)
-		if(ismob(iterating_movable_atom))
-			forceMove(iterating_movable_atom, loc)
-			remove_rider(iterating_movable_atom)
-			continue
-
 		if(prob(60))
 			iterating_movable_atom.forceMove(loc)
 		else if(isitem(iterating_movable_atom) || !isobj(iterating_movable_atom))
@@ -446,38 +435,38 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 /obj/spacepod/update_overlays()
 	. = ..()
-
+	cut_overlays()
 	if(construction_state != SPACEPOD_ARMOR_WELDED && pod_armor && construction_state >= SPACEPOD_ARMOR_LOOSE)
 		var/mutable_appearance/masked_armor = mutable_appearance(icon = 'modular_skyrat/modules/spacepods/icons/construction2x2.dmi', icon_state = "armor_mask")
 		var/mutable_appearance/armor = mutable_appearance(pod_armor.pod_icon, pod_armor.pod_icon_state)
 		armor.blend_mode = BLEND_MULTIPLY
 		masked_armor.overlays = list(armor)
 		masked_armor.appearance_flags = KEEP_TOGETHER
-		. += masked_armor
-		return .
+		add_overlay(masked_armor)
+		return
 
 	// Dirt overlays
 	if(dirty)
-		. += dirt_overlay
+		add_overlay(image(overlay_file, dirt_overlay))
 
 	// Weapon overlays
 	if(LAZYLEN(equipment[SPACEPOD_SLOT_WEAPON]))
 		for(var/obj/item/spacepod_equipment/weaponry/iterating_weaponry in equipment[SPACEPOD_SLOT_WEAPON])
 			var/mutable_appearance/weapon_overlay = mutable_appearance(iterating_weaponry.overlay_icon, iterating_weaponry.overlay_icon_state) // Default state should fill in the left gunpod.
 			if(equipment[SPACEPOD_SLOT_WEAPON][iterating_weaponry])
-				var/component_offset_x = weapon_slots[equipment[SPACEPOD_SLOT_WEAPON][iterating_weaponry]][1]
-				if(component_offset_x > 0) // Positive value means it's supposed to be overlayed on the right side of the pod, thus, flip le image so it fits.
+				var/weapon_offset_x = weapon_slots[equipment[SPACEPOD_SLOT_WEAPON][iterating_weaponry]][1]
+				if(weapon_offset_x > 0) // Positive value means it's supposed to be overlayed on the right side of the pod, thus, flip le image so it fits.
 					var/matrix/flip_matrix = matrix(-1, 0, 0, 0, 1, 0)
 					weapon_overlay.transform = flip_matrix
 
-			. += weapon_overlay
+			add_overlay(weapon_overlay)
 
 	// Damage overlays
 	var/obj_integrity = get_integrity()
 	if(obj_integrity <= max_integrity / 2)
-		. += "pod_damage"
+		add_overlay(image(overlay_file, "pod_damage"))
 		if(obj_integrity <= max_integrity / 4)
-			. += "pod_fire"
+			add_overlay(image(overlay_file, "pod_fire"))
 
 
 /obj/spacepod/update_icon()
@@ -498,7 +487,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 /obj/spacepod/proc/handle_thruster_effects()
 	cut_overlay(list(back_thrust_overlay, front_thrust_overlay, left_thrust_overlay, right_thrust_overlay))
-	var/datum/component/physics/physics_component = GetComponent(/datum/component/physics)
 	// Initialize left and right thrust lists with zeros
 	var/list/left_thrusts = list(0, 0, 0, 0, 0, 0, 0, 0)
 	var/list/right_thrusts = list(0, 0, 0, 0, 0, 0, 0, 0)
@@ -508,15 +496,15 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	// Calculate left and right thrusts based on last_thrust_right
 	if(component_last_thrust_right != 0)
 		var/tdir = component_last_thrust_right > 0 ? WEST : EAST
-		var/thrust_val = abs(component_last_thrust_right) / physics_component.side_maxthrust
+		var/thrust_val = abs(component_last_thrust_right)
 		left_thrusts[tdir] = thrust_val
 		right_thrusts[tdir] = thrust_val
 
 	// Calculate front and back thrusts based on last_thrust_forward
 	if(component_last_thrust_forward > 0)
-		back_thrust = component_last_thrust_forward / physics_component.forward_maxthrust
+		back_thrust = component_last_thrust_forward
 	else
-		front_thrust = -component_last_thrust_forward / physics_component.backward_maxthrust
+		front_thrust = -component_last_thrust_forward
 
 	// Update left and right thrust overlays based on calculated values
 	for(var/cardinal_direction in GLOB.cardinals)
@@ -697,8 +685,6 @@ GLOBAL_LIST_INIT(spacepods_list, list())
  * Process Integrity
  *
  * This is used for any unique behaviour as the pod is damaged, so far it is used for alarms.
- *
- * TODO: Convert this alarm sound to a looping sound
  */
 /obj/spacepod/proc/process_integrity(obj/source, old_value, new_value)
 	if(new_value < (max_integrity / 4)) // Less than a quarter health.

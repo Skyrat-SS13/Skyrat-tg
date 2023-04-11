@@ -1,4 +1,4 @@
-/**atom
+/**
  * Physics Component
  *
  * This component will give whatever it is attached to 2D physics.
@@ -48,10 +48,17 @@
 	var/max_velocity_x = INFINITY
 	/// Our maximum velocity_y in tiles per second
 	var/max_velocity_y = INFINITY
+	/// Do we require a thrust check?
+	var/thrust_check_required = TRUE
+	/// Do we require a stabilistaion check?
+	var/stabilisation_check_required = TRUE
+	/// Do we reset thrust dir each cycle?
+	var/reset_thrust_dir = TRUE
+	/// Do we skip angular momentum calculations and just set the angle?
+	var/skip_angular_calculations = FALSE
 
 
-
-/datum/component/physics/Initialize(_forward_maxthrust, _backward_maxthrust, _side_maxthrust, _max_angular_acceleration, _max_velocity_x, _max_velocity_y)
+/datum/component/physics/Initialize(_forward_maxthrust, _backward_maxthrust, _side_maxthrust, _max_angular_acceleration, _max_velocity_x, _max_velocity_y, _thrust_check_required = TRUE, _stabilisation_check_required = TRUE, _reset_thrust_dir = TRUE, _skip_angular_calculations = FALSE)
 	// We can only control movable atoms.
 	if(!ismovable(parent))
 		return COMPONENT_INCOMPATIBLE
@@ -69,10 +76,18 @@
 	if(_max_velocity_y)
 		max_velocity_y = _max_velocity_y
 
+	thrust_check_required = _thrust_check_required
+	stabilisation_check_required = _stabilisation_check_required
+	reset_thrust_dir = _reset_thrust_dir
+	skip_angular_calculations = _skip_angular_calculations
+
 	parent_atom = parent
 
 	// We animate our own movement
 	parent_atom.animate_movement = NO_STEPS
+
+	// We also handle our own movement
+	parent_atom.anchored = TRUE
 
 	START_PROCESSING(SSphysics, src)
 
@@ -84,6 +99,8 @@
 	RegisterSignal(parent, COMSIG_PHYSICS_SET_VELOCITY, PROC_REF(set_velocity))
 	RegisterSignal(parent, COMSIG_ATOM_BUMPED, PROC_REF(process_bumped))
 	RegisterSignal(parent, COMSIG_MOVABLE_BUMP, PROC_REF(process_bump))
+	RegisterSignal(parent, COMSIG_MOVABLE_SPACEMOVE, PROC_REF(spacemove_react))
+	RegisterSignal(parent, COMSIG_MOVABLE_NEWTONIAN_MOVE, PROC_REF(newtonian_impulse))
 
 /datum/component/physics/UnregisterFromParent()
 	. = ..()
@@ -94,6 +111,8 @@
 		COMSIG_PHYSICS_SET_VELOCITY,
 		COMSIG_ATOM_BUMPED,
 		COMSIG_MOVABLE_BUMP,
+		COMSIG_MOVABLE_SPACEMOVE,
+		COMSIG_MOVABLE_NEWTONIAN_MOVE,
 		))
 
 /datum/component/physics/Destroy(force, silent)
@@ -102,12 +121,18 @@
 	return ..()
 
 /datum/component/physics/process(delta_time)
-
+	if(!parent_atom)
+		STOP_PROCESSING(SSphysics, src)
+		return
 	// Initialization of variables for position and angle calculations
 	var/last_offset_x = offset_x
 	var/last_offset_y = offset_y
-
-	var/last_angle = angular_calculations(delta_time)
+	var/last_angle
+	if(skip_angular_calculations)
+		angle = desired_angle
+		last_angle = desired_angle
+	else
+		last_angle = angular_calculations(delta_time)
 
 	drag_calculations(delta_time)
 
@@ -121,6 +146,9 @@
 	offset_y += velocity_y * delta_time
 	// alright so now we reconcile the offsets with the in-world position.
 	while((offset_x > 0 && velocity_x > 0) || (offset_y > 0 && velocity_y > 0) || (offset_x < 0 && velocity_x < 0) || (offset_y < 0 && velocity_y < 0))
+		if(!parent_atom)
+			STOP_PROCESSING(SSphysics, src)
+			return
 		var/failed_x = FALSE
 		var/failed_y = FALSE
 		if(offset_x > 0 && velocity_x > 0)
@@ -196,6 +224,9 @@
 				last_offset_y++
 			else
 				offset_y = 0
+	if(!parent_atom)
+		STOP_PROCESSING(SSphysics, src)
+		return
 	parent_atom.dir = NORTH
 
 	var/matrix/mat_from = new()
@@ -221,7 +252,8 @@
 		mob_client.pixel_y = last_offset_y * 32
 		animate(mob_client, pixel_x = offset_x * 32, pixel_y = offset_y * 32, time = delta_time * 10, flags = ANIMATION_END_NOW)
 
-	desired_thrust_dir = 0
+	if(reset_thrust_dir)
+		desired_thrust_dir = 0
 
 // PHYSICS CALCULATION PROCS
 
@@ -322,7 +354,7 @@
 
 
 	// Automatic stabilization of the atom
-	if(SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABALISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABILISATION)
+	if(stabilisation_check_required && SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABALISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABILISATION)
 		// Calculate braking thrust based on current velocity and delta_time
 		var/braking_thrust_forward = -((forward_x * velocity_x) + (forward_y * velocity_y)) / delta_time
 		var/braking_thrust_right = -((side_x * velocity_x) + (side_y * velocity_y)) / delta_time
@@ -357,13 +389,22 @@
 		total_thrust_y -= side_y * side_maxthrust
 		last_thrust_right = -side_maxthrust
 
-	if(!(SEND_SIGNAL(src, COMSIG_PHYSICS_THRUST_CHECK, total_thrust_x, total_thrust_y, desired_thrust_dir, delta_time) & COMPONENT_PHYSICS_THRUST))
+	if(thrust_check_required && !(SEND_SIGNAL(src, COMSIG_PHYSICS_THRUST_CHECK, total_thrust_x, total_thrust_y, desired_thrust_dir, delta_time) & COMPONENT_PHYSICS_THRUST))
 		last_thrust_right = 0
 		last_thrust_forward = 0
 	else
 		// Update velocity based on the calculated thrust and delta_time
 		velocity_x += total_thrust_x * delta_time
 		velocity_y += total_thrust_y * delta_time
+
+// Due to the fact spacemove exists and we move ourselves, we must override this.
+/datum/component/physics/proc/spacemove_react(mob/user, movement_dir, continuous_move)
+	SIGNAL_HANDLER
+	return COMSIG_MOVABLE_STOP_SPACEMOVE
+
+/datum/component/physics/proc/newtonian_impulse(datum/source, inertia_direction)
+	SIGNAL_HANDLER
+	return COMPONENT_MOVABLE_NEWTONIAN_BLOCK
 
 // SET PROCS
 
@@ -409,3 +450,4 @@
 		step(bumped_movable_atom, parent_atom.dir)
 
 	SEND_SIGNAL(src, COMSIG_PHYSICS_PROCESSED_BUMP, bump_velocity, bumped_atom)
+

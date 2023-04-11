@@ -8,3 +8,6 @@
 	mid_length = 1 SECONDS
 	volume = 50
 
+/datum/looping_sound/rocket_thrust
+	mid_sounds = 'modular_skyrat/modules/spacepods/sound/rocket_loop.ogg'
+	mid_length = 1 SECONDS

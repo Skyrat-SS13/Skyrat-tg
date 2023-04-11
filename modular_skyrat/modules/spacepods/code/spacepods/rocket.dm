@@ -1,0 +1,59 @@
+/**
+ * Rockets
+ *
+ * These rockets use the physics component to simulate a rocket engine.
+ *
+ * Unlike missiles, these are dumb and do not have any kind of course correction.
+ */
+/obj/physics_rocket
+	name = "rocket"
+	desc = "A long tube filled with explosives with a rocket strapped to the back."
+	icon = 'modular_skyrat/modules/spacepods/icons/objects.dmi'
+	icon_state = "missile"
+	density = TRUE
+	opacity = FALSE
+	dir = NORTH
+	max_integrity = 10
+	/// The maximum amount of thrust we can output.
+	var/max_forward_thrust = 10
+	/// Our looping thrust sound.
+	var/datum/looping_sound/rocket_thrust/rocket_sound
+	/// How much fuel the rocket has.
+	var/fuel = 10
+	/// How big the payload size is. EX calculations used for the list.
+	var/list/payload_size = list(0, 2, 3, 4)
+	/// engine ignition time, how long it takes to ignite the engine.
+	var/engine_ignition_time = 0
+
+/obj/physics_rocket/Initialize(starting_angle)
+	. = ..()
+	rocket_sound = new(src)
+	// Attach the physics component to the physics_missile
+	var/datum/component/physics/physics_component = AddComponent(/datum/component/physics, max_forward_thrust, _thrust_check_required = FALSE, _stabilisation_check_required = FALSE, _reset_thrust_dir = FALSE)
+
+	// Register the signal to trigger the process_bump() proc
+	RegisterSignal(physics_component, COMSIG_PHYSICS_PROCESSED_BUMP, PROC_REF(process_bump))
+
+	if(starting_angle)
+		physics_component.angle = starting_angle
+
+	if(engine_ignition_time)
+		addtimer(CALLBACK(src, PROC_REF(ignite_engine)), engine_ignition_time)
+	else
+		ignite_engine()
+
+/obj/physics_rocket/Destroy()
+	rocket_sound.stop()
+	QDEL_NULL(rocket_sound)
+	return ..()
+
+/obj/physics_rocket/proc/ignite_engine()
+	SEND_SIGNAL(src, COMSIG_PHYSICS_SET_THRUST_DIR, NORTH)
+	rocket_sound.start()
+	playsound(src, 'modular_skyrat/modules/spacepods/sound/rocket_fire.ogg', 100)
+
+/obj/physics_rocket/proc/process_bump()
+	SIGNAL_HANDLER
+	// When the drone bumps into something, change the desired angle to the opposite direction for a short duration
+	explosion(src, payload_size[1], payload_size[2], payload_size[3], payload_size[4])
+	qdel(src)

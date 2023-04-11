@@ -26,6 +26,7 @@
 	return ..()
 
 /obj/item/spacepod_equipment/proc/on_install(obj/spacepod/attaching_spacepod)
+	SHOULD_CALL_PARENT(TRUE)
 	spacepod = attaching_spacepod
 	attaching_spacepod.update_overlays()
 
@@ -36,7 +37,11 @@
  *
  * Forced: This should FORCE the uninstall and clear anything required.
  */
-/obj/item/spacepod_equipment/proc/on_uninstall(obj/spacepod/detatching_spacepod, forced)
+/obj/item/spacepod_equipment/proc/on_uninstall(obj/spacepod/detatching_spacepod, mob/user, forced)
+	SHOULD_CALL_PARENT(TRUE)
+	if(!forced && !can_uninstall(detatching_spacepod))
+		to_chat(user, span_warning("Unable to uninstall [src]!"))
+		return
 	spacepod = null
 	detatching_spacepod.update_overlays()
 
@@ -55,7 +60,7 @@
  *
  * forced: This will FORCE the item to uninstall
  */
-/obj/item/spacepod_equipment/proc/can_uninstall(obj/spacepod/detatching_spacepod, mob/user, forced)
+/obj/item/spacepod_equipment/proc/can_uninstall(obj/spacepod/detatching_spacepod)
 	return TRUE
 
 
@@ -80,20 +85,17 @@
 	RegisterSignal(attaching_spacepod, COMSIG_MOUSEDROPPED_ONTO, .proc/spacepod_mousedrop)
 	attaching_spacepod.cargo_bays += src
 
-/obj/item/spacepod_equipment/cargo/large/on_uninstall(obj/spacepod/detatching_spacepod, forced)
+/obj/item/spacepod_equipment/cargo/large/on_uninstall(obj/spacepod/detatching_spacepod, mob/user, forced)
 	. = ..()
 	if(forced)
 		unload_cargo()
 	UnregisterSignal(detatching_spacepod, COMSIG_MOUSEDROPPED_ONTO)
 	detatching_spacepod.cargo_bays -= src
 
-/obj/item/spacepod_equipment/cargo/large/can_uninstall(obj/spacepod/detatching_spacepod, mob/user, forced)
-	if(forced)
-		return TRUE
+/obj/item/spacepod_equipment/cargo/large/can_uninstall(obj/spacepod/detatching_spacepod)
 	if(storage)
-		to_chat(user, span_warning("Unload the cargo first!"))
 		return FALSE
-	return ..()
+	return TRUE
 
 /obj/item/spacepod_equipment/cargo/large/proc/unload_cargo()
 	if(storage)
@@ -131,7 +133,7 @@
 	..()
 	RegisterSignal(attaching_spacepod, COMSIG_MOVABLE_MOVED, .proc/spacepod_moved)
 
-/obj/item/spacepod_equipment/cargo/large/ore/on_uninstall(obj/spacepod/detatching_spacepod, forced)
+/obj/item/spacepod_equipment/cargo/large/ore/on_uninstall(obj/spacepod/detatching_spacepod, mob/user, forced)
 	. = ..()
 	UnregisterSignal(detatching_spacepod, COMSIG_MOVABLE_MOVED)
 
@@ -157,20 +159,15 @@
 	. = ..()
 	attaching_spacepod.occupant_slots[occupant_slot] += occupant_mod
 
-/obj/item/spacepod_equipment/cargo/chair/on_uninstall(obj/spacepod/detatching_spacepod, forced)
+/obj/item/spacepod_equipment/cargo/chair/on_uninstall(obj/spacepod/detatching_spacepod, mob/user, forced)
 	. = ..()
-	if(forced)
-		detatching_spacepod.remove_all_riders(forced = forced)
+	detatching_spacepod.remove_all_riders(forced = forced)
 	detatching_spacepod.occupant_slots[occupant_slot] -= occupant_mod
 
-/obj/item/spacepod_equipment/cargo/chair/can_uninstall(obj/spacepod/detatching_spacepod, mob/user, forced)
-	. = ..()
-	if(forced)
-		return TRUE
+/obj/item/spacepod_equipment/cargo/chair/can_uninstall(obj/spacepod/detatching_spacepod)
 	if(LAZYLEN(detatching_spacepod.get_all_occupants_by_type(SPACEPOD_RIDER_TYPE_PASSENGER)) > (LAZYLEN(detatching_spacepod.occupant_slots[occupant_slot]) - occupant_mod))
-		to_chat(user, span_warning("You can't remove an occupied seat! Remove the occupant first."))
 		return FALSE
-	return ..()
+	return TRUE
 
 /**
  * Weapon Systems
@@ -350,7 +347,7 @@
 	physics_component.backward_maxthrust = max_backwards_speed
 	physics_component.side_maxthrust = max_sideways_speed
 
-/obj/item/spacepod_equipment/thruster/on_uninstall(obj/spacepod/detatching_spacepod, forced)
+/obj/item/spacepod_equipment/thruster/on_uninstall(obj/spacepod/detatching_spacepod, mob/user, forced)
 	. = ..()
 	var/datum/component/physics/physics_component = detatching_spacepod.GetComponent(/datum/component/physics)
 	physics_component.forward_maxthrust = 0
@@ -385,7 +382,7 @@
 	/// The color of the light
 	var/color_to_set = COLOR_WHITE
 
-/obj/item/spacepod_equipment/thruster/on_uninstall(obj/spacepod/detatching_spacepod, forced)
+/obj/item/spacepod_equipment/thruster/on_uninstall(obj/spacepod/detatching_spacepod, mob/user, forced)
 	. = ..()
 	detatching_spacepod.set_light_on(FALSE)
 
@@ -444,7 +441,7 @@
 	..()
 	RegisterSignal(attaching_spacepod, COMSIG_PARENT_ATTACKBY, .proc/spacepod_attackby)
 
-/obj/item/spacepod_equipment/lock/on_uninstall(obj/spacepod/detatching_spacepod, forced)
+/obj/item/spacepod_equipment/lock/on_uninstall(obj/spacepod/detatching_spacepod, mob/user, forced)
 	. = ..()
 	UnregisterSignal(detatching_spacepod, COMSIG_PARENT_ATTACKBY)
 	detatching_spacepod.locked = FALSE
