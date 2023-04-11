@@ -370,3 +370,116 @@
   theOOZ:
   - code_imp: Adds a flag to send_clock_message, so the real notify_ghosts proc can
       be used instead
+2023-04-09:
+  Melbert:
+  - code_imp: Audits the placement of Generic events markers. Some departments which
+      previously had none now have some, and maintenance largely no longer holds them.
+  - balance: Anomalies from a supermatter delamination, radiation leaks, and suipermatter
+      cascade portals are now placed in more commonly traversed and easy to identify
+      areas. They will also now trigger in places like Icebox med and brig when they
+      previously couldn't.
+  Melbert, stove and pot sprites by Kryson, ladle sprite by Kinneb:
+  - rscadd: Kitchens are now stocked with Ranges.
+  - rscadd: You can now print (and create) Stoves.
+  - rscadd: The dinnerware vendor now dispenses ladles.
+  - rscadd: Spoons can now actually spoon... things.
+  - rscadd: Soup has been reworked entirely. Soups are now reagents, cooked via a
+      soup pot on a Stove or Range. Simply add water and your required items, then
+      apply heat. Be careful not to boil over!
+  - rscadd: Stoves, Ranges, and Griddles will now heat up their surroundings - don't
+      turn them on around plasma!
+  - bugfix: Fixes being able to cook in an Oven while the room is depowered
+  - qol: Hitting a customer bot with an incorrect recipe no longer counts as a hostile
+      attack leading to your demise shortly after
+  - refactor: Customer bots that request a reagent now use custom orders
+  - code_imp: Cut down a lot of code in the crafting menu code, and removes some ugly
+      ispaths
+  - rscdel: Soup is no longer food items, so can't appear in random food pools (at
+      least not yet).
+  - balance: Virus Food recipe now requires you cool it to 200k.
+  SkyratBot:
+  - bugfix: makes ai sat turrets actually able to fire upon silicons
+  - bugfix: waystation cargo techs get shoes now
+  - rscadd: Added "Botanical Haven", a small sanctuary for flora and spacefaring botanists.
+  - bugfix: The fire alarm in the vacant commissary on Delta Station now longer defies
+      gravity.
+  - rscadd: Adds new Cosmic Heretic.
+  - soundadd: Adds Cosmic Heretic sounds.
+  - imageadd: Adds Cosmic Heretic sprites.
+  - rscadd: central commands meteorological divsion has picked up a new asteroid drifting
+      in NT space, what secrets could it hold?
+  - bugfix: fixed duplicate pipe in Underground Outpost 45 Away Mission
+  - bugfix: Interdyne Ruin should now have power
+  - rscadd: Mobs on fire get particle effects (it looks sick)
+  - rscadd: Wet mobs get particle effects (it looks sick)
+  - rscadd: Added a new ruin!
+2023-04-10:
+  Hatterhat:
+  - bugfix: The "smuggle" objective for progression traitors involving receiving a
+      piece of prototype equipment and selling it on the cargo shuttle works, instead
+      of exporting the item and then failing the objective. The item still gets exported,
+      but fixing that's out of the scope of this fix.
+  - bugfix: Contractors, both the Drifting and not-quite-so-drifting kind, now actually
+      receive their share of the amount stolen from Cargo. Go earn your paychecks,
+      baton-wielding kidnapper-kleptomaniacs!
+  Nerev4r:
+  - balance: Hemophages now digest blood faster.
+  - bugfix: Hemophages now actually digest blood that's in a food.
+  SkyratBot:
+  - balance: chicken eggs can now, rarely (1/256 chance), spawn 4 chicks instead of
+      1 or none
+  - spellcheck: The examine text for the carp tongue and gondola heart is more correct.
+  - qol: Activating arm implant items in hand now automatically retracts and opens
+      the radial menu, unless it's a welding tool.
+  - code_imp: The ability for objects to be loomed is now a component, with all of
+      the looming behavior moved off of the structure and into said component. The
+      actual behavior for looming cotton (clicking on a loom with cotton) is completely
+      unchanged.
+  - balance: 2 More Cargo Tech slots
+  Wallem:
+  - imageadd: Updates navbeacon sprite
+  softcerv:
+  - refactor: the artificial cylinder code has been refactored
+  tf-4:
+  - qol: MCRs no longer have a timer for inserting cells.
+  theOOZ:
+  - bugfix: The eyes of the 'bug' snout render once more!
+  - imageadd: Adds an eyeless version of the 'bug' snout.
+2023-04-11:
+  LT3:
+  - bugfix: Fixed tram malfunction event from using the wrong sprites
+  Melbert:
+  - bugfix: Admin spawned ghost portals no longer make all dead players considered
+      also as observers (they're two different things)
+  SkyratBot:
+  - bugfix: Transforming into an android and then back into another species will no
+      longer leave you with permanent robotic limbs
+  - bugfix: You can no longer escape the wrath of the honkmother by climbing onto
+      a cyborg.
+  - bugfix: Shooting a pair of piggybacked players with a penetrator round will penetrate
+      both players.
+  - bugfix: the contents of your pockets no longer drop onto the floor when your body
+      is randomized
+  - balance: Carp can't teleport as far, but can do it more frequently. People who
+      piggyback through their rifts will be blocked from attacking for a short duration
+      (the same as the normal attack cooldown).
+  - balance: AI controlled carp will now be more selective about which objects they
+      smash. Player controlled carp (or carp directly instructed to attack objects
+      by people who have tamed them) can still attack whatever they like.
+  - qol: bsa parts can now be rotated.
+  - balance: PKAs can now be attached to mining MODsuits.
+  - rscadd: Being electrocuted will most of the time make you blurt out whatever you
+      were typing. This includes batons. Be careful.
+  - rscadd: Plasmamen will now spawn with proper masks depending on the job.
+  - refactor: Tgui's state manager is in typescript now, huzzah
+  - bugfix: TGC decks will no longer allow you to insert an illegal 31st card.
+  Somepan:
+  - rscadd: Added a message upon being hit by any spectral instruments
+  - balance: Reduced the stamina damage dealt by spectral instruments from 25 to 18
+      making it transform after 6 hits instead of 4
+  Z Man Wit Z Plan:
+  - bugfix: fixed a couple things in the atmos asteroid ruin
+  vinylspiders:
+  - bugfix: accessories may now be attached to gear harnesses
+  - code_imp: adds support for defining an explicit accessory slot for any given clothing,
+      using the `accessory_slot_override` var
