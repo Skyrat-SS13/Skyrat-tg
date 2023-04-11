@@ -21,6 +21,10 @@
 	. = ..()
 	AddComponent(/datum/component/automatic_fire, 0.1 SECONDS)
 
+/obj/item/gun/energy/laser/plasma_thrower/examine(mob/user)
+	. = ..()
+	. += "The plasma globs have <b>reduced effectiveness against blobs</b>."
+
 /obj/item/gun/energy/laser/plasma_thrower/give_manufacturer_examine()
 	AddComponent(/datum/component/manufacturer_examine, COMPANY_TKACH)
 
@@ -56,7 +60,7 @@
 
 /obj/projectile/beam/laser/plasma_glob/on_hit(atom/target, blocked)
 	if(istype(target, /obj/structure/blob) || istype(target, /mob/living/simple_animal/hostile/blob))
-		damage = damage / 2
+		damage = damage * 0.75
 	return ..()
 
 // A revolver, but it can hold shotgun shells
