@@ -499,5 +499,5 @@
 #undef STEP_BLOW
 #undef STEP_SPIN
 #undef STEP_PADDLE
-#undef STEP_SHEARS
+#undef STEP_SHEAR
 #undef STEP_JACKS
