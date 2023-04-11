@@ -319,8 +319,8 @@
  * Craft is finished when all steps in steps_remaining are 0.
  *
  * Arguments:
- * * message - to display
  * * mob/user - mob to display to
+ * * message - to display
  */
 /obj/item/glassblowing/blowing_rod/proc/fail_message(message, mob/user)
 	to_chat(user, span_warning(message))
@@ -347,14 +347,11 @@
 	if(!check_valid_table(user))
 		fail_message("You must be near a non-flammable table!", user)
 		return
+	if(!check_valid_tool(user, step_id))
+		return
 	to_chat(user, span_notice("You begin to [step_id] [src]."))
 	if(!do_after(user, actioning_speed, target = src))
 		fail_message("You interrupt an action!", user)
-		return
-	if(!check_valid_table(user))
-		fail_message("You must be near a non-flammable table!", user)
-		return
-	if(!check_valid_tool(user, step_id))
 		return
 
 	if(glass.steps_remaining)
@@ -373,7 +370,7 @@
 /**
  * Check if there is a non-flammable table nearby to do the crafting on.
  *
- * If the user is a master in production, they can skip tables
+ * If the user is a master in the production skill, they can skip tables.
  *
  * Arguments:
  * * mob/living/user - the mob doing the action
@@ -390,7 +387,7 @@
 	return FALSE
 
 /**
- * Check if user is carrying the proper tool for the step
+ * Check if user is carrying the proper tool for the step.
  *
  * Arguments:
  * * mob/living/carbon/human/user - the mob doing the action

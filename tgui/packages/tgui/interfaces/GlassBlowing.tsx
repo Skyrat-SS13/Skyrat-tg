@@ -1,4 +1,5 @@
 import { Box, Button, Flex, Stack, Section, ProgressBar, AnimatedNumber, Table } from '../components';
+import { toFixed } from 'common/math';
 import { BooleanLike } from 'common/react';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -41,15 +42,14 @@ export const GlassBlowing = (props, context) => {
           title={glass && glass.timeLeft ? 'Molten Glass' : 'Cooled Glass'}
           buttons={
             <Button
-              icon={glass && glass.isFinished ? 'check' : 'eject'}
-              color={glass && glass.isFinished ? 'good' : 'default'}
+              icon={glass && glass.isFinished ? 'check' : 'arrow-right'}
+              color={glass && glass.isFinished ? 'good' : 'red'}
               content={glass && glass.isFinished ? 'Complete Craft' : 'Remove'}
               disabled={!glass || inUse}
               onClick={() => act('Remove')}
             />
           }
         />
-
         {glass && !glass.chosenItem && (
           <Section title="Pick a craft">
             <Stack fill vertical>
@@ -109,6 +109,8 @@ export const GlassBlowing = (props, context) => {
                   <Table.Cell>
                     <Button
                       content="Blow"
+                      icon="fire"
+                      color="orange"
                       disabled={!glass || inUse || !glass.timeLeft}
                       tooltipPosition="bottom"
                       tooltip={
@@ -121,6 +123,8 @@ export const GlassBlowing = (props, context) => {
                   <Table.Cell>
                     <Button
                       content="Spin"
+                      icon="fire"
+                      color="orange"
                       disabled={!glass || inUse || !glass.timeLeft}
                       tooltipPosition="bottom"
                       tooltip={
@@ -133,11 +137,9 @@ export const GlassBlowing = (props, context) => {
                   <Table.Cell>
                     <Button
                       content="Paddle"
-                      disabled={1}
+                      disabled={inUse}
                       tooltipPosition="bottom"
-                      tooltip={
-                        glass.timeLeft === 0 ? 'Needs to be glowing hot.' : ''
-                      }
+                      tooltip={'You need to use a paddle.'}
                       onClick={() => act('Paddle')}
                     />
                     x{glass.stepsRemaining.paddle}
@@ -145,9 +147,9 @@ export const GlassBlowing = (props, context) => {
                   <Table.Cell>
                     <Button
                       content="Shears"
-                      disabled={1}
+                      disabled={inUse}
                       tooltipPosition="bottom"
-                      tooltip={`You need to use shears.`}
+                      tooltip={'You need to use shears.'}
                       onClick={() => act('Shear')}
                     />
                     x{glass.stepsRemaining.shear}
@@ -155,9 +157,9 @@ export const GlassBlowing = (props, context) => {
                   <Table.Cell>
                     <Button
                       content="Jacks"
-                      disabled={1}
+                      disabled={inUse}
                       tooltipPosition="bottom"
-                      tooltip={`You need to use jacks.`}
+                      tooltip={'You need to use jacks.'}
                       onClick={() => act('Jacks')}
                     />
                     x{glass.stepsRemaining.jacks}
@@ -173,6 +175,7 @@ export const GlassBlowing = (props, context) => {
               <Flex.Item>
                 <Button
                   icon="times"
+                  color="orange"
                   content="Cancel craft"
                   disabled={!glass || inUse}
                   onClick={() => act('Cancel')}
@@ -196,8 +199,11 @@ export const GlassBlowing = (props, context) => {
                 'background-image':
                   'linear-gradient(to right, blue, yellow, red)',
               }}>
-              <AnimatedNumber value={glass.timeLeft} />
-              {'/' + glass.totalTime}
+              <AnimatedNumber
+                value={glass.timeLeft}
+                format={(value) => toFixed(value, 1)}
+              />
+              {'/' + glass.totalTime.toFixed(1)}
             </ProgressBar>
           </Section>
         )}
