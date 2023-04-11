@@ -10,7 +10,7 @@
 	overlay_icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting_overlay.dmi'
 	brightness = 6.5
 	fire_brightness = 4.5
-	fire_colour = LIGHT_COLOR_FIRE
+	fire_colour = "#D47F9B"
 	bulb_colour = LIGHT_COLOR_FAINT_BLUE
 	bulb_power = 1.15
 	nightshift_light_color = null // Let the dynamic night shift color code handle this.
@@ -19,7 +19,7 @@
 	bulb_low_power_pow_min = 0.4
 	bulb_emergency_colour = LIGHT_COLOR_INTENSE_RED
 	bulb_major_emergency_brightness_mul = 0.7
-	power_consumption_rate = 6
+	power_consumption_rate = 5.62
 	var/maploaded = FALSE //So we don't have a lot of stress on startup.
 	var/turning_on = FALSE //More stress stuff.
 	var/constant_flickering = FALSE // Are we always flickering?
