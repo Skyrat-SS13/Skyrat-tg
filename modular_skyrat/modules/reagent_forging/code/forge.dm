@@ -468,7 +468,7 @@
 
 	if(!user.transferItemToLoc(tray, src, silent = FALSE))
 		return
-		
+
 	// need to send the right signal for each item in the tray
 	for(var/obj/item/baked_item in tray.contents)
 		SEND_SIGNAL(baked_item, COMSIG_ITEM_OVEN_PLACED_IN, src, user)
@@ -861,6 +861,7 @@
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
 	COOLDOWN_START(find_glass, remaining_heat, glassblowing_amount)
+	find_glass.total_time = glassblowing_amount
 	to_chat(user, span_notice("You finish heating up [blowing_item]."))
 	user.mind.adjust_experience(/datum/skill/smithing, 5)
 	user.mind.adjust_experience(/datum/skill/production, 10)
