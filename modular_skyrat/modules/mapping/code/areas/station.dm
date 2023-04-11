@@ -530,3 +530,12 @@
 /area/station/maintenance/eva_shed/starboard
 	name = "Starboard EVA Shed"
 	icon_state = "eva_shed_sb"
+
+// Void Raptor specific areas
+/area/station/service/pizzeria
+	name = "\improper Moffuchi's Pizzeria"
+	icon_state = "cafeteria"
+
+/area/station/service/pizzeria/kitchen
+	name = "\improper Moffuchi's Kitchen"
+	icon_state = "kitchen"
