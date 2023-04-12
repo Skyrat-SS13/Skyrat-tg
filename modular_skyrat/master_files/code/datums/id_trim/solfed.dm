@@ -2,8 +2,8 @@
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	assignment = "SolFed"
 	trim_state = "trim_solfed"
-	department_color = COLOR_SOAPSTONE_GOLD
-	subdepartment_color = COLOR_SOAPSTONE_GOLD
+	department_color = COLOR_SOLFED_GOLD
+	subdepartment_color = COLOR_SOLFED_GOLD
 	sechud_icon_state = SECHUD_SOLFED
 
 /datum/id_trim/solgov/New()
