@@ -4,6 +4,7 @@
 	icon = 'modular_skyrat/modules/spacepods/icons/objects.dmi'
 	icon_state = "launcher_base"
 	anchored = TRUE
+	density = TRUE
 	/// How far can this launcher detect it's target, in tiles.
 	var/detection_range = 10
 	/// The types that we are scanning for.
@@ -84,7 +85,7 @@
 /obj/structure/launcher/proc/find_target(range)
 	var/min_distance = INFINITY
 	var/closest_object
-	for(var/iterating_target as anything in view(range, src))
+	for(var/iterating_target in view(range, src))
 		if(!is_type_in_list(iterating_target, target_types))
 			continue
 		if(!target_check(iterating_target))

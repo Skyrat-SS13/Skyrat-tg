@@ -60,7 +60,7 @@
 	var/datum/component/physics/physics_component = AddComponent(/datum/component/physics, max_forward_thrust, _thrust_check_required = FALSE, _stabilisation_check_required = FALSE, _reset_thrust_dir = FALSE, starting_angle = start_angle)
 
 	// Register the signal to trigger the process_bump() proc
-	RegisterSignal(physics_component, COMSIG_PHYSICS_PROCESSED_BUMP, PROC_REF(process_bump))
+	RegisterSignal(physics_component, COMSIG_PHYSICS_PROCESSED_BUMP, PROC_REF(explode))
 	RegisterSignal(physics_component, COMSIG_PHYSICS_UPDATE_MOVEMENT, PROC_REF(physics_update_movement))
 
 	check_factions = incoming_faction_check
@@ -82,6 +82,10 @@
 		addtimer(CALLBACK(src, PROC_REF(ignite)), ignition_time)
 
 	START_PROCESSING(SSphysics, src)
+
+/obj/physics_missile/Bumped(atom/movable/bumped_atom)
+	. = ..()
+	explode()
 
 /obj/physics_missile/proc/clear_firer(datum/source)
 	SIGNAL_HANDLER
@@ -118,7 +122,8 @@
 	if(thruster_on)
 		. += "thrust_overlay"
 
-/obj/physics_missile/proc/process_bump()
+
+/obj/physics_missile/proc/explode()
 	SIGNAL_HANDLER
 	explosion(src, payload_size[1], payload_size[2], payload_size[3], payload_size[4])
 	qdel(src)
@@ -200,7 +205,7 @@
 /obj/physics_missile/proc/find_target()
 	var/min_distance = INFINITY
 	var/closest_object
-	for(var/iterating_target as anything in view(auto_target_range, src))
+	for(var/iterating_target in view(auto_target_range, src))
 
 		if(!target_check(iterating_target))
 			continue

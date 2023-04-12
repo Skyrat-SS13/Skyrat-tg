@@ -56,7 +56,8 @@
 	var/reset_thrust_dir = TRUE
 	/// Do we skip angular momentum calculations and just set the angle?
 	var/skip_angular_calculations = FALSE
-	var/ss_cycle = 1
+	/// What directions did we fail to move in last cycle?
+	var/last_failed_dirs = NONE
 
 
 /datum/component/physics/Initialize(_forward_maxthrust, _backward_maxthrust, _side_maxthrust, _max_angular_acceleration, _max_velocity_x, _max_velocity_y, _thrust_check_required = TRUE, _stabilisation_check_required = TRUE, _reset_thrust_dir = TRUE, _skip_angular_calculations = FALSE, starting_angle)
@@ -125,12 +126,16 @@
 	parent_atom = null
 	return ..()
 
+/obj/effect/temp_visual/turf_visual
+	icon = 'modular_skyrat/modules/spacepods/icons/objects.dmi'
+	icon_state = "turf_test"
+	layer = WALL_OBJ_LAYER
+	duration = 5
+
 /datum/component/physics/process(delta_time)
 	if(!parent_atom)
 		STOP_PROCESSING(SSphysics, src)
 		return
-	var/turf/our_turf = get_turf(parent_atom)
-	our_turf.add_overlay(image(icon = 'modular_skyrat/modules/spacepods/icons/objects.dmi', icon_state = "turf_test"))
 	// Initialization of variables for position and angle calculations
 	var/last_offset_x = offset_x
 	var/last_offset_y = offset_y
@@ -150,99 +155,79 @@
 	velocity_y = clamp(velocity_y, -max_velocity_y, max_velocity_y)
 
 	// Update the offsets
-	offset_x += velocity_x * delta_time
-	offset_y += velocity_y * delta_time
+	offset_x += (last_failed_dirs & EAST && velocity_x > 0) ? 0 : ((last_failed_dirs & WEST && velocity_x < 0) ? 0 : velocity_x * delta_time)
+	offset_y += (last_failed_dirs & NORTH && velocity_y > 0) ? 0 : ((last_failed_dirs & SOUTH && velocity_y < 0) ? 0 : velocity_y * delta_time)
 
-	// Update the offsets only if the velocity is greater than the threshold
+	last_failed_dirs = NONE
 
 	// alright so now we reconcile the offsets with the in-world position.
-	while((offset_x > 0 && velocity_x > 0) || (offset_y > 0 && velocity_y > 0) || (offset_x < 0 && velocity_x < 0) || (offset_y < 0 && velocity_y < 0))
+	while((offset_x > 0.5 && velocity_x > 0) || (offset_y > 0.5 && velocity_y > 0) || (offset_x < -0.5 && velocity_x < 0) || (offset_y < -0.5 && velocity_y < 0))
 		if(!parent_atom)
 			STOP_PROCESSING(SSphysics, src)
 			return
 		var/failed_x = FALSE
 		var/failed_y = FALSE
-		if(offset_x > 0 && velocity_x > 0)
+		if(offset_x > 0.5 && velocity_x > 0)
 			parent_atom.dir = EAST
-			if(!parent_atom.Move(get_step(parent_atom, EAST)))
+			if(parent_atom.Move(get_step(parent_atom, EAST)))
+				offset_x -= 1
+				last_offset_x -= 1
+				last_failed_dirs &= ~EAST
+			else
 				offset_x = 0
 				failed_x = TRUE
 				velocity_x *= -bounce_factor
 				velocity_y *= lateral_bounce_factor
-			else
-				offset_x--
-				last_offset_x--
-		else if(offset_x < 0 && velocity_x < 0)
+				last_failed_dirs |= EAST
+		else if(offset_x < -0.5 && velocity_x < 0)
 			parent_atom.dir = WEST
-			if(!parent_atom.Move(get_step(parent_atom, WEST)))
+			if(parent_atom.Move(get_step(parent_atom, WEST)))
+				offset_x += 1
+				last_offset_x += 1
+				last_failed_dirs &= ~WEST
+			else
 				offset_x = 0
 				failed_x = TRUE
 				velocity_x *= -bounce_factor
 				velocity_y *= lateral_bounce_factor
-			else
-				offset_x++
-				last_offset_x++
-		else
-			failed_x = TRUE
-		if(offset_y > 0 && velocity_y > 0)
+				last_failed_dirs |= WEST
+
+		if(offset_y > 0.5 && velocity_y > 0)
 			parent_atom.dir = NORTH
-			if(!parent_atom.Move(get_step(parent_atom, NORTH)))
+			if(parent_atom.Move(get_step(parent_atom, NORTH)))
+				offset_y -= 1
+				last_offset_y -= 1
+				last_failed_dirs &= ~NORTH
+			else
 				offset_y = 0
 				failed_y = TRUE
 				velocity_y *= -bounce_factor
 				velocity_x *= lateral_bounce_factor
-			else
-				offset_y--
-				last_offset_y--
-		else if(offset_y < 0 && velocity_y < 0)
+				last_failed_dirs |= NORTH
+
+		else if(offset_y < -0.5 && velocity_y < 0)
 			parent_atom.dir = SOUTH
-			if(!parent_atom.Move(get_step(parent_atom, SOUTH)))
+			if(parent_atom.Move(get_step(parent_atom, SOUTH)))
+				offset_y += 1
+				last_offset_y += 1
+				last_failed_dirs &= ~SOUTH
+			else
 				offset_y = 0
 				failed_y = TRUE
 				velocity_y *= -bounce_factor
 				velocity_x *= lateral_bounce_factor
-			else
-				offset_y++
-				last_offset_y++
-		else
-			failed_y = TRUE
+				last_failed_dirs |= SOUTH
+
 		if(failed_x && failed_y)
 			break
-	// prevents situations where you go "wtf I'm clearly right next to it" as you enter a stationary atom
-	if(velocity_x == 0)
-		if(offset_x > 0.5)
-			if(parent_atom.Move(get_step(parent_atom, EAST)))
-				offset_x--
-				last_offset_x--
-			else
-				offset_x = 0
-		if(offset_x < -0.5)
-			if(parent_atom.Move(get_step(parent_atom, WEST)))
-				offset_x++
-				last_offset_x++
-			else
-				offset_x = 0
-	if(velocity_y == 0)
-		if(offset_y > 0.5)
-			if(parent_atom.Move(get_step(parent_atom, NORTH)))
-				offset_y--
-				last_offset_y--
-			else
-				offset_y = 0
-		if(offset_y < -0.5)
-			if(parent_atom.Move(get_step(parent_atom, SOUTH)))
-				offset_y++
-				last_offset_y++
-			else
-				offset_y = 0
-	if(!parent_atom)
-		STOP_PROCESSING(SSphysics, src)
-		return
+
 	parent_atom.dir = NORTH
 
 	update_sprite(delta_time, last_angle, last_offset_x, last_offset_y)
 
 	SEND_SIGNAL(src, COMSIG_PHYSICS_UPDATE_MOVEMENT, angle, velocity_x, velocity_y, offset_x, offset_y, last_rotate, last_thrust_forward, last_thrust_right)
+
+	new /obj/effect/temp_visual/turf_visual(get_turf(parent_atom))
 
 	if(reset_thrust_dir)
 		desired_thrust_dir = 0
@@ -273,8 +258,6 @@
 		mob_client.pixel_x = last_offset_x * 32
 		mob_client.pixel_y = last_offset_y * 32
 		animate(mob_client, pixel_x = offset_x * 32, pixel_y = offset_y * 32, time = delta_time * 10, flags = ANIMATION_END_NOW)
-
-
 
 // PHYSICS CALCULATION PROCS
 
@@ -370,6 +353,8 @@
 	var/forward_y = corrective_sin_calculation(90 - angle) // ditto, we handle it after
 	var/side_x = forward_y
 	var/side_y = -forward_x
+	last_thrust_forward = 0
+	last_thrust_right = 0
 
 	// Automatic stabilization of the atom
 	if(stabilisation_check_required && SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABALISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABILISATION)
@@ -411,7 +396,7 @@
 		last_thrust_right = 0
 		last_thrust_forward = 0
 	else
-		// Update velocity based on the calculated thrust and delta_time
+		// Update the velocities
 		velocity_x += total_thrust_x * delta_time
 		velocity_y += total_thrust_y * delta_time
 

@@ -96,7 +96,7 @@
  */
 /obj/spacepod/proc/action_deleting(datum/source)
 	SIGNAL_HANDLER
-	for(var/occupant as anything in occupants)
+	for(var/occupant in occupants)
 		if(source in occupants[occupant][SPACEPOD_RIDER_ACTIONS])
 			occupants[occupant][SPACEPOD_RIDER_ACTIONS] -= source
 
@@ -106,7 +106,7 @@
  * Gives the mob all the required traits depening on the rider_type
  */
 /obj/spacepod/proc/give_traits(mob/living/mob_to_give_to, rider_type)
-	for(var/iterating_trait as anything in traits_to_grant[rider_type])
+	for(var/iterating_trait in traits_to_grant[rider_type])
 		give_trait_to_occupant(mob_to_give_to, iterating_trait, traits_to_grant[rider_type][iterating_trait])
 
 /**
@@ -192,7 +192,7 @@
  * Removes the traits from the mob, depending on the rider_type
  */
 /obj/spacepod/proc/remove_all_traits(mob/living/mob_to_remove_from)
-	for(var/iterating_trait as anything in occupants[mob_to_remove_from][SPACEPOD_RIDER_TRAITS])
+	for(var/iterating_trait in occupants[mob_to_remove_from][SPACEPOD_RIDER_TRAITS])
 		remove_trait_from_occupant(mob_to_remove_from, iterating_trait)
 
 /**
@@ -241,7 +241,7 @@
  * Removes all current riders
  */
 /obj/spacepod/proc/remove_all_riders(rider_type_to_remove, forced)
-	for(var/occupant as anything in occupants)
+	for(var/occupant in occupants)
 		if(rider_type_to_remove)
 			if(occupants[occupant][SPACEPOD_RIDER_TYPE] != rider_type_to_remove)
 				continue
@@ -256,7 +256,7 @@
 	if(HAS_TRAIT(user, TRAIT_RESTRAINED))
 		to_chat(user, span_notice("You attempt to stumble out of [src]. This will take two minutes."))
 		to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("[user] is trying to escape [src]."))
-		if(!do_after(user, 1200, target = src))
+		if(!do_after(user, 2 MINUTES, target = src))
 			return
 
 	if(remove_rider(user))
@@ -271,11 +271,11 @@
  */
 /obj/spacepod/proc/to_chat_to_riders(rider_types, message)
 	if(islist(rider_types))
-		for(var/rider_type as anything in rider_types)
-			for(var/occupant as anything in get_all_occupants_by_type(rider_type))
+		for(var/rider_type in rider_types)
+			for(var/occupant in get_all_occupants_by_type(rider_type))
 				to_chat(occupant, message)
 		return
-	for(var/occupant as anything in get_all_occupants_by_type(rider_types))
+	for(var/occupant in get_all_occupants_by_type(rider_types))
 		to_chat(occupant, message)
 
 /**

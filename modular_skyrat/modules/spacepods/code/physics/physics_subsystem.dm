@@ -7,4 +7,4 @@
 PROCESSING_SUBSYSTEM_DEF(physics)
 	name = "Physics"
 	priority = FIRE_PRIORITY_PHYSICS
-	wait = 0.2 SECONDS
+	wait = 0.1 SECONDS

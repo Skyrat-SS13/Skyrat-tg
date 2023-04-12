@@ -33,7 +33,7 @@
 	var/list/detachable_equipment = list()
 
 	for(var/slot in equipment)
-		for(var/thing as anything in equipment[slot])
+		for(var/thing in equipment[slot])
 			detachable_equipment += thing
 
 	if(!LAZYLEN(detachable_equipment))
@@ -133,7 +133,7 @@
 /obj/spacepod/proc/check_has_equipment(type_to_check)
 	var/list/equipment_list = get_all_equipment()
 
-	for(var/thing as anything in equipment_list)
+	for(var/thing in equipment_list)
 		if(istype(thing, type_to_check))
 			return TRUE
 
