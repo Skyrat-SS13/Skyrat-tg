@@ -81,11 +81,10 @@
 	desc = "A Deagle brand Deagle for operators operating operationally. Uses .50 AE ammo."
 	icon_state = "deaglecamo"
 	inhand_icon_state = "deagleg"
-<<<<<<< HEAD
 	// SKYRAT EDIT - We don't actually have the right icons for this. When you add the icons you can remove this line!
 	show_bolt_icon = FALSE
 	// SKYRAT EDIT END
-=======
+
 
 /obj/item/gun/ballistic/automatic/pistol/deagle/regal
 	name = "\improper Regal Condor"
@@ -104,7 +103,6 @@
 
 /obj/item/gun/ballistic/automatic/pistol/deagle/regal/no_mag
 	spawnwithmagazine = FALSE
->>>>>>> 60b4807a848 (Makes the Regal Condor renamable via pen (#74629))
 
 /obj/item/gun/ballistic/automatic/pistol/deagle/regal
 	name = "\improper Regal Condor"
