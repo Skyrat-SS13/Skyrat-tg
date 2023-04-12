@@ -368,8 +368,12 @@
 // GUBMAN3 - FULL BULLET RENAME
 
 /obj/item/ammo_casing/a762
-	name = ".244 Acia polymer casing"
+	name = ".244 Acia casing"
 	desc = "A .244 bullet casing."
+
+/obj/item/ammo_casing/a762/surplus
+	name = ".244 Acia surplus casing"
+	desc = "A .244 surplus bullet casing."
 
 /obj/item/ammo_casing/a556
 	name = ".277 Aestus polymer casing"
@@ -498,6 +502,9 @@
 /obj/projectile/bullet/a762
 	name = ".244 bullet"
 
+/obj/projectile/bullet/a762/surplus
+	name = ".244 surplus bullet"
+
 /obj/projectile/bullet/a762/enchanted
 	name = "enchanted .244 bullet"
 
@@ -591,3 +598,6 @@
 
 /obj/item/ammo_box/a762
 	name = "stripper clip (.244 Acia)"
+
+/obj/item/ammo_box/a762/surplus
+	name = "stripper clip (.244 Acia surplus)"
