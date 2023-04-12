@@ -43,7 +43,7 @@
 
 		var/client_is_in_db = query_client_in_db.NextRow()
 		if(!client_is_in_db)
-			
+
 			var/reject_message = "Failed Login: [ckey] [address]-[computer_id] - New Account attempting to connect during panic bunker, but was rejected due to no prior connections to game servers (no database entry)"
 			log_access(reject_message)
 			if (message)
@@ -113,11 +113,7 @@
 				This ban (BanID #[i["id"]]) was applied by [i["admin_key"]] on [i["bantime"]] during round ID [i["round_id"]].
 				[global_ban]
 				[expires]"}
-<<<<<<< HEAD
-				log_suspicious_login("Failed Login: [key] [computer_id] [address] - Banned (#[i["id"]]) [text2num(i["global_ban"]) ? "globally" : "locally"]") //SKYRAT EDIT CHANGE - MULTISERVER
-=======
-				log_suspicious_login("Failed Login: [ckey] [computer_id] [address] - Banned (#[i["id"]])")
->>>>>>> eab953bc0ef (Failed logins should log the ckey, not the key (#74649))
+				log_suspicious_login("Failed Login: [ckey] [computer_id] [address] - Banned (#[i["id"]]) [text2num(i["global_ban"]) ? "globally" : "locally"]") //SKYRAT EDIT CHANGE - MULTISERVER
 				return list("reason"="Banned","desc"="[desc]")
 	if (admin)
 		if (GLOB.directory[ckey])
