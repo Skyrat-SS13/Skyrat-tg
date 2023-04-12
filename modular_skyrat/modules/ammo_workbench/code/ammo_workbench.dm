@@ -31,6 +31,9 @@
 	var/time_per_round = 20
 	/// at the time of writing: this does nothing. literally nothing
 	var/creation_efficiency = 1.6
+	/// can this print any round of any caliber given a correct ammo_box? (you varedit this at your own risk, especially if used in a player-facing context.)
+	/// does not force ammo to load in. just makes it able to print wacky ammotypes e.g. lionhunter 7.62, techshells
+	var/adminbus = FALSE
 
 /obj/machinery/ammo_workbench/unlocked
 	allowed_harmful = TRUE
@@ -126,10 +129,11 @@
 
 	for(var/casing as anything in allowed_ammo_types)
 		var/obj/item/ammo_casing/our_casing = casing
-		if(initial(our_casing.harmful) && !allowed_harmful)
-			continue
-		if(!(initial(our_casing.can_be_printed)))
-			continue
+		if(!adminbus)
+			if(initial(our_casing.harmful) && !allowed_harmful)
+				continue
+			if(!(initial(our_casing.can_be_printed)))
+				continue
 		data["available_rounds"] += list(list(
 			"name" = initial(our_casing.name),
 			"typepath" = our_casing
