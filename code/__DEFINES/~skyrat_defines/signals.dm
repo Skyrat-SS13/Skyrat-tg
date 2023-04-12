@@ -115,3 +115,9 @@
 #define COMSIG_PHYSICS_AUTOSTABALISE_CHECK "physics_autostabalise_check"
 	/// Return bitflag for enabled stabilisation.
 	#define COMPONENT_PHYSICS_AUTO_STABILISATION (1<<0)
+
+/// sent when a missile locks onto a target.
+#define COMSIG_MISSILE_LOCK "missile_lock"
+
+/// sent when a missile loses target lock on a target.
+#define COMSIG_MISSILE_LOCK_LOST "missile_lock_lost"

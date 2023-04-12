@@ -490,6 +490,18 @@ DEFINE_BITFIELD(turret_flags, list(
 					if(assess_perp(occupant) >= 4)
 						targets += mech
 
+	// SKYRAT EDIT ADDITION
+	for(var/obj/spacepod/iterating_spacepod as anything in GLOB.spacepods_list)
+		if((get_dist(iterating_spacepod, base) < scan_range) && can_see(base, iterating_spacepod, scan_range))
+			var/list/pilots = iterating_spacepod.get_all_occupants_by_type(SPACEPOD_RIDER_TYPE_PILOT)
+			if(!LAZYLEN(pilots))
+				return
+			for(var/mob/living/pilot as anything in pilots)
+				if(!in_faction(pilot)) //If there is a user and they're not in our faction
+					if(assess_perp(pilot) >= 4)
+						targets += iterating_spacepod
+	// SKYRAT EDIT END
+
 	if((turret_flags & TURRET_FLAG_SHOOT_ANOMALOUS) && GLOB.blobs.len && (mode == TURRET_LETHAL))
 		for(var/obj/structure/blob/B in view(scan_range, base))
 			targets += B

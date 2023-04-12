@@ -56,9 +56,10 @@
 	var/reset_thrust_dir = TRUE
 	/// Do we skip angular momentum calculations and just set the angle?
 	var/skip_angular_calculations = FALSE
+	var/ss_cycle = 1
 
 
-/datum/component/physics/Initialize(_forward_maxthrust, _backward_maxthrust, _side_maxthrust, _max_angular_acceleration, _max_velocity_x, _max_velocity_y, _thrust_check_required = TRUE, _stabilisation_check_required = TRUE, _reset_thrust_dir = TRUE, _skip_angular_calculations = FALSE)
+/datum/component/physics/Initialize(_forward_maxthrust, _backward_maxthrust, _side_maxthrust, _max_angular_acceleration, _max_velocity_x, _max_velocity_y, _thrust_check_required = TRUE, _stabilisation_check_required = TRUE, _reset_thrust_dir = TRUE, _skip_angular_calculations = FALSE, starting_angle)
 	// We can only control movable atoms.
 	if(!ismovable(parent))
 		return COMPONENT_INCOMPATIBLE
@@ -88,6 +89,10 @@
 
 	// We also handle our own movement
 	parent_atom.anchored = TRUE
+
+	if(starting_angle)
+		angle = starting_angle
+		update_sprite(0, 0, offset_x, offset_y)
 
 	START_PROCESSING(SSphysics, src)
 
@@ -124,6 +129,8 @@
 	if(!parent_atom)
 		STOP_PROCESSING(SSphysics, src)
 		return
+	var/turf/our_turf = get_turf(parent_atom)
+	our_turf.add_overlay(image(icon = 'modular_skyrat/modules/spacepods/icons/objects.dmi', icon_state = "turf_test"))
 	// Initialization of variables for position and angle calculations
 	var/last_offset_x = offset_x
 	var/last_offset_y = offset_y
@@ -142,8 +149,12 @@
 	velocity_x = clamp(velocity_x, -max_velocity_x, max_velocity_x)
 	velocity_y = clamp(velocity_y, -max_velocity_y, max_velocity_y)
 
+	// Update the offsets
 	offset_x += velocity_x * delta_time
 	offset_y += velocity_y * delta_time
+
+	// Update the offsets only if the velocity is greater than the threshold
+
 	// alright so now we reconcile the offsets with the in-world position.
 	while((offset_x > 0 && velocity_x > 0) || (offset_y > 0 && velocity_y > 0) || (offset_x < 0 && velocity_x < 0) || (offset_y < 0 && velocity_y < 0))
 		if(!parent_atom)
@@ -229,6 +240,19 @@
 		return
 	parent_atom.dir = NORTH
 
+	update_sprite(delta_time, last_angle, last_offset_x, last_offset_y)
+
+	SEND_SIGNAL(src, COMSIG_PHYSICS_UPDATE_MOVEMENT, angle, velocity_x, velocity_y, offset_x, offset_y, last_rotate, last_thrust_forward, last_thrust_right)
+
+	if(reset_thrust_dir)
+		desired_thrust_dir = 0
+
+/**
+ * update_sprite
+ *
+ * Updates the controlled atoms sprite according to specification of the current physics cycle.
+ */
+/datum/component/physics/proc/update_sprite(delta_time, last_angle, last_offset_x, last_offset_y)
 	var/matrix/mat_from = new()
 	var/matrix/mat_to = new()
 	if(icon_dir_num == 1)
@@ -236,8 +260,6 @@
 		mat_to.Turn(angle)
 	else
 		parent_atom.dir = angle2dir(angle)
-
-	SEND_SIGNAL(src, COMSIG_PHYSICS_UPDATE_MOVEMENT, angle, velocity_x, velocity_y, offset_x, offset_y, last_rotate, last_thrust_forward, last_thrust_right)
 
 	parent_atom.transform = mat_from
 	parent_atom.pixel_x = parent_atom.base_pixel_x + last_offset_x * 32
@@ -252,8 +274,7 @@
 		mob_client.pixel_y = last_offset_y * 32
 		animate(mob_client, pixel_x = offset_x * 32, pixel_y = offset_y * 32, time = delta_time * 10, flags = ANIMATION_END_NOW)
 
-	if(reset_thrust_dir)
-		desired_thrust_dir = 0
+
 
 // PHYSICS CALCULATION PROCS
 
@@ -345,13 +366,10 @@
 	// Calculate thrust components based on angle
 	var/total_thrust_x
 	var/total_thrust_y
-	var/forward_x = cos(90 - angle)
-	var/forward_y = sin(90 - angle)
+	var/forward_x = corrective_cos_calculation(90 - angle) // Byond returns a float error if 90/-90 is input into cos
+	var/forward_y = corrective_sin_calculation(90 - angle) // ditto, we handle it after
 	var/side_x = forward_y
 	var/side_y = -forward_x
-	last_thrust_forward = 0
-	last_thrust_right = 0
-
 
 	// Automatic stabilization of the atom
 	if(stabilisation_check_required && SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABALISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABILISATION)
@@ -451,3 +469,15 @@
 
 	SEND_SIGNAL(src, COMSIG_PHYSICS_PROCESSED_BUMP, bump_velocity, bumped_atom)
 
+/**
+ * BYOND returns a floating point error on certain trigonometric calculations, so we need to correct this.
+ *
+ * We use corrective value epsilon as a threshold.
+ */
+/datum/component/physics/proc/corrective_cos_calculation(angle)
+	var/cosigne_value = cos(angle)
+	return abs(cosigne_value) < TRIGONOMETRIC_EPSILON_THRESHOLD ? 0 : cosigne_value
+
+/datum/component/physics/proc/corrective_sin_calculation(angle)
+	var/sine_value = sin(angle)
+	return abs(sine_value) < TRIGONOMETRIC_EPSILON_THRESHOLD ? 0 : sine_value

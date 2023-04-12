@@ -336,3 +336,14 @@
 	var/obj/item/spacepod_equipment/weaponry/selected_weapon = get_weapon_in_slot(active_weapon_slot)
 	items += "Spacepod Weapon: [active_weapon_slot] ([selected_weapon ? selected_weapon.name : "Empty"])"
 	items += ""
+
+/**
+ * get_factions
+ *
+ * Returns a list of all pilot factions.
+ */
+/obj/spacepod/proc/get_factions()
+	var/list/factions = list()
+	for(var/mob/living/iterating_pilot as anything in get_all_occupants_by_type(SPACEPOD_RIDER_TYPE_PILOT))
+		LAZYADD(factions, iterating_pilot.faction)
+	return factions
