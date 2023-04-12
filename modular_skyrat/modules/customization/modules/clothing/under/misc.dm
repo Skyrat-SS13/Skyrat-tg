@@ -40,3 +40,10 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "doug_dimmadome"
 	supports_variations_flags = NONE
+
+/obj/item/clothing/under/pants/tactical
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts.dmi'
+	name = "tactical pants"
+	desc = "A pair of tactical pants, designed for military use."
+	icon_state = "tactical_pants"

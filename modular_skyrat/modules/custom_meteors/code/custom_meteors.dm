@@ -56,7 +56,7 @@
 /datum/round_event/meteor_wave/announce(fake)
 	priority_announce("Meteors have been detected on collision course with the station. The energy field generator is disabled or missing. First collision in approximately [start_when * 2] seconds. Ensure all sensitive areas and equipment are shielded.", "Meteor Alert", ANNOUNCER_METEORS)
 	if(wave_name == "threatening" || wave_name == "spooky")
-		event_minimum_security_level(SEC_LEVEL_ORANGE, TRUE, FALSE)
+		INVOKE_ASYNC(SSsecurity_level, TYPE_PROC_REF(/datum/controller/subsystem/security_level/, minimum_security_level), SEC_LEVEL_ORANGE, TRUE, FALSE)
 
 /datum/round_event/meteor_wave/tick()
 	if(ISMULTIPLE(activeFor, METEOR_TICKS_BETWEEN_WAVES))

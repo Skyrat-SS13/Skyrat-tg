@@ -28,6 +28,20 @@
 	for(var/i in 1 to 5)
 		new /mob/living/basic/mouse(.)
 
+/datum/supply_pack/critter/chinchilla
+	name = "Chinchilla Crate"
+	desc = "Contains four chinchillas. Dust not included."
+	cost = CARGO_CRATE_VALUE * 7
+	contains = list(
+		/mob/living/basic/pet/chinchilla,
+	)
+	crate_name = "chinchilla crate"
+
+/datum/supply_pack/critter/chinchilla/generate()
+	. = ..()
+	for(var/i in 1 to 3)
+		new /mob/living/basic/pet/chinchilla(.)
+
 /*
 *	MEDICAL
 */
@@ -262,12 +276,12 @@
 *	MISC
 */
 
-/datum/supply_pack/misc/medibeam //Moved to Misc so Medical can't order them for free through department consoles and break the economy.
-	name = "Medical Beam Gun"
-	desc = "Nanotrasen offers you, for an exorbatant fee, the ability to lease one of their ERTs favorite gadgets, the Medical Beam Gun"
+/datum/supply_pack/misc/speedbike //If you see this bought in game, its time to nerf a cargo exploit.
+	name = "Speedbike"
+	desc = "Put your shades on, saddle up, and ride off directly into the sun on this turbo deluxe space-cruising speedbike."
 	cost = 1000000 //Special case, we don't want to make this in terms of crates because having bikes be a million credits is the whole meme.
-	contains = list(/obj/item/gun/medbeam)
-	crate_name = "medical beamgun crate"
+	contains = list(/obj/vehicle/ridden/speedbike)
+	crate_name = "speedbike crate"
 
 /datum/supply_pack/misc/painting
 	name = "Advanced Art Supplies"
@@ -770,7 +784,7 @@
 /datum/supply_pack/goody/money_sense_nifsoft
 	name = "Automatic Appraisal NIFSoft"
 	desc = "Contains a single Automatic Appraisal NIFSoft uploader disk."
-	cost = CARGO_CRATE_VALUE * 2
+	cost = CARGO_CRATE_VALUE * 1.5
 	contains = list(
 		/obj/item/disk/nifsoft_uploader/money_sense,
 	)
@@ -778,7 +792,7 @@
 /datum/supply_pack/goody/shapeshifter_nifsoft
 	name = "Polymorph NIFSoft"
 	desc = "Contains a single Polymorph NIFSoft uploader disk."
-	cost = CARGO_CRATE_VALUE * 2
+	cost = CARGO_CRATE_VALUE * 1.5
 	contains = list(
 		/obj/item/disk/nifsoft_uploader/shapeshifter,
 	)
@@ -786,7 +800,7 @@
 /datum/supply_pack/goody/hivemind_nifsoft
 	name = "Hivemind NIFSoft"
 	desc = "Contains a single Hivemind NIFSoft uploader disk."
-	cost = CARGO_CRATE_VALUE * 2
+	cost = CARGO_CRATE_VALUE * 1.5
 	contains = list(
 		/obj/item/disk/nifsoft_uploader/hivemind,
 	)
@@ -794,7 +808,7 @@
 /datum/supply_pack/goody/summoner_nifsoft
 	name = "Grimoire Caeruleam NIFSoft"
 	desc = "Contains a single Grimoire Caeruleam NIFSoft uploader disk."
-	cost = CARGO_CRATE_VALUE * 1
+	cost = CARGO_CRATE_VALUE * 0.75
 	contains = list(
 		/obj/item/disk/nifsoft_uploader/summoner,
 	)

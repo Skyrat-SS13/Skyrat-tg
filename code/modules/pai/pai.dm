@@ -219,10 +219,9 @@
 		pai_card.set_personality(src)
 	forceMove(pai_card)
 	card = pai_card
-	addtimer(VARSET_CALLBACK(src, holochassis_ready, TRUE), HOLOCHASSIS_INIT_TIME)
+	addtimer(VARSET_WEAK_CALLBACK(src, holochassis_ready, TRUE), HOLOCHASSIS_INIT_TIME)
 	if(!holoform)
-		ADD_TRAIT(src, TRAIT_IMMOBILIZED, PAI_FOLDED)
-		ADD_TRAIT(src, TRAIT_HANDS_BLOCKED, PAI_FOLDED)
+		add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED), PAI_FOLDED)
 	desc = "A pAI hard-light holographics emitter. This one appears in the form of a [chassis]."
 
 	RegisterSignal(src, COMSIG_LIVING_CULT_SACRIFICED, PROC_REF(on_cult_sacrificed))

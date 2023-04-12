@@ -38,7 +38,6 @@
 		"conveyor_belt",
 		"conveyor_switch",
 		"custom_vendor_refill",
-		"design_disk",
 		"destructive_analyzer",
 		"destructive_scanner",
 		"desttagger",
@@ -85,6 +84,7 @@
 		"plastitanium",
 		"plastitaniumglass",
 		"plate",
+		"polarizer", // SKYRAT EDIT ADDITION - Polarized windows
 		"prox_sensor",
 		"radio_headset",
 		"rdconsole",
@@ -495,8 +495,10 @@
 		"monkey_recycler",
 		"oven",
 		"processor",
+		"range", // should be in a further node, probably
 		"reagentgrinder",
 		"smartfridge",
+		"stove",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4000)
 	discount_experiments = list(/datum/experiment/scanning/random/cytology = 3000) //Big discount to reinforce doing it.

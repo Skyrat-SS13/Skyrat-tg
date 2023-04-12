@@ -192,12 +192,7 @@
 
 	if(malfai && operating)
 		malfai.malf_picker.processing_time = clamp(malfai.malf_picker.processing_time - 10,0,1000)
-	if(area)
-		area.power_light = FALSE
-		area.power_equip = FALSE
-		area.power_environ = FALSE
-		area.power_change()
-		area.apc = null
+	disconnect_from_area()
 	QDEL_NULL(alarm_manager)
 	if(occupier)
 		malfvacate(TRUE)
@@ -207,8 +202,38 @@
 		QDEL_NULL(cell)
 	if(terminal)
 		disconnect_terminal()
+	return ..()
 
+/obj/machinery/power/apc/proc/assign_to_area(area/target_area = get_area(src))
+	if(area == target_area)
+		return
+
+	disconnect_from_area()
+	area = target_area
+	area.power_light = TRUE
+	area.power_equip = TRUE
+	area.power_environ = TRUE
+	area.power_change()
+	area.apc = src
+	auto_name = TRUE
+
+	update_appearance(UPDATE_NAME)
+
+/obj/machinery/power/apc/update_name(updates)
 	. = ..()
+	if(auto_name)
+		name = "\improper [get_area_name(area, TRUE)] APC"
+
+/obj/machinery/power/apc/proc/disconnect_from_area()
+	if(isnull(area))
+		return
+
+	area.power_light = FALSE
+	area.power_equip = FALSE
+	area.power_environ = FALSE
+	area.power_change()
+	area.apc = null
+	area = null
 
 /obj/machinery/power/apc/handle_atom_del(atom/deleting_atom)
 	if(deleting_atom == cell)
@@ -559,6 +584,18 @@
 		else // chargemode off
 			charging = APC_NOT_CHARGING
 			chargecount = 0
+
+		// SKYRAT ADDITION START - CLOCK CULT
+		if(integration_cog)
+			var/power_delta = clamp(cell.charge - 50, 0, 50)
+			GLOB.clock_power = min(round(GLOB.clock_power + (power_delta / 2.5)) , GLOB.max_clock_power) // Will continue to siphon even if full just so the APCs aren't completely silent about having an issue (since power will regularly be full)
+			cell.charge -= power_delta
+			add_load(power_delta)
+			charging = APC_NOT_CHARGING
+			chargecount = 0
+			if(cell.charge <= 50)
+				cell.charge = 0
+		// SKYRAT ADDITION END
 
 	else // no cell, switch everything off
 

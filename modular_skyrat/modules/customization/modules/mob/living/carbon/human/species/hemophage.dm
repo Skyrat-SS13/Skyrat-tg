@@ -55,6 +55,8 @@
 /// The ratio of reagents that get purged while a Hemophage vomits from trying to eat/drink something that their tumor doesn't like.
 #define HEMOPHAGE_VOMIT_PURGE_RATIO 0.95
 
+/// The rate at which blood metabolizes in a Hemophage's stomach subtype.
+#define BLOOD_METABOLIZATION_RATE (0.1 * REAGENTS_METABOLISM)
 
 /datum/species/hemophage
 	name = "Hemophage"
@@ -76,7 +78,9 @@
 		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_HUMANOID | MOB_ORGANIC
-	mutant_bodyparts = list("wings" = "None")
+	default_mutant_bodyparts = list(
+		"legs" = "Normal Legs"
+	)
 	exotic_bloodtype = "U"
 	use_skintones = TRUE
 	mutantheart = /obj/item/organ/internal/heart/hemophage
@@ -120,7 +124,7 @@
 	if(tumor_status == PULSATING_TUMOR_MISSING)
 		var/static/list/tumor_reliant_organ_slots = list(ORGAN_SLOT_LIVER, ORGAN_SLOT_STOMACH)
 		for(var/organ_slot in tumor_reliant_organ_slots)
-			var/obj/item/organ/affected_organ = hemophage.getorganslot(organ_slot)
+			var/obj/item/organ/affected_organ = hemophage.get_organ_slot(organ_slot)
 			if(!affected_organ || !(affected_organ.organ_flags & ORGAN_TUMOR_CORRUPTED))
 				continue
 
@@ -470,6 +474,12 @@
 	body.vomit(lost_nutrition = 0, stun = FALSE, distance = 1, force = TRUE, purge_ratio = HEMOPHAGE_VOMIT_PURGE_RATIO)
 	return ..()
 
+/obj/item/organ/internal/stomach/hemophage/on_life(delta_time, times_fired)
+	var/datum/reagent/blood/blood = reagents.get_reagent(/datum/reagent/blood)
+	if(blood)
+		blood.metabolization_rate = BLOOD_METABOLIZATION_RATE
+	..()
+
 
 /obj/item/organ/internal/tongue/hemophage
 	name = "corrupted tongue"
@@ -616,7 +626,7 @@
 // We need to override it here because we changed their vampire heart with an Hemophage heart
 /mob/living/carbon/get_status_tab_items()
 	. = ..()
-	var/obj/item/organ/internal/heart/hemophage/tumor_heart = getorgan(/obj/item/organ/internal/heart/hemophage)
+	var/obj/item/organ/internal/heart/hemophage/tumor_heart = get_organ_by_type(/obj/item/organ/internal/heart/hemophage)
 	if(tumor_heart)
 		. += "Current blood level: [blood_volume]/[BLOOD_VOLUME_MAXIMUM]"
 
@@ -689,7 +699,7 @@
 	if(!linked_alert)
 		return
 
-	var/obj/item/organ/internal/heart/hemophage/tumor_heart = owner.getorgan(/obj/item/organ/internal/heart/hemophage)
+	var/obj/item/organ/internal/heart/hemophage/tumor_heart = owner.get_organ_by_type(/obj/item/organ/internal/heart/hemophage)
 	if(tumor_heart)
 		var/old_layer = tumor_heart.layer
 		var/old_plane = tumor_heart.plane
@@ -766,3 +776,5 @@
 #undef HEMOPHAGE_VOMIT_PURGE_RATIO
 #undef TUMOR_DISLIKED_FOOD_DISGUST
 #undef MINIMUM_BLOOD_REGENING_REAGENT_RATIO
+
+#undef BLOOD_METABOLIZATION_RATE

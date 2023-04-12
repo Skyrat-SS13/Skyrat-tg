@@ -44,7 +44,7 @@
 
 /// Returns true if the human has an accessible penis for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/carbon/human/proc/has_penis(required_state = REQUIRE_GENITAL_ANY)
-	var/obj/item/organ/external/genital/genital = getorganslot(ORGAN_SLOT_PENIS)
+	var/obj/item/organ/external/genital/genital = get_organ_slot(ORGAN_SLOT_PENIS)
 	if(!genital)
 		return FALSE
 
@@ -60,7 +60,7 @@
 
 /// Returns true if the human has a accessible balls for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/carbon/human/proc/has_balls(required_state = REQUIRE_GENITAL_ANY)
-	var/obj/item/organ/external/genital/genital = getorganslot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/external/genital/genital = get_organ_slot(ORGAN_SLOT_TESTICLES)
 	if(!genital)
 		return FALSE
 
@@ -76,7 +76,7 @@
 
 /// Returns true if the human has an accessible vagina for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/carbon/human/proc/has_vagina(required_state = REQUIRE_GENITAL_ANY)
-	var/obj/item/organ/external/genital/genital = getorganslot(ORGAN_SLOT_VAGINA)
+	var/obj/item/organ/external/genital/genital = get_organ_slot(ORGAN_SLOT_VAGINA)
 	if(!genital)
 		return FALSE
 
@@ -92,7 +92,7 @@
 
 /// Returns true if the human has a accessible breasts for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/carbon/human/proc/has_breasts(required_state = REQUIRE_GENITAL_ANY)
-	var/obj/item/organ/external/genital/genital = getorganslot(ORGAN_SLOT_BREASTS)
+	var/obj/item/organ/external/genital/genital = get_organ_slot(ORGAN_SLOT_BREASTS)
 	if(!genital)
 		return FALSE
 
@@ -110,7 +110,7 @@
 /mob/living/carbon/human/proc/has_anus(required_state = REQUIRE_GENITAL_ANY)
 	if(issilicon(src))
 		return TRUE
-	var/obj/item/organ/external/genital/genital = getorganslot(ORGAN_SLOT_ANUS)
+	var/obj/item/organ/external/genital/genital = get_organ_slot(ORGAN_SLOT_ANUS)
 	if(!genital)
 		return FALSE
 
@@ -185,7 +185,7 @@
 
 /// Returns true if the human has a accessible ears for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/carbon/human/proc/has_ears(required_state = REQUIRE_GENITAL_ANY)
-	var/obj/item/organ/genital = getorganslot(ORGAN_SLOT_EARS)
+	var/obj/item/organ/genital = get_organ_slot(ORGAN_SLOT_EARS)
 	if(!genital)
 		return FALSE
 
@@ -201,7 +201,7 @@
 
 /// Returns true if the human has accessible eyes for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/carbon/human/proc/has_eyes(required_state = REQUIRE_GENITAL_ANY)
-	var/obj/item/organ/genital = getorganslot(ORGAN_SLOT_EYES)
+	var/obj/item/organ/genital = get_organ_slot(ORGAN_SLOT_EYES)
 	if(!genital)
 		return FALSE
 

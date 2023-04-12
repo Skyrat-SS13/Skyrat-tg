@@ -173,7 +173,6 @@ SUBSYSTEM_DEF(garbage)
 			continue
 
 		var/queued_at_time = L[GC_QUEUE_ITEM_QUEUE_TIME]
-		var/GCd_at_time = L[GC_QUEUE_ITEM_GCD_DESTROYED]
 		if(queued_at_time > cut_off_time)
 			break // Everything else is newer, skip them
 		count++
@@ -181,6 +180,8 @@ SUBSYSTEM_DEF(garbage)
 #ifdef EXPERIMENT_515_QDEL_HARD_REFERENCE
 		var/datum/D = L[GC_QUEUE_ITEM_REF]
 #else
+		var/GCd_at_time = L[GC_QUEUE_ITEM_GCD_DESTROYED]
+
 		var/refID = L[GC_QUEUE_ITEM_REF]
 		var/datum/D
 		D = locate(refID)
@@ -277,7 +278,7 @@ SUBSYSTEM_DEF(garbage)
 #endif
 	if (D.gc_destroyed <= 0)
 		D.gc_destroyed = queue_time
-	
+
 	var/list/queue = queues[level]
 
 	queue[++queue.len] = list(queue_time, refid, D.gc_destroyed) // not += for byond reasons

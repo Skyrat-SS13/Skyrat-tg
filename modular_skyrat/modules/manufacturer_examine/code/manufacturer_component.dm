@@ -51,3 +51,5 @@
 			examine_list += "<br>It has <b>[span_abductor("✌︎︎♌︎︎♎︎︎◆︎︎♍︎︎⧫︎︎❄︎♏︎♍︎♒︎")]</b> engraved into the photon accelerator."
 		if(COMPANY_REMOVED)
 			examine_list += "<br>It has had <b>[span_grey("all identifying marks scrubbed off")].</b>"
+		if(COMPANY_TKACH)
+			examine_list += "<br>It has <b>[span_robot("Tkach Design Bureau")] stamped onto the reciever.</b>"
