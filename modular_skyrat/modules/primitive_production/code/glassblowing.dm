@@ -83,10 +83,22 @@
 
 	. = ..()
 
+	try_burn_user(user)
+
+/**
+ * Tries to burn the user if the glass is still molten hot.
+ *
+ * Arguments:
+ * * mob/living/user - user to burn
+ */
+/obj/item/glassblowing/molten_glass/proc/try_burn_user(mob/living/user)
 	if(!COOLDOWN_FINISHED(src, remaining_heat))
 		to_chat(user, span_warning("You burn your hands trying to pick up [src]!"))
-		user.adjustFireLoss(15)
+		user.emote("scream")
 		user.dropItemToGround(src)
+		var/obj/item/bodypart/affecting = user.get_active_hand()
+		return affecting?.receive_damage(0, 15, wound_bonus = CANT_WOUND)
+		user.investigate_log("was burned their hand on [src] for [15] at [AREACOORD(user)]", INVESTIGATE_CRAFTING)
 
 /obj/item/glassblowing/blowing_rod
 	name = "blowing rod"
@@ -291,6 +303,7 @@
 
 	in_use = FALSE
 	user.put_in_hands(glass)
+	glass.try_burn_user(user)
 	glass_ref = null
 	icon_state = "blow_pipe_empty"
 

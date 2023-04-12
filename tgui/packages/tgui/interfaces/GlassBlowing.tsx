@@ -42,8 +42,26 @@ export const GlassBlowing = (props, context) => {
           title={glass && glass.timeLeft ? 'Molten Glass' : 'Cooled Glass'}
           buttons={
             <Button
-              icon={glass && glass.isFinished ? 'check' : 'arrow-right'}
-              color={glass && glass.isFinished ? 'good' : 'red'}
+              icon={
+                glass && glass.isFinished
+                  ? 'check'
+                  : glass && glass.timeLeft
+                    ? 'triangle-exclamation'
+                    : 'arrow-right'
+              }
+              color={
+                glass && glass.isFinished
+                  ? 'good'
+                  : glass && glass.timeLeft
+                    ? 'red'
+                    : 'default'
+              }
+              tooltipPosition="bottom"
+              tooltip={
+                glass && glass.timeLeft
+                  ? 'You may want to think twice about touching this right now...'
+                  : 'It has cooled and is safe to handle.'
+              }
               content={glass && glass.isFinished ? 'Complete Craft' : 'Remove'}
               disabled={!glass || inUse}
               onClick={() => act('Remove')}
