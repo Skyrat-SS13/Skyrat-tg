@@ -427,7 +427,7 @@
 
 	START_PROCESSING(SSobj, src)
 
-/obj/structure/biohazard_blob/structure/conditioner/process(delta_time)
+/obj/structure/biohazard_blob/structure/conditioner/process(seconds_per_tick)
 	if(!happy_atmos)
 		return
 	if(puff_delay > world.time)

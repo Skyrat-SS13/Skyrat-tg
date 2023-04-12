@@ -115,9 +115,9 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 	playsound(src, 'sound/items/screwdriver.ogg', 70, TRUE)
 	balloon_alert(user, "attachments removed")
 
-/obj/item/stock_parts/cell/microfusion/process(delta_time)
+/obj/item/stock_parts/cell/microfusion/process(seconds_per_tick)
 	for(var/obj/item/microfusion_cell_attachment/microfusion_cell_attachment as anything in attachments)
-		microfusion_cell_attachment.process_attachment(src, delta_time)
+		microfusion_cell_attachment.process_attachment(src, seconds_per_tick)
 
 /obj/item/stock_parts/cell/microfusion/examine(mob/user)
 	. = ..()
