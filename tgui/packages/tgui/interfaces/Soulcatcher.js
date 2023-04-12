@@ -37,19 +37,6 @@ export const Soulcatcher = (props, context) => {
             <BlockQuote> {room.description}</BlockQuote>
             <Box>
               <Button
-                icon="bullhorn"
-                tooltip="Sends a message to everyone in the room, without sending a name."
-                onClick={() =>
-                  act('send_message', {
-                    room_ref: room.reference,
-                    emote: false,
-                    narration: true,
-                  })
-                }>
-                Announce
-              </Button>
-
-              <Button
                 icon="scroll"
                 tooltip="Performs an emote, without sending a name."
                 onClick={() =>

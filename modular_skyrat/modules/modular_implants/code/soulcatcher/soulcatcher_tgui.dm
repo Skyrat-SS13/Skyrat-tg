@@ -1,8 +1,3 @@
-//REMOVE THIS LATER
-/datum/component/soulcatcher/ui_state(mob/user)
-	return GLOB.conscious_state
-//REMOVE THIS LATER - END
-
 /datum/component/soulcatcher/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(usr, src, ui)
 
