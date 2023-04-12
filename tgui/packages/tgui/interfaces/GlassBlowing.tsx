@@ -60,34 +60,34 @@ export const GlassBlowing = (props, context) => {
               <Stack.Item>
                 <Button
                   content="Plate"
-                  disabled={!glass || inUse}
+                  disabled={inUse}
                   onClick={() => act('Plate')}
                 />
                 <Button
                   content="Bowl"
                   tooltipPosition="bottom"
-                  disabled={!glass || inUse}
+                  disabled={inUse}
                   onClick={() => act('Bowl')}
                 />
                 <Button
                   content="Globe"
-                  disabled={!glass || inUse}
+                  disabled={inUse}
                   onClick={() => act('Globe')}
                 />
                 <Button
                   content="Cup"
-                  disabled={!glass || inUse}
+                  disabled={inUse}
                   onClick={() => act('Cup')}
                 />
                 <Button
                   content="Lens"
                   tooltipPosition="bottom"
-                  disabled={!glass || inUse}
+                  disabled={inUse}
                   onClick={() => act('Lens')}
                 />
                 <Button
                   content="Bottle"
-                  disabled={!glass || inUse}
+                  disabled={inUse}
                   onClick={() => act('Bottle')}
                 />
               </Stack.Item>
@@ -113,7 +113,7 @@ export const GlassBlowing = (props, context) => {
                           content="Blow"
                           icon="fire"
                           color="orange"
-                          disabled={!glass || inUse || !glass.timeLeft}
+                          disabled={inUse || !glass.timeLeft}
                           tooltipPosition="bottom"
                           tooltip={
                             glass.timeLeft === 0
@@ -131,7 +131,7 @@ export const GlassBlowing = (props, context) => {
                           content="Spin"
                           icon="fire"
                           color="orange"
-                          disabled={!glass || inUse || !glass.timeLeft}
+                          disabled={inUse || !glass.timeLeft}
                           tooltipPosition="bottom"
                           tooltip={
                             glass.timeLeft === 0
@@ -188,9 +188,9 @@ export const GlassBlowing = (props, context) => {
                 <Flex.Item>
                   <Button
                     icon="times"
-                    color="orange"
+                    color={glass.timeLeft ? 'orange' : 'default'}
                     content="Cancel craft"
-                    disabled={!glass || inUse}
+                    disabled={inUse}
                     onClick={() => act('Cancel')}
                   />
                 </Flex.Item>
