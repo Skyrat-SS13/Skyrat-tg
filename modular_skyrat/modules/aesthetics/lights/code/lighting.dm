@@ -122,6 +122,9 @@
 
 /obj/item/light/tube
 	icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting.dmi'
+	lefthand_file = 'modular_skyrat/modules/aesthetics/lights/icons/lights_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/aesthetics/lights/icons/lights_righthand.dmi'
+	
 
 /obj/machinery/light/multitool_act(mob/living/user, obj/item/multitool)
 	if(!constant_flickering)
