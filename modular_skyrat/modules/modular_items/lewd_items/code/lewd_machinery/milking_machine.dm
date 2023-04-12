@@ -385,7 +385,7 @@
 	if(!target_container || current_selected_organ.reagents.total_volume <= 0)
 		return FALSE
 
-	current_selected_organ.transfer_internal_fluid(target_container.reagents, fluid_retrive_amount[current_mode] * fluid_multiplier * delta_time)
+	current_selected_organ.transfer_internal_fluid(target_container.reagents, fluid_retrive_amount[current_mode] * fluid_multiplier * seconds_per_tick)
 	return TRUE
 
 // Handling the process of the impact of the machine on the organs of the mob
