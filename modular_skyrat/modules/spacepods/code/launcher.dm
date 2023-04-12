@@ -40,7 +40,7 @@
 	. = ..()
 	. += turret_overlay
 
-/obj/structure/launcher/process(delta_time)
+/obj/structure/launcher/process(seconds_per_tick)
 	if(!target)
 		find_target(detection_range)
 	else

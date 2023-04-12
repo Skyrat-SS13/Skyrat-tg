@@ -132,7 +132,7 @@
 	layer = WALL_OBJ_LAYER
 	duration = 5
 
-/datum/component/physics/process(delta_time)
+/datum/component/physics/process(seconds_per_tick)
 	if(!parent_atom)
 		STOP_PROCESSING(SSphysics, src)
 		return
@@ -144,19 +144,19 @@
 		angle = desired_angle
 		last_angle = desired_angle
 	else
-		last_angle = angular_calculations(delta_time)
+		last_angle = angular_calculations(seconds_per_tick)
 
-	drag_calculations(delta_time)
+	drag_calculations(seconds_per_tick)
 
-	thrust_calculations(delta_time)
+	thrust_calculations(seconds_per_tick)
 
 	// velocity limiters
 	velocity_x = clamp(velocity_x, -max_velocity_x, max_velocity_x)
 	velocity_y = clamp(velocity_y, -max_velocity_y, max_velocity_y)
 
 	// Update the offsets
-	offset_x += (last_failed_dirs & EAST && velocity_x > 0) ? 0 : ((last_failed_dirs & WEST && velocity_x < 0) ? 0 : velocity_x * delta_time)
-	offset_y += (last_failed_dirs & NORTH && velocity_y > 0) ? 0 : ((last_failed_dirs & SOUTH && velocity_y < 0) ? 0 : velocity_y * delta_time)
+	offset_x += (last_failed_dirs & EAST && velocity_x > 0) ? 0 : ((last_failed_dirs & WEST && velocity_x < 0) ? 0 : velocity_x * seconds_per_tick)
+	offset_y += (last_failed_dirs & NORTH && velocity_y > 0) ? 0 : ((last_failed_dirs & SOUTH && velocity_y < 0) ? 0 : velocity_y * seconds_per_tick)
 
 	last_failed_dirs = NONE
 
@@ -223,7 +223,7 @@
 
 	parent_atom.dir = NORTH
 
-	update_sprite(delta_time, last_angle, last_offset_x, last_offset_y)
+	update_sprite(seconds_per_tick, last_angle, last_offset_x, last_offset_y)
 
 	SEND_SIGNAL(src, COMSIG_PHYSICS_UPDATE_MOVEMENT, angle, velocity_x, velocity_y, offset_x, offset_y, last_rotate, last_thrust_forward, last_thrust_right)
 
@@ -237,7 +237,7 @@
  *
  * Updates the controlled atoms sprite according to specification of the current physics cycle.
  */
-/datum/component/physics/proc/update_sprite(delta_time, last_angle, last_offset_x, last_offset_y)
+/datum/component/physics/proc/update_sprite(seconds_per_tick, last_angle, last_offset_x, last_offset_y)
 	var/matrix/mat_from = new()
 	var/matrix/mat_to = new()
 	if(icon_dir_num == 1)
@@ -249,7 +249,7 @@
 	parent_atom.transform = mat_from
 	parent_atom.pixel_x = parent_atom.base_pixel_x + last_offset_x * 32
 	parent_atom.pixel_y = parent_atom.base_pixel_y + last_offset_y * 32
-	animate(parent_atom, transform = mat_to, pixel_x = parent_atom.base_pixel_x + offset_x * 32, pixel_y = parent_atom.base_pixel_y + offset_y * 32, time = delta_time * 10, flags = ANIMATION_END_NOW)
+	animate(parent_atom, transform = mat_to, pixel_x = parent_atom.base_pixel_x + offset_x * 32, pixel_y = parent_atom.base_pixel_y + offset_y * 32, time = seconds_per_tick * 10, flags = ANIMATION_END_NOW)
 	var/list/possible_smooth_viewers = parent_atom.contents | parent_atom | parent_atom.get_all_orbiters()
 	for(var/mob/iterating_mob in possible_smooth_viewers)
 		var/client/mob_client = iterating_mob.client
@@ -257,11 +257,11 @@
 			continue
 		mob_client.pixel_x = last_offset_x * 32
 		mob_client.pixel_y = last_offset_y * 32
-		animate(mob_client, pixel_x = offset_x * 32, pixel_y = offset_y * 32, time = delta_time * 10, flags = ANIMATION_END_NOW)
+		animate(mob_client, pixel_x = offset_x * 32, pixel_y = offset_y * 32, time = seconds_per_tick * 10, flags = ANIMATION_END_NOW)
 
 // PHYSICS CALCULATION PROCS
 
-/datum/component/physics/proc/angular_calculations(delta_time)
+/datum/component/physics/proc/angular_calculations(seconds_per_tick)
 	var/last_angle = angle
 	var/desired_angular_velocity = 0
 	// Calculate desired angular velocity based on desired angle
@@ -274,26 +274,26 @@
 			angle += 360
 			last_angle += 360
 
-		// Calculate desired angular velocity based on the desired angle and delta_time
-		if(abs(desired_angle - angle) < (max_angular_acceleration * delta_time))
-			desired_angular_velocity = (desired_angle - angle) / delta_time
+		// Calculate desired angular velocity based on the desired angle and seconds_per_tick
+		if(abs(desired_angle - angle) < (max_angular_acceleration * seconds_per_tick))
+			desired_angular_velocity = (desired_angle - angle) / seconds_per_tick
 		else if(desired_angle > angle)
 			desired_angular_velocity = 2 * sqrt((desired_angle - angle) * max_angular_acceleration * 0.25)
 		else
 			desired_angular_velocity = -2 * sqrt((angle - desired_angle) * max_angular_acceleration * 0.25)
 
 	// Adjust angular velocity
-	var/angular_velocity_adjustment = clamp(desired_angular_velocity - angular_velocity, -max_angular_acceleration * delta_time, max_angular_acceleration * delta_time)
+	var/angular_velocity_adjustment = clamp(desired_angular_velocity - angular_velocity, -max_angular_acceleration * seconds_per_tick, max_angular_acceleration * seconds_per_tick)
 	if(angular_velocity_adjustment)
-		last_rotate = angular_velocity_adjustment / delta_time
+		last_rotate = angular_velocity_adjustment / seconds_per_tick
 		angular_velocity += angular_velocity_adjustment
 	else
 		last_rotate = 0
-	angle += angular_velocity * delta_time
+	angle += angular_velocity * seconds_per_tick
 
 	return last_angle
 
-/datum/component/physics/proc/drag_calculations(delta_time)
+/datum/component/physics/proc/drag_calculations(seconds_per_tick)
 	// Calculate the magnitude of the atom's velocity
 	var/velocity_mag = sqrt(velocity_x * velocity_x + velocity_y * velocity_y)
 
@@ -311,11 +311,11 @@
 			drag += 0.001
 
 			// Check if the atom is floating (not auto-stabilized) and has a significant velocity
-			if(!floating && iterating_turf.has_gravity() && !(SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABALISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABILISATION) && velocity_mag > 0.1)
+			if(!floating && iterating_turf.has_gravity() && !(SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABILISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABILISATION) && velocity_mag > 0.1)
 				floating = TRUE // Flying on the station drains the battery
 
 			// Apply drag based on gravity and auto-stabilization
-			if((!floating && iterating_turf.has_gravity()) || SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABALISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABILISATION)
+			if((!floating && iterating_turf.has_gravity()) || SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABILISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABILISATION)
 				// Adjust drag based on the mining level (less gravity on lavaland)
 				drag += is_mining_level(parent_atom.z) ? 0.1 : 0.5
 
@@ -333,19 +333,19 @@
 
 		// Limit the drag at high velocities
 		if(velocity_mag > 20)
-			drag = max(drag, (velocity_mag - 20) / delta_time)
+			drag = max(drag, (velocity_mag - 20) / seconds_per_tick)
 
 		// Apply the calculated drag to the atom's velocity and angular velocity
 		if(drag)
 			if(velocity_mag)
-				var/drag_factor = 1 - clamp(drag * delta_time / velocity_mag, 0, 1)
+				var/drag_factor = 1 - clamp(drag * seconds_per_tick / velocity_mag, 0, 1)
 				velocity_x *= drag_factor
 				velocity_y *= drag_factor
 			if(angular_velocity != 0)
-				var/drag_factor_spin = 1 - clamp(drag * 30 * delta_time / abs(angular_velocity), 0, 1)
+				var/drag_factor_spin = 1 - clamp(drag * 30 * seconds_per_tick / abs(angular_velocity), 0, 1)
 				angular_velocity *= drag_factor_spin
 
-/datum/component/physics/proc/thrust_calculations(delta_time)
+/datum/component/physics/proc/thrust_calculations(seconds_per_tick)
 	// Calculate thrust components based on angle
 	var/total_thrust_x
 	var/total_thrust_y
@@ -357,10 +357,10 @@
 	last_thrust_right = 0
 
 	// Automatic stabilization of the atom
-	if(stabilisation_check_required && SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABALISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABILISATION)
-		// Calculate braking thrust based on current velocity and delta_time
-		var/braking_thrust_forward = -((forward_x * velocity_x) + (forward_y * velocity_y)) / delta_time
-		var/braking_thrust_right = -((side_x * velocity_x) + (side_y * velocity_y)) / delta_time
+	if(stabilisation_check_required && SEND_SIGNAL(src, COMSIG_PHYSICS_AUTOSTABILISE_CHECK) & COMPONENT_PHYSICS_AUTO_STABILISATION)
+		// Calculate braking thrust based on current velocity and seconds_per_tick
+		var/braking_thrust_forward = -((forward_x * velocity_x) + (forward_y * velocity_y)) / seconds_per_tick
+		var/braking_thrust_right = -((side_x * velocity_x) + (side_y * velocity_y)) / seconds_per_tick
 
 		// Clamp braking thrust within acceptable limits
 		braking_thrust_forward = clamp(braking_thrust_forward, -backward_maxthrust, forward_maxthrust)
@@ -392,13 +392,13 @@
 		total_thrust_y -= side_y * side_maxthrust
 		last_thrust_right = -side_maxthrust
 
-	if(thrust_check_required && !(SEND_SIGNAL(src, COMSIG_PHYSICS_THRUST_CHECK, total_thrust_x, total_thrust_y, desired_thrust_dir, delta_time) & COMPONENT_PHYSICS_THRUST))
+	if(thrust_check_required && !(SEND_SIGNAL(src, COMSIG_PHYSICS_THRUST_CHECK, total_thrust_x, total_thrust_y, desired_thrust_dir, seconds_per_tick) & COMPONENT_PHYSICS_THRUST))
 		last_thrust_right = 0
 		last_thrust_forward = 0
 	else
 		// Update the velocities
-		velocity_x += total_thrust_x * delta_time
-		velocity_y += total_thrust_y * delta_time
+		velocity_x += total_thrust_x * seconds_per_tick
+		velocity_y += total_thrust_y * seconds_per_tick
 
 // Due to the fact spacemove exists and we move ourselves, we must override this.
 /datum/component/physics/proc/spacemove_react(mob/user, movement_dir, continuous_move)

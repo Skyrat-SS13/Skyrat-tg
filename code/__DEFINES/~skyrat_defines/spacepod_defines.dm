@@ -21,8 +21,6 @@
 #define SPACEPOD_SLOT_LIGHT "light"
 #define SPACEPOD_SLOT_THRUSTER "thruster"
 
-#define SPACEPOD_LAYER 3.9
-
 #define SPACEPOD_WEAPON_SLOT_LEFT "Left Weapon Slot"
 #define SPACEPOD_WEAPON_SLOT_RIGHT "Right Weapon Slot"
 

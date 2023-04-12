@@ -156,7 +156,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	RegisterSignal(physics_component, COMSIG_PHYSICS_UPDATE_MOVEMENT, PROC_REF(physics_component_update_movement))
 	RegisterSignal(physics_component, COMSIG_PHYSICS_PROCESSED_BUMP, PROC_REF(process_physics_bump))
 	RegisterSignal(physics_component, COMSIG_PHYSICS_THRUST_CHECK, PROC_REF(check_thrust))
-	RegisterSignal(physics_component, COMSIG_PHYSICS_AUTOSTABALISE_CHECK, PROC_REF(check_autostabilisation))
+	RegisterSignal(physics_component, COMSIG_PHYSICS_AUTOSTABILISE_CHECK, PROC_REF(check_autostabilisation))
 	active_weapon_slot = pick(weapon_slots)
 	GLOB.spacepods_list += src
 	START_PROCESSING(SSobj, src)
@@ -193,7 +193,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
  *
  * Processes the atmospherics of the pod.
  */
-/obj/spacepod/process(delta_time)
+/obj/spacepod/process(seconds_per_tick)
 	// Cool the cabin air to T20C if it's not empty
 	if(cabin_air && cabin_air.return_volume() > 0)
 		var/temperature_delta = cabin_air.return_temperature() - T20C
@@ -741,7 +741,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
  *
  * checks if the thrusters can be fired.
  */
-/obj/spacepod/proc/check_thrust(datum/component/physics/source_component, total_x, total_y, desired_thrust_dir, delta_time)
+/obj/spacepod/proc/check_thrust(datum/component/physics/source_component, total_x, total_y, desired_thrust_dir, seconds_per_tick)
 	SIGNAL_HANDLER
 	if(!cell)
 		if(desired_thrust_dir)
@@ -758,7 +758,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	if(desired_thrust_dir && brakes && !check_has_equipment(/obj/item/spacepod_equipment/rcs_upgrade))
 		to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("Brakes are enabled!"))
 		return FALSE
-	if(!cell.use(10 * sqrt((total_x * total_x) + (total_y * total_y)) * delta_time))
+	if(!cell.use(10 * sqrt((total_x * total_x) + (total_y * total_y)) * seconds_per_tick))
 		if(desired_thrust_dir)
 			to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("Insufficient power!"))
 		return FALSE
