@@ -13,7 +13,7 @@
 	new /obj/item/circuitboard/machine/techfab/department/cargo(src)
 	new /obj/item/storage/photo_album/qm(src)
 	new /obj/item/circuitboard/machine/ore_silo(src)
-	new /obj/item/gun/ballistic/rifle/boltaction/brand_new/quartermaster(src) // SKYRAT EDIT - The QM's 'special' head item. It spawns loaded, but you have to find more ammo if you run out and get ready to manually load rounds in!
+	new /obj/item/gun/ballistic/rifle/boltaction/quartermaster(src) // SKYRAT EDIT - The QM's 'special' head item. It spawns loaded, but you have to find more ammo if you run out and get ready to manually load rounds in!
 	new /obj/item/cargo_teleporter(src) // SKYRAT EDIT - Adds a cargo teleporter to QM locker, so they can intice others to research it
 	new /obj/item/clothing/glasses/hud/gun_permit/sunglasses(src) //SKYRAT EDIT - GUN CARGO
 	new /obj/item/storage/bag/garment/quartermaster(src)

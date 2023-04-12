@@ -336,7 +336,7 @@
 	return TRUE
 
 // Machine Workflow Processor
-/obj/structure/chair/milking_machine/process(delta_time)
+/obj/structure/chair/milking_machine/process(seconds_per_tick)
 	if(!current_mob || !current_selected_organ || current_mode == MILKING_PUMP_MODE_OFF)
 		if(pump_state != MILKING_PUMP_STATE_OFF)
 			pump_state = MILKING_PUMP_STATE_OFF
@@ -350,16 +350,19 @@
 		update_all_visuals()
 		return FALSE
 
+
 	if(pump_state != MILKING_PUMP_STATE_ON)
 		pump_state = MILKING_PUMP_STATE_ON
 
-	retrive_liquids_from_selected_organ(delta_time)
-	increase_current_mob_arousal(delta_time)
+	retrive_liquids_from_selected_organ(seconds_per_tick)
+	increase_current_mob_arousal(seconds_per_tick)
+
 	update_all_visuals()
 	return TRUE
 
 // Liquid intake handler
-/obj/structure/chair/milking_machine/proc/retrive_liquids_from_selected_organ(delta_time)
+
+/obj/structure/chair/milking_machine/proc/retrive_liquids_from_selected_organ(seconds_per_tick)
 	if(!current_mob || !current_selected_organ)
 		return FALSE
 
@@ -385,16 +388,15 @@
 	current_selected_organ.transfer_internal_fluid(target_container.reagents, fluid_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 	return TRUE
 
-
 // Handling the process of the impact of the machine on the organs of the mob
-/obj/structure/chair/milking_machine/proc/increase_current_mob_arousal(delta_time)
+/obj/structure/chair/milking_machine/proc/increase_current_mob_arousal(seconds_per_tick)
 	var/static/list/arousal_amounts = list("off" = 0, "low" = 1, "medium" = 2, "hard" = 3)
 	var/static/list/pleasure_amounts = list("off" = 0, "low" = 0.2, "medium" = 1, "hard" = 1.5)
 	var/static/list/pain_amounts = list("off" = 0, "low" = 0, "medium" = 0.2, "hard" = 0.5)
 
-	current_mob.adjust_arousal(arousal_amounts[current_mode] * delta_time)
-	current_mob.adjust_pleasure(pleasure_amounts[current_mode] * delta_time)
-	current_mob.adjust_pain(pain_amounts[current_mode] * delta_time)
+	current_mob.adjust_arousal(arousal_amounts[current_mode] * seconds_per_tick)
+	current_mob.adjust_pleasure(pleasure_amounts[current_mode] * seconds_per_tick)
+	current_mob.adjust_pain(pain_amounts[current_mode] * seconds_per_tick)
 
 /obj/structure/chair/milking_machine/CtrlShiftClick(mob/user)
 	. = ..()

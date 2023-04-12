@@ -537,7 +537,7 @@
 	send_message("CALIBRATING DEFENSIVE WEAPON SELECTION SYSTEMS...")
 	timer_id = addtimer(CALLBACK(src, PROC_REF(weaponselect)), 3 SECONDS, TIMER_STOPPABLE)
 
-/obj/item/clothing/suit/space/hev_suit/process(delta_time)
+/obj/item/clothing/suit/space/hev_suit/process(seconds_per_tick)
 	if(!activated)
 		return
 	if(current_user.blood_volume < BLOOD_VOLUME_OKAY)

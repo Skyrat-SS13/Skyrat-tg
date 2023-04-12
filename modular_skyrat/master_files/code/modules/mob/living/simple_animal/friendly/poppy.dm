@@ -81,7 +81,7 @@
 		set_light_on(TRUE)
 	regenerate_icons()
 
-/mob/living/simple_animal/pet/poppy/Life(delta_time = SSMOBS_DT, times_fired)
+/mob/living/simple_animal/pet/poppy/Life(seconds_per_tick = SSMOBS_DT, times_fired)
 	if(client || stat)
 		return
 
@@ -92,7 +92,7 @@
 		near_engine = FALSE
 		panic()
 
-	if(!DT_PROB(0.5, delta_time))
+	if(!SPT_PROB(0.5, seconds_per_tick))
 		return
 	if(!resting)
 		manual_emote(pick("lets out a hiss before resting.", "catches a break.", "gives a simmering hiss before lounging.", "exams her surroundings before relaxing."))

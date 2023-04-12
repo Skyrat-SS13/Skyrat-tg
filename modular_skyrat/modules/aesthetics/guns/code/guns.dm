@@ -111,6 +111,9 @@
 /obj/item/gun/ballistic/automatic/pistol
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
+/obj/item/gun/ballistic/automatic/pistol/deagle/regal
+	icon = 'icons/obj/weapons/guns/ballistic.dmi'
+
 /obj/item/gun/energy/e_gun/nuclear
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/nucgun.dmi'
 	ammo_x_offset = 2
@@ -309,30 +312,23 @@
 	sawn_desc = "An extremely sawn-off Sportiv rifle, popularly known as an \"obrez\". There was probably a reason it wasn't manufactured this short to begin with."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
-/obj/item/gun/ballistic/rifle/boltaction/brand_new
-	name = "\improper NT Sportsman rifle"
-	desc = "A freshly-produced Sportiv precision rifle variant issued by Nanotrasen for their interns.\
-	<br><br>\
-	<i>BRAND NEW: Cannot be sawn off.</i>"
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
+/obj/item/gun/ballistic/rifle/boltaction/surplus
+	desc = "An unnervingly antique sporting rifle dating back to the 2400s chambered for .244 Acia. 'НРИ - Оборонная Коллегия' is etched on the bolt. It looks poorly kept, \
+	and feels uncomfortably moist."
+	sawn_desc = "An extremely sawn-off, unnervingly antique Sportiv rifle, popularly known as an \"obrez\". \
+	There was probably a reason it wasn't manufactured this short to begin with, especially not after what can only be assumed was years of negligence. \
+	It still feels uncomfortably moist."
 
-/obj/item/gun/ballistic/rifle/boltaction/brand_new/give_manufacturer_examine()
-	AddComponent(/datum/component/manufacturer_examine, COMPANY_NANOTRASEN)
-
-/obj/item/gun/ballistic/rifle/boltaction/brand_new/quartermaster
+/obj/item/gun/ballistic/rifle/boltaction/quartermaster
 	name = "\improper FTU 'Archangel' precision rifle"
-	desc = "A very... Modernized Sportiv rifle, the frame even feels a little flimsy. This thing was probably built with a conversion kit from a shady NTnet site.\
+	desc = "A very... \"modernized\" Sportiv rifle, the frame even feels a little flimsy. This thing was probably built with a conversion kit from a shady NTnet site.\
 	<br><br>\
 	<i>BRAND NEW: Cannot be sawn off.</i>"
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	icon_state = "bubba"
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
 	worn_icon_state = "bubba"
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	can_be_sawn_off = FALSE
-
-/obj/item/gun/ballistic/rifle/boltaction/brand_new/quartermaster/give_manufacturer_examine()
-	return
 
 /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	name = "sportiv extended internal magazine"
@@ -362,6 +358,7 @@
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
 	name = "\improper ARG-75 magazine"
+	desc = "A twenty round double-stack magazine for the NT ARG-75 rifle. Chambered in .244 Acia."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/a762
@@ -371,8 +368,12 @@
 // GUBMAN3 - FULL BULLET RENAME
 
 /obj/item/ammo_casing/a762
-	name = ".244 Acia polymer casing"
+	name = ".244 Acia casing"
 	desc = "A .244 bullet casing."
+
+/obj/item/ammo_casing/a762/surplus
+	name = ".244 Acia surplus casing"
+	desc = "A .244 surplus bullet casing."
 
 /obj/item/ammo_casing/a556
 	name = ".277 Aestus polymer casing"
@@ -501,6 +502,9 @@
 /obj/projectile/bullet/a762
 	name = ".244 bullet"
 
+/obj/projectile/bullet/a762/surplus
+	name = ".244 surplus bullet"
+
 /obj/projectile/bullet/a762/enchanted
 	name = "enchanted .244 bullet"
 
@@ -594,3 +598,6 @@
 
 /obj/item/ammo_box/a762
 	name = "stripper clip (.244 Acia)"
+
+/obj/item/ammo_box/a762/surplus
+	name = "stripper clip (.244 Acia surplus)"
