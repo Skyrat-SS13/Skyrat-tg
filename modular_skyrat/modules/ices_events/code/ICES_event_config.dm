@@ -470,18 +470,20 @@
 /**
  * Scrubber Overflow
  *
- * Combined weight: 24
+ * Combined weight: 16
  */
+
 /datum/round_event_control/scrubber_overflow
 	max_occurrences = 0
 
 /datum/round_event_control/scrubber_overflow/threatening
-	max_occurrences = 1
-	weight = VERY_LOW_EVENT_FREQ
+	max_occurrences = 0
 
 /datum/round_event_control/scrubber_overflow/catastrophic
-	max_occurrences = 1
-	weight = VERY_LOW_EVENT_FREQ
+	max_occurrences = 0
+
+/datum/round_event_control/scrubber_overflow/ices
+	weight = MED_EVENT_FREQ
 
 /**
  * Human-level Intelligence
