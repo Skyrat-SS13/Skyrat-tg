@@ -96,7 +96,7 @@
 	heal_rate = 1.5
 
 /// mutants do not stabilize body temperature they are the walking dead and are cold blooded
-/datum/species/mutant/body_temperature_core(mob/living/carbon/human/humi, delta_time, times_fired)
+/datum/species/mutant/body_temperature_core(mob/living/carbon/human/humi, seconds_per_tick, times_fired)
 	return
 
 /datum/species/mutant/infectious/check_roundstart_eligible()
@@ -110,21 +110,21 @@
 	if(.)
 		COOLDOWN_START(src, regen_cooldown, REGENERATION_DELAY)
 
-/datum/species/mutant/infectious/spec_life(mob/living/carbon/carbon_mob, delta_time, times_fired)
+/datum/species/mutant/infectious/spec_life(mob/living/carbon/carbon_mob, seconds_per_tick, times_fired)
 	. = ..()
 	//mutants never actually die, they just fall down until they regenerate enough to rise back up.
 	if(COOLDOWN_FINISHED(src, regen_cooldown))
 		var/heal_amt = heal_rate
 		if(HAS_TRAIT(carbon_mob, TRAIT_CRITICAL_CONDITION))
 			heal_amt *= 2
-		carbon_mob.heal_overall_damage(heal_amt * delta_time, heal_amt * delta_time)
-		carbon_mob.adjustStaminaLoss(-heal_amt * delta_time)
-		carbon_mob.adjustToxLoss(-heal_amt * delta_time)
+		carbon_mob.heal_overall_damage(heal_amt * seconds_per_tick, heal_amt * seconds_per_tick)
+		carbon_mob.adjustStaminaLoss(-heal_amt * seconds_per_tick)
+		carbon_mob.adjustToxLoss(-heal_amt * seconds_per_tick)
 		for(var/i in carbon_mob.all_wounds)
 			var/datum/wound/iter_wound = i
-			if(DT_PROB(2-(iter_wound.severity/2), delta_time))
+			if(SPT_PROB(2-(iter_wound.severity/2), seconds_per_tick))
 				iter_wound.remove_wound()
-	if(!HAS_TRAIT(carbon_mob, TRAIT_CRITICAL_CONDITION) && DT_PROB(2, delta_time))
+	if(!HAS_TRAIT(carbon_mob, TRAIT_CRITICAL_CONDITION) && SPT_PROB(2, seconds_per_tick))
 		playsound(carbon_mob, pick(spooks), 50, TRUE, 10)
 
 #undef REGENERATION_DELAY

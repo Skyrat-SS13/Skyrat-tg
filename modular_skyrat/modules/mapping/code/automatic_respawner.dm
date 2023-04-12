@@ -80,7 +80,7 @@
 /obj/item/respawn_implant //Not actually an implanter
 	name = "Respawn Implanter"
 	desc = "Life doesn't end after death."
-	icon = 'modular_skyrat/modules/aesthetics/items_and_weapons/items_and_weapons.dmi'
+	icon = 'modular_skyrat/modules/aesthetics/implanter/implanter.dmi'
 	icon_state = "implanter0"
 	inhand_icon_state = "syringe_0"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
