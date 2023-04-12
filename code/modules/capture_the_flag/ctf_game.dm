@@ -284,6 +284,7 @@
 	GLOB.ctf_panel.ctf_machines -= src
 	return ..()
 
+<<<<<<< HEAD
 /obj/machinery/capture_the_flag/process(delta_time)
 	for(var/i in spawned_mobs)
 		if(!i)
@@ -298,6 +299,13 @@
 			// instantly critted are low, but have some healing.
 			living_participant.adjustBruteLoss(-2.5 * delta_time)
 			living_participant.adjustFireLoss(-2.5 * delta_time)
+=======
+/obj/machinery/ctf/control_point/process(seconds_per_tick)
+	if(controlling_team)
+		ctf_game.control_point_scoring(controlling_team, point_rate * seconds_per_tick)
+	
+	var/scores
+>>>>>>> 4c48966ff80 (Renames delta time to be a more obvious name (#74654))
 
 /obj/machinery/capture_the_flag/red
 	name = "Red CTF Controller"
