@@ -12,7 +12,7 @@
 	autolathe_exportable = FALSE //Redundant, there's already an autolathe version.
 
 /datum/design/c38_trac
-	name = "Speed Loader (.38 TRAC)"
+	name = "Speed Loader (.38 TRAC) (Less Lethal)"
 	desc = "Designed to quickly reload revolvers. TRAC bullets embed a tracking implant within the target's body. The implant's signal is incompatible with teleporters."
 	id = "c38_trac"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -24,7 +24,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/c38_hotshot
-	name = "Speed Loader (.38 Hot Shot)"
+	name = "Speed Loader (.38 Hot Shot) (Very Lethal)"
 	desc = "Designed to quickly reload revolvers. Hot Shot bullets contain an incendiary payload."
 	id = "c38_hotshot"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -36,7 +36,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/c38_iceblox
-	name = "Speed Loader (.38 Iceblox)"
+	name = "Speed Loader (.38 Iceblox) (Lethal/Very Lethal (Lizardpeople))"
 	desc = "Designed to quickly reload revolvers. Iceblox bullets contain a cryogenic payload."
 	id = "c38_iceblox"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -48,7 +48,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/c38_rubber
-	name = "Speed Loader (.38 Rubber)"
+	name = "Speed Loader (.38 Rubber) (Less Lethal)"
 	desc = "Designed to quickly reload revolvers. Rubber bullets are bouncy and less-than-lethal."
 	id = "c38_rubber"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -61,6 +61,7 @@
 
 /datum/design/rubbershot/sec
 	id = "sec_rshot"
+	desc = "Rubbershot shotgun shells. Fires a cloud of pellets. Rubber bullets are bouncy and less-than-lethal."
 	build_type = PROTOLATHE | AWAY_LATHE
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
@@ -70,6 +71,7 @@
 
 /datum/design/beanbag_slug/sec
 	id = "sec_beanbag_slug"
+	desc = "Beangbag slug shotgun shells. Fires a single slug (a beanbag). Less-than-lethal."
 	build_type = PROTOLATHE | AWAY_LATHE
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
@@ -79,6 +81,8 @@
 
 /datum/design/shotgun_dart/sec
 	id = "sec_dart"
+	desc = "Dart shotgun shells. Fires a single projectile (a dart). Can be filled with chemicals, \
+		which it injects upon striking a target. Otherwise, very weak."
 	build_type = PROTOLATHE | AWAY_LATHE
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
@@ -88,6 +92,8 @@
 
 /datum/design/incendiary_slug/sec
 	id = "sec_Islug"
+	desc = "Dart shotgun shells. Fires a single slug. Ignites a target upon hit, \
+		and leaves a trail of fire as it flies through the air. Very user unfriendly, but effective."
 	build_type = PROTOLATHE | AWAY_LATHE
 	category = list(
 		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
@@ -132,7 +138,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/stunrevolver
-	name = "Tesla Cannon Part Kit"
+	name = "Tesla Cannon Part Kit (Lethal)"
 	desc = "The kit for a high-tech cannon that fires internal, reusable bolt cartridges in a revolving cylinder. The cartridges can be recharged using conventional rechargers."
 	id = "stunrevolver"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -145,7 +151,7 @@
 	autolathe_exportable = FALSE
 
 /datum/design/nuclear_gun
-	name = "Advanced Energy Gun Part Kit"
+	name = "Advanced Energy Gun Part Kit (Lethal/Nonlethal)"
 	desc = "The kit for an energy gun with an experimental miniaturized reactor."
 	id = "nuclear_gun"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -171,7 +177,7 @@
 	autolathe_exportable = FALSE
 
 /datum/design/beamrifle
-	name = "Beam Marksman Rifle Part Kit"
+	name = "Beam Marksman Rifle Part Kit (Lethal)"
 	desc = "The gunkit for a powerful long ranged anti-material rifle that fires charged particle beams to obliterate targets."
 	id = "beamrifle"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -184,7 +190,7 @@
 	autolathe_exportable = FALSE
 
 /datum/design/decloner
-	name = "Decloner Part Kit"
+	name = "Decloner Part Kit (Lethal)"
 	desc = "Your opponent will bubble into a messy pile of goop."
 	id = "decloner"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -209,7 +215,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL //uwu
 
 /datum/design/temp_gun
-	name = "Temperature Gun Part Kit"
+	name = "Temperature Gun Part Kit (Less Lethal/Very Lethal (Lizardpeople))"
 	desc = "A gun that shoots temperature bullet energythings to change temperature."//Change it if you want
 	id = "temp_gun"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -282,7 +288,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/xray
-	name = "X-ray Laser Gun Part Kit"
+	name = "X-ray Laser Gun Part Kit (Lethal)"
 	desc = "Not quite as menacing as it sounds"
 	id = "xray_laser"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -295,7 +301,7 @@
 	autolathe_exportable = FALSE
 
 /datum/design/ioncarbine
-	name = "Ion Carbine Part Kit"
+	name = "Ion Carbine Part Kit (Nonlethal/Highly Destructive/Lethal (Silicons))"
 	desc = "How to Dismantle a Cyborg: The Gun."
 	id = "ioncarbine"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -333,7 +339,8 @@
 
 /datum/design/techshell
 	name = "Unloaded Technological Shotshell"
-	desc = "A high-tech shotgun shell which can be loaded with materials to produce unique effects."
+	desc = "A high-tech shotgun shell which can be crafted into more advanced shells to produce unique effects. \
+		Does nothing on its own."
 	id = "techshotshell"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 200)
@@ -368,7 +375,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/largecrossbow
-	name = "Energy Crossbow Part Kit"
+	name = "Energy Crossbow Part Kit (Less Lethal/Contraband)"
 	desc = "A kit to reverse-engineer a proto-kinetic accelerator into an energy crossbow, favored by syndicate infiltration teams and carp hunters."
 	id = "largecrossbow"
 	build_type = PROTOLATHE | AWAY_LATHE
