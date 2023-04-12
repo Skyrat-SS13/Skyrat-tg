@@ -128,6 +128,8 @@
 		var/obj/item/ammo_casing/our_casing = casing
 		if(initial(our_casing.harmful) && !allowed_harmful)
 			continue
+		if(!(initial(our_casing.can_be_printed)))
+			continue
 		data["available_rounds"] += list(list(
 			"name" = initial(our_casing.name),
 			"typepath" = our_casing
