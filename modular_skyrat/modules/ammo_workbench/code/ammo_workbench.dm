@@ -1,12 +1,13 @@
 /obj/machinery/ammo_workbench
 	name = "ammunitions workbench"
-	desc = "A machine, somewhat akin to a lathe, made specifically for manufacturing ammunition. It has a slot for magazines."
+	desc = "A machine, somewhat akin to a lathe, made specifically for manufacturing ammunition. It has a slot for magazines, ammo boxes, clips... anything that holds ammo."
 	icon = 'modular_skyrat/modules/ammo_workbench/icons/ammo_workbench.dmi'
 	icon_state = "ammobench"
 	density = TRUE
 	use_power = IDLE_POWER_USE
 	circuit = /obj/item/circuitboard/machine/ammo_workbench
 	var/busy = FALSE
+	/// this does nothing. no, really.
 	var/hacked = FALSE
 	var/disabled = FALSE
 	var/shocked = FALSE
@@ -23,9 +24,12 @@
 	var/obj/item/disk/ammo_workbench/loaded_datadisk = null
 	/// A list of all currently allowed ammo types.
 	var/list/allowed_ammo_types = list()
-	var/list/allowed_harmful = FALSE
+	/// can it print ammunition flagged as harmful (e.g. most ammo)
+	var/allowed_harmful = FALSE
 	var/list/loaded_datadisks = list()
+	/// a list of how many deciseconds it takes to assemble a round
 	var/time_per_round = 20
+	/// at the time of writing: this does nothing. literally nothing
 	var/creation_efficiency = 1.6
 
 /obj/machinery/ammo_workbench/unlocked
@@ -112,8 +116,7 @@
 	data["available_rounds"] = list()
 	var/obj/item/ammo_casing/ammo_type = loaded_magazine.ammo_type
 	var/ammo_caliber = initial(ammo_type.caliber)
-	var/obj/item/ammo_casing/ammo_parent_type = type2parent(ammo_type)	
-	
+	var/obj/item/ammo_casing/ammo_parent_type = type2parent(ammo_type)
 
 	if("multitype" in loaded_magazine.vars)
 		if(loaded_magazine:multitype && ammo_caliber == initial(ammo_parent_type.caliber) && ammo_caliber != null)
