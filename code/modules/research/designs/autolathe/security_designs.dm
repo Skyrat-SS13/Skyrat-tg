@@ -175,11 +175,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/a357
-<<<<<<< HEAD
-	name = ".357 Casing"
-=======
 	name = ".357 Casing (VERY Lethal)"
->>>>>>> d3fffa79d22 (Labels security equipment as being lethal, nonlethal, less-than-lethal or highly destructive.  (#74548))
 	id = "a357"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 4000)
@@ -190,21 +186,6 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
-<<<<<<< HEAD
-=======
-/datum/design/a762surplus
-	name = "7.62 Surplus Bullet Casing (VERY Lethal)"
-	id = "a762surplus"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 4000)
-	build_path = /obj/item/ammo_casing/a762/surplus
-	category = list(
-		RND_CATEGORY_HACKED,
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO,
-	)
-	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
-
->>>>>>> d3fffa79d22 (Labels security equipment as being lethal, nonlethal, less-than-lethal or highly destructive.  (#74548))
 /datum/design/c10mm
 	name = "Ammo Box (10mm) (Lethal)"
 	id = "c10mm"
@@ -230,12 +211,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/c9mm
-<<<<<<< HEAD
 //	name = "Ammo Box (9mm)" //SKYRAT EDIT: Original
-	name = "Ammo Box (9x25mm Mk.12)" //SKYRAT EDIT: Calibre rename
-=======
-	name = "Ammo Box (9mm) (Lethal)"
->>>>>>> d3fffa79d22 (Labels security equipment as being lethal, nonlethal, less-than-lethal or highly destructive.  (#74548))
+	name = "Ammo Box (9x25mm Mk.12) (Lethal)" //SKYRAT EDIT: Calibre rename
 	id = "c9mm"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 30000)
