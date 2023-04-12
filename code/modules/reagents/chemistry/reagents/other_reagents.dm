@@ -2491,11 +2491,7 @@
 	if(target.mind)
 		var/datum/antagonist/changeling/changeling = target.mind.has_antag_datum(/datum/antagonist/changeling)
 		if(changeling)
-<<<<<<< HEAD
-			changeling.adjust_chemicals(-4 * REM * delta_time) //SKYRAT EDIT - BZ-BUFF-VS-LING - ORIGINAL: changeling.adjust_chemicals(-2 * REM * delta_time)
-=======
-			changeling.adjust_chemicals(-2 * REM * seconds_per_tick)
->>>>>>> 4c48966ff80 (Renames delta time to be a more obvious name (#74654))
+			changeling.adjust_chemicals(-4 * REM * seconds_per_tick) //SKYRAT EDIT - BZ-BUFF-VS-LING - ORIGINAL: changeling.adjust_chemicals(-2 * REM * delta_time)
 	return ..()
 
 /datum/reagent/pax/peaceborg

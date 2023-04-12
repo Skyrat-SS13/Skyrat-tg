@@ -175,7 +175,7 @@
 
 	return TRUE
 
-/obj/item/organ/internal/cyberimp/brain/nif/process(delta_time)
+/obj/item/organ/internal/cyberimp/brain/nif/process(seconds_per_tick)
 	. = ..()
 
 	if(!linked_mob || broken || IS_IN_STASIS(linked_mob))

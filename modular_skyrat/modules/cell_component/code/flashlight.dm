@@ -95,7 +95,7 @@
 	update_brightness()
 	update_item_action_buttons()
 
-/obj/item/flashlight/process(delta_time)
+/obj/item/flashlight/process(seconds_per_tick)
 	if(!on)
 		STOP_PROCESSING(SSobj, src)
 		return

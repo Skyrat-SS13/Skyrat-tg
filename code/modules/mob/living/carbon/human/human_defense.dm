@@ -943,11 +943,5 @@
 	burn_clothing(seconds_per_tick, times_fired, fire_handler.stacks)
 	var/no_protection = FALSE
 	if(dna && dna.species)
-<<<<<<< HEAD
-		no_protection = dna.species.handle_fire(src, delta_time, times_fired, no_protection)
-	fire_handler.harm_human(delta_time, times_fired, no_protection)
-
-=======
 		no_protection = dna.species.handle_fire(src, seconds_per_tick, times_fired, no_protection)
 	fire_handler.harm_human(seconds_per_tick, times_fired, no_protection)
->>>>>>> 4c48966ff80 (Renames delta time to be a more obvious name (#74654))

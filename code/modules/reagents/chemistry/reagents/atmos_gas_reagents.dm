@@ -66,22 +66,10 @@
 	taste_description = "searingly cold"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 
-<<<<<<< HEAD
-/datum/reagent/hypernoblium/on_mob_metabolize(mob/living/breather)
-	. = ..()
-	if(isplasmaman(breather))
-		ADD_TRAIT(breather, TRAIT_NOFIRE, type)
-
-/datum/reagent/hypernoblium/on_mob_end_metabolize(mob/living/breather)
-	if(isplasmaman(breather))
-		REMOVE_TRAIT(breather, TRAIT_NOFIRE, type)
-	return ..()
-=======
 /datum/reagent/hypernoblium/on_mob_life(mob/living/carbon/breather, seconds_per_tick, times_fired)
 	if(isplasmaman(breather))
 		breather.set_timed_status_effect(10 SECONDS * REM * seconds_per_tick, /datum/status_effect/hypernob_protection)
 	..()
->>>>>>> 4c48966ff80 (Renames delta time to be a more obvious name (#74654))
 
 /datum/reagent/nitrium_high_metabolization
 	name = "Nitrosyl plasmide"

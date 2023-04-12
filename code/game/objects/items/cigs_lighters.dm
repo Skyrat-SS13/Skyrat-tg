@@ -352,16 +352,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			extinguish()
 			return
 
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START - Pollution
 	var/turf/location = get_turf(src)
 	location.pollute_turf(pollution_type, 5, POLLUTION_PASSIVE_EMITTER_CAP)
 	// SKYRAT EDIT END
 
-	smoketime -= delta_time * (1 SECONDS)
-=======
 	smoketime -= seconds_per_tick * (1 SECONDS)
->>>>>>> 4c48966ff80 (Renames delta time to be a more obvious name (#74654))
 	if(smoketime <= 0)
 		put_out(user)
 		return
