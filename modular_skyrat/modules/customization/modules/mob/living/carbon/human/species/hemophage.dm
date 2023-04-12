@@ -55,6 +55,8 @@
 /// The ratio of reagents that get purged while a Hemophage vomits from trying to eat/drink something that their tumor doesn't like.
 #define HEMOPHAGE_VOMIT_PURGE_RATIO 0.95
 
+/// The rate at which blood metabolizes in a Hemophage's stomach subtype.
+#define BLOOD_METABOLIZATION_RATE (0.1 * REAGENTS_METABOLISM)
 
 /datum/species/hemophage
 	name = "Hemophage"
@@ -472,6 +474,12 @@
 	body.vomit(lost_nutrition = 0, stun = FALSE, distance = 1, force = TRUE, purge_ratio = HEMOPHAGE_VOMIT_PURGE_RATIO)
 	return ..()
 
+/obj/item/organ/internal/stomach/hemophage/on_life(delta_time, times_fired)
+	var/datum/reagent/blood/blood = reagents.get_reagent(/datum/reagent/blood)
+	if(blood)
+		blood.metabolization_rate = BLOOD_METABOLIZATION_RATE
+	..()
+
 
 /obj/item/organ/internal/tongue/hemophage
 	name = "corrupted tongue"
@@ -768,3 +776,5 @@
 #undef HEMOPHAGE_VOMIT_PURGE_RATIO
 #undef TUMOR_DISLIKED_FOOD_DISGUST
 #undef MINIMUM_BLOOD_REGENING_REAGENT_RATIO
+
+#undef BLOOD_METABOLIZATION_RATE
