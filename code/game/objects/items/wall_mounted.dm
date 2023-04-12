@@ -11,12 +11,8 @@
 	var/pixel_shift //The amount of pixels
 
 /obj/item/wallframe/proc/try_build(turf/on_wall, mob/user)
-<<<<<<< HEAD
-	if(get_dist(on_wall,user)>1)
-=======
 	if(get_dist(on_wall,user) > 1)
 		balloon_alert(user, "you are too far!")
->>>>>>> d48dc255d8d (Final Patches for RCD related devices. (#74592))
 		return
 	var/floor_to_wall = get_dir(user, on_wall)
 	if(!(floor_to_wall in GLOB.cardinals))
