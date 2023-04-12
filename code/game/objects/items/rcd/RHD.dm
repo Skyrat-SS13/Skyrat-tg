@@ -204,6 +204,7 @@
 	if(!silo_mats)
 		to_chat(user, span_warning("no remote storage connection."))
 		return FALSE
+
 	if(!silo_mats.mat_container && !silo_link) // Allow them to turn off an invalid link.
 		to_chat(user, span_warning("no silo link detected."))
 		return FALSE
