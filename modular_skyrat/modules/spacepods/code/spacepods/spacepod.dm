@@ -116,6 +116,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	/// Our looping thrust sound.
 	var/datum/looping_sound/spacepod_thrust/thrust_sound
 
+	/// Our looping missile lock sound.
+	var/datum/looping_sound/missile_lock/missile_lock_sound
+
 	/// Our teleporter warp effect
 	var/atom/movable/warp_effect/warp
 	/// How long it takes us to warp
@@ -157,6 +160,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	RegisterSignal(physics_component, COMSIG_PHYSICS_PROCESSED_BUMP, PROC_REF(process_physics_bump))
 	RegisterSignal(physics_component, COMSIG_PHYSICS_THRUST_CHECK, PROC_REF(check_thrust))
 	RegisterSignal(physics_component, COMSIG_PHYSICS_AUTOSTABILISE_CHECK, PROC_REF(check_autostabilisation))
+	RegisterSignal(src, COMSIG_MISSILE_LOCK, PROC_REF(missile_lock))
+	RegisterSignal(src, COMSIG_MISSILE_LOCK_LOST, PROC_REF(missile_lock_lost))
+
 	active_weapon_slot = pick(weapon_slots)
 	GLOB.spacepods_list += src
 	START_PROCESSING(SSobj, src)
@@ -166,9 +172,16 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	RegisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED, PROC_REF(process_integrity))
 	alarm_sound = new(src)
 	thrust_sound = new(src)
+	missile_lock_sound = new(src)
 	trail = new(src)
 	trail.set_up(src)
 	trail.start()
+
+/obj/spacepod/proc/missile_lock()
+	missile_lock_sound.start()
+
+/obj/spacepod/proc/missile_lock_lost()
+	missile_lock_sound.stop()
 
 /obj/spacepod/Destroy()
 	GLOB.spacepods_list -= src
@@ -184,9 +197,12 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	QDEL_NULL(pod_armor)
 	QDEL_NULL(alarm_sound)
 	QDEL_NULL(thrust_sound)
+	QDEL_NULL(missile_lock_sound)
 	QDEL_NULL(trail)
 	UnregisterSignal(src, COMSIG_ATOM_INTEGRITY_CHANGED)
 	return ..()
+
+
 
 /**
  * process

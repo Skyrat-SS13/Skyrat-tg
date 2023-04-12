@@ -5,6 +5,7 @@
 	icon_state = "launcher_base"
 	anchored = TRUE
 	density = TRUE
+	max_integrity = 250
 	/// How far can this launcher detect it's target, in tiles.
 	var/detection_range = 10
 	/// The types that we are scanning for.
@@ -13,8 +14,6 @@
 		/obj/spacepod,
 		/obj/vehicle,
 	)
-	/// How much ammo we have.
-	var/ammo = 10
 	/// What we are currently targeting.
 	var/atom/target
 	/// How long it takes to reload a round.
