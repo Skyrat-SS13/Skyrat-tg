@@ -97,8 +97,8 @@
 		user.emote("scream")
 		user.dropItemToGround(src)
 		var/obj/item/bodypart/affecting = user.get_active_hand()
-		return affecting?.receive_damage(0, 15, wound_bonus = CANT_WOUND)
 		user.investigate_log("was burned their hand on [src] for [15] at [AREACOORD(user)]", INVESTIGATE_CRAFTING)
+		return affecting?.receive_damage(0, 15, wound_bonus = CANT_WOUND)
 
 /obj/item/glassblowing/blowing_rod
 	name = "blowing rod"
