@@ -151,11 +151,18 @@
 			living_mob.client.view_size.setTo(2)
 			living_mob.movement_type = GROUND
 
+		var/datum/hud/rider_hud = living_mob.hud_used
+		if(rider_hud)
+			rider_hud.spacepod_hud = spacepod_hud
+			rider_hud.infodisplay += spacepod_hud
+			living_mob.client?.screen += spacepod_hud
+
 	living_mob.stop_pulling()
 	living_mob.forceMove(src)
 
 	playsound(src, 'sound/machines/windowdoor.ogg', 50, 1)
 	return TRUE
+
 
 /**
  * Remove actions
@@ -223,6 +230,12 @@
 		UnregisterSignal(mob_to_remove.client, COMSIG_CLIENT_MOUSEDOWN)
 		UnregisterSignal(mob_to_remove, COMSIG_MOB_GET_STATUS_TAB_ITEMS)
 
+		var/datum/hud/rider_hud = mob_to_remove.hud_used
+		if(rider_hud)
+			rider_hud.spacepod_hud = null
+			rider_hud.infodisplay -= spacepod_hud
+			mob_to_remove.client?.screen -= spacepod_hud
+
 	occupants -= mob_to_remove
 
 	if(mob_to_remove.loc == src)
@@ -232,6 +245,8 @@
 		mob_to_remove.client.view_size.resetToDefault()
 		mob_to_remove.client.pixel_x = 0
 		mob_to_remove.client.pixel_y = 0
+
+
 
 	return TRUE
 

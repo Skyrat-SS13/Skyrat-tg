@@ -241,3 +241,18 @@
 		return
 
 	spacepod_target.toggle_doors(owner)
+
+
+/**
+ * Opens any nearby pod doors
+ */
+/datum/action/spacepod/deploy_flare
+	name = "Deploy Flare"
+	button_icon_state = "deploy_flare"
+
+
+/datum/action/spacepod/deploy_flare/Trigger(trigger_flags)
+	if(!owner || !spacepod_target || !(owner in spacepod_target.occupants) || owner.incapacitated())
+		return
+
+	spacepod_target.deploy_flare()

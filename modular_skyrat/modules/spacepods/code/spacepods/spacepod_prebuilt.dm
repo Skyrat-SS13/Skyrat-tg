@@ -92,6 +92,7 @@
 		/obj/item/spacepod_equipment/cargo/chair,
 		/obj/item/spacepod_equipment/teleport,
 		/obj/item/spacepod_equipment/lights/military,
+		/obj/item/spacepod_equipment/flare,
 		)
 
 /obj/spacepod/random

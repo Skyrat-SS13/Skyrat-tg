@@ -429,6 +429,11 @@
 	desc = "Enables better control of the spacepod by allowing constant RCS course corrections."
 	icon_state = "cargo_blank"
 
+/obj/item/spacepod_equipment/flare
+	name = "\improper Decoy Flare System"
+	desc = "Deploys flares that can decoy missiles."
+	icon_state = "cargo_blank"
+
 /**
  * Lock Systems
  */

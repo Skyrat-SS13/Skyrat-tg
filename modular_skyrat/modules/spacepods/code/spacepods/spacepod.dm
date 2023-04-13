@@ -87,6 +87,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 			/datum/action/spacepod/open_poddoors,
 			/datum/action/spacepod/cycle_weapons,
 			/datum/action/spacepod/toggle_safety,
+			/datum/action/spacepod/deploy_flare,
 		),
 		SPACEPOD_RIDER_TYPE_PASSENGER = list(
 			/datum/action/spacepod/exit,
@@ -152,6 +153,10 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 	var/image/right_thrust_overlay
 
+	var/atom/movable/screen/spacepod/spacepod_hud
+
+	var/flare_reload_time = 10 SECONDS
+	COOLDOWN_DECLARE(flare_reload_cooldown)
 
 /obj/spacepod/Initialize()
 	. = ..()
@@ -176,12 +181,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	trail = new(src)
 	trail.set_up(src)
 	trail.start()
+	spacepod_hud = new()
 
-/obj/spacepod/proc/missile_lock()
-	missile_lock_sound.start()
-
-/obj/spacepod/proc/missile_lock_lost()
-	missile_lock_sound.stop()
 
 /obj/spacepod/Destroy()
 	GLOB.spacepods_list -= src
@@ -379,6 +380,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	if(get_integrity() <= 0)
 		return ..()
 	play_alarm(FALSE)
+	missile_lock_sound.stop()
 	if(construction_state < SPACEPOD_ARMOR_LOOSE)
 		return
 	if(pod_armor)
@@ -791,3 +793,27 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	if(brakes)
 		return COMPONENT_PHYSICS_AUTO_STABILISATION
 	return FALSE
+
+/obj/spacepod/proc/missile_lock()
+	SIGNAL_HANDLER
+	missile_lock_sound.start()
+	spacepod_hud.invisibility = 0
+
+/obj/spacepod/proc/missile_lock_lost()
+	SIGNAL_HANDLER
+	missile_lock_sound.stop()
+	spacepod_hud.invisibility = INVISIBILITY_ABSTRACT
+
+/obj/spacepod/proc/deploy_flare()
+	if(!check_has_equipment(/obj/item/spacepod_equipment/flare))
+		to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("No flare module!"))
+		return
+	if(!COOLDOWN_FINISHED(src, flare_reload_cooldown))
+		to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_warning("Flares recharging!"))
+		return
+	new /obj/physics_decoy_flare(get_turf(src), component_angle, component_velocity_x, component_velocity_y)
+	playsound(src, 'sound/items/match_strike.ogg', 100)
+	to_chat_to_riders(SPACEPOD_RIDER_TYPE_PILOT, span_notice("Flare deployed!"))
+
+	COOLDOWN_START(src, flare_reload_cooldown, flare_reload_time)
+

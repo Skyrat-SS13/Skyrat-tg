@@ -126,11 +126,6 @@
 	parent_atom = null
 	return ..()
 
-/obj/effect/temp_visual/turf_visual
-	icon = 'modular_skyrat/modules/spacepods/icons/objects.dmi'
-	icon_state = "turf_test"
-	layer = WALL_OBJ_LAYER
-	duration = 5
 
 /datum/component/physics/process(seconds_per_tick)
 	if(!parent_atom)
@@ -226,8 +221,6 @@
 	update_sprite(seconds_per_tick, last_angle, last_offset_x, last_offset_y)
 
 	SEND_SIGNAL(src, COMSIG_PHYSICS_UPDATE_MOVEMENT, angle, velocity_x, velocity_y, offset_x, offset_y, last_rotate, last_thrust_forward, last_thrust_right)
-
-	new /obj/effect/temp_visual/turf_visual(get_turf(parent_atom))
 
 	if(reset_thrust_dir)
 		desired_thrust_dir = 0

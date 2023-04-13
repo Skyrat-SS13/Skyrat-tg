@@ -249,6 +249,8 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 
 	//SKYRAT EDIT START - SKYRAT HUD
 	wanted_lvl = null
+	ammo_counter = null
+	spacepod_hud = null
 	// SKYRAT EDIT END - SKYRAT HUD
 
 	QDEL_LIST_ASSOC_VAL(master_groups)
