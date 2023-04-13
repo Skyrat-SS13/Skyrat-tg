@@ -68,6 +68,7 @@
 		else
 			emote_type = EMOTE_VISIBLE
 	. = TRUE
+
 	if(!can_run_emote(user))
 		return FALSE
 
@@ -78,16 +79,20 @@
 	container_message = ("[user.say_emphasis(container_message)]")
 
 	var/atom/picked_loc
-	if (locs_we_can_use.len == 0) return FALSE
+	if (locs_we_can_use.len == 0)
+		return FALSE
 	if (locs_we_can_use.len == 1)
 		picked_loc = pick(locs_we_can_use)
 	else
 		picked_loc = tgui_input_list(user, "Which container would you like your emote to originate from?", "Container emote", locs_we_can_use, FALSE)
+	// Since the tgui input sleeps, we can no longer trust the status of any variable after this point
+	// Ex. we cannot assume the user exists anymore
+	if(!can_run_emote(user))
+		return FALSE
 	if ((!picked_loc) || (isarea(picked_loc)) || QDELETED(picked_loc) || user.IsUnconscious() || QDELETED(user)) //one last sanity check
 		to_chat(user, span_danger("Either you are unconcious, are not within anything, or you/the object you picked don't exist anymore!")) // If user is banned from chat, emotes, or the user is not within anything (ex. a locker) return.
 		return FALSE
 
-	// These steps are crucial for runetext to work.
 	if(emote_type == EMOTE_AUDIBLE)
 		picked_loc.audible_message(message = container_message, self_message = container_message, audible_message_flags = EMOTE_MESSAGE, separation = space)
 	else if (emote_type == EMOTE_VISIBLE)
