@@ -122,8 +122,6 @@
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/fg42(src)
 	new /obj/item/ammo_box/magazine/fg42(src)
-	new /obj/item/gun/ballistic/automatic/akm(src)
-	new /obj/item/ammo_box/magazine/akm(src)
 	new /obj/item/gun/ballistic/automatic/m16(src)
 	new /obj/item/ammo_box/magazine/m16/vintage(src)
 	new /obj/item/gun/ballistic/automatic/mg34(src)

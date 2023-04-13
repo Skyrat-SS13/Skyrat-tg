@@ -27,28 +27,28 @@
 /obj/item/storage/toolbox/ammo/full/krinkov
 	name = "ammo box (Krinkov)"
 	desc = "It contains a few magazines."
-	ammo_type = /obj/item/ammo_box/magazine/akm
+	ammo_type = /obj/item/ammo_box/magazine/nri_ar
 	amount = 7
 
 /obj/item/storage/toolbox/ammo/full/krinkov/emp
 	name = "ammo box (Krinkov, EMP)"
 	desc = "It contains a few magazines."
-	ammo_type = /obj/item/ammo_box/magazine/akm/emp
+	ammo_type = /obj/item/ammo_box/magazine/nri_ar/emp
 
 /obj/item/storage/toolbox/ammo/full/krinkov/fire
 	name = "ammo box (Krinkov, incendiary)"
 	desc = "It contains a few magazines."
-	ammo_type = /obj/item/ammo_box/magazine/akm/fire
+	ammo_type = /obj/item/ammo_box/magazine/nri_ar/fire
 
 /obj/item/storage/toolbox/ammo/full/krinkov/ricochet
 	name = "ammo box (Krinkov, match)"
 	desc = "It contains a few magazines."
-	ammo_type = /obj/item/ammo_box/magazine/akm/ricochet
+	ammo_type = /obj/item/ammo_box/magazine/nri_ar/ricochet
 
 /obj/item/storage/toolbox/ammo/full/krinkov/ap
 	name = "ammo box (Krinkov, armor piercing)"
 	desc = "It contains a few magazines."
-	ammo_type = /obj/item/ammo_box/magazine/akm/ap
+	ammo_type = /obj/item/ammo_box/magazine/nri_ar/ap
 
 /obj/item/storage/toolbox/ammo/full/bison
 	name = "ammo box (PP-95)"

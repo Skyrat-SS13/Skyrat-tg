@@ -6,7 +6,7 @@
 	admin_note = "WARNING: This weapon is extremely powerful, firing a 3 round burst of 35 damage bullets."
 
 /datum/opposing_force_equipment/rifle/akm
-	item_type = /obj/item/gun/ballistic/automatic/akm/nri
+	item_type = /obj/item/gun/ballistic/automatic/nri_ar
 	admin_note = "WARNING: This weapon is extremely powerful, firing a 3 round burst of 38 damage bullets."
 
 /datum/opposing_force_equipment/rifle/cfa
