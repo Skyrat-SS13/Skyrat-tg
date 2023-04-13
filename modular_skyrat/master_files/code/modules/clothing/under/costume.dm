@@ -11,6 +11,18 @@
 
 //My least favorite file. Just... try to keep it sorted. And nothing over the top (The victorian dresses were way too much)
 
+/obj/item/clothing/suit/costume/skyrat/vic_dresscoat
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	name = "victorian dresscoat"
+	desc = "An elaborate coat to go over an old-Earth Victorian Period dress. Much thinner fabric than you'd expected."
+	icon_state = "vicdresscoat"
+	greyscale_config = /datum/greyscale_config/vic_dresscoat
+	greyscale_config_worn = /datum/greyscale_config/vic_dresscoat/worn
+	greyscale_colors = "#8b2c2c#222227#222227#fbc056"
+	flags_1 = IS_PLAYER_COLORABLE_1
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
 /*
 *	UNSORTED
 */

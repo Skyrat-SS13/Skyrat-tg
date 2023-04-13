@@ -921,6 +921,15 @@
 	name = "Worn Buttondown with Double-breasted Vest - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
+/datum/greyscale_config/vic_dresscoat
+	name = "Victorian Dresscoat"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/costumes/vic_dresscoat.json'
+
+/datum/greyscale_config/vic_dresscoat/worn
+	name = "Victorian Dresscoat"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+
 /*
 TREK
 */
@@ -1065,7 +1074,7 @@ digi
 /datum/greyscale_config/fancyheels/worn
 	name = "Fancy Heels (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/fancyheels/fancyheels_worn.json'
-	
+
 /datum/greyscale_config/fancyheels/worn/digi
 	name = "Fancy Heels (Worn Digi)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/fancyheels/fancyheels_worn_digi.json'
