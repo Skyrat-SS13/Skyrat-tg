@@ -10,7 +10,6 @@
 	health = 100
 	basic_mob_flags = DEL_ON_DEATH
 	speed = 1.1
-	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	melee_damage_lower = 10
 	melee_damage_upper = 10
 	attack_verb_continuous = "punches"
@@ -224,6 +223,8 @@
 /mob/living/basic/viscerator
 	name = "viscerator"
 	desc = "A small, twin-bladed machine capable of inflicting very deadly lacerations."
+	icon_state = "viscerator_attack"
+	icon_living = "viscerator_attack"
 	pass_flags = PASSTABLE | PASSMOB
 	combat_mode = TRUE
 	mob_biotypes = MOB_ROBOTIC
@@ -251,7 +252,7 @@
 	bubble_icon = "syndibot"
 	gold_core_spawnable = HOSTILE_SPAWN
 	death_message = "is smashed into pieces!"
-	ai_controller = /datum/ai_controller/basic_controller/viscerator
+	ai_controller = /datum/ai_controller/basic_controller/syndicate/viscerator
 
 /mob/living/basic/viscerator/Initialize(mapload)
 	. = ..()

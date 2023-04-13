@@ -17,8 +17,8 @@
 	add_movespeed_modifier(/datum/movespeed_modifier/alien_slow)
 
 /mob/living/carbon/alien/adult/skyrat/sentinel/create_internal_organs()
-	internal_organs += new /obj/item/organ/internal/alien/plasmavessel/small
-	internal_organs += new /obj/item/organ/internal/alien/neurotoxin/sentinel
+	organs += new /obj/item/organ/internal/alien/plasmavessel/small
+	organs += new /obj/item/organ/internal/alien/neurotoxin/sentinel
 	..()
 
 /datum/action/cooldown/alien/acid/skyrat
@@ -110,12 +110,11 @@
 	damage = 30
 	paralyze = 0
 	damage_type = STAMINA
-	nodamage = FALSE
 	armor_flag = BIO
 
 /obj/projectile/neurotoxin/on_hit(atom/target, blocked = FALSE)
 	if(isalien(target))
-		nodamage = TRUE
+		damage = 0
 	return ..()
 
 /datum/action/cooldown/alien/acid/skyrat/lethal

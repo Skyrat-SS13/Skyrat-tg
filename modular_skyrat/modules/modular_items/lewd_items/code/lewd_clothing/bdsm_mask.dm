@@ -38,7 +38,7 @@
 
 /obj/item/clothing/mask/gas/bdsm_mask/Initialize(mapload)
 	. = ..()
-	create_storage(type = /datum/storage/pockets/small/bdsm_mask)
+	create_storage(storage_type = /datum/storage/pockets/small/bdsm_mask)
 
 /obj/item/clothing/mask/gas/bdsm_mask/proc/update_mob_action_buttonss()
 	var/datum/action/item_action/button
@@ -229,7 +229,7 @@
 		STOP_PROCESSING(SSobj, src)
 
 // Mask choke processor
-/obj/item/clothing/mask/gas/bdsm_mask/process(delta_time)
+/obj/item/clothing/mask/gas/bdsm_mask/process(seconds_per_tick)
 	var/mob/living/affected_mob = loc
 	var/mob/living/carbon/affected_carbon = affected_mob
 
@@ -260,9 +260,9 @@
 				breath_status = TRUE
 				temp_check = FALSE
 		else
-			tt -= delta_time
+			tt -= seconds_per_tick
 	else
-		time_to_choke_left -= delta_time
+		time_to_choke_left -= seconds_per_tick
 
 /*
 *	FILTERS
@@ -299,7 +299,7 @@
 // I just wanted to add 2th color variation. Because.
 /obj/item/reagent_containers/cup/lewd_filter/AltClick(mob/user)
 	// Catch first AltClick and open reskin menu
-	if(unique_reskin && !current_skin && user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE))
+	if(unique_reskin && !current_skin && user.can_perform_action(src, NEED_DEXTERITY))
 		reskin_obj(user)
 		return
 	// After reskin all clicks go normal, but we can't change the flow rate if mask on and equipped

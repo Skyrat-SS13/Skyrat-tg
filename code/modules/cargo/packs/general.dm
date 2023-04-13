@@ -67,7 +67,7 @@
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/storage/fish_case/tiziran = 2)
 	crate_name = "tiziran fish crate"
-
+/* SKYRAT REMOVAL
 /datum/supply_pack/misc/bicycle
 	name = "Bicycle"
 	desc = "Nanotrasen reminds all employees to never toy with powers outside their control."
@@ -75,7 +75,7 @@
 	contains = list(/obj/vehicle/ridden/bicycle)
 	crate_name = "bicycle crate"
 	crate_type = /obj/structure/closet/crate/large
-
+SKYRAT REMOVAL END */
 /datum/supply_pack/misc/bigband
 	name = "Big Band Instrument Collection"
 	desc = "Get your sad station movin' and groovin' with this fine collection! \
@@ -239,19 +239,6 @@
 	contains = list(/obj/item/training_toolbox = 2)
 	crate_name = "training toolbox crate"
 
-/datum/supply_pack/misc/blackmarket_telepad
-	name = "Black Market LTSRBT"
-	desc = "Need a faster and better way of transporting your illegal goods from and to the \
-		station? Fear not, the Long-To-Short-Range-Bluespace-Transceiver (LTSRBT for short) \
-		is here to help. Contains a LTSRBT circuit, two bluespace crystals, and one ansible."
-	cost = CARGO_CRATE_VALUE * 20
-	contraband = TRUE
-	contains = list(/obj/item/circuitboard/machine/ltsrbt,
-					/obj/item/stack/ore/bluespace_crystal/artificial = 2,
-					/obj/item/stock_parts/subspace/ansible,
-				)
-	crate_name = "crate"
-
 ///Special supply crate that generates random syndicate gear up to a determined TC value
 /datum/supply_pack/misc/syndicate
 	name = "Assorted Syndicate Gear"
@@ -297,3 +284,14 @@
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(/obj/machinery/fishing_portal_generator)
 	crate_name = "fishing portal crate"
+
+/datum/supply_pack/misc/papercutter
+	name = "Paper Cutters Crate"
+	desc = "Contains 3 office-grade paper cutters, equipped with sharp blades that can cut any paper into two thin slips.\
+		Comes with one replacement blade."
+	cost = CARGO_CRATE_VALUE * 3.5
+	contains = list(
+		/obj/item/papercutter = 3,
+		/obj/item/hatchet/cutterblade = 1,
+	)
+	crate_name = "paper cutters crate"

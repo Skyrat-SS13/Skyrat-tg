@@ -55,7 +55,7 @@
 	. = ..()
 	update_appearance()
 
-/obj/machinery/self_actualization_device/close_machine(mob/user)
+/obj/machinery/self_actualization_device/close_machine(atom/movable/target, density_to_set = TRUE)
 	..()
 	playsound(src, 'sound/machines/click.ogg', 50)
 	if(!occupant)
@@ -70,10 +70,6 @@
 /obj/machinery/self_actualization_device/examine(mob/user)
 	. = ..()
 	. += span_notice("ALT-Click to turn ON when closed.")
-
-/obj/machinery/self_actualization_device/open_machine(mob/user)
-	playsound(src, 'sound/machines/click.ogg', 50)
-	..()
 
 /obj/machinery/self_actualization_device/AltClick(mob/user)
 	. = ..()
@@ -113,7 +109,7 @@
 		open_machine()
 		return
 
-/obj/machinery/self_actualization_device/process(delta_time)
+/obj/machinery/self_actualization_device/process(seconds_per_tick)
 	if(!processing)
 		return
 	if(!powered() || !occupant || !iscarbon(occupant))
@@ -177,7 +173,7 @@
 	patient.setOrganLoss(ORGAN_SLOT_BRAIN, brain_damage)
 
 	//Re-Applies Trauma
-	var/obj/item/organ/internal/brain/patient_brain = patient.getorgan(/obj/item/organ/internal/brain)
+	var/obj/item/organ/internal/brain/patient_brain = patient.get_organ_by_type(/obj/item/organ/internal/brain)
 
 	if(length(trauma_list))
 		patient_brain.traumas = trauma_list
@@ -191,7 +187,7 @@
 
 /// Checks the damage on the inputed organ and stores it.
 /obj/machinery/self_actualization_device/proc/check_organ(mob/living/carbon/human/patient, obj/item/organ/organ_to_check)
-	var/obj/item/organ/organ_to_track = patient.getorgan(organ_to_check)
+	var/obj/item/organ/organ_to_track = patient.get_organ_by_type(organ_to_check)
 
 	// If the organ is missing, the organ damage is automatically set to 100.
 	if(!organ_to_track)

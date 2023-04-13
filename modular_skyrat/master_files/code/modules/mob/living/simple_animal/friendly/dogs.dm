@@ -54,7 +54,7 @@
 	can_be_held = FALSE
 	maxHealth = 150
 	health = 150
-	butcher_results = list(/obj/item/clothing/head/corgi/en = 1, /obj/item/clothing/suit/corgisuit/en = 1)
+	butcher_results = list(/obj/item/clothing/head/costume/skyrat/en = 1, /obj/item/clothing/suit/corgisuit/en = 1)
 	death_message = "beeps, its mechanical parts hissing before the chassis collapses in a loud thud."
 	gold_core_spawnable = NO_SPAWN
 	nofur = TRUE
@@ -148,7 +148,7 @@
 		return
 
 	var/mob/living/carbon/human/target = proj.firer
-	if(!proj.nodamage && proj.damage >= 10)
+	if(proj.damage >= 10)
 		if(proj.damage_type != BRUTE && proj.damage_type != BURN)
 			return
 
@@ -262,7 +262,7 @@
 	/// Range to immediately target enemies
 	var/view_range = 10
 
-/datum/ai_planning_subtree/emagged_borgi/SelectBehaviors(datum/ai_controller/controller, delta_time)
+/datum/ai_planning_subtree/emagged_borgi/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
 	. = ..()
 
 	// Emagged borgi?
@@ -274,7 +274,7 @@
 	var/datum/weakref/weak_target = controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
 	var/atom/target = weak_target?.resolve()
 	if(QDELETED(target))
-		if(!DT_PROB(chance, delta_time))
+		if(!SPT_PROB(chance, seconds_per_tick))
 			return
 
 		controller.queue_behavior(/datum/ai_behavior/find_potential_targets, BB_BASIC_MOB_CURRENT_TARGET, BB_PET_TARGETTING_DATUM, BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)
@@ -290,7 +290,7 @@
 /datum/ai_behavior/emagged_borgi_attack
 	action_cooldown = 3 SECONDS
 
-/datum/ai_behavior/emagged_borgi_attack/perform(delta_time, datum/ai_controller/controller, target_key)
+/datum/ai_behavior/emagged_borgi_attack/perform(seconds_per_tick, datum/ai_controller/controller, target_key)
 	var/atom/target = controller.blackboard[target_key]
 	if(QDELETED(target))
 		return

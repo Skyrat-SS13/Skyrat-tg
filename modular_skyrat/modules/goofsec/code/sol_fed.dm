@@ -3,9 +3,15 @@
 #define SOLFED_DECLARED "declared"
 #define SOLFED_FINE_AMOUNT -20000
 
+#define EMERGENCY_RESPONSE_POLICE "WOOP WOOP THAT'S THE SOUND OF THE POLICE"
+#define EMERGENCY_RESPONSE_ATMOS "DISCO INFERNO"
+#define EMERGENCY_RESPONSE_EMT "AAAAAUGH, I'M DYING, I NEEEEEEEEEED A MEDIC BAG"
+#define EMERGENCY_RESPONSE_EMAG "AYO THE PIZZA HERE"
+
 GLOBAL_VAR(caller_of_911)
 GLOBAL_VAR(call_911_msg)
 GLOBAL_VAR(pizza_order)
+GLOBAL_VAR_INIT(solfed_tech_charge, -15000)
 GLOBAL_LIST_INIT(pizza_names, list(
 	"Dixon Buttes",
 	"I. C. Weiner",
@@ -74,11 +80,12 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		You SHOULD NOT call Marshals for:\n\
 		Corporate affairs, manhunts, settling arguments, etc.\n\
 		Are you sure you want to call Marshals?",
-	EMERGENCY_RESPONSE_ATMOS = "You SHOULD call Breach Control for:\n\
-		Stationwide atmospherics loss, unending fires filling the hallways, or department-sized breaches with Engineering and Atmospherics unable to handle it, etc. \n\
-		You SHOULD NOT call Breach Control for:\n\
+	EMERGENCY_RESPONSE_ATMOS = "You SHOULD call Advanced Atmospherics for:\n\
+		Stationwide atmospherics loss, wide-scale supermatter delamination related repairs, unending fires filling the hallways, or department-sized breaches with Engineering and Atmospherics unable to handle it, etc. \n\
+		You SHOULD NOT call Advanced Atmospherics for:\n\
 		A trashcan on fire in the library, a single breached room, heating issues, etc. - especially with capable Engineers/Atmos Techs.\n\
-		Are you sure you want to call Breach Control?"
+		There is a response fee of [abs(GLOB.solfed_tech_charge)] credits per emergency responder.\n\
+		Are you sure you want to call Advanced Atmospherics?"
 ))
 
 /// Internal. Polls ghosts and sends in a team of space cops according to the alert level, accompanied by an announcement.
@@ -103,16 +110,14 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 			announcer = "Sol Federation Marshal Department"
 			poll_question = "The station has called for the Marshals. Will you respond?"
 		if(EMERGENCY_RESPONSE_ATMOS)
-			team_size = 8
+			team_size = tgui_input_number(usr, "How many techs would you like dispatched?", "How badly did you screw up?", 3, 3, 1)
 			cops_to_send = /datum/antagonist/ert/request_911/atmos
 			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation's 811 dispatch. We've recieved a report of stationwide structural damage, atmospherics loss, fire, or otherwise, and we are \
-				sending a Breach Control team to support your station.\n\n\
-				If the Breach Control team requests that they need SWAT protection to do their job, or to report a faulty 811 call, we will send them in at additional cost to your station to the \
-				tune of $20,000.\n\n\
+				sending an Advanced Atmospherics team to support your station.\n\n\
 				The transcript of the call is as follows:\n\
 				[GLOB.call_911_msg]"
-			announcer = "Sol Federation 811 Dispatch - Breach Control"
-			poll_question = "The station has called for a Breach Control team. Will you respond?"
+			announcer = "Sol Federation 811 Dispatch - Advanced Atmospherics"
+			poll_question = "The station has called for an advanced engineering support team. Will you respond?"
 			cell_phone_number = "911"	//This needs to stay so they can communicate with SWAT
 		if(EMERGENCY_RESPONSE_EMT)
 			team_size = 8
@@ -167,19 +172,25 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 			cop.mind.add_antag_datum(ert_antag)
 			cop.mind.set_assigned_role(SSjob.GetJobType(ert_antag.ert_job_path))
 			SSjob.SendToLateJoin(cop)
-			cop.grant_language(/datum/language/common, TRUE, TRUE, LANGUAGE_MIND)
+			cop.grant_language(/datum/language/common, TRUE, TRUE, LANGUAGE_SPAWNER)
 
-			var/obj/item/gangster_cellphone/phone = new() // biggest gang in the city
-			phone.gang_id = cell_phone_number
-			phone.name = "[cell_phone_number] branded cell phone"
-			phone.w_class = WEIGHT_CLASS_SMALL	//They get that COMPACT phone hell yea
-			var/phone_equipped = phone.equip_to_best_slot(cop)
-			if(!phone_equipped)
-				to_chat(cop, "Your [phone.name] has been placed at your feet.")
-				phone.forceMove(get_turf(cop))
+			if(cops_to_send == /datum/antagonist/ert/request_911/atmos) // charge for atmos techs
+				var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_CAR)
+				station_balance?._adjust_money(GLOB.solfed_tech_charge)
+			else
+				var/obj/item/gangster_cellphone/phone = new() // biggest gang in the city
+				phone.gang_id = cell_phone_number
+				phone.name = "[cell_phone_number] branded cell phone"
+				phone.w_class = WEIGHT_CLASS_SMALL	//They get that COMPACT phone hell yea
+				var/phone_equipped = phone.equip_to_best_slot(cop)
+				if(!phone_equipped)
+					to_chat(cop, "Your [phone.name] has been placed at your feet.")
+					phone.forceMove(get_turf(cop))
 
 			//Logging and cleanup
 			log_game("[key_name(cop)] has been selected as an [ert_antag.name]")
+			if(cops_to_send == /datum/antagonist/ert/request_911/atmos)
+				log_game("[abs(GLOB.solfed_tech_charge)] has been charged from the station budget for [key_name(cop)]")
 			agents_number--
 	GLOB.cops_arrived = TRUE
 	return TRUE
@@ -330,49 +341,49 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	id_trim = /datum/id_trim/solfed
 
 /*
-*	BREACH CONTROL
+*	ADVANCED ATMOSPHERICS
 */
 
 /datum/antagonist/ert/request_911/atmos
-	name = "Breach Control Technician"
-	role = "Breach Control Technician"
-	department = "Breach Control"
+	name = "Adv. Atmos Tech"
+	role = "Adv. Atmospherics Technician"
+	department = "Advanced Atmospherics"
 	outfit = /datum/outfit/request_911/atmos
 
 /datum/outfit/request_911/atmos
-	name = "811 Response: Breach Control"
-	back = /obj/item/mod/control/pre_equipped/atmospheric/breach_control
-	uniform = /obj/item/clothing/under/rank/engineering/engineer/hazard
-	shoes = /obj/item/clothing/shoes/workboots
-	ears = /obj/item/radio/headset/headset_eng
-	mask = /obj/item/clothing/mask/gas/atmos
-	belt = /obj/item/storage/belt/utility/full
+	name = "811 Response: Advanced Atmospherics"
+	back = /obj/item/mod/control/pre_equipped/advanced/atmos
+	uniform = /obj/item/clothing/under/rank/engineering/atmospheric_technician/skyrat/utility/advanced
+	shoes = /obj/item/clothing/shoes/jackboots/peacekeeper
+	ears = /obj/item/radio/headset/headset_solfed/atmos
+	mask = /obj/item/clothing/mask/gas/atmos/glass
+	belt = /obj/item/storage/belt/utility/full/powertools/ircd
 	suit_store = /obj/item/tank/internals/oxygen/yellow
 	id = /obj/item/card/id/advanced/solfed
-	l_pocket = /obj/item/extinguisher/mini
-	backpack_contents = list(/obj/item/storage/box/survival = 1,
-		/obj/item/extinguisher = 1,
-		/obj/item/storage/box/smart_metal_foam = 2,
+	backpack_contents = list(/obj/item/storage/box/rcd_ammo = 1,
+		/obj/item/storage/box/smart_metal_foam = 1,
+		/obj/item/multitool = 1,
+		/obj/item/extinguisher/advanced = 1,
+		/obj/item/rwd/loaded = 1,
+		/obj/item/beamout_tool = 1,
 		/obj/item/solfed_reporter/swat_caller = 1,
-		/obj/item/beamout_tool = 1)
-	id_trim = /datum/id_trim/solfed
+		)
+	id_trim = /datum/id_trim/solfed/atmos
 
-// Breach control MODsuit
-/obj/item/mod/control/pre_equipped/atmospheric/breach_control //Just a different kit as 811 wont be raiding Robotics; otherwise the same look (For now???)
-	theme = /datum/mod_theme/atmospheric/breach_control
-	applied_cell = /obj/item/stock_parts/cell/super
-	applied_modules = list(
-		/obj/item/mod/module/storage/large_capacity,
-		/obj/item/mod/module/welding,
-		/obj/item/mod/module/rad_protection,
-		/obj/item/mod/module/flashlight,
-		/obj/item/mod/module/t_ray,
-		/obj/item/mod/module/tether,
-		/obj/item/mod/module/visor/meson,
-	)
+/obj/item/radio/headset/headset_solfed/atmos
+	name = "\improper SolFed adv. atmos headset"
+	desc = "A headset used by the Solar Federation response teams."
+	icon_state = "med_headset"
+	keyslot = /obj/item/encryptionkey/headset_solfed/atmos
+	radiosound = 'modular_skyrat/modules/radiosound/sound/radio/security.ogg'
 
-/datum/mod_theme/atmospheric/breach_control	//Implement a unique skin for this eventually
-	ui_theme = "neutral"	//Le yellow Sol
+/obj/item/encryptionkey/headset_solfed/atmos
+	name = "\improper SolFed adv. atmos encryption key"
+	icon_state = "cypherkey_medical"
+	independent = TRUE
+	channels = list(RADIO_CHANNEL_SOLFED = 1, RADIO_CHANNEL_ENGINEERING = 1, RADIO_CHANNEL_COMMAND = 1)
+	greyscale_config = /datum/greyscale_config/encryptionkey_medical
+	greyscale_colors = "#ebebeb#2b2793"
 
 /*
 *	EMT
@@ -585,7 +596,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 					cop.mind.add_antag_datum(ert_antag)
 					cop.mind.set_assigned_role(SSjob.GetJobType(ert_antag.ert_job_path))
 					SSjob.SendToLateJoin(cop)
-					cop.grant_language(/datum/language/common, TRUE, TRUE, LANGUAGE_MIND)
+					cop.grant_language(/datum/language/common, TRUE, TRUE, LANGUAGE_SPAWNER)
 
 					var/obj/item/gangster_cellphone/phone = new() // biggest gang in the city
 					phone.gang_id = cell_phone_number
@@ -762,3 +773,8 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 			qdel(user)
 	else
 		user.balloon_alert(user, "beam-out cancelled")
+
+#undef EMERGENCY_RESPONSE_POLICE
+#undef EMERGENCY_RESPONSE_ATMOS
+#undef EMERGENCY_RESPONSE_EMT
+#undef EMERGENCY_RESPONSE_EMAG

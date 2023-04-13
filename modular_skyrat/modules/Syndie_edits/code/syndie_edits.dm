@@ -132,12 +132,12 @@
 	soft_type = "ds"
 
 //Maid Outfit
-/obj/item/clothing/head/maidheadband/syndicate
+/obj/item/clothing/head/costume/maidheadband/syndicate
 	name = "tactical maid headband"
 	desc = "Tacticute."
 	icon_state = "syndimaid_headband"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/costume.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/costume.dmi'
 
 /obj/item/clothing/gloves/combat/maid
 	name = "combat maid sleeves"

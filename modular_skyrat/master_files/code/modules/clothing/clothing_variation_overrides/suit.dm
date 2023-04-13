@@ -50,10 +50,11 @@
 /obj/item/clothing/suit/costume/pirate/captain
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/hooded/chaplain_hoodie
+/obj/item/clothing/suit/jacket/curator
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/jacket/curator
+//Chaplain Suits
+/obj/item/clothing/suit/hooded/chaplain_hoodie
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/hooded/chaplainsuit
@@ -61,6 +62,7 @@
 
 /obj/item/clothing/suit/chaplainsuit
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+//End Chaplain Suits
 
 /obj/item/clothing/suit/armor/riot/knight/greyscale
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
@@ -151,15 +153,12 @@
 /obj/item/clothing/suit/hooded/cloak/godslayer
 	supports_variations_flags = NONE
 
-/obj/item/clothing/under/suit/henchmen
-	supports_variations_flags = NONE
-
 /obj/item/clothing/suit/hooded/techpriest
 	supports_variations_flags = NONE
 
 /**
  * SUBTYPE WITH NEW ICON
- * Clothing that has a digitigrade version, but its parent was set to something else earlier in this file.
+ * Clothing that has a digitigrade version, but its parent was set to something else earlier in this file or elsewhere entirely.
  */
 /obj/item/clothing/suit/wizrobe/magusblue
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
@@ -169,3 +168,24 @@
 
 /obj/item/clothing/suit/wizrobe/santa
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/apron/overalls
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+//Chaplain Suits
+//TG neglected to sort between legged and robed, so we'll have to just manually set each one
+/obj/item/clothing/suit/chaplainsuit/armor/studentuni
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION //Prevents a few glaring missing pixels
+
+/obj/item/clothing/suit/chaplainsuit/armor/clock
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/chaplainsuit/armor/templar
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/chaplainsuit/armor/ancient
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/suit/chaplainsuit/shrinehand
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION //Prevents a few glaring missing pixels
+//End Chaplain Suits

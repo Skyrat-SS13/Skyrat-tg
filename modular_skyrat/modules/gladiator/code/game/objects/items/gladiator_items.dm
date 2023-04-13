@@ -85,9 +85,9 @@
 	. = ..()
 	. += span_warning("Berserk mode is usable at 100% charge and requires the helmet to be closed in order to remain active.") //woag!!!
 
-/obj/item/clothing/head/hooded/berserker/gatsu/process(delta_time)
+/obj/item/clothing/head/hooded/berserker/gatsu/process(seconds_per_tick)
 	if(berserk_active)
-		berserk_charge = clamp(berserk_charge - CHARGE_DRAINED_PER_SECOND * delta_time, 0, BERSERK_MAX_CHARGE)
+		berserk_charge = clamp(berserk_charge - CHARGE_DRAINED_PER_SECOND * seconds_per_tick, 0, BERSERK_MAX_CHARGE)
 	if(!berserk_charge)
 		if(ishuman(loc))
 			end_berserk(loc)

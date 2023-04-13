@@ -100,7 +100,7 @@
 
 /obj/item/storage/bag/ammo/marksman/Initialize(mapload)
 	. = ..()
-	create_storage(type = /datum/storage/marksman)
+	create_storage(storage_type = /datum/storage/marksman)
 
 /datum/storage/marksman
 	max_total_storage = 60

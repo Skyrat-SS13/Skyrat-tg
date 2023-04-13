@@ -4,12 +4,12 @@ RESPECT_GLOBAL_BANS
 ## Automatic population control population limit, will send players(not admins) to the overflow server.
 ## Set to 0 to disable
 ## MAKE SURE YOU SET AN OVERFLOW IP!
-HARD_PLAYER_CAP 0
+PLAYER_HARD_CAP 0
 
 ## Player prompt to change servers after this cap.
 ## Set to 0 to disable
 ## MAKE SURE YOU SET AN OVERFLOW IP!
-SOFT_PLAYER_CAP 0
+PLAYER_SOFT_CAP 0
 
 ## The IP of the overflow server. See above.
 #OVERFLOW_SERVER_IP byond://example:1337
@@ -101,34 +101,23 @@ SSDECAY_DISABLE_NESTS
 ## Disables mismatched parts for codebases that don't want it.
 #DISABLE_MISMATCHED_PARTS
 
-## Toggles if the events system will use a vote or random choice to run events
-## Comment out to disable
-#EVENTS_USE_RANDOM
-
-## Toggles if the events system uses admin votes or public votes
-## Comment out for public votes
-#EVENTS_PUBLIC_VOTING
-
-## If we use admin votes, do we use chaos or all event vote?
-ADMIN_EVENT_USES_CHAOS
-
-## Runs a side timer for low chaos events
-LOW_CHAOS_EVENT_SYSTEM
-
-## Log event votes
-LOG_EVENT_VOTES
-
 ## Do we allow consecutive catastrophic events?
 ALLOW_CONSECUTIVE_CATASTROPIC_EVENTS
 
 ## What is the most amount of time the next event can run?
-EVENT_FREQUENCY_UPPER 12000
+EVENT_FREQUENCY_UPPER 8400
 
 ## What is the least amount of time the next event can run?
-EVENT_FREQUENCY_LOWER 9000
+EVENT_FREQUENCY_LOWER 4200
 
 ## Ticket ping frequency. Set 0 for disable that subsystem. 3000 - 5 minutes, 600 - 1 minute.
 TICKET_PING_FREQUENCY 0
 
 ## Delay between newscasters making lore announcements, default is 18000 (30 minutes)
 LORECASTER_DELAY 18000
+
+## If uncommented, suicide will be disabled.
+# DISABLE_SUICIDE
+
+## The link to the policy wiki page for primitive catgirls
+ICECATS_POLICY_LINK "https://wiki.skyrat13.tk/w/index.php/Ghost_Role_policy#Icewalkers"

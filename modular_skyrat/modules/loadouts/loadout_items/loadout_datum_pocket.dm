@@ -129,10 +129,6 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Flask"
 	item_path = /obj/item/reagent_containers/cup/glass/flask
 
-/datum/loadout_item/pocket_items/skub
-	name = "Skub"
-	item_path = /obj/item/skub
-
 /datum/loadout_item/pocket_items/multipen
 	name = "Multicolored Pen"
 	item_path = /obj/item/pen/fourcolor

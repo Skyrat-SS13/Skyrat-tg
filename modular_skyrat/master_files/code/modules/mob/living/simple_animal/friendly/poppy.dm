@@ -35,7 +35,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	gold_core_spawnable = NO_SPAWN
 	light_system = MOVABLE_LIGHT_DIRECTIONAL
-	light_color = LIGHT_COLOR_YELLOW
+	light_color = LIGHT_COLOR_BRIGHT_YELLOW
 	light_range = 2
 	light_power = 0.8
 	light_on = TRUE
@@ -81,7 +81,7 @@
 		set_light_on(TRUE)
 	regenerate_icons()
 
-/mob/living/simple_animal/pet/poppy/Life(delta_time = SSMOBS_DT, times_fired)
+/mob/living/simple_animal/pet/poppy/Life(seconds_per_tick = SSMOBS_DT, times_fired)
 	if(client || stat)
 		return
 
@@ -92,7 +92,7 @@
 		near_engine = FALSE
 		panic()
 
-	if(!DT_PROB(0.5, delta_time))
+	if(!SPT_PROB(0.5, seconds_per_tick))
 		return
 	if(!resting)
 		manual_emote(pick("lets out a hiss before resting.", "catches a break.", "gives a simmering hiss before lounging.", "exams her surroundings before relaxing."))

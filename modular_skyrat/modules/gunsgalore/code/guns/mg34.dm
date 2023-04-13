@@ -42,7 +42,7 @@
 		. += span_notice("It seems like you could use an <b>empty hand</b> to remove the magazine.")
 
 /obj/item/gun/ballistic/automatic/mg34/attack_hand_secondary(mob/user, list/modifiers)
-	if(!user.canUseTopic(src))
+	if(!user.can_perform_action(src))
 		return
 	cover_open = !cover_open
 	to_chat(user, span_notice("You [cover_open ? "open" : "close"] [src]'s cover."))
@@ -128,9 +128,9 @@
 	RegisterSignal(src, COMSIG_GUN_FIRED, PROC_REF(process_heat))
 	START_PROCESSING(SSobj, src)
 
-/obj/item/gun/ballistic/automatic/mg34/mg42/process(delta_time)
+/obj/item/gun/ballistic/automatic/mg34/mg42/process(seconds_per_tick)
 	if(barrel_heat > 0)
-		barrel_heat -= BARREL_COOLDOWN_RATE * delta_time
+		barrel_heat -= BARREL_COOLDOWN_RATE * seconds_per_tick
 		update_appearance()
 
 /obj/item/gun/ballistic/automatic/mg34/mg42/examine(mob/user)
@@ -214,4 +214,4 @@
 	ammo_type = /obj/item/ammo_casing/realistic/a792x57
 	caliber = "a792x57"
 	max_ammo = 150 // It's a lot, but the gun overheats.
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	multiple_sprites = AMMO_BOX_FULL_EMPTY

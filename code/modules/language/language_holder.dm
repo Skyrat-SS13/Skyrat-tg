@@ -53,21 +53,9 @@ Key procs
 	var/atom/owner
 
 /// Initializes, and copies in the languages from the current atom if available.
-///datum/language_holder/New(atom/_owner) //ORIGINAL
-/datum/language_holder/New(atom/_owner, datum/preferences/pref_load) //SKYRAT EDIT CHANGE - CUSTOMIZATION
+/datum/language_holder/New(atom/_owner)
 	if(_owner && QDELETED(_owner))
 		CRASH("Langauge holder added to a qdeleting thing, what the fuck [text_ref(_owner)]")
-
-	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	if(pref_load)
-		//If we're loading a holder from prefs, override the languages
-		understood_languages.Cut()
-		spoken_languages.Cut()
-		for(var/lang_path in pref_load.languages)
-			understood_languages[lang_path] = list(LANGUAGE_ATOM)
-			if(pref_load.languages[lang_path] == LANGUAGE_SPOKEN)
-				spoken_languages[lang_path] = list(LANGUAGE_ATOM)
-	//SKYRAT EDIT ADDITION END
 
 	owner = _owner
 	if(istype(owner, /datum/mind))

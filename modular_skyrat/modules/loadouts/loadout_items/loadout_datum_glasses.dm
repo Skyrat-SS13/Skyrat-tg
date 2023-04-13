@@ -30,10 +30,9 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	if(equipped_glasses.tint)
 		equipper.update_tint()
 	if(equipped_glasses.vision_flags \
-		|| equipped_glasses.darkness_view \
 		|| equipped_glasses.invis_override \
 		|| equipped_glasses.invis_view \
-		|| !isnull(equipped_glasses.lighting_alpha))
+		|| !isnull(equipped_glasses.color_cutoffs))
 		equipper.update_sight()
 /*
 *	PRESCRIPTION GLASSES
@@ -100,9 +99,13 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	name = "Eyepatch"
 	item_path = /obj/item/clothing/glasses/eyepatch
 
-/datum/loadout_item/glasses/whiteeyepatch
+/datum/loadout_item/glasses/white_eyepatch
 	name = "White Eyepatch"
 	item_path = /obj/item/clothing/glasses/eyepatch/white
+
+/datum/loadout_item/glasses/medical_eyepatch
+	name = "Medical Eyepatch"
+	item_path = /obj/item/clothing/glasses/eyepatch/medical
 
 /datum/loadout_item/glasses/blindfold
 	name = "Blindfold"

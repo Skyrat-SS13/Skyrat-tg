@@ -21,7 +21,7 @@
 	r_pocket = /obj/item/ammo_box/magazine/m9mm_aps
 	shoes = /obj/item/clothing/shoes/combat
 
-	l_hand = /obj/item/gun/ballistic/automatic/akm
+	l_hand = /obj/item/gun/ballistic/automatic/akm/nri
 
 	id = /obj/item/card/id/advanced/centcom/ert/nri
 	id_trim = /datum/id_trim/nri
@@ -66,7 +66,7 @@
 							/obj/item/crucifix,
 							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
 
-	l_hand = /obj/item/gun/ballistic/automatic/akm
+	l_hand = /obj/item/gun/ballistic/automatic/akm/nri
 
 	id_trim = /datum/id_trim/nri/commander
 
@@ -92,7 +92,7 @@
 							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
 
 	l_hand = /obj/item/shield/riot/pointman/nri
-	r_hand = /obj/item/gun/ballistic/automatic/plastikov/nri
+	r_hand = /obj/item/gun/ballistic/automatic/nri_smg
 
 	id_trim = /datum/id_trim/nri/medic
 
@@ -114,7 +114,7 @@
 							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
 
 	l_hand = /obj/item/storage/belt/utility/full/powertools
-	r_hand = /obj/item/gun/ballistic/automatic/plastikov/nri
+	r_hand = /obj/item/gun/ballistic/automatic/nri_smg
 
 	id_trim = /datum/id_trim/nri/engineer
 

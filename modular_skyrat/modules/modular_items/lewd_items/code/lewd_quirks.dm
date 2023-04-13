@@ -257,7 +257,7 @@
 	random_gain = FALSE
 	resilience = TRAUMA_RESILIENCE_ABSOLUTE
 
-/datum/brain_trauma/very_special/sadism/on_life(delta_time, times_fired)
+/datum/brain_trauma/very_special/sadism/on_life(seconds_per_tick, times_fired)
 	var/mob/living/carbon/human/affected_mob = owner
 	if(someone_suffering() && affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		affected_mob.adjust_arousal(2)
@@ -271,7 +271,11 @@
 	for(var/mob/living/carbon/human/iterated_mob in oview(owner, 4))
 		if(!isliving(iterated_mob)) //ghosts ain't people
 			continue
-		if(istype(iterated_mob) && iterated_mob.pain >= 10)
+		if(!istype(iterated_mob)) //only count mobs of type mob/living/human/...
+			continue
+		if(iterated_mob.stat == DEAD) //don't count dead targets either
+			continue
+		if(iterated_mob.pain >= 10)
 			return TRUE
 	return FALSE
 

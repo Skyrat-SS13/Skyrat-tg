@@ -8,16 +8,27 @@
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
 
-/datum/sprite_accessory/snouts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if((H.wear_mask && (H.wear_mask.flags_inv & HIDESNOUT)) || (H.head && (H.head.flags_inv & HIDESNOUT)) || !HD)
+/datum/sprite_accessory/snouts/is_hidden(mob/living/carbon/human/human)
+	if((human.wear_mask?.flags_inv & HIDESNOUT) || (human.head?.flags_inv & HIDESNOUT))
 		return TRUE
+
 	return FALSE
 
 /obj/item/organ/external/snout
 	mutantpart_key = "snout"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	external_bodytypes = NONE // We don't actually want this to have BODYTYPE_SNOUTED by default, since some of them don't apply that.
+	preference = "feature_snout"
+
+/datum/bodypart_overlay/mutant/snout
 	color_source = ORGAN_COLOR_OVERRIDE
+
+/datum/bodypart_overlay/mutant/snout/override_color(rgb_value)
+	return draw_color
+
+/datum/bodypart_overlay/mutant/snout/can_draw_on_bodypart(mob/living/carbon/human/human)
+	return !sprite_datum.is_hidden(human)
+
 
 /obj/item/organ/external/snout/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
 	if(sprite_accessory_flags & SPRITE_ACCESSORY_USE_MUZZLED_SPRITE)
@@ -27,11 +38,19 @@
 
 	return ..()
 
-/obj/item/organ/external/snout/override_color(rgb_value)
-	if(mutantpart_key)
-		return mutantpart_info[MUTANT_INDEX_COLOR_LIST][1]
+/obj/item/organ/external/snout/top
+	bodypart_overlay = /datum/bodypart_overlay/mutant/snout/top
 
-	return rgb_value
+/datum/bodypart_overlay/mutant/snout/top
+	layers = EXTERNAL_FRONT
+
+
+/obj/item/organ/external/snout/top_adj
+	bodypart_overlay = /datum/bodypart_overlay/mutant/snout/top_adj
+
+/datum/bodypart_overlay/mutant/snout/top_adj
+	layers = EXTERNAL_FRONT | EXTERNAL_ADJACENT
+
 
 /datum/sprite_accessory/snouts/none
 	name = "None"
@@ -97,15 +116,18 @@
 	name = "Bug"
 	icon_state = "bug"
 	flags_for_organ = NONE
+	color_src = USE_MATRIXED_COLORS
+	organ_type = /obj/item/organ/external/snout/top_adj
+
+/datum/sprite_accessory/snouts/mammal/bug_no_eyes
+	name = "Bug (No eyes)"
+	icon_state = "bug_no_eyes"
+	flags_for_organ = NONE
 	color_src = USE_ONE_COLOR
-	extra2 = TRUE
-	extra2_color_src = MUTCOLORS3
 
 /datum/sprite_accessory/snouts/mammal/elephant
 	name = "Elephant"
 	icon_state = "elephant"
-	extra = TRUE
-	extra_color_src = MUTCOLORS3
 
 /datum/sprite_accessory/snouts/mammal/husky
 	name = "Husky"
@@ -114,8 +136,6 @@
 /datum/sprite_accessory/snouts/mammal/rhino
 	name = "Horn"
 	icon_state = "rhino"
-	extra = TRUE
-	extra_color_src = MUTCOLORS3
 
 /datum/sprite_accessory/snouts/mammal/rodent
 	name = "Rodent"
@@ -230,8 +250,10 @@
 **************** Snouts *******************
 *************but higher up*****************/
 
-/datum/sprite_accessory/snouts/mammal/top/
+/datum/sprite_accessory/snouts/mammal/top
 	flags_for_organ = SPRITE_ACCESSORY_USE_MUZZLED_SPRITE | SPRITE_ACCESSORY_USE_ALT_FACEWEAR_LAYER
+	organ_type = /obj/item/organ/external/snout/top
+	relevent_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/snouts/mammal/top/fbird
 	name = "Beak (Top)"
@@ -245,21 +267,17 @@
 	name = "Bug (Top)"
 	icon_state = "fbug"
 	flags_for_organ = NONE
-	color_src = USE_ONE_COLOR
-	extra2 = TRUE
-	extra2_color_src = MUTCOLORS3
+	color_src = USE_MATRIXED_COLORS
+	organ_type = /obj/item/organ/external/snout/top_adj
+	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/snouts/mammal/top/felephant
 	name = "Elephant (Top)"
 	icon_state = "felephant"
-	extra = TRUE
-	extra_color_src = MUTCOLORS3
 
 /datum/sprite_accessory/snouts/mammal/top/frhino
 	name = "Horn (Top)"
 	icon_state = "frhino"
-	extra = TRUE
-	extra_color_src = MUTCOLORS3
 
 /datum/sprite_accessory/snouts/mammal/top/fhusky
 	name = "Husky (Top)"
@@ -360,8 +378,6 @@
 /datum/sprite_accessory/snouts/mammal/skulldog
 	name = "Skulldog"
 	icon_state = "skulldog"
-	extra = TRUE
-	//extra_color_src = MATRIXED
 
 /datum/sprite_accessory/snouts/mammal/hanubus
 	name = "Anubus"

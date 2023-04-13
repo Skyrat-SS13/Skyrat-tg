@@ -133,9 +133,9 @@
 	owner.clear_alert("hypnosis")
 	..()
 
-/datum/brain_trauma/very_special/induced_hypnosis/on_life(delta_time, times_fired)
+/datum/brain_trauma/very_special/induced_hypnosis/on_life(seconds_per_tick, times_fired)
 	..()
-	if(!(DT_PROB(1, delta_time)))
+	if(!(SPT_PROB(1, seconds_per_tick)))
 		return
 	switch(rand(1, 2))
 		if(1)
