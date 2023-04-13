@@ -428,7 +428,7 @@
 		object.forceMove(drop_location())
 
 // Machine Workflow Processor
-/obj/structure/chair/milking_machine/process(delta_time)
+/obj/structure/chair/milking_machine/process(seconds_per_tick)
 	// Check if the machine should work
 	if(!current_mob)
 		update_all_visuals()
@@ -462,15 +462,15 @@
 
 	if(current_mode != mode_list[1])
 		pump_state = pump_state_list[2]
-		retrive_liquids_from_selected_organ(delta_time)
-		increase_current_mob_arousal(delta_time)
+		retrive_liquids_from_selected_organ(seconds_per_tick)
+		increase_current_mob_arousal(seconds_per_tick)
 	else
 		current_mode = mode_list[1]
 		pump_state = pump_state_list[1]
 	update_all_visuals()
 
 // Liquid intake handler
-/obj/structure/chair/milking_machine/proc/retrive_liquids_from_selected_organ(delta_time)
+/obj/structure/chair/milking_machine/proc/retrive_liquids_from_selected_organ(seconds_per_tick)
 	// Climax check
 	var/fluid_multiplier = 1
 	if(current_mob != null)
@@ -479,17 +479,17 @@
 
 	if(istype(current_selected_organ, /obj/item/organ/external/genital/breasts))
 		if(current_selected_organ.reagents.total_volume > 0)
-			current_selected_organ.transfer_internal_fluid(milk_vessel.reagents, milk_retrive_amount[current_mode] * fluid_multiplier * delta_time)
+			current_selected_organ.transfer_internal_fluid(milk_vessel.reagents, milk_retrive_amount[current_mode] * fluid_multiplier * seconds_per_tick)
 		else
 			return
 	else if (istype(current_selected_organ, /obj/item/organ/external/genital/vagina))
 		if(current_selected_organ.reagents.total_volume > 0)
-			current_selected_organ.transfer_internal_fluid(girlcum_vessel.reagents, girlcum_retrive_amount[current_mode] * fluid_multiplier * delta_time)
+			current_selected_organ.transfer_internal_fluid(girlcum_vessel.reagents, girlcum_retrive_amount[current_mode] * fluid_multiplier * seconds_per_tick)
 		else
 			return
 	else if (istype(current_selected_organ, /obj/item/organ/external/genital/testicles))
 		if(current_selected_organ.reagents.total_volume > 0)
-			current_selected_organ.transfer_internal_fluid(semen_vessel.reagents, semen_retrive_amount[current_mode] * fluid_multiplier * delta_time)
+			current_selected_organ.transfer_internal_fluid(semen_vessel.reagents, semen_retrive_amount[current_mode] * fluid_multiplier * seconds_per_tick)
 		else
 			return
 	else
@@ -497,10 +497,10 @@
 		return
 
 // Handling the process of the impact of the machine on the organs of the mob
-/obj/structure/chair/milking_machine/proc/increase_current_mob_arousal(delta_time)
-	current_mob.adjust_arousal(arousal_amounts[current_mode] * delta_time)
-	current_mob.adjust_pleasure(pleasure_amounts[current_mode] * delta_time)
-	current_mob.adjust_pain(pain_amounts[current_mode] * delta_time)
+/obj/structure/chair/milking_machine/proc/increase_current_mob_arousal(seconds_per_tick)
+	current_mob.adjust_arousal(arousal_amounts[current_mode] * seconds_per_tick)
+	current_mob.adjust_pleasure(pleasure_amounts[current_mode] * seconds_per_tick)
+	current_mob.adjust_pain(pain_amounts[current_mode] * seconds_per_tick)
 
 // Drag and drop mob buckle handler into the machine
 /obj/structure/chair/milking_machine/MouseDrop(over_object, src_location, over_location)

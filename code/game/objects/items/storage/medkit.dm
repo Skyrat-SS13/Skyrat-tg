@@ -370,7 +370,10 @@
 /obj/item/storage/pill_bottle/Initialize(mapload)
 	. = ..()
 	atom_storage.allow_quick_gather = TRUE
-	atom_storage.set_holdable(list(/obj/item/reagent_containers/pill))
+	atom_storage.set_holdable(list(
+		/obj/item/reagent_containers/pill,
+		/obj/item/food/bait/natural,
+	))
 
 /obj/item/storage/pill_bottle/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] is trying to get the cap off [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
@@ -562,6 +565,14 @@
 	for(var/i in 1 to 5)
 		new /obj/item/reagent_containers/pill/paxpsych(src)
 
+/obj/item/storage/pill_bottle/naturalbait
+	name = "freshness jar"
+	desc = "Full of natural fish bait."
+
+/obj/item/storage/pill_bottle/naturalbait/PopulateContents()
+	for(var/i in 1 to 7)
+		new /obj/item/food/bait/natural(src)
+
 /// A box which takes in coolant and uses it to preserve organs and body parts
 /obj/item/storage/organbox
 	name = "organ transport box"
@@ -590,7 +601,7 @@
 	create_reagents(100, TRANSPARENT)
 	START_PROCESSING(SSobj, src)
 
-/obj/item/storage/organbox/process(delta_time)
+/obj/item/storage/organbox/process(seconds_per_tick)
 	///if there is enough coolant var
 	var/using_coolant = coolant_to_spend()
 	if (isnull(using_coolant))
@@ -601,7 +612,7 @@
 				stored.unfreeze()
 		return
 
-	var/amount_used = 0.05 * delta_time
+	var/amount_used = 0.05 * seconds_per_tick
 	if (using_coolant != /datum/reagent/cryostylane)
 		amount_used *= 2
 	reagents.remove_reagent(using_coolant, amount_used)
