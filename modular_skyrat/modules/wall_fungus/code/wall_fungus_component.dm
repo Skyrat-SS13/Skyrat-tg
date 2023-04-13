@@ -59,16 +59,16 @@
 	parent_wall.update_icon(UPDATE_OVERLAYS)
 	return ..()
 
-/datum/component/wall_fungus/process(delta_time)
+/datum/component/wall_fungus/process(seconds_per_tick)
 	var/turf/closed/wall/parent_wall = parent
-	if(prob(spread_chance * delta_time))
+	if(prob(spread_chance * seconds_per_tick))
 		spread_to_nearby_wall()
 
 	if(progression_stage > FUNGUS_STAGE_MAX)
 		collapse_parent_structure()
 		return
 
-	progression_percent += progression_step_amount * delta_time
+	progression_percent += progression_step_amount * seconds_per_tick
 
 	if(progression_percent >= 100)
 		progression_percent = 0

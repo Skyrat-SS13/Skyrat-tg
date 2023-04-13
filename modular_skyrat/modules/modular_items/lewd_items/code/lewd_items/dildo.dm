@@ -77,19 +77,19 @@
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
 
-/obj/item/clothing/sextoy/dildo/process(delta_time)
+/obj/item/clothing/sextoy/dildo/process(seconds_per_tick)
 	var/mob/living/carbon/human/user = loc
 	if(!istype(user))
 		return
 	if(poly_size == "small" && user.arousal < (AROUSAL_REGULAR_THRESHOLD * 0.8))
-		user.adjust_arousal(0.6 * delta_time)
-		user.adjust_pleasure(0.6 * delta_time)
+		user.adjust_arousal(0.6 * seconds_per_tick)
+		user.adjust_pleasure(0.6 * seconds_per_tick)
 	else if(poly_size == "medium" && user.arousal < AROUSAL_REGULAR_THRESHOLD)
-		user.adjust_arousal(0.8 * delta_time)
-		user.adjust_pleasure(0.8 * delta_time)
+		user.adjust_arousal(0.8 * seconds_per_tick)
+		user.adjust_pleasure(0.8 * seconds_per_tick)
 	else if(poly_size == "big" && user.arousal < (AROUSAL_REGULAR_THRESHOLD * 1.2))
-		user.adjust_arousal(1 * delta_time)
-		user.adjust_pleasure(1 * delta_time)
+		user.adjust_arousal(1 * seconds_per_tick)
+		user.adjust_pleasure(1 * seconds_per_tick)
 
 /obj/item/clothing/sextoy/dildo/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
 	. = ..()
@@ -382,13 +382,13 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 		QDEL_NULL(the_toy)
 		in_hands = FALSE
 
-/obj/item/clothing/sextoy/dildo/double_dildo/process(delta_time)
+/obj/item/clothing/sextoy/dildo/double_dildo/process(seconds_per_tick)
 	var/mob/living/carbon/human/user = loc
 	if(!istype(user))
 		return FALSE
 	if(user.arousal < AROUSAL_REGULAR_THRESHOLD)
-		user.adjust_arousal(0.8 * delta_time)
-		user.adjust_pleasure(0.8 * delta_time)
+		user.adjust_arousal(0.8 * seconds_per_tick)
+		user.adjust_pleasure(0.8 * seconds_per_tick)
 
 /obj/item/clothing/sextoy/dildo/double_dildo/dropped(mob/living/carbon/human/user)
 	. = ..()
