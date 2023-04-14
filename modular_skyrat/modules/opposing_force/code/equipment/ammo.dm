@@ -19,12 +19,6 @@
 	item_type = /obj/item/ammo_box/magazine/mp40
 	description = "A thirty-two round magazine for the MP-40. Uses 9x19mm ammunition."
 
-/datum/opposing_force_equipment/ammo/pps
-	item_type = /obj/item/ammo_box/magazine/pps
-
-/datum/opposing_force_equipment/ammo/ppsh
-	item_type = /obj/item/ammo_box/magazine/ppsh
-
 /datum/opposing_force_equipment/ammo/fg42
 	item_type = /obj/item/ammo_box/magazine/fg42
 	description = "A twenty round magazine for the FG-42. Uses 7.92x57mm ammunition."
