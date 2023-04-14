@@ -13,12 +13,12 @@
 	/// how long we last for
 	var/flare_duration = 10 SECONDS
 	/// How long we apply forward momentum upon deploying
-	var/thrust_duration = 0.5 SECONDS
+	var/thrust_duration = 1 SECONDS
 
 
 /obj/physics_decoy_flare/Initialize(mapload, start_angle, start_velocity_x, start_velocity_y)
 	. = ..()
-	var/datum/component/physics/physics_component = AddComponent(/datum/component/physics, starting_angle = -start_angle, _thrust_check_required = FALSE)
+	var/datum/component/physics/physics_component = AddComponent(/datum/component/physics, starting_angle = -start_angle, _thrust_check_required = FALSE, _forward_maxthrust = 10)
 	physics_component.velocity_x = start_velocity_x
 	physics_component.velocity_y = start_velocity_y
 
@@ -40,11 +40,10 @@
 		used = TRUE
 		STOP_PROCESSING(SSphysics, src)
 
-/obj/physics_decoy_flare/CanPassThrough(atom/blocker, movement_dir, blocker_opinion)
-	. = ..()
-	if(istype(blocker, /obj/physics_missile))
+/obj/physics_decoy_flare/CanAllowThrough(atom/movable/mover, border_dir)
+	if(istype(mover, /obj/physics_missile))
 		return FALSE
-	return TRUE
+	return ..()
 
 
 /obj/physics_decoy_flare/proc/cut_initial_thrust()
