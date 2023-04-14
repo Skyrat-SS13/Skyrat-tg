@@ -315,6 +315,12 @@
 	if(!user || (!beaker && !new_beaker))
 		return FALSE
 
+	if(beaker && new_beaker)
+		try_put_in_hand(beaker, user)
+		beaker = new_beaker
+		to_chat(user, span_notice("You swap out the current beaker with a new one in a single uninterrupted motion."))
+		return TRUE
+
 	if(beaker)
 		try_put_in_hand(beaker, user)
 		beaker = null
@@ -428,18 +434,13 @@
 	return ..()
 
 // Handler of the process of dispensing a glass from a machine to a tile
-/obj/structure/chair/milking_machine/proc/adjust_item_drop_location(atom/movable/AM)
-	if(AM == beaker)
-		AM.pixel_x = AM.base_pixel_x - 8
-		AM.pixel_y = AM.base_pixel_y + 8
-		return null
+/obj/structure/chair/milking_machine/proc/adjust_item_drop_location(atom/movable/dropped_atom)
+	if(dropped_atom != beaker)
+		return FALSE
 
-	var/md5 = md5(AM.name)
-	for (var/i in 1 to 32)
-		. += hex2num(md5[i])
-	. = . % 9
-	AM.pixel_x = AM.base_pixel_x + ((.%3)*6)
-	AM.pixel_y = AM.base_pixel_y - 8 + (round( . / 3)*8)
+	dropped_atom.pixel_x = dropped_atom.base_pixel_x - 8
+	dropped_atom.pixel_y = dropped_atom.base_pixel_y + 8
+	return null
 
 // General handler for calling redrawing of the current state of the machine
 /obj/structure/chair/milking_machine/proc/update_all_visuals()
