@@ -573,13 +573,11 @@
 	name = "Solar Admiral Gloves"
 	item_path = /obj/item/clothing/gloves/elofy
 	ckeywhitelist = list("october23")
-	restricted_roles = list(JOB_HEAD_OF_SECURITY)
 
 /datum/loadout_item/shoes/elofy
 	name = "Solar Admiral Boots"
 	item_path = /obj/item/clothing/shoes/jackboots/elofy
 	ckeywhitelist = list("october23")
-	restricted_roles = list(JOB_HEAD_OF_SECURITY)
 
 /datum/loadout_item/pocket_items/transponder
 	name = "Broken Helian Transponder"
