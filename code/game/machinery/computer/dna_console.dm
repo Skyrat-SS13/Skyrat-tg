@@ -708,6 +708,11 @@
 				var/datum/mutation/human/matched_mutation = null
 				//Go through all sequences for matching gene, and set the mutation
 				for (var/M in subtypesof(/datum/mutation/human))
+					// SKYRAT EDIT ADDITION
+					var/datum/mutation/human/iterating_mutation = M
+					if(iterating_mutation.disabled)
+						continue
+					// SKYRAT EDIT END
 					var/true_sequence = GET_SEQUENCE(M)
 					if (new_sequence == true_sequence)
 						matched_mutation = M
@@ -2301,6 +2306,9 @@
 /obj/machinery/computer/scan_consolenew/proc/react_to_scanner_del(datum/source)
 	SIGNAL_HANDLER
 	set_connected_scanner(null)
+
+#undef GENETIC_DAMAGE_PULSE_UNIQUE_IDENTITY
+#undef GENETIC_DAMAGE_PULSE_UNIQUE_FEATURES
 
 #undef ENZYME_COPY_BASE_COOLDOWN
 #undef INJECTOR_TIMEOUT

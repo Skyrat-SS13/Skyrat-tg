@@ -84,3 +84,9 @@
 	name = "\improper Schechi translation key"
 	desc = "An encryption key that automatically encodes Schechi heard through the radio into common."
 	translated_language = /datum/language/schechi
+
+/obj/item/encryptionkey/translation/vulpkanin
+	name = "\improper Canilunzt translation key"
+	desc = "An encryption key that automatically encodes Canilunzt heard through the radio into common."
+	translated_language = /datum/language/canilunzt
+	

@@ -56,15 +56,30 @@
 	desc = "Your body can't produce enough blood to sustain itself."
 	icon = "tint"
 	value = -8
+	mob_trait = TRAIT_BLOOD_DEFICIENCY
 	gain_text = span_danger("You feel your vigor slowly fading away.")
 	lose_text = span_notice("You feel vigorous again.")
 	medical_record_text = "Patient requires regular treatment for blood loss due to low production of blood."
 	hardcore_value = 8
-	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_PROCESSES
+	quirk_flags = QUIRK_HUMAN_ONLY
 	mail_goodies = list(/obj/item/reagent_containers/blood/o_minus) // universal blood type that is safe for all
 	var/min_blood = BLOOD_VOLUME_SAFE - 25 // just barely survivable without treatment
 
-/datum/quirk/blooddeficiency/process(delta_time)
+/datum/quirk/blooddeficiency/post_add()
+	if(!ishuman(quirk_holder))
+		return
+
+	// for making sure the roundstart species has the right blood pack sent to them
+	var/mob/living/carbon/human/carbon_target = quirk_holder
+	carbon_target.dna.species.update_quirk_mail_goodies(carbon_target, src)
+
+/**
+ * Makes the mob lose blood from having the blood deficiency quirk, if possible
+ *
+ * Arguments:
+ * * seconds_per_tick
+ */
+/datum/quirk/blooddeficiency/proc/lose_blood(seconds_per_tick)
 	if(quirk_holder.stat == DEAD)
 		return
 
@@ -75,7 +90,7 @@
 	if (carbon_target.blood_volume <= min_blood)
 		return
 	// Ensures that we don't reduce total blood volume below min_blood.
-	carbon_target.blood_volume = max(min_blood, carbon_target.blood_volume - carbon_target.dna.species.blood_deficiency_drain_rate * delta_time)
+	carbon_target.blood_volume = max(min_blood, carbon_target.blood_volume - carbon_target.dna.species.blood_deficiency_drain_rate * seconds_per_tick)
 
 /datum/quirk/item_quirk/blindness
 	name = "Blind"
@@ -127,14 +142,14 @@
 		flavour_text = "These will keep you alive until you can secure a supply of medication. Don't rely on them too much!",
 	)
 
-/datum/quirk/item_quirk/brainproblems/process(delta_time)
+/datum/quirk/item_quirk/brainproblems/process(seconds_per_tick)
 	if(quirk_holder.stat == DEAD)
 		return
 
 	if(HAS_TRAIT(quirk_holder, TRAIT_TUMOR_SUPPRESSED))
 		return
 
-	quirk_holder.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.2 * delta_time)
+	quirk_holder.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.2 * seconds_per_tick)
 
 /datum/quirk/item_quirk/deafness
 	name = "Deaf"
@@ -807,7 +822,7 @@
 		for(var/addiction_type in subtypesof(/datum/addiction))
 			quirk_holder.mind.remove_addiction_points(addiction_type, MAX_ADDICTION_POINTS)
 
-/datum/quirk/item_quirk/junkie/process(delta_time)
+/datum/quirk/item_quirk/junkie/process(seconds_per_tick)
 	if(HAS_TRAIT(quirk_holder, TRAIT_NOMETABOLISM))
 		return
 	var/mob/living/carbon/human/human_holder = quirk_holder
@@ -858,12 +873,12 @@
 	. = ..()
 	quirk_holder.add_mob_memory(/datum/memory/key/quirk_smoker, protagonist = quirk_holder, preferred_brand = initial(drug_container_type.name))
 	// smoker lungs have 25% less health and healing
-	var/obj/item/organ/internal/lungs/smoker_lungs = quirk_holder.getorganslot(ORGAN_SLOT_LUNGS)
+	var/obj/item/organ/internal/lungs/smoker_lungs = quirk_holder.get_organ_slot(ORGAN_SLOT_LUNGS)
 	if (smoker_lungs && !(smoker_lungs.organ_flags & ORGAN_SYNTHETIC)) // robotic lungs aren't affected
 		smoker_lungs.maxHealth = smoker_lungs.maxHealth * 0.75
 		smoker_lungs.healing_factor = smoker_lungs.healing_factor * 0.75
 
-/datum/quirk/item_quirk/junkie/smoker/process(delta_time)
+/datum/quirk/item_quirk/junkie/smoker/process(seconds_per_tick)
 	. = ..()
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	var/obj/item/mask_item = human_holder.get_item_by_slot(ITEM_SLOT_MASK)
@@ -923,7 +938,7 @@
 	quirk_holder.add_mob_memory(/datum/memory/key/quirk_allergy, allergy_string = allergy_string)
 	to_chat(quirk_holder, span_boldnotice("You are allergic to [allergy_string], make sure not to consume any of these!"))
 
-/datum/quirk/item_quirk/allergic/process(delta_time)
+/datum/quirk/item_quirk/allergic/process(seconds_per_tick)
 	if(!iscarbon(quirk_holder))
 		return
 
@@ -943,9 +958,9 @@
 			instantiated_med.reagent_removal_skip_list |= ALLERGIC_REMOVAL_SKIP
 			return //intentionally stops the entire proc so we avoid the organ damage after the loop
 		instantiated_med.reagent_removal_skip_list -= ALLERGIC_REMOVAL_SKIP
-		carbon_quirk_holder.adjustToxLoss(3 * delta_time)
-		carbon_quirk_holder.reagents.add_reagent(/datum/reagent/toxin/histamine, 3 * delta_time)
-		if(DT_PROB(10, delta_time))
+		carbon_quirk_holder.adjustToxLoss(3 * seconds_per_tick)
+		carbon_quirk_holder.reagents.add_reagent(/datum/reagent/toxin/histamine, 3 * seconds_per_tick)
+		if(SPT_PROB(10, seconds_per_tick))
 			carbon_quirk_holder.vomit()
 			carbon_quirk_holder.adjustOrganLoss(pick(ORGAN_SLOT_BRAIN,ORGAN_SLOT_APPENDIX,ORGAN_SLOT_LUNGS,ORGAN_SLOT_HEART,ORGAN_SLOT_LIVER,ORGAN_SLOT_STOMACH),10)
 
@@ -994,7 +1009,7 @@
 /datum/quirk/claustrophobia/remove()
 	quirk_holder.clear_mood_event("claustrophobia")
 
-/datum/quirk/claustrophobia/process(delta_time)
+/datum/quirk/claustrophobia/process(seconds_per_tick)
 	if(quirk_holder.stat != CONSCIOUS || quirk_holder.IsSleeping() || quirk_holder.IsUnconscious())
 		return
 
@@ -1014,7 +1029,7 @@
 
 	quirk_holder.add_mood_event("claustrophobia", /datum/mood_event/claustrophobia)
 	quirk_holder.losebreath += 0.25 // miss a breath one in four times
-	if(DT_PROB(25, delta_time))
+	if(SPT_PROB(25, seconds_per_tick))
 		if(nick_spotted)
 			to_chat(quirk_holder, span_warning("Santa Claus is here! I gotta get out of here!"))
 		else
@@ -1094,7 +1109,7 @@
 	for(var/obj/item/bodypart/limb as anything in owner.bodyparts)
 		if(!IS_ORGANIC_LIMB(limb))
 			cybernetics_level++
-	for(var/obj/item/organ/organ as anything in owner.internal_organs)
+	for(var/obj/item/organ/organ as anything in owner.organs)
 		if(organ.organ_flags & ORGAN_SYNTHETIC)
 			cybernetics_level++
 	update_mood()

@@ -38,17 +38,17 @@
 	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_PROCESSES
 	mail_goodies = list(/obj/effect/spawner/random/food_or_drink/booze)
 
-/datum/quirk/drunkhealing/process(delta_time)
+/datum/quirk/drunkhealing/process(seconds_per_tick)
 	switch(quirk_holder.get_drunk_amount())
 		if (6 to 40)
-			quirk_holder.adjustBruteLoss(-0.1 * delta_time, FALSE, required_bodytype = BODYTYPE_ORGANIC)
-			quirk_holder.adjustFireLoss(-0.05 * delta_time, required_bodytype = BODYTYPE_ORGANIC)
+			quirk_holder.adjustBruteLoss(-0.1 * seconds_per_tick, FALSE, required_bodytype = BODYTYPE_ORGANIC)
+			quirk_holder.adjustFireLoss(-0.05 * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC)
 		if (41 to 60)
-			quirk_holder.adjustBruteLoss(-0.4 * delta_time, FALSE, required_bodytype = BODYTYPE_ORGANIC)
-			quirk_holder.adjustFireLoss(-0.2 * delta_time, required_bodytype = BODYTYPE_ORGANIC)
+			quirk_holder.adjustBruteLoss(-0.4 * seconds_per_tick, FALSE, required_bodytype = BODYTYPE_ORGANIC)
+			quirk_holder.adjustFireLoss(-0.2 * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC)
 		if (61 to INFINITY)
-			quirk_holder.adjustBruteLoss(-0.8 * delta_time, FALSE, required_bodytype = BODYTYPE_ORGANIC)
-			quirk_holder.adjustFireLoss(-0.4 * delta_time, required_bodytype = BODYTYPE_ORGANIC)
+			quirk_holder.adjustBruteLoss(-0.8 * seconds_per_tick, FALSE, required_bodytype = BODYTYPE_ORGANIC)
+			quirk_holder.adjustFireLoss(-0.4 * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC)
 
 /datum/quirk/empath
 	name = "Empath"
@@ -201,7 +201,7 @@
 
 /datum/quirk/night_vision/proc/refresh_quirk_holder_eyes()
 	var/mob/living/carbon/human/human_quirk_holder = quirk_holder
-	var/obj/item/organ/internal/eyes/eyes = human_quirk_holder.getorgan(/obj/item/organ/internal/eyes)
+	var/obj/item/organ/internal/eyes/eyes = human_quirk_holder.get_organ_by_type(/obj/item/organ/internal/eyes)
 	if(!eyes || eyes.lighting_cutoff)
 		return
 	// We've either added or removed TRAIT_NIGHT_VISION before calling this proc. Just refresh the eyes.
@@ -295,7 +295,9 @@
 	)
 
 /datum/quirk/item_quirk/tagger/add_unique(client/client_source)
-	give_item_to_holder(/obj/item/toy/crayon/spraycan, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS))
+	var/obj/item/toy/crayon/spraycan/can = new
+	can.set_painting_tool_color(client_source?.prefs.read_preference(/datum/preference/color/paint_color))
+	give_item_to_holder(can, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS))
 
 /datum/quirk/throwingarm
 	name = "Throwing Arm"
@@ -306,7 +308,7 @@
 	gain_text = span_notice("Your arms are full of energy!")
 	lose_text = span_danger("Your arms ache a bit.")
 	medical_record_text = "Patient displays mastery over throwing balls."
-	mail_goodies = list(/obj/item/toy/beach_ball/baseball, /obj/item/toy/beach_ball/holoball, /obj/item/toy/beach_ball/holoball/dodgeball)
+	mail_goodies = list(/obj/item/toy/beach_ball/baseball, /obj/item/toy/basketball, /obj/item/toy/dodgeball)
 
 /datum/quirk/voracious
 	name = "Voracious"

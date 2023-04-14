@@ -95,8 +95,8 @@ GLOBAL_LIST_INIT(modular_persistence_ignored_vars, list(
 	return returned_list
 
 /// Saves the held persistence data to where it needs to go.
-/datum/modular_persistence/proc/save_data()
-	var/ckey = replacetext(owner.owner?.ckey || owner.brainmob?.ckey, "@", "")
+/datum/modular_persistence/proc/save_data(var/ckey)
+	ckey = replacetext(ckey || owner.owner?.ckey || owner.brainmob?.ckey, "@", "")
 	if(!owner.owner && !owner.brainmob)
 		CRASH("Modular persistence save called on a brain with no owning mob or brainmob! How did this happen?! (\ref[owner], [owner])")
 	if(!ckey)
@@ -113,7 +113,7 @@ GLOBAL_LIST_INIT(modular_persistence_ignored_vars, list(
 	WRITE_FILE(json_file, json_encode(json))
 
 /// Saves the persistence data for the owner.
-/mob/living/carbon/human/proc/save_individual_persistence()
-	var/obj/item/organ/internal/brain/brain = getorganslot(ORGAN_SLOT_BRAIN)
+/mob/living/carbon/human/proc/save_individual_persistence(var/ckey)
+	var/obj/item/organ/internal/brain/brain = get_organ_slot(ORGAN_SLOT_BRAIN)
 
-	return brain?.modular_persistence?.save_data()
+	return brain?.modular_persistence?.save_data(ckey)

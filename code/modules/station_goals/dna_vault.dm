@@ -196,8 +196,8 @@
 	switch(upgrade_type)
 		if(VAULT_TOXIN)
 			to_chat(H, span_notice("You feel resistant to airborne toxins."))
-			if(locate(/obj/item/organ/internal/lungs) in H.internal_organs)
-				var/obj/item/organ/internal/lungs/L = H.internal_organs_slot[ORGAN_SLOT_LUNGS]
+			if(locate(/obj/item/organ/internal/lungs) in H.organs) // SKYRAT TODO: Missing Mirror PR here, someone should PR it when they get the time.
+				var/obj/item/organ/internal/lungs/L = H.organs_slot[ORGAN_SLOT_LUNGS]
 				L.plas_breath_dam_min = 0
 				L.plas_breath_dam_max = 0
 			ADD_TRAIT(H, TRAIT_VIRUSIMMUNE, DNA_VAULT_TRAIT)
@@ -225,3 +225,11 @@
 	ADD_TRAIT(H, TRAIT_USED_DNA_VAULT, DNA_VAULT_TRAIT)
 	power_lottery[human_weakref] = list()
 	use_power(active_power_usage)
+
+#undef VAULT_TOXIN
+#undef VAULT_NOBREATH
+#undef VAULT_FIREPROOF
+#undef VAULT_STUNTIME
+#undef VAULT_ARMOUR
+#undef VAULT_SPEED
+#undef VAULT_QUICK

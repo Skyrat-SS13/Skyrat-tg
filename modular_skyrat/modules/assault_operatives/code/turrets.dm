@@ -4,7 +4,7 @@
 	use_power = IDLE_POWER_USE
 	req_access = list(ACCESS_SYNDICATE)
 	faction = list(ROLE_SYNDICATE)
-	mode = TURRET_STUN
+	mode = 0
 	max_integrity = 200
 
 //Exterior ship turrets

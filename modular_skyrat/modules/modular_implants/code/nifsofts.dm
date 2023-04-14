@@ -39,8 +39,20 @@
 	///What NIF models can this software be installed on?
 	var/list/compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif)
 
-/datum/nifsoft/New(obj/item/organ/internal/cyberimp/brain/nif/recepient_nif)
+	/// How much of the NIFSoft's purchase price is paid out as reward points, if any?
+	var/rewards_points_rate = 0.5
+	/// Can this item be purchased with reward points?
+	var/rewards_points_eligible = TRUE
+	///Does the NIFSoft have anything that is saved cross-round?
+	var/persistence = FALSE
+	///Is it a lewd item?
+	var/lewd_nifsoft = FALSE
+
+/datum/nifsoft/New(obj/item/organ/internal/cyberimp/brain/nif/recepient_nif, no_rewards_points = FALSE)
 	. = ..()
+
+	if(no_rewards_points) //This is mostly so that credits can't be farmed through printed or stolen NIFSoft disks
+		rewards_points_rate = 0
 
 	compatible_nifs += /obj/item/organ/internal/cyberimp/brain/nif/debug
 	program_name = name
@@ -48,6 +60,7 @@
 	if(!recepient_nif.install_nifsoft(src))
 		qdel(src)
 
+	load_persistence_data()
 
 /datum/nifsoft/Destroy()
 	if(active)
@@ -121,6 +134,9 @@
 	program_name = scrambled_name
 	addtimer(CALLBACK(src, .proc/restore_name), 60 SECONDS)
 
+/datum/nifsoft/ui_state(mob/user)
+	return GLOB.conscious_state
+
 /// A disk that can upload NIFSofts to a recpient with a NIFSoft installed.
 /obj/item/disk/nifsoft_uploader
 	name = "Generic NIFSoft datadisk"
@@ -132,8 +148,11 @@
 	///Is the datadisk reusable?
 	var/reusable = FALSE
 
-/obj/item/disk/nifsoft_uploader/Initialize()
+/obj/item/disk/nifsoft_uploader/Initialize(mapload)
 	. = ..()
+
+	if(CONFIG_GET(flag/disable_lewd_items) && initial(loaded_nifsoft.lewd_nifsoft))
+		return INITIALIZE_HINT_QDEL
 
 	name = "[initial(loaded_nifsoft.name)] datadisk"
 
@@ -148,12 +167,12 @@
 
 /// Attempts to install the NIFSoft on the disk to the target
 /obj/item/disk/nifsoft_uploader/proc/attempt_software_install(mob/living/carbon/human/target)
-	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = target.getorgan(/obj/item/organ/internal/cyberimp/brain/nif)
+	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = target.get_organ_by_type(/obj/item/organ/internal/cyberimp/brain/nif)
 
 	if(!ishuman(target) || !installed_nif)
 		return FALSE
 
-	var/datum/nifsoft/installed_nifsoft = new loaded_nifsoft(installed_nif)
+	var/datum/nifsoft/installed_nifsoft = new loaded_nifsoft(installed_nif, TRUE)
 
 	if(!installed_nifsoft.parent_nif)
 		balloon_alert(target, "installation failed")

@@ -120,7 +120,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 		// eyes
 		if(!(NOEYESPRITES in species_traits))
-			var/obj/item/organ/internal/eyes/eye_organ = species_human.getorganslot(ORGAN_SLOT_EYES)
+			var/obj/item/organ/internal/eyes/eye_organ = species_human.get_organ_slot(ORGAN_SLOT_EYES)
 			var/mutable_appearance/no_eyeslay
 
 			var/add_pixel_x = 0
@@ -152,12 +152,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 						eye_emissive.pixel_x += species_human.dna.species.offset_features[OFFSET_FACE][1]
 						eye_emissive.pixel_y += species_human.dna.species.offset_features[OFFSET_FACE][2]
 						standing += eye_emissive
-
-		// blush
-		if (HAS_TRAIT(species_human, TRAIT_BLUSHING)) // Caused by either the *blush emote or the "drunk" mood event
-			var/mutable_appearance/blush_overlay = mutable_appearance('icons/mob/species/human/human_face.dmi', "blush", -BODY_ADJ_LAYER) //should appear behind the eyes
-			blush_overlay.color = COLOR_BLUSH_PINK
-			standing += blush_overlay
 
 	//Underwear, Undershirts & Socks
 	if(!(NO_UNDERWEAR in species_traits))
@@ -220,7 +214,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/can_wag_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null
 		return FALSE
-	var/obj/item/organ/external/tail/T = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+	var/obj/item/organ/external/tail/T = H.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(!T)
 		return FALSE
 	if(T.can_wag)
@@ -230,7 +224,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/is_wagging_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null
 		return FALSE
-	var/obj/item/organ/external/tail/T = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+	var/obj/item/organ/external/tail/T = H.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(!T)
 		return FALSE
 	return T.wagging
@@ -238,7 +232,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/start_wagging_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null
 		return
-	var/obj/item/organ/external/tail/T = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+	var/obj/item/organ/external/tail/T = H.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(!T)
 		return FALSE
 	T.wagging = TRUE
@@ -247,7 +241,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/stop_wagging_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null
 		return
-	var/obj/item/organ/external/tail/T = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+	var/obj/item/organ/external/tail/T = H.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(!T)
 		return
 	T.wagging = FALSE
@@ -265,7 +259,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		var/datum/sprite_accessory/mutant_accessory = GLOB.sprite_accessories[key][target.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 
 		if(mutant_accessory?.factual && mutant_accessory.organ_type)
-			var/obj/item/organ/current_organ = target.getorgan(mutant_accessory.organ_type)
+			var/obj/item/organ/current_organ = target.get_organ_by_type(mutant_accessory.organ_type)
 
 			if(!current_organ || replace_current)
 				var/obj/item/organ/replacement = SSwardrobe.provide_type(mutant_accessory.organ_type)
@@ -287,7 +281,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				replacement.Insert(target, special = TRUE, drop_if_replaced = FALSE)
 
 			// var/obj/item/organ/path = new SA.organ_type
-			// var/obj/item/organ/oldorgan = C.getorganslot(path.slot)
+			// var/obj/item/organ/oldorgan = C.get_organ_slot(path.slot)
 			// if(oldorgan)
 			// 	oldorgan.Remove(C,TRUE)
 			// 	QDEL_NULL(oldorgan)

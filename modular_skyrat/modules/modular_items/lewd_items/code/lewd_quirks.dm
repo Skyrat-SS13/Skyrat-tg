@@ -257,7 +257,7 @@
 	random_gain = FALSE
 	resilience = TRAUMA_RESILIENCE_ABSOLUTE
 
-/datum/brain_trauma/very_special/sadism/on_life(delta_time, times_fired)
+/datum/brain_trauma/very_special/sadism/on_life(seconds_per_tick, times_fired)
 	var/mob/living/carbon/human/affected_mob = owner
 	if(someone_suffering() && affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		affected_mob.adjust_arousal(2)

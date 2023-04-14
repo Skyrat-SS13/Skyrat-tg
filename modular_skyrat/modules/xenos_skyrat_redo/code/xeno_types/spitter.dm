@@ -18,6 +18,6 @@
 	REMOVE_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
 /mob/living/carbon/alien/adult/skyrat/spitter/create_internal_organs()
-	internal_organs += new /obj/item/organ/internal/alien/plasmavessel
-	internal_organs += new /obj/item/organ/internal/alien/neurotoxin/spitter
+	organs += new /obj/item/organ/internal/alien/plasmavessel
+	organs += new /obj/item/organ/internal/alien/neurotoxin/spitter
 	..()

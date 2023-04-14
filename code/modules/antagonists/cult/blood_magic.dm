@@ -327,7 +327,7 @@
 /obj/item/melee/blood_magic
 	name = "\improper magical aura"
 	desc = "A sinister looking aura that distorts the flow of reality around it."
-	icon = 'icons/obj/weapons/items_and_weapons.dmi'
+	icon = 'icons/obj/weapons/hand.dmi'
 	lefthand_file = 'icons/mob/inhands/items/touchspell_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/touchspell_righthand.dmi'
 	icon_state = "disintegrate"
@@ -416,6 +416,16 @@
 			var/old_color = target.color
 			target.color = rgb(0, 128, 0)
 			animate(target, color = old_color, time = 1 SECONDS, easing = EASE_IN)
+
+		// SKYRAT EDIT START
+		if(IS_CLOCK(target))
+			to_chat(user, span_warning("Some force greater than you intervenes! [target] is protected by the heretic Ratvar!"))
+			to_chat(target, span_warning("You are protected by your faith to Ratvar!"))
+			var/old_color = target.color
+			target.color = rgb(190, 135, 0)
+			animate(target, color = old_color, time = 1 SECONDS, easing = EASE_IN)
+		// SKYRAT EDIT END
+
 		else if(target.can_block_magic())
 			to_chat(user, span_warning("The spell had no effect!"))
 		else
@@ -785,7 +795,7 @@
 		var/static/list/spells = list(
 			"Bloody Halberd (150)" = image(icon = 'icons/obj/cult/items_and_weapons.dmi', icon_state = "occultpoleaxe0"),
 			"Blood Bolt Barrage (300)" = image(icon = 'icons/obj/weapons/guns/ballistic.dmi', icon_state = "arcane_barrage"),
-			"Blood Beam (500)" = image(icon = 'icons/obj/weapons/items_and_weapons.dmi', icon_state = "disintegrate")
+			"Blood Beam (500)" = image(icon = 'icons/obj/weapons/hand.dmi', icon_state = "disintegrate")
 			)
 		var/choice = show_radial_menu(user, src, spells, custom_check = CALLBACK(src, PROC_REF(check_menu), user), require_near = TRUE)
 		if(!check_menu(user))

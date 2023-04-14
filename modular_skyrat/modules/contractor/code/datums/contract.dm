@@ -161,12 +161,12 @@
 /// Called when person is finished shoving in, awards ransome money
 /datum/syndicate_contract/proc/finish_enter()
 	// Pay contractor their portion of ransom
-	if(!status != CONTRACT_STATUS_COMPLETE)
+	if(status != CONTRACT_STATUS_COMPLETE)
 		return
 
 	var/obj/item/card/id/owner_id = contract.owner.current?.get_idcard(TRUE)
 
-	if(owner_id?.registered_account && !istype(owner_id, /obj/item/card/id/advanced/chameleon))
+	if(owner_id?.registered_account.account_id) // why do we check for account id? because apparently unset agent IDs have existing bank accounts that can't be accessed. this is suboptimal
 		owner_id.registered_account.adjust_money(ransom * CONTRACTOR_RANSOM_CUT)
 
 		owner_id.registered_account.bank_card_talk("We've processed the ransom, agent. Here's your cut - your balance is now \
@@ -174,7 +174,7 @@
 	else
 		to_chat(contract.owner.current, span_notice("A briefcase appears at your feet!"))
 		var/obj/item/storage/secure/briefcase/case = new(get_turf(contract.owner.current))
-		for(var/i in 1 to round(ransom * CONTRACTOR_RANSOM_CUT)) // Gets slightly less/more but whatever
+		for(var/i in 1 to (round((ransom * CONTRACTOR_RANSOM_CUT) / 1000))) // Gets slightly less/more but whatever
 			new /obj/item/stack/spacecash/c1000(case)
 
 /// They're off to holding - handle the return timer and give some text about what's going on.

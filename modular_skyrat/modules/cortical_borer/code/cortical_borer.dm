@@ -267,7 +267,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	. += "2) [GLOB.objective_willing_hosts] willing hosts: [length(GLOB.willing_hosts)]/[GLOB.objective_willing_hosts]"
 	. += "3) [GLOB.objective_blood_borer] borers learning [GLOB.objective_blood_chem] from the blood: [GLOB.successful_blood_chem]/[GLOB.objective_blood_borer]"
 
-/mob/living/basic/cortical_borer/Life(delta_time, times_fired)
+/mob/living/basic/cortical_borer/Life(seconds_per_tick, times_fired)
 	. = ..()
 	//can only do stuff when we are inside a LIVING human
 	if(!inside_human() || human_host?.stat == DEAD)
@@ -333,8 +333,8 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		return TRUE
 	return FALSE
 
-// Base mob environment handler for body temperature, overriden to take into consideration being inside a host
-/mob/living/basic/cortical_borer/handle_environment(datum/gas_mixture/environment, delta_time, times_fired)
+/// Base mob environment handler for body temperature, overridden to take into consideration being inside a host
+/mob/living/basic/cortical_borer/handle_environment(datum/gas_mixture/environment, seconds_per_tick, times_fired)
 	var/loc_temp
 	if(human_host)
 		loc_temp = human_host.coretemperature // set the local temp to that of the host's core temp
@@ -348,15 +348,15 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 
 	if(temp_delta < 0) // it is cold here
 		if(!on_fire) // do not reduce body temp when on fire
-			adjust_bodytemperature(max(max(temp_delta / BODYTEMP_DIVISOR, BODYTEMP_COOLING_MAX) * delta_time, temp_delta))
+			adjust_bodytemperature(max(max(temp_delta / BODYTEMP_DIVISOR, BODYTEMP_COOLING_MAX) * seconds_per_tick, temp_delta))
 	else // this is a hot place
-		adjust_bodytemperature(min(min(temp_delta / BODYTEMP_DIVISOR, BODYTEMP_HEATING_MAX) * delta_time, temp_delta))
+		adjust_bodytemperature(min(min(temp_delta / BODYTEMP_DIVISOR, BODYTEMP_HEATING_MAX) * seconds_per_tick, temp_delta))
 
 //leave the host, forced or not
 /mob/living/basic/cortical_borer/proc/leave_host()
 	if(!human_host)
 		return
-	var/obj/item/organ/internal/borer_body/borer_organ = locate() in human_host.internal_organs
+	var/obj/item/organ/internal/borer_body/borer_organ = locate() in human_host.organs
 	if(borer_organ)
 		borer_organ.Remove(human_host)
 	var/turf/human_turf = get_turf(human_host)
@@ -458,5 +458,5 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	chemical_storage = 250
 	chem_regen_per_level = 1.5
 	chem_storage_per_level = 25
-	
-#undef BODYTEMP_DIVISOR	
+
+#undef BODYTEMP_DIVISOR
