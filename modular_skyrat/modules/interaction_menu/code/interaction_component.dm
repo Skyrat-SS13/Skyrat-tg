@@ -131,6 +131,10 @@
 	. = ..()
 	if(.)
 		return
+
+	if(!ishuman(usr))
+		return
+
 	if(params["interaction"])
 		var/interaction_id = params["interaction"]
 		if(GLOB.interaction_instances[interaction_id])
