@@ -53,6 +53,6 @@
 			if(!msg_ghosts)
 				continue
 			if(user)
-				to_chat(player_mob, "[span_brass("[FOLLOW_LINK(player_mob, user)]")] [final_message]")
+				to_chat(player_mob, "[FOLLOW_LINK(player_mob, user)] [final_message]")
 			else
 				to_chat(player_mob, final_message)

@@ -438,6 +438,12 @@ suffix = "whiteshipruin_box.dmm"*/
 	name = "Waystation"
 	description = "A waytation for a backwater subsector of Spinward gets attacked by the syndicate due to bad luck."
 
+/datum/map_template/ruin/space/mimesvclowns
+	id = "mimesvclowns"
+	suffix = "mimesvclowns.dmm"
+	name = "Abandoned Mime Outpost"
+	description = "When you fight mimes, you better bring more than slips."
+
 /datum/map_template/ruin/space/transit_booth
 	id = "transit_booth"
 	suffix = "transit_booth.dmm"
@@ -449,3 +455,9 @@ suffix = "whiteshipruin_box.dmm"*/
 	suffix = "the_outlet.dmm"
 	name = "calebs krazy clothing outlet"
 	description = "A decrepit clothing store built into an asteroid. It appears long since abandoned and has fallen into disrepair."
+
+/datum/map_template/ruin/space/infested_frigate
+	id = "infested_frigate"
+	suffix = "infested_frigate.dmm"
+	name = "SYN-C Brutus"
+	description = "This wasn't an outbreak, this was a repelled attack."
