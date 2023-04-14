@@ -350,9 +350,9 @@
 	. = ..() //SKYRAT EDIT - MODULAR PARENT PROC
 
 /obj/item/flashlight/flare/extinguish()
-	if(fuel != INFINITY && can_be_extinguished)
+	. = ..()
+	if((fuel != INFINITY) && can_be_extinguished)
 		turn_off()
-	return ..()
 
 /obj/item/flashlight/flare/update_brightness()
 	..()
