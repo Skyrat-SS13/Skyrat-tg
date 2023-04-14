@@ -1529,7 +1529,6 @@
 			RESKIN_WORN_ICON_STATE = "coat_whitered"
 		),
 		"White-Blue" = list(
-
 			RESKIN_ICON_STATE = "coat_whiteblue",
 			RESKIN_WORN_ICON_STATE = "coat_whiteblue"
 		)
@@ -1568,7 +1567,6 @@
 			RESKIN_WORN_ICON_STATE = "boots_whitered"
 		),
 		"White-Blue" = list(
-
 			RESKIN_ICON_STATE = "boots_whiteblue",
 			RESKIN_WORN_ICON_STATE = "boots_whiteblue"
 		)

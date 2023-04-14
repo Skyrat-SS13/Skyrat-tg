@@ -57,11 +57,13 @@
 
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
+
 #define TURN_DIAL 		0
 #define TAP_SCREEN		1
 #define PRESS_KEYS		2
 #define EXTEND_ANTENNA	3
 #define SLAP_SIDE		4
+
 /obj/item/donator/transponder
 	name = "broken Helian transponder"
 	desc = "Used by Helians to communicate with their mothership, the screen is cracked and its edges scuffed. This one has seen better days."
