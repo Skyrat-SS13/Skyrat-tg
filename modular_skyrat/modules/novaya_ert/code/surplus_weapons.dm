@@ -1,7 +1,7 @@
 // Plasma spewing pistol
 // Sprays a wall of plasma that sucks against armor but fucks against unarmored targets
 
-/obj/item/gun/ballistic/automatic/pistol/plasma_thrower
+/obj/item/gun/energy/laser/plasma_thrower
 	name = "\improper Tkach 'Zirka' plasma projector"
 	desc = "An outdated sidearm rarely seen in use by some members of the CIN. Spews an inaccurate stream of searing plasma out the magnetic barrel so long as it has power and the trigger is pulled."
 	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_guns/guns_32.dmi'
@@ -11,27 +11,25 @@
 	fire_sound_volume = 40 // This thing is comically loud otherwise
 
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/recharge/plasma_battery
 	can_suppress = FALSE
-	show_bolt_icon = FALSE
-	casing_ejector = FALSE
-	empty_indicator = FALSE
-	bolt_type = BOLT_TYPE_OPEN
 	fire_delay = 1
 	spread = 15
 
-/obj/item/gun/ballistic/automatic/pistol/plasma_thrower/Initialize(mapload)
+	ammo_type = list(/obj/item/ammo_casing/energy/laser/plasma_glob)
+
+/obj/item/gun/energy/laser/plasma_thrower/Initialize(mapload)
 	. = ..()
+	AddComponent(/datum/component/automatic_fire, 0.1 SECONDS)
 
-	AddComponent(/datum/component/automatic_fire, autofire_shot_delay = fire_delay)
+/obj/item/gun/energy/laser/plasma_thrower/examine(mob/user)
+	. = ..()
+	. += "The plasma globs have <b>reduced effectiveness against blobs</b>."
 
-/obj/item/gun/ballistic/automatic/pistol/plasma_thrower/give_manufacturer_examine()
-
+/obj/item/gun/energy/laser/plasma_thrower/give_manufacturer_examine()
 	AddComponent(/datum/component/manufacturer_examine, COMPANY_TKACH)
 
-/obj/item/gun/ballistic/automatic/pistol/plasma_thrower/examine_more(mob/user)
+/obj/item/gun/energy/laser/plasma_thrower/examine_more(mob/user)
 	. = ..()
-
 	. += "The Zirka started life as an experiment in advancing the field of accelerated \
 		plasma weaponry. Despite the design's obvious shortcomings in terms of accuracy and \
 		range, the CIN combined military command (which we'll call the CMC from now on) took \
@@ -43,29 +41,11 @@
 		army officers and ship crews who needed a backup weapon to incinerate the odd space \
 		pirate or prisoner of war."
 
-	return .
-
-// Plasma thrower 'magazine'
-
-/obj/item/ammo_box/magazine/recharge/plasma_battery
-	name = "plasma power pack"
-	desc = "A rechargeable, detachable battery that serves as a power source for plasma projectors."
-	icon = 'modular_skyrat/modules/novaya_ert/icons/surplus_guns/ammo.dmi'
-	base_icon_state = "plasma_battery"
-	icon_state = "plasma_battery"
-	multiple_sprites = AMMO_BOX_FULL_EMPTY
-	ammo_type = /obj/item/ammo_casing/caseless/laser/plasma_glob
-	caliber = CALIBER_LASER
-
-/obj/item/ammo_box/magazine/recharge/plasma_battery/update_icon_state() // FUCK YOU /OBJ/ITEM/AMMO_BOX/MAGAZINE/RECHARGE
-	. = ..()
-	icon_state = base_icon_state
-
 // Casing and projectile for the plasma thrower
-
-/obj/item/ammo_casing/caseless/laser/plasma_glob
+/obj/item/ammo_casing/energy/laser/plasma_glob
 	projectile_type = /obj/projectile/beam/laser/plasma_glob
 	fire_sound = 'modular_skyrat/modules/microfusion/sound/incinerate.ogg'
+	e_cost = 50
 
 /obj/projectile/beam/laser/plasma_glob
 	name = "plasma globule"
@@ -77,6 +57,11 @@
 	wound_bonus = -50
 	pass_flags = PASSTABLE | PASSGRILLE // His ass does NOT pass through glass!
 	weak_against_armour = TRUE
+
+/obj/projectile/beam/laser/plasma_glob/on_hit(atom/target, blocked)
+	if(istype(target, /obj/structure/blob) || istype(target, /mob/living/simple_animal/hostile/blob))
+		damage = damage * 0.75
+	return ..()
 
 // A revolver, but it can hold shotgun shells
 // Woe, buckshot be upon ye
