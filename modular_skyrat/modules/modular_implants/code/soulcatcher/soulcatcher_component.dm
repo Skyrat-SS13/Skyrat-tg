@@ -51,7 +51,18 @@ GLOBAL_LIST_EMPTY(soulcatchers)
 
 	if(istype(parent, /obj/item))
 		var/obj/item/parent_item = parent
-		parent_item.visible_message(message_to_recieve)
+		var/mob/living/holder = parent_item.loc
+		if(!holder)
+			return FALSE
+
+		to_chat(holder, message_to_recieve)
+		return TRUE
+
+	if(istype(parent, /obj/item/organ/internal/cyberimp/brain/nif))
+		var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = parent
+		to_chat(target_nif.linked_mob, message_to_recieve)
+
+	return FALSE
 
 /datum/soulcatcher_room
 	/// What is the name of the room?

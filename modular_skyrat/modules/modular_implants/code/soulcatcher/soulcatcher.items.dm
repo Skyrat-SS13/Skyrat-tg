@@ -1,7 +1,7 @@
 /obj/item/soulcatcher_item
 	name = "soulcatcher item"
-	icon = 'icons/obj/wizard.dmi'
-	icon_state = "soulstone"
+	icon = 'modular_skyrat/modules/modular_implants/icons/obj/devices.dmi'
+	icon_state = "soulcatcher-device"
 	inhand_icon_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
